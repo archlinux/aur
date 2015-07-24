@@ -1,0 +1,29 @@
+pkgbase = qupzilla-qtwebkit-git
+	pkgdesc = Cross-platform Qt web browser. Legacy QtWebKit branch.
+	pkgver = 1.8.6.31.gc84751d
+	pkgrel = 1
+	url = http://www.qupzilla.com
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = custom
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-webkit
+	depends = qt5-script
+	provides = qupzilla
+	provides = qupzilla-qt4
+	provides = qupzilla-qt5
+	provides = qupzilla-git
+	provides = qupzilla-qt5-qtwebkit-git
+	conflicts = qupzilla
+	conflicts = qupzilla-qt4
+	conflicts = qupzilla-qt5
+	conflicts = qupzilla-git
+	conflicts = qupzilla-qt5-qtwebkit-git
+	replaces = qupzilla-qt5-qtwebkit-git
+	source = git+https://github.com/QupZilla/qupzilla.git#branch=v1.8
+	sha256sums = SKIP
+
+pkgname = qupzilla-qtwebkit-git
+
