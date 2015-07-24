@@ -1,0 +1,21 @@
+pkgbase = luola
+	pkgdesc = A cavern-flying game for 1-4 players
+	pkgver = 1.3.2
+	pkgrel = 2
+	url = http://web.archive.org/web/20081206054041/http://www.luolamies.org/software/luola/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = sdl_gfx
+	depends = sdl_mixer
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/luola/luola_1.3.2.orig.tar.gz
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/luola-levels/luola-levels_6.0.orig.tar.gz
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/luola-nostalgy/luola-nostalgy_1.2.orig.tar.gz
+	md5sums = 029f48e8fb8d104e9634cf20c4493460
+	md5sums = 7660b90d67c06726c1849c3ff0e24aea
+	md5sums = 4777681fa97ada351ebaf954ba8451ef
+
+pkgname = luola
+
