@@ -1,0 +1,12 @@
+diff -Naur freetype-2.5.5/include/freetype/config/ftoption.h freetype-2.5.5.new/include/freetype/config/ftoption.h
+--- freetype-2.5.5/include/config/ftoption.h	2014-11-19 16:38:59.000000000 -0500
++++ freetype-2.5.5.new/include/config/ftoption.h	2015-04-21 18:17:47.083082649 -0400
+@@ -686,7 +686,7 @@
+   /*   http://www.microsoft.com/typography/otspec/glyf.htm                 */
+   /*   http://fonts.apple.com/TTRefMan/RM06/Chap6glyf.html                 */
+   /*                                                                       */
+-#undef TT_CONFIG_OPTION_COMPONENT_OFFSET_SCALED
++#define TT_CONFIG_OPTION_COMPONENT_OFFSET_SCALED
+ 
+ 
+   /*************************************************************************/

@@ -1,0 +1,27 @@
+pkgbase = freetype2-cleartype
+	pkgdesc = TrueType font rendering library with ClearType patch
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = http://freetype.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	provides = freetype2=2.5.5
+	conflicts = freetype2
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.5.5.tar.bz2
+	source = freetype-2.5.5-subpixel-disable-quantization.patch
+	source = freetype-2.5.5-bytecode.patch
+	source = freetype-2.5.5-enable-spr.patch
+	source = freetype-2.5.5-enable-valid.patch
+	source = freetype-2.5.5-memcpy-fix.patch
+	md5sums = 2a7a314927011d5030903179cf183be0
+	md5sums = f76c05235aaa646b3fe224fcbf2b6ed7
+	md5sums = f08498a4b121cd74dc94506a5bc989b9
+	md5sums = a597c6b931bb830d9b3a995f0f327adb
+	md5sums = 0cb479622259cc6d94abf58c8704787f
+	md5sums = 9faed89411e6103213189652c8e57381
+
+pkgname = freetype2-cleartype
+

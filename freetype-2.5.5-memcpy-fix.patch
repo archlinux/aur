@@ -1,0 +1,15 @@
+diff -Naur freetype-2.5.5/src/psaux/psobjs.c freetype-2.5.5.new/src/psaux/psobjs.c
+--- freetype-2.5.5/src/psaux/psobjs.c	2014-11-25 02:48:48.000000000 -0500
++++ freetype-2.5.5.new/src/psaux/psobjs.c	2015-04-21 18:31:03.106092062 -0400
+@@ -182,6 +182,11 @@
+       return FT_THROW( Invalid_Argument );
+     }
+ 
++    if ( length < 0 ) {
++      FT_ERROR(( "ps_table_add: invalid length\n" ));
++      return PSaux_Err_Invalid_Argument;
++    }
++
+     /* grow the base block if needed */
+     if ( table->cursor + length > table->capacity )
+     {

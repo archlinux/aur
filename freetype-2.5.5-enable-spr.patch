@@ -1,0 +1,12 @@
+diff -Naur freetype-2.5.5/include/freetype/config/ftoption.h freetype-2.5.5.new/include/freetype/config/ftoption.h
+--- freetype-2.5.5/include/config/ftoption.h	2014-11-19 16:38:59.000000000 -0500
++++ freetype-2.5.5.new/include/config/ftoption.h	2015-04-21 18:12:39.477079011 -0400
+@@ -92,7 +92,7 @@
+   /* This is done to allow FreeType clients to run unmodified, forcing     */
+   /* them to display normal gray-level anti-aliased glyphs.                */
+   /*                                                                       */
+-/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
++#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
+ 
+ 
+   /*************************************************************************/
