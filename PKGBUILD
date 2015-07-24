@@ -1,8 +1,9 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=drawpile
-pkgver=0.9.9
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('x86_64' 'i686')
@@ -12,7 +13,7 @@ makedepends=('qt5-base' 'karchive' 'qt5-tools' 'qt5-translations' 'qt5-svg' 'qt5
 depends=('qt5-base' 'karchive' 'qt5-tools' 'qt5-translations' 'qt5-svg' 'qt5-multimedia' 'cmake')
 optdepends=('libmicrohttpd')
 source=("http://drawpile.net/files/src/$pkgname-$pkgver.tar.gz")
-sha256sums=('72c98f7b5b3bed49067518872bc9bbc5ab05bb3e79ae588bcb036234627dede6')
+sha256sums=('bc574ddbad1578e84ca36605c338400239d4f106750e253ca7cf027c0b42c454')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -35,5 +36,3 @@ package() {
   install -Dm644 "desktop/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-
-# vim:set ts=2 sw=2 et:
