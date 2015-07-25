@@ -1,0 +1,33 @@
+pkgbase = tsc-git
+	pkgdesc = Jump'n'run game, fork of SMC
+	pkgver = r1869
+	pkgrel = 1
+	url = https://github.com/Secretchronicles/TSC
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = ruby
+	makedepends = gperf
+	makedepends = pkg-config
+	makedepends = bison
+	makedepends = boost
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = glew
+	depends = sdl_mixer
+	depends = devil
+	depends = boost-libs
+	depends = libxml++
+	depends = gettext
+	depends = mesa
+	depends = freeglut
+	conflicts = smc
+	conflicts = tsc
+	source = git+https://github.com/Secretchronicles/TSC.git
+	source = tsc.desktop
+	md5sums = SKIP
+	md5sums = b96731e4a6eeee41aa97d6f84c67cabb
+
+pkgname = tsc-git
+

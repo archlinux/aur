@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=The Secret Chronicles of Dr. M.
+Comment=Pursue Dr. M. in this two-dimensional platform game
+Comment[de]=In diesem zweidimensionalen Plattformer jagen Sie Dr. M.
+Icon=tsc
+Exec=tsc %f
+Terminal=false
+StartupNotify=true
+Categories=Game;ArcadeGame;
