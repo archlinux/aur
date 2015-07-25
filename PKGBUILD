@@ -5,14 +5,14 @@
 
 pkgbase=network-manager-applet
 pkgname=network-manager-applet-git
-pkgver=1.1.0.r3411.ge90c0d8
-pkgrel=3
+pkgver=1.1.0.r3454.g1cf5002
+pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url="http://www.gnome.org/projects/NetworkManager/"
 depends=('networkmanager-git' 'gtk3' 'iso-codes' 'libsecret'
-         'notification-daemon' 'libnotify' 'gnome-icon-theme'
+         'notification-daemon' 'libnotify' 'adwaita-icon-theme'
          'mobile-broadband-provider-info' )
          
 makedepends=('intltool' 'gobject-introspection')
