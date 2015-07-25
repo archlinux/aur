@@ -1,0 +1,17 @@
+pkgbase = python-http-parser-git
+	pkgdesc = HTTP request/response parser for python in C
+	pkgver = 0.8.3
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/benoitc/http-parser
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = git://github.com/benoitc/http-parser.git
+	md5sums = SKIP
+
+pkgname = python-http-parser-git
+
