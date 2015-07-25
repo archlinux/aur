@@ -3,13 +3,13 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=eclipse-linuxtools
-pkgver=3.2.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Eclipse Linux Tools Project"
 url="http://www.eclipse.org/linuxtools"
 arch=('any')
 license=('EPL')
-depends=('eclipse-cdt')
+depends=('eclipse-cpp')
 optdepends=(
 	'eclipse-ptp: remote profiling'
 	'eclipse-rse: LTTng and remote profiling'
@@ -19,11 +19,22 @@ optdepends=(
 )
 makedepends=('java-environment')
 source=("http://www.eclipse.org/downloads/download.php?r=1&file=/linuxtools/linuxtools-${pkgver}.zip")
-sha256sums=('332c1bba17e987066d831a76f035ccf68c5056a694c183c70fc62f8d5814407d')
+sha256sums=('541d4f75911b9f52a81b26ded143deea52d46fc08a994a686b6edb9972a2af72')
 
 package() {
-  d="$pkgdir/usr/share/eclipse/dropins/linuxtools/eclipse"
-  install -d "$d"
-  cp -a features "$d"
-  cp -a plugins "$d"
+  _dest="${pkgdir}/usr/lib/eclipse/dropins/linuxtools/eclipse"
+
+  cd "${srcdir}"
+
+  # Features
+  for _f in features/*; do
+    _dir="${_dest}/${_f/.jar}"
+    mkdir -p "${_dir}"
+    bsdtar -xf "${_f}" -C "${_dir}"
+  done
+
+  # Plugins
+  for _p in plugins/*; do
+    install -Dm644 "${_p}" "${_dest}/${_p}"
+  done
 }
