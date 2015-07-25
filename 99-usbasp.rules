@@ -1,0 +1,2 @@
+# USBasp Programmer rules http://www.fischl.de/usbasp/
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05dc", GROUP="users", MODE="0666"

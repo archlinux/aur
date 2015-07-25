@@ -1,0 +1,12 @@
+pkgbase = usbasp-udev
+	pkgdesc = udev rules for USBasp Atmel AVR programmer.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.fischl.de/usbasp/
+	arch = any
+	license = MIT
+	source = 99-usbasp.rules
+	sha256sums = 8d4b15c72978c73242f90a02cc921219bb90b76470be3234b05b4523b1abde6c
+
+pkgname = usbasp-udev
+
