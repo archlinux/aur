@@ -1,0 +1,25 @@
+pkgbase = ttf-kannada-font
+	pkgdesc = Kannada Font
+	pkgver = 0.0
+	pkgrel = 0
+	url = http://kannada.indiatyping.com
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://kannada.indiatyping.com/images/downloadfonts/Kannada/BARAHA_Kannad.zip
+	source = http://kannada.indiatyping.com/images/downloadfonts/Kannada/BRHKANNW.zip
+	source = http://kannada.indiatyping.com/images/downloadfonts/Kannada/BRHMUSIC.zip
+	source = http://kannada.indiatyping.com/images/downloadfonts/Kannada/BRHVEDIC.zip
+	source = http://kannada.indiatyping.com/images/downloadfonts/Kannada/KAILASAM.zip
+	source = http://kannada.indiatyping.com/images/downloadfonts/Kannada/UMA_Kannada.zip
+	source = http://kannada.indiatyping.com/images/downloadfonts/akshar.zip
+	md5sums = f71cbf7a0f61a8b3a2831a2face21f11
+	md5sums = 0a4dcf89b8c6607dfc4cca0f2f48b591
+	md5sums = 245d82f001bf0e2fe01ca674d4a96035
+	md5sums = 10dae096b1af741a3fcb25e7c8854ca5
+	md5sums = 0e5e8f746abea7d429b907d18674b6a0
+	md5sums = aa0b0250200f375aa3984998b7f2eb9b
+	md5sums = be623cbc7218dff9f005128ad485c53c
+
+pkgname = ttf-kannada-font
+
