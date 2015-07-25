@@ -1,6 +1,6 @@
 pkgbase = networkmanager-git
 	pkgdesc = Network Management daemon
-	pkgver = 1.1.0.r12290.g5eba53c
+	pkgver = 1.1.0.r12661.g72953e3
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager
 	install = networkmanager-git.install
@@ -39,8 +39,8 @@ pkgbase = networkmanager-git
 	optdepends = ppp: dialup connection support
 	optdepends = rp-pppoe: ADSL support
 	optdepends = modemmanager: cellular network support
-	provides = networkmanager=1.1.0.r12290.g5eba53c
-	provides = libnm-glib=1.1.0.r12290.g5eba53c
+	provides = networkmanager=1.1.0.r12661.g72953e3
+	provides = libnm-glib=1.1.0.r12661.g72953e3
 	conflicts = networkmanager
 	conflicts = libnm-glib
 	options = !emptydirs
