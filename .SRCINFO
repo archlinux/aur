@@ -1,0 +1,21 @@
+pkgbase = brother-ql700-cupswrapper
+	pkgdesc = LPR-to-CUPS wrapper for Brother P-Touch QL-700 labelprinter (metric)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-ql700-cupswrapper.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = rpmextract
+	makedepends = cpio
+	depends = cups
+	depends = ghostscript
+	depends = glibc
+	depends = brother-ql700-lpr
+	noextract = ql700cupswrapper-1.0.2-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp002193/ql700cupswrapper-1.0.2-0.i386.rpm
+	md5sums = 9315769e988fbb2088a3ec1875d2189f
+
+pkgname = brother-ql700-cupswrapper
+

@@ -1,0 +1,16 @@
+# Install file for brother-ql700-cupswrapper
+
+post_install() {
+	/opt/brother/PTouch/ql700/cupswrapper/cupswrapperql700pt1
+	systemctl restart cups
+}
+
+pre_remove() {
+	/opt/brother/PTouch/ql700/cupswrapper/cupswrapperql700pt1 -e
+}
+
+post_remove() {
+	systemctl restart cups
+}
+
+
