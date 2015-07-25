@@ -1,6 +1,6 @@
 # Maintainer: Daniel Escoz <darkhogg[at]gmail[dot]com>
 pkgname=werebot
-pkgver=r54.56d53cc
+pkgver=r56.a1753ff
 pkgrel=1
 pkgdesc="Werewolf IRC Bot"
 url="http://github.com/Darkhogg/werebot"
