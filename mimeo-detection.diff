@@ -1,6 +1,6 @@
 --- xdg-utils/scripts/xdg-utils-common.in
 +++ xdg-utils/scripts/xdg-utils-common.in
-@@ -286,6 +286,7 @@
+@@ -291,6 +291,7 @@
        elif xprop -root _DT_SAVE_MODE 2> /dev/null | grep ' = \"xfce4\"$' >/dev/null 2>&1; then DE=xfce;
        elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
        elif echo $DESKTOP | grep -q '^Enlightenment'; then DE=enlightenment;
@@ -11,7 +11,7 @@
 
 --- xdg-utils/scripts/xdg-open.in
 +++ xdg-utils/scripts/xdg-open.in
-@@ -147,6 +147,17 @@
+@@ -158,6 +158,17 @@
  {
      enlightenment_open "$1"
  
@@ -29,8 +29,8 @@
      if [ $? -eq 0 ]; then
          exit_success
      else
-@@ -420,6 +431,10 @@
-     open_enlightenment "$url"
+@@ -440,6 +451,10 @@
+     open_darwin "$url"
      ;;
  
 +    mimeo)
@@ -62,7 +62,7 @@
  
      if [ $? -eq 0 ]; then
          exit_success
-@@ -409,6 +421,10 @@
+@@ -424,6 +436,10 @@
      open_xfce "${mailto}"
      ;;
  
@@ -70,7 +70,7 @@
 +    open_mimeo "${mailto}"
 +    ;;
 +
-     generic|lxde)
+     generic)
      open_generic "${mailto}"
      ;;
 
@@ -93,7 +93,7 @@
      if [ $? -eq 0 ]; then
          exit_success
      else
-@@ -565,6 +575,10 @@
+@@ -570,6 +580,10 @@
          info_gnome "$filename"
          ;;
  
@@ -150,12 +150,39 @@
  # }}} default browser
  
  # {{{ default url scheme handler
-@@ -754,7 +790,7 @@
- detectDE
+@@ -624,6 +660,24 @@
+ }
  
- case "$DE" in
--    kde|gnome*|xfce)
-+    kde|gnome*|xfce|mimeo)
-     dispatch_specific "$@"
+ set_url_scheme_handler_xfce()
++{
++    exit_unimplemented_default_handler "$1"
++}
++
++# }}} xfce
++# {{{ mimeo
++
++get_url_scheme_handler_mimeo()
++{
++    exit_unimplemented_default_handler "$1"
++}
++
++check_url_scheme_handler_mimeo()
++{
++    exit_unimplemented_default_handler "$1"
++}
++
++set_url_scheme_handler_mimeo()
+ {
+     exit_unimplemented_default_handler "$1"
+ }
+@@ -771,6 +825,10 @@
+     dispatch_specific xfce "$@"
      ;;
  
++    mimeo)
++    dispatch_specific mimeo "$@"
++    ;;
++
+     generic)
+     dispatch_generic "$@"
+     ;;
