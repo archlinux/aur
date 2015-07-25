@@ -1,6 +1,6 @@
 pkgbase = python-bitcoin
 	pkgdesc = Python Bitcoin Tools
-	pkgver = 1.1.30
+	pkgver = 1.1.33
 	pkgrel = 1
 	url = https://github.com/vbuterin/pybitcointools
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = python-bitcoin
 	conflicts = python-pybitcointools
 	conflicts = python-python-bitcoinlib
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/b/bitcoin/bitcoin-1.1.30.tar.gz
-	md5sums = b59ef9b0c11a07b613acc59639bf66e9
-	sha256sums = a1225d07523aed9a37e4fcd0c980196049e7857435a93cc3cf6b86bdffe2414a
+	source = https://pypi.python.org/packages/source/b/bitcoin/bitcoin-1.1.33.tar.gz
+	md5sums = 02797eca548c91d3b269a9de433d2f59
+	sha256sums = 72471b71575b80f7c767c3d643893416c50efbd8061192c14dced518e1c1ea12
 
 pkgname = python-bitcoin
 
