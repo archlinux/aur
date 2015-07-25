@@ -27,15 +27,10 @@ pkgbase = cnijfilter-mg5500series
 	depends = libxml2
 	depends = libxrandr
 	depends = libxrender
-	depends = cnijfilter-common<=4.00
+	depends = cnijfilter-common
 	options = emptydirs
 	source = http://gdlp01.c-wss.com/gds/5/0100005505/01/cnijfilter-mg5500series-4.00-1-rpm.tar.gz
 	md5sums = 4abe4396e4efc7ff90f459ccf493bb9c
 
 pkgname = cnijfilter-mg5500series
-
-pkgname = cnijfilter-common
-	pkgdesc = Canon IJ Printer Driver (Common Package)
-	depends = libcups
-	depends = popt
 
