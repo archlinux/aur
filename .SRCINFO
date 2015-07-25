@@ -1,0 +1,15 @@
+pkgbase = ttf-lao-fonts
+	pkgdesc = Lao TTF fonts, Windows
+	pkgver = 0.0
+	pkgrel = 0
+	url = http://www.clear-vu.com.hk/resources/lao_fonts.asp
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.clear-vu.com.hk/resources/downloads/saysettha_ot.ttf
+	source = http://www.clear-vu.com.hk/resources/downloads/laofonts.zip
+	md5sums = 65b20f284c153f5ee6bfa12b198d0245
+	md5sums = 0f5a59c0e4c432f607770931f2957d0a
+
+pkgname = ttf-lao-fonts
+
