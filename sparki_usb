@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+if ! $(groups $USER | grep &>/dev/null '\buucp\b'); then
+  echo "assign user '$USER' to group: gpasswd -a $USER uucp"
+  exit
+fi
+
+
+if ! $(groups $USER | grep &>/dev/null '\block\b'); then
+  echo "assign user '$USER' to group: gpasswd -a $USER lock"
+  exit
+fi
+
+
+if ! $(groups $USER | grep &>/dev/null '\btty\b'); then
+  echo "assign user '$USER' to group: gpasswd -a $USER tty"
+  exit
+fi
+
+stty -F /dev/ttyACM0 cs8 9600 ignbrk -brkint -imaxbel -opost -onlcr -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke noflsh -ixon -crtscts
