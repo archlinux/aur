@@ -1,0 +1,219 @@
+--- a/1
++++ b/1
+@@ -4,8 +4,9 @@
+ PATH=/usr/bin:/usr/sbin
+ 
+ . /etc/runit/functions
++[ -d /run ] && rm -rf /run
+ 
+-msg "Welcome to Void!"
++msg "Welcome to Arch with runit!"
+ 
+ [ -r /etc/rc.conf ] && . /etc/rc.conf
+ 
+@@ -22,7 +23,8 @@ else
+ 	chmod 0644 /var/log/dmesg.log
+ fi
+ 
+-mkdir -p /run/runit
++[ ! -d /run/runit ] && mkdir -p /run/runit
++[ ! -d /run/lock ] && mkdir /run/lock
+ install -m100 /dev/null /run/runit/stopit
+ 
+ msg "Initialization complete, running stage 2..."
+--- a/2
++++ b/2
+@@ -5,6 +5,9 @@ PATH=/usr/bin:/usr/sbin
+ 
+ runlevel=default
+ for arg in $(cat /proc/cmdline); do
++    case $arg in
++        single) echo "Initializing single user mode..."; runlevel=single;;
++    esac
+     if [ -d /etc/runit/runsvdir/"$arg" ]; then
+         echo "Runlevel detected: '$arg' (via kernel cmdline)"
+         runlevel="$arg"
+@@ -17,5 +20,7 @@ runsvchdir "${runlevel}"
+ mkdir -p /run/runit/runsvdir
+ ln -s /etc/runit/runsvdir/current /run/runit/runsvdir/current
+ 
++if [ -z "$norunsvdir" ]; then
+ exec env - PATH=$PATH \
+-    runsvdir -P /run/runit/runsvdir/current 'log: ...........................................................................................................................................................................................................................................................................................................................................................................................................'
++	runsvdir -P /run/runit/runsvdir/current 'log: ...........................................................................................................................................................................................................................................................................................................................................................................................................'
++fi
+--- a/3
++++ b/3
+@@ -12,9 +12,8 @@ if [ -e /run/runit/reboot ]; then
+ fi
+ 
+ echo
+-msg "Waiting for services to stop..."
+-sv force-stop /var/service/*
+-sv exit /var/service/*
++echo "Stopping services..."
++sv -v stop /var/service/*
+ 
+ [ -x /etc/rc.shutdown ] && /etc/rc.shutdown
+ 
+@@ -25,18 +24,36 @@ if [ -z "$VIRTUALIZATION" -a -n "$HARDWARECLOCK" ]; then
+     hwclock --systohc ${HARDWARECLOCK:+--$(echo $HARDWARECLOCK |tr A-Z a-z)}
+ fi
+ 
+-halt -w  # for utmp
++utmpset -w
+ 
+ if [ -z "$VIRTUALIZATION" ]; then
+     msg "Stopping udev..."
+     udevadm control --exit
+ fi
+ 
+-msg "Sending TERM signal to processes..."
+-pkill --inverse -s0,1 -TERM
+-sleep 1
+-msg "Sending KILL signal to processes..."
+-pkill --inverse -s0,1 -KILL
++if [ "$(ps -p 1 -o comm=)" = "runsvdir" ]; then
++	killkids(){
++		local K=$(echo $(awk '($5!=0 && $3 !~ /zZXx/){print $1;}' /proc/[0-9]*/stat))
++		if [ -n "$K" ]; then
++			msg "Sending HUP signal to processes...$K"
++			kill -$1 $K 2>/dev/null
++			return 0
++		fi
++		}
++	if killkids HUP; then
++		sleep 1
++		if killkids TERM; then
++			sleep 1
++			killkids KILL
++		fi
++	fi
++else
++	msg "Sending TERM signal to processes...$(echo $(pgrep --inverse -s0,1))"
++	pkill --inverse -s0,1 -TERM
++	sleep 1
++	msg "Sending KILL signal to processes...$(echo $(pgrep --inverse -s0,1))"
++	pkill --inverse -s0,1 -KILL
++fi
+ 
+ if [ -z "$VIRTUALIZATION" ]; then
+     msg "Unmounting filesystems, disabling swap..."
+--- a/Makefile
++++ b/Makefile
+@@ -1,20 +1,21 @@
+-PREFIX ?=	/usr/local
++PREFIX ?=	usr
+ SCRIPTS=	1 2 3 ctrlaltdel
+ 
+ all:
+-	$(CC) $(CFLAGS) halt.c -o halt $(LDFLAGS)
++	$(CC) $(CFLAGS) halt.c -o runit-halt $(LDFLAGS)
+ 	$(CC) $(CFLAGS) pause.c -o pause $(LDFLAGS)
+ 
+ install:
+-	install -d ${DESTDIR}/${PREFIX}/sbin
+-	install -m755 halt ${DESTDIR}/${PREFIX}/sbin
+-	install -m755 pause ${DESTDIR}/${PREFIX}/sbin
+-	install -m755 shutdown ${DESTDIR}/${PREFIX}/sbin/shutdown
+-	install -m755 modules-load ${DESTDIR}/${PREFIX}/sbin/modules-load
+-	install -m755 zzz ${DESTDIR}/${PREFIX}/sbin
+-	ln -sf zzz ${DESTDIR}/${PREFIX}/sbin/ZZZ
+-	ln -sf halt ${DESTDIR}/${PREFIX}/sbin/poweroff
+-	ln -sf halt ${DESTDIR}/${PREFIX}/sbin/reboot
++	install -d ${DESTDIR}/${PREFIX}/bin
++	install -m755 halt ${DESTDIR}/${PREFIX}/bin
++	install -m755 runit-halt ${DESTDIR}/${PREFIX}/bin
++	install -m755 pause ${DESTDIR}/${PREFIX}/bin
++	install -m755 shutdown ${DESTDIR}/${PREFIX}/bin/shutdown
++	install -m755 modules-load ${DESTDIR}/${PREFIX}/bin/modules-load
++	install -m755 zzz ${DESTDIR}/${PREFIX}/bin
++	ln -sf zzz ${DESTDIR}/${PREFIX}/bin/ZZZ
++	ln -sf halt ${DESTDIR}/${PREFIX}/bin/poweroff
++	ln -sf halt ${DESTDIR}/${PREFIX}/bin/reboot
+ 	install -d ${DESTDIR}/${PREFIX}/share/man/man1
+ 	install -m644 pause.1 ${DESTDIR}/${PREFIX}/share/man/man1
+ 	install -d ${DESTDIR}/${PREFIX}/share/man/man8
+@@ -33,8 +34,6 @@ install:
+ 	install -m644 rc.conf ${DESTDIR}/etc
+ 	install -m755 rc.local ${DESTDIR}/etc
+ 	install -m755 rc.shutdown ${DESTDIR}/etc
+-	install -d ${DESTDIR}/${PREFIX}/lib/dracut/dracut.conf.d
+-	install -m644 dracut/*.conf ${DESTDIR}/${PREFIX}/lib/dracut/dracut.conf.d
+ 	ln -sf /run/runit/reboot ${DESTDIR}/etc/runit/
+ 	ln -sf /run/runit/stopit ${DESTDIR}/etc/runit/
+ 	cp -aP runsvdir/* ${DESTDIR}/etc/runit/runsvdir/
+--- a/halt.c
++++ b/halt.c
+@@ -14,14 +14,14 @@ int main(int argc, char *argv[]) {
+   int opt;
+   action_type action = NOOP;
+ 
+-  if (strcmp(__progname, "halt") == 0)
++  if (!strcmp(__progname, "halt") || !strcmp(__progname, "runit-halt"))
+     action = HALT;
+-  else if (strcmp(__progname, "reboot") == 0)
++  else if (!strcmp(__progname, "reboot") || !strcmp(__progname, "runit-reboot"))
+     action = REBOOT;
+-  else if (strcmp(__progname, "poweroff") == 0)
++  else if (!strcmp(__progname, "poweroff") || !strcmp(__progname, "runit-poweroff"))
+     action = POWEROFF;
+   else
+-    warnx("no default behavior, needs to be called as halt/reboot/poweroff.");
++    warnx("no default behavior, needs to be called as [runit-|]halt/reboot/poweroff.");
+ 
+   while ((opt = getopt(argc, argv, "dfhinw")) != -1)
+     switch (opt) {
+--- a/halt
++++ b/halt
+@@ -0,0 +1,15 @@
++#!/bin/sh
++PROG="`basename $0`"
++[ "$UID" != "0" ] && echo "!!!!! $PROG requires root privileges" && exit 1
++INIT="`basename \`readlink /proc/1/exe\``"
++case "$INIT" in
++	runsvdir)
++		case "$PROG" in
++			halt|poweroff) kill -TERM 1;;
++			reboot) kill -HUP 1;;
++			*) echo "!!!!! $PROG not invoked correctly" && exit 1
++		esac
++		;;
++	*)	exec -a "$PROG" /usr/bin/runit-halt "$@"
++		;;
++esac
+--- a/rc.conf
++++ b/rc.conf
+@@ -1,20 +1,20 @@
+-# /etc/rc.conf - system configuration for void
++# /etc/rc.conf - system configuration for arch
+ 
+ # Set the host name.
+ #
+ # NOTE: it's preferred to declare the hostname in /etc/hostname instead:
+ # 	- echo myhost > /etc/hostname
+ #
+-#HOSTNAME="void-live"
++#HOSTNAME="arch-vm"
+ 
+ # Set RTC to UTC or localtime.
+ #HARDWARECLOCK="UTC"
+ 
+ # Set timezone, availables timezones at /usr/share/zoneinfo.
+-#TIMEZONE="Europe/Madrid"
++#TIMEZONE="Europe/London"
+ 
+ # Keymap to load, see loadkeys(8).
+-#KEYMAP="es"
++#KEYMAP="uk"
+ 
+ # Console font to load, see setfont(8).
+ #FONT="lat9w-16"
+--- a/rc.local
++++ b/rc.local
+@@ -1,4 +1,4 @@
+-# Default rc.local for void; add your custom commands here.
++# Default rc.local for arch; add your custom commands here.
+ #
+ # This is run by runit in stage 2 before the services are executed
+ # (see /etc/runit/2).

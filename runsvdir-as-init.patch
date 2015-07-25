@@ -1,0 +1,129 @@
+--- a/src/runsvdir.c	2014-08-10 19:22:35.000000000 +0100
++++ b/src/runsvdir.c	2015-07-19 12:00:09.093132255 +0100
+@@ -1,7 +1,9 @@
+ #include <sys/types.h>
++#include <sys/wait.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <signal.h>
++#include <stdio.h>
+ #include "direntry.h"
+ #include "strerr.h"
+ #include "error.h"
+@@ -15,9 +17,11 @@
+ #include "iopause.h"
+ #include "sig.h"
+ #include "ndelay.h"
++#include "reboot_system.h"
+ 
+-#define USAGE " [-P] dir"
+-#define VERSION "$Id: ecebd0a50510e91639c6a45dda8b0947aa8eb885 $"
++#define USAGE " [-s signalscript] [-P] dir"
++#define VERSION "2.1.2.1"
++#define INFO "- runsvdir: "
+ 
+ #define MAXSERVICES 1000
+ 
+@@ -51,8 +55,8 @@
+ void warn3x(char *m1, char *m2, char *m3) {
+   strerr_warn6("runsvdir ", svdir, ": warning: ", m1, m2, m3, 0);
+ } 
+-void s_term() { exitsoon =1; }
+-void s_hangup() { exitsoon =2; }
++void s_term() { exitsoon = SIGTERM; }
++void s_hangup() { exitsoon = SIGHUP; }
+ 
+ void runsv(int no, char *name) {
+   int pid;
+@@ -164,23 +168,27 @@
+   time_t mtime =0;
+   int wstat;
+   int curdir;
+-  int pid;
++  int pid, tpid;
+   struct taia deadline;
+   struct taia now;
+   struct taia stampcheck;
+   char ch;
+   int i;
++  int i_am_init;
++  char *sopt[3];
+ 
+-  progname =*argv++;
+-  if (! argv || ! *argv) usage();
+-  if (**argv == '-') {
+-    switch (*(*argv +1)) {
+-    case 'P': pgrp =1;
+-    case '-': ++argv;
++  progname = *argv;
++  sopt[0] = sopt[2] = NULL;
++  while((i=getopt(argc,argv,"Ps:")) != -1 ){
++    switch(i){
++      case 's': sopt[0] = optarg; break;
++      case 'P': pgrp =1; break;
++      }
+     }
+-    if (! argv || ! *argv) usage();
+-  }
++  argv += optind;
++  if (! argv || ! *argv) usage();
+ 
++  i_am_init = (getpid() == 1);
+   sig_catch(sig_term, s_term);
+   sig_catch(sig_hangup, s_hangup);
+   svdir =*argv++;
+@@ -273,10 +281,45 @@
+           rplog[rploglen -1] =ch;
+         }
+ 
++    if(exitsoon && sopt[0]){
++      if ((pid=fork()) == -1) {
++    		/*warn("unable to fork for ", sopt[0]);*/
++			strerr_die3x(1, "unable to fork for", sopt[0], "\n");
++  			}
++	  if(!pid){
++		/*child*/
++      	char buf[10];
++	  	snprintf(buf,10,"%d",exitsoon);
++	  	sopt[1] = buf;
++	  	printf("transferring to %s\n", *sopt);
++    	sig_uncatch(sig_hangup);
++    	sig_uncatch(sig_term);
++      	pathexec_run(*sopt, (const char* const*)sopt, (const char* const*)environ);
++      	fatal("unable to start  ", sopt[0]);
++	  	}
++	  else {
++    	for (;;) {
++      		if((tpid =wait(&wstat)) <= 0 || tpid==pid) break;
++    		}
++		if(i_am_init){
++		switch(exitsoon){
++    		case SIGTERM:
++    			strerr_warn2(INFO, "system poweroff.", 0);
++    			sync();
++    			reboot(RB_POWER_OFF);
++    		case SIGHUP:
++    			strerr_warn2(INFO, "system reboot.", 0);
++    			sync();
++    			reboot(RB_AUTOBOOT);
++			}
++		}
++	  	}
++      exitsoon=SIGHUP;
++	  }
+     switch(exitsoon) {
+-    case 1:
++    case SIGTERM:
+       _exit(0);
+-    case 2:
++    case SIGHUP:
+       for (i =0; i < svnum; i++) if (sv[i].pid) kill(sv[i].pid, SIGTERM);
+       _exit(111);
+     }
+--- a/src/runsvdir.dist	2014-08-10 19:22:35.000000000 +0100
++++ b/src/runsvdir.dist	2015-06-16 16:11:52.000000000 +0100
+@@ -1,3 +1,3 @@
+-usage: runsvdir [-P] dir
++usage: runsvdir [-s signalscript] [-P] dir
+ 
+ 1

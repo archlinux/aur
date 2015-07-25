@@ -1,0 +1,28 @@
+#! /bin/sh
+
+PATH=/usr/bin; export PATH
+
+if [ $$ -ne 1 ]; then
+	case $(basename $0) in
+		reboot)
+			exec kill -HUP 1
+			;;
+		halt|poweroff)
+			exec kill -TERM 1
+			;;
+	esac
+	
+	cat <<EOD 1>&2
+runit doesn't have run levels!
+You may enjoy the "reboot" and "halt" commands, though.
+EOD
+	exit 1
+fi
+if /etc/runit/1; then
+	if norunsvdir=1 /etc/runit/2; then
+		echo ":: Passing control to runsvdir"
+		echo
+		exec runsvdir -P  -s /etc/runit/3 /etc/runit/runsvdir/current
+	fi
+fi
+/etc/runit/3
