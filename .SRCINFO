@@ -1,0 +1,19 @@
+pkgbase = kodi-addon-pvr-hts-git
+	pkgdesc = Tvheadend HTSP PVR client addon for Kodi
+	pkgver = r302.5c22440
+	pkgrel = 1
+	url = https://github.com/kodi-pvr/pvr.hts
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = kodi-platform
+	depends = kodi
+	provides = kodi-addon-pvr-hts
+	conflicts = kodi-addon-pvr-hts
+	source = kodi-addon-pvr-hts-git::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Isengard
+	md5sums = SKIP
+
+pkgname = kodi-addon-pvr-hts-git
+
