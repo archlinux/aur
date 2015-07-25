@@ -1,6 +1,6 @@
 pkgbase = python2-raven
 	pkgdesc = Python client for Sentry.
-	pkgver = 5.3.1
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/raven
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-raven
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-service-identity
-	source = https://pypi.python.org/packages/source/r/raven/raven-5.3.1.tar.gz
-	md5sums = d73d7057b2798208c59fd4594ab1836c
+	source = https://pypi.python.org/packages/source/r/raven/raven-5.5.0.tar.gz
+	md5sums = 7e7961562bce6cb6fcf54c3427cf043e
 
 pkgname = python2-raven
 
