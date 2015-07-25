@@ -1,0 +1,15 @@
+pkgbase = ttf-gurmukhi-fonts_sikhnet
+	pkgdesc = Gurmukhi Fonts
+	pkgver = 0.0
+	pkgrel = 0
+	url = http://www.sikhnet.com
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.sikhnet.com/files/fonts/gurbaniwebthick.ttf
+	source = http://www.sikhnet.com/files/fonts/Prabhki.ttf
+	md5sums = 364f2873b97ac44b26daae58f2b73c2c
+	md5sums = 33d2c281c74ccde310529d6c81c273af
+
+pkgname = ttf-gurmukhi-fonts_sikhnet
+
