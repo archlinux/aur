@@ -1,0 +1,16 @@
+pkgbase = tfe
+	pkgdesc = Tester of translation for Firexox's extension
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/alexandre-mbm/tfe
+	arch = any
+	license = MIT
+	depends = firefox
+	depends = bash
+	depends = coreutils
+	depends = p7zip
+	source = https://github.com/alexandre-mbm/tfe/archive/0.2.0.tar.gz
+	md5sums = 5d453340b6c193e86231108c0ab1454e
+
+pkgname = tfe
+
