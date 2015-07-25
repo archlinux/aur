@@ -1,13 +1,11 @@
 pkgbase = aegir-provision
 	pkgdesc = mass Drupal hosting system - backend
-	pkgver = 7.x_3.0_beta2
+	pkgver = 7.x_3.0
 	pkgrel = 1
 	url = http://aegirproject.org
 	arch = any
 	license = GPL
 	depends = drush>=7
-	source = drush-8.patch
-	md5sums = 79573892736baf4e5a0b95f4f20eec15
 
 pkgname = aegir-provision
 
