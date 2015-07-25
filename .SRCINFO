@@ -1,0 +1,22 @@
+pkgbase = pass
+	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely
+	pkgver = 1.6.5
+	pkgrel = 2
+	url = http://zx2c4.com/projects/password-store/
+	arch = any
+	license = GPL2
+	depends = xclip
+	depends = bash
+	depends = gnupg
+	depends = pwgen
+	depends = tree
+	optdepends = git: for Git support
+	optdepends = dmenu: for passmenu
+	provides = passmenu
+	conflicts = passmenu
+	replaces = passmenu
+	source = pass-1.6.5.tar.gz::https://github.com/zx2c4/password-store/archive/1.6.5.tar.gz
+	md5sums = cd2a4a905f1c3ecbc3f1c3768701e2cc
+
+pkgname = pass
+
