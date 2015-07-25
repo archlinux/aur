@@ -1,0 +1,105 @@
+diff -rupN evince-3.16.1/shell/ev-application.c src/evince-3.16.1/shell/ev-application.c
+--- evince-3.16.1/shell/ev-application.c	2015-05-27 12:02:51.000000000 +0200
++++ src/evince-3.16.1/shell/ev-application.c	2015-07-25 14:18:31.886559695 +0200
+@@ -44,6 +44,12 @@
+ #include "ev-media-player-keys.h"
+ #endif /* ENABLE_DBUS */
+ 
++#ifdef G_OS_WIN32
++#include <wtypesbase.h>
++#include <shellapi.h>
++#include <winuser.h>
++#endif
++
+ struct _EvApplication {
+ 	GtkApplication base_instance;
+ 
+@@ -172,8 +178,12 @@ ev_spawn (const char     *uri,
+ 	path = g_build_filename (BINDIR, "evince", NULL);
+ #endif
+ 
++	#ifndef G_OS_WIN32
+ 	g_string_append_printf (cmd, " %s", path);
+ 	g_free (path);
++	#else
++	g_string_append_printf (cmd, "%s", "");
++	#endif
+ 	
+ 	/* Page label */
+ 	if (dest) {
+@@ -212,34 +222,50 @@ ev_spawn (const char     *uri,
+ 		break;
+ 	}
+ 
+-	cmdline = g_string_free (cmd, FALSE);
+-	app = g_app_info_create_from_commandline (cmdline, NULL, 0, &error);
+ 
+-	if (app != NULL) {
+-                GList uri_list;
+-                GList *uris = NULL;
+-		GdkAppLaunchContext *ctx;
+-
+-		ctx = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
+-		gdk_app_launch_context_set_screen (ctx, screen);
+-		gdk_app_launch_context_set_timestamp (ctx, timestamp);
+-
+-                /* Some URIs can be changed when passed through a GFile
+-                 * (for instance unsupported uris with strange formats like mailto:),
+-                 * so if you have a textual uri you want to pass in as argument,
+-                 * consider using g_app_info_launch_uris() instead.
+-                 * See https://bugzilla.gnome.org/show_bug.cgi?id=644604
+-                 */
+-                if (uri) {
+-                        uri_list.data = (gchar *)uri;
+-                        uri_list.prev = uri_list.next = NULL;
+-                        uris = &uri_list;
+-                }
+-		g_app_info_launch_uris (app, uris, G_APP_LAUNCH_CONTEXT (ctx), &error);
++	#ifdef G_OS_WIN32
++		g_string_append(cmd, " ");
++		g_string_append(cmd, uri);
++	#endif
++
++	cmdline = g_string_free (cmd, FALSE);
+ 
+-		g_object_unref (app);
+-		g_object_unref (ctx);
++	#ifdef G_OS_WIN32
++	{
++		ShellExecute(NULL,"open",path,cmdline,"",SW_SHOWDEFAULT);
++		fprintf(stderr, "INFO: Spawning evince process with command line '%s %s'\n",path,cmdline);
++		g_free(path);
+ 	}
++	#else
++		app = g_app_info_create_from_commandline (cmdline, NULL, 0, &error);
++	
++		if (app != NULL) {
++	                GList uri_list;
++	                GList *uris = NULL;
++			GdkAppLaunchContext *ctx;
++	
++	
++			ctx = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
++			gdk_app_launch_context_set_screen (ctx, screen);
++			gdk_app_launch_context_set_timestamp (ctx, timestamp);
++	
++	                /* Some URIs can be changed when passed through a GFile
++	                 * (for instance unsupported uris with strange formats like mailto:),
++	                 * so if you have a textual uri you want to pass in as argument,
++	                 * consider using g_app_info_launch_uris() instead.
++	                 * See https://bugzilla.gnome.org/show_bug.cgi?id=644604
++	                 */
++	                if (uri) {
++	                        uri_list.data = (gchar *)uri;
++	                        uri_list.prev = uri_list.next = NULL;
++	                        uris = &uri_list;
++	                }
++			g_app_info_launch_uris (app, uris, G_APP_LAUNCH_CONTEXT (ctx), &error);
++	
++			g_object_unref (app);
++			g_object_unref (ctx);
++		}
++	#endif
+ 
+ 	if (error != NULL) {
+ 		g_printerr ("Error launching evince %s: %s\n", uri, error->message);

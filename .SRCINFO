@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-evince-light
 	pkgdesc = GNOME document viewer ported for win32, built with pdf support
 	pkgver = 3.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Evince
 	install = mingw-w64-evince-light.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = mingw-w64-evince-light
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-binutils
+	makedepends = patch
 	depends = mingw-w64-crt
 	depends = gsettings-desktop-schemas
 	depends = mingw-w64-gtk3

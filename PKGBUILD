@@ -4,7 +4,7 @@ pkgbase=mingw-w64-evince-light
 _pkgbase=evince
 pkgname=mingw-w64-evince-light
 pkgver=3.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME document viewer ported for win32, built with pdf support"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
 #        'texlive-bin' for DVI
 #        'libgxps' for XPS
 #        'gvfs' for bookmark and annotations
-makedepends=('itstool' 'intltool' 'mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-binutils')
+makedepends=('itstool' 'intltool' 'mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-binutils' 'patch')
 provides=("${pkgbase}")
 
 # Disable binary stripping (it is performed manually in the package() function)
@@ -40,12 +40,14 @@ build()
 {
     cd ${srcdir}/${_pkgbase}-${pkgver}
 
-#        --enable-pdf if building with poppler-glib
-#        --enable-ps if building with libspectre
-#        --enable-djvu if building with djvulibre
-#        --enable-dvi if building with texlive-bin
-#        --enable-xps if building with libgxps
-#        --enable-comics if you want comics support
+  ## Apply patch to circumvent GIO's lack of win32 support for the
+  #  g_app_info_create_from_commandline() function
+  #
+  #  More specifically, this patch restores functionnality for spawning new 
+  #  evince windows. This is useful for the "new window", "Open copy" and "Open"
+  #  menus. Instead of using gio's API, it makes evince use the win32 API
+  #  directly (ShellExecute).
+  patch -p2 < ../../ev_spawn.patch
 
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}"
@@ -85,6 +87,13 @@ build()
         --without-keyring \
         --without-gtk-unix-print \
         --disable-libgnome-desktop
+#        --enable-pdf if building with poppler-glib
+#        --enable-ps if building with libspectre
+#        --enable-djvu if building with djvulibre
+#        --enable-dvi if building with texlive-bin
+#        --enable-xps if building with libgxps
+#        --enable-comics if you want comics support
+
     make LDFLAGS=${_LDFLAGS}
     cd ..
   done
