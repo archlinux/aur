@@ -23,24 +23,56 @@ url="http://www.adacore.com/gnatpro/toolsuite/gprbuild/"
 #        "patch-src_gprinstall-install.adb"
 #        "extrapatch-src_gprslave.adb")
 
-source=("http://mirrors.cdn.adacore.com/art/3c2da2f1d3335d39bc9ebb65a3a58264ddac6d41")
+source=("http://mirrors.cdn.adacore.com/art/3c2da2f1d3335d39bc9ebb65a3a58264ddac6d41"
+        "Makefile.archy"
+        "patch-gnat_targparm"
+)
 
 
-sha256sums=('5d5bbc8c57075250c264e2f15d9949383450ac696eb8a90803c2a36b55ecd0e2')
+sha256sums=('5d5bbc8c57075250c264e2f15d9949383450ac696eb8a90803c2a36b55ecd0e2'
+            '34a94c0c0f4c8a1a4e1fa047da1b5df5'
+            'bf8d51ad430aefde7b93c5da19ee9755'
+)
 
 
-build() {
-  export OS=unix
+
+prepare()
+{
+  WRKSRC=$srcdir/$pkgname-gpl-$pkgver-src
+  CONHOST=Linux
+  
+
+	cp $srcdir/Makefile.archy ${WRKSRC}/Makefile
+
+#	sed -i "" -e "s,@AUXPREFIX@,${PREFIX}/gcc5-aux," \
+#		${WRKSRC}/share/gprconfig/compilers.xml
+
+	sed -e 's|@host@|${CONHOST}|' \
+		${WRKSRC}/src/gprconfig-sdefault.ads.in > \
+		${WRKSRC}/src/gprconfig-sdefault.ads
+
+#	mv ${WRKSRC}/share/gprconfig/*.orig ${WRKSRC}/obj-cov
 
   cd $pkgname-gpl-$pkgver-src
 
-  rm -fr gnat
-  cp -r ../gnat .
+  patch -p0 -i ../patch-gnat_targparm
+}
 
-  find -name '*.adb' -print -exec sed -i.bak 's/Try_Help;//g' {} \;
 
-  rm -fr src/rewrite_data.ads
-  rm -fr src/rewrite_data.adb
+
+build() {
+#  export OS=unix
+
+
+  cd $pkgname-gpl-$pkgver-src
+
+#  rm -fr gnat
+#  cp -r ../gnat .
+
+#  find -name '*.adb' -print -exec sed -i.bak 's/Try_Help;//g' {} \;
+
+#  rm -fr src/rewrite_data.ads
+#  rm -fr src/rewrite_data.adb
 
 #  patch -p0 -i ../patch-src_gpr__version.adb
 #  patch -p0 -i ../extrapatch-src_gprbuild-main.adb

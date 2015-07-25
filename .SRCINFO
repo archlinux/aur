@@ -8,7 +8,11 @@ pkgbase = gprbuild
 	depends = gcc-ada
 	depends = xmlada
 	source = http://mirrors.cdn.adacore.com/art/3c2da2f1d3335d39bc9ebb65a3a58264ddac6d41
+	source = Makefile.archy
+	source = patch-gnat_targparm
 	sha256sums = 5d5bbc8c57075250c264e2f15d9949383450ac696eb8a90803c2a36b55ecd0e2
+	sha256sums = 34a94c0c0f4c8a1a4e1fa047da1b5df5
+	sha256sums = bf8d51ad430aefde7b93c5da19ee9755
 
 pkgname = gprbuild
 
