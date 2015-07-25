@@ -1,0 +1,17 @@
+pkgbase = python-cld2-hg
+	pkgdesc = C++ library and Python bindings for detecting language from UTF8 text, extracted from the Chromium browser
+	pkgver = 90.2b2f08a61f14
+	pkgrel = 1
+	url = https://code.google.com/p/chromium-compact-language-detector/
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = mercurial
+	depends = cld2-svn
+	depends = python
+	provides = python-cld2=0.2
+	source = hg+https://code.google.com/p/chromium-compact-language-detector/
+	md5sums = SKIP
+
+pkgname = python-cld2-hg
+
