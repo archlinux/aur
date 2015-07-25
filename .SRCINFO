@@ -1,0 +1,26 @@
+pkgbase = nemo-dropbox
+	pkgdesc = Dropbox for Linux - Nemo extension
+	pkgver = 2.6.0
+	pkgrel = 2
+	url = https://github.com/linuxmint/nemo-extensions
+	install = nemo-dropbox.install
+	arch = i686
+	arch = x86_64
+	license = custom:CC-BY-ND-3
+	license = GPL
+	makedepends = python2-docutils
+	makedepends = python2
+	makedepends = pygtk
+	depends = libnotify
+	depends = nemo
+	depends = hicolor-icon-theme
+	optdepends = dropbox: Dropbox suport
+	conflicts = nautilus-dropbox
+	conflicts = caja-dropbox
+	options = !libtool
+	options = !emptydirs
+	source = http://packages.linuxmint.com/pool/main/n/nemo-dropbox/nemo-dropbox_2.6.0%2brafaela.tar.gz
+	md5sums = c5889e19d865337309bb85a95b3e64cc
+
+pkgname = nemo-dropbox
+
