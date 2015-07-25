@@ -2,7 +2,7 @@
 
 _pkgname=hostmaster
 pkgname=aegir-$_pkgname
-pkgver=7.x_3.0_beta2
+pkgver=7.x_3.0
 pkgrel=1
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
@@ -31,8 +31,10 @@ prepare() {
     done
 
     msg2 'Fetching devel and devel_debug_log (missing extension dependency)...'
-    drush dl devel --yes --destination=modules &>/dev/null
-    drush dl devel_debug_log --yes --destination=modules &>/dev/null
+    for EXT in devel devel_debug_log; do
+        msg2 "  Fetching $EXT..."
+        drush dl $EXT --yes --destination=modules
+    done
 }
 
 build() {
