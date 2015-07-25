@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.618
+pkgver=0.99.632
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
@@ -40,6 +40,10 @@ prepare() {
   ./install-libclang
   msg "Downloading and installing packages"
   ./install-packages
+
+  # temporary fix for the Qt 5.5
+  cd "${srcdir}/${_gitname}/src/cpp/desktop/3rdparty/qtsingleapplication"
+  sed -i 's|#include <QTime>|#include <QDataStream>\n#include <QTime>|' qtlocalpeer.cpp
 }
 
 build() {
