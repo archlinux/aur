@@ -1,15 +1,28 @@
---- unix/Make-config.orig	2015-01-08 20:45:17.968890865 +0100
-+++ unix/Make-config	2015-01-08 20:46:16.223075085 +0100
-@@ -108,14 +108,14 @@
+diff --git a/unix/Make-config b/unix/Make-config
+index 7635748..9492e49 100644
+--- a/unix/Make-config
++++ b/unix/Make-config
+@@ -69,8 +69,8 @@ X11LIB= -lX11
+ #
+ ##########################################################################
+ #THREADSFLAGS=-DTHR
+-THREADSFLAGS=-DTHR -DUSEATOMICBARRIERS
+-#THREADSFLAGS=-DTHR -DUSEATOMICBARRIERS -DUSEGCCATOMICS
++# THREADSFLAGS=-DTHR -DUSEATOMICBARRIERS
++THREADSFLAGS=-DTHR -DUSEATOMICBARRIERS -DUSEGCCATOMICS
+ #THREADSFLAGS=-DTHR -DUSEATOMICBARRIERS -DUSEPHYSCPUCOUNT
+ 
+ 
+@@ -166,14 +166,14 @@ MBOX=
  #   http://www.ijg.org/files/
  ##########################################################################
  # Uncomment the following lines to disable JPEG support
 -USEJPEG=
 -JPEGINC=
 -JPEGLIB=
-+#USEJPEG=
-+#JPEGINC=
-+#JPEGLIB=
++# USEJPEG=
++# JPEGINC=
++# JPEGLIB=
  
  # Uncomment the following lines to enable JPEG support
 -#USEJPEG= -DUSEJPEG
@@ -21,16 +34,16 @@
  
  
  ##########################################################################
-@@ -128,14 +128,14 @@
+@@ -186,14 +186,14 @@ JPEGLIB=
  #   http://www.libpng.org/
  ##########################################################################
  # Uncomment the following lines to disable PNG support
 -USEPNG=
 -PNGINC=
 -PNGLIB=
-+#USEPNG=
-+#PNGINC=
-+#PNGLIB=
++# USEPNG=
++# PNGINC=
++# PNGLIB=
  
  # Uncomment the following lines to enable PNG support
 -#USEPNG= -DUSEPNG

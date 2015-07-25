@@ -1,0 +1,22 @@
+diff --git a/unix/Make-arch b/unix/Make-arch
+index 1044370..7dfd608 100644
+--- a/unix/Make-arch
++++ b/unix/Make-arch
+@@ -1376,7 +1376,7 @@ linux-thr-ogl:
+ 	$(MAKE) all \
+ 	"ARCH = linux-thr-ogl" \
+ 	"CC = cc" \
+-	"CFLAGS = -m32 -Wall -O3 -fomit-frame-pointer -ffast-math -DLinux $(THREADSFLAGS) -D_REENTRANT $(MISCFLAGS) -DUSEOPENGL $(LINUX_GLX_INCS)" \
++	"CFLAGS = -m32 -fPIC -Wall -O3 -fomit-frame-pointer -ffast-math -DLinux $(THREADSFLAGS) -D_REENTRANT $(MISCFLAGS) -DUSEOPENGL $(LINUX_GLX_INCS)" \
+ 	"AR = ar" \
+ 	"ARFLAGS = r" \
+ 	"STRIP = touch" \
+@@ -1387,7 +1387,7 @@ linux-64-thr-ogl:
+ 	$(MAKE) all \
+ 	"ARCH = linux-64-thr-ogl" \
+ 	"CC = cc" \
+-	"CFLAGS = -m64 -Wall -O3 -fomit-frame-pointer -ffast-math -DLinux $(THREADSFLAGS) -D_REENTRANT $(MISCFLAGS) -DUSEOPENGL $(LINUX_GLX_INCS)" \
++	"CFLAGS = -m64 -fPIC -Wall -O3 -fomit-frame-pointer -ffast-math -DLinux $(THREADSFLAGS) -D_REENTRANT $(MISCFLAGS) -DUSEOPENGL $(LINUX_GLX_INCS)" \
+ 	"AR = ar" \
+ 	"ARFLAGS = r" \
+ 	"STRIP = touch" \

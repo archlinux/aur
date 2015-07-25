@@ -1,7 +1,7 @@
 pkgbase = tachyon-opengl
 	pkgdesc = Parallel ray tracer (used as part of Visual Molecular Dynamics), OpenGL-enabled
 	pkgver = 0.99b6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jedi.ks.uiuc.edu/~johns/raytracer/
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,11 @@ pkgbase = tachyon-opengl
 	conflicts = tachyon
 	options = staticlibs
 	source = http://jedi.ks.uiuc.edu/~johns/raytracer/files/0.99b6/tachyon-0.99b6.tar.gz
-	source = enable-jpeg-png.patch
+	source = make_arch.patch
+	source = make_config.patch
 	sha256sums = f4dcaf9c76a4f49310f56254390f9611c22e353947a1745a8c623e8bc8119b97
-	sha256sums = ecd6ab6274879e0f971e2eba17871fffe2e24dcc9a332013a0b100ee4857cc2c
+	sha256sums = 935553f4a0553505dc4db9c22635072d9cf238988e1dbeee2df52a01e0953a1a
+	sha256sums = c016bb5b0bc422c11bf53e93f7f9001fd742a53ab3d49affd1354bc3990391b3
 
 pkgname = tachyon-opengl
 
