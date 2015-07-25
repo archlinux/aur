@@ -114,11 +114,11 @@ prepare()
 #   FIND1=`find .  -name "*" -exec printf ', "%s"' {} \;`
 
 
-    FIND1=$(cd ${WRKSRC}/unicode       &&  find *  \( -name "unicode*.ads"   -o -name "unicode*.adb"      \) -exec printf ', "%s"' {} \; )
-    FIND2=$(cd ${WRKSRC}/input_sources &&  find *  \( -name "input*.ad[bs]"  -o -name "input_sources.ads" \) -exec printf ', "%s"' {} \; )
-    FIND3=$(cd ${WRKSRC}/sax           &&  find *     -name "sax-*.ad[bs]"                                  -exec printf ', "%s"' {} \; )
-    FIND4=$(cd ${WRKSRC}/dom           &&  find *     -name "dom-*.ad[bs]"                                  -exec printf ', "%s"' {} \; )
-    FIND5=$(cd ${WRKSRC}/schema        &&  find * -maxdepth 1  \( -name "schema*.ad[bs]" -o -name "schema.ads"        \)  -exec printf ', "%s"' {} \; )
+    FIND1=$(cd ${WRKSRC}/unicode       &&  find * -maxdepth 0  \( -name "unicode*.ads"   -o -name "unicode*.adb"      \) -exec printf ', "%s"' {} \; )
+    FIND2=$(cd ${WRKSRC}/input_sources &&  find * -maxdepth 0  \( -name "input*.ad[bs]"  -o -name "input_sources.ads" \) -exec printf ', "%s"' {} \; )
+    FIND3=$(cd ${WRKSRC}/sax           &&  find * -maxdepth 0     -name "sax-*.ad[bs]"                                  -exec printf ', "%s"' {} \; )
+    FIND4=$(cd ${WRKSRC}/dom           &&  find * -maxdepth 0     -name "dom-*.ad[bs]"                                  -exec printf ', "%s"' {} \; )
+    FIND5=$(cd ${WRKSRC}/schema        &&  find * -maxdepth 0  \( -name "schema*.ad[bs]" -o -name "schema.ads"        \)  -exec printf ', "%s"' {} \; )
 
 
 
