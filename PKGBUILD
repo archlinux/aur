@@ -3,7 +3,7 @@
 
 pkgname=eclipse-dltk-javascript
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 _pkgdate=201306060709
 pkgdesc="Javascript IDE for Eclipse"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('6721a5c09648ca47068507b60819de29')
 
 package() {
 	cd $srcdir
-	install -dm755 $pkgdir/usr/share/eclipse/dropins/${pkgname#eclipse-}/
+	install -dm755 $pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/
 	find . -type f -exec install -Dm644 {} \
-		$pkgdir/usr/share/eclipse/dropins/${pkgname#eclipse-}/{} \;
+		$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/{} \;
 }
