@@ -1,0 +1,20 @@
+pkgbase = pyew-git
+	pkgdesc = pyew - a python tool for static malware analysis
+	pkgver = 100.2d086a1
+	pkgrel = 1
+	url = https://code.google.com/p/pyew/
+	install = pyew.install
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = python2
+	optdepends = libemu
+	optdepends = pylibemu
+	optdepends = pil
+	optdepends = python2-pillow
+	optdepends = pygtk
+	source = git+https://github.com/joxeankoret/pyew
+	md5sums = SKIP
+
+pkgname = pyew-git
+
