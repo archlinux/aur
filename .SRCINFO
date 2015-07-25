@@ -1,0 +1,14 @@
+pkgbase = wm3con-git
+	pkgdesc = F-Secure Virus World Map Console Edition
+	pkgver = 11.e49f47a
+	pkgrel = 1
+	url = https://github.com/jvtm/wm3con
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	source = git+http://github.com/shibumi/wm3con
+	md5sums = SKIP
+
+pkgname = wm3con-git
+
