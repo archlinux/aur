@@ -3,7 +3,7 @@
 
 pkgname=eclipse-dltk-ruby
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 _pkgdate=201306060709
 pkgdesc="Support for Ruby in Eclipse (Stable Stream)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-${pkgver:0:3}
 md5sums=('d5017113a49a0cd2b7504f23b1d27458')
 
 package() {
-	_dest=$pkgdir/usr/share/eclipse/dropins/${pkgname#eclipse-}/eclipse
+	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/eclipse
 	cd $srcdir
 	install -dm755 $_dest
 	find features plugins -type f -exec install -Dm644 {} \

@@ -1,7 +1,7 @@
 pkgbase = eclipse-dltk-ruby
 	pkgdesc = Support for Ruby in Eclipse (Stable Stream)
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eclipse.org/dltk/
 	arch = i686
 	arch = x86_64
