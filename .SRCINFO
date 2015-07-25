@@ -1,0 +1,25 @@
+pkgbase = kst-git
+	pkgdesc = Fast real-time large-dataset viewing and plotting tool for KDE
+	pkgver = 2.0.8
+	pkgrel = 1
+	url = http://kst-plot.kde.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = gsl
+	depends = qt4
+	depends = muparser
+	depends = python2-scipy>=0.9
+	depends = python2-numpy>=1.6
+	depends = cfitsio
+	depends = netcdf-cxx-legacy
+	depends = python2-pyside
+	optdepends = getdata: provides support for files in the Dirfile format
+	optdepends = libmatio: provides support for Matlab binary files
+	conflicts = kst
+	source = git://github.com/Kst-plot/kst.git
+	md5sums = SKIP
+
+pkgname = kst-git
+
