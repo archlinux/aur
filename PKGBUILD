@@ -28,7 +28,7 @@ source=("https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/so
         "$pkgname.desktop"
         "$pkgname-safe.desktop"
         'vendor.js')
-md5sums=('dd161196c6bd444643d2de54d1222d31'
+md5sums=('5413f4285f4fe549c1638f5a7bc24c07'
          '0c5dbb39b27bb72f837921b88a9e48c8'
          '7b0cf4656fa25e75187aac4a44376ab9'
          'fe18423c55d549722870573695b3bd60'
