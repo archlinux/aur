@@ -4,7 +4,7 @@
 
 pkgname=onedrive-d-git
 pkgver=20150407.g62a0733
-pkgrel=4
+pkgrel=5
 pkgdesc="Client daemon for Microsoft OneDrive service"
 url="https://github.com/xybu92/onedrive-d"
 license=('LGPL')
@@ -21,7 +21,8 @@ depends=('inotify-tools'
          'python-urllib3'
          'pywebkitgtk')
 makedepends=('git')
-source=('git+https://github.com/xybu92/onedrive-d' 'onedrive-d.desktop')
+source=('git+https://github.com/xybu92/onedrive-d'
+        'onedrive-d.desktop')
 md5sums=('SKIP'
          '8077d9697c922e003b8addbf243b33a4')
 
@@ -41,7 +42,6 @@ package() {
   python setup.py clean
   install -D onedrive_d/res/icon_256.png \
     "$pkgdir/usr/share/pixmaps/onedrive-d.png"
-  cd ../
   install -D ../onedrive-d.desktop \
     "$pkgdir/usr/share/applications/onedrive-d.desktop"
 }
