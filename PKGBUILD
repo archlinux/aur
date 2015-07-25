@@ -1,10 +1,9 @@
 # Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: xduugu
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 
 pkgname=perl-docs
-pkgver=5.20.1
+pkgver=5.22.0
 pkgrel=1
 pkgdesc="Set of HTML documentation for Perl."
 arch=('any')
@@ -14,9 +13,9 @@ depends=('perl')
 options=(docs !strip)
 source=(http://perldoc.perl.org/perldoc-html.tar.gz)
 package() {
-  cd "$srcdir"/perldoc-html 
+  cd "$srcdir"/perldoc-html
 
-  install -d "$pkgdir"/usr/share/doc/perl/ 
-  cp -rf * "$pkgdir"/usr/share/doc/perl 
+  install -d "$pkgdir"/usr/share/doc/perl/
+  cp -rf * "$pkgdir"/usr/share/doc/perl
 }
-sha256sums=('fe06a7f25775f9e707726e4197ef88ca291e805736c9510bcc5305a1e443a701')
+sha256sums=('587786dfe158b9f832a02121d017a36eedd158aa47113947ebe9150c60c6c112')
