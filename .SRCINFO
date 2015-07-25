@@ -1,7 +1,7 @@
 pkgbase = emacs-dvc-bzr
 	pkgdesc = Common Emacs front-end for a number of distributed version control systems (currently arch, bazaar, git, mercurial, monotone)
-	pkgver = 591
-	pkgrel = 5
+	pkgver = 593
+	pkgrel = 1
 	url = http://download.gna.org/dvc/
 	install = dvc.install
 	arch = any
