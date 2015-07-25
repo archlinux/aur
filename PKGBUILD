@@ -8,8 +8,8 @@
 pkgname=arch-runsvdir-init
 pkgver=0.2.0
 _runit_ver=2.1.2
-pkgrel=1
-pkgdesc='Arch native runit package'
+pkgrel=2
+pkgdesc='Arch native runit package with runsvdir as init (like busybox)'
 url='http://smarden.org/runit/'
 license=('Creative Commons')
 arch=('i686' 'x86_64')
