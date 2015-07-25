@@ -3,11 +3,11 @@
 # Contributor: Sanjuro Makabe (itti) <vuck AT gmx DOT de>
 pkgname=('gradle' 'gradle-doc' 'gradle-src')
 pkgbase=gradle
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc=('A powerful build system for the JVM')
 arch=('any')
-url='http://www.gradle.org/'
+url='https://gradle.org/'
 license=('APACHE')
 depends=('java-environment')
 makedepends=('zip')
@@ -49,11 +49,11 @@ package_gradle-doc() {
   cd "${srcdir}/gradle-${pkgver}"
 
   # create the necessary directory structure
-  mkdir -p "${pkgdir}/usr/share/gradle/doc/"
-  mkdir -p "${pkgdir}/usr/share/gradle/samples/"
+  mkdir -p "${pkgdir}/usr/share/java/gradle/docs/"
+  mkdir -p "${pkgdir}/usr/share/java/gradle/samples/"
   # copy across documentation and samples
-  cp --recursive docs/* "${pkgdir}/usr/share/gradle/doc/"
-  cp --recursive samples/* "${pkgdir}/usr/share/gradle/samples/"
+  cp --recursive docs/* "${pkgdir}/usr/share/java/gradle/docs/"
+  cp --recursive samples/* "${pkgdir}/usr/share/java/gradle/samples/"
 }
 
 package_gradle-src() {
@@ -61,15 +61,14 @@ package_gradle-src() {
   options=('!strip')
   optdepends=('gradle')
 
-  #cd "${srcdir}/gradle-${pkgver}/src"
-  #zip -rq ../src.zip *
-  #install -Dm644 ../src.zip "${pkgdir}/usr/share/gradle/src.zip"
-  install -Dm644 "${srcdir}/gradle-${pkgver}-all.zip" "${pkgdir}/usr/share/gradle/src.zip"
+  cd "${srcdir}/gradle-${pkgver}"
+  mkdir -p "${pkgdir}/usr/share/java/gradle/src/"
+  cp --recursive src/* "${pkgdir}/usr/share/java/gradle/src/"
 }
 
-md5sums=('e1528eeca5c66579ebaee4c7c13bec2a'
+md5sums=('17295dee02217cbe4f07b0d8bb72c467'
          'd73a375d2796dfe4ec170f2f5af3a0c9')
-sha1sums=('0772b2c8b47cb1acc3a33cda4df165b944258164'
+sha1sums=('f3c307a91d14b4d30973e61b59bdd80e19093f33'
           '07239706341968f2929f412ed3a7b286c1e05b9d')
-sha256sums=('371cb9fbebbe9880d147f59bab36d61eee122854ef8c9ee1ecf12b82368bcf10'
+sha256sums=('b71ab21fa5e91dcc6a4bd723b13403e8610a6e1b4b9d4b314ff477820de00bf9'
             '84294ba7bf75587204e0f46f6e0d001f26b0133f7ecdbaf55cc9d8478dc77caf')
