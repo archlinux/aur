@@ -181,7 +181,7 @@ prepare()
 
 	# Since we want to pull in all 5 libs, we only need to specify schema
         #
-	${REINPLACE_CMD} -e '/unicode/d' ${WRKSRC}/distrib/xmlada.gpr
+	${REINPLACE_CMD} -i -e '/unicode/d' ${WRKSRC}/distrib/xmlada.gpr
  
 }
 
