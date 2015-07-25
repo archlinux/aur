@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=runawk
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="AWK wrapper that provides support for modules"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ makedepends=('bmake' 'mk-configure')
 url="https://github.com/cheusov/runawk"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cheusov/$pkgname/tar.gz/$pkgname-$pkgver)
-sha256sums=('b4f7dc2bb200c0147ada4bdecad5cd19100eca64bb38fda97b8178243cb4da4b')
+sha256sums=('363032efa8adc49d7446b31782ca49b76913b8fd07b315a3d03c67d3d329620e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
