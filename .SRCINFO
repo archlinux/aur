@@ -9,7 +9,7 @@ pkgbase = perl-docs
 	depends = perl
 	options = docs
 	options = !strip
-	source = http://perldoc.perl.org/perldoc-html.tar.gz
+	source = perldoc-html-5.22.0.tar.gz::http://perldoc.perl.org/perldoc-html.tar.gz
 	sha256sums = 587786dfe158b9f832a02121d017a36eedd158aa47113947ebe9150c60c6c112
 
 pkgname = perl-docs
