@@ -1,6 +1,6 @@
 pkgbase = eclipse-wtp
 	pkgdesc = Webtools framework for the Eclipse platform
-	pkgver = 3.6.3
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = http://www.eclipse.org/webtools/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = eclipse-wtp
 	optdepends = eclipse-dtp
 	provides = eclipse-wtp-wst
 	options = !strip
-	source = http://www.eclipse.org/downloads/download.php?r=1&mirror_id=1&file=/webtools/downloads/drops/R3.6.3/R-3.6.3-20150216091848/wtp4x-repo-R-3.6.3-20150216091848.zip
-	sha256sums = 3dd7f464c7abee2e3d4e76a3ebfd9590145169ce9eb26ca739659875019204cf
+	source = http://www.eclipse.org/downloads/download.php?r=1&mirror_id=1&file=/webtools/downloads/drops/R3.7.0/R-3.7.0-20150609111814/wtp-repo-R-3.7.0-20150609111814.zip
+	sha256sums = 09428d00672256ca70bf835e94850a98ffe1c13f1fd13de8cd28098c65a0f453
 
 pkgname = eclipse-wtp
 
