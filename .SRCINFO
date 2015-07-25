@@ -1,15 +1,15 @@
 pkgbase = eclipse-dltk-mylyn
 	pkgdesc = Mylyn support for DLTK in Eclipse
-	pkgver = 4.0
+	pkgver = 5.0
 	pkgrel = 1
 	url = http://www.eclipse.org/dltk/
 	arch = i686
 	arch = x86_64
 	license = EPL
-	depends = eclipse-dltk-core>=4.0
+	depends = eclipse-dltk-core>=5.0
 	depends = eclipse-mylyn
-	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R4.0/R-4.0-201206120903/dltk-mylyn-R-4.0-201206120903.zip
-	md5sums = ed5f51e682c9277e217a48e3b521ee3a
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R5.0/R-5.0-201306060709/dltk-mylyn-R-5.0-201306060709.zip
+	md5sums = 86445eb13ab34de3cff86c834021e95c
 
 pkgname = eclipse-dltk-mylyn
 
