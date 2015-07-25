@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-gtk3-bzr
-pkgver=r14255
+pkgver=r14257
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
 url="https://launchpad.net/inkscape"
@@ -38,6 +38,7 @@ prepare() {
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
   sed -i 's|python -c |python2 -c|g' share/extensions/uniconv*.py
+  sed -i 's|python -c |python2 -c|g' share/extensions/scour/*.py
   sed -i 's|"python"|"python2"|g' src/main.cpp
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/svg.py
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/canvas.py
