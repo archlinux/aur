@@ -10,7 +10,7 @@
 
 _pkgname=awesome
 pkgname=${_pkgname}-git
-pkgver=3.5.2.539.g2c3c6b5
+pkgver=3.5.2.554.g9835f73
 pkgrel=1
 pkgdesc='Highly configurable framework window manager'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ optdepends=('rlwrap: readline support for awesome-client'
 provides=('notification-daemon' 'awesome')
 conflicts=('awesome')
 backup=('etc/xdg/awesome/rc.lua')
-source=("$pkgname::git://github.com/awesomeWM/awesome.git")
+source=("$pkgname::git+https://github.com/awesomeWM/awesome.git")
 md5sums=('SKIP')
 
 pkgver() {
