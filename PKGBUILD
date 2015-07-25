@@ -3,7 +3,7 @@
 
 _pkgname=gtk-sharp
 pkgname=$_pkgname-git
-pkgver=2.99.2.r72.g08f4ae2
+pkgver=2.99.3.r39.g89b2dae
 pkgrel=1
 pkgdesc="C# bindings to the cross platform Gtk+ GUI toolkit (git-master)"
 arch=('i686' 'x86_64')
@@ -11,13 +11,15 @@ url="http://www.mono-project.com/docs/gui/gtksharp/"
 license=('LGPL')
 depends=('mono' 'gtk3')
 makedepends=('git')
+conflicts=('gtk-sharp-3')
+provides=('gtk-sharp-3=2.99.3')
 source=('git://github.com/mono/gtk-sharp.git#branch=master')
 md5sums=('SKIP')
 
 
 pkgver() {
 	cd $_pkgname
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

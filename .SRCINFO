@@ -1,6 +1,6 @@
 pkgbase = gtk-sharp-git
 	pkgdesc = C# bindings to the cross platform Gtk+ GUI toolkit (git-master)
-	pkgver = 2.99.2.r72.g08f4ae2
+	pkgver = 2.99.3.r39.g89b2dae
 	pkgrel = 1
 	url = http://www.mono-project.com/docs/gui/gtksharp/
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = gtk-sharp-git
 	makedepends = git
 	depends = mono
 	depends = gtk3
+	provides = gtk-sharp-3=2.99.3
+	conflicts = gtk-sharp-3
 	source = git://github.com/mono/gtk-sharp.git#branch=master
 	md5sums = SKIP
 
