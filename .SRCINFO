@@ -1,7 +1,7 @@
 pkgbase = arch-runsvdir-init
-	pkgdesc = Arch native runit package
+	pkgdesc = Arch native runit package with runsvdir as init (like busybox)
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://smarden.org/runit/
 	install = runit.install
 	arch = i686
