@@ -1,0 +1,18 @@
+pkgbase = dangerous-jack-connector
+	pkgdesc = Alarm for dangerous jack connector (faulty plug of the notebook's power supply)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/alexandre-mbm/dangerous-jack-connector
+	install = dangerous-jack-connector.install
+	arch = any
+	license = MIT
+	depends = sh
+	depends = systemd
+	depends = sound-theme-freedesktop
+	depends = ffmpeg
+	depends = alsa-utils
+	source = https://github.com/alexandre-mbm/dangerous-jack-connector/archive/0.1.4.tar.gz
+	md5sums = bc9eeb43736567a0d301cf500d3ef9ff
+
+pkgname = dangerous-jack-connector
+

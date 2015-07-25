@@ -1,0 +1,17 @@
+reload_rules() {
+  echo -e "  Reloading udev's rules..."	
+  udevadm control --reload-rules
+}
+
+post_install() {
+  reload_rules
+}
+
+post_upgrade() {
+  reload_rules
+}
+
+post_remove() {
+  reload_rules
+}
+
