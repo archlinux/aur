@@ -30,8 +30,8 @@ source=("http://mirrors.cdn.adacore.com/art/3c2da2f1d3335d39bc9ebb65a3a58264ddac
 
 
 sha256sums=('5d5bbc8c57075250c264e2f15d9949383450ac696eb8a90803c2a36b55ecd0e2'
-            '34a94c0c0f4c8a1a4e1fa047da1b5df5'
-            'bf8d51ad430aefde7b93c5da19ee9755'
+            'ea6cafa2eea272f0ebb663fcc2fb651438b0ee8380a18aa039f433b51f3c080a'
+            'd5da23b8457c2746e2a23adcfea053d070a08b84e87a2bf076a29245e75abdc5'
 )
 
 
@@ -42,7 +42,7 @@ prepare()
   CONHOST=Linux
   
 
-	cp $srcdir/Makefile.archy ${WRKSRC}/Makefile
+	cp $srcdir/Makefile.archy ${WRKSRC}
 
 #	sed -i "" -e "s,@AUXPREFIX@,${PREFIX}/gcc5-aux," \
 #		${WRKSRC}/share/gprconfig/compilers.xml
@@ -83,11 +83,11 @@ build() {
 #  patch -p0 -i ../extrapatch-src_gprslave.adb
 
   ./configure --prefix="/usr"
-  make all
+  make -f Makefile.archy all
 }
 
 
 package() {
   cd $pkgname-gpl-$pkgver-src
-  make prefix="$pkgdir/usr" install
+  make -f Makefile.archy prefix="$pkgdir/usr" install
 }
