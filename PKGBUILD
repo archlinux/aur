@@ -1,13 +1,13 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xde-theme
 pkgver=1.1.144
-pkgrel=1
+pkgrel=2
 pkgdesc="Theme and style setting utilities for the X Desktop Environment (XDE)"
 groups=('xde')
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="http://github.com/bbidulock/xde-theme"
-depends=('libxinerama' 'gdk-pixbuf2' 'libxrandr')
+depends=('libxinerama' 'gdk-pixbuf2' 'libxrandr' 'libsm')
 optdepends=('xde-styles: for styles that work with xde-style')
 makedepends=('git')
 source=("$pkgname::git://github.com/bbidulock/$pkgname.git")
