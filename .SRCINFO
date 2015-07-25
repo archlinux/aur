@@ -1,0 +1,14 @@
+pkgbase = otf-neris
+	pkgdesc = A display sans for one paragraph (or shorter) length text: quotes, openings, titles.
+	pkgver = 1.00
+	pkgrel = 6
+	url = http://cargocollective.com/eimantas
+	install = otf-neris.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = http://dl.1001fonts.com/neris.zip
+	sha256sums = a7e49014c699db81497f4f5251c135ab1a3c739cbe3f9e9e37c15b679e21fa0d
+
+pkgname = otf-neris
+
