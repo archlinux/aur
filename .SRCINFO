@@ -1,0 +1,15 @@
+pkgbase = ttf-brill
+	pkgdesc = Brill Typeface by John Hudson for Brill Publishing House (TrueType)
+	pkgver = 2.06
+	pkgrel = 1
+	url = http://www.brill.com/about/brill-fonts
+	install = ttf-brill.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.brill.com/sites/default/files/brill_font_package_2_06.zip
+	sha256sums = b58eeb26ea43d9a020ac9891a395ff7364bac7215d0714910561b675e4947166
+
+pkgname = ttf-brill
+
