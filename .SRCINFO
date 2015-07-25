@@ -8,7 +8,6 @@ pkgbase = gauche-git
 	arch = x86_64
 	license = BSD
 	depends = zlib
-	depends = sh
 	depends = gdbm
 	provides = gauche
 	conflicts = gauche
