@@ -1,7 +1,7 @@
 # Maintainer: Benjamin A. Shelton <zancarius@gmail.com>
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 pkgname=python-raven
-pkgver=5.3.1
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Python client for Sentry."
 arch=(any)
@@ -10,7 +10,7 @@ license=(BSD)
 depends=(python)
 makedepends=(python-setuptools)
 source=("https://pypi.python.org/packages/source/r/raven/raven-${pkgver}.tar.gz")
-md5sums=(d73d7057b2798208c59fd4594ab1836c)
+md5sums=(7e7961562bce6cb6fcf54c3427cf043e)
 
 package () {
 
