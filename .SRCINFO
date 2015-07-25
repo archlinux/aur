@@ -1,7 +1,7 @@
 pkgbase = eclipse-dltk-core
 	pkgdesc = Support for dynamic languages in Eclipse
 	pkgver = 5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.eclipse.org/dltk/
 	arch = i686
 	arch = x86_64

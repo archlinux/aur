@@ -3,7 +3,7 @@
 
 pkgname=eclipse-dltk-core
 pkgver=5.0
-pkgrel=4
+pkgrel=5
 _pkgdate=201306060709
 pkgdesc="Support for dynamic languages in Eclipse"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-$pkgver-$_pkg
 md5sums=('fa828874f889e86fdbb050e1b164017b')
 
 package() {
-	_dest=$pkgdir/usr/lib/eclipse/
+	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/eclipse
 	cd $srcdir
 	install -dm755 $_dest
 	find features plugins -type f -exec \
