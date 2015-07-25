@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Steam (steam runtime)
+Comment=Compatibility launcher using the Steam runtime
+Exec=env STEAM_RUNTIME=1 steam %U
+Icon=steam
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;Game;
+MimeType=x-scheme-handler/steam;

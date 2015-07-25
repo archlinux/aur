@@ -1,0 +1,9 @@
+polkit.addRule(function(action, subject) {
+  if (action.id.indexOf("org.freedesktop.NetworkManager.") == 0) {
+        var filepath = polkit.spawn(["cat", "/proc/"+subject.pid+"/cmdline"]);
+
+        if(polkit.spawn(["basename", filepath]) == "steam\n") {
+                return polkit.Result.NO;
+        }
+ }
+});
