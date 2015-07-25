@@ -1,0 +1,13 @@
+pkgbase = cutils
+	pkgdesc = Collection of utilities for C programmers
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.sigala.it/sandro/software.php#cutils
+	arch = i686
+	arch = x86_64
+	license = custom:as is
+	source = http://www.sigala.it/sandro/files/cutils-1.6.tar.gz
+	md5sums = 8b9ec6fa72e209694f4412a092164b67
+
+pkgname = cutils
+
