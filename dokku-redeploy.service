@@ -1,0 +1,11 @@
+[Unit]
+Description=Dokku app redeploy service
+After=docker.service
+
+[Service]
+Type=simple
+User=dokku
+ExecStart=/usr/bin/dokku ps:restartall
+
+[Install]
+WantedBy=multi-user.target

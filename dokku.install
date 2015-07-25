@@ -21,9 +21,14 @@ post_install() {
     chown dokku:dokku "/var/dokku/HOSTNAME"
   fi
 
+  echo "%dokku ALL=(ALL) NOPASSWD:/etc/init.d/nginx reload, /usr/sbin/nginx -t" > /etc/sudoers.d/dokku-nginx
+
   echo "
     Please add your ssh pubkey like:
       $ cat ~/.ssh/id_rsa.pub | sudo sshcommand acl-add dokku comment
+
+    To enable nginx autoconfiguration, add to your /etc/nginx/nginx.conf in http section:
+      include /etc/nginx/conf.d/*.conf;
 "
 }
 
