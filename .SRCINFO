@@ -1,6 +1,6 @@
 pkgbase = python-picuplib
 	pkgdesc = Picflash upload library
-	pkgver = 0.4.1
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Arvedui/picuplib
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-picuplib
 	depends = python
 	depends = python-requests
 	depends = python-requests-toolbelt
-	source = git+https://github.com/Arvedui/picuplib.git#tag=0.4.1
+	source = git+https://github.com/Arvedui/picuplib.git#tag=0.5.1
 	md5sums = SKIP
 
 pkgname = python-picuplib
