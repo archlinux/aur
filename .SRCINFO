@@ -1,0 +1,16 @@
+pkgbase = ssed
+	pkgdesc = Super-sed is a heavily enhanced version of sed that supports PCRE.
+	pkgver = 3.62
+	pkgrel = 2
+	url = http://sed.sourceforge.net/grabbag/ssed/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = gcc
+	makedepends = sed
+	makedepends = bison
+	source = http://sed.sourceforge.net/grabbag/ssed/sed-3.62.tar.gz
+	md5sums = 8f35882af95da4e5ddbf3de1add26f79
+
+pkgname = ssed
+
