@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
-pkgver=6454
+pkgver=6465
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -12,9 +12,8 @@ makedepends=('subversion')
 provides=('texinfo')
 conflicts=('texinfo')
 install=texinfo.install
-source=("texinfo::svn://svn.sv.gnu.org/texinfo/trunk" activate_plaintext_pm.patch)
-md5sums=('SKIP'
-         '91730d301ea8c0a687f392e2f1a49c0b')
+source=("texinfo::svn://svn.sv.gnu.org/texinfo/trunk")
+md5sums=('SKIP')
 options=('!makeflags' 'libtool')
 _svnmod=texinfo
 
@@ -26,14 +25,13 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/"${_svnmod}"
-  patch -Np0 < $srcdir/activate_plaintext_pm.patch || true
-  rm build-aux/ltmain.sh
+  
+  [[ -f build-aux/ltmain.sh ]] && rm build-aux/ltmain.sh
   ln -s /usr/share/libtool/build-aux/ltmain.sh build-aux/ltmain.sh
 }
 
 build() {
   cd "$srcdir"/"${_svnmod}"
-  export LANG=C
   ./autogen.sh
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
