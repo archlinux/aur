@@ -1,0 +1,12 @@
+pkgbase = ttf-gurmukhi_punjabi
+	pkgdesc = Gurmukhi/ Punjabi - 252 fonts
+	pkgver = 0.0
+	pkgrel = 0
+	url = http://www.billie.grosse.is-a-geek.com
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.billie.grosse.is-a-geek.com/res/local/allbillie.tar.bz2
+
+pkgname = ttf-gurmukhi_punjabi
+
