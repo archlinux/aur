@@ -3,8 +3,8 @@
 
 pkgname=interceptty
 pkgver=0.6
-pkgrel=2
-pkgdesc="A serial port sniffer, network serial server/client and serial port emulator."
+pkgrel=3
+pkgdesc="Serial port sniffer, network serial server/client and serial port emulator"
 arch=('i686' 'x86_64')
 url="http://www.suspectclass.com/sgifford/interceptty/"
 license=('GPL')
@@ -17,6 +17,12 @@ build() {
 
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  make check
 }
 
 package() {

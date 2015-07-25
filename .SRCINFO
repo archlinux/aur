@@ -1,7 +1,7 @@
 pkgbase = interceptty
-	pkgdesc = A serial port sniffer, network serial server/client and serial port emulator.
+	pkgdesc = Serial port sniffer, network serial server/client and serial port emulator
 	pkgver = 0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.suspectclass.com/sgifford/interceptty/
 	arch = i686
 	arch = x86_64
