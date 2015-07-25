@@ -1,0 +1,22 @@
+--- a/src/main.cpp	2006-05-13 18:36:45.000000000 +0800
++++ b/src/main.cpp	2009-10-08 12:19:24.000000000 +0800
+@@ -44,6 +44,10 @@ HzDecoder *gpDecoder = NULL;
+ Zhcon *gpZhcon = NULL;
+ 
+ int main(int argc, char* argv[]) {
++    int oldkbmode;
++    bool restore = false;
++    if (!ioctl(0, KDGKBMODE, &oldkbmode) && !ioctl(0, KDSKBMODE, K_XLATE))
++        restore = true;
+     try {
+         Zhcon con(argc, argv);
+         gpZhcon = &con;
+@@ -54,6 +58,8 @@ int main(int argc, char* argv[]) {
+     } catch (...) {
+         cerr << "unknown exception caught" << endl;
+     }
++    if (restore)
++        ioctl(0, KDSKBMODE, oldkbmode);
+ 
+     return EXIT_SUCCESS;
+ }

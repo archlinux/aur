@@ -1,0 +1,34 @@
+--- a/src/nativeinputserver.cpp	2006-04-25 00:38:27.000000000 +0800
++++ b/src/nativeinputserver.cpp	2009-10-08 14:13:02.000000000 +0800
+@@ -112,6 +112,12 @@ bool NativeInputServer::ProcessKey(char 
+     //wIldchar should not occur in 1st char so check mCount
+     if (mpIme->InCodeSet(c)
+             || (!mInput.empty() && mpIme->IsWildChar(c))) {
++        if (mpIme->IsMaxCodes(mInput)) {
++            rBuf = Select(0);
++            mpIme->Reset();
++            mInput = "";
++            mList.Reset();
++        }
+         flag = false;
+         while (!mStack.empty())
+             mStack.pop();
+--- a/src/winime.h	2006-04-25 00:38:26.000000000 +0800
++++ b/src/winime.h	2009-10-08 14:13:52.000000000 +0800
+@@ -42,6 +42,16 @@ class WinIme {
+         bool IsWildChar(char c) const {
+             return c == mHead.mWildChar;
+         }
++        bool IsMaxCodes(string& str) {
++            string ime (mHead.mName);
++            // "\xce\xe5\xb1\xca"(wubi) is U+4E94, U+7B14 in GBK
++            if (ime.size() >= 4 \
++                    && ime.compare(ime.size()-4, 4, "\xce\xe5\xb1\xca") == 0 \
++                    && str.compare(0, 1, "z") != 0)
++                return str.size() == 4;
++            else
++                return (int) str.size() == mHead.mMaxCodes;
++        }
+         string GetName();
+         bool InCodeSet(char c) const;
+         int Search(string& s, int start);

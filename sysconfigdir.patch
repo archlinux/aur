@@ -1,0 +1,11 @@
+--- a/src/zhcon.cpp	2006-05-15 04:12:01.000000000 +0800
++++ b/src/zhcon.cpp	2009-10-08 12:14:23.000000000 +0800
+@@ -123,7 +123,7 @@ void Zhcon::Init() {
+     string cfgfile = getenv("HOME");
+     cfgfile += "/.zhconrc";
+     if (access(cfgfile.c_str(), R_OK) != 0)
+-        cfgfile = PREFIX "/etc/zhcon.conf";
++        cfgfile = "/etc/zhcon.conf";
+ 
+     //for debug,a pause enable us to attach zhcon's pid in gdb
+     //char c;cin>>c;

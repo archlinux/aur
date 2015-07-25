@@ -1,0 +1,16 @@
+--- a/src/display/lrmi.c	2006-04-25 00:38:23.000000000 +0800
++++ b/src/display/lrmi.c	2009-10-08 12:15:59.000000000 +0800
+@@ -33,6 +33,13 @@ This software has NO WARRANTY.  Use it a
+ 
+ #include "lrmi.h"
+ 
++#if defined(__linux__) && !defined(TF_MASK)
++	#define TF_MASK X86_EFLAGS_TF
++	#define IF_MASK X86_EFLAGS_IF
++	#define VIF_MASK X86_EFLAGS_VIF
++	#define IOPL_MASK X86_EFLAGS_IOPL
++#endif
++
+ #define REAL_MEM_BASE 	((void *)0x10000)
+ #define REAL_MEM_SIZE 	0x10000
+ #define REAL_MEM_BLOCKS 	0x100

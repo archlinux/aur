@@ -1,0 +1,11 @@
+--- a/src/inputserver.cpp	2006-04-25 00:38:27.000000000 +0800
++++ b/src/inputserver.cpp	2009-10-08 12:22:09.000000000 +0800
+@@ -20,7 +20,7 @@
+ 
+ InputServer::InputServer()
+ :mIsFullChar(false),
+-mIsFullComma(false),
++mIsFullComma(true),
+ mClientBufLen(0) {}
+ 
+ InputServer::~InputServer() {}

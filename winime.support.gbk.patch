@@ -1,0 +1,15 @@
+--- a/src/winime.h	2006-04-25 00:38:26.000000000 +0800
++++ b/src/winime.h	2009-10-08 12:18:23.000000000 +0800
+@@ -63,10 +63,10 @@ class WinIme {
+             return (c > 0x80 && c < 0xFF);
+         }
+         bool IsGB2312_1(char c) const {
+-            return c >= 0xA1 && c <= 0xF7;
++            return c >= 0x81 && c <= 0xFE;
+         }
+         bool IsGB2312_2(char c) const {
+-            return c >= 0xA1 && c <= 0xFE;
++            return c >= 0x40 && c <= 0xFE;
+         }
+ 
+         void AddCandilist(char*& p,unsigned& buflen);

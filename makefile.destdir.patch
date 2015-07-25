@@ -1,0 +1,81 @@
+--- a/doc/Makefile.in	2006-05-03 01:57:34.000000000 +0800
++++ b/doc/Makefile.in	2009-10-08 12:05:47.000000000 +0800
+@@ -326,11 +326,11 @@ uninstall-am: uninstall-info-am uninstal
+ 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(mandir)/man1/
+-	$(INSTALL_DATA) $(top_builddir)/doc/zhcon.1 $(mandir)/man1/zhcon.1
++	$(mkinstalldirs) $(DESTDIR)$(mandir)/man1/
++	$(INSTALL_DATA) $(top_builddir)/doc/zhcon.1 $(DESTDIR)$(mandir)/man1/zhcon.1
+ 
+ uninstall-local:
+-	-rm -f $(mandir)/man1/zhcon.1
++	-rm -f $(DESTDIR)$(mandir)/man1/zhcon.1
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+--- a/font/Makefile.in	2006-05-03 01:57:34.000000000 +0800
++++ b/font/Makefile.in	2009-10-08 12:05:47.000000000 +0800
+@@ -321,11 +321,11 @@ uninstall-am: uninstall-info-am uninstal
+ 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(libdir)/zhcon/font/
+-	$(INSTALL_DATA) $(srcdir)/*.bpsf $(libdir)/zhcon/font/
++	$(mkinstalldirs) $(DESTDIR)$(libdir)/zhcon/font/
++	$(INSTALL_DATA) $(srcdir)/*.bpsf $(DESTDIR)$(libdir)/zhcon/font/
+ 
+ uninstall-local:
+-	-rm -f $(libdir)/zhcon/font/*.bpsf
++	-rm -f $(DESTDIR)$(libdir)/zhcon/font/*.bpsf
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+--- a/input/Makefile.in	2006-05-03 01:57:34.000000000 +0800
++++ b/input/Makefile.in	2009-10-08 12:05:47.000000000 +0800
+@@ -321,11 +321,11 @@ uninstall-am: uninstall-info-am uninstal
+ 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(libdir)/zhcon/input/
+-	$(INSTALL_DATA) $(srcdir)/*.mb $(libdir)/zhcon/input/
++	$(mkinstalldirs) $(DESTDIR)$(libdir)/zhcon/input/
++	$(INSTALL_DATA) $(srcdir)/*.mb $(DESTDIR)$(libdir)/zhcon/input/
+ 
+ uninstall-local:
+-	-rm -f $(libdir)/zhcon/input/*.mb
++	-rm -f $(DESTDIR)$(libdir)/zhcon/input/*.mb
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+--- a/src/Makefile.in	2006-05-03 01:57:34.000000000 +0800
++++ b/src/Makefile.in	2009-10-08 12:05:47.000000000 +0800
+@@ -251,7 +251,7 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(
+ 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
+ install-binPROGRAMS: $(bin_PROGRAMS)
+ 	@$(NORMAL_INSTALL)
+-	test -z "$(bindir)" || $(mkdir_p) "$(DESTDIR)$(bindir)"
++	test -z "$(DESTDIR)$(bindir)" || $(mkdir_p) "$(DESTDIR)$(bindir)"
+ 	@list='$(bin_PROGRAMS)'; for p in $$list; do \
+ 	  p1=`echo $$p|sed 's/$(EXEEXT)$$//'`; \
+ 	  if test -f $$p \
+@@ -602,14 +602,14 @@ uninstall-info: uninstall-info-recursive
+ 
+ 
+ install-exec-local:
+-	chmod 4755 $(bindir)/zhcon
++	chmod 755 $(DESTDIR)$(bindir)/zhcon
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(prefix)/etc
+-	$(INSTALL_DATA) $(srcdir)/zhcon.conf $(prefix)/etc/zhcon.conf
++	$(mkinstalldirs) $(DESTDIR)/etc
++	$(INSTALL_DATA) $(srcdir)/zhcon.conf $(DESTDIR)/etc/zhcon.conf
+ 
+ uninstall-local:
+-	-rm -f $(prefix)/etc/zhcon.conf
++	-rm -f $(DESTDIR)/etc/zhcon.conf
+ 
+ # the library search path.
+ #zhcon_LDFLAGS = $(all_libraries) -L/usr/lib/unicon 
