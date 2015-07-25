@@ -1,0 +1,15 @@
+pkgbase = ttf-lklug
+	pkgdesc = Unicode sinhala font
+	pkgver = 1
+	pkgrel = 4
+	url = http://sinhala.sourceforge.net/
+	install = ttf-lklug.install
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://sinhala.sourceforge.net/files/lklug.ttf
+	md5sums = 3bfe4e498d6daa90a4ed956daaa10fef
+
+pkgname = ttf-lklug
+
