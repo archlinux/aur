@@ -1,0 +1,15 @@
+pkgbase = python-svgwrite
+	pkgdesc = A Python library to create SVG drawings.
+	pkgver = 1.1.6
+	pkgrel = 2
+	url = http://bitbucket.org/mozman/svgwrite
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyparsing
+	depends = python-setuptools
+	source = https://pypi.python.org/packages/source/s/svgwrite/svgwrite-1.1.6.zip
+	md5sums = d57797786f9816617636f06b5566c5f7
+
+pkgname = python-svgwrite
+
