@@ -3,7 +3,7 @@
 
 pkgname=boxes
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Text mode box and comment drawing filter"
 url="http://boxes.thomasjensen.com/"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ md5sums=('4951b407b478ac42f7efc0ece4d5e355')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  make GLOBALCONF=/etc
+  make GLOBALCONF=/etc/boxes-config
 }
 
 package() {
