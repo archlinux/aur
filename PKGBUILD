@@ -3,8 +3,8 @@
 
 pkgname='perl-module-install'
 _perlmod=Module-Install
-_author='B/BI/BINGOS'
-pkgver=1.14
+_author='E/ET/ETHER'
+pkgver=1.16
 pkgrel=1
 pkgdesc="Module::Install - Standalone, extensible Perl module installer"
 arch=('any')
@@ -21,10 +21,10 @@ perl-yaml-tiny
 )
 makedepends=(perl-yaml-tiny)
 source=(http://search.cpan.org/CPAN/authors/id/${_author}/${_perlmod}-${pkgver}.tar.gz)
-sha256sums=('3f02f0a33603aff2f5cf06d15f74d1a9be65e844ada99e1a9c2102330ffa0d49')
+sha256sums=('afac1264255f4d822d44f84df1aa9affad207f9ae805e803d93c845fa120025e')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-  
+
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \

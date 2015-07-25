@@ -1,6 +1,6 @@
 pkgbase = perl-module-install
 	pkgdesc = Module::Install - Standalone, extensible Perl module installer
-	pkgver = 1.14
+	pkgver = 1.16
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Module-Install
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = perl-module-install
 	depends = perl-parse-cpan-meta
 	depends = perl-yaml-tiny
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/Module-Install-1.14.tar.gz
-	sha256sums = 3f02f0a33603aff2f5cf06d15f74d1a9be65e844ada99e1a9c2102330ffa0d49
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Module-Install-1.16.tar.gz
+	sha256sums = afac1264255f4d822d44f84df1aa9affad207f9ae805e803d93c845fa120025e
 
 pkgname = perl-module-install
 
