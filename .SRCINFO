@@ -1,14 +1,13 @@
 pkgbase = eclipse-gef
 	pkgdesc = GEF framework for the Eclipse platform
-	pkgver = 3.9.101
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = http://www.eclipse.org/gef/
 	arch = any
 	license = EPL
 	depends = eclipse
-	source = http://www.eclipse.org/downloads/download.php?r=1&file=/tools/gef/downloads/drops/3.9.101/R201408150207/GEF-ALL-3.9.101.zip
-	sha256sums = 07a8f38e67bf01c9fe74b930b23a22b2830049000a4ea2d631036d1901830ce5
-	sha512sums = dbb74764947fd49cdb0336ca66031c88c89fc90697336dcb70cc2ccc33e97aa9d169a813c8b7d2d79fcc1a0effe473945c4fc363927d6ebbdc043ad02c31e780
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/tools/gef/gef4/downloads/drops/3.10.0/R201506081138/GEF4-Update-3.10.0.zip
+	sha256sums = 9f583c8464e34643fa815ddaa9bb36acd898b4404c8625a7b51e86d6eb4d6e83
 
 pkgname = eclipse-gef
 
