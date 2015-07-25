@@ -1,5 +1,5 @@
-*/src
-*/pkg
+src/
+pkg/
 *.gz
 *.xz
 *.bz2
@@ -10,8 +10,8 @@
 *.txt
 *.log
 *.scm
-*/kernel
-*/linux-git
-*/llvmlinux
-*/*.pkg
-*/*.asc
+kernel/
+linux-git/
+llvmlinux/
+*.pkg
+*.asc
