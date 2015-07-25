@@ -12,7 +12,9 @@ pkgbase = python-flask-debug
 
 pkgname = python2-flask-debug
 	depends = python2-flask
+	depends = python2-inflection
 
 pkgname = python-flask-debug
 	depends = python-flask
+	depends = python-inflection
 

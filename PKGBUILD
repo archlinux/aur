@@ -19,7 +19,7 @@ prepare() {
 }
 
 package_python2-flask-debug() {
-depends=('python2-flask')
+depends=('python2-flask' 'python2-inflection')
 
     cd python2-$_pipname-$pkgver
     python2 setup.py install --root="$pkgdir/" --optimize=1
@@ -29,7 +29,7 @@ depends=('python2-flask')
 }
 
 package_python-flask-debug() {
-depends=('python-flask')
+depends=('python-flask' 'python-inflection')
 
     cd $_pipname-$pkgver 
     python setup.py install --root="$pkgdir/" --optimize=1
