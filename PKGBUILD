@@ -7,13 +7,14 @@ pkgver=3.16.1
 pkgrel=1
 pkgdesc="GNOME document viewer ported for win32, built with pdf support"
 url="https://wiki.gnome.org/Apps/Evince"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('GPL')
 depends=(
-         'gsettings-desktop-schemas'
-         'mingw-w64-gtk3'
-		 'mingw-w64-libxml2'
-         'mingw-w64-poppler'
+          'mingw-w64-crt'
+          'gsettings-desktop-schemas'
+          'mingw-w64-gtk3'
+          'mingw-w64-libxml2'
+          'mingw-w64-poppler'
          )
 # Add to depends:
 #        'libspectre' for PostScript
@@ -25,7 +26,9 @@ makedepends=('itstool' 'intltool' 'mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w
 provides=("${pkgbase}")
 
 # Disable binary stripping (it is performed manually in the package() function)
-options=(!strip)
+# Allow static libraries to remain in package
+# Disable user defined build parameters (CPP/C/LD/CXX FLAGS)
+options=('!strip' 'staticlibs' '!buildflags')
 
 install=${pkgbase}.install
 source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgbase}/${pkgver%.*}/${_pkgbase}-${pkgver}.tar.xz")
@@ -48,11 +51,11 @@ build()
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
 
-	## Explicitely adding the stack smashing protector library to the LDFLAGS
-	#  (-lssp)
-	#  This solves missing symbols issues during link (inc. __stack_chk_fail,
-	#  __stack_chl_guard)
-	_LDFLAGS="-lssp"
+    ## Explicitely adding the stack smashing protector library to the LDFLAGS
+    #  (-lssp)
+    #  This solves missing symbols issues during link (inc. __stack_chk_fail,
+    #  __stack_chl_guard)
+    _LDFLAGS="-lssp"
 
     ${_arch}-configure \
 		--exec-prefix=/usr/${_arch} \
@@ -83,7 +86,7 @@ build()
         --without-gtk-unix-print \
         --disable-libgnome-desktop
     make LDFLAGS=${_LDFLAGS}
-	cd ..
+    cd ..
   done
 }
 
@@ -92,10 +95,12 @@ package()
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   for _arch in ${_architectures}; do
     cd "build-${_arch}"
-	alias strip=${_arch}-strip
+    alias strip=${_arch}-strip
     make DESTDIR="${pkgdir}" install
-	find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
+    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
     find "$pkgdir/usr/${_arch}" -name '*.a' | xargs -rtl1 ${_arch}-strip -g
     cd ..
   done
 }
+
+# vim: set tabstop=2 expandtab:
