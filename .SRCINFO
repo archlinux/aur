@@ -1,0 +1,13 @@
+pkgbase = cute
+	pkgdesc = An easy to use C++ unit testing framework
+	pkgver = 2.0.0
+	pkgrel = 3
+	url = http://www.cute-test.com/
+	arch = any
+	license = LGPL
+	depends = boost-libs
+	source = http://www.cute-test.com/attachments/download/61/cute2_0_0.tar.gz
+	sha256sums = 87ff94560a2fe8b978d06f40023b22c0ae9b87cf02716b019afe9f84551e14aa
+
+pkgname = cute
+
