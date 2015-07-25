@@ -1,0 +1,14 @@
+pkgbase = withlock
+	pkgdesc = A locking wrapper script to make sure that some program is not run more than once
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://github.com/poeml/withlock
+	arch = any
+	license = Apache
+	depends = python2
+	provides = withlock
+	source = https://github.com/poeml/withlock/archive/master.tar.gz
+	md5sums = 18f2c2cb6f7b6356113a7f641d1d5cb3
+
+pkgname = withlock
+
