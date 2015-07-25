@@ -1,6 +1,6 @@
 pkgbase = mednaffe-gtk2
 	pkgdesc = front-end (GUI) for mednafen emulator (GTK2 Version)
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://sites.google.com/site/amatcoder/mednaffe
 	install = mednaffe.install
@@ -11,8 +11,8 @@ pkgbase = mednaffe-gtk2
 	depends = gtk2
 	provides = mednaffe
 	conflicts = mednaffe
-	source = https://sites.google.com/site/amatcoder/mednaffe/downloads/mednaffe-0.7.tar.gz
-	md5sums = 56ac6c4d89638f9384920f6ea6b72e3c
+	source = https://sites.google.com/site/amatcoder/mednaffe/downloads/mednaffe-0.8.tar.gz
+	md5sums = ab7c524d70170b8bba8819e71fc136e0
 
 pkgname = mednaffe-gtk2
 
