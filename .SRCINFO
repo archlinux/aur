@@ -1,0 +1,13 @@
+pkgbase = python-logging_tree
+	pkgdesc = Introspect and display the logger tree inside "logging"
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/logging_tree/
+	arch = any
+	license = BSD
+	depends = python
+	source = http://pypi.python.org/packages/source/l/logging_tree/logging_tree-1.6.tar.gz
+	md5sums = 33ef7eaa1533a50cf67ed1c49a48cfdd
+
+pkgname = python-logging_tree
+
