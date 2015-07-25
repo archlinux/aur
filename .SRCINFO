@@ -1,0 +1,23 @@
+pkgbase = systemtap-git
+	pkgdesc = SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system.
+	pkgver = 2.3.1539.g00b943a
+	pkgrel = 1
+	url = http://sourceware.org/systemtap/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = elfutils
+	depends = nss
+	depends = python2
+	depends = avahi
+	optdepends = sqlite3
+	optdepends = linux-fedora: for debug enabled kernel
+	optdepends = linux-lily-debug: for debug enabled kernel
+	provides = systemtap=2.3
+	conflicts = systemtap
+	source = git+git://github.com/fche/systemtap.git
+	md5sums = SKIP
+
+pkgname = systemtap-git
+
