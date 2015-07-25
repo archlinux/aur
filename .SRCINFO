@@ -1,0 +1,18 @@
+pkgbase = python-flask-debug
+	pkgdesc = Shows reflection/configuration to aid the development of Flask applications
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://github.com/mbr/flask-debug
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/F/Flask-Debug/Flask-Debug-0.4.3.tar.gz
+	md5sums = 884cfc8365ae9850405d9aadc3038a96
+
+pkgname = python2-flask-debug
+	depends = python2-flask
+
+pkgname = python-flask-debug
+	depends = python-flask
+
