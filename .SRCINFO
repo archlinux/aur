@@ -1,0 +1,17 @@
+pkgbase = cld2-svn
+	pkgdesc = Compact Language Detector 2
+	pkgver = 193
+	pkgrel = 1
+	url = https://code.google.com/p/cld2/
+	arch = x86_64
+	license = Apache
+	provides = cld2
+	provides = cld2-hg
+	conflicts = cld2-hg
+	conflicts = cld2
+	replaces = cld2-hg
+	source = cld2::svn+http://cld2.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = cld2-svn
+
