@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Icon=pp2
+Exec=paintball-party-2
+Name=Paintball Party 2
+Comment=A multiplayer action platformer for all ages
+Categories=Game;ArcadeGame;
+Terminal=false
+StartupNotify=false

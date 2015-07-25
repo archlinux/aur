@@ -1,0 +1,25 @@
+pkgbase = paintball-party-2
+	pkgdesc = Paintball Party 2 is the sequel to Paintball Party, a multiplayer action platformer for all ages.
+	pkgver = 0.856
+	pkgrel = 1
+	url = http://www.t3-i.com/pages/download.php?id=8
+	install = paintball-party-2.install
+	changelog = paintball-party-2.ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	makedepends = allegro
+	makedepends = mxml
+	options = emptydirs
+	source = paintball_party_2-0.856-linux.tar.gz::http://www.t3-i.com/pages/download.php?id=8
+	source = makefile
+	source = pp2.png
+	source = pp2.desktop
+	sha512sums = 44cf0528e95ddd7f13ca169c9870ed0a769245460d90bb3e216f3ad437d090b450bc904e8a9da1d43a26ec42d6081a8469570662d0ebb801277ed3896f715cd9
+	sha512sums = c05077e670f0cc6d0819259c9e4ada33fd8adb023824f4a923b5dce85d4ea6d8fc10ba3f0328d8092b485d73fb6081e5ff8e586353a80fe838e8decc2880abae
+	sha512sums = ebc6b1d5870808f3145bc63fb35b5ed04d7480791a91eeb2cbd7b43eade4932560cd7be7404f35e39e1d3c749def964a70c7e8498b6cc47590898d780042cff2
+	sha512sums = bc65833b64262e1f0c114eefe0e9bc6a4a0aa0cd0e00769ec9906776cd4e162b6bec4e90b90182c78f90d3a63aab169b64a36c151504e1e2b89c1fb4ebe2f8c0
+
+pkgname = paintball-party-2
+
