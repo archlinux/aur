@@ -1,0 +1,27 @@
+pkgbase = ruby-gettext
+	pkgdesc = Gettext is a pure Ruby libary and tools to localize messages.
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = http://ruby-gettext.github.com/
+	arch = any
+	groups = pacgem
+	license = RUBY
+	makedepends = ruby
+	makedepends = binutils
+	depends = ruby
+	depends = ruby-text
+	depends = ruby-locale
+	optdepends = ruby-rake: Ruby based make-like utility.
+	optdepends = ruby-racc: Racc is a LALR(1) parser generator
+	optdepends = ruby-yard: Documentation tool for consistent and usable documentation in Ruby.
+	optdepends = ruby-redcarpet: Markdown that smells nice
+	optdepends = ruby-test-unit: test-unit - Improved version of Test::Unit bundled in Ruby 1.8.x.
+	optdepends = ruby-test-unit-notify: Test::Unit::Notify - A test result notify extension for Test::Unit.
+	optdepends = ruby-test-unit-rr: test-unit-rr is a RR adapter for test-unit.
+	noextract = gettext-3.1.6.gem
+	options = !emptydirs
+	source = http://rubygems.org/gems/gettext-3.1.6.gem
+	md5sums = 03e01877014fd76ad985678f07eca350
+
+pkgname = ruby-gettext
+
