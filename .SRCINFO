@@ -1,0 +1,14 @@
+pkgbase = hunspell-pt-br
+	pkgdesc = Brazillian Portuguese grammar, spelling and hyphenation checker to hunspell
+	pkgver = 3.2
+	pkgrel = 4
+	url = http://pt-br.libreoffice.org/projetos/vero
+	arch = any
+	license = LGPLv3
+	license = MPL
+	optdepends = hunspell: the spell checking libraries and apps
+	source = http://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/VeroptBRV320AOC.oxt
+	md5sums = 9a9ac174c401406604bfcf101de2a7ba
+
+pkgname = hunspell-pt-br
+
