@@ -1,14 +1,15 @@
 pkgbase = arcbotics-sparki
 	pkgdesc = SparkiDuino 1.0.5.5 library and examples to easily start programming AcrBorics Sparki robot using Arduino syntax.
 	pkgver = 1.0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://forum.arcbotics.com/viewtopic.php?f=17&t=1133
 	arch = any
 	license = LGPL3
 	depends = arduino10
-	depends = unzip
 	source = http://d3k8ss0l8daviq.cloudfront.net/Sparki_Library_1.0.5.5.zip
+	source = sparki_usb
 	md5sums = e03dbf9efe9afa55df5eefd3c2d306b0
+	md5sums = 66f72fd584b178873ce003aba8ebd8cb
 
 pkgname = arcbotics-sparki
 
