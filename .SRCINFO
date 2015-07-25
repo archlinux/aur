@@ -1,0 +1,14 @@
+pkgbase = ttf-lao
+	pkgdesc = Lao TTF fonts
+	pkgver = 0.0
+	pkgrel = 20060226
+	url = http://prdownloads.sourceforge.net/laofoss/Phetsarath_OT.zip
+	arch = any
+	license = GPL-2.1 or late
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://prdownloads.sourceforge.net/laofoss/Phetsarath_OT.zip
+	md5sums = 2a8d37d7ea2d937b101226edda11200b
+
+pkgname = ttf-lao
+
