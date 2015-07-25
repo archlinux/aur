@@ -14,8 +14,6 @@ if test "$CARCH" == x86_64; then
                'lib32-gcc-libs: for improved performance of Poly/ML on x86_64 machines')
 fi
 optdepends=('texlive-core: document preparation')
-provides=(isabelle)
-conflicts=(isabelle)
 source=(http://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle${pkgver//_/-}_linux.tar.gz
         isabelle.desktop)
 md5sums=('da5b4ca16cd0c83418514a5ea7ebec77'
