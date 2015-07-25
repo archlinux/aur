@@ -1,0 +1,18 @@
+pkgbase = gadget-deadbeef-dhcp
+	pkgdesc = Allow connection through USB - DHCP setup
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/WarheadsSE/PKGs/blob/master/gadget-deadbeef/
+	install = gadget-deadbeef-dhcp.install
+	arch = any
+	license = GPL2
+	conflicts = gadget-deadbeef
+	source = gadget-deadbeef-dhcp.modprobe
+	source = gadget-deadbeef-dhcp.modules-load
+	source = gadget-deadbeef-dhcp.network
+	md5sums = 1acbeac837c7867a5c692dd92d8db6f9
+	md5sums = 83571ae0c87ab32ce5bdccfb065f54b8
+	md5sums = 1842d0f96bc55fcdabd9b4f33a2bf5b5
+
+pkgname = gadget-deadbeef-dhcp
+

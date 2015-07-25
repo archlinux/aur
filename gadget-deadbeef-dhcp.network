@@ -1,0 +1,7 @@
+# systemd-networkd .network profile for gadget-deadbeef
+[Match]
+Name=usb0
+MACAddress=de:ad:be:ef:00:01
+
+[Network]
+DHCP=yes

@@ -1,0 +1,7 @@
+
+post_install () {
+    echo ">>> to enable serial"
+    echo "    systemctl enable serial-getty@ttyGS0"
+    echo ">>> to enable ethernet"
+    echo "    systemctl enable systemd-networkd"
+}

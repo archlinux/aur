@@ -1,0 +1,2 @@
+# load the g_cdc module to get ethernet and serial (GS0 on device, ACM0 on host)
+g_cdc

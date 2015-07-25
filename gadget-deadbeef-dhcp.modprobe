@@ -1,0 +1,2 @@
+# set a dev_addr to the ethernet of g_cdc, so we know to apply the right systemd-networkd profile.
+options g_cdc dev_addr=de:ad:be:ef:00:01 iManufacturer="gadget-deadbeef"
