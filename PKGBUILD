@@ -15,7 +15,7 @@ depends=("gcc-ada")
 source=(http://mirrors.cdn.adacore.com/art/949752df2432aed8d06c48d57cea71f38d0517cc
         Makefile.archy)
 md5sums=('98c96b8c6a877617ec4da3ef6a03288a'
-         'f602e44dd83d553395a3dc2a18e0510d')
+         '9784cefc4f5964b2469504f83957418f')
 
 
 GREP=grep
