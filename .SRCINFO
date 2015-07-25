@@ -1,7 +1,7 @@
 pkgbase = mse-mtg
 	pkgdesc = Magic: the Gathering templates for Magic Set Editor.
 	pkgver = 2.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://magicseteditor.sourceforge.net
 	arch = any
 	license = freeware
@@ -14,8 +14,13 @@ pkgbase = mse-mtg
 	md5sums = 7bed025a7b878a3af060a9cb47139bb9
 
 pkgname = mse-mtg
+	pkgdesc = Magic: the Gathering base game and symbol fonts for Magic Set Editor.
 
 pkgname = mse-mtg-new
+	pkgdesc = Magic: the Gathering Modern templates for Magic Set Editor.
+	depends = mse-mtg
 
 pkgname = mse-mtg-m15
+	pkgdesc = Magic: the Gathering M15 templates for Magic Set Editor.
+	depends = mse-mtg
 
