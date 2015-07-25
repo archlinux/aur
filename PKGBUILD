@@ -3,8 +3,8 @@
 # Based on saleae-logic package by Kyle Keen <keenerd@gmail.com>
 
 pkgname=saleae-logic-beta
-pkgver=1.2.2
-pkgrel=4
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="High speed USB logic analyzer."
 arch=('i686' 'x86_64')
 url="http://www.saleae.com/"
@@ -19,7 +19,7 @@ case $CARCH in
             "http://downloads.saleae.com/Saleae+Users+Guide.pdf"
             "http://opendesktop.org/CONTENT/content-files/133473-SaleaeLogic.svg"
             "saleae-logic.desktop")
-    sha256sums=('dd727a5354f0e551ef563d4e512e3e300ad77c159d788cfc823fae39e2feb5bd'
+    sha256sums=('6ae56c4dccbc8196cf22c2bb4e348ff09d051e9b979215c0f98ee3f999b9c621'
              'b862b10c75d57010b15663e0f26976ec7a1fc0d7a5a2d4e299b17c5a06185d18'
              '6f5f590c6b29a674b4d2263783430630f271ea296a0ef0ac7787ce081a2b1d9b'
              'cc2a4127af87c8248b08a9cb8d82d542f63cfe77d95478bd469c64fd6722ed7a')
@@ -29,7 +29,7 @@ case $CARCH in
             "http://downloads.saleae.com/Saleae+Users+Guide.pdf"
             "http://opendesktop.org/CONTENT/content-files/133473-SaleaeLogic.svg"
             "saleae-logic.desktop")
-    sha256sums=('228c1bdb2977e096fe04f2af8a17cc821e7dd3aa4c9954e75e0e9048acb81f62'
+    sha256sums=('42228a1d735fd4c0421279e9449eb440cad1f434100300d9b7f79e0de8ce4205'
              'b862b10c75d57010b15663e0f26976ec7a1fc0d7a5a2d4e299b17c5a06185d18'
              '6f5f590c6b29a674b4d2263783430630f271ea296a0ef0ac7787ce081a2b1d9b'
              'cc2a4127af87c8248b08a9cb8d82d542f63cfe77d95478bd469c64fd6722ed7a')
@@ -43,7 +43,6 @@ package() {
   install -d "$pkgdir/usr/share/doc/saleae-logic"
   cp -r ./ "$pkgdir/opt/saleae-logic/"
   find "$pkgdir/opt/saleae-logic" -type d -exec chmod 777 {} \;
-  #  chmod 0777 "$pkgdir/opt/saleae-logic"
   #icon
   install -Dm644 "$srcdir/133473-SaleaeLogic.svg" "$pkgdir/usr/share/pixmaps/SaleaeLogic.svg"
   install -D -m644 "$srcdir/saleae-logic.desktop" \
