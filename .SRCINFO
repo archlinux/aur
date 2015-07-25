@@ -1,0 +1,15 @@
+pkgbase = python-lupa
+	pkgdesc = Python wrapper around Lua and LuaJIT
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/scoder/lupa
+	arch = any
+	license = MIT
+	depends = python
+	depends = luajit
+	depends = python-setuptools
+	source = https://pypi.python.org/packages/source/l/lupa/lupa-1.1.tar.gz
+	md5sums = ff5907391441222d981355676ae6f093
+
+pkgname = python-lupa
+
