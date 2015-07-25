@@ -10,6 +10,7 @@ CURRENT_FOLDER=$(shell pwd)
 
 LOOK=	-aI${CURRENT_FOLDER}/gnat -aI${CURRENT_FOLDER}/gen_src \
 	-aL${PREFIX}/lib/xmlada/static -aI${PREFIX}/include/xmlada
+
 LARGS=	-largs ${CURRENT_FOLDER}/obj/link.o \
 	-largs ${CURRENT_FOLDER}/obj/gprbuild_dummies.o \
 	-largs ${PREFIX}/lib/xmlada/static/libxmlada_dom.a \
@@ -22,6 +23,11 @@ GENDIR=		gen_src
 GEN_SRCS=	${GENDIR}/snames.adb ${GENDIR}/snames.ads
 DOCSDIR=	${PREFIX}/share/doc/gprbuild
 
+
+BSD_INSTALL_PROGRAM=install
+BSD_INSTALL_DATA=install
+
+
 all: gprbuild
 
 install:
@@ -29,15 +35,20 @@ install:
 		${DESTDIR}${PREFIX}/libexec/gprbuild \
 		${DESTDIR}${PREFIX}/share/gpr \
 		${DESTDIR}${PREFIX}/share/gprconfig
-	${BSD_INSTALL_PROGRAM} ${CURRENT_FOLDER}/obj/gprclean \
-		${CURRENT_FOLDER}/obj/gprinstall \
-		${CURRENT_FOLDER}/obj/gprconfig \
-		${CURRENT_FOLDER}/obj/gprslave \
-		${CURRENT_FOLDER}/obj/gprbuild ${DESTDIR}${PREFIX}/bin
-	${BSD_INSTALL_PROGRAM} ${CURRENT_FOLDER}/obj/gprbind \
-		${CURRENT_FOLDER}/obj/gprlib ${DESTDIR}${PREFIX}/libexec/gprbuild
+
+	${BSD_INSTALL_PROGRAM} \
+                ${CURRENT_FOLDER}/gprclean \
+		${CURRENT_FOLDER}/gprinstall \
+		${CURRENT_FOLDER}/gprconfig \
+		${CURRENT_FOLDER}/gprslave \
+		${CURRENT_FOLDER}/gprbuild ${DESTDIR}${PREFIX}/bin
+
+	${BSD_INSTALL_PROGRAM} ${CURRENT_FOLDER}/gprbind \
+		${CURRENT_FOLDER}/gprlib ${DESTDIR}${PREFIX}/libexec/gprbuild
+
 	${BSD_INSTALL_DATA} ${CURRENT_FOLDER}/share/_default.gpr \
 		${DESTDIR}${PREFIX}/share/gpr
+
 	${BSD_INSTALL_DATA} ${CURRENT_FOLDER}/share/gprconfig/* \
 		${DESTDIR}${PREFIX}/share/gprconfig
 
@@ -58,27 +69,27 @@ gprclean: src/gprclean-main.adb ${GEN_SRCS} ${COBJS}
 		${CURRENT_FOLDER}/src/gprclean-main.adb ${LARGS}
 
 gprbind: gprclean src/gprslave.adb ${GEN_SRCS} ${COBJS}
-	gnatmake -o ${.TARGET} ${AFLAGS} ${LOOK} \
+	gnatmake -o gprbind ${AFLAGS} ${LOOK} \
 		${CURRENT_FOLDER}/src/gprbind.adb ${LARGS}
 
 gprlib: gprbind src/gprslave.adb ${GEN_SRCS} ${COBJS}
-	gnatmake -o ${.TARGET} ${AFLAGS} ${LOOK} \
+	gnatmake -o gprlib ${AFLAGS} ${LOOK} \
 		${CURRENT_FOLDER}/src/gprlib.adb ${LARGS}
 
 gprslave: gprlib src/gprslave.adb ${GEN_SRCS} ${COBJS}
-	gnatmake -o ${.TARGET} ${AFLAGS} ${LOOK} \
+	gnatmake -o gprslave ${AFLAGS} ${LOOK} \
 		${CURRENT_FOLDER}/src/gprslave.adb ${LARGS}
 
 gprinstall: gprslave src/gprinstall-main.adb ${GEN_SRCS} ${COBJS}
-	gnatmake -o ${.TARGET} ${AFLAGS} ${LOOK} \
+	gnatmake -o gprinstall ${AFLAGS} ${LOOK} \
 		${CURRENT_FOLDER}/src/gprinstall-main.adb ${LARGS}
 
 gprconfig: gprinstall src/gprconfig-main.adb ${GEN_SRCS} ${COBJS}
-	gnatmake -o ${.TARGET} ${AFLAGS} ${LOOK} \
+	gnatmake -o gprconfig ${AFLAGS} ${LOOK} \
 		${CURRENT_FOLDER}/src/gprconfig-main.adb ${LARGS}
 
 gprbuild: gprconfig src/gprbuild-main.adb ${GEN_SRCS} ${COBJS}
-	gnatmake -o ${.TARGET} ${AFLAGS} ${LOOK} \
+	gnatmake -o gprbuild ${AFLAGS} ${LOOK} \
 		${CURRENT_FOLDER}/src/gprbuild-main.adb ${LARGS}
 
 obj/link.o: gnat/link.c

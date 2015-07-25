@@ -60,7 +60,8 @@ prepare()
 
 
 
-build() {
+build() 
+{
 #  export OS=unix
 
 
@@ -83,11 +84,12 @@ build() {
 #  patch -p0 -i ../extrapatch-src_gprslave.adb
 
   ./configure --prefix="/usr"
-  make -f Makefile.archy all
+  PREFIX=/usr  make -f Makefile.archy all
 }
 
 
-package() {
+package() 
+{
   cd $pkgname-gpl-$pkgver-src
-  make -f Makefile.archy prefix="$pkgdir/usr" install
+  DESTDIR=$pkgdir  PREFIX=/usr  make -f Makefile.archy prefix="$pkgdir/usr" install
 }
