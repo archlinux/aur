@@ -1,0 +1,2 @@
+# Fairphone
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", ATTRS{idProduct}=="0c03", GROUP="users", MODE="0666"

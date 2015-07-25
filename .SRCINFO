@@ -1,0 +1,12 @@
+pkgbase = fairphone-udev
+	pkgdesc = udev rules for Fairphone.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.fairphone.com/
+	arch = any
+	license = MIT
+	source = 99-fairphone.rules
+	sha256sums = a2b2b7bb3f8b13b849cc7c4b724a31f1086e4d440a350c05eeaeec2b2f45e022
+
+pkgname = fairphone-udev
+
