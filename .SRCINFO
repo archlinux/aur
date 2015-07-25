@@ -1,0 +1,17 @@
+pkgbase = ttf-gujrati-fonts
+	pkgdesc = Gujrati Fonts
+	pkgver = 0.0
+	pkgrel = 0
+	url = http://gujarati.indiatyping.com
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://gujarati.indiatyping.com/images/downloadfonts/Gujrati/Avantika.zip
+	source = http://gujarati.indiatyping.com/images/downloadfonts/Gujrati/Gopika.zip
+	source = http://gujarati.indiatyping.com/images/downloadfonts/Gujrati/Shree768.zip
+	md5sums = 31812c559691117d0d67da104bb8a16e
+	md5sums = 07e02608f86c58adbe4faca233ab6e31
+	md5sums = db771843a551dea704ebf15b71341c78
+
+pkgname = ttf-gujrati-fonts
+
