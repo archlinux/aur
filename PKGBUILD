@@ -15,7 +15,7 @@ _build_voip=true
 
 pkgname=retroshare
 pkgver=0.6.0.RC2
-pkgrel=3
+pkgrel=4
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
