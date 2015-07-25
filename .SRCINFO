@@ -1,0 +1,17 @@
+pkgbase = ttf-aller
+	pkgdesc = An excellent sans serif font for screen legibility
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.daltonmaag.com/
+	install = ttf-aller.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-aller-std
+	conflicts = ttf-aller-std
+	source = aller.zip::http://dl.1001fonts.com/aller.zip
+	sha256sums = 414d2288b9ad72aa0eba9b65b1e949e4f1b0fc655912ae16e4fb2103d83d04cc
+
+pkgname = ttf-aller
+
