@@ -1,0 +1,13 @@
+# Install file for brother-ql700-lpr
+
+post_install() {
+	useradd -s /bin/false -g lp lp
+	mkdir -p /var/spool/lpd/ql700
+	/opt/brother/PTouch/ql700/inf/setupPrintcappt1 ql700 -i USB
+}
+
+pre_remove() {
+	rm -rf /var/spool/lpd/ql700
+	/opt/brother/PTouch/ql700/inf/setupPrintcappt1 ql700 -e
+}
+
