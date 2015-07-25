@@ -3,7 +3,7 @@
 
 pkgname=eclipse-dltk-xotcl
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 _pkgdate=201306060709
 pkgdesc="XOTcl IDE for Eclipse"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-${pkgver:0:3}
 md5sums=('b8cddb0cdd5fc7363bb3ba4f4727d32b')
 
 package() {
-	_dest=$pkgdir/usr/share/eclipse/dropins/${pkgname#eclipse-}/eclipse
+	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/eclipse
 	cd $srcdir
 	install -dm755 $_dest
 	find plugins features -type f -exec install -Dm644 {} \
