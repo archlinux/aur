@@ -1,6 +1,6 @@
 pkgbase = dokku
 	pkgdesc = Docker powered mini-Heroku in around 100 lines of Bash.
-	pkgver = 0.3.21
+	pkgver = 0.3.22
 	pkgrel = 3
 	url = https://github.com/progrium/dokku
 	install = dokku.install
@@ -10,7 +10,7 @@ pkgbase = dokku
 	makedepends = go
 	depends = docker
 	depends = nginx
-	source = git+https://github.com/progrium/dokku.git#tag=v0.3.21
+	source = git+https://github.com/progrium/dokku.git#tag=v0.3.22
 	source = dokku.install
 	source = pluginhook.go
 	source = sshcommand

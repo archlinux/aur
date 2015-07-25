@@ -1,6 +1,6 @@
 # Maintainer: Martin Mlynář <nexus+arch@smoula.net>
 pkgname=dokku
-pkgver=0.3.21
+pkgver=0.3.22
 pkgrel=3
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ makedepends=(
 #https://raw.githubusercontent.com/progrium/pluginhook/master/pluginhook.go
 #https://raw.githubusercontent.com/progrium/sshcommand/master/sshcommand
 source=(
-  "git+https://github.com/progrium/dokku.git#tag=v0.3.21"
+  "git+https://github.com/progrium/dokku.git#tag=v0.3.22"
   "${pkgname}.install"
   "pluginhook.go"
   "sshcommand"
