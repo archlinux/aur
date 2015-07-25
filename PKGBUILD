@@ -1,8 +1,8 @@
 #Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=eclipse-ptp
-pkgver=8.1.1
-_pkgdate=201502031415
+pkgver=9.0.0
+_pkgdate=201506101404
 pkgrel=1
 pkgdesc="Parallel developer tools for Eclipse"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ depends=('eclipse')
 _mirror="http://www.eclipse.org/downloads/download.php?r=1&mirror_id=1&file="
 source=("$_mirror/tools/ptp/updates/$pkgver/ptp-master-${pkgver}.${_pkgdate}.zip")
 
-md5sums=('cec1500a192df7cf1ebbd04a5752afaf')
+md5sums=('900a97c435fb5ce5560ab09cb0838889')
 
 package() {
-  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
   cd ${srcdir}
 
