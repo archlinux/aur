@@ -1,0 +1,14 @@
+pkgbase = ocr-b-font
+	pkgdesc = Free version of OCR-friendly sans-serif monospace TTF/OTF font described in 'ISO 1073-2' standard
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://ansuz.sooke.bc.ca/page/fonts#ocrb
+	arch = any
+	license = other
+	optdepends = gocr
+	optdepends = ocra
+	source = http://jaist.dl.sourceforge.jp/tsukurimashou/56948/ocr-0.2.zip
+	sha256sums = 39289c641520265ecedbade99f01600f316f8196ec57f71c8402d3ba09438666
+
+pkgname = ocr-b-font
+
