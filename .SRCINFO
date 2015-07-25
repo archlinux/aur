@@ -1,0 +1,18 @@
+pkgbase = eclipse-mat
+	pkgdesc = Eclipse Memory Analyzer Tool (MAT), a toolkit for analyzing Java heap dumps.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.eclipse.org/mat
+	install = eclipse-mat.install
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = java-runtime>=6
+	depends = gtk2
+	source_i686 = eclipse-mat-1.5.0-x86.zip::http://download.eclipse.org/mat/1.5/rcp/MemoryAnalyzer-1.5.0.20150527-linux.gtk.x86.zip
+	md5sums_i686 = a37781c215db3e274ef065092580f954
+	source_x86_64 = eclipse-mat-1.5.0-x86_64.zip::http://download.eclipse.org/mat/1.5/rcp/MemoryAnalyzer-1.5.0.20150527-linux.gtk.x86_64.zip
+	md5sums_x86_64 = c8797c88bd1cf9e69731d488bed82c0c
+
+pkgname = eclipse-mat
+
