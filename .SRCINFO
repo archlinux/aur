@@ -1,0 +1,18 @@
+pkgbase = archsocks
+	pkgdesc = archsocks 网络加速代理
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.archsocks.com/
+	install = archsocks.install
+	arch = any
+	depends = python-aiohttp
+	depends = python-chardet
+	source = http://www.archsocks.com/files/archsocks.tar.gz
+	source = archsocks
+	source = archsocks.service
+	sha256sums = bc12cbadfcd657b935cf7377980f1f4c842aac50ec47155ad272fbf58ce6d409
+	sha256sums = dac4cba524d950d068ea13ea467f5d42da308106e15bb45293fa28f225692c53
+	sha256sums = cd3cf869b53612fd15084088fa82e6a7e8689f8fc47803e36b7df45f71479c5e
+
+pkgname = archsocks
+
