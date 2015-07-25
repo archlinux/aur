@@ -2,8 +2,8 @@
 pkgname=adobe-digital-editions
 _version=4.0.3
 _build=110333
-pkgver=${_version}.${_build}
-pkgrel=1
+pkgver=${_version}  #.${_build} TODO
+pkgrel=2
 pkgdesc="Adobe's ebook reader able to read publications protected by DRM"
 url="http://www.adobe.com/br/solutions/ebook/digital-editions/download.html"
 arch=(any)
