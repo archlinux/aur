@@ -2,13 +2,13 @@
 # Contributor: saxonbeta <saxonbeta at gmail __com
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=20150611.25b81fc
+pkgver=20150707.ed71bfa
 pkgrel=1
 pkgdesc="Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver."
 arch=('i686' 'x86_64')
 url="http://www.csc.fi/english/pages/elmer"
 license=('GPL')
-depends=('qwt' 'vtk5' 'suitesparse' 'arpack' 'glu' 'qtwebkit' 'tk')
+depends=('qwt' 'vtk' 'suitesparse' 'arpack' 'glu' 'qtwebkit' 'tk')
 makedepends=('git' 'gcc-fortran' 'cmake')
 provides=(elmerfem)
 conflicts=('elmer_umfpack' 'elmerfem-svn')
