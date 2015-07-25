@@ -13,9 +13,11 @@ license=('GPL')
 
 depends=("gcc-ada")
 source=(http://mirrors.cdn.adacore.com/art/949752df2432aed8d06c48d57cea71f38d0517cc
-        Makefile.archy)
+        Makefile.archy
+        generic_gpr.in)
 md5sums=('98c96b8c6a877617ec4da3ef6a03288a'
-         '9784cefc4f5964b2469504f83957418f')
+         '9784cefc4f5964b2469504f83957418f'
+         'cde06f485e180f4cc82bcdb450d36153')
 
 
 GREP=grep
@@ -23,14 +25,19 @@ AWK=gawk
 ECHO=echo
 SORT=sort
 MKDIR=mkdir
-INSTALL_DATA=cp
-INSTALL_SCRIPT=cp
+INSTALL_DATA=install
+INSTALL_SCRIPT=install
 RM=rm
+FIND=find
+PRINTF=printf
+SED=sed
+REINPLACE_CMD=sed
 
 
 prepare()
 {
   WRKSRC=$srcdir/$pkgname-gpl-$pkgver-src
+  FILESDIR=$srcdir
 
   DUNICODE=$WRKSRC/unicode/dummy_unicode.adb
   DINPSRC=${WRKSRC}/input_sources/dummy_input_sources.adb
@@ -94,7 +101,88 @@ prepare()
 
         sed 's/ is;/;/g' ${DSCHEMA} > tmp
         sed 's/with package/with/g' tmp > ${DSCHEMA}
-  
+ 
+
+	# vital gpr files are missing from GPL 2015, recreate them
+        #
+
+    PORTVERSION="4.6.0.0"
+
+#    set -o monitor
+
+#    FIND1=${WRKSRC}/schema/dummy_schema.adb
+#   FIND1=`find .  -name "*" -exec printf ', "%s"' {} \;`
+
+
+    FIND1=$(cd ${WRKSRC}/unicode       &&  find .  \( -name "unicode*.ads"   -o -name "unicode*.adb"      \) -exec printf ', "%s"' {} \; )
+    FIND2=$(cd ${WRKSRC}/input_sources &&  find .  \( -name "input*.ad[bs]"  -o -name "input_sources.ads" \) -exec printf ', "%s"' {} \; )
+    FIND3=$(cd ${WRKSRC}/sax           &&  find .     -name "sax-*.ad[bs]"                                  -exec printf ', "%s"' {} \; )
+    FIND4=$(cd ${WRKSRC}/dom           &&  find .     -name "dom-*.ad[bs]"                                  -exec printf ', "%s"' {} \; )
+    FIND5=$(cd ${WRKSRC}/schema        &&  find  . -maxdepth 1  \( -name "schema*.ad[bs]" -o -name "schema.ads"        \)  -exec printf ', "%s"' {} \; )
+
+
+
+#    FIND1=	cd ${WRKSRC}/unicode \
+#             && find  .  \( -name "unicode*.ads" -o -name "unicode*.adb"  \) -exec printf ', "%s"' {} \;
+
+#    FIND1='	cd ${WRKSRC}/unicode \
+#             && find  .  \( -name "unicode*.ads" -o -name "unicode*.adb"  \) -exec printf ', "%s"' {} \;'
+
+#    FIND2=	cd ${WRKSRC}/input_sources && ${FIND}    . \( -name "input*.ad[bs]" \
+#	-a ! -name "input_sources.ads" \) -exec ${PRINTF} ', "%s"' {} \;
+
+#    FIND3=	cd ${WRKSRC}/sax && \
+#	${FIND}    . -name "sax-*.ad[bs]" -exec ${PRINTF} ', "%s"' {} \;
+
+ #   FIND4=	cd ${WRKSRC}/dom && \
+#	${FIND}    . -name "dom-*.ad[bs]" -exec ${PRINTF} ', "%s"' {} \;
+
+ #   FIND5=	cd ${WRKSRC}/schema && ${FIND}  . \( -name "schema*.ad[bs]" \
+#	-a ! -name "schema.ads" \) -depth 0 -maxdepth 0 \
+#	-exec ${PRINTF} ', "%s"' {} \;
+
+
+#	${SED} -e 's|@exec_prefix@|$${prefix}|' \
+#		-e 's|@libdir@|$${exec_prefix}/lib|' \
+#		-e 's|@includedir@|$${prefix}/include|' \
+#		-e 's|@DEFAULT_LIBRARY_TYPE@|static|' \
+#		-e 's|@PACKAGE_VERSION@|${PORTVERSION}|' \
+#		${WRKSRC}/xmlada-config.in > ${WRKSRC}/xmlada-config
+
+	${SED} -e '/^with/d' -e 's|@ZONE@|unicode|' \
+		-e "s|@FILES@|${FIND1}|" \
+		-e 's|@VERSION@|4.6.0.0|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_unicode.gpr
+
+#	${SED} -e '/^with/d' -e 's|@ZONE@|unicode|' \
+#		-e "s|@FILES@|`${FIND1}`|" \
+#		-e 's|@VERSION@|4.6.0.0|' ${FILESDIR}/generic_gpr.in \
+#		> ${WRKSRC}/distrib/xmlada_unicode.gpr
+
+	${SED} -e 's|@DEPENDS@|unicode|' -e 's|@ZONE@|input_sources|' \
+		-e "s|@FILES@|${FIND2}|" \
+		-e 's|@VERSION@|4.6.0.0|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_input_sources.gpr
+
+	${SED} -e 's|@DEPENDS@|input_sources|' -e 's|@ZONE@|sax|' \
+		-e "s|@FILES@|${FIND3}|" \
+		-e 's|@VERSION@|4.6.0.0|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_sax.gpr
+
+	${SED} -e 's|@DEPENDS@|sax|' -e 's|@ZONE@|dom|' \
+		-e "s|@FILES@|${FIND4}|" \
+		-e 's|@VERSION@|4.6.0.0|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_dom.gpr
+
+	${SED} -e 's|@DEPENDS@|dom|' -e 's|@ZONE@|schema|' \
+		-e "s|@FILES@|${FIND5}|" \
+		-e 's|@VERSION@|4.6.0.0|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_schema.gpr
+
+	# Since we want to pull in all 5 libs, we only need to specify schema
+        #
+	${REINPLACE_CMD} -e '/unicode/d' ${WRKSRC}/distrib/xmlada.gpr
+ 
 }
 
 
@@ -117,7 +205,9 @@ package()
   WRKSRC=$srcdir/$pkgname-gpl-$pkgver-src
 
 
-	${MKDIR} -p ${STAGEDIR}${PREFIX}/include/xmlada \
+	${MKDIR} -p \
+                ${STAGEDIR}${PREFIX}/bin \
+                ${STAGEDIR}${PREFIX}/include/xmlada \
 		${STAGEDIR}${PREFIX}/lib/gnat \
 		${STAGEDIR}${PREFIX}/lib/xmlada/relocatable \
 		${STAGEDIR}${PREFIX}/lib/xmlada/static \
@@ -163,7 +253,7 @@ package()
 	${INSTALL_DATA} ${WRKSRC}/distrib/xmlada_gps.py \
 		${STAGEDIR}${PREFIX}/share/gps/plug-ins
 
-	${INSTALL_SCRIPT} ${WRKSRC}/xmlada-config ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_SCRIPT} ${WRKSRC}/xmlada-config ${STAGEDIR}${PREFIX}/bin/xmlada-config
 
 
 #  make -j1 prefix=$pkgdir/usr install 
