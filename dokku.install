@@ -21,7 +21,7 @@ post_install() {
     chown dokku:dokku "/var/dokku/HOSTNAME"
   fi
 
-  echo "%dokku ALL=(ALL) NOPASSWD:/etc/init.d/nginx reload, /usr/sbin/nginx -t" > /etc/sudoers.d/dokku-nginx
+  echo "%dokku ALL=(ALL) NOPASSWD:/usr/bin/systemctl reload nginx, /usr/sbin/nginx -t" > /etc/sudoers.d/dokku-nginx
 
   echo "
     Please add your ssh pubkey like:

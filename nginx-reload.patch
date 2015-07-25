@@ -1,0 +1,20 @@
+diff -ruN dokku.orig/plugins/nginx-vhosts/commands dokku/plugins/nginx-vhosts/commands
+--- dokku.orig/plugins/nginx-vhosts/commands	2015-07-26 00:25:13.665938706 +0200
++++ dokku/plugins/nginx-vhosts/commands	2015-07-26 00:30:32.813534100 +0200
+@@ -14,15 +14,7 @@
+ }
+ 
+ restart_nginx () {
+-  case "$DOKKU_DISTRO" in
+-    ubuntu)
+-      sudo /etc/init.d/nginx reload > /dev/null
+-      ;;
+-
+-    opensuse)
+-      sudo /sbin/service nginx reload > /dev/null
+-      ;;
+-  esac
++  sudo /usr/bin/systemctl reload nginx
+ }
+ 
+ case "$1" in
