@@ -7,7 +7,7 @@ pkgdesc="ODBC driver for SQLite"
 arch=('i686' 'x86_64')
 depends=('sqlite')
 url="http://www.ch-werner.de/sqliteodbc/"
-license="BSD"
+license=('BSD')
 source=(http://www.ch-werner.de/sqliteodbc/${pkgname}-${pkgver}.tar.gz)
 md5sums=('383fee316c6f89bb63a6a4503b13b90b')
 sha256sums=('f5c6119cfb688fc3d2fbc500c6cfa796538b767c511be5ab90fb6805fcd289c3')
@@ -22,4 +22,5 @@ package() {
     cd "$srcdir/${pkgname}-$pkgver"
     install -d "${pkgdir}/usr/lib"
     make -j1 DESTDIR="${pkgdir}/" install
+    install -D -m644 license.terms "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
