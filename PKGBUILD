@@ -9,7 +9,7 @@ _build_nogui=true
 
 # Set this to true to build and install the plugins
 _build_feedreader=true
-_build_voip=false
+_build_voip=true
 
 ### Nothing to be changed below this line ###
 
@@ -37,7 +37,7 @@ sha256sums=('2320676da905de6c48b01eda611811965277ffa1d5ddbb387aa8f0414c2de050'
             '70be00968f2477e368f75393f193e76f366fff2dadab869c855e92048060cf29')
 
 # Add missing dependencies if needed
-[[ $_build_voip == true ]] && depends=(${depends[@]} 'speex' 'openvc')
+[[ $_build_voip == true ]] && depends=(${depends[@]} 'speex' 'opencv')
 [[ $_build_feedreader == true ]] && depends=(${depends[@]} 'curl' 'libxslt')
 
 _rssrcdir="retroshare06-0.6.0/src"
@@ -97,13 +97,6 @@ build() {
 		make
 	fi
 
-	if [[ "$_build_linkscloud" == "true" ]] ; then
-		msg "Compiling LinksCloud plugin..."
-		cd "${_srcdir}/plugins/LinksCloud"
-		$_qmake
-		make
-	fi
-
 	if [[ $_build_nogui == "true" ]] ; then
 		msg "Compiling retroshare-nogui..."
 		cd "${_srcdir}/retroshare-nogui/src"
@@ -139,11 +132,6 @@ package() {
 
 
 	# Plugins
-	if [[ "$_build_linkscloud" == "true" ]] ; then
-		install -D -m 755 \
-			"${_srcdir}/plugins/LinksCloud/libLinksCloud.so" \
-			"${pkgdir}/usr/lib/retroshare/extensions/libLinksCloud.so"
-	fi
 	if [[ "$_build_voip" == "true" ]] ; then
 		install -D -m 755 \
 			"${_srcdir}/plugins/VOIP/libVOIP.so" \
