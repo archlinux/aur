@@ -1,0 +1,18 @@
+pkgbase = dokku-psql-single-container
+	pkgdesc = Dokku plugin - postgresql, one-container
+	pkgver = 0.3.22
+	pkgrel = 1
+	url = https://github.com/Flink/dokku-psql-single-container
+	install = dokku-psql-single-container.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = dokku
+	source = git+https://github.com/Flink/dokku-psql-single-container.git#tag=v0.3.22
+	source = dokku-psql-single-container.install
+	sha256sums = SKIP
+	sha256sums = 10883701e5b6737064ffc10a932cfcd467ba45c6ee3ebd4f500a86ffc7f2fb06
+
+pkgname = dokku-psql-single-container
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+post_install() {
+  echo "
+    To finish installation run:
+      # dokku plugins-install
+"
+}
