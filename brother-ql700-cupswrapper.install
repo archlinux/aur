@@ -2,7 +2,7 @@
 
 post_install() {
 	/opt/brother/PTouch/ql700/cupswrapper/cupswrapperql700pt1
-	systemctl restart cups
+	systemctl restart org.cups.cupsd.service
 }
 
 pre_remove() {
@@ -10,7 +10,9 @@ pre_remove() {
 }
 
 post_remove() {
-	systemctl restart cups
+	systemctl restart org.cups.cupsd.service
 }
 
-
+post_upgrade() {
+	systemctl restart org.cups.cupsd.service
+}
