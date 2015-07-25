@@ -1,0 +1,17 @@
+pkgbase = adobe-digital-editions
+	pkgdesc = Adobe's ebook reader able to read publications protected by DRM
+	pkgver = 4.0.3.110333
+	pkgrel = 1
+	url = http://www.adobe.com/br/solutions/ebook/digital-editions/download.html
+	install = adobe-digital-editions.install
+	arch = any
+	license = custom:Adobe End User License Agreements (EULAs)
+	makedepends = wine
+	makedepends = winetricks
+	depends = wine
+	depends = samba
+	source = http://download.adobe.com/pub/adobe/digitaleditions/ADE_4.0_Installer.exe
+	md5sums = 74c73f7e68df9fff35f0a6d940ff2876
+
+pkgname = adobe-digital-editions
+

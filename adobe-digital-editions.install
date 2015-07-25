@@ -1,0 +1,42 @@
+source /tmp/adobe-digital-editions.PKGBUILD     # ${_installer}
+
+put_user() {
+    echo "Users: "$(ls /home/)
+    export ADOBE_USER=$(ls -1 /home/ | head)
+    echo "Choose someone [default=$ADOBE_USER]:"
+    # TODO: stop for capture user's answer
+}
+
+put_DISPLAY() {
+    export DISPLAY=:0
+    # TODO: discover
+}
+
+put_wine() {
+    sudo -u $ADOBE_USER winetricks -q corefonts dotnet40 msxml3
+    sudo -u $ADOBE_USER wine /tmp/${_installer}
+}
+
+post_install() {
+    echo "Install procedure"
+    put_user
+    put_DISPLAY
+    put_wine
+}
+
+post_upgrade() {
+    echo "Upgrade procedure"
+    put_user
+    put_DISPLAY
+    put_wine
+}
+
+post_remove() {
+    echo "Remove instructions"
+    echo "  If prefer, undo these commands:"
+    echo "      winetricks -q corefonts dotnet40 msxml3"
+    echo "      wine /tmp/${_installer}"
+    echo "  Try uninstall by wincfg."
+    # TODO: msg2 etc.    
+    # TODO: users with ~/.wine
+}
