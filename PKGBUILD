@@ -5,13 +5,13 @@
 
 pkgname=kodi-platform-git
 pkgver=r36.33b6390
-pkgrel=1
+pkgrel=2
 pkgdesc='Kodi platform support library'
 arch=('i686' 'x86_64')
 url="https://github.com/xbmc/kodi-platform"
 license=('GPL')
 makedepends=('cmake' 'git')
-depends=('kodi')
+depends=('kodi' 'libplatform')
 provides=('kodi-platform')
 conflicts=('kodi-platform')
 source=("${pkgname}::git+https://github.com/xbmc/kodi-platform.git")
