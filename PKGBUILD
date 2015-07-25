@@ -4,7 +4,7 @@
 
 _pkgname=gist
 pkgname=${_pkgname}-git
-pkgver=4.4.0.r0.g1a5e2ca
+pkgver=4.4.2.r1.gb42cce2
 pkgrel=1
 pkgdesc="Potentially the best command line gister"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('ruby')
 makedepends=('git')
 optdepends=("xclip: will put pasted gists url into X selection automagically"
     "xsel: put pasted gist's url into X selection automagically")
-provides=('gist=4.4.0')
+provides=('gist=4.4.2')
 conflicts=('gist')
 source=('git://github.com/defunkt/gist.git')
 md5sums=('SKIP')
