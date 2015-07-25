@@ -1,6 +1,6 @@
 # Maintainer: Rubens Brandão <construidor[at]gmail[dot]com>
 pkgname=mosix
-pkgver=4.2.1
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="MOSIX can manage Linux clusters and multi-cluster private Clouds."
 url="http://www.mosix.cs.huji.ac.il"
@@ -17,7 +17,7 @@ source=(
 		'mosix.service'
 		)
 sha256sums=(
-		'4a44188355d6f52947cf583ee9b96b597c7a31074abb9095f1b014f1a38222b6'
+		'cd8b4419382e01430e7545a5c2232652d505efca87026a13c36ca3a1904220f2'
 		'b216039d8eefab0e54200ef1a393f8f10c1aa7d630d1e83865c27f39dd45b8fd'
 		)
 
