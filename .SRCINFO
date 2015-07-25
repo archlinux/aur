@@ -1,0 +1,13 @@
+pkgbase = python-profilehooks
+	pkgdesc = Decorators for profiling/timing/tracing individual functions
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/profilehooks/
+	arch = any
+	license = MIT
+	depends = python
+	source = http://pypi.python.org/packages/source/p/profilehooks/profilehooks-1.8.0.tar.gz
+	md5sums = 7887e07df4fb244a950debf841754762
+
+pkgname = python-profilehooks
+
