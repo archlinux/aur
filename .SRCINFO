@@ -1,0 +1,15 @@
+pkgbase = sqliteodbc
+	pkgdesc = ODBC driver for SQLite
+	pkgver = 0.9992
+	pkgrel = 1
+	url = http://www.ch-werner.de/sqliteodbc/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = sqlite
+	source = http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9992.tar.gz
+	md5sums = 383fee316c6f89bb63a6a4503b13b90b
+	sha256sums = f5c6119cfb688fc3d2fbc500c6cfa796538b767c511be5ab90fb6805fcd289c3
+
+pkgname = sqliteodbc
+
