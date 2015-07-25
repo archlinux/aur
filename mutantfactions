@@ -1,0 +1,21 @@
+#! /bin/sh
+
+cleanup()
+{
+  fusermount -u $HOME/.mutantfactions/overlay
+}
+
+if [[ ! -d $HOME/.mutantfactions/overlay ]]; then
+  mkdir -p $HOME/.mutantfactions/overlay
+fi
+if [[ ! -d $HOME/.mutantfactions/data ]]; then
+  mkdir -p $HOME/.mutantfactions/data
+fi
+
+unionfs -o cow $HOME/.mutantfactions/data=RW:/opt/mutantfactions=RO $HOME/.mutantfactions/overlay
+trap cleanup SIGTERM
+trap cleanup SIGKILL
+trap cleanup SIGINT
+$HOME/.mutantfactions/overlay/MutantFactions $@
+cleanup
+

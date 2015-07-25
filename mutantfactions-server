@@ -1,0 +1,26 @@
+#! /bin/sh
+
+source /etc/conf.d/mutantfactions
+
+USER=$(id -un)
+if [[ $USER != "mutantfactions" ]]; then
+  echo "This program should only be run by the mutantfactions user"
+  exit
+fi
+
+cleanup()
+{
+  fusermount -u $HOME/.mutantfactions/overlay
+}
+
+if [[ ! -d $HOME/.mutantfactions/overlay ]]; then
+  mkdir -p $HOME/.mutantfactions/overlay
+fi
+if [[ ! -d $HOME/.mutantfactions/data ]]; then
+  mkdir -p $HOME/.mutantfactions/data
+fi
+
+unionfs -o cow $HOME/.mutantfactions/data=RW:/opt/mutantfactions=RO $HOME/.mutantfactions/overlay
+trap cleanup SIGINT
+$HOME/.mutantfactions/overlay/MutantFactionsServer $MUTANT_FACTIONS_ARGS
+

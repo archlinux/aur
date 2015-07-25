@@ -1,0 +1,11 @@
+#
+# Arguments to be passed to the mutant factions dedicated server
+#
+# Available args
+#
+# -m <max_nb_of_players> : Max number of players
+# -p <port>              : Port to listen to
+# -h <username>          : Username to whom community credits should be given for
+
+MUTANT_FACTION_ARGS=""
+

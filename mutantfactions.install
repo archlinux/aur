@@ -1,0 +1,27 @@
+post_install() {
+  xdg-icon-resource forceupdate --theme hicolor 2> /dev/null
+  if [ ! `grep mutantfactions /etc/group` ]; then
+    groupadd mutantfactions &> /dev/null;
+  fi
+
+  id mutantfactions &>/dev/null || \
+    useradd -g mutantfactions -d /var/lib/mutantfactions -s /bin/false mutantfactions
+
+  chgrp -R mutantfactions /opt/mutantfactions/data
+  chown mutantfactions:mutantfactions /var/lib/mutantfactions
+  echo "  >> Add yourself to the mutantfactions group to run the game."
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  userdel mutantfactions &> /dev/null
+  groupdel mutantfactions &> /dev/null
+}
+
+post_remove () {
+  xdg-icon-resource forceupdate --theme hicolor 2> /dev/null
+}
+

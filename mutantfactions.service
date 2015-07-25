@@ -1,0 +1,12 @@
+[Unit]
+Description=Dedicated server for mutant factions
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/mutantfactions-server
+Type=simple
+User=mutantfactions
+Group=mutantfactions
+
+[Install]
+WantedBy=multi-user.target
