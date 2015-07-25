@@ -1,8 +1,8 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=aegir
-pkgver=7.x_3.0_beta2
-pkgrel=2
+pkgver=7.x_3.0
+pkgrel=1
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -31,20 +31,20 @@ source=(
     "$pkgname.service"
     "$pkgname.target"
 )
-md5sums=('ef91c3e0f09e6737105fc1b9971758cc'
+md5sums=('d43026960060bc677549baa26a24c9ee'
          '829ac9283a168f796354e78e8bc8e496'
-         '75535f9870f06c540f513262a9b7b1ab'
+         '86395485765bb73ae09d28e0d7101613'
          '879237d0ca0dc54d5cdb4307adb40005'
          'cb3462fda27156851badf51d5a0595ae'
-         '4889b3de48732ec149a71aeb72039455'
-         '80773e4278e09b14cc6843e346540a9d')
+         '25414ba4e4bd50f31286db9a349afa4d'
+         '5020ae6d02a9796e979d1619a9a02957')
 
-pkgver() {
-    echo \
-      $(drush rl --fields=version --field-labels=0 provision | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' ') \
-      $(drush rl --fields=version --field-labels=0 hostmaster | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' ') \
-      | tr ' ' $'\n' | sort -ur | head -n1
-}
+#~ pkgver() {
+    #~ echo \
+      #~ $(drush rl --fields=version --field-labels=0 provision | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' ') \
+      #~ $(drush rl --fields=version --field-labels=0 hostmaster | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' ') \
+      #~ | tr ' ' $'\n' | sort -ur | head -n1
+#~ }
 
 prepare() {
     for extension in gd pdo_mysql; do
@@ -71,6 +71,7 @@ package() {
 
     msg2 'Creating $pkgname directory structure'
     mkdir -p "$pkgdir/var/lib/$pkgname"
+    ln -s /etc/drush "$pkgdir/var/lib/$pkgname/.drush"
     umask 077
     mkdir -p "$pkgdir/var/lib/$pkgname/"{backups,clients/admin,config/{includes,self,server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}}
     umask 022

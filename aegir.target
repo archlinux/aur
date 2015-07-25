@@ -1,6 +1,6 @@
 [Unit]
 Description=Aegir Hosting System
-Requires=aegir.service mailcatcher.service mailcatcher-smtp.socket mysqld.service nginx.service php-fpm.service
+Wants=aegir.service mailcatcher.service mailcatcher-smtp.socket mysqld.service nginx.service php-fpm.service
 After=aegir.service mailcatcher.service mailcatcher-smtp.socket mysqld.service nginx.service php-fpm.service
 PropagatesReloadTo=aegir.service mailcatcher.service mailcatcher-smtp.socket mysqld.service nginx.service php-fpm.service
 

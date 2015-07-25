@@ -1,7 +1,8 @@
 [Unit]
 Description=Aegir queue daemon
 PartOf=aegir.target
-After=mysqld.service php-fpm.service nginx.service
+Wants=mysqld.service php-fpm.service
+After=mysqld.service php-fpm.service
 
 [Service]
 Type=simple

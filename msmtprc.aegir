@@ -1,6 +1,5 @@
 account mailcatcher
 host localhost
-port 25
 auto_from on
 
 account default: mailcatcher
