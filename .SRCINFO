@@ -1,6 +1,6 @@
 pkgbase = cppformat-git
 	pkgdesc = Small, safe and fast formatting library for C++
-	pkgver = 1.1.0.r244.g7859f81
+	pkgver = 1.1.0.r252.g76d1218
 	pkgrel = 1
 	url = http://cppformat.github.io
 	arch = i686
@@ -8,6 +8,9 @@ pkgbase = cppformat-git
 	license = BSD
 	makedepends = cmake
 	makedepends = git
+	makedepends = doxygen
+	makedepends = nodejs-less-plugin-clean-css
+	makedepends = python-virtualenv
 	depends = gcc-libs
 	conflicts = cppformat
 	source = cppformat-git::git+https://github.com/cppformat/cppformat
