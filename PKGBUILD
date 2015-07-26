@@ -8,7 +8,7 @@ pkgdesc="The file settings for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/settings-app"
 license=("GPL")
-depends=("qt5-declarative-git" "qml-material-git" "papyros-shell-git")
+depends=("qt5-declarative" "qml-material" "papyros-shell-git")
 makedepends=("git" "cmake" "extra-cmake-modules")
 provides=("$pkgname")
 source=("$pkgname::git+https://github.com/papyros/settings-app.git#branch=develop")
