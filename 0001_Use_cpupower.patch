@@ -1,0 +1,12 @@
+diff -Nru indicator-cpufreq-0.1.4.orig/indicator_cpufreq/cpufreq.py indicator-cpufreq-0.1.4/indicator_cpufreq/cpufreq.py
+--- indicator-cpufreq-0.1.4.orig/indicator_cpufreq/cpufreq.py	2012-10-23 17:26:18.919464853 -0400
++++ indicator-cpufreq-0.1.4/indicator_cpufreq/cpufreq.py	2012-10-23 17:26:44.372792374 -0400
+@@ -17,7 +17,7 @@
+ from ctypes import *
+ from ctypes.util import find_library
+ 
+-_libcpufreq = cdll.LoadLibrary(find_library("cpufreq"))
++_libcpufreq = cdll.LoadLibrary(find_library("cpupower"))
+ 
+ class _cpufreq_policy(Structure):
+     _fields_ = [

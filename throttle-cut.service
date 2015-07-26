@@ -1,0 +1,11 @@
+[Unit]
+Description=Throttle Cut
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/bin/bash "/usr/local/sbin/throttle cut"
+StandardOutput=null
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
