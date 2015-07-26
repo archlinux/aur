@@ -1,0 +1,5 @@
+*.gz
+*.xz
+*.exe
+src/
+pkg/
