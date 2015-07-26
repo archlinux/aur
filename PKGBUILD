@@ -3,7 +3,7 @@
 # Contributor: L42y <423300@gmail.com>
 
 
-pkgbase=network-manager-applet
+pkgbase=network-manager-applet-git
 pkgname=network-manager-applet-git
 pkgver=1.1.0.r3454.g1cf5002
 pkgrel=1
@@ -19,7 +19,7 @@ makedepends=('intltool' 'gobject-introspection')
 provides=('network-manager-applet' 'nm-connection-editor' 'libnm-gtk')
 conflicts=('nm-connection-editor' 'network-manager-applet')
 options=('!libtool')
-install=${pkgbase}-git.install
+install=${pkgbase}.install
 source=(git://git.gnome.org/network-manager-applet)
 sha256sums=('SKIP')
 sha512sums=('SKIP')
