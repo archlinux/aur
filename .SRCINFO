@@ -1,0 +1,16 @@
+pkgbase = tegaki-pygtk
+	pkgdesc = Base user interface library for Tegaki
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://www.tegaki.org/
+	arch = any
+	license = GPL2
+	makedepends = python2
+	depends = python2
+	depends = pygtk>=2.10
+	depends = tegaki-python>=0.2
+	source = http://www.tegaki.org/releases/0.3.1/tegaki-pygtk-0.3.1.tar.gz
+	md5sums = db7c662482dad10d3d979957edf4b3c2
+
+pkgname = tegaki-pygtk
+
