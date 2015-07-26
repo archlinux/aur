@@ -5,7 +5,7 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-git
-pkgver=v5.5.0.beta1.362.gec8c1dc
+pkgver=git
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework"
 arch=("i686" "x86_64")
@@ -26,7 +26,7 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname" "qtchooser")
-source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=5.5")
+source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=dev")
 
 sha256sums=("SKIP")
 
