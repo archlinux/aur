@@ -2,22 +2,22 @@
 # Contributor: Jesus Jerez <jerezmoreno@gmail.com>
 
 pkgname=eclipse-pde
-pkgver=4.4
-pkgdate=201406061215
+pkgver=4.5
+pkgdate=201506032000
 pkgrel=1
 pkgdesc="Plug-in Development Environment - Separated from Eclipse SDK package. Use with eclipse-platform"
 url="http://www.eclipse.org/pde/"
 arch=('any')
 license=('EPL')
-depends=('eclipse-platform')
+depends=('eclipse-common')
 makedepends=('unzip')
 options=(!strip)
 source=("http://www.eclipse.org/downloads/download.php?r=1&file=/eclipse/downloads/drops4/R-${pkgver}-${pkgdate}/org.eclipse.pde-${pkgver}.zip")
-md5sums=('2361263bdd3ba61108288a188b6fa282')
+md5sums=('fbe20c39bdebad4959e416e2a92396ba')
 
 package() {
 
-  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
   cd ${srcdir}
 

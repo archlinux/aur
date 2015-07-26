@@ -1,15 +1,15 @@
 pkgbase = eclipse-pde
 	pkgdesc = Plug-in Development Environment - Separated from Eclipse SDK package. Use with eclipse-platform
-	pkgver = 4.4
+	pkgver = 4.5
 	pkgrel = 1
 	url = http://www.eclipse.org/pde/
 	arch = any
 	license = EPL
 	makedepends = unzip
-	depends = eclipse-platform
+	depends = eclipse-common
 	options = !strip
-	source = http://www.eclipse.org/downloads/download.php?r=1&file=/eclipse/downloads/drops4/R-4.4-201406061215/org.eclipse.pde-4.4.zip
-	md5sums = 2361263bdd3ba61108288a188b6fa282
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/eclipse/downloads/drops4/R-4.5-201506032000/org.eclipse.pde-4.5.zip
+	md5sums = fbe20c39bdebad4959e416e2a92396ba
 
 pkgname = eclipse-pde
 
