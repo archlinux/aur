@@ -1,0 +1,4 @@
+src/
+pkg/
+PebbleSDK*.tar.gz
+*.pkg.tar*
