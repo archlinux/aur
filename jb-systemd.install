@@ -8,6 +8,8 @@ post_install() {
   ln -s "/usr/lib/systemd/system/autologin@.service" "/etc/systemd/system/getty.target.wants/autologin@.service"
   ln -s "/usr/lib/systemd/system/autologin@.service" "/etc/systemd/system/getty.target.wants/autologin@tty1.service"
   ln -s "/usr/lib/systemd/system/restoreboot.service" "/etc/systemd/system/multi-user.target.wants/restoreboot.service"
+  groupadd time
+  usermod -a -G time jbuser
 }
 
 post_upgrade() {
@@ -19,4 +21,5 @@ post_remove() {
   rm "/etc/systemd/system/getty.target.wants/autologin@.service"
   rm "/etc/systemd/system/getty.target.wants/autologin@tty1.service"
   rm "/etc/systemd/system/multi-user.target.wants/restoreboot.service"
+  groupdel time
 }

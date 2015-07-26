@@ -1,17 +1,18 @@
 # Maintainer: justbrowsing <developer4linux+aur@gmail.com>
 pkgname=justbrowsing-systemd
-pkgver=1.1
-pkgrel=7
+pkgver=1.2
+pkgrel=1
 pkgdesc="SystemD Unit files and boot script to start JustBrowsing session"
 arch=('any')
 url="https://github.com/justbrowsing/justbrowsing-systemd"
 license=('GPL3')
+makedepends=('')
 depends=('systemd' 'polkit')
 optdepends=('jb-config: load/save and manage settings')
 groups=("justbrowsing")
-source=("https://github.com/justbrowsing/${pkgname}/archive/master.zip")
+source=("https://github.com/justbrowsing/${pkgname}/archive/master.tar.gz")
 install="jb-systemd.install"
-md5sums=('9e51b04d30ee1fafc24f38f54f12cac4')
+md5sums=('0e43522ddfdb896bf5826c7936cb8d73')
  
 package() {
   cd "$srcdir/${pkgname}-master"
