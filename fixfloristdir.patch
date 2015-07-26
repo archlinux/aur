@@ -1,0 +1,12 @@
+--- florist.gpr	2013-02-19 10:52:20.108656729 +0200
++++ florist.gpr.orig	2013-02-19 10:52:15.558655756 +0200
+@@ -1,7 +1,7 @@
+ project Florist is
+ 
+-   for Source_Dirs use ("../floristlib");
+-   for Object_Dir use "../floristlib";
++   for Source_Dirs use ("../../floristlib");
++   for Object_Dir use "../../floristlib";
+ 
+    for Externally_Built use "True";
+ 

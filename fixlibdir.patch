@@ -1,0 +1,11 @@
+--- Makefile.orig	2013-02-19 10:33:23.021737881 +0200
++++ Makefile	2013-02-19 10:45:43.651897946 +0200
+@@ -188,7 +188,7 @@
+ # install floristlib
+ install:
+ 	mkdir -p $(PREFIX)/lib/gnat
+-	cp -pr floristlib $(PREFIX)/floristlib
++	cp -pr floristlib $(PREFIX)/lib/
+ 	cp -p florist.gpr $(PREFIX)/lib/gnat
+ 
+ .PHONY: install clean distclean regen

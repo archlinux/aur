@@ -1,0 +1,18 @@
+pkgbase = florist
+	pkgdesc = An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding.
+	pkgver = 2015
+	pkgrel = 1
+	url = http://sourceforge.net/projects/gnat-florist/
+	arch = any
+	license = GPL3
+	depends = gcc-ada
+	options = staticlibs
+	source = http://downloads.dragonlace.net/src/florist-gpl-2015-src.tar.gz
+	source = fixlibdir.patch
+	source = fixfloristdir.patch
+	md5sums = c2efa1aa21cfd5c64cc55306f0c53210
+	md5sums = 1934106ceeb63ef23c50a5ed38b9b8a2
+	md5sums = 0c9ef7e75ef15784a6ed8a7b9ee46251
+
+pkgname = florist
+
