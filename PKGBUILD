@@ -1,15 +1,16 @@
-# Maintainer: Thomas Weißschuh <thomas t-8ch.de>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=khal
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV'
 arch=('any')
 url='http://lostpackets.de/khal/'
 license=('MIT')
 depends=('python2-urwid' 'python2-vdirsyncer' 'python2-tzlocal'
-         'python2-click' 'python2-configobj' 'python2-icalendar' 'python2-xdg')
- optdepends=('python2-setproctitle')
+         'python2-click' 'python2-configobj' 'python2-icalendar' 'python2-xdg'
+         'python2-pkginfo')
+optdepends=('python2-setproctitle')
 source=("http://pypi.python.org/packages/source/k/khal/khal-${pkgver}.tar.gz")
 
 
@@ -23,4 +24,4 @@ package() {
     python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('a992d9391f4af2c67fd6b3efaa03b299b423045c604142b2074ee90d98dd8280')
+sha256sums=('1a2e8d56d20b12ed2c3ef2468ff0ce0c658a8a566b249821b0f4b30cce8ada9a')

@@ -1,7 +1,7 @@
 pkgbase = khal
 	pkgdesc = CLI calendar application build around CalDAV
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = http://lostpackets.de/khal/
 	arch = any
 	license = MIT
@@ -12,9 +12,10 @@ pkgbase = khal
 	depends = python2-configobj
 	depends = python2-icalendar
 	depends = python2-xdg
+	depends = python2-pkginfo
 	optdepends = python2-setproctitle
-	source = http://pypi.python.org/packages/source/k/khal/khal-0.5.0.tar.gz
-	sha256sums = a992d9391f4af2c67fd6b3efaa03b299b423045c604142b2074ee90d98dd8280
+	source = http://pypi.python.org/packages/source/k/khal/khal-0.6.0.tar.gz
+	sha256sums = 1a2e8d56d20b12ed2c3ef2468ff0ce0c658a8a566b249821b0f4b30cce8ada9a
 
 pkgname = khal
 
