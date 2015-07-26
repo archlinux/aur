@@ -1,8 +1,8 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 0.99.212
+	pkgver = 0.99.632
 	pkgrel = 1
-	url = http://www.rstudio.org/
+	url = https://www.rstudio.com/products/rstudio/
 	install = rstudio-desktop-git.install
 	arch = i686
 	arch = x86_64
@@ -24,15 +24,24 @@ pkgbase = rstudio-desktop-git
 	depends = hicolor-icon-theme
 	depends = shared-mime-info
 	depends = qt5-webkit
+	depends = hunspell-en
+	depends = mathjax
+	depends = pandoc-bin
 	optdepends = git: for git support
 	optdepends = subversion: for subversion suuport
 	optdepends = openssh-askpass: for a git ssh access
 	provides = rstudio-desktop
 	provides = rstudio-desktop-bin
+	provides = rstudio-desktop-preview
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-bin
+	conflicts = rstudio-desktop-preview
 	source = git+https://github.com/rstudio/rstudio.git
+	source = https://s3.amazonaws.com/rstudio-buildtools/gin-1.5.zip
+	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.7.0.zip
 	md5sums = SKIP
+	md5sums = 2409168cc18bf5f341e107e6887fe359
+	md5sums = a8f3704a597b392910ea060284f21a03
 
 pkgname = rstudio-desktop-git
 
