@@ -2,14 +2,14 @@
 
 pkgname=tegaki-models-zinnia-japanese
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese handwriting models for zinnia engine and use in Tegaki"
 arch=('any')
 url="http://www.tegaki.org/"
 license=('GPL2')
 depends=('zinnia>=0.05')
 optdepends=('tegaki-recognize: Chinese and Japanese Handwriting Recognition program')
-source=('http://www.tegaki.org/releases/0.3/models/tegaki-zinnia-japanese-0.3.zip')
+source=("http://www.tegaki.org/releases/$pkgver/models/tegaki-zinnia-japanese-$pkgver.zip")
 md5sums=('19c2ed9e770c23016f788b06ade41f95')
 
 package() {

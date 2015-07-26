@@ -1,7 +1,7 @@
 pkgbase = tegaki-models-zinnia-japanese
 	pkgdesc = Japanese handwriting models for zinnia engine and use in Tegaki
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tegaki.org/
 	arch = any
 	license = GPL2
