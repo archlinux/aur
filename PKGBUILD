@@ -8,7 +8,7 @@ pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/greenisland/greenisland.git'
 license=('GPL', 'LGPL')
-depends=('qt5-declarative-git' 'qt5-wayland-git')
+depends=('qt5-declarative' 'qt5-wayland')
 makedepends=('git' 'gdb' 'extra-cmake-modules')
 options=('debug')
 
