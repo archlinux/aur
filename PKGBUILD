@@ -5,8 +5,8 @@
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=0.3.3382
-pkgrel=2
+pkgver=0.3.3385
+pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
 license=('GPL3')
