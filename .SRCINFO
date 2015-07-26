@@ -12,6 +12,7 @@ pkgbase = mingw-w64-evince-light
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-binutils
 	makedepends = patch
+	makedepends = wine
 	depends = mingw-w64-crt
 	depends = gsettings-desktop-schemas
 	depends = mingw-w64-gtk3

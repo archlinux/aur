@@ -22,7 +22,7 @@ depends=(
 #        'texlive-bin' for DVI
 #        'libgxps' for XPS
 #        'gvfs' for bookmark and annotations
-makedepends=('itstool' 'intltool' 'mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-binutils' 'patch')
+makedepends=('itstool' 'intltool' 'mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-binutils' 'patch' 'wine')
 provides=("${pkgbase}")
 
 # Disable binary stripping (it is performed manually in the package() function)
