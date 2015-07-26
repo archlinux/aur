@@ -1,0 +1,41 @@
+From 4ec31ece6757e19be455faa383886562b8793db9 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Thu, 12 Feb 2015 09:06:41 +0100
+Subject: [PATCH] banner
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ src/usr/autoboot.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/usr/autoboot.c b/src/usr/autoboot.c
+index 4bcb64d..74b5b77 100644
+--- a/src/usr/autoboot.c
++++ b/src/usr/autoboot.c
+@@ -67,6 +67,7 @@ static int ( * is_autoboot_device ) ( struct net_device *netdev );
+ #define NORMAL	"\033[0m"
+ #define BOLD	"\033[1m"
+ #define CYAN	"\033[36m"
++#define BLUE	"\033[34m"
+ 
+ /** The "scriptlet" setting */
+ const struct setting scriptlet_setting __setting ( SETTING_MISC, scriptlet ) = {
+@@ -551,9 +552,13 @@ void ipxe ( struct net_device *netdev ) {
+ 	 * do so.
+ 	 *
+ 	 */
+-	printf ( NORMAL "\n\n" PRODUCT_NAME "\n" BOLD PRODUCT_SHORT_NAME " %s"
++	printf ( NORMAL "\n\n" PRODUCT_NAME "\n" BOLD PRODUCT_SHORT_NAME
+ 		 NORMAL " -- " PRODUCT_TAG_LINE " -- "
+-		 CYAN PRODUCT_URI NORMAL "\nFeatures:", product_version );
++		 CYAN PRODUCT_URI NORMAL "\n"
++		 BOLD "Arch" BLUE "Linux" NORMAL " -- make it simple and lightweight -- "
++		 BOLD BLUE "http://archlinux.org" NORMAL "\n"
++		 "Version %s compiled on " __DATE__ ", " __TIME__ "\n"
++		 "Features:", product_version );
+ 	for_each_table_entry ( feature, FEATURES )
+ 		printf ( " %s", feature->name );
+ 	printf ( "\n" );
+-- 
+2.3.0
+

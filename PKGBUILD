@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r1952.g38afcc5
-pkgrel=1
+pkgver=1.0.0.r1969.g2b15ae5
+pkgrel=2
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
@@ -12,10 +12,10 @@ provides=('ipxe')
 conflicts=('ipxe')
 install=ipxe.install
 source=('git://git.ipxe.org/ipxe.git'
-	'http://www.eworm.de/download/linux/ipxe-0001-git-version.patch'
-	'http://www.eworm.de/download/linux/ipxe-0002-banner.patch'
-	'http://www.eworm.de/download/linux/ipxe-0003-allow-to-build-ISO-image-with-EFI-support.patch'
-	'http://www.eworm.de/download/linux/ipxe-0004-fix-no-pie-workaround.patch'
+	'0001-git-version.patch'
+	'0002-banner.patch'
+	'0003-allow-to-build-ISO-image-with-EFI-support.patch'
+	'0004-fix-no-pie-workaround.patch'
 	'grub'
 	'chain-default.ipxe'
 	'chain-default-3928.ipxe')
@@ -40,16 +40,16 @@ prepare() {
 	cd ipxe/src/
 
 	# git version
-	patch -Np2 < "${srcdir}/ipxe-0001-git-version.patch"
+	patch -Np2 < "${srcdir}/0001-git-version.patch"
 
 	# ArchLinux branding
-	patch -Np2 < "${srcdir}/ipxe-0002-banner.patch"
+	patch -Np2 < "${srcdir}/0002-banner.patch"
 
 	# ISO image with EFI support
-	patch -Np2 < "${srcdir}/ipxe-0003-allow-to-build-ISO-image-with-EFI-support.patch"
+	patch -Np2 < "${srcdir}/0003-allow-to-build-ISO-image-with-EFI-support.patch"
 
 	# build fix
-	patch -Np2 < "${srcdir}/ipxe-0004-fix-no-pie-workaround.patch"
+	patch -Np2 < "${srcdir}/0004-fix-no-pie-workaround.patch"
 
 	# read and set keymap
 	[ -s /etc/vconsole.conf ] && source /etc/vconsole.conf

@@ -1,0 +1,32 @@
+From 4c139ece028b5dd6c4e5f46ce2bf8134c390de90 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Thu, 12 Feb 2015 08:59:37 +0100
+Subject: [PATCH] git version
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ src/Makefile | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index cf9cfd2..38ebb3d 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -194,10 +194,11 @@ VERSION_MINOR	= 0
+ VERSION_PATCH	= 0
+ EXTRAVERSION	= +
+ MM_VERSION	= $(VERSION_MAJOR).$(VERSION_MINOR)
+-VERSION		= $(MM_VERSION).$(VERSION_PATCH)$(EXTRAVERSION)
+ ifneq ($(wildcard ../.git),)
+-GITVERSION := $(shell git describe --always --abbrev=1 --match "" 2>/dev/null)
+-VERSION		+= ($(GITVERSION))
++GITVERSION	:= $(shell git describe --tags --long 2>/dev/null)
++VERSION		= $(GITVERSION)
++else
++VERSION		= $(MM_VERSION).$(VERSION_PATCH)$(EXTRAVERSION)
+ endif
+ version :
+ 	@$(ECHO) "$(VERSION)"
+-- 
+2.3.0
+

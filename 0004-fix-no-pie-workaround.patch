@@ -1,0 +1,34 @@
+From a4f7e3ba395af4cd0a706df635309d4ef837ecf8 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Wed, 8 Apr 2015 09:51:41 +0200
+Subject: [PATCH 2/2] Fix no-PIE workaround for i386 builds
+
+This workaround did not work for my version of gcc (4.9.2 20150304) as
+no option -nopie exists.
+
+We take another way: Let's check whether or not the macro __PIE__ is defined
+and add -fno-PIE if it is.
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ src/arch/i386/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/arch/i386/Makefile b/src/arch/i386/Makefile
+index 99f8753..897081b 100644
+--- a/src/arch/i386/Makefile
++++ b/src/arch/i386/Makefile
+@@ -75,8 +75,8 @@ CFLAGS			+= -Ui386
+ # output on stderr instead of checking the exit status.
+ #
+ ifeq ($(CCTYPE),gcc)
+-PIE_TEST = [ -z "`$(CC) -fno-PIE -nopie -x c -c /dev/null -o /dev/null 2>&1`" ]
+-PIE_FLAGS := $(shell $(PIE_TEST) && $(ECHO) '-fno-PIE -nopie')
++PIE_TEST = $(CC) -dM -E - < /dev/null | grep -q '__PIE__'
++PIE_FLAGS := $(shell $(PIE_TEST) && $(ECHO) '-fno-PIE')
+ WORKAROUND_CFLAGS += $(PIE_FLAGS)
+ endif
+ 
+-- 
+2.3.5
+
