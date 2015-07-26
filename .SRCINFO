@@ -1,0 +1,13 @@
+pkgbase = sphinxcontrib-adadomain
+	pkgdesc = adadomain sphinxcontrib extension
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://bitbucket.org/birkenfeld/sphinx-contrib
+	arch = any
+	license = BSD
+	depends = python2-sphinx
+	source = https://pypi.python.org/packages/source/s/sphinxcontrib-adadomain/sphinxcontrib-adadomain-0.1.tar.gz
+	md5sums = 0268c912c89614d385f64fa26b756d52
+
+pkgname = sphinxcontrib-adadomain
+
