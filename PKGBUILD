@@ -1,21 +1,21 @@
 # Maintainer: justbrowsing <developer4linux+aur@gmail.com>
 pkgname=justbrowsing-home
-pkgver=1.1
-pkgrel=3
-_gitname="justbrowsing-config-files"
+pkgver=1.2
+pkgrel=1
+_gitname="justbrowsing-home"
 _username="user"
 _userdir="/home/${_username}"
 pkgdesc="Home directory for JustBrowsing"
 arch=('any')
-url="https://github.com/justbrowsing/justbrowsing-config-files"
+url="https://github.com/justbrowsing/justbrowsing-home"
 license=('unknown')
-depends=('shadow' 'withlock-svn')
-makedepends=('unzip')
+depends=('shadow' 'withlock')
+makedepends=('')
 optdepends=('justbrowsing-firefox-profile: Firefox browser profile' 
             'justbrowsing-chrome-profile: Google Chrome browser profile')
-source=(https://github.com/justbrowsing/${_gitname}/archive/master.zip)
+source=(https://github.com/justbrowsing/${_gitname}/archive/master.tar.gz)
 install=$pkgname.install
-md5sums=('59cacf1ac2cad427842f9aff15fca297')
+md5sums=('a1a8730926b28808ecfba7d60a96dee6')
 
 package() {
   cd "$srcdir/${_gitname}-master"
