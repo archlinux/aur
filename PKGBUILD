@@ -1,15 +1,15 @@
 #Maintainer: Stavros Polymenis <sp orbitalfox.com>
 pkgname=yamado-git
-pkgver=150715alpha
+pkgver=150726
 pkgrel=1
 pkgdesc="Yamado is a minimal note & journal system with extensions for functioning as a homepage & blog."
 arch=(any)
 url="http://orbifx.github.io/yamado/"
 license=('AGPL3')
 groups=(portal)
-depends=(markdown)
+depends=('bash' 'sed' 'markdown')
 makedepends=(git)
-optdepends=()
+optdepends=(sassc)
 provides=()
 conflicts=()
 replaces=()
