@@ -1,0 +1,16 @@
+pkgbase = liblmdb-git
+	pkgdesc = Symas Lightning Memory-Mapped Database
+	pkgver = 9a8eb95
+	pkgrel = 1
+	url = http://symas.com/mdb/
+	arch = any
+	license = custom
+	makedepends = git
+	provides = liblmdb
+	conflicts = liblmdb
+	conflicts = mdb-git
+	source = git://github.com/LMDB/lmdb.git
+	md5sums = SKIP
+
+pkgname = liblmdb-git
+
