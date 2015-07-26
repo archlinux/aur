@@ -1,0 +1,13 @@
+pkgbase = ttaenc
+	pkgdesc = TrueAudio lossless compressor for multichannel 8,16 and 24 bits audio data
+	pkgver = 3.4.1
+	pkgrel = 3
+	url = http://tta.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/tta/ttaenc-3.4.1-src.tgz
+	md5sums = c9ab8194984b34e7f7bf55d579c97f39
+
+pkgname = ttaenc
+
