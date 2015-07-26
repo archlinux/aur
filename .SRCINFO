@@ -3,6 +3,7 @@ pkgbase = kodi-addon-pvr-hts-git
 	pkgver = r302.5c22440
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.hts
+	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL
