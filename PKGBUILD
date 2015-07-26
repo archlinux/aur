@@ -5,7 +5,7 @@ pkgver=v0.0.7
 pkgrel=1
 pkgdesc="The library portion of the successor to libpebble, a python library for interacting with Pebble devices."
 arch=('i386' 'x86_64')
-license=('custom' 'MIT')
+license=('MIT')
 url="https://github.com/pebble/libpebble2"
 depends=('python2'
          'python2-six'
