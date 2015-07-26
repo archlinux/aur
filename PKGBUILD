@@ -1,7 +1,7 @@
 # Maintainer: justbrowsing <developer4linux+aur@gmail.com>
 pkgname=justbrowsing-home
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 _gitname="justbrowsing-home"
 _username="user"
 _userdir="/home/${_username}"
