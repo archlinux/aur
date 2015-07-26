@@ -1,0 +1,21 @@
+pkgbase = tegaki-recognize
+	pkgdesc = Chinese and Japanese Handwriting Recognition program
+	pkgver = 0.3.1.2
+	pkgrel = 1
+	url = http://www.tegaki.org/
+	arch = any
+	license = GPL2
+	makedepends = python2
+	depends = tegaki-pygtk>=0.2
+	optdepends = tegaki-models-wagomu-japanese
+	optdepends = tegaki-models-zinnia-japanese
+	optdepends = tegaki-models-wagomu-simplified-chinese
+	optdepends = tegaki-models-zinnia-simplified-chinese
+	optdepends = tegaki-models-zinnia-traditional-chinese
+	optdepends = tegaki-train
+	optdepends = tegaki-tools
+	source = http://www.tegaki.org/releases/0.3.1/tegaki-recognize-0.3.1.2.tar.gz
+	md5sums = c9f09bccd6f621908c666d54cbe01805
+
+pkgname = tegaki-recognize
+
