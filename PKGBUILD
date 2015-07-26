@@ -9,7 +9,7 @@ arch=("i686" "x86_64")
 url="https://github.com/papyros/qml-material"
 license=("LGPL")
 depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-svg" 
-		 "qt5-graphicaleffects-git" "qml-extras-git")
+		 "qt5-graphicaleffects" "qml-extras-git")
 makedepends=("git")
 provides=("$pkgname")
 source=("$pkgname::git+https://github.com/papyros/qml-material.git#branch=develop")
