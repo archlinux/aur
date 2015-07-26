@@ -1,6 +1,6 @@
 pkgbase = lgogdownloader
 	pkgdesc = An open source downloader for GOG.com games, uses the GOG.com API
-	pkgver = 2.23
+	pkgver = 2.24
 	pkgrel = 1
 	url = https://sites.google.com/site/gogdownloader/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = lgogdownloader
 	depends = tinyxml
 	depends = htmlcxx
 	depends = curl
-	source = http://sites.google.com/site/gogdownloader/lgogdownloader-2.23.tar.gz
-	sha256sums = e04bfa506e5ba5b5d98255babfd9fbadf4c53af6198aace7ac33a7ed44083c66
+	source = http://sites.google.com/site/gogdownloader/lgogdownloader-2.24.tar.gz
+	sha256sums = 3266db0fbe078a642600e63fb53437c1fc43389a33f1a223e27478ed6bf32c5b
 
 pkgname = lgogdownloader
 
