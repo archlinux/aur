@@ -8,12 +8,13 @@
 #
 
 pkgname=electrum-git
-pkgver=20150519
+pkgver=20150726
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 depends=('hicolor-icon-theme'
          'python2'
+         'python2-crypto'
          'python2-dnspython'
          'python2-ecdsa'
          'python2-pbkdf2'
