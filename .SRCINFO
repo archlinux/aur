@@ -11,7 +11,7 @@ pkgbase = nodejs-cordova
 	optdepends = android-sdk-build-tools: building for Android
 	noextract = cordova-5.1.1.tgz
 	source = http://registry.npmjs.org/cordova/-/cordova-5.1.1.tgz
-	sha1sums = 696907aff7c889beea4422b6c80e57558a905c05
+	sha1sums = a9da84a4b42eac67d4b661246c7a6704c350eaae
 
 pkgname = nodejs-cordova
 
