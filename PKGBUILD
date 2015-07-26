@@ -5,7 +5,7 @@
 
 _pkgname=qt5-quickcontrols
 pkgname=$_pkgname-git
-pkgver=v5.5.0.11.g56dfb59
+pkgver=git
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtQuick)"
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ depends=("qt5-declarative-git")
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git://code.qt.io/qt/qtquickcontrols.git#branch=5.5")
+source=("$_pkgname::git://code.qt.io/qt/qtquickcontrols.git#branch=dev")
 sha256sums=("SKIP")
 
 pkgver() {
