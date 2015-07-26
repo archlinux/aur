@@ -44,12 +44,37 @@ post_upgrade() {
     put_wine
 }
 
+exec_remove() {                                 # for linear execution
+    sudo -u $ADOBE_USER dex "$UNINSTALLER"
+    PID=$(ps aux |
+            grep wineserver |
+            grep -v grep |
+            tail -n 1 |
+            sed 's/^[^ ]* *//g' |
+            cut -d" " -f1
+         )
+    while sleep 1
+      kill -0 $PID >/dev/null 2>&1
+    do
+        echo -n ""
+    done
+}
+
+UNINSTALLER="/home/USER/.local/share/applications/wine/\
+Programs/Adobe/Adobe Digital Editions 4.0/Uninstall.desktop"
+
 post_remove() {
-    echo "Remove instructions"
-    echo "  If prefer, undo these commands:"
-    echo "      winetricks -q corefonts dotnet40 msxml3"
-    echo "      wine /tmp/${_installer}"
-    echo "  Try uninstall by wincfg."
-    # TODO: msg2 etc.
-    # TODO: users with ~/.wine
+    echo "If above exists a error with the directory /tmp, this is normal."
+    echo
+    echo "Uninstall procedure"
+    put_user
+    put_DISPLAY
+    UNINSTALLER="${UNINSTALLER/USER/$ADOBE_USER}"
+    exec_remove
+    exec_remove
+    echo
+    echo "Extra instructions:"
+    echo "  If prefer, undo 'winetricks -q corefonts dotnet40 msxml3';"
+    echo "  try uninstall them by using wincfg."
+    echo
 }
