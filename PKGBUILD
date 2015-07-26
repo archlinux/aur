@@ -2,7 +2,7 @@
 
 pkgname=tegaki-recognize
 pkgver=0.3.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Chinese and Japanese Handwriting Recognition program"
 arch=('any')
 url="http://www.tegaki.org/"
@@ -26,6 +26,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --prefix=$pkgdir/usr --optimize=1
-  sed -i -e "s/$pkgdir//" $pkgdir/usr/share/menu/tegaki-recognize
   sed -i -e "s|$pkgdir||" $pkgdir/usr/share/menu/tegaki-recognize
 }

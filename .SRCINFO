@@ -1,7 +1,7 @@
 pkgbase = tegaki-recognize
 	pkgdesc = Chinese and Japanese Handwriting Recognition program
 	pkgver = 0.3.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.tegaki.org/
 	arch = any
 	license = GPL2
