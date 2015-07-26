@@ -1,7 +1,7 @@
 pkgbase = justbrowsing-home
 	pkgdesc = Home directory for JustBrowsing
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://github.com/justbrowsing/justbrowsing-home
 	install = justbrowsing-home.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = justbrowsing-home
 	optdepends = justbrowsing-firefox-profile: Firefox browser profile
 	optdepends = justbrowsing-chrome-profile: Google Chrome browser profile
 	source = https://github.com/justbrowsing/justbrowsing-home/archive/master.tar.gz
-	md5sums = a1a8730926b28808ecfba7d60a96dee6
+	md5sums = 1bd46305e5c2922222e2b9023de4a64b
 
 pkgname = justbrowsing-home
 

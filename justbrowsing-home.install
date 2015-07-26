@@ -1,4 +1,4 @@
-_username="justbrowsing"
+_username="jbuser"
 _userdir="/home/${_username}"
 
 pre_install(){
