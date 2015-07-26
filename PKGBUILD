@@ -1,16 +1,16 @@
 # Maintainer: justbrowsing <developer4linux+aur@gmail.com>
 pkgname=justbrowsing-xorg
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="X11 Xorg config files for JustBrowsing"
 arch=('any')
 url="https://github.com/justbrowsing/justbrowsing-xorg"
 license=('unknown')
 depends=('xorg-xinit')
-makedepends=('unzip')
+makedepends=('')
 optdepends=('justbrowsing-home: Home directory for JustBrowsing')
-source=(https://github.com/justbrowsing/justbrowsing-xorg/archive/master.zip)
-md5sums=('d2b722edad1a7f13def287e12b86b49c')
+source=(https://github.com/justbrowsing/${pkgname}/archive/master.tar.gz)
+md5sums=('dd9af5dd91375655d5ac2923dcf742e7')
 
 package() {
   cd "$srcdir/${pkgname}-master"
