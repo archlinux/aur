@@ -1,7 +1,7 @@
 pkgbase = multirust
 	pkgdesc = A tool for managing multiple Rust installations
 	pkgver = 0.0.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/brson/multirust
 	arch = any
 	license = MIT
