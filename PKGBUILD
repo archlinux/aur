@@ -2,7 +2,7 @@
 
 _pkgname=dotrix
 pkgname=$_pkgname-git
-pkgver=v0.1.0.r0.ga635623
+pkgver=0.1.0.r1.g1929a8d
 pkgrel=1
 pkgdesc="The pedantic dotfiles manager"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
