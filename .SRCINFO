@@ -1,0 +1,18 @@
+pkgbase = hpmyroom
+	pkgdesc = HP MyRoom
+	pkgver = 10.1.0.0468
+	pkgrel = 1
+	url = https://www.myroom.hp.com
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = lib32-libxss
+	depends = lib32-libpng12
+	depends = lib32-fontconfig
+	depends = lib32-bzip2
+	depends = lib32-libpulse
+	source = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.1.0.0468_amd64.deb
+	md5sums = 5e314ac24fa1f0acc02923130a3dbfc7
+
+pkgname = hpmyroom
+
