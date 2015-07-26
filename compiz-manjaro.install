@@ -1,0 +1,81 @@
+post_install() {
+    echo "  -> Updating icon cache..."
+    gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor
+    echo "  -> Updating XDG menu database..."
+    update-desktop-database -q
+
+    ls usr/share/glib-2.0/schemas 2>/dev/null | grep -qm1 org.compiz
+    if [ $? -eq 0 ]; then
+        echo "  -> Recompiling the GSettings database... "
+        glib-compile-schemas usr/share/glib-2.0/schemas
+    fi
+    
+    # Xfce autostart. This sed command generally won't work on initial installation, but that's ok, it's dealt with elsewhere.
+    sed -i 's|xfwm4|compiz|' /home/*/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml 2>/dev/null
+
+## This shouldn't be needed anymore, but the removal warning is.
+#    echo ""
+#    echo "**                     XFCE USERS                           **"  
+#    echo "** It's recommended you clear your saved sessions before    **"
+#    echo "** logging out and back in:                                 **"
+#    echo "**                                                          **"
+#    echo "** Menu -> Settings -> Session and Startup -> Session tab   **"
+#    echo "**              'Clear saved sessions' button               **"
+#    echo "**                                                          **"
+#    echo "** Make sure 'Save session for future logins' is NOT ticked **"
+#    echo "** in the log out window.                                   **"
+#    echo "** Log out and back in, then Compiz should be active.       **"
+#    echo ""
+
+     echo ""
+     echo "***  Xfce and MATE users just log out    ***"
+     echo "***  and back in, Compiz will autostart  ***"
+     echo ""
+}
+
+post_upgrade() {
+    echo "  -> Updating icon cache..."
+    gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor
+    echo "  -> Updating XDG menu database..."
+    update-desktop-database -q
+
+    ls usr/share/glib-2.0/schemas 2>/dev/null | grep -qm1 org.compiz
+    if [ $? -eq 0 ]; then
+        echo "  -> Recompiling the GSettings database... "
+        glib-compile-schemas usr/share/glib-2.0/schemas
+    fi
+}
+
+post_remove() {
+    echo "  -> Updating icon cache..."
+    gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor    
+    echo " -> Updating XDG menu database..."
+    update-desktop-database -q
+
+    if [ -d /usr/share/glib-2.0/schemas ]; then
+        echo "  -> Recompiling the GSettings database... "
+        glib-compile-schemas usr/share/glib-2.0/schemas
+    fi
+
+    # Xfce autostart removal. The first sed command remains to reverse actions made by earlier revisions of the package.
+    sed -i 's|compiz|xfwm4|' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml 2>/dev/null
+    sed -i 's|compiz|xfwm4|' /home/*/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml 2>/dev/null
+    rm /home/*/.config/autostart/compiz-xfce-autostart.desktop 2>/dev/null
+    rm /home/*/.config/autostart/compiz-manjaro-decoratortheme.desktop 2>/dev/null
+    # MATE initial decoration fix removal
+    rm /home/*/.config/autostart/compiz-manjaro-mate-decoratortheme.desktop 2>/dev/null
+  
+    echo ""
+    echo "**                     XFCE USERS                           **"  
+    echo "** It's recommended you clear your saved sessions before    **"
+    echo "** logging out and back in:                                 **"
+    echo "**                                                          **"
+    echo "** Menu -> Settings -> Session and Startup -> Session tab   **"
+    echo "**              'Clear saved sessions' button               **"
+    echo "**                                                          **"
+    echo "** Make sure 'Save session for future logins' is NOT ticked **"
+    echo "** in the log out window.                                   **"
+    echo "** Log out and back in, then Xfwm4 should be restored.      **"
+    echo ""
+}
+

@@ -1,0 +1,253 @@
+diff -Naur a/metadata/core.xml.in b/metadata/core.xml.in
+--- a/metadata/core.xml.in	2014-11-07 00:07:52.000000000 +1100
++++ b/metadata/core.xml.in	2014-12-18 02:58:05.830223000 +1100
+@@ -215,7 +215,7 @@
+ 			<option name="window_menu_button" type="button">
+ 			<_short>Window Menu</_short>
+ 			<_long>Window menu button binding</_long>
+-			<default>&lt;Alt&gt;Button3</default>
++			<default>&lt;Alt&gt;Button2</default>
+ 			</option>
+ 			<option name="show_desktop_key" type="key">
+ 			<_short>Show Desktop</_short>
+@@ -254,14 +254,14 @@
+ 			<option name="hsize" type="int">
+ 			<_short>Horizontal Virtual Size</_short>
+ 			<_long>Screen size multiplier for horizontal virtual size</_long>
+-			<default>4</default>
++			<default>2</default>
+ 			<min>1</min>
+ 			<max>32</max>
+ 			</option>
+ 			<option name="vsize" type="int">
+ 			<_short>Vertical Virtual Size</_short>
+ 			<_long>Screen size multiplier for vertical virtual size</_long>
+-			<default>1</default>
++			<default>2</default>
+ 			<min>1</min>
+ 			<max>32</max>
+ 			</option>
+diff -Naur a/plugins/animation/animation.xml.in b/plugins/animation/animation.xml.in
+--- a/plugins/animation/animation.xml.in	2014-11-07 00:07:52.000000000 +1100
++++ b/plugins/animation/animation.xml.in	2014-12-18 02:58:05.830223000 +1100
+@@ -58,8 +58,8 @@
+ 	    <_long>The windows that will be animated.</_long>
+ 	    <type>match</type>
+ 	    <default>
+-	      <value>(type=Normal | Dialog | ModalDialog | Unknown) &amp; !(name=gnome-screensaver)</value>
+-	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo)</value>
++	      <value>(type=Normal) &amp; !(name=gnome-screensaver)</value>
++	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo | Dialog | ModalDialog | Unknown)</value>
+ 	      <value>(type=Tooltip | Notification | Utility) &amp; !(name=compiz) &amp; !(title=notify-osd)</value>
+ 	    </default>
+ 	  </option>
+@@ -124,8 +124,8 @@
+ 	    <_long>The windows that will be animated.</_long>
+ 	    <type>match</type>
+ 	    <default>
+-	      <value>(type=Normal | Dialog | ModalDialog | Unknown) &amp; !(name=gnome-screensaver)</value>
+-	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo)</value>
++	      <value>(type=Normal) &amp; !(name=gnome-screensaver)</value>
++	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo | Dialog | ModalDialog | Unknown)</value>
+ 	      <value>(type=Tooltip | Notification | Utility) &amp; !(name=compiz) &amp; !(title=notify-osd)</value>
+ 	    </default>
+ 	  </option>
+@@ -168,7 +168,7 @@
+ 	    <extensible/>
+ 	    <sort start="2"/>
+ 	    <default>
+-	      <value>animation:Magic Lamp</value>
++	      <value>animation:Zoom</value>
+ 	    </default>
+ 	  </option>
+ 	  <option name="minimize_durations" type="list">
+@@ -178,7 +178,7 @@
+ 	    <min>50</min>
+ 	    <max>4000</max>
+ 	    <default>
+-	      <value>300</value>
++	      <value>250</value>
+ 	    </default>
+ 	  </option>
+ 	  <option name="minimize_matches" type="list">
+@@ -226,7 +226,7 @@
+             <extensible/>
+             <sort start="2"/>
+             <default>
+-              <value>animation:Magic Lamp</value>
++              <value>animation:Zoom</value>
+             </default>
+           </option>
+           <option name="unminimize_durations" type="list">
+@@ -236,7 +236,7 @@
+             <min>50</min>
+             <max>4000</max>
+             <default>
+-              <value>300</value>
++              <value>250</value>
+             </default>
+           </option>
+           <option name="unminimize_matches" type="list">
+diff -Naur a/plugins/composite/composite.xml.in b/plugins/composite/composite.xml.in
+--- a/plugins/composite/composite.xml.in	2014-11-07 00:07:52.000000000 +1100
++++ b/plugins/composite/composite.xml.in	2014-12-18 02:58:05.830223000 +1100
+@@ -24,7 +24,7 @@
+ 	    <option name="unredirect_fullscreen_windows" type="bool">
+ 		<_short>Unredirect Fullscreen Windows</_short>
+ 		<_long>Allow drawing of fullscreen windows to not be redirected to offscreen pixmaps</_long>
+-		<default>true</default>
++		<default>false</default>
+ 	    </option>
+ 	    <option name="unredirect_match" type="match">
+ 		<_short>Unredirect Match</_short>
+diff -Naur a/plugins/expo/expo.xml.in b/plugins/expo/expo.xml.in
+--- a/plugins/expo/expo.xml.in	2014-11-07 00:07:52.000000000 +1100
++++ b/plugins/expo/expo.xml.in	2014-12-18 02:58:05.830223000 +1100
+@@ -25,7 +25,7 @@
+ 		<option name="expo_key" type="key">
+ 		    <_short>Expo Key</_short>
+ 		    <_long>Initiate or terminate Expo mode with this keyboard shortcut.</_long>
+-		    <default>&lt;Super&gt;e</default>
++		    <default></default>
+ 		</option>
+ 		<option name="expo_button" type="button">
+ 		    <_short>Expo Button</_short>
+@@ -80,7 +80,7 @@
+ 		<option name="zoom_time" type="float">
+ 		    <_short>Animation Duration</_short>
+ 		    <_long>Duration of the selected animation (in seconds).</_long>
+-		    <default>0.5</default>
++		    <default>0.25</default>
+ 		    <min>0.1</min>
+ 		    <max>5.0</max>
+ 		    <precision>0.1</precision>
+@@ -232,7 +232,7 @@
+ 		    <option name="reflection" type="bool">
+ 			<_short>Reflection</_short>
+ 			<_long>Render a realtime reflection of the viewports on the ground.</_long>
+-			<default>true</default>
++			<default>false</default>
+ 		    </option>
+ 		    <option name="ground_color1" type="color">
+ 			<_short>Ground Color (near)</_short>
+diff -Naur a/plugins/grid/grid.xml.in b/plugins/grid/grid.xml.in
+--- a/plugins/grid/grid.xml.in	2014-11-07 00:07:52.000000000 +1100
++++ b/plugins/grid/grid.xml.in	2014-12-18 02:58:05.830223000 +1100
+@@ -566,16 +566,16 @@
+ 		<option name="animation_duration" type="int">
+ 			<_short>Preview Animation Duration</_short>
+ 			<_long>Preview animation duration (in ms).</_long>
+-			<default>350</default>
++			<default>250</default>
+ 			<min>0</min>
+ 		</option>
+ 		<option name="outline_color" type="color">
+ 			<_short>Preview Outline Color</_short>
+ 			<_long>Color and opacity of the resize indicator preview outline.</_long>
+ 			<default>
+-			    <red>0xfbfb</red>
+-			    <green>0x8b8b</green>
+-			    <blue>0x0</blue>
++			    <red>0x8c8c</red>
++			    <green>0xbcbc</green>
++			    <blue>0x6565</blue>
+ 			    <alpha>0x9f9f</alpha>
+ 			</default>
+ 		</option>
+@@ -583,9 +583,9 @@
+ 			<_short>Preview Fill Color</_short>
+ 			<_long>Fill color and opacity of the resize indicator preview.</_long>
+ 			<default>
+-			    <red>0xfbfb</red>
+-			    <green>0x8b8b</green>
+-			    <blue>0x0</blue>
++			    <red>0x8c8c</red>
++			    <green>0xbcbc</green>
++			    <blue>0x6565</blue>
+ 			    <alpha>0x4f4f</alpha>
+ 			</default>
+ 		</option>
+diff -Naur a/plugins/place/place.xml.in b/plugins/place/place.xml.in
+--- a/plugins/place/place.xml.in	2014-11-07 00:07:52.000000000 +1100
++++ b/plugins/place/place.xml.in	2014-12-18 03:54:37.601201910 +1100
+@@ -84,21 +84,33 @@
+ 			<_short>Positioned windows</_short>
+ 			<_long>Windows that should be positioned by default</_long>
+ 			<type>match</type>
++			<default>
++			  <value>title=Whisker Menu</value>
++			</default>
+ 		    </option>
+ 		    <option name="position_x_values" type="list">
+ 			<_short>X Positions</_short>
+ 			<_long>X position values</_long>
+ 			<type>int</type>
++			<default>
++			  <value>-1</value>
++			</default>
+ 		    </option>
+ 		    <option name="position_y_values" type="list">
+ 			<_short>Y Positions</_short>
+ 			<_long>Y position values</_long>
+ 			<type>int</type>
++			<default>
++			  <value>-1</value>
++			</default>
+ 		    </option>
+ 		    <option name="position_constrain_workarea" type="list">
+ 			<_short>Keep In Workarea</_short>
+ 			<_long>Keep placed window in work area, even if that means that the position might differ from the specified position</_long>
+ 			<type>bool</type>
++			<default>
++			  <value>false</value>
++			</default>
+ 		    </option>
+ 		</subgroup>
+ 		<subgroup>
+diff -Naur a/plugins/resize/resize.xml.in b/plugins/resize/resize.xml.in
+--- a/plugins/resize/resize.xml.in	2014-11-07 00:07:52.000000000 +1100
++++ b/plugins/resize/resize.xml.in	2014-12-18 02:58:05.830223000 +1100
+@@ -17,7 +17,7 @@
+ 		<option name="initiate_button" type="button">
+ 		    <_short>Initiate Window Resize</_short>
+ 		    <_long>Start resizing window</_long>
+-		    <default>&lt;Alt&gt;Button2</default>
++		    <default>&lt;Alt&gt;Button3</default>
+ 		</option>
+ 		<option name="initiate_key" type="key">
+ 		    <_short>Initiate Window Resize</_short>
+@@ -28,7 +28,7 @@
+ 	    <option name="mode" type="int">
+ 		<_short>Default Resize Mode</_short>
+ 		<_long>Default mode used for window resizing</_long>
+-		<default>0</default>
++		<default>2</default>
+ 		<min>0</min>
+ 		<max>3</max>
+ 		<desc>
+@@ -62,9 +62,9 @@
+ 		<_short>Border Color</_short>
+ 		<_long>Border color used for outline and rectangle resize modes</_long>
+ 		<default>
+-		    <red>0x2f2f</red>
+-		    <green>0x2f2f</green>
+-		    <blue>0x4f4f</blue>
++		    <red>0x5f5f</red>
++		    <green>0x8080</green>
++		    <blue>0x4444</blue>
+ 		    <alpha>0x9f9f</alpha>
+ 		</default>
+ 	    </option>
+@@ -72,9 +72,9 @@
+ 		<_short>Fill Color</_short>
+ 		<_long>Fill color used for rectangle resize mode</_long>
+ 		<default>
+-		    <red>0x2f2f</red>
+-		    <green>0x2f2f</green>
+-		    <blue>0x4f4f</blue>
++		    <red>0x3939</red>
++		    <green>0x4c4c</green>
++		    <blue>0x2929</blue>
+ 		    <alpha>0x4f4f</alpha>
+ 		</default>
+ 	    </option>
