@@ -2,7 +2,7 @@
 # Maintainer: Jonathan Wiersma <archaur at jonw dot org>
 pkgname=eclipse-dtp
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Data Tools Platform for Eclipse"
 arch=('any')
 url="http://www.eclipse.org/datatools/"
@@ -15,7 +15,7 @@ md5sums=('6f40875241e77b0a797fa80396bee8fe')
 
 package() {
 	cd $srcdir
-	install -dm755 $pkgdir/usr/share/eclipse/dropins/dtp/
+	install -dm755 $pkgdir/usr/lib/eclipse/dropins/dtp/
 	find eclipse -type f -exec install -Dm644 {} \
-		$pkgdir/usr/share/eclipse/dropins/dtp/{} \;
+		$pkgdir/usr/lib/eclipse/dropins/dtp/{} \;
 }
