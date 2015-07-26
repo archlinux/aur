@@ -1,14 +1,13 @@
 # Maintainer: Alexandre Magno <alexandre.mbm@gmail.com>
 pkgname=adobe-digital-editions
 _version=4.0.3
-_build=110333
-pkgver=${_version}  #.${_build} TODO
-pkgrel=2
+pkgver=${_version}
+pkgrel=3
 pkgdesc="Adobe's ebook reader able to read publications protected by DRM"
 url="http://www.adobe.com/br/solutions/ebook/digital-editions/download.html"
 arch=(any)
 license=('custom:Adobe End User License Agreements (EULAs)')
-depends=(wine samba)
+depends=(wine samba dex)
 makedepends=(wine winetricks)
 install=${pkgname}.install
 _installer=ADE_4.0_Installer.exe
