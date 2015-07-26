@@ -3,7 +3,7 @@
 pkgname=firefox-extension-ublock
 pkgver=0.9.5.0
 pkgrel=1
-pkgdesc='Finally, an efficient blocker. Easy on CPU and memory.'
+pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
 url=https://github.com/chrisaljoudi/uBlock
 arch=('any')
 license=('GPL3')
