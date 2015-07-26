@@ -1,7 +1,7 @@
 # Maintainer: justbrowsing <developer4linux+aur@gmail.com>
 pkgname=jb-config
-pkgver=1.7
-pkgrel=3
+pkgver=1.8
+pkgrel=1
 pkgdesc="A gtkdialog GUI and backend to manage settings for JustBrowsing that allows loading/saving from a config file"
 arch=('any')
 url="https://github.com/justbrowsing/jb-config"
@@ -21,9 +21,9 @@ optdepends=('justbrowsing-systemd: Sets defaults on boot and save/load daemon'
             'justbrowsing-webapps: Compose e-mail redirect'
             'virtualbox-guest-utils: VirtualBox guest addons')
 groups=("justbrowsing")
-source=("https://github.com/justbrowsing/${pkgname}/archive/master.zip")
+source=("https://github.com/justbrowsing/${pkgname}/archive/master.tar.gz")
 install="jbconfig.install"
-md5sums=('e69c7f0c6130dfaa90c0fef0d70b06c6')
+md5sums=('4a2fa13152a2d83e112a060e250515b1')
  
 package() {
   cd "$srcdir/${pkgname}-master"

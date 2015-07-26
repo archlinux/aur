@@ -1,7 +1,7 @@
 pkgbase = jb-config
 	pkgdesc = A gtkdialog GUI and backend to manage settings for JustBrowsing that allows loading/saving from a config file
-	pkgver = 1.7
-	pkgrel = 3
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://github.com/justbrowsing/jb-config
 	install = jbconfig.install
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = jb-config
 	optdepends = nitrogen: Update background/wallpaper
 	optdepends = justbrowsing-webapps: Compose e-mail redirect
 	optdepends = virtualbox-guest-utils: VirtualBox guest addons
-	source = https://github.com/justbrowsing/jb-config/archive/master.zip
-	md5sums = e69c7f0c6130dfaa90c0fef0d70b06c6
+	source = https://github.com/justbrowsing/jb-config/archive/master.tar.gz
+	md5sums = 4a2fa13152a2d83e112a060e250515b1
 
 pkgname = jb-config
 
