@@ -8,7 +8,7 @@ pkgdesc="A UI framework for QtQuick implementing Material Design"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/qml-material"
 license=("LGPL")
-depends=("qt5-base-git" "qt5-declarative-git" "qt5-quickcontrols-git" "qt5-svg-git" 
+depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-svg" 
 		 "qt5-graphicaleffects-git" "qml-extras-git")
 makedepends=("git")
 provides=("$pkgname")
