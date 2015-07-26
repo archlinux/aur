@@ -1,0 +1,18 @@
+pkgbase = apacman-utils
+	pkgdesc = AUR utilities: apac-migrate and aurpush
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/oshazard/apacman-utils
+	arch = any
+	license = GPL
+	depends = apacman
+	depends = git
+	depends = openssh
+	depends = pkgbuild-introspection
+	provides = apac-migrate
+	provides = aurpush
+	source = https://github.com/oshazard/apacman-utils/archive/master.tar.gz
+	md5sums = 5802f2b890271ec18f2124a8f5296888
+
+pkgname = apacman-utils
+
