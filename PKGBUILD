@@ -1,12 +1,11 @@
 # Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
-# Maintainer: Andrey Mikhaylenko <neithere at gmail dot com>
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 _python=python
 _distname=pkginfo
 pkgname=${_python}-${_distname}
 pkgver=1.2.1
 pkgrel=1
-pkgdesc="Query metadatdata from sdists / bdists / installed packages"
+pkgdesc='Query metadatdata from sdists / bdists / installed packages'
 arch=('any')
 url="http://pythonhosted.org/pkginfo"
 license=('Python')
