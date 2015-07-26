@@ -1,0 +1,14 @@
+pkgbase = python2-pkginfo
+	pkgdesc = Query metadatdata from sdists / bdists / installed packages
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pkginfo
+	arch = any
+	license = Python
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://pypi.python.org/packages/source/p/pkginfo/pkginfo-1.2.1.tar.gz
+	sha256sums = ad3f6dfe8a831f96a7b56a588ca874137ca102cc6b79fc9b0a1c3b7ab7320f3c
+
+pkgname = python2-pkginfo
+
