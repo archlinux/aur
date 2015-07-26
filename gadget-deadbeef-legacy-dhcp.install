@@ -1,0 +1,6 @@
+
+post_install () {
+    echo ">>> to enable ethernet"
+    echo "    systemctl enable systemd-networkd"
+    echo ">>> No serial support in this package, sorry"
+}

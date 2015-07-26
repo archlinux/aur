@@ -1,0 +1,2 @@
+# load the g_ether module to get ethernet (no serial, sorry)
+g_ether

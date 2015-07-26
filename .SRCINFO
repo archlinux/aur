@@ -1,0 +1,17 @@
+pkgbase = gadget-deadbeef-legacy-dhcp
+	pkgdesc = Allow connection through USB (via 'legacy' module 'g_ether') - DHCP setup
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/WarheadsSE/PKGs/blob/master/gadget-deadbeef/
+	install = gadget-deadbeef-legacy-dhcp.install
+	arch = any
+	license = GPL2
+	conflicts = gadget-deadbeef
+	conflicts = gadget-deadbeef-dhcp
+	source = gadget-deadbeef-legacy-dhcp.modules-load
+	source = gadget-deadbeef-legacy-dhcp.network
+	md5sums = 690fbeec1f918177a869bd04e358c268
+	md5sums = 019b112ca41642b14931dc921c67fc88
+
+pkgname = gadget-deadbeef-legacy-dhcp
+
