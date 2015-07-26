@@ -7,8 +7,8 @@
 #Contributor: mutantmonkey
 
 pkgname=rabbitmq
-pkgver=3.5.3
-pkgrel=3
+pkgver=3.5.4
+pkgrel=1
 pkgdesc="Highly reliable and performant enterprise messaging implementation of AMQP written in Erlang/OTP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://rabbitmq.com"
@@ -21,7 +21,7 @@ source=("http://www.rabbitmq.com/releases/${pkgname}-server/v${pkgver}/${pkgname
   "rabbitmq-env.conf"
   "rabbitmq.service")
 validpgpkeys=('F78372A06FF50C80464FC1B4F7B8CEA6056E8E56') 
-sha256sums=('8f250cd87e7403b73bd84baea104e8254e46c9c0f6fb53d5b2b68cf2ed335154'
+sha256sums=('24b6a4c0d5fec0ed63b756cdf96964d1729be88d5ec7934d4b4723ecdf9d3e2b'
             'SKIP'
             '50731fc6958d5672de1d3313a91717b32f5ffd721a1c3c3cf553f88ae2f2c935'
             'f96423feb5049e16575690f1cd1bfd6338d2286cdd991bf5bddaae54f6ebf2d0')
