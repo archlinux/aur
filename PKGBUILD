@@ -5,7 +5,7 @@
 
 _pkgname=qt5-graphicaleffects
 pkgname=$_pkgname-git
-pkgver=v5.5.0.1.gb4ef5a9
+pkgver=git
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtGraphicalEffects)"
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ depends=("qt5-declarative-git")
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git://code.qt.io/qt/qtgraphicaleffects.git#branch=5.5")
+source=("$_pkgname::git://code.qt.io/qt/qtgraphicaleffects.git#branch=dev")
 sha256sums=("SKIP")
 
 pkgver() {
