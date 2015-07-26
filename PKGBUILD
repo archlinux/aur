@@ -2,7 +2,7 @@
 
 pkgname=eclipse-eclemma
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free Java code coverage tool for Eclipse"
 url="http://www.eclemma.org/"
 arch=('any')
@@ -12,7 +12,7 @@ source=("http://download.eclipselab.org/eclemma/release/${pkgname/eclipse-}-${pk
 sha256sums=('5e3c04fdfe1d9d4d6423fb1860c924dc68d2d9c497a67ac123160470b2fc1cd9')
 
 package() {
-  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}-${pkgver}/eclipse
+  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
   cd ${srcdir}
 

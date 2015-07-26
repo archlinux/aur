@@ -1,7 +1,7 @@
 pkgbase = eclipse-eclemma
 	pkgdesc = A free Java code coverage tool for Eclipse
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eclemma.org/
 	arch = any
 	license = EPL
