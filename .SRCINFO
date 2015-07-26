@@ -1,0 +1,25 @@
+pkgbase = hpvirtualrooms
+	pkgdesc = Online meeting client with desktop sharing support
+	pkgver = 8.1.0.4518
+	pkgrel = 2
+	url = https://www.rooms.hp.com/
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = sed
+	depends = fontconfig
+	depends = alsa-lib
+	depends = glib2
+	depends = glu
+	depends = libpng12
+	depends = libsm
+	depends = libxi
+	depends = libxrandr
+	depends = gcc-libs
+	source = http://www.rooms.hp.com/vRoom_Cab/hpvirtualrooms-install64-F4-8.1.0.4518.tar.gz
+	source = hpvirtualrooms
+	md5sums = 8a1ba9a7517b1d2097c1649be9fee3d8
+	md5sums = 5cbe25942bc5b657da9ab32bbcfa085c
+
+pkgname = hpvirtualrooms
+
