@@ -1,0 +1,4 @@
+pkg/
+src/
+libpebble2
+*.pkg.tar.xz
