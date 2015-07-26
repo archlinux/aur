@@ -1,0 +1,20 @@
+pkgbase = alloy
+	pkgdesc = A lightweight modelling language for software design.
+	pkgver = 4.2.5
+	pkgrel = 1
+	url = http://alloy.mit.edu/alloy/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = java-runtime
+	source = http://alloy.mit.edu/alloy/downloads/alloy4.2_2015-02-22.jar
+	source = alloy
+	source = alloy.png
+	source = alloy.desktop
+	md5sums = de970bf9dad3819532422629b48ae296
+	md5sums = 51313a5e566f50ef580231d7e3596d1d
+	md5sums = e117c6a2bb28826e9307cbf094e980ab
+	md5sums = 3ad162df79191af3509afe9e232b1269
+
+pkgname = alloy
+

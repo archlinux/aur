@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Alloy Modelling IDE
+GenericName=Modelling tool
+Comment=A lightweight modelling language for software design from SDG group at MIT.
+Exec=/usr/bin/alloy
+Terminal=false
+Icon=alloy
+Type=Application
+Categories=Development;IDE;Education;
+StartupNotify=true
