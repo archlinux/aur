@@ -12,9 +12,9 @@ pkgbase = imapsync
 	depends = perl-file-copy-recursive
 	depends = perl-io-tee
 	depends = perl-unicode-string
-	depends = perl-ntlm
 	depends = perl-data-uniqid
 	depends = perl-io-socket-inet6
+	optdepends = perl-ntlm
 	source = https://github.com/imapsync/imapsync/archive/imapsync-1.637.tar.gz
 	sha256sums = 8d3e143f20ca306ef7303fc382ad2406b73136ce1e8758d1b9934314acc71b23
 
