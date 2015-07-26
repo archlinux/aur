@@ -8,7 +8,7 @@ pkgname=clion-eap
 _pkgname=clion
 pkgbuild=141.2144
 pkgver=${pkgbuild}
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64')
 options=(!strip)
@@ -67,7 +67,7 @@ EOF
 
   install -m 644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
-  ln -s "/opt/${pkgname}/bin/clion.svg"                     "${pkgdir}/usr/share/pixmaps/clion.svg"
+  ln -s "/opt/${pkgname}/bin/${_pkgname}.svg"                     "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
   ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/opt/${pkgname}/bin/${_pkgname}.sh"                 "${pkgdir}/usr/bin/${pkgname}"
 }

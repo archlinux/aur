@@ -1,7 +1,7 @@
 pkgbase = clion-eap
 	pkgdesc = C/C++ IDE. 30-day evaluation.
 	pkgver = 141.2144
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
 	license = custom
