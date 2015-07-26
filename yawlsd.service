@@ -1,5 +1,7 @@
 [Unit]
 Description=Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor.
+Requires=logrotate.service
+After=logrotate.service
 
 [Service]
 Type=simple
