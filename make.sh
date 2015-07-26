@@ -37,7 +37,7 @@ case "$1" in
 		./configure --with-kbuild="${kheaders}"
 		res=$?
 		[ $res -ne 0 ] && exit $res
-		make
+		make V=1
 		exit $?
 		;;
 	*)
