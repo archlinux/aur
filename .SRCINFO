@@ -1,7 +1,7 @@
 pkgbase = eclipse-subversive-svn-connector
 	pkgdesc = Subversive SVN Connectors
 	pkgver = 5.0.0.I20150529_1700
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.polarion.com/products/svn/subversive.php
 	arch = any
 	license = EPL

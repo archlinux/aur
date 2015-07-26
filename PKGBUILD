@@ -3,7 +3,7 @@
 
 pkgname=eclipse-subversive-svn-connector
 pkgver=5.0.0.I20150529_1700
-pkgrel=1
+pkgrel=2
 _pluginver=5.0.0.I20150529_1700
 pkgdesc="Subversive SVN Connectors"
 arch=('any')
@@ -19,7 +19,7 @@ md5sums=('d9e4b67abb7f1b123044f438ed8a3315'
          'b7d316b3ad7724ff2242ef09189cbf60')
 package()
 {
-	_dest="$pkgdir/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse"
+	_dest="$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
 
 	# Feature(s)
 	install -d -m755 $_dest/features/org.polarion.eclipse.team.svn.connector_${pkgver//_/-}
