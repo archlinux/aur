@@ -1,5 +1,5 @@
 pkgbase = linux-mainline
-	pkgver = 4.2rc3
+	pkgver = 4.2rc4
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -12,13 +12,13 @@ pkgbase = linux-mainline
 	makedepends = bc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/testing/patch-4.2-rc3.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/testing/patch-4.2-rc4.xz
 	source = config
 	source = config.x86_64
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
-	sha256sums = b9915aba62e3efd7500887c38c4fd69faccb9b64a0d5d3d128618b923846f08e
+	sha256sums = 91ec7a4096cf6496b5ad5de01a06b6b14ffab616d4271b1301357927d06f9857
 	sha256sums = f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d
 	sha256sums = 58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
@@ -32,20 +32,20 @@ pkgname = linux-mainline
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-mainline=4.2rc3
+	provides = kernel26-mainline=4.2rc4
 	conflicts = kernel26-mainline
 	replaces = kernel26-mainline
 	backup = etc/mkinitcpio.d/linux-mainline.preset
 
 pkgname = linux-mainline-headers
 	pkgdesc = Header files and scripts for building modules for Linux-mainline kernel
-	provides = kernel26-mainline-headers=4.2rc3
+	provides = kernel26-mainline-headers=4.2rc4
 	conflicts = kernel26-mainline-headers
 	replaces = kernel26-mainline-headers
 
 pkgname = linux-mainline-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-mainline kernel
-	provides = kernel26-mainline-docs=4.2rc3
+	provides = kernel26-mainline-docs=4.2rc4
 	conflicts = kernel26-mainline-docs
 	replaces = kernel26-mainline-docs
 
