@@ -1,28 +1,22 @@
 # Maintainer: Xentec <artificial.i7 at gmail dot com>
 
 pkgname=cppformat-git
-pkgver=1.1.0.r252.g76d1218
+pkgver=1.1.0.r256.g69a0317
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
 url="http://cppformat.github.io"
 license=('BSD')
-depends=('gcc-libs')
+
 conflicts=('cppformat')
+depends=('gcc-libs')
 makedepends=('cmake' 'git' 'doxygen' 'nodejs-less-plugin-clean-css' 'python-virtualenv')
 source=("$pkgname"::'git+https://github.com/cppformat/cppformat')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare()
-{
-	cd "$pkgname"
-	sed -i 's/env python/env python2/' doc/build.py # python version
-	sed -i "s/'No command by the name pip show' not in/'No command by the name pip show' in/" doc/build.py # logic error
 }
 
 build() {
