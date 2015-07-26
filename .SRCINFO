@@ -1,0 +1,17 @@
+pkgbase = z88dk
+	pkgdesc = A small C compiler for the Zilog Z80.
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = http://z88dk.org
+	arch = i686
+	arch = x86_64
+	license = custom:The Clarified Artistic License
+	depends = glibc
+	backup = etc/profile.d/z88dk.sh
+	source = http://downloads.sourceforge.net/project/z88dk/z88dk/1.10/z88dk-1.10.1.tgz
+	source = z88dk.sh
+	md5sums = 7898bc04f9e5275845d6117cafa74096
+	md5sums = affe59b56fbba4d6a145f899bb073227
+
+pkgname = z88dk
+
