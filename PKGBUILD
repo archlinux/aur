@@ -18,17 +18,11 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  2.0.8-${git describe --long --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'}
+  2.0.8-$(git describe --long --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g')
 }
 conflicts=("kst")
 build() {
   cd "${srcdir}/${_pkgname}"
-  sed -i "s/find_package\(PythonLibs REQUIRED\)/SET \(PythonLibs \"\/usr\/lib64\/libpython2.7.so\"\)/" \
-  ./cmake/pyKst/CMakeLists.txt
-  sed -i "s/python/python2/" \
-  ./cmake/pyKst/finddistdir.py
-  sed -i "s/\${NUMPY_VERSION_PATCH}/0/" \
-  ./cmake/modules/FindNumPy.cmake
   cp -r ./cmake/pyKst/* ./pyKst/
   cmake ./ \
   -Dkst_release=2 \
