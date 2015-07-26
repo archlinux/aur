@@ -1,0 +1,19 @@
+pkgbase = textext
+	pkgdesc = An inkscape extension which lets you add LaTeX equations to your drawings
+	pkgver = 0.4.4
+	pkgrel = 3
+	url = http://pav.iki.fi/software/textext/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = inkscape
+	depends = texlive-core
+	depends = python2-lxml
+	depends = pdf2svg
+	source = http://pav.iki.fi/software/textext/textext-0.4.4.tar.gz
+	source = LICENSE.txt
+	md5sums = 5dbb18bf762565196f8ac1f68f8607e3
+	md5sums = 91da7de463147c1c78b1c2e6f24da380
+
+pkgname = textext
+
