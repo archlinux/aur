@@ -1,18 +1,19 @@
 # Maintainer: justbrowsing <developer4linux+aur@gmail.com>
 pkgname=justbrowsing-theme
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Icons, font and wallpapers for JustBrowsing"
 arch=('any')
 url="https://github.com/justbrowsing/justbrowsing-theme"
 license=('GPL2' 'CCPL')
 depends=('clearlooks-phenix-gtk-theme' 'cantarell-fonts')
-makedepends=('unzip')
-optdepends=('justbrowsing-home: Creates user for JustBrowsing' 'justbrowsing-adeskbar: Panel for JustBrowsing')
+makedepends=('')
+optdepends=('justbrowsing-home: Creates user for JustBrowsing' 
+            'justbrowsing-adeskbar: Panel for JustBrowsing')
 provides=('justbrowsing-theme' 'gnome-themes-standard')
 conflicts=('gnome-colors-icon-theme')
-source=("https://github.com/justbrowsing/justbrowsing-theme/archive/master.zip")
-md5sums=('7c4a9de0a5a4ac3caf30a269a56b5ab7')
+source=("https://github.com/justbrowsing/justbrowsing-theme/archive/master.tar.gz")
+md5sums=('2c92ea358489f8f960215b73ea39013a')
 
 package() {
   cd "${srcdir}/justbrowsing-theme-master"  
