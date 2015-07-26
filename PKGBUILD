@@ -1,7 +1,7 @@
 # Maintainer: Thibault Guittet <guittet dot thibault at gmail dot com>
 _pkgname=connman-ncurses
 pkgname=$_pkgname-git
-pkgver=20150614
+pkgver=20150726
 pkgrel=1
 pkgdesc="Simple ncurses UI for ConnMan"
 arch=('any')
@@ -10,17 +10,10 @@ license=('GPL2')
 depends=('json-c' 'ncurses' 'connman')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
-source=("git://github.com/eurogiciel-oss/connman-json-client.git"
-		"pull_request_14.patch")
-sha256sums=("SKIP"
-			"ab14231b763d67eb0767da0600cbe5c9e94bbedfa52d374a12c374706887da41")
+source=("git://github.com/eurogiciel-oss/connman-json-client.git")
+sha256sums=("SKIP")
 
 _gitroot="connman-json-client"
-
-prepare() {
-  cd "$srcdir/$_gitroot"
-  patch -p1 -i $srcdir/pull_request_14.patch
-}
 
 build() {
   cd "$srcdir/$_gitroot"
