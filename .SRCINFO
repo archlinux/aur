@@ -3,6 +3,7 @@ pkgbase = kodi-platform-git
 	pkgver = r36.33b6390
 	pkgrel = 2
 	url = https://github.com/xbmc/kodi-platform
+	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL
