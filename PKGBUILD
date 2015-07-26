@@ -21,7 +21,7 @@
 # Inconsolata: Google ships a modified version.
 
 pkgname=ttf-google-fonts-opinionated-git
-pkgver=20150608
+pkgver=20150721
 pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project"
 arch=('any')
@@ -71,6 +71,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-pt-mono'
            'ttf-pt-sans'
            'ttf-roboto'
+           'ttf-roboto-mono'
            'ttf-sil-fonts'
            'ttf-sortsmillgoudy'
            'ttf-source-code-pro'
