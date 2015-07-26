@@ -10,7 +10,7 @@ url="https://github.com/pebble/libpebble2"
 depends=('python2'
          'python2-six'
          'python2-websocket-client'
-		 'python2-wsgiref')
+         'python2-wsgiref')
 provides=("python2-libpebble2")
 conflicts=("python2-libpebble2")
 options=(!emptydirs)
