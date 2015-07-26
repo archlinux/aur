@@ -2,15 +2,15 @@
 
 pkgname=eclipse-windowbuilder
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WindowBuilder plugins (SWT Designer and Swing Designer) for Eclipse IDE"
 arch=('any')
 url="http://projects.eclipse.org/projects/tools.windowbuilder"
 license=('EPL')
-depends=('eclipse>=4.4' )
+depends=('eclipse>=4.5' )
 makedepends=('unzip')
-source=('http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/WB_v1.8.0_UpdateSite_for_Eclipse4.4.zip')
-md5sums=('80f78b3bc2b046b6f00c5adfa0887268')
+source=('http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/WB_v1.8.0_UpdateSite_for_Eclipse4.5.zip')
+sha512sums=('b5e3181c4c746a38b2c77e213f214ab9a8a28bb528adc7bda39c179205e68c34b3c9e1dacc97ae01eda84d010dc2f52c9f7fd09724771d9807abdae414b28698')
 
 
 build()
@@ -20,7 +20,7 @@ build()
 
 package()
 {    
-    _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+    _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
     # Features
     find features -type f | while read _feature ; do
