@@ -1,0 +1,19 @@
+pkgbase = rtl_433-git
+	pkgdesc = Turns your Realtek RTL2832 based DVB dongle into a 433.92MHz generic data receiver
+	pkgver = 20150518
+	pkgrel = 1
+	url = https://github.com/merbanan/rtl_433
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	depends = rtl-sdr
+	provides = rtl_433
+	conflicts = rtl_433
+	source = git://github.com/merbanan/rtl_433.git
+	md5sums = SKIP
+
+pkgname = rtl_433-git
+
