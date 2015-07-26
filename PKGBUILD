@@ -14,10 +14,12 @@ license=('GPL')
 depends=("gcc-ada")
 source=(http://mirrors.cdn.adacore.com/art/949752df2432aed8d06c48d57cea71f38d0517cc
         Makefile.archy
-        generic_gpr.in)
+        generic_gpr.in
+        patch-xmlada-config.in)
 md5sums=('98c96b8c6a877617ec4da3ef6a03288a'
          '9784cefc4f5964b2469504f83957418f'
-         'cde06f485e180f4cc82bcdb450d36153')
+         'cde06f485e180f4cc82bcdb450d36153'
+         '0b2eaa5ff3314a3dfcca66425d8f5d81')
 
 
 GREP=grep
@@ -142,13 +144,6 @@ prepare()
 #	-exec ${PRINTF} ', "%s"' {} \;
 
 
-#	${SED} -e 's|@exec_prefix@|$${prefix}|' \
-#		-e 's|@libdir@|$${exec_prefix}/lib|' \
-#		-e 's|@includedir@|$${prefix}/include|' \
-#		-e 's|@DEFAULT_LIBRARY_TYPE@|static|' \
-#		-e 's|@PACKAGE_VERSION@|${PORTVERSION}|' \
-#		${WRKSRC}/xmlada-config.in > ${WRKSRC}/xmlada-config
-
 	${SED} -e '/^with/d' -e 's|@ZONE@|unicode|' \
 		-e "s|@FILES@|${FIND1}|" \
 		-e 's|@VERSION@|4.6.0.0|' ${FILESDIR}/generic_gpr.in \
@@ -183,6 +178,8 @@ prepare()
         #
 	${REINPLACE_CMD} -i -e '/unicode/d' ${WRKSRC}/distrib/xmlada.gpr
  
+
+  patch -p0 -i ../patch-xmlada-config.in
 }
 
 
@@ -190,7 +187,18 @@ prepare()
 build() 
 {
   cd $srcdir/$pkgname-gpl-$pkgver-src
+
   ./configure --prefix=/usr
+
+	${SED} -e 's|@exec_prefix@|/usr|' \
+		-e 's|@libdir@|/usr/lib|' \
+		-e 's|@includedir@|/usr/include|' \
+		-e 's|@DEFAULT_LIBRARY_TYPE@|static|' \
+		-e 's|@PACKAGE_VERSION@|4.6.0.0|' \
+		${WRKSRC}/xmlada-config.in > ${WRKSRC}/xmlada-config
+
+
+
   make -f ../Makefile.archy all
 }
 
