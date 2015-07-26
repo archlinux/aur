@@ -1,0 +1,19 @@
+pkgbase = ahven
+	pkgdesc = Ahven is a simple unit test framework for the Ada programming language.
+	pkgver = 2.4
+	pkgrel = 1
+	url = http://ahven.stronglytyped.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = sphinxcontrib-adadomain
+	depends = gcc-ada
+	source = http://downloads.sourceforge.net/project/ahven/ahven/Ahven%202.4/ahven-2.4.tar.gz
+	source = ahven-text_runner.adb-patch
+	source = ahven-runner.adb-patch
+	md5sums = f0113f49e36f9f2b33e3682bbfd87e28
+	md5sums = 57f341908ec1d8235051cd59b30e4a71
+	md5sums = 6d8e78c3757a220f4f8575a4a836e949
+
+pkgname = ahven
+
