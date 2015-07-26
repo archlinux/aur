@@ -38,7 +38,8 @@ source=("git://github.com/rakshasa/rtorrent.git#commit=$_commit"
         "${_url}/ui_pyroscope.patch"
         "${_url}/command_pyroscope.cc"
         "${_url}/ui_pyroscope.cc"
-        "${_url}/ui_pyroscope.h")
+        "${_url}/ui_pyroscope.h"
+        "${_url}/ps-ui_pyroscope_all.patch")
 
 md5sums=('SKIP'
          'ea0073fba705a6b4124697e7defc6c5b'
@@ -47,7 +48,8 @@ md5sums=('SKIP'
          '0a2bbaf74c7160ba33876dcc2f050f14'
          'ba7634da91480021330e6fa8084b50d5'
          '951b40c6d43caf0a3bffc5fffcc557d5'
-         '1258acfc82c50a8f452ace87fef0b416')
+         '1258acfc82c50a8f452ace87fef0b416'
+         '7a88f8ab5d41242fdf1428de0e2ca182')
 
 pkgver() {
     cd "$srcdir/rtorrent"
@@ -68,6 +70,7 @@ prepare() {
 
     for i in ${srcdir}/*.patch; do
         sed -f doc/scripts/update_commands_0.9.sed -i "$i"
+        msg "Patching $i"
         patch -uNp1 -i "$i"
     done
     for i in ${srcdir}/*.{cc,h}; do
