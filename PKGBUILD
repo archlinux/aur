@@ -8,7 +8,7 @@
 pkgname=arch-runsvdir-init
 pkgver=0.2.0
 _runit_ver=2.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Arch native runit package with runsvdir as init (like busybox)'
 url='http://smarden.org/runit/'
 license=('Creative Commons')
@@ -27,7 +27,7 @@ sha256sums=('6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18'
 			'4db8c30c75cc78770ec9f131f803e21ce1ebfc3ef5f634383af086cf0ed325f5'
 			'ead703406985f77ce52da925125e7e5756652963b7c6d3fbeb9059bd7319cd89'
 			)
-backup=('/etc/rc.conf' '/etc/rc.shutdown' '/etc/rc.local')
+backup=('etc/rc.conf' 'etc/rc.shutdown' 'etc/rc.local')
 depends=()
 makedepends=('git')
 optdepends=('arch-runit-services')
