@@ -1,6 +1,6 @@
 pkgbase = nodejs-cordova
 	pkgdesc = Cordova command line interface tool
-	pkgver = 5.0.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = http://cordova.apache.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nodejs-cordova
 	optdepends = apache-ant: building for Android
 	optdepends = android-platform: building for Android
 	optdepends = android-sdk-build-tools: building for Android
-	noextract = cordova-5.0.0.tgz
-	source = http://registry.npmjs.org/cordova/-/cordova-5.0.0.tgz
+	noextract = cordova-5.1.1.tgz
+	source = http://registry.npmjs.org/cordova/-/cordova-5.1.1.tgz
 	sha1sums = 696907aff7c889beea4422b6c80e57558a905c05
 
 pkgname = nodejs-cordova
