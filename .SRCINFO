@@ -1,0 +1,18 @@
+pkgbase = kicadlibrarian
+	pkgdesc = A utility to manage and maintain KiCad libraries with schematic symbols and footprints
+	pkgver = 1.0.5252
+	pkgrel = 1
+	url = http://www.compuphase.com/electronics/kicadlibrarian_en.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = desktop-file-utils
+	depends = gcc-libs-multilib
+	depends = wxgtk
+	depends = curl
+	depends = libharu
+	source = http://www.compuphase.com/software/kicadlibrarian-sources.tar.gz
+	md5sums = 833d5b3c314fe9538237fd76aea321aa
+
+pkgname = kicadlibrarian
+
