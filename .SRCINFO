@@ -1,0 +1,16 @@
+pkgbase = tegaki-python
+	pkgdesc = Base python library for Tegaki
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://www.tegaki.org/
+	arch = any
+	license = GPL2
+	makedepends = python2
+	depends = python2
+	depends = zinnia>=0.05
+	depends = zinnia-python>=0.05
+	source = http://www.tegaki.org/releases/0.3.1/tegaki-python-0.3.1.tar.gz
+	md5sums = bd3284f56d36691710ec5b346a61f5af
+
+pkgname = tegaki-python
+
