@@ -1,19 +1,19 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
-pkgname=firefox-extension-ublock
-pkgver=0.9.5.0
+pkgname=firefox-extension-ublock-origin
+pkgver=1.0.0.0
 pkgrel=1
-pkgdesc='Finally, an efficient blocker. Easy on CPU and memory.'
-url=https://github.com/chrisaljoudi/uBlock
+pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
+url=https://github.com/gorhill/uBlock
 arch=('any')
 license=('GPL3')
 depends=('firefox')
-source=("uBlock-$pkgver.xpi::https://github.com/chrisaljoudi/uBlock/releases/download/$pkgver/uBlock.firefox.xpi")
-sha256sums=('f352c719c8c6d121b190bb2424e521f3cedeee932864735f555d45ff65920e91')
+source=("uBlock0-$pkgver.xpi::https://github.com/gorhill/uBlock/releases/download/$pkgver/uBlock0.firefox.xpi")
+sha256sums=('b586dea639524752fdfd81901ce7ff247955df0f8bc094fd00484175c5fb452b')
 
 package() {
   local GLOBIGNORE=*.xpi:LICENSE.txt
-  local dstdir="$pkgdir"/usr/lib/firefox/browser/extensions/"{2b10c1c8-a11f-4bad-fe9c-1c11e82cac42}"
+  local dstdir="$pkgdir"/usr/lib/firefox/browser/extensions/"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
 
   install -d "$dstdir"
   cp -dpr --no-preserve=ownership * "$dstdir"
