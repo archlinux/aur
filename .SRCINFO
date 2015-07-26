@@ -1,0 +1,37 @@
+pkgbase = bumblebee-git
+	pkgdesc = NVIDIA Optimus support for Linux through VirtualGL or primus
+	pkgver = 3.2.1.r16.524ded1
+	pkgrel = 1
+	url = http://www.bumblebee-project.org
+	install = bumblebee.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = help2man
+	depends = glib2
+	depends = mesa-libgl
+	optdepends = bbswitch: switch on/off discrete card
+	optdepends = xf86-video-nouveau: Nouveau driver
+	optdepends = nouveau-dri: 3D acceleration features fo Nouveau
+	optdepends = nvidia: NVIDIA kernel driver
+	optdepends = nvidia-340xx: NVIDIA kernel driver for older devices
+	optdepends = nvidia-304xx: NVIDIA kernel driver for even older devices
+	optdepends = virtualgl: oldest back-end for optirun
+	optdepends = primus: faster back-end for optirun
+	provides = bumblebee
+	provides = nvidia-libgl
+	provides = nvidia-340xx-libgl
+	provides = nvidia-304xx-libgl
+	conflicts = bumblebee
+	conflicts = nvidia-libgl
+	conflicts = nvidia-340xx-libgl
+	conflicts = nvidia-304xx-libgl
+	backup = etc/bumblebee/bumblebee.conf
+	backup = etc/bumblebee/xorg.conf.nouveau
+	backup = etc/bumblebee/xorg.conf.nvidia
+	source = bumblebee::git://github.com/Bumblebee-Project/Bumblebee.git#branch=develop
+	md5sums = SKIP
+
+pkgname = bumblebee-git
+
