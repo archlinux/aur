@@ -11,7 +11,7 @@ license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'libx11' 'gcc-libs' 'qt5-base' 'qt5-quick1' 'qt5-script') #qt5-quick1 
 optdepends=('evince: hqplayer manual reading')
 source=("http://www3.signalyst.com/bins/hqplayer_$_debpkgver.deb" 'copyright')
-sha256sums=('1baf8e322c45e8fc29ae9a0f9bc965b4ffb54e7968320491f71c189e511b8e70' '15fb909211ec2fef1f7fa9af779f22cb236031c1cdab213f9461fa5626f69965')
+sha256sums=('b5f1e24fa10dde30e48fcf863b27c7867fa7af4fa808cc9d8d14ba9b9e5d50c1' '15fb909211ec2fef1f7fa9af779f22cb236031c1cdab213f9461fa5626f69965')
 
 package() {
  cd "$srcdir"
