@@ -1,13 +1,23 @@
 source /tmp/adobe-digital-editions.PKGBUILD     # ${_installer}
 
+USERS=($( ls /home/ ))
+
+nobody() {
+    if [[ " ${USERS[@]} " =~ " ${1} " ]]; then return 1; else return 0; fi
+}
+
 put_user() {
-    #echo "Users: "$(ls /home/)
-    #export ADOBE_USER=$(ls -1 /home/ | head)
-
-    export ADOBE_USER=alexandre  # EDIT THIS
-
-    #echo "Choose someone [default=$ADOBE_USER]:"
-    # TODO: stop for capture user's answer
+    YOU=
+    while [ -z "$YOU" ] || nobody "$YOU"; do
+        echo
+        echo "Users possessing HOME: ${USERS[@]}"
+        echo "Who are you? "
+        read YOU
+    done
+    echo
+    echo "OK, $YOU! Continuing..."
+    export ADOBE_USER="$YOU"
+    echo
 }
 
 put_DISPLAY() {
