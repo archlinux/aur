@@ -2,12 +2,12 @@
 
 pkgname=upwork
 pkgver=4.0.86.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Team App (ex. oDesk)"
 arch=('i686' 'x86_64')
 url="https://www.upwork.com/downloads/new-team-application"
 license=('unknown')
-depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libudev.so.0')
+depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libudev0')
 install=upwork.install
 
 source_x86_64=(http://updates.team.odesk.com/binaries/v4_0_86_0_ba6c68c617adc98/upwork_amd64.deb)

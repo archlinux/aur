@@ -1,7 +1,7 @@
 pkgbase = upwork
 	pkgdesc = Team App (ex. oDesk)
 	pkgver = 4.0.86.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.upwork.com/downloads/new-team-application
 	install = upwork.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = upwork
 	depends = libxtst
 	depends = gtkglext
 	depends = libgcrypt15
-	depends = libudev.so.0
+	depends = libudev0
 	source_i686 = http://updates.team.odesk.com/binaries/v4_0_86_0_ba6c68c617adc98/upwork_i386.deb
 	md5sums_i686 = efb5f40b7a42dce43354423696f1f44b
 	source_x86_64 = http://updates.team.odesk.com/binaries/v4_0_86_0_ba6c68c617adc98/upwork_amd64.deb
