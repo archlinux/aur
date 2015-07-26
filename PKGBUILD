@@ -1,8 +1,12 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
+# Contributor: Jesse Jaara <gmail.com: jesse.jaara>
+
+# Uncomment if you want to disable compressing the package to save some time.
+#PKGEXT=.pkg.tar
 
 pkgname=clion-eap
 _pkgname=clion
-pkgbuild=141.1935
+pkgbuild=141.2144
 pkgver=${pkgbuild}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -18,44 +22,52 @@ optdepends=(
   'biicode: C/C++ dependency manager'
 )
 source=("http://download.jetbrains.com/cpp/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('7bfde1cda863ca2bfe64685d5cf0ada2111b10cc8f0207cfc84d64a24154affda3b5ba4936d89d6773742f5cc4b2fff2d07b4a1a3adfae2e50c1a189ece7c526')
+sha512sums=('80397854908176c6e8245b2c7cda5aee3032fd64119fd1457c07d57ca8452636de0dd3b97bf774c105562683117852ff99dbb3cb08a74567454710df6d6f3f33')
+noextract=("${_pkgname}-${pkgver}.tar.gz")
 
 package() {
-  cd ${srcdir}
-  mkdir -p ${pkgdir}/opt/${pkgname} || return 1
-  cp -R ${srcdir}/${_pkgname}-${pkgbuild}/* ${pkgdir}/opt/${pkgname} || return 1
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  bsdtar --strip-components 1 -xf "${_pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
+
+  # Uncomment to use system JRE, CMake and/or GDB instead of the bundled one(s)
+  #rm -r "${pkgdir}/opt/${pkgname}/jre"
+  #rm -r "${pkgdir}/opt/${pkgname}/bin/cmake"
+  #rm -r "${pkgdir}/opt/${pkgname}/bin/gdb"
+
   if [[ $CARCH = 'i686' ]]; then
-     rm -f ${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so
-     rm -f ${pkgdir}/opt/${pkgname}/bin/fsnotifier64
+     rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
+     rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
   fi
   if [[ $CARCH = 'x86_64' ]]; then
-     rm -f ${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so
-     rm -f ${pkgdir}/opt/${pkgname}/bin/fsnotifier
+     rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so"
+     rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier"
   fi
 
 (
 cat <<EOF
 [Desktop Entry]
-Version=${pkgver}
 Type=Application
-Name=${pkgname}
-Exec="/usr/bin/${pkgname}" %f
-Icon=${pkgname}
-Comment=${pkgdesc}
+Version=1.0
+Name=CLion EAP
 GenericName=${_pkgname}
-Categories=Development;IDE;
+Comment=${pkgdesc}
+Icon=${pkgname}
+Exec="/usr/bin/${pkgname}" %f
 Terminal=false
+Categories=Development;IDE;
 StartupNotify=true
 StartupWMClass=jetbrains-${_pkgname}
 EOF
 ) > ${startdir}/${pkgname}.desktop
 
-  mkdir -p ${pkgdir}/usr/bin/ || return 1
-  mkdir -p ${pkgdir}/usr/share/applications/ || return 1
-  mkdir -p ${pkgdir}/usr/share/pixmaps/ || return 1
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname} || return 1
-  install -m 644 ${startdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/
-  install -m 644 ${pkgdir}/opt/${pkgname}/bin/${_pkgname}.svg ${pkgdir}/usr/share/pixmaps/${pkgname}.svg
-  install -m 644 ${srcdir}/${_pkgname}-${pkgbuild}/license/CLion_Preview_License.txt ${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt
-  ln -s /opt/${pkgname}/bin/${_pkgname}.sh "$pkgdir/usr/bin/${pkgname}"
+  mkdir -p "${pkgdir}/usr/bin/"
+  mkdir -p "${pkgdir}/usr/share/applications/"
+  mkdir -p "${pkgdir}/usr/share/pixmaps/"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  install -m 644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+
+  ln -s "/opt/${pkgname}/bin/clion.svg"                     "${pkgdir}/usr/share/pixmaps/clion.svg"
+  ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/${_pkgname}.sh"                 "${pkgdir}/usr/bin/${pkgname}"
 }

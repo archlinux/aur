@@ -1,6 +1,6 @@
 pkgbase = clion-eap
 	pkgdesc = C/C++ IDE. 30-day evaluation.
-	pkgver = 141.1935
+	pkgver = 141.2144
 	pkgrel = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = clion-eap
 	optdepends = gcc: GNU compiler
 	optdepends = clang: LLVM compiler
 	optdepends = biicode: C/C++ dependency manager
+	noextract = clion-141.2144.tar.gz
 	options = !strip
-	source = http://download.jetbrains.com/cpp/clion-141.1935.tar.gz
-	sha512sums = 7bfde1cda863ca2bfe64685d5cf0ada2111b10cc8f0207cfc84d64a24154affda3b5ba4936d89d6773742f5cc4b2fff2d07b4a1a3adfae2e50c1a189ece7c526
+	source = http://download.jetbrains.com/cpp/clion-141.2144.tar.gz
+	sha512sums = 80397854908176c6e8245b2c7cda5aee3032fd64119fd1457c07d57ca8452636de0dd3b97bf774c105562683117852ff99dbb3cb08a74567454710df6d6f3f33
 
 pkgname = clion-eap
 
