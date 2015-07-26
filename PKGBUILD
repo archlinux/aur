@@ -42,14 +42,14 @@ provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
 "http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2" 'anal.h'
 'package.patch' 'env.patch' 'paths.patch' 'clean.patch' 'skip-check.patch' 
-'pexpect-env.patch' 'pexpect-del.patch' 'ntl9.patch' 'disable-fes.patch')
+'pexpect-env.patch' 'pexpect-del.patch' 'disable-fes.patch')
 md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
          'f72e544032b1a3f952b7ddafc3a49d63'
-         'a97ad60cca257b389f1e6e60eef2525f'
+         '843a6cc3b17a1850604593813321418e'
          'fd8e3e07f5b7318e6a7200a3c64f5bc2'
-         '193f8a3b421ead8d2c37f448f5402562'
+         '23e972753be1e5d0f761a7f82a95cebf'
          '5947a420a0b1483f0cbc74c76895789b'
          'a83a3b1bc7fcb7cbf752a83a8311fc42'
          'f333939ea6c41377b66407c81016cee4'
@@ -97,8 +97,6 @@ prepare(){
   patch -p0 -i "$srcdir"/disable-fes.patch
 
 # Upstream patches  
-# fix build aginst NTL 9 (Fedora)
-  patch -p0 -i "$srcdir"/ntl9.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
