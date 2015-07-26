@@ -1,0 +1,18 @@
+post_install() {
+    glib-compile-schemas usr/share/glib-2.0/schemas
+    update-desktop-database -q
+    gtk-update-icon-cache -qtf usr/share/icons/hicolor
+}
+
+pre_upgrade() {
+    [[ -f usr/share/gconf/schemas/rhythmbox.schemas ]] && usr/sbin/gconfpkg --uninstall rhythmbox
+}
+
+post_upgrade() {
+    post_install
+}
+
+
+post_remove() {
+    post_install
+}

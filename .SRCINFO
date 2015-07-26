@@ -1,0 +1,47 @@
+pkgbase = rhythmbox-git
+	pkgdesc = An iTunes-like music player/libary
+	pkgver = 3.2.3.g9a024fa
+	pkgrel = 1
+	url = http://www.rhythmbox.org
+	install = rhythmbox.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = brasero
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = python-gobject
+	makedepends = yelp-tools
+	depends = desktop-file-utils
+	depends = gst-plugins-good
+	depends = gvfs-afc
+	depends = json-glib
+	depends = libdmapsharing
+	depends = libgnome-media-profiles
+	depends = libgpod
+	depends = libmtp
+	depends = libnotify
+	depends = libpeas
+	depends = libsecret
+	depends = libwebkit3
+	depends = lirc-utils
+	depends = media-player-info
+	depends = totem-plparser
+	optdepends = brasero: CD burning
+	optdepends = gst-plugins-bad: Extra media codecs
+	optdepends = gst-plugins-ugly: Extra media codecs
+	provides = rhythmbox=3.2.3.g9a024fa
+	conflicts = rhythmbox
+	options = !emptydirs
+	options = !libtool
+	options = !strip
+	source = rhythmbox-git::git://git.gnome.org/rhythmbox
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = rhythmbox-git
+
