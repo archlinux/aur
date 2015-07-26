@@ -5,7 +5,7 @@
  
 pkgname=justbrowsing-adeskbar
 pkgver=0.5.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A lightweight application launcher configured for JustBrowsing"
 arch=('any')
 url="https://github.com/justbrowsing/justbrowsing-adeskbar"
@@ -18,9 +18,9 @@ optdepends=('justbrowsing-theme: icons for panel'
 			'pnmixer: volume systray')
 conflicts=("adeskbar")
 groups=("justbrowsing")
-source=("https://github.com/justbrowsing/${pkgname}/archive/master.zip")
+source=("https://github.com/justbrowsing/${pkgname}/archive/master.tar.gz")
 install="adeskbar.install"
-md5sums=('8ec567eee4a141de4fca8308c46b6cfb')
+md5sums=('4ba02d2f4d50c281afc943e46f92674c')
  
 package() {
   cd $srcdir/${pkgname}-master

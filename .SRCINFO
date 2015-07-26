@@ -1,7 +1,7 @@
 pkgbase = justbrowsing-adeskbar
 	pkgdesc = A lightweight application launcher configured for JustBrowsing
 	pkgver = 0.5.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/justbrowsing/justbrowsing-adeskbar
 	install = adeskbar.install
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = justbrowsing-adeskbar
 	optdepends = network-manager-applet-gtk2: networking systray
 	optdepends = pnmixer: volume systray
 	conflicts = adeskbar
-	source = https://github.com/justbrowsing/justbrowsing-adeskbar/archive/master.zip
-	md5sums = 8ec567eee4a141de4fca8308c46b6cfb
+	source = https://github.com/justbrowsing/justbrowsing-adeskbar/archive/master.tar.gz
+	md5sums = 4ba02d2f4d50c281afc943e46f92674c
 
 pkgname = justbrowsing-adeskbar
 
