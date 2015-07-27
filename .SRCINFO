@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-scenechange
 	pkgdesc = Plugin for Vapoursynth: scenechange (Include temporalsoften2 script)
 	pkgver = 0.2.0_2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://forum.doom9.org/showthread.php?t=166769
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = vapoursynth-plugin-scenechange
 	depends = vapoursynth
 	provides = vapoursynth-plugin-scenechange
 	conflicts = vapoursynth-plugin-scenechange-git
-	noextract = scenechange-0.2.0-2.7z
 	source = https://dl.dropbox.com/u/6596386/vapoursynth-plugins/scenechange-0.2.0-2.7z
 	sha1sums = 98ffaf3ea7ed8294a6a4b415c2ff813f5b87b8f1
 
