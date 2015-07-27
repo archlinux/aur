@@ -1,7 +1,7 @@
 pkgbase = sugar-toolkit-gtk3
 	pkgdesc = Set of widgets for Sugar applications
 	pkgver = 0.106.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sugarlabs.org/
 	arch = any
 	groups = sugar-desktop

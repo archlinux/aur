@@ -2,7 +2,7 @@
 
 pkgname=sugar-toolkit-gtk3
 pkgver=0.106.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of widgets for Sugar applications"
 arch=('any')
 url="http://www.sugarlabs.org/"
@@ -15,6 +15,7 @@ md5sums=('932cf8a6dc6fc99837c9f0c78aeee03b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  ./autogen.sh
   PYTHON=python2 ./configure --prefix=/usr
   make
 }
