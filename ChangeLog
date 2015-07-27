@@ -1,0 +1,11 @@
+ChangeLog for GWtool PKGBUILD
+http://gwtool.sourceforge.net/
+
+* GWtool-0.2.0-2 (2015-04-28 - AstroFloyd)
+	* arch: 'any' -> 'i686' 'x86_64'
+	* license: GPLv3 -> GPL3
+        * added cmake as a *make* dependency; added gcc-fortran
+	* added -DCMAKE_INSTALL_PREFIX:PATH=/usr to cmake
+
+* GWtool-0.2.0-1 (2015-02-16 - Gustavo Castro)
+        Initial PKGBUILD for GWtool v0.2.0
