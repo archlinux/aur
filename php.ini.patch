@@ -1,5 +1,5 @@
---- php.ini-production.old	2015-06-21 09:33:50.323831396 +0800
-+++ php.ini-production	2015-06-21 09:30:24.343922874 +0800
+--- php.ini-production.orig	2015-07-22 03:00:27.315321077 +0800
++++ php.ini-production	2015-07-27 11:12:57.535189877 +0800
 @@ -291,7 +291,7 @@
  ; and below.  This directive makes most sense if used in a per-directory
  ; or per-virtualhost web server configuration file.
@@ -36,7 +36,13 @@
  ;
  ; ... or under UNIX:
  ;
-@@ -864,41 +864,41 @@
+@@ -859,45 +859,45 @@
+ ; default extension directory.
+ ;
+ ; Windows Extensions
+-; Note that ODBC support is built in, so no dll is needed for it.
++; Note that ODBC support is built in, so no.so is needed for it.
+ ; Note that many DLL files are located in the extensions/ (PHP 4) ext/ (PHP 5+)
  ; extension folders as well as the separate PECL DLL download (PHP 5+).
  ; Be sure to appropriately set the extension_dir directive.
  ;
@@ -62,7 +68,6 @@
 -;extension=php_pdo_pgsql.dll
 -;extension=php_pdo_sqlite.dll
 -;extension=php_pgsql.dll
--;extension=php_pspell.dll
 -;extension=php_shmop.dll
 +;extension=php_bz2.so
 +;extension=php_curl.so
@@ -86,7 +91,6 @@
 +;extension=php_pdo_pgsql.so
 +;extension=php_pdo_sqlite.so
 +;extension=php_pgsql.so
-+;extension=php_pspell.so
 +;extension=php_shmop.so
  
  ; The MIBS data available in the PHP distribution must be installed. 
