@@ -1,0 +1,18 @@
+pkgbase = gdm3setup-utils
+	pkgdesc = Utilities to configure GDM3, autologin options and change Shell theme
+	pkgver = 20150507
+	pkgrel = 1
+	url = http://github.com/Nano77/gdm3setup
+	arch = any
+	license = GPL
+	depends = gdm
+	depends = gnome-shell
+	depends = python2-dbus
+	conflicts = gdm3setup-daemon-native-theme
+	conflicts = gdm3setup-vala
+	conflicts = gdm3setup-vala-native-theme
+	source = https://raw.github.com/Nano77/various/master/src/gdm3setup-utils/gdm3setup-utils-20150507.tar.xz
+	sha256sums = 07d6e79ee4fd2ae27272106f7f9512ed6e404c782fa0c8582c6302236156fcf7
+
+pkgname = gdm3setup-utils
+
