@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Domination
+Comment=A Java version of the classic Risk board game.
+Exec=domination
+Icon=domination.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Application;Game;StrategyGame;

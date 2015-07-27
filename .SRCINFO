@@ -1,0 +1,17 @@
+pkgbase = domination
+	pkgdesc = A Java version of the classic Risk board game.
+	pkgver = 1.1.1.5
+	pkgrel = 1
+	url = http://domination.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = java-runtime
+	source = http://prdownloads.sourceforge.net/domination/Domination_1.1.1.5.zip
+	source = Domination.sh
+	source = domination.desktop
+	md5sums = 9d439f0fc9a46d064713952d94d243cb
+	md5sums = a19104a3bfe819bccfd97e617cb845a6
+	md5sums = 61fa92bdd98b03a74fb02e91aa4ac738
+
+pkgname = domination
+
