@@ -1,0 +1,18 @@
+pkgbase = python-flask-login
+	pkgdesc = User session management for Flask.
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = https://pythonhosted.org/Flask-Login/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/F/Flask-Login/Flask-Login-0.2.11.tar.gz
+	md5sums = c0a7eaf28623f0aeac4929dc05a7a064
+
+pkgname = python2-flask-login
+	depends = python2-flask
+
+pkgname = python-flask-login
+	depends = python-flask
+
