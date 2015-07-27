@@ -1,8 +1,11 @@
-# Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
+set -u
+_pkgname='libgxps'
 pkgname='libgxps-git'
-pkgver='20120430'
-pkgrel='1'
+pkgver=0.2.2.r34.gda79d91
+pkgrel=1
 pkgdesc='An XPS Documents library'
 arch=('i686' 'x86_64')
 url='http://git.gnome.org/browse/libgxps/'
@@ -12,39 +15,35 @@ makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection')
 provides=('libgxps')
 conflicts=('libgxps')
 
-_gitroot='git://git.gnome.org/libgxps'
-_gitname='libgxps'
+source=('git://git.gnome.org/libgxps')
+sha256sums=('SKIP')
 
-build()
-{
-    cd "${srcdir}"
-    msg 'Connecting to GIT server....'
-
-    if [[ -d "${_gitname}" ]]
-    then
-        cd "${_gitname}" && git pull origin
-        msg 'The local files are updated.'
-    else
-        git clone "${_gitroot}" "${_gitname}"
-    fi
-
-    msg 'GIT checkout done or server timeout'
-    msg 'Starting build...'
-
-    rm -rf "${srcdir}/${_gitname}-build"
-    git clone "${srcdir}/${_gitname}" "${srcdir}/${_gitname}-build"
-    cd "${srcdir}/${_gitname}-build"
-
-    #
-    # BUILD HERE
-    #
-    ./autogen.sh
-    ./configure --prefix='/usr' --disable-test
-    make -s -j $(nproc)
+pkgver() {
+  set -u
+  cd "${srcdir}/${_pkgname}"
+  git describe --tags --long | sed -E -e 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
+  set +u
 }
 
-package()
-{
-    cd "${srcdir}/${_gitname}-build"
-    make DESTDIR="${pkgdir}/" install
+prepare() {
+  set -u
+  cd "${srcdir}/${_pkgname}"
+  ./autogen.sh
+  ./configure --prefix='/usr' --disable-test
+  set +u
 }
+
+build() {
+  set -u
+  cd "${srcdir}/${_pkgname}"
+  make -s -j $(nproc)
+  set +u
+}
+
+package() {
+  set -u
+  cd "${srcdir}/${_gitname}-build"
+  make DESTDIR="${pkgdir}/" install
+  set +u
+}
+set +u

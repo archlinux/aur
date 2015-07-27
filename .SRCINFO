@@ -1,6 +1,6 @@
 pkgbase = libgxps-git
 	pkgdesc = An XPS Documents library
-	pkgver = 20120430
+	pkgver = 0.2.2.r34.gda79d91
 	pkgrel = 1
 	url = http://git.gnome.org/browse/libgxps/
 	arch = i686
@@ -15,6 +15,8 @@ pkgbase = libgxps-git
 	depends = libtiff
 	provides = libgxps
 	conflicts = libgxps
+	source = git://git.gnome.org/libgxps
+	sha256sums = SKIP
 
 pkgname = libgxps-git
 
