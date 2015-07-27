@@ -1,7 +1,7 @@
 # Maintainer: Carsten Feuls <archlinux dot carstenfeuls dot de>
 
 pkgname=piwik
-pkgver=2.14.1
+pkgver=2.14.2
 pkgrel=1
 pkgdesc="Piwik is a real time web analytics software program, written in PHP"
 arch=('any')
@@ -12,10 +12,11 @@ optdepends=('mariadb: Database server'
   'python2: For log importer script'
   'php-geoip: For GeoIP php module')
 install=$pkgname.install
-#source=(http://builds.piwik.org/$pkgname-$pkgver.tar.gz)
-source=(http://builds.piwik.org/$pkgname-$pkgver.zip)
+source=(http://builds.piwik.org/$pkgname-$pkgver.tar.gz{,.asc})
 backup=('etc/webapps/piwik/config.ini.php')
-sha512sums=('f49e3ca3fd43a1f367848d2153f5a6381ef3730cd0c8f8a3e16a774a9f6c1cde07d20e67e2da4f2780b973b24d2fd6d626e16812f25e619f2627c0aeba6cf397')
+sha512sums=('706ba2632816b1cc038118abdb3de85012da7d785f714d77d014d791c6bbe0257860d42c9e50c8bb47eb1ec3bab4b514a09faad1de4224c8f9256e4e5f04c6e6'
+            'SKIP')
+validpgpkeys=('814E346FA01A20DBB04B6807B5DBD5925590A237')
 
 _piwikpath="/usr/share/webapps/"
 _piwikconfigpath="/etc/webapps/piwik"
