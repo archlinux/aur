@@ -11,6 +11,7 @@ pkgbase = plasma5-applets-network-monitor-git
 	depends = qt5-graphicaleffects
 	provides = plasma5-applets-network-monitor
 	conflicts = plasma5-applets-network-monitor
+	conflicts = plasma-applet-network-monitor-git
 	source = git://github.com/kotelnik/plasma-applet-network-monitor.git
 	md5sums = SKIP
 
