@@ -13,8 +13,5 @@ md5sums=('13d4e8fefda3223a5e6a880b57dd0b8a')
 
 package() {
   cd $srcdir/
-  find . -iname "*.ttf" -execdir install -Dm644 {} $pkgdir/usr/share/fonts/TTF/{} \;
-  # find . -iname "*.otf" -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;
-  # find . -iname "*.pcf.gz" -execdir install -Dm644 {} $pkgdir/usr/share/fonts/misc/{} \;
-  # find . -iname "*.psf.gz" -execdir install -Dm644 {} $pkgdir/usr/share/kbd/consolefonts/{} \;
+  find . -iname "*.ttf" -execdir install -Dm644 {} $pkgdir/usr/share/fonts/TTF/{}
 }
