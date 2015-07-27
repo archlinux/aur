@@ -1,7 +1,7 @@
-# Maintainer: Jonne Haß <me@mrzyx.de>
+# Maintainer: Jonne Haß <me@jhass.eu>
 pkgbase=diaspora
 pkgname=('diaspora-mysql' 'diaspora-postgresql')
-pkgver=0.5.1.2
+pkgver=0.5.2.0
 pkgrel=1
 pkgdesc="A distributed privacy aware social network"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ backup=("etc/webapps/$pkgbase/diaspora.yml"
         "etc/webapps/$pkgbase/database.yml"
         "etc/webapps/$pkgbase/secret_token.rb")
 install="$pkgbase.install"
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/$pkgbase/$pkgbase/tarball/v$pkgver"
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/$pkgbase/$pkgbase/archive/v${pkgver}.tar.gz"
         "$pkgbase.install"
         "$pkgbase.service"
         "$pkgbase.tmpfiles.d.conf"
@@ -53,7 +53,7 @@ _package() {
 
   msg "Setup build directory"
   mkdir -p $_srcdir
-  cp -Rf $srcdir/$pkgbase-$pkgbase-*/{app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Procfile,Rakefile} $_srcdir
+  cp -Rf $srcdir/$pkgbase-$pkgver/{app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Procfile,Rakefile} $_srcdir
 
   cd $_srcdir
 
@@ -146,7 +146,7 @@ package_diaspora-postgresql() {
   _package postgres
 }
 
-sha256sums=('0ce258b47144a3fa83fa53b40cf7ddebd2bf8069422162444623dd966999a351'
+sha256sums=('25a6eab9a143f0373f71c383c15346b7d8e00f642e7b0a4ac30b2235b34df547'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             'f1770d7cfa2b3344e697ee664f5ab49e7cdeb50e93230a358a1ab5776824c81b'
             '26ae975338c5ab3fc506bd7bdb13d1b9f853ac0b9d8e591babf63c22a502d3be'
