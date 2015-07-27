@@ -1,0 +1,21 @@
+2014-08-19 jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+
+        * 3.005-1 :
+        update release:
+                       - fixing of catalan l•l and L•L (3.005)
+                       - fixing of version counters and style linking (3.005)
+                       - added underlinePosition and underlineThickness (3.005)
+
+2014-02-12 jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+
+        * 3.003-1 :
+        update release:
+                       - fix dot of j (3.003)
+                       - semibold name fix, corrected small g-commaaccent, 
+                        tidied up automatic metrics (3.002)
+
+2014-01-25 
+jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+
+	* 3.001-1 :
+	initial release
