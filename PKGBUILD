@@ -43,11 +43,11 @@ conflicts=('pebble-sdk-beta')
 source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver/_/-}.tar.gz"
         'pebble-sdk.install'
         'pflashFix.patch'
-	    'pebble.sh')
+        'pebble.sh')
 sha1sums=('8800dd56a8aa660db2f118cd730f362053a85610'
           '7ea5244f828e682d073434078569fab62a1ad996'
           '050db72f8259daac7bd0605369677e69ecca7821'
-          'c63d3992c1b8c677d1e5a3edb9aec1341540670d')
+          'af0c0deb6e474318a4dc81442d39d9d8befc9685')
 options=('staticlibs' '!strip')
 
 prepare() {
@@ -65,7 +65,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   cd "$srcdir/PebbleSDK-${pkgver//_/-}"
   cp -R Pebble Examples Documentation version.txt README.txt pebble-tool "$pkgdir/opt/pebble"
-  cp pebble.sh "$pkgdir/usr/bin/pebble"
+  cp "$srcdir/pebble.sh" "$pkgdir/usr/bin/pebble"
   touch "$pkgdir/opt/pebble/NO_TRACKING"
 }
 
