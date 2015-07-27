@@ -18,14 +18,12 @@ optdepends=('gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
 provides=('palemoon')
 conflicts=('palemoon')
 install=palemoon.install
-source=(http://linux.palemoon.org/files/$pkgver/palemoon-$pkgver.en-US.linux-$CARCH.tar.bz2
-#{,.sig}
-	palemoon.desktop)
-#validpgpkeys=('B85ADF545913F109BDD609390303DADA702F886A')
-sha1sums=('bc2c35d33422ea43d213ff1da92d80e3ea797a08'
-#'SKIP'
-          '83ff22ff7a034efac31f1dd5f27ad0115a778743')
-[ "$CARCH" == i686 ] && sha1sums[0]='dec42f0bbf26d7a7a1e6d6320b653c198348c9dc'
+source=(palemoon.desktop)
+source_i686=(http://linux.palemoon.org/files/$pkgver/palemoon-$pkgver.en-US.linux-$CARCH.tar.bz2)
+source_x86_64=(http://linux.palemoon.org/files/$pkgver/palemoon-$pkgver.en-US.linux-$CARCH.tar.bz2)
+sha1sums=('83ff22ff7a034efac31f1dd5f27ad0115a778743')
+sha1sums_i686=('dec42f0bbf26d7a7a1e6d6320b653c198348c9dc')
+sha1sums_x86_64=('bc2c35d33422ea43d213ff1da92d80e3ea797a08')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}

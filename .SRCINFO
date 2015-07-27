@@ -26,10 +26,12 @@ pkgbase = palemoon-bin
 	optdepends = hyphen: library for hyphenation and justification
 	provides = palemoon
 	conflicts = palemoon
-	source = http://linux.palemoon.org/files/25.6.0/palemoon-25.6.0.en-US.linux-.tar.bz2
 	source = palemoon.desktop
-	sha1sums = bc2c35d33422ea43d213ff1da92d80e3ea797a08
 	sha1sums = 83ff22ff7a034efac31f1dd5f27ad0115a778743
+	source_i686 = http://linux.palemoon.org/files/25.6.0/palemoon-25.6.0.en-US.linux-.tar.bz2
+	sha1sums_i686 = dec42f0bbf26d7a7a1e6d6320b653c198348c9dc
+	source_x86_64 = http://linux.palemoon.org/files/25.6.0/palemoon-25.6.0.en-US.linux-.tar.bz2
+	sha1sums_x86_64 = bc2c35d33422ea43d213ff1da92d80e3ea797a08
 
 pkgname = palemoon-bin
 
