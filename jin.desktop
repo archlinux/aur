@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Jin
+Comment=Graphical client for chess servers.
+Exec=/usr/bin/jin
+Icon=/usr/share/jin/icon.png
+Categories=Game;BoardGame;
+Type=Application
+Terminal=false
+StartupNotify=false

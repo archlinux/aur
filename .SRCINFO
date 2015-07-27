@@ -1,0 +1,17 @@
+pkgbase = jin
+	pkgdesc = Java client for various chess servers
+	pkgver = 2.14.1
+	pkgrel = 5
+	url = https://sourceforge.net/projects/jin/
+	arch = any
+	license = GPL
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/jin/jin/jin-2.14.1/jin-2.14.1-unix.tar.gz
+	source = jin
+	source = jin.desktop
+	md5sums = 62256214583c3214ffb9046176b6b02d
+	md5sums = abedbd4ca7e1a97472ac973a3f534220
+	md5sums = 82fb5d61fef8d202390e3fc94d3faa39
+
+pkgname = jin
+
