@@ -1,0 +1,18 @@
+pkgbase = astrotools
+	pkgdesc = Command-line tools for astronomy and astrophysics
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = http://astrotools.sourceforge.net/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc-fortran
+	depends = libsufr
+	depends = libthesky
+	source = http://sourceforge.net/projects/astrotools/files/astrotools-0.0.1.tar.gz
+	sha512sums = 150903efa945ea68baf4f62419d5d2e21dcc2db9f675267482717daa99b9485dfc65f3d9e3dadb6965abc903bbe2cc7099f1c6c51d5974e623dad0b1419eaa47
+
+pkgname = astrotools
+

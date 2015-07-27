@@ -1,0 +1,10 @@
+
+ChangeLog for astroTools PKGBUILD
+http://astrotools.sourceforge.net/
+
+* astroTools-0.0.1-2 (2015-04-28 - AstroFloyd)
+	Added cmake as a make dependency
+
+* astroTools-0.0.1-1 (2015-04-26 - AstroFloyd)
+	Initial PKGBUILD for astroTools, to be uploaded to AUR
+
