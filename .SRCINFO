@@ -1,7 +1,7 @@
 pkgbase = python2-zeroc-ice
 	pkgdesc = Ice is comprehensive RPC framework with support for Python, C++, .NET, Java, JavaScript and more.
 	pkgver = 3.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zeroc.com
 	arch = any
 	license = GPL
