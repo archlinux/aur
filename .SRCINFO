@@ -1,0 +1,14 @@
+pkgbase = lsx
+	pkgdesc = List executables
+	pkgver = 0.1
+	pkgrel = 12
+	url = http://tools.suckless.org/lsx
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = http://dl.suckless.org/tools/lsx-0.1.tar.gz
+	md5sums = d48fdce9868b13bf5ef3e7834768f89f
+
+pkgname = lsx
+
