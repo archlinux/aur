@@ -12,6 +12,7 @@ pkgbase = drawpile
 	makedepends = qt5-translations
 	makedepends = qt5-svg
 	makedepends = ninja
+	makedepends = cmake
 	depends = karchive
 	depends = kdnssd
 	depends = giflib
