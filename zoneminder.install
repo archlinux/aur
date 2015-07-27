@@ -1,0 +1,126 @@
+post_install() {
+    # edit /etc/php.ini for Zoneminder
+    sed -e '
+    # Enable these libraries by removing the leading comment character
+    \|^;extension=ftp.so$|       s|^;||;
+    \|^;extension=gd.so$|        s|^;||;
+    \|^;extension=gettext.so$|   s|^;||;
+    \|^;extension=mcrypt.so$|    s|^;||;
+    \|^;extension=openssl.so$|   s|^;||;
+    \|^;extension=pdo_mysql.so$| s|^;||;
+    \|^;extension=sockets.so$|   s|^;||;
+    \|^;extension=zip.so$|       s|^;||;
+    ' /etc/php/php.ini > /etc/php/php.ini.zoneminder
+
+    # edit /etc/httpd/conf/httpd.conf for Zoneminder
+    sed -e '
+    # Use mod_mpm_prefork instead of mod_mpm_event.so (FS#39218).
+    s|^LoadModule mpm_event_module modules/mod_mpm_event.so$|#&\nLoadModule mpm_prefork_module modules/mod_mpm_prefork.so|;
+    
+    # Zoneminder needs Apache configured to permit CGI execution
+    \|^\t#LoadModule cgi_module modules/mod_cgi.so$| s|\t#|\t|;
+    
+    # libphp5
+    \|^LoadModule php5_module modules/libphp5.so$|d;
+    s|^#*LoadModule rewrite_module modules/mod_rewrite.so$|&\nLoadModule php5_module modules/libphp5.so|;
+    \|^Include /etc/httpd/conf/extra/php5_module.conf|d;
+    s|^Include conf/extra/httpd-default.conf$|&\nInclude /etc/httpd/conf/extra/php5_module.conf|;
+    
+    # Include httpd-zoneminder.conf
+    \|^Include /etc/httpd/conf/extra/httpd-zoneminder.conf$|d;
+    s|^# Server-pool management (MPM specific)$|\nInclude /etc/httpd/conf/extra/httpd-zoneminder.conf\n&|;    
+    ' /etc/httpd/conf/httpd.conf > /etc/httpd/conf/httpd.conf.zoneminder
+    
+    cat << EOF
+
+  Zoneminder database setup:
+  --------------------------
+  Zoneminder operation requires a database named 'zm' which is defined in /usr/share/zoneminder/db/zm_create.sql
+  
+  Create the Zoneminder database (with a password):
+    "mysqladmin --defaults-file=/etc/mysql/my.cnf -p -f reload"
+    "cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/mysql/my.cnf -p"
+    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/mysql/my.cnf -p mysql"
+  (or without a password):
+    "mysqladmin --defaults-file=/etc/mysql/my.cnf -f reload"
+    "cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/mysql/my.cnf"
+    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/mysql/my.cnf mysql"
+
+  PHP configuration
+  -----------------
+  * Check and make sure these are uncommented in /etc/php/php.ini: 
+    extension=ftp.so
+    extension=gd.so
+    extension=gettext.so
+    extension=mcrypt.so
+    extension=openssl.so
+    extension=pdo_mysql.so
+    extension=sockets.so
+    extension=zip.so
+  * Add /etc/zm.conf, /srv/http/zoneminder, /var/cache/zoneminder, and /srv/zoneminder/socks to open_basedir in the zoneminder vhosts configuration file in apache:
+    php_admin_value open_basedir "/srv/http/:/home/:/tmp/:/usr/share/pear/:/usr/share/webapps/:/etc/zm.conf:/srv/http/zoneminder/:/var/cache/zoneminder/:/srv/zoneminder/socks/:/var/log/zoneminder/"
+  * Set your timezone in php.ini:
+    date.timezone = <your_country>/<your_city>
+
+  Apache configuration
+  --------------------
+  Edit /etc/httpd/conf/httpd.conf and add the line:
+    "LoadModule php5_module modules/libphp5.so"
+  and:
+    "Include /etc/httpd/conf/extra/php5_module.conf"
+    "Include /etc/httpd/conf/extra/httpd-zoneminder.conf"
+EOF
+}
+
+post_upgrade() {
+    post_install
+    /usr/bin/zmupdate.pl -f >/dev/null
+}
+
+post_remove() {
+    if [[ -d /tmp/zoneminder ]]; then
+        rm -vr /tmp/zoneminder
+    fi
+    # sed -i -e '
+    # /^open_basedir/ s/:\/srv\/http\/zoneminder//;
+    # /^open_basedir/ s/:\/srv\/http\/zoneminder\///;
+    # ' /etc/php/php.ini || read
+    # sed -i -e '
+    # /^# ZoneMinder/d;
+    # /Include \/etc\/httpd\/conf\/extra\/httpd-zoneminder.conf/d;
+    # ' /etc/httpd/conf/httpd.conf || read
+
+    cat << EOF
+Note:
+==> To clean Zoneminder mysql database, run as root (with password):
+==> "echo 'delete from user where User="zmuser";' | mysql --defaults-file=/etc/mysql/my.cnf -p mysql"
+==> "echo 'delete from db where User="zmuser";' | mysql --defaults-file=/etc/mysql/my.cnf -p mysql"
+==> "mysqladmin --defaults-file=/etc/mysql/my.cnf -p -f drop zm"
+==> (or without password):
+==> "echo 'delete from user where User="zmuser";' | mysql --defaults-file=/etc/mysql/my.cnf mysql"
+==> "echo 'delete from db where User="zmuser";' | mysql --defaults-file=/etc/mysql/my.cnf mysql"
+==> "mysqladmin --defaults-file=/etc/mysql/my.cnf -f drop zm"
+
+==> Disable http with php if it isn't needed with others servers, 
+==> comment or remove that lines in /etc/httpd/conf/httpd.conf:
+==> "LoadModule php5_module modules/libphp5.so"
+==> "Include /etc/httpd/conf/extra/php5_module.conf"
+
+==> Remove line in /etc/httpd/conf/httpd.conf:
+==> "Include /etc/httpd/conf/extra/httpd-zoneminder.conf"
+
+==> Disable php with mysql if it isn't needed with others servers, 
+==> comment that lines in /etc/php/php.ini:
+==> "extension=mysql.so"
+==> "extension=gd.so"
+==> "extension=gettext.so"
+==> "extension=mcrypt.so"
+==> "extension=mysqli.so"
+==> "extension=sockets.so"
+==> "date.timezone = <my_country>/<my_city>"
+
+==> Remove log files and "zoneminder" directory in "/var/log/zoneminder".
+
+==> Backup and remove "events", "images" and "temp" dirs in "/var/cache/zoneminder".
+EOF
+}
