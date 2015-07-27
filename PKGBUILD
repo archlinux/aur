@@ -2,6 +2,7 @@
 
 pkgname=ipmiview
 pkgver=2.10.2
+_pkgname=IPMIView
 _pkgrev=20150203
 _pkgver=${_pkgver}_${_pkgrev}
 pkgrel=1
@@ -16,7 +17,7 @@ else
 fi
 license=('custom:"Super Micro Computer"')
 url="http://www.supermicro.com/products/nfo/ipmi.cfm"
-source=("ftp://ftp.supermicro.com/utility/IPMIView/Linux/${pkgname}_V${pkgver}_bundleJRE_Linux_${_pkgarch}_${_pkgrev}.tar.gz"
+source=("ftp://ftp.supermicro.com/utility/IPMIView/Linux/${_pkgname}_V${pkgver}_bundleJRE_Linux_${_pkgarch}_${_pkgrev}.tar.gz"
         "ipmiview.desktop")
 sha256sums=('577ccc48e7d70325ef2f922a0784acdcf72fe6bded8e195a47efa03da6db4b74'
             '42a428fb0466ff1e925f712f1f4daa69a5b1d3b3f9cd4728b0da19646a39a427')
