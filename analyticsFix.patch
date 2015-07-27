@@ -1,0 +1,11 @@
+--- pebble_tool/util/analytics.py	2015-07-26 21:48:29.512801653 -0400
++++ pebble-tool/pebble_tool/util/analytics.py	2015-07-26 21:47:41.090334321 -0400
+@@ -214,7 +214,7 @@
+ 
+ 
+ def analytics_prompt():
+-    path = PebbleAnalytics.get_option_dir()
++    path = sdk_path()
+     if (not os.path.exists(os.path.join(path, "ENABLE_ANALYTICS"))
+             and not os.path.exists(os.path.join(path, "NO_TRACKING"))):
+         print("Pebble collects metrics on your usage of our developer tools.")

@@ -43,10 +43,12 @@ conflicts=('pebble-sdk-beta')
 source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver/_/-}.tar.gz"
         'pebble-sdk.install'
         'pflashFix.patch'
+        'analyticsFix.patch'
         'pebble.sh')
 sha1sums=('8800dd56a8aa660db2f118cd730f362053a85610'
           '7ea5244f828e682d073434078569fab62a1ad996'
           '050db72f8259daac7bd0605369677e69ecca7821'
+          'c5202cf88ea75f29e2aa09b55fcbd9b941fa8473'
           'af0c0deb6e474318a4dc81442d39d9d8befc9685')
 options=('staticlibs' '!strip')
 
@@ -54,6 +56,9 @@ prepare() {
   cd "$srcdir/PebbleSDK-${pkgver//_/-}"
   # patch phone emulator files to make qemu_micro_flash be accessed readonly
   patch -p0 -i "$srcdir/pflashFix.patch"
+
+  #patch analytics NO_TRACKING path
+  patch -p0 -i "$srcdir/analyticsFix.patch"
 
   # Unpack waf
   cd Pebble
