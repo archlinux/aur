@@ -1,0 +1,18 @@
+pkgbase = yanc-font-git
+	pkgdesc = yet another neat condensed font. based on gohufont.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jreinert/yanc-font
+	install = yanc-font-git.install
+	arch = any
+	makedepends = git
+	makedepends = xorg-bdftopcf
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = yanc-font
+	conflicts = yanc-font
+	source = yanc-font-git::git+https://github.com/jreinert/yanc-font.git
+	sha512sums = SKIP
+
+pkgname = yanc-font-git
+
