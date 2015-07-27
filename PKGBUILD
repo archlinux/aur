@@ -2,7 +2,7 @@
 
 pkgname=activecollab-timer
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="activeCollab Timer tracks time on your desktop computer and lets you easily submit it to activeCollab via activeCollab API. "
 arch=('i686' 'x86_64')
 url="https://www.activecollab.com/timer.html"
