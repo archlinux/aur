@@ -1,0 +1,16 @@
+pkgbase = rubycreator-git
+	pkgdesc = Plugin to add Ruby language support to QtCreator IDE.
+	pkgver = VERSION
+	pkgrel = 1
+	url = http://hugopl.github.io/RubyCreator/
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = qtcreator
+	provides = rubycreator-git
+	conflicts = rubycreator-git
+	source = git+https://github.com/hugopl/RubyCreator.git#branch=qtc-3.4
+	md5sums = SKIP
+
+pkgname = rubycreator-git
+
