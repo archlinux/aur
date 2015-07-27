@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r1969.g2b15ae5
-pkgrel=2
+pkgver=1.0.0.r1979.g657dd5f
+pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
