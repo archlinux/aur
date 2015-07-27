@@ -1,0 +1,21 @@
+pkgbase = gog-gods-will-be-watching
+	pkgdesc = A minimalistic point and click thriller centered on despair, commitment, and sacrifice.
+	pkgver = 1.1.0.7
+	pkgrel = 1
+	url = http://www.godswillbewatching.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = gog://gog_gods_will_be_watching_1.1.0.7.tar.gz
+	sha256sums = ad02754b72c22ace4e06ea3f0f1525992ed9ebcb8a1fda286cca431212531562
+	depends_i686 = libxxf86vm
+	depends_i686 = glu
+	depends_i686 = openssl
+	depends_i686 = openal
+	depends_x86_64 = lib32-libxxf86vm
+	depends_x86_64 = lib32-glu
+	depends_x86_64 = lib32-openssl
+	depends_x86_64 = lib32-openal
+
+pkgname = gog-gods-will-be-watching
+
