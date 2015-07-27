@@ -1,15 +1,14 @@
 pkgbase = qnapi
-	pkgdesc = Qt4 client for downloading movie subtitles from NAPI Project
-	pkgver = 0.1.6_rc2
-	pkgrel = 4
-	url = http://sourceforge.net/projects/qnapi/
+	pkgdesc = Qt5 client for downloading movie subtitles from NAPI Project
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/QNapi/qnapi
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt4
-	depends = p7zip
-	source = http://downloads.sourceforge.net/qnapi/qnapi-0.1.6-rc2.tar.gz
-	md5sums = 84daa5dea51e8612bda26bdc4361ea62
+	depends = qt5-base
+	source = qnapi-0.1.7.tar.gz::https://github.com/QNapi/qnapi/releases/download/0.1.7/qnapi-0.1.7.tar.gz
+	sha256sums = 0a14c7e0e1d7c1cf5e03b17e00f00b6133e6fc12ac80c4d3f302cd5e9d7cdd1e
 
 pkgname = qnapi
 

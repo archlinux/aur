@@ -1,34 +1,30 @@
+# Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail.com>
 
 pkgname=qnapi
-pkgver=0.1.6_rc2
-pkgrel=4
-pkgdesc="Qt4 client for downloading movie subtitles from NAPI Project"
+pkgver=0.1.7
+pkgrel=1
+pkgdesc="Qt5 client for downloading movie subtitles from NAPI Project"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/qnapi/"
+url="https://github.com/QNapi/${pkgname}"
 license=('GPL')
-depends=('qt4' 'p7zip')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver/_/-}.tar.gz")
-md5sums=('84daa5dea51e8612bda26bdc4361ea62')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
-
-  sed -i 's!/usr/share/apps/!/opt/kde/share/apps/!' qnapi.pro
-  sed -i 's!/usr/lib/kde4/share/kde4/services/ServiceMenus!/usr/share/kde4/services/ServiceMenus!' qnapi.pro
-}
+depends=('qt5-base')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QNapi/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('0a14c7e0e1d7c1cf5e03b17e00f00b6133e6fc12ac80c4d3f302cd5e9d7cdd1e')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
-
-  unset QTDIR
-
-  qmake-qt4 || return 1
-  make || return 1
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  qmake-qt5 ${pkgname}.pro
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
-
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make INSTALL_ROOT="${pkgdir}/" install
+  mkdir -p ${pkgdir}/usr/share/kde4/services/ServiceMenus/
+  mv ${pkgdir}/usr/share/doc/qnapi/qnapi-scan.desktop ${pkgdir}/usr/share/kde4/services/ServiceMenus/qnapi-scan.desktop 
+  mv ${pkgdir}/usr/share/doc/qnapi/qnapi-download.desktop ${pkgdir}/usr/share/kde4/services/ServiceMenus/qnapi-download.desktop
+  mkdir -p ${pkgdir}/usr/share/kservices5/services/ServiceMenus/
+  cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/qnapi-scan.desktop ${pkgdir}/usr/share/kservices5/services/ServiceMenus/qnapi-scan.desktop
+  cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/qnapi-download.desktop ${pkgdir}/usr/share/kservices5/services/ServiceMenus/qnapi-download.desktop
 }
