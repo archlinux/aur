@@ -6,7 +6,7 @@ pkgver=325086
 _pkgver=325086
 # LKGR (Last Known Good Revision, *requires* Google API keys for sign-in to work)
 #_pkgver=$(curl -s http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_ChromiumOS_Full/LAST_CHANGE)
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium OS user interface (prebuilt binary)"
 arch=('x86_64')
 url="http://www.chromium.org/chromium-os"

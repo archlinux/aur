@@ -1,7 +1,7 @@
 pkgbase = chromiumos-ui-bin
 	pkgdesc = Chromium OS user interface (prebuilt binary)
 	pkgver = 325086
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.chromium.org/chromium-os
 	install = chromiumos-ui.install
 	arch = x86_64
