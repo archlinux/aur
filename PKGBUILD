@@ -3,9 +3,9 @@
 _pkgname=jwasm
 pkgname=jwasm-git
 pkgver=9e74caf
-pkgrel=1
+pkgrel=2
 pkgdesc="JWasm fork (git) PKGBUILD file."
-url="http://www.jwasm.info"
+url="http://jwasm.info"
 arch=('x86_64' 'i686')
 license=('SOWPL')
 depends=('git' 'sed')
