@@ -1,12 +1,11 @@
 pkgbase = openmeetings
-	pkgdesc = Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration
-	pkgver = 1.9.1
+	pkgdesc = provides video conferencing, instant messaging, white board, collaborative document editing and other groupware tools using the Red5 Streaming Server
+	pkgver = 3.0.6
 	pkgrel = 1
-	url = http://code.google.com/p/openmeetings/
-	install = openmeetings.install
+	url = http://openmeetings.apache.org/
 	arch = any
 	license = apache
-	makedepends = unzip
+	makedepends = curl
 	depends = mysql
 	depends = imagemagick
 	depends = ghostscript
@@ -21,10 +20,15 @@ pkgbase = openmeetings
 	depends = libreoffice-draw
 	depends = libreoffice-impress
 	depends = libreoffice-writer
-	noextract = openmeetings_1_9_1_r4707.zip
-	backup = opt/red5/openmeetings/webapps/openmeetings/WEB-INF/classes/META-INF/persistence.xml
-	source = http://openmeetings.googlecode.com/files/openmeetings_1_9_1_r4707.zip
-	sha256sums = 0431c3d72a4aa0ac32f7ed25d989c0a583286c7f290936ac8763e17f1748056a
+	noextract = apache-openmeetings-3.0.6.tar.gz
+	options = !strip
+	backup = opt/openmeetings/webapps/openmeetings/WEB-INF/classes/META-INF/persistence.xml
+	source = http://www.apache.org/distopenmeetings/3.0.6/bin/apache-openmeetings-3.0.6.tar.gz
+	source = http://www.apache.org/dist/openmeetings/3.0.6/bin/apache-openmeetings-3.0.6.tar.gz.asc
+	source = openmeetings.service
+	sha256sums = 1fcddf6ef03861d611a7ed3cf6bc6fc87f67d92a77a30603bb9818bd29e703de
+	sha256sums = SKIP
+	sha256sums = a22001d137e7adf92d9f52985a1497967ada421f14f1d697df1823d74cbbce87
 
 pkgname = openmeetings
 

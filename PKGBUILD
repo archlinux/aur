@@ -1,36 +1,69 @@
 # Maintainer: Chris Severance aur.severach AatT spamgourmet.com
-# Contributor: Dmitry Nosachev <quartz64@gmail.com>
-# Contributor: Patrick Schneider <Patrick.Schneider@uni-ulm.de>
+# Contributor: Dmitry Nosachev quartz64 gmail
+# Contributor: Patrick Schneider Patrick.Schneider uni-ulm.de
+
+# Install guide:
+# http://openmeetings.apache.org/installation.html
+# The early steps are done by this PKGBUILD.
+
+# Original instructions for 1.9.1, some of which may still apply:
+# ==> Please make sure that mysql is reachable via TCP/IP
+# ==> Do this by commenting out the following line in /etc/my.cnf:
+# ==> skip-networking
+#
+# ==> OpenMeetings/red5 also requires you to open the following ports:
+# ==> 5080 8443 1935 8088 9035"
+#
+# ==> Last, please configure your mysql database, user and password at
+# ==> /opt/red5/webapps/openmeetings/WEB-INF/classes/META-INF/persistence.xml
+# ==> Then start mysql and red5. If all went ok, you can access the
+# ==> OpenMeetings installer at http://localhost:5080/openmeetings/install
 
 set -u
 pkgname='openmeetings'
-pkgver='1.9.1'
+pkgver='3.0.6'
 pkgrel='1'
-pkgdesc='Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration'
+#pkgdesc='Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration'
+pkgdesc='provides video conferencing, instant messaging, white board, collaborative document editing and other groupware tools using the Red5 Streaming Server'
 arch=('any')
-url='http://code.google.com/p/openmeetings/'
-#url=('http://openmeetings.apache.org/')
+#url='http://code.google.com/p/openmeetings/'
+url=('http://openmeetings.apache.org/')
 license=('apache')
 depends=('mysql' 'imagemagick' 'ghostscript' 'swftools' 'sox' 'lame' 'openjdk6'
  'ffmpeg' 'libreoffice-base' 'libreoffice-calc' 'libreoffice-common'
   'libreoffice-draw' 'libreoffice-impress' 'libreoffice-writer')
-makedepends=('unzip')
-backup=("opt/red5/${pkgname}/webapps/openmeetings/WEB-INF/classes/META-INF/persistence.xml")
-install="${pkgname}.install"
-source=('http://openmeetings.googlecode.com/files/openmeetings_1_9_1_r4707.zip')
-noextract=('openmeetings_1_9_1_r4707.zip')
-sha256sums=('0431c3d72a4aa0ac32f7ed25d989c0a583286c7f290936ac8763e17f1748056a')
+makedepends=('curl') # 'unzip') # Used to download as zip
+#install="${pkgname}.install"
+_srczip="apache-${pkgname}-${pkgver}.tar.gz"
 
-build() {
-  :
-}
+# by Guillaume ALAUX for storm,kafka
+#_apache_cgi='http://www.apache.org/dyn/closer.cgi'
+#_closest="$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')" # '
+_closest="http://www.apache.org/dist" # It worked but wasn't compatible with mksrcinfo
+source=("${_closest}${pkgname}/${pkgver}/bin/${_srczip}"
+        "http://www.apache.org/dist/${pkgname}/${pkgver}/bin/${_srczip}.asc" # Sigs always come from the master repository
+        "${pkgname}.service"
+)
+backup=("opt/${pkgname}/webapps/${pkgname}/WEB-INF/classes/META-INF/persistence.xml")
+noextract=("${_srczip}")
+sha256sums=('1fcddf6ef03861d611a7ed3cf6bc6fc87f67d92a77a30603bb9818bd29e703de'
+            'SKIP'
+            'a22001d137e7adf92d9f52985a1497967ada421f14f1d697df1823d74cbbce87')
+options=('!strip') # Nothing to strip in a Java package, wastes time!
 
 package() {
   set -u
-  install -dm755 "${pkgdir}/opt"
-  #cd "${pkgdir}/opt"
-  unzip -q -d "${pkgdir}/opt" "${srcdir}/openmeetings_1_9_1_r4707.zip"
-  chmod 755 "${pkgdir}/opt/red5/red5.sh"
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+  #unzip -q -d "${pkgdir}/opt/${pkgname}" "${srcdir}/${_srczip}"
+
+  tar -xz -C "${pkgdir}/opt/${pkgname}" -f "${srcdir}/${_srczip}"
+  #chmod 755 "${pkgdir}/opt/${pkgname}"/*.sh # 1.9.1 forgot to set the shell scripts executable
+
+  install -Dpm644 "${srcdir}/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+
+  # Overwrite Apache Derby with MySQL/MariaDB which has been installed by this PKGBUILD.
+  # The user can select Derby or any of the others after Install.
+  cp -p "${pkgdir}/opt/${pkgname}/webapps/${pkgname}/WEB-INF/classes/META-INF/mysql_persistence.xml" "${pkgdir}/opt/${pkgname}/webapps/${pkgname}/WEB-INF/classes/META-INF/persistence.xml"
 
   # Ensure there are no forbidden paths (git-aurcheck)
   ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
