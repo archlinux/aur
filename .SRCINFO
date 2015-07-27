@@ -1,20 +1,28 @@
 pkgbase = python-numba-llvmlite-git
 	pkgdesc = NumPy aware dynamic Python compiler using LLVMLITE, which is able to work with LLVM 3.5, rather than LLVMPY.
-	pkgver = 0.18.2.r513.ge9c9566
+	pkgver = 0.20.0.r151.g3b51e6a
 	pkgrel = 1
 	url = https://github.com/numba/numba
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = cython
 	makedepends = cython2
 	depends = python
-	depends = python-llvmlite-git
-	provides = python-numba
-	conflicts = python-numba-git
-	conflicts = python-numba
+	depends = python2
+	depends = python-llvmlite
+	depends = python2-llvmlite
 	source = git+https://github.com/numba/numba.git
 	md5sums = SKIP
 
 pkgname = python-numba-llvmlite-git
+	provides = python-numba
+	conflicts = python-numba-git
+	conflicts = python-numba
+	replaces = python-numba
+
+pkgname = python2-numba-llvmlite-git
+	provides = python2-numba
+	replaces = python2-numba
 
