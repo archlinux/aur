@@ -1,0 +1,17 @@
+diff -Naur a/scangearmp/configure.in b/scangearmp/configure.in
+--- a/scangearmp/configure.in	2010-02-17 03:22:34.000000000 +0100
++++ b/scangearmp/configure.in	2013-01-12 17:45:51.574334791 +0100
+@@ -13,13 +13,11 @@
+ AC_SUBST(enable_libpath)
+ 
+ AM_INIT_AUTOMAKE(scangearmp, 1.60-1)
+-AM_CONFIG_HEADER(config.h)
+ AC_PROG_LIBTOOL
+ AM_MAINTAINER_MODE
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AC_PROG_RANLIB
+ 
