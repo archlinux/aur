@@ -1,0 +1,16 @@
+pkgbase = ttf-saweri
+	pkgdesc = Font for Buginese script.
+	pkgver = 2
+	pkgrel = 1
+	url = https://sites.google.com/site/niariot87/
+	install = ttf-saweri.install
+	arch = any
+	license = GPL
+	makedepends = unrar
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://sites.google.com/site/niariot87/SaweriV2.rar
+	md5sums = 0e7240863dcb1f291d9689ac7d95ae2e
+
+pkgname = ttf-saweri
+
