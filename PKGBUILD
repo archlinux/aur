@@ -51,20 +51,16 @@ build() {
 	# to enable use of type()
 	CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
 
-	python2 ./configure \
-		--prefix=${pkgdir}${_install_dir} \
-		--PETSC_ARCH=${_config} \
-		${CONFOPTS}
+	python2 ./configure --prefix=${_install_dir} ${CONFOPTS}
 
-	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} all
+	make
 }
 
 package() {
 	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
 	cd ${_build_dir}
-	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install"
 	export PETSC_DIR=${_build_dir}
-	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install # > /dev/null
+	make install DESTDIR=${pkgdir}${_install_dir} # > /dev/null
 
 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/variables"
