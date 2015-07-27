@@ -3,7 +3,7 @@
 pkgbase=octopi
 pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.7.0
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
@@ -78,7 +78,7 @@ package_octopi() {
 
 	#speedup files
 	install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/speedup/speedup-octopi.sh" "${pkgdir}/usr/bin/speedup-octopi.sh"
-	install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/speedup/${pkgname}.service" "${pkgdir}/etc/systemd/system/${pkgname}.service"
+	install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/speedup/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/notifier/pacmanhelper/polkit/org.octopi.pacman.policy" "${pkgdir}/usr/share/polkit-1/actions/org.octopi.pacman.policy"
   install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/notifier/pacmanhelper/polkit/org.octopi.pacmanhelper.conf" "${pkgdir}/etc/dbus-1/system.d/org.octopi.pacmanhelper.conf"
