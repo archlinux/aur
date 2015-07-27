@@ -1,16 +1,16 @@
 pkgbase = deadbeef-plugin-fb-gtk3
 	pkgdesc = A filebrowser plugin for the DeaDBeeF audio player
-	pkgver = 20150725
+	pkgver = 20150727
 	pkgrel = 1
 	url = https://gitlab.com/zykure/deadbeef-fb
 	arch = any
 	license = GPL
 	depends = deadbeef>=0.6,
 	depends = gtk3
-	source = https://gitlab.com/zykure/deadbeef-fb/repository/archive.tar.gz?ref=20150725
-	md5sums = 1d16871b2b00cdbe1f8bc9c5864f399e
-	sha1sums = bac8431f50cf9e38d12c137830d0219176d28c19
-	sha256sums = e5835034b1358210e6e6da39ad959d9efeb6332bd904bb5fee302494e19cbbbd
+	source = https://gitlab.com/zykure/deadbeef-fb/repository/archive.tar.gz?ref=20150727
+	md5sums = b245e8f91b2194f5b231b87f8f6d9d7e
+	sha1sums = 48fe994ffcc860023d04cc75bde8def1ed2e9e29
+	sha256sums = f6b6385c5da32ae51dddc4836219fe67bd00f2d5eaa3afa226fc08c1af908421
 
 pkgname = deadbeef-plugin-fb-gtk3
 
