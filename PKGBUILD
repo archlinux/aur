@@ -4,7 +4,7 @@
 
 pkgname=casperjs-git
 pkgver=20150602
-pkgrel=1
+pkgrel=2
 pkgdesc="Navigation scripting & testing utility for PhantomJS and SlimerJS"
 arch=('i686' 'x86_64')
 depends=('nodejs' 'python2')
@@ -49,7 +49,7 @@ package() {
 
   msg 'Installing...'
   install -dm 755 "$pkgdir/opt/$_pkgname"
-  install -dm 755 "$pkgdir/{usr/share,opt}/$_pkgname"
+  install -dm 755 $pkgdir/{usr/share,opt}/$_pkgname
   find . -mindepth 1 -maxdepth 1 -exec \
     cp -dpr --no-preserve=ownership '{}' "$pkgdir/opt/$_pkgname" \;
 

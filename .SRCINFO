@@ -1,7 +1,7 @@
 pkgbase = casperjs-git
 	pkgdesc = Navigation scripting & testing utility for PhantomJS and SlimerJS
 	pkgver = 20150602
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/n1k0/casperjs
 	arch = i686
 	arch = x86_64
