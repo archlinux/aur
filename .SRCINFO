@@ -1,0 +1,18 @@
+pkgbase = rocheplot
+	pkgdesc = Plot the key stages in the evolution of a binary star
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://rocheplot.sourceforge.net/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc-fortran
+	depends = pgplot
+	depends = libsufr
+	source = http://sourceforge.net/projects/rocheplot/files/rocheplot-0.1.0.tar.gz
+	sha512sums = 59b1c636d11d2860ab585e83719787cb476ce030d68aa4c6043555c9a63c4d0d8a04e7aaa48a8858aada2ef9067d4625025ac0c9891d97debf62f237d5ceb079
+
+pkgname = rocheplot
+
