@@ -1,0 +1,82 @@
+diff -Naur a/metadata/core.xml.in.in b/metadata/core.xml.in.in
+--- a/metadata/core.xml.in.in	2010-05-21 21:18:14.000000000 +1000
++++ b/metadata/core.xml.in.in	2013-11-29 18:13:39.824282271 +1100
+@@ -149,7 +149,7 @@
+ 		<option name="window_menu_button" type="button">
+ 		    <_short>Window Menu</_short>
+ 		    <_long>Window menu button binding</_long>
+-		    <default>&lt;Alt&gt;Button3</default>
++		    <default>&lt;Alt&gt;Button2</default>
+ 		</option>
+ 		<option name="window_menu_key" type="key">
+ 		    <_short>Window Menu</_short>
+@@ -199,14 +199,14 @@
+ 		<option name="hsize" type="int">
+ 		    <_short>Horizontal Virtual Size</_short>
+ 		    <_long>Screen size multiplier for horizontal virtual size</_long>
+-		    <default>4</default>
++		    <default>2</default>
+ 		    <min>1</min>
+ 		    <max>32</max>
+ 		</option>
+ 		<option name="vsize" type="int">
+ 		    <_short>Vertical Virtual Size</_short>
+ 		    <_long>Screen size multiplier for vertical virtual size</_long>
+-		    <default>1</default>
++		    <default>2</default>
+ 		    <min>1</min>
+ 		    <max>32</max>
+ 		</option>
+@@ -282,7 +282,7 @@
+ 		    <_long>Level of focus stealing prevention</_long>
+ 		    <min>0</min>
+ 		    <max>4</max>
+-		    <default>1</default>
++		    <default>0</default>
+ 		    <desc>
+ 			<value>0</value>
+ 			<_name>Off</_name>
+diff -Naur a/metadata/decoration.xml.in b/metadata/decoration.xml.in
+--- a/metadata/decoration.xml.in	2010-05-21 21:18:14.000000000 +1000
++++ b/metadata/decoration.xml.in	2013-11-29 18:10:46.272380729 +1100
+@@ -50,6 +50,7 @@
+ 	    <option name="command" type="string">
+ 		<_short>Command</_short>
+ 		<_long>Decorator command line that is executed if no decorator is already running</_long>
++	    <default>gtk-window-decorator</default>
+ 	    </option>
+ 	    <option name="mipmap" type="bool">
+ 		<_short>Mipmap</_short>
+@@ -64,7 +65,7 @@
+ 	    <option name="shadow_match" type="match">
+ 		<_short>Shadow windows</_short>
+ 		<_long>Windows that should have a shadow</_long>
+-		<default>any</default>
++		<default>any,-menu</default>
+ 	    </option>
+ 	</display>
+     </plugin>
+diff -Naur a/metadata/fade.xml.in b/metadata/fade.xml.in
+--- a/metadata/fade.xml.in	2010-05-21 21:18:14.000000000 +1000
++++ b/metadata/fade.xml.in	2013-11-29 18:10:46.272380729 +1100
+@@ -36,7 +36,7 @@
+ 	    <option name="fade_speed" type="float">
+ 		<_short>Fade Speed</_short>
+ 		<_long>Window fade speed in "Constant speed" mode</_long>
+-		<default>5.0</default>
++		<default>10.0</default>
+ 		<min>0.1</min>
+ 		<max>25.0</max>
+ 		<precision>0.1</precision>
+diff -Naur a/metadata/resize.xml.in b/metadata/resize.xml.in
+--- a/metadata/resize.xml.in	2010-05-21 21:18:14.000000000 +1000
++++ b/metadata/resize.xml.in	2013-11-29 18:10:46.272380729 +1100
+@@ -29,7 +29,7 @@
+ 		<option name="initiate_button" type="button">
+ 		    <_short>Initiate Window Resize</_short>
+ 		    <_long>Start resizing window</_long>
+-		    <default>&lt;Alt&gt;Button2</default>
++		    <default>&lt;Alt&gt;Button3</default>
+ 		</option>
+ 		<option name="initiate_key" type="key">
+ 		    <_short>Initiate Window Resize</_short>
