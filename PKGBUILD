@@ -6,9 +6,19 @@ _opt_IncludeWin7Fonts=1 # Default 1
 # 0=    Installing ttf-win7-fonts, skip Office fonts that conflict.
 # 1=Not installing ttf-win7-fonts, install all available Office fonts.
 
+_opt_SkipMissing=0 # Default 0
+# 2=Skip missing and wrong checksums. Git-er-done easier than updating this PKGBUILD.
+# 1=Skip missing fonts. Useful when you get tired of chasing down fonts like
+#   Calibri Light you'll never use.
+# 0=Require all fonts. (original)
+
+_opt_ConvertTTC=1 # Default 1
+# 1=Break out all TTC to TTF (slow, more space, possible conversion losses, TTF is better supported)
+# 0=Add TTC as is (fast, compact, original, TTC not supported in all apps)
+
 _opt_GetFontName=0 # Default 0
 # For our custom updpkgsums:
-# 1=Use Perl Font::TTF to get version and name. Detailed but slow.
+# 1=Use Perl Font::TTF to get detailed version and name. (slow)
 #   Useful for version comparison or publishing a detailed PKGBUILD.
 # 0=Just get the version with sed. Fast. Useful to quick fix sums for installing.
 
@@ -19,8 +29,7 @@ _opt_Optimal=0 # Default 0
 #   Most fonts aren't installed on the running Office 2007 I've seen.
 # 0=Use whatever fonts are supplied.
 
-# Fixed: Upper and lower case file names are fully managed.
-# Fixed: Adaptive hash sum handling.
+# Fixed: Managed font handling including sums, case, and options. No more source()=
 # Fixed: Eliminate file conflict with ttf-win7-fonts
 
 # BUILD INSTRUCTIONS:
@@ -66,20 +75,20 @@ _opt_Optimal=0 # Default 0
 # or Windows Update. I've captured alternate sums for as many fonts
 # as I can find. Should you find some fonts that aren't in the various sums
 # arrays the package won't build. First look through the sums arrays.
-# If you've found a font source that I missed then fix the sums, or
+# If you've found a font source that I haven't then fix the sums. Otherwise
 # find a better font source.
 
-# To fix the sums, you have to replace the _fnt256sums=(...) entry in
-# this PKGBUILD:
+# To fix the sums, replace the _fnt256sums array or add to the _fnt256sumsx
+# array in this PKGBUILD:
 #  - On any mismatch a sums file PKGBUILD.tmp is generated automatically
 #    unless you elect for optimal fonts.
 #  - Copy and paste the sums from PKGBUILD.tmp into this file, replacing
-#    the existing _fnt256sums=(...) entry.
+#    the existing _fnt256sums=(...) array or adding to the _fnt256sumsx array.
 #  - If you want optimal fonts, replace the faulty fonts from the sources
 #    noted as optimal.
 
 # Consider sending me the sums so they can be added to the PKGBUILD. Include
-# the source so I can verify them.
+# the source for verification.
 
 set -u
 pkgname='ttf-office-2007-fonts'
@@ -94,13 +103,25 @@ makedepends=('bsdiff') #'fontforge') # 'cabextract')
 if [ "${_opt_GetFontName}" -ne 0 ]; then
   makedepends+=('perl' 'perl-font-ttf')
 fi
+if [ "${_opt_ConvertTTC}" -ne 0 ]; then
+  makedepends+=('fontforge')
+fi
 if [ "${_opt_IncludeWin7Fonts}" -eq 0 ]; then
-  optdepends=('ttf-win7-fonts: Calibri Cambria Candara, Consolas, Constantia, Corbel')
+  optdepends=('ttf-vista-fonts: Calibri Cambria Candara, Consolas, Constantia, Corbel'
+              'ttf-win7-fonts: Calibri Cambria Candara, Consolas, Constantia, Corbel'
+              'ttf-ms-win8: Calibri Cambria Candara, Consolas, Constantia, Corbel')
+else
+  conflicts=('ttf-vista-fonts' 'ttf-win7-fonts' 'ttf-ms-win8')
 fi
 install="${pkgname}.install"
-source=('license.rtf' 'FONTVER.pl')
+source=('license.rtf' 'FONTVER.pl'
+  #'arialn.ttf=62e15117f7d314900949fe60b62c2e908c3921d0425cf26a9cf606d46ab96b16=2008-08-14 21:25:08-04:00=patch'
+  #'arialnb.ttf=dc7f1542fca0f52bdf53e24a49dbb6e9a733c6beeb5ccb27dd0215713d126233=2008-08-14 21:25:08-04:00=patch'
+  #'arialnbi.ttf=a2aa71a058516435f4f1a389f403f14159ee629fa74eb333f0f7e3aff01b7c40=2008-08-14 21:25:08-04:00=patch'
+  #'arialni.ttf=aaeb7fef1dcc8a0a7c355da23c58bde97c6518a6e0792558edfa0c788ec9ae67=2008-08-14 21:25:08-04:00=patch'
+)
 sha256sums=('096cdd18e26b2b3d8cf0b3ec6a1ffb5b0eaae0fcc2105e3c145f19037a42d467'
-            '11f49d06142fc3a5a01a0f49abacd599c7badcae2ceff226f35409d8f9a6bd89')
+            '32d534a6f469c8fc5613fcc5cc0934670da470036a94aa21c6f73c2a0f1ab19e')
 
 # See sums for font name and known versions.
 _fonts=(
@@ -155,11 +176,7 @@ _fonts=(
 'TEMPSITC.TTF' 'VINERITC.TTF' 'VIVALDII.TTF' 'VLADIMIR.TTF' 'WINGDNG2.TTF'
 'WINGDNG3.TTF')
 
-# Office 2007 fonts from the DVD that must be patched to use (even in Windows).
-# '62e15117f7d314900949fe60b62c2e908c3921d0425cf26a9cf606d46ab96b16' #     arialn.ttf    Version 2.37 Arial Narrow
-# 'dc7f1542fca0f52bdf53e24a49dbb6e9a733c6beeb5ccb27dd0215713d126233' #     arialnb.ttf   Version 2.37 Arial Narrow Bold
-# 'aaeb7fef1dcc8a0a7c355da23c58bde97c6518a6e0792558edfa0c788ec9ae67' #     arialni.ttf   Version 2.37 Arial Narrow Italic
-# 'a2aa71a058516435f4f1a389f403f14159ee629fa74eb333f0f7e3aff01b7c40' #     arialnbi.ttf  Version 2.37 Arial Narrow Bold Italic
+_fonts=("${_fonts[@],,}")
 
 # Office 2007 fonts we don't want.
 # '3bd67d5982d259580a6d032f375c3b80e58c4496ffd8858b377dd69123809819' #     bssym7.ttf    Version 1.03 Bookshelf Symbol 7
@@ -363,13 +380,19 @@ _fnt256sums=(
   'ac9ee085920a3d8b076d5e0c61dc9df42c4bac28d1fc968344f9ceddb3972f69' # 186 wingdng3.ttf  Version 1.55 Wingdings 3
 )
 
-# Office does not overwrite fonts already in Windows. For anyone copying from a
-# running Windows we list the sums for as many OS as Office 2007 might be
-# installed on.
+# Any mismatch in the above table will be searched against all of the following.
 _fnt256sumsx=(
 # These are from a running Vista + Office 2007. It's a font free-for-all!
   '6644252484bd23330d160c634eb4fc2568fe43916f04139f743be0adb79025ed' #  70 framdcn.ttf   Version 1.00 Franklin Gothic Medium Cond
   '5108f0a3231fd6fdada25eb1f2f12494c28ec1c8c549176f2414de8ed4809f40' # 141 ocraext.ttf   Version 1.76 OCR A Extended
+)
+
+_fnt256bans=(
+# Office 2007 fonts from the DVD that must be patched to use (even in Windows).
+ '62e15117f7d314900949fe60b62c2e908c3921d0425cf26a9cf606d46ab96b16' #     arialn.ttf    Version 2.37 Arial Narrow
+ 'dc7f1542fca0f52bdf53e24a49dbb6e9a733c6beeb5ccb27dd0215713d126233' #     arialnb.ttf   Version 2.37 Arial Narrow Bold
+ 'aaeb7fef1dcc8a0a7c355da23c58bde97c6518a6e0792558edfa0c788ec9ae67' #     arialni.ttf   Version 2.37 Arial Narrow Italic
+ 'a2aa71a058516435f4f1a389f403f14159ee629fa74eb333f0f7e3aff01b7c40' #     arialnbi.ttf  Version 2.37 Arial Narrow Bold Italic
 )
 
 # Office 2007 fonts also provided by Windows 7
@@ -383,7 +406,8 @@ if [ "${_opt_IncludeWin7Fonts}" -ne 0 ]; then
 'CORBEL.TTF'  'CORBELB.TTF'  'CORBELI.TTF'  'CORBELZ.TTF'  # In ttf-win7-fonts
 'SEGOEUI.TTF' 'SEGOEUIB.TTF' 'SEGOEUII.TTF' 'SEGOEUIZ.TTF' # In ttf-win7-fonts
 )
-  _fnt256sums+=(
+_fonts=("${_fonts[@],,}")
+_fnt256sums+=(
   '8316b1b5c1e47aad6220e10c83537cd32704e99e7885aabf56a1d897b3d3f1ee' # 187 calibri.ttf   Version 1.02 Calibri
   '5fc2218b5ef0ca1edabe1e694eb6a710f505c8c865a27e377c79d987a9a336e2' # 188 calibrib.ttf  Version 1.02 Calibri Bold
   'fde29212db82cd4bf9e118863561c0295dc55c84cb617041798ce9e7363997b9' # 189 calibrii.ttf  Version 1.02 Calibri Italic
@@ -412,7 +436,10 @@ if [ "${_opt_IncludeWin7Fonts}" -ne 0 ]; then
   '9c6fbf48500d4956a5663607865d87a850a72aba790a00e4465a16d48fe8a048' # 212 segoeuib.ttf  Version 1.00 Segoe UI Bold
   '41b571072720f7bc72f8ab344c00e6f5fa38b7262fb290926061d064edd22a4b' # 213 segoeuii.ttf  Version 1.00 Segoe UI Italic
   '1712c07b9ec477bfccb927888644666bef333eef4cc260ae1cf60a19bd327e47' # 214 segoeuiz.ttf  Version 1.00 Segoe UI Bold Italic
-  )
+# Office does not overwrite Windows fonts. If it did Window Update wouldn't be able to fix the fonts.
+# They are only there for Windows before Vista that don't have the fonts.
+# For anyone copying from a running Windows we list the sums for as many OS as Office 2007 might be installed on.
+)
 
 _fnt256sumsx+=(
 # Fonts from an updated Windows 8.1 July 2015
@@ -517,7 +544,7 @@ _fnt256sumsx+=(
   '9cbc78f6fe5ffec33ca9240e64f48ae2c5b158cfacb0a1f6a40521e8d06045b6' # 194 cambriaz.ttf  Version 5.90 Cambria Bold Italic
 
 # Copying from Office2007 on Vista will get you these fonts from the Vista DVD.
-# It appears that Vista didn't have the multifarious font versions that Windows 7 and 8 do.
+# It appears that Vista didn't have the constantly updated font that Windows 7 and 8 do.
   '41b9212abf5fac93dfda4ac485bd72a01ade998eefb12dca6f2a97d884624975' # 187 calibri.ttf   Version 5.00 Calibri
   'aaedcd4eec7529d3131a6475665260ab31bf7a18dd903a983167b65d00197614' # 188 calibrib.ttf  Version 5.00 Calibri Bold
   '294924218fa4cc98bc53cf94d4e25d243a59385f9648b7fe4102f4ae399c0e3d' # 189 calibrii.ttf  Version 5.00 Calibri Italic
@@ -549,26 +576,26 @@ _fnt256sumsx+=(
 )
 fi
 
+_fn_fontlower() {
+  # Lowercase the user supplied fonts (permanently)
+  local _fnt
+  for _fnt in *; do
+    local _fntl="${_fnt,,}"
+    if [ -f "${_fnt}" ] && [ "${_fntl: -4}" = '.ttf' -o "${_fntl: -4}" = '.ttc' ]; then
+      chmod 644 "${_fnt}"
+      if [ "${_fntl}" != "${_fnt}" ]; then
+        mv "${_fnt}" "${_fntl}"
+      fi
+    fi
+  done
+}
+
 if [ "${_opt_Optimal}" -ne 0 ]; then
   _fnt256sumsx=('x') # The main array has the optimal fonts
 fi
 
-# A list is easier than figuring out how to get Font::TTF:Ttc to get us the names and versions of a TTC.
-# for _fnt in {batang,gulim}.ttc; do strings "${_fnt}" | grep -i "Copyright HanYang I&C Co.,LTD. 2000"; done
-# for _fnt in {cambria,meiryo,meiryob}.ttc; do strings "${_fnt}" | grep -i "All Rights Reserved"; done
-# for _fnt in {mingliu,mingliub}.ttc; do strings "${_fnt}" | grep -i "Copyright DynaComware Corp. 2008"; done
-# for _fnt in simsun.ttc; do strings "${_fnt}" | grep -i "Copyright ZHONGYI Electronic Co. 2001"; done
-declare -gA _ttc_names
-_ttc_names['cambria.ttc']='Cambria; Cambria Math'
-_ttc_names['batang.ttc']='Batang; BatangChe; Gungsuh; GungsuhChe'
-_ttc_names['gulim.ttc']='Gulim; GulimChe; Dotum; DotumChe'
-_ttc_names['meiryo.ttc']='Meiryo; Meiryo Italic; Meiryo UI; Meiryo UI Italic'
-_ttc_names['meiryob.ttc']='Meiryo Bold; Meiryo Bold Italic; Meiryo UI Bold; Meiryo UI Bold Italic'
-_ttc_names['mingliu.ttc']='MingLiU; PMingLiU; MingLiU_HKSCS'
-_ttc_names['mingliub.ttc']='MingLiU-ExtB; PMingLiU-ExtB; MingLiU_HKSCS-ExtB'
-_ttc_names['msgothic.ttc']='MS Gothic; MS PGothic; MS UI Gothic'
-_ttc_names['msmincho.ttc']='MS Mincho; MS PMincho'
-_ttc_names['simsun.ttc']='SimSun; NSimSun'
+# Office has 4 banned fonts Arial Narrow
+#_fnt256bans=('x')
 
 _fn_gencopy() {
   # Generate handy copy scripts.
@@ -631,20 +658,6 @@ EOF
   fi
 }
 
-_fn_fontlower() {
-  # Lowercase the user supplied fonts (permanently)
-  local _fnt
-  for _fnt in *; do
-    local _fntl="${_fnt,,}"
-    if [ -f "${_fnt}" ] && [ "${_fntl: -4}" = '.ttf' -o "${_fntl: -4}" = '.ttc' ]; then
-      chmod 644 "${_fnt}"
-      if [ "${_fntl}" != "${_fnt}" ]; then
-        mv "${_fnt}" "${_fntl}"
-      fi
-    fi
-  done
-}
-
 _fn_updpkgsums() {
   _fn_fontlower
   local _fnt
@@ -662,8 +675,11 @@ EOF
     updpkgsums 'PKGBUILD.tmp'
     sed -i -e 's:^sha256sums=:_fnt256sums=:g' 'PKGBUILD.tmp'
   else
+    declare -gA _sumstext
     cat > 'PKGBUILD.tmp' << EOF
-#Copy these sums into PKGBUILD and erase this file
+#Copy these sums into PKGBUILD and erase this file.
+#Many packages need these to be split and copied to multiple places.
+#If so, the package should arrange them so the splits are easy.
 _fnt256sums=(
 EOF
     local _fontno=0
@@ -671,28 +687,32 @@ EOF
       _fnt="${_fnt,,}"
       local _vers
       local _fail=1
-      if [ "${_opt_GetFontName}" -ne 0 ] && [[ "${_fnt}" =~ .ttf$ ]]; then
+      if [ "${_opt_GetFontName}" -ne 0 ] && [[ "${_fnt}" =~ .tt[fc]$ ]]; then
         _fail=0
         _vers="$(./FONTVER.pl "${_fnt}")" || _fail=$?
       fi
       if [ "${_fail}" -ne 0 ]; then
         _vers="$(sed -ne 's:^.*\(Version [0-9\.]\+\).*$:\1:p' "${_fnt}" | head -n1)"
-        if [[ "${_fnt}" =~ .ttc$ ]]; then
-          _vers="${_vers} ${_ttc_names[${_fnt}]}"
-        fi
+        #if [[ "${_fnt}" =~ .tt[fc]$ ]]; then
+        #  _vers="${_vers} ${_ttc_names[${_fnt}]:-}"
+        #fi
       fi
       _fontno=$((${_fontno}+1))
-      printf "  '%s' # %3u %-13s %s\n" "$(sha256sum "${_fnt}" | cut -d' ' -f1)" "${_fontno}" "${_fnt}" "${_vers}" >> 'PKGBUILD.tmp'
+      local _sumtext="$(printf "  '%s' # %3u %-13s %s" "$(sha256sum "${_fnt}" | cut -d' ' -f1)" "${_fontno}" "${_fnt}" "${_vers}")" # "
+      echo "${_sumtext}" >> 'PKGBUILD.tmp'
+      #_sumstext+=("${_fnt},${_sumtext}")
+      _sumstext["${_fnt}"]="${_sumtext}"
     done
     echo ')' >> 'PKGBUILD.tmp'
   fi
 }
 #_fn_updpkgsums; exit 1
 
-# sum $1 must match sum $2 or be found anywhere in _fnt256sumsx.
+# sum $1 must match sum $2 or be found anywhere in _fnt256sumsx. sum must not
+# be in _fnt256bans.
 # This best preserves the spirit and function of hash checking and eliminates 
 # the hassle and security problems of having users update sums with no 
-# verification that thier versions are correct (or the author's versions are
+# verification that their versions are correct (or the author's versions are
 # wrong). We're trading the small likelyhood of a TTF containing a virus with 
 # the small likelyhood that someone can produce a hacked font with any one of 
 # the sums in _fnt256sumsx.
@@ -701,6 +721,12 @@ _fn_softmatch() {
   [ "$1" = "$2" ] && return 0
 # http://stackoverflow.com/questions/3685970/check-if-an-array-contains-a-value
   local _sum
+  for _sum in "${_fnt256bans[@]}"; do
+    if [ "$1" = "${_sum}" ]; then
+      echo "Font $3 cannot be used for any reason. Please find a different version."
+       return 1
+    fi
+  done
   for _sum in "${_fnt256sumsx[@]}"; do
     [ "$1" = "${_sum}" ] && return 0
   done
@@ -708,7 +734,8 @@ _fn_softmatch() {
 }
 
 _fn_fontcheck() {
-  # Verify font check sum
+  # Verify font check sum, missing, or extra fonts
+  local _extrafonts=(*.tt[fc])
   local _notfound=0
   local _notfoundar=()
   local _mismatch=0
@@ -717,19 +744,35 @@ _fn_fontcheck() {
   for ((_i=0;_i<${#_fonts[@]};++_i)); do
     local _fnt="${_fonts[${_i}]}"
     _fnt="${_fnt,,}"
+    local _delfont
+    for _delfont in ${!_extrafonts[@]}; do
+      if [ "${_fnt}" = "${_extrafonts[$_delfont]}" ]; then
+        unset _extrafonts[${_delfont}]
+      fi
+    done
     if [ ! -s "${_fnt}" ]; then
       _notfound=$((${_notfound}+1))
       _notfoundar+=("${_fnt}")
-    elif ! _fn_softmatch "$(sha256sum < "${_fnt}" | cut -d' ' -f1)" "${_fnt256sums[${_i}]:-}"; then
+    elif ! _fn_softmatch "$(sha256sum < "${_fnt}" | cut -d' ' -f1)" "${_fnt256sums[${_i}]:-}" "${_fnt}"; then
       _mismatch=$((${_mismatch}+1))
       _mismatchar+=("${_fnt}")
+      if [ "${_opt_SkipMissing}" -eq 2 ]; then
+        ln -sf "../${_fnt}" "${srcdir}/${_fnt}"
+      fi
     else
       ln -sf "../${_fnt}" "${srcdir}/${_fnt}"
     fi
   done
   if [ "${_mismatch}" -gt 0 ]; then
-    if [ "${_opt_Optimal}" -eq 0 ]; then
+    if [ "${_opt_Optimal}" -eq 0 -a "${_opt_SkipMissing}" -ne 2 ]; then
       _fn_updpkgsums
+      local _mismatchsum
+      echo -e '#extra sums not yet in the arrays\n_sha256sumsx+=(' >> "PKGBUILD.tmp"
+      for _mismatchsum in "${_mismatchar[@]}"; do
+        echo "${_sumstext[${_mismatchsum}]}" >> "PKGBUILD.tmp"
+      done
+      echo ')' >> "PKGBUILD.tmp"
+      unset _sumstext
     fi
     echo "Mismatch hash on ${_mismatch} font(s)"
     echo "${_mismatchar[@]}"
@@ -740,7 +783,10 @@ _fn_fontcheck() {
     echo "${_notfoundar[@]}"
     echo "See the the supplied _COPY scripts for easy ways to get the fonts from Windows."
   fi
-  if [ "${_mismatch}" -gt 0 -o "${_notfound}" -gt 0 ]; then
+  if [ ! -z "${_extrafonts:-}" ]; then
+    echo "Extra fonts: ${_extrafonts[@]}"
+  fi
+  if [ "${_mismatch}" -gt 0 -a "${_opt_SkipMissing}" -lt 2 -o "${_notfound}" -gt 0 -a "${_opt_SkipMissing}" -lt 1 ]; then
     echo
     echo 'Any missing files must be supplied and editing of the PKGBUILD may be required.'
     echo 'Edit the PKGBUILD for instructions and changes.'
@@ -769,7 +815,32 @@ _fn_fontpatch() {
   done
 }
 
+# Tabs are essential!
+# Important: use real tab characters!
+_ff_script=\
+'		i = 1
+		while (i < $argc)
+			theFontNames = FontsInFile($argv[i])
+			cnt = SizeOf(theFontNames)
+			j = 0
+			while (j < cnt)
+				thefontname = theFontNames[j]
+				thisPath = $argv[i] + "(" + thefontname + ")"
+				Open(thisPath, 1)
+				Generate(thefontname + ".ttf", "ttf")
+				Print(thefontname + ".ttf")
+				Close()
+				j++
+			endloop
+		i = i+1
+		endloop
+'
+
 build() {
+  if [ "$(grep -c $'\t' <<<"${_ff_script}")" -lt 16 ]; then
+    echo 'Tabs are required in _ff_script. Please fix PKGBUILD.'
+    false
+  fi
   set -u
   local _fontdir="${srcdir}/.."
   cd "${_fontdir}"
@@ -780,6 +851,7 @@ build() {
   rm -f 'PKGBUILD.tmp'
 
   # The TTC is now selectable in LibreOffice and XFCE Terminal so no more conversion.
+  # The new conversion code doesn't miss Cambria Math
   #cd "${srcdir}"
   #if [ -s 'cambria.ttc' ]; then
   #  # cambria.ttc is a TrueType Collection (TTC) which causes problems with
@@ -794,15 +866,36 @@ package() {
   set -u
   cd "${srcdir}"
 
+  # Convert all enclosed TTC to TTF if requested
+  local _fnt
+  if [ "${_opt_ConvertTTC}" -ne 0 ]; then
+    declare -a _ttcs_to_extract
+    local _fntno
+    for _fntno in "${!_fonts[@]}"; do
+      _fnt="${_fonts[${_fntno}]}"
+      if [[ "${_fnt}" =~ .ttc$ ]]; then
+        _ttcs_to_extract+=("${_fnt}")
+        _fonts[${_fntno}]=''
+      fi
+    done
+
+    if [ ! -z "${_ttcs_to_extract:-}" ] && readarray -t _extracted_ttfs < <(fontforge -lang='ff' -c "${_ff_script}" "${_ttcs_to_extract[@]}"); then
+      _fonts+=("${_extracted_ttfs[@]}")
+    fi
+  fi
+
   # Prepare destination directory
   install -dm755 "${pkgdir}/usr/share/fonts/TTF"
 
-  # Install fonts and license
-  install -Dm644 "license.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/license.rtf"
-  local _fnt
-  for _fnt in *.[tT][tT][fFcC]; do
-    install -m644 "${_fnt}" "${pkgdir}/usr/share/fonts/TTF/${_fnt,,}"
+  # Install fonts
+  for _fnt in "${_fonts[@]}"; do
+    if [ ! -z "${_fnt}" ]; then
+      install -pm644 "${_fnt}" "${pkgdir}/usr/share/fonts/TTF/${_fnt,,}"
+    fi
   done
+
+  # Install license
+  install -Dpm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'license.rtf'
   set +u
 }
 
