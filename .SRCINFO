@@ -1,0 +1,23 @@
+pkgbase = grip-eject
+	pkgdesc = A cd-player and ripper for the Gnome desktop
+	pkgver = 3.3.1
+	pkgrel = 10
+	url = http://sourceforge.net/projects/grip/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = vte
+	depends = curl
+	depends = libgnomeui
+	depends = id3lib
+	depends = cdparanoia
+	optdepends = yelp: to display the help and notices
+	source = http://downloads.sourceforge.net/sourceforge/grip/grip-3.3.1.tar.gz
+	source = grip-3.3.1-invalid-genre-size.patch
+	source = grip-3.3.1-fix-eject.patch
+	sha1sums = 58ef51fbddf981a189f8b5b39774e3bd6862127d
+	sha1sums = 27057cb49f2abe97045912899965a9bb347612a2
+	sha1sums = fc745bc6ba60ed104908edd1be300bba772c7d17
+
+pkgname = grip-eject
+

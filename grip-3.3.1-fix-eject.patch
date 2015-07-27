@@ -1,0 +1,18 @@
+diff -uprN -ru grip-3.3.1/src/cddev.c grip-3.3.1.new/src/cddev.c
+--- grip-3.3.1/src/cddev.c	2004-04-15 20:23:09.000000000 +0200
++++ grip-3.3.1.new/src/cddev.c	2015-07-27 11:05:52.902681165 +0200
+@@ -618,12 +618,13 @@ gboolean CDEject(DiscInfo *disc)
+     return FALSE;
+   }
+ 
+-#ifdef CDIOCEJECT
+   /*  always unlock door before an eject in case something else locked it  */
+ #if defined(CDROM_LOCKDOOR)
+   if(ioctl(disc->cd_desc,CDROM_LOCKDOOR,0)<0)
+     g_print(_("Unlock failed: %d"), errno);
+ #endif
++
++#ifdef CDIOCEJECT
+ #ifdef CDIOCALLOW
+   if(ioctl(disc->cd_desc,CDIOCALLOW)<0)
+     g_print(_("Unlock failed: %d"),errno);
