@@ -1,6 +1,6 @@
 # Maintainer: Quan Guo <guotsuan@gmail.com>
 
-pkgname=(python-astroml-git python2-astroml-git)
+pkgname=(python2-astroml-git python-astroml-git)
 pkgbase=python2-astroml-git
 _pkgname=astroML
 pkgver=2015.07.15.gb9e783d
