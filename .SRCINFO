@@ -1,8 +1,8 @@
 pkgbase = irssi-libnotify-git
 	pkgdesc = libnotify plugin for irssi
-	pkgver = r38.8f8f9e1
+	pkgver = r42.74198b5
 	pkgrel = 1
-	url = https://code.google.com/p/irssi-libnotify/
+	url = https://github.com/stickster/irssi-libnotify
 	install = irssi-libnotify-git.install
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = irssi-libnotify-git
 	depends = libnotify>=0.7
 	depends = python2-gobject
 	depends = perl-html-parser
-	source = irssi-libnotify-git::git+https://code.google.com/p/irssi-libnotify/
+	source = irssi-libnotify-git::git+https://github.com/stickster/irssi-libnotify
 	source = irssi-libnotify-git.install
 	md5sums = SKIP
 	md5sums = 274448951b53b5a492a80e794e61b9fd
