@@ -1,0 +1,14 @@
+pkgbase = mlvwm
+	pkgdesc = Macintosh-Like Virtual Window Manager, it attempts to emulate the pre-Mac OS X Macintosh look and feel in its layout and window design.
+	pkgver = 0.9.1
+	pkgrel = 2
+	url = http://www2u.biglobe.ne.jp/~y-miyata/mlvwm.html
+	arch = i686
+	arch = x86_64
+	license = mit
+	makedepends = imake
+	source = http://www2u.biglobe.ne.jp/~y-miyata/mlvwm/mlvwm091.tar.gz
+	md5sums = 0ac2a6f9981742b05509f7b8d00a7e52
+
+pkgname = mlvwm
+
