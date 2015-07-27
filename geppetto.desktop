@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Geppetto
+Comment=Geppetto a puppet IDE
+Keywords=geppetto;puppet;
+Exec=geppetto
+Icon=geppetto
+Terminal=false
+Type=Application
+Categories=Editor;
+StartupNotify=true
