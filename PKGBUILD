@@ -3,14 +3,14 @@
 # Brackets v0.34
 
 _shell=brackets-shell
-_shell_version=jasonsanjose/cef_2171_linux
+_shell_version=linux-1547
 _brackets=brackets
-_brackets_version=1.3
+_brackets_version=1.4
 _version_prefix=release-
 
 # Package
 pkgname=brackets-git
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Adobe Brackets - An open source code editor for the web, written in JavaScript, HTML and CSS."
 arch=("i686" "x86_64")
@@ -64,11 +64,12 @@ package() {
   cp -R out/Release/lib "${pkgdir}/opt/brackets/lib"
   cp -R out/Release/locales "${pkgdir}/opt/brackets/locales"
   cp -R out/Release/node-core "${pkgdir}/opt/brackets/node-core"
+  cp -R out/Release/obj.target "${pkgdir}/opt/brackets/obj.target"
   install -Dm644 out/Release/cef.pak "${pkgdir}/opt/brackets/cef.pak"
-  install -Dm644 out/Release/cef_100_percent.pak "${pkgdir}/opt/brackets/cef_100_percent.pak"
-  install -Dm644 out/Release/cef_200_percent.pak "${pkgdir}/opt/brackets/cef_200_percent.pak"
+#  install -Dm644 out/Release/cef_100_percent.pak "${pkgdir}/opt/brackets/cef_100_percent.pak"
+#  install -Dm644 out/Release/cef_200_percent.pak "${pkgdir}/opt/brackets/cef_200_percent.pak"
   install -Dm644 out/Release/devtools_resources.pak "${pkgdir}/opt/brackets/devtools_resources.pak"
-  install -Dm644 out/Release/icudtl.dat "${pkgdir}/opt/brackets/icudtl.dat"
+#  install -Dm644 out/Release/icudtl.dat "${pkgdir}/opt/brackets/icudtl.dat"
   install -Dm755 out/Release/Brackets "${pkgdir}/opt/brackets/Brackets"
   install -Dm755 out/Release/Brackets-node "${pkgdir}/opt/brackets/Brackets-node"
   install -Dm755 installer/linux/debian/brackets "${pkgdir}/opt/brackets/brackets"
