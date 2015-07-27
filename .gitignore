@@ -1,0 +1,5 @@
+*.pkg.tar.*
+*.src.tar.*
+*.bin.tar.*
+mc2xml
+SOURCE

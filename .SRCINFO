@@ -1,0 +1,21 @@
+pkgbase = mc2xml-bin
+	pkgdesc = mc2xml is a small and fast standalone command line program for Windows/Linux/OSX that downloads media center, titantv, or schedules direct tv listings and outputs an XMLTV formatted (xmltv.dtd) .xml file.
+	pkgver = 1.3
+	pkgrel = 6
+	url = http://mc2xml.awardspace.info/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	provides = mc2xml
+	conflicts = mc2xml
+	replaces = mc2xml
+	options = !strip
+	options = staticlibs
+	source = file://mc2xml
+	md5sums = 3b612d906f295ea822abadeaf43727b0
+
+pkgname = mc2xml-bin
+
