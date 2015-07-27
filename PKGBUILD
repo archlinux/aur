@@ -5,7 +5,7 @@
 
 pkgname=pebble-sdk
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
 arch=('i386' 'x86_64')

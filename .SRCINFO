@@ -43,11 +43,13 @@ pkgbase = pebble-sdk
 	source = http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-3.2.tar.gz
 	source = pebble-sdk.install
 	source = pflashFix.patch
+	source = analyticsFix.patch
 	source = pebble.sh
 	sha1sums = 8800dd56a8aa660db2f118cd730f362053a85610
 	sha1sums = 7ea5244f828e682d073434078569fab62a1ad996
 	sha1sums = 050db72f8259daac7bd0605369677e69ecca7821
-	sha1sums = c63d3992c1b8c677d1e5a3edb9aec1341540670d
+	sha1sums = c5202cf88ea75f29e2aa09b55fcbd9b941fa8473
+	sha1sums = af0c0deb6e474318a4dc81442d39d9d8befc9685
 
 pkgname = pebble-sdk
 
