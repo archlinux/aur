@@ -2,12 +2,13 @@
 
 pkgname=firefox-extension-ublock
 pkgver=0.9.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
 url=https://github.com/chrisaljoudi/uBlock
 arch=('any')
 license=('GPL3')
 depends=('firefox')
+conflicts=('firefox-extension-ublock-origin')
 source=("uBlock-$pkgver.xpi::https://github.com/chrisaljoudi/uBlock/releases/download/$pkgver/uBlock.firefox.xpi")
 sha256sums=('f352c719c8c6d121b190bb2424e521f3cedeee932864735f555d45ff65920e91')
 
