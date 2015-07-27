@@ -2,7 +2,7 @@
 
 _pkgname=salsapipe
 pkgname=${_pkgname}-git
-pkgver=20140730.r25.51c5c6b
+pkgver=20150727.r26.6d81ace
 pkgrel=1
 pkgdesc="Encrypted network tunneling using salsa20 from libnettle and GPG from libgpgme"
 url="https://github.com/0xcaca0/${_pkgname}"
