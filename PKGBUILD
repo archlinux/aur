@@ -3,7 +3,7 @@
 
 pkgname=qt4-color-picker
 pkgver=0.r92.2e1ec20
-pkgrel=1
+pkgrel=2
 pkgdesc='A user-friendly color wheel widget and dialog for Qt'
 arch=('i686' 'x86_64')
 url='https://github.com/mbasaglia/Qt-Color-Picker'
