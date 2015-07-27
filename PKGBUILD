@@ -2,8 +2,9 @@
 
 pkgname=(python-llvmlite-git python2-llvmlite-git)
 
+pkgbase=python-llvmlite-git
 _gitname=llvmlite
-pkgver=0.4.0.r78.ga37d958
+pkgver=0.6.0.r10.g6cf9861
 pkgrel=1
 pkgdesc="A lightweight LLVM python binding for writing JIT compilers"
 url="https://github.com/numba/llvmlite"
@@ -11,11 +12,10 @@ arch=('i686' 'x86_64')
 license=('BSD')
 depends=('python' 'python2' 'llvm' )
 makedepends=('git' 'cython' 'cython2')
-provides=('python-llvmlite' 'python-2-llvmlite')
 conflicts=()
 replaces=()
 backup=()
-source=(${_gitname}::git+https://github.com/numba/llvmlite.git#branch=llvm3.6)
+source=(${_gitname}::git+https://github.com/numba/llvmlite.git)
 md5sums=('SKIP')
 
 
@@ -29,6 +29,8 @@ pkgver() {
 }
 
 package_python-llvmlite-git() {
+  provides=('python-llvmlite') 
+
   cd ${srcdir}/${_gitname}
   python setup.py install \
     --prefix=/usr \
@@ -37,7 +39,9 @@ package_python-llvmlite-git() {
 
 
 package_python2-llvmlite-git() {
-  cd ${srcdir}/${_gitname}
+  provides=('python2-llvmlite')
+
+  cd ${srcdir}/${_gitname}-py2
   python2 setup.py install \
     --prefix=/usr \
     --root=$pkgdir
