@@ -1,0 +1,15 @@
+pkgbase = glucose
+	pkgdesc = Parallel SAT solver based on Minisat, with glue clauses.
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://www.labri.fr/perso/lsimon/glucose/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = zlib
+	source = http://www.labri.fr/perso/lsimon/downloads/softwares/glucose-syrup.tgz
+	md5sums = b6f040a6c28f011f3be994663338f548
+
+pkgname = glucose
+
