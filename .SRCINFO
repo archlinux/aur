@@ -1,0 +1,15 @@
+pkgbase = bfg-repo-cleaner
+	pkgdesc = Removes larges or troublesome blobs like git-filter-branch does, but faster
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = https://rtyley.github.io/bfg-repo-cleaner/
+	install = bfg-repo-cleaner.install
+	arch = any
+	license = GPL
+	depends = java-runtime
+	depends = git
+	source = http://repo1.maven.org/maven2/com/madgag/bfg/1.12.3/bfg-1.12.3.jar
+	sha512sums = c55aaf76004f92fe13294bd54221646b3c7ccd9aaab46b7418fbcb417dfa632de1011608cf7ab9ff85c6c34b4cef1885327ad40e45beb26b27e97753990a0737
+
+pkgname = bfg-repo-cleaner
+

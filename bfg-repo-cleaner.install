@@ -1,0 +1,5 @@
+pkgname=bfg-repo-cleaner
+
+pre_remove() {
+  /usr/sbin/rm /usr/bin/bfg-repo-cleaner
+}
