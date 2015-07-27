@@ -1,7 +1,7 @@
 pkgbase = python2-tidylib
 	pkgdesc = Python bindings for Tidy HTML parser/cleaner.
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://countergram.com/open-source/pytidylib
 	arch = i686
 	arch = x86_64
