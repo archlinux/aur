@@ -1,7 +1,7 @@
 pkgbase = qt5-color-picker
 	pkgdesc = A user-friendly color wheel widget and dialog for Qt
 	pkgver = 0.r92.2e1ec20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbasaglia/Qt-Color-Picker
 	arch = i686
 	arch = x86_64
