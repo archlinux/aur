@@ -4,31 +4,31 @@
 
 pkgname=drawpile
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('x86_64' 'i686')
 url='http://drawpile.net/'
 license=('GPL2')
-makedepends=('qt5-base' 'karchive' 'qt5-tools' 'qt5-translations' 'qt5-svg' 'qt5-multimedia' 'ninja')
-depends=('qt5-base' 'karchive' 'qt5-tools' 'qt5-translations' 'qt5-svg' 'qt5-multimedia' 'cmake')
-optdepends=('libmicrohttpd')
-source=("http://drawpile.net/files/src/$pkgname-$pkgver.tar.gz")
+depends=('karchive' 'kdnssd' 'giflib' 'miniupnpc' 'libmicrohttpd' 'qt5-multimedia' 'qt5-color-picker')
+makedepends=('qt5-base' 'qt5-tools' 'qt5-translations' 'qt5-svg' 'ninja')
+install="${pkgname}.install"
+source=("http://drawpile.net/files/src/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('bc574ddbad1578e84ca36605c338400239d4f106750e253ca7cf027c0b42c454')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
   # Ensure build is an empty directory
   rm -rf build
   mkdir -p build
   cd build
 
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -G Ninja
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -G Ninja -Wno-dev
   ninja
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 "desktop/$pkgname-128x128.png" \
