@@ -12,7 +12,7 @@ pkgdesc='Standalone web browser from mozilla.org, nightly build'
 url='http://www.mozilla.org/projects/firefox'
 pkgver=42.0a1.20150703
 _version=42.0a1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${_version}.en-US.linux"
@@ -25,7 +25,7 @@ _srcsum_x86_64="$(curl -s "${_srcurl}/${_file}-x86_64.checksums" | grep "${_file
 sha512sums=('d2d836b07288d2a13d01d668399df8a2a15884a58a7051303938bf74a30bdfc23a8bc57395494345727ae24e1dd9cab09c67a640a5c9e7a8df895f987e009dcd' '00caf982c072c7499433c494ecf2096542c4ddf368c4b97fb22672fd669683911d009a65a498b8a03da61ae9aa5a4e8bdaa6e58b148c2a5d7c008910b2af26a5' 'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 sha512sums_i686=("${_srcsum_i686}" 'SKIP')
 sha512sums_x86_64=("${_srcsum_x86_64}" 'SKIP')
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite' 'dbus-glib')
+depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
 
 pkgver() {
 	echo "${_version}.$(date +%Y%m%d)"
