@@ -1,0 +1,18 @@
+pkgbase = python-flask-bcrypt
+	pkgdesc = Brcrypt hashing for Flask.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://pythonhosted.org/Flask-Bcrypt/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/F/Flask-Bcrypt/Flask-Bcrypt-0.6.2.tar.gz
+	md5sums = 5ec930a2004baca4867d742c3b16aa20
+
+pkgname = python2-flask-bcrypt
+	depends = python2-flask
+
+pkgname = python-flask-bcrypt
+	depends = python-flask
+
