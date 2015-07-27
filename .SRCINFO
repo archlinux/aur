@@ -1,0 +1,19 @@
+pkgbase = haskell-flycheck-git
+	pkgdesc = Haskell syntax checking by Flycheck in GNU Emacs.
+	pkgver = r7.a2e29ed
+	pkgrel = 1
+	url = https://github.com/chrisdone/haskell-flycheck
+	arch = any
+	license = GPL
+	makedepends = emacs
+	makedepends = emacs-haskell-mode
+	makedepends = flycheck
+	makedepends = git
+	depends = emacs
+	depends = emacs-haskell-mode
+	depends = flycheck
+	source = git+https://github.com/chrisdone/haskell-flycheck.git
+	sha512sums = SKIP
+
+pkgname = haskell-flycheck-git
+
