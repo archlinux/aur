@@ -1,15 +1,15 @@
 pkgbase = supernova
 	pkgdesc = Use novaclient with multiple OpenStack nova environments the easy way
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/major/supernova
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/major/supernova/archive/v2.0.2.tar.gz
+	source = https://github.com/major/supernova/archive/v2.0.3.tar.gz
 	source = nova2-executable.patch
-	sha256sums = d096a677261226dca7884f6a181a81224939f97259ca43534d2078a68913f650
+	sha256sums = 07bd11ab4f8660be03751d3cbfb1fa8244e658a7bd9a037995bbfb011928bee6
 	sha256sums = bd05ce5bc154df2b53fbf4e6fad6c90808ef62df6100427d50e503c4df129e04
 
 pkgname = supernova

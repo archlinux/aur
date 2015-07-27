@@ -4,7 +4,7 @@ _name="supernova"
 _cmd="${_name}"
 
 pkgname=("supernova" "supernova2")
-pkgver="2.0.2"
+pkgver="2.0.3"
 pkgrel="1"
 pkgdesc="Use novaclient with multiple OpenStack nova environments the easy way"
 arch=("any")
@@ -13,7 +13,7 @@ license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("${url}/archive/v${pkgver}.tar.gz"
         "nova2-executable.patch")
-sha256sums=('d096a677261226dca7884f6a181a81224939f97259ca43534d2078a68913f650'
+sha256sums=('07bd11ab4f8660be03751d3cbfb1fa8244e658a7bd9a037995bbfb011928bee6'
             'bd05ce5bc154df2b53fbf4e6fad6c90808ef62df6100427d50e503c4df129e04')
 
 prepare() {
