@@ -1,0 +1,12 @@
+diff -aur zeroc-ice-3.6.0.orig/setup.py zeroc-ice-3.6.0.new/setup.py
+--- zeroc-ice-3.6.0.orig/setup.py	2015-06-23 18:04:14.000000000 +0200
++++ zeroc-ice-3.6.0.new/setup.py	2015-07-27 20:10:03.891216160 +0200
+@@ -46,7 +46,7 @@
+             return False
+         return True
+ 
+-elif platform == 'linux2':
++elif platform == 'linux2' or 'linux':
+ 
+     extra_compile_args.append('-w')
+     extra_link_args = []
