@@ -13,8 +13,8 @@ license=('GPL2' 'LGPL2')
 url="http://wiki.qemu.org/Index.html"
 depends=('pixman' 'libjpeg' 'libpng' 'sdl' 'alsa-lib' 'nss' 'glib2'
          'gnutls>=2.4.1' 'bluez-libs' 'vde2' 'util-linux' 'curl' 'libsasl'
-         'libgl' 'libpulse' 'libcap-ng' 'libaio' 'libseccomp'
-         'libiscsi' 'spice' 'usbredir' 'dtc' 'snappy')
+         'libgl' 'libpulse' 'libcap-ng' 'libaio' 'libseccomp' 'numactl'
+         'libiscsi' 'spice' 'usbredir' 'dtc' 'snappy' 'ceph' 'lzo' 'libepoxy')
 makedepends=('git' 'texi2html' 'perl' 'python2' 'spice-protocol')
 optdepends=('ovmf: Tianocore UEFI firmware for qemu')
 conflicts=('qemu' 'kvm' 'kvm-git' 'qemu-spice' 'libcacard' 'seabios' 'seabios-git')
