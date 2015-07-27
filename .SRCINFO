@@ -1,0 +1,15 @@
+pkgbase = python2-tidylib
+	pkgdesc = Python bindings for Tidy HTML parser/cleaner.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://countergram.com/open-source/pytidylib
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = tidyhtml
+	depends = python2
+	source = https://github.com/countergram/pytidylib/archive/0.2.4.tar.gz
+	sha256sums = 5bdc5a6889742ae0a8be21166fe92c895b23dd4114db39bb23bffe66db3c9079
+
+pkgname = python2-tidylib
+
