@@ -2,14 +2,14 @@
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
 pkgname=openjk-git
-pkgver=2970.cdce4e6
+pkgver=2980.3ab6247
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
 arch=('i686' 'x86_64')
 url="https://github.com/Razish/OpenJK"
 license=('GPL')
-depends=('lib32-libgl' 'lib32-openal' 'lib32-zlib' 'lib32-sdl2' 'lib32-libjpeg' 'lib32-glu')
-optdepends=('lib32-libpng')
+depends=('libgl' 'openal' 'zlib' 'sdl2' 'libjpeg' 'glu')
+optdepends=('libpng')
 makedepends=('cmake' 'yasm')
 provides=(openjk)
 conflicts=(openjk)
@@ -40,9 +40,6 @@ build() {
   cmake ../ \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/opt/${pkgname} \
-		-DCMAKE_CXX_FLAGS=-m32 \
-		-DCMAKE_C_FLAGS=-m32 \
-		-DCMAKE_SHARED_LINKER_FLAGS=-m32 \
 		-DCMAKE_SIZEOF_VOID_P=4
   make
 }
