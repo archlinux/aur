@@ -1,6 +1,6 @@
 pkgname=binfmt-support
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="register interpreters for various binary formats"
 arch=(i686 x86_64)
 url="http://packages.debian.org/en/sid/binfmt-support"
@@ -14,7 +14,7 @@ md5sums=('13e241cfd5571c9a2100baf9ab4aedc9'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --libexecdir=/usr/lib --sbindir=/usr/bin
+  ./configure --prefix=/usr --libexecdir=/usr/lib --sbindir=/usr/bin --localstatedir=/var
   make
 }
 
