@@ -1,0 +1,25 @@
+pkgbase = fpdb
+	pkgdesc = An open source tracker/HUD for use with on-line poker.
+	pkgver = 0.40.5
+	pkgrel = 3
+	url = http://sourceforge.net/projects/fpdb/
+	arch = x86_64
+	arch = i686
+	license = AGPL
+	license = GPL
+	depends = pygtk
+	depends = python2-matplotlib
+	depends = python2-wnck
+	depends = python2-numpy
+	depends = python2-beautifulsoup3
+	depends = pypoker-eval
+	optdepends = mariadb: mysql database
+	optdepends = mysql-python: mysql support
+	optdepends = postgresql: postgresql database
+	optdepends = python-psycopg2: postgresql support
+	source = http://sourceforge.net/projects/fpdb/files/fpdb/0.40/fpdb-0.40.5.tar.gz
+	md5sums = 95d0527695437eeeb5f4e534b230ebb0
+	sha512sums = f3c9418df51aeaf29bb99c848f1c2b30e8be5198027d3dcd10181400473637c9fdd9eb4bb1ccb2a06d5db8f8d363b4ef832c7c5cb4357ea63c17d13ac3cf4eb7
+
+pkgname = fpdb
+
