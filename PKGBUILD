@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.34.3.44.gaf1f4ce
+pkgver=1.34.3.45.ge476217
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -31,23 +31,32 @@ pkgver() {
 }
 
 prepare() {
+  # fix an upstream typo 
   sed -i 's+intinsics_gen+intrinsics_gen+' \
       $srcdir/emscripten-fastcomp/lib/Bitcode/NaCl/Writer/CMakeLists.txt
+
   cd $srcdir/emscripten
-  sed -i 's/\<python\>/python2/g' $(find . -name \*.py) em++ emar \
-      emcc em-config emconfigure emmake emranlib emrun emscons
+  
+  # adapt config file template to use our custom environment variable and path
+  sed -e "s|getenv('LLVM')|getenv('EMSCRIPTEN_FASTCOMP')|" \
+      -e 's|{{{ LLVM_ROOT }}}|/usr/lib/emscripten-fastcomp|' \
+      -i tools/settings_template_readonly.py
+  
+  # python2 shebang fixes
+  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun
+  cd $srcdir/emscripten-fastcomp
+  
+  # put clang source into the right place (http://git.io/i1GBkg)
+  [[ -d tools/clang ]] && rm -rf tools/clang
+  ln -s $srcdir/emscripten-fastcomp-clang tools/clang
+
+  # reset folder for out-of-source build
+  [[ -d build ]] && rm -rf build
+  mkdir build
 }
 
 build() {
-  cd $srcdir/emscripten-fastcomp
-  
-  [[ -d tools/clang ]] && rm -rf tools/clang
-  ln -s $srcdir/emscripten-fastcomp-clang tools/clang
-  
-  [[ -d build ]] && rm -rf build
-  mkdir build
-  cd build
-
+  cd $srcdir/emscripten-fastcomp/build
   CC=clang CXX=clang++ cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_TARGETS_TO_BUILD="X86;JSBackend" \
@@ -58,16 +67,14 @@ build() {
 }
 
 package() {
-  install -d $pkgdir/opt/emscripten-fastcomp
-  install -d $pkgdir/usr/lib/emscripten
-  install -d $pkgdir/etc/profile.d
-  install -d $pkgdir/usr/bin
-  
+  # exported variables
+  install -Dm755 "$srcdir"/emscripten.sh "$pkgdir"/etc/profile.d/emscripten.sh
+
   cp -R $srcdir/emscripten-fastcomp/build/bin/* \
-     $pkgdir/opt/emscripten-fastcomp
+     $pkgdir/usr/lib/emscripten-fastcomp
   install -m 0755 $srcdir/emscripten-fastcomp/emscripten-version.txt \
-	  $pkgdir/opt/emscripten-fastcomp
-  install -m 0755 $srcdir/emscripten.sh $pkgdir/etc/profile.d/
+	  $pkgdir/usr/lib/emscripten-fastcomp
+
   for i in em++ emar emcc em-config emconfigure emmake emranlib \
 		emrun emscons
   do
@@ -80,6 +87,17 @@ package() {
   install -m 0755 $srcdir/emscripten.config \
 	  $pkgdir/usr/lib/emscripten/tools/settings_template_readonly.py
   install -Dm0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  sed -i 's/\<python\>/python2/g' \
-      $pkgdir/opt/emscripten-fastcomp/llvm-lit
+  
+  # copy structure
+  cd "$srcdir"/emscripten-$pkgver
+  install -d "$pkgdir"/usr/lib/emscripten
+  cp -rup em* cmake site src system third_party tools "$pkgdir"/usr/lib/emscripten
+
+  # remove clutter
+  rm "$pkgdir"/usr/lib/emscripten-fastcomp/{*-test,llvm-lit}
+  rm "$pkgdir"/usr/lib/emscripten/*.bat
+
+  # docs
+  install -d "$pkgdir"/usr/share/doc
+  ln -s /usr/lib/emscripten/site/source/docs "$pkgdir"/usr/share/doc/$pkgname
 }
