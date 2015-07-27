@@ -1,0 +1,30 @@
+pkgbase = openmeetings
+	pkgdesc = Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://code.google.com/p/openmeetings/
+	install = openmeetings.install
+	arch = any
+	license = apache
+	makedepends = unzip
+	depends = mysql
+	depends = imagemagick
+	depends = ghostscript
+	depends = swftools
+	depends = sox
+	depends = lame
+	depends = openjdk6
+	depends = ffmpeg
+	depends = libreoffice-base
+	depends = libreoffice-calc
+	depends = libreoffice-common
+	depends = libreoffice-draw
+	depends = libreoffice-impress
+	depends = libreoffice-writer
+	noextract = openmeetings_1_9_1_r4707.zip
+	backup = opt/red5/openmeetings/webapps/openmeetings/WEB-INF/classes/META-INF/persistence.xml
+	source = http://openmeetings.googlecode.com/files/openmeetings_1_9_1_r4707.zip
+	sha256sums = 0431c3d72a4aa0ac32f7ed25d989c0a583286c7f290936ac8763e17f1748056a
+
+pkgname = openmeetings
+
