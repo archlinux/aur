@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-redshift-control-git
 _pkgname=plasma5-applets-redshift-control
 _gitpkgname=plasma-applet-redshift-control
-pkgver=r2.d16c9b5
+pkgver=r3.0f3f2ce
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5 for controlling redshift."
 arch=('any')
