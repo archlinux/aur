@@ -1,7 +1,7 @@
 pkgbase = neovim-gnome-terminal-wrapper
 	pkgdesc = A wrapper for running neovim in a separate instance of gnome-terminal
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/fmoralesc/
 	arch = any
 	license = GPL
