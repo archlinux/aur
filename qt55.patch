@@ -1,0 +1,10 @@
+--- ring-lrc/src/uri.h	2015-07-27 22:56:31.285700476 +0200
++++ ring-lrc/src/uri.h	2015-07-27 22:56:55.918697967 +0200
+@@ -20,6 +20,7 @@
+ 
+ #include "typedefs.h"
+ 
++#include <QDataStream>
+ #include <QStringList>
+ 
+ class URIPrivate;
