@@ -11,6 +11,8 @@ license=('LGPL3')
 depends=('libdbusmenu-qt4')
 makedepends=('cmake' 'bzr')
 backup=('etc/sni-qt.conf')
+provides=('sni-qt-eplus')
+conflicts=('sni-qt-eplus')
 source=("$_pkgname::bzr+lp:~cybre/elementary+/sni-qt-patched"
         'sni-qt.conf')
 md5sums=('SKIP'
