@@ -4,7 +4,7 @@ pkgver=25.5.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/pm4linux/"
+url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
 optdepends=('gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
@@ -18,7 +18,7 @@ optdepends=('gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
 provides=('palemoon')
 conflicts=('palemoon')
 install=palemoon.install
-source=(http://downloads.sourceforge.net/pm4linux/palemoon-$pkgver.en-US.linux-$CARCH.tar.bz2
+source=(http://linux.palemoon.org/files/$pkgver/palemoon-$pkgver.en-US.linux-$CARCH.tar.bz2
 #{,.sig}
 	palemoon.desktop)
 #validpgpkeys=('B85ADF545913F109BDD609390303DADA702F886A')
