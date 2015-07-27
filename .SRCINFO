@@ -1,5 +1,5 @@
 pkgbase = linux-lts-tomoyo
-	pkgver = 3.14.44
+	pkgver = 3.14.48
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = linux-lts-tomoyo
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.44.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.44.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.48.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.48.sign
 	source = config
 	source = config.x86_64
 	source = linux-lts-tomoyo.preset
@@ -28,10 +28,10 @@ pkgbase = linux-lts-tomoyo
 	source = gcc5_buildfixes.diff
 	sha256sums = 61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa
 	sha256sums = SKIP
-	sha256sums = 5af4e26194d3195e5a7c9235b0e6b60f577e7948ba2e1f653341d6263ef2ffc0
+	sha256sums = d654e53b889fd9244ce2ec9d8ab4cb5fe68d0c4ae6a49efa517850cbd22ebcd5
 	sha256sums = SKIP
-	sha256sums = 999486d20e07e489bb42356b529b739c65ad65de9191282f0ddbbc0eb9b1718e
-	sha256sums = 140098de1ba714c5916ea76578b8bf549ce801c4aa0c786b7c90289b85ecdb77
+	sha256sums = af6a452fcc11cfa6b538f4124b50381f1dc05ca20bf8dc336552fa7cc354bac3
+	sha256sums = b6f0f344773b51768ca53158a05a16e1328ad0def7b77ca0bce43211216e5cb1
 	sha256sums = 55f4f80d7cfe294d11f44c84ce8a20eaf698ca69667c660621a05472ada49f9a
 	sha256sums = faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182
 	sha256sums = 6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02
@@ -48,20 +48,20 @@ pkgname = linux-lts-tomoyo
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-lts-tomoyo=3.14.44
+	provides = kernel26-lts-tomoyo=3.14.48
 	conflicts = kernel26-lts-tomoyo
 	replaces = kernel26-lts-tomoyo
 	backup = etc/mkinitcpio.d/linux-lts-tomoyo.preset
 
 pkgname = linux-lts-tomoyo-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts-tomoyo kernel
-	provides = kernel26-lts-tomoyo-headers=3.14.44
+	provides = kernel26-lts-tomoyo-headers=3.14.48
 	conflicts = kernel26-lts-tomoyo-headers
 	replaces = kernel26-lts-tomoyo-headers
 
 pkgname = linux-lts-tomoyo-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts-tomoyo kernel
-	provides = kernel26-lts-tomoyo-docs=3.14.44
+	provides = kernel26-lts-tomoyo-docs=3.14.48
 	conflicts = kernel26-lts-tomoyo-docs
 	replaces = kernel26-lts-tomoyo-docs
 

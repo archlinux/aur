@@ -1,12 +1,13 @@
 # AUR/linux-lts-tomoyo PKGBUILD
 # Maintainer: dysphr <>
 #
+# arch/linux-lts PKGBUILD
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-3.14
-pkgver=3.14.44
+pkgver=3.14.48
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -30,10 +31,10 @@ source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v3.x/sha256sums.asc
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
-            '5af4e26194d3195e5a7c9235b0e6b60f577e7948ba2e1f653341d6263ef2ffc0'
+            'd654e53b889fd9244ce2ec9d8ab4cb5fe68d0c4ae6a49efa517850cbd22ebcd5'
             'SKIP'
-            '999486d20e07e489bb42356b529b739c65ad65de9191282f0ddbbc0eb9b1718e'
-            '140098de1ba714c5916ea76578b8bf549ce801c4aa0c786b7c90289b85ecdb77'
+            'af6a452fcc11cfa6b538f4124b50381f1dc05ca20bf8dc336552fa7cc354bac3'
+            'b6f0f344773b51768ca53158a05a16e1328ad0def7b77ca0bce43211216e5cb1'
             '55f4f80d7cfe294d11f44c84ce8a20eaf698ca69667c660621a05472ada49f9a'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
@@ -83,6 +84,12 @@ prepare() {
   else
     cat "${srcdir}/config" > ./.config
   fi
+
+  # Enable TOMOYO Linux
+  msg "Enabling TOMOYO Linux..."
+  sed -i -e 's:# CONFIG_SECURITY_TOMOYO is not set:CONFIG_SECURITY_TOMOYO=y\nCONFIG_SECURITY_TOMOYO_MAX_ACCEPT_ENTRY=2048\nCONFIG_SECURITY_TOMYO_MAX_AUDIT_LOG=1024\n# CONFIG_SECURITY_TOMOYO_OMIT_USERSPACE_LOADER is not set\nCONFIG_SECURITY_TOMOYO_POLICY_LOADER="/sbin/tomoyo-init"\nCONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER="/sbin/init":' \
+      -i -e 's/CONFIG_DEFAULT_SECURITY_DAC=y/# CONFIG_DEFAULT_DAC is not set/' \
+      -i -e '/CONFIG_DEFAULT_SECURITY/ s,"","tomoyo",' ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
