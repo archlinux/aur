@@ -1,0 +1,14 @@
+pkgbase = amdlibm
+	pkgdesc = AMD math library for Linux, standard and vectorized libM functions
+	pkgver = 3.1
+	pkgrel = 2
+	url = http://developer.amd.com/tools-and-sdks/cpu-development/libm/
+	arch = x86_64
+	license = custom
+	options = staticlibs
+	source = http://developer.amd.com/amd-license-agreement/?f=amdlibm-3.1-lin64.tar.gz
+	md5sums = 4f3face6fa0391188a4aa6dce0a891da
+	sha512sums = 4ed16c953ea0a4b4f672c34333d17841cf939c75a12106161b3bd619d4fcdff17ea9043b665e9318a605fd02c607dc0ecbf4cde78de26d9193022c8ca556ddbc
+
+pkgname = amdlibm
+
