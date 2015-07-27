@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-redshift-control-git
 	pkgdesc = Plasmoid for Plasma 5 for controlling redshift.
-	pkgver = r3.0f3f2ce
+	pkgver = r4.941ad51
 	pkgrel = 1
 	url = https://github.com/kotelnik/plasma-applet-redshift-control
 	arch = any
