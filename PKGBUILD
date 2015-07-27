@@ -3,7 +3,7 @@
 
 pkgname=dracut
 pkgver=043
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64")
 url="https://dracut.wiki.kernel.org/"
@@ -30,6 +30,8 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  ./configure
   make DESTDIR="${pkgdir}" sysconfdir=/etc prefix=/usr \
 	bindir=/usr/bin sbindir=/usr/bin \
 	libdir=/usr/lib libexecdir=/usr/lib/dracut \

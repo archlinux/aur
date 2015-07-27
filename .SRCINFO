@@ -1,7 +1,7 @@
 pkgbase = dracut
 	pkgdesc = Generic, modular, cross-distribution initramfs generation tool
 	pkgver = 043
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dracut.wiki.kernel.org/
 	install = dracut.install
 	arch = i686
