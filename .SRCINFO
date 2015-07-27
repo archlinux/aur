@@ -1,0 +1,21 @@
+pkgbase = gdm3setup
+	pkgdesc = An interface to configure GDM3 and autologin options
+	pkgver = 20150507
+	pkgrel = 1
+	url = http://github.com/Nano77/gdm3setup
+	arch = any
+	license = GPL
+	depends = gdm
+	depends = gnome-shell
+	depends = python2-lxml
+	depends = python2-dbus
+	depends = gdm3setup-utils>=20150507
+	optdepends = archlinux-artwork: Set an Archlinux logo
+	conflicts = gdm3setup-native-theme
+	conflicts = gdm3setup-vala
+	conflicts = gdm3setup-vala-native-theme
+	source = https://raw.github.com/Nano77/various/master/src/gdm3setup/master/gdm3setup-20150507.tar.xz
+	sha256sums = 890790d07afca426bffd42eabc59038d47c8bc08233e9286ab4331e81ba6b3ce
+
+pkgname = gdm3setup
+
