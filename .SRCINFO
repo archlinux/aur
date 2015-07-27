@@ -1,0 +1,18 @@
+pkgbase = keynav-improved-grid-git
+	pkgdesc = Patched version of keynav with improved grid
+	pkgver = 20150726
+	pkgrel = 1
+	url = https://github.com/seletskiy/keynav
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = perl
+	depends = xdotool-git
+	provides = keynav
+	conflicts = keynav
+	source = git+https://github.com/seletskiy/keynav.git
+	md5sums = SKIP
+
+pkgname = keynav-improved-grid-git
+
