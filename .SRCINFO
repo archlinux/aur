@@ -11,6 +11,7 @@ pkgbase = plasma5-applets-active-window-control-git
 	depends = qt5-graphicaleffects
 	provides = plasma5-applets-active-window-control
 	conflicts = plasma5-applets-active-window-control
+	conflicts = plasma-applet-active-window-control-git
 	source = git://github.com/kotelnik/plasma-applet-active-window-control.git
 	md5sums = SKIP
 
