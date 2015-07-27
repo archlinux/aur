@@ -1,34 +1,29 @@
-# Maintainer: mojangsta <mojangsta at slash dev slash null>
-# psst -- this probably won't help you run pirated games
-#      -- they usually provide their own proxy libs anyway
-# however, i can confirm this works flawlessly with legit
-# terraria 1.2.4.1 on wine-staging 1.7.39 + steam 1.0.0.49
+# Maintainer: mojangsta <steamco/id/mojangsta>
 pkgname=steambridge-git
-_pkgname=steambridge
-_prefix=/usr
-pkgver=0.0.1.gb2c18b5
+pkgver=0.0.2.g7cec53f
 pkgrel=1
 pkgdesc="A project to allow Steam applications running under WINE to communicate with a native Linux version of Steam."
 arch=('any')
-url="https://github.com/sirnuke/steambridge"
+url='https://github.com/sirnuke/steambridge'
 license=('MIT')
 depends=('python2')
 makedepends=('git')
-optdepends=('steamcmd: fully downloads apps marked incompatible by steam'
+optdepends=('steamcmd: fully downloads content deemed incompatible by steam'
             'steam: exposes native interface for steambridge to hook into'
-            'wine: wine-staging (in pipelight repo) is better'
+            'wine: compatibility layer that provides mswin library routines'
             'winetricks: gets useful libs such as dotnet40, xna40')
 provides=('steambridge')
+_pkgname=steambridge
+_prefix=/usr
 _proxy=steam_api_proxy.dll
 # dropbox is more likely to fail so it goes first
 source=(https://www.dropbox.com/sh/enwavibssmyxkq0/AADyVjdkULjkChZf_hxtC6VQa/0.0.2-2014-06-23/steam_api_proxy.dll
         git://github.com/sirnuke/steambridge.git)
-sha256sums=(3f5d88539ce9cdffc109113172d1adb0dd58be93982b242528cb344031a17f7c
-            SKIP)
+sha256sums=(3f5d88539ce9cdffc109113172d1adb0dd58be93982b242528cb344031a17f7c SKIP)
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed -r 's/-.*-/-/' | sed 's/-/./'
+  cd "$srcdir/$_pkgname"
+  sed -r '/_VERSION_LONG\s/!d;s/^[^"]*"([^-]*)[^:]*:(.{7}).*$/\1.g\2/' libraries/common/include/config.h
 }
 
 build() {
