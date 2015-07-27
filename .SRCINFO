@@ -1,6 +1,6 @@
 pkgbase = fzf
 	pkgdesc = Command-line fuzzy finder
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/junegunn/fzf
 	install = fzf.install
@@ -16,12 +16,12 @@ pkgbase = fzf
 	optdepends = fzf-extras: fzf keybindings from junegunn wiki and dotfiles
 	optdepends = vim-fzf: vim plugin
 	optdepends = zsh: zsh keybindings
-	source = fzf-0.10.0.tar.gz::https://codeload.github.com/junegunn/fzf/tar.gz/0.10.0
+	source = fzf-0.10.1.tar.gz::https://codeload.github.com/junegunn/fzf/tar.gz/0.10.1
 	source = key-bindings.bash.patch
 	source = key-bindings.zsh.patch
-	sha256sums = 7d0b3ced40c99934590e3b0a2302a79ca13f36b7558d1643a89b1800021252ee
-	sha256sums = 72d90ed4eff98e83786e713d69452c086194d901cc69422df1b4a276172e0825
-	sha256sums = 2d181a7964eb179edcddd5063223f8ad831620ade185f8673f6347f255972fc2
+	sha256sums = 04615300679f4286cbd35e981e05635563f0782579873dcfbfb19fafa4b69948
+	sha256sums = 2b188a027ffca82e1c9e66ad072cc903c4c34c102387b843a0e62962f835cecb
+	sha256sums = b49f86d8674813f91ed7833197daf966c0e8874e7cca3d24111f84fc0675b985
 
 pkgname = fzf
 
