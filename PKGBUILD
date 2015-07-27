@@ -62,6 +62,7 @@ build() {
 		--mandir=/usr/share/man \
 		--without-pear \
         --with-kerberos \
+        --with-libedit \
 		"
 
 	local _phpextensions="--enable-bcmath=shared \
@@ -138,7 +139,6 @@ build() {
 	ln -sf ../${_pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--disable-cgi \
-		--with-readline \
 		--enable-pcntl \
 		${_phpextensions}
 	make
@@ -188,7 +188,6 @@ build() {
 	./configure ${_phpconfig} \
 		--disable-cli \
 		--disable-cgi \
-		--with-readline \
 		--enable-phpdbg \
 		${_phpextensions}
 	make
