@@ -37,6 +37,9 @@ package() {
 
   install -dm755 ${pkgdir}/etc/profile.d/
   install -m755 ${srcdir}/z88dk.sh ${pkgdir}/etc/profile.d/
+  # Include docs
+  install -dm755 ${pkgdir}/usr/share/doc/${pkgname}/
+  find doc/* -not \( -path doc/CVS -prune \) -not \( -path doc/netman -prune \) | xargs -i install -m644 "{}" "${pkgdir}/usr/share/doc/${pkgname}"
   # License
   install -D -m755 LICENSE "${pkgdir}/usr/share/licenses/z88dk/LICENSE"
 }
