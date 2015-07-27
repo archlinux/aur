@@ -20,7 +20,7 @@ url="http://www.supermicro.com/products/nfo/ipmi.cfm"
 source=("ftp://ftp.supermicro.com/utility/IPMIView/Linux/${_pkgname}_V${pkgver}_bundleJRE_Linux_${_pkgarch}_${_pkgrev}.tar.gz"
         "ipmiview.desktop")
 sha256sums=('577ccc48e7d70325ef2f922a0784acdcf72fe6bded8e195a47efa03da6db4b74'
-            '42a428fb0466ff1e925f712f1f4daa69a5b1d3b3f9cd4728b0da19646a39a427')
+            '41d5fa089912ee10d476a0f6aa3c12765861c1a71cf4f811efaf2e47c4ce9351')
 
 package() {
     cd ${srcdir}/${_pkgname}_V${pkgver}_bundleJRE_Linux_${_pkgarch}_${_pkgrev}

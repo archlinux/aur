@@ -1,11 +1,10 @@
 [Desktop Entry]
-Name=IPMIView20
+Name=IPMIView
 Comment=Supermicro tool for BMC
 Keywords=ipmi;supermicro;bmc;
-Exec=IPMIView20
+Exec=ipmiview
 Icon=
 Terminal=false
 Type=Application
 Categories=Network;Configuration;
 StartupNotify=true
-Name[it_IT]=ipmiview.desktop
