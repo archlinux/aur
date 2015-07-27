@@ -1,0 +1,15 @@
+pkgbase = gox
+	pkgdesc = A simple, no-frills tool for Go cross compilation
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = github.com/mitchellh/gox
+	arch = i686
+	arch = x86_64
+	license = MPL 2.0
+	makedepends = go
+	depends = glibc
+	source = https://github.com/mitchellh/gox/archive/v0.3.0.tar.gz
+	sha512sums = cbc737a780403d1233af10a85b30676e0fcfbfbe99a740d0eff69bef4fd557c65d102c43b3b0dde0b8b935967be8cb33fab50d2baf481d27fa53285be6b1aef2
+
+pkgname = gox
+
