@@ -1,7 +1,11 @@
 # Maintainer: Nikola Milinković <nikmil@gmail.com>
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
+
+# Set to 'y' to enable Numix-like theme for JabRef
+_numixicons=
+
 pkgname=jabref-git
-pkgver=2.11b3.163.g3ad6c18
+pkgver=2.11b3.251.g9b010a4
 _pkgver=2.11dev
 _gitname="jabref"
 pkgrel=1
@@ -13,14 +17,26 @@ depends=('java-environment' 'sh')
 makedepends=('git')
 provides=('jabref')
 conflicts=('jabref')
-source=('jabref::git+https://github.com/JabRef/jabref.git' 'jabref.desktop' 'jabref.sh')
+source=('jabref::git+https://github.com/JabRef/jabref.git'
+	'jabref.desktop'
+	'jabref.sh'
+        'crystal_16.tar.gz')
 md5sums=('SKIP'
          '5f76feb6b2f66a2ea8b52bca999a934f'
-         '9da2f8a5010e25bb04c81225309cc9e5')
+         '9da2f8a5010e25bb04c81225309cc9e5'
+         'b03d877ebe4312b6c05dbe4a27d13001')
 
 pkgver() {
   cd $_gitname
   git describe --tags|sed 's/-/./g'| cut -c3-
+}
+
+prepare(){
+  cd "$srcdir/$_gitname"
+  if [ -n "$_numixicons" ]; then
+      rm -fr ./src/main/resources/images/crystal_16/
+      cp -a "$srcdir"/crystal_16/ ./src/main/resources/images/crystal_16/
+  fi
 }
 
 build() {
