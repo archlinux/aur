@@ -4,7 +4,7 @@
 # OPTIONS+=(debug !strip)
 
 pkgname=tinc-pre-git
-pkgver=1.1pre11.164.g9ca1750
+pkgver=1.1pre11.167.g56a8b90
 pkgrel=1
 pkgdesc="Virtual Private Network daemon (prerelease)"
 arch=('any')
