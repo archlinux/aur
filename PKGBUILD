@@ -2,20 +2,20 @@
 # Contributor: Moritz Kiefer <moritz.kiefer@gmail.com>
 
 pkgname=mumble-jack
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Mumble with support for JACK"
 license=('BSD')
-depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus')
-makedepends=('boost' 'mesa' 'avahi')
+depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus' 'xdg-utils' 'speech-dispatcher')
+makedepends=('boost' 'mesa')
 provides=('mumble')
 conflicts=('mumble')
 install=mumble.install
 url=http://mumble.info/
 source=(http://downloads.sourceforge.net/mumble/mumble-$pkgver.tar.gz
         http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch)
-md5sums=('85decb9a1efb13e7558fab6265f81ad8'
+md5sums=('14ab2e9174b7ca87623e63aa56dd6d5b'
          '03d89f5f4265de696505211984b969a0')
 
 
@@ -29,9 +29,10 @@ build() {
   cd $srcdir/mumble-$pkgver
   # Building mumble
   qmake-qt4 main.pro \
-    CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-speechd no-g15 no-xevie no-server \
+    CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server \
     no-embed-qt-translations no-update packaged" \
-    DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
+    DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
+    INCLUDEPATH+="/usr/include/speech-dispatcher"
   make release
 }
 
