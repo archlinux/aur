@@ -5,7 +5,7 @@ diff -Naur cacti-spine-0.8.8d/configure.ac cacti-spine-0.8.8d-patched/configure.
  AC_PREFIX_DEFAULT(/usr/local/spine)
  AC_LANG(C)
  
--AM_INIT_AUTOMAKE(spine, 0.8.8d)
+-AM_INIT_AUTOMAKE(spine, 0.8.8f)
 -AM_CONFIG_HEADER(config/config.h)
 +AM_INIT_AUTOMAKE
 +AC_CONFIG_HEADER(config/config.h)
