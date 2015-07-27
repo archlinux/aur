@@ -3,7 +3,7 @@
 _pkgver_minor=
 _python2_ver_major=$(pacman -Qi python2|gawk '$1~/Version/{split($3,v,".");print v[1] "." v[2]}')
 pkgname=mesos
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="A cluster manager that simplifies the complexity of running applications on a shared pool of servers"
 arch=('i686' 'x86_64')
@@ -14,7 +14,9 @@ install=$pkgname.install
 depends=('python2' 'curl' 'leveldb' 'java-environment' 'libunwind' 'google-glog'
          'libnl' 'apr' 'subversion' 'protobuf' 'python2-protobuf' 'python2-boto')
 makedepends=('java-environment' 'maven' 'http-parser' 'python2-http-parser' 'google-glog'
-             'gperftools' 'apr' 'subversion' 'protobuf' 'python2-protobuf' 'python2-boto')
+             'gperftools' 'apr' 'subversion' 'protobuf'
+'python2-protobuf' 'python2-boto')
+conflicts=('python2-shutilwhich')
 source=("http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz"
   "$pkgname-master.service"
   "$pkgname-slave.service"
@@ -22,7 +24,7 @@ source=("http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz"
 
 # official signature file:
 #  "http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz.asc"
-md5sums=('5b326b493e46cc497d1ad384ac9d5aec'
+md5sums=('fd3b52710c90d16cff44ea8d32afd88c'
          'da6ff9d8a2df96325bee325a957eb760'
          '69df716316170056ff2a54c5299d8cb4'
          'fe3a51b1e65c1b0e16a8b42a0398f30a')
@@ -52,9 +54,10 @@ build() {
    --with-glog=/usr \
    --with-leveldb=/usr \
    --with-gperftools=/usr \
-   --with-network-isolator
 
-	make
+#   --with-network-isolator
+
+  make
 }
 
 check() {
