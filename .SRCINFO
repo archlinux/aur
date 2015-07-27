@@ -1,0 +1,15 @@
+pkgbase = activecollab-timer
+	pkgdesc = activeCollab Timer tracks time on your desktop computer and lets you easily submit it to activeCollab via activeCollab API.
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://www.activecollab.com/timer.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	depends = libxss
+	source = activecollab-timer-3.1.2.zip::https://www.activecollab.com/downloads/category/9/package/314/release/5qyoyqigiw3tmmp0xmec5uk9e/download
+	md5sums = 86aafc496c9fbf904723f4d652f0d23b
+
+pkgname = activecollab-timer
+
