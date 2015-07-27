@@ -1,0 +1,4 @@
+*.pkg.tar.*
+*.src.tar.*
+*.bin.tar.*
+SOURCE

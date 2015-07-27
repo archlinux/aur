@@ -1,0 +1,17 @@
+pkgbase = android-auto-api-simulators
+	pkgdesc = Android Audo API Simulators Package
+	pkgver = r01
+	pkgrel = 2
+	url = http://developer.android.com/auto
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = android-sdk
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/simulator_r01.zip
+	source = source.properties
+	sha1sums = 4fb5344e34e8faab4db18af07dace44c50db26a7
+	sha1sums = 1f559e64adec827844d99aed4194e19dc09e9189
+
+pkgname = android-auto-api-simulators
+
