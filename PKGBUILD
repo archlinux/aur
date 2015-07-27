@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=pgl-git
-pkgver=2.3.0.r4.gac3553e
+pkgver=2.3.0.1.r11.g6cf53bc
 pkgrel=1
 pkgdesc='A privacy oriented firewall application (Daemon & CLI).'
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "code"
 
-    git describe --tags | sed -r 's/^pgl_//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --tags | sed 's/^debian\///;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

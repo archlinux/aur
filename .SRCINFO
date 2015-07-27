@@ -1,6 +1,6 @@
 pkgbase = pgl-git
 	pkgdesc = A privacy oriented firewall application (Daemon & CLI).
-	pkgver = 2.3.0.r4.gac3553e
+	pkgver = 2.3.0.1.r11.g6cf53bc
 	pkgrel = 1
 	url = http://sourceforge.net/projects/peerguardian/
 	install = install
