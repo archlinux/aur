@@ -1,6 +1,6 @@
 pkgbase = apparmor
 	pkgdesc = Linux application security framework - mandatory access control for programs
-	pkgver = 2.9.2
+	pkgver = 2.10
 	pkgrel = 1
 	url = http://wiki.apparmor.net/index.php/Main_Page
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = apparmor
 	makedepends = perl-locale-gettext
 	makedepends = perl-rpc-xml
 	makedepends = audit
-	source = https://launchpad.net/apparmor/2.9/2.9.2/+download/apparmor-2.9.2.tar.gz
+	source = https://launchpad.net/apparmor/2.10/2.10/+download/apparmor-2.10.tar.gz
 	source = apparmor_load.sh
 	source = apparmor_unload.sh
 	source = apparmor.service

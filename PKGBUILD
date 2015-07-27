@@ -6,9 +6,9 @@
 
 pkgbase=apparmor
 pkgname=($pkgbase apparmor-parser apparmor-libapparmor apparmor-utils apparmor-profiles apparmor-pam apparmor-vim)
-pkgver=2.9.2
+pkgver=2.10
 #_majorver=${pkgver%.*}  # bleh, AUR...
-_majorver=2.9
+_majorver=2.10
 pkgrel=1
 pkgdesc='Linux application security framework - mandatory access control for programs'
 arch=('i686' 'x86_64')
