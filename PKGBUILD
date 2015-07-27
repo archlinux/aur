@@ -5,7 +5,6 @@ pkgname=('php7'
 		 'php7-apache'
 		 'php7-fpm'
 		 'php7-embed'
-		 'php7-phpdbg'
 		 'php7-enchant'
 		 'php7-gd'
 		 'php7-intl'
@@ -84,6 +83,7 @@ build() {
 		--enable-sysvsem=shared \
 		--enable-sysvshm=shared \
 		--enable-zip=shared \
+		--enable-phpdbg \
 		--with-bz2=shared \
 		--with-curl=shared \
 		--with-db4=/usr \
@@ -181,16 +181,6 @@ build() {
 		--enable-embed=shared \
 		${_phpextensions}
 	make
-
-	# phpdbg
-	cp -a ${srcdir}/build-php ${srcdir}/build-phpdbg
-	cd ${srcdir}/build-phpdbg
-	./configure ${_phpconfig} \
-		--disable-cli \
-		--disable-cgi \
-		--enable-phpdbg \
-		${_phpextensions}
-	make
 }
 
 # check() {
@@ -271,14 +261,6 @@ package_php7-embed() {
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/usr/include/php/sapi/embed/php_embed.h
 }
 
-package_php7-phpdbg() {
-	pkgdesc='Interactive PHP debugger'
-	depends=("php=${pkgver}")
-	provides=("php-phpdbg=${pkgver}")
-	conflicts=('php-phpdbg')
-
-	install -D -m755 ${srcdir}/build-phpdbg/sapi/phpdbg/phpdbg ${pkgdir}/usr/bin/phpdbg
-}
 
 package_php7-enchant() {
 	pkgdesc='enchant module for PHP'

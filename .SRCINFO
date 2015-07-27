@@ -79,12 +79,6 @@ pkgname = php7-embed
 	provides = php-embed=7.0.0beta2
 	conflicts = php-embed
 
-pkgname = php7-phpdbg
-	pkgdesc = Interactive PHP debugger
-	depends = php=7.0.0beta2
-	provides = php-phpdbg=7.0.0beta2
-	conflicts = php-phpdbg
-
 pkgname = php7-enchant
 	pkgdesc = enchant module for PHP
 	depends = php=7.0.0beta2
