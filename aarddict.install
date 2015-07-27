@@ -1,0 +1,6 @@
+post_install() {
+	gtk-update-icon-cache
+}
+post_remove() {
+	gtk-update-icon-cache
+}

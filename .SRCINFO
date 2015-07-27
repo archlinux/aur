@@ -1,0 +1,21 @@
+pkgbase = aarddict
+	pkgdesc = Aard Dictionary is a multiplatform dictionary and offline Wikipedia reader compatible with FBReader and CoolReader.
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://aarddict.org/
+	install = aarddict.install
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-pyicu
+	depends = python2-simplejson
+	depends = hicolor-icon-theme
+	depends = python2-setuptools
+	depends = python2-pyqt
+	source = https://github.com/aarddict/desktop/archive/0.9.3.tar.gz
+	source = aarddict.install
+	md5sums = 8f5bf2bdb50d0dcb70042337f6a7eb79
+	md5sums = 4d14628e16252af7ddf562ad19e3bcb4
+
+pkgname = aarddict
+
