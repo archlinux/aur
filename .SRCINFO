@@ -1,0 +1,13 @@
+pkgbase = mythes-cs
+	pkgdesc = Czech thesaurus
+	pkgver = 20150310
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/LibreOffice#Language_Aids
+	arch = any
+	license = custom
+	optdepends = libmythes: offers thesaurus library functions
+	source = http://pkgs.fedoraproject.org/repo/pkgs/mythes-cs/thes_cs_CZ_v2.zip/7f9c85b104db4cc6a719b3aab8c69a10/thes_cs_CZ_v2.zip
+	md5sums = 7f9c85b104db4cc6a719b3aab8c69a10
+
+pkgname = mythes-cs
+
