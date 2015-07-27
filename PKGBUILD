@@ -42,8 +42,8 @@ build() {
 
 package() {
   set -u
-  cd "${srcdir}/${_gitname}-build"
-  make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}/" install # This generates some /usr/lib errors
   set +u
 }
 set +u
