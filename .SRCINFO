@@ -1,0 +1,15 @@
+pkgbase = python2-peewee
+	pkgdesc = a little orm
+	pkgver = 2.5.1
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/peewee/
+	arch = any
+	license = MIT
+	depends = python2
+	optdepends = python2-psycopg2
+	optdepends = mysql-python
+	source = http://pypi.python.org/packages/source/p/peewee/peewee-2.5.1.tar.gz
+	sha1sums = 391c45e480e36ace9128c282d1ed068d505f9a3c
+
+pkgname = python2-peewee
+
