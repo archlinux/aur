@@ -1,0 +1,25 @@
+pkgbase = steamos-xpad-dkms
+	pkgdesc = xpad kernel module included with Valve's SteamOS
+	pkgver = alchemist.3.10.f5f73eb
+	pkgrel = 1
+	url = https://github.com/ValveSoftware/steamos_kernel
+	install = steamos-xpad-dkms.install
+	arch = any
+	license = GPL2
+	depends = dkms
+	optdepends = linux-headers: Build the module against Arch kernel
+	optdepends = linux-lts-headers: Build the module against LTS Arch kernel
+	conflicts = steamos-xpad
+	source = https://raw.github.com/ValveSoftware/steamos_kernel/f5f73eb889cac32cbabfc40362fe5635a2255836/drivers/input/joystick/xpad.c
+	source = Makefile
+	source = change-name.patch
+	source = steamos-xpad-dkms.dkms
+	source = xpad.modprobe
+	sha512sums = 88553d3efbd76f504c6086652a62f46bbde6ba881edfef453502cae044abfb805e748d5b95b8e5fa25f9b5cbe6c6f0c93602feb254e5ddb5bbf6bf859098bb58
+	sha512sums = 9ca3d1ada29c5bfe3ffd39f818e792be0c528191952660568f0ecae981b191a2cfbfd64a90f1158aa760e38fcd3c52d648cdf0f032fd649512933ca36bcd2149
+	sha512sums = a0ab12a6768447b1798c6d82988fb81a212512dbef19a5e66a5b5c096cbe136671255ad4896226c595d95a97ce097efe6702a370c30cc32d3234750d6a0a5daf
+	sha512sums = 7901fb85689d8670f0d853f19e24b0c22e3913dd82cdb0a83d74f456e010b7dff67575c5be863b43c95f1149780faec5cab604a829cb3e400f1ec44173c35aac
+	sha512sums = f492130c48a37f2fa59447f376c26c8af6581e7d79b2edd5f47afc91dc88d6ce4ccbbf1da1ea286a233bd93a76a785c77259870b617420fd6e1c82bbe3293cfe
+
+pkgname = steamos-xpad-dkms
+

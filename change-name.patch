@@ -1,0 +1,12 @@
+diff -urN a/drivers/input/joystick/xpad.c b/drivers/input/joystick/xpad.c
+--- a/drivers/input/joystick/xpad.c	2014-09-04 14:38:45.952097405 +0200
++++ b/drivers/input/joystick/xpad.c	2014-09-04 14:39:49.397822476 +0200
+@@ -1203,7 +1203,7 @@
+ }
+ 
+ static struct usb_driver xpad_driver = {
+-	.name		= "xpad",
++	.name		= "steamos-xpad",
+ 	.probe		= xpad_probe,
+ 	.disconnect	= xpad_disconnect,
+ 	.id_table	= xpad_table,
