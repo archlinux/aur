@@ -1,0 +1,13 @@
+pkgbase = python2-bugzillatools
+	pkgdesc = Bugzilla CLI client, XML-RPC binding and VCS plugins
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/frasertweedale/bugzillatools
+	arch = any
+	license = GPL3
+	depends = python2
+	source = https://github.com/frasertweedale/bugzillatools/archive/v0.5.5.tar.gz
+	md5sums = dd640e05a9d19063c51681b28125b14b
+
+pkgname = python2-bugzillatools
+
