@@ -1,7 +1,7 @@
 pkgbase = gahshomar
 	pkgdesc = A Persian (Jalali/Farsi) calendar
 	pkgver = 4.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gahshomar.github.io/gahshomar/
 	install = gahshomar.install
 	arch = i686

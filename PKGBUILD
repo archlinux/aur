@@ -1,7 +1,7 @@
 # Maintainer: Amir Mohammadi <183.amir@gmail.com>
 pkgname=gahshomar
 pkgver=4.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Persian (Jalali/Farsi) calendar"
 arch=(i686 x86_64)
 url="https://gahshomar.github.io/gahshomar/"
