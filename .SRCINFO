@@ -1,6 +1,6 @@
 pkgbase = synergy-git
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = 20150707.r2252.284b2e7
+	pkgver = 20150724.r2261.41c03b8
 	pkgrel = 1
 	url = http://synergy-foss.org
 	arch = i686
@@ -23,9 +23,11 @@ pkgbase = synergy-git
 	source = synergy::git+https://github.com/synergy/synergy.git
 	source = synergys_at.socket
 	source = synergys_at.service
-	sha1sums = SKIP
-	sha1sums = 7ec33221725fc496b807e0f435c5e87b590beb5d
-	sha1sums = 65ab58cc3546d6374a05a6a260f15045632e43ce
+	source = missing-include-fix.patch
+	sha512sums = SKIP
+	sha512sums = f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62
+	sha512sums = e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c
+	sha512sums = 679cc88794d2ef65325ef93f1034f465824efeb2f01521eda7050556c1200df31abf9b5d055b9438d24f040c234d37b74c489e4db6acbf15a2e7fec8e1da226d
 
 pkgname = synergy-git
 

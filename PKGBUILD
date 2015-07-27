@@ -9,7 +9,7 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20150707.r2252.284b2e7
+pkgver=20150724.r2261.41c03b8
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -25,11 +25,13 @@ source=(
   "$_pkgname::git+https://github.com/$_pkgname/$_pkgname.git"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
+  'missing-include-fix.patch'
 )
-sha1sums=(
+sha512sums=(
   'SKIP'
-  '7ec33221725fc496b807e0f435c5e87b590beb5d'
-  '65ab58cc3546d6374a05a6a260f15045632e43ce'
+  'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
+  'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
+  '679cc88794d2ef65325ef93f1034f465824efeb2f01521eda7050556c1200df31abf9b5d055b9438d24f040c234d37b74c489e4db6acbf15a2e7fec8e1da226d'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -43,7 +45,9 @@ pkgver() {
 }
 
 prepare() {
-  cd $_pkgname/ext
+  cd $_pkgname
+  patch -p1 < ../missing-include-fix.patch
+  cd ext
   unzip gmock-1.6.0.zip -d gmock-1.6.0
   unzip gtest-1.6.0.zip -d gtest-1.6.0
 }
