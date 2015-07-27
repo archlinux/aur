@@ -1,8 +1,8 @@
 # Maintainer: Daniel Renninghoff <renninghoff at archlinux dot info>
 # Contributor: Carl George <carl at carlgeorge dot us>
 pkgname=mint-themes
-pkgver=3.14_7
-pkgrel=2
+pkgver=3.14_8
+pkgrel=1
 pkgdesc="Mint-X GTK2, GTK3, Metacity and Xfce theme."
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-themes"
