@@ -6,9 +6,9 @@
 _pkgname=libx264
 pkgname=lib32-$_pkgname
 _pkgbase=x264
-pkgver=148.20150717
+pkgver=148.20150725
 _apiver=${pkgver%.*}
-pkgrel=3
+pkgrel=2
 pkgdesc='Free library for encoding H264/AVC video streams (32 bit)'
 arch=('x86_64')
 url='http://www.videolan.org/developers/x264.html'
@@ -18,7 +18,8 @@ makedepends=('git' 'gcc-multilib' 'yasm' 'l-smash')
 depends=("${_pkgname}" 'lib32-glibc')
 provides=('libx264.so')
 conflicts=('lib32-libx264-stable-git')
-source=(x264::git://git.videolan.org/x264/x264-sandbox.git#commit=e6d2a36bb)
+#source=(x264::git://git.videolan.org/x264/x264-sandbox.git#commit=e6d2a36bb)
+source=(git://git.videolan.org/x264.git#commit=145f3a627)
 md5sums=('SKIP')
 
 pkgver() {
