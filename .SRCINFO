@@ -1,0 +1,17 @@
+pkgbase = pypoker-eval
+	pkgdesc = python adaptor for the poker-eval toolkit
+	pkgver = 138.0
+	pkgrel = 4
+	url = http://pokersource.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = poker-eval
+	depends = python2
+	source = http://download.gna.org/pokersource/sources/pypoker-eval-138.0.tar.gz
+	source = 632234.patch
+	md5sums = 751cad1e5c18c7c2f36a086a937193aa
+	md5sums = 5ab7bf686ea3d6181870a438a311954d
+
+pkgname = pypoker-eval
+
