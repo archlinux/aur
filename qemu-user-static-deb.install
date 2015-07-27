@@ -1,0 +1,39 @@
+echo_red() {
+	echo -e "\e[0;31m${1}\e[0m"
+}
+
+echo_green() {
+	echo -e "\e[0;32m${1}\e[0m"
+}
+
+echo_blue() {
+	echo -e "\e[0;34m${1}\e[0m"
+}
+
+post_install() {
+	local conf="/usr/lib/binfmt.d/qemu-user-static-deb.conf"
+	case "$(uname -m)" in
+		"i686")
+			sed -i 's/^\(:i386:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:i386-static:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:i486:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:i486-static:\)/#\1/g' "${conf}"
+			;;
+		"x86_64")
+			sed -i 's/^\(:i386:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:i386-static:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:i486:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:i486-static:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:x86_64:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:x86_64-static:\)/#\1/g' "${conf}"
+			;;
+		"arm" | "armv6l" | "armv7l")
+			sed -i 's/^\(:arm:\)/#\1/g' "${conf}"
+			sed -i 's/^\(:armeb:\)/#\1/g' "${conf}"
+			;;
+	esac
+}
+
+post_upgrade() {
+	post_install
+}
