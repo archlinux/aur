@@ -22,7 +22,7 @@ source_i686=("${_srcurl}/${_file}-i686.tar.bz2" "${_srcurl}/${_file}-i686.txt")
 source_x86_64=("${_srcurl}/${_file}-x86_64.tar.bz2" "${_srcurl}/${_file}-x86_64.txt")
 _srcsum_i686="$(curl -s "${_srcurl}/${_file}-i686.checksums" | grep "${_file}-i686.tar.bz2" | grep sha512 | cut -d " " -f1)" 
 _srcsum_x86_64="$(curl -s "${_srcurl}/${_file}-x86_64.checksums" | grep "${_file}-x86_64.tar.bz2" | grep sha512 | cut -d " " -f1)" 
-sha512sums=('d2d836b07288d2a13d01d668399df8a2a15884a58a7051303938bf74a30bdfc23a8bc57395494345727ae24e1dd9cab09c67a640a5c9e7a8df895f987e009dcd' '00caf982c072c7499433c494ecf2096542c4ddf368c4b97fb22672fd669683911d009a65a498b8a03da61ae9aa5a4e8bdaa6e58b148c2a5d7c008910b2af26a5' 'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
+sha512sums=('3bf390ca1f55ccd7935a1c2494389a5b588984578932c56e1d7a641680601874a0f8f168eb307d2942800480a7f19a1ed188dfdb3c5835d1da1137d98de44507' 'ef1b490092af0b33e65f02ff6574846a022f18338207a0a623700036cf350f25315cb9b07bf492acae3d8510bca8b766e116df7e9e78a9c491ca7071937bd236' 'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 sha512sums_i686=("${_srcsum_i686}" 'SKIP')
 sha512sums_x86_64=("${_srcsum_x86_64}" 'SKIP')
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
@@ -34,7 +34,7 @@ pkgver() {
 package() {
   
   # uncomment these lines to enable GnuPG signature verification. You'll need Firefox's GnuPG release key.
-  # Their current fingerprint is 2B90 598A 745E 992F 315E  22C5 8AB1 3296 3A06 537A shortid 0x15A0A4BC
+  # Their current fingerprint (2015-07-17) is 14F2 6682 D091 6CDD 81E3 7B6D 61B7 B526 D98F 0353
   #msg "Verifying GnuPG signature..."
   #FX_GPG="${_file}.checksums.asc"
   #FX_GPG_URI="${_srcurl}/${FX_GPG}"
