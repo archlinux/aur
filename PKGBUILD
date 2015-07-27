@@ -14,7 +14,7 @@ optdepends=('libappindicator-gtk3: for the app indicator plugin'
 			'gnome-shell: for the gnome-shell extension')
 install=gahshomar.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/Gahshomar/gahshomar/releases/download/v$pkgver/gahshomar-$pkgver.tar.gz)
-md5sums=('592715282d04f163de3aecbf1763787a')
+md5sums=('a00a62769064db1b4baba708c1710989')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver

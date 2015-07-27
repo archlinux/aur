@@ -15,7 +15,7 @@ pkgbase = gahshomar
 	conflicts = persian-calendar
 	replaces = persian-calendar
 	source = gahshomar-4.3.4.tar.gz::https://github.com/Gahshomar/gahshomar/releases/download/v4.3.4/gahshomar-4.3.4.tar.gz
-	md5sums = 592715282d04f163de3aecbf1763787a
+	md5sums = a00a62769064db1b4baba708c1710989
 
 pkgname = gahshomar
 
