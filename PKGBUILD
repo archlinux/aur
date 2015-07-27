@@ -5,14 +5,14 @@
 
 pkgname=burpsuite
 pkgver=1.6.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Burp Suite is an integrated platform for attacking web applications (free edition)."
-url="http://portswigger.net/burp/"
+url="https://portswigger.net/burp/"
 depends=('java-runtime')
 arch=('any')
 license=('custom')
 noextract=("${pkgname}.jar")
-source=("${pkgname}.jar::http://portswigger.net/burp/${pkgname}_free_v${pkgver}.jar"
+source=("${pkgname}.jar::https://portswigger.net/DownloadUpdate.ashx?Product=Free"
         LICENSE
         burpsuite.desktop
         icon64.png)

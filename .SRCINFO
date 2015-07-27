@@ -1,13 +1,13 @@
 pkgbase = burpsuite
 	pkgdesc = Burp Suite is an integrated platform for attacking web applications (free edition).
 	pkgver = 1.6.01
-	pkgrel = 1
-	url = http://portswigger.net/burp/
+	pkgrel = 2
+	url = https://portswigger.net/burp/
 	arch = any
 	license = custom
 	depends = java-runtime
 	noextract = burpsuite.jar
-	source = burpsuite.jar::http://portswigger.net/burp/burpsuite_free_v1.6.01.jar
+	source = burpsuite.jar::https://portswigger.net/DownloadUpdate.ashx?Product=Free
 	source = LICENSE
 	source = burpsuite.desktop
 	source = icon64.png
