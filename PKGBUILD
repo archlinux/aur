@@ -42,10 +42,13 @@ source=(
     https://github.com/ZoneMinder/ZoneMinder/archive/v$pkgver.tar.gz
     httpd-zoneminder.conf
     zoneminder.service
+    httpd.conf.zoneminder
 )
 sha256sums=('e55fa6ce1fd6c27912cd1de67fca3f80fad579f330020a384dc82838704d11ba'
             'c2ca71ec57e53da040de61ff212ac063574e5ddfb4c333b70be060d5ec26c62c'
-            '7eb2f26246e240e23502da44854d5ed14485aa11bc448ad73e9b57fee13f00a3')
+            '7eb2f26246e240e23502da44854d5ed14485aa11bc448ad73e9b57fee13f00a3'
+            '3dc4b04a90a3428131b8b5666baf82734a878629feb9f8025325f89d881a2045'
+           )
      
 build() {
     cd $srcdir/ZoneMinder-$pkgver
@@ -108,13 +111,16 @@ package() {
     # ln -s /usr/share/cambozola/cambozola.jar $pkgdir/srv/http/$_pkgname
 
     # Install configuration files
-    mkdir -p                                       $pkgdir/etc/httpd/conf/extra
-    install -D -m 644 $srcdir/httpd-$_pkgname.conf $pkgdir/etc/httpd/conf/extra
+    mkdir -p                                        $pkgdir/etc/httpd/conf/extra
+    install -D -m 644 $srcdir/httpd-$_pkgname.conf  $pkgdir/etc/httpd/conf/extra
     
-    mkdir -p                                    $pkgdir/usr/lib/systemd/system
-    install -D -m 644 $srcdir/$_pkgname.service $pkgdir/usr/lib/systemd/system
+    mkdir -p                                        $pkgdir/usr/lib/systemd/system
+    install -D -m 644 $srcdir/$_pkgname.service     $pkgdir/usr/lib/systemd/system
     
-    install -D -m 644 COPYING     $pkgdir/usr/share/license/$_pkgname
-    install -D -m 644 db/zm*.sql  $pkgdir/usr/share/$_pkgname/db     
+    install -D -m 644 COPYING                       $pkgdir/usr/share/license/$_pkgname
+    install -D -m 644 db/zm*.sql                    $pkgdir/usr/share/$_pkgname/db
+    
+    mkdir -p                                        $pkgdir/usr/share/doc/$_pkgname
+    install -D -m 644 $srcdir/httpd.conf.zoneminder $pkgdir/usr/share/doc/$_pkgname
 
 }

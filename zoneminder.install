@@ -17,8 +17,8 @@ post_install() {
     # Use mod_mpm_prefork instead of mod_mpm_event.so (FS#39218).
     s|^LoadModule mpm_event_module modules/mod_mpm_event.so$|#&\nLoadModule mpm_prefork_module modules/mod_mpm_prefork.so|;
     
-    # Zoneminder requires cgi
-    \|^#LoadModule cgi_module modules/mod_cgi.so$| s|#||;
+    # Zoneminder needs Apache configured to permit CGI execution
+    \|^\t#LoadModule cgi_module modules/mod_cgi.so$| s|\t#|\t|;
     
     # libphp5
     \|^LoadModule php5_module modules/libphp5.so$|d;
