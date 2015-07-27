@@ -1,13 +1,17 @@
 pkgbase = mhonarc
 	pkgdesc = MHonArc is a Perl mail-to-HTML converter.
-	pkgver = 2.6.18
+	pkgver = 2.6.19
 	pkgrel = 1
 	url = http://www.mhonarc.org/
 	arch = any
 	license = GPL
-	depends = perl>=5.10.0
-	source = http://www.mhonarc.org/release/MHonArc/tar/MHonArc-2.6.18.tar.bz2
-	sha256sums = 4fd014cf69c40ae7d50a9dca519f279a09563004b200edb86b7c8c6f3e3fb534
+	depends = perl>=5.6.1
+	optdepends = perl-digest-perl-md5: creating IDs for messages without message-ids.
+	optdepends = perl-file-temp: more secure temp file management
+	optdepends = perl-mime-base64: efficient base64 decoding
+	optdepends = perl-posix-strftime-compiler: improved time string formatting
+	source = http://www.mhonarc.org/release/MHonArc/tar/MHonArc-2.6.19.tar.bz2
+	sha256sums = 08912eae8323997b940b94817c83149d2ee3ed11d44f29b3ef4ed2a39de7f480
 
 pkgname = mhonarc
 

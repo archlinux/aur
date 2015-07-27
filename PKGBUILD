@@ -6,22 +6,27 @@
 
 set -u
 pkgname='mhonarc'
-pkgver='2.6.18'
+pkgver='2.6.19'
 pkgrel='1'
 pkgdesc='MHonArc is a Perl mail-to-HTML converter.'
 license=('GPL')
 arch=('any')
-depends=('perl>=5.10.0')
+depends=('perl>=5.6.1')
+optdepends=(
+  'perl-digest-perl-md5: creating IDs for messages without message-ids.'
+  'perl-file-temp: more secure temp file management'
+  'perl-mime-base64: efficient base64 decoding'
+  'perl-posix-strftime-compiler: improved time string formatting'
+)
 source=("http://www.mhonarc.org/release/MHonArc/tar/MHonArc-${pkgver}.tar.bz2")
 url='http://www.mhonarc.org/'
 
-sha256sums=('4fd014cf69c40ae7d50a9dca519f279a09563004b200edb86b7c8c6f3e3fb534')
+sha256sums=('08912eae8323997b940b94817c83149d2ee3ed11d44f29b3ef4ed2a39de7f480')
 
 prepare() {
   set -u
   cd "${srcdir}/MHonArc-${pkgver}"
-  PERL_MM_USE_DEFAULT=1 perl 'Makefile.PL' INSTALLDIRS='vendor' \
-    PREFIX="${pkgdir}/usr/"
+  PERL_MM_USE_DEFAULT=1 perl 'Makefile.PL' INSTALLDIRS='vendor' PREFIX="${pkgdir}/usr/"
   set +u
 }
 
