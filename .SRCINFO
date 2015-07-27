@@ -1,8 +1,8 @@
 pkgbase = ptii-git
 	pkgdesc = CLI-like environment to interact with ii (irc it) -- git version
-	pkgver = 1.0.0
+	pkgver = v0.4.r1.gc00e275
 	pkgrel = 1
-	url = https://gitorious.org/stii/ptii
+	url = http://blog.z3bra.org/2014/03/toolbox.html#ptii
 	arch = x86_64
 	arch = i686
 	license = WTFPL
@@ -11,6 +11,8 @@ pkgbase = ptii-git
 	optdepends = multitail
 	conflicts = ptii-dumb
 	replaces = ptii-dumb
+	source = ptii-git::git://z3bra.org/ptii
+	sha512sums = SKIP
 
 pkgname = ptii-git
 
