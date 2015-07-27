@@ -1,0 +1,12 @@
+
+ChangeLog for PGPlot PKGBUILD
+
+* pgplot-5.2.2-7 (2015-05-09 - AstroFloyd)
+	Hijacked package from jmorin (last version is 3 years old)
+	Split build in build() and package() (install) parts
+	Link to X11 using the -lX11 flag
+	Added ChangeLog
+
+* pgplot-5.2.2-6 (2012-09-20 - jmorin)
+	Last version from AUR3, hijacked by AstroFloyd for AUR4
+

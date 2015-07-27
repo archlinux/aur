@@ -1,8 +1,9 @@
 pkgbase = pgplot
 	pkgdesc = Fortran- or C-callable, device-independent graphics package for making simple scientific graphs.
 	pkgver = 5.2.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.astro.caltech.edu/~tjp/pgplot/
+	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	license = custom
