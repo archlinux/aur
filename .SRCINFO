@@ -1,6 +1,6 @@
 pkgbase = php7
 	pkgver = 7.0.0beta2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -46,127 +46,127 @@ pkgname = php7
 	depends = libxml2
 	depends = curl
 	depends = libzip
-	provides = php
+	provides = php=7.0.0beta2
 	conflicts = php
 	backup = etc/php/php.ini
 
 pkgname = php7-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
-	depends = php
-	provides = php-cgi
+	depends = php=7.0.0beta2
+	provides = php-cgi=7.0.0beta2
 	conflicts = php-cgi
 
 pkgname = php7-apache
 	pkgdesc = Apache SAPI for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = apache
-	provides = php-apache
+	provides = php-apache=7.0.0beta2
 	conflicts = php-apache
 	backup = etc/httpd/conf/extra/php7_module.conf
 
 pkgname = php7-fpm
 	pkgdesc = FastCGI Process Manager for PHP
 	install = php-fpm.install
-	depends = php
+	depends = php=7.0.0beta2
 	depends = systemd
-	provides = php-fpm
+	provides = php-fpm=7.0.0beta2
 	conflicts = php-fpm
 	backup = etc/php/php-fpm.conf
 
 pkgname = php7-embed
 	pkgdesc = Embedded PHP SAPI library
-	depends = php
-	provides = php-embed
+	depends = php=7.0.0beta2
+	provides = php-embed=7.0.0beta2
 	conflicts = php-embed
 
 pkgname = php7-phpdbg
 	pkgdesc = Interactive PHP debugger
-	depends = php
-	provides = php-phpdbg
+	depends = php=7.0.0beta2
+	provides = php-phpdbg=7.0.0beta2
 	conflicts = php-phpdbg
 
 pkgname = php7-enchant
 	pkgdesc = enchant module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = enchant
-	provides = php-enchant
+	provides = php-enchant=7.0.0beta2
 	conflicts = php-enchant
 
 pkgname = php7-gd
 	pkgdesc = gd module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = gd
-	provides = php-gd
+	provides = php-gd=7.0.0beta2
 	conflicts = php-gd
 
 pkgname = php7-intl
 	pkgdesc = intl module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = icu
-	provides = php-intl
+	provides = php-intl=7.0.0beta2
 	conflicts = php-intl
 
 pkgname = php7-ldap
 	pkgdesc = ldap module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = libldap
-	provides = php-ldap
+	provides = php-ldap=7.0.0beta2
 	conflicts = php-ldap
 
 pkgname = php7-mcrypt
 	pkgdesc = mcrypt module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = libmcrypt
 	depends = libltdl
-	provides = php-mcrypt
+	provides = php-mcrypt=7.0.0beta2
 	conflicts = php-mcrypt
 
 pkgname = php7-odbc
 	pkgdesc = ODBC modules for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = unixodbc
-	provides = php-odbc
+	provides = php-odbc=7.0.0beta2
 	conflicts = php-odbc
 
 pkgname = php7-pgsql
 	pkgdesc = PostgreSQL modules for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = postgresql-libs
-	provides = php-pgsql
+	provides = php-pgsql=7.0.0beta2
 	conflicts = php-pgsql
 
 pkgname = php7-pspell
 	pkgdesc = pspell module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = aspell
-	provides = php-pspell
+	provides = php-pspell=7.0.0beta2
 	conflicts = php-pspell
 
 pkgname = php7-snmp
 	pkgdesc = snmp module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = net-snmp
-	provides = php-snmp
+	provides = php-snmp=7.0.0beta2
 	conflicts = php-snmp
 
 pkgname = php7-sqlite
 	pkgdesc = sqlite module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = sqlite
-	provides = php-sqlite
+	provides = php-sqlite=7.0.0beta2
 	conflicts = php-sqlite
 
 pkgname = php7-tidy
 	pkgdesc = tidy module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = tidyhtml
-	provides = php-tidy
+	provides = php-tidy=7.0.0beta2
 	conflicts = php-tidy
 
 pkgname = php7-xsl
 	pkgdesc = xsl module for PHP
-	depends = php
+	depends = php=7.0.0beta2
 	depends = libxslt
-	provides = php-xsl
+	provides = php-xsl=7.0.0beta2
 	conflicts = php-xsl
 
