@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A user-friendly color wheel widget and dialog for Qt'
 arch=('i686' 'x86_64')
 url='https://github.com/mbasaglia/Qt-Color-Picker'
-license=('LGPLv3+')
+license=('LGPL3')
 depends=('qt5-base')
 makedepends=('git')
 source=("${pkgname}::git+git://github.com/mbasaglia/Qt-Color-Picker.git")
@@ -21,13 +21,12 @@ pkgver() {
 build() {
 	cd $pkgname
 
-	eval "qmake-${pkgname:0:3} PREFIX=/usr"
+	eval "qmake-${pkgname:0:3} PREFIX=${pkgdir}/usr"
 	make
 }
 
 package() {
 	cd $pkgname
 
-	make install
+	make DESTDIR="$pkgdir" install
 }
-
