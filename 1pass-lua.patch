@@ -1,0 +1,23 @@
+diff -ruN 1pass.orig/1pass.c 1pass/1pass.c
+--- 1pass.orig/1pass.c	2015-07-28 00:37:11.632823556 +0300
++++ 1pass/1pass.c	2015-07-28 00:39:28.541184169 +0300
+@@ -579,7 +579,7 @@
+     lua_setglobal(luaState, "argv");
+
+     // Transfer control to Lua...
+-    if (luaL_dofile(luaState, "1pass.lua") != 0)
++    if (luaL_dofile(luaState, "/usr/share/1pass/1pass.lua") != 0)
+         luaFatal(luaState);
+
+
+diff -ruN 1pass.orig/1pass.lua 1pass/1pass.lua
+--- 1pass.orig/1pass.lua	2015-07-28 00:37:11.632823556 +0300
++++ 1pass/1pass.lua	2015-07-28 00:39:09.941860109 +0300
+@@ -1,5 +1,5 @@
+-JSON = (loadfile "JSON.lua")()
+-dofile("dumptable.lua")
++JSON = (loadfile "/usr/share/1pass/JSON.lua")()
++dofile("/usr/share/1pass/dumptable.lua")
+
+ local basedir = "1Password/1Password.agilekeychain/data/default"  -- !!! FIXME
+ local password = argv[2]

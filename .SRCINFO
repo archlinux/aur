@@ -1,0 +1,18 @@
+pkgbase = 1pass-hg
+	pkgdesc = 1Password-compatible password management tool for Linux
+	pkgver = r44.2150bce729df
+	pkgrel = 1
+	url = https://www.icculus.org/1pass/
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = mercurial
+	depends = gtk2
+	depends = libxtst
+	source = hg+http://hg.icculus.org/icculus/1pass/
+	source = 1pass-lua.patch
+	md5sums = SKIP
+	md5sums = 99554d513fc3cb2e7861544455678d91
+
+pkgname = 1pass-hg
+
