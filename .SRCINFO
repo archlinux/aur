@@ -1,7 +1,7 @@
 pkgbase = python-pygal
 	pkgdesc = A Python SVG graph plotting library
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 0
 	epoch = 1
 	url = http://pygal.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-pygal
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/pygal/pygal-1.7.0.tar.gz
-	md5sums = fee7a4d2d5ba65dc9507e8c5de7d1da6
+	source = https://pypi.python.org/packages/source/p/pygal/pygal-2.0.0.tar.gz
+	md5sums = d87c7f6d4b9900b8889f7f98475bb68c
 
 pkgname = python-pygal
 	depends = python
