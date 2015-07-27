@@ -1,0 +1,19 @@
+
+ChangeLog for libSUFR PKGBUILD
+http://libsufr.sourceforge.net/
+
+* libsufr-0.6.5-1 (2015-05-23 - AstroFloyd)
+	Version bump to v0.6.5
+
+* libsufr-0.6.4-1 (2015-05-09 - AstroFloyd)
+	Version bump to v0.6.4
+
+* libsufr-0.6.3-2 (2015-04-28 - AstroFloyd)
+	Added cmake as a make dependency
+
+* libsufr-0.6.3-1 (2015-04-26 - AstroFloyd)
+	Version bump to v0.6.3
+
+* libsufr-0.6.2-1 (2015-01-17 - AstroFloyd)
+	Initial PKGBUILD for libSUFR v0.6.2, to be uploaded to AUR
+
