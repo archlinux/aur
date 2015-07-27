@@ -1,17 +1,17 @@
 _npmname=babel
-_npmver=5.5.8
+_npmver=5.8.9
 pkgname=nodejs-babel # All lowercase
-pkgver=5.5.8
+pkgver=5.8.9
 pkgrel=1
 pkgdesc="Turn ES6 code into readable vanilla ES5 with source maps"
 arch=(any)
 url="https://babeljs.io/"
 license=()
-depends=('nodejs' )
+depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('b0624ae3a0fc8c8224802557e356bb440c39ab8a')
+sha1sums=('e62d271fe3e6bc264da71c094364207e42db23d9')
 
 package() {
   cd $srcdir
