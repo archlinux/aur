@@ -1,0 +1,14 @@
+pkgbase = joomla
+	pkgdesc = A PHP-based content management platform
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = http://www.joomla.org/
+	install = joomla.install
+	arch = any
+	license = GPL
+	depends = php
+	source = http://joomlacode.org/gf/download/frsrelease/20021/162258/Joomla_3.4.1-Stable-Full_Package.zip
+	sha256sums = ec6a17242e9f5bd1e0388a590ddaa31c2bde0f36254f3cc90e3f95f170ab6cba
+
+pkgname = joomla
+
