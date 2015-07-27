@@ -1,0 +1,16 @@
+pkgbase = ptii-git
+	pkgdesc = CLI-like environment to interact with ii (irc it) -- git version
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitorious.org/stii/ptii
+	arch = x86_64
+	arch = i686
+	license = WTFPL
+	makedepends = git
+	depends = ii
+	optdepends = multitail
+	conflicts = ptii-dumb
+	replaces = ptii-dumb
+
+pkgname = ptii-git
+
