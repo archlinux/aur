@@ -22,8 +22,8 @@ package() {
   mkdir -p ${pkgdir}/usr/share/pixmaps
 
   cp -rf . ${pkgdir}/opt
-  ln -s ${pkgdir}/opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
-  install -m 0644 geppetto.desktop "${pkgdir}/usr/share/applications/"
+  install -m 0644 ${srcdir}/geppetto.desktop "${pkgdir}/usr/share/applications/"
   install -Dm 0644 ${srcdir}/${pkgname}/icon.xpm "${pkgdir}/usr/share/pixmaps/geppetto.xpm"
 }
