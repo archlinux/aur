@@ -3,7 +3,7 @@
 pkgname=khard-git
 _gitname=khard
 pkgver=0.4.1.r1.g8a206ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Console carddav client"
 license=("GPL3")
 url="https://github.com/scheibler/khard/"
@@ -31,8 +31,7 @@ package() {
   cd "$srcdir/${_gitname}/"
   python2 setup.py install --root=$pkgdir
   install -Dm 644 khard.conf.example "${pkgdir}/etc/skel/khard.conf"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/khard/LICENSE"
-  install -Dm 644 AUTHORS "${pkgdir}/usr/share/licenses/khard/AUTHORS"
+  install -Dm 644 AUTHORS "${pkgdir}/usr/share/doc/khard/AUTHORS"
   install -Dm 644 CHANGES "${pkgdir}/usr/share/doc/khard/CHANGES"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/khard/README.md"
 }
