@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-bitcoin
-pkgver=1.1.33
+pkgver=1.1.35
 pkgrel=1
 pkgdesc="Python Bitcoin Tools"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/vbuterin/pybitcointools"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/b/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
-md5sums=('02797eca548c91d3b269a9de433d2f59')
-sha256sums=('72471b71575b80f7c767c3d643893416c50efbd8061192c14dced518e1c1ea12')
+md5sums=('573a3300599f5caa8ec25b5fc9f54b96')
+sha256sums=('cbb0648085f7273075d8aef12ee97d539253b879c5128aa0572f68cbfdaa4a37')
 provides=('pybitcointools' 'pybtctool' 'python-bitcoin' 'python-pybitcointools')
 conflicts=('pybitcointools' 'pybtctool' 'python-pybitcointools' 'python-python-bitcoinlib')
 
