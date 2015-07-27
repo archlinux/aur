@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GitExtensions
+Comment=Graphical user interface for Git that allows you control Git without using the commandline.
+Exec=gitextensions
+Icon=/usr/share/pixmaps/gitextensions.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development;RevisionControl;
