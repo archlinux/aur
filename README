@@ -47,7 +47,7 @@ export ANT_ROOT=/usr/bin
    ../bin/debug/linux/MyGame
    
 
- * Personnal preference :
+ * Personnal preference (working on 3.5, to adujst if necessary) :
    You can edit myapp/CMakeLists.txt to adjust personnal preference
    (and speed up compile time, avoiding unnecessary things)
    Here my personnal customisation :
