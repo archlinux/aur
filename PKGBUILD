@@ -16,7 +16,7 @@ depends=('python2-feedparser')
 optdepends=('python2-tidylib: cleaner html output')
 install=$pkgname.install
 source=(http://offog.org/files/$pkgname-$pkgver.tar.gz)
-sha256sums=('0a63b26cc111b0deca441f498177b49be0330760c5c0e24584cdb9ba1e7fd5a6')
+sha256sums=('6000c14285e4bb65b606a5315f6423daa0ac6db4fd4124b4a112fa0bce3abf38')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
