@@ -3,7 +3,7 @@
 pkgname=z88dk
 pkgver=1.10.1
 _pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A small C compiler for the Zilog Z80."
 arch=('i686' 'x86_64')
 url="http://z88dk.org"
@@ -13,7 +13,7 @@ backup=(etc/profile.d/z88dk.sh)
 source=(http://downloads.sourceforge.net/project/z88dk/z88dk/${_pkgver}/${pkgname}-${pkgver}.tgz
         z88dk.sh)
 md5sums=('7898bc04f9e5275845d6117cafa74096'
-         'affe59b56fbba4d6a145f899bb073227')
+         'a7d56837ef0cc9fbb05d2e21ddcc335c')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -31,9 +31,6 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   make prefix="/usr" DESTDIR="${pkgdir}" install
-
-  echo "export ZCCCFG=/usr/share/z88dk/lib/config/" > ${pkgdir}/usr/share/z88dk/exports
-  echo "export Z80_OZFILES=/usr/share/z88dk/lib/" >> ${pkgdir}/usr/share/z88dk/exports
 
   install -dm755 ${pkgdir}/etc/profile.d/
   install -m755 ${srcdir}/z88dk.sh ${pkgdir}/etc/profile.d/
