@@ -1,0 +1,13 @@
+pkgbase = sbd
+	pkgdesc = Netcat-clone, portable, offers strong encryption - features AES-128-CBC + HMAC-SHA1 encryption, program execution (-e), choosing source port, continuous reconnection with delay + more
+	pkgver = 1.36
+	pkgrel = 2
+	url = https://packetstormsecurity.com/UNIX/netcat/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://dl.packetstormsecurity.net/UNIX/netcat/sbd-1.36.tar.gz
+	sha256sums = a15ce468e7e04cc12fe2686e0a44e1201d7c67986681d51e255cba9362ab0676
+
+pkgname = sbd
+
