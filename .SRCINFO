@@ -1,0 +1,21 @@
+pkgbase = autopass-git
+	pkgdesc = a rofi frontend for pass
+	pkgver = 0.r2.0ac233a
+	pkgrel = 3
+	url = https://github.com/jreinert/autopass
+	arch = any
+	makedepends = git
+	depends = ruby
+	depends = pass
+	depends = rofi
+	depends = xdotool
+	depends = xorg-xwininfo
+	depends = libnotify
+	depends = xclip
+	provides = autopass
+	conflicts = autopass
+	source = autopass-git::git+https://github.com/jreinert/autopass.git
+	sha512sums = SKIP
+
+pkgname = autopass-git
+
