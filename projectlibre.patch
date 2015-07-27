@@ -1,5 +1,5 @@
---- projectlibre.sh.orig	2015-06-29 23:31:20.000000000 +0800
-+++ projectlibre.sh	2015-07-27 17:32:34.634725865 +0800
+--- projectlibre-1.6.1/projectlibre.sh	2015-06-29 23:31:20.000000000 +0800
++++ projectlibre-1.6.1/projectlibre.sh.new	2015-07-27 17:32:34.634725865 +0800
 @@ -52,9 +52,9 @@
  CONF_DIR="$HOME/.projectlibre"
  RUN_CONF="$CONF_DIR/run.conf"

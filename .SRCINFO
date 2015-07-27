@@ -1,7 +1,7 @@
 pkgbase = projectlibre
 	pkgdesc = ProjectLibre is an open source project management software
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.projectlibre.org
 	install = projectlibre.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = projectlibre
 	md5sums = 48e5848144b73028f4cf81b2a051f8b0
 	md5sums = cbeee50a6324b473c17899616f3effbd
 	md5sums = e93fab66e95915aaf9ef204d914b6e9f
-	md5sums = b86cc37623fbb44c734de981a6fd7690
+	md5sums = 5c242f5e1fbdb2e399b584520065f2a8
 	md5sums = 78bb62198c864aa6ac7a103c044f5b56
 
 pkgname = projectlibre
