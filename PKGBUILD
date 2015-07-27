@@ -1,4 +1,5 @@
-# Maintainer: Daniel Renninghoff <renninghoff at archlinux dot info>
+# Maintainer: João Raimundo <joao.raimundo@gmail.com>
+# Contributor: Daniel Renninghoff <renninghoff at archlinux dot info>
 # Contributor: Carl George <carl at carlgeorge dot us>
 pkgname=mint-themes
 pkgver=3.14_8
