@@ -1,0 +1,25 @@
+pkgbase = scantailor-featured-git
+	pkgdesc = Interactive post-processing tool for scanned pages (featured branch)
+	pkgver = 0.9.11.59.g84e16df
+	pkgrel = 1
+	url = https://github.com/scantailor/scantailor
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = qt4
+	depends = libjpeg
+	depends = zlib
+	depends = libpng
+	depends = libtiff
+	depends = libxrender
+	depends = desktop-file-utils
+	depends = xdg-utils
+	conflicts = scantailor
+	source = git://github.com/scantailor/scantailor.git#branch=featured
+	md5sums = SKIP
+
+pkgname = scantailor-featured-git
+
