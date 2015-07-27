@@ -1,0 +1,12 @@
+--- Godeps/Godeps.json	2015-07-22 13:52:58.000000000 +0200
++++ Godeps/Godeps.json	2015-07-28 15:48:50.470567645 +0200
+@@ -18,8 +18,7 @@
+ 			"Rev": "6ba91e24c498b49d0363c723e9e2ab2b5b8fd012"
+ 		},
+ 		{
+-			"ImportPath": "github.com/ayufan/golang-kardianos-service",
+-			"Rev": "d114a4d2061938adacad90dc698e9214e3ff69e9"
++			"ImportPath": "github.com/ayufan/golang-kardianos-service"
+ 		},
+ 		{
+ 			"ImportPath": "github.com/codegangsta/cli",

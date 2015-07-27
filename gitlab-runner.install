@@ -1,0 +1,7 @@
+post_install() {
+	systemd-sysusers gitlab-runner.conf
+	systemd-tmpfiles --create gitlab-runner.conf
+	echo "Register the runner as root using $ gitlab-ci-multi-runner register"
+	echo "Configure the runner in /etc/gitlab-runner/config.toml"
+	echo "Use gitlab-runner.service to control the runner"
+}
