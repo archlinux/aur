@@ -23,12 +23,3 @@
  OPENPROJ_HOME="$OPENPROJ_HOME0"
  LOG_LEVEL="DEBUG"
  LOG_FILE="/dev/null"
-@@ -113,7 +113,7 @@
- 	"$JAVA_EXE" -version > "$VERSION_FILE" 2>&1 || rm -f "$VERSION_FILE"
- 
- 	if [ -r "$VERSION_FILE" ]; then
--		JAVA_VERSION=`cat "$VERSION_FILE" | head -n 1 | awk '{ print substr($3, 2, length($3)-2); }'`
-+		JAVA_VERSION=`grep -i 'java version' "$VERSION_FILE" | awk '{ print substr($3, 2, length($3)-2); }'`
- 		if [ "x$OS_NAME" = "xSunOS" ]; then
- 			echo "    Java version: $JAVA_VERSION \c"
- 		else
