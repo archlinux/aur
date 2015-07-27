@@ -1,3 +1,4 @@
+# Maintainer: Alexander Minges <alexander.minges@gmail.com>
 # Contributor: Antonio Lucas <antonioluccas@gmail.com>
 pkgname=python2-tidylib
 _realname=pytidylib
