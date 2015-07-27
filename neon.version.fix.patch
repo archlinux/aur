@@ -1,0 +1,14 @@
+diff -aur subversion-1.6.17/configure subversion-1.6.17-patched/configure
+--- subversion-1.6.17/configure	2014-08-29 10:56:04.195937000 +0200
++++ subversion-1.6.17-patched/configure	2014-08-29 10:59:02.868437787 +0200
+@@ -5171,8 +5171,8 @@
+ 
+ # Either a space-separated list of allowable Neon versions, or "any" to
+ # mean allow anything.
+-NEON_ALLOWED_LIST="0\.25 0\.26 0\.27\.2 0\.28 0\.29"
+-NEON_RECOMMENDED_VER="0.29.0"
++NEON_ALLOWED_LIST="0\.25 0\.26 0\.27\.2 0\.28 0\.29 0\.30"
++NEON_RECOMMENDED_VER="0.30.0"
+ NEON_URL="http://www.webdav.org/neon/neon-${NEON_RECOMMENDED_VER}.tar.gz"
+ # Check whether --enable-neon-version-check was given.
+ if test "${enable_neon_version_check+set}" = set; then :
