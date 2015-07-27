@@ -1,0 +1,19 @@
+pkgbase = megafuse-git
+	pkgdesc = Mount your MEGA cloud storage with fuse
+	pkgver = r144.7285184
+	pkgrel = 1
+	url = https://github.com/matteoserva/MegaFuse
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = crypto++
+	depends = freeimage
+	depends = fuse
+	provides = megafuse
+	conflicts = megafuse
+	source = git://github.com/matteoserva/MegaFuse.git
+	md5sums = SKIP
+
+pkgname = megafuse-git
+
