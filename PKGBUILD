@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 source=("http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTOBUCH.tgz" 
 "cewe-fotobuch.desktop")
 install=cewe-fotobuch.install
-md5sums=('9f66120c74bd43701d1b6e639a10dac1'
+md5sums=('dbda60281fcff0a2c312156dece069e5'
          '481ac82e95881d2878da3973d29095f6')
 
 _KEYACCID=16523
