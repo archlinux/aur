@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-weather-widget-git
 _pkgname=plasma5-applets-weather-widget
 _gitpkgname=plasma-applet-weather-widget
-pkgver=r24.745b8fb
+pkgver=r25.d2b79f2
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Shows weather information from yr.no server."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/kotelnik/$_gitpkgname"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('git' 'extra-cmake-modules')
-conflicts=("${_pkgname-*}")
+conflicts=("${_pkgname-*}" 'plasma-applet-weather-widget-git')
 provides=("${_pkgname-*}")
 source=("git://github.com/kotelnik/$_gitpkgname.git")
 md5sums=('SKIP')

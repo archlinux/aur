@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-weather-widget-git
 	pkgdesc = Plasmoid for Plasma 5. Shows weather information from yr.no server.
-	pkgver = r24.745b8fb
+	pkgver = r25.d2b79f2
 	pkgrel = 1
 	url = https://github.com/kotelnik/plasma-applet-weather-widget
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = plasma5-applets-weather-widget-git
 	depends = qt5-graphicaleffects
 	provides = plasma5-applets-weather-widget
 	conflicts = plasma5-applets-weather-widget
+	conflicts = plasma-applet-weather-widget-git
 	source = git://github.com/kotelnik/plasma-applet-weather-widget.git
 	md5sums = SKIP
 
