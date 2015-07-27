@@ -8,7 +8,7 @@ pkgdesc="JWasm fork (git) PKGBUILD file."
 url="http://jwasm.info"
 arch=('x86_64' 'i686')
 license=('SOWPL')
-depends=('git' 'sed')
+depends=('git')
 optdepends=()
 makedepends=()
 provides=("$_pkgname")
@@ -31,5 +31,5 @@ build() {
 package() {
 	cd "${srcdir}/$_pkgname"
 	install -Dm644 License.txt "${pkgdir}/usr/share/licenses/$_pkgname/LICENSE"
-	install -Dm755 GccUnixR/jwasm "${pkgdir}/usr/local/bin/jwasm"
+	install -Dm755 GccUnixR/jwasm "${pkgdir}/usr/bin/jwasm"
 }

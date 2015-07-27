@@ -9,7 +9,6 @@ pkgbase = jwasm-git
 	arch = i686
 	license = SOWPL
 	depends = git
-	depends = sed
 	provides = jwasm
 	conflicts = jwasm
 	source = jwasm::git+https://github.com/jwasm/jwasm.git
