@@ -1,7 +1,6 @@
-# Maintainer: mojangsta <mojangsta at archlinux bbs>
+# Maintainer: mojangsta <steamco/id/mojangsta>
 pkgname=pipexec-git
-_pkgname=pipexec
-pkgver=2.5.2.g05abf3c
+pkgver=2.5.4.g5e524f3
 pkgrel=1
 pkgdesc="Handling pipe of commands like a single command"
 arch=('any')
@@ -12,6 +11,7 @@ makedepends=('git')
 provides=('pipexec')
 source=(git://github.com/flonatel/pipexec.git)
 md5sums=(SKIP)
+_pkgname=pipexec
 
 pkgver() {
   cd "$_pkgname"
@@ -20,9 +20,6 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-# deprecated macros fuck up our build thanks to -Werror
-# PKGBUILD:23:21: notice: pardon my french [-Wno-swearing]
-  sed -i 's/_BSD_SOURCE/_DEFAULT_SOURCE/' src/pipexec.c
   ./build/init_autotools.sh
   ./configure --prefix=/usr --disable-static
   make

@@ -1,6 +1,6 @@
 pkgbase = pipexec-git
 	pkgdesc = Handling pipe of commands like a single command
-	pkgver = 2.5.2.g05abf3c
+	pkgver = 2.5.4.g5e524f3
 	pkgrel = 1
 	url = http://github.com/flonatel/pipexec
 	arch = any
