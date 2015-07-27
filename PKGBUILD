@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <chris@chrisarndt.de>
 
 pkgname=tracktion-6
-pkgver=6.1.10
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="Commercial Proprietary Music Production Software"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 	'Tracktion6.desktop'
 	)
 install="tracktion.install"
-md5sums=('fdce8646697d434c51daa2617911ffcd'
+md5sums=('f8882af3d19142bce91f47a016cba4ae'
          'd7bac73a1a52d26b337761a1d7ec561d'
          'a6ef58fb9f98f01bb23a54d7ce97f678')
 
