@@ -13,7 +13,7 @@ optdepends=('linux-fbcondecor: enable console background images'
 conflicts=('fbsplash-scripts' 'initscripts-extras-fbsplash')
 install=$pkgname.install
 source=('fbcondecor.service')
-md5sums=('b901542b88887c7ff58de6cf9147842b')
+md5sums=('2f163a31fc8b69801103a4b64bd9798b')
 
 package() {
   msg2 "Installing fbcondecor.service for systemd support.."

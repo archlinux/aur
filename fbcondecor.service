@@ -3,10 +3,12 @@ Description=fbcondecor console decoration service
 After=systemd-user-sessions.service
 
 [Service]
+Type=simple
 ExecStart=/etc/rc.d/fbcondecor start
 ExecStop=/etc/rc.d/fbcondecor stop
 RemainAfterExit=yes
 Restart=on-failure
 
 [Install]
+WantedBy=multi-user.target
 Alias=fbcondecor.service
