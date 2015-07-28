@@ -1,0 +1,12 @@
+pkgbase = emerald-equinox-themes
+	pkgdesc = Equinox emerald themes
+	pkgver = 20100324
+	pkgrel = 1
+	url = http://liliumcruentus.deviantart.com/art/Equinox-emerald-theme-158297377
+	arch = any
+	depends = emerald
+	source = http://www.deviantart.com/download/158297377/_Equinox_emerald_theme__by_liliumcruentus.zip
+	md5sums = 2a735f65bff70efc607142dcfca40fff
+
+pkgname = emerald-equinox-themes
+
