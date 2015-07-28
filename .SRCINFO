@@ -1,0 +1,18 @@
+pkgbase = python-flask-kvsession
+	pkgdesc = Transparent server-side session support for flask
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/mbr/flask-kvsession
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/F/Flask-KVSession/Flask-KVSession-0.6.2.tar.gz
+	md5sums = 5428bd11f623febab4ccbc5d3dafd59c
+
+pkgname = python2-flask-kvsession
+	depends = python2
+
+pkgname = python-flask-kvsession
+	depends = python
+
