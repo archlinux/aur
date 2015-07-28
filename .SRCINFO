@@ -1,6 +1,6 @@
 pkgbase = ucsc-kent-genome-tools
 	pkgdesc = UCSC genome browser 'kent' bioinformatic utilities
-	pkgver = 316
+	pkgver = 319
 	pkgrel = 1
 	url = http://hgdownload.soe.ucsc.edu/admin/exe/
 	install = ucsc-kent-genome-tools.install
@@ -10,8 +10,8 @@ pkgbase = ucsc-kent-genome-tools
 	depends = mariadb-clients
 	depends = libpng
 	depends = openssl
-	source = http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v316.src.tgz
-	sha1sums = b9eddc7e7bce7d3f6a2b09d06175b9ebee776764
+	source = http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v319.src.tgz
+	sha1sums = 458eea638706c071e7044c02d175a56407da4913
 
 pkgname = ucsc-kent-genome-tools
 
