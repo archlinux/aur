@@ -1,0 +1,15 @@
+pkgbase = ledgerhub-hg
+	pkgdesc = Import of financial data files for double-entry bookkeeping languages
+	pkgver = r267.ccd537df98f1
+	pkgrel = 1
+	url = http://furius.ca/ledgerhub/
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	depends = beancount-hg
+	depends = python-beautifulsoup4
+	source = ledgerhub-hg::hg+https://bitbucket.org/blais/ledgerhub/
+	sha512sums = SKIP
+
+pkgname = ledgerhub-hg
+
