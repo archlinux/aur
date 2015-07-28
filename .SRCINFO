@@ -1,0 +1,14 @@
+pkgbase = dockbarx-shinybar-theme
+	pkgdesc = Windows 7-like theme for DockBarX
+	pkgver = 1.3.1
+	pkgrel = 2
+	url = http://levviathor.deviantart.com/art/Shinybar1-3-for-DockbarX-135875506
+	arch = any
+	groups = dockbarx-themes
+	license = cc-by-sa
+	depends = dockbarx
+	source = http://fc05.deviantart.net/fs71/f/2010/165/2/9/Shinybar1_3_1_for_DockbarX_by_Levviathor.zip
+	md5sums = 7e462d64034fe68d98ed6fabd181a2ac
+
+pkgname = dockbarx-shinybar-theme
+
