@@ -8,22 +8,22 @@ pkgdesc="Eclipse customized version for Puppet"
 url="http://puppetlabs.github.io/geppetto/index.html"
 source=("https://downloads.puppetlabs.com/geppetto/4.x/geppetto-linux.gtk.${arch}-${pkgver}-${_pkgrev}.zip"
         "geppetto.desktop")
-license=("Apache" "EPL")
+license=("Apache")
 options=('!strip')
 md5sums=('853986a1b86c880008cb46f469b5f48d'
          '5f70f7436790c399b192a01fea3cc29e')
 
 package() {
-  cd ${srcdir}
+#  cd ${srcdir}
 
-  mkdir -p ${pkgdir}/opt
+  mkdir -p ${pkgdir}/opt/${pkgname}
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/share/applications
   mkdir -p ${pkgdir}/usr/share/pixmaps
 
-  cp -rf . ${pkgdir}/opt
-  ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  cp -rf ${srcdir}/${pkgname} ${pkgdir}/opt/
+  ln -s ${pkgdir}/opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
-  install -m 0644 ${srcdir}/geppetto.desktop "${pkgdir}/usr/share/applications/"
+  install -m 0644 geppetto.desktop "${pkgdir}/usr/share/applications/"
   install -Dm 0644 ${srcdir}/${pkgname}/icon.xpm "${pkgdir}/usr/share/pixmaps/geppetto.xpm"
 }
