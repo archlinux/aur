@@ -1,7 +1,7 @@
 pkgbase = sdl2-jstest-git
 	pkgdesc = Simple SDL joystick test application for the command line.
 	pkgver = 35.3f54b86
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Grumbel/sdl-jstest
 	install = sdl2-jstest-git.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sdl2-jstest-git
 	license = GPLv3 or any later version
 	makedepends = git
 	makedepends = cmake
-	depends = sdl
+	depends = sdl2
 	depends = ncurses
 	depends = docbook2x
 	provides = sdl2-jstest
