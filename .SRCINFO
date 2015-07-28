@@ -1,22 +1,22 @@
 pkgbase = wingide
 	pkgdesc = Wing IDE Professional is the full-featured Python IDE for professional programmers.
-	pkgver = 5.1.4
-	pkgrel = 2
+	pkgver = 5.1.5
+	pkgrel = 1
 	url = http://www.wingware.com
 	install = wingide.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = hicolor-icon-theme
-	depends = libpng12
+	depends = libpng
 	depends = python2
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source_i686 = http://wingware.com/pub/wingide/5.1.4/wingide-5.1.4-1-i386-linux.tar.gz
-	md5sums_i686 = 1417a9ea4ecc33b0380ba29f5db5c759
-	source_x86_64 = http://wingware.com/pub/wingide/5.1.4/wingide-5.1.4-1-x86_64-linux.tar.gz
-	md5sums_x86_64 = d3945cf39f3d6088e4d87bcf310540a8
+	source_i686 = http://wingware.com/pub/wingide/5.1.5/wingide-5.1.5-1-i386-linux.tar.gz
+	md5sums_i686 = a5cfa7e893eb9a44cde19eb920ea79fb
+	source_x86_64 = http://wingware.com/pub/wingide/5.1.5/wingide-5.1.5-1-x86_64-linux.tar.gz
+	md5sums_x86_64 = a72d36891b71915ad433836e1fcd57d4
 
 pkgname = wingide
 
