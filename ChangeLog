@@ -1,10 +1,10 @@
-2013-05-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2013-05-07 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.5_04-2
 	Split the build() function into prepare() and package().
 	Added note about supported Minecraft version to description.
 
-2013-04-09 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2013-04-09 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.5_04-1
 	Version bump.
@@ -12,7 +12,7 @@
 	Upstream changelog:
 	- Fix a crash with Better Than Wolves 4.65b
 
-2013-04-02 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2013-04-02 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.5_03-1
 	First release of the package as "mcpatcher2".
@@ -21,12 +21,12 @@
 	Version bump.
 	Moved mcpatcher and mcpatcher.desktop back into the package itself.
 
-2012-01-10 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-01-10 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.5_02-2 :
 	Moved mcpatcher and mcpatcher.desktop to archive hosted on BitBucket.
 
-2012-01-10 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-01-10 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.5_02-1 :
 	Version bump.
@@ -35,7 +35,7 @@
 	- Fix custom water/sky colors with forge.
 	- 13w01a compatibility.
 
-2012-12-31 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-12-31 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.5_01-1 :
 	Version bump.
@@ -46,7 +46,7 @@
 	- Custom compass lighting fix.
 	- Possible fix for missing TexturePackAPI$ChangeHandler.class.
 
-2012-12-25 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-12-25 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.5 :
 	Version bump.
@@ -67,7 +67,7 @@
 	- Support for resizing the BTW stoked fire animation.
 	- Project moved to Bitbucket.org.
 
-2012-12-13 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-12-13 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.4-1 :
 	Version bump.
@@ -80,7 +80,7 @@
 	- Fixed Watch tile size patch conflict with Forge.
 	- Improved logging system.
 
-2012-11-15 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-11-15 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.3_04-1 :
 	Version bump.
@@ -89,33 +89,33 @@
 	- 1.4.4 compatibility.
 	- Added connect=material.
 
-2012-11-04 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-11-04 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.3_03-1 :
 	Version bump.
 
-2012-10-26 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-10-26 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.3_02-1 :
 	Version bump.
 
-2012-10-02 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-10-02 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.3_01-1 :
 	Version bump.
 
-2012-09-28 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-09-28 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.3-2 :
 	Added icon to the desktop menu entry.
 
-2012-09-28 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-09-28 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.3-1 :
 	Version bumped.
 	The .desktop now calls Java directly.
 
-2012-09-19 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-09-19 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 2.4.2_03-2 :
 	Added a ChangeLog file for the PKGBUILD. :)

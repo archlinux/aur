@@ -1,5 +1,5 @@
 # Contributor: Constantin Schomburg <me@xconstruct.net>
-# Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
+# Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 pkgname=mcpatcher2
 _pkgname=mcpatcher
