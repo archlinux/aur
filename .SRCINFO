@@ -1,0 +1,17 @@
+pkgbase = linux-aufs_friendly
+	pkgdesc = The aufs-compatible linux kernel and modules
+	pkgver = 4.1.2
+	pkgrel = 2
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+
+pkgname = linux-aufs_friendly
+pkgname = linux-aufs_friendly-docs
+pkgname = linux-aufs_friendly-headers
+
