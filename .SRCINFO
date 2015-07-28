@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-it
+	pkgdesc = Collection of Italian fortune cookie files
+	pkgver = 1.99
+	pkgrel = 2
+	url = http://www.fortune-it.net/
+	arch = any
+	groups = fortune-mods
+	license = custom
+	depends = fortune-mod
+	source = http://www.fortune-it.net/download/fortune-it-1.99.tar.gz
+	md5sums = b395af4484a8101a3f92163ab8667d8b
+
+pkgname = fortune-mod-it
+
