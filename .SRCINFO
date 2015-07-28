@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-scroll-workspaces-git
+	pkgdesc = Switch workspaces by scrolling in the top panel
+	pkgver = r46.2d6831e
+	pkgrel = 1
+	url = http://github.com/gfxmonk/gnome-shell-scroll-workspaces
+	install = gschemas.install
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = gnome-shell
+	depends = gnome-shell-extensions
+	provides = gnome-shell-extension-scroll-workspaces
+	conflicts = gnome-shell-extension-scroll-workspaces
+	source = gnome-shell-extension-scroll-workspaces::git+http://github.com/gfxmonk/gnome-shell-scroll-workspaces
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-scroll-workspaces-git
+
