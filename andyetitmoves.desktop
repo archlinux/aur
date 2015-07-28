@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=And Yet It Moves
+Comment=A physics-based platform game 
+Exec=AndYetItMoves
+Icon=/usr/share/pixmaps/andyetitmoves.png
+Terminal=false
+Type=Application
+Categories=Game;LogicGame;
+StartupNotify=true

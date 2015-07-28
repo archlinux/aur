@@ -1,0 +1,19 @@
+pkgbase = andyetitmoves
+	pkgdesc = physics-based platform game (full version)
+	pkgver = 1.2.2
+	pkgrel = 3
+	url = http://www.andyetitmoves.net/
+	arch = i686
+	arch = x86_64
+	license = custom:shareware
+	depends = mesa
+	depends = libxft
+	depends = sdl_image
+	depends = libvorbis
+	depends = libpng12
+	options = !strip
+	source = andyetitmoves.desktop
+	md5sums = 4f4792260832fe1b52ca8150a03ca176
+
+pkgname = andyetitmoves
+
