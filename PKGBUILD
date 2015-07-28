@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libunistring
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Library for manipulating Unicode strings and C strings. (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-gcc mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-libiconv)
 options=(staticlibs !strip !buildflags)
 source=("http://ftp.gnu.org/gnu/libunistring/libunistring-${pkgver}.tar.gz")
-md5sums=('1a705bcdcb83799d544137617b377cfd')
+md5sums=('dfae4ff5583649ed24d8f368f1d0543b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -20,7 +20,6 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
       --enable-threads=win32
-    sed -i "s/deplibs_check_method=.*/deplibs_check_method=pass_all/g" libtool
     make
     popd
   done
