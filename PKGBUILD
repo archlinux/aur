@@ -1,13 +1,13 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=blasr-git
-pkgver=r114.b5b717f
+pkgver=r122.9593a09
 pkgrel=1
 pkgdesc="The PacBio long read aligner"
 arch=('i686' 'x86_64')
 url="https://github.com/PacificBiosciences/blasr"
 license=('custom')
-depends=('hdf5-cpp-fortran' 'htslib')
+depends=('hdf5-cpp-fortran')
 makedepends=('python2')
 conflicts=('blasr')
 provides=('blasr')
@@ -34,15 +34,8 @@ prepare() {
 
   # we want to link against shared libs
   sed -e 's|LDFLAGS   := $(LDFLAGS1) $(HDF5_LIB)/libhdf5_cpp.a $(HDF5_LIB)/libhdf5.a -lpthread -lz -ldl|LDFLAGS   += $(LDFLAGS1) -lhdf5_cpp -lhdf5 -lpthread -lz -ldl|' \
-      -e 's|LIBS += $(HDF5_LIB)/libhdf5_cpp.a $(HDF5_LIB)/libhdf5.a|LIBS += -lhdf5_cpp -lhdf5|' \
-      -i common.mk \
+      -i libcpp/unittest/normal.defines.mk \
          libcpp/unittest/common.mk
-
-  # use system provided htslib
-  sed -e 's|HTSLIB_INCLUDE    := $(PBBAM)/../htslib/htslib|HTSLIB_INCLUDE    := /usr/include|' \
-      -e 's|HTSLIB_LIB    := $(PBBAM)/../htslib|HTSLIB_LIB    := /usr/lib|' \
-      -e 's|$(HTSLIB_LIB)/libhts.a|$(HTSLIB_LIB)/libhts.so|' \
-      -i common.mk
 
   sed -e 's|DEP_LIBS += ${LIBPBDATA_LIB} ${HDF5_LIB} ${PBBAM_LIB} ${HTSLIB_LIB} ${ZLIB_LIB}|DEP_LIBS += ${LIBPBDATA_LIB} ${PBBAM_LIB} ${HTSLIB_LIB} ${ZLIB_LIB}|' \
       -i libcpp/alignment/makefile \
