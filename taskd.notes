@@ -54,4 +54,4 @@ taskd config --force pid.file $TASKDDATA/taskd.pid
 # $ taskd add org Public
 
 # Add your user
-# $ task add user 'Public' 'Your Name' > ~/taskd.key
+# $ taskd add user 'Public' 'Your Name' > ~/taskd.key
