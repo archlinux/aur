@@ -1,6 +1,6 @@
 pkgbase = tragtor
 	pkgdesc = A graphical user interface for ffmpeg
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = http://mein-neues-blog.de/tragtor-gui-for-FFmpeg/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = tragtor
 	depends = python2-dbus
 	depends = id3v2
 	depends = ffmpeg
-	source = http://repository.mein-neues-blog.de:9000/archive/tragtor-0.9.1_all.tar.gz
-	md5sums = f68196bc06be5150a2aa5a6105773b49
+	source = http://repository.mein-neues-blog.de:9000/archive/tragtor-0.9.2_all.tar.gz
+	md5sums = 7236214cde0e126f8a61cc1ba2efc07b
 
 pkgname = tragtor
 
