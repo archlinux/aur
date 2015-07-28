@@ -1,9 +1,9 @@
 # arg 1:  the new package version
 post_install() {
 	echo ""
-	java -jar /usr/share/eclipse/lombok.jar install /usr/share/eclipse || exit 1
+	java -jar /usr/lib/eclipse/lombok.jar install /usr/lib/eclipse || exit 1
 	echo "-------------------"
-	echo "You have to add /usr/share/eclipse/lombok.jar (or lombok-api).jar as 'external JAR'"
+	echo "You have to add /usr/lib/eclipse/lombok.jar (or lombok-api).jar as 'external JAR'"
 	echo "to build path of each project which should use it"
 	echo "-------------------"
 	echo ""
@@ -17,7 +17,7 @@ post_upgrade() {
 
 # arg 1:  the old package version
 pre_remove() {
-	java -jar usr/share/eclipse/lombok.jar uninstall /usr/share/eclipse || exit 1
+	java -jar /usr/lib/eclipse/lombok.jar uninstall /usr/lib/eclipse || exit 1
 }
 
 op=$1

@@ -2,7 +2,7 @@
 
 pkgname=lombok-eclipse
 pkgver=1.16.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Project Lombok integrated to Eclipse installation"
 arch=("any")
 url="http://projectlombok.org"
@@ -19,9 +19,9 @@ build() {
 	java -jar lombok.jar publicApi
 }
 package() {
-	mkdir -p "$pkgdir"/usr/share/eclipse
-	cp "$srcdir"/lombok.jar "$pkgdir"/usr/share/eclipse
-	cp "$srcdir"/lombok-api.jar "$pkgdir"/usr/share/eclipse
+	mkdir -p "$pkgdir"/usr/lib/eclipse
+	cp "$srcdir"/lombok.jar "$pkgdir"/usr/lib/eclipse
+	cp "$srcdir"/lombok-api.jar "$pkgdir"/usr/lib/eclipse
 }
 
 md5sums=('b08407411bca4123c3804e63d92e335e')
