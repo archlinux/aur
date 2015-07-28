@@ -27,29 +27,31 @@ case $CARCH in
 esac
 
 prepare() {
-    msg2 "Prepare launch script..."
-    echo "#!/usr/bin/env bash\n" \
-         "export force_s3tc_enable=true\n" \
-         "cd /opt/Bastion\n" \
-         "/Bastion.bin.$_arch"
-       > launcher.sh
+    msg2 "Extracting game data..."
+    rm -rf data; mkdir -p data/game
+    while read line; do echo -n '.'; done < <(  # show progress as dots
+        sh $_gamepkg --tar xvf -C data
+        bsdtar -xvf data/instarchive_all          -C data/game 2>&1
+        bsdtar -xvf data/instarchive_linux_$_arch -C data/game 2>&1
+    ); echo
+    
+    msg2 "Preparing launch script..."
+    echo -e "#!/usr/bin/env bash\n" \
+            "export force_s3tc_enable=true\n" \
+            "cd /opt/bastion\n" \
+            "./Bastion.bin.$_arch" \
+         > launcher.sh
 }
 
 package() {
-    # Run installer
-    [[ -d "$_installname-$_hibver" ]] && rm -r "$_installname-$_hibver"
-    sh $_gamepkg -u --packager pacman --nox11 --unattended \
-                    --target "$srcdir"/"$_installname-$_hibver" \
-                    --bindir "$pkgdir"/usr/bin \
-                    --datadir "$pkgdir"/opt
-    
-    # Fix permissions
-    find "$pkgdir" -type f -exec chmod 644 "{}" +
+    # Install game data
+    install -d "$pkgdir"/opt/bastion
+    cp -alrT data/game "$pkgdir"/opt/bastion
     
     # Install desktop file & icon
     install -Dm644 $_installname.desktop \
                    "$pkgdir"/usr/share/applications/$_installname.desktop
-    install -Dm644 "$pkgdir"/opt/Bastion/Bastion.png \
+    install -Dm644 data/game/Bastion.png \
                    "$pkgdir"/usr/share/icons/$_installname.png
     
     # Install launch script
