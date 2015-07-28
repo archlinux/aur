@@ -18,8 +18,8 @@ provides=('vte=0.28.2' 'deepin-vte-plus')
 conflicts=('vte' 'deepin-vte-plus')
 replaces=('deepin-vte-plus')
 options=('!libtool' '!emptydirs')
-source=("http://packages.linuxdeepin.com/deepin/pool/main/v/vte/vte_0.28.2.orig.tar.xz"
-        "http://packages.linuxdeepin.com/deepin/pool/main/v/vte/vte_0.28.2-6deepin7~saucy.debian.tar.gz")
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/v/vte/vte_0.28.2.orig.tar.xz"
+        "http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/v/vte/vte_0.28.2-6deepin7~saucy.debian.tar.gz")
 sha256sums=('ee52b91ecab31d0a64399896ce0c3515e579ea8ac212a00eb9b0895c58f001fe'
             'b63a344541f0feebddac0232a8d7196d22d4819ec32cbd6cb39e33b2ba50e940')
 
