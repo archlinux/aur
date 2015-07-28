@@ -1,0 +1,15 @@
+pkgbase = libzip1
+	pkgdesc = A C library for reading, creating, and modifying zip archives
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://www.nih.at/libzip/index.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = zlib
+	options = !libtool
+	source = http://www.nih.at/libzip/libzip-0.9.3.tar.gz
+	sha256sums = 0e282dfed9e3da7d52223a0ccaee7c950782f10ed73f9b778243128a03c8cb1c
+
+pkgname = libzip1
+
