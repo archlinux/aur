@@ -44,7 +44,8 @@ package() {
   install -Dm 644 ../kippo.service \
     "${pkgdir}/usr/lib/systemd/system/kippo.service"
 
-  find . -type f -not \( -name kippo.cfg.dist -o -name start.sh -o -name stop.sh \) \
+  find . -type f -not \( -name kippo.cfg.dist -o -name start.sh -o -name stop.sh \
+    -o -path './.git/*' -o -name .gitignore \) \
     -exec install -Dm 644 {} "${pkgdir}/opt/kippo/{}" \;
 
   install -Dm 644 doc/COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
