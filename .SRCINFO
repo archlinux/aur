@@ -1,0 +1,28 @@
+pkgbase = festival-hts-voices-patched
+	pkgdesc = Festival voices based on the HMM-Based Speech Synthesis System (HTS). With compatibility patches to work with Festival 2.1.
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://hts.sp.nitech.ac.jp/
+	install = festival-hts-voices-patched.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = festival-patched-hts
+	depends = sox
+	provides = festival-hts-voices
+	conflicts = festival-hts-voices
+	source = http://hts.sp.nitech.ac.jp/archives/2.1/festvox_nitech_us_awb_arctic_hts-2.1.tar.bz2
+	source = http://hts.sp.nitech.ac.jp/archives/2.1/festvox_nitech_us_bdl_arctic_hts-2.1.tar.bz2
+	source = http://hts.sp.nitech.ac.jp/archives/2.1/festvox_nitech_us_clb_arctic_hts-2.1.tar.bz2
+	source = http://hts.sp.nitech.ac.jp/archives/2.1/festvox_nitech_us_jmk_arctic_hts-2.1.tar.bz2
+	source = http://hts.sp.nitech.ac.jp/archives/2.1/festvox_nitech_us_rms_arctic_hts-2.1.tar.bz2
+	source = http://hts.sp.nitech.ac.jp/archives/2.1/festvox_nitech_us_slt_arctic_hts-2.1.tar.bz2
+	sha256sums = 7aea67674661d29ee8686b45af38f4f090204e101abaead04aa731bdb7635569
+	sha256sums = 5133aebf7a620e577f01a5e7669c7da95fb527071902eb8364d0b40f0be47835
+	sha256sums = 4cf35b17d2db5b92498a0a371ed61330ce57d57b97f40803653fee8a77e2b338
+	sha256sums = e86e57c8a8361693671343473f68790160a3b69ccc7b906eb2cd1f5855d35ce3
+	sha256sums = 845ae4ff9d7afed0b8270ab71d0709136f4a648ba67b66caecdb71d9bf1e993c
+	sha256sums = 0aff67531eb9575f3204ad516a1fa81fe2356873e3567d0ee3dba94565eea47d
+
+pkgname = festival-hts-voices-patched
+

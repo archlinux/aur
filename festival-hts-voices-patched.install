@@ -1,0 +1,10 @@
+post_install() {
+	echo "---------------"
+	echo "The older version required pre-selecting a voice in your .festivalrc"
+	echo "file. This isn't required anymore and must be removed (or commented out)"
+	echo "Alternatively, festival can be started with one of the voices as default"
+	echo ""
+	echo "(set! voice_default 'voice_nitech_us_slt_arctic_hts)"
+	echo "---------------"
+}
+
