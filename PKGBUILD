@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=cowrie-git
-pkgver=0.0.588.cb1d4f4
+pkgver=0.0.590.8512d7c
 pkgrel=1
 pkgdesc="A medium interaction SSH honeypot designed to log brute force attacks and, most importantly, the entire shell interaction performed by the attacker"
 url="https://github.com/micheloosterhof/cowrie.git"
@@ -15,12 +15,10 @@ conflicts=('cowrie')
 install=cowrie.install
 source=(${pkgname}::git+https://github.com/micheloosterhof/cowrie.git
         cowrie.service
-        INSTALL
-        fix-indention.patch)
+        INSTALL)
 sha512sums=('SKIP'
             '106618a2c73d5f1f2ad75997e693f6ff4e903644a6be0dc59e85f72ae81f583927b2f079823c3379a8796e03fd542f497d2cc9405dc5d0d20d6caeb9dc88abed'
-            'a80dc0e9ec922c795af13ec85fc4e3414481a0d7ae14d9f17e29ade2a118010c1d69d474fe38c7e648d69b07ff09144efe97183e8a64ccf8165ec3a767a18ce2'
-            'be7d9f3ce75981ef6aab94273c5270500da4ce7f3c36d83e6311617f8c66e6b738601b6ff75515456321ec02ab889e6af4809a4b2633fb5b6179e2019c7cdaec')
+            'a80dc0e9ec922c795af13ec85fc4e3414481a0d7ae14d9f17e29ade2a118010c1d69d474fe38c7e648d69b07ff09144efe97183e8a64ccf8165ec3a767a18ce2')
 
 pkgver() {
   cd ${pkgname}
@@ -29,7 +27,6 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  patch -p1 < "${srcdir}/fix-indention.patch"
   sed -e 's|env python$|env python2|g' -i utils/*.py
   sed -e 's|/usr/bin/python$|/usr/bin/python2|g' -i utils/fsctl.py
 }
