@@ -16,7 +16,7 @@ provides=('deepin-music-player')
 replaces=('deepin-music-player')
 conflicts=('deepin-music-player')
 install="${pkgname}.install"
-source=("http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-music-player/deepin-music-player_1.1+20150413165956~fa225d345b.tar.gz")
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/d/deepin-music-player/deepin-music-player_1.1+20150413165956~fa225d345b.tar.gz")
 sha256sums=('ff74ed6d7e574ce3fded5523429eafe172bb92f18acba1ef817960cd8c86b777')
 
 prepare() {
