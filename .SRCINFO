@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-justshowthewindow-git
+	pkgdesc = Rather than the default gnome-shell behaviour of showing a notification that a window is ready, the window is just displayed
+	pkgver = r2.275595c
+	pkgrel = 1
+	url = https://github.com/ryanlerch/gnome-shell-extension-justshowthewindow
+	install = notice.install
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = gnome-shell>=3.6
+	provides = gnome-shell-extension-justshowthewindow
+	conflicts = gnome-shell-extension-justshowthewindow
+	source = gnome-shell-extension-justshowthewindow::git+https://github.com/ryanlerch/gnome-shell-extension-justshowthewindow
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-justshowthewindow-git
+
