@@ -1,10 +1,10 @@
 [Desktop Entry]
-Version=1.0
+Value=1.0
 Type=Application
-Icon=/opt/games/Bastion/Bastion.png
-Exec=/usr/bin/bastion
-Terminal=false
-StartupNotify=false
-Name=Bastion
-Comment=An original action role-playing game set in a lush imaginative world
 Categories=Game;
+Name=Bastion
+Comment=Supergiant Games
+GenericName=Action Role-Playing Game
+Icon=bastion
+Exec=bastion
+Terminal=false
