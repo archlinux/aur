@@ -1,0 +1,12 @@
+pkgbase = tinyswitch
+	pkgdesc = commandline tool to switch tinyproxy based proxy conveniently
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = https://github.com/sk1418/tinyswitch
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = tinyproxy
+
+pkgname = tinyswitch
+
