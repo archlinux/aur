@@ -1,7 +1,7 @@
 pkgbase = tinyssh
 	pkgdesc = Small SSH server using NaCl / TweetNaCl
 	pkgver = 20150501
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tinyssh.org
 	install = tinyssh.install
 	arch = x86_64

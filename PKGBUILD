@@ -2,7 +2,7 @@
 # Co-Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname='tinyssh'
 pkgver='20150501'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Small SSH server using NaCl / TweetNaCl'
 url='http://tinyssh.org'
 arch=('x86_64' 'i686' 'arm')
@@ -28,7 +28,9 @@ package () {
 	# Nowadays /usr/sbin is a symlink to /usr/bin
 	mv "${pkgdir}"/usr/{s,}bin
 
-	install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
+        install -m 755 -d ${pkgdir}/etc/tinyssh
+
+        install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
 	install -m 644 -t "${pkgdir}/usr/lib/systemd/system" \
 		"${srcdir}/tinysshgenkeys.service" \
 		"${srcdir}/tinyssh@.service" \
