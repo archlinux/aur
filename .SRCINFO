@@ -1,0 +1,17 @@
+pkgbase = esotope-bfc-git
+	pkgdesc = esotope-bfc, the world's most optimizing Brainfuck-to-something compiler
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://code.google.com/p/esotope-bfc/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = mercurial
+	makedepends = python2-setuptools
+	depends = python2
+	provides = esotope-bfc
+	source = hg+https://bitbucket.org/serialk/esotope-bfc
+	sha512sums = SKIP
+
+pkgname = esotope-bfc-git
+
