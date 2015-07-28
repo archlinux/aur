@@ -1,0 +1,14 @@
+pkgbase = dockbarx-deep-theme
+	pkgdesc = DockBarX Theme
+	pkgver = 20101204
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Deep+theme+for+DockbarX?content=135373
+	arch = any
+	groups = dockbarx-themes
+	license = GPL
+	depends = dockbarx
+	source = http://gnome-look.org/CONTENT/content-files/135373-Deep.tar.gz
+	md5sums = 874c194ad468c72c60a2e09ad6bcee83
+
+pkgname = dockbarx-deep-theme
+
