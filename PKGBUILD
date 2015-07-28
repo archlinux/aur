@@ -15,8 +15,8 @@ makedepends=('python2-numpy' 'pygobject2-devel')
 optdepends=('python2-numpy')
 provides=("pygtk=2.24.0")
 conflicts=("pygtk")
-source=("http://packages.linuxdeepin.com/deepin/pool/main/p/pygtk/pygtk_2.24.0.orig.tar.gz"
-        "http://packages.linuxdeepin.com/deepin/pool/main/p/pygtk/pygtk_2.24.0-4~saucy.debian.tar.gz"
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/p/pygtk/pygtk_2.24.0.orig.tar.gz"
+        "http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/p/pygtk/pygtk_2.24.0-4~saucy.debian.tar.gz"
         "python27.patch"
         )
 sha256sums=('6e3e54fa6e65a69ac60bd58cb2e60a57f3346ac52efe995f3d10b6c38c972fd8'
