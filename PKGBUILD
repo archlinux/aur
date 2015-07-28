@@ -1,7 +1,7 @@
 # Maintainer: Thomas Kuther <tom@kuther.net>
 pkgname=keystore-explorer
 _pkgname=kse
-pkgver=5.0.1
+pkgver=5.1.1
 _pkgver=${pkgver//./}
 pkgrel=1
 pkgdesc="a free GUI replacement for the Java command-line utilities keytool, jarsigner and jadtool"
@@ -10,13 +10,13 @@ url="http://keystore-explorer.sourceforge.net/"
 license=('GPL')
 depends=('java-runtime' 'java-jce_ustrength')
 install=${pkgname}.install
-source=("https://downloads.sourceforge.net/project/keystore-explorer/KSE%20${pkgver}/${_pkgname}-${_pkgver}-manual.zip"
+source=("https://downloads.sourceforge.net/project/keystore-explorer/KSE%20${pkgver}/${_pkgname}-${_pkgver}.zip"
         "${pkgname}.desktop")
-md5sums=('14285788e99b5fd082716d3a18f28c3b'
+md5sums=('f3023f5f0d74a16fb928b276e3426e4d'
          'dfaa247ab726fe2e44368101399b508d')
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
 
   install -d "${pkgdir}/usr/lib/${pkgname}"
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
@@ -26,7 +26,7 @@ package() {
 
   install -D -m644 *.jar "${pkgdir}/usr/lib/${pkgname}"
   install -D -m644 readme.txt "${pkgdir}/usr/share/doc/${pkgname}"
-  install -D -m644 license-*.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -D -m644 licences/license-*.txt "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # install wrapper
   echo -e "#!/bin/sh\ncd /usr/lib/${pkgname}\njava -jar kse.jar" > kse
@@ -37,7 +37,7 @@ package() {
     jar xf kse.jar net/sf/keystore_explorer/gui/images/kse-${i}x${i}.png
     install -D -m644 net/sf/keystore_explorer/gui/images/kse-${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/kse.png"
   done
-  install -D -m644 ${pkgname}.desktop "${pkgdir}/usr/share/applications"
+  install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 }
 
 
