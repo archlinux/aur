@@ -1,0 +1,10 @@
+post_install() {
+  echo ""
+  echo ">> Change the following line in /etc/passwd:"
+  echo "   root:x:0:0:root:/root:/bin/bash to"
+  echo "   root:x:0:0:root:/root:/bin/bashc"
+  echo "   and do the same with the useraccounts."
+  echo ""
+  echo ">> Add . /etc/bash_commander to ~/.bashrc. This will load"
+  echo "   the bashc config. For config examples look at: http://groups.google.com/group/bashc"
+}
