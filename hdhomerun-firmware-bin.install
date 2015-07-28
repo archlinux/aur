@@ -1,0 +1,9 @@
+post_install() {
+  echo "
+hdhomerun firmwares have been installed to /opt/hdhomerun/firmware/*.bin
+"
+}
+
+post_upgrade() {
+  post_install
+}
