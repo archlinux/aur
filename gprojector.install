@@ -1,0 +1,11 @@
+post_install() {
+	echo ">>> If G.Projector won't open a file because it's too large,"
+	echo ">>> run it with the -m option to increase memory size, e.g.:"
+	echo ">>>        gprojector -m 4096"
+}
+
+post_upgrade() {
+	echo ">>> If G.Projector won't open a file because it's too large,"
+	echo ">>> run it with the -m option to increase memory size, e.g.:"
+	echo ">>>        gprojector -m 4096"
+}
