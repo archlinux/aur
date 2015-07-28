@@ -1,0 +1,15 @@
+pkgbase = nettee
+	pkgdesc = A network "tee" program that can typically transfer data between "N" nodes.
+	pkgver = 0.1.9.1
+	pkgrel = 3
+	url = http://saf.bio.caltech.edu/nettee.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	depends = glibc
+	source = http://saf.bio.caltech.edu/pub/software/linux_or_unix_tools/nettee.tar.gz
+	sha256sums = 9410919fcba0c4144a1208cda42548a5a1952f050aa90440c4245798c4d7b22f
+
+pkgname = nettee
+
