@@ -4,7 +4,7 @@
 pkgname=deepin-menu
 pkgver=1.1.20150415155150
 _srcdirname=deepin-menu-1.1+20150415155150~faffe35053
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin menu service for building beautiful menus."
 arch=('i686' 'x86_64')
 url="https://gitcafe.com/Deepin/deepin-menu"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python2-pyqt5')
 makedepends=('python2-setuptools' 'qt5-declarative' 'qt5-x11extras')
 groups=('deepin')
-source=("http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-menu/deepin-menu_1.1+20150415155150~faffe35053.tar.gz")
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/d/deepin-menu/deepin-menu_1.1+20150415155150~faffe35053.tar.gz")
 sha256sums=('9e7e8c95d02543b1be339d53a2a77a6a0b3797d6d9d49e1abf41f65d95b2f8e1')
 
 prepare() {
@@ -26,7 +26,7 @@ build() {
   cd "${_srcdirname}"
 
   python2 setup.py build
-  qmake && make
+  qmake-qt5 && make
 }
 
 package() {
