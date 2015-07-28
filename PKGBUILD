@@ -5,17 +5,17 @@ _python="python2"
 _name="qr-tools"
 
 pkgname="qtqr"
-pkgver="1.2"
-pkgrel="1"
+pkgver=1.2
+pkgrel=2
 pkgdesc="A Graphical interface QR Code generator and decoder."
 url="https://launchpad.net/qr-tools"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=("${_python}" "${_python}-qrtools" "${_python}-pyqt4")
-provides=('${pkgname}')
+provides=("${pkgname}")
 install="${pkgname}.install"
 source=("https://launchpad.net/${_name}/trunk/${pkgver}/+download/${_name}-${pkgver}.tar.gz")
-md5sums=('07bd6018e2325dd29acb5f7623b3e018')
+sha256sums=('7e2ec216bef3d24640acdcdeb268c2b5c6bc2bf0c8ea4181e9fb2b28ee006bc9')
 
 _qtqr_desktop="[Desktop Entry]
 Name=QtQR
