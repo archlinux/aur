@@ -1,0 +1,20 @@
+pkgbase = python-flask-wtf
+	pkgdesc = Simple integration of Flask and WTForms
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://pythonhosted.org/Flask-WTF/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/F/Flask-WTF/Flask-WTF-0.12.tar.gz
+	md5sums = c53a74e8ba481bf53405fd5efdf0339e
+
+pkgname = python2-flask-wtf
+	depends = python2-flask
+	depends = python2-wtforms
+
+pkgname = python-flask-wtf
+	depends = python-flask
+	depends = python-wtforms
+
