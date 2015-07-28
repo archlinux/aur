@@ -1,13 +1,25 @@
 pkgbase = atomzombiesmasher
-	pkgdesc = RTS, evacuating civilians out of zombie-contaminated cities. (Commercial)
+	pkgdesc = A 2D tactics/strategy game where you evacuate civilians from zombie-infested cities. (Free demo)
 	pkgver = 1.94
-	pkgrel = 2
+	pkgrel = 1
 	url = http://blendogames.com/atomzombiesmasher/
 	arch = any
 	license = custom:commercial
+	depends = openal
+	depends = libsndfile
+	depends = mono
+	depends = libgdiplus
+	depends = csfml-bin
 	conflicts = atomzombiesmasherdemo
+	conflicts = atomzombiesmasher-hib
+	source = http://blendogames.com/files/atomzombiesmasherdemo_v1_84.tar
 	source = http://blendogames.com/files/atomzombiepatch_v1_94_linux.tar.gz
+	source = atomzombiesmasher.desktop
+	source = https://apps.ubuntu.com/site_media/icons/2013/12/atom-zombie-smashertCCn9V.png
+	md5sums = d32e462d158a63997a145d7e82464357
 	md5sums = c9512b8c841841967c20a81d36f7a6bc
+	md5sums = b1f2e18834d1bec5785a889f642e2191
+	md5sums = 341ce551a8525be96d6c59c1bf9efd2a
 
 pkgname = atomzombiesmasher
 

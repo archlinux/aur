@@ -1,101 +1,67 @@
-# Maintainer: Malte Wessel <muunleit AT lavabit DOT com>
+# Maintainer: Sam S. <smls75@gmail.com>
+# Contributor: Malte Wessel <muunleit AT lavabit DOT com>
 
 pkgname=atomzombiesmasher
 pkgver=1.94
-pkgrel=2
-pkgdesc="RTS, evacuating civilians out of zombie-contaminated cities. (Commercial)"
+pkgrel=1
+pkgdesc="A 2D tactics/strategy game where you evacuate civilians from zombie-infested cities. (Free demo)"
 arch=('any')
 url="http://blendogames.com/atomzombiesmasher/"
 license=("custom:commercial")
-[ "$CARCH" = "x86_64" ] && depends=('libgdiplus' 'mono' 'csfml-bin')
-conflicts=("atomzombiesmasherdemo")
-#source=("http://blendogames.com/files/atomzombiepatch_v${pkgver//./_}_linux.tar")
-source=("http://blendogames.com/files/atomzombiepatch_v${pkgver//./_}_linux.tar.gz")
-md5sums=('c9512b8c841841967c20a81d36f7a6bc')
+depends=('openal' 'libsndfile' 'mono' 'libgdiplus' 'csfml-bin')
+conflicts=("atomzombiesmasherdemo" "atomzombiesmasher-hib")
+PKGEXT='.pkg.tar'
 
-# Different known files delivered by Blendo-Games
-_v1_23="${pkgname}_v1_23.tar.gz"
-_v1_23md5="3286a655fd6a34cf376d69a185b5e53f"
-_v1_85="${pkgname}_v1_85.tar"
-_v1_85md5="304a494d4c81296c0d13b6cbe051e04c"
+source=("http://blendogames.com/files/atomzombiesmasherdemo_v1_84.tar"
+        "http://blendogames.com/files/atomzombiepatch_v1_94_linux.tar.gz"
+        "atomzombiesmasher.desktop"
+        "https://apps.ubuntu.com/site_media/icons/2013/12/atom-zombie-smashertCCn9V.png")
+md5sums=('d32e462d158a63997a145d7e82464357'
+         'c9512b8c841841967c20a81d36f7a6bc'
+         'b1f2e18834d1bec5785a889f642e2191'
+         '341ce551a8525be96d6c59c1bf9efd2a')
 
+_gamefolder=atomzombiesmasherdemo/data
+_installname=atomzombiesmasher
 
-build() {
-  # Check if game-archive is in build directory
-  cd $startdir
-  if [[ -e $_v1_23 ]]; then   # If you get another file from Blendo Games, please change it here
-    _gamepkg=$_v1_23
-    _gamemd5=$_v1_23md5
-  elif [[ -e $_v1_85 ]]; then
-    _gamepkg=$_v1_85
-    _gamemd5=$_v1_85md5
-  else
-    msg "!! AtomZombieSmasher is a commercial game.
-    !! You need a full copy of this game in order to install it.
-    !! Please copy $_v1_23 or $_v1_85
-    !! to $startdir " && return 1
-  fi
-
-  # Validate game-archive
-  if [[ "$(md5sum $_gamepkg | awk '{print $1}')" == "$_gamemd5" ]]; then
-    msg "Check: $_gamepkg is the correct."
-  else
-    msg "!! Check: $_gamepkg didn't match md5sum!" && return 1
-  fi
-
-  # Extract game-archive
-  msg "Extracting archive..."
-  tar xaf $startdir/$_gamepkg -C $srcdir 
-
-  cd $srcdir/$pkgname
-  sed -i "s/\.\/data/\/opt\/$pkgname\/data/g" AtomZombieSmasher
-
-  # Copy from patch to game
-  if ! [[ "$_gamepkg" =~ "${pkgver//./_}" ]]; then
-    msg "Patching to version $pkgver ..."
-    cp -a $srcdir/data        $srcdir/$pkgname/
-    cp -a $srcdir/readme.htm  $srcdir/$pkgname/
-  fi
-
-  # Create startscript
-	cat > $srcdir/$pkgname.desktop <<- EOF
-  [Desktop Entry]
-  Name=AtomZombieSmasher
-  GenericName=AtomZombieSmasher
-  Comment=RTS, evacuating civilians out of zombie-contaminated cities
-  Exec=atomzombiesmasher
-  Icon=/opt/atomzombiesmasher/data/content/textures/icon.png
-  Terminal=false
-  Type=Application
-  Categories=Game;
-	EOF
+prepare() {
+    msg2 "Patching to version $pkgver..."
+    cp -aT data $_gamefolder
+    
+    msg2 "Preparing launch script..."
+    echo -e "#!/usr/bin/sh\n" \
+            "cd /opt/$_installname\n" \
+            "exec ./atomzombiesmasher \"\$@\"\n" \
+        > "launcher.sh"
+    sed -i'' 's|./mono|mono|' $_gamefolder/atomzombiesmasher
+    
+    cd $_gamefolder
+    
+    msg2 "Fixing permissions..."
+    find -type f -exec chmod 644 {} \;
+    chmod +x atomzombiesmasher
+    
+    msg2 "Removing unneeded files..."
+    rm -r {mono,libc-2*,libglib*,libcsfml*,libsfml*}
+    rm -r {libopenal.so.1,libsndfile.so.1}
+    rm -r {Accessibility,Mono.*,mscorlib,System*}.dll
 }
 
 package() {
-  # Create pkgdir folders
-  install -d $pkgdir/usr/bin
-  install -d $pkgdir/usr/share/doc/$pkgname
-  install -d $pkgdir/usr/share/applications
-  install -g games -d $pkgdir/opt/$pkgname
-
-  # Copy game
-  cp -a $srcdir/$pkgname/*              $pkgdir/opt/$pkgname
-  mv $pkgdir/opt/$pkgname/readme.htm    $pkgdir/usr/share/doc/$pkgname
-  cp -a $srcdir/$pkgname.desktop        $pkgdir/usr/share/applications/
-
-  # executable link
-  ln -s /opt/$pkgname/AtomZombieSmasher $pkgdir/usr/bin/$pkgname
-  
-  if [ "$CARCH" = "x86_64" ]; then
-    # remove packaged libraries
-    cd $pkgdir/opt/$pkgname/data
-    rm *.so*
-    rm `ls | grep .dll | grep -v ^sfmlnet | grep -v ^Tao`
-
-    # point startup script to system mono
-    sed -i "s|\./mono|mono|" atomzombiesmasher
-  fi
-
+    # Game data
+    install -g games -d "$pkgdir"/opt/$_installname
+    cp -rT $_gamefolder "$pkgdir"/opt/$_installname
+    
+    # Readme
+    install -Dm644 readme.htm \
+                   "$pkgdir"/usr/share/doc/$_installname/readme.html
+    
+    # Desktop entry
+    install -Dm644 $_installname.desktop \
+                   "$pkgdir"/usr/share/applications/$_installname.desktop
+    install -Dm644 atom-zombie-smashertCCn9V.png \
+                   "$pkgdir"/usr/share/pixmaps/$_installname.png
+    
+    # Launcher
+    install -Dm755 launcher.sh "$pkgdir"/usr/bin/$_installname
 }
-
-# vim:set ts=2 sw=2 et:
