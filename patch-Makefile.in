@@ -1,0 +1,19 @@
+*** Makefile.in-orig	2015-07-28 23:01:10.096835001 +1000
+--- Makefile.in	2015-07-28 23:01:30.790148852 +1000
+***************
+*** 41,47 ****
+  BUILD_STATIC=@BUILD_STATIC@
+  TARNAME=@PACKAGE_TARNAME@
+  VERSION=@PACKAGE_VERSION@
+! DESTDIR=
+  prefix=@prefix@
+  exec_prefix=@exec_prefix@
+  includedir=${DESTDIR}@includedir@
+--- 41,47 ----
+  BUILD_STATIC=@BUILD_STATIC@
+  TARNAME=@PACKAGE_TARNAME@
+  VERSION=@PACKAGE_VERSION@
+! #DESTDIR=
+  prefix=@prefix@
+  exec_prefix=@exec_prefix@
+  includedir=${DESTDIR}@includedir@

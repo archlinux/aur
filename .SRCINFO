@@ -1,0 +1,19 @@
+pkgbase = gtkada
+	pkgdesc = GtkAda is a Gtk3 binding for Ada using the OOP and other features of this programming language
+	pkgver = 2015
+	pkgrel = 1
+	url = http://libre.adacore.com/libre/tools/GtkAda/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-ada
+	depends = gtk3
+	source = http://mirrors.cdn.adacore.com/art/db00d9243e8d34c0da0a583c22903272f2d28135
+	source = patch-Makefile.in
+	source = patch-projects-Makefile.in
+	md5sums = c152b45c9f768aef92cf325bfb2ca138
+	md5sums = 4fee2f1951c7f6f65e6009973af482c6
+	md5sums = 
+
+pkgname = gtkada
+

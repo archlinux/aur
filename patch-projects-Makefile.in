@@ -1,0 +1,15 @@
+*** projects/Makefile.in-orig	2015-07-28 23:09:18.133199940 +1000
+--- projects/Makefile.in	2015-07-28 23:09:29.229862562 +1000
+***************
+*** 1,5 ****
+  MKDIR = mkdir -p
+! DESTDIR=
+  prefix = @prefix@
+  libdir = @libdir@
+  incdir = @includedir@/gtkada
+--- 1,5 ----
+  MKDIR = mkdir -p
+! #DESTDIR=
+  prefix = @prefix@
+  libdir = @libdir@
+  incdir = @includedir@/gtkada
