@@ -1,0 +1,18 @@
+pkgbase = audacious-vortigo-themes
+	pkgdesc = Vortigo themes for Audacious
+	pkgver = 20080531
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Vortigo+++%28+3D%2BVU%2BBeryl%2BDock+%29?content=55440
+	arch = any
+	license = GPL
+	depends = audacious
+	depends = unzip
+	source = http://www.chairod.de/2OO8-O5-31/XMMS/Vortigo_1.1.wsz
+	source = http://www.chairod.de/2OO8-O5-31/XMMS/Vortigo-Clear_1.1.wsz
+	source = http://www.chairod.de/2OO8-O5-31/XMMS/Vortigo_2.0.wsz
+	sha256sums = dde567d3b59869c40bf246b2fabf04dc19fc70b7a2bc8e8138d24147f6a28249
+	sha256sums = 396451d82fe05d0861c89d81a1b2231a9ec11be33f6369925ccedcaa7c194401
+	sha256sums = 4c7337784ede9873d3beb5d60f8c3661177e922a9558190ddcb587fcec0a043e
+
+pkgname = audacious-vortigo-themes
+
