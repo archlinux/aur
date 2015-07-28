@@ -1,0 +1,17 @@
+pkgbase = redshift-scheduler
+	pkgdesc = Rule-based screen temperature changer (like redshift)
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/spantaleev/redshift-scheduler
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = vala
+	depends = redshift
+	depends = glib2>=2.34
+	depends = libgee
+	source = vcs-repository::git://github.com/spantaleev/redshift-scheduler.git#tag=1.1.1
+	md5sums = SKIP
+
+pkgname = redshift-scheduler
+
