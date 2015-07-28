@@ -1,6 +1,6 @@
 pkgbase = reicast-git
 	pkgdesc = A multiplatform Sega Dreamcast emulator (development version)
-	pkgver = r1252.5b92793
+	pkgver = r1284.d3c3feb
 	pkgrel = 1
 	url = http://reicast.com/
 	arch = i686
