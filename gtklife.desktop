@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GtkLife
+Comment=Fast, featureful, open-source Conway's Life program for *nix
+Exec=gtklife
+Icon=gtklife
+Terminal=false
+StartupNotify=false
+Categories=Game;Education;ComputerScience;GTK;

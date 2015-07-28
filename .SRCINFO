@@ -1,0 +1,16 @@
+pkgbase = gtklife
+	pkgdesc = Fast, featureful, open-source Conway's Life program for *nix
+	pkgver = 5.1
+	pkgrel = 5
+	url = http://ironphoenix.org/tril/gtklife/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://ironphoenix.org/tril/gtklife//gtklife-5.1.tar.gz
+	source = gtklife.desktop
+	md5sums = a92ce6e2f9c66ede050143cf95f6afcd
+	md5sums = cf032adb5287e300b6f0176950944298
+
+pkgname = gtklife
+
