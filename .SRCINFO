@@ -1,0 +1,26 @@
+pkgbase = xfconf-devel
+	pkgdesc = A simple client-server configuration storage and query system
+	pkgver = 4.11.0
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = perl-extutils-depends
+	makedepends = perl-extutils-pkgconfig
+	makedepends = glib-perl
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = chrpath
+	depends = libxfce4util
+	depends = dbus-glib
+	depends = dbus
+	provides = xfconf=4.11.0
+	conflicts = xfconf
+	options = !emptydirs
+	source = http://archive.xfce.org/src/xfce/xfconf/4.11/xfconf-4.11.0.tar.bz2
+	sha256sums = 8667fc7e90fb760979fb7da75157aead000ae206d24c4ea55b6f2b5631d905d6
+
+pkgname = xfconf-devel
+
