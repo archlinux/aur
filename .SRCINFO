@@ -1,0 +1,26 @@
+pkgbase = xfdesktop-devel
+	pkgdesc = A desktop manager for Xfce
+	pkgver = 4.11.8
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = xfdesktop.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	depends = libxfce4ui>=4.11.0
+	depends = thunar
+	depends = garcon
+	depends = hicolor-icon-theme
+	depends = libwnck
+	provides = xfdesktop=4.11.8
+	conflicts = xfce4-menueditor
+	conflicts = xfdesktop
+	replaces = xfce4-menueditor
+	options = !libtool
+	source = http://archive.xfce.org/src/xfce/xfdesktop/4.11/xfdesktop-4.11.8.tar.bz2
+	md5sums = dd716b6e594aa876ec2674c994c74a57
+
+pkgname = xfdesktop-devel
+
