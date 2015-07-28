@@ -1,0 +1,15 @@
+pkgbase = dockbarx-dock-theme
+	pkgdesc = DockBarX Theme
+	pkgver = 1
+	pkgrel = 3
+	url = http://bigrza.deviantart.com/art/Dock-theme-for-DockbarX-164283521
+	arch = any
+	groups = dockbarx-themes
+	license = GPL
+	makedepends = imagemagick
+	depends = dockbarx
+	source = http://fc05.deviantart.net/fs70/f/2010/136/c/5/Dock_theme_for_DockbarX_by_BigRZA.zip
+	sha256sums = ec6da776ca93fa5e470ee09788e988032a2c9131d770e861a4d5353d30837d89
+
+pkgname = dockbarx-dock-theme
+
