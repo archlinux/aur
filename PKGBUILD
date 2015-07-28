@@ -15,27 +15,20 @@ makedepends=('icu' 'openslp' 'sqlite')
 DLAGENTS=('https::/usr/bin/wget -c -t 3 --waitretry=3 -O %o %u'
           'http::/usr/bin/curl -qb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 
-# This download a "Token". without this, the remote server refuses to download any file.
-# For allow download files, need entre in the web, search the downloable package and then need acept the EULA.
-# For lie to the server for download the sources, only need try download any donwloadable file ("Token") directly through in the server. then the server detect this like a accept the EULA (:D).
-# If not download this token, then the makepkg fails download (or download incorrecty file, normally a html file instead a real tar.gz) and need reload the compilation.
-# The download gate remains open about 15 minutes before needed download the token/files again.
-wget "http://www.lsi.com/magic.axd?x=e&file=http%3A//www.lsi.com/downloads/Public/MegaRAID%2520Common%2520Files/${pkgver}_Linux-x86_MSM.txt" -q -O /dev/null
-
 source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'msm_profile.sh'
         'LSI_StorSNMP.ini'
         'lsi_msm.service'
         'lsi_mrdsnmpd.service'
         'ld.so.lsi-msm.conf'
-        'http://www.lsi.com/downloads/Public/Advanced%20Software/Advanced%20Software%20Common%20Files/SLA_AdvancedSoftware.pdf'
+        'http://www.avagotech.com/docs-and-downloads/advanced-software/advanced-software-common-files/SLA_AdvancedSoftware.pdf'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch')
-source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/MSM_linux_installer-${pkgver//.00/-00}.tar.gz")
-source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/MSM_linux_x64_installer-${pkgver//.00/-00}.tar.gz")
+source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_installer-${pkgver//./-}-tar.gz")
+source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${pkgver//./-}-tar.gz")
 sha1sums=('c832eaf240f6dfba843c4937f7a935382d48b9be'
           '0e5d7b71435760e3ef7c1e132ba05145ccbd1268'
           '79fbe24898030db50295a6254e7c4627e2b51b7c'
