@@ -1,13 +1,13 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-dropbear
 pkgver=0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Archlinux mkinitcpio hook to install and enable the dropbear daemon in early userspace"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-dropbear"
 license=('GPL3')
 depends=('dropbear' 'psmisc')
-optdepends=('openssh: Allows the use of the same host keys used for normal access')
+optdepends=('openssh: Allows the use of the same host keys used for normal access' 'mkinitcpio-netconf: Network interface configuration' 'mkinitcpio-ppp: PPP interface configuration')
 conflicts=('dropbear_initrd_encrypt')
 install=$pkgname.install
 source=($url/archive/v$pkgver.tar.gz)
