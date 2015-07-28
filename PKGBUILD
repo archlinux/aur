@@ -1,19 +1,21 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc='Iosevka is a monospace coding typeface inspired by Pragmata Pro, M+ and PF DIN Mono. It is designed to have a narrow shape to be space efficient and compatible to CJK characters.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
-source=("http://www.markusweimar.de/public/ttf-iosevka-${pkgver}.zip")
+source=("https://github.com/be5invis/Iosevka/archive/v${pkgver}.zip"
+        'https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE')
 install=${pkgname}.install
-sha256sums=('c762c904f31f62326efedd8337b24cfb30e7e99e67a73f31e09d8952a6544bfe')
+sha256sums=('b306973e54caccc209995da7c1dd6b346c46bd8ac5cb6058237f005a57c7f5c7'
+            '1beea52b7cf6b8f5fa3120f3b6fc4bd5828037bdbe513624ea55100876654c18')
 
 package() {
   cd ${srcdir}
   install -d ${pkgdir}/usr/share/fonts/TTF/
-  install -m644 *.ttf ${pkgdir}/usr/share/fonts/TTF/
+  install -m644 Iosevka-${pkgver}/*.ttf ${pkgdir}/usr/share/fonts/TTF/
   install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
