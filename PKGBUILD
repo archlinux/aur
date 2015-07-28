@@ -3,13 +3,13 @@
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
 pkgver=2.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
-url="http://loopauditioneer.sourceforge.net/"
+url="http://www.ocenaudio.com.br/"
 license=('custom')
-depends=('alsa-lib' 'desktop-file-utils' 'gcc-libs-multilib'
-         'gtk-update-icon-cache' 'shared-mime-info')
+depends=('gcc-libs-multilib' 'gtk-update-icon-cache' 'jack' 'pulseaudio' 'qt4'
+         'shared-mime-info')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=("$_pkgname.install")
@@ -28,7 +28,7 @@ package() {
   tar -xzf ${srcdir}/data.tar.gz -C "${pkgdir}"
 
   install -dm755 "${pkgdir}/usr/bin"
-  rm -f "${pkgdir}/opt/$_pkgname/bin/$_pkname.cfg"
+  rm -f "${pkgdir}/opt/$_pkgname/bin/$_pkgname.cfg"
   mv "${pkgdir}/opt/$_pkgname/bin/"* "${pkgdir}/usr/bin"
   mv "${pkgdir}/opt/$_pkgname/lib/"* "${pkgdir}/usr/lib"
   sed -i -e 's|/opt/ocenaudio/bin/||' \
