@@ -1,0 +1,22 @@
+pkgbase = asis
+	pkgdesc = ASIS gives Ada applications access to the complete syntactic and semantic structure of an Ada compilation unit.
+	pkgver = 2015
+	pkgrel = 1
+	url = http://libre.adacore.com/tools/
+	arch = i686
+	arch = x86_64
+	groups = gcc-ada
+	license = GPL
+	depends = gcc-ada
+	depends = gnat_util
+	provides = asis
+	conflicts = asis
+	source = http://downloads.dragonlace.net/src/asis-gpl-2015-src.tar.gz
+	source = asis.gpr
+	source = patch-Makefile.stub
+	md5sums = 2c5a1f382bbf644bcdd2e6417f6d1e60
+	md5sums = 223d59aadef66852e7f0493bf6b01fee
+	md5sums = 91e1338160c413a06031a547b4f84338
+
+pkgname = asis
+
