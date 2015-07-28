@@ -1,0 +1,17 @@
+pkgbase = polyorb
+	pkgdesc = PolyOrb provides the Distributed Systems Annex (DSA) to build distributed applications with Ada.
+	pkgver = 2014
+	pkgrel = 1
+	url = http://libre.adacore.com/libre/tools/polyorb
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nawk
+	depends = gcc-ada
+	source = http://downloads.dragonlace.net/src/polyorb-gpl-2014-src.tar.gz
+	source = patch-Makefile.in
+	md5sums = 39df6ccf2d0dd19b250ba662b0b1dc4d
+	md5sums = c8142456832b10c7a06343e08ffde222
+
+pkgname = polyorb
+
