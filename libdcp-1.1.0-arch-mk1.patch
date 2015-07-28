@@ -1,0 +1,23 @@
+diff -aur libdcp-1.1.0.pristine/src/reel_asset.cc libdcp-1.1.0.new/src/reel_asset.cc
+--- libdcp-1.1.0.pristine/src/reel_asset.cc	2015-06-13 16:21:05.000000000 +0200
++++ libdcp-1.1.0.new/src/reel_asset.cc	2015-07-28 15:01:39.744519973 +0200
+@@ -27,6 +27,8 @@
+ #include "compose.hpp"
+ #include <libcxml/cxml.h>
+ #include <libxml++/libxml++.h>
++#include <iostream>
++
+ 
+ using std::pair;
+ using std::cout;
+diff -aur libdcp-1.1.0.pristine/test/read_smpte_subtitle_test.cc libdcp-1.1.0.new/test/read_smpte_subtitle_test.cc
+--- libdcp-1.1.0.pristine/test/read_smpte_subtitle_test.cc	2015-06-13 16:21:05.000000000 +0200
++++ libdcp-1.1.0.new/test/read_smpte_subtitle_test.cc	2015-07-28 15:28:20.814658043 +0200
+@@ -22,6 +22,7 @@
+ #include "local_time.h"
+ #include "smpte_load_font_node.h"
+ #include <boost/test/unit_test.hpp>
++#include <boost/optional/optional_io.hpp> 
+ 
+ using std::list;
+ using boost::shared_ptr;
