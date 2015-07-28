@@ -1,0 +1,17 @@
+pkgbase = libsquish-svn
+	pkgdesc = DXT compression library - svn build
+	pkgver = 66
+	pkgrel = 1
+	url = http://libsquish.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = subversion
+	makedepends = cmake
+	provides = libsquish
+	conflicts = libsquish
+	source = libsquish-svn::svn+http://svn.code.sf.net/p/libsquish/code/trunk
+	md5sums = SKIP
+
+pkgname = libsquish-svn
+
