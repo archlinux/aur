@@ -1,0 +1,19 @@
+pkgbase = aufs-util
+	pkgdesc = Another Unionfs Implementation that supports NFS branches
+	pkgver = 20150426
+	pkgrel = 1
+	url = http://aufs.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = aufs
+	makedepends = git
+	conflicts = aufs2-util
+	conflicts = aufs3-util
+	replaces = aufs2-util
+	replaces = aufs3-util
+	source = aufs-util::git://git.code.sf.net/p/aufs/aufs-util
+	md5sums = SKIP
+
+pkgname = aufs-util
+
