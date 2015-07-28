@@ -4,7 +4,7 @@ pkgbase=python2-dvbstreamer
 pkgname=pydvbstreamer
 project=dvbstreamer
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="python control modules for dvbstreamer (https://aur4.archlinux.org/packages/dvbstreamer/)"
 arch=("any")
 url="http://sourceforge.net/projects/${project}/"
@@ -18,7 +18,7 @@ sha256sums=('33e23f0f9305e12f27bebae585a494340e4d5b152c0512d9bbe2201a08a7b5e5'
 
 prepare()
 {
-    patchfile=`pwd`/../../pydvbstreamer-event-end.patch
+    patchfile=`pwd`/../pydvbstreamer-event-end.patch
     rm -rf ${pkgname}-${pkgver}/build
     pushd ${pkgname}-${pkgver}/src/dvbstreamer
     patch <$patchfile
