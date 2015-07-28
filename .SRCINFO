@@ -1,0 +1,13 @@
+pkgbase = makeheaders
+	pkgdesc = simple utility that will automatically generate .h files from .{c,cpp} files
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.hwaci.com/sw/mkhdr/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://www.hwaci.com/sw/mkhdr/makeheaders.c
+	sha256sums = a03498d80e29c836b1525cd2aad7f2f75c80e8dfcd533dd619ac0fe0c5cef2cd
+
+pkgname = makeheaders
+
