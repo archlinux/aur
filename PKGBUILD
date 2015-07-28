@@ -10,7 +10,7 @@ url="http://www.supergiantgames.com/games/bastion/"
 license=('custom')
 arch=('i686' 'x86_64')
 groups=("hib5" "hib9")
-depends=('libxft')
+depends=('sdl' 'mono' 'fmodex' 'libxft')
 PKGEXT=".pkg.tar"
 
 _gamepkg="Bastion-HIB-${_hibver}.sh"
@@ -37,23 +37,37 @@ prepare() {
     
     msg2 "Preparing launch script..."
     echo -e "#!/usr/bin/env bash\n" \
+            "cd /opt/$_installname\n" \
             "export force_s3tc_enable=true\n" \
-            "cd /opt/bastion\n" \
-            "./Bastion.bin.$_arch" \
-         > launcher.sh
+            'exec mono Bastion.exe "$@"' \
+        > launcher.sh
+    
+    # Set apart files to install separately
+    mv data/game/{Bastion.png,README.linux} "$srcdir"
 }
 
 package() {
+    _target="$pkgdir"/opt/$_installname
+    
     # Install game data
-    install -d "$pkgdir"/opt/bastion
-    cp -alrT data/game "$pkgdir"/opt/bastion
+    install -d "$_target"
+    cp -alrT data/game "$_target"
+    
+    # Remove unneeded files
+    rm -r "$_target"/lib64/{libSDL*,libfmodex.so,libmono*}
+    rm -r "$_target"/{mono,Bastion.bin.*}
+    rm -r "$_target"/{mscorlib,Mono.*,System*}.dll
+    
+    # Install launch script
+    install -Dm755 launcher.sh "$pkgdir"/usr/bin/$_installname
     
     # Install desktop file & icon
     install -Dm644 $_installname.desktop \
                    "$pkgdir"/usr/share/applications/$_installname.desktop
-    install -Dm644 data/game/Bastion.png \
+    install -Dm644 Bastion.png \
                    "$pkgdir"/usr/share/icons/$_installname.png
     
-    # Install launch script
-    install -Dm755 launcher.sh "$pkgdir"/usr/bin/$_installname
+    # Install docs
+    install -Dm644 README.linux \
+                   "$pkgdir"/usr/share/doc/$_installname/README.linux
 }
