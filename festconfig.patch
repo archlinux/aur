@@ -13,7 +13,7 @@ diff -Nru festival.orig/config/config.in festival/config/config.in
 diff -Nru festival.orig/config/project.mak festival/config/project.mak
 --- festival.orig/config/project.mak	2004-07-12 10:39:37.000000000 -0500
 +++ festival/config/project.mak	2005-05-30 19:50:45.000000000 -0500
-@@ -112,6 +112,5 @@
+@@ -114,6 +114,5 @@
  DOCXX_DIRS = $(TOP)/src 
  MODULE_TO_DOCXX = perl $(TOP)/src/modules/utilities/extract_module_doc++.prl
  

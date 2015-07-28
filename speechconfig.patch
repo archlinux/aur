@@ -57,15 +57,12 @@ diff -aur speech_tools.old//config/config.in speech_tools/config/config.in
  # speech recognition
  #INCLUDE_MODULES += ASR
  
-@@ -169,8 +169,8 @@
- CONFIG_WRAPPER_LANGUAGES = PYTHON PERL5
+@@ -175,6 +175,6 @@
+ CONFIG_WRAPPER_LANGUAGES = PYTHON
  
  # Language specific includes should be set to correct site paths
 -CONFIG_PYTHON_INCLUDES= -I/usr/include/python2.2/
--CONFIG_PERL_INCLUDES= -I/usr/lib/perl5/5.8.3/i386-linux-thread-multi/CORE/
 +CONFIG_PYTHON_INCLUDES= -I/usr/include/python2.7/
-+CONFIG_PERL_INCLUDES= -I/usr/lib/perl5/core_perl/CORE/
- #OR OLD#CONFIG_PERL_INCLUDES= -I/usr/lib/perl5/5.6.1/i386-linux/CORE/
  ##
  ###################################################################
 Only in speech_tools/config: config.in.orig

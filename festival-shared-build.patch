@@ -26,7 +26,7 @@
      REQUIRED_LIBS = $(foreach l,$(REQUIRED_LIBRARIES),-L$(REQUIRED_LIBRARY_DIR_$(l)) -l$(l))
 --- festival/config/project.mak.orig	2007-03-16 13:01:40.000000000 -0400
 +++ festival/config/project.mak	2007-03-16 13:02:24.000000000 -0400
-@@ -84,6 +84,8 @@
+@@ -83,6 +83,8 @@
  PROJECT_LIBRARY_DIR_Festival = $(TOP)/src/lib
  PROJECT_DEFAULT_LIBRARY = Festival
  
@@ -38,7 +38,7 @@
 diff -p -up festival/speech_tools/config/compilers/gcc_defaults.mak.bettersoname festival/speech_tools/config/compilers/gcc_defaults.mak
 --- speech_tools/config/compilers/gcc_defaults.mak.bettersoname	2010-12-06 10:25:35.000000000 +0100
 +++ speech_tools/config/compilers/gcc_defaults.mak	2010-12-06 10:27:51.000000000 +0100
-@@ -78,7 +78,7 @@ SHARED_CXXFLAGS  = -fPIC
+@@ -81,7 +81,7 @@ SHARED_CXXFLAGS  = -fPIC
  SHARED_LINKFLAGS = 
  
  ifndef GCC_MAKE_SHARED_LIB
