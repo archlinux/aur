@@ -1,0 +1,14 @@
+pkgbase = nsexec-bzr
+	pkgdesc = Small utilitied to deal with USER_NS conversions for LXC containers
+	pkgver = 1.22.r26
+	pkgrel = 1
+	url = https://code.launchpad.net/~serge-hallyn/+junk/nsexec
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	source = bzr+http://bazaar.launchpad.net/~serge-hallyn/+junk/nsexec/
+	md5sums = SKIP
+
+pkgname = nsexec-bzr
+
