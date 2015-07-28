@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tomighty
+Comment=Desktop timer for Pomodoro Technique users
+Exec=tomighty
+Icon=tomighty
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=GTK;Office;Java;TrayIcon;

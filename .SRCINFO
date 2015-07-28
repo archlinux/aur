@@ -1,0 +1,20 @@
+pkgbase = tomighty
+	pkgdesc = Desktop timer for Pomodoro Technique users
+	pkgver = 0.7.1
+	pkgrel = 3
+	url = http://www.tomighty.org/
+	arch = any
+	license = Apache
+	makedepends = imagemagick
+	depends = java-runtime
+	source = tomighty
+	source = tomighty.desktop
+	source = http://tomighty.googlecode.com/files/tomighty-0.7.1.jar
+	source = https://github.com/ccidral/tomighty/raw/50d0094c024f1923bd0d6ff1bf77572ae5f5b5f6/img/tomato.ico
+	md5sums = 941bdeb609169335cea3e9cf40904883
+	md5sums = 66425a9e185788f720b466ca1caf5769
+	md5sums = 73094fd45e3683dc0b560642e0543176
+	md5sums = f92eb060209cc142b9d6ff644f751b5f
+
+pkgname = tomighty
+

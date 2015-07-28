@@ -1,0 +1,7 @@
+*.xz
+*.gz
+pkg
+src
+vcs-repository
+tomato.ico
+tomighty-*.jar
