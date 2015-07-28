@@ -1,10 +1,10 @@
 # Maintainer: Samuel Mesa <samuelmesa at linuxmail.org>
 
 pkgname=taudem
-_pkgname=TauDEM
+_pkgname=TauDEM-QGIS
 pkgver=5.1.2
 _pkgver=7011b25e7f1e400c622ece171d7aa55a65e0d9e5
-pkgrel=2
+pkgrel=3
 pkgdesc="Suite of Digital Elevation Model (DEM) tools for the extraction and analysis of hydrologic information from topography as represented by a DEM"
 arch=(i686 x86_64)
 url="http://hydrology.uwrl.usu.edu/taudem"
@@ -16,11 +16,11 @@ provides=()
 conflicts=()
 replaces=()
 options=('!makeflags')
-source=(https://github.com/rozos/TauDEM-QGIS/archive/${_pkgver}.zip)
+source="${pkgname}-${pkgver}.zip::https://github.com/rozos/${_pkgname}/archive/${_pkgver}.zip"
 md5sums=('a804155a7f031b17787044ef3c05b8a5')
 
 build() {   
-  srcdir=${srcdir}/TauDEM-QGIS-${_pkgver}/src
+  srcdir=${srcdir}/${_pkgname}-${_pkgver}/src
 
   cd ${srcdir}/shape
   make all
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd  ${srcdir}/TauDEM-QGIS-${_pkgver}
+  cd  ${srcdir}/${_pkgname}-${_pkgver}
 
   mkdir -p ${pkgdir}/usr/local/bin
   mkdir -p ${pkgdir}/usr/lib/python2.7/site-packages
