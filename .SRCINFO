@@ -1,11 +1,13 @@
-pkgbase = crayonphysicsdeluxe
+pkgbase = crayonphysicsdeluxe-hib
 	pkgdesc = A 2D sandbox/puzzle game where your drawings become objects (Humble Bundle/Store version)
-	pkgver = 55+h20120827
+	pkgver = 1.55+h20120827
 	pkgrel = 1
 	url = http://www.crayonphysics.com/
 	arch = i686
 	arch = x86_64
 	license = custom:commercial
+	conflicts = crayonphysicsdeluxe
+	replaces = crayonphysicsdeluxe
 	options = !strip
 	source = hib://crayon_physics_deluxe-linux-release55.tar.gz
 	source = crayonphysicsdeluxe.desktop
@@ -22,5 +24,5 @@ pkgbase = crayonphysicsdeluxe
 	depends_x86_64 = lib32-sdl_image
 	depends_x86_64 = lib32-sdl_mixer
 
-pkgname = crayonphysicsdeluxe
+pkgname = crayonphysicsdeluxe-hib
 

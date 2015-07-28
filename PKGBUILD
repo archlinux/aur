@@ -3,8 +3,8 @@
 # Contributor: Gadget3000 <gadget3000 at msn dot com>
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
-pkgname=crayonphysicsdeluxe
-pkgver=55+h20120827
+pkgname=crayonphysicsdeluxe-hib
+pkgver=1.55+h20120827
 _hibver=55
 pkgrel=1
 pkgdesc="A 2D sandbox/puzzle game where your drawings become objects (Humble Bundle/Store version)"
@@ -13,6 +13,8 @@ url="http://www.crayonphysics.com/"
 license=("custom:commercial")
 depends_i686=(glu qt4 sdl_image sdl_mixer)
 depends_x86_64=(lib32-glu lib32-qt4 lib32-sdl_image lib32-sdl_mixer)
+conflicts=(crayonphysicsdeluxe)
+replaces=(crayonphysicsdeluxe)
 options=(!strip)
 source=(hib://crayon_physics_deluxe-linux-release$_hibver.tar.gz
         crayonphysicsdeluxe.desktop
