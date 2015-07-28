@@ -1,0 +1,14 @@
+pkgbase = dovecot2-antispam-hg
+	pkgdesc = Integrates DSPAM into dovecot IMAP server. Mercurial Version for dovecot >= 2.1
+	pkgver = 51
+	pkgrel = 1
+	url = http://hg.dovecot.org/dovecot-antispam-plugin/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	depends = dovecot>=2.2.0
+	conflicts = dovecot-antispam
+
+pkgname = dovecot2-antispam-hg
+
