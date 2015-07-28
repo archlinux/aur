@@ -1,0 +1,22 @@
+pkgbase = qtviewer
+	pkgdesc = Real-Time Terrain Rendering. Display high-resolution geospatial terrain data at real-time.
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://www.open-terrain.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = subversion
+	makedepends = qt4
+	depends = libmini
+	depends = libgrid-svn
+	depends = openscenegraph
+	depends = glu
+	provides = qtviewer
+	options = staticlibs
+	source = http://www.open-terrain.org/uploads/ZIP/QTVIEWER-2.5.zip
+	md5sums = 617fc89cbe0256d8aeb5abff5415b586
+
+pkgname = qtviewer
+
