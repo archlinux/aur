@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-activities-config
+	pkgdesc = Configure the Activities Button with the Activities Configurator Extension and the Gnome Shell Extension Preferences Tool.
+	pkgver = 36
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/358/activities-configurator/
+	install = gschemas.install
+	arch = any
+	license = GPLv2
+	depends = gnome-shell>=3.8
+	depends = gnome-shell-extensions
+	source = extension.html::https://extensions.gnome.org/extension/358/activities-configurator/
+	source = archlinux-logo-gray-scalable.svg
+	md5sums = SKIP
+	md5sums = 69063bc3433d20d9de0f9dce2269186b
+
+pkgname = gnome-shell-extension-activities-config
+
