@@ -1,0 +1,17 @@
+pkgbase = python-pyfof
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/simongibbons/pyfof
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = boost
+	depends = cython2
+	depends = python-numpy
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pyfof/pyfof-0.1.2.tar.gz
+	md5sums = 406d585a97f2de8475d82f085bd6e6cb
+
+pkgname = python-pyfof
+
