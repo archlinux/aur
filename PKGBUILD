@@ -4,7 +4,7 @@
 pkgname=python2-deepin-ui
 pkgver=1.1.20141229194712
 _srcdirname=deepin-ui-1.1+20141229194712~5a86faec50
-pkgrel=2
+pkgrel=3
 pkgdesc='UI toolkit for Linux Deepin'
 arch=('i686' 'x86_64')
 url="https://gitcafe.com/Deepin/deepin-ui"
@@ -17,7 +17,7 @@ makedepends=('deepin-gettext-tools' 'python2-setuptools' 'webkitgtk')
 provides=('deepin-ui')
 replaces=('deepin-ui' 'deepin-ui-git')
 conflicts=('deepin-ui' 'deepin-ui-git')
-source=("http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-ui/deepin-ui_1.1+20141229194712~5a86faec50.tar.gz")
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/d/deepin-ui/deepin-ui_1.1+20141229194712~5a86faec50.tar.gz")
 sha256sums=('3829f85b4b888d36fac9f9d9180e6d2453e3f3fcdcc02f1051503d4ba100decc')
 
 prepare() {
