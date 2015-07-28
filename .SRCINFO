@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-it
 	pkgdesc = Collection of Italian fortune cookie files
 	pkgver = 1.99
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.fortune-it.net/
 	arch = any
 	groups = fortune-mods
