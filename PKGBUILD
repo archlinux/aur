@@ -5,14 +5,14 @@
 pkgname=atomzombiesmasher-hib
 pkgver=1.953+h20130409
 _hibver=v1_953-er
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D tactics/strategy game where you evacuate civilians from zombie-infested cities. (Humble Bundle/Store version)"
 arch=('any')
 url="http://blendogames.com/atomzombiesmasher/"
 license=("custom:commercial")
-depends=('openal' 'flac' 'libpng12' 'libjpeg6' 'libtiff3'
-         'libgdiplus' 'csfml-bin')
-conflicts=("atomzombiesmasherdemo" "atomzombiesmasher")
+depends=('mono' 'libgdiplus' 'csfml-bin' 'openal' 'flac' 'libpng12' 'libjpeg6' 'libtiff3' 'xdg-utils')
+conflicts=("atomzombiesmasherdemo" "atomzombiesmasher" "atomzombiesmasher-demo")
+replaces=("atomzombiesmasher")
 PKGEXT='.pkg.tar'
 
 _gamepkg="atomzombiesmasher_$_hibver.tar.gz"
@@ -25,31 +25,31 @@ md5sums=("6902c845a21e92c62f5b33b38715c797"
 
 _installname=atomzombiesmasher
 case $CARCH in
-    i686)   _arch=x86; _other=x86_64; _lib=lib; _libother=lib64 ;;
-    x86_64) _arch=x86_64; _other=x86; _lib=lib64; _libother=lib ;;
+    i686)   _lib=lib; _libother=lib64 ;;
+    x86_64) _lib=lib64; _libother=lib ;;
 esac
 
 prepare() {
-    # Create custom launcher
+    cd atomzombiesmasher
+    
+    msg2 "Prepare launch script..."
     echo -e "#!/usr/bin/sh\n" \
             "export MONO_WINFORMS_XIM_STYLE=disabled\n" \
             "cd /opt/$_installname\n" \
-            "exec ./AtomZombieSmasher.bin.$_arch" '"$@"' \
-        > "launcher.sh"
+            "exec mono AtomZombieSmasher.exe" '"$@"' \
+        > game/$_installname
     
-    cd $_installname
-    
-    # Fix permissions
+    msg2 "Fix permissions..."
     find -type f -exec chmod 644 {} \;
-    chmod +x game/AtomZombieSmasher.bin*
+    chmod 755 game/$_installname
     
-    # Remove unneeded files
-    rm game/AtomZombieSmasher.bin.$_other
+    msg2 "Remove unneeded files..."
+    rm game/AtomZombieSmasher.bin.*
     rm -r game/$_libother
-    ls game/$_lib/
-    rm -r game/$_lib/{libcsfml*,libsfml*}
+    rm -r game/$_lib/{libmono*,libMono*,libcsfml*,libsfml*}
     rm -r game/$_lib/{libopenal.so.1,libFLAC.so.8,libgdiplus.so}
     rm -r game/$_lib/{libjpeg.so.62,libpng12.so.0,libtiff.so.3}
+    rm -r game/{mono,{Accessibility,Mono*,mscorlib,System*}.dll}
     
     # Set apart files to install separately
     mv readme.html "$srcdir"
@@ -71,5 +71,6 @@ package() {
                    "$pkgdir"/usr/share/pixmaps/$_installname.png
     
     # Launcher
-    install -Dm755 launcher.sh "$pkgdir"/usr/bin/$_installname
+    install -d "$pkgdir"/usr/bin
+    ln -s /opt/$_installname/$_installname "$pkgdir"/usr/bin/$_installname
 }
