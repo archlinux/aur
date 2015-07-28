@@ -4,7 +4,7 @@
 pkgname=('gradle' 'gradle-doc' 'gradle-src')
 pkgbase=gradle
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc=('A powerful build system for the JVM')
 arch=('any')
 url='https://gradle.org/'
@@ -67,8 +67,8 @@ package_gradle-src() {
 }
 
 md5sums=('17295dee02217cbe4f07b0d8bb72c467'
-         'd73a375d2796dfe4ec170f2f5af3a0c9')
+         '0601af7dd04e3cddf09f22eb5dd9d880')
 sha1sums=('f3c307a91d14b4d30973e61b59bdd80e19093f33'
-          '07239706341968f2929f412ed3a7b286c1e05b9d')
+          '54065e2f4c2ee991d7170e26054730ea11b0b845')
 sha256sums=('b71ab21fa5e91dcc6a4bd723b13403e8610a6e1b4b9d4b314ff477820de00bf9'
-            '84294ba7bf75587204e0f46f6e0d001f26b0133f7ecdbaf55cc9d8478dc77caf')
+            '7cdd70370b92b297f350d5ff69b915359bdc37b4feac839696b0ab5eaa7d7c2a')
