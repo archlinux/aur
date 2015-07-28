@@ -16,7 +16,7 @@ provides=()
 conflicts=()
 replaces=()
 options=('!makeflags')
-source=(https://github.com/rozos/TauDEM-QGIS/archive/7011b25e7f1e400c622ece171d7aa55a65e0d9e5.zip)
+source=(https://github.com/rozos/TauDEM-QGIS/archive/${_pkgver}.zip)
 md5sums=('a804155a7f031b17787044ef3c05b8a5')
 
 build() {   
