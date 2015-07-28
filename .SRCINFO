@@ -1,0 +1,13 @@
+pkgbase = python2-boto-rsync
+	pkgdesc = An rsync-like utility using boto's S3 and Google Storage interfaces.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://github.com/seedifferently/boto_rsync
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-boto
+
+pkgname = python2-boto-rsync
+
