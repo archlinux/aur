@@ -1,14 +1,14 @@
 pkgbase = python-os-client-config
 	pkgdesc = OpenStack Client Configuation Library
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/openstack/os-client-config
 	arch = any
 	license = Apache
 	makedepends = python-pbr
 	makedepends = python2-pbr
-	source = https://pypi.python.org/packages/source/o/os-client-config/os-client-config-1.4.0.tar.gz
-	sha256sums = 3261be7feebd7db599b4d673193d4d2f6ee488d80ac685208d6bfd41ab79f692
+	source = https://pypi.python.org/packages/source/o/os-client-config/os-client-config-1.6.0.tar.gz
+	sha256sums = 66686f951d5766fe445ec247d26a52cde74cc440ebba0ba9f3334006fde4d395
 
 pkgname = python-os-client-config
 	depends = python-yaml>=3.1.0
