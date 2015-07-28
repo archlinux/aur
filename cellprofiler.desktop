@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CellProfiler
+Comment=Cell image analysis software
+Type=Application
+Version=1.0
+Categories=Science;Biology;ImageProcessing;
+Exec=cellprofiler
+Terminal=false
+StartupNotify=true
+Icon=/usr/lib/python2.7/site-packages/cellprofiler/CellProfilerIcon.png
