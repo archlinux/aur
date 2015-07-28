@@ -1,0 +1,15 @@
+post_install() {
+  instruct
+  echo "and enable the extension with gnome-tweak-tool."
+}
+
+post_upgrade() {
+  instruct
+  echo "for the changes to have an effect."
+}
+
+instruct() {
+  echo "Don't forget to restart GNOME Shell ([Alt]+[F2], r)"
+}
+
+# vim: ts=2 sw=2 et:
