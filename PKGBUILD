@@ -1,6 +1,6 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 # Contributor: Xyne
-# Maintainer: Tobias Markus < firstname AT miglix DOT eu >
+# Maintainer: netcrusher < firstname AT miglix DOT eu >
 # Category: multimedia
 
 pkgname=festival-hts-voices-patched
