@@ -1,0 +1,17 @@
+post_install() {
+  glib-compile-schemas usr/share/glib-2.0/schemas/
+}
+
+post_upgrade() {
+  post_install
+  cat <<WARNING
+This extension is not developed any further long since and does not work with Gnome Shell 3.16 and up.
+Users are advised to switch to gnome-shell-extension-maximus-two-git.
+WARNING
+}
+
+post_remove() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:

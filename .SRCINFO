@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-hide-titlebar
+	pkgdesc = Allows to hide the titlebars of maximized windows
+	pkgver = 1
+	pkgrel = 6
+	url = http://sourceforge.net/projects/hide-titlebar/
+	install = gschemas-and-warn.install
+	arch = any
+	license = GPLv2
+	depends = gnome-shell>=3.4
+	depends = gnome-shell<3.15
+	depends = xorg-xprop
+	depends = gnome-shell-extensions
+	source = gnome-shell-extension-hide-titlebar.zip::http://sourceforge.net/projects/hide-titlebar/files/latest/download
+	md5sums = 835eb02de1edb99c6c715570ea45c6e3
+
+pkgname = gnome-shell-extension-hide-titlebar
+
