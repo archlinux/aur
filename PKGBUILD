@@ -2,9 +2,9 @@
 # Maintainer: Xu Fasheng <fasheng.xu[AT]gmail.com>
 
 pkgname=python2-deepin-gsettings
-pkgver=0.1.git20131206094009
+pkgver=0.1.20131206094009
 _srcdirname=deepin-gsettings-0.1+git20131206094009~a64de3ac19
-pkgrel=1
+pkgrel=2
 pkgdesc='deepin gsettings python bindings'
 arch=('i686' 'x86_64')
 depends=('python2-setuptools')
@@ -15,7 +15,7 @@ license=('GPL3')
 provides=('deepin-gsettings')
 replaces=('deepin-gsettings')
 conflicts=('deepin-gsettings')
-source=("http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-gsettings/deepin-gsettings_0.1+git20131206094009~a64de3ac19.tar.gz")
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/d/deepin-gsettings/deepin-gsettings_0.1+git20131206094009~a64de3ac19.tar.gz")
 sha256sums=('39225381934750aed1f768702c6c58307954eb329b617facb64f067d17a25e26')
 
 prepare() {
