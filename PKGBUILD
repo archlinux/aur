@@ -10,7 +10,7 @@ arch=('any')
 url="https://gitcafe.com/Deepin/deepin-gettext-tools"
 license=('GPL3')
 groups=('deepin-dev')
-source=("http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-gettext-tools/deepin-gettext-tools_0.0.1+20141216200739~6ba50ecb9c.tar.gz")
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/d/deepin-gettext-tools/deepin-gettext-tools_0.0.1+20141216200739~6ba50ecb9c.tar.gz")
 sha256sums=('3ab3dab041ac8902e6ca50c1282fea2deec794cdd208972dbc56f4f5eaba539b')
 
 prepare() {
