@@ -1,0 +1,30 @@
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+# Contributor: martinjlowm <martin {at} martinjlowm {dot} dk>
+
+pkgname=zuki-themes-git
+pkgver=r53.0b8043c
+pkgrel=1
+pkgdesc="A selection of themes for GTK3, gnome-shell and more."
+arch=('any')
+url="https://github.com/lassekongo83/zuki-themes"
+license=('GPL3')
+depends=('gtk-engine-murrine' 'gtk-engines')
+conflicts=('zukitwo-themes')
+optdepends=('gnome-themes-standard: Required for the GTK3 theme'
+            'ttf-droid: Font family for the Gnome Shell theme')
+install='firefox-theme.install'
+
+# TODO: Revert to the upstream repository when/if the GTK+ 3.16 branch is merged
+# source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+https://github.com/leigh123linux/zuki-themes#branch=gtk-316")
+sha512sums=('SKIP')
+
+pkgver() {
+   	cd "${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  	cd "${pkgname}"
+  	find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+}

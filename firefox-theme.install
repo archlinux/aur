@@ -1,0 +1,17 @@
+post_install() {
+  echo ""
+  echo "To update/enable the Firefox theme, run:"
+  echo "  cp -R /usr/share/themes/Zukitre-firefox-theme/chrome ~/.mozilla/firefox/<profile_id>.default/"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ""
+  echo "Remember to remove the Firefox theme if you've enabled it:"
+  echo " rm ~/.mozilla/firefox/<profile_id>.default/chrome/userChrome.css"
+  echo ""
+}
