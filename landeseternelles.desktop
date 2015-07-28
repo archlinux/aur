@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Landes Eternelles - le jeu
+Comment=Landes Eternelles is a frensh role playing game (mmorpg), forked from Eternal Lands.
+Exec=landeseternelles
+Icon=landeseternelles.png
+Terminal=false
+Type=Application
+Categories=Application;Game;

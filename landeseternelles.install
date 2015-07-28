@@ -1,0 +1,20 @@
+# This is a default template for a post-install scriptlet.
+
+post_install() {
+
+    if [ $(uname -m) == "x86_64" ];then
+	echo -e "#/bin/sh\ncd /usr/share/landeseternelles && /usr/bin/le.x86_64.linux.bin" > /usr/bin/landeseternelles
+	echo -e "#/bin/sh\ncd /usr/share/landeseternelles && /usr/bin/mapedit.x86_64.linux.bin" > /usr/bin/editeurlandeseternelles
+    else
+	echo -e "#/bin/sh\ncd /usr/share/landeseternelles && /usr/bin/le.x86.linux.bin" > /usr/bin/landeseternelles
+	echo -e "#/bin/sh\ncd /usr/share/landeseternelles && /usr/bin/mapedit.x86.linux.bin" > /usr/bin/editeurlandeseternelles
+    fi
+    chmod 755 /usr/bin/landeseternelles
+    chmod 755 /usr/bin/editeurlandeseternelles
+
+}
+
+post_remove() {
+    rm -f /usr/bin/landeseternelles
+    rm -f /usr/bin/editeurlandeseternelles
+}
