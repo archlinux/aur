@@ -1,7 +1,7 @@
 pkgbase = gimp-plugin-bimp
 	pkgdesc = Batch Image Manipulation Plugin for GIMP.
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.alessandrofrancesconi.it/projects/bimp/
 	arch = x86_64
 	arch = i686

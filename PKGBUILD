@@ -3,7 +3,7 @@
 
 pkgname=gimp-plugin-bimp
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Batch Image Manipulation Plugin for GIMP.'
 arch=('x86_64' 'i686')
 url='http://www.alessandrofrancesconi.it/projects/bimp/'
@@ -24,5 +24,5 @@ package() {
 
     mkdir -p "$pkgdir"/usr/lib/gimp/2.0/plug-ins/
     cp ./bin/bimp "$pkgdir"/usr/lib/gimp/2.0/plug-ins/
-    cp -Rf ./bin/win32/bimp-locale/  "$pkgdir"/usr/lib/gimp/2.0/plug-ins/
+    cp -Rf ./bimp-locale/  "$pkgdir"/usr/lib/gimp/2.0/plug-ins/
 }
