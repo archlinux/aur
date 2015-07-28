@@ -3,7 +3,7 @@
 
 _gitname=wafw00f
 pkgname=wafw00f-git
-pkgver=0.9.3_e8ad02c
+pkgver=0.9.3.r102.ge8ad02c
 pkgrel=1
 pkgdesc="A set of security tools to identify and fingerprint Web Application Firewall/WAF products protecting a website"
 arch=('any')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	  cd "$_gitname"
-	  printf "%s_%s" "$(grep '__version__' wafw00f/__init__.py | cut -d "'" -f 2)" "$(git rev-parse --short HEAD)"
+	  printf "%s.r%s.g%s" "$(grep '__version__' wafw00f/__init__.py | cut -d "'" -f 2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
