@@ -1,0 +1,14 @@
+pkgbase = soundfont-titanic
+	pkgdesc = A public domain, high quality MIDI soundfont by Luke Sena
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://www.titanicsf.com
+	arch = any
+	license = custom: public domain
+	source = https://www.dropbox.com/s/g0yxy0326jgar34/titanic.sf2
+	source = LICENSE
+	md5sums = 06da89576208a6384492afa7f934ffc4
+	md5sums = a2c2f33d92f54e62e25da9bc647c8b35
+
+pkgname = soundfont-titanic
+
