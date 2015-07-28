@@ -17,6 +17,7 @@ optdepends=('createrepo_c: for mockchain command'
             'yum-utils: to create RPMs for Fedora 22 and below (including EL5, EL6 and EL7)')
 install="${pkgname}.install"
 options=('!strip' 'libtool' 'staticlibs')
+backup=('etc/mock/site-defaults.cfg')
 
 source=("https://git.fedorahosted.org/cgit/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('6787ad35ff1478a4817b15be1998ef1986487de4051ff2af37254b909a95e2aa')
