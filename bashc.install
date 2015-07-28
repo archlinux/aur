@@ -1,10 +1,43 @@
+pre_install() {
+  :
+}
+
 post_install() {
-  echo ""
-  echo ">> Change the following line in /etc/passwd:"
-  echo "   root:x:0:0:root:/root:/bin/bash to"
-  echo "   root:x:0:0:root:/root:/bin/bashc"
-  echo "   and do the same with the useraccounts."
-  echo ""
-  echo ">> Add . /etc/bash_commander to ~/.bashrc. This will load"
-  echo "   the bashc config. For config examples look at: http://groups.google.com/group/bashc"
+  grep -qle '/usr/bin/bashc$' '/etc/shells' || echo '/usr/bin/bashc' >> '/etc/shells'
+  #mandb -q
+}
+
+pre_upgrade() {
+  :
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  # This is only necessary on alternate shells. sh and bash 
+  # are at the base of Arch and cannot be removed.
+  # To test this you should have a spare root shell already open.
+  # Otherwise, if this doesn't work, you will need to learn how to bypass
+  # the default shell on login.
+  # http://stackoverflow.com/questions/11059067/what-is-the-nix-command-to-view-a-users-default-login-shell
+  if getent passwd root | cut -d: -f7 | grep -qle '/usr/bin/bashc'; then
+   echo '**********************************************'
+   echo '*** Warning: ROOT HAS bashc as the login shell.'
+   echo '*** Shell changed to sh to prevent loss of root access.'
+   echo '**********************************************'
+   # sh is more likely to guarantee a login than bash because sh is typically
+   # unmodified. Crappy, but guaranteed.
+   chsh -s '/bin/sh'
+  fi
+  sed -i -e '/^\/usr\/bin\/bashc$/d' '/etc/shells'
+}
+
+post_remove() {
+  #mandb -q
+  if getent passwd | cut -d: -f7 | grep -qle '/usr/bin/bashc'; then
+   echo '*** Warning: Some users have bashc as their login shell.'
+   echo '*** Fix promptly to restore access.'
+  fi
 }
