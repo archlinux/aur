@@ -29,8 +29,6 @@ case $CARCH in
     x86_64) _arch=x86_64; _other=x86; _lib=lib64; _libother=lib ;;
 esac
 
-[ $CARCH == "i686" ] && _arch=x86 || _arch=x86_64
-
 prepare() {
     # Create custom launcher
     echo -e "#!/usr/bin/sh\n" \
