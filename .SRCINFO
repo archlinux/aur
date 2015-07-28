@@ -1,0 +1,27 @@
+pkgbase = safenet-authentication-client
+	pkgver = 8.1.0_4
+	pkgrel = 1
+	arch = x86_64
+	depends = glib2
+	depends = hal-flash>=0.3.1
+	depends = libusb-compat
+	depends = pcsclite
+	depends = fontconfig
+	depends = freetype2
+	depends = libice
+	depends = libsm
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxrender
+	source = http://www.ssc.lt/drivers/aladdin/Kitu%20operaciniu%20sistemu%20etoken%20Rakto%20tvarkykles/eToken_PKI_client_Linux%20vartotojams/SAC%208.1%20Linux/x86_64/SAC_8_1_0_4_Linux_RPM_64.zip
+	source = eTSrv.service
+	sha256sums = c2e462ebc8ef3d2e77aa190ec1bb3cbab7ba2f3485834c1de2757334353669f1
+	sha256sums = aa1f9b9498fa99dbdc497cd26fbd4a0f757082e8578103c11bd4c74c710a2192
+
+pkgname = safenet-authentication-client
+

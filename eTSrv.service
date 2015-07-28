@@ -1,0 +1,9 @@
+[Unit]
+Description=Aladdin eToken eTSrv
+
+[Service]
+ExecStart=/usr/bin/eTSrv
+PIDFile=/var/run/eTSrv.pid
+
+[Install]
+WantedBy=multi-user.target
