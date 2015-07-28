@@ -1,6 +1,6 @@
 pkgbase = taskd-git
 	pkgdesc = A lightweight secure server providing multi-user, multi-client access to task data
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://tasktools.org/projects/taskd.html
 	install = taskd.install
@@ -14,7 +14,7 @@ pkgbase = taskd-git
 	depends = gnutls
 	provides = taskd
 	backup = etc/conf.d/taskd
-	source = taskd-git::git+https://git.tasktools.org/scm/tm/taskd.git#branch=1.1.0
+	source = taskd-git::git+https://git.tasktools.org/scm/tm/taskd.git#branch=1.2.0
 	source = taskd.conf
 	source = taskd.notes
 	sha256sums = SKIP

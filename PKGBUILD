@@ -6,7 +6,7 @@
 # dot com> (https://github.com/harleypig/abs/tree/463a8ac/aur/taskd-git)
 
 pkgname=taskd-git
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A lightweight secure server providing multi-user, multi-client
  access to task data"
@@ -15,7 +15,7 @@ license=('MIT')
 
 install=taskd.install
 
-source=("${pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=1.1.0"
+source=("${pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=1.2.0"
         'taskd.conf'
         'taskd.notes')
 
