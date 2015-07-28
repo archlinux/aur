@@ -1,0 +1,22 @@
+pkgbase = xfce4-dev-tools-devel
+	pkgdesc = Xfce developer tools
+	pkgver = 4.11.1
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk-doc
+	depends = automake
+	depends = make
+	depends = intltool
+	depends = pkg-config
+	provides = xfce4-dev-tools=4.11.1
+	conflicts = xfce4-dev-tools
+	source = http://archive.xfce.org/src/xfce/xfce4-dev-tools/4.11/xfce4-dev-tools-4.11.1.tar.bz2
+	source = xfce4-dev-tools-4.10.0-remove-FORTIFY_SOURCE-2.patch
+	sha256sums = 21bff408eb48154b3383bde8fb71a6c9359f93e5752b0af284e0af3bf6a56218
+	sha256sums = 4ecfdf8cdb0940ce1044349bdb6646192dffd2b7f4e890f0ef5f00bfdfad7676
+
+pkgname = xfce4-dev-tools-devel
+
