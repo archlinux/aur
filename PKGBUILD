@@ -3,7 +3,7 @@
 
 _gitname=akonadi
 pkgname=$_gitname-git
-pkgver=r2787.d006a0f
+pkgver=r3157.3ccf157
 pkgrel=1
 pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data"
 arch=('i686' 'x86_64')
@@ -32,7 +32,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DAKONADI_BUILD_TESTS=OFF \
+    -DBUILD_TESTING=OFF \
+    -DDATABASE_BACKEND=SQLITE \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }

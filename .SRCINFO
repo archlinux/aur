@@ -1,6 +1,6 @@
 pkgbase = akonadi-git
 	pkgdesc = PIM layer, which provides an asynchronous API to access all kind of PIM data
-	pkgver = r2787.d006a0f
+	pkgver = r3157.3ccf157
 	pkgrel = 1
 	url = http://www.kde.org
 	install = akonadi-git.install
