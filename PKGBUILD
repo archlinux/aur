@@ -3,8 +3,8 @@
 
 pkgname=mcpatcher3
 _pkgname=mcpatcher
-pkgver='3.0.4_01'
-pkgrel=2
+pkgver='3.0.4_02'
+pkgrel=1
 pkgdesc='Minecraft patcher to fix textures with higher than default resolution. For Minecraft 1.5.x.'
 arch=('any')
 license=('Public Domain')
@@ -16,7 +16,7 @@ changelog=ChangeLog
 source=(https://bitbucket.org/prupe/mcpatcher/downloads/$_pkgname-$pkgver.jar
         mcpatcher3
         mcpatcher3.desktop)
-md5sums=('99d9b43de9d6dece25c008df27e786ad'
+md5sums=('ab454b0d93eb9b2ef0fdf9c83e139c10'
          'd62667ccd36be3c31d1116e6ad5d70e2'
          'c9643983724cce746e24ffd16d0b7611')
 

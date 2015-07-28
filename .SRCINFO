@@ -1,18 +1,18 @@
 pkgbase = mcpatcher3
 	pkgdesc = Minecraft patcher to fix textures with higher than default resolution. For Minecraft 1.5.x.
-	pkgver = 3.0.4_01
-	pkgrel = 2
+	pkgver = 3.0.4_02
+	pkgrel = 1
 	url = https://bitbucket.org/prupe/mcpatcher
 	changelog = ChangeLog
 	arch = any
 	license = Public Domain
 	depends = java-runtime
 	optdepends = minecraft: the game itself
-	noextract = mcpatcher-3.0.4_01.jar
-	source = https://bitbucket.org/prupe/mcpatcher/downloads/mcpatcher-3.0.4_01.jar
+	noextract = mcpatcher-3.0.4_02.jar
+	source = https://bitbucket.org/prupe/mcpatcher/downloads/mcpatcher-3.0.4_02.jar
 	source = mcpatcher3
 	source = mcpatcher3.desktop
-	md5sums = 99d9b43de9d6dece25c008df27e786ad
+	md5sums = ab454b0d93eb9b2ef0fdf9c83e139c10
 	md5sums = d62667ccd36be3c31d1116e6ad5d70e2
 	md5sums = c9643983724cce746e24ffd16d0b7611
 
