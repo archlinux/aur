@@ -35,7 +35,7 @@ then
 fi
 export SOAPUI_BASE
 
-SOAPUI_CLASSPATH=$SOAPUI_BASE/bin/soapui-5.1.2.jar:$SOAPUI_BASE/lib/*
+SOAPUI_CLASSPATH=$SOAPUI_BASE/bin/soapui-#SOAPUIVER#.jar:$SOAPUI_BASE/lib/*
 
 export SOAPUI_CLASSPATH
 
