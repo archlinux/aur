@@ -13,7 +13,7 @@ depends=('deepin-vte' 'python2-dbus' 'python2-scipy')
 makedepends=('deepin-gettext-tools')
 groups=('deepin-extra')
 install="${pkgname}.install"
-source=("http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-terminal/deepin-terminal_1.1+20141230110750~bc441b7aae.tar.gz")
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/d/deepin-terminal/deepin-terminal_1.1+20141230110750~bc441b7aae.tar.gz")
 sha256sums=('e8f756064def8b69a2e3c63f8cb0e1070082da997862ee0ecaa2b5b84be1d1e7')
 
 prepare(){
