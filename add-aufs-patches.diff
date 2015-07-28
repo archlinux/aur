@@ -1,0 +1,14 @@
+--- core-linux/PKGBUILD.1	2013-08-17 12:11:17.748961929 +0200
++++ core-linux/PKGBUILD	2013-08-17 12:11:13.209011427 +0200
+@@ -46,6 +46,11 @@
+   # add upstream patch
+   patch -p1 -i "${srcdir}/patch-${pkgver}"
+ 
++  msg 'AUFS3 patches'
++  patch -p1 -i "${srcdir}/aufs4-base.patch"
++  patch -p1 -i "${srcdir}/aufs4-standalone.patch"
++  patch -p1 -i "${srcdir}/aufs4-mmap.patch"
++
+   # add latest fixes from stable queue, if needed
+   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+ 
