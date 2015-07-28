@@ -1,0 +1,15 @@
+pkgbase = jdip
+	pkgdesc = A diplomacy game implemented in Java
+	pkgver = 1.7.0pre1
+	pkgrel = 2
+	url = http://jdip.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = java-runtime
+	noextract = jdip-1.7.0-preview-1-bin-noinstaller.zip
+	source = http://downloads.sourceforge.net/project/jdip/jdip/jdip%201.7.0%20preview%201/jdip-1.7.0-preview-1-bin-noinstaller.zip
+	sha256sums = fba5e788dad246aff763f507202069eeec3703e1c91b60936e4c923e1715f916
+
+pkgname = jdip
+
