@@ -1,0 +1,92 @@
+--- speech_tools/include/EST_TIterator.h.orig	2012-02-25 12:09:30.926212818 -0600
++++ speech_tools/include/EST_TIterator.h	2012-02-25 12:10:32.981099676 -0600
+@@ -101,7 +101,7 @@
+ 
+   /// Create an iterator ready to run over the given container.
+   EST_TIterator(const Container &over)
+-    { begin(over); }
++    { this->begin(over); }
+ 
+   /// Copy an iterator by assignment
+   Iter &operator = (const Iter &orig)
+@@ -109,7 +109,7 @@
+ 
+   /// Assigning a container to an iterator sets it ready to start.
+   Iter &operator = (const Container &over)
+-    { begin(over); return *this;}
++    { this->begin(over); return *this;}
+ 
+   /// Set the iterator ready to run over this container.
+   void begin(const Container &over)
+@@ -209,7 +209,7 @@
+ 
+   /// Create an iterator ready to run over the given container.
+   EST_TStructIterator(const Container &over)
+-    { begin(over); }
++    { this->begin(over); }
+ 
+   const Entry *operator ->() const
+     {return &this->current();}
+@@ -239,7 +239,7 @@
+ 
+   /// Create an iterator ready to run over the given container.
+   EST_TRwIterator(Container &over)
+-    { begin(over); }
++    { this->begin(over); }
+ 
+   /// Set the iterator ready to run over this container.
+   void begin(Container &over)
+@@ -289,7 +289,7 @@
+ 
+   /// Create an iterator ready to run over the given container.
+   EST_TRwStructIterator(Container &over)
+-    { begin(over); }
++    { this->begin(over); }
+ 
+   Entry *operator ->() const
+     {return &this->current();}
+--- speech_tools/include/EST_TNamedEnum.h.orig	2012-02-25 12:26:51.432455812 -0600
++++ speech_tools/include/EST_TNamedEnum.h	2012-02-25 12:27:07.125450312 -0600
+@@ -130,7 +130,7 @@
+ 	{this->initialise((const void *)defs); };
+   EST_TNamedEnumI(EST_TValuedEnumDefinition<const char *,const char *,INFO> defs[], ENUM (*conv)(const char *))
+ 	{this->initialise((const void *)defs, conv); };
+-  const char *name(ENUM tok, int n=0) const {return value(tok,n); };
++  const char *name(ENUM tok, int n=0) const {return this->value(tok,n); };
+ 
+ };
+ 
+--- speech_tools/base_class/EST_TSimpleMatrix.cc.orig	2012-02-25 12:34:37.095639209 -0600
++++ speech_tools/base_class/EST_TSimpleMatrix.cc	2012-02-25 12:35:33.952865468 -0600
+@@ -97,7 +97,7 @@
+ 	{
+ 	  int copy_r = Lof(this->num_rows(), new_rows);
+ 
+-	  just_resize(new_rows, new_cols, &old_vals);
++	  this->just_resize(new_rows, new_cols, &old_vals);
+ 
+ 	  memcpy((void *)this->p_memory, 
+ 		 (const void *)old_vals,
+@@ -126,9 +126,9 @@
+ 	  int copy_r = Lof(this->num_rows(), new_rows);
+ 	  int copy_c = Lof(this->num_columns(), new_cols);
+ 	  
+-	  just_resize(new_rows, new_cols, &old_vals);
++	  this->just_resize(new_rows, new_cols, &old_vals);
+ 
+-	  set_values(old_vals,
++	  this->set_values(old_vals,
+ 		     old_row_step, old_column_step,
+ 		     0, copy_r,
+ 		     0, copy_c);
+--- speech_tools/base_class/EST_TSimpleVector.cc.orig	2012-02-25 12:38:16.647543126 -0600
++++ speech_tools/base_class/EST_TSimpleVector.cc	2012-02-25 12:38:41.571710862 -0600
+@@ -70,7 +70,7 @@
+   T *old_vals =NULL;
+   int old_offset = this->p_offset;
+ 
+-  just_resize(newn, &old_vals);
++  this->just_resize(newn, &old_vals);
+ 
+   if (set && old_vals)
+     {

@@ -1,0 +1,10 @@
+--- festival/config/config.in.old	2012-07-17 11:41:46.632232556 +0700
++++ festival/config/config.in	2012-07-17 11:45:03.928241975 +0700
+@@ -58,6 +58,7 @@
+ ALSO_INCLUDE += clunits clustergen MultiSyn
+ 
+ ## NITECH and Tokyo Institute of Technologies HTS support
++ALSO_INCLUDE += hts21_engine
+ ALSO_INCLUDE += hts_engine
+ 
+ ## Old diphone code that will be delete, left in only for some

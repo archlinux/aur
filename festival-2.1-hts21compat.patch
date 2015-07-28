@@ -1,0 +1,3642 @@
+Description: Fix backward compatibility for HTS 2.1 voices into festival
+ This patch introduces a module hts21_engine which has backward compatibility
+with older HTS 2.1 voices. As of Festival 2.095 beta festival defaults
+to HTS2.1.1 voices which have a different API. To use festival with older
+voices, this patch must be applied and a minor change to HTS 2.1 voices must
+be made. Two lines in the older voice must be changed to point to the compatibility
+module. These lines are in the festvox directory of the voice but the name of the file
+changes from voice to voice. The lines to be replaced are the following:
+
+(require 'hts)
+
+must be replaced with:
+
+(require 'hts21compat)
+
+and the line:
+
+  (Parameter.set 'Synth_Method 'HTS)
+
+must be replaced with:
+
+  (Parameter.set 'Synth_Method 'HTS21)
+
+This patch is temporary. It is expected that as newer voices become more
+available it will be removed from Debian festival.
+
+Author: Peter Drysdale <drysdalepete@gmail.com>
+
+---
+
+Origin: other
+Bug-Debian: http://bugs.debian.org/589614
+Forwarded: <not-needed>
+Reviewed-By: Peter Drysdale <drysdalepete@gmail.com>
+Last-Update: <2011-11-25>
+
+--- /dev/null
++++ festival/src/modules/hts21_engine/model.cc
+@@ -0,0 +1,225 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    model.c : read model and search pdf from models                */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++#include <cstdio>
++#include <cstring>
++#include <cstdlib>
++#include "festival.h"
++
++#include "defaults.h"
++#include "misc.h"
++#include "model.h"
++#include "global.h"
++
++/* LoadModelFiles : load model files from files to pdf array */
++void LoadModelFiles(ModelSet *ms)
++{
++   int i, j, k;
++
++   /*-------------------- load pdfs for duration --------------------*/
++   /* read the number of states & the number of pdfs (leaf nodes) */
++   fread(&ms->nstate,  sizeof(int), 1, ms->fp[DUR]);
++   if (EST_BIG_ENDIAN) ms->nstate = SWAPINT(ms->nstate);
++   fread(&ms->ndurpdf, sizeof(int), 1, ms->fp[DUR]);
++   if (EST_BIG_ENDIAN) ms->ndurpdf = SWAPINT(ms->ndurpdf);
++
++   ms->durpdf = walloc(float *,ms->ndurpdf+2);
++   
++   /* read pdfs (mean & variance) */
++   for (i=1; i<=ms->ndurpdf; i++) {
++      ms->durpdf[i] = walloc(float,2*ms->nstate+2);
++      fread(ms->durpdf[i]+2, sizeof(float), 2*ms->nstate, ms->fp[DUR]);
++      if (EST_BIG_ENDIAN)
++	      swap_bytes_float(ms->durpdf[i]+2,2*ms->nstate);
++   }
++
++   /*-------------------- load pdfs for mcep --------------------*/
++   /* read vector size for spectrum */
++   fread(&ms->mcepvsize, sizeof(int), 1, ms->fp[MCP]);
++   if (EST_BIG_ENDIAN) ms->mcepvsize = SWAPINT(ms->mcepvsize);
++   ms->nmceppdf = walloc(int,ms->nstate);
++
++   /* read the number of pdfs for each state position */
++   fread(ms->nmceppdf, sizeof(int), ms->nstate, ms->fp[MCP]);
++   if (EST_BIG_ENDIAN) swap_bytes_int(ms->nmceppdf,ms->nstate);
++   ms->mceppdf = walloc(float **,ms->nstate+2);
++   
++   /* read pdfs (mean, variance) */
++   for (i=2; i<=ms->nstate+1; i++) {
++      ms->mceppdf[i] = walloc(float *,ms->nmceppdf[i-2]+2);
++      for (j=1; j<=ms->nmceppdf[i-2]; j++) {
++         ms->mceppdf[i][j] = walloc(float,ms->mcepvsize*2);
++         fread(ms->mceppdf[i][j], sizeof(float), ms->mcepvsize*2, ms->fp[MCP]);
++	 if (EST_BIG_ENDIAN)
++		 swap_bytes_float(ms->mceppdf[i][j],ms->mcepvsize*2);
++      }
++   } 
++
++   /*-------------------- load pdfs for log F0 --------------------*/
++   /* read the number of streams for f0 modeling */
++   fread(&ms->lf0stream, sizeof(int), 1, ms->fp[LF0]);
++   if (EST_BIG_ENDIAN) ms->lf0stream = SWAPINT(ms->lf0stream);
++   ms->nlf0pdf = walloc(int,ms->nstate+2);
++   /* read the number of pdfs for each state position */
++   fread(ms->nlf0pdf, sizeof(int), ms->nstate, ms->fp[LF0]);
++   if (EST_BIG_ENDIAN) swap_bytes_int(ms->nlf0pdf,ms->nstate);
++   ms->lf0pdf = walloc(float ***,ms->nstate+3);
++   
++   /* read pdfs (mean, variance & weight) */
++   for (i=2; i<=ms->nstate+1; i++) {
++      ms->lf0pdf[i] = walloc(float **,ms->nlf0pdf[i-2]+1);
++      for (j=1; j<=ms->nlf0pdf[i-2]; j++) {
++         ms->lf0pdf[i][j] = walloc(float *,ms->lf0stream+1);
++         for (k=1; k<=ms->lf0stream; k++) {
++            ms->lf0pdf[i][j][k] = walloc(float,4);
++            fread(ms->lf0pdf[i][j][k], sizeof(float), 4, ms->fp[LF0]);
++	    if (EST_BIG_ENDIAN)
++		 swap_bytes_float(ms->lf0pdf[i][j][k],4);
++         }
++      }
++   } 
++}
++
++/* FindDurPDF : find duration pdf from pdf array */
++void FindDurPDF (Model *m, ModelSet *ms, float rho, int diffdur)
++{
++   float data, mean, variance;
++   int s, idx; 
++
++   idx = m->durpdf;
++
++   m->dur = walloc(int,ms->nstate+2);
++   m->totaldur = 0;
++   
++   for (s=2; s<=ms->nstate+1; s++) {
++      mean = ms->durpdf[idx][s];
++      variance = ms->durpdf[idx][ms->nstate+s];
++      data = mean + rho*variance;
++      
++      if (data < 0.0) data = 0.0;
++         
++      m->dur[s] = (int) (data+diffdur+0.5);
++      m->totaldur += m->dur[s];
++      diffdur += (int)(data-(float)m->dur[s]);
++   }
++}
++
++/* FindLF0PDF : find required pdf for log F0 from pdf array */
++void FindLF0PDF (int s, Model *m, ModelSet *ms, float uvthresh)
++{
++   int idx, stream;
++   float *weight;
++
++   idx = m->lf0pdf[s];
++
++   if (m->lf0mean[s]) wfree(m->lf0mean[s]);
++   m->lf0mean[s]     = walloc(float,ms->lf0stream+1);
++   if (m->lf0variance[s]) wfree(m->lf0variance[s]);
++   m->lf0variance[s] = walloc(float,ms->lf0stream+1);
++   
++   for (stream=1; stream<=ms->lf0stream; stream++) {
++      m->lf0mean    [s][stream] = ms->lf0pdf[s][idx][stream][0];
++      m->lf0variance[s][stream] = ms->lf0pdf[s][idx][stream][1];
++      weight = ms->lf0pdf[s][idx][stream]+2;
++      
++      if (stream==1) {
++         if (weight[0] > uvthresh)
++            m->voiced[s] = 1;
++         else
++            m->voiced[s] = 0;
++      }
++   }
++}
++
++/* FindMcpPDF : find pdf for mel-cepstrum from pdf array */
++void FindMcpPDF (int s, Model *m, ModelSet *ms)
++{
++   int idx;
++   
++   idx = m->mceppdf[s];
++
++   m->mcepmean[s] = ms->mceppdf[s][idx];
++   m->mcepvariance[s] = ms->mceppdf[s][idx]+ms->mcepvsize;
++}
++
++void InitModelSet (ModelSet *ms)
++{
++   ms->fp[DUR] = NULL;
++   ms->fp[LF0] = NULL;
++   ms->fp[MCP] = NULL;
++   
++   return;
++} 
++
++void DeleteModelSet(ModelSet *ms)
++{
++    int i,j,k;
++    
++    for (i=1; i<=ms->ndurpdf; i++)
++	wfree(ms->durpdf[i]);
++    wfree(ms->durpdf);
++
++    for (i=2; i<=ms->nstate+1; i++)
++    {
++	for (j=1; j<=ms->nmceppdf[i-2]; j++)
++	    wfree(ms->mceppdf[i][j]);
++	wfree(ms->mceppdf[i]);
++    }
++    wfree(ms->nmceppdf);
++    wfree(ms->mceppdf);
++
++    for (i=2; i<=ms->nstate+1; i++)
++    {
++	for (j=1; j<=ms->nlf0pdf[i-2]; j++)
++	{
++	    for (k=1; k <=ms->lf0stream; k++)
++		wfree(ms->lf0pdf[i][j][k]);
++	    wfree(ms->lf0pdf[i][j]);
++	}
++	wfree(ms->lf0pdf[i]);
++    }
++    wfree(ms->nlf0pdf);
++    wfree(ms->lf0pdf);
++}
++
++/* -------------------- End of "model.c" -------------------- */
++
+--- /dev/null
++++ festival/src/modules/hts21_engine/mlpg.h
+@@ -0,0 +1,82 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    mlpg.h : speech parameter generation from pdf sequence         */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++#define INFTY ((double) 1.0e+38)
++#define INFTY2 ((double) 1.0e+19)
++#define INVINF ((double) 1.0e-38)
++#define INVINF2 ((double) 1.0e-19)
++
++#define WLEFT 0
++#define WRIGHT 1
++
++typedef struct _DWin {
++   int num;           /* number of static + deltas */
++   char **fn;         /* delta window coefficient file */
++   int **width;       /* width [0..num-1][0(left) 1(right)] */
++   float **coef;      /* coefficient [0..num-1][length[0]..length[1]] */
++   float **coefr;     /* pointers to the memory being allocated */
++   int maxw[2];       /* max width [0(left) 1(right)] */
++   int max_L;
++} DWin;
++
++typedef struct _SMatrices {
++   double **mseq;   /* sequence of mean vector */
++   double **ivseq;	 /* sequence of invarsed variance vector */
++   double *g;			
++   double **R;
++   double *r; 
++} SMatrices;
++
++typedef struct _PStream {
++   int vSize;
++   int order;
++   int T;
++   int width;
++   DWin dw;
++   float **par;     /* output parameter vector */
++   SMatrices sm;
++} PStream;
++
++void pdf2speech(FILE *, FILE *, FILE *, PStream *, PStream *, globalP *, ModelSet *, UttModel *, VocoderSetup *);
++void InitDWin (PStream *);
++
++/* -------------------- End of "mlpg.h" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/hts21_mlsa_resynthesis.cc
+@@ -0,0 +1,863 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*   This is Zen's MLSA filter as ported by Toda to fetvox vc        */
++/*   and back ported into hts/festival so we can do MLSA filtering   */
++/*   If I took more time I could probably make this use the same as  */
++/*   as the other code in this directory -- awb@cs.cmu.edu 03JAN06   */
++/*  ---------------------------------------------------------------  */
++
++/*********************************************************************/
++/*                                                                   */
++/*  Mel-cepstral vocoder (pulse/noise excitation & MLSA filter)      */
++/*                                    2003/12/26 by Heiga Zen        */
++/*                                                                   */
++/*  Extracted from HTS and slightly modified                         */
++/*   by Tomoki Toda (tomoki@ics.nitech.ac.jp)                        */
++/*  June 2004                                                        */
++/*  Integrate as a Voice Conversion module                           */
++/*                                                                   */
++/*-------------------------------------------------------------------*/
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <math.h>
++#include <EST_walloc.h>
++#include "festival.h"
++
++#include "hts21_mlsa_resynthesis.h"
++
++LISP hts21_mlsa_resynthesis(LISP ltrack)
++{
++    /* Resynthesizes a wave from given track */
++    EST_Track *t;
++    EST_Wave *wave = 0;
++    DVECTOR w;
++    DMATRIX mcep;
++    DVECTOR f0v;
++    int sr = 16000;
++    int i,j;
++    double shift;
++
++    if ((ltrack == NULL) ||
++        (TYPEP(ltrack,tc_string) &&
++         (streq(get_c_string(ltrack),"nil"))))
++        return siod(new EST_Wave(0,1,sr));
++
++    t = track(ltrack);
++
++    f0v = xdvalloc(t->num_frames());
++    mcep = xdmalloc(t->num_frames(),t->num_channels()-1);
++
++    for (i=0; i<t->num_frames(); i++)
++    {
++        f0v->data[i] = t->a(i,0);
++        for (j=1; j<t->num_channels(); j++)
++            mcep->data[i][j-1] = t->a(i,j);
++    }
++
++    if (t->num_frames() > 1)
++        shift = 1000.0*(t->t(1)-t->t(0));
++    else
++        shift = 5.0;
++
++    w = synthesis_body(mcep,f0v,NULL,sr,shift);
++
++    wave = new EST_Wave(w->length,1,sr);
++    
++    for (i=0; i<w->length; i++)
++        wave->a(i) = (short)w->data[i];
++
++    xdmfree(mcep);
++    xdvfree(f0v);
++    xdvfree(w);
++
++    return siod(wave);
++}
++
++
++DVECTOR synthesis_body(DMATRIX mcep,	// input mel-cep sequence
++		       DVECTOR f0v,	// input F0 sequence
++		       DVECTOR dpow,	// input diff-pow sequence
++		       double fs,	// sampling frequency (Hz)
++		       double framem)	// FFT length
++{
++    long t, pos;
++    int framel;
++    double f0;
++    VocoderSetup vs;
++    DVECTOR xd = NODATA;
++    DVECTOR syn = NODATA;
++
++    framel = (int)(framem * fs / 1000.0);
++    init_vocoder(fs, framel, mcep->col - 1, &vs);
++
++    // synthesize waveforms by MLSA filter
++    xd = xdvalloc(mcep->row * (framel + 2));
++    for (t = 0, pos = 0; t < mcep->row; t++) {
++	if (t >= f0v->length) f0 = 0.0;
++	else f0 = f0v->data[t];
++	if (dpow == NODATA)
++	    vocoder(f0, mcep->data[t], mcep->col - 1, ALPHA, 0.0, &vs,
++		    xd->data, &pos);
++	else
++	    vocoder(f0, mcep->data[t], dpow->data[t], mcep->col - 1, ALPHA,
++		    0.0, &vs, xd->data, &pos);
++    }
++    syn = xdvcut(xd, 0, pos);
++
++    // normalized amplitude
++    waveampcheck(syn, XFALSE);
++
++    // memory free
++    xdvfree(xd);
++    free_vocoder(&vs);
++
++    return syn;
++}
++
++#if 0
++static DVECTOR get_dpowvec(DMATRIX rmcep, DMATRIX cmcep)
++{
++    long t;
++    DVECTOR dpow = NODATA;
++    VocoderSetup pvs;
++
++    // error check
++    if (rmcep->col != cmcep->col) {
++	fprintf(stderr, "Error: Different number of dimensions\n");
++	exit(1);
++    }
++    if (rmcep->row != cmcep->row) {
++	fprintf(stderr, "Error: Different number of frames\n");
++	exit(1);
++    }
++
++    // memory allocation
++    dpow = xdvalloc(rmcep->row);
++    init_vocoder(16000.0, 80, rmcep->col - 1, &pvs);
++
++    // calculate differential power
++    for (t = 0; t < rmcep->row; t++)
++	dpow->data[t] = get_dpow(rmcep->data[t], cmcep->data[t],
++				 rmcep->col - 1, ALPHA, &pvs);
++
++    // memory free
++    free_vocoder(&pvs);
++
++    return dpow;
++}
++#endif
++
++static void waveampcheck(DVECTOR wav, XBOOL msg_flag)
++{
++    double value;
++    int k;
++
++    value = MAX(FABS(dvmax(wav, NULL)), FABS(dvmin(wav, NULL)));
++    if (value >= 32000.0) {
++	if (msg_flag == XTRUE) {
++	    fprintf(stderr, "amplitude is too big: %f\n", value);
++	    fprintf(stderr, "execute normalization\n");
++	}
++	/* was dvscoper(wav, "*", 32000.0 / value); */
++	for (k = 0; k < wav->length; k++) {
++	    wav->data[k] = wav->data[k] * (32000.0/value);
++	    if (wav->imag != NULL) {
++		wav->imag[k] = wav->imag[k] * (32000.0/value);
++	    }
++	}
++    }
++
++    return;
++}
++
++static void init_vocoder(double fs, int framel, int m, VocoderSetup *vs)
++{
++    // initialize global parameter
++    vs->fprd = framel;
++    vs->iprd = 1;
++    vs->seed = 1;
++    vs->pd   = 5;
++
++    vs->next =1;
++    vs->gauss = MTRUE;
++
++    vs->pade[ 0]=1.0;
++    vs->pade[ 1]=1.0; vs->pade[ 2]=0.0;
++    vs->pade[ 3]=1.0; vs->pade[ 4]=0.0;      vs->pade[ 5]=0.0;
++    vs->pade[ 6]=1.0; vs->pade[ 7]=0.0;      vs->pade[ 8]=0.0;      vs->pade[ 9]=0.0;
++    vs->pade[10]=1.0; vs->pade[11]=0.4999273; vs->pade[12]=0.1067005; vs->pade[13]=0.01170221; vs->pade[14]=0.0005656279;
++    vs->pade[15]=1.0; vs->pade[16]=0.4999391; vs->pade[17]=0.1107098; vs->pade[18]=0.01369984; vs->pade[19]=0.0009564853;
++    vs->pade[20]=0.00003041721;
++
++    vs->rate = fs;
++    vs->c = wcalloc(double,3 * (m + 1) + 3 * (vs->pd + 1) + vs->pd * (m + 2));
++   
++    vs->p1 = -1;
++    vs->sw = 0;
++    vs->x  = 0x55555555;
++   
++    // for postfiltering
++    vs->mc = NULL;
++    vs->o  = 0;
++    vs->d  = NULL;
++    vs->irleng= 64;
++   
++    return;
++}
++
++static void vocoder(double p, double *mc, int m, double a, double beta,
++	     VocoderSetup *vs, double *wav, long *pos)
++{
++    double inc, x, e1, e2;
++    int i, j, k; 
++   
++    if (p != 0.0) 
++	p = vs->rate / p;  // f0 -> pitch
++   
++    if (vs->p1 < 0) {
++	if (vs->gauss & (vs->seed != 1)) 
++	    vs->next = srnd((unsigned)vs->seed);
++         
++	vs->p1   = p;
++	vs->pc   = vs->p1;
++	vs->cc   = vs->c + m + 1;
++	vs->cinc = vs->cc + m + 1;
++	vs->d1   = vs->cinc + m + 1;
++      
++	mc2b(mc, vs->c, m, a);
++      
++	if (beta > 0.0 && m > 1) {
++	    e1 = b2en(vs->c, m, a, vs);
++	    vs->c[1] -= beta * a * mc[2];
++	    for (k=2;k<=m;k++)
++		vs->c[k] *= (1.0 + beta);
++	    e2 = b2en(vs->c, m, a, vs);
++	    vs->c[0] += log(e1/e2)/2;
++	}
++
++	return;
++    }
++
++    mc2b(mc, vs->cc, m, a); 
++    if (beta>0.0 && m > 1) {
++	e1 = b2en(vs->cc, m, a, vs);
++	vs->cc[1] -= beta * a * mc[2];
++	for (k = 2; k <= m; k++)
++	    vs->cc[k] *= (1.0 + beta);
++	e2 = b2en(vs->cc, m, a, vs);
++	vs->cc[0] += log(e1 / e2) / 2.0;
++    }
++
++    for (k=0; k<=m; k++)
++	vs->cinc[k] = (vs->cc[k] - vs->c[k]) *
++	    (double)vs->iprd / (double)vs->fprd;
++
++    if (vs->p1!=0.0 && p!=0.0) {
++	inc = (p - vs->p1) * (double)vs->iprd / (double)vs->fprd;
++    } else {
++	inc = 0.0;
++	vs->pc = p;
++	vs->p1 = 0.0;
++    }
++
++    for (j = vs->fprd, i = (vs->iprd + 1) / 2; j--;) {
++	if (vs->p1 == 0.0) {
++	    if (vs->gauss)
++		x = (double) nrandom(vs);
++	    else
++		x = mseq(vs);
++	} else {
++	    if ((vs->pc += 1.0) >= vs->p1) {
++		x = sqrt (vs->p1);
++		vs->pc = vs->pc - vs->p1;
++	    } else x = 0.0;
++	}
++
++	x *= exp(vs->c[0]);
++
++	x = mlsadf(x, vs->c, m, a, vs->pd, vs->d1, vs);
++
++	wav[*pos] = x;
++	*pos += 1;
++
++	if (!--i) {
++	    vs->p1 += inc;
++	    for (k = 0; k <= m; k++) vs->c[k] += vs->cinc[k];
++	    i = vs->iprd;
++	}
++    }
++   
++    vs->p1 = p;
++    memmove(vs->c,vs->cc,sizeof(double)*(m+1));
++   
++    return;
++}
++
++static void vocoder(double p, double *mc, double dpow, int m, double a, double beta,
++	     VocoderSetup *vs, double *wav, long *pos)
++{
++    double inc, x, e1, e2;
++    int i, j, k; 
++   
++    if (p != 0.0) 
++	p = vs->rate / p;  // f0 -> pitch
++   
++    if (vs->p1 < 0) {
++	if (vs->gauss & (vs->seed != 1)) 
++	    vs->next = srnd((unsigned)vs->seed);
++         
++	vs->p1   = p;
++	vs->pc   = vs->p1;
++	vs->cc   = vs->c + m + 1;
++	vs->cinc = vs->cc + m + 1;
++	vs->d1   = vs->cinc + m + 1;
++      
++	mc2b(mc, vs->c, m, a);
++	vs->c[0] += dpow;
++      
++	if (beta > 0.0 && m > 1) {
++	    e1 = b2en(vs->c, m, a, vs);
++	    vs->c[1] -= beta * a * mc[2];
++	    for (k=2;k<=m;k++)
++		vs->c[k] *= (1.0 + beta);
++	    e2 = b2en(vs->c, m, a, vs);
++	    vs->c[0] += log(e1/e2)/2;
++	}
++
++	return;
++    }
++
++    mc2b(mc, vs->cc, m, a);
++    vs->cc[0] += dpow;
++    if (beta>0.0 && m > 1) {
++	e1 = b2en(vs->cc, m, a, vs);
++	vs->cc[1] -= beta * a * mc[2];
++	for (k = 2; k <= m; k++)
++	    vs->cc[k] *= (1.0 + beta);
++	e2 = b2en(vs->cc, m, a, vs);
++	vs->cc[0] += log(e1 / e2) / 2.0;
++    }
++
++    for (k=0; k<=m; k++)
++	vs->cinc[k] = (vs->cc[k] - vs->c[k]) *
++	    (double)vs->iprd / (double)vs->fprd;
++
++    if (vs->p1!=0.0 && p!=0.0) {
++	inc = (p - vs->p1) * (double)vs->iprd / (double)vs->fprd;
++    } else {
++	inc = 0.0;
++	vs->pc = p;
++	vs->p1 = 0.0;
++    }
++
++    for (j = vs->fprd, i = (vs->iprd + 1) / 2; j--;) {
++	if (vs->p1 == 0.0) {
++	    if (vs->gauss)
++		x = (double) nrandom(vs);
++	    else
++		x = mseq(vs);
++	} else {
++	    if ((vs->pc += 1.0) >= vs->p1) {
++		x = sqrt (vs->p1);
++		vs->pc = vs->pc - vs->p1;
++	    } else x = 0.0;
++	}
++
++	x *= exp(vs->c[0]);
++
++	x = mlsadf(x, vs->c, m, a, vs->pd, vs->d1, vs);
++
++	wav[*pos] = x;
++	*pos += 1;
++
++	if (!--i) {
++	    vs->p1 += inc;
++	    for (k = 0; k <= m; k++) vs->c[k] += vs->cinc[k];
++	    i = vs->iprd;
++	}
++    }
++   
++    vs->p1 = p;
++    memmove(vs->c,vs->cc,sizeof(double)*(m+1));
++   
++    return;
++}
++
++static double mlsadf(double x, double *b, int m, double a, int pd, double *d, VocoderSetup *vs)
++{
++
++   vs->ppade = &(vs->pade[pd*(pd+1)/2]);
++    
++   x = mlsadf1 (x, b, m, a, pd, d, vs);
++   x = mlsadf2 (x, b, m, a, pd, &d[2*(pd+1)], vs);
++
++   return(x);
++}
++
++static double mlsadf1(double x, double *b, int m, double a, int pd, double *d, VocoderSetup *vs)
++{
++   double v, out = 0.0, *pt, aa;
++   register int i;
++
++   aa = 1 - a*a;
++   pt = &d[pd+1];
++
++   for (i=pd; i>=1; i--) {
++      d[i] = aa*pt[i-1] + a*d[i];
++      pt[i] = d[i] * b[1];
++      v = pt[i] * vs->ppade[i];
++      x += (1 & i) ? v : -v;
++      out += v;
++   }
++
++   pt[0] = x;
++   out += x;
++
++   return(out);
++}
++
++static double mlsadf2 (double x, double *b, int m, double a, int pd, double *d, VocoderSetup *vs)
++{
++   double v, out = 0.0, *pt, aa;
++   register int i;
++    
++   aa = 1 - a*a;
++   pt = &d[pd * (m+2)];
++
++   for (i=pd; i>=1; i--) {
++      pt[i] = mlsafir (pt[i-1], b, m, a, &d[(i-1)*(m+2)]);
++      v = pt[i] * vs->ppade[i];
++
++      x  += (1&i) ? v : -v;
++      out += v;
++   }
++    
++   pt[0] = x;
++   out  += x;
++
++   return(out);
++}
++
++static double mlsafir (double x, double *b, int m, double a, double *d)
++{
++   double y = 0.0;
++   double aa;
++   register int i;
++
++   aa = 1 - a*a;
++
++   d[0] = x;
++   d[1] = aa*d[0] + a*d[1];
++
++   for (i=2; i<=m; i++) {
++      d[i] = d[i] + a*(d[i+1]-d[i-1]);
++      y += d[i]*b[i];
++   }
++
++   for (i=m+1; i>1; i--) 
++      d[i] = d[i-1];
++
++   return(y);
++}
++
++static double nrandom (VocoderSetup *vs)
++{
++   if (vs->sw == 0) {
++      vs->sw = 1;
++      do {
++         vs->r1 = 2.0 * rnd(&vs->next) - 1.0;
++         vs->r2 = 2.0 * rnd(&vs->next) - 1.0;
++         vs->s  = vs->r1 * vs->r1 + vs->r2 * vs->r2;
++      } while (vs->s > 1 || vs->s == 0);
++
++      vs->s = sqrt (-2 * log(vs->s) / vs->s);
++      
++      return(vs->r1*vs->s);
++   }
++   else {
++      vs->sw = 0;
++      
++      return (vs->r2*vs->s);
++   }
++}
++
++static double rnd (unsigned long *next)
++{
++   double r;
++
++   *next = *next * 1103515245L + 12345;
++   r = (*next / 65536L) % 32768L;
++
++   return(r/RANDMAX); 
++}
++
++static unsigned long srnd ( unsigned long seed )
++{
++   return(seed);
++}
++
++static int mseq (VocoderSetup *vs)
++{
++   register int x0, x28;
++
++   vs->x >>= 1;
++
++   if (vs->x & B0)
++      x0 = 1;
++   else
++      x0 = -1;
++
++   if (vs->x & B28)
++      x28 = 1;
++   else
++      x28 = -1;
++
++   if (x0 + x28)
++      vs->x &= B31_;
++   else
++      vs->x |= B31;
++
++   return(x0);
++}
++
++// mc2b : transform mel-cepstrum to MLSA digital fillter coefficients
++static void mc2b (double *mc, double *b, int m, double a)
++{
++   b[m] = mc[m];
++    
++   for (m--; m>=0; m--)
++      b[m] = mc[m] - a * b[m+1];
++   
++   return;
++}
++
++
++static double b2en (double *b, int m, double a, VocoderSetup *vs)
++{
++   double en;
++   int k;
++   
++   if (vs->o<m) {
++      if (vs->mc != NULL)
++          wfree(vs->mc);
++    
++      vs->mc = wcalloc(double,(m + 1) + 2 * vs->irleng);
++      vs->cep = vs->mc + m+1;
++      vs->ir  = vs->cep + vs->irleng;
++   }
++
++   b2mc(b, vs->mc, m, a);
++   freqt(vs->mc, m, vs->cep, vs->irleng-1, -a, vs);
++   c2ir(vs->cep, vs->irleng, vs->ir, vs->irleng);
++   en = 0.0;
++   
++   for (k=0;k<vs->irleng;k++)
++      en += vs->ir[k] * vs->ir[k];
++
++   return(en);
++}
++
++
++// b2bc : transform MLSA digital filter coefficients to mel-cepstrum
++static void b2mc (double *b, double *mc, int m, double a)
++{
++  double d, o;
++        
++  d = mc[m] = b[m];
++  for (m--; m>=0; m--) {
++    o = b[m] + a * d;
++    d = b[m];
++    mc[m] = o;
++  }
++  
++  return;
++}
++
++// freqt : frequency transformation
++static void freqt (double *c1, int m1, double *c2, int m2, double a, VocoderSetup *vs)
++{
++   register int i, j;
++   double b;
++    
++   if (vs->d==NULL) {
++      vs->size = m2;
++      vs->d    = wcalloc(double,vs->size + vs->size + 2);
++      vs->g    = vs->d+vs->size+1;
++   }
++
++   if (m2>vs->size) {
++       wfree(vs->d);
++      vs->size = m2;
++      vs->d    = wcalloc(double,vs->size + vs->size + 2);
++      vs->g    = vs->d+vs->size+1;
++   }
++    
++   b = 1-a*a;
++   for (i=0; i<m2+1; i++)
++      vs->g[i] = 0.0;
++
++   for (i=-m1; i<=0; i++) {
++      if (0 <= m2)
++         vs->g[0] = c1[-i]+a*(vs->d[0]=vs->g[0]);
++      if (1 <= m2)
++         vs->g[1] = b*vs->d[0]+a*(vs->d[1]=vs->g[1]);
++      for (j=2; j<=m2; j++)
++         vs->g[j] = vs->d[j-1]+a*((vs->d[j]=vs->g[j])-vs->g[j-1]);
++   }
++
++   memmove(c2,vs->g,sizeof(double)*(m2+1));
++   
++   return;
++}
++
++// c2ir : The minimum phase impulse response is evaluated from the minimum phase cepstrum
++static void c2ir (double *c, int nc, double *h, int leng)
++{
++   register int n, k, upl;
++   double  d;
++
++   h[0] = exp(c[0]);
++   for (n=1; n<leng; n++) {
++      d = 0;
++      upl = (n>=nc) ? nc-1 : n;
++      for (k=1; k<=upl; k++)
++         d += k*c[k]*h[n-k];
++      h[n] = d/n;
++   }
++   
++   return;
++}
++
++#if 0
++static double get_dpow(double *rmcep, double *cmcep, int m, double a,
++		VocoderSetup *vs)
++{
++    double e1, e2, dpow;
++
++    if (vs->p1 < 0) {
++	vs->p1 = 1;
++	vs->cc = vs->c + m + 1;
++	vs->cinc = vs->cc + m + 1;
++	vs->d1   = vs->cinc + m + 1;
++    }
++
++    mc2b(rmcep, vs->c, m, a); 
++    e1 = b2en(vs->c, m, a, vs);
++
++    mc2b(cmcep, vs->cc, m, a); 
++    e2 = b2en(vs->cc, m, a, vs);
++
++    dpow = log(e1 / e2) / 2.0;
++
++    return dpow;
++}
++#endif
++
++static void free_vocoder(VocoderSetup *vs)
++{
++    wfree(vs->c);
++    wfree(vs->mc);
++    wfree(vs->d);
++ 
++    vs->c = NULL;
++    vs->mc = NULL;
++    vs->d = NULL;
++    vs->ppade = NULL;
++    vs->cc = NULL;
++    vs->cinc = NULL;
++    vs->d1 = NULL;
++    vs->g = NULL;
++    vs->cep = NULL;
++    vs->ir = NULL;
++   
++    return;
++}
++
++/* from vector.cc */
++
++static DVECTOR xdvalloc(long length)
++{
++    DVECTOR x;
++
++    length = MAX(length, 0);
++    x = wcalloc(struct DVECTOR_STRUCT,1);
++    x->data = wcalloc(double,MAX(length, 1));
++    x->imag = NULL;
++    x->length = length;
++
++    return x;
++}
++
++static void xdvfree(DVECTOR x)
++{
++    if (x != NULL) {
++	if (x->data != NULL) {
++	    wfree(x->data);
++	}
++	if (x->imag != NULL) {
++	    wfree(x->imag);
++	}
++	wfree(x);
++    }
++
++    return;
++}
++
++static void dvialloc(DVECTOR x)
++{
++    if (x->imag != NULL) {
++	wfree(x->imag);
++    }
++    x->imag = wcalloc(double,x->length);
++
++    return;
++}
++
++static DVECTOR xdvcut(DVECTOR x, long offset, long length)
++{
++    long k;
++    long pos;
++    DVECTOR y;
++    
++    y = xdvalloc(length);
++    if (x->imag != NULL) {
++	dvialloc(y);
++    }
++
++    for (k = 0; k < y->length; k++) {
++	pos = k + offset;
++	if (pos >= 0 && pos < x->length) {
++	    y->data[k] = x->data[pos];
++	    if (y->imag != NULL) {
++		y->imag[k] = x->imag[pos];
++	    }
++	} else {
++	    y->data[k] = 0.0;
++	    if (y->imag != NULL) {
++		y->imag[k] = 0.0;
++	    }
++	}
++    }
++
++    return y;
++}
++
++static DMATRIX xdmalloc(long row, long col)
++{
++    DMATRIX matrix;
++    int i;
++
++    matrix = wcalloc(struct DMATRIX_STRUCT,1);
++    matrix->data = wcalloc(double *,row);
++    for (i=0; i<row; i++)
++        matrix->data[i] = wcalloc(double,col);
++    matrix->imag = NULL;
++    matrix->row = row;
++    matrix->col = col;
++
++    return matrix;
++}
++
++void xdmfree(DMATRIX matrix)
++{
++    int i;
++
++    if (matrix != NULL) {
++	if (matrix->data != NULL) {
++            for (i=0; i<matrix->row; i++)
++                wfree(matrix->data[i]);
++            wfree(matrix->data);
++	}
++	if (matrix->imag != NULL) {
++            for (i=0; i<matrix->row; i++)
++                wfree(matrix->imag[i]);
++            wfree(matrix->imag);
++	}
++	wfree(matrix);
++    }
++
++    return;
++}
++
++
++/* from voperate.cc */
++static double dvmax(DVECTOR x, long *index)
++{
++    long k;
++    long ind;
++    double max;
++
++    ind = 0;
++    max = x->data[ind];
++    for (k = 1; k < x->length; k++) {
++	if (max < x->data[k]) {
++	    ind = k;
++	    max = x->data[k];
++	}
++    }
++
++    if (index != NULL) {
++	*index = ind;
++    }
++
++    return max;
++}
++
++static double dvmin(DVECTOR x, long *index)
++{
++    long k;
++    long ind;
++    double min;
++
++    ind = 0;
++    min = x->data[ind];
++    for (k = 1; k < x->length; k++) {
++	if (min > x->data[k]) {
++	    ind = k;
++	    min = x->data[k];
++	}
++    }
++
++    if (index != NULL) {
++	*index = ind;
++    }
++
++    return min;
++}
+--- /dev/null
++++ festival/src/modules/hts21_engine/Makefile
+@@ -0,0 +1,66 @@
++###########################################################################
++##                                                                       ##
++##  ---------------------------------------------------------------      ##
++##      The HMM-Based Speech Synthesis System (HTS): version 1.1b        ##
++##                        HTS Working Group                              ##
++##                                                                       ##
++##                   Department of Computer Science                      ##
++##                   Nagoya Institute of Technology                      ##
++##                                and                                    ##
++##    Interdisciplinary Graduate School of Science and Engineering       ##
++##                   Tokyo Institute of Technology                       ##
++##                      Copyright (c) 2001-2003                          ##
++##                        All Rights Reserved.                           ##
++##                                                                       ##
++##  Permission is hereby granted, free of charge, to use and             ##
++##  distribute this software and its documentation without               ##
++##  restriction, including without limitation the rights to use,         ##
++##  copy, modify, merge, publish, distribute, sublicense, and/or         ##
++##  sell copies of this work, and to permit persons to whom this         ##
++##  work is furnished to do so, subject to the following conditions:     ##
++##                                                                       ##
++##    1. The code must retain the above copyright notice, this list      ##
++##       of conditions and the following disclaimer.                     ##
++##                                                                       ##
++##    2. Any modifications must be clearly marked as such.               ##
++##                                                                       ##
++##  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,      ##
++##  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM        ##
++##  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL           ##
++##  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT       ##
++##  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF            ##
++##  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE        ##
++##  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY            ##
++##  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,      ##
++##  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS       ##
++##  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR              ##
++##  PERFORMANCE OF THIS SOFTWARE.                                        ##
++##                                                                       ##
++###########################################################################
++##  Nagoya Institute of Technology's HTS Engine                          ##
++##  Integrated in the Festival tree to allow it to be more available     ##
++##  Alan W Black (awb@cs.cmu.edu)
++###########################################################################
++TOP=../../..
++DIRNAME=src/modules/hts_engine
++H = parser.h
++
++H = defaults.h global.h misc.h mlpg.h model.h tree.h vocoder.h \
++    hts21_mlsa_resynthesis.h
++CPPSRCS = hts_engine.cc misc.cc mlpg.cc model.cc tree.cc vocoder.cc \
++    hts21_mlsa_resynthesis.cc
++SRCS = $(CPPSRCS)
++
++OBJS = $(CPPSRCS:.cc=.o) 
++
++FILES=Makefile $(SRCS) $(H)
++
++LOCAL_INCLUDES = -I../include
++
++INLIB = $(TOP)/src/lib/libFestival.a
++
++ALL = .buildlib
++
++include $(TOP)/config/common_make_rules
++
++
+--- /dev/null
++++ festival/src/modules/hts21_engine/hts21_mlsa_resynthesis.h
+@@ -0,0 +1,159 @@
++/*********************************************************************/
++/*                                                                   */
++/*            Nagoya Institute of Technology, Aichi, Japan,          */
++/*       Nara Institute of Science and Technology, Nara, Japan       */
++/*                                and                                */
++/*             Carnegie Mellon University, Pittsburgh, PA            */
++/*                      Copyright (c) 2003-2004                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*    2. Any modifications must be clearly marked as such.           */
++/*    3. Original authors' names are not deleted.                    */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, NARA INSTITUTE OF SCIENCE AND    */
++/*  TECHNOLOGY, CARNEGIE MELLON UNIVERSITY, AND THE CONTRIBUTORS TO  */
++/*  THIS WORK DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,  */
++/*  INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, */
++/*  IN NO EVENT SHALL NAGOYA INSTITUTE OF TECHNOLOGY, NARA           */
++/*  INSTITUTE OF SCIENCE AND TECHNOLOGY, CARNEGIE MELLON UNIVERSITY, */
++/*  NOR THE CONTRIBUTORS BE LIABLE FOR ANY SPECIAL, INDIRECT OR      */
++/*  CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM   */
++/*  LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,  */
++/*  NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN        */
++/*  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.         */
++/*                                                                   */
++/*********************************************************************/
++/*                                                                   */
++/*          Author :  Tomoki Toda (tomoki@ics.nitech.ac.jp)          */
++/*          Date   :  June 2004                                      */
++/*                                                                   */
++/*          Modified by Alan W Black (awb@cs.cmu.edu) Jan 2006       */
++/*          taken from festvox/src/vc/ back into Festival            */
++/*-------------------------------------------------------------------*/
++/*                                                                   */
++/*  Subroutine for Speech Synthesis                                  */
++/*                                                                   */
++/*-------------------------------------------------------------------*/
++
++#ifndef __MLSA_RESYNTHESIS_H
++#define __MLSA_RESYNTHESIS_H
++
++#define ALPHA 0.42
++
++typedef struct DVECTOR_STRUCT {
++    long length;
++    double *data;
++    double *imag;
++} *DVECTOR;
++
++typedef struct DMATRIX_STRUCT {
++    long row;
++    long col;
++    double **data;
++    double **imag;
++} *DMATRIX;
++
++#define XBOOL int
++#define XTRUE 1
++#define XFALSE 0
++
++#define NODATA NULL
++
++#define FABS(x) ((x) >= 0.0 ? (x) : -(x))
++#define MAX(a, b) ((a) > (b) ? (a) : (b))
++
++static DVECTOR xdvalloc(long length);
++static DVECTOR xdvcut(DVECTOR x, long offset, long length);
++static void xdvfree(DVECTOR vector);
++static double dvmax(DVECTOR x, long *index);
++static double dvmin(DVECTOR x, long *index);
++static DMATRIX xdmalloc(long row, long col);
++static void xdmfree(DMATRIX matrix);
++
++DVECTOR synthesis_body(DMATRIX mcep, DVECTOR f0v, DVECTOR dpow,
++                       double fs, double framem);
++static void waveampcheck(DVECTOR wav, XBOOL msg_flag);
++
++#define RANDMAX 32767 
++#define   B0         0x00000001
++#define   B28        0x10000000
++#define   B31        0x80000000
++#define   B31_       0x7fffffff
++#define   Z          0x00000000
++
++typedef enum {MFALSE, MTRUE} Boolean;
++
++typedef struct _VocoderSetup {
++   
++   int fprd;
++   int iprd;
++   int seed;
++   int pd;
++   unsigned long next;
++   Boolean gauss;
++   double p1;
++   double pc;
++   double pj;
++   double pade[21];
++   double *ppade;
++   double *c, *cc, *cinc, *d1;
++   double rate;
++   
++   int sw;
++   double r1, r2, s;
++   
++   int x;
++   
++   /* for postfiltering */
++   int size;
++   double *d; 
++   double *g;
++   double *mc;
++   double *cep;
++   double *ir;
++   int o;
++   int irleng;
++   
++} VocoderSetup;
++
++static void init_vocoder(double fs, int framel, int m, VocoderSetup *vs);
++static void vocoder(double p, double *mc, int m, double a, double beta,
++		    VocoderSetup *vs, double *wav, long *pos);
++static void vocoder(double p, double *mc, double dpow, int m, double a,
++		    double beta, VocoderSetup *vs, double *wav, long *pos);
++static double mlsadf(double x, double *b, int m, double a, int pd, double *d,
++		     VocoderSetup *vs);
++static double mlsadf1(double x, double *b, int m, double a, int pd, double *d,
++		      VocoderSetup *vs);
++static double mlsadf2(double x, double *b, int m, double a, int pd, double *d,
++		      VocoderSetup *vs);
++static double mlsafir (double x, double *b, int m, double a, double *d);
++static double nrandom (VocoderSetup *vs);
++static double rnd (unsigned long *next);
++static unsigned long srnd (unsigned long seed);
++static int mseq (VocoderSetup *vs);
++static void mc2b (double *mc, double *b, int m, double a);
++static double b2en (double *b, int m, double a, VocoderSetup *vs);
++static void b2mc (double *b, double *mc, int m, double a);
++static void freqt (double *c1, int m1, double *c2, int m2, double a,
++		   VocoderSetup *vs);
++static void c2ir (double *c, int nc, double *h, int leng);
++
++
++#if 0
++static DVECTOR get_dpowvec(DMATRIX rmcep, DMATRIX cmcep);
++static double get_dpow(double *rmcep, double *cmcep, int m, double a,
++		       VocoderSetup *vs);
++#endif
++static void free_vocoder(VocoderSetup *vs);
++
++#endif /* __RESYNTHESIS_SUB_H */
+--- /dev/null
++++ festival/src/modules/hts21_engine/global.h
+@@ -0,0 +1,55 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    global.h : global variable for some functions                  */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++typedef struct _globalP {  
++   float   RHO      ;  /* variable for speaking rate control         */   
++   float   ALPHA    ;  /* variable for frequency warping parameter   */
++   float   F0_STD   ;  /* variable for f0 control                    */
++   float   F0_MEAN  ;  /* variable for f0 control                    */
++   float   UV       ;  /* variable for U/V threshold                 */
++   int     LENGTH   ;  /* total number of frame for generated speech */
++   HTS_Boolean XIMERA   ;  /* output label and f0 for XIMERA             */
++   HTS_Boolean algnst   ;  /* use state level alignment for duration     */
++   HTS_Boolean algnph   ;  /* use phoneme level alignment for duration   */
++} globalP;
++   
++/* -------------------- End of "global.h" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/defaults.h
+@@ -0,0 +1,55 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    defaults.h : default value for some parameters                 */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++#define   FPERIOD    80
++#define   IPERIOD    1
++#define   SEED       1
++#define   GAUSS      1
++#define   B0         0x00000001
++#define   B28        0x10000000
++#define   B31        0x80000000
++#define   B31_       0x7fffffff
++#define   Z          0x00000000
++#define   PADEORDER  4
++#define   RATE       16000
++
++/* -------------------- End of "defaults.h" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/vocoder.cc
+@@ -0,0 +1,303 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*   vocoder.c : mel-cepstral vocoder                                */
++/*              (pulse/noise excitation & MLSA filter)               */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++#include <cstdio>
++#include <cstdlib>
++#include <cmath>
++#include "EST_walloc.h"
++
++#include "misc.h"
++#include "model.h"
++#include "defaults.h"
++#include "global.h"
++#include "vocoder.h"
++
++void init_vocoder(int m, VocoderSetup *vs)
++{
++   vs->fprd = FPERIOD;
++   vs->iprd = IPERIOD;
++   vs->seed = SEED;
++   vs->pd   = PADEORDER;
++
++   vs->next = SEED;
++   vs->gauss = GAUSS;
++
++   vs->pade[ 0]=1.0;
++   vs->pade[ 1]=1.0; vs->pade[ 2]=0.0;
++   vs->pade[ 3]=1.0; vs->pade[ 4]=0.0;      vs->pade[ 5]=0.0;
++   vs->pade[ 6]=1.0; vs->pade[ 7]=0.0;      vs->pade[ 8]=0.0;      vs->pade[ 9]=0.0;
++   vs->pade[10]=1.0; vs->pade[11]=0.4999273; vs->pade[12]=0.1067005; vs->pade[13]=0.01170221; vs->pade[14]=0.0005656279;
++   vs->pade[15]=1.0; vs->pade[16]=0.4999391; vs->pade[17]=0.1107098; vs->pade[18]=0.01369984; vs->pade[19]=0.0009564853;
++   vs->pade[20]=0.00003041721;
++
++   vs->rate=RATE;
++                  
++   vs->c = walloc(double,3*(m+1)+3*(vs->pd+1)+vs->pd*(m+2));
++   
++   vs->p1 = -1;
++   vs->sw = 0;
++   vs->x  = 0x55555555;
++}
++
++void vocoder (double p, float *mc, int m, FILE *rawfp, globalP *gp, VocoderSetup *vs)
++{
++   double inc, x;
++   int i, j, k; 
++   short xs;
++   double a = gp->ALPHA;
++   
++   if (p!=0.0) 
++      p = vs->rate / p;  /* f0 -> pitch */
++   
++   if (vs->p1 < 0) {
++      if (vs->gauss & (vs->seed != 1)) vs->next = srnd ((unsigned)vs->seed);
++
++      vs->p1   = p;
++      vs->pc   = vs->p1;
++      vs->cc   = vs->c + m + 1;
++      vs->cinc = vs->cc + m + 1;
++      vs->d1   = vs->cinc + m + 1;
++      
++      mc2b(mc, vs->c, m, a);
++      
++      return;
++   }
++
++   mc2b(mc, vs->cc, m, a); 
++   
++   for (k=0; k<=m; k++)
++      vs->cinc[k] = (vs->cc[k]-vs->c[k])*(double)vs->iprd/(double)vs->fprd;
++
++   if (vs->p1!=0.0 && p!=0.0) {
++      inc = (p-vs->p1)*(double)vs->iprd/(double)vs->fprd;
++   }
++   else {
++      inc = 0.0;
++      vs->pc = p;
++      vs->p1 = 0.0;
++   }
++
++   for (j=vs->fprd, i=(vs->iprd+1)/2; j--;) {
++      if (vs->p1 == 0.0) {
++          if (vs->gauss)
++             x = (double) nrandom(vs);
++          else
++             x = mseq(vs);
++      }
++      else {
++          if ((vs->pc += 1.0)>=vs->p1) {
++             x = sqrt (vs->p1);
++             vs->pc = vs->pc - vs->p1;
++          }
++          else
++              x = 0.0;
++      }
++
++      x *= exp(vs->c[0]);
++
++      x = mlsadf(x, vs->c, m, a, vs->pd, vs->d1, vs);
++      xs = (short) x;
++
++      fwrite(&xs, sizeof(short), 1, rawfp);
++
++      fflush(stdout);
++
++      if (!--i) {
++         vs->p1 += inc;
++         for (k=0;k<=m;k++) vs->c[k] += vs->cinc[k];
++         i = vs->iprd;
++      }
++   }
++   
++   vs->p1 = p;
++   movem(vs->cc,vs->c,m+1);
++}
++
++double mlsafir (double x, double *b, int m, double a, double *d)
++{
++   double y = 0.0;
++   double aa;
++   register int i;
++	
++   aa = 1 - a*a;
++
++   d[0] = x;
++   d[1] = aa*d[0] + a*d[1];
++	
++   for (i=2; i<=m; i++) {
++      d[i] = d[i] + a*(d[i+1]-d[i-1]);
++      y += d[i]*b[i];
++   }
++	
++   for (i=m+1; i>1; i--) d[i] = d[i-1];
++	
++   return (y);
++}
++
++double mlsadf1(double x, double *b, int m, double a, int pd, double *d, VocoderSetup *vs)
++{
++   double v, out = 0.0, *pt, aa;
++   register int i;
++
++   aa = 1 - a*a;
++   pt = &d[pd+1];
++
++   for (i=pd; i>=1; i--) {
++      d[i] = aa*pt[i-1] + a*d[i];
++      pt[i] = d[i] * b[1];
++      v = pt[i] * vs->ppade[i];
++		
++      x += (1 & i) ? v : -v;
++      out += v;
++   }
++	
++   pt[0] = x;
++   out += x;
++	
++   return(out);
++}
++
++double mlsadf2 (double x, double *b, int m, double a, int pd, double *d, VocoderSetup *vs)
++{
++   double v, out = 0.0, *pt, aa;
++   register int i;
++    
++   aa = 1 - a*a;
++   pt = &d[pd * (m+2)];
++	
++   for (i=pd; i>=1; i--) {
++      pt[i] = mlsafir (pt[i-1], b, m, a, &d[(i-1)*(m+2)]);
++      v = pt[i] * vs->ppade[i];
++
++      x  += (1&i) ? v : -v;
++      out += v;
++   }
++    
++   pt[0] = x;
++   out  += x;
++	
++   return(out);
++}
++
++double mlsadf(double x, double *b, int m, double a, int pd, double *d, VocoderSetup *vs)
++{
++
++   vs->ppade = &(vs->pade[pd*(pd+1)/2]);
++    
++   x = mlsadf1 (x, b, m, a, pd, d, vs);
++   x = mlsadf2 (x, b, m, a, pd, &d[2*(pd+1)], vs);
++
++   return (x);
++}
++
++double nrandom (VocoderSetup *vs)
++{
++    unsigned long rr;
++   if (vs->sw == 0) {
++      vs->sw = 1;
++      do {
++	  rr = vs->next;
++         vs->r1 = 2 * rnd(&rr) - 1;
++         vs->r2 = 2 * rnd(&rr) - 1;
++	 vs->next = rr;
++         vs->s  = vs->r1 * vs->r1 + vs->r2 * vs->r2;
++      } while (vs->s > 1 || vs->s == 0);
++
++      vs->s = sqrt (-2 * log(vs->s) / vs->s);
++      return ( vs->r1 * vs->s );
++   }
++   else {
++      vs->sw = 0;
++      return ( vs->r2 * vs->s );
++   }
++}
++
++double rnd (unsigned long *next)
++{
++   double r;
++
++   *next = *next * 1103515245L + 12345;
++   r = (*next / 65536L) % 32768L;
++
++   return ( r/RANDMAX ); 
++}
++
++unsigned long srnd ( unsigned long seed )
++{
++   return (seed);
++}
++
++
++int mseq (VocoderSetup *vs)
++{
++   register int x0, x28;
++
++   vs->x >>= 1;
++
++   if (vs->x & B0)
++      x0 = 1;
++   else
++      x0 = -1;
++
++   if (vs->x & B28)
++      x28 = 1;
++   else
++      x28 = -1;
++
++   if (x0 + x28)
++      vs->x &= B31_;
++   else
++      vs->x |= B31;
++
++   return (x0);
++}
++
++void mc2b( float *mc, double *b, int m, double a)
++{
++   b[m] = mc[m];
++    
++   for (m--; m>=0; m--)
++      b[m] = mc[m] - a * b[m+1];
++}
++
++/* -------------------- End of "vocoder.c" -------------------- */ 
+--- /dev/null
++++ festival/src/modules/hts21_engine/tree.h
+@@ -0,0 +1,86 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    tree.h : decision tree definition                              */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++typedef struct _Pattern{  /* pattern handler for question storage */
++   char *pat;               /* pattern */
++   struct _Pattern *next;   /* link to next pattern */
++} Pattern;
++
++typedef struct _Question { /* question storage */
++   char *qName;              /* name of this question */
++   Pattern *phead;           /* link to head of pattern list */
++   Pattern *ptail;           /* link to tail of pattern list */
++   struct _Question *next;  /* link to next question */
++} Question;
++
++typedef struct _Node {     /* node of decision tree */
++   int idx;                 /* index of this node */
++   int pdf;                 /* index of pdf for this node  ( leaf node only ) */
++   struct _Node *yes;       /* link to child node (yes) */
++   struct _Node *no;        /* link to child node (no)  */
++   Question *quest;          /* question applied at this node */
++} Node;
++   
++typedef struct _Tree {      
++   int state;                 /* state position of this tree */
++   struct _Tree *next;        /* link to next tree */
++   Node *root;                 /* root node of this decision tree */
++} Tree;
++
++typedef struct _TreeSet {
++   Question *qhead[3];
++   Question *qtail[3];
++
++   Tree *thead[3];
++   Tree *ttail[3];
++   
++   FILE *fp[3];
++   
++} TreeSet;
++
++void LoadTreesFile (TreeSet *, Mtype);
++int SearchTree (char *, Node *);
++void InitTreeSet(TreeSet *);
++void FreeTrees(TreeSet *ts, Mtype type);
++
++/* -------------------- End of "tree.h" -------------------- */
++
+--- /dev/null
++++ festival/src/modules/hts21_engine/vocoder.h
+@@ -0,0 +1,79 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    vocoder.h : mel-cepstral vocoder                               */
++/*               (pulse/noise excitation & MLSA filter)              */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++#define RANDMAX 32767 
++
++typedef struct _VocoderSetup {
++   
++   int fprd;
++   int iprd;
++   int seed;
++   int pd;
++   long next;
++   HTS_Boolean gauss;
++   double p1;
++   double pc;
++   double pj;
++   double pade[21];
++   double *ppade;
++   double *c, *cc, *cinc, *d1;
++   double rate;
++   
++   int sw;
++   double r1, r2, s;
++   
++   int x;
++   
++} VocoderSetup;
++
++int mseq(VocoderSetup *);
++double rnd(unsigned long *);
++double nrandom (VocoderSetup *);
++unsigned long srnd(unsigned long );
++double mlsadf(double, double *, int, double, int, double *, VocoderSetup *);
++void mc2b(float *, double *, int, double );
++
++void init_vocoder(int m, VocoderSetup *vs);
++void vocoder (double p, float *mc, int m, FILE *rawfp, globalP *gp, VocoderSetup *vs);
++
++/* -------------------- End of "vocoder.h" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/hts_engine.cc
+@@ -0,0 +1,448 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    hts_engine.c : a compact HMM-based speech synthesis engine     */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++/*  Modified by Alan W Black (awb@cs.cmu.edu)                        */
++/*  April 2004                                                       */
++/*  Make it compile with c++ and integrate as a Festival module      */
++/*  ---------------------------------------------------------------  */
++
++/*  Standard C Libraries  */
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <cctype>
++#include "festival.h"
++
++#include "misc.h"
++#include "tree.h"
++#include "model.h"
++#include "global.h"
++#include "vocoder.h"
++#include "mlpg.h"
++#include "defaults.h"
++
++void HTS21_Process ( FILE *, FILE *, FILE *, FILE *, PStream *, PStream *, 
++		   globalP *, ModelSet *, TreeSet *, VocoderSetup *);
++
++/* OutLabel : output label with frame number or time */
++void OutLabel (UttModel *um, HTS_Boolean XIMERA) 
++{
++   Model *m;
++   char *tmp;
++   int nframe = 0;
++   
++   for (m=um->mhead; m!=um->mtail; m=m->next) {
++      if (XIMERA) {      /* in XIMERA format */
++         tmp = wstrdup(m->name);
++         tmp = strchr(tmp,'-')+1;
++         *(strchr(tmp,'+')) = '\0';
++         fprintf(stdout,"%1.3f  %s\n", (((float)nframe)*FPERIOD)/((float)RATE), tmp);   
++      } 
++      else               /* in HTK & HTS format */
++         fprintf(stdout, "%d %d %s\n", nframe, nframe+m->totaldur,m->name);
++      
++      nframe += m->totaldur;
++   }
++
++   if (XIMERA)   /* in XIMERA format */
++      fprintf(stdout,"%1.3f  __END__\n", (((float)nframe)*FPERIOD)/((float)RATE));
++
++}
++
++void HTS21_Process ( FILE *labfp, FILE *rawfp, FILE *lf0fp, FILE *mcepfp, 
++		   PStream *mceppst, PStream *lf0pst, globalP *gp, 
++		   ModelSet *ms, TreeSet *ts, VocoderSetup *vs )
++{
++   char buf[1024];
++   Tree *tree;
++   int state, diffdur=0;
++   int start, end;
++   int rate, nf;
++   int i;
++   float f, mean, var;
++   HTS_Boolean hastime;
++   Model *m, *mm, *nm;
++   UttModel um;
++   
++   rate = FPERIOD * 10000000 / RATE;
++   
++   mean = var = 0.0;
++
++   m = walloc(Model,1);
++   um.mtail = um.mhead = m;  
++   um.totalframe = um.nState = um.nModel = 0;
++   start = 0;
++   end = 0;
++   
++   while (!feof(labfp)) {
++      GetToken (labfp,buf);
++      if (!isalnum(buf[0])) break;
++      if (isdigit(buf[0]))
++         hastime = TRUE;
++      else 
++         hastime = FALSE;
++      
++      if (hastime) {
++         if (gp->algnst) {
++            start = atoi(buf);
++            GetToken(labfp, buf);
++            end = atoi(buf);
++            GetToken(labfp, buf);
++            GetToken(labfp, buf);
++         }
++         else if (gp->algnph) {
++            start = atoi(buf);
++            GetToken(labfp, buf);
++            end = atoi(buf);
++            GetToken(labfp, buf);
++         }
++         else {
++            do {
++               GetToken(labfp, buf);
++            } while (isdigit(buf[0]));
++         }
++      }
++      
++      m->name = wstrdup(buf);
++      
++      if (hastime && gp->algnph) {
++         m->durpdf = SearchTree(m->name, ts->thead[DUR]->root);
++         FindDurPDF(m, ms, gp->RHO, diffdur);
++         nf = 0;
++         for (state=2; state<=ms->nstate+1; state++)
++            nf += m->dur[state];
++           
++         fprintf(stderr, ">>>nf=%d %d\n", nf, (end-start)/rate);
++         
++         f = (float)(end-start)/(rate*nf);
++         m->totaldur = 0;
++         
++         for (state=2; state<=ms->nstate+1; state++) {
++            nf = (int)(f*m->dur[state]+0.5);
++            if (nf<=0)  nf=1;
++            fprintf(stderr, "%d: %d %f %d\n", state, m->dur[state], f, nf);
++            m->dur[state] = nf;
++            m->totaldur += m->dur[state];
++         }
++         um.totalframe += m->totaldur;
++      }
++      else if (hastime && gp->algnst) {
++         m->dur = walloc(int,ms->nstate+2);
++         m->dur[2] = (end-start)/rate;
++         m->totaldur = m->dur[2];
++         um.totalframe += m->dur[2];
++         
++         for (state=3; state<=ms->nstate+1; state++) {
++            GetToken(labfp, buf);
++            start = atoi(buf);
++            GetToken(labfp, buf); 
++            end = atoi(buf);
++            GetToken(labfp, buf);
++            m->dur[state] = (end-start)/rate;
++            m->totaldur += m->dur[state];
++            um.totalframe  += m->dur[state];
++         }
++      } 
++      else {
++         m->durpdf = SearchTree(m->name, ts->thead[DUR]->root);   
++         if (gp->LENGTH==0) {
++            FindDurPDF(m, ms, gp->RHO, diffdur);
++            um.totalframe += m->totaldur;
++         }
++         else {   /* if total length of generated speech is specified */
++            for (state=2; state<=ms->nstate+1; state++) {
++               mean += ms->durpdf[m->durpdf][state];
++               var  += ms->durpdf[m->durpdf][state+ms->nstate];
++            }
++         }
++      }
++      
++      /* for excitation */
++      m->lf0pdf      = walloc(int,ms->nstate+2);
++      m->lf0mean     = walloc(float *,ms->nstate+2);
++      m->lf0variance =  walloc(float *,ms->nstate+2);
++      m->voiced      = walloc(HTS_Boolean, ms->nstate);
++      
++      for (tree=ts->thead[LF0],state=2; tree!=ts->ttail[LF0]; tree=tree->next,state++) {
++         m->lf0pdf[state] = SearchTree(m->name, tree->root);
++         FindLF0PDF(state, m, ms, gp->UV);
++      }
++
++      /* for spectrum */
++      m->mceppdf      = walloc(int,ms->nstate+2);
++      m->mcepmean     = walloc(float *,ms->nstate+2);
++      m->mcepvariance = walloc(float *,ms->nstate+2);
++      
++/*      m->mceppdf -= 2;  m->mcepmean -= 2;  m->mcepvariance -= 2; */
++      
++      for (tree=ts->thead[MCP],state=2; tree!=ts->ttail[MCP]; tree=tree->next,state++) {
++         m->mceppdf[state] = SearchTree(m->name, tree->root);
++         FindMcpPDF(state, m, ms);
++      }
++      
++      m->next = walloc(Model,1);
++      m = um.mtail = m->next;
++      
++      um.nModel++;
++      um.nState+=ms->nstate;
++   }
++   
++   if (gp->LENGTH > 0 && gp->LENGTH < um.nState) {
++      fprintf(stderr, "Specified length of generated speech is too short ! (this sentence HMM is composed from %d states)\n", um.nState);
++      fprintf(stderr, "Please specify more than %.1f seconds.\n", (float)(um.nState*FPERIOD)/RATE);
++      festival_error();
++   }
++   
++   /* if total length of generated speech is specified */
++   /* compute RHO */
++   if (gp->LENGTH>0) {
++      gp->RHO = (gp->LENGTH - mean)/var;
++      /* compute state duration for each state */
++      for (m=um.mhead; m!=um.mtail; m=m->next) {
++         FindDurPDF(m, ms, gp->RHO, diffdur);
++         um.totalframe += m->totaldur;
++      }
++   }
++   
++   /* Output label information */
++   /* OutLabel(&um, gp->XIMERA); */
++   
++   pdf2speech(rawfp, lf0fp, mcepfp, mceppst, lf0pst, gp, ms, &um, vs);
++
++   /* Tidy up memory */
++   for (mm=um.mhead; mm; mm=nm)
++   {
++       nm = mm->next;
++       for (i=0; i<ms->nstate+2; i++)
++       {
++	   if (mm->lf0mean) wfree(mm->lf0mean[i]);
++	   if (mm->lf0variance) wfree(mm->lf0variance[i]);
++       }
++       wfree(mm->mcepvariance);
++       wfree(mm->mcepmean);
++       wfree(mm->mceppdf);
++       wfree(mm->voiced);
++       wfree(mm->lf0variance);
++       wfree(mm->lf0mean);
++       wfree(mm->lf0pdf);
++       wfree(mm->dur);
++       wfree(mm->name);
++       wfree(mm);
++   }
++}
++
++static FILE *do_fopen(const char *fname,const char *mode)
++{
++    FILE *fd;
++
++    fd = fopen(fname,mode);
++    if (fd == NULL)
++    {
++        cerr << "hts_engine: failed to open " << fname << endl;
++	festival_error();
++    }
++    return fd;
++}
++
++LISP HTS21_Synthesize_Utt(LISP utt)
++{
++    EST_Utterance *u = get_c_utt(utt);
++    EST_Item *item = 0;
++    LISP hts_engine_params = NIL;
++    LISP hts_output_params = NIL;
++    FILE *labfp=NULL;
++    FILE *lf0fp=NULL, *mcepfp=NULL, *rawfp=NULL;
++
++    ModelSet     ms;
++    TreeSet      ts;
++    PStream      mceppst, lf0pst;
++    globalP      gp;
++    VocoderSetup vs;
++   
++    /* default value for control parameter */
++    gp.RHO      = 0.0; 
++    gp.ALPHA    = 0.42;
++    gp.F0_STD   = 1.0;
++    gp.F0_MEAN  = 0.0;
++    gp.UV       = 0.5;
++    gp.LENGTH   = 0;
++    gp.algnst   = FALSE;
++    gp.algnph   = FALSE;
++    gp.XIMERA   = FALSE;
++
++    /* Get voice specific params */
++    hts_engine_params = siod_get_lval("hts_engine_params",
++			"HTS_ENGINE: no parameters set for module");
++    /* We should be internalize these ones more */
++    hts_output_params = siod_get_lval("hts_output_params",
++			"HTS_ENGINE: no output parameters set for module");
++    
++    /* initialise TreeSet and ModelSet */
++    InitTreeSet (&ts);
++    InitModelSet(&ms);
++   
++    /* delta window handler for log f0 */
++    lf0pst.dw.fn = walloc(char *,20);
++    lf0pst.dw.num = 1;
++
++    /* delta window handler for mel-cepstrum */
++    mceppst.dw.fn = walloc(char *,20);
++    mceppst.dw.num = 1;
++
++    /* Load parameters */
++    mceppst.dw.fn[1] = (char *)get_param_str("-dm1",hts_engine_params,
++				   "hts/mcep_dyn.win");
++    mceppst.dw.fn[2] = (char *)get_param_str("-dm2",hts_engine_params,
++				   "hts/mcep_acc.win");
++    mceppst.dw.num = 3;
++
++    lf0pst.dw.fn[1] = (char *)get_param_str("-df1",hts_engine_params,
++				   "hts/lf0_dyn.win");
++    lf0pst.dw.fn[2] = (char *)get_param_str("-df2",hts_engine_params,
++				   "hts/lf0_acc.win");
++    lf0pst.dw.num = 3;
++    
++    ts.fp[DUR]=do_fopen(get_param_str("-td",hts_engine_params,
++				   "hts/trees-dur.inf"),"r");
++    ts.fp[LF0]=do_fopen(get_param_str("-tf",hts_engine_params,
++				   "hts/trees-lf0.inf"), "r");
++    ts.fp[MCP]=do_fopen(get_param_str("-tm",hts_engine_params,
++				   "hts/trees-mcep.inf"), "r");
++    ms.fp[DUR]=do_fopen(get_param_str("-md",hts_engine_params,
++				   "hts/duration.pdf"),"rb");
++    ms.fp[LF0]=do_fopen(get_param_str("-mf",hts_engine_params,
++				   "hts/lf0.pdf"), "rb");
++    ms.fp[MCP]=do_fopen(get_param_str("-mm",hts_engine_params,
++				   "hts/mcep.pdf"), "rb");
++
++    rawfp = do_fopen(get_param_str("-or",hts_output_params,
++				"tmp.raw"), "wb");
++    lf0fp = do_fopen(get_param_str("-of",hts_output_params,
++				"tmp.f0"), "wb");
++    mcepfp = do_fopen(get_param_str("-om",hts_output_params,
++				 "tmp.mcep"), "wb");
++    labfp = do_fopen(get_param_str("-labelfile",hts_output_params,
++				 "utt.feats"), "r");
++
++    gp.RHO      = get_param_float("-r",hts_engine_params,0.0);
++    gp.ALPHA    = get_param_float("-a",hts_engine_params,0.42);
++    gp.F0_STD = get_param_float("-fs",hts_engine_params,1.0);
++    gp.F0_MEAN = get_param_float("-fm",hts_engine_params,0.0);
++    gp.UV       = get_param_float("-u",hts_engine_params,0.5);
++    gp.LENGTH   = (int)get_param_float("-l",hts_engine_params,0.0);
++
++    /* do what needs to be done */
++    LoadTreesFile(&ts, DUR);
++    LoadTreesFile(&ts, LF0);
++    LoadTreesFile(&ts, MCP);
++   
++    /* load model files for duration, log f0 and mel-cepstrum */
++    LoadModelFiles(&ms);
++   
++    /* if the name of output speech file is not specified, waveform generation won't be generated */
++    if (rawfp!=NULL)
++	init_vocoder(ms.mcepvsize-1, &vs);
++
++    /* check the number of window */
++    if (lf0pst.dw.num != ms.lf0stream) 
++    {
++	cerr << "Festival: HTS: dynamic window for f0 is illegal\n";
++	festival_error();
++    }
++    if (ms.mcepvsize % mceppst.dw.num != 0 ) 
++    {
++	cerr << "Festival: HTS: dynamic window for mcep is illegal\n";
++	festival_error();
++    }
++   
++    /* generate speech */
++    if (u->relation("Segment")->first())  /* only if there segments */
++        HTS21_Process(labfp, rawfp, lf0fp, mcepfp, 
++                    &mceppst, &lf0pst, &gp, &ms, &ts, &vs);
++
++    /* Load back in the waveform */
++    EST_Wave *w = new EST_Wave;
++
++    fclose(ts.fp[DUR]);
++    fclose(ts.fp[LF0]);
++    fclose(ts.fp[MCP]);
++    fclose(ms.fp[DUR]);
++    fclose(ms.fp[LF0]);
++    fclose(ms.fp[MCP]);
++    fclose(rawfp);
++    fclose(lf0fp);
++    fclose(mcepfp);
++    fclose(labfp);
++
++    wfree(vs.c);
++    wfree(lf0pst.dw.fn);
++    wfree(mceppst.dw.fn);
++    FreeTrees(&ts, DUR);
++    FreeTrees(&ts, LF0);
++    FreeTrees(&ts, MCP);
++    DeleteModelSet(&ms);
++
++    if (u->relation("Segment")->first())  /* only if there segments */
++        w->load_file(get_param_str("-or",hts_output_params,"tmp.raw"),
++                     "raw", 16000,
++                     "short", str_to_bo("native"), 1);
++
++    item = u->create_relation("Wave")->append();
++    item->set_val("wave",est_val(w));
++
++    return utt;
++}
++
++LISP hts21_mlsa_resynthesis(LISP ltrack);
++
++void festival_hts21_engine_init(void)
++{
++    proclaim_module("hts21_engine");
++
++    festival_def_utt_module("HTS21_Synthesize",HTS21_Synthesize_Utt,
++    "(HTS21_Synthesis UTT)\n\
++  Synthesize a waveform using the HTS 2.1 Engine and the current models");
++    init_subr_1("hts21_mlsa_resynthesis",hts21_mlsa_resynthesis,
++                "(hts21_mlsa_resynthesis TRACK)\n\
++  Return a WAVE synthesized from the F0/MCEP TRACK.");
++}
++
++/* -------------------- End of "hts_engine.c" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/model.h
+@@ -0,0 +1,87 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    model.h : model definition                                     */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++typedef struct _Model {  /* HMM handler */
++   char *name;            /* the name of this HMM */
++   int durpdf;            /* duration pdf index for this HMM */
++   int *lf0pdf;           /* mel-cepstrum pdf indexes for each state of this HMM */  
++   int *mceppdf;          /* log f0 pdf indexes for each state of this HMM */
++   int *dur;              /* duration for each state of this HMM */
++   int totaldur;          /* total duration of this HMM */
++   float **lf0mean;       /* mean vector of log f0 pdfs for each state of this HMM */
++   float **lf0variance;   /* variance (diag) elements of log f0 for each state of this HMM */
++   float **mcepmean;      /* mean vector of mel-cepstrum pdfs for each state of this HMM */
++   float **mcepvariance;  /* variance (diag) elements of mel-cepstrum for each state of this HMM */
++   HTS_Boolean *voiced;       /* voiced/unvoiced decision for each state of this HMM */
++   struct _Model *next;   /* pointer to next HMM */
++} Model; 
++
++
++typedef struct _UttModel { /* Utterance model handler */
++   Model *mhead;
++   Model *mtail;
++   int nModel;
++   int nState;
++   int totalframe;
++} UttModel;
++
++
++typedef struct _ModelSet { /* HMM set handler */
++   int nstate;
++   int lf0stream;
++   int mcepvsize;
++   int ndurpdf;
++   int *nmceppdf;
++   int *nlf0pdf;
++   float **durpdf,***mceppdf,****lf0pdf;
++   FILE *fp[3];
++} ModelSet;
++
++
++void LoadModelFiles (ModelSet *);
++void FindDurPDF (Model *, ModelSet *, float, int );
++void FindLF0PDF (int, Model *, ModelSet *, float);
++void FindMcpPDF (int, Model *, ModelSet *);
++void InitModelSet (ModelSet *);
++void DeleteModelSet(ModelSet *ms);
++
++/* -------------------- End of "model.h" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/misc.cc
+@@ -0,0 +1,114 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    misc.c : miscellaneous functions (from SPTK)                   */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <cctype>
++#include "festival.h"
++#include "misc.h"
++
++FILE *getfp (char *name, char *opt)
++{
++   FILE *fp;
++   
++   if ((fp=fopen(name, opt)) == NULL) {
++      fprintf (stderr, "Can't open '%s'!\n", name);
++      festival_error();
++   }
++   return (fp);
++}
++
++void GetToken (FILE *fp, char *buff)
++{
++   char c;
++   int i;
++   HTS_Boolean squote = 0;
++   HTS_Boolean dquote = 0;
++
++   c = fgetc (fp);
++
++   while (isspace(c))
++      c = fgetc (fp);
++      
++   if (c=='\'') {  /* single quote case */
++      c = fgetc (fp);
++      squote = 1;
++   }
++   
++   if (c=='\"') {  /*double quote case */
++      c = fgetc (fp);
++      dquote = 1;
++   }
++   
++   if (c==',') {   /*special character ',' */
++      strcpy (buff, ",");
++      return; 
++   }
++   
++   i = 0;
++   while (1) {
++      buff[i++] = c;
++      c = fgetc (fp);
++      if (squote && c == '\'') break;
++      if (dquote && c == '\"') break;
++      if (!(squote || dquote || isgraph(c)) ) break;
++   }
++   
++   buff[i]=0;
++}
++
++void movem (double *a, double *b, int nitem)
++{
++   register long i;
++  
++   i = nitem;
++  
++   if (a>b)
++      while (i--) *b++ = *a++;
++   else {
++      a += i; b += i;
++      while (i--) *--b = *--a;
++   }
++}
++
++/* -------------------- End of "misc.c" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/misc.h
+@@ -0,0 +1,50 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    misc.h : miscellaneous functions (from SPTK)                   */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++FILE *getfp (char *, char *);
++void GetToken (FILE *,char *);
++void movem (double *, double *, int);
++
++typedef bool HTS_Boolean;
++typedef enum {DUR, LF0, MCP} Mtype;
++
++/* -------------------- End of "misc.h" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/mlpg.cc
+@@ -0,0 +1,483 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*    mlpg.c : speech parameter generation from pdf sequence         */
++/*                                                                   */ 
++/*                                    2003/06/11 by Heiga Zen        */
++/*  ---------------------------------------------------------------  */
++
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <cctype>
++#include <cmath>
++#include "festival.h"
++
++#include "defaults.h"
++#include "misc.h"
++#include "model.h"
++#include "global.h"
++#include "vocoder.h"
++#include "mlpg.h"
++
++double finv (double x)
++{
++   if (x >= INFTY2) return 0.0;
++   if (x <= -INFTY2) return 0.0;
++   if (x <= INVINF2 && x >= 0) return INFTY;
++   if (x >= -INVINF2 && x < 0) return -INFTY;
++   
++   return 1.0/x;
++}
++
++double *dcalloc(int x)
++{
++    return walloc(double,x);
++}
++
++double **ddcalloc(int x, int y)
++{
++   register int i;
++   double **ptr;
++
++   ptr = walloc(double *,x);
++	
++   for (i=0; i<x; i++)
++      ptr[i] = dcalloc(y);
++   
++   return(ptr);
++}
++
++float *fcalloc(int x)
++{
++   return walloc(float,x);
++}
++
++float **ffcalloc(int x, int y)
++{
++   register int i;
++   float **ptr;
++   
++   ptr = walloc(float *,x);
++	
++   for (i=0; i<x; i++)
++      ptr[i] = fcalloc(y);
++   
++   return(ptr);
++}
++
++int str2farray (char *c, float **x)
++{
++   int i, size, sp;
++   char *p, *buf;
++   
++   while (isspace(*c))
++      c++;
++   
++   if (*c == '\0') {
++      *x = NULL;
++      return (0);
++   }
++
++   size = 1;
++   sp = 0;
++  
++   for (p = c; *p != '\0'; p++) {
++      if (!isspace (*p)) {
++         if (sp == 1) {
++            size++;
++            sp = 0;
++         }
++      }
++      else
++         sp = 1;
++   }
++
++   buf = walloc(char,strlen(c));
++
++   *x = walloc(float,size);
++
++  for (i=0; i<size; i++)
++     (*x)[i] = (float)strtod (c, &c);
++
++  return (size);
++}
++
++/*----------------------------------------------------------------
++	matrix calcuration functions
++----------------------------------------------------------------*/
++
++/* calc_R_and_r : calcurate R=W'U^{-1}W and r=W'U^{-1}M */
++void calc_R_and_r(PStream *pst, int m)
++{
++   register int i, j, k, l, n;
++   double   wu;
++   
++   for (i=0; i<pst->T; i++) {
++		pst->sm.r[i]    = pst->sm.ivseq[i][m] * pst->sm.mseq[i][m];
++		pst->sm.R[i][0] = pst->sm.ivseq[i][m];
++      
++		for (j=1; j<pst->width; j++)
++         pst->sm.R[i][j]=0.0;
++      
++      for (j=1; j<pst->dw.num; j++)
++         for (k=pst->dw.width[j][0]; k<=pst->dw.width[j][1]; k++) {
++            n = i+k;
++            if ( (n>=0) && (n<pst->T) && (pst->dw.coef[j][-k]!=0.0) ) {
++               l = j*(pst->order+1)+m;
++               wu = pst->dw.coef[j][-k] * pst->sm.ivseq[n][l];
++               pst->sm.r[i] += wu*pst->sm.mseq[n][l]; 
++            
++               for (l=0; l<pst->width; l++) {
++                  n = l-k;
++                  if ( (n<=pst->dw.width[j][1]) && (i+l<pst->T) && (pst->dw.coef[j][n] != 0.0) )
++                     pst->sm.R[i][l] += wu * pst->dw.coef[j][n];
++               }
++            }
++         }
++   }
++}
++
++/* Cholesky : Cholesky factorization of Matrix R */
++void Cholesky(PStream *pst)
++{
++   register int i, j, k;
++	
++   pst->sm.R[0][0] = sqrt(pst->sm.R[0][0]);
++
++   for (i=1; i<pst->width; i++)
++      pst->sm.R[0][i] /= pst->sm.R[0][0];
++
++	for (i=1; i<pst->T; i++) {
++      for (j=1; j<pst->width; j++)
++         if (i-j >= 0)
++            pst->sm.R[i][0] -= pst->sm.R[i-j][j] * pst->sm.R[i-j][j];
++         
++      pst->sm.R[i][0] = sqrt(pst->sm.R[i][0]);
++         
++      for (j=1; j<pst->width; j++) {
++			for (k=0; k<pst->dw.max_L; k++)
++            if (j!=pst->width-1)
++               pst->sm.R[i][j] -= pst->sm.R[i-k-1][j-k]*pst->sm.R[i-k-1][j+1];
++            
++         pst->sm.R[i][j] /= pst->sm.R[i][0];
++      }
++   }
++}
++
++/* Cholesky_forward : forward substitution to solve linear equations */
++void Cholesky_forward(PStream *pst)
++{
++   register int i, j;
++   double hold;
++   
++   pst->sm.g[0] = pst->sm.r[0] / pst->sm.R[0][0];
++
++   for (i=1; i<pst->T; i++) {
++      hold = 0.0;
++      for (j=1; j<pst->width; j++) {
++         if (i-j >= 0)
++            hold += pst->sm.R[i-j][j]*pst->sm.g[i-j];
++      }
++      pst->sm.g[i] = (pst->sm.r[i]-hold)/pst->sm.R[i][0];
++   }
++}
++
++/* Cholesky_backward : backward substitution to solve linear equations */
++void Cholesky_backward(PStream *pst, int m)
++{
++   register int i, j;
++   double hold;
++   
++   pst->par[pst->T-1][m] = pst->sm.g[pst->T-1] / pst->sm.R[pst->T-1][0];
++
++   for (i=pst->T-2; i>=0; i--) {
++      hold = 0.0;
++      for (j=1; j<pst->width; j++) {
++         if (pst->sm.R[i][j] != 0.0)
++            hold += pst->sm.R[i][j]*pst->par[i+j][m];
++      }
++		pst->par[i][m] = (float)((pst->sm.g[i] - hold) / pst->sm.R[i][0]);
++   }
++}
++
++/* generate parameter sequence from pdf sequence */
++void mlpg(PStream *pst)
++{	
++   int m;
++
++   for (m=0; m<=pst->order; m++) {
++      calc_R_and_r(pst,m);
++      Cholesky(pst);
++      Cholesky_forward(pst);
++      Cholesky_backward(pst,m);
++   }
++}
++
++
++/* InitPStream : Initialise PStream for parameter generation */
++void InitPStream(PStream *pst)
++{
++   pst->width	   = pst->dw.max_L*2+1;  /* band width of R */
++
++   pst->sm.mseq  = ddcalloc(pst->T, pst->vSize);
++   pst->sm.ivseq = ddcalloc(pst->T, pst->vSize);
++   pst->sm.g     = dcalloc (pst->T);
++   pst->sm.R     = ddcalloc(pst->T, pst->width);
++   pst->sm.r     = dcalloc (pst->T);
++   pst->par      = ffcalloc(pst->T,pst->order+1);
++}
++
++/* FreePStream : Free PStream */
++void FreePStream(PStream *pst)
++{
++   register int t;
++   
++   for (t=0; t<pst->T; t++) {
++      wfree(pst->sm.mseq[t]);
++      wfree(pst->sm.ivseq[t]);
++      wfree(pst->sm.R[t]);
++      wfree(pst->par[t]);
++   }
++
++   for (t=0; t<pst->dw.num; t++)
++       wfree(pst->dw.width[t]);
++   wfree(pst->dw.width);
++   wfree(pst->dw.coefr[0]);
++   for (t=1; t<pst->dw.num; t++)
++       wfree(pst->dw.coefr[t]);
++   wfree(pst->dw.coefr);
++   wfree(pst->dw.coef);
++	
++   wfree(pst->sm.mseq);
++   wfree(pst->sm.ivseq);
++   wfree(pst->sm.R);
++   wfree(pst->sm.g);
++   wfree(pst->sm.r);
++   wfree(pst->par);
++}
++
++/* pdf2speech : parameter generation from pdf sequence */
++void pdf2speech( FILE *rawfp, FILE *lf0fp, FILE *mcepfp, 
++                  PStream *mceppst, PStream *lf0pst, globalP *gp, ModelSet *ms, UttModel *um, VocoderSetup *vs)
++{
++   int frame, mcepframe, lf0frame;
++   int state, lw, rw, k, n;
++   Model *m;
++   HTS_Boolean nobound, *voiced;
++   
++   float f0;
++
++   lf0pst->vSize = ms->lf0stream;
++   lf0pst->order = 0;
++   mceppst->vSize = ms->mcepvsize;
++   mceppst->order = mceppst->vSize / mceppst->dw.num - 1;
++
++   InitDWin(lf0pst);
++   InitDWin(mceppst);
++
++   mcepframe  = 0;
++   lf0frame = 0;
++ 
++   voiced = walloc(HTS_Boolean,um->totalframe+1);
++   
++   for (m=um->mhead; m!=um->mtail ; m=m->next) {
++      for (state=2; state<=ms->nstate+1; state++) {
++         for (frame=1; frame<=m->dur[state]; frame++) {
++            voiced[mcepframe++] = m->voiced[state];
++            if (m->voiced[state]) {
++               lf0frame++;
++            }
++         }
++      }
++   }
++         
++   mceppst->T = mcepframe;
++   lf0pst->T  = lf0frame;
++  
++   InitPStream(mceppst);      
++   InitPStream(lf0pst);
++
++   mcepframe = 0;
++   lf0frame  = 0;
++
++   for (m=um->mhead; m!=um->mtail; m=m->next) {
++      for (state=2; state<=ms->nstate+1; state++) {
++         for (frame=1; frame<=m->dur[state]; frame++) {
++            for (k=0; k<ms->mcepvsize; k++) {
++               mceppst->sm.mseq[mcepframe][k]  = m->mcepmean[state][k];
++               mceppst->sm.ivseq[mcepframe][k] = finv(m->mcepvariance[state][k]);
++            }
++            for (k=0; k<ms->lf0stream; k++) {
++               lw = lf0pst->dw.width[k][WLEFT];
++               rw = lf0pst->dw.width[k][WRIGHT];
++               nobound = (HTS_Boolean)1;
++               
++               for (n=lw; n<=rw;n++)
++                  if (mcepframe+n<0 || um->totalframe<mcepframe+n)
++                     nobound = (HTS_Boolean)0;
++                  else
++		      nobound = (HTS_Boolean)((int)nobound & voiced[mcepframe+n]);
++                  
++               if (voiced[mcepframe]) {
++                  lf0pst->sm.mseq[lf0frame][k] = m->lf0mean[state][k+1];
++                  if (nobound || k==0)
++                     lf0pst->sm.ivseq[lf0frame][k] = finv(m->lf0variance[state][k+1]);
++                  else
++                     lf0pst->sm.ivseq[lf0frame][k] = 0.0;
++               }
++            }
++            if (voiced[mcepframe])
++               lf0frame++;
++            mcepframe++;
++         }
++      }
++   }
++
++   mlpg(mceppst);
++   
++   if (lf0frame>0)
++      mlpg(lf0pst);
++
++   lf0frame = 0;
++   
++   if (gp->XIMERA && lf0fp!=NULL)
++      fprintf(lf0fp, "# FrameShift=%dms\n", (FPERIOD*1000)/RATE);
++   
++   for (mcepframe=0; mcepframe<mceppst->T; mcepframe++) { 
++      if (voiced[mcepframe])
++         f0 = gp->F0_STD * exp(lf0pst->par[lf0frame++][0]) + gp->F0_MEAN;  
++      else                  
++         f0 = 0.0;
++
++      if (mcepfp != NULL)
++         fwrite(mceppst->par[mcepframe], sizeof(float), mceppst->order+1, mcepfp);
++      if (lf0fp != NULL) {
++         if (gp->XIMERA)  
++            fprintf(lf0fp, "%.1f 1\n", f0);
++         else 
++            fwrite(&f0, sizeof(double), 1, lf0fp);
++      }
++
++      if (rawfp!=NULL)
++         vocoder(f0, mceppst->par[mcepframe], mceppst->order, rawfp, gp, vs);
++   }
++
++   FreePStream(mceppst);
++   FreePStream(lf0pst);
++   wfree(voiced);
++}
++
++/* InitDWin : Initialise dynamic window */
++void InitDWin(PStream *pst)
++{   
++   int i;
++   int fsize, leng, fpos;
++   FILE *fp;
++
++   /* memory allocation */
++   pst->dw.width = walloc(int *,pst->dw.num);
++  
++   for (i=0; i<pst->dw.num; i++) {
++       pst->dw.width[i] = walloc(int,2);
++   }
++
++   pst->dw.coef= walloc(float *,pst->dw.num);
++   /* because the pointers are moved, keep an original of the memory
++      being allocated */
++   pst->dw.coefr= walloc(float *,pst->dw.num);
++   
++   /* window for static parameter */
++   pst->dw.width[0][WLEFT] = pst->dw.width[0][WRIGHT] = 0;
++   pst->dw.coef[0] = fcalloc (1);
++   pst->dw.coefr[0] = pst->dw.coef[0];
++   pst->dw.coef[0][0] = 1;
++
++   /* set delta coefficients */
++   for (i=1; i<pst->dw.num; i++) {
++      if (pst->dw.fn[i][0] == ' ')
++         fsize = str2farray(pst->dw.fn[i], &(pst->dw.coef[i]));
++      else {         /* read from file */
++         if ((fp = fopen (pst->dw.fn[i], "r")) == NULL) {
++            fprintf(stderr, "file %s not found\n", pst->dw.fn[i]);
++            festival_error();
++         }
++            
++         /* check the number of coefficients */
++         fseek(fp, 0L, 2);
++	 fpos = (int)ftell(fp);
++         fsize = fpos/sizeof (float);
++         fseek(fp, 0L, 0);
++
++         /* read coefficients */
++         pst->dw.coef[i] = fcalloc (fsize);
++         pst->dw.coefr[i] = pst->dw.coef[i];
++         fread(pst->dw.coef[i], sizeof(float), fsize, fp);
++	 if (EST_BIG_ENDIAN)
++		 swap_bytes_float(pst->dw.coef[i],fsize);
++
++         fclose(fp);
++      }
++
++      /* set pointer */
++      leng = fsize / 2;
++      pst->dw.coef[i] += leng;
++      pst->dw.width[i][WLEFT] = -leng;
++      pst->dw.width[i][WRIGHT] = leng;
++         
++      if (fsize % 2 == 0)
++         pst->dw.width[i][WRIGHT]--;
++   }
++ 
++   pst->dw.maxw[WLEFT] = pst->dw.maxw[WRIGHT] = 0;
++      
++   for (i=0; i<pst->dw.num; i++) {
++      if (pst->dw.maxw[WLEFT] > pst->dw.width[i][WLEFT])
++         pst->dw.maxw[WLEFT] = pst->dw.width[i][WLEFT];
++      if (pst->dw.maxw[WRIGHT] < pst->dw.width[i][WRIGHT])
++         pst->dw.maxw[WRIGHT] = pst->dw.width[i][WRIGHT];
++   }
++
++   /* calcurate max_L to determine size of band matrix */
++   if ( pst->dw.maxw[WLEFT] >= pst->dw.maxw[WRIGHT] )
++      pst->dw.max_L = pst->dw.maxw[WLEFT];
++   else
++      pst->dw.max_L = pst->dw.maxw[WRIGHT];
++
++}
++
++/* -------------------- End of "mlpg.c" -------------------- */
+--- /dev/null
++++ festival/src/modules/hts21_engine/tree.cc
+@@ -0,0 +1,325 @@
++/*  ---------------------------------------------------------------  */
++/*      The HMM-Based Speech Synthesis System (HTS): version 1.1b    */
++/*                        HTS Working Group                          */
++/*                                                                   */
++/*                   Department of Computer Science                  */
++/*                   Nagoya Institute of Technology                  */
++/*                                and                                */
++/*    Interdisciplinary Graduate School of Science and Engineering   */
++/*                   Tokyo Institute of Technology                   */
++/*                      Copyright (c) 2001-2003                      */
++/*                        All Rights Reserved.                       */
++/*                                                                   */
++/*  Permission is hereby granted, free of charge, to use and         */
++/*  distribute this software and its documentation without           */
++/*  restriction, including without limitation the rights to use,     */
++/*  copy, modify, merge, publish, distribute, sublicense, and/or     */
++/*  sell copies of this work, and to permit persons to whom this     */
++/*  work is furnished to do so, subject to the following conditions: */
++/*                                                                   */
++/*    1. The code must retain the above copyright notice, this list  */
++/*       of conditions and the following disclaimer.                 */
++/*                                                                   */
++/*    2. Any modifications must be clearly marked as such.           */
++/*                                                                   */    
++/*  NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF TECHNOLOGY,  */
++/*  HTS WORKING GROUP, AND THE CONTRIBUTORS TO THIS WORK DISCLAIM    */
++/*  ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL       */
++/*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL NAGOYA INSTITUTE OF TECHNOLOGY, TOKYO INSITITUTE OF        */
++/*  TECHNOLOGY, HTS WORKING GROUP, NOR THE CONTRIBUTORS BE LIABLE    */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY        */
++/*  DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  */
++/*  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTUOUS   */
++/*  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR          */
++/*  PERFORMANCE OF THIS SOFTWARE.                                    */
++/*                                                                   */
++/*  ---------------------------------------------------------------  */
++/*   tree.c : decision trees handling functions                      */
++/*                                                                   */ 
++/*                                   2003/06/11 by Heiga Zen         */
++/*  ---------------------------------------------------------------  */
++
++#include <cstdio>
++#include <cstring>
++#include <cstdlib>
++#include <cctype>
++#include "festival.h"
++
++#include "misc.h"
++#include "tree.h"
++
++HTS_Boolean DPMatch (char *str, char *pat, int pos, int max)
++{
++   if (pos > max) return 0;
++   if (*str == '\0' && *pat == '\0') return 1;
++   
++   if (*pat == '*') {
++      if ( DPMatch(str+1, pat, pos+1, max)==1 )
++         return 1;
++      else
++         return DPMatch(str+1, pat+1, pos+1, max);
++   }
++   if (*str == *pat || *pat == '?') {
++      if ( DPMatch(str+1, pat+1, pos+1, max+1)==1 )
++         return 1;
++      
++      else 
++         if (*(pat + 1) == '*')
++            return DPMatch(str+1, pat+2, pos+1, max+1);
++   }
++   
++   return 0;
++}
++
++HTS_Boolean PMatch (char *str, char *pat)
++{
++   int i, max = 0;
++   for(i=0; i < (int)strlen(pat); i++)
++      if (pat[i] != '*') max++;
++         
++   return DPMatch(str, pat, 0, strlen(str)-max);
++}
++
++HTS_Boolean QMatch (char *str, Question *q)
++{
++   HTS_Boolean flag = 0;
++   Pattern *p;
++  
++   for (p=q->phead; p!=q->ptail; p=p->next) {
++      flag = PMatch(str, p->pat);
++      if (flag)
++         return 1;
++   }
++   
++   return 0;
++}
++
++int SearchTree (char *str, Node *node)
++{
++   HTS_Boolean answer = QMatch(str, node->quest);
++
++   if (answer) {
++      if (node->yes->pdf>0) 
++         return node->yes->pdf;
++      else 
++         return SearchTree(str, node->yes);
++   }
++   else {
++      if (node->no->pdf>0) 
++         return node->no->pdf;
++      else
++        return SearchTree (str, node->no);
++   }
++   
++   return -1;
++}
++
++void LoadQuestions(FILE *fp, Question *q, Mtype type)
++{
++   char buf[1024];
++
++   GetToken(fp, buf);
++   q->qName = wstrdup(buf);
++   q->phead = q->ptail = walloc(Pattern,1);
++
++   GetToken(fp,buf);
++   if (strcmp(buf, "{")==0) {
++      while (strcmp(buf,"}")!=0) {
++          GetToken (fp, buf);
++          q->ptail->pat = wstrdup(buf);
++          q->ptail->next = walloc(Pattern,1);
++          q->ptail = q->ptail->next;
++          GetToken (fp, buf);
++      }
++   }
++}
++
++HTS_Boolean IsTree (Tree *tree, char *buf)
++{
++   char *s,*l,*r;
++
++   s = buf;
++   if ( ((l = strchr(s, '[')) == NULL) || ((r = strrchr(s, ']'))==NULL) ) {
++      return 0;
++   }
++   else {
++      *r = '\0';
++      s = l+1;
++      tree->state = atoi(s);
++   }
++   
++   return 1;
++}
++
++HTS_Boolean IsNum (char *buf)
++{
++   int i;
++
++   for (i=0; i<(int)strlen(buf); i++)
++      if (! (isdigit(buf[i]) || (buf[i] == '-'))) 
++         return 0;
++      
++   return 1;
++}
++
++Question *FindQuestion(TreeSet *ts, Mtype type, char *buf)
++{
++   Question *q;
++   
++   for (q=ts->qhead[type];q!=ts->qtail[type];q=q->next)
++      if (strcmp(buf, q->qName)==0)
++         return q;
++      
++   printf(" Error ! Cannot find question %s ! \n",buf);
++   festival_error();
++
++   return 0;
++}
++
++int name2num(char *buf)
++{
++   return (atoi(strrchr(buf,'_')+1));
++}
++
++Node *FindNode (Node *node, int num)
++{
++   Node *dest;
++   
++   if (node->idx==num) return node;
++   else {
++      if (node->yes != NULL) {
++         dest = FindNode(node->yes, num);
++         if (dest) return dest;
++      }
++      if (node->no != NULL) {
++         dest = FindNode(node->no, num);
++         if (dest) return dest;
++      }
++   }
++   return NULL;
++}
++         
++void LoadTree (TreeSet *ts, FILE *fp, Tree *tree, Mtype type)
++{
++   char buf[1024];
++   Node *node;
++   
++   GetToken(fp, buf);
++   node = walloc(Node,1);
++   tree->root = node;
++   
++   if ( strcmp(buf,"{") == 0 ) {
++      while ( GetToken(fp,buf),strcmp(buf,"}")!= 0 ) {
++         node = FindNode(tree->root, atoi(buf));
++         GetToken (fp, buf);     /* load a question applied at this node */
++         
++         node->quest = FindQuestion(ts, type, buf);
++         node->yes = walloc(Node,1);
++         node->no  = walloc(Node,1);
++
++         GetToken (fp, buf);
++         if (IsNum(buf)) {
++            node->no->idx = atoi(buf);
++         }
++         else {
++            node->no->pdf = name2num(buf);
++         }
++         
++         GetToken(fp, buf);
++         if (IsNum(buf)) {
++            node->yes->idx = atoi(buf);
++         }
++         else {
++            node->yes->pdf = name2num(buf);
++         }
++      }
++   }
++   else {
++      node->pdf = name2num(buf);
++   }
++}
++   
++void LoadTreesFile(TreeSet *ts, Mtype type)
++{
++   char buf[1024];
++   Question *q;
++   Tree *t;
++   FILE *fp = ts->fp[type];
++   
++   q = walloc(Question,1);
++   ts->qhead[type] = q;  ts->qtail[type] = NULL;
++
++   t = walloc(Tree,1);
++   ts->thead[type] = t;  ts->ttail[type] = NULL;
++   
++   while (!feof(fp)) {
++      GetToken(fp, buf);
++      if (strcmp(buf, "QS") == 0) {
++         LoadQuestions(fp, q, type);
++         q->next = walloc(Question,1);
++         q = ts->qtail[type] = q->next;
++         q->next = NULL;
++      }
++      if (IsTree(t, buf)) {
++         LoadTree(ts, fp, t, type);
++         t->next = walloc(Tree,1);
++         t = ts->ttail[type] = t->next;
++         t->next = NULL;
++      }
++   }
++}
++
++void InitTreeSet(TreeSet *ts) 
++{
++   ts->fp[DUR] = NULL;
++   ts->fp[LF0] = NULL;
++   ts->fp[MCP] = NULL;
++   
++   return; 
++} 
++
++static void delete_tree_nodes(Node *node)
++{
++    if (!node)
++	return;
++    if (node->yes)
++	delete_tree_nodes(node->yes);
++    if (node->no)
++	delete_tree_nodes(node->no);
++    wfree(node);
++}
++
++void FreeTrees(TreeSet *ts, Mtype type)
++{
++    Question *nq, *qq;
++    Pattern *pp, *np;
++    Tree *tt, *nt;
++
++    for (qq = ts->qhead[type]; qq; qq = nq)
++    {
++	nq = qq->next;
++
++	wfree(qq->qName);
++	for (pp = qq->phead; pp; pp = np)
++	{
++	    np = pp->next;
++	    wfree(pp->pat);
++	    wfree(pp);
++	}
++	wfree(qq);
++    }
++
++    for (tt = ts->thead[type]; tt; tt = nt)
++    {
++	nt = tt->next;
++
++	delete_tree_nodes(tt->root);
++
++	wfree(tt);
++    }
++
++
++}
++
++/* -------------------- End of "tree.c" -------------------- */
+--- /dev/null
++++ festival/lib/hts21compat.scm
+@@ -0,0 +1,75 @@
++;;  ----------------------------------------------------------------  ;;
++;;                 Nagoya Institute of Technology and                 ;;
++;;                     Carnegie Mellon University                     ;;
++;;                         Copyright (c) 2002                         ;;
++;;                        All Rights Reserved.                        ;;
++;;                                                                    ;;
++;;  Permission is hereby granted, free of charge, to use and          ;;
++;;  distribute this software and its documentation without            ;;
++;;  restriction, including without limitation the rights to use,      ;;
++;;  copy, modify, merge, publish, distribute, sublicense, and/or      ;;
++;;  sell copies of this work, and to permit persons to whom this      ;;
++;;  work is furnished to do so, subject to the following conditions:  ;;
++;;                                                                    ;;
++;;    1. The code must retain the above copyright notice, this list   ;;
++;;       of conditions and the following disclaimer.                  ;;
++;;                                                                    ;;
++;;    2. Any modifications must be clearly marked as such.            ;;
++;;                                                                    ;;
++;;    3. Original authors' names are not deleted.                     ;;
++;;                                                                    ;;
++;;    4. The authors' names are not used to endorse or promote        ;;
++;;       products derived from this software without specific prior   ;;
++;;       written permission.                                          ;;
++;;                                                                    ;;
++;;  NAGOYA INSTITUTE OF TECHNOLOGY, CARNEGIE MELLON UNIVERSITY AND    ;;
++;;  THE CONTRIBUTORS TO THIS WORK DISCLAIM ALL WARRANTIES WITH        ;;
++;;  REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF      ;;
++;;  MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL NAGOYA INSTITUTE   ;;
++;;  OF TECHNOLOGY, CARNEGIE MELLON UNIVERSITY NOR THE CONTRIBUTORS    ;;
++;;  BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR   ;;
++;;  ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR        ;;
++;;  PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER    ;;
++;;  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR  ;;
++;;  PERFORMANCE OF THIS SOFTWARE.                                     ;;
++;;                                                                    ;;
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;;          HTS 2.1 support code                                      ;;
++;;          Copyright is assigned by author to above                  ;;
++;;          on condition it is licensed as above                      ;;
++;;             Author :  Peter M Drysdale <drysdalepete@gmail.com>    ;;
++;;             Date   :  November 2011                                ;;
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++
++(require 'hts)
++(require_module 'hts21_engine)
++
++(defSynthType HTS21
++  (let ((featfile (make_tmp_filename))
++	(mcepfile (make_tmp_filename))
++	(f0file (make_tmp_filename))
++	(wavfile (make_tmp_filename)))
++
++    (apply_hooks hts_synth_pre_hooks utt)
++
++    (set! hts_output_params
++	  (list
++	   (list "-labelfile" featfile)
++	   (list "-om" mcepfile)
++	   (list "-of" f0file)
++	   (list "-or" wavfile)))
++
++    (hts_dump_feats utt hts_feats_list featfile)
++
++    (HTS21_Synthesize utt)
++
++    (delete-file featfile)
++    (delete-file mcepfile)
++    (delete-file f0file)
++    (delete-file wavfile)
++
++    (apply_hooks hts_synth_post_hooks utt)
++    utt)
++)
++
++(provide 'hts21compat)

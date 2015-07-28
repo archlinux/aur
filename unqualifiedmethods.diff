@@ -1,0 +1,121 @@
+This patch allows compiling of festival on gcc 4.7 and clang 3.0.
+Both these compilers are stricter of unqualified method calls in 
+templates than previous versions of gcc.
+This patch should not alter the code in a substantive way as it
+only qualifies method calls which were assumed in previous compilers.
+No copyright subsists in this patch as it is too trivial.
+
+Author: Peter Drysdale <drysdalepete@gmail.com>
+
+--- speech-tools-2.1~release.orig/include/EST_TIterator.h
++++ speech_tools/include/EST_TIterator.h
+@@ -209,7 +209,7 @@ public:
+ 
+   /// Create an iterator ready to run over the given container.
+   EST_TStructIterator(const Container &over)
+-    { begin(over); }
++    { this->begin(over); }
+ 
+   const Entry *operator ->() const
+     {return &this->current();}
+@@ -289,7 +289,7 @@ public:
+ 
+   /// Create an iterator ready to run over the given container.
+   EST_TRwStructIterator(Container &over)
+-    { begin(over); }
++    { this->begin(over); }
+ 
+   Entry *operator ->() const
+     {return &this->current();}
+--- speech-tools-2.1~release.orig/base_class/EST_TSimpleVector.cc
++++ speech_tools/base_class/EST_TSimpleVector.cc
+@@ -43,6 +43,7 @@
+ #include "EST_TSimpleVector.h"
+ #include "EST_matrix_support.h"
+ #include <fstream>
++#include <cstring>
+ #include "EST_cutils.h"
+ 
+ template<class T> void EST_TSimpleVector<T>::copy(const EST_TSimpleVector<T> &a)
+@@ -50,7 +51,7 @@ template<class T> void EST_TSimpleVector
+   if (this->p_column_step==1 && a.p_column_step==1)
+     {
+     resize(a.n(), FALSE);
+-    memcpy((void *)(this->p_memory), (const void *)(a.p_memory), this->n() * sizeof(T));
++    std::memcpy((void *)(this->p_memory), (const void *)(a.p_memory), this->n() * sizeof(T));
+     }
+ else
+   ((EST_TVector<T> *)this)->copy(a);
+@@ -70,7 +71,7 @@ template<class T> void EST_TSimpleVector
+   int old_offset = this->p_offset;
+   unsigned int q;
+ 
+-  just_resize(newn, &old_vals);
++  this->just_resize(newn, &old_vals);
+ 
+   if (set && old_vals)
+     {
+@@ -140,7 +141,7 @@ template<class T> EST_TSimpleVector<T> &
+ template<class T> void EST_TSimpleVector<T>::zero()
+ {
+   if (this->p_column_step==1)
+-    memset((void *)(this->p_memory), 0, this->n() * sizeof(T));
++    std::memset((void *)(this->p_memory), 0, this->n() * sizeof(T));
+   else
+     ((EST_TVector<T> *)this)->fill(*this->def_val);
+ }
+
+--- speech-tools-2.1~release.orig/include/EST_TNamedEnum.h
++++ speech_tools/include/EST_TNamedEnum.h
+@@ -130,7 +130,7 @@ public:
+ 	{this->initialise((const void *)defs); };
+   EST_TNamedEnumI(EST_TValuedEnumDefinition<const char *,const char *,INFO> defs[], ENUM (*conv)(const char *))
+ 	{this->initialise((const void *)defs, conv); };
+-  const char *name(ENUM tok, int n=0) const {return value(tok,n); };
++  const char *name(ENUM tok, int n=0) const {return this->value(tok,n); };
+ 
+ };
+ 
+
+
+--- speech-tools-2.1~release.orig/base_class/EST_TSimpleMatrix.cc
++++ speech_tools/base_class/EST_TSimpleMatrix.cc
+@@ -44,6 +44,7 @@
+ #include "EST_TVector.h"
+ #include <fstream>
+ #include <iostream>
++#include <cstring>
+ #include "EST_cutils.h"
+ 
+ template<class T> 
+@@ -51,7 +52,7 @@ void EST_TSimpleMatrix<T>::copy_data(con
+ {
+     
+   if (!a.p_sub_matrix && !this->p_sub_matrix)
+-    memcpy((void *)&this->a_no_check(0,0),
++    std::memcpy((void *)&this->a_no_check(0,0),
+ 	   (const void *)&a.a_no_check(0,0),
+ 	   this->num_rows()*this->num_columns()*sizeof(T)
+ 	   );
+@@ -98,7 +98,7 @@ void EST_TSimpleMatrix<T>::resize(int ne
+ 	{
+ 	  int copy_r = Lof(this->num_rows(), new_rows);
+ 
+-	  just_resize(new_rows, new_cols, &old_vals);
++	  this->just_resize(new_rows, new_cols, &old_vals);
+ 
+           for (q=0; q<(copy_r*new_cols*sizeof(T)); q++) /* memcpy */
+               ((char *)this->p_memory)[q] = ((char *)old_vals)[q];
+@@ -127,9 +127,9 @@ void EST_TSimpleMatrix<T>::resize(int ne
+ 	  int copy_r = Lof(this->num_rows(), new_rows);
+ 	  int copy_c = Lof(this->num_columns(), new_cols);
+ 	  
+-	  just_resize(new_rows, new_cols, &old_vals);
++	  this->just_resize(new_rows, new_cols, &old_vals);
+ 
+-	  set_values(old_vals,
++	  this->set_values(old_vals,
+ 		     old_row_step, old_column_step,
+ 		     0, copy_r,
+ 		     0, copy_c);
+
