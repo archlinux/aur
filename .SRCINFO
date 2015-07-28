@@ -1,0 +1,19 @@
+pkgbase = libkml
+	pkgdesc = A KML library written in C++ with bindings to other languages
+	pkgver = 1.2.0
+	pkgrel = 3
+	url = https://github.com/google/libkml
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = expat
+	depends = uriparser
+	optdepends = swig: bindings for additional languages
+	optdepends = python2: python bindings
+	optdepends = jdk: java bindings
+	conflicts = libminizip
+	source = https://github.com/kubark42/libkml/archive/master.zip
+	md5sums = e5cae2b9ee6a652897a1f6e92fb094a4
+
+pkgname = libkml
+
