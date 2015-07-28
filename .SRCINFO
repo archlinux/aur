@@ -1,0 +1,15 @@
+pkgbase = icu44
+	pkgdesc = International Components for Unicode library
+	pkgver = 4.4.2
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:"icu"
+	depends = gcc-libs>=4.7.1-5
+	depends = sh
+	source = http://download.icu-project.org/files/icu4c/4.4.2/icu4c-4_4_2-src.tgz
+	sha256sums = 2ecefdfb134b5b364ed01c2f613a9ccb11489dbae5857d63cd17ba5b6caca789
+
+pkgname = icu44
+
