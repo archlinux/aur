@@ -1,3 +1,9 @@
+2015-07-28 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.2 :
+	- Removed leftovers from the old dropbear_initrd_encrypt which where conflicting with mkinitcpio-utils.
+
+
 2015-07-14 Giancarlo Razzolini <grazzolini@gmail.com>
 
 	* 0.0.1 :
