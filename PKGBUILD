@@ -6,7 +6,7 @@ license=('LGPL')
 arch=('i686' 'x86_64')
 url="http://www.openturns.org/"
 depends=('libxml2' 'muparser' 'intel-tbb' 'hmat-oss' 'python')
-optdepends=('r: plotting, linear model, truncated normal distribution estimation and statistical tests'
+optdepends=('r: plotting, linear model and statistical tests'
             'python-matplotlib: nicer plotting')
 makedepends=('python' 'python-sphinx' 'r' 'cmake' 'gcc-fortran' 'swig' 'boost')
 backup=('etc/openturns/openturns.conf')
