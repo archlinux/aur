@@ -1,0 +1,13 @@
+pkgbase = byacc-bison
+	pkgdesc = A Berkeley reimplementation of the Unix parser generator Yacc (providing bison/yacc)
+	pkgver = 1
+	pkgrel = 1
+	url = http://invisible-island.net/byacc/
+	arch = any
+	license = custom
+	depends = byacc
+	provides = bison
+	conflicts = bison
+
+pkgname = byacc-bison
+
