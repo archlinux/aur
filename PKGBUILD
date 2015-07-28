@@ -8,7 +8,7 @@
 # the binding from the language specific managers python2-thrift, perl-thrift, ruby-thrift, ...
 
 pkgname=thrift-git
-pkgver=0.9.2.r3833.4f4b15b
+pkgver=0.9.2.r4180.0856273
 pkgrel=1
 pkgdesc='Scalable cross-language services framework for IPC/RPC'
 arch=(i686 x86_64)
