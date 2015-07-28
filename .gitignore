@@ -1,0 +1,6 @@
+*.pkg.tar.xz
+pkg
+src
+gitsync
+go.net
+timber
