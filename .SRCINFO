@@ -1,17 +1,17 @@
 pkgbase = ffdec
 	pkgdesc = Open source Flash SWF decompiler and editor
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = http://www.free-decompiler.com/flash/
 	arch = any
 	license = GPL3
 	depends = java-runtime=8
 	conflicts = jpexs-decompiler-git
-	source = http://www.free-decompiler.com/flash/download/ffdec_6.0.0.zip
+	source = http://www.free-decompiler.com/flash/download/ffdec_6.0.1.zip
 	source = ffdec
 	source = ffdec.desktop
 	source = ffdec.png
-	md5sums = af4bfdbe84f9671da7e743177deef389
+	md5sums = 4885319f8ee62dab73e92c4b0b3a6207
 	md5sums = 29a00ab7cb71ec337ed028493914009f
 	md5sums = b9da710cc2a4af62f1fa8690e0fb5553
 	md5sums = c6f354af3fdfe3f45623fb3949e23f8f
