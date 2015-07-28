@@ -1,0 +1,19 @@
+commit 5ba179a87a206f284b0eb2e91665617a849ef0f2
+Author: Jens John <dev@2ion.de>
+Date:   Tue Jul 28 15:27:08 2015 +0200
+
+    Patched Makefile
+
+diff --git a/Makefile b/Makefile
+index 8a87263..bc41df8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+-CFLAGS  = -std=gnu99 -fPIC -O0 -ggdb3 -Wall -Wextra -fvisibility=hidden
++CFLAGS  = -std=gnu99 -fPIC -O0 -ggdb3 -Wall -Wextra -fvisibility=hidden $(shell pkg-config --cflags libffi)
+ CPPFLAGS= -Iinclude
+-LDLIBS  = -lffi -ldl
++LDLIBS  = $(shell pkg-config --libs libffi) -ldl
+ PREFIX	= /usr/local
+ 
+ .PHONY: clean install
