@@ -1,0 +1,21 @@
+pkgbase = ada-web-server
+	pkgdesc = A complete embeddable Web application framework for Ada.
+	pkgver = 3.3.0.0
+	pkgrel = 1
+	url = http://libre.adacore.com/tools/aws
+	arch = i686
+	arch = x86_64
+	groups = gcc-ada
+	license = GPL
+	makedepends = gprbuild
+	depends = gcc-ada
+	depends = asis
+	provides = aws
+	provides = ada-web-server
+	conflicts = aws
+	conflicts = ada-web-server
+	source = http://mirrors.cdn.adacore.com/art/fe47e20355c57bba144256718c13cfa3aa4ce189
+	sha256sums = 9efcc9f6f07c26d29b112a01aff8c2309d9f8342431d94a7135c6759d63f6500
+
+pkgname = ada-web-server
+
