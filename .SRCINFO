@@ -1,0 +1,22 @@
+pkgbase = xkeyboard-config-hhk
+	pkgdesc = X keyboard configuration files with a patch for a layout emulating a happy hacking keyboard
+	pkgver = 2.15
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/XKeyboardConfig
+	arch = any
+	license = custom
+	makedepends = intltool
+	makedepends = xorg-xkbcomp
+	provides = xkeyboard-config
+	provides = xkbdata
+	conflicts = xkeyboard-config
+	conflicts = xkbdata
+	replaces = xkeyboard-config
+	replaces = xkbdata
+	source = http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.15.tar.bz2
+	source = hhk.patch
+	sha256sums = 0e443cf7ca2f0b40846472c029647a05933fc705d611e1478c4db8a48a6f38bf
+	sha256sums = 2bfa71b4297156bf948abea8c7bcd5b7c24986e3bbac7dbe5662ae7c1ea6cff0
+
+pkgname = xkeyboard-config-hhk
+

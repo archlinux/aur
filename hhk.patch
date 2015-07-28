@@ -1,0 +1,69 @@
+diff --git a/rules/base.xml.in b/rules/base.xml.in
+index 0b0c148..ffd8897 100644
+--- a/rules/base.xml.in
++++ b/rules/base.xml.in
+@@ -1387,6 +1387,18 @@
+         </variant>
+         <variant>
+           <configItem>
++            <name>hhk</name>
++            <_description>English (Happy Hacking Keyboard)</_description>
++          </configItem>
++        </variant>
++        <variant>
++          <configItem>
++           <name>hhk_mac</name>
++           <_description>English (Happy Hacking Keyboard for Macs)</_description>
++          </configItem>
++        </variant>
++        <variant>
++          <configItem>
+             <name>rus</name>
+             <!-- Keyboard indicator for Russian layouts -->
+             <_shortDescription>ru</_shortDescription>
+diff --git a/rules/evdev.xml.in b/rules/evdev.xml.in
+index 0b0c148..4be6928 100644
+--- a/rules/evdev.xml.in
++++ b/rules/evdev.xml.in
+@@ -1386,6 +1386,18 @@
+           </configItem>
+         </variant>
+         <variant>
++		  <configItem>
++            <name>hhk</name>
++            <_description>English (Happy Hacking Keyboard)</_description>
++          </configItem>
++        </variant>
++        <variant>
++          <configItem>
++           <name>hhk_mac</name>
++           <_description>English (Happy Hacking Keyboard for Macs)</_description>
++          </configItem>
++        </variant>
++        <variant>
+           <configItem>
+             <name>rus</name>
+             <!-- Keyboard indicator for Russian layouts -->
+diff --git a/symbols/us b/symbols/us
+index d5a6c18..4b5b8e4 100644
+--- a/symbols/us
++++ b/symbols/us
+@@ -1561,3 +1561,18 @@ partial alphanumeric_keys
+ 	xkb_symbols "sun_type6" {
+ 	include "sun_vndr/us(sun_type6)"
+ };
++
++partial alphanumeric_keys
++xkb_symbols "hhk_mac" {
++       include "us(basic)"
++       include "ctrl(swapcaps)"
++       key <BKSL> {    [ BackSpace, BackSpace  ]       };
++       key <BKSP> {    [ backslash,    bar     ]       };
++       name[Group1]= "English (US, Happy Hacking Keyboard)";
++};
++
++partial alphanumeric_keys
++xkb_symbols "hhk" {
++       include "us(hhk_mac)"
++       include "altwin(swap_alt_win)"
++};
