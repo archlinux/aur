@@ -1,7 +1,7 @@
 # Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Mike WB2FKO <mph at sportscliche dot com>
 pkgname=quisk
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="Software defined radio (SDR)"
 arch=('i686' 'x86_64')
@@ -12,14 +12,14 @@ source=(http://james.ahlstrom.name/quisk/$pkgname-$pkgver.tar.gz
         $pkgname
         $pkgname.desktop
         $pkgname.patch)
-md5sums=('94d2f54e1592df2965757c21491b7471'
+md5sums=('2b85bda029f4e7ec56c7d014d4b380c1'
          '8a7445eee98db1f085dda69d606c5205'
          '44cddf20e06994ce3abcd4b563567ef3'
-         'e369900227c9bea8d3bc68cb21838651')
-sha512sums=('7b7a2f241f33306473fca809ef43a44e19a858126063995745d11717384db3d7f6d645d696e6fc71d5991f43e8db337c6fbfd21ac43681395fbe970973a64a9e'
+         '8d034fa5a3b3166634bbb6c22606600b')
+sha512sums=('6c5b55329f2e3e936ea82307dc8331ff5b88d573dbce710e408a29f53232b2134e75496659c60ec1b0da69b76ee910bb55bd8baa4af3ec6c55b368b080e2bfb3'
             '94f09cc0e847e308ca66bf90c8f729924273f66524fed8bc63565c8060113ae8dcae6ed3f14075e03a7168da182059b3279c0315a1d2d00cf4292e4d68cf7871'
             '3ad02f730b4a4033b86a2ce510865c13c2f2e228304283cae0bb389442f7ab49a5d530cd94e32460e19b53da24037abc855027ce34c93fdabcd1faf8a91852b1'
-            'a471e8ca91b598c825bcfb829bbcf32317596b5e88771c0eddc6558dfa8b1e0b0c0483344ba7cf95a8a231fdce1f8eb86e0a67603474d50ff2c0a978d1e5c099')
+            '18ce9853ba05735513cde13074b47bbd948f478703badc49538433a5133c1f21643acc6da59da4753bb392a1e6fcd2dac819610add34002a2ff24e00717ec42d')
 build() {
   # use python2 instead python for compilation
   cd $srcdir
