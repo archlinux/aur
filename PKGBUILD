@@ -4,7 +4,7 @@
 pkgname=eclipse-arm
 pkgver=2.8.1
 date=201504061754
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU ARM Eclipse Plug-in"
 arch=('any')
 url="http://sourceforge.net/projects/gnuarmeclipse"
@@ -16,7 +16,7 @@ source=("http://sourceforge.net/projects/gnuarmeclipse/files/Current%20Releases/
 md5sums=('08b62e19361d99c20c383c00bfba82ea')
 
 package() {
-  _dest="${pkgdir}/usr/share/eclipse/dropins/arm/eclipse"
+  _dest="${pkgdir}/usr/lib/eclipse/dropins/arm/eclipse"
 
   cd "${srcdir}"
   mkdir -p "$_dest"
