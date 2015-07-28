@@ -1,0 +1,26 @@
+pkgbase = libxfce4ui-devel
+	pkgdesc = Commonly used Xfce widgets among Xfce applications
+	pkgver = 4.11.2
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = libxfce4ui.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = libxfce4util
+	depends = gtk2
+	depends = xfconf
+	depends = libsm
+	depends = startup-notification
+	depends = hicolor-icon-theme
+	depends = gtk3
+	provides = libxfce4ui=4.11.2
+	conflicts = libxfce4ui
+	options = !libtool
+	source = http://archive.xfce.org/src/xfce/libxfce4ui/4.11/libxfce4ui-4.11.2.tar.bz2
+	sha256sums = 6fefbc8f4f9710f061c3607db352880628aa858d7d816762286f011a5e4fa4da
+
+pkgname = libxfce4ui-devel
+
