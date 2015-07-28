@@ -1,13 +1,12 @@
 pkgbase = eclipse-zylin
 	pkgdesc = Zylin Embedded CDT Plugin
 	pkgver = 4.18.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://opensource.zylin.com/embeddedcdt.html
 	install = eclipse-zylin.install
 	arch = any
 	license = GPL
-	depends = eclipse
-	depends = eclipse-cdt
+	depends = eclipse-cpp
 	noextract = com.zylin.cdt.feature_4.18.1.jar
 	noextract = com.zylin.embeddedcdt_4.18.1.jar
 	source = http://opensource.zylin.com/zylincdt/features/com.zylin.cdt.feature_4.18.1.jar

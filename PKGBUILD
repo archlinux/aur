@@ -1,23 +1,23 @@
 # Maintainer: Zuyi Hu <hzy068808@gmail.com>
 pkgname=eclipse-zylin
 pkgver=4.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Zylin Embedded CDT Plugin"
 arch=('any')
 url="http://opensource.zylin.com/embeddedcdt.html"
 install="eclipse-zylin.install"
 license=("GPL")
-depends=('eclipse' 'eclipse-cdt')
+depends=('eclipse-cpp')
 source=("http://opensource.zylin.com/zylincdt/features/com.zylin.cdt.feature_$pkgver.jar"
         "http://opensource.zylin.com/zylincdt/plugins/com.zylin.embeddedcdt_$pkgver.jar")
 noextract=("com.zylin.cdt.feature_$pkgver.jar"
            "com.zylin.embeddedcdt_$pkgver.jar")
 md5sums=('a48c3412b20d7c61fba2786b865cd1be'
          '3c9847debea102c119437f8fec81778d')
- 
+
 package() {
-  _dest="${pkgdir}/usr/share/eclipse/dropins/zylin/eclipse"
- 
+  _dest="${pkgdir}/usr/lib/eclipse/dropins/zylin/eclipse"
+
   cd "${srcdir}"
   mkdir -p "$_dest"
 
