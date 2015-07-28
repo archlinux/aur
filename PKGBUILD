@@ -12,11 +12,9 @@ install=tideways-daemon.install
 if [[ $CARCH == "x86_64" ]]; then
     source=("https://s3-eu-west-1.amazonaws.com/qafoo-profiler/downloads/tideways-daemon_linux_amd64-${pkgver}.tar.gz")
     sha256sums=('972b0d224bfdd4bd926441f67b5d87db22150c1bd91cbd9400bed616b0dd92c1')
-    _arch=amd64
 else
     source=("https://s3-eu-west-1.amazonaws.com/qafoo-profiler/downloads/tideways-daemon_linux_i386-${pkgver}.tar.gz")
     sha256sums=('21d06a8328b6a2003af48205649ce9fb9ce5744f1b650041281ab80649501760')
-    _arch=i386
 fi
 
 source+=('tideways-daemon.service' 'tmpfiles.conf' 'sysusers.conf')
