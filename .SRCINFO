@@ -1,0 +1,35 @@
+pkgbase = dockbarx-git
+	pkgdesc = TaskBar with groupping and group manipulation
+	pkgver = 580.5157ffe
+	pkgrel = 1
+	url = https://code.launchpad.net/~dockbar-main/dockbar/experimental
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	depends = python2-wnck
+	depends = pygtk
+	depends = python2-xdg
+	depends = python2-dbus
+	depends = python2-numpy
+	depends = python2-pillow
+	depends = python2-keybinder2
+	depends = hicolor-icon-theme
+	depends = python2-xlib
+	depends = python2-gconf
+	optdepends = avant-window-navigator: AWN DockBarX Plugin
+	optdepends = xfce4-dockbarx-plugin: Xfce4 Panel Plugin
+	optdepends = zeitgeist: recently used file list
+	optdepends = compiz-fusion-plugins-main: opacify plugin
+	optdepends = dockmanager: dockmanager plugins
+	optdepends = cardapio-bzr: required to run menu applet for dockx (standalone dock)
+	provides = dockbarx=0.91.4
+	conflicts = dockbarx
+	conflicts = dockbarx-awn-applet-bzr
+	replaces = dockbarx-awn-applet-bzr
+	replaces = dockbarx-bzr
+	source = dockbarx::git+https://github.com/M7S/dockbarx.git
+	sha256sums = SKIP
+
+pkgname = dockbarx-git
+
