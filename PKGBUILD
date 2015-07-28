@@ -7,7 +7,7 @@
 pkgname=conky-nvidia
 _pkgname=conky
 pkgver=1.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight system monitor for X'
 provides=('conky')
 conflicts=('conky')
@@ -15,7 +15,7 @@ url='http://conky.sourceforge.net/'
 license=('BSD' 'GPL')
 arch=('i686' 'x86_64')
 makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db')
-depends=('glib2' 'curl' 'lua' 'wireless_tools' 'libxml2' 'libxft' 'libxdamage' 'imlib2')
+depends=('glib2' 'curl' 'lua' 'wireless_tools' 'libxml2' 'libxft' 'libxdamage' 'imlib2' 'libxnvctrl')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
         'ascii.patch'
         'lua53.patch'
