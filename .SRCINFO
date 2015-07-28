@@ -1,0 +1,21 @@
+pkgbase = libmini
+	pkgdesc = Real-Time Terrain Rendering. Display high-resolution geospatial terrain data at real-time.
+	pkgver = 11.5
+	pkgrel = 1
+	url = http://www.open-terrain.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = subversion
+	depends = libsquish-svn
+	depends = openscenegraph
+	depends = glu
+	provides = libmini
+	conflicts = libmini-svn
+	options = staticlibs
+	source = http://www.open-terrain.org/uploads/ZIP/MINI-11.5.zip
+	md5sums = 09494577cd989c720219e26174585f76
+
+pkgname = libmini
+
