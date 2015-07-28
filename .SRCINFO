@@ -1,0 +1,18 @@
+pkgbase = python-inflection
+	pkgdesc = A port of Ruby on Rails inflector to Python
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/jpvanhal/inflection
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/i/inflection/inflection-0.3.1.tar.gz
+	md5sums = 7941165e9f148e0520023941c0886b40
+
+pkgname = python2-inflection
+	depends = python2
+
+pkgname = python-inflection
+	depends = python
+
