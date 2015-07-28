@@ -16,8 +16,8 @@ source=('git+https://github.com/mitsuhiko/werkzeug.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
