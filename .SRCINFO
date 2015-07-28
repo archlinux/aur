@@ -1,0 +1,32 @@
+pkgbase = xfce4-session-devel
+	pkgdesc = A session manager for Xfce
+	pkgver = 4.11.1
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = xfce4-session.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	makedepends = xfce4-dev-tools
+	depends = libxfce4ui
+	depends = libwnck
+	depends = libsm
+	depends = xorg-iceauth
+	depends = upower
+	depends = xorg-xinit
+	depends = xorg-xrdb
+	depends = hicolor-icon-theme
+	optdepends = gnome-keyring: for keyring support when GNOME compatibility is enabled
+	optdepends = xscreensaver: for locking screen with xflock4
+	optdepends = gnome-screensaver: for locking screen with xflock4
+	optdepends = xlockmore: for locking screen with xflock4
+	provides = xfce4-session=4.11.1
+	conflicts = xfce4-session
+	replaces = xfce-utils
+	source = http://archive.xfce.org/src/xfce/xfce4-session/4.11/xfce4-session-4.11.1.tar.bz2
+	sha256sums = 2ce40531bfe83e3e58795b07e0baf8e7622fd76f3f3db18dc1557b333ec8dece
+
+pkgname = xfce4-session-devel
+
