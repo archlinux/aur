@@ -4,15 +4,15 @@
 # Contributor: Thomas Weißschuh <thomas_weissschuh lavabit.com>
 
 pkgname=mosh
-pkgver=1.2.4
-pkgrel=3
+pkgver=1.2.5
+pkgrel=1
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
 url='http://mosh.mit.edu/'
 license=('GPL3')
 depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
 source=("http://$pkgname.mit.edu/$pkgname-$pkgver.tar.gz")
-sha256sums=('e74d0d323226046e402dd469a176075fc2013b69b0e67cea49762c957175df46')
+sha256sums=('1af809e5d747c333a852fbf7acdbf4d354dc4bbc2839e3afe5cf798190074be3')
 options=('!emptydirs')
 
 build() {
@@ -25,7 +25,7 @@ build() {
 
 package() {
   make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
-  install -Dm644 "$pkgname-$pkgver/conf/bash_completion.d/$pkgname" \
+  install -Dm644 "$pkgname-$pkgver/conf/bash-completion/completions/$pkgname" \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }
 
