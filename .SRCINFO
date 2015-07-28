@@ -1,0 +1,17 @@
+pkgbase = xfce4-dockbarx-plugin
+	pkgdesc = Embed DockbarX in the xfce4-panel
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://xfce-look.org/content/show.php?content=157865
+	arch = i686
+	arch = x86_64
+	license = X11
+	makedepends = python2
+	depends = vala
+	depends = dockbarx>=0.91
+	depends = xfce4-panel
+	source = xfce4-dockbarx-plugin-0.3.1.tar.gz::https://codeload.github.com/TiZ-EX1/xfce4-dockbarx-plugin/tar.gz/0.3.1
+	sha256sums = 7255fe5c1585d2492b67618d6e3cc1b114b4a19fae2e0e5e639c0d1f414beb9e
+
+pkgname = xfce4-dockbarx-plugin
+
