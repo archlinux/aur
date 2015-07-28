@@ -1,0 +1,18 @@
+pkgbase = e-foto-svn
+	pkgdesc = A free GNU/GPL educational digital photogrammetric workstation
+	pkgver = 382
+	pkgrel = 1
+	url = http://www.efoto.eng.uerj.br
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	makedepends = qt4
+	makedepends = cmake
+	provides = e-foto
+	conflicts = e-foto
+	source = e-foto-svn::svn+https://svn.code.sf.net/p/e-foto/code/trunk
+	md5sums = SKIP
+
+pkgname = e-foto-svn
+
