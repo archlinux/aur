@@ -27,6 +27,13 @@ build() {
   set +u
 }
 
+check() {
+  set -u
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make test
+  set +u
+}
+
 package() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
