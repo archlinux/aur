@@ -2,7 +2,7 @@
 # Contributor: max_meyer <dev@fedux.org>
 
 pkgname=svg2tikz-git
-pkgver=r201.9733751
+pkgver=r203.d138c81
 pkgrel=1
 pkgdesc="set of tools for converting SVG graphics to TikZ/PGF code"
 arch=('any')

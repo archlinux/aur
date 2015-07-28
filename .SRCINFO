@@ -1,6 +1,6 @@
 pkgbase = svg2tikz-git
 	pkgdesc = set of tools for converting SVG graphics to TikZ/PGF code
-	pkgver = r201.9733751
+	pkgver = r203.d138c81
 	pkgrel = 1
 	url = https://github.com/kjellmf/svg2tikz
 	arch = any
