@@ -1,5 +1,5 @@
 # Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
-# Maintainer: vigo <vigo.the.unholy.carpathian@gmail.com>
+# Contributor: vigo <vigo.the.unholy.carpathian@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: judd <jvinet@zeroflux.org>
 
@@ -46,8 +46,8 @@ package_tcp_wrappers() {
 }
 
 package_tcp_wrappers-libs() {
-  pkgdesc="Monitors and Controls incoming TCP connections - Libraries"
-  depends=('glibc')
-  cd $srcdir/${pkgbase}_${pkgver}
-  make REAL_DAEMON_DIR=/usr/bin DESTDIR=$pkgdir install-lib
+	pkgdesc="Monitors and Controls incoming TCP connections - Libraries"
+	depends=('glibc')
+	cd $srcdir/${pkgbase}_${pkgver}
+	make REAL_DAEMON_DIR=/usr/bin DESTDIR=$pkgdir install-lib
 }
