@@ -2,7 +2,7 @@
 
 pkgname=libunittest
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable C++ library for unit testing"
 arch=('x86_64' 'i686')
 url='http://libunittest.sourceforge.net/'

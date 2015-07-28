@@ -1,13 +1,13 @@
 pkgbase = libunittest
 	pkgdesc = A portable C++ library for unit testing
-	pkgver = 8.0.0
-	pkgrel = 1
+	pkgver = 8.1.0
+	pkgrel = 2
 	url = http://libunittest.sourceforge.net/
 	arch = x86_64
 	arch = i686
 	license = MIT
-	source = http://downloads.sourceforge.net/project/libunittest/libunittest-8.0.0.tar.gz
-	md5sums = 9c2bcbaa973152dd651fbcb63b140ae6
+	source = http://downloads.sourceforge.net/project/libunittest/libunittest-8.1.0.tar.gz
+	md5sums = 38a19c6660088ff1c8e6b72360c95ef6
 
 pkgname = libunittest
 
