@@ -1,16 +1,16 @@
 # Maintainer: JC FRANCOIS <jc.francois@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.8.7
-pkgbuild=40
-pkgrel=2
+pkgver=1.8.8
+pkgbuild=41
+pkgrel=1
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
 url="http://www.spigotmc.org/"
 license=("BSD")
 depends=(java-runtime-headless fontconfig git mcrcon)
 conflicts=(bukkit craftbukkit craftbukkit-stable)
-provides=(craftbukkit=1.8.7)
+provides=(craftbukkit=1.8.8)
 install=craftbukkit-spigot.install
 source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/target/BuildTools.jar"
         "minecraft.service"
@@ -21,7 +21,7 @@ source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/ta
         "stop_server.sh"
         "backup.sh"
         "readme.md")
-md5sums=('b106aba4468638bc80df962d0ab6397d'
+md5sums=('683079f8704beca0d38284e8e12e2da1'
          '8ac1ef7ff8be744fa0312ebb608fda42'
          '5bddd0dff4f3d25fd86c240f81078174'
          '32c6641316b0adc7e1f63e3cc8033700'
