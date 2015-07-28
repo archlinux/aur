@@ -1,0 +1,25 @@
+pkgbase = cardapio-bzr
+	pkgdesc = An alternative Gnome menu, launcher, and much more!
+	pkgver = 886
+	pkgrel = 1
+	url = https://launchpad.net/cardapio
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	depends = python2-xdg
+	depends = xdg-user-dirs
+	depends = python2-dbus
+	depends = python2-gnomedesktop
+	depends = python2-keybinder2
+	depends = python2-simplejson
+	depends = gnome-control-center
+	depends = tk
+	optdepends = tracker: search capability
+	provides = cardapio
+	conflicts = cardapio
+	source = arch_and_python_stuff.patch
+	sha256sums = 3fdaae9f4248c10d665492fb85f018d22d1a7120c65a1491efe58a2437bb98d0
+
+pkgname = cardapio-bzr
+

@@ -1,0 +1,146 @@
+diff -Naur ./cardapio.orig/Makefile ./cardapio/Makefile
+--- ./cardapio.orig/Makefile	2012-09-08 21:27:31.836738592 -0400
++++ ./cardapio/Makefile	2012-09-08 21:31:24.632143534 -0400
+@@ -1,4 +1,4 @@
+-PYTHON = `which python`
++PYTHON = `which python2`
+ 
+ ifeq ($(DESTDIR),)
+ DESTDIR = 
+@@ -31,8 +31,8 @@
+ install: install-alone install-panel install-docky install-awn install-shell install-mate install-cinnamon
+ 
+ install-alone:
+-	python -m compileall src/
+-	python -m compileall src/plugins/
++	$(PYTHON) -m compileall src/
++	$(PYTHON) -m compileall src/plugins/
+ 
+ 	# remove old files which have been renamed or moved to another package
+ 	rm -f $(PREFIX)/lib/cardapio/cardapio.py
+@@ -89,7 +89,7 @@
+ 	cp -f res/cardapio*.svg $(PREFIX)/share/pixmaps/
+ 
+ 	mkdir -p $(PREFIX)/bin
+-	ln -sf ../lib/cardapio/cardapio $(PREFIX)/bin/cardapio
++	#ln -sf ../lib/cardapio/cardapio $(PREFIX)/bin/cardapio
+ 
+ 	mkdir -p $(PREFIX)/share/applications
+ 	cp -f res/cardapio.desktop $(PREFIX)/share/applications/
+@@ -98,7 +98,7 @@
+ 	cp -f res/cardapio.service $(PREFIX)/share/dbus-1/services/cardapio.service
+ 
+ install-panel: install-alone
+-	python -m compileall src/gnomepanel/
++	$(PYTHON) -m compileall src/gnomepanel/
+ 	cp -f src/gnomepanel/cardapio-gnome-panel $(PREFIX)/lib/cardapio/
+ 	cp -f src/gnomepanel/cardapio-gnome3-panel $(PREFIX)/lib/cardapio/
+ 
+@@ -109,11 +109,11 @@
+ 	cp -f src/gnomepanel/__init__* $(PREFIX)/lib/cardapio/gnomepanel/
+ 
+ 	mkdir -p $(PREFIX)/bin
+-	ln -sf ../lib/cardapio/cardapio-gnome-panel $(PREFIX)/bin/cardapio-gnome-panel
+-	ln -sf ../lib/cardapio/cardapio-gnome3-panel $(PREFIX)/bin/cardapio-gnome3-panel
++	#ln -sf ../lib/cardapio/cardapio-gnome-panel $(PREFIX)/bin/cardapio-gnome-panel
++	#ln -sf ../lib/cardapio/cardapio-gnome3-panel $(PREFIX)/bin/cardapio-gnome3-panel
+ 
+ 	mkdir -p $(PREFIX)/lib/gnome-applets
+-	ln -sf ../cardapio/cardapio-gnome3-panel $(PREFIX)/lib/gnome-applets/cardapio-gnome-panel
++	#ln -sf ../cardapio/cardapio-gnome3-panel $(PREFIX)/lib/gnome-applets/cardapio-gnome-panel
+ 
+ 	mkdir -p $(PREFIX)/share/dbus-1/services
+ 	cp -f src/gnomepanel/cardapio.service $(PREFIX)/share/dbus-1/services/org.gnome.panel.applet.CardapioGnomeApplet.service
+@@ -130,7 +130,7 @@
+ 	rm locale/*.po
+ 
+ install-mate: install-alone
+-	python -m compileall src/matepanel/
++	$(PYTHON) -m compileall src/matepanel/
+ 	cp -f src/matepanel/cardapio-mate-panel-applet $(PREFIX)/lib/cardapio/
+ 
+ 	mkdir -p $(PREFIX)/lib/cardapio/matepanel
+@@ -139,7 +139,7 @@
+ 	cp -f src/matepanel/__init__* $(PREFIX)/lib/cardapio/matepanel/
+ 
+ 	mkdir -p $(PREFIX)/bin
+-	ln -sf ../lib/cardapio/cardapio-mate-panel-applet $(PREFIX)/bin/cardapio-mate-panel-applet
++	#ln -sf ../lib/cardapio/cardapio-mate-panel-applet $(PREFIX)/bin/cardapio-mate-panel-applet
+ 
+ 	mkdir -p $(PREFIX)/lib/matecomponent/servers
+ 	#cp -f src/matepanel/cardapio.server $(PREFIX)/lib/matecomponent/servers/
+@@ -150,7 +150,7 @@
+ 	rm locale/*.po
+ 
+ install-docky: install-alone
+-	python -m compileall src/docky/
++	$(PYTHON) -m compileall src/docky/
+ 	cp -f res/cardapioDocky.desktop $(PREFIX)/lib/cardapio/
+ 
+ 	mkdir -p $(PREFIX)/lib/cardapio/docky
+diff -Naur ./cardapio.orig/src/Cardapio.py ./cardapio/src/Cardapio.py
+--- ./cardapio.orig/src/Cardapio.py	2012-09-08 21:27:31.846738098 -0400
++++ ./cardapio/src/Cardapio.py	2012-09-08 21:28:06.239884241 -0400
+@@ -117,7 +117,7 @@
+ 
+ class Cardapio(dbus.service.Object):
+ 
+-	distro_name = platform.linux_distribution()[0]
++	distro_name = 'ArchLinux'
+ 
+ 	MIN_VISIBILITY_TOGGLE_INTERVAL    = 0.200 # seconds (this is a bit of a hack to fix some focus problems)
+ 	PLUGIN_REBUILD_DELAY              = 30000 # milliseconds
+@@ -2930,7 +2930,7 @@
+ 			self._launch_raw(self.de.about_de)
+ 
+ 		elif verb == 'AboutDistro':
+-			self._launch_raw(self.de.about_distro)
++			self.launch_raw('xdg-open http://wiki.archlinux.org')
+ 
+ 		else: self._view.open_about_dialog()
+ 
+diff -Naur ./cardapio.orig/src/cardapio ./cardapio/src/cardapio
+--- ./cardapio.orig/src/cardapio	2012-09-08 21:27:31.843404944 -0400
++++ ./cardapio/src/cardapio	2012-09-08 21:28:06.239884241 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #
+ #    Cardapio is an alternative menu applet, launcher, and much more!
+ #
+diff -Naur ./cardapio.orig/src/docky/cardapio_helper.py ./cardapio/src/docky/cardapio_helper.py
+--- ./cardapio.orig/src/docky/cardapio_helper.py	2012-09-08 21:27:31.846738098 -0400
++++ ./cardapio/src/docky/cardapio_helper.py	2012-09-08 21:28:06.239884241 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #  
+ #  Copyright (C) 2010 Cardapio Team (tvst@hotmail.com)
+diff -Naur ./cardapio.orig/src/gnomepanel/cardapio-gnome-panel ./cardapio/src/gnomepanel/cardapio-gnome-panel
+--- ./cardapio.orig/src/gnomepanel/cardapio-gnome-panel	2012-09-08 21:27:31.846738098 -0400
++++ ./cardapio/src/gnomepanel/cardapio-gnome-panel	2012-09-08 21:28:06.239884241 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #
+ #  Cardapio is an alternative menu applet, launcher, and much more!
+ #  Copyright (C) 2010 Cardapio Team (tvst@hotmail.com)
+diff -Naur ./cardapio.orig/src/gnomepanel/cardapio-gnome3-panel ./cardapio/src/gnomepanel/cardapio-gnome3-panel
+--- ./cardapio.orig/src/gnomepanel/cardapio-gnome3-panel	2012-09-08 21:27:31.846738098 -0400
++++ ./cardapio/src/gnomepanel/cardapio-gnome3-panel	2012-09-08 21:28:06.239884241 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #
+ #  Cardapio is an alternative menu applet, launcher, and much more!
+ #  Copyright (C) 2010 Cardapio Team (tvst@hotmail.com)
+diff -Naur ./cardapio.orig/src/matepanel/cardapio-mate-panel-applet ./cardapio/src/matepanel/cardapio-mate-panel-applet
+--- ./cardapio.orig/src/matepanel/cardapio-mate-panel-applet	2012-09-08 21:27:31.843404944 -0400
++++ ./cardapio/src/matepanel/cardapio-mate-panel-applet	2012-09-08 21:28:06.239884241 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #
+ #    Cardapio is an alternative menu applet, launcher, and much more!
+ #
