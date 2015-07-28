@@ -1,7 +1,7 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 # Contributor: Malte Wessel <muunleit AT lavabit DOT com>
 
-pkgname=atomzombiesmasher
+pkgname=atomzombiesmasher-demo
 pkgver=1.94
 pkgrel=1
 pkgdesc="A 2D tactics/strategy game where you evacuate civilians from zombie-infested cities. (Free demo)"
@@ -9,7 +9,8 @@ arch=('any')
 url="http://blendogames.com/atomzombiesmasher/"
 license=("custom:commercial")
 depends=('openal' 'libsndfile' 'mono' 'libgdiplus' 'csfml-bin')
-conflicts=("atomzombiesmasherdemo" "atomzombiesmasher-hib")
+conflicts=("atomzombiesmasher" "atomzombiesmasherdemo" "atomzombiesmasher-hib")
+replaces=("atomzombiesmasherdemo")
 PKGEXT='.pkg.tar'
 
 source=("http://blendogames.com/files/atomzombiesmasherdemo_v1_84.tar"

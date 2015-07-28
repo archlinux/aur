@@ -1,4 +1,4 @@
-pkgbase = atomzombiesmasher
+pkgbase = atomzombiesmasher-demo
 	pkgdesc = A 2D tactics/strategy game where you evacuate civilians from zombie-infested cities. (Free demo)
 	pkgver = 1.94
 	pkgrel = 1
@@ -10,8 +10,10 @@ pkgbase = atomzombiesmasher
 	depends = mono
 	depends = libgdiplus
 	depends = csfml-bin
+	conflicts = atomzombiesmasher
 	conflicts = atomzombiesmasherdemo
 	conflicts = atomzombiesmasher-hib
+	replaces = atomzombiesmasherdemo
 	source = http://blendogames.com/files/atomzombiesmasherdemo_v1_84.tar
 	source = http://blendogames.com/files/atomzombiepatch_v1_94_linux.tar.gz
 	source = atomzombiesmasher.desktop
@@ -21,5 +23,5 @@ pkgbase = atomzombiesmasher
 	md5sums = b1f2e18834d1bec5785a889f642e2191
 	md5sums = 341ce551a8525be96d6c59c1bf9efd2a
 
-pkgname = atomzombiesmasher
+pkgname = atomzombiesmasher-demo
 
