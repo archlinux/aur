@@ -2,7 +2,7 @@
 
 pkgname=tint2-git
 _pkgname=tint2
-pkgrel=1
+pkgrel=2
 pkgver=0.12.33.754918
 pkgdesc="Git official release"
 arch=('i686' 'x86_64')
