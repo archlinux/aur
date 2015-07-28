@@ -1,0 +1,25 @@
+pkgbase = xfce4-settings-devel
+	pkgdesc = Settings manager for xfce
+	pkgver = 4.11.4
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	depends = exo
+	depends = garcon
+	depends = libxfce4ui>=4.11.0
+	depends = libnotify
+	depends = libxklavier
+	depends = gnome-icon-theme
+	depends = gtk-engines
+	optdepends = libcanberra: for sound control
+	provides = xfce4-settings=4.11.4
+	conflicts = xfce4-settings
+	source = http://archive.xfce.org/src/xfce/xfce4-settings/4.11/xfce4-settings-4.11.4.tar.bz2
+	sha256sums = 1dee497af1a0eaf75d67367f8a330fbbab4e3a0eb24181f80294d374a794505b
+
+pkgname = xfce4-settings-devel
+
