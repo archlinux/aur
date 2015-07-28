@@ -13,7 +13,7 @@ depends=('python2')
 makedepends=('deepin-gettext-tools')
 groups=('deepin-extra')
 install="${pkgname}.install"
-source=("http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-game-center/deepin-game-center_1.0.1+20141230144448~4e7bbbfda6.tar.gz")
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/d/deepin-game-center/deepin-game-center_1.0.1+20141230144448~4e7bbbfda6.tar.gz")
 sha256sums=('cefa9548840757af0fa6c07b98924de2a9860327d85b0d86f4cca710ff8f8a3f')
 
 prepare() {
