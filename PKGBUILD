@@ -2,8 +2,8 @@
 
 pkgname=tint2-git
 _pkgname=tint2
-pkgrel=3
-pkgver=v0.12.r23.g50e21b4
+pkgrel=1
+pkgver=0.12.33.754918
 pkgdesc="Git official release"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/o9000/tint2"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/[[:alpha:]]//g;s/-/./g'
 }
 
 build() {
