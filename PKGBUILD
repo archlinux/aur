@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='ttf-monoid-git'
 pkgdesc='Open Source coding font'
-pkgver=r240.2da34c4
+pkgver=r355.7d9f767
 pkgrel=1
 arch=('any')
 license=('custom:MIT')
@@ -31,7 +31,7 @@ build () {
 	export PYTHONPATH="$(pwd)/Scripts"
 	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid.sfdir");'
 	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Bold.sfdir");'
-	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Oblique.sfdir");'
+	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Italic.sfdir");'
 	python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Retina.sfdir");'
 }
 
