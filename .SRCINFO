@@ -1,0 +1,13 @@
+pkgbase = kobo-desktop
+	pkgdesc = KOBO Desktop for Linux
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = http://www.kobo.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = https://dl.dropboxusercontent.com/u/17480832/kobo-desktop.deb
+	sha256sums = da39d435f250ec0ee1b928e7f8976ae979f8f63b491f78ce816b62890bf6c105
+
+pkgname = kobo-desktop
+
