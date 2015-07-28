@@ -1,0 +1,15 @@
+pkgbase = cfg2html-linux-git
+	pkgdesc = Cfg2html is a UNIX shell script similar to getsysinfo or get_config, except that it creates a HTML (and plain ASCII) system documentation for HP-UX 10.xx/11.xx, Integrity Virtual Machine, SCO-UNIX, AIX, Sun OS and Linux systems.
+	pkgver = r312.4267d1b
+	pkgrel = 1
+	url = http://www.cfg2html.com
+	arch = any
+	license = gpl3
+	depends = setserial
+	depends = python
+	depends = make
+	source = cfg2html-linux-git::git://github.com/cfg2html/cfg2html.git
+	md5sums = SKIP
+
+pkgname = cfg2html-linux-git
+
