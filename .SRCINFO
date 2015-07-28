@@ -1,0 +1,18 @@
+pkgbase = lib32-icu44
+	pkgdesc = International Components for Unicode library
+	pkgver = 4.4.2
+	pkgrel = 2
+	url = http://www.icu-project.org/
+	arch = x86_64
+	license = custom:"icu"
+	makedepends = gcc-multilib
+	depends = gcc-libs-multilib>=4.7.1-5
+	depends = sh
+	depends = icu44
+	source = http://download.icu-project.org/files/icu4c/4.4.2/icu4c-4_4_2-src.tgz
+	source = icuinfo.makefile
+	sha256sums = 2ecefdfb134b5b364ed01c2f613a9ccb11489dbae5857d63cd17ba5b6caca789
+	sha256sums = 213f0a174d24c5db46288514b9b15425f4a3cd9b7b254337d9fe140442139537
+
+pkgname = lib32-icu44
+
