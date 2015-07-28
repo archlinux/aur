@@ -1,6 +1,6 @@
 pkgbase = canto-daemon
 	pkgdesc = News aggregator for Atom/RSS/RDF
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = http://codezen.org/canto-ng/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = canto-daemon
 	depends = python-feedparser
 	optdepends = canto-curses: Curses interface
 	optdepends = python-requests: Needed by inoreader plugin
-	source = https://github.com/themoken/canto-next/archive/v0.9.4.tar.gz
-	md5sums = d53c061b8936c330993f507faf58461f
+	source = https://github.com/themoken/canto-next/archive/v0.9.5.tar.gz
+	md5sums = 128a5e59400bbf6f472c0109e66c6250
 
 pkgname = canto-daemon
 
