@@ -1,0 +1,14 @@
+post_install() {
+  glib-compile-schemas usr/share/glib-2.0/schemas/
+}
+
+post_upgrade() {
+  post_install
+  echo 'Gnome Shell 3.16 is not yet officially supported. The extension seems to work correctly as long as the intellihide feature is turned off, though.'
+}
+
+post_remove() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:
