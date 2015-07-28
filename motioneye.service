@@ -1,0 +1,11 @@
+[Unit]
+Description=MotionEye
+After=network.target
+
+[Service]
+ExecStart=/opt/motioneye/motioneye.py
+Type=simple
+User=motioneye
+
+[Install]
+WantedBy=multi-user.target

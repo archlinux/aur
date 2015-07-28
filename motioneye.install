@@ -1,0 +1,22 @@
+username="motioneye"
+groupname="motioneye"
+
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  getent group $groupname &>/dev/null || groupadd -r $groupname 1>/dev/null
+  getent passwd $username &>/dev/null || useradd -r -g $groupname -s "/bin/bash" $username 1>/dev/null
+ 
+  chown -R $username:$groupname "/opt/motioneye" 1>/dev/null
+}
+
+post_remove() {
+  if getent passwd $username >/dev/null; then
+    userdel $username >/dev/null
+  fi
+  if getent group $groupname >/dev/null; then
+    groupdel $groupname >/dev/null
+  fi
+}
