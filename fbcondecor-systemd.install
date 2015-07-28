@@ -1,0 +1,34 @@
+post_install() {
+	echo "------------------------------------------------------------"
+	echo "> This package doesn't contain a default theme."
+	echo "> You need to install one separately."
+        echo "> To find some themes, just search AUR for \"fbsplash-theme\","
+        echo "> or GNOME-Look.org or KDE-Look.org for \"fbsplash\"."
+        echo "------------------------------------------------------------"
+        echo "> Configuration for fbsplash: /etc/conf.d/splash"
+        echo "> Configuration for fbcondecor: /etc/conf.d/fbcondecor"
+	echo "------------------------------------------------------------"
+	echo "> Please read http://wiki.archlinux.org/index.php/Fbsplash"
+	echo "> for more details."
+	echo "------------------------------------------------------------"
+	echo "> Don't forget to install an fbsplash theme or create your own" 
+	echo "> and then enable setting console decoration on boot by" 
+	echo "> executing 'systemctl enable fbcondecor.service'"
+
+}
+
+post_upgrade() {
+	if [ -d /lib/splash/sys ]; then
+	  rm -r /lib/splash/sys
+	fi
+	if [ ! "$(ls -A /lib/splash)" ]; then
+	  rmdir /lib/splash
+	fi
+	post_install
+}
+
+op=$1
+shift
+$op $*
+
+#EOF

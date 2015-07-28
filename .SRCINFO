@@ -1,0 +1,18 @@
+pkgbase = fbcondecor-systemd
+	pkgdesc = Simple systemd service to activate console decorations on system start. Requires fbsplash and a kernel with fbcondecor patch applied.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/fbsplash.berlios/
+	install = fbcondecor-systemd.install
+	arch = any
+	license = GPL
+	depends = fbsplash
+	optdepends = linux-fbcondecor: enable console background images
+	optdepends = linux-ck-fbcondecor: enable console background images and linux-ck kernel patchset
+	conflicts = fbsplash-scripts
+	conflicts = initscripts-extras-fbsplash
+	source = fbcondecor.service
+	md5sums = b901542b88887c7ff58de6cf9147842b
+
+pkgname = fbcondecor-systemd
+
