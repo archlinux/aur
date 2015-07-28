@@ -1,0 +1,14 @@
+pkgbase = tailman
+	pkgdesc = Remote tail log viewer
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/martinhjartmyr/tailman
+	arch = any
+	license = GPL3
+	depends = libssh
+	depends = qt4
+	source = vcs-repository::git://github.com/martinhjartmyr/tailman.git#tag=0.1.2
+	md5sums = SKIP
+
+pkgname = tailman
+
