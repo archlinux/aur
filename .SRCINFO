@@ -1,0 +1,15 @@
+pkgbase = isolate-git
+	pkgdesc = Isolate is a sandbox built to safely run untrusted executables.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ioi/isolate
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = asciidoc
+	provides = isolate
+	source = git+https://github.com/ioi/isolate
+	sha512sums = SKIP
+
+pkgname = isolate-git
+
