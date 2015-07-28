@@ -1,0 +1,18 @@
+pkgbase = python-simplekv
+	pkgdesc = A key-value storage for binary data, support many backends
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://github.com/mbr/simplekv
+	arch = any
+	license = LGPL3
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/s/simplekv/simplekv-0.9.3.tar.gz
+	md5sums = 33ee89d21f71d2c7a049e1327fe39390
+
+pkgname = python2-simplekv
+	depends = python2
+
+pkgname = python-simplekv
+	depends = python
+
