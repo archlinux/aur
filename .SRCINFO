@@ -1,31 +1,24 @@
 pkgbase = saga-gis
-	pkgdesc = SAGA -System for Automated Geoscientific Analyses- is a hybrid GIS software
-	pkgver = 2.1.4
+	pkgdesc = A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis.
+	pkgver = 2.2.0
 	pkgrel = 2
 	url = http://www.saga-gis.org
 	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = wxgtk
-	depends = wxpython
+	license = GPL3
+	depends = wxgtk>=3.0.0
 	depends = proj
-	depends = gdal>=1.10.0
-	depends = jasper>=1.900.1
-	depends = libtiff>=3.8.2
-	depends = unixodbc>=2.2.14
-	depends = libharu
+	depends = gdal
+	depends = libtiff
+	depends = unixodbc
+	depends = jasper
 	depends = swig
 	optdepends = opencv
 	optdepends = vigra
 	optdepends = liblas
-	source = http://sourceforge.net/projects/saga-gis/files/SAGA - 2.1/SAGA 2.1.4/saga_2.1.4.tar.gz
-	source = https://www.dropbox.com/s/zcjugzxvd6y85al/include.tar.gz
-	source = http://www.saga-gis.org/_images/logo_saga.png
-	source = saga-gis.desktop
-	md5sums = c7b953a2d2d1276df93a1947c1a8e741
-	md5sums = 9d545aae9e268652dbc7658d99e5d4c9
-	md5sums = 7743fbcca4c903d4578a6e7f020a002b
-	md5sums = cc5115a3418178a88f044045ef2fa65e
+	optdepends = libharu
+	source = http://sourceforge.net/projects/saga-gis/files/SAGA - 2.2/SAGA 2.2.0/saga_2.2.0.tar.gz
+	md5sums = 410696adc51886ffff2460ed2f031188
 
 pkgname = saga-gis
 
