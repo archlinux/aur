@@ -1,6 +1,6 @@
 pkgbase = haskell-wai-app-static
 	pkgdesc = WAI application for static serving
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/wai-app-static
 	install = haskell-wai-app-static.install
@@ -36,8 +36,8 @@ pkgbase = haskell-wai-app-static
 	depends = haskell-optparse-applicative
 	depends = haskell-zlib
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/wai-app-static/3.1.0/wai-app-static-3.1.0.tar.gz
-	md5sums = 950ec3abafa151c979fba2840faeea86
+	source = http://hackage.haskell.org/packages/archive/wai-app-static/3.1.1/wai-app-static-3.1.1.tar.gz
+	md5sums = f8c2d02b438c32a82b4f202358948147
 
 pkgname = haskell-wai-app-static
 
