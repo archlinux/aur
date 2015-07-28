@@ -1,4 +1,4 @@
-pkgbase = bastion
+pkgbase = bastion-hib
 	pkgdesc = An action role-playing game set in a lush imaginative world (Humble Bundle/Store version)
 	pkgver = 1.2+h20120621
 	pkgrel = 1
@@ -12,10 +12,12 @@ pkgbase = bastion
 	depends = mono
 	depends = fmodex
 	depends = libxft
+	conflicts = bastion
+	replaces = bastion
 	source = hib://Bastion-HIB-2012-06-20.sh
 	source = bastion.desktop
 	md5sums = aa6ccaead3b4b8a5fbd156f4019e8c8b
 	md5sums = ff287fa599220f913e8a1ba7b062037e
 
-pkgname = bastion
+pkgname = bastion-hib
 

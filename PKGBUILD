@@ -1,7 +1,8 @@
 # Maintainer: Sam S <smls75@gmail.com>
 # Contributor: Daniel Wallace < danielwallace at gtmanfred dot com>
 
-pkgname=bastion
+pkgname=bastion-hib
+_installname=bastion
 pkgver=1.2+h20120621
 _hibver=2012-06-20
 pkgrel=1
@@ -11,10 +12,11 @@ license=('custom')
 arch=('i686' 'x86_64')
 groups=("hib5" "hib9")
 depends=('sdl' 'mono' 'fmodex' 'libxft')
+conflicts=('bastion')
+replaces=('bastion')
 PKGEXT=".pkg.tar"
 
 _gamepkg="Bastion-HIB-${_hibver}.sh"
-_installname=bastion
 
 source=("hib://$_gamepkg"
         "$_installname.desktop")
