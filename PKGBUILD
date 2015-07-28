@@ -2,16 +2,16 @@
 pkgbase=python-kwpbar
 pkgname=('python-kwpbar' 'python2-kwpbar')
 _pyname=kwpbar
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A progress bar for Python.'
 arch=('any')
 url='https://github.com/Kwpolska/kwpbar.py'
-license=('???')
+license=('BSD')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('bb80f3eb8cf1442c46fcf28298173848')
+md5sums=('690f047d87983602016989bfc57bfb2b')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
