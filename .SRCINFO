@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-buttons-to-panel
+	pkgdesc = Shows the window buttons of the focused window in the GNOME top panel
+	pkgver = 1
+	pkgrel = 4
+	url = http://sourceforge.net/projects/buttons-to-panel/
+	install = gschemas-and-warn.install
+	arch = any
+	license = GPLv2
+	depends = gnome-shell>=3.4
+	depends = gnome-shell<3.15
+	depends = gnome-shell-extensions
+	source = gnome-shell-extension-buttons-to-panel.zip::http://sourceforge.net/projects/buttons-to-panel/files/latest/download
+	md5sums = ed4df64545666f4472d4b50f3e510a38
+
+pkgname = gnome-shell-extension-buttons-to-panel
+
