@@ -1,71 +1,47 @@
-# Maintainer: A. Weiss <adam [at] archlinux.us>
-# Maintainer: Samuel Mesa <samuelmesa [at] linuxmail.org>
+# Maintainer: Samuel Fernando Mesa Giraldo <samuelmesa@linuxmail.org>
+# Contributor: James Duley <jagduley gmail>
+# Contributor: A. Weiss <adam [at] archlinux.us>
 
 pkgname=osgearth
-pkgver=2.5
-pkgrel=2
+pkgver=2.7
+pkgrel=1
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=('i686' 'x86_64')
 url=('http://www.osgearth.org')
 license=('LGPL')
-depends=('openscenegraph' 'gdal' 'expat' 'curl' 'minizip')
-optdepends=('geos: Imrpoved vector support'
-            'sqlite: Flat file cache'
-            'libzip: Archive support' 'v8')
-makedepends=('git' 'cmake')
+depends=('openscenegraph' 'gdal' 'minizip' 'qt5-base')
+makedepends=('cmake')
 provides=('osgearth')
 conflicts=('osgearth-qt5')
-
-_gitroot='git://github.com/gwaldron/osgearth.git'
-_gitname='osgearth'
-_gitbranch="osgearth-2.5"
+source=("https://github.com/gwaldron/osgearth/archive/${pkgname}-${pkgver}.tar.gz")
+md5sums=('f3b90d719b23b9e636d3e78d86370ad1')        
 
 build() {
+  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
 
-  cd ${srcdir}
-
-  msg "Connecting to ${_gitnam}e GIT server...."
-
-  if [[ -d ${_gitname} ]] ; then
-  	 cd ${_gitname} && git pull origin ${_gitbranch}
-  	 msg "The local files are updated."
-  else
-	   git clone ${_gitroot} --branch ${_gitbranch}
+  #Build
+  if [[ -d "build" ]]; then
+    (rm -rf build)
   fi
 
-  msg "GIT checkout done or server timeout"
-
-  cd ${srcdir}
-  
-  if [ -d "build" ]; then
-    rm -rf build
-  fi
-  
   mkdir build
   cd build
 
-  msg "Starting make..."
+  cmake \
+  -DLIB_POSTFIX= \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  ..
 
-  cmake ../${_gitname} \
-  -DMINIZIP_INCLUDE_DIR=/usr/include/minizip \
-  -DOSGEARTH_USE_QT:BOOL=OFF
-
-  make -j10
-  
+  make -j5
 }
 
 package() {
-   cd build
-   make DESTDIR=${pkgdir} install
-   mkdir -p ${pkgdir}/usr/local/share/osgearth
-   cp -r $srcdir/${_gitname}/tests ${pkgdir}/usr/local/share/osgearth
-   cp -r $srcdir/${_gitname}/data ${pkgdir}/usr/local/share/osgearth
-   
-   mkdir -p ${startdir}/pkg/${pkgname}/etc/ld.so.conf.d
+  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}/build
+  make DESTDIR=$pkgdir install
   
-   if [ "$CARCH" = "x86_64" ]; then
-     echo /usr/local/lib64 > "${pkgdir}/etc/ld.so.conf.d/osgearth.conf"
-   else
-     echo /usr/local/lib > "${pkgdir}/etc/ld.so.conf.d/osgearth.conf"
-   fi
+  install -d ${pkgdir}/usr/share/osgearth
+  install -d ${pkgdir}/usr/share/osgearth/test
+  install -d ${pkgdir}/usr/share/osgearth/data
+  install -Dm644 ${srcdir}/${pkgname}-${pkgname}-${pkgver}/tests/* ${pkgdir}/usr/share/osgearth/test
+  cp -rfv ${srcdir}/${pkgname}-${pkgname}-${pkgver}/data/* ${pkgdir}/usr/share/osgearth/data
 }
