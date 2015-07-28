@@ -1,0 +1,4 @@
+post_install() {
+	echo "You will most probably need to install openssh-askpass to use password-based authentication or password-protected SSH keys."
+	echo "Your session needs to be restarted for openssh-askpass to start working."
+}
