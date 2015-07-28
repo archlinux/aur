@@ -3,7 +3,7 @@
 pkgname=aquaria-data-hib
 pkgver=1.1.3+h20100504
 pkgrel=2
-pkgdesc="A 2D fantasy action-adventure game (Humble Bundle version; game data only)"
+pkgdesc="A 2D fantasy underwater action-adventure game (Humble Bundle version; game data only)"
 url='http://www.bit-blot.com/'
 arch=('any')
 license=('custom: "commercial"')
