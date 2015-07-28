@@ -2,8 +2,8 @@
 # Maintainer: Xu Fasheng <fasheng.xu[AT]gmail.com>
 
 pkgname=deepin-screenshot
-pkgver=3.0.20150508154858
-_srcdirname=deepin-screenshot-3.0+20150508154858~a5ed48140f
+pkgver=3.0.14.12.20150717162046
+_srcdirname=deepin-screenshot-14.12+git20150717162046~d869601900
 pkgrel=2
 pkgdesc="Easy-to-use screenshot tool for linuxdeepin desktop environment"
 arch=('any')
@@ -12,8 +12,8 @@ license=('GPL3')
 makedepends=('deepin-gettext-tools')
 groups=('deepin-extra')
 install="${pkgname}.install"
-source=("http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-screenshot/deepin-screenshot_3.0+20150508154858~a5ed48140f.tar.gz")
-sha256sums=('be7b95af98b0830c107c20814e9ac25419defe951a211499ee7530b3d7d44e5a')
+source=("http://ftp5.gwdg.de/pub/linux/linuxdeepin/packages/pool/main/d/deepin-screenshot/deepin-screenshot_14.12+git20150717162046~d869601900.tar.gz")
+sha256sums=('0058f6aadcd17e8b40b3b6279fc40d9298b7c16950e4416a392cc1dd6443f75f')
 
 prepare() {
   cd "${_srcdirname}"
