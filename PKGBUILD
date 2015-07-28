@@ -3,7 +3,7 @@
 
 pkgname=ezquake-git
 pkgver=r4621.4bf8793
-pkgrel=1
+pkgrel=2
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play. (Git version)"
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
@@ -11,7 +11,7 @@ license=('GPL')
 # Note that if a package is required at both build and runtime, it can be just included in depends array.
 # NOTE: "libgl" is a virtual provides, of sorts. can be either mesa-libgl, nvidia-libgl, etc...
 depends=('libgl' 'libxxf86dga' 'zlib' 'libpng' 'minizip' 'libircclient' 'expat' 'pcre' 'sdl2' 'tcl' 'glew')
-makedepends=('glu' 'xf86vidmodeproto' 'libxxf86vm' 'libxext' 'svgalib' 'libxpm')
+makedepends=('glu' 'xf86vidmodeproto' 'libxxf86vm' 'libxext' 'jansson' 'libxpm')
 conflicts=('fuhquake')
 provides=('ezquake' 'quake' 'fuhquake')
 arch=('any')
