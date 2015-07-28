@@ -1,7 +1,7 @@
 pkgbase = ezquake-git
 	pkgdesc = One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play. (Git version)
 	pkgver = r4621.4bf8793
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ezquake.sourceforge.net/
 	install = ezquake.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ezquake-git
 	makedepends = xf86vidmodeproto
 	makedepends = libxxf86vm
 	makedepends = libxext
-	makedepends = svgalib
+	makedepends = jansson
 	makedepends = libxpm
 	depends = libgl
 	depends = libxxf86dga
