@@ -2,9 +2,9 @@
 pkgname=office-code-pro
 _srcname=Office-Code-Pro
 pkgver=1.004
-pkgrel=1
+pkgrel=2
 depends=(fontconfig xorg-font-utils)
-pkgdesc="Office Code Pro is a customized version of Source Code Pro for text editors and coding environments"
+pkgdesc="Office Code Pro [D] are a customized version of Source Code Pro for text editors and coding environments"
 url="https://github.com/nathco/Office-Code-Pro"
 license=(custom)
 arch=(any)
