@@ -473,7 +473,10 @@ check_pkgversion()
 
 check_all_depends()
 {
-	echo -e "${color1}:: ${color2}Checking Dependencies...${color3}"
+	echo -e "${color1}:: ${color2}Checking Dependencies for ${1}...${color3}"
+	_pkgbasename=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^_pkgbasename=//p")
+	pkgname=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^pkgname=//p")
+	pkgver=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^pkgver=//p")
 	depends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
 	mdepends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^makedepends=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
 	arch=$(uname -m)
