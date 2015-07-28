@@ -1,0 +1,22 @@
+pkgbase = xfwm4-devel
+	pkgdesc = Xfce window manager
+	pkgver = 4.11.3
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = xfwm4.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	depends = libxfce4ui>=4.11.0
+	depends = libwnck
+	depends = hicolor-icon-theme
+	provides = xfwm4=4.11.3
+	conflicts = xfwm4
+	options = !libtool
+	source = http://archive.xfce.org/src/xfce/xfwm4/4.11/xfwm4-4.11.3.tar.bz2
+	md5sums = ed91ae7b1677e77ce537a888414d7ce4
+
+pkgname = xfwm4-devel
+
