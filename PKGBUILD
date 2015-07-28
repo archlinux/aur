@@ -3,7 +3,7 @@
 
 set -u
 pkgname='conserver'
-pkgver='8.1.18'
+pkgver='8.2.1'
 pkgrel='1'
 pkgdesc='An application that allows multiple users to watch a serial console at the same time.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='http://www.conserver.com'
 license=('BSD')
 depends=('sh')
 source=("http://www.conserver.com/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3c73cebf732419c41c7c860032e41d83c1f152fe3115a30dc9851820b7864e14')
+sha256sums=('251ae01997e8f3ee75106a5b84ec6f2a8eb5ff2f8092438eba34384a615153d0')
 
 prepare() {
   set -u
