@@ -1,0 +1,19 @@
+pkgbase = python2-sasl
+	pkgdesc = Cyrus-SASL bindings for Python
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/toddlipcon/python-sasl
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	makedepends = libsasl
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/s/sasl/sasl-0.1.3.tar.gz
+	md5sums = 6db4ca3d4fb699cf126a6e6f2f516d8f
+	sha256sums = 4f324226e1ee85ac41520579ba9de703294012602e536217fd0e7456e147d886
+
+pkgname = python2-sasl
+
