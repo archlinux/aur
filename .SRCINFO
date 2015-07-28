@@ -1,0 +1,23 @@
+pkgbase = aufs
+	pkgdesc = Another UnionFS implementation
+	pkgver = 4.0_20150427
+	pkgrel = 1
+	url = http://aufs.sourceforge.net/
+	install = aufs.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = linux-aufs_friendly-headers
+	depends = linux-aufs_friendly
+	conflicts = aufs2
+	conflicts = aufs3
+	replaces = aufs2
+	replaces = aufs3
+	options = !makeflags
+	options = !strip
+	source = aufs::git+https://github.com/sfjro/aufs4-standalone
+	md5sums = SKIP
+
+pkgname = aufs
+
