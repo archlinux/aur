@@ -1,0 +1,14 @@
+pkgbase = dockbarx-macosx-theme
+	pkgdesc = DockBarX Theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/DockbarX+MacOSX+X?content=119808
+	arch = any
+	groups = dockbarx-themes
+	license = GPL
+	depends = dockbarx
+	source = http://gnome-look.org/CONTENT/content-files/119808-MacOSX.tar.gz
+	md5sums = a87f2d68a9dd071a2f4ab8addf48ea9b
+
+pkgname = dockbarx-macosx-theme
+
