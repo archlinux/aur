@@ -7,27 +7,23 @@
 
 _pkgbasename=gnutls
 pkgname=lib32-${_pkgbasename}28
-pkgver=3.3.13
-pkgrel=3
+pkgver=3.3.16
+pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (32-bit, legacy version)"
 arch=('x86_64')
 license=('GPL3' 'LGPL2.1')
 url="http://gnutls.org/"
-depends=('lib32-zlib' 'lib32-nettle4>=2.7.1-3' 'lib32-p11-kit' 'lib32-libtasn1' $_pkgbasename)
+depends=('lib32-zlib' 'lib32-nettle' 'lib32-p11-kit' 'lib32-libtasn1' $_pkgbasename)
 makedepends=('gcc-multilib' 'lib32-libidn')
 source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/${_pkgbasename}-${pkgver}.tar.xz{,.sig})
-md5sums=('a7387fe8bf3e604bf518a6da9ab2a4e6'
-         'SKIP')
+sha256sums=('80a471c723572a43ddbe75d7825a3275f640650cc99eae42963ab39b9d0b7552'
+            'SKIP')
 validpgpkeys=(1F42418905D8206AA754CCDC29EE58B996865171)
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  export NETTLE_CFLAGS="-I/usr/lib32/nettle4/include"
-  export NETTLE_LIBS="-L/usr/lib32 -l:libnettle.so.4"
-  export HOGWEED_CFLAGS=${NETTLE_CFLAGS}
-  export HOGWEED_LIBS="-L/usr/lib32 -l:libhogweed.so.2"
 
   cd ${srcdir}/${_pkgbasename}-${pkgver}
 
