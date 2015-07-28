@@ -2,7 +2,8 @@
 
 pkgname=taudem
 _pkgname=TauDEM
-pkgver=5.0.6
+pkgver=5.1.2
+_pkgver=7011b25e7f1e400c622ece171d7aa55a65e0d9e5
 pkgrel=2
 pkgdesc="Suite of Digital Elevation Model (DEM) tools for the extraction and analysis of hydrologic information from topography as represented by a DEM"
 arch=(i686 x86_64)
@@ -15,26 +16,56 @@ provides=()
 conflicts=()
 replaces=()
 options=('!makeflags')
-source=(http://hydrology.usu.edu/taudem/taudem5/TauDEM5PCsrc_506.zip)
-md5sums=('76848267b3acd1c4667b7c7d7112ade6')
+source=(https://github.com/rozos/TauDEM-QGIS/archive/7011b25e7f1e400c622ece171d7aa55a65e0d9e5.zip)
+md5sums=('a804155a7f031b17787044ef3c05b8a5')
 
-build() {
-   unzip ${_pkgname}5PCsrc_506.zip
-   cd  src   
-   sed -i -e '40 a #include <stdint.h>' ./linearpart.h
-   find . -type f -name "*.cpp" -o -name "*.h" | xargs sed -i 's/#include "stdint.h"/#include <stdint.h>/' 
-   
-   rm -rf build
-   mkdir build
-   cd build
-   
-   msg "starting make..."
-   CXX=mpicxx cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local 
-   make all
+build() {   
+  srcdir=${srcdir}/TauDEM-QGIS-${_pkgver}/src
+
+  cd ${srcdir}/shape
+  make all
+
+  cd ${srcdir}/shapelib
+  make all
+
+  cd ${srcdir}
+    make all
 }
 
 package() {
-  cd "$srcdir/"src/build
-  make DESTDIR=${pkgdir} install
+  cd  ${srcdir}/TauDEM-QGIS-${_pkgver}
+
+  mkdir -p ${pkgdir}/usr/local/bin
+  mkdir -p ${pkgdir}/usr/lib/python2.7/site-packages
+
+  install -Dm755 aread8 "${pkgdir}/usr/local/bin/aread8"
+  install -Dm755 areadinf "${pkgdir}/usr/local/bin/areadinf"
+  install -Dm755 d8flowdir "${pkgdir}/usr/local/bin/d8flowdir"
+  install -Dm755 d8flowpathextremeup "${pkgdir}/usr/local/bin/d8flowpathextremeup"
+  install -Dm755 d8hdisttostrm "${pkgdir}/usr/local/bin/d8hdisttostrm"
+  install -Dm755 dinfavalanche "${pkgdir}/usr/local/bin/dinfavalanche"
+  install -Dm755 dinfconclimaccum "${pkgdir}/usr/local/bin/dinfconclimaccum"
+  install -Dm755 dinfdecayaccum "${pkgdir}/usr/local/bin/dinfdecayaccum"
+  install -Dm755 dinfdistdown "${pkgdir}/usr/local/bin/dinfdistdown"
+  install -Dm755 dinfdistup "${pkgdir}/usr/local/bin/dinfdistup"
+  install -Dm755 dinfflowdir "${pkgdir}/usr/local/bin/dinfflowdir"
+  install -Dm755 dinfrevaccum "${pkgdir}/usr/local/bin/dinfrevaccum"
+  install -Dm755 dinftranslimaccum "${pkgdir}/usr/local/bin/dinftranslimaccum"
+  install -Dm755 dinfupdependence "${pkgdir}/usr/local/bin/dinfupdependence"
+  install -Dm755 dropanalysis "${pkgdir}/usr/local/bin/dropanalysis"
+  install -Dm755 gridnet "${pkgdir}/usr/local/bin/gridnet"
+  install -Dm755 lengtharea "${pkgdir}/usr/local/bin/lengtharea"
+  install -Dm755 moveoutletstostrm "${pkgdir}/usr/local/bin/moveoutletstostrm"
+  install -Dm755 peukerdouglas "${pkgdir}/usr/local/bin/peukerdouglas"
+  install -Dm755 pitremove "${pkgdir}/usr/local/bin/pitremove"
+  install -Dm755 slopearea "${pkgdir}/usr/local/bin/slopearea"
+  install -Dm755 slopearearatio "${pkgdir}/usr/local/bin/slopearearatio"
+  install -Dm755 slopeavedown "${pkgdir}/usr/local/bin/slopeavedown"
+  install -Dm755 streamnet "${pkgdir}/usr/local/bin/streamnet"
+  install -Dm755 threshold "${pkgdir}/usr/local/bin/threshold"
+  install -Dm755 TauDEM.py ${pkgdir}/usr/lib/python2.7/site-packages
 }  
+
+
+
 
