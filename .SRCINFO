@@ -1,7 +1,7 @@
 pkgbase = eclipse-arm
 	pkgdesc = GNU ARM Eclipse Plug-in
 	pkgver = 2.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/gnuarmeclipse
 	install = eclipse-arm.install
 	arch = any
