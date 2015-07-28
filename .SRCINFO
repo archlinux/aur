@@ -1,0 +1,15 @@
+pkgbase = passwdmanager
+	pkgdesc = Password management tool
+	pkgver = 20140211
+	pkgrel = 1
+	url = https://github.com/sk1418/passwdmanager
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = wxpython
+	depends = python2-crypto
+	depends = python2-setuptools
+
+pkgname = passwdmanager
+
