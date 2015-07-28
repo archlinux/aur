@@ -1,0 +1,14 @@
+pkgbase = mingw-w64-libyaml
+	pkgdesc = YAML 1.1 library (mingw-w64)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://pyyaml.org/wiki/LibYAML
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	source = http://pyyaml.org/download/libyaml/yaml-0.1.6.tar.gz
+	md5sums = 5fe00cda18ca5daeb43762b80c38e06e
+
+pkgname = mingw-w64-libyaml
+
