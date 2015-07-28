@@ -2,7 +2,7 @@
 # Contributor: Menche <menche_mt at yahoo dot com>
 
 pkgname=voxelands
-pkgver=1507.00
+pkgver=1506.00
 pkgrel=1
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game"
 url="http://voxelands.com"
@@ -17,7 +17,7 @@ install="${pkgname}.install"
 
 source=("http://voxelands.com/downloads/${pkgname}-${pkgver}-src.tar.bz2")
 
-sha256sums=('f73e79928718a2ca3136d8b6b0305202774763069c8600b211755b3608453c71')
+sha256sums=('de0052401bb98f41b41bd4b8a0f3ea71e2469d3de2175edde93f8bdd5bfc0249')
 
 build() {
 	cd "${srcdir}/${pkgname}"
