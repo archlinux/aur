@@ -1,0 +1,22 @@
+pkgbase = micmac
+	pkgdesc = Software for automatic matching in the geographical context
+	pkgver = db2ea0c702c9
+	pkgrel = 2
+	url = http://logiciels.ign.fr/?-Micmac,3-
+	arch = i686
+	arch = x86_64
+	license = CECILL-B
+	makedepends = cmake
+	makedepends = doxygen
+	depends = qt4
+	depends = imagemagick
+	depends = exiv2
+	depends = proj
+	optdepends = opencl-headers
+	provides = micmac
+	options = staticlibs
+	source = https://culture3d:culture3d@geoportail.forge.ign.fr/hg/culture3d/archive/db2ea0c702c9.tar.gz
+	md5sums = fcf22a62a620922f62882fb2c3d81849
+
+pkgname = micmac
+
