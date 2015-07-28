@@ -1,14 +1,14 @@
 pkgbase = nodejs-ionic
 	pkgdesc = A tool for creating and building Ionic Framework mobile apps.
-	pkgver = 1.6.1
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = http://ionicframework.com/
 	arch = any
 	license = MIT
 	depends = nodejs
-	noextract = ionic-1.6.1.tgz
-	source = http://registry.npmjs.org/ionic/-/ionic-1.6.1.tgz
-	sha256sums = ca84dee0c5552debaa16fc77f857caed4551e961a9b77030e1be41fb79176654
+	noextract = ionic-1.6.3.tgz
+	source = http://registry.npmjs.org/ionic/-/ionic-1.6.3.tgz
+	sha256sums = d479cfc2134d2d92551af09f6ff19dd151adb6b5ccd071767f69288990bb7598
 
 pkgname = nodejs-ionic
 
