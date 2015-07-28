@@ -1,0 +1,14 @@
+pkgbase = dockbarx-glassified-theme
+	pkgdesc = DockBarX Theme
+	pkgver = 20100327
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Glassified+theme+for+DockbarX?content=109283
+	arch = any
+	groups = dockbarx-themes
+	license = GPL
+	depends = dockbarx
+	source = http://gnome-look.org/CONTENT/content-files/109283-glassified.tar.gz
+	md5sums = f095e632de6f3ebce62f83b90d0eca79
+
+pkgname = dockbarx-glassified-theme
+
