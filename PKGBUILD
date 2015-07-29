@@ -2,7 +2,7 @@
 # Contributor: Gregor Schram <gschram@protonmail.ch>
 
 pkgname=gregor-themes-git
-pkgver=0.1.r1.8f6021d
+pkgver=0.1.r3.ed1e931
 pkgrel=1
 pkgdesc='Linux theme based on Windows 10 colors and Mac OS X looks'
 arch=('any')
