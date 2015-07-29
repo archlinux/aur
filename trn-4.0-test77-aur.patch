@@ -1,0 +1,55 @@
+diff -Naur trn-4.0-test77/Configure trn-4.0-test77-aur/Configure
+--- trn-4.0-test77/Configure	2010-09-01 23:12:26.000000000 -0700
++++ trn-4.0-test77-aur/Configure	2013-04-01 10:02:17.966843649 -0700
+@@ -3047,6 +3047,7 @@
+ echo "Checking for GNU cc in disguise and/or its version number..." >&4
+ $cat >gccvers.c <<EOM
+ #include <stdio.h>
++#include <stdlib.h>
+ int main() {
+ #ifdef __GNUC__
+ #ifdef __VERSION__
+@@ -4096,6 +4097,7 @@
+ echo "Checking your choice of C compiler and flags for coherency..." >&4
+ $cat > try.c <<'EOF'
+ #include <stdio.h>
++#include <stdlib.h>
+ main() { printf("Ok\n"); exit(0); }
+ EOF
+ set X $cc $optimize $ccflags -o try $ldflags try.c $libs
+@@ -4303,6 +4305,7 @@
+ echo "Checking for GNU C Library..." >&4
+ cat >gnulibc.c <<EOM
+ #include <stdio.h>
++#include <stdlib.h>
+ int
+ main()
+ {
+@@ -5490,6 +5493,7 @@
+ 	$cat >foo.c <<EOCP
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <stdlib.h>
+ 
+ main()
+ {
+@@ -6080,6 +6084,7 @@
+ #ifdef I_SYSSELECT
+ #include <sys/select.h>
+ #endif
++#include <stdlib.h>
+ main()
+ {
+ 	struct tm foo;
+diff -Naur trn-4.0-test77/Speller.SH trn-4.0-test77-aur/Speller.SH
+--- trn-4.0-test77/Speller.SH	2000-05-24 22:11:41.000000000 -0700
++++ trn-4.0-test77-aur/Speller.SH	2010-09-22 18:10:34.000000000 -0700
+@@ -16,7 +16,7 @@
+ # what pager you use--if you have kernal paging use cat
+ pager="\${PAGER-$pager}"
+ # either the ispell program or "none"
+-ispell=$ispell_prg
++ispell="$ispell_prg"
+ ispell_options=$ispell_options
+ test=${test-test}
+ sed=${sed-sed}

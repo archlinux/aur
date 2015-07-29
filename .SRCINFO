@@ -1,0 +1,24 @@
+pkgbase = trn
+	pkgdesc = Text-based threaded Usenet newsreader
+	pkgver = 4.0test77
+	pkgrel = 4
+	url = http://trn.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = patch
+	makedepends = expect
+	makedepends = bison
+	depends = heimdal-aur
+	depends = ncurses
+	optdepends = aspell: spellcheck support
+	optdepends = sendmail: (or any outgoing mailer) outgoing email support
+	source = http://downloads.sourceforge.net/trn/trn-4.0-test77.tar.gz
+	source = trn-4.0-test77-aur.patch
+	source = configbot
+	md5sums = e0680ae4e6062747f88ba982326ac4c0
+	md5sums = 227db01e410765accad9a51520c837a4
+	md5sums = 852f1309e9681bc340682484bd2322dc
+
+pkgname = trn
+
