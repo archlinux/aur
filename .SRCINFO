@@ -1,7 +1,7 @@
 pkgbase = pacman-helper
 	pkgdesc = Pacman helper scripts for those who can not remember the options
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL2
 	depends = pacman
@@ -39,7 +39,7 @@ pkgbase = pacman-helper
 	md5sums = 127e85489e1ad4cfd1fcb33a84d6ca72
 	md5sums = 0a44ceaa56ec290052baf4e8ca8ad10c
 	md5sums = d3fd28a5d6228138340aaaeade5f9a54
-	md5sums = 2130edeb9d78ea0cb46679de2342f4fe
+	md5sums = 59f1d71dfcdd8e491cd85974924762ce
 	md5sums = 539cfdfc41e577788aeb7bed1ac0627d
 	md5sums = c63fd5f18f8a15ba95944fd7b62a8e16
 	md5sums = 88649a226d8c060b363e30aed01e088d
