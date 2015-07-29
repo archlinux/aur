@@ -1,0 +1,18 @@
+pkgbase = php-lua
+	pkgdesc = PHP PECL extension for an embedded Lua interpreter
+	pkgver = 1.1.0
+	pkgrel = 3
+	url = http://pecl.php.net/package/lua
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php>=5.1.0
+	depends = lua
+	backup = etc/php/conf.d/lua.ini
+	source = http://pecl.php.net/get/lua-1.1.0.tgz
+	source = liblua.so.patch
+	sha256sums = f063fb8e8ba5cfe5e120d179b84db77ea3344ce08288b48864ccb883a9826554
+	sha256sums = e193551d17c20fb6e053cfd2637a782e0f958c4c7500b6c77f5a427e7b10f400
+
+pkgname = php-lua
+

@@ -1,0 +1,12 @@
+diff -ru lua-1.1.0/config.m4 lua-1.1.0.new/config.m4
+--- lua-1.1.0/config.m4	2013-10-23 05:21:11.000000000 +0100
++++ lua-1.1.0.new/config.m4	2014-03-27 22:48:03.341134040 +0000
+@@ -21,7 +21,7 @@
+     AC_MSG_ERROR(Please reinstall the lua distribution - lua.h should be in <lua-dir>/include/)
+   fi
+ 
+-  LUA_LIB_NAME=liblua.a
++  LUA_LIB_NAME=liblua.so
+ 
+   if test -r $PHP_LUA/$PHP_LIBDIR/${LUA_LIB_NAME}; then
+     LUA_LIB_DIR=$PHP_LUA/$PHP_LIBDIR
