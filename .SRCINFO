@@ -1,6 +1,6 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
-	pkgver = 1.8.7
+	pkgver = 1.8.8
 	pkgrel = 1
 	url = http://www.spigotmc.org/
 	install = spigot.install
@@ -13,7 +13,7 @@ pkgbase = spigot
 	depends = sudo
 	depends = fontconfig
 	provides = bukkit
-	provides = craftbukkit=1.8.7
+	provides = craftbukkit=1.8.8
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = spigot-patcher

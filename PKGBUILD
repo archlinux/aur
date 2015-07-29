@@ -1,5 +1,5 @@
 pkgname=spigot
-pkgver=1.8.7
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
