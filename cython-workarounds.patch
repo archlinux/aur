@@ -1,8 +1,8 @@
 diff --git a/include/ClientDB.py b/include/ClientDB.py
-index f2f1209..87d6bc9 100755
+index 4f8d36d..a1a5c2d 100755
 --- a/include/ClientDB.py
 +++ b/include/ClientDB.py
-@@ -2596,7 +2596,7 @@ class DB( HydrusDB.HydrusDB ):
+@@ -2611,7 +2611,7 @@ class DB( HydrusDB.HydrusDB ):
                  counts_iterable = self._c.execute( nonzero_counts_query )
                  
              
@@ -12,7 +12,7 @@ index f2f1209..87d6bc9 100755
          
          #
 diff --git a/include/ClientGUICanvas.py b/include/ClientGUICanvas.py
-index 155bf4a..9cb413b 100755
+index a459170..7ec0a30 100755
 --- a/include/ClientGUICanvas.py
 +++ b/include/ClientGUICanvas.py
 @@ -48,7 +48,8 @@ NON_ZOOMABLE_MIMES = list( HC.AUDIO ) + [ HC.APPLICATION_PDF ]
@@ -26,10 +26,10 @@ index 155bf4a..9cb413b 100755
      ( media_width, media_height ) = media.GetResolution()
      
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 372eccc..d37d098 100755
+index b73c6ef..f1ea71c 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
-@@ -241,7 +241,8 @@ class Dialog( wx.Dialog ):
+@@ -242,7 +242,8 @@ class Dialog( wx.Dialog ):
      
      def EventDialogButton( self, event ): self.EndModal( event.GetId() )
      
@@ -40,7 +40,7 @@ index 372eccc..d37d098 100755
          wx.Dialog.SetInitialSize( self, ( width, height ) )
          
 diff --git a/include/ClientGUIManagement.py b/include/ClientGUIManagement.py
-index 31c884d..6801f64 100755
+index 2fa9574..ae5a9cb 100755
 --- a/include/ClientGUIManagement.py
 +++ b/include/ClientGUIManagement.py
 @@ -64,26 +64,6 @@ def CreateManagementController( management_type, file_service_key = None ):
@@ -806,7 +806,7 @@ index 31c884d..6801f64 100755
  class ManagementPanelImport( ManagementPanel ):
      
 diff --git a/include/ClientImporting.py b/include/ClientImporting.py
-index c991bd3..a1f5fff 100644
+index 6da6748..7cd6636 100644
 --- a/include/ClientImporting.py
 +++ b/include/ClientImporting.py
 @@ -113,26 +113,6 @@ class ImportController( HydrusSerialisable.SerialisableBase ):
