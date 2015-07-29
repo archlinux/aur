@@ -3,7 +3,7 @@
 
 pkgname='php-rar'
 pkgver='3.0.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='PHP PECL extension for reading RAR archives using bundled unRAR library'
 arch=('i686' 'x86_64')
 url='http://pecl.php.net/package/rar'
@@ -11,6 +11,7 @@ license=('PHP')
 depends=('php>=5.2.0')
 source=("http://pecl.php.net/get/rar-$pkgver.tgz")
 sha256sums=('37841aea7c91afe2a250afc28bcdc7d6807f8aa3a2411a1c121f17252f66f21d')
+backup=('etc/php/conf.d/rar.ini')
 
 build() {
     cd "$srcdir/rar-$pkgver"
