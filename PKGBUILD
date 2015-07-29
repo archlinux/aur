@@ -6,13 +6,13 @@ _pkgname=jdk
 pkgname=bin32-jdk-devel
 _major=9
 #_minor=1
-_build=b73
-_date=15_jul_2015
+_build=b74
+_date=22_jul_2015
 _pkgver=$_major
 pkgver=${_major}${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot (32-bit)"
 arch=('x86_64')
 url=https://jdk$_major.java.net/
@@ -60,7 +60,7 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'bf32df4a5c6a82dceb0249cb815efe18'
          '05c7f59cdcec283bcccc63d1fdc40b72'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_x86_64=('e4d7ef9836e7621a92f01264ce79f493')
+md5sums_x86_64=('8c782c528bf8e15d71b4391f1adec3dd')
 
 package() {
     cd ${_pkgname}1.${_major}.0
