@@ -10,7 +10,7 @@ pkgbase = sync-my-l2p
 	makedepends = deb2targz
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	noextract = sync-my-l2p_2.1.1-0.vivid_i386.deb
+	noextract = sync-my-l2p_2.1.1-0.vivid1_i386.deb
 	source = https://github.com/Sync-my-L2P/Sync-my-L2P/releases/download/v2.1.1/sync-my-l2p_2.1.1-0.vivid1_i386.deb
 	md5sums = 015c31ffd2f29c156882fbe8628dc18f
 
