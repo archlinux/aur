@@ -1,0 +1,28 @@
+pkgbase = libsolv-git
+	pkgdesc = A new approach to package dependency solving
+	pkgver = 0.6.6.3.g5cd3085
+	pkgrel = 1
+	url = https://github.com/openSUSE/libsolv
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = expat
+	makedepends = swig
+	makedepends = perl
+	makedepends = python
+	makedepends = ruby
+	makedepends = rpm-org
+	optdepends = perl: for perl bindings
+	optdepends = python: for python bindings
+	optdepends = ruby: for ruby bindings
+	optdepends = rpm-org: RPM support
+	provides = libsolv
+	conflicts = libsolv
+	source = git+https://github.com/openSUSE/libsolv.git
+	md5sums = SKIP
+
+pkgname = libsolv-git
+
