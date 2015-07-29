@@ -1,0 +1,29 @@
+pkgbase = libzypp-git
+	pkgdesc = Package, Patch, Pattern, and Product Management
+	pkgver = 14.32.0
+	pkgrel = 1
+	url = https://github.com/openSUSE/libzypp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = dejagnu
+	makedepends = graphviz
+	makedepends = libxml2
+	makedepends = expat
+	makedepends = gnupg
+	makedepends = rpm-org
+	makedepends = libproxy
+	depends = libsolv-git
+	depends = openssl
+	depends = curl
+	depends = libsystemd
+	provides = libzypp
+	conflicts = libzypp
+	source = git+https://github.com/openSUSE/libzypp.git
+	md5sums = SKIP
+
+pkgname = libzypp-git
+
