@@ -11,8 +11,7 @@ license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph')
-	# 'audit'
+	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph' 'libssh2')
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc'
 	     'libiscsi' 'open-iscsi'
 	     'perl-xml-xpath' 'libxslt')
