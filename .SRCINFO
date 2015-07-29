@@ -1,0 +1,14 @@
+pkgbase = hammer
+	pkgdesc = The Hammer parsing library
+	pkgver = 1.0.0_rc3
+	pkgrel = 1
+	url = https://github.com/UpstandingHackers/hammer
+	arch = x86
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	source = https://github.com/UpstandingHackers/hammer/archive/v1.0.0-rc3.tar.gz
+	md5sums = 04f41e8e3d915deef730f654dc61f429
+
+pkgname = hammer
+
