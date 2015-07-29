@@ -1,0 +1,19 @@
+pkgbase = moka-gtk-theme-git
+	pkgdesc = An accompanying GTK theme for the Moka icon set.
+	pkgver = 139.306bc82
+	pkgrel = 2
+	url = https://github.com/moka-project/moka-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-themes-standard
+	depends = gtk-engine-murrine
+	provides = moka-gtk-theme
+	conflicts = moka-gtk-theme
+	replaces = moka-gtk-theme
+	options = !strip
+	source = moka-gtk-theme::git+https://github.com/moka-project/moka-gtk-theme.git
+	sha256sums = SKIP
+
+pkgname = moka-gtk-theme-git
+
