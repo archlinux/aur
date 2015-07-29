@@ -1,0 +1,23 @@
+pkgbase = infonotary-scardmanager
+	pkgdesc = Smart Card Manager software by InfoNotary
+	pkgver = 2.1.0
+	pkgrel = 5
+	url = http://www.infonotary.com/site/?p=doc_l2_3
+	install = infonotary-scardmanager.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = openssl098
+	depends = qt4
+	optdepends = ccid: generic USB Chip/Smart Card Interface Devices driver
+	optdepends = omnikey_cardman_x21: driver for OmniKey xx21 smart card readers
+	optdepends = libacr38ucontrol: driver for the ACR38 smart card reader
+	optdepends = bit4id-ipki: driver for T&S DS/2048 (L) smart cards
+	optdepends = pcsclite: smartcard middleware library (pcscd)
+	optdepends = pcsc-tools: smartcard tools (pcsc_scan)
+	optdepends = opensc: a set of libraries and utilities to work with smart cards
+	source = http://repository.infonotary.com/install/infonotary-scardmanager_2.1.0-1_i386.deb
+	md5sums = b50465f7dfdc01c9cb4141f339c2653a
+
+pkgname = infonotary-scardmanager
+

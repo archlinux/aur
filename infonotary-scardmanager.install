@@ -1,0 +1,5 @@
+post_install() {
+	echo -n "If your card requires a custom driver (like bit4id-ipki),"
+	echo " you'll need to edit Preferences and add its module there (/usr/lib/libbit4ipki.so in this case)."
+}
+
