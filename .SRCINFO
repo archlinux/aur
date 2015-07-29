@@ -1,0 +1,21 @@
+pkgbase = perl-data-amf
+	pkgdesc = CPAN package Data::AMF
+	pkgver = 0.09
+	pkgrel = 3
+	url = http://search.cpan.org/~typester/Data-AMF-0.09/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-any-moose
+	depends = perl-universal-require
+	depends = perl-datetime
+	depends = perl-xml-libxml
+	depends = perl-scalar-list-utils
+	conflicts = perl-data-amf-packet
+	replaces = perl-data-amf-packet
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TY/TYPESTER/Data-AMF-0.09.tar.gz
+	sha256sums = a9121dc7d88c38986c9a794994acfb67cb5d2dea70140299ebfb4f468ed37898
+
+pkgname = perl-data-amf
+
