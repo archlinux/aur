@@ -1,0 +1,15 @@
+pkgbase = otf-openbaskerville
+	pkgdesc = An open source implementation of Fry's Baskerville, a Baskerville derivative by Isaac Moore
+	pkgver = 0.0.75
+	pkgrel = 3
+	url = http://klepas.org/openbaskerville/
+	install = otf.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://cloud.github.com/downloads/klepas/open-baskerville/OpenBaskerville-0.0.75.zip
+	sha256sums = 646e0236ee8fb7b16a12cecfc95767c64f91ea60fd8a6c783c34b4703c2f448a
+
+pkgname = otf-openbaskerville
+
