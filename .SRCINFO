@@ -1,0 +1,24 @@
+pkgbase = python2-zypp
+	pkgdesc = Python bindings for libzypp, the library for package management.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/openSUSE/libzypp-bindings
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig2
+	depends = libzypp-git
+	provides = libzypp-bindings
+	conflicts = libzypp-bindings
+	source = git+https://github.com/openSUSE/libzypp-bindings.git
+	source = 0001-Only-build-python-bindings.patch
+	source = make-ZyppCommon-cmake-module-includable.patch
+	md5sums = SKIP
+	md5sums = 72c3d6b918da81ec5ebcf0504e565da5
+	md5sums = 71d063d865f99ac00ab24cf759107376
+
+pkgname = python2-zypp
+

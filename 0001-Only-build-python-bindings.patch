@@ -1,0 +1,29 @@
+From 1636e0191f898c11135740fc394f372d4f06b6bc Mon Sep 17 00:00:00 2001
+From: Junchun Guan <junchunx.guan@intel.com>
+Date: Fri, 19 Dec 2014 15:04:17 +0800
+Subject: [PATCH] Only build python bindings
+
+---
+ swig/CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/swig/CMakeLists.txt b/swig/CMakeLists.txt
+index 7ab74db..6c8ac63 100644
+--- a/swig/CMakeLists.txt
++++ b/swig/CMakeLists.txt
+@@ -11,12 +11,10 @@ SET( SWIG_INPUT "${CMAKE_CURRENT_SOURCE_DIR}/zypp.i" )
+ # Let's see which target languages are available
+ #
+ 
+-FIND_PACKAGE(Ruby)
+ # Enforce Python 2.7, libzypp-bindings does not yet work with Python3
+ set(PythonLibs_FIND_VERSION 2.7)
+ set(PythonLibs_FIND_VERSION_MAJOR 2)
+ FIND_PACKAGE(PythonLibs)
+-FIND_PACKAGE(Perl)
+ 
+ 
+ IF (RUBY_LIBRARY AND RUBY_INCLUDE_PATH)
+-- 
+2.1.3
+
