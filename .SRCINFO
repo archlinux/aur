@@ -1,0 +1,30 @@
+pkgbase = links-g-directfb
+	pkgdesc = A text WWW browser, similar to Lynx (with directfb, X and fb graphics)
+	pkgver = 2.9
+	pkgrel = 2
+	url = http://links.twibright.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxt
+	depends = bzip2
+	depends = xz
+	depends = openssl
+	depends = gpm
+	depends = directfb
+	depends = libx11
+	depends = libtiff
+	depends = libpng
+	depends = libjpeg-turbo
+	provides = links
+	provides = links-g
+	conflicts = links
+	conflicts = links-g
+	replaces = links-g
+	source = http://links.twibright.com/download/links-2.9.tar.bz2
+	source = links.desktop
+	sha1sums = 1202f1ade1075fa4f62e343702e5a0a22cdc2b13
+	sha1sums = a2084166ef252175f14805f2e6a4467c45c51477
+
+pkgname = links-g-directfb
+
