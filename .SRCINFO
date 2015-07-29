@@ -1,0 +1,18 @@
+pkgbase = nemo-emblems
+	pkgdesc = Nemo file emblems extension
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/linuxmint/nemo-extensions
+	install = nemo-emblems.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2-distutils-extra
+	depends = nemo-python
+	options = !libtool
+	options = !emptydirs
+	source = nemo-emblems-2.6.0.tar.gz::http://packages.linuxmint.com/pool/main/n/nemo-emblems/nemo-emblems_2.6.0+rafaela.tar.gz
+	sha256sums = 6ac2c5c433c437fef9cb0f55b100b12d1934f203e4b9373e208b38b578b52b64
+
+pkgname = nemo-emblems
+
