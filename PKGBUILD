@@ -1,23 +1,25 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.7.2
+pkgrel=1
 epoch=1
-pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix (mingw-w64)"
+pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
 url="http://ffmpeg.org/"
 license=('GPL3')
-depends=('mingw-w64-crt' 'mingw-w64-bzip2' 'mingw-w64-fontconfig' 'mingw-w64-gnutls'
+depends=(
+'mingw-w64-crt' 'mingw-w64-bzip2' 'mingw-w64-fontconfig' 'mingw-w64-fribidi' 'mingw-w64-gnutls'
 'mingw-w64-gsm' 'mingw-w64-lame' 'mingw-w64-libass' 'mingw-w64-libbluray' 'mingw-w64-libmodplug'
 'mingw-w64-libtheora' 'mingw-w64-libwebp' 'mingw-w64-libvorbis' 'mingw-w64-libvpx' 'mingw-w64-opencore-amr'
 'mingw-w64-openjpeg' 'mingw-w64-opus' 'mingw-w64-libssh' 'mingw-w64-schroedinger'
-'mingw-w64-sdl' 'mingw-w64-speex' 'mingw-w64-x264' 'mingw-w64-xvidcore' 'mingw-w64-zlib' 'mingw-w64-x265' 'mingw-w64-fribidi')
+'mingw-w64-sdl' 'mingw-w64-speex' 'mingw-w64-x264' 'mingw-w64-xvidcore' 'mingw-w64-zlib' 'mingw-w64-x265'
+)
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'yasm')
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-md5sums=('f159c6d7eed8546b23e1a17325cbf1f8'
+md5sums=('7eb2140bab9f0a8669b65b50c8e4cfb5'
          'SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
