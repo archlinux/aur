@@ -1,0 +1,15 @@
+pkgbase = sony-gpsassist-update-git
+	pkgdesc = Auto-update GPS_A data for Sony Alpha cameras
+	pkgver = 10.e0a5c18
+	pkgrel = 1
+	url = https://github.com/gimpel/sony-gpsassist-update
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	backup = etc/sony-gpsassist-update.cfg
+	source = sony-gpsassist-update::git+https://github.com/gimpel/sony-gpsassist-update.git
+	md5sums = SKIP
+
+pkgname = sony-gpsassist-update-git
+
