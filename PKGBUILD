@@ -11,9 +11,20 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 #    * This .PKGFILE as closely as possible matches community's terminator 0.97-2
 
+
+
+# If you're running KDE, and terminator refuses to start for you, uncomment (remove the # on) the line below
+#_install_kde_patch=1
+
+# Upstream has middle mouse paste, and right mouse open context menu.
+# If you want to reverse these, uncomment (remove the # on) the line below
+#_install_middle_mouse_patch=1
+
+
+
 pkgname=terminator-trunk
 _pkgname=terminator
-pkgver=0.97.r1572
+pkgver=0.97.r1583
 pkgrel=1
 pkgdesc='Terminal emulator that supports tabs and grids (bzr trunk developmental version)'
 arch=('any')
@@ -27,9 +38,11 @@ provides=('terminator')
 conflicts=('terminator')
 install=terminator.install
 source=("${_pkgname}::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk"
-        'kde.patch')
+        'kde.patch'
+        'middle_mouse.patch')
 md5sums=('SKIP'
-         'dacdc91bad8cf01bb3e5b2a01d3c8f7d')
+         'dacdc91bad8cf01bb3e5b2a01d3c8f7d'
+         'ca634c424ff4b4fa174e17d46f81e863')
 
 pkgver() {
    cd ${srcdir}/${_pkgname}
@@ -38,8 +51,18 @@ pkgver() {
 
 prepare() {
    cd ${srcdir}/${_pkgname}
-# If you're running KDE, and terminator refuses to start for you, uncomment (remove the # on) the line below
-   #patch -p1 -i ${srcdir}/kde.patch
+   if [ -n "$_install_kde_patch" ]; then
+      echo "Installing kde.patch..."
+      patch -p1 -i ${srcdir}/kde.patch
+   else
+      echo "NOT installing kde.patch"
+   fi
+   if [ -n "$_install_middle_mouse_patch" ]; then
+      echo "Installing middle_mouse.patch..."
+      patch -p1 -i ${srcdir}/middle_mouse.patch
+   else
+      echo "NOT installing middle_mouse.patch"
+   fi
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = terminator-trunk
 	pkgdesc = Terminal emulator that supports tabs and grids (bzr trunk developmental version)
-	pkgver = 0.97.r1572
+	pkgver = 0.97.r1583
 	pkgrel = 1
 	url = http://gnometerminator.blogspot.fr/p/introduction.html
 	install = terminator.install
@@ -19,8 +19,10 @@ pkgbase = terminator-trunk
 	conflicts = terminator
 	source = terminator::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk
 	source = kde.patch
+	source = middle_mouse.patch
 	md5sums = SKIP
 	md5sums = dacdc91bad8cf01bb3e5b2a01d3c8f7d
+	md5sums = ca634c424ff4b4fa174e17d46f81e863
 
 pkgname = terminator-trunk
 
