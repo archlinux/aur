@@ -9,7 +9,7 @@ url="https://github.com/Winneon/cappy"
 license=('MIT')
 depends=('bash'
          'curl'
-         'xorg-server'
+         'xdotool'
          'xclip'
          'imagemagick')
 source=("https://github.com/Winneon/cappy/archive/master.tar.gz")
