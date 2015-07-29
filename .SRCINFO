@@ -1,0 +1,17 @@
+pkgbase = espeak-test
+	pkgdesc = Text to Speech engine for good quality English, with support for other languages: latest test version
+	pkgver = 1.48.15
+	pkgrel = 1
+	url = http://espeak.sourceforge.net/test/latest.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = portaudio
+	provides = espeak
+	conflicts = espeak
+	source = http://espeak.sourceforge.net/test/espeak-1.48.15.zip
+	md5sums = a933baef9cd6528f2e019e59582797bd
+
+pkgname = espeak-test
+
