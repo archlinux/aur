@@ -1,19 +1,19 @@
 # Maintainer: Benjamin Chretien <chretien@lirmm.fr>
 # Contributor: Thomas Moulard <thomas.moulard@gmail.com>
 pkgname=roboptim-core
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Numerical Optimization for Robotics"
 arch=('i686' 'x86_64')
 url="http://roboptim.net/"
 license=('(L)GPL2')
-depends=('eigen>=3.2' 'boost>=1.41' 'doxygen' 'libltdl' 'log4cxx')
+depends=('eigen>=3.2' 'boost>=1.41' 'libltdl' 'log4cxx')
 optdepends=()
-makedepends=('cmake')
+makedepends=('cmake' 'doxygen' 'texlive-bin' 'ghostscript')
 provides=('roboptim-core')
 conflicts=('roboptim-core-git')
 source=("https://github.com/roboptim/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('aabf85d2cacea67c7944dc65629316c3')
+md5sums=('7d2178c1ed0dd8de0c93d441f403774d')
 
 # Build type
 _buildtype="RelWithDebInfo"
