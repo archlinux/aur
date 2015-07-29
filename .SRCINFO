@@ -1,6 +1,6 @@
 pkgbase = aurupbot
 	pkgdesc = A script to automatically maintain your VCS-based AUR packages for you
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/ianbrunelli/aurupbot
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = aurupbot
 	depends = pkgbuild-introspection
 	optdepends = libnotify: send desktop notifications
 	optdepends = s-nail: send reports using the mail command
-	source = https://github.com/ianbrunelli/aurupbot/archive/v1.1.tar.gz
-	sha256sums = c4208c7d951191900f2d02e17dc9f561f8dd0558e1f53a0d12c53df448b8f3fd
+	source = https://github.com/ianbrunelli/aurupbot/archive/v1.2.tar.gz
+	sha256sums = 76a5891563f18b4b207396a0ee3636038757ecd000efd2529354fe37877279c4
 
 pkgname = aurupbot
 
