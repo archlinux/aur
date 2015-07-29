@@ -4,7 +4,7 @@
 # Contributor: Nicolas Pouillard <Nicolas.Pouillard@gmail.com>
 # Contributor: Guillem Rieu <guillemr@gmx.net>
 pkgname=ocamlnet
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A library for Web and Internet programming in OCaml"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('ocaml-findlib' 'ocaml' 'ocaml-pcre')
 #makedepends=('ocaml-findlib' 'ocaml' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-cryptokit')
 options=('!strip' '!makeflags' 'staticlibs')
 source=(http://download.camlcity.org/download/$pkgname-$pkgver.tar.gz)
-md5sums=('464895e60c3f68ac0ba77019822cd300')
+md5sums=('3196b85e1e329bfb0665f54723e0dffb')
 
 build(){
   cd "$srcdir/$pkgname-$pkgver"
