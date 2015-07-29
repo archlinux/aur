@@ -1,0 +1,18 @@
+pkgbase = telegram-qt-git
+	pkgdesc = Qt bindings for the Telegram protocol
+	pkgver = r260.66c8547
+	pkgrel = 1
+	url = https://projects.kde.org/telegram-qt/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	provides = telegram-qt
+	conflicts = telegram-qt
+	source = git://anongit.kde.org/telegram-qt.git
+	md5sums = SKIP
+
+pkgname = telegram-qt-git
+
