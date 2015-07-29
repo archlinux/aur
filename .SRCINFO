@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-x264
 	pkgdesc = free library for encoding H264/AVC video streams (mingw-w64)
-	pkgver = 144.20150223
+	pkgver = 148.20150725
 	pkgrel = 1
 	epoch = 1
 	url = http://www.videolan.org/developers/x264.html
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-x264
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git://git.videolan.org/x264.git#commit=c8a773ebf
+	source = git://git.videolan.org/x264.git#commit=73ae2d11d472d0eb3b7c218dc1659db32f649b14
 	md5sums = SKIP
 
 pkgname = mingw-w64-x264
