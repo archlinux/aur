@@ -1,0 +1,15 @@
+diff -ru soxr-0.1.1-Source/tests/CMakeLists.txt patched/tests/CMakeLists.txt
+--- soxr-0.1.1-Source/tests/CMakeLists.txt	2013-03-01 08:02:13.000000000 +0100
++++ patched/tests/CMakeLists.txt	2015-07-30 00:22:27.070144833 +0200
+@@ -20,10 +20,9 @@
+ macro (add_vector r)
+   set (output ${CMAKE_CURRENT_BINARY_DIR}/ref-${r}.s32)
+   add_custom_command (OUTPUT ${output} DEPENDS vector-gen ${CMAKE_CURRENT_LIST_FILE}
+-    COMMAND vector-gen ${r} ${leader} ${len} ${sweep_to_freq} 1 ${output})
++    COMMAND vector-gen${CMAKE_EXECUTABLE_SUFFIX} ${r} ${leader} ${len} ${sweep_to_freq} 1 ${output})
+   set (vectors ${output} ${vectors})
+ endmacro ()
+-
+ macro (add_cmp_test from to bits)
+   set (name ${bits}-bit-perfect-${from}-${to})
+   add_test (NAME ${name} COMMAND ${CMAKE_COMMAND} -Dbits=${bits} -DBIN=${BIN} -DEXAMPLES_BIN=${EXAMPLES_BIN} -Dleader=${leader} -Dto=${to}
