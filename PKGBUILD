@@ -1,7 +1,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=perl-svn-look
-pkgver=0.39
+pkgver=0.41
 pkgrel=1
 pkgdesc="svnlook perl bindings"
 arch=(i686 x86_64)
@@ -13,12 +13,16 @@ depends=('perl' 'perl-extutils-makemaker'
 	 'subversion')
 options=(!emptydirs)
 source=(http://search.cpan.org/CPAN/authors/id/G/GN/GNUSTAVO/SVN-Look-$pkgver.tar.gz)
-md5sums=('48d0443d0bb2c4a79c3141e553e699b6')
+md5sums=('2b51270445a774c30ba5a94086201809')
 
 build() {
   cd $srcdir/SVN-Look-${pkgver}
   perl Makefile.PL INSTALLDIRS=vendor
   make
+}
+
+package() {
+  cd $srcdir/SVN-Look-${pkgver}
   make install DESTDIR=$pkgdir
   find $pkgdir -name perllocal.pod -delete
   find $pkgdir -name .packlist -delete
