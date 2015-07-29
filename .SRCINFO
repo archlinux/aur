@@ -1,6 +1,6 @@
 pkgbase = opera-beta
 	pkgdesc = A fast and secure web browser and Internet suite - beta stream
-	pkgver = 31.0.1889.92
+	pkgver = 31.0.1889.98
 	pkgrel = 1
 	url = http://www.opera.com/browser/
 	install = opera.install
@@ -14,8 +14,8 @@ pkgbase = opera-beta
 	depends = libxtst
 	depends = desktop-file-utils
 	options = !strip
-	source = http://get.geo.opera.com/pub/opera-beta/31.0.1889.92/linux/opera-beta_31.0.1889.92_amd64.deb
-	sha256sums = e5863aef9027fbdf57e23b563bf3cb8ec9c8e64a53f89e74a53e1b1a9f609179
+	source = http://get.geo.opera.com/pub/opera-beta/31.0.1889.98/linux/opera-beta_31.0.1889.98_amd64.deb
+	sha256sums = 95ab02349b3c6a609b778a268c4d31f25fd0cfd7dfa0d255a85ea46fdbfdfcab
 
 pkgname = opera-beta
 
