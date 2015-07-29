@@ -7,6 +7,9 @@ pkgbase = mingw-w64-libyaml
 	license = MIT
 	makedepends = mingw-w64-gcc
 	depends = mingw-w64-crt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
 	source = http://pyyaml.org/download/libyaml/yaml-0.1.6.tar.gz
 	md5sums = 5fe00cda18ca5daeb43762b80c38e06e
 
