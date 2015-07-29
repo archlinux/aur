@@ -28,13 +28,5 @@ post_upgrade() {
 post_remove() {
   systemctl stop mailpile >/dev/null 2>&1
 
-  if getent passwd mailpile >/dev/null; then
-    userdel mailpile >/dev/null 2>&1
-  fi
-
-  if getent group mailpile >/dev/null; then
-    groupdel mailpile >/dev/null 2>&1
-  fi
-
   echo "==> Note: /var/lib/mailpile may still contain data" 
 }
