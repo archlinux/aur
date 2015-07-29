@@ -1,0 +1,14 @@
+pkgbase = ruby-colored
+	pkgdesc = Ruby library for colorizing text output in your terminal
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://github.com/defunkt/colored
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = colored-1.2.gem
+	source = https://rubygems.org/downloads/colored-1.2.gem
+	sha256sums = 9d82b47ac589ce7f6cab64b1f194a2009e9fd00c326a5357321f44afab2c1d2c
+
+pkgname = ruby-colored
+
