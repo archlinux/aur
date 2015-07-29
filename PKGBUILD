@@ -9,6 +9,7 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: shmilee
 # Contributor: foobster
+# Contributor: archdria
 
 pkgname=vim-youcompleteme-git
 pkgver=1393.4436d51
