@@ -1,0 +1,11 @@
+[Unit]
+Description=Ghost Blogging Platform
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/ghost
+ExecStart=/usr/bin/npm start --production /srv/ghost
+User=ghost
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,53 @@
+post_install() {
+    getent group ghost &>/dev/null || \
+        groupadd --system --gid 738 ghost &>/dev/null
+    getent passwd ghost &>/dev/null || \
+        useradd --system --gid ghost --uid 738 -d /srv/ghost -s /usr/bin/nologin ghost &>/dev/null
+    chown -R ghost:ghost srv/ghost &>/dev/null
+
+    systemctl daemon-reload
+
+    cat <<-EOF
+	To use ghost with systemd, run
+		systemctl enable ghost.service
+
+	By default, Ghost can be accessed at http://localhost:2368/
+	after it is started.
+	EOF
+}
+
+post_upgrade() {
+    # Check if old version < 0.5.8
+    _cmp_ver=0.5.8
+    if [ "$2" = "$(echo -e "$2\n$_cmp_ver" | sort -V | head -n1)" ] \
+            && [ "$2" != "$_cmp_ver" ]; then
+        # 0.5.8 changes ghost UID/GID to a 738
+        # In order to do so, remove old user/group first
+        getent passwd ghost &>/dev/null && userdel -f ghost
+        getent group ghost &>/dev/null && groupdel ghost
+
+        echo "The UID/GID of the ghost user/group has changed"
+        echo "as of ghost-0.5.8. Please update the ownership of"
+        echo "the /srv/ghost directory by running (as root)"
+        echo "    chown -R ghost:ghost /srv/ghost"
+    fi
+
+    post_install
+
+    if systemctl is-enabled ghost &>/dev/null || \
+            systemctl is-active ghost &>/dev/null ; then
+        systemctl restart ghost
+    fi
+}
+
+post_remove() {
+    if systemctl is-enabled ghost &>/dev/null || \
+            systemctl is-active ghost &>/dev/null ; then
+        systemctl stop ghost
+    fi
+
+    getent passwd ghost &>/dev/null && userdel -f ghost
+    getent group ghost &>/dev/null && groupdel ghost
+
+    systemctl daemon-reload
+}
