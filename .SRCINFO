@@ -1,0 +1,13 @@
+pkgbase = libtcd
+	pkgdesc = Provides a software API for reading and writing Tide Constituent Database (TCD) files
+	pkgver = 2.2.6.r2
+	pkgrel = 1
+	url = http://flaterco.com/xtide/libtcd.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = ftp://ftp.flaterco.com/xtide/libtcd-2.2.6-r2.tar.bz2
+	md5sums = 35bf5219fa66b16c9b932929f2ab457e
+
+pkgname = libtcd
+
