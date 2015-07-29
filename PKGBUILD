@@ -33,7 +33,7 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 _url="https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches"
 source=("git://github.com/rakshasa/rtorrent.git#commit=$_commit"
         "rtorrent.rc.sample"
-        "${_url}/ps-ui_pyroscope_0.8.8.patch"
+        "${_url}/ps-ui_pyroscope_all.patch"
         "${_url}/pyroscope.patch"
         "${_url}/ui_pyroscope.patch"
         "${_url}/command_pyroscope.cc"
@@ -85,7 +85,6 @@ build() {
     cd "$srcdir/rtorrent"
     #export CC=clang
     #export CXX=clang++
-    #export CXXFLAGS+=" -std=c++11 -fno-strict-aliasing"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"
 
     ./configure $_debug \
