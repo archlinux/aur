@@ -1,7 +1,7 @@
 pkgbase = rtorrent-color
 	pkgdesc = Ncurses BitTorrent client based on libTorrent with color patch.
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libtorrent.rakshasa.no
 	install = rtorrent-color.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = rtorrent-color
 	conflicts = rtorrent
 	source = rtorrent-color-0.9.5.tar.gz::https://github.com/rakshasa/rtorrent/archive/0.9.5.tar.gz
 	source = rtorrent-0.9.5_color.patch
-	sha1sums = c1f0b27425f6b025db550cf5ce1997a16af6ff7b
+	sha1sums = ae2e2c6444bb29278406118527db19429c8095cf
 	sha1sums = 78429b5cf5976270dc1a55d8dc0ef4644675512b
 
 pkgname = rtorrent-color
