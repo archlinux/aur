@@ -1,0 +1,18 @@
+Note for infinality-bundle users
+================================
+
+gsfonts-cyr package can functionally replace either t1-urw-fonts-ib or
+t1-urw-fonts-cyr-ib. If used this way, you should create the following
+symbolic links to /etc/fonts/conf.d:
+
+  # cd /usr/share/gsfonts-cyr
+  # ln -s `pwd`/45-urw-fonts-cyr.conf /etc/fonts.conf.d/
+  # ln -s `pwd`/90-non-tt-urw-fonts-cyr.conf /etc/fonts/conf.d/
+
+Additionaly, if you are going to substitute proprietary fonts with Nimbus and
+URW families, you need to create symbolic links to all gsfonts-cyr fontconfig
+configuration files:
+
+  # cd /usr/share/doc/gsfonts-cyr
+  # for conf in `ls *.conf`; do ln -s `pwd`/"$conf" /etc/fonts/conf.d/; done
+
