@@ -16,7 +16,7 @@ source=('gregor-themes::git+https://github.com/gregor160300/Theme.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd gregor-themes-git
+  cd gregor-themes
 
   printf "%s" "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
