@@ -3,13 +3,13 @@
 
 pkgname=nvidia-grsec
 pkgver=352.21
-_extramodules=extramodules-4.0.8-grsec
-pkgrel=3
+_extramodules=extramodules-4.1.3-grsec
+pkgrel=4
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-grsec>=4.0' 'linux-grsec<4.1' "nvidia-libgl" "nvidia-utils=${pkgver}")
-makedepends=('linux-grsec-headers>=4.0' 'linux-grsec-headers<4.1')
+depends=('linux-grsec>=4.1' 'linux-grsec<4.2' "nvidia-libgl" "nvidia-utils=${pkgver}")
+makedepends=('linux-grsec-headers>=4.1' 'linux-grsec-headers<4.2')
 conflicts=('nvidia-96xx-grsec' 'nvidia-173xx-grsec')
 license=('custom')
 install=nvidia-grsec.install
@@ -42,17 +42,24 @@ build() {
     cd "${_pkg}"/kernel
     make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 
-    cd uvm
-    make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+    if [[ "$CARCH" = "x86_64" ]]; then
+        cd uvm
+        make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+    fi
 }
 
 package() {
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
-    install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
-        "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
+
+    if [[ "$CARCH" = "x86_64" ]]; then
+        install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+            "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
+    fi
+
     gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
     install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
+
     echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-grsec.conf"
     sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/nvidia-grsec.install"
 }
