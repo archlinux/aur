@@ -1,0 +1,16 @@
+pkgbase = gregor-themes-git
+	pkgdesc = gregor160300 theme for xfce
+	pkgver = 0.1.r1.8f6021d
+	pkgrel = 1
+	url = https://github.com/gregor160300/Theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-engine-murrine
+	provides = gregor-themes
+	conflicts = gregor-themes
+	source = gregor-themes::git+https://github.com/gregor160300/Theme.git
+	md5sums = SKIP
+
+pkgname = gregor-themes-git
+
