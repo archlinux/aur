@@ -6,12 +6,12 @@
 
 pkgname=mysql-workbench-dev
 pkgver=6.3.4
-pkgrel=1
+pkgrel=4
 pkgdesc='A cross-platform, visual database design tool developed by MySQL - development version'
 arch=('i686' 'x86_64')
 url='https://www.mysql.com/products/workbench/'
 license=('GPL2')
-depends=('python2' 'libzip' 'libmariadbclient' 'lua51' 'gtkmm' 'ctemplate'
+depends=('python2' 'libzip' 'libmariadbclient' 'gtkmm' 'ctemplate'
 	'libgnome-keyring' 'libgl' 'python2-paramiko' 'python2-pexpect' 'gdal'
 	'pcre' 'tinyxml' 'libxml2' 'mysql-python' 'cairo'
 	'python2-cairo' 'hicolor-icon-theme' 'desktop-file-utils' 'libiodbc'
@@ -19,7 +19,7 @@ depends=('python2' 'libzip' 'libmariadbclient' 'lua51' 'gtkmm' 'ctemplate'
 	'libantlr3c')
 optdepends=('gnome-keyring: store SSH/MySQL passwords in GNOME password manager'
 	'python2-pyodbc: database migration')
-makedepends=('cmake' 'boost' 'curl' 'mesa' 'swig2' 'java-runtime' 'imagemagick')
+makedepends=('cmake' 'boost' 'curl' 'mesa' 'swig' 'java-runtime' 'imagemagick')
 install=mysql-workbench.install
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 source=("http://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-${pkgver}-src.tar.gz"{,.asc}
@@ -65,8 +65,7 @@ build() {
 	cd "${srcdir}/mysql-workbench-community-${pkgver}-src/"
 
 	cmake . \
-		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
-		-DSWIG_EXECUTABLE=/usr/bin/swig-2
+		-DCMAKE_INSTALL_PREFIX:PATH=/usr
 
 	make
 }
