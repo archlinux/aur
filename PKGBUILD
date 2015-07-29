@@ -1,8 +1,8 @@
-# Maintainer: DOOMer <doomer3d@gmail.com>
+# Maintainer: Beej <beej@beej.us>
 # Contributor: DOOMer <doomer3d@gmail.com>
 pkgname=screengrab
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform tool for grabbing screenshots of your desktop."
 arch=('i686' 'x86_64')
 url="http://screengrab.doomer.org/"
@@ -13,16 +13,16 @@ source=(screengrab-$pkgver.tar.gz::http://screengrab.doomer.org/download/screeng
 md5sums=('b233b108558c509419bd754ba1c2c318')
 
 build() {
-echo "build"
-cd $srcdir/screengrab-$pkgver
-mkdir build
-cd build
-cmake "$srcdir/$_gitname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
-make || return 1
+  echo "build"
+  cd $srcdir/screengrab-$pkgver
+  mkdir build
+  cd build
+  cmake "$srcdir/$_gitname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
+  make
 } 
 
 package() {
-cd $srcdir/screengrab-$pkgver
-cd build
-make DESTDIR="${pkgdir}" install || return 1
+  cd $srcdir/screengrab-$pkgver
+  cd build
+  make DESTDIR="${pkgdir}" install
 }

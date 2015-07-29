@@ -1,7 +1,7 @@
 pkgbase = screengrab
 	pkgdesc = Crossplatform tool for grabbing screenshots of your desktop.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://screengrab.doomer.org/
 	arch = i686
 	arch = x86_64
