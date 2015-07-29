@@ -1,0 +1,49 @@
+diff -Naur ptoc.old/main.cxx ptoc/main.cxx
+--- ptoc.old/main.cxx	2012-05-23 08:23:47.000000000 +0200
++++ ptoc/main.cxx	2015-07-29 16:52:47.501316147 +0200
+@@ -347,8 +347,8 @@
+     compile_system_library = TRUE;
+ #ifdef PREFIX
+     token::input(turbo_pascal 
+-		 ? PREFIX "/share/ptoc/tptoc.pas" 
+-		 : PREFIX "/share/ptoc/ptoc.pas")); 
++		 ? (char *) PREFIX "/share/ptoc/tptoc.pas" 
++		 : (char *) PREFIX "/share/ptoc/ptoc.pas"); 
+ #else
+     token::input(dprintf("%s%s", prog_path, 
+  			 turbo_pascal ? "tptoc.pas" : "ptoc.pas")); 
+diff -Naur ptoc.old/main.h ptoc/main.h
+--- ptoc.old/main.h	2002-10-24 17:39:08.000000000 +0200
++++ ptoc/main.h	2015-07-29 16:44:21.757582099 +0200
+@@ -44,7 +44,7 @@
+ #define CALL_GRAPH_FILE     "call.grp"
+ #define RECURSIVE_PROC_FILE "recur.prc"
+ #ifdef PREFIX
+-#define CONFIG_FILE         PREFIX "/etc/ptoc.cfg"
++#define CONFIG_FILE         PREFIX "/share/ptoc/ptoc.cfg"
+ #else
+ #define CONFIG_FILE         "ptoc.cfg"
+ #endif
+diff -Naur ptoc.old/makefile ptoc/makefile
+--- ptoc.old/makefile	2008-03-04 12:04:34.000000000 +0100
++++ ptoc/makefile	2015-07-29 16:45:42.075362269 +0200
+@@ -16,8 +16,8 @@
+ #
+ # C/C++ flags
+ #
+-CFLAGS = -O0 -g -Wall -c
+-CXXFLAGS = -O0 -g -Wall -c
++#CFLAGS = -O0 -g -Wall -c
++#CXXFLAGS = -O0 -g -Wall -c
+ #CFLAGS= -fno-exceptions -O5 -g -Wall -c
+ #CXXFLAGS= -fno-exceptions -O5 -g -Wall -c
+ 
+@@ -49,7 +49,7 @@
+ BINS =	ptoc cganal 
+ LIBS =  libptoc.a libXbgi.a 
+ 
+-DEFINES = 
++DEFINES = -DPREFIX=\"/usr\"
+ INCLUDES = -I.
+ 
+ YACC =		bison -d -p zz 

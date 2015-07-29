@@ -1,0 +1,16 @@
+pkgbase = ptoc
+	pkgdesc = ANSI/Turbo Pascal to C/C++ converter
+	pkgver = 3.61
+	pkgrel = 1
+	url = http://www.garret.ru/ptoc/Readme.htm
+	arch = i686
+	arch = x86_64
+	license = custom: Shareware
+	options = staticlibs
+	source = http://www.garret.ru/ptoc-3.61.tar.gz
+	source = ptoc-arch-fixes.patch
+	sha256sums = b3d93d30f6571500b23cbbfe3dd50b0ef539095b5b7f18b6787fa02a08e459d7
+	sha256sums = 3aea08928e9da0e52435cf80da208319473a1295a84b201363ea69c874725810
+
+pkgname = ptoc
+
