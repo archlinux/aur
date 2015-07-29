@@ -1,0 +1,15 @@
+pkgbase = overlap2d
+	pkgdesc = Overlap2D
+	pkgver = 0.1.1
+	pkgrel = 0
+	url = http://overlap2d.com
+	arch = any
+	license = APACHE2
+	depends = java-environment
+	source = http://overlap2d.com/bin/overlap2d.tar.gz
+	source = overlap2d
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = overlap2d
+
