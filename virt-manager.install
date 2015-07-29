@@ -1,0 +1,23 @@
+post_install() {
+	[ -x usr/bin/update-desktop-database ] && update-desktop-database -q
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	glib-compile-schemas usr/share/glib-2.0/schemas
+}
+
+pre_upgrade() {
+	pre_remove $1
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+pre_remove() {
+	rm -f /usr/share/virt-manager/virtManager/*.pyc || true
+}
+
+post_remove() {
+	[ -x usr/bin/update-desktop-database ] && update-desktop-database -q
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	glib-compile-schemas usr/share/glib-2.0/schemas
+}
