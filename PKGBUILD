@@ -1,8 +1,8 @@
-# Samuel Fernando Mesa Giraldo <samuelmesa [at] linuxmail.org>
+# Maintainer:Samuel Fernando Mesa Giraldo <samuelmesa [at] linuxmail.org>
 
 pkgname=tinyows
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A lightweight and fast implementation of the OGC WFS-T specification."
 arch=('i686' 'x86_64')
 url=('http://mapserver.org/tinyows')
@@ -14,15 +14,16 @@ makedepends=('git' 'cmake')
 provides=('mapserver')
 conflicts=('tinyows')
 
-source=("http://download.osgeo.org/mapserver/tinyows-1.1.0.tar.bz2")
-md5sums=('9af531d2aed80a0b5dd390032c9c5477')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mapserver/${pkgname}/archive/v.${pkgver}.tar.gz")
+md5sums=('4093a4899ce661fcb27342fdb5676206')
 
 build() {
   
-  cd ${startdir}/src/${pkgname}-${pkgver}
+  cd ${pkgname}-v.${pkgver}
 
   msg "Compiling ...."
 	
+  autoconf
   ./configure --prefix=/$pkgdir/usr \
               --with-xml2-config=/usr/bin/xml2-config \
               --with-pg_config=/usr/bin/pg_config \
@@ -34,11 +35,13 @@ build() {
 
 package() {  
   
-  cd $srcdir/$pkgname-${pkgver}
+  cd $pkgname-v.${pkgver}
   make DESTDIR=$pkgdir install  
 
-  install -Dm755 tinyows "$pkgdir/usr/bin/tinyows"
-  mkdir -p  "$pkgdir/usr/share/tinyows" 
-  cp -rfv demo "$pkgdir/usr/share/tinyows" 
+  install -Dm755 tinyows ${pkgdir}/usr/bin/tinyows
+  install -d  ${pkgdir}/usr/share/tinyows/demo
+  install -d  ${pkgdir}/usr/share/tinyows/test
+  install -Dm755 ${srcdir}/$pkgname-v.${pkgver}/demo/* ${pkgdir}/usr/share/tinyows/demo
+  cp -rfv ${srcdir}/$pkgname-v.${pkgver}/test/* ${pkgdir}/usr/share/tinyows/test
 }
 
