@@ -2,7 +2,7 @@
 
 pkgname=sni-qt-eplus-bzr
 _pkgname=sni-qt-eplus
-pkgver=78
+pkgver=98
 pkgrel=1
 pkgdesc='Qt4 plugin which turns all QSystemTrayIcon into StatusNotifierItems. Elementary+ version, from bzr.'
 arch=('i686' 'x86_64')
@@ -10,12 +10,14 @@ url='https://launchpad.net/~cybre/+archive/ubuntu/sni-qt-eplus'
 license=('LGPL3')
 depends=('libdbusmenu-qt4')
 makedepends=('cmake' 'bzr')
-backup=('etc/sni-qt.conf')
-provides=('sni-qt-eplus')
-conflicts=('sni-qt-eplus')
-source=("$_pkgname::bzr+lp:~cybre/elementary+/sni-qt-patched"
+backup=('etc/xdg/sni-qt.conf')
+provides=('sni-qt-eplus' 'sni-qt')
+conflicts=('sni-qt-eplus' 'sni-qt')
+source=("$_pkgname::bzr+lp:sni-qt"
+	'custom-icons-injection.patch'
         'sni-qt.conf')
 md5sums=('SKIP'
+         'bad3243c40a84a49b77803630b88b89e'
          '5b3fc74b8b7a6b99975312d0411960ed')
 
 pkgver() {
@@ -26,9 +28,8 @@ pkgver() {
 prepare() {
   cd "$srcdir"
   mkdir build
-
-  # Disable building tests
-  sed -i '/tests/ d' $_pkgname/CMakeLists.txt
+  cd "$srcdir"/"$_pkgname"
+  patch -p1 -i "$srcdir"/custom-icons-injection.patch
 }
 
 build() {
@@ -44,5 +45,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # Install config file for apps that need "Activate" action
-  install -Dm644 "${srcdir}/sni-qt.conf" "${pkgdir}/etc/sni-qt.conf"
+  install -Dm644 "${srcdir}/sni-qt.conf" "${pkgdir}/etc/xdg/sni-qt.conf"
 }

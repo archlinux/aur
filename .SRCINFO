@@ -1,6 +1,6 @@
 pkgbase = sni-qt-eplus-bzr
 	pkgdesc = Qt4 plugin which turns all QSystemTrayIcon into StatusNotifierItems. Elementary+ version, from bzr.
-	pkgver = 78
+	pkgver = 98
 	pkgrel = 1
 	url = https://launchpad.net/~cybre/+archive/ubuntu/sni-qt-eplus
 	arch = i686
@@ -10,11 +10,15 @@ pkgbase = sni-qt-eplus-bzr
 	makedepends = bzr
 	depends = libdbusmenu-qt4
 	provides = sni-qt-eplus
+	provides = sni-qt
 	conflicts = sni-qt-eplus
-	backup = etc/sni-qt.conf
-	source = sni-qt-eplus::bzr+lp:~cybre/elementary+/sni-qt-patched
+	conflicts = sni-qt
+	backup = etc/xdg/sni-qt.conf
+	source = sni-qt-eplus::bzr+lp:sni-qt
+	source = custom-icons-injection.patch
 	source = sni-qt.conf
 	md5sums = SKIP
+	md5sums = bad3243c40a84a49b77803630b88b89e
 	md5sums = 5b3fc74b8b7a6b99975312d0411960ed
 
 pkgname = sni-qt-eplus-bzr
