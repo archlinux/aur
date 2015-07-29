@@ -1,0 +1,14 @@
+pkgbase = links1
+	pkgdesc = A text WWW browser, similar to Lynx (1.x branch)
+	pkgver = 1.03
+	pkgrel = 2
+	url = http://www.jikos.cz/~mikulas/links/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	source = http://www.jikos.cz/~mikulas/links/download/links-1.03.tar.gz
+	sha1sums = 659b2492c97a1416855d3e0f5a5f18aed5160b8a
+
+pkgname = links1
+
