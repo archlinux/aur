@@ -4,7 +4,7 @@
 # pooler PGP key: gpg --recv-key 6FC4C9F7F1BE8FEA
 
 pkgname=electrum-ltc
-pkgver=2.3.2.2
+pkgver=2.4.0.1
 pkgrel=1
 pkgdesc="Lightweight Litecoin wallet"
 arch=('any')
@@ -38,9 +38,9 @@ optdepends=('desktop-file-utils: update desktop icon'
 url="https://electrum-ltc.org"
 license=('GPL3')
 source=("https://electrum-ltc.org/download/Electrum-LTC-${pkgver}.tar.gz"{,.asc})
-md5sums=('9104ff4f4d1fd46da9d7b57f2c77ca78'
+md5sums=('2df691bd6387793b55cc8f2eb3872397'
          'SKIP')
-sha256sums=('ddd9bf246c1b09c062546757f6f7a1df9f719a6c0560cb3700587e6677c29ab4'
+sha256sums=('00b5031b295686dd2d5b2852b37a7b482e7215b7545c0e38776b54e6e2bdc0ce'
             'SKIP')
 validpgpkeys=('CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA')
 install=electrum-ltc.install
