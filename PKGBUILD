@@ -2,8 +2,8 @@
 # * Namcap warns that dependencies pacman and pkgfile are not needed, but these scripts obviously depend on them
 
 pkgname=pacman-helper
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc='Pacman helper scripts for those who can not remember the options'
 arch=('any')
 license=('GPL2')
