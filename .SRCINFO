@@ -1,6 +1,6 @@
 pkgbase = gnumeric-minimal
 	pkgdesc = A GNOME-less spreadsheet program
-	pkgver = 1.12.21
+	pkgver = 1.12.23
 	pkgrel = 1
 	url = http://www.gnome.org/projects/gnumeric/
 	install = gnumeric-minimal.install
@@ -10,13 +10,12 @@ pkgbase = gnumeric-minimal
 	makedepends = intltool
 	depends = goffice-light
 	depends = desktop-file-utils
-	depends = hicolor-icon-theme
 	provides = gnumeric
 	conflicts = gnumeric
 	options = !makeflags
-	source = http://ftp.gnome.org/pub/gnome/sources/gnumeric/1.12/gnumeric-1.12.21.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gnumeric/1.12/gnumeric-1.12.23.tar.xz
 	source = nested_decl.patch
-	md5sums = 393b5fc91840819522b9ba018f393e8e
+	md5sums = 4e1844f3fd6162a7b0a96d3325dcac5d
 	md5sums = 4368ba37f04c0674ed3cba9a82881700
 
 pkgname = gnumeric-minimal

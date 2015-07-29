@@ -1,22 +1,23 @@
-# Maintainer: megadriver <megadriver at gmx dot com>
+# Contributor: megadriver <megadriver at gmx dot com>
 # Based on gnumeric from [extra]
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gnumeric-minimal
 _pkgname=gnumeric
-pkgver=1.12.21
+pkgver=1.12.23
 pkgrel=1
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/gnumeric/"
 license=('GPL')
-depends=('goffice-light' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('goffice-light' 'desktop-file-utils')
 makedepends=('intltool')
 install=gnumeric-minimal.install
 conflicts=('gnumeric')
 provides=('gnumeric')
 options=('libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz nested_decl.patch)
-md5sums=('393b5fc91840819522b9ba018f393e8e'
+md5sums=('4e1844f3fd6162a7b0a96d3325dcac5d'
          '4368ba37f04c0674ed3cba9a82881700')
 options=('!makeflags')
 
