@@ -15,7 +15,7 @@ __pkgname="refind"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.8.7.4.375.0a030a2
+pkgver=0.9.0.383.baa6e09
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
