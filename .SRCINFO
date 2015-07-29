@@ -1,0 +1,18 @@
+pkgbase = perl-redmine-api
+	pkgdesc = Communicate with Redmine thought the API
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Redmine-API/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-moo
+	depends = perl-rest-client
+	depends = perl-json
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CE/CELOGEEK/Redmine-API-0.04.tar.gz
+	md5sums = 443a3d5bd7dd4a24fd36a2615287147e
+
+pkgname = perl-redmine-api
+
