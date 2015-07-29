@@ -1,14 +1,14 @@
 pkgbase = please
 	pkgdesc = A command line utility that makes it easy to integrate web services into your shell scripts
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source_i686 = please-i686::https://github.com/stilvoid/please/releases/download/v0.4.0/please-linux-i386
-	md5sums_i686 = 695e5519ef51e469cc65110adc4b07ec
-	source_x86_64 = please-x86_64::https://github.com/stilvoid/please/releases/download/v0.4.0/please-linux-amd64
-	md5sums_x86_64 = a39af638db0660adb5c86d0eb3a9e810
+	source_i686 = please-i686::https://github.com/stilvoid/please/releases/download/v0.4.1/please-linux-i386
+	md5sums_i686 = 39bf1a009c3a964c8bd48605cafe39c2
+	source_x86_64 = please-x86_64::https://github.com/stilvoid/please/releases/download/v0.4.1/please-linux-amd64
+	md5sums_x86_64 = d901396770aea8374e01bc71ca668b99
 
 pkgname = please
 
