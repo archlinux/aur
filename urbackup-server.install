@@ -1,0 +1,24 @@
+post_upgrade() {
+  mandb -q
+  systemctl daemon-reload
+  # The Win client hasn't changed in years so we don't need them to upgrade.
+  #rm -f '/var/urbackup/'{UrBackupUpdate.exe,UrBackupUpdate.sig,server_token.key}
+  # urbackup might use server_version_info.properties for db version
+}
+
+post_remove() {
+  post_upgrade
+  # Should we delete user urbackup?
+}
+
+post_install() {
+  local _urbackup_user='urbackup'
+  local _urbackup_group='urbackup'
+
+  getent group "${_urbackup_group}" >/dev/null || groupadd -r "${_urbackup_group}" >/dev/null
+  getent passwd "${_urbackup_user}" >/dev/null || useradd -r -g "${_urbackup_group}" \
+    -d /dev/null -s '/bin/false' "${_urbackup_user}" >/dev/null
+
+  chown -hR --preserve-root "${_urbackup_user}:${_urbackup_group}" '/var/urbackup'
+  post_upgrade
+}

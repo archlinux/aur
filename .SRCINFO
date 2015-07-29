@@ -1,0 +1,20 @@
+pkgbase = urbackup-server-git
+	pkgdesc = Client/Server network backup for Windows and Linux
+	pkgver = 1.4.9.r21.g6d3d464
+	pkgrel = 1
+	url = http://www.urbackup.org/
+	install = urbackup-server.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python3
+	makedepends = autoconf
+	depends = crypto++
+	optdepends = btrfs-progs: compressed and subvolume assisted backups
+	provides = urbackup-server
+	conflicts = urbackup-server
+	source = git+https://github.com/uroni/urbackup_backend.git
+	sha256sums = SKIP
+
+pkgname = urbackup-server-git
+
