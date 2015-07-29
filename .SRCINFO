@@ -1,0 +1,15 @@
+pkgbase = hunspell-bg
+	pkgdesc = Bulgarian dictionary for Hunspell
+	pkgver = 4.3
+	pkgrel = 2
+	url = http://sourceforge.net/projects/bgoffice/
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	license = MPL
+	optdepends = hunspell: the spell checking libraries and apps
+	source = http://sourceforge.net/projects/bgoffice/files/OpenOffice.org%20Spell%20BG/4.3/OOo-spell-bg-4.3.zip
+	md5sums = ee804f871c855eb218c8d825b5fe54fb
+
+pkgname = hunspell-bg
+
