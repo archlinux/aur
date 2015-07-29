@@ -1,0 +1,3 @@
+post_install() {
+	echo "You need to add the installed module (/usr/lib/libbit4ipki.so) to each program that needs to access the smart card."
+}
