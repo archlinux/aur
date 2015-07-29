@@ -1,6 +1,6 @@
 pkgbase = sogo
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = http://www.sogo.nu/
 	arch = i686
 	arch = x86_64
@@ -11,19 +11,21 @@ pkgbase = sogo
 	makedepends = libmemcached
 	makedepends = sope>=2.3.0
 	options = !strip
-	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-2.3.0.tar.gz
+	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-2.3.1.tar.gz
 	source = sogo_configure.patch
 	source = UI_MailPartViewers_GNUmakefile.patch
 	source = sogo.service
-	sha256sums = 26134eee48b6a42b047fea61a093b7774bf5066778debf02bcff6f6682803e0a
+	source = sogo.confd
+	sha256sums = 9b70c595e92a086d6033a76f49e5651a42dbffcf3c40874ce6a0b77595f060ce
 	sha256sums = e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1
 	sha256sums = ef6ab2829d35c2abb5529ee8ea9a4cc541913b0a82bc91f4c9fa21c65d44a4aa
-	sha256sums = 62a22aa4231059fd85315795ea735638da4bc71cde4c7da21a71f2559647a4b1
+	sha256sums = 0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c
+	sha256sums = 8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7
 
 pkgname = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
 	install = sogo.install
-	depends = sope>=2.3.0
+	depends = sope>=2.3.1
 	depends = gnustep-base
 	depends = libmemcached
 	depends = memcached
@@ -39,14 +41,15 @@ pkgname = sogo
 	optdepends = funambol: sync mobile devices with sogo contacts, events, tasks via SyncML
 	backup = etc/sogo/sogo.conf
 	backup = etc/httpd/conf/extra/SOGo.conf
+	backup = etc/conf.d/sogo
 
 pkgname = sogo-openchange
 	pkgdesc = OpenChange module for SOGo
-	depends = sogo=2.3.0
+	depends = sogo=2.3.1
 	depends = openchange
 
 pkgname = sogo-activesync
 	pkgdesc = ActiveSync module for SOGo
-	depends = sogo=2.3.0
+	depends = sogo=2.3.1
 	depends = libwbxml
 
