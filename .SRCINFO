@@ -1,0 +1,16 @@
+pkgbase = cappy
+	pkgdesc = A simple and reliable screenshot tool.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Winneon/cappy
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = xorg-server
+	depends = imagemagick
+	source = https://github.com/Winneon/cappy/archive/master.tar.gz
+	md5sums = 20634bd7971357e78d5b824f2e81560f
+
+pkgname = cappy
+
