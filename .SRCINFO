@@ -1,7 +1,7 @@
 pkgbase = python2-ffpopsim-git
 	pkgdesc = Fast Forward Population Genetic Simulation
 	pkgver = 20130404
-	pkgrel = 4
+	pkgrel = 5
 	url = http://webdav.tuebingen.mpg.de/ffpopsim/index.html
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = python2-ffpopsim-git
 	makedepends = git
 	makedepends = swig2
 	makedepends = boost
-	depends = gcc-libs
 	depends = gsl
 	depends = python2-numpy
 	optdepends = python2-sphinx: generate python documentation,

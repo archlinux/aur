@@ -1,14 +1,14 @@
 # Maintainer: Fabio Zanini <fabio.zanini@tuebingen.mpg.de>
 pkgname=python2-ffpopsim-git
 pkgver=20130404
-pkgrel=4
+pkgrel=5
 pkgdesc="Fast Forward Population Genetic Simulation"
 arch=('i686' 'x86_64')
 url="http://webdav.tuebingen.mpg.de/ffpopsim/index.html"
 license=('GPL')
 provides=('python2-ffpopsim')
 conflicts=('python2-ffpopsim')
-depends=('gcc-libs' 'gsl' 'python2-numpy')
+depends=('gsl' 'python2-numpy')
 makedepends=('git' 'swig2' 'boost')
 optdepends=('python2-sphinx: generate python documentation',
  'doxygen: generate C++ documentation',
