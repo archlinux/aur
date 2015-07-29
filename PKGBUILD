@@ -2,15 +2,15 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix (mingw-w64)"
 arch=('any')
 url="http://ffmpeg.org/"
-license=('GPL')
+license=('GPL3')
 depends=('mingw-w64-crt' 'mingw-w64-bzip2' 'mingw-w64-fontconfig' 'mingw-w64-gnutls'
 'mingw-w64-gsm' 'mingw-w64-lame' 'mingw-w64-libass' 'mingw-w64-libbluray' 'mingw-w64-libmodplug'
-'mingw-w64-libtheora' 'mingw-w64-libvorbis' 'mingw-w64-libvpx' 'mingw-w64-opencore-amr'
+'mingw-w64-libtheora' 'mingw-w64-libwebp' 'mingw-w64-libvorbis' 'mingw-w64-libvpx' 'mingw-w64-opencore-amr'
 'mingw-w64-openjpeg' 'mingw-w64-opus' 'mingw-w64-libssh' 'mingw-w64-schroedinger'
 'mingw-w64-sdl' 'mingw-w64-speex' 'mingw-w64-x264' 'mingw-w64-xvidcore' 'mingw-w64-zlib' 'mingw-w64-x265' 'mingw-w64-fribidi')
 options=(!strip !buildflags staticlibs)
@@ -56,6 +56,7 @@ build() {
       --enable-libtheora \
       --enable-libvorbis \
       --enable-libvpx \
+      --enable-libwebp \
       --enable-libx264 \
       --enable-libx265 \
       --enable-libxvid \
