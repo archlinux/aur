@@ -10,7 +10,7 @@ pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/gnumeric/"
 license=('GPL')
-depends=('goffice-light' 'desktop-file-utils')
+depends=('goffice>=0.10.23' 'desktop-file-utils')
 makedepends=('intltool')
 install=gnumeric-minimal.install
 conflicts=('gnumeric')

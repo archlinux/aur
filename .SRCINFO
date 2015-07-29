@@ -8,7 +8,7 @@ pkgbase = gnumeric-minimal
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
-	depends = goffice-light
+	depends = goffice>=0.10.23
 	depends = desktop-file-utils
 	provides = gnumeric
 	conflicts = gnumeric
