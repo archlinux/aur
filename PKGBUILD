@@ -6,21 +6,21 @@
 
 _pkgname=links
 pkgname=links-g-directfb
-pkgver=2.9
-pkgrel=2
+pkgver=2.10
+pkgrel=1
 pkgdesc="A text WWW browser, similar to Lynx (with directfb, X and fb graphics)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://links.twibright.com/"
 license=('GPL')
 # 'libx11' 'libxt' packages are for the x11 backend
 # 'directfb' package is for the directfb backend
-depends=('bzip2' 'xz' 'openssl' 'gpm' 'directfb'    'libx11' 'libtiff' 'libpng' 'libjpeg-turbo')
+depends=('bzip2' 'xz' 'openssl' 'gpm' 'directfb' 'libx11' 'libtiff' 'libpng' 'libjpeg-turbo' 'librsvg' 'libevent')
 makedepends=('libxt')
 provides=('links' 'links-g')
 conflicts=('links' 'links-g')
 replaces=('links-g')
 source=(http://links.twibright.com/download/${_pkgname}-${pkgver}.tar.bz2 links.desktop)
-sha1sums=('1202f1ade1075fa4f62e343702e5a0a22cdc2b13'
+sha1sums=('bffd48917a9d038f4277443bf6ea2cf8c9372c3c'
           'a2084166ef252175f14805f2e6a4467c45c51477')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
   (cd intl; ./gen-intl; ./synclang)
-  ./configure --prefix=/usr --mandir=/usr/share/man --enable-javascript \
+  ./configure --prefix=/usr --mandir=/usr/share/man \
     --enable-graphics --with-x --with-fb --with-directfb
   make
 }
