@@ -1,0 +1,20 @@
+pkgbase = vimpc-git
+	pkgdesc = Client for mpd with vi-like key bindings
+	pkgver = v0.09.0.r59.g726538a
+	pkgrel = 1
+	url = https://github.com/boysetsfrog/vimpc
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = boost
+	depends = libmpdclient
+	depends = pcre
+	depends = ncurses
+	depends = taglib
+	source = vimpc-git::git+https://github.com/boysetsfrog/vimpc
+	md5sums = SKIP
+
+pkgname = vimpc-git
+
