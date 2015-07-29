@@ -2,11 +2,11 @@
 # Contributor: sumt <sumt at sci dot fi>
 
 pkgname=palemoon-atom-bin
-pkgver=25.5.0
+pkgver=25.6.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency - i686 Intel Atom optimised version"
 arch=('i686')
-url="http://sourceforge.net/projects/pm4linux/"
+url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
 optdepends=('gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
@@ -21,9 +21,9 @@ provides=('palemoon')
 conflicts=('palemoon')
 install=palemoon.install
 options=('!strip')
-source=("http://downloads.sourceforge.net/pm4linux/palemoon-$pkgver-atom.en-US.linux-$CARCH.tar.bz2"
+source=("http://linux.palemoon.org/files/atom/$pkgver/palemoon-$pkgver-atom.en-US.linux-$CARCH.tar.bz2"
         "palemoon.desktop")
-sha1sums=('39e866a6ad896a847405f3b7d74ae21a1701d635'
+sha1sums=('52604de85b2a79928e3fb8d39e4e5b3b7a67ed22'
           '83ff22ff7a034efac31f1dd5f27ad0115a778743')
 
 package() {
