@@ -1,0 +1,9 @@
+post_install() {
+	echo '>>> Add yourself to the "games" group to use the high scores file.'
+}
+
+post_upgrade() {
+	echo '>>> NOTE: the default save file name has changed from "moria.save"'
+	echo '>>> to "moria-save". Rename the file in your home directory if'
+	echo '>>> necessary.'
+}

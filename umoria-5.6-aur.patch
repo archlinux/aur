@@ -1,0 +1,81 @@
+diff -Naur moria-5.6/source/config.h moria-5.6-aur/source/config.h
+--- moria-5.6/source/config.h	2008-10-13 16:44:36.000000000 -0700
++++ moria-5.6-aur/source/config.h	2014-10-14 00:22:12.121012390 -0700
+@@ -240,6 +240,7 @@
+ 
+ /* Generic UNIX */
+ /* This must be unix; change file names as appropriate.  */
++/*
+ #define MORIA_SAV	"moria-save"
+ #define MORIA_HOU	"/home/dgrabiner/moria-5.6/files/hours"
+ #define MORIA_MOR	"/home/dgrabiner/moria-5.6/files/news"
+@@ -251,6 +252,18 @@
+ #define MORIA_OWIZ_HELP	"/home/dgrabiner/moria-5.6/files/owizcmds.hlp"
+ #define MORIA_WELCOME	"/home/dgrabiner/moria-5.6/files/welcome.hlp"
+ #define MORIA_VER	"/home/dgrabiner/moria-5.6/files/version.hlp"
++*/
++#define MORIA_SAV	"moria-save"
++#define MORIA_HOU	"/usr/share/umoria/files/hours"
++#define MORIA_MOR	"/usr/share/umoria/files/news"
++#define MORIA_GPL	"/usr/share/umoria/files/COPYING"
++#define MORIA_TOP	"/usr/share/umoria/files/scores"
++#define MORIA_HELP	"/usr/share/umoria/files/roglcmds.hlp"
++#define MORIA_ORIG_HELP	"/usr/share/umoria/files/origcmds.hlp"
++#define MORIA_WIZ_HELP	"/usr/share/umoria/files/rwizcmds.hlp"
++#define MORIA_OWIZ_HELP	"/usr/share/umoria/files/owizcmds.hlp"
++#define MORIA_WELCOME	"/usr/share/umoria/files/welcome.hlp"
++#define MORIA_VER	"/usr/share/umoria/files/version.hlp"
+ 
+ #endif
+ #endif
+diff -Naur moria-5.6/source/files.c moria-5.6-aur/source/files.c
+--- moria-5.6/source/files.c	2008-10-13 16:44:36.000000000 -0700
++++ moria-5.6-aur/source/files.c	2014-10-14 00:22:16.457384250 -0700
+@@ -126,19 +126,19 @@
+ 	if (strlen(in_line) > 3)
+ 	  {
+ 	    if (!strncmp(in_line, "SUN:", 4))
+-	      (void) strcpy(days[0], in_line);
++	      (void) strncpy(days[0], in_line, 29);
+ 	    else if (!strncmp(in_line, "MON:", 4))
+-	      (void) strcpy(days[1], in_line);
++	      (void) strncpy(days[1], in_line, 29);
+ 	    else if (!strncmp(in_line, "TUE:", 4))
+-	      (void) strcpy(days[2], in_line);
++	      (void) strncpy(days[2], in_line, 29);
+ 	    else if (!strncmp(in_line, "WED:", 4))
+-	      (void) strcpy(days[3], in_line);
++	      (void) strncpy(days[3], in_line, 29);
+ 	    else if (!strncmp(in_line, "THU:", 4))
+-	      (void) strcpy(days[4], in_line);
++	      (void) strncpy(days[4], in_line, 29);
+ 	    else if (!strncmp(in_line, "FRI:", 4))
+-	      (void) strcpy(days[5], in_line);
++	      (void) strncpy(days[5], in_line, 29);
+ 	    else if (!strncmp(in_line, "SAT:", 4))
+-	      (void) strcpy(days[6], in_line);
++	      (void) strncpy(days[6], in_line, 29);
+ 	  }
+       (void) fclose(file1);
+     }
+diff -Naur moria-5.6/source/io.c moria-5.6-aur/source/io.c
+--- moria-5.6/source/io.c	2008-10-13 16:44:36.000000000 -0700
++++ moria-5.6-aur/source/io.c	2014-10-14 00:22:21.280389695 -0700
+@@ -1569,6 +1569,8 @@
+ 
+ void bell()
+ {
++  int dummy;
++
+   put_qio();
+ 
+   /* The player can turn off beeps if he/she finds them annoying.  */
+@@ -1578,7 +1580,7 @@
+ #ifdef MAC
+   mac_beep();
+ #else
+-  (void) write(1, "\007", 1);
++  dummy = write(1, "\007", 1);
+ #endif
+ }
+ 
