@@ -1,14 +1,14 @@
 pkgbase = adom
 	pkgdesc = A roguelike game with a quest-centric, plot driven structure
 	pkgver = 59
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.adom.de/
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = custom: "adom"
 	depends = ncurses
-	source = http://ancardia.us.to/download/adom_linux_debian_32_r59_pub.tar.gz
+	source = http://www.ancardia.com/download/adom_linux_debian_32_r59_pub.tar.gz
 	source = LICENSE
 	sha1sums = 9e236660214306803e9c2971632705f17ccfff99
 	sha1sums = 51d28fe3f0420cd354113fd7ceb2a1a7abf1b069

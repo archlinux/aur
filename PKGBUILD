@@ -5,7 +5,7 @@
 
 pkgname=adom
 pkgver=59
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=('i686' 'x86_64' 'armv6h')
 depends=('ncurses')
@@ -25,7 +25,7 @@ if [ "$CARCH" = x86_64 ]
    sha1sums[0]='9e236660214306803e9c2971632705f17ccfff99'
 fi
 
-source=(http://ancardia.us.to/download/adom_linux_${_arch_link}_r${pkgver}_pub.tar.gz LICENSE)
+source=(http://www.ancardia.com/download/adom_linux_${_arch_link}_r${pkgver}_pub.tar.gz LICENSE)
 
 package() {
   cd ${srcdir}/${pkgname}
