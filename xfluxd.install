@@ -1,0 +1,5 @@
+post_install()
+{
+    echo '==> Configure your location and colour temperature using /etc/xfluxd.conf'
+    echo '==> Run "systemctl --user enable xfluxd" to start the daemon at boot'
+}
