@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=JOSM
+Comment=An editor for OpenStreetMap written in Java
+Exec=josm
+Icon=josm
+Terminal=false
+Type=Application
+Categories=Graphics;
