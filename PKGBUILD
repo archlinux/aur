@@ -96,7 +96,7 @@ package() {
     "$pkgdir/usr/share/vim/vimfiles"
   cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests,requests-futures,retries} \
     "$pkgdir/usr/share/vim/vimfiles/third_party"
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_client_support.so,ycm_core.so} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_client_support.so,ycm_core.so,check_core_version.py,EXPECTED_CORE_VERSION} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
   cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,jedi,waitress} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
