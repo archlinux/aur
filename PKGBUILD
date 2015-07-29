@@ -3,9 +3,9 @@ pkgname=vimpc-git
 pkgver=v0.09.0.r59.g726538a
 pkgrel=1
 pkgdesc="Client for mpd with vi-like key bindings"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/boysetsfrog/vimpc"
-license=('GPL')
+license=('GPL3')
 groups=()
 depends=('libmpdclient'
          'pcre'
