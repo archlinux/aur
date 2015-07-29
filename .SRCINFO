@@ -1,28 +1,29 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
-	pkgver = 3.4.0
-	pkgrel = 2
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = libgaminggear=0.9.0
+	depends = libgaminggear=0.10.0
 	depends = libcanberra
 	depends = gtk2
 	depends = libnotify>=0.7.0
 	depends = dbus-glib
 	depends = udev
 	depends = hicolor-icon-theme
+	depends = libgudev
 	optdepends = kmod-roccat: Adds support for the old kone device.
-	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.4.0.tar.bz2
+	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.5.0.tar.bz2
 	source = udev-compilation-error-fix.patch
-	md5sums = 3450bb0fb771f33d159ffff7a4860ab6
+	md5sums = 056ca3872c10c9cbb859517f235e7f0f
 	md5sums = 414d6306796c659a3adc86ef213e3569
 
 pkgname = roccat-tools-common
 	pkgdesc = ROCCAT tools common files
-	install=roccat-tools.install
+	install = roccat-tools.install
 
 pkgname = roccat-tools-arvo
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT Arvo devices
