@@ -1,7 +1,7 @@
 # Maintainer: Jesse Bryan <winneonsword@gmail.com>
 pkgname=cappy
-pkgver=1.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 epoch=
 pkgdesc="A simple and reliable screenshot tool."
 arch=('any')
