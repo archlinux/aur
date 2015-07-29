@@ -1,0 +1,13 @@
+pkgbase = lbrate
+	pkgdesc = Extracts files from the CP/M LBR format
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.svgalib.org/rus/lbrate.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = ftp://ftp.ibiblio.org/pub/Linux/utils/compress/lbrate-1.1.tar.gz
+	md5sums = fba13b13be15c65570ca6500f348a811
+
+pkgname = lbrate
+
