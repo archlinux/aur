@@ -1,0 +1,14 @@
+pkgbase = xtide-wvs
+	pkgdesc = World vector shoreline data for XTide
+	pkgver = 20130529
+	pkgrel = 2
+	url = http://www.flaterco.com/xtide/files.html#WVS
+	arch = any
+	license = custom
+	source = ftp://ftp.flaterco.com/xtide/wvs.tar.bz2
+	source = license.txt
+	md5sums = 56325c8105c7137ced73396f2f2d8221
+	md5sums = 8bb852301ffc904570d90c0d3c564635
+
+pkgname = xtide-wvs
+

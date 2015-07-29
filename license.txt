@@ -1,0 +1,13 @@
+xtide-wvs licensing and copyright info
+--------------------------------------
+
+These files were published on the National Geophysical Data Center
+(NGDC) 5-Minute Gridded Global Relief Data CD-ROM (ETOPO5), 1993, and
+are public domain.  They are available from NOAA at
+http://www.ngdc.noaa.gov/mgg/global/relief/ETOPO5/BOUNDARY/WVS.  Related
+information is available at
+http://www.ngdc.noaa.gov/mgg/fliers/93mgg01.html.  If the files are
+obtained from NOAA, the filenames must be changed to all lowercase
+letters to work with XTide.
+
+http://www.flaterco.com/xtide/files.html#WVS
