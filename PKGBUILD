@@ -1,8 +1,8 @@
 # Maintainer:  DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
-# Maintainer: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
+# Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="application server used by SOGo"
 arch=('i686' 'x86_64')
@@ -35,6 +35,6 @@ package() {
   make install DESTDIR="${pkgdir}"
 }
 
-sha256sums=('fa493a1b07e179f731379e4a48deb12f6129e1206a2a9e42fdba1482bad3da12'
+sha256sums=('e8839494bd67c62bab70ef9fd38e48bdec3ceb9a2a4da1eba2c9bb033eeb7e33'
             '7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a')
 
