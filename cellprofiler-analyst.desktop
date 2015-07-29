@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CellProfiler Analyst
+Comment=Explore and analyze large, high-dimensional image-derived data
+Type=Application
+Version=1.0
+Categories=Science;Biology;DataVisualization;
+Exec=cellprofiler-analyst
+Terminal=false
+StartupNotify=true
+Icon=/usr/lib/python2.7/site-packages/cpa/icons/cpa_16.png
