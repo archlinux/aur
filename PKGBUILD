@@ -5,13 +5,13 @@
 
 pkgname=rtorrent-color
 _pkgname="rtorrent"
-pkgver=0.9.4
-pkgrel=4
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent with color patch."
 url="http://libtorrent.rakshasa.no"
 arch=("i686" "x86_64")
 license=("GPL")
-depends=("curl" "libtorrent>=0.13.4" "xmlrpc-c" "libsigc++")
+depends=("curl" "libtorrent=0.13.5" "xmlrpc-c" "libsigc++")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install="${pkgname}.install"
