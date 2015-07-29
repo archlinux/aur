@@ -1,6 +1,6 @@
 pkgbase = voxelands
 	pkgdesc = A fork of Minetest, an Infiniminer/Minecraft inspired game
-	pkgver = 1506.00
+	pkgver = 1507.00
 	pkgrel = 1
 	url = http://voxelands.com
 	install = voxelands.install
@@ -25,7 +25,11 @@ pkgbase = voxelands
 	conflicts = voxelands-next-git
 	replaces = minetest-classic
 	source = http://voxelands.com/downloads/voxelands-1507.00-src.tar.bz2
+	source = cmakepatch.patch
+	source = utilitypatch.patch
 	sha256sums = de0052401bb98f41b41bd4b8a0f3ea71e2469d3de2175edde93f8bdd5bfc0249
+	sha256sums = 323b095473c8893ce3e30fe2c275d6e2946cc510a8b137e46dd4c717bf3cbf62
+	sha256sums = f73e79928718a2ca3136d8b6b0305202774763069c8600b211755b3608453c71
 
 pkgname = voxelands
 

@@ -1,0 +1,230 @@
+diff --git a/src/tile.cpp b/src/tile.cpp
+index 4de2d00..010519c 100644
+--- a/src/tile.cpp
++++ b/src/tile.cpp
+@@ -73,17 +73,23 @@ void TextureSource::processQueue()
+ 	/*
+ 		Fetch textures
+ 	*/
+-	std::lock_guard<std::mutex> guard(m_get_texture_queue_mutex);
+-	while (!m_get_texture_queue.empty())
++	if(m_get_texture_queue.size() > 0)
+ 	{
+-		std::string name = m_get_texture_queue.front().first;
++		GetRequest<std::string, u32, u8, u8>
++				request = m_get_texture_queue.pop();
++
+ 		infostream<<"TextureSource::processQueue(): "
+ 				<<"got texture request with "
+-				<<"name=\""<< name <<"\""
++				<<"name=\""<<request.key<<"\""
+ 				<<std::endl;
+ 
+-		m_get_texture_queue.front().second.set_value(getTextureIdDirect(name));
+-		m_get_texture_queue.pop();
++		GetResult<std::string, u32, u8, u8>
++				result;
++		result.key = request.key;
++		result.callers = request.callers;
++		result.item = getTextureIdDirect(request.key);
++
++		request.dest->push_back(result);
+ 	}
+ }
+ 
+@@ -110,21 +116,29 @@ u32 TextureSource::getTextureId(const std::string &name)
+ 	}else{
+ 		infostream<<"getTextureId(): Queued: name=\""<<name<<"\""<<std::endl;
+ 
+-		std::future<u32> future;
+-		{
+-			std::lock_guard<std::mutex> guard(m_get_texture_queue_mutex);
+-			// We're gonna ask the result to be put into here
+-			std::promise<u32> promise;
+-			future = promise.get_future();
++		// We're gonna ask the result to be put into here
++		ResultQueue<std::string, u32, u8, u8> result_queue;
+ 
+-			// Throw a request in
+-			m_get_texture_queue.push(std::make_pair(name, std::move(promise)));
+-		}
++		// Throw a request in
++		m_get_texture_queue.add(name, 0, 0, &result_queue);
+ 
+ 		infostream<<"Waiting for texture from main thread, name=\""
+ 				<<name<<"\""<<std::endl;
+ 
+-		return future.get();
++		try{
++			// Wait result for a second
++			GetResult<std::string, u32, u8, u8>
++					result = result_queue.pop_front(1000);
++
++			// Check that at least something worked OK
++			if (result.key != name)
++				return 0;
++
++			return result.item;
++		}catch(ItemNotFoundException &e) {
++			infostream<<"Waiting for texture timed out."<<std::endl;
++			return 0;
++		}
+ 	}
+ 
+ 	infostream<<"getTextureId(): Failed"<<std::endl;
+diff --git a/src/tile.h b/src/tile.h
+index 3251474..d8daaab 100644
+--- a/src/tile.h
++++ b/src/tile.h
+@@ -30,9 +30,6 @@
+ #include "threads.h"
+ #include "utility.h"
+ #include <string>
+-#include <future>
+-#include <mutex>
+-#include <queue>
+ 
+ using namespace jthread;
+ 
+@@ -261,8 +258,7 @@ private:
+ 	JMutex m_atlaspointer_cache_mutex;
+ 
+ 	// Queued texture fetches (to be processed by the main thread)
+-        std::queue<std::pair<std::string, std::promise<u32>>> m_get_texture_queue;
+-        std::mutex m_get_texture_queue_mutex;
++	RequestQueue<std::string, u32, u8, u8> m_get_texture_queue;
+ };
+ 
+ enum MaterialType{
+diff --git a/src/utility.h b/src/utility.h
+index f4190ec..d0cbdf6 100644
+--- a/src/utility.h
++++ b/src/utility.h
+@@ -1128,6 +1128,127 @@ protected:
+ };
+ 
+ /*
++	A single worker thread - multiple client threads queue framework.
++*/
++
++template<typename Caller, typename Data>
++class CallerInfo
++{
++public:
++	Caller caller;
++	Data data;
++};
++
++template<typename Key, typename T, typename Caller, typename CallerData>
++class GetResult
++{
++public:
++	Key key;
++	T item;
++	core::list<CallerInfo<Caller, CallerData> > callers;
++};
++
++template<typename Key, typename T, typename Caller, typename CallerData>
++class ResultQueue: public MutexedQueue< GetResult<Key, T, Caller, CallerData> >
++{
++};
++
++template<typename Key, typename T, typename Caller, typename CallerData>
++class GetRequest
++{
++public:
++	GetRequest()
++	{
++		dest = NULL;
++	}
++	GetRequest(ResultQueue<Key,T, Caller, CallerData> *a_dest)
++	{
++		dest = a_dest;
++	}
++	GetRequest(ResultQueue<Key,T, Caller, CallerData> *a_dest,
++			Key a_key)
++	{
++		dest = a_dest;
++		key = a_key;
++	}
++	~GetRequest()
++	{
++	}
++
++	Key key;
++	ResultQueue<Key, T, Caller, CallerData> *dest;
++	core::list<CallerInfo<Caller, CallerData> > callers;
++};
++
++template<typename Key, typename T, typename Caller, typename CallerData>
++class RequestQueue
++{
++public:
++	u32 size()
++	{
++		return m_queue.size();
++	}
++
++	void add(Key key, Caller caller, CallerData callerdata,
++			ResultQueue<Key, T, Caller, CallerData> *dest)
++	{
++		JMutexAutoLock lock(m_queue.getMutex());
++
++		/*
++			If the caller is already on the list, only update CallerData
++		*/
++		for(typename core::list< GetRequest<Key, T, Caller, CallerData> >::Iterator
++				i = m_queue.getList().begin();
++				i != m_queue.getList().end(); i++)
++		{
++			GetRequest<Key, T, Caller, CallerData> &request = *i;
++
++			if(request.key == key)
++			{
++				for(typename core::list< CallerInfo<Caller, CallerData> >::Iterator
++						i = request.callers.begin();
++						i != request.callers.end(); i++)
++				{
++					CallerInfo<Caller, CallerData> &ca = *i;
++					if(ca.caller == caller)
++					{
++						ca.data = callerdata;
++						return;
++					}
++				}
++				CallerInfo<Caller, CallerData> ca;
++				ca.caller = caller;
++				ca.data = callerdata;
++				request.callers.push_back(ca);
++				return;
++			}
++		}
++
++		/*
++			Else add a new request to the queue
++		*/
++
++		GetRequest<Key, T, Caller, CallerData> request;
++		request.key = key;
++		CallerInfo<Caller, CallerData> ca;
++		ca.caller = caller;
++		ca.data = callerdata;
++		request.callers.push_back(ca);
++		request.dest = dest;
++
++		m_queue.getList().push_back(request);
++	}
++
++	GetRequest<Key, T, Caller, CallerData> pop(bool wait_if_empty=false)
++	{
++		return m_queue.pop_front(wait_if_empty);
++	}
++
++private:
++	MutexedQueue< GetRequest<Key, T, Caller, CallerData> > m_queue;
++};
++
++/*
+ 	Pseudo-random (VC++ rand() sucks)
+ */
+ int myrand(void);

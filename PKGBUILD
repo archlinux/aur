@@ -2,7 +2,7 @@
 # Contributor: Menche <menche_mt at yahoo dot com>
 
 pkgname=voxelands
-pkgver=1506.00
+pkgver=1507.00
 pkgrel=1
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game"
 url="http://voxelands.com"
@@ -15,9 +15,22 @@ provides=('minetest-classic' 'voxelands')
 conflicts=('minetest-classic' 'minetest-classic-next-git' 'voxelands-next-git')
 install="${pkgname}.install"
 
-source=("http://voxelands.com/downloads/${pkgname}-${pkgver}-src.tar.bz2")
+source=("http://voxelands.com/downloads/${pkgname}-${pkgver}-src.tar.bz2"
+        cmakepatch.patch
+        utilitypatch.patch
+        )
 
-sha256sums=('de0052401bb98f41b41bd4b8a0f3ea71e2469d3de2175edde93f8bdd5bfc0249')
+sha256sums=('f73e79928718a2ca3136d8b6b0305202774763069c8600b211755b3608453c71'
+	    '5e91cb07b6ea049f4fdf03c2c0f4f225dd578c5b0a748e120a91c7be33cae3ad'
+	    '323b095473c8893ce3e30fe2c275d6e2946cc510a8b137e46dd4c717bf3cbf62')
+
+prepare() {
+	cd "${srcdir}/${pkgname}"
+
+	echo "Patching Voxelands ..."
+	patch -p1 -i $srcdir/cmakepatch.patch
+	patch -p1 -i $srcdir/utilitypatch.patch
+}
 
 build() {
 	cd "${srcdir}/${pkgname}"

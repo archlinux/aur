@@ -1,0 +1,28 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0adff9e..a674581 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -382,8 +382,8 @@ else()
+ 		set(OPT_FLAGS "-O2 -fomit-frame-pointer")
+ 	endif()
+ 
+-	set(CMAKE_CXX_FLAGS_RELEASE "${OPT_FLAGS} ${SAFETY_FLAGS} -Wall -std=c++11 -DNDEBUG -pipe")
+-	set(CMAKE_CXX_FLAGS_DEBUG "${SAFETY_FLAGS} -Wall -std=c++11 -O0 -g2 -ggdb")
++	set(CMAKE_CXX_FLAGS_RELEASE "${OPT_FLAGS} ${SAFETY_FLAGS} -Wall -DNDEBUG -pipe")
++	set(CMAKE_CXX_FLAGS_DEBUG "${SAFETY_FLAGS} -Wall -O0 -g2 -ggdb")
+ 	set(CMAKE_C_FLAGS_RELEASE ${CMAKE_CXX_FLAGS_RELEASE})
+ 	set(CMAKE_C_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG})
+ 
+diff --git a/src/cmake_config.h.in b/src/cmake_config.h.in
+index 2a74e59..b0fd7fb 100644
+--- a/src/cmake_config.h.in
++++ b/src/cmake_config.h.in
+@@ -14,7 +14,7 @@
+ #else
+ 	#define BUILD_TYPE "Debug"
+ #endif
+-#define BUILD_INFO "VER=" VERSION_STRING " RUN_IN_PLACE=@RUN_IN_PLACE@ USE_GETTEXT=@USE_GETTEXT@ INSTALL_PREFIX=@CMAKE_INSTALL_PREFIX@ BUILD_TYPE=" BUILD_TYPE
++#define BUILD_INFO "VER="VERSION_STRING" RUN_IN_PLACE=@RUN_IN_PLACE@ USE_GETTEXT=@USE_GETTEXT@ INSTALL_PREFIX=@CMAKE_INSTALL_PREFIX@ BUILD_TYPE="BUILD_TYPE
+ 
+ #endif
+ 
