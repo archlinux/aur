@@ -1,7 +1,7 @@
 # Maintainer: TOSH <tosh@t0x0sh.org>b
 
 pkgname=perl-capstone
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=4
 pkgdesc="A Perl binding for the capstone-engine library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/t00sh/perl-capstone"
 license=('GPL3')
 depends=('capstone' 'perl')
 source=("https://github.com/t00sh/perl-capstone/archive/v$pkgver.tar.gz")
-sha256sums=('6ec97b21457c0463bd06f3e50fee06d2936c101ba060f7e2d02ea2c1c6d4e506')
+sha256sums=('4ecc5f05a5050790e6811a325acea1ce1c2a5a3721d4af9b2a2561585ba0a540')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
