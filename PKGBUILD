@@ -38,7 +38,7 @@ pkgver() {
 
 prepare() {
 	cd $pkgname/
-	sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
+	sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
 }
 
 build() {
