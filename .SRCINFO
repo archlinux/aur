@@ -1,5 +1,5 @@
 pkgbase = bittriprunner-hib
-	pkgdesc = BIT.TRIP RUNNER, a rhythm-based action platformer
+	pkgdesc = BIT.TRIP RUNNER, a music/rhythm-based action platformer (Humble Bundle/Store version)
 	pkgver = 1.0.4+h20120927
 	pkgrel = 1
 	url = http://bittripgame.com/bittrip-runner.html
