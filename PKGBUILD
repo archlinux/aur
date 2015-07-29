@@ -1,7 +1,7 @@
 pkgname='vault-git'
 pkgdesc='A tool for managing secrets'
 pkgver=v0.2.0.r42.g36ef6e5
-pkgrel=1
+pkgrel=2
 url='https://vaultproject.io/'
 license=('MPL')
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver () {
 }
 
 prepare () {
-	mkdir -p "${pkgname}/,build!"
+	mkdir -p "${pkgname}/,build"
 }
 
 build () {
