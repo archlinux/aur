@@ -1,6 +1,6 @@
 pkgbase = python-doit-git
 	pkgdesc = doit automation tool (git version)
-	pkgver = 0.28.0.r1.gdcefd21
+	pkgver = 0.28.0.r45.g027dce7
 	pkgrel = 1
 	url = http://pydoit.org/
 	arch = any

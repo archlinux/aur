@@ -3,7 +3,7 @@ pkgbase=python-doit-git
 pkgname=('python-doit-git' 'python2-doit-git')
 _pyname=doit
 _gitname=doit
-pkgver=0.28.0.r1.gdcefd21
+pkgver=0.28.0.r45.g027dce7
 pkgrel=1
 pkgdesc='doit automation tool (git version)'
 arch=('any')
@@ -28,6 +28,8 @@ package_python-doit-git() {
   python3 setup.py install --root="${pkgdir}/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
   ln -s ${_pyname} "${pkgdir}/usr/bin/${_pyname}3"
+  install -D -m755 'zsh_completion_doit' "${pkgdir}/usr/share/zsh/site-functions/_${_pyname}"
+  install -D -m755 'bash_completion_doit' "${pkgdir}/usr/share/bash-completion/completions/${_pyname}"
 }
 
 package_python2-doit-git() {
