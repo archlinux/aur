@@ -1,0 +1,16 @@
+pkgbase = get_flash_videos
+	pkgdesc = Download flash videos from a web page
+	pkgver = 1.24
+	pkgrel = 1
+	url = http://code.google.com/p/get-flash-videos/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = perl-www-mechanize
+	depends = perl-xml-simple
+	noextract = get_flash_videos-1.24
+	source = http://get-flash-videos.googlecode.com/files/get_flash_videos-1.24
+	md5sums = 0a02aa05e978fe111f1811eef627d440
+
+pkgname = get_flash_videos
+
