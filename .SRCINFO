@@ -1,6 +1,6 @@
 pkgbase = gregor-themes-git
-	pkgdesc = gregor160300 theme for xfce
-	pkgver = 0.1.r1.8f6021d
+	pkgdesc = Linux theme based on Windows 10 colors and Mac OS X looks
+	pkgver = 0.1.r3.ed1e931
 	pkgrel = 1
 	url = https://github.com/gregor160300/Theme
 	arch = any
