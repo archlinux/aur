@@ -1,0 +1,22 @@
+pkgbase = kdeplasma-applets-playbar2
+	pkgdesc = Mpris2 Client for Plasma5
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/audoban/PlayBar2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = kdoctools
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = plasma-workspace
+	depends = kdeclarative
+	depends = kglobalaccel
+	depends = kconfigwidgets
+	depends = kxmlgui
+	depends = kwindowsystem
+	source = https://github.com/audoban/PlayBar2/archive/v2.1.tar.gz
+	md5sums = 81770693b791d184d4bb5c525c1be6d6
+
+pkgname = kdeplasma-applets-playbar2
+
