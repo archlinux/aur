@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.632
+pkgver=0.99.636
 _gwtver=2.7.0
 _ginver=1.5
 pkgrel=1
@@ -67,8 +67,10 @@ package() {
     # Creaate symlinks
     install -d "${pkgdir}/usr/bin"
     ln -sf /usr/lib/rstudio/bin/rstudio "${pkgdir}/usr/bin/rstudio"
-    ln -sf /usr/share/myspell/dicts "${pkgdir}/usr/lib/rstudio/resources/dictionaries/"
-    ln -sf /usr/share/mathjax "${pkgdir}/usr/lib/rstudio/resources/mathjax-23/"
+    rm -rf "${pkgdir}/usr/lib/rstudio/resources/dictionaries"
+    ln -sf /usr/share/myspell/dicts "${pkgdir}/usr/lib/rstudio/resources/dictionaries"
+    rm -rf "${pkgdir}/usr/lib/rstudio/resources/mathjax-23"
+    ln -sf /usr/share/mathjax "${pkgdir}/usr/lib/rstudio/resources/mathjax-23"
     install -d "${pkgdir}/usr/lib/rstudio/bin/pandoc"
     ln -sf /usr/bin/pandoc "${pkgdir}/usr/lib/rstudio/bin/pandoc/pandoc"
     ln -sf /usr/bin/pandoc-citeproc "${pkgdir}/usr/lib/rstudio/bin/pandoc/pandoc-citeproc"
