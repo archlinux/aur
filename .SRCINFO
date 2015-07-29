@@ -1,13 +1,13 @@
 pkgbase = gmm
 	pkgdesc = Generic C++ finite element library
-	pkgver = 4.3
-	pkgrel = 3
+	pkgver = 5.0
+	pkgrel = 1
 	url = http://home.gna.org/getfem/
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	source = http://download.gna.org/getfem/stable/gmm-4.3.tar.gz
-	md5sums = f64441d4f85c6a37b8ae1cc70649b795
+	source = http://download.gna.org/getfem/stable/gmm-5.0.tar.gz
+	sha256sums = dc201ec2fd480a242c0f47cef0d9d1fc0ec5549ed73d91a8c2f877e15ee53a7f
 
 pkgname = gmm
 
