@@ -1,7 +1,7 @@
 pkgbase = zesarux
 	pkgdesc = A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/zesarux/
 	arch = i686
 	arch = x86_64
