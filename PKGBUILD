@@ -1,20 +1,20 @@
 # Maintainer: Fabio Zanini <fabio.zanini@tuebingen.mpg.de>
 pkgname=python2-ffpopsim-git
 pkgver=20130404
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast Forward Population Genetic Simulation"
 arch=('i686' 'x86_64')
 url="http://webdav.tuebingen.mpg.de/ffpopsim/index.html"
 license=('GPL')
 provides=('python2-ffpopsim')
 conflicts=('python2-ffpopsim')
-depends=('gcc-libs' 'gsl' 'boost' 'python2' 'python2-numpy')
-makedepends=('git' 'swig2')
+depends=('gcc-libs' 'gsl' 'python2-numpy')
+makedepends=('git' 'swig2' 'boost')
 optdepends=('python2-sphinx: generate python documentation',
  'doxygen: generate C++ documentation',
  'graphviz: generate C++ documentation')
-source=('ffpopsim::git+htts://github.com/iosonofabio/ffpopsim.git#branch=master')
-md5sums=() #generate with 'makepkg -g'
+source=('ffpopsim::git+https://github.com/iosonofabio/ffpopsim.git')
+md5sums=('SKIP')
 
 _gitroot='https://github.com/iosonofabio/ffpopsim.git'
 _gitname='ffpopsim'
@@ -29,7 +29,7 @@ build() {
   msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
+    cd "$_gitname" && git pull origin master
     msg "The local files are updated."
   else
     git clone "$_gitroot" "$_gitname"
@@ -42,7 +42,7 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
-  make python
+  make python SWIG=swig-2
 }
 
 package() {
