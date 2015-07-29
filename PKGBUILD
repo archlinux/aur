@@ -3,7 +3,7 @@ pkgbase=python-doit
 pkgname=('python-doit' 'python2-doit')
 _pyname=doit
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc='doit automation tool'
 arch=('any')
 url='http://pydoit.org/'
@@ -27,6 +27,10 @@ package_python-doit() {
   python3 setup.py install --root="${pkgdir}/" --optimize=1
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
   ln -s ${_pyname} "${pkgdir}/usr/bin/${_pyname}3"
+  install -D -m755 'zsh_completion_doit'
+  "${pkgdir}/usr/share/zsh/site-functions/_${_pyname}"
+  install -D -m755 'bash_completion_doit'
+  "${pkgdir}/usr/share/bash-completion/completions/${_pyname}"
 }
 
 package_python2-doit() {
