@@ -1,15 +1,16 @@
 pkgbase = nodejs-strongloop
 	pkgdesc = Strongloop controller CLI
-	pkgver = 4.0.5
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://strongloop.com/
 	arch = any
 	license = Artistic2.0
 	makedepends = npm
+	makedepends = python2
 	depends = nodejs
-	noextract = strongloop-4.0.5.tgz
-	source = https://registry.npmjs.org/strongloop/-/strongloop-4.0.5.tgz
-	sha256sums = 1a4e3b98b6d146ad6c6e991f8e41ccf1ef9f457ca6d561cfa5f3add74bc70d1e
+	noextract = strongloop-4.1.1.tgz
+	source = https://registry.npmjs.org/strongloop/-/strongloop-4.1.1.tgz
+	sha256sums = 39529c212c4ec3aaa4b3ea71a1cd4ade80cc9dd023a3e35354d55b684ad6f03e
 
 pkgname = nodejs-strongloop
 
