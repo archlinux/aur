@@ -1,0 +1,18 @@
+pkgbase = opus-tools-git
+	pkgdesc = A collection of tools for working with opus files (git version)
+	pkgver = 0.0
+	pkgrel = 2
+	url = http://wiki.xiph.org/Opus-tools
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = opus
+	depends = libogg
+	provides = opus-tools
+	conflicts = opus-tools
+	source = git://git.xiph.org/opus-tools.git
+	md5sums = SKIP
+
+pkgname = opus-tools-git
+
