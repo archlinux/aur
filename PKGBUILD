@@ -61,6 +61,6 @@ package() {
   install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 
   # Fix to handle rotated documents in English
-  install -D -m644 /usr/share/tessdata/eng.traineddata "${pkgdir}/usr/share/tessdata/osd.traineddata"
+  # install -D -m644 /usr/share/tessdata/eng.traineddata "${pkgdir}/usr/share/tessdata/osd.traineddata"
 }
 # vim:set ts=2 sw=2 et:
