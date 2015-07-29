@@ -1,0 +1,15 @@
+post_install() {
+  echo "This is the binary relase for AMD64/EMT64 technology."
+  echo ""  
+  if [ "$CARCH" = "x86_64" ]; then
+  echo "This binary has default integer of 64bits!"
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+op=$1
+shift
+$op $*

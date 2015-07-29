@@ -1,0 +1,15 @@
+pkgbase = g95
+	pkgdesc = A stable, production Fortran 95 compiler available for multiple cpu architectures and operating systems
+	pkgver = 0.94
+	pkgrel = 2
+	url = http://g95.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = blas
+	depends = lapack
+	depends = gcc-libs
+	provides = g95
+
+pkgname = g95
+
