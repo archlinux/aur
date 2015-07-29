@@ -1,0 +1,24 @@
+diff -aur sni-qt-eplus/src/iconcache.cpp sni-qt-eplus.new/src/iconcache.cpp
+--- sni-qt-eplus/src/iconcache.cpp	2015-07-27 21:17:58.198767000 +0200
++++ sni-qt-eplus.new/src/iconcache.cpp	2015-07-27 21:28:53.232267894 +0200
+@@ -145,7 +145,19 @@
+ 
+     QDir dir(m_themePath);
+     Q_FOREACH(const QSize& size, sizes) {
+-        QPixmap pix = icon.pixmap(size);
++	QPixmap pix;
++	QStringList parts = key.split("_");
++	QString homedirname = QDir::homePath();
++	QString injectionIconFilename = QString(homedirname + "/.local/share/sni-qt/icons/%1/%2.png").arg(parts[0], parts[2]);
++	QString injectionIconFilename2 = QString(homedirname + "/.local/share/sni-qt/icons/%1.png").arg(parts[2]);
++	
++	if (QFile::exists(injectionIconFilename))
++	  pix = QPixmap(injectionIconFilename);
++	else if (QFile::exists(injectionIconFilename2))
++	  pix = QPixmap(injectionIconFilename2);
++	else
++	  pix = icon.pixmap(size);
++	
+         QString dirName = QString("hicolor/%1x%1/apps").arg(size.width());
+         if (!dir.exists(dirName)) {
+             if (!dir.mkpath(dirName)) {
