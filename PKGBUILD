@@ -1,8 +1,9 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 
 pkgname=cadence-git
-pkgver=20150712
+pkgver=r971.f8b18cf
 pkgrel=1
+epoch=1
 pkgdesc="JACK Audio Toolbox."
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/cadence"
@@ -22,17 +23,17 @@ md5sums=('SKIP')
 install=cadence-git.install
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${pkgname}"
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${pkgname}"
     make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
 
