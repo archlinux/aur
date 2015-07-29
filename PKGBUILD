@@ -1,11 +1,11 @@
 # Maintainer: Toke Høiland-Jørgensen <toke at toke dot dk>
 
 pkgname=flent
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='The FLExible Network Tester.'
 arch=('any')
-url='https://github.com/tohojo/flent'
+url='https://flent.org'
 license=('GPL')
 depends=('python' 'netperf' 'python-setuptools')
 conflicts=('netperf-wrapper')
@@ -15,7 +15,7 @@ optdepends=(
     'python-pyqt4: for the GUI'
 )
 source=("https://pypi.python.org/packages/source/f/flent/flent-${pkgver}.tar.gz")
-sha1sums=('1d374615b8409757db11a19b43a0d516ffd67ba8')
+sha1sums=('145bec60812d159ecde9cec7a319ebdb247c3c4d')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
