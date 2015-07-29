@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=JHelioviewer
+Comment=Visualization software for solar image data
+Exec=jhelioviewer
+Icon=jhelioviewer
+Terminal=false
+StartupNotify=false
+Categories=Astronomy;Science;Education;Java;

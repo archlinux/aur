@@ -1,0 +1,17 @@
+pkgbase = jhelioviewer
+	pkgdesc = Visualization software for solar image data
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://www.jhelioviewer.org/
+	arch = x86_64
+	license = MPL
+	depends = java-runtime=8
+	source = jhelioviewer
+	source = jhelioviewer.desktop
+	source = https://github.com/Helioviewer-Project/JHelioviewer/releases/download/2.3.3/JHelioviewer_2_3_3_64_bit.rpm
+	md5sums = 173482ed34e21169a138e92de47656c6
+	md5sums = 4cdedcd67c7371762d4ad17b7ce91a32
+	md5sums = bf2bb6ed3a7f8b6c4f0297e347b3abdc
+
+pkgname = jhelioviewer
+
