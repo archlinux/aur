@@ -3,7 +3,7 @@
 # Contributor: Paul Ezvan <paul@ezvan.fr>
 
 pkgname=pnp4nagios
-pkgver=0.6.24
+pkgver=0.6.25
 pkgrel=1
 pkgdesc="Nagios addon to create graphs from performance data"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ backup=('etc/httpd/conf/extra/pnp4nagios.conf' 'etc/pnp4nagios/config.php'
   'etc/pnp4nagios/process_perfdata.cfg')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         npcd.service)
-md5sums=('eeffd5d0a2dbaa1693cb10d52034239d'
+md5sums=('0cdd3f77606738883af99e5a08986c70'
          '69f82fa4aeebc8c1164d67e4399c0932')
 
 build() {
