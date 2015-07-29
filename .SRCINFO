@@ -1,0 +1,14 @@
+pkgbase = swig2
+	pkgdesc = A compiler that integrates C and C++ code with scripting languages (2.0.x version)
+	pkgver = 2.0.12
+	pkgrel = 5
+	url = http://www.swig.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = zlib
+	source = http://downloads.sourceforge.net/swig/swig-2.0.12.tar.gz
+	sha256sums = 65e13f22a60cecd7279c59882ff8ebe1ffe34078e85c602821a541817a4317f7
+
+pkgname = swig2
+
