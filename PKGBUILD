@@ -4,11 +4,11 @@
 
 pkgname=mailpile
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
 arch=('any')
 url="http://www.mailpile.is"
-license=('AGPL3' 'Apache')
+license=('AGPL3')
 depends=('gnupg' 'python2-jinja>=2.6' 'python2-lxml>=2.3.2' 'python2-markupsafe' 'python2-pgpdump' 'python2-pillow' 'python2-pydns' 'spambayes>=1.1a6')
 install=${pkgname}.install
 source=("https://github.com/pagekite/${pkgname}/archive/${pkgver}.tar.gz"
