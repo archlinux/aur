@@ -1,0 +1,13 @@
+pkgbase = vimball
+	pkgdesc = Facilitates creating, extracting, and listing the contents of "vimball" archives (*.vba)
+	pkgver = 33
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1502
+	arch = any
+	license = Vim
+	depends = vim
+	source = vimball.tar.gz::http://www.vim.org/scripts/download_script.php?src_id=15362
+	sha512sums = 3a00ca26a911cdac1f0128b1128ac555ba751df9b6efc8076b5f573072e57dd67cd7d748e8b6f8e04b73248d973487d53ade403843ba9a443fb1df18e07287b9
+
+pkgname = vimball
+
