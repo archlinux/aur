@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=XTide
+Comment=Harmonic tide clock and tide predictor
+Exec=xtide
+Icon=xtide
+Terminal=false
+StartupNotify=false
+Categories=Science;Education;

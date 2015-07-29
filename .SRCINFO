@@ -1,0 +1,27 @@
+pkgbase = xtide
+	pkgdesc = Harmonic tide clock and tide predictor
+	pkgver = 2.14
+	pkgrel = 1
+	url = http://www.flaterco.com/xtide/xtide.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xaw3d
+	depends = libpng
+	depends = libtcd
+	optdepends = gpsd: for automatic location finding
+	optdepends = xtide-wvs: for hi-res vector coastlines
+	backup = etc/xtide/xtide.conf
+	source = ftp://ftp.flaterco.com/xtide/harmonics-dwf-20141224-free.tar.bz2
+	source = ftp://ftp.flaterco.com/xtide/xtide-2.14.tar.bz2
+	source = xtide-2.14-aur.patch
+	source = xtide.conf
+	source = xtide.desktop
+	md5sums = 27adcccb2824ac45b072636b1ee1cdd5
+	md5sums = 0f50833e6f686eca16dcb33c1719cf6c
+	md5sums = 6b95a3602898b45bb0079740e4859660
+	md5sums = 24c362cc119e413408318bd1eea04846
+	md5sums = eb5ebe8432103880ff3331f3236b3e74
+
+pkgname = xtide
+

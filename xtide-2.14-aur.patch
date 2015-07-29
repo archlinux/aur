@@ -1,0 +1,103 @@
+diff -Naur xtide-2.14/INSTALL xtide-2.14-aur/INSTALL
+--- xtide-2.14/INSTALL	2014-11-02 16:35:56.000000000 -0800
++++ xtide-2.14-aur/INSTALL	2015-07-28 21:40:03.615566071 -0700
+@@ -151,7 +151,7 @@
+        If you are installing as root, then it is recommended that you add
+        this definition to a system-wide script such as /etc/profile if you
+        have one.
+-    2. The other way is by creating the file /etc/xtide.conf.  The
++    2. The other way is by creating the file /etc/xtide/xtide.conf.  The
+        environment variable, if set, takes precedence over the config
+        file.
+        If a configuration file is used, the first line should consist of
+@@ -163,7 +163,7 @@
+ 
+    Either set the environment variable WVS_DIR to the name of that
+    directory or supply the directory name as the second line of the
+-   configuration file /etc/xtide.conf.
++   configuration file /etc/xtide/xtide.conf.
+ 
+     III.  Run the configure script
+ 
+diff -Naur xtide-2.14/libxtide/Global.cc xtide-2.14-aur/libxtide/Global.cc
+--- xtide-2.14/libxtide/Global.cc	2014-10-11 12:38:53.000000000 -0700
++++ xtide-2.14-aur/libxtide/Global.cc	2015-07-28 21:38:05.266652364 -0700
+@@ -221,7 +221,7 @@
+ #ifdef UseLocalFiles
+   static const char confFile[] = "xtide.conf";
+ #else
+-  static const char confFile[] = "/etc/xtide.conf";
++  static const char confFile[] = "/etc/xtide/xtide.conf";
+ #endif
+   static bool firstCall (true);
+   static SafeVector<Dstr> xtideConfLines (2U);
+@@ -408,10 +408,10 @@
+     break;
+   case Error::NO_HFILE_PATH:
+     text_out += "NO_HFILE_PATH\n\
+-If /etc/xtide.conf is not provided, you must set the environment variable\n\
++If /etc/xtide/xtide.conf is not provided, you must set the environment variable\n\
+ HFILE_PATH to point to your harmonics files.  Example:\n\
+   export HFILE_PATH=/usr/local/share/xtide/harmonics.tcd\n\
+-Please refer to the documentation for usage of /etc/xtide.conf.";
++Please refer to the documentation for usage of /etc/xtide/xtide.conf.";
+     break;
+   case Error::NO_HFILE_IN_PATH:
+     text_out += "NO_HFILE_IN_PATH\n\
+diff -Naur xtide-2.14/README xtide-2.14-aur/README
+--- xtide-2.14/README	2014-11-02 16:35:56.000000000 -0800
++++ xtide-2.14-aur/README	2015-07-28 21:40:33.693595803 -0700
+@@ -1112,7 +1112,7 @@
+        If you are installing as root, then it is recommended that you add
+        this definition to a system-wide script such as /etc/profile if you
+        have one.
+-    2. The other way is by creating the file /etc/xtide.conf.  The
++    2. The other way is by creating the file /etc/xtide/xtide.conf.  The
+        environment variable, if set, takes precedence over the config
+        file.
+        If a configuration file is used, the first line should consist of
+@@ -1124,7 +1124,7 @@
+ 
+    Either set the environment variable WVS_DIR to the name of that
+    directory or supply the directory name as the second line of the
+-   configuration file /etc/xtide.conf.
++   configuration file /etc/xtide/xtide.conf.
+ 
+     III.  Run the configure script
+ 
+diff -Naur xtide-2.14/tide.1 xtide-2.14-aur/tide.1
+--- xtide-2.14/tide.1	2014-06-20 18:45:48.000000000 -0700
++++ xtide-2.14-aur/tide.1	2015-07-28 21:38:49.523753018 -0700
+@@ -65,7 +65,7 @@
+ .BR http://www.flaterco.com/xtide/ .
+ .SH CONFIGURATION
+ Unless a configuration file
+-.B /etc/xtide.conf
++.B /etc/xtide/xtide.conf
+ is supplied, you must set the environment variable
+ .B HFILE_PATH
+ to point to the harmonics
+diff -Naur xtide-2.14/xtide.1 xtide-2.14-aur/xtide.1
+--- xtide-2.14/xtide.1	2014-05-04 12:49:53.000000000 -0700
++++ xtide-2.14-aur/xtide.1	2015-07-28 21:39:03.302850354 -0700
+@@ -71,7 +71,7 @@
+ .BR http://www.flaterco.com/xtide/ .
+ .SH CONFIGURATION
+ Unless a configuration file
+-.B /etc/xtide.conf
++.B /etc/xtide/xtide.conf
+ is supplied, you must set the environment variable
+ .B HFILE_PATH
+ to point to the harmonics
+diff -Naur xtide-2.14/xttpd.8 xtide-2.14-aur/xttpd.8
+--- xtide-2.14/xttpd.8	2014-06-20 18:45:48.000000000 -0700
++++ xtide-2.14-aur/xttpd.8	2015-07-28 21:39:17.161942458 -0700
+@@ -92,7 +92,7 @@
+ .BR http://www.flaterco.com/xtide/ .
+ .SH CONFIGURATION
+ Unless a configuration file
+-.B /etc/xtide.conf
++.B /etc/xtide/xtide.conf
+ is supplied, you must set the environment variable
+ .B HFILE_PATH
+ to point to the harmonics
