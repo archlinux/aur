@@ -1,15 +1,15 @@
 pkgbase = nodejs-typescript
 	pkgdesc = TypeScript is a language for application scale JavaScript development.
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.5.3
+	pkgrel = 1
 	url = http://typescriptlang.org/
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs
-	noextract = typescript-1.4.1.tgz
-	source = http://registry.npmjs.org/typescript/-/typescript-1.4.1.tgz
-	sha1sums = eb4da986d1b7f01452eafb57559e0cc8f516cd48
+	noextract = typescript-1.5.3.tgz
+	source = http://registry.npmjs.org/typescript/-/typescript-1.5.3.tgz
+	sha1sums = ce35e55f75b7a8d0ed571b503bd0a57157e523f7
 
 pkgname = nodejs-typescript
 
