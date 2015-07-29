@@ -1,0 +1,14 @@
+pkgbase = php-solr
+	pkgdesc = PHP PECL extension for Apache Solr API
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://pecl.php.net/package/solr
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php>=5.3
+	source = http://pecl.php.net/get/solr-2.1.0.tgz
+	sha256sums = 9cf8a067ac79c0e6caa233e38aee9e9bd5d85d3d8cb5c85654ef701aa7cda4bc
+
+pkgname = php-solr
+
