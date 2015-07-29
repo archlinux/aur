@@ -1,0 +1,64 @@
+From 4dfe7924a220643600be58861b01f186225fe251 Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sun, 26 Jul 2015 09:59:29 +0800
+Subject: [PATCH] close left processes more graceful
+
+---
+ src/pam.c   | 4 +++-
+ src/xconn.c | 4 ++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/pam.c b/src/pam.c
+index 940fdd2..8020b51 100644
+--- a/src/pam.c
++++ b/src/pam.c
+@@ -372,6 +372,7 @@ int lxdm_auth_session_end(LXDM_AUTH *a)
+ 	int err;
+ 	if(!a->handle)
+ 		return 0;
++	killpg(a->child,SIGTERM);
+ 	if(a->in_session)
+ 	{
+ 		char xdg_session_id[32]={0};
+@@ -385,6 +386,7 @@ int lxdm_auth_session_end(LXDM_AUTH *a)
+ 		a->in_session=0;
+ 		if(p!=NULL)
+ 		{
++			usleep(100*1000);
+ 			kill_left_process(xdg_session_id);
+ 		}
+ 	}
+@@ -472,7 +474,7 @@ void switch_user(struct passwd *pw, const char *run, char **env)
+ 	g_spawn_command_line_sync ("/etc/lxdm/PreLogin",NULL,NULL,NULL,NULL);
+ 
+ 	if( !pw || initgroups(pw->pw_name, pw->pw_gid) ||
+-			setgid(pw->pw_gid) || setuid(pw->pw_uid)/* || setsid() == -1 */)
++			setgid(pw->pw_gid) || setuid(pw->pw_uid) || setpgid(0,0)==-1/* || setsid() == -1 */)
+ 		exit(EXIT_FAILURE);
+ 	chdir(pw->pw_dir);
+ 	fd=open(".xsession-errors",O_WRONLY|O_CREAT|O_TRUNC,S_IRUSR|S_IWUSR);
+diff --git a/src/xconn.c b/src/xconn.c
+index 5c62d4b..df4824f 100644
+--- a/src/xconn.c
++++ b/src/xconn.c
+@@ -172,7 +172,7 @@ void xconn_close(xconn_t c)
+ 	free(c);
+ }
+ 
+-#if 0
++#if 1
+ static xcb_window_t xconn_get_root(xconn_t c)
+ {
+ 	const xcb_setup_t *setup;
+@@ -185,7 +185,7 @@ static xcb_window_t xconn_get_root(xconn_t c)
+ 
+ void xconn_clean(xconn_t c)
+ {
+-#if 0
++#if 1
+ 	xcb_query_tree_cookie_t wintree;
+ 	xcb_query_tree_reply_t *rep;
+ 	xcb_window_t *children;
+-- 
+2.1.3
+

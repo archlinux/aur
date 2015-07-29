@@ -23,7 +23,7 @@ done
 for file in "/etc/X11/Xresources" "$HOME/.Xresources"; do
     if [ -f "$file" ]; then
         echo "Loading resource: $file"
-        xrdb -nocpp -merge "$file"
+        xrdb -merge "$file"
     fi
 done
 
@@ -48,7 +48,7 @@ fi
 
 unset XKB_IN_USE
 
-# Run all system xinitrc shell scripts.
+# Run all system xinitrc shell scripts
 xinitdir="/etc/X11/xinit/xinitrc.d"
 if [ -d "$xinitdir" ]; then
     for script in $xinitdir/*; do
@@ -57,6 +57,13 @@ if [ -d "$xinitdir" ]; then
             . "$script"
         fi
     done
+fi
+
+# Run user xsession shell script
+script="$HOME/.xsession"
+if [ -x "$script" -a ! -d "$script" ]; then
+    echo "Loading xsession script $script"
+    . "$script"
 fi
 
 echo "X session wrapper complete, running session $LXSESSION"
