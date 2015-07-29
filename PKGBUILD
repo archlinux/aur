@@ -25,6 +25,6 @@ package() {
   cd gregor-themes
 
   install -dm 755 "${pkgdir}"/usr/share/themes/Gregor
-  rm -rf .git .SRCINFO README.md
+  rm -rf .git .SRCINFO README.md LICENSE Screenshot.png
   cp -dr --no-preserve='ownership' * "${pkgdir}"/usr/share/themes/Gregor
 }
