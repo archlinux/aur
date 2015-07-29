@@ -14,6 +14,7 @@ source=('package-cache-clean'
         'package-contents-installed'
         'package-download-tarball'
         'package-file-owner'
+        'package-get-new-package-lists'
         'package-help'
         'package-info'
         'package-info-installed'
@@ -39,6 +40,7 @@ md5sums=('95aaa3ed60c3c3e9686227746287b024'
          'c5c28dcbca18ff6cf614c331d2af85d9'
          '127e85489e1ad4cfd1fcb33a84d6ca72'
          '0a44ceaa56ec290052baf4e8ca8ad10c'
+         'd3fd28a5d6228138340aaaeade5f9a54'
          '2130edeb9d78ea0cb46679de2342f4fe'
          '539cfdfc41e577788aeb7bed1ac0627d'
          'c63fd5f18f8a15ba95944fd7b62a8e16'
@@ -67,6 +69,7 @@ package() {
   install -Dm755 package-contents-installed "${pkgdir}/usr/bin/package-contents-installed"
   install -Dm755 package-download-tarball "${pkgdir}/usr/bin/package-download-tarball"
   install -Dm755 package-file-owner "${pkgdir}/usr/bin/package-file-owner"
+  install -Dm755 package-get-new-package-list "${pkgdir}/usr/bin/package-get-new-package-list"
   install -Dm755 package-help "${pkgdir}/usr/bin/package-help"
   install -Dm755 package-info "${pkgdir}/usr/bin/package-info"
   install -Dm755 package-info-installed "${pkgdir}/usr/bin/package-info-installed"
