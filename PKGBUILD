@@ -2,7 +2,7 @@
 
 pkgname=k2pdfopt
 pkgver=2.32
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool that optimizes PDF files for viewing on mobile readers"
 arch=('i686' 'x86_64')
 url="http://www.willus.com/k2pdfopt/"
@@ -12,7 +12,7 @@ depends=('mupdf>=1.6'
 	'djvulibre>=3.5.25.3'
 	'netpbm>=10.61.02'
 	'leptonica>=1.69')
-source=("http://www.willus.com/${pkgname}/src/${pkgname}_v${pkgver}_src.zip"
+source=("${pkgname}_v${pkgver}_src.zip::https://drive.google.com/uc?export=download&id=0B0iwSdCKGAZYQmZjRGtwX3NaMmc"
     "http://www.mupdf.com/downloads/archive/mupdf-1.6-source.tar.gz"
 	"http://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz"
 	"http://www-e.uni-magdeburg.de/jschulen/ocr/gocr-0.49.tar.gz"
