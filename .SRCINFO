@@ -1,6 +1,6 @@
 pkgbase = sope
 	pkgdesc = application server used by SOGo
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = http://www.sogo.nu/files/downloads/SOGo/Sources/
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = sope
 	optdepends = openssl: create SSL secured connectons
 	optdepends = postgresql: run database server for sogo locally
 	options = !strip
-	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-2.3.0.tar.gz
+	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-2.3.1.tar.gz
 	source = sope_configure.patch
-	sha256sums = fa493a1b07e179f731379e4a48deb12f6129e1206a2a9e42fdba1482bad3da12
+	sha256sums = e8839494bd67c62bab70ef9fd38e48bdec3ceb9a2a4da1eba2c9bb033eeb7e33
 	sha256sums = 7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a
 
 pkgname = sope
