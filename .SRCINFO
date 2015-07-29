@@ -1,0 +1,14 @@
+pkgbase = advancecomp
+	pkgdesc = Recompression utilities for .zip .png .mng and .gz files using the 7-zip agorithm
+	pkgver = 1.19
+	pkgrel = 4
+	url = http://advancemame.sourceforge.net/comp-readme.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = http://downloads.sourceforge.net/project/advancemame/advancecomp/1.19/advancecomp-1.19.tar.gz
+	sha1sums = 894c2db01c9fff40257f929496621bdcea77748b
+
+pkgname = advancecomp
+
