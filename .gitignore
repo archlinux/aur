@@ -1,0 +1,9 @@
+# Hydrus git repo
+hydrus
+
+# makepkg working directories
+pkg
+src
+
+# Built packages
+*.pkg.tar.xz
