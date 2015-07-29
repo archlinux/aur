@@ -1,6 +1,6 @@
 pkgbase = libgaminggear
 	pkgdesc = Provides functionality for gaming input devices
-	pkgver = 0.9.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = http://sourceforge.net/projects/libgaminggear/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = libgaminggear
 	depends = libcanberra
 	depends = gtk2
 	depends = sqlite3>=3.7
-	source = http://downloads.sourceforge.net/project/libgaminggear/libgaminggear-0.9.0.tar.bz2
-	md5sums = 6494d8bc1da72f297099793f3f55e608
+	source = http://downloads.sourceforge.net/project/libgaminggear/libgaminggear-0.10.1.tar.bz2
+	md5sums = c4d9f8204970180d89a61425f384cd4a
 
 pkgname = libgaminggear
 
