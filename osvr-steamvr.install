@@ -1,0 +1,13 @@
+post_install() {
+        echo "==> Now copy the driver to the SteamVR directory according to https://github.com/ValveSoftware/openvr/wiki/Driver-Documentation."
+        echo "==> Should be something like:"
+        echo "==> cp -rf /usr/lib/steamvr/drivers/osvr/ ~/.local/share/Steam/SteamApps/common/OpenVR/drivers/"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
