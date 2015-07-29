@@ -1,0 +1,19 @@
+pkgbase = johnny-git
+	pkgdesc = A GUI for john (the ripper, a password audit tool)
+	pkgver = r402.2a2bfc8
+	pkgrel = 1
+	url = http://openwall.info/wiki/john/johnny
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = john
+	makedepends = qt5-base
+	depends = john
+	depends = qt5-base
+	provides = johnny
+	conflicts = johnny
+	source = git+https://github.com/shinnok/johnny.git
+	md5sums = SKIP
+
+pkgname = johnny-git
+
