@@ -2,7 +2,7 @@
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
 pkgname=openjk-git
-pkgver=2980.3ab6247
+pkgver=2983.1b6e1ec
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
 arch=('i686' 'x86_64')
@@ -26,6 +26,10 @@ sha256sums=('SKIP'
             'afb2c1a757720c70798e7f7218f823297a43bc61e0cb192e9443df67c2963903'
             'd3ad7dd270e57d36a22caef21bff17f2eb4acb0ad9087f6a17ca4a0bf9c566fc'
             'd03554bd926954218c243a1a97d39ea9700d064a2374f671249a533ebd970375')
+_jkarch=i386
+[ "$CARCH" == "x86_64" ] && {
+        _jkarch=x86_64
+}
 
 pkgver() {
   cd openjk
@@ -35,7 +39,7 @@ pkgver() {
 build() {
   cd "${srcdir}/openjk"
 
-  mkdir build
+  mkdir -p build
   cd build
   cmake ../ \
 		-DCMAKE_BUILD_TYPE=Release \
@@ -50,9 +54,9 @@ package() {
 	make DESTDIR="${pkgdir}" install
 
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/openjk.i386" "${pkgdir}/usr/bin/openjk"
-	ln -s "/opt/${pkgname}/openjk_sp.i386" "${pkgdir}/usr/bin/openjk_sp"
-	ln -s "/opt/${pkgname}/openjkded.i386" "${pkgdir}/usr/bin/openjkded"
+	ln -s "/opt/${pkgname}/JediAcademy/openjk.${_jkarch}" "${pkgdir}/usr/bin/openjk"
+	ln -s "/opt/${pkgname}JediAcademy/openjk_sp.${_jkarch}" "${pkgdir}/usr/bin/openjk_sp"
+	ln -s "/opt/${pkgname}JediAcademy/openjkded.${_jkarch}" "${pkgdir}/usr/bin/openjkded"
 
 	install -Dm755 "${srcdir}/openjkmp.png" "${pkgdir}/usr/share/pixmaps/openjkmp.png"
 	install -Dm755 "${srcdir}/openjksp.png" "${pkgdir}/usr/share/pixmaps/openjksp.png"
