@@ -1,10 +1,8 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-
-# _use_mysql_package valid values:
-#    none
-#    mariadb
-#    mysql
-_use_mysql_package="none"
+#    * This package is configured to use mariadb (a preferred almost drop-in replacement for mysql) or mysql itself.
+#    * If you really want to, you can use mysql-clients instead, as it provides mariadb-clients
+#    * See package sysbench-nodb-git for the version configured not to use a database.
+#    * Namcap warns dependency mariadb-clients is not needed, but this package's sysbench is configured to use mariadb, and fails configure without it.
 
 pkgname=sysbench-git
 _pkgname=sysbench
@@ -14,16 +12,7 @@ pkgdesc='Multi-threaded benchmark for evaluating OS parameters for database-load
 arch=('x86_64' 'i686')
 license=('GPL2')
 url='https://github.com/akopytov/sysbench'
-depends=('glibc')
-if [[ "${_use_mysql_package}" == "mariadb" ]]; then
-   depends=('glibc' 'mariadb')
-elif [[ "${_use_mysql_package}" == "mysql" ]]; then
-   depends=('glibc' 'mysql')
-elif [[ "${_use_mysql_package}" != "none" ]]; then
-   echo "_use_mysql_package is \"${_use_mysql_package}\", but valid values are \"none\", \"mariadb\", or \"mysql\""
-   exit
-fi
-optdepends=('mariadb' 'mysql')
+depends=('mariadb-clients')
 makedepends=('git')
 source=('git+https://github.com/akopytov/sysbench')
 md5sums=('SKIP')
@@ -36,19 +25,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
   ./autogen.sh
-
-   if [[ "${_use_mysql_package}" == "mariadb" ]]; then
-      ./configure --prefix=/usr
-   elif [[ "${_use_mysql_package}" == "mysql" ]]; then
-      ./configure --prefix=/usr
-   elif [[ "${_use_mysql_package}" == "none" ]]; then
-      ./configure --without-mysql --prefix=/usr
-   else
-      echo "_use_mysql_package is \"${_use_mysql_package}\", but valid values are \"none\", \"mariadb\", or \"mysql\""
-      exit
-   fi
-
-   make
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
