@@ -38,6 +38,8 @@ PACMAN SYNC COMMANDS
 package-cache-clean          - Remove from cache no longer installed packages
 package-cache-delete         - Remove from cache all packages
 package-download-tarball     - Download package(s) from repos, as tarball, but
+package-get-new-package-lists- Forces downloading master package lists from the
+                               servers, even if they appear up to date
 package-info                 - Info on package(s) in repos
 package-install              - Install package(s) from repos
 package-search               - Search for package(s) in repos
