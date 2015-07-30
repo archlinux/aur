@@ -1,6 +1,6 @@
 pkgbase = linux-selinux
-	pkgver = 4.1.2
-	pkgrel = 2
+	pkgver = 4.1.3
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = linux-selinux
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.2.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.2.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.3.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.3.sign
 	source = config
 	source = config.x86_64
 	source = linux-selinux.preset
@@ -26,7 +26,7 @@ pkgbase = linux-selinux
 	source = change-default-console-loglevel.patch
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = 1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef
+	sha256sums = b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e
 	sha256sums = SKIP
 	sha256sums = 1539a18d6f5404e58c2968c99df17e52b67ad9cc104d89b8cd47e4059e27f551
 	sha256sums = 44e226bcf8f9d10c6516430b8524fecf787563568ff4e48cdce1fdce23d9483c
@@ -46,20 +46,20 @@ pkgname = linux-selinux
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-selinux=4.1.2
+	provides = kernel26-selinux=4.1.3
 	conflicts = kernel26-selinux
 	replaces = kernel26-selinux
 	backup = etc/mkinitcpio.d/linux-selinux.preset
 
 pkgname = linux-selinux-headers
 	pkgdesc = Header files and scripts for building modules for Linux-selinux kernel
-	provides = kernel26-selinux-headers=4.1.2
+	provides = kernel26-selinux-headers=4.1.3
 	conflicts = kernel26-selinux-headers
 	replaces = kernel26-selinux-headers
 
 pkgname = linux-selinux-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-selinux kernel
-	provides = kernel26-selinux-docs=4.1.2
+	provides = kernel26-selinux-docs=4.1.3
 	conflicts = kernel26-selinux-docs
 	replaces = kernel26-selinux-docs
 
