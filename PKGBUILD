@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=librep-git
-pkgver=0.92.5.2.g9e2355f
+pkgver=0.92.5.7.gc0d51b4
 pkgrel=1
 pkgdesc='A lisp system for sawfish - git version.'
 arch=('i686' 'x86_64')
@@ -14,18 +14,13 @@ provides=("librep=$pkgver")
 conflicts=('librep')
 options=('!libtool' '!makeflags')
 install=librep.install
-source=('git://github.com/SawfishWM/librep.git' fcons.patch)
-sha256sums=('SKIP' '7279a87c34ad518732889d4ad450f0c7e2b35e6e93239df1ead9fa157e1b1b35')
+source=('git://github.com/SawfishWM/librep.git')
+sha256sums=('SKIP')
 _gitname='librep'
 
 pkgver() {
   cd "$_gitname"
   echo $(git describe --always |sed 's/-/./g'|cut -c8-)
-}
-
-prepare() {
-  cd "$_gitname"
-  patch -Np1 < $srcdir/fcons.patch
 }
 
 build() {

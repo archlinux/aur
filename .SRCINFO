@@ -1,6 +1,6 @@
 pkgbase = librep-git
 	pkgdesc = A lisp system for sawfish - git version.
-	pkgver = 0.92.5.2.g9e2355f
+	pkgver = 0.92.5.7.gc0d51b4
 	pkgrel = 1
 	url = http://sawfish.wikia.com
 	install = librep.install
@@ -10,14 +10,12 @@ pkgbase = librep-git
 	makedepends = git
 	depends = gmp
 	depends = gdbm
-	provides = librep=0.92.5.2.g9e2355f
+	provides = librep=0.92.5.7.gc0d51b4
 	conflicts = librep
 	options = !libtool
 	options = !makeflags
 	source = git://github.com/SawfishWM/librep.git
-	source = fcons.patch
 	sha256sums = SKIP
-	sha256sums = 7279a87c34ad518732889d4ad450f0c7e2b35e6e93239df1ead9fa157e1b1b35
 
 pkgname = librep-git
 
