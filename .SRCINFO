@@ -1,0 +1,17 @@
+pkgbase = python2-goobook
+	pkgdesc = Search your google contacts from the command-line or mutt.
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://gitlab.com/goobook/goobook
+	arch = any
+	license = GPLv3
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-gdata
+	depends = python2-simplejson
+	depends = python2-keyring
+	source = https://pypi.python.org/packages/source/g/goobook/goobook-1.9.tar.gz
+	md5sums = 41f2246336ea713591e7d912d9d05193
+
+pkgname = python2-goobook
+
