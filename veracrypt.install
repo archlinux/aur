@@ -1,0 +1,12 @@
+post_install() {
+    gtk-update-icon-cache -t /usr/share/pixmaps/
+    update-desktop-database /usr/share/applications
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+    post_install
+}
