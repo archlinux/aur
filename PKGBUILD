@@ -12,7 +12,7 @@ depends=('fortune-mod')
 groups=('fortune-mods')
 source="fortunes.txt"
 url="https://en.wikiquote.org/wiki/The_Matrix_%28franchise%29"
-md5sums=('46f18341b325dff8bc1d1bf4db091738')
+md5sums=('3ff9ab5a2362b72d3f14768b5a36b06c')
 
 build() {
   cp "${srcdir}/fortunes.txt" "${srcdir}/matrix"
