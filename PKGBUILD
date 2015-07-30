@@ -6,7 +6,7 @@
 
 pkgname=xpdf
 pkgver=3.04
-pkgrel=3
+pkgrel=4
 pkgdesc='Viewer for Portable Document Format (PDF) files'
 url='http://www.foolabs.com/xpdf/'
 license=('GPL2')
@@ -37,7 +37,6 @@ build() {
     --sysconfdir=/etc \
     --mandir=/usr/share/man \
     --enable-multithreaded \
-    --enable-wordlist \
     --with-freetype2-library=/usr/lib \
     --with-freetype2-includes=/usr/include/freetype2 \
     --x-includes=/usr/include \
