@@ -1,0 +1,12 @@
+pkgbase = 115upload
+	pkgdesc = 115.com big file upload control
+	pkgver = 1.1.8
+	pkgrel = 1
+	epoch = 1
+	url = http://115.com
+	arch = i686
+	arch = x86_64
+	license = unknown
+
+pkgname = 115upload
+
