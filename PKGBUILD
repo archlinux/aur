@@ -17,6 +17,7 @@ package() {
     install -d ${pkgdir}/usr/share/icons
     install -Dm644 ${srcdir}/${_pkgname}-${_git}/COPYING ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
     cp -r ${srcdir}/${_pkgname}-${_git} ${pkgdir}/usr/share/icons/${_pkgname}
+    rm -f ${pkgdir}/usr/share/icons/${_pkgname}/*.png
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 }
