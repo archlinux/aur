@@ -1,0 +1,14 @@
+pkgbase = nodejs-elm
+	pkgdesc = elm-platform wrapper that makes it seamlessly available as a local dependency
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kevva/elm-bin
+	arch = any
+	depends = nodejs
+	depends = libtinfo
+	noextract = elm-2.0.0.tgz
+	source = http://registry.npmjs.org/elm/-/elm-2.0.0.tgz
+	sha1sums = 04806807bd816861d500a6de87bbaa3e0d5d5a46
+
+pkgname = nodejs-elm
+
