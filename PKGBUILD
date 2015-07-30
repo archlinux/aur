@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('java-runtime')
 install=mysql-jdbc.install
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
-source=("http://cdn.mysql.com/Downloads/Connector-J/${_fullname}.tar.gz"{,.asc})
+source=("https://cdn.mysql.com/Downloads/Connector-J/${_fullname}.tar.gz"{,.asc})
 md5sums=('9a06f655da5d533a3c1b2565b76306c7'
          'SKIP')
 

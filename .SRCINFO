@@ -7,8 +7,8 @@ pkgbase = mysql-jdbc
 	arch = any
 	license = GPL2
 	depends = java-runtime
-	source = http://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-5.1.36.tar.gz
-	source = http://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-5.1.36.tar.gz.asc
+	source = https://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-5.1.36.tar.gz
+	source = https://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-5.1.36.tar.gz.asc
 	md5sums = 9a06f655da5d533a3c1b2565b76306c7
 	md5sums = SKIP
 
