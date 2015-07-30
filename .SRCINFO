@@ -1,0 +1,25 @@
+pkgbase = astah-professional
+	pkgdesc = easy-to-use UML2.x modeler
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = http://astah.net/editions/professional
+	install = astah-professional.install
+	arch = any
+	license = custom:none
+	depends = java-runtime
+	conflicts = astah_community
+	source = http://cdn.astah.net/downloads/astah-professional-7_0_0-846701.zip
+	source = astah-professional.desktop
+	source = astah-professional.png
+	source = astah-professional.xml
+	source = astah-professional-doc.png
+	source = LICENSE
+	md5sums = 72d70aa8385315016a14905e3ca8eeee
+	md5sums = 7f85e4ae3c0331d8a7d842a0c17090f9
+	md5sums = df84e754977e1958963779b3a59182e1
+	md5sums = 2fbccb662c6435f75c62751437fb3f1e
+	md5sums = 4dbc30adaf0a7af35fdf16a04c44b80c
+	md5sums = 3b5f3a3c4e453544e9c665c7950960fc
+
+pkgname = astah-professional
+
