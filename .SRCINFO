@@ -1,0 +1,14 @@
+pkgbase = lsdsk
+	pkgdesc = Search in *.desktop for content in Exec and Categories.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AndyCrowd/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	source = lsdsk::git+https://github.com/AndyCrowd/lsdsk.git
+	md5sums = SKIP
+
+pkgname = lsdsk
+
