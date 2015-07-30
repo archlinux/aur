@@ -5,7 +5,7 @@
 pkgname=fortune-mod-matrix
 pkgver=20091124
 pkgrel=3
-pkgdesc="Fortune cookies: The trilogy matrix."
+pkgdesc="Fortune cookies: The Matrix trilogy"
 arch=('any')
 license=('custom')
 depends=('fortune-mod')
