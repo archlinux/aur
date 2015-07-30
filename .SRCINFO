@@ -8,7 +8,7 @@ pkgbase = fortune-mod-matrix
 	license = custom
 	depends = fortune-mod
 	source = fortunes.txt
-	md5sums = eb8a4013ac36655ec7cd46ca9b6f022c
+	md5sums = 46f18341b325dff8bc1d1bf4db091738
 
 pkgname = fortune-mod-matrix
 

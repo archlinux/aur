@@ -12,7 +12,7 @@ depends=('fortune-mod')
 groups=('fortune-mods')
 source="fortunes.txt"
 url="http://www.moviemistakes.com/film3297/quotes"
-md5sums=('eb8a4013ac36655ec7cd46ca9b6f022c')
+md5sums=('46f18341b325dff8bc1d1bf4db091738')
 
 build() {
   cp "${srcdir}/fortunes.txt" "${srcdir}/matrix"

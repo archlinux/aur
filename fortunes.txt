@@ -1,8 +1,8 @@
 Neo: There is no spoon.
 %
-Cypher: You know, I know this steak doesn't exist. I know that when I put it in my mouth, the Matrix is telling my brain that it is juicy, and delicious. After nine years, you know what I realise? Ignorance is bliss.
+Cypher: You know, I know this steak doesn't exist. I know that when I put it in my mouth, the Matrix is telling my brain that it is juicy and delicious. After nine years, you know what I realise? Ignorance is bliss.
 %
-Morpheus: You take the blue pill - the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill - you stay in Wonderland and I show you how deep the rabbit-hole goes.
+Morpheus: You take the blue pill - the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill - you stay in Wonderland, and I show you how deep the rabbit hole goes.
 %
 The Oracle: And don't worry about the vase.
 
@@ -20,9 +20,9 @@ Morpheus: Fate, it seems, is not without a sense of irony.
 
 Trinity: Dodge this.
 %
-Agent Smith: I'd like to share a revelation that I’ve had during my time here. It came to me when I tried to classify your species, and I realised that humans are not actually mammals. Every mammal on this planet instinctively develops a natural equilibrium with the surrounding environment; but you humans do not. Instead you multiply, and multiply, until every resource is consumed. The only way for you to survive is to spread to another area. There is another organism on this planet that follows the same pattern... a virus. Human beings are a disease, a cancer on this planet, you are a plague, and we... are the cure.
+Agent Smith: I'd like to share a revelation that I’ve had during my time here. It came to me when I tried to classify your species and I realised that you're not actually mammals. Every mammal on this planet instinctively develops a natural equilibrium with the surrounding environment, but you humans do not. You move to an area and you multiply and multiply until every natural resource is consumed. The only way you can survive is to spread to another area. There is another organism on this planet that follows the same pattern. Do you know what it is? A virus. Human beings are a disease, a cancer of this planet, you are a plague, and we... are the cure.
 %
-Agent Smith: Can you hear me, Morpheus? I'm going to be honest with you. I... hate this place, this zoo, this prison, this reality, whatever you want to call it. I can't stand it any longer. It's the smell, if there is such a thing. I feel saturated by it. I can taste your stink. And every time I do I feel I have somehow been infected by it. It's repulsive, isn't it? I must get out of here. I must get free and in this mind is the key, my key. Once Zion is destroyed there is no need for me to be here, don't you understand? I need the codes. I have to get inside Zion, and you have to tell me how. You're going to tell me, or you're going to die.
+Agent Smith: Can you hear me, Morpheus? I'm going to be honest with you. I... hate this place, this zoo, this prison, this reality, whatever you want to call it. I can't stand it any longer. It's the smell, if there is such a thing. I feel saturated by it. I can taste your stink. And every time I do I fear that I have somehow been infected by it. It's repulsive, isn't it? I must get out of here. I must get free and in this mind is the key, my key. Once Zion is destroyed there is no need for me to be here, do you understand? I need the codes. I have to get inside Zion, and you have to tell me how. You're going to tell me, or you're going to die.
 %
 Neo: I know kung fu.
 %
@@ -30,7 +30,7 @@ Neo: I thought it wasn't real.
 
 Morpheus: Your mind makes it real.
 
-Neo: If you're killed in the matrix, do you die here?
+Neo: If you're killed in the Matrix, you die here?
 
 Morpheus: The body cannot live without the mind.
 %
@@ -46,9 +46,9 @@ Morpheus: Yes, that's true.
 
 Trinity: You said it was suicide.
 
-Morpheus: Then let us hope...that I was wrong.
+Morpheus: Then let us hope... that I was wrong.
 %
-Merovingian: I have sampled every language, French is my favourite - fantastic language, especially to curse with. Nom de Dieu de putain de bordel de merde de saloperie de connard d'enculé de ta mère! You see, it's like wiping your arse with silk, I love it.
+Merovingian: I have sampled every language, French is my favourite - fantastic language, especially to curse with. Nom de Dieu de putain de bordel de merde de saloperies de connards d'enculé de ta mère. You see? It's like wiping your arse with silk. I love it.
 %
 Agent Smith: Surprised to see me?
 
@@ -58,31 +58,31 @@ Agent Smith: Then you're aware of it.
 
 Neo: Of what?
 
-Agent Smith: Our connection. I don't fully understand how it happened, perhaps some part of you imprinted on to me, something overwritten or copied, it is at this point irrelevant. What matters is whatever happened, happened for a reason.
+Agent Smith: Our connection. I don't fully understand how it happened, perhaps some part of you imprinted onto me, something overwritten or copied, it is at this point irrelevant. What matters is whatever happened, happened for a reason.
 
 Neo: And what reason is that?
 
-Agent Smith: I killed you Mr. Anderson, I watched you die, with a certain satisfaction I might add. And then something happened. Something that I knew was impossible but it happened anyway. You destroyed me Mr. Anderson. Afterward, I knew the rules, I understood what I was supposed to do, but I didn't. I couldn't. I was compelled to stay, compelled to disobey. And now here I stand because of you Mr. Anderson, because of you, I am no longer an Agent of this system, because of you I've changed, I'm unplugged, a new man so to speak. Like you, apparently, free.
+Agent Smith: I killed you, Mr. Anderson, I watched you die. With a certain satisfaction, I might add. And then something happened. Something that I knew was impossible, but it happened anyway. You destroyed me, Mr. Anderson. Afterward, I knew the rules, I understood what I was supposed to do, but I didn't. I couldn't. I was compelled to stay, compelled to disobey. And now here I stand because of you, Mr. Anderson. Because of you, I am no longer an Agent of this system. Because of you I've changed, I'm unplugged, a new man, so to speak. Like you, apparently, free.
 
 Neo: Congratulations.
 
-Agent Smith: Thank you. But, as you well know appearances can be decieving, which brings me back to the reason why we're here. We are not here because we're free, we're here because we are not free. There is no escaping reason, no denying purpose, because as we both know, without purpose, we would not exist.
+Agent Smith: Thank you. But, as you well know, appearances can be deceiving, which brings me back to the reason why we're here. We're not here because we're free, we're here because we're not free. There is no escaping reason, no denying purpose, because as we both know, without purpose, we would not exist.
 
-Multiple Smiths: It is purpose that created us. Purpose that connects us. Purpose that pulls us, that guides us, that drive us. It is purpose that defines, purpose that binds us.
+Multiple Smiths: It is purpose that created us. Purpose that connects us. Purpose that pulls us, that guides us, that drives us. It is purpose that defines, purpose that binds us.
 
-Agent Smith: We are here because of you Mr. Anderson. We're here to take from you what you tried to take from us. Purpose.
+Agent Smith: We are here because of you, Mr. Anderson. We're here to take from you what you tried to take from us. Purpose.
 %
-Agent Smith: Why, Mr. Anderson? Why do you do it? Why get up? Why keep fighting? Do you believe you're fighting for something? For more than just your survival? Can you tell me what it is? Do you even know? Is it freedom? Or truth? Perhaps peace? Could it be for love? Illusions, Mr. Anderson. Vagaries of perception. The temporary constructs of a feeble human intellect trying desparately to justify an existence that is without meaning or porpose. And all of them as artificial as the Matrix itself, although only a human mind could invent something as insipid as love. You must be able to see it, Mr. Anderson. You must know it by now. You can't win. It's pointless to keep fighting. Why, Mr. Anderson? Why?! Why do you persist?!
+Agent Smith: Why, Mr. Anderson? Why, why, why? Why do you do it? Why? Why get up? Why keep fighting? Do you believe you're fighting for something? For more than your survival? Can you tell me what it is? Do you even know? Is it freedom or truth? Perhaps peace? Could it be for love? Illusions, Mr. Anderson. Vagaries of perception. Temporary constructs of a feeble human intellect trying desparately to justify an existence that is without meaning or purpose! And all of them as artificial as the Matrix itself, although only a human mind could invent something as insipid as love. You must be able to see it, Mr. Anderson! You must know it by now! You can't win! It's pointless to keep fighting! Why, Mr. Anderson? Why?! Why do you persist?!
 
 Neo: Because I choose to.
 %
-Agent Smith: Mr. Anderson, welcome back. We've missed you. You like what I've done with the place?
+Agent Smith: Mr. Anderson, welcome back. We missed you. You like what I've done with the place?
 
 Neo: It ends tonight.
 
-Agent Smith: I know, I've seen it. That's why the rest of me is just going to enjoy the show, because we all know I'm the one who beats you.
+Agent Smith: I know it does, I've seen it. That's why the rest of me is just going to enjoy the show, because we already know that I'm the one that beats you.
 %
-Mifune: If it is our time to die, than it is our time to die. But we'll give them hell before we do!
+Mifune: If it's our time to die, it's our time. All I ask is: If we have to give these bastards our lives, we give them hell before we do!
 %
 The Oracle: You are a bastard.
 
