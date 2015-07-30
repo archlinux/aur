@@ -1,6 +1,6 @@
 pkgbase = ogrebullet-git
 	pkgdesc = Bullet Physics wrapper for OGRE
-	pkgver = 20130516
+	pkgver = r40.448f97c
 	pkgrel = 1
 	url = http://www.ogre3d.org/tikiwiki/OgreBullet
 	arch = i686
@@ -14,7 +14,9 @@ pkgbase = ogrebullet-git
 	provides = ogrebullet
 	conflicts = ogrebullet-svn
 	source = git+https://bitbucket.org/alexeyknyshev/ogrebullet.git
+	source = bullet281.patch
 	sha1sums = SKIP
+	sha1sums = 8a52583e0ef2a2012ed9394ee4de168144658c36
 
 pkgname = ogrebullet-git
 

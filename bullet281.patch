@@ -1,0 +1,60 @@
+diff -aNur Collisions/include/Utils/OgreBulletCollisionsMeshToShapeConverter.h Collisions/include/Utils/OgreBulletCollisionsMeshToShapeConverter.h
+--- Collisions/include/Utils/OgreBulletCollisionsMeshToShapeConverter.h	2015-07-28 15:35:01.865756100 -0300
++++ Collisions/include/Utils/OgreBulletCollisionsMeshToShapeConverter.h	2015-07-28 15:40:46.122512400 -0300
+@@ -97,7 +97,7 @@
+                 StaticMeshToShapeConverter(Ogre::Renderable *rend,
+                                            const Ogre::Matrix4 &transform = Ogre::Matrix4::IDENTITY);
+ 
+-                StaticMeshToShapeConverter(Ogre::Entity *entity,
++                StaticMeshToShapeConverter(const Ogre::Entity *entity,
+                                            const Ogre::Matrix4 &transform = Ogre::Matrix4::IDENTITY);
+ 
+                 StaticMeshToShapeConverter();
+diff -aNur Collisions/src/OgreBulletCollisionsRay.cpp Collisions/src/OgreBulletCollisionsRay.cpp
+--- Collisions/src/OgreBulletCollisionsRay.cpp	2015-07-28 15:35:01.869388900 -0300
++++ Collisions/src/OgreBulletCollisionsRay.cpp	2015-07-28 15:37:51.968309200 -0300
+@@ -84,7 +84,11 @@
+     // -------------------------------------------------------------------------
+     const Object *CollisionClosestRayResultCallback::getCollidedObject() const
+     {        
+-        return mWorld->findObject(static_cast<btCollisionWorld::ClosestRayResultCallback *>(mRayResultCallback)->m_collisionObject);
++    #if BT_BULLET_VERSION>=281
++       return mWorld->findObject(const_cast<btCollisionObject*>(static_cast<btCollisionWorld::ClosestRayResultCallback *> (mRayResultCallback)->m_collisionObject));
++    #else
++       return mWorld->findObject(static_cast<btCollisionWorld::ClosestRayResultCallback *> (mRayResultCallback)->m_collisionObject);
++    #endif
+ 	}
+     // -------------------------------------------------------------------------
+     CollisionClosestRayResultCallback::CollisionClosestRayResultCallback(const Ogre::Ray &ray, CollisionsWorld *world, Ogre::Real max_distance)
+diff -aNur Collisions/src/OgreBulletCollisionsWorld.cpp Collisions/src/OgreBulletCollisionsWorld.cpp
+--- Collisions/src/OgreBulletCollisionsWorld.cpp	2015-07-28 15:35:01.869998100 -0300
++++ Collisions/src/OgreBulletCollisionsWorld.cpp	2015-07-28 15:37:51.968660800 -0300
+@@ -234,8 +234,8 @@
+ 	{
+ 		btPersistentManifold* contactManifold = mWorld->getDispatcher()->getManifoldByIndexInternal(i);
+ 
+-		const btCollisionObject* obA = /*static_cast<btCollisionObject*>*/(contactManifold->getBody0());
+-		const btCollisionObject* obB = /*static_cast<btCollisionObject*>*/(contactManifold->getBody1());
++btCollisionObject* obA = const_cast<btCollisionObject*>(contactManifold->getBody0());
++btCollisionObject* obB = const_cast<btCollisionObject*>(contactManifold->getBody1());
+ 
+ 		contactManifold->refreshContactPoints(obA->getWorldTransform(),obB->getWorldTransform());
+ 
+diff -aNur Dynamics/src/OgreBulletDynamicsWorld.cpp Dynamics/src/OgreBulletDynamicsWorld.cpp
+--- Dynamics/src/OgreBulletDynamicsWorld.cpp	2015-07-28 15:35:01.901753600 -0300
++++ Dynamics/src/OgreBulletDynamicsWorld.cpp	2015-07-28 15:37:51.987024200 -0300
+@@ -116,8 +116,13 @@
+ 			{
+ 				btPersistentManifold* contactManifold = mWorld->getDispatcher()->getManifoldByIndexInternal(i);
+ 
+-                const btCollisionObject* obA = contactManifold->getBody0();
+-                const btCollisionObject* obB = contactManifold->getBody1();
++                    #if BT_BULLET_VERSION>=281
++       btCollisionObject* obA = const_cast<btCollisionObject*>(contactManifold->getBody0());; // For newer Bullet versions
++       btCollisionObject* obB = const_cast<btCollisionObject*>(contactManifold->getBody1()); // For newer Bullet versions
++    #else
++       btCollisionObject* obA = static_cast<btCollisionObject*>(contactManifold->getBody0()); // For older Bullet versions (original code)
++       btCollisionObject* obB = static_cast<btCollisionObject*>(contactManifold->getBody1()); // For older Bullet versions (original code)
++    #endif
+ 
+                 contactManifold->refreshContactPoints(obA->getWorldTransform(), obB->getWorldTransform());
