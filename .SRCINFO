@@ -1,0 +1,15 @@
+pkgbase = adobe-icc
+	pkgdesc = Adobe ICC profiles
+	pkgver = CS4
+	pkgrel = 3
+	url = http://www.adobe.com/support/downloads/iccprofiles/iccprofiles_mac.html
+	arch = any
+	license = custom
+	makedepends = unzip
+	source = http://download.adobe.com/pub/adobe/iccprofiles/mac/AdobeICCProfilesCS4Mac_end-user.zip
+	source = LICENSE
+	sha1sums = 395c0ebe306066660f510df43d830bd7ff64f223
+	sha1sums = 0745e9f0aacbd46c664fe59c5e4ffacc76cd84d9
+
+pkgname = adobe-icc
+
