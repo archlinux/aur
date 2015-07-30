@@ -1,0 +1,17 @@
+pkgbase = python-systemd
+	pkgdesc = Python bindings for systemd
+	pkgver = 230
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/systemd/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lxml
+	depends = systemd
+	source = https://github.com/systemd/python-systemd/archive/v230.tar.gz
+	sha256sums = 656a83ff695f5de7d63411a86ea38601ad5a918595eebd0817d7b8e68642c64d
+
+pkgname = python-systemd
+
