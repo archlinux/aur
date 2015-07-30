@@ -1,0 +1,23 @@
+pkgbase = adwaita-qt
+	pkgdesc = The stylesheet to bend Qt applications to look like they belong into GNOME Shell
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/MartinBriza/adwaita-qt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = qt5-base
+	makedepends = qt4
+	source = https://github.com/MartinBriza/adwaita-qt/archive/master.zip
+	md5sums = 9f44301af62f90db589e4c75e21d77c9
+
+pkgname = adwaita-qt5
+	depends = adwaita-qt-common
+	optdepends = adwaita-qt4: Qt4 version
+
+pkgname = adwaita-qt4
+	depends = adwaita-qt-common
+
+pkgname = adwaita-qt-common
+
