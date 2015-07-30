@@ -1,0 +1,15 @@
+pkgbase = lib32-libmp4v2
+	pkgdesc = MPEG-4 library (32 bit)
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = http://code.google.com/p/mp4v2/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	depends = libmp4v2
+	depends = lib32-gcc-libs
+	source = http://mp4v2.googlecode.com/files/mp4v2-2.0.0.tar.bz2
+	md5sums = c91f06711225b34b4c192c9114887b14
+
+pkgname = lib32-libmp4v2
+
