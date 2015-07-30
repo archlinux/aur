@@ -13,7 +13,7 @@ source_x86_64=(https://az764295.vo.msecnd.net/public/${pkgver}/VSCode-linux-x64.
                ${pkgname}.png
                ${pkgname}.desktop
                )
-source_i1686=(https://az764295.vo.msecnd.net/public/${pkgver}/VSCode-linux-ia32.zip
+source_i686=(https://az764295.vo.msecnd.net/public/${pkgver}/VSCode-linux-ia32.zip
               ${pkgname}.png
               ${pkgname}.desktop
               )
