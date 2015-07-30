@@ -1,13 +1,11 @@
 pkgbase = autojump-git
 	pkgdesc = A faster way to navigate your filesystem from the command line
-	pkgver = release.v21.6.9.149.g72313db
+	pkgver = release.v21.7.1.191.g113a84f
 	pkgrel = 1
 	url = http://github.com/joelthelion/autojump
-	install = install
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = bash
 	depends = python
 	provides = autojump
 	conflicts = autojump

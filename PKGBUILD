@@ -4,13 +4,13 @@
 # Contributor: William Ting <william.h.tingATgmail.com>
 
 pkgname=autojump-git
-pkgver=release.v21.6.9.149.g72313db
+pkgver=release.v21.7.1.191.g113a84f
 pkgrel=1
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=(any)
 url="http://github.com/joelthelion/autojump"
 license=('GPL3')
-depends=('bash' 'python')
+depends=('python')
 makedepends=('git')
 conflicts=('autojump')
 provides=('autojump')
@@ -18,7 +18,6 @@ replaces=()
 backup=()
 source=('git+https://github.com/joelthelion/autojump.git')
 md5sums=('SKIP')
-install='install'
 
 _gitname="autojump"
 
@@ -29,12 +28,23 @@ pkgver() {
 
 prepare() {
     cd ${_gitname}
-    sed -i 's$#!/usr/bin/env python$#!/usr/bin/env python2$' bin/autojump bin/*.py
+    sed -i 's$#!/usr/bin/env python$#!/usr/bin/env python3$' bin/autojump bin/*.py
 }
 
 package() {
     cd ${_gitname}
-    /usr/bin/env python2 ./install.py --prefix 'usr/' --destdir "${pkgdir}" --zshshare 'usr/share/zsh/site-functions'
+    ./install.py --prefix 'usr/' --destdir "${pkgdir}" --zshshare 'usr/share/zsh/site-functions'
+
+    cd "${pkgdir}"/usr/share/$_gitname
+    for i in $_gitname.* ; do
+        ln -s /usr/share/$_gitname/$i \
+            "${pkgdir}"/etc/profile.d/$i
+    done
+
+    #https://github.com/joelthelion/autojump/pull/339
+    sed -i "s!/usr/local/!/usr/!g" "${pkgdir}"/etc/profile.d/$_gitname.sh
+    #FS#43762
+    sed -i '27,31d' "${pkgdir}"/etc/profile.d/$_gitname.sh
 }
 
 
