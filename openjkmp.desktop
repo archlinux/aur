@@ -3,6 +3,7 @@ Encoding=UTF-8
 Type=Application
 Name=OpenJK Multi Player
 Comment="Open Source Jedi Knight II + III Engine - Multi Player"
+Path=/opt/openjk-git/JediAcademy/
 Exec=openjk
 Icon=openjkmp
 Terminal=false
