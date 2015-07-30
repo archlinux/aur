@@ -4,8 +4,9 @@
 
 
 pkgname=spotify32bit
+_realname=spotify
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Last 32Bit version of proprietary peer-to-peer music streaming service"
 arch=('i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -15,7 +16,7 @@ changelog='spotify.changelog'
 options=('!strip')
 conflicts=('spotify-beta')
 
-source=("http://carburante.altervista.org/spotify-0-9-4-183-en-ubu.deb"
+source=("http://carburante.altervista.org/$realname-0-9-4-183-en-ubu.deb"
 'spotify'
 'spotify.protocol'
 )

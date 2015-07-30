@@ -1,7 +1,7 @@
 pkgbase = spotify32bit
 	pkgdesc = Last 32Bit version of proprietary peer-to-peer music streaming service
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spotify.com
 	install = spotify.install
 	changelog = spotify.changelog
@@ -25,7 +25,7 @@ pkgbase = spotify32bit
 	optdepends = libnotify: Adds desktop notifications
 	conflicts = spotify-beta
 	options = !strip
-	source = http://carburante.altervista.org/spotify-0-9-4-183-en-ubu.deb
+	source = http://carburante.altervista.org/-0-9-4-183-en-ubu.deb
 	source = spotify
 	source = spotify.protocol
 	md5sums = 20113ac3d6760ded6940fef8143fa9a3
