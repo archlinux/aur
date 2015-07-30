@@ -1,12 +1,13 @@
 pkgbase = getfem++
 	pkgdesc = Generic C++ finite element library.
-	pkgver = 4.3
-	pkgrel = 2
+	pkgver = 5.0
+	pkgrel = 1
 	url = http://download.gna.org/getfem/html/homepage/
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	checkdepends = perl
+	makedepends = gcc-fortran
 	depends = python2-numpy
 	depends = python2-scipy
 	depends = boost
@@ -17,8 +18,8 @@ pkgbase = getfem++
 	provides = getfem++
 	provides = gmm
 	conflicts = gmm
-	source = http://download.gna.org/getfem/stable/getfem-4.3.tar.gz
-	sha256sums = e4824293f0d88e2211a24687f325c8ad93e297af8ae7df2f815fbae205044f2c
+	source = http://download.gna.org/getfem/stable/getfem-5.0.tar.gz
+	sha256sums = 2c824b39930ea9852077b196f63a9bbc4e3f19e098323dccae6d6fa4011c993e
 
 pkgname = getfem++
 
