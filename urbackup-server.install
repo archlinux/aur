@@ -1,7 +1,7 @@
 post_upgrade() {
   mandb -q
   systemctl daemon-reload
-  # The Win client hasn't changed in years so we don't need them to upgrade.
+  # The Win client doesn't change much so we don't need them to upgrade.
   #rm -f '/var/urbackup/'{UrBackupUpdate.exe,UrBackupUpdate.sig,server_token.key}
   # urbackup might use server_version_info.properties for db version
 }

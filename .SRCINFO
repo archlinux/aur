@@ -1,5 +1,5 @@
 pkgbase = urbackup-server-git
-	pkgdesc = Client/Server network backup for Windows and Linux
+	pkgdesc = Client/Server network backup for Windows and Linux, builds server or client
 	pkgver = 1.4.9.r21.g6d3d464
 	pkgrel = 1
 	url = http://www.urbackup.org/
@@ -14,7 +14,11 @@ pkgbase = urbackup-server-git
 	provides = urbackup-server
 	conflicts = urbackup-server
 	source = git+https://github.com/uroni/urbackup_backend.git
+	source = git+https://github.com/uroni/urbackup_frontend_wx.git
+	source = urbackup-client.service
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = e4c40d10909417cd04898388bab41aa6434375b62944183f132e606ed71f70b2
 
 pkgname = urbackup-server-git
 
