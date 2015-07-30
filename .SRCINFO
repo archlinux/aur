@@ -1,0 +1,28 @@
+pkgbase = kompare-kde4
+	pkgdesc = Diff/Patch Frontend for KDE4
+	pkgver = 14.12.3
+	pkgrel = 1
+	url = http://kde.org/applications/development/kompare/
+	install = kompare-kde4.install
+	arch = i686
+	arch = x86_64
+	groups = kde-applications
+	groups = kdesdk
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = libkomparediff2-kde4
+	depends = kdebase-runtime
+	provides = kdesdk-kompare
+	provides = kompare
+	conflicts = kdesdk-kompare
+	conflicts = kompare
+	replaces = kdesdk-kompare
+	replaces = kompare
+	source = http://download.kde.org/stable/applications/14.12.3/src/kompare-14.12.3.tar.xz
+	sha1sums = 7d8d52baa812db4e382df77f66b00aa2d9babe01
+
+pkgname = kompare-kde4
+
