@@ -32,7 +32,7 @@ build() {
 package() {
   cd $srcdir/$pkgname
   make PREFIX="$pkgdir/usr" install
-  install -Dm644 README  $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README.md  $pkgdir/usr/share/doc/$pkgname/README.md
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
