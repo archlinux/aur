@@ -1,8 +1,9 @@
-# Maintainer: Christoph Drexler <chrdr at gmx dot at>
+# Maintainer: Andreas Hauser <andy-aur@splashground.de>
+# Former Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=openfst
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for constructing, combining, optimizing, and searching weighted finite-state transducers (FSTs)"
 arch=('i686' 'x86_64')
 url="http://www.openfst.org/"
@@ -28,7 +29,7 @@ build() {
 	OPTIONS+=" --enable-mpdt"           # Enable MPDT extensions;                         Default: no
 	OPTIONS+=" --enable-ngram-fsts"     # Enable NGramFst extensions;                     Default: no
 	OPTIONS+=" --enable-pdt"            # Enable PDT extensions;                          Default: no
-	OPTIONS+=" --enable-python"         # Enable Python extensions;                       Default: no
+	OPTIONS+=" --enable-python PYTHON=python2" # Enable Python extensions;                       Default: no
 	LIBS="-ldl" ./configure $OPTIONS
 	make
 }
@@ -36,4 +37,7 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 	make DESTDIR=${pkgdir} install
+
+	install -dm755 "$pkgdir"/etc/ld.so.conf.d/
+	echo '/usr/lib/fst' > "$pkgdir"/etc/ld.so.conf.d/openfst.conf
 }
