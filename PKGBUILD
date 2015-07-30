@@ -6,14 +6,14 @@
 _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
-pkgver=222
+pkgver=223
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-libre-api-headers'
-             'python' 'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
+             'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
 options=('strip' 'debug')
 source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         #'0001-adds-TCP-Stealth-support-to-systemd.patch::https://gnunet.org/sites/default/files/systemd-knock-patch.diff'
@@ -37,6 +37,10 @@ prepare() {
   cd "$_pkgbase"
 
   patch -Np1 <../0001-adds-TCP-Stealth-support-to-systemd-221.patch
+
+  # networkd: fix size of networkd binary
+  # https://github.com/systemd/systemd/commit/6870b4156377
+  git cherry-pick -n 6870b4156377
 
   ./autogen.sh
 }
@@ -73,8 +77,7 @@ package_systemd-knock() {
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
-  optdepends=('python: systemd library bindings'
-              'cryptsetup: required for encrypted block devices'
+  optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-knock-sysvcompat: symlink package to provide sysvinit binaries'

@@ -1,5 +1,5 @@
 pkgbase = systemd-knock
-	pkgver = 222
+	pkgver = 223
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
@@ -21,7 +21,6 @@ pkgbase = systemd-knock
 	makedepends = libxslt
 	makedepends = util-linux
 	makedepends = linux-libre-api-headers
-	makedepends = python
 	makedepends = python-lxml
 	makedepends = quota-tools
 	makedepends = shadow
@@ -29,7 +28,7 @@ pkgbase = systemd-knock
 	makedepends = git
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#tag=v222
+	source = git://github.com/systemd/systemd.git#tag=v223
 	source = https://repo.parabola.nu/other/knock/patches/systemd/0001-adds-TCP-Stealth-support-to-systemd-221.patch
 	source = https://repo.parabola.nu/other/systemd-knock/splash-parabola.bmp
 	source = initcpio-hook-udev
@@ -67,16 +66,15 @@ pkgname = systemd-knock
 	depends = libseccomp
 	depends = util-linux
 	depends = xz
-	optdepends = python: systemd library bindings
 	optdepends = cryptsetup: required for encrypted block devices
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-knock-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=222
-	provides = udev=222
-	provides = systemd=222
+	provides = systemd-tools=223
+	provides = udev=223
+	provides = systemd=223
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -118,14 +116,14 @@ pkgname = libsystemd-knock
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=222
+	provides = libsystemd=223
 	conflicts = libsystemd
 
 pkgname = systemd-knock-sysvcompat
 	pkgdesc = sysvinit compat for systemd-knock
 	license = GPL2
 	depends = systemd-knock
-	provides = systemd-sysvcompat=222
+	provides = systemd-sysvcompat=223
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
