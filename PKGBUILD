@@ -4,7 +4,7 @@
 # Contributor: Suzy Williams <suzanne.williams3@verizon.net>
 
 pkgname=yabasic
-pkgver=2.768
+pkgver=2.769
 pkgrel=1
 pkgdesc="Yet Another Basic"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://www.yabasic.de/"
 depends=('libx11' 'libsm' 'ncurses')
 makedepends=('libxt')
 source=("http://www.yabasic.de/download/$pkgname-$pkgver.tar.gz")
-md5sums=('394731d85d5188ae0020bf876fb71230')
+md5sums=('fa1ced26023a688f0573d278dc09f308')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -28,6 +28,4 @@ package() {
   make prefix="${pkgdir}/usr" install
   install -Dm644 ARTISTIC ${pkgdir}/usr/share/licenses/yabasic/Artistic
 }
-
-
 
