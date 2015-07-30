@@ -1,8 +1,8 @@
 pkgbase=linux-e531
 _srcname=linux-4.1
-_patchname=patch-4.1.2
-pkgver=4.1.2
-pkgrel=2
+_patchname=patch-4.1.3
+pkgver=4.1.3
+pkgrel=1
 groups=('ThinkPad-E531')
 arch=('x86_64')
 url="http://www.hurrdurr.org/"
@@ -21,8 +21,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'bitmap-enable-booting-for-dm-md-raid1.patch'
         'change-default-console-loglevel.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
-            '1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef'
-            'cfead5db43c0d8ad70e31eabaa8e2ecae7d2246e2d8a4334e3232f0e39d652d4'
+            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
+            'cfe0623547395f3a0d9f002f06104b71f6b14e64539ef686a477aece7658496b'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
             'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
