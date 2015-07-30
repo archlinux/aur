@@ -1,21 +1,27 @@
 pkgbase = easytranscript
 	pkgdesc = Easy to use transcription-software with a high feature volume
 	pkgver = 2.50.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://e-werkzeug.eu/index.php/en/products/easytranscript
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
+	makedepends = java-environment-common
 	makedepends = unzip
 	depends = jre8-openjdk
 	depends = java-openjfx
+	depends = java-commons-logging
+	depends = java-commons-io
+	depends = java-commons-collections
 	optdepends = vlc
-	source = easytranscript-2.50.1.zip::http://www.e-werkzeug.eu/counter/count.php?id=mac
+	source = easytranscript-2.50.1.zip::http://www.e-werkzeug.eu/software/easytranscript/versions/2.50.1/easytranscript.zip
 	source = easytranscript.desktop
 	source = easytranscript
+	source = manifest.txt
 	md5sums = bea5a44a1a0bb15fc38fb65594b264c3
 	md5sums = d8c3e78dae9269431b0411c04f6ae489
 	md5sums = 54f0a79ac82d5d692413980c056b81e7
+	md5sums = 49175d9f86bb844a0aa78166289ca12d
 
 pkgname = easytranscript
 
