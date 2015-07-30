@@ -1,7 +1,7 @@
 pkgbase = spotify-beta
 	pkgdesc = A proprietary peer-to-peer music streaming service
-	pkgver = 1.0.9.133
-	pkgrel = 2
+	pkgver = 1.0.11.131
+	pkgrel = 1
 	url = http://www.spotify.com
 	changelog = spotify.changelog
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = spotify-beta
 	optdepends = libnotify: Adds desktop notifications
 	conflicts = spotify
 	options = !strip
-	source = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.9.133.gcedaee38_amd64.deb
+	source = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.11.131.gf4d47cb0_amd64.deb
 	source = spotify.protocol
-	md5sums = 6134f1fde550d3c6c22c50c2627aa088
+	md5sums = af4bd4604c29d5d0ed2dde6e84453537
 	md5sums = ef25ddc5b6bf8fe1a0d64cbd79e1f7b4
 
 pkgname = spotify-beta

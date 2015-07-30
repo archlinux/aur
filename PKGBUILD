@@ -3,9 +3,9 @@
 # Contributor: EvanA <evan@thelinuxman.us>
 
 pkgname=spotify-beta
-pkgver=1.0.9.133
-_anotherpkgver=.gcedaee38
-pkgrel=2
+pkgver=1.0.11.131
+_anotherpkgver=.gf4d47cb0
+pkgrel=1
 pkgdesc="A proprietary peer-to-peer music streaming service"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -17,7 +17,7 @@ conflicts=('spotify')
 source=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}_amd64.deb"
 'spotify.protocol'
 )
-md5sums=('6134f1fde550d3c6c22c50c2627aa088'
+md5sums=('af4bd4604c29d5d0ed2dde6e84453537'
 'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4')
 
 depends=("alsa-lib>=1.0.14" "glibc>=2.6" "openssl" "gconf" "nss" "systemd" "gtk2" "libxtst" "libx11" "libcurl-compat")
