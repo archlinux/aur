@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-icu
 	pkgdesc = International Components for Unicode library (mingw-w64)
 	pkgver = 55.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icu-project.org/
 	arch = any
 	license = custom:icu
@@ -22,6 +22,7 @@ pkgbase = mingw-w64-icu
 	source = 0014-mingwize-pkgdata.mingw.patch
 	source = 0015-debug.mingw.patch
 	source = 0016-icu-pkgconfig.patch
+	source = 0017-icu-config-versioning.patch
 	md5sums = e2d523df79d6cb7855c2fbe284f4db29
 	md5sums = 4c8143786ed499184e64fc5a1a1d0fdf
 	md5sums = eb56b72df2ca0dc77261c4f2adc5c8ad
@@ -33,6 +34,7 @@ pkgbase = mingw-w64-icu
 	md5sums = 74415f3f3876b5f2f7cea0c5d367c5c6
 	md5sums = d1accfbefbcd399a4a28a4a4e0737915
 	md5sums = 3f13cf5733c4a9363c5823a24d3fba85
+	md5sums = da12188a00025605be0c4ee22d1895bb
 
 pkgname = mingw-w64-icu
 
