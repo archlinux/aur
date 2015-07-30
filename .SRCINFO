@@ -1,6 +1,6 @@
 pkgbase = librepo
 	pkgdesc = Repodata downloading library
-	pkgver = 1.7.15
+	pkgver = 1.7.16
 	pkgrel = 1
 	url = https://github.com/Tojaj/librepo
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = librepo
 	depends = glib2
 	depends = gpgme
 	optdepends = python: for python bindings
-	source = https://github.com/Tojaj/librepo/archive/librepo-1.7.15.tar.gz
-	md5sums = e4971ffccf2c78c2b390df43b01297c3
+	source = librepo-1.7.16.tar.gz::https://github.com/Tojaj/librepo/archive/d9bed0d9f96b505fb86a1adc50b3d6f8275fab93.tar.gz
+	md5sums = 3df89269456df9dce6d1205b8a717f53
 
 pkgname = librepo
 
