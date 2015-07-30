@@ -1,6 +1,6 @@
 # vim: ft=PKGBUILD
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
-# % Trigger: 1433756367 %
+# % Trigger: 1438231289 %
 
 pkgname=('vdev-git' 'vdev-libudev-compat-git')
 pkgver=r559.4a2b859
