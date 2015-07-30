@@ -1,0 +1,19 @@
+pkgbase = gimp-plugin-separate+
+	pkgdesc = Provides some useful color-management functions for the GIMP
+	pkgver = 0.5.8
+	pkgrel = 3
+	url = http://cue.yellowmagic.info/softwares/separate-plus/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = unzip
+	depends = gimp
+	depends = lcms
+	optdepends = adobe-icc: ICC profiles from Adobe
+	optdepends = eci-icc: ICC profiles from ECI
+	replaces = gimp-plugin-separate
+	source = http://dl.sourceforge.jp/separate-plus/47873/separate+-0.5.8.zip
+	sha1sums = ca109eb5c85e91f062e747a710142888efcf85b8
+
+pkgname = gimp-plugin-separate+
+
