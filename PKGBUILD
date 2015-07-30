@@ -3,8 +3,8 @@
 # Contributor: wido <widomaker2k7@gmail.com>
 
 pkgname=fortune-mod-matrix
-pkgver=20091124
-pkgrel=3
+pkgver=20150730
+pkgrel=1
 pkgdesc="Fortune cookies: The Matrix trilogy"
 arch=('any')
 license=('custom')
