@@ -3,7 +3,7 @@
 
 pkgname=tvheadend-atsc-epg-git
 _gitname='tvheadend'
-pkgver=5905+gc8df8b5
+pkgver=4.1.r390.g198a892
 pkgrel=1
 pkgdesc="TV streaming server for Linux (with PSIP ATSC EPG Grabber)"
 arch=('i686' 'x86_64')
@@ -16,26 +16,26 @@ provides=('tvheadend')
 conflicts=('tvheadend' 'hts-tvheadend' 'hts-tvheadend-svn' 'tvheadend-git')
 install=tvheadend.install
 
-source=("${_gitname}::git+https://github.com/laurimyllari/tvheadend.git#branch=atsc-epg"
+source=("${_gitname}::git+https://github.com/zman0900/tvheadend.git#branch=atsc-epg"
 	'tvheadend.service')
 
 md5sums=('SKIP'
          'b546f4486f0d28bea13ad1fb676acb27')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
-	echo $(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
+    cd "${srcdir}/${_gitname}"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
-	./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release
-	make
+    cd "${srcdir}/${_gitname}"
+    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release
+    make
 }
 
 package() {
-	cd "${srcdir}/${_gitname}"
-	make DESTDIR="$pkgdir/" install
-	install -D -m 644 "$srcdir/tvheadend.service" "$pkgdir/usr/lib/systemd/system/tvheadend.service"
+    cd "${srcdir}/${_gitname}"
+    make DESTDIR="$pkgdir/" install
+    install -D -m 644 "$srcdir/tvheadend.service" "$pkgdir/usr/lib/systemd/system/tvheadend.service"
 }
 
