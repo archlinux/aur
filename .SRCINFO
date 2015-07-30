@@ -1,0 +1,25 @@
+pkgbase = california-git
+	pkgdesc = A new calendar application for GNOME 3. It is currently under heavy development.
+	pkgver = 0.3.0.r17.g555974b
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/California
+	install = california.install
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = vala
+	makedepends = git
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = yelp-tools
+	makedepends = gobject-introspection
+	depends = evolution-data-server
+	depends = libgee
+	depends = xdg-utils
+	provides = california
+	conflicts = california
+	source = git://git.gnome.org/california
+	md5sums = SKIP
+
+pkgname = california-git
+
