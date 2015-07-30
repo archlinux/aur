@@ -9,7 +9,7 @@ url='http://qt-apps.org/content/show.php/QMPlay2?content=153339'
 license=('LGPL')
 depends=('qt4' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb')
 optdepends=('pulseaudio' 'youtube-dl')
-makedepends=('make' 'gcc', 'pkg-config')
+makedepends=('make' 'gcc' 'pkg-config')
 source="http://downloads.sourceforge.net/project/zaps166/QMPlay2/QMPlay2-src-${pkgver}.tar.bz2"
 sha256sums=(2a770260a6d32a531533fedb0034d0b66ed1211186722a188ecb756a4fa8c72f)
 
