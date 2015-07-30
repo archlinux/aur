@@ -1,0 +1,15 @@
+pkgbase = python-you-get
+	pkgdesc = A YouTube/Youku/Niconico video downloader written in Python 3.
+	pkgver = 0.3.33
+	pkgrel = 1
+	url = http://www.soimort.org/you-get/
+	arch = any
+	license = MIT
+	makedepends = python
+	depends = python
+	depends = python-distribute
+	source = https://pypi.python.org/packages/source/y/you-get/you-get-0.3.33.tar.gz
+	sha256sums = 580632b57d336cece399ff194669ad6cb13e6e1cb068de5005d37d2d7be8e020
+
+pkgname = python-you-get
+
