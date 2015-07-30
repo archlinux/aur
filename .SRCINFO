@@ -1,0 +1,16 @@
+pkgbase = python2-graphy
+	pkgdesc = Simple Chart Library for Python (deprecated Google Chart API)
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://code.google.com/p/graphy/
+	arch = any
+	license = Apache
+	makedepends = python2-distribute
+	depends = python2
+	source = https://graphy.googlecode.com/files/graphy_1.0.tar.bz2
+	source = setup.py
+	md5sums = cbf392db1866f3158608f6de97488de1
+	md5sums = d42f521be65155367f21b2de88c81122
+
+pkgname = python2-graphy
+
