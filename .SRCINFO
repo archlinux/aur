@@ -1,7 +1,7 @@
 pkgbase = abrowser-bin
 	pkgdesc = Binary version of Abrowser, safe and easy web browser from Mozilla
-	pkgver = 38.0
-	pkgrel = 2
+	pkgver = 39.0
+	pkgrel = 1
 	url = https://trisquel.info/en/wiki/abrowser-help
 	install = abrowser.install
 	arch = i686
@@ -32,10 +32,10 @@ pkgbase = abrowser-bin
 	depends = libpng
 	depends = cairo
 	depends = gnome-vfs
-	source_i686 = http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_38.0+build3-0ubuntu0.14.04.1+7.0trisquel37_i386.deb
-	sha256sums_i686 = 3c22a6dfcdf7abe14050057dd4bb92542d2270a72ec68d9071d7c941fd87b1ac
-	source_x86_64 = http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_38.0+build3-0ubuntu0.14.04.1+7.0trisquel37_amd64.deb
-	sha256sums_x86_64 = f41dea99fae2148d80ada4daec4481b6e7a35ae8593a9fbbeeccb005b928aa37
+	source_i686 = http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_39.0+build5-0ubuntu0.14.04.1+7.0trisquel39_i386.deb
+	sha256sums_i686 = da9647d14244cdc7d6e382b40889e7171221da79a3d5fcbf17f2f1a1bb365d66
+	source_x86_64 = http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_39.0+build5-0ubuntu0.14.04.1+7.0trisquel39_amd64.deb
+	sha256sums_x86_64 = 5e53624fcb46652203401f00af2ac69fa0b4b6a6be4b2c66a68b1fe247e29629
 
 pkgname = abrowser-bin
 
