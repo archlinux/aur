@@ -1,6 +1,6 @@
 pkgbase = ledger-git
 	pkgdesc = A double-entry accounting system with a command-line reporting interface
-	pkgver = 20150609
+	pkgver = 20150730
 	pkgrel = 1
 	url = http://ledger-cli.org
 	install = ledger.install

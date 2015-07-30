@@ -3,7 +3,7 @@
 
 pkgname=ledger-git
 pkgdesc="A double-entry accounting system with a command-line reporting interface"
-pkgver=20150609
+pkgver=20150730
 pkgrel=1
 
 _branch=next
@@ -38,9 +38,6 @@ prepare() {
   cd ledger
   find -iname '*.py' -execdir sed -i 's|^#!.*python$|#!/usr/bin/python2|' '{}' \;
   sed -i 's|^#!.*python$|#!/usr/bin/python2|' ./acprep
-
-  # build fixes for boost 1.58
-  git cherry-pick 48aec0f093ff64 68c9d649caa2c7
 }
 
 build() {
