@@ -1,0 +1,15 @@
+pkgbase = touchpad-toggle
+	pkgdesc = Script to toggle the touchpad; see https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Software_toggle. Use desktop environment to set keyboard shortcut.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = Apache
+	depends = bash
+	depends = xf86-input-synaptics
+	provides = touchpad-toggle
+	conflicts = touchpad-toggle
+	source = touchpad-toggle.sh
+	md5sums = b691e7dbf1c850900120624dbe40e019
+
+pkgname = touchpad-toggle
+
