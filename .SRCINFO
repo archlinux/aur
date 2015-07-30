@@ -1,5 +1,5 @@
 pkgbase = cozy-indexer
-	pkgdesc = Indexer for Cozy.
+	pkgdesc = REST API for data indexation, to be used with Cozy
 	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/cozy/cozy-data-indexer

@@ -3,7 +3,7 @@ pkgname=cozy-indexer
 pkgver=1.0.6
 pkgrel=1
 epoch=
-pkgdesc="Indexer for Cozy."
+pkgdesc="REST API for data indexation, to be used with Cozy"
 arch=('any')
 url="https://github.com/cozy/cozy-data-indexer"
 license=('GPL3')
@@ -13,8 +13,6 @@ makedepends=()
 provides=('cozy-indexer')
 source=(git+https://github.com/cozy/cozy-data-indexer)
 sha256sums=('SKIP')
-#install=$pkgname.install
-#validpgpkeys=()
 
 build() {
 	cd cozy-data-indexer
