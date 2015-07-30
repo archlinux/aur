@@ -8,17 +8,17 @@ pkgname=('gtk2-dfb')
 if [ $multi_build ]
   then pkgname=('gtk2-dfb' 'gtk2' 'gtk-update-icon-cache')
 fi
-pkgver=2.24.27
+pkgver=2.24.28
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://www.gtk.org/"
 makedepends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcomposite' 'libxdamage'
-             'shared-mime-info' 'cairo-dfb' 'libcups' 'gdk-pixbuf2' 'gobject-introspection')
+             'shared-mime-info' 'cairo-dfb' 'libcups' 'gdk-pixbuf2' 'gobject-introspection' 'python2')
 license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-$pkgver.tar.xz
         gtkrc xid-collision-debug.patch)
-sha256sums=('20cb10cae43999732a9af2e9aac4d1adebf2a9c2e1ba147050976abca5cd24f4'
-            'b77a427df55a14182c10ad7e683b4d662df2846fcd38df2aa8918159d6be3ae2'
+sha256sums=('b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656'
+            'bc968e3e4f57e818430130338e5f85a5025e21d7e31a3293b8f5a0e58362b805'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
 
 prepare() {
@@ -86,13 +86,12 @@ package_gtk2-dfb() {
 }
 
 package_gtk2() {
-    pkgdesc="GTK+ is a multi-platform toolkit (v2)"
+    pkgdesc="GObject-based multi-platform GUI toolkit (legacy)"
     install=gtk2.install
     depends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcomposite' 'libxdamage' 
-             'shared-mime-info' 'cairo' 'libcups' 'gtk-update-icon-cache')
+             'shared-mime-info' 'cairo' 'libcups' 'gtk-update-icon-cache' 'librsvg')
     optdepends=('gnome-themes-standard: Default widget theme'
-                'gnome-icon-theme: Default icon theme')
-    replaces=('gtk2-docs')
+                'adwaita-icon-theme: Default icon theme')
 
     cd gtk2-build
     make DESTDIR="$pkgdir" install
