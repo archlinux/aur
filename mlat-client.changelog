@@ -1,25 +1,9 @@
-# Contributor : anish [ at ] gatech [dot] edu
-# Maintainer  : anish [ at ] gatech [dot] edu
+mlat-client (0.2.4~dev) UNRELEASED; urgency=medium
 
-pkgname=piaware-git
-_gitname=piaware
-pkgver=2.1.2.r1.ga1076de
-pkgrel=2
+  * 
 
-pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
+ -- Oliver Jowett <oliver@mutability.co.uk>  Wed, 29 Jul 2015 13:28:39 +0100
 
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/flightaware/piaware"
-license=('BSD')
-
-depends=('dump1090-fa-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tls' 'python')
-makedepends=('git' 'autoconf' 'tcl' 'python')
-
-source=('piaware::git+git://github.com/flightaware/piaware'
-	'tcllauncher::git+git://github.com/flightaware/tcllauncher.git'
-	'mlat::git+git://github.com/mutability/mlat-client.git')
-md5sums=('SKIP'
-         'SKIP'
 mlat-client (0.2.3) unstable; urgency=medium
 
   * Produce integer speed/heading/vrate values in Basestation output, maybe
