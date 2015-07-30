@@ -27,7 +27,6 @@ depends=('openssl')
 provides=('nodejs' 'nodejs-node-gyp' 'npm')
 conflicts=('nodejs' 'npm')
 makedepends=('python2' 'git' 'procps-ng' 'make' 'gcc' 'pkg-config')
-optdepends=('python2: for node-gyp')
 checkdepends=('curl')
 options=('!emptydirs')
 source=("http://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.gz"
