@@ -1,0 +1,18 @@
+pkgbase = nemo-compare
+	pkgdesc = Context menu comparison extension for Nemo file manager
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/linuxmint/nemo-extensions
+	install = nemo-compare.install
+	arch = any
+	license = GPL3
+	depends = nemo>=1
+	depends = nemo-python>=1.0
+	depends = python-xdg
+	depends = python2
+	depends = meld
+	source = http://packages.linuxmint.com/pool/main/n/nemo-compare/nemo-compare_2.6.0%2brafaela.tar.gz
+	sha256sums = 92a8e7861218f572a1091a14d0d0e9f7b95b82e914948847e61c25f53f57d904
+
+pkgname = nemo-compare
+
