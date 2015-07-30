@@ -22,8 +22,8 @@ post_remove() {
 
   rm -f /usr/sbin/rstudio-server
   
-  rm -f /var/run/rstudio-server
-  rm -f /var/lock/rstudio-server
-  rm -f /var/log/rstudio-server
-  rm -f /var/lib/rstudio-server
+  rm -rf /var/run/rstudio-server
+  rm -rf /var/lock/rstudio-server
+  rm -rf /var/log/rstudio-server
+  rm -rf /var/lib/rstudio-server
 }
