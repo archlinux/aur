@@ -1,6 +1,6 @@
 # Maintainer: Adrien Oliva <yapbreak@yapbreak.fr>
 pkgname="pacmanhealth-git"
-pkgver="0.1.0.12gccfbac1"
+pkgver="0.1.0.13g271436c"
 pkgrel="2"
 pkgdesc="Pacman health monitoring system"
 arch=('any')
