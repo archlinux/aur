@@ -1,0 +1,19 @@
+pkgbase = libkomparediff2-kde4
+	pkgdesc = Library to compare files and strings
+	pkgver = 14.12.3
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdesdk/libkomparediff2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	conflicts = libkomparediff2
+	source = http://download.kde.org/stable/applications/14.12.3/src/libkomparediff2-14.12.3.tar.xz
+	sha1sums = feaec85030e653a77fae0ca5d5cf70956be81475
+
+pkgname = libkomparediff2-kde4
+
