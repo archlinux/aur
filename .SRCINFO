@@ -1,0 +1,17 @@
+pkgbase = python-pywavelets
+	pkgdesc = Discrete Wavelet Transforms in Python
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/PyWavelets/pywt
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	source = https://github.com/PyWavelets/pywt/archive/v0.3.0.tar.gz
+	sha256sums = 9a82d86588220ae3744e09ead7a52169b4f0363b78fdb3b361a90d6cda7acc31
+
+pkgname = python-pywavelets
+
