@@ -1,6 +1,6 @@
 pkgbase = electrum-ltc
 	pkgdesc = Lightweight Litecoin wallet
-	pkgver = 2.4.0.1
+	pkgver = 2.4.0.2
 	pkgrel = 1
 	url = https://electrum-ltc.org
 	install = electrum-ltc.install
@@ -33,11 +33,11 @@ pkgbase = electrum-ltc
 	optdepends = python2-trezor: TREZOR hardware wallet support
 	optdepends = xdg-utils: update desktop icon
 	optdepends = zbar: QR code reading support
-	source = https://electrum-ltc.org/download/Electrum-LTC-2.4.0.1.tar.gz
-	source = https://electrum-ltc.org/download/Electrum-LTC-2.4.0.1.tar.gz.asc
-	md5sums = 2df691bd6387793b55cc8f2eb3872397
+	source = https://electrum-ltc.org/download/Electrum-LTC-2.4.0.2.tar.gz
+	source = https://electrum-ltc.org/download/Electrum-LTC-2.4.0.2.tar.gz.asc
+	md5sums = 2a602ae77572db1ec9cf40b0f8629cf2
 	md5sums = SKIP
-	sha256sums = 00b5031b295686dd2d5b2852b37a7b482e7215b7545c0e38776b54e6e2bdc0ce
+	sha256sums = 322ef9ce3e14f2789f43e359a10f91825e637a2054f620d632a9855de2cbd7be
 	sha256sums = SKIP
 
 pkgname = electrum-ltc
