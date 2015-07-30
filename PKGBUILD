@@ -24,7 +24,8 @@ build() {
 	mkdir -p build
 	cd build
 	cmake "$srcdir/$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
 	make
 }
 
