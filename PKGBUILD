@@ -1,14 +1,13 @@
 # Maintainer: Christian-Maximilian Steier
 pkgname=easytranscript
 pkgver=2.50.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy to use transcription-software with a high feature volume"
 arch=('i686' 'x86_64')
 url="http://e-werkzeug.eu/index.php/en/products/easytranscript"
 license=("GPL3")
-depends=('jre8-openjdk' 'java-openjfx' 'java-commons-logging' 'java-commons-io' 'java-commons-collections')
-optdepends=('vlc')
-makedepends=('java-environment-common' 'unzip')
+depends=('java-openjfx' 'java-commons-logging' 'java-commons-io' 'java-commons-collections' 'vlc')
+makedepends=('java-environment-openjdk=8' 'unzip')
 source=("${pkgname}-${pkgver}.zip::http://www.e-werkzeug.eu/software/easytranscript/versions/${pkgver}/${pkgname}.zip" 'easytranscript.desktop' 'easytranscript' 'manifest.txt')
 md5sums=('bea5a44a1a0bb15fc38fb65594b264c3'
          'd8c3e78dae9269431b0411c04f6ae489'
