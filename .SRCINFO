@@ -1,0 +1,19 @@
+pkgbase = ispin
+	pkgdesc = New Tcl/Tk GUI for Spin replacing xSpin
+	pkgver = 1.1.4
+	pkgrel = 2
+	url = http://spinroot.com/
+	arch = any
+	license = custom:SPIN
+	depends = spin>=6.0
+	depends = tk>=8.5
+	depends = gcc
+	optdepends = graphviz: recommended, provides dot tool for automata view
+	optdepends = curl: for version check information
+	source = http://spinroot.com/spin/Src/ispin.tcl
+	source = LICENSE.txt
+	md5sums = 8d61b59a650f79cf5e19f1edc27ebdcf
+	md5sums = 1b7db1b5f5da972bab3db17472e3a342
+
+pkgname = ispin
+
