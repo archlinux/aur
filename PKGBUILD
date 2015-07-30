@@ -22,7 +22,6 @@ build() {
 	cd "$pkgname-$pkgname-$pkgver"/build
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DCMAKE_SKIP_RPATH=ON       \
 	      -DPYTHON_DESIRED=3          \
 	      -DENABLE_DOCS=OFF           \
 	      ..
