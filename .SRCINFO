@@ -1,0 +1,13 @@
+pkgbase = clogs
+	pkgdesc = C++ library for sorting and searching in OpenCL applications
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/clogs/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source = http://skylink.dl.sourceforge.net/project/clogs/1.5.0/clogs-1.5.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = clogs
+
