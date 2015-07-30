@@ -1,0 +1,13 @@
+diff --git a/cmake/FindXsd.cmake b/cmake/FindXsd.cmake
+index 5b4e084..d11970b 100755
+--- a/cmake/FindXsd.cmake
++++ b/cmake/FindXsd.cmake
+@@ -20,7 +20,7 @@ PATH_SUFFIXES
+ 
+ FIND_PROGRAM(XSD_EXECUTABLE 
+   NAMES 
+-    xsd xsdcxx
++    xsdcxx xsd
+   PATHS
+     $ENV{XSDDIR}/bin
+     /usr/local/bin

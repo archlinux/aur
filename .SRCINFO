@@ -1,0 +1,25 @@
+pkgbase = percolator-git
+	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters + Elude tool
+	pkgver = 2.10.r1.gd92d600
+	pkgrel = 1
+	url = http://per-colator.com/
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = git
+	makedepends = xsd
+	makedepends = cmake
+	makedepends = boost
+	makedepends = zlib
+	depends = tokyocabinet
+	depends = xerces-c
+	depends = sqlite
+	provides = percolator
+	conflicts = percolator
+	source = source::git+https://github.com/percolator/percolator
+	source = percolator.patch
+	md5sums = SKIP
+	md5sums = 4e1432640f09fa3dc2f3d9894ec380f4
+
+pkgname = percolator-git
+
