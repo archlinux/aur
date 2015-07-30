@@ -1,0 +1,16 @@
+pkgbase = grub2-theme-arch-suse
+	pkgdesc = ArchLinux branded Grub2 theme adapted from openSUSE 12.2
+	pkgver = 3
+	pkgrel = 1
+	url = http://www.opensuse.org/en/
+	install = grub2-theme-arch-suse.install
+	arch = any
+	license = GPL
+	depends = grub
+	source = grub2-theme-arch-suse-v3.tar.gz::https://github.com/gS644/grub2-theme-arch-suse/archive/v3.tar.gz
+	source = grub2-theme-arch-suse.install
+	md5sums = 9ddf9b38301a6040367def78e3280185
+	md5sums = 460923a2a8efcf3311e4209ca092d10a
+
+pkgname = grub2-theme-arch-suse
+

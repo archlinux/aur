@@ -1,0 +1,16 @@
+post_install() {
+  cat << _EOF 
+
+==> Installation: copy theme to grub/themes:# cp -r /usr/share/grub/themes/arch-suse /boot/grub/themes/ .
+==> Add theme to your /etc/default/grub:
+==> GRUB_THEME="/boot/grub/themes/arch-suse/theme.txt"
+==> Preferred resolution 1024x768: GRUB_GFXMODE=1024x768
+==> Update grub:# grub-mkconfig -o /boot/grub/grub.cfg
+
+
+_EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
