@@ -13,7 +13,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=freeipmi
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="sensor monitoring, system event monitoring, power control, and serial-over-LAN (SOL)"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
         'bmc-watchdog.service'
         'ipmidetectd.service'
         'ipmiseld.service')
-md5sums=('df800f7553d6a7d55e2a928abc65dadb'
+md5sums=('79dd115018c1a73444f0e95fc6e51612'
          '8993098bae8cc6b134a330105373d258'
          'bb8bd4f7e5dddbbb15e309c3f1090551'
          'd8b0658fb8037bf4c09b9179223e4972')
