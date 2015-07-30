@@ -4,6 +4,14 @@ post_install() {
 }
 
 post_upgrade() {
-  echo 'The configuration file has changed.'
-  echo 'Please compare your own version in ~/.config/khard/khard.conf with the new one put in /etc/skel/khard.conf.'
+  local v up=0 confupgrades=(3.1)
+  for v in "${confupgrades[@]}"; do
+    if [ $(vercmp "$v" "$2") -eq 0 -o $(vercmp "$v" "$2") -eq -1 ]; then
+      up=1
+    fi
+  done
+  if [[ "$up" -eq 1 ]]; then
+    echo 'The configuration file has changed.'
+    echo 'Please compare your own version in ~/.config/khard/khard.conf with the new one in /etc/skel/khard.conf.'
+  fi
 }
