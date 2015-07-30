@@ -1,0 +1,29 @@
+pkgbase = nodejs10
+	pkgdesc = Evented I/O for V8 javascript
+	pkgver = 0.10.36
+	pkgrel = 2
+	url = http://nodejs.org/
+	arch = any
+	license = MIT
+	checkdepends = curl
+	makedepends = python2
+	makedepends = git
+	makedepends = procps-ng
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = openssl
+	optdepends = python2: for node-gyp
+	provides = nodejs
+	provides = nodejs-node-gyp
+	provides = npm
+	conflicts = nodejs
+	conflicts = npm
+	options = !emptydirs
+	source = http://nodejs.org/dist/v0.10.36/node-v0.10.36.tar.gz
+	source = git+https://github.com/npm/npm.git#tag=v2.13.2
+	sha256sums = b9d7d1d0294bce46686b13a05da6fc5b1e7743b597544aa888e8e64a9f178c81
+	sha256sums = SKIP
+
+pkgname = nodejs10
+
