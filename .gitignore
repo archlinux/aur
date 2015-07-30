@@ -1,0 +1,7 @@
+pkg/
+src/
+future-*.tar.gz
+python2-future-*.pkg.tar.xz
+python2-future-*.src.tar.gz
+.AURINFO
+
