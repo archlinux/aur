@@ -1,16 +1,20 @@
 pkgbase = zephyrflattr-bundle
-	pkgdesc = Bundle a clean and flat theme for KDE4
-	pkgver = 20150328
+	pkgdesc = Bundle a clean and flat theme for KDE4.
+	pkgver = 20150730
 	pkgrel = 1
 	url = https://github.com/FadeMind/zephyrflattr
 	arch = any
 	license = CCPL:by-sa
 	depends = qtcurve-qt4
+	depends = qtcurve-qt5
+	depends = qtcurve-kde4
+	depends = qtcurve-gtk2
+	depends = qtcurve-utils
 	depends = kdebase-workspace
 	optdepends = faenzaflattr-zephyr-icon-theme: recommended icon theme
 	optdepends = breeze-obsidian-cursor-theme: recommended cursor theme
-	source = zephyrflattr-bundle-20150328.tar.gz::https://github.com/FadeMind/zephyrflattr/archive/8af8acb0889692f2a5f5c08398f3ca6b53452360.tar.gz
-	sha256sums = 908c97ee297525bf192edff4aab085f3d6438646156fa663155640d24a343d1c
+	source = zephyrflattr-bundle-20150730.tar.gz::https://github.com/FadeMind/zephyrflattr/archive/68f43f51bd9da40e8fcf57ac1f631b65ecfd156b.tar.gz
+	sha256sums = 0e645ca9a21ae53c18b093011cdf747326f5fe9f385b361bf6965f8246e6d7ef
 
 pkgname = zephyrflattr-bundle
 
