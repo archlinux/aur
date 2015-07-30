@@ -1,5 +1,7 @@
 pkgname=dnf
-pkgver=1.0.2
+_pkgver=1.0.2
+_rpmrel=2
+pkgver=$_pkgver.$_rpmrel
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
@@ -11,17 +13,17 @@ makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver-1.tar.gz")
-md5sums=('8fff4f840f852ab69488f20671ab9e8b')
+source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
+md5sums=('cb8394d2525930b60894ad20c05e0365')
 
 prepare() {
-	cd "$pkgname-$pkgname-$pkgver-1"
+	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"
 	rm -rf build
 	mkdir build
 }
 
 build() {
-	cd "$pkgname-$pkgname-$pkgver-1"/build
+	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DPYTHON_DESIRED=3          \
@@ -32,12 +34,12 @@ build() {
 
 # Tests seem to need a non-empty RPM database installed on the system
 #check() {
-#	cd "$pkgname-$pkgname-$pkgver-1"/build
+#	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
 #	make ARGS="-V" test
 #}
 
 package() {
-	cd "$pkgname-$pkgname-$pkgver-1"/build
+	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
 	make DESTDIR="$pkgdir/" install
 
 	rm "$pkgdir/"usr/bin/yum "$pkgdir/usr/share/man/man8/yum.8"
