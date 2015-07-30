@@ -1,0 +1,26 @@
+pkgbase = snapper-git
+	pkgdesc = A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping.
+	pkgver = 0.2.7.git.1070.29b76bb
+	pkgrel = 1
+	url = http://snapper.io
+	install = snapper.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = lvm2
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	makedepends = git
+	depends = btrfs-progs
+	depends = libxml2
+	depends = dbus
+	depends = boost
+	depends = pam
+	provides = snapper
+	conflicts = snapper
+	backup = etc/conf.d/snapper
+	source = snapper::git+https://github.com/openSUSE/snapper.git
+	md5sums = SKIP
+
+pkgname = snapper-git
+

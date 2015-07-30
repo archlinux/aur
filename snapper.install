@@ -1,0 +1,15 @@
+post_install() {
+	echo "For first-time config instructions see https://wiki.archlinux.org/index.php/Snapper"
+}
+
+post_upgrade() {
+	echo
+	echo "BIG FAT WARNING: the snapper-git package now uses systemd .timer units instead of cron scripts!"
+	echo "If you use timelined snapshots, you need to manually enable and start the timer units with:"
+	echo
+	echo "# systemctl enable snapper-cleanup.timer"
+	echo "# systemctl enable snapper-timeline.timer"
+	echo "# systemctl start snapper-cleanup.timer"
+	echo "# systemctl start snapper-timeline.timer"
+	echo
+}
