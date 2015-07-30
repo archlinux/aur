@@ -1,0 +1,19 @@
+pkgbase = jakpod
+	pkgdesc = JakPod is based on Java and allows you to copy music and video files to your iPod.
+	pkgver = 2.82
+	pkgrel = 1
+	url = http://www.jakpod.de
+	arch = any
+	license = custom
+	depends = java-runtime
+	source = jakpod-2.82.zip::http://www.jakpod.de/en/downloads/func-download/67/chk,1310a35ece04a2d587132f6db794794a/no_html,1/
+	source = jakpod.desktop
+	source = jakpod.properties
+	source = jakpod.sh
+	md5sums = 3484d15faa6131a564466ce00e776efa
+	md5sums = 890e4fc3bcc8d24d452772e1aa910223
+	md5sums = 68d27e3876efaef150d1d1b252c7d4f7
+	md5sums = 23af517369a793c8e1eafc4e6d1e425d
+
+pkgname = jakpod
+

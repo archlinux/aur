@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=JakPod
+GenericName=iPod "Total Commander"
+Comment=JakPod is based on Java and allows you to copy music and video files to your iPod
+Exec=jakpod
+Icon=/opt/jakpod/jakpod.ico
+Terminal=false
+Type=Application
+Categories=GTK;AudioVideo;
+StartupNotify=false
+MimeType=text/plain;
