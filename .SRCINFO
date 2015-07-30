@@ -1,8 +1,8 @@
 pkgbase = thinkpad-scripts
 	pkgdesc = Scripts for ThinkPad X220 & X230 Tablet rotation, docking, etc.
 	pkgver = 4.4.1
-	pkgrel = 1
-	url = http://martin-ueding.de/en/projects/think-rotate
+	pkgrel = 2
+	url = http://martin-ueding.de/en/projects/thinkpad-scripts
 	install = thinkpad-scripts.install
 	arch = any
 	license = GPL
