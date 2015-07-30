@@ -1,0 +1,23 @@
+*** Makefile.in-orig	2015-07-30 14:11:27.997217517 +1000
+--- Makefile.in	2015-07-30 14:11:40.820607734 +1000
+***************
+*** 10,18 ****
+  INSTALL_PROGRAM = @INSTALL_PROGRAM@
+  INSTALL_DATA    = @INSTALL_DATA@
+  prefix          = @prefix@
+! bindir          = $(prefix)/bin
+! sharedir        = $(prefix)/share
+! examplesdir     = $(prefix)/share/examples/gps
+  
+  all default:
+  	$(MAKE) -C gps default
+--- 10,18 ----
+  INSTALL_PROGRAM = @INSTALL_PROGRAM@
+  INSTALL_DATA    = @INSTALL_DATA@
+  prefix          = @prefix@
+! bindir          = $(DESTDIR)$(prefix)/bin
+! sharedir        = $(DESTDIR)$(prefix)/share
+! examplesdir     = $(DESTDIR)$(prefix)/share/examples/gps
+  
+  all default:
+  	$(MAKE) -C gps default

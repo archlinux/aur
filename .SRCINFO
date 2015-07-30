@@ -1,0 +1,23 @@
+pkgbase = gnat-gps
+	pkgdesc = GPS, the GNAT Programming Studio for Ada
+	pkgver = 6.1.1
+	pkgrel = 1
+	url = http://libre.adacore.com/libre/tools/gps
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nawk
+	depends = gcc-ada
+	depends = xmlada
+	depends = gtkada
+	depends = gprbuild
+	depends = python2
+	source = http://mirrors.cdn.adacore.com/art/eabc020e818b1c6b8a6dc5ea3f665a479a49bb14
+	source = http://mirrors.cdn.adacore.com/art/8c386e54b4411aeb49e7786fa403f9caa28b6d91
+	source = patch-Makefile.in
+	md5sums = c690ecf9dc58384cf52ed8ce81e9cb5a
+	md5sums = bc70aaf2e21a488a00f87fdec112454a
+	md5sums = d071e2cf9f3ee8566d65d16d50819393
+
+pkgname = gnat-gps
+
