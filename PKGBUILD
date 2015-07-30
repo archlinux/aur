@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-transmission-daemon-git
 _gitname=gnome-shell-extension-transmission-daemon
-pkgver=r104.fe6fe88
+pkgver=r107.d33e4d6
 pkgrel=1
 pkgdesc="Gnome Shell indicator for transmission-daemon"
 arch=('any')
@@ -27,7 +27,7 @@ package() {
   install -d "${pkgdir}/usr/share/glib-2.0/schemas/"
 
   cd "${srcdir}/${_gitname}"
-  mv "${_uuid}/schemas/org.gnome.shell.extensions.mediaplayer.gschema.xml" \
+  mv "${_uuid}/schemas/org.gnome.shell.extensions.transmission-daemon.gschema.xml" \
     "${pkgdir}/usr/share/glib-2.0/schemas/"
   cp -af "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
