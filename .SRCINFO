@@ -1,0 +1,17 @@
+pkgbase = guile-sdl
+	pkgdesc = SDL bindings for Guile Scheme.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://www.gnu.org/software/guile-sdl/
+	arch = any
+	license = GPL3
+	depends = guile
+	depends = sdl2
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	source = ftp://ftp.gnu.org/gnu/guile-sdl/guile-sdl-0.5.2.tar.xz
+	md5sums = 554c9524fbb1279111716576c65baf14
+
+pkgname = guile-sdl
+
