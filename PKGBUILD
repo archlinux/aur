@@ -9,7 +9,7 @@
 pkgname=popcorntime
 pkgver=0.3.8.0
 _pkgver=0.3.8-0
-pkgrel=5
+pkgrel=6
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.io/"
@@ -25,9 +25,7 @@ depends=('alsa-lib'
          'libxtst'
          'nss'
          'ttf-font')
-optdepends=('net-tools: vpn.ht client'
-            'ttf-liberation'
-            'ttf-ms-fonts')
+optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
 _gitname=desktop.git
@@ -43,24 +41,17 @@ fi
 
 source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v${_pkgver}"
         "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
-        "http://dl.nwjs.io/v${_nw_ver}/nwjs-v${_nw_ver}-${_nw_platform}.tar.gz"
         "popcorntime.desktop")
 sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
             'SKIP'
-            '7f46d6c00fd2bb3aae70e177b94685af2f53476c3ee50c1c243760d0f271b505'
             'f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec')
 
 prepare() {
   cd "${srcdir}/${_gitname}"
 
-  # https://git.popcorntime.io/popcorntime/desktop/commit/6f1864cb00b0af4da062391de04206f9495c88b0
-  sed -i "s|git+https://git.popcorntime.io/mirrors/peerflix.git|https://git.popcorntime.io/mirrors/peerflix/repository/archive.tar.gz|g" package.json
+  sed -i "s|opensubtitles.git|opensubtitles-api.git|g" package.json
 
   cp "${srcdir}"/desktop-i18n.git/* src/app/language
-
-  mkdir -p "${srcdir}/${_gitname}/build/cache/${_platform}/${_nw_ver}/"
-  mv "${srcdir}/nwjs-v${_nw_ver}-${_nw_platform}/"* \
-    "${srcdir}/${_gitname}/build/cache/${_platform}/${_nw_ver}/"
 
   # for gyp
   export PYTHON=/usr/bin/python2
@@ -72,10 +63,10 @@ prepare() {
 build() {
   cd "${srcdir}/${_gitname}"
 
-  # The grunt 'build' task served as a reference for this:
   grunt css
   grunt bower_clean
-  grunt nodewebkit
+  # Fatal error: Cannot read property 'length' of undefined
+  grunt nodewebkit || grunt nodewebkit
 }
 
 package() {
