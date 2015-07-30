@@ -1,6 +1,6 @@
 pkgbase = thinkpad-scripts
 	pkgdesc = Scripts for ThinkPad X220 & X230 Tablet rotation, docking, etc.
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = http://martin-ueding.de/en/projects/think-rotate
 	install = thinkpad-scripts.install
@@ -21,7 +21,7 @@ pkgbase = thinkpad-scripts
 	optdepends = networkmanager: for managing connections when docking
 	optdepends = xorg-xbacklight: for backlight control when docking
 	conflicts = think-rotate
-	source = https://github.com/martin-ueding/thinkpad-scripts/archive/v4.4.0.tar.gz
-	sha256sums = 2a657dd32cbfd18d565e4a7b7626b879217cbadd6c6b292d44231c58f4815ef1
+	source = https://github.com/martin-ueding/thinkpad-scripts/archive/v4.4.1.tar.gz
+	sha256sums = be65104b88bffb076640ad5c5d710d8b555d492c85e6e5cf34bf83f66b2b33a1
 
 pkgname = thinkpad-scripts
