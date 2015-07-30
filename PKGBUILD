@@ -10,7 +10,7 @@ license=('GPL')
 provides=('tora')
 replaces=('tora')
 conflicts=('tora')
-depends=('qscintilla' 'oracle-instantclient-basic' 'graphviz' 'poppler' 'qt4')
+depends=('oracle-instantclient-basic' 'graphviz' 'poppler' 'qt')
 makedepends=('cmake' 'oracle-instantclient-sdk' 'git' 'boost')
 options=()
 install=$pkgname.install
@@ -43,10 +43,11 @@ build() {
     -DBOOST_LIBRARYDIR=/usr/lib \
     -DENABLE_DB2=0 \
     -DENABLE_TERADATA=0 \
-    -DUSE_EXPERIMENTAL=1 \
-    -DWANT_INTERNAL_LOKI=ON
-  #make
-  make tora poracle parsing
+    -DQT5_BUILD=1 \
+    -DWANT_INTERNAL_LOKI=1 \
+    -DWANT_INTERNAL_QSCINTILLA=1 # needed for Qt5 
+
+  make
 }
 
 package() {
