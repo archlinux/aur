@@ -18,7 +18,7 @@ package() {
 
   install -m755 "$srcdir/$pkgname/lsdsk" "$pkgdir/usr/bin"
   install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -m644 "$srcdir/$pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 
