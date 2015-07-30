@@ -1,0 +1,16 @@
+pkgbase = spin
+	pkgdesc = Tool for the formal verification of distributed software systems.
+	pkgver = 6.4.3
+	pkgrel = 1
+	url = http://spinroot.com/
+	arch = i686
+	arch = x86_64
+	license = custom:SPIN
+	depends = glibc
+	source = http://spinroot.com/spin/Src/src643.tar.gz
+	source = LICENSE.txt
+	md5sums = 8f49cf98fe7bc2ac08f75ad29280843a
+	md5sums = 1b7db1b5f5da972bab3db17472e3a342
+
+pkgname = spin
+
