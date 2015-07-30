@@ -1,4 +1,5 @@
-# Maintainer: Jeff Sharpe <jeff@impcode.com>
+# Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
+# Contributor: Jeff Sharpe <jeff@impcode.com>
 # Contributor: wido <widomaker2k7@gmail.com>:
 
 pkgname=fortune-mod-matrix
