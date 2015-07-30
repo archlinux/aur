@@ -1,7 +1,7 @@
 # Maintainer: Tom Kuther <gimpel@sonnenkinder.org>
 pkgname=tora-git
 _gitname=tora
-pkgver=3.0.0.svn.5182      
+pkgver=3.0.0.git.692d6d7
 pkgrel=1
 pkgdesc="Toolkit for databases with support for Oracle, MySQL and PostgreSQL"
 arch=('i686' 'x86_64')
@@ -24,13 +24,14 @@ pkgver() {
   _major=`grep 'SET (VERSION_MAJOR' CMakeLists.txt|awk -F'("|")' '{print $2}'`
   _minor=`grep 'SET (VERSION_MINOR' CMakeLists.txt|awk -F'("|")' '{print $2}'`
   _patch=`grep 'SET (VERSION_PATCH' CMakeLists.txt|awk -F'("|")' '{print $2}'`
-  _gitrev=`git rev-parse --short`
-  echo "${_major}.${_minor}.${_patch}.svn.${_gitrev}"
+  _gitrev=`git rev-parse --short HEAD`
+  echo "${_major}.${_minor}.${_patch}.git.${_gitrev}"
 }
 
 build() {
   cd $_gitname
 
+  test -d build && rm -rf build
   mkdir build
   cd build
   cmake .. \
