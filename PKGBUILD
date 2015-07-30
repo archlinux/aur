@@ -20,6 +20,6 @@ build() {
 }
 
 package() {
-	install -D -m644 "${srcdir}/matrix" "${pkgdir}/usr/share/fortune/matrix"
-	install -D -m644 "${srcdir}/matrix.dat" "${pkgdir}/usr/share/fortune/matrix.dat"
+  install -D -m644 "${srcdir}/matrix" "${pkgdir}/usr/share/fortune/matrix"
+  install -D -m644 "${srcdir}/matrix.dat" "${pkgdir}/usr/share/fortune/matrix.dat"
 }
