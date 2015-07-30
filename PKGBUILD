@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Fira Code: monospaced font with programming ligatures."
 arch=('any')
 url='https://github.com/tonsky/FiraCode.git'
-license=('OFL')
+license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('git')
 install=otf.install
@@ -25,5 +25,6 @@ package() {
 	cd "$srcdir/$_gitname"
 
 	local font='FiraCode-Regular.otf'
-	install -Dm644 "$font" "${pkgdir}/usr/share/fonts/OTF/$font"
+	install -Dm644 "$font" "$pkgdir/usr/share/fonts/OTF/$font"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
