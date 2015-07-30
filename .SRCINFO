@@ -1,6 +1,6 @@
 pkgbase = libntru
 	pkgdesc = C Implementation of NTRUEncrypt
-	pkgver = 0.4
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/tbuktu/libntru
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = libntru
 	makedepends = make
 	makedepends = coreutils
 	depends = glibc
-	source = https://github.com/tbuktu/libntru/archive/0.4.tar.gz
-	sha256sums = 90c21c7609016edea03b753def6ffc8abb1f33a7350beb8d889fba96a7b5a4d8
+	source = https://github.com/tbuktu/libntru/archive/0.4.1.tar.gz
+	sha256sums = a540763f12c496b057f75c7684274bafb4e62984e6b713720ceb7ea8f31229e5
 
 pkgname = libntru
 
