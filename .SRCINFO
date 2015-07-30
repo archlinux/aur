@@ -1,5 +1,5 @@
 pkgbase = systemd-kill-fix
-	pkgver = 222
+	pkgver = 223
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
@@ -21,7 +21,6 @@ pkgbase = systemd-kill-fix
 	makedepends = libxslt
 	makedepends = util-linux
 	makedepends = linux-api-headers
-	makedepends = python
 	makedepends = python-lxml
 	makedepends = quota-tools
 	makedepends = shadow
@@ -29,7 +28,7 @@ pkgbase = systemd-kill-fix
 	makedepends = git
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#tag=v222
+	source = git://github.com/systemd/systemd.git#tag=v223
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
@@ -63,16 +62,15 @@ pkgname = systemd-kill-fix
 	depends = libseccomp
 	depends = util-linux
 	depends = xz
-	optdepends = python: systemd library bindings
 	optdepends = cryptsetup: required for encrypted block devices
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=222
-	provides = udev=222
-	provides = systemd=222
+	provides = systemd-tools=223
+	provides = udev=223
+	provides = systemd=223
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -108,13 +106,13 @@ pkgname = libsystemd-kill-fix
 	depends = libgcrypt
 	depends = lz4
 	depends = xz
-	provides = libsystemd.so=222
-	provides = libsystemd-daemon.so=222
-	provides = libsystemd-id128.so=222
-	provides = libsystemd-journal.so=222
-	provides = libsystemd-login.so=222
-	provides = libudev.so=222
-	provides = libsystemd=222
+	provides = libsystemd.so=223
+	provides = libsystemd-daemon.so=223
+	provides = libsystemd-id128.so=223
+	provides = libsystemd-journal.so=223
+	provides = libsystemd-login.so=223
+	provides = libudev.so=223
+	provides = libsystemd=223
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-kill-fix
@@ -122,7 +120,7 @@ pkgname = systemd-sysvcompat-kill-fix
 	groups = base
 	license = GPL2
 	depends = systemd
-	provides = systemd-sysvcompat=222
+	provides = systemd-sysvcompat=223
 	conflicts = sysvinit,
 	conflicts = systemd-sysvcompat
 

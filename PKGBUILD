@@ -6,21 +6,21 @@
 # Modifications to revert commit 743970d
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGBUILD as closely as possible matches core's systemd 222-1
+#    * This PKGBUILD as closely as possible matches core's systemd 223-1
 #    * splash-arch.bmp is omitted, because it is over AUR4's 250k file size limit
 #    * All namcap warnings and errors are identical
 
 pkgbase=systemd-kill-fix
 pkgname=('systemd-kill-fix' 'libsystemd-kill-fix' 'systemd-sysvcompat-kill-fix')
 _pkgname=systemd
-pkgver=222
+pkgver=223
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
-             'python' 'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
+             'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
 options=('strip' 'debug')
 source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         'initcpio-hook-udev'
@@ -37,6 +37,10 @@ md5sums=('SKIP'
 
 prepare() {
   cd "$_pkgname"
+
+  # networkd: fix size of networkd binary
+  # https://github.com/systemd/systemd/commit/6870b4156377
+  git cherry-pick -n 6870b4156377
 
   # revert commit that under certain circumstances sends processes a
   # kill -9 during system shutdown.  most common data loss from this is
@@ -80,8 +84,7 @@ package_systemd-kill-fix() {
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
-  optdepends=('python: systemd library bindings'
-              'cryptsetup: required for encrypted block devices'
+  optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
@@ -167,7 +170,7 @@ package_libsystemd-kill-fix() {
   pkgdesc="systemd client libraries (with kill fix)"
   depends=('glibc' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd.so=222' 'libsystemd-daemon.so=222' 'libsystemd-id128.so=222' 'libsystemd-journal.so=222' 'libsystemd-login.so=222' 'libudev.so=222' 'libsystemd=222')
+  provides=('libsystemd.so=223' 'libsystemd-daemon.so=223' 'libsystemd-id128.so=223' 'libsystemd-journal.so=223' 'libsystemd-login.so=223' 'libudev.so=223' 'libsystemd=223')
   conflicts=('libsystemd')
 
   mv "$srcdir/_libsystemd"/* "$pkgdir"
@@ -177,7 +180,7 @@ package_systemd-sysvcompat-kill-fix() {
   pkgdesc="sysvinit compat for systemd (with kill fix)"
   license=('GPL2')
   groups=('base')
-  provides=('systemd-sysvcompat=222')
+  provides=('systemd-sysvcompat=223')
   conflicts=('sysvinit', 'systemd-sysvcompat')
   depends=('systemd')
 
