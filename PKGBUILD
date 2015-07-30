@@ -4,7 +4,7 @@
 _pkg=mongo-cxx-driver
 _subpkg=legacy
 pkgname=${_pkg}-${_subpkg}
-pkgver=1.0.4_rc0
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Official MongoDB C++ driver (legacy).'
 arch=('i686' 'x86_64')
@@ -29,4 +29,4 @@ package() {
     install
 }
 
-sha512sums=('67d49f484fb544a4d54a25d7e6f587b187d790eb0bb5b95be0cda67390bc564d88082b09c4ec161ba53cd9f348b0588e580eccfbbe5d78a2d3ea501036e075e5')
+sha512sums=('4a8c67f0ed58102bcf70f66ef3e24bd70d2f5f48cb44fd9e498d312ddc04d62d773d01905d7a4fd2cffc3edf90340411939f1dc110876d2a4b77064978e49885')

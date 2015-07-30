@@ -1,0 +1,5 @@
+legacy-*.tar.gz
+mongo-cxx-driver-legacy-*.tar.xz
+pkg/
+src/
+
