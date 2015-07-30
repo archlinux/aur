@@ -31,10 +31,15 @@ install="$pkgname".install
 
 package() {
   msg "Converting debian package..."
+  
   cd "$srcdir"
   tar zxpf data.tar.gz -C "$pkgdir"
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm 644 "rstudio-server.service" "${pkgdir}/etc/systemd/system/rstudio-server.service"
-  install -d "${pkgdir}/etc/rstudio"
+  chmod 755 $(find $pkgdir/usr -type d)
+
+  install -m755 -d "$pkgdir/usr/bin"
+  install -m755 -d "${pkgdir}/etc/rstudio"
+  install -m644 -D "rstudio-server.service" "${pkgdir}/etc/systemd/system/rstudio-server.service"
+  
+  
 }
 # vim:ft=sh tabstop=2 expandtab

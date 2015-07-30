@@ -1,7 +1,7 @@
 post_install() {
   getent group "rstudio" &>/dev/null || groupadd -r rstudio 1>/dev/null
-  getent passwd "rstudio" &>/dev/null || useradd -r -g rstudio -d "/srv/rstudio" -s "/bin/sh" rstudio 1>/dev/null
-  chown rstudio:rstudio /srv/rstudio
+  getent passwd "rstudio" &>/dev/null || useradd -r -g rstudio -d "/usr/lib/rstudio-server/www/" -s "/bin/sh" rstudio 1>/dev/null
+  chown rstudio:rstudio /usr/lib/rstudio-server/www/
   
   ln -s /usr/lib/rstudio-server/bin/rserver /usr/bin/rserver
   ln -s /usr/lib/rstudio-server/bin/rstudio-server /usr/sbin/rstudio-server
@@ -21,6 +21,7 @@ post_remove() {
   fi
 
   rm -f /usr/sbin/rstudio-server
+  rm -f /usr/bin/rserver
   
   rm -rf /var/run/rstudio-server
   rm -rf /var/lock/rstudio-server
