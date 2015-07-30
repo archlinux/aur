@@ -1,0 +1,14 @@
+[Unit]
+Description=Execute scripts on new messages using IDLE imap command
+After=network.target
+
+[Service]
+User=username
+Type=simple
+ExecStart=/usr/bin/imapnotify -c ~/.config/imap_inotify/%I.json
+Restart=on-failure
+RestartSec=20
+
+[Install]
+WantedBy=default.target
+
