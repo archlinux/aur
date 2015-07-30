@@ -1,0 +1,17 @@
+pkgbase = qt5-pdfium-git
+	pkgdesc = Qt/QML wrapper for PDFium open-source PDF rendering engine.
+	pkgver = r9.cf0140c
+	pkgrel = 1
+	url = https://github.com/paulovap/qtpdfium/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = qt5-base>=5.5.0
+	provides = qt5-pdfium
+	conflicts = qt5-pdfium
+	source = qt5-pdfium::git+https://github.com/paulovap/qtpdfium.git
+	sha256sums = SKIP
+
+pkgname = qt5-pdfium-git
+
