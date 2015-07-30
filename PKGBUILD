@@ -3,13 +3,14 @@
 # Contributor: Stefan Kirrmann <stefan.kirrmann at gmail dot com>
 
 pkgname=open-iscsi-git
-pkgver=2.0.873.r128.g8da14e6
+pkgver=2.0.873.r135.g254ad46
 pkgrel=1
 pkgdesc='iSCSI userland tools - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.open-iscsi.org/'
 license=('GPL')
 install=open-iscsi.install
+makedepends=('git')
 provides=('open-iscsi')
 conflicts=('open-iscsi')
 backup=('etc/iscsi/iscsid.conf'

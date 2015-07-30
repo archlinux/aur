@@ -1,12 +1,13 @@
 pkgbase = open-iscsi-git
 	pkgdesc = iSCSI userland tools - git checkout
-	pkgver = 2.0.873.r128.g8da14e6
+	pkgver = 2.0.873.r135.g254ad46
 	pkgrel = 1
 	url = http://www.open-iscsi.org/
 	install = open-iscsi.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	provides = open-iscsi
 	conflicts = open-iscsi
 	options = docs
