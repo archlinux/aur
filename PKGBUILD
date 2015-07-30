@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=crystal
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -58,6 +58,6 @@ package() {
   install -dm755 "$pkgdir/usr/share/doc/crystal"
   cp -rv samples "$pkgdir/usr/share/doc/crystal/"
 }
-sha256sums=('aba8893b0361d7a2846bf1803c35a61969641807008798c170ea98b566f3ac0f')
-sha256sums_i686=('326d4c1522446df082325ded964da3990f404c14632e3b1993a6f60f36b3a606')
-sha256sums_x86_64=('9ae57248752df2ac9dbae623a646e85c03e53c80f2087a134abe801408e039fd')
+sha256sums=('e07e6f033f72db00861c68dc71f7d5f1afb00800f77d0cbf1dcb5634e6b95d5e')
+sha256sums_i686=('5db0af7fbe36175a7a14e1f4fc824e31bf7e5169d276682366388957eb7d3157')
+sha256sums_x86_64=('e852d176d26e749083005fb7689ff2c28f3a987df62cb29b6dd8e7f417c90a6c')

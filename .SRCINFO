@@ -1,6 +1,6 @@
 pkgbase = crystal
 	pkgdesc = The Crystal Programming Language
-	pkgver = 0.7.4
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = http://crystal-lang.org
 	arch = i686
@@ -21,12 +21,12 @@ pkgbase = crystal
 	optdepends = gmp: For BigInt support
 	optdepends = libxml2: For XML support
 	conflicts = crystal-git
-	source = https://github.com/manastech/crystal/archive/0.7.4.tar.gz
-	sha256sums = aba8893b0361d7a2846bf1803c35a61969641807008798c170ea98b566f3ac0f
-	source_i686 = http://cloud.aeshna.de/u/mrzyx/crystal32/crystal32-0.7.4.tar.gz
-	sha256sums_i686 = 326d4c1522446df082325ded964da3990f404c14632e3b1993a6f60f36b3a606
-	source_x86_64 = https://github.com/manastech/crystal/releases/download/0.7.4/crystal-0.7.4-1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 9ae57248752df2ac9dbae623a646e85c03e53c80f2087a134abe801408e039fd
+	source = https://github.com/manastech/crystal/archive/0.7.5.tar.gz
+	sha256sums = e07e6f033f72db00861c68dc71f7d5f1afb00800f77d0cbf1dcb5634e6b95d5e
+	source_i686 = http://cloud.aeshna.de/u/mrzyx/crystal32/crystal32-0.7.5.tar.gz
+	sha256sums_i686 = 5db0af7fbe36175a7a14e1f4fc824e31bf7e5169d276682366388957eb7d3157
+	source_x86_64 = https://github.com/manastech/crystal/releases/download/0.7.5/crystal-0.7.5-1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e852d176d26e749083005fb7689ff2c28f3a987df62cb29b6dd8e7f417c90a6c
 
 pkgname = crystal
 
