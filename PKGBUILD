@@ -3,12 +3,12 @@
 pkgbase=adwaita-qt
 pkgname=('adwaita-qt5' 'adwaita-qt4' 'adwaita-qt-common')
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The stylesheet to bend Qt applications to look like they belong into GNOME Shell'
 arch=('i686' 'x86_64')
 url='https://github.com/MartinBriza/adwaita-qt'
 license=('GPL' 'LGPL')
-makedepends=('qt5-base' 'qt4')
+makedepends=('gcc-libs-multilib' 'qt4' 'qt5-base')
 source=("https://github.com/MartinBriza/adwaita-qt/archive/master.zip")
 md5sums=('9f44301af62f90db589e4c75e21d77c9')
 
@@ -36,7 +36,7 @@ build() {
 }
 
 package_adwaita-qt5() {
-  depends=('adwaita-qt-common')
+  depends=('adwaita-qt-common' 'gcc-libs-multilib' 'qt5-base')
   optdepends=('adwaita-qt4: Qt4 version')
 
   cd build-qt5
@@ -46,7 +46,7 @@ package_adwaita-qt5() {
 }
 
 package_adwaita-qt4() {
-  depends=('adwaita-qt-common')
+  depends=('adwaita-qt-common' 'gcc-libs-multilib' 'qt4')
 
   cd build-qt4
   make install/fast DESTDIR=$pkgdir
@@ -55,5 +55,7 @@ package_adwaita-qt4() {
 }
 
 package_adwaita-qt-common() {
+  arch=('any')
+  
   mv build-common/usr $pkgdir
 }
