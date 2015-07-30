@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 113836 2014-07-01 06:39:41Z fyan $
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: kiefer <jorgelmadrid@gmail.com>
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 # Contributor: Gaute Hope <eg@gaute.vetsj.com>
