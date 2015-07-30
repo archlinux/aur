@@ -1,0 +1,14 @@
+pkgbase = thunderbird-extension-gnome-integration
+	pkgdesc = Provides better integration with Gnome using standard notifications and other features
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://davidmartinez.net/proyectos/gnomeintegration
+	arch = any
+	license = GPLv3
+	makedepends = rasqal
+	depends = thunderbird
+	source = thunderbird-extension-gnome-integration.zip::https://addons.mozilla.org/firefox/downloads/latest/gnome-integration/platform:2/
+	md5sums = ffb9ab265624ff94af1595fb448b9f1d
+
+pkgname = thunderbird-extension-gnome-integration
+
