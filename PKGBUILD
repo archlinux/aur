@@ -17,7 +17,7 @@ makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc'
 	     'perl-xml-xpath' 'libxslt')
 optdepends=('ebtables: required for default NAT networking'
 	    'dnsmasq: required for default NAT/DHCP for guests'
-	    'bridge-utils: for brigded networking'
+	    'bridge-utils: for bridged networking'
 	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
 	    'radvd'
