@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=tora
+Name=Toolkit for Oracle
+Comment=Toolkit for Oracle and other databases administration and development
+X-KDE-StartupNotify=true
+MimeType=application/x-tora;
+Icon=/usr/share/pixmaps/tora.xpm
+Terminal=false
+Type=Application
+Categories=Qt;Database;Development;

@@ -1,0 +1,28 @@
+pkgbase = tora-git
+	pkgdesc = Toolkit for databases with support for Oracle, MySQL and PostgreSQL
+	pkgver = 3.0.0.svn.5182
+	pkgrel = 1
+	url = http://tora.sourceforge.net
+	install = tora-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = oracle-instantclient-sdk
+	makedepends = subversion
+	makedepends = boost
+	depends = qscintilla
+	depends = oracle-instantclient-basic
+	depends = graphviz
+	depends = poppler
+	depends = qt4
+	provides = tora
+	conflicts = tora
+	replaces = tora
+	source = tora::git+https://github.com/tora-tool/tora.git
+	source = tora.desktop
+	md5sums = SKIP
+	md5sums = 089754af8d9d5a537d3ef44929f6aa28
+
+pkgname = tora-git
+
