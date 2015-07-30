@@ -1,0 +1,17 @@
+pkgbase = firefox-extension-the-fox-only-better-git
+	pkgdesc = A Firefox add-on to improve the feeling of using the new Australis theme.
+	pkgver = 1.2.1.r349.501e6ef
+	pkgrel = 1
+	url = https://github.com/Quicksaver/The-Fox--Only-Better
+	arch = any
+	license = MPLv2
+	makedepends = git
+	makedepends = rasqal
+	depends = firefox
+	provides = firefox-extension-the-fox-only-better
+	conflicts = firefox-extension-the-fox-only-better
+	source = firefox-extension-the-fox-only-better::git+https://github.com/Quicksaver/The-Fox--Only-Better
+	md5sums = SKIP
+
+pkgname = firefox-extension-the-fox-only-better-git
+

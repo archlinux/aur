@@ -1,0 +1,87 @@
+# Maintainer: XZS <d.f.fischer at web dot de>
+# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/mozilla-extensions>.
+# You may find it convenient to file issues and pull requests there.
+
+pkgname=firefox-extension-the-fox-only-better-git
+pkgver=1.2.1.r349.501e6ef
+pkgrel=1
+pkgdesc='A Firefox add-on to improve the feeling of using the new Australis theme.'
+url='https://github.com/Quicksaver/The-Fox--Only-Better'
+arch=('any')
+license=('MPLv2')
+depends=('firefox')
+
+makedepends+=('git')
+source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+md5sums+=('SKIP')
+provides+=($_gitname)
+conflicts+=($_gitname)
+
+# Move down repository content for easier access by following functions.
+prepare() {
+  cp -rf --reflink=auto "$_gitname"/* .
+  rm -rf "$_gitname"
+  find -name '.git*' -exec rm -rf '{}' +
+}
+
+makedepends+=(rasqal)
+
+sparql() {
+  roqet -e "PREFIX em: <http://www.mozilla.org/2004/em-rdf#> SELECT ?x WHERE { $1 }" \
+    -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
+}
+
+pkgver() {
+  cd $_gitname
+  sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
+  echo -n .
+printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+version-range() {
+  local emid=$(emid $1)
+  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+}
+
+emid() {
+  case $1 in
+    firefox)     echo '{ec8030f7-c20a-464f-9b0e-13a3a9e97384}' ;;
+    thunderbird) echo '{3550f703-e582-4d05-9a08-453d09bdfdc6}' ;;
+    *) return 1 ;;
+  esac
+}
+
+version() {
+  local version;
+  version=$(sparql "[] em:id '$2' ; em:${1}Version ?x" \
+    "$srcdir/install.rdf" )
+  if [[ $version =~ ([[:digit:]]+).\* ]]; then
+    if [[ $1 = max ]]; then
+      echo $(( ${BASH_REMATCH[1]} + 1 ))
+    else
+      echo "=${BASH_REMATCH[1]}"
+    fi
+  else
+    echo "=$version"
+  fi
+}
+
+prepare_target() {
+  local target=${pkgname%%-*}
+  id="$(sparql '<urn:mozilla:install-manifest> em:id ?x')"
+  destdir="$pkgdir/usr/lib/${target/firefox/firefox\/browser}/extensions"
+  install -d "$destdir"
+}
+
+depends=(${pkgname%%-*})
+
+package() {
+  compose_dependencies
+  prepare_target
+  cp --no-preserve=ownership,mode -r . "$destdir/$id"
+}
+
+# Hidden from mksrcinfo in silly subfunction.
+compose_dependencies() {
+  depends=($(version-range ${pkgname%%-*}))
+}
