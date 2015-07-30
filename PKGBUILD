@@ -3,7 +3,7 @@
 # % Trigger: 1433756367 %
 
 pkgname=('vdev-git' 'vdev-libudev-compat-git')
-pkgver=r556.c845559
+pkgver=r559.4a2b859
 pkgrel=1
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
