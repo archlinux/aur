@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-matrix
+	pkgdesc = Fortune cookies: The trilogy matrix.
+	pkgver = 20091124
+	pkgrel = 3
+	url = http://www.moviemistakes.com/film3297/quotes
+	arch = any
+	groups = fortune-mods
+	license = custom
+	depends = fortune-mod
+	source = fortunes.txt
+	md5sums = eb8a4013ac36655ec7cd46ca9b6f022c
+
+pkgname = fortune-mod-matrix
+
