@@ -1,7 +1,7 @@
 pkgbase = xpdf
 	pkgdesc = Viewer for Portable Document Format (PDF) files
 	pkgver = 3.04
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.foolabs.com/xpdf/
 	install = install
 	arch = i686
