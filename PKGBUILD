@@ -1,6 +1,6 @@
 # Maintainer: Adrien Oliva <yapbreak@yapbreak.fr>
 pkgname="pacmanhealth"
-pkgver="0.1.1"
+pkgver="1.0.0"
 pkgrel="1"
 pkgdesc="Pacman health monitoring system"
 arch=('any')
@@ -10,13 +10,13 @@ depends=('pacman' 'sed' 'coreutils')
 optdepends=('postfix: send report by mail'
             'libnotify: get desktop notification')
 makedepends=()
-conflicts=('pacmanhealth-git')
+conflicts=('pacmanhealth.git')
 replaces=()
-backup=()
+backup=('etc/pacmanhealth.conf')
 source=("http://release.yapbreak.fr/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.gz"
         "http://release.yapbreak.fr/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.gz.sig")
-# TODO
-md5sums=('9356a5f43211a8e28c3d3bb5e5c037a0'
+# Automatically update by updpkgsums
+md5sums=('e18919f7563e38c1f2dde5d5b8c1ca25'
          'SKIP')
 noextract=()
 
