@@ -8,7 +8,7 @@ pkgname=gdal-filegdb
 _pkgname=gdal
 _pkgver=2.0
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for vector and raster geospatial data formats (PDF, FileGDB, KMZ support)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -32,12 +32,10 @@ makedepends=('perl'
              'doxygen')
 changelog=$pkgname.changelog
 source=("$_pkgname-$_pkgver::svn+https://svn.osgeo.org/gdal/branches/$_pkgver/gdal"
-        'gdal-1.5.1-python-install.patch'
-        'ogr_perl_2.0.0.diff')
+        'gdal-1.5.1-python-install.patch')
 conflicts=("$_pkgname")
 md5sums=('SKIP'
-         '81afc1c26d29cee84aadb6924fe33861'
-         '565ca4cbfe6306c815e9acccbbed3a13')
+         '81afc1c26d29cee84aadb6924fe33861')
 
 pkgver() {
   cd "$_pkgname-$_pkgver"
@@ -49,7 +47,6 @@ prepare() {
   cd "$srcdir/$_pkgname-$_pkgver"
 
   patch -Np0 -i "$srcdir/gdal-1.5.1-python-install.patch"
-  patch -Np1 -i "${srcdir}"/ogr_perl_2.0.0.diff
 
   # python2 fixes
   sed -i 's_python python1.5_python2 python python1.5_' configure

@@ -1,7 +1,7 @@
 pkgbase = gdal-filegdb
 	pkgdesc = A translator library for vector and raster geospatial data formats (PDF, FileGDB, KMZ support)
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gdal.org/
 	changelog = gdal-filegdb.changelog
 	arch = i686
@@ -41,10 +41,8 @@ pkgbase = gdal-filegdb
 	conflicts = gdal
 	source = gdal-2.0::svn+https://svn.osgeo.org/gdal/branches/2.0/gdal
 	source = gdal-1.5.1-python-install.patch
-	source = ogr_perl_2.0.0.diff
 	md5sums = SKIP
 	md5sums = 81afc1c26d29cee84aadb6924fe33861
-	md5sums = 565ca4cbfe6306c815e9acccbbed3a13
 
 pkgname = gdal-filegdb
 
