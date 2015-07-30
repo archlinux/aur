@@ -1,0 +1,19 @@
+# arg 1:  the new package version
+post_install() {
+  texconfig-sys rehash
+  updmap-sys --enable Map 5ch.map
+  updmap-sys --enable Map 5fp.map
+  updmap-sys --enable Map 5sf.map
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
+
+# arg 1:  the old package version
+post_remove() {
+  post_install
+}
+
