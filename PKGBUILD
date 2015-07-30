@@ -1,20 +1,21 @@
 # Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
 
-pkgname=python2-vdirsyncer-git
+_python=python2
 _pkgname=vdirsyncer
-pkgver=0.4.4.r45.g9f650e9
+pkgname=${_python}-${_pkgname}-git
+pkgver=0.5.2.r58.gfce0f8d
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
 url="https://github.com/untitaker/vdirsyncer"
 license=('MIT')
-depends=('python2-click>=3.1' 'python2-lxml>=3.0'
-         'python2-requests-toolbelt>=0.4.0' 'python2-atomicwrites')
-makedepends=('git' 'python2-sphinx')
+depends=("${_python}-click>=3.1" "${_python}-lxml>=3.0"
+         "${_python}-requests-toolbelt>=0.4.0" "${_python}-atomicwrites")
+makedepends=("git" "${_python}-sphinx")
 source=("git://github.com/untitaker/${_pkgname}.git")
 md5sums=('SKIP')
-conflicts=('python2-vdirsyncer')
-provides=('python2-vdirsyncer')
+conflicts=("${_python}-vdirsyncer")
+provides=("${_python}-vdirsyncer")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -24,13 +25,13 @@ pkgver() {
 build() {
   # Build vdirsyncer
   cd "${srcdir}/${_pkgname}"
-  python2 setup.py build
+  ${_python} setup.py build
 
   # "Install" development stuff needed to build the man page
   rm -rf develop
   mkdir develop
-  export PYTHONPATH=${srcdir}/${_pkgname}/develop/
-  python2 setup.py develop --install-dir=${srcdir}/${_pkgname}/develop/
+  export PYTHONPATH="${srcdir}/${_pkgname}/develop/"
+  ${_python} setup.py develop --install-dir="${srcdir}/${_pkgname}/develop/"
 
   # Build man page
   cd docs
@@ -40,12 +41,12 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  ${_python} setup.py install --root="${pkgdir}/" --optimize=1
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 docs/_build/man/${_pkgname}.1 \
+    "${pkgdir}/usr/share/man/man1/${_pkgname}2.1"
 
   # To avoid conflicts with the python3 version
   mv "${pkgdir}/usr/bin/vdirsyncer" "${pkgdir}/usr/bin/vdirsyncer2"
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 docs/_build/man/${_pkgname}.1 "${pkgdir}/usr/share/man/man1/${_pkgname}2.1"
 }
-
