@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Multilingual terminal (mlterm)
+Name[he]= mlterm 
+Comment=Multi Lingual TERMinal emulator on X
+Exec=mlterm
+Icon=mlterm
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator
+GenericName=Terminal
+

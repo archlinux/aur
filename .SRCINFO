@@ -1,0 +1,26 @@
+pkgbase = mlterm-hg
+	pkgdesc = Multi Lingual TERMinal emulator on X
+	pkgver = r2485.113c827fa29c
+	pkgrel = 1
+	url = http://mlterm.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	makedepends = intltool
+	makedepends = librsvg
+	makedepends = ncurses
+	depends = gtk2
+	depends = gtk3
+	depends = m17n-lib
+	depends = libutempter
+	provides = mlterm
+	conflicts = mlterm
+	options = !strip
+	source = mlterm-hg::hg+https://aksr@bitbucket.org/arakiken/mlterm
+	source = mlterm.desktop
+	md5sums = SKIP
+	md5sums = d019c571f28c7b765610e219d9e52e35
+
+pkgname = mlterm-hg
+
