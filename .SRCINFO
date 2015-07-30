@@ -13,7 +13,6 @@ pkgbase = nodejs10
 	makedepends = gcc
 	makedepends = pkg-config
 	depends = openssl
-	optdepends = python2: for node-gyp
 	provides = nodejs
 	provides = nodejs-node-gyp
 	provides = npm

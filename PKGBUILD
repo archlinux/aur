@@ -13,11 +13,12 @@
 # Powers. I do not intend to steal his work, only to provide a maintained and cleaner
 # version of the package.
 
-pkgname=nodejs10
-pkgver=0.10.36
 # Previously used version, please uncomment if you're experiencing problems with NPM
 #_npmver=2.5.0
 _npmver=2.13.2
+
+pkgname=nodejs10
+pkgver=0.10.36
 pkgrel=2
 pkgdesc='Evented I/O for V8 javascript, frozen in version 0.10.36'
 arch=('any')
