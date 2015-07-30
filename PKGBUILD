@@ -11,15 +11,15 @@ _srctarname=DPO_GPL_RT5592STA_LinuxSTA_v2.6.0.0_20120326.tar.bz2
 _pkgbase=rt5592sta
 pkgname=rt5592sta_linux_patched-dkms
 pkgver=2.6.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="DKMS module which contains linux device driver for the Ralink RT2860 ABGN WLAN Card. It's based on halou89's rt5592sta_linux_patched package."
 arch=('i686' 'x86_64')
 url="http://asus.com"
 license=('GPL')
-depends=('dkms')
+depends=('dkms' 'make' 'linux-headers' )
 depends_x86_64=('lib32-glibc')
 depends_i686=('glibc')
-makedepends=(make linux-headers)
+makedepends=()
 conflicts=("rt5592sta_linux", "rt5592sta_linux_patched", "rt5592sta_linux_patched-dkms")
 optdepends=()
 options=()
@@ -78,8 +78,6 @@ package() {
   do
 	install -m644 "$(pwd)/$f" "$installDir/$f"
   done
-  # TODO:
-  #cp RT2860STA.dat  /etc/Wireless/RT2860STA/RT2860STA.dat
   msg2 "Installing RT2860STA.dat"
   install -dm755 "${pkgdir}/etc/Wireless/RT2860STA"
   install -m644 "$(pwd)/RT2860STA.dat" "${pkgdir}/etc/Wireless/RT2860STA/RT2860STA.dat"
