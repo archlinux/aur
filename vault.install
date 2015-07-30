@@ -27,5 +27,19 @@ EOF
 }
 
 post_upgrade () {
+    if [[ -d /var/lib/vault ]] ; then
+        local badperms=false
+        while read -r path ; do
+            if [[ $(stat --format=%U:%G "${path}") != vault:vault ]]
+            then
+                badperms=true
+                break
+            fi
+        done < <( find /var/lib/vault )
+        if ${badperms} ; then
+            echo 'Bad permissions detected in /var/lib/vault, fixing...'
+            chown -R vault:vault /var/lib/vault
+        fi
+    fi
     post_install
 }

@@ -5,6 +5,7 @@ After=network.target
 ConditionFileNotEmpty=/etc/vault.hcl
 
 [Service]
+User=vault
 ExecStart=/usr/bin/vault server -config=/etc/vault.hcl
 
 [Install]
