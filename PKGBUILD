@@ -11,7 +11,7 @@ makedepends=('gcc-fortran')
 depends=('lapack')
 arch=('i686' 'x86_64')
 license=('GPL3')
-source=( http://sunet.dl.sourceforge.net/project/qrupdate/qrupdate/$_pkgver/$pkgname-$pkgver.tar.gz)
+source=( http://downloads.sourceforge.net/project/qrupdate/qrupdate/$_pkgver/$pkgname-$pkgver.tar.gz)
 options=('!makeflags')
 md5sums=('6d073887c6e858c24aeda5b54c57a8c4')
 
