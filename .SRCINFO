@@ -1,16 +1,16 @@
 pkgbase = taudem
 	pkgdesc = Suite of Digital Elevation Model (DEM) tools for the extraction and analysis of hydrologic information from topography as represented by a DEM
 	pkgver = 5.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://hydrology.uwrl.usu.edu/taudem
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = openmpi
+	makedepends = mpich2
 	makedepends = cmake
 	options = !makeflags
-	source = taudem-5.1.2.zip::https://github.com/rozos/TauDEM-QGIS/archive/7011b25e7f1e400c622ece171d7aa55a65e0d9e5.zip
-	md5sums = a804155a7f031b17787044ef3c05b8a5
+	source = taudem-5.1.2.tar.gz::https://github.com/rozos/TauDEM-QGIS/archive/v5.1.2-lw.tar.gz
+	md5sums = 92bc9db36c9f1f44cc02f7f539969482
 
 pkgname = taudem
 
