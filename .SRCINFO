@@ -1,0 +1,17 @@
+pkgbase = qt5-leveldb-git
+	pkgdesc = Qt/QML wrapper for Google's LevelDB
+	pkgver = r55.aeb17e4
+	pkgrel = 1
+	url = https://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = qt5-declarative>=5.5.0
+	provides = qt5-leveldb
+	conflicts = qt5-leveldb
+	source = qt5-leveldb::git+https://github.com/paulovap/qtleveldb.git
+	sha256sums = SKIP
+
+pkgname = qt5-leveldb-git
+
