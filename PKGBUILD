@@ -1,6 +1,6 @@
 # Maintainer: Max Gonzih <gonzih at gmail dot com>
 pkgname=iosevka-font
-pkgver=0.0.5
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Iosevka programming font"
 arch=('any')
@@ -9,7 +9,7 @@ license=('SIL')
 depends=(fontconfig xorg-font-utils)
 install=$pkgname.install
 source=("https://github.com/be5invis/Iosevka/archive/v$pkgver.tar.gz")
-md5sums=('e5e3e76dab4a669179a755fd01c60fb4')
+md5sums=('8260cfb3aa215a7db92c8a4ccc68309f')
 
 package() {
   cd $srcdir/
