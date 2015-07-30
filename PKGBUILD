@@ -8,7 +8,7 @@ license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r>=2.11.1' 'glibc>=2.7' 'libedit' 'psmisc')
 conflicts=('rstudio-server' 'rstudio-server-git')
-provides=("rstudio-desktop=${pkgver}")
+provides=("rstudio-server=${pkgver}")
 #options=(!strip)
 
 _x86md5=3696d6252701d4da7f94d6b68afc5d03
