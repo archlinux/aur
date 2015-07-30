@@ -3,16 +3,16 @@
 
 pkgname=khal-git
 _gitname=khal
-pkgver=0.5.1.dev53+ng56cb1f0
+pkgver=0.6.1.dev61+ng151a839
 pkgrel=1
 pkgdesc="Command line CalDav client"
 license=("MIT")
 url="http://lostpackets.de/khal/"
 depends=('python-urwid' 'python-xdg' 'vdirsyncer' 'python-dateutil'
          'python-configobj' 'python-tzlocal' 'python-icalendar'
-         'sqlite')
+         'sqlite' 'python-pkginfo')
 makedepends=('python-setuptools' 'python-setuptools_scm'
-             'python-pkginfo' 'git' 'python-sphinxcontrib-newsfeed')
+             'git' 'python-sphinxcontrib-newsfeed')
 optdepends=('python-setproctitle: Display a clearer name in your process list')
 # I keep here python depencies...
 # python2-click, python2-icalendar come with the python2-vdirsyncer dependancy
