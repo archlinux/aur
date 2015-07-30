@@ -1,0 +1,15 @@
+pkgbase = python2-flask-genshi
+	pkgdesc = An extension to Flask for easy Genshi templating.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/Flask-Genshi/
+	arch = any
+	license = BSD
+	makedepends = setuptools
+	depends = python2-flask
+	depends = python2-genshi
+	source = http://pypi.python.org/packages/source/F/Flask-Genshi/Flask-Genshi-0.5.1.tar.gz
+	sha1sums = 4609c294557d3e338db08676162da966e1bf585f
+
+pkgname = python2-flask-genshi
+
