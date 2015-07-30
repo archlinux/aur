@@ -6,7 +6,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.2.1.12.g1a06a4e
+pkgver=3.2.1.18.g06284ba
 pkgrel=1
 pkgdesc="An iTunes-like music player/libary"
 arch=(i686 x86_64)
@@ -28,7 +28,7 @@ provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 options=(!emptydirs)
 install=$_pkgname.install
-source=($pkgname::git://git.gnome.org/$_pkgname)
+source=($pkgname::git+https://git.gnome.org/browse/$_pkgname)
 sha256sums=('SKIP')
 
 pkgver() {
