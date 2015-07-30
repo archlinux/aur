@@ -1,0 +1,15 @@
+pkgbase = notmuch-addrlookup-c
+	pkgdesc = A tool to query the notmuch database for addresses.
+	pkgver = v5
+	pkgrel = 1
+	url = https://github.com/aperezdc/notmuch-addrlookup-c
+	arch = any
+	license = MIT
+	depends = notmuch
+	source = https://github.com/aperezdc/notmuch-addrlookup-c/archive/v5.tar.gz
+	source = MIT-LICENSE
+	md5sums = d87ddb9b0f119694bbfe7c086f20907b
+	md5sums = f9be2430c190c736214e76ead254ed07
+
+pkgname = notmuch-addrlookup-c
+
