@@ -1,0 +1,25 @@
+pkgbase = einstein
+	pkgdesc = Remake of old DOS game Sherlock which was inspired by Albert Einstein's puzzle
+	pkgver = 2.0
+	pkgrel = 5
+	url = http://web.archive.org/web/20120521062745/http://games.flowix.com/en/index.html
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = sharutils
+	makedepends = ttf-dejavu
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = xorg-server
+	source = http://old-releases.ubuntu.com/ubuntu/pool/universe/e/einstein/einstein_2.0.dfsg.2.orig.tar.gz
+	source = http://old-releases.ubuntu.com/ubuntu/pool/universe/e/einstein/einstein_2.0.dfsg.2-5.diff.gz
+	source = einstein.png
+	source = arch.patch
+	md5sums = d47d4ae80478d4d8d5796e65d134124f
+	md5sums = 11291eeee59b2a999196e1dba2efaa65
+	md5sums = 81b58f2e3c61c0b50716992a30f2d4cc
+	md5sums = 68c261ccda52b9978ed030a240ef91ea
+
+pkgname = einstein
+

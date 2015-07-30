@@ -1,0 +1,10 @@
+2014-09-03  Mariusz Libera  <mariusz.libera@gmail.com>
+
+    2.0-4:
+    * added changelog
+    * moved ttf-dejavu from depends to makedepends
+    * changed x-server to xorg-server in depends array
+    * added prepare function
+    * removed uses of $startdir and "|| return 1"
+    * replaced mkdir with install
+

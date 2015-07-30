@@ -1,0 +1,25 @@
+--- einstein_2.0.dfsg.2-5.diff.orig	2013-01-26 17:23:38.297314526 +0100
++++ einstein_2.0.dfsg.2-5.diff	2013-01-26 17:28:17.374267298 +0100
+@@ -961,7 +961,7 @@
+  
+  $(TARGET): $(OBJECTS)
+ +	cd mkres && make
+-+	cd res && ../mkres/mkres --source resources.descr --output einstein.res
+++	cd res && ../mkres/mkres --source resources.descr --output ../einstein.res
+  	$(CXX) $(LNFLAGS) $(OBJECTS) -o $(TARGET)
+  
+  clean:
+@@ -971,13 +971,3 @@
+  
+  depend:
+  	@makedepend $(SOURCES) 2> /dev/null
+-@@ -61,8 +65,7 @@
+- 	./$(TARGET)
+- 
+- install: $(TARGET)
+--	$(INSTALL) -s -D $(TARGET) $(PREFIX)/bin/$(TARGET)
+--	$(INSTALL) -D einstein.res $(PREFIX)/share/einstein/res/einstein.res
+-+	$(INSTALL) -s -D $(TARGET) $(DESTDIR)/$(PREFIX)/games/$(TARGET)
+- 	
+- # DO NOT DELETE THIS LINE -- make depend depends on it.
+- 
