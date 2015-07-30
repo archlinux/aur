@@ -5,7 +5,7 @@
 _pkgname=xf86-video-qxl
 pkgname=$_pkgname-git
 pkgver=0.1.4.7.ge765cc5
-pkgrel=2
+pkgrel=3
 pkgdesc='X Window System QXL driver including Xspice server'
 arch=('i686' 'x86_64')
 url='http://www.spice-space.org'
@@ -13,10 +13,8 @@ license=('MIT')
 depends=('xf86dgaproto' 'xproto' 'fontsproto' 'randrproto' 'renderproto'
          'videoproto' 'resourceproto' 'scrnsaverproto' 'spice')
 optdepends=('python2: Xspice server')
-# xf86-video-qxl can't be built against spice-protocol 0.12.8 due to a bug,
-# see http://lists.freedesktop.org/archives/spice-devel/2015-July/020860.html
 makedepends=('git' 'xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=19'
-             'spice-protocol<0.12.8')
+             'spice-protocol-git')
 provides=('xf86-video-qxl')
 conflicts=('xf86-video-qxl' 'X-ABI-VIDEODRV_VERSION<19' 'X-ABI-VIDEODRV_VERSION>=20')
 source=('git://anongit.freedesktop.org/xorg/driver/xf86-video-qxl'
