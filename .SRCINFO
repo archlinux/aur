@@ -1,0 +1,16 @@
+pkgbase = latex-tuddesign-thesis
+	pkgdesc = Corporate-design for LaTeX from Technische Universität Darmstadt
+	pkgver = 0.0.20140703
+	pkgrel = 1
+	url = http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/
+	install = latex-tuddesign-thesis.install
+	arch = any
+	license = GPL-3
+	depends = texlive-core
+	depends = latex-tuddesign
+	depends = latex-tuddesign-fonts
+	source = http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/latex/latex-tuddesign-thesis/latex-tuddesign-thesis_0.0.20140703.zip
+	md5sums = ecd9d6b70d6af04e337820dc3b081ca9
+
+pkgname = latex-tuddesign-thesis
+
