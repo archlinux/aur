@@ -1,5 +1,5 @@
 pkgbase = nodejs10
-	pkgdesc = Evented I/O for V8 javascript
+	pkgdesc = Evented I/O for V8 javascript, frozen in version 0.10.36
 	pkgver = 0.10.36
 	pkgrel = 2
 	url = http://nodejs.org/
