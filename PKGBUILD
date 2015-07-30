@@ -11,7 +11,7 @@ license=('custom')
 depends=('fortune-mod')
 groups=('fortune-mods')
 source="fortunes.txt"
-url="http://www.moviemistakes.com/film3297/quotes"
+url="https://en.wikiquote.org/wiki/The_Matrix_%28franchise%29"
 md5sums=('46f18341b325dff8bc1d1bf4db091738')
 
 build() {
