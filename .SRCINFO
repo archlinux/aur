@@ -1,6 +1,6 @@
 pkgbase = menulibre
 	pkgdesc = An advanced menu editor that provides modern features in a clean, easy-to-use interface. All without GNOME dependencies
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://launchpad.net/menulibre
 	install = menulibre.install
@@ -15,8 +15,8 @@ pkgbase = menulibre
 	depends = python-gobject
 	depends = python-psutil
 	depends = python-xdg
-	source = https://launchpad.net/menulibre/2.0/2.0.5/+download/menulibre-2.0.5.tar.gz
-	md5sums = b2311644945589d08599322d527695a3
+	source = https://launchpad.net/menulibre/2.0/2.0.6/+download/menulibre-2.0.6.tar.gz
+	md5sums = 29cf0028db1e7c6d5bba10bb214110c4
 
 pkgname = menulibre
 
