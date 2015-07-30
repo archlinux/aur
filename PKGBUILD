@@ -1,7 +1,7 @@
 # Maintainer: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
 pkgver=0.99.467
-pkgrel=1
+pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
