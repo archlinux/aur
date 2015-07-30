@@ -1,7 +1,7 @@
 pkgbase = rstudio-server-bin
 	pkgdesc = A new integrated development environment (IDE) for R (binary version from RStudio official website)
 	pkgver = 0.99.467
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	install = rstudio-server-bin.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = rstudio-server-bin
 	depends = glibc>=2.7
 	depends = libedit
 	depends = psmisc
-	provides = rstudio-desktop=0.99.467
+	provides = rstudio-server=0.99.467
 	conflicts = rstudio-server
 	conflicts = rstudio-server-git
 	source = https://download2.rstudio.org/rstudio-server-0.99.467-.deb
