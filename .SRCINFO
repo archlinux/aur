@@ -1,0 +1,18 @@
+pkgbase = cozy-indexer
+	pkgdesc = Indexer for Cozy.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/cozy/cozy-data-indexer
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-dateutil
+	depends = python2-whoosh
+	depends = python2-tornado
+	depends = git
+	provides = cozy-indexer
+	source = git+https://github.com/cozy/cozy-data-indexer
+	sha256sums = SKIP
+
+pkgname = cozy-indexer
+
