@@ -1,0 +1,16 @@
+pkgbase = lib32-fftw
+	pkgdesc = A library for computing the discrete Fourier transform (DFT) (32 bit)
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = http://www.fftw.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran-multilib
+	depends = lib32-glibc
+	depends = fftw
+	options = !libtool
+	source = http://www.fftw.org/fftw-3.3.4.tar.gz
+	md5sums = 2edab8c06b24feeb3b82bbb3ebf3e7b3
+
+pkgname = lib32-fftw
+
