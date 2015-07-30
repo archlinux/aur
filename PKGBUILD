@@ -15,7 +15,7 @@ url="http://www.moviemistakes.com/film3297/quotes"
 md5sums=('eb8a4013ac36655ec7cd46ca9b6f022c')
 
 build() {
-  iconv -f iso-8859-1 -t utf8 "${srcdir}/fortunes.txt" --output "${srcdir}/matrix"
+  cp "${srcdir}/fortunes.txt" "${srcdir}/matrix"
   strfile "${srcdir}/matrix" "${srcdir}/matrix.dat"
 }
 
