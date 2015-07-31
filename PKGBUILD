@@ -3,7 +3,7 @@
 
 pkgbase=heavything-bin
 pkgname=('rwasa-bin' 'webslap-bin' 'hnwatch-bin'
-         'dhtool-bin' 'sshtalk-bin' 'toplip-bin')
+         'dhtool-bin' 'sshtalk-bin')
 pkgver=1.13
 pkgrel=1
 pkgdesc='A General purpose x64 Asm library for 2ton products'
@@ -36,11 +36,6 @@ package_dhtool-bin () {
 package_sshtalk-bin () {
   cd HeavyThing-$pkgver/sshtalk
   install -Dm755 sshtalk "$pkgdir"/usr/bin/sshtalk
-}
-
-package_toplip-bin () {
-  cd HeavyThing-$pkgver/toplip
-  install -Dm755 toplip "$pkgdir"/usr/bin/toplip
 }
 
 # vim:set ts=2 sw=2 et:
