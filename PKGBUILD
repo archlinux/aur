@@ -1,8 +1,8 @@
 # Maintainer: Ben Widawsky <ben@bwidawsk.net>
-# Contributor:  Rob McCathie <korrode at gmail>
-# Contributor:  Ionut Biru <ibiru@archlinux.org>
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor:  Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Rob McCathie <korrode at gmail>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
