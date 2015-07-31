@@ -1,6 +1,6 @@
 pkgbase = libsystemd-standalone
 	pkgdesc = Standalone systemd libs (including -compat)
-	pkgver = 219
+	pkgver = 223
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = libsystemd-standalone
 	makedepends = quota-tools
 	makedepends = xz
 	options = strip
-	source = http://www.freedesktop.org/software/systemd/systemd-219.tar.xz
-	sha1sums = 307d1c3e48b3bca1039cb66df2d7def074efe2ef
+	source = https://github.com/systemd/systemd/archive/v223.tar.gz
+	sha1sums = 24b598e3bc09952a0a6251e446c633d324684799
 
 pkgname = libsystemd-standalone
 	install = libsystemd.install
@@ -53,7 +53,6 @@ pkgname = libsystemd-daemon
 
 pkgname = libsystemd-udev
 	install = libsystemd.install
-	provides = libgudev-1.0.so
 	provides = libudev.so
 	provides = libudev
 
