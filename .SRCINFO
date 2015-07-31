@@ -4,7 +4,7 @@ pkgbase = digital-clock
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
-	depends = qt5-base
+	depends = qt5-base>=5.4
 	optdepends = git
 
 pkgname = digital-clock
