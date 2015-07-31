@@ -1,4 +1,5 @@
-# Maintainer: Camille <onodera@rizon>
+# Contributor: Camille <onodera@rizon>
+# Maintainer: aksr <aksr at t-com dot me>
 pkgname=wmutils-git
 pkgver=1.0.r23.g1be37b6
 pkgrel=1
