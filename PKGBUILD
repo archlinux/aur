@@ -18,6 +18,7 @@ source=( "https://github.com/systemd/systemd/archive/v${pkgver}.tar.gz" )
 build() {
   cd "systemd-$pkgver"
 
+  ./autogen.sh
   ./configure --enable-compat-libs
 
   make
@@ -28,8 +29,8 @@ package_libsystemd-standalone() {
   provides=( 'libsystemd.so' 'libsystemd' )
 
   cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libsystemd.so.0.8.0 "${pkgdir}/usr/lib/libsystemd.so.0.8.0"
-  ln -s libsystemd.so.0.6.0 "${pkgdir}/usr/lib/libsystemd.so"
+  install -Dm644 .libs/libsystemd.so.0.10.0 "${pkgdir}/usr/lib/libsystemd.so.0.8.0"
+  ln -s libsystemd.so.0.10.0 "${pkgdir}/usr/lib/libsystemd.so"
 
   # Headers
   install -Dm644 src/systemd/_sd-common.h "${pkgdir}/usr/include/systemd/_sd-common.h"
@@ -93,8 +94,8 @@ package_libsystemd-udev() {
   provides=( 'libudev.so' 'libudev' )
 
   cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libudev.so.1.6.2 "${pkgdir}/usr/lib/libudev.so.1.6.2"
-  ln -s libudev.so.1.6.2 "${pkgdir}/usr/lib/libudev.so"
+  install -Dm644 .libs/libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so.1.6.2"
+  ln -s libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so"
 
   install -Dm644 src/libudev/libudev.pc "${pkgdir}/usr/lib/pkgconfig/libudev.pc"
   install -Dm644 src/libudev/libudev.h "${pkgdir}/usr/include/libudev.h"
