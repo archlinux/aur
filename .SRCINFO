@@ -1,0 +1,20 @@
+pkgbase = krakatau-git
+	pkgdesc = Java decompiler, assembler, and disassembler
+	pkgver = r332.71b4276
+	pkgrel = 1
+	url = https://github.com/Storyyeller/Krakatau
+	arch = any
+	license = GPL3
+	depends = python2
+	optdepends = python2-ply: Assembly support
+	source = git+https://github.com/Storyyeller/Krakatau.git
+	source = krakatau-assemble
+	source = krakatau-disassemble
+	source = krakatau-decompile
+	sha256sums = SKIP
+	sha256sums = aecd6fda224671ef2127ec2fe9cd804eb9128985c33a5e2034aa0c76234376df
+	sha256sums = 1caa7bdd1a62a714ee25218b98fd6193254c6afee13470a5b7fa84c92d57fb21
+	sha256sums = 155b3a71b7d31d85e9bbd8a86ba5471c7d2ba2c31b36d37410c241ecfd2c7ed2
+
+pkgname = krakatau-git
+

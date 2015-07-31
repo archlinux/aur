@@ -1,0 +1,2 @@
+#!/bin/sh
+JAVA_HOME=/usr/lib/jvm/default python2 -O /usr/share/krakatau/disassemble.py "$@"
