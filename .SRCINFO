@@ -1,0 +1,22 @@
+pkgbase = heavything-bin
+	pkgdesc = A General purpose x64 Asm library for 2ton products
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://2ton.com.au/HeavyThing
+	arch = x86_64
+	license = GPL3
+	source = https://2ton.com.au/HeavyThing-1.13.tar.gz
+	sha256sums = 95e46bcaef8a90257ae2d81330700d72da0bb633c4ff38fbfeaded30c4f106c6
+
+pkgname = rwasa-bin
+
+pkgname = webslap-bin
+
+pkgname = hnwatch-bin
+
+pkgname = dhtool-bin
+
+pkgname = sshtalk-bin
+
+pkgname = toplip-bin
+
