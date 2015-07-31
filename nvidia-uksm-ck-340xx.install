@@ -1,15 +1,13 @@
 post_install() {
 	EXTRAMODULES='extramodules-4.0-uksm-ck'
-	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+	depmod $(cat /lib/modules/$EXTRAMODULES/version)
 	echo 'In order to use nvidia module, reboot the system.'
 }
 
 post_upgrade() {
-	EXTRAMODULES='extramodules-4.0-uksm-ck'
-	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+    post_install
 }
 
 post_remove() {
-	EXTRAMODULES='extramodules-4.0-uksm-ck'
-	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+    post_install
 }

@@ -1,7 +1,7 @@
 pkgbase = nvidia-uksm-ck-340xx
 	pkgdesc = NVIDIA 340xx drivers for linux-uksm-ck.
 	pkgver = 340.76
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.nvidia.com/
 	install = nvidia-uksm-ck-340xx.install
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = nvidia-uksm-ck-340xx
 	depends = linux-uksm-ck<4.1
 	depends = nvidia-340xx-libgl
 	depends = nvidia-340xx-utils=340.76
+	conflicts = nvidia-uksm-ck
+	conflicts = nvidia-uksm-ck-304xx
 	options = !strip
 	source = nv-drm.patch
 	source = nvidia-4.0.patch
