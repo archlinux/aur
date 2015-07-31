@@ -1,0 +1,30 @@
+pkgbase = linux-firmware-iwlwifi-git
+	pkgdesc = Emmanuel Grumbach's fork of linux-firmware.git
+	pkgver = 20150722.75cc3ef
+	pkgrel = 1
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware.git
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = custom
+	makedepends = git
+	provides = linux-firmware=20150722.75cc3ef
+	conflicts = linux-firmware-git
+	conflicts = kernel26-firmware
+	conflicts = ar9170-fw
+	conflicts = iwlwifi-1000-ucode
+	conflicts = iwlwifi-3945-ucode
+	conflicts = iwlwifi-4965-ucode
+	conflicts = iwlwifi-5000-ucode
+	conflicts = iwlwifi-5150-ucode
+	conflicts = iwlwifi-6000-ucode
+	conflicts = rt2870usb-fw
+	conflicts = rt2x00-rt61-fw
+	conflicts = rt2x00-rt71w-fw
+	conflicts = amd-ucode
+	options = !strip
+	source = linux-firmware-iwlwifi-git::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+	md5sums = SKIP
+
+pkgname = linux-firmware-iwlwifi-git
+
