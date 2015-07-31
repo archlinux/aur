@@ -3,13 +3,14 @@
 pkgname=nvidia-bridge-pl-304xx
 pkgver=304.125
 _extramodules=extramodules-4.0-bridge-pl
-pkgrel=7
+pkgrel=8
 _pkgdesc="NVIDIA 304xx drivers for linux-bridge-pl."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 depends=('linux-bridge-pl>=4.0' 'linux-bridge-pl<4.1' "nvidia-304xx-libgl" "nvidia-304xx-utils=${pkgver}")
 makedepends=('linux-bridge-pl-headers>=4.0' 'linux-bridge-pl-headers<4.1')
+conflicts=('nvidia-bridge-pl' 'nvidia-bridge-pl-340xx')
 license=('custom')
 install=nvidia-bridge-pl-304xx.install
 options=(!strip)
