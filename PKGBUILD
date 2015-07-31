@@ -3,7 +3,7 @@
 # Contributor: Renzo Carbonara <gnuk0001/gmail.com>
 
 pkgname=lzip
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="A lossless file compressor based on the LZMA algorithm"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gcc-libs')
 install=lzip.install
 source=(http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('716a9876dc595ec52d4f3bda81e42471')
+sha1sums=('d023f1e95202e45b50656833d09eee1a8c7bd9d6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
