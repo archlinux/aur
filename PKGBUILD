@@ -49,6 +49,7 @@ package() {
   mv ${pkgdir}/usr/share/webapps/${pkgname}/data/configuration ${pkgdir}/etc/webapps/${pkgname}/config
   chown -R http:http ${pkgdir}/etc/webapps/${pkgname}
   ln -s /etc/webapps/${pkgname}/config ${pkgdir}/usr/share/webapps/${pkgname}/data/configuration
+  chown -R http:http ${pkgdir}/usr/share/webapps/${pkgname}/data/configuration
 
   # install apache config file
   install -d  ${pkgdir}/etc/webapps/${pkgname}
