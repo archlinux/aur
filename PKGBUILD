@@ -9,13 +9,15 @@ depends=('python>=3.4' 'python-pyqt5' 'qt5-quickcontrols' 'python-pyserial' 'wxp
 
 #provides=('cura')
 replaces=('cura')
-conflicts=('libarcus')
+conflicts=('libarcus' 'cura')
 url="https://github.com/daid/Cura"
 license=('AGPLv3')
 arch=('x86_64')
+source=('AngledCornerRectangle.py' 'ListModel.py')
+sha1sums=('45c9290bca87299ffc627d6b809360eac4c722da' '87e068e5706ed99110ef71dd57fe52ee1b783b53')
 if [ "$CARCH" == x86_64 ]; then
 	source+=(http://software.ultimaker.com/15.06/Cura-${pkgver}-Linux.deb)
-	sha1sums+=('2e95167de709cc23f6ffb923d2fc1d955c84dd56')
+	sha1sums+=('0b96df99e0e98b756014943cb13e4d3c0e7f0e20')
 #elif [ "$CARCH" == i686 ]; then
 #	source+=(http://software.ultimaker.com/current/cura_${pkgver}-debian_i386.deb)
 #	sha1sums+=('e18e5bd4bd72e2af8d97102aea5ecaaf4e93e856')
@@ -37,22 +39,19 @@ build()
 #apt-get install python3-pyqt5 python3-pyqt5.qtopengl python3-pyqt5.qtquick python3-pyqt5.qtsvg python3-serial qml-module-qtquick2 qml-module-qtquick-window2 qml-module-qtquick-layouts qml-module-qtquick-dialogs libqt5designer5 libqt5help5 libqt5test5 libqt5xml5 libqt5opengl5 libqt5qml5 libqt5quick5 libqt5quickwidgets5 qtdeclarative-abi-5-4-1 qml-module-qtquick-privatewidgets  libqt5clucene5 libqt5sql5 libdouble-conversion1 qml-module-qtquick-controls
 package()
 {
-	# remove the included copy of protobuf:
-	rm -rf ${srcdir}/usr/lib/libproto*
-	rm -rf ${srcdir}/usr/include/google/
-	rm -rf ${srcdir}/usr/bin/protoc
-	rm -rf ${srcdir}/usr/lib/liblibprotoc.a
+	# remove the included copy of python-protobuf3:
 	rm -rf ${srcdir}/usr/lib/python3/dist-packages/google
-	
 	
 	cp -r "${srcdir}"/usr "${pkgdir}"/usr
 	
 	# fix the location of python modules:
 	mkdir ${pkgdir}/usr/lib/python3.4/
 	mv ${pkgdir}/usr/lib/python3/dist-packages ${pkgdir}/usr/lib/python3.4/site-packages
-	
-	
-	mv ${pkgdir}/usr/lib64/libArcus.a ${pkgdir}/usr/lib/libArcus.a
+
+	# Apply patch https://github.com/Ultimaker/Uranium/commit/041ae0ee89b9af5a53c20589a51c70a7a9e761d7
+	# to fix for pyqt 5.5
+	cp AngledCornerRectangle.py "${pkgdir}"/usr/lib/python3.4/site-packages/UM/Qt/Bindings/AngledCornerRectangle.py
+	cp ListModel.py "${pkgdir}"/usr/lib/python3.4/site-packages/UM/Qt/ListModel.py
 	
 	# remove cmakes for Arcus:
 	rm -rf ${pkgdir}/usr/lib64

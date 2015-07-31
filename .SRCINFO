@@ -16,7 +16,12 @@ pkgbase = cura-bin
 	depends = protobuf3
 	depends = python-protobuf3
 	conflicts = libarcus
+	conflicts = cura
 	replaces = cura
+	source = AngledCornerRectangle.py
+	source = ListModel.py
+	sha1sums = 45c9290bca87299ffc627d6b809360eac4c722da
+	sha1sums = 87e068e5706ed99110ef71dd57fe52ee1b783b53
 
 pkgname = cura-bin
 
