@@ -6,14 +6,12 @@ pkgbase = pycryptopp
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = darcsver
-	makedepends = setuptools_darcs
 	depends = python2
 	depends = crypto++
-	source = http://pypi.python.org/packages/source/p/pycryptopp/pycryptopp-0.6.0.1206569328141510525648634803928199668821045408958.tar.gz
-	source = http://pypi.python.org/packages/source/p/pycryptopp/pycryptopp-0.6.0.1206569328141510525648634803928199668821045408958.tar.gz.asc
-	md5sums = ce38fbe03705d27da408c78b56eb1947
-	md5sums = 76fe2da5b1fc964d9e1ee4596c36d5bf
+	source = https://pypi.python.org/packages/source/p/pycryptopp/pycryptopp-0.6.0.1206569328141510525648634803928199668821045408958.tar.gz
+	source = https://pypi.python.org/packages/source/p/pycryptopp/pycryptopp-0.6.0.1206569328141510525648634803928199668821045408958.tar.gz.asc
+	sha256sums = 116158917bd243da2701cfeba9a6374854bc9a599d1466e1a2dbadf37c802059
+	sha256sums = SKIP
 
 pkgname = pycryptopp
 
