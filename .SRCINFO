@@ -1,13 +1,14 @@
 pkgbase = mynotex
 	pkgdesc = A free note-taking and notes manager software for Linux.
 	pkgver = 1.3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sites.google.com/site/mynotex
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = sqlite3
 	depends = gtk2
+	source = https://sites.google.com/site/mynotex/files/mynotex_1.3.1.0_.deb
 
 pkgname = mynotex
 
