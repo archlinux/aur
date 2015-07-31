@@ -3,11 +3,12 @@
 
 pkgname=pfclient-beta-bin
 pkgver=3.0.2080
-pkgrel=2
+pkgrel=3
 pkgdesc="Planefinder.net sharing client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://planefinder.net/sharing/client"
 license=(unknown)
+optdepends=("lib32-glibc: necessary for 64-bit systems")
 install=pfclient-beta-bin.install
 backup=('etc/pfclient/pfclient-config.json')
 
