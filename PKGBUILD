@@ -21,10 +21,10 @@ source=("https://launchpad.net/$pkgname/${_majorver}/$pkgver/+download/$pkgname-
         "apparmor_unload.sh"
         "apparmor.service")
 
-md5sums=('3af6ef84881016bf8d9100f3f8ab036b'
-         'a657bc9e2670509e489615e63ba718c9'
-         'f083aa1926430bc48eb332f1b77fca08'
-         'cb226668bb3e0c9a62e672c11f8a012b')
+sha256sums=('4d0e224257a29671b694bd9054edf0dd213aa690fd02844ecf3329b86ac506f4'
+            'd2fea5a62bacae350cfe56bad1b293c12afe803bec10e546b901324e582e89af'
+            '076aebfa815543f85d26215056a921996fbff14d1678ddfa07ab50dbfda94ba1'
+            'eea47ec2a3fb0c1104193bed91586cfccda745f2e0a473f6d1d2a0d2fe42c413')
 
 #Configuration
 core_perl_dir='/usr/bin/core_perl'
