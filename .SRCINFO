@@ -1,7 +1,7 @@
 pkgbase = nvidia-uksm-304xx
 	pkgdesc = NVIDIA 304xx drivers for linux-uksm.
 	pkgver = 304.125
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.nvidia.com/
 	install = nvidia-uksm-304xx.install
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = nvidia-uksm-304xx
 	depends = linux-uksm<4.1
 	depends = nvidia-304xx-libgl
 	depends = nvidia-304xx-utils=304.125
+	conflicts = nvidia-uksm
+	conflicts = nvidia-uksm-340xx
 	options = !strip
 	source = nv-drm.patch
 	source = nvidia-3.19.patch
