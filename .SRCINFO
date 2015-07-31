@@ -2,7 +2,7 @@
 # Mon Jul 27 10:19:31 UTC 2015
 pkgbase = iosevka-font
 	pkgdesc = Iosevka programming font
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/be5invis/Iosevka
 	install = iosevka-font.install
@@ -10,8 +10,8 @@ pkgbase = iosevka-font
 	license = SIL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/archive/v0.0.7.tar.gz
-	md5sums = 8260cfb3aa215a7db92c8a4ccc68309f
+	source = https://github.com/be5invis/Iosevka/archive/v0.0.8.tar.gz
+	md5sums = a165b5209766cde4dd578afe25ed9b5c
 
 pkgname = iosevka-font
 
