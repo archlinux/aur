@@ -1,7 +1,7 @@
 pkgbase = libcsuper
 	pkgdesc = Universal points counter allowing reflexion exemption
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dalan.rd-h.fr/wordpress
 	install = INSTALL
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = libcsuper
 	optdepends = csuper-cli
 	optdepends = csuper-gui
 	source = http://www.dalan.rd-h.fr/binaries/Csuper/4.2.0/Csuper-4.2.0-sources.tar.xz
-	sha256sums = 458493a483f953eb7490b385c0557df84c31bf2cdc30f0e670b37c6b02ba1cb1
+	sha256sums = 6bcda8cd8c89356af2495ee50a14052cacd6c9d22a9a3f1b4744b360c55b2643
 
 pkgname = libcsuper
 

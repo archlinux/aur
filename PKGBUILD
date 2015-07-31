@@ -2,7 +2,7 @@
 # Contributor: Rémi BERTHO <remi.bertho@openmailbox.org>
 pkgname=libcsuper
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal points counter allowing reflexion exemption"
 arch=(any)
 url="http://www.dalan.rd-h.fr/wordpress"
@@ -12,7 +12,7 @@ optdepends=('csuper-cli' 'csuper-gui')
 makedepends=('cmake')
 install="INSTALL"
 source=(http://www.dalan.rd-h.fr/binaries/Csuper/4.2.0/Csuper-4.2.0-sources.tar.xz)
-sha256sums=('458493a483f953eb7490b385c0557df84c31bf2cdc30f0e670b37c6b02ba1cb1')
+sha256sums=('6bcda8cd8c89356af2495ee50a14052cacd6c9d22a9a3f1b4744b360c55b2643')
  
 build()
 {
