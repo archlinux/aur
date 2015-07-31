@@ -1,0 +1,17 @@
+pkgbase = csuper-gui
+	pkgdesc = Universal points counter allowing reflexion exemption
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = http://www.dalan.rd-h.fr/wordpress
+	install = INSTALL
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = gtk3>=3.6
+	depends = libcsuper
+	optdepends = csuper-cli
+	source = http://www.dalan.rd-h.fr/binaries/Csuper/4.2.0/Csuper-4.2.0-sources.tar.xz
+	sha256sums = 6bcda8cd8c89356af2495ee50a14052cacd6c9d22a9a3f1b4744b360c55b2643
+
+pkgname = csuper-gui
+
