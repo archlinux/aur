@@ -12,7 +12,7 @@
  };
  const unsigned int cx23885_bcount = ARRAY_SIZE(cx23885_boards);
  
-@@ -989,7 +994,13 @@ struct cx23885_subid cx23885_subids[] =
+@@ -989,6 +994,10 @@ struct cx23885_subid cx23885_subids[] =
  		.subvendor = 0x4254,
  		.subdevice = 0x0982,
  		.card      = CX23885_BOARD_DVBSKY_T982,
@@ -21,20 +21,17 @@
 +		.subdevice = 0x2800,
 +		.card      = CX23885_BOARD_DVBSKY_C2800E_CI,
  	},
-+
-+
  };
  const unsigned int cx23885_idcount = ARRAY_SIZE(cx23885_subids);
- 
-@@ -1595,6 +1606,7 @@ void cx23885_gpio_setup(struct cx23885_d
- 		break;
+@@ -1596,6 +1605,7 @@ void cx23885_gpio_setup(struct cx23885_d
  	case CX23885_BOARD_DVBSKY_T980C:
  	case CX23885_BOARD_DVBSKY_S950C:
-+	case CX23885_BOARD_DVBSKY_C2800E_CI:
  	case CX23885_BOARD_TT_CT2_4500_CI:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
  		/*
  		 * GPIO-0 INTA from CiMax, input
-@@ -1719,6 +1731,7 @@ int cx23885_ir_init(struct cx23885_dev *
+ 		 * GPIO-1 reset CiMax, output, high active
+@@ -1719,6 +1729,7 @@ int cx23885_ir_init(struct cx23885_dev *
  	case CX23885_BOARD_DVBSKY_S950:
  	case CX23885_BOARD_DVBSKY_S952:
  	case CX23885_BOARD_DVBSKY_T982:
@@ -42,7 +39,7 @@
  		if (!enable_885_ir)
  			break;
  		dev->sd_ir = cx23885_find_hw(dev, CX23885_HW_AV_CORE);
-@@ -1772,6 +1785,7 @@ void cx23885_ir_fini(struct cx23885_dev
+@@ -1772,6 +1783,7 @@ void cx23885_ir_fini(struct cx23885_dev
  	case CX23885_BOARD_DVBSKY_S950:
  	case CX23885_BOARD_DVBSKY_S952:
  	case CX23885_BOARD_DVBSKY_T982:
@@ -50,7 +47,7 @@
  		cx23885_irq_remove(dev, PCI_MSK_AV_CORE);
  		/* sd_ir is a duplicate pointer to the AV Core, just clear it */
  		dev->sd_ir = NULL;
-@@ -1826,6 +1840,7 @@ void cx23885_ir_pci_int_enable(struct cx
+@@ -1826,6 +1838,7 @@ void cx23885_ir_pci_int_enable(struct cx
  	case CX23885_BOARD_DVBSKY_S950:
  	case CX23885_BOARD_DVBSKY_S952:
  	case CX23885_BOARD_DVBSKY_T982:
@@ -58,7 +55,7 @@
  		if (dev->sd_ir)
  			cx23885_irq_add_enable(dev, PCI_MSK_AV_CORE);
  		break;
-@@ -1933,6 +1948,7 @@ void cx23885_card_setup(struct cx23885_d
+@@ -1933,6 +1946,7 @@ void cx23885_card_setup(struct cx23885_d
  	case CX23885_BOARD_DVBSKY_S950C:
  	case CX23885_BOARD_TT_CT2_4500_CI:
  	case CX23885_BOARD_DVBSKY_S950:
@@ -66,7 +63,7 @@
  		ts1->gen_ctrl_val  = 0x5; /* Parallel */
  		ts1->ts_clk_en_val = 0x1; /* Enable TS_CLK */
  		ts1->src_sel_val   = CX23885_SRC_SEL_PARALLEL_MPEG_VIDEO;
-@@ -2066,6 +2082,7 @@ void cx23885_card_setup(struct cx23885_d
+@@ -2066,6 +2080,7 @@ void cx23885_card_setup(struct cx23885_d
  	case CX23885_BOARD_DVBSKY_S950:
  	case CX23885_BOARD_DVBSKY_S952:
  	case CX23885_BOARD_DVBSKY_T982:

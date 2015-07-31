@@ -1,7 +1,7 @@
 pkgbase = media-build-dvbsky
 	pkgdesc = Driver for DVBSky cards/boxes
 	pkgver = 20150322
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.dvbsky.net/Support_linux.html
 	install = media-build-dvbsky.install
 	arch = i686
@@ -14,8 +14,10 @@ pkgbase = media-build-dvbsky
 	replaces = dvbsky-dvb-drivers
 	source = http://dvbsky.net/download/linux/media_build-bst-150322.tar.gz
 	source = add_c2800e.patch
+	source = dma_buf_export.patch
 	sha256sums = fd4acd06d2a4a5d5987393d68979aaf8832f5b21ae828ea6a50baca998cd89c7
-	sha256sums = 4a8b9dfc3e3d1a915c9f381dd8fdfbf9975586547a0ab553d0152b8aad11ae9b
+	sha256sums = bdb4cb06418cb2e36eb3219b4d4be329d5297db1704e6e3ef0c73dd6bb9721f1
+	sha256sums = da27997a54a1dd805c7177ccc930a86ae7d3042a46926f89109d2c692995329a
 
 pkgname = media-build-dvbsky
 

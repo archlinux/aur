@@ -1,7 +1,7 @@
 # Maintainer: Ole Ernst <olebowle[at]gmx[dot]com>
 pkgname=media-build-dvbsky
 pkgver=20150322
-pkgrel=3
+pkgrel=4
 pkgdesc="Driver for DVBSky cards/boxes"
 arch=('i686' 'x86_64')
 url="http://www.dvbsky.net/Support_linux.html"
@@ -12,9 +12,11 @@ conflicts=('dvbsky-dvb-drivers')
 replaces=('dvbsky-dvb-drivers')
 install="$pkgname.install"
 source=("http://dvbsky.net/download/linux/media_build-bst-150322.tar.gz"
-        'add_c2800e.patch')
+        'add_c2800e.patch'
+        'dma_buf_export.patch')
 sha256sums=('fd4acd06d2a4a5d5987393d68979aaf8832f5b21ae828ea6a50baca998cd89c7'
-            '4a8b9dfc3e3d1a915c9f381dd8fdfbf9975586547a0ab553d0152b8aad11ae9b')
+            'bdb4cb06418cb2e36eb3219b4d4be329d5297db1704e6e3ef0c73dd6bb9721f1'
+            'da27997a54a1dd805c7177ccc930a86ae7d3042a46926f89109d2c692995329a')
 
 #server doesn't like curl user agent
 DLAGENTS="$( IFS=$'\n'; echo "${DLAGENTS[*]}" | grep '^http::' ) --user-agent 'Mozilla/4.0'"
@@ -27,6 +29,7 @@ prepare() {
   sed -i -e "s|/sbin/lsmod|$(which lsmod)|" -e 's|/sbin/depmod|#/sbin/depmod|' v4l/Makefile
   sed -i 's|/sbin/depmod|#/sbin/depmod|' v4l/scripts/make_makefile.pl
   patch -p1 -i ../add_c2800e.patch
+  patch -p1 -i ../dma_buf_export.patch
 }
 
 build() {
