@@ -12,7 +12,7 @@ build() {
 	git clone https://github.com/Oficerx/Digital-clock.git
 	cd $srcdir/Digital-clock
 	
-	printf "\e[1;31mChose 1 for building from source and 2 for downloading ready binary(currently only for x86_64)\e[0m"
+	printf "\e[1;31mChose 1 for building from source and 2 for downloading ready binary\e[0m"
 	read VAL
 
 	if [ $VAL == "1" ]
