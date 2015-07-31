@@ -5,13 +5,14 @@
 pkgname=nvidia-uksm-ck
 pkgver=352.21
 _extramodules=extramodules-4.0-uksm-ck
-pkgrel=1
+pkgrel=2
 _pkgdesc="NVIDIA drivers for linux-uksm-ck."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 depends=('linux-uksm-ck>=4.0' 'linux-uksm-ck<4.1' "nvidia-libgl" "nvidia-utils=${pkgver}")
 makedepends=('linux-uksm-ck-headers>=4.0' 'linux-uksm-ck-headers<4.1')
+conflicts=('nvidia-uksm-ck-304xx' 'nvidia-uksm-ck-340xx')
 license=('custom')
 install=nvidia-uksm-ck.install
 options=(!strip)
