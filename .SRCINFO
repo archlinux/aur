@@ -1,6 +1,6 @@
 pkgbase = i2p-dev
 	pkgdesc = A distributed anonymous network (daily mtn->git sync)
-	pkgver = 0.9.20.4
+	pkgver = 0.9.21.0
 	pkgrel = 1
 	epoch = 1
 	url = https://geti2p.net
@@ -20,7 +20,7 @@ pkgbase = i2p-dev
 	conflicts = i2p
 	conflicts = i2p-bin
 	backup = opt/i2p/wrapper.config
-	source = git://github.com/i2p/i2p.i2p.git#commit=master
+	source = git+https://github.com/i2p/i2p.i2p.git#commit=master
 	source = i2prouter.service
 	source = i2prouter.sh
 	source = wrapper.config

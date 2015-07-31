@@ -14,7 +14,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p-dev
-pkgver=0.9.20.4
+pkgver=0.9.21.0
 pkgrel=1
 epoch=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
@@ -33,7 +33,7 @@ install='i2p.install'
 _gitname=i2p.i2p
 _commit=master
 
-source=("git://github.com/i2p/${_gitname}.git#commit=${_commit}"
+source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
 sha256sums=('SKIP'
