@@ -1,0 +1,15 @@
+pkgbase = ruby-amq-protocol
+	pkgdesc = AMQP 0.9.1 encoder & decoder.
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://github.com/ruby-amqp/amq-protocol
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = amq-protocol-1.9.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/amq-protocol-1.9.2.gem
+	sha1sums = 94233e9def1d6f8c05c264c8fc0dc8d2b0531743
+
+pkgname = ruby-amq-protocol
+
