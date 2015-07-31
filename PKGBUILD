@@ -3,7 +3,7 @@
 pkgname=1pass-hg
 _pkgname=1pass
 pkgver=r44.2150bce729df
-pkgrel=1
+pkgrel=2
 pkgdesc="1Password-compatible password management tool for Linux"
 arch=('i686' 'x86_64')
 license=('zlib')
@@ -13,7 +13,7 @@ makedepends=('mercurial')
 source=("hg+http://hg.icculus.org/icculus/1pass/"
         "1pass-lua.patch")
 md5sums=('SKIP'
-         '99554d513fc3cb2e7861544455678d91')
+         'a0a4e1790ac53596d0e0ee9ee244944b')
 
 pkgver() {
   cd "${_pkgname}"
