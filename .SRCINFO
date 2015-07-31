@@ -1,0 +1,127 @@
+pkgbase = pulseaudio-raop2
+	pkgdesc = A featureful, general-purpose sound server with AirPlay/Airtunes/RAOP v2 patchset
+	pkgver = 6.0
+	pkgrel = 1
+	url = http://hfujita.github.io/pulseaudio-raop2/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = libasyncns
+	makedepends = libcap
+	makedepends = attr
+	makedepends = libxtst
+	makedepends = libsm
+	makedepends = libsndfile
+	makedepends = libtool
+	makedepends = rtkit
+	makedepends = speexdsp
+	makedepends = tdb
+	makedepends = systemd
+	makedepends = dbus
+	makedepends = avahi
+	makedepends = bluez
+	makedepends = bluez-libs
+	makedepends = gconf
+	makedepends = intltool
+	makedepends = jack2-dbus
+	makedepends = sbc
+	makedepends = lirc
+	makedepends = openssl
+	makedepends = xenstore
+	makedepends = fftw
+	makedepends = orc
+	makedepends = json-c
+	makedepends = gtk3
+	makedepends = webrtc-audio-processing
+	makedepends = check
+	options = !emptydirs
+	source = pulseaudio-raop2-6.0::git+http://anongit.freedesktop.org/git/pulseaudio/pulseaudio.git#commit=v6.0
+	source = raopv2.patch
+	sha256sums = SKIP
+	sha256sums = a616505d2167df87f8bdaa6f0c674576fee14ac5e04a6d7e92e33ba0075b9127
+
+pkgname = pulseaudio-raop2
+	install = pulseaudio.install
+	depends = libpulse-raop2=6.0-1
+	depends = rtkit
+	depends = libltdl
+	depends = speexdsp
+	depends = tdb
+	depends = orc
+	depends = webrtc-audio-processing
+	depends = sbc
+	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
+	provides = pulseaudio
+	conflicts = pulseaudio
+	backup = etc/pulse/daemon.conf
+	backup = etc/pulse/default.pa
+	backup = etc/pulse/system.pa
+
+pkgname = libpulse-raop2
+	pkgdesc = A featureful, general-purpose sound server with AirPlay/Airtunes/RAOP v2 patchset (client library)
+	depends = dbus
+	depends = libasyncns
+	depends = libcap
+	depends = libxtst
+	depends = libsm
+	depends = libsndfile
+	depends = json-c
+	depends = systemd
+	provides = libpulse
+	conflicts = libpulse
+	backup = etc/pulse/client.conf
+
+pkgname = pulseaudio-gconf-raop2
+	pkgdesc = GConf support for PulseAudio
+	depends = pulseaudio-raop2
+	depends = gconf
+	provides = pulseaudio-gconf
+	conflicts = pulseaudio-gconf
+
+pkgname = pulseaudio-zeroconf-raop2
+	pkgdesc = Zeroconf support for PulseAudio
+	depends = pulseaudio-raop2
+	depends = avahi
+	depends = openssl
+	provides = pulseaudio-zeroconf
+	conflicts = pulseaudio-zeroconf
+
+pkgname = pulseaudio-lirc-raop2
+	pkgdesc = IR (lirc) support for PulseAudio
+	depends = pulseaudio-raop2
+	depends = lirc
+	provides = pulseaudio-lirc
+	conflicts = pulseaudio-lirc
+
+pkgname = pulseaudio-xen-raop2
+	pkgdesc = Xen support for PulseAudio
+	license = GPL2
+	depends = pulseaudio-raop2
+	depends = xenstore
+	provides = pulseaudio-xen
+	conflicts = pulseaudio-xen
+
+pkgname = pulseaudio-jack-raop2
+	pkgdesc = Jack support for PulseAudio
+	depends = pulseaudio-raop2
+	depends = jack2
+	provides = pulseaudio-jack
+	conflicts = pulseaudio-jack
+
+pkgname = pulseaudio-bluetooth-raop2
+	pkgdesc = Bluetooth support for PulseAudio
+	depends = pulseaudio-raop2
+	depends = bluez
+	depends = bluez-libs
+	provides = pulseaudio-bluetooth
+	conflicts = pulseaudio-bluetooth
+
+pkgname = pulseaudio-equalizer-raop2
+	pkgdesc = Equalizer for PulseAudio
+	license = AGPL3
+	depends = pulseaudio-raop2
+	depends = python-pyqt4
+	depends = fftw
+	provides = pulseaudio-equalizer
+	conflicts = pulseaudio-equalizer
+

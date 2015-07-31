@@ -1,0 +1,5695 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5cb5564..694cb42 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1110,8 +1110,12 @@ librtp_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
+ librtp_la_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ 
+ libraop_la_SOURCES = \
+-        modules/raop/raop_client.c modules/raop/raop_client.h \
+-        modules/raop/base64.c modules/raop/base64.h
++        modules/raop/raop-util.c modules/raop/raop-util.h \
++        modules/raop/raop-crypto.c modules/raop/raop-crypto.h \
++        modules/raop/raop-packet-buffer.h modules/raop/raop-packet-buffer.c \
++        modules/raop/raop-client.c modules/raop/raop-client.h \
++        modules/raop/raop-sink.c modules/raop/raop-sink.h
++
+ libraop_la_CFLAGS = $(AM_CFLAGS) $(OPENSSL_CFLAGS) -I$(top_srcdir)/src/modules/rtp
+ libraop_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
+ libraop_la_LIBADD = $(AM_LIBADD) $(OPENSSL_LIBS) libpulsecore-@PA_MAJORMINOR@.la librtp.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+diff --git a/src/modules/raop/base64.c b/src/modules/raop/base64.c
+deleted file mode 100644
+index cdf52a6..0000000
+--- a/src/modules/raop/base64.c
++++ /dev/null
+@@ -1,124 +0,0 @@
+-/***
+-  This file is part of PulseAudio.
+-
+-  Copyright 2008 Colin Guthrie
+-
+-  PulseAudio is free software; you can redistribute it and/or modify
+-  it under the terms of the GNU Lesser General Public License as published
+-  by the Free Software Foundation; either version 2.1 of the License,
+-  or (at your option) any later version.
+-
+-  PulseAudio is distributed in the hope that it will be useful, but
+-  WITHOUT ANY WARRANTY; without even the implied warranty of
+-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+-  General Public License for more details.
+-
+-  You should have received a copy of the GNU Lesser General Public License
+-  along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+-***/
+-
+-/*
+-  This file was originally inspired by a file developed by
+-    Kungliga Tekniska H�gskolan
+-*/
+-
+-#ifdef HAVE_CONFIG_H
+-#include <config.h>
+-#endif
+-
+-#include <stdlib.h>
+-#include <string.h>
+-
+-#include <pulse/xmalloc.h>
+-
+-#include "base64.h"
+-
+-static const char base64_chars[] =
+-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+-
+-static int pos(char c) {
+-    if (c >= 'A' && c <= 'Z') return c - 'A' + 0;
+-    if (c >= 'a' && c <= 'z') return c - 'a' + 26;
+-    if (c >= '0' && c <= '9') return c - '0' + 52;
+-    if (c == '+') return 62;
+-    if (c == '/') return 63;
+-    return -1;
+-}
+-
+-int pa_base64_encode(const void *data, int size, char **str) {
+-    char *s, *p;
+-    int i;
+-    int c;
+-    const unsigned char *q;
+-
+-    p = s = pa_xnew(char, size * 4 / 3 + 4);
+-    q = (const unsigned char *) data;
+-    for (i = 0; i < size;) {
+-        c = q[i++];
+-        c *= 256;
+-        if (i < size)
+-            c += q[i];
+-        i++;
+-        c *= 256;
+-        if (i < size)
+-            c += q[i];
+-        i++;
+-        p[0] = base64_chars[(c & 0x00fc0000) >> 18];
+-        p[1] = base64_chars[(c & 0x0003f000) >> 12];
+-        p[2] = base64_chars[(c & 0x00000fc0) >> 6];
+-        p[3] = base64_chars[(c & 0x0000003f) >> 0];
+-        if (i > size)
+-            p[3] = '=';
+-        if (i > size + 1)
+-            p[2] = '=';
+-        p += 4;
+-    }
+-    *p = 0;
+-    *str = s;
+-    return strlen(s);
+-}
+-
+-#define DECODE_ERROR 0xffffffff
+-
+-static unsigned int token_decode(const char *token) {
+-    int i;
+-    unsigned int val = 0;
+-    int marker = 0;
+-    if (strlen(token) < 4)
+-        return DECODE_ERROR;
+-    for (i = 0; i < 4; i++) {
+-        val *= 64;
+-        if (token[i] == '=')
+-            marker++;
+-        else if (marker > 0)
+-            return DECODE_ERROR;
+-        else {
+-            int lpos = pos(token[i]);
+-            if (lpos < 0)
+-                return DECODE_ERROR;
+-            val += lpos;
+-        }
+-    }
+-    if (marker > 2)
+-        return DECODE_ERROR;
+-    return (marker << 24) | val;
+-}
+-
+-int pa_base64_decode(const char *str, void *data) {
+-    const char *p;
+-    unsigned char *q;
+-
+-    q = data;
+-    for (p = str; *p && (*p == '=' || strchr(base64_chars, *p)); p += 4) {
+-        unsigned int val = token_decode(p);
+-        unsigned int marker = (val >> 24) & 0xff;
+-        if (val == DECODE_ERROR)
+-            return -1;
+-        *q++ = (val >> 16) & 0xff;
+-        if (marker < 2)
+-            *q++ = (val >> 8) & 0xff;
+-        if (marker < 1)
+-            *q++ = val & 0xff;
+-    }
+-    return q - (unsigned char *) data;
+-}
+diff --git a/src/modules/raop/base64.h b/src/modules/raop/base64.h
+deleted file mode 100644
+index 352ab96..0000000
+--- a/src/modules/raop/base64.h
++++ /dev/null
+@@ -1,32 +0,0 @@
+-#ifndef foobase64hfoo
+-#define foobase64hfoo
+-
+-/***
+-  This file is part of PulseAudio.
+-
+-  Copyright 2008 Colin Guthrie
+-  Copyright Kungliga Tekniska Høgskolan
+-
+-  PulseAudio is free software; you can redistribute it and/or modify
+-  it under the terms of the GNU Lesser General Public License as published
+-  by the Free Software Foundation; either version 2.1 of the License,
+-  or (at your option) any later version.
+-
+-  PulseAudio is distributed in the hope that it will be useful, but
+-  WITHOUT ANY WARRANTY; without even the implied warranty of
+-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+-  General Public License for more details.
+-
+-  You should have received a copy of the GNU Lesser General Public License
+-  along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+-***/
+-
+-/*
+-  This file was originally inspired by a file developed by
+-    Kungliga Tekniska Høgskolan
+-*/
+-
+-int pa_base64_encode(const void *data, int size, char **str);
+-int pa_base64_decode(const char *str, void *data);
+-
+-#endif
+diff --git a/src/modules/raop/module-raop-discover.c b/src/modules/raop/module-raop-discover.c
+index f083044..05911b4 100644
+--- a/src/modules/raop/module-raop-discover.c
++++ b/src/modules/raop/module-raop-discover.c
+@@ -52,6 +52,17 @@ PA_MODULE_LOAD_ONCE(true);
+ 
+ #define SERVICE_TYPE_SINK "_raop._tcp"
+ 
++struct userdata {
++    pa_core *core;
++    pa_module *module;
++
++    AvahiPoll *avahi_poll;
++    AvahiClient *client;
++    AvahiServiceBrowser *sink_browser;
++
++    pa_hashmap *tunnels;
++};
++
+ static const char* const valid_modargs[] = {
+     NULL
+ };
+@@ -63,16 +74,6 @@ struct tunnel {
+     uint32_t module_index;
+ };
+ 
+-struct userdata {
+-    pa_core *core;
+-    pa_module *module;
+-    AvahiPoll *avahi_poll;
+-    AvahiClient *client;
+-    AvahiServiceBrowser *sink_browser;
+-
+-    pa_hashmap *tunnels;
+-};
+-
+ static unsigned tunnel_hash(const void *p) {
+     const struct tunnel *t = p;
+ 
+@@ -102,11 +103,11 @@ static int tunnel_compare(const void *a, const void *b) {
+     return 0;
+ }
+ 
+-static struct tunnel *tunnel_new(
++static struct tunnel* tunnel_new(
+         AvahiIfIndex interface, AvahiProtocol protocol,
+         const char *name, const char *type, const char *domain) {
+-
+     struct tunnel *t;
++
+     t = pa_xnew(struct tunnel, 1);
+     t->interface = interface;
+     t->protocol = protocol;
+@@ -114,6 +115,7 @@ static struct tunnel *tunnel_new(
+     t->type = pa_xstrdup(type);
+     t->domain = pa_xstrdup(domain);
+     t->module_index = PA_IDXSET_INVALID;
++
+     return t;
+ }
+ 
+@@ -134,88 +136,173 @@ static void resolver_cb(
+         AvahiStringList *txt,
+         AvahiLookupResultFlags flags,
+         void *userdata) {
+-
+     struct userdata *u = userdata;
+     struct tunnel *tnl;
++    char *nicename, *dname, *vname, *args;
++    char *tp = NULL, *et = NULL, *cn = NULL;
++    char *ch = NULL, *ss = NULL, *sr = NULL;
++    char *t = NULL;
++    char at[AVAHI_ADDRESS_STR_MAX];
++    AvahiStringList *l;
++    pa_module *m;
+ 
+     pa_assert(u);
+ 
+     tnl = tunnel_new(interface, protocol, name, type, domain);
+ 
+-    if (event != AVAHI_RESOLVER_FOUND)
++    if (event != AVAHI_RESOLVER_FOUND) {
+         pa_log("Resolving of '%s' failed: %s", name, avahi_strerror(avahi_client_errno(u->client)));
+-    else {
+-        char *device = NULL, *nicename, *dname, *vname, *args;
+-        char at[AVAHI_ADDRESS_STR_MAX];
+-        AvahiStringList *l;
+-        pa_module *m;
+-
+-        if ((nicename = strstr(name, "@"))) {
+-            ++nicename;
+-            if (strlen(nicename) > 0) {
+-                pa_log_debug("Found RAOP: %s", nicename);
+-                nicename = pa_escape(nicename, "\"'");
+-            } else
+-                nicename = NULL;
+-        }
++        goto  finish;
++    }
+ 
+-        for (l = txt; l; l = l->next) {
+-            char *key, *value;
+-            pa_assert_se(avahi_string_list_get_pair(l, &key, &value, NULL) == 0);
++    if ((nicename = strstr(name, "@"))) {
++        ++nicename;
++        if (strlen(nicename) > 0) {
++            pa_log_debug("Found RAOP: %s", nicename);
++            nicename = pa_escape(nicename, "\"'");
++        } else
++            nicename = NULL;
++    }
+ 
+-            pa_log_debug("Found key: '%s' with value: '%s'", key, value);
+-            if (pa_streq(key, "device")) {
+-                pa_xfree(device);
+-                device = value;
+-                value = NULL;
+-            }
+-            avahi_free(key);
+-            avahi_free(value);
++    for (l = txt; l; l = l->next) {
++        char *key, *value;
++        pa_assert_se(avahi_string_list_get_pair(l, &key, &value, NULL) == 0);
++
++        pa_log_debug("Found key: '%s' with value: '%s'", key, value);
++
++        if (pa_streq(key, "tp")) {
++            /* Transport protocol:
++             *  - TCP = only TCP,
++             *  - UDP = only UDP,
++             *  - TCP,UDP = both supported (UDP should be prefered) */
++             if (pa_str_in_list(value, ",", "UDP"))
++                 tp = strdup("UDP");
++            else if (pa_str_in_list(value, ",", "TCP"))
++                tp = strdup("TCP");
++            else
++                tp = strdup(value);
++        } else if (pa_streq(key, "et")) {
++            /* Supported encryption types:
++             *  - 0 = none,
++             *  - 1 = RSA,
++             *  - 2 = FairPlay,
++             *  - 3 = MFiSAP,
++             *  - 4 = FairPlay SAPv2.5. */
++             if (pa_str_in_list(value, ",", "1"))
++                 et = strdup("RSA");
++             else
++                 et = strdup("none");
++        } else if (pa_streq(key, "cn")) {
++            /* Suported audio codecs:
++             *  - 0 = PCM,
++             *  - 1 = ALAC,
++             *  - 2 = AAC,
++             *  - 3 = AAC ELD. */
++            if (pa_str_in_list(value, ",", "1"))
++                cn = strdup("ALAC");
++            else
++                cn = strdup("PCM");
++        } else if (pa_streq(key, "md")) {
++            /* Supported metadata types:
++             *  - 0 = text,
++             *  - 1 = artwork,
++             *  - 2 = progress. */
++        } else if (pa_streq(key, "pw")) {
++            /* Requires password ? (true/false) */
++        } else if (pa_streq(key, "ch")) {
++            /* Number of channels */
++            ch = value;
++            value = NULL;
++        } else if (pa_streq(key, "ss")) {
++            /* Sample size */
++            ss = value;
++            value = NULL;
++        } else if (pa_streq(key, "sr")) {
++            /* Sample rate */
++            sr = value;
++            value = NULL;
+         }
+ 
+-        if (device)
+-            dname = pa_sprintf_malloc("raop.%s.%s", host_name, device);
+-        else
+-            dname = pa_sprintf_malloc("raop.%s", host_name);
++        avahi_free(key);
++        avahi_free(value);
++    }
+ 
+-        if (!(vname = pa_namereg_make_valid_name(dname))) {
+-            pa_log("Cannot construct valid device name from '%s'.", dname);
+-            avahi_free(device);
+-            pa_xfree(dname);
+-            goto finish;
+-        }
++    dname = pa_sprintf_malloc("raop_output.%s", host_name);
++    if (!(vname = pa_namereg_make_valid_name(dname))) {
++        pa_log("Cannot construct valid device name from '%s'.", dname);
+         pa_xfree(dname);
++        goto finish;
++    }
+ 
+-        if (nicename) {
+-            args = pa_sprintf_malloc("server=[%s]:%u "
+-                                     "sink_name=%s "
+-                                     "sink_properties='device.description=\"%s\"'",
+-                                     avahi_address_snprint(at, sizeof(at), a), port,
+-                                     vname,
+-                                     nicename);
+-            pa_xfree(nicename);
+-        } else {
+-            args = pa_sprintf_malloc("server=[%s]:%u "
+-                                     "sink_name=%s",
+-                                     avahi_address_snprint(at, sizeof(at), a), port,
+-                                     vname);
+-        }
++    pa_xfree(dname);
++
++    avahi_address_snprint(at, sizeof(at), a);
++    if (nicename) {
++        args = pa_sprintf_malloc("server=[%s]:%u "
++                                 "sink_name=%s "
++                                 "sink_properties='device.description=\"%s (%s:%u)\"'",
++                                 at, port,
++                                 vname,
++                                 nicename, at, port);
++        pa_xfree(nicename);
++    } else {
++        args = pa_sprintf_malloc("server=[%s]:%u "
++                                 "sink_name=%s"
++                                 "sink_properties='device.description=\"%s:%u\"'",
++                                 at, port,
++                                 vname,
++                                 at, port);
++    }
+ 
+-        pa_log_debug("Loading module-raop-sink with arguments '%s'", args);
++    if (tp != NULL) {
++        t = args;
++        args = pa_sprintf_malloc("%s protocol=%s", args, tp);
++        avahi_free(tp);
++        pa_xfree(t);
++    }
++    if (et != NULL) {
++        t = args;
++        args = pa_sprintf_malloc("%s encryption=%s", args, et);
++        pa_xfree(et);
++        pa_xfree(t);
++    }
++    if (cn != NULL) {
++        t = args;
++        args = pa_sprintf_malloc("%s codec=%s", args, cn);
++        pa_xfree(cn);
++        pa_xfree(t);
++    }
++    if (ch != NULL) {
++        t = args;
++        args = pa_sprintf_malloc("%s channels=%s", args, ch);
++        avahi_free(ch);
++        pa_xfree(t);
++    }
++    if (ss != NULL) {
++        t = args;
++        args = pa_sprintf_malloc("%s format=%s", args, ss);
++        avahi_free(ss);
++        pa_xfree(t);
++    }
++    if (sr != NULL) {
++        t = args;
++        args = pa_sprintf_malloc("%s rate=%s", args, sr);
++        avahi_free(sr);
++        pa_xfree(t);
++    }
+ 
+-        if ((m = pa_module_load(u->core, "module-raop-sink", args))) {
+-            tnl->module_index = m->index;
+-            pa_hashmap_put(u->tunnels, tnl, tnl);
+-            tnl = NULL;
+-        }
++    pa_log_debug("Loading module-raop-sink with arguments '%s'", args);
+ 
+-        pa_xfree(vname);
+-        pa_xfree(args);
+-        avahi_free(device);
++    if ((m = pa_module_load(u->core, "module-raop-sink", args))) {
++        tnl->module_index = m->index;
++        pa_hashmap_put(u->tunnels, tnl, tnl);
++        tnl = NULL;
+     }
+ 
+-finish:
++    pa_xfree(vname);
++    pa_xfree(args);
+ 
++finish:
+     avahi_service_resolver_free(r);
+ 
+     if (tnl)
+@@ -229,7 +316,6 @@ static void browser_cb(
+         const char *name, const char *type, const char *domain,
+         AvahiLookupResultFlags flags,
+         void *userdata) {
+-
+     struct userdata *u = userdata;
+     struct tunnel *t;
+ 
+@@ -248,7 +334,7 @@ static void browser_cb(
+ 
+         /* We ignore the returned resolver object here, since the we don't
+          * need to attach any special data to it, and we can still destroy
+-         * it from the callback */
++         * it from the callback. */
+ 
+     } else if (event == AVAHI_BROWSER_REMOVE) {
+         struct tunnel *t2;
+@@ -275,9 +361,7 @@ static void client_callback(AvahiClient *c, AvahiClientState state, void *userda
+         case AVAHI_CLIENT_S_REGISTERING:
+         case AVAHI_CLIENT_S_RUNNING:
+         case AVAHI_CLIENT_S_COLLISION:
+-
+             if (!u->sink_browser) {
+-
+                 if (!(u->sink_browser = avahi_service_browser_new(
+                               c,
+                               AVAHI_IF_UNSPEC, AVAHI_PROTO_UNSPEC,
+@@ -299,16 +383,16 @@ static void client_callback(AvahiClient *c, AvahiClientState state, void *userda
+ 
+                 pa_log_debug("Avahi daemon disconnected.");
+ 
++                /* Try to reconnect. */
+                 if (!(u->client = avahi_client_new(u->avahi_poll, AVAHI_CLIENT_NO_FAIL, client_callback, u, &error))) {
+                     pa_log("avahi_client_new() failed: %s", avahi_strerror(error));
+                     pa_module_unload_request(u->module, true);
+                 }
+             }
+ 
+-            /* Fall through */
++            /* Fall through. */
+ 
+         case AVAHI_CLIENT_CONNECTING:
+-
+             if (u->sink_browser) {
+                 avahi_service_browser_free(u->sink_browser);
+                 u->sink_browser = NULL;
+@@ -316,12 +400,12 @@ static void client_callback(AvahiClient *c, AvahiClientState state, void *userda
+ 
+             break;
+ 
+-        default: ;
++        default:
++            break;
+     }
+ }
+ 
+-int pa__init(pa_module*m) {
+-
++int pa__init(pa_module *m) {
+     struct userdata *u;
+     pa_modargs *ma = NULL;
+     int error;
+@@ -358,8 +442,9 @@ fail:
+     return -1;
+ }
+ 
+-void pa__done(pa_module*m) {
+-    struct userdata*u;
++void pa__done(pa_module *m) {
++    struct userdata *u;
++
+     pa_assert(m);
+ 
+     if (!(u = m->userdata))
+diff --git a/src/modules/raop/module-raop-sink.c b/src/modules/raop/module-raop-sink.c
+index 6037038..82fa48d 100644
+--- a/src/modules/raop/module-raop-sink.c
++++ b/src/modules/raop/module-raop-sink.c
+@@ -22,607 +22,67 @@
+ #include <config.h>
+ #endif
+ 
+-#include <stdlib.h>
+-#include <stdio.h>
+-#include <errno.h>
+-#include <string.h>
+-#include <unistd.h>
+-#include <sys/socket.h>
+-#include <netinet/in.h>
+-#include <netinet/tcp.h>
+-#include <sys/ioctl.h>
+-
+-#ifdef HAVE_LINUX_SOCKIOS_H
+-#include <linux/sockios.h>
+-#endif
+-
+-#include <pulse/rtclock.h>
+-#include <pulse/timeval.h>
+-#include <pulse/xmalloc.h>
+-
+-#include <pulsecore/core-error.h>
+-#include <pulsecore/sink.h>
+ #include <pulsecore/module.h>
+-#include <pulsecore/core-util.h>
++#include <pulsecore/sink.h>
+ #include <pulsecore/modargs.h>
+-#include <pulsecore/log.h>
+-#include <pulsecore/socket-client.h>
+-#include <pulsecore/thread-mq.h>
+-#include <pulsecore/thread.h>
+-#include <pulsecore/time-smoother.h>
+-#include <pulsecore/poll.h>
++
++#include "raop-sink.h"
+ 
+ #include "module-raop-sink-symdef.h"
+-#include "rtp.h"
+-#include "sdp.h"
+-#include "sap.h"
+-#include "raop_client.h"
+ 
+ PA_MODULE_AUTHOR("Colin Guthrie");
+ PA_MODULE_DESCRIPTION("RAOP Sink");
+ PA_MODULE_VERSION(PACKAGE_VERSION);
+ PA_MODULE_LOAD_ONCE(false);
+ PA_MODULE_USAGE(
++        "name=<name of the sink, to be prefixed> "
+         "sink_name=<name for the sink> "
+         "sink_properties=<properties for the sink> "
+-        "server=<address>  "
++        "server=<address> "
++        "protocol=<transport protocol> "
++        "encryption=<encryption type> "
++        "codec=<audio codec> "
+         "format=<sample format> "
+         "rate=<sample rate> "
+-        "channels=<number of channels>");
+-
+-#define DEFAULT_SINK_NAME "raop"
+-
+-struct userdata {
+-    pa_core *core;
+-    pa_module *module;
+-    pa_sink *sink;
+-
+-    pa_thread_mq thread_mq;
+-    pa_rtpoll *rtpoll;
+-    pa_rtpoll_item *rtpoll_item;
+-    pa_thread *thread;
+-
+-    pa_memchunk raw_memchunk;
+-    pa_memchunk encoded_memchunk;
+-
+-    void *write_data;
+-    size_t write_length, write_index;
+-
+-    void *read_data;
+-    size_t read_length, read_index;
+-
+-    pa_usec_t latency;
+-
+-    /*esd_format_t format;*/
+-    int32_t rate;
+-
+-    pa_smoother *smoother;
+-    int fd;
+-
+-    int64_t offset;
+-    int64_t encoding_overhead;
+-    int32_t next_encoding_overhead;
+-    double encoding_ratio;
+-
+-    pa_raop_client *raop;
+-
+-    size_t block_size;
+-};
++        "channels=<number of channels> "
++        "username=<authentication user name, default: \"iTunes\"> "
++        "password=<authentication password>");
+ 
+ static const char* const valid_modargs[] = {
++    "name",
+     "sink_name",
+     "sink_properties",
+     "server",
++    "protocol",
++    "encryption",
++    "codec",
+     "format",
+     "rate",
+     "channels",
++    "username",
++    "password",
+     NULL
+ };
+ 
+-enum {
+-    SINK_MESSAGE_PASS_SOCKET = PA_SINK_MESSAGE_MAX,
+-    SINK_MESSAGE_RIP_SOCKET
+-};
+-
+-/* Forward declaration */
+-static void sink_set_volume_cb(pa_sink *);
+-
+-static void on_connection(int fd, void*userdata) {
+-    int so_sndbuf = 0;
+-    socklen_t sl = sizeof(int);
+-    struct userdata *u = userdata;
+-    pa_assert(u);
+-
+-    pa_assert(u->fd < 0);
+-    u->fd = fd;
+-
+-    if (getsockopt(u->fd, SOL_SOCKET, SO_SNDBUF, &so_sndbuf, &sl) < 0)
+-        pa_log_warn("getsockopt(SO_SNDBUF) failed: %s", pa_cstrerror(errno));
+-    else {
+-        pa_log_debug("SO_SNDBUF is %zu.", (size_t) so_sndbuf);
+-        pa_sink_set_max_request(u->sink, PA_MAX((size_t) so_sndbuf, u->block_size));
+-    }
+-
+-    /* Set the initial volume */
+-    sink_set_volume_cb(u->sink);
+-
+-    pa_log_debug("Connection authenticated, handing fd to IO thread...");
+-
+-    pa_asyncmsgq_post(u->thread_mq.inq, PA_MSGOBJECT(u->sink), SINK_MESSAGE_PASS_SOCKET, NULL, 0, NULL, NULL);
+-}
+-
+-static void on_close(void*userdata) {
+-    struct userdata *u = userdata;
+-    pa_assert(u);
+-
+-    pa_log_debug("Connection closed, informing IO thread...");
+-
+-    pa_asyncmsgq_post(u->thread_mq.inq, PA_MSGOBJECT(u->sink), SINK_MESSAGE_RIP_SOCKET, NULL, 0, NULL, NULL);
+-}
+-
+-static int sink_process_msg(pa_msgobject *o, int code, void *data, int64_t offset, pa_memchunk *chunk) {
+-    struct userdata *u = PA_SINK(o)->userdata;
+-
+-    switch (code) {
+-
+-        case PA_SINK_MESSAGE_SET_STATE:
+-
+-            switch ((pa_sink_state_t) PA_PTR_TO_UINT(data)) {
+-
+-                case PA_SINK_SUSPENDED:
+-                    pa_assert(PA_SINK_IS_OPENED(u->sink->thread_info.state));
+-
+-                    pa_smoother_pause(u->smoother, pa_rtclock_now());
+-
+-                    /* Issue a FLUSH if we are connected */
+-                    if (u->fd >= 0) {
+-                        pa_raop_flush(u->raop);
+-                    }
+-                    break;
+-
+-                case PA_SINK_IDLE:
+-                case PA_SINK_RUNNING:
+-
+-                    if (u->sink->thread_info.state == PA_SINK_SUSPENDED) {
+-                        pa_smoother_resume(u->smoother, pa_rtclock_now(), true);
+-
+-                        /* The connection can be closed when idle, so check to
+-                           see if we need to reestablish it */
+-                        if (u->fd < 0)
+-                            pa_raop_connect(u->raop);
+-                        else
+-                            pa_raop_flush(u->raop);
+-                    }
+-
+-                    break;
+-
+-                case PA_SINK_UNLINKED:
+-                case PA_SINK_INIT:
+-                case PA_SINK_INVALID_STATE:
+-                    ;
+-            }
+-
+-            break;
+-
+-        case PA_SINK_MESSAGE_GET_LATENCY: {
+-            pa_usec_t w, r;
+-
+-            r = pa_smoother_get(u->smoother, pa_rtclock_now());
+-            w = pa_bytes_to_usec((u->offset - u->encoding_overhead + (u->encoded_memchunk.length / u->encoding_ratio)), &u->sink->sample_spec);
+-
+-            *((pa_usec_t*) data) = w > r ? w - r : 0;
+-            return 0;
+-        }
+-
+-        case SINK_MESSAGE_PASS_SOCKET: {
+-            struct pollfd *pollfd;
+-
+-            pa_assert(!u->rtpoll_item);
+-
+-            u->rtpoll_item = pa_rtpoll_item_new(u->rtpoll, PA_RTPOLL_NEVER, 1);
+-            pollfd = pa_rtpoll_item_get_pollfd(u->rtpoll_item, NULL);
+-            pollfd->fd = u->fd;
+-            pollfd->events = POLLOUT;
+-            /*pollfd->events = */pollfd->revents = 0;
+-
+-            if (u->sink->thread_info.state == PA_SINK_SUSPENDED) {
+-                /* Our stream has been suspended so we just flush it.... */
+-                pa_raop_flush(u->raop);
+-            }
+-            return 0;
+-        }
+-
+-        case SINK_MESSAGE_RIP_SOCKET: {
+-            if (u->fd >= 0) {
+-                pa_close(u->fd);
+-                u->fd = -1;
+-            } else
+-                /* FIXME */
+-                pa_log("We should not get to this state. Cannot rip socket if not connected.");
+-
+-            if (u->sink->thread_info.state == PA_SINK_SUSPENDED) {
+-
+-                pa_log_debug("RTSP control connection closed, but we're suspended so let's not worry about it... we'll open it again later");
+-
+-                if (u->rtpoll_item)
+-                    pa_rtpoll_item_free(u->rtpoll_item);
+-                u->rtpoll_item = NULL;
+-            } else {
+-                /* Question: is this valid here: or should we do some sort of:
+-                   return pa_sink_process_msg(PA_MSGOBJECT(u->core), PA_CORE_MESSAGE_UNLOAD_MODULE, u->module, 0, NULL);
+-                   ?? */
+-                pa_module_unload_request(u->module, true);
+-            }
+-            return 0;
+-        }
+-    }
+-
+-    return pa_sink_process_msg(o, code, data, offset, chunk);
+-}
+-
+-static void sink_set_volume_cb(pa_sink *s) {
+-    struct userdata *u = s->userdata;
+-    pa_cvolume hw;
+-    pa_volume_t v;
+-    char t[PA_CVOLUME_SNPRINT_VERBOSE_MAX];
+-
+-    pa_assert(u);
+-
+-    /* If we're muted we don't need to do anything */
+-    if (s->muted)
+-        return;
+-
+-    /* Calculate the max volume of all channels.
+-       We'll use this as our (single) volume on the APEX device and emulate
+-       any variation in channel volumes in software */
+-    v = pa_cvolume_max(&s->real_volume);
+-
+-    /* Create a pa_cvolume version of our single value */
+-    pa_cvolume_set(&hw, s->sample_spec.channels, v);
+-
+-    /* Perform any software manipulation of the volume needed */
+-    pa_sw_cvolume_divide(&s->soft_volume, &s->real_volume, &hw);
+-
+-    pa_log_debug("Requested volume: %s", pa_cvolume_snprint_verbose(t, sizeof(t), &s->real_volume, &s->channel_map, false));
+-    pa_log_debug("Got hardware volume: %s", pa_cvolume_snprint_verbose(t, sizeof(t), &hw, &s->channel_map, false));
+-    pa_log_debug("Calculated software volume: %s",
+-                 pa_cvolume_snprint_verbose(t, sizeof(t), &s->soft_volume, &s->channel_map, true));
+-
+-    /* Any necessary software volume manipulation is done so set
+-       our hw volume (or v as a single value) on the device */
+-    pa_raop_client_set_volume(u->raop, v);
+-}
+-
+-static void sink_set_mute_cb(pa_sink *s) {
+-    struct userdata *u = s->userdata;
+-
+-    pa_assert(u);
+-
+-    if (s->muted) {
+-        pa_raop_client_set_volume(u->raop, PA_VOLUME_MUTED);
+-    } else {
+-        sink_set_volume_cb(s);
+-    }
+-}
+-
+-static void thread_func(void *userdata) {
+-    struct userdata *u = userdata;
+-    int write_type = 0;
+-    pa_memchunk silence;
+-    uint32_t silence_overhead = 0;
+-    double silence_ratio = 0;
+-
+-    pa_assert(u);
+-
+-    pa_log_debug("Thread starting up");
+-
+-    pa_thread_mq_install(&u->thread_mq);
+-
+-    pa_smoother_set_time_offset(u->smoother, pa_rtclock_now());
+-
+-    /* Create a chunk of memory that is our encoded silence sample. */
+-    pa_memchunk_reset(&silence);
+-
+-    for (;;) {
+-        int ret;
+-
+-        if (PA_UNLIKELY(u->sink->thread_info.rewind_requested))
+-            pa_sink_process_rewind(u->sink, 0);
+-
+-        if (u->rtpoll_item) {
+-            struct pollfd *pollfd;
+-            pollfd = pa_rtpoll_item_get_pollfd(u->rtpoll_item, NULL);
+-
+-            /* Render some data and write it to the fifo */
+-            if (/*PA_SINK_IS_OPENED(u->sink->thread_info.state) && */pollfd->revents) {
+-                pa_usec_t usec;
+-                int64_t n;
+-                void *p;
+-
+-                if (!silence.memblock) {
+-                    pa_memchunk silence_tmp;
+-
+-                    pa_memchunk_reset(&silence_tmp);
+-                    silence_tmp.memblock = pa_memblock_new(u->core->mempool, 4096);
+-                    silence_tmp.length = 4096;
+-                    p = pa_memblock_acquire(silence_tmp.memblock);
+-                      memset(p, 0, 4096);
+-                    pa_memblock_release(silence_tmp.memblock);
+-                    pa_raop_client_encode_sample(u->raop, &silence_tmp, &silence);
+-                    pa_assert(0 == silence_tmp.length);
+-                    silence_overhead = silence_tmp.length - 4096;
+-                    silence_ratio = silence_tmp.length / 4096;
+-                    pa_memblock_unref(silence_tmp.memblock);
+-                }
+-
+-                for (;;) {
+-                    ssize_t l;
+-
+-                    if (u->encoded_memchunk.length <= 0) {
+-                        if (u->encoded_memchunk.memblock)
+-                            pa_memblock_unref(u->encoded_memchunk.memblock);
+-                        if (PA_SINK_IS_OPENED(u->sink->thread_info.state)) {
+-                            size_t rl;
+-
+-                            /* We render real data */
+-                            if (u->raw_memchunk.length <= 0) {
+-                                if (u->raw_memchunk.memblock)
+-                                    pa_memblock_unref(u->raw_memchunk.memblock);
+-                                pa_memchunk_reset(&u->raw_memchunk);
+-
+-                                /* Grab unencoded data */
+-                                pa_sink_render(u->sink, u->block_size, &u->raw_memchunk);
+-                            }
+-                            pa_assert(u->raw_memchunk.length > 0);
+-
+-                            /* Encode it */
+-                            rl = u->raw_memchunk.length;
+-                            u->encoding_overhead += u->next_encoding_overhead;
+-                            pa_raop_client_encode_sample(u->raop, &u->raw_memchunk, &u->encoded_memchunk);
+-                            u->next_encoding_overhead = (u->encoded_memchunk.length - (rl - u->raw_memchunk.length));
+-                            u->encoding_ratio = u->encoded_memchunk.length / (rl - u->raw_memchunk.length);
+-                        } else {
+-                            /* We render some silence into our memchunk */
+-                            memcpy(&u->encoded_memchunk, &silence, sizeof(pa_memchunk));
+-                            pa_memblock_ref(silence.memblock);
+-
+-                            /* Calculate/store some values to be used with the smoother */
+-                            u->next_encoding_overhead = silence_overhead;
+-                            u->encoding_ratio = silence_ratio;
+-                        }
+-                    }
+-                    pa_assert(u->encoded_memchunk.length > 0);
+-
+-                    p = pa_memblock_acquire(u->encoded_memchunk.memblock);
+-                    l = pa_write(u->fd, (uint8_t*) p + u->encoded_memchunk.index, u->encoded_memchunk.length, &write_type);
+-                    pa_memblock_release(u->encoded_memchunk.memblock);
+-
+-                    pa_assert(l != 0);
+-
+-                    if (l < 0) {
+-
+-                        if (errno == EINTR)
+-                            continue;
+-                        else if (errno == EAGAIN) {
+-
+-                            /* OK, we filled all socket buffers up
+-                             * now. */
+-                            goto filled_up;
+-
+-                        } else {
+-                            pa_log("Failed to write data to FIFO: %s", pa_cstrerror(errno));
+-                            goto fail;
+-                        }
+-
+-                    } else {
+-                        u->offset += l;
+-
+-                        u->encoded_memchunk.index += l;
+-                        u->encoded_memchunk.length -= l;
+-
+-                        pollfd->revents = 0;
+-
+-                        if (u->encoded_memchunk.length > 0) {
+-                            /* we've completely written the encoded data, so update our overhead */
+-                            u->encoding_overhead += u->next_encoding_overhead;
+-
+-                            /* OK, we wrote less that we asked for,
+-                             * hence we can assume that the socket
+-                             * buffers are full now */
+-                            goto filled_up;
+-                        }
+-                    }
+-                }
+-
+-            filled_up:
+-
+-                /* At this spot we know that the socket buffers are
+-                 * fully filled up. This is the best time to estimate
+-                 * the playback position of the server */
+-
+-                n = u->offset - u->encoding_overhead;
+-
+-#ifdef SIOCOUTQ
+-                {
+-                    int l;
+-                    if (ioctl(u->fd, SIOCOUTQ, &l) >= 0 && l > 0)
+-                        n -= (l / u->encoding_ratio);
+-                }
+-#endif
+-
+-                usec = pa_bytes_to_usec(n, &u->sink->sample_spec);
+-
+-                if (usec > u->latency)
+-                    usec -= u->latency;
+-                else
+-                    usec = 0;
+-
+-                pa_smoother_put(u->smoother, pa_rtclock_now(), usec);
+-            }
+-
+-            /* Hmm, nothing to do. Let's sleep */
+-            pollfd->events = POLLOUT; /*PA_SINK_IS_OPENED(u->sink->thread_info.state)  ? POLLOUT : 0;*/
+-        }
+-
+-        if ((ret = pa_rtpoll_run(u->rtpoll)) < 0)
+-            goto fail;
+-
+-        if (ret == 0)
+-            goto finish;
+-
+-        if (u->rtpoll_item) {
+-            struct pollfd* pollfd;
+-
+-            pollfd = pa_rtpoll_item_get_pollfd(u->rtpoll_item, NULL);
+-
+-            if (pollfd->revents & ~POLLOUT) {
+-                if (u->sink->thread_info.state != PA_SINK_SUSPENDED) {
+-                    pa_log("FIFO shutdown.");
+-                    goto fail;
+-                }
+-
+-                /* We expect this to happen on occasion if we are not sending data.
+-                   It's perfectly natural and normal and natural */
+-                if (u->rtpoll_item)
+-                    pa_rtpoll_item_free(u->rtpoll_item);
+-                u->rtpoll_item = NULL;
+-            }
+-        }
+-    }
+-
+-fail:
+-    /* If this was no regular exit from the loop we have to continue
+-     * processing messages until we received PA_MESSAGE_SHUTDOWN */
+-    pa_asyncmsgq_post(u->thread_mq.outq, PA_MSGOBJECT(u->core), PA_CORE_MESSAGE_UNLOAD_MODULE, u->module, 0, NULL, NULL);
+-    pa_asyncmsgq_wait_for(u->thread_mq.inq, PA_MESSAGE_SHUTDOWN);
+-
+-finish:
+-    if (silence.memblock)
+-        pa_memblock_unref(silence.memblock);
+-    pa_log_debug("Thread shutting down");
+-}
+-
+-int pa__init(pa_module*m) {
+-    struct userdata *u = NULL;
+-    pa_sample_spec ss;
++int pa__init(pa_module *m) {
+     pa_modargs *ma = NULL;
+-    const char *server;
+-    pa_sink_new_data data;
+ 
+     pa_assert(m);
+ 
+     if (!(ma = pa_modargs_new(m->argument, valid_modargs))) {
+-        pa_log("failed to parse module arguments");
++        pa_log("Failed to parse module arguments");
+         goto fail;
+     }
+ 
+-    ss.format = PA_SAMPLE_S16NE;
+-    ss.channels = 2;
+-    ss.rate = m->core->default_sample_spec.rate;
+-    if (pa_modargs_get_sample_spec(ma, &ss) < 0) {
+-        pa_log("invalid sample format specification");
++    if (!(m->userdata = pa_raop_sink_new(m, ma, __FILE__)))
+         goto fail;
+-    }
+-
+-    if ((ss.format != PA_SAMPLE_S16NE) ||
+-        (ss.channels > 2)) {
+-        pa_log("sample type support is limited to mono/stereo and S16NE sample data");
+-        goto fail;
+-    }
+-
+-    u = pa_xnew0(struct userdata, 1);
+-    u->core = m->core;
+-    u->module = m;
+-    m->userdata = u;
+-    u->fd = -1;
+-    u->smoother = pa_smoother_new(
+-            PA_USEC_PER_SEC,
+-            PA_USEC_PER_SEC*2,
+-            true,
+-            true,
+-            10,
+-            0,
+-            false);
+-    pa_memchunk_reset(&u->raw_memchunk);
+-    pa_memchunk_reset(&u->encoded_memchunk);
+-    u->offset = 0;
+-    u->encoding_overhead = 0;
+-    u->next_encoding_overhead = 0;
+-    u->encoding_ratio = 1.0;
+-
+-    u->rtpoll = pa_rtpoll_new();
+-    pa_thread_mq_init(&u->thread_mq, m->core->mainloop, u->rtpoll);
+-    u->rtpoll_item = NULL;
+-
+-    /*u->format =
+-        (ss.format == PA_SAMPLE_U8 ? ESD_BITS8 : ESD_BITS16) |
+-        (ss.channels == 2 ? ESD_STEREO : ESD_MONO);*/
+-    u->rate = ss.rate;
+-    u->block_size = pa_usec_to_bytes(PA_USEC_PER_SEC/20, &ss);
+-
+-    u->read_data = u->write_data = NULL;
+-    u->read_index = u->write_index = u->read_length = u->write_length = 0;
+-
+-    /*u->state = STATE_AUTH;*/
+-    u->latency = 0;
+-
+-    if (!(server = pa_modargs_get_value(ma, "server", NULL))) {
+-        pa_log("No server argument given.");
+-        goto fail;
+-    }
+-
+-    pa_sink_new_data_init(&data);
+-    data.driver = __FILE__;
+-    data.module = m;
+-    pa_sink_new_data_set_name(&data, pa_modargs_get_value(ma, "sink_name", DEFAULT_SINK_NAME));
+-    pa_sink_new_data_set_sample_spec(&data, &ss);
+-    pa_proplist_sets(data.proplist, PA_PROP_DEVICE_STRING, server);
+-    pa_proplist_sets(data.proplist, PA_PROP_DEVICE_INTENDED_ROLES, "music");
+-    pa_proplist_setf(data.proplist, PA_PROP_DEVICE_DESCRIPTION, "RAOP sink '%s'", server);
+-
+-    if (pa_modargs_get_proplist(ma, "sink_properties", data.proplist, PA_UPDATE_REPLACE) < 0) {
+-        pa_log("Invalid properties");
+-        pa_sink_new_data_done(&data);
+-        goto fail;
+-    }
+-
+-    u->sink = pa_sink_new(m->core, &data, PA_SINK_LATENCY|PA_SINK_NETWORK);
+-    pa_sink_new_data_done(&data);
+-
+-    if (!u->sink) {
+-        pa_log("Failed to create sink.");
+-        goto fail;
+-    }
+-
+-    u->sink->parent.process_msg = sink_process_msg;
+-    u->sink->userdata = u;
+-    pa_sink_set_set_volume_callback(u->sink, sink_set_volume_cb);
+-    pa_sink_set_set_mute_callback(u->sink, sink_set_mute_cb);
+-    u->sink->flags = PA_SINK_LATENCY|PA_SINK_NETWORK;
+-
+-    pa_sink_set_asyncmsgq(u->sink, u->thread_mq.inq);
+-    pa_sink_set_rtpoll(u->sink, u->rtpoll);
+-
+-    if (!(u->raop = pa_raop_client_new(u->core, server))) {
+-        pa_log("Failed to connect to server.");
+-        goto fail;
+-    }
+-
+-    pa_raop_client_set_callback(u->raop, on_connection, u);
+-    pa_raop_client_set_closed_callback(u->raop, on_close, u);
+-
+-    if (!(u->thread = pa_thread_new("raop-sink", thread_func, u))) {
+-        pa_log("Failed to create thread.");
+-        goto fail;
+-    }
+-
+-    pa_sink_put(u->sink);
+ 
+     pa_modargs_free(ma);
+ 
+     return 0;
+ 
+ fail:
++
+     if (ma)
+         pa_modargs_free(ma);
+ 
+@@ -632,57 +92,19 @@ fail:
+ }
+ 
+ int pa__get_n_used(pa_module *m) {
+-    struct userdata *u;
++    pa_sink *sink;
+ 
+     pa_assert(m);
+-    pa_assert_se(u = m->userdata);
++    pa_assert_se(sink = m->userdata);
+ 
+-    return pa_sink_linked_by(u->sink);
++    return pa_sink_linked_by(sink);
+ }
+ 
+-void pa__done(pa_module*m) {
+-    struct userdata *u;
+-    pa_assert(m);
+-
+-    if (!(u = m->userdata))
+-        return;
+-
+-    if (u->sink)
+-        pa_sink_unlink(u->sink);
+-
+-    if (u->thread) {
+-        pa_asyncmsgq_send(u->thread_mq.inq, NULL, PA_MESSAGE_SHUTDOWN, NULL, 0, NULL);
+-        pa_thread_free(u->thread);
+-    }
+-
+-    pa_thread_mq_done(&u->thread_mq);
+-
+-    if (u->sink)
+-        pa_sink_unref(u->sink);
+-
+-    if (u->rtpoll_item)
+-        pa_rtpoll_item_free(u->rtpoll_item);
+-
+-    if (u->rtpoll)
+-        pa_rtpoll_free(u->rtpoll);
+-
+-    if (u->raw_memchunk.memblock)
+-        pa_memblock_unref(u->raw_memchunk.memblock);
+-
+-    if (u->encoded_memchunk.memblock)
+-        pa_memblock_unref(u->encoded_memchunk.memblock);
+-
+-    if (u->raop)
+-        pa_raop_client_free(u->raop);
+-
+-    pa_xfree(u->read_data);
+-    pa_xfree(u->write_data);
+-
+-    if (u->smoother)
+-        pa_smoother_free(u->smoother);
++void pa__done(pa_module *m) {
++    pa_sink *sink;
+ 
+-    if (u->fd >= 0)
+-        pa_close(u->fd);
++    pa_assert(m);
+ 
+-    pa_xfree(u);
++    if ((sink = m->userdata))
++        pa_raop_sink_free(sink);
+ }
+diff --git a/src/modules/raop/raop-client.c b/src/modules/raop/raop-client.c
+new file mode 100644
+index 0000000..3d23a78
+--- /dev/null
++++ b/src/modules/raop/raop-client.c
+@@ -0,0 +1,1766 @@
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2008 Colin Guthrie
++  Copyright 2013 Hajime Fujita
++  Copyright 2013 Martin Blanchard
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
++***/
++
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
++#include <stdlib.h>
++#include <stdint.h>
++#include <string.h>
++#include <errno.h>
++#include <unistd.h>
++#include <sys/ioctl.h>
++#include <math.h>
++
++#ifdef HAVE_SYS_FILIO_H
++#include <sys/filio.h>
++#endif
++
++#include <pulse/xmalloc.h>
++#include <pulse/timeval.h>
++#include <pulse/sample.h>
++
++#include <pulsecore/core.h>
++#include <pulsecore/core-error.h>
++#include <pulsecore/core-rtclock.h>
++#include <pulsecore/core-util.h>
++#include <pulsecore/iochannel.h>
++#include <pulsecore/arpa-inet.h>
++#include <pulsecore/socket-client.h>
++#include <pulsecore/socket-util.h>
++#include <pulsecore/log.h>
++#include <pulsecore/parseaddr.h>
++#include <pulsecore/macro.h>
++#include <pulsecore/memchunk.h>
++#include <pulsecore/random.h>
++#include <pulsecore/poll.h>
++
++#include "raop-client.h"
++#include "raop-packet-buffer.h"
++#include "raop-crypto.h"
++#include "raop-util.h"
++
++#include "rtsp_client.h"
++
++#define DEFAULT_RAOP_PORT 5000
++
++#define FRAMES_PER_TCP_PACKET 4096
++#define FRAMES_PER_UDP_PACKET 352
++
++#define RTX_BUFFERING_SECONDS 4
++
++#define DEFAULT_TCP_AUDIO_PORT   6000
++#define DEFAULT_UDP_AUDIO_PORT   6000
++#define DEFAULT_UDP_CONTROL_PORT 6001
++#define DEFAULT_UDP_TIMING_PORT  6002
++
++#define DEFAULT_USER_AGENT "iTunes/11.0.4 (Windows; N)"
++#define DEFAULT_USER_NAME  "iTunes"
++
++#define JACK_STATUS_DISCONNECTED 0
++#define JACK_STATUS_CONNECTED    1
++#define JACK_TYPE_ANALOG         0
++#define JACK_TYPE_DIGITAL        1
++
++#define VOLUME_MAX  0.0
++#define VOLUME_DEF -30.0
++#define VOLUME_MIN -144.0
++
++#define UDP_DEFAULT_PKT_BUF_SIZE 1000
++
++struct pa_raop_client {
++    pa_core *core;
++    char *host;
++    uint16_t port;
++    pa_rtsp_client *rtsp;
++    char *sci, *sid;
++    char *password;
++
++    pa_raop_protocol_t protocol;
++    pa_raop_encryption_t encryption;
++    pa_raop_codec_t codec;
++
++    pa_raop_secret *secret;
++
++    int tcp_sfd;
++
++    int udp_sfd;
++    int udp_cfd;
++    int udp_tfd;
++
++    pa_raop_packet_buffer *pbuf;
++
++    uint16_t seq;
++    uint32_t rtptime;
++    bool is_recording;
++    uint32_t ssrc;
++
++    bool is_first_packet;
++    uint32_t sync_interval;
++    uint32_t sync_count;
++
++    uint8_t jack_type;
++    uint8_t jack_status;
++
++    pa_raop_client_state_cb_t state_callback;
++    void *state_userdata;
++};
++
++/* Audio TCP packet header [16x8] (cf. rfc4571):
++ *  [0,1]   Frame marker; seems always 0x2400
++ *  [2,3]   RTP packet size (following): 0x0000 (to be set)
++ *   [4,5]   RTP v2: 0x80
++ *   [5]     Payload type: 0x60 | Marker bit: 0x80 (always set)
++ *   [6,7]   Sequence number: 0x0000 (to be set)
++ *   [8,11]  Timestamp: 0x00000000 (to be set)
++ *   [12,15] SSRC: 0x00000000 (to be set) */
++#define PAYLOAD_TCP_AUDIO_DATA 0x60
++static const uint8_t tcp_audio_header[16] = {
++    0x24, 0x00, 0x00, 0x00,
++    0x80, 0xe0, 0x00, 0x00,
++    0x00, 0x00, 0x00, 0x00,
++    0x00, 0x00, 0x00, 0x00
++};
++
++/* Audio UDP packet header [12x8] (cf. rfc3550):
++ *  [0]    RTP v2: 0x80
++ *  [1]    Payload type: 0x60
++ *  [2,3]  Sequence number: 0x0000 (to be set)
++ *  [4,7]  Timestamp: 0x00000000 (to be set)
++ *  [8,12] SSRC: 0x00000000 (to be set) */
++#define PAYLOAD_UDP_AUDIO_DATA 0x60
++static const uint8_t udp_audio_header[12] = {
++    0x80, 0x60, 0x00, 0x00,
++    0x00, 0x00, 0x00, 0x00,
++    0x00, 0x00, 0x00, 0x00
++};
++
++/* Audio retransmission UDP packet header [4x8]:
++ *  [0] RTP v2: 0x80
++ *  [1] Payload type: 0x56 | Marker bit: 0x80 (always set)
++ *  [2] Unknown; seems always 0x01
++ *  [3] Unknown; seems some random number around 0x20~0x40 */
++#define PAYLOAD_RETRANSMIT_REQUEST 0x55
++#define PAYLOAD_RETRANSMIT_REPLY   0x56
++static const uint8_t udp_audio_retrans_header[4] = {
++    0x80, 0xd6, 0x00, 0x00
++};
++
++/* Sync packet header [8x8] (cf. rfc3550):
++ *  [0]   RTP v2: 0x80
++ *  [1]   Payload type: 0x54 | Marker bit: 0x80 (always set)
++ *  [2,3] Sequence number: 0x0007
++ *  [4,7] Timestamp: 0x00000000 (to be set) */
++static const uint8_t udp_sync_header[8] = {
++    0x80, 0xd4, 0x00, 0x07,
++    0x00, 0x00, 0x00, 0x00
++};
++
++/* Timing packet header [8x8] (cf. rfc3550):
++ *  [0]   RTP v2: 0x80
++ *  [1]   Payload type: 0x53 | Marker bit: 0x80 (always set)
++ *  [2,3] Sequence number: 0x0007
++ *  [4,7] Timestamp: 0x00000000 (unused) */
++#define PAYLOAD_TIMING_REQUEST  0x52
++#define PAYLOAD_TIMING_REPLY    0x53
++static const uint8_t udp_timing_header[8] = {
++    0x80, 0xd3, 0x00, 0x07,
++    0x00, 0x00, 0x00, 0x00
++};
++
++/**
++ * Function to trim a given character at the end of a string (no realloc).
++ * @param str Pointer to string
++ * @param rc Character to trim
++ */
++static inline void rtrim_char(char *str, char rc) {
++    char *sp = str + strlen(str) - 1;
++    while (sp >= str && *sp == rc) {
++        *sp = '\0';
++        sp -= 1;
++    }
++}
++
++/**
++ * Function to convert a timeval to ntp timestamp.
++ * @param tv Pointer to the timeval structure
++ * @return The NTP timestamp
++ */
++static inline uint64_t timeval_to_ntp(struct timeval *tv) {
++    uint64_t ntp = 0;
++
++    /* Converting micro seconds to a fraction. */
++    ntp = (uint64_t) tv->tv_usec * UINT32_MAX / PA_USEC_PER_SEC;
++    /* Moving reference from  1 Jan 1970 to 1 Jan 1900 (seconds). */
++    ntp |= (uint64_t) (tv->tv_sec + 0x83aa7e80) << 32;
++
++    return ntp;
++}
++
++/**
++ * Function to write bits into a buffer.
++ * @param buffer Handle to the buffer. It will be incremented if new data requires it.
++ * @param bit_pos A pointer to a position buffer to keep track the current write location (0 for MSB, 7 for LSB)
++ * @param size A pointer to the byte size currently written. This allows the calling function to do simple buffer overflow checks
++ * @param data The data to write
++ * @param data_bit_len The number of bits from data to write
++ */
++static inline void bit_writer(uint8_t **buffer, uint8_t *bit_pos, size_t *size, uint8_t data, uint8_t data_bit_len) {
++    int bits_left, bit_overflow;
++    uint8_t bit_data;
++
++    if (!data_bit_len)
++        return;
++
++    /* If bit pos is zero, we will definately use at least one bit from the current byte so size increments. */
++    if (!*bit_pos)
++        *size += 1;
++
++    /* Calc the number of bits left in the current byte of buffer. */
++    bits_left = 7 - *bit_pos  + 1;
++    /* Calc the overflow of bits in relation to how much space we have left... */
++    bit_overflow = bits_left - data_bit_len;
++    if (bit_overflow >= 0) {
++        /* We can fit the new data in our current byte.
++         * As we write from MSB->LSB we need to left shift by the overflow amount. */
++        bit_data = data << bit_overflow;
++        if (*bit_pos)
++            **buffer |= bit_data;
++        else
++            **buffer = bit_data;
++        /* If our data fits exactly into the current byte, we need to increment our pointer. */
++        if (0 == bit_overflow) {
++            /* Do not increment size as it will be incremented on next call as bit_pos is zero. */
++            *buffer += 1;
++            *bit_pos = 0;
++        } else {
++            *bit_pos += data_bit_len;
++        }
++    } else {
++        /* bit_overflow is negative, there for we will need a new byte from our buffer
++         * Firstly fill up what's left in the current byte. */
++        bit_data = data >> -bit_overflow;
++        **buffer |= bit_data;
++        /* Increment our buffer pointer and size counter. */
++        *buffer += 1;
++        *size += 1;
++        **buffer = data << (8 + bit_overflow);
++        *bit_pos = -bit_overflow;
++    }
++}
++
++static size_t write_ALAC_data(uint8_t *packet, const size_t max, uint8_t *raw, size_t *length, bool compress) {
++    uint32_t nbs = (*length / 2) / 2;
++    uint8_t *ibp, *maxibp;
++    uint8_t *bp, bpos;
++    size_t size = 0;
++
++    bp = packet;
++    pa_memzero(packet, max);
++    size = bpos = 0;
++
++    bit_writer(&bp, &bpos, &size, 1, 3); /* channel=1, stereo */
++    bit_writer(&bp, &bpos, &size, 0, 4); /* Unknown */
++    bit_writer(&bp, &bpos, &size, 0, 8); /* Unknown */
++    bit_writer(&bp, &bpos, &size, 0, 4); /* Unknown */
++    bit_writer(&bp, &bpos, &size, 1, 1); /* Hassize */
++    bit_writer(&bp, &bpos, &size, 0, 2); /* Unused */
++    bit_writer(&bp, &bpos, &size, 1, 1); /* Is-not-compressed */
++    /* Size of data, integer, big endian. */
++    bit_writer(&bp, &bpos, &size, (nbs >> 24) & 0xff, 8);
++    bit_writer(&bp, &bpos, &size, (nbs >> 16) & 0xff, 8);
++    bit_writer(&bp, &bpos, &size, (nbs >> 8)  & 0xff, 8);
++    bit_writer(&bp, &bpos, &size, (nbs)       & 0xff, 8);
++
++    ibp = raw;
++    maxibp = raw + (4 * nbs) - 4;
++    while (ibp <= maxibp) {
++        /* Byte swap stereo data. */
++        bit_writer(&bp, &bpos, &size, *(ibp + 1), 8);
++        bit_writer(&bp, &bpos, &size, *(ibp + 0), 8);
++        bit_writer(&bp, &bpos, &size, *(ibp + 3), 8);
++        bit_writer(&bp, &bpos, &size, *(ibp + 2), 8);
++        ibp += 4;
++    }
++
++    *length = (ibp - raw);
++    return size;
++}
++
++static size_t build_tcp_audio_packet(pa_raop_client *c, pa_memchunk *block, pa_memchunk *packet) {
++    const size_t head = sizeof(tcp_audio_header);
++    uint32_t *buffer = NULL;
++    uint8_t *raw = NULL;
++    size_t length, size;
++
++    raw = pa_memblock_acquire(block->memblock);
++    buffer = pa_memblock_acquire(packet->memblock);
++    buffer += packet->index / sizeof(uint32_t);
++    raw += block->index;
++
++    /* Wrap sequence number to 0 then UINT16_MAX is reached */
++    if (c->seq == UINT16_MAX)
++        c->seq = 0;
++    else
++        c->seq++;
++
++    memcpy(buffer, tcp_audio_header, sizeof(tcp_audio_header));
++    buffer[1] |= htonl((uint32_t) c->seq);
++    buffer[2] = htonl(c->rtptime);
++    buffer[3] = htonl(c->ssrc);
++
++    length = block->length;
++    size = sizeof(tcp_audio_header);
++    if (c->codec == PA_RAOP_CODEC_ALAC)
++        size += write_ALAC_data(((uint8_t *) buffer + head), packet->length - head, raw, &length, false);
++    else {
++        pa_log_debug("Only ALAC encoding is supported, sending zeros...");
++        pa_memzero(((uint8_t *) buffer + head), packet->length - head);
++        size += length;
++    }
++
++    c->rtptime += length / 4;
++
++    pa_memblock_release(block->memblock);
++
++    buffer[0] |= htonl((uint32_t) size - 4);
++    if (c->encryption == PA_RAOP_ENCRYPTION_RSA)
++        pa_raop_aes_encrypt(c->secret, (uint8_t *) buffer + head, size - head);
++
++    pa_memblock_release(packet->memblock);
++    packet->length = size;
++
++    return size;
++}
++
++static ssize_t send_tcp_audio_packet(pa_raop_client *c, pa_memchunk *block, size_t offset) {
++    static int write_type = 0;
++    const size_t max = sizeof(tcp_audio_header) + 8 + 16384;
++    pa_memchunk *packet = NULL;
++    uint8_t *buffer = NULL;
++    double progress = 0.0;
++    ssize_t written = -1;
++    size_t done = 0;
++
++    if (!(packet = pa_raop_packet_buffer_retrieve(c->pbuf, c->seq)))
++        return -1;
++
++    if (packet->length <= 0) {
++        pa_assert(block->index == offset);
++
++        if (!(packet = pa_raop_packet_buffer_prepare(c->pbuf, c->seq + 1, max)))
++            return -1;
++
++        packet->index = 0;
++        packet->length = max;
++        if (!build_tcp_audio_packet(c, block, packet))
++            return -1;
++    }
++
++    buffer = pa_memblock_acquire(packet->memblock);
++
++    pa_assert(buffer);
++
++    buffer += packet->index;
++    if (buffer && packet->length > 0)
++        written = pa_write(c->tcp_sfd, buffer, packet->length, &write_type);
++    if (written > 0) {
++        progress = (double) written / (double) packet->length;
++        packet->length -= written;
++        packet->index += written;
++
++        done = block->length * progress;
++        block->length -= done;
++        block->index += done;
++    }
++
++    pa_memblock_release(packet->memblock);
++
++    return written;
++}
++
++static size_t build_udp_audio_packet(pa_raop_client *c, pa_memchunk *block, pa_memchunk *packet) {
++    const size_t head = sizeof(udp_audio_header);
++    uint32_t *buffer = NULL;
++    uint8_t *raw = NULL;
++    size_t length, size;
++
++    raw = pa_memblock_acquire(block->memblock);
++    buffer = pa_memblock_acquire(packet->memblock);
++    buffer += packet->index / sizeof(uint32_t);
++    raw += block->index;
++
++    memcpy(buffer, udp_audio_header, sizeof(udp_audio_header));
++    if (c->is_first_packet)
++        buffer[0] |= htonl((uint32_t) 0x80 << 16);
++    buffer[0] |= htonl((uint32_t) c->seq);
++    buffer[1] = htonl(c->rtptime);
++    buffer[2] = htonl(c->ssrc);
++
++    length = block->length;
++    size = sizeof(udp_audio_header);
++    if (c->codec == PA_RAOP_CODEC_ALAC)
++        size += write_ALAC_data(((uint8_t *) buffer + head), packet->length - head, raw, &length, false);
++    else {
++        pa_log_debug("Only ALAC encoding is supported, sending zeros...");
++        pa_memzero(((uint8_t *) buffer + head), packet->length - head);
++        size += length;
++    }
++
++    c->rtptime += length / 4;
++
++    /* Wrap sequence number to 0 then UINT16_MAX is reached */
++    if (c->seq == UINT16_MAX)
++        c->seq = 0;
++    else
++        c->seq++;
++
++    pa_memblock_release(block->memblock);
++
++    if (c->encryption == PA_RAOP_ENCRYPTION_RSA)
++        pa_raop_aes_encrypt(c->secret, (uint8_t *) buffer + head, size - head);
++
++    pa_memblock_release(packet->memblock);
++    packet->length = size;
++
++    return size;
++}
++
++static ssize_t send_udp_audio_packet(pa_raop_client *c, pa_memchunk *block, size_t offset) {
++    const size_t max = sizeof(udp_audio_retrans_header) + sizeof(udp_audio_header) + 8 + 1408;
++    pa_memchunk *packet = NULL;
++    uint8_t *buffer = NULL;
++    ssize_t written = -1;
++
++    /* UDP packet has to be sent at once ! */
++    pa_assert(block->index == offset);
++
++    if (!(packet = pa_raop_packet_buffer_prepare(c->pbuf, c->seq, max)))
++        return -1;
++
++    packet->index = sizeof(udp_audio_retrans_header);
++    packet->length = max - sizeof(udp_audio_retrans_header);
++    if (!build_udp_audio_packet(c, block, packet))
++        return -1;
++
++    buffer = pa_memblock_acquire(packet->memblock);
++
++    pa_assert(buffer);
++
++    buffer += packet->index;
++    if (buffer && packet->length > 0)
++        written = pa_write(c->udp_sfd, buffer, packet->length, NULL);
++    if (written < 0 && (errno == EAGAIN || errno == EWOULDBLOCK)) {
++        pa_log_debug("Discarding UDP (audio, seq=%d) packet due to EAGAIN (%s)", c->seq, pa_cstrerror(errno));
++        written = packet->length;
++    }
++
++    pa_memblock_release(packet->memblock);
++    /* It is meaningless to preseve the partial data */
++    block->index += block->length;
++    block->length = 0;
++
++    return written;
++}
++
++static size_t rebuild_udp_audio_packet(pa_raop_client *c, uint16_t seq, pa_memchunk *packet) {
++    size_t size = sizeof(udp_audio_retrans_header);
++    uint32_t *buffer = NULL;
++
++    buffer = pa_memblock_acquire(packet->memblock);
++
++    memcpy(buffer, udp_audio_retrans_header, sizeof(udp_audio_retrans_header));
++    buffer[0] |= htonl((uint32_t) seq);
++    size += packet->length;
++
++    pa_memblock_release(packet->memblock);
++    packet->length += sizeof(udp_audio_retrans_header);
++    packet->index -= sizeof(udp_audio_retrans_header);
++
++    return size;
++}
++
++static ssize_t resend_udp_audio_packets(pa_raop_client *c, uint16_t seq, uint16_t nbp) {
++    ssize_t total = 0;
++    int i = 0;
++
++    for (i = 0; i < nbp; i++) {
++        pa_memchunk *packet = NULL;
++        uint8_t *buffer = NULL;
++        ssize_t written = -1;
++
++        if (!(packet = pa_raop_packet_buffer_retrieve(c->pbuf, seq + i)))
++            continue;
++
++        if (packet->index > 0) {
++            if (!rebuild_udp_audio_packet(c, seq + i, packet))
++                continue;
++        }
++
++        pa_assert(packet->index == 0);
++
++        buffer = pa_memblock_acquire(packet->memblock);
++
++        pa_assert(buffer);
++
++        if (buffer && packet->length > 0)
++            written = pa_write(c->udp_cfd, buffer, packet->length, NULL);
++        if (written < 0 && (errno == EAGAIN || errno == EWOULDBLOCK)) {
++            pa_log_debug("Discarding UDP (audio-restransmitted, seq=%d) packet due to EAGAIN", seq + i);
++            pa_memblock_release(packet->memblock);
++            continue;
++        }
++
++        pa_memblock_release(packet->memblock);
++        total +=  written;
++    }
++
++    return total;
++}
++
++/* Caller has to free the allocated memory region for packet */
++static size_t build_udp_sync_packet(pa_raop_client *c, uint32_t stamp, uint32_t **packet) {
++    const size_t size = sizeof(udp_sync_header) + 12;
++    const uint32_t delay = 88200;
++    uint32_t *buffer = NULL;
++    uint64_t transmitted = 0;
++    struct timeval tv;
++
++    *packet = NULL;
++    if (!(buffer = pa_xmalloc0(size)))
++        return 0;
++
++    memcpy(buffer, udp_sync_header, sizeof(udp_sync_header));
++    if (c->is_first_packet)
++        buffer[0] |= 0x10;
++    stamp -= delay;
++    buffer[1] = htonl(stamp);
++    /* Set the transmited timestamp to current time. */
++    transmitted = timeval_to_ntp(pa_rtclock_get(&tv));
++    buffer[2] = htonl(transmitted >> 32);
++    buffer[3] = htonl(transmitted & 0xffffffff);
++    stamp += delay;
++    buffer[4] = htonl(stamp);
++
++    *packet = buffer;
++    return size;
++}
++
++static ssize_t send_udp_sync_packet(pa_raop_client *c, uint32_t stamp) {
++    uint32_t * packet = NULL;
++    ssize_t written = 0;
++    size_t size = 0;
++
++    size = build_udp_sync_packet(c, stamp, &packet);
++    if (packet != NULL && size > 0) {
++        written = pa_loop_write(c->udp_cfd, packet, size, NULL);
++        pa_xfree(packet);
++    }
++
++    return written;
++}
++
++static size_t handle_udp_control_packet(pa_raop_client *c, const uint8_t packet[], ssize_t size) {
++    uint8_t payload = 0;
++    uint16_t seq, nbp = 0;
++    ssize_t written = 0;
++
++    /* Control packets are 8 bytes long:  */
++    if (size != 8 || packet[0] != 0x80)
++        return 1;
++
++    seq = ntohs((uint16_t) (packet[4] | packet[5] << 8));
++    nbp = ntohs((uint16_t) (packet[6] | packet[7] << 8));
++    if (nbp <= 0)
++        return 1;
++
++    /* The marker bit is always set (see rfc3550 for packet structure) ! */
++    payload = packet[1] ^ 0x80;
++    switch (payload) {
++        case PAYLOAD_RETRANSMIT_REQUEST:
++            pa_log_debug("Resending %u packets starting at %u", nbp, seq);
++            written = resend_udp_audio_packets(c, seq, nbp);
++            break;
++        case PAYLOAD_RETRANSMIT_REPLY:
++        default:
++            pa_log_debug("Got an unexpected payload type on control channel (%u) !", payload);
++            break;
++    }
++
++    return written;
++}
++
++/* Caller has to free the allocated memory region for packet */
++static size_t build_udp_timing_packet(pa_raop_client *c, const uint32_t data[6], uint64_t received, uint32_t **packet) {
++    const size_t size = sizeof(udp_timing_header) + 24;
++    uint32_t *buffer = NULL;
++    uint64_t transmitted = 0;
++    struct timeval tv;
++
++    *packet = NULL;
++    if (!(buffer = pa_xmalloc0(size)))
++        return 0;
++
++    memcpy(buffer, udp_timing_header, sizeof(udp_timing_header));
++    /* Copying originate timestamp from the incoming request packet. */
++    buffer[2] = data[4];
++    buffer[3] = data[5];
++    /* Set the receive timestamp to reception time. */
++    buffer[4] = htonl(received >> 32);
++    buffer[5] = htonl(received & 0xffffffff);
++    /* Set the transmit timestamp to current time. */
++    transmitted = timeval_to_ntp(pa_rtclock_get(&tv));
++    buffer[6] = htonl(transmitted >> 32);
++    buffer[7] = htonl(transmitted & 0xffffffff);
++
++    *packet = buffer;
++    return size;
++}
++
++static ssize_t send_udp_timing_packet(pa_raop_client *c, const uint32_t data[6], uint64_t received) {
++    uint32_t * packet = NULL;
++    ssize_t written = 0;
++    size_t size = 0;
++
++    size = build_udp_timing_packet(c, data, received, &packet);
++    if (packet != NULL && size > 0) {
++        written = pa_loop_write(c->udp_tfd, packet, size, NULL);
++        pa_xfree(packet);
++    }
++
++    return written;
++}
++
++static size_t handle_udp_timing_packet(pa_raop_client *c, const uint8_t packet[], ssize_t size) {
++    const uint32_t * data = NULL;
++    uint8_t payload = 0;
++    struct timeval tv;
++    size_t written = 0;
++    uint64_t rci = 0;
++
++    /* Timing packets are 32 bytes long: 1 x 8 RTP header (no ssrc) + 3 x 8 NTP timestamps */
++    if (size != 32 || packet[0] != 0x80)
++        return 0;
++
++    rci = timeval_to_ntp(pa_rtclock_get(&tv));
++    data = (uint32_t *) (packet + sizeof(udp_timing_header));
++
++    /* The marker bit is always set (see rfc3550 for packet structure) ! */
++    payload = packet[1] ^ 0x80;
++    switch (payload) {
++        case PAYLOAD_TIMING_REQUEST:
++            pa_log_debug("Sending timing packet at %lu", rci);
++            written = send_udp_timing_packet(c, data, rci);
++            break;
++        case PAYLOAD_TIMING_REPLY:
++        default:
++            pa_log_debug("Got an unexpected payload type on timing channel (%u) !", payload);
++            break;
++    }
++
++    return written;
++}
++
++static int connect_udp_socket(pa_raop_client *c, int fd, uint16_t port) {
++    struct sockaddr_in sa4;
++#ifdef HAVE_IPV6
++    struct sockaddr_in6 sa6;
++#endif
++    struct sockaddr *sa;
++    socklen_t salen;
++    sa_family_t af;
++
++    pa_zero(sa4);
++#ifdef HAVE_IPV6
++    pa_zero(sa6);
++#endif
++    if (inet_pton(AF_INET, c->host, &sa4.sin_addr) > 0) {
++        sa4.sin_family = af = AF_INET;
++        sa4.sin_port = htons(port);
++        sa = (struct sockaddr *) &sa4;
++        salen = sizeof(sa4);
++#ifdef HAVE_IPV6
++    } else if (inet_pton(AF_INET6, c->host, &sa6.sin6_addr) > 0) {
++        sa6.sin6_family = af = AF_INET6;
++        sa6.sin6_port = htons(port);
++        sa = (struct sockaddr *) &sa6;
++        salen = sizeof(sa6);
++#endif
++    } else {
++        pa_log("Invalid destination '%s'", c->host);
++        goto fail;
++    }
++
++    if (fd < 0 && (fd = pa_socket_cloexec(af, SOCK_DGRAM, 0)) < 0) {
++        pa_log("socket() failed: %s", pa_cstrerror(errno));
++        goto fail;
++    }
++
++    /* If the socket queue is full, let's drop packets */
++    pa_make_udp_socket_low_delay(fd);
++    pa_make_fd_nonblock(fd);
++
++    if (connect(fd, sa, salen) < 0) {
++        pa_log("connect() failed: %s", pa_cstrerror(errno));
++        goto fail;
++    }
++
++    pa_log_debug("Connected to %s on port %d (SOCK_DGRAM)", c->host, port);
++    return fd;
++
++fail:
++    if (fd >= 0)
++        pa_close(fd);
++
++    return -1;
++}
++
++static int open_bind_udp_socket(pa_raop_client *c, uint16_t *actual_port) {
++    int fd = -1;
++    uint16_t port;
++    struct sockaddr_in sa4;
++#ifdef HAVE_IPV6
++    struct sockaddr_in6 sa6;
++#endif
++    struct sockaddr *sa;
++    uint16_t *sa_port;
++    socklen_t salen;
++    sa_family_t af;
++    int one = 1;
++
++    pa_assert(actual_port);
++
++    port = *actual_port;
++
++    pa_zero(sa4);
++#ifdef HAVE_IPV6
++    pa_zero(sa6);
++#endif
++    if (inet_pton(AF_INET, pa_rtsp_localip(c->rtsp), &sa4.sin_addr) > 0) {
++        sa4.sin_family = af = AF_INET;
++        sa4.sin_port = htons(port);
++        sa4.sin_addr.s_addr = INADDR_ANY;
++        sa = (struct sockaddr *) &sa4;
++        salen = sizeof(sa4);
++        sa_port = &sa4.sin_port;
++#ifdef HAVE_IPV6
++    } else if (inet_pton(AF_INET6, pa_rtsp_localip(c->rtsp), &sa6.sin6_addr) > 0) {
++        sa6.sin6_family = af = AF_INET6;
++        sa6.sin6_port = htons(port);
++        sa6.sin6_addr = in6addr_any;
++        sa = (struct sockaddr *) &sa6;
++        salen = sizeof(sa6);
++        sa_port = &sa6.sin6_port;
++#endif
++    } else {
++        pa_log("Could not determine which address family to use");
++        goto fail;
++    }
++
++    if ((fd = pa_socket_cloexec(af, SOCK_DGRAM, 0)) < 0) {
++        pa_log("socket() failed: %s", pa_cstrerror(errno));
++        goto fail;
++    }
++
++#ifdef SO_TIMESTAMP
++    if (setsockopt(fd, SOL_SOCKET, SO_TIMESTAMP, &one, sizeof(one)) < 0) {
++        pa_log("setsockopt(SO_TIMESTAMP) failed: %s", pa_cstrerror(errno));
++        goto fail;
++    }
++#else
++    pa_log("SO_TIMESTAMP unsupported on this platform");
++    goto fail;
++#endif
++
++    one = 1;
++    if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one)) < 0) {
++        pa_log("setsockopt(SO_REUSEADDR) failed: %s", pa_cstrerror(errno));
++        goto fail;
++    }
++
++    do {
++        *sa_port = htons(port);
++
++        if (bind(fd, sa, salen) < 0 && errno != EADDRINUSE) {
++            pa_log("bind_socket() failed: %s", pa_cstrerror(errno));
++            goto fail;
++        }
++        break;
++    } while (++port > 0);
++
++    pa_log_debug("Socket bound to port %d (SOCK_DGRAM)", port);
++    *actual_port = port;
++
++    return fd;
++
++fail:
++    if (fd >= 0)
++        pa_close(fd);
++
++    return -1;
++}
++
++static void tcp_connection_cb(pa_socket_client *sc, pa_iochannel *io, void *userdata) {
++    pa_raop_client *c = userdata;
++
++    pa_assert(sc);
++    pa_assert(c);
++
++    pa_socket_client_unref(sc);
++
++    if (!io) {
++        pa_log("Connection failed: %s", pa_cstrerror(errno));
++        return;
++    }
++
++    c->tcp_sfd = pa_iochannel_get_send_fd(io);
++    pa_iochannel_set_noclose(io, true);
++    pa_make_tcp_socket_low_delay(c->tcp_sfd);
++
++    pa_iochannel_free(io);
++
++    pa_log_debug("Connection established (TCP)");
++
++    if (c->state_callback)
++        c->state_callback(PA_RAOP_CONNECTED, c->state_userdata);
++}
++
++static void rtsp_stream_cb(pa_rtsp_client *rtsp, pa_rtsp_state_t state, pa_rtsp_status_t status, pa_headerlist *headers, void *userdata) {
++    pa_raop_client *c = userdata;
++
++    pa_assert(c);
++    pa_assert(rtsp);
++    pa_assert(rtsp == c->rtsp);
++
++    switch (state) {
++        case STATE_CONNECT: {
++            char *key, *iv, *sdp = NULL;
++            int frames = 0;
++            const char *ip;
++            char *url;
++            int ipv;
++
++            pa_log_debug("RAOP: CONNECTED");
++
++            ip = pa_rtsp_localip(c->rtsp);
++            if (pa_is_ip6_address(ip)) {
++                ipv = 6;
++                url = pa_sprintf_malloc("rtsp://[%s]/%s", ip, c->sid);
++            } else {
++                ipv = 4;
++                url = pa_sprintf_malloc("rtsp://%s/%s", ip, c->sid);
++            }
++            pa_rtsp_set_url(c->rtsp, url);
++
++            if (c->protocol == PA_RAOP_PROTOCOL_TCP)
++                frames = FRAMES_PER_TCP_PACKET;
++            else if (c->protocol == PA_RAOP_PROTOCOL_UDP)
++                frames = FRAMES_PER_UDP_PACKET;
++
++            switch(c->encryption) {
++                case PA_RAOP_ENCRYPTION_NONE: {
++                    sdp = pa_sprintf_malloc(
++                        "v=0\r\n"
++                        "o=iTunes %s 0 IN IP%d %s\r\n"
++                        "s=iTunes\r\n"
++                        "c=IN IP%d %s\r\n"
++                        "t=0 0\r\n"
++                        "m=audio 0 RTP/AVP 96\r\n"
++                        "a=rtpmap:96 AppleLossless\r\n"
++                        "a=fmtp:96 %d 0 16 40 10 14 2 255 0 0 44100\r\n",
++                        c->sid, ipv, ip, ipv, c->host, frames);
++
++                    break;
++                }
++
++                case PA_RAOP_ENCRYPTION_RSA:
++                case PA_RAOP_ENCRYPTION_FAIRPLAY:
++                case PA_RAOP_ENCRYPTION_MFISAP:
++                case PA_RAOP_ENCRYPTION_FAIRPLAY_SAP25: {
++                    key = pa_raop_secret_get_key(c->secret);
++                    iv = pa_raop_secret_get_iv(c->secret);
++
++                    sdp = pa_sprintf_malloc(
++                        "v=0\r\n"
++                        "o=iTunes %s 0 IN IP%d %s\r\n"
++                        "s=iTunes\r\n"
++                        "c=IN IP%d %s\r\n"
++                        "t=0 0\r\n"
++                        "m=audio 0 RTP/AVP 96\r\n"
++                        "a=rtpmap:96 AppleLossless\r\n"
++                        "a=fmtp:96 %d 0 16 40 10 14 2 255 0 0 44100\r\n"
++                        "a=rsaaeskey:%s\r\n"
++                        "a=aesiv:%s\r\n",
++                        c->sid, ipv, ip, ipv, c->host, frames, key, iv);
++
++                    pa_xfree(key);
++                    pa_xfree(iv);
++                    break;
++                }
++            }
++
++            pa_rtsp_announce(c->rtsp, sdp);
++
++            pa_xfree(sdp);
++            pa_xfree(url);
++            break;
++        }
++
++        case STATE_OPTIONS: {
++            pa_log_debug("RAOP: OPTIONS");
++
++            break;
++        }
++
++        case STATE_ANNOUNCE: {
++            uint16_t cport = DEFAULT_UDP_CONTROL_PORT;
++            uint16_t tport = DEFAULT_UDP_TIMING_PORT;
++            char *trs = NULL;
++
++            pa_log_debug("RAOP: ANNOUNCE");
++
++            if (c->protocol == PA_RAOP_PROTOCOL_TCP) {
++                trs = pa_sprintf_malloc(
++                    "RTP/AVP/TCP;unicast;interleaved=0-1;mode=record");
++            } else if (c->protocol == PA_RAOP_PROTOCOL_UDP) {
++                c->udp_cfd = open_bind_udp_socket(c, &cport);
++                c->udp_tfd  = open_bind_udp_socket(c, &tport);
++                if (c->udp_cfd < 0 || c->udp_tfd < 0)
++                    goto annonce_error;
++
++                trs = pa_sprintf_malloc(
++                    "RTP/AVP/UDP;unicast;interleaved=0-1;mode=record;"
++                    "control_port=%d;timing_port=%d",
++                    cport, tport);
++            }
++
++            pa_rtsp_setup(c->rtsp, trs);
++
++            pa_xfree(trs);
++            break;
++
++        annonce_error:
++            if (c->udp_cfd > 0)
++                pa_close(c->udp_cfd);
++            c->udp_cfd = -1;
++            if (c->udp_tfd > 0)
++                pa_close(c->udp_tfd);
++            c->udp_tfd = -1;
++
++            pa_rtsp_client_free(c->rtsp);
++
++            pa_log_error("Aborting RTSP announce, failed creating required sockets");
++
++            c->rtsp = NULL;
++            pa_xfree(trs);
++            break;
++        }
++
++        case STATE_SETUP: {
++            pa_socket_client *sc = NULL;
++            uint32_t sport = DEFAULT_UDP_AUDIO_PORT;
++            uint32_t cport =0, tport = 0;
++            char *ajs, *trs, *token, *pc;
++            const char *token_state = NULL;
++            char delimiters[] = ";";
++
++            pa_log_debug("RAOP: SETUP");
++
++            ajs = pa_xstrdup(pa_headerlist_gets(headers, "Audio-Jack-Status"));
++            trs = pa_xstrdup(pa_headerlist_gets(headers, "Transport"));
++
++            if (ajs) {
++                c->jack_type = JACK_TYPE_ANALOG;
++                c->jack_status = JACK_STATUS_DISCONNECTED;
++
++                while ((token = pa_split(ajs, delimiters, &token_state))) {
++                    if ((pc = strstr(token, "="))) {
++                      *pc = 0;
++                      if (pa_streq(token, "type") && pa_streq(pc + 1, "digital"))
++                          c->jack_type = JACK_TYPE_DIGITAL;
++                    } else {
++                        if (pa_streq(token, "connected"))
++                            c->jack_status = JACK_STATUS_CONNECTED;
++                    }
++                    pa_xfree(token);
++                }
++
++            } else {
++                pa_log_warn("\"Audio-Jack-Status\" missing in RTSP setup response");
++            }
++
++            sport = pa_rtsp_serverport(c->rtsp);
++            if (sport <= 0)
++                goto setup_error;
++
++            token_state = NULL;
++            if (c->protocol == PA_RAOP_PROTOCOL_TCP) {
++                if (!(sc = pa_socket_client_new_string(c->core->mainloop, true, c->host, sport)))
++                    goto setup_error;
++
++                pa_socket_client_ref(sc);
++                pa_socket_client_set_callback(sc, tcp_connection_cb, c);
++
++                pa_socket_client_unref(sc);
++                sc = NULL;
++            } else if (c->protocol == PA_RAOP_PROTOCOL_UDP) {
++                if (trs) {
++                    /* Now parse out the server port component of the response. */
++                    while ((token = pa_split(trs, delimiters, &token_state))) {
++                        if ((pc = strstr(token, "="))) {
++                        *pc = 0;
++                         if (pa_streq(token, "control_port"))
++                                pa_atou(pc + 1, &cport);
++                            if (pa_streq(token, "timing_port"))
++                                pa_atou(pc + 1, &tport);
++                            *pc = '=';
++                        }
++                        pa_xfree(token);
++                    }
++                } else {
++                    pa_log_warn("\"Transport\" missing in RTSP setup response");
++                }
++
++                if (cport <= 0 || tport <= 0)
++                    goto setup_error;
++
++                if ((c->udp_sfd = connect_udp_socket(c, -1, sport)) <= 0)
++                    goto setup_error;
++                if ((c->udp_cfd = connect_udp_socket(c, c->udp_cfd, cport)) <= 0)
++                    goto setup_error;
++                if ((c->udp_tfd = connect_udp_socket(c, c->udp_tfd, tport)) <= 0)
++                    goto setup_error;
++
++                pa_log_debug("Connection established (UDP;control_port=%d;timing_port=%d)", cport, tport);
++
++                if (c->state_callback)
++                    c->state_callback(PA_RAOP_CONNECTED, c->state_userdata);
++            }
++
++            pa_rtsp_record(c->rtsp, &c->seq, &c->rtptime);
++
++            pa_xfree(trs);
++            pa_xfree(ajs);
++            break;
++
++        setup_error:
++            if (c->tcp_sfd > 0)
++                pa_close(c->tcp_sfd);
++            c->tcp_sfd = -1;
++
++            if (c->udp_sfd > 0)
++                pa_close(c->udp_sfd);
++            c->udp_sfd = -1;
++
++            c->udp_cfd = c->udp_tfd = -1;
++
++            pa_rtsp_client_free(c->rtsp);
++
++            pa_log_error("aborting RTSP setup, failed creating required sockets");
++
++            if (c->state_callback)
++                c->state_callback(PA_RAOP_DISCONNECTED, c->state_userdata);
++
++            c->rtsp = NULL;
++            break;
++        }
++
++        case STATE_RECORD: {
++            int32_t latency = 0;
++            uint32_t ssrc;
++            char *alt;
++
++            pa_log_debug("RAOP: RECORD");
++
++            alt = pa_xstrdup(pa_headerlist_gets(headers, "Audio-Latency"));
++            if (alt)
++                pa_atoi(alt, &latency);
++
++            pa_raop_packet_buffer_reset(c->pbuf, c->seq);
++
++            pa_random(&ssrc, sizeof(ssrc));
++            c->is_first_packet = true;
++            c->is_recording = true;
++            c->sync_count = 0;
++            c->ssrc = ssrc;
++
++            if (c->state_callback)
++                c->state_callback((int) PA_RAOP_RECORDING, c->state_userdata);
++
++            pa_xfree(alt);
++            break;
++        }
++
++        case STATE_SET_PARAMETER: {
++            pa_log_debug("RAOP: SET_PARAMETER");
++
++            break;
++        }
++
++        case STATE_FLUSH: {
++            pa_log_debug("RAOP: FLUSHED");
++
++            break;
++        }
++
++        case STATE_TEARDOWN: {
++            pa_log_debug("RAOP: TEARDOWN");
++
++            if (c->tcp_sfd > 0)
++                pa_close(c->tcp_sfd);
++            c->tcp_sfd = -1;
++
++            if (c->udp_sfd > 0)
++                pa_close(c->udp_sfd);
++            c->udp_sfd = -1;
++
++            /* Polling sockets will be closed by sink */
++            c->udp_cfd = c->udp_tfd = -1;
++            c->tcp_sfd = -1;
++
++            pa_rtsp_client_free(c->rtsp);
++            pa_xfree(c->sid);
++            c->rtsp = NULL;
++            c->sid = NULL;
++
++            if (c->state_callback)
++                c->state_callback(PA_RAOP_DISCONNECTED, c->state_userdata);
++
++            break;
++        }
++
++        case STATE_DISCONNECTED: {
++            pa_log_debug("RAOP: DISCONNECTED");
++
++            c->is_recording = false;
++
++            if (c->tcp_sfd > 0)
++                pa_close(c->tcp_sfd);
++            c->tcp_sfd = -1;
++
++            if (c->udp_sfd > 0)
++                pa_close(c->udp_sfd);
++            c->udp_sfd = -1;
++
++            /* Polling sockets will be closed by sink */
++            c->udp_cfd = c->udp_tfd = -1;
++            c->tcp_sfd = -1;
++
++            pa_log_error("RTSP control channel closed (disconnected)");
++
++            pa_rtsp_client_free(c->rtsp);
++            pa_xfree(c->sid);
++            c->rtsp = NULL;
++            c->sid = NULL;
++
++            if (c->state_callback)
++                c->state_callback((int) PA_RAOP_DISCONNECTED, c->state_userdata);
++
++            break;
++        }
++    }
++}
++
++static void rtsp_auth_cb(pa_rtsp_client *rtsp, pa_rtsp_state_t state, pa_rtsp_status_t status, pa_headerlist *headers, void *userdata) {
++    pa_raop_client *c = userdata;
++
++    pa_assert(c);
++    pa_assert(rtsp);
++    pa_assert(rtsp == c->rtsp);
++
++    switch (state) {
++        case STATE_CONNECT: {
++            char *sci = NULL, *sac = NULL;
++            uint16_t rac;
++            struct {
++                uint32_t ci1;
++                uint32_t ci2;
++            } rci;
++
++            pa_random(&rci, sizeof(rci));
++            /* Generate a random Client-Instance number */
++            sci = pa_sprintf_malloc("%08x%08x",rci.ci1, rci.ci2);
++            pa_rtsp_add_header(c->rtsp, "Client-Instance", sci);
++
++            pa_random(&rac, sizeof(rac));
++            /* Generate a random Apple-Challenge key */
++            pa_raop_base64_encode(&rac, 8 * sizeof(rac), &sac);
++            rtrim_char(sac, '=');
++            pa_rtsp_add_header(c->rtsp, "Apple-Challenge", sac);
++
++            pa_rtsp_options(c->rtsp);
++
++            pa_xfree(sac);
++            pa_xfree(sci);
++            break;
++        }
++
++        case STATE_OPTIONS: {
++            static bool waiting = false;
++            const char *current = NULL;
++            char space[] = " ";
++            char *token,*ath = NULL;
++            char *publ, *wath, *mth, *val;
++            char *realm = NULL, *nonce = NULL, *response = NULL;
++            char comma[] = ",";
++
++            pa_log_debug("RAOP: OPTIONS");
++            /* We do not consider the Apple-Response */
++            pa_rtsp_remove_header(c->rtsp, "Apple-Challenge");
++
++            if (STATUS_UNAUTHORIZED == status) {
++                wath = pa_xstrdup(pa_headerlist_gets(headers, "WWW-Authenticate"));
++                if (true == waiting) {
++                    pa_xfree(wath);
++                    goto fail;
++                }
++
++                if (wath)
++                    mth = pa_split(wath, space, &current);
++                while ((token = pa_split(wath, comma, &current))) {
++                    val = NULL;
++                    if ((val = strstr(token, "="))) {
++                        if (NULL == realm && val > strstr(token, "realm"))
++                            realm = pa_xstrdup(val + 2);
++                        else if (NULL == nonce && val > strstr(token, "nonce"))
++                            nonce = pa_xstrdup(val + 2);
++                        val = NULL;
++                    }
++
++                    pa_xfree(token);
++                }
++
++                if (pa_safe_streq(mth, "Basic")) {
++                    rtrim_char(realm, '\"');
++
++                    pa_raop_basic_response(DEFAULT_USER_NAME, c->password, &response);
++                    ath = pa_sprintf_malloc("Basic %s",
++                        response);
++
++                    pa_xfree(response);
++                    pa_xfree(realm);
++                } else if (pa_safe_streq(mth, "Digest")) {
++                    rtrim_char(realm, '\"');
++                    rtrim_char(nonce, '\"');
++
++                    pa_raop_digest_response(DEFAULT_USER_NAME, realm, c->password, nonce, "*", &response);
++                    ath = pa_sprintf_malloc("Digest username=\"%s\", realm=\"%s\", nonce=\"%s\", uri=\"*\", response=\"%s\"",
++                        DEFAULT_USER_NAME, realm, nonce,
++                        response);
++
++                    pa_xfree(response);
++                    pa_xfree(realm);
++                    pa_xfree(nonce);
++                } else {
++                    pa_log_error("unsupported authentication method: %s", mth);
++                    pa_xfree(wath);
++                    pa_xfree(mth);
++                    goto error;
++                }
++
++                pa_xfree(wath);
++                pa_xfree(mth);
++
++                pa_rtsp_add_header(c->rtsp, "Authorization", ath);
++                pa_xfree(ath);
++
++                waiting = true;
++                pa_rtsp_options(c->rtsp);
++                break;
++            }
++
++            if (STATUS_OK == status) {
++                publ = pa_xstrdup(pa_headerlist_gets(headers, "Public"));
++                c->sci = pa_xstrdup(pa_rtsp_get_header(c->rtsp, "Client-Instance"));
++
++                if (c->password)
++                    pa_xfree(c->password);
++                pa_xfree(publ);
++                c->password = NULL;
++            }
++
++            if (c->state_callback)
++                c->state_callback((int) PA_RAOP_AUTHENTICATED, c->state_userdata);
++            pa_rtsp_client_free(c->rtsp);
++            c->rtsp = NULL;
++
++            waiting = false;
++            break;
++
++        fail:
++            if (c->state_callback)
++                c->state_callback((int) PA_RAOP_DISCONNECTED, c->state_userdata);
++            pa_rtsp_client_free(c->rtsp);
++            c->rtsp = NULL;
++
++            pa_log_error("aborting authentication, wrong password");
++
++            waiting = false;
++            break;
++
++        error:
++            if (c->state_callback)
++                c->state_callback((int) PA_RAOP_DISCONNECTED, c->state_userdata);
++            pa_rtsp_client_free(c->rtsp);
++            c->rtsp = NULL;
++
++            pa_log_error("aborting authentication, unexpected failure");
++
++            waiting = false;
++            break;
++        }
++
++        case STATE_ANNOUNCE:
++        case STATE_SETUP:
++        case STATE_RECORD:
++        case STATE_SET_PARAMETER:
++        case STATE_FLUSH:
++        case STATE_TEARDOWN:
++        case STATE_DISCONNECTED:
++        default: {
++            if (c->state_callback)
++                c->state_callback((int) PA_RAOP_DISCONNECTED, c->state_userdata);
++            pa_rtsp_client_free(c->rtsp);
++            c->rtsp = NULL;
++
++            if (c->sci)
++                pa_xfree(c->sci);
++            c->sci = NULL;
++
++            break;
++        }
++    }
++}
++
++pa_raop_client* pa_raop_client_new(pa_core *core, const char *host, pa_raop_protocol_t protocol,
++                                   pa_raop_encryption_t encryption, pa_raop_codec_t codec) {
++    pa_raop_client *c;
++
++    pa_parsed_address a;
++    pa_sample_spec ss;
++    size_t size = 2;
++
++    pa_assert(core);
++    pa_assert(host);
++
++    if (pa_parse_address(host, &a) < 0)
++        return NULL;
++
++    if (a.type == PA_PARSED_ADDRESS_UNIX) {
++        pa_xfree(a.path_or_host);
++        return NULL;
++    }
++
++    c = pa_xnew0(pa_raop_client, 1);
++    c->core = core;
++    c->host = a.path_or_host; /* Will eventually be freed on destruction of c */
++    if (a.port > 0)
++        c->port = a.port;
++    else
++        c->port = DEFAULT_RAOP_PORT;
++    c->rtsp = NULL;
++    c->sci = c->sid = NULL;
++    c->password = NULL;
++
++    c->protocol = protocol;
++    c->encryption = encryption;
++    c->codec = codec;
++
++    c->tcp_sfd = -1;
++
++    c->udp_sfd = -1;
++    c->udp_cfd = -1;
++    c->udp_tfd = -1;
++
++    c->secret = NULL;
++    if (c->encryption != PA_RAOP_ENCRYPTION_NONE)
++        c->secret = pa_raop_secret_new();
++
++    ss = core->default_sample_spec;
++    if (c->protocol == PA_RAOP_PROTOCOL_UDP)
++        size = RTX_BUFFERING_SECONDS * ss.rate / FRAMES_PER_UDP_PACKET;
++
++    c->is_recording = false;
++    c->is_first_packet = true;
++    /* Packet sync interval should be around 1s (UDP only) */
++    c->sync_interval = ss.rate / FRAMES_PER_UDP_PACKET;
++    c->sync_count = 0;
++
++    c->pbuf = pa_raop_packet_buffer_new(c->core->mempool, size);
++
++    return c;
++}
++
++void pa_raop_client_free(pa_raop_client *c) {
++    pa_assert(c);
++
++    pa_raop_packet_buffer_free(c->pbuf);
++
++    pa_xfree(c->sid);
++    pa_xfree(c->sci);
++    if (c->secret)
++        pa_raop_secret_free(c->secret);
++    pa_xfree(c->password);
++    c->sci = c->sid = NULL;
++    c->password = NULL;
++    c->secret = NULL;
++
++    if (c->rtsp)
++        pa_rtsp_client_free(c->rtsp);
++    c->rtsp = NULL;
++
++    pa_xfree(c->host);
++    pa_xfree(c);
++}
++
++int pa_raop_client_authenticate (pa_raop_client *c, const char *password) {
++    int rv = 0;
++
++    pa_assert(c);
++
++    if (c->rtsp || c->password) {
++        pa_log_debug("Authentication/Connection already in progress...");
++        return 0;
++    }
++
++    c->password = NULL;
++    if (password)
++        c->password = pa_xstrdup(password);
++    c->rtsp = pa_rtsp_client_new(c->core->mainloop, c->host, c->port, DEFAULT_USER_AGENT);
++
++    pa_assert(c->rtsp);
++
++    pa_rtsp_set_callback(c->rtsp, rtsp_auth_cb, c);
++    rv = pa_rtsp_connect(c->rtsp);
++    return rv;
++}
++
++bool pa_raop_client_is_authenticated(pa_raop_client *c) {
++    pa_assert(c);
++
++    return (c->sci != NULL);
++}
++
++int pa_raop_client_announce(pa_raop_client *c) {
++    uint32_t sid;
++    int rv = 0;
++
++    pa_assert(c);
++
++    if (c->rtsp) {
++        pa_log_debug("Connection already in progress...");
++        return 0;
++    } else if (!c->sci) {
++        pa_log_debug("ANNOUNCE requires a preliminary authentication");
++        return 1;
++    }
++
++    c->rtsp = pa_rtsp_client_new(c->core->mainloop, c->host, c->port, DEFAULT_USER_AGENT);
++
++    pa_assert(c->rtsp);
++
++    c->sync_count = 0;
++    c->is_recording = false;
++    c->is_first_packet = true;
++    pa_random(&sid, sizeof(sid));
++    c->sid = pa_sprintf_malloc("%u", sid);
++    pa_rtsp_set_callback(c->rtsp, rtsp_stream_cb, c);
++
++    rv = pa_rtsp_connect(c->rtsp);
++    return rv;
++}
++
++bool pa_raop_client_is_alive(pa_raop_client *c) {
++    pa_assert(c);
++
++    if (!c->rtsp || !c->sci) {
++        pa_log_debug("Not alive, connection not established yet...");
++        return false;
++    }
++
++    switch (c->protocol) {
++        case PA_RAOP_PROTOCOL_TCP:
++            if (c->tcp_sfd > 0)
++                return true;
++            break;
++        case PA_RAOP_PROTOCOL_UDP:
++            if (c->udp_sfd > 0)
++                return true;
++            break;
++        default:
++            break;
++    }
++
++    return false;
++}
++
++bool pa_raop_client_can_stream(pa_raop_client *c) {
++    pa_assert(c);
++
++    if (!c->rtsp || !c->sci) {
++        pa_log_debug("Can't stream, connection not established yet...");
++        return false;
++    }
++
++    switch (c->protocol) {
++        case PA_RAOP_PROTOCOL_TCP:
++            if (c->tcp_sfd > 0 && c->is_recording)
++                return true;
++            break;
++        case PA_RAOP_PROTOCOL_UDP:
++            if (c->udp_sfd > 0 && c->is_recording)
++                return true;
++            break;
++        default:
++            break;
++    }
++
++    return false;
++}
++
++int pa_raop_client_stream(pa_raop_client *c) {
++    int rv = 0;
++
++    pa_assert(c);
++
++    if (!c->rtsp || !c->sci) {
++        pa_log_debug("Streaming's impossible, connection not established yet...");
++        return 0;
++    }
++
++    switch (c->protocol) {
++        case PA_RAOP_PROTOCOL_TCP:
++            if (c->tcp_sfd > 0 && !c->is_recording)
++                c->is_recording = true;
++                c->is_first_packet = true;
++                c->sync_count = 0;
++            break;
++        case PA_RAOP_PROTOCOL_UDP:
++            if (c->udp_sfd > 0 && !c->is_recording) {
++                c->is_recording = true;
++                c->is_first_packet = true;
++                c->sync_count = 0;
++            }
++            break;
++        default:
++            rv = 1;
++            break;
++    }
++
++    return rv;
++}
++
++int pa_raop_client_set_volume(pa_raop_client *c, pa_volume_t volume) {
++    char *param;
++    int rv = 0;
++    double db;
++
++    pa_assert(c);
++
++    if (!c->rtsp) {
++        pa_log_debug("Cannot SET_PARAMETER, connection not established yet...");
++        return 0;
++    } else if (!c->sci) {
++        pa_log_debug("SET_PARAMETER requires a preliminary authentication");
++        return 1;
++    }
++
++    db = pa_sw_volume_to_dB(volume);
++    if (db < VOLUME_MIN)
++        db = VOLUME_MIN;
++    else if (db > VOLUME_MAX)
++        db = VOLUME_MAX;
++
++    pa_log_debug("volume=%u db=%.6f", volume, db);
++
++    param = pa_sprintf_malloc("volume: %0.6f\r\n", db);
++    /* We just hit and hope, cannot wait for the callback. */
++    if (c->rtsp != NULL && pa_rtsp_exec_ready(c->rtsp))
++        rv = pa_rtsp_setparameter(c->rtsp, param);
++
++    pa_xfree(param);
++    return rv;
++}
++
++int pa_raop_client_flush(pa_raop_client *c) {
++    int rv = 0;
++
++    pa_assert(c);
++
++    if (!c->rtsp || !pa_rtsp_exec_ready(c->rtsp)) {
++        pa_log_debug("Cannot FLUSH, connection not established yet...)");
++        return 0;
++    } else if (!c->sci) {
++        pa_log_debug("FLUSH requires a preliminary authentication");
++        return 1;
++    }
++
++    c->is_recording = false;
++
++    rv = pa_rtsp_flush(c->rtsp, c->seq, c->rtptime);
++    return rv;
++}
++
++int pa_raop_client_teardown(pa_raop_client *c) {
++    int rv = 0;
++
++    pa_assert(c);
++
++    if (!c->rtsp) {
++        pa_log_debug("Cannot TEARDOWN, connection not established yet...");
++        return 0;
++    } else if (!c->sci) {
++        pa_log_debug("TEARDOWN requires a preliminary authentication");
++        return 1;
++    }
++
++    c->is_recording = false;
++
++    rv = pa_rtsp_teardown(c->rtsp);
++    return rv;
++}
++
++void pa_raop_client_get_frames_per_block(pa_raop_client *c, size_t *frames) {
++    pa_assert(c);
++    pa_assert(frames);
++
++    switch (c->protocol) {
++        case PA_RAOP_PROTOCOL_TCP:
++            *frames = FRAMES_PER_TCP_PACKET;
++            break;
++        case PA_RAOP_PROTOCOL_UDP:
++            *frames = FRAMES_PER_UDP_PACKET;
++            break;
++        default:
++            *frames = 0;
++            break;
++    }
++}
++
++bool pa_raop_client_register_pollfd(pa_raop_client *c, pa_rtpoll *poll, pa_rtpoll_item **poll_item) {
++    struct pollfd *pollfd = NULL;
++    pa_rtpoll_item *item = NULL;
++    bool oob = true;
++
++    pa_assert(c);
++    pa_assert(poll);
++    pa_assert(poll_item);
++
++    switch (c->protocol) {
++        case PA_RAOP_PROTOCOL_TCP:
++            item = pa_rtpoll_item_new(poll, PA_RTPOLL_NEVER, 1);
++            pollfd = pa_rtpoll_item_get_pollfd(item, NULL);
++            pollfd->fd = c->tcp_sfd;
++            pollfd->events = POLLOUT;
++            pollfd->revents = 0;
++            *poll_item = item;
++            oob = false;
++            break;
++        case PA_RAOP_PROTOCOL_UDP:
++            item = pa_rtpoll_item_new(poll, PA_RTPOLL_NEVER, 2);
++            pollfd = pa_rtpoll_item_get_pollfd(item, NULL);
++            pollfd->fd = c->udp_cfd;
++            pollfd->events = POLLIN | POLLPRI;
++            pollfd->revents = 0;
++            pollfd++;
++            pollfd->fd = c->udp_tfd;
++            pollfd->events = POLLIN | POLLPRI;
++            pollfd->revents = 0;
++            *poll_item = item;
++            oob = true;
++            break;
++        default:
++            *poll_item = NULL;
++            break;
++    }
++
++    return oob;
++}
++
++pa_volume_t pa_raop_client_adjust_volume(pa_raop_client *c, pa_volume_t volume) {
++    double minv, maxv;
++
++    pa_assert(c);
++
++    if (c->protocol != PA_RAOP_PROTOCOL_UDP)
++        return volume;
++
++    maxv = pa_sw_volume_from_dB(0.0);
++    minv = maxv * pow(10.0, VOLUME_DEF / 60.0);
++
++    /* Adjust volume so that it fits into VOLUME_DEF <= v <= 0 dB */
++    return volume - volume * (minv / maxv) + minv;
++}
++
++void pa_raop_client_handle_oob_packet(pa_raop_client *c, const int fd, const uint8_t packet[], ssize_t size) {
++    pa_assert(c);
++    pa_assert(fd > 0);
++    pa_assert(packet);
++
++    if (c->protocol == PA_RAOP_PROTOCOL_UDP) {
++        if (fd == c->udp_cfd) {
++            pa_log_debug("Received UDP control packet...");
++            handle_udp_control_packet(c, packet, size);
++        } else if (fd == c->udp_tfd) {
++            pa_log_debug("Received UDP timing packet...");
++            handle_udp_timing_packet(c, packet, size);
++        }
++    }
++}
++
++ssize_t pa_raop_client_send_audio_packet(pa_raop_client *c, pa_memchunk *block, size_t offset) {
++    ssize_t written = 0;
++
++    pa_assert(c);
++    pa_assert(block);
++
++    /* Sync RTP & NTP timestamp if required (UDP). */
++    if (c->protocol == PA_RAOP_PROTOCOL_UDP) {
++        c->sync_count++;
++        if (c->is_first_packet || c->sync_count >= c->sync_interval) {
++            send_udp_sync_packet(c, c->rtptime);
++            c->sync_count = 0;
++        }
++    }
++
++    switch (c->protocol) {
++        case PA_RAOP_PROTOCOL_TCP:
++            written = send_tcp_audio_packet(c, block, offset);
++            break;
++        case PA_RAOP_PROTOCOL_UDP:
++            written = send_udp_audio_packet(c, block, offset);
++            break;
++        default:
++            written = -1;
++            break;
++    }
++
++    c->is_first_packet = false;
++    return written;
++}
++
++void pa_raop_client_set_state_callback(pa_raop_client *c, pa_raop_client_state_cb_t callback, void *userdata) {
++    pa_assert(c);
++
++    c->state_callback = callback;
++    c->state_userdata = userdata;
++}
+diff --git a/src/modules/raop/raop-client.h b/src/modules/raop/raop-client.h
+new file mode 100644
+index 0000000..72e6018
+--- /dev/null
++++ b/src/modules/raop/raop-client.h
+@@ -0,0 +1,83 @@
++#ifndef fooraopclientfoo
++#define fooraopclientfoo
++
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2008 Colin Guthrie
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
++***/
++
++#include <pulse/volume.h>
++
++#include <pulsecore/core.h>
++#include <pulsecore/memchunk.h>
++#include <pulsecore/rtpoll.h>
++
++typedef enum pa_raop_protocol {
++    PA_RAOP_PROTOCOL_TCP,
++    PA_RAOP_PROTOCOL_UDP
++} pa_raop_protocol_t;
++
++typedef enum pa_raop_encryption {
++    PA_RAOP_ENCRYPTION_NONE,
++    PA_RAOP_ENCRYPTION_RSA,
++    PA_RAOP_ENCRYPTION_FAIRPLAY,
++    PA_RAOP_ENCRYPTION_MFISAP,
++    PA_RAOP_ENCRYPTION_FAIRPLAY_SAP25
++} pa_raop_encryption_t;
++
++typedef enum pa_raop_codec {
++    PA_RAOP_CODEC_PCM,
++    PA_RAOP_CODEC_ALAC,
++    PA_RAOP_CODEC_AAC,
++    PA_RAOP_CODEC_AAC_ELD
++} pa_raop_codec_t;
++
++typedef struct pa_raop_client pa_raop_client;
++
++typedef enum pa_raop_state {
++    PA_RAOP_INVALID_STATE,
++    PA_RAOP_AUTHENTICATED,
++    PA_RAOP_CONNECTED,
++    PA_RAOP_RECORDING,
++    PA_RAOP_DISCONNECTED
++} pa_raop_state_t;
++
++pa_raop_client* pa_raop_client_new(pa_core *core, const char *host, pa_raop_protocol_t protocol,
++                                   pa_raop_encryption_t encryption, pa_raop_codec_t codec);
++void pa_raop_client_free(pa_raop_client *c);
++
++int pa_raop_client_authenticate(pa_raop_client *c, const char *password);
++bool pa_raop_client_is_authenticated(pa_raop_client *c);
++
++int pa_raop_client_announce(pa_raop_client *c);
++bool pa_raop_client_is_alive(pa_raop_client *c);
++bool pa_raop_client_can_stream(pa_raop_client *c);
++int pa_raop_client_stream(pa_raop_client *c);
++int pa_raop_client_set_volume(pa_raop_client *c, pa_volume_t volume);
++int pa_raop_client_flush(pa_raop_client *c);
++int pa_raop_client_teardown(pa_raop_client *c);
++
++void pa_raop_client_get_frames_per_block(pa_raop_client *c, size_t *size);
++bool pa_raop_client_register_pollfd(pa_raop_client *c, pa_rtpoll *poll, pa_rtpoll_item **poll_item);
++pa_volume_t pa_raop_client_adjust_volume(pa_raop_client *c, pa_volume_t volume);
++void pa_raop_client_handle_oob_packet(pa_raop_client *c, const int fd, const uint8_t packet[], ssize_t size);
++ssize_t pa_raop_client_send_audio_packet(pa_raop_client *c, pa_memchunk *block, size_t offset);
++
++typedef void (*pa_raop_client_state_cb_t)(pa_raop_state_t state, void *userdata);
++void pa_raop_client_set_state_callback(pa_raop_client *c, pa_raop_client_state_cb_t callback, void *userdata);
++
++#endif
+diff --git a/src/modules/raop/raop-crypto.c b/src/modules/raop/raop-crypto.c
+new file mode 100644
+index 0000000..ad35ad1
+--- /dev/null
++++ b/src/modules/raop/raop-crypto.c
+@@ -0,0 +1,146 @@
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2013 Martin Blanchard
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, write to the Free Software
++  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
++  USA.
++***/
++
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
++#include <stdlib.h>
++#include <stdint.h>
++#include <string.h>
++
++#include <openssl/err.h>
++#include <openssl/aes.h>
++#include <openssl/rsa.h>
++
++#include <pulse/xmalloc.h>
++
++#include <pulsecore/macro.h>
++#include <pulsecore/random.h>
++
++#include "raop-crypto.h"
++#include "raop-util.h"
++
++#define AES_CHUNK_SIZE 16
++
++struct pa_raop_secret {
++    uint8_t key[AES_CHUNK_SIZE]; /* Key for aes-cbc */
++    uint8_t iv[AES_CHUNK_SIZE];  /* Initialization vector for cbc */
++    AES_KEY aes;                 /* AES encryption */
++};
++
++static const char rsa_modulus[] =
++    "59dE8qLieItsH1WgjrcFRKj6eUWqi+bGLOX1HL3U3GhC/j0Qg90u3sG/1CUtwC"
++    "5vOYvfDmFI6oSFXi5ELabWJmT2dKHzBJKa3k9ok+8t9ucRqMd6DZHJ2YCCLlDR"
++    "KSKv6kDqnw4UwPdpOMXziC/AMj3Z/lUVX1G7WSHCAWKf1zNS1eLvqr+boEjXuB"
++    "OitnZ/bDzPHrTOZz0Dew0uowxf/+sG+NCK3eQJVxqcaJ/vEHKIVd2M+5qL71yJ"
++    "Q+87X6oV3eaYvt3zWZYD6z5vYTcrtij2VZ9Zmni/UAaHqn9JdsBWLUEpVviYnh"
++    "imNVvYFZeCXg/IdTQ+x4IRdiXNv5hEew==";
++
++static const char rsa_exponent[] =
++    "AQAB";
++
++static int rsa_encrypt(uint8_t *data, int len, uint8_t *str) {
++    uint8_t modules[256];
++    uint8_t exponent[8];
++    int size = 0;
++    RSA *rsa;
++
++    pa_assert(data);
++    pa_assert(str);
++
++    rsa = RSA_new();
++    size = pa_raop_base64_decode(rsa_modulus, modules);
++    rsa->n = BN_bin2bn(modules, size, NULL);
++    size = pa_raop_base64_decode(rsa_exponent, exponent);
++    rsa->e = BN_bin2bn(exponent, size, NULL);
++
++    size = RSA_public_encrypt(len, data, str, rsa, RSA_PKCS1_OAEP_PADDING);
++
++    RSA_free(rsa);
++    return size;
++}
++
++pa_raop_secret* pa_raop_secret_new(void) {
++    pa_raop_secret *s = pa_xnew0(pa_raop_secret, 1);
++
++    pa_assert(s);
++
++    pa_random(s->key, sizeof(s->key));
++    AES_set_encrypt_key(s->key, 128, &s->aes);
++    pa_random(s->iv, sizeof(s->iv));
++
++    return s;
++}
++
++void pa_raop_secret_free(pa_raop_secret *s) {
++    pa_assert(s);
++
++    pa_xfree(s);
++}
++
++char* pa_raop_secret_get_iv(pa_raop_secret *s) {
++    char *base64_iv = NULL;
++
++    pa_assert(s);
++
++    pa_raop_base64_encode(s->iv, AES_CHUNK_SIZE, &base64_iv);
++
++    return base64_iv;
++}
++
++char* pa_raop_secret_get_key(pa_raop_secret *s) {
++    char *base64_key = NULL;
++    uint8_t rsa_key[512];
++    int size = 0;
++
++    pa_assert(s);
++
++    /* Encrypt our AES public key to send to the device */
++    size = rsa_encrypt(s->key, AES_CHUNK_SIZE, rsa_key);
++    pa_raop_base64_encode(rsa_key, size, &base64_key);
++
++    return base64_key;
++}
++
++int pa_raop_aes_encrypt(pa_raop_secret *s, uint8_t *data, int len) {
++    static uint8_t nv[AES_CHUNK_SIZE];
++    uint8_t *buffer;
++    int i = 0, j;
++
++    pa_assert(s);
++    pa_assert(data);
++
++    memcpy(nv, s->iv, AES_CHUNK_SIZE);
++
++    while (i + AES_CHUNK_SIZE <= len) {
++        buffer = data + i;
++        for (j = 0; j < AES_CHUNK_SIZE; ++j)
++            buffer[j] ^= nv[j];
++
++        AES_encrypt(buffer, buffer, &s->aes);
++
++        memcpy(nv, buffer, AES_CHUNK_SIZE);
++        i += AES_CHUNK_SIZE;
++    }
++
++    return i;
++}
+diff --git a/src/modules/raop/raop-crypto.h b/src/modules/raop/raop-crypto.h
+new file mode 100644
+index 0000000..65f7577
+--- /dev/null
++++ b/src/modules/raop/raop-crypto.h
+@@ -0,0 +1,35 @@
++#ifndef fooraopcryptofoo
++#define fooraopcryptofoo
++
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2013 Martin Blanchard
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, write to the Free Software
++  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
++  USA.
++***/
++
++typedef struct pa_raop_secret pa_raop_secret;
++
++pa_raop_secret* pa_raop_secret_new(void);
++void pa_raop_secret_free(pa_raop_secret *s);
++
++char* pa_raop_secret_get_iv(pa_raop_secret *s);
++char* pa_raop_secret_get_key(pa_raop_secret *s);
++
++int pa_raop_aes_encrypt(pa_raop_secret *s, uint8_t *data, int len);
++
++#endif
+diff --git a/src/modules/raop/raop-packet-buffer.c b/src/modules/raop/raop-packet-buffer.c
+new file mode 100644
+index 0000000..72fd729
+--- /dev/null
++++ b/src/modules/raop/raop-packet-buffer.c
+@@ -0,0 +1,161 @@
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2013 Matthias Wabersich
++  Copyright 2013 Hajime Fujita
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, write to the Free Software
++  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
++  USA.
++***/
++
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
++#include <stdlib.h>
++#include <stdint.h>
++#include <limits.h>
++
++#include <pulse/xmalloc.h>
++
++#include <pulsecore/core-error.h>
++#include <pulsecore/macro.h>
++
++#include "raop-packet-buffer.h"
++
++struct pa_raop_packet_buffer {
++    pa_memchunk *packets;
++    pa_mempool *mempool;
++
++    size_t size;
++    size_t count;
++
++    uint16_t seq;
++    size_t pos;
++};
++
++pa_raop_packet_buffer *pa_raop_packet_buffer_new(pa_mempool *mempool, const size_t size) {
++    pa_raop_packet_buffer *pb = pa_xnew0(pa_raop_packet_buffer, 1);
++
++    pa_assert(mempool);
++    pa_assert(size > 0);
++
++    pb->count = 0;
++    pb->size = size;
++    pb->mempool = mempool;
++    pb->packets = pa_xnew0(pa_memchunk, size);
++    pb->seq = pb->pos = 0;
++
++    return pb;
++}
++
++void pa_raop_packet_buffer_free(pa_raop_packet_buffer *pb) {
++    size_t i;
++
++    pa_assert(pb);
++
++    for (i = 0; pb->packets && i < pb->size; i++) {
++        if (pb->packets[i].memblock)
++            pa_memblock_unref(pb->packets[i].memblock);
++        pa_memchunk_reset(&pb->packets[i]);
++    }
++
++    pa_xfree(pb->packets);
++    pb->packets = NULL;
++    pa_xfree(pb);
++}
++
++void pa_raop_packet_buffer_reset(pa_raop_packet_buffer *pb, uint16_t seq) {
++    size_t i;
++
++    pa_assert(pb);
++    pa_assert(pb->packets);
++
++    pb->pos = 0;
++    pb->count = 0;
++    pb->seq = (!seq) ? UINT16_MAX : seq - 1;
++    for (i = 0; i < pb->size; i++) {
++        if (pb->packets[i].memblock)
++            pa_memblock_unref(pb->packets[i].memblock);
++        pa_memchunk_reset(&pb->packets[i]);
++    }
++}
++
++pa_memchunk *pa_raop_packet_buffer_prepare(pa_raop_packet_buffer *pb, uint16_t seq, const size_t size) {
++    pa_memchunk *packet = NULL;
++    size_t i;
++
++    pa_assert(pb);
++    pa_assert(pb->packets);
++
++    if (seq == 0) {
++        /* 0 means seq reached UINT16_MAX and has been wrapped... */
++        pa_assert(pb->seq == UINT16_MAX);
++        pb->seq = 0;
++    } else {
++        /* ...otherwise, seq MUST have be increased! */
++        pa_assert(seq == pb->seq + 1);
++        pb->seq++;
++    }
++
++    i = (pb->pos + 1) % pb->size;
++
++    if (pb->packets[i].memblock)
++        pa_memblock_unref(pb->packets[i].memblock);
++    pa_memchunk_reset(&pb->packets[i]);
++
++    pb->packets[i].memblock = pa_memblock_new(pb->mempool, size);
++    pb->packets[i].length = size;
++    pb->packets[i].index = 0;
++
++    packet = &pb->packets[i];
++
++    if (pb->count < pb->size)
++        pb->count++;
++    pb->pos = i;
++
++    return packet;
++}
++
++pa_memchunk *pa_raop_packet_buffer_retrieve(pa_raop_packet_buffer *pb, uint16_t seq) {
++    pa_memchunk *packet = NULL;
++    size_t delta, i;
++
++    pa_assert(pb);
++    pa_assert(pb->packets);
++
++    if (seq == pb->seq)
++        packet = &pb->packets[pb->pos];
++    else {
++        if (seq < pb->seq) {
++            /* Regular case: pb->seq did not wrapped since seq. */
++            delta = pb->seq - seq;
++        } else {
++            /* Tricky case: pb->seq wrapped since seq! */
++            delta = pb->seq + (UINT16_MAX - seq);
++        }
++
++        /* If the requested packet is too old, do nothing and return */
++        if (delta > pb->count)
++            return NULL;
++
++        i = (pb->size + pb->pos - delta) % pb->size;
++
++        if (delta < pb->size && pb->packets[i].memblock)
++            packet = &pb->packets[i];
++    }
++
++    return packet;
++}
+diff --git a/src/modules/raop/raop-packet-buffer.h b/src/modules/raop/raop-packet-buffer.h
+new file mode 100644
+index 0000000..c410298
+--- /dev/null
++++ b/src/modules/raop/raop-packet-buffer.h
+@@ -0,0 +1,40 @@
++#ifndef fooraoppacketbufferfoo
++#define fooraoppacketbufferfoo
++
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2013 Matthias Wabersich
++  Copyright 2013 Hajime Fujita
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, write to the Free Software
++  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
++  USA.
++***/
++
++#include <pulsecore/memblock.h>
++#include <pulsecore/memchunk.h>
++
++typedef struct pa_raop_packet_buffer pa_raop_packet_buffer;
++
++/* Allocates a new circular packet buffer, size: Maximum number of packets to store */
++pa_raop_packet_buffer *pa_raop_packet_buffer_new(pa_mempool *mempool, const size_t size);
++void pa_raop_packet_buffer_free(pa_raop_packet_buffer *pb);
++
++void pa_raop_packet_buffer_reset(pa_raop_packet_buffer *pb, uint16_t seq);
++
++pa_memchunk *pa_raop_packet_buffer_prepare(pa_raop_packet_buffer *pb, uint16_t seq, const size_t size);
++pa_memchunk *pa_raop_packet_buffer_retrieve(pa_raop_packet_buffer *pb, uint16_t seq);
++
++#endif
+diff --git a/src/modules/raop/raop-sink.c b/src/modules/raop/raop-sink.c
+new file mode 100644
+index 0000000..6b707cf
+--- /dev/null
++++ b/src/modules/raop/raop-sink.c
+@@ -0,0 +1,669 @@
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2004-2006 Lennart Poettering
++  Copyright 2008 Colin Guthrie
++  Copyright 2013 Hajime Fujita
++  Copyright 2013 Martin Blanchard
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, write to the Free Software
++  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
++  USA.
++***/
++
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
++#include <stdlib.h>
++#include <stdio.h>
++#include <errno.h>
++#include <string.h>
++#include <unistd.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <netinet/tcp.h>
++#include <sys/ioctl.h>
++
++#ifdef HAVE_LINUX_SOCKIOS_H
++#include <linux/sockios.h>
++#endif
++
++#include <pulse/rtclock.h>
++#include <pulse/timeval.h>
++#include <pulse/volume.h>
++#include <pulse/xmalloc.h>
++
++#include <pulsecore/core.h>
++#include <pulsecore/i18n.h>
++#include <pulsecore/module.h>
++#include <pulsecore/memchunk.h>
++#include <pulsecore/sink.h>
++#include <pulsecore/modargs.h>
++#include <pulsecore/core-error.h>
++#include <pulsecore/core-util.h>
++#include <pulsecore/log.h>
++#include <pulsecore/macro.h>
++#include <pulsecore/thread.h>
++#include <pulsecore/thread-mq.h>
++#include <pulsecore/poll.h>
++#include <pulsecore/rtpoll.h>
++#include <pulsecore/time-smoother.h>
++
++#include "raop-sink.h"
++#include "raop-client.h"
++
++struct userdata {
++    pa_core *core;
++    pa_module *module;
++    pa_sink *sink;
++
++    pa_thread *thread;
++    pa_thread_mq thread_mq;
++    pa_rtpoll *rtpoll;
++    pa_rtpoll_item *rtpoll_item;
++    bool oob;
++
++    pa_raop_client *raop;
++    pa_raop_protocol_t protocol;
++    pa_raop_encryption_t encryption;
++    pa_raop_codec_t codec;
++
++    size_t block_size;
++    pa_memchunk memchunk;
++
++    pa_usec_t delay;
++    pa_usec_t start;
++    pa_smoother *smoother;
++    uint64_t write_count;
++};
++
++enum {
++    PA_SINK_MESSAGE_SET_RAOP_STATE = PA_SINK_MESSAGE_MAX
++};
++
++static void userdata_free(struct userdata *u);
++
++static void sink_set_volume_cb(pa_sink *s);
++
++static void raop_state_cb(pa_raop_state_t state, void *userdata) {
++    struct userdata *u = userdata;
++
++    pa_assert(u);
++
++    pa_log_debug("State change recieved, informing IO thread...");
++
++    pa_asyncmsgq_post(u->thread_mq.inq, PA_MSGOBJECT(u->sink), PA_SINK_MESSAGE_SET_RAOP_STATE, PA_INT_TO_PTR(state), 0, NULL, NULL);
++}
++
++static pa_usec_t sink_get_latency(const struct userdata *u) {
++    pa_usec_t r, now;
++    int64_t latency;
++
++    pa_assert(u);
++    pa_assert(u->smoother);
++
++    now = pa_rtclock_now();
++    now = pa_smoother_get(u->smoother, now);
++
++    latency = pa_bytes_to_usec(u->write_count, &u->sink->sample_spec) - (int64_t) now;
++    r = latency >= 0 ? (pa_usec_t) latency : 0;
++
++    return r;
++}
++
++static int sink_process_msg(pa_msgobject *o, int code, void *data, int64_t offset, pa_memchunk *chunk) {
++    struct userdata *u = PA_SINK(o)->userdata;
++
++    pa_assert(u);
++    pa_assert(u->raop);
++
++    switch (code) {
++        case PA_SINK_MESSAGE_SET_STATE: {
++            switch ((pa_sink_state_t) PA_PTR_TO_UINT(data)) {
++                case PA_SINK_SUSPENDED: {
++                    pa_log_debug("RAOP: SUSPENDED");
++
++                    pa_assert(PA_SINK_IS_OPENED(u->sink->thread_info.state));
++
++                    pa_smoother_pause(u->smoother, pa_rtclock_now());
++                    /* Issue a TEARDOWN if we are still connected */
++                    if (pa_raop_client_is_alive(u->raop)) {
++                        pa_raop_client_teardown(u->raop);
++                    }
++
++                    break;
++                }
++
++                case PA_SINK_IDLE: {
++                    pa_log_debug("RAOP: IDLE");
++
++                    /* Issue a FLUSH if we're comming from running state */
++                    if (u->sink->thread_info.state == PA_SINK_RUNNING) {
++                        pa_rtpoll_set_timer_disabled(u->rtpoll);
++                        pa_raop_client_flush(u->raop);
++                    }
++
++                    break;
++                }
++
++                case PA_SINK_RUNNING: {
++                    pa_usec_t now;
++
++                    pa_log_debug("RAOP: RUNNING");
++
++                    now = pa_rtclock_now();
++                    pa_smoother_resume(u->smoother, now, true);
++
++                    if (!pa_raop_client_is_alive(u->raop)) {
++                        /* Connecting will trigger a RECORD and start steaming */
++                        pa_raop_client_announce(u->raop);
++                    } else if (!pa_raop_client_can_stream(u->raop)) {
++                        /* RECORD alredy sent, simply start streaming */
++                        pa_raop_client_stream(u->raop);
++                        pa_rtpoll_set_timer_absolute(u->rtpoll, now);
++                        u->write_count = 0;
++                        u->start = now;
++                    }
++
++                    break;
++                }
++
++                case PA_SINK_UNLINKED:
++                case PA_SINK_INIT:
++                case PA_SINK_INVALID_STATE:
++                    break;
++            }
++
++            break;
++        }
++
++        case PA_SINK_MESSAGE_GET_LATENCY: {
++            pa_usec_t r = 0;
++
++            if (pa_raop_client_can_stream(u->raop))
++                r = sink_get_latency(u);
++
++            *((pa_usec_t*) data) = r;
++
++            return 0;
++        }
++
++        case PA_SINK_MESSAGE_SET_RAOP_STATE: {
++            switch ((pa_raop_state_t) PA_PTR_TO_UINT(data)) {
++                case PA_RAOP_AUTHENTICATED: {
++                    if (!pa_raop_client_is_authenticated(u->raop)) {
++                        pa_module_unload_request(u->module, true);
++                    }
++
++                    return 0;
++                }
++
++                case PA_RAOP_CONNECTED: {
++                    pa_assert(!u->rtpoll_item);
++
++                    u->oob = pa_raop_client_register_pollfd(u->raop, u->rtpoll, &u->rtpoll_item);
++
++                    return 0;
++                }
++
++                case PA_RAOP_RECORDING: {
++                    pa_usec_t now;
++
++                    now = pa_rtclock_now();
++                    pa_rtpoll_set_timer_absolute(u->rtpoll, now);
++                    u->write_count = 0;
++                    u->start = now;
++
++                    if (u->sink->thread_info.state == PA_SINK_SUSPENDED) {
++                        /* Our stream has been suspended so we just flush it... */
++                        pa_rtpoll_set_timer_disabled(u->rtpoll);
++                        pa_raop_client_flush(u->raop);
++                    } else {
++                        /* Set the initial volume */
++                        sink_set_volume_cb(u->sink);
++                    }
++
++                    return 0;
++                }
++
++                case PA_RAOP_INVALID_STATE:
++                case PA_RAOP_DISCONNECTED: {
++                    unsigned int nbfds = 0;
++                    struct pollfd *pollfd;
++                    unsigned int i;
++
++                    if (u->rtpoll_item) {
++                        pollfd = pa_rtpoll_item_get_pollfd(u->rtpoll_item, &nbfds);
++                        for (i = 0; i < nbfds; i++) {
++                            if (pollfd && pollfd->fd > 0)
++                               pa_close(pollfd->fd);
++                            pollfd++;
++                        }
++                        pa_rtpoll_item_free(u->rtpoll_item);
++                        u->rtpoll_item = NULL;
++                    }
++
++                    if (u->sink->thread_info.state == PA_SINK_SUSPENDED)
++                        pa_rtpoll_set_timer_disabled(u->rtpoll);
++                    else if (u->sink->thread_info.state != PA_SINK_IDLE)
++                        pa_module_unload_request(u->module, true);
++
++                    return 0;
++                }
++            }
++
++            return 0;
++        }
++    }
++
++    return pa_sink_process_msg(o, code, data, offset, chunk);
++}
++
++static void sink_set_volume_cb(pa_sink *s) {
++    struct userdata *u = s->userdata;
++    pa_cvolume hw;
++    pa_volume_t v, v_orig;
++    char t[PA_CVOLUME_SNPRINT_VERBOSE_MAX];
++
++    pa_assert(u);
++
++    /* If we're muted we don't need to do anything. */
++    if (s->muted)
++        return;
++
++    /* Calculate the max volume of all channels.
++     * We'll use this as our (single) volume on the APEX device and emulate
++     * any variation in channel volumes in software. */
++    v = pa_cvolume_max(&s->real_volume);
++
++    v_orig = v;
++    v = pa_raop_client_adjust_volume(u->raop, v_orig);
++
++    pa_log_debug("Volume adjusted: orig=%u adjusted=%u", v_orig, v);
++
++    /* Create a pa_cvolume version of our single value. */
++    pa_cvolume_set(&hw, s->sample_spec.channels, v);
++
++    /* Perform any software manipulation of the volume needed. */
++    pa_sw_cvolume_divide(&s->soft_volume, &s->real_volume, &hw);
++
++    pa_log_debug("Requested volume: %s", pa_cvolume_snprint_verbose(t, sizeof(t), &s->real_volume, &s->channel_map, false));
++    pa_log_debug("Got hardware volume: %s", pa_cvolume_snprint_verbose(t, sizeof(t), &hw, &s->channel_map, false));
++    pa_log_debug("Calculated software volume: %s",
++                 pa_cvolume_snprint_verbose(t, sizeof(t), &s->soft_volume, &s->channel_map, true));
++
++    /* Any necessary software volume manipulation is done so set
++     * our hw volume (or v as a single value) on the device. */
++    pa_raop_client_set_volume(u->raop, v);
++}
++
++static void sink_set_mute_cb(pa_sink *s) {
++    struct userdata *u = s->userdata;
++
++    pa_assert(u);
++    pa_assert(u->raop);
++
++    if (s->muted) {
++        pa_raop_client_set_volume(u->raop, PA_VOLUME_MUTED);
++    } else {
++        sink_set_volume_cb(s);
++    }
++}
++
++static void thread_func(void *userdata) {
++    struct userdata *u = userdata;
++    size_t offset = 0;
++
++    pa_assert(u);
++
++    pa_log_debug("Thread starting up");
++
++    pa_thread_mq_install(&u->thread_mq);
++    pa_smoother_set_time_offset(u->smoother, pa_rtclock_now());
++
++    for (;;) {
++        struct pollfd *pollfd = NULL;
++        unsigned int i, nbfds = 0;
++        pa_usec_t now, estimated, intvl;
++        uint64_t position;
++        size_t index;
++        int ret;
++
++        if (PA_SINK_IS_OPENED(u->sink->thread_info.state)) {
++            if (u->sink->thread_info.rewind_requested)
++                pa_sink_process_rewind(u->sink, 0);
++        }
++
++        /* Polling (audio data + control socket + timing socket). */
++        if ((ret = pa_rtpoll_run(u->rtpoll)) < 0)
++            goto fail;
++        else if (ret == 0)
++            goto finish;
++
++        if (u->rtpoll_item) {
++            pollfd = pa_rtpoll_item_get_pollfd(u->rtpoll_item, &nbfds);
++            /* If !oob: streaming driven by pollds (POLLOUT) */
++            if (pollfd && !u->oob && !pollfd->revents) {
++                for (i = 0; i < nbfds; i++) {
++                    pollfd->events = POLLOUT;
++                    pollfd->revents = 0;
++
++                    pollfd++;
++                }
++
++                continue;
++            }
++
++            /* if oob: streaming managed by timing, pollfd for oob sockets */
++            if (pollfd && u->oob && !pa_rtpoll_timer_elapsed(u->rtpoll)) {
++                uint8_t packet[32];
++                ssize_t read;
++
++                for (i = 0; i < nbfds; i++) {
++                    if (pollfd->revents & pollfd->events) {
++                        pollfd->revents = 0;
++                        read = pa_read(pollfd->fd, packet, sizeof(packet), NULL);
++                        pa_raop_client_handle_oob_packet(u->raop, pollfd->fd, packet, read);
++                    }
++
++                    pollfd++;
++                }
++
++                continue;
++            }
++        }
++
++        if (u->sink->thread_info.state != PA_SINK_RUNNING)
++            continue;
++        if (!pa_raop_client_can_stream(u->raop))
++            continue;
++
++        if (u->memchunk.length <= 0) {
++            if (u->memchunk.memblock)
++                pa_memblock_unref(u->memchunk.memblock);
++            pa_memchunk_reset(&u->memchunk);
++
++            /* Grab unencoded audio data from PulseAudio */
++            pa_sink_render_full(u->sink, u->block_size, &u->memchunk);
++            offset = u->memchunk.index;
++        }
++
++        pa_assert(u->memchunk.length > 0);
++
++        index = u->memchunk.index;
++        if (pa_raop_client_send_audio_packet(u->raop, &u->memchunk, offset) < 0) {
++            if (errno == EINTR) {
++                /* Just try again. */
++                pa_log_debug("Failed to write data to FIFO (EINTR), retrying");
++                goto fail;
++            } else if (errno != EAGAIN) {
++                /* Buffer is full, wait for POLLOUT. */
++                pollfd->events = POLLOUT;
++                pollfd->revents = 0;
++            } else {
++                pa_log("Failed to write data to FIFO: %s", pa_cstrerror(errno));
++                goto fail;
++            }
++        } else {
++            u->write_count += (uint64_t) u->memchunk.index - (uint64_t) index;
++            position = u->write_count - pa_usec_to_bytes(u->delay, &u->sink->sample_spec);
++
++            now = pa_rtclock_now();
++            estimated = pa_bytes_to_usec(position, &u->sink->sample_spec);
++            pa_smoother_put(u->smoother, now, estimated);
++
++            if (u->oob && !pollfd->revents) {
++                /* Sleep until next packet transmission */
++                intvl = u->start + pa_bytes_to_usec(u->write_count, &u->sink->sample_spec);
++                pa_rtpoll_set_timer_absolute(u->rtpoll, intvl);
++            } else if (!u->oob) {
++                if (u->memchunk.length > 0) {
++                    pollfd->events = POLLOUT;
++                    pollfd->revents = 0;
++                } else {
++                    intvl = u->start + pa_bytes_to_usec(u->write_count, &u->sink->sample_spec);
++                    pa_rtpoll_set_timer_absolute(u->rtpoll, intvl);
++                    pollfd->revents = 0;
++                    pollfd->events = 0;
++                }
++            }
++        }
++    }
++
++fail:
++    /* If this was no regular exit from the loop we have to continue
++     * processing messages until we received PA_MESSAGE_SHUTDOWN */
++    pa_asyncmsgq_post(u->thread_mq.outq, PA_MSGOBJECT(u->core), PA_CORE_MESSAGE_UNLOAD_MODULE, u->module, 0, NULL, NULL);
++    pa_asyncmsgq_wait_for(u->thread_mq.inq, PA_MESSAGE_SHUTDOWN);
++
++finish:
++    pa_log_debug("Thread shutting down");
++}
++
++pa_sink* pa_raop_sink_new(pa_module *m, pa_modargs *ma, const char *driver) {
++    struct userdata *u = NULL;
++    pa_sample_spec ss;
++    char *thread_name = NULL;
++    const char *server, *protocol, *encryption, *codec;
++    const char /* *username, */ *password;
++    pa_sink_new_data data;
++    const char *name = NULL;
++    char * nick = NULL;
++
++    pa_assert(m);
++    pa_assert(ma);
++
++    ss = m->core->default_sample_spec;
++    if (pa_modargs_get_sample_spec(ma, &ss) < 0) {
++        pa_log("Failed to parse sample specification");
++        goto fail;
++    }
++
++    if (!(server = pa_modargs_get_value(ma, "server", NULL))) {
++        pa_log("Failed to parse server argument");
++        goto fail;
++    }
++
++    if (!(protocol = pa_modargs_get_value(ma, "protocol", NULL))) {
++        pa_log("Failed to parse protocol argument");
++        goto fail;
++    }
++
++    u = pa_xnew0(struct userdata, 1);
++    u->core = m->core;
++    u->module = m;
++    u->thread = NULL;
++    u->rtpoll = pa_rtpoll_new();
++    u->rtpoll_item = NULL;
++    pa_thread_mq_init(&u->thread_mq, m->core->mainloop, u->rtpoll);
++    u->oob = true;
++
++    u->block_size = 0;
++    pa_memchunk_reset(&u->memchunk);
++
++    u->delay = 0;
++    u->smoother = pa_smoother_new(
++            PA_USEC_PER_SEC,
++            PA_USEC_PER_SEC*2,
++            true,
++            true,
++            10,
++            0,
++            false);
++    u->write_count = 0;
++
++    if (pa_streq(protocol, "TCP")) {
++        u->protocol = PA_RAOP_PROTOCOL_TCP;
++    } else if (pa_streq(protocol, "UDP")) {
++        u->protocol = PA_RAOP_PROTOCOL_UDP;
++    } else {
++        pa_log("Unsupported transport protocol argument: %s", protocol);
++        goto fail;
++    }
++
++    encryption = pa_modargs_get_value(ma, "encryption", NULL);
++    codec = pa_modargs_get_value(ma, "codec", NULL);
++
++    if (!encryption) {
++        u->encryption = PA_RAOP_ENCRYPTION_NONE;
++    } else if (pa_streq(encryption, "none")) {
++        u->encryption = PA_RAOP_ENCRYPTION_NONE;
++    } else if (pa_streq(encryption, "RSA")) {
++        u->encryption = PA_RAOP_ENCRYPTION_RSA;
++    } else {
++        pa_log("Unsupported encryption type argument: %s", encryption);
++        goto fail;
++    }
++
++    if (!codec) {
++        u->codec = PA_RAOP_CODEC_PCM;
++    } else if (pa_streq(codec, "PCM")) {
++        u->codec = PA_RAOP_CODEC_PCM;
++    } else if (pa_streq(codec, "ALAC")) {
++        u->codec = PA_RAOP_CODEC_ALAC;
++    } else {
++        pa_log("Unsupported audio codec argument: %s", codec);
++        goto fail;
++    }
++
++    pa_sink_new_data_init(&data);
++    data.driver = driver;
++    data.module = m;
++
++    if ((name = pa_modargs_get_value(ma, "sink_name", NULL))) {
++        pa_sink_new_data_set_name(&data, name);
++    } else {
++        if ((name = pa_modargs_get_value(ma, "name", NULL)))
++            nick = pa_sprintf_malloc("raop_client.%s", name);
++        if (!nick)
++            nick = pa_sprintf_malloc("raop_client.%s", server);
++        pa_sink_new_data_set_name(&data, nick);
++        pa_xfree(nick);
++    }
++
++    pa_sink_new_data_set_sample_spec(&data, &ss);
++
++    pa_proplist_sets(data.proplist, PA_PROP_DEVICE_STRING, server);
++    pa_proplist_sets(data.proplist, PA_PROP_DEVICE_INTENDED_ROLES, "music");
++    pa_proplist_setf(data.proplist, PA_PROP_DEVICE_DESCRIPTION, "RAOP sink '%s'", server);
++
++    if (pa_modargs_get_proplist(ma, "sink_properties", data.proplist, PA_UPDATE_REPLACE) < 0) {
++        pa_log("Invalid properties");
++        pa_sink_new_data_done(&data);
++        goto fail;
++    }
++
++    u->sink = pa_sink_new(m->core, &data, PA_SINK_LATENCY | PA_SINK_NETWORK);
++    pa_sink_new_data_done(&data);
++
++    if (!(u->sink)) {
++        pa_log("Failed to create sink object");
++        goto fail;
++    }
++
++    u->sink->parent.process_msg = sink_process_msg;
++    pa_sink_set_set_volume_callback(u->sink, sink_set_volume_cb);
++    pa_sink_set_set_mute_callback(u->sink, sink_set_mute_cb);
++    u->sink->userdata = u;
++
++    pa_sink_set_asyncmsgq(u->sink, u->thread_mq.inq);
++    pa_sink_set_rtpoll(u->sink, u->rtpoll);
++
++    u->raop = pa_raop_client_new(u->core, server, u->protocol, u->encryption, u->codec);
++
++    if (!(u->raop)) {
++        pa_log("Failed to create RAOP client object");
++        goto fail;
++    }
++
++    /* The number of frames per blocks is not negotiable... */
++    pa_raop_client_get_frames_per_block(u->raop, &u->block_size);
++    u->block_size *= pa_frame_size(&ss);
++    pa_sink_set_max_request(u->sink, u->block_size);
++
++    pa_raop_client_set_state_callback(u->raop, raop_state_cb, u);
++
++    thread_name = pa_sprintf_malloc("raop-sink-%s", server);
++    if (!(u->thread = pa_thread_new(thread_name, thread_func, u))) {
++        pa_log("Failed to create sink thread");
++        goto fail;
++    }
++    pa_xfree(thread_name);
++    thread_name = NULL;
++
++    pa_sink_put(u->sink);
++
++    /* username = pa_modargs_get_value(ma, "username", NULL); */
++    password = pa_modargs_get_value(ma, "password", NULL);
++    pa_raop_client_authenticate(u->raop, password );
++
++    return u->sink;
++
++fail:
++    pa_xfree(thread_name);
++    pa_xfree(nick);
++
++    if (u)
++        userdata_free(u);
++
++    return NULL;
++}
++
++static void userdata_free(struct userdata *u) {
++    pa_assert(u);
++
++    if (u->sink)
++        pa_sink_unlink(u->sink);
++
++    if (u->thread) {
++        pa_asyncmsgq_send(u->thread_mq.inq, NULL, PA_MESSAGE_SHUTDOWN, NULL, 0, NULL);
++        pa_thread_free(u->thread);
++    }
++
++    pa_thread_mq_done(&u->thread_mq);
++
++    if (u->sink)
++        pa_sink_unref(u->sink);
++    u->sink = NULL;
++
++    if (u->rtpoll_item)
++        pa_rtpoll_item_free(u->rtpoll_item);
++    if (u->rtpoll)
++        pa_rtpoll_free(u->rtpoll);
++    u->rtpoll_item = NULL;
++    u->rtpoll = NULL;
++
++    if (u->memchunk.memblock)
++        pa_memblock_unref(u->memchunk.memblock);
++
++    if (u->raop)
++        pa_raop_client_free(u->raop);
++    u->raop = NULL;
++
++    if (u->smoother)
++        pa_smoother_free(u->smoother);
++    u->smoother = NULL;
++
++    pa_xfree(u);
++}
++
++void pa_raop_sink_free(pa_sink *s) {
++    struct userdata *u;
++
++    pa_sink_assert_ref(s);
++    pa_assert_se(u = s->userdata);
++
++    userdata_free(u);
++}
+diff --git a/src/modules/raop/raop-sink.h b/src/modules/raop/raop-sink.h
+new file mode 100644
+index 0000000..dfa2f0c
+--- /dev/null
++++ b/src/modules/raop/raop-sink.h
+@@ -0,0 +1,33 @@
++#ifndef fooraopsinkfoo
++#define fooraopsinkfoo
++
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2013 Martin Blanchard
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, write to the Free Software
++  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
++  USA.
++***/
++
++#include <pulsecore/module.h>
++#include <pulsecore/modargs.h>
++#include <pulsecore/sink.h>
++
++pa_sink* pa_raop_sink_new(pa_module *m, pa_modargs *ma, const char *driver);
++
++void pa_raop_sink_free(pa_sink *s);
++
++#endif
+diff --git a/src/modules/raop/raop-util.c b/src/modules/raop/raop-util.c
+new file mode 100644
+index 0000000..0d4eea7
+--- /dev/null
++++ b/src/modules/raop/raop-util.c
+@@ -0,0 +1,209 @@
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2008 Colin Guthrie
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
++***/
++
++/***
++  The base64 implementation was originally inspired by a file developed
++  by Kungliga Tekniska Høgskolan.
++***/
++
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
++#include <stdlib.h>
++#include <string.h>
++
++#include <openssl/err.h>
++#include <openssl/md5.h>
++
++#include <pulse/xmalloc.h>
++
++#include <pulsecore/core-util.h>
++#include <pulsecore/macro.h>
++
++#include "raop-util.h"
++
++#ifndef MD5_DIGEST_LENGTH
++#define MD5_DIGEST_LENGTH 16
++#endif
++
++#define MD5_HASH_LENGTH (2*MD5_DIGEST_LENGTH)
++
++#define BASE64_DECODE_ERROR 0xffffffff
++
++static const char base64_chars[] =
++    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
++
++static int char_position(char c) {
++    if (c >= 'A' && c <= 'Z')
++        return c - 'A' + 0;
++    if (c >= 'a' && c <= 'z')
++        return c - 'a' + 26;
++    if (c >= '0' && c <= '9')
++        return c - '0' + 52;
++    if (c == '+')
++        return 62;
++    if (c == '/')
++        return 63;
++
++    return -1;
++}
++
++static unsigned int token_decode(const char *token) {
++    unsigned int val = 0;
++    int marker = 0;
++    int i;
++
++    if (strlen(token) < 4)
++        return BASE64_DECODE_ERROR;
++    for (i = 0; i < 4; i++) {
++        val *= 64;
++        if (token[i] == '=')
++            marker++;
++        else if (marker > 0)
++            return BASE64_DECODE_ERROR;
++        else {
++            int lpos = char_position(token[i]);
++            if (lpos < 0)
++                return BASE64_DECODE_ERROR;
++            val += lpos;
++        }
++    }
++
++    if (marker > 2)
++        return BASE64_DECODE_ERROR;
++
++    return (marker << 24) | val;
++}
++
++int pa_raop_base64_encode(const void *data, int len, char **str) {
++    const unsigned char *q;
++    char *p, *s = NULL;
++    int i, c;
++
++    pa_assert(data);
++    pa_assert(str);
++
++    p = s = pa_xnew(char, len * 4 / 3 + 4);
++    q = (const unsigned char *) data;
++    for (i = 0; i < len;) {
++        c = q[i++];
++        c *= 256;
++        if (i < len)
++            c += q[i];
++        i++;
++        c *= 256;
++        if (i < len)
++            c += q[i];
++        i++;
++        p[0] = base64_chars[(c & 0x00fc0000) >> 18];
++        p[1] = base64_chars[(c & 0x0003f000) >> 12];
++        p[2] = base64_chars[(c & 0x00000fc0) >> 6];
++        p[3] = base64_chars[(c & 0x0000003f) >> 0];
++        if (i > len)
++            p[3] = '=';
++        if (i > len + 1)
++            p[2] = '=';
++        p += 4;
++    }
++
++    *p = 0;
++    *str = s;
++    return strlen(s);
++}
++
++int pa_raop_base64_decode(const char *str, void *data) {
++    const char *p;
++    unsigned char *q;
++
++    pa_assert(str);
++    pa_assert(data);
++
++    q = data;
++    for (p = str; *p && (*p == '=' || strchr(base64_chars, *p)); p += 4) {
++        unsigned int val = token_decode(p);
++        unsigned int marker = (val >> 24) & 0xff;
++        if (val == BASE64_DECODE_ERROR)
++            return -1;
++        *q++ = (val >> 16) & 0xff;
++        if (marker < 2)
++            *q++ = (val >> 8) & 0xff;
++        if (marker < 1)
++            *q++ = val & 0xff;
++    }
++
++    return q - (unsigned char *) data;
++}
++
++int pa_raop_md5_hash(const char *data, int len, char **str) {
++    unsigned char d[MD5_DIGEST_LENGTH];
++    char *s = NULL;
++    int i;
++
++    pa_assert(data);
++    pa_assert(str);
++
++    MD5((unsigned char*) data, len, d);
++    s = pa_xnew(char, MD5_HASH_LENGTH);
++    for (i = 0; i < MD5_DIGEST_LENGTH; i++)
++        sprintf(&s[2*i], "%02x", (unsigned int) d[i]);
++
++    *str = s;
++    s[MD5_HASH_LENGTH] = 0;
++    return strlen(s);
++}
++
++int pa_raop_basic_response(const char *user, const char *pwd, char **str) {
++    char *tmp, *B = NULL;
++
++    pa_assert(str);
++
++    tmp = pa_sprintf_malloc("%s:%s", user, pwd);
++    pa_raop_base64_encode(tmp, strlen(tmp), &B);
++    pa_xfree(tmp);
++
++    *str = B;
++    return strlen(B);
++}
++
++int pa_raop_digest_response(const char *user, const char *realm, const char *password,
++                            const char *nonce, const char *uri, char **str) {
++    char *A1, *HA1, *A2, *HA2;
++    char *tmp, *KD = NULL;
++
++    pa_assert(str);
++
++    A1 = pa_sprintf_malloc("%s:%s:%s", user, realm, password);
++    pa_raop_md5_hash(A1, strlen(A1), &HA1);
++    pa_xfree(A1);
++
++    A2 = pa_sprintf_malloc("OPTIONS:%s", uri);
++    pa_raop_md5_hash(A2, strlen(A2), &HA2);
++    pa_xfree(A2);
++
++    tmp = pa_sprintf_malloc("%s:%s:%s", HA1, nonce, HA2);
++    pa_raop_md5_hash(tmp, strlen(tmp), &KD);
++    pa_xfree(tmp);
++
++    pa_xfree(HA1);
++    pa_xfree(HA2);
++
++    *str = KD;
++    return strlen(KD);
++}
+diff --git a/src/modules/raop/raop-util.h b/src/modules/raop/raop-util.h
+new file mode 100644
+index 0000000..a3f0dfa
+--- /dev/null
++++ b/src/modules/raop/raop-util.h
+@@ -0,0 +1,32 @@
++#ifndef fooraoputilfoo
++#define fooraoputilfoo
++
++/***
++  This file is part of PulseAudio.
++
++  Copyright 2013 Martin Blanchard
++
++  PulseAudio is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as published
++  by the Free Software Foundation; either version 2.1 of the License,
++  or (at your option) any later version.
++
++  PulseAudio is distributed in the hope that it will be useful, but
++  WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++  General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public License
++  along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
++***/
++
++int pa_raop_base64_encode(const void *data, int len, char **str);
++int pa_raop_base64_decode(const char *str, void *data);
++
++int pa_raop_md5_hash(const char *data, int len, char **str);
++
++int pa_raop_basic_response(const char *user, const char *pwd, char **str);
++int pa_raop_digest_response(const char *user, const char *realm, const char *password,
++                            const char *nonce, const char *uri, char **str);
++
++#endif
+diff --git a/src/modules/raop/raop_client.c b/src/modules/raop/raop_client.c
+deleted file mode 100644
+index 3b6c36e..0000000
+--- a/src/modules/raop/raop_client.c
++++ /dev/null
+@@ -1,563 +0,0 @@
+-/***
+-  This file is part of PulseAudio.
+-
+-  Copyright 2008 Colin Guthrie
+-
+-  PulseAudio is free software; you can redistribute it and/or modify
+-  it under the terms of the GNU Lesser General Public License as published
+-  by the Free Software Foundation; either version 2.1 of the License,
+-  or (at your option) any later version.
+-
+-  PulseAudio is distributed in the hope that it will be useful, but
+-  WITHOUT ANY WARRANTY; without even the implied warranty of
+-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+-  General Public License for more details.
+-
+-  You should have received a copy of the GNU Lesser General Public License
+-  along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+-***/
+-
+-#ifdef HAVE_CONFIG_H
+-#include <config.h>
+-#endif
+-
+-#include <stdlib.h>
+-#include <string.h>
+-#include <errno.h>
+-#include <unistd.h>
+-#include <sys/ioctl.h>
+-
+-#ifdef HAVE_SYS_FILIO_H
+-#include <sys/filio.h>
+-#endif
+-
+-/* TODO: Replace OpenSSL with NSS */
+-#include <openssl/err.h>
+-#include <openssl/rand.h>
+-#include <openssl/aes.h>
+-#include <openssl/rsa.h>
+-#include <openssl/engine.h>
+-
+-#include <pulse/xmalloc.h>
+-
+-#include <pulsecore/core-error.h>
+-#include <pulsecore/core-util.h>
+-#include <pulsecore/iochannel.h>
+-#include <pulsecore/socket-util.h>
+-#include <pulsecore/log.h>
+-#include <pulsecore/parseaddr.h>
+-#include <pulsecore/macro.h>
+-#include <pulsecore/memchunk.h>
+-#include <pulsecore/random.h>
+-
+-#include "raop_client.h"
+-#include "rtsp_client.h"
+-#include "base64.h"
+-
+-#define AES_CHUNKSIZE 16
+-
+-#define JACK_STATUS_DISCONNECTED 0
+-#define JACK_STATUS_CONNECTED 1
+-
+-#define JACK_TYPE_ANALOG 0
+-#define JACK_TYPE_DIGITAL 1
+-
+-#define VOLUME_DEF -30
+-#define VOLUME_MIN -144
+-#define VOLUME_MAX 0
+-
+-#define RAOP_PORT 5000
+-
+-struct pa_raop_client {
+-    pa_core *core;
+-    char *host;
+-    uint16_t port;
+-    char *sid;
+-    pa_rtsp_client *rtsp;
+-
+-    uint8_t jack_type;
+-    uint8_t jack_status;
+-
+-    /* Encryption Related bits */
+-    AES_KEY aes;
+-    uint8_t aes_iv[AES_CHUNKSIZE]; /* initialization vector for aes-cbc */
+-    uint8_t aes_nv[AES_CHUNKSIZE]; /* next vector for aes-cbc */
+-    uint8_t aes_key[AES_CHUNKSIZE]; /* key for aes-cbc */
+-
+-    pa_socket_client *sc;
+-    int fd;
+-
+-    uint16_t seq;
+-    uint32_t rtptime;
+-
+-    pa_raop_client_cb_t callback;
+-    void* userdata;
+-    pa_raop_client_closed_cb_t closed_callback;
+-    void* closed_userdata;
+-};
+-
+-/**
+- * Function to write bits into a buffer.
+- * @param buffer Handle to the buffer. It will be incremented if new data requires it.
+- * @param bit_pos A pointer to a position buffer to keep track the current write location (0 for MSB, 7 for LSB)
+- * @param size A pointer to the byte size currently written. This allows the calling function to do simple buffer overflow checks
+- * @param data The data to write
+- * @param data_bit_len The number of bits from data to write
+- */
+-static inline void bit_writer(uint8_t **buffer, uint8_t *bit_pos, int *size, uint8_t data, uint8_t data_bit_len) {
+-    int bits_left, bit_overflow;
+-    uint8_t bit_data;
+-
+-    if (!data_bit_len)
+-        return;
+-
+-    /* If bit pos is zero, we will definately use at least one bit from the current byte so size increments. */
+-    if (!*bit_pos)
+-        *size += 1;
+-
+-    /* Calc the number of bits left in the current byte of buffer */
+-    bits_left = 7 - *bit_pos  + 1;
+-    /* Calc the overflow of bits in relation to how much space we have left... */
+-    bit_overflow = bits_left - data_bit_len;
+-    if (bit_overflow >= 0) {
+-        /* We can fit the new data in our current byte */
+-        /* As we write from MSB->LSB we need to left shift by the overflow amount */
+-        bit_data = data << bit_overflow;
+-        if (*bit_pos)
+-            **buffer |= bit_data;
+-        else
+-            **buffer = bit_data;
+-        /* If our data fits exactly into the current byte, we need to increment our pointer */
+-        if (0 == bit_overflow) {
+-            /* Do not increment size as it will be incremented on next call as bit_pos is zero */
+-            *buffer += 1;
+-            *bit_pos = 0;
+-        } else {
+-            *bit_pos += data_bit_len;
+-        }
+-    } else {
+-        /* bit_overflow is negative, there for we will need a new byte from our buffer */
+-        /* Firstly fill up what's left in the current byte */
+-        bit_data = data >> -bit_overflow;
+-        **buffer |= bit_data;
+-        /* Increment our buffer pointer and size counter*/
+-        *buffer += 1;
+-        *size += 1;
+-        **buffer = data << (8 + bit_overflow);
+-        *bit_pos = -bit_overflow;
+-    }
+-}
+-
+-static int rsa_encrypt(uint8_t *text, int len, uint8_t *res) {
+-    const char n[] =
+-        "59dE8qLieItsH1WgjrcFRKj6eUWqi+bGLOX1HL3U3GhC/j0Qg90u3sG/1CUtwC"
+-        "5vOYvfDmFI6oSFXi5ELabWJmT2dKHzBJKa3k9ok+8t9ucRqMd6DZHJ2YCCLlDR"
+-        "KSKv6kDqnw4UwPdpOMXziC/AMj3Z/lUVX1G7WSHCAWKf1zNS1eLvqr+boEjXuB"
+-        "OitnZ/bDzPHrTOZz0Dew0uowxf/+sG+NCK3eQJVxqcaJ/vEHKIVd2M+5qL71yJ"
+-        "Q+87X6oV3eaYvt3zWZYD6z5vYTcrtij2VZ9Zmni/UAaHqn9JdsBWLUEpVviYnh"
+-        "imNVvYFZeCXg/IdTQ+x4IRdiXNv5hEew==";
+-    const char e[] = "AQAB";
+-    uint8_t modules[256];
+-    uint8_t exponent[8];
+-    int size;
+-    RSA *rsa;
+-
+-    rsa = RSA_new();
+-    size = pa_base64_decode(n, modules);
+-    rsa->n = BN_bin2bn(modules, size, NULL);
+-    size = pa_base64_decode(e, exponent);
+-    rsa->e = BN_bin2bn(exponent, size, NULL);
+-
+-    size = RSA_public_encrypt(len, text, res, rsa, RSA_PKCS1_OAEP_PADDING);
+-    RSA_free(rsa);
+-    return size;
+-}
+-
+-static int aes_encrypt(pa_raop_client* c, uint8_t *data, int size) {
+-    uint8_t *buf;
+-    int i=0, j;
+-
+-    pa_assert(c);
+-
+-    memcpy(c->aes_nv, c->aes_iv, AES_CHUNKSIZE);
+-    while (i+AES_CHUNKSIZE <= size) {
+-        buf = data + i;
+-        for (j=0; j<AES_CHUNKSIZE; ++j)
+-            buf[j] ^= c->aes_nv[j];
+-
+-        AES_encrypt(buf, buf, &c->aes);
+-        memcpy(c->aes_nv, buf, AES_CHUNKSIZE);
+-        i += AES_CHUNKSIZE;
+-    }
+-    return i;
+-}
+-
+-static inline void rtrimchar(char *str, char rc) {
+-    char *sp = str + strlen(str) - 1;
+-    while (sp >= str && *sp == rc) {
+-        *sp = '\0';
+-        sp -= 1;
+-    }
+-}
+-
+-static void on_connection(pa_socket_client *sc, pa_iochannel *io, void *userdata) {
+-    pa_raop_client *c = userdata;
+-
+-    pa_assert(sc);
+-    pa_assert(c);
+-    pa_assert(c->sc == sc);
+-    pa_assert(c->fd < 0);
+-    pa_assert(c->callback);
+-
+-    pa_socket_client_unref(c->sc);
+-    c->sc = NULL;
+-
+-    if (!io) {
+-        pa_log("Connection failed: %s", pa_cstrerror(errno));
+-        return;
+-    }
+-
+-    c->fd = pa_iochannel_get_send_fd(io);
+-
+-    pa_iochannel_set_noclose(io, true);
+-    pa_iochannel_free(io);
+-
+-    pa_make_tcp_socket_low_delay(c->fd);
+-
+-    pa_log_debug("Connection established");
+-    c->callback(c->fd, c->userdata);
+-}
+-
+-static void rtsp_cb(pa_rtsp_client *rtsp, pa_rtsp_state state, pa_headerlist* headers, void *userdata) {
+-    pa_raop_client* c = userdata;
+-    pa_assert(c);
+-    pa_assert(rtsp);
+-    pa_assert(rtsp == c->rtsp);
+-
+-    switch (state) {
+-        case STATE_CONNECT: {
+-            int i;
+-            uint8_t rsakey[512];
+-            char *key, *iv, *sac, *sdp;
+-            uint16_t rand_data;
+-            const char *ip;
+-            char *url;
+-
+-            pa_log_debug("RAOP: CONNECTED");
+-            ip = pa_rtsp_localip(c->rtsp);
+-            /* First of all set the url properly */
+-            url = pa_sprintf_malloc("rtsp://%s/%s", ip, c->sid);
+-            pa_rtsp_set_url(c->rtsp, url);
+-            pa_xfree(url);
+-
+-            /* Now encrypt our aes_public key to send to the device */
+-            i = rsa_encrypt(c->aes_key, AES_CHUNKSIZE, rsakey);
+-            pa_base64_encode(rsakey, i, &key);
+-            rtrimchar(key, '=');
+-            pa_base64_encode(c->aes_iv, AES_CHUNKSIZE, &iv);
+-            rtrimchar(iv, '=');
+-
+-            pa_random(&rand_data, sizeof(rand_data));
+-            pa_base64_encode(&rand_data, AES_CHUNKSIZE, &sac);
+-            rtrimchar(sac, '=');
+-            pa_rtsp_add_header(c->rtsp, "Apple-Challenge", sac);
+-            sdp = pa_sprintf_malloc(
+-                "v=0\r\n"
+-                "o=iTunes %s 0 IN IP4 %s\r\n"
+-                "s=iTunes\r\n"
+-                "c=IN IP4 %s\r\n"
+-                "t=0 0\r\n"
+-                "m=audio 0 RTP/AVP 96\r\n"
+-                "a=rtpmap:96 AppleLossless\r\n"
+-                "a=fmtp:96 4096 0 16 40 10 14 2 255 0 0 44100\r\n"
+-                "a=rsaaeskey:%s\r\n"
+-                "a=aesiv:%s\r\n",
+-                c->sid, ip, c->host, key, iv);
+-            pa_rtsp_announce(c->rtsp, sdp);
+-            pa_xfree(key);
+-            pa_xfree(iv);
+-            pa_xfree(sac);
+-            pa_xfree(sdp);
+-            break;
+-        }
+-
+-        case STATE_ANNOUNCE:
+-            pa_log_debug("RAOP: ANNOUNCED");
+-            pa_rtsp_remove_header(c->rtsp, "Apple-Challenge");
+-            pa_rtsp_setup(c->rtsp);
+-            break;
+-
+-        case STATE_SETUP: {
+-            char *aj = pa_xstrdup(pa_headerlist_gets(headers, "Audio-Jack-Status"));
+-            pa_log_debug("RAOP: SETUP");
+-            if (aj) {
+-                char *token, *pc;
+-                char delimiters[] = ";";
+-                const char* token_state = NULL;
+-                c->jack_type = JACK_TYPE_ANALOG;
+-                c->jack_status = JACK_STATUS_DISCONNECTED;
+-
+-                while ((token = pa_split(aj, delimiters, &token_state))) {
+-                    if ((pc = strstr(token, "="))) {
+-                      *pc = 0;
+-                      if (pa_streq(token, "type") && pa_streq(pc+1, "digital")) {
+-                          c->jack_type = JACK_TYPE_DIGITAL;
+-                      }
+-                    } else {
+-                        if (pa_streq(token, "connected"))
+-                            c->jack_status = JACK_STATUS_CONNECTED;
+-                    }
+-                    pa_xfree(token);
+-                }
+-                pa_xfree(aj);
+-            } else {
+-                pa_log_warn("Audio Jack Status missing");
+-            }
+-            pa_rtsp_record(c->rtsp, &c->seq, &c->rtptime);
+-            break;
+-        }
+-
+-        case STATE_RECORD: {
+-            uint32_t port = pa_rtsp_serverport(c->rtsp);
+-            pa_log_debug("RAOP: RECORDED");
+-
+-            if (!(c->sc = pa_socket_client_new_string(c->core->mainloop, true, c->host, port))) {
+-                pa_log("failed to connect to server '%s:%d'", c->host, port);
+-                return;
+-            }
+-            pa_socket_client_set_callback(c->sc, on_connection, c);
+-            break;
+-        }
+-
+-        case STATE_FLUSH:
+-            pa_log_debug("RAOP: FLUSHED");
+-            break;
+-
+-        case STATE_TEARDOWN:
+-            pa_log_debug("RAOP: TEARDOWN");
+-            break;
+-
+-        case STATE_SET_PARAMETER:
+-            pa_log_debug("RAOP: SET_PARAMETER");
+-            break;
+-
+-        case STATE_DISCONNECTED:
+-            pa_assert(c->closed_callback);
+-            pa_assert(c->rtsp);
+-
+-            pa_log_debug("RTSP control channel closed");
+-            pa_rtsp_client_free(c->rtsp);
+-            c->rtsp = NULL;
+-            if (c->fd > 0) {
+-                /* We do not close the fd, we leave it to the closed callback to do that */
+-                c->fd = -1;
+-            }
+-            if (c->sc) {
+-                pa_socket_client_unref(c->sc);
+-                c->sc = NULL;
+-            }
+-            pa_xfree(c->sid);
+-            c->sid = NULL;
+-            c->closed_callback(c->closed_userdata);
+-            break;
+-    }
+-}
+-
+-pa_raop_client* pa_raop_client_new(pa_core *core, const char* host) {
+-    pa_parsed_address a;
+-    pa_raop_client* c;
+-
+-    pa_assert(core);
+-    pa_assert(host);
+-
+-    if (pa_parse_address(host, &a) < 0)
+-        return NULL;
+-
+-    if (a.type == PA_PARSED_ADDRESS_UNIX) {
+-        pa_xfree(a.path_or_host);
+-        return NULL;
+-    }
+-
+-    c = pa_xnew0(pa_raop_client, 1);
+-    c->core = core;
+-    c->fd = -1;
+-
+-    c->host = a.path_or_host;
+-    if (a.port)
+-        c->port = a.port;
+-    else
+-        c->port = RAOP_PORT;
+-
+-    if (pa_raop_connect(c)) {
+-        pa_raop_client_free(c);
+-        return NULL;
+-    }
+-    return c;
+-}
+-
+-void pa_raop_client_free(pa_raop_client* c) {
+-    pa_assert(c);
+-
+-    if (c->rtsp)
+-        pa_rtsp_client_free(c->rtsp);
+-    if (c->sid)
+-        pa_xfree(c->sid);
+-    pa_xfree(c->host);
+-    pa_xfree(c);
+-}
+-
+-int pa_raop_connect(pa_raop_client* c) {
+-    char *sci;
+-    struct {
+-        uint32_t a;
+-        uint32_t b;
+-        uint32_t c;
+-    } rand_data;
+-
+-    pa_assert(c);
+-
+-    if (c->rtsp) {
+-        pa_log_debug("Connection already in progress");
+-        return 0;
+-    }
+-
+-    c->rtsp = pa_rtsp_client_new(c->core->mainloop, c->host, c->port, "iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)");
+-
+-    /* Initialise the AES encryption system */
+-    pa_random(c->aes_iv, sizeof(c->aes_iv));
+-    pa_random(c->aes_key, sizeof(c->aes_key));
+-    memcpy(c->aes_nv, c->aes_iv, sizeof(c->aes_nv));
+-    AES_set_encrypt_key(c->aes_key, 128, &c->aes);
+-
+-    /* Generate random instance id */
+-    pa_random(&rand_data, sizeof(rand_data));
+-    c->sid = pa_sprintf_malloc("%u", rand_data.a);
+-    sci = pa_sprintf_malloc("%08x%08x",rand_data.b, rand_data.c);
+-    pa_rtsp_add_header(c->rtsp, "Client-Instance", sci);
+-    pa_xfree(sci);
+-    pa_rtsp_set_callback(c->rtsp, rtsp_cb, c);
+-    return pa_rtsp_connect(c->rtsp);
+-}
+-
+-int pa_raop_flush(pa_raop_client* c) {
+-    pa_assert(c);
+-
+-    pa_rtsp_flush(c->rtsp, c->seq, c->rtptime);
+-    return 0;
+-}
+-
+-int pa_raop_client_set_volume(pa_raop_client* c, pa_volume_t volume) {
+-    int rv;
+-    double db;
+-    char *param;
+-
+-    pa_assert(c);
+-
+-    db = pa_sw_volume_to_dB(volume);
+-    if (db < VOLUME_MIN)
+-        db = VOLUME_MIN;
+-    else if (db > VOLUME_MAX)
+-        db = VOLUME_MAX;
+-
+-    param = pa_sprintf_malloc("volume: %0.6f\r\n",  db);
+-
+-    /* We just hit and hope, cannot wait for the callback */
+-    rv = pa_rtsp_setparameter(c->rtsp, param);
+-    pa_xfree(param);
+-    return rv;
+-}
+-
+-int pa_raop_client_encode_sample(pa_raop_client* c, pa_memchunk* raw, pa_memchunk* encoded) {
+-    uint16_t len;
+-    size_t bufmax;
+-    uint8_t *bp, bpos;
+-    uint8_t *ibp, *maxibp;
+-    int size;
+-    uint8_t *b, *p;
+-    uint32_t bsize;
+-    size_t length;
+-    static uint8_t header[] = {
+-        0x24, 0x00, 0x00, 0x00,
+-        0xF0, 0xFF, 0x00, 0x00,
+-        0x00, 0x00, 0x00, 0x00,
+-        0x00, 0x00, 0x00, 0x00,
+-    };
+-    int header_size = sizeof(header);
+-
+-    pa_assert(c);
+-    pa_assert(c->fd > 0);
+-    pa_assert(raw);
+-    pa_assert(raw->memblock);
+-    pa_assert(raw->length > 0);
+-    pa_assert(encoded);
+-
+-    /* We have to send 4 byte chunks */
+-    bsize = (int)(raw->length / 4);
+-    length = bsize * 4;
+-
+-    /* Leave 16 bytes extra to allow for the ALAC header which is about 55 bits */
+-    bufmax = length + header_size + 16;
+-    pa_memchunk_reset(encoded);
+-    encoded->memblock = pa_memblock_new(c->core->mempool, bufmax);
+-    b = pa_memblock_acquire(encoded->memblock);
+-    memcpy(b, header, header_size);
+-
+-    /* Now write the actual samples */
+-    bp = b + header_size;
+-    size = bpos = 0;
+-    bit_writer(&bp,&bpos,&size,1,3); /* channel=1, stereo */
+-    bit_writer(&bp,&bpos,&size,0,4); /* unknown */
+-    bit_writer(&bp,&bpos,&size,0,8); /* unknown */
+-    bit_writer(&bp,&bpos,&size,0,4); /* unknown */
+-    bit_writer(&bp,&bpos,&size,1,1); /* hassize */
+-    bit_writer(&bp,&bpos,&size,0,2); /* unused */
+-    bit_writer(&bp,&bpos,&size,1,1); /* is-not-compressed */
+-
+-    /* size of data, integer, big endian */
+-    bit_writer(&bp,&bpos,&size,(bsize>>24)&0xff,8);
+-    bit_writer(&bp,&bpos,&size,(bsize>>16)&0xff,8);
+-    bit_writer(&bp,&bpos,&size,(bsize>>8)&0xff,8);
+-    bit_writer(&bp,&bpos,&size,(bsize)&0xff,8);
+-
+-    ibp = p = pa_memblock_acquire(raw->memblock);
+-    maxibp = p + raw->length - 4;
+-    while (ibp <= maxibp) {
+-        /* Byte swap stereo data */
+-        bit_writer(&bp,&bpos,&size,*(ibp+1),8);
+-        bit_writer(&bp,&bpos,&size,*(ibp+0),8);
+-        bit_writer(&bp,&bpos,&size,*(ibp+3),8);
+-        bit_writer(&bp,&bpos,&size,*(ibp+2),8);
+-        ibp += 4;
+-        raw->index += 4;
+-        raw->length -= 4;
+-    }
+-    pa_memblock_release(raw->memblock);
+-    encoded->length = header_size + size;
+-
+-    /* store the length (endian swapped: make this better) */
+-    len = size + header_size - 4;
+-    *(b + 2) = len >> 8;
+-    *(b + 3) = len & 0xff;
+-
+-    /* encrypt our data */
+-    aes_encrypt(c, (b + header_size), size);
+-
+-    /* We're done with the chunk */
+-    pa_memblock_release(encoded->memblock);
+-
+-    return 0;
+-}
+-
+-void pa_raop_client_set_callback(pa_raop_client* c, pa_raop_client_cb_t callback, void *userdata) {
+-    pa_assert(c);
+-
+-    c->callback = callback;
+-    c->userdata = userdata;
+-}
+-
+-void pa_raop_client_set_closed_callback(pa_raop_client* c, pa_raop_client_closed_cb_t callback, void *userdata) {
+-    pa_assert(c);
+-
+-    c->closed_callback = callback;
+-    c->closed_userdata = userdata;
+-}
+diff --git a/src/modules/raop/raop_client.h b/src/modules/raop/raop_client.h
+deleted file mode 100644
+index b349a54..0000000
+--- a/src/modules/raop/raop_client.h
++++ /dev/null
+@@ -1,42 +0,0 @@
+-#ifndef fooraopclientfoo
+-#define fooraopclientfoo
+-
+-/***
+-  This file is part of PulseAudio.
+-
+-  Copyright 2008 Colin Guthrie
+-
+-  PulseAudio is free software; you can redistribute it and/or modify
+-  it under the terms of the GNU Lesser General Public License as published
+-  by the Free Software Foundation; either version 2.1 of the License,
+-  or (at your option) any later version.
+-
+-  PulseAudio is distributed in the hope that it will be useful, but
+-  WITHOUT ANY WARRANTY; without even the implied warranty of
+-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+-  General Public License for more details.
+-
+-  You should have received a copy of the GNU Lesser General Public License
+-  along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+-***/
+-
+-#include <pulsecore/core.h>
+-
+-typedef struct pa_raop_client pa_raop_client;
+-
+-pa_raop_client* pa_raop_client_new(pa_core *core, const char* host);
+-void pa_raop_client_free(pa_raop_client* c);
+-
+-int pa_raop_connect(pa_raop_client* c);
+-int pa_raop_flush(pa_raop_client* c);
+-
+-int pa_raop_client_set_volume(pa_raop_client* c, pa_volume_t volume);
+-int pa_raop_client_encode_sample(pa_raop_client* c, pa_memchunk* raw, pa_memchunk* encoded);
+-
+-typedef void (*pa_raop_client_cb_t)(int fd, void *userdata);
+-void pa_raop_client_set_callback(pa_raop_client* c, pa_raop_client_cb_t callback, void *userdata);
+-
+-typedef void (*pa_raop_client_closed_cb_t)(void *userdata);
+-void pa_raop_client_set_closed_callback(pa_raop_client* c, pa_raop_client_closed_cb_t callback, void *userdata);
+-
+-#endif
+diff --git a/src/modules/rtp/rtsp_client.c b/src/modules/rtp/rtsp_client.c
+index a279aee..8c72a77 100644
+--- a/src/modules/rtp/rtsp_client.c
++++ b/src/modules/rtp/rtsp_client.c
+@@ -41,6 +41,7 @@
+ #include <pulsecore/strbuf.h>
+ #include <pulsecore/ioline.h>
+ #include <pulsecore/arpa-inet.h>
++#include <pulsecore/random.h>
+ 
+ #include "rtsp_client.h"
+ 
+@@ -57,7 +58,8 @@ struct pa_rtsp_client {
+     void *userdata;
+     const char *useragent;
+ 
+-    pa_rtsp_state state;
++    pa_rtsp_state_t state;
++    pa_rtsp_status_t status;
+     uint8_t waiting;
+ 
+     pa_headerlist* headers;
+@@ -73,7 +75,7 @@ struct pa_rtsp_client {
+     char *transport;
+ };
+ 
+-pa_rtsp_client* pa_rtsp_client_new(pa_mainloop_api *mainloop, const char* hostname, uint16_t port, const char* useragent) {
++pa_rtsp_client* pa_rtsp_client_new(pa_mainloop_api *mainloop, const char *hostname, uint16_t port, const char *useragent) {
+     pa_rtsp_client *c;
+ 
+     pa_assert(mainloop);
+@@ -94,7 +96,7 @@ pa_rtsp_client* pa_rtsp_client_new(pa_mainloop_api *mainloop, const char* hostna
+     return c;
+ }
+ 
+-void pa_rtsp_client_free(pa_rtsp_client* c) {
++void pa_rtsp_client_free(pa_rtsp_client *c) {
+     pa_assert(c);
+ 
+     if (c->sc)
+@@ -118,8 +120,8 @@ void pa_rtsp_client_free(pa_rtsp_client* c) {
+ }
+ 
+ static void headers_read(pa_rtsp_client *c) {
+-    char* token;
+     char delimiters[] = ";";
++    char* token;
+ 
+     pa_assert(c);
+     pa_assert(c->response_headers);
+@@ -164,14 +166,14 @@ static void headers_read(pa_rtsp_client *c) {
+     }
+ 
+     /* Call our callback */
+-    c->callback(c, c->state, c->response_headers, c->userdata);
++    c->callback(c, c->state, c->status, c->response_headers, c->userdata);
+ }
+ 
+ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
++    pa_rtsp_client *c = userdata;
+     char *delimpos;
+     char *s2, *s2p;
+ 
+-    pa_rtsp_client *c = userdata;
+     pa_assert(line);
+     pa_assert(c);
+     pa_assert(c->callback);
+@@ -179,7 +181,7 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+     if (!s) {
+         /* Keep the ioline/iochannel open as they will be freed automatically */
+         c->ioline = NULL;
+-        c->callback(c, STATE_DISCONNECTED, NULL, c->userdata);
++        c->callback(c, STATE_DISCONNECTED, STATUS_NO_RESPONSE, NULL, c->userdata);
+         return;
+     }
+ 
+@@ -190,17 +192,35 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+         *s2p = '\0';
+         s2p -= 1;
+     }
++
+     if (c->waiting && pa_streq(s2, "RTSP/1.0 200 OK")) {
++        if (c->response_headers)
++            pa_headerlist_free(c->response_headers);
++        c->response_headers = pa_headerlist_new();
++
++        c->status = STATUS_OK;
+         c->waiting = 0;
++        goto exit;
++    } else if (c->waiting && pa_streq(s2, "RTSP/1.0 401 Unauthorized")) {
+         if (c->response_headers)
+             pa_headerlist_free(c->response_headers);
+         c->response_headers = pa_headerlist_new();
++
++        c->status = STATUS_UNAUTHORIZED;
++        c->waiting = 0;
++        goto exit;
++    } else if (c->waiting) {
++        pa_log_warn("Unexpected/Unhandled response: %s", s2);
++
++        if (pa_streq(s2, "RTSP/1.0 400 Bad Request"))
++            c->status = STATUS_BAD_REQUEST;
++        else if (pa_streq(s2, "RTSP/1.0 500 Internal Server Error"))
++            c->status = STATUS_INTERNAL_ERROR;
++        else
++            c->status = STATUS_NO_RESPONSE;
+         goto exit;
+     }
+-    if (c->waiting) {
+-        pa_log_warn("Unexpected response: %s", s2);
+-        goto exit;;
+-    }
++
+     if (!strlen(s2)) {
+         /* End of headers */
+         /* We will have a header left from our looping iteration, so add it in :) */
+@@ -227,7 +247,7 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+     if (c->last_header && ' ' == s2[0]) {
+         pa_assert(c->header_buffer);
+ 
+-        /* Add this line to the buffer (sans the space. */
++        /* Add this line to the buffer (sans the space) */
+         pa_strbuf_puts(c->header_buffer, &(s2[1]));
+         goto exit;
+     }
+@@ -269,6 +289,7 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+ 
+     /* Save the header name */
+     c->last_header = pa_xstrdup(s2);
++
+   exit:
+     pa_xfree(s2);
+ }
+@@ -309,14 +330,14 @@ static void on_connection(pa_socket_client *sc, pa_iochannel *io, void *userdata
+             }
+         } else if (AF_INET6 == sa.sa.sa_family) {
+             if ((res = inet_ntop(AF_INET6, &sa.in6.sin6_addr, buf, sizeof(buf)))) {
+-                c->localip = pa_sprintf_malloc("[%s]", res);
++                c->localip = pa_xstrdup(res);
+             }
+         }
+     }
+     pa_log_debug("Established RTSP connection from local ip %s", c->localip);
+ 
+     if (c->callback)
+-        c->callback(c, c->state, NULL, c->userdata);
++        c->callback(c, c->state, STATUS_OK, NULL, c->userdata);
+ }
+ 
+ int pa_rtsp_connect(pa_rtsp_client *c) {
+@@ -335,6 +356,7 @@ int pa_rtsp_connect(pa_rtsp_client *c) {
+     pa_socket_client_set_callback(c->sc, on_connection, c);
+     c->waiting = 1;
+     c->state = STATE_CONNECT;
++    c->status = STATUS_NO_RESPONSE;
+     return 0;
+ }
+ 
+@@ -348,30 +370,45 @@ void pa_rtsp_set_callback(pa_rtsp_client *c, pa_rtsp_cb_t callback, void *userda
+ void pa_rtsp_disconnect(pa_rtsp_client *c) {
+     pa_assert(c);
+ 
+-    if (c->ioline)
++    if (c->ioline) {
+         pa_ioline_close(c->ioline);
++        pa_ioline_unref(c->ioline);
++    }
+     c->ioline = NULL;
+ }
+ 
+-const char* pa_rtsp_localip(pa_rtsp_client* c) {
++const char* pa_rtsp_localip(pa_rtsp_client *c) {
+     pa_assert(c);
+ 
+     return c->localip;
+ }
+ 
+-uint32_t pa_rtsp_serverport(pa_rtsp_client* c) {
++uint32_t pa_rtsp_serverport(pa_rtsp_client *c) {
+     pa_assert(c);
+ 
+     return c->rtp_port;
+ }
+ 
+-void pa_rtsp_set_url(pa_rtsp_client* c, const char* url) {
++bool pa_rtsp_exec_ready(const pa_rtsp_client *c) {
++    pa_assert(c);
++
++    return c->url != NULL && c->ioline != NULL;
++}
++
++void pa_rtsp_set_url(pa_rtsp_client *c, const char *url) {
+     pa_assert(c);
+ 
+     c->url = pa_xstrdup(url);
+ }
+ 
+-void pa_rtsp_add_header(pa_rtsp_client *c, const char* key, const char* value) {
++bool pa_rtsp_has_header(pa_rtsp_client *c, const char *key) {
++    pa_assert(c);
++    pa_assert(key);
++
++    return pa_headerlist_contains(c->headers, key);
++}
++
++void pa_rtsp_add_header(pa_rtsp_client *c, const char *key, const char *value) {
+     pa_assert(c);
+     pa_assert(key);
+     pa_assert(value);
+@@ -379,19 +416,26 @@ void pa_rtsp_add_header(pa_rtsp_client *c, const char* key, const char* value) {
+     pa_headerlist_puts(c->headers, key, value);
+ }
+ 
+-void pa_rtsp_remove_header(pa_rtsp_client *c, const char* key) {
++const char* pa_rtsp_get_header(pa_rtsp_client *c, const char *key) {
++    pa_assert(c);
++    pa_assert(key);
++
++    return pa_headerlist_gets(c->headers, key);
++}
++
++void pa_rtsp_remove_header(pa_rtsp_client *c, const char *key) {
+     pa_assert(c);
+     pa_assert(key);
+ 
+     pa_headerlist_remove(c->headers, key);
+ }
+ 
+-static int rtsp_exec(pa_rtsp_client* c, const char* cmd,
+-                        const char* content_type, const char* content,
++static int rtsp_exec(pa_rtsp_client *c, const char *cmd,
++                        const char *content_type, const char *content,
+                         int expect_response,
+-                        pa_headerlist* headers) {
+-    pa_strbuf* buf;
+-    char* hdrs;
++                        pa_headerlist *headers) {
++    pa_strbuf *buf;
++    char *hdrs;
+ 
+     pa_assert(c);
+     pa_assert(c->url);
+@@ -441,43 +485,69 @@ static int rtsp_exec(pa_rtsp_client* c, const char* cmd,
+     return 0;
+ }
+ 
+-int pa_rtsp_announce(pa_rtsp_client *c, const char* sdp) {
++int pa_rtsp_options(pa_rtsp_client *c) {
++    char *url;
++    int rv;
++
+     pa_assert(c);
++
++    url = c->url;
++    c->state = STATE_OPTIONS;
++
++    c->url = (char *)"*";
++    rv = rtsp_exec(c, "OPTIONS", NULL, NULL, 0, NULL);
++
++    c->url = url;
++    return rv;
++}
++
++int pa_rtsp_announce(pa_rtsp_client *c, const char *sdp) {
++    int rv;
++
++    pa_assert(c);
++
+     if (!sdp)
+         return -1;
+ 
+     c->state = STATE_ANNOUNCE;
+-    return rtsp_exec(c, "ANNOUNCE", "application/sdp", sdp, 1, NULL);
++    rv = rtsp_exec(c, "ANNOUNCE", "application/sdp", sdp, 1, NULL);
++
++    return rv;
+ }
+ 
+-int pa_rtsp_setup(pa_rtsp_client* c) {
+-    pa_headerlist* headers;
++int pa_rtsp_setup(pa_rtsp_client *c, const char *transport) {
++    pa_headerlist *headers;
+     int rv;
+ 
+     pa_assert(c);
+ 
+     headers = pa_headerlist_new();
+-    pa_headerlist_puts(headers, "Transport", "RTP/AVP/TCP;unicast;interleaved=0-1;mode=record");
++    if (!transport)
++        pa_headerlist_puts(headers, "Transport", "RTP/AVP/TCP;unicast;interleaved=0-1;mode=record");
++    else
++        pa_headerlist_puts(headers, "Transport", transport);
+ 
+     c->state = STATE_SETUP;
+     rv = rtsp_exec(c, "SETUP", NULL, NULL, 1, headers);
++
+     pa_headerlist_free(headers);
+     return rv;
+ }
+ 
+-int pa_rtsp_record(pa_rtsp_client* c, uint16_t* seq, uint32_t* rtptime) {
+-    pa_headerlist* headers;
+-    int rv;
++int pa_rtsp_record(pa_rtsp_client *c, uint16_t *seq, uint32_t *rtptime) {
++    pa_headerlist *headers;
+     char *info;
++    int rv;
+ 
+     pa_assert(c);
++
+     if (!c->session) {
+         /* No session in progress */
+         return -1;
+     }
+ 
+-    /* Todo: Generate these values randomly as per spec */
+-    *seq = *rtptime = 0;
++    pa_random(seq, sizeof(*seq));
++    pa_random(rtptime, sizeof(*rtptime));
+ 
+     headers = pa_headerlist_new();
+     pa_headerlist_puts(headers, "Range", "npt=0-");
+@@ -487,30 +557,29 @@ int pa_rtsp_record(pa_rtsp_client* c, uint16_t* seq, uint32_t* rtptime) {
+ 
+     c->state = STATE_RECORD;
+     rv = rtsp_exec(c, "RECORD", NULL, NULL, 1, headers);
++
+     pa_headerlist_free(headers);
+     return rv;
+ }
+ 
+-int pa_rtsp_teardown(pa_rtsp_client *c) {
+-    pa_assert(c);
+-
+-    c->state = STATE_TEARDOWN;
+-    return rtsp_exec(c, "TEARDOWN", NULL, NULL, 0, NULL);
+-}
++int pa_rtsp_setparameter(pa_rtsp_client *c, const char *param) {
++    int rv;
+ 
+-int pa_rtsp_setparameter(pa_rtsp_client *c, const char* param) {
+     pa_assert(c);
++
+     if (!param)
+         return -1;
+ 
+     c->state = STATE_SET_PARAMETER;
+-    return rtsp_exec(c, "SET_PARAMETER", "text/parameters", param, 1, NULL);
++    rv = rtsp_exec(c, "SET_PARAMETER", "text/parameters", param, 1, NULL);
++
++    return rv;
+ }
+ 
+ int pa_rtsp_flush(pa_rtsp_client *c, uint16_t seq, uint32_t rtptime) {
+     pa_headerlist* headers;
+-    int rv;
+     char *info;
++    int rv;
+ 
+     pa_assert(c);
+ 
+@@ -521,6 +590,18 @@ int pa_rtsp_flush(pa_rtsp_client *c, uint16_t seq, uint32_t rtptime) {
+ 
+     c->state = STATE_FLUSH;
+     rv = rtsp_exec(c, "FLUSH", NULL, NULL, 1, headers);
++
+     pa_headerlist_free(headers);
+     return rv;
+ }
++
++int pa_rtsp_teardown(pa_rtsp_client *c) {
++    int rv;
++
++    pa_assert(c);
++
++    c->state = STATE_TEARDOWN;
++    rv = rtsp_exec(c, "TEARDOWN", NULL, NULL, 0, NULL);
++
++    return rv;
++}
+diff --git a/src/modules/rtp/rtsp_client.h b/src/modules/rtp/rtsp_client.h
+index f0ff95a..4e031d8 100644
+--- a/src/modules/rtp/rtsp_client.h
++++ b/src/modules/rtp/rtsp_client.h
+@@ -31,39 +31,53 @@
+ #include "headerlist.h"
+ 
+ typedef struct pa_rtsp_client pa_rtsp_client;
+-typedef enum {
++
++typedef enum pa_rtsp_state {
+   STATE_CONNECT,
++  STATE_OPTIONS,
+   STATE_ANNOUNCE,
+   STATE_SETUP,
+   STATE_RECORD,
++  STATE_SET_PARAMETER,
+   STATE_FLUSH,
+   STATE_TEARDOWN,
+-  STATE_SET_PARAMETER,
+   STATE_DISCONNECTED
+-} pa_rtsp_state;
+-typedef void (*pa_rtsp_cb_t)(pa_rtsp_client *c, pa_rtsp_state state, pa_headerlist* hl, void *userdata);
+-
+-pa_rtsp_client* pa_rtsp_client_new(pa_mainloop_api *mainloop, const char* hostname, uint16_t port, const char* useragent);
+-void pa_rtsp_client_free(pa_rtsp_client* c);
++} pa_rtsp_state_t;
+ 
+-int pa_rtsp_connect(pa_rtsp_client* c);
+-void pa_rtsp_set_callback(pa_rtsp_client *c, pa_rtsp_cb_t callback, void *userdata);
+-
+-void pa_rtsp_disconnect(pa_rtsp_client* c);
++typedef enum pa_rtsp_status {
++  STATUS_OK             = 200,
++  STATUS_BAD_REQUEST    = 400,
++  STATUS_UNAUTHORIZED   = 401,
++  STATUS_NO_RESPONSE    = 444,
++  STATUS_INTERNAL_ERROR = 500
++} pa_rtsp_status_t;
+ 
+-const char* pa_rtsp_localip(pa_rtsp_client* c);
+-uint32_t pa_rtsp_serverport(pa_rtsp_client* c);
+-void pa_rtsp_set_url(pa_rtsp_client* c, const char* url);
+-void pa_rtsp_add_header(pa_rtsp_client *c, const char* key, const char* value);
+-void pa_rtsp_remove_header(pa_rtsp_client *c, const char* key);
++typedef void (*pa_rtsp_cb_t)(pa_rtsp_client *c, pa_rtsp_state_t state, pa_rtsp_status_t code, pa_headerlist *headers, void *userdata);
+ 
+-int pa_rtsp_announce(pa_rtsp_client* c, const char* sdp);
++pa_rtsp_client* pa_rtsp_client_new(pa_mainloop_api *mainloop, const char *hostname, uint16_t port, const char *useragent);
++void pa_rtsp_client_free(pa_rtsp_client *c);
+ 
+-int pa_rtsp_setup(pa_rtsp_client* c);
+-int pa_rtsp_record(pa_rtsp_client* c, uint16_t* seq, uint32_t* rtptime);
+-int pa_rtsp_teardown(pa_rtsp_client* c);
+-
+-int pa_rtsp_setparameter(pa_rtsp_client* c, const char* param);
+-int pa_rtsp_flush(pa_rtsp_client* c, uint16_t seq, uint32_t rtptime);
++int pa_rtsp_connect(pa_rtsp_client *c);
++void pa_rtsp_set_callback(pa_rtsp_client *c, pa_rtsp_cb_t callback, void *userdata);
++void pa_rtsp_disconnect(pa_rtsp_client *c);
++
++const char* pa_rtsp_localip(pa_rtsp_client *c);
++uint32_t pa_rtsp_serverport(pa_rtsp_client *c);
++bool pa_rtsp_exec_ready(const pa_rtsp_client *c);
++
++void pa_rtsp_set_url(pa_rtsp_client *c, const char *url);
++
++bool pa_rtsp_has_header(pa_rtsp_client *c, const char *key);
++void pa_rtsp_add_header(pa_rtsp_client *c, const char *key, const char *value);
++const char* pa_rtsp_get_header(pa_rtsp_client *c, const char *key);
++void pa_rtsp_remove_header(pa_rtsp_client *c, const char *key);
++
++int pa_rtsp_options(pa_rtsp_client *c);
++int pa_rtsp_announce(pa_rtsp_client *c, const char *sdp);
++int pa_rtsp_setup(pa_rtsp_client *c, const char *transport);
++int pa_rtsp_record(pa_rtsp_client *c, uint16_t *seq, uint32_t *rtptime);
++int pa_rtsp_setparameter(pa_rtsp_client *c, const char *param);
++int pa_rtsp_flush(pa_rtsp_client *c, uint16_t seq, uint32_t rtptime);
++int pa_rtsp_teardown(pa_rtsp_client *c);
+ 
+ #endif
+diff --git a/src/pulsecore/core-util.c b/src/pulsecore/core-util.c
+index 9b16936..957e3e3 100644
+--- a/src/pulsecore/core-util.c
++++ b/src/pulsecore/core-util.c
+@@ -2907,6 +2907,26 @@ bool pa_in_system_mode(void) {
+     return !!atoi(e);
+ }
+ 
++/* Checks a delimiters-separated list of words in haystack for needle */
++bool pa_str_in_list(const char *haystack, const char *delimiters, const char *needle) {
++    char *s;
++    const char *state = NULL;
++
++    if (!haystack || !needle)
++        return false;
++
++    while ((s = pa_split(haystack, delimiters, &state))) {
++        if (pa_streq(needle, s)) {
++            pa_xfree(s);
++            return true;
++        }
++
++        pa_xfree(s);
++    }
++
++    return false;
++}
++
+ /* Checks a whitespace-separated list of words in haystack for needle */
+ bool pa_str_in_list_spaces(const char *haystack, const char *needle) {
+     char *s;
+diff --git a/src/pulsecore/core-util.h b/src/pulsecore/core-util.h
+index dcdc40e..516cd98 100644
+--- a/src/pulsecore/core-util.h
++++ b/src/pulsecore/core-util.h
+@@ -105,8 +105,8 @@ static inline const char *pa_strna(const char *x) {
+     return x ? x : "n/a";
+ }
+ 
+-char *pa_split(const char *c, const char*delimiters, const char **state);
+-const char *pa_split_in_place(const char *c, const char*delimiters, int *n, const char **state);
++char *pa_split(const char *c, const char *delimiters, const char **state);
++const char *pa_split_in_place(const char *c, const char *delimiters, int *n, const char **state);
+ char *pa_split_spaces(const char *c, const char **state);
+ 
+ char *pa_strip_nl(char *s);
+@@ -224,6 +224,7 @@ static inline bool pa_safe_streq(const char *a, const char *b) {
+ }
+ 
+ bool pa_str_in_list_spaces(const char *needle, const char *haystack);
++bool pa_str_in_list(const char *haystack, const char *delimiters, const char *needle);
+ 
+ char *pa_get_host_name_malloc(void);
+ char *pa_get_user_name_malloc(void);
+diff --git a/src/pulsecore/parseaddr.c b/src/pulsecore/parseaddr.c
+index 7f72e79..b909f52 100644
+--- a/src/pulsecore/parseaddr.c
++++ b/src/pulsecore/parseaddr.c
+@@ -143,3 +143,14 @@ bool pa_is_ip_address(const char *a) {
+ 
+     return false;
+ }
++
++bool pa_is_ip6_address(const char *a) {
++    char buf[INET6_ADDRSTRLEN];
++
++    pa_assert(a);
++
++    if (inet_pton(AF_INET6, a, buf) >= 1)
++        return true;
++
++    return false;
++}
+diff --git a/src/pulsecore/parseaddr.h b/src/pulsecore/parseaddr.h
+index 5d2c358..6bb4d85 100644
+--- a/src/pulsecore/parseaddr.h
++++ b/src/pulsecore/parseaddr.h
+@@ -41,4 +41,6 @@ int pa_parse_address(const char *a, pa_parsed_address *ret_p);
+ 
+ bool pa_is_ip_address(const char *a);
+ 
++bool pa_is_ip6_address(const char *a);
++
+ #endif
+diff --git a/src/pulsecore/socket-client.c b/src/pulsecore/socket-client.c
+index b4067f0..c87406d 100644
+--- a/src/pulsecore/socket-client.c
++++ b/src/pulsecore/socket-client.c
+@@ -428,12 +428,28 @@ static void start_timeout(pa_socket_client *c, bool use_rtclock) {
+ pa_socket_client* pa_socket_client_new_string(pa_mainloop_api *m, bool use_rtclock, const char*name, uint16_t default_port) {
+     pa_socket_client *c = NULL;
+     pa_parsed_address a;
++    char *name_buf;
+ 
+     pa_assert(m);
+     pa_assert(name);
+ 
+-    if (pa_parse_address(name, &a) < 0)
+-        return NULL;
++    a.path_or_host = NULL;
++
++    if (pa_is_ip6_address(name)) {
++        size_t len = strlen(name);
++        name_buf = pa_xmalloc(len + 3);
++        memcpy(name_buf + 1, name, len);
++        name_buf[0] = '[';
++        name_buf[len + 1] = ']';
++        name_buf[len + 2] = '\0';
++    } else {
++        name_buf = pa_xstrdup(name);
++    }
++
++    if (pa_parse_address(name_buf, &a) < 0) {
++        pa_log_warn("parsing address failed: %s", name_buf);
++        goto finish;
++    }
+ 
+     if (!a.port)
+         a.port = default_port;
+@@ -530,6 +546,7 @@ pa_socket_client* pa_socket_client_new_string(pa_mainloop_api *m, bool use_rtclo
+     }
+ 
+ finish:
++    pa_xfree(name_buf);
+     pa_xfree(a.path_or_host);
+     return c;
+ 
