@@ -14,7 +14,7 @@ pkgbase = vim-noruby
 	makedepends = gtk2
 	makedepends = lua
 	makedepends = mercurial
-	depends = vim-runtime=7.4.778-2
+	depends = vim-runtime=7.4.778-1
 	depends = gpm
 	depends = lua
 	depends = python2
