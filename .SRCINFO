@@ -6,7 +6,7 @@ pkgbase = git-aurcheck
 	license = GPL
 	depends = bash
 	source = git-aurcheck.sh
-	sha256sums = 94cbd8b74e605da3ff685d2c934d02ff668f8a0fbcd5d2e5ffad82afc81ccf55
+	sha256sums = 59e6f6e64c5dfabc2ff2572de0b64c2a4867c4431a45f5607ebe98cd6e86a98a
 
 pkgname = git-aurcheck
 

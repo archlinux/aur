@@ -54,7 +54,7 @@ if [ "${_opt_Maintainer:=none}" = 'none' ]; then
   sleep 1
 fi
 
-_opt_VERSION='1.0'
+_opt_VERSION='0.1'
 _opt_AUR4='aur'
 
 # After August 8, these 3 time bomb lines can be removed and _opt_AUR4 can be gotten rid of altogether
