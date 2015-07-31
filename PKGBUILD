@@ -1,7 +1,7 @@
 # Maintainer: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=teeworlds-ddnet
-pkgver=7.9.1
+pkgver=8.0.2
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ source=(teeworlds-ddnet.png)
 source_i686=("$url/downloads/DDNet-$pkgver-linux_x86.tar.gz")
 source_x86_64=("$url/downloads/DDNet-$pkgver-linux_x86_64.tar.gz")
 md5sums=('41465eb3a4ecf2e7f7afe5a5f0c84386')
-md5sums_i686=('b46b6f3078072d4e348b37aab612833e')
-md5sums_x86_64=('dc87916d271470549b3f7399eebf0d37')
+md5sums_i686=('4fd4b0a7949dca7b49d8abec7c5a240c')
+md5sums_x86_64=('abdfbf332aba5a1db16cfa9e2cfdd484')
 
 # Check hashs manually (replace $pkgver):
 # curl -sL http://ddnet.tw/downloads/md5sums | grep -E DDNet-$pkgver-linux
@@ -71,5 +71,4 @@ package() {
   
     # Install license files
   install -Dm644 license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
-  install -Dm644 license_DDRace.txt "$pkgdir"/usr/share/licenses/$pkgname/license_DDRace.txt
 }
