@@ -2,21 +2,21 @@
 
 pkgname=poezio
 pkgrel=1
-pkgver=0.8.1
+pkgver=0.9
 pkgdesc="A full-featured command-line irc-like xmpp (jabber) client"
 arch=('i686' 'x86_64')
 url="http://poez.io"
 license=('zlib')
-depends=('python' 'python-sleekxmpp' 'python-dnspython')
+depends=('python>=3.4' 'python-slixmpp')
 makedepends=('setuptools')
-source=("http://dev.louiz.org/attachments/download/52/$pkgname-$pkgver.tar.xz")
+source=("http://dev.louiz.org/attachments/download/91/$pkgname-$pkgver.tar.xz")
 optdepends=('python-pyinotify: Autoaway with screen plugin'
             'gnupg: GPG plugin'
             'figlet: ASCII art plugin'
             'pure-python-otr-git: OTR plugin'
             'python-sphinx: Generating documentation')
 
-sha512sums=('b9ca0c9ef5474180962f1c8ff2d2f5d6d5edbfdeefa5a0470e5d597d4122cf625060e270765c0f0a30e0b9f626b24edfbb135cfe66d1502aef27b6ee9996905c')
+sha512sums=('a6743dcd268abe2472da218b797a065936bfa52d5406275141dd5783aef2f9aba6396e3973c8a151702601a512f5f3959a7116b2171530bc7381701c6970fdfd')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
