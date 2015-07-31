@@ -1,0 +1,15 @@
+pkgbase = python2-rtsprofile
+	pkgdesc = Library to read, manipulate and write RT system profiles using the RTSProfile XML schema
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/gbiggs/rtsprofile
+	arch = any
+	license = EPLv1.0
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://github.com/gbiggs/rtsprofile/archive/2.0.0.tar.gz
+	md5sums = fd82cc2a8ca986e375d4eff613d8e102
+
+pkgname = python2-rtsprofile
+
