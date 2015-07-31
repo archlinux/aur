@@ -1,0 +1,4 @@
+cve-check-tool-*.tar.xz
+*.pkg.tar.xz
+pkg/
+src/

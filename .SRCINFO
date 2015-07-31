@@ -1,0 +1,18 @@
+pkgbase = cve-check-tool
+	pkgdesc = Automated tool for checking known (public) CVEs
+	pkgver = 5.2
+	pkgrel = 1
+	url = https://github.com/ikeydoherty/cve-check-tool
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = check
+	depends = curl
+	depends = json-glib
+	depends = libxml2
+	depends = sqlite
+	source = https://github.com/ikeydoherty/cve-check-tool/releases/download/v5.2/cve-check-tool-5.2.tar.xz
+	sha256sums = 779163a613b187007a1a2cd120658d5a3e5e419a02e618b593f7e84f362f10a0
+
+pkgname = cve-check-tool
+
