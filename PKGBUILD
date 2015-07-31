@@ -5,7 +5,7 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=352.21
+pkgver=352.30
 pkgrel=1
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 makedepends=('pacman>=4.2.0')
@@ -24,8 +24,8 @@ source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.
 
 # http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run.md5
 # http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run.md5
-md5sums=('c91760a04f658845722380f6c7fd4709')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='4eea308a1b04553f720f82fd2fac79d3'
+md5sums=('7e59d84eafe2482b2f02df692b9168d5')
+[ "${CARCH}" = 'x86_64' ] && md5sums[0]='135dd90db609cecad8e74bde0054cf6f'
 
 install=${pkgname}.install
 
