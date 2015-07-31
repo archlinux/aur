@@ -19,7 +19,7 @@
 
 pkgbase=linux-w110er
 _srcname=linux-4.1
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -43,7 +43,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '1a8863e4cd7ef3d59b67061aaf5e3f98ad4c63dda015b9b483d458f2b673caef'
+            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
             'SKIP'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
             'b30e8a6bcd328364f53c9027839611e0fbcf38b486ab709fc66f7d28ea9960ce'
