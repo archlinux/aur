@@ -1,0 +1,17 @@
+pkgbase = octave-splines
+	pkgdesc = Additional spline functions.
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = http://octave.sourceforge.net/splines/
+	install = octave-splines.install
+	arch = any
+	groups = octave-forge
+	license = custom
+	depends = octave>=3.6.0
+	noextract = splines-1.2.8.tar.gz
+	source = http://downloads.sourceforge.net/octave/splines-1.2.8.tar.gz
+	md5sums = ef569ae0257586e608bc0af54e811978
+	sha1sums = 9b4824aa26b8b49c46fe6937e46a01a25451dcc5
+
+pkgname = octave-splines
+
