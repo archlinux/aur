@@ -16,7 +16,7 @@ pkgbase = mkv-extractor-qt
 	optdepends = ogmrip: subtitle conversion
 	conflicts = mkv-extractor-gui
 	replaces = mkv-extractor-gui
-	source = mkv-extractor_5.2.2.tar.gz::https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_5.2.2.orig.tar.gz
+	source = https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_5.2.2.orig.tar.gz
 	sha1sums = 6cf50119f9b49a2d8060b0652f5831b051da9788
 
 pkgname = mkv-extractor-qt

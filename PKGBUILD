@@ -20,7 +20,7 @@ makedepends=('qt5-tools')
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
 install="${pkgname}.install"
-source=("mkv-extractor_${pkgver}.tar.gz::https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_${pkgver}.orig.tar.gz")
+source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_${pkgver}.orig.tar.gz")
 sha1sums=('6cf50119f9b49a2d8060b0652f5831b051da9788')
 
 build() {
