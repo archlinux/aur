@@ -4,13 +4,14 @@
 
 pkgname=mkv-extractor-qt
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for extract files from .mkv"
 arch=('any')
 url='http://hizo.fr/linux/mkv_extractor_gui'
 license=('GPL3')
 depends=('python-pyqt5'
-         'mkvtoolnix-cli')
+         'mkvtoolnix-cli'
+         'hicolor-icon-theme')
 optdepends=('ffmpeg: for DTS conversion'
             'mkclean: MKV optimisation'
             'mkvalidator: MKV check'
@@ -47,7 +48,7 @@ package() {
   install -Dm644 mkv-extractor-qt.desktop "${pkgdir}/usr/share/applications/mkv-extractor-qt.desktop"
 
   # Install the icon file
-  install -Dm644 img/mkv-extractor-qt.png "${pkgdir}/usr/share/pixmaps/mkv-extractor-qt.png"
+  (cd icons; for i in $(find . -name *.png -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/icons/hicolor/${i}"; done)
 
   # Install binary file
   install -Dm755 mkv-extractor-qt "${pkgdir}/usr/bin/mkv-extractor-qt"

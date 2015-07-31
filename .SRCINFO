@@ -1,7 +1,7 @@
 pkgbase = mkv-extractor-qt
 	pkgdesc = GUI for extract files from .mkv
 	pkgver = 5.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hizo.fr/linux/mkv_extractor_gui
 	install = mkv-extractor-qt.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = mkv-extractor-qt
 	makedepends = qt5-tools
 	depends = python-pyqt5
 	depends = mkvtoolnix-cli
+	depends = hicolor-icon-theme
 	optdepends = ffmpeg: for DTS conversion
 	optdepends = mkclean: MKV optimisation
 	optdepends = mkvalidator: MKV check
