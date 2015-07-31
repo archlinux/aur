@@ -25,29 +25,21 @@ backup=('etc/lxdm/lxdm.conf' 'etc/pam.d/lxdm' 'etc/lxdm/Xsession'
         'etc/lxdm/PreLogin' 'etc/lxdm/LoginReady' 'etc/lxdm/PostLogin'
         'etc/lxdm/PostLogout' 'etc/lxdm/PreReboot' 'etc/lxdm/PreShutdown')
 source=(http://downloads.sourceforge.net/lxdm/$_pkgname-$pkgver.tar.xz
-        0001-Make-gtk3-theme-consistent-with-gtk2-theme.patch
+        git-fixes.patch
         default-config.patch
         lxdm.pam
-        Xsession
-        lxdm.git-2abf1d971198d224c68b20c56862df2fe7c6a648.patch
-        lxdm.git-4dfe7924a220643600be58861b01f186225fe251.patch)
+        Xsession)
 md5sums=('9e03ce5f6d303bc9b689732401934dc6'
-         '1ce01d9b47317d0d820abf9d5f116c08'
+         '8f514a4ba8fe204c8f0db293246dba3d'
          'f0ae6c072f151104c53a030fd7757821'
          'c941ef896248bc7c03901b513490425c'
-         '6ff73570368501a06ee7badc8e415d0a'
-         '54c3de1d6108f8d68dea31622dd976e1'
-         '2522db72aeddffc22e349bfea24ae48e')
+         '6ff73570368501a06ee7badc8e415d0a')
 
 prepare(){
   cd "$srcdir/$_pkgname-$pkgver"
 
-  # Kill user processes on logout (fix second login with systemd >= 222)
-  patch -Np1 -i ../lxdm.git-2abf1d971198d224c68b20c56862df2fe7c6a648.patch
-  patch -Np1 -i ../lxdm.git-4dfe7924a220643600be58861b01f186225fe251.patch
-
-  # Make gtk3 theme consistent with gtk2 theme
-  patch -Np1 -i ../0001-Make-gtk3-theme-consistent-with-gtk2-theme.patch
+  # Apply fixes from git
+  patch -Np1 -i ../git-fixes.patch
 
   # Adjust Arch-specific settings
   patch -Np1 -i ../default-config.patch

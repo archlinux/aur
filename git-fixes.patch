@@ -1,0 +1,217 @@
+diff --git a/data/themes/Industrial/gtk.css b/data/themes/Industrial/gtk.css
+index 7621345..179f0d6 100644
+--- a/data/themes/Industrial/gtk.css
++++ b/data/themes/Industrial/gtk.css
+@@ -1,6 +1,6 @@
+ #lxdm {
+ 	background-image: url("wave.svg");
+-	background-size: 100%;
++	background-repeat: round;
+ }
+ 
+ #bottom_pane {
+@@ -12,10 +12,12 @@
+ 	color: #ffffff;
+ }
+ 
+-#user_list, #login_entry {
+-	background-image: none;
++#prompt {
++	font: Sans 14;
++	color: #000000;
+ }
+ 
+-#prompt, #bottom_pane GtkLabel {
+-	color: #ffffff;
++#bottom_pane GtkLabel {
++	font: Sans 12;
++	color: #9E9D9B;
+ }
+diff --git a/src/lxdm.c b/src/lxdm.c
+index 507189d..842f4b8 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -1269,6 +1269,9 @@ void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
+ 	{
+ 		if(s) lxsession_free(s);
+ 		lxsession_set_active(prev);
++		g_free(session_name);
++		g_free(session_exec);
++		g_free(session_desktop_names);
+ 		return;
+ 	}
+ 	if(!s) s=lxsession_find_idle();
+@@ -1514,7 +1517,7 @@ static void lxdm_signal_handler(void *data,int sig)
+ 	switch(sig){
+ 	case SIGTERM:
+ 	case SIGINT:
+-		g_critical("QUIT BY SIGNAL\n");
++		g_critical("QUIT BY SIGNAL %d\n",sig);
+ 		lxdm_quit_self(0);
+ 		break;
+ 	default:
+@@ -1650,6 +1653,7 @@ static GString *lxdm_user_cmd(void *data,int user,int arc,char **arg)
+ 		if(p)
+ 		{
+ 			res=g_string_new_len(p,len);
++			g_free(p);
+ 		}
+ 		g_key_file_free(kf);
+ 	}
+diff --git a/src/pam.c b/src/pam.c
+index 43bd687..a377157 100644
+--- a/src/pam.c
++++ b/src/pam.c
+@@ -42,6 +42,7 @@
+ #include <errno.h>
+ #include <poll.h>
+ #include <sys/stat.h>
++#include <sys/wait.h>
+ 
+ #include <pwd.h>
+ #include <grp.h>
+@@ -300,12 +301,72 @@ int lxdm_auth_session_begin(LXDM_AUTH *a,const char *name,int tty,int display,ch
+ 	}
+ 	err = pam_open_session(a->handle, 0); /* FIXME pam session failed */
+ 	if( err != PAM_SUCCESS )
++	{
+ 		g_warning( "pam open session error \"%s\"\n", pam_strerror(a->handle, err));
++	}
+ 	else
++	{
+ 		a->in_session=1;
++	}
+ 	return 0;
+ }
+ 
++static int proc_filter(const struct dirent *d)
++{
++    int c=d->d_name[0];
++    return c>='1' && c<='9';
++}
++
++static int check_process_sid(int pid,const char *sid)
++{
++	char path[128];
++	FILE *fp;
++	gchar *env_data,*p;
++	gsize env_len;
++	int res=0;
++
++	sprintf(path,"/proc/%d/environ",pid);
++	if(!g_file_get_contents(path,&env_data,&env_len,NULL))
++	{
++		return 0;
++	}
++	for(p=env_data;p!=NULL && p-env_data<env_len;)
++	{
++		if(!strncmp(p,"XDG_SESSION_ID=",15))
++		{
++			if(!strcmp(sid,p+15))
++				res=1;
++			break;
++		}
++		p=strchr(p,'\0');
++		if(!p) break;p++;
++	}
++	g_free(env_data);
++
++	return res;
++}
++
++static void kill_left_process(const char *sid)
++{
++	int self=getpid();
++	struct dirent **list;
++	int i,n;
++
++	n=scandir("/proc",&list,proc_filter,0);
++	if(n<0) return;
++	for(i=0;i<n;i++)
++	{
++		int pid=atoi(list[i]->d_name);
++		if(pid==self || pid<=1)
++			continue;
++		if(check_process_sid(pid,sid))
++		{
++			kill(pid,SIGKILL);
++		}
++	}
++	free(list);
++}
++
+ int lxdm_auth_session_end(LXDM_AUTH *a)
+ {
+ 	int err;
+@@ -313,8 +374,20 @@ int lxdm_auth_session_end(LXDM_AUTH *a)
+ 		return 0;
+ 	if(a->in_session)
+ 	{
++		char xdg_session_id[32]={0};
++		const char *p=pam_getenv(a->handle,"XDG_SESSION_ID");
++		if(p!=NULL) snprintf(xdg_session_id,32,"%s",p);
+ 		err = pam_close_session(a->handle, 0);
++		if( err != PAM_SUCCESS )
++		{
++			g_warning( "pam close session error \"%s\"\n", pam_strerror(a->handle, err));
++		}
+ 		a->in_session=0;
++		if(p!=NULL)
++		{
++			usleep(100*1000);
++			kill_left_process(xdg_session_id);
++		}
+ 	}
+ 	pam_end(a->handle, err);
+ 	a->handle = NULL;	
+@@ -400,8 +473,10 @@ void switch_user(struct passwd *pw, const char *run, char **env)
+ 	g_spawn_command_line_sync ("/etc/lxdm/PreLogin",NULL,NULL,NULL,NULL);
+ 
+ 	if( !pw || initgroups(pw->pw_name, pw->pw_gid) ||
+-			setgid(pw->pw_gid) || setuid(pw->pw_uid)/* || setsid() == -1 */)
++			setgid(pw->pw_gid) || setuid(pw->pw_uid) || setsid()==-1)
++	{
+ 		exit(EXIT_FAILURE);
++	}
+ 	chdir(pw->pw_dir);
+ 	fd=open(".xsession-errors",O_WRONLY|O_CREAT|O_TRUNC,S_IRUSR|S_IWUSR);
+ 	if(fd!=-1)
+@@ -426,7 +501,6 @@ void switch_user(struct passwd *pw, const char *run, char **env)
+ 
+ void run_session(LXDM_AUTH *a,const char *run)
+ {
+-	setsid();
+ 	a->child=fork();
+ 	if(a->child==0)
+ 	{
+@@ -505,7 +579,7 @@ int main(int arc,char *arg[])
+ 
+ 	setvbuf(stdout, NULL, _IOLBF, 0 );
+ 	signal(SIGCHLD,sig_handler);
+-	
++
+ 	lxdm_auth_init(&a);
+ 	while(file_get_line(cmd,sizeof(cmd),stdin)>=0)
+ 	{
+diff --git a/src/xconn.c b/src/xconn.c
+index 5c62d4b..df4824f 100644
+--- a/src/xconn.c
++++ b/src/xconn.c
+@@ -172,7 +172,7 @@ void xconn_close(xconn_t c)
+ 	free(c);
+ }
+ 
+-#if 0
++#if 1
+ static xcb_window_t xconn_get_root(xconn_t c)
+ {
+ 	const xcb_setup_t *setup;
+@@ -185,7 +185,7 @@ static xcb_window_t xconn_get_root(xconn_t c)
+ 
+ void xconn_clean(xconn_t c)
+ {
+-#if 0
++#if 1
+ 	xcb_query_tree_cookie_t wintree;
+ 	xcb_query_tree_reply_t *rep;
+ 	xcb_window_t *children;

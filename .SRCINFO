@@ -27,19 +27,15 @@ pkgbase = lxdm-gtk3
 	backup = etc/lxdm/PreReboot
 	backup = etc/lxdm/PreShutdown
 	source = http://downloads.sourceforge.net/lxdm/lxdm-0.5.1.tar.xz
-	source = 0001-Make-gtk3-theme-consistent-with-gtk2-theme.patch
+	source = git-fixes.patch
 	source = default-config.patch
 	source = lxdm.pam
 	source = Xsession
-	source = lxdm.git-2abf1d971198d224c68b20c56862df2fe7c6a648.patch
-	source = lxdm.git-4dfe7924a220643600be58861b01f186225fe251.patch
 	md5sums = 9e03ce5f6d303bc9b689732401934dc6
-	md5sums = 1ce01d9b47317d0d820abf9d5f116c08
+	md5sums = 8f514a4ba8fe204c8f0db293246dba3d
 	md5sums = f0ae6c072f151104c53a030fd7757821
 	md5sums = c941ef896248bc7c03901b513490425c
 	md5sums = 6ff73570368501a06ee7badc8e415d0a
-	md5sums = 54c3de1d6108f8d68dea31622dd976e1
-	md5sums = 2522db72aeddffc22e349bfea24ae48e
 
 pkgname = lxdm-gtk3
 
