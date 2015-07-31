@@ -1,5 +1,5 @@
 pkgbase = knode
-	pkgdesc = News reader for KDE. Self-contained version compatible with kdepim>=15.08
+	pkgdesc = News reader for KDE. Standalone version coinstallable with kdepim>=15.08
 	pkgver = 4.14.10
 	pkgrel = 1
 	url = http://kde.org/applications/internet/knode/
