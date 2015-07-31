@@ -1,0 +1,12 @@
+[Unit]
+Description=Vault secret store
+Documentation=https://vaultproject.io/docs/
+After=network.target
+ConditionFileNotEmpty=/etc/vault.hcl
+
+[Service]
+User=vault
+ExecStart=/usr/bin/vault server -config=/etc/vault.hcl
+
+[Install]
+WantedBy=multi-user.target

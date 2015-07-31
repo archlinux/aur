@@ -1,0 +1,45 @@
+# vim: ft=sh ts=4 sw=4 et
+
+post_install () {
+    getent passwd vault > /dev/null || useradd \
+        -s /bin/nologin -c 'Vault daemon' -d /var/lib/vault -M -r -U vault
+    if [[ ! -d /var/lib/vault ]] ; then
+        mkdir /var/lib/vault
+        chown vault:vault /var/lib/vault
+    fi
+
+    cat <<EOF
+
+The default configuration stores data in files under "/var/lib/vault",
+and listens on "localhost" with TLS disabled. Please consider modifying
+the configuration file "/etc/vault.hcl" to suit your needs. For more
+information read: https://vaultproject.io/docs/config/index.html
+
+A systemd unit for Vault has been installed, and daemon can be started
+normally using "systemctl":
+
+  systemctl enable vault.service
+  systemctl start vault.service
+
+IMPORTANT: Be sure to initialize the Vault backend using "vault init"!
+
+EOF
+}
+
+post_upgrade () {
+    if [[ -d /var/lib/vault ]] ; then
+        local badperms=false
+        while read -r path ; do
+            if [[ $(stat --format=%U:%G "${path}") != vault:vault ]]
+            then
+                badperms=true
+                break
+            fi
+        done < <( find /var/lib/vault )
+        if ${badperms} ; then
+            echo 'Bad permissions detected in /var/lib/vault, fixing...'
+            chown -R vault:vault /var/lib/vault
+        fi
+    fi
+    post_install
+}
