@@ -1,15 +1,15 @@
 pkgbase = openrtm-aist-python
 	pkgdesc = Python bindings for OpenRTM-aist
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://www.openrtm.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = omniorb
-	depends = python
-	source = http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/OpenRTM-aist-Python-1.0.0-RELEASE.tar.gz
-	md5sums = dd11ef6a2e6277fa095e0fbd3210a2a5
+	depends = python2
+	source = http://www.openrtm.org/pub/OpenRTM-aist/python/1.0.0/OpenRTM-aist-Python-1.1.0-RC1.tar.gz
+	md5sums = bbc9c4915d13cef0f5a925a070bab0aa
 
 pkgname = openrtm-aist-python
 
