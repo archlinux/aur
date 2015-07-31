@@ -2,7 +2,7 @@
 # Maintainer: Victor Dmitriyev <mrvvitek@gmail.com>
 # Contributor: xduugu
 
-pkgname=linux-firmware-iwlwifi-git
+pkgname=linux-firmware-git-iwlwifi
 pkgrel=1
 pkgdesc="Emmanuel Grumbach's fork of linux-firmware.git"
 makedepends=('git')
