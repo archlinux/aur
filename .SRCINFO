@@ -1,6 +1,6 @@
 pkgbase = wine-staging
 	pkgdesc = wine-staging, wine patched with extra funtionality including CSMT, PulseAudio, ACL and CUDA support
-	pkgver = 1.7.47
+	pkgver = 1.7.48
 	pkgrel = 1
 	url = http://www.wine-staging.com/
 	install = wine-staging.install
@@ -125,11 +125,11 @@ pkgbase = wine-staging
 	optdepends = pulseaudio
 	optdepends = samba
 	optdepends = dosbox
-	provides = bin32-wine=1.7.47
-	provides = wine-wow64=1.7.47
-	provides = wine=1.7.47
-	provides = wine-compholio=1.7.47
-	provides = wine-silverlight=1.7.47
+	provides = bin32-wine=1.7.48
+	provides = wine-wow64=1.7.48
+	provides = wine=1.7.48
+	provides = wine-compholio=1.7.48
+	provides = wine-silverlight=1.7.48
 	conflicts = bin32-wine
 	conflicts = wine-wow64
 	conflicts = wine
@@ -138,11 +138,11 @@ pkgbase = wine-staging
 	replaces = bin32-wine
 	options = staticlibs
 	options = !ccache
-	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.47.tar.bz2
-	source = https://github.com/wine-compholio/wine-staging/archive/v1.7.47.tar.gz
+	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.48.tar.bz2
+	source = https://github.com/wine-compholio/wine-staging/archive/v1.7.48.tar.gz
 	source = 30-win32-aliases.conf
-	md5sums = f7f5254c5fdfa57a290f61466bbad3a8
-	md5sums = faa4e0e35bd3fff0963a99125bc1f9ba
+	md5sums = 41628444b77d1fd52b76f1797c95fe9b
+	md5sums = 434b180440cdb8661a9190aad048dd4c
 	md5sums = 1ff4e467f59409272088d92173a0f801
 
 pkgname = wine-staging

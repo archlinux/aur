@@ -2,7 +2,7 @@
 # Based on the wine package in the community repository
 
 pkgname=wine-staging
-pkgver=1.7.47
+pkgver=1.7.48
 pkgrel=1
 pkgdesc="wine-staging, wine patched with extra funtionality including CSMT, PulseAudio, ACL and CUDA support"
 url="http://www.wine-staging.com/"
@@ -16,8 +16,8 @@ source=(http://ftp.winehq.org/pub/wine/source/1.7/wine-${pkgver}.tar.bz2
         "https://github.com/wine-compholio/wine-staging/archive/v${pkgver}.tar.gz"
         "30-win32-aliases.conf")
 
-md5sums=('f7f5254c5fdfa57a290f61466bbad3a8'
-         'faa4e0e35bd3fff0963a99125bc1f9ba'
+md5sums=('41628444b77d1fd52b76f1797c95fe9b'
+         '434b180440cdb8661a9190aad048dd4c'
          '1ff4e467f59409272088d92173a0f801')
 
 #validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7) # Alexandre Julliard
