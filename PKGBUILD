@@ -4,12 +4,12 @@ pkgname=(crispy-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Vanilla-compatible enhanced Doom, Heretic, Hexen, Strife engine"
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
 license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
-makedepends=('autoconf' 'python')
+makedepends=('python')
 source=(https://github.com/fabiangreffrath/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz)
 sha256sums=('7aeae60ecd7b18e41678e89a67f04e075d88338466f5efe6e988701c4b6c851f')
 

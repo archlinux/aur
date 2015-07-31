@@ -1,12 +1,11 @@
 pkgbase = crispy-doom
 	pkgdesc = Vanilla-compatible enhanced Doom, Heretic, Hexen, Strife engine
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fabiangreffrath.github.io/crispy-doom
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = autoconf
 	makedepends = python
 	depends = libsamplerate
 	depends = sdl_mixer
