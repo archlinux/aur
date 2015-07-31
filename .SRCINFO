@@ -1,14 +1,14 @@
 pkgbase = bash-common-parse-options
 	pkgdesc = An easier way to parse CLI options for Bash scripts
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/vinsonchuong/bash-common-parse-options
 	arch = any
 	license = MIT
 	checkdepends = bats-git
 	makedepends = clidoc
-	source = https://github.com/vinsonchuong/bash-common-parse-options/archive/v0.0.1-1.tar.gz
-	md5sums = 960a8920802505caef924b04f7e639f8
+	source = https://github.com/vinsonchuong/bash-common-parse-options/archive/v0.0.2-1.tar.gz
+	md5sums = 0cfd4148dbe7eec0090baa227d8b3b2b
 
 pkgname = bash-common-parse-options
 

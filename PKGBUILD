@@ -1,6 +1,6 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname="bash-common-parse-options"
-pkgver="0.0.1"
+pkgver="0.0.2"
 pkgrel="1"
 pkgdesc="An easier way to parse CLI options for Bash scripts"
 arch=("any")
@@ -9,7 +9,7 @@ license=("MIT")
 makedepends=("clidoc")
 checkdepends=("bats-git")
 source=("$url/archive/v$pkgver-1.tar.gz")
-md5sums=('960a8920802505caef924b04f7e639f8')
+md5sums=('0cfd4148dbe7eec0090baa227d8b3b2b')
 build () 
 { 
     cd "$srcdir/$pkgname-$pkgver";
