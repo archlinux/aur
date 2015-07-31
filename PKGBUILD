@@ -1,7 +1,7 @@
 pkgname=python-slixmpp
 _pkgbase=slixmpp
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An XMPP library written for Python 3.4 (SleekXMPP asyncio fork)"
 arch=('any')
 url="https://dev.louiz.org/projects/slixmpp"
@@ -12,7 +12,7 @@ makedepends=('git' 'cython')
 options=(!emptydirs)
 
 source=("http://dev.louiz.org/attachments/download/93/$_pkgbase-$pkgver.tar.xz")
-md5sums=('099ab0d6a42fa9f4e95f5dd3e9d1df36')
+sha512sums=('a2cb4fb20fc8cda4e14d6f7fe79335054f0ee6cd31bff09ccb0daf437c09ad83a0567645e3aeed0a6a8ec91fc91ad1eefc15830cd64b0aa22de4150ceada4057')
 
 package() {
     cd "$srcdir/$_pkgbase-$pkgver"
