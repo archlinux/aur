@@ -1,0 +1,17 @@
+pkgbase = claws-mail-plugin-reloader-git
+	pkgdesc = Claws-mail Plugin Reloader Plugin - git checkout
+	pkgver = 0.r1.g8bc7c6e
+	pkgrel = 1
+	url = http://www.claws-mail.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = claws-mail
+	provides = claws-mail-plugin-reloader
+	conflicts = claws-mail-plugin-reloader
+	source = claws-mail-plugin-reloader::git://git.claws-mail.org/claws-mail-plugin-reloader.git
+	sha256sums = SKIP
+
+pkgname = claws-mail-plugin-reloader-git
+
