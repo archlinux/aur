@@ -1,0 +1,27 @@
+pkgbase = konbini3
+	pkgdesc = Convenience Store of Packages for i3wm
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = BSD
+	depends = pulseaudio
+	depends = sddm
+	depends = habak
+	depends = i3-gaps-next-git
+	depends = i3lock-blur
+	depends = gnome-backgrounds
+	depends = zim
+	depends = bc
+	depends = dmenu
+	depends = uzbl-browser
+	depends = xorg-xbacklight
+	depends = rofi
+	depends = network-manager-applet
+	depends = pasystray
+	depends = udisks2
+	depends = udiskie
+	depends = polkit-kde
+	provides = konbini3
+
+pkgname = konbini3
+
