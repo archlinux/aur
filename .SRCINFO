@@ -6,6 +6,9 @@ pkgbase = papirus-icon-theme
 	arch = any
 	license = CCPL:by-sa
 	options = !strip
+	options = !libtool
+	options = !staticlibs
+	options = !zipman
 	source = papirus-icon-theme-20150731.tar.gz::https://github.com/varlesh/papirus-icon-theme/archive/6e82364341aad0fd9fba91119180ff842e4c0584.tar.gz
 	sha256sums = f9ba377946bc4b77cf1a4b633262d32542379e33cec04d4bdcb7701c428e3794
 

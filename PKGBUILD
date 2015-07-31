@@ -8,7 +8,7 @@ pkgdesc="Modified and adaptive Paper icon theme for KDE"
 arch=('any')
 url="https://github.com/varlesh/${pkgname}"
 license=('CCPL:by-sa')
-options=('!strip')
+options=('!strip' '!libtool' '!staticlibs' '!zipman')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
 sha256sums=('f9ba377946bc4b77cf1a4b633262d32542379e33cec04d4bdcb7701c428e3794')
 
