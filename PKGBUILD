@@ -1,14 +1,14 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-gettext
 pkgver=0.19.4
-pkgrel=5
+pkgrel=6
 arch=(any)
 pkgdesc="GNU internationalization library (mingw-w64)"
-depends=(mingw-w64-crt mingw-w64-libiconv mingw-w64-termcap mingw-w64-libunistring)
+depends=(mingw-w64-termcap mingw-w64-libunistring)
 makedepends=(gettext mingw-w64-configure)
 options=(!strip !buildflags staticlibs)
 license=("GPL")
-url="http://www.gnu.org/software/gettext"
+url="http://www.gnu.org/software/gettext/"
 source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"{,.sig}
 "00-relocatex-libintl-0.18.3.1.patch"
 "05-always-use-libintl-vsnprintf.mingw.patch"
@@ -33,6 +33,7 @@ prepare() {
   patch -p0 -i ${srcdir}/06-dont-include-ctype-after-gnulibs-wctype.mingw.patch
   patch -p0 -i ${srcdir}/07-fix-asprintf-conflict.mingw.patch
   patch -p0 -i ${srcdir}/08-vs-compatible.patch
+  sed -i "s|plural.\$lo:|\$(PLURAL_OBJECT):|g" gettext-runtime/intl/Makefile.in
 }
 
 build() {

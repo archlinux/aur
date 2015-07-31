@@ -1,14 +1,12 @@
 pkgbase = mingw-w64-gettext
 	pkgdesc = GNU internationalization library (mingw-w64)
 	pkgver = 0.19.4
-	pkgrel = 5
-	url = http://www.gnu.org/software/gettext
+	pkgrel = 6
+	url = http://www.gnu.org/software/gettext/
 	arch = any
 	license = GPL
 	makedepends = gettext
 	makedepends = mingw-w64-configure
-	depends = mingw-w64-crt
-	depends = mingw-w64-libiconv
 	depends = mingw-w64-termcap
 	depends = mingw-w64-libunistring
 	options = !strip
