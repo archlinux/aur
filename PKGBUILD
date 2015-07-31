@@ -1,27 +1,50 @@
 # Contributor: Sebastien Duquette <ekse.0x@gmail.com>
-# Contributor: Martin Kozák <martinkozak@martinkozak.net>
+# Contributor: Martin Poljak <mmartin@poljak.cz>
 
 pkgname=pfclient-beta-bin
 pkgver=3.0.2080
-pkgrel=1
+pkgrel=2
 pkgdesc="Planefinder.net sharing client"
-arch=('x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://planefinder.net/sharing/client"
 license=(unknown)
 install=pfclient-beta-bin.install
 backup=('etc/pfclient/pfclient-config.json')
+
+__pfsource_arm="http://client.planefinder.net/pfclient_${pkgver}_armhf.tar.gz"
+__pfsource_arm_md5="761a109f7dcc3a485958a74c7a7b27bd"
+__pfsource_i386="http://client.planefinder.net/pfclient_${pkgver}_i386.tar.gz"
+__pfsource_i386_md5="847b20295732909a4e28c8ea8fa17002"
+
 source=(
-    "http://client.planefinder.net/pfclient_3.0.2080_armhf.tar.gz"
     "pfclient-beta.service"
 )
 md5sums=(
-    '761a109f7dcc3a485958a74c7a7b27bd'
     'f2f2b11d1bd4fd216480071467a95b09'
 )
 
+
+###
+
+source_armv6h=($__pfsource_arm)
+source_armv7h=($__pfsource_arm)
+source_i686=($__pfsource_i386)
+source_x86_64=($__pfsource_i386)
+
+md5sums_armv6h=($__pfsource_arm_md5)
+md5sums_armv7h=($__pfsource_arm_md5)
+md5sums_i686=($__pfsource_i386_md5)
+md5sums_x86_64=($__pfsource_i386_md5)
+
 prepare() {
+  if [[ $CARCH == 'i686' || $CARCH == 'x86_64' ]]; then
+    __pfarch="i386"
+  else
+    __pfarch="armhf"
+  fi
+  
   cd "$srcdir"
-  tar -xzf pfclient_3.0.2080_armhf.tar.gz
+  tar -xzf pfclient_${pkgver}_$__pfarch.tar.gz
 }
 
 package() {
