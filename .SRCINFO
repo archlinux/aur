@@ -1,6 +1,6 @@
 pkgbase = electrum-git
 	pkgdesc = Lightweight Bitcoin wallet
-	pkgver = 20150726
+	pkgver = 20150731
 	pkgrel = 1
 	url = https://github.com/spesmilo/electrum
 	install = electrum.install
@@ -13,7 +13,6 @@ pkgbase = electrum-git
 	makedepends = python2-setuptools
 	depends = hicolor-icon-theme
 	depends = python2
-	depends = python2-crypto
 	depends = python2-dnspython
 	depends = python2-ecdsa
 	depends = python2-pbkdf2
