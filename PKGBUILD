@@ -13,7 +13,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
              'gtk-doc' 'intltool' 'kmod' 'libcap' 'libgcrypt'  'libmicrohttpd' 'libxslt'
              'linux-api-headers' 'pam' 'python' 'python-lxml' 'quota-tools' 'xz')
 options=('strip')
-source=("http://www.freedesktop.org/software/systemd/systemd-$pkgver.tar.xz")
+source=( "https://github.com/systemd/systemd/archive/v${pkgver}.tar.gz" )
 
 build() {
   cd "systemd-$pkgver"
@@ -100,4 +100,4 @@ package_libsystemd-udev() {
   install -Dm644 src/libudev/libudev.h "${pkgdir}/usr/include/libudev.h"
 }
 
-sha1sums=('682ebb60305f4bf1067aca929d664d062e80888f')
+sha1sums=('24b598e3bc09952a0a6251e446c633d324684799')
