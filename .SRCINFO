@@ -1,6 +1,6 @@
 pkgbase = scenebuilder
 	pkgdesc = JavaFX visual layout tool that lets users quickly design JavaFX application user interfaces, without coding.
-	pkgver = 8u51_b16
+	pkgver = 8u60-b25
 	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = any
