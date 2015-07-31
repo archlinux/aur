@@ -5,11 +5,9 @@ post_install() {
 }
 
 post_upgrade() {
-	EXTRAMODULES='extramodules-4.0-uksm'
-	depmod $(cat /lib/modules/$EXTRAMODULES/version)
+    post_install
 }
 
 post_remove() {
-	EXTRAMODULES='extramodules-4.0-uksm'
-	depmod $(cat /lib/modules/$EXTRAMODULES/version)
+    post_install
 }
