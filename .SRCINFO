@@ -1,16 +1,16 @@
 pkgbase = ruby-bunny
 	pkgdesc = Popular easy to use Ruby client for RabbitMQ
-	pkgver = 1.7.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://rubybunny.info
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-amq-protocol
-	noextract = bunny-1.7.0.gem
+	noextract = bunny-2.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/bunny-1.7.0.gem
-	sha1sums = d0bafc149ca948070bdbacb45d4a050aff2a430c
+	source = https://rubygems.org/downloads/bunny-2.0.0.gem
+	sha1sums = 17c2ca9fc4a2071ef4775bf16fd70f0cc6a55c57
 
 pkgname = ruby-bunny
 

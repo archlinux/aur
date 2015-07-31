@@ -4,7 +4,7 @@
 
 _gemname=bunny
 pkgname=ruby-$_gemname
-pkgver=1.7.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Popular easy to use Ruby client for RabbitMQ'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby ruby-amq-protocol)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('d0bafc149ca948070bdbacb45d4a050aff2a430c')
+sha1sums=('17c2ca9fc4a2071ef4775bf16fd70f0cc6a55c57')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
