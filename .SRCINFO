@@ -1,0 +1,22 @@
+pkgbase = cura-bin
+	pkgdesc = A full software solution for 3D printing aimed at RepRaps and the Ultimaker. This package contains both the binary Cura engine and the python front-end.
+	pkgver = 15.06.03
+	pkgrel = 1
+	url = https://github.com/daid/Cura
+	install = .install
+	arch = x86_64
+	license = AGPLv3
+	depends = python>=3.4
+	depends = python-pyqt5
+	depends = qt5-quickcontrols
+	depends = python-pyserial
+	depends = wxpython
+	depends = python-numpy
+	depends = python-opengl
+	depends = protobuf3
+	depends = python-protobuf3
+	conflicts = libarcus
+	replaces = cura
+
+pkgname = cura-bin
+
