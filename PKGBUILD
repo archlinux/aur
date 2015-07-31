@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=knode
-pkgdesc='News reader for KDE. Self-contained version compatible with kdepim>=15.08'
+pkgdesc='News reader for KDE. Standalone version coinstallable with kdepim>=15.08'
 pkgver=4.14.10
 _kdeappver=15.04.3
 pkgrel=1
