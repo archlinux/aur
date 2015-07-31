@@ -1,6 +1,6 @@
 # Maintainer: Felix Braun <hazzl@falix.de>
 pkgname=zbackup
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A versatile deduplicating backup tool'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('xz' 'openssl' 'protobuf')
 makedepends=('cmake')
 source=(https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('143c69e1b8a7c016224d836beae3b7e1')
+md5sums=('eceb8c81ce593205cb51c6bb74031764')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
