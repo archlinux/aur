@@ -1,5 +1,5 @@
 post_install() {
-	EXTRAMODULES='extramodules-4.1-bfq'
+	EXTRAMODULES='extramodules-4.0-uksm'
 	depmod $(cat /lib/modules/$EXTRAMODULES/version)
 	echo 'In order to use nvidia module, reboot the system.'
 }
