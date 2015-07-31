@@ -1,7 +1,7 @@
 pkgbase = apparmor
 	pkgdesc = Linux application security framework - mandatory access control for programs
 	pkgver = 2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.apparmor.net/index.php/Main_Page
 	arch = i686
 	arch = x86_64
