@@ -8,7 +8,7 @@ pkgdesc="general-purpose python library (used by tahoe-lafs)"
 arch=('any')
 url='https://pypi.python.org/pypi/pyutil'
 license=('GPL2')
-depends=('python2' 'python2-simplejson>=2.1.0' 'zbase32>=1.1.0' 'twisted')
+depends=('python2' 'python2-simplejson' 'zbase32' 'twisted')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/pyutil/pyutil-${pkgver}.tar.gz")
 md5sums=('025a06985691133479500139a3729909')
@@ -18,6 +18,7 @@ build(){
     python2 setup.py build
 }
 
+BUILDENV+=(!check)
 check() {
     cd "$srcdir/pyutil-$pkgver"
     python2 setup.py test
