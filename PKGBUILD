@@ -14,9 +14,9 @@ source=("git+https://github.com/Storyyeller/Krakatau.git"
         "krakatau-disassemble"
         "krakatau-decompile")
 sha256sums=('SKIP'
-            'aecd6fda224671ef2127ec2fe9cd804eb9128985c33a5e2034aa0c76234376df'
-            '1caa7bdd1a62a714ee25218b98fd6193254c6afee13470a5b7fa84c92d57fb21'
-            '155b3a71b7d31d85e9bbd8a86ba5471c7d2ba2c31b36d37410c241ecfd2c7ed2')
+            '7f3a1fc32030b51e21e317b9054073d1e0b4a56bdf1798182239caba174a5025'
+            'b69f03e8beb427cc0a1761106f0a9a2f07366ec5aae066095327ec462895db07'
+            '6440b23414f3d90325eb38f270b9551a93765cea4169b393e79dee435e2efa90')
 
 pkgver() {
   cd Krakatau
