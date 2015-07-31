@@ -1,6 +1,6 @@
 pkgname=aquaria-hib
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A 2D fantasy underwater action-adventure game (Humble Bundle version)"
 arch=('i686' 'x86_64')
 [[ $CARCH = "i686" ]] && _arch='i386' || _arch='amd64'
@@ -8,7 +8,6 @@ url="http://www.bit-blot.com/"
 license=('custom:commercial')
 provides=('aquaria-1.1.3')
 conflicts=('aquaria' 'aquaria-data-hib' 'aquaria-git')
-replaces=('aquaria' 'aquaria-data-hib' 'aquaria-git')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
 PKGEXT='.pkg.tar'
