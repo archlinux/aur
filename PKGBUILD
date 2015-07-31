@@ -3,9 +3,9 @@
 # based on jack2 PKGBUILD by Ray Rashif <schiv@archlinux.org>
 
 pkgbase=jack2-git
-pkgname=('jack2-git')
+pkgname=('jack2-git' 'jack2-dbus-git')
 #pkgname= # single build (overrides split)
-pkgver=3382
+pkgver=3274
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://jackaudio.org/"
@@ -50,8 +50,7 @@ pkgver() {
 
 prepare() {
   # we may do 2 different builds
-  #cp -r $_gitname $_gitname-dbus
-	echo 'bouh'
+  cp -r $_gitname $_gitname-dbus
 }
 
 build() {
