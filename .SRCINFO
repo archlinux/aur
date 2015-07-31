@@ -1,6 +1,6 @@
 pkgbase = chromium-pepper-flash-dev
 	pkgdesc = Google Chrome's Pepper Flash plugin for Chromium (Dev Channel)
-	pkgver = 18.0.0.209
+	pkgver = 18.0.0.217
 	pkgrel = 1
 	url = http://www.google.com/chrome
 	install = chromium-pepper-flash-dev.install
@@ -11,16 +11,16 @@ pkgbase = chromium-pepper-flash-dev
 	provides = chromium-pepper-flash
 	conflicts = chromium-pepper-flash
 	conflicts = chromium-pepper-flash-stable
-	noextract = google-chrome-unstable-45.0.2454.15-1.i386.rpm
-	noextract = google-chrome-unstable-45.0.2454.15-1.x86_64.rpm
+	noextract = google-chrome-unstable-46.0.2467.2-1.i386.rpm
+	noextract = google-chrome-unstable-46.0.2467.2-1.x86_64.rpm
 	options = !emptydirs
 	options = !strip
 	source = https://www.google.com/chrome/intl/en/eula_text.html
 	sha1sums = 1ffba5152cb749300a016efec909b828eba9a64a
-	source_i686 = http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-45.0.2454.15-1.i386.rpm
-	sha1sums_i686 = 89b18ff9b5bae0bb3e8b3a2dc99a6f38631c083f
-	source_x86_64 = http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-45.0.2454.15-1.x86_64.rpm
-	sha1sums_x86_64 = 68682d69b2398052cf8353caca1c8069cafba88e
+	source_i686 = http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-46.0.2467.2-1.i386.rpm
+	sha1sums_i686 = 4a7c37e40bc719acc04713f25b57db88a55a2fbe
+	source_x86_64 = http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-46.0.2467.2-1.x86_64.rpm
+	sha1sums_x86_64 = df58ef79d86ab0c6cff87d044d662865d1b47fd8
 
 pkgname = chromium-pepper-flash-dev
 
