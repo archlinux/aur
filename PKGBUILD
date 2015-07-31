@@ -2,7 +2,7 @@
 
 pkgname=go-ethereum
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum Go Client (CLI)"
 arch=('i686' 'x86_64')
 depends=('gmp' 'leveldb' 'readline')
@@ -21,7 +21,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Building...'
-  make geth
+  make all
 }
 
 package() {
@@ -40,7 +40,15 @@ package() {
     "$pkgdir/usr/share/doc/go-ethereum/wiki"
 
   msg2 'Installing...'
-  install -Dm 755 "build/bin/geth" "$pkgdir/usr/bin/geth"
+  for _bin in bootnode \
+              disasm \
+              ethtest \
+              evm \
+              generators \
+              geth \
+              rlpdump; do
+    install -Dm 755 "build/bin/$_bin" "$pkgdir/usr/bin/$_bin"
+  done
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
