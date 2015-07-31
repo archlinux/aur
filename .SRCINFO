@@ -1,0 +1,18 @@
+pkgbase = python2-rtshell
+	pkgdesc = Shell commands for managing RT-Middleware running on OpenRTM-aist
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/gbiggs/rtshell
+	arch = any
+	license = EPLv1.0
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = expect
+	depends = python2
+	depends = openrtm-aist-python
+	depends = python2-rtctree
+	source = https://github.com/gbiggs/rtshell/archive/v3.0.1.tar.gz
+	md5sums = 6f22c8783028cc548fde9d2c2abb9b1c
+
+pkgname = python2-rtshell
+
