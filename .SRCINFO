@@ -5,10 +5,14 @@ pkgbase = python-log_colorizer
 	url = https://github.com/Kozea/log_colorizer
 	arch = any
 	license = BSD
-	makedepends = python3
-	depends = python
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	source = https://pypi.python.org/packages/source/l/log_colorizer/log_colorizer-1.6.tar.gz
 	md5sums = f052908c63a1bfb0cda4287414f43bef
 
+pkgname = python2-log_colorizer
+	depends = python2
+
 pkgname = python-log_colorizer
+	depends = python
 
