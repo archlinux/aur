@@ -5,7 +5,7 @@ pkgname=flareget
 _rel=4.2
 _subrel=92
 pkgver=${_rel}.${_subrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="A full featured, advanced, multi-threaded, multisegment download manager and accelerator."
 arch=('i686' 'x86_64')
 url="http://flareget.com"
@@ -23,7 +23,7 @@ if  [ "${CARCH}" = "i686" ]; then
 elif [ "${CARCH}" = "x86_64" ]; then
     _arch1="x86_64"
     _arch2="amd64"
-    md5sums=('58b8db8461bb86ac7c6424e018dab29d')
+    md5sums=('26076f444a1579ba77966785501ff2e6')
 fi
 
 source=("http://www.flareget.com/files/flareget/rpm/${_arch2}/${pkgname}_${_rel}-${_subrel}_${_arch1}(stable)_rpm.tar.gz")
