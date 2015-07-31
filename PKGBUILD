@@ -5,14 +5,14 @@
 
 pkgname=mdk
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulation of Donald Knuth's mythical MIX computer."
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/mdk/mdk.html'
 license=('GPL3')
 depends=('libglade' 'gtk2' 'readline')
 optdepends=('guile')
-makedepends=('intltool' 'glib2' 'texinfo')
+makedepends=('intltool' 'glib2')
 install=mdk.install
 source=("http://ftp.gnu.org/gnu/mdk/v${pkgver}/mdk-${pkgver}.tar.gz")
 md5sums=('86057f1b05c7673ee000d7b15231f5a6')

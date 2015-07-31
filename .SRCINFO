@@ -1,7 +1,7 @@
 pkgbase = mdk
 	pkgdesc = An emulation of Donald Knuth's mythical MIX computer.
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/mdk/mdk.html
 	install = mdk.install
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = mdk
 	license = GPL3
 	makedepends = intltool
 	makedepends = glib2
-	makedepends = texinfo
 	depends = libglade
 	depends = gtk2
 	depends = readline
