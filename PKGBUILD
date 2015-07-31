@@ -9,7 +9,7 @@ depends=('perl-www-mechanize' 'perl-xml-simple')
 source=(http://get-flash-videos.googlecode.com/files/$pkgname-$pkgver)
 noextract=($pkgname-$pkgver)
 
-build() {
+package() {
   mkdir -p $pkgdir/usr/bin
   install -m755 $pkgname-$pkgver $pkgdir/usr/bin/$pkgname
 }
