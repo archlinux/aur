@@ -1,0 +1,14 @@
+pkgbase = owncloud-app-tasks
+	pkgdesc = Enhanced task app for ownCloud
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/owncloud/tasks
+	arch = any
+	license = AGPL
+	depends = owncloud
+	options = !strip
+	source = tasks-0.7.1.tar.gz::https://github.com/owncloud/tasks/archive/v0.7.1.tar.gz
+	sha512sums = c9c9772e9209412850261b6f468d797263a9f0df44661d96f2d36e91f5529b9c38cd1ef4381f170213f3937f4552105d2c71eac3365bc830e93d58eeb1d9f7b5
+
+pkgname = owncloud-app-tasks
+
