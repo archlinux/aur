@@ -1,0 +1,22 @@
+pkgbase = dolphin-plugins-git
+	pkgdesc = Plugins for Dolphin. (GIT Version)
+	pkgver = r336.cef9dff
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdesdk/dolphin-plugins
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = python
+	depends = dolphin-git
+	conflicts = dolphin-plugins
+	conflicts = kdesdk-dolphin-plugins
+	source = git://anongit.kde.org/dolphin-plugins
+	sha1sums = SKIP
+
+pkgname = dolphin-plugins-git
+
