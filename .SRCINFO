@@ -1,4 +1,4 @@
-pkgbase = linux-firmware-iwlwifi-git
+pkgbase = linux-firmware-git-iwlwifi
 	pkgdesc = Emmanuel Grumbach's fork of linux-firmware.git
 	pkgver = 20150722.75cc3ef
 	pkgrel = 1
@@ -23,8 +23,8 @@ pkgbase = linux-firmware-iwlwifi-git
 	conflicts = rt2x00-rt71w-fw
 	conflicts = amd-ucode
 	options = !strip
-	source = linux-firmware-iwlwifi-git::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+	source = linux-firmware-git-iwlwifi::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 	md5sums = SKIP
 
-pkgname = linux-firmware-iwlwifi-git
+pkgname = linux-firmware-git-iwlwifi
 
