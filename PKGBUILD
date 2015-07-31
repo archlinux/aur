@@ -59,8 +59,8 @@ _pkgname=${pkgname}
 _kernelname=${_pkgname#linux}
 _basekernel=3.12
 true && pkgname=(${_pkgname} ${_pkgname}-headers)
-pkgver=3.12.44
-pkgrel=2
+pkgver=3.12.45
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -92,7 +92,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.12.tar.xz"
 
 sha256sums=('2e120ec7fde19fa51dc6b6cc11c81860a0775defcad5a5bf910ed9a50e845a02'
             'SKIP'
-            '3a3c1ca0e1ad33f381de9e42df70db96ec88073651eaa00d135869bcf3d424ad'
+            '0f3920c9bdce328e499a82cac09529fe6d88af7658212cfcde6529a0877b1ff3'
             'SKIP'
             '413def4af24ff70615cf5ef5cc1f1347bd634d87686a84ad0e2c2d3b052da8b8'
             'c6c4a9f77683b95c37636b20c4bc8a1f8214c87feef7fc469e58534fcc32fb4a'
