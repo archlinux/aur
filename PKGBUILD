@@ -24,7 +24,12 @@ pkgver() {
 
 build() {
   cd libfprint
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --disable-static
+  libtoolize --copy --force || exit 1
+  aclocal || exit 1
+  autoheader || exit 1
+  autoconf || exit 1
+  automake -a -c || exit 1
+  ./configure --prefix=/usr --sysconfdir=/etc --disable-static
   make
 }
 
