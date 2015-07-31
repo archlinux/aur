@@ -3,35 +3,32 @@
 pkgbase=adwaita-qt
 pkgname=('adwaita-qt5' 'adwaita-qt4' 'adwaita-qt-common')
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The stylesheet to bend Qt applications to look like they belong into GNOME Shell'
-arch=('i686' 'x86_64')
+arch=('any' 'i686' 'x86_64')
 url='https://github.com/MartinBriza/adwaita-qt'
 license=('GPL' 'LGPL')
 makedepends=('gcc-libs-multilib' 'qt4' 'qt5-base')
+# Use master until Arch specific fix lands into stable.
 source=("https://github.com/MartinBriza/adwaita-qt/archive/master.zip")
 md5sums=('9f44301af62f90db589e4c75e21d77c9')
 
 prepare() {
-  mkdir build{-qt5,-qt4,-common}
-  mkdir build-common/usr
+  mkdir -p build{-qt5,-qt4,-common}
 }
 
 build() {
   cd build-qt5
   cmake ../${pkgbase}-master \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DBUILD_TESTING=OFF
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 
   cd ../build-qt4
   cmake ../${pkgbase}-master \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_QT4=ON \
-    -DBUILD_TESTING=OFF
+    -DUSE_QT4=ON
   make
 }
 
@@ -42,7 +39,8 @@ package_adwaita-qt5() {
   cd build-qt5
   make install/fast DESTDIR=$pkgdir
   mv $pkgdir/usr/lib/qt5 $pkgdir/usr/lib/qt
-  mv $pkgdir/usr/share $srcdir/build-common/usr
+  # The assets are in common
+  rm -rf $pkgdir/usr/share
 }
 
 package_adwaita-qt4() {
@@ -50,12 +48,13 @@ package_adwaita-qt4() {
 
   cd build-qt4
   make install/fast DESTDIR=$pkgdir
-  
+
+  # The assets are in common
   rm -rf $pkgdir/usr/share
 }
 
 package_adwaita-qt-common() {
   arch=('any')
-  
-  mv build-common/usr $pkgdir
+
+  install -Dm644 -t "${pkgdir}/usr/share/themes/Adwaita/qt/assets/" "$srcdir/${pkgbase}-master/assets/"*.png
 }
