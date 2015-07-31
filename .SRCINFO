@@ -1,6 +1,6 @@
 pkgbase = systemd-kill-fix
 	pkgver = 223
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -55,7 +55,7 @@ pkgname = systemd-kill-fix
 	depends = hwids
 	depends = libcap
 	depends = libgcrypt
-	depends = libsystemd
+	depends = libsystemd-kill-fix
 	depends = libidn
 	depends = lz4
 	depends = pam
@@ -65,7 +65,7 @@ pkgname = systemd-kill-fix
 	optdepends = cryptsetup: required for encrypted block devices
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
-	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
+	optdepends = systemd-sysvcompat-kill-fix: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
 	provides = systemd-tools=223
@@ -119,7 +119,7 @@ pkgname = systemd-sysvcompat-kill-fix
 	pkgdesc = sysvinit compat for systemd (with kill fix)
 	groups = base
 	license = GPL2
-	depends = systemd
+	depends = systemd-kill-fix
 	provides = systemd-sysvcompat=223
 	conflicts = sysvinit,
 	conflicts = systemd-sysvcompat

@@ -14,7 +14,7 @@ pkgbase=systemd-kill-fix
 pkgname=('systemd-kill-fix' 'libsystemd-kill-fix' 'systemd-sysvcompat-kill-fix')
 _pkgname=systemd
 pkgver=223
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
@@ -79,7 +79,7 @@ package_systemd-kill-fix() {
   pkgdesc="system and service manager (with kill fix)"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libseccomp' 'util-linux'
+           'libgcrypt' 'libsystemd-kill-fix' 'libidn' 'lz4' 'pam' 'libseccomp' 'util-linux'
            'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
@@ -87,7 +87,7 @@ package_systemd-kill-fix() {
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
-              'systemd-sysvcompat: symlink package to provide sysvinit binaries'
+              'systemd-sysvcompat-kill-fix: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user')
   backup=(etc/dbus-1/system.d/org.freedesktop.systemd1.conf
           etc/dbus-1/system.d/org.freedesktop.hostname1.conf
@@ -182,7 +182,7 @@ package_systemd-sysvcompat-kill-fix() {
   groups=('base')
   provides=('systemd-sysvcompat=223')
   conflicts=('sysvinit', 'systemd-sysvcompat')
-  depends=('systemd')
+  depends=('systemd-kill-fix')
 
   mv "$srcdir/_sysvcompat"/* "$pkgdir"
 
