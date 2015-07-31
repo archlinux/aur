@@ -1,0 +1,66 @@
+#!/bin/bash
+# Written by James Harvey <jamespharvey20@gmail.com>
+# Released under GPL2 license
+#
+# Set InfiniBand ports' IPoIB transport modes and mtu
+#
+# This is usually run automatically by systemd, after rdma.service starts
+#
+
+CONFIG=/etc/ipoibmodemtu.conf
+
+if [[ $EUID -ne 0 ]]; then
+   echo "ipoibmodemtu must be run as root" 1>&2
+   exit 1
+fi
+
+if ! [ -f $CONFIG ]; then
+   echo "$CONFIG not found"
+   exit 2
+fi
+
+declare -A mode
+declare -A mtu
+. $CONFIG
+
+for mode_idx in ${!mode[@]}; do
+   if ! [[ (${mode[$mode_idx]} == "datagram") || (${mode[$mode_idx]} == "connected") ]]; then
+      echo "You need to fix $CONFIG"
+      echo "mode[$mode_idx]=${mode[$mode_idx]} - Acceptable values are \"datagram\" or \"connected\""
+      exit 3
+   fi
+
+   if ! [ -f /sys/class/net/$mode_idx/mode ]; then
+      echo "You need to fix $CONFIG"
+      echo "/sys/class/net/$mode_idx/mode does not exist - Are you sure your IPoIB network device name is '$mode_idx'?  Double check what 'ip' or (if you have it) 'ifconfig' shows."
+      exit 4
+   fi
+
+   echo ${mode[$mode_idx]} > /sys/class/net/$mode_idx/mode
+   echo "Attempted setting network device '$mode_idx' to transport mode '${mode[$mode_idx]}'."
+done
+
+unset mode_idx
+unset mode
+
+numerical_regex='^[0-9]+$'
+for mtu_idx in ${!mtu[@]}; do
+   if ! [[ ${mtu[$mtu_idx]} =~ $numerical_regex ]]; then
+      echo "You need to fix $CONFIG"
+      echo "mtu[$mtu_idx]=${mtu[$mtu_idx]} - Acceptable values are only integers"
+      exit 5
+   fi
+   if ! [[ $(type -P "ip") ]]; then
+      echo "You need to fix $CONFIG"
+      echo "Executable ip not found in path - Is package iproute2 not installed?  It's part of base."
+      exit 6
+   fi
+   ip link set $mtu_idx mtu ${mtu[$mtu_idx]}
+   echo "Attempted setting network device '$mtu_idx' to MTU ${mtu[$mtu_idx]}."
+done
+
+unset mtu_idx
+unset mtu
+unset numerical_regex
+
+exit 0
