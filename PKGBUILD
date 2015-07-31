@@ -12,16 +12,16 @@ source=("$pkgname::git+https://github.com/wmutils/core.git")
 sha1sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
+  cd "$srcdir/$pkgname"
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
 }
 build() {
-	cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname"
   make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir" PREFIX="/usr/local" install
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" PREFIX="/usr/local" install
 }
 
