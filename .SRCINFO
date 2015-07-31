@@ -1,0 +1,22 @@
+pkgbase = swm-git
+	pkgdesc = Simple window manager.
+	pkgver = 1.0.r9.g151f81e
+	pkgrel = 1
+	url = https://github.com/dcat/swm
+	install = swm-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	conflicts = swm
+	source = swm-git::git+https://github.com/dcat/swm
+	source = config.h
+	md5sums = SKIP
+	md5sums = 1f592cc09921d28966aaca86b710465a
+	sha1sums = SKIP
+	sha1sums = facc115b6f93d5e6356550235c3f5bffcb8d79ad
+	sha256sums = SKIP
+	sha256sums = 9f007a5a93c0a95c3cea521782f73f1438524b51cf3d27fb5a7482ba3e5ad9c4
+
+pkgname = swm-git
+

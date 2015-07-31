@@ -1,0 +1,8 @@
+post_install() {
+  echo "==> To customize it, modify \"config.h\"."
+}
+
+post_upgrade() {
+  post_install
+}
+
