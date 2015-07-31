@@ -3,7 +3,7 @@
 
 pkgname=lxdm-git
 _gitname=lxdm
-pkgver=0.5.1.r1.g6d5b573
+pkgver=0.5.1.r5.g4d34fa7
 pkgrel=1
 pkgdesc='Lightweight Display Manager (part of LXDE) - git checkout'
 arch=('i686' 'x86_64')
@@ -13,21 +13,29 @@ groups=('lxde')
 provides=('lxdm')
 conflicts=('lxdm' 'lxdm-svn')
 install=lxdm.install
-backup=('etc/lxdm/lxdm.conf' 'etc/pam.d/lxdm' 'etc/lxdm/Xsession'
-    'etc/lxdm/PreLogin' 'etc/lxdm/LoginReady' 'etc/lxdm/PostLogin'
-    'etc/lxdm/PostLogout' 'etc/lxdm/PreReboot' 'etc/lxdm/PreShutdown')
+backup=('etc/lxdm/lxdm.conf'
+        'etc/pam.d/lxdm'
+        'etc/lxdm/Xsession'
+        'etc/lxdm/PreLogin'
+        'etc/lxdm/LoginReady'
+        'etc/lxdm/PostLogin'
+        'etc/lxdm/PostLogout'
+        'etc/lxdm/PreReboot'
+        'etc/lxdm/PreShutdown')
 depends=('cairo' 'dbus-core' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libx11' 'libxcb' 'pango')
 makedepends=('intltool' 'git')
 source=('lxdm::git+http://git.lxde.org/git/lxde/lxdm.git'
-    'http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz'
-    'Xsession.patch' 'lxdm.patch' 'lxdm.conf.patch' 'xconn.patch'
-    'lxdm-pam' 'PostLogout')
+        'http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz'
+        'Xsession.patch'
+        'lxdm.patch'
+        'lxdm.conf.patch'
+        'lxdm-pam'
+        'PostLogout')
 md5sums=('SKIP'
          '1cc5163253149952329671db34ce7907'
          '9bdf95adb74d81d4b6b6176fb1142090'
          'baed9055e8825a5511712bc095197519'
          'e0653feadbcf9c8fcea1600008b32850'
-         'a3bdde937a4ec72416f23bd7e644b620'
          '2897b4f8bf09bdfa060e1be52868873f'
          '5d585acc332056b8d5be3a15d2f20d84')
 
@@ -58,7 +66,6 @@ build() {
     patch -Np0 < ${srcdir}/lxdm.patch
     patch -Np0 < ${srcdir}/lxdm.conf.patch
     patch -Np0 < ${srcdir}/Xsession.patch
-    patch -Np1 < ${srcdir}/xconn.patch
 }
 
 package() {
