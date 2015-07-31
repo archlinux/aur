@@ -11,13 +11,13 @@ _patchlevel=778
 _tag=v${_topver/./-}-${_patchlevel}
 _versiondir="vim${_topver//./}"
 pkgver=${_topver}.${_patchlevel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
 pkgdesc="Like 'vim' package, but -ruby"
 depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'lua' 'python2' 'acl')
-conflicts=('vim-minimal' 'vim-python3' 'gvim' 'gvim-python3')
+conflicts=('vim-minimal' 'vim-python3' 'gvim' 'gvim-python3' 'vim')
 provides=("vim" "xxd")
 makedepends=('gpm' 'python2' 'python' 'libxt' 'desktop-file-utils' 'gtk2' 'lua' 'mercurial')
 # It would be great to use downloadable archives https://vim.googlecode.com/archive/$tag.tar.gz

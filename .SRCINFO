@@ -1,7 +1,7 @@
 pkgbase = vim-noruby
 	pkgdesc = Like 'vim' package, but -ruby
 	pkgver = 7.4.778
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vim.org
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = vim-noruby
 	makedepends = gtk2
 	makedepends = lua
 	makedepends = mercurial
-	depends = vim-runtime=7.4.778-1
+	depends = vim-runtime=7.4.778-2
 	depends = gpm
 	depends = lua
 	depends = python2
@@ -25,6 +25,7 @@ pkgbase = vim-noruby
 	conflicts = vim-python3
 	conflicts = gvim
 	conflicts = gvim-python3
+	conflicts = vim
 	source = vim-noruby-repo::hg+https://vim.googlecode.com/hg#tag=v7-4-778
 	source = vimrc
 	source = archlinux.vim
