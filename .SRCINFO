@@ -1,0 +1,22 @@
+pkgbase = knode
+	pkgdesc = News reader for KDE. Self-contained version compatible with kdepim>=15.08
+	pkgver = 4.14.10
+	pkgrel = 1
+	url = http://kde.org/applications/internet/knode/
+	install = knode.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	makedepends = libxss
+	depends = kdepimlibs4
+	conflicts = kdepim-libkdepim<5
+	source = http://download.kde.org/stable/applications/15.04.3/src/kdepim-4.14.10.tar.xz
+	sha1sums = 6f74763dda68dbb44394e807eab9204777bddf0a
+
+pkgname = knode
+
