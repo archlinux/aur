@@ -1,7 +1,7 @@
 pkgbase = wine-staging
 	pkgdesc = wine-staging, wine patched with extra funtionality including CSMT, PulseAudio, ACL and CUDA support
 	pkgver = 1.7.48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.wine-staging.com/
 	install = wine-staging.install
 	arch = x86_64
@@ -138,6 +138,7 @@ pkgbase = wine-staging
 	replaces = bin32-wine
 	options = staticlibs
 	options = !ccache
+	options = !upx
 	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.48.tar.bz2
 	source = https://github.com/wine-compholio/wine-staging/archive/v1.7.48.tar.gz
 	source = 30-win32-aliases.conf

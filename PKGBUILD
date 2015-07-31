@@ -3,12 +3,12 @@
 
 pkgname=wine-staging
 pkgver=1.7.48
-pkgrel=1
+pkgrel=2
 pkgdesc="wine-staging, wine patched with extra funtionality including CSMT, PulseAudio, ACL and CUDA support"
 url="http://www.wine-staging.com/"
 license=('LGPL2.1')
 arch=('x86_64' 'i686')
-options=(staticlibs !ccache)
+options=(staticlibs !ccache !upx)
 install=wine-staging.install
 
 # source=(http://prdownloads.sourceforge.net/wine/wine-${pkgver}.tar.bz2{,.sign}
