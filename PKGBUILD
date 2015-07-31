@@ -4,7 +4,7 @@
 # Contributor (Arch): Nicolas Pouillard <nicolas.pouillard@gmail.com>
 
 pkgname=tahoe-lafs
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Secure, decentralized, and fault-tolerant filesystem."
 url='https://tahoe-lafs.org/trac/tahoe-lafs'
@@ -15,9 +15,8 @@ BUILDENV+=(!check)
 
 depends=('openssl>=1.0.2'
          'python2-twisted>=13.0.0'
-         'python2-mock>=1.0.1'
          'python2-pyopenssl>=0.14'
-         'python2-pyasn1>=0.1.4'
+         'python2-pyasn1>=0.1.8'
          'python2-pyasn1-modules>=0.0.5'
          'python2-zope-interface>=4.0.5'
          'python2-characteristic>=14.3.0'
@@ -41,7 +40,7 @@ depends=('openssl>=1.0.2'
 optdepends=('python2-numpy: reliability test')
 
 source=("https://tahoe-lafs.org/source/tahoe-lafs/releases/allmydata-tahoe-$pkgver.tar.bz2")
-sha256sums=('5bde7bd28fdd23e7c312381e2818d75e90a80c40b18562f171510a7c716fd4c0')
+sha256sums=('fed5d719c966d9528a45e8ad66e6c8ff3dcb3c06db94775194c7c75566047be7')
 
 build(){
     cd "${srcdir}/allmydata-tahoe-${pkgver}"
