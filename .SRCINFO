@@ -1,15 +1,14 @@
 pkgbase = tahoe-lafs
 	pkgdesc = Secure, decentralized, and fault-tolerant filesystem.
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://tahoe-lafs.org/trac/tahoe-lafs
 	arch = any
 	license = GPL
 	depends = openssl>=1.0.2
 	depends = python2-twisted>=13.0.0
-	depends = python2-mock>=1.0.1
 	depends = python2-pyopenssl>=0.14
-	depends = python2-pyasn1>=0.1.4
+	depends = python2-pyasn1>=0.1.8
 	depends = python2-pyasn1-modules>=0.0.5
 	depends = python2-zope-interface>=4.0.5
 	depends = python2-characteristic>=14.3.0
@@ -31,8 +30,8 @@ pkgbase = tahoe-lafs
 	depends = python2-setuptools
 	optdepends = python2-numpy: reliability test
 	conflicts = tahoe-lafs-i2p
-	source = https://tahoe-lafs.org/source/tahoe-lafs/releases/allmydata-tahoe-1.10.1.tar.bz2
-	sha256sums = 5bde7bd28fdd23e7c312381e2818d75e90a80c40b18562f171510a7c716fd4c0
+	source = https://tahoe-lafs.org/source/tahoe-lafs/releases/allmydata-tahoe-1.10.2.tar.bz2
+	sha256sums = fed5d719c966d9528a45e8ad66e6c8ff3dcb3c06db94775194c7c75566047be7
 
 pkgname = tahoe-lafs
 
