@@ -1,11 +1,10 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Kamil Kolosowski <kamelowaty@bridgelinux.pl>
 
-
 pkgbase=virtualbox-modules-bfs
 pkgname=('virtualbox-host-modules-bfs' 'virtualbox-guest-modules-bfs')
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
