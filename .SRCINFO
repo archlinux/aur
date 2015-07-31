@@ -1,0 +1,20 @@
+pkgbase = tagutil
+	pkgdesc = scriptable music files tags tool and editor
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/kAworu/tagutil
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = libyaml
+	depends = taglib
+	depends = flac
+	depends = libvorbis
+	depends = jansson
+	options = !emptydirs
+	source = https://github.com/kAworu/tagutil/archive/v3.0.2.tar.gz
+	md5sums = 5d434c7aa174b8d4a1b76e01b8bcd2a1
+
+pkgname = tagutil
+
