@@ -12,8 +12,8 @@ depends=('python-click' 'python-setuptools' 'python-lxml'
 checkdepends=('python-pytest' 'python-wsgi-intercept'
               'radicale' 'python-werkzeug-git' 'python-pytest-xprocess'
               'python-pytest-localserver')
-source=("https://github.com/untitaker/${pkgname}/archive/${pkgver}.zip")
-md5sums=('69e4cbddf631f57727e8f493122efa89')
+source=("https://pypi.python.org/packages/source/v/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('c42f52b404ea30ac3f7bd95e639ca6b5')
 
 # check() {
 #   cd "$srcdir/${pkgname}-$pkgver"
