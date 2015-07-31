@@ -8,26 +8,32 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=2.7.1
-pkgrel=3
+pkgver=2.7.2
+pkgrel=1
 epoch=1
-pkgdesc="Complete and free Internet live audio and video broadcasting solution (Same as official package except with libfdk-aac support)"
+pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom')
 depends=(
-      'alsa-lib' 'bzip2' 'fontconfig' 'gnutls' 'gsm' 'lame' 'libass' 'libvdpau'
-      'libbluray' 'libmodplug' 'libpulse' 'libtheora' 'libva' 'libwebp'
-      'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils'
-      'xvidcore' 'zlib' 'fribidi' 'libssh'
-      'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+      'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass' 
+      'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
+      'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
+      'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
+      'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
       'libfdk-aac'
       )
-makedepends=('libvdpau' 'yasm' 'hardening-wrapper')
+makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
+provides=(
+      'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+      'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+      'libswscale.so'
+)
 conflicts=("$_name")
-provides=("$_name=$pkgver" "qt-faststart")
-source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2)
-md5sums=('f159c6d7eed8546b23e1a17325cbf1f8')
+source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2{,.asc})
+validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
+md5sums=('7eb2140bab9f0a8669b65b50c8e4cfb5'
+         'SKIP')
 
 build() {
   cd $_name-$pkgver
@@ -55,6 +61,7 @@ build() {
     --enable-libopus \
     --enable-libpulse \
     --enable-libschroedinger \
+    --enable-libsoxr \
     --enable-libspeex \
     --enable-libssh \
     --enable-libtheora \
