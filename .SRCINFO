@@ -1,0 +1,11 @@
+pkgbase = digital-clock
+	pkgdesc = This application is a small clock widget for Linux desktop.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	depends = qt5-base
+	optdepends = git
+
+pkgname = digital-clock
+
