@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-plugin-reloader-git
-pkgver=0.r1.g8bc7c6e
+pkgver=0.r5.g055cafb
 pkgrel=1
 pkgdesc='Claws-mail Plugin Reloader Plugin - git checkout'
 arch=('i686' 'x86_64')
@@ -33,7 +33,6 @@ build() {
 package() {
 	cd claws-mail-plugin-reloader/
 
-	install -D -m0755 plugin-reloader.so "${pkgdir}"/usr/lib/claws-mail/plugins/plugin-reloader.so
-	#make DESTDIR="${pkgdir}" PREFIX="/usr/" install
+	make DESTDIR="${pkgdir}" PREFIX="/usr/" install
 }
 
