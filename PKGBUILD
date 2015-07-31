@@ -1,7 +1,7 @@
 # Maintainer: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=minecraft-server
-pkgver=1.8.6
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=(any)
@@ -19,7 +19,7 @@ source=(https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraft
 		minecraftctl
 		conf.minecraft)
 noextract=("minecraft_server.${pkgver}.jar")  
-sha256sums=('7fc66b2b54f0f4d65fdd6d6484a50f432c144ef02072d3435d5660f120f58e0d'
+sha256sums=('39aef720dc5309476f56f2e96a516f3dd3041bbbf442cbfd47d63acbd06af31e'
             '043101c29d4b4f9092cb93ef52168cfe3d16d49ff573136f4fbb45071a38a5d1'
             'de03317d02668bb71ec160fff497c7fbfe8b03ffff2950c6a0bcfb39f69cd214'
             '6eb4c085b8377712671445b891a3a2cf2a17cf7a7bea66be456a980c2b620e23'
