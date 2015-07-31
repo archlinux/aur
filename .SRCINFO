@@ -1,0 +1,19 @@
+pkgbase = syncplay-server-git
+	pkgdesc = Free software that synchronises media players so that faraway friends can watch videos together. (server version without pyside dependency)
+	pkgver = 1.3.1.r20.gb3bc4f5
+	pkgrel = 1
+	url = http://syncplay.pl/
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python2
+	depends = python2-twisted
+	provides = syncplay
+	conflicts = syncplay
+	source = syncplay-server-git::git://github.com/Syncplay/syncplay.git
+	source = syncplay.service
+	sha256sums = SKIP
+	sha256sums = 7b0db4ec2731288084d788fc26e11b14166b6886f406b26e9e1c4e67ed9feb0f
+
+pkgname = syncplay-server-git
+
