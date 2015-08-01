@@ -3,7 +3,7 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-ck
-pkgver=352.21
+pkgver=352.30
 _extramodules=extramodules-4.0-ck
 pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-ck."
@@ -20,8 +20,8 @@ install=nvidia-ck.install
 options=(!strip)
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums_i686=('616382a5f47e62c8f35509ce684a6ebc94e4a62c51208a11c5976517123040d0')
-sha256sums_x86_64=('cfccf25135bf5c33f68eb892e341b35126f6561f257b32893ccd055d624964eb')
+sha256sums_i686=('563eb858584f3eec38f137055039cd4addc7bb4c8f47f90e87a0cc1f88db32e3')
+sha256sums_x86_64=('0f7acc89b2392c71cc8713b0291606052e0cd8971ee951901dde37387d85efc0')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
