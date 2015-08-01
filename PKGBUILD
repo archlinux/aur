@@ -1,7 +1,7 @@
 # Maintainer: Roel Gerrits <roel@roelgerrits.nl>
 pkgname=nodm
 pkgver=0.7
-pkgrel=2
+pkgrel=12
 pkgdesc='X display manager for automatic logins'
 arch=('i386' 'x86_64')
 url='http://enricozini.org/sw/nodm/'

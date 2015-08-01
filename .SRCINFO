@@ -1,7 +1,7 @@
 pkgbase = nodm
 	pkgdesc = X display manager for automatic logins
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 12
 	url = http://enricozini.org/sw/nodm/
 	arch = i386
 	arch = x86_64
