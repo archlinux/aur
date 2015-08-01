@@ -1,6 +1,6 @@
 pkgbase = bitcoin-headless-addrindex
 	pkgdesc = Bitcoin Core headless P2P wallet with addrindex
-	pkgver = 0.10.2
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://github.com/btcdrak/bitcoin
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = bitcoin-headless-addrindex
 	conflicts = bitcoin-daemon
 	conflicts = bitcoin-qt
 	conflicts = bitcoin-tx
-	source = bitcoin-headless-addrindex-0.10.2.tar.gz::https://codeload.github.com/btcdrak/bitcoin/tar.gz/addrindex-0.10.2
-	sha256sums = f106c7925ffb6b840ecdf26242375c3958cb199d5de8d029c9d50d3a0c3f1d67
+	source = bitcoin-headless-addrindex-0.11.tar.gz::https://codeload.github.com/btcdrak/bitcoin/tar.gz/addrindex-0.11
+	sha256sums = 28a294f5ee8ea23b86e20f7484652c9579cccf2e6a50185c6160539fe4ba39ab
 
 pkgname = bitcoin-headless-addrindex
 
