@@ -1,0 +1,12 @@
+pkgbase = xcursor-neutral++
+	pkgdesc = Icon set based on Neutral and jaguarx themes.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Neutral%2B%2B?content=108142
+	arch = any
+	license = Artistic 2.0
+	source = http://gnome-look.org/CONTENT/content-files/108142-Neutral++-1.0.3.tar.xz
+	sha256sums = 23ec4fa3f7b62c023b8726b70d7a822ecd1f3cf90515b302d988f6fe58bce426
+
+pkgname = xcursor-neutral++
+
