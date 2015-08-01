@@ -1,0 +1,5 @@
+*.xz
+kdbus.install.pkg
+kdbus/
+pkg/
+src/

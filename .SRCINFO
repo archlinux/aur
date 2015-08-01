@@ -1,0 +1,27 @@
+pkgbase = kdbus
+	pkgver = 4.1
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/systemd/kdbus
+	install = kdbus.install
+	arch = i686
+	arch = x86_64
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = libxslt
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = linux-headers>=4.1
+	makedepends = linux-headers<4.2
+	options = debug
+	options = !strip
+	source = git://github.com/systemd/kdbus.git#branch=v4.1
+	md5sums = SKIP
+
+pkgname = kdbus
+	pkgdesc = kdbus ipc kernel module
+	license = GPL2
+	depends = linux>=4.1
+	depends = linux<4.2
+
