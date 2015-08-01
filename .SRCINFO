@@ -1,0 +1,17 @@
+pkgbase = db4.8
+	pkgdesc = The Berkeley DB embedded database system 4.8
+	pkgver = 4.8.30
+	pkgrel = 3
+	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	options = !libtool
+	options = !makeflags
+	source = http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz
+	md5sums = f80022099c5742cd179343556179aa8c
+	sha1sums = ab36c170dda5b2ceaad3915ced96e41c6b7e493c
+
+pkgname = db4.8
+
