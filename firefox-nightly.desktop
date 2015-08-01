@@ -10,4 +10,3 @@ Exec=firefox-nightly %u
 Terminal=false
 MultipleArgs=false
 StartupNotify=false
-StartupWMClass=Firefox
