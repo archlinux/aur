@@ -2,7 +2,7 @@
 pkgname=veejay-utils-git
 _name=veejay-utils
 _pkgroot=veejay
-pkgver=1.5.51.r35.gedd474e
+pkgver=1.5.57.r0.g6a72022
 pkgrel=1
 pkgdesc="Veejay is a visual instrument and realtime video sampler for GNU/Linux"
 arch=('i686' 'x86_64')
