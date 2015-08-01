@@ -3,7 +3,7 @@
 _pkgname=mwparserfromhell
 pkgname=python-mwparserfromhell-git
 pkgdesc="A Python parser for MediaWiki wikicode"
-pkgver=0.4.20.gf16c7e2
+pkgver=0.4.2.r2.g5cf1309
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/earwig/mwparserfromhell"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags --always | sed 's|^v||;s|-|.|g'
+  git describe --tags --always | sed 's|^v||;s|\([^-]*-g\)|r\1|;s|-|.|g'
 }
 
 build() {

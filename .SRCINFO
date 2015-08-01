@@ -1,6 +1,6 @@
 pkgbase = python-mwparserfromhell-git
 	pkgdesc = A Python parser for MediaWiki wikicode
-	pkgver = 0.4.20.gf16c7e2
+	pkgver = 0.4.2.r2.g5cf1309
 	pkgrel = 1
 	url = https://github.com/earwig/mwparserfromhell
 	arch = i686
