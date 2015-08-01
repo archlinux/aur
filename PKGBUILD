@@ -4,7 +4,7 @@ pkgname=cloudzec-git
 _pkgname=cloudzec
 provides=('cloudzec')
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='CloudZec sync (short „cloudzec“) is a free synchronisation solution with end-to-end encryption, based on stable technologies like GnuPG and SFTP'
 url='http://cloudzec.org'
 conflicts=('cloudzec')
@@ -17,7 +17,7 @@ optdepends=(
     'python-keyring: Keyring integration'
 )
 makedepends=('git')
-source=('git://github.com/revogit/cloudzec.git')
+source=('git://github.com/KopfKrieg/cloudzec.git')
 sha1sums=('SKIP')
 
 pkgver() {
