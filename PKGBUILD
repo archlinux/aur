@@ -30,5 +30,7 @@ package() {
 	cd "$srcdir/$_pkgname"
 	install -D -m755 libiniparser.so.0 "${pkgdir}/usr/lib/libiniparser.so.0"
 	ln -s "libiniparser.so.0" "${pkgdir}/usr/lib/libiniparser.so"
+	install -D -m744 src/iniparser.h "${pkgdir}/usr/include/iniparser.h"
+	install -D -m744 src/dictionary.h "${pkgdir}/usr/include/dictionary.h"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
