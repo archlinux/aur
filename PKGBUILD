@@ -7,7 +7,7 @@
 pkgname=lxterminal-gtk3
 _pkgname=lxterminal
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="VTE-based terminal emulator (part of LXDE, GTK+ 3 version)"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -16,7 +16,6 @@ groups=('lxde-gtk3')
 depends=('vte3')
 makedepends=('intltool')
 conflicts=($_pkgname)
-provides=($_pkgname)
 install=$_pkgname.install
 source=(http://downloads.sourceforge.net/lxde/${_pkgname}-${pkgver}.tar.gz
         0001-Port-to-vte-2.91-API.patch
