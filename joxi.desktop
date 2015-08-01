@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Network;Application;
+Comment=Joxi
+Exec=joxi
+GenericName=joxi
+Name=Joxi
+X-KDE-StartupNotify=true
+MimeType=application/x-designer;
+Icon=joxi.png
+Terminal=false
+Type=Application
+Version=0.1
+Name[ru_RU]=Joxi
