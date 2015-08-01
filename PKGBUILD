@@ -2,7 +2,7 @@
 
 pkgname=pfclient
 pkgver=3.0.2080
-pkgrel=2
+pkgrel=3
 pkgdesc="Planefinder.net sharing client"
 arch=('any')
 url="https://planefinder.net/sharing/client"

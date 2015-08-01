@@ -6,10 +6,10 @@ After=syslog.target network-online.target
 [Service]
 Restart=always
 RestartSec=30
-ExecStart=/usr/bin/pfclient-beta --daemon --log_path=/var/log --config_path=/etc/pfclient/pfclient-config.json --pid_file=/var/run/pfclient-beta.pid
+ExecStart=/usr/bin/pfclient --daemon --log_path=/var/log --config_path=/etc/pfclient/pfclient-config.json --pid_file=/var/run/pfclient.pid
 ExecStop=/usr/bin/kill -INT $MAINPID
 Type=forking
-PIDFile=/var/run/pfclient-beta.pid
+PIDFile=/var/run/pfclient.pid
 
 [Install]
 WantedBy=multi-user.target

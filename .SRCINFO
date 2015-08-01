@@ -1,7 +1,7 @@
 pkgbase = pfclient
 	pkgdesc = Planefinder.net sharing client
 	pkgver = 3.0.2080
-	pkgrel = 2
+	pkgrel = 3
 	url = https://planefinder.net/sharing/client
 	install = pfclient.install
 	arch = any
