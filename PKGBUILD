@@ -7,7 +7,7 @@
 pkgname=lxsession-gtk3
 _pkgname=lxsession
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight X11 session manager (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
@@ -16,7 +16,6 @@ groups=('lxde-gtk3')
 depends=('dbus-glib' 'gtk3' 'polkit')
 makedepends=('intltool' 'docbook-xsl' 'vala')
 conflicts=($_pkgname)
-provides=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
         0001-Beautify-GtkBuilder-UI-file-of-lxpolkit-without-modi.patch
         0002-Some-fixes-for-GTK-3.patch
