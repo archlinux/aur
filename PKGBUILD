@@ -3,7 +3,7 @@
 _pkgname=avogadro2
 pkgname="${_pkgname}-git"
 _gitname=avogadroapp
-pkgver=0.8.0.r969.2d2f8d3
+pkgver=0.8.0.r298.506264a
 pkgrel=1
 pkgdesc="Avogadro 2: graphical application"
 url="http://openchemistry.org/projects/avogadro2"
@@ -14,8 +14,8 @@ makedepends=("git" "cmake" "eigen3")
 install=avogadro2.install
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git://github.com/OpenChemistry/${_gitname}.git")
-sha256sums=("SKIP")
+source=("${_pkgname}::git://github.com/OpenChemistry/${_gitname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -27,7 +27,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${_pkgname}"
   cmake \
       -DCMAKE_BUILD_TYPE:STRING=Release \
       -DCMAKE_INSTALL_PREFIX:PATH=/usr \
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
   install -D -m 644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
