@@ -1,0 +1,23 @@
+pkgbase = chemkit-builder-git
+	pkgdesc = Lightweight molecular editor built using chemkit
+	pkgver = 6
+	pkgrel = 1
+	url = http://www.chemkit.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = eigen3
+	makedepends = boost
+	depends = qt4
+	depends = boost-libs
+	depends = glu
+	depends = chemkit
+	provides = chemkit-builder
+	conflicts = chemkit-builder
+	source = git+https://github.com/kylelutz/chemkit-builder
+	sha256sums = SKIP
+
+pkgname = chemkit-builder-git
+
