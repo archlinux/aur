@@ -1,0 +1,16 @@
+pkgbase = mapslicer-git
+	pkgdesc = a graphical application for online map publishing
+	pkgver = 1.0.rc1.r14.g053ff10
+	pkgrel = 1
+	epoch = 0
+	url = https://wiki.osgeo.org/wiki/MapSlicer
+	arch = any
+	license = BSD
+	depends = gdal
+	depends = python2
+	depends = wxpython2.8
+	source = mapslicer-git::git+https://github.com/geopython/mapslicer.git
+	sha512sums = SKIP
+
+pkgname = mapslicer-git
+
