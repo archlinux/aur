@@ -6,7 +6,7 @@
 
 pkgbase=dbus-selinux
 pkgname=('dbus-selinux' 'libdbus-selinux')
-pkgver=1.8.18
+pkgver=1.8.20
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="http://www.freedesktop.org/Software/dbus"
@@ -16,7 +16,7 @@ groups=('selinux')
 makedepends=('libx11' 'systemd-selinux' 'xmlto' 'docbook-xsl' 'audit' 'libselinux')
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz{,.asc}
         30-dbus)
-md5sums=('83e607e9ccb1c921d5b6bbea2376a36c'
+md5sums=('b49890bbabedab3a1c3f4f73c7ff8b2b'
          'SKIP'
          '6683a05bd749929ef9442816c22c3268')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -28,7 +28,7 @@ build() {
       --with-system-pid-file=/run/dbus/pid \
       --with-system-socket=/run/dbus/system_bus_socket \
       --with-console-auth-dir=/run/console/ \
-      --enable-inotify --disable-dnotify \
+      --enable-inotify \
       --disable-verbose-mode --disable-static \
       --disable-tests --disable-asserts \
       --with-systemdsystemunitdir=/usr/lib/systemd/system \
