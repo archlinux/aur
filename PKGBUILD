@@ -7,7 +7,7 @@
 pkgname=lxdm-gtk3
 _pkgname=lxdm
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight X11 Display Manager (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/lxdm/"
@@ -15,11 +15,9 @@ license=('GPL')
 groups=('lxde-gtk3')
 depends=('gtk3' 'xorg-server')
 makedepends=('intltool' 'iso-codes')
-optdepends=('gtk-engines: default GTK+ theme'
-            'iso-codes: show language names in language chooser'
+optdepends=('iso-codes: show language names in language chooser'
             'librsvg: display the default background')
 conflicts=($_pkgname)
-provides=($_pkgname)
 install=$_pkgname.install
 backup=('etc/lxdm/lxdm.conf' 'etc/pam.d/lxdm' 'etc/lxdm/Xsession'
         'etc/lxdm/PreLogin' 'etc/lxdm/LoginReady' 'etc/lxdm/PostLogin'
