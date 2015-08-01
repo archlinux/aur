@@ -1,4 +1,4 @@
-pkgbase = newsbeuter2.8-git
+pkgbase = newsbeuter2.8
 	pkgdesc = A RSS feed reader for the text console with special Podcast support.
 	pkgver = 1728.e425e3e
 	pkgrel = 1
@@ -24,5 +24,5 @@ pkgbase = newsbeuter2.8-git
 	source = git://github.com/akrennmair/newsbeuter.git#tag=r2.8
 	sha1sums = SKIP
 
-pkgname = newsbeuter2.8-git
+pkgname = newsbeuter2.8
 
