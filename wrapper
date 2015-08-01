@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir -p ~/.synergy/plugins
+ln -sf /usr/lib/synergy/libns.so ~/.synergy/plugins/libns.so
+exec "/usr/lib/synergy/$(basename $0)" "$@"
