@@ -1,0 +1,15 @@
+pkgbase = ttf-material-icons
+	pkgdesc = Google Material Design icon font
+	pkgver = r69.60e4c5d
+	pkgrel = 1
+	url = https://github.com/google/material-design-icons
+	install = ttf-material-icons.install
+	arch = any
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = git://github.com/google/material-design-icons.git
+	md5sums = SKIP
+
+pkgname = ttf-material-icons
+
