@@ -15,7 +15,7 @@ pkgdesc="The Official Android IDE. Canary branch"
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/installing/studio.html"
 license=('APACHE')
-depends=('java-environment' 'python')
+depends=('java-environment' 'python' 'gtk2')
 makedepends=('unzip')
 optdepends=('android-sdk' 'android-sdk-platform-tools' 'android-sdk-build-tools')
 provides=("android-studio=$pkgver")

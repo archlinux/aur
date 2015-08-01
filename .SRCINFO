@@ -10,6 +10,7 @@ pkgbase = android-studio-canary
 	makedepends = unzip
 	depends = java-environment
 	depends = python
+	depends = gtk2
 	depends = fontconfig
 	depends = libxrender
 	depends = mesa
