@@ -1,7 +1,7 @@
 pkgbase = lxlauncher-gtk3
 	pkgdesc = Open source clone of the Asus launcher for EeePC (GTK+ 3 version)
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lxde.org/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = lxlauncher-gtk3
 	depends = startup-notification
 	depends = lxmenu-data
 	depends = menu-cache
-	provides = lxlauncher
 	conflicts = lxlauncher
 	backup = etc/xdg/lxlauncher/gtkrc
 	backup = etc/xdg/lxlauncher/settings.conf

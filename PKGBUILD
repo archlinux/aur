@@ -7,7 +7,7 @@
 pkgname=lxlauncher-gtk3
 _pkgname=lxlauncher
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source clone of the Asus launcher for EeePC (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -16,7 +16,6 @@ groups=('lxde-gtk3')
 depends=('gtk3' 'startup-notification' 'lxmenu-data' 'menu-cache')
 makedepends=('intltool')
 conflicts=($_pkgname)
-provides=($_pkgname)
 backup=('etc/xdg/lxlauncher/gtkrc' 'etc/xdg/lxlauncher/settings.conf')
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
         0001-Workaround-for-invisible-icons-on-GTK-3.patch
