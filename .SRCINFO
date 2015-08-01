@@ -1,0 +1,12 @@
+pkgbase = timgm6mb
+	pkgdesc = A low-overhead soundfont for software synthesizers
+	pkgver = 1
+	pkgrel = 1
+	url = http://ocmnet.com/saxguru/Timidity.htm
+	arch = any
+	license = GPL2
+	source = http://sourceforge.net/p/mscore/code/HEAD/tree/trunk/mscore/share/sound/TimGM6mb.sf2?format=raw
+	md5sums = 1f1ad87ae6f87033d9a591eca567d919
+
+pkgname = timgm6mb
+
