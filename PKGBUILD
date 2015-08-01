@@ -27,6 +27,6 @@ build()
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/$pkgname"
   ./waf install
 }
