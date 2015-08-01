@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="serialosc is an OSC server for Monomes"
 arch=("i686" "x86_64")
 license=("ISC")
-url=("https://github.com/monome/serialosc")
+url="https://github.com/monome/serialosc"
 source=("$pkgname::git+https://github.com/monome/serialosc")
 md5sums=('SKIP')
 
