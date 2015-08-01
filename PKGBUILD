@@ -1,5 +1,5 @@
 # Copied from Florian Bruhin's PKGBUILD
-pkgname=newsbeuter2.8-git
+pkgname=newsbeuter2.8
 pkgver=1728.e425e3e
 pkgrel=1
 pkgdesc='A RSS feed reader for the text console with special Podcast support.'
