@@ -1,0 +1,17 @@
+pkgbase = owncloud-app-contacts-git
+	pkgdesc = Contacts app for owncloud
+	pkgver = v0.4.0.0.r78.g484fce0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/owncloud/contacts
+	arch = any
+	license = GPL
+	depends = owncloud
+	provides = owncloud-app-contacts
+	conflicts = owncloud-app-contacts
+	options = !strip
+	source = git+https://github.com/owncloud/contacts.git
+	md5sums = SKIP
+
+pkgname = owncloud-app-contacts-git
+
