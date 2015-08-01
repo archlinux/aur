@@ -1,0 +1,20 @@
+pkgbase = bash-git-prompt
+	pkgdesc = Informative git prompt for bash and fish
+	pkgver = 2.3.5
+	pkgrel = 1
+	url = https://github.com/magicmonty/bash-git-prompt
+	install = bash-git-prompt.install
+	arch = any
+	license = custom:BSD 2 Clause (NetBSD)
+	makedepends = git
+	depends = bash
+	optdepends = fish: git prompt in fish support
+	source = git+https://github.com/magicmonty/bash-git-prompt
+	source = bash-git-prompt.install
+	source = removed_spacing.patch
+	md5sums = SKIP
+	md5sums = 1e762bd413b6efdec225928da5aa6451
+	md5sums = 513706d4f97f775a60325bc31574d197
+
+pkgname = bash-git-prompt
+
