@@ -1,0 +1,21 @@
+pkgbase = mairix-largembox
+	pkgdesc = A program for indexing and searching emails, with a patch that allows parsing of large mbox files
+	pkgver = 0.23.r9.gbb9cfd5
+	pkgrel = 1
+	url = https://github.com/adiel-mittmann/mairix
+	install = mairix-largembox.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = flex
+	makedepends = bison
+	depends = bzip2
+	depends = zlib
+	provides = mairix
+	conflicts = mairix
+	source = git+https://github.com/adiel-mittmann/mairix.git
+	sha256sums = SKIP
+
+pkgname = mairix-largembox
+

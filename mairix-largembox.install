@@ -1,0 +1,12 @@
+post_install() {
+
+cat << EOM
+
+==> mairix post-install message:
+
+==> copy /etc/mairixrc.sample in ~/.mairixrc
+==> and edit it according to your needs.
+
+EOM
+
+}
