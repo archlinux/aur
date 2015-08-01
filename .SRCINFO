@@ -1,0 +1,36 @@
+pkgbase = love07
+	pkgdesc = An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences
+	pkgver = 0.7.2
+	pkgrel = 5
+	url = http://love2d.org/
+	install = love07.install
+	arch = i686
+	arch = x86_64
+	license = zlib
+	depends = desktop-file-utils
+	depends = devil
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = libmodplug
+	depends = libvorbis
+	depends = luajit
+	depends = mpg123
+	depends = openal
+	depends = physfs
+	depends = sdl
+	depends = shared-mime-info
+	source = https://bitbucket.org/rude/love/downloads/love-0.7.2-linux-src.tar.gz
+	source = https://bitbucket.org/rude/love/raw/0.7.2/license.txt
+	source = https://bitbucket.org/rude/love/raw/0.7.2/platform/unix/app.svg
+	source = https://bitbucket.org/rude/love/raw/0.7.2/platform/unix/game.svg
+	source = love.desktop
+	source = https://bitbucket.org/rude/love/raw/0.7.2/platform/unix/love.xml
+	sha256sums = a57adcb0cbdc390a9bd8e2fe477bc175799b9ffd3486e01f859a36bf27f7f268
+	sha256sums = c4cb43c06ab89c84349704a62849e9e66bf0c245e8a4df4f9068204124de1845
+	sha256sums = b8116c4cc8d7b80adba579b582b9570d8178f93d3d9e35977d621e03500b8a7f
+	sha256sums = 7452bc537980d6fdd6293d8bdaedbfa68264fa9bb160503d9b1ad16c8278b6af
+	sha256sums = d045b6c1aeb8fdb9ec33c75d204e0698f34e863063c274633b79e8b1b7f7a302
+	sha256sums = 5b72ae3818ada71ec7fd69c2a27126dc5c759257e1ff203639655c389a24ccb1
+
+pkgname = love07
+

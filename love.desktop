@@ -1,0 +1,11 @@
+ 
+[Desktop Entry]
+Name=LÖVE
+Comment=The unquestionably awesome 2D game engine
+MimeType=application/x-love-game;
+Exec=/usr/bin/love07
+Type=Application
+Categories=Development;Game;
+Terminal=false
+Icon=love.svg
+NoDisplay=true
