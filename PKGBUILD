@@ -2,7 +2,7 @@
 pkgname=klish
 pkgver=2.0.4
 pkgrel=1
-pkgdesc="A modular framework for implementing a CISCO-like CLI"
+pkgdesc="A modular framework for implementing a CISCO-like CLI. The klish is a fork of clish 0.7.3 project."
 arch=('i686' 'x86_64')
 url="http://libcode.org/projects/klish"
 license=('BSD')
