@@ -1,6 +1,7 @@
+
 # Maintainer: Valsu [arch(at)hylia.de]
 
-pkgname=timgm6mb
+pkgname=soundfont-timgm6mb
 pkgver=1
 pkgrel=1
 pkgdesc="A low-overhead soundfont for software synthesizers"
