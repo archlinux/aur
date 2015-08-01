@@ -1,0 +1,15 @@
+pkgbase = qt-color-picker-common
+	pkgdesc = Common files used by qt4- and qt5-color-picker packages
+	pkgver = 0.r92.2e1ec20
+	pkgrel = 1
+	url = https://github.com/mbasaglia/Qt-Color-Picker
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = qtchooser
+	source = qt-color-picker-common::git+git://github.com/mbasaglia/Qt-Color-Picker.git
+	sha256sums = SKIP
+
+pkgname = qt-color-picker-common
+
