@@ -1,0 +1,12 @@
+post_install() {
+	echo 'ldm expects a config file at /etc/ldm.conf containing your user and group id (uid and gid respectively).'
+	echo 'Just add those three lines into it:'
+	echo 'USER_GID=<output of `id -g` ran from your user>'
+	echo 'USER_UID=<output of `id -u` ran from your user>'
+	echo 'BASE_MOUNTPOINT=/mnt/'
+}
+post_upgrade() {
+	if [ ! -f /etc/ldm.conf ]; then
+    echo 'NOTE: The configuration file has been moved to /etc/ldm.conf'
+	fi
+}
