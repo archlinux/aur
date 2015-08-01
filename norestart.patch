@@ -1,0 +1,60 @@
+diff -aur nodm-0.7/nodm.c nodm-0.7-new/nodm.c
+--- nodm-0.7/nodm.c	2009-07-26 20:36:14.000000000 +0200
++++ nodm-0.7-new/nodm.c	2011-03-02 15:19:23.960000382 +0100
+@@ -427,8 +427,10 @@
+  * @param mst
+  *   The minimum time (in seconds) that a session should last to be considered
+  *   successful
++ * @param xrestart
++ *   Boolean option whether to restart X or not
+  */
+-void run_and_restart(const char* xinit, const char* xsession, const char* xoptions, int mst)
++void run_and_restart(const char* xinit, const char* xsession, const char* xoptions, int mst, int xrestart)
+ {
+ 	static int retry_times[] = { 0, 0, 30, 30, 60, 60, -1 };
+ 	int restart_count = 0;
+@@ -446,8 +448,7 @@
+ 	args[2] = command;
+ 	args[3] = 0;
+ 
+-	while (1)
+-	{
++	do {
+ 		/* Run the X server */
+ 		time_t begin = time(NULL);
+ 		time_t end;
+@@ -470,7 +471,7 @@
+ 		/* Sleep a bit if the session was too short */
+ 		sleep(retry_times[restart_count]);
+ 		syslog (LOG_INFO, "Restarting session for %s", name);
+-	}
++	} while (xrestart);
+ }
+ 
+ /*
+@@ -525,6 +526,7 @@
+ 	int mst;
+ 	int vt_fd = -1;
+ 	int vt_num;
++	int xrestart = 0;
+ 
+ 	/* Parse command line options */
+ 	while (1)
+@@ -576,6 +578,8 @@
+ 	/* Read the configuration from the environment */
+ 	cp = getenv("NODM_MIN_SESSION_TIME");
+ 	mst = cp ? atoi(cp) : 60;
++	cp = getenv("NODM_RESTART_SESSION");
++    xrestart = cp ? atoi(cp) : 0;
+ 	string_from_env(xinit, "NODM_XINIT", "/usr/bin/xinit");
+ 	string_from_env(xoptions, "NODM_X_OPTIONS", "");
+ 
+@@ -585,7 +589,7 @@
+ 		snprintf(xoptions1, BUFSIZ, "vt%d %s", vt_num, xoptions);
+ 
+ 	setenv("NODM_RUN_SESSION", "1", 1);
+-	run_and_restart(xinit, opt_session, xoptions1, mst);
++	run_and_restart(xinit, opt_session, xoptions1, mst, xrestart);
+ 
+ 	close(vt_fd);
+ 

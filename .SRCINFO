@@ -1,7 +1,7 @@
 pkgbase = nodm
 	pkgdesc = X display manager for automatic logins
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://enricozini.org/sw/nodm/
 	arch = i386
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = nodm
 	source = http://enricozini.org/sw/nodm/nodm-0.7.tar.gz
 	source = nodm.conf
 	source = nodm.service
+	source = norestart.patch
 	md5sums = 6a569e9be7baf56de5c5813483d0357c
 	md5sums = e0ba34eb1fac0b2ec3fe73fcbb3b8f6a
 	md5sums = a93a5afdb4e68643840166796fa3a6a3
+	md5sums = 5076b2fe19551c42e3f5cd8bf445927f
 
 pkgname = nodm
 

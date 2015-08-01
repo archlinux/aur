@@ -1,7 +1,7 @@
 # Maintainer: Roel Gerrits <roel@roelgerrits.nl>
 pkgname=nodm
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='X display manager for automatic logins'
 arch=('i386' 'x86_64')
 url='http://enricozini.org/sw/nodm/'
@@ -15,11 +15,13 @@ backup=('etc/nodm.conf')
 
 source=("http://enricozini.org/sw/nodm/$pkgname-$pkgver.tar.gz"
 	"nodm.conf"
-	"nodm.service")
+	"nodm.service"
+	"norestart.patch")
 
 md5sums=('6a569e9be7baf56de5c5813483d0357c'
          'e0ba34eb1fac0b2ec3fe73fcbb3b8f6a'
-         'a93a5afdb4e68643840166796fa3a6a3')
+         'a93a5afdb4e68643840166796fa3a6a3'
+         '5076b2fe19551c42e3f5cd8bf445927f')
 
 build()
 {
