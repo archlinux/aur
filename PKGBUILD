@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex
-pkgver=0.10.2
+pkgver=0.11
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('f106c7925ffb6b840ecdf26242375c3958cb199d5de8d029c9d50d3a0c3f1d67'
+sha256sums=('28a294f5ee8ea23b86e20f7484652c9579cccf2e6a50185c6160539fe4ba39ab'
             '8a56413f8946861390a9992411a3730bc085ee02b852c27371cacfa5ec50e939'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
