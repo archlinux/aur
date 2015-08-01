@@ -1,0 +1,17 @@
+pkgbase = progress
+	pkgdesc = Shows running coreutils basic commands and displays stats
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/Xfennec/progress
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	depends = ncurses
+	replaces = cv
+	source = progress-0.8.tar.gz::https://codeload.github.com/Xfennec/progress/tar.gz/v0.8
+	sha256sums = 52ad6d805eb9826de297ba495cfde3df1deb6288f97ff67e7f93431efa006d34
+
+pkgname = progress
+
