@@ -1,0 +1,4 @@
+2015-08-01 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1.2.0.r14.g707ad84-1 :
+	Remove patch for missing sstream header (issue #19 fixed).
