@@ -10,9 +10,11 @@ pkgbase = xmlada
 	source = http://mirrors.cdn.adacore.com/art/949752df2432aed8d06c48d57cea71f38d0517cc
 	source = Makefile.archy
 	source = generic_gpr.in
+	source = patch-xmlada-config.in
 	md5sums = 98c96b8c6a877617ec4da3ef6a03288a
 	md5sums = 9784cefc4f5964b2469504f83957418f
 	md5sums = cde06f485e180f4cc82bcdb450d36153
+	md5sums = 0b2eaa5ff3314a3dfcca66425d8f5d81
 
 pkgname = xmlada
 
