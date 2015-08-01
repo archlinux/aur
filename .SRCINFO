@@ -1,13 +1,14 @@
 pkgbase = qt4-color-picker
 	pkgdesc = A user-friendly color wheel widget and dialog for Qt
 	pkgver = 0.r92.2e1ec20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mbasaglia/Qt-Color-Picker
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
 	depends = qt4
+	depends = qt-color-picker-common
 	source = qt4-color-picker::git+git://github.com/mbasaglia/Qt-Color-Picker.git
 	sha256sums = SKIP
 
