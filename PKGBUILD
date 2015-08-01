@@ -3,8 +3,8 @@
 
 pkgname=chicken-readline
 _pkgname=readline
-pkgver=3.1.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='An interface to the GNU readline library'
 arch=('i686' 'x86_64')
 url='http://wiki.call-cc.org/eggref/4/readline'
