@@ -1,6 +1,6 @@
 pkgbase = asymptote-svn
 	pkgdesc = A vector graphics language (like metapost)
-	pkgver = r5722
+	pkgver = r5723
 	pkgrel = 1
 	url = http://asymptote.sourceforge.net/
 	install = texlive.install
