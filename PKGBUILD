@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
-pkgver=0.6.1rc1_51_gf0d31ad
+pkgver=0.6.1rc1_53_gec58e45
 epoch=1
-_gitver=f0d31ad33cf08d39186e08914bbcfa7853126c4c
+_gitver=ec58e456072d962a18cb50f4324d266ba4a2aae8
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
@@ -34,6 +34,9 @@ prepare() {
 
   # Enable EOS_TRICKSPEED to fix rewind on 1080i channels
   sed -i 's/#CONFIG += -DH264_EOS_TRICKSPEED/CONFIG += -DH264_EOS_TRICKSPEED/g' Makefile
+
+  # Enable USE_MPEG_COMPLETE to fix partially missing video decoding of SD channels
+  sed -i 's/#CONFIG += -DUSE_MPEG_COMPLETE/CONFIG += -DUSE_MPEG_COMPLETE/g' Makefile
 
   # Enable this to increase AV_INFO logging
   #sed -i 's/3000/500/g' Makefile
