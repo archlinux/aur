@@ -11,7 +11,7 @@ url=http://libre.adacore.com/tools/$_pkgname
 license=(GPL)
 groups=(gcc-ada)
 
-depends=(gcc-ada asis)
+depends=(gcc-ada asis prepare_gnat_util)
 makedepends=(gprbuild)
 
 provides=($_pkgname ada-web-server)
