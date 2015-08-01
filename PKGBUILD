@@ -8,7 +8,7 @@
 pkgname=libfm-gtk3
 _pkgname=libfm
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for file management (GTK+ 3 version)'
 url='http://pcmanfm.sourceforge.net/'
 arch=('i686' 'x86_64')
@@ -16,14 +16,16 @@ license=('GPL')
 depends=('gtk3' 'menu-cache' 'desktop-file-utils' 'libexif' 'dbus-glib')
 makedepends=('udisks' 'intltool' 'gtk-doc')
 conflicts=($_pkgname)
-source=(http://downloads.sourceforge.net/pcmanfm/$_pkgname-$pkgver.tar.xz)
-md5sums=('3ff38200701658f7e80e25ed395d92dd')
+source=(http://downloads.sourceforge.net/pcmanfm/$_pkgname-$pkgver.tar.xz
+        git-fixes.patch)
+md5sums=('3ff38200701658f7e80e25ed395d92dd'
+         '9bdeea70bd0911dd473097c5bd8e861e')
 
 prepare() {
   cd $_pkgname-$pkgver
 
-  # Fix some dialogs
-  sed -i 's|<property name="has_separator">False</property>||g' data/ui/*
+  # Apply fixes from git
+  patch -Np1 -i ../git-fixes.patch
 }
 
 build() {

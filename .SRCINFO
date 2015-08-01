@@ -1,7 +1,7 @@
 pkgbase = libfm-gtk3
 	pkgdesc = Library for file management (GTK+ 3 version)
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pcmanfm.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = libfm-gtk3
 	depends = dbus-glib
 	conflicts = libfm
 	source = http://downloads.sourceforge.net/pcmanfm/libfm-1.2.3.tar.xz
+	source = git-fixes.patch
 	md5sums = 3ff38200701658f7e80e25ed395d92dd
+	md5sums = 9bdeea70bd0911dd473097c5bd8e861e
 
 pkgname = libfm-gtk3
 	install = libfm.install

@@ -1,0 +1,1615 @@
+diff --git a/data/terminals.list b/data/terminals.list
+index fb4ee8b..2974711 100644
+--- a/data/terminals.list
++++ b/data/terminals.list
+@@ -31,7 +31,7 @@ open_arg=-e
+ [urxvt]
+ open_arg=-e
+ noclose_arg=-hold -e
+-desktop_id=urxvt.desktop
++desktop_id=rxvt-unicode.desktop
+ 
+ [eterm]
+ open_arg=-e
+@@ -61,3 +61,12 @@ desktop_id=qterminal.desktop
+ open_arg=-e
+ noclose_arg=--hold -e
+ desktop_id=lilyterm.desktop
++
++[urxvtc]
++open_arg=-e
++noclose_arg=-hold -e
++
++[terminology]
++open_arg=-e
++noclose_arg=--hold -e
++desktop_id=terminology.desktop
+diff --git a/data/ui/choose-icon.ui b/data/ui/choose-icon.ui
+index 32375b5..18e822d 100644
+--- a/data/ui/choose-icon.ui
++++ b/data/ui/choose-icon.ui
+@@ -16,7 +16,6 @@
+     <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
+     <property name="focus_on_map">True</property>
+     <property name="urgency_hint">False</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox1">
+         <property name="visible">True</property>
+@@ -164,7 +163,6 @@
+                     <property name="visible">True</property>
+                     <property name="can_focus">True</property>
+                     <property name="selection_mode">GTK_SELECTION_SINGLE</property>
+-                    <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                     <property name="reorderable">False</property>
+                   </object>
+                 </child>
+diff --git a/data/ui/exec-file.glade b/data/ui/exec-file.glade
+index 042f1f1..7c51df6 100644
+--- a/data/ui/exec-file.glade
++++ b/data/ui/exec-file.glade
+@@ -7,7 +7,6 @@
+     <property name="title" translatable="yes">Execute File</property>
+     <property name="window_position">center</property>
+     <property name="type_hint">normal</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox1">
+         <property name="visible">True</property>
+diff --git a/data/ui/filesearch.glade b/data/ui/filesearch.glade
+index d8e93d4..f689a57 100644
+--- a/data/ui/filesearch.glade
++++ b/data/ui/filesearch.glade
+@@ -183,9 +183,6 @@
+             <property name="visible">True</property>
+             <property name="can_focus">True</property>
+             <property name="scrollable">True</property>
+-            <property name="tab_border">0</property>
+-            <property name="tab_hborder">0</property>
+-            <property name="tab_vborder">0</property>
+             <child>
+               <object class="GtkVBox" id="general_settings_container">
+                 <property name="visible">True</property>
+diff --git a/data/ui/preferred-apps.glade b/data/ui/preferred-apps.glade
+index 84f26b5..327cb63 100644
+--- a/data/ui/preferred-apps.glade
++++ b/data/ui/preferred-apps.glade
+@@ -7,7 +7,6 @@
+     <property name="title" translatable="yes">Preferred Applications</property>
+     <property name="window_position">center</property>
+     <property name="type_hint">normal</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox1">
+         <property name="visible">True</property>
+diff --git a/src/base/fm-app-info.c b/src/base/fm-app-info.c
+index 1578702..6dc2cc5 100644
+--- a/src/base/fm-app-info.c
++++ b/src/base/fm-app-info.c
+@@ -2,6 +2,7 @@
+  *      fm-app-info.c
+  *
+  *      Copyright 2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This file is a part of the Libfm library.
+  *
+@@ -88,6 +89,8 @@ static char* expand_exec_macros(GAppInfo* app, const char* full_desktop_path,
+     GFile *file = NULL;
+     GList *fl = NULL;
+ 
++    if (exec == NULL)
++        return NULL;
+     cmd = g_string_sized_new(1024);
+     for(p = exec; *p; ++p)
+     {
+@@ -134,6 +137,8 @@ static char* expand_exec_macros(GAppInfo* app, const char* full_desktop_path,
+                 g_string_append_c(cmd, '%');
+                 break;
+             case 'i':
++                if (kf == NULL)
++                    break;
+                 {
+                     char* icon_name = g_key_file_get_locale_string(kf, "Desktop Entry",
+                                                                    "Icon", NULL, NULL);
+@@ -149,7 +154,11 @@ static char* expand_exec_macros(GAppInfo* app, const char* full_desktop_path,
+                 {
+                     const char* name = g_app_info_get_name(app);
+                     if(name)
+-                        g_string_append(cmd, name);
++                    {
++                        char *quoted = g_shell_quote(name);
++                        g_string_append(cmd, quoted);
++                        g_free(quoted);
++                    }
+                     break;
+                 }
+             case 'k':
+@@ -200,6 +209,15 @@ static void child_setup(gpointer user_data)
+     setpgid(0, data->pgid);
+ }
+ 
++static void child_watch(GPid pid, gint status, gpointer user_data)
++{
++    /*
++     * Ensure that we don't double fork and break pkexec
++     */
++    g_spawn_close_pid(pid);
++}
++
++
+ static char* expand_terminal(char* cmd, gboolean keep_open, GError** error)
+ {
+     FmTerminal* term;
+@@ -242,8 +260,18 @@ static gboolean do_launch(GAppInfo* appinfo, const char* full_desktop_path,
+     int argc;
+     gboolean use_terminal;
+     GAppInfoCreateFlags flags;
++    GPid pid;
+ 
+     cmd = expand_exec_macros(appinfo, full_desktop_path, kf, inp, &gfiles);
++    if (cmd == NULL || cmd[0] == '\0')
++    {
++        g_free(cmd);
++        /* FIXME: localize the string below in 1.3.0 */
++        g_set_error_literal(err, G_IO_ERROR, G_IO_ERROR_FAILED,
++                            "Desktop entry contains no valid Exec line");
++        return FALSE;
++    }
++    /* FIXME: do check for TryExec/Exec */
+     if(G_LIKELY(kf))
+         use_terminal = g_key_file_get_boolean(kf, "Desktop Entry", "Terminal", NULL);
+     else
+@@ -311,9 +339,12 @@ static gboolean do_launch(GAppInfo* appinfo, const char* full_desktop_path,
+ 
+         data.pgid = getpgid(getppid());
+         ret = g_spawn_async(path, argv, NULL,
+-                            G_SPAWN_SEARCH_PATH,
+-                            child_setup, &data, NULL, err);
+-        if (!ret && data.sn_id)
++                            G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD,
++                            child_setup, &data, &pid, err);
++        if (ret)
++            /* Ensure that we don't double fork and break pkexec */
++            g_child_watch_add(pid, child_watch, NULL);
++        else if (data.sn_id)
+             /* Notify launch context about failure */
+             g_app_launch_context_launch_failed(ctx, data.sn_id);
+ 
+diff --git a/src/base/fm-file-info.c b/src/base/fm-file-info.c
+index 9072a14..39b417e 100644
+--- a/src/base/fm-file-info.c
++++ b/src/base/fm-file-info.c
+@@ -3,7 +3,7 @@
+  *
+  *      Copyright 2009 - 2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+  *      Copyright 2009 Juergen Hoetzel <juergen@archlinux.org>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This file is a part of the Libfm library.
+  *
+@@ -251,7 +251,12 @@ gboolean _fm_file_info_set_from_native_file(FmFileInfo* fi, const char* path,
+                 fi->mime_type = fm_mime_type_from_file_name(fm_path_get_basename(fi->path));
+         }
+         else
++        {
+             fi->mime_type = fm_mime_type_from_native_file(path, fm_path_get_basename(fi->path), &st);
++            if (G_UNLIKELY(fi->mime_type == NULL))
++                /* file might be deleted while we test it but we assume mime_type is not NULL */
++                fi->mime_type = fm_mime_type_from_name("application/octet-stream");
++        }
+ 
+         if (get_fast) /* do rough estimation */
+             fi->accessible = ((st.st_mode & S_IRUSR) == S_IRUSR);
+@@ -284,12 +289,14 @@ gboolean _fm_file_info_set_from_native_file(FmFileInfo* fi, const char* path,
+                             FmMimeType *new_mime_type = fm_mime_type_from_file_name(uri);
+ 
+                             /* g_debug("got type %s for URL %s", fm_mime_type_get_type(new_mime_type), uri); */
+-                            if (new_mime_type == _fm_mime_type_get_application_x_desktop() ||
+-                                strcmp(fm_mime_type_get_type(new_mime_type),
++                            if (strcmp(fm_mime_type_get_type(new_mime_type),
+                                        "application/octet-stream") == 0)
+                             {
+-                                /* either link to desktop entry or failed
+-                                   to determine, set to inode/x-shortcut */
++                                /* NOTE: earlier we classified all links to
++                                   desktop entry as inode/x-shortcut too but
++                                   that would require a lot of special support
++                                   therefore we set to inode/x-shortcut only
++                                   those shortcuts that we fail to determine */
+                                 fm_mime_type_unref(new_mime_type);
+                                 new_mime_type = fm_mime_type_ref(_fm_mime_type_get_inode_x_shortcut());
+                             }
+diff --git a/src/base/fm-folder.c b/src/base/fm-folder.c
+index 6773cb0..adfe4eb 100644
+--- a/src/base/fm-folder.c
++++ b/src/base/fm-folder.c
+@@ -2,7 +2,7 @@
+  *      fm-folder.c
+  *
+  *      Copyright 2009 - 2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- *      Copyright 2012-2013 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This file is a part of the Libfm library.
+  *
+@@ -91,6 +91,7 @@ struct _FmFolder
+ };
+ 
+ static void fm_folder_dispose(GObject *object);
++static void fm_folder_finalize(GObject *object);
+ static void fm_folder_content_changed(FmFolder* folder);
+ 
+ static GList* _fm_folder_get_file_by_path(FmFolder* folder, FmPath *path);
+@@ -99,9 +100,13 @@ G_DEFINE_TYPE(FmFolder, fm_folder, G_TYPE_OBJECT);
+ 
+ static guint signals[N_SIGNALS];
+ static GHashTable* hash = NULL;
++static int hash_uses = 0;
+ 
+ static GVolumeMonitor* volume_monitor = NULL;
+ 
++static void on_mount_added(GVolumeMonitor* vm, GMount* mount, gpointer user_data);
++static void on_mount_removed(GVolumeMonitor* vm, GMount* mount, gpointer user_data);
++
+ /* used for on_query_filesystem_info_finished() to lock folder */
+ G_LOCK_DEFINE_STATIC(query);
+ /* protects hash access */
+@@ -115,6 +120,7 @@ static void fm_folder_class_init(FmFolderClass *klass)
+     FmFolderClass* folder_class;
+     g_object_class = G_OBJECT_CLASS(klass);
+     g_object_class->dispose = fm_folder_dispose;
++    g_object_class->finalize = fm_folder_finalize;
+     fm_folder_parent_class = (GObjectClass*)g_type_class_peek(G_TYPE_OBJECT);
+ 
+     folder_class = FM_FOLDER_CLASS(klass);
+@@ -336,6 +342,19 @@ static void fm_folder_class_init(FmFolderClass *klass)
+ static void fm_folder_init(FmFolder *folder)
+ {
+     folder->files = fm_file_info_list_new();
++    G_LOCK(hash);
++    if (G_UNLIKELY(hash_uses == 0))
++    {
++        hash = g_hash_table_new((GHashFunc)fm_path_hash, (GEqualFunc)fm_path_equal);
++        volume_monitor = g_volume_monitor_get();
++        if (G_LIKELY(volume_monitor))
++        {
++            g_signal_connect(volume_monitor, "mount-added", G_CALLBACK(on_mount_added), NULL);
++            g_signal_connect(volume_monitor, "mount-removed", G_CALLBACK(on_mount_removed), NULL);
++        }
++    }
++    hash_uses++;
++    G_UNLOCK(hash);
+ }
+ 
+ static gboolean on_idle_reload(FmFolder* folder)
+@@ -376,8 +395,12 @@ static void on_file_info_job_finished(FmFileInfoJob* job, FmFolder* folder)
+         {
+             FmFileInfo* fi = (FmFileInfo*)l->data;
+             FmPath* path = fm_file_info_get_path(fi);
+-            GList* l2 = _fm_folder_get_file_by_path(folder, path);
+-            if(l2) /* the file is already in the folder, update */
++            GList* l2;
++            if (path == fm_file_info_get_path(folder->dir_fi))
++                /* update for folder itself, also see FIXME below! */
++                fm_file_info_update(folder->dir_fi, fi);
++            else if ((l2 = _fm_folder_get_file_by_path(folder, path)))
++                /* the file is already in the folder, update */
+             {
+                 FmFileInfo* fi2 = (FmFileInfo*)l2->data;
+                 /* FIXME: will fm_file_info_update here cause problems?
+@@ -665,8 +688,12 @@ static void on_folder_changed(GFileMonitor* mon, GFile* gf, GFile* other, GFileM
+         case G_FILE_MONITOR_EVENT_CHANGED:
+             folder->pending_change_notify = TRUE;
+             G_LOCK(lists);
+-            if(!folder->idle_handler)
+-                folder->idle_handler = g_idle_add_full(G_PRIORITY_LOW, (GSourceFunc)on_idle, folder, NULL);
++            if (g_slist_find(folder->files_to_update, folder->dir_path) == NULL)
++            {
++                folder->files_to_update = g_slist_append(folder->files_to_update, fm_path_ref(folder->dir_path));
++                if(!folder->idle_handler)
++                    folder->idle_handler = g_idle_add_full(G_PRIORITY_LOW, (GSourceFunc)on_idle, folder, NULL);
++            }
+             G_UNLOCK(lists);
+             /* g_debug("folder is changed"); */
+             break;
+@@ -825,7 +852,7 @@ static FmFolder* fm_folder_get_internal(FmPath* path, GFile* gf)
+      * to associate all kinds of data structures with FmPaths? */
+ 
+     G_LOCK(hash);
+-    folder = (FmFolder*)g_hash_table_lookup(hash, path);
++    folder = hash ? (FmFolder*)g_hash_table_lookup(hash, path) : NULL;
+ 
+     if( G_UNLIKELY(!folder) )
+     {
+@@ -960,6 +987,27 @@ static void fm_folder_dispose(GObject *object)
+     (* G_OBJECT_CLASS(fm_folder_parent_class)->dispose)(object);
+ }
+ 
++static void fm_folder_finalize(GObject *object)
++{
++    G_LOCK(hash);
++    hash_uses--;
++    if (G_UNLIKELY(hash_uses == 0))
++    {
++        g_hash_table_destroy(hash);
++        hash = NULL;
++        if(volume_monitor)
++        {
++            g_signal_handlers_disconnect_by_func(volume_monitor, on_mount_added, NULL);
++            g_signal_handlers_disconnect_by_func(volume_monitor, on_mount_removed, NULL);
++            g_object_unref(volume_monitor);
++            volume_monitor = NULL;
++        }
++    }
++    G_UNLOCK(hash);
++
++    (* G_OBJECT_CLASS(fm_folder_parent_class)->finalize)(object);
++}
++
+ /**
+  * fm_folder_from_gfile
+  * @gf: #GFile file descriptor
+@@ -1061,6 +1109,31 @@ void fm_folder_reload(FmFolder* folder)
+         folder->dir_fi = NULL;
+     }
+ 
++    /* clear all update-lists now, see SF bug #919 - if update comes before
++       listing job is finished, a duplicate may be created in the folder */
++    if (folder->idle_handler)
++    {
++        g_source_remove(folder->idle_handler);
++        folder->idle_handler = 0;
++        if (folder->files_to_add)
++        {
++            g_slist_foreach(folder->files_to_add, (GFunc)fm_path_unref, NULL);
++            g_slist_free(folder->files_to_add);
++            folder->files_to_add = NULL;
++        }
++        if (folder->files_to_update)
++        {
++            g_slist_foreach(folder->files_to_update, (GFunc)fm_path_unref, NULL);
++            g_slist_free(folder->files_to_update);
++            folder->files_to_update = NULL;
++        }
++        if (folder->files_to_del)
++        {
++            g_slist_free(folder->files_to_del);
++            folder->files_to_del = NULL;
++        }
++    }
++
+     /* remove all items and re-run a dir list job. */
+     GList* l = fm_file_info_list_peek_head_link(folder->files);
+ 
+@@ -1417,8 +1490,11 @@ void fm_folder_query_filesystem_info(FmFolder* folder)
+  */
+ FmFolder *fm_folder_find_by_path(FmPath *path)
+ {
+-    FmFolder *folder = (FmFolder*)g_hash_table_lookup(hash, path);
++    FmFolder *folder;
+ 
++    G_LOCK(hash);
++    folder = hash ? (FmFolder*)g_hash_table_lookup(hash, path) : NULL;
++    G_UNLOCK(hash);
+     return folder ? g_object_ref(folder) : NULL;
+ }
+ 
+@@ -1605,24 +1681,8 @@ static void on_mount_removed(GVolumeMonitor* vm, GMount* mount, gpointer user_da
+ 
+ void _fm_folder_init()
+ {
+-    hash = g_hash_table_new((GHashFunc)fm_path_hash, (GEqualFunc)fm_path_equal);
+-    volume_monitor = g_volume_monitor_get();
+-    if(G_LIKELY(volume_monitor))
+-    {
+-        g_signal_connect(volume_monitor, "mount-added", G_CALLBACK(on_mount_added), NULL);
+-        g_signal_connect(volume_monitor, "mount-removed", G_CALLBACK(on_mount_removed), NULL);
+-    }
+ }
+ 
+ void _fm_folder_finalize()
+ {
+-    g_hash_table_destroy(hash);
+-    hash = NULL;
+-    if(volume_monitor)
+-    {
+-        g_signal_handlers_disconnect_by_func(volume_monitor, on_mount_added, NULL);
+-        g_signal_handlers_disconnect_by_func(volume_monitor, on_mount_removed, NULL);
+-        g_object_unref(volume_monitor);
+-        volume_monitor = NULL;
+-    }
+ }
+diff --git a/src/base/fm-mime-type.c b/src/base/fm-mime-type.c
+index e5ff140..f69a15f 100644
+--- a/src/base/fm-mime-type.c
++++ b/src/base/fm-mime-type.c
+@@ -3,7 +3,7 @@
+  *
+  *      Copyright 2009 - 2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+  *      Copyright 2009 Juergen Hoetzel <juergen@archlinux.org>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This file is a part of the Libfm library.
+  *
+@@ -127,7 +127,8 @@ FmMimeType* fm_mime_type_from_file_name(const char* ufile_name)
+  * @base_name: file basename
+  * @pstat: (allow-none): file atrributes
+  *
+- * Finds #FmMimeType descriptor for provided data.
++ * Finds #FmMimeType descriptor for provided data. If file does not exist
++ * then returns %NULL.
+  *
+  * Before 1.0.0 this API had name fm_mime_type_get_for_native_file.
+  *
+@@ -190,14 +191,20 @@ FmMimeType* fm_mime_type_from_native_file(const char* file_path,
+                 char buf[4096];
+                 len = read(fd, buf, MIN(pstat->st_size, 4096));
+                 const char *tmp;
+-                g_free(type);
++                char *qtype = type; /* questionable type */
+                 close(fd);
+-                type = g_content_type_guess(NULL, (guchar*)buf, len, &uncertain);
+-                if (uncertain)
++                type = g_content_type_guess(base_name, (guchar*)buf, len, &uncertain);
++                /* we need more complicated guessing here: file may have some
++                   wrong suffix or no suffix at all, and g_content_type_guess()
++                   very probably will guess it wrong so let believe it only
++                   if it insists on guessed type after testing its content,
++                   otherwise discard name completely and analyze just content */
++                if (g_strcmp0(qtype, type) != 0)
+                 {
+                     g_free(type);
+-                    type = g_content_type_guess(base_name, (guchar*)buf, len, &uncertain);
++                    type = g_content_type_guess(NULL, (guchar*)buf, len, &uncertain);
+                 }
++                g_free(qtype);
+                 /* bug: improperly named desktop entries are detected as text/plain */
+                 if (uncertain && len > 40 && (tmp = memchr(buf, '[', 40)) != NULL &&
+                     strncmp(tmp, "[Desktop Entry]\n", 16) == 0)
+diff --git a/src/base/fm-templates.c b/src/base/fm-templates.c
+index ea3526b..cfc7b82 100644
+--- a/src/base/fm-templates.c
++++ b/src/base/fm-templates.c
+@@ -152,6 +152,10 @@ static FmMimeType *_fm_template_guess_mime_type(FmPath *path, FmMimeType *mime_t
+     gchar *filename, *type, *url;
+     GKeyFile *kf;
+ 
++    /* SF bug #902: if file was deleted instantly we get NULL here */
++    if (mime_type == NULL)
++        return NULL;
++
+     /* if file is desktop entry then find the real template file path */
+     if(mime_type != _fm_mime_type_get_application_x_desktop())
+     {
+@@ -678,7 +682,8 @@ static void on_dir_changed(GFileMonitor *mon, GFile *gf, GFile *other,
+                 g_warning("could not guess type of template %s, ignoring it",
+                           basename);
+             }
+-            fm_mime_type_unref(mime_type);
++            if (G_LIKELY(mime_type))
++                fm_mime_type_unref(mime_type);
+         }
+         else
+             g_debug("templates monitor: duplicate file %s", basename);
+diff --git a/src/base/fm-thumbnail-loader.c b/src/base/fm-thumbnail-loader.c
+index dc7b932..f0292f1 100644
+--- a/src/base/fm-thumbnail-loader.c
++++ b/src/base/fm-thumbnail-loader.c
+@@ -2,7 +2,7 @@
+  * fm-thumbnail-loader.c
+  *
+  * Copyright 2010 - 2013 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- * Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ * Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  * This file is a part of the Libfm library.
+  *
+@@ -351,6 +351,7 @@ static gboolean is_thumbnail_outdated(GObject* thumb_pix, const char* thumbnail_
+     {
+         /* if the thumbnail png file does not contain "tEXt::Thumb::MTime" value,
+          * we compare the mtime of the thumbnail with its original directly. */
++        /* FIXME: XDG specification requires to regenerate it in such case */
+         struct stat statbuf;
+         if(stat(thumbnail_path, &statbuf) == 0) /* get mtime of the thumbnail file */
+         {
+@@ -481,6 +482,7 @@ static gpointer load_thumbnail_thread(gpointer user_data)
+                 memcpy( large_basename, md5, 32 );
+                 task->large_path = large_path;
+             }
++            /* FIXME: support fail/<PRG>/<MD5>.png to skip creation */
+ 
+             if(task->flags & (GENERATE_NORMAL|GENERATE_LARGE))
+                 generate_thumbnails(task); /* second cycle */
+@@ -851,7 +853,15 @@ static GObject* scale_pix(GObject* ori_pix, int size)
+         scaled_pix = (GObject*)g_object_ref(ori_pix);
+     }
+     else
++    {
++        /* avoid width or height of 0 pixel.
++         * FIXME: or we should just fail creating the thumbnail for the image? */
++        if(new_width == 0)
++            new_width = 1;
++        if(new_height == 0)
++            new_height = 1;
+         scaled_pix = backend.scale_image(ori_pix, new_width, new_height);
++    }
+ 
+     return scaled_pix;
+ }
+@@ -993,7 +1003,7 @@ static gboolean generate_thumbnails_with_builtin(ThumbnailTask* task)
+                 g_object_unref(normal_pix);
+                 normal_pix = rotated;
+             }
+-            if(need_save)
++            if(need_save && normal_pix)
+                 save_thumbnail_to_disk(task, normal_pix, task->normal_path);
+         }
+ 
+@@ -1017,7 +1027,7 @@ static gboolean generate_thumbnails_with_builtin(ThumbnailTask* task)
+                 g_object_unref(large_pix);
+                 large_pix = rotated;
+             }
+-            if(need_save)
++            if(need_save && large_pix)
+                 save_thumbnail_to_disk(task, large_pix, task->large_path);
+         }
+         g_object_unref(ori_pix);
+@@ -1141,6 +1151,18 @@ static void generate_thumbnails_with_thumbnailers(ThumbnailTask* task)
+                 {
+                     generated |= GENERATE_NORMAL;
+                     normal_pix = backend.read_image_from_file(task->normal_path);
++                    if (normal_pix)
++                    {
++                        char *thumb_mtime = backend.get_image_text(normal_pix, "tEXt::Thumb::MTime");
++                        /* Re-save generated thumbnail to have required data
++                           in them. Some external thumbnailers not follow the
++                           specification and not set any of Thumb::URI nor
++                           Thumb::MTime, that leads to regeneration each time. */
++                        if (thumb_mtime == NULL)
++                            save_thumbnail_to_disk(task, normal_pix, task->normal_path);
++                        else
++                            g_free(thumb_mtime);
++                    }
+                 }
+             }
+             if((task->flags & GENERATE_LARGE) && !(generated & GENERATE_LARGE))
+@@ -1149,6 +1171,14 @@ static void generate_thumbnails_with_thumbnailers(ThumbnailTask* task)
+                 {
+                     generated |= GENERATE_LARGE;
+                     large_pix = backend.read_image_from_file(task->large_path);
++                    if (large_pix)
++                    {
++                        char *thumb_mtime = backend.get_image_text(large_pix, "tEXt::Thumb::MTime");
++                        if (thumb_mtime == NULL)
++                            save_thumbnail_to_disk(task, large_pix, task->large_path);
++                        else
++                            g_free(thumb_mtime);
++                    }
+                 }
+             }
+ 
+diff --git a/src/gtk/exo/exo-icon-view.c b/src/gtk/exo/exo-icon-view.c
+index a2bf042..f933b0c 100644
+--- a/src/gtk/exo/exo-icon-view.c
++++ b/src/gtk/exo/exo-icon-view.c
+@@ -1859,21 +1859,23 @@ exo_icon_view_expose_event (GtkWidget      *widget,
+   GtkTreePath            *path;
+   GdkRectangle            rubber_rect;
+   GdkRectangle            rect;
+-  GtkStyle               *style;
+-  GdkColor               *fill_color_gdk;
+-  guchar                  fill_color_alpha = 0;
+   const GList            *lp;
+   gint                    dest_index = -1;
+ #if !GTK_CHECK_VERSION(3, 0, 0)
++  GdkColor               *fill_color_gdk;
++  guchar                  fill_color_alpha = 0;
+   gboolean                rtl;
+   gint                    event_area_last;
+   GdkRectangle            event_area;
+   cairo_t                *cr;
++  GtkStyle               *style;
+ 
+   /* verify that the expose happened on the icon window */
+   if (G_UNLIKELY (event->window != priv->bin_window))
+     return FALSE;
+ #else
++  GtkStyleContext        *style;
++
+   if (!gtk_cairo_should_draw_window (cr, priv->bin_window))
+     return FALSE;
+ #endif
+@@ -1976,16 +1978,16 @@ exo_icon_view_expose_event (GtkWidget      *widget,
+ #endif
+     }
+ 
+-  /* draw the drag indicator */
+-  if (G_UNLIKELY (dest_item != NULL))
+-    {
++  if (G_UNLIKELY (dest_item != NULL || priv->doing_rubberband))
+ #if GTK_CHECK_VERSION(3, 0, 0)
+-      GtkStyleContext *style = gtk_widget_get_style_context (widget);
++      style = gtk_widget_get_style_context (widget);
+ #else
+-      GtkStyle *style = gtk_widget_get_style (widget);
++      style = gtk_widget_get_style (widget);
+ #endif
+-      GdkRectangle rect = { 0 };
+ 
++  /* draw the drag indicator */
++  if (G_UNLIKELY (dest_item != NULL))
++    {
+       switch (dest_pos)
+         {
+         case EXO_ICON_VIEW_DROP_INTO:
+@@ -2015,6 +2017,7 @@ exo_icon_view_expose_event (GtkWidget      *widget,
+           rect.width = 2;
+           rect.height = dest_item->area.height;
+         case EXO_ICON_VIEW_NO_DROP:
++          rect.x = rect.y = rect.width = rect.height = 0;
+           break;
+ 
+         default:
+@@ -2043,7 +2046,6 @@ exo_icon_view_expose_event (GtkWidget      *widget,
+       if (gdk_rectangle_intersect (&rubber_rect, &event_area, &rect))
+         {
+           cr = gdk_cairo_create (event->window);
+-#endif
+           gtk_widget_style_get (widget,
+                                 "selection-box-color", &fill_color_gdk,
+                                 "selection-box-alpha", &fill_color_alpha,
+@@ -2072,9 +2074,23 @@ exo_icon_view_expose_event (GtkWidget      *widget,
+           cairo_set_line_width (cr, 1);
+           cairo_stroke (cr);
+           gdk_color_free (fill_color_gdk);
+-#if !GTK_CHECK_VERSION(3, 0, 0)
+           cairo_destroy (cr);
+         }
++#else
++      gtk_style_context_save (style);
++      gtk_style_context_add_class (style, GTK_STYLE_CLASS_RUBBERBAND);
++
++      gdk_cairo_rectangle (cr, &rubber_rect);
++      cairo_clip (cr);
++
++      gtk_render_background (style, cr,
++                             rubber_rect.x, rubber_rect.y,
++                             rubber_rect.width, rubber_rect.height);
++      gtk_render_frame (style, cr,
++                        rubber_rect.x, rubber_rect.y,
++                        rubber_rect.width, rubber_rect.height);
++
++      gtk_style_context_restore (style);
+ #endif
+     }
+ 
+@@ -2660,6 +2676,9 @@ exo_icon_view_button_press_event (GtkWidget      *widget,
+   if (dirty)
+     g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
+ 
++  /* SF bug #929: we have to drop prelit state to drop tooltip, see text renderer */
++  icon_view->priv->prelit_item = NULL;
++
+   /* release reference that was taken above */
+   g_object_unref(widget);
+ 
+@@ -2771,6 +2790,10 @@ exo_icon_view_key_press_event (GtkWidget   *widget,
+   if ((*GTK_WIDGET_CLASS (exo_icon_view_parent_class)->key_press_event) (widget, event))
+     return TRUE;
+ 
++  /* 'space' keypress should not start search even if there is no selection */
++  if (G_UNLIKELY (event->keyval == GDK_KEY_space))
++    return FALSE;
++
+   /* check if typeahead search is enabled */
+   if (G_UNLIKELY (!icon_view->priv->enable_search))
+     return FALSE;
+@@ -5170,6 +5193,8 @@ exo_icon_view_scroll_to_item (ExoIconView     *icon_view,
+   gint x, y;
+   gint focus_width;
+   GtkAllocation allocation;
++  GList *lp;
++  GdkRectangle rect;
+ 
+   gtk_widget_style_get (GTK_WIDGET (icon_view),
+                         "focus-line-width", &focus_width,
+@@ -5178,21 +5203,42 @@ exo_icon_view_scroll_to_item (ExoIconView     *icon_view,
+ 
+   gdk_window_get_position (icon_view->priv->bin_window, &x, &y);
+ 
+-  if (y + item->area.y - focus_width < 0)
++  rect.x = item->area.x;
++  rect.y = item->area.y;
++  rect.width = rect.height = 0;
++  for (lp = icon_view->priv->cell_list; lp != NULL; lp = lp->next)
++    {
++      ExoIconViewCellInfo *info = EXO_ICON_VIEW_CELL_INFO (lp->data);
++      if (G_UNLIKELY (!gtk_cell_renderer_get_visible(info->cell)))
++        continue;
++
++      if (icon_view->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
++        {
++          rect.width += item->box[info->position].width + (info->position > 0 ? icon_view->priv->spacing : 0);
++          rect.height = MAX (rect.height, item->box[info->position].height);
++        }
++      else
++        {
++          rect.width = MAX (rect.width, item->box[info->position].width);
++          rect.height += item->box[info->position].height + (info->position > 0 ? icon_view->priv->spacing : 0);
++        }
++    }
++
++  if (y + rect.y - focus_width < 0)
+     gtk_adjustment_set_value (icon_view->priv->vadjustment,
+-                              gtk_adjustment_get_value(icon_view->priv->vadjustment) + y + item->area.y - focus_width);
+-  else if (y + item->area.y + item->area.height + focus_width > allocation.height)
++                              gtk_adjustment_get_value(icon_view->priv->vadjustment) + y + rect.y - focus_width);
++  else if (y + rect.y + rect.height + focus_width > allocation.height)
+     gtk_adjustment_set_value (icon_view->priv->vadjustment,
+-                              gtk_adjustment_get_value(icon_view->priv->vadjustment) + y + item->area.y + item->area.height
++                              gtk_adjustment_get_value(icon_view->priv->vadjustment) + y + rect.y + rect.height
+                               + focus_width - allocation.height);
+ 
+-  if (x + item->area.x - focus_width < 0)
++  if (x + rect.x - focus_width < 0)
+     {
+       gtk_adjustment_set_value (icon_view->priv->hadjustment,
+-                                gtk_adjustment_get_value(icon_view->priv->hadjustment) + x + item->area.x - focus_width);
++                                gtk_adjustment_get_value(icon_view->priv->hadjustment) + x + rect.x - focus_width);
+     }
+-  else if (x + item->area.x + item->area.width + focus_width > allocation.width
+-        && item->area.width < allocation.width)
++  else if (x + rect.x + rect.width + focus_width > allocation.width
++        && rect.width < allocation.width)
+     {
+       /* the second condition above is to make sure that we don't scroll horizontally if the item
+        * width is larger than the allocation width. Fixes a weird scrolling bug in the compact view.
+@@ -5200,7 +5246,7 @@ exo_icon_view_scroll_to_item (ExoIconView     *icon_view,
+        */
+ 
+       gtk_adjustment_set_value (icon_view->priv->hadjustment,
+-                                gtk_adjustment_get_value(icon_view->priv->hadjustment) + x + item->area.x + item->area.width
++                                gtk_adjustment_get_value(icon_view->priv->hadjustment) + x + rect.x + rect.width
+                                 + focus_width - allocation.width);
+     }
+ 
+@@ -7048,7 +7094,10 @@ exo_icon_view_autoscroll (ExoIconView *icon_view)
+   gfloat value;
+   GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (icon_view));
+ 
+-  gdk_window_get_device_position (window, gtk_get_current_event_device(),
++  gdk_window_get_device_position (window,
++                                  gdk_device_manager_get_client_pointer(
++                                        gdk_display_get_device_manager(
++                                            gdk_window_get_display(window))),
+                                   &px, &py, NULL);
+ #if GTK_CHECK_VERSION(3, 0, 0)
+   gdk_window_get_geometry (window, &x, &y, &width, &height);
+@@ -8599,6 +8648,8 @@ exo_icon_view_search_ensure_directory (ExoIconView *icon_view)
+ 
+   /* allocate a new search window */
+   icon_view->priv->search_window = gtk_window_new (GTK_WINDOW_POPUP);
++  gtk_window_set_type_hint (GTK_WINDOW (icon_view->priv->search_window),
++                            GDK_WINDOW_TYPE_HINT_UTILITY);
+   if ((group = gtk_window_get_group (GTK_WINDOW (toplevel))) != NULL)
+     gtk_window_group_add_window (group, GTK_WINDOW (icon_view->priv->search_window));
+   gtk_window_set_modal (GTK_WINDOW (icon_view->priv->search_window), TRUE);
+diff --git a/src/gtk/exo/exo-private.c b/src/gtk/exo/exo-private.c
+index 758fac9..9d53c51 100644
+--- a/src/gtk/exo/exo-private.c
++++ b/src/gtk/exo/exo-private.c
+@@ -60,7 +60,9 @@ _exo_gtk_widget_send_focus_change (GtkWidget *widget,
+ {
+   GdkEvent *fevent;
+ 
++#if !GTK_CHECK_VERSION(2, 22, 0)
+   g_object_ref (G_OBJECT (widget));
++#endif
+ 
+   gtk_widget_set_can_focus (widget, in);
+ 
+@@ -69,11 +71,20 @@ _exo_gtk_widget_send_focus_change (GtkWidget *widget,
+   fevent->focus_change.window = g_object_ref (gtk_widget_get_window (widget));
+   fevent->focus_change.in = in;
+ 
++#if GTK_CHECK_VERSION(2, 22, 0)
++  gtk_widget_send_focus_change (widget, fevent);
++#else
++  if (in)
++    GTK_OBJECT_FLAGS (widget) |= GTK_HAS_FOCUS;
++  else
++    GTK_OBJECT_FLAGS (widget) &= ~(GTK_HAS_FOCUS);
+   gtk_widget_event (widget, fevent);
+ 
+   g_object_notify (G_OBJECT (widget), "has-focus");
+ 
+   g_object_unref (G_OBJECT (widget));
++#endif
++
+   gdk_event_free (fevent);
+ }
+ 
+diff --git a/src/gtk/fm-app-chooser-dlg.c b/src/gtk/fm-app-chooser-dlg.c
+index 700c3a8..e32823a 100644
+--- a/src/gtk/fm-app-chooser-dlg.c
++++ b/src/gtk/fm-app-chooser-dlg.c
+@@ -2,7 +2,7 @@
+  *      fm-app-chooser-dlg.c
+  *
+  *      Copyright 2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -39,6 +39,7 @@
+ #include <glib/gi18n-lib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <fcntl.h>
+ #include "fm.h"
+ #include "fm-app-chooser-dlg.h"
+ #include "fm-app-menu-view.h"
+@@ -97,8 +98,33 @@ static GAppInfo* app_info_create_from_commandline(const char *commandline,
+         app_basename = bin_name;
+     if(g_mkdir_with_parents(dirname, 0700) == 0)
+     {
+-        char* filename = g_strdup_printf ("%s/userapp-%s-XXXXXX.desktop", dirname, app_basename);
+-        int fd = g_mkstemp (filename);
++        char *filename = NULL;
++        int fd;
++
++#if GLIB_CHECK_VERSION(2, 37, 6)
++        if (mime_type && application_name[0])
++        {
++            /* SF bug #871: new GLib has ids cached so we do a trick here:
++               we create a dummy app before really creating the file */
++            app = g_app_info_create_from_commandline(commandline,
++                                                     app_basename,
++                                                     0, NULL);
++            if (app)
++            {
++                g_app_info_remove_supports_type(app, mime_type, NULL);
++                filename = g_strdup(g_desktop_app_info_get_filename(G_DESKTOP_APP_INFO(app)));
++                g_object_unref(app);
++                app = NULL;
++            }
++        }
++        if (filename)
++            fd = g_open(filename, O_RDWR, 0);
++        else
++#endif
++        {
++            filename = g_strdup_printf ("%s/userapp-%s-XXXXXX.desktop", dirname, app_basename);
++            fd = g_mkstemp (filename);
++        }
+         if(fd != -1)
+         {
+             GString* content = g_string_sized_new(256);
+@@ -125,12 +151,18 @@ static GAppInfo* app_info_create_from_commandline(const char *commandline,
+             close(fd); /* g_file_set_contents() may fail creating duplicate */
+             if(g_file_set_contents(filename, content->str, content->len, NULL))
+             {
+-                /* SF bug #871: new GLib fails on id, have to use filename */
+-                app = G_APP_INFO(g_desktop_app_info_new_from_filename(filename));
++                char *fbname = g_path_get_basename(filename);
++                app = G_APP_INFO(g_desktop_app_info_new(fbname));
++                g_free(fbname);
++                if (app == NULL)
++                {
++                    g_warning("failed to load %s as an application", filename);
++                    g_unlink(filename);
++                }
+                 /* if there is mime_type set then created application will be
+                    saved for the mime type (see fm_choose_app_for_mime_type()
+                    below) but if not then we should remove this temp. file */
+-                if(!mime_type || !application_name[0])
++                else if (!mime_type || !application_name[0])
+                     /* save the name so this file will be removed later */
+                     g_object_weak_ref(G_OBJECT(app), on_temp_appinfo_destroy,
+                                       g_strdup(filename));
+@@ -380,7 +412,8 @@ GAppInfo* fm_app_chooser_dlg_dup_selected_app(GtkDialog* dlg, gboolean* set_defa
+                 if(!arg_found)  /* append %f if no %f, %F, %u, or %U was found. */
+                     cmdline = _cmdline = g_strconcat(cmdline, " %f", NULL);
+ 
+-                /* FIXME: is there any better way to do this? */
++                /* FIXME: is there any better way to do this?
++                   this is quite dirty, whole cmdline should be tested instead */
+                 /* We need to ensure that no duplicated items are added */
+                 if (app_name && app_name[0] && data->mime_type)
+                 {
+diff --git a/src/gtk/fm-cell-renderer-text.c b/src/gtk/fm-cell-renderer-text.c
+index a3fa4f6..7dcc1c6 100644
+--- a/src/gtk/fm-cell-renderer-text.c
++++ b/src/gtk/fm-cell-renderer-text.c
+@@ -2,7 +2,7 @@
+  *      fm-cell-renderer-text.c
+  *
+  *      Copyright 2009 PCMan <pcman.tw@gmail.com>
+- *      Copyright 2012-2013 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -176,56 +176,31 @@ static void fm_cell_renderer_text_set_property(GObject *object, guint param_id,
+     }
+ }
+ 
+-#if GTK_CHECK_VERSION(3, 0, 0)
+-static void fm_cell_renderer_text_render(GtkCellRenderer *cell,
+-                                         cairo_t *cr,
+-                                         GtkWidget *widget,
+-                                         const GdkRectangle *background_area,
+-                                         const GdkRectangle *cell_area,
+-                                         GtkCellRendererState flags)
+-#else
+-static void fm_cell_renderer_text_render(GtkCellRenderer *cell,
+-                                         GdkDrawable *window,
+-                                         GtkWidget *widget,
+-                                         GdkRectangle *background_area,
+-                                         GdkRectangle *cell_area,
+-                                         GdkRectangle *expose_area,
+-                                         GtkCellRendererState flags)
+-#endif
++static void _get_size(GtkCellRenderer *cell, GtkWidget *widget,
++                      PangoLayout *layout, gchar *text,
++                      const GdkRectangle *cell_area,
++                      gint *text_width, gint *text_height,
++                      gint *xpad, gint *ypad,
++                      gint *x_offset, gint *y_offset,
++                      gint *x_align_offset)
+ {
+     FmCellRendererText *self = FM_CELL_RENDERER_TEXT(cell);
+-#if GTK_CHECK_VERSION(3, 0, 0)
+-    GtkStyleContext* style;
+-    GtkStateFlags state;
+-#else
+-    GtkStyle* style;
+-    GtkStateType state;
+-#endif
+-    gchar* text;
+-    gint text_width;
+-    gint text_height;
+-    gint x_offset;
+-    gint y_offset;
+-    gint x_align_offset;
+-    GdkRectangle rect;
+     PangoWrapMode wrap_mode;
+     gint wrap_width;
+     PangoAlignment alignment;
+     gfloat xalign, yalign;
+-    gint xpad, ypad;
+-
+-    /* FIXME: this is time-consuming since it invokes pango_layout.
+-     *        if we want to fix this, we must implement the whole cell
+-     *        renderer ourselves instead of derived from GtkCellRendererText. */
+-    PangoContext* context = gtk_widget_get_pango_context(widget);
++    gint a_width, a_height;
++    gint a_xpad, a_ypad;
+ 
+-    PangoLayout* layout = pango_layout_new(context);
++    if (layout)
++        g_object_ref(layout);
++    else
++        layout = pango_layout_new(gtk_widget_get_pango_context(widget));
+ 
+     g_object_get(G_OBJECT(cell),
+                  "wrap-mode" , &wrap_mode,
+                  "wrap-width", &wrap_width,
+                  "alignment" , &alignment,
+-                 "text", &text,
+                  NULL);
+ 
+     pango_layout_set_alignment(layout, alignment);
+@@ -254,17 +229,85 @@ static void fm_cell_renderer_text_render(GtkCellRenderer *cell,
+ 
+     pango_layout_set_auto_dir(layout, TRUE);
+ 
+-    pango_layout_get_pixel_size(layout, &text_width, &text_height);
++    if (!text_width)
++        text_width = &a_width;
++    if (!text_height)
++        text_height = &a_height;
++    pango_layout_get_pixel_size(layout, text_width, text_height);
+ 
+     gtk_cell_renderer_get_alignment(cell, &xalign, &yalign);
+-    gtk_cell_renderer_get_padding(cell, &xpad, &ypad);
++    if (!xpad)
++        xpad = &a_xpad;
++    if (!ypad)
++        ypad = &a_ypad;
++    gtk_cell_renderer_get_padding(cell, xpad, ypad);
+     /* Calculate the real x and y offsets. */
+-    x_offset = ((gtk_widget_get_direction(widget) == GTK_TEXT_DIR_RTL) ? (1.0 - xalign) : xalign)
+-             * (cell_area->width - text_width - (2 * xpad));
+-    x_offset = MAX(x_offset, 0);
++    if (x_offset)
++    {
++        *x_offset = ((gtk_widget_get_direction(widget) == GTK_TEXT_DIR_RTL) ? (1.0 - xalign) : xalign)
++                 * (cell_area->width - *text_width - (2 * *xpad));
++        *x_offset = MAX(*x_offset, 0);
++    }
++
++    if (y_offset)
++    {
++        *y_offset = yalign * (cell_area->height - *text_height - (2 * *ypad));
++        *y_offset = MAX (*y_offset, 0);
++    }
++
++    /* FIXME: this hack is ugly, need to rewrite this later */
++    if (x_align_offset)
++        *x_align_offset = (alignment == PANGO_ALIGN_CENTER) ? (wrap_width - *text_width) / 2 : 0;
++
++    g_object_unref(layout);
++}
++
++#if GTK_CHECK_VERSION(3, 0, 0)
++static void fm_cell_renderer_text_render(GtkCellRenderer *cell,
++                                         cairo_t *cr,
++                                         GtkWidget *widget,
++                                         const GdkRectangle *background_area,
++                                         const GdkRectangle *cell_area,
++                                         GtkCellRendererState flags)
++#else
++static void fm_cell_renderer_text_render(GtkCellRenderer *cell,
++                                         GdkDrawable *window,
++                                         GtkWidget *widget,
++                                         GdkRectangle *background_area,
++                                         GdkRectangle *cell_area,
++                                         GdkRectangle *expose_area,
++                                         GtkCellRendererState flags)
++#endif
++{
++#if GTK_CHECK_VERSION(3, 0, 0)
++    GtkStyleContext* style;
++    GtkStateFlags state;
++#else
++    GtkStyle* style;
++    GtkStateType state;
++#endif
++    gchar* text;
++    gint text_width;
++    gint text_height;
++    gint x_offset;
++    gint y_offset;
++    gint x_align_offset;
++    GdkRectangle rect;
++    gint xpad, ypad;
+ 
+-    y_offset = yalign * (cell_area->height - text_height - (2 * ypad));
+-    y_offset = MAX (y_offset, 0);
++    /* FIXME: this is time-consuming since it invokes pango_layout.
++     *        if we want to fix this, we must implement the whole cell
++     *        renderer ourselves instead of derived from GtkCellRendererText. */
++    PangoContext* context = gtk_widget_get_pango_context(widget);
++
++    PangoLayout* layout = pango_layout_new(context);
++
++    g_object_get(G_OBJECT(cell),
++                 "text", &text,
++                 NULL);
++
++    _get_size(cell, widget, layout, text, cell_area, &text_width, &text_height,
++              &xpad, &ypad, &x_offset, &y_offset, &x_align_offset);
+ 
+     if(flags & (GTK_CELL_RENDERER_SELECTED|GTK_CELL_RENDERER_FOCUSED))
+     {
+@@ -276,6 +319,9 @@ static void fm_cell_renderer_text_render(GtkCellRenderer *cell,
+ 
+ #if GTK_CHECK_VERSION(3, 0, 0)
+     style = gtk_widget_get_style_context(widget);
++
++    gtk_style_context_save(style);
++    gtk_style_context_add_class(style, GTK_STYLE_CLASS_VIEW);
+ #else
+     style = gtk_widget_get_style(widget);
+ #endif
+@@ -324,8 +370,6 @@ static void fm_cell_renderer_text_render(GtkCellRenderer *cell,
+         state = GTK_STATE_NORMAL;
+ #endif
+ 
+-    x_align_offset = (alignment == PANGO_ALIGN_CENTER) ? (wrap_width - text_width) / 2 : 0;
+-
+ #if GTK_CHECK_VERSION(3, 0, 0)
+     gtk_render_layout(style, cr,
+                       cell_area->x + x_offset + xpad - x_align_offset,
+@@ -355,6 +399,10 @@ static void fm_cell_renderer_text_render(GtkCellRenderer *cell,
+     else
+         g_object_set(G_OBJECT(widget), "tooltip-text", NULL, NULL);
+     g_free(text);
++
++#if GTK_CHECK_VERSION(3, 0, 0)
++    gtk_style_context_restore(style);
++#endif
+ }
+ 
+ static void fm_cell_renderer_text_get_size(GtkCellRenderer            *cell,
+@@ -368,18 +416,12 @@ static void fm_cell_renderer_text_get_size(GtkCellRenderer            *cell,
+                                            gint                       *width,
+                                            gint                       *height)
+ {
+-    FmCellRendererText *self = FM_CELL_RENDERER_TEXT(cell);
+-    gint wrap_width;
++    char *text;
+ 
+-    GTK_CELL_RENDERER_CLASS(fm_cell_renderer_text_parent_class)->get_size(cell, widget, rectangle, x_offset, y_offset, width, height);
+-    g_object_get(G_OBJECT(cell), "wrap-width", &wrap_width, NULL);
+-    if (wrap_width > 0)
+-        *width = wrap_width;
+-    if (self->height > 0)
+-    {
+-        if(*height > self->height)
+-            *height = self->height;
+-    }
++    g_object_get(G_OBJECT(cell), "text", &text, NULL);
++    _get_size(cell, widget, NULL, text, rectangle, width, height, NULL, NULL,
++              x_offset, y_offset, NULL);
++    g_free(text);
+ }
+ 
+ #if GTK_CHECK_VERSION(3, 0, 0)
+@@ -407,16 +449,17 @@ static void fm_cell_renderer_text_get_preferred_height(GtkCellRenderer *cell,
+                                                        gint *minimum_size,
+                                                        gint *natural_size)
+ {
+-    FmCellRendererText *self = FM_CELL_RENDERER_TEXT(cell);
++    char *text;
++    gint height;
+ 
+-    GTK_CELL_RENDERER_CLASS(fm_cell_renderer_text_parent_class)->get_preferred_height(cell, widget, minimum_size, natural_size);
+-    if (self->height > 0)
+-    {
+-        if(natural_size && *natural_size > self->height)
+-            *natural_size = self->height;
+-        if(minimum_size && *minimum_size > self->height)
+-            *minimum_size = self->height;
+-    }
++    g_object_get(G_OBJECT(cell), "text", &text, NULL);
++    _get_size(cell, widget, NULL, text, NULL, NULL, &height, NULL, NULL, NULL, NULL, NULL);
++    g_free(text);
++
++    if(natural_size && *natural_size > height)
++        *natural_size = height;
++    if(minimum_size && *minimum_size > height)
++        *minimum_size = height;
+ }
+ 
+ static void fm_cell_renderer_text_get_preferred_height_for_width(GtkCellRenderer *cell,
+diff --git a/src/gtk/fm-dnd-auto-scroll.c b/src/gtk/fm-dnd-auto-scroll.c
+index 72d866a..f8eed6c 100644
+--- a/src/gtk/fm-dnd-auto-scroll.c
++++ b/src/gtk/fm-dnd-auto-scroll.c
+@@ -56,7 +56,10 @@ static gboolean on_auto_scroll(gpointer user_data)
+         return FALSE;
+ 
+     gdk_window_get_device_position (gtk_widget_get_window(widget),
+-                                    gtk_get_current_event_device(),
++                                    gdk_device_manager_get_client_pointer(
++                                        gdk_display_get_device_manager(
++                                            gdk_window_get_display(
++                                                gtk_widget_get_window(widget)))),
+                                     &x, &y, NULL);
+     gtk_widget_get_allocation(widget, &allocation);
+ 
+diff --git a/src/gtk/fm-dnd-dest.c b/src/gtk/fm-dnd-dest.c
+index 39db3b0..95d310d 100644
+--- a/src/gtk/fm-dnd-dest.c
++++ b/src/gtk/fm-dnd-dest.c
+@@ -2,7 +2,7 @@
+  *      fm-dnd-dest.c
+  *
+  *      Copyright 2009 PCMan <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -900,8 +900,7 @@ gboolean _on_drag_drop(FmDndDest* dd, GdkDragContext *drag_context,
+             else
+                 ret = FALSE;
+         }
+-        if(ret)
+-            gtk_drag_finish(drag_context, ret, FALSE, time);
++        gtk_drag_finish(drag_context, ret, FALSE, time);
+     }
+     return ret;
+ }
+@@ -949,7 +948,7 @@ GdkDragAction fm_dnd_dest_get_default_action(FmDndDest* dd,
+     {
+         GdkModifierType mask = 0;
+         gdk_window_get_device_position (gtk_widget_get_window(dd->widget),
+-                                        gtk_get_current_event_device(),
++                                        gdk_drag_context_get_device(drag_context),
+                                         NULL, NULL, &mask);
+         mask &= gtk_accelerator_get_default_mod_mask();
+         if ((mask & ~GDK_CONTROL_MASK) != 0) /* only "copy" action is allowed */
+@@ -976,8 +975,9 @@ GdkDragAction fm_dnd_dest_get_default_action(FmDndDest* dd,
+     /* we have no valid data, query it now */
+     if(!dd->src_files || dd->context != drag_context)
+     {
+-        clear_src_cache(dd);
+ query_sources:
++        if (dd->context != drag_context)
++            clear_src_cache(dd);
+         action = 0;
+         if(!dd->waiting_data) /* we're still waiting for "drag-data-received" signal */
+         {
+@@ -1004,7 +1004,7 @@ query_sources:
+             gboolean same_fs;
+             GdkModifierType mask = 0;
+             gdk_window_get_device_position (gtk_widget_get_window(dd->widget),
+-                                            gtk_get_current_event_device(),
++                                            gdk_drag_context_get_device(drag_context),
+                                             NULL, NULL, &mask);
+             mask &= gtk_accelerator_get_default_mod_mask();
+             if(fm_path_is_trash(dest_path))
+diff --git a/src/gtk/fm-file-menu.c b/src/gtk/fm-file-menu.c
+index 9d97658..6beed18 100644
+--- a/src/gtk/fm-file-menu.c
++++ b/src/gtk/fm-file-menu.c
+@@ -2,7 +2,7 @@
+  *      fm-file-menu.c
+  *
+  *      Copyright 2009 PCMan <pcman.tw@gmail.com>
+- *      Copyright 2013-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2013-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -232,7 +232,10 @@ static gboolean on_key_pressed(GtkWidget *widget, GdkEventKey *event, FmFileMenu
+     GdkModifierType mask = 0;
+ 
+     gdk_window_get_device_position (gtk_widget_get_window(widget),
+-                                    gtk_get_current_event_device(),
++                                    gdk_device_manager_get_client_pointer(
++                                        gdk_display_get_device_manager(
++                                            gdk_screen_get_display(
++                                                gtk_widget_get_screen(widget)))),
+                                     NULL, NULL, &mask);
+     if (mask & GDK_SHIFT_MASK)
+     {
+@@ -253,7 +256,10 @@ static gboolean on_key_released(GtkWidget *widget, GdkEventKey *event, FmFileMen
+     GdkModifierType mask = 0;
+ 
+     gdk_window_get_device_position (gtk_widget_get_window(widget),
+-                                    gtk_get_current_event_device(),
++                                    gdk_device_manager_get_client_pointer(
++                                        gdk_display_get_device_manager(
++                                            gdk_screen_get_display(
++                                                gtk_widget_get_screen(widget)))),
+                                     NULL, NULL, &mask);
+     if (!(mask & GDK_SHIFT_MASK))
+     {
+diff --git a/src/gtk/fm-file-properties.c b/src/gtk/fm-file-properties.c
+index bd8199b..14a5aaf 100644
+--- a/src/gtk/fm-file-properties.c
++++ b/src/gtk/fm-file-properties.c
+@@ -2,7 +2,7 @@
+  *      fm-file-properties.c
+  *
+  *      Copyright 2009 PCMan <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -917,7 +917,7 @@ static void on_response(GtkDialog* dlg, int response, FmFilePropData* data)
+     {
+         GSList *l, *l2;
+         for (l = data->ext, l2 = data->extdata; l; l = l->next, l2 = l2->next)
+-            ((FmFilePropExt*)l->data)->cb.finish(l2->data, FALSE);
++            ((FmFilePropExt*)l->data)->cb.finish(l2->data, TRUE);
+         g_slist_free(data->ext);
+         g_slist_free(data->extdata);
+         data->ext = NULL;
+diff --git a/src/gtk/fm-folder-model.c b/src/gtk/fm-folder-model.c
+index 14ea780..b97b0a7 100644
+--- a/src/gtk/fm-folder-model.c
++++ b/src/gtk/fm-folder-model.c
+@@ -2,7 +2,7 @@
+  *      fm-folder-model.c
+  *
+  *      Copyright 2009 - 2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -827,8 +827,11 @@ static void fm_folder_model_get_value(GtkTreeModel *tree_model,
+         }
+     case FM_FOLDER_MODEL_COL_EXT:
+         {
+-            const char *str = strrchr(fm_file_info_get_disp_name(info), '.');
+-            if (str)
++            const char *name = fm_file_info_get_disp_name(info);
++            const char *str = strrchr(name, '.');
++            if (str == name)
++                str = NULL;
++            else if (str)
+                 str++;
+             g_value_set_string(value, str);
+         }
+@@ -999,6 +1002,7 @@ static gint fm_folder_model_compare(gconstpointer item1,
+     FmFileInfo* file2 = ((FmFolderItem*)item2)->inf;
+     const char* key1;
+     const char* key2;
++    const char *name;
+     goffset diff;
+     int ret = 0;
+ 
+@@ -1082,8 +1086,14 @@ _main_sort:
+         }
+         break;
+     case FM_FOLDER_MODEL_COL_EXT:
+-        key1 = strrchr(fm_file_info_get_disp_name(file1), '.');
+-        key2 = strrchr(fm_file_info_get_disp_name(file2), '.');
++        name = fm_file_info_get_disp_name(file1);
++        key1 = strrchr(name, '.');
++        if (key1 == name)
++            key1 = NULL;
++        name = fm_file_info_get_disp_name(file2);
++        key2 = strrchr(name, '.');
++        if (key2 == name)
++            key2 = NULL;
+         ret = g_strcmp0(key1, key2);
+         if (ret == 0)
+             goto _sort_by_name;
+diff --git a/src/gtk/fm-folder-view.c b/src/gtk/fm-folder-view.c
+index 21e7dff..d35dff0 100644
+--- a/src/gtk/fm-folder-view.c
++++ b/src/gtk/fm-folder-view.c
+@@ -1,7 +1,7 @@
+ /*
+  *      fm-folder-view.c
+  *
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -1106,11 +1106,14 @@ static void popup_position_func(GtkMenu *menu, gint *x, gint *y,
+     gtk_widget_realize(GTK_WIDGET(menu));
+     /* get all the relative coordinates */
+     gtk_widget_get_allocation(widget, &a);
++    screen = gtk_widget_get_screen(widget);
+     gdk_window_get_device_position(gtk_widget_get_window(widget),
+-                                   gtk_get_current_event_device(), &x2, &y2, NULL);
++                                   gdk_device_manager_get_client_pointer(
++                                        gdk_display_get_device_manager(
++                                            gdk_screen_get_display(screen))),
++                                   &x2, &y2, NULL);
+     gtk_widget_get_allocation(GTK_WIDGET(menu), &ma);
+     parent_window = gtk_widget_get_parent_window(widget);
+-    screen = gtk_widget_get_screen(widget);
+     /* get absolute coordinate of parent window - we got coords relative to it */
+     if (parent_window)
+         gdk_window_get_origin(parent_window, x, y);
+diff --git a/src/gtk/fm-gtk-file-launcher.c b/src/gtk/fm-gtk-file-launcher.c
+index d683895..5e7cde9 100644
+--- a/src/gtk/fm-gtk-file-launcher.c
++++ b/src/gtk/fm-gtk-file-launcher.c
+@@ -3,7 +3,7 @@
+  *
+  *      Copyright 2010-2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+  *      Copyright 2010 Shae Smittle <starfall87@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -346,7 +346,11 @@ gboolean fm_launch_desktop_entry_simple(GtkWindow* parent, GAppLaunchContext* ct
+     }
+     if(files) for(l = fm_path_list_peek_head_link(files); l; l = l->next)
+         uris = g_list_append(uris, fm_path_to_uri(FM_PATH(l->data)));
+-    entry_path = fm_path_to_str(path);
++    /* special handling for shortcuts */
++    if (fm_file_info_is_shortcut(entry))
++        entry_path = g_strdup(fm_file_info_get_target(entry));
++    else
++        entry_path = fm_path_to_str(path);
+     ret = fm_launch_desktop_entry(ctx, entry_path, uris, &launcher, &data);
+     g_list_foreach(uris, (GFunc)g_free, NULL);
+     g_list_free(uris);
+diff --git a/src/gtk/fm-places-view.c b/src/gtk/fm-places-view.c
+index 70b728b..640d247 100644
+--- a/src/gtk/fm-places-view.c
++++ b/src/gtk/fm-places-view.c
+@@ -2,7 +2,7 @@
+  *      fm-places-view.c
+  *
+  *      Copyright 2009 - 2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- *      Copyright 2012-2013 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -247,7 +247,7 @@ static gboolean on_drag_motion (GtkWidget *dest_widget,
+     /* fm_drag_context_has_target_name(drag_context, "GTK_TREE_MODEL_ROW"); */
+     GdkAtom target;
+     GtkTreeViewDropPosition pos;
+-    GtkTreePath* tp;
++    GtkTreePath* tp = NULL;
+     gboolean ret = FALSE;
+     GdkDragAction action = 0;
+ 
+@@ -903,8 +903,12 @@ static void popup_position_func(GtkMenu *menu, gint *x, gint *y,
+     gtk_widget_realize(GTK_WIDGET(menu));
+     /* get all the relative coordinates */
+     gtk_widget_get_allocation(widget, &a);
++    screen = gtk_widget_get_screen(widget);
+     gdk_window_get_device_position(gtk_widget_get_window(widget),
+-                                   gtk_get_current_event_device(), &x2, &y2, NULL);
++                                   gdk_device_manager_get_client_pointer(
++                                        gdk_display_get_device_manager(
++                                            gdk_screen_get_display(screen))),
++                                   &x2, &y2, NULL);
+     gtk_widget_get_allocation(GTK_WIDGET(menu), &ma);
+     path = gtk_tree_path_new_from_indices(index, -1);
+     gtk_tree_view_get_cell_area(view, path, gtk_tree_view_get_column(view, 0), &cell);
+@@ -920,7 +924,6 @@ static void popup_position_func(GtkMenu *menu, gint *x, gint *y,
+     *x += a.x + x2;
+     *y += a.y + y2;
+     /* limit coordinates so menu will be not positioned outside of screen */
+-    screen = gtk_widget_get_screen(widget);
+     mon = gdk_screen_get_monitor_at_point(screen, *x, *y);
+     /* get monitor geometry into the rectangle */
+     gdk_screen_get_monitor_geometry(screen, mon, &cell);
+diff --git a/src/gtk/fm-progress-dlg.c b/src/gtk/fm-progress-dlg.c
+index 77a28bc..a82610f 100644
+--- a/src/gtk/fm-progress-dlg.c
++++ b/src/gtk/fm-progress-dlg.c
+@@ -2,7 +2,7 @@
+  *      fm-progress-dlg.c
+  *
+  *      Copyright 2009 PCMan <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -262,8 +262,6 @@ static gint on_ask_rename(FmFileOpsJob* job, FmFileInfo* src, FmFileInfo* dest,
+ 
+     tmp = g_filename_display_name(fm_path_get_basename(path));
+     gtk_entry_set_text(filename, tmp);
+-    g_free(tmp);
+-    tmp = g_strdup(fm_file_info_get_disp_name(dest));
+     g_object_set_data_full(G_OBJECT(filename), "old_name", tmp, g_free);
+     g_signal_connect(filename, "changed", G_CALLBACK(on_filename_changed), gtk_builder_get_object(builder, "rename"));
+ 
+@@ -457,11 +455,11 @@ static gboolean on_update_dlg(gpointer user_data)
+             guint secs = (guint)remaining;
+             guint mins = 0;
+             guint hrs = 0;
+-            if(secs > 60)
++            if(secs >= 60)
+             {
+                 mins = secs / 60;
+                 secs %= 60;
+-                if(mins > 60)
++                if(mins >= 60)
+                 {
+                     hrs = mins / 60;
+                     mins %= 60;
+diff --git a/src/gtk/fm-standard-view.c b/src/gtk/fm-standard-view.c
+index b2ea6fc..ae382bb 100644
+--- a/src/gtk/fm-standard-view.c
++++ b/src/gtk/fm-standard-view.c
+@@ -2,7 +2,7 @@
+  *      fm-standard-view.c
+  *
+  *      Copyright 2009 - 2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -1668,6 +1668,9 @@ static void fm_standard_view_set_model(FmFolderView* ffv, FmFolderModel* model)
+     }
+     else
+         fv->model = NULL;
++    /* reset tooltip after changing folder, it might stick from old one,
++       see how FmCellRendererText works on that regard */
++    g_object_set(G_OBJECT(fv->view), "tooltip-text", NULL, NULL);
+ }
+ 
+ typedef struct
+diff --git a/src/job/fm-dir-list-job.c b/src/job/fm-dir-list-job.c
+index f9bfc5a..410084f 100644
+--- a/src/job/fm-dir-list-job.c
++++ b/src/job/fm-dir-list-job.c
+@@ -2,7 +2,7 @@
+  *      fm-dir-list-job.c
+  *
+  *      Copyright 2009 PCMan <pcman.tw@gmail.com>
+- *      Copyright 2013-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2013-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This file is a part of the Libfm library.
+  *
+@@ -215,6 +215,7 @@ static inline FmFileInfo *_new_info_for_native_file(FmDirListJob* job, FmPath* p
+     fm_file_info_set_path(fi, path);
+     if (fm_file_info_set_from_native_file(fi, path_str, err))
+         return fi;
++    g_assert(err != NULL);
+     fm_file_info_unref(fi);
+     return NULL;
+ }
+@@ -286,7 +287,7 @@ static gboolean fm_dir_list_job_run_posix(FmDirListJob* job)
+ 
+         _retry:
+             fi = _new_info_for_native_file(job, new_path, fpath->str, &err);
+-            if (fi == NULL) /* we got a damaged file */
++            if (fi == NULL && !fm_job_is_cancelled(fmjob)) /* we got a damaged file */
+             {
+                 FmJobErrorAction act = fm_job_emit_error(fmjob, err, FM_JOB_ERROR_MILD);
+                 GFile *gf;
+diff --git a/src/job/fm-file-ops-job.c b/src/job/fm-file-ops-job.c
+index 779914e..898d410 100644
+--- a/src/job/fm-file-ops-job.c
++++ b/src/job/fm-file-ops-job.c
+@@ -2,7 +2,7 @@
+  *      fm-file-ops-job.c
+  *
+  *      Copyright 2009 PCMan <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This file is a part of the Libfm library.
+  *
+@@ -670,6 +670,12 @@ static gboolean _fm_file_ops_job_link_run(FmFileOpsJob* job)
+         /* if we drop URI query onto native filesystem, omit query part */
+         if (!fm_path_is_native(path) && g_file_is_native(dest_dir))
+             dname = strchr(basename, '?');
++        /* if basename consist only from query then use first part of it */
++        if (dname == basename)
++        {
++            basename++;
++            dname = strchr(basename, '&');
++        }
+         if (dname)
+         {
+             _basename = g_strndup(basename, dname - basename);
+@@ -787,7 +793,7 @@ _link_error:
+                                     "Type=Link\n"
+                                     "Name=%s"
+                                     "%s%s\n"
+-                                    "URL=%s", name,
++                                    "URL=%s\n", name,
+                                     iname ? "\nIcon=" : "", iname ? iname : "",
+                                     src);
+             g_free(name);
+diff --git a/src/modules/vfs-search.c b/src/modules/vfs-search.c
+index 9ca9197..849172c 100644
+--- a/src/modules/vfs-search.c
++++ b/src/modules/vfs-search.c
+@@ -263,6 +263,10 @@ static GFileInfo *_fm_vfs_search_enumerator_next_file(GFileEnumerator *enumerato
+ 
+             /* recurse upon each directory */
+             if(err == NULL && enu->recursive &&
++               /* SF bug #969: very possibly we get multiple instances of the
++                  same file if we follow symlink to a directory
++                  FIXME: make it optional? */
++               !g_file_info_get_is_symlink(file_info) &&
+                g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY)
+             {
+                 if(enu->show_hidden || !g_file_info_get_is_hidden(file_info))
+diff --git a/src/tools/libfm-pref-apps.c b/src/tools/libfm-pref-apps.c
+index 584b587..dbdb59b 100644
+--- a/src/tools/libfm-pref-apps.c
++++ b/src/tools/libfm-pref-apps.c
+@@ -47,8 +47,12 @@ int main(int argc, char** argv)
+     gtk_init(&argc, &argv);
+     fm_gtk_init(NULL);
+ 
++#if GTK_CHECK_VERSION(3, 10, 0)
++    b = gtk_builder_new_from_file(PACKAGE_UI_DIR "/preferred-apps.ui");
++#else
+     b = gtk_builder_new();
+     gtk_builder_add_from_file(b, PACKAGE_UI_DIR "/preferred-apps.ui", NULL);
++#endif
+     dlg = GTK_DIALOG(gtk_builder_get_object(b, "dlg"));
+     browser = GTK_COMBO_BOX(gtk_builder_get_object(b, "browser"));
+     mail_client = GTK_COMBO_BOX(gtk_builder_get_object(b, "mail_client"));
