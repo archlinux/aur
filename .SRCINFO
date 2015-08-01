@@ -1,0 +1,21 @@
+pkgbase = perl-data-visitor
+	pkgdesc = Visitor style traversal of Perl data structures
+	pkgver = 0.30
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Visitor
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-requires
+	depends = perl-class-load>=0.06
+	depends = perl-moose>=0.89
+	depends = perl-namespace-clean>=0.19
+	depends = perl-task-weaken
+	depends = perl-tie-toobject>=0.01
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Data-Visitor-0.30.tar.gz
+	md5sums = a43deb0bc99f4d49721965780eae6cef
+	sha512sums = cdd3f5076dbbfb3afce714677e936417b96315dd50735c015795fb2c9d143d4e2ceeb305366f9985032b17899b911267dbafefa56493ff20f16c74da1a9330a8
+
+pkgname = perl-data-visitor
+
