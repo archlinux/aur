@@ -6,9 +6,9 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.2.1.18.g06284ba
+pkgver=3.2.1.21.g6ecf9af
 pkgrel=1
-pkgdesc="An iTunes-like music player/libary"
+pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
 license=(GPL2)
 url=http://www.rhythmbox.org
