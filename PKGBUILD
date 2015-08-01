@@ -6,7 +6,7 @@
 pkgname=lxinput-gtk3
 _pkgname=lxinput
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Small program to configure keyboard and mouse for LXDE (GTK+ 3 version)"
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
@@ -15,7 +15,6 @@ groups=('lxde-gtk3')
 depends=('gtk3')
 makedepends=('intltool')
 conflicts=($_pkgname)
-provides=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
         0001-Fix-GtkBuilder-UI-file-for-GTK-3-add-mouse-icon-to-m.patch)
 sha256sums=('6e37074e406a05792f6eaac029638bd02fe88926f20736d73dcb5113da825c24'
