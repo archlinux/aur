@@ -19,7 +19,7 @@ pkgname=('php7'
 		 'php7-xsl')
 
 pkgver=7.0.0beta2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -211,6 +211,7 @@ package_php7() {
 	rm -f ${pkgdir}/usr/lib/php/modules/{enchant,gd,intl,ldap,mcrypt,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 	# remove empty directory
 	rmdir ${pkgdir}/usr/include/php/include
+    rmdir ${pkgdir}/var/{log,run}
 	# fix broken link
 	ln -sf phar.phar ${pkgdir}/usr/bin/phar
 }
