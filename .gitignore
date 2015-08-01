@@ -1,0 +1,5 @@
+pkg/
+src/
+qmake2cmake/
+*.tar.xz
+*.tar.gz

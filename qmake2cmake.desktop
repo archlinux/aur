@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=QMake2CMake
+Comment=Tool to convert qmake build scripts to cmake.
+Exec=qm2cm
+Terminal=false
+Type=Application
+Categories=Development;

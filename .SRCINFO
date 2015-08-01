@@ -1,0 +1,17 @@
+pkgbase = qmake2cmake
+	pkgdesc = Tool to convert qmake build scripts to cmake.
+	pkgver = 2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/qmake2cmake/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt4
+	source = qmake2cmake::svn+svn://svn.code.sf.net/p/qmake2cmake/code/
+	source = qmake2cmake.desktop
+	sha512sums = SKIP
+	sha512sums = a14b722ef37997aabdcb0c8477fbed99aba175feee3745bfc38a0d6e9989b8c558288148ae02be32dc998a4ae48fc1d4a19c0ed93880727b4b7c031e0e564437
+
+pkgname = qmake2cmake
+
