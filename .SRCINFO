@@ -1,12 +1,11 @@
 pkgbase = pfclient
 	pkgdesc = Planefinder.net sharing client
 	pkgver = 3.0.2080
-	pkgrel = 1
+	pkgrel = 2
 	url = https://planefinder.net/sharing/client
 	install = pfclient.install
 	arch = any
 	license = unknown
-	depends = nodejs
 	optdepends = lib32-glibc: necessary for 64-bit systems
 	optdepends = lib32-gcc-libs: necessary for 64-bit systems
 	source = pfclient.service

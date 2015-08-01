@@ -2,12 +2,11 @@
 
 pkgname=pfclient
 pkgver=3.0.2080
-pkgrel=1
+pkgrel=2
 pkgdesc="Planefinder.net sharing client"
 arch=('any')
 url="https://planefinder.net/sharing/client"
 license=(unknown)
-depends=(nodejs)
 optdepends=(
     "lib32-glibc: necessary for 64-bit systems"
     "lib32-gcc-libs: necessary for 64-bit systems"
