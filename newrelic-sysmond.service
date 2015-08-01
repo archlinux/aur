@@ -1,11 +1,34 @@
 [Unit]
-Description=System monitor Services Provided by Newrelic
+Description=New Relic Servers Server Monitor (newrelic-sysmond)
 After=network.target
 
 [Service]
 Type=forking
 PIDFile=/run/nrsysmond.pid
-ExecStart=/usr/bin/nrsysmond -c /etc/newrelic/nrsysmond.cfg -p /run/nrsysmond.pid
+
+# https://blog.hqcodeshop.fi/archives/93-Handling-varrun-with-systemd.html
+# Run ExecStartPre with root-permissions
+# This seems easier and more reliable than tmpfiles.d
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/touch /run/nrsysmond.pid
+ExecStartPre=/usr/bin/chown NEWRELIC_USER:NEWRELIC_USER /run/nrsysmond.pid
+User=NEWRELIC_USER
+Group=NEWRELIC_USER
+
+# Run ExecStart with User
+ExecStart=/usr/bin/nrsysmond -c '/etc/newrelic/nrsysmond.cfg' -p '/run/nrsysmond.pid'
+
+# Arch Linux:
+# The user and group must be the same. Change all 4 at once. Don't pick a system defined user.
+# If you change the user and group names after installation, you should:
+# 1) userdel 'olduser' # if it's not being used for something else
+# 2) groupdel 'olduser' # if it's not being used for something else
+# 3) rm -rf '/.olduser' # if there's nothing in here of importance
+# 4) newrelic-sysmond.inst install # to create new user, group, and to chown folders
+
+# If you uninstall another New Relic package and find that the user and group have disappeared
+# simply run: newrelic-sysmond.inst install
+# or just upgrade the package
 
 [Install]
 WantedBy=multi-user.target

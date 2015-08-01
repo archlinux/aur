@@ -1,22 +1,28 @@
 pkgbase = newrelic-sysmond
-	pkgdesc = system monitor services provided by newrelic
+	pkgdesc = collect, monitor, and analyze critical server load metrics including CPU, memory, network, process, disk utilization and capacity
 	pkgver = 2.1.0.124
 	pkgrel = 1
 	url = http://newrelic.com/
 	install = newrelic-sysmond.install
 	arch = i686
 	arch = x86_64
-	license = non-free
+	license = custom
 	makedepends = binutils
 	depends = glibc
 	depends = bash
+	depends = grep
+	depends = sed
+	depends = awk
+	depends = systemd
 	backup = etc/newrelic/nrsysmond.cfg
 	source = http://download.newrelic.com/server_monitor/archive/2.1.0.124/newrelic-sysmond-2.1.0.124-linux.tar.gz
+	source = newrelic-sysmond.logrotate
+	source = newrelic-sysmond.inst.sh
 	source = newrelic-sysmond.service
-	source = newrelic-sysmond.install
-	md5sums = b18f27bec4c9e5a5cf524225e41a7d15
-	md5sums = f4ebc44c550896309d6121455a8669f3
-	md5sums = aa0022b03b291c97f5f4b3cb2d24104d
+	sha256sums = 052e42d156e20f77e78f82372123eadf069ef2e5758a1184725a906ead551d9b
+	sha256sums = 02d70a783e30a7b6f8c438b1bae5a57d37d2204d112ccca38eada2b9044a5ebe
+	sha256sums = bcce083629dcd0827f86247872ee4b42dec2c51349b4cc10c0ce7619f94faf9f
+	sha256sums = 7ec93da5ddf521cd1850f1ef491182d7363fd565db8697c33261d09300fab6af
 
 pkgname = newrelic-sysmond
 
