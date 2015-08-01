@@ -1,6 +1,6 @@
 pkgbase = tinyterm-git
 	pkgdesc = Very lightweight terminal emulator based on VTE (fork of tinyterm-svn package)
-	pkgver = 0.3.1.g633d60e
+	pkgver = 0.3.r1.g633d60e
 	pkgrel = 1
 	url = https://github.com/lahwaacz/tinyterm
 	arch = i686
