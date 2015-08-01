@@ -2,7 +2,7 @@
 
 pkgname=eureka
 pkgver=1.07
-pkgrel=1
+pkgrel=2
 pkgdesc="A map editor for the classic DOOM games"
 url="http://${pkgname}.sourceforge.net/"
 arch=('x86_64' 'i686')
@@ -26,7 +26,7 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   make PREFIX="${pkgdir}/usr" install
 
-  install -D -m644 misc/eureka.ico "${pkgdir}/usr/share/pixmaps/eureka.ico"
+  install -D -m644 misc/eureka.xpm "${pkgdir}/usr/share/pixmaps/eureka.xpm"
   install -D -m644 misc/eureka.desktop "${pkgdir}/usr/share/applications/eureka.desktop"
   install -D -m644 misc/eureka.6 "${pkgdir}/usr/share/man/man6/eureka.6"
 }
