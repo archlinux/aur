@@ -7,7 +7,7 @@
 pkgname=lxappearance-gtk3
 _pkgname=lxappearance
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Feature-rich GTK+ theme switcher of the LXDE Desktop (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -16,7 +16,6 @@ groups=('lxde-gtk3')
 depends=('gtk3')
 makedepends=('intltool' 'dbus-glib')
 conflicts=($_pkgname)
-provides=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
         0001-Substitute-the-correct-GTK-version-in-pkgconfig-file.patch
         0002-Fix-About-dialog-for-GTK-3.patch
