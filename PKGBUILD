@@ -2,25 +2,18 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-remotetimers
-pkgver=1.0.1
+pkgver=1.0.2
 _vdrapi=2.2.0
-pkgrel=9
+pkgrel=1
 pkgdesc="Add/Edit/Remove timers on both, the local (client) VDR and a remote (server) VDR"
 url="http://vdr.schmirler.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}" 'vdr-svdrpservice')
 _plugname=${pkgname//vdr-/}
-source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz"
-        'remotetimers-vdr2.1.2compat.diff')
+source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('aece17988ec1d62d3985390eabbcfdc9'
-         '6eb43dfefc9da87bc691abf193e2ef12')
-
-prepare() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
-  patch -p1 -i "$srcdir/remotetimers-vdr2.1.2compat.diff"
-}
+md5sums=('b3e7e8895d5e94362e8375882702cb83')
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
