@@ -8,7 +8,7 @@ pkgname=arangodb
 pkgver=2.6.2
 pkgrel=1
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
-arch=("i686" "x86_64" "armv7h")
+arch=("i686" "x86_64" "armv7l")
 url="https://www.arangodb.com/"
 license=('APACHE')
 # The depends line should look like this but Arango bundles V8, libev
