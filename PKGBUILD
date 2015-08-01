@@ -2,7 +2,7 @@
 
 pkgname=sync-my-l2p
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sync the L2P of the RWTH Aachen with your Computer"
 arch=('i686' 'x86_64')
 url="http://www.sync-my-l2p.de/"

@@ -1,7 +1,7 @@
 pkgbase = sync-my-l2p
 	pkgdesc = Sync the L2P of the RWTH Aachen with your Computer
 	pkgver = 2.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sync-my-l2p.de/
 	install = sync-my-l2p.install
 	arch = i686
