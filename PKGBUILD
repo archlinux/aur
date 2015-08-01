@@ -12,8 +12,10 @@ groups=('frc-2015')
 depends=('arm-frc-linux-gnueabi-gcc')
 makedepends=('cmake' 'git')
 options=('!strip' 'libtool' 'staticlibs')
-source=("git+https://usfirst.collab.net/gerrit/allwpilib")
-sha512sums=('SKIP')
+source=("git+https://usfirst.collab.net/gerrit/allwpilib"
+        "0001-Fixed-build-failures-introduced-by-43f1651.-Headers-.patch")
+sha512sums=('SKIP'
+            'cad43e25abd72403fffde532e0a6766509ecff9165f1ca1f50b5973f2df3bbe3655332a7f458401855cc21835acf54a95719c4f9bb932d224bbb8df747463183')
 
 pkgver() {
   cd allwpilib
@@ -24,6 +26,7 @@ prepare() {
   cd "$srcdir/allwpilib"
 
   # Apply upstream patches
+  patch -p1 < ../0001-Fixed-build-failures-introduced-by-43f1651.-Headers-.patch
 }
 
 build() {
