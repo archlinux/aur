@@ -11,8 +11,8 @@ pkgbase = gprbuild
 	source = Makefile.archy
 	source = patch-gnat_targparm
 	sha256sums = 5d5bbc8c57075250c264e2f15d9949383450ac696eb8a90803c2a36b55ecd0e2
-	sha256sums = 34a94c0c0f4c8a1a4e1fa047da1b5df5
-	sha256sums = bf8d51ad430aefde7b93c5da19ee9755
+	sha256sums = 374dc526242e5210508c11631d3bd84c41a4322b228c9c6b4210cd1a95eac76c
+	sha256sums = d5da23b8457c2746e2a23adcfea053d070a08b84e87a2bf076a29245e75abdc5
 
 pkgname = gprbuild
 
