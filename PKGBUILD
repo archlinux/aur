@@ -2,7 +2,7 @@
 
 pkgname=sxlock-git
 _pkgname=sxlock
-pkgver=1.1.7.g639db05
+pkgver=1.1.r8.g1388c6e
 pkgrel=1
 pkgdesc="Simple screen locker utility for X, fork of sflock. Uses PAM authentication, no suid needed."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --always | sed 's|^v||;s|-|.|g'
+  git describe --always | sed 's|^v||;s|\([^-]*-g\)|r\1|;s|-|.|g'
 }
 
 build() {
