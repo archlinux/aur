@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex-git
-pkgver=20150519
+pkgver=20150710
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ makedepends=('autoconf'
              'pkg-config'
              'yasm')
 license=('MIT')
-source=(git+https://github.com/btcdrak/bitcoin#branch=addrindex
+source=(git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.11
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
