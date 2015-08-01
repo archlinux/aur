@@ -1,0 +1,13 @@
+pkgbase = adonthell-wastesedge
+	pkgdesc = Official demo game for the Adonthell RPG engine
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = http://adonthell.nongnu.org/
+	arch = any
+	license = GPL2
+	depends = adonthell>=0.3.3
+	source = http://download.savannah.gnu.org/releases/adonthell/wastesedge-src-0.3.5.tar.gz
+	md5sums = 6573ea42b47cba377a8ecc33db6b5866
+
+pkgname = adonthell-wastesedge
+
