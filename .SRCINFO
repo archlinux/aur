@@ -1,5 +1,5 @@
 pkgbase = spotify32bit
-	pkgdesc = A proprietary peer-to-peer music streaming service
+	pkgdesc = Last 32Bit version of proprietary peer-to-peer music streaming service
 	pkgver = 1.0.11.129
 	pkgrel = 2
 	url = http://www.spotify.com
