@@ -17,7 +17,9 @@ pkgbase = kdbus
 	options = debug
 	options = !strip
 	source = git://github.com/systemd/kdbus.git#branch=v4.1
+	source = kdbus.install
 	md5sums = SKIP
+	md5sums = 73eb3e891205f53cd017d87e4e58fe6b
 
 pkgname = kdbus
 	pkgdesc = kdbus ipc kernel module

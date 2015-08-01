@@ -11,8 +11,10 @@ makedepends=('xmlto' 'docbook-xsl' 'libxslt' 'kmod' 'inetutils' 'bc' 'git'
              "linux-headers>=$pkgver" "linux-headers<$_nxver")
 options=('debug' '!strip')
 install=$pkgname.install
-source=("git://github.com/systemd/kdbus.git#branch=v$pkgver")
-md5sums=('SKIP')
+source=("git://github.com/systemd/kdbus.git#branch=v$pkgver"
+        "$pkgname.install")
+md5sums=('SKIP'
+         '73eb3e891205f53cd017d87e4e58fe6b')
 
 _extramodules="extramodules-$pkgver-ARCH"
 
