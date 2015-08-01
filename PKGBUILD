@@ -3,15 +3,15 @@
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 
 pkgname=qsampler
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="LinuxSampler Qt GUI"
 arch=('i686' 'x86_64')
 url="http://qsampler.sourceforge.net/"
 license=('GPL')
 depends=('qt5-base' 'qt5-tools' 'linuxsampler' 'liblscp')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('6d52d621e77e9d2072901b25250d3b43')
+md5sums=('b1e20e50fff5f6e7907355001011eb4c')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
