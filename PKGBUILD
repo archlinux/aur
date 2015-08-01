@@ -1,8 +1,8 @@
 pkgname=nvidia-e531
 groups=('ThinkPad-E531')
-pkgver=352.21
+pkgver=352.30
 _extramodules=extramodules-4.1-e531
-pkgrel=4
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-E531"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -13,8 +13,7 @@ license=('custom')
 install=nvidia-e531.install
 options=(!strip)
 source=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=('cfccf25135bf5c33f68eb892e341b35126f6561f257b32893ccd055d624964eb')
-
+sha256sums=('0f7acc89b2392c71cc8713b0291606052e0cd8971ee951901dde37387d85efc0')
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
