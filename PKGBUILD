@@ -9,7 +9,7 @@ url="http://pom1.sourceforge.net/"
 license=('GPL2')
 depends=('sdl')
 source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('0c878aa8ef8a0f400b7ce4d58025a711')
+md5sums=('fbea72f26ab9f1771e8171021406b194')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
