@@ -3,7 +3,7 @@
 
 pkgname=flphoto
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Basic image management and display program based on the FLTK toolkit"
 arch=('i686' 'x86_64')
 url="http://www.easysw.com/~mike/flphoto/"
