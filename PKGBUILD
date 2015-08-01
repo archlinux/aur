@@ -2,7 +2,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=firefox-tumblr-savior
-pkgver=0.4.22
+pkgver=0.4.22.1.signed
 pkgrel=1
 _dnum=313388
 groups=("firefox-addons")
@@ -25,4 +25,4 @@ package() {
 	find "${pkgdir}" -type f -exec chmod 0644 {} \;
 }
 
-md5sums=('979bae298c668b5491d05943b41c2058')
+md5sums=('b6fb43a2ad20c77c7f50397bd417f2f5')
