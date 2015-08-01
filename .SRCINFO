@@ -10,6 +10,7 @@ pkgbase = ada-web-server
 	makedepends = gprbuild
 	depends = gcc-ada
 	depends = asis
+	depends = prepare_gnat_util
 	provides = aws
 	provides = ada-web-server
 	conflicts = aws
