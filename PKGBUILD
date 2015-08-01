@@ -24,7 +24,7 @@ build() {
 
   patch -p0 -i ../patch-Makefile.in
 
-  ./configure --prefix=/usr  --with-appli-perso="dsa"  --with-proto-perso="giop"
+  PYTHON=python2   ./configure --prefix=/usr  --with-appli-perso="dsa"  --with-proto-perso="giop"
   make
 }
 
