@@ -1,0 +1,15 @@
+pkgbase = eureka
+	pkgdesc = A map editor for the classic DOOM games
+	pkgver = 1.07
+	pkgrel = 1
+	url = http://eureka.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = fltk
+	depends = libjpeg-turbo
+	source = http://download.sourceforge.net/eureka-editor/Eureka/1.07/eureka-1.07-source.tar.gz
+	md5sums = b9f3048ee56e4e7dcaa8c2e1c5bc7076
+
+pkgname = eureka
+
