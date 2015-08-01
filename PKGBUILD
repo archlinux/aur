@@ -7,7 +7,7 @@
 pkgname=gpicview-gtk3
 _pkgname=gpicview
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight image viewer (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -17,7 +17,6 @@ depends=('gtk3' 'desktop-file-utils')
 makedepends=('intltool')
 optdepends=('librsvg: For SVG support')
 conflicts=($_pkgname)
-provides=($_pkgname)
 install=$_pkgname.install
 source=(http://downloads.sourceforge.net/sourceforge/lxde/$_pkgname-$pkgver.tar.gz
         0001-Remove-Utility-from-desktop-categories.patch
