@@ -1,7 +1,7 @@
 pkgbase = db4.8
 	pkgdesc = The Berkeley DB embedded database system 4.8
 	pkgver = 4.8.30
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
 	arch = i686
 	arch = x86_64

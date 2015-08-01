@@ -2,7 +2,7 @@
 # OLD Contributor: Leslie P. Polzer <polzer@gnu.org>
 pkgname=db4.8
 pkgver=4.8.30
-pkgrel=3
+pkgrel=4
 pkgdesc="The Berkeley DB embedded database system 4.8"
 arch=('i686' 'x86_64')
 license=('custom')
