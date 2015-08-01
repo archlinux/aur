@@ -1,0 +1,28 @@
+pkgbase = newsbeuter2.8-git
+	pkgdesc = A RSS feed reader for the text console with special Podcast support.
+	pkgver = 1728.e425e3e
+	pkgrel = 1
+	url = http://www.newsbeuter.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = swig
+	makedepends = asciidoc
+	makedepends = docbook-xsl
+	makedepends = pkgconfig
+	depends = sqlite3
+	depends = curl
+	depends = libxml2
+	depends = stfl
+	depends = json-c
+	optdepends = ruby
+	conflicts = newsbeuter
+	conflicts = newsbeuter-git
+	options = docs
+	options = !libtool
+	source = git://github.com/akrennmair/newsbeuter.git#tag=r2.8
+	sha1sums = SKIP
+
+pkgname = newsbeuter2.8-git
+
