@@ -1,21 +1,19 @@
 pkgbase = magma
 	pkgdesc = Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems.
-	pkgver = 1.4.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://icl.cs.utk.edu/magma/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = acml-gfortran
 	depends = cuda>=5.0.0
 	depends = gcc-libs-multilib
 	depends = gsl
 	depends = python
-	depends = acml-gfortran
 	depends = cblas
 	options = staticlibs
-	source = http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-1.4.1.tar.gz
-	sha1sums = 3e6bc7c2d6500508134b6cdf48985f7c8b94c89b
+	source = http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-1.6.2.tar.gz
+	sha1sums = 121bedf6c9fa2243b67fb5ee501a86d566c97a93
 
 pkgname = magma
 
