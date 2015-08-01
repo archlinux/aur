@@ -27,7 +27,8 @@ build()
 package() 
 {
   mkdir -p  $pkgdir/usr/lib
-  ln -s  /usr/lib/libgnat-5.so  $pkgdir/usr/lib/libgnat-5.2.so
+  ln -s  /usr/lib/libgnat-5.so   $pkgdir/usr/lib/libgnat-5.2.so
+  ln -s  /usr/lib/libgnarl-5.so  $pkgdir/usr/lib/libgnarl-5.2.so
 }
 
 
