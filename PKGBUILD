@@ -2,14 +2,14 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-pae
-pkgver=352.21
-_extramodules=extramodules-4.0-pae
+pkgver=352.30
+_extramodules=extramodules-4.1-pae
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-pae"
 arch=('i686')
 url="http://www.nvidia.com/"
-depends=('linux-pae>=4.0' 'linux-pae<4.1' 'nvidia-libgl' "nvidia-utils=${pkgver}")
-makedepends=('linux-pae-headers>=4.0' 'linux-pae-headers<4.1')
+depends=('linux-pae>=4.1' 'linux-pae<4.2' 'nvidia-libgl' "nvidia-utils=${pkgver}")
+makedepends=('linux-pae-headers>=4.1' 'linux-pae-headers<4.2')
 conflicts=('nvidia-96xx' 'nvidia-173xx')
 license=('custom')
 install=nvidia.install
@@ -19,8 +19,7 @@ source=("nv-drm.patch")
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301')
-md5sums_i686=('c91760a04f658845722380f6c7fd4709')
-md5sums_x86_64=('9ca9f07f91361362f304ca8317ddd453')
+md5sums_i686=('7e59d84eafe2482b2f02df692b9168d5')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -28,7 +27,7 @@ prepare() {
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
-  patch -Np0 -i "$srcdir/nv-drm.patch"
+  #patch -Np0 -i "$srcdir/nv-drm.patch"
 }
 
 build() {
