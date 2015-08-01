@@ -24,7 +24,9 @@ md5sums=('6a569e9be7baf56de5c5813483d0357c'
 build()
 {
 	cd "$srcdir/$pkgname-$pkgver"
+
 	./configure --prefix=/usr/
+
 	make
 }
 
@@ -32,12 +34,7 @@ package()
 {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	echo "---------"
-
-	ls
-	
 	install -Dm755 nodm $pkgdir/usr/bin/nodm
 	install -Dm644 ../nodm.conf $pkgdir/etc/nodm.conf
 	install -Dm644 ../nodm.service $pkgdir/usr/lib/systemd/system/nodm.service
-
 }
