@@ -1,6 +1,6 @@
 pkgbase = scantailor-featured-git
 	pkgdesc = Interactive post-processing tool for scanned pages (featured branch)
-	pkgver = 0.9.11.59.g84e16df
+	pkgver = 0.9.11.r59.g84e16df
 	pkgrel = 1
 	url = https://github.com/scantailor/scantailor
 	arch = i686

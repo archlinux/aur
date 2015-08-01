@@ -4,7 +4,7 @@
 
 _pkgname=scantailor
 pkgname=scantailor-featured-git
-pkgver=0.9.11.59.g84e16df
+pkgver=0.9.11.r59.g84e16df
 pkgrel=1
 pkgdesc="Interactive post-processing tool for scanned pages (featured branch)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags --always | sed 's|RELEASE_||;s|[_-]|.|g'
+  git describe --tags --always | sed 's|RELEASE_||;s|\([^-]*-g\)|r\1|;s|[_-]|.|g'
 }
 
 build() {
