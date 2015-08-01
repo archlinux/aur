@@ -7,7 +7,7 @@
 pkgname=lxtask-gtk3
 _pkgname=lxtask
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Task manager of the LXDE Desktop (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -16,7 +16,6 @@ groups=('lxde-gtk3')
 depends=('gtk3')
 makedepends=('intltool')
 conflicts=($_pkgname)
-provides=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
         0001-Add-icon-to-the-about-dialog.patch)
 md5sums=('14b5341822aaa049f2d4d5a56c1b28f2' SKIP)
