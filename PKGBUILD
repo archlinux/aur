@@ -15,12 +15,14 @@ makedepends=("nawk")
 
 source=(http://mirrors.cdn.adacore.com/art/eabc020e818b1c6b8a6dc5ea3f665a479a49bb14
         http://mirrors.cdn.adacore.com/art/8c386e54b4411aeb49e7786fa403f9caa28b6d91
-        patch-Makefile.in)
+        patch-Makefile.in
+        patch-docs-Makefile.in)
 
 
 md5sums=('c690ecf9dc58384cf52ed8ce81e9cb5a'
          'bc70aaf2e21a488a00f87fdec112454a'
-         'd071e2cf9f3ee8566d65d16d50819393')
+         'a1784ff68b633c019666d7e176f9b2ef'
+         'b47f71e78c77885bd05f031a36932bbd')
 
 
 
@@ -29,6 +31,7 @@ prepare()
   cd $srcdir/gps-$pkgver-src
 
   patch -p0 -i ../patch-Makefile.in
+  patch -p0 -i ../patch-docs-Makefile.in
 }
 
 
@@ -67,5 +70,5 @@ package()
 #  ln -s /usr/bin/python2 $srcdir/temp_bin/python
 #  export PATH=$srcdir/temp_bin:$PATH
 
-  DESTDIR=$pkgdir make install 
+  PYTHON=/usr/bin/python2  DESTDIR=$pkgdir  make install 
 }

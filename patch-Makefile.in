@@ -1,7 +1,12 @@
-*** Makefile.in-orig	2015-07-30 14:11:27.997217517 +1000
---- Makefile.in	2015-07-30 14:11:40.820607734 +1000
+*** Makefile.in-orig	2014-11-14 05:15:57.000000000 +1100
+--- Makefile.in	2015-08-01 19:49:00.901816718 +1000
 ***************
-*** 10,18 ****
+*** 5,18 ****
+  STRIP           = strip
+  AWK             = @AWK@
+  PERL            = perl
+! PYTHON          = python
+  INSTALL         = @INSTALL@
   INSTALL_PROGRAM = @INSTALL_PROGRAM@
   INSTALL_DATA    = @INSTALL_DATA@
   prefix          = @prefix@
@@ -11,7 +16,12 @@
   
   all default:
   	$(MAKE) -C gps default
---- 10,18 ----
+--- 5,18 ----
+  STRIP           = strip
+  AWK             = @AWK@
+  PERL            = perl
+! PYTHON          = python2
+  INSTALL         = @INSTALL@
   INSTALL_PROGRAM = @INSTALL_PROGRAM@
   INSTALL_DATA    = @INSTALL_DATA@
   prefix          = @prefix@

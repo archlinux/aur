@@ -15,9 +15,11 @@ pkgbase = gnat-gps
 	source = http://mirrors.cdn.adacore.com/art/eabc020e818b1c6b8a6dc5ea3f665a479a49bb14
 	source = http://mirrors.cdn.adacore.com/art/8c386e54b4411aeb49e7786fa403f9caa28b6d91
 	source = patch-Makefile.in
+	source = patch-docs-Makefile.in
 	md5sums = c690ecf9dc58384cf52ed8ce81e9cb5a
 	md5sums = bc70aaf2e21a488a00f87fdec112454a
-	md5sums = d071e2cf9f3ee8566d65d16d50819393
+	md5sums = a1784ff68b633c019666d7e176f9b2ef
+	md5sums = b47f71e78c77885bd05f031a36932bbd
 
 pkgname = gnat-gps
 
