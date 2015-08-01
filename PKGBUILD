@@ -6,7 +6,7 @@
 pkgname=lxmusic-gtk3
 _pkgname=lxmusic
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight XMMS2 client (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
@@ -15,7 +15,6 @@ groups=('lxde-gtk3')
 depends=('gtk3' 'libnotify' 'xmms2')
 makedepends=('intltool')
 conflicts=($_pkgname)
-provides=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
         0001-Fix-some-deprecations-and-add-an-option-to-compile-w.patch
         0002-Don-t-use-GtkBuilder-for-popup-menu.patch)

@@ -1,7 +1,7 @@
 pkgbase = lxmusic-gtk3
 	pkgdesc = Lightweight XMMS2 client (GTK+ 3 version)
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lxde.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = lxmusic-gtk3
 	depends = gtk3
 	depends = libnotify
 	depends = xmms2
-	provides = lxmusic
 	conflicts = lxmusic
 	source = http://downloads.sourceforge.net/lxde/lxmusic-0.4.6.tar.xz
 	source = 0001-Fix-some-deprecations-and-add-an-option-to-compile-w.patch
