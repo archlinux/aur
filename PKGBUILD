@@ -28,9 +28,7 @@ package() {
 
   install -D -m644 misc/eureka.ico "${pkgdir}/usr/share/pixmaps/eureka.ico"
   install -D -m644 misc/eureka.desktop "${pkgdir}/usr/share/applications/eureka.desktop"
-
-  gzip -f misc/eureka.6
-  install -D -m644 misc/eureka.6.gz "${pkgdir}/usr/share/man/man6/eureka.6.gz"
+  install -D -m644 misc/eureka.6 "${pkgdir}/usr/share/man/man6/eureka.6"
 }
 
 # vim:set ts=2 sw=2 et:
