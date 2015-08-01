@@ -16,7 +16,7 @@ license=('APACHE')
 # building. TODO: is it possible to get Arango to use the system V8?
 # depends=("glibc" "gcc-libs" "openssl" "readline" "systemd" "v8" "libev" "icu")
 depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
-makedepends=("python2 go>=1.4")
+makedepends=("python2 go")
 provides=("arangodb=$pkgver")
 conflicts=("arangodb-latest" "arangodb-git")
 backup=('etc/arangodb/arangob.conf'
