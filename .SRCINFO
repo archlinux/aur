@@ -12,8 +12,8 @@ pkgbase = gtkada
 	source = patch-Makefile.in
 	source = patch-projects-Makefile.in
 	md5sums = c152b45c9f768aef92cf325bfb2ca138
-	md5sums = 4fee2f1951c7f6f65e6009973af482c6
-	md5sums = 
+	md5sums = 88657345aace9e2020f74854daa64ef2
+	md5sums = 7143323e2c631df019fafc109b432703
 
 pkgname = gtkada
 
