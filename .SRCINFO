@@ -13,6 +13,7 @@ pkgbase = lxsession-gtk3
 	depends = dbus-glib
 	depends = gtk3
 	depends = polkit
+	provides = lxsession
 	conflicts = lxsession
 	source = http://downloads.sourceforge.net/lxde/lxsession-0.5.2.tar.xz
 	source = 0001-Beautify-GtkBuilder-UI-file-of-lxpolkit-without-modi.patch
