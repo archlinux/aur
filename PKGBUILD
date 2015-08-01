@@ -6,7 +6,7 @@
 pkgname=lxrandr-gtk3
 _pkgname=lxrandr
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Monitor configuration tool (part of LXDE, GTK+ 3 version)"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -15,7 +15,6 @@ groups=('lxde-gtk3')
 depends=('gtk3' 'xorg-xrandr')
 makedepends=('intltool')
 conflicts=($_pkgname)
-provides=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
         0001-Add-icon-to-the-about-dialog.patch
         0002-Use-video-display-as-icon.patch)
