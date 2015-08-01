@@ -6,7 +6,7 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=222
+pkgver=223
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -14,7 +14,7 @@ groups=('selinux')
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
-             'python' 'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
+             'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
              'libselinux')
 options=('strip' 'debug')
 # Retrieve the splash-arch.bmp image from systemd package sources, as this
@@ -36,6 +36,10 @@ md5sums=('SKIP'
 
 prepare() {
   cd "${pkgname/-selinux}"
+
+  # networkd: fix size of networkd binary
+  # https://github.com/systemd/systemd/commit/6870b4156377
+  git cherry-pick -n 6870b4156377
 
   ./autogen.sh
 }
@@ -70,7 +74,7 @@ check() {
 package_systemd-selinux() {
   pkgdesc="system and service manager with SELinux support"
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'dbus' 'glib2' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libseccomp'
            'util-linux-selinux' 'xz' 'audit' 'libselinux')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
@@ -78,8 +82,7 @@ package_systemd-selinux() {
   replaces=('nss-myhostname' 'systemd-tools' 'udev' 'selinux-systemd')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev'
              "${pkgname/-selinux}" 'selinux-systemd')
-  optdepends=('python: systemd library bindings'
-              'cryptsetup: required for encrypted block devices'
+  optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'

@@ -1,5 +1,5 @@
 pkgbase = systemd-selinux
-	pkgver = 222
+	pkgver = 223
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
@@ -22,7 +22,6 @@ pkgbase = systemd-selinux
 	makedepends = libxslt
 	makedepends = util-linux
 	makedepends = linux-api-headers
-	makedepends = python
 	makedepends = python-lxml
 	makedepends = quota-tools
 	makedepends = shadow-selinux
@@ -31,7 +30,7 @@ pkgbase = systemd-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#tag=v222
+	source = git://github.com/systemd/systemd.git#tag=v223
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
@@ -54,7 +53,6 @@ pkgname = systemd-selinux
 	depends = acl
 	depends = bash
 	depends = dbus
-	depends = glib2
 	depends = iptables
 	depends = kbd
 	depends = kmod
@@ -70,16 +68,15 @@ pkgname = systemd-selinux
 	depends = xz
 	depends = audit
 	depends = libselinux
-	optdepends = python: systemd library bindings
 	optdepends = cryptsetup: required for encrypted block devices
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=222
-	provides = udev=222
-	provides = systemd=222-1
+	provides = systemd-tools=223
+	provides = udev=223
+	provides = systemd=223-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -123,15 +120,15 @@ pkgname = libsystemd-selinux
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=222-1
+	provides = libsystemd=223-1
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=222-1
-	provides = selinux-systemd-sysvcompat=222-1
+	provides = systemd-sysvcompat=223-1
+	provides = selinux-systemd-sysvcompat=223-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
