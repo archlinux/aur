@@ -1,5 +1,5 @@
-# New maintainer: Raansu <Gero3977@gmail.com>
-# OLD Contributor: Leslie P. Polzer <polzer@gnu.org>
+# Current maintainer: Raansu <Gero3977@gmail.com>
+# Contributor: Leslie P. Polzer <polzer@gnu.org>
 pkgname=db4.8
 pkgver=4.8.30
 pkgrel=4
