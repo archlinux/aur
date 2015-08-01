@@ -1,0 +1,24 @@
+pkgbase = mathics
+	pkgdesc = General-purpose online computer algebra system featuring Mathematica-compatible syntax and functions
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://www.mathics.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-dateutil
+	depends = python2-ply>=3.4
+	depends = python2-six
+	depends = python2-sympy>=0.7.3
+	depends = python2-django>=1.6
+	depends = python2-colorama
+	depends = python2-argparse
+	depends = python2-interruptingcow
+	optdepends = cython2: cython optimisations
+	source = https://github.com/mathics/Mathics/releases/download/0.8/mathics-0.8.zip
+	md5sums = 3d2d3f24d4ddc9cf1c4716e31c8417a1
+
+pkgname = mathics
+
