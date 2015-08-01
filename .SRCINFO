@@ -1,0 +1,25 @@
+pkgbase = ssr
+	pkgdesc = The SoundScape Renderer (SSR) is a tool for real-time spatial audio reproduction providing a variety of rendering algorithms, e.g. Wave Field Synthesis, Higher-Order Ambisonics and binaural techniques.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://spatialaudio.net/ssr/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = boost-libs>=1.35
+	makedepends = help2man
+	depends = jack
+	depends = libsndfile
+	depends = fftw
+	depends = libxml2
+	depends = ecasound
+	depends = qt4>=4.2.2
+	provides = ssr
+	conflicts = ssr
+	replaces = ssr
+	source = https://github.com/SoundScapeRenderer/ssr/releases/download/0.4.2/ssr-0.4.2.tar.gz
+	md5sums = d49b746a6959a0d3771fde4de686a044
+
+pkgname = ssr
+
