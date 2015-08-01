@@ -1,7 +1,7 @@
 # Maintainer: Nate Hart <nejthan; gmail>
 
 pkgname=lightdm-webkit-theme-tendou
-_pkgname=wisp
+_pkgname=tendou
 pkgver=1.0
 pkgrel=1
 pkgdesc="A Windows 10 inspired theme for the lightdm webkit greeter"
