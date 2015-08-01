@@ -1,0 +1,22 @@
+pkgbase = newrelic-sysmond
+	pkgdesc = system monitor services provided by newrelic
+	pkgver = 2.1.0.124
+	pkgrel = 1
+	url = http://newrelic.com/
+	install = newrelic-sysmond.install
+	arch = i686
+	arch = x86_64
+	license = non-free
+	makedepends = binutils
+	depends = glibc
+	depends = bash
+	backup = etc/newrelic/nrsysmond.cfg
+	source = http://download.newrelic.com/server_monitor/archive/2.1.0.124/newrelic-sysmond-2.1.0.124-linux.tar.gz
+	source = newrelic-sysmond.service
+	source = newrelic-sysmond.install
+	md5sums = b18f27bec4c9e5a5cf524225e41a7d15
+	md5sums = f4ebc44c550896309d6121455a8669f3
+	md5sums = aa0022b03b291c97f5f4b3cb2d24104d
+
+pkgname = newrelic-sysmond
+
