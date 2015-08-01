@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.636
+pkgver=0.99.638
 _gwtver=2.7.0
 _ginver=1.5
 pkgrel=1
@@ -32,15 +32,19 @@ pkgver() {
 }
 
 prepare() {
+    msg "Extracting dependencies"
     cd "${srcdir}/${_gitname}"
-    install -d src/gwt/lib/{gin,gwt/$_gwtver}
+    install -d src/gwt/lib/{gin,gwt}
+    install -d src/gwt/lib/gin/${_ginver}
+    install -d src/gwt/lib/gwt/${_gwtver}
+
+    unzip -qo "${srcdir}/gin-${_ginver}.zip" -d "src/gwt/lib/gin/${_ginver}"
     cp -r "${srcdir}/gwt-${_gwtver}/"* "src/gwt/lib/gwt/${_gwtver}"
-    unzip -qfod "src/gwt/lib/gin/${_ginver}" "${srcdir}/gin-${_ginver}.zip"
 
     cd "${srcdir}/${_gitname}/dependencies/common"
     install -d dictionaries mathjax-23 pandoc libclang/{3.5,builtin-headers}
 
-    msg "Downloading and installing packages"
+    msg "Downloading and installing R packages"
     ./install-packages
 
     # Temporary fix for the Qt 5.5
