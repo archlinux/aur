@@ -1,6 +1,6 @@
 pkgbase = slime-git
 	pkgdesc = The Superior Lisp Interaction Mode for Emacs - from git
-	pkgver = 2.14.20.gf4ad5d6
+	pkgver = 2.14.22.gebc4dfc
 	pkgrel = 1
 	url = http://common-lisp.net/project/slime
 	install = slime.install
