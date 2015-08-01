@@ -1,4 +1,4 @@
-pkgbase = spotify-beta
+pkgbase = spotify32bit
 	pkgdesc = A proprietary peer-to-peer music streaming service
 	pkgver = 1.0.11.129
 	pkgrel = 2
@@ -26,5 +26,5 @@ pkgbase = spotify-beta
 	md5sums = 4e467409f2de399e99d13cde84dc2f3d
 	md5sums = ef25ddc5b6bf8fe1a0d64cbd79e1f7b4
 
-pkgname = spotify-beta
+pkgname = spotify32bit
 

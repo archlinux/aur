@@ -4,7 +4,7 @@
 # Contributor: Gadget3000 <gadget3000@msn.com>
 # Contributor: EvanA <evan@thelinuxman.us>
 
-pkgname=spotify-beta
+pkgname=spotify32bit
 pkgver=1.0.11.129
 _anotherpkgver=.g61510de3
 pkgrel=2
