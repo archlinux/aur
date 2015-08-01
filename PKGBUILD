@@ -2,9 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-dvbapi
-pkgver=2.2.0_14_g0489e01
+pkgver=2.2.1
 epoch=1
-_gitver=0489e0153ce26bfb92524d965c9a8985db69040a
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="A bridge between VDR and OScam."
@@ -14,23 +13,18 @@ license=('GPL2')
 depends=('gcc-libs' 'libdvbcsa' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git://github.com/manio/vdr-plugin-dvbapi.git#commit=$_gitver")
+source=("https://github.com/manio/vdr-plugin-dvbapi/archive/v$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  git describe --tags | sed 's/-/_/g;s/v//'
-}
+sha256sums=('1586fcbc043e6bb74bf9715f4821570558d907e5bfd768ce12b532972998beda')
 
 build() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   sed -i 's/ -fdiagnostics-color=auto//g' Makefile
   make LIBDVBCSA=1
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make LIBDVBCSA=1 DESTDIR="$pkgdir" install
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
