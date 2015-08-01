@@ -1,0 +1,19 @@
+pkgbase = serialosc-git
+	pkgdesc = serialosc is an OSC server for Monomes
+	pkgver = 20150617
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = ISC
+	depends = libmonome
+	depends = confuse
+	depends = liblo
+	depends = avahi
+	depends = udev
+	provides = serialosc
+	conflicts = serialosc
+	source = serialosc-git::git+https://github.com/monome/serialosc
+	md5sums = SKIP
+
+pkgname = serialosc-git
+
