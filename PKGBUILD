@@ -2,13 +2,13 @@
 # Contributor : Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-grsec
-pkgver=352.21
+pkgver=352.30
 _extramodules=extramodules-4.1.3-grsec
-pkgrel=4
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-grsec>=4.1' 'linux-grsec<4.2' "nvidia-libgl" "nvidia-utils=${pkgver}")
+depends=('linux-grsec>=4.1' 'linux-grsec<4.2' "nvidia-utils=${pkgver}" "libgl")
 makedepends=('linux-grsec-headers>=4.1' 'linux-grsec-headers<4.2')
 conflicts=('nvidia-96xx-grsec' 'nvidia-173xx-grsec')
 license=('custom')
@@ -19,8 +19,8 @@ source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-
         "nvidia-drivers-pax-usercopy.patch"
         "nvidia-drivers-pax-constify.patch"
         "nv-drm.patch")
-md5sums=('c91760a04f658845722380f6c7fd4709'
-         '4eea308a1b04553f720f82fd2fac79d3'
+md5sums=('7e59d84eafe2482b2f02df692b9168d5'
+         '135dd90db609cecad8e74bde0054cf6f'
          '5277c8699971b9bae8d2845cc00e0e5d'
          '29247a931d0d457692ae0bcd278d4d43'
          'ff8a5f979e4428f8c847423fb007042c')
