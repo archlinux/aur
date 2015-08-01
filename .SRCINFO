@@ -1,0 +1,16 @@
+pkgbase = libmonome-git
+	pkgdesc = Makes writing applications for Monomes easy
+	pkgver = 20150603
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = ISC
+	depends = liblo
+	depends = udev
+	provides = libmonome
+	conflicts = libmonome
+	source = libmonome-git::git+https://github.com/monome/libmonome
+	md5sums = SKIP
+
+pkgname = libmonome-git
+
