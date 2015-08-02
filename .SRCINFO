@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-libcec
 	pkgdesc = Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libcec.pulse-eight.com/
 	arch = i686
 	arch = x86_64

@@ -5,7 +5,7 @@
 pkgname=kodi-devel-libcec
 _gitname=libcec
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
 arch=('i686' 'x86_64')
 url="http://libcec.pulse-eight.com/"
