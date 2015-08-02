@@ -1,6 +1,6 @@
 pkgbase = aegir-hostmaster
 	pkgdesc = mass Drupal hosting system - frontend
-	pkgver = 7.x_3.0_beta2
+	pkgver = 7.x_3.0
 	pkgrel = 1
 	url = http://aegirproject.org
 	arch = any
