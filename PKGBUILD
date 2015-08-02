@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-dvbviewer
 _gitname=pvr.dvbviewer
-pkgver=20150717.cbfd455
-_gitver=cbfd4552a4381d289bcfb8eda33699ecfd156bd7
+pkgver=20150720.65b8647
+_gitver=65b8647135ede92da816cf7e9d638bb434e52c26
 pkgrel=1
 pkgdesc='DVBViewer PVR addon for Kodi'
 arch=('i686' 'x86_64')

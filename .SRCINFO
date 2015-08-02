@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-dvbviewer
 	pkgdesc = DVBViewer PVR addon for Kodi
-	pkgver = 20150717.cbfd455
+	pkgver = 20150720.65b8647
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.dvbviewer
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kodi-devel-pvr-dvbviewer
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
 	depends = tinyxml
-	source = https://github.com/kodi-pvr/pvr.dvbviewer/archive/cbfd4552a4381d289bcfb8eda33699ecfd156bd7.tar.gz
+	source = https://github.com/kodi-pvr/pvr.dvbviewer/archive/65b8647135ede92da816cf7e9d638bb434e52c26.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-dvbviewer
