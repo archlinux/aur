@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-vdr-vnsi
 _gitname=pvr.vdr.vnsi
-pkgver=20150717.550a4a2
-_gitver=550a4a2e093b4418394cdbe6f72cd7c76f0327b7
+pkgver=20150720.8dedf20
+_gitver=8dedf2093db5ee45c14bdb0ac3261d6a53a61772
 pkgrel=1
 pkgdesc='VDR VNSI PVR client addon for Kodi'
 arch=('i686' 'x86_64')
