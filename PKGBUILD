@@ -1,7 +1,7 @@
 # Maintainer: McNoggins <gagnon88 (at) Gmail (dot) com>
 pkgname="python2-pythonpy"
-pkgver=0.3.7
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="command line kung fu with python (python -c, with tab completion and shorthand)"
 arch=('any')
 url="https://github.com/Russell91/pythonpy"
@@ -13,7 +13,7 @@ provides=('python2-pythonpy')
 conflicts=('python-pythonpy')
 source=("https://pypi.python.org/packages/source/p/pythonpy/pythonpy-$pkgver.tar.gz"
 	"bash_completion.patch")
-sha256sums=('6822f9c925f4e3e837698ec9569f343221fdaa32c61374e259cc90fd7d40029e'
+sha256sums=('3996d659c8a65e15edc330d2ce377501a44510049bb9acff0972ecf900df4fdb'
             'c3dfc5951d9e97dbfd5a64f63f29a7f851c24c6bba565a9594bc7614303f9f69')
 
 prepare() {
