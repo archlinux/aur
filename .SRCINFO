@@ -1,6 +1,6 @@
 pkgbase = kdbus-git
 	pkgdesc = kdbus kernel module
-	pkgver = 3196.c201f04
+	pkgver = 3210.9c04b6b
 	pkgrel = 1
 	url = https://github.com/systemd/kdbus
 	install = kdbus-git.install
@@ -11,7 +11,7 @@ pkgbase = kdbus-git
 	provides = kdbus
 	conflicts = kdbus
 	options = !strip
-	source = git+https://github.com/systemd/kdbus#branch=v4.0
+	source = git+https://github.com/systemd/kdbus#branch=v4.1
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = 61f173310aa99f2f3a4a11590207afe8815a283b8ebfa691626d871425bd8a70

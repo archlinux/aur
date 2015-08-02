@@ -2,7 +2,7 @@
 
 pkgname=kdbus-git
 _pkgname=kdbus
-pkgver=3196.c201f04
+pkgver=3210.9c04b6b
 pkgrel=1
 pkgdesc="kdbus kernel module"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=("kdbus")
 license=('LGPL2.1')
 install="kdbus-git.install"
 options=(!strip)
-source=( "git+$url#branch=v4.0" "dkms.conf" )
+source=( "git+$url#branch=v4.1" "dkms.conf" )
 sha256sums=('SKIP'
             '61f173310aa99f2f3a4a11590207afe8815a283b8ebfa691626d871425bd8a70')
 
