@@ -1,0 +1,11 @@
+--- setup.py	2015-07-31 09:29:06.000000000 +0200
++++ setup.py.new	2015-08-02 18:08:50.765718643 +0200
+@@ -9,7 +9,7 @@
+ install_requires = [
+     "python-dateutil",
+     "arrow",
+-    "requests==2.5.3",
++    "requests",
+     "pyfiglet",
+     "twitter",
+     "Pillow",
