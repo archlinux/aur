@@ -3,7 +3,7 @@
 pkgname=bitwig-studio-demo
 _pkgname=bitwig-studio
 pkgver=1.1.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Music production system for production, remixing and performance"
 arch=( 'x86_64' )
 url="http://www.bitwig.com"

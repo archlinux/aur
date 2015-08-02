@@ -1,7 +1,7 @@
 pkgbase = bitwig-studio-demo
 	pkgdesc = Music production system for production, remixing and performance
 	pkgver = 1.1.10
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.bitwig.com
 	arch = x86_64
 	license = custom
