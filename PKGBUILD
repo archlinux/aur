@@ -1,16 +1,17 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Kamil Kolosowski <kamelowaty@bridgelinux.pl>
 
+
 pkgbase=virtualbox-modules-bfs
 pkgname=('virtualbox-host-modules-bfs' 'virtualbox-guest-modules-bfs')
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-bfs-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.0-bfs
+_extramodules=extramodules-4.1-bfs
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -28,7 +29,7 @@ build() {
 package_virtualbox-host-modules-bfs() {
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-bfs.'
 	license=('GPL')
-	depends=('linux-bfs>=4.0' 'linux-bfs<4.1')
+	depends=('linux-bfs>=4.1' 'linux-bfs<4.2')
 	install=host.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -41,7 +42,7 @@ package_virtualbox-host-modules-bfs() {
 package_virtualbox-guest-modules-bfs() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-bfs.'
 	license=('GPL')
-	depends=('linux-bfs>=4.0' 'linux-bfs<4.1')
+	depends=('linux-bfs>=4.1' 'linux-bfs<4.2')
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"

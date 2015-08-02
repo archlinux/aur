@@ -1,6 +1,6 @@
 pkgbase = virtualbox-modules-bfs
 	pkgver = 5.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgname = virtualbox-host-modules-bfs
 	pkgdesc = Host kernel modules for VirtualBox running under Linux-bfs.
 	install = host.install
 	license = GPL
-	depends = linux-bfs>=4.0
-	depends = linux-bfs<4.1
+	depends = linux-bfs>=4.1
+	depends = linux-bfs<4.2
 
 pkgname = virtualbox-guest-modules-bfs
 	pkgdesc = Guest kernel modules for VirtualBox running under Linux-bfs.
 	install = guest.install
 	license = GPL
-	depends = linux-bfs>=4.0
-	depends = linux-bfs<4.1
+	depends = linux-bfs>=4.1
+	depends = linux-bfs<4.2
 
