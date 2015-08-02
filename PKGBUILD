@@ -46,8 +46,7 @@ depends=('desktop-file-utils'
          #'libevent'
          #'libvpx'
          )
-makedepends=('chrpath'
-             'libexif'
+makedepends=('libexif'
              'elfutils'
              'gperf'
              'ninja'
@@ -136,7 +135,11 @@ if [ "${_use_clang}" = "1" ]; then
   makedepends+=('clang')
 fi
 if [ "${_use_bundled_clang}" = "1" ]; then
-  makedepends+=('cmake' 'ocaml' 'libffi')
+  makedepends+=('cmake'
+                'ocaml'
+                'libffi'
+                'chrpath'
+                )
 fi
 
 # Need you use ccache?
@@ -154,7 +157,8 @@ fi
 # Are you use gnome-keyring?
 _use_gnome_keyring=0
 if [ -f /usr/lib/libgnome-keyring.so ]; then
-  depends+=('libgnome-keyring' 'gnome-keyring')
+  depends+=('libgnome-keyring'
+            'gnome-keyring')
   _use_gnome_keyring=1
 fi
 
@@ -331,10 +335,12 @@ fi
 if [ "${_use_clang}" = "1" ]; then
   if [ "${_use_bundled_clang}" = "0" ]; then
     _flags+=('-Dclang_use_chrome_plugins=0'
-             '-Dhost_clang=0')
+             '-Dhost_clang=0'
+             )
   elif [ "${_use_bundled_clang}" = "1" ]; then
     _flags+=('-Dclang_use_chrome_plugins=1'
-             '-Dhost_clang=1')
+             '-Dhost_clang=1'
+             )
   fi
 fi
 
