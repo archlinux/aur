@@ -1,0 +1,34 @@
+pkgbase = python-scipy-openblas
+	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = http://www.scipy.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python2-nose
+	makedepends = gcc-fortran
+	makedepends = python-numpy-openblas
+	makedepends = python2-numpy-openblas
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = openblas-lapack
+	source = http://downloads.sourceforge.net/scipy/scipy-0.15.1.tar.gz
+	md5sums = be56cd8e60591d6332aac792a5880110
+
+pkgname = python-scipy-openblas
+	depends = python-numpy-openblas
+	depends = openblas-lapack
+	optdepends = python-pillow: for image saving module
+	provides = python3-scipy
+	provides = python-scipy
+	conflicts = python-scipy
+
+pkgname = python2-scipy-openblas
+	depends = python2-numpy-openblas
+	depends = openblas-lapack
+	optdepends = python2-pillow: for image saving module
+	provides = python2-scipy
+	conflicts = python2-scipy
+
