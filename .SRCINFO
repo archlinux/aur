@@ -1,0 +1,32 @@
+pkgbase = freeorion-git
+	pkgdesc = Free Clone of Master of Orion.
+	pkgver = r8778.092c700
+	pkgrel = 1
+	url = http://www.freeorion.org/index.php/Main_Page
+	install = freeorion.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	depends = ogre
+	depends = bullet
+	depends = python2
+	depends = sdl2
+	depends = freealut
+	depends = graphviz
+	depends = libvorbis
+	depends = libogg
+	depends = glew
+	provides = freeorion
+	conflicts = freeorion
+	source = freeorion.git::git+https://github.com/freeorion/freeorion.git#branch=master
+	source = freeorion.install
+	source = getversion.py
+	md5sums = SKIP
+	md5sums = e88e49fbe0f638775f6be9bbc824e070
+	md5sums = 5fdadcc589bc4887fcf1684923226867
+
+pkgname = freeorion-git
+
