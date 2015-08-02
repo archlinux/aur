@@ -1,0 +1,18 @@
+pkgbase = kodi-devel-adsp-freesurround
+	pkgdesc = FreeSurround ADSP addon for Kodi
+	pkgver = 20150719.4dd3202
+	pkgrel = 1
+	url = https://github.com/kodi-adsp/adsp.freesurround
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-devel-platform
+	makedepends = kodi-devel-libplatform
+	depends = kodi-devel
+	source = https://github.com/kodi-adsp/adsp.freesurround/archive/4dd3202f65ccf95776b3c9cf20b01bbe1d97e623.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-adsp-freesurround
+
