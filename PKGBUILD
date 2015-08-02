@@ -19,9 +19,9 @@ pkgname=('kodi-devel' 'kodi-devel-eventclients')
 _gitname=xbmc
 
 # when building specific commit: 1) pkgver=commit_sha   2) _gitver=$pkgver
-pkgver=15.0
+pkgver=16.0a1
 #_gitver=$pkgver
-_gitver=$pkgver-Isengard
+_gitver=$pkgver-Jarvis
 
 _pkgsrcname=$_gitname-$_gitver
 pkgrel=1
@@ -33,7 +33,7 @@ groups=('kodi-devel')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'glew'
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'lame'  'libaacs' 'libass'
-  'libbluray' 'libcdio' 'libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
+  'libbluray' 'libcdio' 'kodi-devel-libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libsamplerate' 'libssh'
   'libva' 'libvdpau' 'libvorbis' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'python2-pillow'
   'python2-simplejson' 'rtmpdump' 'sdl2' 'shairplay' 'smbclient' 'swig' 'taglib'
@@ -42,7 +42,7 @@ makedepends=(
 
 source=("https://github.com/xbmc/xbmc/archive/$_gitver.tar.gz")
 sha256sums=(
-  '27dba173cfe74b323f4dbaa72ae2bfe5961f76c27bddcd5210253be91cae0dff')
+  'ec20732275d67fd50b1c63434599fa7858d93a3d4829f56bce0d6fa2bf550717')
 
 _prefix='/usr'
 
@@ -123,6 +123,8 @@ package_kodi-devel() {
     'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
+    'kodi-devel-adsp-basic: Basic ADSP Processor addon for Kodi'
+    'kodi-devel-adsp-freesurround: FreeSurround ADSP addon for Kodi'
     'kodi-devel-audiodecoder-modplug: Modplug decoder addon for Kodi'
     'kodi-devel-audiodecoder-nosefart: Nosefart decoder addon for Kodi'
     'kodi-devel-audiodecoder-snesapu: SPC decoder addon for Kodi'
@@ -133,6 +135,7 @@ package_kodi-devel() {
     'kodi-devel-audioencoder-lame: Lame MP3 encoder addon for Kodi'
     'kodi-devel-audioencoder-vorbis: Vorbis encoder addon for Kodi'
     'kodi-devel-audioencoder-wav: Wav encoder addon for Kodi'
+    'kodi-devel-libcec: Pulse-Eight USB-CEC adapter support'
     'kodi-devel-pvr-argustv: ARGUS TV PVR client addon for Kodi'
     'kodi-devel-pvr-demo: Demo PVR addon for Kodi'
     'kodi-devel-pvr-dvblink: DVBLink PVR client addon for Kodi'
@@ -150,7 +153,6 @@ package_kodi-devel() {
     'kodi-devel-pvr-vdr-vnsi: VDR VNSI PVR client addon for Kodi'
     'kodi-devel-pvr-vuplus: VuPlus PVR client addon for Kodi'
     'kodi-devel-pvr-wmc: Windows Media Center client PVR addon for Kodi'
-    'libcec: Pulse-Eight USB-CEC adapter support'
     'libnfs: NFS shares support'
     'libplist: AirPlay support'
     'lirc: Remote controller support'
