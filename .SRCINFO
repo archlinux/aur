@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-adsp-biquad-filters
 	pkgdesc = Biquad filter ADSP addon for Kodi
 	pkgver = 20150719.b6a31a9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodi-adsp/adsp.biquad.filters
 	arch = i686
 	arch = x86_64
