@@ -32,6 +32,7 @@
 # 2 = some packages had errors
 # 3 = some packages had severe errors
 # 99 = some packages haven't been upgraded to AUR git
+# >=126 = something went wrong (probably your fault)
 
 # See below for how to change the origin if you are seeing packages
 # you don't have write access to.
@@ -54,7 +55,7 @@ if [ "${_opt_Maintainer:=none}" = 'none' ]; then
   sleep 1
 fi
 
-_opt_VERSION='1.0'
+_opt_VERSION='0.2'
 _opt_AUR4='aur'
 
 # After August 8, these 3 time bomb lines can be removed and _opt_AUR4 can be gotten rid of altogether
@@ -62,11 +63,11 @@ if [ "$(date +'%s')" -lt 1439006400 ]; then # date +%s -d'2015-08-08'
   _opt_AUR4='aur4'
 fi
 
-for _var_cmd in 'mksrcinfo' 'md5sum'; do
+for _var_cmd in 'mksrcinfo' 'md5sum' 'pcre2grep'; do
   if ! command -v "${_var_cmd}" >/dev/null 2>&1; then
     echo -e "Error: Required program could not be found: ${_var_cmd}"
-    echo -e 'Please install pkgbuild-introspection'
-    exit 1
+    echo -e 'Please install pkgbuild-introspection or other supporting package'
+    exit 126
   fi
 done
 unset _var_cmd
@@ -93,12 +94,6 @@ _fn_find_in_gitadds() {
   fi
   return 1
 }
-
-#_fn_add_to_gitadds() {
-#  if ! _fn_var_in_gitadds "$1"; then
-#    _var_gitadds+=("$1")
-#  fi
-#}
 
 _fn_find_in_allfiles() {
   local _var_find
@@ -216,11 +211,13 @@ fi
     _var_644['PKGBUILD']=' ' # neither ${:-default} nor ${:+exists} can tell the difference between '' blank and unset so we must make these non blank
     _var_644['.SRCINFO']=' Try: mksrcinfo'
 
+    local _var_forbidgreps=('/sbin|! grep -l% "/sbin"' '/usr/tmp|! grep -l% "/usr/tmp"' '/usr/local|! grep -l% "/usr/local"' '/bin|! pcre2grep -l% "(?<!/usr)/bin"')
     local _var_srcfiles=()
     local _var_install=''
+    local _var_changelog=''
     if [ -s 'PKGBUILD' ]; then
       if grep -ql '||\s*return\s\+1$' 'PKGBUILD'; then
-        echo "Warning: '|| return 1' deprecated. Please remove."
+        echo "Warning: '|| return 1' deprecated. Please remove. makepkg does this with 'set -e'"
         [ $returnv -ge 1 ] || returnv=1
       fi
       if grep -ql '\${*startdir' 'PKGBUILD'; then
@@ -228,26 +225,37 @@ fi
         [ $returnv -ge 1 ] || returnv=1
       fi
       if ! grep -ql '^prepare\s*(' 'PKGBUILD' && grep -ql '\s*\./configure\s' 'PKGBUILD'; then
-        echo 'Warning: Create a prepare() function and move configure and some patches to it.'
+        echo 'Warning: Create a prepare() function and move configure and some patches to it so makepkg -e works properly.'
         [ $returnv -ge 1 ] || returnv=1
       fi
-      if [ "${_opt_PEDANTIC}" -ne 0 ]; then
+      if [ "${_opt_PEDANTIC}" -gt 0 ]; then
         if ! grep -ql "set -u" 'PKGBUILD' || ! grep -ql "set +u" 'PKGBUILD'; then
-          echo 'Warning: set -u/set +u are recommended to catch script errors'
+          echo 'Warning: set -u/set +u are recommended to catch script errors.'
           [ $returnv -ge 1 ] || returnv=1
         fi
-        local _var_forbiddens=('! grep -alqr "/sbin" "${pkgdir}"' '! grep -alqr "/usr/tmp" "${pkgdir}"' '! grep -alqr "/usr/local" "${pkgdir}"' '! test -d "${pkgdir}/usr/sbin"' '! test -d "${pkgdir}/usr/local"')
-        local _var_forbidden
-        for _var_forbidden in "${_var_forbiddens[@]}"; do
-          if ! grep -qlF "${_var_forbidden}" 'PKGBUILD'; then
-            echo '# Ensure there are no forbidden paths. Comment these out as you find or need exceptions. (git-aurcheck)'
-            printf '  %s || echo "${}"\n' "${_var_forbiddens[@]}"
-            [ $returnv -ge 1 ] || returnv=1
-            break
-          fi
-        done
-        unset _var_forbiddens
-        unset _var_forbidden
+        if [ "${_opt_PEDANTIC}" -gt 1 ]; then
+          # These test commands are specially crafted to fail correctly with set -e
+          local _var_forbiddens=('/sbin|! test -d "${pkgdir}/sbin"' '/usr/sbin|! test -d "${pkgdir}/usr/sbin"' '/usr/local|! test -d "${pkgdir}/usr/local"')
+          local _var_forbidden
+          for _var_forbidden in "${_var_forbidgreps[@]}"; do
+            _var_forbiddens+=("${_var_forbidden//%/r}"' "${pkgdir}"') # [@] probably won't work
+          done
+          local _var_forbiddenspr=()
+          for _var_forbidden in "${_var_forbiddens[@]}"; do
+            _var_forbiddenspr+=("${_var_forbidden#*|}" "${_var_forbidden%%|*}")
+          done
+          for _var_forbidden in "${_var_forbiddens[@]}"; do
+            if ! grep -qlF "${_var_forbidden#*|}" 'PKGBUILD'; then
+              echo '  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)'
+              printf '  %s || { echo "Forbidden: %s"; echo "${}"; }\n' "${_var_forbiddenspr[@]}" # Not sure why the extra ; is required
+              [ $returnv -ge 1 ] || returnv=1
+              break
+            fi
+          done
+          unset _var_forbiddenspr
+          unset _var_forbiddens
+          unset _var_forbidden
+        fi
         if ! grep -ql '^\s*sha256sums=' 'PKGBUILD' && ! grep -ql '^\s*sha384sums=' 'PKGBUILD' && ! grep -ql '^\s*sha512sums=' 'PKGBUILD'; then
           echo 'Warning: sha256sums or better are recommended. Check existing sums before upgrading.'
           [ $returnv -ge 1 ] || returnv=1
@@ -262,9 +270,9 @@ fi
         fi
       fi
 
-      # I'd like to recommend $var to ${var} changes but I don't see a way to do it in grep.
+      # I'd like to recommend more $var to ${var} changes but I don't see a way to do it in grep.
       if [ "${_opt_Maintainer}" != 'none' ] && ! grep -ql "${_opt_Maintainer}" 'PKGBUILD'; then
-        echo 'Warning: You are not listed as a maintainer in PKGBUILD'
+        echo 'Warning: You are not listed as a maintainer in PKGBUILD.'
         [ $returnv -ge 1 ] || returnv=1
       fi
       local _var_tempdir="$(basename "$0")" # mksrcinfo doesn't let us specify a target file
@@ -273,9 +281,10 @@ fi
         if mksrcinfo "${_var_pwd}/PKGBUILD"; then
           # Use the updated .SRCINFO if we can get it
           _var_install="$(sed -ne 's:^\s\+install[^ =]* = \(.\+\)$:\1:p' '.SRCINFO')"
+          _var_changelog="$(sed -ne 's:^\s\+changelog[^ =]* = \(.\+\)$:\1:p' '.SRCINFO')"
           IFS=$'\n' read -r -d '' -a _var_srcfiles < <(sed -ne 's:^\s\+source[^ =]* = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
           if [ ! -s "${_var_pwd}/.SRCINFO" ] || [ "$(md5sum < '.SRCINFO')" != "$(md5sum < "${_var_pwd}/.SRCINFO")" ]; then
-            echo ".SRCINFO is missing or out of date. Try 'mksrcinfo' and 'git add .SRCINFO'"
+            echo ".SRCINFO is missing or out of date. Try 'mksrcinfo'"
             [ $returnv -ge 2 ] || returnv=2
             _var_gitadds+=('.SRCINFO') # this is the first add so no dups possible
           fi
@@ -296,6 +305,9 @@ fi
       if [ -z "${_var_install}" ]; then
         _var_install="$(sed -ne 's:^\s\+install[^ =]* = \(.\+\)$:\1:p' '.SRCINFO')"
       fi
+      if [ -z "${_var_changelog}" ]; then
+        _var_changelog="$(sed -ne 's:^\s\+changelog[^ =]* = \(.\+\)$:\1:p' '.SRCINFO')"
+      fi
       local _var_srcfiles1=()
       local _var_srcfile1
       IFS=$'\n' read -r -d '' -a _var_srcfiles1 < <(sed -ne 's:^\s\+source[^ =]* = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
@@ -311,8 +323,32 @@ fi
     fi
     if [ ! -z "${_var_install}" ]; then
       _var_644["${_var_install}"]=' ' # Why is this a space? See above.
+      if _fn_find_in_srcfiles "${_var_install}"; then
+        echo "The install file ${_var_install} should be removed from the source array."
+        [ $returnv -ge 2 ] || returnv=2
+      fi
+      if [ -s "${_var_install}" ]; then
+        local _var_forbidgrep
+        for _var_forbidgrep in "${_var_forbidgreps[@]}"; do
+          _var_forbidgrep="${_var_forbidgrep//%/}"
+          if ! eval "${_var_forbidgrep#*|} '${_var_install}'"; then
+            echo "Warning: The install file ${_var_install} has some forbidden text: ${_var_forbidgrep%%|*}"
+            [ $returnv -ge 1 ] || returnv=1
+            break
+          fi
+        done
+        unset _var_forbidgrep
+      fi
+    fi
+    if [ ! -z "${_var_changelog}" ]; then
+      _var_644["${_var_changelog}"]=' ' # Why is this a space? See above.
+      if _fn_find_in_srcfiles "${_var_changelog}"; then
+        echo "The changelog file ${_var_changelog} should be removed from the source array."
+        [ $returnv -ge 2 ] || returnv=2
+      fi
     fi
     unset _var_install
+    unset _var_changelog
 
     # Generate specific arrays from _var_srcfiles. Note that since we're mean and read both .SRCINFO, there may be false dups.
     local _var_srclinks=() # Sometimes this contains false dups. I don't care since it's not used for anything yet.
@@ -397,6 +433,7 @@ fi
       fi
     done
     unset _var_reqfile
+
     if [ "${#_var_srcfileswantgit[@]}" -ne 0 ]; then
       local _var_srcfile
       for _var_srcfile in "${_var_srcfileswantgit[@]}"; do
@@ -464,7 +501,8 @@ fi
       builtin printf ' %q' "${_var_gitadds[@]}"
       echo ''
     fi
-    if [ ! -z "$(git ls-files -m)" ]; then
+    local _var_gitmodified="$(git ls-files -m)"
+    if [ ! -z "${_var_gitmodified}" ]; then
       echo "Warning: There are modified files. Try 'git status' and maybe 'git add -u'"
       [ $returnv -ge 1 ] || returnv=1
     fi
@@ -488,19 +526,26 @@ fi
         [ $returnv -ge 1 ] || returnv=1
       fi
     elif [ ! -z "${_var_push}" ]; then
-      echo "Warning: There are commits not pushed. Try 'git cherry -v' and maybe push"
-      [ $returnv -ge 1 ] || returnv=1
+      if [ "${#_var_gitadds[@]}" -gt 0 -o ! -z "${_var_gitmodified}" ]; then
+        # http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit\
+        echo "There are modifications after a commit. A push or another commit may not do what you want. Maybe try: git reset --soft 'HEAD~1'; git status"
+        [ $returnv -ge 2 ] || returnv=2
+      else
+        echo "Warning: There are commits not pushed. Try 'git cherry -v' and maybe push"
+        [ $returnv -ge 1 ] || returnv=1
+      fi
     fi
     set -e
     unset _var_push
     unset _var_returnvbeforestaged
+    unset _var_gitmodified
 
     local _var_remoteurl="$(git ls-remote --get-url)"
     local _var_remoteurlbn="$(basename "${_var_remoteurl}" ".git")"
     if ! grep -ql '^ssh://' <<< "${_var_remoteurl}"; then
       echo "Warning: You don't have write access to this package so you can't fix these problems."
     fi
-    # git-clone should block the cloning of core repository packages, but it doesn't.
+    # git-clone from AUR should block the cloning of new repository packages in core/extra, but it doesn't.
     if [ "${_var_remoteurlbn}" != "${_var_pwdbn}" ]; then
       echo '******************************************************'
       echo "The git package name doesn't match the folder name. Did you clone the wrong package?"
@@ -511,6 +556,7 @@ fi
     fi
     unset _var_remoteurl
     unset _var_remoteurlbn
+#set > x # look for variables we forgot to unset
   else
     echo "${_var_pwdbn} is not an ${_opt_AUR4} package."
     if [ "${_var_pwd}" = ~/build ]; then
@@ -545,7 +591,7 @@ cat << EOF
 git-aurcheck ${_opt_VERSION} (C)2015 by severach for Arch Linux (GPL3+)
   -h: crude help
   -a: from ~/build, check all packages with write access
-  -p: pedantic, adds extra checks
+  -p: pedantic, adds extra checks. Up to twice for maximum pedantry.
 
 To check for problems in a package folder:
   cd ~/build/foo
@@ -565,34 +611,39 @@ while getopts ':hafp' _var_opt; do
     h) _fn_usage; exit 0;;
     a) _opt_ALL=1;;
     f) _opt_FORCE=1;; # cannot be specified with -a
-    p) _opt_PEDANTIC=1;;
+    p) _opt_PEDANTIC=$((${_opt_PEDANTIC} + 1));;
     :) echo "$(basename "$0"): Option '-${OPTARG}' requires an argument" >&2
-       exit 1 ;;
+       exit 126 ;;
     *) echo "$(basename "$0"): Invalid option '-${OPTARG}'" >&2
-       _fn_usage; exit 1 ;;
+       _fn_usage; exit 126 ;;
   esac
 done
 unset _var_opt
 
 returnv=0
 if [ "${_opt_ALL}" -ne 0 ]; then
-  _opt_FORCE=0
-  for builddir in *; do
-    # It doesn't do any good to check packages that you can't fix because they aren't yours.
-    # We consider writable ssh:// to be yours and read only http:// to not be yours.
-    # Use https:// to clone packages you don't have write access to.
-    # You can fix errant clones with the https url on the package page.
-    # Example: (change aur4 to aur after 2015-08-08)
-    # cd ~/build/foo
-    # git ls-remote --get-url
-    # git remote set-url origin "https://aur4.archlinux.org/$(basename "$(pwd)").git/"
-    # git remote show origin -n
-    if [ -s "${builddir}/.git/config" ] && grep -ql 'url = ssh://' "${builddir}/.git/config" && pushd "${builddir}" >/dev/null; then
-      echo "Checking ${builddir}"
-      _fn_aurcheck
-      popd >/dev/null
-    fi
-  done
+  if [ -e 'PKGBUILD' ] ;then
+    echo 'This looks like a package folder. Maybe you want to leave -a off.'
+    exit 126
+  else
+    _opt_FORCE=0
+    for builddir in *; do
+      # It doesn't do any good to check packages that you can't fix because they aren't yours.
+      # We consider writable ssh:// to be yours and read only http:// to not be yours.
+      # Use https:// to clone packages you don't have write access to.
+      # You can fix errant clones with the https url on the package page.
+      # Example: (change aur4 to aur after 2015-08-08)
+      # cd ~/build/foo
+      # git ls-remote --get-url
+      # git remote set-url origin "https://aur4.archlinux.org/$(basename "$(pwd)").git/"
+      # git remote show origin -n
+      if [ -s "${builddir}/.git/config" ] && grep -ql 'url = ssh://' "${builddir}/.git/config" && pushd "${builddir}" >/dev/null; then
+        echo "Checking ${builddir}"
+        _fn_aurcheck
+        popd >/dev/null
+      fi
+    done
+  fi
 else
   _fn_aurcheck
 fi

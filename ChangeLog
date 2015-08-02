@@ -1,0 +1,11 @@
+2015-08-02 Chris Severance <aur.severach@spamgourmet.com>
+
+  * 0.2 :
+  check install file for forbidden paths (this will fix the shells in core)
+  added changelog detection
+  added ChangeLog
+
+2015-07-29 Chris Severance <aur.severach@spamgourmet.com>
+
+  * 0.1-1 :
+  Initial Version
