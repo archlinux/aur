@@ -4,7 +4,7 @@
 
 pkgname='clam-git'
 _gitname=clams
-pkgver=1.4.16
+pkgver=1.4.5.135.gc7b62b5
 pkgrel=1
 arch=('any')
 url="http://www.clamclient.com"
@@ -16,6 +16,11 @@ provides=('clam-qt' 'clamd')
 conflicts=('clam-qt' 'clamd')
 source=("git://github.com/nochowderforyou/clams.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $srcdir/$_gitname
+  git describe | sed "s/^v//; s/-/./g"
+}
 
 build() {
 	cd $srcdir/$_gitname

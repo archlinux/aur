@@ -1,6 +1,6 @@
 pkgbase = clam-git
 	pkgdesc = The most widely held crypto-currency ever! This package provides both the GUI QT4 and daemon clients.
-	pkgver = 1.4.16
+	pkgver = 1.4.5.135.gc7b62b5
 	pkgrel = 1
 	url = http://www.clamclient.com
 	arch = any
