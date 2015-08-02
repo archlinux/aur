@@ -1,5 +1,5 @@
 pkgbase = asplib
-	pkgdesc = Basic Audio DSP Processor addon for Kodi
+	pkgdesc = a small and lightweight C++ library for digital signal processing
 	pkgver = 20150502.490de46
 	pkgrel = 2
 	url = https://github.com/AchimTuran/asplib
