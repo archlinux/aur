@@ -3,16 +3,14 @@
 # Contributor: Robson R S Peixoto <robsonpeixoto@gmail.com>
 # Contributor: Piotr Beling <qwak@w8.pl>
 
-# added package(), adopted some conventions from 
-# https://wiki.archlinux.org/index.php/Eclipse_plugin_package_guidelines
-#        -- dsboger
-
-pkgname=texlipse
+pkgname=eclipse-texlipse
 pkgver=1.5.0
-pkgrel=6
+pkgrel=1
 pkgdesc="A plugin that adds LaTeX support to the Eclipse IDE"
 url="http://texlipse.sourceforge.net/"
 depends=('eclipse>=3.5' 'texlive-core')
+conflicts=('texlipse')
+provides=('texlipse')
 arch=('any')
 license=('EPL')
 source=("http://downloads.sourceforge.net/texlipse/texlipse_${pkgver}%20src.zip")
