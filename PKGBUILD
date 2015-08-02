@@ -37,7 +37,7 @@ source=("http://download.newrelic.com/server_monitor/archive/${pkgver}/${pkgname
 sha256sums=('052e42d156e20f77e78f82372123eadf069ef2e5758a1184725a906ead551d9b'
             '02d70a783e30a7b6f8c438b1bae5a57d37d2204d112ccca38eada2b9044a5ebe'
             'bcce083629dcd0827f86247872ee4b42dec2c51349b4cc10c0ce7619f94faf9f'
-            '7ec93da5ddf521cd1850f1ef491182d7363fd565db8697c33261d09300fab6af')
+            '58fade9de4793e22cda75816a74c52d5d9b831ab68bc7b8225aa1bb294b3b31b')
 
 package() {
   set -u
@@ -80,12 +80,13 @@ package() {
   install -Dpm644 "${srcdir}/${pkgname}.logrotate" "${pkgdir}/etc/logrotate.d/${pkgname}"
 
   # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  #! grep -lr "/sbin" "${pkgdir}" || echo "${}"
-  ! grep -lr "/usr/tmp" "${pkgdir}" || echo "${}"
-  #! grep -lr "/usr/local" "${pkgdir}" || echo "${}"
-  #! pcregrep -lr "(?<!/usr)/bin" "${pkgdir}" || echo "${}"
-  ! test -d "${pkgdir}/usr/sbin" || echo "${}"
-  ! test -d "${pkgdir}/usr/local" || echo "${}"
+  ! test -d "${pkgdir}/sbin" || { echo "Forbidden: /sbin"; echo "${}"; }
+  ! test -d "${pkgdir}/usr/sbin" || { echo "Forbidden: /usr/sbin"; echo "${}"; }
+  ! test -d "${pkgdir}/usr/local" || { echo "Forbidden: /usr/local"; echo "${}"; }
+  #! grep -lr "/sbin" "${pkgdir}" || { echo "Forbidden: /sbin"; echo "${}"; }
+  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Forbidden: /usr/tmp"; echo "${}"; }
+  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Forbidden: /usr/local"; echo "${}"; }
+  ! pcregrep -lr "(?<!/usr)/bin" "${pkgdir}" || { echo "Forbidden: /bin"; echo "${}"; }
   set +u
 }
 
