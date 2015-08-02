@@ -1,0 +1,33 @@
+pkgbase = perl-perl-tidy
+	pkgdesc = indent and reformat perl scripts
+	pkgver = 20140711
+	pkgrel = 1
+	url = https://metacpan.org/release/Perl-Tidy
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-extutils-makemaker>=0
+	depends = perl
+	provides = perl-perl-tidy-ioscalar=20140711
+	provides = perl-perl-tidy-ioscalararray=20140711
+	provides = perl-perl-tidy-linesource=20140711
+	provides = perl-perl-tidy-linesink=20140711
+	provides = perl-perl-tidy-diagnostics=20140711
+	provides = perl-perl-tidy-logger=20140711
+	provides = perl-perl-tidy-devnull=20140711
+	provides = perl-perl-tidy-htmlwriter=20140711
+	provides = perl-perl-tidy-formatter=20140711
+	provides = perl-perl-tidy-indentationitem=20140711
+	provides = perl-perl-tidy-verticalaligner-line=20140711
+	provides = perl-perl-tidy-verticalaligner-alignment=20140711
+	provides = perl-perl-tidy-verticalaligner=20140711
+	provides = perl-perl-tidy-filewriter=20140711
+	provides = perl-perl-tidy-debugger=20140711
+	provides = perl-perl-tidy-linebuffer=20140711
+	provides = perl-perl-tidy-tokenizer=20140711
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHANCOCK/Perl-Tidy-20140711.tar.gz
+	sha256sums = 1576ceb3fd9f592d0285affbe7192685963dc1d0411968cc0587d6ac0d7b3ad8
+
+pkgname = perl-perl-tidy
+
