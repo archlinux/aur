@@ -1,0 +1,15 @@
+pkgbase = perl-lwp-protocol-http10
+	pkgdesc = Support for using HTTP/1.0 protocol with LWP.
+	pkgver = 6.03
+	pkgrel = 1
+	url = http://search.cpan.org/~gaas/LWP-Protocol-http10-6.03/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.5.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/LWP-Protocol-http10-6.03.tar.gz
+	md5sums = c3d2f6efc2ce06066cf95a24fed6fff1
+
+pkgname = perl-lwp-protocol-http10
+
