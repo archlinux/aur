@@ -1,0 +1,18 @@
+pkgbase = firewalk
+	pkgdesc = An active reconnaissance network security tool
+	pkgver = 5.0
+	pkgrel = 4
+	url = http://packetfactory.openwall.net/projects/firewalk/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libdnet
+	depends = libnet
+	depends = libpcap
+	source = http://packetfactory.openwall.net/firewalk/dist/firewalk.tar.gz
+	source = firewalk-gcc3.4.patch
+	md5sums = 02412f13218ea052427bbf038a88a026
+	md5sums = d94be823c96efbaeee8f75941cfdd3b7
+
+pkgname = firewalk
+
