@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=getver
-pkgver=0.34
+pkgver=0.35
 pkgrel=1
 pkgdesc='Find the latest version number for a given URL'
 arch=('x86_64' 'i686')
