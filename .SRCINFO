@@ -26,7 +26,7 @@ pkgbase = lxsession-gtk3
 	md5sums = 38324f7d527a3096f06015d75f1bb64d
 	md5sums = 4271c2cbba3cbdbd861d3de7ff644bcf
 	md5sums = ccdf2187b08117ca72797d5f3e9e4e2b
-	md5sums = d0552824de9a36ece2c487aab064ea7c
+	md5sums = 97d319d5ac2d434efa333caba2e8f550
 
 pkgname = lxsession-gtk3
 

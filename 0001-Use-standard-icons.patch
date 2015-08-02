@@ -1,15 +1,15 @@
-From 1795db52cb1deaeb69ec571c67832d90135e010f Mon Sep 17 00:00:00 2001
+From 9439f557254fada2576d1ec5dac67f0bfab6aa65 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
-Date: Sun, 2 Aug 2015 02:11:14 +0200
+Date: Sun, 2 Aug 2015 02:23:57 +0200
 Subject: [PATCH] Use standard icons
 
 ---
- data/lxsession-default-apps.desktop.in | 2 +-
- data/lxsession-edit.desktop.in         | 2 +-
- lxsession-default-apps/combobox.vala   | 4 ++--
- lxsession-default-apps/main.vala       | 2 +-
- lxsession-edit/lxsession-edit.c        | 2 +-
- 5 files changed, 6 insertions(+), 6 deletions(-)
+ data/lxsession-default-apps.desktop.in |  2 +-
+ data/lxsession-edit.desktop.in         |  2 +-
+ lxsession-default-apps/combobox.vala   |  4 ++--
+ lxsession-default-apps/main.vala       | 10 +++++++++-
+ lxsession-edit/lxsession-edit.c        |  2 +-
+ 5 files changed, 14 insertions(+), 6 deletions(-)
 
 diff --git a/data/lxsession-default-apps.desktop.in b/data/lxsession-default-apps.desktop.in
 index df3f453..9fb9643 100644
@@ -58,7 +58,7 @@ index fa4f631..3981b20 100644
          for (int a = 0 ; a < combobox_list.length ; a++)
          {
 diff --git a/lxsession-default-apps/main.vala b/lxsession-default-apps/main.vala
-index 859e219..199e4ee 100644
+index 859e219..3b27b18 100644
 --- a/lxsession-default-apps/main.vala
 +++ b/lxsession-default-apps/main.vala
 @@ -32,7 +32,7 @@ namespace LDefaultApps
@@ -70,6 +70,21 @@ index 859e219..199e4ee 100644
              }
              catch (Error e)
              {
+@@ -97,6 +97,14 @@ namespace LDefaultApps
+         {
+ 		    this.title = _("LXSession configuration");
+ 		    this.window_position = Gtk.WindowPosition.CENTER;
++            try
++            {
++                this.icon = IconTheme.get_default ().load_icon ("preferences-desktop", 48, 0);
++            }
++            catch (Error e)
++            {
++                message ("Could not load application icon: %s\n", e.message);
++            }
+ 		    this.set_default_size (600, 400);
+             this.destroy.connect (Gtk.main_quit);
+ 
 diff --git a/lxsession-edit/lxsession-edit.c b/lxsession-edit/lxsession-edit.c
 index 88fe9d1..af63edb 100644
 --- a/lxsession-edit/lxsession-edit.c
