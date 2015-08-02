@@ -1,0 +1,8 @@
+#the source dir
+freeorion.git/
+#makepkg work dirs
+src/
+pkg/
+#packages
+/freeorion-git*.tar
+/freeorion-git*.tar.*
