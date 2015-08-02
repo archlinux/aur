@@ -1,0 +1,16 @@
+pkgbase = libsixel-git
+	pkgdesc = A lightweight, fast implementation of DEC SIXEL graphics codec
+	pkgver = r1938.8849016
+	pkgrel = 1
+	url = https://github.com/saitoha/libsixel
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = curl
+	depends = libjpeg-turbo
+	depends = libpng
+	source = git+https://github.com/saitoha/libsixel
+	sha256sums = SKIP
+
+pkgname = libsixel-git
+
