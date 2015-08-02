@@ -1,0 +1,42 @@
+pkgbase = perl-perl-prereqscanner
+	pkgdesc = a tool to scan your Perl code for its prerequisites
+	pkgver = 1.023
+	pkgrel = 1
+	url = https://metacpan.org/release/Perl-PrereqScanner
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-extutils-makemaker>=0
+	checkdepends = perl-try-tiny>=0
+	checkdepends = perl-file-temp>=0
+	checkdepends = perl-test-simple>=0.96
+	checkdepends = perl-ppi>=0
+	checkdepends = perl-pathtools>=0
+	depends = perl>=5.8
+	depends = perl-module-path>=0
+	depends = perl-namespace-autoclean>=0
+	depends = perl-string-rewriteprefix>=0.005
+	depends = perl-lib>=0
+	depends = perl-scalar-list-utils>=0
+	depends = perl-moose>=0
+	depends = perl-list-moreutils>=0
+	depends = perl-ppi>=1.215
+	depends = perl-getopt-long>=0
+	depends = perl-getopt-long-descriptive>=0
+	depends = perl-params-util>=0
+	depends = perl-pathtools>=0
+	depends = perl-cpan-meta-requirements>=2.124
+	provides = perl-perl-prereqscanner-scanner=1.022
+	provides = perl-perl-prereqscanner-scanner-aliased=1.022
+	provides = perl-perl-prereqscanner-scanner-moose=1.022
+	provides = perl-perl-prereqscanner-scanner-perl5=1.022
+	provides = perl-perl-prereqscanner-scanner-superclass=1.022
+	provides = perl-perl-prereqscanner-scanner-poe=1.022
+	provides = perl-perl-prereqscanner-scanner-testmore=1.022
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Perl-PrereqScanner-1.023.tar.gz
+	sha256sums = 280a1c4710390865fb9f310a861a34720b28b4cbe50609c841af5cf2d3a2bced
+
+pkgname = perl-perl-prereqscanner
+
