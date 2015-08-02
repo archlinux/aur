@@ -2,7 +2,7 @@
 
 pkgname=mapbox-studio
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Vector tile driven map design"
 arch=('x86_64')
 url="https://mapbox.com/mapbox-studio/"
@@ -20,7 +20,7 @@ prepare() {
 package() {
   install -dm755 "${pkgdir}/opt"
   cp --preserve=mode -r "mapbox-studio-linux-x64-v${pkgver}" "${pkgdir}/opt/${pkgname}"
-  ln -s "${pkgdir}/opt/${pkgname}/atom" "${pkgdir}/opt/${pkgname}/mapbox-studio"
+  ln -s "/opt/${pkgname}/atom" "${pkgdir}/opt/${pkgname}/mapbox-studio"
 }
 
 # vim:set ts=2 sw=2 et:

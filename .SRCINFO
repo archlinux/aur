@@ -1,7 +1,7 @@
 pkgbase = mapbox-studio
 	pkgdesc = Vector tile driven map design
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mapbox.com/mapbox-studio/
 	arch = x86_64
 	license = BSD
