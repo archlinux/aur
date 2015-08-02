@@ -3,6 +3,7 @@ pkgbase = libasl
 	pkgver = 0.1.5
 	pkgrel = 2
 	url = http://asl.org.il/
+	changelog = NEWS.md
 	arch = i686
 	arch = x86_64
 	license = AGPL3
