@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-wmc
 _gitname=pvr.wmc
-pkgver=20150717.e19c3e9
-_gitver=e19c3e99c87e81d406bac0bc4e8edeb47df66dcc
+pkgver=20150720.e87f132
+_gitver=e87f1328308aaca8e24099a46cdb56dee2ffa38f
 pkgrel=1
 pkgdesc='Windows Media Center client PVR addon for Kodi'
 arch=('i686' 'x86_64')
