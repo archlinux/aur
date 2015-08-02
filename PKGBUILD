@@ -6,20 +6,19 @@
 
 pkgname=wine-staging-d3dadapter
 _pkgbasename=wine
-pkgver=1.7.47
+pkgver=1.7.48
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
-source=(http://prdownloads.sourceforge.net/wine/wine-$pkgver.tar.bz2
+source=(http://ftp.winehq.org/pub/wine/source/1.7/wine-${pkgver}.tar.bz2
         "wine-staging-patches-v${pkgver}.tar.gz"::https://github.com/wine-compholio/wine-staging/archive/v${pkgver}.tar.gz
         30-win32-aliases.conf
-#        https://github.com/NP-Hardass/wine-d3d9-patches/archive/wine-d3d9-1.7.47.tar.gz)
 	wine-d3d9-$pkgver.patch)
-sha1sums=('SKIP'
-          'SKIP' 
+sha1sums=('df9445e0912a937743f804d6256fa2ebb4a502dd'
+          '7c92f3f9807294b82164a16e3647d011002a4f1a' 
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-          'SKIP')
+          'fcf70114cbc3a1fd114c129cb09674fc8200525f')
 
 # Uncomment to verify signature on tarball
 # (disabled by default due to most AUR auto-builders choking on this feature and
@@ -111,11 +110,11 @@ if [[ $CARCH == i686 ]]; then
   makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
   makedepends=(${makedepends[@]/*-multilib*/})
   optdepends=(${optdepends[@]/*32-*/})
-  provides=("wine=$pkgver")
+  provides=("wine=$pkgver" "wine-compholio=${pkgver}" "wine-silverlight=${pkgver}")
   conflicts=('wine' 'wine-staging')
 else
   makedepends=(${makedepends[@]} ${_depends[@]})
-  provides=("bin32-wine=$pkgver" "wine-wow64=$pkgver" "wine=$pkgver")
+  provides=("bin32-wine=$pkgver" "wine-wow64=$pkgver" "wine=$pkgver" "wine-compholio=${pkgver}" "wine-silverlight=${pkgver}")
   conflicts=('bin32-wine' 'wine-wow64' 'wine'  'wine-staging')
 fi
 
