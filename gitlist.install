@@ -1,0 +1,5 @@
+post_install() {
+    echo "==> See https://github.com/klaussilveira/gitlist/"
+    echo "==> for instructions about configuring GitList."
+}
+

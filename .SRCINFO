@@ -1,0 +1,19 @@
+pkgbase = gitlist
+	pkgdesc = An elegant and modern git repository viewer.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://gitlist.org/
+	install = gitlist.install
+	arch = any
+	license = BSD
+	depends = git
+	depends = php
+	optdepends = apache: Web server to run GitList
+	optdepends = lighttpd: Web server to run GitList
+	optdepends = nginx: Lightweight Web server to run GitList
+	options = emptydirs
+	source = https://s3.amazonaws.com/gitlist/gitlist-0.5.0.tar.gz
+	sha1sums = eeda77db8f769f0480577d33b600982aeba5bdbc
+
+pkgname = gitlist
+
