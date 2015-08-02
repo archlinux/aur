@@ -3,7 +3,7 @@
 # Contributor: Max <fuzymonkey@gmail.com>
 
 pkgname=google-appengine-go
-pkgver=1.9.23
+pkgver=1.9.24
 pkgrel=1
 pkgdesc='Google App Engine SDK for Go'
 arch=('x86_64' 'i686')
@@ -16,8 +16,8 @@ optdepends=('mysql-python: MySQL support for Python 2'
             'python2-imaging: Image processing capabilities for Python')
 source_i686=("https://commondatastorage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_386-$pkgver.zip")
 source_x86_64=("https://commondatastorage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-$pkgver.zip")
-md5sums_i686=('bf7327bf97f1d266bf795409394c0dd7')
-md5sums_x86_64=('1590582f54d298428320cc8c3e58babd')
+md5sums_i686=('96de964c7911a563bc2dd5ce458318cc')
+md5sums_x86_64=('264137a618cedba488b983ca91db12f6')
 # Get the name of the zip file
 _source=$(echo source_$CARCH)
 noextract=("$(basename ${!_source})")
@@ -36,7 +36,7 @@ build() {
   # This is to avoid name conflicts in /usr/bin with other appengine packages
   for f in *.py
   do
-    msg2 "Creating a wrapper script for $f named `basename $f .py`-go"
+    msg2 "Generating wrapper script for $f named `basename $f .py`-go"
     echo -e "#!/bin/sh\npython2 /opt/google-appengine-go/$f \$*" \
       > "$srcdir/`basename $f .py`-go"
     if [[ $f == dev_appserver.py ]]; then
