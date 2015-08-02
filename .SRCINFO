@@ -1,0 +1,36 @@
+pkgbase = quassel
+	pkgver = 0.10.0.beta1.11.g238fb43
+	pkgrel = 1
+	url = http://quassel-irc.org
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = automoc4
+	depends = qt4
+	source = git+https://github.com/quassel/quassel.git
+	md5sums = SKIP
+
+pkgname = quassel-git
+	pkgdesc = KDE-based IRC client (monolithic version)
+
+pkgname = quassel-light-git
+	pkgdesc = Qt-based IRC client (monolithic version)
+
+pkgname = quassel-client-git
+	pkgdesc = KDE-based distributed IRC client (client only)
+	provides = quassel-client
+	conflicts = quassel-client
+
+pkgname = quassel-client-light-git
+	pkgdesc = Qt-based distributed IRC client (client only)
+	provides = quassel-client
+	conflicts = quassel-client
+
+pkgname = quassel-core-git
+	pkgdesc = KDE/Qt-based distributed IRC client (core only)
+	provides = quassel-core
+	conflicts = quassel-core
+
