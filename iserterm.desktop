@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=iSerTerm
+GenericName=Serial terminal
+Comment=Serial terminal for embedded software developers
+Exec=/usr/bin/iserterm
+Icon=iserterm
+Terminal=false
+Type=Application
+Categories=Development;Utility
+StartupNotify=false
