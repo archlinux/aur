@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-libplatform
 	pkgdesc = Platform support library used by libCEC and binary add-ons for Kodi
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pulse-Eight/platform
 	arch = i686
 	arch = x86_64

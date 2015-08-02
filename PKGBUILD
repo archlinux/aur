@@ -6,7 +6,7 @@
 pkgname=kodi-devel-libplatform
 _gitname=platform
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform support library used by libCEC and binary add-ons for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/Pulse-Eight/$_gitname"
@@ -26,6 +26,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=$_prefix \
     -DCMAKE_INSTALL_LIBDIR="$_prefix/lib" \
     -DCMAKE_INSTALL_LIBDIR_NOARCH="$_prefix/lib" \
+    -DBUILD_SHARED_LIBS=1 \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
