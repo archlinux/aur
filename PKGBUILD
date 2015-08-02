@@ -7,7 +7,7 @@ pkgname=kodi-devel-audioencoder-wav
 _gitname=audioencoder.wav
 pkgver=20150601.797c990
 _gitver=797c990eea7851889cd44a597c0392deba9c51c0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wav encoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/xbmc/$_gitname"
@@ -21,11 +21,6 @@ source=("https://github.com/xbmc/$_gitname/archive/$_gitver.tar.gz")
 md5sums=('SKIP')
 
 _prefix='/usr'
-
-prepare() {
-  msg "Starting make..."
-  cd "$srcdir/$_gitname-$_gitver"
-}
 
 build() {
   cd "$srcdir/$_gitname-$_gitver"
