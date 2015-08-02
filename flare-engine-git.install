@@ -1,0 +1,11 @@
+post_install() {
+	test -x /usr/bin/gtk-update-icon-cache && /usr/bin/gtk-update-icon-cache -q /usr/share/icons/hicolor
+}
+
+post_upgrade() {
+	test -x /usr/bin/gtk-update-icon-cache && /usr/bin/gtk-update-icon-cache -q /usr/share/icons/hicolor
+}
+
+post_remove() {
+	test -x /usr/bin/gtk-update-icon-cache && /usr/bin/gtk-update-icon-cache -q /usr/share/icons/hicolor
+}
