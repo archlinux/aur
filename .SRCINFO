@@ -1,0 +1,17 @@
+pkgbase = perl-html-selector-xpath
+	pkgdesc = CSS Selector to XPath compiler
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-Selector-XPath
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-base>=0
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CORION/HTML-Selector-XPath-0.18.tar.gz
+	md5sums = bb46fc14bb6ea3169a6176db00cc68f6
+	sha512sums = bb51d8daaa80a5563934ee5caab885de69b07ed8a5862c9956613ff152ecec33fa2d40ee1adab37714a56c77aea69fb1db62734809c2e3016c0a5acc207b6578
+
+pkgname = perl-html-selector-xpath
+
