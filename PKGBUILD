@@ -17,16 +17,49 @@ _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=45.0.2454.6
+pkgver=46.0.2467.2
 _launcher_ver=2
 pkgrel=1
-pkgdesc='The open-source project behind Google Chrome (Dev Channel)'
+pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
 url='http://www.chromium.org'
 license=('BSD')
-depends=('desktop-file-utils' 'gtk2' 'icu' 'jsoncpp' 'libsrtp' 'libwebp' 'libxslt' 'libxss' 'minizip' 'perl-file-basedir'
-         'nss' 'pciutils' 're2' 'snappy' 'speech-dispatcher' 'speex' 'xdg-utils') #  'opus'  'protobuf'  'libevent' 'libvpx'
-makedepends=('libexif' 'elfutils' 'gperf' 'ninja' 'perl-json' 'python2-beautifulsoup3' 'python2-simplejson' 'python2-jinja' 'subversion' 'yasm' 'git') # 'python2-ply'
+depends=('desktop-file-utils'
+         'gtk2'
+         'icu'
+         'jsoncpp'
+         #'libsrtp'
+         'libwebp'
+         'libxslt'
+         'libxss'
+         'minizip'
+         'perl-file-basedir'
+         'nss'
+         'pciutils'
+         're2'
+         'snappy'
+         'speech-dispatcher'
+         'speex'
+         'xdg-utils'
+         #'opus' 
+         #'protobuf'
+         #'libevent'
+         #'libvpx'
+         )
+makedepends=('chrpath'
+             'libexif'
+             'elfutils'
+             'gperf'
+             'ninja'
+             'perl-json'
+             'python2-beautifulsoup3'
+             'python2-simplejson'
+             'python2-jinja'
+             'subversion'
+             'yasm'
+             'git'
+             #'python2-ply'
+             )
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
             'kdebase-kdialog: Needed for file dialogs in KDE4'
@@ -46,6 +79,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         # Misc Patches
         'chromium-system-jinja-r8.patch'
         'enable_vaapi_on_linux.diff'
+        'webui_test_resources.grd'
         # Patch from crbug (chromium bugtracker)
 
         )
@@ -60,6 +94,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           # Misc Patches
           '51ee08f9500a9006673787b0f29ffa089b09c286'
           '4e223ea3df5be9374f202f7c3f0679ae55eed495'
+          'd1dd1387365d3870cfb2140722426bd731bd726d'
           # Patch from crbug (chromium bugtracker)
 
           )
@@ -101,7 +136,7 @@ if [ "${_use_clang}" = "1" ]; then
   makedepends+=('clang')
 fi
 if [ "${_use_bundled_clang}" = "1" ]; then
-  makedepends+=('cmake' 'ocaml' 'libffi' 'chrpath')
+  makedepends+=('cmake' 'ocaml' 'libffi')
 fi
 
 # Need you use ccache?
@@ -178,12 +213,14 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/libjingle'
            'third_party/libphonenumber'
            'third_party/libsecret'
+           'third_party/libsrtp'
            'third_party/libudev'
            'third_party/libusb'
            'third_party/libva'
            'third_party/libvpx'
            'third_party/libvpx/source/libvpx/third_party/x86inc'
            'third_party/libxml/chromium'
+           'third_party/libwebm'
            'third_party/libXNVCtrl'
            'third_party/libyuv'
            'third_party/lss'
@@ -309,6 +346,7 @@ fi
 # -Duse_system_sqlite=1      | http://crbug.com/22208
 # -Duse_system_ssl=1         | http://crbug.com/58087
 # -Duse_system_openssl=1     | Use if use BoringSSL instead of SSL
+# -Duse_system_libsrtp       | https://crbug.com/501318
 # NOTE
 # -Duse_system_libevent=0    | Need older version (<2.x.x)
 # -Duse_system_protobuf=0    | https://bugs.gentoo.org/show_bug.cgi?id=525560
@@ -326,7 +364,7 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_libexif=1'
              '-Duse_system_libjpeg=1'
              '-Duse_system_libpng=1'
-             '-Duse_system_libsrtp=1'
+             '-Duse_system_libsrtp=0'
              '-Duse_system_libusb=0'
              '-Duse_system_libvpx=0'
              '-Duse_system_libwebp=1'
@@ -400,6 +438,8 @@ prepare() {
   msg2 "Make sure use Python2"
   find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
   find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
+
+  cp "${srcdir}/webui_test_resources.grd" chrome/test/data/webui_test_resources.grd
 }
 
 build() {
@@ -500,8 +540,9 @@ package() {
   make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr DESTDIR="${pkgdir}" install-strip
   install -Dm644 "chromium-launcher-${_launcher_ver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
 
-  # Install binaries
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
+
+  # Install binaries
   install -Dm755 chrome "${pkgdir}/usr/lib/chromium-dev/chromium-dev"
   install -Dm644 chrome.1 "${pkgdir}/usr/share/man/man1/chromium-dev.1"
   install -Dm4755 chrome_sandbox "${pkgdir}/usr/lib/chromium-dev/chrome-sandbox"

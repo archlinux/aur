@@ -8,3 +8,4 @@
 !chromium-dev.svg
 !chromium-system-jinja-r8.patch
 !enable_vaapi_on_linux.diff
+!webui_test_resources.grd
