@@ -3,7 +3,7 @@
 pkgbase=lua-crypto
 pkgname=('lua-crypto' 'lua51-crypto' 'lua52-crypto')
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Lua frontend to the OpenSSL cryptographic library'
 arch=('i686' 'x86_64')
 url='http://mkottman.github.io/luacrypto/'
@@ -23,7 +23,7 @@ build() {
 package_lua-crypto() {
 	depends=('openssl' 'lua')
 
-	install -D -m0755 luacrypto-${pkgver}/crypto52.so ${pkgdir}/usr/lib/lua/5.2/crypto.so
+	install -D -m0755 luacrypto-${pkgver}/crypto53.so ${pkgdir}/usr/lib/lua/5.2/crypto.so
 }
 
 package_lua51-crypto() {

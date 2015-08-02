@@ -1,7 +1,7 @@
 pkgbase = lua-crypto
 	pkgdesc = Lua frontend to the OpenSSL cryptographic library
 	pkgver = 0.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://mkottman.github.io/luacrypto/
 	arch = i686
 	arch = x86_64
