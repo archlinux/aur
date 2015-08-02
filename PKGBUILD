@@ -40,9 +40,8 @@ sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
 prepare() {
   cd "${srcdir}/${_gitname}"
 
-  sed -i "s|opensubtitles.git|opensubtitles-api.git|g" package.json
-  sed -i "s|ebb786a9d72820d479b9d0b2268f48453898ba3c|1fd9f4174ef93bb2efb0cfa6fdd1300223263251|g" package.json
-
+  sed -i "s|opensubtitles.git#ebb786a9d72820d479b9d0b2268f48453898ba3c|opensubtitles-api.git|g" package.json
+  
   cp "${srcdir}"/desktop-i18n.git/* src/app/language
 
   export PYTHON=/usr/bin/python2
