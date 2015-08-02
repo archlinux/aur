@@ -1,8 +1,8 @@
 post_install() {
-    echo "
+  echo "
     >>> enable PEDA per user via:
     >>> echo 'source /usr/share/peda/peda.py' > ~/.gdbinit
-    "
+  "
 }
 
 post_upgrade() {
