@@ -1,11 +1,11 @@
 # Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 # Contributor: Oliver Charles <oliver.g.charles@googlemail.com>
 
-pkgname=perl-fcgi-procmanager
-_cpanname="FCGI-ProcManager"
+pkgname='perl-fcgi-procmanager'
+_cpanname='FCGI-ProcManager'
 pkgver='0.24'
 pkgrel='2'
-pkgdesc="Functions for managing FastCGI applications"
+pkgdesc='Functions for managing FastCGI applications'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
