@@ -1,15 +1,15 @@
-From 9439f557254fada2576d1ec5dac67f0bfab6aa65 Mon Sep 17 00:00:00 2001
+From 9441225c05d785031f330b300c9fe442e600aa28 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
-Date: Sun, 2 Aug 2015 02:23:57 +0200
+Date: Sun, 2 Aug 2015 02:35:03 +0200
 Subject: [PATCH] Use standard icons
 
 ---
  data/lxsession-default-apps.desktop.in |  2 +-
  data/lxsession-edit.desktop.in         |  2 +-
- lxsession-default-apps/combobox.vala   |  4 ++--
+ lxsession-default-apps/combobox.vala   |  8 ++++----
  lxsession-default-apps/main.vala       | 10 +++++++++-
  lxsession-edit/lxsession-edit.c        |  2 +-
- 5 files changed, 14 insertions(+), 6 deletions(-)
+ 5 files changed, 16 insertions(+), 8 deletions(-)
 
 diff --git a/data/lxsession-default-apps.desktop.in b/data/lxsession-default-apps.desktop.in
 index df3f453..9fb9643 100644
@@ -36,7 +36,7 @@ index f826044..ddf87a5 100644
  _Name=Desktop Session Settings
  _Comment=Manage applications loaded in desktop session
 diff --git a/lxsession-default-apps/combobox.vala b/lxsession-default-apps/combobox.vala
-index fa4f631..3981b20 100644
+index fa4f631..cd07954 100644
 --- a/lxsession-default-apps/combobox.vala
 +++ b/lxsession-default-apps/combobox.vala
 @@ -83,7 +83,7 @@ namespace LDefaultApps
@@ -48,6 +48,15 @@ index fa4f631..3981b20 100644
              }
              catch (Error e)
              {
+@@ -113,7 +113,7 @@ namespace LDefaultApps
+         window.set_default_size (300, 500);
+         try
+         {
+-            window.icon = IconTheme.get_default ().load_icon ("xfwm4", 48, 0);
++            window.icon = IconTheme.get_default ().load_icon ("preferences-desktop", 48, 0);
+         }
+         catch (Error e)
+         {
 @@ -422,7 +422,7 @@ namespace LDefaultApps
  
          /* First row, empty for not selected and for unselect */
@@ -56,6 +65,15 @@ index fa4f631..3981b20 100644
 +        list_store.set (iter, 0, "window-close" , 1, _("Disable"), 2, 0, 3,"");
  
          for (int a = 0 ; a < combobox_list.length ; a++)
+         {
+@@ -542,7 +542,7 @@ namespace LDefaultApps
+         window_mime.set_skip_taskbar_hint(true);
+         try
+         {
+-            window_mime.icon = IconTheme.get_default ().load_icon ("xfwm4", 48, 0);
++            window_mime.icon = IconTheme.get_default ().load_icon ("preferences-desktop", 48, 0);
+         }
+         catch (Error e)
          {
 diff --git a/lxsession-default-apps/main.vala b/lxsession-default-apps/main.vala
 index 859e219..3b27b18 100644
