@@ -3,7 +3,7 @@
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Command-line fuzzy finder"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/junegunn/$pkgname/tar.gz/$pkgver
         key-bindings.bash.patch
         key-bindings.zsh.patch)
-sha256sums=('04615300679f4286cbd35e981e05635563f0782579873dcfbfb19fafa4b69948'
+sha256sums=('7f71ec91fe2234e6ad3a32f291e7030d4ae25d9e9751b3dd1d8a91666a3652a8'
             '2b188a027ffca82e1c9e66ad072cc903c4c34c102387b843a0e62962f835cecb'
             'b49f86d8674813f91ed7833197daf966c0e8874e7cca3d24111f84fc0675b985')
 install=fzf.install
