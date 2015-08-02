@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-libidn
+	pkgdesc = Implementation of the Stringprep, Punycode and IDNA specifications (mingw-w64)
+	pkgver = 1.29
+	pkgrel = 1
+	url = http://www.gnu.org/software/libidn
+	arch = any
+	license = GPL3, LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-gettext
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://ftp.gnu.org/gnu/libidn/libidn-1.29.tar.gz
+	sha1sums = e0959eec9a03fd8053379b0aeab447c546c05ab2
+
+pkgname = mingw-w64-libidn
+
