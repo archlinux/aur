@@ -1,6 +1,6 @@
 pkgbase = lsdsk
-	pkgdesc = Search in *.desktop for content in Exec and Categories.
-	pkgver = 1.0.0
+	pkgdesc = Search in *.desktop for content in Exec and Categories/Name.
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/AndyCrowd/
 	arch = any

@@ -1,8 +1,8 @@
 # Maintainer: Andy Crowd <andy_crowd@ainsdata.se>
 pkgname=lsdsk
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Search in *.desktop for content in Exec and Categories."
+pkgdesc="Search in *.desktop for content in Exec and Categories/Name."
 arch=(any)
 depends=(bash)
 makedepends=('git')
@@ -20,16 +20,3 @@ package() {
   install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 "$srcdir/$pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
