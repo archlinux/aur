@@ -3,8 +3,8 @@
 
 pkgname=python2-bibtexparser
 _pkgname=bibtexparser
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Bibtex parser in Python"
 arch=('any')
 url="https://bibtexparser.readthedocs.org/"
@@ -13,7 +13,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 checkdepends=('python2-nose')
 source=(https://pypi.python.org/packages/source/b/bibtexparser/bibtexparser-$pkgver.tar.gz)
-sha256sums=('0f58ee599de7c01a8e9dd723c2a8d7405cca75bf02ce28c60ada23350d48dfa6')
+sha256sums=('944249c1cfce9f2c69f0decc2d3fab54e8adb5d5cac5eda32cfba8898b602742')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

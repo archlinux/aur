@@ -1,15 +1,15 @@
 pkgbase = python2-bibtexparser
 	pkgdesc = Bibtex parser in Python
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://bibtexparser.readthedocs.org/
 	arch = any
 	license = LGPL3
 	checkdepends = python2-nose
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.python.org/packages/source/b/bibtexparser/bibtexparser-0.6.0.tar.gz
-	sha256sums = 0f58ee599de7c01a8e9dd723c2a8d7405cca75bf02ce28c60ada23350d48dfa6
+	source = https://pypi.python.org/packages/source/b/bibtexparser/bibtexparser-0.6.1.tar.gz
+	sha256sums = 944249c1cfce9f2c69f0decc2d3fab54e8adb5d5cac5eda32cfba8898b602742
 
 pkgname = python2-bibtexparser
 
