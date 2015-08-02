@@ -1,0 +1,15 @@
+pkgbase = abntex
+	pkgdesc = abntex is a class LaTeX for writing documents in ABNT standard.
+	pkgver = 0.9_beta2
+	pkgrel = 2
+	url = http://abntex.sourceforge.net/
+	install = abntex.install
+	arch = i686
+	arch = x86_64
+	license = LPPL
+	depends = texlive-core
+	source = http://downloads.sourceforge.net/sourceforge/abntex/abntex-0.9-beta2.tar.gz
+	md5sums = 4c5bc2d5388ddf03df754072116ab1f8
+
+pkgname = abntex
+
