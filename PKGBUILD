@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-njoy
 _gitname=pvr.njoy
-pkgver=20150717.4f88a09
-_gitver=4f88a097cb62b4604ffb0ac293a5dc8f40885e79
+pkgver=20150720.43b4698
+_gitver=43b4698f93b1beee77c26d972b4cb21f210bfb79
 pkgrel=1
 pkgdesc='Njoy N7 PVR client addon for Kodi'
 arch=('i686' 'x86_64')
