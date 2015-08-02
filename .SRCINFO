@@ -1,6 +1,6 @@
 pkgbase = linux-ck
-	pkgver = 4.0.9
-	pkgrel = 2
+	pkgver = 4.1.3
+	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
 	arch = x86_64
@@ -9,38 +9,36 @@ pkgbase = linux-ck
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.9.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.9.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.3.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.3.sign
 	source = config.x86_64
 	source = config
 	source = linux-ck.preset
+	source = 0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+	source = bitmap-enable-booting-for-dm-md-raid1.patch
 	source = change-default-console-loglevel.patch
-	source = http://ck.kolivas.org/patches/4.0/4.0/4.0-ck1/patch-4.0-ck1.bz2
-	source = http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-rtmn-fix.patch
-	source = http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-update_inittask.patch
-	source = bfs462-nosubmit.patch
+	source = http://ck.kolivas.org/patches/4.0/4.1/4.1-ck1/patch-4.1-ck1.bz2
 	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
-	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.0.patch
-	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.0.patch
-	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch
-	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.1.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.1.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch
+	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = 842cb3abf053e809b23e615020f3d0730220660f0e71f259dce69510364965f1
+	sha256sums = b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e
 	sha256sums = SKIP
-	sha256sums = 8fb75c36b16d7c4895c720949b8d217f84d225da25f4db81c0da00920b925843
-	sha256sums = 7e82bbe1ed937acfbd351ff75a0420777f4bfd64d0c7f3e041f41f28221a75f1
+	sha256sums = 988297a8bee2b4e42b90f2601f28d655dd19331b8e5e573c8e5227dcd6ff46dd
+	sha256sums = 2bd0424b65d522d6605d979e41142aeaa406e881567ebb725f05d9ede33552af
 	sha256sums = 2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e
+	sha256sums = 08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82
+	sha256sums = 959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = be3ca32d048428a0cbd476bfe467e0d46d1848b95d4d7b70ab57b522d19f6cd2
-	sha256sums = c28632c55b3603d538ec0669ee09fc47d1a04b40d0096c5511549946dd3aff16
-	sha256sums = a23de756d3680fb1c1cbabe3ae8c1cfb149a833177d054b9b23cc18d4d8e364a
-	sha256sums = 80a635a9998ff1d580889ecb79c018d4916314612077aecf080cb50e73e58757
+	sha256sums = d383e24325333b0045ddbfee4cfc2491ab25d9a6446094dbe0e5ad7ed3de133a
 	sha256sums = 819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532
-	sha256sums = b0648f9fca9b155c3a7195008acd6fb8f1a644c6a8743050f3ee96e1245b88d9
-	sha256sums = f1389d30e08cc1fab638407289743d15efcde4dac63f9e3052b0df9c0880ef57
-	sha256sums = fd7f55a254217e1b57558a6288cc2aab28f7c62d7d0b8db09b598382d5bce618
+	sha256sums = ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975
+	sha256sums = c5c2c48638c2a8180948bd118ffcc33c8b7ff5f9f1e4b04c8e2cafeca2bde87b
+	sha256sums = 4f30f76adbdf49aec8d41ac27ad212734500c272f3cba594f134a7bc263820d9
 
 pkgname = linux-ck
 	pkgdesc = Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.462.
@@ -51,7 +49,7 @@ pkgname = linux-ck
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = nvidia-ck: nVidia drivers for linux-ck
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-ck=4.0.9
+	provides = linux-ck=4.1.3
 	conflicts = kernel26-ck
 	conflicts = linux-ck-corex
 	conflicts = linux-ck-p4
@@ -75,8 +73,8 @@ pkgname = linux-ck
 pkgname = linux-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-ck.
 	depends = linux-ck
-	provides = linux-ck-headers=4.0.9
-	provides = linux-headers=4.0.9
+	provides = linux-ck-headers=4.1.3
+	provides = linux-headers=4.1.3
 	conflicts = kernel26-ck-headers
 	conflicts = linux-ck-corex-headers
 	conflicts = linux-ck-p4-headers
