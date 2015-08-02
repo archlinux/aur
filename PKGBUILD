@@ -34,7 +34,7 @@ source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/des
         "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
         "popcorntime.desktop")
 sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
-            '447bafbdbd06f9e7833732629f333f71b52c78b48dbc0818bfbbc7e2de1e0f47'
+            'SKIP'
             'f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec')
 
 prepare() {
