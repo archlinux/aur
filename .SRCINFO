@@ -1,0 +1,35 @@
+pkgbase = bitcoin-git
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency.
+	pkgver = 0.9.0rc2.3425.g86cfd23
+	pkgrel = 1
+	epoch = 1
+	url = http://www.bitcoin.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	makedepends = gcc
+	makedepends = make
+	makedepends = automoc4
+	depends = qt4>=4.6
+	depends = libpng>=1.4
+	depends = expat
+	depends = gcc-libs
+	depends = boost-libs>=1.46
+	depends = miniupnpc>=1.5
+	depends = openssl
+	depends = db4.8
+	depends = protobuf
+	depends = bash-completion
+	provides = bitcoin
+	conflicts = bitcoin-bin
+	conflicts = bitcoin
+	conflicts = bitcoind
+	conflicts = bitcoin-daemon
+	conflicts = bitcoin-qt
+	source = git://github.com/bitcoin/bitcoin.git
+	sha512sums = SKIP
+
+pkgname = bitcoin-git
+
