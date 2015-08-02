@@ -1,6 +1,6 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-moo'
-pkgver='2.000001'
+pkgver='2.000002'
 pkgrel="1"
 pkgdesc="Minimalist Object Orientation (with Moose compatiblity)"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('perl-class-method-modifiers>=1.1' 'perl-devel-globaldestruction>=0.11'
 makedepends=('perl-test-fatal>=-0.003')
 url='https://metacpan.org/release/Moo'
 source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Moo-${pkgver}.tar.gz")
-md5sums=('61cfeb965736736e7c5687a28d097ac0')
-sha512sums=('e2261239ab60ab62058d4e57db92e3d6d7f93a22dd98589c7a392e213c5a653957bfdb9582bfd54dd3880553dfe8573e025ff799fdf9803df465a4303d59a62b')
+md5sums=('8b84a7289fc6247de5ec5d151105fd6b')
+sha512sums=('dbafbe0fe976492bc98610591c80d6f5c19c33b61a4d1cf4752ee03b7ceedf5ff5a5ef789436adf49a697508dde7db8a58dafbcec9ac88780b75896cb0dc072c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
