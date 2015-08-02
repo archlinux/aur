@@ -7,7 +7,7 @@ pkgname=kodi-devel-audiodecoder-nosefart
 _gitname=audiodecoder.nosefart
 pkgver=20150602.936313f
 _gitver=936313f2be5c4936af8a643876363dcea76a8ebe
-pkgrel=1
+pkgrel=2
 pkgdesc='Nosefart decoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/notspiff/$_gitname"
@@ -19,11 +19,6 @@ source=("https://github.com/notspiff/$_gitname/archive/$_gitver.tar.gz")
 md5sums=('SKIP')
 
 _prefix='/usr'
-
-prepare() {
-  msg "Starting make..."
-  cd "$srcdir/$_gitname-$_gitver"
-}
 
 build() {
   cd "$srcdir/$_gitname-$_gitver"

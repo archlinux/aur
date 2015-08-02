@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-audiodecoder-nosefart
 	pkgdesc = Nosefart decoder addon for Kodi
 	pkgver = 20150602.936313f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/notspiff/audiodecoder.nosefart
 	arch = i686
 	arch = x86_64
