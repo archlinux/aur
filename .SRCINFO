@@ -12,7 +12,6 @@ pkgbase = gnome-news-git
 	makedepends = git
 	makedepends = intltool
 	depends = gtk3
-	depends = libgrss>=0.7
 	depends = python
 	depends = tracker>=1.5.1
 	provides = gnome-news=r184.b1de49f

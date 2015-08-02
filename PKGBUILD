@@ -8,7 +8,7 @@ pkgdesc='A GNOME 3 Feed Reader'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/ignatenkobrain/${_gitname}"
-depends=('gtk3' 'libgrss>=0.7' 'python' 'tracker>=1.5.1')
+depends=('gtk3' 'python' 'tracker>=1.5.1')
 makedepends=('autoconf' 'automake' 'git' 'intltool')
 options=('!emptydirs')
 install=gnome-news.install
