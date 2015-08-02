@@ -1,0 +1,16 @@
+pkgbase = perl-string-rewriteprefix
+	pkgdesc = rewrite strings based on a set of known prefixes
+	pkgver = 0.007
+	pkgrel = 1
+	url = http://search.cpan.org/dist/String-RewritePrefix
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-sub-exporter>=0.972
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/String-RewritePrefix-0.007.tar.gz
+	md5sums = 7135a69bd8cf74cf17dba857b2372d16
+	sha512sums = c5f2eb6c7661809b4783378a4a33445dfd91fea22cd0a11c9e8d42683879fd6f95c465f7902db2573d5939dc18b250c1fd787d63e3c8a2e15febfd2c8fbd5a10
+
+pkgname = perl-string-rewriteprefix
+
