@@ -1,0 +1,16 @@
+pkgbase = python-seaborn
+	pkgdesc = Statistical data visualization
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://www.stanford.edu/~mwaskom/software/seaborn/index.html
+	arch = any
+	license = BSD
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-scipy
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/s/seaborn/seaborn-0.6.0.tar.gz
+	md5sums = bc518f1f45dadb9deb2bb57ca3af3cad
+
+pkgname = python-seaborn
+
