@@ -1,7 +1,7 @@
 post_install() {
-	EXTRAMODULES='extramodules-4.0-bfs'
-	depmod $(cat /usr/lib/modules/${EXTRAMODULES}/version))
-	echo 'In order to use nvidia module, reboot the system.'
+    EXTRAMODULES='extramodules-4.1-bfs'
+    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+    echo 'In order to use nvidia module, reboot the system.'
 }
 
 post_upgrade() {
@@ -11,4 +11,3 @@ post_upgrade() {
 post_remove() {
     post_install
 }
-

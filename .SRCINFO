@@ -1,16 +1,16 @@
 pkgbase = nvidia-bfs-304xx
 	pkgdesc = NVIDIA 304xx drivers for linux-bfs.
 	pkgver = 304.125
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.nvidia.com/
 	install = nvidia-bfs-304xx.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-bfs-headers>=4.0
-	makedepends = linux-bfs-headers<4.1
-	depends = linux-bfs>=4.0
-	depends = linux-bfs<4.1
+	makedepends = linux-bfs-headers>=4.1
+	makedepends = linux-bfs-headers<4.2
+	depends = linux-bfs>=4.1
+	depends = linux-bfs<4.2
 	depends = nvidia-304xx-libgl
 	depends = nvidia-304xx-utils=304.125
 	conflicts = nvidia-bfs

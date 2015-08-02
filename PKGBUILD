@@ -2,14 +2,14 @@
 
 pkgname=nvidia-bfs-304xx
 pkgver=304.125
-_extramodules=extramodules-4.0-bfs
-pkgrel=8
+_extramodules=extramodules-4.1-bfs
+pkgrel=9
 _pkgdesc="NVIDIA 304xx drivers for linux-bfs."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-bfs>=4.0' 'linux-bfs<4.1' "nvidia-304xx-libgl" "nvidia-304xx-utils=${pkgver}")
-makedepends=('linux-bfs-headers>=4.0' 'linux-bfs-headers<4.1')
+depends=('linux-bfs>=4.1' 'linux-bfs<4.2' "nvidia-304xx-libgl" "nvidia-304xx-utils=${pkgver}")
+makedepends=('linux-bfs-headers>=4.1' 'linux-bfs-headers<4.2')
 conflicts=('nvidia-bfs' 'nvidia-bfs-340xx')
 license=('custom')
 install=nvidia-bfs-304xx.install
