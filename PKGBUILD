@@ -54,7 +54,7 @@ prepare() {
   git reset --hard ${linux_next_git_tag}
 
   #################
-  # Apply patches
+  # Apply patches #
   #################
   if [ -d "${linux_next_git_patches_dir}" ]; then
     msg "Applying patches..."
@@ -70,7 +70,7 @@ prepare() {
   fi
 
   ###########################
-  # Start the configuration
+  # Start the configuration #
   ###########################
   msg "Updating configuration..."
   yes "" | make config  > /dev/null
@@ -148,8 +148,8 @@ package() {
   mkdir -p ${pkgdir}/etc/mkinitcpio.d/
 
 cat << EOF > "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-# mkinitcpio preset file for the 'linux-next-git' package
 
+# mkinitcpio preset file for the 'linux-next-git' package
 ALL_config="/etc/mkinitcpio.conf"
 ALL_kver="/boot/vmlinuz-${pkgbase}"
 
@@ -157,6 +157,7 @@ PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
 default_image="/boot/initramfs-${pkgbase}.img"
+
 #default_options=""
 
 #fallback_config="/etc/mkinitcpio.conf"
@@ -173,6 +174,7 @@ EOF
   # add real version for building modules and running depmod from post_install/upgrade
   mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
   echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+
   # Now we call depmod...
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
 
@@ -180,9 +182,9 @@ EOF
   mkdir -p "${pkgdir}/usr"
   mv -f "${pkgdir}/lib" "${pkgdir}/usr/"
 
-  #########################################################
-  # Set up extramodules directory (for external modules)
-  #########################################################
+  ########################################################
+  # Set up extramodules directory (for external modules) #
+  ########################################################
   {
           local extramodules="$pkgdir/usr/lib/modules/extramodules-$(cut -d. -f1,2 <<<$_basekernver)"
           local modversion=$(grep '^CONFIG_LOCALVERSION=' .config | cut -d'"' -f2)
@@ -195,9 +197,9 @@ EOF
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 
-  ##############################################################################
-  # Linux Headers Part
-  ##############################################################################
+  ######################
+  # Linux Headers Part #
+  ######################
   tmp="${pkgdir}/usr/lib/modules/${_kernver}"
   install -dm755 "${tmp}"
 
