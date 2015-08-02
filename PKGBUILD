@@ -7,7 +7,7 @@ pkgname=kodi-devel-audiodecoder-timidity
 _gitname=audiodecoder.timidity
 pkgver=20150602.da5eb9a
 _gitver=da5eb9ac6557fc1ea0f48cc044cfd16f4f2a1e0b
-pkgrel=1
+pkgrel=2
 pkgdesc='Timidity decoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/notspiff/$_gitname"
@@ -19,11 +19,6 @@ source=("https://github.com/notspiff/$_gitname/archive/$_gitver.tar.gz")
 md5sums=('SKIP')
 
 _prefix='/usr'
-
-prepare() {
-  msg "Starting make..."
-  cd "$srcdir/$_gitname-$_gitver"
-}
 
 build() {
   cd "$srcdir/$_gitname-$_gitver"
