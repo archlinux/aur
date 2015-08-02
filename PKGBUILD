@@ -4,17 +4,32 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevplatform-git
-pkgver=1.90.90.r12597.42041a5
+pkgver=1.90.90.r12636.92b1c08
 pkgrel=1
 pkgdesc="A C/C++ development platform for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
 license=('GPL')
-depends=('qt5-quick1' 'ktexteditor' 'threadweaver' 'kcmutils' 'kdelibs4support' 'knewstuff'
-         'knotifyconfig'  'grantlee-qt5' 'libkomparediff2-git' 'hicolor-icon-theme')
+depends=('qt5-quick1'
+         'ktexteditor'
+         'threadweaver'
+         'kcmutils'
+         'kitemmodels'
+         'knewstuff'
+         'knotifyconfig'
+         'grantlee-qt5'
+         'libkomparediff2-git'
+         'hicolor-icon-theme'
+         )
 optdepends=('kompare-git: difference checking'
             'subversion: Subversion plugin')
-makedepends=('cmake' 'boost' 'git' 'extra-cmake-modules' 'kdoctools' 'subversion')
+makedepends=('cmake'
+             'boost'
+             'git'
+             'extra-cmake-modules'
+             'kdoctools'
+             'subversion'
+             )
 conflicts=('kdevplatform')
 source=('git://anongit.kde.org/kdevplatform')
 sha1sums=('SKIP')
