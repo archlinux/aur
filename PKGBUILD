@@ -3,7 +3,7 @@
 _pkgname=provision
 pkgname=aegir-${_pkgname/_/-}
 pkgver=7.x_3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
 url='http://aegirproject.org'
@@ -13,12 +13,8 @@ depends=('drush>=7')
 prepare() {
     drush dl $_pkgname --yes --destination="$srcdir" &>/dev/null
     echo 'extension=posix.so' >| "$srcdir/posix.ini"
-}
 
-build() {
     cd $_pkgname
-
-    msg2 'Purging unwanted files'
     rm -r debian
     rm LICENSE.txt
     rm upgrade.sh.txt
@@ -43,5 +39,5 @@ package() {
     done
 
     msg2 'Adding .ini file to enable PHP extensions'
-    install -Dm644 "$srcdir/posix.ini" "$pkgdir/etc/php/conf.d/posix.ini"
+    install -Dm644 <(echo 'extension=posix.so') "$pkgdir/etc/php/conf.d/posix.ini"
 }
