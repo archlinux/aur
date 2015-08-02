@@ -1,16 +1,16 @@
 pkgbase = nvidia-ck
 	pkgdesc = NVIDIA drivers for linux-ck.
 	pkgver = 352.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-ck.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-ck-headers>=4.0
-	makedepends = linux-ck-headers<4.1
-	depends = linux-ck>=4.0
-	depends = linux-ck<4.1
+	makedepends = linux-ck-headers>=4.1
+	makedepends = linux-ck-headers<4.2
+	depends = linux-ck>=4.1
+	depends = linux-ck<4.2
 	depends = nvidia-libgl
 	depends = nvidia-utils=352.30
 	conflicts = nvidia-340xx-ck
