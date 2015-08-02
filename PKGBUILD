@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libfreexl
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Library to extract valid data from within an Excel (.xls) spreadsheet (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(http://www.gaia-gis.it/gaia-sins/freexl-$pkgver.tar.gz)
-sha256sums=('df0127e1e23e9ac9a189c27880fb71207837e8cba93d21084356491c9934b89b')
+sha256sums=('b39a4814a0f53f5e09a9192c41e3e51bd658843f770399023a963eb064f6409d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
