@@ -1,0 +1,14 @@
+pkgbase = arcus
+	pkgdesc = Communication library between internal components for Ultimaker software
+	pkgver = 15.06.02
+	pkgrel = 1
+	url = https://github.com/Ultimaker/libArcus
+	arch = any
+	license = GPLv3
+	makedepends = cmake
+	depends = protobuf3
+	source = https://github.com/Ultimaker/libArcus/archive/master.zip
+	md5sums = 781f2bd61d652335a26d7f7a17393d29
+
+pkgname = arcus
+
