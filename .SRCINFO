@@ -1,0 +1,16 @@
+pkgbase = perl-devel-hide
+	pkgdesc = Forces the unavailability of specified Perl modules (for testing)
+	pkgver = 0.0009
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-Hide
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FE/FERREIRA/Devel-Hide-0.0009.tar.gz
+	md5sums = ca2ed6a23b0a3af29962986761fc1171
+	sha512sums = c1cceb186de73f22132b2b9a16f75389b33b675aaa50c5095615f6f7c22fd0bad9edaf1d66d1cfbec6d536c93583b17a512bcae73310ac6a854e0c98c2ff6a9c
+
+pkgname = perl-devel-hide
+
