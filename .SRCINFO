@@ -1,0 +1,15 @@
+pkgbase = bake
+	pkgdesc = An easy to use build system. Designed to be make/autotools for the 21st century.
+	pkgver = 0.1.49
+	pkgrel = 1
+	url = https://launchpad.net/bake
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = itstool
+	makedepends = vala
+	source = https://launchpad.net/bake/0.1/0.1.49/+download/bake-0.1.49.tar.gz
+	md5sums = 20eda033c1482900da0cccfb90a77f6d
+
+pkgname = bake
+
