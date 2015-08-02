@@ -1,5 +1,5 @@
 pkgbase = unicode
-	pkgdesc = A command line unicode database query tool
+	pkgdesc = A simple command line utility that displays properties for a given unicode character
 	pkgver = 1
 	pkgrel = 2
 	url = https://github.com/garabik/unicode
