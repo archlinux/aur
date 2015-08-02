@@ -1,0 +1,29 @@
+pkgbase = lib32-libgdiplus
+	pkgdesc = An Open Source Implementation of the GDI+ API (32 bit)
+	pkgver = 2.10.9
+	pkgrel = 2
+	url = http://www.mono-project.com
+	arch = x86_64
+	license = MPL
+	license = LGPL
+	makedepends = gcc-multilib
+	depends = lib32-libtiff
+	depends = lib32-cairo
+	depends = lib32-libexif
+	depends = lib32-giflib
+	depends = lib32-glib2
+	depends = libgdiplus
+	options = !libtool
+	source = http://download.mono-project.com/sources/libgdiplus/libgdiplus-2.10.9.tar.bz2
+	source = libpng15.patch
+	source = libgdiplus0-giflib5.patch
+	source = libgdiplus-2.10.9-gold.patch
+	source = libgdiplus-freetype-2.5.1.patch
+	sha256sums = 6ddeb6c327bada7cb6e06d1a20714f526a0c69520dfd42c12ddd032c3c5d964e
+	sha256sums = ae18bac02341af98ed17b14ee510c33cc87d0637a9cf56fedaf21603aa04198c
+	sha256sums = d84a83fdfdda3a62e488c7466c550bf231ba01d83b465871f23381d548c20602
+	sha256sums = e437641ab6d7d21afd3234b7d49b10ceb7e80c33e6a22e85d1a9679f5a2bdf9c
+	sha256sums = df0ee598d657e373b75989ca7e1d2084986e7f30605d21f80064bec0b8b5c25f
+
+pkgname = lib32-libgdiplus
+
