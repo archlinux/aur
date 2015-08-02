@@ -20,11 +20,15 @@ provides=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
         0001-Beautify-GtkBuilder-UI-file-of-lxpolkit-without-modi.patch
         0002-Some-fixes-for-GTK-3.patch
-        0001-Fix-background-on-GTK-3.patch)
+        0001-Fix-background-on-GTK-3.patch
+        0001-Add-support-for-recent-GDM-versions.patch
+        0001-Use-standard-icons.patch)
 md5sums=('2957acccbf9ce37ef8205ec5424f8047'
          '9eb20e451a32f7754d41b611426947b4'
          '38324f7d527a3096f06015d75f1bb64d'
-         '4271c2cbba3cbdbd861d3de7ff644bcf')
+         '4271c2cbba3cbdbd861d3de7ff644bcf'
+         'ccdf2187b08117ca72797d5f3e9e4e2b'
+         'd0552824de9a36ece2c487aab064ea7c')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -33,6 +37,8 @@ prepare() {
   patch -Np1 -i ../0001-Beautify-GtkBuilder-UI-file-of-lxpolkit-without-modi.patch
   patch -Np1 -i ../0002-Some-fixes-for-GTK-3.patch
   patch -Np1 -i ../0001-Fix-background-on-GTK-3.patch
+  patch -Np1 -i ../0001-Add-support-for-recent-GDM-versions.patch
+  patch -Np1 -i ../0001-Use-standard-icons.patch
 
   # Regenerate C sources from Vala code
   rm *.stamp

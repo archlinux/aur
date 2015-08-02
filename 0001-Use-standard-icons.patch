@@ -1,0 +1,88 @@
+From 1795db52cb1deaeb69ec571c67832d90135e010f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 2 Aug 2015 02:11:14 +0200
+Subject: [PATCH] Use standard icons
+
+---
+ data/lxsession-default-apps.desktop.in | 2 +-
+ data/lxsession-edit.desktop.in         | 2 +-
+ lxsession-default-apps/combobox.vala   | 4 ++--
+ lxsession-default-apps/main.vala       | 2 +-
+ lxsession-edit/lxsession-edit.c        | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/data/lxsession-default-apps.desktop.in b/data/lxsession-default-apps.desktop.in
+index df3f453..9fb9643 100644
+--- a/data/lxsession-default-apps.desktop.in
++++ b/data/lxsession-default-apps.desktop.in
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=Application
+-Icon=xfwm4
++Icon=preferences-desktop
+ Exec=lxsession-default-apps
+ _Name=Default applications for LXSession
+ _Comment=Change the default applications on LXDE
+diff --git a/data/lxsession-edit.desktop.in b/data/lxsession-edit.desktop.in
+index f826044..ddf87a5 100644
+--- a/data/lxsession-edit.desktop.in
++++ b/data/lxsession-edit.desktop.in
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=Application
+-Icon=xfwm4
++Icon=preferences-desktop
+ Exec=lxsession-edit
+ _Name=Desktop Session Settings
+ _Comment=Manage applications loaded in desktop session
+diff --git a/lxsession-default-apps/combobox.vala b/lxsession-default-apps/combobox.vala
+index fa4f631..3981b20 100644
+--- a/lxsession-default-apps/combobox.vala
++++ b/lxsession-default-apps/combobox.vala
+@@ -83,7 +83,7 @@ namespace LDefaultApps
+             help_window.set_skip_taskbar_hint(true);
+             try
+             {
+-                help_window.icon = IconTheme.get_default ().load_icon ("xfwm4", 48, 0);
++                help_window.icon = IconTheme.get_default ().load_icon ("preferences-desktop", 48, 0);
+             }
+             catch (Error e)
+             {
+@@ -422,7 +422,7 @@ namespace LDefaultApps
+ 
+         /* First row, empty for not selected and for unselect */
+         list_store.append (out iter);
+-        list_store.set (iter, 0, "gtk-close" , 1, _("Disable"), 2, 0, 3,"");
++        list_store.set (iter, 0, "window-close" , 1, _("Disable"), 2, 0, 3,"");
+ 
+         for (int a = 0 ; a < combobox_list.length ; a++)
+         {
+diff --git a/lxsession-default-apps/main.vala b/lxsession-default-apps/main.vala
+index 859e219..199e4ee 100644
+--- a/lxsession-default-apps/main.vala
++++ b/lxsession-default-apps/main.vala
+@@ -32,7 +32,7 @@ namespace LDefaultApps
+ 	        this.window_position = Gtk.WindowPosition.CENTER;
+             try
+             {
+-                this.icon = IconTheme.get_default ().load_icon ("xfwm4", 48, 0);
++                this.icon = IconTheme.get_default ().load_icon ("preferences-desktop", 48, 0);
+             }
+             catch (Error e)
+             {
+diff --git a/lxsession-edit/lxsession-edit.c b/lxsession-edit/lxsession-edit.c
+index 88fe9d1..af63edb 100644
+--- a/lxsession-edit/lxsession-edit.c
++++ b/lxsession-edit/lxsession-edit.c
+@@ -75,7 +75,7 @@ int main(int argc, char** argv)
+     gtk_dialog_set_alternative_button_order((GtkDialog*)dlg, GTK_RESPONSE_OK, GTK_RESPONSE_CANCEL, -1);
+ 
+     /* Set icon name for main (dlg) window so it displays in the panel. */
+-    gtk_window_set_icon_name(GTK_WINDOW(dlg), "xfwm4");
++    gtk_window_set_icon_name(GTK_WINDOW(dlg), "preferences-desktop");
+ 
+     /* autostart list */
+     init_list_view((GtkTreeView*)autostarts);
+-- 
+2.5.0
+

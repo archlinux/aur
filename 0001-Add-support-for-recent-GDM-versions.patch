@@ -1,0 +1,27 @@
+From 6ddff440800bc1deb41f98483b25b49d0a849bd0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Fri, 31 Jul 2015 20:54:53 +0200
+Subject: [PATCH] Add support for recent GDM versions.
+
+Recently its pid file is located at /var/run/gdm/gdm.pid
+---
+ lxsession-logout/lxsession-logout.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lxsession-logout/lxsession-logout.c b/lxsession-logout/lxsession-logout.c
+index 3ad757f..056ac8f 100644
+--- a/lxsession-logout/lxsession-logout.c
++++ b/lxsession-logout/lxsession-logout.c
+@@ -140,6 +140,9 @@ static gboolean verify_running(const char * display_manager, const char * execut
+         char buffer[PATH_MAX];
+         sprintf(buffer, "/var/run/%s.pid", display_manager);
+ 
++        if (!g_file_test (buffer, G_FILE_TEST_IS_REGULAR))
++            sprintf(buffer, "/var/run/%s/%s.pid", display_manager, display_manager);
++
+         /* Open the pid file. */
+         int fd = open(buffer, O_RDONLY);
+         if (fd >= 0)
+-- 
+2.5.0
+
