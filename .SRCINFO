@@ -1,6 +1,6 @@
 pkgbase = virtualbox-ck-modules
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = virtualbox-ck-modules
 pkgname = virtualbox-ck-host-modules
 	pkgdesc = Host kernel modules for VirtualBox running under Linux-ck.
 	install = host.install
-	depends = linux-ck>=4.0
-	depends = linux-ck<4.1
+	depends = linux-ck>=4.1
+	depends = linux-ck<4.2
 	provides = virtualbox-host-modules
 	conflicts = virtualbox-ck-host-modules-atom
 	conflicts = virtualbox-ck-host-modules-barcelona
@@ -37,8 +37,8 @@ pkgname = virtualbox-ck-guest-modules
 	pkgdesc = Guest kernel modules for VirtualBox running under Linux-ck.
 	install = guest.install
 	license = GPL
-	depends = linux-ck>=4.0
-	depends = linux-ck<4.1
+	depends = linux-ck>=4.1
+	depends = linux-ck<4.2
 	provides = virtualbox-guest-modules
 	conflicts = virtualbox-ck-guest-modules-atom
 	conflicts = virtualbox-ck-guest-modules-barcelona
