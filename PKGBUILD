@@ -2,14 +2,6 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 # * No namcap warnings or errors
 
-
-
-# Upstream has extra spacing in the default theme, necessary in other distributions
-# If you want to remove these, since they aren't needed on arch, uncomment (remove the # on) the line below
-#_install_removed_spacing_patch=1
-
-
-
 pkgname=bash-git-prompt-git
 _pkgname=bash-git-prompt
 pkgver=2.3.5.r249.2a6b20c
