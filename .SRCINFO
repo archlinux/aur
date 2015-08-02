@@ -1,0 +1,18 @@
+pkgbase = perl-plack-middleware-reverseproxy
+	pkgdesc = Plack::Middleware::ReverseProxy - Supports app to run as a reverse proxy backend
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/~miyagawa/Plack-Middleware-ReverseProxy/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-plack
+	depends = perl-yaml
+	depends = perl-test-base
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-ReverseProxy-0.15.tar.gz
+	md5sums = 4a4ceb1203a053228cf7d172105c5427
+
+pkgname = perl-plack-middleware-reverseproxy
+
