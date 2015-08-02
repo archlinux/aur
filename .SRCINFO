@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-pvr-stalker
 	pkgdesc = Stalker Middleware PVR client addon for Kodi
 	pkgver = 20150720.b8a61cb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodi-pvr/pvr.stalker
 	arch = i686
 	arch = x86_64
