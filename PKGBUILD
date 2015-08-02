@@ -1,6 +1,6 @@
 # Maintainer: n17ikh <n17ikh@gmail.com>
 pkgname=coolkey
-pkgver=1.1.0_27
+pkgver=1.1.0_28
 pkgrel=1
 pkgdesc="Provides PKCS11 module support for smart-card readers, now with 144k smartcard/CAC support and downstream Fedora patches."
 arch=('i686' 'x86_64')
@@ -15,13 +15,14 @@ backup=()
 options=()
 install=
 changelog=
-source=('http://mirrors.kernel.org/fedora/development/rawhide/source/SRPMS/c/coolkey-1.1.0-27.fc23.src.rpm')
-noextract=(coolkey-1.1.0-27.fc23.src.rpm)
-sha512sums=('08c7c6756e31e4f39326a425b3c82279bc79bbc8022aa50151baf8ec0664ec58859c0bd42a56e367380f62fb50f811f320af291280c779b7f13d95eca6bf3cb1')
+rpmname=("$pkgname-${pkgver//_/-}.fc23.src.rpm")
+source=("http://mirrors.kernel.org/fedora/development/rawhide/source/SRPMS/c/$rpmname")
+noextract=($rpmname)
+sha512sums=('33d7fe8996e1444304a2e5ac3786d6c9c70b49549dfee1c7c304f03576098eebfde082086fbb5961941576075f27e960a5996950ca68f59946d27fe21ee8913e')
 
 build() {
   cd $srcdir
-  rpmextract.sh coolkey-1.1.0-27.fc23.src.rpm
+  rpmextract.sh $rpmname
   tar xf coolkey-1.1.0.tar.gz
   cd "$srcdir/coolkey-1.1.0"
   patch -p0 < $srcdir/coolkey-cache-dir-move.patch
