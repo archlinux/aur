@@ -1,16 +1,15 @@
 pkgbase = unicode
 	pkgdesc = A command line unicode database query tool
-	pkgver = 0.9.8
+	pkgver = 1
 	pkgrel = 1
 	url = http://kassiopeia.juls.savba.sk/~garabik/software/unicode/
-	changelog = ChangeLog
 	arch = any
 	license = GPL3
 	depends = python2>=2.3
-	source = http://kassiopeia.juls.savba.sk/~garabik/software/unicode/unicode_0.9.8.tar.gz
+	source = http://kassiopeia.juls.savba.sk/~garabik/software/unicode/unicode_1.tar.gz
 	source = http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
-	md5sums = a6dde358a64c941d7223fd44561d52cc
-	md5sums = c8355655731d75e6a3de8c20d7e601ba
+	sha256sums = d354eaba78f31f419ead9493ca97b8664264ce5975e9836fe7abab5371921b5e
+	sha256sums = 38b17e1118206489a7e0ab5d29d7932212d38838df7d3ec025ecb58e8798ec20
 
 pkgname = unicode
 
