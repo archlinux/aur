@@ -1,0 +1,16 @@
+pkgbase = delaycut-git
+	pkgdesc = Delaycut corrects delay and is also able to cut audio files coded ac3, dts, mpa and wav. It's also able to fix CRC errors in ac3 and mpa files.
+	pkgver = 1.4.3.7
+	pkgrel = 2
+	url = https://github.com/darealshinji/delaycut
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	provides = delaycut
+	conflicts = delaycut
+	source = https://github.com/darealshinji/delaycut/archive/master.zip
+	md5sums = 99460ff4ef3679cafe8980d2c41febca
+
+pkgname = delaycut-git
+
