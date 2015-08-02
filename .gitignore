@@ -1,0 +1,13 @@
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!*.install
+!ChangeLog
+!.SRCINFO
+
+# Patches
+!*.diff
+!*.patch

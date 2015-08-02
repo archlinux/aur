@@ -1,0 +1,20 @@
+pkgbase = qtcreator-freebox-plugin-git
+	pkgdesc = QtCreator Freebox Plugin
+	pkgver = r16.75afac6
+	pkgrel = 1
+	url = https://github.com/fbx/freebox-qtcreator-plugin
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = LGPL
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	provides = qtcreator-freebox-plugin
+	conflicts = qtcreator-freebox-plugin
+	source = qtcreator-freebox-plugin-git::git://github.com/fbx/freebox-qtcreator-plugin.git
+	md5sums = SKIP
+
+pkgname = qtcreator-freebox-plugin-git
+
