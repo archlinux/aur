@@ -2,7 +2,7 @@
 
 pkgname=rainbowstream
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A smart and nice Twitter client on terminal written in Python"
 url="http://www.rainbowstream.org/"
 license=('MIT')
