@@ -12,6 +12,7 @@ url="http://libre.adacore.com/libre/tools/gps"
 license=('GPL')
 depends=("gcc-ada" "xmlada" "gtkada" "gprbuild" "python2")
 makedepends=("nawk")
+rundepends=("python2-pep8" "python2-jedi" "python2-gobject")
 
 source=(http://mirrors.cdn.adacore.com/art/eabc020e818b1c6b8a6dc5ea3f665a479a49bb14
         http://mirrors.cdn.adacore.com/art/8c386e54b4411aeb49e7786fa403f9caa28b6d91
