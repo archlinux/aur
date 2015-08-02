@@ -15,7 +15,7 @@ optdepends=(
     'cython2: cython optimisations'
 )
 
-source=("https://github.com/mathics/Mathics/releases/download/${pkgver}/mathics-${pkgver}.zip")
+source=("https://github.com/mathics/Mathics/releases/download/v${pkgver}/mathics-${pkgver}.tar.gz")
 md5sums=('3d2d3f24d4ddc9cf1c4716e31c8417a1')
 
 
