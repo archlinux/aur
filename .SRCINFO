@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-pvr-vdr-vnsi
 	pkgdesc = VDR VNSI PVR client addon for Kodi
 	pkgver = 20150720.8dedf20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodi-pvr/pvr.vdr.vnsi
 	arch = i686
 	arch = x86_64
