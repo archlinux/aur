@@ -2,7 +2,7 @@
 
 pkgname=python-remote-pdb
 _realname=remote-pdb
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Remote vanilla PDB (over TCP sockets) done right: no extras, proper handling around connection failures and CI. Based on pdbx."
 arch=(any)
@@ -19,3 +19,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('5c9c7464084e4509b11da3f71c96a86c')
