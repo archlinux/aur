@@ -1,0 +1,16 @@
+pkgbase = asplib
+	pkgdesc = Basic Audio DSP Processor addon for Kodi
+	pkgver = 20150502.490de46
+	pkgrel = 1
+	url = https://github.com/AchimTuran/asplib
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	source = https://github.com/AchimTuran/asplib/archive/490de460e856acd1ae2feb7f8111f137e40aa0d0.tar.gz
+	source = 0001-CMakeLists.txt-fix-compilation-on-linux.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = asplib
+

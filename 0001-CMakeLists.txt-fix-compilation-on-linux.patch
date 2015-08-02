@@ -1,0 +1,35 @@
+From 3941ca6beff27b424d34f1776a8bdcc12764ccdd Mon Sep 17 00:00:00 2001
+From: dhead666 <myfoolishgames@gmail.com>
+Date: Sun, 2 Aug 2015 05:11:05 +0300
+Subject: [PATCH] CMakeLists.txt: fix compilation on linux
+
+---
+ CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9fb381f..940a29b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,6 @@ enable_language(CXX)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
+ 
+-include(UseMultiArch.cmake)
+ 
+ set(asplib_NAME asplib)
+ set(asplib_DESCRIPTION "asplib (Achim's Signal Processing LIBrary), is a small and lightweight C++ library for digital signal processing.")
+@@ -17,6 +16,10 @@ if(NOT WIN32)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+ endif()
+ 
++if(CMAKE_SYSTEM_NAME MATCHES "Linux")
++  set(CMAKE_CXX_FLAGS "-DTARGET_LINUX")
++endif()
++
+ #set(asplib_INCLUDE_DIRS ${TINYXML_INCLUDE_DIR} "${CMAKE_INSTALL_PREFIX}/include/kodi")
+ #set(asplib_LIBRARIES ${CMAKE_THREAD_LIBS_INIT} ${TINYXML_LIBRARIES})
+ 
+-- 
+2.4.6
+
