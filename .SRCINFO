@@ -1,16 +1,16 @@
 pkgbase = broadcom-wl-ck
 	pkgdesc = Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.
 	pkgver = 6.30.223.248
-	pkgrel = 26
+	pkgrel = 27
 	url = http://www.broadcom.com/support/802.11/linux_sta.php
 	install = broadcom-wl-ck.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-ck-headers>=4.0
-	makedepends = linux-ck-headers<4.1
-	depends = linux-ck>=4.0
-	depends = linux-ck<4.1
+	makedepends = linux-ck-headers>=4.1
+	makedepends = linux-ck-headers<4.2
+	depends = linux-ck>=4.1
+	depends = linux-ck<4.2
 	conflicts = broadcom-wl-ck-atom
 	conflicts = broadcom-wl-ck-barcelona
 	conflicts = broadcom-wl-ck-bulldozer
