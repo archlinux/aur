@@ -29,6 +29,14 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
 _gitname=desktop.git
+_nw_ver=0.12.1
+
+_platform=linux64
+_nw_platform=linux-x64
+if [ "$CARCH" = 'i686' ]; then
+  _platform=linux32
+  _nw_platform=linux-ia32
+fi
 
 source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v${_pkgver}"
         "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
@@ -41,7 +49,7 @@ prepare() {
   cd "${srcdir}/${_gitname}"
 
   sed -i "s|opensubtitles.git#ebb786a9d72820d479b9d0b2268f48453898ba3c|opensubtitles-api.git|g" package.json
-  
+
   cp "${srcdir}"/desktop-i18n.git/* src/app/language
 
   export PYTHON=/usr/bin/python2
