@@ -1,0 +1,20 @@
+pkgbase = perl-moosex-params-validate
+	pkgdesc = an extension of Params::Validate using Moose's types
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-Params-Validate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	depends = perl-devel-caller>=0
+	depends = perl-moose>=0.58
+	depends = perl-params-validate>=0.88
+	depends = perl-sub-exporter>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/MooseX-Params-Validate-0.18.tar.gz
+	md5sums = c98aac825090d7a141b3908bcbe7655c
+	sha512sums = cb81be14dc17ffe6e7523697d70d57122174552aff83ab1f406f7b9b861aec01c43f13c1d372c49f66c8aa791c2943bf8722e18942e67f259325ea342576c423
+
+pkgname = perl-moosex-params-validate
+
