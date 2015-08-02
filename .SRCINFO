@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-proj
+	pkgdesc = MinGW Windows port of Proj.4 (mingw-w64)
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = http://trac.osgeo.org/proj/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	source = http://download.osgeo.org/proj/proj-4.8.0.tar.gz
+	md5sums = d815838c92a29179298c126effbb1537
+
+pkgname = mingw-w64-proj
+
