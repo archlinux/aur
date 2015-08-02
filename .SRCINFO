@@ -1,6 +1,6 @@
 pkgbase = papirus-icon-theme
 	pkgdesc = Modified and adaptive Paper icon theme for KDE
-	pkgver = 20150801
+	pkgver = 20150802
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-icon-theme
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = papirus-icon-theme
 	options = !libtool
 	options = !staticlibs
 	options = !zipman
-	source = papirus-icon-theme-20150801.tar.gz::https://github.com/varlesh/papirus-icon-theme/archive/6e82364341aad0fd9fba91119180ff842e4c0584.tar.gz
-	sha256sums = f9ba377946bc4b77cf1a4b633262d32542379e33cec04d4bdcb7701c428e3794
+	source = papirus-icon-theme-20150802.tar.gz::https://github.com/varlesh/papirus-icon-theme/archive/34fd7cf2ec8ad0e4dddb3dc04366cd44ef0f2dcc.tar.gz
+	sha256sums = 5ae8c7932a50f16afebec01c105f764d2b111455e651bddb07406e9156cfde8f
 
 pkgname = papirus-icon-theme
 
