@@ -1,0 +1,18 @@
+pkgbase = shantz-xwinwrap-bzr
+	pkgdesc = Utility to play Movies on your Desktop Or ElectricSheep
+	pkgver = 20090421
+	pkgrel = 3
+	url = http://tech.shantanugoel.com/projects/linux/shantz-xwinwrap
+	arch = i686
+	arch = x86_64
+	license = Other/Open
+	license = Source
+	makedepends = bzr
+	makedepends = make
+	depends = libxext
+	depends = libxrender
+	provides = xwinwrap
+	conflicts = xwinwrap
+
+pkgname = shantz-xwinwrap-bzr
+
