@@ -1,0 +1,17 @@
+pkgbase = flare-game-git
+	pkgdesc = Fantasy action RPG using the FLARE engine - Git version
+	pkgver = 20150802
+	pkgrel = 1
+	url = http://www.flarerpg.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = CC-BY-SA-3.0
+	makedepends = git>=1.7.10-1
+	makedepends = cmake
+	depends = flare-engine-git
+	conflicts = flare-game
+	replaces = flare-game
+
+pkgname = flare-game-git
+
