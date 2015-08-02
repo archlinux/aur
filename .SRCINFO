@@ -1,0 +1,33 @@
+pkgbase = clam-git
+	pkgdesc = The most widely held crypto-currency ever! This package provides both the GUI QT4 and daemon clients.
+	pkgver = 1.4.16
+	pkgrel = 1
+	url = http://www.clamclient.com
+	arch = any
+	license = MIT
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = boost-libs
+	makedepends = boost
+	makedepends = gcc
+	makedepends = qrencode
+	makedepends = make
+	makedepends = automoc4
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	depends = qt4
+	depends = gcc-libs
+	depends = miniupnpc
+	depends = openssl
+	depends = db4.8
+	depends = protobuf
+	provides = clam-qt
+	provides = clamd
+	conflicts = clam-qt
+	conflicts = clamd
+	source = git://github.com/nochowderforyou/clams.git
+	md5sums = SKIP
+
+pkgname = clam-git
+
