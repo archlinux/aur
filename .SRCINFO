@@ -1,17 +1,20 @@
 pkgbase = hptwebgui
 	pkgdesc = WebGUI for HighPoint RocketRaid 2xxx/3xxx/4xxx RAID Controllers
-	pkgver = 2.1.5.130409
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = http://www.highpoint-tech.com
 	install = hptwebgui.install
+	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = rpmextract
+	makedepends = tar
+	makedepends = sed
 	provides = hptwebgui
 	conflicts = hpt-cli
-	source = http://www.highpoint-tech.com/BIOS_Driver/HRM/Linux/WebGUI-Linux-v2.1.5-130409.tgz
+	source = http://www.highpoint-tech.com/BIOS_Driver/HRM/Linux/RAID_Manage_Linux_v2.3.1_14_10_20.tgz
 	source = hptwebgui.service
-	md5sums = e65216725b279e74d583768a989e2ee7
+	md5sums = 24139d8bcf3c439f7a476f3b9e629991
 	md5sums = 00c19d865b93cd635fbea78b32af7787
 
 pkgname = hptwebgui
