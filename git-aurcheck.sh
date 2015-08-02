@@ -331,10 +331,9 @@ fi
         local _var_forbidgrep
         for _var_forbidgrep in "${_var_forbidgreps[@]}"; do
           _var_forbidgrep="${_var_forbidgrep//%/}"
-          if ! eval "${_var_forbidgrep#*|} '${_var_install}'"; then
+          if ! eval "${_var_forbidgrep#*|} <(sed -e '/^[ \t]*#/d' '${_var_install}')"; then
             echo "Warning: The install file ${_var_install} has some forbidden text: ${_var_forbidgrep%%|*}"
             [ $returnv -ge 1 ] || returnv=1
-            break
           fi
         done
         unset _var_forbidgrep
