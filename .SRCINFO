@@ -13,10 +13,10 @@ pkgbase = bash-git-prompt-git
 	conflicts = bash-git-prompt
 	source = git+https://github.com/magicmonty/bash-git-prompt
 	source = bash-git-prompt.install
-	source = removed_spacing.patch
+	source = Default_Arch.bgptheme
 	md5sums = SKIP
-	md5sums = 1e762bd413b6efdec225928da5aa6451
-	md5sums = 513706d4f97f775a60325bc31574d197
+	md5sums = db6f83999124b7fa660310a8d6624f70
+	md5sums = 8e4f18f5cfb65bdc5a94adb0477188ce
 
 pkgname = bash-git-prompt-git
 

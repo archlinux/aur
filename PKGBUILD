@@ -25,24 +25,14 @@ conflicts=('bash-git-prompt')
 license=('custom:BSD 2 Clause (NetBSD)')
 source=("git+https://github.com/magicmonty/${_pkgname}"
         'bash-git-prompt.install'
-        'removed_spacing.patch')
+        'Default_Arch.bgptheme')
 md5sums=('SKIP'
-         '1e762bd413b6efdec225928da5aa6451'
-         '513706d4f97f775a60325bc31574d197')
+         'db6f83999124b7fa660310a8d6624f70'
+         '8e4f18f5cfb65bdc5a94adb0477188ce')
 install='bash-git-prompt.install'
 
 pkgrel() {
   echo $(cat bash-git-prompt.rb | grep url | sed 's|.*archive/||' | sed 's|.tar.gz"$||').r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  if [ -n "$_install_removed_spacing_patch" ]; then
-    cd ${srcdir}/${_pkgname}
-    echo "Installing removed_spacing.patch..."
-    patch -p1 -i ${srcdir}/removed_spacing.patch
-  else
-    echo "NOT installing removed_spacing.patch..."
-  fi
 }
 
 package() {
@@ -59,6 +49,7 @@ package() {
   cd themes
   install -Dm644 Custom.bgptemplate ${pkgdir}/usr/lib/${_pkgname}/themes/Custom.bgptemplate
   install -Dm644 Default.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Default.bgptheme
+  install -Dm644 ${srcdir}/Default_Arch.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Default_Arch.bgptheme
   install -Dm644 Default_NoExitState.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Default_NoExitState.bgptheme
   install -Dm644 Single_line.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Single_line.bgptheme
   install -Dm644 Single_line_openSUSE.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Single_line_openSUSE.bgptheme
