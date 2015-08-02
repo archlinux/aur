@@ -1,0 +1,14 @@
+pkgbase = python2-tmdb3
+	pkgdesc = TheMovieDB.org APIv3 interface
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/tmdb3
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/t/tmdb3/tmdb3-0.7.2.tar.gz
+	md5sums = c712bca4934230a16a8b1a41dcb987cf
+
+pkgname = python2-tmdb3
+
