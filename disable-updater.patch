@@ -1,8 +1,8 @@
 diff --git a/Telegram/SourceFiles/application.cpp b/Telegram/SourceFiles/application.cpp
-index abc5ee6..1023eec 100644
+index 8f14416..2ef9b2c 100644
 --- a/Telegram/SourceFiles/application.cpp
 +++ b/Telegram/SourceFiles/application.cpp
-@@ -80,7 +80,10 @@ namespace {
+@@ -95,7 +95,10 @@ namespace {
  
  Application::Application(int &argc, char **argv) : PsApplication(argc, argv),
      serverName(psServerPrefix() + cGUIDStr()), closing(false),
@@ -14,7 +14,7 @@ index abc5ee6..1023eec 100644
  
  	DEBUG_LOG(("Application Info: creation.."));
  
-@@ -165,9 +168,11 @@ Application::Application(int &argc, char **argv) : PsApplication(argc, argv),
+@@ -179,9 +182,11 @@ Application::Application(int &argc, char **argv) : PsApplication(argc, argv),
  	connect(&socket, SIGNAL(readyRead()), this, SLOT(socketReading()));
  	connect(&server, SIGNAL(newConnection()), this, SLOT(newInstanceConnected()));
  	connect(this, SIGNAL(aboutToQuit()), this, SLOT(closeApplication()));
@@ -26,7 +26,7 @@ index abc5ee6..1023eec 100644
  	connect(this, SIGNAL(applicationStateChanged(Qt::ApplicationState)), this, SLOT(onAppStateChanged(Qt::ApplicationState)));
  	//connect(&writeUserConfigTimer, SIGNAL(timeout()), this, SLOT(onWriteUserConfig()));
  	//writeUserConfigTimer.setSingleShot(true);
-@@ -182,6 +187,7 @@ Application::Application(int &argc, char **argv) : PsApplication(argc, argv),
+@@ -196,6 +201,7 @@ Application::Application(int &argc, char **argv) : PsApplication(argc, argv),
  	}
  }
  
@@ -34,7 +34,7 @@ index abc5ee6..1023eec 100644
  void Application::updateGotCurrent() {
  	if (!updateReply || updateThread) return;
  
-@@ -245,6 +251,7 @@ void Application::onUpdateFailed() {
+@@ -259,6 +265,7 @@ void Application::onUpdateFailed() {
  	cSetLastUpdateCheck(unixtime());
  	Local::writeSettings();
  }
@@ -42,15 +42,24 @@ index abc5ee6..1023eec 100644
  
  void Application::regPhotoUpdate(const PeerId &peer, MsgId msgId) {
  	photoUpdates.insert(msgId, peer);
-@@ -417,6 +424,7 @@ void Application::onSwitchTestMode() {
- 	App::quit();
+@@ -432,11 +439,16 @@ void Application::onSwitchTestMode() {
+ }
+ 
+ Application::UpdatingState Application::updatingState() {
++	#ifndef TDESKTOP_DISABLE_AUTOUPDATE
+ 	if (!updateThread) return Application::UpdatingNone;
+ 	if (!updateDownloader) return Application::UpdatingReady;
+ 	return Application::UpdatingDownload;
++	#else
++	return Application::UpdatingNone;
++	#endif
  }
  
 +#ifndef TDESKTOP_DISABLE_AUTOUPDATE
- Application::UpdatingState Application::updatingState() {
- 	if (!updateThread) return Application::UpdatingNone;
- 	if (!updateDownloader) return Application::UpdatingReady;
-@@ -432,6 +440,7 @@ int32 Application::updatingReady() {
+ int32 Application::updatingSize() {
+ 	if (!updateDownloader) return 0;
+ 	return updateDownloader->size();
+@@ -446,6 +458,7 @@ int32 Application::updatingReady() {
  	if (!updateDownloader) return 0;
  	return updateDownloader->ready();
  }
@@ -58,7 +67,7 @@ index abc5ee6..1023eec 100644
  
  FileUploader *Application::uploader() {
  	if (!::uploader) ::uploader = new FileUploader();
-@@ -475,6 +484,7 @@ void Application::uploadProfilePhoto(const QImage &tosend, const PeerId &peerId)
+@@ -489,6 +502,7 @@ void Application::uploadProfilePhoto(const QImage &tosend, const PeerId &peerId)
  	App::uploader()->uploadMedia(newId, ready);
  }
  
@@ -66,7 +75,7 @@ index abc5ee6..1023eec 100644
  void Application::stopUpdate() {
  	if (updateReply) {
  		updateReply->abort();
-@@ -524,6 +534,7 @@ void Application::startUpdateCheck(bool forceWait) {
+@@ -542,6 +556,7 @@ void Application::startUpdateCheck(bool forceWait) {
  		updateCheckTimer.start((updateInSecs + 5) * 1000);
  	}
  }
@@ -74,7 +83,7 @@ index abc5ee6..1023eec 100644
  
  namespace {
  	QChar _toHex(ushort v) {
-@@ -626,11 +637,13 @@ void Application::socketError(QLocalSocket::LocalSocketError e) {
+@@ -644,11 +659,13 @@ void Application::socketError(QLocalSocket::LocalSocketError e) {
  		return App::quit();
  	}
  
@@ -88,7 +97,7 @@ index abc5ee6..1023eec 100644
  
  	startApp();
  }
-@@ -817,13 +830,15 @@ Application::~Application() {
+@@ -835,13 +852,15 @@ Application::~Application() {
  	App::deinitMedia();
  	deinitImageLinkManager();
  	mainApp = 0;
@@ -106,15 +115,14 @@ index abc5ee6..1023eec 100644
  	delete window;
  
 diff --git a/Telegram/SourceFiles/application.h b/Telegram/SourceFiles/application.h
-index 694db88..292c98f 100644
+index 694db88..c94ce93 100644
 --- a/Telegram/SourceFiles/application.h
 +++ b/Telegram/SourceFiles/application.h
-@@ -48,9 +48,11 @@ public:
- 		UpdatingDownload,
+@@ -49,8 +49,10 @@ public:
  		UpdatingReady,
  	};
-+	#ifndef TDESKTOP_DISABLE_AUTOUPDATE
  	UpdatingState updatingState();
++	#ifndef TDESKTOP_DISABLE_AUTOUPDATE
  	int32 updatingSize();
  	int32 updatingReady();
 +	#endif
@@ -175,7 +183,7 @@ index 694db88..292c98f 100644
  	QTimer writeUserConfigTimer;
  
 diff --git a/Telegram/SourceFiles/autoupdater.cpp b/Telegram/SourceFiles/autoupdater.cpp
-index ec8f7fc..2eafda4 100644
+index 2d4771c..87cdba1 100644
 --- a/Telegram/SourceFiles/autoupdater.cpp
 +++ b/Telegram/SourceFiles/autoupdater.cpp
 @@ -15,6 +15,9 @@ GNU General Public License for more details.
@@ -188,7 +196,7 @@ index ec8f7fc..2eafda4 100644
  #include "stdafx.h"
  #include "application.h"
  #include "pspecific.h"
-@@ -521,3 +524,5 @@ bool checkReadyUpdate() {
+@@ -534,3 +537,5 @@ bool checkReadyUpdate() {
  #endif
  	return true;
  }
@@ -228,15 +236,19 @@ index 0a6bace..b1bd08a 100644
  }
  
 diff --git a/Telegram/SourceFiles/main.cpp b/Telegram/SourceFiles/main.cpp
-index 0bea350..fa2ab5b 100644
+index e282a88..d5de06b 100644
 --- a/Telegram/SourceFiles/main.cpp
 +++ b/Telegram/SourceFiles/main.cpp
-@@ -78,10 +78,13 @@ int main(int argc, char *argv[]) {
+@@ -78,6 +78,7 @@ int main(int argc, char *argv[]) {
  
  	DEBUG_LOG(("Application Info: Telegram done, result: %1").arg(result));
  
 +	#ifndef TDESKTOP_DISABLE_AUTOUPDATE
  	if (cRestartingUpdate()) {
+ 		if (DevVersion) {
+ 			LOG(("Writing 'devversion' file before launching the Updater!"));
+@@ -90,7 +91,9 @@ int main(int argc, char *argv[]) {
+ 
  		DEBUG_LOG(("Application Info: executing updater to install update.."));
  		psExecUpdater();
 -	} else if (cRestarting()) {
@@ -247,10 +259,10 @@ index 0bea350..fa2ab5b 100644
  		psExecTelegram();
  	}
 diff --git a/Telegram/SourceFiles/mainwidget.cpp b/Telegram/SourceFiles/mainwidget.cpp
-index 0dc1e01..80af41e 100644
+index b56c882..b889fa6 100644
 --- a/Telegram/SourceFiles/mainwidget.cpp
 +++ b/Telegram/SourceFiles/mainwidget.cpp
-@@ -2570,7 +2570,9 @@ void MainWidget::start(const MTPUser &user) {
+@@ -2752,7 +2752,9 @@ void MainWidget::start(const MTPUser &user) {
  
  	cSetOtherOnline(0);
  	App::feedUsers(MTP_vector<MTPUser>(1, user));
@@ -261,7 +273,7 @@ index 0dc1e01..80af41e 100644
  	update();
  	if (!cStartUrl().isEmpty()) {
 diff --git a/Telegram/SourceFiles/settingswidget.cpp b/Telegram/SourceFiles/settingswidget.cpp
-index 6a6cad5..6ebff0d 100644
+index 641eb49..d4af55e 100644
 --- a/Telegram/SourceFiles/settingswidget.cpp
 +++ b/Telegram/SourceFiles/settingswidget.cpp
 @@ -126,9 +126,11 @@ SettingsInner::SettingsInner(SettingsWidget *parent) : QWidget(parent),
@@ -310,15 +322,17 @@ index 6a6cad5..6ebff0d 100644
  	switch (App::app()->updatingState()) {
  	case Application::UpdatingDownload:
  		setUpdatingState(UpdatingDownload, true);
-@@ -304,6 +311,7 @@ SettingsInner::SettingsInner(SettingsWidget *parent) : QWidget(parent),
+@@ -304,6 +311,9 @@ SettingsInner::SettingsInner(SettingsWidget *parent) : QWidget(parent),
  	case Application::UpdatingReady: setUpdatingState(UpdatingReady, true); break;
  	default: setUpdatingState(UpdatingNone, true); break;
  	}
++	#else
++	_updatingState = UpdatingNone;
 +	#endif
  
  	updateConnectionType();
  
-@@ -420,6 +428,7 @@ void SettingsInner::paintEvent(QPaintEvent *e) {
+@@ -420,6 +430,7 @@ void SettingsInner::paintEvent(QPaintEvent *e) {
  	p.drawText(_left + st::setHeaderLeft, top + st::setHeaderTop + st::setHeaderFont->ascent, lang(lng_settings_section_general));
  	top += st::setHeaderSkip;
  
@@ -326,7 +340,7 @@ index 6a6cad5..6ebff0d 100644
  	top += _autoUpdate.height(); 
  	QString textToDraw;
  	if (cAutoUpdate()) {
-@@ -438,6 +447,7 @@ void SettingsInner::paintEvent(QPaintEvent *e) {
+@@ -438,6 +449,7 @@ void SettingsInner::paintEvent(QPaintEvent *e) {
  	p.setPen(st::setVersionColor->p);
  	p.drawText(_left + st::setVersionLeft, top + st::setVersionTop + st::linkFont->ascent, textToDraw);
  	top += st::setVersionHeight;
@@ -334,7 +348,7 @@ index 6a6cad5..6ebff0d 100644
  
      if (cPlatform() == dbipWindows) {
          top += _workmodeTray.height() + st::setLittleSkip;
-@@ -643,10 +653,12 @@ void SettingsInner::resizeEvent(QResizeEvent *e) {
+@@ -643,10 +655,12 @@ void SettingsInner::resizeEvent(QResizeEvent *e) {
  	// general
  	top += st::setHeaderSkip;
  	_changeLanguage.move(_left + st::setWidth - _changeLanguage.width(), top - st::setHeaderSkip + st::setHeaderTop + st::setHeaderFont->ascent - st::linkFont->ascent);
@@ -347,7 +361,7 @@ index 6a6cad5..6ebff0d 100644
  
      if (cPlatform() == dbipWindows) {
          _workmodeTray.move(_left, top); top += _workmodeTray.height() + st::setLittleSkip;
-@@ -946,8 +958,10 @@ void SettingsInner::showAll() {
+@@ -946,8 +960,10 @@ void SettingsInner::showAll() {
  
  	// general
  	_changeLanguage.show();
@@ -358,7 +372,7 @@ index 6a6cad5..6ebff0d 100644
      if (cPlatform() == dbipWindows) {
          _workmodeTray.show();
          _workmodeWindow.show();
-@@ -1148,6 +1162,7 @@ void SettingsInner::onUpdateLocalStorage() {
+@@ -1148,6 +1164,7 @@ void SettingsInner::onUpdateLocalStorage() {
  	update();
  }
  
@@ -366,7 +380,7 @@ index 6a6cad5..6ebff0d 100644
  void SettingsInner::onAutoUpdate() {
  	cSetAutoUpdate(!cAutoUpdate());
  	Local::writeSettings();
-@@ -1173,8 +1188,10 @@ void SettingsInner::onCheckNow() {
+@@ -1173,8 +1190,10 @@ void SettingsInner::onCheckNow() {
  	cSetLastUpdateCheck(0);
  	App::app()->startUpdateCheck();
  }
@@ -377,7 +391,7 @@ index 6a6cad5..6ebff0d 100644
  	checkReadyUpdate();
  	if (_updatingState == UpdatingReady) {
  		cSetRestartingUpdate(true);
-@@ -1182,6 +1199,10 @@ void SettingsInner::onRestartNow() {
+@@ -1182,6 +1201,10 @@ void SettingsInner::onRestartNow() {
  		cSetRestarting(true);
  		cSetRestartingToSettings(true);
  	}
@@ -388,7 +402,7 @@ index 6a6cad5..6ebff0d 100644
  	App::quit();
  }
  
-@@ -1558,6 +1579,7 @@ void SettingsInner::onTempDirClearFailed(int task) {
+@@ -1558,6 +1581,7 @@ void SettingsInner::onTempDirClearFailed(int task) {
  	update();
  }
  
@@ -396,7 +410,7 @@ index 6a6cad5..6ebff0d 100644
  void SettingsInner::setUpdatingState(UpdatingState state, bool force) {
  	if (_updatingState != state || force) {
  		_updatingState = state;
-@@ -1611,6 +1633,7 @@ void SettingsInner::onUpdateReady() {
+@@ -1611,6 +1635,7 @@ void SettingsInner::onUpdateReady() {
  void SettingsInner::onUpdateFailed() {
  	setUpdatingState(UpdatingFail);
  }
@@ -456,47 +470,24 @@ index 1de46a3..691e5b4 100644
  
  };
 diff --git a/Telegram/SourceFiles/sysbuttons.cpp b/Telegram/SourceFiles/sysbuttons.cpp
-index 29e11ac..415a27b 100644
+index 29e11ac..039dbb8 100644
 --- a/Telegram/SourceFiles/sysbuttons.cpp
 +++ b/Telegram/SourceFiles/sysbuttons.cpp
-@@ -143,6 +143,7 @@ UpdateBtn::UpdateBtn(QWidget *parent, Window *window, const QString &text) : Sys
+@@ -143,7 +143,9 @@ UpdateBtn::UpdateBtn(QWidget *parent, Window *window, const QString &text) : Sys
  }
  
  void UpdateBtn::onClick() {
 +	#ifndef TDESKTOP_DISABLE_AUTOUPDATE
  	checkReadyUpdate();
++	#endif
  	if (App::app()->updatingState() == Application::UpdatingReady) {
  		cSetRestartingUpdate(true);
-@@ -150,6 +151,10 @@ void UpdateBtn::onClick() {
- 		cSetRestarting(true);
- 		cSetRestartingToSettings(false);
- 	}
-+	#else
-+	cSetRestarting(true);
-+	cSetRestartingToSettings(false);
-+	#endif
- 	App::quit();
- }
- 
+ 	} else {
 diff --git a/Telegram/SourceFiles/title.cpp b/Telegram/SourceFiles/title.cpp
-index 564b7c7..5fa59d4 100644
+index 564b7c7..6de0c04 100644
 --- a/Telegram/SourceFiles/title.cpp
 +++ b/Telegram/SourceFiles/title.cpp
-@@ -69,7 +69,12 @@ TitleWidget::TitleWidget(Window *window)
- 	_update.hide();
-     _cancel.hide();
-     _back.hide();
--	if (App::app()->updatingState() == Application::UpdatingReady || cHasPasscode()) {
-+	#ifndef TDESKTOP_DISABLE_AUTOUPDATE
-+	if (App::app()->updatingState() == Application::UpdatingReady || cHasPasscode())
-+	#else
-+	if (cHasPasscode())
-+	#endif
-+	{
- 		showUpdateBtn();
- 	}
- 	stateChanged();
-@@ -80,7 +85,9 @@ TitleWidget::TitleWidget(Window *window)
+@@ -80,7 +80,9 @@ TitleWidget::TitleWidget(Window *window)
  	connect(&_contacts, SIGNAL(clicked()), this, SLOT(onContacts()));
  	connect(&_about, SIGNAL(clicked()), this, SLOT(onAbout()));
  	connect(wnd->windowHandle(), SIGNAL(windowStateChanged(Qt::WindowState)), this, SLOT(stateChanged(Qt::WindowState)));
@@ -506,23 +497,3 @@ index 564b7c7..5fa59d4 100644
  	
      if (cPlatform() != dbipWindows) {
          _minimize.hide();
-@@ -316,9 +323,18 @@ void TitleWidget::showUpdateBtn() {
- 	} else {
- 		_lock.hide();
- 	}
-+	#ifndef TDESKTOP_DISABLE_AUTOUPDATE
- 	bool updateReady = App::app()->updatingState() == Application::UpdatingReady;
--	if (updateReady || cEvalScale(cConfigScale()) != cEvalScale(cRealScale())) {
-+	if (updateReady || cEvalScale(cConfigScale()) != cEvalScale(cRealScale()))
-+	#else
-+	if (cEvalScale(cConfigScale()) != cEvalScale(cRealScale()))
-+	#endif
-+	{
-+		#ifndef TDESKTOP_DISABLE_AUTOUPDATE
- 		_update.setText(lang(updateReady ? lng_menu_update : lng_menu_restart));
-+		#else
-+		_update.setText(lang(lng_menu_restart));
-+		#endif
- 		_update.show();
- 		resizeEvent(0);
- 		_minimize.hide();

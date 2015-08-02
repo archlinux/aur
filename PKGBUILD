@@ -1,7 +1,7 @@
 pkgname=telegram-desktop
-pkgver=0.8.38
-pkgrel=4
-_qtver=5.4.0
+pkgver=0.8.43
+pkgrel=1
+_qtver=5.5.0
 pkgdesc='Official desktop version of Telegram messaging app.'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -14,10 +14,10 @@ source=("http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtve
 	"disable-custom-scheme-linux.patch"
 	"disable-updater.patch"
 	"telegramdesktop.desktop"
-	"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=cf119568a12404cfdf3607a14bccc0aa51458d09")
-sha256sums=('1739633424bde3d89164ae6ff1c5c913be38b9997e451558ef873aac4bbc408a'
+	"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=ab23ef4c4f3cbf3731f26eb4aa3af6a064717bde")
+sha256sums=('bf3cfc54696fe7d77f2cf33ade46c2cc28841389e22a72f77bae606622998e82'
 	    'c6b59d85db9792ee95c31d26734db7f6e67ce892d78aa58d2fff876a7ffd35ae'
-	    'f00fc4da6122195d48ff88fe6e4fd96f78fbf66f3b05692f863d501bff6e9196'
+	    '0d512c32b0e349125e574f377a108379771bd793a61650949b7def42e411e335'
 	    'fb466e51758ba409cd0b9da8147c6854430e8e7f485476d5107b3bf572a82777'
 	    'SKIP')
 install="$pkgname.install"
