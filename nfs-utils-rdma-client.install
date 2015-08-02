@@ -1,0 +1,26 @@
+post_install() {
+   echo "nfs-utils-rdma-client
+
+   After nfs-utils-rdma-server is installed, configured, and running on the
+   server, run:
+
+   mount -t nfs4 -o rdma,port=<server port>,vers=4.0
+   <ip address or name>:/<share name> /<mount point>
+      server port:
+         Use the value in the server's /etc/nfs-utils-rdma-server.conf
+         (default 20049)
+      ip address or name:
+         Using an ip address is recommended, since you likely have two routes to
+         the server, this forces it to use the RDMA-capable interface.
+         NOTE: The ip address is used for basic communication.  The actual file
+               data transfers happen using RDMA.
+      share name:
+         The full path of the directory shared on the server.  i.e. /home/user
+      mount point:
+         The local mount point you want to use
+      NOTE: If you omit "vers=4.0", it will default to using v4.2.  v4.1 and
+            v4.2 do not yet support RDMA, and you will experience undefined
+            behavior - likely the mount will look complete, but when you use
+            it (even cd or ls), the command will hang.
+"
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=Load kernel module for NFS client using RDMA
+RefuseManualStop=true
+DefaultDependencies=false
+Conflicts=emergency.target emergency.service
+Before=remote-fs-pre.target
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/nfs-utils-rdma-client
+
+[Install]
+WantedBy=sysinit.target

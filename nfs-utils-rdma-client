@@ -1,0 +1,18 @@
+#!/bin/bash
+# Written by James Harvey <jamespharvey20@gmail.com>
+# Released under GPL2 license
+#
+# Load kernel module for NFS client using RDMA
+#
+# This is usually run automatically by systemd, after rdma.service starts
+#
+
+if [[ $EUID -ne 0 ]]; then
+   echo "nfs-utils-rdma-server must be run as root" 1>&2
+   exit 1
+fi
+
+modprobe xprtrdma
+echo "Attempted loading kernel module xprtrdma."
+
+exit 0
