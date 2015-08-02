@@ -1,7 +1,7 @@
 pkgbase = tomb-git
 	pkgdesc = simple tool to manage encrypted storage
-	pkgver = 2.0.1.r5.gd8c5cd2
-	pkgrel = 1
+	pkgver = 2.1.r1.ge79aaa9
+	pkgrel = 2
 	url = http://tomb.dyne.org/
 	install = tomb-git.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = tomb-git
 	source = tomb::git://github.com/dyne/Tomb.git
 	source = _tomb
 	sha256sums = SKIP
-	sha256sums = ff16b05d02a18e512e9ede98542208c0605b693d997a4248bf6c1fe06f7adbd6
+	sha256sums = 3952cda7762fded6e9fd03be4b4b2634f50ea20fba72c6a2803978f228630749
 
 pkgname = tomb-git
 	depends = bc
