@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-audiodecoder-modplug
 	pkgdesc = Modplug decoder addon for Kodi
 	pkgver = 20150602.5ae7349
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/notspiff/audiodecoder.modplug
 	arch = i686
 	arch = x86_64
