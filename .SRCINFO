@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-nextpvr
 	pkgdesc = NextPVR PVR client addon for Kodi
-	pkgver = 20150717.3a205e4
+	pkgver = 20150720.fb07c5a
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.nextpvr
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kodi-devel-pvr-nextpvr
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
 	depends = tinyxml
-	source = https://github.com/kodi-pvr/pvr.nextpvr/archive/3a205e49b50baba605d3235f6613fdd36c1d3234.tar.gz
+	source = https://github.com/kodi-pvr/pvr.nextpvr/archive/fb07c5a2605ba8e3c412cf200d5c0c686badb86a.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-nextpvr
