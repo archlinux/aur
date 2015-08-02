@@ -3,39 +3,37 @@
 
 # Updated PKGBUILD from original to ensure the menu shortcuts get copied over correctly.
 
-pkgname=bitcoin-git
+pkgname='bitcoin-git'
+_gitname=bitcoin
 pkgver=0.9.0rc2.3425.g86cfd23
 pkgrel=1
 epoch=1
-pkgdesc="Bitcoin is a peer-to-peer network based digital currency."
+pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides both the GUI QT4 and daemon clients."
 arch=('i686' 'x86_64')
 url="http://www.bitcoin.org/"
-depends=('qt4>=4.6' 'libpng>=1.4' 'expat' 'gcc-libs' 'boost-libs>=1.46' 'miniupnpc>=1.5' 'openssl' 'db4.8' 'protobuf' 'bash-completion')
-makedepends=('git' 'boost' 'gcc' 'make' 'automoc4')
+depends=('qt4' 'gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf' 'bash-completion')
+makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
 conflicts=('bitcoin-bin' 'bitcoin' 'bitcoind' 'bitcoin-daemon' 'bitcoin-qt')
-provides=('bitcoin')
+provides=('bitcoin' 'bitcoind' 'bitcoin-qt')
 license=('MIT')
 source=(git://github.com/bitcoin/bitcoin.git)
 sha512sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/${pkgname%-*}"
+  cd $srcdir/$_gitname
   git describe | sed "s/^v//; s/-/./g"
 }
 
 build() {
   
-  cd "$srcdir/${pkgname%-*}"
-
+  cd $srcdir/$_gitname
   ./autogen.sh
- 
   ./configure --prefix=/usr
-
-  make # $MAKEFLAGS
+  make 
 }
 
 package() {
-  cd "$srcdir/${pkgname%-*}"
+  cd $srcdir/$_gitname
 
   make DESTDIR="${pkgdir}" install
 

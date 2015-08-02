@@ -1,5 +1,5 @@
 pkgbase = bitcoin-git
-	pkgdesc = Bitcoin is a peer-to-peer network based digital currency.
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency. This package provides both the GUI QT4 and daemon clients.
 	pkgver = 0.9.0rc2.3425.g86cfd23
 	pkgrel = 1
 	epoch = 1
@@ -7,22 +7,27 @@ pkgbase = bitcoin-git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = pkg-config
 	makedepends = git
+	makedepends = boost-libs
 	makedepends = boost
 	makedepends = gcc
+	makedepends = qrencode
 	makedepends = make
 	makedepends = automoc4
-	depends = qt4>=4.6
-	depends = libpng>=1.4
-	depends = expat
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	depends = qt4
 	depends = gcc-libs
-	depends = boost-libs>=1.46
-	depends = miniupnpc>=1.5
+	depends = miniupnpc
 	depends = openssl
 	depends = db4.8
 	depends = protobuf
 	depends = bash-completion
 	provides = bitcoin
+	provides = bitcoind
+	provides = bitcoin-qt
 	conflicts = bitcoin-bin
 	conflicts = bitcoin
 	conflicts = bitcoind
