@@ -5,12 +5,13 @@
 pkgname=python2-tvrage
 _realname=python-tvrage
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Object oriented client interface for tvrage.com's XML based api feeds"
 url="https://pypi.python.org/pypi/python-tvrage"
 arch=('any')
 license=('GPL')
-depends=('python2')
+depends=('python2'
+         'python2-beautifulsoup3')
 makedepends=('python2-distribute')
 source=("http://pypi.python.org/packages/source/p/$_realname/$_realname-$pkgver.tar.gz")
 md5sums=('cdfec252158c5047b626861900186dfb')

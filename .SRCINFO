@@ -7,6 +7,7 @@ pkgbase = python2-tvrage
 	license = GPL
 	makedepends = python2-distribute
 	depends = python2
+	depends = python2-beautifulsoup3
 	source = http://pypi.python.org/packages/source/p/python-tvrage/python-tvrage-0.4.1.tar.gz
 	md5sums = cdfec252158c5047b626861900186dfb
 
