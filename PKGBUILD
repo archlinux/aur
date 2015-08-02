@@ -1,10 +1,11 @@
 # $Id$
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
+# * No namcap warnings or errors
 
 
 
-# Upstream has extra spacing, necessary in other distributions
-# If you want to remove these, uncomment (remove the # on) the line below
+# Upstream has extra spacing in the default theme, necessary in other distributions
+# If you want to remove these, since they aren't needed on arch, uncomment (remove the # on) the line below
 #_install_removed_spacing_patch=1
 
 
