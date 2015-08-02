@@ -1,0 +1,21 @@
+pkgbase = vala-build-tool-git
+	pkgdesc = A simple tool to help compile Vala applications
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/EdgeOwl/Vala-Build-Tool
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = vala
+	depends = json-glib
+	depends = libgee06
+	provides = vala-build-tool
+	conflicts = vala-build-tool
+	source = vbt::git+https://github.com/EdgeOwl/Vala-Build-Tool.git
+	source = LICENSE
+	sha512sums = SKIP
+	sha512sums = 66cc791cbcea79eef617c4ff2a9408727380eb245a84893b6ddeb5f6f84370abf43d1b93e9f17edcffafabd885c2f5a24bebcbb47ccc04da54c58779189a9230
+
+pkgname = vala-build-tool-git
+
