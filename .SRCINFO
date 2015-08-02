@@ -16,6 +16,9 @@ pkgbase = freeorion-git
 	depends = libvorbis
 	depends = libogg
 	depends = glew
+	depends = libtiff
+	depends = libjpeg-turbo
+	depends = openal
 	provides = freeorion
 	conflicts = freeorion
 	source = freeorion.git::git+https://github.com/freeorion/freeorion.git#branch=master
