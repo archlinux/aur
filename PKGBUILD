@@ -50,6 +50,7 @@ prepare() {
   cd "${srcdir}/${_gitname}"
 
   sed -i "s|opensubtitles.git|opensubtitles-api.git|g" package.json
+  sed -i "s|ebb786a9d72820d479b9d0b2268f48453898ba3c|1fd9f4174ef93bb2efb0cfa6fdd1300223263251|g" package.json
 
   cp "${srcdir}"/desktop-i18n.git/* src/app/language
 

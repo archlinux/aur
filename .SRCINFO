@@ -19,8 +19,6 @@ pkgbase = popcorntime
 	depends = nss
 	depends = ttf-font
 	optdepends = net-tools: vpn.ht client
-	optdepends = ttf-liberation
-	optdepends = ttf-ms-fonts
 	options = !strip
 	source = desktop-v0.3.8-0.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v0.3.8-0
 	source = desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master
