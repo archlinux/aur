@@ -1,0 +1,25 @@
+pkgbase = baka-mplayer
+	pkgdesc = A free and open source, cross-platform, libmpv based multimedia player. Qt5 build.
+	pkgver = 2.0.3
+	pkgrel = 2
+	url = http://bakamplayer.u8sand.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	depends = mpv
+	depends = qt5-declarative
+	depends = qt5-svg
+	depends = qt5-x11extras
+	optdepends = mpv-git: for bleeding-edge mpv features
+	optdepends = qt5-translations: for Qt5 dialog translations
+	optdepends = youtube-dl: for remote video streaming
+	provides = baka-mplayer=2.0.3
+	conflicts = baka-mplayer-git
+	replaces = baka-mplayer-git
+	source = baka-mplayer-2.0.3.tar.gz::https://github.com/u8sand/Baka-MPlayer/archive/v2.0.3.tar.gz
+	sha512sums = af2e79a318c8a119ef20c8721e42fa3a6c4900b5baf50613ba9de7c64cdaabbb08f0a31fc589460b544a8b67d662088cac2cdf3cc808ae128948a84882df13ab
+
+pkgname = baka-mplayer
+
