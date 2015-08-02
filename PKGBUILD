@@ -8,7 +8,7 @@
 # Contributor: fana-m <geminin@gmx.net>
 
 pkgname=freeorion-git
-pkgver=r8778.092c700
+pkgver=r8845.a777581
 pkgrel=1
 pkgdesc="Free Clone of Master of Orion."
 url="http://www.freeorion.org/index.php/Main_Page"
@@ -29,7 +29,8 @@ md5sums=('SKIP'
 
 
 pkgver() {
-  python getversion.py
+  cd freeorion.git
+  python ../getversion.py
 }
 
 prepare() {

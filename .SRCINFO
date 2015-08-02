@@ -1,6 +1,6 @@
 pkgbase = freeorion-git
 	pkgdesc = Free Clone of Master of Orion.
-	pkgver = r8778.092c700
+	pkgver = r8845.a777581
 	pkgrel = 1
 	url = http://www.freeorion.org/index.php/Main_Page
 	install = freeorion.install
