@@ -1,0 +1,20 @@
+pkgbase = kodi-devel-libcec
+	pkgdesc = Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://libcec.pulse-eight.com/
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = udev
+	depends = lockdev
+	depends = kodi-devel-libplatform
+	depends = libxrandr
+	conflicts = libcec
+	source = libcec-3.0.1.tar.gz::https://github.com/Pulse-Eight/libcec/archive/libcec-3.0.1.tar.gz
+	sha256sums = 7e3670c8949a1964d6e5481f56dfff838857da10bdc60b506f6e9b7f117e253e
+
+pkgname = kodi-devel-libcec
+
