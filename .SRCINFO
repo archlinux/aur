@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-pvr-filmon
 	pkgdesc = Filmon PVR addon for Kodi
 	pkgver = 20150720.5d1a5c1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodi-pvr/pvr.filmon
 	arch = i686
 	arch = x86_64
