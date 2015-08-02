@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-demo
 _gitname=pvr.demo
-pkgver=20150717.3b2cd18
-_gitver=3b2cd1871cab742f275a5e56b785c7cc6088426c
+pkgver=20150720.b5fef15
+_gitver=bb2c46a6708a9a2e634ff4c9f853e6fb1750e160
 pkgrel=1
 pkgdesc='Demo PVR addon for Kodi'
 arch=('i686' 'x86_64')
