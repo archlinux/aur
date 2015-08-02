@@ -6,7 +6,7 @@
 
 # Upstream has extra spacing in the default theme, necessary in other distributions
 # If you want to remove these, since they aren't needed on arch, uncomment (remove the # on) the line below
-_install_removed_spacing_patch=1
+#_install_removed_spacing_patch=1
 
 
 
