@@ -1,0 +1,9 @@
+post_install() {
+  Etbg_update_list usr/share/Eterm/pix
+}
+post_upgrade() {
+  Etbg_update_list usr/share/Eterm/pix
+}
+post_remove() {
+  rm -f usr/share/Eterm/pix/pixmaps.list
+}
