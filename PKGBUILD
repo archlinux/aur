@@ -50,7 +50,7 @@ package() {
   
   # Install menu shortcuts for GUI
   mkdir -p "$pkgdir/usr/share/pixmaps/"
-  mkdir -p "$pkgdir/usr/share/applications"
+  mkdir -p "$pkgdir/usr/share/applications/"
   install -Dm644 share/pixmaps/bitcoin128.png "$pkgdir"/usr/share/pixmaps/bitcoin128.png
   install -Dm644 contrib/debian/bitcoin-qt.desktop "$pkgdir"/usr/share/applications/bitcoin.desktop
 }
