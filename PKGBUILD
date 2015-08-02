@@ -2,7 +2,7 @@
 
 _git=34fd7cf2ec8ad0e4dddb3dc04366cd44ef0f2dcc # lastest commit 20150731
 pkgname=papirus-icon-theme
-pkgver=20150802
+pkgver=20150802	
 pkgrel=1
 pkgdesc="Modified and adaptive Paper icon theme for KDE"
 arch=('any')
