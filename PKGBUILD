@@ -71,7 +71,7 @@ _bldtype=Release
 
 _mozcrev=321e0656b0f2e233ab1c164bd86c58568c9e92f2
 _utdicver=20150715
-_zipcoderel=201506
+_zipcoderel=201507
 _uimmozcrev=316.2b3eff9
 
 _gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
@@ -109,8 +109,8 @@ sha1sums=('SKIP'
           'fb7cf7efcbdfeae3dd26095e4c1dc6602679b629'
           '6604c7b616af8287dc0c3d6975a39130fe1ebdd0'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          'b174652a1689df61049f4a3fcebfc3f5edb7dcdc'
-          'c4f56e0063f5c1c932609aa1d8afe62e56e19c3d'
+          '62121344d0e90e29466bb72d23d03aca2075f122'
+          '0f56338916171845e0e9d13bf0da759a7756fd01'
           '6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7')
 
 
