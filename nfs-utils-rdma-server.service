@@ -1,0 +1,16 @@
+[Unit]
+Description=Load kernel module for NFS server using RDMA, and configure RDMA port
+Documentation=file:/etc/nfs-utils-rdma-server.conf
+RefuseManualStop=true
+DefaultDependencies=false
+Conflicts=emergency.target emergency.service
+Before=remote-fs-pre.target
+After=nfs-server.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/nfs-utils-rdma-server
+
+[Install]
+WantedBy=sysinit.target

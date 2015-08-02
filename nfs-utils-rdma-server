@@ -1,0 +1,45 @@
+#!/bin/bash
+# Written by James Harvey <jamespharvey20@gmail.com>
+# Released under GPL2 license
+#
+# Load kernel module for NFS server using RDMA, and configure RDMA port
+#
+# This is usually run automatically by systemd, after rdma.service starts
+#
+
+CONFIG=/etc/nfs-utils-rdma-server.conf
+
+if [[ $EUID -ne 0 ]]; then
+   echo "nfs-utils-rdma-server must be run as root" 1>&2
+   exit 1
+fi
+
+if ! [ -f $CONFIG ]; then
+   echo "$CONFIG not found"
+   exit 2
+fi
+
+. $CONFIG
+
+if ! [ -n "${NFS_UTILS_RDMA_SERVER_PORT}" ]; then
+   echo "You need to fix $CONFIG"
+   echo "NFS_UTILS_RDMA_SERVER_PORT is not set"
+   exit 1
+fi
+
+numerical_regex='^[0-9]+$'
+if ! [[ ${NFS_UTILS_RDMA_SERVER_PORT} =~ $numerical_regex ]]; then
+   echo "You need to fix $CONFIG"
+   echo "NFS_UTILS_RDMA_SERVER_PORT=${NFS_UTILS_RDMA_SERVER_PORT} - Acceptable values are only integers"
+   exit 2
+fi 
+
+modprobe svcrdma
+echo "Attempted loading kernel module svcrdma."
+
+echo "rdma ${NFS_UTILS_RDMA_SERVER_PORT}" > /proc/fs/nfsd/portlist
+echo "Attempted setting rdma port to ${NFS_UTILS_RDMA_SERVER_PORT}."
+
+unset NFS_UTILS_RDMA_SERVER_PORT
+
+exit 0

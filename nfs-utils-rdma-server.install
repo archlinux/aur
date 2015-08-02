@@ -1,0 +1,14 @@
+post_install() {
+   echo "nfs-utils-rdma-server
+
+   NOTE: In your /etc/exports or /etc/exports.d/*.exports files, you MUST use
+         the insecure option, because the NFS/RDMA client does not use a
+         reserved port.  This option ONLY means that the client can be using a
+         port less than IPPORT_RESERVED (1024).
+
+   NOTE: If you want to run nfs v4.0+ only, you do not need rpcbind.  In this
+         case, change /etc/conf.d/nfs-server.conf to contain:
+            NFSD_OPTS=\"-N 2 -N 3\"
+         And, on clients, you muse use \"mount -t nfs4 ...\"
+"
+}
