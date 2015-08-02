@@ -1,0 +1,30 @@
+post_install() {
+   echo "bash-git-prompt
+
+   NOTE: To use bash-git-prompt, you should add the following to your
+         /etc/bash.bashrc or ~/.bashrc:
+
+            if [ -f %{/usr/lib/bash-git-prompt/gitprompt.sh ]; then
+               # GIT_PROMPT_ONLY_IN_REPO=1
+               GIT_PROMPT_THEME=Default
+               source /usr/lib/bash-git-prompt/gitprompt.sh
+            fi
+         
+"
+}
+
+post_remove() {
+   echo "bash-git-prompt
+
+   NOTE: Any already running shells that were using bash-git-prompt will give a
+         bunch of errors with every new prompt line, until you start new shells
+         by doing one of the following:
+
+            * Restarting your shells (relogging in each of them)
+            * Starting new shells (running "bash" in each of them)
+            * Rebooting
+
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+"
+}
