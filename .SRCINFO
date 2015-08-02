@@ -1,0 +1,27 @@
+pkgbase = etherpad-lite
+	pkgdesc = Lightweight fork of etherpad based on javascript
+	pkgver = 1.5.2
+	pkgrel = 2
+	url = http://etherpad.org
+	install = etherpad-lite.install
+	arch = any
+	license = GPL2
+	depends = curl
+	depends = python2
+	depends = openssl
+	depends = nodejs<0.13.0
+	depends = git
+	depends = npm
+	optdepends = sqlite: to use sqlite as databse
+	optdepends = mariadb: to use mariadb as database
+	optdepends = postgresql: to use postgresql as database
+	conflicts = etherpad-lite-git
+	backup = usr/share/webapps/etherpad-lite/settings.json
+	backup = etc/webapps/etherpad-lite/settings.json
+	source = etherpad-lite-1.5.2.tar.gz::https://github.com/ether/etherpad-lite/archive/1.5.2.tar.gz
+	source = etherpad-lite.service
+	sha512sums = 4aa331c2faa5f7cc0a2b467547f0c9028ae593be52c584b520147554f81bf88083f5d26925977e341c9450a51fc03fc4a45bff75cfc7b64e4de7993333ce0ed0
+	sha512sums = 7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7
+
+pkgname = etherpad-lite
+
