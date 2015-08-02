@@ -1,6 +1,6 @@
 pkgbase = kodi-devel-pvr-vbox
 	pkgdesc = Box TV Gateway PVR client addon for Kodi
-	pkgver = 20150717.874eb88
+	pkgver = 20150720.48ebfda
 	pkgrel = 1
 	url = https://github.com/Jalle19/pvr.vbox
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = kodi-devel-pvr-vbox
 	makedepends = kodi-devel-platform
 	makedepends = kodi-devel-libplatform
 	depends = kodi-devel
-	source = https://github.com/Jalle19/pvr.vbox/archive/874eb8812db1dd1b2626ed6c9f8391790f0e6818.tar.gz
+	source = https://github.com/Jalle19/pvr.vbox/archive/48ebfdaeee961e86148662bd7f34fe6fe4969702.tar.gz
 	md5sums = SKIP
 
 pkgname = kodi-devel-pvr-vbox
