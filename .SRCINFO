@@ -1,0 +1,16 @@
+pkgbase = zstd-git
+	pkgdesc = A fast and efficient compression algorithm.
+	pkgver = r71.1eca5f5
+	pkgrel = 1
+	url = https://github.com/Cyan4973/zstd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	source = git://github.com/Cyan4973/zstd.git
+	md5sums = SKIP
+
+pkgname = zstd-git
+
