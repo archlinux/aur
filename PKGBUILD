@@ -1,10 +1,10 @@
 pkgname=aha
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Ansi HTML Adapter: convert ANSI escape sequences to HTML."
 arch=('i686' 'x86_64')
 url="https://github.com/theZiz/aha"
-license=('MPL' 'LPGL')
+license=('MPL' 'LGPL')
 provides=('aha')
 conflicts=('aha')
 
