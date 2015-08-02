@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-platform
 	pkgdesc = Kodi platform environment for compiling cmake binary addons
 	pkgver = 20150504.054a42f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xbmc/kodi-platform
 	arch = i686
 	arch = x86_64
