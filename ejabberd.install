@@ -1,0 +1,21 @@
+post_install() {
+  systemd-sysusers ejabberd.conf
+  chown -R ejabberd:jabber var/log/ejabberd
+  chown -R ejabberd:jabber var/lib/ejabberd
+  chown root:ejabberd \
+    etc/ejabberd/ejabberd.yml \
+    etc/ejabberd/ejabberdctl.cfg \
+    etc/ejabberd \
+    usr/lib/ejabberd/priv/bin/epam
+}
+
+post_upgrade() {
+  chown -R ejabberd:jabber var/log/ejabberd
+  chown -R ejabberd:jabber var/lib/ejabberd
+  chown root:ejabberd \
+    etc/ejabberd/ejabberd.yml \
+    etc/ejabberd/ejabberdctl.cfg \
+    etc/ejabberd \
+    usr/lib/ejabberd/priv/bin/epam
+  echo "!!! it is major update. Config must be converted to yaml format."
+}
