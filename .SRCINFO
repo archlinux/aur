@@ -1,16 +1,14 @@
 pkgbase = opengrm-ngram
 	pkgdesc = OpenGrm tool for making n-gram language models as weighted finite-state transducers
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = http://www.opengrm.org/
 	arch = i686
 	arch = x86_64
 	license = APACHE
 	depends = openfst
-	source = http://openfst.cs.nyu.edu/twiki/pub/GRM/NGramDownload/opengrm-ngram-1.0.3.tar.gz
-	source = ngram-getpid.patch
-	md5sums = 03bc3e03b7106b3f135a65838324e7a9
-	md5sums = bca385009baabb852788baee2d190b46
+	source = http://openfst.cs.nyu.edu/twiki/pub/GRM/NGramDownload/opengrm-ngram-1.2.1.tar.gz
+	md5sums = 8405ad428c5dd26e8b6fd805500bd00c
 
 pkgname = opengrm-ngram
 
