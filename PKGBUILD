@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <grey[at]christoforo[dot]net>
 pkgname=arcus
 pkgver=15.06.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Communication library between internal components for Ultimaker software"
 url="https://github.com/Ultimaker/libArcus"
 arch=('any')
@@ -26,6 +26,7 @@ build() {
 package() {
   cd "${srcdir}/libArcus-master/build"
   make DESTDIR="${pkgdir}" install
+  mv ${pkgdir}/usr/lib64  ${pkgdir}/usr/lib
   #install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
