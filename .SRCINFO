@@ -1,15 +1,16 @@
 pkgbase = perl-convert-uulib
 	pkgdesc = Perl interface to the uulib library (a.k.a. uudeview/uuenview).
-	pkgver = 1.4
-	pkgrel = 5
+	pkgver = 1.5
+	pkgrel = 1
 	url = http://search.cpan.org/~mlehmann/Convert-UUlib/
 	arch = any
 	license = GPL
 	license = PerlArtistic
-	depends = perl>=5.8.4
+	depends = perl
+	depends = perl-canary-stability
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Convert-UUlib-1.4.tar.gz
-	sha512sums = 97dae96b173cfdaf35126f70a883b3462977c3bfb281334f2e54c66ba518ce936ae3046d911ed0a39974df47d0b46bc286afb01faa0d934895402049b3f79cfd
+	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Convert-UUlib-1.5.tar.gz
+	sha512sums = 92c8b6f3a72546dca21018ddf2863113904f550e3ed950a1898ed4abfcc48738e9ca374f5adbc3226df2db6beeb0e12879ae52cdd067a030c199766d53603ec1
 
 pkgname = perl-convert-uulib
 
