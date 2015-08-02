@@ -1,0 +1,56 @@
+From 371802a59e7250e38d3e6b3b09de974569eba184 Mon Sep 17 00:00:00 2001
+From: dhead666 <myfoolishgames@gmail.com>
+Date: Sun, 2 Aug 2015 20:54:13 +0300
+Subject: [PATCH 2/2] CMakelist.txt add missing files and install headers
+
+---
+ CMakeLists.txt | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 940a29b..6a23d1a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,7 +23,19 @@ endif()
+ #set(asplib_INCLUDE_DIRS ${TINYXML_INCLUDE_DIR} "${CMAKE_INSTALL_PREFIX}/include/kodi")
+ #set(asplib_LIBRARIES ${CMAKE_THREAD_LIBS_INIT} ${TINYXML_LIBRARIES})
+ 
+-set(SOURCES utils/computeDeviceInfo/cpuInfo.cpp)
++set(SOURCES utils/computeDeviceInfo/cpuInfo.cpp
++            Biquads/Biquad_Native/asplib_Biquad_Native.cpp
++            Biquads/apslib_BiquadFactory.cpp)
++
++set(HEADERS interfaces/asplib_IBaseBiquad.h
++            constants_typedefs/asplib_constants.h
++            constants_typedefs/asplib_typedefs.h
++            utils/computeDeviceInfo/cpuInfo_types.h
++            utils/computeDeviceInfo/cpuInfo.h
++            Biquads/apslib_BiquadFactory.h
++            Biquads/Biquad_Native/asplib_Biquad_Native.h)
++
++
+ #include_directories(${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR})
+ 
+ add_library(asplib ${SOURCES} ${PLAT_SOURCES})
+@@ -32,9 +44,18 @@ target_link_libraries(asplib ${asplib_LIBRARIES})
+ #                                              SOVERSION ${asplib_VERSION_MAJOR}.0)
+ 
+ install(TARGETS asplib DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(FILES interfaces/asplib_IBaseBiquad.h
++        DESTINATION include/asplib/interfaces)
++install(FILES constants_typedefs/asplib_constants.h
++            constants_typedefs/asplib_typedefs.h
++        DESTINATION include/asplib/constants_typedefs)
+ install(FILES utils/computeDeviceInfo/cpuInfo_types.h
+               utils/computeDeviceInfo/cpuInfo.h
+         DESTINATION include/asplib/utils)
++install(FILES Biquads/apslib_BiquadFactory.h
++              Biquads/Biquad_Native/asplib_Biquad_Native.h
++        DESTINATION include/asplib/Biquads)
++
+ 
+ #IF(NOT WIN32)
+   # Pkgconfig
+-- 
+2.4.6
+

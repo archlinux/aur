@@ -6,21 +6,23 @@
 pkgname=asplib
 pkgver=20150502.490de46
 _gitver=490de460e856acd1ae2feb7f8111f137e40aa0d0
-pkgrel=1
+pkgrel=2
 pkgdesc='Basic Audio DSP Processor addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/AchimTuran/$pkgname"
 license=('GPL')
 makedepends=('cmake')
 source=("https://github.com/AchimTuran/$pkgname/archive/$_gitver.tar.gz"
-        "0001-CMakeLists.txt-fix-compilation-on-linux.patch")
-md5sums=('SKIP' 'SKIP')
+        "0001-CMakeLists.txt-fix-compilation-on-linux.patch"
+        "0002-CMakelist.txt-add-missing-files-and-install-headers.patch")
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 _prefix='/usr'
 
 prepare() {
   cd "$srcdir/$pkgname-$_gitver"
   patch -p1 -i "${srcdir}/0001-CMakeLists.txt-fix-compilation-on-linux.patch"
+  patch -p1 -i "${srcdir}/0002-CMakelist.txt-add-missing-files-and-install-headers.patch"
 }
 
 build() {
