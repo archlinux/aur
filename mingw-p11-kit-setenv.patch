@@ -1,0 +1,28 @@
+--- common/test-compat.c.orig	2014-10-02 01:24:44.000000000 -0500
++++ common/test-compat.c	2014-10-04 15:26:10.657823106 -0500
+@@ -90,7 +90,11 @@
+ 	char *path;
+ 	int ret;
+ 
++#ifdef OS_UNIX
+ 	setenv ("BLAH", "5", 1);
++#else
++	_putenv_s ("BLAH", "5");
++#endif
+ 
+ 	ret = p11_test_run_child (args, true);
+ 	assert_num_eq (ret, 5);
+--- p11-kit/test-transport.c.orig	2014-10-02 01:24:44.000000000 -0500
++++ p11-kit/test-transport.c	2014-10-04 15:27:02.691227676 -0500
+@@ -74,7 +74,11 @@
+ 	test.user_config = p11_path_build (test.directory, "pkcs11.conf", NULL);
+ 	p11_test_file_write (NULL, test.user_config, data, strlen (data));
+ 
++#ifdef OS_UNIX
+ 	setenv ("P11_KIT_PRIVATEDIR", BUILDDIR, 1);
++#else
++	_putenv_s ("P11_KIT_PRIVATEDIR", BUILDDIR);
++#endif
+ 	data = "remote: |" BUILDDIR "/p11-kit/p11-kit remote " BUILDDIR "/.libs/mock-two.so\n";
+ 	p11_test_file_write (test.user_modules, "remote.module", data, strlen (data));
+ 

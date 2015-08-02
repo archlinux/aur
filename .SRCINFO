@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-p11-kit
+	pkgdesc = Library to work with PKCS#11 modules (mingw-w64)
+	pkgver = 0.22.1
+	pkgrel = 1
+	url = http://p11-glue.freedesktop.org
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-libtasn1
+	depends = mingw-w64-libffi
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://p11-glue.freedesktop.org/releases/p11-kit-0.22.1.tar.gz
+	source = mingw-p11-kit-setenv.patch
+	md5sums = 4e9bea1106628ffb820bdad24a819fac
+	md5sums = 51efa37a12ce2843ffc2244baca3c272
+
+pkgname = mingw-w64-p11-kit
+
