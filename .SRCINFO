@@ -1,7 +1,7 @@
 pkgbase = popcorntime
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
 	pkgver = 0.3.8.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://popcorntime.io/
 	install = popcorntime.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = popcorntime
 	source = desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master
 	source = popcorntime.desktop
 	sha256sums = 58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c
-	sha256sums = SKIP
+	sha256sums = 447bafbdbd06f9e7833732629f333f71b52c78b48dbc0818bfbbc7e2de1e0f47
 	sha256sums = f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec
 
 pkgname = popcorntime

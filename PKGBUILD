@@ -9,7 +9,7 @@
 pkgname=popcorntime
 pkgver=0.3.8.0
 _pkgver=0.3.8-0
-pkgrel=6
+pkgrel=7
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.io/"
@@ -29,21 +29,12 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
 _gitname=desktop.git
-_nw_ver=0.12.1
-
-_platform=linux64
-_nw_platform=linux-x64
-if [ "$CARCH" = 'i686' ]; then
-  _platform=linux32
-  _nw_platform=linux-ia32
-  sha256sums[2]='973a8a7eeb1d26035869be39450a6f0f796a84ad7db7ea4f27ef8c8e64017948'
-fi
 
 source=("desktop-v${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=v${_pkgver}"
         "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
         "popcorntime.desktop")
 sha256sums=('58e903cdbed2eb6f7784b38ce847f3fff6315034f58adc806c7a50d0cd763c9c'
-            'SKIP'
+            '447bafbdbd06f9e7833732629f333f71b52c78b48dbc0818bfbbc7e2de1e0f47'
             'f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec')
 
 prepare() {
@@ -54,10 +45,8 @@ prepare() {
 
   cp "${srcdir}"/desktop-i18n.git/* src/app/language
 
-  # for gyp
   export PYTHON=/usr/bin/python2
 
-  # Get dependencies
   npm install
 }
 
@@ -78,19 +67,15 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  # Program
   install -Dm755 "${_bpath}/Popcorn-Time" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm644 "${_bpath}/nw.pak" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm644 "${_bpath}/libffmpegsumo.so" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm644 "${srcdir}/${_gitname}/build/cache/${_platform}/${_nw_ver}/icudtl.dat" "${pkgdir}/usr/lib/${pkgname}/"
 
-  # Link to program
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Desktop file
   install -Dm644 "${srcdir}/popcorntime.desktop" "${pkgdir}/usr/share/applications/popcorntime.desktop"
 
-  # Icon
   install -Dm644 "${srcdir}/${_gitname}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
 }
