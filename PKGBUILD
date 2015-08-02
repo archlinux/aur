@@ -16,7 +16,7 @@ optdepends=(
 )
 
 source=("https://github.com/mathics/Mathics/releases/download/v${pkgver}/mathics-${pkgver}.tar.gz")
-md5sums=('3d2d3f24d4ddc9cf1c4716e31c8417a1')
+md5sums=('05d6d1f0af9dc20f267a1d9b1b7b1831')
 
 
 build() {
