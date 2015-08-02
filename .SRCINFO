@@ -7,10 +7,10 @@ pkgbase = nvidia-340xx-ck
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-ck-headers>=4.0
-	makedepends = linux-ck-headers<4.1
-	depends = linux-ck>=4.0
-	depends = linux-ck<4.1
+	makedepends = linux-ck-headers>=4.1
+	makedepends = linux-ck-headers<4.2
+	depends = linux-ck>=4.1
+	depends = linux-ck<4.2
 	depends = nvidia-340xx-libgl
 	depends = nvidia-340xx-utils=340.76
 	conflicts = nvidia-ck
