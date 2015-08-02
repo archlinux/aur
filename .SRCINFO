@@ -1,0 +1,22 @@
+pkgbase = python-pytest-cov
+	pkgdesc = py.test plugin for coverage reporting with support for both centralised and distributed testing, including subprocesses and multiprocessing
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/schlamar/pytest-cov
+	arch = any
+	license = MIT
+	source = http://pypi.python.org/packages/source/p/pytest-cov/pytest-cov-2.0.0.tar.gz
+	md5sums = c6520aefe1e9d15fde08348e32d738b9
+
+pkgname = python-pytest-cov
+	depends = python
+	depends = python-py
+	depends = python-pytest
+	depends = python-cov-core
+
+pkgname = python2-pytest-cov
+	depends = python2
+	depends = python2-py
+	depends = python2-pytest
+	depends = python2-cov-core
+
