@@ -1,10 +1,9 @@
 pkgbase = nexus
 	pkgdesc = A Maven Repository Manager. Nexus 2
 	pkgver = 2.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nexus.sonatype.org
 	install = nexus.install
-	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL3

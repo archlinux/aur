@@ -4,11 +4,10 @@
 pkgname=nexus
 pkgver=2.11.4
 patchver=01
-pkgrel=1
+pkgrel=2
 pkgdesc="A Maven Repository Manager. Nexus 2"
 url="http://nexus.sonatype.org"
-arch=('armv7h'
-      'i686' 
+arch=('i686' 
       'x86_64')
 license=('GPL3')
 depends=('java-environment')
