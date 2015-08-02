@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-pvr-vuplus
 	pkgdesc = VuPlus PVR client addon for Kodi
 	pkgver = 20150720.0702fc5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodi-pvr/pvr.vuplus
 	arch = i686
 	arch = x86_64
