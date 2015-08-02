@@ -65,40 +65,39 @@ _BFQ_enable_=
 pkgbase=linux-bfs
 pkgname=('linux-bfs' 'linux-bfs-headers' 'linux-bfs-docs')
 _kernelname=-bfs
-_srcname=linux-4.0
-pkgver=4.0.9
+_srcname=linux-4.1
+pkgver=4.1.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://ck-hack.blogspot.de"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
-_bfsrel=462
-_bfspatch="4.0-sched-bfs-${_bfsrel}.patch"
+_bfsrel=463
+_bfspatch="4.1-sched-bfs-${_bfsrel}.patch"
 _bfqrel=v7r8
-#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-${_bfqrel}"
-_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.0.0-${_bfqrel}/"
+#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-${_bfqrel}"
+_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.1.0-${_bfqrel}/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "http://ck.kolivas.org/patches/bfs/4.0/4.0/${_bfspatch}"
-        "http://ck.kolivas.org/patches/4.0/4.0/4.0-ck1/patches/hz-default_1000.patch"
-        "http://ck.kolivas.org/patches/4.0/4.0/4.0-ck1/patches/hz-no_default_250.patch"
-        "http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-rtmn-fix.patch"
-        "http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-update_inittask.patch"
-        "bfs462-nosubmit.patch"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.0.0.patch"
+        "http://ck.kolivas.org/patches/bfs/4.0/4.1/${_bfspatch}"
+        "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck1/patches/hz-default_1000.patch"
+        "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck1/patches/hz-no_default_250.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.1.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.1.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.1.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfs.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
         '0004-block-loop-convert-to-per-device-workqueue.patch'
-        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch')
+        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
+        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
+        'bitmap-enable-booting-for-dm-md-raid1.patch')
         
 prepare() {
     cd ${_srcname}
@@ -114,6 +113,17 @@ prepare() {
          msg " $p"
          patch -Np1 -i "$p"
          done
+         
+     ### Fix bluetooth chip initialization on some macbooks (FS#45554)
+     # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
+     # https://bugzilla.kernel.org/show_bug.cgi?id=100651
+        msg "Fix bluetooth chip initialization on some macbooks (FS#45554)"
+        patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+
+    ### Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
+    # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
+        msg "Fix kernel oops when booting with root on RAID1 LVM (FS#45548)"
+        patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
     
      ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
      # remove this when a Kconfig knob is made available by upstream
@@ -122,7 +132,7 @@ prepare() {
          patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
  
      ### Patch source with BFS 
-         msg "Patching source with BFS v0.462"
+         msg "Patching source with BFS v0.463"
          patch -Np1 -i "${srcdir}/${_bfspatch}"
     
      ### Patch source with ck-hz patches
@@ -131,13 +141,6 @@ prepare() {
          msg " $p"
          patch -Np1 -i "$p"
          done 
-         
-     ### Patch source with bfs462 fix patches
-         msg "Patching source with bfs462 fix patches"
-         for p in "${srcdir}"/bfs462*.patch; do
-         msg " $p"
-         patch -Np1 -i "$p"
-         done
    
      ### Patch source with BFQ
          msg "Patching source with BFQ patches"
@@ -491,26 +494,25 @@ package_linux-bfs-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995'
+sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            '59cfaba028cf9d669ceac25f967945963330736059f38c01f584d3379e2ac243df3f89836e4815014f6799816746bba49a35915ccc4a66250bb95536d9b9e9f5'
+            'c0889485e049fd91402cbf16ec21391b88abe948d3861b7c000687c20ff560d70d4ec4f71a924065e187264f362006e6244834195561f8108ba0c2a39e49ec09'
             'SKIP'
-            '576f7383bc4ade80a9180859d235d5d9c273a927ffbd4b36e0d7abd223b5998d628ce2a061025c5506ecf21b57dd10cb08bf9ef40e26f7203f84c01466d98d3a'
-            '60622801e4f092b81af821a44bee47bba5a1cbecf66795a0c30774ee537a933bad0f7103157c273ab173d68268c3adc2962d7d47e29693cdeadf071ef64d2e2a'
-            'a37ec7048b4da0ab0f58713aff5f347b80a6aceb476d523326cecd596942f0a0b893724e30af6ccee47395edfe5d1a49c836df8f6d7c4d0358336826f4e9a819'
-            '47e4134fa35a1596b390bdc7eadc59b75b88594e84b54a71a0fd7886bbef083c174ca5627bd2a899966eddd35b676df735b0304e737218040ab8edf72f333ef2'
-            '623c4fc879b6bb17f1640caa268bf19cf65fbfa6c5910bbb5fdd44f1013913e5728d80fa037f33288a08ac56a23ee326951a15822a871dee2fb3d775ced9357e'
-            '2948557d71436a1498747858c749b0e75b8c71a97b0af7f44ccb5b683d2dd52b100b033254d63de7502d46fc402a057b07dff73417bf31e3d9f67c8744f3610c'
-            '1a08e834c4e90a7f9da77460bda1ed0efa9b331811521520402b0d094de3a1155d6e7ddbcbfcbefeef92b5468c56960750f6568cd73114a2a87a9d8a39a63fe8'
-            '46cb51684ca5fd9ba9460c8a62be22e99169de1b5e87ac47f9782f52123993de61fe9563ffec062a9b7c2024d08b1d5f57e09a09dbd7841faa3d149f346f5464'
-            '879ab2364ae09993f8dcd17f3c44584967cf26d26f8376611a9eb7824cf78cadf4cdae58d18f3b493d0ec48395888f1ca1395563e52501dc79f559369c931371'
+            '80e17baa2336680f6f73ca704868adcc88cc5a02b3ed7a9f10e5f9a58df126576cf01b258f6deba89d5fe9246701113f4e74b3f87ceb395ab9ec87c3bc2c726d'
+            'c5e20c56c3f972ccb1c846c5e45f4da29a7283de745f137378036baf5c833807718840edfe92e9e6001d531a7c985c10ce927cc151a0fc169ac919ee66c78d0a'
+            '5e91f50aeebdd5394b4eaaa5e659dbc269937f95392193653c8d6fb921e565cc71078ce14d7fa3813bc645b5674cfc81ce0c8ba545dc4609d16e2d2b805ad074'
+            '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
+            'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
+            '1db70764577d3e8d5e65351bdef7f2cf61d2546138a6342c4bf4e5e6738b8e06b5291a9a0c12f9fc2c8cb620048006d05474cf75902cb26e7504038150cf0a44'
             '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
             '84a7c3b96959cb2dd7687b968ba4522b62919529e2c0e166c0369e6cf77ff0e7ee387ca22a0980fc37dd100812205ab2c17b6c4d5dda51958ac1e66693f22925'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '46ea93989d6e2fa43a6ea83c280a526d3c2744054e2c3bea180c74ba13fa683151c675378a4b0ebe463188f02807136228efcd9f31128505750861e3aad9af5e'
-            'db8e523aa6578bedd468fa94c163852edeed7dbee80b4068d93b7e3e294c9fd5faad91da00b4f1ac200a364f30416e30db0617426169a3e88ba334c27b8e7014'
-            '412d17407ecb6dffe036094a33531edb8df0c9a6e6a1aebe113733db066c8530a87710c5d51bbf5310a9a39cacc95cecf938d2e7e63903605c45c06d73b975d7'
-            '68f8c2bd38baf91ac5058cda03f11b2388b3de1fd5064d8c15317354877be1ec56c92fa2f535b7e0868472a5c94fbfa225481fa0990664a786ab358bc010af3a')
+            '4650a7c80a88c9e05314226aadd4a262e5582056d87c35bda1fe36c556d443dbb0d7d47e39b79bc557c308d730d7e411e961d3bf9317b6cb7d59fdef4af21b3a'
+            '4c7bfed928fa6de823f3e588a4e9bce590d36ad379d554b31fabacd9b80a12728e5edfd5ac622bf027017e78a59309128a5ffd443cf17cc05e6a1ec88fcf0937'
+            'c82288451d71fc4d268092702ab547ae513d94cc78a31c0fd3543397a3d3a3304936db6a0f3f0ee09e063c94cb2cffcc1c95cba74beb86f6a3806c9f5fa00282'
+            '0870b20411538738879fc24ad2363c8a7bfab98c2e00c231e54e991444a8aeda7a4141704097c82f2576d826a8eef2c318d4b1308e871983af1be337e051d28e'
+            '4fb043734a99125407dcb13aafa7fb73b0fad4ef9cb55ddf2e4daaf79368606c697556e8945bf6b2b7c2ff4de976ff38340bd349e56aba50978c958c844e13e0'
+            '09f7400ee9d49ecbbb64c622de6039fc91b4800abd3bf46e4ee8d906869ba7b5d62ed06e8b5814a108b35d2a1a2614024682d6d39dd36b6498f11c8481ffd153')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
