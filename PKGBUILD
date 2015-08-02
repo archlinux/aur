@@ -5,7 +5,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=opensimulator
-pkgver=0.8.1
+pkgver=0.8.1.1
 pkgrel=1
 pkgdesc="A 3D application server used to create a virtual environment or world"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("http://opensimulator.org/dist/opensim-${pkgver}-source.tar.gz"
 		"opensimulator-robust.sh"
 		"opensimulator.service"
 		"opensimulator-robust.service")
-md5sums=('6f0c0bd26af88f1d21c525c837168a05'
+md5sums=('2f3ecdf331eca9943be65f31282c8fe3'
          '58270c537e91b85c1121aacc2ccb194e'
          'cb3b9d774a9973bb438c9052dbe77112'
          'c2686291b848bf584c9a05fbc6bac303'
@@ -27,7 +27,7 @@ md5sums=('6f0c0bd26af88f1d21c525c837168a05'
 backup=(opt/$pkgname/bin/OpenSim.ini)
 
 build() {
-cd "$srcdir"/opensim-$pkgver-source
+cd "$srcdir"/opensim-$pkgver
 
 # we need Mono
 export MONO_SHARED_DIR="$srcdir"/.wabi
@@ -39,7 +39,7 @@ xbuild
 }
 
 package() {
-cd "$srcdir"/opensim-$pkgver-source
+cd "$srcdir"/opensim-$pkgver
 
 # delete unneeded and create log/ini files
 [[ `uname -m` = "i686" ]] && find bin -name "*x86_64.so" -delete
