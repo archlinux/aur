@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-pvr-pctv
 	pkgdesc = PCTV PVR client addon for Kodi
 	pkgver = 20150720.ff5d536
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodi-pvr/pvr.pctv
 	arch = i686
 	arch = x86_64
