@@ -13,6 +13,7 @@ url="https://github.com/Pulse-Eight/$_gitname"
 license=('GPL')
 groups=('kodi-devel')
 makedepends=('cmake')
+conflicts=('libplatform')
 source=("https://github.com/Pulse-Eight/$_gitname/archive/$pkgver.tar.gz")
 md5sums=(4ac07e020227d3cbe54351ec3837ba48)
 
