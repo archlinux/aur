@@ -18,7 +18,6 @@ prepare() {
   cd ${srcdir}/libgeotiff-$pkgver
   patch -p1 -i ../libgeotiff_buildsys.patch
   sed -i "s|la_LDFLAGS = -version-info|la_LDFLAGS = -no-undefined -version-info|g" Makefile.in
-#   autoreconf -if
 }
 
 build() {
@@ -26,6 +25,12 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure --with-proj --with-jpeg --with-zip
+
+    # FIXME: out-of-source build fails
+    cp ../*.h libxtiff
+    cp ../libxtiff/*.h libxtiff
+    cp ../*.inc bin
+
 #     ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release \
 #       -DGEOTIFF_CSV_DATA_DIR=$PWD/../csv \
 #       -DGEOTIFF_DATA_SUBDIR=share \
