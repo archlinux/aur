@@ -5,8 +5,8 @@
 
 pkgname=kodi-devel-pvr-stalker
 _gitname=pvr.stalker
-pkgver=20150717.5f6eb19
-_gitver=5f6eb1992ffd45a075ebb7bc4253c4a88bf65c80
+pkgver=20150720.b8a61cb
+_gitver=b8a61cb892ec00b696c99a53bc449473bae9c404
 _jsoncpp_ver=0.5.0
 pkgrel=1
 pkgdesc='Stalker Middleware PVR client addon for Kodi'
