@@ -1,7 +1,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-game-git
-pkgver=20141113
+pkgver=20150802
 pkgrel=1
 pkgdesc="Fantasy action RPG using the FLARE engine - Git version"
 url="http://www.flarerpg.org/"
@@ -36,12 +36,8 @@ build() {
 	fi
 
 	cd $srcdir/$_repo
-	msg "Starting compile..."
-	msg "Creating and moving to build directory..."
-	mkdir build
-	cd build
 	msg "Running cmake..."
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DDATADIR=share/flare
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DDATADIR=share/flare
 	msg "Compiling..."
 	make
 }
@@ -49,6 +45,5 @@ build() {
 package() {
 	cd $srcdir/$_repo
 	msg "Installing..."
-	cd build
 	make install DESTDIR=$pkgdir
 }
