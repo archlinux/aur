@@ -2,14 +2,6 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 # * No namcap warnings or errors
 
-
-
-# Upstream has extra spacing in the default theme, necessary in other distributions
-# If you want to remove these, since they aren't needed on arch, uncomment (remove the # on) the line below
-#_install_removed_spacing_patch=1
-
-
-
 pkgname=bash-git-prompt
 pkgver=2.3.5
 pkgrel=1
@@ -22,22 +14,15 @@ makedepends=('git')
 license=('custom:BSD 2 Clause (NetBSD)')
 source=("git+https://github.com/magicmonty/${pkgname}"
         'bash-git-prompt.install'
-        'removed_spacing.patch')
+        'Default_Arch.bgptheme')
 md5sums=('SKIP'
-         '1e762bd413b6efdec225928da5aa6451'
-         '513706d4f97f775a60325bc31574d197')
+         'db6f83999124b7fa660310a8d6624f70'
+         '8e4f18f5cfb65bdc5a94adb0477188ce')
 install='bash-git-prompt.install'
 
 prepare() {
   cd ${srcdir}/${pkgname}
   git checkout tags/${pkgver} 
-
-  if [ -n "$_install_removed_spacing_patch" ]; then
-    echo "Installing removed_spacing.patch..."
-    patch -p1 -i ${srcdir}/removed_spacing.patch
-  else
-    echo "NOT installing removed_spacing.patch..."
-  fi
 }
 
 package() {
@@ -54,6 +39,7 @@ package() {
   cd themes
   install -Dm644 Custom.bgptemplate ${pkgdir}/usr/lib/${pkgname}/themes/Custom.bgptemplate
   install -Dm644 Default.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Default.bgptheme
+  install -Dm644 ${srcdir}/Default_Arch.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Default_Arch.bgptheme
   install -Dm644 Default_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Default_NoExitState.bgptheme
   install -Dm644 Single_line.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line.bgptheme
   install -Dm644 Single_line_openSUSE.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_openSUSE.bgptheme
