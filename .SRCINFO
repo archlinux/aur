@@ -1,7 +1,7 @@
 pkgbase = kodi-devel-pvr-dvblink
 	pkgdesc = DVBLink PVR addon for Kodi
 	pkgver = 20150720.1855e44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kodi-pvr/pvr.dvblink
 	arch = i686
 	arch = x86_64
