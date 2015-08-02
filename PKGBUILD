@@ -4,7 +4,7 @@
 pkgname=python2-gphoto2
 _pkgname=python-gphoto2
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="python interface to libgphoto2"
 arch=('any')
 url="https://bibtexparser.readthedocs.org/"
@@ -23,6 +23,7 @@ build() {
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
+  rm -rf $pkgdir/usr/share/
 }
 
 # vim:ts=2:sw=2:et:
