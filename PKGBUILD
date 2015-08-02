@@ -7,7 +7,7 @@ pkgname=kodi-devel-audioencoder-lame
 _gitname=audioencoder.lame
 pkgver=20150601.b283cd5
 _gitver=b283cd50cd2f89b7fd7b903c957a6a993e3756d2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lame MP3 encoder addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/xbmc/$_gitname"
@@ -21,11 +21,6 @@ source=("https://github.com/xbmc/$_gitname/archive/$_gitver.tar.gz")
 md5sums=('SKIP')
 
 _prefix='/usr'
-
-prepare() {
-  msg "Starting make..."
-  cd "$srcdir/$_gitname-$_gitver"
-}
 
 build() {
   cd "$srcdir/$_gitname-$_gitver"
