@@ -1,0 +1,60 @@
+# Maintainer: u8sand <u8sand@gmail.com>
+# Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+
+_pkgname=baka-mplayer
+pkgname=${_pkgname}-git
+pkgver=2.0.3.r0.ge86cf13
+pkgrel=1
+pkgdesc='A free and open source, cross-platform, libmpv based multimedia player. Qt5 build. Development version.'
+arch=('i686' 'x86_64')
+url='http://bakamplayer.u8sand.net/'
+license=('GPL')
+
+depends=('mpv' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
+optdepends=(
+	'mpv-git: for bleeding-edge mpv features'
+	'qt5-translations: for Qt5 dialog translations'
+	'youtube-dl: for remote video streaming'
+)
+makedepends=('git' 'qt5-tools')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+replaces=("${_pkgname}")
+
+source=(
+	"${_pkgname}::git+https://github.com/u8sand/Baka-MPlayer.git"
+)
+sha512sums=(
+	"SKIP"
+)
+
+pkgver() {
+	# Updating package version
+	cd ${srcdir}/${_pkgname}
+	(
+		set -o pipefail
+		git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
+prepare() {
+	# Make build directory
+	mkdir ${srcdir}/build
+}
+
+build() {	
+	# Building package
+	cd ${srcdir}/build
+	qmake-qt5 ../${_pkgname}/src \
+		CONFIG+=release \
+		CONFIG+=install_translations \
+		-spec linux-g++
+	make -j $(grep -c ^processor /proc/cpuinfo)
+}
+
+package() {
+	# Installing package
+	cd ${srcdir}/build
+	make INSTALL_ROOT=${pkgdir} install
+}
