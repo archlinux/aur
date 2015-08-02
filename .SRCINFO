@@ -1,14 +1,14 @@
 pkgbase = unicode
 	pkgdesc = A command line unicode database query tool
 	pkgver = 1
-	pkgrel = 1
-	url = http://kassiopeia.juls.savba.sk/~garabik/software/unicode/
+	pkgrel = 2
+	url = https://github.com/garabik/unicode
 	arch = any
 	license = GPL3
-	depends = python2>=2.3
-	source = http://kassiopeia.juls.savba.sk/~garabik/software/unicode/unicode_1.tar.gz
+	depends = python
+	source = https://github.com/garabik/unicode/archive/v1.tar.gz
 	source = http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
-	sha256sums = d354eaba78f31f419ead9493ca97b8664264ce5975e9836fe7abab5371921b5e
+	sha256sums = 127b3b26bd9f9dd9836811b18f1acd8717937c0acb81dd8276d1c8776c13e75f
 	sha256sums = 38b17e1118206489a7e0ab5d29d7932212d38838df7d3ec025ecb58e8798ec20
 
 pkgname = unicode

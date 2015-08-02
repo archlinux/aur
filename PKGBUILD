@@ -3,26 +3,19 @@
 
 pkgname=unicode
 pkgver=1
-pkgrel=1
-pkgdesc='A command line unicode database query tool'
-url='http://kassiopeia.juls.savba.sk/~garabik/software/unicode/'
+pkgrel=2
+pkgdesc='A simple command line utility that displays properties for a given unicode character'
+url='https://github.com/garabik/unicode'
 arch=('any')
 license=('GPL3')
-depends=('python2>=2.3')
-source=("http://kassiopeia.juls.savba.sk/~garabik/software/unicode/${pkgname}_${pkgver}.tar.gz"
+depends=('python')
+source=("https://github.com/garabik/${pkgname}/archive/v${pkgver}.tar.gz"
         'http://www.unicode.org/Public/UNIDATA/UnicodeData.txt')
-sha256sums=('d354eaba78f31f419ead9493ca97b8664264ce5975e9836fe7abab5371921b5e'
+sha256sums=('127b3b26bd9f9dd9836811b18f1acd8717937c0acb81dd8276d1c8776c13e75f'
             '38b17e1118206489a7e0ab5d29d7932212d38838df7d3ec025ecb58e8798ec20')
 
-prepare() {
-  cd "$pkgname"
-
-  sed -i '1s/python$/python2/' unicode
-  sed -i '1s/python$/python2/' paracode
-}
-
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   install -Dm755 unicode "$pkgdir/usr/bin/unicode"
   install -Dm755 paracode "$pkgdir/usr/bin/paracode"
