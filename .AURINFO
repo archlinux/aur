@@ -1,0 +1,13 @@
+pkgbase = fehashmac
+	pkgdesc = Generic Hash and HMAC Program
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://fehashmac.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://sourceforge.net/projects/fehashmac/files/fehashmac/1.4.2/fehashmac-1.4.2.tar.gz
+
+pkgname = fehashmac
+
