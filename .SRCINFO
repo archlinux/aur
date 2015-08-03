@@ -1,6 +1,6 @@
 pkgbase = heroku-client-standalone
 	pkgdesc = CLI tool for creating and managing Heroku apps
-	pkgver = 3.37.1
+	pkgver = 3.40.6
 	pkgrel = 1
 	url = https://toolbelt.heroku.com/standalone
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = heroku-client-standalone
 	depends = ruby
 	conflicts = heroku-client
 	conflicts = heroku-toolbelt
-	source = https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client-3.37.1.tgz
-	md5sums = f18025b13b4c52e4c6e97f46689aa8e2
+	source = https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client-3.40.6.tgz
+	md5sums = 1ead3353d620e9c17fc4e118ace0328f
 
 pkgname = heroku-client-standalone
 
