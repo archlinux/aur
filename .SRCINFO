@@ -1,0 +1,15 @@
+pkgbase = 0verkill-git
+	pkgdesc = Bloody 2D action deathmatch-like game in ASCII-ART
+	pkgver = 20130806
+	pkgrel = 1
+	url = http://artax.karlin.mff.cuni.cz/~brain/0verkill/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xproto
+	depends = libx11
+	conflicts = 0verkill
+
+pkgname = 0verkill-git
+
