@@ -14,7 +14,7 @@ pkgbase = bash-git-prompt
 	source = Default_Arch.bgptheme
 	md5sums = SKIP
 	md5sums = db6f83999124b7fa660310a8d6624f70
-	md5sums = 8e4f18f5cfb65bdc5a94adb0477188ce
+	md5sums = 879555792d1b4c0ddef7cd81b0a3e35c
 
 pkgname = bash-git-prompt
 

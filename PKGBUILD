@@ -17,7 +17,7 @@ source=("git+https://github.com/magicmonty/${pkgname}"
         'Default_Arch.bgptheme')
 md5sums=('SKIP'
          'db6f83999124b7fa660310a8d6624f70'
-         '8e4f18f5cfb65bdc5a94adb0477188ce')
+         '879555792d1b4c0ddef7cd81b0a3e35c')
 install='bash-git-prompt.install'
 
 prepare() {
