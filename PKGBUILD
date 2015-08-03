@@ -2,14 +2,14 @@
 
 _pkgname='xdot.py'
 pkgname=xdot-git
-pkgver=126e65c
+pkgver=2fb8a8a
 pkgrel=1
 pkgdesc="Interactive viewer for Graphviz dot files (git version)"
 arch=('any')
 url="https://github.com/jrfonseca/xdot.py"
 license=('LGPL')
 makedepends=('git')
-depends=('graphviz' 'pygtk' 'python2-distribute')
+depends=('graphviz' 'pygtk' 'python2-distribute' 'python2-gobject')
 
 provides=('xdot')
 conflicts=('xdot')

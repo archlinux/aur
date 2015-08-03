@@ -1,6 +1,6 @@
 pkgbase = xdot-git
 	pkgdesc = Interactive viewer for Graphviz dot files (git version)
-	pkgver = 126e65c
+	pkgver = 2fb8a8a
 	pkgrel = 1
 	url = https://github.com/jrfonseca/xdot.py
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = xdot-git
 	depends = graphviz
 	depends = pygtk
 	depends = python2-distribute
+	depends = python2-gobject
 	provides = xdot
 	conflicts = xdot
 	source = git://github.com/jrfonseca/xdot.py.git
