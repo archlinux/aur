@@ -1,0 +1,17 @@
+pkgbase = scide
+	pkgdesc = Sleepy Cat IDE, ARM dev environment developed at CTU Prague
+	pkgver = 7.4.6
+	pkgrel = 2
+	url = http://pck338-242.feld.cvut.cz/scide/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb
+	depends = java-environment
+	depends = java-runtime
+	options = !strip
+	source = http://pck338-242.feld.cvut.cz/scide/scide_7.4.6-1_all.deb
+	md5sums = 7a4f140379737dadbe87fd0037ec2df0
+
+pkgname = scide
+
