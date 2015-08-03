@@ -2,7 +2,7 @@
 
 pkgname=image-bin
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Iterative Mapping and Assembly for Gap Elimination"
 arch=('x86_64')
 url="http://sourceforge.net/projects/image2/"
@@ -29,7 +29,7 @@ package() {
   cd $srcdir/IMAGE_version2.4
 
   for file in *.pl nucmer run.sh smalt_x86_64 ssaha2 ssaha2Build velvetg velveth ; do
-    install -Dm755 $file $pkgdir/usr/bin/$(basename $file .pl)
+    install -Dm755 $file $pkgdir/usr/bin/$(basename $file)
   done
 
   for example in example/* ; do

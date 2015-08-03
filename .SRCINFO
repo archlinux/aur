@@ -1,7 +1,7 @@
 pkgbase = image-bin
 	pkgdesc = Iterative Mapping and Assembly for Gap Elimination
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/image2/
 	arch = x86_64
 	license = custom
