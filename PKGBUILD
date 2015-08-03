@@ -7,7 +7,7 @@ pkgbase=linux-grsec-lts
 _srcname=linux-3.14
 _pkgver=3.14.48
 _grsecver=3.1
-_timestamp=201508011611
+_timestamp=201508020901
 _grsec_patch="grsecurity-$_grsecver-$_pkgver-$_timestamp.patch"
 pkgver=$_pkgver.$_timestamp
 pkgrel=1
@@ -37,7 +37,7 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
             'd654e53b889fd9244ce2ec9d8ab4cb5fe68d0c4ae6a49efa517850cbd22ebcd5'
             'SKIP'
-            'dc19a705f6752983729034fe47401626fe5b3d40f326b1ed56b72a0ed1eec6c2'
+            'd4da2df8813aca1278fa7574fe98a0dd74a874b043af000d8b37a09a200eb6b7'
             'SKIP'
             'c023b0a2886cf0c6883cf836b722a5319453471e2e276f088a8e93f6b937ab88'
             '33fc62ad665793260e249b553dd9e2063f2d7fecd0b159ad5b3dab61550070ed'
