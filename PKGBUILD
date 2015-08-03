@@ -3,7 +3,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
 pkgver=2.44.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc="Common C routines used by GTK+ and other libs (mingw-w64)"
 depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype)
@@ -21,7 +21,8 @@ source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.t
 "0021-use-64bit-stat-for-localfile-size-calc.all.patch"
 "0024-return-actually-written-data-in-printf.all.patch"
 "0027-no_sys_if_nametoindex.patch"
-"0028-inode_directory.patch")
+"0028-inode_directory.patch"
+"0029-grand.all.patch")
 sha256sums=('8811deacaf8a503d0a9b701777ea079ca6a4277be10e3d730d2112735d5eca07'
             '1420d8a8cadef2d33d748b31e5ae9c385aee1351d267dabf7a6a68fed6dfe7db'
             '5551461a90386837356d2b56d4011e5272ba1d3e6bc4262275ea0b7d0dfbce82'
@@ -31,8 +32,9 @@ sha256sums=('8811deacaf8a503d0a9b701777ea079ca6a4277be10e3d730d2112735d5eca07'
             '9ba68777f48816cbee154084c10d0d577a021ef406606d5c2d230761cf82b66b'
             'ad13c9aaa3d2ca7b1e3dcfd6d0c8043fa4fe45d8abb3659dbbc1fcbc412c10c7'
             '497d057e79943df233ca304c389f462d3c4bf55ab3267e94dbef892b79fe3274'
-            'bf80d21ed1931f839d5920d0c3633b7c84ceb8f6da051cecc942ce90eccb883f'
-            '97384c3e72f7d419eaa2377aeb85a382ce5441c5858e2c986a70dd380d3e1c1b')
+            'cc3bf5af21ea2138d5022163c95fc4dd5f1fe9c7f4169cac84d5a92ce851b44a'
+            '97384c3e72f7d419eaa2377aeb85a382ce5441c5858e2c986a70dd380d3e1c1b'
+            'b038511e9da94c75922612f1fb10f6f6f951094e8d58fe64c2fa397044446c40')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -48,6 +50,7 @@ prepare() {
   patch -Np1 -i "$srcdir/0024-return-actually-written-data-in-printf.all.patch"
   patch -Np1 -i "$srcdir/0027-no_sys_if_nametoindex.patch"
   patch -Np1 -i "$srcdir/0028-inode_directory.patch"
+  patch -Np1 -i "${srcdir}/0029-grand.all.patch"
   
   NOCONFIGURE=1 ./autogen.sh
 }
