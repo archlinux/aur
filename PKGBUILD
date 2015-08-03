@@ -10,6 +10,7 @@ url="https://github.com/eonpatapon/gnome-shell-extension-transmission-daemon"
 license=('GPL2')
 depends=('gnome-shell')
 makedepends=('git')
+provides=('gnome-shell-extension-transmission-daemon')
 conflicts=('gnome-shell-extension-transmission-daemon')
 install=${pkgname}.install
 source=('git://github.com/eonpatapon/gnome-shell-extension-transmission-daemon.git')
