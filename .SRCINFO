@@ -9,15 +9,13 @@ pkgbase = heavything
 	source = https://2ton.com.au/HeavyThing-1.13.tar.gz
 	sha256sums = 95e46bcaef8a90257ae2d81330700d72da0bb633c4ff38fbfeaded30c4f106c6
 
-pkgname = heavything-rwasa
+pkgname = rwasa
 
-pkgname = heavything-webslap
+pkgname = webslap
 
-pkgname = heavything-hnwatch
+pkgname = hnwatch
 
-pkgname = heavything-dhtool
+pkgname = dhtool
 
-pkgname = heavything-sshtalk
-
-pkgname = heavything-toplip
+pkgname = sshtalk
 
