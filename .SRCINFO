@@ -1,7 +1,7 @@
 pkgbase = libpng15
 	pkgdesc = A collection of routines used to create PNG format graphics files (1.5 branch)
-	pkgver = 1.5.22
-	pkgrel = 2
+	pkgver = 1.5.23
+	pkgrel = 1
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = i686
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = libpng15
 	depends = zlib
 	conflicts = libpng<1.6
 	options = !libtool
-	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.5.22.tar.xz
-	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.5.22.tar.xz.asc
-	source = http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.5.22-apng.patch.gz
-	sha256sums = 29bff0fb911236654dc3dbe6aed9c6f557b1ceb6aa28bed13089cf2b85d0af76
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.5.23.tar.xz
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.5.23.tar.xz.asc
+	source = http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.5.23-apng.patch.gz
+	sha256sums = 1f2dc3278e9d0c3aba618f9d585c24d744d65cad76cf799c9405085033e41f12
 	sha256sums = SKIP
-	sha256sums = c7a624b53cc8d8a50602f5704682ceae8b6918bb703df5ad113ded84a9597e01
+	sha256sums = c1916ce42cd189990f8a9a3a0dd0216fc366d82fdfb7935de88603ce04eb3362
 
 pkgname = libpng15
 
