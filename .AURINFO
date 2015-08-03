@@ -1,0 +1,16 @@
+pkgbase = antlrworks
+	pkgdesc = A netbeans based grammar IDE
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://tunnelvisionlabs.com/products/demo/antlrworks
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = java-environment
+	source = http://tunnelvisionlabs.com/downloads/antlr/2013-07-21-antlrworks-2.1.zip
+	options = !strip
+	options = libtool
+	options = staticlibs
+
+pkgname = antlrworks
+
