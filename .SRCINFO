@@ -1,0 +1,17 @@
+pkgbase = tuxmath
+	pkgdesc = An arcade game that helps kids practice their math facts
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://tux4kids.alioth.debian.org/tuxmath/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = make
+	depends = t4k_common
+	options = !docs
+	source = http://distro.ibiblio.org/slitaz/sources/packages/t/tuxmath_w_fonts-2.0.3.tar.gz
+	sha1sums = 74510bc342d6cefb6dae101cfc8c1207f29d7db9
+
+pkgname = tuxmath
+
