@@ -1,0 +1,13 @@
+pkgbase = ash-mailcap-autoview
+	pkgdesc = View Atlassian Stash review comments context directly from mail client
+	pkgver = 2.1adc2e6
+	pkgrel = 1
+	url = https://github.com/seletskiy/ash-mailcap-autoview
+	arch = any
+	license = GPL
+	makedepends = go
+	source = git+https://github.com/seletskiy/ash-mailcap-autoview
+	md5sums = SKIP
+
+pkgname = ash-mailcap-autoview
+
