@@ -1,0 +1,14 @@
+pkgbase = git-debubble
+	pkgdesc = Clean up merge bubbles in a Git repository
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.catb.org/esr/git-debubble/
+	arch = any
+	license = GPL2
+	makedepends = asciidoc
+	depends = git
+	source = http://www.catb.org/esr/git-debubble/git-debubble-1.1.tar.gz
+	sha256sums = 6b2cd99cea708a06b96068eedaa402ce61a50870cd734e446055312da031b6ef
+
+pkgname = git-debubble
+
