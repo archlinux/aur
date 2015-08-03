@@ -10,6 +10,7 @@ url="https://github.com/zzrough/gs-extensions-drop-down-terminal"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
+provides=('gnome-shell-extension-drop-down-terminal')
 conflicts=('gnome-shell-extension-drop-down-terminal')
 install=${pkgname}.install
 source=('git://github.com/zzrough/gs-extensions-drop-down-terminal')
