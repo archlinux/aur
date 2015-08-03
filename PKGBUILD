@@ -52,7 +52,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.1
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -69,8 +69,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
 'config.x86_64' 'config'
 'linux-ck.preset'
-'0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
-'bitmap-enable-booting-for-dm-md-raid1.patch'
 'change-default-console-loglevel.patch'
 # ck1
 "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
@@ -82,13 +80,11 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
+            '0976127a60a950acf2796f642ac647e5231573b9a0f25703a37a50b988bf3b88'
             'SKIP'
             '988297a8bee2b4e42b90f2601f28d655dd19331b8e5e573c8e5227dcd6ff46dd'
             '2bd0424b65d522d6605d979e41142aeaa406e881567ebb725f05d9ede33552af'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
-            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
-            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'd383e24325333b0045ddbfee4cfc2491ab25d9a6446094dbe0e5ad7ed3de133a'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
@@ -106,15 +102,6 @@ prepare() {
 	# add upstream patch
 	patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-	# Fix bluetooth chip initialization on some macbooks (FS#45554)
-	# http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
-	# https://bugzilla.kernel.org/show_bug.cgi?id=100651
-	patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-
-	# Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
-	# https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
-	patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
-
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -123,7 +110,7 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck1 including BFS v0.462 and pending patches from CK"
+	msg "Patching source with ck1 including BFS v0.463"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
@@ -247,8 +234,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.462.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.462.'
+	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.463.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.463.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
