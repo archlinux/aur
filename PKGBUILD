@@ -1,31 +1,30 @@
 # Maintainer: jtts
-# Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 _pkgbasename=colord
 pkgname=lib32-$_pkgbasename
-pkgver=1.2.9
-pkgrel=3
+pkgver=1.2.11
+pkgrel=1
 pkgdesc="System daemon for managing color devices (32-bit)"
 arch=(x86_64)
 url="http://www.freedesktop.org/software/colord"
 license=(GPL2)
-depends=("lib32-lcms2" "lib32-libgusb>=0.2.2" "lib32-polkit" "lib32-sqlite" "lib32-systemd>=221" "lib32-libgudev" "lib32-dconf" "lib32-dbus" "lib32-glib2" "$_pkgbasename>=1.2.9-3")
+depends=("lib32-lcms2" "lib32-libgusb>=0.2.2" "lib32-polkit" "lib32-sqlite" "lib32-systemd>=221" "lib32-libgudev" "lib32-dconf" "lib32-dbus" "lib32-glib2" "$_pkgbasename>=$pkgver-$pkgrel")
 makedepends=(gcc-multilib intltool gobject-introspection vala argyllcms) # docbook2x sane bash-completion
 #optdepends=('sane: scanner support'
 #            'argyllcms: color profiling')
 conflicts=('shared-color-profiles')
 #install=colord.install
-source=($url/releases/$_pkgbasename-$pkgver.tar.xz
-        0001-Fix-session-helper-failing-to-find-argyll-tool.patch)
-sha1sums=('1b6319812b12ab7f906983959bbaaf2e5b78bdb7'
-          '6d92d75cda7736e734f7472bed52dbc90ca3ea93')
+source=($url/releases/$_pkgbasename-$pkgver.tar.xz)
+#sha1sums=('efd7b7b90ea17a46c12f4dc4138c45f3629a5d2c')
+#          'SKIP')
 #validpgpkeys=('163EB50119225DB3DF8F49EA17ACBA8DFA970E17')
+sha256sums=('dac29c83659703a8548db561bc670832f26b30f7a88ed90a6530eb052a10df8f')
 
 prepare() {
   cd $_pkgbasename-$pkgver
-  patch -Np1 -i ../0001-Fix-session-helper-failing-to-find-argyll-tool.patch
 }
 
 build() {
