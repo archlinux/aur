@@ -9,7 +9,7 @@ pkgdesc="NVIDIA driver for linux (beta)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('linux' "nvidia-utils-beta=$pkgver" 'libgl')
+depends=('linux' "nvidia-utils-beta>=$pkgver" 'libgl')
 makedepends=('linux-headers' 'pacman>=4.2.0')
 provides=('nvidia')
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')

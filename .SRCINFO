@@ -10,7 +10,7 @@ pkgbase = nvidia-beta
 	makedepends = linux-headers
 	makedepends = pacman>=4.2.0
 	depends = linux
-	depends = nvidia-utils-beta=355.06
+	depends = nvidia-utils-beta>=355.06
 	depends = libgl
 	provides = nvidia
 	conflicts = nvidia-96xx
