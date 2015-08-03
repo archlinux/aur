@@ -1,0 +1,41 @@
+From 838f74c15398339b4d8cb705df1d0c9141dca62e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 1 Aug 2015 18:56:07 +0200
+Subject: [PATCH] netstat: some fixes for GTK3
+
+---
+ data/ui/netstatus.glade   | 1 -
+ plugins/netstat/netstat.c | 4 ++++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/data/ui/netstatus.glade b/data/ui/netstatus.glade
+index fc956d3..8dc995a 100644
+--- a/data/ui/netstatus.glade
++++ b/data/ui/netstatus.glade
+@@ -8,7 +8,6 @@
+     <property name="window_position">center</property>
+     <property name="default_width">300</property>
+     <property name="type_hint">dialog</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox2">
+         <property name="visible">True</property>
+diff --git a/plugins/netstat/netstat.c b/plugins/netstat/netstat.c
+index d43ae36..f0764ad 100644
+--- a/plugins/netstat/netstat.c
++++ b/plugins/netstat/netstat.c
+@@ -197,7 +197,11 @@ wireless_menu(netdev_info *ni)
+ 
+             signal_quality = gtk_progress_bar_new();
+             gtk_widget_set_size_request(signal_quality, 100, -1);
++#if GTK_CHECK_VERSION(3, 0, 0)
++            gtk_orientable_set_orientation(GTK_ORIENTABLE(signal_quality), GTK_ORIENTATION_HORIZONTAL);
++#else
+             gtk_progress_bar_set_orientation(GTK_PROGRESS_BAR(signal_quality), GTK_PROGRESS_LEFT_TO_RIGHT);
++#endif
+             gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(signal_quality), quality_per);
+             gtk_box_pack_start(GTK_BOX(item_box), signal_quality, FALSE, FALSE, 0);
+ 
+-- 
+2.5.0
+

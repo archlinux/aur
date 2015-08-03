@@ -1,0 +1,59 @@
+From d5669d1eae01745172f4bd1d9ac8c792b9bb6959 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 3 Aug 2015 03:44:21 +0200
+Subject: [PATCH] batt plugin: Fix with GTK3
+
+expose-event is not available on GTK3.
+---
+ plugins/batt/batt.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/plugins/batt/batt.c b/plugins/batt/batt.c
+index 42eda69..a2d2213 100644
+--- a/plugins/batt/batt.c
++++ b/plugins/batt/batt.c
+@@ -393,6 +393,19 @@ static gint configureEvent(GtkWidget *widget, GdkEventConfigure *event,
+ }
+ 
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++static gint draw(GtkWidget *widget, cairo_t *cr, lx_battery *lx_b) {
++
++    ENTER;
++    cairo_set_source_rgb(cr, 0, 0, 0);
++    cairo_set_source_surface(cr, lx_b->pixmap, 0, 0);
++    cairo_paint(cr);
++
++    check_cairo_status(cr);
++
++    RET(FALSE);
++}
++#else
+ static gint exposeEvent(GtkWidget *widget, GdkEventExpose *event, lx_battery *lx_b) {
+ 
+     ENTER;
+@@ -411,6 +424,7 @@ static gint exposeEvent(GtkWidget *widget, GdkEventExpose *event, lx_battery *lx
+ 
+     RET(FALSE);
+ }
++#endif
+ 
+ /* updates length, border, and height/width appropriate to orientation */
+ static void updateSizes(lx_battery *b)
+@@ -507,8 +521,13 @@ static GtkWidget * constructor(LXPanel *panel, config_setting_t *settings)
+ 
+     g_signal_connect (G_OBJECT (lx_b->drawingArea),"configure-event",
+           G_CALLBACK (configureEvent), (gpointer) lx_b);
++#if GTK_CHECK_VERSION(3, 0, 0)
++    g_signal_connect (G_OBJECT (lx_b->drawingArea), "draw",
++          G_CALLBACK(draw), (gpointer) lx_b);
++#elif
+     g_signal_connect (G_OBJECT (lx_b->drawingArea), "expose-event",
+           G_CALLBACK (exposeEvent), (gpointer) lx_b);
++#endif
+ 
+     /* Apply more default options */
+     if (! lx_b->alarmCommand)
+-- 
+2.5.0
+

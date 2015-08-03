@@ -1,0 +1,26 @@
+From 60ba7792b4f25155a3a4547add257c73fc8e96fd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 3 Aug 2015 13:49:20 +0200
+Subject: [PATCH] launchtaskbar: fix scroll event with GTK3
+
+---
+ plugins/launchtaskbar.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/plugins/launchtaskbar.c b/plugins/launchtaskbar.c
+index 2a4cf82..69c0357 100644
+--- a/plugins/launchtaskbar.c
++++ b/plugins/launchtaskbar.c
+@@ -2818,6 +2818,9 @@ static void task_build_gui(LaunchTaskBarPlugin * tb, Task * tk)
+         gtk_widget_set_state(tk->button, GTK_STATE_NORMAL);
+     gtk_drag_dest_set(tk->button, 0, NULL, 0, 0);
+     gtk_drag_source_set(tk->button, GDK_BUTTON1_MASK, task_button_target_list, task_button_n_targets, GDK_ACTION_MOVE);
++#if GTK_CHECK_VERSION(3, 0, 0)
++    gtk_widget_add_events(tk->button, GDK_SCROLL_MASK);
++#endif
+ 
+     /* Connect signals to the button. */
+     g_signal_connect(tk->button, "button-press-event", G_CALLBACK(taskbar_button_press_event), (gpointer) tk);
+-- 
+2.5.0
+

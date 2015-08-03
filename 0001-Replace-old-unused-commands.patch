@@ -1,0 +1,41 @@
+From 3bbb1f8ef3b0ac1e599ae23332e9811a545bd5eb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 3 Aug 2015 23:28:59 +0200
+Subject: [PATCH] Replace old, unused commands
+
+- Use notify send instead of xmessage
+- Use nm-connection-editor instead of network-admin
+---
+ plugins/batt/batt.c           | 2 +-
+ plugins/netstatus/netstatus.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/batt/batt.c b/plugins/batt/batt.c
+index a2d2213..b411131 100644
+--- a/plugins/batt/batt.c
++++ b/plugins/batt/batt.c
+@@ -531,7 +531,7 @@ static GtkWidget * constructor(LXPanel *panel, config_setting_t *settings)
+ 
+     /* Apply more default options */
+     if (! lx_b->alarmCommand)
+-        lx_b->alarmCommand = g_strconcat("xmessage ", _("Battery low"), NULL);
++        lx_b->alarmCommand = g_strconcat("notify-send \"", _("Battery low"), "\" --icon=battery-caution", NULL);
+     if (! lx_b->backgroundColor)
+         lx_b->backgroundColor = g_strdup("black");
+     if (! lx_b->chargingColor1)
+diff --git a/plugins/netstatus/netstatus.c b/plugins/netstatus/netstatus.c
+index 064c185..f7bfde9 100644
+--- a/plugins/netstatus/netstatus.c
++++ b/plugins/netstatus/netstatus.c
+@@ -121,7 +121,7 @@ netstatus_constructor(LXPanel *panel, config_setting_t *settings)
+         tmp = "eth0";
+     ns->iface = g_strdup(tmp);
+     if (!config_setting_lookup_string(settings, "configtool", &tmp))
+-        tmp = "network-admin --configure %i";
++        tmp = "nm-connection-editor";
+     ns->config_tool = g_strdup(tmp);
+ 
+     iface = netstatus_iface_new(ns->iface);
+-- 
+2.5.0
+
