@@ -1,0 +1,15 @@
+pkgbase = apache-opennlp
+	pkgdesc = A machine learning based toolkit for the processing of natural language text
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = http://opennlp.apache.org/
+	arch = any
+	license = APACHE
+	depends = java-environment
+	depends = bash
+	source = http://www.apache.org/dist//opennlp/opennlp-1.6.0/apache-opennlp-1.6.0-bin.tar.gz
+	md5sums = 8fe90ccaf9b2ea16767893342e4c53ee
+	sha512sums = 0dd18f0efcf1cf0213da10c32f2dbbaddc163031e68a7167b1cc24c73d2fd11ee6b564f7a9cf1d4e405723a798992b67ed7a92f7882b068c84e516f32097e477
+
+pkgname = apache-opennlp
+
