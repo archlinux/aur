@@ -35,7 +35,7 @@ build() {
   if test "$CARCH" == i686; then
     buildarch="ia32"
   fi
-  make -e os=LINUX arch=$buildarch
+  make os=LINUX arch=$buildarch
 }
 
 package() {
