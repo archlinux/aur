@@ -1,5 +1,5 @@
 diff --git a/Telegram/SourceFiles/application.cpp b/Telegram/SourceFiles/application.cpp
-index 8f14416..2ef9b2c 100644
+index d4c4346..ad04085 100644
 --- a/Telegram/SourceFiles/application.cpp
 +++ b/Telegram/SourceFiles/application.cpp
 @@ -95,7 +95,10 @@ namespace {
