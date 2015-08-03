@@ -1,10 +1,11 @@
-# Maintainer: Tiago Camargo <tcamargo@gmail.com>
+# Maintainer: Davi da Silva Böger <dsboger@gmail.com>
+# Contributor: Tiago Camargo <tcamargo@gmail.com>
 # Contributor: Robson Roberto Souza Peixoto <robsonpeixoto@gmail.com>
 pkgname=abntex
 pkgver=0.9_beta2
 _pkgver=${pkgver/_/-}
 pkgrel=2
-pkgdesc='abntex is a class LaTeX for writing documents in ABNT standard.'
+pkgdesc='LaTeX class for writing documents conforming to ABNT standard (legacy).'
 arch=('i686' 'x86_64')
 url="http://abntex.sourceforge.net/"
 license=('LPPL')

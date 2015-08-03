@@ -1,5 +1,5 @@
 pkgbase = abntex
-	pkgdesc = abntex is a class LaTeX for writing documents in ABNT standard.
+	pkgdesc = LaTeX class for writing documents conforming to ABNT standard (legacy).
 	pkgver = 0.9_beta2
 	pkgrel = 2
 	url = http://abntex.sourceforge.net/
