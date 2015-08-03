@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=wmx-git
 _pkgname=wmx
-pkgver=7.r13.gb936e55
+pkgver=7.1.r0.gb936e55
 pkgrel=1
 pkgdesc="The ideal window manager for today's elegant and ascetic programmer"
 arch=('x86_64' 'i686')
