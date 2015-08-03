@@ -1,12 +1,14 @@
 pkgbase = soundfont-timgm6mb
 	pkgdesc = A low-overhead soundfont for software synthesizers
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ocmnet.com/saxguru/Timidity.htm
 	arch = any
 	license = GPL2
 	source = http://sourceforge.net/p/mscore/code/HEAD/tree/trunk/mscore/share/sound/TimGM6mb.sf2?format=raw
+	source = timidity-timgm6mb.cfg
 	md5sums = 1f1ad87ae6f87033d9a591eca567d919
+	md5sums = a9e24f8f2f7d7f814b63b3538a88c6ee
 
 pkgname = soundfont-timgm6mb
 
