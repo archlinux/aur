@@ -1,0 +1,14 @@
+pkgbase = ash-mailcap
+	pkgdesc = Edit reviews from Atlassian Stash from mail client
+	pkgver = 20150803
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = ash-mailcap::git://github.com/seletskiy/ash-mailcap
+	md5sums = SKIP
+
+pkgname = ash-mailcap
+
