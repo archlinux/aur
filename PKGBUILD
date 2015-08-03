@@ -156,7 +156,7 @@ package_nvidia-utils-full-beta() {
   depends=('xorg-server')
   optdepends=('gtk2: nvidia-settings (GTK+ v2)'
               'gtk3: nvidia-settings (GTK+ v3)'
-              'opencl-nvidia-beta: OpenCL support'
+              'opencl-nvidia-full-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig')
   provides=("nvidia-utils=$pkgver")
   conflicts=('nvidia-utils')

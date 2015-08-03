@@ -32,7 +32,7 @@ pkgname = nvidia-utils-full-beta
 	depends = xorg-server
 	optdepends = gtk2: nvidia-settings (GTK+ v2)
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
-	optdepends = opencl-nvidia-beta: OpenCL support
+	optdepends = opencl-nvidia-full-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	provides = nvidia-utils=355.06
 	conflicts = nvidia-utils
