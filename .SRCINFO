@@ -1,0 +1,13 @@
+pkgbase = probe
+	pkgdesc = ProBE is an animator for CSP processes allowing the user to explore the behaviour of models interactively
+	pkgver = 1.30
+	pkgrel = 1
+	url = http://www.fsel.com/probe_download.html
+	arch = x86_64
+	arch = i686
+	license = Custom
+	source = http://www.fsel.com/download/probe-1.30-linux6.tar.gz
+	md5sums = 8c1809f326ea0cf8013d0e4b24c7e6ac
+
+pkgname = probe
+
