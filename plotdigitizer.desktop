@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Plot Digitizer
+Comment=Digitize scanned plots of functional data
+Exec=/usr/bin/plotdigitizer.sh
+Icon=plotdigitizer
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Science;Math;
