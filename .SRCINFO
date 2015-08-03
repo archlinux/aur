@@ -1,0 +1,33 @@
+pkgbase = kdenlive-applications15.04-git
+	pkgdesc = A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version, Applications/15.04 branch)
+	pkgver = 15.04.0.r5746.e116517
+	pkgrel = 1
+	url = http://http://www.kdenlive.org/
+	install = kdenlive-applications15.04-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = v4l-utils
+	depends = glu
+	depends = knewstuff
+	depends = kplotting
+	depends = knotifyconfig
+	depends = mlt
+	depends = hicolor-icon-theme
+	optdepends = ffmpeg: for FFmpeg plugin
+	optdepends = cdrkit: for creation of DVD ISO images
+	optdepends = dvdauthor: for creation of DVD
+	optdepends = dvgrab: for firewire capture
+	optdepends = libdv: for webcam capture (if FFmpeg is not installed)
+	optdepends = recordmydesktop: for screen capture
+	optdepends = xine-ui: for DVD preview
+	provides = kdenlive
+	conflicts = kdenlive
+	source = git://anongit.kde.org/kdenlive#branch=Applications/15.04
+	sha1sums = SKIP
+
+pkgname = kdenlive-applications15.04-git
+
