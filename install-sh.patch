@@ -1,0 +1,14 @@
+--- install-sh	2004-01-04 14:33:30.000000000 +0100
++++ install-sh.new	2014-01-27 22:09:17.494699061 +0100
+@@ -88,9 +88,9 @@
+         fi
+     fi
+ 
+-    mkdir -p $PREFIX_BIN $PREFIX/man/man8
++    mkdir -p $PREFIX_BIN $PREFIX/share/man/man8
+     cp -af backup2l $PREFIX_BIN
+-    gzip -9 -c backup2l.8 > $PREFIX/man/man8/backup2l.8.gz
++    gzip -9 -c backup2l.8 > $PREFIX/share/man/man8/backup2l.8.gz
+     echo "Program files installed."
+ 
+     if [[ "$TOUCH_CONF" == "1" && "$NO_PROMPT" == "0" ]]; then

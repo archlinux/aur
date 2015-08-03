@@ -1,0 +1,21 @@
+pkgbase = backup2l
+	pkgdesc = Low-maintenance backup/restore tool
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://backup2l.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = awk
+	depends = bash
+	depends = findutils
+	depends = grep
+	depends = gzip
+	depends = sed
+	optdepends = bzip2
+	optdepends = openssl
+	source = http://downloads.sourceforge.net/backup2l/backup2l_1.5.tar.gz
+	md5sums = 464dc8cddf172bc44ed6ce64564a83fb
+
+pkgname = backup2l
+
