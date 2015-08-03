@@ -1,6 +1,6 @@
 pkgbase = selfoss
 	pkgdesc = The new multipurpose rss reader, live stream, mashup, aggregation web application
-	pkgver = 2.13
+	pkgver = 2.14
 	pkgrel = 1
 	url = http://selfoss.aditu.de/
 	install = selfoss.install
@@ -19,8 +19,8 @@ pkgbase = selfoss
 	optdepends = curl: for automatic updating feeds with cron
 	backup = etc/webapps/selfoss/config.ini
 	backup = usr/share/webapps/selfoss/config.ini
-	source = https://github.com/SSilence/selfoss/releases/download/2.13/selfoss-2.13.zip
-	sha256sums = 407d7899bbac684e0c78385ad02af027af441198683ceedc23edc58c0dd19b8a
+	source = https://github.com/SSilence/selfoss/releases/download/2.14/selfoss-2.14.zip
+	sha256sums = 23ddf9de2d5192133701576d66e45e1509b468160236e600b80d86737c1052e9
 
 pkgname = selfoss
 

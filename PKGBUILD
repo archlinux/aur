@@ -2,7 +2,7 @@
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 
 pkgname=selfoss
-pkgver=2.13
+pkgver=2.14
 pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/webapps/selfoss/config.ini'
         'usr/share/webapps/selfoss/config.ini')
 install=${pkgname}.install
 source=("https://github.com/SSilence/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('407d7899bbac684e0c78385ad02af027af441198683ceedc23edc58c0dd19b8a')
+sha256sums=('23ddf9de2d5192133701576d66e45e1509b468160236e600b80d86737c1052e9')
 
 package() {
   rm -rf "${srcdir}"/{README.md,${pkgname}-${pkgver}.zip}
