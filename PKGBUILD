@@ -5,7 +5,7 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=352.30
+pkgver=355.06
 pkgrel=1
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 makedepends=('pacman>=4.2.0')
@@ -24,8 +24,8 @@ source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.
 
 # http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run.md5
 # http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run.md5
-md5sums=('7e59d84eafe2482b2f02df692b9168d5')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='135dd90db609cecad8e74bde0054cf6f'
+md5sums=('8bdf64adc94bd9e170e4a7412ca9e5ba')
+[ "${CARCH}" = 'x86_64' ] && md5sums[0]='8bdf64adc94bd9e170e4a7412ca9e5ba'
 
 install=${pkgname}.install
 
@@ -39,9 +39,15 @@ prepare() {
   sh ${_pkg}.run --extract-only
 
   pushd ${_pkg}/kernel
-    cat uvm/dkms.conf.fragment >> dkms.conf
+  eval "sed -i 's/__VERSION_STRING/${pkgver}/' dkms.conf"
+  sed -i 's/__JOBS/${&}/' dkms.conf
+  sed -i '4iBUILT_MODULE_NAME[0]="nvidia"\
+DEST_MODULE_LOCATION[0]="/kernel/drivers/video"\
+BUILT_MODULE_NAME[1]="nvidia-uvm"\
+DEST_MODULE_LOCATION[1]="/kernel/drivers/video"\
+__JOBS=`nproc`' dkms.conf
+  sed -i 's/__DKMS_MODULES//' dkms.conf
   popd
-
   popd
 }
 
