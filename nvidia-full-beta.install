@@ -1,5 +1,5 @@
 _depmod() {
-    _extramodules='extramodules-3.18-ARCH'
+    _extramodules='extramodules-4.1-ARCH'
 
     # Update module dependencies
     depmod $(cat /usr/lib/modules/$_extramodules/version)
