@@ -1,48 +1,72 @@
-# Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
-# Contributor: XZS <d dot f dot fischer at web dot de>
+# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: Alucryd <alucryd at gmail dot com>
+# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
+# You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-coverflow-alt-tab-git
-pkgver=1.0.r4.gdb5bd2c
+pkgver=1.0.r0.g9d333a9
 pkgrel=1
-pkgdesc="Alternate alt-tab behaviour: iterates through windows in a manner akin to Cover Flow."
+pkgdesc="Replacement of Alt-Tab, iterates through windows in a cover-flow manner"
 arch=('any')
 url="https://github.com/dmo60/CoverflowAltTab"
 license=('GPL')
-depends=('gnome-shell')
-makedepends=('git')
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
-install=gschemas.install
-source=("${pkgname%-*}::git+https://github.com/dmo60/CoverflowAltTab.git")
-sha512sums=('SKIP')
-_branch=master
 
+makedepends+=('git')
+source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+md5sums+=('SKIP')
+provides+=($_gitname)
+conflicts+=($_gitname)
 pkgver() {
-  cd "${srcdir}/${pkgname%-*}"
-  git checkout ${_branch} --quiet
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd ${_gitname:-$pkgname}
+  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  [ ${PIPESTATUS[0]} -ne 0 ] && \
+printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+depends[gnomeshell]=gnome-shell
 
-prepare() {
-  cd "${srcdir}/${pkgname%-*}"
-  git checkout ${_branch}
+package_20_version() {
+  local compatibles=($(\
+    find -path ./pkg -type d -prune -o \
+    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
+    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
+  depends+=("gnome-shell>=3.${compatibles[0]}")
+  local max="${compatibles[-1]}"
+  if [ "3.$max" != $(
+    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+  ) ]; then
+    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
+  fi
+  unset depends[gnomeshell]
 }
-
 package() {
-  cd "${srcdir}/${pkgname%-*}"
+  for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
+  do
+    $function
+  done
+}
+package_01_locate() {
   msg2 'Locating extension...'
-  cd "$(dirname $(find -name 'metadata.json'))"
-  _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
+  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+  extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  destdir="$pkgdir/usr/share/gnome-shell/extensions/$extname"
+}
+
+package_02_install() {
   msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "${_destdir}" '{}' +
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
+}
+if [ -z "$install" ]
+then
+  install=gschemas.install
+fi
+
+package_10_schemas() {
   msg2 'Installing schemas...'
   find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
-  msg2 'Installing localization files...'
+}
+package_10_locale() {
+  msg2 'Installing translations...'
   (
     cd locale
     for locale in */
