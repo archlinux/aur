@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libdbus
 	pkgdesc = DBus library (mingw-w64)
-	pkgver = 1.8.18
+	pkgver = 1.8.20
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/dbus
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = mingw-w64-libdbus
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.18.tar.gz
-	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.18.tar.gz.asc
-	md5sums = 83e607e9ccb1c921d5b6bbea2376a36c
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.20.tar.gz
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.20.tar.gz.asc
+	md5sums = b49890bbabedab3a1c3f4f73c7ff8b2b
 	md5sums = SKIP
 
 pkgname = mingw-w64-libdbus

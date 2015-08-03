@@ -1,6 +1,6 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-libdbus
-pkgver=1.8.18
+pkgver=1.8.20
 pkgrel=1
 arch=(any)
 pkgdesc="DBus library (mingw-w64)"
@@ -13,7 +13,7 @@ replaces=(mingw-w64-dbus)
 license=("custom" "GPL")
 url="http://www.freedesktop.org/wiki/Software/dbus"
 source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz"{,.asc})
-md5sums=('83e607e9ccb1c921d5b6bbea2376a36c'
+md5sums=('b49890bbabedab3a1c3f4f73c7ff8b2b'
          'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
