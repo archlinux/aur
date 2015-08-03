@@ -1,7 +1,7 @@
 [Unit]
 Description=fencing daemon for libvirt
 Documentation=man:fence_virtd
-Before=libvirtd.service
+After=libvirtd.service
 
 [Service]
 Type=simple
