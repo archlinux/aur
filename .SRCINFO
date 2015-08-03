@@ -1,0 +1,18 @@
+pkgbase = bamtools
+	pkgdesc = C++ API & command-line toolkit for working with BAM data
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/pezmaster31/bamtools
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = cmake
+	depends = gcc-libs
+	depends = zlib
+	source = bamtools-2.4.0.tar.gz::https://github.com/pezmaster31/bamtools/archive/v2.4.0.tar.gz
+	source = lib-destination.patch::https://github.com/pezmaster31/bamtools/pull/82.patch
+	md5sums = 6139d00c1b1fe88fe15d094d8a74d8b9
+	md5sums = fb81680ab082f3214dfbd409505e7fc3
+
+pkgname = bamtools
+
