@@ -2,7 +2,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=mosh-git
-pkgver=20150611
+pkgver=20150728
 pkgrel=1
 pkgdesc="Mobile shell, surviving disconnects with local echo and line editing, development version"
 arch=('i686' 'x86_64' 'arm')
@@ -32,5 +32,4 @@ build() {
 package() {
   cd "${srcdir}/mosh"
   make DESTDIR="${pkgdir}" install
-  rmdir "${pkgdir}/usr/etc"
 }

@@ -1,6 +1,6 @@
 pkgbase = mosh-git
 	pkgdesc = Mobile shell, surviving disconnects with local echo and line editing, development version
-	pkgver = 20150611
+	pkgver = 20150728
 	pkgrel = 1
 	url = http://mosh.mit.edu/
 	arch = i686
