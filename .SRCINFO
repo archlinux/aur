@@ -10,6 +10,7 @@ pkgbase = python-systemd-git
 	depends = python-lxml
 	depends = systemd
 	provides = python-systemd
+	conflicts = python-systemd
 	source = python-systemd-git::git+https://github.com/systemd/python-systemd.git
 	md5sums = SKIP
 
