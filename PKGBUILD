@@ -282,7 +282,7 @@ package_nvidia-utils-full-beta-all() {
 
 package_nvidia-full-beta-all() {
   pkgdesc="NVIDIA drivers for linux (beta)"
-  depends=("nvidia-utils-full-beta=$pkgver" 'libgl')
+  depends=("nvidia-utils-full-beta>=$pkgver" 'libgl')
   provides=('nvidia')
   conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
   install=$pkgname.install
