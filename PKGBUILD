@@ -81,7 +81,6 @@ build() {
 
     # Unified memory: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
     if [[ $CARCH = x86_64 ]]; then
-      cd uvm
       msg2 "Building Unified memory module for $_kernel..."
       make SYSSRC=/usr/lib/modules/$_kernel/build module
     fi
@@ -99,7 +98,7 @@ package() {
 
     # Unified Memory
     if [[ $CARCH = x86_64 ]]; then
-      install -Dm644 $_pkg/kernel-$_kernel/uvm/nvidia-uvm.ko \
+      install -Dm644 $_pkg/kernel-$_kernel/nvidia-uvm.ko \
             "$pkgdir/$_extramod/nvidia-uvm.ko"
     fi
 
