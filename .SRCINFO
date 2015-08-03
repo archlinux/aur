@@ -1,0 +1,17 @@
+pkgbase = php-box-git
+	pkgdesc = An application for building and managing phars.
+	pkgver = latest
+	pkgrel = 1
+	url = http://box-project.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = php-composer
+	depends = php>=5.3.3
+	provides = box
+	conflicts = php-box
+	source = box2::git+https://github.com/box-project/box2.git
+	md5sums = SKIP
+
+pkgname = php-box-git
+
