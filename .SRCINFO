@@ -1,6 +1,6 @@
 pkgbase = ruby-github-markdown-preview
 	pkgdesc = Local previews for Github Flavored Markdown files
-	pkgver = 3.1.4
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/dmarcotte/github-markdown-preview
 	arch = any
@@ -12,12 +12,13 @@ pkgbase = ruby-github-markdown-preview
 	depends = ruby-json
 	depends = ruby-listen
 	depends = ruby-sanitize
+	optdepends = ruby-github-linguist: enable syntax highlighting for code blocks
 	provides = github-markdown-preview
 	provides = ruby-github-markdown-preview
 	conflicts = github-markdown-preview
-	noextract = github-markdown-preview-3.1.4.gem
-	source = https://rubygems.org/downloads/github-markdown-preview-3.1.4.gem
-	sha256sums = 31a43eb026876e7f151095ab42c2992cf5afb1526fdc312917478a36d040915d
+	noextract = github-markdown-preview-4.0.0.gem
+	source = https://rubygems.org/downloads/github-markdown-preview-4.0.0.gem
+	sha256sums = 653ad9270c99f91aa21f9b9bf7f8148fc868c0a78087ec60e2ccaefc8d4352f7
 
 pkgname = ruby-github-markdown-preview
 
