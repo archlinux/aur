@@ -5,7 +5,7 @@
 
 # Build the lib32 packages too? This only needs to be defined once and will
 # remain until the packages are removed. "1" to enable.
-_lib32=0
+_lib32=1
 
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
 pkgver=355.06
@@ -101,7 +101,6 @@ build() {
 
     # Unified memory: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
     if [[ $CARCH = x86_64 ]]; then
-      cd uvm
       msg2 "Building Unified memory module for $_kernel..."
       make SYSSRC=/usr/lib/modules/$_kernel/build module
     fi
@@ -139,7 +138,7 @@ package_nvidia-libgl-full-beta-all() {
   # GLX extension for X (link)
   install -d "$pkgdir"/usr/lib/xorg/modules/extensions/
   ln -s /usr/lib/nvidia/xorg/modules/extensions/libglx.so.$pkgver \
-     "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so.$pkgver
+        "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so.$pkgver
   ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so.1
   ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so
 
@@ -149,9 +148,9 @@ package_nvidia-libgl-full-beta-all() {
   ln -s libGL.so.$pkgver "$pkgdir"/usr/lib/libGL.so
 
   # EGL (link)
-  ln -s /usr/lib/nvidia/libEGL.so.$pkgver "$pkgdir"/usr/lib/libEGL.so.$pkgver
-  ln -s libEGL.so.$pkgver "$pkgdir"/usr/lib/libEGL.so.1
-  ln -s libEGL.so.$pkgver "$pkgdir"/usr/lib/libEGL.so
+  ln -s /usr/lib/nvidia/libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.1
+  ln -s libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.$pkgver
+  ln -s libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so
 
   # OpenGL ES 1 (link)
   ln -s /usr/lib/nvidia/libGLESv1_CM.so.$pkgver "$pkgdir"/usr/lib/libGLESv1_CM.so.$pkgver
@@ -191,9 +190,12 @@ package_nvidia-utils-full-beta-all() {
   # OpenGL
   install -Dm755 libGL.so.$pkgver "$pkgdir"/usr/lib/nvidia/libGL.so.$pkgver
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glcore.so.$pkgver
+  install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
+  install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib/libOpenGL.so.0
 
   # EGL
-  install -Dm755 libEGL.so.$pkgver "$pkgdir"/usr/lib/nvidia/libEGL.so.$pkgver
+  install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
+  install -Dm755 libEGL_nvidia.so.0 "$pkgdir"/usr/lib/libEGL_nvidia.so.0
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-eglcore.so.$pkgver
 
   # OpenGL ES
@@ -301,7 +303,7 @@ package_nvidia-full-beta-all() {
 
     # Unified Memory
     if [[ $CARCH = x86_64 ]]; then
-      install -Dm644 $_pkg/kernel-$_kernel/uvm/nvidia-uvm.ko \
+      install -Dm644 $_pkg/kernel-$_kernel/nvidia-uvm.ko \
             "$pkgdir/$_extramod/nvidia-uvm.ko"
     fi
 
@@ -348,9 +350,9 @@ package_lib32-nvidia-libgl-full-beta-all() {
   ln -s libGL.so.$pkgver "$pkgdir"/usr/lib32/libGL.so
 
   # EGL (link)
-  ln -s /usr/lib32/nvidia/libEGL.so.$pkgver "$pkgdir"/usr/lib32/libEGL.so.$pkgver
-  ln -s libEGL.so.$pkgver "$pkgdir"/usr/lib32/libEGL.so.1
-  ln -s libEGL.so.$pkgver "$pkgdir"/usr/lib32/libEGL.so
+  ln -s /usr/lib32/nvidia/libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.1
+  ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.$pkgver
+  ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so
 
   # OpenGL ES 1 (link)
   ln -s /usr/lib32/nvidia/libGLESv1_CM.so.$pkgver "$pkgdir"/usr/lib32/libGLESv1_CM.so.$pkgver
@@ -378,9 +380,12 @@ package_lib32-nvidia-utils-full-beta-all() {
   # OpenGL
   install -Dm755 32/libGL.so.$pkgver "$pkgdir"/usr/lib32/nvidia/libGL.so.$pkgver
   install -Dm755 32/libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
+  install -Dm755 32/libGLdispatch.so.0 "$pkgdir"/usr/lib32/libGLdispatch.so.0
+  install -Dm755 32/libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
 
   # EGL
-  install -Dm755 32/libEGL.so.$pkgver "$pkgdir"/usr/lib32/nvidia/libEGL.so.$pkgver
+  install -Dm755 32/libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
+  install -Dm755 32/libEGL_nvidia.so.0 "$pkgdir"/usr/lib32/libEGL_nvidia.so.0
   install -Dm755 32/libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-eglcore.so.$pkgver
 
   # OpenGL ES

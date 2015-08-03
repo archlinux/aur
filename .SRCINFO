@@ -12,8 +12,8 @@ pkgbase = nvidia-full-beta-all
 	md5sums = 2640eac092c220073f0668a7aaff61f7
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/355.06/NVIDIA-Linux-x86-355.06.run
 	md5sums_i686 = c4d2ae0dd6338874e5e8358fe630ba8f
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/355.06/NVIDIA-Linux-x86_64-355.06-no-compat32.run
-	md5sums_x86_64 = 8bdf64adc94bd9e170e4a7412ca9e5ba
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/355.06/NVIDIA-Linux-x86_64-355.06.run
+	md5sums_x86_64 = 308f8c3b7ccaa8b53dc95d8586319acb
 
 pkgname = nvidia-full-beta-all
 	pkgdesc = NVIDIA drivers for linux (beta)
@@ -59,4 +59,36 @@ pkgname = opencl-nvidia-full-beta-all
 	provides = opencl-nvidia-full-beta=355.06
 	conflicts = opencl-nvidia
 	conflicts = opencl-nvidia-full-beta
+
+pkgname = lib32-nvidia-utils-full-beta-all
+	pkgdesc = NVIDIA libraries (32-bit, beta)
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = lib32-opencl-nvidia-full-beta: OpenCL support
+	provides = lib32-nvidia-utils=355.06
+	provides = lib32-nvidia-utils-full-beta=355.06
+	conflicts = lib32-nvidia-utils
+	conflicts = lib32-nvidia-utils-full-beta
+
+pkgname = lib32-nvidia-libgl-full-beta-all
+	pkgdesc = NVIDIA library symlinks (32-bit, beta)
+	depends = lib32-nvidia-utils-full-beta
+	provides = lib32-libgl
+	provides = lib32-nvidia-libgl
+	provides = lib32-nvidia-libgl-full-beta=355.06
+	conflicts = lib32-libgl
+	conflicts = lib32-nvidia-libgl
+	conflicts = lib32-mesa<10.1.0-2
+	conflicts = lib32-nvidia-libgl-full-beta
+
+pkgname = lib32-opencl-nvidia-full-beta-all
+	pkgdesc = OpenCL implemention for NVIDIA (32-bit, beta)
+	depends = lib32-libcl
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = lib32-opencl-nvidia
+	provides = lib32-opencl-nvidia-full-beta=355.06
+	conflicts = lib32-opencl-nvidia
+	conflicts = lib32-opencl-nvidia-full-beta
 
