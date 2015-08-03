@@ -1,0 +1,22 @@
+pkgbase = ino-1.5-git
+	pkgdesc = Command line toolkit for working with Arduino hardware. Works with Arduino 1.5
+	pkgver = 20140415
+	pkgrel = 1
+	url = http://inotool.org/
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = git
+	makedepends = python-sphinx
+	depends = arduino
+	depends = picocom
+	depends = python2-jinja
+	depends = python2-configobj
+	depends = python2-pyserial
+	depends = python2-glob2-git
+	provides = ino
+	conflicts = ino
+	source = git+https://github.com/justonia/ino.git#branch=ide1.5x
+
+pkgname = ino-1.5-git
+
