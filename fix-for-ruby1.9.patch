@@ -1,0 +1,98 @@
+--- ../tpp-old/tpp-1.3.1/tpp.rb	2007-04-23 02:12:21.000000000 -0700
++++ tpp.rb	2014-12-10 23:23:37.572444501 -0800
+@@ -568,13 +568,17 @@
+       window.move(@termheight/4,1+prompt.length+cursor_pos) # move cursor to the end of code
+       ch = window.getch
+       case ch
+-        when Ncurses::KEY_ENTER, ?\n, ?\r
++        when Ncurses::KEY_ENTER, "\n"[0].ord, "\r"[0].ord
+           Ncurses.curs_set(0)
+           Ncurses.noecho
++          window.move(@termheight/4 + 1,1) # move cursor to the next line
++          window.refresh
+           rc = Kernel.system(string)
+           if not rc then
+             @screen.mvaddstr(@termheight/4+1,1,"Error: exec \"#{string}\" failed with error code #{$?}")
+             @screen.mvaddstr(@termheight-2,@termwidth/2-message.length/2,message)
++            ch = Ncurses.getch()
++            @screen.refresh
+           end
+           if rc then
+             @screen.mvaddstr(@termheight-2,@termwidth/2-message.length/2,message)
+@@ -582,15 +586,15 @@
+             @screen.refresh
+           end
+           return
+-		when Ncurses::KEY_LEFT
++        when Ncurses::KEY_LEFT
+           cursor_pos = [0, cursor_pos-1].max # jump one character to the left
+         when Ncurses::KEY_RIGHT
+           cursor_pos = [0, cursor_pos+1].max # jump one character to the right
+-        when Ncurses::KEY_BACKSPACE
++        when Ncurses::KEY_BACKSPACE, "\b"[0].ord, 127
+           string = string[0...([0, cursor_pos-1].max)] + string[cursor_pos..-1]
+           cursor_pos = [0, cursor_pos-1].max
+-          window.mvaddstr(@termheight/4, 1+prompt.length+string.length, " ")
+-        when " "[0]..255
++          window.mvaddstr(@termheight/4, 1+prompt.length+string.length, "   ")
++        when " "[0].ord..255
+           if (cursor_pos < max_len)
+             string[cursor_pos,0] = ch.chr
+             cursor_pos += 1
+@@ -1396,17 +1400,17 @@
+       loop do
+         ch = @vis.get_key
+         case ch
+-          when 'q'[0], 'Q'[0] # 'Q'uit
++          when 'q'[0].ord, 'Q'[0].ord # 'Q'uit
+             return
+-          when 'r'[0], 'R'[0] # 'R'edraw slide
++          when 'r'[0].ord, 'R'[0].ord # 'R'edraw slide
+             changed_page = true # @todo: actually implement redraw
+-          when 'e'[0], 'E'[0]
++          when 'e'[0].ord, 'E'[0].ord
+             @cur_page = @pages.size - 1
+             break
+-          when 's'[0], 'S'[0]
++          when 's'[0].ord, 'S'[0].ord
+             @cur_page = 0
+             break
+-          when 'j'[0], 'J'[0] # 'J'ump to slide
++          when 'j'[0].ord, 'J'[0].ord # 'J'ump to slide
+             screen = @vis.store_screen
+             p = @vis.read_newpage(@pages,@cur_page)
+             if p >= 0 and p < @pages.size
+@@ -1417,28 +1421,28 @@
+               @vis.restore_screen(screen)
+             end
+             break
+-          when 'l'[0], 'L'[0] # re'l'oad current file
++          when 'l'[0].ord, 'L'[0].ord # re'l'oad current file
+             @reload_file = true
+             return
+-          when 'c'[0], 'C'[0] # command prompt
++          when 'c'[0].ord, 'C'[0].ord # command prompt
+             screen = @vis.store_screen
+             @vis.do_command_prompt
+             @vis.clear
+             @vis.restore_screen(screen)
+-          when '?'[0], 'h'[0]
++          when '?'[0].ord, 'h'[0].ord
+             screen = @vis.store_screen
+             @vis.show_help_page
+             ch = @vis.get_key
+             @vis.clear
+             @vis.restore_screen(screen)
+-          when :keyright, :keydown, ' '[0]
++          when :keyright, :keydown, ' '[0].ord
+             if @cur_page + 1 < @pages.size and eop then
+               @cur_page += 1
+               @pages[@cur_page].reset_eop
+               @vis.new_page
+             end
+             break
+-          when 'b'[0], 'B'[0], :keyleft, :keyup
++          when 'b'[0].ord, 'B'[0].ord, :keyleft, :keyup
+             if @cur_page > 0 then
+               @cur_page -= 1
+               @pages[@cur_page].reset_eop
