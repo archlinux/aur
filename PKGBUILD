@@ -3,13 +3,14 @@
 
 pkgname=wmx
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc="The ideal window manager for today's elegant and ascetic programmer"
 arch=('x86_64' 'i686')
 url="http://www.all-day-breakfast.com/wmx/"
 license=('custom')
 depends=('libxft' 'libxpm')
-source=("http://www.all-day-breakfast.com/$pkgname/$pkgname-$pkgver.tar.gz")
+#source=("http://www.all-day-breakfast.com/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/bbidulock/wmx/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('8ffa4335a2100d0437fe177239241cbec6aba79650ececf3148f4dc27e09bc05')
 
 build() {
