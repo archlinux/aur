@@ -1,6 +1,6 @@
 pkgbase = smplayer-svn
 	pkgdesc = Advanced front-end for MPlayer/MPV
-	pkgver = 14.9.0.r6889
+	pkgver = 14.9.0.r7059
 	pkgrel = 1
 	url = http://smplayer.sourceforge.net/
 	install = smplayer-svn.install
@@ -20,7 +20,9 @@ pkgbase = smplayer-svn
 	provides = smplayer
 	conflicts = smplayer
 	source = smplayer-svn::svn+https://subversion.assembla.com/svn/smplayer/smplayer/trunk/
+	source = qtlocalpeer.patch
 	sha256sums = SKIP
+	sha256sums = d35fe43266e4fe0b18de2f2a06d35c958faa881491b7649980d277038655c34b
 
 pkgname = smplayer-svn
 
