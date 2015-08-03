@@ -1,0 +1,16 @@
+pkgbase = pug-git
+	pkgdesc = Quickly update local projects and their dependencies with a single command
+	pkgver = v0.4.0.2
+	pkgrel = 1
+	url = https://github.com/ashur/pug
+	arch = any
+	license = github
+	depends = php
+	optdepends = git
+	optdepends = subversion
+	optdepends = composer
+	source = pug::git+https://github.com/ashur/pug.git
+	md5sums = SKIP
+
+pkgname = pug-git
+
