@@ -1,0 +1,19 @@
+pkgbase = wmx-git
+	pkgdesc = The ideal window manager for today's elegant and ascetic programmer
+	pkgver = r103.b936e55
+	pkgrel = 1
+	url = http://www.all-day-breakfast.com/wmx/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = git
+	depends = libxft
+	depends = libxpm
+	depends = libxcomposite
+	provides = wmx
+	conflicts = wmx
+	source = wmx-git::git+https://github.com/bbidulock/wmx.git
+	md5sums = SKIP
+
+pkgname = wmx-git
+
