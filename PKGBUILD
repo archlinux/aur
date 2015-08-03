@@ -9,7 +9,7 @@ license=("GPLv2")
 arch=('i686' 'x86_64')
 depends=()
 conflicts=()
-
+backup=('etc/fence_virt.conf')
 source=("fence_virtd.service"
 	"git://github.com/ClusterLabs/fence-virt.git")
 md5sums=(
