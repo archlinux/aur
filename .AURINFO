@@ -1,0 +1,17 @@
+pkgbase = boot-vhdl-git
+	pkgdesc = A VHDL simulator and synthesizer
+	pkgver = 4.5
+	pkgrel = 1
+	url = https://code.google.com/p/boot-vhdl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = ghdl
+	depends = pywebkitgtk
+	depends = python2-mechanize
+	depends = python2-pygments
+	source = boot-vhdl::git+https://code.google.com/p/boot-vhdl/
+
+pkgname = boot-vhdl-git
+
