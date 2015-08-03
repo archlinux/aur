@@ -1,14 +1,14 @@
 pkgbase = vcftools
-	pkgdesc = Easily accessible methods for working with complex genetic variation data in the form of VCF files.
-	pkgver = 0.1.12b
+	pkgdesc = A set of tools written in Perl and C++ for working with VCF files
+	pkgver = 0.1.13
 	pkgrel = 1
-	url = http://vcftools.sourceforge.net/
+	url = https://vcftools.github.io/
 	arch = x86_64
-	license = GPL3
+	license = LGPL3
 	depends = perl
 	depends = zlib
-	source = http://downloads.sourceforge.net/vcftools/vcftools_0.1.12b.tar.gz
-	md5sums = 662758d1139c138cf5a0239ed99f12c2
+	source = https://github.com/vcftools/vcftools/archive/v0.1.13.tar.gz
+	md5sums = 45368c056b1c3a35c478e1300a5a7eca
 
 pkgname = vcftools
 

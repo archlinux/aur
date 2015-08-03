@@ -2,27 +2,29 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=vcftools
-pkgver=0.1.12b
+pkgver=0.1.13
 pkgrel=1
-pkgdesc="Easily accessible methods for working with complex genetic variation data in the form of VCF files."
+pkgdesc="A set of tools written in Perl and C++ for working with VCF files"
 arch=('x86_64')
-url="http://vcftools.sourceforge.net/"
-license=('GPL3')
+url="https://vcftools.github.io/"
+license=('LGPL3')
 depends=('perl' 'zlib')
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}_${pkgver}.tar.gz)
-md5sums=('662758d1139c138cf5a0239ed99f12c2')
+source=(https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
+md5sums=('45368c056b1c3a35c478e1300a5a7eca')
 
 build() {
-  cd "${srcdir}/${pkgname}_${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}_${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  PREFIX="${pkgdir}/usr" make install
-  rmdir "${pkgdir}/usr/bin/man1"
+  make \
+    PREFIX=${pkgdir}/usr \
+    MANDIR=${pkgdir}/usr/share/man/man1 \
+    MODDIR=${pkgdir}/usr/lib/perl15/vendor_perl \
+    install
 
   install -D -m755 cpp/vcftools "${pkgdir}/usr/bin/vcftools"
-  install -D -m644 cpp/vcftools.1 "${pkgdir}/usr/share/man/man1/vcftools.1"
 }
