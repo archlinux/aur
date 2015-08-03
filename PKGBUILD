@@ -288,17 +288,21 @@ package_nvidia-full-beta-all() {
   install=$pkgname.install
 
   # Install for all kernels
-  for _extramod in $(find /usr/lib/modules/extramodules-*/version -printf '%h\n'); do
-    _kernel=$(cat $_extramod/version)
+  for _extramodules in $(find /usr/lib/modules/extramodules-*/version -printf '%h\n'); do
+    _kernel=$(cat $_extramodules/version)
 
     # Install
-    install -Dm644 $_pkg/kernel-$_kernel/nvidia.ko \
-           "$pkgdir"/$_extramod/nvidia.ko
-    install -Dm644 $_pkg/kernel-$_kernel/nvidia-uvm.ko \
-           "$pkgdir/$_extramod/nvidia-uvm.ko"
+    install -Dm644 $_pkg/kernel/nvidia.ko \
+            "$pkgdir"/usr/lib/modules/$_extramodules/nvidia.ko
+
+    # Install UVM Module: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
+    if [[ $CARCH = x86_64 ]]; then
+        install -Dm644 $_pkg/kernel/nvidia-uvm.ko \
+                "$pkgdir/usr/lib/modules/$_extramodules/nvidia-uvm.ko"
+    fi
 
     # Compress
-    gzip "$pkgdir"/$_extramod/nvidia*.ko
+    gzip "$pkgdir"/$_extramodules/nvidia*.ko
   done
 
   # Blacklist Nouveau
