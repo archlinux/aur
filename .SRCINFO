@@ -1,11 +1,12 @@
 pkgbase = geth-git
 	pkgdesc = Ethereum Go Client
-	pkgver = v0.9.26.r391.g22c7ce0
+	pkgver = v0.9.39.r48.gdb988a4
 	pkgrel = 1
 	url = https://github.com/ethereum/go-ethereum
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = LGPL3
+	license = GPL3
 	makedepends = go
 	makedepends = gmp
 	source = geth-git::git+https://github.com/ethereum/go-ethereum.git
