@@ -1,0 +1,20 @@
+pkgbase = poplog
+	pkgdesc = poplog development system
+	pkgver = 15.65
+	pkgrel = 4
+	url = http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html
+	install = poplog.install
+	arch = i686
+	arch = x86_64
+	license = custom:poplog
+	depends = tcsh
+	optdepends = espeak: for run-speaking-eliza demo
+	source = http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/AREADME.txt
+	source = http://www.cs.bham.ac.uk/research/poplog/bham-linux-poplog-v15.65.tar.gz
+	source = http://www.cs.bham.ac.uk/research/projects/poplog/copyright.html
+	sha256sums = f8713a74b36dfc9547848db43b332822d3b5a6887b671ab59e19a17add6e071a
+	sha256sums = 15a2ac11ec4b9a7c3d137b1d097e83b35c47aff7d7aec46e0b4499246f76d49b
+	sha256sums = 87c8728fcad9a4a24d70ba41e1628d44bd89b36bbe0eed75e49eb7b2b52b69a9
+
+pkgname = poplog
+
