@@ -6,6 +6,7 @@ pkgver=0.26
 pkgrel=1
 url="https://github.com/andrewgregory/openrc-arch-services"
 license=('GPL2')
+makedepends=('git')
 arch=('any')
 # backup=() #fill in below
 source=("$pkgname::git://github.com/andrewgregory/openrc-arch-services.git")

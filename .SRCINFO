@@ -5,6 +5,7 @@ pkgbase = openrc-arch-services-git
 	url = https://github.com/andrewgregory/openrc-arch-services
 	arch = any
 	license = GPL2
+	makedepends = git
 	source = openrc-arch-services-git::git://github.com/andrewgregory/openrc-arch-services.git
 	md5sums = SKIP
 
