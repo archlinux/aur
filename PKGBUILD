@@ -16,13 +16,8 @@ md5sums=('SKIP')
 
 build() {
   cd ${srcdir}/fence-virt/
-  if [ "`uname -m`" = "x86_64" ]; then
-          LIBDIR=/usr/lib64
-  else
-          LIBDIR=/usr/lib
-  fi
   ./autogen.sh
-  ./configure --prefix=/ --sbindir=/bin --libdir=$LIBDIR --datarootdir=/usr/share --disable-libvirt-qmf-plugin 
+  ./configure --prefix=/ --sbindir=/usr/bin --libdir=/usr/lib --datarootdir=/usr/share --disable-libvirt-qmf-plugin 
   make
 }
 
