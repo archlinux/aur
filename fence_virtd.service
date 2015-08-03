@@ -1,0 +1,12 @@
+[Unit]
+Description=fencing daemon for libvirt
+Documentation=man:fence_virtd
+Before=libvirtd.service
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/usr/bin/fence_virtd
+
+[Install]
+WantedBy=multi-user.target

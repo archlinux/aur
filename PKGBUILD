@@ -8,11 +8,13 @@ url='https://github.com/ClusterLabs/fence-virt'
 license=("GPLv2")
 arch=('i686' 'x86_64')
 depends=()
-#makedepends=('corosync' 'pacemaker')
 conflicts=()
 
-source=("git://github.com/ClusterLabs/fence-virt.git")
-md5sums=('SKIP')
+source=("fence_virtd.service"
+	"git://github.com/ClusterLabs/fence-virt.git")
+md5sums=(
+	'SKIP'
+	'SKIP')
 
 build() {
   cd ${srcdir}/fence-virt/
@@ -22,6 +24,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/fence-virt"
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}"
+  install -Dm 644 fence_virtd.service "${pkgdir}/usr/lib/systemd/system/fence_virtd.service"
+  cd fence-virt
+  make DESTDIR="${pkgdir}" install
 }
