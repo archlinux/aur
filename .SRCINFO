@@ -1,0 +1,15 @@
+pkgbase = mussort
+	pkgdesc = mussort is a simple tool that sorts a music collection
+	pkgver = 20130804
+	pkgrel = 1
+	url = http://random.zerodogg.org/mussort/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = perl
+	depends = id3v2
+	depends = vorbis-tools
+
+pkgname = mussort
+
