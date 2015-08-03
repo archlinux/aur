@@ -7,7 +7,7 @@ pkgbase = sysbench-git
 	arch = i686
 	license = GPL2
 	makedepends = git
-	depends = mariadb-clients
+	depends = libmariadbclient
 	source = git+https://github.com/akopytov/sysbench
 	md5sums = SKIP
 
