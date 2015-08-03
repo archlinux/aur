@@ -1,0 +1,13 @@
+--- xtimecompose.orig	2014-09-22 15:45:29.478811673 +0100
++++ xtimecomposer	2014-09-22 16:04:02.098414316 +0100
+@@ -45,7 +45,9 @@
+ }
+ 
+ # Check java version
+-my $version = substr($output, 14, 3);
++$output =~ /version "(\d\.\d).*"/;
++my $version = $1;
++
+ if ($version < 1.5) {
+     die ("Incorrect java version. Requires 1.5 or greater.\n");
+ }

@@ -1,0 +1,19 @@
+pkgbase = xtimecomposer
+	pkgdesc = Eclipse based IDE for the xCORE microcontrollers
+	pkgver = 13.2.0
+	pkgrel = 3
+	url = https://www.xmos.com/products/tools/xtimecomposer
+	arch = x86_64
+	arch = i686
+	license = Custom
+	depends = java-runtime
+	provides = xtimecomposer
+	options = !strip
+	options = staticlibs
+	source = xtimecomposer.patch
+	source = xtimecomposer
+	md5sums = f6b95cdf13917852a11e58d60153059d
+	md5sums = 7883a9fe1f797babbbb85864709bfefa
+
+pkgname = xtimecomposer
+
