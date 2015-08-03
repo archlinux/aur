@@ -10,7 +10,8 @@ arch=('i686' 'x86_64')
 depends=('acl'
          'openssl'
          'python-msgpack')
-optdepends=('python-llfuse: Mounting backups as a FUSE filesystem')
+optdepends=('openssh: repositories on remote hosts'
+'python-llfuse: Mounting backups as a FUSE filesystem')
 makedepends=('python-sphinx')
 source=("https://pypi.python.org/packages/source/b/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('2012595ce7dc28deb4215e3f58935afbe71275dca707df2ef9416d1c3fe6a61b')
