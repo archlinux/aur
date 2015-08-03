@@ -10,7 +10,7 @@ license=('LGPL')
 url="http://www.ladspa.org/"
 depends=('lib32-gcc-libs' "${pkgname#*-}=$pkgver")
 makedepends=('gcc-multilib')
-source=("http://www.ladspa.org/download/${pkgname#*-}_sdk_$pkgver.tgz"
+source=("http://arch.carsten-teibes.de/aur-stuff/${pkgname#*-}_sdk_$pkgver.tgz" # "http://www.ladspa.org/download/${pkgname#*-}_sdk_$pkgver.tgz"
         'hardcode-path.patch'
         'fix-lib32-makefile.patch')
 sha256sums=('b5ed3f4f253a0f6c1b7a1f4b8cf62376ca9f51d999650dd822650c43852d306b'

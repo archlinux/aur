@@ -8,7 +8,7 @@ pkgbase = lib32-ladspa
 	makedepends = gcc-multilib
 	depends = lib32-gcc-libs
 	depends = ladspa=1.13
-	source = http://www.ladspa.org/download/ladspa_sdk_1.13.tgz
+	source = http://arch.carsten-teibes.de/aur-stuff/ladspa_sdk_1.13.tgz
 	source = hardcode-path.patch
 	source = fix-lib32-makefile.patch
 	sha256sums = b5ed3f4f253a0f6c1b7a1f4b8cf62376ca9f51d999650dd822650c43852d306b
