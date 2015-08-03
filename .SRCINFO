@@ -1,0 +1,19 @@
+pkgbase = cbmbasic-git
+	pkgdesc = A 100% compatible version of Commodore's version of Microsoft BASIC 6502
+	pkgver = 0.r17.89093eb
+	pkgrel = 1
+	url = https://github.com/mist64/cbmbasic/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = cbmbasic
+	conflicts = cbmbasic
+	source = cbmbasic::git+https://github.com/mist64/cbmbasic.git
+	source = license
+	md5sums = SKIP
+	md5sums = 75bfb930010784e9cacecac750607738
+
+pkgname = cbmbasic-git
+
