@@ -72,9 +72,9 @@ package_lib32-nvidia-libgl-beta() {
   ln -s libGL.so.$pkgver "$pkgdir"/usr/lib32/libGL.so
 
   # EGL (link)
-  ln -s /usr/lib32/nvidia/libEGL.so.$pkgver "$pkgdir"/usr/lib32/libEGL.so.$pkgver
-  ln -s libEGL.so.$pkgver "$pkgdir"/usr/lib32/libEGL.so.1
-  ln -s libEGL.so.$pkgver "$pkgdir"/usr/lib32/libEGL.so
+  ln -s /usr/lib32/nvidia/libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.1
+  ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.$pkgver
+  ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so
 
   # OpenGL ES 1 (link)
   ln -s /usr/lib32/nvidia/libGLESv1_CM.so.$pkgver "$pkgdir"/usr/lib32/libGLESv1_CM.so.$pkgver
@@ -102,9 +102,12 @@ package_lib32-nvidia-utils-beta() {
   # OpenGL
   install -Dm755 libGL.so.$pkgver "$pkgdir"/usr/lib32/nvidia/libGL.so.$pkgver
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
+  install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib32/libGLdispatch.so.0
+  install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
 
   # EGL
-  install -Dm755 libEGL.so.$pkgver "$pkgdir"/usr/lib32/nvidia/libEGL.so.$pkgver
+  install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
+  install -Dm755 libEGL_nvidia.so.0 "$pkgdir"/usr/lib32/libEGL_nvidia.so.0
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-eglcore.so.$pkgver
 
   # OpenGL ES
