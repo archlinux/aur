@@ -1,0 +1,14 @@
+pkgbase = python-systemd-git
+	pkgdesc = Systemd python bindings
+	pkgver = 230.r8.g58c65cf
+	pkgrel = 1
+	url = https://github.com/systemd/python-systemd
+	arch = any
+	license = GPL3
+	depends = python systemd
+	provides = python-systemd
+	source = python-systemd-git::git+https://github.com/systemd/python-systemd.git
+	md5sums = SKIP
+
+pkgname = python-systemd-git
+
