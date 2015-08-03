@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-libfdk_aac
 	pkgdesc = Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)
 	pkgver = 2.7.2
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = i686
