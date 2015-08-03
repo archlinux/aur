@@ -1,0 +1,19 @@
+pkgbase = gpcp-jvm
+	pkgdesc = Gardens Point Component Pascal
+	pkgver = 1.3.16
+	pkgrel = 1
+	url = https://gpcp.codeplex.com
+	arch = any
+	license = BSD
+	depends = java-runtime
+	source = http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=gpcp&DownloadId=603357&FileTime=130028569339630000&Build=21028
+	source = cpint
+	source = cprun
+	source = j2cps
+	md5sums = 103bc7fe7e1811e5e5dd024c21e584bd
+	md5sums = d2c81dd1fb8316f5bd1580b9f907d485
+	md5sums = b9272c464b32e495176782a9ee42186f
+	md5sums = 7a58e43aaa5a8bb7d9fa6d14f044eea0
+
+pkgname = gpcp-jvm
+
