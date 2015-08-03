@@ -1,0 +1,13 @@
+pkgbase = nodejs-is-up
+	pkgdesc = Check whether a website is up or down
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/sindresorhus/is-up
+	arch = any
+	license = MIT
+	depends = nodejs
+	source = http://registry.npmjs.org/is-up/-/is-up-1.0.1.tgz
+	noextract = is-up-1.0.1.tgz
+
+pkgname = nodejs-is-up
+
