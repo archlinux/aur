@@ -1,0 +1,36 @@
+pkgbase = softmaker-office-bin
+	pkgdesc = Softmaker Office 2012, proprietary office suite; word processing, spreadsheets, presentations
+	pkgver = 2012.698
+	pkgrel = 1
+	url = http://softmaker.com
+	install = smoffice2012.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	source = http://www.softmaker.net/down/2012/softmaker-office-2012-698.tgz
+	source = planmaker-2012.desktop
+	source = planmaker12
+	source = presentations-2012.desktop
+	source = presentations12
+	source = textmaker-2012.desktop
+	source = textmaker12
+	source = icons.zip
+	md5sums = 36aa37f078417fae960a40d7cdc0d9c8
+	md5sums = 853c710b2c97e8c7ef4680be82fe15d4
+	md5sums = bd742e02bb99c207f0941bf7bf87142a
+	md5sums = c24cffb25d883290f1c9a147195b8ef7
+	md5sums = a26a4a3008db7ed26870e84a8a770be8
+	md5sums = 835dce4ec39e8ae158deed1e61f0958c
+	md5sums = 9e0ad29740ec780afefaec44550a7d20
+	md5sums = 5d7eaa0fd220caa4c95da6caa174ccf0
+	sha512sums = b0f1b5f6dcf60952eb9c7a4122cdb0ec1f469e198cb98f4067ac2e096444ff8572dbff78fa57a6888324d1daa9ed53fa1fa198494317075aa28094c9e3b60c83
+	sha512sums = c23d5fe6c9f83036196fc12e2f4862186986efb4db2aa740ea4d9b8751a42779057b43d496f4a317b83c0bfe682001911870a56658daaa11b5aa1c6dc90f2abb
+	sha512sums = a0682318dae6894a9eb33797e50ef29f4304856174575f2b0c7cca145b0e8fc297e49c01101e70ea384b67cc0deb66f961a102d2b8dcf5aabc8adf3390516f7a
+	sha512sums = a6c8af74c152be6ff52456ddb42a5b58ff1d3be1d3ca2be36cf794ecb0ce5b53d9bdd7f9579dac211d8e78555a7c1241c2422cbcfa9c9259d243628ff38f66fc
+	sha512sums = a0d17b147dfe9a5cf1f1eedc2288713c8de15923336a2be4dbe8bff7f75fe456b4e70078fb2aa3b0e286a73feff55b6c28a6ebf0457663019acae574dd08d43e
+	sha512sums = 3e53a622b8d800b2a86ff4312c7c69d1794b660e0903e6d7a335f92641967d958326ad334f09f6f61e210cf685c6bbd6b39d8bd297858f229e0ee3d6bb537c67
+	sha512sums = 4508a4ae1a983b250608fafac4e3c5cb571768e3b818bd0fdbac9f2b84e9e87deeea9b037c967c5d3086b8ea6df9d4f43d8147558bf59c4b47b2b342d9133509
+	sha512sums = e3ad01cc282eee3589a5b128d1e6575239aa19f3aa2570f60b6ceca014158e9280ea51ff772b23be4a7480b263dee6caab8bddf6de688bdd87734ede11a7c74c
+
+pkgname = softmaker-office-bin
+
