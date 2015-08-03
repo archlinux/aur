@@ -1,6 +1,6 @@
 pkgbase = folly
 	pkgdesc = An open-source C++ library developed and used at Facebook
-	pkgver = 0.50.0
+	pkgver = 0.52.0
 	pkgrel = 1
 	url = https://github.com/facebook/folly
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = folly
 	depends = google-glog
 	depends = libevent
 	depends = boost
-	source = https://github.com/facebook/folly/archive/v0.50.0.tar.gz
+	source = https://github.com/facebook/folly/archive/v0.52.0.tar.gz
 	source = https://googletest.googlecode.com/files/gtest-1.7.0.zip
-	md5sums = a6af2b2fce90c065e7ecf69d620e6712
+	md5sums = 74ac8f854084e226f86aff41b9e26a0b
 	md5sums = 2d6ec8ccdf5c46b05ba54a9fd1d130d7
 
 pkgname = folly
