@@ -1,0 +1,22 @@
+pkgbase = movit-git
+	pkgdesc = The modern video toolkit
+	pkgver = r639.b757b4f
+	pkgrel = 1
+	url = http://movit.sesse.net/
+	arch = x86_64
+	license = GPL
+	makedepends = gtest
+	makedepends = eigen
+	makedepends = libpng
+	makedepends = sdl2_image
+	depends = fftw
+	depends = libepoxy
+	optdepends = libpng12: demo application,
+	optdepends = sdl_image: demo application
+	provides = movit
+	conflicts = movit
+	source = git+http://git.sesse.net/movit
+	sha1sums = SKIP
+
+pkgname = movit-git
+
