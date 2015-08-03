@@ -5,6 +5,6 @@ package containing the latest version of the PHP
 [Box](https://github.com/box-project/box2) phar.
 
 ## References
-[Arch Build System](https://wiki.archlinux.org/index.php/Arch_Build_System) 
-[Creating Packages](https://wiki.archlinux.org/index.php/Creating_packages) 
-[Building and Installing Packages](https://wiki.archlinux.org/index.php/Arch_Build_System#How_to_use_ABS)
+* [Arch Build System](https://wiki.archlinux.org/index.php/Arch_Build_System)
+* [Creating Packages](https://wiki.archlinux.org/index.php/Creating_packages)
+* [Building and Installing Packages](https://wiki.archlinux.org/index.php/Arch_Build_System#How_to_use_ABS)
