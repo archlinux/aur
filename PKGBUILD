@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=wmx-git
 _pkgname=wmx
-pkgver=r103.b936e55
+pkgver=7.r13.gb936e55
 pkgrel=1
 pkgdesc="The ideal window manager for today's elegant and ascetic programmer"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long|sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g'
 }
 
 prepare() {

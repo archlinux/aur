@@ -1,6 +1,6 @@
 pkgbase = wmx-git
 	pkgdesc = The ideal window manager for today's elegant and ascetic programmer
-	pkgver = r103.b936e55
+	pkgver = 7.r13.gb936e55
 	pkgrel = 1
 	url = http://www.all-day-breakfast.com/wmx/
 	arch = x86_64
