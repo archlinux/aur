@@ -1,0 +1,21 @@
+pkgbase = xss-lock-git
+	pkgdesc = Use external locker as X screen saver
+	pkgver = v0.2.2.13.g94aec04
+	pkgrel = 1
+	url = https://bitbucket.org/raymonad/xss-lock
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = python-docutils
+	makedepends = git
+	depends = xcb-util
+	depends = systemd
+	optdepends = bash-completion: for bash completion
+	provides = xss-lock
+	conflicts = xss-lock
+	source = xss-lock-git::git+https://bitbucket.org/raymonad/xss-lock.git
+	md5sums = SKIP
+
+pkgname = xss-lock-git
+
