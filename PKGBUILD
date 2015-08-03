@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
-_pkgname=breeze-gruvbox-dark-frameworks
-pkgname=yakuake-skin-${_pkgname}
+_pkgname=breeze-gruvbox-dark
+pkgname=yakuake-skin-${_pkgname}-frameworks
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Theme to match vim gruvbox retro theme for Yakuake (Plasma 5)"
