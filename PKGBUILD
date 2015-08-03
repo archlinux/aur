@@ -1,7 +1,7 @@
 # Maintainer: Mike Cooper <mythmon@gmail.com>
 
 pkgname=fortune-mod-all-en
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Meta package for all English fortunes"
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ depends=(
   'fortune-mod-blackadder'
   'fortune-mod-blackbooks'
   'fortune-mod-bofh-excuses'
+  'fortune-mod-breakingbad'
   'fortune-mod-bunheads'
   'fortune-mod-burnnotice'
   'fortune-mod-californication'
@@ -74,6 +75,7 @@ depends=(
   'fortune-mod-portal2'
   'fortune-mod-prettylittleliars'
   'fortune-mod-protolol-git'
+  'fortune-mod-psych'
   'fortune-mod-quantumleap'
   'fortune-mod-sabrina'
   'fortune-mod-scrubs'
