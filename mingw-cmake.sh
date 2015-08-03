@@ -17,4 +17,3 @@ PATH=${mingw_prefix}/bin:$PATH cmake \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_TOOLCHAIN_FILE=/usr/share/mingw/toolchain-@TRIPLE@.cmake \
     "$@"
-    

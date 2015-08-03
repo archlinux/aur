@@ -29,3 +29,4 @@ set (CMAKE_Fortran_COMPILER @TRIPLE@-gfortran)
 set (CMAKE_AR:FILEPATH @TRIPLE@-ar)
 set (CMAKE_RANLIB:FILEPATH @TRIPLE@-ranlib)
 
+set (CMAKE_CROSSCOMPILING_EMULATOR /usr/bin/wine)
