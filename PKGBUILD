@@ -3,7 +3,7 @@
 
 pkgname=gtk-theme-arc-git
 _pkgname=Arc-theme
-pkgver=156.12b1b29
+pkgver=161.bd5daf5
 pkgrel=1
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell."
 arch=('any')
@@ -25,7 +25,5 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR="$pkgdir" install
-	rm -rf {.git,COPYING,README.md}
+	make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" install
 }
