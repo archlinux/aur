@@ -2,8 +2,8 @@ VERSION = 4.5.0
 RELEASE = 1
 
 release:
-	sed 's/^pkgver=/pkgver=$(VERSION)/g' PKGBUILD
-	sed 's/^pkgrel=/pkgrel=$(RELEASE)/g' PKGBUILD
+	sed -i 's/^pkgver=/pkgver=$(VERSION)/g' PKGBUILD
+	sed -i 's/^pkgrel=/pkgrel=$(RELEASE)/g' PKGBUILD
 	mksrcinfo
 	updpkgsums
 	rm v$(VERSION).tar.gz
