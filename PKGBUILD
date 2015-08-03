@@ -4,7 +4,7 @@
  
 pkgname=trillian
 pkgver=2.0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A commercial, multi-protocol and cross-platform IM client"
 arch=('i686' 'x86_64')
 url="https://www.trillian.im"
@@ -21,4 +21,10 @@ md5sums_i686=('a35ecdf0da66c240d0b604d7fa76cc5b')
  
 package() {
   tar xzvf "$srcdir/data.tar.gz" -C "$pkgdir/"
+
+  libzip_link=/usr/lib/libzip.so.2
+  if [ ! -f "$libzip_link" ]; then
+    mkdir -p $pkgdir/usr/lib
+    ln -s /usr/lib/libzip.so $pkgdir$libzip_link
+  fi
 }
