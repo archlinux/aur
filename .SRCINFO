@@ -1,6 +1,6 @@
 pkgbase = pertino
 	pkgdesc = Cloud-based VPN client
-	pkgver = 450.4488
+	pkgver = 466.4505
 	pkgrel = 1
 	url = http://pertino.com/
 	install = pertino.install
@@ -10,9 +10,9 @@ pkgbase = pertino
 	makedepends = rpmextract
 	makedepends = sed
 	depends = dhclient
-	noextract = pertino-450.4488-1..rpm
-	source = http://download.pertino.com/clients/linux/450-4488/pertino-450.4488-1..rpm
-	sha1sums = 05423c848eb1076c2f7e769cf77720a347d9cb8f
+	noextract = pertino-466.4505-1..rpm
+	source = http://download.pertino.com/clients/linux/466-4505/pertino-466.4505-1..rpm
+	sha1sums = 9984674aacd0d9170b8ba838f6d7df7774244711
 
 pkgname = pertino
 

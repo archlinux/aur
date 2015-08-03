@@ -1,6 +1,6 @@
 # Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 pkgname=pertino
-pkgver=450.4488
+pkgver=466.4505
 pkgrel=1
 pkgdesc="Cloud-based VPN client"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ depends=('dhclient')
 makedepends=('rpmextract' 'sed')
 source=("http://download.pertino.com/clients/linux/$(echo $pkgver | tr . -)/$pkgname-$pkgver-1.$CARCH.rpm")
 noextract=($(basename "${source[0]}"))
-sha1sums=(05423c848eb1076c2f7e769cf77720a347d9cb8f)
+sha1sums=('9984674aacd0d9170b8ba838f6d7df7774244711')
 install=${pkgname}.install
 
 package() {
