@@ -1,24 +1,18 @@
 pkgbase = python2-bitmerchant
-	pkgdesc = Bitcoin merchant tools
-	pkgver = 0.1.5
+	pkgdesc = Bitcoin/altcoin merchant tools
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/bitmerchant
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-base58
-	depends = python2-crypto
 	depends = python2-ecdsa
 	depends = python2-six
-	provides = bitmerchant
-	provides = python2-bitmerchant
-	conflicts = bitmerchant
-	conflicts = python2-bitmerchant
-	source = https://pypi.python.org/packages/source/b/bitmerchant/bitmerchant-0.1.5.tar.gz
-	md5sums = 04cd8e0e8685cf677d940d7107c1565f
-	sha256sums = 6a151e933e15dabc2539f1dc2d35daa073f7a0228ac0fa912c505b933347752f
+	source = https://pypi.python.org/packages/source/b/bitmerchant/bitmerchant-0.1.6.tar.gz
+	md5sums = 7a7cb135b0846455fad1b6c38eea0f51
+	sha256sums = 2a4aaa4716979d7740be54fdbcea2b3f8c639c9f0e94b40aeb03289f3048cd0b
 
 pkgname = python2-bitmerchant
 
