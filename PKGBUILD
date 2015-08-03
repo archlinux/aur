@@ -11,7 +11,8 @@ arch=('i686' 'x86_64')
 depends=('acl'
          'openssl'
          'python-msgpack')
-optdepends=('python-llfuse: Mounting backups as a FUSE filesystem')
+optdepends=('openssh: repositories on remote hosts'
+            'python-llfuse: mounting backups as a FUSE filesystem')
 makedepends=('cython'
              'git'
              'python-sphinx')
