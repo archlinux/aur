@@ -18,7 +18,7 @@ pkgbase = nvidia-full-beta-all
 pkgname = nvidia-full-beta-all
 	pkgdesc = NVIDIA drivers for linux (beta)
 	install = nvidia-full-beta-all.install
-	depends = nvidia-utils-full-beta>=355.06
+	depends = nvidia-utils-full-beta-all>=355.06
 	depends = libgl
 	provides = nvidia
 	conflicts = nvidia-96xx
@@ -31,24 +31,20 @@ pkgname = nvidia-utils-full-beta-all
 	depends = xorg-server
 	optdepends = gtk2: nvidia-settings (GTK+ v2)
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
-	optdepends = opencl-nvidia-beta: OpenCL support
+	optdepends = opencl-nvidia-full-beta-all: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	provides = nvidia-utils=355.06
-	provides = nvidia-utils-full-beta=355.06
 	conflicts = nvidia-utils
-	conflicts = nvidia-utils-full-beta
 	backup = etc/X11/xorg.conf.d/20-nvidia.conf
 
 pkgname = nvidia-libgl-full-beta-all
 	pkgdesc = NVIDIA library symlinks (beta)
-	depends = nvidia-utils-full-beta
+	depends = nvidia-utils-full-beta-all
 	provides = libgl
 	provides = nvidia-libgl
-	provides = nvidia-libgl-full-beta=355.06
 	conflicts = libgl
 	conflicts = nvidia-libgl
 	conflicts = mesa<10.1.0-2
-	conflicts = nvidia-libgl-full-beta
 
 pkgname = opencl-nvidia-full-beta-all
 	pkgdesc = OpenCL implemention for NVIDIA (beta)
@@ -56,7 +52,5 @@ pkgname = opencl-nvidia-full-beta-all
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-nvidia
-	provides = opencl-nvidia-full-beta=355.06
 	conflicts = opencl-nvidia
-	conflicts = opencl-nvidia-full-beta
 
