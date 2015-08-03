@@ -1,0 +1,23 @@
+pkgbase = slowmovideo-git
+	pkgdesc = Video slow motion effect via interpolation
+	pkgver = 20150423
+	pkgrel = 1
+	url = http://slowmovideo.granjow.net/index.html
+	install = slowmovideo-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = glew
+	depends = opencv
+	depends = qt5-script
+	depends = xdg-utils
+	depends = desktop-file-utils
+	provides = slowmovideo
+	conflicts = slowmovideo
+	source = git+https://github.com/slowmoVideo/slowmoVideo.git
+	md5sums = SKIP
+
+pkgname = slowmovideo-git
+
