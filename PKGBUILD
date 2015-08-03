@@ -10,6 +10,7 @@ url="https://github.com/deadalnix/pixel-saver"
 license=('unknown')
 depends=('gnome-shell' 'xorg-xprop')
 makedepends=('git')
+provides=('gnome-shell-extension-pixel-saver')
 conflicts=('gnome-shell-extension-pixel-saver')
 install=${pkgname}.install
 source=('git://github.com/deadalnix/pixel-saver.git')
