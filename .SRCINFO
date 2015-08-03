@@ -1,7 +1,7 @@
 pkgbase = john-mpi
 	pkgdesc = JohnTheRipper password cracker with Jumbo patch and MPI support
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openwall.info
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,10 @@ pkgbase = john-mpi
 	backup = etc/john/dumb16.conf
 	backup = etc/john/dynamic.conf
 	source = http://www.openwall.com/john/j/john-1.8.0-jumbo-1.tar.xz
+	source = https://github.com/magnumripper/JohnTheRipper/commit/e2e868db3e153b3f959e119a51703d4afb99c624.patch
 	source = params.h.patch
 	sha256sums = bac93d025995a051f055adbd7ce2f1975676cac6c74a6c7a3ee4cfdd9c160923
+	sha256sums = c84d53f4e2b5c15c9ab83aea05d72a7e1492e4f0cb547e0047aa91458851aee5
 	sha256sums = 432466152dda1bfaae66095ac6d1db48e91c2557e412c799b8c01921b749414a
 
 pkgname = john-mpi
