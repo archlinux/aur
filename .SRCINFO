@@ -1,7 +1,7 @@
 pkgbase = bowtie2
 	pkgdesc = Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence.
 	pkgver = 2.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bowtie-bio.sourceforge.net/bowtie2
 	arch = any
 	license = GPL3
