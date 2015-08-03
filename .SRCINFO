@@ -1,0 +1,22 @@
+pkgbase = borgbackup-git
+	pkgdesc = A deduplicating backup program for efficient and secure backups.
+	pkgver = 0.23.0.r86.g3be55be
+	pkgrel = 1
+	url = https://borgbackup.github.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cython
+	makedepends = git
+	makedepends = python-sphinx
+	depends = acl
+	depends = openssl
+	depends = python-msgpack
+	optdepends = python-llfuse: Mounting backups as a FUSE filesystem
+	provides = borgbackup
+	conflicts = borgbackup
+	source = git+https://github.com/borgbackup/borg
+	sha256sums = SKIP
+
+pkgname = borgbackup-git
+
