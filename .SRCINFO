@@ -1,0 +1,27 @@
+pkgbase = floola
+	pkgdesc = Freeware application to efficiently manage your iPod or your Motorola mobile phone (any model supporting iTunes except iPhone, iPod touch).
+	pkgver = 2012r1
+	pkgrel = 2
+	url = http://www.floola.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = libpng12>=1.2.12
+	depends = libstdc++5
+	depends = gtk2
+	optdepends = gstreamer0.10: GStreamer Multimedia Framework
+	optdepends = libnotify: Desktop notification library
+	source = floola.desktop
+	source = floola-64.sh
+	source = floola.sh
+	source = http://download.schoonzie.com/Floola-linux.tar.gz
+	source = http://www.floola.com/home/wp-content/themes/default/images/icon/128x128.png
+	md5sums = 097b6509a3acb6bb8ff048e45ac5d9ca
+	md5sums = c4ca5276f636c5587b2652ebf8107ed1
+	md5sums = 69cd82ab1ec53bf89709a599a97687bd
+	md5sums = c3d613ec7cdf7c6db36fa75940e69bae
+	md5sums = a261d71d1bc29a85b0bb647d76b61bfe
+
+pkgname = floola
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=6.1
+Name=Floola
+Comment=Freeware application to efficiently manage your iPod or your Motorola mobile phone (any model supporting iTunes except iPhone, iPod touch)
+Exec=floola
+Icon=floola
+Type=Application
+Categories=AudioVideo;Player; 
