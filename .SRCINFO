@@ -1,0 +1,16 @@
+pkgbase = image-bin
+	pkgdesc = Iterative Mapping and Assembly for Gap Elimination
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/image2/
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = perl
+	depends = zlib
+	conflicts = velvet
+	source = http://downloads.sourceforge.net/image2/IMAGE_version2.4.1_64bit.zip
+	md5sums = d4694275a110149c9bc5a4acec45f60c
+
+pkgname = image-bin
+
