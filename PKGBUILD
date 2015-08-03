@@ -95,15 +95,9 @@ build() {
   for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
     cd "$srcdir"/$_pkg/kernel-$_kernel
 
-    # Main module
+    # Build module
     msg2 "Building Nvidia module for $_kernel..."
     make SYSSRC=/usr/lib/modules/$_kernel/build module
-
-    # Unified memory: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
-    if [[ $CARCH = x86_64 ]]; then
-      msg2 "Building Unified memory module for $_kernel..."
-      make SYSSRC=/usr/lib/modules/$_kernel/build module
-    fi
   done
 }
 
@@ -300,12 +294,8 @@ package_nvidia-full-beta-all() {
     # Install
     install -Dm644 $_pkg/kernel-$_kernel/nvidia.ko \
            "$pkgdir"/$_extramod/nvidia.ko
-
-    # Unified Memory
-    if [[ $CARCH = x86_64 ]]; then
-      install -Dm644 $_pkg/kernel-$_kernel/nvidia-uvm.ko \
-            "$pkgdir/$_extramod/nvidia-uvm.ko"
-    fi
+    install -Dm644 $_pkg/kernel-$_kernel/nvidia-uvm.ko \
+           "$pkgdir/$_extramod/nvidia-uvm.ko"
 
     # Compress
     gzip "$pkgdir"/$_extramod/nvidia*.ko
