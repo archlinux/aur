@@ -83,21 +83,21 @@ build() {
 
 package() {
   # Install for all kernels
-  for _extramodules in $(find /usr/lib/modules/extramodules-*/version -printf '%h\n'); do
-    _kernel=$(cat $_extramodules/version)
+  for _path in $(find /usr/lib/modules/extramodules-*/version -printf '%h\n'); do
+    _extramodules=$(cat $_path/version)
 
     # Install
-    install -Dm644 $_pkg/kernel/nvidia.ko \
-            "$pkgdir"/usr/lib/modules/$_extramodules/nvidia.ko
+    install -Dm644 $_pkg/kernel-$_extramodules/nvidia.ko \
+            "$pkgdir"/$_path/nvidia.ko
 
     # Install UVM Module: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
     if [[ $CARCH = x86_64 ]]; then
-        install -Dm644 $_pkg/kernel/nvidia-uvm.ko \
-                "$pkgdir/usr/lib/modules/$_extramodules/nvidia-uvm.ko"
+        install -Dm644 $_pkg/kernel-$_extramodules/nvidia-uvm.ko \
+                "$pkgdir/$_path/nvidia-uvm.ko"
     fi
 
     # Compress
-    gzip "$pkgdir"/$_extramodules/nvidia*.ko
+    gzip "$pkgdir"/$_path/nvidia*.ko
   done
 
   # Blacklist Nouveau
