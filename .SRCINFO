@@ -1,0 +1,14 @@
+pkgbase = yakuake-skin-breeze-gruvbox-dark
+	pkgdesc = Theme to match vim gruvbox retro theme for Yakuake (KDE4)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=170824
+	arch = any
+	license = CCPL:by-sa
+	makedepends = unzip
+	depends = yakuake
+	source = breeze-gruvbox-dark.tar.xz::http://kde-look.org/CONTENT/content-files/170824-breeze-gruvbox-dark.zip
+	sha256sums = e4c4b0a7b5766cf946222a680cf806bbf9bf9996f9146fecc1e7cad4edbf404a
+
+pkgname = yakuake-skin-breeze-gruvbox-dark
+
