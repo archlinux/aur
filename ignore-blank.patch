@@ -1,5 +1,5 @@
---- xss-lock.c.orig	2015-01-15 10:34:31.469611430 +0100
-+++ xss-lock.c	2015-01-15 15:51:45.360306124 +0100
+--- src/xss-lock.c.orig	2015-01-15 10:34:31.469611430 +0100
++++ src/xss-lock.c	2015-01-15 15:51:45.360306124 +0100
 @@ -61,6 +61,7 @@
  static gboolean opt_quiet = FALSE;
  static gboolean opt_verbose = FALSE;

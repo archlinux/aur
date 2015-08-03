@@ -13,7 +13,7 @@ optdepends=('bash-completion: for bash completion')
 source=("$pkgname::git+https://bitbucket.org/raymonad/${pkgname%-git}.git"
        'ignore-blank.patch')
 md5sums=('SKIP'
-         'b12e5dd8463d6300ebe3a2b525a12926')
+         'ccd244e49310672aa896587373b015f8')
 provides=('xss-lock')
 conflicts=('xss-lock')
 
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname"/src
+  cd "$pkgname"
   patch -p0 < "$srcdir"/ignore-blank.patch
 }
 
