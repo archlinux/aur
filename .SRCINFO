@@ -1,0 +1,13 @@
+pkgbase = nodejs-livedown
+	pkgdesc = Live Markdown previews for your favourite editor.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/shime/livedown
+	arch = any
+	depends = nodejs
+	noextract = livedown-1.0.8.tgz
+	source = http://registry.npmjs.org/livedown/-/livedown-1.0.8.tgz
+	sha1sums = 811c08413db1ecaf38d6ac1767f141fe1af37739
+
+pkgname = nodejs-livedown
+
