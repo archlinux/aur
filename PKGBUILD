@@ -2,18 +2,20 @@
 # Contributor: Lucas Hermann Negri <lucashnegri at gmail dot com>
 
 pkgname=armadillo
-pkgver=5.200.2
+pkgver=5.300.4
 pkgrel=1
 pkgdesc="C++ linear algebra library"
 arch=('i686' 'x86_64')
 url="http://arma.sourceforge.net/"
 license=('MPL 2.0')
 depends=('lapack' 'blas' 'arpack' 'superlu=4.3')
-optdepends=('hdf5: HDF5 output')
+optdepends=('hdf5: HDF5 output'
+            'cuda: NVBLAS support'
+	    'acml-cblas: ACML support')
 makedepends=('cmake')
 source=("http://downloads.sourceforge.net/sourceforge/arma/$pkgname-$pkgver.tar.gz")
 install=("armadillo.install")
-sha512sums=('034539d724fd1e4078a709cd616d280178fcfdcb1d3c3ca2f80f5f2ebc4b39b60f11e3bd22773be8a8fd61350a406a6f4056d56f88ed74964f438bed0d224f6f')
+sha512sums=('91a2258712d1c6b28f9dc4c073d1250b0d3a49372c3343789b8fbf1266e9287e442d006c004b74d9e8826cc7d5593ce7ca2798c0a8dcbacb9814e7ee29338308')
 
 build() {
   if [ "$CARCH" == "x86_64" ]; then
