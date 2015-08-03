@@ -1,0 +1,12 @@
+pkgbase = nodejs-gitignore
+	pkgdesc = Automatically fetch gitignore files for any project type from github into your new project
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/msfeldstein/gitignore
+	arch = any
+	depends = nodejs
+	source = http://registry.npmjs.org/gitignore/-/gitignore-0.1.6.tgz
+	noextract = gitignore-0.1.6.tgz
+
+pkgname = nodejs-gitignore
+
