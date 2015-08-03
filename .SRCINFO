@@ -1,0 +1,17 @@
+pkgbase = grid-cartographer
+	pkgdesc = An RPG mapping tool.
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = http://www.davidwaltersdevelopment.com/tools/gridcart/
+	arch = x86_64
+	license = custom
+	depends = libpng12
+	depends = gtk3
+	depends = mesa
+	source = http://www.davidwaltersdevelopment.com/tools/gridcart/files/grid_cartographer_v3_0_6.tar.gz
+	source = gridcart
+	sha256sums = d62c35cc11b4dae1be61e3835c0a9a51d6feb36e4032b96ce4ec72d9df6f727f
+	sha256sums = f2f1d3cab1a7d571945f3eca34b6371c76026ab333cd68926c1cfb84369bc209
+
+pkgname = grid-cartographer
+
