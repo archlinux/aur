@@ -1,0 +1,19 @@
+pkgbase = python-base58
+	pkgdesc = Bitcoin-compatible Base58 and Base58Check implementation
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/base58
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = base58
+	provides = python-base58
+	conflicts = base58
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/b/base58/base58-0.2.2.tar.gz
+	md5sums = f4295cfee48304a9c0c3366c03699b97
+	sha256sums = f1eaa4d3b6a0a55b1304deadd3ce11effa5773e3b738f51813eccbf2f7ee5b80
+
+pkgname = python-base58
+
