@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Energia
+GenericName=MSP430 IDE
+Comment=The open-source Arduino environment for MSP430 Launchpad
+Exec=energia
+Icon=energia
+Type=Application
+Terminal=false
+Categories=Development;IDE;

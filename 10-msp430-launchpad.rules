@@ -1,0 +1,2 @@
+ATTRS{idVendor}=="0451", ATTRS{idProduct}=="f432", GROUP="uucp", MODE="0770"
+ATTRS{idVendor}=="1cbe", ATTRS{idProduct}=="00fd", GROUP="uucp", MODE="0770"

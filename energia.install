@@ -1,0 +1,20 @@
+_sizes=(16 24 32 48)
+post_install() {
+  echo "Don't forget to add yourself to the 'uucp' and 'lock' groups: sudo usermod -aG<group> <user>"
+  echo 
+  echo "You'll also probably want to reboot for the new permissions on /run/lock to take effect"
+  for size in $_sizes; do
+    xdg-icon-resource install --size $size --novendor /usr/share/pixmaps/energia_$size.png
+  done
+}
+
+post_upgrade() {
+  echo "Reloading udev rules so launchpad USB devices enumerate with correct permissions pre-reboot"
+  udevadm control --reload
+}
+
+post_remove() {
+  for size in $_sizes; do 
+    xdg-icon-resource uninstall --size $size energia
+  done
+}
