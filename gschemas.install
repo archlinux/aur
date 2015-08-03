@@ -1,20 +1,20 @@
 post_install() {
-    glib-compile-schemas usr/share/glib-2.0/schemas/
-    instructions
+  instruct
+  echo "and enable the extension with gnome-tweak-tool."
 }
 
 post_upgrade() {
-    glib-compile-schemas usr/share/glib-2.0/schemas/
-    instructions
+  instruct
+  echo "for the changes to have an effect."
 }
 
 post_remove() {
-    glib-compile-schemas usr/share/glib-2.0/schemas/
+  glib-compile-schemas usr/share/glib-2.0/schemas/
 }
 
-instructions() {
-  /bin/cat << EOF
-Don't forget to restart GNOME Shell ([Alt]+[F2], r) and to enable extension
-with gnome-tweak-tool.
-EOF
+instruct() {
+  post_remove
+  echo "Don't forget to restart GNOME Shell ([Alt]+[F2], r)"
 }
+
+# vim: ts=2 sw=2 et:

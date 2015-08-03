@@ -1,18 +1,17 @@
 pkgbase = gnome-shell-extension-volume-mixer-git
-	pkgdesc = Enable configuration of individual PulseAudio mixers from GNOME Shell's status menu.
-	pkgver = 0.9.1.r0.gf289b00
-	pkgrel = 2
+	pkgdesc = Applet allowing separate configuration of pulseaudio mixers
+	pkgver = 0.9.r0.g3e7a459
+	pkgrel = 1
 	url = https://github.com/aleho/gnome-shell-volume-mixer
 	install = gschemas.install
 	arch = any
-	license = GPL2
+	license = GPLv2
 	makedepends = git
 	depends = gnome-shell
-	depends = python
 	provides = gnome-shell-extension-volume-mixer
 	conflicts = gnome-shell-extension-volume-mixer
-	source = gnome-shell-extension-volume-mixer::git+https://github.com/aleho/gnome-shell-volume-mixer.git
-	sha512sums = SKIP
+	source = gnome-shell-extension-volume-mixer::git+https://github.com/aleho/gnome-shell-volume-mixer
+	md5sums = SKIP
 
 pkgname = gnome-shell-extension-volume-mixer-git
 
