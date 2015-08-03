@@ -1,0 +1,14 @@
+pkgbase = vim-lighttpd
+	pkgdesc = Syntax highlighting for lighttpd config files
+	pkgver = 1.19
+	pkgrel = 1
+	url = https://github.com/glensc/vim-syntax-lighttpd
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim
+	source = https://github.com/glensc/vim-syntax-lighttpd/archive/v1.19.tar.gz
+	sha256sums = 6e954a1597a5136c7e5469a838c134eb52640dfd9eacd2342c85e41e83740f60
+
+pkgname = vim-lighttpd
+
