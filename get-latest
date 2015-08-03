@@ -1,0 +1,8 @@
+#!/bin/sh
+latest=https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz
+version_rb=heroku-client/lib/heroku/version.rb
+
+{
+  curl -# "$latest" | tar xzOf - "$version_rb"
+  printf "puts Heroku::VERSION\n"
+} | ruby
