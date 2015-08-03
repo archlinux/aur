@@ -1,6 +1,6 @@
 pkgbase = codelite-bin
 	pkgdesc = Open-source, cross platform IDE for the C/C++ programming languages
-	pkgver = 8.0
+	pkgver = 8.1
 	pkgrel = 1
 	url = http://www.codelite.org/
 	install = codelite.install
@@ -22,10 +22,24 @@ pkgbase = codelite-bin
 	provides = codelite
 	replaces = codelite
 	replaces = codelite-svn
-	source = http://repos.codelite.org/rpms/fedora/codelite-8.0-1.fc21.x86_64.rpm
-	source = http://repos.codelite.org/wxCrafter-2.1/fedora/64/wxcrafter-2.1-1.x86_64.rpm
-	md5sums = ff84dff257af4f0dac705d259c997ca8
-	md5sums = 2e060bc371420afad430fb6a3facea4e
+	source = http://repos.codelite.org/rpms/fedora/codelite-8.1-1.fc22.x86_64.rpm
+	source = http://repos.codelite.org/wxCrafter-2.3/fedora/64/wxcrafter-2.3-1.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/wxGTK3/3.0.2/8.fc22/x86_64/wxBase3-3.0.2-8.fc22.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/wxGTK3/3.0.2/8.fc22/x86_64/wxGTK3-3.0.2-8.fc22.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/wxGTK3/3.0.2/8.fc22/x86_64/wxGTK3-gl-3.0.2-8.fc22.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/wxGTK3/3.0.2/8.fc22/x86_64/wxGTK3-media-3.0.2-8.fc22.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/libjpeg/6b/46.fc12/x86_64/libjpeg-6b-46.fc12.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/libtiff/4.0.3/18.fc22/x86_64/libtiff-4.0.3-18.fc22.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/jbigkit/2.1/3.fc22/x86_64/jbigkit-libs-2.1-3.fc22.x86_64.rpm
+	md5sums = 3665195734fe43708ba2eef424ce3402
+	md5sums = c69281653ca836f091f004289fa48de4
+	md5sums = 64ebe6a9f0ff9eddb396623730880ec5
+	md5sums = efda764f71ffa977ed17756ca3c04846
+	md5sums = 72d7e7bb5ee120408932c15fca2a08e7
+	md5sums = a260b56eb1652e631a21072b3585d4c5
+	md5sums = b2bc95ae5cf7575b8588877b696235e3
+	md5sums = 5cad00c04174c50d3d8d4132abf004cd
+	md5sums = c4befcab085fb5d1bcf8fa18658cf2f9
 
 pkgname = codelite-bin
 
