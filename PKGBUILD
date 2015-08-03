@@ -3,7 +3,7 @@
 # PKGBUILD of aurvote-git and negates the necessity of manual updates.
 pkgname='php-box-git'
 _vcsRepoDir='box2'
-pkgver=2.5.2.r0.g046900a
+pkgver='latest'
 pkgrel=1
 pkgdesc='An application for building and managing phars.'
 arch=('any')
