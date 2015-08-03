@@ -1,4 +1,6 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
+# Maintainer: Serge Victor <arch at random dot re>
+# Maintainer: polyzen <polycitizen at gmail dot com>
 pkgbase=heavything
 pkgname=('rwasa' 'webslap' 'hnwatch' 'dhtool' 'sshtalk') #toplip
 pkgver=1.13
