@@ -1,6 +1,6 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
-_pkgname=breeze-gruvbox-dark
+_pkgname=breeze-gruvbox-dark-frameworks
 pkgname=yakuake-skin-${_pkgname}
 pkgver=0.0.1
 pkgrel=1
