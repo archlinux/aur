@@ -1,0 +1,21 @@
+pkgbase = ucspi-tcp
+	pkgdesc = Easy-to-use command-line tools for building TCP client-server applications.
+	pkgver = 0.88
+	pkgrel = 5
+	url = http://cr.yp.to/ucspi-tcp.html
+	arch = i686
+	arch = x86_64
+	license = public-domain
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = glibc
+	source = http://cr.yp.to/ucspi-tcp/ucspi-tcp-0.88.tar.gz
+	source = http://www.bltweb.net/qmail/ucspi-tcp-0.88-ipv6.patch
+	source = head-1.patch
+	sha512sums = 44efbd477dacf31d39fc970e2d2f74526dc815b905742f6127f0d5c80928ecc7e743089eaab0492386a58d5b97905113fbe8bbc7214ae179b7be27966b7566c7
+	sha512sums = 4180f2e8e0bd23bc345d363b5cfeab321293360203386fc93672bcb5c6fd8145d82c4eedb261abd0faacbce15bcd3180d7b02f2604039db735def7cdcd30abbc
+	sha512sums = 815b4caa3d9a294e3fe69a464f37d1f50ebd83e25d608955dff4b78da1d3ddd9fb4f2586ab41552f006a117f2bd7a937a6ee485dd7897d2d63a9f9e2e12a1d8d
+
+pkgname = ucspi-tcp
+

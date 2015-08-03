@@ -1,0 +1,40 @@
+--- Makefile.orig	2003-09-03 10:42:49.624475128 -0400
++++ Makefile	2003-09-03 10:43:04.950145272 -0400
+@@ -41 +41 @@
+-	./auto-str auto_home `head -1 conf-home` > auto_home.c
++	./auto-str auto_home `head -n 1 conf-home` > auto_home.c
+@@ -152 +152 @@
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+@@ -164 +164 @@
+-	echo exec "`head -1 conf-cc`" '-c $${1+"$$@"}' \
++	echo exec "`head -n 1 conf-cc`" '-c $${1+"$$@"}' \
+@@ -171 +171 @@
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+@@ -295 +295 @@
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+@@ -349 +349 @@
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+@@ -392 +392 @@
+-	echo exec "`head -1 conf-ld`" \
++	echo exec "`head -n 1 conf-ld`" \
+@@ -419 +419 @@
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+@@ -517 +517 @@
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+@@ -674,2 +674,2 @@
+-	echo CC=\'`head -1 conf-cc`\'; \
+-	echo LD=\'`head -1 conf-ld`\'; \
++	echo CC=\'`head -n 1 conf-cc`\'; \
++	echo LD=\'`head -n 1 conf-ld`\'; \
+@@ -718 +718 @@
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+@@ -860 +860 @@
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
