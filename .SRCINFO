@@ -1,0 +1,18 @@
+pkgbase = platformio-git
+	pkgdesc = A cross-platform code builder and library manager
+	pkgver = 20140913
+	pkgrel = 2
+	url = http://platformio.ikravets.com/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = python2
+	depends = python2-click
+	depends = python2-bottle
+	optdepends = energia: For MSP430 based projects
+	optdepends = arduino: For Arduino based projects
+	source = git+https://github.com/ivankravets/platformio.git
+	md5sums = SKIP
+
+pkgname = platformio-git
+
