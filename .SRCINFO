@@ -19,7 +19,7 @@ pkgname = nvidia-full-beta
 	pkgdesc = NVIDIA drivers for linux (beta)
 	install = nvidia-full-beta.install
 	depends = linux
-	depends = nvidia-utils-full-beta=355.06
+	depends = nvidia-utils-full-beta>=355.06
 	depends = libgl
 	provides = nvidia
 	conflicts = nvidia-96xx
