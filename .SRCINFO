@@ -1,0 +1,17 @@
+pkgbase = ttf-c64-fonts
+	pkgdesc = Set of Commodore 64 truetype fonts
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://style64.org/c64-truetype
+	install = ttf-c64-fonts.install
+	arch = any
+	license = custom
+	depends = xorg-fonts-encodings
+	depends = xorg-fonts-alias
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = http://style64.org/file/C64_TrueType_v1.2-STYLE.zip
+	md5sums = b4e97f5c33671a2dc88a22b16b67b232
+
+pkgname = ttf-c64-fonts
+
