@@ -1,0 +1,83 @@
+--- xss-lock.c.orig	2015-01-15 10:34:31.469611430 +0100
++++ xss-lock.c	2015-01-15 15:51:45.360306124 +0100
+@@ -61,6 +61,7 @@
+ static gboolean opt_quiet = FALSE;
+ static gboolean opt_verbose = FALSE;
+ static gboolean opt_ignore_sleep = FALSE;
++static gboolean opt_ignore_blank = FALSE;
+ static gboolean opt_print_version = FALSE;
+ 
+ static GOptionEntry opt_entries[] = {
+@@ -68,6 +69,7 @@
+     {"notifier", 'n', G_OPTION_FLAG_FILENAME, G_OPTION_ARG_CALLBACK, parse_notifier_cmd, "Send notification using CMD", "CMD"},
+     {"transfer-sleep-lock", 'l', 0, G_OPTION_ARG_NONE, &locker.transfer_sleep_lock_fd, "Pass sleep delay lock file descriptor to locker", NULL},
+     {"ignore-sleep", 0, 0, G_OPTION_ARG_NONE, &opt_ignore_sleep, "Do not lock on suspend/hibernate", NULL},
++    {"ignore-blank", 0, 0, G_OPTION_ARG_NONE, &opt_ignore_blank, "Do not lock on screensaver events", NULL},
+     {"quiet", 'q', 0, G_OPTION_ARG_NONE, &opt_quiet, "Output only fatal errors", NULL},
+     {"verbose", 'v', 0, G_OPTION_ARG_NONE, &opt_verbose, "Output more messages", NULL},
+     {"version", 0, 0, G_OPTION_ARG_NONE, &opt_print_version, "Print version number and exit", NULL},
+@@ -170,34 +172,36 @@
+         xcb_screensaver_notify_event_t *xss_event =
+             (xcb_screensaver_notify_event_t *)event;
+ 
+-        switch (xss_event->state) {
+-        case XCB_SCREENSAVER_STATE_ON:
+-            if (xss_event->kind == XCB_SCREENSAVER_KIND_INTERNAL)
+-                /* According to the original protocol, this forces the external
+-                 * saver (i.e., me) to be started after deactivating the
+-                 * internal saver, which may be started if the server is
+-                 * grabbed when the saver activates, but Xorg does not seem to
+-                 * work that way; I'm leaving this in anyway.
+-                 */
+-                xcb_force_screen_saver(connection, XCB_SCREEN_SAVER_ACTIVE);
+-            else if (!notifier.cmd || xss_event->forced) {
+-                start_child(&locker);
+-                logind_session_set_idle_hint(TRUE);
+-            } else if (!locker.pid)
+-                start_child(&notifier);
+-            else
+-                logind_session_set_idle_hint(TRUE);
+-            break;
+-        case XCB_SCREENSAVER_STATE_OFF:
+-            kill_child(&notifier);
+-            logind_session_set_idle_hint(FALSE);
+-            break;
+-        case XCB_SCREENSAVER_STATE_CYCLE:
+-            if (!locker.pid) {
+-                logind_session_set_idle_hint(TRUE);
+-                start_child(&locker);
+-            }
+-            break;
++	if (!opt_ignore_blank) {
++	    switch (xss_event->state) {
++	    case XCB_SCREENSAVER_STATE_ON:
++		if (xss_event->kind == XCB_SCREENSAVER_KIND_INTERNAL)
++		    /* According to the original protocol, this forces the external
++		     * saver (i.e., me) to be started after deactivating the
++		     * internal saver, which may be started if the server is
++		     * grabbed when the saver activates, but Xorg does not seem to
++		     * work that way; I'm leaving this in anyway.
++		     */
++		    xcb_force_screen_saver(connection, XCB_SCREEN_SAVER_ACTIVE);
++		else if (!notifier.cmd || xss_event->forced) {
++		    start_child(&locker);
++		    logind_session_set_idle_hint(TRUE);
++		} else if (!locker.pid)
++		    start_child(&notifier);
++		else
++		    logind_session_set_idle_hint(TRUE);
++		break;
++	    case XCB_SCREENSAVER_STATE_OFF:
++		kill_child(&notifier);
++		logind_session_set_idle_hint(FALSE);
++		break;
++	    case XCB_SCREENSAVER_STATE_CYCLE:
++		if (!locker.pid) {
++		    logind_session_set_idle_hint(TRUE);
++		    start_child(&locker);
++		}
++		break;
++	    }
+         }
+     }
+     return TRUE;
