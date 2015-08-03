@@ -49,7 +49,7 @@ pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.1
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -71,11 +71,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfq.preset'
         'change-default-console-loglevel.patch'
-        'config' 'config.x86_64'
-        '0004-block-loop-convert-to-per-device-workqueue.patch'
-        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
-        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
-        'bitmap-enable-booting-for-dm-md-raid1.patch')
+        'config' 'config.x86_64')
         
 prepare() {
     cd ${_srcname}
@@ -84,25 +80,6 @@ prepare() {
         msg "Add upstream patch"
         patch -Np1 -i "${srcdir}/patch-${pkgver}"
         
-    ### Fix deadlock with stacked loop devices (FS#45129)
-    # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
-        msg "Fix deadlock with stacked loop devices (FS#45129)"
-        for p in "${srcdir}"/000{4,5}-block*.patch; do
-        msg " $p"
-        patch -Np1 -i "$p"
-        done
-        
-    ### Fix bluetooth chip initialization on some macbooks (FS#45554)
-    # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
-    # https://bugzilla.kernel.org/show_bug.cgi?id=100651
-        msg "Fix bluetooth chip initialization on some macbooks (FS#45554)"
-        patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-
-   ### Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
-   # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
-        msg "Fix kernel oops when booting with root on RAID1 LVM (FS#45548)"
-        patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
-    
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
     # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -446,7 +423,7 @@ package_linux-bfq-docs() {
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'c0889485e049fd91402cbf16ec21391b88abe948d3861b7c000687c20ff560d70d4ec4f71a924065e187264f362006e6244834195561f8108ba0c2a39e49ec09'
+            'c6ac581f49e6fcbc6248a56e0e318778743e83c1936b3540b9b4aef255b5877ed3bae2fdd09fea8d3a86e6b57dbb6a413b4ebe4f994cbe0b0a0167b4dc821794'
             'SKIP'
             '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
             'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
@@ -455,11 +432,7 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             'f4f57eabc29a8fe93a3afe89a2efdfd480674cf3bd7f09dd9dbbce022bb883862abe17b0eb378b8d16a5b2882c2323147539a06ae1025956b73b2794c894b983'
-            'e7b40538ed5b86cd59209a056cf9c96dd8f23828dc96cdc282b0388e4132907446f24d606d11cace62c9a53c81df1439150ef0c9a960bf85b5495e656aa59f2c'
-            'c82288451d71fc4d268092702ab547ae513d94cc78a31c0fd3543397a3d3a3304936db6a0f3f0ee09e063c94cb2cffcc1c95cba74beb86f6a3806c9f5fa00282'
-            '0870b20411538738879fc24ad2363c8a7bfab98c2e00c231e54e991444a8aeda7a4141704097c82f2576d826a8eef2c318d4b1308e871983af1be337e051d28e'
-            '4fb043734a99125407dcb13aafa7fb73b0fad4ef9cb55ddf2e4daaf79368606c697556e8945bf6b2b7c2ff4de976ff38340bd349e56aba50978c958c844e13e0'
-            '09f7400ee9d49ecbbb64c622de6039fc91b4800abd3bf46e4ee8d906869ba7b5d62ed06e8b5814a108b35d2a1a2614024682d6d39dd36b6498f11c8481ffd153')
+            'e7b40538ed5b86cd59209a056cf9c96dd8f23828dc96cdc282b0388e4132907446f24d606d11cace62c9a53c81df1439150ef0c9a960bf85b5495e656aa59f2c')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
