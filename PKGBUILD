@@ -3,7 +3,7 @@
 
 pkgname=python2-neovim-git
 _pkgname=python2-neovim-git
-pkgver=0.r242.8051657
+pkgver=0.r262.605897b
 pkgrel=1
 pkgdesc="Python client to neovim, git version. Use this to keep up with neovim-git"
 arch=('any')
@@ -26,6 +26,12 @@ makedepends=('git')
 source=("$pkgname::git://github.com/neovim/python-client.git"
         "LICENSE::https://raw.githubusercontent.com/neovim/python-client/master/LICENSE")
 sha256sums=('SKIP' '297a62ff61eb84f532ff5a8181860d925b710d4458f204e56c90b1da997c8711')
+
+if [ -n "$VIRTUAL_ENV" ]; then
+  echo "Warning: You're building within a virtualenv. Use"
+  echo "a shell without virtualenv to build this package!"
+  exit 1
+fi
 
 pkgver() {
   cd "${_pkgname}"
