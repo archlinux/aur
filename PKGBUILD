@@ -4,8 +4,8 @@
 _pkgbase="dddvb"
 pkgname="dddvb-dkms"
 pkgdesc="Official Digital Devices driver package as DKMS"
-pkgver=0.9.18beta3
-pkgrel=2
+pkgver=0.9.19c
+pkgrel=1
 arch=("i686" "x86_64")
 url="http://download.digital-devices.de/download/linux/"
 license=("GPL2")
@@ -16,7 +16,7 @@ conflicts=('digitaldevices-dvb-drivers' 'dvbsky-dvb-drivers' 'technotrend-dvb-dr
 provides=('dddvb-dkms')
 install="${pkgname}.install"
 source=("http://download.digital-devices.de/download/linux/$_pkgbase-$pkgver.tar.bz2")
-md5sums=('3f550b8b21710348d46b888d8f2078b3')
+md5sums=('6b759c1d8cb733a58009dc61ecd36141')
 
 prepare() {
   cd "$srcdir"
@@ -27,13 +27,13 @@ prepare() {
   echo 'MAKE="make"' >> dkms.conf
   echo 'CLEAN="make clean"' >> dkms.conf
 
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd "$srcdir/$_pkgbase"
+  sed -i '/eth_rebuild_header/d' dvb-core/dvb_net.c
   sed -i '/apps/d' Makefile
-  rm dvb-core/.#dvb_frontend.h
 }
 
 build() {
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd "$srcdir/$_pkgbase"
   make
 
   # Borrowed from dahdi-linux
@@ -52,7 +52,7 @@ build() {
 package() {
   install -D -m 0644 "$srcdir/dkms.conf" "$pkgdir/usr/src/$_pkgbase-$pkgver/dkms.conf"
 
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd "$srcdir/$_pkgbase"
 
   cp -a * "$pkgdir/usr/src/$_pkgbase-$pkgver"
 }
