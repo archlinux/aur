@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=autorevision
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 pkgdesc="Extracts metadata about the head of a repository; useful for build scripts."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://autorevision.github.io/"
 license=('BSD')
 makedepends=('asciidoc')
 source=(https://github.com/Autorevision/autorevision/releases/download/v%2F${pkgver}/autorevision-${pkgver}.tgz)
-sha256sums=('d7f44ea446e2b737cc47792d13021e9e52d4fcfca52e2ddc4d8968eada3bf6dc')
+sha256sums=('b2a5cd0e368b585f4e6a9414d632194b0de715185404f8cbe21645660fbcbcdf')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}"
@@ -24,5 +24,3 @@ package() {
   install -dm 755 "${pkgdir}"/usr/share/licenses/autorevision
   install -m 444 COPYING "${pkgdir}"/usr/share/licenses/autorevision
 }
-
-# vim:set ts=2 sw=2 et:

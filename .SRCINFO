@@ -1,13 +1,13 @@
 pkgbase = autorevision
 	pkgdesc = Extracts metadata about the head of a repository; useful for build scripts.
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://autorevision.github.io/
 	arch = any
 	license = BSD
 	makedepends = asciidoc
-	source = https://github.com/Autorevision/autorevision/releases/download/v%2F1.12/autorevision-1.12.tgz
-	sha256sums = d7f44ea446e2b737cc47792d13021e9e52d4fcfca52e2ddc4d8968eada3bf6dc
+	source = https://github.com/Autorevision/autorevision/releases/download/v%2F1.13/autorevision-1.13.tgz
+	sha256sums = b2a5cd0e368b585f4e6a9414d632194b0de715185404f8cbe21645660fbcbcdf
 
 pkgname = autorevision
 
