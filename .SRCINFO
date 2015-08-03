@@ -1,15 +1,15 @@
 pkgbase = wmx
 	pkgdesc = The ideal window manager for today's elegant and ascetic programmer
-	pkgver = 7
-	pkgrel = 2
+	pkgver = 7.1
+	pkgrel = 1
 	url = http://www.all-day-breakfast.com/wmx/
 	arch = x86_64
 	arch = i686
 	license = custom
 	depends = libxft
 	depends = libxpm
-	source = https://github.com/bbidulock/wmx/releases/download/wmx-7/wmx-7.tar.gz
-	sha256sums = 8ffa4335a2100d0437fe177239241cbec6aba79650ececf3148f4dc27e09bc05
+	source = https://github.com/bbidulock/wmx/releases/download/wmx-7.1/wmx-7.1.tar.gz
+	sha256sums = 845ee80dedb088b2522e99f86680aee6ab44e3ef4705e384e238661c7a62dfde
 
 pkgname = wmx
 
