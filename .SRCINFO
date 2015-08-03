@@ -1,0 +1,13 @@
+pkgbase = django-registration
+	pkgdesc = A simple, generic user-registration application for Django
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/macropin/django-registration
+	arch = any
+	license = BSD
+	depends = python-django
+	source = https://github.com/macropin/django-registration/archive/v1.2.tar.gz
+	sha256sums = 8e77f21d3f10eaf3319e21e052f40b47683d8e1ad3fd461815f492eb5665d0db
+
+pkgname = django-registration
+
