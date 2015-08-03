@@ -1,6 +1,6 @@
 pkgbase = megasync
 	pkgdesc = Sync your files to your Mega account. Official app
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://mega.co.nz/#sync
 	install = megasync.install
@@ -16,11 +16,10 @@ pkgbase = megasync
 	depends = qtchooser
 	depends = sqlite
 	conflicts = megatools
-	options = !strip
-	source_i686 = https://mega.co.nz/linux/MEGAsync/Debian_8.0/i386/megasync_2.1.0_i386.deb
-	md5sums_i686 = 0744cb54335bfd9dcecd0852e51fd651
-	source_x86_64 = https://mega.co.nz/linux/MEGAsync/Debian_8.0/amd64/megasync_2.1.0_amd64.deb
-	md5sums_x86_64 = c0f0dabab1884080d1f7da891e2debe0
+	source_i686 = https://mega.co.nz/linux/MEGAsync/Debian_8.0/i386/megasync_2.1.1_i386.deb
+	md5sums_i686 = 6af21be3cc6fceee8824f3b382e07a23
+	source_x86_64 = https://mega.co.nz/linux/MEGAsync/Debian_8.0/amd64/megasync_2.1.1_amd64.deb
+	md5sums_x86_64 = cee950ece38f6e920b919309806aa6c1
 
 pkgname = megasync
 
