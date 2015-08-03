@@ -1,0 +1,18 @@
+pkgbase = pdf-presentation
+	pkgdesc = A GUI of pdfpc
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://www.dalan.rd-h.fr/wordpress
+	install = INSTALL
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = gettext
+	depends = gtk3>=3.10
+	depends = pdfpc
+	conflicts = pdf-presentation-pdfpc
+	source = https://github.com/Dalan94/pdf-presentation/releases/download/1.0.0/pdf-presentation.tar.gz
+	md5sums = 8e14a9414c9bb20d782b052fd019860f
+
+pkgname = pdf-presentation
+
