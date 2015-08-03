@@ -1,0 +1,13 @@
+pkgbase = clipf
+	pkgdesc = clipf is a personal finance manager with command line interface
+	pkgver = 0.4
+	pkgrel = 2
+	url = http://code.google.com/p/clipf/
+	arch = any
+	license = GPL
+	depends = python
+	source = http://clipf.googlecode.com/files/clipf-0.4.tgz
+	md5sums = ebdca9d2b4ab40c46958831f79625317
+
+pkgname = clipf
+
