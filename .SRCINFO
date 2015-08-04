@@ -1,0 +1,16 @@
+pkgbase = tralics
+	pkgdesc = LaTeX to XML translator
+	pkgver = 2.15.1
+	pkgrel = 1
+	url = http://www-sop.inria.fr/apics/tralics/
+	arch = i686
+	arch = x86_64
+	license = custom:CeCILL
+	makedepends = gcc
+	makedepends = texlive-latexextra
+	depends = gcc-libs
+	source = ftp://ftp-sop.inria.fr/marelle/tralics/src/tralics-src-2.15.1.tar.gz
+	md5sums = e946ebb37919cd900d7e2bf6c71261fc
+
+pkgname = tralics
+
