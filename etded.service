@@ -1,0 +1,8 @@
+[Unit]
+Description=Enemy Territory dedicated server
+
+[Service]
+ExecStart=/usr/bin/etded
+
+[Install]
+WantedBy=multi-user.target

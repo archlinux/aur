@@ -1,0 +1,36 @@
+pkgbase = enemy-territory
+	pkgver = 2.60b
+	pkgrel = 14
+	url = http://www.splashdamage.com/wolfet
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	source = http://filebase.trackbase.net/et/full/et260b.x86_full.zip
+	source = enemy-territory.desktop
+	source = et.sh
+	source = etded.sh
+	source = etded.service
+	md5sums = 6db59b543d42ee096ce263f3df571c08
+	md5sums = 27532e5ae263d7ed86ca1ab17cb93fbd
+	md5sums = d47784d89cc43564f21194c86d6242fa
+	md5sums = ab126dd835c910f920bae4ab976e3bf8
+	md5sums = 88def8a215ad2476a343e119b5d31a6b
+
+pkgname = enemy-territory
+	pkgdesc = Wolfenstein: Enemy Territory is a completely free, standalone, team-based, multiplayer FPS
+	install = enemy-territory.install
+	optdepends = et-sdl-sound: SDL-based replacement for deprecated OSS-based sound systems of Wolf:ET
+	backup = usr/share/enemy-territory/etmain/server.cfg
+	backup = usr/share/enemy-territory/etmain/punkbuster.cfg
+	depends_i686 = enemy-territory-data
+	depends_i686 = mesa
+	depends_i686 = libxext
+	depends_x86_64 = enemy-territory-data
+	depends_x86_64 = lib32-mesa
+	depends_x86_64 = lib32-libxext
+	depends_x86_64 = lib32-libxdamage
+
+pkgname = enemy-territory-data
+	pkgdesc = Wolfenstein: Enemy Territory is a completely free, standalone, team-based, multiplayer FPS (data)
+

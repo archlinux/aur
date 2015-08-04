@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Wolfenstein: Enemy Territory
+GenericName=A team-based multiplayer WWII tactical first-person shooter
+Comment=A team-based multiplayer WWII tactical first-person shooter
+Icon=enemy-territory.xpm
+Exec=et
+Terminal=false
+Categories=Game;ActionGame;
+StartupNotify=false

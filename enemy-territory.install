@@ -1,0 +1,10 @@
+post_install() {
+    echo
+    echo "==> You need an etkey to play."
+    echo "==> Run 'etkey' or visit http://www.etkey.org/"
+    echo
+}
+
+post_upgrade() {
+    post_install $1
+}
