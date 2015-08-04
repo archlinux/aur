@@ -1,7 +1,7 @@
 pkgbase = srptools
 	pkgdesc = OpenFabrics Alliance InfiniBand SCSI RDMA discovery tools
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = srptools
 	license = custom:"Open Fabrics Alliance BSD"
 	depends = libibumad
 	depends = libibverbs
+	depends = rdma
 	depends = bash
 	source = https://www.openfabrics.org/downloads/srptools/srptools-1.0.3.tar.gz
 	source = srptools.service

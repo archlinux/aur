@@ -1,14 +1,14 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# * Namcap warns that rdma is an unrequired dependency, but srptools needs the ib_srpt kernel module, loaded by rdma if SRP_LOAD=yes in its /etc/rdma.conf
 
 pkgname=srptools
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenFabrics Alliance InfiniBand SCSI RDMA discovery tools'
 arch=('x86_64' 'i686')
 url=('https://www.openfabrics.org/index.php/overview.html')
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
-depends=('libibumad' 'libibverbs' 'bash')
+depends=('libibumad' 'libibverbs' 'rdma' 'bash')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'srptools.service')
 md5sums=('f3a463673dcf52c726eb7df2f7c391de'
@@ -38,5 +38,5 @@ package() {
 
   # Convert from init.d to systemd
   rm -rf ${pkgdir}/etc/init.d
-  install -Dm644 "${srcdir}/srptools.service" "${pkgdir}/etc/systemd/system/srptools.service"
+  install -Dm644 "${srcdir}/srptools.service" "${pkgdir}/usr/lib/systemd/system/srptools.service"
 }
