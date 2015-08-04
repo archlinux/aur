@@ -5,7 +5,7 @@
 
 pkgname=opensm
 pkgver=3.3.19
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenFabrics Alliance InfiniBand Subnet Manager and Administrator'
 arch=('x86_64' 'i686')
 url=('https://www.openfabrics.org/index.php/overview.html')
@@ -36,6 +36,11 @@ package() {
 
   # Convert from init.d to systemd
   rm -rf ${pkgdir}/etc/init.d
-  install -Dm644 "${srcdir}/opensm.service" "${pkgdir}/etc/systemd/system/opensm.service"
+  # If ${pkgdir}/etc is empty (it should be, since /etc/init.d/ was removed) remove it
+  if ! [ "$(ls -A ${pkgdir}/etc)" ]; then
+     rm -rf ${pkgdir}/etc/
+  fi
+
+  install -Dm644 "${srcdir}/opensm.service" "${pkgdir}/usr/lib/systemd/system/opensm.service"
   install -Dm755 "${srcdir}/opensm.launch" "${pkgdir}/usr/bin/opensm.launch"
 }

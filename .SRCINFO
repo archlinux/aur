@@ -1,7 +1,7 @@
 pkgbase = opensm
 	pkgdesc = OpenFabrics Alliance InfiniBand Subnet Manager and Administrator
 	pkgver = 3.3.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
