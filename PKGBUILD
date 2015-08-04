@@ -32,11 +32,11 @@ package()
 	install -m755 -d "${pkgdir}/usr/share/icons"
 
 	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/data" "$pkgdir/usr/share/${pkgname}/data"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/deploy/share/mandelbulber2/examples" "$pkgdir/usr/share/${_pkgname}/examples"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/deploy/share/mandelbulber2/icons" "$pkgdir/usr/share/${_pkgname}/icons"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/language" "$pkgdir/usr/share/${_pkgname}/language"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/qt_data" "$pkgdir/usr/share/${_pkgname}/qt_data"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/deploy/share/mandelbulber2/textures" "$pkgdir/usr/share/${_pkgname}/textures"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/deploy/share/mandelbulber2/toolbar" "$pkgdir/usr/share/${_pkgname}/toolbar"
+	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/deploy/share/mandelbulber2/examples" "$pkgdir/usr/share/${pkgname}/examples"
+	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/deploy/share/mandelbulber2/icons" "$pkgdir/usr/share/${pkgname}/icons"
+	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/language" "$pkgdir/usr/share/${pkgname}/language"
+	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/qt_data" "$pkgdir/usr/share/${pkgname}/qt_data"
+	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/deploy/share/mandelbulber2/textures" "$pkgdir/usr/share/${pkgname}/textures"
+	cp -ra "${srcdir}/${pkgname}-${pkgver}/${pkgname}/deploy/share/mandelbulber2/toolbar" "$pkgdir/usr/share/${pkgname}/toolbar"
 	install -m755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}/Release/mandelbulber2" "${pkgdir}/usr/bin/"
 }
