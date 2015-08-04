@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nuclide-server
-pkgver=0.0.24
-pkgrel=2
+pkgver=0.0.26
+pkgrel=1
 pkgdesc="Server-side functionality required by Nuclide to support remote file editing."
 arch=('i686' 'x86_64')
 url="http://nuclide.io"
@@ -11,8 +11,8 @@ depends=('nodejs' 'python2' 'watchman')
 makedepends=('npm' 'git')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
         LICENSE-$pkgver::https://github.com/facebook/nuclide/raw/v$pkgver/LICENSE
-        homecache.diff::https://github.com/facebook/nuclide/compare/master...mtorromeo:homecache.diff
-        cafix.diff::https://patch-diff.githubusercontent.com/raw/facebook/nuclide/pull/132.diff)
+        homecache-$pkgver.diff::https://github.com/mtorromeo/nuclide/compare/v$pkgver...homecache.diff
+        cafix-$pkgver.diff::https://github.com/mtorromeo/nuclide/compare/v$pkgver...cafix.diff)
 noextract=($pkgname-$pkgver.tgz)
 
 package() {
@@ -27,16 +27,15 @@ package() {
 
 	cd "$pkgdir"/usr/lib/node_modules/nuclide-server
 
-	patch -p4 -i "$srcdir"/cafix.diff
+	patch -p4 -i "$srcdir"/cafix-$pkgver.diff
 	sed '1 s/env python$/env python2/' -i scripts/*.py
-	sed '/import sys/a import ssl' -i scripts/utils.py
 
 	cd node_modules/nuclide-node-transpiler
-	patch -p4 -i "$srcdir"/homecache.diff
+	patch -p4 -i "$srcdir"/homecache-$pkgver.diff
 	npm install --user root
 }
 
-sha256sums=('c99ff58a025cb42f2ec93aff94246954987cf74ccf7328569213bbff9c006810'
+sha256sums=('f55cda7e3838e6b25caeede06dee2c4ce117493b4bbe4cd1b4dd3baa1ea8d7bf'
             '5c048a02821e17560bd70882074b3301c98ed3c03793ef1d030ebf1a50ac3355'
-            '4198d5c204b72082b078158bcdda0eaff23aa74605a9c091c8162d3d2b4452b0'
-            'b80d1a8f2536655a6c558d25ada2c285f00654e8d6b021b72488d2d47347a475')
+            'bd05ed2d4989772b3fd39e83408709961c998852930a6882c4862aea40f969a3'
+            'c7e7339c32129d735a1713511e1f522a1cf822d105f4b7fee20c91380a9ae193')
