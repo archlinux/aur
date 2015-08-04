@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   # Required for go get
-  export GOPATH=$srcdir
+  export GOPATH="$srcdir"
 
   # Make src directory for $GOPATH
   mkdir -p "$GOPATH/src"
@@ -31,7 +31,7 @@ build() {
   cd "$GOPATH/src/$_pkgname/cmd/ipfs"
 
   msg2 'Installing dependencies...'
-  echo $GOPATH
+  echo "$GOPATH"
   go get -v ./...
 
   msg2 'Building binary...'
