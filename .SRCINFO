@@ -1,6 +1,6 @@
 pkgbase = ipoibmodemtu
 	pkgdesc = Set InfiniBand port modes and MTUs by a systemd service
-	pkgver = 1.00
+	pkgver = 1.01
 	pkgrel = 1
 	arch = any
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = ipoibmodemtu
 	source = ipoibmodemtu.service
 	md5sums = 60342c604ff203809ba4ec3fbf859222
 	md5sums = d6b768522b287a58f0e8a85cf708a49f
-	md5sums = a4e18ac50abd22ff443980b2b20bdf6b
+	md5sums = d4c9fe25343431683c0fea468d7551ce
 
 pkgname = ipoibmodemtu
 
