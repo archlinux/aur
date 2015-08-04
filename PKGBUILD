@@ -41,8 +41,6 @@ build() {
 package() {
   cd "$srcdir"
 
-  installDir="$pkgdir/usr/bin"
-
-  install -dm755 "$installDir"
-  install -m755 "$srcdir/bin/ipfs" "$installDir/ipfs"
+  install -dm755 "$pkgdir/usr/bin"
+  install -m755 "$srcdir/bin/ipfs" "$pkgdir/usr/bin/ipfs"
 }
