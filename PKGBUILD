@@ -60,7 +60,7 @@ build() {
 
   grunt css
   grunt bower_clean
-  grunt nodewebkit
+  grunt nodewebkit || grunt nodewebkit
 }
 
 package() {
