@@ -1,13 +1,13 @@
 pkgbase = sqlite-jdbc
 	pkgdesc = JDBC driver for SQLite
-	pkgver = 3.8.10.1
+	pkgver = 3.8.11.1
 	pkgrel = 1
 	url = https://bitbucket.org/xerial/sqlite-jdbc/
 	arch = any
 	license = Apache
 	depends = java-runtime
-	source = https://bitbucket.org/xerial/sqlite-jdbc/downloads/sqlite-jdbc-3.8.10.1.jar
-	sha256sums = 70690f566a5ca2fdc0ccbef8623209cd67c4ee151291800f35ad9a0b7ab72be7
+	source = https://bitbucket.org/xerial/sqlite-jdbc/downloads/sqlite-jdbc-3.8.11.1.jar
+	sha256sums = 58ab29176a24a85a0c76177561257a986c4865e45730b79882c688846371d341
 
 pkgname = sqlite-jdbc
 
