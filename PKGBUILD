@@ -1,8 +1,8 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=firefox-extension-ublock-origin
-pkgver=1.0.0.0
-pkgrel=2
+pkgver=1.0.0.1
+pkgrel=1
 pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
 url=https://github.com/gorhill/uBlock
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('firefox')
 conflicts=('firefox-extension-ublock')
 source=("uBlock0-$pkgver.xpi::https://github.com/gorhill/uBlock/releases/download/$pkgver/uBlock0.firefox.xpi")
-sha256sums=('b586dea639524752fdfd81901ce7ff247955df0f8bc094fd00484175c5fb452b')
+sha256sums=('beda38d6bc306c8a5fe912f5336350fefb69c0c70436f02662c6dc5547efc554')
 
 package() {
   local GLOBIGNORE=*.xpi:LICENSE.txt
