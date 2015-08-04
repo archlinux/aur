@@ -2,10 +2,10 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname="gnome-shell-extension-activities-config"
-pkgdesc="Configure the Activities Button with the Activities Configurator Extension and the Gnome Shell Extension Preferences Tool."
+pkgname=gnome-shell-extension-activities-config
 pkgver=36
 pkgrel=1
+pkgdesc="Configure the Activities Button with the Activities Configurator Extension and the Gnome Shell Extension Preferences Tool."
 arch=(any)
 url="https://extensions.gnome.org/extension/358/activities-configurator/"
 license=(GPLv2)
