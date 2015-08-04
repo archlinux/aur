@@ -1,7 +1,7 @@
-# Maintainer: Peter Spiess-Knafl <psk@autistici.org>
+# Maintainer: Peter Spiess-Knafl <dev@spiessknafl.at>
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 pkgname=libjson-rpc-cpp
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
@@ -9,11 +9,16 @@ url="https://github.com/cinemast/libjson-rpc-cpp"
 license=('MIT')
 depends=('curl' 'argtable' 'jsoncpp' 'libmicrohttpd')
 makedepends=('cmake')
-checkdepends=('boost')
+#checkdepends=('libcatch-cpp-headers')
 install=libjson-rpc-cpp.install
 changelog=ChangeLog
-source=('https://github.com/cinemast/libjson-rpc-cpp/archive/v0.5.0.tar.gz')
-sha256sums=('e6d8d6c20517bb38eba9dba7f372e0a95432c4cbf55ec9b136ba841faa0a6d99')
+source=('https://github.com/cinemast/libjson-rpc-cpp/archive/v0.6.0.tar.gz')
+sha256sums=('98baf15e51514339be54c01296f0a51820d2d4f17f8c9d586f1747be1df3290b')
+
+prepare() {
+ cd "${srcdir}"/${pkgname}-${pkgver}
+ patch -Np1 -i ../../gcc5.patch
+}
 
 build() {
   msg2 "Creating build directories"
