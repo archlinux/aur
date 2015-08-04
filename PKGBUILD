@@ -12,12 +12,12 @@ makedepends=('cmake')
 #checkdepends=('libcatch-cpp-headers')
 install=libjson-rpc-cpp.install
 changelog=ChangeLog
-source=('https://github.com/cinemast/libjson-rpc-cpp/archive/v0.6.0.tar.gz')
-sha256sums=('98baf15e51514339be54c01296f0a51820d2d4f17f8c9d586f1747be1df3290b')
+source=('https://github.com/cinemast/libjson-rpc-cpp/archive/v0.6.0.tar.gz' 'gcc5.patch')
+sha256sums=('98baf15e51514339be54c01296f0a51820d2d4f17f8c9d586f1747be1df3290b' 'e5e8431bc478235eaad90fb94e723627cc2e0e5b015772fc97b0fae6ef9eeafc')
 
 prepare() {
  cd "${srcdir}"/${pkgname}-${pkgver}
- patch -Np1 -i ../../gcc5.patch
+ patch -Np1 -i ../gcc5.patch
 }
 
 build() {
