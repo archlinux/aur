@@ -1,0 +1,28 @@
+pkgbase = metacity-git
+	pkgdesc = Legacy GNOME window manager
+	pkgver = 3.14.1.r2.g246dc66
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Metacity
+	install = metacity.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = yelp-tools
+	depends = dconf
+	depends = libcanberra
+	depends = libgtop
+	depends = libsm
+	depends = gsettings-desktop-schemas
+	depends = gtk3
+	depends = startup-notification
+	depends = zenity
+	provides = metacity
+	conflicts = metacity
+	source = git://git.gnome.org/metacity
+	sha256sums = SKIP
+
+pkgname = metacity-git
+
