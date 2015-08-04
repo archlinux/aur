@@ -1,0 +1,14 @@
+pkgbase = renpy-sdk
+	pkgdesc = The Ren'Py Visual Novel Engine
+	pkgver = 6.99.5
+	pkgrel = 1
+	url = http://www.renpy.org
+	arch = any
+	license = custom
+	depends = renpy
+	options = !strip
+	source = http://www.renpy.org/dl/6.99.5/renpy-6.99.5-sdk.tar.bz2
+	sha256sums = fef030f4fc6d3b1f9f6fb634005721acbc12a54bf6064ebf7c7458bb977267e6
+
+pkgname = renpy-sdk
+
