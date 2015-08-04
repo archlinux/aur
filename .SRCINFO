@@ -1,0 +1,22 @@
+pkgbase = pkgrepotools-git
+	pkgdesc = builds and distributes packages expanding templates off-file
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/dffischer/pkgrepotools
+	arch = any
+	license = GPL
+	makedepends = ruby-ronn
+	makedepends = git
+	depends = bash
+	depends = sed
+	optdepends = pacman: for makepkg-expanded
+	optdepends = git: for offbranch, aurbranch and aurremote
+	optdepends = pkgbuild-introspection: to run aurbranch without a .SRCINFO argument
+	provides = pkgrepotools
+	conflicts = pkgrepotools
+	replaces = makepkg-expanded
+	source = pkgrepotools::git+https://github.com/dffischer/pkgrepotools
+	md5sums = SKIP
+
+pkgname = pkgrepotools-git
+
