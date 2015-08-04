@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-mew
-pkgver=6.6
+pkgver=6.7
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Messaging in the Emacs World"
@@ -13,7 +13,7 @@ license=('custom')
 depends=('emacs')
 optdepends=('ruby')
 source=("http://mew.org/Release/mew-${pkgver}.tar.gz")
-md5sums=('86fc96f5c68508072c2ba8d49adea978')
+md5sums=('feb81a0ff420f00c5bc5b5287721991a')
 install=emacs-mew.install
 
 build()
