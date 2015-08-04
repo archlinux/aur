@@ -1,7 +1,7 @@
 pkgbase = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
 	pkgver = 352.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-grsec.install
 	arch = i686
