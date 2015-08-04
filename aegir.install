@@ -1,39 +1,59 @@
 post_install() {
-    post_upgrade
+  echo -n ">>> Creating the aegir user as an alias of the http user... "
+  [ $(getent passwd aegir &>/dev/null; echo $?) -eq 0 ] && {
+    echo "User already exists; no action taken."
+  } || {
+    useradd --gid $(id --group http) --home-dir /usr/shared/webapps/aegir --non-unique --uid $(id --user http) aegir
+    echo "Done."
+  }
 
-    echo ">>> 1. Ensure this machine's hostname is a FQDN that resolves one of its IP addresses:"
-    echo "         $ ip addr | grep inet | sed --regexp-extended 's/ *inet6? ([^\\/]*).*/\1/' | \\"
-    echo "             grep --quiet $(resolveip $(hostname) | cut --fields=6 --delimiter=' ') && echo Success!"
-    echo ">>> 2. Ensure the http user and group exist (i.e. uid=gid=33):"
-    echo "         $ test \$(id --user http) -eq 33 -a \$(id --group http) -eq 33 && echo Success!"
-    echo ">>> 3. Ensure PHP can successfully send outgoing emails (the supplied msmtprc template works for Google accounts):"
-    echo "         $ php -r 'mail(\"example@example.com\", \"Test email from PHP\", \"Test email body.\");'"
-    echo ">>> 4. Setup the MySQL instance (by running mysql_secure_installation, or the following shell commands):"
-    echo "         # systemctl start mysqld"
-    echo "         $ mysql --user=root --execute=\""
-    echo "             DELETE FROM mysql.user WHERE User='';"
-    echo "             DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
-    echo "             DROP DATABASE IF EXISTS test;"
-    echo "             DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
-    echo "             FLUSH PRIVILEGES;\""
-    echo ">>> 5. (opt) Create a aegir MySQL user:"
-    echo "          $ mysql --user=root \\"
-    echo "              --execute=\"GRANT ALL PRIVILEGES ON *.* TO 'aegir'@'%' IDENTIFIED BY 'passwd' WITH GRANT OPTION;\""
-    echo ">>> 6. Install hostmaster as the aegir user through its drush provision command:"
-    echo "         # su aegir -c \\"
-    echo "             \"drush hostmaster-install --yes --web_group=http --http_service_type=nginx \\"
-    echo "                --root=/var/lib/aegir/hostmaster --aegir_db_user=aegir --aegir_db_pass=passwd \\"
-    echo "                --aegir_host=\$(hostname) --client_email=aegir@\$(hostname) \$(hostname)\""
-    echo ">>> 7. Connect nginx to the Unix socket used by php-fpm:"
-    echo "         # su aegir -c \"sed -i 's/127.0.0.1:9000/unix:\\/run\\/php-fpm\\/php-fpm.sock/' /var/lib/aegir/config/includes/nginx_vhost_common.conf\""
-    echo ">>> 8. Start the entire web stack:"
-    echo "         # systemctl start mysqld nginx php-fpm"
-    echo ">>> 9. (opt) Enable and start the hosting queue daemon:"
-    echo "         # su aegir -c \"drush @hostmaster pm-enable hosting_queued\" && systemctl start aegir"
+  echo -n ">>> Testing that localhost resolves to an IP address assigned to a network interface... "
+  [ $(ip addr | sed --quiet --regexp-extended 's/\s+inet6?\s([^\/]*).*/\1/p' | egrep '^(127.0.0.1|::1)$' | wc -l) -eq 0 ] && echo "Failed." || echo "Passed."
+
+  echo -n ">>> Testing for successful outgoing mail by PHP... "
+  [ -z "$(php -r 'print_r(mail("example@example.com", "Test email from PHP", "Test email body."));')" ] && echo "Failed." || echo "Passed."
+
+  echo ">>> Initialise Aegir with the following steps:"
+  echo "    1. Initialise the MariaDB data directory, e.g. with the mysql install db command, and start the MariaDB service:"
+  echo "       # mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql && systemctl start mysqld.service"
+  echo "    2. Run mysql_secure_installation to:"
+  echo "       - set a root password;"
+  echo "       - remove anonymous users;"
+  echo "       - disallow remote root logins; and"
+  echo "       - remove the test database."
+  echo "    3. Create a database user for Aegir with the 'GRANT OPTION' privilege:"
+  echo "       $ mysql --execute=\"GRANT ALL PRIVILEGES ON *.* TO 'aegir'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;\""
+  echo "    4. Install Aegir's frontend with the drush command, hostmaster-install, e.g.:"
+  echo "       # sudo -Hu aegir drush hostmaster-install --web_group=http --http_service_type=nginx \\"
+  echo "                                                 --root=/usr/share/webapps/hostmaster \\"
+  echo "                                                 --aegir_db_user=aegir --aegir_db_pass=password \\"
+  echo "                                                 --client_email=aegir@$(hostname) \\"
+  echo "                                                 --aegir_host=$(hostname) aegir.$(hostname)\\"
+  echo "    5. Reconfigure Aegir's nginx configuration to use UNIX sockets instead of a network loopback port:"
+  echo "       # sed -i 's#127.0.0.1:9000#unix:/run/php-fpm/php-fpm.sock#' /var/lib/aegir/config/includes/nginx_vhost_common.conf"
+  echo "    6. Start and start on boot the Aegir stack target:"
+  echo "       # systemctl enable --now aegir.target"
+  echo "    7. Enable the hosting_queued module/hosting feature, unmask the queue daemon service unit, and restart the Aegir stack:"
+  echo "       # drush @hostmaster pm-enable hosting_queued"
+  echo "       # drush @hostmaster vset --exact --format=integer hosting_feature_queued 1"
+  echo "       # systemctl restart aegir.target"
+}
+
+pre_upgrade() {
+  [ $(systemctl --system is-active aegir.target) = active ] && {
+    touch /tmp/aegir.target-active
+    systemctl --system stop --now aegir.target
+  }
 }
 
 post_upgrade() {
-    [ getent passwd aegir &>/dev/null ] || useradd --uid 696  --gid http --home-dir /var/lib/aegir aegir
-    chmod 755 /var/lib/aegir
-    pwconv
+  [ -f /tmp/aegir.target-active ] && {
+    rm /tmp/aegir.target-active
+    systemctl --system stop --now aegir.target
+  }
+}
+
+pre_remove() {
+  [ $(systemctl --system is-enabled aegir.target) = enabled ] && systemctl --system disable --now aegir.target
+  [ $(systemctl --system is-active aegir.target) = enabled ] && systemctl --system stop --now aegir.target
 }

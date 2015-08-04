@@ -20,24 +20,31 @@ depends=(
     'smtp-forwarder'
     'unzip'
 )
+optdepends=(
+    'ruby-mailcatcher: catch mail forwarded to it and serve it on a web UI'
+    'msmtp-mta: smtp forwarder'
+)
 options=(emptydirs)
 install=$pkgname.install
-source=(
-    "msmtprc.$pkgname"
-    'nginx.conf'
-    'nginx.svc.conf'
-    "$pkgname.ini"
-    'sudoers'
-    "$pkgname.service"
-    "$pkgname.target"
+source=("$pkgname.service"
+        "$pkgname.target"
+        'msmtprc'
+        'mysqld-aegir.service'
+        'nginx-aegir.service'
+        'nginx.conf'
+        'php-fpm-aegir.service'
+        'php-fpm.conf'
+        'sudoers'
 )
-md5sums=('d43026960060bc677549baa26a24c9ee'
-         '829ac9283a168f796354e78e8bc8e496'
-         '86395485765bb73ae09d28e0d7101613'
-         '879237d0ca0dc54d5cdb4307adb40005'
-         'cb3462fda27156851badf51d5a0595ae'
-         '25414ba4e4bd50f31286db9a349afa4d'
-         '5020ae6d02a9796e979d1619a9a02957')
+md5sums=('2c74cf45b76503d2912c89da4a7bcccb'
+         'c279899d0b987e4d53ea85d0f154a510'
+         'd43026960060bc677549baa26a24c9ee'
+         '7559c51ec89b4d65a1193b3d6d6da297'
+         'ef858752158383dfde4c8b7f8cb7c6f0'
+         '7edbcc6b449a2f09ed93f88b77f300a5'
+         'f9f1b1a7e551c718c154c1c745827b1e'
+         'b1300cd3bd23a2544e2eff247cad2f80'
+         'cb65729f01d5d641fc85518c2175a13a')
 
 #~ pkgver() {
     #~ echo \
@@ -46,40 +53,33 @@ md5sums=('d43026960060bc677549baa26a24c9ee'
       #~ | tr ' ' $'\n' | sort -ur | head -n1
 #~ }
 
-prepare() {
-    for extension in gd pdo_mysql; do
-        echo -e "; Required extension for $pkgname\nextension=$extension.so" >| "$extension.$pkgname.ini"
-    done
-}
-
 package() {
     msg2 'Adding config files'
     install -dm750                  "$pkgdir/etc/sudoers.d"
     install -Dm440 sudoers          "$pkgdir/etc/sudoers.d/$pkgname"
     install -Dm644 nginx.conf       "$pkgdir/etc/nginx/$pkgname.conf"
-    install -Dm644 "$pkgname.ini"   "$pkgdir/etc/php/conf.d/$pkgname.ini"
-    install -Dm644 "msmtprc.$pkgname" "$pkgdir/etc/msmtprc.$pkgname"
+    install -Dm644 php-fpm.conf   "$pkgdir/etc/php/fpm.d/$pkgname.conf"
+    install -Dm644 msmtprc "$pkgdir/etc/msmtprc.$pkgname"
     install -Dm644 <( ) "$pkgdir/var/spool/cron/$pkgname"
-    for extension in gd pdo_mysql; do
-      install -Dm644 $extension.$pkgname.ini "$pkgdir/etc/php/conf.d/$extension.$pkgname.ini"
-    done
 
     msg2 'Adding systemd files'
-    install -Dm644 nginx.svc.conf   "$pkgdir/usr/lib/systemd/system/nginx.service.d/$pkgname.conf"
+    for unit in {mysqld,nginx,php-fpm}-aegir.service; do
+      install -Dm644 "$unit" "$pkgdir/usr/lib/systemd/system/$unit"
+    done
     install -Dm644 "$pkgname.service"  "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 "$pkgname.target" "$pkgdir/usr/lib/systemd/system/$pkgname.target"
 
     msg2 'Creating $pkgname directory structure'
-    mkdir -p "$pkgdir/var/lib/$pkgname"
-    ln -s /etc/drush "$pkgdir/var/lib/$pkgname/.drush"
+    mkdir -p "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname"
+    ln -s /etc/drush "$pkgdir/usr/share/webapps/$pkgname/.drush"
     umask 077
-    mkdir -p "$pkgdir/var/lib/$pkgname/"{backups,clients/admin,config/{includes,self,server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}}
+    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{backups,clients/admin,config/{includes,self,server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}}
     umask 022
-    mkdir -p "$pkgdir/var/lib/$pkgname/"{,config{includes,self,server_localhost,server_master/nginx}}
+    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{,config{includes,self,server_localhost,server_master/nginx}}
 
-    ln -s "/var/lib/$pkgname/config/server_master/nginx.conf"         "$pkgdir/var/lib/$pkgname/config/nginx.conf"
-    ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_advanced_include.conf"
-    ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_simple_include.conf"
+    ln -s "/usr/share/webapps/$pkgname/config/server_master/nginx.conf"         "$pkgdir/usr/share/webapps/$pkgname/config/nginx.conf"
+    ln -s "/usr/share/webapps/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/usr/share/webapps/$pkgname/config/includes/nginx_advanced_include.conf"
+    ln -s "/usr/share/webapps/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/usr/share/webapps/$pkgname/config/includes/nginx_simple_include.conf"
 
-    chown -R 696:http "$pkgdir/var/lib/$pkgname" "$pkgdir/var/spool/cron/$pkgname"
+    chown -R http:http "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname" "$pkgdir/var/spool/cron/$pkgname"
 }
