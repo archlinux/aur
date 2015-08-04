@@ -1,0 +1,17 @@
+pkgbase = libx32-tk
+	pkgdesc = A windowing toolkit for use with tcl
+	pkgver = 8.6.4
+	pkgrel = 1.1
+	url = http://tcl.sourceforge.net/
+	arch = x86_64
+	license = custom
+	depends = libx32-tcl=8.6.4
+	depends = libx32-libxss
+	depends = libx32-libxft
+	depends = tk
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/tcl/tk8.6.4-src.tar.gz
+	sha1sums = ad24c59ac2e7453d1ed2bad0d7d18a01eabc5226
+
+pkgname = libx32-tk
+
