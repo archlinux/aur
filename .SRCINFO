@@ -9,6 +9,8 @@ pkgbase = go-ipfs-git
 	makedepends = git
 	makedepends = go
 	optdepends = fuse: for mounting/advanced use
+	provides = go-ipfs
+	conflicts = go-ipfs
 	source = git+https://github.com/jbenet/go-ipfs.git
 	md5sums = SKIP
 

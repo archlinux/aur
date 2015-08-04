@@ -11,6 +11,8 @@ url="https://github.com/jbenet/$_pkgname"
 license=('MIT')
 makedepends=('git' 'go')
 optdepends=('fuse: for mounting/advanced use')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+${url}.git")
 md5sums=('SKIP')
 
