@@ -1,13 +1,13 @@
 pkgbase = fs-uae-arcade-devel
 	pkgdesc = Full-screen game browser for FS-UAE (development version).
-	pkgver = 2.5.32dev
+	pkgver = 2.5.33dev
 	pkgrel = 1
 	url = http://fs-uae.net/download-devel
 	install = fs-uae-arcade-devel.install
 	arch = any
 	license = GPL2
 	depends = fs-uae-devel
-	depends = python-pyqt4
+	depends = python-pyqt5
 	depends = python-setuptools
 	depends = python-lhafile
 	depends = hicolor-icon-theme
@@ -16,8 +16,8 @@ pkgbase = fs-uae-arcade-devel
 	conflicts = fs-uae-game-center
 	conflicts = fs-uae-game-center-devel
 	replaces = fs-uae-game-center-devel
-	source = http://fs-uae.net/devel/2.5.32dev/fs-uae-arcade-2.5.32dev.tar.gz
-	md5sums = 593df30b15f9f193fc5c8b4de0f79f06
+	source = http://fs-uae.net/devel/2.5.33dev/fs-uae-arcade-2.5.33dev.tar.gz
+	md5sums = 5e5a8ce7442985c7dc8f0c5aab7d9206
 
 pkgname = fs-uae-arcade-devel
 
