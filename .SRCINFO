@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-hide-legacy-tray-git
+	pkgdesc = Gnome Shell extension to hide the legacy tray bar
+	pkgver = r4.42e57a2
+	pkgrel = 1
+	url = https://github.com/jonnylamb/shell-hide-legacy-tray
+	install = gnome-shell-extension-hide-legacy-tray-git.install
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-hide-legacy-tray
+	conflicts = gnome-shell-extension-hide-legacy-tray
+	source = git://github.com/jonnylamb/shell-hide-legacy-tray.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-hide-legacy-tray-git
+
