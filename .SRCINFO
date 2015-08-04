@@ -1,11 +1,12 @@
 pkgbase = dotpac
 	pkgdesc = Bash script to get rid of *.pac* files.
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.archlinux.org/index.php/dotpac
 	arch = any
 	license = BSD
 	depends = bash
+	depends = dialog
 	source = https://raw.githubusercontent.com/AladW/scripts/master/bin/old/dotpac
 	md5sums = 7984de79ee51711b5b26eaf4e477b6df
 
