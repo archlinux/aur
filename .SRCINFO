@@ -1,0 +1,17 @@
+pkgbase = mandelbulber2
+	pkgdesc = 3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Rewritten from scratch with new Qt based interface.
+	pkgver = 2.04
+	pkgrel = 1
+	url = http://www.mandelbulber.com/
+	arch = any
+	license = GPL3
+	depends = libjpeg-turbo
+	depends = qt5-tools
+	depends = libpng12
+	depends = gsl
+	depends = openmpi
+	source = http://downloads.sourceforge.net/project/mandelbulber/Mandelbulber%20v2/source%20-%20multiplatform/mandelbulber2-2.04.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fmandelbulber%2Ffiles%2FMandelbulber%2520v2%2Fsource%2520-%2520multiplatform%2F&ts=1438647832&use_mirror=iweb
+	md5sums = 4f0d86a0f460ffa2f2a2a5a2072a977a
+
+pkgname = mandelbulber2
+
