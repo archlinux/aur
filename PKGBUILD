@@ -1,8 +1,8 @@
 # Maintainer: Richard Vock <vock at cs dot uni-bonn dot de>
 
 pkgname=libunittest
-pkgver=8.1.0
-pkgrel=2
+pkgver=9.0.0
+pkgrel=1
 pkgdesc="A portable C++ library for unit testing"
 arch=('x86_64' 'i686')
 url='http://libunittest.sourceforge.net/'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=()
 source=("http://downloads.sourceforge.net/project/libunittest/libunittest-${pkgver}.tar.gz")
-md5sums=('38a19c6660088ff1c8e6b72360c95ef6')
+md5sums=('d5ea3dc4ae2cbd39ef16a04da8ed197b')
 
 build() {
 	cd $srcdir/libunittest-$pkgver
