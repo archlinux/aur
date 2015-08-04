@@ -3,7 +3,7 @@
 # Contributer: N30N <archlinux@alunamation.com>
 
 pkgname="lightzone"
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom"
 url="http://lightzoneproject.org/"
@@ -13,11 +13,11 @@ depends=("javahelp2")
 
 if [[ $CARCH == 'i686' ]]; then
   source=("${pkgname}-${pkgver}.deb::http://download.opensuse.org/repositories/home:/ktgw0316:/LightZone/Debian_7.0/i386/${pkgname}_${pkgver}-0obs1_i386.deb")
-  md5sums=('8229bb757b0be8905069353d143d9799')
+  md5sums=('e622f790b8f5840a8a980b278e738ed1')
   depends+=("libstdc++5" "libx11" "libxtst")
 elif [[ $CARCH == 'x86_64' ]]; then
   source=("${pkgname}-${pkgver}.deb::http://download.opensuse.org/repositories/home:/ktgw0316:/LightZone/Debian_7.0/amd64/${pkgname}_${pkgver}-0obs1_amd64.deb")
-  md5sums=('356cbb7400663a7b0a9acf46063fcaba')
+  md5sums=('2029060cce61a0bf7506ba904066caa4')
   depends+=("lib32-libstdc++5" "lib32-libx11" "lib32-libxcb" "lib32-libxtst")
 fi
 

@@ -1,6 +1,6 @@
 pkgbase = lightzone
 	pkgdesc = A professional photo browser and editor, like Aperture or Lightroom
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = http://lightzoneproject.org/
 	arch = i686
