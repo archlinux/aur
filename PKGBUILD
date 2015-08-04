@@ -24,8 +24,9 @@ depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi
          'sdl' 'speex' 'rtmpdump' 'shine' 'twolame' 'v4l-utils' 'vid.stab' 
          'vo-aacenc' 'vo-amrwbenc' 'xvidcore' 'wavpack' 'zeromq' 'zlib' 'zvbi'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so')
-makedepends=('libvdpau' 'yasm' 'hardening-wrapper' 'opencl-headers')
+makedepends=('hardening-wrapper' 'libvdpau' 'nvenc-api' 'opencl-headers' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
+            'cuda: for CUDA support'
             'opencl-nvidia: for OpenCL support')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
