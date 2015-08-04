@@ -5,7 +5,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.1
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 _toipatch=tuxonice-for-linux-4.1.3-2015-07-23.patch
 arch=('i686' 'x86_64')
@@ -22,26 +22,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'linux.install'
-        '0001-block-loop-convert-to-per-device-workqueue.patch'
-        '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
-        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
-        'bitmap-enable-booting-for-dm-md-raid1.patch'
         'change-default-console-loglevel.patch'
         "http://tuxonice.net/downloads/all/${_toipatch}.bz2"
 )
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
+            '0976127a60a950acf2796f642ac647e5231573b9a0f25703a37a50b988bf3b88'
             'SKIP'
-            '91424411ac70e4de659d6aac011367ae3129218b48f79f277b3b8074f10ed487'
-            '05b827b1caaa3bfada202d5b0b8b7ff7f568802a6df971104bc9f92a3e24d6df'
+            'e5212a169d064d3958b4e5e4d8fcc58da4734516b5a0c4718c46d662eb89f7b5'
+            '6620afce55b56ea6f4dd8ccc108db9074ec3f4262893ddb35f1cf87ecf3c9d33'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'a11122e8e521f8f90e5e4bf09139ca19ca4a02dddaf0e5e12145b98386072cb1'
-            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
-            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
-            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
-            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '1ff28ccbd6c6469c636290d3eb4bfd9fe3b4d5b7b520c9eb98f81d2afa644431')
 validpgpkeys=(
@@ -59,20 +51,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # Fix deadlock with stacked loop devices (FS#45129)
-  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
-  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
-  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
-
-  # Fix bluetooth chip initialization on some macbooks (FS#45554)
-  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
-  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
-  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-
-  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
-  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
-  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
