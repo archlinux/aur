@@ -1,13 +1,13 @@
 _pkgname=aha
 pkgname=aha-git
 pkgver=0.4.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Ansi HTML Adapter: convert ANSI escape sequences to HTML."
 arch=('i686' 'x86_64')
 makedepends=('git')
 #url="https://github.com/theZiz/aha"
 url="http://ziz.delphigl.com/tool_aha.php"
-license=('MPL' 'LPGL')
+license=('MPL' 'LGPL')
 provides=('aha')
 conflicts=('aha')
 

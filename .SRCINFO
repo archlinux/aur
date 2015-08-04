@@ -1,12 +1,12 @@
 pkgbase = aha-git
 	pkgdesc = Ansi HTML Adapter: convert ANSI escape sequences to HTML.
 	pkgver = 0.4.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ziz.delphigl.com/tool_aha.php
 	arch = i686
 	arch = x86_64
 	license = MPL
-	license = LPGL
+	license = LGPL
 	makedepends = git
 	provides = aha
 	conflicts = aha
