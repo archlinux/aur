@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-lorquotes
+	pkgdesc = The selected citations from a site Linux.Org.Ru (UTF8)
+	pkgver = 2015.08
+	pkgrel = 1
+	url = http://lorquotes.ru/
+	arch = any
+	groups = fortune-mods
+	license = ?
+	makedepends = wget
+	depends = fortune-mod
+
+pkgname = fortune-mod-lorquotes
+
