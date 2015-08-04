@@ -1,0 +1,27 @@
+pkgbase = otf-gfs-majuscule
+	pkgdesc = Open Font Majuscule typefaces, provided by the Greek Font Society
+	pkgver = 20110730
+	pkgrel = 1
+	url = http://www.greekfontsociety.gr/pages/gr_typefaces1.html
+	install = otf-gfs-majuscule.install
+	arch = any
+	license = custom:OTF
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.greekfontsociety.gr/GFS_AMBROSIA.zip
+	source = http://www.greekfontsociety.gr/GFS_FLEISCHMAN.zip
+	source = http://www.greekfontsociety.gr/GFS_EUSTACE.zip
+	source = http://www.greekfontsociety.gr/GFS_NICEFORE.zip
+	source = http://www.greekfontsociety.gr/GFS_JACKSON.zip
+	source = http://www.greekfontsociety.gr/GFS_GARALDUS.zip
+	source = http://www.greekfontsociety.gr/GFS_IGNACIO.zip
+	md5sums = 891a6e880ca0ef06223eedfab7c0e035
+	md5sums = adcb048bdca18dd243c0337bdb0c5ecd
+	md5sums = b54eea11af83c569b861a17800fb1945
+	md5sums = 02fcaf05448bb0df6696567975014132
+	md5sums = 73d235051292e23bc807c71d8c951e6b
+	md5sums = 7638996769c9162f0d8b8885c18af68f
+	md5sums = ec397b1199ca79404adec355eeb5c163
+
+pkgname = otf-gfs-majuscule
+
