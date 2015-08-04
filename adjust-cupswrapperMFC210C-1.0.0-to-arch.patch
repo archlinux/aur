@@ -1,0 +1,52 @@
+--- orig/usr/local/Brother/cupswrapper/cupswrapperMFC210C-1.0.0	2005-02-02 06:05:50.000000000 +0100
++++ modif/usr/local/Brother/cupswrapper/cupswrapperMFC210C-1.0.0	2015-08-04 00:54:44.191866647 +0200
+@@ -37,10 +37,10 @@
+   echo   '       -r : remove printer'
+   exit(0)
+ endif
+-mkdir -p /usr/local/Brother/filter
++mkdir -p /usr/share/brother/filter
+ mkdir -p /usr/lib/cups/filter
+ 
+-if(!(-e "/usr/local/Brother/lpd/filterMFC210C"))then
++if(!(-e "/usr/share/brother/lpd/filterMFC210C"))then
+   echo "ERROR : Brother LPD filter is not installed."
+ endif
+ rm -f /usr/share/cups/model/brmfc210c_cups.ppd
+@@ -1035,8 +1035,8 @@
+ echo  '    echo "PPD  = $PPD"                                   >>$LOGFILE'  >>  $brotherlpdwrapper
+ echo  'endif'  >>  $brotherlpdwrapper
+ echo  ''  >>  $brotherlpdwrapper
+-echo  'if(!(-e /usr/local/Brother/lpd/filterMFC210C)) then'  >>  $brotherlpdwrapper
+-echo  '    echo "ERROR: /usr/local/Brother/lpd/filterMFC210C does not exist"                      >>$LOGFILE'  >>  $brotherlpdwrapper
++echo  'if(!(-e /usr/share/brother/lpd/filterMFC210C)) then'  >>  $brotherlpdwrapper
++echo  '    echo "ERROR: /usr/share/brother/lpd/filterMFC210C does not exist"                      >>$LOGFILE'  >>  $brotherlpdwrapper
+ echo  '    set errorcode=30'  >>  $brotherlpdwrapper
+ echo  '    exit $errorcode'  >>  $brotherlpdwrapper
+ echo  'endif'  >>  $brotherlpdwrapper
+@@ -1177,7 +1177,7 @@
+ echo  ''  >>  $brotherlpdwrapper
+ echo  ''  >>  $brotherlpdwrapper
+ echo  'if($DEBUG < 10) then'  >>  $brotherlpdwrapper
+-echo  '    cat    $INPUT_TEMP_PS | /usr/local/Brother/lpd/filterMFC210C'  >>  $brotherlpdwrapper
++echo  '    cat    $INPUT_TEMP_PS | /usr/share/brother/lpd/filterMFC210C'  >>  $brotherlpdwrapper
+ echo  ''  >>  $brotherlpdwrapper
+ echo  '    if($LOGLEVEL > 2) then'  >>  $brotherlpdwrapper
+ echo  '	if($LOGFILE != "/dev/null") then'  >>  $brotherlpdwrapper
+@@ -1195,15 +1195,4 @@
+ echo  ''  >>  $brotherlpdwrapper
+ echo  ''  >>  $brotherlpdwrapper
+ chmod a+x $brotherlpdwrapper
+-chmod a+w /usr/local/Brother/inf/brMFC210Crc
+-chmod a+w /usr/local/Brother/inf
+-if( -e /etc/init.d/lpd) then
+-   /etc/init.d/lpd stop
+-endif
+-if( -e /etc/init.d/lprng) then
+-   /etc/init.d/lprng stop
+-endif
+-/etc/init.d/cups restart
+-sleep 2s
+-lpadmin -p MFC210C -E -v usb:/dev/usb/lp0 -m brmfc210c_cups.ppd
+-  exit(0)
++exit(0)

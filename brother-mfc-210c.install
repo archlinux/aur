@@ -1,0 +1,20 @@
+post_install() {
+
+      chown root.lp   /usr/share/brother/inf
+      chmod 775       /usr/share/brother/inf
+      chown daemon.lp /usr/share/brother/inf/brMFC210Crc
+      chmod 600       /usr/share/brother/inf/brMFC210Crc
+
+      echo ""
+      echo "LPRng:"
+      echo "In order to use this driver with LPRng run"
+      echo "  /usr/share/brother/inf/setupPrintcapij MFC210C -i USB"
+      echo "as root and restart the lpd daemon. (Assums the basic"
+      echo "configuration has been done already and lpd is up and running.)"
+      echo ""
+      echo "CUPS:"
+      echo "Installation of this package does not cover adding a printer"
+      echo "to allow for chosing an arbitrary queue name."
+      echo "This has to be done manually e. g. from the Web-UI."
+      echo ""
+}

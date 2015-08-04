@@ -1,0 +1,29 @@
+pkgbase = brother-mfc-210c
+	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-210C. Covers MFC-215C as well.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://support.brother.com
+	install = brother-mfc-210c.install
+	arch = i686
+	arch = x86_64
+	license = custom:Brother
+	license = GPL
+	makedepends = tcsh
+	optdepends = cups: use CUPS printing system
+	optdepends = tcsh: needed to use CUPS wrapper
+	optdepends = lprng: use LPRng
+	conflicts = brother-lpr-drivers-common
+	conflicts = brother-lpr-drivers-extra
+	conflicts = brother-cups-wrapper-common
+	conflicts = brother-cups-wrapper-extra
+	source = http://download.brother.com/welcome/dlf006047/MFC210Clpr-1.0.2-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006049/cupswrapperMFC210C-1.0.0-1.i386.rpm
+	source = adjust-setupPrintcapij-to-arch.patch
+	source = adjust-cupswrapperMFC210C-1.0.0-to-arch.patch
+	sha256sums = 239561ee34d004edb48edcd9b80e5e2b813ae5db6675cefcb856c754ed58f571
+	sha256sums = 2c28381ea27e1083b17f46bacb68131411b40cb224415bba6ad358ca6376f80c
+	sha256sums = 6f2da3e52d5a8e4b72ef4a9a2fe821933573425a2cb20753c8be1849d55d84c7
+	sha256sums = d40d9ad28b0f4600fd9cfeb3ee966c92c613acd57651b100d067be93219e3638
+
+pkgname = brother-mfc-210c
+

@@ -1,0 +1,42 @@
+--- orig/usr/local/Brother/inf/setupPrintcapij	2005-04-20 11:34:32.000000000 +0200
++++ modif/usr/local/Brother/inf/setupPrintcapij	2015-08-03 19:48:27.889697524 +0200
+@@ -19,7 +19,7 @@
+ #
+ 
+ BRPRINTER_NAME=$1
+-PRINTCAP_NAME=/etc/printcap.local
++PRINTCAP_NAME=/etc/lprng/printcap
+ SPOOLER_NAME=/var/spool/lpd/$BRPRINTER_NAME
+ DEVICE_IF=/dev/lp0
+ 
+@@ -29,12 +29,6 @@
+ 
+ case "$2" in
+ 	-i)
+-	if [ ! -d $SPOOLER_NAME ]; then
+-	        mkdir $SPOOLER_NAME
+-	fi
+-	chown lp $SPOOLER_NAME
+-	chgrp lp $SPOOLER_NAME
+-	chmod 700 $SPOOLER_NAME
+ 
+ 	if [ "$3" = "USB" ]; then
+ 		DEVICE_IF=/dev/usb/lp0
+@@ -46,8 +40,16 @@
+         :sd=/var/spool/lpd/$BRPRINTER_NAME:\\
+         :sh:\\
+         :lp=$DEVICE_IF:\\
+-        :if=/usr/local/Brother/lpd/filter$BRPRINTER_NAME:
++        :if=/usr/share/brother/lpd/filter$BRPRINTER_NAME:
+ EOF
++
++        checkpc -f
++
++	if [ ! -d $SPOOLER_NAME ]; then
++	        mkdir $SPOOLER_NAME
++	fi
++	chown daemon.lp $SPOOLER_NAME
++	chmod 700       $SPOOLER_NAME
+ 	;;
+ 	-e)
+ 	mv $PRINTCAP_NAME $PRINTCAP_NAME.tmp
