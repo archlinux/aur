@@ -1,0 +1,14 @@
+pkgbase = nvenc-api
+	pkgdesc = NVidia NVENC API
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://developer.nvidia.com/nvidia-video-codec-sdk
+	arch = x86_64
+	arch = i686
+	license = proprietary
+	depends = nvidia
+	source = http://developer.download.nvidia.com/compute/nvenc/v5.0/nvenc_5.0.1_sdk.zip
+	md5sums = c26e5d92ab06bac85c03fb4f8595f36b
+
+pkgname = nvenc-api
+
