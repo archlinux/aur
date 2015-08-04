@@ -1,15 +1,15 @@
 pkgbase = pgpdump
 	pkgdesc = PGP packet visualizer which displays the packet format
-	pkgver = 0.28
-	pkgrel = 2
+	pkgver = 0.29
+	pkgrel = 1
 	url = http://www.mew.org/~kazu/proj/pgpdump
 	arch = x86_64
 	arch = i686
 	license = BSD
 	depends = zlib
 	depends = bzip2
-	source = pgpdump-0.28.tar.gz::https://github.com/kazu-yamamoto/pgpdump/archive/v0.28.tar.gz
-	sha512sums = b3cac90c6862dfc8784b21a09875b52a96fc8a1e2c6f5ee4aca45c6ae667064d353cadbdbd9a94eefc5992f09486fb8ec7642d0a18d9bc8d2977872c89e3bf10
+	source = pgpdump-0.29.tar.gz::https://github.com/kazu-yamamoto/pgpdump/archive/v0.29.tar.gz
+	sha512sums = a188df818ddf2cf1652fa31258a4643e287c33f9c5fe715e0675f522e97356aafcec708892d30c665da3127ffd366a259aeb84fc0d3a9393884ca3cc174cb59f
 
 pkgname = pgpdump
 
