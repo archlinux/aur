@@ -1,4 +1,5 @@
 mrab-regex-hg/*
+mrab-regex/*
 pkg/*
 src/*
 *.tar.gz
