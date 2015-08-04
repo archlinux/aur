@@ -19,7 +19,7 @@ pkgbase = zandronum2
 	conflicts = ('zandronum-hg' 'zandronum')
 	source = http://zandronum.com/downloads/zandronum2.1.2-linux-x86_64.tar.bz2
 	source = LICENSE.txt
-	md5sums = e7121d49b963e8297535fd3f03334892
+	md5sums = 115f52125933e49d1620b2a40326b6c5
 	md5sums = 58c2c8b15c886b838dc2ed5186361507
 
 pkgname = zandronum2
