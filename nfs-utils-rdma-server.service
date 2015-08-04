@@ -4,8 +4,9 @@ Documentation=file:/etc/nfs-utils-rdma-server.conf
 RefuseManualStop=true
 DefaultDependencies=false
 Conflicts=emergency.target emergency.service
+Requires=rdma.service nfs-server.service
 Before=remote-fs-pre.target
-After=nfs-server.target
+After=network.target rdma.service auth-rpcgss-module.service nfs-blkmap.service nfs-config.service nfs-imapd.service nfs-mountd.service nfs-server.service nfs-server.target nfs-utils.service rpc-gssd.service rpc-statd-notify.service rpc-statd.service rpc-svcgssd.service
 
 [Service]
 Type=oneshot
