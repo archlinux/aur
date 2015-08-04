@@ -26,6 +26,7 @@ build() {
 
 package() {
   cd "${srcdir}/nvenc_${pkgver}_sdk"
+  mkdir -p "${pkgdir}/usr/include"
   install -Dm644 Samples/common/inc/* $pkgdir/usr/include/
   install -Dm644 "$srcdir/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
