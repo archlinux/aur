@@ -1,0 +1,10 @@
+--- ./polygnome-0.1.3/src/MTAudio.h	2012-03-03 07:34:11.000000000 +0100
++++ ./src/MTAudio.h	2012-09-17 21:59:51.715874730 +0200
+@@ -30,6 +30,7 @@
+ #define MT_AUDIO_H_
+ 
+ #include <stk/RtAudio.h>
++#include <unistd.h>
+ 
+ #include <vector>
+ #include <tr1/memory>
