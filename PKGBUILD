@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.7.5.r0.g2a33a87
+pkgver=0.7.5.r48.g09147a3
 _last_release="0.7.5-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
@@ -66,9 +66,9 @@ package() {
 
   install -Dm755 ".build/crystal" "$pkgdir/usr/bin/crystal"
   install -dm755 "$pkgdir/usr/lib"
-  cp -rv src "$pkgdir/usr/lib/crystal"
+  cp -av src "$pkgdir/usr/lib/crystal"
   install -dm755 "$pkgdir/usr/share/doc/crystal"
-  cp -rv samples "$pkgdir/usr/share/doc/crystal/"
+  cp -av samples "$pkgdir/usr/share/doc/crystal/"
 }
 
 # vim:set ts=2 sw=2 et:
