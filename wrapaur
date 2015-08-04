@@ -30,6 +30,10 @@ if [ ! -f $HOME/.wrapaur_history ]; then
 	touch $HOME/.wrapaur_history
 fi
 
+#aur url location
+aururl="aur4.archlinux.org"
+
+
 ##########Functions##########
 
 #update option selected
@@ -71,7 +75,7 @@ package_search()
 	#search with pacman
 	pacman -Ss $1
 	#aur search
-	curl -s "https://aur4.archlinux.org/rpc.php?type=search&arg=$1" | awk -F , 'BEGIN {RS = "{"} {print $0}' | awk -F : 'BEGIN {RS = ","} {print $0}' | grep -E '"Name":"|"Version":"|"Description":"' | while read line; do if [[ $line == *"Name"* ]]; then name=$(echo $line | awk -F : '{print $2}' | sed 's/"//g'); elif [[ $line == *"Version"* ]]; then version=$(echo $line| awk -F : '{print $2}' | sed 's/"//g'); elif [[ $line == *"Description"* ]]; then desc=$(echo $line | awk -F : '{print $2}' | sed 's/"//g') && echo -e "aur\\$name $version\n$desc";fi; done < /dev/stdin
+	curl -s "https://${aururl}/rpc.php?type=search&arg=$1" | awk -F , 'BEGIN {RS = "{"} {print $0}' | awk -F : 'BEGIN {RS = ","} {print $0}' | grep -E '"Name":"|"Version":"|"Description":"' | while read line; do if [[ $line == *"Name"* ]]; then name=$(echo $line | awk -F : '{print $2}' | sed 's/"//g'); elif [[ $line == *"Version"* ]]; then version=$(echo $line| awk -F : '{print $2}' | sed 's/"//g'); elif [[ $line == *"Description"* ]]; then desc=$(echo $line | awk -F : '{print $2}' | sed 's/"//g') && echo -e "aur/$name $version\n    $desc";fi; done < /dev/stdin
 
 }
 
@@ -464,7 +468,7 @@ check_updates()
 
 check_pkgversion()
 {
-	newver=$(curl -s "https://aur4.archlinux.org/rpc.php?type=info&arg=$1" | awk -F : '{print $10}' | awk -F , '{print $1}' | sed 's/"//g')
+	newver=$(curl -s "https://${aururl}/rpc.php?type=info&arg=$1" | awk -F : '{print $10}' | awk -F , '{print $1}' | sed 's/"//g')
 	currentver=$(pacman -Qi $1 | awk '{print $3}' | head -n 2 | tail -n 1)
 	if [[ $newver != $currentver ]] && [[ ! -z $newver ]]; then
 		echo 1
@@ -474,16 +478,16 @@ check_pkgversion()
 check_all_depends()
 {
 	echo -e "${color1}:: ${color2}Checking Dependencies for ${1}...${color3}"
-	_pkgbasename=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^_pkgbasename=//p")
-	pkgname=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^pkgname=//p")
-	pkgver=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^pkgver=//p")
-	depends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
-	mdepends=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^makedepends=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
+	_pkgbasename=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^_pkgbasename=//p")
+	pkgname=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^pkgname=//p")
+	pkgver=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | sed -n "s/^pkgver=//p")
+	depends=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
+	mdepends=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^makedepends=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
 	arch=$(uname -m)
 	if [[ $arch == "x86_64" ]]; then
-		dependsx64=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_x86_64=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
+		dependsx64=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_x86_64=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
 	else
-		dependsi686=$(curl -s "https://aur4.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_i686=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
+		dependsi686=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_i686=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
 	fi
 	#if no dependencies echo and leave loop
 	if [[ $depends == "" ]]; then
@@ -514,13 +518,13 @@ aur_dep_install()
 aur_git_install()
 {
 	#check if package exists in AUR
-	exists=$(curl -s "https://aur4.archlinux.org/rpc.php?type=info&arg=$1" | awk -F : '{print $4}' | awk -F , '{print $1}')
+	exists=$(curl -s "https://${aururl}/rpc.php?type=info&arg=$1" | awk -F : '{print $4}' | awk -F , '{print $1}')
 	if [[ $exists != 0 ]]; then
 		echo -e "${color1}:: ${color2}Packages found...${color3}"
 		echo -e $1
 		#clone git package to wrapaur folder or update if exists
 		if [[ ! -d $HOME/.wrapaur/$1 ]]; then
-			git clone https://aur4.archlinux.org/${1}.git $HOME/.wrapaur/$1
+			git clone https://${aururl}/${1}.git $HOME/.wrapaur/$1
 		else
 			cd $HOME/.wrapaur/$1
 			git pull
@@ -575,7 +579,7 @@ archnews()
 
 aur_comments()
 {
-	curl -s "https://aur4.archlinux.org/packages/$1/?comments=all" | sed -r -n -e "/<div id=\"news\">/,/<!-- End of main content -->/p" | sed -e 's/<[^>]*>//g'
+	curl -s "https://${aururl}/packages/$1/?comments=all" | sed -r -n -e "/<div id=\"news\">/,/<!-- End of main content -->/p" | sed -e 's/<[^>]*>//g'
 }
 
 usage()
