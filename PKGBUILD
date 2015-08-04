@@ -3,12 +3,14 @@
 
 pkgname=python-watchdog
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="This decorator will turn your normal python functions into proper shell commands"
 arch=('any')
 url="https://pypi.python.org/pypi/watchdog"
 license=('Apache')
 depends=('python' 'python-pathtools')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest')
 optdeps=('python-yaml : for watchmedo script'
          'python-argh : for watchmedo script')
 source=(https://pypi.python.org/packages/source/w/watchdog/watchdog-${pkgver}.tar.gz)
