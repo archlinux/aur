@@ -10,7 +10,7 @@ url="https://github.com/majestrate/srndv2"
 license=('unknown')
 depends=('go>=1.4' 'libsodium>=1.0' 'imagemagick' 'postgresql')
 makedepends=('git')
-optdepends=('nntpchan-git')
+optdepends=('nntpchan-git: Decentralized imageboard')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=srndv2.install
