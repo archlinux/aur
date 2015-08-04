@@ -1,6 +1,6 @@
 pkgbase = codelite
 	pkgdesc = Open-source, cross platform IDE for the C/C++ programming languages
-	pkgver = 8.0_1
+	pkgver = 8.1
 	pkgrel = 1
 	url = http://www.codelite.org/
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = codelite
 	depends = lldb
 	optdepends = graphviz: callgraph visualization
 	noextract = wxgui.zip
-	source = https://github.com/eranif/codelite/archive/8.0-1.tar.gz
+	source = https://github.com/eranif/codelite/archive/8.1.tar.gz
 	source = http://repos.codelite.org/wxCrafterLibs/wxgui.zip
-	md5sums = 1be80bf75f45243eebfd5d5c11f2d192
+	md5sums = 363ac51e6cf81f77ed9905483d7ecd45
 	md5sums = 093485fcae62073ca8d0ba6ff3a5cb69
 
 pkgname = codelite
