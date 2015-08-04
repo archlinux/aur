@@ -1,0 +1,32 @@
+pkgbase = retroarch-git
+	pkgdesc = Simple frontend for the Libretro API
+	pkgver = 1.2.2.111.g89d8b24
+	pkgrel = 1
+	epoch = 1
+	url = http://github.com/libretro/RetroArch
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = GPL3
+	makedepends = git
+	depends = ffmpeg
+	depends = jack2
+	depends = libgl
+	depends = libusb
+	depends = libxinerama
+	depends = libxkbcommon
+	depends = libxv
+	depends = mesa
+	depends = nvidia-cg-toolkit
+	depends = openal
+	depends = python
+	depends = sdl2
+	optdepends = libretro-super-git: A collection of libretro implementations.
+	provides = retroarch
+	conflicts = retroarch
+	source = git+https://github.com/libretro/RetroArch.git
+	sha256sums = SKIP
+
+pkgname = retroarch-git
+
