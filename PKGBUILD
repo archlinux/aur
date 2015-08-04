@@ -1,8 +1,7 @@
-# Maintainer: Kamil Stachowski <kamil.stachowski@gmail.com>
-# Updated: Julien Schueller
+# Contributor: Kamil Stachowski <kamil.stachowski@gmail.com>
 
 pkgname=tralics
-pkgver=2.15.1
+pkgver=2.15.2
 pkgrel=1
 pkgdesc="LaTeX to XML translator"
 arch=('i686' 'x86_64')
@@ -12,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('gcc' 'texlive-latexextra')
 options=()
 source=("ftp://ftp-sop.inria.fr/marelle/$pkgname/src/$pkgname-src-$pkgver.tar.gz")
-md5sums=('e946ebb37919cd900d7e2bf6c71261fc')
+md5sums=('d2f359733f1d3ea6ce8d2a10b97f0b3c')
 
 build() {
   tar xzf ${pkgname}-src-${pkgver}.tar.gz
