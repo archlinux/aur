@@ -8,7 +8,7 @@ arch=('any')
 url="http://forum.serviio.org/viewtopic.php?f=20&t=9216"
 license=('unknown')
 depends=('serviio')
-source=("twitch.groovy::http://forum.serviio.org/download/file.php?id=5070")
+source=("twitch.groovy::http://forum.serviio.org/download/file.php?id=5111")
 sha256sums=('0f63122e58dabc7fd510471f1615909a4b4404b3e84c931da582de870f1b0904')
 
 package() {
