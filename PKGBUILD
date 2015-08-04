@@ -2,7 +2,7 @@
 # * Namcap warns that dependency rdma and nfs-utils are not needed, but nfs-utils-rdma-server requires IPoIB, and the IPoIB kernel modules are loaded by the rdma package, and requires nfs-utils, or there's no kernel module to load or port to configure.
 
 pkgname=nfs-utils-rdma-server
-pkgver=1.00
+pkgver=1.01
 pkgrel=1
 pkgdesc='Load kernel module for NFS server using RDMA, and configure RDMA port'
 arch=('any')
@@ -14,7 +14,7 @@ source=('nfs-utils-rdma-server'
         'nfs-utils-rdma-server.install')
 md5sums=('573abc0d8a23fe08ed2bfcc696d3f826'
          '82c54ede9b9ecf21e15a803a10eef82d'
-         '91d018727b56223c8381cd8dbac1d2dc'
+         'fa333cc445899723d700e9945ac83c8b'
          'd42c8b5ae86e61d3a847a92b1f59a2ae')
 
 package() {
