@@ -1,17 +1,17 @@
 pkgbase = ruby-mime-types-1
 	pkgdesc = A library and registry for information about MIME content type definitions
-	pkgver = 2.6.1
-	pkgrel = 1
+	pkgver = 1.25.1
+	pkgrel = 2
 	url = http://mime-types.rubyforge.org/
 	arch = any
 	license = MIT
 	license = Artistic 2.0
 	license = GPL-2
 	depends = ruby
-	noextract = mime-types-2.6.1.gem
+	noextract = mime-types-1.25.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mime-types-2.6.1.gem
-	sha256sums = 5b16d655397aa5cd8b4108494f60f64b4e18a2c92dc9257ff74ec64284dbd9ee
+	source = https://rubygems.org/downloads/mime-types-1.25.1.gem
+	sha256sums = 88ef3c596481678710ffd4018fa40f1999b02d97babea39682ba7d5badd21f56
 
 pkgname = ruby-mime-types-1
 
