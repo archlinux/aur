@@ -3,7 +3,7 @@ post_install() {
   [ $(getent passwd aegir &>/dev/null; echo $?) -eq 0 ] && {
     echo "User already exists; no action taken."
   } || {
-    useradd --gid $(id --group http) --home-dir /usr/shared/webapps/aegir --non-unique --uid $(id --user http) aegir
+    useradd --gid $(id --group http) --home-dir /usr/share/webapps/aegir --non-unique --uid $(id --user http) aegir
     echo "Done."
   }
 

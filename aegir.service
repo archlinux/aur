@@ -11,4 +11,4 @@ Restart=always
 SuccessExitStatus=1
 
 [Install]
-RequiredBy=multi-user.target
+RequiredBy=aegir.target

@@ -36,7 +36,7 @@ source=("$pkgname.service"
         'php-fpm.conf'
         'sudoers'
 )
-md5sums=('2c74cf45b76503d2912c89da4a7bcccb'
+md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
          'c279899d0b987e4d53ea85d0f154a510'
          'd43026960060bc677549baa26a24c9ee'
          '7559c51ec89b4d65a1193b3d6d6da297'
