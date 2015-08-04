@@ -1,14 +1,14 @@
 pkgbase = opentx-companion
 	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.open-tx.org/
 	arch = x86_64
 	license = GPL
 	makedepends = subversion
 	makedepends = cmake
 	makedepends = xsd
-	makedepends = python-pyqt4
+	makedepends = python2-pyqt4
 	makedepends = bc
 	makedepends = python2
 	makedepends = avr-gcc

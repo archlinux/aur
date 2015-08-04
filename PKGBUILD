@@ -1,13 +1,13 @@
 # Maintainer: Jeff Youdontneedtoknow <jeffpublicjr at gmail dot com>
 pkgname=opentx-companion
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
 url="http://www.open-tx.org/"
 license=('GPL')
 depends=('phonon' 'qt4' 'sdl')
-makedepends=('subversion' 'cmake' 'xsd' 'python-pyqt4' 'bc' 'python2' 'avr-gcc' 'avr-libc' 'sed')
+makedepends=('subversion' 'cmake' 'xsd' 'python2-pyqt4' 'bc' 'python2' 'avr-gcc' 'avr-libc' 'sed')
 provides=('companion')
 conflicts=('companion' 'companion9x-svn')
 source=(https://github.com/opentx/opentx/archive/$pkgver.tar.gz)
