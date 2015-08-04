@@ -4,8 +4,9 @@ Documentation=file:/etc/ipoibmodemtu.conf
 RefuseManualStop=true
 DefaultDependencies=false
 Conflicts=emergency.target emergency.service
+Requires=rdma.service
 Before=remote-fs-pre.target
-After=network.target
+After=network.target rdma.service
 
 [Service]
 Type=oneshot
