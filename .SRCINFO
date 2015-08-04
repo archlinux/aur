@@ -1,0 +1,29 @@
+pkgbase = mdadm-git
+	pkgdesc = create, manage, and monitor Linux md block device RAID arrays
+	pkgver = mdadm.3.3.3.r16.g53a087b
+	pkgrel = 1
+	url = http://neil.brown.name/blog/mdadm
+	install = mdadm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = linux
+	depends = glibc
+	conflicts = mkinitcpio<0.7
+	conflicts = mdadm
+	replaces = raidtools
+	backup = etc/mdadm.conf
+	source = mdadm_github::git+https://github.com/neilbrown/mdadm.git
+	source = mdadm.conf::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/mdadm.conf?h=packages/mdadm
+	source = mdadm_install::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/mdadm_install?h=packages/mdadm
+	source = mdadm_udev_install::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/mdadm_udev_install?h=packages/mdadm
+	source = mdadm_hook::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/mdadm_hook?h=packages/mdadm
+	sha256sums = SKIP
+	sha256sums = 4ce1e90690282f98e4828e11576fbd61be65e97a2cdae6c7eac7035ea5ee53e5
+	sha256sums = 15bc46b9fa663dc204e2168861fabfd26e0dbcbb073792f271e3e4510897fb4e
+	sha256sums = 170b0e5d548416c0adb9df4e6941bea6bc33d843419c997e45ecaf9e36a58f38
+	sha256sums = d297b4fa6213016ec08e4f66d07cf7eb03426e4e17ab31eddfa5c5c1d82ea294
+
+pkgname = mdadm-git
+
