@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20150731
+pkgver=20150804
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -23,7 +23,6 @@ depends=('hicolor-icon-theme'
          'python2-requests'
          'python2-six'
          'python2-slowaes'
-         'python2-tlslite'
          'qt4')
 makedepends=('gettext'
              'git'
