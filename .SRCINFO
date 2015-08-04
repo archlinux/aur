@@ -1,0 +1,20 @@
+pkgbase = tig-git
+	pkgdesc = Text-mode interface for Git - git checkout
+	pkgver = 2.1.1.r48.geecfbda
+	pkgrel = 1
+	url = http://jonas.nitro.dk/tig/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = git
+	depends = ncurses
+	provides = tig
+	conflicts = tig
+	backup = etc/tigrc
+	source = git://github.com/jonas/tig.git
+	sha256sums = SKIP
+
+pkgname = tig-git
+
