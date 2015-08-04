@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Some Random News Daemon version 2. Git version."
 arch=('any')
 url="https://github.com/majestrate/srndv2"
-license=('unknown')
+license=('NFRUPL')	#LOL
 depends=('go>=1.4' 'libsodium>=1.0' 'imagemagick' 'postgresql')
 makedepends=('git')
 optdepends=('nntpchan-git: Decentralized imageboard')
