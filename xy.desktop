@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=99.0
+Name=xyplayer
+GenericName=Media player
+Comment=search play download musics from Internet
+Exec=/usr/bin/xyplayer
+Icon=/usr/share/icons/hicolor/xyplayer.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;PyQt
