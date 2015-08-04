@@ -1,0 +1,19 @@
+pkgbase = brscan2
+	pkgdesc = SANE driver from Brother for brscan2 models
+	pkgver = 0.2.5_1
+	pkgrel = 1
+	url = http://support.brother.com
+	install = brscan2.install
+	arch = i686
+	arch = x86_64
+	license = custom:Brother
+	license = GPL
+	depends = libusb-compat
+	depends = sane
+	source_i686 = http://download.brother.com/welcome/dlf006639/brscan2-0.2.5-1.i386.rpm
+	sha256sums_i686 = f9c12f8467288c48cd00b532b2c64f53764a001f4b193f1c5f1ac746a1bd7c9c
+	source_x86_64 = http://download.brother.com/welcome/dlf006640/brscan2-0.2.5-1.x86_64.rpm
+	sha256sums_x86_64 = ab02c4e2292e9847a0338a225973735ccaec49c3d443f584004c8f91f5d6a8c9
+
+pkgname = brscan2
+

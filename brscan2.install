@@ -1,0 +1,21 @@
+post_install() {
+  grep brother2 /etc/sane.d/dll.conf >/dev/null 2>&1
+  if [ $? != 0 ] ; then
+      echo 'brother2' >> /etc/sane.d/dll.conf
+    else
+      echo ''
+      echo 'Note: SANE backend "brother2" was already registered in /etc/sane.d/dll.conf'
+      echo ''
+  fi
+}
+
+post_remove() {
+  grep brother2 /etc/sane.d/dll.conf >/dev/null 2>&1
+  if [ $? = 0 ] ; then
+      sed -i '/^brother2$/d' /etc/sane.d/dll.conf
+    else
+      echo ''
+      echo 'Note: SANE backend "brother2" was already removed from /etc/sane.d/dll.conf'
+      echo ''
+  fi
+}
