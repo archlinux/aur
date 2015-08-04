@@ -1,7 +1,7 @@
 # Maintainer: Alexander Konarev <avkonarev@gmail.com>
 
 pkgname=yandex-browser
-pkgver=15.7.2357.2271_1.beta
+pkgver=15.9.2403.2150_1.beta
 pkgrel=3
 pkgdesc="The web browser from Yandex (beta version!).
  It's browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
