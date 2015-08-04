@@ -1,0 +1,21 @@
+pkgbase = devtools-namcapgit
+	pkgdesc = Tools for Arch Linux package maintainers (uses namcap-git)
+	pkgver = 20150606
+	pkgrel = 1
+	url = http://projects.archlinux.org/devtools.git/
+	arch = any
+	license = GPL
+	depends = namcap-git
+	depends = openssh
+	depends = subversion
+	depends = rsync
+	depends = arch-install-scripts
+	provides = devtools
+	conflicts = devtools
+	source = https://sources.archlinux.org/other/devtools/devtools-20150606.tar.gz
+	source = https://sources.archlinux.org/other/devtools/devtools-20150606.tar.gz.sig
+	md5sums = 4be74d0efc3e7572689b99a5242f368d
+	md5sums = SKIP
+
+pkgname = devtools-namcapgit
+
