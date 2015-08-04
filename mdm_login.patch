@@ -1,0 +1,29 @@
+Index: mdm/plugin.mdm.php
+===================================================================
+--- mdm/plugin.mdm.php	(revision 45793)
++++ mdm/plugin.mdm.php	(working copy)
+@@ -378,12 +378,23 @@
+         if (! class_exists('SoapClient'))
+             return false;
+ 
++	$password = $_SESSION['password'];
++	if(function_exists("openssl_decrypt")) {
++		// In PHP 5.3.3 the iv parameter was added
++		if(version_compare(phpversion(), "5.3.3", "<")) {
++			$password = openssl_decrypt($password,"des-ede3-cbc",PASSWORD_KEY,0);
++		} else { 
++			$password = openssl_decrypt($password,"des-ede3-cbc",PASSWORD_KEY,0,PASSWORD_IV);
++		}
++	} elseif(function_exists("mcrypt_decrypt")) {
++		$password = trim(mcrypt_decrypt(MCRYPT_TRIPLEDES, PASSWORD_KEY, base64_decode($password), MCRYPT_MODE_CBC, PASSWORD_IV));
++	}
+         $client = new SoapClient(null, array(
+                                         'location' => $GLOBALS['pluginconfig']['mdm']['zpush-url'] ."/Microsoft-Server-ActiveSync?Cmd=WebserviceDevice&DeviceId=webservice&DeviceType=webservice&User=". urlencode($targetUser),
+                                         'uri' => "http://z-push.sf.net/webservice",
+                                         'trace' => 1,
+                                         'login' => $_SESSION["username"],
+-                                        'password' => $_SESSION["password"]
++                                        'password' => $password
+                                         ));
+ 
+         return $client;

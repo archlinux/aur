@@ -1,0 +1,19 @@
+pkgbase = zarafa-webaccess-mdm
+	pkgdesc = Mobile Device Management plugin for Zarafa Webaccess
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498
+	arch = any
+	license = AGPL3
+	depends = zarafa-webaccess
+	depends = z-push
+	depends = php
+	source = mdm2.zip::https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498
+	source = zarafa-webaccess-mdm.ini
+	source = mdm_login.patch
+	md5sums = 1de30b0292198e25f07c4ea9159901bf
+	md5sums = de837fc5ad2e8f2d70df5037f2a0a107
+	md5sums = 88b10c74bc6e7194c52e282a336e1ac7
+
+pkgname = zarafa-webaccess-mdm
+
