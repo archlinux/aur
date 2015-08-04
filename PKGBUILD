@@ -2,7 +2,7 @@
 # * Namcap warns that dependency rdma and nfs-utils are not needed, but nfs-utils-rdma-client requires IPoIB, and the IPoIB kernel modules are loaded by the rdma package, and requires nfs-utils, or there's no kernel module to load.
 
 pkgname=nfs-utils-rdma-client
-pkgver=1.00
+pkgver=1.01
 pkgrel=1
 pkgdesc='Load kernel modules for NFS client using RDMA'
 arch=('any')
@@ -19,5 +19,5 @@ package() {
   install=nfs-utils-rdma-client.install
 
   install -Dm755 "${srcdir}/nfs-utils-rdma-client" "${pkgdir}/usr/bin/nfs-utils-rdma-client"
-  install -Dm644 "${srcdir}/nfs-utils-rdma-client.service" "${pkgdir}/etc/systemd/system/nfs-utils-rdma-client.service"
+  install -Dm644 "${srcdir}/nfs-utils-rdma-client.service" "${pkgdir}/usr/lib/systemd/system/nfs-utils-rdma-client.service"
 }

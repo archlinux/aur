@@ -1,6 +1,6 @@
 pkgbase = nfs-utils-rdma-client
 	pkgdesc = Load kernel modules for NFS client using RDMA
-	pkgver = 1.00
+	pkgver = 1.01
 	pkgrel = 1
 	arch = any
 	license = GPL2
