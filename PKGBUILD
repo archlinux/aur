@@ -7,7 +7,7 @@ pkgbase=linux-bld       # Build kernel with a different name
 _srcname=linux-4.1
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -31,15 +31,11 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.1.patch"
 	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
-        "0001-block-loop-convert-to-per-device-workqueue.patch"
-        "0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch"
-        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
-        'bitmap-enable-booting-for-dm-md-raid1.patch'
         )
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
+            '0976127a60a950acf2796f642ac647e5231573b9a0f25703a37a50b988bf3b88'
             'SKIP'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
             'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
@@ -49,11 +45,7 @@ sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
             'c5c2c48638c2a8180948bd118ffcc33c8b7ff5f9f1e4b04c8e2cafeca2bde87b'
             '4f30f76adbdf49aec8d41ac27ad212734500c272f3cba594f134a7bc263820d9'
-            '6b068476a99fa7b5902f20e379f28b0f72e7d8edb6b751b6b28d3d51bcb0e08b'
-            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
-            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
-            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
-            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0')
+            '6b068476a99fa7b5902f20e379f28b0f72e7d8edb6b751b6b28d3d51bcb0e08b')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -86,20 +78,6 @@ prepare() {
 
   #msg2 "Applying latest fixes from stable queue, if needed"
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # Fix deadlock with stacked loop devices (FS#45129)
-  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
-  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
-  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
-
-  # Fix bluetooth chip initialization on some macbooks (FS#45554)
-  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
-  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
-  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-
-  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
-  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
-  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
 
   msg2 "set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)"
   # remove this when a Kconfig knob is made available by upstream
