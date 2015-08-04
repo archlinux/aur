@@ -2,7 +2,7 @@
 # namcap says dependency 'systemd' is not needed, but rdma.service is a systemd script
 
 pkgname=rdma
-pkgver=3.00
+pkgver=3.01
 pkgrel=1
 pkgdesc='Remote direct memory access scripts, for kernel InfiniBand and iWARP drivers'
 arch=('any')
@@ -29,5 +29,5 @@ package() {
   install -Dm644 "${srcdir}/rdma.conf" "${pkgdir}/etc/rdma.conf"
   install -Dm644 "${srcdir}/rdma-fixup-mtrr.awk" "${pkgdir}/usr/lib/rdma/rdma-fixup-mtrr.awk"
   install -Dm755 "${srcdir}/rdma-init-kernel" "${pkgdir}/usr/bin/rdma-init-kernel"
-  install -Dm644 "${srcdir}/rdma.service" "${pkgdir}/etc/systemd/system/rdma.service"
+  install -Dm644 "${srcdir}/rdma.service" "${pkgdir}/usr/lib/systemd/system/rdma.service"
 }

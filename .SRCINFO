@@ -1,6 +1,6 @@
 pkgbase = rdma
 	pkgdesc = Remote direct memory access scripts, for kernel InfiniBand and iWARP drivers
-	pkgver = 3.00
+	pkgver = 3.01
 	pkgrel = 1
 	url = https://apps.fedoraproject.org/packages/rdma
 	arch = any
