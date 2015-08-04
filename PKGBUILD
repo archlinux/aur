@@ -1,7 +1,7 @@
 # Maintainer: Thermi <noel at familie-kuntze dot de>
 
 pkgname=ocfs2-tools
-pkgver=1.4.4
+pkgver=1.6.4
 pkgrel=2
 pkgdesc="ocfs2 tool chain by Oracle, including mkfs, tunefs, fsck, debugfs and utilities for ocfs2"
 arch=('x86_64' 'i686')
