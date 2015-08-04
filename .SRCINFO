@@ -1,5 +1,5 @@
 pkgbase = renpy-sdk
-	pkgdesc = The Ren'Py Visual Novel Engine
+	pkgdesc = The Ren'Py Visual Novel Engine SDK
 	pkgver = 6.99.5
 	pkgrel = 1
 	url = http://www.renpy.org

@@ -3,7 +3,7 @@
 pkgname=renpy-sdk
 pkgver=6.99.5
 pkgrel=1
-pkgdesc="The Ren'Py Visual Novel Engine"
+pkgdesc="The Ren'Py Visual Novel Engine SDK"
 arch=('any')
 url='http://www.renpy.org'
 license=('custom')
