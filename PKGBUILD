@@ -67,7 +67,7 @@ pkgname=('linux-bfs' 'linux-bfs-headers' 'linux-bfs-docs')
 _kernelname=-bfs
 _srcname=linux-4.1
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://ck-hack.blogspot.de"
 license=('GPL2')
@@ -484,8 +484,9 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
             '84a7c3b96959cb2dd7687b968ba4522b62919529e2c0e166c0369e6cf77ff0e7ee387ca22a0980fc37dd100812205ab2c17b6c4d5dda51958ac1e66693f22925'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '4650a7c80a88c9e05314226aadd4a262e5582056d87c35bda1fe36c556d443dbb0d7d47e39b79bc557c308d730d7e411e961d3bf9317b6cb7d59fdef4af21b3a'
-            '4c7bfed928fa6de823f3e588a4e9bce590d36ad379d554b31fabacd9b80a12728e5edfd5ac622bf027017e78a59309128a5ffd443cf17cc05e6a1ec88fcf0937')
+            'f1b175f9c0c1735ac26fcd9705a1d6fd7253b6d47de89c3537ef886a7957c2ebc0f535b816dfa6922e1830796a7da4ac9cde1dd2a650369c41d766ea4b144d1e'
+            'c34d13f9ae6564461cc69aad176b4deee98efe9ec5058db2fe34f33387092022da1c59af4e37caff799c71eb2829669295cb0a6fbadeac368be937aaf7f65094')
+
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
