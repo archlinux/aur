@@ -1,0 +1,15 @@
+pkgbase = wdiff
+	pkgdesc = A wordwise implementation of GNU diff
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://www.gnu.org/software/wdiff/
+	install = wdiff.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = ncurses
+	source = http://ftp.gnu.org/gnu/wdiff/wdiff-1.2.2.tar.gz
+	sha256sums = 34ff698c870c87e6e47a838eeaaae729fa73349139fc8db12211d2a22b78af6b
+
+pkgname = wdiff
+
