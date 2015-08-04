@@ -3,7 +3,7 @@
 # Contributor: ahmad200512@yandex.ru
 
 pkgname=teamcity
-pkgver=9.1
+pkgver=9.1.1
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -15,7 +15,7 @@ source=("http://download.jetbrains.com/teamcity/TeamCity-${pkgver}.tar.gz"
         'teamcity-agent.service'
         'teamcity-server.service'
         'teamcity.conf')
-sha512sums=('026cf23d36effee8d944c410fa29d085dba0f5addd82a009d6b7d755015e6f2fedb2d9abde01952d05160014aa25a984b68ebb895f3a454d44481bcd93eb035f'
+sha512sums=('db7436ceae6721b108a0f2b3f109146da5d45ddbebeb64b96e321b7975403b233cb333799b7293c6db89a81d6629e8fdaf854fccd6640e49f6828d975f67d2ed'
             'bf8786f45d9b9101027b6efe2e1732988d032cb1ae1655b2188b61eda70d0df49d48c0de191e2eb00378fd44722a61592fcd26f5426ff150fc72d78b448a3223'
             'db22f7e9a58b57df260343973f9338a5828ed7b4949ba45dd6fa26905b502f4a91766cd685d16c3d41cef51c107ea54ac41dda263729c1ba1aee665295a614e3'
             'b8d7ca447939f4883dc673db8cb94ae5663af3baf7027ca18b151c004e0c2323ed710218eed3e5d1f191ea6412476a9f23d72eff61aae414200253735612b66c')
