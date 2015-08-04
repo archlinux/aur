@@ -1,7 +1,7 @@
 pkgbase = microchip-mplabxc32-bin
 	pkgdesc = Microchip's MPLAB XC32 C compiler toolchain for all of their 32bit microcontrollers
 	pkgver = 1.40
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microchip.com/xc32
 	install = microchip-mplabxc32-bin.install
 	arch = i686

@@ -3,7 +3,7 @@
 _number_of_bits=32
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for all of their 32bit microcontrollers"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}
@@ -52,16 +52,16 @@ EOF
 
   # now reassemble files larger than 5MB in the archive, which were split up for whatever reason
   msg2 "Reassembling files..."
-  for f in $(find ./unpacked.vfs -name '*___bitrockBigFile1')
+  find unpacked.vfs -name '*___bitrockBigFile1' | while read firstChunk
   do
-    firstChunk="$f"
-    baseName="${firstChunk//___bitrockBigFile1/}"
-    allPieces="$(find -path "${baseName}*" | sort --version-sort)"
-    cat $allPieces > "$baseName".reassembled
-    rm $allPieces
-    mv "$baseName".reassembled "$baseName"
+    baseName="${firstChunk%%___bitrockBigFile1}"
+    local i=1
+    while [[ -f "${baseName}___bitrockBigFile${i}" ]]
+    do
+      cat "${baseName}___bitrockBigFile${i}" >> "${baseName}"
+      i=$((i + 1))
+    done
   done
-
 }
 
 package() {
@@ -70,9 +70,12 @@ package() {
 
   mkdir -p "$pkgdir"/opt/$pkgname
   mv unpacked.vfs/compiler/programfiles/* "$pkgdir"/opt/$pkgname/.
+  mv unpacked.vfs/licensecomponent "$pkgdir"/opt/$pkgname/.
 
   msg2 "Making executables executable"
   find "$pkgdir"/opt/$pkgname/bin -type f -exec /bin/sh -c "file {} | grep -q executable && chmod +x {}" \;
+  chmod +x "$pkgdir"/opt/$pkgname/licensecomponent/xclmallBin/bin/xclm
+  chmod +x "$pkgdir"/opt/$pkgname/licensecomponent/LinuxLM/xclmcheck.sh
 
   mkdir -p "$pkgdir/etc/profile.d"
   echo "export PATH="'$PATH'":/opt/${pkgname}/bin" > "$pkgdir/etc/profile.d/${pkgname}.sh"
