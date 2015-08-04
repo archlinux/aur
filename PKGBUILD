@@ -9,7 +9,7 @@ pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
 url="https://github.com/drush-ops/$pkgname"
 license=('GPL')
-depends=('bash' 'php-composer')
+depends=('bash' 'php-composer' 'php-gd')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
