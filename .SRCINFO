@@ -9,7 +9,7 @@ pkgbase = go-ipfs-git
 	makedepends = git
 	makedepends = go
 	options = !strip
-	source = go-ipfs-git::git://github.com/jbenet/go-ipfs.git
+	source = go-ipfs::git://github.com/jbenet/go-ipfs.git
 	md5sums = SKIP
 
 pkgname = go-ipfs-git

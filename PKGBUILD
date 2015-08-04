@@ -1,22 +1,23 @@
 # Maintainer: Ian Naval <ianonavy@gmail.com>
 
-pkgname=go-ipfs-git
+_pkgname=go-ipfs
+pkgname=$_pkgname-git
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="global versioned p2p merkledag file system"
 arch=('i686' 'x86_64')
-url="https://github.com/jbenet/go-ipfs"
+url="https://github.com/jbenet/$_pkgname"
 license=('MIT')
 makedepends=('git' 'go')
 options=(!strip)
 
-source=("$pkgname"::'git://github.com/jbenet/go-ipfs.git')
+source=("$_pkgname"::'git://github.com/jbenet/go-ipfs.git')
 
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname/repo/config"
+  cd "$srcdir/$_pkgname/repo/config"
   # Use contents of version.go in the git source as the version number
   # (because they don't tag releases)
   printf "%s" $(grep 'const CurrentVersionNumber' version.go | sed -E 's/[^"]*"//;s/".*//')
@@ -29,8 +30,8 @@ build() {
   # Make src directory for $GOPATH
   mkdir -p "$GOPATH/src"
 
-  mv "$srcdir/$pkgname" "$GOPATH/src"
-  cd "$GOPATH/src/$pkgname/cmd/ipfs"
+  mv "$srcdir/$_pkgname" "$GOPATH/src"
+  cd "$GOPATH/src/$_pkgname/cmd/ipfs"
 
   echo "Installing dependencies..."
   echo $GOPATH
