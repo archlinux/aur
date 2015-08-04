@@ -1,0 +1,7 @@
+post_install() {
+  echo '>>> Setting up shared system-wide drush configuration'
+  echo '    by symlinking ~/.drush to /etc/drush for all users.'
+  for user_dir in $(cut --fields=6 --delimiter=: /etc/passwd | grep ^/home); do
+    ln --force --symbolic /etc/drush "$user_dir"
+  done
+}

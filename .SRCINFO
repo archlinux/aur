@@ -1,17 +1,20 @@
 pkgbase = drush-git
 	pkgdesc = The Drupal command-line shell, git version.
-	pkgver = 8.0.0.beta12.r1.g54f9394
-	pkgrel = 1
+	pkgver = 8.0.0.beta12.r50.ge0f7248
+	pkgrel = 2
 	url = https://github.com/drush-ops/drush-git
+	install = drush-git.install
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = bash
 	depends = php-composer
-	provides = drush=8.0.0.beta12.r1.g54f9394
+	provides = drush=8.0.0.beta12.r50.ge0f7248
 	conflicts = drush
 	source = git://github.com/drush-ops/drush.git
+	source = drush.ini
 	md5sums = SKIP
+	md5sums = ef1a3b084642681c8a39d218284ce13d
 
 pkgname = drush-git
 
