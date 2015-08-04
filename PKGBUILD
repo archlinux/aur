@@ -25,7 +25,7 @@ pkgver()
 package()
 {
 	install -m755 -d "${pkgdir}/srv/${_pkgname}"
-	cp -ra "${srcdir}/${_pkgname}/*" "${pkgdir}/srv/${_pkgname}"
+	cp -ra "${srcdir}/${_pkgname}" "${pkgdir}/srv"
 	cp "../bootstrap.sh" "${pkgdir}/srv/${_pkgname}/bootstrap.sh"
 
 	install -Dm0644 "../nntpchan.service" "${pkgdir}/usr/lib/systemd/system/nntpchan.service"
