@@ -1,5 +1,5 @@
 pkgbase = ruby-mime-types-1
-	pkgdesc = Provides a library and registry for information about MIME content type definitions
+	pkgdesc = A library and registry for information about MIME content type definitions
 	pkgver = 2.6.1
 	pkgrel = 1
 	url = http://mime-types.rubyforge.org/
