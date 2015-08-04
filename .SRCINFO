@@ -1,7 +1,7 @@
 pkgbase = ibacm
 	pkgdesc = OpenFabrics Alliance InfiniBand communication manager daemon for librdmacm
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686

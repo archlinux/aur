@@ -3,7 +3,7 @@
 
 pkgname=ibacm
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenFabrics Alliance InfiniBand communication manager daemon for librdmacm'
 #        Helps reduce load of managing path lookup records on large InfiniBand fabrics.
 #        When properly configured, can reduce SA packet load of a large IB cluster from O(n^2) to O(n).
@@ -38,5 +38,10 @@ package() {
 
   # Convert from init.d to systemd
   rm -rf ${pkgdir}/etc/init.d
-  install -Dm644 "${srcdir}/ibacm.service" "${pkgdir}/etc/systemd/system/ibacm.service"
+  # If ${pkgdir}/etc is empty (it should be, since /etc/init.d/ was removed) remove it
+  if ! [ "$(ls -A ${pkgdir}/etc)" ]; then
+     rm -rf ${pkgdir}/etc/
+  fi
+
+  install -Dm644 "${srcdir}/ibacm.service" "${pkgdir}/usr/lib/systemd/system/ibacm.service"
 }
