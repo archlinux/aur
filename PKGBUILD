@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('bash' 'gc' 'openssl' 'adns')
 makedepends=('git')
 
-_gitroot=https://github.com/nandub/gale.git
+_gitroot=https://github.com/grawity/gale.git
 _gitname=gale
 
 build() {
