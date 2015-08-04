@@ -1,12 +1,13 @@
 pkgbase = yices-bin
 	pkgdesc = An automatic theorem prover
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://yices.csl.sri.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = http://yices.csl.sri.com/cgi-bin/yices2-newnewdownload.cgi?file=yices-2.3.1-x86_64-unknown-linux-gnu-static-gmp.tar.gz&accept=I+Agree
+	source = http://yices.csl.sri.com/cgi-bin/yices2-newnewdownload.cgi?file=yices-2.4.0-x86_64-unknown-linux-gnu-static-gmp.tar.gz&accept=I+Agree
+	sha512sums = a5d97673a55a39697b7bd930835df3db376f1cf0913dc9e503cf53b607738b7e86c573ced73dc8f598eceff15b1ac46d96782697c94990e39bf28d197986f0ab
 
 pkgname = yices-bin
 
