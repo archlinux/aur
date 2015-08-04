@@ -15,17 +15,22 @@ pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidi
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'jack' 'lame'
-         'libaacplus' 'libass' 'libavc1394' 'libbluray' 'libcaca' 'libcdio-paranoia' 'libdc1394'
-         'libfdk-aac' 'libiec61883' 'libmodplug' 'libpulse' 'libssh' 'libtheora' 'libva'
-         'libvdpau' 'libwebp' 'openal' 'opencl-headers' 'opencore-amr' 'openjpeg' 'opus' 
-         'schroedinger' 'sdl' 'speex' 'twolame' 'v4l-utils' 'vo-aacenc' 'vo-amrwbenc' 'xvidcore'
-         'zlib' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so')
-makedepends=('libvdpau' 'yasm' 'pkg-config' 'hardening-wrapper')
+depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi' 
+         'gnutls' 'gsm' 'jack' 'ladspa' 'lame' 'libaacplus' 'libass' 'libavc1394' 
+         'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
+         'libfdk-aac' 'libgme' 'libiec61883' 'libmodplug' 'libpulse' 'libsoxr' 
+         'libutvideo-git' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
+         'libxv' 'mesa' 'openal' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 
+         'sdl' 'speex' 'rtmpdump' 'shine' 'twolame' 'v4l-utils' 'vid.stab' 
+         'vo-aacenc' 'vo-amrwbenc' 'xvidcore' 'wavpack' 'zeromq' 'zlib' 'zvbi'
+         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so')
+makedepends=('libvdpau' 'yasm' 'hardening-wrapper' 'opencl-headers')
 optdepends=('avxsynth-git: for Avisynth support'
             'opencl-nvidia: for OpenCL support')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
-provides=('ffmpeg' 'qt-faststart')
+provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+          'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc}
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
@@ -44,13 +49,21 @@ build() {
     --prefix=/usr \
     --enable-avisynth \
     --enable-avresample \
+    --enable-decoder=atrac3 \
+    --enable-decoder=atrac3p \
     --enable-bzlib \
+    --enable-dxva2 \
     --enable-fontconfig \
+    --enable-frei0r \
     --enable-gnutls \
     --enable-gpl \
+    --enable-gray \
     --enable-iconv \
+    --enable-ladspa \
+    --enable-libaacplus \
     --enable-libass \
     --enable-libbluray \
+    --enable-libbs2b \
     --enable-libcaca \
     --enable-libcdio \
     --enable-libcelt \
@@ -59,37 +72,49 @@ build() {
     --enable-libfdk-aac \
     --enable-libfreetype \
     --enable-libfribidi \
+    --enable-libgme \
     --enable-libgsm \
     --enable-libiec61883 \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
+    --enable-libopencv \
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
     --enable-libschroedinger \
+    --enable-libshine \
+    --enable-libsoxr \
     --enable-libspeex \
     --enable-libssh \
     --enable-libtheora \
     --enable-libtwolame \
+    --enable-libutvideo \
     --enable-libv4l2 \
+    --enable-libvidstab \
     --enable-libvo-aacenc \
     --enable-libvo-amrwbenc \
     --enable-libvorbis \
     --enable-libvpx \
+    --enable-libwavpack \
     --enable-libwebp \
     --enable-libx264 \
     --enable-libx265 \
     --enable-libxvid \
+    --enable-libzmq \
+    --enable-libzvbi \
     --enable-nonfree \
     --enable-nvenc \
     --enable-openal \
     --enable-opencl \
+    --enable-opengl \
     --enable-openssl \
     --enable-postproc\
+    --enable-runtime-cpudetect \
     --enable-vaapi \
     --enable-vda \
+    --enable-vdpau \
     --enable-version3 \
     --enable-x11grab \
     --enable-zlib \
