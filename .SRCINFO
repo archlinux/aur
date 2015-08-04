@@ -1,7 +1,7 @@
 pkgbase = arch-runit
 	pkgdesc = Arch native runit package
 	pkgver = 2.1.2_20150603
-	pkgrel = 2
+	pkgrel = 3
 	url = http://smarden.org/runit/
 	install = runit.install
 	arch = i686
