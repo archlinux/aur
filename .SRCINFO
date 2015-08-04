@@ -1,0 +1,13 @@
+pkgbase = fbless
+	pkgdesc = fictionbook console viewer
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://pybookreader.narod.ru/misc.html
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = ncurses
+
+pkgname = fbless
+
