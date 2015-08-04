@@ -1,0 +1,14 @@
+pkgbase = python-todo-t
+	pkgdesc = Command-line todo list manager
+	pkgver = 85.6422833
+	pkgrel = 1
+	url = https://github.com/kovetskiy/t
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	source = git://github.com/kovetskiy/t.git
+	md5sums = SKIP
+
+pkgname = python-todo-t
+
