@@ -8,7 +8,7 @@
 pkgname=arch-runit
 pkgver=2.1.2_20150603
 _runit_ver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Arch native runit package'
 url='http://smarden.org/runit/'
 license=('Creative Commons')
@@ -24,6 +24,7 @@ sha256sums=('6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18'
 			'527f68f501cc9eb4bbab33f8ad374822624342c7d74b5c795efe4aac6b3f170a'
 			'14c48eb40c030e6f3d2ea487f11d6e331bd0d73b56adad187d546997f815b055'
 			)
+backup=('etc/rc.conf' 'etc/rc.shutdown' 'etc/rc.local')
 depends=()
 makedepends=('git')
 optdepends=('arch-runit-services')
