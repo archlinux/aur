@@ -1,6 +1,6 @@
 pkgbase = wxmedit
 	pkgdesc = Cross-platform Text/Hex Editor, a fork of MadEdit with bug fixes and improvements
-	pkgver = 2.9.9
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://wxmedit.github.io/
 	install = wxmedit.install
@@ -11,8 +11,8 @@ pkgbase = wxmedit
 	depends = icu
 	depends = desktop-file-utils
 	depends = boost
-	source = http://downloads.sourceforge.net/project/wxmedit/2.9.9/wxMEdit-2.9.9.tar.gz
-	md5sums = b718c9a2f35e3435aa90392653b30853
+	source = http://downloads.sourceforge.net/project/wxmedit/3.0/wxMEdit-3.0.tar.gz
+	sha256sums = 528022fe142e5fcdc54898620d6ebfc2b92a8db059aba2dbeeff97bcb0736ddd
 
 pkgname = wxmedit
 
