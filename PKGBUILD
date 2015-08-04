@@ -4,7 +4,7 @@ pkg_base=peercoin
 pkgname=('peercoin-daemon')
 pkgver=0.6.3
 _git_branch=master
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://peercoin.net/"
 makedepends=('boost' 'automoc4' 'miniupnpc' 'protobuf')
@@ -14,7 +14,7 @@ source=(https://github.com/ppcoin/ppcoin/archive/$_git_branch.tar.gz
 	https://raw.github.com/ppcoin/ppcoin/$_git_branch/contrib/debian/manpages/bitcoind.1
 	https://raw.github.com/ppcoin/ppcoin/$_git_branch/contrib/debian/manpages/bitcoin.conf.5)
 
-sha256sums=('29cc58504c6114fa6ed83be52f943e5a6d4970a328e47a48d83f751c381266b5'
+sha256sums=('12a0cc5b0b4823041623b046da66ff176bf7be88a2af7f7e42c4fc9206733046'
             '9488b7ed7c55b682976dd2fcfed832f0d7e4ff6d4ea4879c89655957b0cd4c13'
             'd9c406a3b79331b5c894b46ea7301b15730c157f4f11df930ac66366fc1c725d'
             'bc012bdbebd4702fa75f2c051a59d5d00e1ab93f55feef6499a58bd09cab50f6')
