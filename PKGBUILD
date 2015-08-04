@@ -1,7 +1,7 @@
 # Maintainer: David Bailey <david.bailey@archlinux.net>
 
 pkgname=obquit
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Simple logout script for Openbox"
 arch=('any')
