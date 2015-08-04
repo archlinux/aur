@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.7.5.r48.g09147a3
+pkgver=0.7.5.r54.g6a1d9ac
 _last_release="0.7.5-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
 license=('Apache')
 depends=('libunwind' 'gc-static' 'llvm' 'libatomic_ops' 'pcre' 'libpcl' 'libevent')
+makedepends=('libxml2')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git')
 optdepends=('libyaml: For YAML support'
             'gmp: For BigInt support'
@@ -18,7 +19,7 @@ makedepends=('git')
 conflicts=('crystal')
 provides=('crystal')
 source=("git://github.com/manastech/crystal.git")
-source_i686+=("http://cloud.aeshna.de/u/mrzyx/crystal32/crystal32-${_last_release/-*/}.tar.gz")
+source_x86_64+=("https://github.com/manastech/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-i686.tar.gz")
 source_x86_64+=("https://github.com/manastech/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-x86_64.tar.gz")
 
 pkgver() {
@@ -29,24 +30,14 @@ pkgver() {
   )
 }
 
-prepare() {
-  rm -rf "$srcdir/bin"
-
-  if [ -d "$srcdir/${pkgname/-git/}-$_last_release/bin" ]; then
-    ln -sf "$srcdir/${pkgname/-git/}-$_last_release/bin" "$srcdir/bin"
-  elif [ -f "$srcdir/crystal32-${_last_release/-*/}" ]; then
-    mkdir -p "$srcdir/bin"
-    cp "$srcdir/crystal32-${_last_release/-*/}" "$srcdir/bin/crystal"
-  fi
-}
-
 build() {
   cd "$srcdir/${pkgname/-git/}"
 
   make release=1 \
-       PATH="$srcdir/bin:$PATH" \
+       PATH="$srcdir/${pkgname/-git/}-$_last_release/bin:$PATH" \
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
        CRYSTAL_CONFIG_PATH="libs:/usr/lib/crystal"
+  make doc
 }
 
 check() {
@@ -60,18 +51,22 @@ check() {
 
 package() {
   cd "$srcdir/${pkgname/-git/}"
-  # /usr/bin/crystal compiled executable
-  # /usr/lib/crystal/ compiler src & core libs
+
+  # /usr/bin/crystal                compiled executable
+  # /usr/lib/crystal/               compiler src & core libs
+  # /usr/share/doc/crystal/api/     api docs
   # /usr/share/doc/crystal/samples/ samples
 
   install -Dm755 ".build/crystal" "$pkgdir/usr/bin/crystal"
+
   install -dm755 "$pkgdir/usr/lib"
   cp -av src "$pkgdir/usr/lib/crystal"
+
   install -dm755 "$pkgdir/usr/share/doc/crystal"
+  cp -av doc     "$pkgdir/usr/share/doc/crystal/api"
   cp -av samples "$pkgdir/usr/share/doc/crystal/"
 }
 
-# vim:set ts=2 sw=2 et:
 sha256sums=('SKIP')
-sha256sums_i686=('5db0af7fbe36175a7a14e1f4fc824e31bf7e5169d276682366388957eb7d3157')
-sha256sums_x86_64=('e852d176d26e749083005fb7689ff2c28f3a987df62cb29b6dd8e7f417c90a6c')
+sha256sums_x86_64=('d0ee8b5d81917c7ae559760793d8b611034590bfb965fe450f3d430d97d56c34'
+                   'e852d176d26e749083005fb7689ff2c28f3a987df62cb29b6dd8e7f417c90a6c')
