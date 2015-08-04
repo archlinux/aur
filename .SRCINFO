@@ -1,6 +1,6 @@
 pkgbase = nodejs-generator-mobileangularui
 	pkgdesc = Yeoman generator for Mobile Angular UI
-	pkgver = 1.2.1
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/mcasimir/mobile-angular-ui
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = nodejs-generator-mobileangularui
 	depends = nodejs-gulp
 	depends = nodejs-bower
 	depends = nodejs-mocha
-	noextract = generator-mobileangularui-1.2.1.tgz
-	source = https://registry.npmjs.org/generator-mobileangularui/-/generator-mobileangularui-1.2.1.tgz
-	sha256sums = 437a146b24bf3a73e2173f08ce076daa25d5cf92f37066be993520b9bba02bdf
+	noextract = generator-mobileangularui-1.2.3.tgz
+	source = https://registry.npmjs.org/generator-mobileangularui/-/generator-mobileangularui-1.2.3.tgz
+	sha256sums = d4a9184f2bfe17022f0841bf2aeae2782da3cf2022ac2cb495c79ae875cc3b95
 
 pkgname = nodejs-generator-mobileangularui
 

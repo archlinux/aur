@@ -1,9 +1,9 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 
 _npmname=generator-mobileangularui
-_npmver=1.2.1
+_npmver=1.2.3
 pkgname=nodejs-$_npmname
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Yeoman generator for Mobile Angular UI"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs-yeoman' 'nodejs-gulp' 'nodejs-bower' 'nodejs-mocha')
 
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('437a146b24bf3a73e2173f08ce076daa25d5cf92f37066be993520b9bba02bdf')
+sha256sums=('d4a9184f2bfe17022f0841bf2aeae2782da3cf2022ac2cb495c79ae875cc3b95')
 
 package() {
   cd "$srcdir"
