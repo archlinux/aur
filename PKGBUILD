@@ -1,6 +1,6 @@
 pkgname=terasology-devbuild
-pkgver=1492
-_omega_ver=226
+pkgver=1494
+_omega_ver=229
 pkgrel=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft! (Last succesful development build)"
 arch=('x86_64' 'i686')
@@ -10,13 +10,13 @@ options=('!strip')
 depends=('jdk8-openjdk' 'xorg-server-utils' 'openal')
 makedepends=('unzip')
 source=(
-    "$pkgname"  
+    "$pkgname"
     "${pkgname}.desktop"
     "http://jenkins.movingblocks.net/job/DistroOmega/${_omega_ver}/artifact/distros/omega/build/distributions/TerasologyOmega.zip"
 )
 sha512sums=('9d2562e769aee38a09de315f9900754827ec2720400e10553f0cbf78c0834bf325220c42c249f17999bc764aa4a0c12aa7abe162d43ea5327672c2fa88fa2669'
             '9ecacc34ae0a17cfe1031f32ee4f25e4e840bed072445ac0a8ffc1b2a012a7b60fed739fcc2ceab8083293a31e7409406bc190c4295022df82815f48c5541d19'
-            '75c02146a4f47c8c5c455fc3bfcef1f654b38a93701b1a3bfbf28d9e0c0d88a8716a771c8f6326516086136cd938e28dcaf4c81bb8632dac992484075866d31f')
+            '4a69ca89054b197609cc8bf86638cfb216e613a3f0c69dcede565a1c7e6e7581ae849ff53932777de62fef52cc54d9f3f8f8ab17474a150c69a4408e01f7d6d1')
 
 package() {
     cd "$srcdir"
