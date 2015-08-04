@@ -17,6 +17,7 @@ pkgbase = terminator-trunk
 	depends = python2-keybinder2
 	provides = terminator
 	conflicts = terminator
+	conflicts = terminator-trunk-mod
 	source = terminator::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk
 	md5sums = SKIP
 
