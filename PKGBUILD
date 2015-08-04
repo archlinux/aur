@@ -1,6 +1,6 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 # * OpenFabrics Alliance InfiniBand network diagnostic and testing utilities
-# Namcap errors: Insecure RPATH 'usr/lib64 in files usr/lib/ibis1.5.7/libibis.so.1.5.7, usr/lib/ibis
+# Namcap errors: Insecure RPATH 'usr/lib64 in files usr/lib/ibis1.5.7/libibis.so.1.5.7, usr/lib/ibis.  Upstream issue.
 
 pkgname=ibutils
 pkgver=1.5.7
