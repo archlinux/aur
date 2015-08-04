@@ -1,4 +1,5 @@
-# Maintainer: Ian Naval <ianonavy@gmail.com>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Ian Naval <ianonavy@gmail.com>
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
