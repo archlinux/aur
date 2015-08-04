@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-mp550
 	pkgdesc = Canon IJ Printer Driver (For Multifunction MP550 series)
 	pkgver = 3.20
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MP_series/PIXMA_MP550.aspx
 	install = cnijfilter-mp550.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = cnijfilter-mp550
 	makedepends = automake>=1.6
 	makedepends = tar
 	makedepends = make
-	depends = cnijfilter-common=3.20
+	depends = cnijfilter-common=4.00
 	source = http://files.canon-europe.com/files/soft37280/Software/IJ_Linux_Printer_Driver_Source_320.tar
 	source = id.patch
 	source = cups.patch
@@ -21,7 +21,7 @@ pkgbase = cnijfilter-mp550
 	sha512sums = b75cdbdadac5fb396458dc9f14529c5e39a4fa47f97cd6a21a69b0dbac73f1b8dd90780068f6a348fcfb15939d0866dde1a1cf1ff7faaf0c443d2205a242ccd5
 	sha512sums = f1f8cc44d7892eb50b44e0fe9d5be877fa5d8f8783aedf494d739eee20c147befac4f4776959f42cdb9cfd9f766522635fc2aae2626fdaf0c4465226a66dcc0e
 	sha512sums = 0d8310867f45721150a870170172d3a0688bfba0267f627a630c105ff965d31f25dbcc31d3795874325bcb8eaeee395bf32b0648a743ff663dea6f977ab9070e
-	sha512sums = 05eaef447a3145fe735ae856d86375144b368c378e86bf642db084a1f16eb474e0c1cf8df592620db76b6b99ff6dcd16b15c6c74f5ee9e00a3703c0bf104bf66
+	sha512sums = 807a2f726b5fb0f383118fc6c60449bd37f3a68f788a0ba2e3643f054f592fb886298c397b190280ef565cba2fe57f943abdbf86e8a4890172aaf716984cb70f
 	depends_i686 = gtk2
 	depends_i686 = libxml2
 	makedepends_i686 = gcc

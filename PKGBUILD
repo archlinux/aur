@@ -5,7 +5,7 @@ pkgname=('cnijfilter-mp550')
 _pkgname=cnijfilter
 
 pkgver=3.20
-pkgrel=10
+pkgrel=11
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (For Multifunction MP550 series)"
@@ -21,7 +21,7 @@ makedepends_i686=('gcc' 'popt')
 depends_i686=('gtk2' 'libxml2')
 
 makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
-depends=("${_pkgname}-common=${pkgver}")
+depends=("${_pkgname}-common=4.00")
 
 install=cnijfilter-mp550.install
 
@@ -35,7 +35,7 @@ sha512sums=('28a82d08d3b8a233b89a17e0e029510fc5b3cede97300eb71a9af03c9a15cca4355
             'b75cdbdadac5fb396458dc9f14529c5e39a4fa47f97cd6a21a69b0dbac73f1b8dd90780068f6a348fcfb15939d0866dde1a1cf1ff7faaf0c443d2205a242ccd5'
             'f1f8cc44d7892eb50b44e0fe9d5be877fa5d8f8783aedf494d739eee20c147befac4f4776959f42cdb9cfd9f766522635fc2aae2626fdaf0c4465226a66dcc0e'
             '0d8310867f45721150a870170172d3a0688bfba0267f627a630c105ff965d31f25dbcc31d3795874325bcb8eaeee395bf32b0648a743ff663dea6f977ab9070e'
-            '05eaef447a3145fe735ae856d86375144b368c378e86bf642db084a1f16eb474e0c1cf8df592620db76b6b99ff6dcd16b15c6c74f5ee9e00a3703c0bf104bf66')
+            '807a2f726b5fb0f383118fc6c60449bd37f3a68f788a0ba2e3643f054f592fb886298c397b190280ef565cba2fe57f943abdbf86e8a4890172aaf716984cb70f')
 
 prepare() {
   cd ${srcdir}
