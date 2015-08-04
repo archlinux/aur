@@ -22,5 +22,5 @@ package() {
 
   install -Dm755 "${srcdir}/nfs-utils-rdma-server" "${pkgdir}/usr/bin/nfs-utils-rdma-server"
   install -Dm644 "${srcdir}/nfs-utils-rdma-server.conf" "${pkgdir}/etc/nfs-utils-rdma-server.conf"
-  install -Dm644 "${srcdir}/nfs-utils-rdma-server.service" "${pkgdir}/etc/systemd/system/nfs-utils-rdma-server.service"
+  install -Dm644 "${srcdir}/nfs-utils-rdma-server.service" "${pkgdir}/usr/lib/systemd/system/nfs-utils-rdma-server.service"
 }
