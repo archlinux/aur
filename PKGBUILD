@@ -3,7 +3,12 @@
 pkgbase=kdbus
 pkgname=('kdbus')
 pkgver=4.1
-_nxver=4.2
+
+_major=`expr $pkgver : '\([0-9]\+\)\.[0-9]\+'`
+_minor=`expr $pkgver : '[0-9]\+\.\([0-9]\+\)'`
+_nxver="${_major}.$((${_minor} + 1))"
+_extramodules="extramodules-$pkgver-ARCH"
+
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd/kdbus"
@@ -16,7 +21,31 @@ source=("git://github.com/systemd/kdbus.git#branch=v$pkgver"
 md5sums=('SKIP'
          '73eb3e891205f53cd017d87e4e58fe6b')
 
-_extramodules="extramodules-$pkgver-ARCH"
+pkgver() {
+  cd "$pkgname"
+
+  #
+  # You *MUST* set $pkgver to the kernel version you want to build kdbus for.
+  # Upstream provides branches for all kernels since v4.0.
+  #
+  # As default, we set the version of the current stable arch kernel. However,
+  # you can easily adjust this line here to your running kernel version.
+  # You can also uncomment the small script to automatically adapt to your
+  # *currently* running kernel.
+  #
+  # Please be aware that if you change the version, you *HAVE* to run:
+  #     $ makepkg --nodeps --nobuild
+  # ..to update $pkgver of the PKGBUILD correctly. If you don't do this, you
+  # will get a dependency warning on 'linux-headers' as pkgver() is called
+  # *after* checking $makedepends.
+  #
+
+  # fixed version:
+  echo 4.1
+
+  # current kernel:
+  #echo `expr $(uname -r) : '\([0-9]\+\.[0-9]\+\)'`
+}
 
 prepare() {
   cd "$pkgname"
