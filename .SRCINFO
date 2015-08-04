@@ -1,6 +1,6 @@
 pkgbase = nodejs-strongloop
 	pkgdesc = Strongloop controller CLI
-	pkgver = 4.1.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = http://strongloop.com/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-strongloop
 	makedepends = npm
 	makedepends = python2
 	depends = nodejs
-	noextract = strongloop-4.1.1.tgz
-	source = https://registry.npmjs.org/strongloop/-/strongloop-4.1.1.tgz
-	sha256sums = 39529c212c4ec3aaa4b3ea71a1cd4ade80cc9dd023a3e35354d55b684ad6f03e
+	noextract = strongloop-5.0.0.tgz
+	source = https://registry.npmjs.org/strongloop/-/strongloop-5.0.0.tgz
+	sha256sums = 281a2a62b0de3c2ddee4936817cb2f91cd59d03ca30a5e7d9abde7791b02226b
 
 pkgname = nodejs-strongloop
 
