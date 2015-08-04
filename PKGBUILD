@@ -1,9 +1,9 @@
 # Maintainer: Kyle Manna <kyle(at)kylemanna(dot)com>
 
-_srcname=linux-4.0
+_srcname=linux-4.1
 pkgname=linux-can-dkms
-pkgver=4.0.3
-pkgrel=3
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="CAN kernel modules (DKMS)"
 arch=('i686' 'x86_64')
 url="https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentation/networking/can.txt"
@@ -17,9 +17,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'dkms.conf'
         'Makefile'
        )
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'e8e42b67cd5ca28d3cd85b868a8caf6c0b971c948d6695ea6e399e132664de83'
+            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
             'SKIP'
             'b213142af20f9c0bdfdb52104cc2daed2de3edb2e45a6e4e243b9e980ce3c5db'
             '3653b26f843ad66d31ffe3c916d2b26bd59e2e6273e9d967bfdb8af4e693162d')
