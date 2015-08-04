@@ -3,7 +3,7 @@
 
 pkgname=infiniband-diags
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets'
 arch=('x86_64' 'i686')
 url=('https://www.openfabrics.org/index.php/overview.html')
@@ -33,5 +33,5 @@ package() {
 
   # Convert from init.d to systemd
   rm -rf ${pkgdir}/etc/init.d
-  install -Dm644 "${srcdir}/rdma-ndd.service" "${pkgdir}/etc/systemd/system/rdma-ndd.service"
+  install -Dm644 "${srcdir}/rdma-ndd.service" "${pkgdir}/usr/lib/systemd/system/rdma-ndd.service"
 }

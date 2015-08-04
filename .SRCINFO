@@ -1,7 +1,7 @@
 pkgbase = infiniband-diags
 	pkgdesc = OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
