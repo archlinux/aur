@@ -33,7 +33,7 @@ package()
 	cd "$srcdir/$_pkgname"
 
 	install -m755 -d "${pkgdir}/usr/bin"
-	install -D -m644 "${srcdir}/${_pkgname}/${_pkgname}/deploy/linux/mandelbulber2.desktop" "${pkgdir}/usr/share/applications/mandelbulber2.desktop"
+	install -D -m644 "${srcdir}/${_pkgname}/${_pkgname}/deploy/linux/mandelbulber2.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 	install -m755 -d "${pkgdir}/usr/share/${_pkgname}"
 	install -m755 -d "${pkgdir}/usr/share/applications"
