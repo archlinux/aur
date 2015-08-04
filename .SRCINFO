@@ -1,0 +1,15 @@
+pkgbase = sysbench-nodb-git
+	pkgdesc = Multi-threaded benchmark for evaluating OS parameters for database-loads (git)
+	pkgver = 0.5.r212.0257f50
+	pkgrel = 1
+	url = https://github.com/akopytov/sysbench
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/akopytov/sysbench
+	md5sums = SKIP
+
+pkgname = sysbench-nodb-git
+
