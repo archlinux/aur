@@ -1,0 +1,13 @@
+pkgbase = fs_mark
+	pkgdesc = Filesystem benchmarks
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/fsmark/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	source = http://downloads.sourceforge.net/project/fsmark/fsmark/3.3/fs_mark-3.3.tar.gz
+	md5sums = a31ac6f127a46ee45a33e4ce86c65553
+
+pkgname = fs_mark
+
