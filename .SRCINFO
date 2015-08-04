@@ -8,6 +8,7 @@ pkgbase = go-ipfs-git
 	license = MIT
 	makedepends = git
 	makedepends = go
+	optdepends = fuse: for mounting/advanced use
 	options = !strip
 	source = git+https://github.com/jbenet/go-ipfs.git
 	md5sums = SKIP

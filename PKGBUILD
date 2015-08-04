@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/jbenet/$_pkgname"
 license=('MIT')
 makedepends=('git' 'go')
+optdepends=('fuse: for mounting/advanced use')
 options=(!strip)
 source=("git+${url}.git")
 md5sums=('SKIP')
