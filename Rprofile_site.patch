@@ -1,0 +1,73 @@
+--- Rprofile.site	2015-07-22 21:49:01.000000000 +0200
++++ Rprofile.site	2015-08-04 02:35:57.231398053 +0200
+@@ -1,35 +1,14 @@
+-Revo.version <- structure(list(major = "3", minor = "2.1", "build id" = BUILD_ID), class = "simple.list")
++Revo.version <- structure(list(major = "3", minor = "2.1", "build id" = 'Arch Linux'), class = "simple.list")
+ repos.date <- "2015-07-01"
+ 
+-if  (identical(.Platform$OS.type, "windows")) {
+-	options(download.file.method = "wininet")
+-} else {
+-    if (capabilities("libcurl")) {
++if (capabilities("libcurl")) {
+        options(download.file.method = "libcurl")
+     } else {
+        options(download.file.method = "curl")
+     }
+-}
+ 
+-if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("CentOS release 5", readLines("/etc/issue")[1]))) {
+-    warning("Warning: “Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
+-    options(download.file.method = "wget")
+-    options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep=""))) 
+-} else if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("Welcome to SUSE Linux Enterprise Server 10", readLines("/etc/issue")[1]))) {
+-    warning("Warning: “Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
+-    options(download.file.method = "wget")
+-    options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
+-} else if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("Welcome to SUSE Linux Enterprise Server 10", readLines("/etc/issue")[2]))) {
+-    warning("Warning: “Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
+-    options(download.file.method = "wget")
+-    options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
+-} else {
+-    options(repos = c(CRAN = paste("https://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
+-}
++options(repos = c(CRAN = paste("https://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
+ 
+-if (.Platform$OS.type == "windows" ) {
+- options(help_type="html")
+-}
+ quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
+ 	if (!quiet){
+                 cat( paste("Revolution R Open ",Revo.version$major,".",Revo.version$minor,"\n",sep=""))
+@@ -40,8 +19,6 @@
+ 
+ 	}
+ 	
+-
+-
+ load_if_installed <- function(package) {
+   if (!identical(system.file(package="RevoUtilsMath"), "")) {
+     do.call('library', list(package))
+@@ -50,16 +27,7 @@
+     return(FALSE)
+ }
+ 
+-if(Sys.info()["sysname"] == "Darwin"){
+-  local({
+-    options(download.file.method = "libcurl")
+-    hw.ncpu <- system('sysctl hw.ncpu', intern = TRUE)
+-    ncores <- sub("hw.ncpu: ", "", hw.ncpu)
+-    msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %s cores for math algorithms."
+-    message(sprintf(msg, ncores))
+-    invisible(NULL)
+-  })
+-} else if(load_if_installed("RevoUtilsMath")){
++if(load_if_installed("RevoUtilsMath")){
+   local({
+     ncores <- RevoUtilsMath::getMKLthreads()
+     msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %d cores for math algorithms."
+@@ -68,4 +36,3 @@
+   })
+ }
+ 
+-
