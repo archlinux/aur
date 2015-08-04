@@ -1,0 +1,18 @@
+pkgbase = mandelbulber-opencl
+	pkgdesc = 3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems.
+	pkgver = 1.21
+	pkgrel = 2
+	url = http://mandelbulber.com/
+	arch = any
+	license = GPL3
+	depends = libjpeg-turbo
+	depends = ocl-icd
+	depends = gtk2
+	depends = oclp
+	provides = mandelbulber
+	conflicts = mandlebulber
+	source = mandelbulber-opencl::http://iweb.dl.sourceforge.net/project/mandelbulber/mandelbulber-opencl-1.21-2.orig.tar.gz
+	md5sums = d4dcb855aab3a5afe139dfcafb14ad72
+
+pkgname = mandelbulber-opencl
+
