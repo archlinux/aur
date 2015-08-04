@@ -1,9 +1,10 @@
-# Maintainer: Nicolas Pouillard <nicolas.pouillard@gmail.com>
+# Maintainer: Shawn Nock <nock@nocko.se>
+# Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 # Contributor: simo <simo@archlinux.org>
 
 pkgname=tor-unstable
-pkgver=0.2.7.1_alpha
+pkgver=0.2.7.2_alpha
 pkgrel=1
 pkgdesc='Anonymizing overlay network.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,7 +21,7 @@ install='tor.install'
 source=("https://www.torproject.org/dist/${pkgname/-unstable/}-${pkgver/_/-}.tar.gz"{,.asc}
         'torrc'
         'tor.service')
-md5sums=('8102765bb06467623c5170392674b76b'
+md5sums=('f102c23727ce9fbbb5c58495bdfdba64'
          'SKIP'
          'c1dd4004c63edaeaa829e01be5413cfc'
          'a396657e6f6df21d319ad586500c04b1')
