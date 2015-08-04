@@ -1,0 +1,27 @@
+pkgbase = terminator-trunk-mod
+	pkgdesc = Terminal emulator that supports tabs and grids (bzr trunk, maintainer mods
+	pkgver = 0.97.r1589
+	pkgrel = 1
+	url = http://gnometerminator.blogspot.fr/p/introduction.html
+	install = terminator.install
+	arch = any
+	license = GPL2
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = intltool
+	makedepends = bzr
+	depends = vte
+	depends = pygtk
+	depends = xdg-utils
+	depends = python2-notify
+	depends = python2-keybinder2
+	provides = terminator
+	conflicts = terminator
+	conflicts = terminator-trunk
+	source = terminator::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk
+	source = middle_mouse.patch
+	md5sums = SKIP
+	md5sums = ca634c424ff4b4fa174e17d46f81e863
+
+pkgname = terminator-trunk-mod
+
