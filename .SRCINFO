@@ -1,0 +1,16 @@
+pkgbase = seaweedfs-git
+	pkgdesc = Seaweed-FS is a simple and highly scalable distributed file system, written on Go.
+	pkgver = 912.7d1e9a6
+	pkgrel = 1
+	url = https://github.com/chrislusf/seaweedfs
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = go
+	makedepends = mercurial
+	provides = seaweedfs
+	conflicts = seaweedfs
+
+pkgname = seaweedfs-git
+
