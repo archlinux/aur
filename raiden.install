@@ -1,0 +1,14 @@
+post_install() {
+  depmod
+  udevadm control --reload
+}
+
+post_upgrade(){
+  depmod
+  udevadm control --reload
+}
+
+post_remove() {
+  depmod
+  udevadm control --reload
+}
