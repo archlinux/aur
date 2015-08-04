@@ -1,0 +1,20 @@
+pkgbase = nntpchan-git
+	pkgdesc = Decentralized imageboard that uses nntp to synchronize content between many different servers. It utilizes cryptograpghicly signed posts to perform optional/opt-in decentralized moderation. Git version.
+	pkgver = 20150804
+	pkgrel = 1
+	url = https://github.com/majestrate/nntpchan
+	install = nntpchan.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = go>=1.4
+	depends = libsodium>=1.0
+	depends = imagemagick
+	depends = postgresql
+	provides = nntpchan
+	conflicts = nntpchan
+	source = nntpchan::git+https://github.com/majestrate/nntpchan
+	md5sums = SKIP
+
+pkgname = nntpchan-git
+
