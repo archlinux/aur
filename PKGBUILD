@@ -3,7 +3,7 @@
 
 pkgbase=tlp-git
 pkgname=('tlp-git' 'tlp-rdw-git')
-pkgver=0.7.r1.3409912
+pkgver=0.7.r40.ce9e638
 pkgrel=1
 arch=('any')
 url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'

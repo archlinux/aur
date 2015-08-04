@@ -1,3 +1,4 @@
+arch=('any')
 pkgname=('tlp-git' 'tlp-rdw-git')
 
 check_git $packagedir/tlp-git/tlp
