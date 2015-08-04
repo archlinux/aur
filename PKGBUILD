@@ -1,8 +1,8 @@
 # Maintainer: Javier Tia <javier.tia[at]gmail[dot]com>
 # Old Maintainer: Viliam Pucik <viliam.pucik[at]gmail[dot]com>
-# Author: jevv
+# Old Author: jevv
 pkgname=hpmyroom
-pkgver=10.3.0.0104
+pkgver=10.3.0.0108
 pkgrel=2
 pkgdesc="HP MyRoom"
 url="https://www.myroom.hp.com"
@@ -14,8 +14,8 @@ depends_x86_64=('lib32-libxss' 'lib32-libpng12' 'lib32-fontconfig' 'lib32-bzip2'
 
 source_i686=("https://www.myroom.hp.com/downloadfiles/${pkgname}_v${pkgver}_i386.deb")
 source_x86_64=("https://www.myroom.hp.com/downloadfiles/${pkgname}_v${pkgver}_amd64.deb")
-sha256sums_i686=('0b72365f6a6995711a16e83998ffaf430a6e6287de45242ea85fda79ca60638a')
-sha256sums_x86_64=('742060838c78125874d1fe0cd7046922a80fb40c57b3af75ebd0bf908573caf6')
+sha256sums_i686=('c5d119b8843d13e12960bbfaf1c115a8b1186c02f744d918fe0c542dc6572283')
+sha256sums_x86_64=('c48220b51190644c8a5a6f7fbc6f87c051e5ad5d0ebdf6cd73dee0c25b34a260')
 
 [[ "$CARCH" = "i686" ]] && _debarch='i386'
 [[ "$CARCH" = "x86_64" ]] && _debarch='amd64'

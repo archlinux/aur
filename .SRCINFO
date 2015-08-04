@@ -1,25 +1,25 @@
 pkgbase = hpmyroom
 	pkgdesc = HP MyRoom
-	pkgver = 10.3.0.0104
+	pkgver = 10.3.0.0108
 	pkgrel = 2
 	url = https://www.myroom.hp.com
 	arch = i686
 	arch = x86_64
 	license = unknown
-	source_i686 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.3.0.0104_i386.deb
+	source_i686 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.3.0.0108_i386.deb
 	depends_i686 = libxss
 	depends_i686 = libpng12
 	depends_i686 = fontconfig
 	depends_i686 = bzip2
 	depends_i686 = libpulse
-	sha256sums_i686 = 0b72365f6a6995711a16e83998ffaf430a6e6287de45242ea85fda79ca60638a
-	source_x86_64 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.3.0.0104_amd64.deb
+	sha256sums_i686 = c48220b51190644c8a5a6f7fbc6f87c051e5ad5d0ebdf6cd73dee0c25b34a260
+	source_x86_64 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.3.0.0108_amd64.deb
 	depends_x86_64 = lib32-libxss
 	depends_x86_64 = lib32-libpng12
 	depends_x86_64 = lib32-fontconfig
 	depends_x86_64 = lib32-bzip2
 	depends_x86_64 = lib32-libpulse
-	sha256sums_x86_64 = 742060838c78125874d1fe0cd7046922a80fb40c57b3af75ebd0bf908573caf6
+	sha256sums_x86_64 = c5d119b8843d13e12960bbfaf1c115a8b1186c02f744d918fe0c542dc6572283
 
 pkgname = hpmyroom
 
