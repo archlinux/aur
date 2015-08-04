@@ -1,0 +1,15 @@
+pkgbase = revolution-r-open-blas-systemblas
+	pkgdesc = Alternative math library symlinks (to the system blas e.g. OpenBLAS) for Revolution R Open
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://www.revolutionanalytics.com/revolution-r-open
+	arch = x86_64
+	license = GPL
+	depends = blas
+	depends = lapack
+	depends = revolution-r-open
+	provides = revolution-r-open-blas
+	conflicts = revolution-r-open-blas
+
+pkgname = revolution-r-open-blas-systemblas
+
