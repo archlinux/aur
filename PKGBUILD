@@ -29,8 +29,9 @@ optdepends_x86_64=('lib32-libappindicator-gtk2: needed if tray icon not working 
 provides_i686=('libudev.so.0')
 provides_x86_64=('lib32-libudev.so.0' 'lib32-networkmanager=0.9.8.10' 'lib32-libnm-glib=0.9.8.10')
 
-conflicts_i686=('chromium-browser-bin' 'libudev.so.0')
-conflicts_x86_64=('chromium-browser-bin' 'lib32-libudev.so.0' 'lib32-networkmanager' 'lib32-libnm-glib46')
+conflicts=('chromium-browser-bin')
+conflicts_i686=('libudev.so.0')
+conflicts_x86_64=('lib32-libudev.so.0' 'lib32-networkmanager' 'lib32-libnm-glib46')
 
 package() {
 	case "${CARCH}" in

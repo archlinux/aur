@@ -11,12 +11,12 @@ pkgbase = steam-native
 	depends = networkmanager
 	optdepends = mono: game dependency
 	optdepends = mono-addins: game dependency
+	conflicts = chromium-browser-bin
 	source = steam-runtime.desktop
 	source = 51-steam.rules
 	sha256sums = 8ce140660b4c6295ff0e580a02cebafce1ed22828561304e3f99ee78b8cfdb5d
 	sha256sums = 12d6d0a96e66f10eaeee94ddb6d1048c0e40a8132521fa7b00b844d6454d641c
 	provides_i686 = libudev.so.0
-	conflicts_i686 = chromium-browser-bin
 	conflicts_i686 = libudev.so.0
 	depends_i686 = libxinerama
 	depends_i686 = pango
@@ -53,7 +53,6 @@ pkgbase = steam-native
 	provides_x86_64 = lib32-libudev.so.0
 	provides_x86_64 = lib32-networkmanager=0.9.8.10
 	provides_x86_64 = lib32-libnm-glib=0.9.8.10
-	conflicts_x86_64 = chromium-browser-bin
 	conflicts_x86_64 = lib32-libudev.so.0
 	conflicts_x86_64 = lib32-networkmanager
 	conflicts_x86_64 = lib32-libnm-glib46
