@@ -1,0 +1,21 @@
+pkgbase = dexter
+	pkgdesc = Address Book that goes hand in hand with Postler
+	pkgver = 0.18
+	pkgrel = 3
+	url = https://launchpad.net/dexter-rolodex
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	depends = python2-distutils-extra
+	depends = python2-vobject
+	depends = python2-storm
+	depends = python2-pyenchant
+	depends = python2-xdg
+	provides = dexter
+	conflicts = dexter-bzr
+	source = http://launchpad.net/dexter-rolodex/0.x/0.18/+download/dexter_0.18.tar.gz
+	md5sums = 740a7781477afad1492f9aa362ff2cee
+
+pkgname = dexter
+
