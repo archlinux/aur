@@ -1,14 +1,14 @@
 pkgbase = firejail
 	pkgdesc = Linux namespaces sandbox program
-	pkgver = 0.9.26
+	pkgver = 0.9.28
 	pkgrel = 1
 	url = https://l3net.wordpress.com/projects/firejail/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	backup = etc/firejail/login.users
-	source = https://downloads.sourceforge.net/project/firejail/firejail/firejail-0.9.26.tar.bz2
-	sha512sums = 10956becbdc55229f77a823e4ad3fb33f90ce61424cd681b405be62223fe88033011c8f758af631b677f34f4b3c944e4c8b1e5ac670534b38e5d33b04047a9bf
+	source = https://downloads.sourceforge.net/project/firejail/firejail/firejail-0.9.28.tar.bz2
+	sha512sums = a0c6715cbaf1043f2ea92b33da5884b6ed0993b3e5d03a3edd181b6663a696a2a60a44e0ad39fc9fcfd50d79eb5acb2f0f33452467bf50912f558ec23ebfc125
 
 pkgname = firejail
 
