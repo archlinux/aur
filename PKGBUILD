@@ -3,7 +3,7 @@
 # and Sean Streeter <anubis2591 at gmail dot com>
 # and Robert La Spina <rkidlaspina at gmail dot com> 
 pkgname=zandronum2
-pkgver=2.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer."
 arch=('i686' 'x86_64')

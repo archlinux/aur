@@ -2,7 +2,7 @@
 # Thu Apr  9 03:29:00 UTC 2015
 pkgbase = zandronum2
 	pkgdesc = OpenGL ZDoom port with Client/Server multiplayer.
-	pkgver = 2.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = http://zandronum.com/
 	install = zandronum.install
@@ -17,7 +17,7 @@ pkgbase = zandronum2
 	optdepends = timidity++: midi support
 	optdepends = freedoom: free IWAD
 	conflicts = ('zandronum-hg' 'zandronum')
-	source = http://zandronum.com/downloads/zandronum2.0-linux-x86_64.tar.bz2
+	source = http://zandronum.com/downloads/zandronum2.1.2-linux-x86_64.tar.bz2
 	source = LICENSE.txt
 	md5sums = e7121d49b963e8297535fd3f03334892
 	md5sums = 58c2c8b15c886b838dc2ed5186361507
