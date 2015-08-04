@@ -2,12 +2,12 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=codelite-bin
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
-depends=('clang' 'desktop-file-utils' 'hicolor-icon-theme' 'webkitgtk2' 'wxgtk' 'curl' 'libssh' 'python2' 'libedit' 'glu')
+depends=('clang' 'desktop-file-utils' 'hicolor-icon-theme' 'webkitgtk2' 'wxgtk' 'curl' 'libssh' 'python2' 'libedit' 'glu' 'libmspack')
 pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 
 makedepends=('chrpath') #'libarchive' 'tar' 'xz')
