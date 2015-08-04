@@ -1,0 +1,15 @@
+_msg(){
+    echo 'Add JuNest binary path in PATH variable:'
+    echo '    export PATH=$PATH:/opt/junest/bin'
+}
+
+# arg 1:  the new package version
+post_install() {
+    _msg
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    _msg
+}
