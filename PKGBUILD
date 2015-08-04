@@ -2,7 +2,7 @@
 # Maintainer: Skydrome <skydrome@i2pmail.org>
 
 pkgname=rar-beta
-pkgver=5.3.b1
+pkgver=5.3.b2
 pkgrel=1
 pkgdesc="A command-line port of the rar compression utility Beta Version"
 url="http://www.rarlab.com/rarnew.htm"
