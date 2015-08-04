@@ -7,11 +7,11 @@ post_upgrade() {
     echo "raid_partitions hook has been replaced by the more powerfull mdadm hook."
     echo "Please update your /etc/mkinitcpio.conf accordingly."
   fi
-  if [ -s '/etc/mkinitcpio.conf' ] && grep -q '^\s*HOOKS=".*\smdadm\s.*$' '/etc/mkinitcpio.conf'; then
-    echo "Attention mdadm update:"
-    echo "mdadm is deprecated for mdadm_udev"
-    echo "Please update your /etc/mkinitcpio.conf accordingly."
-  fi
+  #if [ -s '/etc/mkinitcpio.conf' ] && grep -q '^\s*HOOKS=".*\smdadm\s.*$' '/etc/mkinitcpio.conf'; then
+  #  echo "Attention mdadm update:"
+  #  echo "mdadm is deprecated for mdadm_udev"
+  #  echo "Please update your /etc/mkinitcpio.conf accordingly."
+  #fi
   if ! mdadm -D --scan >/dev/null; then
     cat '/proc/mdstat'
     tput 'rev'
@@ -22,4 +22,14 @@ post_upgrade() {
 
 post_install() {
   post_upgrade
+  # Moving from mdadm to mdadm-git doesn't count as an upgrade so pacman renames the config to pacsave.
+  # We'll restore it so that changing from mdadm -> mdadm-git will be seamless without having to repair a broken boot.
+  # This also works for remove and reinstall so long as you don't damage your system too much while mdadm is away.
+  # Unfortunately moving from mdadm-git back to mdadm won't be seamless unless that installer is fixed.
+  # We try our best to pick the file that has the arrays in it.
+  if [ -s '/etc/mdadm.conf.pacsave' ] && grep -q '^\s*ARRAY\s' '/etc/mdadm.conf.pacsave'; then
+    if [ ! -s '/etc/mdadm.conf' ] || ! grep -q '^\s*ARRAY\s' '/etc/mdadm.conf'; then
+      mv '/etc/mdadm.conf.pacsave' '/etc/mdadm.conf' && echo '/etc/mdadm.conf restored from /etc/mdadm.conf.pacsave'
+    fi
+  fi
 }

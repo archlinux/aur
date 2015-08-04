@@ -42,7 +42,8 @@ pkgver() {
 prepare() {
   set -u
   cd mdadm_git*/
-  sed -i -e 's: -Werror : :g' 'Makefile' # disable-werror.patch. NB strives for warning free code so this patch should not be necessary.
+  # NB strives for warning free code so this patch should not be necessary. Comment but don't erase it as it will be needed from time to time.
+  sed -i -e 's: -Werror : :g' 'Makefile' # disable-werror.patch.
   sed -i -e 's:/usr/sbin/:/usr/bin:g' -e 's:/sbin:/usr/bin:g' 'Makefile' 'test' 'mkinitramfs' 'mdadm.conf.5'
   set +u
 }
@@ -54,10 +55,9 @@ build() {
   CPPFLAGS+=" ${_XFlags}" # warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
   CXXFLAGS+=" ${_XFlags}" # Despite claims in the Makefile, make CXFLAGS='-O' doesn't work.
   make -s -j $(nproc) BINDIR='/usr/bin' UDEVDIR='/usr/lib/udev'
-  # build static mdassemble for Arch's initramfs for use with (deprecated) mkinitcpio hook mdadm
+  # build static mdassemble for Arch's initramfs for use with mkinitcpio hook mdadm. Hook mdadm_udev does not use mdassemble.
   make -s MDASSEMBLE_AUTO=1 mdassemble
-  # https://github.com/neilbrown/mdadm/issues/10
-  # mdassemble used by hook mdadm does not update the map file
+  # 2015-08-02 https://github.com/neilbrown/mdadm/issues/10 mdassemble used by hook mdadm does not update the map file
   set +u
 }
 
@@ -78,6 +78,10 @@ package() {
   install -Dpm644 "${srcdir}/mdadm.conf" -t "${pkgdir}/etc/"
   sed -i -e 's:/usr/sbin/:/usr/bin:g' "${pkgdir}/etc/mdadm.conf"
   install -Dpm644 "${srcdir}/mdadm_install" "${pkgdir}/usr/lib/initcpio/install/mdadm"
+  # 2015-08-04 mdadm is required even when using mdassemble. This eliminates the need for adding mdadm to BINARIES="" in mkinitcpio.conf
+  if ! grep -q '/usr/bin/mdadm' "${pkgdir}/usr/lib/initcpio/install/mdadm"; then
+    sed -i -e 's:^\(\s\+\)\(add_binary \):\1\2"/usr/bin/mdadm"\n&:g' "${pkgdir}/usr/lib/initcpio/install/mdadm"
+  fi
   install -Dpm644 "${srcdir}/mdadm_hook" "${pkgdir}/usr/lib/initcpio/hooks/mdadm"
   install -Dpm644 "${srcdir}/mdadm_udev_install" "${pkgdir}/usr/lib/initcpio/install/mdadm_udev"
   sed -i -e 's:#!/bin/bash:#!/usr/bin/bash:g' "${pkgdir}/usr/lib/initcpio/install"/{mdadm,mdadm_udev}
@@ -85,15 +89,15 @@ package() {
   #ln -sf 'mdadm' "${pkgdir}/usr/lib/initcpio/hooks/raid" # symlink for backward compatibility
   set +u
   # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; echo "${}"; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; echo "${}"; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; echo "${}"; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; echo "${}"; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; echo "${}"; }
-  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; echo "${}"; }
-  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; echo "${}"; }
-  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; echo "${}"; }
-  ! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; echo "${}"; }
-  ! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; echo "${}"; }
+  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
+  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
+  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
+  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
+  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
+  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
+  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
+  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
+  ! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
+  ! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 set +u
