@@ -10,7 +10,7 @@ pkgbase = mandelbulber2
 	depends = libpng12
 	depends = gsl
 	depends = openmpi
-	source = http://downloads.sourceforge.net/project/mandelbulber/Mandelbulber%20v2/source%20-%20multiplatform/mandelbulber2-2.04.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fmandelbulber%2Ffiles%2FMandelbulber%2520v2%2Fsource%2520-%2520multiplatform%2F&ts=1438647832&use_mirror=iweb
+	source = mandelbulber::http://downloads.sourceforge.net/project/mandelbulber/Mandelbulber%20v2/source%20-%20multiplatform/mandelbulber2-2.04.tar.gz?r=&ts=1438651548
 	md5sums = 4f0d86a0f460ffa2f2a2a5a2072a977a
 
 pkgname = mandelbulber2
