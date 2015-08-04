@@ -11,17 +11,9 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 #    * This .PKGFILE as closely as possible matches community's terminator 0.97-2
 
-
-
-# Upstream has middle mouse paste, and right mouse open context menu.
-# If you want to reverse these, uncomment (remove the # on) the line below
-_install_middle_mouse_patch=1
-
-
-
 pkgname=terminator-trunk
 _pkgname=terminator
-pkgver=0.97.r1584
+pkgver=0.97.r1589
 pkgrel=1
 pkgdesc='Terminal emulator that supports tabs and grids (bzr trunk developmental version)'
 arch=('any')
@@ -34,24 +26,12 @@ makedepends=('desktop-file-utils' 'gettext' 'intltool' 'bzr')
 provides=('terminator')
 conflicts=('terminator')
 install=terminator.install
-source=("${_pkgname}::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk"
-        'middle_mouse.patch')
-md5sums=('SKIP'
-         'ca634c424ff4b4fa174e17d46f81e863')
+source=("${_pkgname}::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk")
+md5sums=('SKIP')
 
 pkgver() {
    cd ${srcdir}/${_pkgname}
    echo $(tail -n 1 terminatorlib/version.py | sed "s|^APP_VERSION = '||" | sed "s|'$||").r$(bzr revno "${srcdir}/${_pkgname}")
-}
-
-prepare() {
-   cd ${srcdir}/${_pkgname}
-   if [ -n "$_install_middle_mouse_patch" ]; then
-      echo "Installing middle_mouse.patch..."
-      patch -p1 -i ${srcdir}/middle_mouse.patch
-   else
-      echo "NOT installing middle_mouse.patch"
-   fi
 }
 
 build() {
