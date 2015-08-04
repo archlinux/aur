@@ -1,14 +1,16 @@
 pkgbase = nvenc-api
-	pkgdesc = NVidia NVENC API
+	pkgdesc = The NVENC Video Encoding API provides an interface to video encoder hardware on supported NVIDIA GPUs
 	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://developer.nvidia.com/nvidia-video-codec-sdk
 	arch = x86_64
 	arch = i686
-	license = proprietary
+	license = custom
 	depends = nvidia
 	source = http://developer.download.nvidia.com/compute/nvenc/v5.0/nvenc_5.0.1_sdk.zip
-	md5sums = c26e5d92ab06bac85c03fb4f8595f36b
+	source = LICENSE
+	sha256sums = 0e9c575b4cf94bda3ae22cfaa4ce9eb931e566cc2046c3db63b92cbda5edf22d
+	sha256sums = c5ab6e526631d3e32e0a6912d6c2565303f5c787cf7a141370081ebaaf93acd2
 
 pkgname = nvenc-api
 
