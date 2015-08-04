@@ -1,0 +1,21 @@
+pkgbase = mkinitcpio-tinyssh
+	pkgdesc = Archlinux mkinitcpio hook to install and enable the tinyssh daemon in early userspace
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/grazzolini/mkinitcpio-tinyssh
+	install = mkinitcpio-tinyssh.install
+	changelog = ChangeLog
+	arch = any
+	license = BSD
+	depends = psmisc
+	depends = tinyssh
+	depends = ucspi-tcp
+	optdepends = mkinitcpio-netconf: Network interface configuration
+	optdepends = mkinitcpio-ppp: PPP interface configuration
+	conflicts = dropbear_initrd_encrypt
+	conflicts = mkinitcpio-dropbear
+	source = https://github.com/grazzolini/mkinitcpio-tinyssh/archive/v0.0.1.tar.gz
+	sha512sums = e05a6dce2664c315ce37987b551a1315284491b8df57e3978bfe258cb8f690699d77ea915d2059099034b14a66ccc0a73f7d103d0bb0d4c0314e9e7479f67774
+
+pkgname = mkinitcpio-tinyssh
+

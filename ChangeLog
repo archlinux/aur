@@ -1,0 +1,7 @@
+2015-08-03 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.1 :
+	- Initial release.
+	- Uses the ucspi-tcp tcpserver tool to start the tinysshd daemon on boot.
+	- Right now only accepts connections on the default ssh port (22).
+	- There is no customization of the tinysshd parameters yet.

@@ -1,0 +1,4 @@
+v*.tar.gz
+mkinitcpio-tinyssh-*-any.pkg.tar.xz
+mkinitcpio-tinyssh-*.src.tar.gz
+develop.zip
