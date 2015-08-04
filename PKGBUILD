@@ -56,7 +56,7 @@ pkgname=linux-lts310-ck
 true && pkgname=(linux-lts310-ck linux-lts310-ck-headers)
 _kernelname=-lts310-ck
 _srcname=linux-3.10
-pkgver=3.10.84
+pkgver=3.10.85
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -66,7 +66,7 @@ options=('!strip')
 _ckpatchversion=1
 _ckpatchname="patch-3.10-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.10.8+-v7r7"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.10.8+-v7r8"
 
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 		"https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
@@ -79,15 +79,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 		'change-default-console-loglevel.patch'
 		'config' 'config.x86_64'
 		'criu-no-expert.patch'
-		"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-3.10.8+.patch"
-		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.10.8+.patch"
-		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.10.8+.patch"
+		"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.10.8.patch"
+		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.10.8.patch"
+		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.10.8+.patch"
 		"${pkgver}+-ck1.patch"
 		"${pkgver}+-ck1.patch.asc")
 
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
-            'c9e3b0a56abda12108c25d31061058ef8b3041e6df43c1f4cd1b1e6f506f2452'
+            'c20dd0404aa48fd3253a4f5f9045f068a9c92f837758e1de8c4bc2243a770604'
             'SKIP'
             '747d893b69d040dd82650a1a2d509155beace337020619194661049920650ed6'
             'c6c4a9f77683b95c37636b20c4bc8a1f8214c87feef7fc469e58534fcc32fb4a'
@@ -97,10 +97,10 @@ sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'dc81ec15419d733d6b2bd56c20c67c671c694b82aea949e90c8b4e0b58939786'
             'cf64b0ada5c3d1326a8446e5bfa1f4648cd403570d87c284ef271da1ba3d186f'
             'daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5'
-            '7e6a68b324f117ea3134729bd7f10a6064c3315557957fe84e0a41c0c8ea8d61'
-            '096a4453295eefa0d8acdeb874ad359d26c4dfef842b4b9ff8449e062d54f843'
-            '6ec3d2c03f0425f9d5a13ebbb44e3840baeba8085ca0a08c087b05226c2f49b9'
-            'b5f21ea7346ae462c5f28ee53bdb26d0880a772719987f8afb92fe2f7808ea07'
+            '41fbe09c3d1b22818fbd5f1e24c4d64cf7b7e935eeed0abd721a9b3bf6e337a4'
+            'ac0730dc24529970185ae527e98fb03ee427e1bce44ba9360c4c386ff63792ee'
+            '3e818d3dec6a960033668e52b471cc8eaf277ad147d2006fbd73453981c18a91'
+            'fbdf1bbb5d03a1e01d5a95b4bb898909e1fd5489190e9b759563692769fbe61b'
             'SKIP')
 
 validpgpkeys=(
