@@ -1,0 +1,52 @@
+From 73a831afb76b1aab1b26769c2f06ae51074bc90f Mon Sep 17 00:00:00 2001
+From: Sandy Carter <bwrsandman@gmail.com>
+Date: Tue, 4 Aug 2015 15:55:28 -0400
+Subject: [PATCH] MTAudio: RtError was replaced with RtAudioError
+
+---
+ src/MTAudio.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/MTAudio.cpp b/src/MTAudio.cpp
+index f0ad864..8fde9fc 100644
+--- a/src/MTAudio.cpp
++++ b/src/MTAudio.cpp
+@@ -54,7 +54,7 @@ MTAudio::MTAudio() :
+ 
+ namespace
+ {
+-    bool handleJackSampleRateError(RtError &error)
++    bool handleJackSampleRateError(RtAudioError &error)
+     {
+         // here we see if the problem was simply a sample rate mismatch,
+         // in which case, we adjust our sample rate to match
+@@ -104,7 +104,7 @@ void MTAudio::start()
+                     this,
+                     &options);
+         }
+-        catch (RtError &error)
++        catch (RtAudioError &error)
+         {
+             std::cerr << error.getMessage() << std::endl;
+             // here we see if the problem was simply a sample rate mismatch,
+@@ -132,7 +132,7 @@ void MTAudio::start()
+     {
+         dac_.startStream();
+     }
+-    catch (RtError &error)
++    catch (RtAudioError &error)
+     {
+         error.printMessage();
+     }
+@@ -147,7 +147,7 @@ MTAudio::~MTAudio()
+         if (dac_.isStreamOpen())
+             dac_.closeStream();
+     }
+-    catch (RtError &error)
++    catch (RtAudioError &error)
+     {
+         error.printMessage();
+     }
+-- 
+2.5.0
+
