@@ -1,7 +1,7 @@
 pkgbase = nvidia-lts310-ck
 	pkgdesc = NVIDIA drivers for linux-lts310-ck
 	pkgver = 352.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-lts310-ck.install
 	arch = i686
