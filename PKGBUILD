@@ -2,21 +2,21 @@
 
 _pkgname=fs-uae
 pkgname=fs-uae-devel
-pkgver=2.5.32dev
-pkgrel=2
+pkgver=2.5.33dev
+pkgrel=1
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (development version)."
 arch=("i686" "x86_64")
 url="http://fs-uae.net/download-devel"
 license=("GPL2")
 depends=("sdl2" "libpng" "openal" "mesa" "glu" "gettext" "freetype2" "hicolor-icon-theme"
-         "xdg-utils" "shared-mime-info")   # 'glib2' provided by 'gettext', and 'zlib' by 'libpng'
+         "xdg-utils" "shared-mime-info")   # 'glib2' provided by 'gettext', 'zlib' by 'libpng', and libxi by glu
 makedepends=('zip')
 install="${pkgname}.install"
 source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae")
 conflicts=("fs-uae")
-md5sums=('0ff24bf59a3442312ff8c063d663d9e0')
+md5sums=('f838742d5eb26972ac508b71227b9364')
 
 #MAKEFLAGS="-j1"
 
