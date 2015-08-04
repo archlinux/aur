@@ -1,0 +1,24 @@
+post_install() {
+# set env variables in Rprofile.site
+sed -i -e '2 a\
+Sys.setenv("MKL_INTERFACE_LAYER"="GNU,LP64")\
+Sys.setenv("MKL_THREADING_LAYER"="GNU")
+' /usr/lib/RRO-3.2.1/R-3.2.1/lib64/R/etc/Rprofile.site
+
+# Install RevoUtilsMath library
+echo install.packages\("'/usr/lib/RRO-3.2.1/R-3.2.1/lib64/R/library/RevoUtilsMath.tar.gz'"\) | /usr/lib/RRO-3.2.1/R-3.2.1/bin/R -q --vanilla
+rm "/usr/lib/RRO-3.2.1/R-3.2.1/lib64/R/library/RevoUtilsMath.tar.gz"
+}
+
+post_upgrade() {
+# Reinstall RevoUtilsMath library
+echo install.packages\("'/usr/lib/RRO-3.2.1/R-3.2.1/lib64/R/library/RevoUtilsMath.tar.gz'"\) | /usr/lib/RRO-3.2.1/R-3.2.1/bin/R -q --vanilla
+rm "/usr/lib/RRO-3.2.1/R-3.2.1/lib64/R/library/RevoUtilsMath.tar.gz"
+}
+
+post_remove() {
+# remove env variables from Rprofile.site
+sed -i '/Sys.setenv("MKL_INTERFACE_LAYER"="GNU,LP64"\|Sys.setenv("MKL_THREADING_LAYER"="GNU")/d' /usr/lib/RRO-3.2.1/R-3.2.1/lib64/R/etc/Rprofile.site
+# remove RevoUtilsMath library
+rm -rf /usr/lib/RRO-3.2.1/R-3.2.1/lib64/R/library/RevoUtilsMath
+}
