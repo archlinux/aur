@@ -1,7 +1,7 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 # Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-# Contributor: Olivier MÃ©doc "oliv" <o_medoc@yahoo.fr>
+# Contributor: Olivier Médoc "oliv" <o_medoc@yahoo.fr>
 _gemname=colored
 pkgname=ruby-${_gemname}
 pkgver=1.2
