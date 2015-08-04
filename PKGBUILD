@@ -6,15 +6,15 @@
 # Modifications to revert commit 743970d
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGBUILD as closely as possible matches core's systemd 223-1
+#    * This PKGBUILD as closely as possible matches core's systemd 224-1
 #    * splash-arch.bmp is omitted, because it is over AUR4's 250k file size limit
 #    * All namcap warnings and errors are identical
 
 pkgbase=systemd-kill-fix
 pkgname=('systemd-kill-fix' 'libsystemd-kill-fix' 'systemd-sysvcompat-kill-fix')
 _pkgname=systemd
-pkgver=223
-pkgrel=2
+pkgver=224
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
@@ -38,9 +38,9 @@ md5sums=('SKIP'
 prepare() {
   cd "$_pkgname"
 
-  # networkd: fix size of networkd binary
-  # https://github.com/systemd/systemd/commit/6870b4156377
-  git cherry-pick -n 6870b4156377
+  # networkd: fix networkd crash
+  # https://github.com/systemd/systemd/commit/49f6e11e89b4
+  git cherry-pick -n 49f6e11e89b4
 
   # revert commit that under certain circumstances sends processes a
   # kill -9 during system shutdown.  most common data loss from this is
@@ -170,7 +170,7 @@ package_libsystemd-kill-fix() {
   pkgdesc="systemd client libraries (with kill fix)"
   depends=('glibc' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd.so=223' 'libsystemd-daemon.so=223' 'libsystemd-id128.so=223' 'libsystemd-journal.so=223' 'libsystemd-login.so=223' 'libudev.so=223' 'libsystemd=223')
+  provides=('libsystemd.so=224' 'libsystemd-daemon.so=224' 'libsystemd-id128.so=224' 'libsystemd-journal.so=224' 'libsystemd-login.so=224' 'libudev.so=224' 'libsystemd=224')
   conflicts=('libsystemd')
 
   mv "$srcdir/_libsystemd"/* "$pkgdir"
@@ -180,7 +180,7 @@ package_systemd-sysvcompat-kill-fix() {
   pkgdesc="sysvinit compat for systemd (with kill fix)"
   license=('GPL2')
   groups=('base')
-  provides=('systemd-sysvcompat=223')
+  provides=('systemd-sysvcompat=224')
   conflicts=('sysvinit', 'systemd-sysvcompat')
   depends=('systemd-kill-fix')
 
