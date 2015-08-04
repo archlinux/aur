@@ -3,8 +3,8 @@
 
 _pkgname=drush
 pkgname=$_pkgname-git
-pkgver=8.0.0.beta12.r50.ge0f7248
-pkgrel=2
+pkgver=8.0.0.beta12.r51.gc4b8883
+pkgrel=1
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
 url="https://github.com/drush-ops/$pkgname"
@@ -17,7 +17,7 @@ install=$pkgname.install
 source=("git://github.com/drush-ops/$_pkgname.git"
         "$_pkgname.ini")
 md5sums=('SKIP'
-         'ef1a3b084642681c8a39d218284ce13d')
+         'dca6f47289ea903c85ac997c9cf520d5')
 
 pkgver() {
     cd "$_pkgname"
