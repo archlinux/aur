@@ -1,0 +1,20 @@
+post_install()
+{
+	groupadd -g 69 srndv2 &>/dev/null
+	useradd -u 69 -g srndv2 -d /var/lib/srndv2 -s /bin/false srndv2 &> /dev/null
+
+	echo "Set up the sql server:
+	\`su postgres\`
+	\`psql\`
+
+	A prompt will then appear, enter:
+	\`CREATE ROLE srnduser WITH LOGIN PASSWORD 'srndpassword';\`
+	\`CREATE DATABASE srnd WITH ENCODING 'UTF8' OWNER srnduser;\`
+	\`\\q\`
+
+	Change the username and password as desired.
+	---------------------------------------------------------------
+	Enable: \`(sudo) systemctl enable srndv2.service\`
+	Start: \`(sudo) systemctl start srndv2.service\`
+	Stop: \`(sudo) systemctl stop srndv2.service\`"
+}

@@ -1,0 +1,21 @@
+pkgbase = srndv2-git
+	pkgdesc = Some Random News Daemon version 2. Git version.
+	pkgver = 20150804
+	pkgrel = 1
+	url = https://github.com/majestrate/srndv2
+	install = srndv2.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = go>=1.4
+	depends = libsodium>=1.0
+	depends = imagemagick
+	depends = postgresql
+	optdepends = nntpchan-git
+	provides = srndv2
+	conflicts = srndv2
+	source = srndv2::git+https://github.com/majestrate/srndv2
+	md5sums = SKIP
+
+pkgname = srndv2-git
+

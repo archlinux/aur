@@ -1,0 +1,15 @@
+[Unit]
+Description=Decentralized imageboard
+After=network.target
+
+[Service]
+User=srndv2
+Type=simple
+ExecStart=/usr/bin/srndv2 run
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+LimitNOFILE=8192
+PrivateDevices=yes
+
+[Install]
+WantedBy=multi-user.target
