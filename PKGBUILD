@@ -10,10 +10,7 @@ url="https://github.com/jbenet/$_pkgname"
 license=('MIT')
 makedepends=('git' 'go')
 options=(!strip)
-
-source=("$_pkgname"::'git://github.com/jbenet/go-ipfs.git')
-
-# Because the sources are not static, skip Git checksum:
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
