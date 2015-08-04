@@ -35,6 +35,4 @@ package()
 {
 	install -m755 -d "${pkgdir}/usr/bin"
 	install -m755 "${srcdir}/${_pkgname}/go/bin/srndv2" "${pkgdir}/usr/bin"
-
-	install -Dm0644 "../srndv2.service" "${pkgdir}/usr/lib/systemd/system/srndv2.service"
 }

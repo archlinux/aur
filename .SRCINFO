@@ -5,7 +5,7 @@ pkgbase = srndv2-git
 	url = https://github.com/majestrate/srndv2
 	install = srndv2.install
 	arch = any
-	license = unknown
+	license = NFRUPL
 	makedepends = git
 	depends = go>=1.4
 	depends = libsodium>=1.0

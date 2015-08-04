@@ -12,9 +12,5 @@ post_install()
 	\`CREATE DATABASE srnd WITH ENCODING 'UTF8' OWNER srnduser;\`
 	\`\\q\`
 
-	Change the username and password as desired.
-	---------------------------------------------------------------
-	Enable: \`(sudo) systemctl enable srndv2.service\`
-	Start: \`(sudo) systemctl start srndv2.service\`
-	Stop: \`(sudo) systemctl stop srndv2.service\`"
+	Change the username and password as desired."
 }
