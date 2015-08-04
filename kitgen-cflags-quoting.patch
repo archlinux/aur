@@ -1,0 +1,13 @@
+diff --git a/makefile.include b/makefile.include
+index b01af64..1b1e97f 100644
+--- a/makefile.include
++++ b/makefile.include
+@@ -102,7 +102,7 @@ ifeq ($(PLAT),win)
+ 	cp libz.a ../lib/libz.a && \
+ 	cp zlib.h zconf.h ../include/
+ else
+-	cd $@ && CC=$(CC) CFLAGS=$(CFLAGS) sh configure && \
++	cd $@ && CC=$(CC) CFLAGS="$(CFLAGS)" sh configure && \
+ 	$(MAKE) install prefix=..
+ endif
+ 

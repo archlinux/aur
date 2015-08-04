@@ -1,22 +1,24 @@
-pkgbase = tclkit
-	pkgdesc = single-file executable that provides a complete Tcl and Tk runtime
+pkgbase = lib32-tclkit
+	pkgdesc = single-file executable that provides a complete Tcl and Tk runtime (32 bits version)
 	pkgver = 8.6.4
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/patthoyts/kitgen
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = upx
-	options = emptydirs
+	provides = tclkit
+	conflicts = tclkit
 	options = !buildflags
 	options = !makeflags
 	options = !strip
 	source = tclkit.tar.gz::https://github.com/patthoyts/kitgen/archive/c21eeb1e379bd5acb5b304f0784877b8e8dd31ca.tar.gz
 	source = tk.tar.gz::https://github.com/tcltk/tk/archive/core_8_6_4.tar.gz
 	source = tcl.tar.gz::https://github.com/tcltk/tcl/archive/potential_incompatibility.tar.gz
+	source = kitgen-cflags-quoting.patch
 	md5sums = 2053997a397309fa10d0b62a3df114ae
 	md5sums = 25c2e90900e44ea851f891cbb232ca2c
 	md5sums = d442eacfbf4932a0a956ecab5c362af1
+	md5sums = 36c54854ce1992944eed7671f8742bad
 
-pkgname = tclkit
+pkgname = lib32-tclkit
 
