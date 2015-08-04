@@ -31,12 +31,12 @@ pkgbase = rtorrent-pyro-git
 	source = https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches/ui_pyroscope.cc
 	source = https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches/ui_pyroscope.h
 	md5sums = SKIP
-	md5sums = ea0073fba705a6b4124697e7defc6c5b
+	md5sums = 35e2c69152a3c2137c5958f9f27cb906
 	md5sums = 7a88f8ab5d41242fdf1428de0e2ca182
 	md5sums = bd04a0699b80c8042e1cf63a7e0e4222
 	md5sums = 0a2bbaf74c7160ba33876dcc2f050f14
-	md5sums = ba7634da91480021330e6fa8084b50d5
-	md5sums = 951b40c6d43caf0a3bffc5fffcc557d5
+	md5sums = b09d4632ba18f643b9f1ec8ccf1def9a
+	md5sums = 8ae8f5ea7806b451773c642f087a47a6
 	md5sums = 1258acfc82c50a8f452ace87fef0b416
 
 pkgname = rtorrent-pyro-git

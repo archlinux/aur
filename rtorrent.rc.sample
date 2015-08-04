@@ -60,6 +60,11 @@ branch=pyro.extended=,false=,"view.sort_current = active,greater=d.up.rate="
 branch=pyro.extended=,"view.sort_current = active,\"compare=----,d.is_open=,d.complete=,d.down.rate=,d.up.rate=\""
 schedule = filter_active,12,20,"view.filter = active,\"or={d.up.rate=,d.down.rate=,not=$d.complete=}\" ;view.sort=active"
 
+branch=pyro.extended=,"schedule = bind_home,0,0,\"ui.bind_key=download_list,0406,ui.focus.home=\""
+branch=pyro.extended=,"schedule = bind_end, 0,0,\"ui.bind_key=download_list,0550,ui.focus.end=\""
+branch=pyro.extended=,"schedule = bind_pgup,0,0,\"ui.bind_key=download_list,0523,ui.focus.pgup=\""
+branch=pyro.extended=,"schedule = bind_pgdn,0,0,\"ui.bind_key=download_list,0522,ui.focus.pgdn=\""
+
 # Show traffic of the last hour
 network.history.depth.set = 112
 schedule = network_history_sampling,1,32, network.history.sample=
