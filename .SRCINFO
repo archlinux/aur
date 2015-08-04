@@ -1,0 +1,17 @@
+pkgbase = fahrplan
+	pkgdesc = A SBB/CFF/FFS (Swiss railway) commandline based timetable client
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/dbrgn/fahrplan
+	arch = any
+	license = GPLv3
+	makedepends = python3
+	depends = python
+	depends = python-six
+	depends = python-dateutil
+	depends = python-requests
+	source = https://pypi.python.org/packages/source/f/fahrplan/fahrplan-0.2.3.tar.gz
+	md5sums = 6121f1d2fc16d4b9472ddacdef3f8421
+
+pkgname = fahrplan
+
