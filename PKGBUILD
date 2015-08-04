@@ -14,10 +14,8 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname/repo/config"
-  # Use contents of version.go in the git source as the version number
-  # (because they don't tag releases)
-  printf "%s" $(grep 'const CurrentVersionNumber' version.go | sed -E 's/[^"]*"//;s/".*//')
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
