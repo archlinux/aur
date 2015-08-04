@@ -1,0 +1,15 @@
+pkgbase = img2djvu-git
+	pkgdesc = Single-pass DjVu encoder based on DjVu Libre and ImageMagick
+	pkgver = 22.0cea05f
+	pkgrel = 1
+	url = https://github.com/ashipunov/img2djvu
+	arch = any
+	license = custom: Public domain
+	makedepends = git
+	depends = djvulibre
+	depends = imagemagick
+	source = git+git://github.com/ashipunov/img2djvu.git
+	md5sums = SKIP
+
+pkgname = img2djvu-git
+
