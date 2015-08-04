@@ -1,17 +1,8 @@
 post_install()
 {
-	echo "Set up the sql server:
-	\`su postgres\`
-	\`psql\`
+	chown -R srndv2 /srv/nntpchan
 
-	A prompt will then appear, enter:
-	\`CREATE ROLE srnduser WITH LOGIN PASSWORD 'srndpassword';\`
-	\`CREATE DATABASE srnd WITH ENCODING 'UTF8' OWNER srnduser;\`
-	\`\\q\`
-
-	Change the username and password as desired.
-	------------------------------------------------------------------------
-	To enable the nntpchan daemon: \`(sudo) systemctl enable srndv2.service\`
-	To start the nntpchan daemon: \`(sudo) systemctl start srndv2.service\`
-	To stop the nntpchan daemon: \`(sudo) systemctl stop srndv2.service\`"
+	echo "Enable: \`(sudo) systemctl enable nntpchan.service\`
+	Start: \`(sudo) systemctl start nntpchan.service\`
+	Stop: \`(sudo) systemctl stop nntpchan.service\`"
 }
