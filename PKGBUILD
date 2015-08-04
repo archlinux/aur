@@ -26,6 +26,7 @@ prepare() {
             VER_DO=$(drush rl $EXT --fields=version,status --pipe |& grep Supported | head -n1 | cut -f1 -d,)
             VER_HM=$(grep 'version = ' $DIR/$EXT.info | tail -n1 | cut -f2 -d\")
             if [[ "$VER_HM" < "$VER_DO" ]]; then
+                msg2 "  Fetching $EXT..."
                 drush dl $EXT --yes --destination=$TYPE &>/dev/null
             fi
         done
@@ -54,5 +55,5 @@ package() {
 
     install -Dm644 <( ) "$pkgdir/usr/share/webapps/$_pkgname/sites/all/drush/drushrc.php"
     install -Dm644 <( ) "$pkgdir/usr/share/webapps/$_pkgname/sites/sites.php"
-    chown -R 696:http "$pkgdir/usr/share/webapps"
+    chown -R http:http "$pkgdir/usr/share/webapps/$_pkgname"
 }
