@@ -1,7 +1,7 @@
 pkgbase = perl-travel-routing-de-vrr
 	pkgdesc = Unofficial efa.vrr.de command line client and Perl module
-	pkgver = 2.12
-	pkgrel = 2
+	pkgver = 2.13
+	pkgrel = 1
 	url = http://finalrewind.org/projects/Travel-Routing-DE-VRR/
 	arch = any
 	license = custom:WTFPL
@@ -15,11 +15,11 @@ pkgbase = perl-travel-routing-de-vrr
 	depends = perl-libwww
 	depends = perl-xml-libxml
 	options = !emptydirs
-	source = http://finalrewind.org/projects/Travel-Routing-DE-VRR/Travel-Routing-DE-VRR-2.12.tar.gz
-	source = http://finalrewind.org/projects/Travel-Routing-DE-VRR/Travel-Routing-DE-VRR-2.12.tar.gz.asc
+	source = http://finalrewind.org/projects/Travel-Routing-DE-VRR/Travel-Routing-DE-VRR-2.13.tar.gz
+	source = http://finalrewind.org/projects/Travel-Routing-DE-VRR/Travel-Routing-DE-VRR-2.13.tar.gz.asc
 	source = http://www.wtfpl.net/txt/copying/COPYING
-	md5sums = 2aa1563f1f916cd13aad755c5aff35f3
-	md5sums = c9f5f3efd114a0ff925ba9deadcf6817
+	md5sums = 8cb7c5717b119ceb5b1d5d1da01c6669
+	md5sums = cc687792858176c88c8d2a8c4df9f534
 	md5sums = 8365d07beeb5f39d87e846dca3ae7b64
 
 pkgname = perl-travel-routing-de-vrr
