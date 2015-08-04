@@ -1,19 +1,18 @@
-pkgbase = polygnome
+pkgbase = polygnome-git
 	pkgdesc = A polyrhythmic metronome
-	pkgver = 0.1.3
-	pkgrel = 2
-	url = http://sourceforge.net/projects/polygnome/
+	pkgver = 0.1.3.r40.g1bc7ba3
+	pkgrel = 1
+	url = https://gitlab.com/tmatth/polygnome
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = stk
 	depends = jack
-	source = http://downloads.sourceforge.net/project/polygnome/polygnome-0.1.3.tar.gz
-	source = mtaudio.patch
-	source = MTAudio-RtError-was-replaced-with-RtAudioError.patch
-	md5sums = 2367b483d1b8f351482e03eebf8b4c3d
-	md5sums = b2d1be46214d51f2e56e909338247a71
-	md5sums = ba1a05457c96c79ff1fee358f9ecb4ea
+	provides = polygnome
+	conflicts = polygnome
+	source = polygnome::git+https://gitlab.com/tmatth/polygnome.git
+	md5sums = SKIP
 
-pkgname = polygnome
+pkgname = polygnome-git
 
