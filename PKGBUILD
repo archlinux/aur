@@ -30,10 +30,11 @@ build() {
   mv "$srcdir/$_pkgname" "$GOPATH/src"
   cd "$GOPATH/src/$_pkgname/cmd/ipfs"
 
-  echo "Installing dependencies..."
+  msg2 'Installing dependencies...'
   echo $GOPATH
   go get -v ./...
-  echo "Building binary..."
+
+  msg2 'Building binary...'
   go install -v
 }
 
