@@ -1,7 +1,7 @@
 pkgbase = konsole-kde4
 	pkgdesc = Terminal
 	pkgver = 4.14.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kde.org/applications/system/konsole
 	install = konsole-kde4.install
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = konsole-kde4
 	depends = kdelibs4support
 	depends = knotifyconfig
 	provides = konsole
+	provides = konsolepart4
 	conflicts = konsole
 	conflicts = kdebase-konsole
 	conflicts = konsolepart4
