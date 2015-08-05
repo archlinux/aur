@@ -1,6 +1,8 @@
 # Maintainer: Jelle van der Waa <jelle@vdwaa.nl>
+# Maintainer: MartiMcFly martimcfly@autorisation.de
 # Contributor: Archist archist@die-optimisten.net
 # Contributor: C Anthony Risinger
+
 pkgname=('zarafa-server')
 pkgver=7.1.12
 _pkgrel=48726
