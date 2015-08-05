@@ -1,4 +1,4 @@
-# Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=amidst
