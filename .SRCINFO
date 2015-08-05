@@ -1,7 +1,7 @@
 pkgbase = php-symfony-installer-git
 	pkgdesc = Official installer to start new projects based on the Symfony full-stack framework.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://symfony.com/
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = php-symfony-installer-git
 	depends = php>=5.4.0
 	provides = symfony
 	conflicts = symfony2
-	source = ::git+https://github.com/symfony/symfony-installer.git
+	source = symfony-installer::git+https://github.com/symfony/symfony-installer.git
 	md5sums = SKIP
 
 pkgname = php-symfony-installer-git

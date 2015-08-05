@@ -3,8 +3,8 @@
 # PKGBUILD of aurvote-git and negates the necessity of manual updates.
 pkgname='php-symfony-installer-git'
 _vcsRepoDir='symfony-installer'
-pkgver=v1.1.7.r5.g8674f70
-pkgrel=1
+pkgver='latest'
+pkgrel=2
 pkgdesc='Official installer to start new projects based on the Symfony full-stack framework.'
 arch=('any')
 url='https://symfony.com/'
