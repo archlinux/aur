@@ -1,0 +1,16 @@
+pkgbase = bing
+	pkgdesc = Measure the bandwidth between two hosts using the ICMP protocol without the need of a client/server architecture
+	pkgver = 1.1.3
+	pkgrel = 4
+	url = http://fgouget.free.fr/bing/bing_src-readme-1st.shtml
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/bing_1.1.3.orig.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/bing_1.1.3-2.diff.gz
+	sha256sums = 318865a38aac472e03ba44dd34ba2bf0c535f46187a22a3075be466b293e55c3
+	sha256sums = 103e0912088150ac89c2690e1f6faca9deb2787b7057aa87cf28cc7412333c49
+
+pkgname = bing
+
