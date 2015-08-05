@@ -5,6 +5,7 @@ pkgbase = go-ipfs-git
 	url = https://github.com/jbenet/go-ipfs
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	makedepends = git
 	makedepends = go
