@@ -1,13 +1,15 @@
 # Maintainer: Alexandru Ianu <alexandru.ianu@gmail.com>
 # Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Alexandru Ianu <alexandru.ianu@gmail.com>
+
 pkgname=steam-native
 pkgver=1.0.0.50
-pkgrel=11
+pkgrel=12
 pkgdesc="Sets a native runtime environment for Steam by default, adds a Steam runtime launcher for compatibility."
 arch=('i686' 'x86_64')
 url="http://steampowered.com/"
 license=('GPL2')
+options=('!emptydirs')
 install="${pkgname}.install"
 
 source=("steam-runtime.desktop"
@@ -19,8 +21,8 @@ sha256sums=('8ce140660b4c6295ff0e580a02cebafce1ed22828561304e3f99ee78b8cfdb5d'
 sha256sums_x86_64=('b56b9da85e5647ef2b8013d14378b30917d7701cd61b27ba6a39045ab5ecc529')
 
 depends=('steam' 'networkmanager')
-depends_i686=('libxinerama' 'pango' 'openal' 'gtk2' 'dbus-glib' 'libusb' 'libnl' 'polkit' 'pam' 'cracklib' 'libtirpc' 'js17' 'libpng12' 'libgcrypt15' 'systemd' 'gconf' 'nss' 'libpulse' 'libgudev' 'libxss')
-depends_x86_64=('lib32-libxinerama' 'lib32-pango' 'lib32-openal' 'lib32-gdk-pixbuf2' 'lib32-gtk2' 'lib32-libgcrypt15' 'lib32-libusb' 'lib32-libnl' 'lib32-pam' 'lib32-cracklib' 'lib32-libtirpc' 'lib32-js17' 'lib32-libpng12' 'lib32-systemd' 'lib32-gconf' 'lib32-nss' 'lib32-libsoup' 'lib32-polkit' 'lib32-dbus-glib' 'lib32-libpulse' 'lib32-gnutls28' 'lib32-libgudev' 'lib32-libgl' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-libxss')
+depends_i686=('openal' 'gtk2' 'libgcrypt15' 'libnl' 'libpng12' 'gconf' 'nss' 'libpulse' 'libxss')
+depends_x86_64=('lib32-openal' 'lib32-gtk2' 'lib32-libgcrypt15' 'lib32-libnl' 'lib32-libpng12' 'lib32-gconf' 'lib32-nss' 'lib32-libpulse' 'lib32-libxss' 'lib32-gnutls28')
 
 optdepends=('mono: game dependency' 'mono-addins: game dependency')
 optdepends_i686=('libappindicator-gtk2: needed if tray icon not working (Gnome)' 'libappindicator-gtk3: needed if tray icon not working (Gnome)' 'sdl: game dependency' 'sdl_image: game dependency' 'sdl_mixer: game dependency' 'sdl2: game dependency' 'sdl2_image: game dependency' 'tcp_wrappers-libs: game dependency' 'speex: game dependency' 'gperftools: game dependency' 'libcurl-gnutls: game dependency')

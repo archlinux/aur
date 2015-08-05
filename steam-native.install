@@ -1,64 +1,79 @@
+# Colored makepkg-like functions
+msg_blue() {
+	printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+	printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+
+dropbox_url='https://www.dropbox.com/sh/xexyu68u2xnfgn6/AACEvmC_k22iLY9brSA9tgIQa'
+
 post_install() {
-if grep -q "STEAM_RUNTIME=1" /etc/environment; then  
-   echo "Removing Steam runtime"
-   sed -i '/STEAM_RUNTIME/d' /etc/environment
-else  
-   echo "No Steam runtime detected"    
-fi
-if grep -q "STEAM_RUNTIME=0" /etc/environment; then  
-   echo "Native runtime already set"
-else  
-   echo "Setting native runtime"  
-   echo "STEAM_RUNTIME=0" >> /etc/environment    
-   echo -e "\e[1;33mRelog or restart your system to access changes\e[0m"
-fi
-if grep -q "STEAM_FRAME_FORCE_CLOSE=1" /etc/environment; then  
-   echo "Close to tray already enabled"
-else  
-   echo "Setting close to tray"  
-   echo "STEAM_FRAME_FORCE_CLOSE=1" >> /etc/environment    
-   echo -e "\e[1;33mRelog or restart your system to access changes\e[0m"
-fi
-if grep -q "LD_LIBRARY_PATH" /etc/environment; then  
-   echo "Default library path variable exists"
-else  
-   echo "Setting default library path variable"  
-   echo "LD_LIBRARY_PATH=/usr/lib" >> /etc/environment    
-   echo -e "\e[1;33mRelog or restart your system to access changes\e[0m"
-fi
-update-desktop-database -q
-   echo "I native isn't working try overwriting these to the /usr/lib32 folder"
-   echo "https://www.dropbox.com/sh/xexyu68u2xnfgn6/AACEvmC_k22iLY9brSA9tgIQa"
+	if grep -q 'STEAM_RUNTIME=1' /etc/environment; then
+		msg_blue 'Removing Steam runtime'
+		sed -i '/STEAM_RUNTIME/d' /etc/environment
+	else
+		msg_blue 'No Steam runtime detected'
+	fi
+	if grep -q 'STEAM_RUNTIME=0' /etc/environment; then
+		msg_blue 'Native runtime already set'
+	else
+		msg_blue 'Setting native runtime'
+		echo 'STEAM_RUNTIME=0' >> /etc/environment
+		note 'Relog or restart your system to access changes'
+	fi
+	if grep -q 'STEAM_FRAME_FORCE_CLOSE=1' /etc/environment; then
+		msg_blue 'Close to tray already enabled'
+	else
+		msg_blue 'Setting close to tray'
+		echo 'STEAM_FRAME_FORCE_CLOSE=1' >> /etc/environment
+		note 'Relog or restart your system to access changes'
+	fi
+	if grep -q 'LD_LIBRARY_PATH' /etc/environment; then
+		msg_blue 'Default library path variable exists'
+	else
+		msg_blue 'Setting default library path variable'
+		echo 'LD_LIBRARY_PATH=/usr/lib' >> /etc/environment
+		note 'Relog or restart your system to access changes'
+	fi
+	update-desktop-database -q
+	[ "$(uname -m)" == 'x86_64' ] && \
+		note "If native isn't working try to overwrite these files to '/usr/lib32':\n\t${dropbox_url}"
 }
 
 post_upgrade() {
-  post_install
+	post_install
 }
 
-
 post_remove() {
-if grep -q "STEAM_RUNTIME=0" /etc/environment; then  
-   echo "Removing native runtime"
-   sed -i '/STEAM_RUNTIME/d' /etc/environment
-   echo -e "\e[1;33mRelog or restart your system to access changes\e[0m"
-else  
-   echo "No native runtime detected"    
-fi
-if grep -q "STEAM_FRAME_FORCE_CLOSE=1" /etc/environment; then  
-   echo "Removing close to tray"
-   sed -i '/STEAM_FRAME_FORCE_CLOSE/d' /etc/environment
-   echo -e "\e[1;33mRelog or restart your system to access changes\e[0m"
-else  
-   echo "No close to tray detected"    
-fi
-if grep -q "LD_LIBRARY_PATH=/usr/lib" /etc/environment; then  
-   echo "Library path set by package was removed"
-   sed -i '/LD_LIBRARY_PATH/d' /etc/environment
-   echo -e "\e[1;33mRelog or restart your system to access changes\e[0m"
-else  
-   echo "No default library path variable exists"
-fi    
-update-desktop-database -q
-   echo "Don't forget to remove these if you copied them separately"
-   echo "https://www.dropbox.com/sh/xexyu68u2xnfgn6/AACEvmC_k22iLY9brSA9tgIQa"
+	if grep -q 'STEAM_RUNTIME=0' /etc/environment; then
+		msg_blue 'Removing native runtime'
+		sed -i '/STEAM_RUNTIME/d' /etc/environment
+		note 'Relog or restart your system to access changes'
+	else
+		msg_blue 'No native runtime detected'
+	fi
+	if grep -q 'STEAM_FRAME_FORCE_CLOSE=1' /etc/environment; then
+		msg_blue 'Removing close to tray'
+		sed -i '/STEAM_FRAME_FORCE_CLOSE/d' /etc/environment
+		note 'Relog or restart your system to access changes'
+	else
+		msg_blue 'No close to tray detected'
+	fi
+	if grep -q 'LD_LIBRARY_PATH=/usr/lib' /etc/environment; then
+		msg_blue 'Library path set by package was removed'
+		sed -i '/LD_LIBRARY_PATH/d' /etc/environment
+		note 'Relog or restart your system to access changes'
+	else
+		msg_blue 'No default library path variable exists'
+	fi
+	update-desktop-database -q
+	[ "$(uname -m)" == 'x86_64' ] && \
+		note "Don't forget to remove these if you copied them separately:\n\t${dropbox_url}"
 }
