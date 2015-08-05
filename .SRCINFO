@@ -1,0 +1,15 @@
+pkgbase = r-oo
+	pkgdesc = Methods and classes for object-oriented programming in R with or without references.
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/R.oo/index.html
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = r
+	depends = r-methodss3
+	source = http://cran.r-project.org/src/contrib/R.oo_1.19.0.tar.gz
+	md5sums = 5de25f313aa36903061db266ae74cc7c
+
+pkgname = r-oo
+
