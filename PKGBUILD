@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-appindicator-git
 pkgver=15.r2.g0c53cfb
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrates AppIndicators into GNOME Shell."
 arch=('any')
 url="https://github.com/rgcjonas/gnome-shell-extension-appindicator"
@@ -38,8 +38,19 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions"
-  cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com"
+  # Locate the extension.
+  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+  _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
+  # Copy extension files into place.
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' -or -iname '*.gtkbuilder' \) -exec install -Dm644 -t "${_destdir}" '{}' +
+  find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/images" '{}' +
+  find -maxdepth 2 \( -wholename '*schemas/*.xml' \) -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
+  cd locale
+  for locale in */
+    do
+      install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
+    done
+  cd ..
+  cp -r --no-preserve=ownership,mode indicator-test-tool interfaces-xml "${_destdir}"
 }
-
