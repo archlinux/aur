@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=freecad-git
-pkgver=0.14.1.r896.gaeabffe
+pkgver=0.16.pre.r3.g192dca3
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('freecad-dxf: import DXF files'
 provides=('freecad')
 conflicts=('freecad')
 install=freecad.install
-source=('freecad::git://git.code.sf.net/p/free-cad/code'
+source=('freecad::git://github.com/FreeCAD/FreeCAD'
 	'freecad.desktop'
 	'freecad.xml')
 sha256sums=('SKIP'

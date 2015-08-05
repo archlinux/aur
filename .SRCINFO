@@ -1,6 +1,6 @@
 pkgbase = freecad-git
 	pkgdesc = A general purpose 3D CAD modeler - git checkout
-	pkgver = 0.14.1.r896.gaeabffe
+	pkgver = 0.16.pre.r3.g192dca3
 	pkgrel = 1
 	url = http://www.freecadweb.org/
 	install = freecad.install
@@ -32,7 +32,7 @@ pkgbase = freecad-git
 	optdepends = pycollada-git: create, edit and load COLLADA documents
 	provides = freecad
 	conflicts = freecad
-	source = freecad::git://git.code.sf.net/p/free-cad/code
+	source = freecad::git://github.com/FreeCAD/FreeCAD
 	source = freecad.desktop
 	source = freecad.xml
 	sha256sums = SKIP
