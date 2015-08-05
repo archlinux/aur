@@ -1,6 +1,6 @@
 pkgbase = flow
 	pkgdesc = A static typechecker for JavaScript
-	pkgver = 0.12.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = http://flowtype.org
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = flow
 	license = BSD
 	makedepends = ocaml
 	depends = elfutils
-	source = flow-0.12.0.tar.gz::https://github.com/facebook/flow/archive/v0.12.0.tar.gz
-	sha256sums = 3bf2e97df59d7aaa941f1ac920965a52976971f8416338456785431888c13c0f
+	source = flow-0.14.0.tar.gz::https://github.com/facebook/flow/archive/v0.14.0.tar.gz
+	sha256sums = 1dab6ca03966e9ddc0a22220b56df55997e9ec26bdc795ca4ba7db9b1c76a376
 
 pkgname = flow
 
