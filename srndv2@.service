@@ -1,0 +1,12 @@
+[Unit]
+Description=Decentralized imageboard
+After=network.target
+
+[Service]
+User=%i
+Group=%i
+ExecStart=/usr/bin/bash /srv/nntpchan/bootstrap.sh
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
