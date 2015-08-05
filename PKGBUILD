@@ -1,4 +1,4 @@
-# Maintainer: Raansu <gero3977 at gmail dot com>
+# Maintainer: Raansu <gero3977@gmail.com>
 # Based on PKGBUILD from vertcoin-git maintained by Lothar_m <lothar_m at riseup dot net>
 # Clams original code by nochowderforyou <https://github.com/nochowderforyou>
 
