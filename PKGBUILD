@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-freon-git
 pkgver=13.r0.g12ecebd
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
 url="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
@@ -35,7 +35,12 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions"
-  cp -r freon@UshakovVasilii_Github.yahoo.com "${pkgdir}/usr/share/gnome-shell/extensions/"
+  # Locate the extension.
+  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+  _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
+  # Copy extension files into place.
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' -or -iname '*.gtkbuilder' \) -exec install -Dm644 -t "${_destdir}" '{}' +
+  find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/images" '{}' +
+  find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
 }
