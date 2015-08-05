@@ -2,10 +2,10 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname="gnome-shell-extension-wintitle-git"
-pkgdesc="Shows the title of window when scrolled on the appMenu button."
+pkgname=gnome-shell-extension-wintitle-git
 pkgver=r16.63bd614
 pkgrel=1
+pkgdesc="Shows the title of window when scrolled on the appMenu button."
 arch=(any)
 url="https://github.com/meghprkh/wintitle"
 license=(GPLv2)
