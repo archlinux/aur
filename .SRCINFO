@@ -1,0 +1,18 @@
+pkgbase = chromasig-seq
+	pkgdesc = ChromaSig is an unsupervised learning method to search for common patterns (motifs) of histone modifications. Chromasig was proposed by Gary Hon et al
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://wanglab.ucsd.edu/star/download.php
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = perl
+	depends = swig
+	depends = mysql
+	depends = perl-math-cdf
+	depends = perl-dbd-mysql
+	source = http://tabit.ucsd.edu/download/ChromaSig.tar.gz
+	sha1sums = 5ce0adc33dbc4c3f577a0476c5c5d5bea2b413f2
+
+pkgname = chromasig-seq
+
