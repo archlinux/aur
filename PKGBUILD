@@ -1,38 +1,38 @@
-# Contributor: Constantin Schomburg <me@xconstruct.net>
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
-pkgname=mcpatcher
-pkgver='4.2.0'
+pkgname=amidst
+pkgver='3.0_beta1'
+_jarfile='AMIDST_beta1.jar'
 pkgrel=1
-pkgdesc='Minecraft patcher to fix textures with higher than default resolution'
+pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
-license=('Public Domain')
-url='https://bitbucket.org/prupe/mcpatcher'
+license=() # unknown at the moment
+url='http://www.minecraftforum.net/topic/626786-'
 depends=('java-runtime')
 optdepends=('minecraft: the game itself')
-noextract=("$pkgname-$pkgver.jar")
+noextract=($_jarfile)
 changelog=ChangeLog
-source=(https://bitbucket.org/prupe/mcpatcher/downloads/$pkgname-$pkgver.jar
-        mcpatcher
-        mcpatcher.desktop)
-md5sums=('552cc0ea875032a5e15c395debdc8869'
-         '38358254be76dc84676509f43be44938'
-         '87f031f8f0fceb0feb369c6185e07fbf')
+source=("https://dl.dropboxusercontent.com/u/67828684/$_jarfile"
+        amidst.sh
+        amidst.desktop)
+md5sums=('c321e8dc333df8b73e8f5384ba48d690'
+         '783c4040c9736f96ce72e9997833a0bf'
+         '3c6900ac68e3175768322e684f9f1bcb')
 
 prepare() {
     cd "$srcdir"
 
     # Extract icon
-    bsdcpio --extract --make-directories 'resources/icon.png' < "$pkgname-$pkgver.jar"
+    bsdcpio --extract --make-directories --insecure 'amidst/resources/icon.png' < "$_jarfile"
 }
 
 package() {
     cd "$srcdir"
 
-    install -vDm755 'mcpatcher'            "$pkgdir/usr/bin/mcpatcher"
-    install -vDm644 'resources/icon.png'   "$pkgdir/usr/share/pixmaps/mcpatcher.png"
-    install -vDm644 'mcpatcher.desktop'    "$pkgdir/usr/share/applications/mcpatcher.desktop"
-    install -vDm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/$pkgname/mcpatcher.jar"
+    install -vDm755 'amidst.sh'                 "$pkgdir/usr/bin/amidst"
+    install -vDm644 'amidst/resources/icon.png' "$pkgdir/usr/share/pixmaps/amidst.png"
+    install -vDm644 'amidst.desktop'            "$pkgdir/usr/share/applications/amidst.desktop"
+    install -vDm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AMIDST.jar"
 }
 
 # vim:set ts=4 sw=4 et:
