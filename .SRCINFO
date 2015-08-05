@@ -1,0 +1,23 @@
+pkgbase = kdesrc-build-git
+	pkgdesc = A tool to allow you to easily build KDE from its source repositories. GIT version.
+	pkgver = v1.15.477.g2d3cbfe
+	pkgrel = 1
+	url = http://kdesrc-build.kde.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = perl
+	depends = perl-libwww
+	depends = perl-xml-parser
+	depends = dialog
+	depends = perl-json
+	optdepends = subversion: download source code using svn
+	optdepends = git: download source code using git
+	provides = kdesrc-build
+	conflicts = kdesrc-build
+	source = git://anongit.kde.org/kdesrc-build
+	md5sums = SKIP
+
+pkgname = kdesrc-build-git
+
