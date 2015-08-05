@@ -59,7 +59,7 @@ package() {
     while read -d $'' file; do
       width=${file##*-}
       width=${width%.png}
-      install -Dm644 "$file" "$icondir/hicolor/${width}x${width}/apps/abraca.png"
+      install -Dm644 "$file" "$icondir/${width}x${width}/apps/abraca.png"
   done
   rm "$icondir"/../abraca*
 }
