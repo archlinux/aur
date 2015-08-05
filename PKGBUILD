@@ -2,7 +2,7 @@
 # Maintainer: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 # Contributor: Kristof Marussy <kris7topher@gmail.com>
 pkgname=liblinear
-pkgver=1.96
+pkgver=2.01
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ options=()
 install=
 source=("http://www.csie.ntu.edu.tw/~cjlin/cgi-bin/liblinear.cgi?+http://www.csie.ntu.edu.tw/~cjlin/liblinear+tar.gz")
 noextract=()
-md5sums=('e689ab6a01644a3aa615d2613c55c539')
+md5sums=('ea615ef0ea3c05ded206ca0e994100c7')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -34,9 +34,9 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -D -m755 train $pkgdir/usr/bin/liblinear-train
     install -D -m755 predict $pkgdir/usr/bin/liblinear-predict
-    install -D -m644 liblinear.so.2 $pkgdir/usr/lib/liblinear.so.2
+    install -D -m644 liblinear.so.3 $pkgdir/usr/lib/liblinear.so.3
     install -D -m644 linear.h $pkgdir/usr/include/linear.h
-    ln -s liblinear.so.2 $pkgdir/usr/lib/liblinear.so
+    ln -s liblinear.so.3 $pkgdir/usr/lib/liblinear.so
 
     cd python
     sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' liblinear.py
