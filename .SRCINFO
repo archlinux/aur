@@ -1,5 +1,5 @@
 pkgbase = linux-libre-grsec-knock
-	pkgver = 4.0.8_gnu.201507111211
+	pkgver = 4.1.4_gnu.201508032312
 	pkgrel = 1
 	url = https://wiki.parabola.nu/Grsecurity%2BKnock
 	arch = i686
@@ -11,14 +11,14 @@ pkgbase = linux-libre-grsec-knock
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.8-gnu/patch-4.0-gnu-4.0.8-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.8-gnu/patch-4.0-gnu-4.0.8-gnu.xz.sign
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.0.8-201507111211.patch
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.0.8-201507111211.patch.sig
-	source = http://gnunet.org/sites/default/files/tcp_stealth_3.18_1.diff
-	source = tcp_stealth_3.18_1.diff.sig::http://gnunet.org/sites/default/files/tcp_stealth_3.18.diff_1.sig
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz.sign
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.1.4-201508032312.patch
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.1.4-201508032312.patch.sig
+	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff
+	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -29,13 +29,13 @@ pkgbase = linux-libre-grsec-knock
 	source = config.x86_64
 	source = linux.preset
 	source = change-default-console-loglevel.patch
-	sha256sums = 0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a
+	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 16153fc11146d0de0158b7f7ed24437b42c61a16e5e404b258d04bdceef5b9e0
+	sha256sums = 4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97
 	sha256sums = SKIP
-	sha256sums = b9338c20615444bf844edc16ef98e9696db159a50e5eeea3b693edf6eabb24cd
+	sha256sums = d16f9699b0cf59f8ef73cb444468a6d8d8344024c86a1e6896585caa8cb8a2bb
 	sha256sums = SKIP
-	sha256sums = 93a1610c203ea4c187ac5b50dce105fac86df914b1406e1d85df5857d36201c9
+	sha256sums = da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -43,8 +43,8 @@ pkgbase = linux-libre-grsec-knock
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = df033a9eb5729f61169e3aca092709cf928f820b05fea3efde14d372e2fa607f
-	sha256sums = fbf48421ebfb46f09457fe601255a7dd3631f24bba28945dcabc5a8772ab3872
+	sha256sums = 64e0183ac31a3947144055cb0f180111f3871e89f7d0d59eecf064a366cd044c
+	sha256sums = c4f567a784a62fc5c88e2900f029b87aa8e9160d9413f3a8376614fa99630789
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
@@ -61,7 +61,7 @@ pkgname = linux-libre-grsec-knock
 	optdepends = paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-grsec-knock=4.0.8.201507111211
+	provides = linux-grsec-knock=4.1.4.201508032312
 	conflicts = kernel26-grsec-knock
 	conflicts = kernel26-libre-grsec-knock
 	replaces = linux-grsec-knock
@@ -71,7 +71,7 @@ pkgname = linux-libre-grsec-knock
 
 pkgname = linux-libre-grsec-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-grsec-knock kernel
-	provides = linux-grsec-knock-headers=4.0.8.201507111211
+	provides = linux-grsec-knock-headers=4.1.4.201508032312
 	conflicts = kernel26-grsec-knock-headers
 	conflicts = kernel26-libre-grsec-knock-headers
 	replaces = linux-grsec-knock-headers
@@ -80,7 +80,7 @@ pkgname = linux-libre-grsec-knock-headers
 
 pkgname = linux-libre-grsec-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-grsec-knock kernel
-	provides = linux-grsec-knock-docs=4.0.8.201507111211
+	provides = linux-grsec-knock-docs=4.1.4.201508032312
 	conflicts = kernel26-grsec-knock-docs
 	conflicts = kernel26-libre-grsec-knock-docs
 	replaces = linux-grsec-knock-docs

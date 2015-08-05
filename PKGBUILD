@@ -1,8 +1,3 @@
-# Contributor (Arch): Daniel Micay <danielmicay@gmail.com>
-# Contributor (Arch): Tobias Powalowski <tpowa@archlinux.org>
-# Contributor (Arch): Thomas Baechler <thomas@archlinux.org>
-# Contributor (Arch): henning mueller <henning@orgizm.net>
-# Contributor (Arch): Thomas Dwyer http://tomd.tel
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
 # Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
@@ -10,12 +5,14 @@
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
-pkgbase=linux-libre-grsec-knock   # Build kernel with -grsec-knock localname
-_pkgbasever=4.0-gnu
-_pkgver=4.0.8-gnu
+# Based on linux-grsec package
+
+pkgbase=linux-libre-grsec-knock
+_pkgbasever=4.1-gnu
+_pkgver=4.1.4-gnu
 _grsecver=3.1
-_timestamp=201507111211
-_knockpatchver=3.18_1
+_timestamp=201508032312
+_knockpatchver=4.1_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -36,8 +33,10 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch"
         "https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch.sig"
-        "http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver}.diff"
-        "tcp_stealth_${_knockpatchver}.diff.sig::http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver%_1}.diff_1.sig"
+        #"http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver}.diff"
+        #"tcp_stealth_${_knockpatchver}.diff.sig::http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver%_1}.diff_1.sig"
+        "https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_${_knockpatchver}.diff"
+        "https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_${_knockpatchver}.diff.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
@@ -49,13 +48,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
+sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '16153fc11146d0de0158b7f7ed24437b42c61a16e5e404b258d04bdceef5b9e0'
+            '4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97'
             'SKIP'
-            'b9338c20615444bf844edc16ef98e9696db159a50e5eeea3b693edf6eabb24cd'
+            'd16f9699b0cf59f8ef73cb444468a6d8d8344024c86a1e6896585caa8cb8a2bb'
             'SKIP'
-            '93a1610c203ea4c187ac5b50dce105fac86df914b1406e1d85df5857d36201c9'
+            'da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -63,15 +62,15 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'df033a9eb5729f61169e3aca092709cf928f820b05fea3efde14d372e2fa607f'
-            'fbf48421ebfb46f09457fe601255a7dd3631f24bba28945dcabc5a8772ab3872'
+            '64e0183ac31a3947144055cb0f180111f3871e89f7d0d59eecf064a366cd044c'
+            'c4f567a784a62fc5c88e2900f029b87aa8e9160d9413f3a8376614fa99630789'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
-              'F949CFBD140A6DD071E90B8CDC24396B6D451038' # Julian Kirsch
+              #'F949CFBD140A6DD071E90B8CDC24396B6D451038' # Julian Kirsch
 )
 
 _kernelname=${pkgbase#linux-libre}
