@@ -14,13 +14,14 @@ depends=('glibc' 'ncurses')
 makedepends=('git')
 conflicts=('readline')
 provides=("readline=$pkgver")
-source=('git://git.savannah.gnu.org/readline.git' inputrc)
-md5sums=('SKIP' '58d54966c1191db45973cb3191ac621a')
+source=(inputrc)
+md5sums=('58d54966c1191db45973cb3191ac621a')
 
 build() {
-  cd "$srcdir/readline"
+  cd "$srcdir"
+  git clone --depth 1 --branch devel git://git.savannah.gnu.org/readline.git
+  cd readline
   git checkout devel
-  # build with -fPIC for x86_64 (FS#15634)
   [[ $CARCH == "x86_64" ]] && CFLAGS="$CFLAGS -fPIC"
   ./configure --prefix=/usr
   make SHLIB_LIBS=-lncurses
