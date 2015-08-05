@@ -1,0 +1,17 @@
+pkgbase = brother-mfc-l2720dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-l2720DW
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://download.brother.com/welcome/dlf101799/mfcl2720dwlpr-3.2.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101800/mfcl2720dwcupswrapper-3.2.0-1.i386.rpm
+	md5sums = 02590f6087f26e2a831ea60da218e81d
+	md5sums = a215b945150a87583c4f832261811793
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l2720dw
+
