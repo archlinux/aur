@@ -1,0 +1,34 @@
+pkgbase = gwenview-kde4
+	pkgdesc = A fast and easy to use image viewer for KDE
+	pkgver = 4.14.3
+	pkgrel = 1
+	url = http://kde.org/applications/graphics/gwenview
+	install = gwenview-kde4.install
+	arch = i686
+	arch = x86_64
+	arch = armv7
+	arch = armv6
+	arch = armv5
+	groups = kde
+	groups = kdegraphics
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	makedepends = automoc4
+	depends = qt4
+	depends = exiv2
+	depends = libbaloo4
+	depends = libkipi
+	depends = libkdcraw
+	depends = kdebase-lib
+	depends = kdebase-runtime
+	provides = gwenview
+	conflicts = kdegraphics-gwenview
+	conflicts = gwenview
+	source = http://download.kde.org/stable/4.14.3/src/gwenview-4.14.3.tar.xz
+	sha1sums = dfa98856fbcd7e51050f23716d7f24dab264bf12
+
+pkgname = gwenview-kde4
+
