@@ -1,0 +1,15 @@
+pkgbase = r-utils
+	pkgdesc = Utility functions useful when programming and developing R packages.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/R.utils/index.html
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = r
+	depends = r-oo
+	source = http://cran.r-project.org/src/contrib/R.utils_2.0.0.tar.gz
+	md5sums = ff1640f681980e8c0cb3de93c942e2cf
+
+pkgname = r-utils
+
