@@ -2,10 +2,10 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname='gnome-shell-extension-hide-titlebar'
-pkgdesc="Allows to hide the titlebars of maximized windows"
+pkgname=gnome-shell-extension-hide-titlebar
 pkgver=1
 pkgrel=6
+pkgdesc="Allows to hide the titlebars of maximized windows"
 arch=(any)
 url='http://sourceforge.net/projects/hide-titlebar/'
 license=(GPLv2)
