@@ -2,7 +2,7 @@
 
 pkgname="gnome-shell-extension-easyscreencast-git"
 pkgver=0.9.7.1.r4.gef69b61
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides a convienent top bar pop-down interface to configure the GNOME Shell Screencast Recording feature."
 arch=('any')
 url="https://github.com/iacopodeenosee/EasyScreenCast"
@@ -38,11 +38,11 @@ package() {
   # Copy extension files into place.
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' -or -iname '*.gtkbuilder' \) -exec install -Dm644 -t "${_destdir}" '{}' +
   find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/images" '{}' +
-  find -maxdepth 2 \( -wholename '*schemas/*' \) -exec install -Dm644 -t "${_destdir}/schemas" '{}' +
+  find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas" '{}' +
   cd "${srcdir}/${pkgname}/locale"
   for locale in */
     do
-      install -Dm644 -t "${_destdir}/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
+      install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
     done
   cd "${srcdir}/${pkgname}/locale-UI"
   for locale in */
