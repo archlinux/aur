@@ -1,6 +1,6 @@
 pkgbase = atlassian-confluence
 	pkgdesc = Enterprise wiki
-	pkgver = 5.8.6
+	pkgver = 5.8.8
 	pkgrel = 1
 	url = https://www.atlassian.com/software/confluence
 	install = confluence.install
@@ -14,10 +14,10 @@ pkgbase = atlassian-confluence
 	backup = etc/conf.d/confluence
 	backup = opt/atlassian-confluence/conf/server.xml
 	backup = opt/atlassian-confluence/confluence/WEB-INF/classes/confluence-init.properties
-	source = http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-5.8.6.tar.gz
+	source = http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-5.8.8.tar.gz
 	source = confluence.conf.d
 	source = confluence.service
-	sha256sums = 07cb225379426ecf38e7f403293d652de134d4702a5d0b399ce4e7e12e8e9893
+	sha256sums = 9459e357c8090588b06ab23f01954567f7167061731d4eada76b9bdf27d91ca6
 	sha256sums = 0cf76082cf11c04131ad03cf784c7d58152c2c20bfdcbe9809e552cfd42ae9a3
 	sha256sums = 7017750e78fbe0611111ccc00a44f31a93241c4f924a893875804d50d085f9dd
 
