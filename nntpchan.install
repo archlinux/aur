@@ -1,13 +1,26 @@
 post_install()
 {
-	chown -R srndv2:srndv2 /srv/nntpchan/
+	getent group nntpchan >/dev/null 2>&1 || groupadd nntpchan
+	getent passwd nntpchan >/dev/null 2>&1 || useradd -g nntpchan -d /srv/nntpchan/ -s /bin/bash nntpchan
+	chown -R nntpchan:nntpchan /srv/nntpchan/
 
-	echo "Enable: \`(sudo) systemctl enable nntpchan.service\`
-	Start: \`(sudo) systemctl start nntpchan.service\`
-	Stop: \`(sudo) systemctl stop nntpchan.service\`"
+	echo "Enable: \`(sudo) systemctl enable srndv2@nntpchan.service\`
+	Start: \`(sudo) systemctl start srndv2@nntpchan.service\`
+	Stop: \`(sudo) systemctl stop srndv2@nntpchan.service\`"
 }
 
 post_upgrade()
 {
 	post_install $1
+}
+
+post_remove()
+{
+	if getent passwd nntpchan >/dev/null 2>&1; then
+		userdel nntpchan
+	fi
+
+	if getent group nntpchan >/dev/null 2>&1; then
+		groupdel nntpchan
+	fi
 }
