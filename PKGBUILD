@@ -38,6 +38,9 @@ prepare() {
 
   # Patch to restore compilation.
   patch -p1 < ../31.patch
+
+  # Use dynamic icon.
+  sed -i 's/\(Icon=abraca\)-.*/\1/' data/*.desktop
 }
 
 build() {
