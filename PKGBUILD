@@ -1,3 +1,4 @@
+# PKGBUILD FIXES BY SHAPESHIFTER499 08/04/2015
 # Maintainer: Noel Maersk <veox at wemakethings dotnet>
 # Contributor: Mike Lenzen <lenzenmi@gmail.com>
 
@@ -10,10 +11,10 @@ pkgdesc="A peer-to-peer network-based digital currency (git version)"
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
-depends=('qt4>=4.6' 'boost-libs>=1.46' 'miniupnpc>=1.6')
-makedepends=('git' 'boost' 'gcc' 'make' 'automoc4')
-provides=('litecoin')
-conflicts=('litecoin')
+depends=('qt4' 'gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
+makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
+provides=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin')
+conflicts=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin')
 source=('git://github.com/litecoin-project/litecoin.git')
 md5sums=('SKIP')
 
@@ -24,22 +25,15 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
+  ./autogen.sh
+  ./configure
+   make
 
-  # check out specific branch or tag
-  # git checkout v0.8.6.1
-
-  # make litecoin-qt client
-  qmake-qt4
-  make
-
-  # make litecoin daemon
-  cd "$srcdir/$_gitname/src"
-  make $MAKEFLAGS -f makefile.unix litecoind
 }
 
 package() {
   # install litecoin-qt client
-  install -D -m755 "$srcdir/$_gitname/litecoin-qt" "$pkgdir/usr/bin/litecoin-qt"
+  install -D -m755 "$srcdir/$_gitname/src/qt/litecoin-qt" "$pkgdir/usr/bin/litecoin-qt"
 
   # install litecoin daemon
   install -D -m755 "$srcdir/$_gitname/src/litecoind" "$pkgdir/usr/bin/litecoind"
