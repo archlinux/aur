@@ -1,5 +1,3 @@
-# Maintainer (Arch): Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer (Arch): Thomas Baechler <thomas@archlinux.org>
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
 # Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
@@ -7,9 +5,11 @@
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
-pkgbase=linux-libre-lts     # Build kernel with -lts localname
+# Based on linux-lts package
+
+pkgbase=linux-libre-lts
 _pkgbasever=3.14-gnu
-_pkgver=3.14.48-gnu
+_pkgver=3.14.49-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -46,7 +46,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'gcc5_buildfixes.diff')
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            'bca6f520b89030ec96c8b3fbf4e01c1d1bea58b1a8b83efcffab05084d6322d6'
+            '8146f5e0dda01cb95bf8841bc76acea42fd04a2e864cbe2ecfe55092453cc929'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -65,7 +65,6 @@ sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
-              'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
 )
 

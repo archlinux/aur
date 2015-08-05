@@ -1,5 +1,5 @@
 pkgbase = linux-libre-lts
-	pkgver = 3.14.48_gnu
+	pkgver = 3.14.49_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-libre-lts
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.48-gnu/patch-3.14-gnu-3.14.48-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.48-gnu/patch-3.14-gnu-3.14.48-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.49-gnu/patch-3.14-gnu-3.14.49-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.49-gnu/patch-3.14-gnu-3.14.49-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -32,7 +32,7 @@ pkgbase = linux-libre-lts
 	source = gcc5_buildfixes.diff
 	sha256sums = 477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b
 	sha256sums = SKIP
-	sha256sums = bca6f520b89030ec96c8b3fbf4e01c1d1bea58b1a8b83efcffab05084d6322d6
+	sha256sums = 8146f5e0dda01cb95bf8841bc76acea42fd04a2e864cbe2ecfe55092453cc929
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -58,7 +58,7 @@ pkgname = linux-libre-lts
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-lts=3.14.48
+	provides = linux-lts=3.14.49
 	conflicts = kernel26-lts
 	conflicts = kernel26-libre-lts
 	conflicts = linux-libre-lts-kmod-alx
@@ -70,7 +70,7 @@ pkgname = linux-libre-lts
 
 pkgname = linux-libre-lts-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-lts kernel
-	provides = linux-lts-headers=3.14.48
+	provides = linux-lts-headers=3.14.49
 	conflicts = kernel26-lts-headers
 	conflicts = kernel26-libre-lts-headers
 	replaces = linux-lts-headers
@@ -79,7 +79,7 @@ pkgname = linux-libre-lts-headers
 
 pkgname = linux-libre-lts-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-lts kernel
-	provides = linux-lts-docs=3.14.48
+	provides = linux-lts-docs=3.14.49
 	conflicts = kernel26-lts-docs
 	conflicts = kernel26-libre-lts-docs
 	replaces = linux-lts-docs
