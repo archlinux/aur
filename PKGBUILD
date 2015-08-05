@@ -1,8 +1,3 @@
-# Contributor (Arch): Daniel Micay <danielmicay@gmail.com>
-# Contributor (Arch): Tobias Powalowski <tpowa@archlinux.org>
-# Contributor (Arch): Thomas Baechler <thomas@archlinux.org>
-# Contributor (Arch): henning mueller <henning@orgizm.net>
-# Contributor (Arch): Thomas Dwyer http://tomd.tel
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
 # Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
@@ -10,11 +5,13 @@
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
-pkgbase=linux-libre-lts-grsec   # Build kernel with lts-grsec localname
+# Based on linux-grsec package
+
+pkgbase=linux-libre-lts-grsec
 _pkgbasever=3.14-gnu
-_pkgver=3.14.48-gnu
+_pkgver=3.14.49-gnu
 _grsecver=3.1
-_timestamp=201507111210
+_timestamp=201508032312
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -53,9 +50,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'gcc5_buildfixes.diff')
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            'bca6f520b89030ec96c8b3fbf4e01c1d1bea58b1a8b83efcffab05084d6322d6'
+            '8146f5e0dda01cb95bf8841bc76acea42fd04a2e864cbe2ecfe55092453cc929'
             'SKIP'
-            '14d8a15b59128f04ed06fb0c5f91bed626dd98983c8e6229dbfd56dcf00ff350'
+            'caf36e8cbef0015a20d23b281b51e09041ce055836c2eb1b4864b32693f4eddb'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -63,8 +60,8 @@ sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '150cb59bfe9074a04cc64bc43bf49d7b9c1fff9a22334a11b83eb3016e36443b'
-            'f699b8b0acb528d45a867c461cea7503e097a5a75f61710a46513476582a2109'
+            '004a63f82a58f935d0de51c5ab5da3c457698b4dea37b149bf3632b3ddc44c3b'
+            '3fab9fd59a744b5107c57d01a4d52d955ef847424d22cba55326eb054fd27dc0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
