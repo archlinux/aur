@@ -1,15 +1,15 @@
 pkgbase = otf-font-awesome
 	pkgdesc = The iconic font designed for Bootstrap
-	pkgver = 4.3.0
-	pkgrel = 2
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = http://fortawesome.github.io/Font-Awesome/
 	install = otf-font-awesome.install
 	arch = any
 	license = OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = font-awesome-4.3.0.zip::https://github.com/FortAwesome/Font-Awesome/archive/v4.3.0.tar.gz
-	sha256sums = cc75bfea92128834c379d69f776ecbd103256137f8f482cad71425e68ee4be97
+	source = font-awesome-4.4.0.zip::https://github.com/FortAwesome/Font-Awesome/archive/v4.4.0.tar.gz
+	sha256sums = 3962ab205a1547be1e10a840f44fa6b6a28359e6f3f21932f0f8dabf419eeccb
 
 pkgname = otf-font-awesome
 
