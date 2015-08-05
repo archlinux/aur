@@ -1,5 +1,4 @@
 # Maintainer: MartiMcFly martimcfly@autorisation.de
-# Contributor: C Anthony Risinger
 
 pkgname=('zarafa-webaccess')
 pkgver=7.2.0
