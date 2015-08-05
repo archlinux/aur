@@ -1,0 +1,33 @@
+pkgbase = bash-devel-git
+	pkgdesc = The GNU Bourne Again shell (Development version)
+	pkgver = 4.20150805
+	pkgrel = 1
+	url = http://savannah.gnu.org/git/?group=bash
+	install = bash.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = readline>=7.0
+	depends = glibc
+	optdepends = bash-completion: for tab completion
+	provides = sh
+	provides = bash=4.20150805
+	conflicts = bash
+	backup = etc/bash.bashrc
+	backup = etc/bash.bash_logout
+	backup = etc/skel/.bashrc
+	backup = etc/skel/.bash_profile
+	backup = etc/skel/.bash_logout
+	source = dot.bashrc
+	source = dot.bash_profile
+	source = dot.bash_logout
+	source = system.bashrc
+	source = system.bash_logout
+	md5sums = 027d6bd8f5f6a06b75bb7698cb478089
+	md5sums = 2902e0fee7a9168f3a4fd2ccd60ff047
+	md5sums = 42f4400ed2314bd7519c020d0187edc5
+	md5sums = 561949793177116b7be29a07c385ba8b
+	md5sums = 472f536d7c9e8250dc4568ec4cfaf294
+
+pkgname = bash-devel-git
+
