@@ -2,15 +2,15 @@
 # Contributor: kuina <kuinanein at gmail dot com>
 pkgname=man-pages-ja
 pkgver=0.5.0.0.20150805
-pkgrel=1
+pkgrel=2
 pkgdesc="Man pages for Japanese"
 arch=('any')
-url="http://sourceforge.jp/projects/linuxjm/"
+url="http://osdn.jp/projects/linuxjm/"
 license=('custom')
 makedepends=('git' 'expect')
-provides=('man-pages-ja')
-conflicts=('man-pages-ja')
-source=('git+git://git.sourceforge.jp/gitroot/linuxjm/jm.git'
+provides=('man-pages-ja-git')
+conflicts=('man-pages-ja-git')
+source=('git+http://scm.osdn.jp/gitroot/linuxjm/jm.git'
         'mkconfig.expect'
         'README.en')
 md5sums=('SKIP'
