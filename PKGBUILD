@@ -2,10 +2,10 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname="gnome-shell-extension-remove-dropdown-arrows-git"
-pkgdesc="Removes the dropdown arrows from the AppMenu and SystemMenu (AggregateMenu) which were introduced in Gnome 3.10."
+pkgname=gnome-shell-extension-remove-dropdown-arrows-git
 pkgver=5.r0.g7d42ad1
 pkgrel=1
+pkgdesc="Removes the dropdown arrows from the AppMenu and SystemMenu (AggregateMenu) which were introduced in Gnome 3.10."
 arch=(any)
 url="https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows"
 license=(GPLv3)
