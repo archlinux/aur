@@ -1,0 +1,15 @@
+pkgbase = lv
+	pkgdesc = a Powerful Multilingual File Viewer / Grep
+	pkgver = 4.51
+	pkgrel = 3
+	url = http://www.ff.iij4u.or.jp/~nrt/lv/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	depends = ncurses
+	source = http://www.ff.iij4u.or.jp/~nrt/freeware/lv451.tar.gz
+	md5sums = 85b70ae797f935741ec9a1cbe92f00e9
+
+pkgname = lv
+
