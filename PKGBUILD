@@ -2,7 +2,7 @@
 
 pkgname=pelican
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to generate a static blog, with restructured text (or markdown) input files."
 arch=('any')
 url="http://getpelican.com"
