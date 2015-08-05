@@ -1,0 +1,24 @@
+pkgbase = abraca-git
+	pkgdesc = A GTK3 client for the XMMS2 music player, with a focus on collections. Written in Vala
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://abraca.xmms.se
+	install = abraca.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala>=0.24
+	makedepends = waf
+	makedepends = git
+	depends = gtk3
+	depends = libgee
+	depends = xmms2
+	provides = abraca
+	conflicts = abraca
+	source = https://github.com/Abraca/Abraca/pull/31.patch
+	source = abraca::git+https://github.com/Abraca/Abraca
+	md5sums = c5457f441eb6cbf91ce8ea424bc46e38
+	md5sums = SKIP
+
+pkgname = abraca-git
+
