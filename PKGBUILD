@@ -1,6 +1,5 @@
-# PKGBUILD FIXES BY SHAPESHIFTER499 08/04/2015
-# Maintainer: Noel Maersk <veox at wemakethings dotnet>
-# Contributor: Mike Lenzen <lenzenmi@gmail.com>
+# Maintainer: Raansu <gero3977@gmail.com>
+# Contributors: Noel Maersk <veox at wemakethings dotnet>; Mike Lenzen <lenzenmi@gmail.com>
 
 pkgname=litecoin-git
 _gitname=litecoin

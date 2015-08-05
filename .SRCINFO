@@ -7,16 +7,31 @@ pkgbase = litecoin-git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = pkg-config
 	makedepends = git
+	makedepends = boost-libs
 	makedepends = boost
 	makedepends = gcc
+	makedepends = qrencode
 	makedepends = make
 	makedepends = automoc4
-	depends = qt4>=4.6
-	depends = boost-libs>=1.46
-	depends = miniupnpc>=1.6
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	depends = qt4
+	depends = gcc-libs
+	depends = miniupnpc
+	depends = openssl
+	depends = db4.8
+	depends = protobuf
 	provides = litecoin
+	provides = litecoin-qt
+	provides = litecoind
+	provides = litecoin-bin
 	conflicts = litecoin
+	conflicts = litecoin-qt
+	conflicts = litecoind
+	conflicts = litecoin-bin
 	source = git://github.com/litecoin-project/litecoin.git
 	md5sums = SKIP
 
