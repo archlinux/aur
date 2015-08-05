@@ -12,6 +12,7 @@ pkgbase = acd_cli-git
 	depends = python-dateutil
 	depends = python-requests-toolbelt
 	provides = acd_cli
+	conflicts = acd_cli
 	source = git+https://github.com/yadayada/acd_cli.git
 	md5sums = SKIP
 

@@ -17,7 +17,7 @@ depends=('python-appdirs' 'python-requests>=2.1.0'
 'python-requests-toolbelt')
 makedepends=('python')
 provides=('acd_cli')
-conficts=('acd_cli')
+conflicts=('acd_cli')
 source=(git+https://github.com/yadayada/acd_cli.git)
 md5sums=('SKIP')
 
