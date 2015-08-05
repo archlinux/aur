@@ -1,6 +1,6 @@
 pkgbase = geoip-citydata
 	pkgdesc = City database for geoip IP location lookups
-	pkgver = 20150603
+	pkgver = 20150805
 	pkgrel = 1
 	url = http://www.maxmind.com/
 	arch = any
