@@ -1,0 +1,13 @@
+pkgbase = cukrowski_firewall
+	pkgdesc = Set of rules and files modifying iptables and ipset rulesa.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = beerware
+	depends = bash
+	depends = iptables
+	depends = ipset
+
+pkgname = cukrowski_firewall
+
