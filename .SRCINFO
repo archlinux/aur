@@ -1,6 +1,6 @@
 pkgbase = gcc-powerpc-wrs-vxworks
 	pkgdesc = GCC modded for VxWorks 6.3
-	pkgver = 4.9.2
+	pkgver = 4.9.3
 	pkgrel = 1
 	url = http://firstforge.wpi.edu/sf/projects/c--11_toochain
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = gcc-powerpc-wrs-vxworks
 	options = !buildflags
 	options = !makeflags
 	options = staticlibs
-	source = http://ftp.gnu.org/gnu/gcc/gcc-4.9.2/gcc-4.9.2.tar.bz2
+	source = http://ftp.gnu.org/gnu/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2
 	source = vxworks-pthread.patch
 	source = pointer-cast.patch
-	sha512sums = e96cba06d572dbe7f382a2b00fd9297dcf9f9219d46a9ad0bd904dc36d5e7db3335e422640b79a27fed6fde91b0731732b94a0e2fbcd47344d6779f8ba1f4f9c
+	sha512sums = 9ac57377a6975fc7adac704ec81355262b9f537def6955576753b87715470a20ee6a2a3144a79cc8fcba3443f7b44c7337d79d704b522d053f54f79aa6b442df
 	sha512sums = 5ba8c2757a1970df26bc1c656a5c315c32c62ea3e1f2e17d48cb77855a662b7770e581d5319d0d55bed270bd4028f7ce308c88d7d96c28806be484165b48e689
 	sha512sums = 838205c182611ac671a8a12b3eb39e89948092b65f3d13a5bd4af90a68362bef0ee31a46b81148916dbcace63e2876ef97fd53ea61ab8aa05beb64667c593572
 
