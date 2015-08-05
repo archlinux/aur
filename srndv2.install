@@ -1,7 +1,7 @@
 post_install()
 {
-	groupadd -g 69 srndv2 &>/dev/null
-	useradd -u 69 -g srndv2 -d /var/lib/srndv2 -s /bin/false srndv2 &> /dev/null
+	getent group srndv2 >/dev/null 2>&1 || groupadd srndv2
+	getent passwd srndv2 >/dev/null 2>&1 || useradd -g srndv2 -d /srv/nntpchan/ -s /bin/bash srndv2
 
 	echo "Set up the sql server:
 	\`su postgres\`
@@ -13,4 +13,20 @@ post_install()
 	\`\\q\`
 
 	Change the username and password as desired."
+}
+
+post_upgrade()
+{
+	post_install $1
+}
+
+post_remove()
+{
+	if getent passwd srndv2 >/dev/null 2>&1; then
+		userdel srndv2 
+	fi
+
+	if getent group srndv2 >/dev/null 2>&1; then
+		groupdel srndv2 
+	fi
 }
