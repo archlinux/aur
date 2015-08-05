@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 pkgname=amidstexporter
-pkgver='1.32'
+pkgver='1.39'
 _jarfile='AmidstExporter.jar'
 pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking; fork with location export.'
@@ -15,7 +15,7 @@ changelog=ChangeLog
 source=("https://github.com/Treer/AMIDST/releases/download/v${pkgver}/${_jarfile}"
         amidstexporter.sh
         amidstexporter.desktop)
-md5sums=('9254cdf1eec26df090dd5c9d76fc3fc9'
+md5sums=('e4db0d5c4ef84bc3160233ccf5a4ebc6'
          '365558c0aadf7a879ff8f4514943b10c'
          'abe95f51b3ec61a2ae371a05c6edfc1f')
 

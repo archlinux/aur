@@ -1,3 +1,37 @@
+2015-08-05 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 1.39-1 :
+	Version bump to 1.39.
+
+	Upstream changelog (1.32→1.36):
+	- Map scale is displayed.
+	- Fixed accuracy of Ocean Monuments (6% of displayed monuments did not exist
+	  in game, and 2.5% of monuments did not appear in AmidstExporter).
+	- Fixed accuracy of temples and witch huts (4.3% did not exist in game, and
+	  3% did not appear in Amidst)
+	- Improves accuracy of villages. 17% of the villages that were displayed have
+	  been correctly eliminated from the map, however 1% of the other villages
+	  that were displayed have been incorrectly eliminated with them (these
+	  villages exist in the game but are no longer displayed by AmidstExporter...
+	  lets spin this: there are now some secret villages!)
+	- Minor UI improvements.
+
+	Upstream changelog (1.36→1.37):
+	- Abandoned mineshafts can be displayed.
+	- Structure coordinates adjusted to better reflect the center of the structure.
+	- zoom crash fixed.
+	- Minor UI improvements
+
+	Upstream changelog (1.37→1.39):
+	- Nether Fortresses are now shown at their Overworld location on the
+	  Overworld's biome-map, instead of at Nether scale.
+	- Clicking on a Nether Fortress will show its coordinates in both the Nether
+	  and the Overworld.
+	- Worlds made with Minecraft 1.6 and older had more mineshafts than current
+	  versions, now those extra mineshafts can be displayed.
+	- AmidstExporter will not try to "update" back to original-Amidst when skiphs
+	  releases a new version of Amidst.
+
 2015-04-26 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 1.32-1 :
