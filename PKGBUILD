@@ -1,7 +1,4 @@
-# $Id: PKGBUILD 239705 2015-05-24 12:41:19Z bpiotrowski $
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Aaron Griffin <aaron@archlinux.org>
+# Maintainer: Carlos Pita <carlosjosepita@gmail.com>
 
 pkgname=bash-devel-git
 pkgdesc='The GNU Bourne Again shell (Development version)'
