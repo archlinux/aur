@@ -1,5 +1,5 @@
 pkgbase = linux-libre-xen
-	pkgver = 4.1.3_gnu
+	pkgver = 4.1.4_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = linux-libre-xen
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.3-gnu/patch-4.1-gnu-4.1.3-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.3-gnu/patch-4.1-gnu-4.1.3-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -22,14 +22,10 @@ pkgbase = linux-libre-xen
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
 	source = config
 	source = linux.preset
-	source = 0001-block-loop-convert-to-per-device-workqueue.patch
-	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
-	source = 0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-	source = bitmap-enable-booting-for-dm-md-raid1.patch
 	source = change-default-console-loglevel.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = d52669f17a1cd13abba4f47a04e1991be59cfa707926b21f9c5bf031ec10c5d0
+	sha256sums = 4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -37,12 +33,8 @@ pkgbase = linux-libre-xen
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = 27e5b2fe0b2c5a67bfa27d7f0c61df206b5e77a83f348005b9332804acf791ab
+	sha256sums = 860c234869e472cddb30d583b6ac048cd5be083511a097a2f4db4a31cdaba8c4
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
-	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
-	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
-	sha256sums = 08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82
-	sha256sums = 959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-libre-xen
@@ -53,7 +45,7 @@ pkgname = linux-libre-xen
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-xen=4.1.3
+	provides = linux-xen=4.1.4
 	conflicts = kernel26-xen
 	conflicts = kernel26-libre-xen
 	replaces = linux-xen
@@ -63,7 +55,7 @@ pkgname = linux-libre-xen
 
 pkgname = linux-libre-xen-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-xen kernel
-	provides = linux-xen-headers=4.1.3
+	provides = linux-xen-headers=4.1.4
 	conflicts = kernel26-xen-headers
 	conflicts = kernel26-libre-xen-headers
 	replaces = linux-xen-headers
@@ -72,7 +64,7 @@ pkgname = linux-libre-xen-headers
 
 pkgname = linux-libre-xen-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-xen kernel
-	provides = linux-xen-docs=4.1.3
+	provides = linux-xen-docs=4.1.4
 	conflicts = kernel26-xen-docs
 	conflicts = kernel26-libre-xen-docs
 	replaces = linux-xen-docs
