@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -29,22 +29,22 @@ install=$pkgname.install
 source=("$pkgname.service"
         "$pkgname.target"
         'msmtprc'
-        'mysqld-aegir.service'
-        'nginx-aegir.service'
         'nginx.conf'
-        'php-fpm-aegir.service'
+        'nginx.systemd.conf'
         'php-fpm.conf'
+        'php-fpm.systemd.conf'
+        'php.ini'
         'sudoers'
 )
 md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
-         'c279899d0b987e4d53ea85d0f154a510'
+         '95bce00a6c0ac2a0b51642449554105b'
          'd43026960060bc677549baa26a24c9ee'
-         '7559c51ec89b4d65a1193b3d6d6da297'
-         'ef858752158383dfde4c8b7f8cb7c6f0'
-         '7edbcc6b449a2f09ed93f88b77f300a5'
-         'f9f1b1a7e551c718c154c1c745827b1e'
-         'b1300cd3bd23a2544e2eff247cad2f80'
-         'cb65729f01d5d641fc85518c2175a13a')
+         '2a640d69beeea0c03d80b75357a040fe'
+         '75535f9870f06c540f513262a9b7b1ab'
+         '496b1fa2533d1306318115e2b02984bd'
+         'f9ae0c781a7ccefc63329daaf81fca36'
+         'c67b0758fde1d0fa45344c2c4222f50b'
+         'abef83520df5c7ee6a98884db5e741de')
 
 #~ pkgver() {
     #~ echo \
@@ -55,19 +55,19 @@ md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
 
 package() {
     msg2 'Adding config files'
-    install -dm750                  "$pkgdir/etc/sudoers.d"
-    install -Dm440 sudoers          "$pkgdir/etc/sudoers.d/$pkgname"
-    install -Dm644 nginx.conf       "$pkgdir/etc/nginx/$pkgname.conf"
-    install -Dm644 php-fpm.conf   "$pkgdir/etc/php/fpm.d/$pkgname.conf"
+    install -dm750 "$pkgdir/etc/sudoers.d"
     install -Dm644 msmtprc "$pkgdir/etc/msmtprc.$pkgname"
-    install -Dm644 <( ) "$pkgdir/var/spool/cron/$pkgname"
+    install -Dm644 nginx.conf "$pkgdir/etc/nginx/$pkgname.conf"
+    install -Dm644 php-fpm.conf   "$pkgdir/etc/php/fpm.d/$pkgname.conf"
+    install -Dm644 php.ini "$pkgdir/etc/php/conf.d/$pkgname.ini"
+    install -Dm400 sudoers "$pkgdir/etc/sudoers.d/$pkgname"
+    install -Dm644 --owner=http --group=http <( ) "$pkgdir/var/spool/cron/$pkgname"
 
     msg2 'Adding systemd files'
-    for unit in {mysqld,nginx,php-fpm}-aegir.service; do
-      install -Dm644 "$unit" "$pkgdir/usr/lib/systemd/system/$unit"
-    done
     install -Dm644 "$pkgname.service"  "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 "$pkgname.target" "$pkgdir/usr/lib/systemd/system/$pkgname.target"
+    install -Dm644 nginx.systemd.conf "$pkgdir/usr/lib/systemd/system/nginx.service.d/aegir.conf"
+    install -Dm644 php-fpm.systemd.conf "$pkgdir/usr/lib/systemd/system/php-fpm.service.d/aegir.conf"
 
     msg2 'Creating $pkgname directory structure'
     mkdir -p "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname"
@@ -75,7 +75,7 @@ package() {
     umask 077
     mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{backups,clients/admin,config/{includes,self,server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}}
     umask 022
-    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{,config{includes,self,server_localhost,server_master/nginx}}
+    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{,config/{includes,self,server_localhost,server_master/nginx}}
 
     ln -s "/usr/share/webapps/$pkgname/config/server_master/nginx.conf"         "$pkgdir/usr/share/webapps/$pkgname/config/nginx.conf"
     ln -s "/usr/share/webapps/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/usr/share/webapps/$pkgname/config/includes/nginx_advanced_include.conf"

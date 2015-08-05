@@ -1,7 +1,8 @@
 [Unit]
 Description=Aegir Hosting System
-Wants=mailcatcher.service mailcatcher-smtp.socket
-After=mailcatcher.service mailcatcher-smtp.socket
+Wants=aegir.service mailcatcher.service mailcatcher-smtp.socket network.target
+Requires=mysqld.service nginx.service php-fpm.service
+After=aegir.service mailcatcher.service mailcatcher-smtp.socket mysqld.service network.target nginx.service php-fpm.service
 
 [Install]
 WantedBy=multi-user.target
