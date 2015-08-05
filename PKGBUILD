@@ -27,5 +27,7 @@ sha256sums=('393eb7c19ed99336c2fb542084ada81d6db2c8ebb7a3f63066e27fc2eae2cef6')
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  msg2 "Fix wrong file permissions..."
+  chmod 644 -R "${pkgdir}/usr/lib/python3.4/site-packages/pelican/themes"
 }
 
