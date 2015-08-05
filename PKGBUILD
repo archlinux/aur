@@ -9,7 +9,6 @@ pkgdesc="Configure the Activities Button with the Activities Configurator Extens
 arch=(any)
 url="https://extensions.gnome.org/extension/358/activities-configurator/"
 license=(GPLv2)
-depends=('gnome-shell>=3.8')
 source=("extension.html::$url"
         'archlinux-logo-gray-scalable.svg')
 md5sums=('SKIP'
@@ -47,6 +46,22 @@ build() {
   cp --remove-destination ../archlinux-logo-gray-scalable.svg archlinux-logo-gray-scalable.svg
 }
 
+depends[gnomeshell]=gnome-shell
+
+package_20_version() {
+  local compatibles=($(\
+    find -path ./pkg -type d -prune -o \
+    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
+    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
+  depends+=("gnome-shell>=3.${compatibles[0]}")
+  local max="${compatibles[-1]}"
+  if [ "3.$max" != $(
+    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+  ) ]; then
+    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
+  fi
+  unset depends[gnomeshell]
+}
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
   do

@@ -6,7 +6,7 @@ pkgbase = gnome-shell-extension-activities-config
 	install = gschemas.install
 	arch = any
 	license = GPLv2
-	depends = gnome-shell>=3.8
+	depends = gnome-shell
 	depends = gnome-shell-extensions
 	source = extension.html::https://extensions.gnome.org/extension/358/activities-configurator/
 	source = archlinux-logo-gray-scalable.svg
