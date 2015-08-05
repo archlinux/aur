@@ -4,7 +4,7 @@
 pkgname=vdr-fritzbox
 pkgver=1.5.3
 _vdrapi=2.2.0
-pkgrel=14
+pkgrel=15
 pkgdesc="Connects to the Fritz!Box to inform you about incoming and outgoing calls"
 url="http://www.joachim-wilke.de/vdr-fritz.htm"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

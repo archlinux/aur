@@ -1,7 +1,7 @@
 pkgbase = vdr-fritzbox
 	pkgdesc = Connects to the Fritz!Box to inform you about incoming and outgoing calls
 	pkgver = 1.5.3
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.joachim-wilke.de/vdr-fritz.htm
 	arch = x86_64
 	arch = i686
