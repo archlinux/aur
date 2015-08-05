@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="kernel module for taking block-level snapshots and incremental backups of Linux block devices"
 arch=('any')
 url="https://github.com/datto/dattobd"
-license=('unknown')
+license=('GPL2')
 depends=('')
 source=("git://github.com/datto/dattobd.git"
         "http://www.imegumii.nl/dattobd.conf")
