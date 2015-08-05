@@ -1,6 +1,6 @@
 pkgbase = emacs-mew-git
 	pkgdesc = Messaging in the Emacs World
-	pkgver = 6.7rc1.5.g172bee4
+	pkgver = 6.7rc2
 	pkgrel = 1
 	url = http://www.mew.org/
 	install = emacs-mew-git.install
