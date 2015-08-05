@@ -1,7 +1,7 @@
 pkgbase = m64py
 	pkgdesc = QT5 front-end for Mupen64Plus in Python
 	pkgver = 0.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://m64py.sourceforge.net
 	install = m64py.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = m64py
 	depends = sdl2
 	depends = python-pyqt5
 	depends = desktop-file-utils
+	depends = libxkbcommon-x11
 	source = http://downloads.sourceforge.net/m64py/m64py-0.2.3.tar.gz
 	md5sums = 170c980bb4266162cb61a931f529a8b2
 
