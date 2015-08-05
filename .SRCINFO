@@ -1,0 +1,19 @@
+pkgbase = lain-git
+	pkgdesc = Layouts, Utilities and Widgets for Awesome WM
+	pkgver = 1135.5835b86
+	pkgrel = 1
+	url = https://github.com/copycat-killer/lain
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = awesome
+	optdepends = alsa-utils: for ALSA volume widgets
+	optdepends = curl: for widgets accessing network resources
+	optdepends = imagemagick: for mpd album art notifications
+	provides = lain
+	conflicts = lain
+	source = git://github.com/copycat-killer/lain.git
+	md5sums = SKIP
+
+pkgname = lain-git
+
