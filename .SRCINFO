@@ -1,0 +1,15 @@
+pkgbase = rseg
+	pkgdesc = The RSEG software package is aimed to analyze ChIP-Seq data, especially for identifying genomic regions and their boundaries marked by diffusive histone modification markers, such as H3K36me3 and H3K27me3.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://smithlabresearch.org/software/rseg/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = gsl
+	depends = gsl
+	source = http://smithlabresearch.org/downloads/rseg-0.4.4.tar.gz
+	sha256sums = 6b23b570097d449b910fba3244e0330729fa409995fbcc1b4890a99ee52891f2
+
+pkgname = rseg
+
