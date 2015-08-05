@@ -4,8 +4,8 @@
 # https://wiki.archlinux.org/index.php/Creating_packages
 
 pkgname=junest-git
-pkgver=r191.ccfe4c7
-pkgrel=2
+pkgver=r193.06879b2
+pkgrel=1
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
 url="http://fsquillace.github.io/junest-site/"
