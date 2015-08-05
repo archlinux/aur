@@ -1,0 +1,14 @@
+pkgbase = isohost-tools
+	pkgdesc = Tools provided for managing the Isoho.st Virtual Machine instances
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://isoho.st/
+	arch = any
+	license = GPL3
+	depends = virtviewer
+	depends = perl
+	source = http://isoho.st/download/isohost-tools-0.4.tar.bz2
+	md5sums = ff06ecc81f7afbfc6f314b46074572ce
+
+pkgname = isohost-tools
+
