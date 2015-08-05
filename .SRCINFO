@@ -1,0 +1,23 @@
+pkgbase = readline-devel-git
+	pkgdesc = GNU readline library (Development version)
+	pkgver = 7.20150805
+	pkgrel = 1
+	url = http://savannah.gnu.org/git/?group=readline
+	install = readline.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = ncurses
+	provides = readline=7.20150805
+	conflicts = readline
+	options = !emptydirs
+	backup = etc/inputrc
+	source = git://git.savannah.gnu.org/readline.git
+	source = inputrc
+	md5sums = SKIP
+	md5sums = 58d54966c1191db45973cb3191ac621a
+
+pkgname = readline-devel-git
+
