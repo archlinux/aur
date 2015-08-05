@@ -2,13 +2,13 @@
 
 _pkgname=fs-uae
 pkgname=fs-uae-devel
-pkgver=2.5.33dev
+pkgver=2.5.34dev
 pkgrel=1
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (development version)."
 arch=("i686" "x86_64")
 url="http://fs-uae.net/download-devel"
 license=("GPL2")
-depends=("sdl2" "libpng" "openal" "mesa" "glu" "gettext" "freetype2" "hicolor-icon-theme"
+depends=("sdl2" "libpng" "openal" "mesa" "glew" "gettext" "freetype2" "hicolor-icon-theme"
          "xdg-utils" "shared-mime-info")   # 'glib2' provided by 'gettext', 'zlib' by 'libpng', and libxi by glu
 makedepends=('zip')
 install="${pkgname}.install"
@@ -16,7 +16,7 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae")
 conflicts=("fs-uae")
-md5sums=('f838742d5eb26972ac508b71227b9364')
+md5sums=('7b87e812b18680486628c220587081da')
 
 #MAKEFLAGS="-j1"
 
@@ -36,10 +36,10 @@ FSUAE3264=0
 
 if [[ -n $FSUAE3264 && $CARCH == "x86_64" && -n $(gcc -v 2>&1|grep '\-\-enable-multilib') ]]; then
    if [[ $FSUAE3264 == [1-2] ]]; then
-      depends+=("lib32-sdl2" "lib32-libpng" "lib32-glib2" "lib32-openal" "lib32-mesa" "lib32-glu" "lib32-gettext" "lib32-freetype2")
+      depends+=("lib32-sdl2" "lib32-libpng" "lib32-glib2" "lib32-openal" "lib32-mesa" "lib32-glew" "lib32-gettext" "lib32-freetype2")
      pkgdesc="${pkgdesc/(dev/dual 64 and 32-bit dev}"
    elif [[ $FSUAE3264 == 0 ]]; then
-      depends=("lib32-sdl2" "lib32-libpng" "lib32-glib2" "lib32-openal" "lib32-mesa" "lib32-glu" "lib32-gettext" "lib32-freetype2"
+      depends=("lib32-sdl2" "lib32-libpng" "lib32-glib2" "lib32-openal" "lib32-mesa" "lib32-glew" "lib32-gettext" "lib32-freetype2"
          "hicolor-icon-theme" "xdg-utils" "shared-mime-info")
       pkgdesc="${pkgdesc/(dev/(32-bit dev}"
    fi
