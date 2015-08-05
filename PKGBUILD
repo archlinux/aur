@@ -5,7 +5,7 @@ _gitname=po4a-bulk
 
 pkgname=$_pkgname-git
 pkgver=LATEST
-pkgrel=1
+pkgrel=2
 pkgdesc="Automation wrappers for po4a"
 arch=('i686' 'x86_64')
 url="https://github.com/skybon/po4a-bulk"
@@ -25,7 +25,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname"
-  install -Dm755 po4a-bulk-gettextize.sh "$pkgdir/usr/bin/po4a-bulk-gettextize"
-  install -Dm755 po4a-bulk-translate.sh "$pkgdir/usr/bin/po4a-bulk-translate"
-  install -Dm755 po4a-bulk-updatepo.sh "$pkgdir/usr/bin/po4a-bulk-updatepo"
+  install -Dm755 po4a-bulk-gettextize "$pkgdir/usr/bin/po4a-bulk-gettextize"
+  install -Dm755 po4a-bulk-translate "$pkgdir/usr/bin/po4a-bulk-translate"
+  install -Dm755 po4a-bulk-updatepo "$pkgdir/usr/bin/po4a-bulk-updatepo"
 }

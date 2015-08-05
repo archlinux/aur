@@ -1,7 +1,7 @@
 pkgbase = po4a-bulk-git
 	pkgdesc = Automation wrappers for po4a
 	pkgver = LATEST
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skybon/po4a-bulk
 	arch = i686
 	arch = x86_64
