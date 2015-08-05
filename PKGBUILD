@@ -14,7 +14,7 @@ url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
 depends=('ttf-bitstream-vera')
 source=("file://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('cb624598a470179ff57952c0771ae51a')
+md5sums=('1945ef3bb486b1091371128dd337aa19')
 install='mathematica.install'
 options=('!strip')
 
