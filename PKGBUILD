@@ -2,8 +2,8 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=p4
-pkgver=2015.1.1204891
-pkgrel=14
+pkgver=2015.1.1054991
+pkgrel=13
 pkgdesc="Perforce commandline client"
 depends=('glibc')
 arch=('i686' 'x86_64')
