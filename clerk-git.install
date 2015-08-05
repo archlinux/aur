@@ -6,3 +6,7 @@ and edit it to your needs.
 '
 }
 #post_install
+
+post_upgrade() {
+echo "Attention: rofi changed it's arguments to maintain dmenu compatibility A side effect of this is that searches in clerk are now case sensitive. To change this, put "-i" in config file, rofiopts"
+}

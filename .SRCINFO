@@ -1,6 +1,6 @@
 pkgbase = clerk-git
 	pkgdesc = clerk - mpd client for dmenu/rofi
-	pkgver = 453.d21167c
+	pkgver = 596.d8f6310
 	pkgrel = 1
 	url = https://github.com/carnager/clerk
 	install = clerk-git.install
