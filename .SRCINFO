@@ -1,0 +1,25 @@
+pkgbase = p910nd
+	pkgdesc = A small printer daemon intended for diskless workstations that passes jobs directly to the printer
+	pkgver = 0.97
+	pkgrel = 1
+	url = http://p910nd.sourceforge.net
+	arch = i686
+	arch = x86_64
+	arch = armv5
+	arch = armv5h
+	arch = armv6
+	arch = armv6h
+	arch = armv7
+	arch = armv7h
+	license = GPL2
+	depends = glibc
+	backup = etc/conf.d/p910nd
+	source = http://downloads.sf.net/p910nd/p910nd-0.97.tar.bz2
+	source = p910nd.service
+	source = p910nd.conf
+	md5sums = 69461a6c54dca0b13ecad5b83864b43e
+	md5sums = e37030a69b7bf302cfb23d88e25ebbdf
+	md5sums = ea1db6d612058532c525efedd54990f2
+
+pkgname = p910nd
+
