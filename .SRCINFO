@@ -1,6 +1,6 @@
 pkgbase = vim-monokai-git
-	pkgdesc = A port of the Monokai color scheme for Vim. Color scheme by sickill.
-	pkgver = r18.148c0d5
+	pkgdesc = A port of the Monokai color scheme for Vim by sickill.
+	pkgver = r20.91b3eb3
 	pkgrel = 2
 	url = https://github.com/sickill/vim-monokai
 	install = vim-monokai-git.install
@@ -9,7 +9,7 @@ pkgbase = vim-monokai-git
 	license = unknown
 	makedepends = git
 	optdepends = vim-python3: for vim with Python 3 interpreter support
-	provides = vim-monokai=r18.148c0d5
+	provides = vim-monokai=r20.91b3eb3
 	source = git+https://github.com/sickill/vim-monokai.git
 	source = vim-monokai-git.install
 	sha512sums = SKIP

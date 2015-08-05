@@ -2,9 +2,9 @@
 
 _pkgname=vim-monokai
 pkgname=${_pkgname}-git
-pkgver=r18.148c0d5
+pkgver=r20.91b3eb3
 pkgrel=2
-pkgdesc='A port of the Monokai color scheme for Vim. Color scheme by sickill.'
+pkgdesc='A port of the Monokai color scheme for Vim by sickill.'
 arch=('any')
 url='https://github.com/sickill/vim-monokai'
 license=('unknown')
