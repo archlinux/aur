@@ -1,8 +1,8 @@
-# Maintainer: illuser <lykouleon.eve@gmail.com>
+# Maintainer: illuser <lykouleon dot eve at gmail dot com>
 _nginxver=1.8.0
 
 pkgname=nginx-passenger-git
-pkgver=5.0.14.r5.gbf537aa
+pkgver=5.0.15.r3.g4ae1c74
 pkgrel=1
 pkgdesc='A fast and robust web server and application server for Ruby, Python, and Node.js'
 arch=('i686' 'x86_64')
@@ -115,7 +115,7 @@ package() {
   chown http:log "$pkgdir"/var/log/nginx
 
   install -d "$pkgdir"/usr/share/nginx
-  mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
+  mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx/
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
@@ -129,40 +129,41 @@ package() {
   sed -e '/http\s{/a \    passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;' \
    -i "$pkgdir"/etc/nginx/nginx.conf
 
-  cd "$srcdir/passenger"
+  cd "$srcdir"/passenger/
+  mv bin/* "$pkgdir"/usr/bin
 
-  for i in `ls bin/`; do
-    install -Dm755 bin/"$i" "$pkgdir"/usr/bin/"$i"
-  done
-
-  /usr/bin/ruby ./dev/install_scripts_bootstrap_code.rb --ruby \
+  /usr/bin/ruby dev/install_scripts_bootstrap_code.rb --ruby \
     /usr/lib/ruby/vendor_ruby "$pkgdir"/usr/bin/passenger*
 
   install -Dm755 buildout/support-binaries/PassengerAgent \
     "$pkgdir"/usr/lib/passenger/support-binaries/PassengerAgent
 
-  install -d "$pkgdir"/usr/share/passenger/
-  cp -R helper-scripts "$pkgdir"/usr/share/passenger/
+  install -d "$pkgdir"/usr/share/passenger/helper-scripts
+  mv helper-scripts/* "$pkgdir"/usr/share/passenger/helper-scripts/
 
   install -d "$pkgdir"/usr/lib/ruby/vendor_ruby
-  cp -R lib/* "$pkgdir"/usr/lib/ruby/vendor_ruby/
+  mv lib/* "$pkgdir"/usr/lib/ruby/vendor_ruby/
+
   install -Dm644 "$srcdir"/locations.ini "$pkgdir"/usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini
 
   install -d "$pkgdir"/usr/share/passenger/ruby_extension_source
-  cp -R ext/ruby/* "$pkgdir"/usr/share/passenger/ruby_extension_source/
+  mv ext/ruby/* "$pkgdir"/usr/share/passenger/ruby_extension_source/
 
   install -d "$pkgdir"/usr/share/passenger/node
-  cp -R node_lib/* "$pkgdir"/usr/share/passenger/node/
+  mv node_lib/* "$pkgdir"/usr/share/passenger/node/
 
   install -d "$pkgdir"/usr/share/doc/passenger
-  cp -R doc/* "$pkgdir"/usr/share/doc/passenger/
+  mv doc/* "$pkgdir"/usr/share/doc/passenger/
+
+  install -d "$pkgdir"/usr/share/passenger/templates
+  mv resources/templates/* "$pkgdir"/usr/share/passenger/templates/
 
   install -d "$pkgdir"/usr/share/man/man1/
-  gzip -9c man/passenger-config.1 > "$pkgdir"/usr/share/man/man1/passenger-config.1.gz
-  gzip -9c man/passenger-memory-stats.8 > "$pkgdir"/usr/share/man/man8/passenger-memory-stats.8.gz
-  gzip -9c man/passenger-status.8 > "$pkgdir"/usr/share/man/man8/passenger-status.8.gz
+  gzip -9c "$srcdir"/passenger/man/passenger-config.1 > "$pkgdir"/usr/share/man/man1/passenger-config.1.gz
+  gzip -9c "$srcdir"/passenger/man/passenger-memory-stats.8 > "$pkgdir"/usr/share/man/man8/passenger-memory-stats.8.gz
+  gzip -9c "$srcdir"/passenger/man/passenger-status.8 > "$pkgdir"/usr/share/man/man8/passenger-status.8.gz
 
-  install -Dm664 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/PASSENGER.LICENSE
+  install -Dm664 "$srcdir"/passenger/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/PASSENGER.LICENSE
 
   find "$pkgdir" -name "Makefile" -or -name "*.o" -delete
 }

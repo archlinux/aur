@@ -1,9 +1,9 @@
 post_install() {
-  printf "Building native support"
+  printf "Building native support\n"
   passenger-config build-native-support
 }
 
 post_upgrade() {
-  printf "Building native support"
+  printf "Building native support\n"
   passenger-config build-native-support
 }
