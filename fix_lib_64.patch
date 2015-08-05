@@ -1,0 +1,12 @@
+diff -aur qoauth-original//src/src.pro qoauth/src/src.pro
+--- qoauth-original//src/src.pro	2010-06-21 15:36:08.000000000 +0200
++++ qoauth/src/src.pro	2010-06-21 15:55:05.000000000 +0200
+@@ -62,7 +62,7 @@
+     pkgconfig.files = qoauth.pc
+     
+     contains(QMAKE_HOST.arch, x86_64) {
+-      target.path = $${INSTALL_PREFIX}/lib64
++      target.path = $${INSTALL_PREFIX}/lib
+     } else {
+       target.path = $${INSTALL_PREFIX}/lib
+     }

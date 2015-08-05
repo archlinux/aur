@@ -1,0 +1,19 @@
+pkgbase = qoauth-git
+	pkgdesc = A Qt-based C++ library for OAuth authorization scheme
+	pkgver = v1.0.30.g02fbc13
+	pkgrel = 1
+	url = https://github.com/ayoy/qoauth
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = qca-qt5
+	provides = qoauth
+	conflicts = qoauth
+	source = git://github.com/ayoy/qoauth.git
+	source = fix_lib_64.patch
+	md5sums = SKIP
+	md5sums = 75d2e129f4a8b8994b48699d71e170b4
+
+pkgname = qoauth-git
+
