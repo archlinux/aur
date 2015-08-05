@@ -1,0 +1,18 @@
+pkgbase = sratoolkit
+	pkgdesc = A toolkit from NCBI to download SRA data files and reference sequences and to do file format conversions
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = http://www.ncbi.nlm.nih.gov/books/NBK158900/
+	arch = x86_64
+	groups = sequence_analysis
+	license = custom
+	depends = libxml2
+	depends = gcc-libs-multilib
+	depends = fuse
+	source = http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.5.2/sratoolkit.2.5.2-ubuntu64.tar.gz
+	source = https://raw.githubusercontent.com/ncbi/sra-tools/master/LICENSE
+	sha1sums = 30cf9c8766c9809271de661d83dbd9e15328fef7
+	sha1sums = 189d29edf32eeec2cf10f5d43b3533207f3f3e87
+
+pkgname = sratoolkit
+
