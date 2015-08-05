@@ -1,17 +1,17 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-bitmerchant
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Bitcoin/altcoin merchant tools"
 arch=('any')
 depends=('python2' 'python2-base58' 'python2-ecdsa' 'python2-six')
 makedepends=('python2-setuptools')
-url="https://pypi.python.org/pypi/bitmerchant"
+url="https://github.com/sbuss/bitmerchant"
 license=('MIT')
 source=(https://pypi.python.org/packages/source/b/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('7a7cb135b0846455fad1b6c38eea0f51')
-sha256sums=('2a4aaa4716979d7740be54fdbcea2b3f8c639c9f0e94b40aeb03289f3048cd0b')
+md5sums=('2f8af9df299af9d529517ffae91b051d')
+sha256sums=('921ca2594c3dffc27e35c04b9197ac94bbecd211fe36bcdc1b567f2194dcd793')
 
 prepare() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
