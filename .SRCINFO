@@ -1,0 +1,25 @@
+pkgbase = mkinitcpio-tpm-encrypt
+	pkgdesc = mkinitcpio to decrypt LUKS passphrase with TPM
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/mkinitcpio-tpm-encrypt/
+	arch = any
+	license = GPL
+	depends = mkinitcpio
+	depends = tpm-tools
+	depends = trousers
+	source = install_tpm
+	source = hook_tpm
+	source = hosts
+	source = passwd
+	source = shadow
+	source = README
+	sha256sums = da6ddaff8783a80568e8990016ee275a6e6ab64d57881a8438e5fadc0a5f07a1
+	sha256sums = 5630d592ab3adc2d461fa90026f2bcc0a81cc4219f62f968992c1c2cc8d958e1
+	sha256sums = 498f494232085ec83303a2bc6f04bea840c2b210fbbeda31a46a6e5674d4fc0e
+	sha256sums = 4b263523f4904bfe340a3208f327697ebd78f9f921e8be0dabdf33535c54a1b5
+	sha256sums = 674c97df063879b4ba04f70312dc67762a36dc81b49a2b2131e7f71432efa1a3
+	sha256sums = 70288bb0e9dc6bf4cd49079a503fb436c1b0b234f23201b24762e47db3cfd1ab
+
+pkgname = mkinitcpio-tpm-encrypt
+

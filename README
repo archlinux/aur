@@ -1,0 +1,66 @@
+
+This is a modified version of the default Archlinux encrypt hook.
+The only difference is that the cryptkey file from the commandline
+is handled by tpm_unsealdata before it is passed to cryptosetup.
+
+Fist the TPM has to be configured and trousers and tpm_tools
+have to be installed.
+
+To initialize the TPM run
+
+# tpm_takeownership
+
+Don't use either -y or -z these are the all-zero default
+passwords. The Storage Root Key (SRK) password will be requestet on
+every boot to open the encrypted LUKS key.
+
+The SRK password can be changed with 
+
+# tpm_changeownerauth -s
+
+In order to create a valid key file run:
+
+# tpm_sealdata --pcr 0 --pcr 1 --pcr 2 --pcr 3 --pcr 4 --pcr 8 --pcr 9 --pcr 12 --pcr 14 -o root.enc
+
+where root.enc is the resulting encrypted file. Save it on your
+EFI System Partition, and specifiy it in the kernel commandline:
+
+cryptkey=/dev/sda1:vfat:/root.enc 
+
+where /dev/sda1 is your ESP, and /root.enc the path to the key.
+
+Modify /etc/mkinitcpio.conf and add the tpm hook
+in the HOOKS array:
+
+HOOKS="base udev keymap autodetect keyboard block tpm filesystems fsck"
+
+(the same as with normal encrypt, you need to add keymap and keyboard
+if you need support for either non US keyboards or keyboards that
+require i.e. USB). Don't forget to add the filesystem dirver
+from cryptkey= to the MODULES array
+
+MODULES="vfat"
+
+Now you can run mkinitcpio, to be save make a backup copy of your working
+initram disk, so that you can use it if the new one is corrupt.
+
+# mkinitcpio -p linux
+
+If everything worked the scipt will ask for your SRK password.
+
+In case a kernel update was performed or if a Firmware configuration
+setting was changed, unsealdata will not return the LUKS key, and a
+warning is displayed.
+
+If you haven't changed something on your system, this warining could
+indicate a possible evil maiden attack.
+
+In order to continue booting the LUKS key has to
+be supplied manually.
+
+So it is IMHO best to have two LUKS keys configured, one that is typable
+in case of an update, and one that is encrypted on the ESP.
+
+After the LUKS key was manually entered, the key has to be reencrypted
+with tpm_seal data as described before with the new PCR data.
+
