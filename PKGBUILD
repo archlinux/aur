@@ -2,10 +2,10 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname='gnome-shell-extension-maximus-two-git'
-pkgdesc="Removes the title bar on maximised windows"
+pkgname=gnome-shell-extension-maximus-two-git
 pkgver=r14.ca00e8a
 pkgrel=2
+pkgdesc="Removes the title bar on maximised windows"
 arch=(any)
 url='https://github.com/johnhoran/GnomeExtensionMaximusTwo'
 license=(GPLv3)
