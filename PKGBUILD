@@ -1,4 +1,4 @@
-# Maintainer: MartiMcFly info@pietma.com
+# Maintainer: MartiMcFly martimcfly@autorisation.de
 
 pkgname=('zarafa-webaccess-mdm')
 _pkgname=('mdm')
