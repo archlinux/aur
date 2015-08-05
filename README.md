@@ -1,4 +1,4 @@
-# AUR php-box-git
+# AUR php-symfony-installer-git
 A [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) script for use in
 the [Arch User Repository](https://aur4.archlinux.org/) that will build a
 package containing the latest version of the 
