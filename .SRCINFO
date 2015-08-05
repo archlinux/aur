@@ -1,0 +1,15 @@
+pkgbase = rosella
+	pkgdesc = Lightweight ircd
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://github.com/eXeC64/Rosella
+	arch = x86_64
+	arch = i686
+	license = AGPL
+	makedepends = go
+	makedepends = git
+	source = rosella::git://github.com/eXeC64/Rosella.git#tag=v1.1.1
+	md5sums = SKIP
+
+pkgname = rosella
+
