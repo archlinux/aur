@@ -2,10 +2,10 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname='gnome-shell-extension-buttons-to-panel'
-pkgdesc="Shows the window buttons of the focused window in the GNOME top panel"
+pkgname=gnome-shell-extension-buttons-to-panel
 pkgver=1
 pkgrel=4
+pkgdesc="Shows the window buttons of the focused window in the GNOME top panel"
 arch=(any)
 url='http://sourceforge.net/projects/buttons-to-panel/'
 license=(GPLv2)
