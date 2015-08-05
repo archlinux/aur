@@ -9,7 +9,7 @@
 pkgname=jnethack
 pkgver=3.4.3_0.11
 _nethackver=${pkgver/_*/}
-pkgrel=5
+pkgrel=6
 pkgdesc='Japanized Nethack, A single player dungeon exploration game'
 arch=('i686' 'x86_64')
 url="http://jnethack.sourceforge.jp/"
@@ -22,11 +22,13 @@ source=("http://downloads.sourceforge.net/${pkgname#j}/${pkgname#j}-${_nethackve
         ${pkgname}-${pkgver//_/-}.diff.gz::"http://sourceforge.jp/frs/redir.php?f=%2Fjnethack%2F58545%2F${pkgname}-${pkgver//_/-}.diff.gz"
         "http://jnethack.sourceforge.jp/patch/utf8-ibm.patch"
         http://www.phys98.homeip.net/~ide/src/jnethack-3.4.3-0.10-yahpmon.patch.bz2
+        RND_MT.diff::"http://fr.osdn.jp/ticket/download.php?group_id=95&tid=4808&file_id=1064"
         jnethack-3.4.3-0.11-mc.diff)
 md5sums=('21479c95990eefe7650df582426457f9'
          '2d7ddbc4772a1fcff9a607abff851a75'
          '33904a278b8c36cb5f17cf7a4db21a97'
          '2d3b58e7b71ef44589d7887434bde3f8'
+         '5bc49d198cc34041ff07c3c8cd596223'
          'b3b4de971fe61738f7de69802174d876')
 
 prepare() {
@@ -35,6 +37,7 @@ prepare() {
   patch -p1 < "$srcdir/utf8-ibm.patch"
   bzcat "$srcdir/jnethack-3.4.3-0.10-yahpmon.patch.bz2" | patch -p1
   patch -p1 < "$srcdir/jnethack-3.4.3-0.11-mc.diff"
+  patch -p1 < "$srcdir/RND_MT.diff"
 }
 
 build(){
