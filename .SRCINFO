@@ -1,0 +1,14 @@
+pkgbase = i686-elf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the i686-elf target
+	pkgver = 2.25
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
+	sha256sums = 22defc65cfa3ef2a3395faaea75d6331c6e62ea5dfacfed3e2ec17b08c882923
+
+pkgname = i686-elf-binutils
+
