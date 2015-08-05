@@ -3,7 +3,7 @@
 pkgname=('zarafa-webaccess-mdm')
 _pkgname=('mdm')
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc=('Mobile Device Management plugin for Zarafa Webaccess')
 arch=('any')
 url=('https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498')
@@ -29,4 +29,10 @@ package() {
 
     mkdir -p ${pkgdir}/etc/php/conf.d
     cp ${srcdir}/${pkgname}.ini ${pkgdir}/etc/php/conf.d
+
+    # perform settings
+    # => replace enable z-push2
+    sed -i -e "s/\(zpush-2'] = \)\(.*\)\(;$\)/\1true\3/" ${pkgdir}/usr/share/webapps/zarafa-webaccess/plugins/${_pkgname}/config.php
+    # => replace with https://
+    sed -i -e "s/\(zpush-url'] = \)\(.*\)\(;$\)/\1\"https\:\/\/localhost\"\3/" ${pkgdir}/usr/share/webapps/zarafa-webaccess/plugins/${_pkgname}/config.php
 }

@@ -1,7 +1,7 @@
 pkgbase = zarafa-webaccess-mdm
 	pkgdesc = Mobile Device Management plugin for Zarafa Webaccess
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498
 	arch = any
 	license = AGPL3
