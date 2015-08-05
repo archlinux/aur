@@ -1,0 +1,18 @@
+pkgbase = avanor
+	pkgdesc = A feature rich fantasy roguelike game with an easy ADOM-like user interface
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = http://sourceforge.net/projects/avanor/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/avanor/avanor-0.5.8-src.tar.bz2
+	source = avanor.desktop
+	source = avanor.png
+	md5sums = 20067962b9635b1789933ddd7933d142
+	md5sums = c9227bf84747d2de3a40fa8512834c01
+	md5sums = 2a5466179019b93d48a63a848bd585bd
+
+pkgname = avanor
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Avanor
+Exec=avanor
+Icon=/usr/share/pixmaps/avanor.png
+Terminal=true
+Type=Application
+Categories=Game;RolePlaying;
+
