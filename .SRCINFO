@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-easyscreencast
+	pkgdesc = Provides a convienent top bar pull-down interface to configure the GNOME Shell Screencast Recording feature.
+	pkgver = 0.9.7.1
+	pkgrel = 1
+	url = https://github.com/iacopodeenosee/EasyScreenCast
+	install = gschemas.install
+	arch = any
+	license = GPL3
+	depends = gnome-shell
+	provides = gnome-shell-extension-easyscreencast
+	conflicts = gnome-shell-extensions-git
+	conflicts = gnome-shell-extensions-easyscreencast
+	source = gnome-shell-extension-easyscreencast::https://github.com/iacopodeenosee/EasyScreenCast/archive/0.9.7.1.tar.gz
+	sha512sums = 7865905782c6897d0b35cb5e3cf2209ff5d0dff2347bdf918c7f857aa0f515f8691de2ae76625b4dd33613715c8e76c206aec8f40824a76ce80596f7ce6f1420
+
+pkgname = gnome-shell-extension-easyscreencast
+
