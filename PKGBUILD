@@ -57,9 +57,10 @@
 ## updated to remove "Y2K" problem. Credit to Tomasz Przybył for reporting the error. Credit to Mark Lee for identifying the cause and fix.
 ## updated to upstream 4.4.3
 ## updated to upstream 4.4.4
+## updated to upstream 5.0.0
 
 pkgname=libreoffice-fresh-rpm
-pkgver=4.4.4
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('i686' 'x86_64')
@@ -70,11 +71,11 @@ makedepends=('curl' 'awk')
 optdepends=('jre7-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 if [ "$(uname -m)" == "i686" ]; then  ## convert bit architecture to libreoffice format
   arch_mod='x86';
-  sha256sums+=('3dc1f43c47955dffe7b826f71fbfc9eed8dc67788172c6dd926c186fb9589c70');
+  sha256sums+=('9278536db8ccc20b0524a59b87c6cfd65ccd9d0de8668333af076e1b0f61d256');
   source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
  else
   arch_mod='x86_64';
-  sha256sums+=('0859d7c4e7b031b69d7e158e71124aefa19e3a50d01cb2f182204d4600387add')
+  sha256sums+=('9d32f4798bda0879c28b2b4b7c2c8d037e6e20c40b01f9b71e8ab9080d6a1703')
   source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 fi;
 
