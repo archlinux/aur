@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 User=srndv2
+Group=srndv2
 Type=simple
 ExecStart=/usr/bin/bash /srv/nntpchan/bootstrap.sh
 ExecReload=/usr/bin/kill -HUP $MAINPID
