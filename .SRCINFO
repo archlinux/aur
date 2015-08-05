@@ -1,0 +1,26 @@
+pkgbase = nagios
+	pkgdesc = Nagios is an open source host, service and network monitoring program.
+	pkgver = 4.0.8
+	pkgrel = 1
+	url = http://www.nagios.org
+	install = nagios.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gd
+	depends = freetype2
+	depends = libtool
+	depends = glib2
+	optdepends = monitoring-plugins: a bundle of standard plugins
+	source = http://downloads.sourceforge.net/nagios/nagios-4.0.8.tar.gz
+	source = nagios.install
+	source = nagios.service
+	md5sums = 4bba4eef427cfb113fb513b6166a6af6
+	md5sums = e11fa7de430ed858269f82e179fc87ca
+	md5sums = 49e077f2d61ede589f55bfd03b597ab0
+	sha1sums = d49586db6905a8e58a082251d8f89ef5c2cab872
+	sha1sums = 04008cee208226e60b099550bd9ec7dc78cb1457
+	sha1sums = 0df0b4c6976c1562b03e261926b7c2cae6061595
+
+pkgname = nagios
+

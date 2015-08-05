@@ -1,0 +1,41 @@
+# arg 1:  the new package version
+
+post_install() {
+	cat <<EOM
+
+--> Sample config files are installed with .sample extension.
+--> Remember, these are *SAMPLE* config files.  You'll need to read
+--> the documentation for more information on how to actually define
+--> services, hosts, etc. to fit your particular needs.
+
+EOM
+
+	getent group nagios > /dev/null || groupadd -g 30 nagios > /dev/null
+	getent passwd nagios > /dev/null || useradd -u 30 -g nagios -d /dev/null -s /bin/false nagios > /dev/null
+}
+
+pre_upgrade() {
+
+	_httpdconf="/etc/httpd/conf/extra/nagios.conf"
+	if [ -f $_httpdconf ]; then
+		cp $_httpdconf $_httpdconf.pacsave
+	fi
+	
+}
+
+post_upgrade() {
+
+	post_install
+
+	find /var/nagios -user nobody -exec chown nagios.nagios {} \;
+	if [ -f /var/log/nagios.log ]; then
+	   chown nagios /var/log/nagios.log
+	fi
+
+	_httpdconf="/etc/httpd/conf/extra/nagios.conf"
+	if [ ! -f $_httpdconf -a -f $_httpdconf.pacsave ]; then
+		cp $_httpdconf.pacsave $_httpdconf
+	fi
+
+}
+
