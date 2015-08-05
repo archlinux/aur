@@ -1,0 +1,15 @@
+pkgbase = fseq
+	pkgdesc = software package that generates a continuous tag sequence density estimation allowing identification of biologically meaningful sites whose output can be displayed directly in the UCSC Genome Browser
+	pkgver = 1.84
+	pkgrel = 1
+	url = http://fureylab.web.unc.edu/software/fseq/
+	arch = any
+	license = GPL3
+	depends = java-environment
+	source = http://fureylab.med.unc.edu/fseq/fseq_1.84.tgz
+	source = fseq.sh
+	sha1sums = 47921ef9cce35de1304baaa529b90a41834b29fb
+	sha1sums = 21784aa264ed296efd630644383e2579b44af451
+
+pkgname = fseq
+
