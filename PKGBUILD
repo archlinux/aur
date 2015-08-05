@@ -22,7 +22,7 @@ package() {
   sudo make install
   sudo install -D "src/dattobd.ko" "/usr/lib/modules//$(uname -r)/"
   sudo install -D "../dattobd.conf" "/etc/modules-load.d/"
-  sudo rm -f "src/dattobd/src/.tmp_versions/dattobd.mod"
+  sudo rm -f "src/.tmp_versions/dattobd.mod"
   sudo modprobe dattobd
 }
 
