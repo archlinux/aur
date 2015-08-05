@@ -6,8 +6,7 @@ pkgver=1.2
 pkgrel=2
 pkgdesc=('Passwd plugin for Zarafa Webapp')
 arch=('any')
-url=('https://github.com/silentsakky/zarafa-webapp-passwd'
-     'http://pietma.com')
+url=('https://github.com/silentsakky/zarafa-webapp-passwd')
 source=("https://github.com/silentsakky/zarafa-webapp-passwd/raw/master/builds/passwd-1.2.zip")
 license=('AGPL3')
 depends=('zarafa-webapp'
