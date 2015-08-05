@@ -1,8 +1,3 @@
-# Maintainer (Arch): Joakim Hernberg <jbh@alchemy.lu>
-# Contributor (Arch): Ray Rashif <schiv@archlinux.org>
-# Contributor (Arch): timbosa <tinny_tim@dodo.com.au>
-# Contributor (Arch): Tobias Powalowski <tpowa@archlinux.org>
-# Contributor (Arch): Thomas Baechler <thomas@archlinux.org>
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
 # Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
@@ -10,11 +5,13 @@
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
-pkgbase=linux-libre-rt      # Build stock -rt kernel
-_pkgbasever=4.0-gnu
-_pkgver=4.0.8-gnu
-_rtbasever=4.0
-_rtpatchver=rt6
+# Based on linux-rt package
+
+pkgbase=linux-libre-rt
+_pkgbasever=4.1-gnu
+_pkgver=4.1.3-gnu
+_rtbasever=4.1
+_rtpatchver=rt3
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -23,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -45,12 +42,16 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        '0001-block-loop-convert-to-per-device-workqueue.patch'
+        '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
+        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
+        'bitmap-enable-booting-for-dm-md-raid1.patch'
         'change-default-console-loglevel.patch')
-sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
+sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '16153fc11146d0de0158b7f7ed24437b42c61a16e5e404b258d04bdceef5b9e0'
+            'd52669f17a1cd13abba4f47a04e1991be59cfa707926b21f9c5bf031ec10c5d0'
             'SKIP'
-            'e89e33318b32c7f0a4a81d6c65751bbc57480f31485a019292f4702673b27174'
+            '42a8d2a54dfd6dc8f351f3b56855b55fcc1aadb8805cc6d07c3b9479aea55c96'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -58,9 +59,13 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '8c2c3bf41a61251a5cb02650a639768ee80f2482a2f21885ee1c73af85999978'
-            'e2d986b6adac4c98cb4a124bdad95a7963683260e4d02d5423618285fe470b2c'
+            '6ed39920f77f08b9e309d16ba815c58081eeb5fed6057778ebe8ba278df83b2c'
+            '068a1ae5ab0455a5eef0b51f9616082a30943f1cc0cdd307d9d371c78a23153e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
+            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
+            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
+            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -96,6 +101,20 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # Fix deadlock with stacked loop devices (FS#45129)
+  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
+  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
+  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+
+  # Fix bluetooth chip initialization on some macbooks (FS#45554)
+  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
+  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
+
+  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
+  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
