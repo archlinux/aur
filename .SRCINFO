@@ -1,0 +1,36 @@
+pkgbase = dosbox-sdl2
+	pkgdesc = Emulator with builtin DOS for running DOS Games (SDL2)
+	pkgver = 0.74.3925
+	pkgrel = 1
+	url = http://www.vogons.org/viewtopic.php?f=32&t=34770
+	install = dosbox-sdl2.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = subversion
+	depends = sdl2
+	depends = sdl2_net
+	depends = sdl_sound-hg
+	depends = zlib
+	depends = libgl
+	depends = libpng
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = dosbox
+	conflicts = dosbox
+	source = dosbox-sdl2::svn+https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/trunk#revision=3925
+	source = dosbox_sdl2_20150713.diff.gz
+	source = dosbox-128.png
+	source = dosbox-48.png
+	source = dosbox-16.png
+	source = dosbox-sdl2.desktop
+	sha256sums = SKIP
+	sha256sums = 4a1f2b4de5aef0ac8fe234c843db9adcfd5465c20f0cad02136f4160b576f410
+	sha256sums = 228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81
+	sha256sums = e71a3984170b3bf7af7d9cfbec0752187d70be76602721a1227b60980d7c380a
+	sha256sums = e657254e56dd7d66cb1cefbf37f0f360e13a221bc60b1638c00dcda508f7fd56
+	sha256sums = 7c8db8a5a475f54283748b539b50fa49b59a87c5ff80e94e82520530b996f871
+
+pkgname = dosbox-sdl2
+
