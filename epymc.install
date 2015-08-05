@@ -1,5 +1,6 @@
 post_install() {
   [[ -x /usr/bin/update-desktop-database ]] && update-desktop-database -q
+  [[ -x /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -q /usr/share/icons/hicolor
 }
 
 post_upgrade() {
