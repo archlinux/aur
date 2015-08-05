@@ -2,11 +2,11 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname='gnome-shell-extension-middleclickclose'
+pkgname=gnome-shell-extension-middleclickclose
 _extname='middleclickclose@paolo.tranquilli.gmail.com'
-pkgdesc="Close windows with a button click (the middle one by default) when in overview mode"
 pkgver=6
 pkgrel=2
+pkgdesc="Close windows with a button click (the middle one by default) when in overview mode"
 arch=(any)
 url='http://sourceforge.net/projects/buttons-to-panel/'
 license=(unknown)
