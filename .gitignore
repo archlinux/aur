@@ -1,4 +1,4 @@
 *.pkg.tar.xz
 pkg
 src
-weatherspect_v1.11.tar.gz
+weatherspect_v*.tar.gz
