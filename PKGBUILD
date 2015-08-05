@@ -1,10 +1,11 @@
-# Maintainer: Wang Jiajun <amesists@gmail.com>
+# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Wang Jiajun <amesists@gmail.com>
+
 pkgname=kdesrc-build-git
-_pkgname=kdesrc-build
-pkgver=v1.15.477.g2d3cbfe
+pkgver=v15.05.r9.g517c5b8
 pkgrel=1
-pkgdesc="A tool to allow you to easily build KDE from its source repositories. GIT version."
-url="http://kdesrc-build.kde.org/"
+pkgdesc="A script to build KDE software from KDE's source repositories"
+url='http://kdesrc-build.kde.org/'
 arch=('any')
 license=('GPL')
 depends=('perl' 'perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json')
@@ -13,30 +14,33 @@ conflicts=('kdesrc-build')
 provides=('kdesrc-build')
 optdepends=('subversion: download source code using svn'
             'git: download source code using git')
-source=("git://anongit.kde.org/kdesrc-build")
+source=('git://anongit.kde.org/kdesrc-build.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  # Use the tag of the last commit
-  local ver="$(git describe --long)"
-  printf "%s" "${ver//-/.}"
+  cd kdesrc-build
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  mkdir build
   cd build
-  cmake ../${_gitname} \
+  cmake ../kdesrc-build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix`
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/build"
+  cd build
   make DESTDIR="${pkgdir}" install
 
-  mkdir -p "${pkgdir}/usr/share/kdesrc-build/"
-  cp "${srcdir}/${_pkgname}/kdesrc-buildrc-sample" "${pkgdir}/usr/share/kdesrc-build/"
+  install -d "${pkgdir}"/usr/share/doc/samples
+  install -Dm644 ../kdesrc-build/kdesrc-buildrc-{,kf5-}sample \
+    "${pkgdir}"/usr/share/doc/samples/
+  install -Dm644 ../kdesrc-build/kf5-{applications,frameworks,kdepim,qt5,workspace}-build-include \
+    "${pkgdir}"/usr/share/doc/samples/
 }
