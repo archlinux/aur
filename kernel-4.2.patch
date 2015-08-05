@@ -1,0 +1,47 @@
+#Index: trunk/src/VBox/Additions/linux/sharedfolders/lnkops.c
+#===================================================================
+# https://raw.githubusercontent.com/manjaro/packages-extra/master/linux42-extramodules/virtualbox-modules/kernel-4.2.patch
+diff --git a/vboxsf/lnkops.c b/vboxsf/lnkops.c
+
+--- a/vboxsf/lnkops.c
++++ b/vboxsf/lnkops.c
+@@ -21,5 +21,9 @@
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
+ 
++# if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++static const char *sf_follow_link(struct dentry *dentry, void **cookie)
++# else
+ static void *sf_follow_link(struct dentry *dentry, struct nameidata *nd)
++# endif
+ {
+     struct inode *inode = dentry->d_inode;
+@@ -41,8 +45,13 @@
+         }
+     }
++# if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++    return error ? ERR_PTR(error) : (*cookie = path);
++# else
+     nd_set_link(nd, error ? ERR_PTR(error) : path);
+     return NULL;
++# endif
+ }
+ 
++# if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+ static void sf_put_link(struct dentry *dentry, struct nameidata *nd, void *cookie)
+ {
+@@ -51,4 +60,5 @@
+         free_page((unsigned long)page);
+ }
++#endif
+ 
+ struct inode_operations sf_lnk_iops =
+@@ -56,5 +66,9 @@
+     .readlink       = generic_readlink,
+     .follow_link    = sf_follow_link,
++# if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++    .put_link       = free_page_put_link,
++# else
+     .put_link       = sf_put_link
++# endif
+ };
+ 

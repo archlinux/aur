@@ -5,7 +5,7 @@
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -13,16 +13,27 @@ depends=('linux-mainline>=4.2rc1' 'linux-mainline<4.3rc1')
 makedepends=('dkms' 'linux-mainline-headers>=4.2rc1' 'linux-mainline-headers<4.3rc1' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver")
 # remember to also adjust the .install files and the package deps below
 _extramodules=extramodules-4.2-mainline
+source=('kernel-4.2.patch')
+sha256sums=('c217050dcc52b7cadfb9db86aae9fcf2c90ac86b1cc498b91d3fdfb0a1eca80d')
 
-build() {
-  _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
+prepare() {
   # dkms need modification to be run as user
   cp -r /var/lib/dkms .
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
+
+  # workaround to patch for linux 4.2
+  # credits: Philip Müller <philm@manjaro.org>
+  rm -r $srcdir/dkms/vboxguest/$pkgver/source
+  cp -r /usr/src/vboxguest-$pkgver $srcdir/dkms/vboxguest/$pkgver/source
+  cd dkms/vboxguest/$pkgver/source
+  patch -Np1 -i $srcdir/kernel-4.2.patch
+}
+
+build() {
   # build host modules
   msg2 'Host modules'
   dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
-  # build guest modules
+  # build guest modules  
   msg2 'Guest modules'
   dkms --dkmsframework dkms.conf build "vboxguest/$pkgver" -k "$_kernver"
 }

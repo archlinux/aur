@@ -1,6 +1,6 @@
 pkgbase = virtualbox-modules-mainline
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = virtualbox-modules-mainline
 	makedepends = virtualbox-guest-dkms>=5.0.0
 	depends = linux-mainline>=4.2rc1
 	depends = linux-mainline<4.3rc1
+	source = kernel-4.2.patch
+	sha256sums = c217050dcc52b7cadfb9db86aae9fcf2c90ac86b1cc498b91d3fdfb0a1eca80d
 
 pkgname = virtualbox-host-modules-mainline
 	pkgdesc = Host kernel modules for VirtualBox running under linux-mainline
