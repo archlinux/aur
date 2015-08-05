@@ -1,6 +1,5 @@
 # Maintainer: MartiMcFly info@pietma.com
 # Contributor: Archist archist@die-optimisten.net
-# Contributor: C Anthony Risinger
 
 pkgname=('zarafa-webapp'
 	 'zarafa-webapp-plugins')
