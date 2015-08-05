@@ -2,8 +2,8 @@
 
 pkgname=linux-source
 _pkgname=linux
-pkgver=4.1.3
-pkgrel=3
+pkgver=4.1.4
+pkgrel=1
 pkgdesc='Source files for the Linux Kernel'
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
