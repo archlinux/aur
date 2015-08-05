@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-freon
 pkgver=13
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
 url="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
@@ -20,7 +20,12 @@ source=("${pkgname}::https://github.com/UshakovVasilii/gnome-shell-extension-fre
 sha512sums=('ff1cb2b6294b85d955b25d74242f2905004be4b475e758cbe8e7d199a579fc113422b6d4c6d445c13508f23740078ccde59db99480026cc443b3db5beacb9c45')
 
 package() {
-  cd "${srcdir}/${pkgname}-EGO-13"
-  mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions"
-  cp -r freon@UshakovVasilii_Github.yahoo.com "${pkgdir}/usr/share/gnome-shell/extensions/"
+  # Locate the extension.
+  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+  _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
+  # Copy extension files into place.
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' -or -iname '*.gtkbuilder' \) -exec install -Dm644 -t "${_destdir}" '{}' +
+  find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/images" '{}' +
+  find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
 }
