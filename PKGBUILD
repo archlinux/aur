@@ -2,7 +2,7 @@
 
 pkgname=jackett
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc='User any tracker with Sonarr'
 arch=('any')
 license=('GPL')

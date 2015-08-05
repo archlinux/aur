@@ -9,7 +9,7 @@ post_install() {
 	else
 		useradd -s /bin/false -c "jackett daemon user" -d /usr/share/Jackett -g jackett -r jackett &> /dev/null
 	fi
-    chown -R jackett: /usr/share/Jackett
+    chown -R jackett: /usr/share/Jackett /opt/Jackett
 }
 
 post_upgrade() {
