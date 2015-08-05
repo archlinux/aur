@@ -1,0 +1,14 @@
+pkgbase = bat-svn
+	pkgdesc = Binary Analysis Tool
+	pkgver = r4171
+	pkgrel = 1
+	url = http://www.binaryanalysis.org
+	arch = any
+	license = APACHE
+	makedepends = svn
+	depends = python2
+	source = bat-svn::svn+https://tjaldur.nl:8443/repos/gpltool/trunk
+	md5sums = SKIP
+
+pkgname = bat-svn
+
