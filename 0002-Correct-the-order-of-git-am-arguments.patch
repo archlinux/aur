@@ -1,0 +1,25 @@
+From 70e4efe848724d88d87973535ac5cc4969ad868e Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Wed, 5 Aug 2015 00:59:09 -0700
+Subject: [PATCH 2/2] Correct the order of git-am arguments
+
+---
+ git-debubble | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/git-debubble b/git-debubble
+index 26c3537..6d836a6 100755
+--- a/git-debubble
++++ b/git-debubble
+@@ -38,7 +38,7 @@ case $mode in
+ 	    if git branch $debubbled; then
+ 		git checkout master
+ 		git checkout $debubbled
+-		if git --committer-date-is-author-date am 0*; then
++		if git am --committer-date-is-author-date 0*; then
+ 		    rm 0*
+ 		    if git branch --move $head $bubbled; then
+ 			if git branch --move $debubbled $head; then
+-- 
+2.5.0
+

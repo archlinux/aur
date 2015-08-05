@@ -1,0 +1,49 @@
+From 7761604bd39ff77356a9142caef1577f2046bde5 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Wed, 5 Aug 2015 00:56:30 -0700
+Subject: [PATCH 1/2] Makefile: Sanitize the install and uninstall targets
+
+install shouldn't really depend on uninstall; it interferes with
+packaging (especially when doing things as a non-root user).  Also,
+give it a little bit more flexibility for choice of installation
+location as well as defaulting to /usr/local which is a place for
+manually installed software, not /usr directly.
+---
+ Makefile | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 87c023c..00ec1ea 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,15 +19,21 @@ all: git-debubble.1
+ clean:
+ 	rm -f *~ *.1 *.html rm -f docbook-xsl.css MANIFEST
+ 
+-install: git-debubble.1 uninstall
+-	install -m 0755 -d $(DESTDIR)/usr/bin
+-	install -m 0755 -d $(DESTDIR)/usr/share/man/man1
+-	install -m 0755 git-debubble $(DESTDIR)/usr/bin/
+-	install -m 0644 git-debubble.1 $(DESTDIR)/usr/share/man/man1/
++prefix?=/usr/local
++mandir?=share/man
++target=$(DESTDIR)$(prefix)
+ 
++install: git-debubble.1
++	install -d $(target)/bin
++	install -d $(target)/$(mandir)/man1
++	install -m 755 git-debubble $(target)/bin/
++	install -m 644 git-debubble.1 $(target)/$(mandir)/man1/
+ 
+ uninstall:
+-	rm -f /usr/bin/git-debubble /usr/share/man/man1/git-debubble.1
++	rm $(target)/$(mandir)/man1/git-debubble.1
++	rm $(target)/bin/git-debubble
++	-rmdir -p $(target)/$(mandir)/man1
++	-rmdir -p $(target)/bin
+ 
+ version:
+ 	@echo $(VERS)
+-- 
+2.5.0
+
