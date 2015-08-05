@@ -1,0 +1,15 @@
+pkgbase = perl-math-cdf
+	pkgdesc = Generate probabilities and quantiles from several statistical probability functions
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://search.cpan.org/~callahan/Math-CDF-0.1/CDF.pm
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/C/CA/CALLAHAN/Math-CDF-0.1.tar.gz
+	sha1sums = b0c027f9ebf5fca55c7acac8e1c832eae83c9263
+
+pkgname = perl-math-cdf
+
