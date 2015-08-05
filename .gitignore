@@ -1,5 +1,5 @@
-*/src
-*/pkg
+src/
+pkg/
 *.gz
 *.xz
 *.bz2
@@ -10,6 +10,6 @@
 *.txt
 *.log
 *.scm
-*/canto-curses
-*/*.pkg
-*/*.asc
+canto-curses/
+*.pkg
+*.asc
