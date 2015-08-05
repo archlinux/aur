@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-lockkeys-git
 pkgver=r77.76ac557
-pkgrel=3
+pkgrel=4
 pkgdesc="Lock key state indicator for GNOME Shell."
 arch=('any')
 url="https://github.com/kazysmaster/gnome-shell-extension-lockkeys"
@@ -33,13 +33,17 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-*}"
-  for d in $(find ./lockkeys@vaina.lt -type d)
-  do
-    mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions/$d"
-  done
-  for f in $(find ./lockkeys@vaina.lt -type f)
-  do
-    install -m0644 $f "${pkgdir}/usr/share/gnome-shell/extensions/$f"
-  done
+  # Locate the extension.
+  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+  _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
+  # Copy extension files into place.
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' -or -iname '*.gtkbuilder' \) -exec install -Dm644 -t "${_destdir}" '{}' +
+  find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/images" '{}' +
+  find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
+  cd locale
+  for locale in */
+    do
+      install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
+    done
 }
