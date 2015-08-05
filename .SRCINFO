@@ -1,19 +1,17 @@
-pkgbase = go-ipfs-git
+pkgbase = go-ipfs
 	pkgdesc = global versioned p2p merkledag file system
-	pkgver = 0.3.7.r2.gb30d9d4
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/ipfs/go-ipfs
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	makedepends = git
 	makedepends = go
 	optdepends = fuse: for mounting/advanced use
-	provides = go-ipfs
-	conflicts = go-ipfs
-	source = git+https://github.com/ipfs/go-ipfs.git
-	md5sums = SKIP
+	conflicts = go-ipfs-git
+	source = https://github.com/ipfs/go-ipfs/archive/v0.3.7.tar.gz
+	sha512sums = 1c464e409f0d07f8a7c5510defbb0d602ea3049534cfc15dd4f69ed91bcd37a5f5ecce113921c66b416ad3c4372b986b6261438dad9eb795a502cbce8f728359
 
-pkgname = go-ipfs-git
+pkgname = go-ipfs
 

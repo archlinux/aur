@@ -1,25 +1,18 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Ian Naval <ianonavy@gmail.com>
 
-_pkgname=go-ipfs
-pkgname=$_pkgname-git
-pkgver=0.3.7.r2.gb30d9d4
+pkgname=go-ipfs
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="global versioned p2p merkledag file system"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/ipfs/$_pkgname"
+url="https://github.com/ipfs/$pkgname"
 license=('MIT')
-makedepends=('git' 'go')
+makedepends=('go')
 optdepends=('fuse: for mounting/advanced use')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+${url}.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+conflicts=("$pkgname-git")
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('1c464e409f0d07f8a7c5510defbb0d602ea3049534cfc15dd4f69ed91bcd37a5f5ecce113921c66b416ad3c4372b986b6261438dad9eb795a502cbce8f728359')
 
 build() {
   # Required for go get
@@ -28,8 +21,8 @@ build() {
   # Make src directory for $GOPATH
   mkdir -p "$GOPATH/src"
 
-  mv "$srcdir/$_pkgname" "$GOPATH/src"
-  cd "$GOPATH/src/$_pkgname/cmd/ipfs"
+  mv "$srcdir/$pkgname" "$GOPATH/src"
+  cd "$GOPATH/src/$pkgname/cmd/ipfs"
 
   msg2 'Installing dependencies...'
   go get -v ./...
