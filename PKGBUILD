@@ -2,10 +2,10 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname='gnome-shell-extension-hidetopbar-git'
-pkgdesc="Gnome 3 extension to hide the top bar except in overview mode"
+pkgname=gnome-shell-extension-hidetopbar-git
 pkgver=r132.9758a91
 pkgrel=1
+pkgdesc="Gnome 3 extension to hide the top bar except in overview mode"
 arch=(any)
 url='https://github.com/mlutfy/hidetopbar'
 license=(GPLv2)
