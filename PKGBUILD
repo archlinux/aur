@@ -1,6 +1,6 @@
 # Maintainer: Kamil Cukrowski <kamilcukrowski@gmail.com>
 
-pkgname=cukrowski_firewall
+pkgname=cukrowski.cukrowski_firewall
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Set of rules and files modifying iptables and ipset rules."
