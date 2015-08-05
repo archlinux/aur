@@ -1,0 +1,14 @@
+pkgbase = scythe-git
+	pkgdesc = A Bayesian adapter trimmer
+	pkgver = 133.20d3cff
+	pkgrel = 1
+	url = https://github.com/vsbuffalo/scythe
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = zlib
+	source = scythe-git::git+https://github.com/vsbuffalo/scythe.git
+	md5sums = SKIP
+
+pkgname = scythe-git
+
