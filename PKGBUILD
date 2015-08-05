@@ -1,4 +1,4 @@
-# Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 pkgname=amidstexporter
 pkgver='1.39'
