@@ -1,0 +1,25 @@
+diff --git a/ffmpeg.gyp b/ffmpeg.gyp
+index b42293b..aa3ddde 100755
+--- a/ffmpeg.gyp
++++ b/ffmpeg.gyp
+@@ -75,6 +75,8 @@
+ 
+     'build_ffmpegsumo%': 1,
+ 
++    'ffmpeg_soname_version%': '',
++
+     # Locations for generated artifacts.
+     'shared_generated_dir': '<(SHARED_INTERMEDIATE_DIR)/third_party/ffmpeg',
+ 
+@@ -336,6 +338,11 @@
+                     '-Wl,-Bsymbolic',
+                     '-L<(shared_generated_dir)',
+                   ],
++                  'conditions': [
++                    ['ffmpeg_soname_version != ""', {
++                      'product_extension': 'so.<(ffmpeg_soname_version)',
++                    }],
++                  ],
+                 }],
+               ],
+             }],  # os_posix == 1 and OS != "mac"

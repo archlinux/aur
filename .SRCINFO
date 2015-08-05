@@ -1,0 +1,25 @@
+pkgbase = opera-ffmpeg-codecs
+	pkgdesc = additional support for proprietary codecs for opera
+	pkgver = 31
+	pkgrel = 1
+	url = https://ffmpeg.org/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gtk2
+	makedepends = libexif
+	makedepends = libpulse
+	makedepends = libxss
+	makedepends = ninja
+	makedepends = nss
+	makedepends = pciutils
+	makedepends = python2
+	makedepends = xdg-utils
+	depends = glibc
+	options = !strip
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-44.0.2403.130.tar.xz
+	source = patch_ffmpeg_gyp.patch
+	sha256sums = 37779b2f4844e1a6ac75d69897031955541ad97f3dd1d4ad641c371c1d63b414
+	sha256sums = 73127edde4450f007cc696711ab0ea84a8c498d7fe369df7bad3c29a0ac075a8
+
+pkgname = opera-ffmpeg-codecs
+
