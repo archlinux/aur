@@ -2,7 +2,7 @@
 
 pkgname=libmaxminddb-git
 _gitname=libmaxminddb
-pkgver=r869.cbae1a2
+pkgver=r959.00316fe
 pkgrel=1
 pkgdesc="C library for the MaxMind DB file format"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git')
 conflicts=()
 options=('!libtool')
-provides=()
+provides=('libmaxminddb')
 source=("$_gitname::git+https://github.com/maxmind/libmaxminddb.git"
         'libtap::git+https://github.com/zorgnax/libtap.git'
         'MaxMind-DB::git+https://github.com/maxmind/MaxMind-DB.git')
@@ -51,3 +51,7 @@ package() {
   cd "$srcdir/$_gitname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
+
+# Local Variables:
+# compile-command: "makepkg -sm && mksrcinfo"
+# End:
