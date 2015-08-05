@@ -1,0 +1,13 @@
+post_install() {
+  /opt/ucsf-chimera/bin/xdg-setup install
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  /opt/ucsf-chimera/bin/xdg-setup uninstall
+}
+
+# vim: ft=sh ts=2 sw=2 et

@@ -1,0 +1,12 @@
+pkgbase = ucsf-chimera
+	pkgdesc = Extensible molecular modeling system
+	pkgver = 1.10.1
+	pkgrel = 3
+	url = https://rbvi.ucsf.edu/chimera/
+	install = ucsf-chimera.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+
+pkgname = ucsf-chimera
+
