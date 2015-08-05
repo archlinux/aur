@@ -2,12 +2,12 @@
 
 pkgname=canto-curses
 pkgver=0.9.6
-pkgrel=1
+pkgrel=3
 pkgdesc="ncurses user interface for canto-daemon"
 url="http://codezen.org/canto-ng/"
 license="GPL"
 arch=('i686' 'x86_64')
-depends=('ncurses' 'readline' 'canto-daemon>=0.9.0')
+depends=('ncurses' 'readline' 'canto-daemon>=0.9.2')
 optdepends=('xdg-utils: xdg-open is used as default browser')
 source=(https://github.com/themoken/$pkgname/archive/v$pkgver.tar.gz)
 md5sums=('a8f9bbde8b02036e70b77f3f9c8424bf')
