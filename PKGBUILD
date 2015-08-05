@@ -1,4 +1,4 @@
-# Maintainer: MartiMcFly info@pietma.com
+# Maintainer: MartiMcFly martimcfly@autorisation.de
 # Contributor: Archist archist@die-optimisten.net
 
 pkgname=('zarafa-webapp'
