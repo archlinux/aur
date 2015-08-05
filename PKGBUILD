@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-bitmerchant-git
-pkgver=20150802
+pkgver=20150804
 pkgrel=1
 pkgdesc="Bitcoin/altcoin merchant tools"
 arch=('any')
