@@ -1,22 +1,27 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=20150327
+pkgver=20150805
 pkgrel=1
 pkgdesc="Decentralised Consensus-based Deterministic Transaction Resolution Platform"
 arch=('i686' 'x86_64')
-depends=('boost'
+depends=('argtable'
+         'boost'
          'boost-libs'
          'curl'
          'crypto++'
          'gmp'
          'jsoncpp'
          'leveldb'
-         'libjson-rpc-cpp-git'
+         'libcpuid'
+         'libedit'
+         'libjson-rpc-cpp'
          'libmicrohttpd'
          'miniupnpc'
          'ncurses'
          'nodejs'
+         'ocl-icd'
+         'opencl-headers'
          'openssl'
          'python2'
          'qt5-base'
@@ -26,6 +31,7 @@ depends=('boost'
          'qt5-webengine'
          'qt5-webkit'
          'readline'
+         'rocksdb'
          'snappy')
 makedepends=('autoconf'
              'automake'
@@ -33,6 +39,7 @@ makedepends=('autoconf'
              'gcc'
              'git'
              'libtool'
+             'v8-3.15'
              'yasm')
 groups=('ethereum')
 url="https://github.com/ethereum/cpp-ethereum"
@@ -43,11 +50,14 @@ provides=('abi'
           'alethzero'
           'cpp-ethereum'
           'eth'
+          'ethconsole'
+          'ethkey'
+          'ethminer'
           'ethrpctest'
+          'ethvm'
           'ethereum'
           'lllc'
           'mix'
-          'neth'
           'rlp'
           'sc'
           'solc')
@@ -56,12 +66,15 @@ conflicts=('abi'
            'cpp-ethereum'
            'elixir'
            'eth'
+           'ethconsole'
+           'ethkey'
+           'ethminer'
            'ethrpctest'
+           'ethvm'
            'ethereum'
            'ethereum-serpent'
            'lllc'
            'mix'
-           'neth'
            'rlp'
            'sc'
            'secp256k1'
@@ -79,9 +92,12 @@ build() {
   mkdir -p build && pushd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release \
-           -DVMTRACE=0 \
+           -DETHASHCL=1 \
+           -DEVMJIT=0 \
            -DFATDB=1 \
-           -DEVMJIT=0
+           -DROCKSDB=0 \
+           -DUSENPM=1 \
+           -DVMTRACE=0
   #make -j $(cat /proc/cpuinfo | grep processor | wc -l)
   make
   popd
