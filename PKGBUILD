@@ -8,7 +8,7 @@ url="https://pypi.python.org/pypi/${pkgname}"
 license=('BSD')
 groups=()
 # these dependencies are pulled from this package's setup.py
-depends=('python' 'python-click' 'python-pygments' 'python-prompt-toolkit' 'python-pymysql' 'python-sqlparse' 'python-configobj')
+depends=('python' 'python-click' 'python-pygments' 'python-prompt_toolkit' 'python-pymysql' 'python-sqlparse' 'python-configobj')
 makedepends=()
 provides=()
 conflicts=()
