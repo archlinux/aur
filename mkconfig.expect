@@ -1,0 +1,50 @@
+#!/usr/bin/expect
+
+if { 0 == [info exists env(PKGDIR)] } {
+  puts "PKGDIR environment variable must be set"
+  exit 1
+}
+
+set timeout -1
+spawn make
+
+expect "Install directory *\/usr\/share\/man\/$env(LANG)"
+send "$env(PKGDIR)\/usr\/share\/man\/ja_JP\.UTF\-8\n"
+
+expect "compress manual with"
+expect "0: none"
+expect "select"
+send "0\n"
+
+expect "uname of page owner *root"
+send "\n"
+
+expect "group of page owner *root"
+send "\n"
+
+expect "All OK?"
+send "y\n"
+
+expect "INSTALL PACKAGE SELECTION"
+while { true } {
+  expect "Y/n" {
+    send "\n"
+  } "y/N" {
+    send "\n"
+  } "All OK?" {
+    send "y\n"
+    break
+  }
+}
+
+expect "RESOLVE CONFLICTS"
+while { true } {
+  expect "Which to install?" {
+    send "\n"
+  } "All OK?" {
+    send "y\n"
+    break
+  }
+}
+
+interact
