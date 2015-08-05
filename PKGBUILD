@@ -10,17 +10,17 @@ license=('AGPL3')
 depends=('python-jinja' 'python-pygments' 'python-feedgenerator' 'python-pytz'
          'python-docutils' 'python-blinker' 'python-unidecode' 'python-six'
          'python-dateutil')
-optdepends=('python-markdown:       for Markdown support'
-            'asciidoc:              for AsciiDoc support'
-            'python-beautifulsoup4: for importing from wordpress/dotclear/posterous'
-            'python-feedparser:     for importing from feeds'
-            'python-rst2pdf:        for PDF generation'
-            'openssh:               for uploading through SSH'
-            'rsync:                 for uploading through rsync+SSH'
-            'lftp:                  for uploading through FTP'
-            's3cmd:                 for uploading through S3'
-            'ghp-import:            for uploading through gh-pages'
-            'python-typogrify:      for typographical enhancements')
+optdepends=('python-markdown: Markdown support'
+            'asciidoc: AsciiDoc support'
+            'python-beautifulsoup4: importing from wordpress/dotclear/posterous'
+            'python-feedparser: importing from feeds'
+            'python-rst2pdf: PDF generation'
+            'openssh: uploading through SSH'
+            'rsync: uploading through rsync+SSH'
+            'lftp: uploading through FTP'
+            's3cmd: uploading through S3'
+            'ghp-import: uploading through gh-pages'
+            'python-typogrify: typographical enhancements')
 source=("http://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('393eb7c19ed99336c2fb542084ada81d6db2c8ebb7a3f63066e27fc2eae2cef6')
 
