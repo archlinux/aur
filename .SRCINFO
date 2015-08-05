@@ -1,18 +1,19 @@
 pkgbase = epymc
 	pkgdesc = Media Center based on EFL
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/DaveMDS/epymc
 	install = epymc.install
 	arch = any
 	license = GPL3
-	depends = python2-efl
+	depends = python-efl
+	depends = hicolor-icon-theme
 	optdepends = lirc: remote contol support
-	optdepends = mutagen: Music module
-	optdepends = python2-beautifulsoup4: Online Channels module
+	optdepends = python-mutagen: Music module
+	optdepends = python-beautifulsoup4: Online Channels module
 	optdepends = sdlmame: MAME module
-	source = https://github.com/DaveMDS/epymc/archive/v1.0.0.tar.gz
-	sha256sums = 062d1ad370f0abeb08d537e5d89d4895ea03eff3363262ab26dfee37b6d55a7d
+	source = epymc-1.1.0.tar.gz::https://github.com/DaveMDS/epymc/archive/v1.1.0.tar.gz
+	sha256sums = a36968c99eda910103cf35f80686b1a92f61b34d9054aa2a5e38089f9c4e9083
 
 pkgname = epymc
 
