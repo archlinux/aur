@@ -1,0 +1,30 @@
+pkgbase = kcalc-kde4
+	pkgdesc = Scientific Calculator
+	pkgver = 4.14.3
+	pkgrel = 1
+	url = http://kde.org/applications/utilities/kcalc
+	install = kcalc-kde4.install
+	arch = i686
+	arch = x86_64
+	arch = armv7
+	arch = armv6
+	arch = armv5
+	groups = kde-applications
+	groups = kdeutils
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	makedepends = automoc4
+	depends = qt4
+	depends = kdebase-lib
+	depends = kdebase-runtime
+	provides = kcalc
+	conflicts = kcalc
+	conflicts = kdeutils-kcalc
+	source = http://download.kde.org/stable/4.14.3/src/kcalc-4.14.3.tar.xz
+	sha1sums = 0990a35d1fe97b4d4157b6ce6d8e13d199934dad
+
+pkgname = kcalc-kde4
+
