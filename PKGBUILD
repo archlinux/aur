@@ -1,9 +1,9 @@
 # Package p4d
 # Maintainer: Andrew Boktor andrew dot boktor at gmail dot com
 pkgname=p4d
-pkgver=2014.2.1033284
-pkgrel=1
-pkgdesc="Perforce Server"
+pkgver=2015.1.1204891
+pkgrel=2
+pkgdesc="Minimal Perforce Server"
 arch=('x86_64')
 url="http://www.perforce.com"
 license=('custom:p4d')
@@ -11,14 +11,14 @@ depends=()
 backup=('etc/p4d.conf')
 install=p4d.install
 source=(
-        http://www.perforce.com/downloads/perforce/r${pkgver:2:4}/bin.linux26${CARCH}/${pkgname}
+ftp://ftp.perforce.com/perforce/r${pkgver:2:4}/bin.linux26${CARCH}/${pkgname}
         p4d.service
         p4d.conf
        )
 
-sha1sums=('92f2f2847b32c0669c1a187dbfe4fc48de3c8b90'
-          '8033b7c40f9ff96578f220bf0c27e51788eec661'
-          '85ebc96e2c678020308de6985d9e5e53aedbf49c')
+sha256sums=('275a46a9489e152724db17bb603e23e17a6b4f54d16b3636ad2d0f0c4bd83274'
+          'c648fc8b50eed66bea9a804a214011666c0cd5337ab238c93147d2692998b547'
+          '25390ffb531f167a17aeac587d04a2401f8710c417db084e4b5a7f9afc4dd1d7')
 
 package() {
     install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
