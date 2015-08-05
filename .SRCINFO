@@ -1,0 +1,36 @@
+pkgbase = kate-kde4
+	pkgdesc = Advanced Text Editor
+	pkgver = 4.14.3
+	pkgrel = 1
+	url = http://www.kde.org/applications/utilities/kate
+	install = kate-kde4.install
+	arch = i686
+	arch = x86_64
+	arch = armv7
+	arch = armv6
+	arch = armv5
+	groups = kde
+	groups = kdesdk
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	makedepends = automoc4
+	depends = qt4
+	depends = kdebase-lib
+	depends = kdebase-runtime
+	provides = kate
+	provides = kwrite
+	provides = kdebase-katepart
+	provides = katepart4
+	conflicts = kate
+	conflicts = kwrite,
+	conflicts = kdesdk-kate
+	conflicts = kdebase-kwrite
+	conflicts = kdebase-katepart
+	source = http://download.kde.org/stable/4.14.3/src/kate-4.14.3.tar.xz
+	sha1sums = da37195e86b5449fcdfe69a3f7df6373a5da900c
+
+pkgname = kate-kde4
+
