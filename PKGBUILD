@@ -2,8 +2,8 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=p4
-pkgver=2015.1.1054991
-pkgrel=13
+pkgver=2015.1.1204891
+pkgrel=14
 pkgdesc="Perforce commandline client"
 depends=('glibc')
 arch=('i686' 'x86_64')
@@ -12,11 +12,11 @@ license=('custom:p4')
 source=(http://www.perforce.com/downloads/perforce/r${pkgver:2:4}/bin.linux26${CARCH/i6/x}/${pkgname}
         LICENSE)
 [ "$CARCH" = "i686" ] && \
-sha256sums=('e66561d780949f890946f707379137390e99dab85a83a873dee54bbdad07a823'
+sha256sums=('71d6628da50562062e6123eaf1416c422fd12ab9c635bb3d0419abab6584b8ba'
          'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32')
 
 [ "$CARCH" = "x86_64" ] && \
-sha256sums=('801bb47c9bbda7914c6cc0d0994230438515356817afaacd084b5ecb16d221f9'
+sha256sums=('b59b220e2e8e11ec2a3d5fbb1d05d92e6d8a230f52c5766e2ff2ca04b2ff8524'
          'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32')
 
 build() {
