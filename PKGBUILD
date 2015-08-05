@@ -2,7 +2,7 @@
 
 pkgname=git-debubble
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Clean up merge bubbles in a Git repository"
 arch=('any')
 depends=('git')
@@ -37,7 +37,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" prefix=/usr install
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
