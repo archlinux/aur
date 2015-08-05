@@ -2,10 +2,10 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname='gnome-shell-extension-justshowthewindow-git'
-pkgdesc="Rather than the default gnome-shell behaviour of showing a notification that a window is ready, the window is just displayed"
+pkgname=gnome-shell-extension-justshowthewindow-git
 pkgver=r2.275595c
 pkgrel=1
+pkgdesc="Rather than the default gnome-shell behaviour of showing a notification that a window is ready, the window is just displayed"
 arch=(any)
 depends=('gnome-shell>=3.6')
 license=(GPLv2)
