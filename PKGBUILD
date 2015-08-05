@@ -1,5 +1,6 @@
 # Maintainer: xylosper <darklin20@gmail.com>
 # Contributor: willemw <willemw12@gmail.com>
+# Contributor: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 
 pkgname=bomi
 pkgver=0.9.11
