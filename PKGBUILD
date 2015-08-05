@@ -3,8 +3,8 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname="gnome-shell-extension-volume-mixer-git"
-pkgver=0.9.r0.g3e7a459
+pkgname=gnome-shell-extension-volume-mixer-git
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Applet allowing separate configuration of pulseaudio mixers"
 arch=(any)
