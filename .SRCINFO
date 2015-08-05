@@ -1,10 +1,10 @@
 pkgbase = libreoffice-fresh-kalahari
-	pkgdesc = Faenza like icon theme for LibreOffice 4.4.x series
+	pkgdesc = Faenza like icon theme for LibreOffice
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FadeMind/libreoffice-fresh-kalahari
 	arch = any
-	license = MPL2
+	license = custom:MPL2
 	depends = libreoffice-fresh-rpm
 	noextract = images_faenza.zip
 	noextract = images_faenza_dark.zip

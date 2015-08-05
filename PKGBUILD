@@ -2,11 +2,12 @@
 
 pkgname="libreoffice-fresh-kalahari"
 pkgver=0.4.2
-pkgrel=1
-pkgdesc="Faenza like icon theme for LibreOffice 4.4.x series"
+pkgrel=2
+_lover=5.0
+pkgdesc="Faenza like icon theme for LibreOffice"
 arch=('any')
 url="https://github.com/FadeMind/${pkgname}"
-license=('MPL2')
+license=('custom:MPL2')
 depends=('libreoffice-fresh-rpm')
 source=("images_faenza.zip::${url}/raw/master/images_faenza.zip"
         "images_faenza_dark.zip::${url}/raw/master/images_faenza_dark.zip"
@@ -17,7 +18,7 @@ sha256sums=('7ded91512511ed104ac9562894fbdc8b33a6b3bd230759045de1eee0fe4f598d'
             'fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85')
 
 package() {
-install -D -m644 ${srcdir}/images_faenza.zip ${pkgdir}/opt/libreoffice4.4/share/config/images_faenza.zip
-install -D -m644 ${srcdir}/images_faenza_dark.zip ${pkgdir}/opt/libreoffice4.4/share/config/images_faenza_dark.zip
-install -D -m644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 ${srcdir}/images_faenza.zip	  ${pkgdir}/opt/libreoffice$_lover/share/config/images_faenza.zip
+  install -D -m644 ${srcdir}/images_faenza_dark.zip ${pkgdir}/opt/libreoffice$_lover/share/config/images_faenza_dark.zip
+  install -D -m644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
