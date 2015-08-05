@@ -1,8 +1,3 @@
-# Maintainer (Arch): Daniel Micay <danielmicay@gmail.com>
-# Contributor (Arch): Tobias Powalowski <tpowa@archlinux.org>
-# Contributor (Arch): Thomas Baechler <thomas@archlinux.org>
-# Contributor (Arch): henning mueller <henning@orgizm.net>
-# Contributor (Arch): Thomas Dwyer http://tomd.tel
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
 # Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
@@ -10,11 +5,13 @@
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
-pkgbase=linux-libre-grsec   # Build kernel with -grsec localname
-_pkgbasever=4.0-gnu
-_pkgver=4.0.8-gnu
+# Based on linux-grsec package
+
+pkgbase=linux-libre-grsec
+_pkgbasever=4.1-gnu
+_pkgver=4.1.4-gnu
 _grsecver=3.1
-_timestamp=201507111211
+_timestamp=201508032312
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -46,11 +43,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
+sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '16153fc11146d0de0158b7f7ed24437b42c61a16e5e404b258d04bdceef5b9e0'
+            '4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97'
             'SKIP'
-            'b9338c20615444bf844edc16ef98e9696db159a50e5eeea3b693edf6eabb24cd'
+            'd16f9699b0cf59f8ef73cb444468a6d8d8344024c86a1e6896585caa8cb8a2bb'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -58,8 +55,8 @@ sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'd4e66b81d29d5048f072b3eda89b12e1564c2b3c9d0e27f9efbd7290b52cc9ee'
-            '5c12d80d81dbde43c138acf69a036640a28c8b49c02c8547033a60a0fecc9f08'
+            '591f20645c2d5d91edf49af5b934de45866d1d0588b461c5d5963640fc4e1b5d'
+            'd5b068642b76b369369ee03f51f063ee49104ad6fc6574d29e7212f61e702de9'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
