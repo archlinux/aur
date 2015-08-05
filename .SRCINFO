@@ -1,0 +1,33 @@
+pkgbase = konsole-kde4
+	pkgdesc = Terminal
+	pkgver = 4.14.3
+	pkgrel = 1
+	url = http://kde.org/applications/system/konsole
+	install = konsole-kde4.install
+	arch = i686
+	arch = x86_64
+	arch = armv7
+	arch = armv6
+	arch = armv5
+	groups = kde-applications
+	groups = kdebase
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	makedepends = automoc4
+	depends = qt4
+	depends = kdebase-lib
+	depends = kdebase-runtime
+	depends = kdelibs4support
+	depends = knotifyconfig
+	provides = konsole
+	conflicts = konsole
+	conflicts = kdebase-konsole
+	conflicts = konsolepart4
+	source = http://download.kde.org/stable/4.14.3/src/konsole-4.14.3.tar.xz
+	sha1sums = 5ae78061f38f06f80ee10f4475ff33d1c0843b4d
+
+pkgname = konsole-kde4
+
