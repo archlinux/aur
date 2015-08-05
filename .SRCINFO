@@ -1,0 +1,19 @@
+pkgbase = kwallet-pam-git
+	pkgdesc = Unlock KWallet using PAM
+	pkgver = r68.e411bd7
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/base/kwallet-pam
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = kwallet
+	depends = pam
+	provides = kwallet-pam
+	conflicts = kwallet-pam
+	source = git://anongit.kde.org/kwallet-pam.git
+	md5sums = SKIP
+
+pkgname = kwallet-pam-git
+
