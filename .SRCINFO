@@ -1,7 +1,7 @@
 pkgbase = php-cassandra-driver
 	pkgdesc = DataStax PHP Driver for Apache Cassandra
 	pkgver = 1.0.0.rc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datastax/php-driver
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = php-cassandra-driver
 	depends = php
 	depends = cassandra-cpp-driver>=2.0.0
 	source = https://codeload.github.com/datastax/php-driver/tar.gz/v1.0.0-rc
+	md5sums = 2f283ea7a1fe63dab1eda3d3bfbff960
 
 pkgname = php-cassandra-driver
 

@@ -3,7 +3,7 @@ pkgname=php-cassandra-driver
 _pkgname=php-driver
 pkgver=1.0.0.rc
 _pkgver=1.0.0-rc
-pkgrel=1
+pkgrel=2
 pkgdesc="DataStax PHP Driver for Apache Cassandra"
 arch=(i686 x86_64)
 url="https://github.com/datastax/php-driver"
@@ -24,3 +24,4 @@ package() {
 	install -Dm644 cassandra.ini "$pkgdir/etc/php/conf.d/cassandra.ini"
 	make INSTALL_ROOT="$pkgdir/" install
 }
+md5sums=('2f283ea7a1fe63dab1eda3d3bfbff960')
