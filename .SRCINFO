@@ -1,0 +1,19 @@
+pkgbase = phantompeakqualtools
+	pkgdesc = Computes quick but highly informative enrichment and quality measures for ChIP-seq/DNase-seq/FAIRE-seq/MNase-seq data. It can also be used to obtain robust estimates of the predominant fragment length or characteristic tag shift values in these assays.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://code.google.com/p/phantompeakqualtools/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-catools
+	depends = r-snow
+	depends = samtools
+	depends = boost
+	depends = boost-libs
+	source = https://phantompeakqualtools.googlecode.com/files/ccQualityControl.v.1.1.tar.gz
+	md5sums = 66cfe40711edb914cd0fd69778a54e37
+
+pkgname = phantompeakqualtools
+
