@@ -1,7 +1,7 @@
 pkgbase = photoqt
 	pkgdesc = Fast and highly configurable image viewer with a simple and nice interface.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://photoqt.org/
 	install = photoqt.install
 	arch = i686
