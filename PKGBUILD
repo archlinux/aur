@@ -1,14 +1,14 @@
 # Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=1.3.7
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python-netifaces' 'python-jsonschema' 'python-dateutil' 'python-aiohttp' 'python-jinja' 'python-raven')
+depends=('python-jsonschema' 'python-aiohttp' 'python-jinja' 'python-raven')
 optdepends=('dynamips: Cisco router emulator.'
             'vboxwrapper: VirtualBox wrapper for GNS3.'
             'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
@@ -19,7 +19,7 @@ optdepends=('dynamips: Cisco router emulator.'
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}@.service")
-md5sums=('4549f94aeea503b2b431471c34da3a5c'
+md5sums=('6ffaab61717b98202c843fa5670ac8e6'
          'f602390385890dab14f68e5e0a8cac2d')
 
 package() {
