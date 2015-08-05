@@ -2,7 +2,7 @@
 
 _codename="primo"
 pkgname=jappix
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Another way to think social networks!"
 arch=('any')
@@ -29,4 +29,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('28c1d268c37b340cfd72973fd3d30fb886db2d406fe0fc31695c6da4c4bea4b0')
+sha256sums=('e782bf5934ce08148074e8b12f7c99abe54a7abebde8e193ff85659e3d36af33')
