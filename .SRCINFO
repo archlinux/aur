@@ -1,5 +1,5 @@
 pkgbase = linux-libre-knock
-	pkgver = 4.1.3_gnu
+	pkgver = 4.1.4_gnu
 	pkgrel = 1
 	url = https://gnunet.org/knock
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-libre-knock
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.3-gnu/patch-4.1-gnu-4.1.3-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.3-gnu/patch-4.1-gnu-4.1.3-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz.sign
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
@@ -26,14 +26,10 @@ pkgbase = linux-libre-knock
 	source = config.i686
 	source = config.x86_64
 	source = linux.preset
-	source = 0001-block-loop-convert-to-per-device-workqueue.patch
-	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
-	source = 0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-	source = bitmap-enable-booting-for-dm-md-raid1.patch
 	source = change-default-console-loglevel.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = d52669f17a1cd13abba4f47a04e1991be59cfa707926b21f9c5bf031ec10c5d0
+	sha256sums = 4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97
 	sha256sums = SKIP
 	sha256sums = da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc
 	sha256sums = SKIP
@@ -43,13 +39,9 @@ pkgbase = linux-libre-knock
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = eb798f148028db57706fd0d4980eb0f31b0d956f864f0d3a130fecd62fc743ea
-	sha256sums = dabb4f7a98ac1c6510c05b5bc254a7fb3cd55d1427258e4966af2007209777d5
+	sha256sums = 748dce2e5fb24dfb5b29410c28a0233382cbb22b2dd9b22047fe4c78e58bd418
+	sha256sums = 6076bfc7c8b794a7591a9cea2b1e58e4a4fd8fbd44be66f70d8b1372abc7f917
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
-	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
-	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
-	sha256sums = 08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82
-	sha256sums = 959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-libre-knock
@@ -62,7 +54,7 @@ pkgname = linux-libre-knock
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-knock=4.1.3
+	provides = linux-knock=4.1.4
 	conflicts = kernel26-knock
 	conflicts = kernel26-libre-knock
 	replaces = linux-knock
@@ -72,7 +64,7 @@ pkgname = linux-libre-knock
 
 pkgname = linux-libre-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-knock kernel
-	provides = linux-knock-headers=4.1.3
+	provides = linux-knock-headers=4.1.4
 	conflicts = kernel26-knock-headers
 	conflicts = kernel26-libre-knock-headers
 	replaces = linux-knock-headers
@@ -81,7 +73,7 @@ pkgname = linux-libre-knock-headers
 
 pkgname = linux-libre-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-knock kernel
-	provides = linux-knock-docs=4.1.3
+	provides = linux-knock-docs=4.1.4
 	conflicts = kernel26-knock-docs
 	conflicts = kernel26-libre-knock-docs
 	replaces = linux-knock-docs
