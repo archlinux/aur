@@ -1,8 +1,3 @@
-# Contributor (Arch): Daniel Micay <danielmicay@gmail.com>
-# Contributor (Arch): Tobias Powalowski <tpowa@archlinux.org>
-# Contributor (Arch): Thomas Baechler <thomas@archlinux.org>
-# Contributor (Arch): henning mueller <henning@orgizm.net>
-# Contributor (Arch): Thomas Dwyer http://tomd.tel
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
 # Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
@@ -10,11 +5,13 @@
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
-pkgbase=linux-libre-lts-grsec-knock   # Build kernel with lts-grsec-knock localname
+# Based on linux-grsec package
+
+pkgbase=linux-libre-lts-grsec-knock
 _pkgbasever=3.14-gnu
-_pkgver=3.14.48-gnu
+_pkgver=3.14.49-gnu
 _grsecver=3.1
-_timestamp=201507111210
+_timestamp=201508032312
 _knockpatchver=3.16_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -56,9 +53,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'gcc5_buildfixes.diff')
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            'bca6f520b89030ec96c8b3fbf4e01c1d1bea58b1a8b83efcffab05084d6322d6'
+            '8146f5e0dda01cb95bf8841bc76acea42fd04a2e864cbe2ecfe55092453cc929'
             'SKIP'
-            '14d8a15b59128f04ed06fb0c5f91bed626dd98983c8e6229dbfd56dcf00ff350'
+            'caf36e8cbef0015a20d23b281b51e09041ce055836c2eb1b4864b32693f4eddb'
             'SKIP'
             '70cbe962aa01989ffa83490bb0765d6e4c781f6133dc8d768d84bd6716ac0209'
             'SKIP'
@@ -68,8 +65,8 @@ sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'd17ada3d4f047bee666a31adf1fd3a60185e0c785420ffab46c126521f964ea3'
-            '721ab1a12c7d685d99fd1fa0069510b2feb74cbdea06845a16ed6d9041ed6016'
+            '55d6a5064c87789eea62b8e449958e6bd03b07a3d2301652562ed52552cf45c2'
+            '554a075b4d6fda2d5da3b8eb078dadcb6242a81f9f9328062d3fb66840ba45b0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
