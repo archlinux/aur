@@ -1,6 +1,6 @@
 pkgbase = aurvote-git
 	pkgdesc = Vote for your favorite AUR packages (development version)
-	pkgver = latest
+	pkgver = r17.b25edcc
 	pkgrel = 1
 	url = http://git.archlinux.fr/aurvote.git
 	arch = any

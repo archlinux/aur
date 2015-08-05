@@ -3,7 +3,7 @@
 
 _pkgname=aurvote
 pkgname=aurvote-git
-pkgver=latest
+pkgver=r17.b25edcc
 pkgrel=1
 pkgdesc='Vote for your favorite AUR packages (development version)'
 url='http://git.archlinux.fr/aurvote.git'
@@ -20,7 +20,7 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -28,6 +28,7 @@ package() {
 
   # Install the program.
   install -Dm755 aurvote "${pkgdir}/usr/bin/aurvote"
+  install -Dm644 zsh-completion "${pkgdir}/usr/share/zsh/site-functions/_aurvote"
 }
 
 # vim: ft=sh ts=2 sw=2 et
