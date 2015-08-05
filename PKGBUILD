@@ -8,6 +8,7 @@ arch=("i686" "x86_64")
 license=('custom:brother commercial license')
 depends=("cups")
 depends_x86_64=('lib32-glibc')
+install="$pkgname.install"
 source=(
 	"http://download.brother.com/welcome/dlf101799/mfcl2720dwlpr-$pkgver-$pkgrel.i386.rpm"
 	"http://download.brother.com/welcome/dlf101800/mfcl2720dwcupswrapper-$pkgver-$pkgrel.i386.rpm"
