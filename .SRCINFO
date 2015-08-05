@@ -1,7 +1,7 @@
 pkgbase = colors-git
 	pkgdesc = Extract colors from an image.
 	pkgver = 0.3.r0.g554aa12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.2f30.org/colors/
 	arch = i686
 	arch = x86_64
