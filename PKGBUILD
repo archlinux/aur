@@ -3,7 +3,7 @@
 pkgname=opera-ffmpeg-codecs
 pkgver=31
 _chromiumver=44.0.2403.130
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('x86_64')
 url="https://ffmpeg.org/"
@@ -52,8 +52,7 @@ build() {
     -Dffmpeg_branding=Chrome \
     -Dffmpeg_soname_version=31
 
-  ninja -C out/Release ffmpeg -t commands
-  ninja -d keeprsp -C out/Release ffmpeg
+  ninja -C out/Release ffmpeg
 }
 
 package() {
