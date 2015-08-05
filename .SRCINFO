@@ -1,0 +1,14 @@
+pkgbase = gitflow
+	pkgdesc = Extend git with the Gitflow branching model.
+	pkgver = 0.4.1
+	pkgrel = 4
+	url = https://github.com/nvie/gitflow
+	arch = any
+	license = BSD
+	depends = git
+	depends = shflags
+	source = https://github.com/nvie/gitflow/archive/0.4.1.zip
+	md5sums = 125f0732c11a6a07d2f90a6792c4afdc
+
+pkgname = gitflow
+
