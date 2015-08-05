@@ -1,5 +1,5 @@
 diff --git a/include/ClientDB.py b/include/ClientDB.py
-index 4f8d36d..a1a5c2d 100755
+index e0abe97..ab8b28f 100755
 --- a/include/ClientDB.py
 +++ b/include/ClientDB.py
 @@ -2611,7 +2611,7 @@ class DB( HydrusDB.HydrusDB ):
@@ -12,10 +12,10 @@ index 4f8d36d..a1a5c2d 100755
          
          #
 diff --git a/include/ClientGUICanvas.py b/include/ClientGUICanvas.py
-index a459170..7ec0a30 100755
+index 41b5c9e..293ea50 100755
 --- a/include/ClientGUICanvas.py
 +++ b/include/ClientGUICanvas.py
-@@ -48,7 +48,8 @@ NON_ZOOMABLE_MIMES = list( HC.AUDIO ) + [ HC.APPLICATION_PDF ]
+@@ -49,7 +49,8 @@ NON_ZOOMABLE_MIMES = list( HC.AUDIO ) + [ HC.APPLICATION_PDF ]
  
  EMBED_BUTTON_MIMES = [ HC.VIDEO_FLV, HC.APPLICATION_FLASH ]
  
@@ -25,6 +25,27 @@ index a459170..7ec0a30 100755
      
      ( media_width, media_height ) = media.GetResolution()
      
+diff --git a/include/ClientGUICommon.py b/include/ClientGUICommon.py
+index b8294b6..77878eb 100755
+--- a/include/ClientGUICommon.py
++++ b/include/ClientGUICommon.py
+@@ -1521,7 +1521,8 @@ class Frame( wx.Frame ):
+         self.SetIcon( wx.Icon( HC.STATIC_DIR + os.path.sep + 'hydrus.ico', wx.BITMAP_TYPE_ICO ) )
+         
+     
+-    def SetInitialSize( self, ( width, height ) ):
++    def SetInitialSize( self, dims ):
++        ( width, height ) = dims
+         
+         wx.Frame.SetInitialSize( self, ( width, height ) )
+         
+@@ -5217,4 +5218,4 @@ class ShowKeys( Frame ):
+                 
+             
+         
+-    
+\ No newline at end of file
++    
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
 index b73c6ef..f1ea71c 100755
 --- a/include/ClientGUIDialogs.py
@@ -40,10 +61,10 @@ index b73c6ef..f1ea71c 100755
          wx.Dialog.SetInitialSize( self, ( width, height ) )
          
 diff --git a/include/ClientGUIManagement.py b/include/ClientGUIManagement.py
-index 2fa9574..ae5a9cb 100755
+index 3a54639..8dcbf37 100755
 --- a/include/ClientGUIManagement.py
 +++ b/include/ClientGUIManagement.py
-@@ -64,26 +64,6 @@ def CreateManagementController( management_type, file_service_key = None ):
+@@ -66,26 +66,6 @@ def CreateManagementController( management_type, file_service_key = None ):
      
      return management_controller
      
@@ -70,7 +91,7 @@ index 2fa9574..ae5a9cb 100755
      
  def CreateManagementControllerImportGallery( site_type, gallery_type ):
      
-@@ -667,734 +647,6 @@ class ManagementPanel( wx.lib.scrolledpanel.ScrolledPanel ):
+@@ -702,734 +682,6 @@ class ManagementPanel( wx.lib.scrolledpanel.ScrolledPanel ):
      
      def TestAbleToClose( self ): pass
      
@@ -191,7 +212,7 @@ index 2fa9574..ae5a9cb 100755
 -        
 -        # misc
 -        
--        self._advanced_tag_options = ClientGUICollapsible.CollapsibleOptionsTags( self, namespaces = [ 'creator', 'series', 'title', 'volume', 'chapter', 'page', 'character', 'person', 'all others' ] )
+-        self._import_tag_options = ClientGUICollapsible.CollapsibleOptionsTags( self, namespaces = [ 'creator', 'series', 'title', 'volume', 'chapter', 'page', 'character', 'person', 'all others' ] )
 -        
 -        # arrange stuff
 -        
@@ -202,7 +223,7 @@ index 2fa9574..ae5a9cb 100755
 -        vbox.AddF( self._import_queue_panel, CC.FLAGS_EXPAND_PERPENDICULAR )
 -        vbox.AddF( self._thread_panel, CC.FLAGS_EXPAND_PERPENDICULAR )
 -        vbox.AddF( self._post_panel, CC.FLAGS_EXPAND_PERPENDICULAR )
--        vbox.AddF( self._advanced_tag_options, CC.FLAGS_EXPAND_PERPENDICULAR )
+-        vbox.AddF( self._import_tag_options, CC.FLAGS_EXPAND_PERPENDICULAR )
 -        
 -        self._MakeCurrentSelectionTagsBox( vbox )
 -        
@@ -294,7 +315,7 @@ index 2fa9574..ae5a9cb 100755
 -        
 -        initial += HydrusData.ConvertValueRangeToPrettyString( index + 1, num_files )
 -        
--        advanced_tag_options = self._advanced_tag_options.GetInfo()
+-        advanced_tag_options = self._import_tag_options.GetInfo()
 -        
 -        for ( service_key, namespaces ) in advanced_tag_options.items():
 -            
@@ -548,7 +569,7 @@ index 2fa9574..ae5a9cb 100755
 -            
 -            ( command, data ) = action
 -            
--            if command == 'advanced_tag_options_changed': self._UpdatePendingInitialComments()
+-            if command == 'import_tag_options_changed': self._UpdatePendingInitialComments()
 -            else: event.Skip()
 -            
 -        
@@ -774,7 +795,7 @@ index 2fa9574..ae5a9cb 100755
 -                        
 -                        post_fields.append( ( self._file_post_name, CC.FIELD_FILE, ( hash, mime, file ) ) )
 -                        
--                        ( ct, body ) = HydrusNetworking.GenerateDumpMultipartFormDataCTAndBody( post_fields )
+-                        ( ct, body ) = GenerateDumpMultipartFormDataCTAndBody( post_fields )
 -                        
 -                        headers = {}
 -                        headers[ 'Content-Type' ] = ct
@@ -806,10 +827,10 @@ index 2fa9574..ae5a9cb 100755
  class ManagementPanelImport( ManagementPanel ):
      
 diff --git a/include/ClientImporting.py b/include/ClientImporting.py
-index 6da6748..7cd6636 100644
+index 833d6a2..bb81c6c 100644
 --- a/include/ClientImporting.py
 +++ b/include/ClientImporting.py
-@@ -113,26 +113,6 @@ class ImportController( HydrusSerialisable.SerialisableBase ):
+@@ -118,26 +118,6 @@ class ImportController( HydrusSerialisable.SerialisableBase ):
              
          
      
@@ -836,11 +857,31 @@ index 6da6748..7cd6636 100644
      def GetOptions( self, name ):
          
          with self._lock:
+diff --git a/include/ClientMedia.py b/include/ClientMedia.py
+index 7d00441..ee77ba2 100644
+--- a/include/ClientMedia.py
++++ b/include/ClientMedia.py
+@@ -1325,7 +1325,7 @@ class TagsManagerSimple( object ):
+         combined_current = combined_statuses_to_tags[ HC.CURRENT ]
+         combined_pending = combined_statuses_to_tags[ HC.PENDING ]
+         
+-        slice = { tag for tag in combined_current.union( combined_pending ) if True in ( tag.startswith( namespace + ':' ) for namespace in namespaces ) }
++        slice = { tag for tag in combined_current.union( combined_pending ) if True in (lambda tag:( tag.startswith( namespace + ':' ) for namespace in namespaces ))(tag) }
+         
+         if collapse_siblings:
+             
+@@ -1469,4 +1469,4 @@ class TagsManager( TagsManagerSimple ):
+             self._RecalcCombined()
+             
+         
+-    
+\ No newline at end of file
++    
 diff --git a/include/HydrusData.py b/include/HydrusData.py
-index 3b644d5..b80b5e8 100644
+index 6ebeb04..70218ff 100644
 --- a/include/HydrusData.py
 +++ b/include/HydrusData.py
-@@ -1003,15 +1003,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
+@@ -1007,15 +1007,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
                  
                  if data_type in ( HC.CONTENT_DATA_TYPE_TAG_SIBLINGS, HC.CONTENT_DATA_TYPE_TAG_PARENTS ) and action in ( HC.CONTENT_UPDATE_PENDING, HC.CONTENT_UPDATE_PETITION ):
                      
@@ -860,10 +901,10 @@ index 3b644d5..b80b5e8 100644
                  
              else: new_action = action
 diff --git a/include/HydrusImageHandling.py b/include/HydrusImageHandling.py
-index c037164..bb6c08e 100755
+index bada4c1..b04d6a7 100755
 --- a/include/HydrusImageHandling.py
 +++ b/include/HydrusImageHandling.py
-@@ -50,7 +50,8 @@ def ConvertToPngIfBmp( path ):
+@@ -48,7 +48,8 @@ def ConvertToPngIfBmp( path ):
              
          
      
@@ -873,7 +914,7 @@ index c037164..bb6c08e 100755
      
      ( im_y, im_x, depth ) = numpy_image.shape
      
-@@ -63,7 +64,8 @@ def EfficientlyResizeNumpyImage( numpy_image, ( target_x, target_y ) ):
+@@ -61,7 +62,8 @@ def EfficientlyResizeNumpyImage( numpy_image, ( target_x, target_y ) ):
      
      return cv2.resize( result, ( target_x, target_y ), interpolation = cv2.INTER_LINEAR )
      
@@ -883,7 +924,7 @@ index c037164..bb6c08e 100755
      
      ( im_x, im_y ) = pil_image.size
      
-@@ -76,7 +78,8 @@ def EfficientlyResizePILImage( pil_image, ( target_x, target_y ) ):
+@@ -74,7 +76,8 @@ def EfficientlyResizePILImage( pil_image, ( target_x, target_y ) ):
      
      return pil_image.resize( ( target_x, target_y ), PILImage.ANTIALIAS )
      
@@ -893,7 +934,7 @@ index c037164..bb6c08e 100755
      
      ( im_y, im_x, depth ) = numpy_image.shape
      
-@@ -86,7 +89,8 @@ def EfficientlyThumbnailNumpyImage( numpy_image, ( target_x, target_y ) ):
+@@ -84,7 +87,8 @@ def EfficientlyThumbnailNumpyImage( numpy_image, ( target_x, target_y ) ):
      
      return cv2.resize( numpy_image, ( target_x, target_y ), interpolation = cv2.INTER_AREA )
      
@@ -903,7 +944,7 @@ index c037164..bb6c08e 100755
      
      ( im_x, im_y ) = pil_image.size
      
-@@ -350,7 +354,9 @@ def GetResolutionAndNumFrames( path ):
+@@ -307,7 +311,9 @@ def GetResolutionAndNumFrames( path ):
      
      return ( ( x, y ), num_frames )
      
@@ -1155,16 +1196,3 @@ index dbd6c95..cbc017f 100755
 -    def ToTuple( self ): return ( self._type, self._text )
 -    
 \ No newline at end of file
-diff --git a/include/HydrusTags.py b/include/HydrusTags.py
-index 710c20a..edd9bfd 100644
---- a/include/HydrusTags.py
-+++ b/include/HydrusTags.py
-@@ -352,7 +352,7 @@ class TagsManagerSimple( object ):
-         combined_current = combined_statuses_to_tags[ HC.CURRENT ]
-         combined_pending = combined_statuses_to_tags[ HC.PENDING ]
-         
--        slice = { tag for tag in combined_current.union( combined_pending ) if True in ( tag.startswith( namespace + ':' ) for namespace in namespaces ) }
-+        slice = { tag for tag in combined_current.union( combined_pending ) if True in (lambda tag:( tag.startswith( namespace + ':' ) for namespace in namespaces ))(tag) }
-         
-         if collapse_siblings:
-             

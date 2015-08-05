@@ -33,8 +33,36 @@ index 465fc3e..b73c6ef 100755
          message2 = 'if you haven\'t already.'
          message3 = 'When you close this dialog, the client will start its local http server. You will probably get a firewall warning.'
          message4 = 'You can block it if you like, or you can allow it. It doesn\'t phone home, or expose your files to your network; it just provides another way to locally export your files.'
+diff --git a/include/ClientLocalServerResources.py b/include/ClientLocalServerResources.py
+index 90fb7ea..beb17d2 100644
+--- a/include/ClientLocalServerResources.py
++++ b/include/ClientLocalServerResources.py
+@@ -242,11 +242,11 @@ class HydrusResourceCommandBooruThumbnail( HydrusResourceCommandBooru ):
+         mime = media_result.GetMime()
+         
+         if mime in HC.MIMES_WITH_THUMBNAILS: path = ClientFiles.GetThumbnailPath( hash, full_size = False )
+-        elif mime in HC.AUDIO: path = HC.STATIC_DIR + os.path.sep + 'audio_resized.png'
+-        elif mime in HC.VIDEO: path = HC.STATIC_DIR + os.path.sep + 'video_resized.png'
+-        elif mime == HC.APPLICATION_FLASH: path = HC.STATIC_DIR + os.path.sep + 'flash_resized.png'
+-        elif mime == HC.APPLICATION_PDF: path = HC.STATIC_DIR + os.path.sep + 'pdf_resized.png'
+-        else: path = HC.STATIC_DIR + os.path.sep + 'hydrus_resized.png'
++        elif mime in HC.AUDIO: path = HC.TEMP_DIR + os.path.sep + 'audio_resized.png'
++        elif mime in HC.VIDEO: path = HC.TEMP_DIR + os.path.sep + 'video_resized.png'
++        elif mime == HC.APPLICATION_FLASH: path = HC.TEMP_DIR + os.path.sep + 'flash_resized.png'
++        elif mime == HC.APPLICATION_PDF: path = HC.TEMP_DIR + os.path.sep + 'pdf_resized.png'
++        else: path = HC.TEMP_DIR + os.path.sep + 'hydrus_resized.png'
+         
+         response_context = HydrusServerResources.ResponseContext( 200, path = path )
+         
+@@ -278,4 +278,4 @@ class HydrusResourceCommandLocalThumbnail( HydrusServerResources.HydrusResourceC
+         
+         return response_context
+         
+-    
+\ No newline at end of file
++    
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 981583d..0aca093 100755
+index 024421b..5f62b9a 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,9 +3,9 @@ import sys
@@ -66,24 +94,3 @@ index 981583d..0aca093 100755
  #
  
  PLATFORM_WINDOWS = False
-diff --git a/include/HydrusServerResources.py b/include/HydrusServerResources.py
-index df908d4..7c04f81 100644
---- a/include/HydrusServerResources.py
-+++ b/include/HydrusServerResources.py
-@@ -806,11 +806,11 @@ class HydrusResourceCommandBooruThumbnail( HydrusResourceCommandBooru ):
-         mime = media_result.GetMime()
-         
-         if mime in HC.MIMES_WITH_THUMBNAILS: path = ClientFiles.GetThumbnailPath( hash, full_size = False )
--        elif mime in HC.AUDIO: path = HC.STATIC_DIR + os.path.sep + 'audio_resized.png'
--        elif mime in HC.VIDEO: path = HC.STATIC_DIR + os.path.sep + 'video_resized.png'
--        elif mime == HC.APPLICATION_FLASH: path = HC.STATIC_DIR + os.path.sep + 'flash_resized.png'
--        elif mime == HC.APPLICATION_PDF: path = HC.STATIC_DIR + os.path.sep + 'pdf_resized.png'
--        else: path = HC.STATIC_DIR + os.path.sep + 'hydrus_resized.png'
-+        elif mime in HC.AUDIO: path = HC.TEMP_DIR + os.path.sep + 'audio_resized.png'
-+        elif mime in HC.VIDEO: path = HC.TEMP_DIR + os.path.sep + 'video_resized.png'
-+        elif mime == HC.APPLICATION_FLASH: path = HC.TEMP_DIR + os.path.sep + 'flash_resized.png'
-+        elif mime == HC.APPLICATION_PDF: path = HC.TEMP_DIR + os.path.sep + 'pdf_resized.png'
-+        else: path = HC.TEMP_DIR + os.path.sep + 'hydrus_resized.png'
-         
-         response_context = ResponseContext( 200, path = path )
-         
