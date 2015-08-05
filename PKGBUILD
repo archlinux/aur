@@ -1,6 +1,6 @@
 # Maintainer: David Danier <david.danier@team23.de>
 pkgname=python2-fabdeploit
-pkgver=0.12.2
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="fabric utilities for git based deployments"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('e0970311599e94b415b96f004903577f28ebbec30d0e4e260d9b8cf05f35f921')
+sha256sums=('71201370e6045ee5fc851a819db2336d86958afc6bb7f064f14b76d732abe975')
