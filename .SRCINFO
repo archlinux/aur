@@ -1,7 +1,7 @@
 pkgbase = chmsee
 	pkgdesc = A chm (MS HTML help file format) viewer based on xulrunner.
 	pkgver = 2.0.2
-	pkgrel = 10
+	pkgrel = 11
 	url = http://chmsee.googlecode.com/
 	install = chmsee.install
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = chmsee
 	license = GPL
 	makedepends = python2
 	depends = xulrunner>21.0
-	depends = xulrunner<39.0
+	depends = xulrunner<40.0
 	depends = chmlib
 	depends = desktop-file-utils
-	source = chmsee-git::git+https://github.com/diegonc/chmsee.git#tag=pkg/v2.0.2-10
+	source = chmsee-git::git+https://github.com/diegonc/chmsee.git#tag=pkg/v2.0.2-11
 	source = chmsee
 	md5sums = SKIP
 	md5sums = 1787edd1de8aa75bd9fa75a5ab319e85
