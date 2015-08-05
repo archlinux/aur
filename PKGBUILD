@@ -1,36 +1,85 @@
-# Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
+# Maintainer: XZS <d dot f dot fischer at web dot de>
+# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
+# You may find it convenient to file issues and pull requests there.
 
-pkgname="gnome-shell-extension-volume-mixer"
+pkgname=gnome-shell-extension-volume-mixer
 pkgver=0.9.1
 pkgrel=1
-pkgdesc="Enable configuration of individual PulseAudio mixers from GNOME Shell's status menu."
-arch=('any')
+pkgdesc="Applet allowing separate configuration of pulseaudio mixers"
+arch=(any)
 url="https://github.com/aleho/gnome-shell-volume-mixer"
-license=('GPL2')
-depends=('gnome-shell' 'python')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-install=gschemas.install
-source=("${pkgname}::https://github.com/aleho/gnome-shell-volume-mixer/archive/v0.9.1.tar.gz")
-sha512sums=('169f1504e3f9b74c6b3a362ecb75f69b66a58c96a1b355cd5fc8f8ae4dea7601fb7f585884f8fd62f77809a24e70c1bd5701fd7bf3c9e63703d17395bda97925')
+license=(GPLv2)
+depends=(python)
 
+makedepends+=(jq)
+source+=("${_giturl:-release::${url/github.com/api.github.com\/repos}/releases/latest}")
+md5sums+=('SKIP')
+
+prepare() {
+  local url="$(jq -r '.assets[0].browser_download_url' release)"
+  local archive="${url##*/}"
+  if [ ! -e "$archive" ]; then
+    curl -Lo "$archive" "$url"
+  fi
+  unzip -o "$archive"
+}
+
+pkgver() {
+  jq -r .tag_name release | grep -o '[[:digit:].]*$'
+}
+depends[gnomeshell]=gnome-shell
+
+package_20_version() {
+  local compatibles=($(\
+    find -path ./pkg -type d -prune -o \
+    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
+    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
+  depends+=("gnome-shell>=3.${compatibles[0]}")
+  local max="${compatibles[-1]}"
+  if [ "3.$max" != $(
+    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+  ) ]; then
+    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
+  fi
+  unset depends[gnomeshell]
+}
 package() {
-  cd "${srcdir}/gnome-shell-volume-mixer-${pkgver}"
+  for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
+  do
+    $function
+  done
+}
+package_01_locate() {
   msg2 'Locating extension...'
-  cd "$(dirname $(find -name 'metadata.json'))"
-  _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
+  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+  extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  destdir="$pkgdir/usr/share/gnome-shell/extensions/$extname"
+}
+
+package_02_install() {
   msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "${_destdir}" '{}' +
-  cp -r --no-preserve=ownership pautils "${_destdir}"
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
+}
+if [ -z "$install" ]
+then
+  install=gschemas.install
+fi
+
+package_10_schemas() {
   msg2 'Installing schemas...'
-  find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas" '{}' +
-  msg2 'Installing localization files...'
+  find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
+}
+package_10_locale() {
+  msg2 'Installing translations...'
   (
     cd locale
     for locale in */
     do
-      install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
+      install -Dm644 -t "$pkgdir/usr/share/locale/$locale/LC_MESSAGES" "$locale/LC_MESSAGES"/*.mo
     done
   )
+}
+
+package_09_pautils() {
+  cp -r --no-preserve=ownership pautils "$destdir"
 }
