@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
 
 pkgname='facette'
-pkgver='0.2.3'
+pkgver='0.3.0'
 pkgrel='1'
 epoch=
 pkgdesc='Facette is a software to display time series data from several various sources'
@@ -10,7 +10,7 @@ url='http://facette.io/'
 license=('BSD')
 groups=()
 depends=('rrdtool')
-makedepends=('pkg-config' 'go' 'nodejs' 'pandoc-static')
+makedepends=('pkg-config' 'go' 'nodejs' 'npm' 'pandoc-bin')
 checkdepends=()
 optdepends=()
 provides=('facette')
@@ -25,7 +25,7 @@ source=(
   'facette.service'
   'facette.install')
 noextract=()
-md5sums=('7d9882bdf42660f771e16881e4868006'
+md5sums=('40efaaed5a806f38d09b0279cae03ee7'
          'SKIP'
          'SKIP')
 _prefix='/usr/local'
