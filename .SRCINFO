@@ -1,0 +1,24 @@
+pkgbase = deal-ii
+	pkgdesc = An Open Source Finite Element Differential Equations Analysis Library
+	pkgver = 8.3.0
+	pkgrel = 1
+	url = http://www.dealii.org/
+	install = deal-ii.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = boost
+	depends = lapack
+	depends = openmpi
+	optdepends = petsc: Portable, extensible toolkit for scientific computation
+	optdepends = slepc: Scalable library for Eigenvalue problem computations
+	optdepends = mumps: Sparse solver library using Gaussian elimination
+	optdepends = intel-tbb: High level abstract threading library
+	optdepends = trilinos: object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems
+	optdepends = metis: partitioning graphs, finite element meshes, fill reducing orderings for sparse matrices.
+	source = https://github.com/dealii/dealii/releases/download/v8.3.0/dealii-8.3.0.tar.gz
+	sha1sums = 274288b09c053b461239040816129a9eb9d45914
+
+pkgname = deal-ii
+
