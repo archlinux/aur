@@ -6,11 +6,11 @@ pkgname=(vdr-xineliboutput xineliboutput-frontends xineliboutput-xineplug)
 pkgver=1.1.0.32.gbf166be
 _gitver=bf166be4a21c0a86f6852c4695dcdb06863f4e93
 _vdrapi=2.2.0
-pkgrel=9
+pkgrel=10
 url="http://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-makedepends=('dbus-glib' 'git' 'glu' 'libcec' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
+makedepends=('dbus-glib' 'git' 'glu' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/$_plugname.git#commit=$_gitver"
         'xineliboutput-vdr2.1.6compat.diff'
@@ -37,6 +37,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_plugname}"
+  ./configure --disable-libcec
   make
 }
 
