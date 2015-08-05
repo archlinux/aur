@@ -1,4 +1,4 @@
-#Maintainer shapeshifter499
+# Maintainer Raansu <Gero3977@gmail.com>
 
 _pkgname=dogecoindark-qt
 pkgname=$_pkgname-git
