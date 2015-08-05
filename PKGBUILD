@@ -2,8 +2,8 @@
 
 pkgname=("pzl_common" "pzl_boggle" "pzl_codeword" "pzl_futoshiki" "pzl_jigsaw" "pzl_kakuro" "pzl_minesweeper" "pzl_scrabbler" "pzl_sumpuzzle" "pzl_sudoku" "pzl_sokoban")
 pkgbase="pzl_games"
-pkgver=3.5
-_pkgver=3_5
+pkgver=3.6
+_pkgver=3_6
 pkgrel=1
 pkgdesc="Small collection of computer games."
 arch=('any')
@@ -133,7 +133,7 @@ package_pzl_sokoban() {
 	cp pzl_sokoban.desktop "$pkgdir/usr/share/applications"
 }
 
-md5sums=('1ef78396f3c62cec59ca409f5d67398f'
+md5sums=('e1d1e22c75918f7fc43f2097f455af55'
          '68db7ca30579f312bfcf274f8dbdd406'
          '3fe6e4760000ec42505601ef74ec9d31'
          '25e7079b6867a9465b79d77e3f30d3c8'
