@@ -1,0 +1,19 @@
+post_install() {
+  glib-compile-schemas usr/share/glib-2.0/schemas/
+  instructions
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+
+instructions() {
+  /bin/cat << EOF
+Don't forget to restart GNOME Shell ([Alt]+[F2], r) and to enable extension
+with gnome-tweak-tool.
+EOF
+}
