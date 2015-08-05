@@ -1,0 +1,5 @@
+post_install() {
+	echo "If you want to enable zpm, execute
+$ cp /usr/share/zpm/zshrc-example ~/.zshrc
+	"
+}
