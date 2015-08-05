@@ -1,7 +1,7 @@
 # Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=1.3.7
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('gns3-server: GNS3 backend. Manages emulators such as Dynamips, Virt
 conflicts=('gns3' 'gns3-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz"
         'gns3.desktop')
-md5sums=('9e4eff79f41488f50273be3a11192be4'
+md5sums=('87fe774675a704a1bbbf91308c0d8f53'
          'ac6ba60be0a1cb7fc965d1a105e431d5')
 
 package() {
