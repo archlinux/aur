@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd $_vcsRepoDir
-  composer install --no-interaction
+  composer install --no-interaction --no-dev
 }
 
 build() {
