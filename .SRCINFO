@@ -1,0 +1,25 @@
+pkgbase = adom-noteye
+	pkgdesc = A roguelike game with a quest-centric, plot driven structure
+	pkgver = 1.2.0_pre23
+	pkgrel = 1
+	url = http://www.adom.de/
+	arch = i686
+	arch = x86_64
+	license = custom: "adom"
+	depends = ncurses
+	depends = mesa
+	depends = lua51
+	depends = libtinfo
+	depends = libcaca
+	depends = libmad
+	depends = libpng12
+	provides = adom
+	conflicts = adom
+	conflicts = adom-restricted
+	source = http://ancardia.us.to/download/adom_noteye_linux_ubuntu_32_1.2.0_pre23.tar.gz
+	source = LICENSE
+	sha1sums = 409e70770cd914c88c28560a817e0ed14b65a265
+	sha1sums = 51d28fe3f0420cd354113fd7ceb2a1a7abf1b069
+
+pkgname = adom-noteye
+
