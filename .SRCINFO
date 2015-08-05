@@ -1,12 +1,15 @@
 pkgbase = beamer-theme-m-git
 	pkgdesc = A modern LaTeX Beamer theme
 	pkgver = 20150722
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matze/mtheme
 	install = mtheme.install
 	arch = any
 	license = custom:cc-by-sa-4.0
 	depends = texlive-core
+	depends = texlive-pictures
+	depends = ttf-fira-sans
+	depends = ttf-fira-mono
 	source = git+https://github.com/matze/mtheme.git
 	sha512sums = SKIP
 
