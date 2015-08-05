@@ -1,0 +1,124 @@
+From c259ce3d6ae1476a8ad8b6093fc7c81efc24173e Mon Sep 17 00:00:00 2001
+From: Timothy Redaelli <timothy.redaelli@gmail.com>
+Date: Tue, 4 Aug 2015 15:18:41 +0200
+Subject: [PATCH 1/2] Add support for Twofish in KeePass2 code
+
+---
+ src/format/KeePass2.h         |  1 +
+ src/format/KeePass2Reader.cpp | 25 ++++++++++++++++---------
+ src/format/KeePass2Writer.cpp | 21 ++++++++++++++-------
+ 3 files changed, 31 insertions(+), 16 deletions(-)
+
+diff --git a/src/format/KeePass2.h b/src/format/KeePass2.h
+index b49ae4f6..91ee4829 100644
+--- a/src/format/KeePass2.h
++++ b/src/format/KeePass2.h
+@@ -33,6 +33,7 @@ namespace KeePass2
+     const QSysInfo::Endian BYTEORDER = QSysInfo::LittleEndian;
+ 
+     const Uuid CIPHER_AES = Uuid(QByteArray::fromHex("31c1f2e6bf714350be5805216afc5aff"));
++    const Uuid CIPHER_TWOFISH = Uuid(QByteArray::fromHex("ad68f29f576f4bb9a36ad47af965346c"));
+ 
+     const QByteArray INNER_STREAM_SALSA20_IV("\xE8\x30\x09\x4B\x97\x20\x5D\x2A");
+ 
+diff --git a/src/format/KeePass2Reader.cpp b/src/format/KeePass2Reader.cpp
+index 2a25001c..9b5a8684 100644
+--- a/src/format/KeePass2Reader.cpp
++++ b/src/format/KeePass2Reader.cpp
+@@ -44,6 +44,7 @@ KeePass2Reader::KeePass2Reader()
+ 
+ Database* KeePass2Reader::readDatabase(QIODevice* device, const CompositeKey& key)
+ {
++    QScopedPointer<SymmetricCipherStream> cipherStream;
+     QScopedPointer<Database> db(new Database());
+     m_db = db.data();
+     m_device = device;
+@@ -110,25 +111,31 @@ Database* KeePass2Reader::readDatabase(QIODevice* device, const CompositeKey& ke
+     hash.addData(m_db->transformedMasterKey());
+     QByteArray finalKey = hash.result();
+ 
+-    SymmetricCipherStream cipherStream(m_device, SymmetricCipher::Aes256,
+-                                       SymmetricCipher::Cbc, SymmetricCipher::Decrypt);
+-    if (!cipherStream.init(finalKey, m_encryptionIV)) {
+-        raiseError(cipherStream.errorString());
++    if (m_db->cipher() == KeePass2::CIPHER_AES) {
++        cipherStream.reset(new SymmetricCipherStream(m_device, SymmetricCipher::Aes256,
++                                                     SymmetricCipher::Cbc, SymmetricCipher::Decrypt));
++    }
++    else {
++         cipherStream.reset(new SymmetricCipherStream(m_device, SymmetricCipher::Twofish,
++                                                      SymmetricCipher::Cbc, SymmetricCipher::Decrypt));
++    }
++    if (!cipherStream->init(finalKey, m_encryptionIV)) {
++        raiseError(cipherStream->errorString());
+         return Q_NULLPTR;
+     }
+-    if (!cipherStream.open(QIODevice::ReadOnly)) {
+-        raiseError(cipherStream.errorString());
++    if (!cipherStream->open(QIODevice::ReadOnly)) {
++        raiseError(cipherStream->errorString());
+         return Q_NULLPTR;
+     }
+ 
+-    QByteArray realStart = cipherStream.read(32);
++    QByteArray realStart = cipherStream->read(32);
+ 
+     if (realStart != m_streamStartBytes) {
+         raiseError(tr("Wrong key or database file is corrupt."));
+         return Q_NULLPTR;
+     }
+ 
+-    HashedBlockStream hashedStream(&cipherStream);
++    HashedBlockStream hashedStream(cipherStream.data());
+     if (!hashedStream.open(QIODevice::ReadOnly)) {
+         raiseError(hashedStream.errorString());
+         return Q_NULLPTR;
+@@ -312,7 +319,7 @@ void KeePass2Reader::setCipher(const QByteArray& data)
+     else {
+         Uuid uuid(data);
+ 
+-        if (uuid != KeePass2::CIPHER_AES) {
++        if (uuid != KeePass2::CIPHER_AES && uuid != KeePass2::CIPHER_TWOFISH) {
+             raiseError("Unsupported cipher");
+         }
+         else {
+diff --git a/src/format/KeePass2Writer.cpp b/src/format/KeePass2Writer.cpp
+index f233ac73..4a6ad713 100644
+--- a/src/format/KeePass2Writer.cpp
++++ b/src/format/KeePass2Writer.cpp
+@@ -86,18 +86,25 @@ void KeePass2Writer::writeDatabase(QIODevice* device, Database* db)
+     m_device = device;
+     QByteArray headerHash = CryptoHash::hash(header.data(), CryptoHash::Sha256);
+     CHECK_RETURN(writeData(header.data()));
++    QScopedPointer<SymmetricCipherStream> cipherStream;
+ 
+-    SymmetricCipherStream cipherStream(device, SymmetricCipher::Aes256, SymmetricCipher::Cbc,
+-                                       SymmetricCipher::Encrypt);
+-    cipherStream.init(finalKey, encryptionIV);
+-    if (!cipherStream.open(QIODevice::WriteOnly)) {
+-        raiseError(cipherStream.errorString());
++    if (db->cipher() == KeePass2::CIPHER_AES) {
++        cipherStream.reset(new SymmetricCipherStream(device, SymmetricCipher::Aes256,
++                                                     SymmetricCipher::Cbc, SymmetricCipher::Encrypt));
++    }
++    else {
++        cipherStream.reset(new SymmetricCipherStream(device, SymmetricCipher::Twofish,
++                                                     SymmetricCipher::Cbc, SymmetricCipher::Encrypt));
++    }
++    cipherStream->init(finalKey, encryptionIV);
++    if (!cipherStream->open(QIODevice::WriteOnly)) {
++        raiseError(cipherStream->errorString());
+         return;
+     }
+-    m_device = &cipherStream;
++    m_device = cipherStream.data();
+     CHECK_RETURN(writeData(startBytes));
+ 
+-    HashedBlockStream hashedStream(&cipherStream);
++    HashedBlockStream hashedStream(cipherStream.data());
+     if (!hashedStream.open(QIODevice::WriteOnly)) {
+         raiseError(hashedStream.errorString());
+         return;
+-- 
+2.5.0
+

@@ -1,0 +1,186 @@
+From 2bd441b8ef1f78f5a8e9d3a2aa452f47608b3fab Mon Sep 17 00:00:00 2001
+From: Timothy Redaelli <timothy.redaelli@gmail.com>
+Date: Wed, 5 Aug 2015 15:23:49 +0200
+Subject: [PATCH 2/2] Add Algorithm label / ComboBox in Database settings form
+
+---
+ src/gui/DatabaseSettingsWidget.cpp | 13 ++++++
+ src/gui/DatabaseSettingsWidget.ui  | 89 +++++++++++++++++++++++---------------
+ 2 files changed, 68 insertions(+), 34 deletions(-)
+
+diff --git a/src/gui/DatabaseSettingsWidget.cpp b/src/gui/DatabaseSettingsWidget.cpp
+index 007c44a0..34c55b5c 100644
+--- a/src/gui/DatabaseSettingsWidget.cpp
++++ b/src/gui/DatabaseSettingsWidget.cpp
+@@ -21,6 +21,7 @@
+ #include "core/Database.h"
+ #include "core/Group.h"
+ #include "core/Metadata.h"
++#include "format/KeePass2.h"
+ #include "keys/CompositeKey.h"
+ 
+ DatabaseSettingsWidget::DatabaseSettingsWidget(QWidget* parent)
+@@ -53,6 +54,12 @@ void DatabaseSettingsWidget::load(Database* db)
+     m_ui->dbDescriptionEdit->setText(meta->description());
+     m_ui->recycleBinEnabledCheckBox->setChecked(meta->recycleBinEnabled());
+     m_ui->defaultUsernameEdit->setText(meta->defaultUserName());
++    if (m_db->cipher() == KeePass2::CIPHER_AES) {
++        m_ui->AlgorithmComboBox->setCurrentIndex(0);
++    }
++    else {
++        m_ui->AlgorithmComboBox->setCurrentIndex(1);
++    }
+     m_ui->transformRoundsSpinBox->setValue(m_db->transformRounds());
+     if (meta->historyMaxItems() > -1) {
+         m_ui->historyMaxItemsSpinBox->setValue(meta->historyMaxItems());
+@@ -82,6 +89,12 @@ void DatabaseSettingsWidget::save()
+     meta->setName(m_ui->dbNameEdit->text());
+     meta->setDescription(m_ui->dbDescriptionEdit->text());
+     meta->setDefaultUserName(m_ui->defaultUsernameEdit->text());
++    if (m_ui->AlgorithmComboBox->currentIndex() == 0) {
++        m_db->setCipher(KeePass2::CIPHER_AES);
++    }
++    else {
++        m_db->setCipher(KeePass2::CIPHER_TWOFISH);
++    }
+     meta->setRecycleBinEnabled(m_ui->recycleBinEnabledCheckBox->isChecked());
+     if (static_cast<quint64>(m_ui->transformRoundsSpinBox->value()) != m_db->transformRounds()) {
+         QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+diff --git a/src/gui/DatabaseSettingsWidget.ui b/src/gui/DatabaseSettingsWidget.ui
+index 5d1f3d9f..1c233bdd 100644
+--- a/src/gui/DatabaseSettingsWidget.ui
++++ b/src/gui/DatabaseSettingsWidget.ui
+@@ -49,35 +49,7 @@
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="dbDescriptionEdit"/>
+      </item>
+-     <item row="3" column="0">
+-      <widget class="QLabel" name="transformRoundsLabel">
+-       <property name="text">
+-        <string>Transform rounds:</string>
+-       </property>
+-      </widget>
+-     </item>
+-     <item row="4" column="0">
+-      <widget class="QLabel" name="defaultUsernameLabel">
+-       <property name="text">
+-        <string>Default username:</string>
+-       </property>
+-      </widget>
+-     </item>
+-     <item row="4" column="1">
+-      <widget class="QLineEdit" name="defaultUsernameEdit">
+-       <property name="enabled">
+-        <bool>true</bool>
+-       </property>
+-      </widget>
+-     </item>
+-     <item row="5" column="0">
+-      <widget class="QLabel" name="label">
+-       <property name="text">
+-        <string>Use recycle bin:</string>
+-       </property>
+-      </widget>
+-     </item>
+-     <item row="7" column="1">
++     <item row="9" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QSpinBox" name="historyMaxSizeSpinBox">
+@@ -100,7 +72,7 @@
+        </item>
+       </layout>
+      </item>
+-     <item row="6" column="1">
++     <item row="8" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QSpinBox" name="historyMaxItemsSpinBox">
+@@ -117,7 +89,7 @@
+        </item>
+       </layout>
+      </item>
+-     <item row="3" column="1">
++     <item row="5" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QSpinBox" name="transformRoundsSpinBox">
+@@ -144,23 +116,72 @@
+        </item>
+       </layout>
+      </item>
+-     <item row="6" column="0">
++     <item row="8" column="0">
+       <widget class="QCheckBox" name="historyMaxItemsCheckBox">
+        <property name="text">
+         <string>Max. history items:</string>
+        </property>
+       </widget>
+      </item>
+-     <item row="7" column="0">
++     <item row="9" column="0">
+       <widget class="QCheckBox" name="historyMaxSizeCheckBox">
+        <property name="text">
+         <string>Max. history size:</string>
+        </property>
+       </widget>
+      </item>
+-     <item row="5" column="1">
++     <item row="5" column="0">
++      <widget class="QLabel" name="transformRoundsLabel">
++       <property name="text">
++        <string>Transform rounds:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="7" column="1">
+       <widget class="QCheckBox" name="recycleBinEnabledCheckBox"/>
+      </item>
++     <item row="6" column="0">
++      <widget class="QLabel" name="defaultUsernameLabel">
++       <property name="text">
++        <string>Default username:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="7" column="0">
++      <widget class="QLabel" name="label">
++       <property name="text">
++        <string>Use recycle bin:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="6" column="1">
++      <widget class="QLineEdit" name="defaultUsernameEdit">
++       <property name="enabled">
++        <bool>true</bool>
++       </property>
++      </widget>
++     </item>
++     <item row="4" column="0">
++      <widget class="QLabel" name="AlgorithmLabel">
++       <property name="text">
++        <string>Algorithm:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="4" column="1">
++      <widget class="QComboBox" name="AlgorithmComboBox">
++       <item>
++        <property name="text">
++         <string>AES:  256 Bit   (default)</string>
++        </property>
++       </item>
++       <item>
++        <property name="text">
++         <string>Twofish:  256 Bit</string>
++        </property>
++       </item>
++      </widget>
++     </item>
+     </layout>
+    </item>
+    <item>
+-- 
+2.5.0
+
