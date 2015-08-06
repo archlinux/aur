@@ -1,0 +1,14 @@
+pkgbase = dnsbf
+	pkgdesc = Search for available domain names in an IP range
+	pkgver = svn
+	pkgrel = 3
+	url = http://code.google.com/p/dnsbf
+	arch = any
+	license = BSD
+	makedepends = subversion
+	depends = python2
+	source = svn+http://dnsbf.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = dnsbf
+
