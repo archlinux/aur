@@ -1,6 +1,6 @@
 pkgbase = zsh-git
 	pkgver = 5.0.8.r162.g2fc05d5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zsh.org/
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgname = zsh-git
 	depends = pcre
 	depends = libcap
 	depends = gdbm
-	provides = zsh
+	provides = zsh=5.0.8
 	conflicts = zsh
 	backup = etc/zsh/zprofile
 

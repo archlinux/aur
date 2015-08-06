@@ -5,7 +5,7 @@ _pkgbase=zsh
 pkgbase=zsh-git
 pkgname=('zsh-git' 'zsh-doc-git')
 pkgver=5.0.8.r162.g2fc05d5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.zsh.org/'
 license=('custom')
@@ -87,7 +87,7 @@ package_zsh-git() {
 	pkgdesc='A very advanced and programmable command interpreter (shell) for UNIX'
 	depends=('pcre' 'libcap' 'gdbm')
 	conflicts=('zsh')
-	provides=('zsh')
+	provides=("zsh=${pkgver%%.r*}")
 	backup=('etc/zsh/zprofile')
 	install=zsh.install
 
