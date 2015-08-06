@@ -2,8 +2,8 @@
 
 pkgname=nodejs-mkdirp
 _npmname=mkdirp
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Recursively mkdir, like mkdir -p, but in node.js"
 arch=('any')
 depends=('npm' 'nodejs')
