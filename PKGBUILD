@@ -12,7 +12,7 @@ _build_voip=false
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=20150803.1412dc6
+pkgver=20150805.fabc3a3
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,8 +21,8 @@ license=('GPL' 'LGPL')
 
 depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
 makedepends=('git')
-provides=('retroshare')
-conflicts=('retroshare')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
 install='retroshare.install'
 
@@ -173,8 +173,8 @@ EOF
 	# bdboot (needed to bootstrap the DHT)
 	install -D -m 644 \
 		"libbitdht/src/bitdht/bdboot.txt" \
-		"${pkgdir}/usr/share/RetroShare/bdboot.txt"
+		"${pkgdir}/usr/share/RetroShare06/bdboot.txt"
 
 	# Skins
-	cp -r "retroshare-gui/src/qss" "${pkgdir}/usr/share/RetroShare/"
+	cp -r "retroshare-gui/src/qss" "${pkgdir}/usr/share/RetroShare06/"
 }
