@@ -10,8 +10,8 @@
 # Orginally based on a Debian Squeeze package
 _pkgname=zoneminder
 pkgname=zoneminder-git
-pkgver=1.28.1
-pkgrel=2
+pkgver=1.28.100
+pkgrel=1
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -46,7 +46,8 @@ source=(
 # Because the source is not static, skip Git checksum:
 sha256sums=('SKIP'
             'c2ca71ec57e53da040de61ff212ac063574e5ddfb4c333b70be060d5ec26c62c'
-            '7eb2f26246e240e23502da44854d5ed14485aa11bc448ad73e9b57fee13f00a3')
+            '7eb2f26246e240e23502da44854d5ed14485aa11bc448ad73e9b57fee13f00a3'
+           )
      
 pkgver() {
     cd "$_pkgname"
@@ -69,7 +70,7 @@ build() {
           -DZM_RUNDIR=/srv/zoneminder \
           -DZM_TMPDIR=/srv/zoneminder/tmp \
           -DZM_SOCKDIR=/srv/zoneminder/socks .
-    
+     
     make V=0
 }
      
@@ -87,7 +88,9 @@ package() {
     mkdir -pv           $pkgdir/var/{cache/zoneminder,log/zoneminder}
     chown -Rv http.http $pkgdir/var/{cache/zoneminder,log/zoneminder}
     
-    mkdir -pv          $pkgdir/srv/zoneminder/socks
+    mkdir -v           $pkgdir/srv/zoneminder
+    chown -v http.http $pkgdir/srv/zoneminder
+    mkdir -v           $pkgdir/srv/zoneminder/socks
     chown -v http.http $pkgdir/srv/zoneminder/socks
     
     mkdir -pv          $pkgdir/srv/zoneminder/tmp
@@ -114,13 +117,16 @@ package() {
     # ln -s /usr/share/cambozola/cambozola.jar $pkgdir/srv/http/$_pkgname
 
     # Install configuration files
-    mkdir -p                                       $pkgdir/etc/httpd/conf/extra
-    install -D -m 644 $srcdir/httpd-$_pkgname.conf $pkgdir/etc/httpd/conf/extra
+    mkdir -p                                        $pkgdir/etc/httpd/conf/extra
+    install -D -m 644 $srcdir/httpd-$_pkgname.conf  $pkgdir/etc/httpd/conf/extra
     
-    mkdir -p                                    $pkgdir/usr/lib/systemd/system
-    install -D -m 644 $srcdir/$_pkgname.service $pkgdir/usr/lib/systemd/system
+    mkdir -p                                        $pkgdir/usr/lib/systemd/system
+    install -D -m 644 $srcdir/$_pkgname.service     $pkgdir/usr/lib/systemd/system
     
-    install -D -m 644 COPYING     $pkgdir/usr/share/license/$_pkgname
-    install -D -m 644 db/zm*.sql  $pkgdir/usr/share/$_pkgname/db     
+    install -D -m 644 COPYING                       $pkgdir/usr/share/license/$_pkgname
+    install -D -m 644 db/zm*.sql                    $pkgdir/usr/share/$_pkgname/db
+    
+    mkdir -p                                        $pkgdir/usr/share/doc/$_pkgname
+    # install -D -m 644 $srcdir/README              $pkgdir/usr/share/doc/$_pkgname
 
 }
