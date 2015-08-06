@@ -6,8 +6,7 @@ pkgname=schedtoold
 pkgver=0.3
 pkgrel=8
 pkgdesc="Simple daemon to renice/nice and change priorities of processes while running them."
-depends=('bash'
-         'schedtool')
+depends=('bash' 'schedtool')
 arch=('i686' 'x86_64')
 license=('GPL')
 source=(http://www.darav.de/$pkgname-$pkgver.tar.bz2 \
