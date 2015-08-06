@@ -1,6 +1,6 @@
 # Maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
 pkgname=livestreamer-twitch-gui
-pkgver=v0.9.1
+pkgver=v0.9.3
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Livestreamer"
 arch=("i686" "x86_64")
