@@ -1,15 +1,16 @@
 # Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
-pkgname="linux-zen"
+pkgname="linux-zen-git"
 pkgver=4.1.4+520740+g5889f0e
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
-url="http://www.zen-kernel.org"
+url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
 makedepends=("git")
-true && pkgbase="linux-zen"
-true && pkgname=("linux-zen" "linux-zen-headers")
+true && pkgbase="linux-zen-git"
+true && pkgname=("linux-zen-git" "linux-zen-git-headers")
 arch=("i686" "x86_64")
+conflicts=("linux-zen")
 pkgrel=1
 options=("!strip")
 source=("linux-zen.conf"
@@ -80,7 +81,7 @@ build() {
 	msg2 "Building modules..."; make -j $_CORES modules
 }
 
-package_linux-zen() {
+package_linux-zen-git() {
 	depends=("coreutils" "linux-firmware" "kmod" "mkinitcpio>=0.5.20")
 	optdepends=("linux-zen-headers: to build third party modules such as NVIDIA drivers or OSSv4"
 	            "crda: to set the correct wireless channels of your country")
@@ -149,7 +150,7 @@ package_linux-zen() {
 	find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
 
-package_linux-zen-headers() {
+package_linux-zen-git-headers() {
 	# AUR workaround
 	true && pkgdesc="Header files and scripts for building modules for linux-zen"
 	true && depends=("linux-zen")
