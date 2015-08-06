@@ -1,0 +1,18 @@
+pkgbase = swconfig
+	pkgdesc = project to package the swconfig utility from OpenWRT for archlinuxarm on BPi-R1
+	pkgver = 20150806
+	pkgrel = 1
+	url = https://github.com/rains31/swconfig
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = linux-headers
+	depends = libnl
+	provides = swconfig
+	conflicts = swconfig
+	source = git+https://github.com/rains31/swconfig.git
+	sha1sums = SKIP
+
+pkgname = swconfig
+
