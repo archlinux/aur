@@ -1,7 +1,7 @@
 From 2bd441b8ef1f78f5a8e9d3a2aa452f47608b3fab Mon Sep 17 00:00:00 2001
 From: Timothy Redaelli <timothy.redaelli@gmail.com>
 Date: Wed, 5 Aug 2015 15:23:49 +0200
-Subject: [PATCH 2/2] Add Algorithm label / ComboBox in Database settings form
+Subject: [PATCH 2/3] Add Algorithm label / ComboBox in Database settings form
 
 ---
  src/gui/DatabaseSettingsWidget.cpp | 13 ++++++

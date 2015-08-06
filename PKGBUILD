@@ -16,10 +16,12 @@ options=(!emptydirs)
 install=keepassx2.install
 source=("https://www.keepassx.org/dev/attachments/download/100/keepassx-2.0-${pkgver}.tar.gz"
         0001-Add-support-for-Twofish-in-KeePass2-code.patch
-        0002-Add-Algorithm-label-ComboBox-in-Database-settings-fo.patch)
+        0002-Add-Algorithm-label-ComboBox-in-Database-settings-fo.patch
+        0003-Use-the-correct-cipher-for-benchmark.patch)
 sha256sums=('bce1933c48fd33ef8043dd526d769fd9c454d1b63464c82a35e1f7a8689acbf2'
-            '901d4dff35f9e21c77cbd0dfe962ca00873c85cb1566bcccfd6492cada94220f'
-            '99a52bb7f2b9b0c00690a5243d74c09667cc2d6f7580ecfc45b6fd4961a7dfb6')
+            '68cfe8e862e35cd022becf3c81d67d4fa5f8b77fa84543042307e50f512152cd'
+            'db0b0a542fd45a7110f33cf23596c8e4bc70bee7ddf1b6f1c01a204245a1bed8'
+            'f0855957af783a4f7d42331f99a539b4801015c313490cf89c004d37ec1a6f87')
 
 _cmake_keys="-DCMAKE_INSTALL_PREFIX=/usr
              -DCMAKE_INSTALL_LIBDIR=/usr/lib
@@ -30,6 +32,7 @@ prepare() {
 
   patch -Np1 -i "$srcdir/0001-Add-support-for-Twofish-in-KeePass2-code.patch"
   patch -Np1 -i "$srcdir/0002-Add-Algorithm-label-ComboBox-in-Database-settings-fo.patch"
+  patch -Np1 -i "$srcdir/0003-Use-the-correct-cipher-for-benchmark.patch"
 }
 
 build() {

@@ -20,9 +20,10 @@ pkgbase = keepassx2-twofish
 	source = https://www.keepassx.org/dev/attachments/download/100/keepassx-2.0-beta1.tar.gz
 	source = 0001-Add-support-for-Twofish-in-KeePass2-code.patch
 	source = 0002-Add-Algorithm-label-ComboBox-in-Database-settings-fo.patch
+	source = 0003-Use-the-correct-cipher-for-benchmark.patch
 	sha256sums = bce1933c48fd33ef8043dd526d769fd9c454d1b63464c82a35e1f7a8689acbf2
-	sha256sums = 901d4dff35f9e21c77cbd0dfe962ca00873c85cb1566bcccfd6492cada94220f
-	sha256sums = 99a52bb7f2b9b0c00690a5243d74c09667cc2d6f7580ecfc45b6fd4961a7dfb6
+	sha256sums = 68cfe8e862e35cd022becf3c81d67d4fa5f8b77fa84543042307e50f512152cd
+	sha256sums = db0b0a542fd45a7110f33cf23596c8e4bc70bee7ddf1b6f1c01a204245a1bed8
 
 pkgname = keepassx2-twofish
 
