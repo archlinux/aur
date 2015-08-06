@@ -2,7 +2,7 @@
 # https://github.com/kyleam/maint-aur/tree/master/snakemake
 
 pkgname=snakemake
-pkgver=3.4
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 )
 license=('MIT')
 source=("https://pypi.python.org/packages/source/s/snakemake/$pkgname-$pkgver.tar.gz")
-md5sums=('397f980991b44ef96fd2bea410c3ed2f')
+md5sums=('ac6037a9bc5038f261282c786e417fc5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

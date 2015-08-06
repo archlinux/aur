@@ -1,6 +1,6 @@
 pkgbase = snakemake
 	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
-	pkgver = 3.4
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://bitbucket.org/johanneskoester/snakemake/wiki/Home
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = snakemake
 	depends = python
 	optdepends = graphviz: For DAG visualization
 	optdepends = python-docutils: For report generation
-	source = https://pypi.python.org/packages/source/s/snakemake/snakemake-3.4.tar.gz
-	md5sums = 397f980991b44ef96fd2bea410c3ed2f
+	source = https://pypi.python.org/packages/source/s/snakemake/snakemake-3.4.1.tar.gz
+	md5sums = ac6037a9bc5038f261282c786e417fc5
 
 pkgname = snakemake
 
