@@ -1,0 +1,16 @@
+pkgbase = hmcfgusb
+	pkgdesc = An application, which emulates the HomeMatic LAN configuration adapter-protocol
+	pkgver = r94.18e63b2
+	pkgrel = 1
+	url = https://0bin.readthedocs.org/en/latest/://git.zerfleddert.de/cgi-bin/gitweb.cgi/hmcfgusb/
+	arch = any
+	license = custom
+	makedepends = git
+	depends = libusb
+	source = hmcfgusb::git://git.zerfleddert.de/hmcfgusb
+	source = hmland.service
+	md5sums = SKIP
+	md5sums = b0f73269a91b789e204c0f54ce5401fc
+
+pkgname = hmcfgusb
+
