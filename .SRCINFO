@@ -15,6 +15,7 @@ pkgbase = gnome-music-git
 	depends = glib2
 	depends = python-dbus
 	depends = python-gobject
+	depends = python-requests
 	depends = tracker
 	depends = grilo
 	depends = libmediaart
@@ -24,6 +25,7 @@ pkgbase = gnome-music-git
 	depends = gupnp-av
 	depends = libdmapsharing
 	depends = gssdp
+	depends = yelp-tools
 	provides = gnome-music=3.17.4
 	conflicts = gnome-music
 	source = git://git.gnome.org/gnome-music

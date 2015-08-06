@@ -9,8 +9,9 @@ pkgdesc="Music player and management application for GNOME"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Music"
 license=('GPL')
-depends=("gtk3>=3.13.2" 'glib2' 'python-dbus' 'python-gobject' 'tracker' "grilo" 'libmediaart'
-         'grilo-plugins' 'python-dbus-common' 'gupnp' 'gupnp-av' 'libdmapsharing' 'gssdp')
+depends=('gtk3>=3.13.2' 'glib2' 'python-dbus' 'python-gobject' 'python-requests' 'tracker' 'grilo'
+         'libmediaart' 'grilo-plugins' 'python-dbus-common' 'gupnp' 'gupnp-av' 'libdmapsharing' 'gssdp'
+         'yelp-tools')
 makedepends=('git' 'intltool' 'gobject-introspection' 'gnome-common')
 provides=('gnome-music=3.17.4')
 conflicts=('gnome-music')
