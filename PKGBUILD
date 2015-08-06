@@ -12,8 +12,8 @@ url="http://www.litecoin.org/"
 license=('MIT')
 depends=('qt4' 'gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
 makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
-provides=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin')
-conflicts=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin')
+provides=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin' 'litecoin-daemon')
+conflicts=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin' 'litecoin-daemon')
 source=('git://github.com/litecoin-project/litecoin.git')
 md5sums=('SKIP')
 
