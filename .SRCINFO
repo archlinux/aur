@@ -1,0 +1,19 @@
+pkgbase = netglub
+	pkgdesc = The really open source information gathering tool
+	pkgver = 1.0
+	pkgrel = 5
+	url = http://www.netglub.org
+	arch = any
+	license = GPL
+	depends = mariadb
+	depends = qt4
+	depends = sqlitebrowser
+	depends = gdb
+	depends = graphviz
+	depends = python2
+	options = !strip
+	source = http://redmine.lab.diateam.net/attachments/download/1/netglub-1.0.tar.gz
+	md5sums = c91005ccbd1010b7883f07e2d0e08e0a
+
+pkgname = netglub
+
