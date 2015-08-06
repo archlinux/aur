@@ -23,13 +23,13 @@ conflicts=('nvidia-beta')
 
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-source_armv7=("http://download.nvidia.com/XFree86/Linux-32bit-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run")
+source_armv7h=("http://download.nvidia.com/XFree86/Linux-32bit-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run")
 # http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run.md5
 # http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run.md5
 # http://download.nvidia.com/XFree86/Linux-32bit-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run.md5
 md5sums_i686=('c4d2ae0dd6338874e5e8358fe630ba8f')
 md5sums_x86_64=('8bdf64adc94bd9e170e4a7412ca9e5ba')
-md5sums_armv7=('a06c6d3d0d1294bd788e49ae797fecda')
+md5sums_armv7h=('a06c6d3d0d1294bd788e49ae797fecda')
 
 install=${pkgname}.install
 
