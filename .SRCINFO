@@ -1,0 +1,15 @@
+pkgbase = netcommander
+	pkgdesc = An easy to use arp spoofing tool
+	pkgver = git
+	pkgrel = 6
+	url = https://github.com/evilsocket/netcommander
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = scapy
+	source = git+https://github.com/evilsocket/NetCommander
+	md5sums = SKIP
+
+pkgname = netcommander
+
