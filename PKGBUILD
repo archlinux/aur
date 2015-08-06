@@ -2,8 +2,8 @@
 # based on nginx-mainline and extra/nginx
 
 pkgname=nginx-http2
-provides=('nginx', 'nginx-mainline')
-conflicts=('nginx', 'nginx-mainline')
+provides=('nginx' 'nginx-mainline')
+conflicts=('nginx' 'nginx-mainline')
 _pkgname=nginx
 pkgver=1.9.3
 pkgrel=1
