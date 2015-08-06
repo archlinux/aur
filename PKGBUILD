@@ -11,6 +11,7 @@ true && pkgbase="linux-zen-git"
 true && pkgname=("linux-zen-git" "linux-zen-git-headers")
 arch=("i686" "x86_64")
 conflicts=("linux-zen")
+provides=("linux-zen")
 pkgrel=1
 options=("!strip")
 source=("linux-zen.conf"
@@ -83,7 +84,7 @@ build() {
 
 package_linux-zen-git() {
 	depends=("coreutils" "linux-firmware" "kmod" "mkinitcpio>=0.5.20")
-	optdepends=("linux-zen-headers: to build third party modules such as NVIDIA drivers or OSSv4"
+	optdepends=("linux-zen-git-headers: to build third party modules such as NVIDIA drivers or OSSv4"
 	            "crda: to set the correct wireless channels of your country")
 	backup=(etc/mkinitcpio.d/linux-zen.conf)
 	install=linux-zen.install
@@ -153,7 +154,7 @@ package_linux-zen-git() {
 package_linux-zen-git-headers() {
 	# AUR workaround
 	true && pkgdesc="Header files and scripts for building modules for linux-zen"
-	true && depends=("linux-zen")
+	true && depends=("linux-zen-git")
 	true && provides=("linux-headers")
 
 	_srcdir="/usr/src/linux-$_kernver"
