@@ -1,7 +1,7 @@
 pkgbase = terraform
 	pkgdesc = Tool for building, changing, and versioning infrastructure safely and efficiently
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = http://www.terraform.io/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = terraform
 	makedepends = git
 	makedepends = mercurial
 	conflicts = terraform-bin
-	source = terraform::git+https://github.com/hashicorp/terraform.git#tag=v0.6.1
+	source = terraform::git+https://github.com/hashicorp/terraform.git#tag=v0.6.2
 	sha256sums = SKIP
 
 pkgname = terraform
