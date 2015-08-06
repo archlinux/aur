@@ -2,7 +2,7 @@
 
 pkgname=pelican
 pkgver=3.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to generate a static blog, with restructured text (or markdown) input files."
 arch=('any')
 url="http://getpelican.com"
@@ -27,7 +27,10 @@ sha256sums=('393eb7c19ed99336c2fb542084ada81d6db2c8ebb7a3f63066e27fc2eae2cef6')
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  msg2 "Fix wrong file permissions..."
-  chmod 644 -R "${pkgdir}/usr/lib/python3.4/site-packages/pelican/themes"
+
+  msg2 "Fixing wrong file permissions..."
+  find "${pkgdir}/usr/lib/python3.4/site-packages/pelican/themes" -type d -exec chmod 755 {} \;
+  find "${pkgdir}/usr/lib/python3.4/site-packages/pelican/themes" -type f -exec chmod 644 {} \;
+  chmod 644 "${pkgdir}/usr/lib/python3.4/site-packages/pelican-3.6.2-py3.4.egg-info/"*
 }
 
