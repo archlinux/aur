@@ -1,12 +1,13 @@
-pkgbase = linux-zen
+pkgbase = linux-zen-git
 	pkgdesc = Featureful kernel including various new features, code and optimizations to better suit desktops
-	pkgver = 4.0.0+507377+g7a1a41c
+	pkgver = 4.1.4+520740+g5889f0e
 	pkgrel = 1
-	url = http://www.zen-kernel.org
+	url = https://github.com/damentz/zen-kernel
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	conflicts = linux-zen
 	options = !strip
 	source = linux-zen.conf
 	source = linux-zen.preset
@@ -15,7 +16,7 @@ pkgbase = linux-zen
 	sha256sums = 18fe6b2664a9a740544c4cb990efe5ec933d6e64caf9e5d0a6ced92af0027c2d
 	sha256sums = SKIP
 
-pkgname = linux-zen
+pkgname = linux-zen-git
 	install = linux-zen.install
 	depends = coreutils
 	depends = linux-firmware
@@ -25,5 +26,5 @@ pkgname = linux-zen
 	optdepends = crda: to set the correct wireless channels of your country
 	backup = etc/mkinitcpio.d/linux-zen.conf
 
-pkgname = linux-zen-headers
+pkgname = linux-zen-git-headers
 
