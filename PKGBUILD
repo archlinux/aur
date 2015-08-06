@@ -11,7 +11,7 @@ depends=('qt5-declarative' 'qt5-quickcontrols')
 conflicts=('hawaii-terminal')
 replaces=('hawaii-terminal')
 provides=('hawaii-terminal')
-makedepends=('git' 'cmake')
+makedepends=('git' 'extra-cmake-modules')
 options=('debug')
 
 _gitroot="git://github.com/hawaii-desktop/hawaii-terminal.git"
