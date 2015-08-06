@@ -8,7 +8,7 @@ arch=(any)
 license=('GPL3')
 url="http://isoho.st/"
 source=(http://isoho.st/download/${pkgname}-${pkgver}.tar.bz2)
-depends=('virtviewer' 'perl')
+depends=('virtviewer' 'perl' 'spice-gtk3')
 md5sums=('ff06ecc81f7afbfc6f314b46074572ce')
 
 package() {

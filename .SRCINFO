@@ -7,6 +7,7 @@ pkgbase = isohost-tools
 	license = GPL3
 	depends = virtviewer
 	depends = perl
+	depends = spice-gtk3
 	source = http://isoho.st/download/isohost-tools-0.4.tar.bz2
 	md5sums = ff06ecc81f7afbfc6f314b46074572ce
 
