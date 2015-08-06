@@ -12,7 +12,7 @@ depends=('jre7-openjdk-headless' 'fontconfig' 'libcups')
 conflicts=('subsonic-beta' 'subsonic' 'subsonic-git')
 source=(http://madsonic.org/download/${pkgvera}/${pkgdate}_${pkgname}-${pkgver}-standalone.tar.gz
 'madsonic.service' 
-'arch_env_vars.patch' 
+'enable_config.patch' 
 'madsonic.conf')
 backup=('var/madsonic/db' 'var/madsonic/madsonic.sh')
 install=$pkgname.install
@@ -28,7 +28,7 @@ package() {
   install -m 644 -t $pkgdir/etc $srcdir/madsonic.conf
 
 # Compatibility with both java runtime available in repos and AUR; locale fixes
-  patch $pkgdir/var/madsonic/${pkgname}.sh $srcdir/arch_env_vars.patch
+  patch $pkgdir/var/madsonic/${pkgname}.sh $srcdir/enable_config.patch
 }
 
 
