@@ -1,0 +1,23 @@
+pkgbase = metamarket-git
+	pkgdesc = METAmarket
+	pkgver = r56.35ca76a
+	pkgrel = 1
+	url = https://github.com/metamarcdw/metamarket.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2-simplejson
+	depends = python2-scrypt
+	depends = python2-crypto
+	depends = python2-simple-crypt
+	depends = python2-pycoin
+	depends = python2-python-bitcoinlib
+	depends = python2
+	provides = mmcli
+	source = metamarket-git::git+https://github.com/metamarcdw/metamarket.git
+	source = mmcli.sh
+	sha256sums = SKIP
+	sha256sums = a7f6b5448d73e789808c40a8e03f48da1b37b5fcf77b7cbbb1cba05089781790
+
+pkgname = metamarket-git
+
