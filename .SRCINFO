@@ -1,17 +1,18 @@
 pkgbase = hawaii-terminal
 	pkgdesc = The Hawaii Terminal Emulator
-	pkgver = 0.2.0
+	pkgver = 0.5.91
 	pkgrel = 1
-	url = http://www.maui-project.org
+	url = http://hawaiios.org/
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
 	license = GPL2
-	makedepends = cmake
-	makedepends = qtchooser
+	makedepends = extra-cmake-modules
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
-	source = http://sourceforge.net/projects/mauios/files/hawaii/hawaii-terminal/hawaii-terminal-0.2.0.tar.gz/download
-	md5sums = 73f7996d891ea7b8b1c8e48eb3327209
+	source = https://github.com/hawaii-desktop/hawaii-terminal/releases/download/v0.5.91/hawaii-terminal-0.5.91.tar.xz
+	md5sums = 4d99b4a0aea19f51199e1273288458b0
 
 pkgname = hawaii-terminal
 
