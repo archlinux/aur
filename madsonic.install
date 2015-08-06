@@ -1,0 +1,8 @@
+post_install() {
+  echo "*************************************************"
+  echo "* Edit /var/madsonic/madsonic.sh to configure   *"
+  echo "* madsonic                                      *"
+  echo "*************************************************"
+  
+}
+
