@@ -1,7 +1,9 @@
 post_install() {
+  systemctl daemon-reload &> /dev/null
   echo "*************************************************"
-  echo "* Edit /var/madsonic/madsonic.sh to configure   *"
+  echo "* Edit /etc/webapps/madsonic.conf to configure  *"
   echo "* madsonic                                      *"
+  echo "* Start with systemctl start madsonic.service   *"
   echo "*************************************************"
   
 }
