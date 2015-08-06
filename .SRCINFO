@@ -1,0 +1,31 @@
+pkgbase = voxelands-next-git
+	pkgdesc = A fork of Minetest, an Infiniminer/Minecraft inspired game (experimental branch)
+	pkgver = 20150727.e95d4a4
+	pkgrel = 1
+	url = http://www.voxelands.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = gettext
+	depends = libxxf86vm
+	depends = irrlicht
+	depends = sqlite
+	depends = libvorbis
+	depends = openal
+	depends = glu
+	depends = libsm
+	depends = hicolor-icon-theme
+	depends = freetype2
+	provides = minetest-classic
+	provides = voxelands
+	conflicts = minetest-classic
+	conflicts = minetest-classic-next-git
+	conflicts = voxelands
+	replaces = minetest-classic-next-git
+	source = git+https://gitlab.com/voxelands/voxelands.git
+	sha256sums = SKIP
+
+pkgname = voxelands-next-git
+
