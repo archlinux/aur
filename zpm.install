@@ -1,3 +1,1 @@
-post_install () {
-  echo "You have to execute 'cp /usr/share/zpm/zshrc-example ~/.zshrc' to use it."
-}
+/home/grisa/.zpm/arch/zpm.install
