@@ -4,7 +4,7 @@
 
 pkgname=schedtoold
 pkgver=0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Simple daemon to renice/nice and change priorities of processes while running them."
 depends=('bash'
          'schedtool')
