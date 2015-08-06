@@ -1,0 +1,20 @@
+pkgbase = python-uritemplate.py
+	pkgdesc = Simple python library to deal with URI Templates.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sigmavirus24/uritemplate
+	arch = any
+	license = custom:Modified BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/u/uritemplate.py/uritemplate.py-0.3.0.tar.gz
+	md5sums = 4dd14904ba502c6ff8d6276e004404de
+
+pkgname = python-uritemplate.py
+	depends = python
+	conflicts = python-uritemplate
+
+pkgname = python2-uritemplate.py
+	depends = python2
+	conflicts = python2-uritemplate
+
