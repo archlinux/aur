@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-goby-git
-pkgver=1.1.9.g30fe6bb
+pkgver=1.1.10.gfd44ba5
 pkgrel=1
 pkgdesc="WYSIWYG presentation tool, which runs on Emacs"
 arch=('any')

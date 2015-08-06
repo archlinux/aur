@@ -1,6 +1,6 @@
 pkgbase = emacs-goby-git
 	pkgdesc = WYSIWYG presentation tool, which runs on Emacs
-	pkgver = 1.1.9.g30fe6bb
+	pkgver = 1.1.10.gfd44ba5
 	pkgrel = 1
 	url = http://www.mew.org/~kazu/proj/goby/en/index.html
 	install = emacs-goby.install
