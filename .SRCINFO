@@ -1,0 +1,25 @@
+pkgbase = mozilla-extension-stylish
+	pkgdesc = Customize your favorite web sites with user styles.
+	pkgver = 2.0.2.1.signed
+	pkgrel = 1
+	url = https://userstyles.org/
+	arch = any
+	license = GPL
+	makedepends = rasqal
+	source = mozilla-extension-stylish.zip::https://addons.mozilla.org/firefox/downloads/latest/stylish/platform:2/
+	md5sums = dc969fd70bb672726f40261ed14cb70e
+
+pkgname = mozilla-extension-stylish
+
+pkgname = firefox-extension-stylish
+	depends = mozilla-extension-stylish=2.0.2.1.signed
+	depends = firefox
+	provides = 
+	conflicts = 
+
+pkgname = thunderbird-extension-stylish
+	depends = mozilla-extension-stylish=2.0.2.1.signed
+	depends = thunderbird
+	provides = 
+	conflicts = 
+
