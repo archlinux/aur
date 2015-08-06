@@ -3,12 +3,12 @@
 
 pkgname=radeontop
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Radeon cards monitoring utility"
 arch=('i686' 'x86_64')
 url="https://github.com/clbr/radeontop"
 license=('GPL3')
-depends=('ncurses' 'xf86-video-ati')
+depends=('ncurses')
 source=("https://github.com/clbr/radeontop/archive/v$pkgver.tar.gz")
 sha256sums=('4430e1aaca895d70ea496a9b14010d9d94cadd6269b28a66104af89ff29d8489')
 
