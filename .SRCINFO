@@ -1,0 +1,14 @@
+pkgbase = websploit
+	pkgdesc = An open source project for, social engineering works, scanning, crawling and analysis, automatic exploiter, and network attacks
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://code.google.com/p/websploit/
+	arch = any
+	license = Unknown
+	depends = python2
+	depends = scapy
+	source = http://sourceforge.net/projects/websploit/files/WebSploit%20Framework%20V.3.0.0/WebSploit-Framework-3.0.0.tar.gz
+	md5sums = 3161c57ca6b5c50d5a71df2fef95d846
+
+pkgname = websploit
+
