@@ -1,0 +1,17 @@
+pkgbase = python2-py-trello-git
+	pkgdesc = A wrapper around the Trello API written in Python.
+	pkgver = 0.4.3.r0.g476742b
+	pkgrel = 1
+	url = https://github.com/sarumont/py-trello
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python2
+	provides = python2-py-trello
+	conflicts = python2-py-trello
+	options = !emptydirs
+	source = python2-py-trello::git+http://github.com/sarumont/py-trello.git
+	md5sums = SKIP
+
+pkgname = python2-py-trello-git
+
