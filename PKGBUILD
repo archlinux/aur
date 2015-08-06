@@ -2,15 +2,15 @@
 # Contributor: alejandrogomez <alejandroogomez@gmail.com>
 
 pkgname=turses
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=0
 pkgdesc="A Twitter client for the console"
 arch=('any')
 url="http://pypi.python.org/pypi/turses/"
 license=('GPLv3')
 depends=('ncurses' 'python2' 'python2-oauth2' 'python2-tweepy' 'python2-urwid' 'python2-setuptools')
-source=(http://pypi.python.org/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('8506e3a5aedc04f391aa44b5c184e929')
+source=(https://github.com/dialelo/turses/archive/v$pkgver.tar.gz)
+md5sums=('9c3b1d3739a40698d7f92103ee8286ba')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

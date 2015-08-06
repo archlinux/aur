@@ -1,7 +1,7 @@
 pkgbase = turses
 	pkgdesc = A Twitter client for the console
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 0.3.1
+	pkgrel = 0
 	url = http://pypi.python.org/pypi/turses/
 	arch = any
 	license = GPLv3
@@ -11,8 +11,8 @@ pkgbase = turses
 	depends = python2-tweepy
 	depends = python2-urwid
 	depends = python2-setuptools
-	source = http://pypi.python.org/packages/source/t/turses/turses-0.3.0.tar.gz
-	md5sums = 8506e3a5aedc04f391aa44b5c184e929
+	source = https://github.com/dialelo/turses/archive/v0.3.1.tar.gz
+	md5sums = 9c3b1d3739a40698d7f92103ee8286ba
 
 pkgname = turses
 
