@@ -25,7 +25,7 @@ package() {
   install -m 644 -t $pkgdir/var/webapps/madsonic $srcdir/{LICENSE.TXT,README.TXT}
   mkdir -p $pkgdir/usr/lib/systemd/system
   install -m 644 -t $pkgdir/usr/lib/systemd/system $srcdir/madsonic.service
-  mkdir -p $pkgdir/etc/webapps/madsonic
+  mkdir -p $pkgdir/etc/webapps
   install -m 644 -t $pkgdir/etc/webapps $srcdir/madsonic.conf
 
 # Compatibility with both java runtime available in repos and AUR; locale fixes
