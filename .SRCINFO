@@ -1,0 +1,22 @@
+pkgbase = python-github3.py
+	pkgdesc = a comprehensive wrapper around the GitHub API (v3)
+	pkgver = 1.0.0a2
+	pkgrel = 1
+	url = https://github.com/sigmavirus24/github3.py
+	arch = any
+	license = custom:Modified BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/g/github3.py/github3.py-1.0.0a2.tar.gz
+	md5sums = f8f13b5a4c18d86609ab26115c0be05c
+
+pkgname = python-github3.py
+	depends = python
+	depends = python-requests
+	depends = python-uritemplate
+
+pkgname = python2-github3.py
+	depends = python2
+	depends = python2-requests
+	depends = python2-uritemplate
+
