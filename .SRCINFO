@@ -1,16 +1,15 @@
 pkgbase = python-pyspf
 	pkgdesc = Python implementation of the Sender Policy Framework (SPF) protocol
-	pkgver = 2.0.11
+	pkgver = 2.0.12
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/pyspf
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = PSF
 	makedepends = python-setuptools
 	depends = python-pydns
 	optdepends = python-authres: Return RFC 5451 Authentication Results headers
-	source = http://pypi.python.org/packages/source/p/pyspf/pyspf-2.0.11.tar.gz
-	md5sums = 83add3a0d8732bcc28841ceb5da440ba
+	source = http://pypi.python.org/packages/source/p/pyspf/pyspf-2.0.12.tar.gz
+	md5sums = c7dbad42e4f0ef65b5bf0b01b8ec1c3b
 
 pkgname = python-pyspf
 
