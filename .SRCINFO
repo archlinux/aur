@@ -1,0 +1,15 @@
+pkgbase = python-editorconfig
+	pkgdesc = Clone of EditorConfig core written in Python
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = http://editorconfig.org/
+	arch = any
+	license = PSF
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/editorconfig/editorconfig-core-py/archive/v0.12.0.tar.gz
+	sha256sums = 0b8e2468305b5795c2f887f936ffc461143567792eed5c81985cbc35b13a7bc0
+
+pkgname = python-editorconfig
+
