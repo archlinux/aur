@@ -15,7 +15,7 @@ _build_voip=true
 
 pkgname=retroshare
 pkgver=0.6.0.RC2
-pkgrel=4
+pkgrel=5
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
@@ -135,12 +135,12 @@ package() {
 	if [[ "$_build_voip" == "true" ]] ; then
 		install -D -m 755 \
 			"${_srcdir}/plugins/VOIP/libVOIP.so" \
-			"${pkgdir}/usr/lib/retroshare/extensions/libVOIP.so"
+			"${pkgdir}/usr/lib/retroshare/extensions6/libVOIP.so"
 	fi
 	if [[ "$_build_feedreader" == "true" ]] ; then
 		install -D -m 755 \
 			"${_srcdir}/plugins/FeedReader/libFeedReader.so" \
-			"${pkgdir}/usr/lib/retroshare/extensions/libFeedReader.so"
+			"${pkgdir}/usr/lib/retroshare/extensions6/libFeedReader.so"
 	fi
 
 	# Icons
@@ -156,9 +156,9 @@ package() {
 	# bdboot (needed to bootstrap the DHT)
 	install -D -m 644 \
 		"${_srcdir}/libbitdht/src/bitdht/bdboot.txt" \
-		"${pkgdir}/usr/share/RetroShare/bdboot.txt"
+		"${pkgdir}/usr/share/RetroShare06/bdboot.txt"
 
 	# Skins
-	cp -r "${_srcdir}/retroshare-gui/src/qss" "${pkgdir}/usr/share/RetroShare/"
+	cp -r "${_srcdir}/retroshare-gui/src/qss" "${pkgdir}/usr/share/RetroShare06/"
 	#find "${pkgdir}/usr/share/RetroShare/" -depth -type d -name ".svn" -exec rm -r {} \;
 }
