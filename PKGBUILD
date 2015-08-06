@@ -12,7 +12,7 @@ url="https://github.com/desaster/kippo"
 license=('BSD')
 depends=('twisted' 'pycrypto' 'zope-interface' 'python2-pyasn1')
 optdepends=(
-            'mysql-python: MySQL Support for kippo' 
+            'python2-wokkel: XAMPP Support' 
             'python2-mysql-connector: MySQL Support for kippo')
 makedepends=('git')
 source=('git+http://github.com/desaster/kippo' 'kippo.service')
