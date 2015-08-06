@@ -6216,7 +6216,6 @@ CONFIG_KXCJK1013=m
 # CONFIG_AD7887 is not set
 # CONFIG_AD7923 is not set
 # CONFIG_AD799X is not set
-# CONFIG_CC10001_ADC is not set
 # CONFIG_MAX1027 is not set
 # CONFIG_MAX1363 is not set
 # CONFIG_MCP320X is not set
