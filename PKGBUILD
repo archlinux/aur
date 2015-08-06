@@ -29,7 +29,6 @@ prepare() {
 build() {
 
 cd "$srcdir/${_reponame}"
-ls
 qmake-qt5 -recursive
 QT_SELECT=5 make
 
