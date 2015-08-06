@@ -13,18 +13,20 @@ pkgbase = libzypp-bindings-git
 	makedepends = python
 	makedepends = python2
 	depends = libzypp-git
-	provides = libzypp-bindings
-	conflicts = libzypp-bindings
 	source = git+https://github.com/openSUSE/libzypp-bindings.git
 	source = make-ZyppCommon-cmake-module-includable.patch
 	md5sums = SKIP
 	md5sums = 71d063d865f99ac00ab24cf759107376
 
-pkgname = python-zypp
+pkgname = python-zypp-git
 	depends = libzypp-git
 	depends = python
+	provides = python-zypp
+	conflicts = python-zypp
 
-pkgname = python2-zypp
+pkgname = python2-zypp-git
 	depends = libzypp-git
 	depends = python2
+	provides = python2-zypp
+	conflicts = python2-zypp
 

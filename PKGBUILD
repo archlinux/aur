@@ -1,7 +1,7 @@
 # Contributor: Junchun Guan <junchunx.guan@gmail.com>
 
 pkgbase=libzypp-bindings-git
-pkgname=('python-zypp' 'python2-zypp')
+pkgname=('python-zypp-git' 'python2-zypp-git')
 pkgver=r341.0baaf1d
 pkgrel=1
 pkgdesc="ZYpp bindings for scripting languages"
@@ -10,8 +10,6 @@ url="https://github.com/openSUSE/libzypp-bindings"
 license=('GPL')
 depends=('libzypp-git')
 makedepends=('git' 'cmake' 'boost' 'swig' 'python' 'python2')
-provides=('libzypp-bindings')
-conflicts=('libzypp-bindings')
 source=('git+https://github.com/openSUSE/libzypp-bindings.git'
         'make-ZyppCommon-cmake-module-includable.patch')
 md5sums=('SKIP'
@@ -57,14 +55,18 @@ build() {
   make
 }
 
-package_python-zypp() {
+package_python-zypp-git() {
   depends=('libzypp-git' 'python')
+  provides=('python-zypp')
+  conflicts=('python-zypp')
   cd "$srcdir"/$_gitname
   make DESTDIR="${pkgdir}" install
 }
 
-package_python2-zypp() {
+package_python2-zypp-git() {
   depends=('libzypp-git' 'python2')
+  provides=('python2-zypp')
+  conflicts=('python2-zypp')
   cd "$srcdir"/$_gitname-py2
   make DESTDIR="${pkgdir}" install
 }
