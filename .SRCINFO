@@ -1,0 +1,20 @@
+pkgbase = imageplay-git
+	pkgdesc = ImagePlay is a rapid prototyping application for image processing
+	pkgver = 6.0.0.beta.3.r8.g1080014
+	pkgrel = 1
+	url = http://imageplay.io
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qtchooser
+	depends = qt5-base
+	depends = freeimage
+	depends = opencv
+	provides = imageplay
+	conflicts = imageplay
+	source = git://github.com/cpvrlab/ImagePlay
+	sha256sums = SKIP
+
+pkgname = imageplay-git
+
