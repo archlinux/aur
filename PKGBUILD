@@ -17,7 +17,7 @@ _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=46.0.2467.2
+pkgver=46.0.2471.2
 _launcher_ver=2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -78,7 +78,6 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         # Misc Patches
         'chromium-system-jinja-r8.patch'
         'enable_vaapi_on_linux.diff'
-        'webui_test_resources.grd'
         # Patch from crbug (chromium bugtracker)
 
         )
@@ -93,7 +92,6 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           # Misc Patches
           '51ee08f9500a9006673787b0f29ffa089b09c286'
           '4e223ea3df5be9374f202f7c3f0679ae55eed495'
-          'd1dd1387365d3870cfb2140722426bd731bd726d'
           # Patch from crbug (chromium bugtracker)
 
           )
@@ -444,8 +442,8 @@ prepare() {
   msg2 "Make sure use Python2"
   find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
   find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
-
-  cp "${srcdir}/webui_test_resources.grd" chrome/test/data/webui_test_resources.grd
+  
+  sed '11d' -i chrome/test/data/webui_test_resources.grd
 }
 
 build() {
