@@ -75,15 +75,15 @@ prepare(){
   sed -i 's/gcc_s.1/gcc_s/g' CMake/FindGFortran.cmake
 
   # Out of source build
-  cd "${srcdir}/${pkgname}${pkgver}"
-  rm -rf build
-  mkdir -p build
+  cd "${srcdir}"
+  rm -rf build-${pkgver}
+  mkdir -p build-${pkgver}
 }
 
 build() {
-  cd "${srcdir}/${pkgname}${pkgver}/build"
+  cd "${srcdir}/build-${pkgver}"
 
-  cmake ../src -Wno-dev \
+  cmake "${srcdir}/${pkgname}${pkgver}/src" -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/opt/visit \
     -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
@@ -91,7 +91,7 @@ build() {
     -DVISIT_PARALLEL:BOOL=ON -DVISIT_MPI_COMPILER=mpicc \
     -DVISIT_PYTHON_DIR=/usr -DVISIT_PYTHON_SKIP_INSTALL:BOOL=ON \
     -DQT_BIN=/usr/lib/qt4/bin -DVISIT_VISIT_QT_SKIP_INSTALL:BOOL=ON \
-    -DVISIT_VTK_VERSION=6.1.0 -DVISIT_VTK_DIR=/usr -DVISIT_VTK_SKIP_INSTALL:BOOL=ON \
+    -DVISIT_VTK_DIR=/usr -DVISIT_VTK_SKIP_INSTALL:BOOL=ON \
     -DVISIT_TCMALLOC_DIR=/usr \
     -DVISIT_ICET_DIR=/usr \
     -DVISIT_ZLIB_DIR=/usr \
@@ -114,7 +114,7 @@ build() {
 }
 
 package(){
-  cd "${srcdir}/${pkgname}${pkgver}/build"
+  cd "${srcdir}/build-${pkgver}"
 
   make install DESTDIR="${pkgdir}"
 
