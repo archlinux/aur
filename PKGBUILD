@@ -1,4 +1,4 @@
-# Maintainer  : Firef0x          <Firefgx {at) gmail [dot} com>
+# Maintainer  : Thaodan          <theodorstormgradex {at) gmail [dot} com>
 # Contributor : Firef0x          <Firefgx {at) gmail [dot} com>
 # Contributor : Bernhard Walle   <bwalle.de: bernhard            >
 # Contributor : Jesse Jaara      <gmail.com, mail.ru: jesse.jaara>
