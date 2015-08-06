@@ -1,0 +1,16 @@
+pkgbase = maltrieve
+	pkgdesc = Retrieves malware directly from sources malc0de, malware black list, malware domain list, malware patrol, sacour.cn, vx vault, urlqery, and cleanmx
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/technoskald/maltrieve
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-beautifulsoup4
+	depends = python2-lxml
+	source = git+https://github.com/technoskald/maltrieve
+	md5sums = SKIP
+
+pkgname = maltrieve
+
