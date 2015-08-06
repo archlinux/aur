@@ -1,6 +1,6 @@
 pkgbase = python2-powerline
 	pkgdesc = The ultimate statusline/prompt utility (stable package).
-	pkgver = 2.1.4
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/powerline/powerline
 	install = powerline.install
@@ -10,8 +10,8 @@ pkgbase = python2-powerline
 	makedepends = python2-setuptools
 	makedepends = python2-sphinx
 	depends = python2>=2.6
-	optdepends = python-psutil: improved system information
-	optdepends = python-pygit2: improved git support
+	optdepends = python2-psutil: improved system information
+	optdepends = python2-pygit2: improved git support
 	optdepends = zsh: better shell prompt
 	optdepends = gvim: vim compiled with Python support
 	provides = otf-powerline-symbols
@@ -19,9 +19,9 @@ pkgbase = python2-powerline
 	conflicts = python-powerline-git
 	conflicts = python-powerline-git
 	conflicts = otf-powerline-symbols-git
-	source = powerline-2.1.4.tar.gz::https://github.com/powerline/powerline/archive/2.1.4.tar.gz
+	source = powerline-2.2.tar.gz::https://github.com/powerline/powerline/archive/2.2.tar.gz
 	source = powerline.install
-	sha256sums = 4e657ff7c03c3c7269d0faeaefc9408c96da10b1ea561fe165b84ea6bc2fd03e
+	sha256sums = 0f1b8e0737f3ae91486e29e5c7c110f6ebb33ca7933e4cbaae2e28b47c3d2995
 	sha256sums = af07852748ddba1544feee53fdf747d3dd163597f026719f8a6f80045d0c5425
 
 pkgname = python2-powerline
