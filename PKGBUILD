@@ -1,29 +1,36 @@
 # Maintainer: Yorick Rommers <yorick-rommers@hotmail.com>
+# Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=dattobd
-pkgver=20150805
+pkgver=r1.8057a30
 pkgrel=1
 pkgdesc="kernel module for taking block-level snapshots and incremental backups of Linux block devices"
 arch=('any')
 url="https://github.com/datto/dattobd"
 license=('GPL2')
-depends=('')
-source=("git://github.com/datto/dattobd.git"
-        "http://www.imegumii.nl/dattobd.conf")
-md5sums=("SKIP"
-         "SKIP")
+makedepends=("linux-headers")
+source=("git://github.com/datto/dattobd.git")
+md5sums=("SKIP")
+install=dattobd.install
+
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "$srcdir/$pkgname"
-  sudo make
+  cd "${srcdir}/${pkgname}"
+  make PREFIX="${pkgdir}/usr"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  sudo make install
-  sudo install -D "src/dattobd.ko" "/usr/lib/modules//$(uname -r)/"
-  sudo install -D "../dattobd.conf" "/etc/modules-load.d/"
-  sudo rm -f "src/.tmp_versions/dattobd.mod"
-  sudo depmod -a
-  sudo modprobe dattobd
-}
+  cd "${srcdir}/${pkgname}"
 
+  msg "Removing ldconfig lines"
+  find . -type f -name Makefile -exec sed -i '/ldconfig/d' {} \;
+
+  install -dm755 "${pkgdir}/usr/lib"
+  make PREFIX="${pkgdir}/usr" install
+  echo "$pkgdir"
+  install -Dm644 "src/dattobd.ko" "${pkgdir}/usr/lib/modules/$(uname -r)/dattobd.ko"
+}

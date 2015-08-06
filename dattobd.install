@@ -1,0 +1,22 @@
+## arg 1:  the new package version
+post_install() {
+  ldconfig
+  cat <<EOT
+You may load the dattobd kernel driver using the following commands:
+
+        depmod -a
+        modprobe dattobd
+
+If you wish for this driver to be loaded automatically when you reboot, you may
+do so using the following command:
+
+        echo dattobd > /etc/modules-load.d/dattobd.conf
+
+EOT
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
