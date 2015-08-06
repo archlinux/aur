@@ -1,0 +1,15 @@
+pkgbase = fang
+	pkgdesc = A multi service threaded MD5 cracker
+	pkgver = git
+	pkgrel = 3
+	url = https://github.com/evilsocket/fang
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	backup = etc/fang.conf
+	source = git+https://github.com/evilsocket/fang
+	md5sums = SKIP
+
+pkgname = fang
+
