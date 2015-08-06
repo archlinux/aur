@@ -1,0 +1,33 @@
+pkgbase = gnome-music-git
+	pkgdesc = Music player and management application for GNOME
+	pkgver = 3.17.4.r22.gfb9c664
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Music
+	install = gnome-music.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = gnome-common
+	depends = gtk3>=3.13.2
+	depends = glib2
+	depends = python-dbus
+	depends = python-gobject
+	depends = tracker
+	depends = grilo
+	depends = libmediaart
+	depends = grilo-plugins
+	depends = python-dbus-common
+	depends = gupnp
+	depends = gupnp-av
+	depends = libdmapsharing
+	depends = gssdp
+	provides = gnome-music=3.17.4
+	conflicts = gnome-music
+	source = git://git.gnome.org/gnome-music
+	sha256sums = SKIP
+
+pkgname = gnome-music-git
+
