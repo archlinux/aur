@@ -1,0 +1,10 @@
+[Unit]
+Description=Protocol detecting server (%i)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/serve2d /etc/serve2d/%i.json
+
+[Install]
+WantedBy=multi-user.target
