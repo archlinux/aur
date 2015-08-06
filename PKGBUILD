@@ -1,5 +1,5 @@
 pkgname=mingw-w64-tools
-pkgver=4.0.2
+pkgver=4.0.4
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="MinGW-w64 utilities"
@@ -10,17 +10,17 @@ groups=(mingw-w64)
 options=(!libtool !emptydirs)
 source=("http://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${_pkgver}.tar.bz2"
 "mingw-w64-tools-2.0.999-s390.patch"
-"mingw-w64-tools-2.0.999-widl-includedir.patch")
-md5sums=('bb6404499342e02447b7c49f47b06b5e'
+"0001-widl-Relocate-DEFAULT_INCLUDE_DIR.patch")
+md5sums=('d54e353670e17b54f1ac86df3bb33e31'
          '85a915187d7092c659a56fca102da04c'
-         'e448767d2af073c99795f72bc4e1700c')
+         '4881e9b6cb7640e3542f45b88bd53a5e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd "${srcdir}/mingw-w64-v$_pkgver"
 	patch -p2 -i ../mingw-w64-tools-2.0.999-s390.patch
-	patch -p1 -i ../mingw-w64-tools-2.0.999-widl-includedir.patch
+	patch -p1 -i ../0001-widl-Relocate-DEFAULT_INCLUDE_DIR.patch
 }
 
 build() {
