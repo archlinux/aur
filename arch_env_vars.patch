@@ -1,0 +1,13 @@
+--- madsonic.sh	2014-10-24 03:39:00.000000000 -0400
++++ madsonic-new.sh	2015-08-06 12:29:19.909412931 -0400
+@@ -4,6 +4,10 @@
+ # Shell script for starting Madsonic.  See http://madsonic.org.
+ ###################################################################################
+ 
++JAVA_HOME=/opt/java/jre:/usr/lib/jvm/java-7-openjdk
++export LANG=en_US.UTF-8
++export LC_CTYPE=en_US.UTF-8
++
+ MADSONIC_HOME=/var/madsonic
+ MADSONIC_HOST=0.0.0.0
+ MADSONIC_PORT=4040
