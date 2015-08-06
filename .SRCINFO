@@ -1,0 +1,13 @@
+pkgbase = geoipgen
+	pkgdesc = An IP network tool for generating geotargeted lists of IP addresses
+	pkgver = 0.4
+	pkgrel = 3
+	url = http://code.google.com/p/geoipgen
+	arch = any
+	license = BSD
+	depends = ruby
+	source = http://geoipgen.googlecode.com/files/geoipgen-0.4.tar.gz
+	md5sums = edae9618c3413be8e380f1e10b5b91dd
+
+pkgname = geoipgen
+
