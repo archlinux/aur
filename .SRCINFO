@@ -20,7 +20,7 @@ pkgbase = madsonic
 	source = arch_env_vars.patch
 	source = madsonic.conf
 	md5sums = 6d7b248351363fe6248ef1e221d005e5
-	md5sums = ea074e3f7d394e1e2caad3b68949675e
+	md5sums = 009262cf1618ff4827142943659d1800
 	md5sums = 14518e65fbd97825e24f5801a5f723ad
 	md5sums = c590d9cb9e21a99b9cb29e224365c938
 

@@ -3,7 +3,7 @@ Description=Madsonic
 After=network.target
  
 [Service]
-ExecStart=/var/webapps/madsonic/madsonic.sh
+ExecStart=/var/madsonic/madsonic.sh
 ExecStop=/bin/kill -15 $MAINPID
 Type=forking
  
