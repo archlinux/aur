@@ -1,0 +1,11 @@
+--- utils.c	2005-03-30 09:58:27.000000000 -0300
++++ u.c	2015-08-05 22:54:36.170372486 -0300
+@@ -83,7 +83,7 @@
+ writePidFile (char *filename)
+ {
+   pid_t pid = getpid ();
+-  int fd = open (filename, O_TRUNC | O_CREAT | O_WRONLY);
++  int fd = open (filename, O_TRUNC | O_CREAT | O_WRONLY,S_IRUSR|S_IWUSR);
+   char buf[6];
+ 
+   snprintf (buf, 6, "%i", pid);
