@@ -1,4 +1,4 @@
-# Maintainer: Raansu <gero3977@gmail.com>
+# Maintainer: Raansu <Gero3977@gmail.com>
 # Contributors: Noel Maersk <veox at wemakethings dotnet>; Mike Lenzen <lenzenmi@gmail.com>
 
 pkgname=litecoin-git
