@@ -1,0 +1,14 @@
+pkgbase = texcount
+	pkgdesc = TeXcount is a Perl script that counts the number of words in the text of LaTeX files. It has rules for handling most of the common macros and provides colour coded output indicating which parts have been counted.
+	pkgver = 3.0.0.24
+	pkgrel = 1
+	url = http://app.uio.no/ifi/texcount/
+	arch = any
+	license = LaTeX Project Public License
+	makedepends = unzip
+	noextract = texcount_3.0.0.24.zip
+	source = texcount_3.0.0.24.zip::http://app.uio.no/ifi/texcount/download.php?file=texcount_3_0_0_24.zip
+	sha1sums = aca004deb2cab96a0c25083978b7cf1dbc1a55ee
+
+pkgname = texcount
+
