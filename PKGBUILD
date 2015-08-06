@@ -25,6 +25,7 @@ package_python-uritemplate.py() {
     conflicts=("python-uritemplate")
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_python2-uritemplate.py() {
@@ -32,4 +33,5 @@ package_python2-uritemplate.py() {
     conflicts=("python2-uritemplate")
     cd "${srcdir}/${_module}-${pkgver}"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
