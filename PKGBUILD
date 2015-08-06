@@ -8,7 +8,7 @@ _pkgver=15.0.0
 _eap="True"
 epoch=2
 pkgver=${_pkgver}.${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
 arch=('any')
 options=(!strip)
@@ -59,6 +59,7 @@ EOF
     mkdir -p "${pkgdir}/usr/bin/"
     mkdir -p "${pkgdir}/usr/share/applications/"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+    install -d -Dm644 "${srcdir}/idea-IU-${_buildver}/license" "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ue-eap"
 }
 
