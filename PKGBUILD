@@ -31,10 +31,12 @@ package_python-github3.py() {
     depends=("python" "python-requests" "python-uritemplate.py")
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_python2-github3.py() {
     depends=("python2" "python2-requests" "python2-uritemplate.py")
     cd "${srcdir}/${_module}-${pkgver}"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
