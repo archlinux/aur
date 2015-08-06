@@ -2,7 +2,7 @@
 pkgname=isohost-tools
 _cmdname='isoho.st'
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools provided for managing the Isoho.st Virtual Machine instances"
 arch=(any)
 license=('GPL3')
@@ -22,7 +22,7 @@ package() {
          "${srcdir}/${pkgname}-${pkgver}/man/${_cmdname}.pod" \
          "${srcdir}/${pkgname}-${pkgver}/man/${_cmdname}.1"
     gzip "${srcdir}/${pkgname}-${pkgver}/man/${_cmdname}.1"
-    install -D m644 "${srcdir}/${pkgname}-${pkgver}/man/${_cmdname}.1.gz" "${pkgdir}/usr/share/man/man1/${_cmdname}.1.gz" 
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/man/${_cmdname}.1.gz" "${pkgdir}/usr/share/man/man1/${_cmdname}.1.gz" 
 
     # License
     install -D -m644 "${srcdir}/${pkgname}-${pkgver}/GPL-3" "${pkgdir}/usr/share/licenses/isohost-tools/LICENSE"
