@@ -23,22 +23,6 @@ pkgver() {
   [ ${PIPESTATUS[0]} -ne 0 ] && \
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-depends[gnomeshell]=gnome-shell
-
-package_20_version() {
-  local compatibles=($(\
-    find -path ./pkg -type d -prune -o \
-    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
-    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
-  local max="${compatibles[-1]}"
-  if [ "3.$max" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
-  fi
-  unset depends[gnomeshell]
-}
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
   do
@@ -55,4 +39,20 @@ package_01_locate() {
 package_02_install() {
   msg2 'Installing extension code...'
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
+}
+depends[125]=gnome-shell
+
+package_20_version() {
+  local compatibles=($(\
+    find -path ./pkg -type d -prune -o \
+    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
+    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
+  depends+=("gnome-shell>=3.${compatibles[0]}")
+  local max="${compatibles[-1]}"
+  if [ "3.$max" != $(
+    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+  ) ]; then
+    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
+  fi
+  unset depends[125]
 }
