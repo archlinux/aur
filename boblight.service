@@ -1,0 +1,10 @@
+[Unit]
+Description=Boblight Ambient Lighting Daemon
+Before=vdr.service
+
+[Service]
+ExecStart=/usr/bin/boblightd
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

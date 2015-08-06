@@ -1,0 +1,28 @@
+pkgbase = boblight-v4l
+	pkgdesc = Collection of tools for driving lights connected to an external controller, compatible to new version of ffmpeg
+	pkgver = r395
+	pkgrel = 1
+	url = https://github.com/Nidhoggrr/boblight
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = glu
+	makedepends = svn
+	depends = libusbx
+	depends = libxext
+	depends = libxrender
+	depends = mesa
+	depends = portaudio
+	depends = ffmpeg
+	provides = boblight
+	conflicts = boblight
+	source = svn+https://github.com/Nidhoggrr/boblight.git/trunk
+	source = boblight.service
+	md5sums = SKIP
+	md5sums = 465a99144ad2e86a20d3433b426320b2
+
+pkgname = boblight-v4l
+
