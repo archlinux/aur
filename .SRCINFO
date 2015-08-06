@@ -1,0 +1,19 @@
+pkgbase = repetier-host
+	pkgdesc = almost complete 3d-printing workflow
+	pkgver = 1.0.6
+	pkgrel = 3
+	url = http://www.repetier.com/
+	install = repetier-host.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = mono>=3.2.0
+	optdepends = slic3r
+	optdepends = skeinforge
+	source = http://www.repetier.com/w/?wpdmdl=1785
+	source = repetier-host.install
+	md5sums = aa5898b3998896ac6bb39146ef54c5ea
+	md5sums = 3bf735df87c6f3b9e807bbc82edd7a05
+
+pkgname = repetier-host
+
