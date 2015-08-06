@@ -1,0 +1,20 @@
+pkgbase = enemy-territory-etpro
+	pkgdesc = Wolfenstein: Enemy Territory is a completely free, standalone, team-based, multiplayer FPS (etpro mod)
+	pkgver = 3.2.6
+	pkgrel = 3
+	url = http://etpro.anime.net
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = enemy-territory
+	source = http://etpro.anime.net/etpro-3_2_6.zip
+	source = et-pro.sh
+	source = et-proded.sh
+	source = et-pro.desktop
+	md5sums = 5c2c8f56731a9ad6774e624f4e793e22
+	md5sums = 5b8d10218eca6dfeba6c20b1d61c0b5f
+	md5sums = c26873275f6a119b05a4fc8424ecc28d
+	md5sums = 6e8607214e9bdb10458e46c0aec8da0c
+
+pkgname = enemy-territory-etpro
+

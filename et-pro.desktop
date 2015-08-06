@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Wolfenstein: Enemy Territory ET Pro
+Generic Name=Enemy Territory etpro mod
+Comment=Enemy Territory etpro mod
+Icon=enemy-territory.xpm
+Exec=et-pro
+Terminal=false
+Categories=Game;ActionGame;
+StartupNotify=false
