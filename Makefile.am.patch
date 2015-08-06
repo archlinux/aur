@@ -1,0 +1,39 @@
+--- src/apertium-en-ca-0.9.3/Makefile.am.old	2011-10-21 11:50:27.000000000 +0200
++++ src/apertium-en-ca-0.9.3/Makefile.am	2015-08-06 15:10:49.742491212 +0200
+@@ -14,16 +14,14 @@
+ 
+ TARGETS_COMMON = $(PREFIX1).automorf.bin $(PREFIX1).autobil.bin $(PREFIX1).autogen.bin \
+      $(PREFIX1).autopgen.bin $(PREFIX2).automorf.bin $(PREFIX2).autobil.bin \
+-     $(PREFIX2).autogen.bin $(PREFIX2).autopgen.bin $(PREFIX1).lextormono.bin $(PREFIX2).lextormono.bin \
+-     $(PREFIX1).lextorbil.bin $(PREFIX2).lextorbil.bin $(PREFIX1).genitive.bin \
++     $(PREFIX2).autogen.bin $(PREFIX2).autopgen.bin  \
++     $(PREFIX1).genitive.bin \
+      $(PREFIX1).t1x.bin $(PREFIX1).t2x.bin $(PREFIX1).t3x.bin \
+      $(PREFIX1)-poly.autobil.bin $(PREFIX2)-poly.autobil.bin empty.bin \
+      $(PREFIX2).t1x.bin $(PREFIX2).t2x.bin $(PREFIX2).t3x.bin modes \
+      $(PREFIX2b).autogen.bin $(PREFVAR2)$(PREFIX1).autobil.bin
+ 
+-TARGETS = $(TARGETS_COMMON) \
+-	  $(BASENAME).$(LANG1)-lextor.dix $(BASENAME).$(LANG2)-lextor.dix \
+-	  $(BASENAME).$(PREFIX1)-lextor.dix $(BASENAME).$(PREFIX2)-lextor.dix 
++TARGETS = $(TARGETS_COMMON)
+ 
+ .deps/$(LANG1).metadix: $(BASENAME).$(LANG1).metadix
+ 	if [ ! -d .deps ]; then mkdir .deps; fi
+@@ -251,7 +249,6 @@
+ 	   $(BASENAME).$(PREFIX1)-poly.dix $(BASENAME).$(PREFIX2)-poly.dix \
+ 	   $(PREFIX1).prob $(PREFIX2).prob \
+ 	   buscaPar.xsl principal.xsl apertium-en-ca.en.metadix \
+-	   $(PREFIX1).lextor $(PREFIX2).lextor \
+ 	   $(PREFIX1)-supervised.make $(PREFIX1)-unsupervised.make \
+ 	   $(PREFIX2)-supervised.make $(PREFIX2)-unsupervised.make \
+ 	   $(LANG1)-tagger-data/README $(LANG2)-tagger-data/README \
+@@ -272,8 +269,6 @@
+ 		    $(PREFVAR2)$(PREFIX1).autogen.bin $(PREFVAR2)$(PREFIX1).autopgen.bin\
+ 		    $(PREFIX1)-poly.autobil.bin $(PREFIX2)-poly.autobil.bin \
+ 		    $(PREFIX1).prob $(PREFIX2).prob \
+-		    $(PREFIX1).lextormono.bin $(PREFIX2).lextormono.bin \
+-		    $(PREFIX1).lextorbil.bin $(PREFIX2).lextorbil.bin \
+ 	            $(BASENAME).$(PREFIX1).genitive.t1x \
+ 		    $(PREFIX1).genitive.bin  \
+ 		    $(PREFIX1).t1x.bin $(PREFIX1).t2x.bin $(PREFIX1).t3x.bin \
