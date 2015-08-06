@@ -1,7 +1,7 @@
 pkgbase = xf86-video-qxl
 	pkgdesc = Xorg X11 qxl video driver
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.x.org
 	arch = x86_64
 	arch = i686
@@ -10,14 +10,14 @@ pkgbase = xf86-video-qxl
 	makedepends = xorg-server-devel
 	makedepends = X-ABI-VIDEODRV_VERSION=19
 	makedepends = spice-protocol
-	depends = xf86dgaproto
-	depends = xproto
-	depends = fontsproto
-	depends = randrproto
-	depends = renderproto
-	depends = videoproto
-	depends = resourceproto
-	depends = scrnsaverproto
+	makedepends = xf86dgaproto
+	makedepends = xproto
+	makedepends = fontsproto
+	makedepends = randrproto
+	makedepends = renderproto
+	makedepends = videoproto
+	makedepends = resourceproto
+	makedepends = scrnsaverproto
 	depends = spice
 	optdepends = python2: for Xspice
 	conflicts = xf86-video-qxl-git
@@ -28,7 +28,7 @@ pkgbase = xf86-video-qxl
 	source = fix-cast.patch
 	sha256sums = e57ad22f0b1daf8979e722be0cc38d351bfcc2e41568edc566d2bade5a621105
 	sha256sums = SKIP
-	sha256sums = 575243334f763c21282eccd7bd4eb713b90e96fdd46a882370925fa20d4acb70
+	sha256sums = 30b09971562d82b5bc9dc26e43514ff38e5eaa680c15471194f07c9129e1e0ed
 
 pkgname = xf86-video-qxl
 
