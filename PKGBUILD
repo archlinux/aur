@@ -11,6 +11,9 @@ license=('custom:OpenSSL')
 source=(http://downloads.sourceforge.net/project/pamsshagentauth/$pkgname/v$pkgver/$pkgname-$pkgver.tar.bz2)
 md5sums=('a212baca7ce11d596bd8dcb222859ace')
 
+optdepends=('openssh: standard ssh-agent'
+            'gnupg: gpg ssh-agent' )
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr --with-mantype=man --libexecdir=/usr/lib/security
