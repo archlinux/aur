@@ -11,7 +11,7 @@
 _pkgname=zoneminder
 pkgname=zoneminder
 pkgver=1.28.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -64,7 +64,7 @@ build() {
           -DZM_RUNDIR=/srv/zoneminder \
           -DZM_TMPDIR=/srv/zoneminder/tmp \
           -DZM_SOCKDIR=/srv/zoneminder/socks .
-    
+     
     make V=0
 }
      
@@ -82,7 +82,9 @@ package() {
     mkdir -pv           $pkgdir/var/{cache/zoneminder,log/zoneminder}
     chown -Rv http.http $pkgdir/var/{cache/zoneminder,log/zoneminder}
     
-    mkdir -pv          $pkgdir/srv/zoneminder/socks
+    mkdir -v           $pkgdir/srv/zoneminder
+    chown -v http.http $pkgdir/srv/zoneminder
+    mkdir -v           $pkgdir/srv/zoneminder/socks
     chown -v http.http $pkgdir/srv/zoneminder/socks
     
     mkdir -pv          $pkgdir/srv/zoneminder/tmp
@@ -119,6 +121,6 @@ package() {
     install -D -m 644 db/zm*.sql                    $pkgdir/usr/share/$_pkgname/db
     
     mkdir -p                                        $pkgdir/usr/share/doc/$_pkgname
-    install -D -m 644 $srcdir/httpd.conf.zoneminder $pkgdir/usr/share/doc/$_pkgname
+    # install -D -m 644 $srcdir/README              $pkgdir/usr/share/doc/$_pkgname
 
 }
