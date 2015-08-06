@@ -1,0 +1,20 @@
+pkgbase = wgs-assembler
+	pkgdesc = Whole-Genome Shotgun Assembler
+	pkgver = 8.3rc2
+	pkgrel = 1
+	url = http://wgs-assembler.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bzip2
+	depends = gcc-libs
+	depends = samtools
+	conflicts = blasr
+	conflicts = blasr-git
+	conflicts = pbdagcon
+	conflicts = pbdagcon-git
+	source = http://downloads.sourceforge.net/wgs-assembler/wgs-8.3rc2.tar.bz2
+	md5sums = 70e8efea279d7061718d442a8c1217b3
+
+pkgname = wgs-assembler
+
