@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=44.0.2403.89
+pkgver=44.0.2403.130
 pkgrel=1
 _launcher_ver=2
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -14,10 +14,10 @@ url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
+         'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
          'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
          'hicolor-icon-theme')
-makedepends=('python2' 'python2-ply<3.5' 'gperf' 'yasm' 'mesa' 'ninja')
+makedepends=('python2' 'python2-ply' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -43,7 +43,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         launcher-branding.patch
         disable-missing-key-warning.patch)
         
-sha256sums=('badd9aa979487b55bbcce4f54ec16926c6fa7eb46ec2536866200a5e68853a98'
+sha256sums=('37779b2f4844e1a6ac75d69897031955541ad97f3dd1d4ad641c371c1d63b414'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
@@ -140,7 +140,6 @@ build() {
     -Dpython_ver=2.7
     -Dlinux_link_gsettings=1
     -Dlinux_link_libpci=1
-    -Dlinux_link_libspeechd=0
     -Dlinux_link_pulseaudio=1
     -Dlinux_strip_binary=1
     -Dlinux_use_bundled_binutils=0
@@ -149,7 +148,6 @@ build() {
     -Dicu_use_data_file_flag=0
     -Dlogging_like_official_build=1
     -Drelease_extra_cflags="$CFLAGS"
-    -Dlibspeechd_h_prefix=speech-dispatcher/
     -Dffmpeg_branding=Chrome
     -Dproprietary_codecs=1
     -Duse_gnome_keyring=0
@@ -164,7 +162,6 @@ build() {
     -Duse_system_libvpx=1
     -Duse_system_libxml=0
     -Duse_system_snappy=1
-    -Duse_system_ssl=0
     -Duse_system_xdg_utils=1
     -Duse_system_yasm=1
     -Duse_system_zlib=0
