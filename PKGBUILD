@@ -2,7 +2,7 @@
 pkgname=isohost-tools
 _cmdname='isoho.st'
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools provided for managing the Isoho.st Virtual Machine instances"
 arch=(any)
 license=('GPL3')
