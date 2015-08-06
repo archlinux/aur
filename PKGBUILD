@@ -1,9 +1,5 @@
-# $Id: PKGBUILD 237881 2015-04-21 16:16:34Z bpiotrowski $
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Maintainer: Sébastien Luttringer
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
-# Contributor: Daniel Micay <danielmicay@gmail.com>
+# Maintainer: David Christenson <david@the-david.com>
+# based on nginx-mainline and extra/nginx
 
 pkgname=nginx-http2
 provides=('nginx', 'nginx-mainline')
