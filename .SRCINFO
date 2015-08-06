@@ -1,6 +1,6 @@
 pkgbase = hawaii-terminal-git
 	pkgdesc = The Hawaii Terminal Emulator
-	pkgver = 20140309.f5dfc3c
+	pkgver = 20150805.3bef587
 	pkgrel = 1
 	url = https://github.com/hawaii-desktop
 	arch = i686
