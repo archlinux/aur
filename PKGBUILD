@@ -2,12 +2,12 @@
 
 pkgname=terraform
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
 arch=('i686' 'x86_64')
 license=('MPL')
-makedepends=('go' 'git' 'mercurial')
+makedepends=('go' 'godep' 'git' 'mercurial')
 conflicts=('terraform-bin')
 _gourl=github.com/hashicorp
 source=("${pkgname}::git+https://${_gourl}/${pkgname}.git#tag=v${pkgver}")
@@ -20,6 +20,9 @@ prepare() {
   msg2 "Fetching dependencies"
   cd "${srcdir}/src/${_gourl}/${pkgname}"
   GOPATH="${srcdir}" make updatedeps
+  mkdir Godeps
+  cp deps/v$(echo ${pkgver} | sed 's/\./-/g').json Godeps/Godeps.json
+  GOPATH="${srcdir}" godep restore
 }
 
 build() {
