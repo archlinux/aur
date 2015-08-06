@@ -15,6 +15,7 @@ pkgbase = madsonic
 	conflicts = subsonic-git
 	backup = var/madsonic/db
 	backup = var/madsonic/madsonic.sh
+	backup = etc/systemd/system/madsonic.service
 	source = http://madsonic.org/download/5.1/20150506_madsonic-5.1.5240-standalone.tar.gz
 	source = madsonic.service
 	md5sums = 6d7b248351363fe6248ef1e221d005e5

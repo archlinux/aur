@@ -13,7 +13,7 @@ depends=('jre7-openjdk-headless' 'fontconfig' 'libcups')
 conflicts=('subsonic-beta' 'subsonic' 'subsonic-git')
 source=(http://madsonic.org/download/${pkgvera}/${pkgdate}_${pkgname}-${pkgver}-standalone.tar.gz
 'madsonic.service')
-backup=('var/madsonic/db' 'var/madsonic/madsonic.sh')
+backup=('var/madsonic/db' 'var/madsonic/madsonic.sh' 'etc/systemd/system/madsonic.service')
 install=$pkgname.install
  
 package() {
