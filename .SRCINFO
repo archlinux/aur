@@ -8,6 +8,7 @@ pkgbase = gnome-shell-extension-dash-to-dock-git
 	license = GPL
 	makedepends = intltool
 	makedepends = git
+	depends = dconf
 	depends = gnome-shell
 	provides = gnome-shell-extension-dash-to-dock
 	conflicts = gnome-shell-extension-dash-to-dock
