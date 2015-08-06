@@ -1,0 +1,14 @@
+pkgbase = ttf-hpfonts
+	pkgdesc = Official Hewlett Packard communication fonts, including the reinvented Futura fonts, along with older web/logo fonts.
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://hpedia.hp.com/wiki/Fonts
+	install = ttf-hpfonts.install
+	arch = any
+	license = unknown
+	provides = hpfonts
+	source = http://linuxcoe.corp.hp.com/LinuxCOE/HPCOE/current/Debian/pool/contrib/h/hp/hpfonts_1.1-2_all.deb
+	md5sums = 648332eaa1071b0fbef4cb488078d5ac
+
+pkgname = ttf-hpfonts
+
