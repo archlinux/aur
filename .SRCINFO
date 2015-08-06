@@ -1,0 +1,76 @@
+pkgbase = linux-libre-pck
+	pkgver = 4.1.4_gnu.pck1
+	pkgrel = 1
+	url = https://wiki.parabola.nu/PCK
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz.sign
+	source = https://repo.parabola.nu/other/pck/patches/4.1.4-gnu/patch-4.1.4-gnu-pck1.patch
+	source = https://repo.parabola.nu/other/pck/patches/4.1.4-gnu/patch-4.1.4-gnu-pck1.patch.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
+	source = config.i686
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
+	sha256sums = SKIP
+	sha256sums = 4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97
+	sha256sums = SKIP
+	sha256sums = 472890d3ef5c96bf671d36942cfc54146158ca36b2b61c574cf59fafe3320d16
+	sha256sums = SKIP
+	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
+	sha256sums = SKIP
+	sha256sums = 13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74
+	sha256sums = SKIP
+	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
+	sha256sums = SKIP
+	sha256sums = 64f051239df7109ef79b25f53d2887ef83223a0b7c39bd08d7dadb535765ebe3
+	sha256sums = 687729e6f321bb07bc7d38fd506a2b229724cea1a4fde535ab3ed61f7a3f8522
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+
+pkgname = linux-libre-pck
+	pkgdesc = The Linux-libre-pck kernel and modules with a handful of awesome features not merged into mainline [AUFS, BFQ, BFS, KDBUS, Knock, TuxOnIce, UKSM]
+	install = linux.install
+	depends = coreutils
+	depends = linux-libre-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
+	optdepends = openssh-knock: to use SSH with TCP Stealth support
+	provides = linux-zen=4.1.4
+	conflicts = kernel26-zen
+	replaces = linux-zen
+	replaces = kernel26-zen
+	backup = etc/mkinitcpio.d/linux-libre-pck.preset
+
+pkgname = linux-libre-pck-headers
+	pkgdesc = Header files and scripts for building modules for Linux-libre-pck kernel
+	provides = linux-zen-headers=4.1.4
+	conflicts = kernel26-zen-headers
+	replaces = linux-zen-headers
+	replaces = kernel26-zen-headers
+
+pkgname = linux-libre-pck-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-pck kernel
+	provides = linux-zen-docs=4.1.4
+	conflicts = kernel26-zen-docs
+	replaces = linux-zen-docs
+	replaces = kernel26-zen-docs
+
