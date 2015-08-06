@@ -1,6 +1,6 @@
 pkgbase = xz-git
 	pkgdesc = Library and command line tools for XZ and LZMA compressed files - git checkout
-	pkgver = 5.2.0.r3.gd2d4846
+	pkgver = 5.2.1.r25.gfbbb295
 	pkgrel = 1
 	url = http://tukaani.org/xz/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = xz-git
 	provides = lzma
 	provides = lzma-utils
 	provides = xz-utils
-	provides = xz=5.2.0
+	provides = xz=5.2.1
 	conflicts = lzma
 	conflicts = lzma-utils
 	conflicts = xz-utils
