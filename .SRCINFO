@@ -1,0 +1,19 @@
+pkgbase = qps-git
+	pkgdesc = Qt process manager
+	pkgver = r14.3ad194f
+	pkgrel = 1
+	url = https://github.com/QtDesktop/qps
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-x11extras
+	depends = libxkbcommon-x11
+	provides = qps
+	conflicts = qps
+	source = git+https://github.com/QtDesktop/qps.git
+	sha256sums = SKIP
+
+pkgname = qps-git
+
