@@ -2,8 +2,8 @@
 
 _git=b8313219e5d0c622d9e88deb968dbffc81b19c37 # lastest commit 20150806
 pkgname=zpm
-pkgver=20150807
-pkgrel=2
+pkgver=20150808
+pkgrel=1
 pkgdesc="ZPM ( Zsh plugin manager ) is an yet another plugin manager for zsh similar to vim-plug"
 arch=('any')
 url="https://github.com/horosgrisa/${pkgname}"
