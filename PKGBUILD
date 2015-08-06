@@ -1,95 +1,100 @@
-# Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
+# Maintainer: Simao Gomes Viana <xdevs23@outlook.com>
+# Original Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
-pkgname="linux-zen"
-pkgver=4.0.0+507377+g7a1a41c
-pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
-url="http://www.zen-kernel.org"
+pkgname="linux-nitrous-git"
+pkgver=5.3.8
+pkgdesc="Modified linux-nitrous kernel optimized for Haswell (and newer) compiled using clang"
+url="https://gitlab.com/xdevs23/linux-nitrous"
 license=("GPL2")
-makedepends=("git")
-true && pkgbase="linux-zen"
-true && pkgname=("linux-zen" "linux-zen-headers")
-arch=("i686" "x86_64")
+makedepends=("git" "coreutils")
+true && pkgbase="linux-nitrous-git"
+true && pkgname=("linux-nitrous-git" "linux-nitrous-git-headers")
+arch=("x86_64")
 pkgrel=1
 options=("!strip")
-source=("linux-zen.conf"
-        "linux-zen.preset"
-        'git://github.com/damentz/zen-kernel.git#branch=4.0/master')
+source=("linux-nitrous.conf"
+        "linux-nitrous.preset"
+        'git+https://gitlab.com/xdevs23/linux-nitrous#branch=v5.3+')
 sha256sums=('6373073ad943e068478ef1373be4eb2a7e473da8743d946f1f50cd364685ab87'
-            '18fe6b2664a9a740544c4cb990efe5ec933d6e64caf9e5d0a6ced92af0027c2d'
+            '54bc90a27bb2f42aff4a460c26f88f44e2a2f6c19ec51e7fcac83c4cd1fb9968'
             'SKIP')
-_CORES=1
+_CORES=$(nproc --all)
 
 # compress the modules or not
 _compress="y"
 
+# don't compress the package - we're just going to uncompress during install in a moment
+PKGEXT='.pkg.tar'
+
 prepare() {
-	cd "${srcdir}/zen-kernel"
+	cd "${srcdir}/linux-nitrous"
 	
 	# Number of CPU Cores
-	_CORES=$(cat /proc/cpuinfo|grep processor|wc -l)
 	if [ $_CORES -lt 1 ]; then
 		_CORES=2
 	fi
+	
+	git reset --hard
 }
 
 pkgver() {
-	cd "${srcdir}/zen-kernel"	
+	cd "${srcdir}/linux-nitrous"
 	eval $(grep -o "^\(VERSION\|PATCHLEVEL\|SUBLEVEL\) = [0-9a-zA-Z_-]\+" Makefile | tr -d \ )
-	printf "%s.%s.%s+%s+g%s" $VERSION $PATCHLEVEL $SUBLEVEL "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.%s.%s" $VERSION $PATCHLEVEL $SUBLEVEL
 }
 
 build() {
-	cd "${srcdir}/zen-kernel"
+	cd "${srcdir}/linux-nitrous"
 		
 	# don't run depmod on 'make install'. We'll do this ourselves in packaging
 	sed -i '2iexit 0' scripts/depmod.sh
 
-	if [ -e "${srcdir}/build/.config" ]; then
-		msg2 "Using existing config found in build environment..."
+	if [ ! -d "${srcdir}/build" ]; then
+		msg2 "Creating build directory..."
+		mkdir -p "${srcdir}/build"
 	else
-		if [ ! -d "${srcdir}/build" ]; then
-			msg2 "Creating build directory..."
-			mkdir -p "${srcdir}/build"
+		if [ -f "${srcdir}/build/.config" ]; then
+			msg "Cleaning build directory"
+			
+			rm -rf "${srcdir}/build"
+						
+			cd "${srcdir}/linux-nitrous"
+			make clean &> /dev/null
+			make mrproper &> /dev/null
+			
+                        msg "Generating new config"
+			make -C "${srcdir}/linux-nitrous/" O="${srcdir}/build" CC=clang nitrous_defconfig > /dev/null
 		fi
+	fi
 
-		msg2 "Creating default config..." # also initializes the output directory
-		make -C "${srcdir}/zen-kernel/" O="${srcdir}/build" defconfig > /dev/null
-
-		warning "This package does not ship a kernel config."
-
-		plain   ""
-		warning "Thus it is up to you to create a one that fits your needs."
-		warning "Navigate to '${srcdir}/build'"
-		warning "and either run 'make menuconfig' or if you want to use an existing config,"
-		warning "save it as '.config' and run 'make oldconfig' in order to update it."
-		warning "Having done that you can run 'makepkg' again."
-		plain   ""
-
-		return 1
+	if [ ! -f "${srcdir}/build/.config" ]; then
+      		msg2 "Generating config..."
+		make -C "${srcdir}/linux-nitrous/" O="${srcdir}/build" CC=clang nitrous_defconfig > /dev/null
 	fi
 
 	msg2 "Updating output directory Makefile..."
-	make -C "${srcdir}/zen-kernel/" O="${srcdir}/build" outputmakefile
+	make -C "${srcdir}/linux-nitrous/" O="${srcdir}/build" CC=clang outputmakefile
 
 	warning "Press ENTER if you want to build the kernel or CTRL+C to abort..."
 	read
-
+	
 	cd "${srcdir}/build"
-	msg2 "Building kernel..."; make -j $_CORES bzImage
-	msg2 "Building modules..."; make -j $_CORES modules
+
+	msg2 "Building kernel..."; make -j$_CORES CC=clang bzImage
+	msg2 "Building modules..."; make -j$_CORES CC=clang modules
 }
 
-package_linux-zen() {
+package_linux-nitrous-git() {
 	depends=("coreutils" "linux-firmware" "kmod" "mkinitcpio>=0.5.20")
-	optdepends=("linux-zen-headers: to build third party modules such as NVIDIA drivers or OSSv4"
+	provides=("linux-nitrous" "linux-nitrous-git")
+	optdepends=("linux-nitrous-git-headers: to build third party modules such as NVIDIA drivers or OSSv4"
 	            "crda: to set the correct wireless channels of your country")
-	backup=(etc/mkinitcpio.d/linux-zen.conf)
-	install=linux-zen.install
+	backup=(etc/mkinitcpio.d/linux-nitrous.conf)
+	install=linux-nitrous.install
 
 	msg2 "Determining kernel name..."
-	cd "${srcdir}/zen-kernel"
-	cp "${srcdir}/build/.config" "./"
+	cd "${srcdir}/build"
 	_kernver="$(make kernelrelease -s)"
 	msg2 "Kernel release name is: $_kernver"
 
@@ -99,7 +104,7 @@ package_linux-zen() {
 	cd "${srcdir}/build"
 
 	msg2 "Installing kernel image..."
-	install -D -m644 "arch/x86/boot/bzImage" "$pkgdir/boot/vmlinuz-linux-zen"
+	install -D -m644 "arch/x86/boot/bzImage" "$pkgdir/boot/vmlinuz-linux-nitrous"
 
 	msg2 "Installing modules (and firmware files)..."
 	make INSTALL_MOD_PATH="$pkgdir" modules_install
@@ -122,22 +127,29 @@ package_linux-zen() {
 	# add real version for building modules and running depmod from post_install/upgrade
 	mkdir -p "${pkgdir}/usr/lib/modules/extramodules-${_kernver}"
 	echo "${_kernver}" > "${pkgdir}/usr/lib/modules/extramodules-${_kernver}/version"
+	
+	# symlink extra
+	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}"
+	cd "${pkgdir}/usr/lib/modules/${_kernver}"
+	ln -s "../extramodules-${_kernver}" "./extramodules"
+
+	cd "${srcdir}/build"
 
 	msg2 "Removing links to source and build directory..."
 	rm "$pkgdir/lib/modules/$_kernver/"{build,source}
 
 	msg2 "Updating kernel version in install script..."
 	sed -i "s/_kernel_version=.*/_kernel_version=$_kernver/" \
-		"$startdir/linux-zen.install"
+		"$startdir/linux-nitrous.install"
 
 	msg2 "Installing files for mkinitcpio..."
-	install -D -m644 "${srcdir}/linux-zen.conf" \
-		"$pkgdir/etc/mkinitcpio.d/linux-zen.conf"
+	install -D -m644 "${srcdir}/linux-nitrous.conf" \
+		"$pkgdir/etc/mkinitcpio.d/linux-nitrous.conf"
 	
-	install -D -m644 "${srcdir}/linux-zen.preset" \
-		"$pkgdir/etc/mkinitcpio.d/linux-zen.preset"
+	install -D -m644 "${srcdir}/linux-nitrous.preset" \
+		"$pkgdir/etc/mkinitcpio.d/linux-nitrous.preset"
 	sed -i "s/^ALL_kver=.*$/ALL_kver=$_kernver/" \
-		"$pkgdir/etc/mkinitcpio.d/linux-zen.preset"
+		"$pkgdir/etc/mkinitcpio.d/linux-nitrous.preset"
 
 	# Now we call depmod...
 	depmod -b "$pkgdir" -F System.map "$_kernver"
@@ -149,37 +161,39 @@ package_linux-zen() {
 	find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
 
-package_linux-zen-headers() {
+package_linux-nitrous-git-headers() {
 	# AUR workaround
-	true && pkgdesc="Header files and scripts for building modules for linux-zen"
-	true && depends=("linux-zen")
-	true && provides=("linux-headers")
+	true && pkgdesc="Header files and scripts for building modules for linux-nitrous"
+	true && depends=("linux-nitrous-git")
+	true && conflicts=("linux-nitrous-headers")
+	true && provides=("linux-headers linux-nitrous-git-headers linux-nitrous-headers")
 
 	_srcdir="/usr/src/linux-$_kernver"
 
 	msg2 "Installing files necessary for 3rd party modules such as NVIDIA drivers or OSSv4..."
-	mkdir -p "${pkgdir}/usr/src/linux-$_kernver/"{arch/x86,include}
-	
-	install -D -m644 "${srcdir}/zen-kernel/Makefile" "${pkgdir}/usr/src/linux-$_kernver/Makefile"
-	install -D -m644 "${srcdir}/zen-kernel/kernel/Makefile" "${pkgdir}/usr/src/linux-$_kernver/kernel/Makefile"
+	mkdir -p "${pkgdir}/usr/src/linux-$_kernver/"{arch/x86,include,tools/objtool}
+
+	install -D -m755 "${srcdir}/build/tools/objtool/objtool" "${pkgdir}/usr/src/linux-$_kernver/tools/objtool/objtool"	
+	install -D -m644 "${srcdir}/linux-nitrous/Makefile" "${pkgdir}/usr/src/linux-$_kernver/Makefile"
+	install -D -m644 "${srcdir}/linux-nitrous/kernel/Makefile" "${pkgdir}/usr/src/linux-$_kernver/kernel/Makefile"
 	install -D -m644 "${srcdir}/build/.config" "${pkgdir}/usr/src/linux-$_kernver/.config"
 	install -D -m644 "${srcdir}/build/Module.symvers" "${pkgdir}/usr/src/linux-$_kernver/Module.symvers"
 	install -D -m644 "${srcdir}/build/include/generated/uapi/linux/version.h" "${pkgdir}/usr/src/linux-$_kernver/include/linux/version.h"
 	install -D -m644 "${srcdir}/build/arch/x86/kernel/asm-offsets.s" "${pkgdir}/usr/src/linux-$_kernver/arch/x86/kernel/asm-offsets.s"
-	install -D -m644 "${srcdir}/zen-kernel/arch/x86/Makefile" "${pkgdir}/usr/src/linux-$_kernver/arch/x86/Makefile"
+	install -D -m644 "${srcdir}/linux-nitrous/arch/x86/Makefile" "${pkgdir}/usr/src/linux-$_kernver/arch/x86/Makefile"
 
 	if [ "$CARCH" = "i686" ]; then
-		install -D -m644 "${srcdir}/zen-kernel/arch/x86/Makefile_32.cpu" "${pkgdir}/usr/src/linux-$_kernver/arch/x86/Makefile_32.cpu"
+		install -D -m644 "${srcdir}/linux-nitrous/arch/x86/Makefile_32.cpu" "${pkgdir}/usr/src/linux-$_kernver/arch/x86/Makefile_32.cpu"
 	fi
 
-	cp -a "${srcdir}/zen-kernel/scripts" "${pkgdir}/usr/src/linux-$_kernver"
+	cp -a "${srcdir}/linux-nitrous/scripts" "${pkgdir}/usr/src/linux-$_kernver"
 	cp -a "${srcdir}/build/scripts" "${pkgdir}/usr/src/linux-$_kernver"
-	cp -a "${srcdir}/zen-kernel/include" "${pkgdir}/usr/src/linux-$_kernver"
+	cp -a "${srcdir}/linux-nitrous/include" "${pkgdir}/usr/src/linux-$_kernver"
 	cp -a "${srcdir}/build/include/"{generated,config} "${pkgdir}/usr/src/linux-$_kernver/include"
-	cp -a "${srcdir}/zen-kernel/arch/x86/include" "${pkgdir}/usr/src/linux-$_kernver/arch/x86"
+	cp -a "${srcdir}/linux-nitrous/arch/x86/include" "${pkgdir}/usr/src/linux-$_kernver/arch/x86"
 	cp -a "${srcdir}/build/arch/x86/include" "${pkgdir}/usr/src/linux-$_kernver/arch/x86"
 
-	cd "${srcdir}/zen-kernel"
+	cd "${srcdir}/linux-nitrous"
 	{
 		find drivers -type f -name "*.h";
 		find . -type f -name "Kconfig*";

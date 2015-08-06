@@ -1,0 +1,8 @@
+good
+*.pkg.tar.xz
+*.tar
+pkg
+src
+zen-config
+nitrous-config
+linux-nitrous

@@ -1,4 +1,4 @@
-_kernel_version=4.0.0-zen-bfs-g7a1a41c-dirty
+_kernel_version=5.3.8-nitrous+
 
 _r="\033[00;31m"
 _y="\033[00;33m"
@@ -19,20 +19,15 @@ post_install() {
 	echo -e ""
 	echo -e "$_B >$_W Mkinitcpio setup"
 	echo -e "$_n   If you use LVM2, encrypted root or software RAID,"
-	echo -e "$_n   ensure you enable support in $_b/etc/mkinitcpio.d/linux-zen.conf"
+	echo -e "$_n   ensure you enable support in $_b/etc/mkinitcpio.d/linux-nitrous.conf"
 	echo -e ""
 	echo -e "$_n   More information about mkinitcpio setup can be found here:"
 	echo -e "$_b   http://wiki.archlinux.org/index.php/Mkinitcpio"
 
 	echo -e ""
 	echo -e "$_B >$_W Generating initial ramdisks using mkinitcpio$_n"
-	mkinitcpio -p linux-zen
+	mkinitcpio -p linux-nitrous
 
-	echo -e ""
-	echo -e "$_B >$_W Contact"
-	echo -e "$_n   If you need help with the package or have any suggestions"
-	echo -e "$_n   to improve zen-sources, feel free to join"
-	echo -e "$_b   #zen-sources$_n on$_b irc.rizon.net$_n"
 	echo -e ""
 }
 
@@ -44,7 +39,7 @@ post_remove() {
 	dir="/usr/lib/modules/extramodules-$_kernel_version";
 	
 	if [ "$(ls -A $dir)" ]; then
-     echo "Removing $dir - please note this removes any package files or extra modules you may have in there."
+             echo "Removing $dir - please note this removes any package files or extra modules you may have in there."
 	fi
 	rm -rf "/usr/lib/modules/$_kernel_version"
 	rm -rf "/usr/lib/modules/extramodules-$_kernel_version"
