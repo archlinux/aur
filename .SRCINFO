@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-testing
+	pkgdesc = Testing utility classes and functions for Sphinx extensions
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/sphinx-testing/
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python-sphinx
+	depends = python-six
+	source = https://pypi.python.org/packages/source/s/sphinx-testing/sphinx-testing-0.7.1.tar.gz
+	md5sums = 0292c02299c00c1bf33c86ac50feaa79
+
+pkgname = python-sphinx-testing
+
