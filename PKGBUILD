@@ -1,5 +1,4 @@
-# Maintainer: alostengineer
-# Submitter: alostengineer
+# Maintainer: Chris <alostengineer at narmos dot org>
 pkgname=madsonic
 pkgver=5.1.5240
 pkgvera=5.1
