@@ -15,8 +15,10 @@ pkgbase = nvidia-beta-dkms
 	provides = nvidia=355.06
 	provides = nvidia-dkms
 	conflicts = nvidia-beta
-	source = http://us.download.nvidia.com/XFree86/Linux-/355.06/.run
-	md5sums = 8bdf64adc94bd9e170e4a7412ca9e5ba
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/355.06/NVIDIA-Linux-x86-355.06.run
+	md5sums_i686 = c4d2ae0dd6338874e5e8358fe630ba8f
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/355.06/NVIDIA-Linux-x86_64-355.06-no-compat32.run
+	md5sums_x86_64 = 8bdf64adc94bd9e170e4a7412ca9e5ba
 
 pkgname = nvidia-beta-dkms
 
