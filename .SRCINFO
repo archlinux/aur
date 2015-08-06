@@ -11,10 +11,10 @@ pkgbase = chromium-pepper-flash
 	conflicts = chromium-pepper-flash-dev
 	source = chromium-pepper-flash-license.html::https://www.google.com/chrome/intl/en/eula_text.html
 	sha256sums = b35811bb330576631e64f7885c66720e0be4ca81afb04328b3a0f288a708e37f
-	source_i686 = https://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-stable-44.0.2403.125-1.i386.rpm
-	sha256sums_i686 = ffca4486d2860b03e927a2c72327132f145dd0fb989c79e221232878712dec34
-	source_x86_64 = https://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-stable-44.0.2403.125-1.x86_64.rpm
-	sha256sums_x86_64 = 1f398ea4b07636b5b57931cb833c851220333c972610024c3af641fb2cfe4a03
+	source_i686 = https://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-stable-44.0.2403.130-1.i386.rpm
+	sha256sums_i686 = d5bc83b7dc242e32bb45c524c6df7a6512d88c25dbcc44274b151b45be538706
+	source_x86_64 = https://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-stable-44.0.2403.130-1.x86_64.rpm
+	sha256sums_x86_64 = 9c526053edc72876b8e1638511634c2a71dd464e9ee32290bbe1e2e9cff2d244
 
 pkgname = chromium-pepper-flash
 
