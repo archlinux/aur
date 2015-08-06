@@ -28,7 +28,11 @@ post_install() {
 
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 	desktop-file-install /opt/brick/brick.desktop
+	desktop-file-install /opt/brick/brick-client.desktop
 	update-desktop-database -q
+
+	chown root.root /opt/brick/bin/chrome-sandbox
+	chmod 4755 /opt/brick/bin/chrome-sandbox
 }
 
 post_upgrade() {
