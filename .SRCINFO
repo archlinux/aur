@@ -1,12 +1,14 @@
 pkgbase = knossos
 	pkgdesc = A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity.
 	pkgver = 4.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.knossostool.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	depends = boost
+	depends = curl
+	depends = freeglut
 	depends = glu
 	depends = glut
 	depends = libgl
@@ -16,8 +18,10 @@ pkgbase = knossos
 	depends = snappy
 	source = https://github.com/knossos-project/knossos/archive/v4.1.2.tar.gz
 	source = knossos.desktop
+	source = quazip.patch
 	md5sums = c648b510bcec05a914540eea7f577bfa
 	md5sums = 1a2b3733cf5fcb3e1845ce771abb58e9
+	md5sums = be06cd6e91c80b63b9bfe4184b537d7e
 
 pkgname = knossos
 

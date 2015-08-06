@@ -1,0 +1,43 @@
+diff --git a/cmake/Modules/FindQuaZip.cmake b/cmake/Modules/FindQuaZip.cmake
+index 2f543c0..d882d23 100644
+--- a/cmake/Modules/FindQuaZip.cmake
++++ b/cmake/Modules/FindQuaZip.cmake
+@@ -2,8 +2,8 @@
+ 
+ find_package(ZLIB REQUIRED)
+ 
+-find_library(QUAZIP_LIBRARY quazip PATH_SUFFIXES "QuaZip")
+-find_path(QUAZIP_INCLUDE_DIR quazip/quazip.h)
++find_library(QUAZIP_LIBRARY NAMES quazip quazip5 PATH_SUFFIXES "QuaZip")
++find_path(QUAZIP_INCLUDE_DIR quazip.h PATH_SUFFIXES quazip quazip5)
+ 
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(QUAZIP
+diff --git a/file_io.cpp b/file_io.cpp
+index 02673f3..6a62dad 100644
+--- a/file_io.cpp
++++ b/file_io.cpp
+@@ -6,7 +6,7 @@
+ 
+ #include <QStandardPaths>
+ 
+-#include <quazip/quazipfile.h>
++#include <quazipfile.h>
+ 
+ #include "segmentation/segmentation.h"
+ #include "skeleton/skeletonizer.h"
+diff --git a/loader.cpp b/loader.cpp
+index 90ef79f..7e47224 100644
+--- a/loader.cpp
++++ b/loader.cpp
+@@ -29,8 +29,8 @@
+ #include "session.h"
+ #include "viewer.h"
+ 
+-#include <quazip/quazip.h>
+-#include <quazip/quazipfile.h>
++#include <quazip.h>
++#include <quazipfile.h>
+ 
+ #include <snappy.h>
+ 
