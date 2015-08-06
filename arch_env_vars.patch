@@ -12,14 +12,14 @@
 +export LC_CTYPE=en_US.UTF-8
 +
 +# Check for config and source it
-+[[ -f /etc/webapps/madsonic.conf && -r /etc/webapps/madsonic.conf ]] && . /etc/webapps/madsonic.conf
++[[ -f /etc/madsonic.conf && -r /etc/madsonic.conf ]] && . /etc/madsonic.conf
 +
 +# Disable IPv6 if not enabled in config
 +USEIPV6=${LISTENIPV6:-true}
 +[[ $USEIPV6 == false ]] && export _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true"
 +
 +# Values can be set in config
-+MADSONIC_HOME=${MADSONIC_BASEDIR:-/var/webapps/madsonic}
++MADSONIC_HOME=${MADSONIC_BASEDIR:-/var/madsonic}
 +MADSONIC_HOST=${LISTEN_ADDR:-0.0.0.0}
 +MADSONIC_PORT=${LISTEN_PORT:-4040}
 +MADSONIC_INIT_MEMORY=${INIT_MEMORY:-192}

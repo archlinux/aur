@@ -15,25 +15,25 @@ source=(http://madsonic.org/download/${pkgvera}/${pkgdate}_${pkgname}-${pkgver}-
 'madsonic.service' 
 'arch_env_vars.patch' 
 'madsonic.conf')
-backup=('var/webapps/madsonic/db' 'var/webapps/madsonic/madsonic.sh')
+backup=('var/madsonic/db' 'var/madsonic/madsonic.sh')
 install=$pkgname.install
  
 package() {
   cd ${srcdir}
-  mkdir -p $pkgdir/var/webapps/madsonic
-  install -m 755 -t $pkgdir/var/webapps/madsonic $srcdir/{madsonic.sh,madsonic.war,madsonic-booter.jar,version.txt}
-  install -m 644 -t $pkgdir/var/webapps/madsonic $srcdir/{LICENSE.TXT,README.TXT}
+  mkdir -p $pkgdir/var/madsonic
+  install -m 755 -t $pkgdir/var/madsonic $srcdir/{madsonic.sh,madsonic.war,madsonic-booter.jar,version.txt}
+  install -m 644 -t $pkgdir/var/madsonic $srcdir/{LICENSE.TXT,README.TXT}
   mkdir -p $pkgdir/usr/lib/systemd/system
   install -m 644 -t $pkgdir/usr/lib/systemd/system $srcdir/madsonic.service
-  mkdir -p $pkgdir/etc/webapps
-  install -m 644 -t $pkgdir/etc/webapps $srcdir/madsonic.conf
+  mkdir -p $pkgdir/etc
+  install -m 644 -t $pkgdir/etc $srcdir/madsonic.conf
 
 # Compatibility with both java runtime available in repos and AUR; locale fixes
-  patch $pkgdir/var/webapps/madsonic/${pkgname}.sh $srcdir/arch_env_vars.patch
+  patch $pkgdir/var/madsonic/${pkgname}.sh $srcdir/arch_env_vars.patch
 }
 
 
 md5sums=('6d7b248351363fe6248ef1e221d005e5'
 	 'ea074e3f7d394e1e2caad3b68949675e'
-	 '879e256c431785fe573abdd0009b5959'
-	 'd3405a285a8b596a147959f64ab76334'  )
+	 '14518e65fbd97825e24f5801a5f723ad'
+	 'c590d9cb9e21a99b9cb29e224365c938'  )
