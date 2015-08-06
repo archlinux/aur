@@ -12,7 +12,6 @@ pkgbase = hawaii-terminal-git
 	makedepends = cmake
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
-	depends = yat-git
 	provides = hawaii-terminal
 	conflicts = hawaii-terminal
 	replaces = hawaii-terminal
