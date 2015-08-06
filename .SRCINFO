@@ -1,9 +1,10 @@
 pkgbase = cura
-	pkgdesc = A full software solution for 3D printing aimed at RepRaps and the Ultimaker. This package contains both the binary Cura engine and the python front-end.
-	pkgver = 15.06.01
+	pkgdesc = A software solution for 3D printing aimed at RepRaps and the Ultimaker.
+	pkgver = 15.04
 	pkgrel = 1
 	url = https://github.com/daid/Cura
 	install = .install
+	arch = i686
 	arch = x86_64
 	license = AGPLv3
 	depends = python2
