@@ -13,22 +13,6 @@ license=(unknown)
 source=("${pkgname}.zip::http://sourceforge.net/projects/mt-miscellaneous/files/gnome-extensions/3.16/${_extname}.v6.shell-extension.zip/download")
 md5sums=('e7ea5800d8408ea33496cdac01a058f6')
 
-depends[gnomeshell]=gnome-shell
-
-package_20_version() {
-  local compatibles=($(\
-    find -path ./pkg -type d -prune -o \
-    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
-    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
-  local max="${compatibles[-1]}"
-  if [ "3.$max" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
-  fi
-  unset depends[gnomeshell]
-}
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
   do
@@ -54,4 +38,20 @@ fi
 package_10_schemas() {
   msg2 'Installing schemas...'
   find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
+}
+depends[125]=gnome-shell
+
+package_20_version() {
+  local compatibles=($(\
+    find -path ./pkg -type d -prune -o \
+    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
+    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
+  depends+=("gnome-shell>=3.${compatibles[0]}")
+  local max="${compatibles[-1]}"
+  if [ "3.$max" != $(
+    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+  ) ]; then
+    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
+  fi
+  unset depends[125]
 }
