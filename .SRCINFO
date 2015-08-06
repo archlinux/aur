@@ -28,10 +28,12 @@ pkgbase = litecoin-git
 	provides = litecoin-qt
 	provides = litecoind
 	provides = litecoin-bin
+	provides = litecoin-daemon
 	conflicts = litecoin
 	conflicts = litecoin-qt
 	conflicts = litecoind
 	conflicts = litecoin-bin
+	conflicts = litecoin-daemon
 	source = git://github.com/litecoin-project/litecoin.git
 	md5sums = SKIP
 
