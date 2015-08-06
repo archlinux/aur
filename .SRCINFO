@@ -1,0 +1,19 @@
+pkgbase = neovim-qt-git
+	pkgdesc = A Qt gui for Neovim (Neovim RPC and GUI using Qt5).
+	pkgver = r219.49a61e0
+	pkgrel = 1
+	url = https://github.com/equalsraf/neovim-qt
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = neovim
+	depends = qt5-base
+	depends = msgpack-c
+	conflicts = neovim-qt
+	source = neovim-qt-git::git+https://github.com/equalsraf/neovim-qt.git
+	md5sums = SKIP
+
+pkgname = neovim-qt-git
+
