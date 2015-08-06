@@ -1,0 +1,25 @@
+From 636d139d80f59322112e80b21de00216b8dc7013 Mon Sep 17 00:00:00 2001
+From: Remy Marquis <remy.marquis@gmail.com>
+Date: Wed, 31 Dec 2014 01:47:40 +0100
+Subject: [PATCH 2/2] Fixed CRC for ET2.60b on Arch Linux
+
+---
+ hooks.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hooks.cpp b/hooks.cpp
+index cc52bc2..8f4bd9b 100644
+--- a/hooks.cpp
++++ b/hooks.cpp
+@@ -166,7 +166,7 @@ void initHooks()
+ 		break;
+ 	
+ 	case 0x6ab49f82: //Vanilla
+-	case 0x91b6b864: //Arch Linux
++	case 0x44ce1231: //Arch Linux
+ 		version = "ET 2.60b";
+ 		
+ 		writeJump((void *) 0x08188250, (void *) SNDDMA_Init);
+-- 
+2.2.1
+

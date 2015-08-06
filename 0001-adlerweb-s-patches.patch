@@ -1,0 +1,269 @@
+From 4887dceb4728226e50ce03cb34f69b4125eb4a47 Mon Sep 17 00:00:00 2001
+From: Florian Knodt <git@adlerweb.info>
+Date: Sun, 14 Jul 2013 17:13:02 +0200
+Subject: [PATCH 1/2] adlerweb's patches
+
+- Fix missing readlink on newer compilers
+- Added current directory for executable search
+- Newer versions of file may use two spaces
+- Always use latest gcc from PATH
+- Add /usr/share/ to pathlist (Arch Linux)
+- Simplify libsdl-detection
+- Fix segfaults on Arch x64 due to broken stdout
+- Add CRC for ET2.60b on Arch Linux
+---
+ Makefile           |  9 +++------
+ hooks.cpp          | 53 +++++++++++++++++++----------------------------------
+ launcher-script.in | 17 +++++++++++++++--
+ 3 files changed, 37 insertions(+), 42 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 821b6a9..38afe9d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,8 @@
+ # Makefile for et-sdl-sound
+ 
+-# _GCC_PATH=/usr/x86_64-pc-linux-gnu/gcc-bin/3.4.6/
+-
+-LD = $(_GCC_PATH)g++
+-CPP = $(_GCC_PATH)g++
+-CC = $(_GCC_PATH)gcc
++LD = g++
++CPP = g++
++CC = gcc
+ 
+ BUILD = build
+ RELEASE = release
+@@ -63,7 +61,6 @@ quake3-sdl-sound: $(LIB) $(SCRIPT_IN) embed-lib
+ release: $(SCRIPTS)
+ 	mkdir -p $(RELEASE)/et-sdl-sound
+ 	cp *.hpp *.cpp *.in *.c README CHANGELOG $(SCRIPTS) $(LIB) $(RELEASE)/et-sdl-sound/
+-	sed 's/^_GCC_PATH/\# _GCC_PATH/g' Makefile > $(RELEASE)/et-sdl-sound/Makefile
+ 	
+ 	cd $(RELEASE) && tar -czf et-sdl-sound.tar.gz et-sdl-sound
+ 	
+diff --git a/hooks.cpp b/hooks.cpp
+index 9da834b..cc52bc2 100644
+--- a/hooks.cpp
++++ b/hooks.cpp
+@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include <sys/mman.h>
+ #include <cstdlib>
+ #include <limits.h>
++#include <unistd.h>
+ 
+ #ifdef __SDL
+ #include <SDL/SDL.h>
+@@ -57,6 +58,11 @@ void initHooks()
+ 	const char *version = "UNKNOWN";
+ 	bool quake3 = false;
+ 	
++	// open logfile - using stdout leads to segfaults
++    std::ofstream logfile;
++    logfile.open ("/tmp/et-sdl-sound.log");
++    logfile << "---start---" << std::endl;
++	
+ 	switch (CRC32)
+ 	{
+ 	case 0xdc49bc09:
+@@ -159,7 +165,8 @@ void initHooks()
+ 		dma = (dma_t *) 0x08aedc04;
+ 		break;
+ 	
+-	case 0x6ab49f82:
++	case 0x6ab49f82: //Vanilla
++	case 0x91b6b864: //Arch Linux
+ 		version = "ET 2.60b";
+ 		
+ 		writeJump((void *) 0x08188250, (void *) SNDDMA_Init);
+@@ -218,34 +225,34 @@ void initHooks()
+ 		break;
+ 	
+ 	default:
+-		std::cout << "You are not running a recognized version of Enemy Territory or RTCW (CRC32 = " << (void *) CRC32  << ")" << std::endl;
++		logfile << "You are not running a recognized version of Enemy Territory or RTCW (CRC32 = " << (void *) CRC32  << ")" << std::endl;
+ 		return; // we don't need to exit( 1 )
+ 	}
+ 	
+-	std::cout << "Found " << version << " (CRC32 = " << (void *) CRC32 << ")" << std::endl;
++	logfile << "Found " << version << " (CRC32 = " << (void *) CRC32 << ")" << std::endl;
+ 	
+ 	if (backend == OSS) {
+-		std::cout << "Using default OSS backend." << std::endl;
++		logfile << "Using default OSS backend." << std::endl;
+ 		return;
+ 	}
+ #ifdef __ALSA
+ 	else if (backend == ALSA) {
+-		std::cout << "Using ALSA backend." << std::endl;
++		logfile << "Using ALSA backend." << std::endl;
+ 		etalsa = new EtALSA(dma);
+ 	}
+ #endif
+ #ifdef __SDL
+ 	else if (backend == SDL) {
+-		std::cout << "Using SDL backend." << std::endl;
++		logfile << "Using SDL backend." << std::endl;
+ 		etsdl = new EtSDL(dma, (void *) sdl_audio_callback, quake3);
+ 	}
+ #endif
+ 	else {
+-		std::cout << "Requested backend is not available, using OSS." << std::endl;
++		logfile << "Requested backend is not available, using OSS." << std::endl;
+ 		return;
+ 	}
+ 	
+-	std::cout << "et-sdl-sound-" << __ETSDL_VERSION << " (" << __DATE__ << " " << __TIME__ << ", " << __VERSION__ << ") loaded." << std::endl;
++	logfile << "et-sdl-sound-" << __ETSDL_VERSION << " (" << __DATE__ << " " << __TIME__ << ", " << __VERSION__ << ") loaded." << std::endl;
+ }
+ 
+ void writeAddr(void *addr, void *dest)
+@@ -271,20 +278,14 @@ void unprotectPage(void *addr)
+ 	mprotect((void*) (((unsigned long) addr) & 0xfffff000), 4096, PROT_READ | PROT_WRITE | PROT_EXEC);
+ }
+ 
+-void printMem(void *addr, int size)
++void printMem(void *addr, int size) //May be broken
+ {
+-	std::cout << addr << ": ";
+ 	for (int i = 0; i < size; i++)
+ 		printf("%02x ", ((unsigned char*) addr)[i]);
+-	std::cout << std::endl;
+ }
+ 
+ qboolean SNDDMA_Init(void)
+ {
+-#ifdef __DEBUG
+-	std::cout << "SNDDMA_Init()" << std::endl;
+-#endif
+-
+ #ifdef __ALSA
+ 	if (backend == ALSA)
+ 		return etalsa->init();
+@@ -299,10 +300,6 @@ qboolean SNDDMA_Init(void)
+ 
+ int SNDDMA_GetDMAPos(void)
+ {
+-#ifdef __DEBUG
+-	std::cout << "SNDDMA_GetDMAPos()" << std::endl;
+-#endif
+-
+ #ifdef __ALSA
+ 	if (backend == ALSA)
+ 		return etalsa->getDMAPos();
+@@ -318,10 +315,6 @@ int SNDDMA_GetDMAPos(void)
+ 
+ void SNDDMA_Shutdown(void)
+ {
+-#ifdef __DEBUG
+-	std::cout << "SNDDMA_Shutdown()" << std::endl;
+-#endif
+-
+ #ifdef __ALSA
+ 	if (backend == ALSA)
+ 		etalsa->shutdown();
+@@ -335,10 +328,6 @@ void SNDDMA_Shutdown(void)
+ 
+ void SNDDMA_BeginPainting(void)
+ {
+-#ifdef __DEBUG
+-	std::cout << "SNDDMA_BeginPainting()" << std::endl;
+-#endif
+-
+ #ifdef __ALSA
+ 	if (backend == ALSA)
+ 		etalsa->beginPainting();
+@@ -352,10 +341,6 @@ void SNDDMA_BeginPainting(void)
+ 
+ void SNDDMA_Submit(void)
+ {
+-#ifdef __DEBUG
+-	std::cout << "SNDDMA_Submit()" << std::endl;
+-#endif
+-
+ #ifdef __ALSA
+ 	if (backend == ALSA)
+ 		etalsa->submit();
+@@ -379,7 +364,7 @@ unsigned int calculateProcCRC32()
+ 	ssize_t len;
+ 	
+ 	if ((len = readlink("/proc/self/exe", filename, sizeof(filename) - 1)) < 1) {
+-		std::cout << "Can't find actual binary." << std::endl;
++		//logfile << "Can't find actual binary." << std::endl;
+ 		return 0x00000000;
+ 	}
+ 	filename[len] = '\0';
+@@ -389,7 +374,7 @@ unsigned int calculateProcCRC32()
+ 	exe.open(filename);
+ 	
+ 	if (!exe.is_open() | !exe.good()) {
+-		std::cout << "Can't open " << filename << std::endl;
++		//logfile << "Can't open " << filename << std::endl;
+ 		return 0x00000000;
+ 	}
+ 	
+@@ -402,7 +387,7 @@ unsigned int calculateProcCRC32()
+ 	exe.read((char*) file, fsize);
+ 	exe.close();
+ 	
+-	std::cout << "Read " << filename << " (" << fsize << " bytes)" << std::endl;
++	//logfile << "Read " << filename << " (" << fsize << " bytes)" << std::endl;
+ 	
+ 	// generate crc_table
+ 	unsigned int crc_table[256];
+diff --git a/launcher-script.in b/launcher-script.in
+index 3692e3e..0b1e676 100644
+--- a/launcher-script.in
++++ b/launcher-script.in
+@@ -87,7 +87,7 @@ testlibsdl () {
+ 	fi
+ 	
+ 	if [ "$LIBSDL" = "" -a -f "$1" ]; then
+-		if [ "`file -b "$1" | grep "ELF 32-bit LSB shared object"`" != "" ]; then
++		if [ "`file -b "$1" | grep "ELF 32-bit LSB"`" != "" ]; then
+ 			info "32-bit libSDL.so is installed to $1"
+ 			LIBSDL="$1"
+ 		fi
+@@ -103,6 +103,7 @@ fi
+ [ "$GAME_PATH" = "" ] && testgamepath "/usr/local/games/$GAME_DIR"
+ [ "$GAME_PATH" = "" ] && testgamepath "/opt/$GAME_DIR"
+ [ "$GAME_PATH" = "" ] && testgamepath "/usr/games/$GAME_DIR"
++[ "$GAME_PATH" = "" ] && testgamepath "/usr/share/"
+ [ "$GAME_PATH" = "" ] && testgamepath "~/$GAME_DIR"
+ if [ "$GAME_PATH" = "" ]; then
+ 	LOCATE_GAME=`locate "$GAME_BIN" 2> /dev/null`
+@@ -113,7 +114,7 @@ if [ "$GAME_PATH" = "" ]; then
+ 	done
+ fi
+ if [ "$GAME_PATH" = "" -a "$USE_FIND" = "yes" ]; then
+-	FIND_GAME=`find /opt/ /usr/ -type f -name "$GAME_BIN"`
++	FIND_GAME=`find /opt/ /usr/ . -type f -name "$GAME_BIN"`
+ 	for i in $FIND_GAME; do
+ 		i=`dirname "$i"`
+ 		testgamepath $i
+@@ -154,9 +155,21 @@ fi
+ echo -ne "$ET_SDL_SOUND_LIB" > "$TMP_DIR/et-sdl-sound.so" || eend "can't write $TMP_DIR/et-sdl-sound.so"
+ info "library is written to $TMP_DIR/et-sdl-sound.so"
+ 
++if [ ! -f $GAME_PATH/$GAME_BIN ]; then
++	error "Game binary not found"
++	info "Path was: $GAME_PATH/$GAME_BIN"
++	exit 1
++fi
++
+ info "launching the game..."
+ cd "$GAME_PATH"
+ 
++info "Path: $GAME_PATH"
++info "CWD: `pwd`"
++info "SDL: $LIBSDL"
++info "Driver: $SDL_AUDIODRIVER"
++info "Call: LD_PRELOAD="${LD_PRELOAD}:${TMP_DIR}/et-sdl-sound.so" ./$GAME_BIN $*"
++
+ export ETSDL_SDL_LIB="$LIBSDL"
+ export SDL_AUDIODRIVER="$SDL_AUDIODRIVER"
+ LD_PRELOAD="${LD_PRELOAD}:${TMP_DIR}/et-sdl-sound.so" ./$GAME_BIN $*
+-- 
+2.2.1
+
