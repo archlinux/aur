@@ -2,13 +2,13 @@
 # Maintainer: Malte Veerman <maldela@halloarsch.de>
 
 pkgname=fancontrol-gui-git
-pkgver=0.1.r29.g47ac825
+pkgver=0.1.r31.g3adc005
 pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('any')
 url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
-depends=('qt5-base' 'qt5-quickcontrols' 'qt5-declarative' 'lm_sensors' 'kauth' 'systemd')
+depends=('qt5-base' 'qt5-quickcontrols' 'qt5-declarative' 'lm_sensors' 'kauth' 'kpackage' 'ki18n' 'kconfig' 'systemd')
 makedepends=('git' 'gcc' 'cmake' 'extra-cmake-modules' )
 provides=('fancontrol-gui')
 conflicts=('fancontrol-gui')
