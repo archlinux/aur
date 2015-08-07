@@ -1,6 +1,6 @@
 pkgbase = quakespasm-svn
 	pkgdesc = A modern Quake 1 engine. Forked from Fitzquake and improved in many ways such as Vorbis/MP3 support for music.
-	pkgver = 1238
+	pkgver = 1240
 	pkgrel = 1
 	url = http://quakespasm.sourceforge.net
 	install = quakespasm-svn.install
@@ -10,7 +10,7 @@ pkgbase = quakespasm-svn
 	makedepends = subversion
 	depends = libvorbis
 	depends = libmad
-	depends = sdl
+	depends = sdl2
 	source = svn://svn.code.sf.net/p/quakespasm/code/trunk/quakespasm
 	md5sums = SKIP
 
