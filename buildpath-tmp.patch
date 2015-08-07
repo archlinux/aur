@@ -1,0 +1,20 @@
+--- Makefile-orig.in	2015-06-22 02:51:55.424763327 +0200
++++ Makefile.in	2015-06-22 02:49:09.983831421 +0200
+@@ -184,7 +184,7 @@
+ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL_SRC_DIR)/library` \
+ 		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
+ 		  PATH="$(EXTRA_PATH):$(PATH)" \
+-		  TCLLIBPATH="$(top_builddir) ${srcdir}"
++		  TCLLIBPATH=".. $(top_builddir) ${srcdir}"
+ TCLSH_PROG	= @TCLSH_PROG@
+ TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
+ SHARED_BUILD	= @SHARED_BUILD@
+@@ -249,7 +249,7 @@
+ doc: $(target_doc_dir)/langRef-xotcl.html
+ 
+ $(target_doc_dir)/langRef-xotcl.html: $(src_doc_dir)/langRef.xotcl $(DOC_SOURCE)
+-	@docs=""; \
++	docs=""; \
+ 	for i in $(DOC_SOURCE); do docs="$$docs `@CYGPATH@ $$i`"; done; \
+ 	$(TCLSH) $(src_lib_dir_native)/lib/makeDoc.xotcl \
+ 		$(target_doc_dir) $$docs
