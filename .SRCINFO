@@ -1,12 +1,11 @@
 pkgbase = portablesigner-bin
 	pkgdesc = Signing (with X.509 certificates) program for PDF files. Binary installation.
 	pkgver = 2.0.38c0573
-	pkgrel = 1
+	pkgrel = 2
 	url = http://portablesigner.sourceforge.net/
 	arch = any
 	license = EUPL
 	depends = java-runtime>=8
-	depends = java-jce_ustrength
 	provides = portablesigner
 	noextract = PortableSigner-Generic-2.0.38c0573.zip
 	source = https://joinup.ec.europa.eu/system/files/project/9d/de/d0/PortableSigner-Generic-2.0.38c0573.zip

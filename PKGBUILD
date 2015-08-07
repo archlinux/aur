@@ -1,12 +1,12 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 pkgname=portablesigner-bin
 pkgver=2.0.38c0573
-pkgrel=1
+pkgrel=2
 pkgdesc="Signing (with X.509 certificates) program for PDF files. Binary installation."
 arch=('any')
 url="http://portablesigner.sourceforge.net/"
 license=('EUPL')
-depends=('java-runtime>=8' 'java-jce_ustrength')
+depends=('java-runtime>=8')
 provides=('portablesigner')
 source=("https://joinup.ec.europa.eu/system/files/project/9d/de/d0/PortableSigner-Generic-${pkgver}.zip"
 "https://joinup.ec.europa.eu/sites/default/files/eupl1.1.-licence-en.pdf")
