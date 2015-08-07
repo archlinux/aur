@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=roundcubemail-plugins-kolab
-pkgver=3.2.7
+pkgver=3.2.9
 pkgrel=1
 pkgdesc=('Kolab Plugins for the Roundcube Webmailer')
 arch=('any')
@@ -12,7 +12,7 @@ depends=('php-ldap' 'roundcubemail' 'php-kolabformat')
 optdepends=('roundcubemail-skin-chameleon: Kolab skin for roundcube'
             'pykolab: configuration tool')
 source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('cb7001837e08164fad267338b1e3418dfcc034a98fdd3bfd84b605386942a36a')
+sha256sums=('e2a96c2e68074e7bf4bd0d7e8224316a3b93bf865d3fb7f2145fbf2004093518')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/webapps/roundcubemail"
