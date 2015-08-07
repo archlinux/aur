@@ -1,11 +1,13 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=31
-_chromiumver=44.0.2403.130
-pkgrel=2
+pkgver=44.0.2403.130
+_opver=31
+_opbver=31
+_opdver=32
+pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
@@ -15,7 +17,7 @@ makedepends=(
 )
 options=('!strip')
 source=(
-  "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$_chromiumver.tar.xz"
+  "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   "patch_ffmpeg_gyp.patch"
 )
 sha256sums=('37779b2f4844e1a6ac75d69897031955541ad97f3dd1d4ad641c371c1d63b414'
@@ -23,7 +25,7 @@ sha256sums=('37779b2f4844e1a6ac75d69897031955541ad97f3dd1d4ad641c371c1d63b414'
 
 
 prepare() {
-  cd "$srcdir/chromium-$_chromiumver"
+  cd "$srcdir/chromium-$pkgver"
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -39,7 +41,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/chromium-$_chromiumver"
+  cd "$srcdir/chromium-$pkgver"
 
   export PATH="$srcdir/python2-path:$PATH"
 
@@ -49,17 +51,27 @@ build() {
     -Duse_gnome_keyring=0 \
     -Duse_gconf=0 \
     -Dcomponent=shared_library \
-    -Dffmpeg_branding=Chrome \
-    -Dffmpeg_soname_version=31
+    -Dffmpeg_branding=Chrome
 
   ninja -C out/Release ffmpeg
 }
 
 package() {
-  cd "$srcdir/chromium-$_chromiumver"
+  cd "$srcdir/chromium-$pkgver"
 
-	install -Dm644 out/Release/lib/libffmpeg.so.$pkgver \
-    "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so.$pkgver"
+	install -Dm644 out/Release/lib/libffmpeg.so \
+    "$pkgdir/usr/lib/opera-ffmpeg-codecs/libffmpeg.so"
+
+  install -dm755 "$pkgdir/usr/lib/opera/lib_extra"
+  install -dm755 "$pkgdir/usr/lib/opera-beta/lib_extra"
+  install -dm755 "$pkgdir/usr/lib/opera-developer/lib_extra"
+
+  ln -sf /usr/lib/opera-ffmpeg-codecs/libffmpeg.so \
+    "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so.$_opver"
+  ln -sf /usr/lib/opera-ffmpeg-codecs/libffmpeg.so \
+    "$pkgdir/usr/lib/opera-beta/lib_extra/libffmpeg.so.$_opbver"
+  ln -sf /usr/lib/opera-ffmpeg-codecs/libffmpeg.so \
+    "$pkgdir/usr/lib/opera-developer/lib_extra/libffmpeg.so.$_opdver"
 }
 
 # vim:set ts=2 sw=2 et:
