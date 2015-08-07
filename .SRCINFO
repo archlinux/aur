@@ -1,0 +1,17 @@
+pkgbase = pixz-git
+	pkgdesc = parallel, indexed xz compressor
+	pkgver = r172.2ea45c3
+	pkgrel = 1
+	url = https://github.com/vasi/pixz
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = asciidoc
+	depends = libarchive
+	provides = pixz
+	conflicts = pixz
+	source = pixz-git::git+https://github.com/vasi/pixz
+	md5sums = SKIP
+
+pkgname = pixz-git
+
