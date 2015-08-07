@@ -1,0 +1,22 @@
+pkgbase = pcre2-svn
+	pkgdesc = A regex library that implements Perl 5-style regular expressions, 2nd version, includes pcregrep
+	pkgver = 10.21.336
+	pkgrel = 1
+	url = http://www.pcre.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	makedepends = libtool
+	depends = gcc-libs
+	depends = readline
+	depends = zlib
+	depends = bzip2
+	depends = bash
+	provides = pcre2
+	conflicts = pcre2
+	source = pcre2-svn::svn://vcs.exim.org/pcre2/code/trunk
+	sha256sums = SKIP
+
+pkgname = pcre2-svn
+
