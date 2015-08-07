@@ -2,7 +2,7 @@
 
 pkgname=mpdmenu
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='dmenu frontend to MPD'
 url='http://github.com/cdown/mpdmenu'
 arch=('any')
@@ -10,7 +10,7 @@ license=('ISC')
 depends=(dmenu)
 
 source=("https://github.com/cdown/mpdmenu/archive/v${pkgver}.zip")
-md5sums=('ecb0e17c116e6c0ab1a33fd32c79cdd5')
+md5sums=('ec105f1c7b6852efe68fc1e3673716fa')
 
 package() {
     install -D -m755 \
