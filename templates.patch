@@ -34,7 +34,7 @@ index 194135e..2d397a7 100644
 -sievedir: /var/lib/imap/sieve
 +sievedir: /var/imap/sieve
  sendmail: /usr/sbin/sendmail
- sasl_pwcheck_method: auxprop saslauthd
+ sasl_pwcheck_method: saslauthd
  sasl_mech_list: PLAIN LOGIN
  allowplaintext: no
 -tls_server_cert: /etc/pki/cyrus-imapd/cyrus-imapd.pem
