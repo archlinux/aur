@@ -1,7 +1,7 @@
 pkgbase = pykolab
 	pkgdesc = Kolab Python Utilities
 	pkgver = 0.7.13
-	pkgrel = 0
+	pkgrel = 1
 	url = http://kolab.org
 	install = pykolab.install
 	arch = any

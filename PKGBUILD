@@ -3,7 +3,7 @@
 
 pkgname=pykolab
 pkgver=0.7.13
-pkgrel=0
+pkgrel=1
 pkgdesc='Kolab Python Utilities'
 arch=('any')
 license=('GPL3')
