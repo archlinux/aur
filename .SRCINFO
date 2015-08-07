@@ -1,0 +1,15 @@
+pkgbase = rawide-git
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/greygjhart/rawide
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = gettext: translation support
+	provides = rawide
+	conflicts = rawide
+	source = git+https://github.com/greygjhart/rawide
+	md5sums = SKIP
+
+pkgname = rawide-git
+
