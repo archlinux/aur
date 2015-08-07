@@ -2,7 +2,7 @@
 
 pkgname=smlnj
 pkgver=110.78
-pkgrel=4
+pkgrel=5
 pkgdesc="Standard ML of New Jersey, a compiler for the Standard ML '97 programming language"
 url="http://www.smlnj.org/"
 license=(BSD)
@@ -84,7 +84,7 @@ package() {
   cd "$srcdir"
 
   mkdir -p "$pkgdir/usr/lib/smlnj"
-  cp -R "$srcdir/"{bin,lib} "$pkgdir/usr/lib/smlnj"
+  cp -R "$srcdir/install/"{bin,lib} "$pkgdir/usr/lib/smlnj"
 
   mkdir -p "$pkgdir/etc/profile.d"
   cp "$srcdir/profile.d-smlnj.sh" "$pkgdir/etc/profile.d/smlnj.sh"

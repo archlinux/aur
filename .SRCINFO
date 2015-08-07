@@ -1,7 +1,7 @@
 pkgbase = smlnj
 	pkgdesc = Standard ML of New Jersey, a compiler for the Standard ML '97 programming language
 	pkgver = 110.78
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.smlnj.org/
 	arch = i686
 	arch = x86_64
