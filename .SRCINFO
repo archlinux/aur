@@ -1,7 +1,7 @@
 pkgbase = ccnet
 	pkgdesc = A framework for writing networked applications in C.
 	pkgver = 1.4.2
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/haiwen/ccnet/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ccnet
 	depends = jansson>=2.2.1
 	depends = libldap
 	depends = python2>=2.6
-	source = https://github.com/haiwen/ccnet/archive/v4.2.4.tar.gz
+	source = https://github.com/haiwen/ccnet/archive/v4.3.0.tar.gz
 	source = https://raw.githubusercontent.com/haiwen/ccnet/master/COPYRIGHT
 	source = libccnet.pc.patch
 	source = 0001-Add-autoconfiguration-for-libjansson.patch
