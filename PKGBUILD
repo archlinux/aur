@@ -2,7 +2,7 @@
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet-dev
 pkgver=3.0delta
-pkgrel=1
+pkgrel=2
 pkgdesc="Development prerelease of Mudlet"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
@@ -18,6 +18,10 @@ prepare() {
     cd "$srcdir/src"
     sed -i 's,QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";,QString path = "/usr/share/mudlet/lua/LuaGlobal.lua";,' TLuaInterpreter.cpp
     sed -i 's;"mudlet.app/Contents/Resources/mudlet-lua/lua/";"mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/lua/";' mudlet-lua/lua/LuaGlobal.lua
+
+##Fix building with Qt 5.5
+    sed -i '/#include <QString>/ a #include <QDataStream>' ActionUnit.h
+    sed -i '/#include <QTime>/ a #include <QDataStream>' ctelnet.h
 }
 
 build() {
