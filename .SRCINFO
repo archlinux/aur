@@ -1,0 +1,19 @@
+pkgbase = swig-git
+	pkgdesc = Generate scripting interfaces to C/C++ code
+	pkgver = rel.3.0.3.r4.gaa4d034
+	pkgrel = 1
+	url = http://www.swig.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = yodl
+	depends = zlib
+	depends = pcre
+	provides = swig
+	conflicts = swig
+	source = swig::git+https://github.com/swig/swig#branch=master
+	sha1sums = SKIP
+
+pkgname = swig-git
+
