@@ -1,4 +1,5 @@
-# Maintainer: Armin K. <krejzi at email dot com>
+# Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
+# Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
 # Contributor: Tavian Barnes <tavianator@gmail.com>
@@ -10,12 +11,14 @@
 
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
-pkgver=10.5.0_devel.67557
-pkgrel=1
+pkgver=11.0.0_devel.71858.a97f1b6
+pkgrel=3
 arch=('i686' 'x86_64')
-makedepends=('python2' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
-             'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
-             'systemd' 'libomxil-bellagio' 'libclc' 'clang' 'python2-mako' 'git')
+makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
+             'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
+             'systemd' 'libomxil-bellagio' 'libclc' 'clang-svn' 'git'
+             'libtxc_dxtn' 'ocl-icd' 'openssl' 'gnutls')
+             
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
@@ -25,7 +28,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/mesa"
-    echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD)
+    echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 _mesaver() {
@@ -63,6 +66,7 @@ build () {
                --enable-opencl-icd \
                --with-clang-libdir=/usr/lib
 
+
   make
 
   # fake installation
@@ -72,9 +76,9 @@ build () {
 
 package_opencl-mesa-git () {
   pkgdesc="OpenCL support for AMD/ATI Radeon Mesa drivers"
-  depends=('expat' 'libdrm' 'elfutils' 'libxfixes' 'libxext' 'libcl' 'libclc' 'clang')
+  depends=('expat' 'libdrm' 'elfutils' 'libxfixes' 'libxext' 'ocl-icd' 'libclc' 'clang-svn' 'llvm-libs-svn' 'nettle' "mesa-git=${pkgver}")
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('opencl-mesa')
+  provides=("opencl-mesa=$(_mesaver)")
   replaces=('opencl-mesa')
   conflicts=('opencl-mesa')
 
@@ -85,60 +89,48 @@ package_opencl-mesa-git () {
   mv -v "${srcdir}"/fakeinstall/usr/lib/lib*OpenCL* "${pkgdir}/usr/lib/"
   mv -v "${srcdir}"/fakeinstall/usr/lib/gallium-pipe/pipe_{r600,radeonsi}.so "${pkgdir}/usr/lib/gallium-pipe/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/opencl-mesa"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/opencl-mesa/"
-
-  ln -sfv opencl-mesa "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/opencl-mesa-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/opencl-mesa-git/"
 }
 
 package_libva-mesa-driver-git() {
   pkgdesc="VA-API implementation for gallium"
-  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'elfutils')
-  provides=('libva-mesa-driver')
-  replaces=('libva-mesa-driver')
+  depends=('libdrm' 'libx11' 'llvm-libs-svn' 'expat' 'elfutils' 'nettle' "mesa-git=${pkgver}")
+  provides=("libva-mesa-driver=$(_mesaver)")
   conflicts=('libva-mesa-driver')
 
   install -v -m755 -d "${pkgdir}/usr/lib"
   mv -v "${srcdir}/fakeinstall/usr/lib/dri" "${pkgdir}/usr/lib/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver/"
-
-  ln -sfv libva-mesa-driver "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver-git/"
 }
+
 
 package_mesa-vdpau-git() {
   pkgdesc="Mesa VDPAU drivers"
-  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'elfutils')
-  provides=('mesa-vdpau')
+  depends=('libdrm' 'libx11' 'llvm-libs-svn' 'expat' 'elfutils' 'nettle' "mesa-git=${pkgver}")
+  provides=("mesa-vdpau=$(_mesaver)")
   replaces=('mesa-vdpau')
   conflicts=('mesa-vdpau')
 
   install -v -m755 -d "${pkgdir}/usr/lib"
   mv -v "${srcdir}/fakeinstall/usr/lib/vdpau" "${pkgdir}/usr/lib/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-vdpau"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vdpau/"
-
-  ln -sfv mesa-vdpau "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-vdpau-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vdpau-git/"
 }
 
 package_mesa-git () {
   pkgdesc="an open-source implementation of the OpenGL specification"
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'systemd' 'elfutils'
-           'libomxil-bellagio' 'expat' 'libtxc_dxtn' 'llvm-libs')
+           'libomxil-bellagio' 'expat' 'libtxc_dxtn' 'llvm-libs-svn')
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-git: for accelerated video playback'
               'libva-mesa-driver-git: for accelerated video playback')
-  provides=("mesa=$(_mesaver)" 'libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
-            'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri'
-            'ati-dri-git' 'intel-dri-git' 'nouveau-dri-git' 'svga-dri-git' 'mesa-dri-git')
-  replaces=('mesa' 'libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
-            'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri'
-            'ati-dri-git' 'intel-dri-git' 'nouveau-dri-git' 'svga-dri-git' 'mesa-dri-git')
-  conflicts=('mesa' 'libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
-             'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri'
-             'ati-dri-git' 'intel-dri-git' 'nouveau-dri-git' 'svga-dri-git' 'mesa-dri-git')
+  provides=("mesa=$(_mesaver)" 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
+  replaces=('mesa' 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
+  conflicts=('mesa' 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
 
   install -v -m755 -d "${pkgdir}/etc"
   mv -v "${srcdir}/fakeinstall/etc/drirc" "${pkgdir}/etc/"
@@ -160,17 +152,15 @@ package_mesa-git () {
   mv -v "${pkgdir}"/usr/lib/libEGL.so*   "${pkgdir}/usr/lib/mesa/"
   mv -v "${pkgdir}"/usr/lib/libGLES*.so* "${pkgdir}/usr/lib/mesa/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa/"
-
-  ln -sfv mesa "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-git/"
 }
 
 package_mesa-libgl-git () {
   pkgdesc="Mesa 3-D graphics library"
-  depends=("mesa=$(_mesaver)")
+  depends=("mesa-git=${pkgver}")
   provides=("mesa-libgl=$(_mesaver)" "libgl=$(_mesaver)")
-  replaces=('mesa-libgl' 'libgl')
+  replaces=('mesa-libgl')
   conflicts=('mesa-libgl')
 
   # See FS#26284
@@ -193,8 +183,6 @@ package_mesa-libgl-git () {
   ln -sfv libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so.2"
   ln -sfv libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-libgl"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-libgl/"
-
-  ln -sfv mesa-libgl "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-libgl-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-libgl-git/"
 }
