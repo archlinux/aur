@@ -1,0 +1,26 @@
+update_tags() {
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE \
+        --cmd ":helptags /usr/share/vim/doc" --cmd ":q" > /dev/null 2>&1
+    echo " done."
+}
+
+post_install() {
+  update_tags $1
+  echo "Add lines like \"filetype plugin on\", \"filetype indent on\" to your .vimrc"
+  echo "in order to enable OMLet."
+}
+
+
+post_upgrade() {
+  update_tags $1
+}
+
+post_remove() {
+  update_tags $1
+}
+
+op=$1
+shift
+
+$op $*

@@ -1,0 +1,16 @@
+pkgbase = vim-omlet
+	pkgdesc = Much better OCaml indentation, and more
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1196
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = GPL2
+	depends = vim
+	source = http://www.vim.org/scripts/download_script.php?src_id=4135
+	md5sums = 3f4781f25002862ad1af07008bd7fbc1
+
+pkgname = vim-omlet
+
