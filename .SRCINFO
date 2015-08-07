@@ -1,0 +1,13 @@
+pkgbase = hyphen-pt-br
+	pkgdesc = Portuguese (Brazil) hyphenation rules
+	pkgver = 213
+	pkgrel = 3
+	url = http://pt-br.libreoffice.org/projetos/projeto-vero-verificador-ortografico/
+	arch = any
+	license = LGPL-2.1
+	depends = hyphen
+	source = http://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/hyphptBR-213.zip
+	md5sums = 498a4ec7976a814f7411f5540cbedece
+
+pkgname = hyphen-pt-br
+
