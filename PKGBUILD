@@ -2,11 +2,11 @@
 pkgname=archsocks
 pkgdesc="archsocks 网络加速代理"
 pkgver=0.1
-pkgrel=1
+pkgrel=3
 arch=('any')
 url="http://www.archsocks.com/"
 license=()
-depends=('python-aiohttp' 'python-chardet')
+depends=('python-aiohttp' 'python-chardet' 'iptables')
 install=${pkgname}.install
 source=("http://www.archsocks.com/files/archsocks.tar.gz"
         archsocks
@@ -34,4 +34,4 @@ package() {
 
 sha256sums=('bc12cbadfcd657b935cf7377980f1f4c842aac50ec47155ad272fbf58ce6d409'
             'dac4cba524d950d068ea13ea467f5d42da308106e15bb45293fa28f225692c53'
-            'cd3cf869b53612fd15084088fa82e6a7e8689f8fc47803e36b7df45f71479c5e')
+            '4b5888e3c5fc5e28b2add718556aafb939116c66f370d271c59d221fbb3bc1a3')
