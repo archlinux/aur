@@ -56,8 +56,8 @@ TMUX_CONSOLE=tshock-console-${INSTANCE}
 
 case "$1" in
 	start)
-		if [ ! $(tmux has -t ${TMUX_CONSOLE}) ]; then
-			tmux new-session -d -s ${TMUX_CONSOLE} -d "cd ${BASEDIR}; mono TerrariaServer.exe -port ${PORT} -worldpath ${WORLDDIR} -world ${WORLDDIR}/${WORLD}.wld -autocreate ${SIZE}"
+		if [ ! $(tmux has -t ${TMUX_CONSOLE} &> /dev/null) ]; then
+			tmux new-session -d -s ${TMUX_CONSOLE} -d "cd ${BASEDIR}; mono --server --gc=sgen -O=all TerrariaServer.exe -port ${PORT} -worldpath ${WORLDDIR} -world ${WORLDDIR}/${WORLD}.wld -autocreate ${SIZE}"
 			if [ $? -gt 0 ]; then
 				exit 1
 			fi
@@ -79,7 +79,7 @@ case "$1" in
 		;;
 
 	install)
-		bash -c "cd ${BASEDIR}; mono TerrariaServer.exe"
+		bash -c "cd ${BASEDIR}; mono --server --gc=sgen -O=all TerrariaServer.exe -worldpath ${WORLDDIR}"
 		;;
 
 	*)
