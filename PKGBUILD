@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=kolab-syncroton
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='ActiveSync Kolab Backend for Syncroton'
 arch=('any')
@@ -12,7 +12,7 @@ source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "apache.patch")
 optdepends=('pykolab: configuration tool')
 
-sha256sums=('94a5056c89a7711ae46b1acea9bc3076190adcf80e9d7145adea4d23ce828be4'
+sha256sums=('80241e25e1541c383cdfb28e527d1a863a33a774fe2bbb085e4dc9c75d145a28'
             'ca7860ec91bcffe3fc328204069d8580779d1164fb7262f0c5724b81d987faf3')
 
 
