@@ -8,7 +8,6 @@ pkgbase = python2-numba
 	license = BSD
 	makedepends = cython2
 	depends = python2-llvmlite>=0.6.0
-	depends = python2-enum34
 	depends = python2-funcsigs
 	source = https://pypi.python.org/packages/source/n/numba/numba-0.20.0.tar.gz
 	md5sums = a875edb602560847dd8aee75a9b284f1

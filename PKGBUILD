@@ -6,7 +6,7 @@ pkgdesc="NumPy aware dynamic Python compiler using LLVM"
 url="http://numba.pydata.org/"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('python2-llvmlite>=0.6.0' 'python2-enum34' 'python2-funcsigs')
+depends=('python2-llvmlite>=0.6.0' 'python2-funcsigs')
 makedepends=('cython2')
 source=("https://pypi.python.org/packages/source/n/numba/numba-$pkgver.tar.gz")
 md5sums=('a875edb602560847dd8aee75a9b284f1')
