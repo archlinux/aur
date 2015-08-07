@@ -17,13 +17,13 @@ options=()
 install=
 source=('shellinabox@.service')
 noextract=()
-md5sums=('f67bac96ac703c7e45881d38df21dd27') #generate with 'makepkg -g'
+md5sums=('9778d64973cd9dd7cf2225cd9af0cd09') #generate with 'makepkg -g'
 
 _gitroot=$url
 _gitname=shellinabox
 
 pkgver() {
-  cd "$pkgname"
+  #cd "$pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  
 }
 
