@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  echo
+  echo
+  echo
+  echo 'Delete the ~/.loderunner directory when updating. Make sure to backup your config and save files.'
+  echo
+  echo
+  echo
+}

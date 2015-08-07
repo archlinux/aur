@@ -1,0 +1,19 @@
+pkgbase = loderunner
+	pkgdesc = Lode Runner Online: Mad Monks' Revenge. A puzzle video game from 1995
+	pkgver = 1.50
+	pkgrel = 4
+	url = http://www.daggert.net/Folio/Programming/Presage/LodeRunner/Loderunner1.htm
+	install = loderunner.install
+	arch = any
+	license = custom-freeware Abandonware
+	makedepends = imagemagick
+	depends = wine
+	depends = winetricks
+	depends = unionfs-fuse
+	depends = xorg-xrefresh
+	options = !strip
+	source = http://www.daggert.net/Folio/Programming/Presage/LodeRunner/Downloads/lro_install.zip
+	md5sums = ea39770395db0998b3dc3cad052a1977
+
+pkgname = loderunner
+
