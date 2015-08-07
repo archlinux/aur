@@ -1,0 +1,15 @@
+pkgbase = roundcube_persistent_login
+	pkgdesc = Provides a 'Keep me logged in' functionality for Roundcube
+	pkgver = 4.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/rcmailifpl/
+	install = roundcube_persistent_login.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = roundcubemail
+	source = http://downloads.sourceforge.net/project/rcmailifpl/persistent_login-4.2.zip
+	md5sums = 6bf2a23bfbc38377bd0b0e548c2f2dff
+
+pkgname = roundcube_persistent_login
+
