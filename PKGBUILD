@@ -1,5 +1,5 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
-# https://github.com/t-richards/aur-vld
+# https://github.com/t-richards/aur-php-vld
 _pkgname=vld
 _pkgver=VLD_0_13_0
 pkgname=php-vld
