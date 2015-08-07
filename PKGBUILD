@@ -4,7 +4,7 @@
 
 pkgname=libgaminggear
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
 license=('GPL')
