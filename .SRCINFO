@@ -1,0 +1,15 @@
+pkgbase = s3-curl
+	pkgdesc = Amazon S3 Authentication Tool for Curl
+	pkgver = 20120308
+	pkgrel = 1
+	url = http://aws.amazon.com/code/128
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = perl
+	depends = perl-digest-hmac
+	source = http://s3.amazonaws.com/doc/s3-example-code/s3-curl.zip
+	md5sums = f63d4ef54af0400dba7793b8f0793bd8
+
+pkgname = s3-curl
+
