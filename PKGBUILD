@@ -1,8 +1,8 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=archsocks
 pkgdesc="archsocks 网络加速代理"
-pkgver=0.1
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 arch=('any')
 url="http://www.archsocks.com/"
 license=()
@@ -32,6 +32,6 @@ package() {
   install -dm750 "$pkgdir/var/lib/archsocks"
 }
 
-sha256sums=('bc12cbadfcd657b935cf7377980f1f4c842aac50ec47155ad272fbf58ce6d409'
+sha256sums=('fcf589b5fbbcc9698d9e49f5175c6a96613d7a6b217a03a24829045749d0a6af'
             'dac4cba524d950d068ea13ea467f5d42da308106e15bb45293fa28f225692c53'
-            '4b5888e3c5fc5e28b2add718556aafb939116c66f370d271c59d221fbb3bc1a3')
+            '27a170b2541b138d5b11a7e3bbbb27b13dd4474da929ac91659a4d06fab84b9a')
