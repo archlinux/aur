@@ -1,4 +1,4 @@
-#NOTE: Download ADL_SDK.zip manually from 
+#NOTE: Download ADL_SDK8.zip manually from
 #http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/
 #and paste it next to this PKGBUILD
 
@@ -7,7 +7,7 @@
 
 
 pkgname="amd-adl-sdk"
-pkgver=7.0
+pkgver=8.0
 pkgrel=1
 pkgdesc="API to access display driver functionality for AMD graphics cards."
 arch=('i686' 'x86_64')
@@ -19,11 +19,12 @@ options=('!strip')
 
 DLAGENTS="http::/usr/bin/curl -fL --data 'amd_developer_central_nonce=e7863d3f69&_wp_http_referer=/tools-and-sdks/graphics-development/display-library-adl-sdk/&f=QURMX1NES182LjAuemlw' --retry 3 --retry-delay 3 -o %o"
 
-source=("ADL_SDK.zip::${url}")
-md5sums=('c484535e8680a6fb27e2f9114cab5201')
+source=("ADL_SDK8.zip::${url}")
+md5sums=('f3022bf9101fd9d4b8fbb92095b7d029')
 
 prepare() {
     sed -i -e '/include/a \#include <wchar.h>' ${srcdir}/include/adl_structures.h
+    sed -i -e '/include/a \#include <stdbool.h>' ${srcdir}/include/adl_sdk.h
 }
 
 build() {
