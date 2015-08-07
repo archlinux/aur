@@ -4,7 +4,7 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libmediawiki')
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
@@ -15,13 +15,7 @@ makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('8fa6e277b775b615f10403b30a1b6d45c957ff3c')
-
-prepare() {
-# Remove internal FindLibKVkontakte.cmake
-  cd $pkgname-$pkgver
-  rm cmake/modules/FindLibKVkontakte.cmake
-}
+sha1sums=('f7ce2c72946e21b669cfa35c4ce8652337f9c68a')
 
 build() {
   mkdir build
