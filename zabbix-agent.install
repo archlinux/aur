@@ -1,0 +1,20 @@
+post_install() {
+  getent group zabbix > /dev/null || groupadd -r zabbix > /dev/null
+  getent passwd zabbix > /dev/null || useradd -r -g zabbix -d /dev/null zabbix -m > /dev/null
+  chown -R zabbix:zabbix /var/log/zabbix /etc/zabbix
+  systemd-tmpfiles --create zabbix-agentd.conf
+
+
+  grep -e '^zabbix-agent.*10050/tcp' /etc/services > /dev/null || echo "zabbix-agent    10050/tcp  Zabbix Agent" >> /etc/services
+  grep -e '^zabbix-agent.*10050/udp' /etc/services > /dev/null || echo "zabbix-agent    10050/udp  Zabbix Agent" >> /etc/services
+  grep -e '^zabbix-trapper.*10051/tcp' /etc/services > /dev/null || echo "zabbix-trapper  10051/tcp  Zabbix Trapper" >> /etc/services
+  grep -e '^zabbix-trapper.*10051/udp' /etc/services > /dev/null || echo "zabbix-trapper  10051/udp  Zabbix Trapper" >> /etc/services
+}
+
+post_upgrade() {
+  systemd-tmpfiles --create zabbix-agentd.conf
+}
+
+post_remove() {
+   userdel zabbix
+}
