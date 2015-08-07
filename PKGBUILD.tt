@@ -11,8 +11,8 @@ url='[% url %]'
 license=('GPL')
 options=(!emptydirs)
 depends=('perl' 'gsl')
-makedepends=('perl-extutils-pkgconfig')
-checkdepends=('perl-test-exception' 'perl-test-class' 'perl-test-most')
+makedepends=('perl-module-build')
+checkdepends=('perl-test-exception' 'perl-test-class' 'perl-test-most' 'perl-test-taint')
 source=([% source %])
 md5sums=('[% md5sums %]')
 
