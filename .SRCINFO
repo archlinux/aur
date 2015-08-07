@@ -1,0 +1,27 @@
+pkgbase = python-chemview-git
+	pkgdesc = An interactive molecular viewer for the IPython notebook (git version)
+	pkgver = 0.3.r87.c7e9150
+	pkgrel = 1
+	url = http://chemview.readthedocs.org/en/latest
+	arch = any
+	license = LGPL2.1
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	depends = python-numba
+	depends = ipython-notebook
+	depends = python2
+	depends = python2-numpy
+	depends = python2-numba
+	depends = ipython2-notebook
+	source = git+https://github.com/gabrielelanaro/chemview
+	sha256sums = SKIP
+
+pkgname = python-chemview-git
+	provides = python-chemview
+	conflicts = python-chemview
+
+pkgname = python2-chemview-git
+	provides = python2-chemview
+	conflicts = python2-chemview
+
