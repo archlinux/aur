@@ -5,7 +5,7 @@ Description=Shell In a Box service
 Type=oneshot
 RemainAfterExit=yes
 User=%i
-ExecStart=shellinaboxd -b -s '/:SSH:localhost' --localhost-only -c ~/.config
+ExecStart=shellinaboxd -b -s '/:SSH:localhost' --localhost-only -c /tmp
 
 [Install]
 WantedBy=multi-user.target

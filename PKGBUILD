@@ -15,9 +15,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=()
+source=('shellinabox@.service')
 noextract=()
-md5sums=() #generate with 'makepkg -g'
+md5sums=('f67bac96ac703c7e45881d38df21dd27') #generate with 'makepkg -g'
 
 _gitroot=$url
 _gitname=shellinabox
@@ -56,6 +56,7 @@ build() {
 package() {
   cd "$srcdir/$_gitname-build"
   make DESTDIR="$pkgdir/" install
+  install -Dm655 "$srcdir/shellinabox@.service"  "$pkgdir/usr/lib/systemd/system/shellinabox@.service"
 }
 
 # vim:set ts=2 sw=2 et:
