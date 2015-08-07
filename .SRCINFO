@@ -1,0 +1,13 @@
+pkgbase = perl-mail-rfc822-address
+	pkgdesc = Mail::RFC822::Address - Perl extension for validating email addresses according to RFC822
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mail-RFC822-Address/
+	arch = any
+	license = MIT
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PD/PDWARREN/Mail-RFC822-Address-0.3.tar.gz
+	md5sums = 0bd88b2ffedd95a4a920053fd6d0b709
+
+pkgname = perl-mail-rfc822-address
+
