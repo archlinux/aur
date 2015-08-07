@@ -3,7 +3,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname=cryptsetup-nuke-keys
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="cryptsetup patched to nuke all keyslots given a certain passphrase"
 arch=(i686 x86_64)
@@ -21,15 +21,21 @@ source=(https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/${pkgname%-nuke*}
 		cryptsetup.c.patch
         keymanage.c.patch
         libcryptsetup.h.patch
+        libcryptsetup.h.patch.asc
         setup.c.patch)
-sha256sums=('2d2ce28e4e1137dd599d87884b62ef6dbf14fd7848b2a2bf7d61cf125fbd8e6f'
+sha256sums=('c23c24c8d662032da8650c1c84985221be8bbedf4737c1540bba7e4517dfe820'
             '4406f8dc83f4f1b408e49d557515f721d91b358355c71fbe51f74ab27e5c84ff'
             'cfe465bdad3d958bb2332a05e04f2e1e884422a5714dfd1a0a3b9b74bf7dc6ae'
             'd442304e6a78b3513ebc53be3fe2f1276a7df470c8da701b3ece971d59979bdd'
             '64bc32c5771ab72484f267521354d16833f35b0dc5985279186a8bf2d7a51efb'
             '13545e49806f441c2a70513bc2449229c9905f20b933e17ba54078c0392f6d87'
-            'd731bbc0350abc867021a4a3fb2930a17a33157bd9206184cd278ddb818e4209'
+            'b877fbba63e59aaac3d8ee37789b5d1f497d133909b1d4148b7afb5e9dd4e565'
+            'SKIP'
             '257656034c2fda27e0711dc76142693519453812d2cd45248abe3ea2f3c60a80')
+
+validpgpkeys=(
+              '5F885602C7FD0951F565E27949F67298E6366A92' # Claire Farron
+             )
 
 provides=('cryptsetup')
 conflicts=('cryptsetup')
