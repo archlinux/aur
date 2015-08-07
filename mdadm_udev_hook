@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+# This hook doesn't do anything except echo the status lines that the old mdadm hook did.
+# Started md1 with 2 of 2 devices [UU]
+
+# First made for Arch Linux AUR package mdadm-git
+
+run_hook() {
+  # bash -c 'source mdadm_udev_hook; run_hook'
+  # http://unix.stackexchange.com/questions/28636/how-to-check-mdadm-raids-while-running
+  # awk puts the 2 lines together. sed outputs the formatted text
+  awk '/^md/ {printf "%s: ", $1}; /blocks/ {print $0 }' < '/proc/mdstat' | sed -ne 's;^\(.\+\):.*\[\([0-9]\+\)\/\([0-9]\+\)\].*\(\[[^]]*\]\).*$;Started \1 with \2 of \3 devices \4;p' | sort
+  #sleep 1
+  if ! /usr/bin/mdadm -D --scan >/dev/null; then
+    echo 'A RAID array may be damaged. Review /proc/mdstat and fix soon!'
+    sleep 5
+  fi
+}
