@@ -1,0 +1,13 @@
+pkgbase = perl-data-password
+	pkgdesc = Data::Password - Perl extension for assessing password quality
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Password/
+	arch = any
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RA/RAZINF/Data-Password-1.10.tar.gz
+	md5sums = fc96097b398b9df2ec1b9b636cfebdc4
+
+pkgname = perl-data-password
+
