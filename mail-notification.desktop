@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mail Notification
+Exec=mail-notification
+Icon=mail-notification
+Terminal=false
+NoDisplay=true
+X-GNOME-UsesNotifications=true

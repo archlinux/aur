@@ -4,7 +4,7 @@
 
 pkgname=mail-notification
 pkgver=5.4.r69.g9ae8768
-pkgrel=1
+pkgrel=2
 pkgdesc="Tray icon application that informs you if you have new mail"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/mailnotify/"
@@ -17,12 +17,14 @@ source=(git+https://github.com/epienbroek/mail-notification.git
         http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-jb-gcc-format.patch
         http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-aarch64.patch
         http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-evo3_11_2.patch
-        http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-dont-link-against-bsd-compat.patch)
+        http://pkgs.fedoraproject.org/cgit/mail-notification.git/plain/mail-notification-dont-link-against-bsd-compat.patch
+        mail-notification.desktop)
 sha256sums=('SKIP'
             'a7646259ca72b58165e4e1c8cf12b197e32807459c4291867479ef3520d39732'
             '1276a61769121008f72381c6f6471999270364c8a86f9de3f04457e7f4fda9cc'
             '14a3fdb850bfed7d5940779240245c716c1afc7e847e7f8bc4422d8746c6d896'
-            '2340c6001ad9dfd071f80cf0cd9b45d3fa7efada6880a530b16a3b4d36a27444')
+            '2340c6001ad9dfd071f80cf0cd9b45d3fa7efada6880a530b16a3b4d36a27444'
+            '6a1a683da2a83e596999b261d3830a10678b46d16317c5ac3615ab29fffe6a38')
 
 pkgver() {
   cd "$pkgname"
@@ -71,6 +73,8 @@ package() {
   gconf-merge-schema "$pkgdir"/usr/share/gconf/schemas/$pkgname.schemas --domain mail-notification "$pkgdir"/etc/gconf/schemas/*.schemas
 
   rm -f "$pkgdir"/etc/gconf/schemas/*.schemas
+
+  install -D -m644 "$srcdir"/mail-notification.desktop "$pkgdir"/usr/share/applications/mail-notification.desktop
 }
 
 # vim: ts=2:sw=2:et
