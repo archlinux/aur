@@ -1,7 +1,7 @@
 pkgbase = stderred-git
 	pkgdesc = LD_PRELOAD hack to color stderr output red
 	pkgver = v1.0.r23.gdfe65c8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sickill/stderred
 	arch = i686
 	arch = x86_64
