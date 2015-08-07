@@ -2,7 +2,7 @@
 
 pkgname=kolab
 pkgver=3.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Kolab Groupware solution meta-package'
 arch=('any')
 license=('AGPL3')

@@ -197,5 +197,9 @@ else
 fi
 echo
 
+echo '* Updating permissions to /var/lib/kolab'
+chown kolab:kolab /var/lib/kolab
+echo
+
 echo '* Arch-specific configuration finished'
 echo '* Run setup-kolab for general configuration'

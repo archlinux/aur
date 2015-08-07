@@ -1,7 +1,7 @@
 pkgbase = kolab
 	pkgdesc = Kolab Groupware solution meta-package
 	pkgver = 3.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://kolab.org
 	arch = any
 	license = AGPL3
