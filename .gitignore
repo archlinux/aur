@@ -1,0 +1,4 @@
+/Flask-Assets-*.tar.gz
+*.pkg.tar.xz
+/src
+/pkg
