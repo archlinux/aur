@@ -1,0 +1,20 @@
+pkgbase = fax4cups
+	pkgdesc = Fax backend for CUPS supporting hylafax hylafaxplus mgetty-fax efax capisuite
+	pkgver = 1.29
+	pkgrel = 1
+	url = http://vigna.di.unimi.it/fax4CUPS
+	install = fax4CUPS.install
+	arch = any
+	license = GPLv2
+	depends = cups
+	optdepends = hylafax: enterprise fax server
+	optdepends = hylafaxplus: enterprise fax server
+	optdepends = mgetty-fax
+	optdepends = efax: simple fax send/receive
+	source = http://vigna.di.unimi.it/fax4CUPS/fax4CUPS-1.29.tar.gz
+	source = fax4CUPS.sudo
+	sha256sums = 4e9ff3ec04a356b24412db4226630cfef82b88142e1566c867f2832f3ee6cfb3
+	sha256sums = 0a69cef5657d7f6787425f4609c5caa18b84af4609b92876c87bce8393925249
+
+pkgname = fax4cups
+

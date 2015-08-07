@@ -1,0 +1,18 @@
+post_upgrade() {
+  echo 'Restart CUPS to access new fax connection types'
+  echo 'Review /etc/sudoers.d/fax4CUPS.sudo for security considerations'
+  mandb -q
+}
+
+post_install() {
+  post_upgrade
+}
+
+pre_remove() {
+  :
+}
+
+
+post_remove() {
+  mandb -q
+}
