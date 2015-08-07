@@ -2,8 +2,8 @@
 
 pkgname=dump1090-mutability-git
 _pkgbase=dump1090-mutability
-pkgver=1.14.r64.gb4490c7
-pkgrel=2
+pkgver=1.14.r65.g8d815b7
+pkgrel=1
 pkgdesc="ADS-B / Mode S Ground Station System for simple RTL-SDR decoding/translating. Mutability Fork"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/mutability/dump1090"
@@ -43,7 +43,7 @@ package() {
   cd "${pkgname}"
   install -Dm755 dump1090 "${pkgdir}/usr/bin/dump1090-mutability"
   install -Dm755 view1090 "${pkgdir}/usr/bin/view1090-mutability"
-  install -Dm755 faup1090 "${pkgdir}/usr/bin/faup1090"
+  install -Dm755 faup1090 "${pkgdir}/usr/lib/piaware/helpers/faup1090"
 
   install -d "${pkgdir}/usr/share/${_pkgbase}/html/"
   install -Dm644 ./public_html/*.* "${pkgdir}/usr/share/${_pkgbase}/html/"
