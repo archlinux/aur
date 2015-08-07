@@ -7,12 +7,11 @@ pkgbase = qml-material-git
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	depends = qt5-base-git
-	depends = qt5-declarative-git
-	depends = qt5-quickcontrols-git
-	depends = qt5-svg-git
-	depends = qt5-graphicaleffects-git
-	depends = qml-extras-git
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-svg
+	depends = qt5-graphicaleffects
 	provides = qml-material-git
 	source = qml-material-git::git+https://github.com/papyros/qml-material.git#branch=develop
 	sha256sums = SKIP
