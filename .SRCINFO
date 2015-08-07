@@ -1,0 +1,17 @@
+pkgbase = arduino-studio
+	pkgdesc = Open source development environment for the Arduino Programming Language from the Arduino.org Labs.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://labs.arduino.org/Arduino+Studio
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	depends = libudev.so.0
+	options = !strip
+	source = http://download.arduino.org/studio/bundle/0.0.2/arduinostudio-0.0.2-linux32.tar.xz
+	source = start.sh
+	md5sums = 6b91a9989ab21c4fa3ca0b26dd2f5788
+	md5sums = 6d11582f8e12d79e1f09ff017d299f4c
+
+pkgname = arduino-studio
+
