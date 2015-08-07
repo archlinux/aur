@@ -69,19 +69,22 @@ build() {
 package() {
   # exported variables
   install -Dm755 "$srcdir"/emscripten.sh "$pkgdir"/etc/profile.d/emscripten.sh
+  install -d $pkgdir/usr/lib/emscripten-fastcomp
+  install -d $pkgdir/usr/lib/emscripten
+  install -d $pkgdir/usr/bin
 
   cp -R $srcdir/emscripten-fastcomp/build/bin/* \
      $pkgdir/usr/lib/emscripten-fastcomp
   install -m 0755 $srcdir/emscripten-fastcomp/emscripten-version.txt \
 	  $pkgdir/usr/lib/emscripten-fastcomp
 
+  cd "$srcdir/emscripten"/src
   for i in em++ emar emcc em-config emconfigure emmake emranlib \
 		emrun emscons
   do
     ln -s /usr/lib/emscripten/$i "$pkgdir/usr/bin/$i"
   done
-  
-  cd "$srcdir/emscripten"
+  cd ..
   cp -R em* cmake/ site/ src/ system/ third_party/ tools/ \
      $pkgdir/usr/lib/emscripten
   install -m 0755 $srcdir/emscripten.config \
@@ -89,8 +92,7 @@ package() {
   install -Dm0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   
   # copy structure
-  cd "$srcdir"/emscripten-$pkgver
-  install -d "$pkgdir"/usr/lib/emscripten
+  cd "$srcdir"/emscripten
   cp -rup em* cmake site src system third_party tools "$pkgdir"/usr/lib/emscripten
 
   # remove clutter
