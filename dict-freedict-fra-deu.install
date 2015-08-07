@@ -1,0 +1,7 @@
+post_install()
+{
+	echo -e "\nYou have to configure dictd to use the new dictionary" \
+	        "database located in /usr/share/dictd/ manually" \
+	        "and restart the dictd service afterwards.\n\n"  \
+	        "See also dictd(8).\n"
+}
