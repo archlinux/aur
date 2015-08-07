@@ -11,7 +11,7 @@
 _pkgname=zoneminder
 pkgname=zoneminder-git
 pkgver=1.28.100
-pkgrel=1
+pkgrel=4
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -42,11 +42,13 @@ source=(
     git://github.com/$_pkgname/$_pkgname.git
     httpd-zoneminder.conf
     zoneminder.service
+    zoneminder-tmpfile.conf
 )
 # Because the source is not static, skip Git checksum:
 sha256sums=('SKIP'
             'c2ca71ec57e53da040de61ff212ac063574e5ddfb4c333b70be060d5ec26c62c'
             '7eb2f26246e240e23502da44854d5ed14485aa11bc448ad73e9b57fee13f00a3'
+            'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
            )
      
 pkgver() {
@@ -67,7 +69,7 @@ build() {
           -DZM_WEB_USER=http \
           -DZM_CONTENTDIR=/var/cache/zoneminder \
           -DZM_LOGDIR=/var/log/zoneminder \
-          -DZM_RUNDIR=/srv/zoneminder \
+          -DZM_RUNDIR=/run/zoneminder \
           -DZM_TMPDIR=/srv/zoneminder/tmp \
           -DZM_SOCKDIR=/srv/zoneminder/socks .
      
@@ -128,5 +130,7 @@ package() {
     
     mkdir -p                                        $pkgdir/usr/share/doc/$_pkgname
     # install -D -m 644 $srcdir/README              $pkgdir/usr/share/doc/$_pkgname
+
+    install -Dm644 ../zoneminder-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/zoneminder.conf
 
 }

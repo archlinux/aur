@@ -1,7 +1,7 @@
 pkgbase = zoneminder-git
 	pkgdesc = Capture, analyse, record and monitor video security cameras
 	pkgver = 1.28.100
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/ZoneMinder/ZoneMinder/releases
 	install = zoneminder.install
 	arch = i686
@@ -44,9 +44,11 @@ pkgbase = zoneminder-git
 	source = git://github.com/zoneminder/zoneminder.git
 	source = httpd-zoneminder.conf
 	source = zoneminder.service
+	source = zoneminder-tmpfile.conf
 	sha256sums = SKIP
 	sha256sums = c2ca71ec57e53da040de61ff212ac063574e5ddfb4c333b70be060d5ec26c62c
 	sha256sums = 7eb2f26246e240e23502da44854d5ed14485aa11bc448ad73e9b57fee13f00a3
+	sha256sums = cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7
 
 pkgname = zoneminder-git
 

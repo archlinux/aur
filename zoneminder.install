@@ -1,4 +1,7 @@
 post_install() {
+
+    systemd-tmpfiles --create zoneminder.conf
+
     # edit /etc/php.ini for Zoneminder
     sed -e '
     # Enable these libraries by removing the leading comment character
@@ -67,6 +70,7 @@ post_install() {
   and:
     "Include /etc/httpd/conf/extra/php5_module.conf"
     "Include /etc/httpd/conf/extra/httpd-zoneminder.conf"
+
 EOF
 }
 
