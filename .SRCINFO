@@ -1,0 +1,27 @@
+pkgbase = python-chemlab-git
+	pkgdesc = A general Python library for computational chemistry (git version)
+	pkgver = 0.4.1.r725.cc10e09
+	pkgrel = 1
+	url = http://chemlab.github.io/chemlab
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	license = GPL3
+	makedepends = git
+	makedepends = cython
+	makedepends = cython2
+	depends = python
+	depends = python-numpy
+	depends = python2
+	depends = python2-numpy
+	source = git+https://github.com/chemlab/chemlab
+	sha256sums = SKIP
+
+pkgname = python-chemlab-git
+	provides = python-chemlab
+	conflicts = python-chemlab
+
+pkgname = python2-chemlab-git
+	provides = python2-chemlab
+	conflicts = python2-chemlab
+
