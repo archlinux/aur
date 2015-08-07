@@ -1,0 +1,19 @@
+pkgbase = python2-pyusb-beta
+	pkgdesc = A pure Python module which provides USB access.
+	pkgver = 1.0.0b2
+	pkgrel = 2
+	url = https://github.com/walac/pyusb
+	arch = any
+	license = custom
+	makedepends = python2-distribute
+	depends = python2
+	depends = libusb-compat
+	provides = pyusb
+	provides = python2-pyusb
+	conflicts = pyusb=1.0.0b2
+	conflicts = python2-pyusb-git
+	source = https://github.com/walac/pyusb/archive/1.0.0b2.tar.gz
+	md5sums = bc12e83ff3ef1045d4306d13a9955fc1
+
+pkgname = python2-pyusb-beta
+
