@@ -1,7 +1,7 @@
 #Maintainer James W. Barnett < jbarnet 4 at tulane dot edu >
 pkgname=gromacs-mpi
 _pkgname=gromacs
-pkgver=5.0.5
+pkgver=5.0.6
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of
 motion for systems with hundreds to millions of particles.'
@@ -17,8 +17,8 @@ optdepends=('lapack: normal modes and matrix manipulation'
             'lesstif: needed for gmx view'
             'vmd: visualization')
 options=('!libtool')
-source=(https://kth.box.com/shared/static/eze1d9smwgwgnox4k71xjl9ga1ua43d1.gz)
-md5sums=('206884042be656dc06fb73847a9af97f')
+source=(https://kth.box.com/shared/static/7uwctwj33h4uo2f8d1tmdyj9afaj3hzy.gz)
+md5sums=('b0bb547227143e15b3715c0115a2f4af')
 
 build() {
   mkdir -p ${srcdir}/${_pkgname}-${pkgver}/build
