@@ -2,7 +2,7 @@
 pkgname=shellinabox-git
 pkgver=2.14
 pkgrel=1
-pkgdesc=""
+pkgdesc="Implementation of a web server that can export arbitrary command line tools to a web based terminal emulator"
 arch=('any')
 url="https://code.google.com/p/shellinabox/"
 license=('GPL2')
@@ -49,7 +49,7 @@ build() {
   # BUILD HERE
   #
   export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/}"
-  ./configure  --disable-login --prefix=/usr
+  ./configure  --prefix=/usr
   make
 }
 
