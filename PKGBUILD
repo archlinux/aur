@@ -18,15 +18,13 @@ sha256sums=('bc90ca03ee4d216bfb5e415d625c1449af5c87898f98305b48b10adf730c75d6'
 package() {
   cd Polkit-Explorer-master
   local pydir=usr/lib/python2.7/site-packages/polkitex
+
+  install -d -m755 "$pkgdir"/{usr/bin,$pydir}
+  install -m644 Ui_*.py "$pkgdir"/$pydir/
+  
   sed -i 's/python$/python2/' polkitex.py
-  
-  install -Dm755 polkitex.py "$pkgdir/$pydir"/polkitex.py
-  install -dm755 "$pkgdir"/usr/bin
-  ln -s /"$pydir"/polkitex.py "$pkgdir"/usr/bin/polkitex
-  
-  for i in Ui_*.py; do
-    install -Dm644 "$i" "$pkgdir/$pydir/$i"
-  done
+  install -m755 polkitex.py "$pkgdir"/$pydir/
+  ln -s /$pydir/polkitex.py "$pkgdir"/usr/bin/polkitex
   
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/polkit-explorer/LICENSE
   install -Dm644 "$srcdir"/polkit-explorer.desktop \
