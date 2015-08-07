@@ -1,7 +1,7 @@
 pkgbase = catalyst-firepro
 	pkgdesc = AMD/ATI beta drivers for FirePro/GL/MV brand cards. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport.
-	pkgver = 14.301.1019
-	pkgrel = 2
+	pkgver = 14.502.1040
+	pkgrel = 1
 	url = http://www.amd.com
 	install = catalyst-firepro.install
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = catalyst-firepro
 	depends = linux<4.2
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
-	depends = xorg-server<1.16.0
+	depends = xorg-server<1.17.0
 	depends = libxrandr
 	depends = libsm
 	depends = fontconfig
@@ -30,11 +30,11 @@ pkgbase = catalyst-firepro
 	optdepends = acpid: acpi event support / atieventsd
 	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
 	provides = libgl
-	provides = libatical=14.301.1019
-	provides = catalyst=14.301.1019
-	provides = catalyst-libgl=14.301.1019
-	provides = catalyst-utils=14.301.1019
-	provides = catalyst-hook=14.301.1019
+	provides = libatical=14.502.1040
+	provides = catalyst=14.502.1040
+	provides = catalyst-libgl=14.502.1040
+	provides = catalyst-utils=14.502.1040
+	provides = catalyst-hook=14.502.1040
 	provides = libcl
 	provides = dri
 	provides = libtxc_dxtn
@@ -54,7 +54,7 @@ pkgbase = catalyst-firepro
 	options = libtool
 	options = !strip
 	options = !upx
-	source = http://www2.ati.com/drivers/firepro/14.301.1019-linux-cert-retail_end_user.zip
+	source = http://www2.ati.com/drivers/firepro/14.502.1040-linux-cert-retail.zip
 	source = catalyst_build_module
 	source = lib32-catalyst.sh
 	source = catalyst.sh
@@ -79,8 +79,8 @@ pkgbase = catalyst-firepro
 	source = fglrx_3.17rc6-no_hotplug.patch
 	source = kolasa-3.19-get_cpu_var.patch
 	source = kolasa_4.0-cr4-strn.patch
-	source = kolasa_4.1_remove-IRQF_DISABLED.patch
-	md5sums = 70d5f3b7e8f0c939380df09517c21b8b
+	source = kolasa_4.1_remove-IRQF_DISABLED-15.7-v2.patch
+	md5sums = 37d01238c76792592bfbc77c11dfa9fc
 	md5sums = 601d9c756571dd79d26944e54827631e
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
@@ -105,7 +105,7 @@ pkgbase = catalyst-firepro
 	md5sums = 67a22f624bae95a76638ce269392cb01
 	md5sums = 3aa45013515b724a71bbd8e01f98ad99
 	md5sums = dee3df1c5d3ed87363f4304da917fc00
-	md5sums = 81a9e38dee025151cccb7e5db2362cfb
+	md5sums = daa56baca90f473cf1831f6c64e35c2c
 
 pkgname = catalyst-firepro
 

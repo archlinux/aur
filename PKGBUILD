@@ -19,19 +19,19 @@
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: Cold (current_euid patch)
-# Contributor: kolasa (3.19 and 4.0 kernel patch)
+# Contributor: kolasa (3.19, 4.0 and 4.1 kernel patch)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-firepro
-pkgver=14.301.1019
-pkgrel=2
+pkgver=14.502.1040
+pkgrel=1
 pkgdesc="AMD/ATI beta drivers for FirePro/GL/MV brand cards. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.2' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.16.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('linux>=3.0' 'linux<4.2' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.17.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 makedepends=('unzip')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
@@ -60,7 +60,7 @@ url_ref="http://support.amd.com/en-us/download/workstation?os=Linux+x86"
 DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
-    http://www2.ati.com/drivers/firepro/14.301.1019-linux-cert-retail_end_user.zip
+    http://www2.ati.com/drivers/firepro/14.502.1040-linux-cert-retail.zip
     catalyst_build_module
     lib32-catalyst.sh
     catalyst.sh
@@ -85,9 +85,9 @@ source=(
     fglrx_3.17rc6-no_hotplug.patch
     kolasa-3.19-get_cpu_var.patch
     kolasa_4.0-cr4-strn.patch
-    kolasa_4.1_remove-IRQF_DISABLED.patch)
+    kolasa_4.1_remove-IRQF_DISABLED-15.7-v2.patch)
 
-md5sums=('70d5f3b7e8f0c939380df09517c21b8b'
+md5sums=('37d01238c76792592bfbc77c11dfa9fc'
 	 '601d9c756571dd79d26944e54827631e'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
@@ -112,7 +112,7 @@ md5sums=('70d5f3b7e8f0c939380df09517c21b8b'
 	 '67a22f624bae95a76638ce269392cb01'
 	 '3aa45013515b724a71bbd8e01f98ad99'
 	 'dee3df1c5d3ed87363f4304da917fc00'
-	 '81a9e38dee025151cccb7e5db2362cfb')
+	 'daa56baca90f473cf1831f6c64e35c2c')
 
 
 
@@ -296,7 +296,7 @@ package() {
       patch -Np1 -i ../kolasa-3.19-get_cpu_var.patch
       patch -Np1 -i ../fglrx_gpl_symbol.patch
       patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
-      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED.patch
+      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED-15.7-v2.patch
 
     # Prepare modules source files
       _archdir=x86_64
