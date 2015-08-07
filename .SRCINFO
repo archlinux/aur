@@ -1,0 +1,21 @@
+pkgbase = perl-kstat-git
+	pkgdesc = Sun::Solaris::Kstat perl module for linux-zfs
+	pkgver = 862a193e1c
+	pkgrel = 1
+	url = https://github.com/zfsonlinux/linux-kstat
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl>=5.10
+	depends = zfs-git
+	depends = spl-git
+	depends = spl-utils-git
+	provides = perl-kstat
+	conflicts = perl-kstat
+	replaces = perl-kstat
+	options = !emptydirs
+	source = perl-kstat::git+https://github.com/zfsonlinux/linux-kstat.git
+	md5sums = SKIP
+
+pkgname = perl-kstat-git
+
