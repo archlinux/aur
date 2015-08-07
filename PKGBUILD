@@ -2,12 +2,13 @@
 
 pkgname=clipmenu
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Clipboard management using dmenu'
 url='http://github.com/cdown/clipmenu'
 arch=('any')
 license=('ISC')
 depends=(dmenu)
+conflicts=(clipmenu-git)  # Old package from pre-AUR4 days
 
 source=("https://github.com/cdown/clipmenu/archive/${pkgver}.zip")
 md5sums=('0f5e418b538922fb5a55bb49df3ad763')
