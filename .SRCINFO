@@ -1,0 +1,19 @@
+pkgbase = trezor-bridge-bin
+	pkgdesc = Standalone application to use the trezor hardware bitcoin wallet with your computer
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://mytrezor.com/
+	install = trezor-bridge-bin.install
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = curl
+	depends = libmicrohttpd
+	depends = libusb
+	source_i686 = https://mytrezor.s3.amazonaws.com/bridge/1.1.0/trezor-bridge_1.1.0_i386.deb
+	sha256sums_i686 = 9667bc2252137e9f9a1162149e87ede9a21ffe08731b9f6d0127b85659c203aa
+	source_x86_64 = https://mytrezor.s3.amazonaws.com/bridge/1.1.0/trezor-bridge_1.1.0_amd64.deb
+	sha256sums_x86_64 = c13d1d74ea1f6c24c075afc6778aec60fa7b7d272ed65c1dab06fdd632236296
+
+pkgname = trezor-bridge-bin
+
