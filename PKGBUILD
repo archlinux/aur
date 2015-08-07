@@ -4,14 +4,14 @@
 pkgname=grib_api
 pkgver=1.14.0
 _attnum=3473437
-pkgrel=1
+pkgrel=2
 pkgdesc="A program interface for encoding and decoding GRIB messages"
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/GRIB/Home"
 license=('LGPL3' 'GPL3')
 depends=('openjpeg' 'libpng' 'python2' 'netcdf')
-optdepends=('libaec' 'jasper')
-makedepends=('gcc-fortran' 'python2' 'python2-numpy')
+optdepends=('libaec: for compression' 'jasper: as an alternative to openjpeg')
+makedepends=('gcc-fortran' 'python2' 'python2-numpy' 'cmake')
 provides=('grib_api')
 replaces=('grib_api' 'grib_def')
 conflicts=('grib_def')
@@ -22,10 +22,11 @@ build() {
   cd "$srcdir"/${pkgname}-${pkgver}-Source
   mkdir -p build
   cd build
+  [ -x /usr/bin/aec ] && has_aec=1 || has_aec=0
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATAROOTDIR=/usr/share/$pkgname/definitions \
-    -DCMAKE_INSTALL_DATADIR=/usr/share -DENABLE_AEC=1 -DENABLE_PNG=1 \
-    -DENABLE_GRIB_THREADS=1 \
+    -DCMAKE_INSTALL_DATADIR=/usr/share -DENABLE_AEC=$has_aec \
+    -DENABLE_PNG=1 -DENABLE_GRIB_THREADS=1 \
     -DOPENJPEG_INCLUDE_DIR=`pkg-config --variable=includedir libopenjpeg` \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
   make || return 1
