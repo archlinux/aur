@@ -10,10 +10,8 @@ license=('MIT')
 depends=('xcb-util' 'systemd')
 makedepends=('cmake' 'python-docutils' 'git')
 optdepends=('bash-completion: for bash completion')
-source=("$pkgname::git+https://bitbucket.org/raymonad/${pkgname%-git}.git"
-       'ignore-blank.patch')
-md5sums=('SKIP'
-         'ccd244e49310672aa896587373b015f8')
+source=("$pkgname::git+https://bitbucket.org/raymonad/${pkgname%-git}.git")
+md5sums=('SKIP')
 provides=('xss-lock')
 conflicts=('xss-lock')
 
@@ -21,11 +19,6 @@ pkgver() {
   cd "$pkgname"
   local ver="$(git describe --long)"
   printf "%s" "${ver//-/.}"
-}
-
-prepare() {
-  cd "$pkgname"
-  patch -p0 < "$srcdir"/ignore-blank.patch
 }
 
 build() {

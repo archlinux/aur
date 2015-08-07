@@ -15,9 +15,7 @@ pkgbase = xss-lock-git
 	provides = xss-lock
 	conflicts = xss-lock
 	source = xss-lock-git::git+https://bitbucket.org/raymonad/xss-lock.git
-	source = ignore-blank.patch
 	md5sums = SKIP
-	md5sums = b12e5dd8463d6300ebe3a2b525a12926
 
 pkgname = xss-lock-git
 
