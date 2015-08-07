@@ -1,0 +1,19 @@
+pkgbase = xfce-theme-orion-git
+	pkgdesc = Modern light theme. It supports GNOME, Xfce and Openbox.
+	pkgver = 1.5.r110
+	pkgrel = 1
+	url = https://github.com/shimmerproject/Orion
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-engine-murrine
+	optdepends = elementary-xfce-icons: matching icon theme
+	provides = xfce-theme-orion
+	provides = gtk-theme-orion
+	conflicts = xfce-theme-orion
+	conflicts = gtk-theme-orion
+	source = Orion::git+https://github.com/shimmerproject/Orion.git
+	md5sums = SKIP
+
+pkgname = xfce-theme-orion-git
+
