@@ -1,0 +1,12 @@
+pkgbase = smartsim-git
+	pkgdesc = SmartSim is a digital logic circuit design and simulation package.
+	pkgver = r73.20aa4bd
+	pkgrel = 1
+	url = http://github.com/ashleynewson/SmartSim
+	arch = any
+	license = GPL3
+	source = git+https://github.com/ashleynewson/SmartSim.git
+	md5sums = SKIP
+
+pkgname = smartsim-git
+
