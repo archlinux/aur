@@ -1,18 +1,18 @@
 # CPAN Name  : DBIx::DBSchema
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname=perl-dbix-dbschema
-pkgver=0.44
-pkgrel=2
+pkgver=0.45
+pkgrel=1
 pkgdesc='Perl modile providing database-independent schema objects'
 arch=('any')
-url='http://search.cpan.org/dist/DBIx-DBSchema'
+url='https://metacpan.org/release/DBIx-DBSchema'
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-dbi')
-source=(http://search.cpan.org/CPAN/authors/id/I/IV/IVAN/DBIx-DBSchema-0.44.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/I/IV/IVAN/DBIx-DBSchema-0.45.tar.gz)
 options=(!emptydirs)
-md5sums=('303de52e8dc2ca2f33407592db6bd7b0')
+md5sums=('45f2d5c134fd3f74afa378c8e33bc65f')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -20,20 +20,20 @@ sanitize() {
 }
 
 build() {
-	cd DBIx-DBSchema-0.44
+	cd DBIx-DBSchema-0.45
 	sanitize
 	perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd DBIx-DBSchema-0.44
+	cd DBIx-DBSchema-0.45
 	sanitize
 	make test
 }
 
 package() {
-	cd DBIx-DBSchema-0.44
+	cd DBIx-DBSchema-0.45
 	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
