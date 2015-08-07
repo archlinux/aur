@@ -1,0 +1,16 @@
+pkgbase = python-werkzeug-git
+	pkgdesc = The Swiss Army knife of Python web development (git python3 version)
+	pkgver = 2722.2b752ef
+	pkgrel = 1
+	url = http://werkzeug.pocoo.org/
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	depends = python
+	provides = python-werkzeug
+	conflicts = python-werkzeug
+	source = git+https://github.com/mitsuhiko/werkzeug.git
+	md5sums = SKIP
+
+pkgname = python-werkzeug-git
+
