@@ -2,7 +2,7 @@
 +++ b/composer.json
 @@ -4,14 +4,7 @@
  	"license": "AGPL-3.0",
- 	"version": "1.0.6",
+ 	"version": "1.0.8",
  	"repositories": [
 -		{
 -			"type": "pear",
@@ -10,7 +10,7 @@
 -		},
 -		{
 -			"type": "vcs",
--			"url": "git://git.kolab.org/git/pear/Net_LDAP3"
+-			"url": "https://git.kolab.org/diffusion/PNL/php-net_ldap.git"
 -		}
 +
  	],

@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=kolab-freebusy
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Kolab Free/Busy Web Application'
 arch=('any')
@@ -14,9 +14,9 @@ source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "composer.patch")
 optdepends=('pykolab: configuration tool')
 
-sha256sums=('cdc4a2b4fa5e8fb5074356d619ee5c97748638707eff7dc3fec28250ad020da2'
+sha256sums=('fc0ac847192dfde195eae8f10422c1518c6605b16544b1da9df6aabea7b1934c'
             'ae77b4b6738030181b6580a5d54a4c4e412653a11ed1aa2b3b211f81820a7057'
-            '3f115d728fb9d1cbfc379ede7fc717dcc8d0105e5b0204807ecc221a826da64d')
+            '3b8d450a052e301a25097cf81d180f2d42e22c6dbe94b220020f69d8ff057d41')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
