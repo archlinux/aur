@@ -1,7 +1,7 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=cpdf-bin
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF Command Line Tools allow you to manipulate existing PDF files in a variety of ways"
 arch=('x86_64' 'i686')
 url="http://community.coherentpdf.com"
@@ -29,6 +29,6 @@ prepare() {
 package() {
   cd "$srcdir"
   install -Dm755 cpdf "${pkgdir}/usr/bin/cpdf"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-  install -Dm644 cpdfmanual.pdf "${pkgdir}/usr/share/doc/${pkgname%-git}/manual.pdf"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm644 cpdfmanual.pdf "${pkgdir}/usr/share/doc/${pkgname%-bin}/manual.pdf"
 }
