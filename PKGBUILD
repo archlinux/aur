@@ -1,6 +1,6 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 pkgname=chwala
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Kolab File Management'
 arch=('any')
@@ -16,7 +16,7 @@ source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "apache.patch")
 #optdepends=()
 
-sha256sums=('e6da2d63d25a070b2a9dbcc437ba5e85048ce86fe736840001fc6702d0ea73bb'
+sha256sums=('e2de71bbced0910ba3561323e1d8d5aafc8f09d8d27f5bdc36546b701c1a29b8'
             '63c6661fe031f001357ffbecaed8bcd9f1d56549d5223c89e583713cc01d9e51'
             'e88b39da4157a2ff99e692d771b10c496ab1122f240d72db0a2c8bcacdfcf09b'
             'd41a6b0eefdc7e5a4b134813bc772644e462eb7b768f2f18bd28aae9d169cfb6')
