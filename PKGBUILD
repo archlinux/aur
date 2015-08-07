@@ -1,10 +1,9 @@
-# Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
-# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.3.3.10
+pkgver=1.3.4.1
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
@@ -25,7 +24,7 @@ backup=(etc/default/dirsrv
 options=(!libtool)
 install=${pkgname}.install
 source=("http://www.port389.org/binaries/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('bb07f18f8c4f0666d32606feae07b4481f949277ccc92a746fa1128c3dcc0a60af94b0261fb001cadee146bc1492d8a6ba10cbea43ac6474da70af16912197fe')
+sha512sums=('fb160600338d8ed2fe6f0ad0c724ad208347fb684981ce5839b57b1b3d2c42664fa2e803e826f1b1178a881dc0bf557a2c6e5a729e0208a0bb3ede571781bdbf')
 
 build() {
   cd "${pkgname}-${pkgver}"
