@@ -1,0 +1,17 @@
+pkgbase = libreoffice-extension-vero
+	pkgdesc = A spell checker and grammar checker for LibreOffice and OpenOffice.org - Brazilian Portuguese.
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://pt-br.libreoffice.org/projetos/projeto-vero-verificador-ortografico/
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL3
+	license = MPL
+	optdepends = libreoffice-still
+	optdepends = libreoffice-fresh
+	optdepends = openoffice
+	source = https://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/VeroptBRV320AOC.oxt
+	md5sums = 9a9ac174c401406604bfcf101de2a7ba
+
+pkgname = libreoffice-extension-vero
+
