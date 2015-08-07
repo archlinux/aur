@@ -1,0 +1,17 @@
+pkgbase = deutex-devel
+	pkgdesc = A WAD file composer for Doom, Heretic, Hexen and Strife
+	pkgver = 4.4.902.r14.g89e5a6a
+	pkgrel = 1
+	url = http://www.teaser.fr/~amajorel/deutex/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = deutex
+	conflicts = deutex
+	source = git+https://github.com/chungy/deutex.git
+	md5sums = SKIP
+
+pkgname = deutex-devel
+
