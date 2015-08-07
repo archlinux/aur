@@ -1,22 +1,23 @@
-# Maintainer: Shanto <shanto@hotmail.com>
+# Maintainer: Davi da Silva Böger <dsboger@gmail.com>
+# Contributor: Shanto <shanto@hotmail.com>
 # Contributor: Jesus Jerez <jerezmoreno@gmail.com>
 pkgname=eclipse-jdt
-pkgver=4.4
-pkgdate=201406061215
+pkgver=4.5
+pkgdate=201506032000
 pkgrel=1
 pkgdesc="Java Development Tools - Separated from Eclipse SDK package. Use with eclipse-platform"
 url="http://www.eclipse.org/jdt/"
 arch=('any')
 license=('EPL')
-depends=('eclipse-platform')
+depends=('eclipse-platform >= 4.5')
 makedepends=('unzip')
 options=(!strip)
 source=("http://www.eclipse.org/downloads/download.php?r=1&file=/eclipse/downloads/drops4/R-${pkgver}-${pkgdate}/org.eclipse.jdt-${pkgver}.zip")
-md5sums=('73f884fa44138f156f35a58e2b23819f')
+sha512sums=('c2b69941f8af91da0c8deb78273e4da71514985efea82550ec1fb8c4af068b0cc9cb383f695434ca154f7518fbaa57c4d301be452b50dd95e1f461b45e345f81')
 
 package() {
 
-  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
   cd ${srcdir}
 
