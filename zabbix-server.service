@@ -1,0 +1,13 @@
+[Unit]
+Description=Zabbix server
+After=syslog.target network.target postgresql.service
+
+[Service]
+Type=forking
+User=root
+ExecStart=/usr/bin/zabbix_server
+PIDFile=/run/zabbix/zabbix_server.pid
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,40 @@
+post_install() {
+
+  getent group zabbix > /dev/null || groupadd -r zabbix > /dev/null
+  getent passwd zabbix > /dev/null || useradd -r -g zabbix -d /dev/null zabbix -m > /dev/null
+  chown -R zabbix:zabbix /var/log/zabbix /etc/zabbix /usr/share/zabbix /srv/http/zabbix
+  systemd-tmpfiles --create zabbix-server.conf
+
+  echo "Manual post-installation steps:"
+  echo "-------------------------------------------------------------------------------------"
+  echo "1) Create a PostgreSQL user and database"
+  echo "psql -U <username>"
+  echo "psql> create database zabbix; "
+  echo "psql> \q "
+  echo "2) Load the schema and datasets into the database you created"
+  echo "cd /etc/zabbix/database/postgresql"
+  echo "psql -U <username> zabbix < schema.sql"
+  echo "psql -U <username> zabbix < images.sql"
+  echo "psql -U <username> zabbix < data.sql"
+  echo "3) Configure /etc/zabbix/zabbix_server.conf"
+  echo "4) Start zabbix-server"
+  echo "5) Go to http://localhost/zabbix and follow the setup process"
+  echo "-------------------------------------------------------------------------------------"
+  echo "For more information see http://www.zabbix.com/documentation.php"
+  echo "-------------------------------------------------------------------------------------"
+}
+
+post_remove() {
+   userdel zabbix
+}
+
+post_upgrade() {
+  systemd-tmpfiles --create zabbix-server.conf
+
+  echo "-------------------------------------------------------------------------------------"
+  echo "html path has been changed to /usr/share/webapps/zabbix"
+  echo "If upgrading from version prior to 2.4.2, please update your web server configuration"
+  echo "and move /srv/http/zabbix/conf/zabbix.conf.php to /usr/share/webapps/zabbix/conf/zabbix.conf.php"
+  echo "-------------------------------------------------------------------------------------"
+}
+
