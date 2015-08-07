@@ -1,13 +1,13 @@
 # Maintainer: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=seafile-client-cli
-pkgver=4.2.4
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool. This is seafile cli client for synchronizing your local files with seafile server."
 arch=('any')
 url="https://github.com/haiwen/seafile/"
 license=('GPL')
-depends=('seafile-shared>=4.2.4' 'libevent')
+depends=('seafile-shared>=4.3.0' 'libevent')
 makedepends=('vala' 'sed')
 optdepends=()
 options=('!libtool' '!emptydirs')
@@ -32,4 +32,4 @@ package ()
 	# Install license
 	install -D -m644 ${srcdir}/seafile-${pkgver}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 }
-sha256sums=('19df0f91be4980c3f0dd7d8241d73007bb25f05572275d054fd8d14e5b88e212')
+sha256sums=('ebc47d055c48bc3832498415ee4ca95e818ca9a018796c34116843bb32e7794f')
