@@ -1,0 +1,15 @@
+pkgbase = perl-pkgconfig
+	pkgdesc = Pure-Perl Core-only replacement for pkg-config
+	pkgver = 0.09026
+	pkgrel = 1
+	url = https://metacpan.org/release/PkgConfig
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.11.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/PkgConfig-0.09026.tar.gz
+	md5sums = bc920c8da68dcb85c0ab385490a2462f
+
+pkgname = perl-pkgconfig
+
