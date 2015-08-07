@@ -6,7 +6,7 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=223
+pkgver=224
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -37,9 +37,9 @@ md5sums=('SKIP'
 prepare() {
   cd "${pkgname/-selinux}"
 
-  # networkd: fix size of networkd binary
-  # https://github.com/systemd/systemd/commit/6870b4156377
-  git cherry-pick -n 6870b4156377
+  # networkd: fix neworkd crash
+  # https://github.com/systemd/systemd/commit/49f6e11e89b4
+  git cherry-pick -n 49f6e11e89b4
 
   ./autogen.sh
 }
