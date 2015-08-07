@@ -1,0 +1,18 @@
+pkgbase = spring-ba
+	pkgdesc = A popular balanced Spring mod based on Absolute Annihilation
+	pkgver = 9.01
+	pkgrel = 1
+	url = https://springrts.com/wiki/Balanced_Annihilation
+	arch = any
+	license = GPL
+	license = CCPL
+	license = custom:non-free
+	depends = spring
+	noextract = ba-v9.01.sdz
+	source = ba-v9.01.sdz::http://springfiles.com/downloadmain/start/19669
+	source = license-non-free
+	md5sums = d1ee7f6db93c44aa20c72c8166bb0c96
+	md5sums = 28872feaac21fc4b2b4ae00b3f86e52a
+
+pkgname = spring-ba
+
