@@ -1,0 +1,24 @@
+pkgbase = pcre-svn
+	pkgdesc = A regex library that implements Perl 5-style regular expressions, includes pcregrep
+	pkgver = 8.38.1586
+	pkgrel = 1
+	url = http://www.pcre.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	makedepends = libtool
+	depends = gcc-libs
+	depends = readline
+	depends = zlib
+	depends = bzip2
+	depends = bash
+	provides = pcre
+	conflicts = pcre
+	source = pcre-svn::svn://vcs.exim.org/pcre/code/trunk
+	source = 01-seven-security-patches.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/01-seven-security-patches.patch?h=packages/pcre
+	sha256sums = SKIP
+	sha256sums = c27607ae7907d0ecfa360c1a679618475b674541cb36c366d8b58c3571ec6a79
+
+pkgname = pcre-svn
+
