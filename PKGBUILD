@@ -1,5 +1,6 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Zachary Lund <admin@computerquip.com>
+# Contributor: Ralph Eastwood <tcmreastwood@ntlworld.com>
 
 pkgname=libgaminggear
 pkgver=0.10.1
@@ -18,7 +19,7 @@ build() {
   cmake \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DINSTALL_LIBDIR="/usr/lib" \
-	-DINSTALL_CMAKE_MODULESDIR="/usr/share/cmake-3.2/Modules"
+	-DINSTALL_CMAKE_MODULESDIR="/usr/share/cmake-3.3/Modules"
   make
 }
 
