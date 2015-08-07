@@ -1,0 +1,19 @@
+pkgbase = eff-git
+	pkgdesc = A functional programming language based on algebraic effects and their handlers.
+	pkgver = r473.5ad3b54
+	pkgrel = 2
+	url = http://www.eff-lang.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = git
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = ocaml-menhir
+	optdepends = rlwrap: to wrap (automatically called if installed)
+	optdepends = ledit: alternative to rlwrap
+	source = git+https://github.com/matijapretnar/eff.git
+	md5sums = SKIP
+
+pkgname = eff-git
+
