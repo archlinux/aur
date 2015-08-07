@@ -1,7 +1,7 @@
 # Maintainer: Andrea Fagiani <andfagiani_at_gmail_dot_com>
 
 pkgname=eclim
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Brings Eclipse functionality to Vim"
 url="http://eclim.org/"
@@ -17,7 +17,7 @@ optdepends=('eclipse-pdt: Eclipse PHP Development Tools support'
 conflicts=('eclim-git')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${pkgname}_$pkgver.tar.gz")
-md5sums=('0d44bf58f468b2c5bc72ed675379cd8c')
+md5sums=('c1c09cff1e84216ea6666e9c3e051621')
 
 prepare() {
   cd $srcdir/${pkgname}_$pkgver
