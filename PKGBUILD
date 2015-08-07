@@ -1,12 +1,13 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r3926.aeeca24
+pkgver=r4189.2a9698c
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('any')
 url='https://github.com/IntelOrca/OpenRCT2'
 license=('GPL3')
-depends=('wine' 'mingw-w64-sdl2' 'gtk-update-icon-cache' 'desktop-file-utils')
+depends=('wine' 'mingw-w64-sdl2' 'gtk-update-icon-cache' 'desktop-file-utils'
+         'mingw-w64-sdl2_ttf')
 makedepends=('git' 'cmake' 'mingw-w64-gcc')
 conflicts=('openrct2')
 provides=('openrct2')
@@ -26,7 +27,7 @@ sha256sums=('SKIP'
 # desirable to set this to 0 before building.
 _enable_twitch=1
 
-_dlls=(SDL2.dll libwinpthread-1.dll)
+_dlls=(SDL2.dll libwinpthread-1.dll SDL2_ttf.dll libfreetype-6.dll libbz2-1.dll)
 
 if [ $_enable_twitch -eq 1 ]; then
   depends+=('mingw-w64-curl' 'mingw-w64-jansson')
