@@ -132,6 +132,24 @@ diff --git a/pykolab/setup/setup_mta.py b/pykolab/setup/setup_mta.py
 index 56109fe..b8f6485 100644
 --- a/pykolab/setup/setup_mta.py
 +++ b/pykolab/setup/setup_mta.py
+@@ -165,7 +165,7 @@
+ 
+ query_filter = (&(|(mailAlternateAddress=%%s)(alias=%%s)(mail=%%s))(objectclass=kolabinetorgperson))
+ result_attribute = mail
+-result_format = lmtp:unix:/var/lib/imap/socket/lmtp
++result_format = lmtp:unix:/var/imap/socket/lmtp
+ """ % {
+                         "base_dn": conf.get('ldap', 'base_dn'),
+                         "server_host": server_host,
+@@ -244,7 +244,7 @@
+         fp.close()
+ 
+     fp = open('/etc/postfix/transport', 'a')
+-    fp.write("\n# Shared Folder Delivery for %(domain)s:\nshared@%(domain)s\t\tlmtp:unix:/var/lib/imap/socket/lmtp\n" % {'domain': conf.get('kolab', 'primary_domain')})
++    fp.write("\n# Shared Folder Delivery for %(domain)s:\nshared@%(domain)s\t\tlmtp:unix:/var/imap/socket/lmtp\n" % {'domain': conf.get('kolab', 'primary_domain')})
+     fp.close()
+ 
+     subprocess.call(["postmap", "/etc/postfix/transport"])
 @@ -274,9 +274,9 @@ result_format = "shared+%%s"
      if os.path.isfile('/etc/pki/tls/certs/make-dummy-cert') and not os.path.isfile('/etc/pki/tls/private/localhost.pem'):
          subprocess.call(['/etc/pki/tls/certs/make-dummy-cert', '/etc/pki/tls/private/localhost.pem'])

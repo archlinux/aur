@@ -3,7 +3,7 @@
 
 pkgname=pykolab
 pkgver=0.7.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Kolab Python Utilities'
 arch=('any')
 license=('GPL3')
@@ -38,8 +38,8 @@ optdepends=('cyrus-imapd-ldap: Only supported IMAP backend so far'
 sha256sums=('842586765921ae4f25acbcb53dc71c1d89907a1b8a9c70f83349d9367c4ecfee'
             '6995524d755ea3cbf3d36fc572667629716a141e7f757af1a970c2e85f8fa4de'
             'a515f068b5fe12c858f327fa0558087e61b4d39070d67dfba9a2b6d19a83c2c6'
-            'c9436d7a3199b0503b6193166dddaeb5843377750d462eb3070e7c7c2c4e10b2'
-            'fcf45ffb13dd6a64baefa30bb245f7ec239e92bd3cbbc42f141817fff8544dc3'
+            '1ff05a0f7f503443cab6d7b81ce723202df4f10cbbe8f483056d7f4aaea7d460'
+            '653b49d20dbb0b492962e87009c53acaa9acb2d9825bd22d8335c43386ddd8c7'
             '4bbb72695b20b7a4c1c0348a93c62f048f0eef9f3bc7135fa2720c62e98e4634')
 
 
