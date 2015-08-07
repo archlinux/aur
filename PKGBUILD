@@ -5,7 +5,7 @@ pkgdesc="API and runtime that allows access to VR hardware from multiple vendors
 arch=('x86_64')
 url="https://github.com/ValveSoftware/openvr"
 license=('custom')
-depends=('libgl')
+depends=('libgl' 'sdl2' 'glew')
 optdepends=("oculus-udev: Udev rule to make the rift sensors usable to the user \"plugdev\""
             "steam: For SteamVR (Duh)")
 makedepends=('git' 'cmake')
