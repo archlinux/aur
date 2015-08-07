@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=irony
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Kolab Groupware Access Protocol Layers (Cal/Card/GroupDAV support)'
 arch=('any')
@@ -18,8 +18,8 @@ source=("http://mirror.kolabsys.com/pub/releases/iRony-${pkgver}.tar.gz"
         "${pkgname}.tmpfiles"
         "apache.patch")
 
-sha256sums=('645f28d4e55edbc9be2e52ed1492f1953f5a20bbbf71c74c5bed8340ccb99723'
-            'e997045551f3992829cb91fbe26f0238dd914924393ac456f7c233d4c4a7ff1b'
+sha256sums=('e6f3d4c643c73ee4bd0060d1979568d6a5db0ac6a8de2c6187bbb15940a7f347'
+            '15ca2a9fdb50f65e535c56f1d74ee5689e8b9db949ff7c24f45916f36c4788a9'
             '62080ba2fded24b03b6fa449d69ae91ff2ba4350f063104bdb46ff0dcf235c99'
             '73d56319d0000f81c1f327177e43a440ec4a4a5d6f37ccd90c3603a399307b74'
             'd08c304c515cdba937541b7e1f099b16587cff0b1c5096eadcce66a5266e6b35'
