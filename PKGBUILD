@@ -3,7 +3,7 @@
 
 pkgname=galois
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A computer game of the "falling blocks" type, but with unique features'
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/galois/"
@@ -21,8 +21,6 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="$pkgdir" install
-#	cd "${pkgdir}/usr"
-#	mv games
 }
 
 
