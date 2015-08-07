@@ -1,0 +1,21 @@
+pkgbase = gcdemu
+	pkgdesc = GNOME panel applet controlling cdemu-daemon
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://cdemu.sourceforge.net/
+	install = gcdemu.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = intltool
+	depends = cdemu-daemon
+	depends = python2
+	depends = python2-gobject
+	depends = python2-notify
+	depends = gtk3
+	source = http://downloads.sourceforge.net/cdemu/gcdemu-3.0.0.tar.bz2
+	sha256sums = 1357a02720f05644929bae167fcc64dc58784f406aa426bcd806955cc458aad4
+
+pkgname = gcdemu
+
