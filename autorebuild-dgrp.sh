@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 # Part of the dgrp-1.9.35 PKGBUILD from Arch Linux AUR
 # http://aur.archlinux.org/
@@ -22,40 +22,42 @@
 
 # for install_group in `groups`; do
 #   if [ "$install_group" = "wheel" ]; then
-#     find ~/pkg -type f -perm /400 -name "autorebuild-*.sh" -exec sh {} \;
+#     find ~/build -type f -perm /400 -name "autorebuild-*.sh" -exec sh '{}' ';'
 #     break
 #   fi
 # done
 
-# This presumes you have neatly placed all your packages into ~pkg.
+# This presumes you have neatly placed all your packages into ~build.
 
 # (Note: the multi user aspect has yet to be tested)
 
 # For multiple users you can use a standard folder set to be world writable.
 
-sensefile="/usr/lib/modules/`uname -r`/misc/dgrp.ko"
-rebuildtitle="Digi RealPort driver for Ethernet serial servers"
+sensefile="/usr/lib/modules/$(uname -r)/misc/dgrp.ko"
+rebuildtitle='Digi RealPort driver for Ethernet serial servers'
+set -e
+set -u
 
-if [ ! -s "$sensefile" ]; then
-  if [ "$EUID" -ne "0" ]; then
-    cd "`dirname "$0"`" # compatible with cron and find
-    #prevumask=`umask`; umask 000
-    makepkg -sCcfi
-    #umask $prevumask
+if [ ! -s "${sensefile}" ]; then
+  if [ "${EUID}" -ne 0 ]; then
+    cd "$(dirname "$0")" # compatible with cron and find
+    #prevumask=$(umask); umask 000
+    makepkg -sCcfi || sleep 5
+    #umask ${prevumask}
     ## Allow other users to build without permissions interference
     ## This would be a security problem in most environments
     ## chmod 777 files with any x bit set
-    #find . -type f ! "(" -perm 666 -o -perm 777 ")" -a -perm /111 -exec chmod 777 {} \;
+    #find . -type f ! "(" -perm 666 -o -perm 777 ")" -a -perm /111 -exec chmod 777 '{}' ';'
     ## chmod 666 files without any x bit set
-    #find . -type f ! "(" -perm 666 -o -perm 777 ")" -a "!" -perm /111 -exec chmod 666 {} \;
+    #find . -type f ! "(" -perm 666 -o -perm 777 ")" -a "!" -perm /111 -exec chmod 666 '{}' ';'
     ## chmod 777 files with any x bit set
-    #find . -type d ! -perm 777 -exec chmod 777 {} \;
+    #find . -type d ! -perm 777 -exec chmod 777 '{}' ';'
   else
     # su user -c "$*" # this might work if you need the root user to rebuild.
-    echo "`tput clear`"
+    echo "$(tput clear)"
     echo "Important. A recent kernel upgrade has diabled your"
     echo ""
-    echo "$rebuildtitle"
+    echo "${rebuildtitle}"
     echo "Status: Disabled!"
     echo ""
     echo "It is easy to rebuild and enable but not by a root user."
@@ -68,5 +70,5 @@ if [ ! -s "$sensefile" ]; then
     read autorebuild
   fi
 else
-  echo "$rebuildtitle already installed"
+  echo "${rebuildtitle} already installed"
 fi
