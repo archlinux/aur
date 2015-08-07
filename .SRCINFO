@@ -1,0 +1,15 @@
+pkgbase = libbs2b-git
+	pkgdesc = Bauer stereophonic-to-binaural DSP effect library (GIT version)
+	pkgver = r75.5ca2d59
+	pkgrel = 1
+	url = https://github.com/alexmarsev/libbs2b
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	provides = libbs2b
+	source = git+git://github.com/alexmarsev/libbs2b.git
+	sha256sums = SKIP
+
+pkgname = libbs2b-git
+
