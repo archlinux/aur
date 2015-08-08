@@ -1,0 +1,16 @@
+pkgbase = cntlm
+	pkgdesc = An NTLM, NTLM2SR, and NTLMv2 authenticating HTTP proxy
+	pkgver = 0.92.3
+	pkgrel = 3
+	url = https://github.com/bseb/cntlm
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	backup = etc/cntlm.conf
+	source = cntlm-0.92.3.tar.gz
+	source = cntlm.service
+	md5sums = 0d7fcfbfbef0546306b896be246caa88
+	md5sums = 36f88f6ebde5d1c57d9847fedcf71b84
+
+pkgname = cntlm
+
