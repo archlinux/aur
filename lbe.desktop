@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=LDAP Browser/Editor
+Exec=/usr/bin/lbe
+#Icon=
+Terminal=false
