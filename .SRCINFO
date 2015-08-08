@@ -1,0 +1,17 @@
+pkgbase = xrandr-invert-colors
+	pkgdesc = Simple utility that inverts colors on all screens, using XrandR.
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://github.com/zoltanp/xrandr-invert-colors
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxau
+	depends = libxdmcp
+	depends = libxcb
+	depends = libxrandr
+	source = https://github.com/zoltanp/xrandr-invert-colors/archive/v0.01.tar.gz
+	md5sums = 08224f5b75e3c359acca915782d05b42
+
+pkgname = xrandr-invert-colors
+
