@@ -1,0 +1,30 @@
+pkgbase = muttonchop
+	pkgdesc = MuttonChop is a media player designed to be controlled through a web interface or by a JSON API
+	pkgver = 0.1.4
+	pkgrel = 2
+	url = http://www.jezra.net/projects/muttonchop
+	install = muttonchop.install
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = cmake
+	makedepends = vala
+	makedepends = gcc
+	depends = gtk3
+	depends = glib
+	depends = json-glib
+	depends = sqlite3
+	depends = gstreamer0.10-ffmpeg
+	depends = gstreamer0.10-good-plugins
+	depends = gstreamer0.10-bad-plugins
+	depends = gstreamer0.10-ugly-plugins
+	depends = libgee
+	depends = libxml2
+	depends = gvfs
+	provides = muttonchop
+	conflicts = muttonchop-bzr
+	source = https://launchpad.net/muttonchop/0.x/0.1.4/+download/muttonchop-0.1.4.tgz
+	md5sums = 54ac74d07b64515c273eca1e67137a3c
+
+pkgname = muttonchop
+
