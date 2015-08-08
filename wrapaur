@@ -31,7 +31,7 @@ if [ ! -f $HOME/.wrapaur_history ]; then
 fi
 
 #aur url location
-aururl="aur4.archlinux.org"
+aururl="aur.archlinux.org"
 
 
 ##########Functions##########
