@@ -1,0 +1,13 @@
+pkgbase = thor-codec
+	pkgdesc = The Thor video codec is a block-based hybrid video codec similar in structure to widespread standards.
+	pkgver = r11.191fcb3
+	pkgrel = 1
+	url = https://tools.ietf.org/html/draft-fuldseth-netvc-thor
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	source = thor::git+https://github.com/cisco/thor.git
+	md5sums = SKIP
+
+pkgname = thor-codec
+

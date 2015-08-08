@@ -1,0 +1,10 @@
+src
+srcdir
+pkg
+pkgdir
+thor
+*.gz
+*.bz2
+*.zip
+*.rar
+*.xz
