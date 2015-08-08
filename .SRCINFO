@@ -1,0 +1,12 @@
+pkgbase = libreoffice-breeze-icons
+	pkgdesc = Breeze icons set for Libreoffice. You should select it under Tools->Options->View
+	pkgver = 2015.8.8
+	pkgrel = 1
+	url = https://github.com/NitruxSA/plasma-next-icons
+	arch = any
+	license = LGPL
+	source = https://github.com/aitorpazos/archlinux-libreoffice-breeze-icons/releases/download/2015.8.8/libreoffice-breeze-icons-2015.8.8.tar.gz
+	md5sums = b56f74945c085897b00c531c5c770093
+
+pkgname = libreoffice-breeze-icons
+
