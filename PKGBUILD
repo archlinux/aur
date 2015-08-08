@@ -1,6 +1,6 @@
 # Maintainer: Papajoker <papajoker [at] archlinux [dot] info>
 pkgname=test-aur4
-pkgver=2
+pkgver=3
 pkgrel=0
 pkgdesc="test of aur4 with github"
 arch=('any')
