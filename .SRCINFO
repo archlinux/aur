@@ -1,0 +1,18 @@
+pkgbase = python2-docs-devhelp
+	pkgdesc = Set of HTML documentation for Python 2.x with GNOME-Devhelp support.
+	pkgver = 2.7.8
+	pkgrel = 2
+	url = http://docs.python.org/
+	arch = any
+	license = GPL
+	makedepends = python2
+	makedepends = svn
+	provides = python2-docs
+	options = docs
+	source = https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tar.xz
+	source = devhelp-build-py2.patch
+	sha256sums = edde10a0cb7d14e2735e682882d5b287028d1485c456758154c19573db68075a
+	sha256sums = f5a9fa2dff4b93f3f15067ed775a32fe127858b6d87b05db8a0dc000124c6dab
+
+pkgname = python2-docs-devhelp
+

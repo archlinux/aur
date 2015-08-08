@@ -1,0 +1,22 @@
+diff -aur Python-2.7.8.pristine/Doc/Makefile Python-2.7.8.new/Doc/Makefile
+--- Python-2.7.8.pristine/Doc/Makefile	2014-06-30 04:05:17.000000000 +0200
++++ Python-2.7.8.new/Doc/Makefile	2015-03-27 18:26:09.805055625 +0100
+@@ -24,6 +24,7 @@
+ 	@echo "  update     to update build tools"
+ 	@echo "  html       to make standalone HTML files"
+ 	@echo "  htmlhelp   to make HTML files and a HTML help project"
++	@echo "  devhelp    to make HTML files and a project for the Devhelp doc viewer"
+ 	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
+ 	@echo "  text       to make plain text files"
+ 	@echo "  changes    to make an overview over all changed/added/deprecated items"
+@@ -71,6 +72,10 @@
+ 	@echo "Build finished; now you can run HTML Help Workshop with the" \
+ 	      "build/htmlhelp/pydoc.hhp project file."
+ 
++devhelp: BUILDER = devhelp
++devhelp: build
++	@echo "Build finished; the devhelp files are in build/devhelp."
++
+ latex: BUILDER = latex
+ latex: build
+ 	@echo "Build finished; the LaTeX files are in build/latex."
