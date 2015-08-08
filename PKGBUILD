@@ -5,7 +5,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-rt
-pkgver=1.7.46
+pkgver=1.7.49
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -14,7 +14,7 @@ source=(http://prdownloads.sourceforge.net/wine/wine-$_pkgbasever.tar.bz2{,.sign
         30-win32-aliases.conf
         wine-rt-101107.patch)
 
-sha256sums=('9ab4046cc676de3054f9f2560e7d757b25324f72dd9a9cfed0d4aa48cc87350b'
+sha256sums=('c8a1589753493cb6b71b3772b730cdf90059fe0f29cbfb369fc9a2339766b789'
             'SKIP'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             'cd8c48c9e5111b6acb47120da0272bc7afe3acc1f021443c81bb75d5d40ba4cc')
@@ -25,7 +25,6 @@ pkgdesc="Realtime Wine - maps windows priority levels to linux scheduling polici
 url="http://www.winehq.com"
 arch=(i686 x86_64)
 options=(staticlibs)
-options=(staticlibs !buildflags) # remove !buildflags once https://bugs.winehq.org/show_bug.cgi?id=38653 is resolved
 license=(LGPL)
 install=wine-rt.install
 
@@ -125,6 +124,10 @@ prepare() {
 build() {
   cd "$srcdir"
 
+  # remove once https://bugs.winehq.org/show_bug.cgi?id=38653 is resolved
+  export CFLAGS="${CFLAGS/-O2/} -O0"
+  export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
+
   # Allow ccache to work
   mv wine-$_pkgbasever wine
 
@@ -134,10 +137,6 @@ build() {
 
   # These additional CPPFLAGS solve FS#27662 and FS#34195
   export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
-
-  # Fix build with GCC5
-  export CFLAGS="${CFLAGS/-O2/} -O0"
-  export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
 
   if [[ $CARCH == x86_64 ]]; then
     msg2 "Building Wine-64..."
@@ -206,3 +205,5 @@ package() {
   mkdir -p "$pkgdir/usr/share/doc/wine-rt"
   cp "$srcdir/wine/README.WINE-RT" "$pkgdir/usr/share/doc/wine-rt"
 }
+
+# vim:set ts=8 sts=2 sw=2 et:
