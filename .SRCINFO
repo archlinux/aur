@@ -1,0 +1,20 @@
+pkgbase = vera-plugin-alan-watcher-git
+	pkgdesc = alan-watcher plugin for vera
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/vera-desktop/vera-plugin-alan-watcher
+	install = vera-plugin-alan-watcher.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bake
+	depends = vera
+	depends = ualan-watcher
+	provides = vera-plugin-alan-watcher-git
+	conflicts = vera-plugin-alan-watcher-git
+	conflicts = vera-plugin-alan-watcher
+	source = vera-plugin-alan-watcher::git://github.com/vera-desktop/vera-plugin-alan-watcher.git#branch=master
+	md5sums = SKIP
+
+pkgname = vera-plugin-alan-watcher-git
+
