@@ -1,0 +1,24 @@
+pkgbase = heybuddy
+	pkgdesc = A light/feature free client for the identi.ca microblogging site.
+	pkgver = 0.2.5
+	pkgrel = 3
+	url = https://launchpad.net/heybuddy/
+	install = heybuddy.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = sed
+	depends = python2
+	depends = pygtk
+	optdepends = gtkspell
+	optdepends = python2-gtkspell
+	optdepends = libnotify
+	provides = heybuddy
+	conflicts = heybuddy-trunk-bzr
+	source = http://launchpad.net/heybuddy/0.2/0.2.5/+download/heybuddy-0.2.5.tgz
+	source = heybuddy.desktop
+	md5sums = d5ee49ecad0d0efd9f1ca1990bc1c792
+	md5sums = 68d0c01882c9db6ae6381b49e3507eea
+
+pkgname = heybuddy
+

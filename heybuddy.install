@@ -1,0 +1,21 @@
+post_install() {
+echo ""
+echo "-Spellchecking in heybuddy-"
+echo ""
+echo "Optional dependences for spellcheck"
+echo ""
+echo "gtkspell"
+echo "python-gtkspell from AUR"
+echo "aspell-{locale}" 
+echo ""
+echo ""
+echo "Recommended optional dependency for Openbox users"
+echo "xfce4-notifyd"
+echo "A light weight notification server"
+echo ""
+}
+
+post_upgrade() {
+  post_install 
+}
+
