@@ -1,0 +1,19 @@
+pkgbase = pam-opie
+	pkgdesc = S/KEY support for PAM
+	pkgver = 0.21.debian8
+	pkgrel = 1
+	url = http://packages.debian.org/sid/libpam-opie
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pam
+	replaces = libpam-opie
+	source = http://ftp.de.debian.org/debian/pool/main/libp/libpam-opie/libpam-opie_0.21.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/libp/libpam-opie/libpam-opie_0.21-8.diff.gz
+	source = fix-libopie-path.diff
+	sha1sums = 6bcce6f9f1136cdc60451ca62f0cd8583e341b58
+	sha1sums = 893988d2c3e7b79bc4697fc44832b45263797de0
+	sha1sums = c519858bf33558ff02876529324f67877a68cfa0
+
+pkgname = pam-opie
+
