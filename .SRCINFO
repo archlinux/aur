@@ -1,0 +1,15 @@
+pkgbase = ttf-fantasque-sans
+	pkgdesc = A font family with a great monospaced variant for programmers.
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://github.com/belluzj/fantasque-sans
+	install = ttf-fantasque-sans.install
+	arch = any
+	license = SIL OPEN FONT LICENSE Version 1.1
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/belluzj/fantasque-sans/releases/download/v1.6.5/FantasqueSansMono.zip
+	md5sums = db52617ba875d08cbd8e080ca3d9f756
+
+pkgname = ttf-fantasque-sans
+
