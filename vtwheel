@@ -1,0 +1,47 @@
+#! perl
+
+# Implements a scrollwheel just like in good old vt100's mices
+
+sub simulate_keypress {
+    my ($self, $type) = @_; #type: 0:up, 1:down
+    
+    my $keycode_up = 111;
+    my $keycode_down = 116;
+    
+    my $numlines = 3;
+    
+    my $keycode = 0;
+    if ($type eq 0) {
+        $keycode = $keycode_up;
+    } elsif ($type eq 1) {
+        $keycode = $keycode_down;
+    } else {
+        return;
+    }
+    
+    for (my $i = 0 ; $i ne $numlines ; $i++) {
+        $self->key_press(0,$keycode);
+        $self->key_release(0,$keycode);
+    }
+}
+
+sub on_button_release {
+    my ($self, $event) = @_;
+    
+    #my $res_ss = $self->resource("secondaryScroll");
+    #warn("ressource ss is <$res_ss>");
+    
+    !$self->current_screen and return ();
+    
+    #warn("foo, event: <$event->{button}>\n");
+    if ($event->{button} eq "4") { # scroll up
+        $self->simulate_keypress(0);
+		return 1;
+    } elsif ($event->{button} eq "5") { # scroll down
+        $self->simulate_keypress(1);
+		return 1;
+    }
+    
+    return ();
+}
+
