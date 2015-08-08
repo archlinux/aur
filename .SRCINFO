@@ -1,0 +1,17 @@
+pkgbase = otf-zxx
+	pkgdesc = Free Open Type Font to open up governments.
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://z-x-x.org/
+	install = zxx.install
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://dl.dropbox.com/u/20517415/ZXX.zip
+	source = zxx.install
+	sha256sums = 1e366d55ded45e298e696a919eb1854bb1c4144583bea7730669600e76264450
+	sha256sums = e47acc1eab727dfd19a66dc0e86a78b5efd2968b899f6047406e4a622cefed5b
+
+pkgname = otf-zxx
+
