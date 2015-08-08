@@ -20,18 +20,30 @@ pkgver() {
 }
 
 build() {
-  cd ${pkgname%-git}
-  go build
+  # Get and build the builder.
+  gopath=${srcdir}/go
+  if [[ -d ${gopath} ]]; then
+    rm -rf ${gopath}
+  fi
+  mkdir ${gopath}
+  GOPATH=${gopath} go get github.com/constabulary/gb/...
+
+  cd ${srcdir}/${pkgname%-git}
+  ${gopath}/bin/gb build
 }
 
 package() {
-  cd ${pkgname%-git}
-  # repo program
-  mkdir -p $pkgdir/usr/bin
-  install -m755 repoctl $pkgdir/usr/bin/
+  cd ${srcdir}/${pkgname%-git}
+
+  # Install repoctl program
+  install -d ${pkgdir}/usr/bin
+  install -m755 bin/repoctl ${pkgdir}/usr/bin/
+
   # Install other documentation
-  install -m644 TODO README.md NEWS $pkgdir/usr/share/doc/repo-keep/
+  install -d ${pkgdir}/usr/share/doc/repoctl
+  install -m644 README.md NEWS.md ${pkgdir}/usr/share/doc/repoctl/
+
   # Install completion files
-  mkdir -p $pkgdir/usr/share/zsh/site-functions/
-  install -m644 contrib/zsh_completion $pkgdir/usr/share/zsh/site-functions/_repoctl
+  install -d ${pkgdir}/usr/share/zsh/site-functions/
+  install -m644 contrib/zsh_completion ${pkgdir}/usr/share/zsh/site-functions/_repoctl
 }
