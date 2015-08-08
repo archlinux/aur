@@ -1,0 +1,38 @@
+_update_desktop_environment() {
+    # update icon cache
+    xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+
+    # update desktop database
+    update-desktop-database -q
+
+    # update mime database
+    echo "==> updating mime database"
+    update-mime-database /usr/share/mime &> /dev/null
+}
+
+_add_server_user() {
+    if ! getent passwd etlegacy >/dev/null; then
+        useradd -rM -d /var/lib/etlegacy-server -c "ET Legacy dedicated server" -s /bin/false etlegacy
+    fi
+}
+
+_delete_server_user() {
+    if getent passwd etlegacy >/dev/null; then
+        userdel etlegacy
+    fi
+}
+
+_chown_server_home() {
+    chown -R etlegacy:etlegacy /var/lib/etlegacy-server
+}
+
+post_install() {
+    _add_server_user
+    _chown_server_home
+    _update_desktop_environment
+}
+
+post_remove() {
+    _delete_server_user
+    _update_desktop_environment
+}
