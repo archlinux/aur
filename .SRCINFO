@@ -1,0 +1,17 @@
+pkgbase = opie
+	pkgdesc = S/KEY Client utilities
+	pkgver = 2.32
+	pkgrel = 4
+	url = http://packages.debian.org/sid/opie-server
+	arch = i686
+	arch = x86_64
+	license = GPL
+	replaces = opie-client
+	replaces = opie-server
+	source = http://ftp.de.debian.org/debian/pool/main/o/opie/opie_2.32.dfsg.1.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/o/opie/opie_2.32.dfsg.1-0.2+squeeze1.diff.gz
+	sha256sums = 6472b5214a031330b933a2b2ffbdab08054093eb4ca283f97284b04319d1060b
+	sha256sums = cd2816e294c666ea51f3b2a914916164c50cbaf4e4ec33c4c5aae1326f919e07
+
+pkgname = opie
+
