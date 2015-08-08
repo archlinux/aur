@@ -1,0 +1,15 @@
+pkgbase = papi
+	pkgdesc = Performance Application Programming Interface
+	pkgver = 5.4.1
+	pkgrel = 2
+	url = http://icl.cs.utk.edu/papi/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = glibc
+	depends = gcc-fortran
+	source = http://icl.cs.utk.edu/projects/papi/downloads/papi-5.4.1.tar.gz
+	sha256sums = e131c1449786fe870322a949e44f974a5963824f683232e653fb570cc65d4e87
+
+pkgname = papi
+
