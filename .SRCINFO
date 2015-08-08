@@ -1,0 +1,14 @@
+pkgbase = aview
+	pkgdesc = aview is an high quality ascii-art image browser
+	pkgver = 1.3.0_rc1
+	pkgrel = 2
+	url = http://aa-project.sourceforge.net/aview/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = aalib
+	source = http://downloads.sourceforge.net/sourceforge/aa-project/aview-1.3.0rc1.tar.gz
+	md5sums = 093f298e7787591e229b59d039c72f4d
+
+pkgname = aview
+
