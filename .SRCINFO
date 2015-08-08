@@ -1,0 +1,17 @@
+pkgbase = libverto
+	pkgdesc = Main event loop abstraction library
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://fedorahosted.org/libverto/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = glib2
+	makedepends = libev
+	makedepends = libevent
+	makedepends = tevent
+	source = https://fedorahosted.org/releases/l/i/libverto/libverto-0.2.6.tar.gz
+	sha256sums = 17eca6a3855f4884e2e7095e91501767d834b3bf313a6f59a93303f54ac91c9e
+
+pkgname = libverto
+
