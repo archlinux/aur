@@ -1,7 +1,7 @@
 # Maintainer: Liganic <liganic-aur@gmx.net>
 pkgname=ckb-git
 pkgver=v0.2.r0.gdfc4b15
-pkgrel=1
+pkgrel=2
 pkgdesc="Corsair Keyboard Input Driver (K65 RGB, K70[RGB], K95[RGB], M65 RGB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ccMSC/ckb"
