@@ -1,0 +1,13 @@
+pkgbase = bibfilex-gtk
+	pkgdesc = A free bibliographic manager for GNU/Linux
+	pkgver = 1.2.5.0
+	pkgrel = 1
+	url = https://sites.google.com/site/bibfilex/home
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = gtk3
+	source = https://sites.google.com/site/bibfilex/download/bibfilex-gtk_1.2.5.0_.deb?attredirects=0&d=1
+
+pkgname = bibfilex-gtk
+
