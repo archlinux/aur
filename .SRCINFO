@@ -1,0 +1,16 @@
+pkgbase = pypy3-pip
+	pkgdesc = An easy_install replacement for installing pypi python packages
+	pkgver = 6.0.8
+	pkgrel = 1
+	url = http://www.pip-installer.org/
+	arch = any
+	license = MIT
+	makedepends = pypy3
+	makedepends = pypy3-setuptools
+	source = http://pypi.python.org/packages/source/p/pip/pip-6.0.8.tar.gz
+	md5sums = 2332e6f97e75ded3bddde0ced01dbda3
+	sha256sums = 0d58487a1b7f5be2e5e965c11afbea1dc44ecec8069de03491a4d0d6c85f4551
+
+pkgname = pypy3-pip
+	depends = pypy3
+
