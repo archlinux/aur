@@ -3,21 +3,21 @@
 # Contributor: Roman Pearah
 
 pkgname=netextender
-pkgver=7.5.758
+pkgver=7.5.773
 pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
 url="http://www.sonicwall.com/us/en/products/324.html"
 license=('custom')
 depends=('java-environment' 'bash')
-source=("http://realtime.demo.sonicwall.com/applications.zip")
+source_i686=("http://ainola.sdf.org/NetExtender.Linux.${pkgver}.x86.tgz")
+source_x86_64=("http://ainola.sdf.org/NetExtender.Linux.${pkgver}.x86_64.tgz")
+sha256sums_i686=('4c219271511b49152be1d4fdebff5e9a65d29dcdc2ec3c0ce853391ce7f9605f')
+sha256sums_x86_64=('8c394239ba1cfe10b4bdd2f08c1880f23e5191b77831d93fffef8e316bf48b5e')
 install="${pkgname}.install"
-sha256sums=('39233ba3f2768ceaaebb2539b7b6c2f5f8c21516abdcede5ef6e68d1ea118df0')
+
 
 package() {
-  mv "${srcdir}/applications/NetExtender/Linux/${pkgver}"/* "${srcdir}/"
-  [[ "$CARCH" == 'i686' ]]   && bsdtar -xf "${srcdir}/NetExtender.tgz"
-  [[ "$CARCH" == 'x86_64' ]] && bsdtar -xf "${srcdir}/NetExtender64.tgz"
   mkdir -p "$pkgdir/usr/share/netExtender/icons"
   cd "$srcdir/netExtenderClient"
 
