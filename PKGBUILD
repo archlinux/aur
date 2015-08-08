@@ -5,7 +5,7 @@ _gitbranch=master
 _gitname=vera-plugin-openbox
 
 pkgname="$_gitname-git"
-pkgver=0
+pkgver=0.32.0.1
 pkgrel=1
 pkgdesc="Openbox plugin for vera"
 arch=(i686 x86_64)
