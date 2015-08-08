@@ -1,0 +1,14 @@
+[Unit]
+Description=eXtensible UPnP agent
+After=network.target
+Wants=udpxy.service
+
+[Service]
+User=xupnpd
+Group=xupnpd
+Type=forking
+PIDFile=/var/run/xupnpd/xupnpd.pid
+ExecStart=/usr/bin/xupnpd
+
+[Install]
+WantedBy=multi-user.target
