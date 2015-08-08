@@ -1,0 +1,19 @@
+pkgbase = vera-power-manager-git
+	pkgdesc = Vera power manager
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/vera-desktop/vera-power-manager
+	install = vera-power-manager.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = vera
+	depends = python
+	provides = vera-power-manager-git
+	conflicts = vera-power-manager-git
+	conflicts = vera-power-manager
+	source = vera-power-manager::git://github.com/vera-desktop/vera-power-manager.git#branch=master
+	md5sums = SKIP
+
+pkgname = vera-power-manager-git
+
