@@ -1,6 +1,7 @@
 # Maintainer : Johnathan Jenkins <twodopeshaggy@gmail.com>
 # Contributor: Trustin Lee <t@motd.kr>
 # Contributor: Renato Garcia <fgarcia.renato@gmail.com>
+
 pkgname=trash-cli-git
 _pkgname=trash-cli
 pkgver=413.7913a0b
