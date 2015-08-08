@@ -1,4 +1,5 @@
 #Maintainer: The_Loko
+# Maintainer: nakki87
 
 pkgname=af9015-firmware
 pkgver=5.24.0.0
