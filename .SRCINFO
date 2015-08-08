@@ -1,6 +1,6 @@
 pkgbase = fs-uae-arcade-devel
 	pkgdesc = Full-screen game browser for FS-UAE (development version).
-	pkgver = 2.5.36dev
+	pkgver = 2.5.37dev
 	pkgrel = 1
 	url = http://fs-uae.net/download-devel
 	install = fs-uae-arcade-devel.install
@@ -16,8 +16,8 @@ pkgbase = fs-uae-arcade-devel
 	conflicts = fs-uae-game-center
 	conflicts = fs-uae-game-center-devel
 	replaces = fs-uae-game-center-devel
-	source = http://fs-uae.net/devel/2.5.36dev/fs-uae-arcade-2.5.36dev.tar.gz
-	md5sums = 0b11352e67ced5341717d086c51c2e2f
+	source = http://fs-uae.net/devel/2.5.37dev/fs-uae-arcade-2.5.37dev.tar.gz
+	md5sums = 968140ea15239beb4eb0ea99af13bd65
 
 pkgname = fs-uae-arcade-devel
 
