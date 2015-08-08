@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk3
-pkgver=39.0
+pkgver=39.0.3
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -26,9 +26,9 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-fixed-loading-icon.png firefox-build.patch firefox-build-prbool.patch
         firefox-enable-addons.patch xulrunner-24.0-jemalloc-ppc.patch xulrunner-24.0-s390-inlines.patch)
 
-sha256sums=('7e25014deb926df9220c3ab40ac6816c13a04c4cf7bd89b08fc1743307df1096'
-            '2795239a53fee21c6182aa44e42eb2d827501d3e514676b9aa2d6d82fed6abdc'
-            'd2a7610393ba259c35e3227b92e02ec91095a95189f56ac93ccdf6732772719c'
+sha256sums=('8c16df4ce94b30f1308655f9ed6ac3e76aaa2eb3643739b9263226c086d0177b'
+            '65104e4f4facadbf828e6c308c9b97e74c4978c5451716abadec286f89c35eb1'
+            'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             '4f0046b39a8d98f6e4fc3360ec490cb2416e38c7b3e92699f7e511c206c2c961'
@@ -57,18 +57,13 @@ prepare() {
   # WebRTC build tries to execute "python" and expects Python 2
   ln -sf /usr/bin/python2 "$srcdir/path/python"
 
-  # Use gold, as Mozilla can use some of its features, such as safe ICF
-  #ln -s /usr/bin/ld.gold "$srcdir/path/ld"
-
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
   sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
-  # Fix tab loading icon (flickers with libpng 1.6)
+  # Fix tab loading icon (doesn't work with libpng 1.6)
   # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
-  # TODO: Remove this; Firefox 36 might use CSS animations for the loading icon
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=759252
-	cp "$srcdir/firefox-fixed-loading-icon.png" \
+  cp "$srcdir/firefox-fixed-loading-icon.png" \
     browser/themes/linux/tabbrowser/loading.png
 }
 

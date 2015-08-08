@@ -2,6 +2,7 @@
 
 ac_add_options --prefix=/usr
 ac_add_options --libdir=/usr/lib
+ac_add_options --enable-pie
 
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
@@ -31,17 +32,15 @@ ac_add_options --enable-install-strip
 ac_add_options --enable-url-classifier
 
 ac_add_options --disable-gconf
-#ac_add_options --enable-extensions=default
+ac_add_options --enable-extensions=default
 
-mk_add_options MOZ_MAKE_FLAGS="-j1"
+mk_add_options MOZ_MAKE_FLAGS="-j2"
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/objdir
-ac_add_options --enable-official-branding
 ac_add_options --enable-default-toolkit=cairo-gtk3
 
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 
-ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-updater
 ac_add_options --disable-installer
