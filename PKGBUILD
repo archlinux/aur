@@ -5,7 +5,7 @@ _gitbranch=master
 _gitname=vera-plugin-tint2
 
 pkgname="$_gitname-git"
-pkgver=0
+pkgver=r7.a193926
 pkgrel=1
 pkgdesc="tint2 plugin for vera"
 arch=(i686 x86_64)
@@ -26,7 +26,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --abbrev=0 | sed 's/[A-Za-z]*//g;s/[!@#\$%^&*()/]//g;s/-/./g')"
+	git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
 }
 
 build() {
