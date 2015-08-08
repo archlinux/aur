@@ -1,0 +1,30 @@
+pkgbase = emulationstation-git
+	pkgdesc = A graphical front-end for emulators with controller navigation. Developed for the Raspbery Pi, but runs on most Linux systems.
+	pkgver = 767.646bede
+	pkgrel = 1
+	url = https://github.com/Aloshi/EmulationStation
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	makedepends = freetype2
+	makedepends = eigen
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = libsm
+	depends = alsa-lib
+	depends = sdl2
+	depends = boost-libs
+	depends = freeimage
+	depends = ttf-dejavu
+	depends = glu
+	depends = libgl
+	provides = emulationstation
+	source = git://github.com/Aloshi/EmulationStation.git
+	md5sums = SKIP
+
+pkgname = emulationstation-git
+
