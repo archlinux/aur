@@ -7,7 +7,7 @@ Wants=udpxy.service
 User=xupnpd
 Group=xupnpd
 Type=forking
-PIDFile=/var/run/xupnpd/xupnpd.pid
+PIDFile=/run/xupnpd/xupnpd.pid
 ExecStart=/usr/bin/xupnpd
 
 [Install]

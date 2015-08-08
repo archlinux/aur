@@ -20,8 +20,8 @@ pkgbase = xupnpd
 	source = xupnpd.service
 	source = sysusers.conf
 	sha256sums = SKIP
-	sha256sums = 4214ec45dfe32709d6f6a1d77972c7683d7cd6c75426cf176a598152d30b1e9a
-	sha256sums = 460346fa4404d887aa9220d9a011badaaf3728a77d0337316a158a1b89cdc68e
+	sha256sums = 95d436d2bc55bd6fb8affdc4901045d0600092a6045a34f977f79a5950638114
+	sha256sums = 0f6c2a42f676c24dba7bebc804a34f363b12e2dcb4c61bc547c0b722afe09808
 	sha256sums = 3f669a1034bcfb9923822fb0adf6d5a379beb7a184a89cd4d72a5b02bc072852
 
 pkgname = xupnpd
