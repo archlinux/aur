@@ -32,4 +32,3 @@ package() {
   cd "${_perlmod}-${pkgver}"
   make install DESTDIR="${pkgdir}"
 }
-
