@@ -1,7 +1,7 @@
 pkgbase = ovirt-guest-agent
 	pkgdesc = The oVirt Guest Agent
-	pkgver = 1.0.10
-	pkgrel = 3
+	pkgver = 1.0.11
+	pkgrel = 1
 	url = http://wiki.ovirt.org/Category:Ovirt_guest_agent
 	install = ovirt-guest-agent.install
 	arch = any
@@ -19,12 +19,14 @@ pkgbase = ovirt-guest-agent
 	depends = python2-ethtool
 	depends = usermode
 	backup = etc/ovirt-guest-agent.conf
-	source = ovirt-guest-agent.install
+	source = python2-arch.patch
+	source = sysusers.conf
 	source = ovirt-guest-agent.service
-	source = https://evilissimo.fedorapeople.org/releases/ovirt-guest-agent/1.0.10/ovirt-guest-agent-1.0.10.3.tar.bz2
-	sha256sums = 10c5dc2fa265e6944d9316003fb04163ff005debddd3e86ad4ce3e4ec00ee893
+	source = https://evilissimo.fedorapeople.org/releases/ovirt-guest-agent/1.0.11/ovirt-guest-agent-1.0.11.tar.bz2
+	sha256sums = 95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140
+	sha256sums = fab3d62ecd8f6546d5b193f4ca22919de20451678b4cce2c53aa0977fed4f483
 	sha256sums = 545235630d6da51b547c1e8c177ddbf9f57aa81017b8683274a449d46e765cc4
-	sha256sums = d11e1a6a9a36a2e318cfc7f063f22a30b29594284f31e5a5903bbd3984c1070b
+	sha256sums = ccb3fec17caa92e62ff119b8700b5f86de0b9b625e1d3f3977b9480bc5d9a2d5
 
 pkgname = ovirt-guest-agent
 
