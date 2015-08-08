@@ -14,9 +14,9 @@ license=('MIT')
 
 package() {
     cd $srcdir/$pkgname-$pkgver
+    touch etc/depend.tmp
     patch -Np1 -i ../patch.diff 
-    find . -type f -exec sed -i -e 's/-DHAS_BOOL/-D__USE_BSD -D_GNU_SOURCE/g' {} +
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr  CPPFLAGS="-D__USE_BSD"
     make
     make DESTDIR=$pkgdir install
 }
