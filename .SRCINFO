@@ -1,0 +1,18 @@
+pkgbase = ttf-djb-zora-prints-fonts
+	pkgdesc = DJB Zora Prints TrueType Fonts
+	pkgver = 20141016
+	pkgrel = 1
+	url = http://darcybaldwin.com/djb-zora-prints-font/
+	install = ttf-djb-zora-prints-fonts.install
+	arch = any
+	license = custom:Free for pesonal use
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	source = ttf-djb-zora-prints-fonts.zip::http://dl.dafont.com/dl/?f=djb_zora_prints
+	source = license.txt
+	md5sums = fb9df581c51f84457c7a4de90c84491f
+	md5sums = ed2c7c1b65aecc8d7bfb85ed3c32bf10
+
+pkgname = ttf-djb-zora-prints-fonts
+
