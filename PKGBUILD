@@ -64,9 +64,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$_svnmod"
+  
+  _qmake='qmake-qt4  DEFINES+=NO_SQLCIPHER'
 
-  _qmake='qmake-qt4'
-  #_qmake='qmake'
 
   #
   # BUILD HERE
