@@ -1,6 +1,7 @@
 # Contributor: Stefan J. Betz <info@stefan-betz.net>
-# Maintainer: Abakus <java5@arcor.de>
-# Maintainer: Mantas M. <grawity@gmail.com>
+# Contributor: Abakus <java5@arcor.de>
+# Contributor: Mantas Mikulėnas <grawity@gmail.com>
+
 pkgname=pam-opie
 pkgver=0.21.debian8
 _debver=0.21
@@ -32,4 +33,4 @@ package() {
   install -D pam_opie.so "$pkgdir/usr/lib/security/pam_opie.so"
 }
 
-# vim: ts=2:sw=2:et
+# vim: ts=2:sw=2:et:nowrap
