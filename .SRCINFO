@@ -1,12 +1,13 @@
 pkgbase = nodm
 	pkgdesc = X display manager for automatic logins
 	pkgver = 0.7
-	pkgrel = 12
+	pkgrel = 13
 	url = http://enricozini.org/sw/nodm/
 	arch = i386
 	arch = x86_64
 	license = GPL
 	depends = pam
+	depends = xorg-xinit
 	backup = etc/nodm.conf
 	source = http://enricozini.org/sw/nodm/nodm-0.7.tar.gz
 	source = nodm.conf
