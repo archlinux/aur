@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A set of drivers, libraries, utilities and analysis software for ATM and PoS OCx monitors and pcap interfaces"
 url="https://www.caida.org/tools/measurement/coralreef/status.xml"
 arch=('i686' 'x86_64')   
-depends=('perl')
+depends=('perl' 'tgif')
 source=("https://www.caida.org/tools/measurement/coralreef/dists/$pkgname-$pkgver.tar.gz"
 	patch.diff)
 
