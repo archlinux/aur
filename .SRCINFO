@@ -1,0 +1,14 @@
+pkgbase = tudu
+	pkgdesc = ncurses-based hierarchical todo list manager with vim-like keybindings
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://code.meskio.net/tudu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://code.meskio.net/tudu/tudu-0.10.tar.gz
+	md5sums = 4c140d25bf30da1ef5862c14bdefe9cf
+
+pkgname = tudu
+
