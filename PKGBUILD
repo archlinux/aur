@@ -1,8 +1,8 @@
 # Maintainer:  Ainola
-# Contributor: kozec <kozec at kozec dot com>
+# Contributor: kozec
 
 pkgname=minecraft-technic-launcher
-pkgver=4.308
+pkgver=4.313
 pkgrel=1
 pkgdesc=("Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.")
 arch=('any')
@@ -14,7 +14,7 @@ source=("http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/Techn
         "technic-launcher"
         "technic-launcher.desktop"
         "technic-launcher.install")
-sha256sums=("4cbb21cff8b3a5471e055ea3e617f75dab0ec6e0b284e59b029fe6d8f2a506e5"
+sha256sums=("b71b2f9bda8c5ec7d53faf0c3104ca61db380a37c5b6e80c3ae211833289834d"
             "bcf657996e45b436382f401457e35d834baa1e35c0c483e7918ab6f93a2252c1"
             "bfea4300dc48adeb726b49125d05b5e65ed368cf08910ced970b1f1c571c4ecd"
             "4e967927f460029e27efd8f2417d18e064d37dfbd3af82393402636f0dfbd095")
