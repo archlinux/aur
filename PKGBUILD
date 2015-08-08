@@ -16,11 +16,11 @@ md5sums=('SKIP')
 options=()
 
 build() {
-	mkdir -p "$srcdir/$pkgname-$pkgver/build"
+    mkdir -p "$srcdir/$pkgname-$pkgver/build"
     cd       "$srcdir/$pkgname-$pkgver/build"
 
-    qmake ../src/VPaint.pro -r -spec linux-g++   
-    make   
+    qmake ../src/VPaint.pro -r -spec linux-g++
+    make
 }
 
 package() {
