@@ -1,0 +1,15 @@
+pkgbase = xcursor-human
+	pkgdesc = Ubuntu's default cursor theme
+	pkgver = 0.6
+	pkgrel = 4
+	url = http://launchpad.net/human-cursors-theme/
+	arch = any
+	license = CCPL:by-sa
+	makedepends = python
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/human-cursors-theme_0.6.tar.gz
+	source = index.theme
+	sha256sums = 28278807df05a8b305907257ed34f172e3aa849ef978cfade077131ffdde8424
+	sha256sums = 59aebd9e2502cb5f6e445b57b2d7bba5f2382989ca064805b9570b57870a3c6b
+
+pkgname = xcursor-human
+
