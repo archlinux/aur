@@ -1,5 +1,5 @@
 pkgbase = perl-set-intspan
-	pkgdesc = Set::IntSpan - Manages sets of integers, .newsrc style
+	pkgdesc = Perl Set::IntSpan - Manages sets of integers, .newsrc style
 	pkgver = 1.19
 	pkgrel = 5
 	url = http://search.cpan.org/dist/Set-IntSpan
