@@ -1,0 +1,16 @@
+pkgbase = gajim-plugin-otr
+	pkgdesc = Off-The-Record Messaging Plugin for gajim.
+	pkgver = 1.7.7
+	pkgrel = 4
+	url = https://github.com/afflux/gotr
+	arch = any
+	license = GPL
+	depends = gajim
+	depends = python2-potr
+	provides = gajim-plugin-otr
+	conflicts = gajim-plugin-otr-git
+	source = https://github.com/afflux/gotr/archive/v1.7.7.tar.gz
+	sha512sums = 384070862f5407167de063158b74f6edd26ef4b17241d5ac522a809a049365187240d142332b525d440931b71271503ce02a6ec7013337abddb7534622d44b54
+
+pkgname = gajim-plugin-otr
+
