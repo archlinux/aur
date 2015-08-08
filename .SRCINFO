@@ -1,14 +1,14 @@
 pkgbase = gromacs-mpi
 	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
-	pkgver = 5.0.5
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = http://www.gromacs.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
-	depends = fftw-bettersimd
-	optdepends = openmpi: needed for parallelization across nodes
+	depends = fftw
+	depends = openmpi
 	optdepends = lapack: normal modes and matrix manipulation
 	optdepends = boost-libs: better implementation support for smart pointers and exception handling
 	optdepends = libxml2: required for running test suite
@@ -16,8 +16,8 @@ pkgbase = gromacs-mpi
 	optdepends = lesstif: needed for gmx view
 	optdepends = vmd: visualization
 	options = !libtool
-	source = ftp://ftp.gromacs.org/pub/gromacs/gromacs-mpi-5.0.5.tar.gz
-	sha1sums = 990a93d62964eb80d310e713790795a36681eacf
+	source = https://kth.box.com/shared/static/7uwctwj33h4uo2f8d1tmdyj9afaj3hzy.gz
+	md5sums = b0bb547227143e15b3715c0115a2f4af
 
 pkgname = gromacs-mpi
 
