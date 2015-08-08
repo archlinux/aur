@@ -1,0 +1,15 @@
+pkgbase = brother-cups-wrapper-ac
+	pkgdesc = This package provides all cups wrapper drivers for models HL-4040CN HL-4040CDN HL-4050CDN HL-4070CDW MFC-9440CN MFC-9450CDN MFC-9840CDW DCP-9040CN DCP-9042CDN DCP-9045CDN
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:brother commercial license
+	depends = brother-lpr-drivers-ac
+	depends = brother-cups-wrapper-common
+	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-cups-wrapper-ac/brother-cups-wrapper-ac_1.0.3-1-0ubuntu1_.deb
+
+pkgname = brother-cups-wrapper-ac
+
