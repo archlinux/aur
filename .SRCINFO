@@ -1,0 +1,20 @@
+pkgbase = sxhkd-git
+	pkgdesc = A simple X hotkey daemon
+	pkgver = 112
+	pkgrel = 1
+	url = https://github.com/baskerville/sxhkd
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom:BSD
+	makedepends = git
+	makedepends = xcb-util
+	depends = libxcb
+	depends = xcb-util-keysyms
+	provides = sxhkd
+	conflicts = sxhkd
+	source = git://github.com/baskerville/sxhkd.git
+	md5sums = SKIP
+
+pkgname = sxhkd-git
+
