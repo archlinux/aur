@@ -1,8 +1,8 @@
 pkgbase = perl-email-folder
 	pkgdesc = Perl module to read all messages from a folder as Email::Simple objects
-	pkgver = 0.858
+	pkgver = 0.859
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Email-Folder
+	url = https://metacpan.org/release/Email-Folder
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = perl-email-folder
 	depends = perl-email-foldertype>=0.6
 	depends = perl-email-simple
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Folder-0.858.tar.gz
-	md5sums = eeb02be69f8ec7752ceeb1ddc968cbca
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Folder-0.859.tar.gz
+	md5sums = 5529fb7a4c30b26bb47769c958671480
 
 pkgname = perl-email-folder
 
