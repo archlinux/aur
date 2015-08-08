@@ -2,7 +2,7 @@
 
 pkgname=dnscrypt-autoinstall
 pkgver=0.3
-pkgrel=6
+pkgrel=7
 
 pkgdesc='Choose your DNSCrypt provider'
 arch=('any')
@@ -12,14 +12,14 @@ license=('GPL')
 depends=('dnscrypt-proxy' 'libsodium' 'curl')
 makedepends=('git')
 install=dnscrypt-autoinstall.install
-source=("git+https://github.com/simonclausen/dnscrypt-autoinstall#branch=master")
+source=("git+https://github.com/simonclausen/dnscrypt-autoinstall")
 sha1sums=('SKIP')
 
 package() {
   cd "$pkgname"/dnscrypt-autoinstall-arch
   install -Dm755 dnscrypt-autoinstall "$pkgdir"/usr/bin/dnscrypt-autoinstall
   
-  cd "$pkgname"/systemd
+  cd ../systemd
   install -Dm644 dnscrypt-config-dnscrypteu "$pkgdir"/etc/conf.d/dnscrypt-config
   install -Dm644 dnscrypt-proxy.service "$pkgdir"/etc/systemd/system/dnscrypt-proxy.service
   install -Dm644 dnscrypt-proxy-backup.service "$pkgdir"/etc/systemd/system/dnscrypt-proxy-backup.service
