@@ -23,7 +23,6 @@ pkgname = spl-dkms
 
 pkgname = spl-utils
 	pkgdesc = Solaris Porting Layer kernel module support files.
-	provides = spl-utils
 	conflicts = spl-utils-git
 	conflicts = spl-utils-lts
 	replaces = spl-utils-dkms-git

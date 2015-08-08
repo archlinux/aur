@@ -60,7 +60,6 @@ package_spl-dkms() {
 package_spl-utils() {
     pkgdesc="Solaris Porting Layer kernel module support files."
     makedepends=("git")
-    provides=("spl-utils")
     conflicts=("spl-utils-git" "spl-utils-lts")
     replaces=("spl-utils-dkms-git")
 
