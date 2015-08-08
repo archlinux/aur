@@ -1,0 +1,13 @@
+pkgbase = zsh-packer-color
+	pkgdesc = Adds Zsh autocompletion definitions for packer-color
+	pkgver = 1
+	pkgrel = 2
+	url = https://gist.github.com/dmikalova/6103111
+	arch = any
+	license = GPL3
+	depends = zsh
+	source = http://dl.dropbox.com/u/106000/Software/Shell/_packer-color
+	sha1sums = 0305c6dd776b39ce5917e380b4211c0ece9610fa
+
+pkgname = zsh-packer-color
+
