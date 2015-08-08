@@ -1,5 +1,5 @@
 diff --git a/Telegram/SourceFiles/application.cpp b/Telegram/SourceFiles/application.cpp
-index d4c4346..ad04085 100644
+index 83e1334..e512c30 100644
 --- a/Telegram/SourceFiles/application.cpp
 +++ b/Telegram/SourceFiles/application.cpp
 @@ -95,7 +95,10 @@ namespace {
@@ -259,10 +259,10 @@ index e282a88..d5de06b 100644
  		psExecTelegram();
  	}
 diff --git a/Telegram/SourceFiles/mainwidget.cpp b/Telegram/SourceFiles/mainwidget.cpp
-index b56c882..b889fa6 100644
+index 0013557..c283c34 100644
 --- a/Telegram/SourceFiles/mainwidget.cpp
 +++ b/Telegram/SourceFiles/mainwidget.cpp
-@@ -2752,7 +2752,9 @@ void MainWidget::start(const MTPUser &user) {
+@@ -2768,7 +2768,9 @@ void MainWidget::start(const MTPUser &user) {
  
  	cSetOtherOnline(0);
  	App::feedUsers(MTP_vector<MTPUser>(1, user));
