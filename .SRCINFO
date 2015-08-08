@@ -9,9 +9,9 @@ pkgbase = cachefilesd
 	depends = glibc
 	backup = etc/cachefilesd.conf
 	source = http://people.redhat.com/~dhowells/fscache/cachefilesd-0.10.5.tar.bz2
-	source = cachefilesd
-	md5sums = 9e85dd0ace346ff47e188ded8c05ab3b
-	md5sums = a4f0c47a945f296f120e29f156aea9ba
+	source = cachefilesd.service
+	sha256sums = 125ea4f6aef4bf8e936a7cc747b59e074537a8aed74cd1bab3f05d7fbc47287f
+	sha256sums = 0a76a82184d465cf6a663642557219ea9e2fc18bbe24af2bad55ca61db559c5d
 
 pkgname = cachefilesd
 

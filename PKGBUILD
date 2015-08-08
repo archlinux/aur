@@ -1,4 +1,5 @@
-# Maintainer: Rémy Oudompheng <remy@archlinux.org>
+# Contributor: Mantas Mikulėnas <grawity@gmail.com>
+# Contributor: Rémy Oudompheng <remy@archlinux.org>
 
 pkgname=cachefilesd
 pkgver=0.10.5
@@ -9,10 +10,10 @@ url="http://people.redhat.com/~dhowells/fscache/"
 license=('GPL')
 depends=('glibc')
 source=(http://people.redhat.com/~dhowells/fscache/${pkgname}-${pkgver}.tar.bz2
-        cachefilesd)
+        cachefilesd.service)
+sha256sums=('125ea4f6aef4bf8e936a7cc747b59e074537a8aed74cd1bab3f05d7fbc47287f'
+            '0a76a82184d465cf6a663642557219ea9e2fc18bbe24af2bad55ca61db559c5d')
 backup=(etc/cachefilesd.conf)
-md5sums=('9e85dd0ace346ff47e188ded8c05ab3b'
-         'a4f0c47a945f296f120e29f156aea9ba')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,5 +23,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -D -m 755 "${srcdir}/cachefilesd" "${pkgdir}/etc/rc.d/cachefilesd"
+  install -D -m 644 "$srcdir/cachefilesd.service" "$pkgdir/usr/lib/systemd/system/cachefilesd.service"
 }
+
+# vim: ts=2:sw=2:et:nowrap

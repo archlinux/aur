@@ -1,0 +1,10 @@
+[Unit]
+Description=CacheFiles Userspace Management Daemon
+
+[Service]
+Type=forking
+ExecStartPre=-/usr/bin/modprobe cachefiles
+ExecStart=/usr/bin/cachefilesd -f /etc/cachefilesd.conf
+
+[Install]
+WantedBy=multi-user.target
