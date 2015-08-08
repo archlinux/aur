@@ -19,7 +19,7 @@ diff -Naupr xupnpd_orig/src/xupnpd.lua xupnpd/src/xupnpd.lua
  cfg.log_ident=arg[1] or 'xupnpd'
 -cfg.pid_file='/var/run/'..cfg.log_ident..'.pid'
 -cfg.www_root='./www/'
-+cfg.pid_file='/var/run/xupnpd/xupnpd.pid'
++cfg.pid_file='/run/xupnpd/xupnpd.pid'
 +cfg.www_root='/usr/share/xupnpd/www/'
  cfg.tmp_path='/tmp/'
 -cfg.plugin_path='./plugins/'
