@@ -1,0 +1,14 @@
+pkgbase = yetris
+	pkgdesc = Customizable Tetris clone for the terminal
+	pkgver = 2.3.0
+	pkgrel = 2
+	url = http://yetris.alexdantas.net/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = ncurses
+	source = https://github.com/alexdantas/yetris/archive/v2.3.0.tar.gz
+	md5sums = 2a503ccfc91c99910d53659dbfc14c5c
+
+pkgname = yetris
+
