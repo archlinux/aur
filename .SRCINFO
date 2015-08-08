@@ -1,0 +1,25 @@
+pkgbase = glade-gtk2
+	pkgdesc = User interface builder for GTK+ and GNOME (latest version for GTK2)
+	pkgver = 3.8.5
+	pkgrel = 3
+	url = http://glade.gnome.org/
+	install = glade-gtk2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = python2
+	makedepends = gobject-introspection
+	makedepends = python2-gobject2
+	makedepends = gtk-doc
+	depends = gtk2
+	depends = desktop-file-utils
+	optdepends = devhelp: Integrated docs
+	optdepends = python2: Python widgets support
+	options = !libtool
+	source = http://ftp.gnome.org/pub/GNOME/sources/glade3/3.8/glade3-3.8.5.tar.xz
+	sha256sums = 58a5f6e4df4028230ddecc74c564808b7ec4471b1925058e29304f778b6b2735
+
+pkgname = glade-gtk2
+
