@@ -3,7 +3,7 @@
 
 _gitname=x2goclient
 pkgname=${_gitname}-git
-pkgver=4.0.4.0.r25.g1c60cad
+pkgver=4.0.5.0.r1.g1c299be
 pkgrel=1
 pkgdesc="x2go qt4 client"
 arch=('i686' 'x86_64')
