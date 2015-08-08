@@ -1,0 +1,20 @@
+pkgbase = ncdc
+	pkgdesc = Modern and lightweight direct connect client with a friendly ncurses interface
+	pkgver = 1.19.1
+	pkgrel = 1
+	url = http://dev.yorhel.nl/ncdc
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = MIT
+	depends = bzip2
+	depends = gnutls
+	depends = ncurses
+	depends = sqlite
+	depends = glib2
+	depends = geoip
+	source = http://dev.yorhel.nl/download/ncdc-1.19.1.tar.gz
+	md5sums = a7d23df7d0e291d1e3c8fb2a9a69f7a9
+
+pkgname = ncdc
+
