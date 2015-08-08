@@ -4,14 +4,14 @@
 
 pkgname=wine-visual-novel-reader
 _pkgname=wine
-pkgver=1.7.48
+pkgver=1.7.49
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
 source=("http://mirrors.ibiblio.org/wine/source/1.7/$_pkgname-$pkgver.tar.bz2"
         "livino-wine-1.6.2.patch")
-sha256sums=('e3f55ce56e2092d49b317fea8802e314be2b2170fd434f5e45f7141773946c8e'
+sha256sums=('c8a1589753493cb6b71b3772b730cdf90059fe0f29cbfb369fc9a2339766b789'
             'c0c589ef61781fca51bfb4513c772622af2ab261f3ee17b59f941ae0f143bd31')
 
 pkgdesc="Patched wine with custom prefix for text extraction from visual novels"
