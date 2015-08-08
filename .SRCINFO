@@ -1,0 +1,29 @@
+pkgbase = freicoin-qt
+	pkgdesc = Freicoin distributed currency (based on bitcoin). Desktop application.
+	pkgver = 0.8.6.1
+	pkgrel = 1
+	url = http://freico.in/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = boost
+	makedepends = qt4
+	makedepends = qrencode
+	depends = boost-libs
+	depends = openssl
+	depends = miniupnpc
+	depends = mpfr
+	provides = freicoin
+	source = https://github.com/freicoin/freicoin/archive/v0.8.6.1.tar.gz
+	source = freicoin-qt.install
+	md5sums = 74515a30be9794a0d17ffa2ecdee0f24
+	md5sums = bb69bd2ae94b5545709f4009faebbc8e
+
+pkgname = freicoin-qt
+	pkgdesc = Freicoin distributed currency (based on bitcoin). Desktop application.
+	depends = qt4
+	depends = qrencode
+
