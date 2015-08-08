@@ -2,8 +2,8 @@
 # Maintainer: isiachi <isiachi@rhyeworld.it>
 #
 
-pkgbase="zfs-dkms-git"
-pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
+pkgbase="zfs-dkms"
+pkgname=("zfs-dkms" "zfs-utils")
 pkgver=0.6.4.2
 pkgrel=1
 license=('CDDL')
@@ -46,11 +46,12 @@ build() {
     make
 }
 
-package_zfs-dkms-git() {
+package_zfs-dkms() {
     pkgdesc="Kernel modules for the Zettabyte File System."
-    depends=("spl-dkms-git=${pkgver}-${pkgrel}" "zfs-utils-dkms-git=${pkgver}-${pkgrel}" "dkms")
-    provides=("zfs-git")
-    conflicts=("zfs-lts")
+    depends=("spl-dkms=${pkgver}-${pkgrel}" "zfs-utils=${pkgver}-${pkgrel}" "dkms")
+    provides=("zfs")
+    conflicts=("zfs-git" "zfs-lts")
+    replaces=("zfs-dkms-git")
     install=zfs.install
     
     install -d ${pkgdir}/usr/src
@@ -59,11 +60,12 @@ package_zfs-dkms-git() {
     rm -f ${pkgdir}/usr/src/zfs-${_dirver}/.gitignore
 }
 
-package_zfs-utils-dkms-git() {
+package_zfs-utils() {
     pkgdesc="Kernel module support files for the Zettabyte File System."
-    depends=("spl-dkms-git=${pkgver}-${pkgrel}")    
-    provides=("zfs-utils-git")
-    conflicts=("zfs-utils-lts")
+    depends=("spl-dkms=${pkgver}-${pkgrel}")
+    provides=("zfs-utils")
+    conflicts=("zfs-utils-git" "zfs-utils-lts")
+    replaces=("zfs-utils-dkms-git")
 
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
