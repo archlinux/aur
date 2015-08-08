@@ -34,7 +34,7 @@ package() {
   install -D bin/ckb-animations/* "$pkgdir/opt/ckb/ckb-animations/"
   
   install -Dm644 usr/ckb.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ckb.png"
-  install -Dm644 usr/ckb.desktop "${pkgdir}/usr/share/applications/ckb.png"
+  install -Dm644 usr/ckb.desktop "${pkgdir}/usr/share/applications/ckb.desktop"
 
   install -Dm644 service/systemd/ckb-daemon.service "${pkgdir}/usr/lib/systemd/system/ckb-daemon.service"
 }
