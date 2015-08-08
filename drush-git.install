@@ -1,7 +1,15 @@
 post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
   echo '>>> Setting up shared system-wide drush configuration'
   echo '    by symlinking ~/.drush to /etc/drush for all users.'
-  for user_dir in $(cut --fields=6 --delimiter=: /etc/passwd | grep ^/home); do
-    ln --force --symbolic /etc/drush "$user_dir"
+  for user in $(cut --fields=1,6 --delimiter=: /etc/passwd | grep :/home); do
+    user=($(echo $user | tr ':' ' '))
+    path="${user[1]}/.drush"
+    user="${user[0]}"
+    [ -h "$path" -a "$(realpath "$path")" = /etc/drush ] ||
+      sudo -Hu $user ln --backup --force --symbolic /etc/drush "$path"
   done
 }

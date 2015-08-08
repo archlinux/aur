@@ -3,8 +3,8 @@
 
 _pkgname=drush
 pkgname=$_pkgname-git
-pkgver=8.0.0.beta12.r51.gc4b8883
-pkgrel=1
+pkgver=8.0.0.beta14.r1.g34f26ff
+pkgrel=2
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
 url="https://github.com/drush-ops/$pkgname"
@@ -15,9 +15,11 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install=$pkgname.install
 source=("git://github.com/drush-ops/$_pkgname.git"
-        "$_pkgname.ini")
+        "errors.$_pkgname.ini"
+        "req.$_pkgname.ini")
 md5sums=('SKIP'
-         'dca6f47289ea903c85ac997c9cf520d5')
+         '2c661b0268411ad82e33ca314424637a'
+         'fd34300a8ce7ca8e826cb8b9a5ed2b89')
 
 pkgver() {
     cd "$_pkgname"
@@ -31,6 +33,10 @@ pkgver() {
 prepare() {
   composer update --prefer-source --no-interaction --working-dir "$_pkgname"
   composer install --prefer-source --no-interaction --working-dir "$_pkgname"
+  for extension in gd mysqli pdo_mysql; do
+    echo "extension=$extension.so" >| "$extension.$_pkgname.ini"
+  done
+  sed -r 's/^([^;$])/;\1/' "$_pkgname/examples/example.$_pkgname.ini" >| "$_pkgname.ini"
 }
 
 check() {
@@ -45,24 +51,26 @@ check() {
 }
 
 package() {
-  cd "$_pkgname"
+  # Install PHP configuration files
+  for conf in errors gd mysqli pdo_mysql req; do
+    install -Dm644 "$conf.$_pkgname.ini" "$pkgdir/etc/php/conf.d/$conf.$_pkgname.ini"
+  done
 
   # Set up directory structure
-  install -d "$pkgdir/etc/bash_completion.d"
-  install -d "$pkgdir/etc/$_pkgname"
-  install -d "$pkgdir/etc/skel"
+  install --directory "$pkgdir/etc/bash_completion.d"
+  install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/$_pkgname"{,/cache{,/{default,download,usage}}}
+  install --owner=http --group=http --mode=644 "$_pkgname.ini" "$pkgdir/etc/$_pkgname/$_pkgname.ini"
+  install --directory "$pkgdir/etc/skel"
   ln --force --symbolic "/etc/$_pkgname" "$pkgdir/etc/skel/.$_pkgname"
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/share/webapps/$_pkgname"
-  install -d "$pkgdir/usr/share/doc/$_pkgname/misc"
+  install --directory "$pkgdir/usr/bin"
+  install --directory "$pkgdir/usr/share/webapps/$_pkgname"
+  install --directory "$pkgdir/usr/share/doc/$_pkgname/misc"
 
   # Copy main application files
-  cp -rf * "$pkgdir/usr/share/webapps/$_pkgname"
-  # Move
-  cp -rf CONTRIBUTING.md README.md docs examples "$pkgdir/usr/share/doc/$_pkgname"
+  cd "$_pkgname"
+  cp -a * "$pkgdir/usr/share/webapps/$_pkgname"
+  cp -a CONTRIBUTING.md README.md docs examples "$pkgdir/usr/share/doc/$_pkgname"
   rm -rf "$pkgdir/usr/share/doc/$_pkgname/"{CONTRIBUTING.md,README.md,docs,examples,misc/windrush_build}
   ln -s "/usr/share/webapps/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   ln -s "/usr/share/webapps/$_pkgname/$_pkgname.complete.sh" "$pkgdir/etc/bash_completion.d"
-
-  install -Dm644 "../$_pkgname.ini" "$pkgdir/etc/$_pkgname/$_pkgname.ini"
 }
