@@ -1,0 +1,20 @@
+pkgbase = hidapi-git
+	pkgdesc = A Simple library for communicating with USB and Bluetooth HID devices.
+	pkgver = 366.d17db57
+	pkgrel = 1
+	url = http://www.signal11.us/oss/hidapi/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = BSD
+	license = custom
+	makedepends = git
+	depends = systemd-tools
+	depends = libusb
+	depends = fox
+	options = !libtool
+	source = hidapi-git::git://github.com/signal11/hidapi
+	md5sums = SKIP
+
+pkgname = hidapi-git
+
