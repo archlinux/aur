@@ -1,0 +1,24 @@
+pkgbase = diesel
+	pkgdesc = Greenlet-based event I/O Framework for Python
+	pkgver = 3.0.24
+	pkgrel = 1
+	url = http://diesel.io
+	arch = any
+	license = custom
+	makedepends = make
+	makedepends = python2-distribute
+	makedepends = python2-sphinx
+	depends = libffi
+	depends = python2
+	depends = python2-dnspython
+	depends = python2-flask
+	depends = python2-greenlet
+	depends = python2-http-parser
+	depends = python2-pyopenssl
+	depends = python2-twiggy
+	optdepends = python2-palm: lightweight, fast library for using protobufs in Python
+	source = diesel-3.0.24.tar.gz::https://codeload.github.com/dieseldev/diesel/tar.gz/diesel-3.0.24
+	sha256sums = 75a5f63a93755aa12f39a3dacff95b854738c77b0f26cf94efa8c973f5adf1fb
+
+pkgname = diesel
+
