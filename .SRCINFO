@@ -1,0 +1,15 @@
+pkgbase = gtk-theme-flatstudio
+	pkgdesc = Flat, simple and clean GTK3 theme
+	pkgver = 1.03
+	pkgrel = 2
+	url = http://gnome-look.org/content/show.php?content=154296
+	arch = any
+	license = GPL3
+	depends = gtk-engine-unico
+	depends = gtk-engine-murrine
+	options = !strip
+	source = http://gnome-look.org/CONTENT/content-files/154296-FlatStudio-1.03.tar.gz
+	md5sums = 4a22cba22de2086b108bf8119473453f
+
+pkgname = gtk-theme-flatstudio
+
