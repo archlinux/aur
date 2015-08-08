@@ -1,0 +1,17 @@
+pkgbase = rainbarf-git
+	pkgdesc = CPU/RAM stats chart for tmux & screen
+	pkgver = 20140404
+	pkgrel = 1
+	url = http://freecode.com/projects/rainbarf
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = git
+	optdepends = tmux
+	optdepends = screen
+	provides = rainbarf
+	conflicts = rainbarf
+
+pkgname = rainbarf-git
+
