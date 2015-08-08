@@ -10,7 +10,7 @@ url=('https://github.com/aaronjamesyoung/Numix-Ocean')
 license=('GPL3')
 depends=('gtk-engine-murrine')
 source=('https://github.com/aaronjamesyoung/Numix-Ocean/archive/Ocean.zip')
-md5sums=('7ccce16851029b830756e3ec4fc00666')
+md5sums=('3825c4104e5a2f4aba73c5e07e8d1eae')
 package() {
 	mkdir -p ${pkgdir}/usr/share/themes/
 	cd ${srcdir}/
