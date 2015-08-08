@@ -1,0 +1,15 @@
+pkgbase = lzham
+	pkgdesc = Lossless data compression codec with LZMA-like ratios but 1.5x-8x faster decompression speed
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = https://github.com/richgel999/lzham_codec
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	source = lzham-1.0.1.tar.gz::https://github.com/richgel999/lzham_codec/archive/v1_0_stable1.tar.gz
+	sha256sums = 4f4f874706763b3a6e3d6dfff666a1e850ca1d92fd9240b2a14365c5864a0057
+
+pkgname = lzham
+
