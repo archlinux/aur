@@ -1,0 +1,24 @@
+pkgbase = oblogout-fork-git
+	pkgdesc = Openbox Logout Script Fork used by CrunchBang
+	pkgver = 20130106
+	pkgrel = 3
+	url = https://github.com/Cloudef/oblogout-fork
+	install = oblogout.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = pygtk
+	depends = python2-pillow
+	depends = python2-distutils-extra
+	depends = python2-dbus
+	optdepends = upower
+	conflicts = openboxlogout-gnome
+	conflicts = oblogout
+	backup = etc/oblogout.conf
+	source = oblogout.conf
+	source = switch-user.patch
+	md5sums = 1e43b3a6ffeaefa0f68152a473259676
+	md5sums = 86a7a64ae86c0d733f69d37da05eb357
+
+pkgname = oblogout-fork-git
+

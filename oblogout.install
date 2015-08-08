@@ -1,0 +1,14 @@
+post_install () {
+
+echo ' IMPORTANT'
+echo 'Make sure that dbus is running'
+echo 'Customise the config (/etc/oblogout.conf) as required'
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+op=$1
+shift
+$op $*
