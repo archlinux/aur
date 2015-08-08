@@ -1,14 +1,14 @@
 pkgbase = scifig
 	pkgdesc = A build tool for (non?)-scientific figures
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://scifig.readthedocs.org/
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/source/s/scifig/scifig-0.1.tar.gz
-	sha256sums = f2fe58ee3e693d91c38f8535ef52c803bf8e3f831728304c744b2bf0b2e5eca0
+	source = https://pypi.python.org/packages/source/s/scifig/scifig-0.1.1.tar.gz
+	sha256sums = cdca338247f6f2c9ddd9ccd3b522615f5b1684504839e1743546bc3031c3b14e
 
 pkgname = scifig
 
