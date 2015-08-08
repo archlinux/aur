@@ -13,7 +13,7 @@ makedepends=('gcc-fortran')
 depends=('glibc')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}"
 
   # Out of source build
   rm -rf build
@@ -21,19 +21,20 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
-  ../configure --prefix=/usr
+  cd "${srcdir}/build"
+  ../${pkgname}-${pkgver}/configure \
+    --prefix=/usr
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
 
   make check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
 
