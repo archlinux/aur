@@ -1,0 +1,13 @@
+diff --git i/convert.h w/convert.h
+index db5ade1..6c5a899 100644
+--- i/convert.h
++++ w/convert.h
+@@ -11,7 +11,7 @@
+ #include <sstream>
+ #include <typeinfo>
+ #include <locale>
+-#if (defined(__GNUC__) || defined(__clang__)) && !defined(_LIBCPP_VERSION)
++#if 0 && (defined(__GNUC__) || defined(__clang__)) && !defined(_LIBCPP_VERSION)
+ # include "wstring_convert.h"
+ # include "codecvt.h"
+ #else
