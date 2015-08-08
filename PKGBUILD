@@ -1,10 +1,10 @@
 # Maintainer: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=4.6.4
-pkgrel=1
-x64_rel=14
-i386_rel=17
+pkgver=4.6.12
+pkgrel=14
+x64_rel=7
+i386_rel=14
 pkgdesc="Remote desktop application"
 url="http://www.nomachine.com"
 license=('custom:"Copyright 2002-2015 NoMachine S.a r.l."')
