@@ -1,0 +1,17 @@
+pkgbase = cachefilesd
+	pkgdesc = Userspace daemon acting as a backend for FS-Cache
+	pkgver = 0.10.5
+	pkgrel = 1
+	url = http://people.redhat.com/~dhowells/fscache/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	backup = etc/cachefilesd.conf
+	source = http://people.redhat.com/~dhowells/fscache/cachefilesd-0.10.5.tar.bz2
+	source = cachefilesd
+	md5sums = 9e85dd0ace346ff47e188ded8c05ab3b
+	md5sums = a4f0c47a945f296f120e29f156aea9ba
+
+pkgname = cachefilesd
+
