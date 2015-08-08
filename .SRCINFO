@@ -1,0 +1,15 @@
+pkgbase = dorian-theme
+	pkgdesc = A sleek dark theme for gtk2+3 Gnome-Shell Cinnamon MATE Xfwm4 Openbox3 Chromium Firefox Thunderbird Unity
+	pkgver = 3.14_12_03012015
+	pkgrel = 1
+	url = http://fav.me/d86da4w
+	arch = any
+	license = GPLv3
+	depends = gtk-engines
+	depends = gnome-themes-standard>=3.14
+	depends = gtk-engine-murrine>=0.98.2
+	source = https://dl.dropboxusercontent.com/u/330352/dorian-theme-3.14_12.03012015.zip
+	md5sums = 0a19bc8129d1151d4ba222f156f7e9e8
+
+pkgname = dorian-theme
+
