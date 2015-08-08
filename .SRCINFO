@@ -1,0 +1,13 @@
+pkgbase = perl-set-intspan
+	pkgdesc = Set::IntSpan - Manages sets of integers, .newsrc style
+	pkgver = 1.19
+	pkgrel = 5
+	url = http://search.cpan.org/dist/Set-IntSpan
+	arch = any
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://cpan.org/modules/by-module/Set/Set-IntSpan-1.19.tar.gz
+	sha512sums = de743bc26e4e9daf0bff636279219776421a31d1b3fa5d8e9232e051f2396cbfdd339dacd4aadc006cf31527935550c8659d8c80cbaed5942895239ab36c9cd9
+
+pkgname = perl-set-intspan
+
