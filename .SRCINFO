@@ -1,0 +1,19 @@
+pkgbase = geotag
+	pkgdesc = Geotag is an open source program that allows you match date/time information from photos with location information from a GPS unit or from a map
+	pkgver = 0.096
+	pkgrel = 1
+	url = http://geotag.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = java-runtime
+	depends = perl-exiftool
+	source = http://downloads.sourceforge.net/project/geotag/geotag/0.096/geotag-0.096.jar
+	source = geotag.desktop
+	source = geotag
+	sha256sums = 3bfe5474e1d89d442a1386ccdd107ce3c2c818c1f231cc3e0b14898121274299
+	sha256sums = 03e25f98f958a205fed56657e21c30f636b8f67bc0f5e41f88d6bf3bfa1fb3fe
+	sha256sums = dd836097b81d0d4fea801ef4211d2e60befe6067e8ae3d29263bebcf268590bd
+
+pkgname = geotag
+
