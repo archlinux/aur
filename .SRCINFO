@@ -1,0 +1,16 @@
+pkgbase = yaics-git
+	pkgdesc = QT based GNUSocial/status.net client - latest git revision
+	pkgver = 20150808
+	pkgrel = 1
+	url = https://gitlab.com/stigatle/yaics
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = qt5-base
+	optdepends = aspell
+	provides = yaics
+
+pkgname = yaics-git
+
