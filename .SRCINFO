@@ -1,7 +1,7 @@
 pkgbase = setbfree-git
-	pkgdesc = A DSP Tonewheel Organ emulator
-	pkgver = 0.8.0.8.g90e925d
-	pkgrel = 2
+	pkgdesc = A DSP tonewheel organ emulator
+	pkgver = 0.8.0.28.g437629e
+	pkgrel = 1
 	url = http://setbfree.org/
 	install = setbfree.install
 	arch = i686

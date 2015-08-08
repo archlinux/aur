@@ -1,10 +1,10 @@
-# Maintainer: Christopher Arndt <chris@chrisarndt.de>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=setbfree
 pkgname="${_pkgname}-git"
-pkgver=0.8.0.8.g90e925d
-pkgrel=2
-pkgdesc="A DSP Tonewheel Organ emulator"
+pkgver=0.8.0.28.g437629e
+pkgrel=1
+pkgdesc="A DSP tonewheel organ emulator"
 arch=('i686' 'x86_64')
 url="http://setbfree.org/"
 license=('GPL')
