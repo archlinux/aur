@@ -1,0 +1,15 @@
+post_install() {
+    upd_cmd=$(command -v update-desktop-database)
+    if [[ -x $upd_cmd ]]; then
+	echo "Update desktop database..."
+	$upd_cmd -q
+    fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
