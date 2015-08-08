@@ -2,7 +2,7 @@
 
 pkgname=heybuddy
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A light/feature free client for the identi.ca microblogging site."
 arch=('i686' 'x86_64') 
 url="https://launchpad.net/heybuddy/"
@@ -16,10 +16,11 @@ install=heybuddy.install
 source=(http://launchpad.net/heybuddy/0.2/$pkgver/+download/$pkgname-$pkgver.tgz $pkgname.desktop)
 md5sums=('d5ee49ecad0d0efd9f1ca1990bc1c792' '68d0c01882c9db6ae6381b49e3507eea')
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	sed -i 's/env\ python/env\ python2/' heybuddy.py || return 1
+	echo "Done"
 }
 package() {
+	cd "$srcdir/$pkgname-$pkgver"
+	sed -i 's/env\ python/env\ python2/' heybuddy.py || return 1
 	mkdir -p "$pkgdir/usr/share/heybuddy" || return 1
 	mkdir -p "$pkgdir/usr/bin/" || return 1
 	mkdir -p "$pkgdir/usr/share/pixmaps/" || return 1
