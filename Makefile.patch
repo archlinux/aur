@@ -1,0 +1,11 @@
+--- ./Makefile	2013-03-03 15:23:55.600714206 -0800
++++ ./Makefile	2013-03-03 15:24:51.654045728 -0800
+@@ -5,7 +5,7 @@
+ 
+ # Installation locations
+ BIN_DIR = $(DEST_DIR)$(PREFIX)/bin
+-MAN_DIR = $(DEST_DIR)$(PREFIX)/man/man1
++MAN_DIR = $(DEST_DIR)$(PREFIX)/share/man/man1
+ 
+ # full warnings with gcc
+ CFLAGS = -Wall

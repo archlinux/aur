@@ -1,0 +1,18 @@
+pkgbase = tscat
+	pkgdesc = Prepend a timestamp to each line of STDIN
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.gerg.ca/software/tscat/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	provides = tscat
+	source = http://gerg.ca/software/tscat/tscat-1.0.tar.gz
+	source = Makefile.patch
+	sha256sums = aafed58a69c6bb5fdddae3dfc8ec4ebfc465d17192ced4e21652bdbd4d73f614
+	sha256sums = 1007627c3139e8c5bda8c9542952730d2b526a497e55e16de81772e31192d70b
+
+pkgname = tscat
+
