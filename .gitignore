@@ -1,0 +1,5 @@
+python-wifi-*.pkg.tar.xz
+python-wifi-*.src.tar.gz
+python-wifi-*.tar.bz2
+src/
+pkg/
