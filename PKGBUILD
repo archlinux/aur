@@ -16,16 +16,16 @@ md5sums=('SKIP')
 options=()
 
 pkgver() {
-	cd $pkgname
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	mkdir -p "$srcdir/$pkgname/build"
+    mkdir -p "$srcdir/$pkgname/build"
     cd       "$srcdir/$pkgname/build"
 
-    qmake ../src/VPaint.pro -r -spec linux-g++   
-    make   
+    qmake ../src/VPaint.pro -r -spec linux-g++
+    make
 }
 
 package() {
