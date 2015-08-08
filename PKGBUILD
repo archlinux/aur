@@ -2,7 +2,7 @@
 
 pkgname=rainbowstream
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A smart and nice Twitter client on terminal written in Python"
 url="http://www.rainbowstream.org/"
 license=('MIT')
@@ -10,7 +10,7 @@ arch=('any')
 depends=(
 'python'
 'python-dateutil'
-'python-arrow-git'
+'python-arrow'
 'python-requests'
 'python-pyfiglet'
 'python-twitter'
