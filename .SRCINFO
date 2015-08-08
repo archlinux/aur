@@ -1,0 +1,19 @@
+pkgbase = gmp-mpbsd
+	pkgdesc = BSD multi-precision arithmetic compatibility libraries from GMP
+	pkgver = 5.0.5
+	pkgrel = 1
+	url = http://gmplib.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = gcc-libs
+	depends = sh
+	provides = bsd-mp
+	options = !libtool
+	source = ftp://ftp.gmplib.org/pub/gmp-5.0.5/gmp-5.0.5.tar.xz
+	source = ftp://ftp.gmplib.org/pub/gmp-5.0.5/gmp-5.0.5.tar.xz.sig
+	sha256sums = e87015a825a2445e169931ee27849d52576a2d9e338d1383dcb36fed68d0006f
+	sha256sums = SKIP
+
+pkgname = gmp-mpbsd
+
