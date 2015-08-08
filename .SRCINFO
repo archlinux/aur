@@ -1,5 +1,5 @@
 pkgbase = ruby-highline-1.6
-	pkgdesc = A high-level text user interface toolkit for Ruby
+	pkgdesc = A high-level text user interface toolkit for Ruby, version 1.6.21
 	pkgver = 1.6.21
 	pkgrel = 1
 	url = http://rubygems.org/gems/highline
