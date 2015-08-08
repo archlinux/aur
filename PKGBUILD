@@ -1,9 +1,10 @@
 # Maintainer: Glaciuse <glaciuse@gmail.com>
-# Contributor: Glaciuse <glaciuse@gmail.com>
-
+# Contributor: FadeMind <fademind@gmail.com>
+# Author: Krzysztof P. (donpedro69)
 # Edited for use in Kde by tulliana (actions icons patch-0.4 included)
 # Edited for use in Kde by FadeMind (merged faenza original pack and fixed some missing links)
 # Edited for use in kde with dark themes by Glaciuse (black icons are replaced with white icons)
+
 
 pkgname=kfaenza-dark-themes
 pkgver=0.8.11
