@@ -2,12 +2,15 @@
 
 pkgname=opera-developer
 pkgver=32.0.1933.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64' 'i686')
 url='http://www.opera.com/browser/'
 license=('custom:opera')
-depends=('alsa-lib' 'nss' 'gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'desktop-file-utils')
+depends=('alsa-lib' 'nss' 'gtk2' 'gconf' 'libxss' 'libxtst' 'desktop-file-utils')
+optdepends=('curl: opera crash reporter and autoupdate checker'
+	'libnotify: native desktop notifications'
+	'opera-ffmpeg-codecs: support h.264 and mp3 codecs')
 install=opera.install
 options=(!strip)
 backup=("etc/${pkgname}/default")
