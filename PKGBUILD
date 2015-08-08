@@ -4,7 +4,7 @@
 pkgname='spark-rc'
 pkgdesc='A simple rc script'
 license=( 'BSD' )
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 arch=( 'any' )
 url='https://github.com/fbt/spark-rc'
