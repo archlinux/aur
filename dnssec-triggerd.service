@@ -1,0 +1,13 @@
+[Unit]
+Description=Reconfigure local DNSSEC resolver on network change
+Wants=dnssec-triggerd-keygen.service unbound.service
+After=dnssec-triggerd-keygen.service unbound.service network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dnssec-triggerd -d -c /etc/dnssec-trigger/dnssec-trigger.conf
+ExecStartPost=/etc/NetworkManager/dispatcher.d/01-dnssec-trigger
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

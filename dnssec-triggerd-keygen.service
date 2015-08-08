@@ -1,0 +1,12 @@
+[Unit]
+Description=dnssec-triggerd Control Key And Certificate Generator
+Before=dnssec-triggerd.service
+ConditionPathExists=!/etc/dnssec-trigger/dnssec_trigger_control.key
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/dnssec-trigger-control-setup -d /etc/dnssec-trigger/
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
