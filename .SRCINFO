@@ -1,0 +1,16 @@
+pkgbase = gupper-ping
+	pkgdesc = Just a ping thing.
+	pkgver = 1.c34da6b
+	pkgrel = 1
+	url = https://github.com/Stephen304/gupper-ping
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = gupper-ping::git+https://github.com/Stephen304/gupper-ping.git
+	sha256sums = SKIP
+
+pkgname = gupper-ping
+
