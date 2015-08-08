@@ -1,0 +1,18 @@
+pkgbase = flash-screen-git
+	pkgdesc = Flashes the screen and emits a shutter sound
+	pkgver = 0.r0.gb95ca6e
+	pkgrel = 1
+	url = https://github.com/eigengrau/flash-screen
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = libcanberra
+	provides = flash-screen
+	conflicts = flash-screen
+	source = git+https://github.com/eigengrau/flash-screen
+	md5sums = SKIP
+
+pkgname = flash-screen-git
+
