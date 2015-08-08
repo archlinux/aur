@@ -1,0 +1,17 @@
+pkgbase = ding-libs-git
+	pkgdesc = 'D is not GLib' utility libraries
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://git.fedorahosted.org/git/ding-libs.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = doxygen
+	makedepends = git
+	provides = ding-libs
+	conflicts = ding-libs
+	source = git://git.fedorahosted.org/ding-libs.git
+	sha1sums = SKIP
+
+pkgname = ding-libs-git
+
