@@ -1,6 +1,6 @@
 pkgbase = python2-amodem
 	pkgdesc = Audio Modem Communication Library
-	pkgver = 1.12
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/romanz/amodem
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python2-amodem
 	depends = python2-numpy
 	depends = python2-six
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/a/amodem/amodem-1.12.tar.gz
-	md5sums = 437c3d6eca991e8f7104c30fcba75476
-	sha256sums = a6d9b4a8a42e6f5f42fd7df0d9994a1fb89356cd1d67881d671f488c7557cc45
+	source = https://pypi.python.org/packages/source/a/amodem/amodem-1.12.0.tar.gz
+	md5sums = 577c6f66e4a63e9bb4e55d3a124a0932
+	sha256sums = 725a9a57f8f636ba61083b557ee36cfb9b2d30b9a226e1ebd23f15c398357199
 
 pkgname = python2-amodem
 
