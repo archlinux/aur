@@ -1,0 +1,15 @@
+pkgbase = brother-cups-wrapper-common
+	pkgdesc = This package provides common files for some of the Brother cups wrapper packages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:brother commercial license
+	depends = brother-lpr-drivers-common
+	depends = cups
+	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-cups-wrapper-common/brother-cups-wrapper-common_1.0.0-10-0ubuntu5_.deb
+
+pkgname = brother-cups-wrapper-common
+
