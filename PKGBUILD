@@ -7,7 +7,7 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.11.4.34572.7113c80
+pkgver=4.11.4.34771.a611fff
 pkgrel=1
 epoch=1
 pkgdesc="An advanced open-source platform for developing, testing, and using exploit code"
@@ -37,7 +37,7 @@ pkgver() {
 package() {
   cd ${pkgname}
 
-  mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin"
   find . -maxdepth 1 -mindepth 1 -not -path './.git*' -exec cp -r '{}' "${pkgdir}/opt/${pkgname}" \;
 
   for f in "${pkgdir}"/opt/${pkgname}/msf*; do
