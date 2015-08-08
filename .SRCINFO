@@ -1,0 +1,18 @@
+pkgbase = python2-cairosvg
+	pkgdesc = A Simple SVG Converter for Cairo
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = http://cairosvg.org/
+	arch = any
+	license = LGPL3
+	depends = python2
+	depends = python2-cairo
+	optdepends = python2-lxml: To use lxml to parse SVG files
+	optdepends = python2-tinycss: Apply CSS not included in the style attribute of the tags
+	optdepends = python2-cssselect: Apply CSS not included in the style attribute of the tags
+	optdepends = python2-pillow: To handle embedded raster images other than PNG
+	source = http://pypi.python.org/packages/source/C/CairoSVG/CairoSVG-1.0.9.tar.gz
+	md5sums = 4a15e7cf8debd205f6a9cc4b17c2e411
+
+pkgname = python2-cairosvg
+
