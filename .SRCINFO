@@ -1,0 +1,24 @@
+pkgbase = vera-control-center-git
+	pkgdesc = Vera control center
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/vera-desktop/vera-control-center
+	install = vera-control-center.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bake
+	depends = vala
+	depends = libpeas
+	depends = gtk3
+	depends = libgee06
+	depends = vera-xsettings-git
+	depends = gobject-introspection
+	provides = vera-control-center-git
+	conflicts = vera-control-center-git
+	conflicts = vera-control-center
+	source = vera-control-center::git://github.com/vera-desktop/vera-control-center.git#branch=master
+	md5sums = SKIP
+
+pkgname = vera-control-center-git
+
