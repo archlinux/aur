@@ -7,7 +7,7 @@ _build_nogui=true
 _build_linkscloud=false
 _build_feedreader=false
 _build_voip=false
-_build_sqlcipher=false
+
 
 
 ### Nothing to be changed below this line ###
@@ -23,15 +23,10 @@ pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
-#depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd')
 
-if [[ "$_build_sqlcipher" == "true" ]] ; then
-    depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'sqlcipher' 'libmicrohttpd')
-    conflicts=('retroshare06')
-else
-    depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd')
-    conflicts=('retroshare06' 'sqlcipher')
-fi
+depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'sqlcipher' 'libmicrohttpd')
+conflicts=('retroshare06')
+
 
 makedepends=('subversion')
 provides=('retroshare06')
@@ -47,7 +42,7 @@ sha256sums=('SKIP'
 	    'SKIP')
 
 
-#'47c23238cbfabb6f07b6a25666ee5941243176360ca28ec31378d94e87326ec1')
+
 		
 
 # Add missing dependencies if needed
