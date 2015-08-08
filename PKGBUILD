@@ -63,7 +63,6 @@ package_zfs-dkms() {
 package_zfs-utils() {
     pkgdesc="Kernel module support files for the Zettabyte File System."
     depends=("spl-dkms=${pkgver}-${pkgrel}")
-    provides=("zfs-utils")
     conflicts=("zfs-utils-git" "zfs-utils-lts")
     replaces=("zfs-utils-dkms-git")
 
