@@ -1,0 +1,13 @@
+pkgbase = rc-local
+	pkgdesc = Support for legacy rc.local scripts
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/rc-local/
+	arch = any
+	license = BSD
+	depends = bash
+	source = rc-local.service
+	md5sums = bb2cfecf3c6d99c6e6ee9eb58bcde75d
+
+pkgname = rc-local
+

@@ -1,0 +1,11 @@
+[Unit]
+Description=/etc/rc.local compatibility
+After=network.target 
+
+[Service]
+Type=oneshot
+ExecStart=/etc/rc.local
+RemainAfterExit=yes
+ 
+[Install]
+WantedBy=multi-user.target
