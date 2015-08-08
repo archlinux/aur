@@ -1,0 +1,20 @@
+pkgbase = lib32-libglu-git
+	pkgdesc = GL utility library for mesa builds from git after 2012-08-31
+	pkgver = 9.0.0.r2.g0692115
+	pkgrel = 1
+	url = http://mesa.freedesktop.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = lib32-mesa
+	depends = lib32-libgl
+	depends = lib32-gcc-libs
+	provides = lib32-libglu
+	provides = lib32-glu
+	conflicts = lib32-libglu
+	conflicts = lib32-glu
+	options = !libtool
+	source = git://cgit.freedesktop.org/mesa/glu/
+	md5sums = SKIP
+
+pkgname = lib32-libglu-git
+
