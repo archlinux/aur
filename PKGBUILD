@@ -2,7 +2,7 @@
 
 pkgname=xsettingsd-git
 pkgver=r79.b4999f5
-pkgrel=1
+pkgrel=2
 
 pkgdesc="xsettingsd is a daemon that implements the XSETTINGS specification."
 arch=('i686' 'x86_64')
@@ -26,9 +26,9 @@ build() {
 
 package() {
     cd "$pkgname"
-    install -d "$pkgdir"/usr/{bin,share/{licences,man/man1}}
-    
+    install -d "$pkgdir"/usr/{bin,share/man/man1}
+
     install -m755 xsettingsd dump_xsettings "$pkgdir"/usr/bin
     install -m644 xsettingsd.1 dump_xsettings.1 "$pkgdir"/usr/share/man/man1
-    install -m644 COPYING "$pkgdir"/usr/share/licenses/"$_pkgname"/COPYING
+    install -Dm644 COPYING "$pkgdir"/usr/share/licenses/xsettingsd/COPYING
 }
