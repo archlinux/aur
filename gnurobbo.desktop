@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=Logic game
+Exec=gnurobbo
+Icon=gnurobbo
+Type=Application
+Name=GNURobbo
+GenericName=GNURobbo
+Categories=Game;ActionGame;LogicGame;
