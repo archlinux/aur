@@ -20,17 +20,12 @@ pkgver() {
 
 build() {
   cd "blackchocobo"
-  #qmake-qt4 Black_Chocobo.pro #Qt4 Build
   qmake-qt5 Black_Chocobo.pro #Qt5 Build
   make
 }
 package(){
   cd "blackchocobo"
-  install -D -m755 blackchocobo "$pkgdir"/usr/bin/blackchocobo
-  install -D -m644 Black_Chocobo.desktop "$pkgdir"/usr/share/applications/Black_Chocobo.desktop
-  install -D -m644 icon/Black_Chocobo.png "$pkgdir"/usr/share/pixmaps/Black_Chocobo.png
+  INSTALL_ROOT=$pkgdir make install 
   install -D -m644 debian/menu "$pkgdir"/usr/share/menu/blackchocobo
   install -D -m644 debian/blackchocobo.sharedmimeinfo "$pkgdir"/usr/share/mime/blackchocobo.xml
-  install -d "$pkgdir"/usr/share/blackchocobo/lang/
-  cp -r lang/*.qm "$pkgdir"/usr/share/blackchocobo/lang/
 }  
