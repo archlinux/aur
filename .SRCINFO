@@ -1,0 +1,15 @@
+pkgbase = android-platform-20
+	pkgdesc = Android SDK Platform, API-20
+	pkgver = 4.4W.2_r02
+	pkgrel = 2
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	depends = android-sdk-platform-tools
+	options = !strip
+	source = http://dl.google.com/android/repository/android-20_r02.zip
+	sha512sums = 458fee18cc8c0f63e00853388cbd5a475d2ef3cf231a8aea79b0bb2ce064a1b16d34f21dff0cd21d5a02b43c1b6e1200e595bc37e4e5d6be3a0896ab544e0fd1
+
+pkgname = android-platform-20
+
