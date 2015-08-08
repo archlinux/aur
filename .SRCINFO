@@ -1,0 +1,16 @@
+pkgbase = vim-coffeescript-git
+	pkgdesc = CoffeeScript syntax support for Vim.
+	pkgver = v003.6.g32fe889
+	pkgrel = 1
+	url = http://github.com/kchmck/vim-coffee-script
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = vim
+	provides = vim-coffeescript
+	conflicts = vim-coffeescript
+	source = git://github.com/kchmck/vim-coffee-script.git
+	md5sums = SKIP
+
+pkgname = vim-coffeescript-git
+
