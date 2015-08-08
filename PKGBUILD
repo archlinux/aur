@@ -1,15 +1,14 @@
 # Maintainer: Chris Severance aur.severach AatT spamgourmet.com
 
 pkgname='git-aurcheck'
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='a helper like namcap that checks and offers solutions for common problems in git submissions to the AUR'
 arch=('any')
 license=('GPL')
 depends=('bash' 'pkgbuild-introspection' 'git' 'pcre2')
 source=("${pkgname}.sh")
-sha256sums=('789b833465ffdd008f22899ec1112ec12ac1e8a1a0ea7c43e4c4d89e08d8936a')
-changelog='ChangeLog'
+sha256sums=('4543ef4e3a84f5e5880773b4d7a8f335c171ca47a97c4a53396d3ed031c9c126')
 
 #install='installfoo'; source+=("${install}") # generate errors for us to detect
 #changelog='changefoo'; source+=("${changelog}")

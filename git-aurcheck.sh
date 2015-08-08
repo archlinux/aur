@@ -2,6 +2,9 @@
 
 # 2015-07-18 git-aurcheck by severach (GPLv3+)
 
+# TODO: Finish version checker
+# TODO: Switch origin on git packages from aur4 to aur (if necessary)
+
 # a helper like namcap that checks and offers solutions for common problems in git submissions to the AUR
 
 # git is hard to learn, has a command sequence a bit over the top for AUR
@@ -55,7 +58,7 @@ if [ "${_opt_Maintainer:=none}" = 'none' ]; then
   sleep 1
 fi
 
-_opt_VERSION='0.2'
+_opt_VERSION='0.3'
 _opt_AUR4='aur'
 
 # After August 8, these 3 time bomb lines can be removed and _opt_AUR4 can be gotten rid of altogether
@@ -82,11 +85,11 @@ srcinfo_write_attr() {
   :
 }
 
-# Might not use all these
-_fn_find_in_gitadds() {
+_var_find_in='
+_fn_find_in_@@@() {
   local _var_find
-  if [ "${#_var_gitadds[@]}" -ne 0 ]; then
-    for _var_find in "${_var_gitadds[@]}"; do
+  if [ "${#_var_@@@[@]}" -ne 0 ]; then
+    for _var_find in "${_var_@@@[@]}"; do
       if [ "${_var_find}" = "$1" ]; then
         return 0
       fi
@@ -94,66 +97,17 @@ _fn_find_in_gitadds() {
   fi
   return 1
 }
-
-_fn_find_in_allfiles() {
-  local _var_find
-  if [ "${#_var_allfiles[@]}" -ne 0 ]; then
-    for _var_find in "${_var_allfiles[@]}"; do
-      if [ "${_var_find}" = "$1" ]; then
-        return 0
-      fi
-    done
-  fi
-  return 1
-}
-
-_fn_find_in_srcfileswantgit() {
-  local _var_find
-  if [ "${#_var_srcfileswantgit[@]}" -ne 0 ]; then
-    for _var_find in "${_var_srcfileswantgit[@]}"; do
-      if [ "${_var_find}" = "$1" ]; then
-        return 0
-      fi
-    done
-  fi
-  return 1
-}
-
-_fn_find_in_srcfilesdontwantgit() {
-  local _var_find
-  if [ "${#_var_srcfilesdontwantgit[@]}" -ne 0 ]; then
-    for _var_find in "${_var_srcfilesdontwantgit[@]}"; do
-      if [ "${_var_find}" = "$1" ]; then
-        return 0
-      fi
-    done
-  fi
-  return 1
-}
-
-_fn_find_in_srcfiles() {
-  local _var_find
-  if [ "${#_var_srcfiles[@]}" -ne 0 ]; then
-    for _var_find in "${_var_srcfiles[@]}"; do
-      if [ "${_var_find}" = "$1" ]; then
-        return 0
-      fi
-    done
-  fi
-  return 1
-}
-
-_fn_find_in_gitfiles() {
-  local _var_find
-  if [ "${#_var_gitfiles[@]}" -ne 0 ]; then
-    for _var_find in "${_var_gitfiles[@]}"; do
-      if [ "${_var_find}" = "$1" ]; then
-        return 0
-      fi
-    done
-  fi
-  return 1
-}
+'
+eval "${_var_find_in//@@@/depends}"
+eval "${_var_find_in//@@@/makedepends}"
+eval "${_var_find_in//@@@/wantmakedepends}"
+eval "${_var_find_in//@@@/gitadds}"
+eval "${_var_find_in//@@@/allfiles}"
+eval "${_var_find_in//@@@/srcfileswantgit}"
+eval "${_var_find_in//@@@/srcfilesdontwantgit}"
+eval "${_var_find_in//@@@/srcfiles}"
+eval "${_var_find_in//@@@/gitfiles}"
+unset _var_find_in
 
 # This accepts no parameters. The caller must cd to the directory to be checked.
 _fn_aurcheck() {
@@ -208,13 +162,20 @@ fi
     local _var_gitadds=()
 
     declare -A _var_644 # this is also the required files array.
-    _var_644['PKGBUILD']=' ' # neither ${:-default} nor ${:+exists} can tell the difference between '' blank and unset so we must make these non blank
+    _var_644['PKGBUILD']=' ' # neither ${:-default} nor ${:+exists} can tell the difference between '' blank and unset so we must make these non blank. I don't see any other way short of trap.
     _var_644['.SRCINFO']=' Try: mksrcinfo'
 
-    local _var_forbidgreps=('/sbin|! grep -l% "/sbin"' '/usr/tmp|! grep -l% "/usr/tmp"' '/usr/local|! grep -l% "/usr/local"' '/bin|! pcre2grep -l% "(?<!/usr)/bin"')
+    # pcregrep and pcre2grep don't have an autoexpanding buffer so they are not suitable for binary files
+    # Error: line 3400 of file ... is too long for the internal buffer; check the --buffer-size option
+    # We have no way to predict how large that buffer will need to be so we must disable binary searches: pcregrep -I
+    local _var_forbidgreps=('/sbin|! grep -l% "/sbin"' '/usr/tmp|! grep -l% "/usr/tmp"' '/usr/local|! grep -l% "/usr/local"' '/bin|! pcre2grep -Il% "(?<!/usr)/bin"')
     local _var_srcfiles=()
     local _var_install=''
     local _var_changelog=''
+    local _var_pkgbase=''
+    local _var_pkgnames=()
+    local _var_makedepends=()
+    local _var_depends=()
     if [ -s 'PKGBUILD' ]; then
       if grep -ql '||\s*return\s\+1$' 'PKGBUILD'; then
         echo "Warning: '|| return 1' deprecated. Please remove. makepkg does this with 'set -e'"
@@ -224,18 +185,22 @@ fi
         echo 'Warning: ${startdir} deprecated. Please remove. It can often be changed to ${srcdir}.'
         [ $returnv -ge 1 ] || returnv=1
       fi
-      if ! grep -ql '^prepare\s*(' 'PKGBUILD' && grep -ql '\s*\./configure\s' 'PKGBUILD'; then
+      local _PKGBUILDtmp="$(mktemp 'PKGBUILD.XXX')"
+      sed -e '/^\s*#/d' 'PKGBUILD' > "${_PKGBUILDtmp}" # remove full line comments
+      if grep -qlF './configure' "${_PKGBUILDtmp}" && ! grep -qlF './configure' <(source 'PKGBUILD'; declare -f prepare); then
         echo 'Warning: Create a prepare() function and move configure and some patches to it so makepkg -e works properly.'
         [ $returnv -ge 1 ] || returnv=1
       fi
+      rm -f "${_PKGBUILDtmp}"
+      unset _PKGBUILDtmp
       if [ "${_opt_PEDANTIC}" -gt 0 ]; then
-        if ! grep -ql "set -u" 'PKGBUILD' || ! grep -ql "set +u" 'PKGBUILD'; then
+        if ! grep -ql 'set -u' 'PKGBUILD' || ! grep -ql 'set +u' 'PKGBUILD'; then
           echo 'Warning: set -u/set +u are recommended to catch script errors.'
           [ $returnv -ge 1 ] || returnv=1
         fi
         if [ "${_opt_PEDANTIC}" -gt 1 ]; then
           # These test commands are specially crafted to fail correctly with set -e
-          local _var_forbiddens=('/sbin|! test -d "${pkgdir}/sbin"' '/usr/sbin|! test -d "${pkgdir}/usr/sbin"' '/usr/local|! test -d "${pkgdir}/usr/local"')
+          local _var_forbiddens=('/bin|! test -d "${pkgdir}/bin"' '/sbin|! test -d "${pkgdir}/sbin"' '/lib|! test -d "${pkgdir}/lib"' '/share|! test -d "${pkgdir}/share"' '/usr/sbin|! test -d "${pkgdir}/usr/sbin"' '/usr/local|! test -d "${pkgdir}/usr/local"')
           local _var_forbidden
           for _var_forbidden in "${_var_forbidgreps[@]}"; do
             _var_forbiddens+=("${_var_forbidden//%/r}"' "${pkgdir}"') # [@] probably won't work
@@ -247,7 +212,7 @@ fi
           for _var_forbidden in "${_var_forbiddens[@]}"; do
             if ! grep -qlF "${_var_forbidden#*|}" 'PKGBUILD'; then
               echo '  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)'
-              printf '  %s || { echo "Forbidden: %s"; echo "${}"; }\n' "${_var_forbiddenspr[@]}" # Not sure why the extra ; is required
+              printf '  %s || { echo "Line ${LINENO} Forbidden: %s"; false; }\n' "${_var_forbiddenspr[@]}" # Not sure why the extra ; is required
               [ $returnv -ge 1 ] || returnv=1
               break
             fi
@@ -280,9 +245,14 @@ fi
       if pushd "${_var_tempdir}" >/dev/null; then
         if mksrcinfo "${_var_pwd}/PKGBUILD"; then
           # Use the updated .SRCINFO if we can get it
-          _var_install="$(sed -ne 's:^\s\+install[^ =]* = \(.\+\)$:\1:p' '.SRCINFO')"
-          _var_changelog="$(sed -ne 's:^\s\+changelog[^ =]* = \(.\+\)$:\1:p' '.SRCINFO')"
-          IFS=$'\n' read -r -d '' -a _var_srcfiles < <(sed -ne 's:^\s\+source[^ =]* = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+          # Every reader here must be copied below
+          _var_install="$(sed -ne 's:^\tinstall = \(.\+\)$:\1:p' '.SRCINFO')"
+          _var_changelog="$(sed -ne 's:^\tchangelog = \(.\+\)$:\1:p' '.SRCINFO')"
+          _var_pkgbase="$(sed -ne 's:^pkgbase = \(.\+\)$:\1:p' '.SRCINFO')"
+          IFS=$'\n' read -r -d '' -a _var_srcfiles < <(sed -ne 's:^\tsource = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+          IFS=$'\n' read -r -d '' -a _var_pkgnames < <(sed -ne 's:^pkgname = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+          IFS=$'\n' read -r -d '' -a _var_makedepends < <(sed -ne 's:^\tmakedepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+          IFS=$'\n' read -r -d '' -a _var_depends < <(sed -ne 's:^\tdepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
           if [ ! -s "${_var_pwd}/.SRCINFO" ] || [ "$(md5sum < '.SRCINFO')" != "$(md5sum < "${_var_pwd}/.SRCINFO")" ]; then
             echo ".SRCINFO is missing or out of date. Try 'mksrcinfo'"
             [ $returnv -ge 2 ] || returnv=2
@@ -303,10 +273,22 @@ fi
     # Nail the screwups no matter where they are!
     if [ -s '.SRCINFO' ]; then
       if [ -z "${_var_install}" ]; then
-        _var_install="$(sed -ne 's:^\s\+install[^ =]* = \(.\+\)$:\1:p' '.SRCINFO')"
+        _var_install="$(sed -ne 's:^\tinstall = \(.\+\)$:\1:p' '.SRCINFO')"
       fi
       if [ -z "${_var_changelog}" ]; then
-        _var_changelog="$(sed -ne 's:^\s\+changelog[^ =]* = \(.\+\)$:\1:p' '.SRCINFO')"
+        _var_changelog="$(sed -ne 's:^\tchangelog = \(.\+\)$:\1:p' '.SRCINFO')"
+      fi
+      if [ -z "${_var_pkgbase}" ]; then
+        _var_pkgbase="$(sed -ne 's:^pkgbase = \(.\+\)$:\1:p' '.SRCINFO')"
+      fi
+      if [ "${#_var_pkgnames[@]}" -eq 0 ]; then
+        IFS=$'\n' read -r -d '' -a _var_pkgnames < <(sed -ne 's:^pkgname = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+      fi
+      if [ "${#_var_makedepends[@]}" -eq 0 ]; then
+        IFS=$'\n' read -r -d '' -a _var_makedepends < <(sed -ne 's:^\tmakedepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+      fi
+      if [ "${#_var_depends[@]}" -eq 0 ]; then
+        IFS=$'\n' read -r -d '' -a _var_depends < <(sed -ne 's:^\tdepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :      fi
       fi
       local _var_srcfiles1=()
       local _var_srcfile1
@@ -322,7 +304,7 @@ fi
       unset _var_srcfile1
     fi
     if [ ! -z "${_var_install}" ]; then
-      _var_644["${_var_install}"]=' ' # Why is this a space? See above.
+      _var_644["${_var_install}"]=' ' # Why is this a space and not blank? See _var_644 above.
       if _fn_find_in_srcfiles "${_var_install}"; then
         echo "The install file ${_var_install} should be removed from the source array."
         [ $returnv -ge 2 ] || returnv=2
@@ -330,7 +312,7 @@ fi
       if [ -s "${_var_install}" ]; then
         local _var_forbidgrep
         for _var_forbidgrep in "${_var_forbidgreps[@]}"; do
-          _var_forbidgrep="${_var_forbidgrep//%/}"
+          _var_forbidgrep="${_var_forbidgrep//%/q}"
           if ! eval "${_var_forbidgrep#*|} <(sed -e '/^[ \t]*#/d' '${_var_install}')"; then
             echo "Warning: The install file ${_var_install} has some forbidden text: ${_var_forbidgrep%%|*}"
             [ $returnv -ge 1 ] || returnv=1
@@ -346,6 +328,30 @@ fi
         [ $returnv -ge 2 ] || returnv=2
       fi
     fi
+    # The base is repeated in all the names. The code is here in case we find a case where it's not
+    # The pkgbase is needed elsewhere
+    #if [ "${_var_pkgbase}" != "${_var_pkgbase,,}" ]; then
+    #  echo "AUR permits only lowercase package base names: ${_var_pkgbase}"
+    #  [ $returnv -ge 2 ] || returnv=2
+    #fi
+    if [ ! -z "${_var_pkgbase}" -a "${_var_pkgbase}" != "${_var_pwdbn}" ]; then
+      echo '******************************************************'
+      echo "The folder name does not match the pkgbase/pkgname."
+      echo "pkgbase: ${_var_pkgbase}"
+      echo "Folder:  ${_var_pwdbn}"
+      echo '******************************************************'
+      [ $returnv -ge 3 ] || returnv=3
+    fi
+    if [ "${#_var_pkgnames[@]}" -ne 0 ]; then
+      local _var_pkgname
+      for _var_pkgname in "${_var_pkgnames[@]}"; do
+        if [ "${_var_pkgname}" != "${_var_pkgname,,}" ]; then
+          echo "AUR permits only lowercase package names: ${_var_pkgname}"
+          [ $returnv -ge 2 ] || returnv=2
+        fi
+      done
+      unset _var_pkgname
+    fi
     unset _var_install
     unset _var_changelog
 
@@ -354,6 +360,7 @@ fi
     local _var_srcfileswantgit=()
     local _var_srcfilesdontwantgit=()
     local _var_srcvcs=0
+    local _var_wantmakedepends=()
     if [ "${#_var_srcfiles[@]}" -ne 0 ]; then
       local _var_srcfile
       local _var_idx
@@ -373,12 +380,15 @@ fi
             _var_srcfilesdontwantgit+=("${_var_srcfile%%::*}");;
           esac
           _var_srcfiles[${_var_idx}]="${_var_srcfile}"
-          _var_srcfile="${_var_srcfile##*::}"
+          _var_srcfile="${_var_srcfile#*::}"
         fi
-        if [ "${_var_srcfile/:\/\//}" != "${_var_srcfile}" ]; then
+        if [ "${_var_srcfile/:\/\//}" != "${_var_srcfile}" ]; then # it's a link ://
           _var_srclink=("${_var_srcfile}") # We don't about what's on the end here
           case "${_var_srclink}" in
-          bzr*|git*|hg*|svn*)_var_srcvcs=1;; # from makepkg
+          bzr*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'bzr' && _var_wantmakedepends+=('bzr|bzr');;
+          git*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'git' && _var_wantmakedepends+=('git|git');;
+          hg*) _var_srcvcs=1; ! _fn_find_in_wantmakedepends 'hg'  && _var_wantmakedepends+=('hg|mercurial');;
+          svn*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'svn' && _var_wantmakedepends+=('svn|subversion');;
           *)
             _var_srcfile="${_var_srcfile##*/}" # bash string version of basename
             _var_srcfilesdontwantgit+=("${_var_srcfile}")
@@ -413,6 +423,35 @@ fi
     # 1) Run through git ls-files with FSA. Unmaintainable mess.
     # 2) Run through git status --porcelain with FSA. Only shows diffs and still unmaintainable.
     # 3) Now it's a series of simple set operations. The sets can be verified with set > tmpfile.
+    if [ "${#_var_wantmakedepends[@]}" -ne 0 ]; then
+      local _var_wantmakedepend
+      for _var_wantmakedepend in "${_var_wantmakedepends[@]}"; do
+        _var_wantmakedepend="${_var_wantmakedepend#*|}"
+        if ! _fn_find_in_makedepends "${_var_wantmakedepend}" && ! _fn_find_in_depends "${_var_wantmakedepend}"; then
+          echo "For this vcs package ${_var_wantmakedepend} must be added to makedepends or possibly depends."
+          [ $returnv -ge 2 ] || returnv=2
+        fi
+      done
+      if [ "${#_var_wantmakedepends[@]}" -eq 1 ]; then # We don't have an opinion if there are 2 or more different vcs sources
+        _var_wantmakedepend="${_var_wantmakedepends[0]}"
+        _var_wantmakedepend="${_var_wantmakedepend%%|*}"
+        local _var_wrongext=''
+        case "${_var_pkgbase}" in
+        *-bzr) [ "${_var_wantmakedepend}" != 'bzr' ] && _var_wrongext='-bzr';;
+        *-git) [ "${_var_wantmakedepend}" != 'git' ] && _var_wrongext='-git';;
+        *-hg)  [ "${_var_wantmakedepend}" != 'hg'  ] && _var_wrongext='-hg';;
+        *-svn) [ "${_var_wantmakedepend}" != 'svn' ] && _var_wrongext='-svn';;
+        esac
+        if [ ! -z "${_var_wrongext}" ]; then
+          echo "${_var_wrongext} is the wrong suffix for your vcs package. Try -${_var_wantmakedepend}"
+          [ $returnv -ge 2 ] || returnv=2
+        fi
+        unset _var_wrongext
+      fi
+      unset _var_wantmakedepend
+    fi
+    unset _var_pkgbase
+
     local _var_reqfile
     for _var_reqfile in "${!_var_644[@]}"; do
       ! _fn_find_in_allfiles "${_var_reqfile}" && _var_allfiles+=("${_var_reqfile}") # This probably isn't necessary
@@ -524,8 +563,17 @@ fi
         fi
         [ $returnv -ge 1 ] || returnv=1
       fi
+      set +e
+      local _var_revlist="$(git rev-list HEAD --count 2>/dev/null)"
+      if [ $? -eq 0 -a ! -z "${_var_revlist}" ] && [ "${_var_revlist}" -ge 2 ]; then
+        # git revert is worthless as it reverts in the forward direction. We need to go two steps in reverse to before HEAD.
+        echo "There are multiple commits on an empty repository. This may not do what you want. It seems that git cannot reset before your first commit HEAD back to an empty repository. You may need to rm -rf '.git' and clone again as instructed by $(basename "$0")."
+        [ $returnv -ge 2 ] || returnv=2
+      fi
+      set -e
     elif [ ! -z "${_var_push}" ]; then
-      if [ "${#_var_gitadds[@]}" -gt 0 -o ! -z "${_var_gitmodified}" ]; then
+      # Unfortunately this does not detect multiple commits before the first commit is made
+      if [ "${#_var_gitadds[@]}" -gt 0 -o ! -z "${_var_gitmodified}" -o "$(git rev-list HEAD --count)" -ge 2 ]; then
         # http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit\
         echo "There are modifications after a commit. A push or another commit may not do what you want. Maybe try: git reset --soft 'HEAD~1'; git status"
         [ $returnv -ge 2 ] || returnv=2
