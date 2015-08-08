@@ -1,0 +1,19 @@
+pkgbase = vpaint-git
+	pkgdesc = VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology.
+	pkgver = v1.5.r0.g416c2c1
+	pkgrel = 1
+	url = http://www.vpaint.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = qtchooser
+	depends = qt4
+	depends = glu
+	source = vpaint-git::git+https://github.com/dalboris/vpaint.git
+	md5sums = SKIP
+
+pkgname = vpaint-git
+
