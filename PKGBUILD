@@ -4,11 +4,11 @@
 pkgname='xupnpd'
 pkgdesc="eXtensible UPnP agent (proxy IP TV multicast to DLNA)"
 pkgver='1.033'
-pkgrel='2'
+pkgrel='3'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url=("http://${pkgname}.org")
 license=('GPL2')
-makedepends=('subversion' 'lua' 'lua-luajson')
+makedepends=('git' 'lua' 'lua-luajson')
 optdepends=('udpxy: custom udp to http proxy')
 install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/clark15b/${pkgname}"

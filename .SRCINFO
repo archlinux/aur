@@ -1,7 +1,7 @@
 pkgbase = xupnpd
 	pkgdesc = eXtensible UPnP agent (proxy IP TV multicast to DLNA)
 	pkgver = 1.033
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xupnpd.org
 	install = xupnpd.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xupnpd
 	arch = armv6h
 	arch = armv7h
 	license = GPL2
-	makedepends = subversion
+	makedepends = git
 	makedepends = lua
 	makedepends = lua-luajson
 	optdepends = udpxy: custom udp to http proxy
