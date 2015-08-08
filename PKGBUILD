@@ -1,8 +1,8 @@
 # Maintainer: Malte Bublitz <malte70+aur[at]mcbx[dot]de>
 
 pkgname=geheim
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="Simple password manager which tries to follow the Unix principles, written in Bash and using Tar and GnuPG to store passwords."
 arch=(any)
 url="http://malte-bublitz.de/geheim"
@@ -10,7 +10,7 @@ license=("BSD")
 depends=("gnupg" "tar")
 makedepends=("make")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/malte70/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e3153bcd7ccbeb7ed37446073f6a61c3ecc2afd7ddbb4950a6b45ee441a5dbcc')
+sha256sums=('170336b31607594cd4cf6c56ab757ef6f4919462421040ac264fcce1894ef579')
 
 check() {
 	cd "${srcdir}/$pkgname-${pkgver}"
