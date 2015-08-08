@@ -1,0 +1,13 @@
+pkgbase = brother-lpr-drivers-common
+	pkgdesc = This package provides common files for Brother LPR drivers packages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:brother commercial license
+	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-lpr-drivers-common/brother-lpr-drivers-common_1.0.0-4-0ubuntu1_.deb
+
+pkgname = brother-lpr-drivers-common
+
