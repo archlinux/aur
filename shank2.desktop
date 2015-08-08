@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Shank 2
+GenericName=Shank 2
+Comment=A 2D side-scrolling beat 'em up.
+Categories=Game;ArcadeGame;
+Path=/opt/shank2/
+Icon=/opt/shank2/Shank2.xpm
+Exec=shank2

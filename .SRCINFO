@@ -1,0 +1,21 @@
+pkgbase = shank2
+	pkgdesc = A 2D side-scrolling beat ’em up.
+	pkgver = update7
+	pkgrel = 4
+	url = http://www.shankgame.com/
+	arch = i686
+	arch = x86_64
+	groups = humble-indie-bundle7
+	groups = games
+	license = custom:commercial
+	depends = sdl
+	depends = libgl
+	source = hib://shank2-linux-update7.tgz
+	source = shank2.sh
+	source = shank2.desktop
+	sha1sums = 246df822375a97ab4e3a74353b5a33e9b4a54934
+	sha1sums = b6ce1311e04c65243ee2159f877fba539121887e
+	sha1sums = 6a2267ea66fce90dea94ff3964ab704751f18ee5
+
+pkgname = shank2
+
