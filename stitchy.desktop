@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+
+Type=Application
+
+Name=Stitchy
+_GenericName=Cross stitch editor
+_Comment=Cross stitch pattern designer
+Icon=stitchy
+
+Categories=GTK;Graphics;
+
+Exec=stitchy %F
+TryExec=stitchy
+Terminal=false
+StartupNotify=true
+
