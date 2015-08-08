@@ -1,0 +1,21 @@
+pkgbase = menda-themes
+	pkgver = 20150103
+	pkgrel = 1
+	url = https://github.com/manjaro/artwork-menda
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	optdepends = menda-circle-icon-theme: Recommended icon theme
+	optdepends = menda-square-icon-theme: Recommended icon theme
+	optdepends = faenza-green-icon-theme: Recommended icon theme
+	source = menda-themes-20150103-1.tar.gz::https://github.com/manjaro/artwork-menda/archive/f0b3657cb131df0f55c2b554f8691dc3a1a3bd87.tar.gz
+	sha1sums = SKIP
+
+pkgname = menda-themes
+	pkgdesc = Manjaro's official Gtk2, Gtk3, Metacity, Xfwm, Openbox, Cinnamon and GNOME Shell themes
+	replaces = gtk-theme-menda
+
+pkgname = menda-themes-dark
+	pkgdesc = Manjaro's official Gtk2, Gtk3, Metacity, Xfwm, Openbox, Cinnamon and GNOME Shell themes. Dark version.
+
