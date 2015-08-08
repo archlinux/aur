@@ -1,10 +1,12 @@
 [Unit]
 Description=Transmission RSS daemon.
+#After=network.target transmission-daemon.service
 After=network.target
 
 [Service]
 Type=forking
 ExecStart=/usr/bin/transmission-rss -f
+ExecReload=/bin/kill -s HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
