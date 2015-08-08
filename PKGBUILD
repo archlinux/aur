@@ -1,4 +1,3 @@
-# Contributor: Benjamin Vanderford <hazor_at_swrpg_dot_info
 # Maintainer:  respiranto <respiranto@icloud.com>
 pkgname=dict-freedict-fra-deu
 pkgver=0.1.1
