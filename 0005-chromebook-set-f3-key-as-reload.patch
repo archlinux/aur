@@ -1,0 +1,25 @@
+From d1745e46ead7e5a447f9758904be953647274b83 Mon Sep 17 00:00:00 2001
+From: dhead666 <myfoolishgames@gmail.com>
+Date: Tue, 21 Oct 2014 07:57:19 +0300
+Subject: [PATCH 5/6] [chromebook] set f3 key as reload
+
+---
+ symbols/srvr_ctrl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/symbols/srvr_ctrl b/symbols/srvr_ctrl
+index ab66444..71b71de 100644
+--- a/symbols/srvr_ctrl
++++ b/symbols/srvr_ctrl
+@@ -21,7 +21,7 @@ xkb_symbols "fkey2vt" {
+ 
+     key <FK03> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F3, F3, F3, F3, XF86_Switch_VT_3 ]
++	symbols[Group1]= [ XF86Reload, F3, F3, F3, XF86_Switch_VT_3 ]
+     };
+ 
+     key <FK04> {
+-- 
+2.1.2
+

@@ -1,0 +1,26 @@
+From f0b3114528cd3fac5049057c18670b904f9e2ad2 Mon Sep 17 00:00:00 2001
+From: dhead666 <myfoolishgames@gmail.com>
+Date: Tue, 21 Oct 2014 07:59:33 +0300
+Subject: [PATCH 6/6] [chromebook] set f5 key (chrome os' overview) as
+ printscreen
+
+---
+ symbols/srvr_ctrl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/symbols/srvr_ctrl b/symbols/srvr_ctrl
+index 71b71de..451ce3a 100644
+--- a/symbols/srvr_ctrl
++++ b/symbols/srvr_ctrl
+@@ -31,7 +31,7 @@ xkb_symbols "fkey2vt" {
+ 
+     key <FK05> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F5, F5, F5, F5, XF86_Switch_VT_5 ]
++	symbols[Group1]= [ Print, F5, F5, F5, XF86_Switch_VT_5 ]
+     };
+ 
+     key <FK06> {
+-- 
+2.1.2
+

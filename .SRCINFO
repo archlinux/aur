@@ -1,0 +1,34 @@
+pkgbase = xkeyboard-config-chromebook
+	pkgdesc = X keyboard configuration files
+	pkgver = 2.14
+	pkgrel = 2
+	url = http://www.freedesktop.org/wiki/Software/XKeyboardConfig
+	install = xkeyboard-config-chromebook.install
+	arch = any
+	license = custom
+	makedepends = intltool
+	makedepends = xorg-xkbcomp
+	provides = xkbdata,
+	provides = xkeyboard-config
+	conflicts = xkbdata,
+	conflicts = xkeyboard-config
+	replaces = xkbdata
+	source = http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.14.tar.bz2
+	source = xkeyboard-config-chromebook.install
+	source = 0001-chromebook-add-function-keys.patch
+	source = 0002-chromebook-set-altgr-backspace-as-delete.patch
+	source = 0003-chromebook-set-alt-shift-arrows-as-pgup-pgdown-home-.patch
+	source = 0004-chromebook-add-English-US-Chromebook-layout-with-alt.patch
+	source = 0005-chromebook-set-f3-key-as-reload.patch
+	source = 0006-chromebook-set-f5-key-chrome-os-overview-as-printscr.patch
+	sha256sums = dc91458a214c56a35727f9e523fc647615de64137057ca6ee4d4d4474a4bb2ae
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xkeyboard-config-chromebook
+

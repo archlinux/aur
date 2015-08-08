@@ -1,0 +1,25 @@
+From 4105c2283968773873b47612c4644bc2ad041f5b Mon Sep 17 00:00:00 2001
+From: dhead666 <myfoolishgames@gmail.com>
+Date: Mon, 29 Sep 2014 22:24:53 +0300
+Subject: [PATCH 2/6] [chromebook] set altgr+backspace as delete
+
+---
+ symbols/pc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/symbols/pc b/symbols/pc
+index 0199713..9a2ad57 100644
+--- a/symbols/pc
++++ b/symbols/pc
+@@ -14,7 +14,7 @@ xkb_symbols "pc105" {
+     include "pc(editing)"
+     include "keypad(x11)"
+ 
+-    key <BKSP> {	[ BackSpace, BackSpace	]	};
++    key <BKSP> {	[ BackSpace, BackSpace, Delete	]	};
+ 
+     key  <TAB> {	[ Tab,	ISO_Left_Tab	]	};
+     key <RTRN> {	[ Return		]	};
+-- 
+2.1.2
+

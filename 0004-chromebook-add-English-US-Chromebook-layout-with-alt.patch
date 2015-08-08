@@ -1,0 +1,51 @@
+From e5f17e1b8ea5378f878562ad3437467a97b17801 Mon Sep 17 00:00:00 2001
+From: dhead666 <myfoolishgames@gmail.com>
+Date: Mon, 29 Sep 2014 22:26:41 +0300
+Subject: [PATCH 4/6] [chromebook] add English(US, Chromebook) layout with
+ altgr
+
+---
+ rules/base.xml.in | 6 ++++++
+ symbols/us        | 9 +++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/rules/base.xml.in b/rules/base.xml.in
+index 3fd0ce4..68fbf90 100644
+--- a/rules/base.xml.in
++++ b/rules/base.xml.in
+@@ -1321,6 +1321,12 @@
+         </variant>
+         <variant>
+           <configItem>
++            <name>chromebook</name>
++            <_description>English (US, Chromebook)</_description>
++          </configItem>
++        </variant>
++        <variant>
++          <configItem>
+             <name>euro</name>
+             <_description>English (US, with euro on 5)</_description>
+           </configItem>
+diff --git a/symbols/us b/symbols/us
+index d5a6c18..e810a5d 100644
+--- a/symbols/us
++++ b/symbols/us
+@@ -57,6 +57,15 @@ xkb_symbols "basic" {
+ };
+ 
+ partial alphanumeric_keys
++xkb_symbols "chromebook" {
++
++    include "us(basic)"
++    name[Group1]= "English (US, Chromebook)";
++
++    include "level3(ralt_switch)"
++};
++
++partial alphanumeric_keys
+ xkb_symbols "euro" {
+ 
+     include "us(basic)"
+-- 
+2.1.2
+

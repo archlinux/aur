@@ -1,0 +1,27 @@
+post_install(){
+  echo 'For detailed info about xkeyboard-config-chromebook please visit'
+  echo 'https://github.com/dhead666/archlinux-pkgbuilds/tree/master/xkeyboard-config-chromebook'
+  echo ''
+  request_message
+}
+
+post_upgrade() {
+  echo 'AltGR+Arrows mapping have been removed, instead use Alt+Shift+Arrows'
+  echo ''
+  request_message
+}
+
+request_message(){
+  echo 'If you use this package then please support my feature request for libxkbcommon.'
+  echo 'Adding RedirectKey action to libxkbcommon will make sure the mapping will work'
+  echo 'for Chromium, Firefox and LibreOffice in a Wayland session.'
+  echo 'We need to show the developers that this feature is wanted as ATM their current'
+  echo 'view is that this feature is big, will complicate things and no one ask for it yet.'
+  echo ''
+  echo 'In short please post on the bug report at'
+  echo 'https://github.com/xkbcommon/libxkbcommon/issues/18'
+  echo ''
+  echo 'You are welcome to try the RedirectKey solution with X session by compiling the package'
+  echo 'from the link, let me know how it works for you by mail or by a bug report on Github.'
+  echo 'https://github.com/dhead666/archlinux-pkgbuilds/tree/chromebook_redirect_key/xkeyboard-config-chromebook'
+}

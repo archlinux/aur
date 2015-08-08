@@ -1,0 +1,73 @@
+From 197be033ef794207489f3d7a848aac427f34de41 Mon Sep 17 00:00:00 2001
+From: dhead666 <myfoolishgames@gmail.com>
+Date: Mon, 29 Sep 2014 22:22:30 +0300
+Subject: [PATCH 1/6] [chromebook] add function keys
+
+---
+ symbols/srvr_ctrl | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/symbols/srvr_ctrl b/symbols/srvr_ctrl
+index 902c51c..ab66444 100644
+--- a/symbols/srvr_ctrl
++++ b/symbols/srvr_ctrl
+@@ -11,12 +11,12 @@ xkb_symbols "fkey2vt" {
+ 
+     key <FK01> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F1, F1, F1, F1, XF86_Switch_VT_1 ]
++	symbols[Group1]= [ XF86Back, F1, F1, F1, XF86_Switch_VT_1 ]
+     };
+ 
+     key <FK02> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F2, F2, F2, F2, XF86_Switch_VT_2 ]
++	symbols[Group1]= [ XF86Forward, F2, F2, F2, XF86_Switch_VT_2 ]
+     };
+ 
+     key <FK03> {
+@@ -26,7 +26,7 @@ xkb_symbols "fkey2vt" {
+ 
+     key <FK04> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F4, F4, F4, F4, XF86_Switch_VT_4 ]
++	symbols[Group1]= [ F11, F4, F4, F4, XF86_Switch_VT_4 ]
+     };
+ 
+     key <FK05> {
+@@ -36,27 +36,27 @@ xkb_symbols "fkey2vt" {
+ 
+     key <FK06> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F6, F6, F6, F6, XF86_Switch_VT_6 ]
++	symbols[Group1]= [ XF86MonBrightnessDown, F6, F6, F6, XF86_Switch_VT_6 ]
+     };
+ 
+     key <FK07> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F7, F7, F7, F7, XF86_Switch_VT_7 ]
++	symbols[Group1]= [ XF86MonBrightnessUp, F7, F7, F7, XF86_Switch_VT_7 ]
+     };
+ 
+     key <FK08> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F8, F8, F8, F8, XF86_Switch_VT_8 ]
++	symbols[Group1]= [ XF86AudioMute, F8, F8, F8, XF86_Switch_VT_8 ]
+     };
+ 
+     key <FK09> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F9, F9, F9, F9, XF86_Switch_VT_9 ]
++	symbols[Group1]= [ XF86AudioLowerVolume, F9, F9, F9, XF86_Switch_VT_9 ]
+     };
+ 
+     key <FK10> {
+ 	type="CTRL+ALT",
+-	symbols[Group1]= [ F10, F10, F10, F10, XF86_Switch_VT_10 ]
++	symbols[Group1]= [ XF86AudioRaiseVolume, F10, F10, F10, XF86_Switch_VT_10 ]
+     };
+ 
+     key <FK11> {
+-- 
+2.1.2
+

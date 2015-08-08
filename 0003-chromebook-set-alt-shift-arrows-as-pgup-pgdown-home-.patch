@@ -1,0 +1,68 @@
+From dcdb4f5f02a868a113b8b715f68aca79fb0c4bcf Mon Sep 17 00:00:00 2001
+From: dhead666 <myfoolishgames@gmail.com>
+Date: Fri, 5 Dec 2014 17:07:07 +0200
+Subject: [PATCH 3/6] [chromebook] set alt+shift+arrows as pgup,pgdown,home,end
+
+---
+ symbols/pc  | 20 ++++++++++++++++----
+ types/basic |  9 +++++++++
+ 2 files changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/symbols/pc b/symbols/pc
+index 9a2ad57..7f7d3eb 100644
+--- a/symbols/pc
++++ b/symbols/pc
+@@ -80,8 +80,20 @@ xkb_symbols "editing" {
+     key  <END> {	[  End			]	};
+     key <PGDN> {	[  Next			]	};
+ 
+-    key   <UP> {	[  Up			]	};
+-    key <LEFT> {	[  Left			]	};
+-    key <DOWN> {	[  Down			]	};
+-    key <RGHT> {	[  Right		]	};
++    key <UP> {
++	type= "CHROMEBOOK",
++	[  Up, Up, Prior, Up ]
++    };
++    key <LEFT> {
++	type= "CHROMEBOOK",
++	[  Left, Left, Home, Left ]
++    };
++    key <DOWN> {
++	type= "CHROMEBOOK",
++	[  Down, Down, Next, Down ]
++    };
++    key <RGHT> {
++	type= "CHROMEBOOK",
++	[  Right, Right, End, Right ]
++    };
+ };
+diff --git a/types/basic b/types/basic
+index fff06be..0a27ef9 100644
+--- a/types/basic
++++ b/types/basic
+@@ -5,6 +5,7 @@ default xkb_types "basic" {
+     // The fourth type "KEYPAD" is defined in the "numpad" file.
+ 
+     virtual_modifiers NumLock;
++    virtual_modifiers Alt;
+ 
+     type "ONE_LEVEL" {
+ 	modifiers = None;
+@@ -26,5 +27,13 @@ default xkb_types "basic" {
+ 	level_name[Level1] = "Base";
+ 	level_name[Level2] = "Caps";
+     };
++    type "CHROMEBOOK" {
++	modifiers = Shift+Alt;
++	map[Shift] = Level2;
++	map[Alt+Shift] = Level3;
++	level_name[Level1] = "Base";
++	level_name[Level2] = "Caps";
++        level_name[Level3] = "ShiftAlt";
++    };
+ 
+ };
+-- 
+2.2.2
+
