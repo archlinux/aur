@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=clrmamepro
+Comment=A ROM manager
+Exec=clrmamepro
+Icon=clrmamepro
+Categories=Utility;
