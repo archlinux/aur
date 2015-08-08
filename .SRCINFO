@@ -1,0 +1,14 @@
+pkgbase = nsnake
+	pkgdesc = Customizable Snake game with ncurses for the terminal
+	pkgver = 3.0.1
+	pkgrel = 2
+	url = http://nsnake.alexdantas.net/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = ncurses
+	source = https://github.com/alexdantas/nsnake/archive/v3.0.1.tar.gz
+	md5sums = bb024bdf8f95989b38c4893a99228d34
+
+pkgname = nsnake
+
