@@ -1,0 +1,19 @@
+pkgbase = vera-plugin-openbox-git
+	pkgdesc = Openbox plugin for vera
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/vera-desktop/vera-plugin-openbox
+	install = vera-plugin-openbox.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bake
+	depends = vera-git
+	provides = vera-plugin-openbox-git
+	conflicts = vera-plugin-openbox-git
+	conflicts = vera-plugin-openbox
+	source = vera-plugin-openbox::git://github.com/vera-desktop/vera-plugin-openbox.git#branch=master
+	md5sums = SKIP
+
+pkgname = vera-plugin-openbox-git
+
