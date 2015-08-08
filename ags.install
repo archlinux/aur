@@ -1,0 +1,11 @@
+post_install() {
+  echo ""
+  echo " In order to run a game, you must first install it either with Wine"
+       echo " or just use Windows installation"
+
+  echo " To run it type ags '/GameDir/Game.exe'"
+
+  echo " The native game configurator isn't supported yet,"
+       echo " so you must use the Windows one ('winsetup.exe') with Wine."
+  echo ""
+}
