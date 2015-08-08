@@ -1,0 +1,34 @@
+pkgbase = freicoind
+	pkgdesc = Freicoin distributed currency(based on bitcoin). Daemon.
+	pkgver = 0.8.6.1
+	pkgrel = 1
+	url = http://freico.in/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = boost
+	makedepends = qt4
+	makedepends = qrencode
+	depends = boost-libs
+	depends = openssl
+	depends = miniupnpc
+	depends = mpfr
+	depends = gmp
+	provides = freicoin
+	source = https://github.com/freicoin/freicoin/archive/v0.8.6.1.tar.gz
+	source = freicoind.install
+	source = freicoind.service
+	source = freicoind.tmpfiles
+	md5sums = 74515a30be9794a0d17ffa2ecdee0f24
+	md5sums = 7cefc39669993339c02f65288f412eae
+	md5sums = 8d10dfee4a07cc141a2a8f5ec222fa9c
+	md5sums = 71c6d6e842e7b1f318ea156cf970b58d
+
+pkgname = freicoind
+	pkgdesc = Freicoin distributed currency(based on bitcoin). Daemon.
+	install = freicoind.install
+	backup = etc/freicoind.conf
+

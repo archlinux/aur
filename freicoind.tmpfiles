@@ -1,0 +1,4 @@
+# systemd tmpfile settings for minidlna
+# See tmpfiles.d(5) for details
+
+d /var/run/freicoind 0755 freicoind freicoind -

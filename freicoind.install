@@ -1,0 +1,21 @@
+post_install(){
+  getent group freicoind &>/dev/null || groupadd -r freicoind >/dev/null
+  getent passwd freicoind &>/dev/null || useradd -r -g freicoind -d /var/lib/freicoind -c 'Freicoin daemon' -s /bin/false freicoind >/dev/null
+  
+  mkdir -p /var/lib/freicoind && chown -R freicoind:freicoind /var/lib/freicoind
+  systemd-tmpfiles --create freicoind.conf
+  echo ">> Please, adjust daemond's config (/etc/freicoind.conf) before using it"
+  true
+}
+
+post_remove(){
+  
+  echo ">> Data directory won't be removed. Please, remove it manually if needed"
+  
+  [[ -d /var/lib/freicoind ]] && chown -R root:root /var/lib/freicoind
+  
+  getent passwd freicoind &>/dev/null && userdel freicoind >/dev/null
+  getent group freicoind &>/dev/null && groupdel freicoind >/dev/null
+  true
+}
+ 

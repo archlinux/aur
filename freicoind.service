@@ -1,0 +1,17 @@
+[Unit]
+Description=Freicoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=freicoind
+Group=freicoind
+
+Type=forking
+PIDFile=/var/lib/freicoind/freicoind.pid
+ExecStart=/usr/bin/freicoind -daemon -pid=/var/lib/freicoind/freicoind.pid -conf=/etc/freicoind.conf -datadir=/var/lib/freicoind 
+
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
