@@ -1,10 +1,10 @@
-# Maintainer:  Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: orbisvicis <''.join(chr(ord(c)-1) for c in "pscjtwjdjtAhnbjm/dpn")>
 # Contributor: Ray Rashif <rayrashif@gmail.com>
 
 _pkgname=swh-lv2
 pkgname="${_pkgname}-git"
-pkgver=1.0.15.r36.978d5d8
+pkgver=1.0.15.r43.5098e09
 pkgrel=1
 pkgdesc="Experimental port of Steve Harris' LADSPA plugins to LV2 format"
 arch=('i686' 'x86_64')
