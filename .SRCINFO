@@ -1,6 +1,6 @@
 pkgbase = packer
 	pkgdesc = Bash wrapper for pacman and aur
-	pkgver = 20140810
+	pkgver = 20150808
 	pkgrel = 1
 	url = http://github.com/keenerd/packer
 	arch = any
