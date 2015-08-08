@@ -18,7 +18,7 @@ sha256sums=('3af87e5f0608a69849c00eb7c73b11f8422fa36903dd14610584506e7f68e638')
 _install_docs=1
 
 prepare(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}"
 
   # Out of source build
   rm -rf build
@@ -26,10 +26,11 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
 
   export PYTHON=/usr/bin/python2
-  ../configure --prefix=/usr \
+  ../${pkgname}-${pkgver}/configure \
+    --prefix=/usr \
     --enable-shared --enable-optimization \
     --enable-fortran --enable-browser \
     --enable-silex \
@@ -47,7 +48,7 @@ build() {
 }
 
 check(){
-  cd "${srcdir}/${pkgname}-${pkgver}/build/tests"
+  cd "${srcdir}/build/tests"
 
   # Quick test
   make testall
@@ -59,7 +60,7 @@ check(){
 }
 
 package(){
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
 
