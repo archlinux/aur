@@ -1,0 +1,20 @@
+pkgbase = gog-flatout-2
+	pkgdesc = Experience the drive of your life as you throw yourself around on and off the track!
+	pkgver = 1.0.0.3
+	pkgrel = 2
+	url = http://www.gog.com/game/flatout_2
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	source = local://gog_flatout_2_1.0.0.3.tar.gz
+	source = gog-flatout-2
+	sha256sums = ca8694c3e1ff6223b5100757b3ee6da0591ae826369c64f2ce426fa011d63334
+	sha256sums = 53eb5660e121fa7346d0a48e85b14f7801012140bd415b04c47f511253aa79e7
+
+pkgname = gog-flatout-2
+

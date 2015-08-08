@@ -1,0 +1,39 @@
+#!/usr/bin/bash
+if [ ! -d "$HOME"/.flatout-2 ] ; then
+   echo "Notice: Copying some files into ~/.flatout-2. To uninstall completely, don't forget to remove ~/.flatout-2!!!"
+   mkdir "$HOME"/.flatout-2
+   mkdir "$HOME"/.flatout-2/docs
+   cp -R /usr/share/gog/flatout_2/docs/* "$HOME"/.flatout-2/docs
+   mkdir "$HOME"/.flatout-2/support
+   cp -R /usr/share/gog/flatout_2/support/* "$HOME"/.flatout-2/support
+   cp -R /usr/share/gog/flatout_2/start.sh "$HOME"/.flatout-2
+   mkdir "$HOME"/.flatout-2/prefix
+   mkdir "$HOME"/.flatout-2/prefix/dosdevices
+   cp -R /usr/share/gog/flatout_2/prefix/dosdevices/* "$HOME"/.flatout-2/prefix/dosdevices
+   cp -R /usr/share/gog/flatout_2/prefix/*.reg "$HOME"/.flatout-2/prefix
+   mkdir "$HOME"/.flatout-2/prefix/drive_c
+   mkdir "$HOME"/.flatout-2/prefix/drive_c/Program\ Files
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/Program\ Files/* "$HOME"/.flatout-2/prefix/drive_c/Program\ Files
+   mkdir "$HOME"/.flatout-2/prefix/drive_c/users
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/users/* "$HOME"/.flatout-2/prefix/drive_c/users
+   mkdir "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games
+   mkdir "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/FlatOut2.exe "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/filesystem "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R '/usr/share/gog/flatout_2/prefix/drive_c/GOG Games/FlatOut 2/FlatOut 2 - Manual (German).pdf' "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/FlatOut\ 2\ -\ Manual.pdf "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/Launch\ FlatOut\ 2.lnk "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/FlatOut2.ico "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/patch "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/patch1.bfs "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/readme.htm "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/SFI.ico "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2
+   ln -s /usr/share/gog/flatout_2/wine_standalone "$HOME"/.flatout-2/wine_standalone
+   mkdir "$HOME"/.flatout-2/prefix/drive_c/windows
+   cp -R /usr/share/gog/flatout_2/prefix/drive_c/windows/* "$HOME"/.flatout-2/prefix/drive_c/windows
+   ln -s /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/fo2a.bfs "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2/fo2a.bfs
+   ln -s /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/fo2b.bfs "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2/fo2b.bfs
+   ln -s /usr/share/gog/flatout_2/prefix/drive_c/GOG\ Games/FlatOut\ 2/fo2c.bfs "$HOME"/.flatout-2/prefix/drive_c/GOG\ Games/FlatOut\ 2/fo2c.bfs
+
+fi
+"$HOME"/.flatout-2/start.sh
