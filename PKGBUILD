@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -33,7 +33,6 @@ source=("$pkgname.service"
         'nginx.systemd.conf'
         'php-fpm.conf'
         'php-fpm.systemd.conf'
-        'php.ini'
         'sudoers'
 )
 md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
@@ -43,8 +42,7 @@ md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
          '75535f9870f06c540f513262a9b7b1ab'
          '496b1fa2533d1306318115e2b02984bd'
          'f9ae0c781a7ccefc63329daaf81fca36'
-         'c67b0758fde1d0fa45344c2c4222f50b'
-         'abef83520df5c7ee6a98884db5e741de')
+         '0dab31966eada66adb159355ed814a54')
 
 #~ pkgver() {
     #~ echo \
@@ -59,7 +57,6 @@ package() {
     install -Dm644 msmtprc "$pkgdir/etc/msmtprc.$pkgname"
     install -Dm644 nginx.conf "$pkgdir/etc/nginx/$pkgname.conf"
     install -Dm644 php-fpm.conf   "$pkgdir/etc/php/fpm.d/$pkgname.conf"
-    install -Dm644 php.ini "$pkgdir/etc/php/conf.d/$pkgname.ini"
     install -Dm400 sudoers "$pkgdir/etc/sudoers.d/$pkgname"
     install -Dm644 --owner=http --group=http <( ) "$pkgdir/var/spool/cron/$pkgname"
 
@@ -70,7 +67,7 @@ package() {
     install -Dm644 php-fpm.systemd.conf "$pkgdir/usr/lib/systemd/system/php-fpm.service.d/aegir.conf"
 
     msg2 'Creating $pkgname directory structure'
-    mkdir -p "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname"
+    install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname"
     ln -s /etc/drush "$pkgdir/usr/share/webapps/$pkgname/.drush"
     umask 077
     mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{backups,clients/admin,config/{includes,self,server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}}

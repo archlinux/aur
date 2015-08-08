@@ -4,6 +4,10 @@ post_install() {
     echo "User already exists; no action taken."
   } || {
     useradd --gid $(id --group http) --home-dir /usr/share/webapps/aegir --non-unique --uid $(id --user http) aegir
+    # Replace /etc/passwd with itself having the Aegir user rearranged above the HTTP user.
+    tempfile=$(mktemp)
+    cat <(sed -n '1,/^http/p' /etc/passwd | head -n-1) <(getent passwd aegir) <(sed -n '/^http/,$p' /etc/passwd | head -n-1) >| $tempfile
+    install -m644 $tempfile /etc/passwd
     echo "Done."
   }
 
@@ -56,4 +60,6 @@ post_upgrade() {
 pre_remove() {
   [ $(systemctl --system is-enabled aegir.target) = enabled ] && systemctl --system disable --now aegir.target
   [ $(systemctl --system is-active aegir.target) = enabled ] && systemctl --system stop --now aegir.target
+  [ $(getent passwd aegir &>/dev/null; echo $?) -eq 0 ] && userdel aegir
+  echo ">>> There are still files related to Aegir at: /usr/share/webapps/aegir."
 }
