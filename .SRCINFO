@@ -1,0 +1,49 @@
+pkgbase = sssd-git
+	pkgdesc = System Security Services Daemon
+	pkgver = 1.12.0.r147.gfe00819
+	pkgrel = 1
+	url = https://fedorahosted.org/sssd/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = docbook-xsl
+	makedepends = doxygen
+	makedepends = git
+	makedepends = python2
+	makedepends = samba
+	depends = augeas
+	depends = bind
+	depends = c-ares
+	depends = cyrus-sasl-gssapi
+	depends = dbus-core
+	depends = ding-libs
+	depends = krb5
+	depends = ldb
+	depends = libldap
+	depends = libnl
+	depends = libsasl
+	depends = libunistring
+	depends = libxml2
+	depends = nspr
+	depends = nss
+	depends = pcre
+	depends = smbclient
+	depends = talloc
+	depends = tdb
+	depends = tevent
+	source = git://git.fedorahosted.org/git/sssd.git
+	source = sssd.service
+	sha1sums = SKIP
+	sha1sums = 2d10db3d6f54a58bbf8d1f27328e68555256e0ce
+
+pkgname = sssd-git
+	provides = sssd=1.12.0.r147.gfe00819
+	conflicts = sssd
+
+pkgname = sssd-libwbclient-git
+	pkgdesc = System Security Services Daemon – libwbclient emulation library
+	depends = sssd
+	provides = sssd-libwbclient=1.12.0.r147.gfe00819
+	conflicts = sssd-libwbclient
+	conflicts = libwbclient
+

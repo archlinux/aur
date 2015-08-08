@@ -1,0 +1,12 @@
+[Unit]
+Description=System Security Services Daemon
+Documentation=man:sssd(8)
+Before=rpc-idmapd.service
+
+[Service]
+ExecStart=/usr/bin/sssd -D -f
+Type=forking
+PIDFile=/run/sssd.pid
+
+[Install]
+WantedBy=multi-user.target
