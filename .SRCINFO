@@ -1,0 +1,19 @@
+pkgbase = chinadns
+	pkgdesc = Protect yourself against DNS poisoning in China.
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/clowwindy/ChinaDNS
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	conflicts = chinadns-c
+	source = git+https://github.com/clowwindy/ChinaDNS.git#tag=1.3.2
+	source = chinadns.service
+	source = chinadns@.service
+	md5sums = SKIP
+	md5sums = 5eb3e4862773c5bfcb30e21bc080358e
+	md5sums = 7d810346fca20c9d3c0bb0bfbb7ec360
+
+pkgname = chinadns
+
