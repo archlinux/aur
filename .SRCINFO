@@ -1,0 +1,17 @@
+pkgbase = owfs
+	pkgdesc = OWFS is an easy way to use the powerful 1-wire system of Dallas/Maxim.
+	pkgver = 3.1p0
+	pkgrel = 2
+	url = http://www.owfs.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = swig
+	depends = avahi
+	depends = fuse
+	depends = perl
+	source = http://downloads.sourceforge.net/project/owfs/owfs/3.1p0/owfs-3.1p0.tar.gz
+	sha1sums = f82bf91e4f78a667c09a44d486139f1359f0950c
+
+pkgname = owfs
+
