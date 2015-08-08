@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
 pkgver=2.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -48,7 +48,7 @@ prepare() {
     new_file_name="${file/%.ovpn/.conf}"
 	
     # Swap spaces in filenames for underscores to be more command-line friendly
-    new_file_name="${new_file_name/ /_}"
+    new_file_name="${new_file_name// /_}"
     mv "$file" "$new_file_name"
 
     # Prevent caching of password in memory 
