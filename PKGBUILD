@@ -1,7 +1,7 @@
-# Maintainer: prettyvanilla <prettyvanilla@posteo.at>
+# Maintainer: XavierCLL
 
 pkgname=kup
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A KDE-based frontend for the bup backup software"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('bup: support for incremental backups'
             'rsync: support for synced backups')
 install=kup.install
 source=("https://github.com/spersson/Kup/archive/${pkgname}-${pkgver}.tar.gz")
-md5sums=('238a135f37c94984fb2dfa267859b583')
+md5sums=('ba71ce5caf38f63e3881ecf5d56e7eab')
 
 build() {
   cd "Kup-${pkgname}-${pkgver}"
