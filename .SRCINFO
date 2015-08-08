@@ -1,0 +1,13 @@
+pkgbase = bibfilex-qt
+	pkgdesc = A free bibliographic manager for GNU/Linux
+	pkgver = 1.2.5.0
+	pkgrel = 1
+	url = https://sites.google.com/site/bibfilex/home
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = qt5-base
+	source = https://sites.google.com/site/bibfilex/download/bibfilex-qt_1.2.5.0_.deb?attredirects=0&d=1
+
+pkgname = bibfilex-qt
+
