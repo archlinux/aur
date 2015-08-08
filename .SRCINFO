@@ -1,0 +1,17 @@
+pkgbase = numix-shine-icon-theme-git
+	pkgdesc = An icon theme from the Numix project with a glossy design
+	pkgver = 5.428f9a8
+	pkgrel = 2
+	url = https://github.com/numixproject/numix-icon-theme-shine
+	install = numix-shine-icon-theme.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = numix-icon-theme-git
+	provides = numix-shine-icon-theme
+	conflicts = numix-shine-icon-theme
+	source = git://github.com/numixproject/numix-icon-theme-shine.git
+	md5sums = SKIP
+
+pkgname = numix-shine-icon-theme-git
+

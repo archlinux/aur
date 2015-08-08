@@ -1,0 +1,13 @@
+post-install() {
+  gtk-update-icon-cache -ftq usr/share/icons/Numix-Shine
+}
+
+post-upgrade() {
+  post-install
+}
+
+post-remove() {
+  post-install
+}
+
+# vim: ts=2 sw=2 et:
