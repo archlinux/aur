@@ -1,7 +1,7 @@
 pkgbase = octave-hg
 	pkgdesc = A high-level language, primarily intended for numerical computations.
 	pkgver = r20150808.9c7dd58b57e4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.octave.org
 	install = octave.install
 	arch = i686

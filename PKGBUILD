@@ -1,10 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
-LANG=C
 pkgname=octave-hg
 pkgver=r20150808.9c7dd58b57e4
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -50,9 +49,11 @@ build() {
   cd $srcdir/${_hgrepo}-build
  
   ./bootstrap --bootstrap-sync 
-LANG=C
+
   [[ $CARCH == "x86_64" ]] && _arch=amd64
   [[ $CARCH == "i686" ]] && _arch=i386
+  export LD_PRELOAD=/usr/lib/libGL.so
+  
   CXX=g++ CC=gcc ./configure --prefix=/usr \
     --libexecdir=/usr/lib --enable-shared --enable-jit \
     --enable-qhull MOC=moc-qt4 UIC=uic-qt4 --with-umfpack \
