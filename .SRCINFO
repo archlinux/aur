@@ -1,0 +1,12 @@
+pkgbase = af9015-firmware
+	pkgdesc = Firmware for Afatech af9015 based USB dvb devices
+	pkgver = 5.24.0.0
+	pkgrel = 5
+	url = http://linuxtv.org/wiki/index.php/Afatech_AF9015
+	arch = any
+	license = unknown
+	source = http://palosaari.fi/linux/v4l-dvb/firmware/af9015/5.24.0.0/dvb-usb-af9015.fw
+	md5sums = 4ea04354bb30fba400c7c84abf99ac13
+
+pkgname = af9015-firmware
+
