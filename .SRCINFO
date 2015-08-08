@@ -1,0 +1,12 @@
+pkgbase = soundfont-zeldamcsf2
+	pkgdesc = Legend of Zelda: Minish Cap soundfont for MIDI playback
+	pkgver = 20050118
+	pkgrel = 1
+	url = http://tssf.gamemusic.ca
+	arch = any
+	license = Public Domain
+	source = zeldamcsf2.zip::http://www.zophar.net/download_file/13208
+	md5sums = 77df61cb2675dbfc59d2c8cdba3229b0
+
+pkgname = soundfont-zeldamcsf2
+
