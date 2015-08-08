@@ -1,0 +1,19 @@
+pkgbase = vera-plugin-autostart-git
+	pkgdesc = autostart plugin for vera
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/vera-desktop/vera-plugin-autostart
+	install = vera-plugin-autostart.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bake
+	depends = vera
+	provides = vera-plugin-autostart-git
+	conflicts = vera-plugin-autostart-git
+	conflicts = vera-plugin-autostart
+	source = vera-plugin-autostart::git://github.com/vera-desktop/vera-plugin-autostart.git#branch=master
+	md5sums = SKIP
+
+pkgname = vera-plugin-autostart-git
+
