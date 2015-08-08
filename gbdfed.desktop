@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=gbdfed
+Comment=Bitmap font editor
+TryExec=gbdfed
+Exec=gbdfed %f
+Icon=gbdfed
+Categories=Graphics;2DGraphics;RasterGraphics;GTK;
