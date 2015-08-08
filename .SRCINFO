@@ -1,0 +1,17 @@
+pkgbase = nuntius
+	pkgdesc = Nuntius delivers notifications from your phone or tablet to your computer
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/holylobster/nuntius-linux
+	install = nuntius.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = vala
+	makedepends = intltool
+	depends = gtk3
+	source = https://github.com/holylobster/nuntius-linux/releases/download/v0.2.0/nuntius-0.2.0.tar.xz
+	sha256sums = 5e0b4d97aa3e4f435b8468728751d3ea58c1739f4fc3f0312693773ae89fe67e
+
+pkgname = nuntius
+
