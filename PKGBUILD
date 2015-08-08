@@ -4,16 +4,18 @@
 pkgname=amsynth-git
 _pkgname=amsynth
 pkgver=1.5.1.r729.d394e83
-pkgrel=1
-pkgdesc="an analog modelling (a.k.a virtual analog) synthesizer"
+pkgrel=2
+pkgdesc="An analog modelling (a.k.a. virtual analog) synthesizer"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/amsynth/"
 license=('GPL2')
-depends=('gtkmm' 'jack' 'lv2')
+depends=('gtkmm' 'jack' 'lv2' 'desktop-file-utils')
 makedepends=('git')
+optdepends=('liblo: DSSI plugin')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://code.google.com/p/amsynth/")
+install="amsynth.install"
 md5sums=('SKIP')
 
 pkgver() {
