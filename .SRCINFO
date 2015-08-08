@@ -1,0 +1,20 @@
+pkgbase = mfe
+	pkgdesc = A simple, GTK+ frontend / launcher for mednafen, written in python.
+	pkgver = 0.1.7
+	pkgrel = 3
+	url = http://sourceforge.net/projects/mednafenfe/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2
+	depends = gtk2
+	depends = pygtk
+	depends = python2-configobj
+	depends = mednafen
+	source = http://downloads.sourceforge.net/mednafenfe/mfe-0.1.7.tar.gz
+	source = mfe.patch
+	md5sums = e0e257acfdb307f076e0685ba6460945
+	md5sums = 2f745e97ec71e3108d9cea68edbde32a
+
+pkgname = mfe
+

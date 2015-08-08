@@ -1,0 +1,19 @@
+--- ./mfe-0.1.7/mfe/mfe.py	2011-08-01 09:38:48.000000000 +0200
++++ ./mfe.py	2013-03-10 12:38:25.000000000 +0100
+@@ -450,13 +450,13 @@
+         options.append("-%s.videoip" % prefix)
+         options.append(str(int(self.config["interpolate"])))
+ 
+-        options.append("-%s.vblur" % prefix)
++        options.append("-%s.tblur" % prefix)
+         options.append(str(int(self.config["vblur"])))
+         if self.config["vblur"]:
+-            options.append("-%s.vblur.accum" % prefix)
++            options.append("-%s.tblur.accum" % prefix)
+             options.append(str(int(self.config["accumulate"])))
+             if self.config["accumulate"]:
+-                options.append("-%s.vblur.accum.amount" % prefix)
++                options.append("-%s.tblur.accum.amount" % prefix)
+                 options.append(str(self.config["amount"]))
+ 
+         options.append("-%s.scanlines" % prefix)
