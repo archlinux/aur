@@ -1,6 +1,6 @@
 pkgbase = synergy-git
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = 20150805.r2320.1b8f055
+	pkgver = 20150807.r2323.588fb4b
 	pkgrel = 1
 	url = http://synergy-foss.org
 	arch = i686
