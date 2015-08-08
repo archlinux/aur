@@ -1,9 +1,8 @@
-# Q7Z: Installer: Arch
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
 post_install() {
 	# Messages
-	echo "==> Ensure that the 'COLOR' option is enabled in '/etc/pacman.conf' as well."
+	echo "==> Ensure that the 'Color' option is enabled in '/etc/pacman.conf' as well."
 
 	#/bin/true
 }

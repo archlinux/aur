@@ -1,6 +1,6 @@
 pkgbase = packer-color
 	pkgdesc = Adds AUR support to 'pacman' | Adds better colourisation and error handling to 'packer'
-	pkgver = 20140810
+	pkgver = 20150808
 	pkgrel = 1
 	url = http://github.com/keenerd/packer
 	install = packer-color.install
@@ -13,13 +13,12 @@ pkgbase = packer-color
 	depends = curl
 	depends = pacman
 	depends = jshon
+	depends = expac
 	optdepends = sudo: install and update packages as non-root
 	optdepends = customizepkg: apply customizepkg modifications
 	optdepends = zsh-packer-color: for Zsh tab completion
 	source = color.patch
-	source = AUR4.patch
-	sha1sums = 9ca7967f2c6abfc1664959d227f9d9375b76d47b
-	sha1sums = f757d015d97a898b3d27b2c002a15506db709fe1
+	sha1sums = dad7feddc2991249134096b10e671dfd486b485a
 
 pkgname = packer-color
 

@@ -1,7 +1,7 @@
 diff -aur packer.old/packer packer.new/packer
 --- packer.old/packer	2011-08-22 16:36:38.000000000 +1000
 +++ packer.new/packer	2011-08-22 16:39:32.000000000 +1000
-@@ -580,14 +580,22 @@
+@@ -663,14 +663,22 @@
        results="$(pacman -Ssq -- "${packageargs[@]}")"
      else
        results="$(pacman -Ss -- "${packageargs[@]}")"
