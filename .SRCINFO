@@ -1,0 +1,29 @@
+pkgbase = retroshare-v0.6-svn-beta-without-sqlcipher
+	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
+	pkgver = 8612
+	pkgrel = 1
+	url = http://retroshare.sourceforge.net/
+	install = retroshare-v0.6-svn-beta-without-sqlcipher.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	license = LGPL
+	makedepends = subversion
+	depends = qt4
+	depends = libupnp
+	depends = libgnome-keyring
+	depends = libxss
+	depends = libmicrohttpd
+	depends = libssh
+	depends = protobuf
+	provides = retroshare06
+	conflicts = retroshare06
+	source = svn://svn.code.sf.net/p/retroshare/code/trunk
+	source = retroshare-v0.6-svn-beta-without-sqlcipher.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = retroshare-v0.6-svn-beta-without-sqlcipher
+
