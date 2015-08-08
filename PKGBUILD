@@ -6,7 +6,7 @@
 
 set -u
 pkgname='aws-cli'
-pkgver='1.7.31'
+pkgver='1.7.44'
 pkgrel='1'
 pkgdesc='Universal Command Line Interface for Amazon Web Services.'
 arch=('any')
@@ -25,7 +25,7 @@ conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
 replaces=(                   'python-aws-cli' 'awscli')
 options=('!emptydirs')
 source=("https://github.com/aws/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d85af37b7a3f5018d77ded7e71d469a6ac25e951fe7bfe1947c50d85af11e2a6')
+sha256sums=('7f3b6778ea526af1dbcf21007f98b375fadc69e342114be5dc5a7d5cf5f5b097')
 
 package() {
   set -u
