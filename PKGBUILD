@@ -29,7 +29,7 @@ depends=(
 )
 makedepends=('python-distribute' 'git')
 conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli' "${_pkgname}")
-replaces=('python2-aws-cli'  'python-aws-cli' 'awscli' "${_pkgname}")
+replaces=(                   'python-aws-cli' 'awscli' "${_pkgname}")
 provides=('awscli' "${_pkgname}")
 options=('!emptydirs')
 source=("${pkgname}::git://github.com/aws/${_pkgname}.git")

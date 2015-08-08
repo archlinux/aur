@@ -26,7 +26,6 @@ pkgbase = aws-cli-git
 	conflicts = python-aws-cli
 	conflicts = awscli
 	conflicts = aws-cli
-	replaces = python2-aws-cli
 	replaces = python-aws-cli
 	replaces = awscli
 	replaces = aws-cli
