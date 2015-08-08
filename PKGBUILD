@@ -4,7 +4,7 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.343
+pkgver=1.2.344
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -51,9 +51,10 @@ source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}
 
 changelog=ChangeLog
 
-sha256sums=('18d0a02df1b9a898fdf4c98b6e366c9a79d7db93ddc6810a8edae690c5c9023a'
+sha256sums=('fb40100c30a9fbaf6c3c3e4eeddfc7e636eb5b8aa7d68bc8c24de441b818f7bd'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
+
 prepare() {
   cd "${_pkgname}"-"${pkgver}"
 
