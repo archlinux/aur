@@ -1,0 +1,15 @@
+pkgbase = silc-toolkit
+	pkgdesc = Toolkit for Secure Internet Live Conferencing
+	pkgver = 1.1.12
+	pkgrel = 1
+	url = http://silcnet.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libidn
+	depends = perl
+	source = https://downloads.sourceforge.net/project/silc/silc/toolkit/sources/silc-toolkit-1.1.12.tar.gz
+	sha512sums = 21393e9e7880670550e2325aa2eeda65a802bca87888b6d807ebed3a86844428b2a99f7434e6208ff61308df3767a12dd5d047dc546197bb78782811cf2b5e60
+
+pkgname = silc-toolkit
+
