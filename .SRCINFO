@@ -1,0 +1,20 @@
+pkgbase = gog-flatout
+	pkgdesc = Thrilling combination of high-octane racing, smash-em-up demolition derby action and death defying stunts propelling the driver through the windshield!
+	pkgver = 1.0.0.7
+	pkgrel = 2
+	url = http://www.gog.com/game/flatout
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	source = local://gog_flatout_1.0.0.7.tar.gz
+	source = gog-flatout
+	sha256sums = 54412a5920cce062125214ed0fce52fbcae058a97e90642cab8f11c5326b490f
+	sha256sums = adc728b81188d3daeb7bca130dc591a73875a41e273488d0351534334a0ce3c5
+
+pkgname = gog-flatout
+

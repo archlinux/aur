@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+if [ ! -d "$HOME"/.flatout ] ; then
+   echo "Notice: Copying some files into ~/.flatout. To uninstall completely, don't forget to remove ~/.flatout!!!"
+   mkdir "$HOME"/.flatout
+   mkdir "$HOME"/.flatout/docs
+   cp -R /usr/share/gog/flatout/docs/* "$HOME"/.flatout/docs
+   mkdir "$HOME"/.flatout/support
+   cp -R /usr/share/gog/flatout/support/* "$HOME"/.flatout/support
+   cp -R /usr/share/gog/flatout/start.sh "$HOME"/.flatout
+   mkdir "$HOME"/.flatout/prefix
+   mkdir "$HOME"/.flatout/prefix/dosdevices
+   cp -R /usr/share/gog/flatout/prefix/dosdevices/* "$HOME"/.flatout/prefix/dosdevices
+   cp -R /usr/share/gog/flatout/prefix/*.reg "$HOME"/.flatout/prefix
+   mkdir "$HOME"/.flatout/prefix/drive_c
+   mkdir "$HOME"/.flatout/prefix/drive_c/Program\ Files
+   cp -R /usr/share/gog/flatout/prefix/drive_c/Program\ Files/* "$HOME"/.flatout/prefix/drive_c/Program\ Files
+   mkdir "$HOME"/.flatout/prefix/drive_c/users
+   cp -R /usr/share/gog/flatout/prefix/drive_c/users/* "$HOME"/.flatout/prefix/drive_c/users
+   mkdir "$HOME"/.flatout/prefix/drive_c/GOG\ Games
+   mkdir "$HOME"/.flatout/prefix/drive_c/GOG\ Games/FlatOut
+   cp -R /usr/share/gog/flatout/prefix/drive_c/GOG\ Games/FlatOut/flatout.exe "$HOME"/.flatout/prefix/drive_c/GOG\ Games/FlatOut
+   cp -R /usr/share/gog/flatout/prefix/drive_c/GOG\ Games/FlatOut/Launch\ FlatOut.lnk "$HOME"/.flatout/prefix/drive_c/GOG\ Games/FlatOut
+   cp -R /usr/share/gog/flatout/prefix/drive_c/GOG\ Games/FlatOut/patch.txt "$HOME"/.flatout/prefix/drive_c/GOG\ Games/FlatOut
+   cp -R /usr/share/gog/flatout/prefix/drive_c/GOG\ Games/FlatOut/paul.dll "$HOME"/.flatout/prefix/drive_c/GOG\ Games/FlatOut
+   ln -s /usr/share/gog/flatout/wine_standalone "$HOME"/.flatout/wine_standalone
+   mkdir "$HOME"/.flatout/prefix/drive_c/windows
+   cp -R /usr/share/gog/flatout/prefix/drive_c/windows/* "$HOME"/.flatout/prefix/drive_c/windows
+   ln -s /usr/share/gog/flatout/prefix/drive_c/GOG\ Games/FlatOut/data "$HOME"/.flatout/prefix/drive_c/GOG\ Games/FlatOut/data
+
+fi
+"$HOME"/.flatout/start.sh
