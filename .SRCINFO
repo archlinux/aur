@@ -1,0 +1,15 @@
+pkgbase = burn-cd
+	pkgdesc = Burn-CD is a handy frontend for the well-known cd/dvd writing packages cdrkit & dvd+rw-tools.
+	pkgver = 1.8.0
+	pkgrel = 3
+	url = http://burn-cd.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = cdrkit
+	depends = dvd+rw-tools
+	depends = python2
+	source = http://downloads.sourceforge.net/burn-cd/burn-cd-1.8.0.gz
+	md5sums = ae6156ee69401dd6bec3294dd3fb9dc9
+
+pkgname = burn-cd
+
