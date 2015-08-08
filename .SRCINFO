@@ -1,0 +1,18 @@
+pkgbase = libretro-snes9x-next-git
+	pkgdesc = libretro implementation of Snes9x Next. (Super Nintendo Entertainment System)
+	pkgver = 721.9d65f34
+	pkgrel = 1
+	url = https://github.com/libretro/snes9x-next
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = custom
+	makedepends = git
+	source = git+https://github.com/libretro/snes9x-next.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/snes9x_next_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-snes9x-next-git
+
