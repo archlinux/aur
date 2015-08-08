@@ -1,5 +1,5 @@
 pkgbase = vpaint-git
-	pkgdesc = VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology.
+	pkgdesc = VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology. (git version)
 	pkgver = v1.5.r0.g416c2c1
 	pkgrel = 1
 	url = http://www.vpaint.org
