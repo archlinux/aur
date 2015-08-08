@@ -1,10 +1,10 @@
-# Maintainer:  Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=qstlink2
 pkgname="${_pkgname}-git"
-pkgver=1.1.7.r168.034198c
+pkgver=1.2.1.r194.bdcd247
 pkgrel=1
-pkgdesc="A ST-Link V2 (Debugger/Programmer) client."
+pkgdesc="A ST-Link V2 (Debugger/Programmer) client graphical user interface"
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/fpoussin/QStlink2"
 license=('GPL3')
