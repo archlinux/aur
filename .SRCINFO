@@ -1,0 +1,16 @@
+pkgbase = gtk-engine-unico
+	pkgdesc = New GTK+ 3.0 theming engine by Andrea Cimitan
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = https://launchpad.net/unico
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	depends = gtk3
+	options = !libtool
+	source = http://launchpad.net/unico/1.0/1.0.1/+download/unico-1.0.1.tar.gz
+	md5sums = 1e56ff86337120dcf1b04dd443ea4b71
+
+pkgname = gtk-engine-unico
+
