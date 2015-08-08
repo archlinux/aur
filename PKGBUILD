@@ -5,14 +5,14 @@ _gitbranch=master
 _gitname=vera-plugin-desktop
 
 pkgname="$_gitname-git"
-pkgver=0
+pkgver=1.0.4.2
 pkgrel=1
 pkgdesc="Desktop plugin for vera"
 arch=(i686 x86_64)
 url="https://github.com/vera-desktop/vera-plugin-desktop"
 license=('LGPL')
 groups=()
-depends=('vera-git' 'libx11' 'cairo')
+depends=('vera-git' 'gnome-menus' 'libx11' 'cairo')
 makedepends=('bake')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}" 'vera-plugin-desktop')
