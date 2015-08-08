@@ -1,16 +1,16 @@
 # Maintainer: XavierCLL
 
 pkgname=krop
-pkgver=0.4.7
-pkgrel=3
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="A tool to crop PDF files, with an eye towards eReaders."
 arch=('any')
 url="http://arminstraub.com/computer/krop"
 license=('GPL3')
-depends=('python2-poppler-qt4' 'python2-pypdf2')
+depends=('python2' 'python2-poppler-qt4' 'python2-pypdf2')
 install=$pkgname.install
 source=(http://arminstraub.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('43b7c11f09b484a5516bcaf24cd0919e')
+md5sums=('ed909e3852e6c31bf5c9944b08f33389')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
