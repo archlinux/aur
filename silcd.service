@@ -1,0 +1,11 @@
+[Unit]
+Description=Secure Internet Live Conferencing Server
+Documentation=man:silcd(8) http://silcnet.org/software/users/server/
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/silcd
+PIDFile=/run/silcd.pid
+
+[Install]
+WantedBy=multi-user.target

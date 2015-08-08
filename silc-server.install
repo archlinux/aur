@@ -1,0 +1,8 @@
+post_install() {
+  if [ ! -f etc/silc/silcd.pub ]; then
+    # generate a keypair for the server, with default settings
+    usr/bin/silcd -C etc/silc
+  fi
+}
+
+# vim: ft=sh:ts=2:sw=2:et

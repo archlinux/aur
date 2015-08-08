@@ -1,0 +1,19 @@
+pkgbase = silc-server
+	pkgdesc = Secure Internet Live Conferencing server
+	pkgver = 1.1.19
+	pkgrel = 1
+	url = http://silcnet.org
+	install = silc-server.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = silc-toolkit
+	backup = etc/silc/silcd.conf
+	backup = etc/silc/silcalgs.conf
+	source = https://downloads.sourceforge.net/project/silc/silc/server/sources/silc-server-1.1.19.tar.gz
+	source = silcd.service
+	sha512sums = 820bbc1942f92593822b275e74cf3ac83d40bb9a348f5cad38a7449e96e965109a960e45e48d7c47993cc0f6fa6aa82355c262d19b1c4c182cb3caef19e9fbed
+	sha512sums = SKIP
+
+pkgname = silc-server
+
