@@ -5,7 +5,7 @@ _gitbranch=master
 _gitname=vera-power-manager
 
 pkgname="$_gitname-git"
-pkgver=0
+pkgver=1.0.2.1
 pkgrel=1
 pkgdesc="Vera power manager"
 arch=(i686 x86_64)
