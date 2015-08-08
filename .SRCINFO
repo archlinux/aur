@@ -1,7 +1,7 @@
 pkgbase = perfsuite
 	pkgdesc = Collection of tools, utilities, and libraries for software performance analysis
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://perfsuite.ncsa.illinois.edu/
 	arch = i686
 	arch = x86_64

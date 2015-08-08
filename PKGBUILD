@@ -2,7 +2,7 @@
 
 pkgname=perfsuite
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of tools, utilities, and libraries for software performance analysis"
 arch=('i686' 'x86_64')
 url='http://perfsuite.ncsa.illinois.edu/'
@@ -14,7 +14,7 @@ source=("${url}/download/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('fce97cff12e725814ddc1b1ac488e8085c4548d352d9ea8de269ed20820aaf07')
 
 prepare(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}"
 
   # Out of source build
   rm -rf build
@@ -22,12 +22,13 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
 
-  _binutils_ver=$(pacman -Qi binutils | grep Version | cut --characters=18-21)
+  _binutils_ver=$(pacman -Qi binutils | grep Version | cut -d: -f2 | cut -d- -f1)
 
-  ../configure --prefix=/usr \
-    --with-libbfd=bfd-${_binutils_ver}.0 \
+  ../${pkgname}-${pkgver}/configure \
+    --prefix=/usr \
+    --with-libbfd=bfd-"${_binutils_ver## }" \
     --enable-java \
     --with-mpi \
     --with-papi=/usr \
@@ -36,8 +37,14 @@ build() {
   make
 }
 
+#check(){
+#  cd "${srcdir}/build"
+#
+#  make check
+#}
+
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
   make -j1 install DESTDIR="${pkgdir}"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
