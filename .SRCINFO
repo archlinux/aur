@@ -1,0 +1,12 @@
+pkgbase = soundfont-zelda3sf2
+	pkgdesc = Legend of Zelda: Link to the Past soundfont for MIDI playback
+	pkgver = 20040819
+	pkgrel = 1
+	url = http://tssf.gamemusic.ca
+	arch = any
+	license = Public Domain
+	source = zelda3sf2.zip::http://www.zophar.net/download_file/13207
+	md5sums = 76a79226d699c9f0f63e27886219e20c
+
+pkgname = soundfont-zelda3sf2
+
