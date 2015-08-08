@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname='testssl.sh-git'
-pkgver=v2.4.r126.gcbbe7d8
+pkgver=v2.4.r174.g4df0108
 pkgrel=1
 pkgdesc="Testing TLS/SSL encryption (git version)"
 arch=('any')
