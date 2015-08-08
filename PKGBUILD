@@ -31,10 +31,10 @@ build() {
   ${_python} setup.py build
 
   # "Install" development stuff needed to build the man page
-  rm -rf develop
-  mkdir develop
-  export PYTHONPATH="${srcdir}/${_pkgname}/develop/"
-  ${_python} setup.py develop --install-dir="${srcdir}/${_pkgname}/develop/"
+  rm -rf "${srcdir}/develop"
+  mkdir "${srcdir}/develop"
+  export PYTHONPATH="${srcdir}/develop":${PYTHONPATH}
+  ${_python} setup.py develop --install-dir="${srcdir}/develop/"
 
   # Build man page
   cd docs
