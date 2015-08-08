@@ -1,0 +1,13 @@
+--- a/libsrc/CRL/Unpack.c	2014-10-15 23:04:20.000000000 +0200
++++ b/libsrc/CRL/Unpack.c	2015-08-06 17:41:49.008954127 +0200
+@@ -1447,9 +1447,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+ 

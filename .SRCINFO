@@ -1,0 +1,16 @@
+pkgbase = coral
+	pkgdesc = A set of drivers, libraries, utilities and analysis software for ATM and PoS OCx monitors and pcap interfaces
+	pkgver = 3.9.4
+	pkgrel = 1
+	url = https://www.caida.org/tools/measurement/coralreef/status.xml
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = perl
+	source = https://www.caida.org/tools/measurement/coralreef/dists/coral-3.9.4.tar.gz
+	source = patch.diff
+	md5sums = c2e392d097e7afa7c087c0a2b5af0dd8
+	md5sums = 199ab35e8d42242c263c827387ea11d8
+
+pkgname = coral
+
