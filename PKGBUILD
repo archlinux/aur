@@ -19,4 +19,4 @@ package() {
     install -D -m644  ${srcdir}/${pkgname}-${_git}/LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
-}
+} 
