@@ -1,0 +1,18 @@
+# Maintainer: Sergio Conde <skgsergio@gmail.com>
+
+pkgname=python2-notify2
+_pypiname=${pkgname/python2-/}
+pkgver=0.3
+pkgrel=1
+pkgdesc='Python interface to DBus notifications'
+arch=('any')
+url='https://pypi.python.org/pypi/notify2/'
+license=('BSD')
+depends=('python2' 'python2-dbus')
+source=("http://pypi.python.org/packages/source/${_pypiname:0:1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
+sha256sums=('684281f91c51fc60bc7909a35bd21d043a2a421f4e269de1ed1f13845d1d6321')
+
+package() {
+    cd $srcdir/${_pypiname}-${pkgver}
+    python2 setup.py install --root="${pkgdir}/" --optimize=1
+}
