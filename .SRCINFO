@@ -1,0 +1,16 @@
+pkgbase = kfaenza-dark-themes
+	pkgdesc = Faenza Icon Theme for KDE with dark desktop themes
+	pkgver = 0.8.11
+	pkgrel = 1
+	url = https://copy.com/wgjfNFOsfDMjTVxZ/KFaenza-dark-themes.tar.gz
+	arch = any
+	license = GPL3
+	optdepends = oxygen-icons: Parent theme for not implemented icons
+	optdepends = faenza-icon-theme: Parent theme for not implemented icons
+	optdepends = hicolor-icon-theme: Parent theme for not implemented icons
+	provides = kfaenza-dark-themes
+	source = kfaenza-dark-themes-0.8.11.tar.gz::https://copy.com/wgjfNFOsfDMjTVxZ/KFaenza-dark-themes.tar.gz?download=1
+	md5sums = c5b345e4655379299688109f568c919a
+
+pkgname = kfaenza-dark-themes
+
