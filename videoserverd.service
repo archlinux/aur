@@ -5,8 +5,8 @@ Requires=network.target
 
 [Service]
 Type=forking
-PIDFile=/tmp/videoserverd.pid
-ExecStart=/opt/ivideon/ivideon-server/auto_respawn -d -w /var/log/videoserverd -u videoserverd -p /tmp/videoserverd.pid /opt/ivideon/ivideon-server/videoserver -c /etc/videoserverd.conf
+PIDFile=/run/videoserverd/videoserverd.pid
+ExecStart=/opt/ivideon/ivideon-server/auto_respawn -d -w /var/log/videoserverd -u videoserverd -p /run/videoserverd/videoserverd.pid /opt/ivideon/ivideon-server/videoserver -c /etc/videoserverd.conf
 ExecStop=/opt/ivideon/ivideon-server/auto_respawn -K 5 -p $MAINPID
 
 [Install]

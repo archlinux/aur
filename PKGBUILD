@@ -1,5 +1,4 @@
-# Maintainer: Elovsky Valentin (evvsoft@gmail.com)
-# Contributor: Shalygin Konstantin (kostya@opentech.ru)
+# Maintainer: Shalygin Konstantin (k0ste@cn.ru)
 
 pkgname='ivideon-server-headless'
 pkgver='3.5.4'
@@ -13,35 +12,36 @@ depends=('portaudio' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'gstreamer0.10
 makedepends=('libarchive')
 conflicts=('ivideon-video-server-nogui')
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
-	'videoserverd.service'
-	'videoserverd.conf'
-	'sysusers.conf'
-	'videoserverd.install'
-	'schedule.json')
+	"videoserverd.service"
+	"videoserverd.conf"
+	"sysusers.conf"
+	"schedule.json")
 sha256sums=(	"cee93ad68e8ffebced102f1e17cb3d5fe67bf62a1e230d85a92ab1cc2b91e9c5"
-		'922cfb91761eed9fba58c0fb48237a87d5928e4ff289f6a88e8c1630bc8f47b3'
-		'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
-		'91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81'
-		'7f86f7a5d9100f3cae6177d241db9bba98ef47b80dee9ce59d412c2922cdf186'
-		'd02f782328766ee982584c46c2d15180c441468d2ef27532142e7d6b951b830a')
-install='videoserverd.install'
-backup=('etc/videoserverd.conf'
-	'var/lib/videoserverd/schedule.json')
+		"48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071"
+		"f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012"
+		"91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81"
+		"d02f782328766ee982584c46c2d15180c441468d2ef27532142e7d6b951b830a")
+install="videoserverd.install"
+backup=("etc/videoserverd.conf"
+	"var/lib/videoserverd/schedule.json")
 
 build() {
-	cd "$srcdir"
-	bsdtar xf "$srcdir/data.tar.gz"
-	rm "$srcdir/opt/ivideon/ivideon-server/init_ctl.sh"
-	rm "$srcdir/opt/ivideon/ivideon-server/initd.sh"
-	rm "$srcdir/opt/ivideon/ivideon-server/serverctl.sh"
+  cd "${srcdir}"
+  bsdtar xf "data.tar.gz"
+  rm "opt/ivideon/ivideon-server/init_ctl.sh"
+  rm "opt/ivideon/ivideon-server/initd.sh"
+  rm "opt/ivideon/ivideon-server/serverctl.sh"
 }
 
 package() {
-	cp -dpr --no-preserve=ownership "$srcdir/opt" "$pkgdir"
-	install -Dm644 "$srcdir/videoserverd.service" "$pkgdir/usr/lib/systemd/system/videoserverd.service"
-	install -Dm644 "$srcdir/videoserverd.conf" "$pkgdir/etc/videoserverd.conf"
-	install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/videoserverd.conf"
-	install -dm775 -o 176 -g 176 "$pkgdir/var/log/videoserverd"
-	install -dm775 -o 176 -g 176 "$pkgdir/var/lib/videoserverd"
-	install -Dm644 -o 176 -g 176 "$srcdir/schedule.json" "$pkgdir/var/lib/videoserverd/schedule.json"
+  pushd ${srcdir}
+  cp -ax "opt" "${pkgdir}"
+  install -Dm644 "videoserverd.service" "${pkgdir}/usr/lib/systemd/system/videoserverd.service"
+  install -Dm644 "videoserverd.conf" "${pkgdir}/etc/videoserverd.conf"
+  install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/videoserverd.conf"
+  install -Dm644 -o 176 -g 176 "schedule.json" "${pkgdir}/var/lib/videoserverd/schedule.json"
+  install -dm755 -o 176 -g 176 "${pkgdir}/run/videoserverd"
+  install -dm775 -o 176 -g 176 "${pkgdir}/var/log/videoserverd"
+  install -dm775 -o 176 -g 176 "${pkgdir}/var/lib/videoserverd"
+  popd
 }

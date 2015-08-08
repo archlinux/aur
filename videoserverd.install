@@ -5,4 +5,5 @@ post_install() {
 
 post_remove() {
   /usr/bin/systemctl daemon-reload
+  /usr/bin/userdel videoserverd > /dev/null
 }

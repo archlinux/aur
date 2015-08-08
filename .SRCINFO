@@ -18,13 +18,11 @@ pkgbase = ivideon-server-headless
 	source = videoserverd.service
 	source = videoserverd.conf
 	source = sysusers.conf
-	source = videoserverd.install
 	source = schedule.json
 	sha256sums = cee93ad68e8ffebced102f1e17cb3d5fe67bf62a1e230d85a92ab1cc2b91e9c5
-	sha256sums = 922cfb91761eed9fba58c0fb48237a87d5928e4ff289f6a88e8c1630bc8f47b3
+	sha256sums = 48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071
 	sha256sums = f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012
 	sha256sums = 91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81
-	sha256sums = 7f86f7a5d9100f3cae6177d241db9bba98ef47b80dee9ce59d412c2922cdf186
 	sha256sums = d02f782328766ee982584c46c2d15180c441468d2ef27532142e7d6b951b830a
 
 pkgname = ivideon-server-headless
