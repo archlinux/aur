@@ -1,8 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
+LANG=C
 pkgname=octave-hg
-pkgver=r20150805.58b02a8d0fe9
+pkgver=r20150808.9c7dd58b57e4
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
