@@ -1,0 +1,11 @@
+post_install() {
+    echo "Place menu.xml, rc.xml and autostart.sh in ~/.config/openbox"
+    echo "They can be found in /etc/xdg/openbox"
+    echo "Multihead users! There are new configuration options."
+    echo "Please see /usr/share/doc/openbox/README.MULTIHEAD"
+}
+
+post_upgrade() {
+  post_install
+}
+

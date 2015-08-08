@@ -1,0 +1,32 @@
+pkgbase = openbox-multihead-git
+	pkgdesc = A window manager for the X11 windowing system with multihead support
+	pkgver = 7460.4e7c884
+	pkgrel = 1
+	url = https://github.com/BurntSushi/openbox-multihead/blob/multihead/README.MULTIHEAD
+	install = openbox.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = docbook-to-man
+	depends = startup-notification
+	depends = libxml2
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxcursor
+	depends = pango
+	depends = imlib2
+	optdepends = pyxdg: for the xdg-autostart script
+	optdepends = xpybutil: for ob-visible-desks
+	provides = openbox
+	provides = openbox-git
+	conflicts = openbox
+	conflicts = openbox-git
+	options = !libtool
+	backup = etc/xdg/openbox/menu.xml
+	backup = etc/xdg/openbox/rc.xml
+	source = git+https://github.com/BurntSushi/openbox-multihead.git#branch=multihead
+	md5sums = SKIP
+
+pkgname = openbox-multihead-git
+
