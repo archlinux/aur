@@ -1,6 +1,6 @@
 pkgbase = fdupes-jody-git
 	pkgdesc = A program for identifying or deleting duplicate files residing within specified directories with additional patches
-	pkgver = 1.51.jody4.r67.9e03e71
+	pkgver = 1.51.jody5.r119.cb89416
 	pkgrel = 1
 	url = https://github.com/jbruchon/fdupes-jody/
 	arch = i686

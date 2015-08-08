@@ -1,7 +1,7 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=fdupes-jody-git
-pkgver=1.51.jody4.r67.9e03e71
+pkgver=1.51.jody5.r119.cb89416
 pkgrel=1
 pkgdesc="A program for identifying or deleting duplicate files residing within specified directories with additional patches"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ build() {
 package(){
   cd "${srcdir}/${pkgname}"
   install -d "${pkgdir}"/usr/{share/man/man1,bin}
-  make DESTDIR="${pkgdir}" install
+  make PREFIX="/usr" DESTDIR="${pkgdir}" install
   install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
