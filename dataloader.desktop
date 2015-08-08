@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/dataloader/dataloader.sh
+Type=Application
+Terminal=false
+Icon=dataloader
+Categories=Development;Java;
+
+Name=Data Loader
+GenericName=An easy to use graphical tool that helps you to get your data into Salesforce objects
+
