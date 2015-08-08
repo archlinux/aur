@@ -1,0 +1,12 @@
+diff -u -r -N nis-utils-1.4.1.orig/src/nisping/nisping.c nis-utils-1.4.1/src/nisping/nisping.c
+--- nis-utils-1.4.1.orig/src/nisping/nisping.c	1998-12-05 17:01:56.000000000 +0100
++++ nis-utils-1.4.1/src/nisping/nisping.c	2012-04-18 21:39:27.435067529 +0300
+@@ -104,7 +104,7 @@
+   if (flags & MASTER_ONLY)
+     server_len = 1;
+ 
+-  status = __nisbind_create (&dbp, server, server_len, flags);
++  status = __nisbind_create (&dbp, server, server_len, 0, 0, flags);
+   if (status != NIS_SUCCESS)
+     return status;
+ 

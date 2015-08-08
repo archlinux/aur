@@ -1,0 +1,26 @@
+pkgbase = nis-utils
+	pkgdesc = Linux NIS+ Tools
+	pkgver = 1.4.1
+	pkgrel = 2
+	url = http://www.linux-nis.org/nisplus/nis-utils/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bsd-mp
+	source = ftp://ftp.kernel.org/pub/linux/utils/net/NIS+/nis-utils-1.4.1.tar.gz
+	source = 0001-passwd2des.patch
+	source = 0002-nisbind.patch
+	source = keyserv.service
+	source = nis-cachemgr.service
+	source = rpc-nisd.service
+	source = rpc-nispasswdd.service
+	sha1sums = 7180e56a536311421a04c8ecad9ee12c41a6004f
+	sha1sums = 216b6ab9d3a683c2f251b0efed1d03e22d1582f1
+	sha1sums = e3043e9c01b2044866fd6d4e0b350312cfb152dd
+	sha1sums = 6c05c54938d07461bba133fccfcc994a23bd6d68
+	sha1sums = 6484c2b3dbb1ce80c3519da61eb1ffdd904142bb
+	sha1sums = fe14ae25258b401ea83f2d8f68644f626584a742
+	sha1sums = c393da32cc15584de7c2d124e2a3ef4ab7cf1d70
+
+pkgname = nis-utils
+

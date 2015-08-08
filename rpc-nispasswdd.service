@@ -1,0 +1,11 @@
+[Unit]
+Description=NIS+ password update server
+After=rpcbind.service
+Requires=rpcbind.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/rpc.nispasswdd
+
+[Install]
+WantedBy=multi-user.target

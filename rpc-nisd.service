@@ -1,0 +1,14 @@
+# Quoth the Manual,
+# "The current rpc.nisd implementation is pre-pre-pre-ALPHA and doesn't work."
+
+[Unit]
+Description=NIS+ server
+After=rpcbind.service
+Requires=rpcbind.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/rpc.nisd
+
+[Install]
+WantedBy=multi-user.target

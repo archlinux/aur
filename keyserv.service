@@ -1,0 +1,12 @@
+[Unit]
+Description=NIS+ private encryption key server
+After=rpcbind.service
+Requires=rpcbind.service
+
+[Service]
+Type=forking
+GuessMainPID=no
+ExecStart=/usr/bin/keyserv
+
+[Install]
+WantedBy=multi-user.target
