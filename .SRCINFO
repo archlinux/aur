@@ -1,0 +1,12 @@
+pkgbase = obvious-git
+	pkgdesc = Widgets for awesome wm (latest version)
+	pkgver = 20100621
+	pkgrel = 1
+	url = https://github.com/hoelzro/obvious
+	arch = any
+	license = custom:MIT
+	makedepends = git
+	depends = awesome
+
+pkgname = obvious-git
+
