@@ -1,17 +1,17 @@
 pkgbase = libpng14
 	pkgdesc = A collection of routines used to create PNG format graphics files - 1.4 version
-	pkgver = 1.4.13
-	pkgrel = 2
+	pkgver = 1.4.16
+	pkgrel = 0
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = zlib
 	options = !libtool
-	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.4.13.tar.xz
-	source = http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng14/1.4.13/libpng-1.4.13-apng.patch.gz
-	md5sums = 095c6c024471887bd4f5bef0d280b99a
-	md5sums = f29c8bc317f46944342b277d84a9089d
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.4.16.tar.xz
+	source = http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng14/1.4.16/libpng-1.4.16-apng.patch.gz
+	md5sums = 2864fa5178f18fb1a2ea7b8f5e78bfd3
+	md5sums = 9f8224f606cabc4e8cc18ca6bafc4e9b
 
 pkgname = libpng14
 
