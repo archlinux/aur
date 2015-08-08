@@ -3,7 +3,7 @@
 _python=python
 _pkgname=vdirsyncer
 pkgname=${_python}-${_pkgname}-git
-pkgver=0.5.2.r58.gfce0f8d
+pkgver=0.6.0.r0.gd59b310
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
@@ -12,6 +12,9 @@ license=('MIT')
 depends=("${_python}-click>=3.1" "${_python}-lxml>=3.0"
          "${_python}-requests-toolbelt>=0.4.0" "${_python}-atomicwrites")
 makedepends=("git" "${_python}-sphinx")
+checkdepends=("${_python}-pytest-xprocess" "${_python}-pytest-localserver"
+             "radicale"
+             "${_python}-werkzeug" "${_python}-wsgi-intercept")
 source=("git://github.com/untitaker/${_pkgname}.git")
 md5sums=('SKIP')
 conflicts=("${_python}-vdirsyncer" "vdirsyncer")
@@ -36,6 +39,12 @@ build() {
   # Build man page
   cd docs
   make man SPHINXBUILD=sphinx-build
+}
+
+check(){
+  cd "${srcdir}/${_pkgname}"
+
+  py.test
 }
 
 package() {
