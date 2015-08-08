@@ -11,7 +11,7 @@ makedepends=('go')
 depends=('fftw')
 options=('!strip')
 
-source=("$pkgname::git+https://github.com/lucy/$pkgname.git#tag=$pkgver")
+source=("$pkgname::git+https://github.com/lucy/$pkgname.git")
 sha256sums=('SKIP')
 
 prepare() {
