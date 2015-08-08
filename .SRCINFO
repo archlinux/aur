@@ -1,15 +1,15 @@
 pkgbase = robomongo
-	pkgdesc = Shell-centric cross-platform MongoDB management tool
-	pkgver = 0.8.5
-	pkgrel = 1
-	url = http://robomongo.org/
+	pkgdesc = Shell-centric crossplatform opensource MongoDB management tool.
+	pkgver = 0.8.4
+	pkgrel = 2
+	url = http://www.robomongo.org/
+	arch = i686
 	arch = x86_64
 	license = GPL3
+	depends = qt4
 	depends = pcre
-	depends = qt5-base
-	conflicts = robomongo-git
-	source = http://robomongo.org/files/linux/robomongo-0.8.5-x86_64.deb
-	md5sums = 9a311a211949557904402595c1939255
+	depends = qjson
+	depends = qscintilla
 
 pkgname = robomongo
 
