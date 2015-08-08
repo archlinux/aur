@@ -1,0 +1,15 @@
+pkgbase = runner2
+	pkgdesc = BIT.TRIP Presents... Runner2: Future Legend of Rhythm Alien
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://www.runner2.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl
+	depends = libgl
+	depends = zlib
+	source = hib://runner2__1388171186.tar.gz
+
+pkgname = runner2
+
