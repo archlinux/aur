@@ -1,7 +1,7 @@
 pkgbase = veracrypt
 	pkgdesc = Disk encryption with strong security based on TrueCrypt
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://veracrypt.codeplex.com/
 	install = veracrypt.install
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = veracrypt
 	sha1sums = 43cf537c334a0aeffb66a2e14b092a27b5a51eba
 	sha1sums = 0cbe9f7875ab52be125cc575533f76fab60314a5
 	sha1sums = ebdd450e719fe3cff5e459f027856cbaf03db13a
-	sha1sums = 2d4bec531ba3f053abd806aff83bd72f1baedadb
+	sha1sums = 14dceabf658a7e3505c855c2862aa86e343fcda5
 
 pkgname = veracrypt
 
