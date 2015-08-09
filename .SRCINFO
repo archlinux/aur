@@ -1,0 +1,19 @@
+pkgbase = trayclock
+	pkgdesc = trayclock is a simple analog clock for the sys-tray
+	pkgver = 0.3.7
+	pkgrel = 3
+	url = http://www.jezra.net/projects/trayclock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = intltool
+	makedepends = pkgconfig
+	depends = gtk2
+	depends = librsvg
+	source = http://launchpad.net/trayclock/0.5/0.3.7/+download/trayclock-0.3.7.tar.gz
+	md5sums = f36e4e8a487b52d56d16eda208d74e74
+
+pkgname = trayclock
+
