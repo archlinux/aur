@@ -1,6 +1,6 @@
 pkgbase = turpial
 	pkgdesc = A multi-interface Twitter client written in Python.
-	pkgver = 1.6.8
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://turpial.org.ve/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = turpial
 	optdepends = gnome-spell
 	optdepends = aspell
 	conflicts = turpial-git
-	source = http://files.turpial.org.ve/sources/stable/turpial-1.6.8.tar.gz
-	md5sums = 04bdd05c3aca2f6ee4ff1f6d95e64b30
+	source = http://files.turpial.org.ve/sources/stable/turpial-3.0.tar.gz
+	sha1sums = f47af9b7e4ffbf5b2dcd7ed4d81fd55a212b072c
 
 pkgname = turpial
 
