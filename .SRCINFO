@@ -12,7 +12,7 @@ pkgbase = nala-git
 	provides = nala-git
 	conflicts = nala-git
 	conflicts = ${pkgname%-git}
-	source = nala::git://github.com/vera-desktop/vera.git#branch=master
+	source = nala::git://github.com/g7/nala.git#branch=master
 	md5sums = SKIP
 
 pkgname = nala-git

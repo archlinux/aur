@@ -1,6 +1,6 @@
 # Maintainer: Gary DeLaney <gld1982ltd@gmail.com>
 
-_gitroot="git://github.com/vera-desktop/vera.git"
+_gitroot="git://github.com/g7/nala.git"
 _gitbranch=master
 _gitname=nala
 
