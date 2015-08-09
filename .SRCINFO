@@ -1,7 +1,7 @@
 pkgbase = ntpdate
 	pkgdesc = Client for the Network Time Protocol (NTP)
 	pkgver = 4.2.8.p2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ntp.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ntpdate
 	conflicts = ntp
 	conflicts = ntpdate-dev
 	backup = etc/conf.d/ntpdate.conf
-	source = http://archive.ntp.org/ntp4/ntp-4.2.8p2.tar.gz
+	source = http://archive.ntp.org/ntp4/ntp-4.2/ntp-4.2.8p2.tar.gz
 	source = ntpdate.conf
 	source = ntpdate.service
 	source = restore-html2man.patch
