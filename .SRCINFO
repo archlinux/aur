@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-darkknight
+	pkgdesc = Fortune cookies: batman The Dark Knight (Movie).
+	pkgver = 20091218
+	pkgrel = 2
+	url = http://www.moviequotedb.com/movies/dark-knight-the.html
+	arch = any
+	license = custom
+	depends = fortune-mod
+	source = fortunes.txt
+	md5sums = 1f43dd05cf18932dc6b34988aa2b9e17
+
+pkgname = fortune-mod-darkknight
+
