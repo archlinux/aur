@@ -1,6 +1,6 @@
 pkgbase = vera-plugin-openbox-git
 	pkgdesc = Openbox plugin for vera
-	pkgver = 0
+	pkgver = 0.32.0.1
 	pkgrel = 1
 	url = https://github.com/vera-desktop/vera-plugin-openbox
 	install = vera-plugin-openbox.install
@@ -9,6 +9,8 @@ pkgbase = vera-plugin-openbox-git
 	license = LGPL
 	makedepends = bake
 	depends = vera-git
+	depends = openbox
+	depends = python-pycparser
 	provides = vera-plugin-openbox-git
 	conflicts = vera-plugin-openbox-git
 	conflicts = vera-plugin-openbox

@@ -1,3 +1,5 @@
-src
-pkg
-vera-plugin-openbox
+*
+!.gitignore
+!PKGBUILD
+!SRCINFO
+!*.install
