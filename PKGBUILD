@@ -21,6 +21,7 @@ md5sums=('SKIP')
 
 _gitroot=git://github.com/apache/spark.git
 _gitname=spark
+_buildname=custom-spark
 
 build() {
   cd "$srcdir"
@@ -41,19 +42,19 @@ build() {
   cd "$srcdir/$_gitname-build"
 
   export JAVA_HOME=/usr/lib/jvm/`archlinux-java get`
-  ./make-distribution.sh --name custom-spark --tgz -Phadoop-2.4 -Pyarn
+  ./make-distribution.sh --name $_buildname --tgz -Phadoop-2.4 -Pyarn
 }
 
 package() {
-  cp $srcdir/$_gitname-build/spark-$pkgver-SNAPSHOT-bin-custom-spark.tgz $pkgdir
+  cp $srcdir/$_gitname-build/spark-$pkgver-SNAPSHOT-bin-$_buildname.tgz $pkgdir
   cd $pkgdir
-  tar -xvf spark-1.5.0-SNAPSHOT-bin-custom-spark.tgz
-  rm $pkgdir/spark-1.5.0-SNAPSHOT-bin-custom-spark.tgz
+  tar -xvf spark-$pkgver-SNAPSHOT-bin-$_buildname.tgz
+  rm $pkgdir/spark-$pkgver-SNAPSHOT-bin-$_buildname.tgz
   mkdir $pkgdir/usr
   mkdir $pkgdir/usr/share
   mkdir $pkgdir/usr/share/$pkgname
-  mv $pkgdir/spark-1.5.0-SNAPSHOT-bin-custom-spark/* $pkgdir/usr
-  rmdir $pkgdir/spark-1.5.0-SNAPSHOT-bin-custom-spark
+  mv $pkgdir/spark-$pkgver-SNAPSHOT-bin-$_buildname/* $pkgdir/usr
+  rmdir $pkgdir/spark-$pkgver-SNAPSHOT-bin-$_buildname
   rm $pkgdir/usr/LICENSE
   rm $pkgdir/usr/README.md  
   rm $pkgdir/usr/RELEASE  
