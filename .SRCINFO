@@ -1,0 +1,14 @@
+pkgbase = necpp
+	pkgdesc = Free NEC-2 compatable electromagnetic code. It can both read nec2 antenna description files and also be incorporated into other projects like GUI tools and automatic antenna optimization systems.
+	pkgver = 1.5.0.cvs20101003
+	pkgrel = 1
+	url = http://alioth.debian.org/projects/necpp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	options = !libtool
+	source = http://ftp.de.debian.org/debian/pool/main/n/necpp/necpp_1.5.0+cvs20101003.orig.tar.gz
+	md5sums = 122bf50da6b7a5a33c06499063538f4b
+
+pkgname = necpp
+
