@@ -1,6 +1,6 @@
 pkgbase = vera-plugin-tint2-git
 	pkgdesc = tint2 plugin for vera
-	pkgver = 0
+	pkgver = r7.a193926
 	pkgrel = 1
 	url = https://github.com/vera-desktop/vera-plugin-tint2
 	install = vera-plugin-tint2.install
@@ -8,7 +8,7 @@ pkgbase = vera-plugin-tint2-git
 	arch = x86_64
 	license = LGPL
 	makedepends = bake
-	depends = vera
+	depends = vera-git
 	depends = tint2
 	provides = vera-plugin-tint2-git
 	conflicts = vera-plugin-tint2-git
