@@ -1,0 +1,15 @@
+pkgbase = metastore-git
+	pkgdesc = Store and restore metadata from a filesystem.
+	pkgver = r63.efce687
+	pkgrel = 1
+	url = http://david.hardeman.nu/software.php#metastore
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = metastore
+	conflicts = metastore
+	source = git+https://github.com/przemoc/metastore
+	md5sums = SKIP
+
+pkgname = metastore-git
+
