@@ -8,11 +8,10 @@ pkgver=1.60.181.f53d915
 pkgrel=1
 pkgdesc="Free version of gish, a physics platformer"
 arch=('x86_64' 'i686')
-#url="http://github.com/FrozenCow/gish"
 url="http://github.com/freegish/freegish"
 license=('GPL')
 depends=('sdl' 'openal' 'libvorbis' 'libpng' 'libgl')
-makedepends=('git' 'cmake' 'mesa' 'imagemagick')
+makedepends=('git' 'cmake')
 provides=('freegish')
 conflicts=('freegish')
 install='freegish.install'
@@ -30,28 +29,28 @@ pkgver() {
   echo 1.60.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build() {
+prepare() {
   cd "$srcdir/$_pkgname"
 
   # libmath fix...
   patch -p1 < ../libmath.patch
-  mkdir build && cd build
-  cmake ..
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
+  mkdir -p build
+  cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd $srcdir/$_pkgname
-  install -Dm755 ${_pkgname} $pkgdir/usr/bin/${_pkgname}
-  install -dm755 $pkgdir/usr/share/${_pkgname}
-  mkdir -p $pkgdir/usr/share/{icons,applications}
+	cd "$srcdir/$_pkgname"
+	cd build
+	make install DESTDIR="$pkgdir"
 
-  # i don't know if there's a better way instead of using imagemagick... hmm
-  convert ${_pkgname}.bmp $pkgdir/usr/share/icons/${_pkgname}.png
-
-  install -m644 ${srcdir}/${_pkgname}.desktop $pkgdir/usr/share/applications/${_pkgname}.desktop
-  # there's no texturesets or tile0{1,2,3} dir in git repo...
-  cp -r animation level music sound texture $pkgdir/usr/share/${_pkgname}
+	cd "$srcdir/$_pkgname"
+  cp -r music "$pkgdir/usr/share/$_pkgname"
 }
 
 # vim: sw=2:ts=2 et:
