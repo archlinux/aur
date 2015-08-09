@@ -1,15 +1,16 @@
-# Maintainer: Christian METZLER <neroth@xeked.com>
+# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Contributor: Christian METZLER <neroth@xeked.com>
 pkgname=gnome-shell-extension-weather-git
 _pkgname=${pkgname%-git}
-pkgver=r572.329139f
+pkgver=r576.746debe
 pkgrel=1
 epoch=1
 pkgdesc="A simple GNOME Shell extension for displaying weather informations from several cities"
 arch=('any')
 url="https://github.com/Neroth/gnome-shell-extension-weather"
 license=('GPL3')
-depends=('dconf' 'gettext' 'pkg-config')
-makedepends=('git' 'gnome-common' 'autoconf' 'automake' 'intltool')
+depends=('gnome-shell' 'dconf' 'gettext' 'pkg-config')
+makedepends=('git' 'autoconf' 'automake' 'gnome-common' 'intltool')
 replaces=('gnome-shell-extension-weather-neroth-git')
 install='gschemas.install'
 source=("git+https://github.com/Neroth/gnome-shell-extension-weather")

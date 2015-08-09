@@ -16,9 +16,7 @@ instructions_install() {
   /bin/cat << EOF
 
 Restart GNOME Shell ([Alt]+[F2], r).
-Active the extension with gnome-tweak-tool.
-Configure with the Weather Settings button.
-For more informations, see https://github.com/Neroth/gnome-shell-extension-weather.
+Activate the extension with gnome-tweak-tool.
 
 EOF
 }
@@ -26,11 +24,7 @@ EOF
 instructions_upgrade() {
   /bin/cat << EOF
 
-Just restart GNOME Shell ([Alt]+[F2], r).
-What new ?
- * GNOME Shell 3.10 support
- * Translation update
-For more informations, see https://github.com/Neroth/gnome-shell-extension-weather.
+Restart GNOME Shell ([Alt]+[F2], r) to load the upgraded extension.
 
 EOF
 }
