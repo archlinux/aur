@@ -1,0 +1,13 @@
+pkgbase = runningx
+	pkgdesc = A simple C program which uses an X call to determine if X is running
+	pkgver = 20101203
+	pkgrel = 1
+	url = http://www.fiction.net/blong/programs/mutt/
+	arch = any
+	license = unknown
+	depends = libx11
+	source = http://www.fiction.net/blong/programs/mutt/autoview/RunningX.c
+	md5sums = 31fa80ae98c0fefe11e4786b2d7e4e79
+
+pkgname = runningx
+
