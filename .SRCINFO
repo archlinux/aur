@@ -1,0 +1,15 @@
+pkgbase = monaco-linux-font
+	pkgdesc = Mono-spaced Macintosh system font
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.apple.com
+	install = monaco-linux.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	replaces = monaco_linux
+	source = http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf
+	md5sums = 15406419f73436c28b7e7684d6e3f346
+
+pkgname = monaco-linux-font
+
