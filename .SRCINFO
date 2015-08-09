@@ -1,7 +1,7 @@
 pkgbase = chromeos-extra-fonts
 	pkgdesc = Extra fonts from Chromium OS fonts suite by various author
 	pkgver = 2013.03.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.chromium.org/gitweb/00
 	install = chromeos-extra-fonts.install
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = chromeos-extra-fonts
 	md5sums = 4b03df69f12e1c8c18cb9f40623fea40
 
 pkgname = ttf-chromeosextra-font
-	pkgdesc = Caladea font for Chrom*OS by Huerta Tipografia
+	pkgdesc = Caladea font for ChromeOS by Huerta Tipografia
 	license = Apache
 	conflicts = ttf-caladea
 

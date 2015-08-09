@@ -16,7 +16,7 @@ _knanum=3.10.0
 _jomol=0.0.3c
 _robover=20141209
 _droidver=20140815
-pkgrel=1
+pkgrel=2
 depends=("fontconfig" "xorg-font-utils")
 optdepends=("ttf-chromeos-fonts: Part of the Chromium OS fonts suite"
 	"otf-ipafont: Part of the Chromium OS fonts suite"
@@ -49,12 +49,12 @@ package_ttf-chromeosextra-font() {
 pkgver=${_crosextraver}
 conflicts=("ttf-caladea")
 license=("Apache")
-pkgdesc="Caladea font for Chrom*OS by Huerta Tipografia"
+pkgdesc="Caladea font for ChromeOS by Huerta Tipografia"
 	install -d -m 755 "${pkgdir}/usr/share/fonts/TTF"
 	install -m 644 "${srcdir}/crosextrafonts-${_crosextraver}/"*.ttf "${pkgdir}/usr/share/fonts/TTF/"
 }
 package_ttf-lohit-font(){
-pkgver=${_lohitve}r
+pkgver=${_lohitve}
 conflicts=("lohit-fonts")
 license=("custom:OFL-1.1")
 pkgdesc="6 Lohit fonts for Indic scripts"
