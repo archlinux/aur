@@ -15,7 +15,6 @@ pkgbase = papyros-shell-git
 	depends = qt5-graphicaleffects
 	depends = greenisland-papyros-git
 	depends = qml-material-git
-	depends = qml-extras-git
 	depends = kdeclarative
 	depends = pam
 	depends = libpulse
@@ -25,7 +24,9 @@ pkgbase = papyros-shell-git
 	depends = plasma-nm
 	optdepends = pulseaudio: audio support
 	optdepends = sddm: login screen theme
+	provides = papyros-shell
 	provides = papyros-shell-git
+	conflicts = papyros-shell
 	source = papyros-shell-git::git+https://github.com/papyros/papyros-shell.git#branch=develop
 	sha256sums = SKIP
 

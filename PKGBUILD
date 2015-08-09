@@ -1,17 +1,19 @@
 # Maintainer: Riley Trautman <asonix.dev@gmail.com>
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
-pkgname=papyros-shell-git
+_pkgname=papyros-shell
+pkgname=$_pkgname-git
 pkgver=0.0.5.r108.g430bba7
 pkgrel=1
 pkgdesc="Wayland and QtQuick based desktop shell for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/papyros-shell"
 license=("GPL")
-depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-graphicaleffects" "greenisland-papyros-git" "qml-material-git" "qml-extras-git" "kdeclarative" "pam" "libpulse" "libqtxdg" "solid" "kconfig" "plasma-nm")
+depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-graphicaleffects" "greenisland-papyros-git" "qml-material-git" "kdeclarative" "pam" "libpulse" "libqtxdg" "solid" "kconfig" "plasma-nm")
 optdepends=('pulseaudio: audio support' 'sddm: login screen theme')
 makedepends=("git" "python" "extra-cmake-modules")
-provides=("$pkgname")
+provides=("$_pkgname" "$pkgname")
+conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/papyros/papyros-shell.git#branch=develop")
 sha256sums=("SKIP")
 
