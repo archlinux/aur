@@ -6,6 +6,7 @@ pkgbase = turpial
 	arch = any
 	license = GPL3
 	depends = python2
+	depends = libturpial>=0.8
 	depends = python2-distribute
 	depends = python-simplejson>=1.9.2
 	depends = pygtk>=2.12
