@@ -1,7 +1,7 @@
 pkgbase = libreoffice-breeze-icons
-	pkgdesc = Breeze icons set for Libreoffice. You should select it under Tools->Options->View
+	pkgdesc = Breeze dark icons set for Libreoffice. You should select it under Tools->Options->View
 	pkgver = 2015.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NitruxSA/plasma-next-icons
 	arch = any
 	license = LGPL
