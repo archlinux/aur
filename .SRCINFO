@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-git
 	pkgdesc = A bittorrent client written in C++ / Qt4 using the good libtorrent library (development version)
-	pkgver = 3.2.0.r17.2c1d76c
+	pkgver = 3.2.3.r0.g56beb0d
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
 	install = qbittorrent.install
@@ -18,7 +18,7 @@ pkgbase = qbittorrent-git
 	provides = qbittorrent-qt4
 	conflicts = qbittorrent
 	conflicts = qbittorrent-qt5
-	source = qbittorrent::git+https://github.com/qbittorrent/qBittorrent.git
+	source = qbittorrent::git+https://github.com/qbittorrent/qBittorrent.git#branch=v3_2_x
 	md5sums = SKIP
 
 pkgname = qbittorrent-git

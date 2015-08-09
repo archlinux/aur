@@ -1,8 +1,9 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Contributor: Eschwartz <eschwartz93@gmail.com>
 # Contributors: Ner0, Sevenseven
 
 pkgname=qbittorrent-git
-pkgver=3.2.0.r17.2c1d76c
+pkgver=3.2.3.r0.g56beb0d
 pkgrel=1
 pkgdesc="A bittorrent client written in C++ / Qt4 using the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
@@ -14,16 +15,13 @@ optdepends=('python: needed for torrent search tab')
 conflicts=('qbittorrent' 'qbittorrent-qt5')
 provides=('qbittorrent' 'qbittorrent-qt4')
 install=qbittorrent.install
-source=(${pkgname%-*}::"git+https://github.com/qbittorrent/qBittorrent.git")
+source=(${pkgname%-*}::"git+https://github.com/qbittorrent/qBittorrent.git#branch=v3_2_x")
 md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-*}
 
-  _tag=$(git tag -l | sort -r | head -n1 | tr -cd 0-9.)
-  _rev=$(git rev-list --count release-${_tag}..HEAD)
-  _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.%s" "$_tag" "$_rev" "$_hash"
+  git describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./'
 }
 
 build() {
