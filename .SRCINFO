@@ -1,6 +1,6 @@
 pkgbase = vera-plugin-autostart-git
 	pkgdesc = autostart plugin for vera
-	pkgver = 0
+	pkgver = r1.3872460
 	pkgrel = 1
 	url = https://github.com/vera-desktop/vera-plugin-autostart
 	install = vera-plugin-autostart.install

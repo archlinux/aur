@@ -5,7 +5,7 @@ _gitbranch=master
 _gitname=vera-plugin-autostart
 
 pkgname="$_gitname-git"
-pkgver=0
+pkgver=r1.3872460
 pkgrel=1
 pkgdesc="autostart plugin for vera"
 arch=(i686 x86_64)
