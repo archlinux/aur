@@ -1,0 +1,19 @@
+pkgbase = torchat
+	pkgdesc = A decentralized instant messenger built on top of the Tor Network
+	pkgver = 0.9.9.553
+	pkgrel = 2
+	url = https://github.com/prof7bit/TorChat
+	arch = any
+	license = GPL
+	depends = tor
+	depends = python2
+	depends = wxpython
+	source = https://github.com/downloads/prof7bit/TorChat/torchat-source-0.9.9.553.zip
+	source = torchat
+	source = torchat.desktop
+	sha1sums = cbb55a99ffbc9d92a98373a4f749d23c499eaad8
+	sha1sums = cfe8417a2386cf78828774c82622d19721828a33
+	sha1sums = 9aae48e906c958d25b167ecd0be04017ce8a56e8
+
+pkgname = torchat
+

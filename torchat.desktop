@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TORChat
+GenericName=TORChat
+Comment=Messenger application on top of the Tor network and location hidden services
+Exec=/usr/bin/torchat
+Icon=torchat
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
