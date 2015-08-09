@@ -1,4 +1,4 @@
-# Maintainer: Martin Minka <https://github.com/bigm>
+# Maintainer: Martin Minka <https://github.com/k2s>
 # Contributor: migerh <https://github.com/migerh>
 # Submitter: hollunder <murks at tuxfamily dot org>
 
