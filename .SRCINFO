@@ -13,8 +13,8 @@ pkgbase = racket-minimal
 	conflicts = racket
 	options = !strip
 	options = !emptydirs
-	source = http://mirror.racket-lang.org/installers/6.2/racket-6.2-src.tgz
-	sha1sums = 24a48002e9c3c00c3731c4562679f012b77bf62d
+	source = http://mirror.racket-lang.org/installers/6.2/racket-minimal-6.2-src.tgz
+	sha1sums = e18102ddaf02385645dea47966a2ca006b54bcb5
 
 pkgname = racket-minimal
 

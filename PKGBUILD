@@ -13,8 +13,8 @@ depends=('libffi')
 options=('!strip' '!emptydirs')
 provides=('racket')
 conflicts=('racket')
-source=("http://mirror.racket-lang.org/installers/$pkgver/${_pkgname}-${pkgver}-src.tgz")
-sha1sums=('24a48002e9c3c00c3731c4562679f012b77bf62d')
+source=("http://mirror.racket-lang.org/installers/$pkgver/${pkgname}-${pkgver}-src.tgz")
+sha1sums=('e18102ddaf02385645dea47966a2ca006b54bcb5')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/src"
