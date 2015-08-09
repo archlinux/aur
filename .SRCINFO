@@ -22,12 +22,13 @@ pkgbase = tsc-git
 	depends = gettext
 	depends = mesa
 	depends = freeglut
+	depends = cegui-0.7
 	conflicts = smc
 	conflicts = tsc
 	source = git+https://github.com/Secretchronicles/TSC.git
 	source = tsc.desktop
 	md5sums = SKIP
-	md5sums = b96731e4a6eeee41aa97d6f84c67cabb
+	md5sums = 19ef41c5353d563994e8e55c28723b0e
 
 pkgname = tsc-git
 

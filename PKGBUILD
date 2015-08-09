@@ -1,4 +1,4 @@
-# Maintainer:  Josh Dye 
+# Maintainer:  Josh Dye <tux_peng@icloud.com>
 # Contributor: Kendell Clark <coffeekingms@gmail.com
 # Contributor: Quintus <quintus@quintilianus.eu>
 pkgname=tsc-git
@@ -8,7 +8,7 @@ pkgdesc="Jump'n'run game, fork of SMC"
 arch=("i686" "x86_64")
 url="https://github.com/Secretchronicles/TSC"
 license=('GPL')
-depends=("sdl_image" "sdl_ttf" "glew" "sdl_mixer" "devil" "boost-libs" "libxml++" "gettext" "mesa" "freeglut")
+depends=("sdl_image" "sdl_ttf" "glew" "sdl_mixer" "devil" "boost-libs" "libxml++" "gettext" "mesa" "freeglut" "cegui-0.7")
 makedepends=("cmake" "ruby" "gperf" "pkg-config" "bison" "boost")
 optdepends=()
 conflicts=("smc" "tsc")
@@ -16,7 +16,7 @@ options=()
 source=("git+https://github.com/Secretchronicles/TSC.git" "tsc.desktop")
 noextract=()
 md5sums=("SKIP"
-         "b96731e4a6eeee41aa97d6f84c67cabb")
+         "19ef41c5353d563994e8e55c28723b0e")
 
 pkgver() {
     cd "$srcdir/TSC"
