@@ -1,7 +1,8 @@
 # Maintainer: Jeff Youdontneedtoknow <jeffpublicjr at gmail dot com>
+# Contributer: Arnaud
 pkgname=opentx-companion
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
 url="http://www.open-tx.org/"
@@ -17,20 +18,17 @@ build() {
   sed -i -e 's/env python/env python2.7/' $srcdir/opentx-$pkgver/radio/util/*.py
   sed -i -e 's/@python/@python2.7/' $srcdir/opentx-$pkgver/radio/src/Makefile
   cd $srcdir/opentx-$pkgver/companion
-  mkdir lbuild
+  mkdir -p lbuild
   cd lbuild
-  cmake ../src
-  make clean
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
   make
-  mv $srcdir/opentx-$pkgver/companion/lbuild/companion.desktop $srcdir/opentx-$pkgver/companion/src/companion.desktop
-  sed -i -e 's/Categories=Application/Categories=Development;/' $srcdir/opentx-$pkgver/companion/src/companion.desktop
-  sed -i -e 's/Icon=companion21/Icon=companion/' $srcdir/opentx-$pkgver/companion/src/companion.desktop
-  sed -i -e 's/Name=Companion 2.1.1/Name=Companion/' $srcdir/opentx-$pkgver/companion/src/companion.desktop
 }
 
 package() {
-  cd $srcdir/opentx-$pkgver/companion/
-  install -Dm755 lbuild/companion21 $pkgdir/usr/bin/companion21
-  install -Dm644 src/companion.desktop $pkgdir/usr/share/applications/companion.desktop
-  install -Dm644 src/icon.png $pkgdir/usr/share/icons/companion.png
+  cd $srcdir/opentx-$pkgver/companion/lbuild
+  make DESTDIR=$pkgdir/ install
+  cd $pkgdir/usr/share/applications
+  sed -i -e 's/Categories=Application/Categories=Development;/' companion21.desktop
+  sed -i -e 's/Categories=Application/Categories=Development;/' simulator21.desktop
+  rm -Rf $pkgdir/lib
 }
