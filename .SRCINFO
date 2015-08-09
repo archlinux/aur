@@ -1,0 +1,32 @@
+pkgbase = libretro-ppsspp-git
+	pkgdesc = libretro implementation of PPSSPP. (PlayStation Portable/PSP)
+	pkgver = 14111.67abe46
+	pkgrel = 1
+	url = https://github.com/libretro/ppsspp
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = GPL
+	makedepends = git
+	depends = zlib
+	depends = libgl
+	source = git+https://github.com/libretro/libretro-ppsspp.git
+	source = git+https://github.com/hrydgard/minidx9.git
+	source = git+https://github.com/libretro/ppsspp-ffmpeg
+	source = git+https://github.com/hrydgard/ppsspp-lang
+	source = git+https://github.com/libretro/ppsspp-native
+	source = git+https://github.com/hrydgard/pspautotests
+	source = git+https://github.com/hrydgard/ppsspp-redist
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/ppsspp_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-ppsspp-git
+
