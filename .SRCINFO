@@ -1,7 +1,7 @@
 pkgbase = dnscrypt-autoinstall
 	pkgdesc = Choose your DNSCrypt provider
 	pkgver = 0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = http://simonclausen.dk/2013/09/dnscrypt-autoinstaller/
 	install = dnscrypt-autoinstall.install
 	arch = any

@@ -2,7 +2,7 @@
 
 pkgname=dnscrypt-autoinstall
 pkgver=0.3
-pkgrel=8
+pkgrel=9
 
 pkgdesc='Choose your DNSCrypt provider'
 arch=('any')
@@ -12,6 +12,7 @@ license=('GPL')
 depends=('dnscrypt-proxy' 'libsodium' 'curl')
 makedepends=('git')
 install=dnscrypt-autoinstall.install
+backup=('etc/conf.d/dnscrypt-config')
 source=("git+https://github.com/simonclausen/dnscrypt-autoinstall")
 sha1sums=('SKIP')
 
