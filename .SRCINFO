@@ -1,0 +1,15 @@
+pkgbase = otf-alegreya-sans
+	pkgdesc = Alegreya Sans is a humanist sans serif family with a calligraphic feeling that conveys a dynamic and varied rhythm.
+	pkgver = 1.002
+	pkgrel = 1
+	url = http://www.huertatipografica.com/en/fonts/alegreya-sans-ht
+	install = otf-alegreya-sans.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.huertatipografica.com/free_download/23
+	md5sums = 38224ce535dbc3002c6ecb1f956576d9
+
+pkgname = otf-alegreya-sans
+
