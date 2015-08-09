@@ -5,7 +5,7 @@
 pkgname=nvidia-lts318-ck
 pkgver=352.30
 _extramodules=extramodules-3.18-lts318-ck
-pkgrel=2
+pkgrel=3
 _pkgdesc="NVIDIA drivers for linux-lts318-ck."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
