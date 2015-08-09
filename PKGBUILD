@@ -4,7 +4,7 @@ pkgname=(
 	mmdblookup
 	libmaxminddb
 )
-pkgver=1.0.4
+pkgver=1.1.1
 pkgrel=1
 epoch=
 pkgdesc="MaxMind GeoIP2 database - split package with library and utilities"
@@ -23,10 +23,8 @@ source=(
 	"https://github.com/maxmind/libmaxminddb/releases/download/$pkgver/libmaxminddb-$pkgver.tar.gz"
 	libmaxminddb.install
 )
-sha512sums=(
-	'd4570d7a680ea2d98cbab1ecc1a8762500561dd9b4265ec022a1cef805c903c1512bd7f90f98c3664c708c33400e7824dd0a3623fc928e6cf1da6a5eeae9aecd'
-	'9b0dca8bb17f198c4cc391660c9d9f955534381fc8ac0c8ddb4bdab0aff4e2a05900c98aee79e14275e4399494c5c5523c2e65a05985ac7a95cf1e8e950cf451'
-)
+sha512sums=('0dffb0b4b43eb70b6c4e4899c5875658fb031f7f8d859c43ffc27df89f3aebe0e0291caa721efaab3d664fb1c919c7432e1e0df3140c4877ddfa3e61a288d132'
+            '9b0dca8bb17f198c4cc391660c9d9f955534381fc8ac0c8ddb4bdab0aff4e2a05900c98aee79e14275e4399494c5c5523c2e65a05985ac7a95cf1e8e950cf451')
 noextract=()
 
 build() {
