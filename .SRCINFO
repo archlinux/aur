@@ -1,7 +1,7 @@
 pkgbase = lib32-librsvg
 	pkgdesc = A SVG viewing library (32-bit)
 	pkgver = 2.40.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://live.gnome.org/LibRsvg
 	arch = x86_64
 	license = LGPL
@@ -10,7 +10,6 @@ pkgbase = lib32-librsvg
 	makedepends = gobject-introspection
 	makedepends = vala
 	makedepends = python2
-	makedepends = lib32-gtk3
 	depends = lib32-gdk-pixbuf2
 	depends = lib32-pango
 	depends = lib32-libcroco
