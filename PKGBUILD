@@ -7,8 +7,8 @@ pkgdesc="Live Syncing (Mirror) Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/axkibe/lsyncd"
 license=('GPL2')
-depends=('lua' 'rsync')
-makedepends=('asciidoc')
+depends=('lua52' 'rsync')
+makedepends=('asciidoc' 'lua52')
 source=("https://github.com/axkibe/lsyncd/archive/release-$pkgver.tar.gz"
 	"lsyncd.service"
         "configure-a2x-fix.patch")
