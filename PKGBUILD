@@ -16,7 +16,10 @@ conflicts=('woof-python3')
 source=("http://www.home.unix-ag.org/simon/$pkgname")
 md5sums=('89081e64362421dcb683a19c10a15e59')
 
+prepare() {
+    sed -i 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|' "$pkgname"
+}
+
 package() {
-    sed -i -e 's,^#!/usr/bin/env python$,#!/usr/bin/env python2,' "$pkgname"
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
