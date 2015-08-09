@@ -3,26 +3,32 @@
 
 pkgname=binkd
 pkgver=1.0.4
+_pkgcommit=c335d3e86e3caea04072dde0968d08cb31d6a1e0
 pkgrel=1
 pkgdesc="Binkley protocol daemon for transferring files between Fidonet systems"
 arch=('i686' 'x86_64')
 url="http://binkd.grumbler.org/"
 license=('GPL')
 backup=("etc/binkd/binkd.conf")
-source=("ftp://happy.kiev.ua/pub/fidosoft/mailer/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("git+https://github.com/pgul/binkd.git#commit=$_pkgcommit"
         "binkd.service"
         "binkd@.service"
         "binkd.socket"
         "binkd.tmpfiles")
 install="binkd.install"
-sha256sums=('917e45c379bbd1a140d1fe43179a591f1b2ec4004b236d6e0c4680be8f1a0dc0'
+sha256sums=('SKIP'
             '3f2ddf00b1552ad90a7320c7d904afab13fb2de525568190c80c7d87f67cc0c8'
             '2ebaebb7b525f9eaa1915dfeabba1626422d300f9820981225509203e6dcbc59'
             '2ddcb26a54f7a0f9a8ab5d8819431fb1f2bd961169c6fe5e7afa7f4c89e11786'
             '5032916082884a938978f0d5168fd053baab230bd34e84008ae637515e04a685')
 
+pkgver() {
+  cd "$srcdir"
+  git describe --tags | sed 's/^binkd-//; s/-/.r/; s/[-_]/./g'
+}
+
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir"
   cp mkfls/unix/{Makefile*,configure*,install-sh,mkinstalldirs} .
   ./configure \
     --prefix=/usr           \
@@ -36,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir"
   make DESTDIR="$pkgdir" install
 
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
