@@ -1,9 +1,13 @@
 post_install() {
-	post_upgrade;
+  echo "Maybe you have to restart CUPS to use the added driver"
 }
 
 post_upgrade() {
-echo "Restart CUPS to load the new files"
-echo "You can now register your new printer using the web interface at:"
-echo "  http://localhost:631/"
+  echo "Maybe you have to restart CUPS to use the changed driver"
+  echo ""
+  echo "When upgrading from 2.0.4 to 3.1.0 the driver name changes from"
+  echo "'Brother DCP7065DN for CUPS' to 'Brother BrGenML1 for CUPS'"
+  echo ""
+  echo "To make use of the updated driver, edit your printer in the CUPS"
+  echo "webinterface and select the new driver"
 }
