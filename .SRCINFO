@@ -1,0 +1,24 @@
+pkgbase = texlive-dummy
+	pkgdesc = Something to trick Arch into thinking it has its texlive packages installed.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://www.tug.org/texlive/
+	arch = any
+	license = GPL
+	provides = texlive-bin
+	provides = texlive-core
+	provides = texlive-fontsextra
+	provides = texlive-pstricks
+	provides = texlive-bibtexextra
+	provides = texlive-latexextra
+	provides = texlive-htmlxml
+	conflicts = texlive-bin
+	conflicts = texlive-core
+	conflicts = texlive-fontsextra
+	conflicts = texlive-pstricks
+	conflicts = texlive-bibtexextra
+	conflicts = texlive-latexextra
+	conflicts = texlive-htmlxml
+
+pkgname = texlive-dummy
+
