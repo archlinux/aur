@@ -16,7 +16,11 @@ pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='http://www.ansible.com'
 license=('GPL3')
-depends=('python2' 'python2-paramiko' 'python2-jinja' 'python2-yaml')
+depends=('python2'
+         'python2-jinja'
+         'python2-paramiko'
+         'python2-six'
+         'python2-yaml')
 makedepends=('git' 'asciidoc' 'fakeroot')
 optdepends=('python2-pyasn1: needed for accelerated mode'
             'python2-crypto: needed for accelerated mode'
@@ -24,7 +28,7 @@ optdepends=('python2-pyasn1: needed for accelerated mode'
 conflicts=('ansible')
 provides=('ansible')
 backup=('etc/ansible/ansible.cfg')
-source=($pkgname::git://github.com/ansible/ansible.git)
+source=($pkgname::git+https://github.com/ansible/ansible.git)
 md5sums=('SKIP')
 
 pkgver() {
