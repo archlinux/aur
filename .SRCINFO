@@ -1,0 +1,14 @@
+pkgbase = wii-u-gc-adapter
+	pkgdesc = Drivers for the wii u gc usb adapter for linux
+	pkgver = 0.0.29
+	pkgrel = 1
+	url = https://github.com/ToadKing/wii-u-gc-adapter
+	arch = i686
+	arch = x86_64
+	source = git+https://github.com/ToadKing/wii-u-gc-adapter.git
+	source = 51-ignore-gc-controller.conf
+	sha512sums = SKIP
+	sha512sums = 6e3ca9aabd8732f5ab5220e249a7d789067b8014bbc0cbbd790f6afac04957662ad844aab70680139cfb6079fc1b28cb6fe0e664f46c13401cf068a632403dac
+
+pkgname = wii-u-gc-adapter
+
