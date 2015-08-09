@@ -1,7 +1,7 @@
 pkgbase = metastore-git
 	pkgdesc = Store and restore metadata from a filesystem.
 	pkgver = r63.efce687
-	pkgrel = 1
+	pkgrel = 2
 	url = http://david.hardeman.nu/software.php#metastore
 	arch = i686
 	arch = x86_64
