@@ -3,14 +3,14 @@
 pkgname=clx-git
 _clname=clx
 pkgver=r178.0a3bea0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An X11 client for Common Lisp"
 url="https://github.com/sharplispers/clx"
 license=('custom')
 provides=('clx')
 conflicts=('clx')
-depends=('x-server' 'sbcl')
+depends=('xorg-server' 'sbcl')
 makedepends=('git' 'texinfo')
 install=clx.install
 source=(${pkgname}::git+https://github.com/sharplispers/clx.git
