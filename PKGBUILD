@@ -2,7 +2,7 @@
 
 pkgname=tixati
 pkgver=2.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple P2P client that is compatible with the BitTorrent protocol"
 arch=('i686' 'x86_64')
 url="http://www.tixati.com/"
@@ -18,7 +18,7 @@ sha1sums_i686=('b42c37ae93762481b235f982c7a351867b1ca8b3')
 sha1sums_x86_64=('ff4102860cc205d8e748ba60fea5cadf05a0a08a')
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver}-${pkgrel}.$CARCH.manualinstall"
+  cd "$srcdir/$pkgname-${pkgver}-1.$CARCH.manualinstall"
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm644 $pkgname.png \
     "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"

@@ -1,7 +1,7 @@
 pkgbase = tixati
 	pkgdesc = A simple P2P client that is compatible with the BitTorrent protocol
 	pkgver = 2.16
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.tixati.com/
 	install = tixati.install
 	arch = i686
