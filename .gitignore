@@ -1,0 +1,4 @@
+# ignore everything
+*.pkg.tar
+*.src.tar.gz
+*.zip
