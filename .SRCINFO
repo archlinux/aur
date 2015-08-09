@@ -1,4 +1,4 @@
-pkgbase = apache-spark
+pkgbase = apache_spark
 	pkgver = 1.4.1
 	pkgrel = 1
 	arch = x86_64
@@ -7,5 +7,5 @@ pkgbase = apache-spark
 	source = git://github.com/apache/spark.git
 	md5sums = SKIP
 
-pkgname = apache-spark
+pkgname = apache_spark
 

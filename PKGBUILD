@@ -7,7 +7,7 @@
 # for more information on packaging from GIT sources.
 
 # Maintainer: Tao-Yi Lee <tylee@ieee.org>
-pkgname=apache-spark
+pkgname=apache_spark
 pkgver=1.4.1
 pkgrel=1
 pkgdesc=""
