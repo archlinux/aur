@@ -1,0 +1,14 @@
+pkgbase = sst
+	pkgdesc = The Classic Super Star Trek Game
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://www.almy.us/sst.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.almy.us/files/sstsrc.zip
+	md5sums = 8d62e45290bed437eb38c98a11741d46
+
+pkgname = sst
+
