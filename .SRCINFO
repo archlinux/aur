@@ -1,6 +1,6 @@
 pkgbase = vera-git
 	pkgdesc = A simple, lightweight, GTK3 based desktop environment
-	pkgver = 0
+	pkgver = 1.0.2.1
 	pkgrel = 1
 	url = https://github.com/vera-desktop/vera
 	install = vera.install
