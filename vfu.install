@@ -1,0 +1,19 @@
+post_upgrade() {
+	post_install $1
+}
+
+post_install() {
+	echo
+	echo "Make sure you removed all old personal config and cache files"
+	echo "before installing new version! Usually this means you have to"
+	echo "remove or rename ~/.vfu directory."
+	echo 
+	echo "Install Net::FTP perl module for FTP support"
+	echo
+	echo "In case backspace doesn't work for you in urxvt, try adding this to ~/.Xdefaults :"
+	echo "Rxvt.backspacekey: ^H"
+}
+
+op=$1
+shift
+$op $*

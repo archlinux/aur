@@ -1,0 +1,22 @@
+diff -ur vfu-4.10/vslib/unicon.cpp vfu-4.10-utf/vslib/unicon.cpp
+--- vfu-4.10/vslib/unicon.cpp	2009-12-12 01:07:11.000000000 +0200
++++ vfu-4.10-utf/vslib/unicon.cpp	2010-03-20 20:08:40.000000000 +0200
+@@ -163,6 +163,7 @@
+ 
+   int con_init()
+   {
++    setlocale (LC_CTYPE, "");
+     initscr();
+     start_color();
+     qiflush();
+diff -ur vfu-4.10/vslib/unicon.h vfu-4.10-utf/vslib/unicon.h
+--- vfu-4.10/vslib/unicon.h	2008-04-30 02:28:00.000000000 +0300
++++ vfu-4.10-utf/vslib/unicon.h	2010-03-20 20:07:48.000000000 +0200
+@@ -26,6 +26,7 @@
+   #include <curses.h>
+   #endif
+   #include <stdlib.h>
++  #include <locale.h>
+ #endif
+ 
+ /****************************************************************************
