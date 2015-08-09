@@ -1,13 +1,14 @@
 pkgbase = lsyncd
 	pkgdesc = Live Syncing (Mirror) Daemon
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/axkibe/lsyncd
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = asciidoc
-	depends = lua
+	makedepends = lua52
+	depends = lua52
 	depends = rsync
 	source = https://github.com/axkibe/lsyncd/archive/release-2.1.5.tar.gz
 	source = lsyncd.service

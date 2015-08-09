@@ -2,7 +2,7 @@
 # Submitter: nullie
 pkgname=lsyncd
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/axkibe/lsyncd"
