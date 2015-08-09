@@ -4,17 +4,17 @@
 # https://github.com/michaellass/AUR
 
 pkgname=kodi-addon-pvr-hts-git
-pkgver=r302.5c22440
-pkgrel=2
+pkgver=r306.9b05d4c
+pkgrel=1
 _branch=Isengard
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/pvr.hts"
 license=('GPL')
-makedepends=('cmake' 'git' 'kodi-platform')
+makedepends=('cmake' 'git' 'kodi-platform-git')
 depends=('kodi>=15.0')
 provides=('kodi-addon-pvr-hts')
-conflicts=('kodi-addon-pvr-hts')
+conflicts=('kodi-addon-pvr-hts' 'kodi-pvr-addons')
 source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=${_branch}")
 md5sums=('SKIP')
 
