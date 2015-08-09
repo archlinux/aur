@@ -17,6 +17,7 @@ pkgbase = qml-material-git
 	conflicts = qml-material
 	conflicts = qml-extras
 	conflicts = qml-extras-git
+	conflicts = papyros-shell
 	source = qml-material-git::git+https://github.com/papyros/qml-material.git#branch=develop
 	sha256sums = SKIP
 

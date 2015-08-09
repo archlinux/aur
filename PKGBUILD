@@ -10,10 +10,10 @@ arch=("i686" "x86_64")
 url="https://github.com/papyros/qml-material"
 license=("LGPL")
 depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-svg"
-		 "qt5-graphicaleffects")
+         "qt5-graphicaleffects")
 makedepends=("git")
 provides=("$_pkgname" "$pkgname")
-conflicts=("$_pkgname" "qml-extras" "qml-extras-git")
+conflicts=("$_pkgname" "qml-extras" "qml-extras-git" "papyros-shell")
 source=("$pkgname::git+https://github.com/papyros/qml-material.git#branch=develop")
 sha256sums=("SKIP")
 
