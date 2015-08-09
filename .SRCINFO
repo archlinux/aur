@@ -1,11 +1,11 @@
 pkgbase = audaspace-git
 	pkgdesc = A feature rich high level audio library.
-	pkgver = 0.1.127.3f62d90
+	pkgver = 0.1.179.a703501
 	pkgrel = 1
-	url = https://github.com/neXyon/audaspace
+	url = https://github.com/audaspace/audaspace
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = APACHE
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
@@ -16,7 +16,7 @@ pkgbase = audaspace-git
 	depends = libsndfile
 	depends = ffmpeg
 	depends = jack
-	source = git://github.com/neXyon/audaspace.git
+	source = git://github.com/audaspace/audaspace.git
 	md5sums = SKIP
 
 pkgname = audaspace-git

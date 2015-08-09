@@ -1,12 +1,12 @@
 # Maintainer: neXyon <nexyon at gmail dot com>
 
 pkgname=audaspace-git
-pkgver=0.1.127.3f62d90
+pkgver=0.1.179.a703501
 pkgrel=1
 pkgdesc="A feature rich high level audio library."
 arch=('i686' 'x86_64')
-url="https://github.com/neXyon/audaspace"
-license=('MIT')
+url="https://github.com/audaspace/audaspace"
+license=('APACHE')
 groups=()
 depends=('python' 'openal' 'sdl' 'libsndfile' 'ffmpeg' 'jack')
 makedepends=('gcc' 'cmake' 'git' 'python-setuptools')
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("git://github.com/neXyon/audaspace.git")
+source=("git://github.com/audaspace/audaspace.git")
 md5sums=('SKIP')
 noextract=()
 _gitname="audaspace"
@@ -36,21 +36,7 @@ build() {
   cd build
 
   cmake ../$_gitname \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DCMAKE_BUILD_TYPE:STRING=Release \
-    -DBUILD_DEMOS:BOOL=TRUE \
-    -DSHARED_LIBRARY:BOOL=TRUE \
-    -DWITH_BINDING_DOCS:BOOL=TRUE \
-    -DWITH_C:BOOL=TRUE \
-    -DWITH_DOCS:BOOL=TRUE \
-    -DWITH_FFMPEG:BOOL=TRUE \
-    -DWITH_JACK:BOOL=TRUE \
-    -DWITH_LIBSNDFILE:BOOL=TRUE \
-    -DWITH_OPENAL:BOOL=TRUE \
-    -DWITH_PYTHON:BOOL=TRUE \
-    -DWITH_SDL:BOOL=TRUE \
-    -DDEFAULT_PLUGIN_PATH:PATH=/usr/share/audaspace/plugins \
-    -DDOCUMENTATION_INSTALL_PATH:PATH=/usr/share/doc/audaspace || return 1
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
 
   make $MAKEFLAGS || return 1
 }
