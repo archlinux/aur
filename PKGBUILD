@@ -4,7 +4,7 @@ pkgdesc="ROS - Common code for working with images in ROS."
 url='http://www.ros.org/wiki/image_common'
 
 pkgname='ros-indigo-image-common'
-pkgver='1.11.5'
+pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
