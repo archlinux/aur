@@ -1,0 +1,37 @@
+From 4352872190d92b2c2f972c0b776e16320ee44405 Mon Sep 17 00:00:00 2001
+From: KoffeinFlummi <koffeinflummi@gmail.com>
+Date: Tue, 9 Jun 2015 07:45:15 +0200
+Subject: [PATCH 6/6] copy: fix two potential divs by zero
+
+* fix two potential divs by zero
+---
+ src/copy.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/copy.c b/src/copy.c
+index 77ea9ab..786be51 100644
+--- a/src/copy.c
++++ b/src/copy.c
+@@ -225,7 +225,7 @@ emit_progress (off_t size_done, off_t size_total, clock_t start, bool final)
+ 
+   double elapsed = (clock() - start) / (double)CLOCKS_PER_SEC;
+   int done = 0;
+-  if (size_total != 0)
++  if (size_total / 100 != 0)
+     done = size_done / (size_total / 100);
+ 
+   char str_done[512];
+@@ -246,7 +246,9 @@ emit_progress (off_t size_done, off_t size_total, clock_t start, bool final)
+   char str_speed[512];
+   readable_fsize(speed, str_speed);
+ 
+-  int seconds = (size_total - size_done) / speed;
++  int seconds = 0;
++  if (speed != 0)
++    seconds = (size_total - size_done) / speed;
+   if (final)
+     seconds = (int)elapsed;
+   int minutes = seconds / 60;
+-- 
+2.5.0
+

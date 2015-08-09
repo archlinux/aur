@@ -1,0 +1,29 @@
+pkgbase = coreutils-progress-git
+	pkgdesc = The basic file, shell and text manipulation utilities of the GNU operating system. Patched for an added progress bar for cp
+	pkgver = 8.24.9.g037e3b9
+	pkgrel = 1
+	url = http://www.gnu.org/software/coreutils
+	install = coreutils-progress-git.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL3
+	depends = glibc
+	depends = acl
+	depends = attr
+	depends = gmp
+	depends = libcap
+	depends = openssl
+	provides = coreutils
+	conflicts = coreutils
+	source = git+git://git.sv.gnu.org/coreutils.git
+	source = 0001-copy-Add-a-progress-option.patch
+	source = 0002-copy-fix-missing-progress-check.patch
+	source = 0003-copy-fix-two-potential-divs-by-zero.patch
+	sha256sums = SKIP
+	sha256sums = cc6d3c95e94c12fe718c20e2605dabcb2600c70480263fde1c732ea0d14bdd6d
+	sha256sums = 5494516bcd67c585290acb997300619f235aa30ab12f34ae2e5b57b2a9dfd95c
+	sha256sums = 4d21076ae255094641006fb9ce56d73c379d4d09b83e8a5891e531dc23214ae5
+
+pkgname = coreutils-progress-git
+

@@ -1,0 +1,45 @@
+From 66113419adcb00cc69c96cd470413b8e88d2cdd6 Mon Sep 17 00:00:00 2001
+From: KoffeinFlummi <koffeinflummi@gmail.com>
+Date: Fri, 5 Jun 2015 21:39:42 +0200
+Subject: [PATCH 5/6] copy: fix missing --progress check
+
+* final progress bar was printed regardless of whether the flag was set
+---
+ src/copy.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/copy.c b/src/copy.c
+index 94f4512..77ea9ab 100644
+--- a/src/copy.c
++++ b/src/copy.c
+@@ -401,7 +401,8 @@ sparse_copy (int src_fd, int dest_fd, char *buf, size_t buf_size,
+          certain files in /proc or /sys with linux kernels.  */
+     }
+ 
+-  emit_progress(size_done, size_total, start_time, true);
++  if (progress)
++    emit_progress(size_done, size_total, start_time, true);
+ 
+   /* Ensure a trailing hole is created, so that subsequent
+      calls of sparse_copy() start at the correct offset.  */
+@@ -1086,7 +1087,7 @@ static bool
+ copy_reg (char const *src_name, char const *dst_name,
+           const struct cp_options *x,
+           mode_t dst_mode, mode_t omitted_permissions, bool *new_dst,
+-          struct stat const *src_sb, bool progress)
++          struct stat const *src_sb)
+ {
+   char *buf;
+   char *buf_alloc = NULL;
+@@ -2702,7 +2703,7 @@ copy_internal (char const *src_name, char const *dst_name,
+          used only by 'install', which POSIX does not specify and
+          where DST_MODE_BITS is what's wanted.  */
+       if (! copy_reg (src_name, dst_name, x, dst_mode_bits & S_IRWXUGO,
+-                      omitted_permissions, &new_dst, &src_sb, x->progress))
++                      omitted_permissions, &new_dst, &src_sb))
+         goto un_backup;
+     }
+   else if (S_ISFIFO (src_mode))
+-- 
+2.5.0
+
