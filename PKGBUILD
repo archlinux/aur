@@ -4,7 +4,7 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-pkgver=6.3.1
+pkgver=6.3.2
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 url="http://www.cs.wustl.edu/~schmidt/ACE.html"
@@ -29,5 +29,5 @@ package() {
   cd $srcdir/ACE_wrappers/ace
   make DESTDIR="$pkgdir/" install
 }
-sha1sums=('6b1256b259b699f9e6747bc3b53b48885e18a4af'
+sha1sums=('11df9867b26d5d7addc2ced5c129798d0011f7f6'
           'b21054d0aa546fabe4bb0c2769401314d4a5bfe3')
