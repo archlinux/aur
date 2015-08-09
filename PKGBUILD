@@ -9,11 +9,11 @@ url="https://github.com/lepture/python-livereload"
 license=('BSD')
 depends=('python' 'python-tornado')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('114cb56f8c972078745dbdb22ccb815e')
+source=("https://github.com/lepture/python-livereload/archive/v${pkgver}.tar.gz")
+md5sums=('348ed9aafc41d02c78bb1298725d3aa9')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/python-livereload-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

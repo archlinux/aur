@@ -8,8 +8,8 @@ pkgbase = livereload
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tornado
-	source = https://pypi.python.org/packages/source/l/livereload/livereload-2.3.2.tar.gz
-	md5sums = 114cb56f8c972078745dbdb22ccb815e
+	source = https://github.com/lepture/python-livereload/archive/v2.3.2.tar.gz
+	md5sums = 348ed9aafc41d02c78bb1298725d3aa9
 
 pkgname = livereload
 
