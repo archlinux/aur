@@ -1,6 +1,6 @@
 pkgbase = fancontrol-gui-git
 	pkgdesc = GUI for the fancontrol script and systemd service
-	pkgver = 0.1.r7.gd6de588
+	pkgver = 0.1.r31.g3adc005
 	pkgrel = 1
 	url = https://github.com/Maldela/Fancontrol-GUI
 	arch = any
@@ -14,6 +14,9 @@ pkgbase = fancontrol-gui-git
 	depends = qt5-declarative
 	depends = lm_sensors
 	depends = kauth
+	depends = kpackage
+	depends = ki18n
+	depends = kconfig
 	depends = systemd
 	provides = fancontrol-gui
 	conflicts = fancontrol-gui
