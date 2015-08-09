@@ -1,3 +1,5 @@
+# Maintainer: Magnus Olsson <datamange at gmail dot com>
+# Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=python-instagram
 pkgver=1.3.2
 pkgrel=1
