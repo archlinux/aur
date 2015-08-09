@@ -3,7 +3,7 @@
 
 pkgname=conkywx
 pkgver=4.0.2
-pkgrel=1
+pkgrel=1 
 pkgdesc="To display weather from multiple sources using conky"
 arch=('any')
 url='https://bitbucket.org/plikhari/conkywx_pub/downloads'
