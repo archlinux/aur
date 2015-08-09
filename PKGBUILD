@@ -10,7 +10,7 @@
 pkgname=apache_spark
 pkgver=1.4.1
 pkgrel=1
-pkgdesc=""
+pkgdesc="Apache Spark™ is a fast and general engine for large-scale data processing."
 arch=('x86_64')
 url=""
 license=('GPL')
