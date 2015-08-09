@@ -13,6 +13,7 @@ pkgbase = vpaint-git
 	depends = qt4
 	depends = glu
 	depends = qt5-base
+	depends = libxkbcommon-x11
 	source = vpaint-git::git+https://github.com/dalboris/vpaint.git
 	md5sums = SKIP
 
