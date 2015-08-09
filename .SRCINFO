@@ -1,0 +1,19 @@
+pkgbase = nala-git
+	pkgdesc = A nala implementation written in vala.
+	pkgver = 1.0.2.1
+	pkgrel = 1
+	url = https://github.com/g7/nala
+	install = nala.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bake
+	depends = vala
+	provides = nala-git
+	conflicts = nala-git
+	conflicts = ${pkgname%-git}
+	source = nala::git://github.com/vera-desktop/vera.git#branch=master
+	md5sums = SKIP
+
+pkgname = nala-git
+
