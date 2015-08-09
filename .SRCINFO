@@ -1,0 +1,22 @@
+pkgbase = caff-svn
+	pkgdesc = CA Fire and Forget is a script that helps you in keysigning.
+	pkgver = 0.r814
+	pkgrel = 1
+	url = http://pgp-tools.alioth.debian.org/
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = gnupg
+	depends = perl
+	depends = perl-gnupg-interface
+	depends = perl-mime-tools
+	depends = perl-mailtools
+	depends = perl-text-template
+	depends = perl-any-moose
+	depends = perl-net-idn-encode
+	conflicts = signing-party-svn
+	source = caff::svn://svn.debian.org/svn/pgp-tools/trunk/caff
+	md5sums = SKIP
+
+pkgname = caff-svn
+
