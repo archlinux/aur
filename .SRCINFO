@@ -1,0 +1,17 @@
+pkgbase = gnubik
+	pkgdesc = The GNUbik program is an interactive, graphical, cube puzzle.
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://www.gnu.org/software/gnubik/
+	install = gnubik.install
+	arch = any
+	license = GPL3
+	depends = guile
+	depends = mesa
+	depends = gtk2
+	depends = gtkglext
+	source = ftp://ftp.gnu.org/gnu/gnubik/gnubik-2.4.1.tar.gz
+	md5sums = 62433d6b65d046e7f56fb8b41ea1837c
+
+pkgname = gnubik
+
