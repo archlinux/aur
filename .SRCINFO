@@ -1,0 +1,14 @@
+pkgbase = gtk-clearlooks-compact
+	pkgdesc = Theme for Clearlooks GTK+ engine
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.gnome-look.org/content/show.php/Clearlooks+Compact?content=69357
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk-engines
+	source = http://martin.ankerl.com/files/ClearlooksCompact-1.5.tar.bz2
+	md5sums = 9d6f111db273f065cfd2e3ee5c390eac
+
+pkgname = gtk-clearlooks-compact
+
