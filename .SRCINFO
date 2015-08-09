@@ -1,5 +1,5 @@
 pkgbase = firefox-extension-umatrix-git
-	pkgdesc = Feature-Complete version of uMatrix as maintained by gorhill, git version.
+	pkgdesc = uMatrix, maintained by gorhill, git version.
 	pkgver = r914.7b65131
 	pkgrel = 1
 	url = https://github.com/gorhill/umatrix

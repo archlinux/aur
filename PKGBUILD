@@ -1,4 +1,4 @@
-# Maintainer: frames <markkuehn at outlook dot com>
+# Original PKGBUILD from: frames <markkuehn at outlook dot com>
 
 pkgname=firefox-extension-umatrix-git
 pkgver=r914.7b65131
