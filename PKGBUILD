@@ -1,7 +1,7 @@
 # Maintainer: Roman Vasilev <2rvasilev@live.ru>
 pkgname=yajhfc
-pkgver=0.5.7-1
-pkgrel=2
+pkgver=0.5.7_1
+pkgrel=3
 pkgdesc="(Yet another Java HylaFAX client) is a client for the HylaFAX fax server written completely in Java."
 arch=(any)
 url="http://www.yajhfc.de/"
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=${pkgname}.install
 changelog=
-source=("http://download.yajhfc.de/releases/$pkgname-$pkgver.noarch.rpm")
+source=("http://download.yajhfc.de/releases/$pkgname-${pkgver//_/-}.noarch.rpm")
 md5sums=('c6c0f417d7f221b7461601d883c6ae25')
 
 build() {
