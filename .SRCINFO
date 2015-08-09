@@ -1,12 +1,13 @@
 pkgbase = dict-freedict-eng-fra
 	pkgdesc = English -> French dictionary for dictd from Freedict.org
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedict.org/
 	install = dict-freedict-eng-fra.install
 	arch = any
 	license = GPL
-	depends = dictd
+	makedepends = dictd
+	optdepends = dictd: dict client and server
 	source = http://sourceforge.net/projects/freedict/files/English%20-%20French/0.1.4/freedict-eng-fra-0.1.4.tar.bz2
 	md5sums = b0ac25998cdebefc897cb2c20374a7f2
 
