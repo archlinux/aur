@@ -1,0 +1,18 @@
+pkgbase = nasm-git
+	pkgdesc = 80x86 assembler designed for portability and modularity
+	pkgver = 20150726
+	pkgrel = 1
+	url = http://nasm.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = asciidoc
+	depends = glibc
+	provides = nasm
+	replaces = nasm
+	source = git://repo.or.cz/nasm.git
+	md5sums = SKIP
+
+pkgname = nasm-git
+
