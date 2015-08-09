@@ -1,0 +1,30 @@
+diff -rup LWP-UserAgent-Mockable-wwHFeJ-orig/lib/LWP/UserAgent/Mockable.pm LWP-UserAgent-Mockable-wwHFeJ/lib/LWP/UserAgent/Mockable.pm
+--- LWP-UserAgent-Mockable-wwHFeJ-orig/lib/LWP/UserAgent/Mockable.pm	2009-05-25 08:52:01.000000000 -0700
++++ LWP-UserAgent-Mockable-wwHFeJ/lib/LWP/UserAgent/Mockable.pm	2014-11-07 23:38:15.000000000 -0800
+@@ -71,7 +71,7 @@ sub __reset {
+ 
+         $self->{ actions } = retrieve( $file );
+ 
+-        $wrappers->{ pre } = wrap LWP::UserAgent::simple_request,
++        $wrappers->{ pre } = wrap 'LWP::UserAgent::simple_request',
+             pre     => sub {
+                 my ( $wrapped, $request ) = @_;
+ 
+@@ -99,7 +99,7 @@ sub __reset {
+                 $_[ -1 ] = $response;
+             };
+     } else {
+-        $wrappers->{ pre } = wrap LWP::UserAgent::simple_request,
++        $wrappers->{ pre } = wrap 'LWP::UserAgent::simple_request',
+             pre     => sub {
+                 my ( $wrapped, $request ) = @_;
+ 
+@@ -120,7 +120,7 @@ sub __reset {
+         # This does mean that, when both pre- and post-record callbacks are being
+         # used, that the post-callback will take precedence.
+ 
+-        $wrappers->{ post } = wrap LWP::UserAgent::simple_request,
++        $wrappers->{ post } = wrap 'LWP::UserAgent::simple_request',
+             post    => sub {
+                 my $response = $_[ -1 ];
+                 if ( $callbacks->{ record }) {
