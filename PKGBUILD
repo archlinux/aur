@@ -47,11 +47,12 @@ build() {
 
 package() {
   _usr=${pkgdir}/usr
+  _etc_profiled=${pkgdir}/etc/profile.d
   _usr_lib=${pkgdir}/usr/lib
   _spark_real_home=$_usr_lib/$pkgname-$pkgver
   _spark_link_home=$_usr_lib/$pkgname
   mkdir -p $_spark_real_home
-  mkdir -p $_usr_bin
+  mkdir -p $_etc_profiled
 
   cd $_usr_lib
   ln -s $pkgname-$pkgver $pkgname
@@ -61,6 +62,7 @@ package() {
   msg "Spark will be installed under /usr/lib/$pkgname"
   mv $_spark_real_home/spark-$pkgver-SNAPSHOT-bin-$_buildname/* $_spark_real_home
   rmdir $_spark_real_home/spark-$pkgver-SNAPSHOT-bin-$_buildname
+  echo "export PATH=\$PATH:/usr/lib/$pkgname/bin" >> $_etc_profiled/$pkgname.sh
 }
 
 # vim:set ts=2 sw=2 et:
