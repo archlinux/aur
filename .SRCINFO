@@ -6,13 +6,19 @@ pkgbase = python-i3-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	options = !emptydirs
+	source = python-i3::git://github.com/ziberna/i3-py.git
+	md5sums = SKIP
+
+pkgname = python-i3-git
 	depends = python
 	depends = i3-wm
 	provides = python-i3
 	conflicts = python-i3
-	options = !emptydirs
-	source = python-i3-git::git://github.com/ziberna/i3-py.git
-	md5sums = SKIP
 
-pkgname = python-i3-git
+pkgname = python2-i3-git
+	depends = python2
+	depends = i3-wm
+	provides = python-i3
+	conflicts = python-i3
 
