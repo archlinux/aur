@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-futurama
+	pkgdesc = Futurama fortune cookie files
+	pkgver = 0.2
+	pkgrel = 4
+	url = http://www.netmeister.org/misc.html
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	source = http://www.netmeister.org/apps/fortune-mod-futurama-0.2.tar.gz
+	md5sums = fa6f3c782180967469850dfd785f81aa
+
+pkgname = fortune-mod-futurama
+
