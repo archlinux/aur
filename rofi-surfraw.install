@@ -1,0 +1,8 @@
+#!/bin/bash
+post_install() {
+echo '
+Global config file is installed as /etc/rofi-surfraw.conf
+To make user modifications it to $HOME/.config/rofi-surfraw/config
+'
+}
+#post_install

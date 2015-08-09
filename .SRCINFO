@@ -1,0 +1,16 @@
+pkgbase = rofi-surfraw-git
+	pkgdesc = Universal tool to search the internet
+	pkgver = 44.e59c541
+	pkgrel = 1
+	url = https://github.com/carnager/rofi-scripts
+	install = rofi-surfraw.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = rofi-git
+	depends = surfraw
+	source = git+http://github.com/carnager/rofi-scripts
+	md5sums = SKIP
+
+pkgname = rofi-surfraw-git
+
