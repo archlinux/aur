@@ -22,7 +22,7 @@ source=("http://download.yajhfc.de/releases/$pkgname-${pkgver//_/-}.noarch.rpm")
 md5sums=('c6c0f417d7f221b7461601d883c6ae25')
 
 build() {
-  pkgextract.sh $pkgname-$pkgver.noarch.rpm
+  pkgextract.sh $pkgname-${pkgver//_/-}.noarch.rpm
 }
 
 package() {
