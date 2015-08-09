@@ -1,11 +1,12 @@
 # Maintainer: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
+# Maintainer: blackleg <blackleg@openaliasbox.org>
 
 _rev=r02
 _sdkver=4.4W.2
 _sdkint=20
 pkgname=android-platform-${_sdkint,,}
 pkgver=${_sdkver}_${_rev}
-pkgrel=2
+pkgrel=4
 pkgdesc="Android SDK Platform, API-${_sdkint}"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
@@ -19,5 +20,10 @@ package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
   mv "${srcdir}/android-${_sdkver}" "${pkgdir}/opt/android-sdk/platforms/android-${_sdkint}"
 
-  chmod -R ugo+rX "${pkgdir}/opt"
+  #chmod -R ugo+rX "${pkgdir}/opt"
+
+  #Change group users  
+  chown -R :sdkusers "${pkgdir}/opt/android-sdk"
+  #Change permisions
+  chmod -R ug+rwX,o=rX "${pkgdir}/opt/android-sdk"	
 }
