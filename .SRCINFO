@@ -9,8 +9,9 @@ pkgbase = python-i3-git
 	depends = python
 	depends = i3-wm
 	provides = python-i3
+	conflicts = python-i3
 	options = !emptydirs
-	source = i3-py::git://github.com/ziberna/i3-py.git
+	source = python-i3-git::git://github.com/ziberna/i3-py.git
 	md5sums = SKIP
 
 pkgname = python-i3-git
