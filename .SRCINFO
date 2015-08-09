@@ -29,3 +29,7 @@ pkgname = sshtalk
 	pkgdesc = an ephemeral multi-person SSH chat
 	url = https://2ton.com.au/sshtalk/
 
+pkgname = toplip
+	pkgdesc = a command line very strong encryption utility
+	url = https://2ton.com.au/toplip/
+

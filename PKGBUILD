@@ -2,7 +2,7 @@
 # Maintainer: Serge Victor <arch at random dot re>
 # Maintainer: polyzen <polycitizen at gmail dot com>
 pkgbase=heavything
-pkgname=('rwasa' 'webslap' 'hnwatch' 'dhtool' 'sshtalk') #toplip
+pkgname=('rwasa' 'webslap' 'hnwatch' 'dhtool' 'sshtalk' 'toplip')
 pkgver=1.13
 pkgrel=1
 pkgdesc='A General purpose x64 Asm library for 2ton products'
@@ -15,7 +15,7 @@ sha256sums=('95e46bcaef8a90257ae2d81330700d72da0bb633c4ff38fbfeaded30c4f106c6')
 
 build () {
   cd "HeavyThing-$pkgver"
-  for i in rwasa webslap hnwatch dhtool sshtalk; do #toplip
+  for i in rwasa webslap hnwatch dhtool sshtalk toplip; do
     (cd "$i"; fasm -m 262144 "$i.asm" && ld -o "$i" "$i.o")
   done
 }
@@ -55,11 +55,11 @@ package_sshtalk () {
   install -Dm755 sshtalk "$pkgdir/usr/bin/sshtalk"
 }
 
-#package_toplip () {
-#  pkgdesc='a command line very strong encryption utility'
-#  url='https://2ton.com.au/toplip/'
-#  cd "HeavyThing-$pkgver/toplip"
-#  install -Dm755 toplip "$pkgdir/usr/bin/toplip"
-#}
+package_toplip () {
+  pkgdesc='a command line very strong encryption utility'
+  url='https://2ton.com.au/toplip/'
+  cd "HeavyThing-$pkgver/toplip"
+  install -Dm755 toplip "$pkgdir/usr/bin/toplip"
+}
 
 # vim:set ts=2 sw=2 et:
