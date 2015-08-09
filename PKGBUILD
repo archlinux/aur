@@ -7,7 +7,7 @@ _pkgcommit=c335d3e86e3caea04072dde0968d08cb31d6a1e0
 pkgrel=1
 pkgdesc="Binkley protocol daemon for transferring files between Fidonet systems"
 arch=('i686' 'x86_64')
-url="http://binkd.grumbler.org/"
+url="https://github.com/pgul/binkd"
 license=('GPL')
 backup=("etc/binkd/binkd.conf")
 source=("git+https://github.com/pgul/binkd.git#commit=$_pkgcommit"
