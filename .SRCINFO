@@ -1,0 +1,17 @@
+pkgbase = hellband
+	pkgdesc = Dante's Inferno Angband. Uses a 'realm' based magic system like Zangband, but with many new features.
+	pkgver = 0.8.7
+	pkgrel = 4
+	url = http://hellband.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom
+	depends = ncurses
+	depends = libx11
+	depends = libxaw
+	source = http://download.hellband.net/hb087src.zip
+	md5sums = dc39712c236bf749c4ad25eb0b58e914
+
+pkgname = hellband
+
