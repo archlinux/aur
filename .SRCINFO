@@ -1,0 +1,25 @@
+pkgbase = turpial-git
+	pkgdesc = A multi-interface Twitter client written in Python
+	pkgver = 3.0.r1647.2c44359
+	pkgrel = 1
+	url = http://turpial.org.ve/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = gstreamer0.10-python
+	depends = hspell
+	depends = libturpial-git
+	depends = notification-daemon
+	depends = python2-babel
+	depends = python2-jinja
+	depends = python2-notify
+	depends = python2-pyqt4
+	depends = python2-simplejson
+	provides = turpial=3.0.r1647.2c44359
+	conflicts = turpial
+	source = turpial-git::git://github.com/satanas/Turpial.git#branch=development
+	md5sums = SKIP
+
+pkgname = turpial-git
+

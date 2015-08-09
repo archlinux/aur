@@ -1,0 +1,35 @@
+# Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
+# Contributor: Limao Luo <luolimao+AUR@gmail.com>
+# Contributor: Jean-Francois Chevrette <jfchevrette@gmail.com>
+# Contributor: Jonathas Rodrigues <jonathas@archlinux.us>
+# Contributor: Karl Kochs <captainhaggy@i2pmail.org>
+
+pkgname=turpial-git
+pkgver=3.0.r1647.2c44359
+pkgrel=1
+pkgdesc="A multi-interface Twitter client written in Python"
+arch=(any)
+url=http://turpial.org.ve/
+license=(GPL3)
+depends=(gstreamer0.10-python hspell libturpial-git notification-daemon python2-babel python2-jinja
+    python2-notify python2-pyqt4 python2-simplejson)
+makedepends=(git python2-setuptools)
+provides=(${pkgname%-*}=$pkgver)
+conflicts=(${pkgname%-*})
+source=($pkgname::git://github.com/satanas/Turpial.git#branch=development)
+md5sums=('SKIP')
+
+pkgver() {
+    cd $pkgname/
+    echo $(head -n1 ChangeLog | awk '{print $1}' | sed 's/v//;s/-/./').r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+    cd $pkgname/
+    python2 setup.py build || return 1
+}
+
+package() {
+    cd $pkgname/
+    python2 setup.py install --root="$pkgdir/" --optimize=1 || return 1
+}
