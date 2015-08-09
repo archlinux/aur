@@ -1,6 +1,6 @@
 pkgbase = vogl-git
 	pkgdesc = An OpenGL debugger
-	pkgver = 715.c3a7466
+	pkgver = 714.a7317fa
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/vogl
 	install = vogl.install

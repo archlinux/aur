@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=vogl-git
-pkgver=715.c3a7466
+pkgver=714.a7317fa
 pkgrel=1
 pkgdesc="An OpenGL debugger"
 arch=('i686' 'x86_64')
