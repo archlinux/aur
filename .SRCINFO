@@ -1,7 +1,7 @@
 pkgbase = dnscrypt-autoinstall
 	pkgdesc = Choose your DNSCrypt provider
 	pkgver = 0.3
-	pkgrel = 8
+	pkgrel = 9
 	url = http://simonclausen.dk/2013/09/dnscrypt-autoinstaller/
 	install = dnscrypt-autoinstall.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = dnscrypt-autoinstall
 	depends = dnscrypt-proxy
 	depends = libsodium
 	depends = curl
+	backup = etc/conf.d/dnscrypt-config
 	source = git+https://github.com/simonclausen/dnscrypt-autoinstall
 	sha1sums = SKIP
 
