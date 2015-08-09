@@ -4,9 +4,9 @@
 pkgname=vim-vimwiki-dev-git
 pkgver=v2.1.166.g9949465
 pkgrel=1
-pkgdesc="Personal Wiki for Vim; dev branch."
+pkgdesc='Personal Wiki for Vim; dev branch'
 arch=('any')
-url="http://code.google.com/p/vimwiki/"
+url='https://github.com/vimwiki/vimwiki'
 license=('MIT')
 groups=('vim-plugins')
 depends=('vim')
