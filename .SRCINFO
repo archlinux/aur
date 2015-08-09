@@ -1,0 +1,18 @@
+pkgbase = mpfc
+	pkgdesc = A gstreamer-based audio player with curses interface.
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/mpfc/
+	install = mpfc.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gst-plugins-base-libs
+	depends = json-glib
+	depends = taglib
+	depends = gpm
+	source = http://downloads.sourceforge.net/project/mpfc/mpfc/mpfc-2.0.tar.gz
+	md5sums = c53702073827b3ec984a51ea6c03c7b0
+
+pkgname = mpfc
+
