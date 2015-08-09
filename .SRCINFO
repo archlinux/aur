@@ -1,0 +1,21 @@
+pkgbase = pdf2htmlex
+	pkgdesc = Convert PDF to HTML without losing text or format
+	pkgver = 0.14.6
+	pkgrel = 1
+	url = http://coolwanglu.github.com/pdf2htmlEX/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = poppler
+	depends = fontforge
+	optdepends = ttfautohint: Provides automated hinting process for web fonts
+	provides = pdf2htmlex
+	conflicts = pdf2htmlex
+	replaces = pdf2htmlex
+	source = https://github.com/coolwanglu/pdf2htmlEX/archive/v0.14.6.tar.gz
+	sha256sums = 320ac2e1c2ea4a2972970f52809d90073ee00a6c42ef6d9833fb48436222f0e5
+
+pkgname = pdf2htmlex
+
