@@ -1,0 +1,20 @@
+pkgbase = python-xmltodict
+	pkgdesc = Python module that makes working with XML feel like you are working with JSON
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/martinblech/xmltodict
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/x/xmltodict/xmltodict-0.9.2.tar.gz
+	md5sums = ab17e53214a8613ad87968e9674d75dd
+
+pkgname = python-xmltodict
+	pkgdesc = Python module that makes working with XML feel like you are working with JSON (py3)
+	depends = python
+
+pkgname = python2-xmltodict
+	pkgdesc = Python module that makes working with XML feel like you are working with JSON (py2)
+	depends = python2
+
