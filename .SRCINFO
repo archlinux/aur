@@ -1,7 +1,7 @@
 pkgbase = firefox-nightly-ru
 	pkgdesc = Web browser from mozilla.org, nightly build, russian version
 	pkgver = 42.0a1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nightly.mozilla.org/
 	install = firefox-nightly-ru.install
 	arch = i686
@@ -20,7 +20,6 @@ pkgbase = firefox-nightly-ru
 	depends = dbus-glib
 	depends = desktop-file-utils
 	conflicts = firefox-nightly
-	conflicts = firefox-nightly-russian
 	source = firefox-nightly.desktop
 	source = firefox-nightly-safe.desktop
 	source = firefox-nightly-ru.install
