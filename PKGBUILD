@@ -1,7 +1,8 @@
 # Maintainer: Riley Trautman <asonix.dev@gmail.com>
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
-pkgname=papyros-files-git
+_pkgname=papyros-files
+pkgname=$_pkgname-git
 pkgver=0.0.4.r3.g433bcdf
 pkgrel=1
 pkgdesc="The file manager for Papyros"
@@ -11,7 +12,8 @@ license=("LGPL")
 depends=("qt5-declarative" "qt5-graphicaleffects" "kdeclarative" "qml-material-git" "taglib" "kdeclarative")
 makedepends=("git" "cmake" "intltool" "extra-cmake-modules")
 optdepends=('pulseaudio: audio support')
-provides=("$pkgname")
+provides=("$_pkgname" "$pkgname")
+conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/papyros/files-app.git#branch=master")
 sha256sums=("SKIP")
 
