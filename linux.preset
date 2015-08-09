@@ -1,0 +1,10 @@
+# mkinitcpio preset file for the 'linux-ec2' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-ec2"
+
+PRESETS=('default')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-ec2.img"
+default_options="-S autodetect"
