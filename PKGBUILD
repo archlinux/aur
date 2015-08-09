@@ -5,7 +5,7 @@ _gitbranch=master
 _gitname=vera
 
 pkgname="$_gitname-git"
-pkgver=0
+pkgver=1.0.2.1
 pkgrel=1
 pkgdesc="A simple, lightweight, GTK3 based desktop environment"
 arch=(i686 x86_64)
