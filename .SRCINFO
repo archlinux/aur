@@ -1,6 +1,6 @@
-pkgbase = lutris-git
+pkgbase = lutris-next-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.3.6.2.r161.be2ab37
+	pkgver = 0.3.6.2.r345.83920c8
 	pkgrel = 1
 	url = http://lutris.net/
 	install = lutris.install
@@ -42,8 +42,9 @@ pkgbase = lutris-git
 	optdepends = wine: Windows Compatibility Layer
 	provides = lutris
 	conflicts = lutris
-	source = git+https://github.com/lutris/lutris.git
+	conflicts = lutris-git
+	source = git+https://github.com/lutris/lutris.git#branch=next
 	sha256sums = SKIP
 
-pkgname = lutris-git
+pkgname = lutris-next-git
 

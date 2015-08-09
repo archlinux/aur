@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
-pkgname=lutris-git
-pkgver=0.3.6.2.r161.be2ab37
+pkgname=lutris-next-git
+pkgver=0.3.6.2.r345.83920c8
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -34,9 +34,9 @@ optdepends=('atari800: Atari 800/800XL/130XE/5200 Emulator'
             'virtualjaguar: Atari Jaguar Emulator'
             'wine: Windows Compatibility Layer')
 provides=('lutris')
-conflicts=('lutris')
+conflicts=('lutris' 'lutris-git')
 install='lutris.install'
-source=('git+https://github.com/lutris/lutris.git')
+source=('git+https://github.com/lutris/lutris.git#branch=next')
 sha256sums=('SKIP')
 
 pkgver() {
