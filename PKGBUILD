@@ -7,14 +7,14 @@ pkgver=1.0.0.50
 pkgrel=12
 pkgdesc="Sets a native runtime environment for Steam by default, adds a Steam runtime launcher for compatibility."
 arch=('i686' 'x86_64')
-url="http://steampowered.com/"
+url='http://steampowered.com/'
 license=('GPL2')
 options=('!emptydirs')
 install="${pkgname}.install"
 
-source=("steam-runtime.desktop"
-	"51-steam.rules")
-source_x86_64=("lib32-nm09810.tar.xz")
+source=('steam-runtime.desktop'
+	'51-steam.rules')
+source_x86_64=('lib32-nm09810.tar.xz')
 
 sha256sums=('8ce140660b4c6295ff0e580a02cebafce1ed22828561304e3f99ee78b8cfdb5d'
 	'12d6d0a96e66f10eaeee94ddb6d1048c0e40a8132521fa7b00b844d6454d641c')
