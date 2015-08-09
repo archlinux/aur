@@ -11,6 +11,7 @@ url=http://turpial.org.ve/
 license=(GPL3)
 depends=(python2-oauth python2-requests python2-simplejson)
 makedepends=(git python2-setuptools)
+conflicts=(${pkgname}-git)
 source=(http://files.turpial.org.ve/sources/stable/$pkgname-$pkgver.tar.gz)
 sha1sums=(eca4870ceeda43865136c92056205b146ab88ffb) # ${source[0]}.sha1sum
 

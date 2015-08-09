@@ -10,6 +10,7 @@ pkgbase = libturpial
 	depends = python2-oauth
 	depends = python2-requests
 	depends = python2-simplejson
+	conflicts = libturpial-git
 	source = http://files.turpial.org.ve/sources/stable/libturpial-1.7.0.tar.gz
 	sha1sums = eca4870ceeda43865136c92056205b146ab88ffb
 
