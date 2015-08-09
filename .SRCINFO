@@ -11,8 +11,9 @@ pkgbase = vpaint
 	makedepends = qtchooser
 	depends = qt4
 	depends = glu
-	source = vpaint::https://github.com/dalboris/vpaint/archive/v1.5.tar.gz
-	md5sums = SKIP
+	depends = qt5-base
+	source = https://github.com/dalboris/vpaint/archive/v1.5.tar.gz
+	md5sums = aee4b49c9a9a0345a1d98d734a008b7d
 
 pkgname = vpaint
 
