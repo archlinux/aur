@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostics."
 url='http://www.ros.org/wiki/diagnostics'
 
 pkgname='ros-indigo-diagnostics'
-pkgver='1.8.7'
+pkgver='1.8.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
