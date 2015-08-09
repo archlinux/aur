@@ -1,0 +1,13 @@
+pkgbase = python-markdown2
+	pkgdesc = A fast and complete implementation of Markdown in Python.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/trentm/python-markdown2
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/trentm/python-markdown2/archive/2.3.0.tar.gz
+	md5sums = 2d8ad801ba6c38b4a1698b2e1bcbcf5c
+
+pkgname = python-markdown2
+
