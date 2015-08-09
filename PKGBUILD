@@ -20,6 +20,8 @@ source=($pkgname::git://github.com/satanas/Turpial.git#branch=development)
 md5sums=('SKIP')
 
 pkgver() {
+    # TODO: with the next version bump, consider changing this to use `git describe`
+    # see https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
     cd $pkgname/
     echo $(head -n1 ChangeLog | awk '{print $1}' | sed 's/v//;s/-/./').r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
