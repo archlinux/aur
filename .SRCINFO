@@ -1,0 +1,16 @@
+pkgbase = git-hooks-git
+	pkgdesc = A tool to manage project, user, and global Git hooks for multiple git repositories.
+	pkgver = 1.00.0.r9.g3b89627
+	pkgrel = 1
+	url = https://github.com/icefox/git-hooks
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = git
+	provides = git-hooks
+	conflicts = git-hooks
+	source = git+https://github.com/icefox/git-hooks
+	md5sums = SKIP
+
+pkgname = git-hooks-git
+
