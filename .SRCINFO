@@ -1,0 +1,21 @@
+pkgbase = blather-git
+	pkgdesc = Python application for speech recognition using pocketsphinx and gstreamer. - latest git revision
+	pkgver = 20150809
+	pkgrel = 1
+	url = https://gitorious.org/blather
+	install = blather.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = pocketsphinx
+	depends = gstreamer
+	depends = gstreamer0.10-python
+	optdepends = pyside
+	optdepends = pygtk
+	provides = blather
+	source = blather.desktop
+	md5sums = efcf40264e5d4cccea06ad7676ab2393
+
+pkgname = blather-git
+

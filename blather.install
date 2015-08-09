@@ -1,0 +1,21 @@
+post_install() {
+echo ""
+echo "Blather is a speech recognizer that will run commands when a user speaks preset sentences."
+echo ""
+echo "Requirements"
+echo "1. pocketsphinx"
+echo "2. gstreamer (and what ever plugin has pocket sphinx support)"
+echo "3. pyside (only required for the Qt based UI)"
+echo "4. pygtk (only required for the Gtk based UI)" 
+echo ""
+echo ""
+echo "Usage"
+echo "See the README.md in /usr/share/blather/"
+echo ""
+echo "READ THE README.md IN /usr/share/blather/ !!!"
+}
+
+post_upgrade() {
+  post_install 
+}
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=Blather
+Name=Blather speech recognition.
+Type=Application
+Terminal=true
+Icon=blather.png
+Caption=Blather speech recognition.
+Categories=Application;Other
