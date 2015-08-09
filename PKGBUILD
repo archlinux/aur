@@ -4,7 +4,7 @@ pkgdesc="ROS - self_test."
 url='http://www.ros.org/wiki/self_test'
 
 pkgname='ros-indigo-self-test'
-pkgver='1.8.7'
+pkgver='1.8.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
