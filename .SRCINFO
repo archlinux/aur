@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-archlinux
+	pkgdesc = #archlinux fortune cookie file
+	pkgver = 1
+	pkgrel = 3
+	url = irc://irc.freenode.org/archlinux
+	arch = any
+	groups = fortune-mods
+	license = custom:PublicDomain
+	depends = fortune-mod
+	source = archlinux
+	sha256sums = 3614895bb40fa1e8e685fde7aac5e617f08810098d00c583f74ff9f26e389f76
+
+pkgname = fortune-mod-archlinux
+
