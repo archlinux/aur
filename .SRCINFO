@@ -2,9 +2,12 @@ pkgbase = apache_spark
 	pkgdesc = Apache Spark™ is a fast and general engine for large-scale data processing.
 	pkgver = 1.5.0
 	pkgrel = 1
+	url = http://spark.apache.org
+	arch = i686
 	arch = x86_64
-	license = GPL
+	license = apache
 	makedepends = git
+	depends = java-environment
 	source = git://github.com/apache/spark.git
 	md5sums = SKIP
 
