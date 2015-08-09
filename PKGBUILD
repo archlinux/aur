@@ -3,7 +3,7 @@
 pkgbase=gnome-manpages-git
 pkgname=('man-pages-clutter-git' 'man-pages-gdk3-git' 'man-pages-gio2-git' 'man-pages-glib2-git' 'man-pages-gobject2-git' 'man-pages-gtk3-git')
 pkgver=20130101.15.e660878
-pkgrel=1
+pkgrel=2
 pkgdesc="Various man pages for GNOME related libraries"
 url="https://github.com/chergert/gnome-manpages/"
 arch=('any')
@@ -40,25 +40,31 @@ _package() {
 }
 
 package_man-pages-clutter-git() {
+  pkgdesc="Man pages for the Clutter library"
   _package "clutter"
 }
 
 package_man-pages-gdk3-git() {
+  pkgdesc="Man pages for the GIMP Drawing Kit (GDK) 3 library"
   _package "gdk3"
 }
 
 package_man-pages-gio2-git() {
+  pkgdesc="Man pages for the GIO 2 library"
   _package "gio2"
 }
 
 package_man-pages-glib2-git() {
+  pkgdesc="Man pages for the GLib 2 library"
   _package "glib2"
 }
 
 package_man-pages-gobject2-git() {
+  pkgdesc="Man pages for the GObject 2 library"
   _package "gobject2"
 }
 
 package_man-pages-gtk3-git() {
+  pkgdesc="Man pages for the GTK+ 3 library"
   _package "gtk3"
 }

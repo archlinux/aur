@@ -1,7 +1,7 @@
 pkgbase = gnome-manpages-git
 	pkgdesc = Various man pages for GNOME related libraries
 	pkgver = 20130101.15.e660878
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chergert/gnome-manpages/
 	install = gnome-manpages-git.install
 	arch = any
@@ -13,14 +13,20 @@ pkgbase = gnome-manpages-git
 	sha256sums = SKIP
 
 pkgname = man-pages-clutter-git
+	pkgdesc = Man pages for the Clutter library
 
 pkgname = man-pages-gdk3-git
+	pkgdesc = Man pages for the GIMP Drawing Kit (GDK) 3 library
 
 pkgname = man-pages-gio2-git
+	pkgdesc = Man pages for the GIO 2 library
 
 pkgname = man-pages-glib2-git
+	pkgdesc = Man pages for the GLib 2 library
 
 pkgname = man-pages-gobject2-git
+	pkgdesc = Man pages for the GObject 2 library
 
 pkgname = man-pages-gtk3-git
+	pkgdesc = Man pages for the GTK+ 3 library
 
