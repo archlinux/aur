@@ -2,13 +2,14 @@
 pkgname=metastore-git
 _gitname=metastore
 pkgver=r63.efce687
-pkgrel=1
+pkgrel=2
 pkgdesc="Store and restore metadata from a filesystem."
 arch=(i686 x86_64)
 url="http://david.hardeman.nu/software.php#metastore"
 license=(GPL)
 provides=(metastore)
 conflicts=(metastore)
+makedepends=(git)
 source=(git+https://github.com/przemoc/metastore)
 md5sums=(SKIP)
 

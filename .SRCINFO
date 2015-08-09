@@ -6,6 +6,7 @@ pkgbase = metastore-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	provides = metastore
 	conflicts = metastore
 	source = git+https://github.com/przemoc/metastore
