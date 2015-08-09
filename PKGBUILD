@@ -4,7 +4,7 @@ pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting
 url='http://www.ros.org/wiki/image_geometry'
 
 pkgname='ros-indigo-image-geometry'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,11 +14,13 @@ ros_makedepends=(ros-indigo-catkin
   ros-indigo-sensor-msgs)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  opencv)
+  opencv
+  python2-numpy)
 
 ros_depends=(ros-indigo-sensor-msgs)
 depends=(${ros_depends[@]}
-  opencv)
+  opencv
+  python2-numpy)
 
 _tag=release/indigo/image_geometry/${pkgver}-${_pkgver_patch}
 _dir=image_geometry
