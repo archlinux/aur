@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-+1
+	pkgdesc = A flat gtk theme inspired by the google interface.
+	pkgver = 25032013
+	pkgrel = 1
+	url = http://nale12.deviantart.com/art/1-18032013-358336961
+	arch = any
+	license = GPL3
+	depends = gnome-themes-standard
+	depends = gtk-engine-unico
+	depends = gtk-engine-murrine
+
+pkgname = gtk-theme-+1
+
