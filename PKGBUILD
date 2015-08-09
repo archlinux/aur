@@ -4,7 +4,7 @@ pkgdesc="ROS - CMake lint commands for ROS packages."
 url='http://ros.org/wiki/roslint'
 
 pkgname='ros-indigo-roslint'
-pkgver='0.9.3'
+pkgver='0.10.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
