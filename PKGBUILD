@@ -3,12 +3,12 @@
 pkgname=tvheadend
 
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tvheadend.org/projects/tvheadend"
 license=('GPL3')
-depends=('avahi' 'openssl' 'python2' 'ffmpeg')
+depends=('avahi' 'openssl' 'python2' 'ffmpeg' 'uriparser')
 makedepends=('git')
 optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
