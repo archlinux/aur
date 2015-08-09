@@ -1,0 +1,26 @@
+pkgbase = gnome-manpages-git
+	pkgdesc = Various man pages for GNOME related libraries
+	pkgver = 20130101.15.e660878
+	pkgrel = 1
+	url = https://github.com/chergert/gnome-manpages/
+	install = gnome-manpages-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = man-db
+	conflicts = gnome-manpages
+	source = git+https://github.com/chergert/gnome-manpages.git
+	sha256sums = SKIP
+
+pkgname = man-pages-clutter-git
+
+pkgname = man-pages-gdk3-git
+
+pkgname = man-pages-gio2-git
+
+pkgname = man-pages-glib2-git
+
+pkgname = man-pages-gobject2-git
+
+pkgname = man-pages-gtk3-git
+
