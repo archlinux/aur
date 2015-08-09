@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-calvin
+	pkgdesc = Calvin and Hobbes fortune cookies
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.netmeister.org/misc.html
+	arch = any
+	license = unknown
+	depends = fortune-mod
+	source = http://www.netmeister.org/apps/fortunes-calvin-0.3.gz
+	md5sums = 4de37b645ea879f4042df8f88c215b35
+
+pkgname = fortune-mod-calvin
+
