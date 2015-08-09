@@ -1,14 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
 # Maintainer: Tao-Yi Lee <tylee@ieee.org>
 pkgname=apache_spark
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Apache Spark™ is a fast and general engine for large-scale data processing."
 arch=('x86_64')
@@ -25,7 +17,7 @@ options=()
 install=
 source=('git://github.com/apache/spark.git')
 noextract=()
-md5sums=('SKIP') #generate with 'makepkg -g'
+md5sums=('SKIP') 
 
 _gitroot=git://github.com/apache/spark.git
 _gitname=spark
@@ -48,16 +40,30 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
-  #
-  # BUILD HERE
-  #
-  export JAVA_HOME=/usr/lib/jvm/default
+  export JAVA_HOME=/usr/lib/jvm/`archlinux-java get`
   ./make-distribution.sh --name custom-spark --tgz -Phadoop-2.4 -Pyarn
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  #make DESTDIR="$pkgdir/" install
+  cp $srcdir/$_gitname-build/spark-$pkgver-SNAPSHOT-bin-custom-spark.tgz $pkgdir
+  cd $pkgdir
+  tar -xvf spark-1.5.0-SNAPSHOT-bin-custom-spark.tgz
+  rm $pkgdir/spark-1.5.0-SNAPSHOT-bin-custom-spark.tgz
+  mkdir $pkgdir/usr
+  mkdir $pkgdir/usr/share
+  mkdir $pkgdir/usr/share/$pkgname
+  mv $pkgdir/spark-1.5.0-SNAPSHOT-bin-custom-spark/* $pkgdir/usr
+  rmdir $pkgdir/spark-1.5.0-SNAPSHOT-bin-custom-spark
+  rm $pkgdir/usr/LICENSE
+  rm $pkgdir/usr/README.md  
+  rm $pkgdir/usr/RELEASE  
+  rm $pkgdir/usr/NOTICE
+  mv $pkgdir/usr/conf  $pkgdir/usr/share/$pkgname
+  mv $pkgdir/usr/data  $pkgdir/usr/share/$pkgname
+  mv $pkgdir/usr/ec2  $pkgdir/usr/share/$pkgname
+  mv $pkgdir/usr/python  $pkgdir/usr/share/$pkgname
+  mv $pkgdir/usr/lib  $pkgdir/usr/share/$pkgname
+  mv $pkgdir/usr/examples  $pkgdir/usr/share/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
