@@ -1,0 +1,17 @@
+pkgbase = yuicompressor
+	pkgdesc = CSS and Javascript compressor
+	pkgver = 2.4.8
+	pkgrel = 2
+	url = http://developer.yahoo.com/yui/compressor/
+	arch = any
+	license = BSD
+	depends = java-runtime
+	source = https://github.com/yui/yuicompressor/releases/download/v2.4.8/yuicompressor-2.4.8.zip
+	source = yuicompressor.sh
+	source = https://raw.github.com/yui/yuicompressor/master/LICENSE.TXT
+	sha1sums = 178e265570c8161e8074c7ca19896abb05e76c1f
+	sha1sums = 1d261a0365c2d15f1be1c1f06bb1df83f965d091
+	sha1sums = 93278e24065a4595d1804eb6ed537258ff94c08c
+
+pkgname = yuicompressor
+
