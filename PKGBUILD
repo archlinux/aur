@@ -1,5 +1,6 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 # Contributor: Miguel Useche <migueluseche(dot)skatox.com>
+
 pkgname=turpial
 pkgver=3.0
 pkgrel=1
