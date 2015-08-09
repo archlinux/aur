@@ -5,7 +5,7 @@ _gitbranch=master
 _gitname=vera-control-center
 
 pkgname="$_gitname-git"
-pkgver=0
+pkgver=1.0.8.1
 pkgrel=1
 pkgdesc="Vera control center"
 arch=(i686 x86_64)
