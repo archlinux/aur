@@ -14,7 +14,7 @@ conflicts=('turpial')
 source=(http://turpial.org.ve/files/sources/stable/$pkgname-$pkgver.tar.gz)
 md5sums=('04bdd05c3aca2f6ee4ff1f6d95e64b30')
 
-build() {
+package() {
   cd $srcdir/$pkgname-${pkgver//_/-}
   python2 setup.py install --root=$pkgdir/ --optimize=1 || return 1
 }
