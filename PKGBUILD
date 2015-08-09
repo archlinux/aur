@@ -4,11 +4,11 @@ pkgver=0
 pkgrel=1
 pkgdesc="Remove password-protection from PDFs permanently."
 arch=('any')
-url="https://github.com/zvynar/pdf-decrypt"
+url="https://github.com/zvyn/pdf-decrypt"
 license=('MIT')
 depends=('qpdf')
 makedepends=('git')
-source=('git://github.com/zvynar/pdf-decrypt.git')
+source=('https://aur.archlinux.org/pdf-decrypt.git/')
 md5sums=('SKIP')
 
 pkgver() {
