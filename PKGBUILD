@@ -46,25 +46,17 @@ build() {
 }
 
 package() {
-  cp $srcdir/$_gitname-build/spark-$pkgver-SNAPSHOT-bin-$_buildname.tgz $pkgdir
-  cd $pkgdir
-  tar -xvf spark-$pkgver-SNAPSHOT-bin-$_buildname.tgz
-  rm $pkgdir/spark-$pkgver-SNAPSHOT-bin-$_buildname.tgz
-  mkdir $pkgdir/usr
-  mkdir $pkgdir/usr/share
-  mkdir $pkgdir/usr/share/$pkgname
-  mv $pkgdir/spark-$pkgver-SNAPSHOT-bin-$_buildname/* $pkgdir/usr
-  rmdir $pkgdir/spark-$pkgver-SNAPSHOT-bin-$_buildname
-  rm $pkgdir/usr/LICENSE
-  rm $pkgdir/usr/README.md  
-  rm $pkgdir/usr/RELEASE  
-  rm $pkgdir/usr/NOTICE
-  mv $pkgdir/usr/conf  $pkgdir/usr/share/$pkgname
-  mv $pkgdir/usr/data  $pkgdir/usr/share/$pkgname
-  mv $pkgdir/usr/ec2  $pkgdir/usr/share/$pkgname
-  mv $pkgdir/usr/python  $pkgdir/usr/share/$pkgname
-  mv $pkgdir/usr/lib  $pkgdir/usr/share/$pkgname
-  mv $pkgdir/usr/examples  $pkgdir/usr/share/$pkgname
+  _usr_lib=${pkgdir}/usr/lib
+  _spark_real_home=$_usr_lib/$pkgname-$pkgver
+  _spark_link_home=$_usr_lib/$pkgname
+  mkdir -p $_spark_real_home
+
+  cd $_usr_lib
+  ln -s $pkgname-$pkgver $pkgname
+
+  tar -xf $srcdir/$_gitname-build/spark-$pkgver-SNAPSHOT-bin-$_buildname.tgz -C $_spark_real_home
+  cd $_spark_real_home
+  mv spark-$pkgver-SNAPSHOT-bin-$_buildname/* .
 }
 
 # vim:set ts=2 sw=2 et:
