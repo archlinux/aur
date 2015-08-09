@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology. (git version)'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('qt4' 'glu')
+depends=('qt4' 'glu' 'qt5-base')
 makedepends=('gcc' 'git' 'make' 'qtchooser')
 url='http://www.vpaint.org'
 conflicts=()
@@ -23,6 +23,9 @@ pkgver() {
 build() {
     mkdir -p "$srcdir/$pkgname/build"
     cd       "$srcdir/$pkgname/build"
+
+    export CXXFLAGS="$CXXFLAGS -fPIC"
+    export QT_SELECT=5
 
     qmake ../src/VPaint.pro -r -spec linux-g++
     make
