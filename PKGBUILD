@@ -1,0 +1,25 @@
+# Contributer: Peter Guerndt <peterguer@gmail.com> & Øyvind Wilhelsem  <oeywil@gmail.com>
+# Maintainer: Daenyth <Daenyth+Arch [AT] gmail [DOT] com>
+pkgname=pwnat
+pkgver=0.3_beta
+pkgrel=1
+pkgdesc="A tool that allows clients behind NAT to communicate without any port forwarding"
+arch=(i686 x86_64)
+url="http://samy.pl/pwnat"
+license=('GPL3')
+source=(http://samy.pl/pwnat/pwnat-0.3-beta.tgz)
+md5sums=('d1f2b556a32669484f0358d009a20feb')
+
+build() {
+    cd "$pkgname-0.3-beta"
+    make
+}
+
+package() {
+    cd "$pkgname-0.3-beta"
+    install -Dm755 pwnat "$pkgdir/usr/bin/pwnat"
+    install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+    install -Dm644 README-udptunnel "$pkgdir/usr/share/doc/$pkgname/README-udptunnel"
+}
+
+# vim:set ts=2 sw=2 et:
