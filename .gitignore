@@ -1,0 +1,4 @@
+.*.sw?
+src
+pkg
+*.xz

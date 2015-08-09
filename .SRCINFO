@@ -1,0 +1,16 @@
+pkgbase = nsdo-git
+	pkgdesc = run a command under a network namespace
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ausbin/nsdo
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	provides = nsdo
+	conflicts = nsdo
+	source = git+https://github.com/ausbin/nsdo.git
+	md5sums = SKIP
+
+pkgname = nsdo-git
+
