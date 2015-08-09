@@ -3,43 +3,27 @@
 
 pkgname=xf86-input-cmt
 pkgdesc="Chromium OS multitouch input driver for Xorg X server"
-pkgver=2.0.3
-pkgrel=9
+pkgver=2.0.5
+pkgrel=1
 arch=(i686 x86_64)
 url="https://github.com/hugegreenbug/xf86-input-cmt"
 license=('custom:chromiumos')
-_gitname='xf86-input-cmt'
-depends=('xf86-input-evdev' 'libgestures' 'libevdev' 'libevdevc')
+depends=('xf86-input-evdev' 'xf86-input-cmt-setup' 'libgestures' 'libevdev' 'libevdevc')
 provides=("xf86-input-cmt=$pkgver")
 conflicts=('xf86-input-synaptics')
-makedepends=('autoconf' 'automake' 'dmidecode' 'git' 'xorg-util-macros' 'xorg-server-devel')
 install=${pkgname}.install
+options=('!emptydirs' '!strip')
 
-source=("$_gitname::git+https://github.com/hugegreenbug/xf86-input-cmt.git")
+source=('ChromiumOS_Licence.txt')
+source_x86_64=('xf86-input-cmt_2.0.5-1ubuntu1_amd64.deb::https://launchpad.net/~hugegreenbug/+archive/ubuntu/cmt2/+files/xf86-input-cmt_2.0.5-1ubuntu1_amd64.deb')
+source_i686=('xf86-input-cmt_2.0.5-1ubuntu1_i386.deb::https://launchpad.net/~hugegreenbug/+archive/ubuntu/cmt2/+files/xf86-input-cmt_2.0.5-1ubuntu1_i386.deb')
 
-md5sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$_gitname"
-  sh apply_patches.sh
-}
-
-build() {
-  cd "$srcdir/$_gitname"
-
-  sh autogen.sh
-  ./configure --prefix=/usr
-  make
-}
+md5sums=('af314be4bf04a749665a07203b120f54')
+md5sums_x86_64=('ea4cf785d988ccfc0957fd9423bbb779')
+md5sums_i686=('e5477e04e3922c21be92ee1086fec440')
 
 package() {
-  make -C "$srcdir/$_gitname" DESTDIR="$pkgdir/" install
-
-  mkdir -p $pkgdir/usr/share/xf86-input-cmt/
-  cp -R $srcdir/$_gitname/xorg-conf/*  $pkgdir/usr/share/xf86-input-cmt/
-  cp -R $srcdir/$_gitname/README.md $pkgdir/usr/share/xf86-input-cmt/README
-
-  install -m 644 -D ${srcdir}/${_gitname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-
-  libtool --finish /usr/lib/xorg/modules/input
+  echo "Extracting package..." 
+  bsdtar -xf data.tar.xz -C "$pkgdir/"
+  install -Dm644 ChromiumOS_Licence.txt "$pkgdir"/usr/share/licenses/xf86-input-cmt/LICENCE   
 }

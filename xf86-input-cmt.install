@@ -12,14 +12,13 @@ blue="${blue}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install(){
-  curl https://raw.githubusercontent.com/joebonrichie/xf86-input-cmt-conf/master/cmt-post-install.sh | sudo sh
-  note "IMPORTANT:"
-  note "After reboot, if the touchpad does not work for any reason, run:"
-  note "# usermod -a -G input <user>"
-  note "and reboot"
-  note "Thanks to templrivanho for the fix.\n"
-
-  msg_blue "Finished"
+  msg_blue "To install the correct configuration files"
+  msg_blue "for your device, run:"
+  msg_blue "# cmt-post-install install"
+  msg_blue "To make sure you can use the cmt driver also run:"
+  msg_blue "# usermod -a -G input <user>"
+  msg_blue "Where <user> is the user(s) wanting to use the touchpad."
+  note "Finished, reboot to use the driver."
 }
 
 post_upgrade() {
