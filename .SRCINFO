@@ -1,0 +1,18 @@
+pkgbase = ccl-svn
+	pkgdesc = The Clozure Common Lisp implementation
+	pkgver = 1.11.dev.r16500
+	pkgrel = 1
+	url = http://ccl.clozure.com/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = svn
+	provides = common-lisp
+	provides = cl-asdf
+	provides = ccl
+	conflicts = ccl-bin
+	source = svn+http://svn.clozure.com/publicsvn/openmcl/trunk/linuxx86/ccl
+	sha1sums = SKIP
+
+pkgname = ccl-svn
+
