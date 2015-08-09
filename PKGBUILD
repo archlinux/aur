@@ -4,13 +4,13 @@
 _pkgbasename=librsvg
 pkgname=lib32-$_pkgbasename
 pkgver=2.40.9
-pkgrel=4
+pkgrel=5
 #epoch=1
 pkgdesc="A SVG viewing library (32-bit)"
 arch=(x86_64)
 license=(LGPL)
 depends=(lib32-gdk-pixbuf2 lib32-pango lib32-libcroco $_pkgbasename)
-makedepends=(gcc-multilib intltool gobject-introspection vala python2 lib32-gtk3)
+makedepends=(gcc-multilib intltool gobject-introspection vala python2)
 options=('!emptydirs')
 url="https://live.gnome.org/LibRsvg"
 #install=librsvg.install
