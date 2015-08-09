@@ -1,4 +1,5 @@
 .*.sw?
 src
 pkg
+nsdo
 *.xz
