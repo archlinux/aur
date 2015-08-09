@@ -3,9 +3,10 @@
 # Submitter: hollunder <murks at tuxfamily dot org>
 
 pkgname=wxlua-svn
+_pkgname=wxlua
 pkgver=248
-pkgrel=1
-pkgdesc="WxLua - SVN version"
+pkgrel=2
+pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language - svn version"
 arch=('i686' 'x86_64')
 url="http://wxlua.sourceforge.net"
 license=('custom:wxWindows')
@@ -14,11 +15,17 @@ makedepends=('subversion' 'cmake')
 provides=('wxlua' 'wxstedit')
 conflicts=('wxlua' 'wxstedit')
 install="wxlua.install"
-source="wxlua::svn+http://svn.code.sf.net/p/wxlua/svn/trunk"
+source=("wxlua::svn+http://svn.code.sf.net/p/wxlua/svn/trunk")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  local ver="$(svnversion)"
+  printf "%s" "${ver//[[:alpha:]]}"
+}
+
 build() {
-  cd "$srcdir/wxlua/wxLua/"
+  cd "$srcdir/$_pkgname/wxLua/"
 
   # wxstedit doc folder fix
   sed -i 's|doc/|share/&|' modules/wxstedit/CMakeLists.txt
