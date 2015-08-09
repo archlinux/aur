@@ -1,0 +1,16 @@
+pkgbase = fierce
+	pkgdesc = Domain DNS scanner script
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://ha.ckers.org/fierce/
+	arch = any
+	license = unknown
+	depends = perl
+	depends = perl-net-dns
+	source = http://dev.pentoo.ch/~grimmlin/distfiles/fierce.pl
+	source = http://dev.pentoo.ch/~grimmlin/distfiles/hosts.txt
+	sha1sums = 46fa2ebc416c30f414bd0cd86b9f4577382c46a4
+	sha1sums = a3d3001e93c171928ce61eb7e3704dca6cb10887
+
+pkgname = fierce
+
