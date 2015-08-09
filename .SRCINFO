@@ -1,0 +1,17 @@
+pkgbase = libturpial
+	pkgdesc = A library that handles multiple microblogging protocols.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://turpial.org.ve/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2-oauth
+	depends = python2-requests
+	depends = python2-simplejson
+	source = http://files.turpial.org.ve/sources/stable/libturpial-1.7.0.tar.gz
+	sha1sums = eca4870ceeda43865136c92056205b146ab88ffb
+
+pkgname = libturpial
+
