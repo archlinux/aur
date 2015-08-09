@@ -1,0 +1,13 @@
+pkgbase = picosat
+	pkgdesc = The PicoSAT solver
+	pkgver = 960
+	pkgrel = 1
+	url = http://fmv.jku.at/picosat/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = http://fmv.jku.at/picosat/picosat-960.tar.gz
+	md5sums = bee515cd9fd12ffaffab10b3587aa833
+
+pkgname = picosat
+
