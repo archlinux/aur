@@ -1,0 +1,16 @@
+pkgbase = shapelib-tools
+	pkgdesc = Several utilities to manipulate ESRI Shapefiles
+	pkgver = 1.3.0
+	pkgrel = 2
+	url = http://shapelib.maptools.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = shapelib>=1.3.0
+	depends = proj
+	options = !libtool
+	source = http://download.osgeo.org/shapelib/shapelib-1.3.0.tar.gz
+	md5sums = 2ff7d0b21d4b7506b452524492795f77
+
+pkgname = shapelib-tools
+
