@@ -1,0 +1,15 @@
+pkgbase = yaah
+	pkgdesc = Yet another AUR helper
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://bitbucket.org/the_metalgamer/yaah
+	arch = any
+	license = GPL3
+	depends = pacman
+	depends = jshon
+	depends = tar
+	source = https://bitbucket.org/the_metalgamer/yaah/downloads/yaah-0.6.3.tar.gz
+	sha512sums = b80f34725dd7cfdf592ea1211afa920265ec45c5dff144474cf00a6e176adbf4a5bcc72fa9081bd3bcb7392d3e72ffe38db22c1f31b50764218909a4ebb27387
+
+pkgname = yaah
+
