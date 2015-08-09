@@ -1,0 +1,18 @@
+pkgbase = steamband
+	pkgdesc = a Steampunk / Victorian / Pulp variant of Angband, A roguelike ASCII dungeon exploration simulation game.
+	pkgver = 0.4.1f
+	pkgrel = 5
+	url = http://angband.oook.cz/steamband/steamband.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = ncurses
+	depends = libx11
+	depends = slang
+	options = ccache
+	options = emptydirs
+	source = http://angband.oook.cz/steamband/Steamband-041f-SRC.zip
+	md5sums = 14fd9bc6f218bb655e0dc247793f7a87
+
+pkgname = steamband
+
