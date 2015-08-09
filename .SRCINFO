@@ -1,0 +1,17 @@
+pkgbase = gohufont
+	pkgdesc = A bitmap font for programming and terminal use, in two sizes
+	pkgver = 2.0
+	pkgrel = 3
+	url = http://font.gohu.eu/
+	install = gohufont.install
+	arch = any
+	license = custom:WTFPL
+	depends = xorg-fonts-encodings
+	depends = xorg-fonts-alias
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = http://font.gohu.eu/gohufont-2.0.tar.gz
+	md5sums = f57ed4493447f9c74f53bb8aa27eae7c
+
+pkgname = gohufont
+
