@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_rviz provides a GUI plugin embedding RViz."
 url='http://ros.org/wiki/rqt_rviz'
 
 pkgname='ros-indigo-rqt-rviz'
-pkgver='0.4.1'
+pkgver='0.4.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
