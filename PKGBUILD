@@ -1,4 +1,5 @@
-# Maintainer: Miguel Useche <migueluseche(dot)skatox.com>
+# Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
+# Contributor: Miguel Useche <migueluseche(dot)skatox.com>
 pkgname=turpial
 pkgver=1.6.8
 pkgrel=1
