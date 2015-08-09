@@ -1,7 +1,8 @@
 # Maintainer: Riley Trautman <asonix.dev@gmail.com>
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
-pkgname=qml-material-git
+_pkgname=qml-material
+pkgname=$_pkgname-git
 pkgver=0.1.r23.g3c640c3
 pkgrel=1
 pkgdesc="A UI framework for QtQuick implementing Material Design"
@@ -11,7 +12,8 @@ license=("LGPL")
 depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-svg"
 		 "qt5-graphicaleffects")
 makedepends=("git")
-provides=("$pkgname")
+provides=("$_pkgname" "$pkgname")
+conflicts=("$_pkgname" "qml-extras" "qml-extras-git")
 source=("$pkgname::git+https://github.com/papyros/qml-material.git#branch=develop")
 sha256sums=("SKIP")
 
