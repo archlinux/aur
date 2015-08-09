@@ -1,0 +1,18 @@
+pkgbase = necpp-git
+	pkgdesc = Free NEC-2 compatable electromagnetic code. It can both read nec2 antenna description files and also be incorporated into other projects like GUI tools and automatic antenna optimization systems.
+	pkgver = 45.30ffb88
+	pkgrel = 1
+	url = https://github.com/tmolteno/necpp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = necpp
+	conflicts = necpp
+	conflicts = nec2pp
+	conflicts = nec2++
+	options = !libtool
+	source = git://github.com/tmolteno/necpp.git
+	md5sums = SKIP
+
+pkgname = necpp-git
+
