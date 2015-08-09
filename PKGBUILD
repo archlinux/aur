@@ -4,10 +4,10 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-indigo-cv-bridge'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rosconsole
@@ -16,16 +16,16 @@ ros_makedepends=(ros-indigo-rosconsole
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   opencv
-  boost
   python2-numpy
+  boost
   python2)
 
 ros_depends=(ros-indigo-rosconsole
   ros-indigo-sensor-msgs)
 depends=(${ros_depends[@]}
   opencv
-  boost
   python2-numpy
+  boost
   python2)
 
 _tag=release/indigo/cv_bridge/${pkgver}-${_pkgver_patch}
