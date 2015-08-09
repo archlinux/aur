@@ -1,0 +1,15 @@
+pkgbase = nocache-git
+	pkgdesc = minimize caching effects
+	pkgver = 92.605fb47
+	pkgrel = 1
+	url = https://github.com/Feh/nocache
+	arch = i686
+	arch = x86_64
+	license = FreeBSD License
+	makedepends = git
+	conflicts = nocache
+	source = nocache-git::git://github.com/Feh/nocache.git
+	sha1sums = SKIP
+
+pkgname = nocache-git
+
