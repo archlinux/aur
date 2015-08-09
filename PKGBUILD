@@ -4,7 +4,7 @@ pkgver="3.1.0"
 pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother DCP7065DN"
 arch=('i686' 'x86_64')
-url="http://solutions.brother.com/linux/en_us/"
+url="http://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=dcp7065dn_all&os=128&flang=English"
 license=('custom:brother commercial license')
 
 depends=('cups')
