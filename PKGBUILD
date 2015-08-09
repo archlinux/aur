@@ -9,7 +9,6 @@ url="https://github.com/lepture/python-livereload"
 license=('BSD')
 depends=('python' 'python-tornado')
 makedepends=('python-setuptools')
-replaces=('python2-livereload')
 source=("https://pypi.python.org/packages/source/l/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('114cb56f8c972078745dbdb22ccb815e')
 
