@@ -1,6 +1,6 @@
 pkgbase = mullvad
 	pkgdesc = VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy
-	pkgver = 46
+	pkgver = 51
 	pkgrel = 1
 	url = https://www.mullvad.net
 	arch = any
@@ -8,14 +8,17 @@ pkgbase = mullvad
 	depends = openvpn
 	depends = resolvconf
 	depends = python2
+	depends = python2-appdirs
 	depends = gksu
 	depends = wxpython2.8
-	source = https://www.mullvad.net/static/download/mullvad_46_all.deb
-	source = up-down.patch
-	source = mullvad-wxpython.patch
-	sha256sums = 1753f34f58409df4dffa465d3cd56ec19314c744907907c1abd640912f03611a
-	sha256sums = b2b8d285eb1c3fbaea2cf81417f79dbe9e7ebf9d42c29412283549daedc962a0
-	sha256sums = b2923c97cf942baa49bf0cca589a54142f9653fec9ee0d73b87695fbc90563f3
+	source = https://mullvad.net/static/download/mullvad_51-1_all.deb
+	source = correct-python-version.patch
+	source = wx-version-fix.patch
+	source = update-resolv-conf
+	sha256sums = d58e7b8764210b40e7f610532f5b7ded9ab58dae004b8579b3983d8ea31878cf
+	sha256sums = ad7b44f604338254da276b0419e5be63188824c38d3fe934028f9e97755de9c5
+	sha256sums = 75d41450b3eab74f797674db3c04b0e7895741879a7e193e6aa23e983bd1dbc8
+	sha256sums = 6597e59d556efa3fcec73e8b0ea1c8fbee927cef9a283dadfe0f11149e34ede2
 
 pkgname = mullvad
 
