@@ -23,8 +23,8 @@ source=(
 	http://www.brother.com/pub/bsc/linux/dlf/dcp560cnlpr-1.0.1-1.i386.rpm
 	http://www.brother.com/pub/bsc/linux/dlf/dcp560cncupswrapper-1.0.1-1.i386.rpm
 )
-md5sums=('d8d7f052d04a4805a811bff5deb0d106'
-	 '495032733cb0f63f22069f579daf8bfc'
+md5sums=('891da57c138f1d5d58351c64c6d42c26'
+         '0b937214f8d1354b416be2f6109a121e'
          '3210ef875c5031726efe6ae95960d7ce'
          'ab86134d70121efc7846b7ed1b4e2446')
 
