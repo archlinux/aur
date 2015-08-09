@@ -4,7 +4,7 @@ pkgdesc="ROS - polled_camera contains a service and C++ helper classes for imple
 url='http://ros.org/wiki/polled_camera'
 
 pkgname='ros-indigo-polled-camera'
-pkgver='1.11.5'
+pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
