@@ -26,7 +26,7 @@ license=('GPL' 'LGPL')
 
 
 
-depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd')
+depends=('qt5' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd')
 conflicts=('retroshare06' )
 
 
@@ -65,7 +65,7 @@ prepare() {
 build() {
   cd "$srcdir/$_svnmod"
   
-  _qmake='qmake-qt4  DEFINES+=NO_SQLCIPHER'
+  _qmake='qmake  DEFINES+=NO_SQLCIPHER'
 
 
   #
