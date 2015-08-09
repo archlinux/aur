@@ -9,10 +9,12 @@ pkgbase = papyros-settings-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	depends = qt5-declarative-git
-	depends = qml-material-git
+	depends = qt5-declarative
+	depends = qml-material
 	depends = papyros-shell-git
+	provides = papyros-settings
 	provides = papyros-settings-git
+	conflicts = papyros-settings
 	source = papyros-settings-git::git+https://github.com/papyros/settings-app.git#branch=develop
 	sha256sums = SKIP
 

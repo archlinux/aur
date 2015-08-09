@@ -1,7 +1,8 @@
 # Maintainer: Riley Trautman <asonix.dev@gmail.com>
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
-pkgname=papyros-settings-git
+_pkgname=papyros-settings
+pkgname=$_pkgname-git
 pkgver=0.0.1.r3.g56fa0a4
 pkgrel=1
 pkgdesc="The file settings for Papyros"
@@ -10,7 +11,8 @@ url="https://github.com/papyros/settings-app"
 license=("GPL")
 depends=("qt5-declarative" "qml-material" "papyros-shell-git")
 makedepends=("git" "cmake" "extra-cmake-modules")
-provides=("$pkgname")
+provides=("$_pkgname" "$pkgname")
+conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/papyros/settings-app.git#branch=develop")
 sha256sums=("SKIP")
 
