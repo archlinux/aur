@@ -1,0 +1,43 @@
+# Based on terminus-font-ttf install file.
+
+post_upgrade() {
+  if [ -e '/usr/bin/fc-cache' ]; then
+    printf 'Updating font cache...'
+
+    fc-cache -fs
+    mkfontscale /usr/share/fonts/misc
+    mkfontdir /usr/share/fonts/misc
+
+    echo 'done.'
+  fi
+}
+
+post_remove() {
+  post_upgrade
+}
+
+post_install() {
+  post_upgrade
+
+  cat << EOF
+Console version
+---------------
+
+Run
+
+    setfont /usr/share/kbd/consolefonts/lispm-8x14.psf
+
+if you want to test the console font. To set it permanently, modify the
+CONSOLEFONT setting in /etc/rc.conf.
+
+X Windows version
+-----------------
+
+The X Windows version is only available in a single size. The old-school font
+string
+
+    -lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*
+
+can be used for some applications.
+EOF
+}
