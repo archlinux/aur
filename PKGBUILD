@@ -1,0 +1,43 @@
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Meta Mantra <m3tamantra at gmail dot com>
+# Contributor: DrZaius <lou at fakeoutdoorsman dot com>
+# Contributor: Adam Wolk <netprobe at gmail dot com>
+
+_pkgname=scalpel
+pkgname=$_pkgname-git
+pkgver=r24.47815c2
+pkgrel=1
+pkgdesc="A frugal, high performance file carver"
+arch=('i686' 'x86_64')
+url="https://github.com/sleuthkit/scalpel"
+license=('Apache')
+depends=('tre')
+makedepends=('git')
+provides=($_pkgname) 
+conflicts=($_pkgname)
+source=($pkgname::git+https://github.com/sleuthkit/scalpel)
+md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $pkgname
+  sed -i 's|#define[ \t]*SCALPEL_DEFAULT_CONFIG_FILE[ \t]*"scalpel.conf"|#define SCALPEL_DEFAULT_CONFIG_FILE "/etc/scalpel/scalpel.conf"|' src/scalpel.h 
+}
+
+build() {
+  cd $pkgname
+  ./bootstrap
+  ./configure --with-pic --prefix=/usr
+  make
+}
+
+package() {
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
+  install -Dm644 scalpel.conf "$pkgdir/etc/scalpel/scalpel.conf"
+}
+
