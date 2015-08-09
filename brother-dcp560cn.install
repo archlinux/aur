@@ -1,0 +1,27 @@
+post_install() {
+	# lpr
+        mkdir -p /var/spool/lpd
+	/usr/local/Brother/Printer/dcp560cn/inf/setupPrintcapij dcp560cn -i
+	
+	# cupswrapper
+	/usr/local/Brother/Printer/dcp560cn/cupswrapper/cupswrapperdcp560cn
+	
+	/usr/bin/systemctl restart org.cups.cupsd.service
+}
+
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	# lpr
+	/usr/local/Brother/Printer/dcp560cn/inf/setupPrintcapij dcp560cn -e
+	
+	# cupswrapper
+	/usr/local/Brother/Printer/dcp560cn/cupswrapper/cupswrapperdcp560cn -e
+}
+
+op=$1
+shift
+
+$op "$@"

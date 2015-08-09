@@ -1,0 +1,75 @@
+diff -Naur usr.old/local/Brother/Printer/dcp560cn/cupswrapper/cupswrapperdcp560cn usr/local/Brother/Printer/dcp560cn/cupswrapper/cupswrapperdcp560cn
+--- usr.old/local/Brother/Printer/dcp560cn/cupswrapper/cupswrapperdcp560cn	2010-04-13 20:08:50.211208593 +0200
++++ usr/local/Brother/Printer/dcp560cn/cupswrapper/cupswrapperdcp560cn	2010-04-13 19:59:19.164599589 +0200
+@@ -30,22 +30,22 @@
+   rm -f /usr/lib/cups/filter/brlpdwrapper${printer_model}
+   rm -f /usr/lib64/cups/filter/brlpdwrapper${printer_model}
+   rm -f /usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
++if [  -e /etc/rc.d/cups ]; then
++   /etc/rc.d/cups restart
++elif [  -e /etc/rc.d/cupsys ]; then
++   /etc/rc.d/cupsys restart
+ fi
+-#  /etc/init.d/cups restart
++#  /etc/rc.d/cups restart
+   exit 0
+ fi
+ if [ "$1" = "-r" ]; then
+   lpadmin -x ${printer_name}
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
++if [  -e /etc/rc.d/cups ]; then
++   /etc/rc.d/cups restart
++elif [  -e /etc/rc.d/cupsys ]; then
++   /etc/rc.d/cupsys restart
+ fi
+-#  /etc/init.d/cups restart
++#  /etc/rc.d/cups restart
+   exit 0
+ fi
+ if [ "$1" = "help" ] || [ "$1" = "-h" ]; then
+@@ -839,18 +839,18 @@
+ 
+ chmod a+w /usr/local/Brother/${device_model}/${printer_model}/inf/br${printer_model}rc
+ chmod a+w /usr/local/Brother/${device_model}/${printer_model}/inf
+-if [ -e /etc/init.d/lpd ]; then
+-   /etc/init.d/lpd stop
++if [ -e /etc/rc.d/lpd ]; then
++   /etc/rc.d/lpd stop
+ fi
+-if [  -e /etc/init.d/lprng ]; then
+-   /etc/init.d/lprng stop
++if [  -e /etc/rc.d/lprng ]; then
++   /etc/rc.d/lprng stop
+ fi
+ 
+ 
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
++if [  -e /etc/rc.d/cups ]; then
++   /etc/rc.d/cups restart
++elif [  -e /etc/rc.d/cupsys ]; then
++   /etc/rc.d/cupsys restart
+ fi
+ 
+ sleep 2s
+diff -Naur usr.old/local/Brother/Printer/dcp560cn/inf/setupPrintcapij usr/local/Brother/Printer/dcp560cn/inf/setupPrintcapij
+--- usr.old/local/Brother/Printer/dcp560cn/inf/setupPrintcapij	2010-04-13 20:08:50.214959736 +0200
++++ usr/local/Brother/Printer/dcp560cn/inf/setupPrintcapij	2010-04-13 19:59:56.077929516 +0200
+@@ -20,7 +20,7 @@
+ 
+ BRPRINTER_MODEL=$1
+ BRPRINTER_NAME=`echo $BRPRINTER_MODEL | tr '[a-z]' '[A-Z]'`
+-PRINTCAP_NAME=/etc/printcap.local
++PRINTCAP_NAME=/etc/printcap
+ SPOOLER_NAME=/var/spool/lpd/$BRPRINTER_MODEL
+ 
+ DEVICE_IF=/dev/usb/lp0
