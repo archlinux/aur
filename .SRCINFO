@@ -1,0 +1,16 @@
+pkgbase = bdf-bitocra
+	pkgdesc = A monospace bit font, inspired by OCR-A. Created to be very readable on small sizes
+	pkgver = 1.2
+	pkgrel = 8
+	url = http://ubuntuforums.org/showthread.php?t=1846868
+	install = bdf-bitocra.install
+	arch = any
+	license = custom:OFL 1.1
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = master.tar.gz::https://github.com/ninjaaron/bitocra/tarball/master
+	md5sums = ca52de41ef18d99f45ec35cb3d594fe3
+
+pkgname = bdf-bitocra
+
