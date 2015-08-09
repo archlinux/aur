@@ -1,0 +1,21 @@
+pkgbase = oleo
+	pkgdesc = GNU's lightweight spreadsheet program with a curses-based interface
+	pkgver = 1.99.16
+	pkgrel = 3
+	url = http://www.gnu.org/software/oleo/
+	install = oleo.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = texi2html
+	depends = libcups
+	conflicts = oleo-motif
+	source = http://ftp.gnu.org/pub/gnu/oleo/oleo-1.99.16.tar.gz
+	source = https://answers.launchpad.net/debian/+archive/primary/+files/oleo_1.99.16-11.diff.gz
+	sha256sums = 6598df85d06ff2534ec08ed0657508f17dbbc58dd02d419160989de7c487bc86
+	sha256sums = c3f54bc193a4b60255196f6f1e4edc6659e85587b857f0f3519fb5db390525ec
+	sha512sums = 9a3faf00f36f551780d352d3bb13c2305744ca52179d7006a13196803f57b0bfb50266516ffa3be8e6358f0524ef8cf04a6194566afc9b4fa4a0c84993b61597
+	sha512sums = c9c3e27b075d80668a16477198de5109c3c2381eb4cd5227ed8362477ebf540c1cd5cbb1bd695798347115187198b1e483f39c903b4e4758414857ac56aa7786
+
+pkgname = oleo
+
