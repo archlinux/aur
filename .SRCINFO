@@ -1,7 +1,7 @@
 pkgbase = yandex-browser
 	pkgdesc = The web browser from Yandex (beta version!). It's browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
-	pkgver = 15.7.2357.2271_1.beta
-	pkgrel = 1
+	pkgver = 15.9.2403.2150_1.beta
+	pkgrel = 3
 	url = http://browser.yandex.ru/beta/
 	install = yandex-browser.install
 	arch = x86_64
@@ -41,6 +41,8 @@ pkgbase = yandex-browser
 	depends = xdg-utils
 	depends = wget
 	depends = libudev.so.0
+	optdepends = chromium-pepper-flash: plugin for viewing flash videos
+	conflicts = yandex-browser-beta
 	options = !strip
 	source = yandex-browser.deb::http://browser.yandex.ru/download/?beta=1&os=linux&x64=1&package=deb&full=1
 	md5sums = SKIP
