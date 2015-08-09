@@ -1,13 +1,14 @@
 # Maintainer:  respiranto <respiranto@icloud.com>
 pkgname=dict-freedict-deu-fra
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="German -> French dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
 license=('GPL')
-depends=(dictd)
-install=dict-freedict-deu-fra.install
+optdepends=('dictd: dict client and server')
+makedepends=('dictd')
+install=$pkgname.install
 source=("http://sourceforge.net/projects/freedict/files/German%20-%20French/$pkgver/freedict-deu-fra-$pkgver.tar.bz2")
 md5sums=('8abb6c86f11cad57c9dcec619e2f2ca3')
 
