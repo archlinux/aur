@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-umatrix-git
+	pkgdesc = Feature-Complete version of uMatrix as maintained by gorhill, git version.
+	pkgver = r914.7b65131
+	pkgrel = 1
+	url = https://github.com/gorhill/umatrix
+	arch = any
+	license = GPL
+	makedepends = python
+	depends = firefox
+	depends = git
+	source = firefox-extension-umatrix-git::git+https://github.com/gorhill/uMatrix.git
+	md5sums = SKIP
+
+pkgname = firefox-extension-umatrix-git
+
