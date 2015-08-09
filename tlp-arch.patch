@@ -1,24 +1,3 @@
-diff -rupN TLP-0.7.orig/Makefile TLP-0.7/Makefile
---- TLP-0.7.orig/Makefile	2015-02-24 10:41:23.600434433 +0100
-+++ TLP-0.7/Makefile	2015-02-24 10:45:59.877307094 +0100
-@@ -67,7 +67,7 @@ endif
- 	install -D -m 644 thinkpad-radiosw $(_ACPI)/events/thinkpad-radiosw
- 	install -m 755 thinkpad-radiosw.sh $(_ACPI)/
- ifneq ($(TLP_NO_BASHCOMP),1)
--	install -D -m 644 tlp.bash_completion $(DESTDIR)/etc/bash_completion.d/tlp
-+	install -D -m 644 tlp.bash_completion $(DESTDIR)/usr/share/bash-completion/completions/tlp
- endif
- 
- install-rdw:
-@@ -102,7 +102,7 @@ uninstall-tlp:
- 	rm -f $(_PLIB)/sleep.d/49tlp
- 	rm $(_ACPI)/events/thinkpad-radiosw
- 	rm $(_ACPI)/thinkpad-radiosw.sh
--	rm -f $(DESTDIR)/etc/bash_completion.d/tlp
-+	rm -f $(DESTDIR)/usr/share/bash-completion/completions/tlp
- 
- uninstall-rdw:
- 	# Package tlp-rdw
 diff -rupN TLP-0.7.orig/tlp.rules TLP-0.7/tlp.rules
 --- TLP-0.7.orig/tlp.rules	2015-02-24 10:41:23.600434433 +0100
 +++ TLP-0.7/tlp.rules	2015-02-24 10:41:35.026696729 +0100

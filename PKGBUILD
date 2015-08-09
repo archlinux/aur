@@ -5,8 +5,8 @@
 
 pkgname=('tlp-pmu')
 _pkgname=tlp
-pkgver=0.7
-pkgrel=2.2
+pkgver=0.8
+pkgrel=1
 pkgdesc='Advanced Power Management for Linux, with pm-utils support'
 depends=('hdparm' 'iw' 'pciutils' 'rfkill' 'usbutils' 'util-linux' 'pm-utils')
 optdepends=('acpi_call: Sandy Bridge and newer ThinkPad battery functions'
@@ -24,8 +24,8 @@ url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
 license=('GPL2' 'GPL3')
 source=("https://github.com/linrunner/TLP/archive/${pkgver}.tar.gz"
         'tlp-arch.patch')
-sha256sums=('bd313f478f897a658f2ca7db9665b8ce6796431b952f7df9aa80e59072cea4ea'
-            'ba49a3cb8ea97c2fb06d3e17b006b9b1710b3d625db7993c2f6ebd10fa948298')
+sha256sums=('d5c0423fde7247cc519001caebd60e538ff5ef2be9456d2049303eef4da1aae3'
+            'd62af086a8c97db354c2bb57d21f4a2b4faa8e60335d5994fad07698e67b4eba')
 
 prepare() {
   cd TLP-${pkgver}
