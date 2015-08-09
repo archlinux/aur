@@ -13,7 +13,7 @@ depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-svg"
          "qt5-graphicaleffects")
 makedepends=("git")
 provides=("$_pkgname" "$pkgname")
-conflicts=("$_pkgname" "qml-extras" "qml-extras-git" "papyros-shell")
+conflicts=("$_pkgname" "qml-extras" "qml-extras-git" "papyros-shell" "papyros-settings")
 source=("$pkgname::git+https://github.com/papyros/qml-material.git#branch=develop")
 sha256sums=("SKIP")
 
