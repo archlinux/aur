@@ -1,0 +1,4 @@
+/pkg
+/src
+/archci-*.pkg.tar.xz
+/node_modules
