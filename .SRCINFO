@@ -1,0 +1,14 @@
+pkgbase = fatrace
+	pkgdesc = Reports file access events from all running processes.
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://launchpad.net/fatrace
+	arch = any
+	license = GPL
+	depends = python
+	depends = powertop
+	source = http://launchpad.net/fatrace/trunk/0.10/+download/fatrace-0.10.tar.bz2
+	md5sums = b8b101fa3e2e18bac048a3240a5dbdab
+
+pkgname = fatrace
+
