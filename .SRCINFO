@@ -1,0 +1,17 @@
+pkgbase = python2-i3-git
+	pkgdesc = Tools for i3 users and Python developers. Python 2 version.
+	pkgver = r156.27f88a6
+	pkgrel = 1
+	url = https://github.com/ziberna/i3-py
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = i3-wm
+	provides = python2-i3
+	options = !emptydirs
+	source = i3-py::git://github.com/ziberna/i3-py.git
+	md5sums = SKIP
+
+pkgname = python2-i3-git
+
