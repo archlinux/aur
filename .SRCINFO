@@ -1,0 +1,17 @@
+pkgbase = levee
+	pkgdesc = A small, modal text editor based on vi
+	pkgver = 3.5b
+	pkgrel = 1
+	url = http://www.pell.portland.or.us/~orc/Code/levee/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ncurses
+	conflicts = lv
+	source = http://www.pell.portland.or.us/~orc/Code/levee/levee-3.5b.tar.bz2
+	source = COPYING
+	md5sums = fc19744ef17e980de9a4cc27fbaaeb90
+	md5sums = c3c3b5129975a2e707e2870735753853
+
+pkgname = levee
+
