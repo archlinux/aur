@@ -10,6 +10,7 @@ pkgbase = vera-plugin-alan-watcher-git
 	makedepends = bake
 	depends = vera-git
 	depends = alan-bzr
+	depends = nala-git
 	provides = vera-plugin-alan-watcher-git
 	conflicts = vera-plugin-alan-watcher-git
 	conflicts = vera-plugin-alan-watcher
