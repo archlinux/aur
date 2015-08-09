@@ -1,0 +1,15 @@
+pkgbase = ttf-eurof
+	pkgdesc = The original eurofurence font designed for headlines, signs, badges, inscriptions, et al.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.eurofurence.net/eurofurence.html
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.eurofurence.net/eurof_tt.zip
+	md5sums = 19a13896e288a82a3e4eba1df21918f3
+
+pkgname = ttf-eurof
+
