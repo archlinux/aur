@@ -4,7 +4,7 @@ pkgdesc="ROS - Nodelet Core Metapackage."
 url='http://www.ros.org/wiki/nodelet_core'
 
 pkgname='ros-indigo-nodelet-core'
-pkgver='1.9.2'
+pkgver='1.9.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
