@@ -1,16 +1,16 @@
 # Maintainer: Trygve Aaberge <trygveaa+aur at gmail dot com>
 
 pkgname=livereload
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Python LiveReload is an awesome tool for web developers"
 arch=('any')
 url="https://github.com/lepture/python-livereload"
 license=('BSD')
-depends=('python' 'python-tornado')
+depends=('python' 'python-six' 'python-tornado')
 makedepends=('python-setuptools')
 source=("https://github.com/lepture/python-livereload/archive/v${pkgver}.tar.gz")
-md5sums=('348ed9aafc41d02c78bb1298725d3aa9')
+md5sums=('2ffeb87a910c22c5913b7962b093e5c8')
 
 package() {
   cd "${srcdir}/python-livereload-${pkgver}"
