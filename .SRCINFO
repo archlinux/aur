@@ -1,0 +1,16 @@
+pkgbase = idera-hotcopy
+	pkgdesc = Utility that creates a point-in-time snapshot of any linux block device
+	pkgver = 5.8.2
+	pkgrel = 1
+	url = http://www.r1soft.com/free-tool-linux-hot-copy
+	install = idera-hotcopy.install
+	arch = x86_64
+	arch = i686
+	license = Freeware
+	depends = linux-headers
+	noextract = Idera-hotcopy.zip
+	source = http://repo.r1soft.com/release/trials/Idera-hotcopy.zip
+	md5sums = 8dd3ad1104124c50b43e389098b86ee7
+
+pkgname = idera-hotcopy
+

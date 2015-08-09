@@ -1,0 +1,82 @@
+pre_install() {
+    if [ ! -z "$R1SOFT_DEBUG" ]; then
+    	set -x;
+    fi
+    
+    exit 0;
+}
+
+post_install() {
+    if [ ! -z "$R1SOFT_DEBUG" ]; then
+    	set -x;
+    fi
+    
+    chown root:root /usr/bin/hcp
+    chown root:root /usr/bin/hcp-setup
+    chown root:root /usr/share/man/man8/hcp.8.gz
+    chown root:root /usr/share/man/man8/hcp-setup.8.gz
+    chown root:root /usr/bin/r1soft-blkid
+    chmod 700		/usr/bin/r1soft-blkid
+    chown root:root /usr/share/man/man4/hcp-device.4.gz
+    
+    T="`/usr/bin/hcp --list | grep "Virtual Device" | awk -F: '{ print $2 }'`"
+    if [ ! -z "$T" ]; then
+    	echo "Currently there are volumes that have snapshots. "
+    	echo "It is recommended that You should unmount, remove the driver, and remount. "
+    fi
+    
+    if [ ! -d /usr/lib/modules/r1soft ]; then
+    	mkdir -p /usr/lib/modules/r1soft
+    fi
+    
+    chown root:root /usr/lib/modules/r1soft
+    
+    exit 0;
+}
+
+pre_upgrade() {
+    pre_install
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if [ ! -z "$R1SOFT_DEBUG" ]; then
+    	set -x;
+    fi
+    
+    T="`/usr/bin/hcp --list | grep "Virtual Device" | awk -F: '{ print $2 }'`"
+    if [ ! -z "$T" ]; then
+    	for x in $T; do 
+    		if [ -x /usr/bin/hcp ]; then
+    			/usr/bin/hcp -r $x >/dev/null 
+    		fi
+    	done
+    fi
+    
+    
+    G="`/bin/lsmod | /usr/bin/grep hcpdriver`"
+    if [ ! -z "$G" ]; then
+       /usr/bin/rmmod hcpdriver 
+    fi
+    
+    exit 0;
+}
+
+post_remove() {
+    if [ ! -z "$R1SOFT_DEBUG" ]; then
+    	set -x;
+    fi
+    
+    if [ -d /usr/lib/modules/r1soft ]; then
+    	rm -rf /usr/lib/modules/r1soft
+    fi
+    
+    if [ -f /dev/hcp ]; then
+    	rm -f /dev/hcp
+    fi
+    
+    exit 0;
+}
