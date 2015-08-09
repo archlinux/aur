@@ -1,0 +1,24 @@
+pkgbase = winbox-beta
+	pkgdesc = Configuration tool for MikroTik RouterOS (wine)
+	pkgver = 3.0rc12
+	pkgrel = 5
+	url = http://www.mikrotik.com
+	install = winbox-beta.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = wine
+	optdepends = ttf-ms-fonts: for better fonts
+	source = http://download2.mikrotik.com/routeros/winbox/3.0rc12/winbox.exe
+	source = http://www.mikrotik.com/downloadterms.html
+	source = winbox-beta.desktop
+	source = winbox-beta.png
+	source = winbox-beta
+	md5sums = 8efafca440ad27704393386bb7b69ac5
+	md5sums = d034563c27be7e75c6920f308f2d9f85
+	md5sums = d1b1fc11e54078239756bbf53b10524a
+	md5sums = 1147544d4bd5ed8181c0eee5fcd31356
+	md5sums = f151701beaea7bb702e400ffb844f560
+
+pkgname = winbox-beta
+
