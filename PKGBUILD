@@ -2,7 +2,7 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 pkgname=gdb-ibuclaw-git
-pkgver=20150609
+pkgver=84323.57f0502
 pkgrel=1
 pkgdesc="The GNU Debugger modified for D language support"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/gdb"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git rev-list --count dlang).$(git rev-parse --short dlang)
 }
 
 prepare() {
