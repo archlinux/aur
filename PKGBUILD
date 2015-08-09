@@ -6,7 +6,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=44.0.2403.125
+pkgver=44.0.2403.130
 pkgrel=1
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
