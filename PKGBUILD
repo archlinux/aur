@@ -67,13 +67,13 @@ pkgname=('linux-bfs' 'linux-bfs-headers' 'linux-bfs-docs')
 _kernelname=-bfs
 _srcname=linux-4.1
 pkgver=4.1.4
-pkgrel=2
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://ck-hack.blogspot.de"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
-_bfsrel=463
+_bfsrel=464
 _bfspatch="4.1-sched-bfs-${_bfsrel}.patch"
 _bfqrel=v7r8
 #_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-${_bfqrel}"
@@ -85,8 +85,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://ck.kolivas.org/patches/bfs/4.0/4.1/${_bfspatch}"
-        "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck1/patches/hz-default_1000.patch"
-        "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck1/patches/hz-no_default_250.patch"
+        "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck2/patches/hz-default_1000.patch"
+        "http://ck.kolivas.org/patches/4.0/4.1/4.1-ck2/patches/hz-no_default_250.patch"
         "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.1.patch"
         "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.1.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.1.0.patch"
@@ -109,7 +109,7 @@ prepare() {
          patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
  
      ### Patch source with BFS 
-         msg "Patching source with BFS v0.463"
+         msg "Patching source with BFS v0.464"
          patch -Np1 -i "${srcdir}/${_bfspatch}"
     
      ### Patch source with ck-hz patches
@@ -475,9 +475,9 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             'SKIP'
             'c6ac581f49e6fcbc6248a56e0e318778743e83c1936b3540b9b4aef255b5877ed3bae2fdd09fea8d3a86e6b57dbb6a413b4ebe4f994cbe0b0a0167b4dc821794'
             'SKIP'
-            '80e17baa2336680f6f73ca704868adcc88cc5a02b3ed7a9f10e5f9a58df126576cf01b258f6deba89d5fe9246701113f4e74b3f87ceb395ab9ec87c3bc2c726d'
-            'c5e20c56c3f972ccb1c846c5e45f4da29a7283de745f137378036baf5c833807718840edfe92e9e6001d531a7c985c10ce927cc151a0fc169ac919ee66c78d0a'
-            '5e91f50aeebdd5394b4eaaa5e659dbc269937f95392193653c8d6fb921e565cc71078ce14d7fa3813bc645b5674cfc81ce0c8ba545dc4609d16e2d2b805ad074'
+            '9ff7279db6a976c495ba1e09466d688d84f0ef9cca2912e8aeb12f68070e9af012a3c3558e25daf9459fce7d27dc9a82f8fe58f3499164d42ea4561ea62391b5'
+            '205059a0ac0fff34298695685a2de8806193b45a270e5818dd942d7c2d07f1d116eacf69dbaf4c99fe342d56b4f43ee4d2b3675a706724ed18cbc39618865d26'
+            'f31469c53e1ae5d1a4caa67b3f6e51a9699c74aadb8f9468189baf6695c00a8d7b151625822da293a2b8344b94c2ba0e191f7a713825111af2b6690d2e5cacee'
             '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
             'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
             '1db70764577d3e8d5e65351bdef7f2cf61d2546138a6342c4bf4e5e6738b8e06b5291a9a0c12f9fc2c8cb620048006d05474cf75902cb26e7504038150cf0a44'
@@ -486,7 +486,6 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             'f1b175f9c0c1735ac26fcd9705a1d6fd7253b6d47de89c3537ef886a7957c2ebc0f535b816dfa6922e1830796a7da4ac9cde1dd2a650369c41d766ea4b144d1e'
             'c34d13f9ae6564461cc69aad176b4deee98efe9ec5058db2fe34f33387092022da1c59af4e37caff799c71eb2829669295cb0a6fbadeac368be937aaf7f65094')
-
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
