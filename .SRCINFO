@@ -18,7 +18,7 @@ pkgbase = turpial
 	optdepends = gnome-spell
 	optdepends = aspell
 	conflicts = turpial
-	source = http://turpial.org.ve/files/sources/stable/turpial-1.6.8.tar.gz
+	source = http://files.turpial.org.ve/sources/stable/turpial-1.6.8.tar.gz
 	md5sums = 04bdd05c3aca2f6ee4ff1f6d95e64b30
 
 pkgname = turpial
