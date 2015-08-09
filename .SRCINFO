@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-fr
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (fr)
-	pkgver = 42.0a1.20150703
+	pkgver = 42.0a1.20150809
 	pkgrel = 1
 	url = https://nightly.mozilla.org/
 	install = firefox-nightly.install
@@ -13,6 +13,7 @@ pkgbase = firefox-nightly-fr
 	depends = dbus-glib
 	depends = desktop-file-utils
 	depends = gtk2
+	depends = gtk3
 	depends = libxt
 	depends = nss
 	depends = mime-types

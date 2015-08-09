@@ -16,11 +16,12 @@ pkgname=firefox-nightly-fr
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (fr)'
 url='https://nightly.mozilla.org/'
 _version=42.0a1
-pkgver=42.0a1.20150703
+pkgver=42.0a1.20150808
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'libxt' 'nss' 'mime-types')
+depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'libxt'
+         'nss' 'mime-types')
 optdepends=('gstreamer0.10-ffmpeg: h.264 video'
             'gstreamer0.10-good: h.264 video'
             'hunspell: spell checking'
@@ -28,9 +29,17 @@ optdepends=('gstreamer0.10-ffmpeg: h.264 video'
 _base_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
 _base_url="https://ftp.mozilla.org/pub/mozilla.org/${_name}/nightly/latest-mozilla-central-l10n"
 _tarball="${_base_src}.tar.bz2"
-source=("${_base_url}/${_tarball}" 'firefox-nightly.desktop' 'firefox-nightly-safe.desktop' 'vendor.js')
+source=(
+    "${_base_url}/${_tarball}"
+    'firefox-nightly.desktop'
+    'firefox-nightly-safe.desktop'
+    'vendor.js'
+)
 _checksum="$(curl -s "${_base_url}/${_base_src}.checksums" | grep ${_tarball} | grep sha512 | cut -d " " -f1)"
-sha512sums=("${_checksum}" '725babc1365e02a30f50aafbc069b04a97cd247f76240b99b0a734dcce0e560f30cfd441efe9b0b9edcc48f327c8adad34e1ae45c2ba047205c84921d5e43e59' '2df6b84978ec459ffad3e0d285c816da07a890db30284d3b2bec250472c10e08003edf705278cb97e02a52fb5f1325d962c08d5fbcf98f484e982a97e381407b' 'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
+sha512sums=("${_checksum}"
+            '725babc1365e02a30f50aafbc069b04a97cd247f76240b99b0a734dcce0e560f30cfd441efe9b0b9edcc48f327c8adad34e1ae45c2ba047205c84921d5e43e59'
+            '2df6b84978ec459ffad3e0d285c816da07a890db30284d3b2bec250472c10e08003edf705278cb97e02a52fb5f1325d962c08d5fbcf98f484e982a97e381407b'
+            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 install=firefox-nightly.install
 
 pkgver() {
