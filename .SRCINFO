@@ -1,0 +1,16 @@
+pkgbase = qelectrotech
+	pkgdesc = Qt4 electric circuit drawing program
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://qelectrotech.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = tar
+	depends = qt4
+	provides = qelectrotech
+	source = http://download.tuxfamily.org/qet/tags/20150220/qelectrotech-0.4-src.tar.gz
+	sha1sums = SKIP
+
+pkgname = qelectrotech
+

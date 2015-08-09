@@ -1,0 +1,34 @@
+# Maintainer: Ingo Bürk <ingo.buerk@airblader.de>
+pkgname=qelectrotech
+pkgver=0.4
+pkgrel=1
+pkgdesc=''
+arch=('i686' 'x86_64')
+url='http://qelectrotech.org/'
+license=('GPL')
+provides=('qelectrotech')
+depends=('qt4' 'shared-mime-info')
+makedepends=('tar')
+source=('http://download.tuxfamily.org/qet/tags/20150220/qelectrotech-0.4-src.tar.gz')
+sha1sums=('SKIP')
+install=qelectrotech.install
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver-src"
+    sed -i -e "s_/usr/local_$pkgdir/usr_g" qelectrotech.pro
+#    sed -i -e "s_../share_share_g" qelectrotech.pro
+    qmake-qt4
+    make -j4
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver-src"
+    make install
+    mv $pkgdir/share $pkgdir/usr/share
+    mv $pkgdir/usr/man $pkgdir/usr/share
+    mv $pkgdir/usr/doc $pkgdir/usr/share
+    mv $pkgdir/usr/share/share/* $pkgdir/usr/share
+    rmdir $pkgdir/usr/share/share
+}
+
+# vim:ts=4:sw=4:expandtab

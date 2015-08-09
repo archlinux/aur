@@ -1,0 +1,3 @@
+update-mime-database usr/share/mime
+update-desktop-database -q
+gtk-update-icon-cache /usr/share/icons/hicolor
