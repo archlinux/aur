@@ -1,0 +1,9 @@
+post_install() {
+	echo "Updating font cache..."
+	fc-cache -f
+}
+
+post_remove() {
+	echo "Updating font cache..."
+	fc-cache -f
+}
