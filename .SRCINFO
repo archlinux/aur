@@ -7,7 +7,7 @@ pkgbase = pdf-decrypt
 	license = MIT
 	makedepends = git
 	depends = qpdf
-	source = https://aur.archlinux.org/pdf-decrypt.git/
+	source = git://github.com/zvyn/pdf-decrypt.git
 	md5sums = SKIP
 
 pkgname = pdf-decrypt

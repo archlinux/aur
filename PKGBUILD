@@ -8,7 +8,7 @@ url="https://github.com/zvyn/pdf-decrypt"
 license=('MIT')
 depends=('qpdf')
 makedepends=('git')
-source=('https://aur.archlinux.org/pdf-decrypt.git/')
+source=('git://github.com/zvyn/pdf-decrypt.git')
 md5sums=('SKIP')
 
 pkgver() {
