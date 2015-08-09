@@ -1,0 +1,16 @@
+pkgbase = spooftooph
+	pkgdesc = Designed to automate spoofing or cloning Bluetooth device Name, Class, and Address. Cloning this information effectively allows Bluetooth device to hide in plain site
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/spooftooph/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bluez
+	depends = bluez-libs
+	depends = ncurses
+	source = http://downloads.sourceforge.net/spooftooph/spooftooph-0.5.2.tar.gz
+	md5sums = 469f803d4d4c8dabdb7c9ba08d04404c
+
+pkgname = spooftooph
+
