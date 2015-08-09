@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CloneKeen
+GenericName=Adventure Game
+Comment=A Commander Keen clone
+TryExec=/usr/bin/clonekeen
+Exec=clonekeen
+Icon=/usr/share/pixmaps/clonekeen.png
+Categories=Game;AdventureGame:

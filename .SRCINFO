@@ -1,0 +1,25 @@
+pkgbase = clonekeen
+	pkgdesc = A clone of the classic DOS game, Commander Keen: Invasion of the Vorticons
+	pkgver = 8.4
+	pkgrel = 2
+	url = http://clonekeen.sourceforge.net/
+	install = clonekeen.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	depends = sdl
+	noextract = 1keen131.zip
+	source = http://clonekeen.sourceforge.net/files/clonekeen-src-84.tar.gz
+	source = http://clonekeen.sourceforge.net/files/1keen131.zip
+	source = clonekeen.desktop
+	source = clonekeen.png
+	source = clonekeen.sh
+	md5sums = 0179c34727d044f07a1c00df340134bd
+	md5sums = 0561dd3e32ea4a0f965bd2288a3e64b3
+	md5sums = 73d81bb50749f1f8b3b0fa55a724cca5
+	md5sums = 77f4c659fc773abb297e4f5cf1bbbe70
+	md5sums = dbbb923232b390def47eb8f4eca966a8
+
+pkgname = clonekeen
+
