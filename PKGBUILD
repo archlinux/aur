@@ -68,7 +68,6 @@ package()
   install -D -m644 examples/* ${pkgdir}/${_conkyvar}/examples/
  
  
-
   # install man page
   gzip -c -9 conkywx.1 > conkywx.1.gz
   install -D -m644 conkywx.1.gz "${pkgdir}/usr/share/man/man1/conkywx.1.gz"
