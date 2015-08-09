@@ -1,0 +1,9 @@
+[Unit]
+Description=Binkley Protocol server
+
+[Service]
+ExecStart=/usr/bin/binkd /etc/binkd/binkd.conf
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
