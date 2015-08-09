@@ -15,7 +15,6 @@ conflicts=(globus myproxy)
 source=(http://toolkit.globus.org/ftppub/gt6/installers/src/globus_toolkit-$pkgver.tar.gz
         globus.sysusers)
 sha1sums=('2f6c451664d01d238906519ca33a4b4d9fb1217d'
-          'ad9c17923fb85224cb134beb79c04871c3a18307'
           '48e2f95145dfa27b0fee81022e33039e8524399c')
 install="globus.install"
 options=(!emptydirs)
