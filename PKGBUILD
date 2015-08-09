@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=ola-git
-pkgver=0.9.5.r406.gaad3ac0
+pkgver=0.9.7.r193.g4801ba0
 pkgrel=1
 pkgdesc="The Open Lighting Architecture (OLA) provides a plugin framework for distributing DMX512 control signals on Mac and Linux"
 arch=('i686' 'x86_64')
