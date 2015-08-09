@@ -1,7 +1,7 @@
 pkgbase = wii-u-gc-adapter
-	pkgdesc = Drivers for the wii u gc usb adapter for linux
+	pkgdesc = Tool for using the Wii U GameCube Adapter on Linux
 	pkgver = 0.0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ToadKing/wii-u-gc-adapter
 	arch = i686
 	arch = x86_64

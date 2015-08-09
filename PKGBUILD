@@ -3,8 +3,8 @@
 # Contributor: daemonTutorials <http://www.daemon-tuts.de>
 pkgname=wii-u-gc-adapter
 pkgver=0.0.29
-pkgrel=1
-pkgdesc="Drivers for the wii u gc usb adapter for linux"
+pkgrel=2
+pkgdesc="Tool for using the Wii U GameCube Adapter on Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ToadKing/wii-u-gc-adapter"
 source=('git+https://github.com/ToadKing/wii-u-gc-adapter.git' '51-ignore-gc-controller.conf')
