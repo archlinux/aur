@@ -1,0 +1,25 @@
+pkgbase = turpial
+	pkgdesc = A multi-interface Twitter client written in Python.
+	pkgver = 1.6.8
+	pkgrel = 1
+	url = http://turpial.org.ve/
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-distribute
+	depends = python-simplejson>=1.9.2
+	depends = pygtk>=2.12
+	depends = python-notify>=0.1.1
+	depends = notification-daemon
+	depends = gstreamer0.10-python
+	depends = python-babel>=0.9.1
+	depends = pywebkitgtk
+	optdepends = python2-gtkspell>=2.25.3
+	optdepends = gnome-spell
+	optdepends = aspell
+	conflicts = turpial
+	source = http://turpial.org.ve/files/sources/stable/turpial-1.6.8.tar.gz
+	md5sums = 04bdd05c3aca2f6ee4ff1f6d95e64b30
+
+pkgname = turpial
+
