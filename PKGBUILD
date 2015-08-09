@@ -16,7 +16,7 @@ pkgname=firefox-nightly-fr
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (fr)'
 url='https://nightly.mozilla.org/'
 _version=42.0a1
-pkgver=42.0a1.20150808
+pkgver=42.0a1.20150809
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -49,7 +49,7 @@ pkgver() {
 }
 
 # Uncomment check() to enable GnuPG signature verification. You’ll need Mozilla’s GnuPG release key.
-# Their current fingerprint is 2B90 598A 745E 992F 315E  22C5 8AB1 3296 3A06 537A shortid 0x15A0A4BC
+# Their current fingerprint is 14F2 6682 D091 6CDD 81E3 7B6D 61B7 B526 D98F 0353
 #check() {
 #  CHECKSUM="${_base_src}.checksums"
 #  CHECKSIG="${CHECKSUM}.asc"
