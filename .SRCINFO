@@ -1,0 +1,16 @@
+pkgbase = soil
+	pkgdesc = A tiny C lib primarily for loading textures into OpenGL
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://www.lonesock.net/soil.html
+	arch = i686
+	arch = x86_64
+	license = CCPL
+	makedepends = mesa
+	depends = glibc
+	options = !staticlibs
+	source = http://www.lonesock.net/files/soil.zip
+	sha256sums = a2305b8d64f6d636e36d669bbdb0ca5445d1345c754b3d61d3f037dad2e5f701
+
+pkgname = soil
+
