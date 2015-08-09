@@ -4,7 +4,7 @@
 # Contributors: Kevin Klement
 pkgname=texlive-dummy
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Something to trick Arch into thinking it has its texlive packages installed."
 url=('http://www.tug.org/texlive/')
 arch=('any')
@@ -19,3 +19,7 @@ provides=('texlive-bin' 'texlive-core' 'texlive-fontsextra' 'texlive-pstricks'  
 build() {
    echo "Do nothing"
 } 
+
+package() {
+   echo "Do nothing"
+}
