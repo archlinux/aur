@@ -2,7 +2,7 @@
 
 pkgname=dnscrypt-autoinstall
 pkgver=0.3
-pkgrel=7
+pkgrel=8
 
 pkgdesc='Choose your DNSCrypt provider'
 arch=('any')
@@ -16,13 +16,11 @@ source=("git+https://github.com/simonclausen/dnscrypt-autoinstall")
 sha1sums=('SKIP')
 
 package() {
-  cd "$pkgname"/dnscrypt-autoinstall-arch
-  install -Dm755 dnscrypt-autoinstall "$pkgdir"/usr/bin/dnscrypt-autoinstall
-  
-  cd ../systemd
-  install -Dm644 dnscrypt-config-dnscrypteu "$pkgdir"/etc/conf.d/dnscrypt-config
-  install -Dm644 dnscrypt-proxy.service "$pkgdir"/etc/systemd/system/dnscrypt-proxy.service
-  install -Dm644 dnscrypt-proxy-backup.service "$pkgdir"/etc/systemd/system/dnscrypt-proxy-backup.service
+  cd "$pkgname"
+  install -Dm755 "$pkgname"-arch/"$pkgname"		"$pkgdir"/usr/bin/dnscrypt-autoinstall  
+  install -Dm644 systemd/dnscrypt-config-dnscrypteu 	"$pkgdir"/etc/conf.d/dnscrypt-config
+  install -Dm644 systemd/dnscrypt-proxy.service		"$pkgdir"/etc/systemd/system/dnscrypt-proxy.service
+  install -Dm644 systemd/dnscrypt-proxy-backup.service  "$pkgdir"/etc/systemd/system/dnscrypt-proxy-backup.service
 }
 
 # vim:set ts=2 sw=2 et:
