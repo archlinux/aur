@@ -1,0 +1,14 @@
+pkgbase = dupmerge
+	pkgdesc = Create hardlinks between duplicate files.
+	pkgver = 1.73
+	pkgrel = 2
+	url = http://dupmerge.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	source = http://downloads.sourceforge.net/project/dupmerge/dupmerge/1.73/dupmerge_1.73.zip
+	md5sums = 0c50ce2877be34ced391ec32b30324a6
+
+pkgname = dupmerge
+
