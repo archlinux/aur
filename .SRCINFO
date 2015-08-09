@@ -1,0 +1,23 @@
+pkgbase = sthttpd
+	pkgdesc = Simple, small, portable, fast, and secure HTTP server
+	pkgver = 2.27.0
+	pkgrel = 1
+	url = http://opensource.dyc.edu/sthttpd
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = custom:BSD
+	conflicts = thttpd
+	backup = etc/thttpd.conf
+	source = http://opensource.dyc.edu/pub/sthttpd/sthttpd-2.27.0.tar.gz
+	source = logrotate.d
+	source = service
+	source = config
+	sha1sums = 27ea739c4e3c7922979c4357a80fe6d141da4356
+	sha1sums = 36ffeefd1675ca4920605b1b5ca32dd5141a8f23
+	sha1sums = 73bd76de0e89a9cc31e5605659837d83b3c8dfde
+	sha1sums = 16640870a69cfc48021ee3acfea7c95834549d46
+
+pkgname = sthttpd
+

@@ -1,0 +1,7 @@
+dir=/srv/http
+vhost
+user=http
+cgipat=**.cgi
+logfile=/var/log/thttpd/thttpd.log
+pidfile=/var/run/thttpd.pid
+charset=utf-8
