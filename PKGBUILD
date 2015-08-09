@@ -40,16 +40,16 @@ build() {
   cd "$srcdir/$_pkgname"
   mkdir -p build
   cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	cd build
-	make install DESTDIR="$pkgdir"
+  cd "$srcdir/$_pkgname"
+  cd build
+  make install DESTDIR="$pkgdir"
 
-	cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
   cp -r music "$pkgdir/usr/share/$_pkgname"
 }
 
