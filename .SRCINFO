@@ -1,7 +1,7 @@
 pkgbase = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://drawpile.net/
 	install = drawpile.install
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = drawpile
 	depends = miniupnpc
 	depends = giflib
 	depends = libmicrohttpd
-	source = http://drawpile.net/files/src/drawpile-1.0.0.tar.gz
-	sha256sums = bc574ddbad1578e84ca36605c338400239d4f106750e253ca7cf027c0b42c454
+	source = http://drawpile.net/files/src/drawpile-1.0.1.tar.gz
+	sha256sums = 93d265ca48af01b845907857080400eeb02ed0b732f105bb52b1e2990eb941d5
 
 pkgname = drawpile
 

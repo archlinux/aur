@@ -3,8 +3,8 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=drawpile
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('x86_64' 'i686')
 url='http://drawpile.net/'
@@ -13,7 +13,7 @@ depends=('karchive' 'kdnssd' 'desktop-file-utils' 'qt5-color-picker' 'qt5-multim
 makedepends=('qt5-tools' 'qt5-svg' 'ninja' 'cmake')
 install="${pkgname}.install"
 source=("http://drawpile.net/files/src/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('bc574ddbad1578e84ca36605c338400239d4f106750e253ca7cf027c0b42c454')
+sha256sums=('93d265ca48af01b845907857080400eeb02ed0b732f105bb52b1e2990eb941d5')
 
 build() {
 	cd "${pkgname}-${pkgver}"
