@@ -8,6 +8,9 @@ pkgbase = apache_spark
 	license = apache
 	makedepends = git
 	depends = java-environment
+	depends = maven
+	depends = hadoop
+	depends = scala
 	source = git://github.com/apache/spark.git
 	md5sums = SKIP
 

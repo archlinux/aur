@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://spark.apache.org"
 license=('apache')
 groups=()
-depends=('java-environment')
+depends=('java-environment' 'maven' 'hadoop' 'scala')
 makedepends=('git')
 provides=()
 conflicts=()
@@ -46,17 +46,21 @@ build() {
 }
 
 package() {
+  _usr=${pkgdir}/usr
   _usr_lib=${pkgdir}/usr/lib
   _spark_real_home=$_usr_lib/$pkgname-$pkgver
   _spark_link_home=$_usr_lib/$pkgname
   mkdir -p $_spark_real_home
+  mkdir -p $_usr_bin
 
   cd $_usr_lib
   ln -s $pkgname-$pkgver $pkgname
 
+  # install spark
   tar -xf $srcdir/$_gitname-build/spark-$pkgver-SNAPSHOT-bin-$_buildname.tgz -C $_spark_real_home
-  cd $_spark_real_home
-  mv spark-$pkgver-SNAPSHOT-bin-$_buildname/* .
+  msg "Spark will be installed under /usr/lib/$pkgname"
+  mv $_spark_real_home/spark-$pkgver-SNAPSHOT-bin-$_buildname/* $_spark_real_home
+  rmdir $_spark_real_home/spark-$pkgver-SNAPSHOT-bin-$_buildname
 }
 
 # vim:set ts=2 sw=2 et:
