@@ -11,10 +11,10 @@ pkgdesc='VDR VNSI PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 license=('GPL')
-makedepends=('cmake' 'git' 'kodi-platform')
+makedepends=('cmake' 'git' 'kodi-platform-git')
 depends=('kodi>=15.0')
 provides=('kodi-addon-pvr-vdr-vnsi')
-conflicts=('kodi-addon-pvr-vdr-vnsi')
+conflicts=('kodi-addon-pvr-vdr-vnsi' 'kodi-pvr-addons')
 source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=${_branch}")
 md5sums=('SKIP')
 
