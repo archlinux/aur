@@ -1,0 +1,32 @@
+pkgbase = mutt-sidebar-hg
+	pkgdesc = A small but very powerful text-based mail client
+	pkgver = r6477.711708700602
+	pkgrel = 1
+	url = http://www.mutt.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = gnupg
+	makedepends = libxslt
+	depends = gdbm
+	depends = libidn
+	depends = mime-types
+	depends = zlib
+	depends = gpgme
+	depends = ncurses
+	provides = mutt
+	conflicts = mutt
+	source = hg+http://dev.mutt.org/hg/mutt#branch=default
+	source = trashfolder.r6477.711708700602.diff
+	source = sidebar.r6477.711708700602.patch
+	source = patch-for-first-char-jf.patch
+	source = shortpath.patch
+	sha512sums = SKIP
+	sha512sums = b1b384a1bfa6b5b8024b0e37c313ed94343b43883461c94038cab80fffdb10506c4208cfa27f9b3f82ace6b44a7fafe21d0c7bc11f6457637fea3406936250e1
+	sha512sums = f5b0c1607953df124fe835fdbcc8493cf67fc8bca55215d5609d31b19e9f144ba4a02b3abd8f4ec0404be9ea132a0c3e256d7b98b183835aa605bddce388d6be
+	sha512sums = 16ba918a8d5ef091cd7556e97189b43a0afdc1fc23a8bb9ece6a97281223090a5e680886233d2aa52e5340c402d19c68801b51eec13ae61cd8d301418470f11d
+	sha512sums = 9fe87a338090ac53856893f3392a6f94d5a855cff1338fb6d1a0ef8774e57b20e6a75212b43c266066fbaae7ff21978c8437aee2e601a20eaccadf6cb1425397
+
+pkgname = mutt-sidebar-hg
+
