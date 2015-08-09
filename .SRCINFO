@@ -1,0 +1,18 @@
+pkgbase = xcursor-menda-git
+	pkgdesc = Cursor theme - part of the Manjaro Menda set
+	pkgver = r4.e350325
+	pkgrel = 2
+	url = http://www.manjaro.org
+	arch = any
+	license = GPL3
+	makedepends = binutils
+	makedepends = git
+	depends = libxcursor
+	provides = xcursor-menda
+	conflicts = xcursor-menda
+	replaces = xcursor-menda
+	source = git+https://github.com/anexation/menda-cursor.git
+	md5sums = SKIP
+
+pkgname = xcursor-menda-git
+
