@@ -1,7 +1,7 @@
 pkgbase = puppet3
 	pkgdesc = Server automation framework and application
-	pkgver = 3.8.1
-	pkgrel = 2
+	pkgver = 3.8.2
+	pkgrel = 1
 	url = http://puppetlabs.com/puppet/puppet-open-source
 	install = puppet.install
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = puppet3
 	backup = etc/puppet/fileserver.conf
 	backup = etc/puppet/puppet.conf
 	backup = etc/puppet/tagmail.conf
-	source = puppet-3.8.1.tar.gz::http://github.com/puppetlabs/puppet/archive/3.8.1.tar.gz
-	md5sums = 687954e043f7b26d5733b7e31f4d1a79
+	source = puppet-3.8.2.tar.gz::http://github.com/puppetlabs/puppet/archive/3.8.2.tar.gz
+	md5sums = 97d6f43f9840d1e7d57677ade79060dd
 
 pkgname = puppet3
 
