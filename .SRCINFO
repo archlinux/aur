@@ -1,0 +1,15 @@
+pkgbase = ttf-monofur
+	pkgdesc = A monospaced font derived from the eurofurence typeface family
+	pkgver = 1.0
+	pkgrel = 6
+	url = http://www.dafont.com/monofur.font
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = monof_tt.zip::http://img.dafont.com/dl/?f=monofur
+	sha256sums = 2d41ca991f342f9b74bc01433fba6c371fa7abcd5eaa45d8e71c9b8a2049055a
+
+pkgname = ttf-monofur
+
