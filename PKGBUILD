@@ -5,7 +5,7 @@ _gitbranch=master
 _gitname=vera-plugin-alan-watcher
 
 pkgname="$_gitname-git"
-pkgver=0
+pkgver=1.0.3.2
 pkgrel=1
 pkgdesc="alan-watcher plugin for vera"
 arch=(i686 x86_64)
