@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-web-search-dialog-git
+	pkgdesc = Search the web directly from Gnome Shell
+	pkgver = r119.8467ee7
+	pkgrel = 1
+	epoch = 1
+	url = https://extensions.gnome.org/extension/549/web-search-dialog/
+	install = gschemas.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/awamper/web-search-dialog
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-web-search-dialog-git
+
