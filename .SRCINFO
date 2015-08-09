@@ -1,0 +1,15 @@
+pkgbase = metalua
+	pkgdesc = The metalua programming language
+	pkgver = 0.5rc2
+	pkgrel = 1
+	url = http://metalua.luaforge.net
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = lua51
+	depends = sh
+	source = http://github.com/fab13n/metalua/tarball/0.5-rc2
+	md5sums = c841976b3a2fe9b7322aaca16927c9e2
+
+pkgname = metalua
+
