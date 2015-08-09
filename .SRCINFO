@@ -1,0 +1,16 @@
+pkgbase = nyancat-git
+	pkgdesc = Terminal-based Pop Tart Cat animation
+	pkgver = 1.4.4.r4.g0a7bfc1
+	pkgrel = 1
+	url = http://nyancat.dakko.us/
+	arch = i686
+	arch = x86_64
+	license = NCSA
+	makedepends = git
+	depends = glibc
+	provides = nyancat
+	source = nyancat-git::git://github.com/klange/nyancat.git
+	sha512sums = SKIP
+
+pkgname = nyancat-git
+
