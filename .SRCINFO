@@ -1,0 +1,18 @@
+pkgbase = digilent.waveforms
+	pkgdesc = Digilent WaveForms Application, Runtime and SDK
+	pkgver = 3.0.28
+	pkgrel = 1
+	url = https://www.digilentinc.com/WaveForms
+	install = digilent.waveforms.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = qt5-script
+	depends = shared-mime-info
+	depends = xdg-utils
+	optdepends = digilent.adept.runtime: Digilent hardware support
+	options = !strip
+
+pkgname = digilent.waveforms
+
