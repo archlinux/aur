@@ -1,6 +1,6 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=jsonrpc-c-git
-pkgver=r41.ab8ec1e
+pkgver=r42.e06e60b
 pkgrel=1
 pkgdesc="A library for a C program to receive or make JSON-RPC requests on tcp sockets (no HTTP)."
 arch=('i686' 'x86_64')
