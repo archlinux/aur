@@ -21,7 +21,7 @@ build() {
   # Make src directory for $GOPATH
   mkdir -p "$GOPATH/src"
 
-  mv "$srcdir/$pkgname" "$GOPATH/src"
+  mv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$pkgname"
   cd "$GOPATH/src/$pkgname/cmd/ipfs"
 
   msg2 'Installing dependencies...'
