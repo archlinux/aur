@@ -11,6 +11,12 @@ post_install() {
 		chmod 775 /run/${_NAME}
 	fi
 
+    echo ""
+    echo "To fill the configuration file (/opt/headphones/config.ini), do:"
+    echo "  systemctl start headphones; systemctl stop headphones"
+    echo ""
+    echo "It should dump the initial configuration that you can now modify."
+    echo ""
 }
 
 post_upgrade() {

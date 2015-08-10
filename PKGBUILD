@@ -5,7 +5,7 @@
 _name=headphones
 pkgname=${_name}
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole."
 arch=('any')
 url="https://github.com/rembo10/${_name}"
