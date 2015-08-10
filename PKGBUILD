@@ -25,6 +25,15 @@ build() {
 	--libexecdir=/usr/lib \
 	--enable-noexecstack
   make
+
+# Further options to prevent DNS leaks when working with TOR
+# https://trac.torproject.org/projects/tor/ticket/2846
+
+# --disable-dns-cert \
+# --disable-dns-pka \
+# --disable-dns-srv \
+# --disable-ldap \
+
   #ln -s ${pkgname}-${pkgver}/scripts .. # seems obsolete now
 }
 
