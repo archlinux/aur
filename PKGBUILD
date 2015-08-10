@@ -3,10 +3,11 @@
 # Contributor: daemonTutorials <http://www.daemon-tuts.de>
 pkgname=wii-u-gc-adapter
 pkgver=0.0.29
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for using the Wii U GameCube Adapter on Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ToadKing/wii-u-gc-adapter"
+license=('MIT')
 depends=('libusb')
 makedepends=('git')
 source=('git+https://github.com/ToadKing/wii-u-gc-adapter.git' '51-ignore-gc-controller.conf')
@@ -27,4 +28,5 @@ build() {
 package() {
 	install -Dm755 "$srcdir"/wii-u-gc-adapter/wii-u-gc-adapter "$pkgdir"/usr/bin/wii-u-gc-adapter
 	install -Dm644 "$srcdir"/51-ignore-gc-controller.conf "$pkgdir"/usr/share/X11/xorg.conf.d/51-ignore-gc-controller.conf
+	install -Dm644 "$srcdir"/wii-u-gc-adapter/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
