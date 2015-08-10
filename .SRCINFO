@@ -1,0 +1,15 @@
+pkgbase = ttf-vietnamese-vni
+	pkgdesc = Vietnamese Classic VNI Fonts
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.narga.org/2012/11/goi-cai-dat-cac-font-cu-tcvn3-va-vni-cho-arch-linux/
+	install = ttf-vietnamese-vni.install
+	arch = any
+	license = EULA
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://dl.dropbox.com/s/knoq96vkfwcxtc4/ttf-vietnamese-vni-1.0.tar.gz
+	md5sums = 89f6560ff1a533f14032aa2b9e21e918
+
+pkgname = ttf-vietnamese-vni
+
