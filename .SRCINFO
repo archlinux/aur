@@ -1,7 +1,7 @@
 pkgbase = hostapd-rtl
 	pkgdesc = IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://w1.fi/hostapd/
 	install = hostapd.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = hostapd-rtl
 	depends = openssl
 	depends = libnl
 	options = emptydirs
+	backup = etc/hostapd/hostapd-rtl.conf
 	source = git://github.com/seba-z/hostapd-rtl.git
 	source = hostapd.service
 	source = hostapd-2.3-noscan.patch
