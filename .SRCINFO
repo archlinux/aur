@@ -12,7 +12,9 @@ pkgbase = python2-rtshell
 	depends = openrtm-aist-python
 	depends = python2-rtctree
 	source = https://github.com/gbiggs/rtshell/archive/v3.0.1.tar.gz
+	source = sed.patch
 	md5sums = 6f22c8783028cc548fde9d2c2abb9b1c
+	md5sums = 30157b84fa55c0e2eb93acebcc919372
 
 pkgname = python2-rtshell
 
