@@ -1,6 +1,6 @@
 # Contributor: Mykola Dolhyi <0xb000@gmail.com>
 pkgname=ignition-math
-pkgver=1.0.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ provides=('ignition-math2')
 conflicts=()
 replaces=('ignition-math2')
 #changelog=
-source=("http://gazebosim.org/distributions/ign-math/releases/$pkgname-$pkgver.tar.bz2")
+source=("https://bitbucket.org/ignitionrobotics/ign-math/get/${pkgname}2_${pkgver}.tar.bz2")
 #noextract=()
-sha256sums=('5c15bbafdab35d1e0b2f9e43ea13fc665e29c19530c94c89b92a86491128b30a')
+sha256sums=('e88db3ea1104330d009cd8d5f70e564296d2344a970fb964da9591fea884e2ab')
 #validpgpkeys=()
 
-_dir="$pkgname-$pkgver"
+_dir="ignitionrobotics-ign-math-de3837518b7d"
 
 build() {
   cd "$srcdir/$_dir"
