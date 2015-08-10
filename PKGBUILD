@@ -8,8 +8,8 @@
 pkgname=('jre7-openjdk-headless-infinality' 'jre7-openjdk-infinality' 'jdk7-openjdk-infinality')
 pkgbase=java7-openjdk
 _java_ver=7
-_icedtea_ver=2.5.5
-_updatever=79
+_icedtea_ver=2.6.1
+_updatever=85
 pkgver=${_java_ver}.u${_updatever}_${_icedtea_ver}
 pkgrel=1
 
@@ -22,7 +22,7 @@ options=('!emptydirs')
 makedepends=('jdk7-openjdk' 'libxp' 'libxslt'
              'alsa-lib' 'apache-ant>=1.8.1' 'giflib' 'libpng>=1.5.7' 'gtk2'
              'java-rhino' 'libpulse>=0.9.11' 'zip' 'unzip' 'cpio' 'fastjar' 'wget'
-             'eclipse-ecj')
+             'eclipse-ecj' 'pcsclite' 'lksctp-tools')
 
 _icedtea_url=http://icedtea.classpath.org/download
 _drops_url=${_icedtea_url}/drops/icedtea7/${_icedtea_ver}
@@ -37,14 +37,14 @@ source=(${_icedtea_url}/source/icedtea-${_icedtea_ver}.tar.gz
         fontconfig-paths.diff
         openjdk7_nonreparenting-wm.diff)
 
-sha256sums=('f05b1db06021f4cd3a39647f358a47130136d189431fb55f79855f627b1d6619'
-            '5301baacfb6b4ee28a3469b8429a0017898615532f727bb50d94777682c5fd0d'
-            'f0576599b474f56e58068071242cedbbf2f181b58c9010b614c9096be764ac51'
-            '293218d595763f7e02a91ea88860e5314e42330cbc21b73dc5de32e7e26fd256'
-            '76d6d0670ede806b01d39e07c644e423a50984f1cf0ec560afa23f0fedf575be'
-            'c1bc0d25457ccf40fcaeb5311052f6d2fbab8ef316b0381995835827711da483'
-            '71b269ea930da36d751c6183816ef53a65c0587b7cf0195f87759b4c02c3b660'
-            'd724a9749f51a3c66351ad8a27bc4570640720eace33cd03f1a52e2e45731dfb'
+sha256sums=('491866e57199b0bc99d716be3eabaab97d9f6a698d1a652d748baeddeedfe963'
+            '0168a0174ee47407139ee32458c4d2a298ba4f44260343b209250156e4da463f'
+            'cd03d97c171a2d45ca94c1642265e09c09a459b1d4ac1191f82af88ca171f6f8'
+            'c00c4c2889f77c4615fd655415067e14840764f52e503f220ed324720117faeb'
+            '2d5ff95dc62ab7986973e15e9cf91d5596d2cf486ee52beab9eab62f70f2ae9f'
+            'a8083e75e14ddb4575bf2cd733e80a0074201b45d8debbe04f84564b32875363'
+            '6db9bd16658fa8460e0afa4b05f28bd47148528d7581a403bea1e70f56cedd43'
+            '00043b0c09aa06ce1766c2973d18b0283bd2128a44c94cde97b626a4856b68b3'
             '9ad943ceb3dbcdf45d72974fc3667886a7ed65c69ab9abc17be5412827551a7f'
             '56b919ababb13bd6afdcdaceb112b529b6e82539255f2dae9a7e5eb91645164b')
 
