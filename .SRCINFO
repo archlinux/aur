@@ -1,0 +1,22 @@
+pkgbase = lua51-doc
+	pkgdesc = Documentation generator tool for Lua source code
+	pkgver = 3.0.1
+	pkgrel = 2
+	url = http://luadoc.luaforge.net
+	arch = any
+	license = MIT
+	makedepends = lua51
+	makedepends = lua51-filesystem
+	makedepends = lua51-logging
+	depends = lua51
+	depends = lua51-filesystem
+	depends = lua51-logging
+	conflicts = luadoc
+	replaces = luadoc
+	source = http://luaforge.net/frs/download.php/3185/luadoc-3.0.1.tar.gz
+	source = LICENSE
+	md5sums = ec3a0c0b9413e401a2d466cc0930d505
+	md5sums = c2a5289bdfe3702fd77b365a48251c08
+
+pkgname = lua51-doc
+
