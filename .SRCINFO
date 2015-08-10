@@ -1,0 +1,13 @@
+pkgbase = cdate
+	pkgdesc = Show Chinese lunisolar calender date
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://www.vinoca.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = https://dn-vincasrcfiles.qbox.me/cdate-1.0.5.tar.gz
+	sha1sums = 8d799b29e9be809fb222f0e6e523a9f43a568ff4
+
+pkgname = cdate
+
