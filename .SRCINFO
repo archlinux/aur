@@ -1,0 +1,28 @@
+pkgbase = puppetdb
+	pkgdesc = Puppet data warehouse; it manages storage and retrieval of all platform-generated data
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://docs.puppetlabs.com/puppetdb/latest/
+	install = puppetdb.install
+	arch = any
+	license = APACHE
+	depends = ruby
+	depends = facter
+	depends = puppet
+	depends = jre7-openjdk
+	provides = puppetdb
+	backup = etc/puppetdb/conf.d/jetty.ini
+	backup = etc/puppetdb/conf.d/database.ini
+	backup = etc/puppetdb/conf.d/config.ini
+	backup = etc/puppetdb/conf.d/repl.ini
+	source = http://downloads.puppetlabs.com/puppetdb/puppetdb-2.3.4.tar.gz
+	source = puppetdb.service
+	source = puppetdb-sysconfig
+	source = build_defaults.yaml
+	md5sums = c3873bead77b62b9c2edffbaa886a090
+	md5sums = cc44a56414dc70fc01343c5ca4089038
+	md5sums = 9407eb01415b37e2dcb52129ba41468b
+	md5sums = ddbe92f96248a11877877b168f56ae9a
+
+pkgname = puppetdb
+

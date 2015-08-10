@@ -1,0 +1,19 @@
+[Unit]
+Description=puppetdb Daemon
+After=syslog.target network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/puppetdb
+User=puppetdb
+PIDFile=/var/run/puppetdb/puppetdb.pid
+ExecStart=/usr/lib/jvm/java-7-openjdk/bin/java \
+          $JAVA_ARGS \
+          -cp ${INSTALL_DIR}/puppetdb.jar \
+          clojure.main -m com.puppetlabs.puppetdb.core \
+          services -c ${CONFIG} $@
+
+ExecStop=/bin/kill $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+###########################################
+# Init settings for puppetdb
+###########################################
+
+# Location of your Java binary
+JAVA_BIN="/usr/lib/jvm/java-7-openjdk/bin/java"
+# Modify this if you'd like to change the memory allocation, enable JMX, etc
+JAVA_ARGS="-Xmx192m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/log/puppetdb/puppetdb-oom.hprof -Djava.security.egd=file:/dev/urandom"
+
+# These normally shouldn't need to be edited if using OS packages
+USER="puppetdb"
+INSTALL_DIR="/usr/share/puppetdb"
+CONFIG="/etc/puppetdb/conf.d"
