@@ -1,0 +1,16 @@
+diff -Naurp tvtime-1.0.2.orig/configure.ac tvtime-1.0.2/configure.ac
+--- tvtime-1.0.2.orig/configure.ac	2009-05-31 17:54:20.000000000 +0200
++++ tvtime-1.0.2/configure.ac	2009-05-31 17:58:31.482127573 +0200
+@@ -10,12 +10,7 @@ if test x"$host_alias" = x""; then host_
+
+ # Check for compilers.
+ AC_PROG_CC
+-AC_CHECK_PROG(found_cc, "$CC", yes, no)
+-test "x$found_cc" = "xyes" || exit 1
+-
+ AC_PROG_CXX
+-AC_CHECK_PROG(found_cxx, "$CXX", yes, no)
+-test "x$found_cxx" = "xyes" || exit 1
+
+ # Check for libtool.
+ AC_PROG_LIBTOOL

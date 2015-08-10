@@ -1,0 +1,59 @@
+--- a/src/xcommon.c	2005-08-14 19:36:52.000000000 +0200
++++ b/src/xcommon.c	2010-03-07 17:55:52.669570209 +0100
+@@ -25,6 +25,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #if defined(__FreeBSD__)
+ #include <machine/param.h>
+@@ -106,6 +107,7 @@
+ static Atom wm_delete_window;
+ static Atom xawtv_station;
+ static Atom xawtv_remote;
++static Atom net_wm_pid;
+ 
+ #ifdef HAVE_XTESTEXTENSION
+ static KeyCode kc_shift_l; /* Fake key to send. */
+@@ -150,11 +152,12 @@
+         "WM_PROTOCOLS",
+         "WM_DELETE_WINDOW",
+         "_XAWTV_STATION",
+-        "_XAWTV_REMOTE"
++        "_XAWTV_REMOTE",
++        "_NET_WM_PID"
+     };
+-    Atom atoms_return[ 17 ];
++    Atom atoms_return[ 18 ];
+ 
+-    XInternAtoms( display, atom_names, 17, False, atoms_return );
++    XInternAtoms( display, atom_names, 18, False, atoms_return );
+     net_supporting_wm_check = atoms_return[ 0 ];
+     net_supported = atoms_return[ 1 ];
+     net_wm_name = atoms_return[ 2 ];
+@@ -172,6 +175,7 @@
+     wm_delete_window = atoms_return[ 14 ];
+     xawtv_station = atoms_return[ 15 ];
+     xawtv_remote = atoms_return[ 16 ];
++    net_wm_pid = atoms_return[ 17 ];
+ }
+ 
+ static uint32_t icon_colours[256];
+@@ -1017,6 +1021,16 @@
+             free( data );
+         }
+     }
++    
++    /* Set _NET_WM_PID */
++    {
++        if( xcommon_verbose ) {
++            fprintf( stderr, "xcommon: try to set _NET_WM_PID" );
++        }
++        pid_t mypid = getpid();
++        XChangeProperty(display, wm_window, net_wm_pid, cardinal, 32,
++                        PropModeReplace, (const unsigned char*) &mypid, 1);
++    }
+ 
+     if( check_for_EWMH_wm( display, &wmname ) ) {
+         if( xcommon_verbose ) {

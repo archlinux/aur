@@ -1,0 +1,17 @@
+This is the patch from
+http://sourceforge.net/tracker/?func=detail&aid=1908776&group_id=64301&atid=506989
+to fix a crash when switching to full screen.
+diff -up tvtime/src/xfullscreen.c.fsbadval tvtime/src/xfullscreen.c
+--- tvtime/src/xfullscreen.c.fsbadval	2008-03-06 15:17:11.000000000 +0100
++++ tvtime/src/xfullscreen.c	2008-03-06 15:18:21.000000000 +0100
+@@ -263,6 +263,10 @@ void xfullscreen_get_position( xfullscre
+         int max_area = -1;
+         int i;
+
++        *x = xf->heads[ 0 ].x;
++        *y = xf->heads[ 0 ].y;
++        *w = xf->heads[ 0 ].w;
++        *h = xf->heads[ 0 ].h;
+         for( i = 0; i < xf->nheads; i++ ) {
+             int head_x1 = xf->heads[ i ].x;
+             int head_x2 = xf->heads[ i ].x + xf->heads[ i ].w - 1;

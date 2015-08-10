@@ -1,0 +1,130 @@
+Based on the patch in
+http://sourceforge.net/tracker/?func=detail&aid=2683274&group_id=64301&atid=506989
+--- tvtime-1.0.2.orig/configure.ac
++++ tvtime-1.0.2/configure.ac
+@@ -118,10 +118,10 @@ if test x"$no_x" != x"yes"; then
+ 	    X11_LIBS="$X11_LIBS -lXinerama"],,
+ 	    [$X_PRE_LIBS $X_LIBS -lX11 $X_EXTRA_LIBS -lXext])
+ 
+-	dnl check for XTest
+-        AC_CHECK_LIB([Xtst],[XTestFakeKeyEvent],
+-            [AC_DEFINE([HAVE_XTESTEXTENSION],,[XTest support])
+-            X11_LIBS="$X11_LIBS -lXtst"],,
++	dnl check for XSs
++        AC_CHECK_LIB([Xss],[XScreenSaverSuspend],
++            [AC_DEFINE([HAVE_XSSEXTENSION],,[XSs support])
++            X11_LIBS="$X11_LIBS -lXss"],,
+ 	    [$X_PRE_LIBS $X_LIBS -lX11 $X_EXTRA_LIBS -lXext])
+ 
+ 	dnl check for Xvidmode
+--- tvtime-1.0.2.orig/src/xcommon.c	2005-08-14 19:36:52.000000000 +0200
++++ tvtime-1.0.2/src/xcommon.c	2009-05-31 18:44:18.861410600 +0200
+@@ -45,8 +45,8 @@
+ #include <X11/keysym.h>
+ #include <X11/cursorfont.h>
+ #include <X11/extensions/XShm.h>
+-#ifdef HAVE_XTESTEXTENSION
+-#include <X11/extensions/XTest.h>
++#ifdef HAVE_XSSEXTENSION
++#include <X11/extensions/scrnsaver.h>
+ #endif
+ 
+ #include "xfullscreen.h"
+@@ -67,7 +67,7 @@ static Window wm_window;
+ static Window fs_window;
+ static Window output_window;
+ static GC gc;
+-static int have_xtest;
++static int have_xss;
+ static int output_width, output_height;
+ static int output_aspect;
+ static int output_on_root;
+@@ -107,10 +107,6 @@ static Atom wm_delete_window;
+ static Atom xawtv_station;
+ static Atom xawtv_remote;
+ 
+-#ifdef HAVE_XTESTEXTENSION
+-static KeyCode kc_shift_l; /* Fake key to send. */
+-#endif
+-
+ static area_t video_area;
+ static area_t window_area;
+ static area_t scale_area;
+@@ -248,12 +244,12 @@ static void x11_wait_mapped( Display *dp
+     } while ( (event.type != MapNotify) || (event.xmap.event != win) );
+ }
+ 
+-static int have_xtestextention( void )
++static int have_xssextention( void )
+ {  
+-#ifdef HAVE_XTESTEXTENSION
+-    int dummy1, dummy2, dummy3, dummy4;
++#ifdef HAVE_XSSEXTENSION
++    int dummy1, dummy2;
+   
+-    return (XTestQueryExtension( display, &dummy1, &dummy2, &dummy3, &dummy4 ) == True);
++    return (XScreenSaverQueryExtension( display, &dummy1, &dummy2 ) == True);
+ #endif
+     return 0;
+ }
+@@ -843,7 +839,7 @@ int xcommon_open_display( const char *us
+     output_aspect = aspect;
+     output_height = 576;
+ 
+-    have_xtest = 0;
++    have_xss = 0;
+     output_on_root = 0;
+     has_ewmh_state_fullscreen = 0;
+     has_ewmh_state_above = 0;
+@@ -927,13 +923,16 @@ int xcommon_open_display( const char *us
+         xfullscreen_print_summary( xf );
+     }
+ 
+-#ifdef HAVE_XTESTEXTENSION
+-    kc_shift_l = XKeysymToKeycode( display, XK_Shift_L );
+-#endif
+-    have_xtest = have_xtestextention();
+-    if( have_xtest && xcommon_verbose ) {
+-        fprintf( stderr, "xcommon: Have XTest, will use it to ping the screensaver.\n" );
++    have_xss = have_xssextention();
++    if( have_xss && xcommon_verbose ) {
++        fprintf( stderr, "xcommon: Have XSS, will use it to disable the screensaver.\n" );
++    }
++
++#ifdef HAVE_XSSEXTENSION
++    if ( have_xss ) {
++        XScreenSaverSuspend( display, True );
+     }
++#endif
+ 
+     /* Initially, get the best width for our height. */
+     output_width = xv_get_width_for_height( output_height );
+@@ -1112,15 +1111,7 @@ void xcommon_ping_screensaver( void )
+     gettimeofday( &curtime, 0 );
+     if( timediff( &curtime, &last_ping_time ) > SCREENSAVER_PING_TIME ) { 
+         last_ping_time = curtime;
+-#ifdef HAVE_XTESTEXTENSION
+-        if( have_xtest ) {
+-            XTestFakeKeyEvent( display, kc_shift_l, True, CurrentTime );
+-            XTestFakeKeyEvent( display, kc_shift_l, False, CurrentTime );
+-        } else 
+-#endif
+-        {
+-            XResetScreenSaver( display );
+-        }
++        XResetScreenSaver( display );
+     }
+ }
+ 
+@@ -1715,6 +1706,11 @@ void xcommon_poll_events( input_t *in )
+ 
+ void xcommon_close_display( void )
+ {
++#ifdef HAVE_XSSEXTENSION
++    if ( have_xss ) {
++        XScreenSaverSuspend( display, False );
++    }
++#endif
+     XDestroyWindow( display, output_window );
+     XDestroyWindow( display, wm_window );
+     XDestroyWindow( display, fs_window );

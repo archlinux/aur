@@ -1,0 +1,23 @@
+Index: tvtime-1.0.2/src/videoinput.c
+===================================================================
+--- tvtime-1.0.2.orig/src/videoinput.c
++++ tvtime-1.0.2/src/videoinput.c
+@@ -35,8 +35,17 @@
+ #ifdef HAVE_CONFIG_H
+ # include "config.h"
+ #endif
+-#include "videodev.h"
+-#include "videodev2.h"
++#include <libv4l1-videodev.h>
++#include <linux/videodev2.h>
++#include <libv4l1.h>
++
++#ifndef VIDEO_MAX_FRAME
++#define VIDEO_MAX_FRAME 32
++#endif
++
++#ifndef BASE_VIDIOCPRIVATE
++#define BASE_VIDIOCPRIVATE 192
++#endif
+ #include "videoinput.h"
+ #include "mixer.h"
