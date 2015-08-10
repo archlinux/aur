@@ -2,7 +2,7 @@
 # vim:set ts=2 sw=2 et filetype=sh:
 pkgname=qboot-git
 _pkgname=qboot
-pkgver=r42.ac9a37f
+pkgver=r43.751e77e
 pkgrel=1
 pkgdesc="Minimal x86 firmware for booting Linux kernels."
 arch=('i686' 'x86_64')

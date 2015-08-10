@@ -1,6 +1,6 @@
 pkgbase = qboot-git
 	pkgdesc = Minimal x86 firmware for booting Linux kernels.
-	pkgver = r42.ac9a37f
+	pkgver = r43.751e77e
 	pkgrel = 1
 	url = https://github.com/bonzini/qboot
 	arch = i686
