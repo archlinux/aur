@@ -1,0 +1,17 @@
+pkgbase = pyparadox
+	pkgdesc = PyParadox is a nix launcher for Paradox titles.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://gitlab.com/carmenbbakker/pyparadox
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python>=3.3
+	depends = python-pyqt5
+	depends = python-appdirs
+	optdepends = qt5-quickcontrols
+	source = https://pypi.python.org/packages/source/p/pyparadox/pyparadox-0.3.4.tar.gz
+	md5sums = fbd90518332abd8223c8e9d1de8a6433
+
+pkgname = pyparadox
+
