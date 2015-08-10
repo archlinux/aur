@@ -16,8 +16,8 @@ sha256sums=('50bf12ffeda5bca2327ee4665de000892d18514a13e445d78ff5dec78bd48c4f'
 package() {
   cd "${srcdir}"
 
-  install -d "${pkgdir}/etc/systemd/system"
-  install -m644 -t "${pkgdir}/etc/systemd/system" nzbget.service
+  install -d "${pkgdir}/usr/lib/systemd/system"
+  install -m644 -t "${pkgdir}/usr/lib/systemd/system" nzbget.service
 
   install -d "${pkgdir}/var/lib/nzbget"
   install -d "${pkgdir}/etc"
