@@ -5,8 +5,8 @@
 pkgbase=python2-inotifyx
 pkgname=python2-inotifyx
 _pkgname=inotifyx
-pkgver=0.2.0
-pkgrel=5
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="A simple Python binding to the Linux inotify file system event monitoring API"
 arch=("i686" "x86_64")
 url="http://www.alittletooquiet.net/software/inotifyx/"
@@ -22,5 +22,5 @@ package() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 
 	# Install
-	python2 setup.py install --prefix=/usr --root=${pkgdir} || return 1
+	python2 setup.py install --prefix=/usr --root=${pkgdir} 
 }
