@@ -1,0 +1,17 @@
+pkgbase = digilent.adept.runtime
+	pkgdesc = The Adept Runtime consists of the shared libraries, firmware images, and configuration files necessary to communicate with Digilent's devices.
+	pkgver = 2.16.1
+	pkgrel = 1
+	url = https://www.digilentinc.com/Products/Detail.cfm?NavPath=2,66,828&Prod=ADEPT2
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libusb
+	conflicts = libftd2xx
+	options = !strip
+	backup = etc/digilent-adept.conf
+	backup = etc/ld.so.conf.d/digilent-adept-libraries.conf
+	backup = etc/udev/rules.d/52-digilent-usb.rules
+
+pkgname = digilent.adept.runtime
+
