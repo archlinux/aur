@@ -1,0 +1,12 @@
+[Unit]
+Description=Start irmplircd on irmp_stm32 device
+BindsTo=dev-irmp_stm32.device
+#Wants=dev-irmp_stm32.device
+After=dev-irmp_stm32.device
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/irmplircd -t /etc/irmp_stm32.map /dev/irmp_stm32 -f
+
+[Install]
+WantedBy=dev-irmp_stm32.device
