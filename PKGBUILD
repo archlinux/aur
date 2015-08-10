@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=analyse-gamma
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Gamma adjustment analysis tool"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(python3 pylibgamma)
 makedepends=(make coreutils)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(16e4171462a9685bf8ef0970a4ce2b2a768fcc7ba6e598310e4deb2eb3facf38)
+sha256sums=(2ba959788687749de6859dd1e8751d3583c1d8c19c0030067cb04f5e2a1aae75)
 
 
 build() {
