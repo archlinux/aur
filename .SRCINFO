@@ -1,0 +1,18 @@
+pkgbase = python-bottlechest
+	pkgdesc = Fast NumPy array functions written in Cython
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/biolab/bottlechest
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/biolab/bottlechest/archive/0.7.1.tar.gz
+	md5sums = 4e2f678b8af8decd157f74a76fb2a76b
+
+pkgname = python-bottlechest
+	depends = python-numpy
+
+pkgname = python2-bottlechest
+	depends = python2-numpy
+
