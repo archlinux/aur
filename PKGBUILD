@@ -21,6 +21,7 @@ source=("https://dl.dropboxusercontent.com/u/54784933/$_pkgname-$pkgver.tar.gz"
 	"N150MA.patch"
 	"ISY.patch"
 	"D-link.patch"
+	"HWNUM-300V2.patch"
 	"RTL8192CU-kernel-4.0.patch")
                
 sha256sums=('f4b83e4a363985fdd313531b2e5688d739d2b6df45c8f50d4d3568489db95a5e'
@@ -31,6 +32,7 @@ sha256sums=('f4b83e4a363985fdd313531b2e5688d739d2b6df45c8f50d4d3568489db95a5e'
 	    '5cf2242e253e1a86d7d4481e87d354f591462f50f37e06ba229c344ebe114eac'
 	    'a8098039d910a6e16dbc6fe770551edb108fe784f65e9fd8edd930851e993388'
 	    '0170cab166bc3a4775099402ceea245a84500741afb23bd9572f40958c6e7b40'
+	    '0c87129f7a0bfb718de0962b1515eda5cf91cfc8b0a9c0e2c25df111552f4a99'
 	    '63c4188d620ad613562a00b635167e4762d5dc3ca909ebc3709cca433d34ffd8')
 
 package() {
@@ -49,6 +51,7 @@ package() {
 	patch -p1 -i "$srcdir/NoDebug.patch"
 	patch -p1 -i "$srcdir/ISY.patch"
 	patch -p1 -i "$srcdir/D-link.patch"
+	patch -p1 -i "$srcdir/HWNUM-300V2.patch"
 	patch -p1 -i "$srcdir/RTL8192CU-kernel-4.0.patch"
 
 	# Disable power saving
