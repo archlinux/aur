@@ -1,7 +1,7 @@
 # Maintainer: Sergey Vlasov <sergey@vlasov.me>
 pkgname=nulloy
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Music Player with a Waveform Progress Bar"
 arch=('i686' 'x86_64')
 url="http://nulloy.com/"
