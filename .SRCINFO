@@ -1,0 +1,16 @@
+pkgbase = wecase
+	pkgdesc = A Sina Weibo Client Focusing on Linux
+	pkgver = 0.06.beta8
+	pkgrel = 1
+	url = https://github.com/WeCase/WeCase
+	arch = any
+	license = GPL3
+	depends = python>=3
+	depends = pyqt>=4
+	depends = python-notify2
+	depends = python-rpweibo
+	source = WeCase-0.06-beta8.tar.gz::https://github.com/WeCase/WeCase/archive/0.06-beta8.tar.gz
+	md5sums = e38094778be778b309e25151bf9e4125
+
+pkgname = wecase
+
