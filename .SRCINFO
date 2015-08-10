@@ -1,0 +1,26 @@
+pkgbase = powder-toy
+	pkgdesc = Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!
+	pkgver = 90.2
+	pkgrel = 4
+	url = http://powdertoy.co.uk/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2
+	makedepends = scons
+	depends = sdl
+	depends = lua52
+	depends = fftw
+	depends = bzip2
+	depends = zlib
+	source = http://github.com/FacialTurd/The-Powder-Toy/archive/v90.2.322.tar.gz
+	source = powder-toy.desktop
+	source = powder-toy.png
+	source = lua-5.2-arch.patch
+	md5sums = 0eec9ce14da705b1525e9c641460cc2c
+	md5sums = 8901d334c53c04738cbd3518c80fa37c
+	md5sums = bb40bf9c2fa3982e2872b5d32de3b006
+	md5sums = 6d17fa966ac45f42e51eb574bcd08881
+
+pkgname = powder-toy
+
