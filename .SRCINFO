@@ -1,6 +1,6 @@
 pkgbase = osticket
 	pkgdesc = A widely-used open source support ticket system.
-	pkgver = 1.9.9
+	pkgver = 1.9.11
 	pkgrel = 1
 	url = http://www.osticket.com/
 	install = osticket.install
@@ -10,8 +10,8 @@ pkgbase = osticket
 	depends = php>=4.3.10
 	depends = php-apache>=4.3.10
 	depends = mysql>=4.4.0
-	source = http://osticket.com/sites/default/files/download/osTicket-v1.9.9.zip
-	md5sums = f5519cad52b1448664c6a9b67d930465
+	source = http://osticket.com/sites/default/files/download/osTicket-v1.9.11.zip
+	md5sums = 5fd9fb71f60b1d0fae77d35f67ef672a
 
 pkgname = osticket
 
