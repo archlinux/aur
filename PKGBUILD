@@ -1,7 +1,7 @@
-# Maintainer: Richard Weber <old-box@outlook.com>
-# Contributor: Benjamin Hedrich <kiwisauce@pagenotfound.de>
-# Contributor: Thomas Jost <schnouki@schnouki.net>
-# Contributor: Tomas Strand <tomas@fik1.net>
+# Maintainer: Richard Weber <old-box at outlook dot com>
+# Contributor: Benjamin Hedrich <kiwisauce at pagenotfound dot de>
+# Contributor: Thomas Jost <schnouki at schnouki dot net>
+# Contributor: Tomas Strand <tomas at fik1 dot net>
 pkgname=libspotify
 pkgver=12.1.51
 pkgrel=3
