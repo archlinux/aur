@@ -1,0 +1,35 @@
+# Maintainer: Moritz Hilscher <m0r13@mapcrafter.org>
+
+pkgname=mapcrafter-git
+pkgver=v.1.5.4.r15.g0ff0efa
+pkgrel=1
+pkgdesc="A High Performance Minecraft Map Renderer"
+arch=("i686" "x86_64")
+license=("GPL")
+url="http://mapcrafter.org"
+makedepends=("cmake" "boost" "imagemagick")
+depends=("boost-libs" "libpng" "libjpeg" "curl" "python2")
+optdepends=(
+    "python2-pillow: support for mapcrafter_png-it.py script"
+)
+source=("$pkgname"::"git://github.com/mapcrafter/mapcrafter.git")
+md5sums=("SKIP")
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'    
+}
+
+build() {
+    cd "$srcdir/$pkgname"
+    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" .
+    make
+}
+
+package() {
+    cd "$srcdir/$pkgname"
+    VERBOSE=1 make install
+
+    curl --output /tmp/mc.jar https://s3.amazonaws.com/Minecraft.Download/versions/$(cat MCVERSION)/$(cat MCVERSION).jar
+    python2 "$srcdir/$pkgname/src/tools/mapcrafter_textures.py" -f /tmp/mc.jar "$pkgdir/usr/share/mapcrafter/textures"
+}

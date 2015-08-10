@@ -1,0 +1,22 @@
+pkgbase = mapcrafter-git
+	pkgdesc = A High Performance Minecraft Map Renderer
+	pkgver = v.1.5.2.r4.g61ca9d7
+	pkgrel = 1
+	url = http://mapcrafter.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = imagemagick
+	depends = boost-libs
+	depends = libpng
+	depends = libjpeg
+	depends = curl
+	depends = python2
+	optdepends = python2-pillow: support for mapcrafter_png-it.py script
+	source = mapcrafter-git::git://github.com/mapcrafter/mapcrafter.git
+	md5sums = SKIP
+
+pkgname = mapcrafter-git
+
