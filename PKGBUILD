@@ -3,7 +3,7 @@
 
 srcname='lambda-term'
 pkgname="ocaml-${srcname}"
-pkgver='1.8'
+pkgver='1.9'
 pkgrel=1
 pkgdesc='A cross-platform library for manipulating the terminal'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('ocaml' 'ocaml-lwt' 'ocaml-react' 'ocaml-zed')
 makedepends=('ocaml-findlib')
 source=("https://github.com/diml/lambda-term/archive/${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('77c09a0a58beae9f092db6e91ddae808')
+md5sums=('17a9f8b56f9a10a7ed4cfa48ae6c3e39')
 
 build() {
     cd "$srcdir/${srcname}-${pkgver}"
