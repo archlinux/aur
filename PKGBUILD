@@ -1,4 +1,5 @@
-# Maintainer: Benjamin Hedrich <kiwisauce@pagenotfound.de>
+# Maintainer: Richard Weber <old-box@outlook.com>
+# Contributor: Benjamin Hedrich <kiwisauce@pagenotfound.de>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 # Contributor: Tomas Strand <tomas@fik1.net>
 pkgname=libspotify
