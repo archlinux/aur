@@ -1,0 +1,15 @@
+pkgbase = jfbpdf
+	pkgdesc = Fast framebuffer PDF viewer
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://seasonofcode.com/pages/jfbview.html
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = mupdf>=1.7
+	depends = openjpeg2
+	depends = jbig2dec
+
+pkgname = jfbpdf
+
