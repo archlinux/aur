@@ -1,0 +1,21 @@
+pkgbase = glmark2
+	pkgdesc = OpenGL (ES) 2.0 benchmark
+	pkgver = 2014.03
+	pkgrel = 1
+	url = https://launchpad.net/glmark2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = zlib
+	license = custom
+	depends = libjpeg-turbo
+	depends = libpng12
+	depends = libx11
+	depends = libxcb
+	depends = libgl
+	depends = python2
+	source = https://launchpad.net/glmark2/trunk/2014.03/+download/glmark2-2014.03.tar.gz
+	md5sums = 739859cf57d4c8a23452c43e84f66e56
+
+pkgname = glmark2
+
