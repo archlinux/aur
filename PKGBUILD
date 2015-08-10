@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=r20150810.bf47ac616bc0
+pkgver=r20437.c3b2ec6a1586
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -26,8 +26,8 @@ _hgroot=http://www.octave.org/hg/
 _hgrepo=octave
 
 pkgver() {
-  # We didn't check out the repository yet, so we have no version information..
-  printf "r%s.%s" "$(date +%Y%m%d)" "$(hg identify -i http://hg.savannah.gnu.org/hgweb/octave)"
+  cd "$srcdir/${_hgrepo}"
+  printf "r%s.%s" "$(hg log | head -1|awk -F: '{print $2}'| cut -c9-13)" "$(hg identify -i http://hg.savannah.gnu.org/hgweb/octave)"
 }
 
 build() {
