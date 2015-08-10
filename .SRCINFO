@@ -1,0 +1,14 @@
+pkgbase = libcyusbserial
+	pkgdesc = Enable userspace control of Cypress USB-Serial bridge devices
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cyrozap/libcyusbserial
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libusb
+	source = https://github.com/cyrozap/libcyusbserial/archive/v1.0.0.tar.gz
+	sha1sums = 4d28198e7d1777d2770edbdf7161ddde39bac276
+
+pkgname = libcyusbserial
+
