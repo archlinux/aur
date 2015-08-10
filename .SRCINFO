@@ -1,0 +1,36 @@
+pkgbase = vdr-epg-daemon
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://projects.vdr-developer.org/projects/vdr-epg-daemon
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = curl
+	makedepends = git
+	makedepends = imlib2
+	makedepends = jansson
+	makedepends = libarchive
+	makedepends = libjpeg
+	makedepends = libmariadbclient
+	makedepends = libxslt
+	source = git://projects.vdr-developer.org/vdr-epg-daemon.git#commit=e2230b6e8d0121233dc8861ceea3e6669fed8f57
+	md5sums = SKIP
+
+pkgname = epgd
+	pkgdesc = write epg data to a mysql database
+	depends = curl
+	depends = jansson
+	depends = libarchive
+	depends = libmariadbclient
+	depends = libxslt
+	backup = 
+
+pkgname = mariadb-epglv
+	pkgdesc = epglv plugin for mysql/mariadb
+	install = mariadb-epglv.install
+	depends = libmariadbclient
+	backup = usr/lib/mysql/plugin/mysqlepglv.so
+

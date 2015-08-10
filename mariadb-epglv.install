@@ -1,0 +1,16 @@
+post_install() {
+    if [ -e /usr/lib/mysql/plugin/mysqlepglv.so.pacnew ]; then
+      echo "stop mysql before replacing /usr/lib/mysql/plugin/mysqlepglv.so"
+    fi
+  }
+post_upgrade() {
+    if [ -e /usr/lib/mysql/plugin/mysqlepglv.so.pacnew ]; then
+      echo "stop mysql before replacing /usr/lib/mysql/plugin/mysqlepglv.so"
+    fi
+  }
+post_remove() {
+   if [ -e /usr/lib/mysql/plugin/mysqlepglv.so.pacsave ] && [ ! -e /usr/lib/mysql/plugin/mysqlepglv.so ]; then
+     mv /usr/lib/mysql/plugin/mysqlepglv.so.pacsave /usr/lib/mysql/plugin/mysqlepglv.so
+     echo "remove all related functions from your database before deleting /usr/lib/mysql/plugin/mysqlepglv.so"
+   fi
+}
