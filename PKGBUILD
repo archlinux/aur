@@ -1,6 +1,6 @@
 # Maintainer: Tobias Frilling <tobias@frilling-online.de>
 pkgname=leiningen
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 epoch=1
 pkgdesc="Automating Clojure projects without setting your hair on fire."
@@ -11,10 +11,10 @@ depends=('java-environment' 'bash')
 optdepends=('rlwrap: for readline support'
             'leiningen-completions: completion scripts')
 
-_commit="27e5e209028af733bdd20e0685b1c4554eb3b26e"
+_commit="fe48537e7d6e7a042729fe3cf16bb0b34679938f"
 source=("https://raw.github.com/technomancy/leiningen/$_commit/bin/lein"
         "https://raw.github.com/technomancy/leiningen/$_commit/doc/lein.1")
-sha1sums=('b59d741e3ad28b3a11ea28eab417133492ca2138'
+sha1sums=('872dab9cf888d5f3187221e469dd4f075c394b02'
           '290b634c0648e0710911aeee71f795401af6b2e7')
 
 package() {
