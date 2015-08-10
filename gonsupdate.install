@@ -2,7 +2,7 @@ post_install() {
     systemctl daemon-reload
 
     echo "You find an example in /etc/gonsupdate/gonsupdate_sample.toml"
-    echo "After adding hopper_update in systemctl:"
+    echo "After adding gonsupdate in systemctl:"
     echo "  systemctl enable gonsupdate.timer"
     echo "  systemctl start gonsupdate.timer"
 
