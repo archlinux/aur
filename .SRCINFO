@@ -1,6 +1,6 @@
 pkgbase = enyo-doom
 	pkgdesc = A frontend for Doom engines
-	pkgver = 1.01
+	pkgver = 1.02
 	pkgrel = 1
 	url = https://github.com/stephendcofer/enyo-doom
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = enyo-doom
 	optdepends = chocolate-doom
 	optdepends = prboom
 	optdepends = zdoom
-	source = https://github.com/stephendcofer/enyo-doom/archive/1.01.tar.gz
-	md5sums = fa19836e763ee0ba4628a4822d886930
+	source = https://github.com/stephendcofer/enyo-doom/archive/1.02.tar.gz
+	md5sums = 0162b30525ae0008f74990e01f698761
 
 pkgname = enyo-doom
 

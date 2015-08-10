@@ -1,7 +1,7 @@
 # Maintainer: Stephen D. Cofer <stephen.d.cofer@outlook.com>
 
 pkgname=enyo-doom
-pkgver=1.01
+pkgver=1.02
 pkgrel=1
 pkgdesc="A frontend for Doom engines"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake')
 optdepends=('chocolate-doom' 'prboom' 'zdoom')
-source=("https://github.com/stephendcofer/enyo-doom/archive/1.01.tar.gz")
-md5sums=('bea974f9686d9a28af79d5b03d5f179d')
+source=("https://github.com/stephendcofer/enyo-doom/archive/1.02.tar.gz")
+md5sums=('0162b30525ae0008f74990e01f698761')
 
 build() {
 cd ${srcdir}/${pkgname}-${pkgver}
