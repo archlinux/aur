@@ -91,10 +91,10 @@ fi
 
 # If we have no version, load it from the first installed package
 if [ -z $MVERSION ]; then
-	if [ -f $ARCH ] ; then
-		MVERSION=$(sudo pacman -r "$BUILDDIR/rootfs" -Q $(head -1 "$ARCH") | sed 's/[^ ]* //')
-	else
+	if [ -f $AUR ] ; then
 		MVERSION=$(sudo pacman -r "$BUILDDIR/rootfs" -Q $(head -1 "$AUR") | sed 's/[^ ]* //')
+	else
+		MVERSION=$(sudo pacman -r "$BUILDDIR/rootfs" -Q $(head -1 "$ARCH") | sed 's/[^ ]* //')
 	fi
 fi
 

@@ -17,7 +17,7 @@ You call the script with a source folder and a target directory. The source fold
 #### Manifest
 The source directory should contain, at an absolute minimum, a valid appcontainer image [manifest](https://github.com/appc/spec/blob/master/spec/aci.md#image-manifest). The filename should be `manifest.json`.
 
-If you omit the `version` label in the manifest, the script will try to extract the version of the first listed repo or aur package. It will patch it into the copied manifest.
+If you omit the `version` label in the manifest, the script will try to extract the version of the first aur or repo package. It will patch it into the copied manifest.
 
 #### Packages
 You may provide a set of files in your source directory to declare the archlinux packages to be installed. A single packagename should be provide on each line.
