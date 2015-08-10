@@ -6,7 +6,7 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
-pkgver=3.17.4
+pkgver=3.16.2
 pkgrel=1
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ makedepends=(itstool intltool yelp-tools gobject-introspection python2)
 checkdepends=('check')
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz
         0001-Add-Arch-Linux-PAM-config-files.patch)
-sha256sums=('b60ae493e005ae5d27fd2edb62dcc455bb0a435dbc835a712c80ebafaef2cb31'
+sha256sums=('c32ee80745424da10b94b7216efc2ef1257e2ca63d7f003edc1801f1111e1b56'
             'c4598b38cf92dd47fb06b2125e808ce66dabcc3bbcdf7508b97ba87e1ead0ac5')
 
 prepare() {
@@ -43,6 +43,7 @@ build() {
     --with-check-accelerated-directory=/usr/lib/gnome-session \
     --with-authentication-agent-directory=/usr/lib/polkit-gnome \
     --with-gnome-settings-daemon-directory=/usr/lib/gnome-settings-daemon \
+    --without-consolekit \
     --without-tcp-wrappers \
     --with-systemd \
     --with-default-pam-config=arch

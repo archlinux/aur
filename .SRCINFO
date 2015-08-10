@@ -1,6 +1,6 @@
 pkgbase = gdm-plymouth
 	pkgdesc = Gnome Display Manager with Plymouth support.
-	pkgver = 3.17.4
+	pkgver = 3.16.2
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = gdm-plymouth
 	depends = xorg-server
 	depends = xorg-server-xwayland
 	depends = xorg-xhost
-	source = http://ftp.gnome.org/pub/gnome/sources/gdm/3.17/gdm-3.17.4.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gdm/3.16/gdm-3.16.2.tar.xz
 	source = 0001-Add-Arch-Linux-PAM-config-files.patch
-	sha256sums = b60ae493e005ae5d27fd2edb62dcc455bb0a435dbc835a712c80ebafaef2cb31
+	sha256sums = c32ee80745424da10b94b7216efc2ef1257e2ca63d7f003edc1801f1111e1b56
 	sha256sums = c4598b38cf92dd47fb06b2125e808ce66dabcc3bbcdf7508b97ba87e1ead0ac5
 
 pkgname = gdm-plymouth
