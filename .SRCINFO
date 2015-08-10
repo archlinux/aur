@@ -1,0 +1,20 @@
+pkgbase = tkimg
+	pkgdesc = This package enhances Tk, adding support for many other Image formats: BMP, XBM, XPM, GIF, PNG, JPEG, TIFF and postscript.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://tkimg.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = zlib
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	depends = tcl
+	depends = tk
+	depends = tcllib
+	source = http://downloads.sourceforge.net/tkimg/tkimg1.4.2.tar.gz
+	md5sums = c42b46692a55c402c97e8f2a896bc2d4
+
+pkgname = tkimg
+
