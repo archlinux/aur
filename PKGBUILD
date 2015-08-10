@@ -2,14 +2,14 @@
 
 pkgname='pipelight'
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A browser plugin which allows one to use windows only plugins inside Linux browser"
 url="https://launchpad.net/pipelight"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1' 'MPL')
 
-depends=('wine-silverlight>=1.7.33-1' 'ttf-ms-fonts' 'wget' 'cabextract' 'unzip' 'gnupg')
+depends=('wine-staging>=1.7.49' 'ttf-ms-fonts' 'wget' 'cabextract' 'unzip' 'gnupg')
 if  [[ "$CARCH" == "x86_64" ]]; then
   depends+=('lib32-libsm' 'lib32-libgl')
 else
