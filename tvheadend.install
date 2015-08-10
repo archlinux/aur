@@ -1,0 +1,24 @@
+HTS_USER=hts
+HTS_UID=1337
+HTS_GROUP=video
+
+post_install() {
+  if ! getent passwd $HTS_USER &> /dev/null; then
+    useradd -u $HTS_UID -g $HTS_GROUP -m -s /bin/false $HTS_USER &> /dev/null
+    passwd -l $HTS_USER &> /dev/null
+    echo "  ==> User '$HTS_USER' created"
+  fi
+
+cat << 'EOM'
+  ==> All configuration is maintained through the web interface:
+  ==>
+  ==> http://localhost:9981/
+  ==>
+  ==> Default login without username/password.
+EOM
+}
+
+post_remove() {
+  userdel $HTS_USER &> /dev/null
+  echo "  ==> User '$HTS_USER' removed"
+}
