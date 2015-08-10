@@ -3,7 +3,7 @@
 
 pkgname=racer-git
 _pkgname=racer
-pkgver=v1.0.0.r2.g1a3fe32
+pkgver=1.0.0.r14.g7ae984f
 pkgrel=1
 pkgdesc="Code completion for Rust"
 url="https://github.com/phildawes/racer"
@@ -17,11 +17,11 @@ source=('git+https://github.com/phildawes/racer.git')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
+  cd "$_pkgname"
   cargo build --release
 }
 
