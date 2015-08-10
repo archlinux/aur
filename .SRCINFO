@@ -1,6 +1,6 @@
 pkgbase = libgamma
 	pkgdesc = Display server abstraction layer for gamma ramps
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/maandree/libgamma
 	install = libgamma.install
@@ -29,8 +29,8 @@ pkgbase = libgamma
 	depends = libx11
 	depends = libxxf86vm
 	depends = libdrm
-	source = https://github.com/maandree/libgamma/archive/0.7.2.tar.gz
-	sha256sums = a29ddbd96eff868d5c61e793642813a6a4f6cfe358654227502bb91e95cb75db
+	source = https://github.com/maandree/libgamma/archive/0.7.3.tar.gz
+	sha256sums = a72ac05c15fb8e099c05a69dd4017456b4c360227a467718f53c8c7921d60225
 
 pkgname = libgamma
 
