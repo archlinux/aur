@@ -22,6 +22,5 @@ pkgver() {
 }
 
 package() {
-  install -d "$pkgdir/usr/share/sddm/themes/archlinux/"
-  install -m644 $_pkgname/archlinux/* "$pkgdir/usr/share/sddm/themes/archlinux/"
+  install -Dm644 -t "$pkgdir/usr/share/sddm/themes/archlinux/" $_pkgname/archlinux/*
 }
