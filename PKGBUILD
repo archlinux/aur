@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 url="http://www.dontstarvegame.com/"
 license=('Custom')
 options=(!strip)
-source=("${pkgname}_x64_$pkgver.tar.gz::https://download-it-manually"
+source=("hib://${pkgname}_x64_$pkgver.tar.gz"
         "http://curl.haxx.se/download/curl-${_curlver}.tar.gz"
         "dontstarve.sh"
         "dontstarve.desktop")
