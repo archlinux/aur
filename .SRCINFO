@@ -1,6 +1,6 @@
 pkgbase = sly-git
 	pkgdesc = Common Lisp IDE for Emacs. Fork of slime.
-	pkgver = beta.53.g10ac41a
+	pkgver = beta.55.ge98cc8a
 	pkgrel = 1
 	url = https://github.com/capitaomorte/sly
 	arch = any
