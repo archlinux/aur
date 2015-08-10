@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=flannel
-pkgver=0.4.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Etcd backed network fabric for containers"
 depends=('glibc')
@@ -11,7 +11,7 @@ source=("https://github.com/coreos/flannel/archive/v$pkgver.tar.gz"
         "flannel.service")
 url="https://github.com/coreos/flannel"
 license="APACHE"
-sha256sums=('1bbd399cb511070e61606d741d91607d3b3abc9a45bd00faee23929722aa4d53'
+sha256sums=('787873235aba22f2c4f2d5f667a92393ed0cd9e67f20e21ff679908ea09c2265'
             '3ec927a5a545293541e800057c3c0b85fcd5161071526a8fc9666caa0801c80f')
 
 build() {
