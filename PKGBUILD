@@ -7,6 +7,8 @@ pkgrel=2
 pkgdesc="Tool for using the Wii U GameCube Adapter on Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ToadKing/wii-u-gc-adapter"
+depends=('libusb')
+makedepends=('git')
 source=('git+https://github.com/ToadKing/wii-u-gc-adapter.git' '51-ignore-gc-controller.conf')
 sha512sums=('SKIP'
             '6e3ca9aabd8732f5ab5220e249a7d789067b8014bbc0cbbd790f6afac04957662ad844aab70680139cfb6079fc1b28cb6fe0e664f46c13401cf068a632403dac')
