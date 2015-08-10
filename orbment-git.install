@@ -1,0 +1,13 @@
+post_install() {
+    cat <<EOF
+Orbment can optionally take advantage of the logind API for handling sessions
+and devices without requiring root permissions.
+
+If this feature is not wanted you will need to explicitly mark the compositor
+(/usr/bin/orbment) as setuid.
+EOF
+}
+
+post_upgrade() {
+    post_install "$1"
+}
