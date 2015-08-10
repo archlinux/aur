@@ -1,0 +1,15 @@
+pkgbase = libspotify
+	pkgdesc = C API package allowing third-party developers to write applications that utilize the Spotify music streaming service
+	pkgver = 12.1.51
+	pkgrel = 3
+	url = https://developer.spotify.com/technologies/libspotify/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = custom
+	depends = glibc
+	source = http://developer.spotify.com/download/libspotify/libspotify-12.1.51-Linux--release.tar.gz
+
+pkgname = libspotify
+
