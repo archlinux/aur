@@ -1,7 +1,7 @@
 # Maintainer: MattWoelk
 
 pkgname=nessus
-pkgver=6.4.2
+pkgver=6.4.3
 pkgrel=1
 _bigver=Nessus-$pkgver-fc20
 pkgdesc='Vulnerability scanner'
@@ -17,7 +17,7 @@ source=($_bigver.x86_64.rpm
         nessus.sh
         LICENSE.NESSUS
         nessus.install)
-md5sums=('e624eb041a900db7178b7ae7e6f5d9f9'
+md5sums=('ef300c4ccec948ed5ee9f20e13dbc079'
          '8c5772ac63f97d94475fe03e80d6ba5c'
          '8ff98bc9488304fcb66753d3cfb5f30e'
          'd9d25d4075acc50c0050c7a4f244c7cb')
