@@ -1,13 +1,13 @@
-# Maintainer: Konstantin Shalygin (k0ste@opentech.ru)
+# Maintainer: Konstantin Shalygin (k0ste@cn.ru)
 
 _sieve='sieve'
 pkgname=thunderbird-${_sieve}
 _pkgver='0.2.3'
-pkgver=${_pkgver}g
-pkgrel='2'
+pkgver=${_pkgver}h
+pkgrel='1'
 pkgdesc='This Extension implements the ManageSieve protocol for securely managing Sieve Script on a remote IMAP server'
 arch=('any')
-url=https://github.com/thsmi/${_sieve}
+url=("https://github.com/thsmi/${_sieve}")
 license=('AGPL')
 depends=('thunderbird')
 source=("${_sieve}::git+${url}.git")
