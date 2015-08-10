@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
- 
+
 pkgname=rabbitmqadmin
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc='A command-line tool for managing RabbitMQ server (requires "management" plugin)'
 arch=('any')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 prepare() {
     sed -e "s_%%VSN%%_${pkgver}_" -i rabbitmqadmin
 }
-		  
+
 package() {
     install -Dm755 rabbitmqadmin "${pkgdir}/usr/bin/rabbitmqadmin"
 }
