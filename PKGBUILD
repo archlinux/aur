@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=marble-git
-pkgver=v15.03.97.141.g7a411f4
+pkgver=v15.03.97.271.g61eb85f
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -9,11 +9,27 @@ url="https://www.kde.org/applications/system/marble"
 license=('GPL')
 provides=('marble')
 conflicts=('marble' 'marble-qt' 'kdeedu-marble' )
-depends=('qt5-webkit' 'kparts' 'knewstuff' 'opencv' 'hicolor-icon-theme') #
-makedepends=('cmake' 'git' 'gpsd' 'quazip-qt5-svn' 'shapelib' 'qextserialport' 'libwlocate' 'phonon-qt5'
-             'extra-cmake-modules' 'qt5-webkit' 'krunner' )
+depends=('qt5-webkit'
+         'kparts'
+         'knewstuff'
+         'opencv'
+         'hicolor-icon-theme'
+         )
+makedepends=('cmake'
+             'git'
+             'gpsd'
+             'quazip-qt5'
+             'shapelib'
+             'qextserialport'
+             'libwlocate'
+             'phonon-qt5'
+             'extra-cmake-modules'
+             'qt5-webkit'
+             'krunner'
+             'python'
+             )
 optdepends=('gpsd: position information via gpsd'
-            'quazip-qt5-svn: reading and displaying .kmz files'
+            'quazip-qt5: reading and displaying .kmz files'
             'shapelib: reading and displaying .shp files'
             'qextserialport: reading from serial port in APRS plugin'
             'libwlocate: Position information based on neighboring WLAN networks'
