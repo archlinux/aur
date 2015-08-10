@@ -1,0 +1,16 @@
+pkgbase = fipolate-custom
+	pkgdesc = Interpolate text files with variables through a fifo via user prompts.
+	pkgver = 2015.4
+	pkgrel = 1
+	url = https://github.com/djmattyg007/fipolate-custom
+	arch = any
+	license = GPL
+	depends = python3
+	depends = python-pyinotify
+	provides = fipolate
+	conflicts = fipolate
+	source = https://github.com/djmattyg007/fipolate-custom/archive/2015.4.tar.gz
+	sha256sums = 88eec9be64e396aee974a1a7ec79f7f61d62186bdb190eb3d42a974a506e3bec
+
+pkgname = fipolate-custom
+
