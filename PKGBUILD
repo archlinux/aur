@@ -5,19 +5,19 @@
 
 pkgname=libvorbis-aotuv
 pkgver=b6.03
-pkgrel=5
-_releasedate=20110424-20140429
-_srcrel=2014
+pkgrel=6
+_releasedate=20110424-20150808
+_srcrel=2015
 pkgdesc='A fork of libvorbis intended to provide better quality sound at low to medium bitrates.'
 arch=('i686' 'x86_64')
 url='http://www.geocities.jp/aoyoume/aotuv'
 license=('BSD')
 depends=('libogg')
 conflicts=('libvorbis')
-provides=('libvorbis=1.3.4' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
+provides=('libvorbis=1.3.5' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
 source=("http://www.geocities.jp/aoyoume/aotuv/source_code/${pkgname}_${pkgver}_${_srcrel}.tar.bz2")
-md5sums=('2645f282bf98720dfa972993559c2925')
-sha256sums=('5c11bd73e947ab862818fe80db0ab5eaefdd4ac670bf185dd8e7a7c6ad76f2ad')
+md5sums=('6eaebfbe8817ceda7ff5a7ef462e7a91')
+sha256sums=('fba6724d2bc2b6a911a25e60f21a45749d507f181a9e150415ce41e4d03bc08f')
 
 prepare() {
 	cd "aotuv-${pkgver}_${_releasedate}"
