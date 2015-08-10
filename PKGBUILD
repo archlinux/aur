@@ -22,7 +22,7 @@ build() {
 	make
 }
 
-package(){
+package() {
 	install -Dm755 "$srcdir"/wii-u-gc-adapter/wii-u-gc-adapter "$pkgdir"/usr/bin/wii-u-gc-adapter
 	install -Dm644 "$srcdir"/51-ignore-gc-controller.conf "$pkgdir"/usr/share/X11/xorg.conf.d/51-ignore-gc-controller.conf
 }
