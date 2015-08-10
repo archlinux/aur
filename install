@@ -1,9 +1,7 @@
 post_upgrade() {
-	for i in /usr/lib/modules/extramodules-*
-	do
-		if [ -f "$i/version" ]
-		then
-			depmod $(cat "$i/version")
+	for i in /usr/lib/modules/extramodules-*; do
+		if [[ -f "$i/version" ]]; then
+			depmod "$(cat "$i"/version)"
 		fi
 	done
 }
