@@ -1,7 +1,7 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=pbpst-git
-pkgver=0.r77.d2c79f1
+pkgver=0.r133.629fb67
 pkgrel=1
 
 pkgdesc='A small tool to interact with pb instances'
@@ -9,7 +9,7 @@ url='https://github.com/HalosGhost/pbpst'
 arch=('i686' 'x86_64')
 license=('GPL2')
 
-depends=('curl')
+depends=('curl' 'jansson')
 makedepends=('git' 'tup' 'clang' 'python-sphinx')
 
 source=('git+https://github.com/HalosGhost/pbpst.git')
