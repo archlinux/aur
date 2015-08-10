@@ -1,0 +1,19 @@
+post_install() {
+	ARCH=`uname -m`
+	echo "Running iscan-registry to register plugin and firmware with iscan."
+	if [ "x$ARCH" == "xi686" ]; then
+		iscan-registry -a interpreter usb 0x04b8 0x0142 /usr/lib/esci/libesci-interpreter-perfection-v330 /usr/share/esci/esfwad.bin
+	else
+		iscan-registry -a interpreter usb 0x04b8 0x0142 /usr/lib64/esci/libesci-interpreter-perfection-v330 /usr/share/esci/esfwad.bin
+	fi
+}
+
+pre_remove() {
+	ARCH=`uname -m`
+	echo "Unregistering plugin and firmware from iscan."
+	if [ "x$ARCH" == "xi686" ]; then
+		iscan-registry -r interpreter usb 0x04b8 0x0142 /usr/lib/esci/libesci-interpreter-perfection-v330 /usr/share/esci/esfwad.bin
+	else
+		iscan-registry -r interpreter usb 0x04b8 0x0142 /usr/lib64/esci/libesci-interpreter-perfection-v330 /usr/share/esci/esfwad.bin
+	fi
+}
