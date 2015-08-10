@@ -1,24 +1,29 @@
-pkgname=phototonic-git
-pkgver=1.6.6.gc942707
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: daf666
+
+_pkgname=phototonic
+pkgname=$_pkgname-git
+pkgver=1.6.17.gaffa7c3
 pkgrel=1
 pkgdesc="Image Viewer and Organizer"
-arch=('i686' 'x86_64')
+arch=("i686" "x86_64")
 url="http://oferkv.github.io/phototonic/"
-license=('GPL3')
-depends=('qt5-base' 'exiv2' 'libxkbcommon-x11')
-optdepends=('qt5-imageformats: TIFF and TGA support' 'qt5-svg: SVG support')
-makedepends=('git')
-provides=('phototonic')
-source=("git+https://github.com/oferkv/phototonic.git")
-md5sums=('SKIP')
+license=("GPL3")
+depends=("qt5-base" "exiv2" "libxkbcommon-x11")
+optdepends=("qt5-imageformats: TIFF and TGA support" "qt5-svg: SVG support")
+makedepends=("git")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+https://github.com/oferkv/$_pkgname.git")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/phototonic"
+  cd $_pkgname
   git describe --always | sed "s/^v//;s/-/./g"
 }
 
 build() {
-  cd "$srcdir/phototonic"
+  cd $_pkgname
   qmake-qt5 PREFIX="/usr" \
             QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" \
             QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" \
@@ -27,6 +32,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/phototonic"
-  make INSTALL_ROOT="$pkgdir/" install
+  cd $_pkgname
+  make INSTALL_ROOT=$pkgdir install
 }
