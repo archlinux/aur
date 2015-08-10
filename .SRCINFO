@@ -9,6 +9,7 @@ pkgbase = bake-sl-git
 	makedepends = itstool
 	makedepends = vala
 	provides = bake-sl-git
+	provides = bake
 	conflicts = bake-sl-git
 	conflicts = bake
 	source = bake::git://github.com/semplice/bake.git#branch=semplice
