@@ -7,11 +7,11 @@ pkgbase="python2-powerline"
 pkgname=("python2-powerline" "python2-powerline-fonts" "python2-powerline-vim" "python2-powerline-zsh" "python2-powerline-tmux")
 pkgdesc='The ultimate statusline/prompt utility (stable package).'
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=('MIT')
 arch=('any')
-makedepends=('git' 'python2-setuptools' 'python2-sphinx')
+makedepends=('git' 'python2-setuptools' 'python-sphinx')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('0f1b8e0737f3ae91486e29e5c7c110f6ebb33ca7933e4cbaae2e28b47c3d2995')
 

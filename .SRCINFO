@@ -1,13 +1,13 @@
 pkgbase = python2-powerline
 	pkgdesc = The ultimate statusline/prompt utility (stable package).
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/powerline/powerline
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python2-setuptools
-	makedepends = python2-sphinx
+	makedepends = python-sphinx
 	source = powerline-2.2.tar.gz::https://github.com/powerline/powerline/archive/2.2.tar.gz
 	sha256sums = 0f1b8e0737f3ae91486e29e5c7c110f6ebb33ca7933e4cbaae2e28b47c3d2995
 
