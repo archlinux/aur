@@ -34,9 +34,4 @@ package() {
 
   cd "${_fmitdir}/build"
   make INSTALL_ROOT="${pkgdir}" install
-  
-#  install -Dm644 "${_fmitdir}/distrib/fmit.appdata.xml" \
-#	  "${pkgdir}/usr/share/appdata/fmit.appdata.xml"
-#  install -Dm644 "${_fmitdir}/ui/images/fmit.svg" \
-#	  "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fmit.svg"
 }
