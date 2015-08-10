@@ -1,0 +1,17 @@
+pkgbase = qt-solutions-git
+	pkgdesc = Components from the discontinued Qt Solutions product, a collection of minor Qt add-ons and former Qt modules which for various reasons have been pruned from Qt itself. (GIT version)
+	pkgver = 47.ad9bc46
+	pkgrel = 1
+	url = http://qt.gitorious.org/qt-solutions
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	provides = qt-solutions
+	conflicts = qt-solutions
+	source = git://github.com/qtproject/qt-solutions.git
+	md5sums = SKIP
+
+pkgname = qt-solutions-git
+
