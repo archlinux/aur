@@ -1,0 +1,14 @@
+pkgbase = vim-puppet
+	pkgdesc = Puppet language syntax highlighting for vim.
+	pkgver = 4.2.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/puppetlabs/puppet/tree/master/ext/vim/
+	arch = any
+	license = Apache
+	depends = vim
+	source = https://github.com/puppetlabs/puppet/archive/4.2.1.tar.gz
+	sha256sums = e3f076b307e106e698f7f77c05edf0eb74b0ce7fd8094b9107e81f929ace8df2
+
+pkgname = vim-puppet
+
