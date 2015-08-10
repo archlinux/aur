@@ -1,6 +1,6 @@
 pkgname=wlc-git
-pkgver=r643.0cfdd6e
-pkgrel=2
+pkgver=r651.da66007
+pkgrel=1
 
 pkgdesc='Wayland compositor library.'
 url='https://github.com/Cloudef/wlc'
