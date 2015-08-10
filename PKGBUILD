@@ -40,6 +40,9 @@ package() {
              expect -re \".*Generate documentation?.*\" { send \"n\r\" };
              interact;"
 
+  # Fix for Python 2 scripts
+  sed -i "s,python -c,python2 -c,g" $(find ${pkgdir} -type f)
+
   # Fix paths
   sed -i "s:${pkgdir}::g" $(find ${pkgdir} -type f)
 }
