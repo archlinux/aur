@@ -1,0 +1,11 @@
+diff -ruN "quimup 1.4.0.orig/src/qtlocalpeer.cpp" "quimup 1.4.0/src/qtlocalpeer.cpp"
+--- "quimup 1.4.0.orig/src/qtlocalpeer.cpp"	2015-08-10 23:57:01.445463175 +0300
++++ "quimup 1.4.0/src/qtlocalpeer.cpp"	2015-08-10 23:57:56.583441177 +0300
+@@ -40,6 +40,7 @@
+ 
+ #include "qtlocalpeer.h"
+ #include <QCoreApplication>
++#include <QDataStream>
+ #include <QTime>
+ 
+ #if defined(Q_OS_WIN)

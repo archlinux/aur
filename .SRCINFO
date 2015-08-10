@@ -1,0 +1,16 @@
+pkgbase = quimup
+	pkgdesc = Qt5 frontend to MPD
+	pkgver = 1.4.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	depends = mpd
+	source = http://sourceforge.net/projects/quimup/files/quimup 1.4.0/quimup_1.4.0_src.tar.gz
+	source = qt-build.patch
+	md5sums = 5f5f04bbf9674c278dacab963643bba2
+	md5sums = 1b37692052408024dc0c9e8b6fe6fc91
+
+pkgname = quimup
+
