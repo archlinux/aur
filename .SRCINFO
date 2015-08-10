@@ -1,0 +1,18 @@
+pkgbase = bake-sl-git
+	pkgdesc = An easy to use build system. Designed to be make/autotools for the 21st century. (Semplice Linux Fork)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/semplice/bake
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = itstool
+	makedepends = vala
+	provides = bake-sl-git
+	conflicts = bake-sl-git
+	conflicts = bake
+	source = bake::git://github.com/semplice/bake.git#branch=semplice
+	md5sums = SKIP
+
+pkgname = bake-sl-git
+
