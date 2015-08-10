@@ -1,0 +1,13 @@
+pkgbase = chkcrontab
+	pkgdesc = A tool for checking system crontab files (/etc/crontab and /etc/cron.d normally) for errors and common mistakes.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://code.google.com/p/chkcrontab/
+	arch = any
+	license = Apache
+	depends = python
+	source = https://github.com/lyda/chkcrontab/archive/v1.6.tar.gz
+	sha256sums = be7436d5ece4ad6390365f6edf0f1dc59dfd655a9de3b4699884343ceb150f2e
+
+pkgname = chkcrontab
+
