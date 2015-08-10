@@ -1,11 +1,11 @@
 # Contributor: Army
-
 # Maintainer: Moritz Maxeiner <moritz@ucworks.org>
+# Co-Maintainer: Stefan-Husmann@t-online.de
 
 pkgname=dunst-git
 _gitname=dunst
-pkgver=1.0.0.584.48de907
-pkgrel=2
+pkgver=1.1.0.24.gb7eb981.629
+pkgrel=1
 pkgdesc="a lightweight replacement for the notification-daemons provided by most desktop environments"
 arch=('i686' 'x86_64')
 url="http://www.knopwob.org/dunst"
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 pkgver()
 {
   cd ${srcdir}/${_gitname}
-  echo $(git describe --abbrev=0 | sed 's|v||g').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $(git describe --tags | sed 's+v++g'|sed 's+-+.+g').$(git rev-list --count HEAD)
 }
 
 prepare()
