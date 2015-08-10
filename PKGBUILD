@@ -10,9 +10,7 @@ url="http://mosh.mit.edu/"
 license=('GPL3')
 depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
 makedepends=('git')
-optdepends=('perl-io-socket-ip: for IPv6 support'
-            'vte-mosh-fix: to work properly in vte'
-            'vte3-mosh-fix: to work properly in vte3')
+optdepends=('perl-io-socket-ip: for IPv6 support')
 conflicts=('mosh')
 source=('git+https://github.com/keithw/mosh.git')
 md5sums=('SKIP')
