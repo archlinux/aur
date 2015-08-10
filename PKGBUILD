@@ -13,8 +13,8 @@ optdepends=(
   'git: for --git support'
   'burp: for --aur flag support'
 )
-source=(https://github.com/anatol/gem2arch/archive/$pkgver.zip)
-sha1sums=('bd285eb66fb1d835978f708bcb30ecaac7d8f515')
+source=(gem2arch-$pkgver.zip::https://github.com/anatol/gem2arch/archive/$pkgver.zip)
+sha1sums=('9fe76219255f251f85df7080ceece0dfe766b885')
 
 package() {
   cd $pkgname-$pkgver
