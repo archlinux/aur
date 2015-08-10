@@ -1,0 +1,23 @@
+pkgbase = graphlcd-base
+	pkgdesc = Project to support graphical LC displays connected to the PC
+	pkgver = 20130520
+	pkgrel = 2
+	url = http://projects.vdr-developer.org/projects/show/graphlcd
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = fontconfig
+	depends = graphicsmagick
+	depends = libusb-compat
+	depends = libvncserver
+	optdepends = serdisplib: Add support for more serial displays
+	backup = etc/graphlcd.conf
+	source = git://projects.vdr-developer.org/graphlcd-base.git#commit=1e01a8963f9ab95ba40ddb44a6c166b8e546053d
+	md5sums = SKIP
+
+pkgname = graphlcd-base
+
