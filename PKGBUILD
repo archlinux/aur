@@ -4,7 +4,7 @@
 pkgname=vdr-remote
 pkgver=0.6.0
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extends the remote control capabilities of vdr"
 url="http://www.escape-edv.de/endriss/vdr/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ source=("http://www.escape-edv.de/endriss/vdr/${pkgname}-${pkgver}.tgz"
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('5c6e60e9a4a0d42ca2b93f3342452202'
          'bc604e2dff886fb683048590fc5f63c8'
-         '3e5fa190135b128a575dd90b14c4433a'
+         '773e9b84837b51f3d0aeff8035c6c3ce'
          '6b163c3d23df45423652f5559f8c6a61')
 
 build() {
