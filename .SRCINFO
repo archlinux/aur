@@ -1,0 +1,17 @@
+pkgbase = lua51-logging
+	pkgdesc = Simple API to use logging features in Lua
+	pkgver = 1.1.4
+	pkgrel = 2
+	url = http://www.keplerproject.org/lualogging/
+	arch = any
+	license = MIT
+	depends = lua51
+	conflicts = lualogging
+	replaces = lualogging
+	source = http://luaforge.net/frs/download.php/2693/lualogging-1.1.4.tar.gz
+	source = LICENSE
+	md5sums = 72a8622748a525f5fb8ed23278326f80
+	md5sums = c2a5289bdfe3702fd77b365a48251c08
+
+pkgname = lua51-logging
+
