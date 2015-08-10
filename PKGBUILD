@@ -11,7 +11,7 @@ source=()
 
 _gdmthemesdir=usr/share/gdm/themes
 
-build() {
+package() {
 	mkdir -p $startdir/pkg/$_gdmthemesdir/arch/
 	cp $startdir/arch.xml $startdir/pkg/$_gdmthemesdir/arch/
 	cp $startdir/background.png $startdir/pkg/$_gdmthemesdir/arch/
