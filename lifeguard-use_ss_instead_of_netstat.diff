@@ -1,0 +1,64 @@
+diff -ruN vdr-addon-lifeguard-0.0.4/lifeguard.conf vdr-addon-lifeguard-0.0.4.patched/lifeguard.conf
+--- vdr-addon-lifeguard-0.0.4/lifeguard.conf	2010-10-02 02:38:45.000000000 +0200
++++ vdr-addon-lifeguard-0.0.4.patched/lifeguard.conf	2013-08-07 19:34:19.579593330 +0200
+@@ -6,7 +6,7 @@
+ 
+ # standard entries
+ usr
+-cmd	aptitude	Aptitude
++cmd	pacman		Pacman
+ tcp	ssh		SSH
+ tcp     nfs             NFS\ Mount
+ tcp	ftp		FTP
+diff -ruN vdr-addon-lifeguard-0.0.4/S91.lifeguard vdr-addon-lifeguard-0.0.4.patched/S91.lifeguard
+--- vdr-addon-lifeguard-0.0.4/S91.lifeguard	2010-10-02 02:38:45.000000000 +0200
++++ vdr-addon-lifeguard-0.0.4.patched/S91.lifeguard	2013-08-07 19:34:05.217094413 +0200
+@@ -1,4 +1,4 @@
+-#! /bin/sh
++#! /bin/bash
+ #
+ # Given the types and search patterns in the configuration file, determine
+ # whether there are any processes or network connections that should
+@@ -23,7 +23,7 @@
+ 		;;
+ 	  usr)
+ 		# users logged into the system
+-		[ ${PATTERN:=".*"} ]
++		PATTERN=${PATTERN:=".*"}
+ 		if [ $(users | grep -cE "\b$PATTERN\b") -gt 0 ]; then
+ 			REASON=${DESCRIPTION:-"active user"}
+ 			break
+@@ -38,7 +38,7 @@
+                 # - it uses language specific search patterns that will fail with localized versions of ping
+                 # - ping is slow if the specified host does not answer
+                 #
+-		[ ${PATTERN:="."} ]
++		PATTERN=${PATTERN:="."}
+                 TEMP=mktemp
+                 ping -c 1 -q $PATTERN >& $TEMP
+                 if [ $(grep -c "unknown host" $TEMP) -eq 0 ] && [ $(grep -e "transmitted.*received" $TEMP | cut -d "," -f 2 | cut -d " " -f 2) -gt 0 ]; then
+@@ -60,7 +60,7 @@
+ 	  tcp)
+ 		# network connections
+ 		# test only the local ports of tcp connections
+-		if [ $(netstat -t | grep -e "^tcp" | grep -ve "CLOSE_WAIT[ \t]*$" | sed -re "s/ +/ /g" | cut -d " " -f 4 | grep -cE ":$PATTERN\b") -gt 0 ]; then
++		if [ $(ss -t -o state established | tail -n +2 | awk '{print $3}' | grep -cE ":$PATTERN\b") -gt 0 ]; then
+ 			REASON=${DESCRIPTION:-"$PATTERN"}
+ 			break
+ 		fi
+diff -ruN vdr-addon-lifeguard-0.0.4/vdr-addon-lifeguard.1 vdr-addon-lifeguard-0.0.4.patched/vdr-addon-lifeguard.1
+--- vdr-addon-lifeguard-0.0.4/vdr-addon-lifeguard.1	2010-10-02 02:38:45.000000000 +0200
++++ vdr-addon-lifeguard-0.0.4.patched/vdr-addon-lifeguard.1	2013-08-07 19:35:17.879538766 +0200
+@@ -82,10 +82,9 @@
+ shutdown is cancelled. If no description is specified, the pattern or a predefind explanation will be used instead.
+ 
+ .SH FILES
+-/etc/vdr/lifeguard.conf, /usr/share/vdr/S91.lifeguard
++/etc/vdr/lifeguard.conf, /usr/share/vdr/shutdown-hooks/S91.lifeguard
+ .SH SEE ALSO
+-.BR vdr (1),
+-.BR /usr/share/doc/vdr/README.Debian
++.BR vdr (1)
+ .br
+ .SH AUTHOR
+ vdr-addon-lifeguard and this manpage were written by Malte Forkel <malte.forkel@berlin.de>, for the Debian project (but may be used by others).
