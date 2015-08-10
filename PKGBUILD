@@ -6,7 +6,7 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgname=radiusclient-ng
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc=""
 arch=('any')
@@ -33,17 +33,17 @@ prepare() {
 	tar -zxvf radiusclient-ng-0.5.6.tar.gz
 	}
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	cd "${pkgname}-${pkgver}"
+	./configure --prefix=${pkgdir}/usr
 	make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname}-${pkgver}"
 	make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	cd "${pkgname}-${pkgver}"
+	make install
 }
