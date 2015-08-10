@@ -4,13 +4,13 @@
 
 pkgname=drawpile
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('x86_64' 'i686')
 url='http://drawpile.net/'
 license=('GPL2')
-depends=('karchive' 'giflib' 'qt5-multimedia' 'desktop-file-utils')
-optdepends=('kdnssd: automatic service discovery (such as printers)' 'qt5-color-picker: alternative color wheel' 'miniupnpc: UPnP support' 'libmicrohttpd: web-admin feature (server dependency)' 'libsystemd: systemd and logging support (server dependency)')
+depends=('karchive' 'qt5-multimedia' 'desktop-file-utils')
+optdepends=('kdnssd: automatic service discovery (such as printers)' 'qt5-color-picker: alternative color wheel' 'giflib: GIF support' 'miniupnpc: UPnP support' 'libmicrohttpd: web-admin feature (server dependency)' 'libsystemd: systemd and logging support (server dependency)')
 makedepends=('qt5-tools' 'qt5-svg' 'ninja' 'cmake')
 install="${pkgname}.install"
 source=("http://drawpile.net/files/src/${pkgname}-${pkgver}.tar.gz")
