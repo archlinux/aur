@@ -17,6 +17,6 @@ package() {
   local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
   install -d $dstdir
   cp -dpr --no-preserve=ownership * $dstdir
-  rm $dstdir/privacy_badger-latest.xpi
+  rm $dstdir/privacy-badger-latest.xpi
   chmod -R 755 $dstdir
 }
