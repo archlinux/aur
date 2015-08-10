@@ -12,9 +12,9 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/flightaware/piaware"
 license=('BSD')
 
-depends=('dump1090-fa-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tls' 'python' 'tcllauncher-git')
-makedepends=('git' 'autoconf' 'tcl' 'python' 'tcllauncher-git')
-optdepends=('mlat-client-git: M-LAT support')
+depends=('dump1090-fa-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tls' 'python' 'tcllauncher')
+makedepends=('git' 'autoconf' 'tcl' 'python' 'tcllauncher')
+optdepends=('mlat-client: M-LAT support')
 
 source=('piaware::git+git://github.com/flightaware/piaware')
 md5sums=('SKIP')
