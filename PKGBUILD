@@ -3,7 +3,7 @@
 
 _gitname=daala
 pkgname=${_gitname}-git
-pkgver=0.0.r1115.g3125a5b
+pkgver=0.0.r1117.ga501618
 pkgrel=1
 pkgdesc="next-next-gen video compression technology from Xiph.org, Mozilla and others"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ pkgver() {
 build() {
   cd $_gitname
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib --enable-analyzer --enable-accounting
+  ./configure --prefix=/usr --libdir=/usr/lib --enable-analyzer
   make
   #make tools
 }
