@@ -1,0 +1,34 @@
+pkgbase = draftsight
+	pkgdesc = Dassault Systemes' freeware CAD software for your DWG files.
+	pkgver = V1R6.2
+	pkgrel = 1
+	url = http://www.3ds.com/products/draftsight/
+	install = draftsight.install
+	arch = x86_64
+	license = Commercial
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glib2
+	depends = glu
+	depends = libcups
+	depends = libgl
+	depends = libice
+	depends = libsm
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libxt
+	depends = mesa
+	depends = util-linux
+	depends = zlib
+	depends = alsa-lib
+	optdepends = ati-dri
+	optdepends = intel-dri
+	optdepends = nouveau-dri
+	optdepends = nvidia-utils
+	provides = draftsight
+	source = http://www.draftsight.com/download-linux-fedora
+	md5sums = e3db42fd01850d0f56de7e4b09df5d51
+
+pkgname = draftsight
+
