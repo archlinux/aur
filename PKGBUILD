@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 pkgname=rust-src
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Rust source files"
 arch=('any')
@@ -13,7 +8,7 @@ url="http://rust-lang.org"
 license=('MIT' 'Apache')
 options=(!strip)
 source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz")
-sha1sums=('a9913667b60ebf8dc558baa14ab1a59ceb4f76ef')
+sha1sums=('3433ba9b8494097431415a120ab5b9645f469cb1')
 
 package() {
     cd "rustc-$pkgver"
