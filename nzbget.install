@@ -2,7 +2,6 @@ post_install() {
     getent group nzbget &>/dev/null || groupadd -r nzbget >/dev/null
     getent passwd nzbget &>/dev/null || useradd -r -g nzbget -d /var/lib/nzbget -s /bin/false -c nzbget nzbget >/dev/null
     chown -R nzbget:nzbget /var/lib/nzbget
-    chown :nzbget /etc/nzbget.conf
 }
 
 post_upgrade() {
