@@ -8,8 +8,15 @@ url="https://01.org/ofono"
 arch=("i686" "x86_64")
 license=("GPL2")
 depends=("bluez" "dbus-core" "modemmanager" "glib2" "udev" "mobile-broadband-provider-info")
-source=("https://www.kernel.org/pub/linux/network/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=("403b98dadece8bc804c0bd16b96d3db5a3bb0f84af64b3d67924da2d1a754b07")
+source=(
+	"https://www.kernel.org/pub/linux/network/$pkgname/$pkgname-$pkgver.tar.xz"
+	"https://www.kernel.org/pub/linux/network/$pkgname/$pkgname-$pkgver.tar.sign"
+)
+sha256sums=(
+	"403b98dadece8bc804c0bd16b96d3db5a3bb0f84af64b3d67924da2d1a754b07"
+	"SKIP"
+)
+validpgpkeys=("E932D120BC2AEC444E558F0106CA9F5D1DCF2659") # Marcel Holtmann <marcel@holtmann.org>
 
 
 build() {
