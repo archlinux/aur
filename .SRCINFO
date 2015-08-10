@@ -1,7 +1,7 @@
 pkgbase = ocaml-utop
 	pkgdesc = A toplevel for OCaml that supports completion, colors, and parenthesis matching
-	pkgver = 1.17
-	pkgrel = 2
+	pkgver = 1.18
+	pkgrel = 1
 	url = https://github.com/diml/utop
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = ocaml-utop
 	depends = ocaml-findlib
 	depends = ocaml-zed>=1.2
 	options = !strip
-	source = https://github.com/diml/utop/archive/1.17.tar.gz
-	md5sums = 79dcabf1b3704ee11bc55cdd92a8490c
+	source = https://github.com/diml/utop/archive/1.18.tar.gz
+	md5sums = ccb0fdd55ac9a5df113a2a38f9d26f0a
 
 pkgname = ocaml-utop
 
