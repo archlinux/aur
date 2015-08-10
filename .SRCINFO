@@ -1,7 +1,7 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
-	pkgver = 5.0.1
-	pkgrel = 4
+	pkgver = 6.1.0
+	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = gazebo
 	depends = ogre
 	depends = protobuf>=2.3.0
 	depends = qt4
-	depends = sdformat>=2.0.1
+	depends = sdformat>=3.1.1
 	depends = tinyxml>=2.6.2
 	optdepends = bullet>=2.82: Bullet support
 	optdepends = cegui>=0.8.3: Design custom graphical interfaces
@@ -33,12 +33,8 @@ pkgbase = gazebo
 	optdepends = ruby-ronn: Generate manpages
 	optdepends = simbody>=3.3: Simbody support
 	optdepends = urdfdom: Load URDF files
-	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-5.0.1.tar.bz2
-	source = boost1.58.patch
-	source = bullet2.83.patch
-	sha256sums = 81773edbf709359f4191ff33b6b2e6adf395a88806022c8cfa964963e5c7099b
-	sha256sums = e4bf17b4e0fbe3094a17af108e4e08627b169890b365737b42a80456c17d7bad
-	sha256sums = 7e82c241e1179348e9040bdf87232fb655c492597d4efcb87a6c886a77fa0567
+	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-6.1.0.tar.bz2
+	sha256sums = 0460f1c706f609b6ff0e61a71bdd3cac2d55d714147edc01609b5226e7fb2904
 
 pkgname = gazebo
 
