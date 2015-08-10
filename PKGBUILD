@@ -2,15 +2,15 @@
 
 pkgname=nzbget-systemd
 pkgver=0.1
-pkgrel=2
-pkgdesc="Systemd service and config for NZBGet"
+pkgrel=3
+pkgdesc="Systemd service for NZBGet"
 url="https://github.com/Holzhaus/PKGBUILDs"
 arch=('any')
 depends=('nzbget')
 license=('GPL')
 source=('nzbget.service')
 install='nzbget.install'
-sha256sums=('c5dc750214105fe2ab4aff9545a48b7a5cfa246d00c771b1600ce4e6b74f70fb')
+sha256sums=('3360adaa83a070995e7467cf5fd58518d836b2134ce19179364ac92db9e8bee0')
 package() {
     cd "${srcdir}"
 
