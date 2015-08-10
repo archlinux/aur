@@ -13,8 +13,8 @@ depends=('libmicrohttpd' 'cppunit' 'protobuf' 'python2-protobuf' 'python2')
 optdepends=('liblo' 'avahi' 'libusb' 'libusb-compat' 'libftdi-compat' 'openslp')
 conflicts=('ola')
 source=("git+https://github.com/OpenLightingProject/ola.git")
-# uncomment for 0.9.5
-#source=("git+https://github.com/OpenLightingProject/ola.git#tag=0.9.5")
+# uncomment for 0.9.7
+#source=("git+https://github.com/OpenLightingProject/ola.git#tag=0.9.7")
 sha256sums=('SKIP')
 
 _gitname="ola"
