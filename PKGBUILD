@@ -2,12 +2,12 @@
 
 pkgname=ladish
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ladish"
 license=('GPL2')
-depends=('jack' 'dbus-glib' 'laditools' 'flowcanvas<=0.7.1' 'a2jmidid')
+depends=('jack' 'boost' 'dbus-glib' 'laditools' 'flowcanvas<=0.7.1' 'a2jmidid')
 makedepends=('git' 'python2')
 provides=('ladish' 'lash')
 conflicts=('ladish' 'lash')
