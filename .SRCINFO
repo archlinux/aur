@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-mousewheel-zoom
+	pkgdesc = Enable mousewheel zoom using left-alt key using gnome-shell
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/tobiasquinn/gnome-shell-mousewheel-zoom
+	install = gnome-shell-mousewheel-zoom.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	depends = gnome-shell
+	provides = gnome-shell-mousewheel-zoom
+	conflicts = gnome-shell-mousewheel-zoom-git
+	source = gnome-shell-mousewheel-zoom_0.8.0.tar.gz::https://github.com/tobiasquinn/gnome-shell-mousewheel-zoom/tarball/upstream/0.8.0
+	md5sums = 6fd73ac036c8e6d2a499d28df52fdcb5
+
+pkgname = gnome-shell-mousewheel-zoom
+
