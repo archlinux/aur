@@ -1,8 +1,8 @@
 # Maintainer: Roman Titov <titovroman@gmail.com>
 
 pkgname=pgmodeler
-pkgver=0.8.1_beta1
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 
 url="http://www.pgmodeler.com.br/"
@@ -20,9 +20,9 @@ source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'pgmodeler_logo.png'
         'pgmodeler_dbm.png'
         'pgmodeler.desktop')
-sha1sums=('f5ba63542fa747a8cec2c12fb1912c70eca7aa79'
-          'f11a0b25b747ab0438d4a3fb47af2caa953e3997'
-          '01eab1f1a3c0d163289e9b26855775cc5622acab'
+sha1sums=('3404d09daabacfebfec5d80d72639d615ea9558c'
+          'dcdc83e561355b5e456d693d7fe52c4e68ffae2a'
+          '8d5edba1b839a61afdc78c4b10df2b92158f4215'
           'c5bb090a1cbb784cd2ec9e1449cac02af2ba6538'
           '4c4e4260f4b2d2d4c154a8fb5cd7060a6585c83a'
           'b19e826b6fb64429df952780b8519100c65b8383')
