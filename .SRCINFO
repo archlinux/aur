@@ -1,0 +1,17 @@
+pkgbase = lib32-libaudio2
+	pkgdesc = A package that installs libaudio.so.2
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = http://www.radscan.com/nas.html
+	arch = x86_64
+	groups = lib32
+	license = custom
+	makedepends = pkgextract
+	depends = lib32-libxt
+	source = http://security.ubuntu.com/ubuntu/pool/main/n/nas/libaudio2_1.9.4-3_i386.deb
+	source = LICENSE
+	sha512sums = 9918915d36fd181dccfd8416d31df744991f880e1ae7aa7659a5de49bfa873879063361d002eaf86e5c62aff350a5451553415129eb680f6ae3a557aa706958a
+	sha512sums = 26ca385b79639e7f834531bb7bb3694e8d43b814ddd8f5112039a51bef56d284ecca42700707cd66a8a699a40cb854ffbcf7e120cec83120811c1d74d65ecfb3
+
+pkgname = lib32-libaudio2
+
