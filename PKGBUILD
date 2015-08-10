@@ -1,6 +1,8 @@
-# Maintainer: kevku <kevku@gmx.com>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: kevku <kevku@gmx.com>
+
 pkgname=reaver-wps-fork-t6x-git
-pkgver=r47.ed5a6c5
+pkgver=v1.5.2.r4.g941d383
 pkgrel=1
 pkgdesc="Brute force attack against Wifi Protected Setup mod with Pixie Dust Attack"
 arch=('i686' 'x86_64')
@@ -12,11 +14,11 @@ replaces=(reaver reaver-svn reaver-git)
 conflicts=(reaver reaver-svn reaver-git)
 provides=(reaver)
 source=($pkgname::git+https://github.com/t6x/reaver-wps-fork-t6x.git)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
