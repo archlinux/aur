@@ -2,15 +2,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.34.4
+pkgver=1.34.4.11.gba088ca
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
 license=('custom')
-depends=('nodejs' 'python2' 'libxml2')
-makedepends=('git' 'cmake' 'clang')
-optdepends=('java-envionment: for using clojure')
+depends=('nodejs' 'python2')
+makedepends=('git' 'cmake' 'clang' 'libxml2')
+optdepends=('java-environment: for using clojure')
 conflicts=('emscripten')
 provides=('emscripten')
 source=('git://github.com/kripken/emscripten.git#branch=incoming'
@@ -102,4 +102,7 @@ package() {
   # docs
   install -d "$pkgdir"/usr/share/doc
   ln -s /usr/lib/emscripten/site/source/docs "$pkgdir"/usr/share/doc/$pkgname
+
+  # delete stray link
+  rm "$pkgdir"/usr/lib/emscripten/system/include/libc/bits
 }
