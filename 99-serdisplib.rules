@@ -1,0 +1,5 @@
+#
+# all displays / modules supported by graphlcd-base
+#
+# SDC Megtron
+ATTRS{idVendor}=="152a", ATTRS{idProduct}=="8380", GROUP="uucp", MODE="0660"

@@ -1,0 +1,11 @@
+Index: serdisplib/trunk/src/serdisp_connect_usb.c
+===================================================================
+--- serdisplib/trunk/src/serdisp_connect_usb.c (revision 333)
++++ serdisplib/trunk/src/serdisp_connect_usb.c (revision 335)
+@@ -1284,5 +1284,5 @@
+         }
+       }
+-      if (!found) fp_usb_close(usb_dev);
++      if (!found && usb_dev) fp_usb_close(usb_dev);
+      if (!found) dev = dev->next;
+     }

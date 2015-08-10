@@ -1,0 +1,23 @@
+pkgbase = serdisplib
+	pkgdesc = Library to drive displays with built-in controllers
+	pkgver = 1.97.9
+	pkgrel = 5
+	url = http://serdisplib.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gd
+	depends = libusb-compat
+	depends = sdl
+	source = http://sourceforge.net/projects/serdisplib/files/serdisplib/1.97.9/serdisplib-1.97.9.tar.gz
+	source = libusb_fix.diff
+	source = 99-serdisplib.rules
+	md5sums = 130552ec60d01e974712a60274f34de7
+	md5sums = 6661faa31c7bff7fe5138604dc9fd3b9
+	md5sums = f32b8a39b91b7badf14c22f189327803
+
+pkgname = serdisplib
+
