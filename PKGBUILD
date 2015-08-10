@@ -1,13 +1,14 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname="gitaur"
-pkgver="0.1.1"
+pkgver="0.1.2"
 pkgrel="1"
-pkgdesc="A set of command-line scripts that automate common tasks in maintaining AUR packages on GitHub"
+pkgdesc="A\ set\ of\ command-line\ scripts\ that\ automate\ common\ tasks\ in\ maintaining\ AUR\ packages\ on\ GitHub"
 arch=("any")
-url="https://github.com/vinsonchuong/$pkgname"
+url="https://github.com/vinsonchuong/gitaur"
 license=("MIT")
 depends=(
 	"aura"
+	"bash-common-parse-options"
 	"hub"
 	"jq"
 	"namcap"
@@ -15,12 +16,21 @@ depends=(
 	"pkgbuild-introspection"
 )
 makedepends=("clidoc")
-source=("$url/archive/v$pkgver-1.tar.gz")
-md5sums=('3dbc5a929b87e971ee3d833b739f8426')
+source=("https://github.com/vinsonchuong/gitaur/archive/v0.1.2-1.tar.gz")
+md5sums=('e3aa13dcd4ecd68723afc37b3557601f')
 build () 
 { 
     cd "$srcdir/$pkgname-$pkgver";
-    [ -d 'doc' ] && clidoc doc/*.md
+    if [ -d 'doc' ]; then
+        clidoc doc/*.md;
+    fi
+}
+check () 
+{ 
+    cd "$srcdir/$pkgname-$pkgver";
+    if [ -d 'spec' ]; then
+        bats spec;
+    fi
 }
 package () 
 { 

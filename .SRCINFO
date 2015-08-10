@@ -1,19 +1,20 @@
 pkgbase = gitaur
-	pkgdesc = A set of command-line scripts that automate common tasks in maintaining AUR packages on GitHub
-	pkgver = 0.1.1
+	pkgdesc = A\ set\ of\ command-line\ scripts\ that\ automate\ common\ tasks\ in\ maintaining\ AUR\ packages\ on\ GitHub
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/vinsonchuong/gitaur
 	arch = any
 	license = MIT
 	makedepends = clidoc
 	depends = aura
+	depends = bash-common-parse-options
 	depends = hub
 	depends = jq
 	depends = namcap
 	depends = ninka
 	depends = pkgbuild-introspection
-	source = https://github.com/vinsonchuong/gitaur/archive/v0.1.1-1.tar.gz
-	md5sums = 3dbc5a929b87e971ee3d833b739f8426
+	source = https://github.com/vinsonchuong/gitaur/archive/v0.1.2-1.tar.gz
+	md5sums = e3aa13dcd4ecd68723afc37b3557601f
 
 pkgname = gitaur
 
