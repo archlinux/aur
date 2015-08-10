@@ -2,7 +2,7 @@ pkgbase = onedrive-d-git
 	pkgdesc = Client daemon for Microsoft OneDrive service
 	pkgver = 20150407.g62a0733
 	pkgrel = 5
-	url = https://github.com/xybu92/onedrive-d
+	url = https://github.com/xybu/onedrive-d-old
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -18,10 +18,10 @@ pkgbase = onedrive-d-git
 	depends = python-urllib3
 	depends = pywebkitgtk
 	provides = onedrive-d
-	source = git+https://github.com/xybu92/onedrive-d
+	source = git+https://github.com/xybu/onedrive-d-old
 	source = onedrive-d.desktop
-	md5sums = SKIP
-	md5sums = 8077d9697c922e003b8addbf243b33a4
+	sha256sums = SKIP
+	sha256sums = 97e59a5723f4772f00eb88eee48e9100fbe331a4d9043db0fddda8965bbe6817
 
 pkgname = onedrive-d-git
 

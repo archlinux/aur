@@ -6,7 +6,7 @@ pkgname=onedrive-d-git
 pkgver=20150407.g62a0733
 pkgrel=5
 pkgdesc="Client daemon for Microsoft OneDrive service"
-url="https://github.com/xybu92/onedrive-d"
+url="https://github.com/xybu/onedrive-d-old"
 license=('LGPL')
 arch=('i686' 'x86_64')
 provides='onedrive-d'
@@ -21,10 +21,10 @@ depends=('inotify-tools'
          'python-urllib3'
          'pywebkitgtk')
 makedepends=('git')
-source=('git+https://github.com/xybu92/onedrive-d'
+source=('git+https://github.com/xybu/onedrive-d-old'
         'onedrive-d.desktop')
-md5sums=('SKIP'
-         '8077d9697c922e003b8addbf243b33a4')
+sha256sums=('SKIP'
+            '97e59a5723f4772f00eb88eee48e9100fbe331a4d9043db0fddda8965bbe6817')
 
 pkgver() {
   cd "$srcdir/onedrive-d"
