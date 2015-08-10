@@ -1,0 +1,60 @@
+pkgbase = sublime-text-dev-imfix
+	pkgver = 3.3083
+	pkgrel = 1
+	url = http://www.sublimetext.com/3
+	install = sublime_text_3_imfix.install
+	changelog = README.md
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = libpng
+	optdepends = gksu: sudo-save support
+	provides = sublime-text-dev=3.3083
+	provides = sublime-text-nightly
+	conflicts = sublime-text-dev
+	conflicts = sublime-text-nightly
+	noextract = Default.zh_CN.sublime-package
+	noextract = Default.zh_TW.sublime-package
+	options = !strip
+	source = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/any/zh_CN/Default.zh_CN.sublime-package
+	source = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/any/zh_TW/Default.zh_TW.sublime-package
+	source = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/any/desktop/sublime_text_3.desktop
+	source = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/any/desktop/sublime_text_3_imfix.desktop
+	source = LICENSE
+	source = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/any/zh_CN/LICENSE.zh_CN
+	source = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/any/zh_TW/LICENSE.zh_TW
+	source = sublime_text_3.sh
+	source = sublime_text_3_imfix.sh
+	md5sums = b21c75fd6922ed383bf4b5ec0b62adb6
+	md5sums = c13cc732b9007b205b2a6761f82f6564
+	md5sums = 208a4b2ee9c8740e0d022b8050cedcbc
+	md5sums = 540175c597fdb98364c944551a4d08f1
+	md5sums = ee96c697ef707e92077d0c55ec14922a
+	md5sums = f7e48316f800b0e1e0153111b1c80302
+	md5sums = 6d473f472e643abe3549730b9fbd2b10
+	md5sums = fa22069242e91e9a7a9dc4023ebf9bf5
+	md5sums = 7be7d93a1062a9975f34661d66b72ff0
+	source_i686 = http://c758482.r82.cf2.rackcdn.com/sublime_text_3_build_3083_x32.tar.bz2
+	source_i686 = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/i686/libsublime-imfix.i686.so
+	source_i686 = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/i686/sublime_text.i686
+	md5sums_i686 = d1be10594fe7093b1b43a888a48c838f
+	md5sums_i686 = 9c52cabd468301706be2fea8a7379161
+	md5sums_i686 = 9e65dda3f3760bf80915f755f2183519
+	source_x86_64 = http://c758482.r82.cf2.rackcdn.com/sublime_text_3_build_3083_x64.tar.bz2
+	source_x86_64 = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/x86_64/libsublime-imfix.x86_64.so
+	source_x86_64 = https://raw.githubusercontent.com/Firef0x/SublimeText-i18n-zh/master/dist/x86_64/sublime_text.x86_64
+	md5sums_x86_64 = 5da998bea29f9ca02a60d2b3cfc46fea
+	md5sums_x86_64 = 6e45f6aee03a727c9f09b4136e0b8c9e
+	md5sums_x86_64 = 901cd838b215f814e2f260a3bdfb6179
+
+pkgname = sublime-text-dev-imfix
+	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Fcitx input method support
+
+pkgname = sublime-text-dev-zh-cn
+	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Simplified Chinese translation and Fcitx input method support
+
+pkgname = sublime-text-dev-zh-tw
+	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Traditional Chinese translation and Fcitx input method support
+
