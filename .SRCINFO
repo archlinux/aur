@@ -1,19 +1,13 @@
 pkgbase = microchip-mplabxc16-bin
 	pkgdesc = Microchip's MPLAB XC16 C compiler toolchain for their dsPIC and PIC24 microcontroller families
 	pkgver = 1.24
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.microchip.com/xc16
 	install = microchip-mplabxc16-bin.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = sdx
-	makedepends = tcl
-	makedepends = tcl-vfs
-	depends = lib32-expat
-	depends = lib32-gcc-libs
-	noextract = installerBlobFromMicrochip
-	noextract = liblzmadec0.2.so
 	options = !strip
 	options = docs
 	options = libtool
@@ -22,9 +16,12 @@ pkgbase = microchip-mplabxc16-bin
 	options = staticlibs
 	options = !upx
 	source = installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc16-v1.24-full-install-linux-installer.run
-	source = liblzmadec0.2.so
+	source = bitrock-unpacker.tcl
 	md5sums = 6c9c843c8233a450535bdb66f13644fe
-	md5sums = e43a1f543ba4f67a2d5b2e8d9656a6c7
+	md5sums = 70dedba4c417f8c0bb07c32d19e9d197
+	makedepends_i686 = tclkit
+	depends_x86_64 = lib32-gcc-libs
+	makedepends_x86_64 = lib32-tclkit
 
 pkgname = microchip-mplabxc16-bin
 
