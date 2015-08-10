@@ -1,6 +1,6 @@
 pkgbase = google-breakpad-svn
 	pkgdesc = An open-source multi-platform crash reporting system
-	pkgver = r1468
+	pkgver = r1479
 	pkgrel = 1
 	epoch = 1
 	url = http://code.google.com/p/google-breakpad/

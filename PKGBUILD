@@ -3,7 +3,7 @@
 # Contributor: John Schoenick <john@pointysoftware.net>
 # Contributor: Geoffrey Teale <tealeg@googlemail.com>
 pkgname=google-breakpad-svn
-pkgver=r1468
+pkgver=r1479
 pkgrel=1
 epoch=1 # Due to pre-VCS version not including the 'r'
 pkgdesc="An open-source multi-platform crash reporting system"

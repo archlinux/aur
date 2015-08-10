@@ -1,0 +1,4 @@
+pkg
+src
+google-breakpad-svn/
+*.pkg.tar.xz
