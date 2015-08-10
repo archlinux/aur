@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="http://orange.biolab.si/"
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python-matplotlib' 'python-scikit-learn' 'python-pyqt4')
+depends=('python-matplotlib' 'python-scikit-learn' 'python-pyqt4' 'python-sqlparse' 'python-psycopg2' 'python-bottlechest')
 optdepends=('python-pyqt4: GUI support')
 source=("https://github.com/biolab/orange3/archive/${pkgver}.tar.gz")
 md5sums=('bb6011d0db23f3ba2720431342614a65')
@@ -16,7 +16,8 @@ build() {
   python setup.py build
 }
 
-packag() {
+package() {
   cd "${srcdir}/orange3-$pkgver"
   python setup.py install --root="${pkgdir}"
 }
+
