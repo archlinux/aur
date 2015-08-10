@@ -1,23 +1,22 @@
 # Maintainer: Benjamin James <benjamin-james@utulsa.edu>:
+
 pkgname=fortune-mod-darkknight
 pkgver=20091218
 pkgrel=2
-pkgdesc="Fortune cookies: batman The Dark Knight (Movie)."
+pkgdesc="Fortune cookies: The Dark Knight (Movie)."
 arch=('any')
 license=('custom')
 depends=(fortune-mod)
-source="fortunes.txt"
 url="http://www.moviequotedb.com/movies/dark-knight-the.html"
-md5sums=('1f43dd05cf18932dc6b34988aa2b9e17')
+
+source=('fortunes.txt')
+sha256sums=('44115c90ef33698d3761dd0180f9d370bd92d2e3ec635ed3ce771657dae7babe')
 
 build() {
-  cd $startdir/src
+	strfile ${srcdir}/darkknight ${srcdir}/darkknight.dat
+}
 
-  iconv -f iso-8859-1 -t utf8 fortunes.txt --output darkknight
-  strfile ./darkknight
-  mkdir -p $startdir/pkg/usr/share/fortune/
-
-  install -D -m644 darkknight $startdir/pkg/usr/share/fortune/darkknight
-  install -D -m644 darkknight.dat $startdir/pkg/usr/share/fortune/darkknight.dat
-
+package() {
+	  install -D -m644 ${srcdir}/darkknight ${pkgdir}/usr/share/fortune/darkknight
+	  install -D -m644 ${srcdir}/darkknight.dat ${pkgdir}/usr/share/fortune/darkknight.dat
 }
