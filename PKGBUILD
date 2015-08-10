@@ -2,7 +2,7 @@
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 pkgname=phploc
 pkgver=2.1.4
-pkgrel=2
+pkgrel=1
 pkgdesc="A tool for quickly measuring the size of a PHP project"
 url="https://github.com/sebastianbergmann/phploc"
 arch=("any")

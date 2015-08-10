@@ -1,7 +1,7 @@
 pkgbase = phploc
 	pkgdesc = A tool for quickly measuring the size of a PHP project
 	pkgver = 2.1.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/sebastianbergmann/phploc
 	install = phploc.install
 	arch = any
