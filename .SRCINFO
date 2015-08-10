@@ -1,0 +1,23 @@
+pkgbase = dmenu-xft-wxy-mouse
+	pkgdesc = Dynamic X menu - with xft, width, x, y and mouse support
+	pkgver = 4.5
+	pkgrel = 1
+	url = http://tools.suckless.org/dmenu/
+	arch = any
+	license = MIT
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	provides = dmenu
+	conflicts = dmenu
+	conflicts = dmenu-xft
+	conflicts = dmenu2
+	source = http://dl.suckless.org/tools/dmenu-4.5.tar.gz
+	source = dmenu-4.5-xft-wxy.diff
+	source = dmenu-4.5-mouse.diff
+	sha256sums = 082cd698d82125ca0b3989006fb84ac4675c2a5585bf5bb8af0ea09cfb95a850
+	sha256sums = f4b30691997ebb60c71f0e97e7ac5fccc4b354fd209c0f0a029e758edd45d6c0
+	sha256sums = 2b8454b88f37032f179f95411c18747ea8a821e6a88a43a3766a61f858738b6c
+
+pkgname = dmenu-xft-wxy-mouse
+

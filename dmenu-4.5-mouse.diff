@@ -1,0 +1,143 @@
+diff --git a/dmenu.c b/dmenu.c
+index 3962801..a75bf80 100644
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -25,6 +25,7 @@ struct Item {
+ };
+ 
+ static void appenditem(Item *item, Item **list, Item **last);
++static void buttonpress(XEvent *e);
+ static void calcoffsets(void);
+ static char *cistrstr(const char *s, const char *sub);
+ static void drawmenu(void);
+@@ -388,6 +390,109 @@ keypress(XKeyEvent *ev) {
+ }
+ 
+ void
++buttonpress(XEvent *e) {
++	int curpos;
++	Item *item;
++	XButtonPressedEvent *ev = &e->xbutton;
++
++	if(ev->window != win)
++		return;
++
++	/* right-click: exit */
++	if(ev->button == Button3)
++		exit(EXIT_FAILURE);
++
++	dc->x = 0;
++	dc->y = 0;
++	dc->h = bh;
++
++	if(prompt && *prompt) {
++		dc->w = promptw;
++		dc->x = dc->w;
++	}
++	/* input field */
++	dc->w = (lines > 0 || !matches) ? mw - dc->x : inputw;
++	if((curpos = textnw(dc, text, cursor) + dc->h/2 - 2) < dc->w);
++
++	/* left-click on input: clear input,
++	 * NOTE: if there is no left-arrow the space for < is reserved so
++	 *       add that to the input width */
++	if(ev->button == Button1 &&
++	   ((lines <= 0 && ev->x >= 0 && ev->x <= dc->x + dc->w +
++	   ((!prev || !curr->left) ? textw(dc, "<") : 0)) ||
++	   (lines > 0 && ev->y >= dc->y && ev->y <= dc->y + dc->h))) {
++		insert(NULL, 0 - cursor);
++		drawmenu();
++		return;
++	}
++	/* middle-mouse click: paste selection */
++	if(ev->button == Button2) {
++		XConvertSelection(dc->dpy, (ev->state & ShiftMask) ? clip : XA_PRIMARY,
++		                  utf8, utf8, win, CurrentTime);
++		drawmenu();
++		return;
++	}
++	/* scroll up */
++	if(ev->button == Button4 && prev) {
++		sel = curr = prev;
++		calcoffsets();
++		drawmenu();
++		return;
++	}
++	/* scroll down */
++	if(ev->button == Button5 && next) {
++		sel = curr = next;
++		calcoffsets();
++		drawmenu();
++		return;
++	}
++	if(ev->button != Button1)
++		return;
++	if(lines > 0) {
++		/* vertical list: left-click on item */
++		dc->w = mw - dc->x;
++		for(item = curr; item != next; item = item->right) {
++			dc->y += dc->h;
++			if(ev->y >= dc->y && ev->y <= (dc->y + dc->h)) {
++				puts(item->text);
++				exit(EXIT_SUCCESS);
++			}
++		}
++	}
++	else if(matches) {
++		/* left-click on left arrow */
++		dc->x += inputw;
++		dc->w = textw(dc, "<");
++		if(prev && curr->left) {
++			if(ev->x >= dc->x && ev->x <= dc->x + dc->w) {
++				sel = curr = prev;
++				calcoffsets();
++				drawmenu();
++				return;
++			}
++		}
++		/* horizontal list: left-click on item */
++		for(item = curr; item != next; item = item->right) {
++			dc->x += dc->w;
++			dc->w = MIN(textw(dc, item->text), mw - dc->x - textw(dc, ">"));
++			if(ev->x >= dc->x && ev->x <= (dc->x + dc->w)) {
++				puts(item->text);
++				exit(EXIT_SUCCESS);
++			}
++		}
++		/* left-click on right arrow */
++		dc->w = textw(dc, ">");
++		dc->x = mw - dc->w;
++		if(next && ev->x >= dc->x && ev->x <= dc->x + dc->w) {
++			sel = curr = next;
++			calcoffsets();
++			drawmenu();
++			return;
++		}
++	}
++}
++
++void
+ match(void) {
+ 	static char **tokv = NULL;
+ 	static int tokn = 0;
+@@ -496,6 +601,9 @@ run(void) {
+ 		if(XFilterEvent(&ev, win))
+ 			continue;
+ 		switch(ev.type) {
++		case ButtonPress:
++			buttonpress(&ev);
++			break;
+ 		case Expose:
+ 			if(ev.xexpose.count == 0)
+ 				mapdc(dc, win, mw, mh);
+@@ -585,8 +693,9 @@ setup(void) {
+	/* create menu window */
+	swa.override_redirect = True;
+	swa.background_pixel = normcol->BG;
+-	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask;
++	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask |
++	                 ButtonPressMask;
+	win = XCreateWindow(dc->dpy, root, x, y, mw, mh, 0,
+	                    DefaultDepth(dc->dpy, screen), CopyFromParent,
+	                    DefaultVisual(dc->dpy, screen),
+	                    CWOverrideRedirect | CWBackPixel | CWEventMask, &swa);
