@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=TileMill
+Categories=Graphics;
+Comment=Map design studio
+Exec=tilemill
+Icon=tilemill
+Terminal=false
+StartupNotify=false

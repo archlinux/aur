@@ -1,0 +1,11 @@
+diff -aur tilemill.ori/package.json tilemill.new/package.json
+--- tilemill.ori/package.json	2014-07-05 15:43:46.903355523 +0200
++++ tilemill.new/package.json	2014-07-05 15:44:18.843977033 +0200
+@@ -59,7 +59,6 @@
+         "difflet": "0.2.x"
+     },
+     "scripts": {
+-        "preinstall":"npm install npm",
+         "start": "./index.js",
+         "test": "mocha --timeout 100000",
+         "postinstall": "node ./lib/gitutil.js"
