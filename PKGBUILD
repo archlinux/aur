@@ -12,8 +12,8 @@ arch=(i686 x86_64)
 url="https://github.com/vera-desktop/vera"
 license=('LGPL')
 groups=()
-depends=('vala' 'libpeas' 'gtk3' 'libgee06' 'vera-xsettings-git' 'gobject-introspection')
-makedepends=('bake')
+depends=('vala' 'libpeas' 'gtk3' 'libgee06' 'vera-xsettings-git' 'libxss-vapi' 'gobject-introspection')
+makedepends=('bake-sl-git')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}" 'vera-desktop-environment')
 replaces=()
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	bake --configure install-directory="$pkgdir/"
+	bake -d --configure install-directory="$pkgdir/"
 }
 
 package() {
