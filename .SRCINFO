@@ -1,0 +1,16 @@
+pkgbase = extra-cmake-modules-git
+	pkgdesc = Extra CMake modules
+	pkgver = 5.13.0.r2666.097c1cf
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kdesupport/extra-cmake-modules
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = cmake
+	provides = extra-cmake-modules
+	conflicts = extra-cmake-modules
+	source = git://anongit.kde.org/extra-cmake-modules.git
+	sha1sums = SKIP
+
+pkgname = extra-cmake-modules-git
+
