@@ -9,6 +9,7 @@ pkgbase = pugixml-shared
 	makedepends = cmake
 	provides = pugixml
 	conflicts = pugixml
+	replaces = pugixml
 	source = http://github.com/zeux/pugixml/releases/download/v1.6/pugixml-1.6.tar.gz
 	sha1sums = 0c22fc238b209c9fd1802b74927f0b1e9f68011c
 

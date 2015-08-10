@@ -8,6 +8,7 @@ license=('MIT')
 makedepends=('cmake')
 conflicts=('pugixml')
 provides=('pugixml')
+replaces=('pugixml')
 source=("http://github.com/zeux/pugixml/releases/download/v${pkgver}/pugixml-${pkgver}.tar.gz")
 sha1sums=('0c22fc238b209c9fd1802b74927f0b1e9f68011c')
 
