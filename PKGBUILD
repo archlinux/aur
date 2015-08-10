@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=libdart
-pkgver=4.3.4
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
@@ -12,10 +12,8 @@ optdepends=('bullet: Bullet support'
             'nlopt: NLopt support')
 makedepends=('cmake' 'doxygen')
 _name=dart
-source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz
-        "ipopt.patch")
-md5sums=('e496355030085000420ea7747440dece'
-         'e6f7d4c4b26c7dc0751266a8a611325f')
+source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)
+md5sums=('4a10222311a1d490cbc75cbb3197a60d')
 
 # Build type
 _buildtype="Release"
@@ -23,8 +21,6 @@ _buildtype="Release"
 # Build the project
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-
-  patch -p1 -i ${srcdir}/ipopt.patch
 
   msg "Starting CMake (build type = ${_buildtype})"
 
