@@ -2,9 +2,9 @@
 # Contributor: Limao Luo <luolimao+AUR at gmail dot com>
 
 pkgname=xfce-theme-bluebird
-_pkgname=bluebird
+_pkgname=Bluebird
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A light blue Xfce theme, introduced in the release of Xubuntu 10.10."
 arch=(any)
 url=http://shimmerproject.org/projects/bluebird/
