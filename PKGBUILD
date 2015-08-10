@@ -1,37 +1,45 @@
-
+# Maintainer: Brent Carmer <bcarmer@gmail.com>
 pkgname=fplll-git
-pkgver=4.0.5
+_pkgname=fplll
+
+pkgver=v4.0
+pkgver() {
+      cd "$_pkgname"
+        git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    }
+
 pkgrel=1
-
-pkgdesc="Implementations of the floating-point LLL reduction algorithm for euclidean lattices"
-arch=('any')
-url="http://perso.ens-lyon.fr/damien.stehle/fplll/"
+pkgdesc="A library for LLL-reducing euclidean lattices."
+url="https://github.com/dstehle/fplll"
+arch=('x86_64' 'i686')
 license=('LGPL')
-
-depends=('gmp>=4.2.0' 'mpfr>=2.3.0')
-provides=("fplll libfplll")
-conflicts=('fplll libfplll')
-
-source=('git+https://github.com/dstehle/fplll.git')
+depends=(
+  'gmp>=4.2.0'
+  'mpfr>=2.3.0'
+)
+makedepends=(
+  'git'
+  'autoconf>=2.61'
+  'automake>=1.6.0'
+  'libtool>=1.4.2'
+)
+optdepends=()
+conflicts=()
+replaces=()
+backup=()
+conflicts=()
 md5sums=('SKIP')
 
-_gitname='fplll'
-
-pkgver() {
-	cd "$srcdir/$_gitname"
-	# Get the version from configure.ac
-	sed -n -e 's/AC_INIT(libfplll,\s*\(4.0.5\s*\))/\1/p' configure.ac
-}
+source=("git://github.com/dstehle/fplll.git")
 
 build() {
-	cd "$srcdir/$_gitname"
-	autoreconf -vi
-	./configure --prefix=/usr
-	make
+    cd $srcdir/${_pkgname}
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
-	make DESTDIR="$pkgdir" install
+  cd $srcdir/$_pkgname 
+  make DESTDIR="$pkgdir/" install
 }
-
