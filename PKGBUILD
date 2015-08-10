@@ -1,10 +1,9 @@
 # Maintainer: Brent Carmer <bcarmer@gmail.com>
-pkgname=fplll-git
-_pkgname=fplll
+pkgname=fplll
 
 pkgver=v4.0
 pkgver() {
-      cd "$_pkgname"
+      cd "$pkgname"
         git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
     }
 
@@ -33,13 +32,13 @@ md5sums=('SKIP')
 source=("git://github.com/dstehle/fplll.git")
 
 build() {
-    cd $srcdir/${_pkgname}
+    cd $srcdir/${pkgname}
     ./autogen.sh
     ./configure --prefix=/usr
     make
 }
 
 package() {
-  cd $srcdir/$_pkgname 
+  cd $srcdir/$pkgname 
   make DESTDIR="$pkgdir/" install
 }

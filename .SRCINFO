@@ -1,4 +1,4 @@
-pkgbase = fplll-git
+pkgbase = fplll
 	pkgdesc = A library for LLL-reducing euclidean lattices.
 	pkgver = v4.0
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = fplll-git
 	source = git://github.com/dstehle/fplll.git
 	md5sums = SKIP
 
-pkgname = fplll-git
+pkgname = fplll
 
