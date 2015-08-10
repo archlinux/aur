@@ -16,8 +16,7 @@ install=qelectrotech.install
 build() {
     cd "$srcdir/$pkgname-$pkgver-src"
     sed -i -e "s_/usr/local_$pkgdir/usr_g" qelectrotech.pro
-#    sed -i -e "s_../share_share_g" qelectrotech.pro
-    qmake-qt4
+    qmake-qt4 DEFINES+=QET_COMMON_COLLECTION_PATH=/usr/share/qelectrotech/elements -o Makefile qelectrotech.pro
     make -j4
 }
 
