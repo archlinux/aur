@@ -1,0 +1,20 @@
+pkgbase = ipad_charge
+	pkgdesc = iPad USB charging control utility
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://www.rainbow-software.org/linux/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	depends = udev
+	depends = libusb
+	source = http://www.rainbow-software.org/linux_files/ipad_charge_1.1.tar.gz
+	source = 95-ipad_charge.rules.patch
+	source = ipad_charge.c.patch
+	md5sums = 09b8c600efd747a36c9cc320516326cf
+	md5sums = bfc9325716cc8fcedc04f13fcf7c8693
+	md5sums = 45d28ae05281b4fa0739d858fc01d324
+
+pkgname = ipad_charge
+
