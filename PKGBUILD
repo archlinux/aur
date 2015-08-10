@@ -24,7 +24,6 @@ pkgver() {
 }
 
 package() {
-  install -d "$pkgdir/usr/lib/chromium/"
-  install -m644 opt/google/chrome/*.so "$pkgdir/usr/lib/chromium/"
+  install -Dm644 -t "$pkgdir/usr/lib/chromium/" opt/google/chrome/*.so
   install -Dm644 chrome-eula_text.html "$pkgdir/usr/share/licenses/$pkgname/eula_text.html"
 }
