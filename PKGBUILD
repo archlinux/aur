@@ -8,11 +8,9 @@ url="https://github.com/Holzhaus/PKGBUILDs"
 arch=('any')
 depends=('nzbget')
 license=('GPL')
-source=('nzbget.conf'
-        'nzbget.service')
+source=('nzbget.service')
 install='nzbget.install'
-sha256sums=('50bf12ffeda5bca2327ee4665de000892d18514a13e445d78ff5dec78bd48c4f'
-            'c5dc750214105fe2ab4aff9545a48b7a5cfa246d00c771b1600ce4e6b74f70fb')
+sha256sums=('c5dc750214105fe2ab4aff9545a48b7a5cfa246d00c771b1600ce4e6b74f70fb')
 package() {
   cd "${srcdir}"
 
@@ -20,8 +18,6 @@ package() {
   install -m644 -t "${pkgdir}/usr/lib/systemd/system" nzbget.service
 
   install -d "${pkgdir}/var/lib/nzbget"
-  install -d "${pkgdir}/etc"
-  install -m664 -t "${pkgdir}/etc" "${srcdir}/nzbget.conf"
 
   install -d "${pkgdir}/var/lib/nzbget/downloads"
   install -d "${pkgdir}/var/lib/nzbget/downloads/dst"
