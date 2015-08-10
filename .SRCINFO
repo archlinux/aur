@@ -1,0 +1,29 @@
+pkgbase = wlc-git
+	pkgdesc = Wayland compositor library.
+	pkgver = r643.0cfdd6e
+	pkgrel = 2
+	url = https://github.com/Cloudef/wlc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = wayland
+	depends = pixman
+	depends = libxkbcommon
+	depends = libinput
+	optdepends = mesa: For optional platform support (GLESv2, EGL, DRM)
+	optdepends = nvidia: For optional platform support (GLESv2, EGL)
+	optdepends = libx11: Running the compositor as an Xorg client
+	optdepends = libxcb: Running the compositor as an Xorg client
+	provides = wlc
+	conflicts = wlc
+	options = debug
+	options = !strip
+	source = git://github.com/Cloudef/wlc
+	source = git://github.com/Cloudef/chck
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = wlc-git
+
