@@ -1,7 +1,7 @@
 # Maintainer: Davi da Silva Böger <dsboger[at]gmail[dot]com>
 pkgname=fmit-git
 _pkgname=fmit
-pkgver=r136.99674f1
+pkgver=1.0.8.r0.a9bbe9d
 pkgrel=1
 pkgdesc="Free Music Instrument Tuner"
 url="https://github.com/gillesdegottex/fmit"
@@ -17,21 +17,17 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  _fmitdir="${srcdir}/${_pkgname}"
-
-  mkdir -p "${_fmitdir}/build"
-  cd "${_fmitdir}/build"
+  mkdir -p "${_pkgname}/build"
+  cd "${_pkgname}/build"
   qmake-qt5 "PREFIX=/usr" "CONFIG+=acs_qt acs_alsa acs_jack acs_portaudio" ../${_pkgname}.pro
   make
 }
 
 package() {
-  _fmitdir="${srcdir}/${_pkgname}"
-
-  cd "${_fmitdir}/build"
+  cd "${_pkgname}/build"
   make INSTALL_ROOT="${pkgdir}" install
 }
