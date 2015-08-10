@@ -1,7 +1,7 @@
 # Maintainer: Maxwell Anselm <silverhammermba+aur@gmail.com>
 
 pkgname=openglad-git
-pkgver=r924.1080efb
+pkgver=r927.d74d6b1
 pkgrel=1
 pkgdesc="SDL port of the hack-n-slash DOS game Gladiator"
 arch=('i686' 'x86_64')
@@ -22,14 +22,6 @@ prepare() {
 
 	# remove SDL2main lib
 	sed -i -- 's/"SDL2main", //g' premake4.lua
-
-	# fix conflicting filenames
-	mv src/parser.cpp src/oparser.cpp
-	mv src/parser.h src/oparser.h
-	mv src/loader.cpp src/oloader.cpp
-	mv src/loader.h src/oloader.h
-	find src -maxdepth 1 -type f -exec sed -i -- 's/"parser.h"/"oparser.h"/g' {} \;
-	find src -maxdepth 1 -type f -exec sed -i -- 's/"loader.h"/"oloader.h"/g' {} \;
 }
 
 build() {

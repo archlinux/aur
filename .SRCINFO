@@ -1,6 +1,6 @@
 pkgbase = openglad-git
 	pkgdesc = SDL port of the hack-n-slash DOS game Gladiator
-	pkgver = r924.1080efb
+	pkgver = r927.d74d6b1
 	pkgrel = 1
 	url = http://www.openglad.org
 	arch = i686
