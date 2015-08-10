@@ -3,18 +3,18 @@
 pkgname=steamcurses-git
 _pkgname=${pkgname%-git}
 _srcname=SteamCurses
-pkgver=8c106e6
-pkgrel=2
+pkgver=71c0a6d
+pkgrel=1
 pkgdesc="Steam Ncurses for both native and wine versions"
 arch=('i686' 'x86_64')
 url="https://github.com/TOTBWF/SteamCurses"
 license=('MIT')
-depends=('ncurses')
-optdepends=('steam:	Native Steam support'
-    'wine: Wine Steam support')
+depends=('ncurses' 'steam')
+optdepends=('wine: Wine Steam support')
 provides=('steamcurses')
 conflicts=('steamcurses')
 changelog=changelog.txt
+install=${pkgname}.install
 source=('git+https://github.com/TOTBWF/SteamCurses.git')
 sha256sums=('SKIP')
 
