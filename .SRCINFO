@@ -1,0 +1,46 @@
+pkgbase = mapnik-git
+	pkgdesc = Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)
+	pkgver = 3.0.0.rc1.105.g569a539
+	pkgrel = 1
+	url = http://mapnik.org/
+	install = mapnik.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = scons
+	makedepends = boost
+	makedepends = git
+	depends = boost-libs
+	depends = icu
+	depends = libpng
+	depends = libjpeg
+	depends = libtiff
+	depends = freetype2
+	depends = libxml2
+	depends = python2
+	depends = proj
+	depends = cairo
+	depends = cairomm
+	depends = pycairo
+	depends = postgresql-libs
+	depends = postgis
+	depends = gdal
+	depends = curl
+	depends = libltdl
+	depends = libwebp
+	optdepends = libxslt: Web Map Service
+	optdepends = python2-lxml: Web Map Service
+	optdepends = python2-pillow: Web Map Service
+	optdepends = python-nose: Web Map Service
+	optdepends = apache: Web Map Service
+	optdepends = mod_fastcgi: Web Map Service - or:
+	optdepends = mod_fcgid: Web Map Service - or:
+	optdepends = mod_wsgi2: Web Map Service
+	provides = mapnik=3.0.0
+	conflicts = mapnik
+	options = staticlibs
+	source = git://github.com/mapnik/mapnik.git
+	md5sums = SKIP
+
+pkgname = mapnik-git
+
