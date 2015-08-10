@@ -1,22 +1,21 @@
 pkgbase = qps-git
 	pkgdesc = Qt process manager
-	pkgver = r14.3ad194f
-	pkgrel = 2
+	pkgver = r19.28449df
+	pkgrel = 1
 	url = https://github.com/QtDesktop/qps
 	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = git
 	makedepends = cmake
+	makedepends = qt5-tools
 	depends = qt5-x11extras
 	depends = libxkbcommon-x11
 	depends = hicolor-icon-theme
 	provides = qps
 	conflicts = qps
 	source = git+https://github.com/QtDesktop/qps.git
-	source = qps.desktop
 	sha256sums = SKIP
-	sha256sums = 52396289949c2e57fb88773068c90aeb9bc6628e1f72f851d19a9dfbf3f85581
 
 pkgname = qps-git
 
