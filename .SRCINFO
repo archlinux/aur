@@ -1,0 +1,16 @@
+pkgbase = cutecom
+	pkgdesc = A graphical serial terminal
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = http://cutecom.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt4
+	source = http://cutecom.sourceforge.net/cutecom-0.22.0.tar.gz
+	md5sums = dd85ceecf5a60b4d9e4b21a338920561
+	sha256sums = 1b6620a6159cf3d50bb36cce544e91486817df7f1d553bf239d6db6108dd2ea5
+
+pkgname = cutecom
+
