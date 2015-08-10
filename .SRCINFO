@@ -1,0 +1,14 @@
+pkgbase = python2-instagram
+	pkgdesc = Instagram API client
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/python-instagram
+	arch = any
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/python-instagram/python-instagram-1.3.2.tar.gz
+	md5sums = 344652803cf0b2455e57e8c398f69666
+
+pkgname = python2-instagram
+
