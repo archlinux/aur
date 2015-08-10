@@ -1,6 +1,6 @@
 pkgbase = pkgbrowser
 	pkgdesc = A utility for browsing pacman databases and the AUR
-	pkgver = 0.18.1
+	pkgver = 0.19
 	pkgrel = 1
 	url = https://bitbucket.org/kachelaqa/pkgbrowser
 	install = pkgbrowser.install
@@ -10,9 +10,9 @@ pkgbase = pkgbrowser
 	depends = pacman>=4.1
 	depends = pacman<4.3
 	depends = python>=3.2
-	depends = python-pyqt4
-	source = https://bitbucket.org/kachelaqa/pkgbrowser/downloads/pkgbrowser-0.18.1.tar.gz
-	md5sums = 2585addf201aecd605c4779731e8f9b5
+	depends = python-pyqt5
+	source = https://bitbucket.org/kachelaqa/pkgbrowser/downloads/pkgbrowser-0.19.tar.gz
+	md5sums = 4229a1206425f10bb528af5fa87b264b
 
 pkgname = pkgbrowser
 
