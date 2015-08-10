@@ -1,0 +1,15 @@
+pkgbase = python2-unrar
+	pkgdesc = Wrapper for UnRAR library, ctypes-based
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/unrar/
+	arch = any
+	license = GPL-3
+	depends = python2
+	depends = libunrar
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/u/unrar/unrar-0.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = python2-unrar
+
