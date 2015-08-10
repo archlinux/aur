@@ -1,27 +1,21 @@
-# Maintainer: Ben Copeland <ben at copeland dot me dot uk>
-# Contributor: Douglas Campos <qmx at qmx dot me>
-
+# Maintainer: Benjamin Copeland <ben@copeland.me.uk>
+# Source: https://github.com/barnybug/cli53
 pkgname=python2-cli53
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line script to administer the Amazon Route 53 DNS service"
-arch=("any")
-url="https://github.com/barnybug/cli53"
-license=('BSD')
-groups=()
-depends=()
-makedepends=('python2-pip')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-source=()
-md5sums=()
+arch=(any)
+url="https://pypi.python.org/pypi/cli53"
+license=(BSD)
+depends=(python2)
+makedepends=(python2-setuptools)
+source=("https://pypi.python.org/packages/source/c/cli53/cli53-${pkgver}.tar.gz")
+md5sums=(da4ba52e36a53aadaa537397e735fbfd)
 
-package() {
-  pip2 install -t "$pkgdir" "cli53==$pkgver"
+package () {
+
+    cd "${srcdir}/cli53-${pkgver}"
+    /usr/bin/python2 setup.py install --root="${pkgdir}/" --optimize=1
+    install -Dm0664 "${srcdir}/cli53-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 }
-
-# vim:set ts=2 sw=2 et:
