@@ -1,0 +1,65 @@
+hubic (2.1.0) unstable; urgency=low
+
+  * Added: proxy authentication handling
+  * Added: backups can be created inside synchronization
+  * Added: synchronization can be disabled
+  * Fixed: backup upload could be interrupted by network errors
+  * Fixed: error 400 when a backup was deleted and the recreated with same name
+  * Fixed: crash when actions on backup were attempted during pause
+  * Fixed: the 'kept_versions' switch on backup creation was not handled
+  * Fixed: other minor bugs
+  * Changed: extra arguments now generates an error (they were silently ignored before)
+  * Changed: the libgdiplus library is no longer required to run the program
+
+ -- Julien <julien.desgats@ovh.net>  Tue, 27 Jan 2015 16:20:42 +0200
+
+hubic (2.0.2-1) unstable; urgency=low
+
+  * Fixed: connection error with newly created accounts
+
+ -- Julien <julien@Mint-15-MATE>  Mon, 20 Oct 2014 19:42:33 +0200
+
+hubic (2.0.1-1) unstable; urgency=low
+
+  * Fixed: last backup display when there is no backup
+  * Fixed: data blocks were kept even after file deletion in some cases
+  * Fixed: backup/synchronisation scheduling was sometimes mixed
+
+ -- Julien <julien@Mint-15-MATE>  Mon, 20 Oct 2014 19:42:23 +0200
+
+hubic (2.0.0-1) unstable; urgency=low
+
+  * Added backup feature (DBus API and CLI interface)
+
+ -- Julien <julien.desgats@ovh.net>  Mon, 29 Sep 2014 09:45:43 +0200
+
+hubic (1.2.5.38-1) unstable; urgency=low
+
+  * Added publication duration
+  * At startup, wait for Internet connection to be up before trying to connect to hubiC
+  * Fixed: behavior for some conflicts
+  * Added support for upcoming OpenStack features
+  * Other minor bug fixes
+
+ -- Julien <julien.desgats@ovh.net> Tue, 26 Aug 2014 13:48:58 GMT
+
+hubic (1.2.4.35-1) unstable; urgency=low
+
+  * Backport of Windows 1.2.4 features
+  * Fixed some connection issues
+  * Improved symbolic link handling
+
+ -- Julien <julien.desgats@ovh.net>  Wed, 14 May 2014 12:16:21 +0200
+
+hubic (1.1.12.1-1) unstable; urgency=low
+
+  * Added messages history in DBus API and status output
+  * Some documentation fixes
+
+ -- Julien Desgats <julien.desgats@ovh.net>  Wed, 9 Oct 2013 13:08:00 +0200
+
+hubic (1.1.12.0-1) unstable; urgency=low
+
+  * First public release
+
+ -- Julien Desgats <julien.desgats@ovh.net>  Mon, 30 Sep 2013 19:11:27 +0200

@@ -1,0 +1,13 @@
+dbus_tip() {
+  echo "If it doesn't launch when in an ssh session try something like:"
+  echo "\$ export \$(dbus-launch); hubic args"
+}
+
+post_install() {
+  echo "Don't forget to run 'hubiC login <email> <folder to synchronize>' to initialize the service."
+  dbus_tip
+}
+
+post_upgrade() {
+  dbus_tip
+}
