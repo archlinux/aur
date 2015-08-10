@@ -2,7 +2,7 @@
 
 pkgname=hib-dlagent-git
 _appname=hib-dlagent
-pkgver=0.7.1.g42adb30
+pkgver=0.7.5.g1be59e8
 pkgrel=1
 pkgdesc='Tool to download Humble Indie Bundle binaries by file name (uses PhantomJS to support new Humble Bundle site)'
 arch=('any')
@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_appname"
-  DEST="$pkgdir" ./install.sh
+  make DESTDIR="$pkgdir" install
 }
