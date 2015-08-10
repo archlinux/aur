@@ -2,14 +2,14 @@
 
 pkgname=quimup
 pkgver=1.4.0
-pkgrel=1
-pkgdesc="Qt5 frontend to MPD"
+pkgrel=2
+pkgdesc="A simple Qt5 frontend to MPD"
 arch=('i686' 'x86_64')
-url=""
+url="http://coonsden.com/"
 license=('GPL2')
 makedepends=()
-depends=('qt5-base' 'mpd')
-source=("http://sourceforge.net/projects/quimup/files/${pkgname} ${pkgver}/${pkgname}_${pkgver}_src.tar.gz"
+depends=('mpd' 'qt5-base' 'taglib')
+source=("http://sourceforge.net/projects/quimup/files/quimup ${pkgver}/${pkgname}_${pkgver}_src.tar.gz"
         "qt-build.patch")
 md5sums=('5f5f04bbf9674c278dacab963643bba2'
          '1b37692052408024dc0c9e8b6fe6fc91')
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  cd build
+  # there is no install target
   install -Dm755 "${srcdir}/build/quimup" "${pkgdir}/usr/bin/quimup"
 }
 

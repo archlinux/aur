@@ -1,12 +1,14 @@
 pkgbase = quimup
-	pkgdesc = Qt5 frontend to MPD
+	pkgdesc = A simple Qt5 frontend to MPD
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
+	url = http://coonsden.com/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = qt5-base
 	depends = mpd
+	depends = qt5-base
+	depends = taglib
 	source = http://sourceforge.net/projects/quimup/files/quimup 1.4.0/quimup_1.4.0_src.tar.gz
 	source = qt-build.patch
 	md5sums = 5f5f04bbf9674c278dacab963643bba2
