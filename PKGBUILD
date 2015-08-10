@@ -17,8 +17,6 @@ conflicts=('emacs-org-mode')
 install=emacs-org-mode.install
 source=('emacs-org-mode::git://orgmode.org/org-mode.git')
 md5sums=('SKIP')
-optdepends=('zsh: for running dir2org.zsh in the org-contrib/scripts dir'
-	    'java-environment: for running ditaa.jar in the org-contrib/scripts dir')
 _gitname="emacs-org-mode"
 
 pkgver() {
