@@ -1,16 +1,16 @@
 pkgbase = phploc
 	pkgdesc = A tool for quickly measuring the size of a PHP project
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 2
 	url = https://github.com/sebastianbergmann/phploc
 	install = phploc.install
 	arch = any
 	license = BSD
 	depends = php
-	source = https://phar.phpunit.de/phploc-2.1.3.phar
-	source = https://raw.githubusercontent.com/sebastianbergmann/phploc/2.1.3/LICENSE
+	source = https://phar.phpunit.de/phploc-2.1.4.phar
+	source = https://raw.githubusercontent.com/sebastianbergmann/phploc/2.1.4/LICENSE
 	source = phploc.install
-	sha512sums = 362d7f1cd39855847a9d532e7c349abcd68c21f9681445c7cd7ae117add32b1641f380e20b38ddee1f0da4c4e4a4596d9c963aeaca896cf2a2afab606b7bcedd
+	sha512sums = da082dd6bc3886cd615c876b68117e9cf5d2f1319a61ef84d76b4cb4def2a1e362f366d77a901241cd0dcb8bf8dae4a25ed76b6ee757228606e80e2913307336
 	sha512sums = 380f398cc2c10a9e76d39a8f1ce60e367e39a1b3ac4bedab2d6aae7d964d11554cf40fcad3362f80fa4f43aa255f3fb990eece094d016e0167ebd75ae6d0d277
 	sha512sums = 5144d60d89677bda0dfef947b9a89428393d7cdba926b1b1a790223637d42c2558fb768039b2f00dcf1226eba89f5679902670f07be2add85fa9a0b5fd320538
 
