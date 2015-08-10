@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Markus Härer <markus.haerer@gmx.net>
+# Based on plasma-volume-control-git from Antonio Rojas
 
 _srcname=plasma-pa
 pkgname=${_srcname}-git
