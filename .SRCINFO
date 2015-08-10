@@ -10,6 +10,7 @@ pkgbase = libreoffice-extension-vero
 	optdepends = libreoffice-still
 	optdepends = libreoffice-fresh
 	optdepends = openoffice
+	noextract = ${_pkgname}.oxt
 	source = https://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/VeroptBRV320AOC.oxt
 	md5sums = 9a9ac174c401406604bfcf101de2a7ba
 
