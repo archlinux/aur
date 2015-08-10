@@ -3,21 +3,25 @@
 pkgname=libktorrent-frameworks-git
 pkgver=1.1dev.r321.850118f
 pkgrel=1
-pkgdesc='A BitTorrent protocol implementation. KF5 Frameworks branch (GIT version)'
+pkgdesc="A BitTorrent protocol implementation. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/extragear/network/libktorrent"
+url='https://projects.kde.org/projects/extragear/network/libktorrent'
 license=('GPL')
 depends=('qca-qt5' 'kdelibs4support')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git')
-provides=(libktorrent)
-conflicts=(libktorrent)
-source=("git://anongit.kde.org/libktorrent.git#branch=frameworks")
+makedepends=('extra-cmake-modules'
+             'kdoctools'
+             'git'
+             'python'
+             'boost'
+             )
+conflicts=('libktorrent')
+source=('git://anongit.kde.org/libktorrent.git#branch=frameworks')
 sha1sums=('SKIP')
 
 pkgver() {
   cd libktorrent
-  _ver="$(cat CMakeLists.txt | grep LIBKTORRENT_VERSION | head -n1 | cut -d '"' -f2)"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m1 LIBKTORRENT_VERSION | cut -d '"' -f2)"
+  echo -e "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
