@@ -1,0 +1,17 @@
+pkgbase = firefox-pentadactyl
+	pkgdesc = plugin for firefox designed to make browsing more efficient
+	pkgver = r7170
+	pkgrel = 1
+	url = http://5digits.org/pentadactyl/
+	arch = any
+	license = MIT
+	makedepends = unzip
+	makedepends = git
+	depends = firefox
+	provides = firefox-pentadactyl
+	conflicts = firefox-pentadactyl-hg
+	source = firefox-pentadactyl::git+https://github.com/5digits/dactyl.git
+	md5sums = SKIP
+
+pkgname = firefox-pentadactyl
+
