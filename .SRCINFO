@@ -7,6 +7,7 @@ pkgbase = linux-zen-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	provides = linux-zen
 	conflicts = linux-zen
 	options = !strip
 	source = linux-zen.conf
@@ -22,8 +23,10 @@ pkgname = linux-zen-git
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.5.20
-	optdepends = linux-zen-headers: to build third party modules such as NVIDIA drivers or OSSv4
+	optdepends = linux-zen-git-headers: to build third party modules such as NVIDIA drivers or OSSv4
 	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-zen
+	provides = linux-zen-git
 	backup = etc/mkinitcpio.d/linux-zen.conf
 
 pkgname = linux-zen-git-headers
