@@ -1,0 +1,14 @@
+pkgbase = python-unstdlib
+	pkgdesc = Unstandard Python library of useful and highly-reusable functions.
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/shazow/unstdlib.py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/u/unstdlib/unstdlib-1.7.tar.gz
+	sha256sums = 9348ff23b8f3a235db55b11e397d55352b2029e4fb0979558fee2d1ea8667280
+
+pkgname = python-unstdlib
+
