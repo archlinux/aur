@@ -1,0 +1,89 @@
+QNapi ChangeLog:
+================
+
+2015-08-08 v0.1.8:
+ * mozliwosc wskazania zapasowego jezyka pobierania napisow
+ * poprawki bledow w silniku Napisy24 dla Windows
+ * poprawiona integracja z menu kontekstowym na Windows
+ * wersja przenosna nie wymagajaca instalacji (archiwum zip dla Windows)
+ * tryb cichy (-q) dostepny takze pod Windows
+ * poprawiony blad z rozmieszczeniem okien przy wielu ekranach
+
+2015-07-25 v0.1.7:
+ * silnik dla Napisy24
+ * migracja do Qt5
+ * zamiana znakow diakrytycznych na odpowiedniki ASCII
+ * poprawki interfejsu w trybach GUI i CLI
+ * poprawki wielu innych znalezionych bledow
+
+2009-03-04 v0.1.6 (rc2):
+ * poprawki znalezionych bledow
+ * kompilacja z Qt 4.5 dla Mac OS X, dzieki czemu brak ikony w doku
+ * kosmetyczne poprawki interfejsu
+
+2009-02-16 v0.1.6 (rc1):
+ * wsparcie dla roznych silnikow pobierania napisow, w tym eksperymentalna
+   obsluga serwisu opensubtitles.org
+ * usprawnione przetwarzanie napisow
+ * skanowanie katalogu zadanego jako argument wywolania aplikacji
+ * liczne ulepszenia w skanowaniu katalogow
+ * przywracanie domyslnych ustawien
+ * znacznie rozbudowany tekstowy interfejs programu
+ * natywne okna dialogowe pod Mac OS X i Windows
+ * usuniete znalezione bledy, dodane nowe
+
+2008-05-22 v0.1.5:
+ * uregulowane kwestie licencyjne; od tej chwili program wydawany jest na licencji
+   GNU General Public License w wersji 2. lub pozniejszej (thx Patryk Cisek)
+ * usuniety blad powodujacy niemoznosc uruchomienia programu na terminalu tekstowym (TTY)
+ * poprawione wysylanie napisow do serwera
+ * sprawdzanie uprawnien zapisu do katalogu przy pobieraniu napisow
+ * zunifikowane opcje pozwalajace na wykonywanie przetwarzania pobranych napisow
+   (m.in usuwanie linii zawierajacych podane slowa, zmiana uprawnien do pliku)
+ * bardziej szczegolowe podsumowanie pobierania napisow
+ * mnostwo zmian w kodzie programu umozliwiajacych dalszy, swobodny rozwoj
+ * sporo usprawnien w interfejsie uzytkownika
+ * automatyczna (na razie eksperymentalna) integracja z GNOME (Nautilus)
+
+2008-04-08 v0.1.4:
+ * rejestracja nowych uzytkownikow za pomoca programu
+ * port na systemy Windows
+ * sprawdzanie poprawnosci ustawien p7zip oraz katalogu tymczasowego
+ * bardziej rozbudowane podsumowanie pobierania plikow w niektorych przypadkach
+ * w danej chwili moze byc uruchomiona tylko jedna instancja programu
+ * liczne usprawnienia w interfejsie uzytkownika
+ * pobieranie wielu plikow naraz po przeciagnieciu ich na ikone programu (Mac OS X)
+ * obsluga drag-n-drop na okno pobierania (na razie nie dziala pod Mac OS X)
+ * automatyczna (na razie eksperymentalna) integracja z KDE (Dolphin, Konqueror)
+ * prostsza instalacja/deinstalacja programu przy kompilacji ze zrodel
+
+2008-03-01 v0.1.3:
+ * skanowanie katalogow i dopasowywanie napisow do znalezionych filmow
+ * rozwiazanie problemu z pozycja okienek dialogowych pod compizem
+ * odswiezona ikona programu
+ * balonikowe notyfikacje w tray-u
+ * pokazywanie okna do otwierania plikow z filmami przy kliknieciu
+   LPM na ikone w tray-u
+ * ulepszenie automatycznej detekcji programu 7z
+ * obsluga przeciagania plikow na ikone w doku pod Mac OS X
+ * konfigurowalny wybor stylu BrushedMetal na Mac OS X
+ * inne usprawnienia i poprawki znalezionych bledow
+
+2008-02-19 v0.1.2:
+ * liczne usprawnienia w interfejsie uzytkownika
+ * poprawiony blad podczas wysylania raportu o bledzie (thx badenov)
+ * dodano mozliwosc automatyczej detekcji kodowania znakow z pliku
+ * ulepszenia w obsludze protokolu NAPI
+ * uzycie stylu BrushedMetal pod Mac OS X (thx adrian5632)
+ * sporo innych, mniejszych poprawek
+
+2008-02-16 v0.1.1:
+ * lepsza integracja z Mac OS X
+ * w oknie do wysylania poprawek mozna wybrac jezyk napisow
+ * obsluga zmiany kodowania pobranych napisow
+ * integracja z Nautilusem
+ * zmiany kosmetyczne
+
+2008-02-14 v0.1:
+ * pierwsza udostepniona wersja programu
+
