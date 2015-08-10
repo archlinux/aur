@@ -1,0 +1,17 @@
+pkgbase = jave
+	pkgdesc = Java Ascii Versatile Editor - graphics editor for editing texts instead of images.
+	pkgver = 5
+	pkgrel = 9
+	url = http://www.jave.de/
+	arch = any
+	license = custom
+	depends = java-runtime
+	optdepends = figlet: provide base figlet fonts
+	optdepends = figlet-fonts: provide additional asciiart fonts
+	source = http://www.jave.de/download/jave5.zip
+	source = jave.sh
+	md5sums = ef048242023f7afe2a30e1f1454cb44b
+	md5sums = 6c604bf7f354b542c75fbf78523fa2ff
+
+pkgname = jave
+
