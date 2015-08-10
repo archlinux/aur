@@ -1,0 +1,14 @@
+pkgbase = python2-backports.ssl_match_hostname
+	pkgdesc = The ssl.match_hostname() function from Python 3.4
+	pkgver = 3.4.0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/backports.ssl_match_hostname
+	arch = any
+	license = GPL-3
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/b/backports.ssl_match_hostname/backports.ssl_match_hostname-3.4.0.2.tar.gz
+	sha256sums = 07410e7fb09aab7bdaf5e618de66c3dac84e2e3d628352814dc4c37de321d6ae
+
+pkgname = python2-backports.ssl_match_hostname
+
