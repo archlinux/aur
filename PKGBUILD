@@ -6,12 +6,16 @@ pkgdesc="A domain-specific language for specifying cryptographic algorithms."
 url="http://www.cryptol.net"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('cvc4' 
-         'gmp4'
-         'libtinfo')
-optdepends=('boolector: theorem proving'
-            'mathsat-5: theorem proving'
-            'yices-bin: theorem proving')
+depends=(
+  'cvc4' 
+  'gmp4'
+  'libtinfo'
+)
+optdepends=(
+  'boolector: theorem proving'
+  'mathsat-5: theorem proving'
+  'yices-bin: theorem proving'
+)
 makedepends=()
 conflicts=()
 replaces=()
