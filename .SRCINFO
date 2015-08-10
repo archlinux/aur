@@ -1,6 +1,6 @@
 pkgbase = emms-git
 	pkgdesc = Emacs MultiMedia System -- git version
-	pkgver = 20150519
+	pkgver = 20150810
 	pkgrel = 1
 	url = http://www.gnu.org/software/emms/
 	install = emms.install
