@@ -5,7 +5,7 @@
 # Contributor: TripleE <eric1548@yahoo.com>
 
 pkgname=xiphos
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Bible study tool for GTK+"
 arch=('x86_64' 'i686')
@@ -17,8 +17,8 @@ conflicts=('gnomesword')
 provides=('gnomesword')
 replaces=('gnomesword')
 install=xiphos.install
-source=("http://downloads.sourceforge.net/gnomesword/$pkgname-$pkgver-20150415.tar.gz")
-md5sums=('d5151d06bc701c82f9a1fa7f81214fe1')
+source=("http://downloads.sourceforge.net/gnomesword/$pkgname-$pkgver-20150806.tar.gz")
+md5sums=('90862930461bdb13893a2af23467e542')
 
 build() {
   cd "$pkgname-$pkgver"
