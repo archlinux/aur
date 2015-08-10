@@ -57,4 +57,5 @@ package() {
     install -m750 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
-sha512sums=('5b3e3b789fb60cce794c025c9964fecdc212fd6dc49d6c2245edb821d2d7c4de9d1cd8a876909b26770769430997dae71bf6d782d5231b277c798116b23562a2')
+
+sha512sums=('5a58078bd67f2bfff5c21daa247dea74e72f1bd2f7a5dfa5ee00ff3938d89ea23bb293bfa3cabfea25837856169975193c4153c605bd2ae1f055b6027a8976bc')
