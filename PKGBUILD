@@ -7,6 +7,7 @@ url="http://www.phpmetrics.org/"
 arch=("any")
 license=("MIT")
 depends=("php")
+install="${pkgname}.install"
 source=("https://github.com/Halleck45/PhpMetrics/raw/v${pkgver}/build/${pkgname}.phar"
         "https://raw.githubusercontent.com/Halleck45/PhpMetrics/v${pkgver}/LICENSE"
         "${pkgname}.install")
