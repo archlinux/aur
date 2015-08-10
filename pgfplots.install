@@ -1,6 +1,5 @@
 post_install(){
     texhash
-    true
 }
 
 post_upgrade() {
