@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nuclide-server
-pkgver=0.0.26
+pkgver=0.0.30
 pkgrel=1
 pkgdesc="Server-side functionality required by Nuclide to support remote file editing."
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ package() {
 	npm install --user root
 }
 
-sha256sums=('f55cda7e3838e6b25caeede06dee2c4ce117493b4bbe4cd1b4dd3baa1ea8d7bf'
+sha256sums=('45ab328ecfd48182d1c4ad63b57d0c3ccee4d94bfe0f847e0deb84f02ccf10dc'
             '5c048a02821e17560bd70882074b3301c98ed3c03793ef1d030ebf1a50ac3355'
             'bd05ed2d4989772b3fd39e83408709961c998852930a6882c4862aea40f969a3'
             'c7e7339c32129d735a1713511e1f522a1cf822d105f4b7fee20c91380a9ae193')
