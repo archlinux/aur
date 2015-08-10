@@ -1,0 +1,14 @@
+pkgbase = libstdc++-doc
+	pkgdesc = A set of doxygen generated HTML documentation for the GNU Standard C++ Library
+	pkgver = 20140403
+	pkgrel = 1
+	url = http://gcc.gnu.org/libstdc++/
+	arch = any
+	license = GPL
+	options = docs
+	options = !strip
+	source = ftp://gcc.gnu.org/pub/gcc/libstdc++/doxygen/libstdc++-api.20140403.html.tar.bz2
+	md5sums = 366a9fd94b10d988292187bc365ed6c0
+
+pkgname = libstdc++-doc
+
