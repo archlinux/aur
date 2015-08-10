@@ -1,6 +1,6 @@
 post_install(){
-    /usr/bin/texhash
-    /bin/true
+    texhash
+    true
 }
 
 post_upgrade() {
