@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Starsector
+GenericName=Starsector
+Comment=A single-player sandbox style space role-playing game with strategic elements
+Exec=starsector
+Icon=/usr/share/starsector/graphics/ui/s_icon64.png
+Terminal=false
+Type=Application
+Categories=Game;
