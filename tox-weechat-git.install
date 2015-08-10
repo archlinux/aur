@@ -1,0 +1,5 @@
+post_install() {
+  echo "Load Tox-WeeChat in WeeChat manually with '/plugin load /usr/lib/weechat/plugins/tox.so'"
+  echo 'It should load automatically.'
+}
+
