@@ -1,0 +1,17 @@
+pkgbase = libxss-vapi-git
+	pkgdesc = X11 Screen Saver extension library (vala bindings).
+	pkgver = 1.0.2.1
+	pkgrel = 1
+	url = https://github.com/semplice/libxss-vapi
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = vala
+	provides = libxss-vapi-git
+	conflicts = libxss-vapi-git
+	conflicts = ${pkgname%-git}
+	source = libxss-vapi::git://github.com/semplice/libxss-vapi.git#branch=master
+	md5sums = SKIP
+
+pkgname = libxss-vapi-git
+
