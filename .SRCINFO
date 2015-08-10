@@ -13,6 +13,7 @@ pkgbase = vpaint
 	depends = glu
 	depends = qt5-base
 	depends = libxkbcommon-x11
+	conflicts = vpaint-git
 	source = https://github.com/dalboris/vpaint/archive/v1.5.tar.gz
 	md5sums = aee4b49c9a9a0345a1d98d734a008b7d
 
