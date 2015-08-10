@@ -44,14 +44,17 @@ package() {
     # Create log directory
     install -dm755 "$pkgdir"/var/log/$pkgname || return 1
 
+    # Create ip directory
+    install -dm755 "$pkgdir"/var/lib/$pkgname || return 1
+
     # gonsupdate.[timer|service]
     install -Dm644 cfg/"$pkgname".timer \
         "$pkgdir"/usr/lib/systemd/system/"$pkgname".timer || return 1
     install -Dm644 cfg/"$pkgname".service \
         "$pkgdir"/usr/lib/systemd/system/"$pkgname".service || return 1
 
-    # nsupdate binary
+    # gonsupdate binary
     install -m750 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
-sha512sums=('f69eab1eb5d87dc86b7ff8d19e7904a32a0a29154a37726863f93388020f80e82533060e1f88c0a5c8510c78fc18221a8f074e8d89b85ce818dd1b99ce4554d7')
+sha512sums=('5b3e3b789fb60cce794c025c9964fecdc212fd6dc49d6c2245edb821d2d7c4de9d1cd8a876909b26770769430997dae71bf6d782d5231b277c798116b23562a2')

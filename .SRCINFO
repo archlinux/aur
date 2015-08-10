@@ -9,7 +9,7 @@ pkgbase = gonsupdate
 	makedepends = go
 	options = !strip
 	source = gonsupdate-0.1.tar.gz
-	sha512sums = f69eab1eb5d87dc86b7ff8d19e7904a32a0a29154a37726863f93388020f80e82533060e1f88c0a5c8510c78fc18221a8f074e8d89b85ce818dd1b99ce4554d7
+	sha512sums = 5b3e3b789fb60cce794c025c9964fecdc212fd6dc49d6c2245edb821d2d7c4de9d1cd8a876909b26770769430997dae71bf6d782d5231b277c798116b23562a2
 
 pkgname = gonsupdate
 
