@@ -6,19 +6,19 @@
 # Contributor: jbnicolai <jappelman@xebia.com>
 
 _npmname=jade
-_npmver=1.5.0
+_npmver=1.11.0
 pkgname=nodejs-jade # All lowercase
-pkgver=1.5.0
+pkgver=1.11.0
 pkgrel=1
-pkgdesc="Jade template engine"
+pkgdesc="A clean, whitespace-sensitive template language for writing HTML"
 arch=(any)
-url="https://github.com/visionmedia/jade"
+url="http://jade-lang.com"
 license=()
-depends=('nodejs' )
+depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(74a93a5a290e11296c8b919b7a4d72301739b27e)
+sha1sums=(9c80e538c12d3fb95c8d9bb9559fa0cc040405fd)
 
 package() {
   cd "$srcdir"
