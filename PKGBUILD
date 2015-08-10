@@ -1,7 +1,7 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=firefox-extension-privacybadger
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy Badger blocks spying ads and invisible trackers."
 license=('GPL3')
 arch=('any')
@@ -17,6 +17,6 @@ package() {
   local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
   install -d $dstdir
   cp -dpr --no-preserve=ownership * $dstdir
-  rm $dstdir/privacy_badger-${pkgver}-fx.xpi
+  rm $dstdir/privacy_badger-latest.xpi
   chmod -R 755 $dstdir
 }
