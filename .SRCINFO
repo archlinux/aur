@@ -1,0 +1,16 @@
+pkgbase = python-pyharmony-git
+	pkgdesc = Python library for connecting to and controlling the Logitech Harmony Link
+	pkgver = r20.1b20822
+	pkgrel = 1
+	url = https://github.com/DonOregano/pyharmony
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-sleekxmpp
+	options = !emptydirs
+	source = python-pyharmony-git::git+https://github.com/DonOregano/pyharmony.git
+	sha1sums = SKIP
+
+pkgname = python-pyharmony-git
+
