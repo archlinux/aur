@@ -1,0 +1,25 @@
+pkgbase = ruby1.8
+	pkgdesc = The obsolete version of the ruby programming language. Consider 2.x instead.
+	pkgver = 1.8.7_p374
+	pkgrel = 2
+	url = http://www.ruby-lang.org/en/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = custom
+	makedepends = tk
+	depends = gdbm
+	depends = db
+	depends = openssl
+	depends = zlib
+	depends = readline
+	optdepends = tk: for Ruby/TK
+	provides = ruby=1.8.7
+	options = !emptydirs
+	source = ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p374.tar.bz2
+	source = fix.patch
+	md5sums = 83c92e2b57ea08f31187060098b2200b
+	md5sums = f560402603b3dca36d4a6abfcb180cb9
+
+pkgname = ruby1.8
+
