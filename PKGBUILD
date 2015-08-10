@@ -18,14 +18,4 @@ package() {
   install -m644 -t "${pkgdir}/usr/lib/systemd/system" nzbget.service
 
   install -d "${pkgdir}/var/lib/nzbget"
-
-  install -d "${pkgdir}/var/lib/nzbget/downloads"
-  install -d "${pkgdir}/var/lib/nzbget/downloads/dst"
-  install -d "${pkgdir}/var/lib/nzbget/downloads/inter"
-  install -d "${pkgdir}/var/lib/nzbget/downloads/nzb"
-  install -d "${pkgdir}/var/lib/nzbget/downloads/queue"
-  install -d "${pkgdir}/var/lib/nzbget/downloads/tmp"
-  install -d "${pkgdir}/var/lib/nzbget/downloads/scripts"
-
-
 }
