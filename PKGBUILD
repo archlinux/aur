@@ -12,7 +12,7 @@ _build_voip=false
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=20150805.fabc3a3
+pkgver=v0.6.0.RC2.r29.g13e77fb
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
