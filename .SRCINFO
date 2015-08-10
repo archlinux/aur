@@ -1,0 +1,25 @@
+pkgbase = media-build-experimental-dkms
+	pkgdesc = Oliver Endriss experimental media tree as DKMS
+	pkgver = r501.82186b8b60da
+	pkgrel = 1
+	url = http://linuxtv.org/hg/~endriss/media_build_experimental
+	install = media-build-experimental-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = linux-headers
+	makedepends = wget
+	depends = dkms
+	provides = dddvb-dkms
+	conflicts = digitaldevices-dvb-drivers
+	conflicts = dvbsky-dvb-drivers
+	conflicts = technotrend-dvb-drivers
+	replaces = digitaldevices-dvb-drivers
+	replaces = dvbsky-dvb-drivers
+	replaces = technotrend-dvb-drivers
+	source = hg+http://linuxtv.org/hg/~endriss/media_build_experimental
+	md5sums = SKIP
+
+pkgname = media-build-experimental-dkms
+

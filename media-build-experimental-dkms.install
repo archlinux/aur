@@ -1,0 +1,15 @@
+post_install() {
+  dkms install -m "media_build_experimental/${1%-*}"
+}
+
+pre_upgrade() {
+  dkms remove -m "media_build_experimental/${2%-*}" --all
+}
+
+post_upgrade() {
+  dkms install -m "media_build_experimental/${1%-*}"
+}
+
+pre_remove() {
+  dkms remove -m "media_build_experimental/${1%-*}" --all
+}
