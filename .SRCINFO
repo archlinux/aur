@@ -1,0 +1,22 @@
+pkgbase = plasma-pa-git
+	pkgdesc = Volume applet for Plasma
+	pkgver = r261.7362c57
+	pkgrel = 1
+	url = http://quickgit.kde.org/?p=plasma-pa.git
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = pulseaudio
+	depends = plasma-workspace
+	provides = plasma-volume-control
+	provides = plasma-pa
+	conflicts = plasma-volume-control
+	conflicts = plasma-volume-control-git
+	conflicts = plasma-pa
+	source = git://anongit.kde.org/plasma-pa.git
+	md5sums = SKIP
+
+pkgname = plasma-pa-git
+
