@@ -1,0 +1,21 @@
+pkgbase = photohawk-git
+	pkgdesc = Java image comparison for SSIM, AE, MAE, MSE, PAE, Equals
+	pkgver = 0.0.2.r29.gcc219b7
+	pkgrel = 1
+	url = http://datascience.github.io/photohawk/
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = maven
+	makedepends = ruby-ronn
+	depends = java-runtime
+	depends = dcraw
+	depends = libcups
+	depends = fontconfig
+	provides = photohawk
+	conflicts = photohawk
+	source = git+https://github.com/datascience/photohawk.git
+	md5sums = SKIP
+
+pkgname = photohawk-git
+
