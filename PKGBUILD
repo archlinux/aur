@@ -15,10 +15,13 @@ provides=('omniorb=4.1.7')
 conflicts=('omniorb')
 depends=('python2' 'openssl')
 makedepends=('pkgconfig')
-source=(http://downloads.sourceforge.net/omniorb/omniORB-${pkgver}.tar.bz2)
+source=("http://downloads.sourceforge.net/omniorb/omniORB-${pkgver}.tar.bz2"
+        "omniORB.cfg.patch")
 
 build() {
   cd "${srcdir}/omniORB-${pkgver}"
+
+  patch -p1 < ${srcdir}/omniORB.cfg.patch
 
   # python2 fix
   for file in $(find . -name '*.py' -print); do
@@ -49,4 +52,5 @@ package() {
   mkdir -p "${pkgdir}/etc"
   install -m 644 sample.cfg "${pkgdir}/etc/omniORB.cfg"
 }
-md5sums=('ce8cbe25418a76a2aac5395399463362')
+md5sums=('ce8cbe25418a76a2aac5395399463362'
+         'e2997d43b0be667a45cc3caf74a6ac75')

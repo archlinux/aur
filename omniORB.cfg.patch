@@ -1,0 +1,12 @@
+diff --git a/sample.cfg b/omniORB.cfg
+index ffe1c53..ae073ff 100644
+--- a/sample.cfg
++++ b/omniORB.cfg
+@@ -375,6 +375,7 @@ validateUTF8 = 0
+ #   reference denoted by `corbaloc::myhost.example.com/MyService'.
+ #
+ #   The default is empty.
++DefaultInitRef = corbaloc::
+ 
+ 
+ ############################################################################

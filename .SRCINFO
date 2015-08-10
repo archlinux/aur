@@ -13,7 +13,9 @@ pkgbase = omniorb417
 	provides = omniorb=4.1.7
 	conflicts = omniorb
 	source = http://downloads.sourceforge.net/omniorb/omniORB-4.1.7.tar.bz2
+	source = omniORB.cfg.patch
 	md5sums = ce8cbe25418a76a2aac5395399463362
+	md5sums = e2997d43b0be667a45cc3caf74a6ac75
 
 pkgname = omniorb417
 
