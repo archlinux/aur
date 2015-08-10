@@ -7,36 +7,30 @@ else
 _arch="x86"
 fi
 
-_major="9.1.0"
-_minor=15798
+_major="9.2.0"
+_minor=15966
 
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
 pkgver="${_major}_${_minor}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Free & Open-Source counterpart of ActiveState Komodo IDE - XUL based"
 arch=(i686 x86_64)
 url="http://www.activestate.com/komodo-edit"
 license=('MPL')
 depends=('dbus-glib' 'glibc>=2.4' 'libjpeg>=6.2' 'gcc-libs' 'gtk2')
 optdepends=('xterm: can be used by komodo-toolbox')
-conflicts=('komodoedit' 'komodoedit-nightly' 'komodoedit-beta')
+conflicts=('komodoedit')
 options=('!strip')
 
-source=("http://downloads.activestate.com/Komodo/releases/${_major}/${_bigname}-${_major}-${_minor}-linux-${_arch}.tar.gz"
-	"_install.py.patch" "activestate.py.patch")
+source=('_install.py.patch' 'activestate.py.patch')
+source_i686=("http://downloads.activestate.com/Komodo/releases/${_major}/${_bigname}-${_major}-${_minor}-linux-x86.tar.gz")
+source_x86_64=("http://downloads.activestate.com/Komodo/releases/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_64.tar.gz")
 
-if [ $_arch == "x86_64" ] ; then
- md5sums=('1843095021f103574fd2ab2ae831cdd9')
- sha256sums=('14a3e2220ec7bcdbc3422c423d90d06140043cefad7f52411c452dd774d3281f')
-else
- md5sums=('b808e0e3df90401e5d10525368db1c6c')
- sha256sums=('27854d1cf60fc92bf36f2c780ca998918b0f76eb386f53206528737fae305c98')
-fi
-md5sums[1]='3f68d40c80d1baba291c3cd57d18f6c9'
-sha256sums[1]='98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8'
-md5sums[2]='ac74c1495058f1b7429f03d95fcde75c'
-sha256sums[2]='c68d7e94955e0f7b32cf3863136891d6441d9dd3a6346481b911d2c250cf32e9'
+sha256sums=('98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8'
+            'c68d7e94955e0f7b32cf3863136891d6441d9dd3a6346481b911d2c250cf32e9')
+sha256sums_i686=('62ab1b7056993ca2775974cdb4e24634cf498d68749cc094b1565a35d0073c2e')
+sha256sums_x86_64=('dd91179db5592260310cf2ee4452c7a9a09335619c93ad20d73b7a9189a9773f')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
@@ -66,3 +60,4 @@ package() {
   install -d ${pkgdir}/usr/bin
   ln -sf /opt/komodo-edit/bin/komodo ${pkgdir}/usr/bin/komodo
 }
+

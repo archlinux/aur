@@ -1,7 +1,7 @@
 pkgbase = komodo-edit
 	pkgdesc = Free & Open-Source counterpart of ActiveState Komodo IDE - XUL based
-	pkgver = 9.1.0_15798
-	pkgrel = 2
+	pkgver = 9.2.0_15966
+	pkgrel = 1
 	url = http://www.activestate.com/komodo-edit
 	arch = i686
 	arch = x86_64
@@ -13,18 +13,15 @@ pkgbase = komodo-edit
 	depends = gtk2
 	optdepends = xterm: can be used by komodo-toolbox
 	conflicts = komodoedit
-	conflicts = komodoedit-nightly
-	conflicts = komodoedit-beta
 	options = !strip
-	source = http://downloads.activestate.com/Komodo/releases/9.1.0/Komodo-Edit-9.1.0-15798-linux-x86_64.tar.gz
 	source = _install.py.patch
 	source = activestate.py.patch
-	md5sums = 1843095021f103574fd2ab2ae831cdd9
-	md5sums = 3f68d40c80d1baba291c3cd57d18f6c9
-	md5sums = ac74c1495058f1b7429f03d95fcde75c
-	sha256sums = 14a3e2220ec7bcdbc3422c423d90d06140043cefad7f52411c452dd774d3281f
 	sha256sums = 98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8
 	sha256sums = c68d7e94955e0f7b32cf3863136891d6441d9dd3a6346481b911d2c250cf32e9
+	source_i686 = http://downloads.activestate.com/Komodo/releases/9.2.0/Komodo-Edit-9.2.0-15966-linux-x86.tar.gz
+	sha256sums_i686 = 62ab1b7056993ca2775974cdb4e24634cf498d68749cc094b1565a35d0073c2e
+	source_x86_64 = http://downloads.activestate.com/Komodo/releases/9.2.0/Komodo-Edit-9.2.0-15966-linux-x86_64.tar.gz
+	sha256sums_x86_64 = dd91179db5592260310cf2ee4452c7a9a09335619c93ad20d73b7a9189a9773f
 
 pkgname = komodo-edit
 
