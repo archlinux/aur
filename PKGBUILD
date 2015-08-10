@@ -15,11 +15,11 @@ source=("http://downloads.sourceforge.net/project/$pkgname_/$pkgname_/$pkgver/${
 md5sums=('0524467a31a4fcdfc519b1f53f863b03')
 
 package() {
-  dest=${pkgdir}/usr/share/texmf-dist/tex/latex/$pkgname_
-  install -d $dest
+    dest=${pkgdir}/usr/share/texmf-dist/tex/latex/$pkgname_
+    install -d $dest
 
-  cp -r doc scripts $dest
-  cp -r tex/generic/$pkgname_/* $dest
-  cp -r tex/latex/$pkgname_/*.sty $dest
-  cp -r tex/latex/$pkgname_/libs/* $dest/libs
+    cp -r doc scripts $dest
+    cp -r tex/generic/$pkgname_/* $dest
+    cp -r tex/latex/$pkgname_/*.sty $dest
+    cp -r tex/latex/$pkgname_/libs/* $dest/libs
 }
