@@ -1,0 +1,16 @@
+pkgbase = codec2
+	pkgdesc = an open source codec designed for communications quality speech below 5000 bit/s
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://codec2.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = subversion
+	makedepends = cmake
+	depends = glibc
+	source = codec2::svn+https://freetel.svn.sourceforge.net/svnroot/freetel/codec2/tags/0.4
+	md5sums = SKIP
+
+pkgname = codec2
+
