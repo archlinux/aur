@@ -24,7 +24,7 @@ pkgver() {
 depends=(
   libpurple json-glib zlib
 )
-makedepends=(mercurial)
+makedepends=(mercurial autoconf)
 
 
 build() {
