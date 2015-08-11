@@ -1,0 +1,16 @@
+pkgbase = python2-pyocd-git
+	pkgdesc = Python library for programming/debugging ARM Cortex-M microcontrollers using CMSIS-DAP
+	pkgver = v0.2.r153.g2d15688
+	pkgrel = 1
+	url = https://github.com/mbedmicro/pyOCD
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2
+	depends = python2-pyusb-beta
+	options = !emptydirs
+	source = python2-pyocd-git::git+https://github.com/mbedmicro/pyOCD#branch=master
+	md5sums = SKIP
+
+pkgname = python2-pyocd-git
+
