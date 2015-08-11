@@ -1,0 +1,16 @@
+pkgbase = spinach
+	pkgdesc = Another AUR helper written in Bash
+	pkgver = 0.5.13
+	pkgrel = 1
+	url = https://github.com/floft/spinach
+	arch = any
+	license = ISC
+	makedepends = git
+	depends = expac
+	depends = jshon
+	backup = etc/spinach.conf
+	source = spinach::git+https://github.com/floft/spinach
+	md5sums = SKIP
+
+pkgname = spinach
+
