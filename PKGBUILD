@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 239545 2015-05-18 23:54:05Z svenstaro $
 # Maintainer:  Joakim Hernberg <jhernberg@alchemy.lu>
 # Contributor: Morgan Cox <morgancoxuk@gmail.com>
 # Contributor: AudioLinux <audiolinux AT fastmail DOT fm>
@@ -7,18 +6,23 @@
 
 pkgname=nvidia-rt
 pkgver=352.30
-_extramodules=extramodules-4.0-rt
-pkgrel=1
+pkgrel=2
+
 pkgdesc="NVIDIA drivers for linux-rt."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-rt>=4.0' 'linux-rt<4.1' "nvidia-utils=${pkgver}" 'libgl')
-makedepends=('linux-rt-headers>=4.0' 'linux-rt-headers<4.1')
 license=('custom')
-install="${pkgname}.install"
+
+depends=('linux-rt>=4.1' 'linux-rt<4.2' "nvidia-utils=${pkgver}" 'libgl')
+makedepends=('linux-rt-headers>=4.1' 'linux-rt-headers<4.2')
+_extramodules=extramodules-4.1-rt
+
 options=(!strip)
+install="${pkgname}.install"
+
 source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
         "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+
 md5sums=('7e59d84eafe2482b2f02df692b9168d5'
          '135dd90db609cecad8e74bde0054cf6f')
 
