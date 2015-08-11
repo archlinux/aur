@@ -1,0 +1,14 @@
+pkgbase = charm
+	pkgdesc = A full-featured, console-based, cross-platfom blogging client for LiveJournal, Atom (Movable Type, Blogger), and MetaWeb (WordPress).
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/ljcharm/
+	arch = any
+	license = GPL
+	depends = python2
+	optdepends = python-feedparser: atom API posting
+	source = http://downloads.sourceforge.net/project/ljcharm/charm/charm-1.9.2/charm-1.9.2.tar.gz
+	md5sums = b67effd5fba0683d79613c853ed352b0
+
+pkgname = charm
+
