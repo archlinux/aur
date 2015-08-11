@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-mr
 	pkgdesc = Marathi language pack for Iceweasel
-	pkgver = 39.0.deb1
+	pkgver = 39.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-mr_39.0-1_all.deb
-	sha256sums = a246f548aa8c71e5496109ffc89c0439162556775aa1ad594099201b075635be
+	depends = iceweasel>=39.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-mr_39.0.3-1_all.deb
+	sha256sums = aecb8c247337e89a612b6f907ee79cda1cdc44710cf6f92e09b70d62b13304ec
 
 pkgname = iceweasel-i18n-mr
 
