@@ -10,7 +10,7 @@ url='https://www.opensc-project.org/opensc/wiki/pam_pkcs11'
 license=('LGPL')
 depends=('pcsclite')
 backup=('etc/pam_pkcs11/pam_pkcs11.conf' 'etc/pam_pkcs11/subject_mapping' 'etc/pam_pkcs11/card_eventmgr.conf')
-source=("https://www.opensc-project.org/svnp/files/trunk/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("http://downloads.sourceforge.net/opensc/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('5ca42826b60ffcb574cc16b965f56b00')
 
 build() {
