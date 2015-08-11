@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-lt
 	pkgdesc = Lithuanian language pack for Iceweasel
-	pkgver = 39.0.deb1
+	pkgver = 39.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-lt_39.0-1_all.deb
-	sha256sums = 99c3d86778d1fdb053bfce361397f1059eb51551ac9e8747b17589c40d053153
+	depends = iceweasel>=39.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-lt_39.0.3-1_all.deb
+	sha256sums = b0bf847bc8f9209b45c5896eabcc035bdb31b850d63be7f123df2c8f05444944
 
 pkgname = iceweasel-i18n-lt
 
