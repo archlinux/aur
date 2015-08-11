@@ -1,0 +1,25 @@
+pkgbase = kmozillahelper-frameworks
+	pkgdesc = Mozilla KDE Integration, unofficial KF5 port
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://build.opensuse.org/package/show/openSUSE:Factory/mozilla-kde4-integration
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = knotifications
+	depends = kio
+	provides = kmozillahelper
+	conflicts = kmozillahelper
+	source = CMakeLists.txt
+	source = kmozillahelper.notifyrc
+	source = main.cpp
+	source = main.h
+	md5sums = 891295515642feb48596b04c0b62daf0
+	md5sums = 9f55423a57baafbfd1377dfece41c2e8
+	md5sums = 09b4731c5687f3af2f1b8853b27d2df8
+	md5sums = 3e7829d75332b8446bde9358b758be23
+
+pkgname = kmozillahelper-frameworks
+
