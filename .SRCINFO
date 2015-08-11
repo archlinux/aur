@@ -1,0 +1,16 @@
+pkgbase = libmrss
+	pkgdesc = C library for parsing, writing and creating RSS/ATOM files or streams
+	pkgver = 0.19.2
+	pkgrel = 2
+	url = http://www.autistici.org/bakunin/libmrss/
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	depends = curl
+	depends = libnxml
+	options = !libtool
+	source = http://www.autistici.org/bakunin/libmrss/libmrss-0.19.2.tar.gz
+	md5sums = a6f66b72898d27270e3a68007f90d62b
+
+pkgname = libmrss
+
