@@ -1,0 +1,20 @@
+pkgbase = acsccid
+	pkgdesc = a PC/SC driver for Linux/Mac OS X and it supports ACS CCID smart card readers. This library provides a PC/SC IFD handler implementation and communicates with the readers through the PC/SC Lite resource manager (pcscd).
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://acsccid.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = pcsclite>=1.8.3
+	makedepends = libusb-compat>=0.1.4
+	makedepends = flex
+	makedepends = pkg-config
+	depends = pcsclite>=1.8.3
+	depends = libusb-compat>=0.1.4
+	source = https://downloads.sourceforge.net/acsccid/acsccid-1.1.0.tar.bz2
+	md5sums = 5718cdd991e4f158b42f04329cbae286
+	sha1sums = 56ac87c82b277a67329d3736704bc4a8fa376e9d
+
+pkgname = acsccid
+
