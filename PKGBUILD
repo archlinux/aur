@@ -1,8 +1,8 @@
 # Maintainer: Gary DeLaney <gld1982ltd@gmail.com>
 
 _gitroot="git://github.com/semplice/bake.git"
-_gitbranch=semplice
-_gitname=bake
+_gitbranch="semplice"
+_gitname="bake"
 
 pkgname="$_gitname-sl-git"
 pkgver=0
@@ -14,7 +14,7 @@ license=('LGPL')
 groups=()
 depends=()
 makedepends=('itstool' 'vala')
-provides=("${pkgname%}" "${pkgname%-sl-git}")
+provides=("${pkgname%-sl-git}")
 conflicts=("${pkgname%}" "${pkgname%-sl-git}")
 replaces=()
 backup=()

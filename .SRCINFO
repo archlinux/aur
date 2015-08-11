@@ -8,7 +8,6 @@ pkgbase = bake-sl-git
 	license = LGPL
 	makedepends = itstool
 	makedepends = vala
-	provides = bake-sl-git
 	provides = bake
 	conflicts = bake-sl-git
 	conflicts = bake
