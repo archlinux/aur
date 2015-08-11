@@ -2,7 +2,7 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=python-simpletal
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc='Standalone Python implementation of the TAL, TALES and METAL specifications used in Zope to power HTML and XML templates.'
 arch=('any')
@@ -10,7 +10,7 @@ url='http://www.owlfish.com/software/simpleTAL/'
 license=('BSD')
 depends=('python')
 source=("http://www.owlfish.com/software/simpleTAL/downloads/SimpleTAL-${pkgver}.tar.gz")
-md5sums=('2c43fb2376d501c2957bda26c81c419f')
+md5sums=('0671b1e26e7d6a1d075b6d0924c0e3d4')
 
 build() {
   cd SimpleTAL-${pkgver}
