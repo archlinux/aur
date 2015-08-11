@@ -2,6 +2,7 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-beta-bin
+_pkgname=thunderbird-beta
 pkgver=40.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
@@ -43,19 +44,19 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Install
-  cp -r thunderbird/ "$pkgdir"/opt/$pkgname-$pkgver
-  install -m644 vendor.js "$pkgdir"/opt/$pkgname-$pkgver/defaults/pref/
+  cp -r thunderbird/ "$pkgdir"/opt/$_pkgname
+  install -m644 vendor.js "$pkgdir"/opt/$_pkgname/defaults/pref/
 
   # /usr/bin symlink
-  ln -s /opt/$pkgname-$pkgver/thunderbird "$pkgdir"/usr/bin/thunderbird-beta
+  ln -s /opt/$_pkgname/thunderbird "$pkgdir"/usr/bin/$_pkgname
 
-  # Desktop
+  # Desktops
   install -m644 *.desktop "$pkgdir"/usr/share/applications/
 
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
     install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$pkgname-$pkgver/chrome/icons/default/default${i/x*}.png \
-          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$pkgname.png
+    ln -s /opt/$_pkgname/chrome/icons/default/default${i/x*}.png \
+          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
   done
 }
