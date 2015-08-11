@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-kn
 	pkgdesc = Kannada language pack for Iceweasel
-	pkgver = 39.0.deb1
+	pkgver = 39.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-kn_39.0-1_all.deb
-	sha256sums = 65549f2d5f09291a503a4382adaeaaaf38bfe613308853fc6214d1224bf22dbc
+	depends = iceweasel>=39.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-kn_39.0.3-1_all.deb
+	sha256sums = 48f1ac145483531881fdd95f3a4d39e6ae207d301fe3f4031a7be9a73a6dd1de
 
 pkgname = iceweasel-i18n-kn
 
