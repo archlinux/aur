@@ -8,7 +8,7 @@ _pkgname="rtorrent"
 pkgver=0.9.5
 pkgrel=3
 pkgdesc="Ncurses BitTorrent client based on libTorrent with color patch."
-url="http://libtorrent.rakshasa.no"
+url="http://rakshasa.github.io/rtorrent/"
 arch=("i686" "x86_64")
 license=("GPL")
 depends=("curl" "libtorrent=0.13.5" "xmlrpc-c" "libsigc++")
