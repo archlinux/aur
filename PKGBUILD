@@ -1,4 +1,4 @@
-# Maintainer: Facundo Tuesca <facutuesca at gmail dot com>
+# Maintainer: drrossum <d.r.vanrossum at gmx.de>
 
 pkgname=vim-pathogen
 pkgver=2.3
