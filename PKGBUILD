@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Petitjean <alpetitjean at gmail dot com>
 
 pkgname=mopidy-mpris
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Mopidy extension for controlling Mopidy through the MPRIS D-Bus interface"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 makedepends=('python2')
 provides=('mopidy-mpris')
 source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('092e3248127b9d39e97ba35db7348ce8')
+md5sums=('b32a7832dbc06993a8fd022f2534e2bc')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = mopidy-mpris
 	pkgdesc = Mopidy extension for controlling Mopidy through the MPRIS D-Bus interface
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mopidy-mpris
 	depends = python2-setuptools
 	depends = python2-dbus
 	provides = mopidy-mpris
-	source = https://github.com/mopidy/mopidy-mpris/archive/v1.2.0.tar.gz
-	md5sums = 092e3248127b9d39e97ba35db7348ce8
+	source = https://github.com/mopidy/mopidy-mpris/archive/v1.3.0.tar.gz
+	md5sums = b32a7832dbc06993a8fd022f2534e2bc
 
 pkgname = mopidy-mpris
 
