@@ -1,4 +1,3 @@
-
 # Contributor: Brent Carmer
 
 pkgname=yices
@@ -27,13 +26,5 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
-  #cd "$srcdir/yices-$pkgver/"
-  #install -D bin/yices  "$pkgdir"/usr/bin/yices
   install -m644 -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-  #install -D include/yices.h  "$pkgdir"/usr/include/yices.h
-  #install -D include/yices_exit_codes.h  "$pkgdir"/usr/include/yices_exit_codes.h
-  #install -D include/yices_limits.h  "$pkgdir"/usr/include/yices_limits.h
-  #install -D include/yices_types.h  "$pkgdir"/usr/include/yices_types.h
-  #install -m644 -D lib/libyices.so.$pkgver  "$pkgdir"/usr/lib/libyices.so.$pkgver
 }
