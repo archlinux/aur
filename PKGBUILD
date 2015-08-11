@@ -2,8 +2,8 @@
 
 _name=compiz
 pkgname=compiz-xfce
-pkgver=0.8.9
-pkgrel=24
+pkgver=0.8.10
+pkgrel=1
 arch=('any')
 url="http://cgit.compiz.org/"
 license=('GPL' 'CCPL:by-sa-3.0')
