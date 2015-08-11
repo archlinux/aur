@@ -1,5 +1,5 @@
-# Maintainer: oozyslug <oozyslug at gmail dot com>
-# Contributor: oozyslug <oozyslug at gmail dot com>
+# Maintainer: Thomas Berryhill <tb01110100@gmail.com>
+# Contributor: oozyslug <oozyslug@gmail.com>
 
 pkgname=vim-pathogen-git
 pkgver=2.3.10.g91e6378
