@@ -1,6 +1,6 @@
 pkgname=beanstool-git
 pkgver=v0.2.0.r0.g18464dc
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc=""
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ build() {
   mkdir -p "$srcdir/go"
   export  GOPATH="$srcdir/go"
   go get gopkg.in/check.v1
-  make 
+  make build
 }
 
 check() {
