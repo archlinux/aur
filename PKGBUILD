@@ -3,7 +3,7 @@
 _themename=simpliX
 pkgname=openbox-theme-simplix
 pkgver=r3.888f015
-pkgrel=3
+pkgrel=4
 pkgdesc='A very bright, simple but daily usable theme for Openbox.'
 arch=('any')
 url='http://sixsixfive.deviantart.com/art/simpliX-346404452'
@@ -12,7 +12,6 @@ license=('CCPL:cc-by-sa-4.0')
 depends=('openbox')
 makedepends=('git')
 provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
 
 source=(
 	"git+https://github.com/sixsixfive/${_themename}.git"
@@ -36,9 +35,9 @@ package() {
 	
 	# Openbox theme
 	mkdir -p ${pkgdir}/usr/share/themes/${_themename}
-	cp -R ./openbox-3 ${pkgdir}/usr/share/themes/${_themename}
+	cp -R openbox-3 ${pkgdir}/usr/share/themes/${_themename}
 	
 	# Wallpaper (pattern)
 	mkdir -p ${pkgdir}/usr/share/backgrounds/${_themename}
-	cp -u ./extras/Wallpapers/Patterns/wallpaper1.png ${pkgdir}/usr/share/backgrounds/${_themename}/${_themename}-wallpaper.png
+	cp -u extras/Wallpapers/Patterns/wallpaper1.png ${pkgdir}/usr/share/backgrounds/${_themename}/${_themename}-wallpaper.png
 }
