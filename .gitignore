@@ -1,0 +1,7 @@
+src
+pkg
+enet
+x264
+zlog
+*.tar.gz
+*.pkg.tar.xz

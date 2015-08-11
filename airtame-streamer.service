@@ -1,0 +1,11 @@
+[Unit]
+Description=Airtame streamer service
+
+[Service]
+ExecStart=/usr/bin/airtame-streamer -D
+Environment=DISPLAY=:0
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
