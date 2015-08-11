@@ -3,6 +3,7 @@
 # Contributor: Joey Dumont <joey.dumont@gmail.com>
 
 pkgname=onedrive-d-git
+_pkgname=onedrive-d-old
 pkgver=20150407.g62a0733
 pkgrel=5
 pkgdesc="Client daemon for Microsoft OneDrive service"
@@ -27,17 +28,17 @@ sha256sums=('SKIP'
             '97e59a5723f4772f00eb88eee48e9100fbe331a4d9043db0fddda8965bbe6817')
 
 pkgver() {
-  cd "$srcdir/onedrive-d"
+  cd "$srcdir/$_pkgname"
   git log -1 --format="%cd.g%h" --date=short | sed 's/-//g'
 }
 
 build() {
-  cd "$srcdir/onedrive-d"
+  cd "$srcdir/$_pkgname"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/onedrive-d"
+  cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
   python setup.py clean
   install -D onedrive_d/res/icon_256.png \
