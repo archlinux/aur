@@ -66,8 +66,8 @@ pkgbase=linux-bfs
 pkgname=('linux-bfs' 'linux-bfs-headers' 'linux-bfs-docs')
 _kernelname=-bfs
 _srcname=linux-4.1
-pkgver=4.1.4
-pkgrel=5
+pkgver=4.1.5
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://ck-hack.blogspot.de"
 license=('GPL2')
@@ -473,7 +473,7 @@ package_linux-bfs-docs() {
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'c6ac581f49e6fcbc6248a56e0e318778743e83c1936b3540b9b4aef255b5877ed3bae2fdd09fea8d3a86e6b57dbb6a413b4ebe4f994cbe0b0a0167b4dc821794'
+            '1325cdb35ea1f277d513932af37804f788b96ae63b94cedeb3c9b916ee8963bbd6aca5d0e13279e36a81f1de06005c5f3666ecfc845609932686f261fa4250c5'
             'SKIP'
             '9ff7279db6a976c495ba1e09466d688d84f0ef9cca2912e8aeb12f68070e9af012a3c3558e25daf9459fce7d27dc9a82f8fe58f3499164d42ea4561ea62391b5'
             '205059a0ac0fff34298695685a2de8806193b45a270e5818dd942d7c2d07f1d116eacf69dbaf4c99fe342d56b4f43ee4d2b3675a706724ed18cbc39618865d26'
