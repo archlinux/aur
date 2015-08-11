@@ -7,8 +7,8 @@
 pkgname=firefox-nightly-ru
 pkgdesc='Web browser from mozilla.org, nightly build, russian version'
 url='http://nightly.mozilla.org/'
-pkgver=42.0a1
-pkgrel=3
+pkgver=43.0a1
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _filename="firefox-${pkgver}.ru.linux-${CARCH}"
