@@ -1,0 +1,14 @@
+post_install() {
+    echo
+    echo "If the script is not working for you, please make sure that the"
+    echo "kernel module asus-nb-wmi is loaded."
+    echo
+    echo -e "\tmodprobe asus-nb-wmi"
+    echo
+    echo "By default, only root may use the asus-kbd-backlight command."
+    echo "Run \"asus-kbd-backlight allowusers\" to change this, or let"
+    echo "systemd do this automatically at boot by saying:"
+    echo
+    echo -e "\tsystemctl enable asus-kbd-backlight.service"
+    echo
+}

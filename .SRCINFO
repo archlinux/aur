@@ -1,0 +1,13 @@
+pkgbase = asus-kbd-backlight
+	pkgdesc = Helper for adjusting keyboard backlight brightness in Asus Zenbook UX31A and similar models
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A#keyboard_backlight_script
+	install = asus-kbd-backlight.install
+	arch = any
+	license = FDL1.3
+	depends = bash
+	optdepends = systemd: automatically grant user access to keyboard backlight control
+
+pkgname = asus-kbd-backlight
+
