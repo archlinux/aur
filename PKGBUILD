@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=imapsync
-pkgver=1.637
+pkgver=1.644
 pkgrel=1
 pkgdesc="IMAP synchronisation, sync, copy or migration tool"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('perl-date-manip' 'perl-mail-imapclient' 'perl-term-readkey' 'perl-io-s
 			'perl-io-socket-inet6')
 optdepends=('perl-ntlm')
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('8d3e143f20ca306ef7303fc382ad2406b73136ce1e8758d1b9934314acc71b23')
+sha256sums=('cdca8c91eba7e6b771d52e9092521c523ee5042ce669c6e126f3c2171029a74a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
