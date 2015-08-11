@@ -2,16 +2,13 @@
 
 pkgname=openbox-theme-mistral
 pkgver=20150704
-pkgrel=1
+pkgrel=2
 pkgdesc='A Breeze style for Openbox.'
 arch=('any')
 url='http://phobi4n.deviantart.com/art/Mistral-Openbox-543910044'
 license=('license-free')
 
 depends=('openbox')
-optdepends=(
-	'openbox-git: for bleeding-edge openbox features'
-)
 makedepends=('p7zip')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")

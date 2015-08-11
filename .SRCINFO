@@ -1,13 +1,12 @@
 pkgbase = openbox-theme-mistral
 	pkgdesc = A Breeze style for Openbox.
 	pkgver = 20150704
-	pkgrel = 1
+	pkgrel = 2
 	url = http://phobi4n.deviantart.com/art/Mistral-Openbox-543910044
 	arch = any
 	license = license-free
 	makedepends = p7zip
 	depends = openbox
-	optdepends = openbox-git: for bleeding-edge openbox features
 	provides = openbox-theme-mistral=20150704
 	conflicts = openbox-theme-mistral
 	noextract = openbox-theme-mistral-20150704.7z
