@@ -1,7 +1,7 @@
 pkgbase=linux-e531
 _srcname=linux-4.1
-_patchname=patch-4.1.4
-pkgver=4.1.4
+_patchname=patch-4.1.5
+pkgver=4.1.5
 pkgrel=1
 groups=('ThinkPad-E531')
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
-            '0976127a60a950acf2796f642ac647e5231573b9a0f25703a37a50b988bf3b88'
+            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
             'cfe0623547395f3a0d9f002f06104b71f6b14e64539ef686a477aece7658496b'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
