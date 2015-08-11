@@ -10,7 +10,7 @@
 
 pkgname=strongswan
 pkgver=5.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -18,7 +18,19 @@ arch=('i686' 'x86_64')
 depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite')
 conflicts=('openswan')
 options=(!libtool)
-backup=(etc/ipsec.conf etc/strongswan.conf)
+backup=(
+	etc/ipsec.conf 
+	etc/strongswan.conf 
+	etc/strongswan.d/{charon-logging.conf,charon.conf,pki.conf,pool.conf,scepclient.conf,starter.conf,swanctl.conf}
+	etc/strongswan.d/charon/{aesni.conf,attr-sql.conf,attr.conf,cmac.conf,connmark.conf,\
+constraints.conf,curl.conf,des.conf,dhcp.conf,dnskey.conf,eap-aka-3gpp2.conf,eap-aka.conf,\
+eap-gtc.conf,eap-identity.conf,eap-md5.conf,eap-mschapv2.conf,eap-radius.conf,eap-sim-file.conf,\
+eap-sim.conf,eap-simaka-pseudonym.conf,eap-simaka-reauth.conf,eap-tls.conf,ext-auth.conf,farp.conf,\
+fips-prf.conf,forecast.conf,gmp.conf,ha.conf,hmac.conf,kernel-netlink.conf,md5.conf,nonce.conf,openssl.conf,\
+pem.conf,pgp.conf,pkcs1.conf,pkcs12.conf,pkcs7.conf,pkcs8.conf,pubkey.conf,random.conf,rc2.conf,resolve.conf,\
+revocation.conf,sha1.conf,sha2.conf,socket-default.conf,sql.conf,sqlite.conf,sshkey.conf,stroke.conf,updown.conf,\
+vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf}
+)
 
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2")
 
@@ -48,7 +60,8 @@ build() {
         --enable-eap-mschapv2 --enable-eap-radius --enable-xauth-eap \
         --enable-ha --enable-vici --enable-swanctl --enable-systemd --enable-ext-auth \
         --disable-mysql --disable-ldap -enable-cmd --enable-forecast --enable-connmark \
-	--enable-aesni
+	--enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
+	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls
 #	--enable-ruby-gems --enable-python-eggs
   make
 }
