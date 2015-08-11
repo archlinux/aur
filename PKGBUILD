@@ -1,14 +1,16 @@
 
 # Contributor: Paolo Herms
+# Maintainer: Brent Carmer
 
 pkgname=yices-bin
 pkgver=2.4.1
 pkgrel=1
+provides=('yices')
+conflicts=('yices')
 pkgdesc="An automatic theorem prover"
 arch=('i686' 'x86_64')
 url="http://yices.csl.sri.com/"
 license=('custom')
-#source=(http://yices.csl.sri.com/cgi-bin/yices2-newdownload.cgi?file=yices-$pkgver-$CARCH-pc-linux-gnu-static-gmp.tar.gz'&accept=I+Accept')
 source=("http://yices.csl.sri.com/cgi-bin/yices2-newnewdownload.cgi?file=yices-$pkgver-$CARCH-unknown-linux-gnu-static-gmp.tar.gz&accept=I+Agree")
 sha512sums=('12f025632415363f51dea9d7515bda99cdd1c4834774af88deb7f79c7f068c9f8d29ab238f336ee1ca6f6411ccc2138e877711fce47f097ba606537fd9e61732')
 
