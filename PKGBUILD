@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=r20438.e59a44fa74ff
+pkgver=r20438.97edbce9b975
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -60,7 +60,7 @@ build() {
     --with-quantum-depth=16 --enable-java  \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
     --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
-    --with-java-libdir=/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server 
+    --with-java-libdir=/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server 
   CXXFLAGS+="-fexceptions `llvm-config --cxxflags`" make
 }
 
