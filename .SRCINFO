@@ -1,0 +1,17 @@
+pkgbase = otf-quivira
+	pkgdesc = Unicode-based OpenType font with a large character repertoire
+	pkgver = 4.1
+	pkgrel = 1
+	url = http://www.quivira-font.com
+	install = otf-quivira.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.quivira-font.com/files/Quivira.otf
+	source = LICENSE
+	md5sums = 35b77765018ffd77dd5d56c4d55de124
+	md5sums = a543bc4880aeb2b0d427d4ac2fc76980
+
+pkgname = otf-quivira
+
