@@ -1,0 +1,18 @@
+pkgbase = apparix
+	pkgdesc = A command line file browser with bookmark support
+	pkgver = 11.062
+	pkgrel = 2
+	url = http://micans.org/apparix/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	options = !docs
+	options = zipman
+	source = http://micans.org/apparix/src/apparix-11-062.tar.gz
+	source = apparix.sh
+	sha256sums = 211bb5f67b32ba7c3e044a13e4e79eb998ca017538e9f4b06bc92d5953615235
+	sha256sums = 731210a83707fa264510d108e210f29f8b198444bf0a7152087e71007d0658b2
+
+pkgname = apparix
+
