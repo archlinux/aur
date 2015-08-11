@@ -1,0 +1,16 @@
+pkgbase = openbox-theme-silence-arch-git
+	pkgdesc = A dark Openbox 3 theme
+	pkgver = 1.0.afba0d
+	pkgrel = 1
+	url = https://github.com/darthlukan/silence-arch
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = openbox
+	provides = openbox-theme-silence-arch-git-1.0.afba0d
+	conflicts = openbox-theme-silence-arch-git
+	source = silence-arch::git+https://github.com/darthlukan/silence-arch.git
+	md5sums = SKIP
+
+pkgname = openbox-theme-silence-arch-git
+
