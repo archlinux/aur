@@ -1,0 +1,32 @@
+pkgbase = openscam
+	pkgdesc = Open-Source software which can simulate 3-axis NC machining. It is a fast, flexible and user friendly simulation software for the DIY and Open-Source community.
+	pkgver = 0.0.11
+	pkgrel = 2
+	url = http://www.openscam.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = scons
+	makedepends = boost
+	depends = bzip2
+	depends = zlib
+	depends = expat
+	depends = openssl
+	depends = boost-libs
+	depends = sqlite
+	depends = libxml2
+	depends = libgl
+	depends = gts
+	depends = libglade
+	depends = gtkglext
+	depends = glew
+	depends = freeglut
+	depends = dxflib
+	depends = libffi
+	source = http://openscam.com/releases/alpha/release/openscam/debian-testing-64bit/v0.0/openscam_0.0.11.tar.bz2
+	source = fix-packager-detection.diff
+	md5sums = 6ccc539decbf4ffd0612b4a5f995923c
+	md5sums = f7d6b975f1900a2d04a5776fabc22a77
+
+pkgname = openscam
+

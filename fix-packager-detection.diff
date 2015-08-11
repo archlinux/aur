@@ -1,0 +1,34 @@
+--- openscam_0.0.11_orig/cbang/config-scripts/config/packager.py	2012-12-04 13:25:11.000000000 -0800
++++ openscam_0.0.11/cbang/config-scripts/config/packager.py	2013-01-11 08:08:07.278638121 -0800
+@@ -51,30 +51,7 @@
+ 
+ 
+ def _GetPackageType(env):
+-    if env['PLATFORM'] == 'win32': return 'exe'
+-
+-    elif env['PLATFORM'] == 'darwin':
+-        pkg_type = env.get('pkg_type', None)
+-        if pkg_type is None or pkg_type in ('single', 'app'): return 'pkg'
+-        elif pkg_type == 'dist': return 'mpkg'
+-        else: raise Exception, 'Invalid pkg package type "%s"' % pkg_type
+-
+-    elif env['PLATFORM'] == 'posix':
+-        dist = platform.dist()[0].lower()
+-
+-        if dist in ['debian', 'ubuntu']: return 'deb'
+-        if dist in ['centos', 'redhat', 'fedora']: return 'rpm'
+-
+-        # Try to guess
+-        print 'WARNING: Unrecognized POSIX distribution ' + dist + \
+-            ', trying to determine package type from filesystem'
+-
+-        if os.path.exists('/usr/bin/dpkg'): return 'deb'
+-        if os.path.exists('/usr/bin/rpmbuild'): return 'rpm'
+-
+-        raise Exception, 'Unsupported POSIX distribution ' + dist
+-
+-    raise Exception, 'Unsupported package platform %s' % env['PLATFORM']
++    return 'pkg'
+ 
+ 
+ def GetPackageType(env):
