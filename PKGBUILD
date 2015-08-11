@@ -1,8 +1,9 @@
 pkgname=beanstalkd-git
 pkgver=dev1.10.r1.g86231ba
-pkgrel=1
+
+pkgrel=2
 epoch=
-pkgdesc="Fast, simple message queue server, git version"
+pkgdesc="Fast, simple message queue server, git version patched to support unix sockets"
 arch=('i686' 'x86_64')
 url=""
 license=('GPL')
@@ -15,12 +16,14 @@ options=()
 install=
 changelog=
 source=("git://github.com/kr/beanstalkd.git"
+	"unix_sockets.patch::https://patch-diff.githubusercontent.com/raw/kr/beanstalkd/pull/150.patch"
 	"beanstalkd@.service"
 	"beanstalkd.service"
 	"beanstalkd.conf")
 md5sums=('SKIP'
-         'f6151d5d2f07c24977cafba38a9e67c9'
-         'd05b907abfb19174a7321676ecc0c819'
+	 'c17cd694afab67d2d72055f3184c7335'
+	 'f6151d5d2f07c24977cafba38a9e67c9'
+	 'd05b907abfb19174a7321676ecc0c819'
          '7fdc2e3d1dc9c6559b7b007b74588a09')
 
 pkgver() {
@@ -32,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/beanstalkd"
-
+  patch -p1 < $srcdir/unix_sockets.patch
 }
 
 build() {
