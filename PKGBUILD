@@ -2,8 +2,9 @@
 # Contributor: Mizuchi <ytj000+AUR@gmail.com>
 
 pkgname=vim-startify-git
-pkgver=1.8
+pkgver=1.0.r1.ga58f92e
 pkgrel=1
+epoch=1
 pkgdesc='A fancy start screen for Vim.'
 arch=('any')
 url='https://github.com/mhinz/vim-startify'
@@ -16,6 +17,12 @@ groups=('vim-plugins')
 install='vimdoc.install'
 source=("git+https://github.com/mhinz/${pkgname%-git}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  # cutting off 'v' prefix from the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
   cd ${pkgname%-git}
