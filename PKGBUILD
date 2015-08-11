@@ -31,8 +31,8 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-sl-git}"
-	git merge python_version
-	git merge gir_lookup
+	git merge origin/python_version
+	git merge origin/gir_lookup
 }
 
 build() {
