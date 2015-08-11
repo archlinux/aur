@@ -2,13 +2,12 @@
 # Contributor: Benjamin Vanderford <hazor_at_swrpg_dot_info
 pkgname=dict-freedict-fra-eng
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="French -> English dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
-makedepends=('dictd')
 install=$pkgname.install
 source=("http://sourceforge.net/projects/freedict/files/French%20-%20English/$pkgver/freedict-fra-eng-$pkgver.tar.bz2")
 md5sums=('0e3cf6e54654bfc25470dbb68a59363a')
