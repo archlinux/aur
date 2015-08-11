@@ -11,6 +11,7 @@ pkgbase = vera-plugin-openbox-git
 	depends = vera-git
 	depends = openbox
 	depends = python-pycparser
+	depends = libconfig-vapi-git
 	provides = vera-plugin-openbox-git
 	conflicts = vera-plugin-openbox-git
 	conflicts = vera-plugin-openbox
