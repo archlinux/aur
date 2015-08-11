@@ -2,16 +2,14 @@
 
 pkgname=openbox-theme-mythos
 pkgver=20150104
-pkgrel=2
+pkgrel=3
 pkgdesc='A dark blue theme for Openbox.'
 arch=('any')
 url='http://box-look.org/content/show.php?content=88560'
 license=('GPL3')
 
 depends=('openbox')
-optdepends=()
 provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
 
 # Mirror
 # https://www.dropbox.com/s/q40ppjtue8z2me7/88560-Mythos_OB.tar.gz
