@@ -1,0 +1,14 @@
+pkgbase = mo-git
+	pkgdesc = Mustache templates in pure bash
+	pkgver = r39.e1b6815
+	pkgrel = 1
+	url = https://github.com/tests-always-included/mo
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = bash
+	source = mo-git::git+https://github.com/tests-always-included/mo.git
+	sha256sums = SKIP
+
+pkgname = mo-git
+
