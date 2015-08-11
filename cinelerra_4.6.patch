@@ -1,0 +1,45 @@
+diff -ru cinelerra-4.6-src/cinelerra/filejpeg.C cinelerra-4.6-src.new/cinelerra/filejpeg.C
+--- cinelerra-4.6-src/cinelerra/filejpeg.C	2014-09-01 21:18:54.000000000 -0700
++++ cinelerra-4.6-src.new/cinelerra/filejpeg.C	2014-09-15 09:47:05.087692323 -0700
+@@ -33,6 +33,7 @@
+ #include "videodevice.inc"
+ 
+ 
++#include <string.h>
+ #include <errno.h>
+ 
+ 
+diff -ru cinelerra-4.6-src/cinelerra/filemov.C cinelerra-4.6-src.new/cinelerra/filemov.C
+--- cinelerra-4.6-src/cinelerra/filemov.C	2014-09-01 21:18:54.000000000 -0700
++++ cinelerra-4.6-src.new/cinelerra/filemov.C	2014-09-15 09:48:06.208668661 -0700
+@@ -36,6 +36,8 @@
+ #include "videodevice.inc"
+ 
+ #include <unistd.h>
++#include <string.h>
++#include <strings.h>
+ 
+ #if 0
+ N_("MPEG-4")
+diff -ru cinelerra-4.6-src/cinelerra/filepng.C cinelerra-4.6-src.new/cinelerra/filepng.C
+--- cinelerra-4.6-src/cinelerra/filepng.C	2014-09-01 21:18:54.000000000 -0700
++++ cinelerra-4.6-src.new/cinelerra/filepng.C	2014-09-15 09:41:24.460835813 -0700
+@@ -29,6 +29,7 @@
+ #include "vframe.h"
+ #include "videodevice.inc"
+ 
++#include <string.h>
+ #include <png.h>
+ 
+ FilePNG::FilePNG(Asset *asset, File *file)
+diff -ru cinelerra-4.6-src/cinelerra/videodevice.C cinelerra-4.6-src.new/cinelerra/videodevice.C
+--- cinelerra-4.6-src/cinelerra/videodevice.C	2014-09-01 21:18:54.000000000 -0700
++++ cinelerra-4.6-src.new/cinelerra/videodevice.C	2014-09-15 09:53:27.356291064 -0700
+@@ -50,6 +50,7 @@
+ 
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <string.h>
+ 
+ KeepaliveThread::KeepaliveThread(VideoDevice *device)
+  : Thread()

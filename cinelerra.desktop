@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Cinelerra
+Comment=Video Editor
+Exec=cinelerra
+Terminal=false
+Type=Application
