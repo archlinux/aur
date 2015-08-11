@@ -1,0 +1,14 @@
+pkgbase = beanstool-git
+	pkgver = v0.2.0.r0.g18464dc
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	provides = beanstool
+	conflicts = beanstool
+	source = git+https://github.com/tyba/beanstool.git
+	md5sums = SKIP
+
+pkgname = beanstool-git
+
