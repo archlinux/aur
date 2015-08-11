@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/sk1418/zhuaxia/tree/bleeding"
 license=('MIT')
 makedepends=('git')
-depends=('python2-requests' 'python2-mutagen' 'python2-beautifulsoup4' 'python2-setuptools')
+depends=('python2-requests' 'mutagen' 'python2-beautifulsoup4' 'python2-setuptools')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 source="$pkgname::git+http://github.com/sk1418/${pkgname%-*}.git#branch=bleeding"
