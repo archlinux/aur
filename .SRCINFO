@@ -1,0 +1,11 @@
+pkgbase = beanstalkd-cli-bin
+	pkgver = 0.3.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/schickling/beanstalkd-cli/releases/download/0.3.0/beanstalkd-cli-linux.tar.gz
+	md5sums = 1eb9be95e2124651464d6cfe8065faf5
+
+pkgname = beanstalkd-cli-bin
+
