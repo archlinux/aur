@@ -1,0 +1,16 @@
+pkgbase = kdeplasma-applets-playbar
+	pkgdesc = MPRIS2 client, written in QML for Plasma KDE
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/audoban/PlayBar
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	source = https://github.com/audoban/PlayBar/archive/v0.7.1/PlayBar-0.7.1.tar.gz
+	md5sums = b29f9fe7592f1b7044037b41519960d1
+
+pkgname = kdeplasma-applets-playbar
+
