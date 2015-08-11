@@ -2,7 +2,7 @@
 
 pkgname=xurls-git
 _name="${pkgname/-git/}"
-pkgver=v0.6.0
+pkgver=v0.6.0.19.g0837a76
 pkgrel=1
 pkgdesc="Extract urls from plain text"
 url="https://github.com/mvdan/${_name}"
