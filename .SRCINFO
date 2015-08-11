@@ -1,0 +1,17 @@
+pkgbase = sph-sc-git
+	pkgdesc = a scheme syntax to c compiler
+	pkgver = 9661cbb
+	pkgrel = 1
+	url = http://sph.mn/content/3d3
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	depends = guile
+	depends = sph-lib-git
+	provides = sph-sc
+	source = git://git.sph.mn/sph-sc
+	md5sums = SKIP
+
+pkgname = sph-sc-git
+
