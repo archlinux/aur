@@ -1,0 +1,18 @@
+pkgbase = portecle
+	pkgdesc = User friendly GUI application for creating, managing and examining key stores.
+	pkgver = 1.7
+	pkgrel = 2
+	url = http://portecle.sourceforge.net/
+	install = portecle.install
+	arch = any
+	license = GPL
+	depends = java-environment
+	depends = bash
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/project/portecle/portecle/1.7/portecle-1.7.zip
+	source = portecle.sh
+	md5sums = c01754e2a298139f08fbb59d39d861df
+	md5sums = 443c7296b801e9372b56d0a4daa76f0c
+
+pkgname = portecle
+
