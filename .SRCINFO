@@ -1,0 +1,15 @@
+pkgbase = vimix-icon-theme
+	pkgdesc = Fresh and simple personality icon theme.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://vinceliuice.deviantart.com/art/Vimix-icon-themes-530683384
+	arch = any
+	license = GPLv3
+	makedepends = p7zip
+	depends = numix-circle-icon-theme-git
+	depends = paper-icon-theme-git
+	source = http://orig05.deviantart.net/5db4/f/2015/152/1/a/vimix_icon_themes_by_vinceliuice-d8rydx4.7z
+	md5sums = SKIP
+
+pkgname = vimix-icon-theme
+
