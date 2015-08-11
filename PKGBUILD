@@ -3,7 +3,7 @@
 
 _pkgname=lightmediascanner
 pkgname=$_pkgname-git
-pkgver=0.5.0.r0.g2f4dd51
+pkgver=0.5.1.r18.gadfddb3
 pkgrel=1
 pkgdesc="Lightweight library to scan media - Development version"
 arch=('i686' 'x86_64')
@@ -17,13 +17,13 @@ source=("git://github.com/profusion/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   git describe --tags --long | sed 's/^release_//;s/-/.r/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -34,11 +34,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS NEWS README TODO
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS NEWS README TODO
 }
