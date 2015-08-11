@@ -1,8 +1,9 @@
-# Maintainer: Josh McGee <josh.s.mcgee@gmail.com>
+# Maintainer: Justin Dray <justin@dray.be>
+# Contributor: Josh McGee <josh.s.mcgee@gmail.com>
 # Contributor: Earnestly <zibeon@gmail.com>
 
 pkgname=shellcheck
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="A shell script static analysis tool: Stable Release"
 arch=(i686 x86_64)
@@ -16,7 +17,7 @@ makedepends=('ghc'
 	     'haskell-quickcheck'
 	     'haskell-regex-tdfa')
 source=("https://github.com/koalaman/shellcheck/archive/v$pkgver.tar.gz")
-md5sums=('f3c1fb82dbb02d79cb6f17e1623b5712')
+md5sums=('2eda0ca7060edb890bcf760a78fa4eff')
 
 prepare() {
 	cd "$pkgname-$pkgver"
