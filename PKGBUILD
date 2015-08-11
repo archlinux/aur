@@ -1,4 +1,5 @@
 # Maintainer: Thomas Berryhill <tb01110100@gmail.com>
+# Contributor: Bastien Dejean <baskerville@lavabit.com>
 
 _pkgname=xdo
 pkgname=${_pkgname}-git
