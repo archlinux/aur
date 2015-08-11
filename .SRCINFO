@@ -1,0 +1,20 @@
+pkgbase = kolmafia-svn
+	pkgdesc = An alternate interface to the online adventure game 'Kingdom of Loathing'.
+	pkgver = 15495
+	pkgrel = 1
+	url = http://kolmafia.sourceforge.net/
+	arch = any
+	license = BSD
+	makedepends = apache-ant
+	makedepends = subversion
+	depends = java-runtime
+	depends = bash
+	provides = kolmafia
+	conflicts = kolmafia
+	source = kol
+	source = kolmafia-svn::svn+svn://svn.code.sf.net/p/kolmafia/code/
+	md5sums = 6ebefe8fd7b178b73bfeb3c62256738f
+	md5sums = SKIP
+
+pkgname = kolmafia-svn
+
