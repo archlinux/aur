@@ -1,35 +1,42 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
-pkgname=lcf2xml-git
-pkgver=r25.762d235
+pkgname=easyrpg-tools-git
+pkgver=r39.e185825
 pkgrel=1
-pkgdesc="EasyRPG's converter tool (RPG Maker 2000/2003 projects<>XML, development version)"
+pkgdesc="EasyRPG tools to convert RPG Maker 2000/2003 files (development version)"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
-license=('MIT')
+license=('MIT' 'GPL' 'custom')
 conflicts=('lcf2xml')
-provides=('lcf2xml')
+provides=('lcf2xml' 'lmu2png' 'xyz2png')
 makedepends=('git')
-depends=('gcc-libs' 'liblcf-git')
-source=(lcf2xml::"git+https://github.com/EasyRPG/lcf2xml.git")
+depends=('gcc-libs' 'liblcf-git' 'sdl2_image')
+source=(${pkgname#-*}::"git+https://github.com/EasyRPG/tools.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd lcf2xml
+  cd ${pkgname#-*}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {
-  cd lcf2xml
+  cd ${pkgname#-*}
 
+  make -C lmu2png
+  make -C xyz2png
   # compile with our flags
-  g++ $CXXFLAGS src/main.cpp $(pkg-config --cflags --libs liblcf) $LDFLAGS -o lcf2xml
+  g++ $CXXFLAGS lcf2xml/src/main.cpp $(pkg-config --cflags --libs liblcf) $LDFLAGS -o lcf2xml/lcf2xml
 }
 
 package () {
-  cd lcf2xml
+  cd ${pkgname#-*}
 
-  install -Dm755 lcf2xml "$pkgdir"/usr/bin/lcf2xml
-  # license
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  # executables
+  install -Dm755 lmu2png/lmu2png "$pkgdir"/usr/bin/lmu2png
+  install -Dm755 xyz2png/xyz2png "$pkgdir"/usr/bin/xyz2png
+  install -Dm755 lcf2xml/lcf2xml "$pkgdir"/usr/bin/lcf2xml
+  # licenses
+  install -Dm644 lmu2png/COPYING "$pkgdir"/usr/share/licenses/$pkgname/lmu2png-COPYING
+  install -Dm644 xyz2png/COPYING "$pkgdir"/usr/share/licenses/$pkgname/xyz2png-COPYING
+  install -Dm644 lcf2xml/COPYING "$pkgdir"/usr/share/licenses/$pkgname/lcf2xml-COPYING
 }
