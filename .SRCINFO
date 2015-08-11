@@ -1,7 +1,7 @@
 pkgbase = zhuaxia
 	pkgdesc = cli tool to download mp3 from xiami.com and music.163.com
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sk1418/zhuaxia
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = zhuaxia
 	depends = mutagen
 	depends = python2-beautifulsoup4
 	depends = python2-setuptools
+	conflicts = python2-mutagen
 	source = zhuaxia::git+http://github.com/sk1418/zhuaxia.git
 	sha256sums = SKIP
 	sha512sums = SKIP
