@@ -1,0 +1,15 @@
+pkgbase = automysqlbackup
+	pkgdesc = Automatic daily/weekly/monthly MySQL backup script
+	pkgver = 3.0_rc6
+	pkgrel = 3
+	url = http://sourceforge.net/projects/automysqlbackup/
+	install = automysqlbackup.install
+	arch = any
+	license = GPL
+	depends = mariadb-clients
+	backup = etc/automysqlbackup/automysqlbackup.conf
+	source = automysqlbackup-v3.0_rc6.tar.gz::http://sourceforge.net/projects/automysqlbackup/files/AutoMySQLBackup/AutoMySQLBackup%20VER%203.0/automysqlbackup-v3.0_rc6.tar.gz/download
+	sha256sums = 889e064d086b077e213da11e937ea7242a289f9217652b9051c157830dc23cc0
+
+pkgname = automysqlbackup
+

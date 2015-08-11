@@ -1,0 +1,14 @@
+post_install() {
+        echo "------------------------------------------------------------"
+        echo "> Link /usr/bin/automysqlbackup to /etc/cron.daily or /etc/cron.weekly:"
+        echo "> ln -s /usr/bin/automysqlbackup /etc/cron.daily/automysqlbackup"
+        echo "> "
+        echo "> Edit the default settings in /etc/automysqlbackup/automysqlbackup.conf"
+        echo "------------------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
+}
+
+# vim:set ts=2 sw=2 et:
