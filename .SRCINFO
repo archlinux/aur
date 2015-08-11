@@ -1,0 +1,15 @@
+pkgbase = ttf-vietnamese-tcvn3
+	pkgdesc = Vietnamese Classic TCVN3 Fonts
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://www.narga.org/2012/11/goi-cai-dat-cac-font-cu-tcvn3-va-vni-cho-arch-linux/
+	install = ttf-vietnamese-tcvn3.install
+	arch = any
+	license = EULA
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://dl.dropbox.com/s/pberbsx66oqgw0e/ttf-vietnamese-tcvn3-1.0.tar.gz
+	md5sums = 90541d4f333eb8abfc1747645cd1dcd9
+
+pkgname = ttf-vietnamese-tcvn3
+
