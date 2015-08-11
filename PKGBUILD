@@ -28,7 +28,6 @@ build() {
   make
   export TAO_ROOT=$ACE_ROOT/TAO
   cd $TAO_ROOT
-  cd tao
   make
 }
 package() {
