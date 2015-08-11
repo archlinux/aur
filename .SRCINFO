@@ -1,0 +1,14 @@
+pkgbase = shallot-git
+	pkgdesc = Shallot allows you to create customized .onion addresses for your hidden service.
+	pkgver = 0.0.3.r26.g831de01
+	pkgrel = 1
+	url = https://github.com/katmagic/Shallot
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	source = git://github.com/katmagic/Shallot.git
+	sha512sums = SKIP
+
+pkgname = shallot-git
+
