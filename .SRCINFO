@@ -1,0 +1,16 @@
+pkgbase = bodr
+	pkgdesc = A set of data for chemoinformatics in both XML and plain-text formats.
+	pkgver = 10
+	pkgrel = 1
+	url = http://sf.net/projects/bodr/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = perl
+	source = http://downloads.sourceforge.net/bodr/10/bodr-10.tar.gz
+	md5sums = 16ea340e3d7fd236b28c2e23f2696ed8
+
+pkgname = bodr
+
