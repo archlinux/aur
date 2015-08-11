@@ -13,7 +13,7 @@ pkgname=linux-lts310
 true && pkgname=(linux-lts310 linux-lts310-headers)
 _kernelname=-lts310
 _srcname=linux-3.10
-pkgver=3.10.85
+pkgver=3.10.86
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org"
@@ -31,7 +31,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'criu-no-expert.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
-            'c20dd0404aa48fd3253a4f5f9045f068a9c92f837758e1de8c4bc2243a770604'
+            '330c1176511d0fbd16ec68732c14183216d1aa422dc896d63bc9545b5abcd3cb'
             'SKIP'
             'd7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9'
             'abd98bed3e743ba60809fe54a1a5c6b46b9f401844b0beef8da1708b1fe8196b'
