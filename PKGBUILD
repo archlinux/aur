@@ -1,7 +1,7 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=airtame-streamer
 pkgver=1.0.1_12
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream your display to an airtame dongle."
 arch=('x86_64')
 url="http://www.airtame.com"
@@ -55,8 +55,6 @@ package() {
 
   #copy our own scripts
   cp streamer.sh ${pkgdir}/usr/bin/airtame-streamer
-  #cp airtame-tray ${pkgdir}/usr/bin/airtame-tray
-  cp views/assets/tray/icon-blue@2x.png ${pkgdir}/opt/airtame/logo.png
 
   #install our systemd user service
   cp airtame-streamer.service ${pkgdir}/usr/lib/systemd/user/
