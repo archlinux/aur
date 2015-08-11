@@ -1,6 +1,6 @@
 # Maintainer: David Roheim <david dot roheim at gmail dot com>
 pkgname=zendframework2
-pkgver=2.4.2
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="An object-oriented framework for PHP - Full version"
 arch=('any')
@@ -11,7 +11,7 @@ options=(!strip)
 optdepends=()
 conflicts=('zendframework2-min' 'zendframework2-git')
 source=("http://packages.zendframework.com/releases/ZendFramework-$pkgver/ZendFramework-$pkgver.tgz")
-sha256sums=('5515f563f949f14a811955742dcb06fa31a9eabe8bc760ca66646c768c5f5799')
+sha256sums=('b3554004391338aad2dcdfb1721b3b1ba25648db43066d6522e555f3c2e2caac')
 
 build() {
     true
