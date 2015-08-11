@@ -1,12 +1,13 @@
 pkgbase = python-rpweibo
 	pkgdesc = A Weibo API wrapper based on cURL + Python.
 	pkgver = 0.02.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WeCase/rpweibo
 	arch = any
 	license = LGPL3
 	depends = python
 	depends = python-pycurl
+	depends = python-rsa
 	source = rpweibo-0.02.2.tar.gz::https://github.com/WeCase/rpweibo/archive/0.02.2.tar.gz
 	md5sums = f836fb884b624b4462d0a39c449ad181
 
