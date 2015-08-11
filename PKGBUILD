@@ -5,12 +5,12 @@
 
 pkgname=rkt-git
 pkgver=0.7.0.r70.g278f2e9
-pkgrel=1
+pkgrel=2
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
 license=(apache)
-makedepends=('cpio' 'go' 'squashfs-tools' 'perl-capture-tiny')
+makedepends=('cpio' 'go' 'wget' 'squashfs-tools' 'perl-capture-tiny')
 provides=('rkt')
 replaces=('rocket' 'rkt')
 conflicts=('rocket' 'rkt')
