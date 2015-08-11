@@ -1,0 +1,18 @@
+pkgbase = sph-dg-git
+	pkgdesc = generic graph database for guile
+	pkgver = 71b1d03
+	pkgrel = 1
+	url = http://sph.mn/content/2faf
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sph-sc-git
+	depends = guile
+	depends = sph-lib-git
+	depends = liblmdb
+	provides = sph-dg
+	source = git://git.sph.mn/sph-dg
+	md5sums = SKIP
+
+pkgname = sph-dg-git
+
