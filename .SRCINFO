@@ -1,0 +1,27 @@
+pkgbase = python32
+	pkgdesc = Next generation of the python high-level scripting language
+	pkgver = 3.2.6
+	pkgrel = 1
+	url = http://www.python.org/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk
+	makedepends = sqlite
+	makedepends = valgrind
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	source = http://www.python.org/ftp/python/3.2.6/Python-3.2.6.tar.xz
+	source = readline-6.3.patch
+	sha256sums = 1d12b501819fd26afafbf8459be1aa279b56f032b4c15412de0a713ce0de7bdc
+	sha256sums = fbd8a517726ec5d84e33e7f39bf721e3b0d08471d0cf905b830327b8aa959cc4
+
+pkgname = python32
+

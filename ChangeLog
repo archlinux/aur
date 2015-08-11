@@ -1,0 +1,19 @@
+2015-08-04 Yen Chi Hsuan <yan12125@gmail.com>
+
+	* Adopted the AUR package.
+	* Update to Python 3.2.6
+
+2014-10-22 Alireza Savand <alireza.savand@gmail.com>
+        
+        * Adopted the AUR package.
+        * Unflag package.
+
+2014-04-16 Christopher Arndt <chris@chrisarndt.de>
+
+	* 3.2.5-1 :
+	updated to upstream version 3.2.5.
+	removed '!makeflags' from options to allow multi-processor compilation
+	included patch for building against readline >= 6.3
+	changed checksum to sha256
+	removed man page symlink to python3.1.gz to avoid conflict with current
+	python 3 package
