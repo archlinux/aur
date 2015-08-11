@@ -9,7 +9,7 @@ pkgdesc="Java Development Tools - Separated from Eclipse SDK package. Use with e
 url="http://www.eclipse.org/jdt/"
 arch=('any')
 license=('EPL')
-depends=('eclipse-platform >= 4.5')
+depends=('eclipse>=4.5')
 makedepends=('unzip')
 options=(!strip)
 source=("http://www.eclipse.org/downloads/download.php?r=1&file=/eclipse/downloads/drops4/R-${pkgver}-${pkgdate}/org.eclipse.jdt-${pkgver}.zip")
