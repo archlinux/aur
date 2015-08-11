@@ -1,0 +1,28 @@
+pkgbase = ruby1.9
+	pkgdesc = An object-oriented language for quick and easy programming
+	pkgver = 1.9.3_p551
+	pkgrel = 1
+	url = http://www.ruby-lang.org/en/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = openssl
+	makedepends = tk
+	makedepends = libffi
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = libyaml
+	depends = openssl
+	depends = libffi
+	depends = libyaml
+	optdepends = tk: for Ruby/TK
+	provides = rubygems1.9
+	provides = rake1.9
+	options = !emptydirs
+	options = !makeflags
+	source = http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p551.tar.bz2
+	sha256sums = b0c5e37e3431d58613a160504b39542ec687d473de1d4da983dabcf3c5de771e
+
+pkgname = ruby1.9
+
