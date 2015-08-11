@@ -9,7 +9,7 @@ makedepends=(git gcc)
 depends=(guile sph-lib-git)
 provides=(sescript)
 source=("git://git.sph.mn/$_gitname")
-url="http://sph.mn/content/3d3"
+url="http://sph.mn"
 md5sums=(SKIP)
 
 pkgver() {
