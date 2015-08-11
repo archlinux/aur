@@ -1,0 +1,19 @@
+pkgbase = xf86-input-wizardpen
+	pkgdesc = A Linux/HAL/udev/X11 driver for most non-Wacom graphics pads
+	pkgver = 0.8.1
+	pkgrel = 4
+	url = https://launchpad.net/wizardpen
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xorg-server-devel
+	depends = glibc
+	conflicts = wizardpen-driver wizardpen
+	replaces = wizardpen-driver wizardpen
+	source = https://launchpad.net/wizardpen/trunk/0.8/+download/xorg-input-wizardpen-0.8.1.tar.bz2
+	source = config.patch
+	sha1sums = 82060c678dc241de83b2b7415b6ada619b94db36
+	sha1sums = 86ce045389f477d4bb5b3f89fe7bd26ebe80e6db
+
+pkgname = xf86-input-wizardpen
+

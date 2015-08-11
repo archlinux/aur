@@ -1,0 +1,11 @@
+--- configure.ac-orig	2013-04-13 14:57:35.811218424 +0300
++++ configure.ac	2013-04-13 14:57:42.304552135 +0300
+@@ -46,7 +46,7 @@
+ DRIVER_NAME=wizardpen
+ AC_SUBST([DRIVER_NAME])
+ 
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ 
+ # Checks for programs.
+ AC_DISABLE_STATIC
