@@ -3,6 +3,7 @@
 # https://github.com/AlD/archlinux
 
 pkgname=kodi-addon-pvr-hts
+pkgbase=${pkgname}.git
 _gitname=pvr.hts
 pkgver=0
 
