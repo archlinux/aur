@@ -2,10 +2,11 @@
 
 pkgname=keepass-plugin-keeagent
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="SSH Agent Plugin for KeePass"
 license=('BSD')
 depends=('keepass')
+optdepends=('openssh: For integration with ssh-agent' 'gnupg: For integration with GnuPG SSH agent')
 provides=('keepass-plugin-keeagent')
 conflicts=('keepass-plugin-keeagent-beta')
 arch=('any')
