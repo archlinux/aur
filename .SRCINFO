@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-he
 	pkgdesc = Hebrew language package for Iceweasel
-	pkgver = 39.0.deb1
+	pkgver = 39.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-he_39.0-1_all.deb
-	sha256sums = 242a6a3a238432098c7823a8b11ef6e23ff5db0cd2be9183ef0325dff8a4c6a5
+	depends = iceweasel>=39.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-he_39.0.3-1_all.deb
+	sha256sums = adb38b26438da9d5d44c711d7210f6c442961d638fb84aa7c0c322f17d12139d
 
 pkgname = iceweasel-i18n-he
 
