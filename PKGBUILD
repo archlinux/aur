@@ -22,7 +22,8 @@ countdown() {
 ls_lang () {
 {  ftp -in ftp.mozilla.org <<EOF
 user anonymous secrets
-cd /pub/mozilla.org/firefox/releases/${pkgver}/linux-i686/xpi/
+cd pub
+cd mozilla.org/firefox/releases/${pkgver}/linux-i686/xpi/
 ls
 EOF
 [ "$?" != 0 ] && error "FTP connection failed" && exit 1
