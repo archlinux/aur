@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=ccat-git
-pkgver=r27.e7385e6
+pkgver=r93.bf0f28e
 pkgrel=1
 pkgdesc="Colorizes output for cat."
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     msg2 'Building ccat'
-    ./build
+    ./script/build
 }
 
 package() {
