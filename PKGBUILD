@@ -1,4 +1,5 @@
-# Maintainer: Vlad M. <vlad@arhclinux.net>
+# Maintainer: Thomas Berryhill <tb01110100@gmail.com>
+# Contributor: Vlad M. <vlad@arhclinux.net>
 # Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 # Contributor: mazieres
 # Contributor: doze_worm <shuimao@gmail.com> the original port.
