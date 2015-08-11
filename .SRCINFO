@@ -1,0 +1,15 @@
+pkgbase = otf-quivira-font
+	pkgdesc = Quivira is a mutli-script OTF font It supports: Latin (Extended-D, Extended-E) Greek (modern and ancient) Ancient Greek Numbers Ancient Symbols Old Italic Cyrillic (Supplement and Extended-B) And others...
+	pkgver = 4.1
+	pkgrel = 0
+	url = http://www.quivira-font.com/index.php
+	install = otf-quivira-font.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://members.hellug.gr/sng/AUR/quivira-4.1.tar.gz
+	md5sums = 50022081a09a7e5564212f2ba6a33b52
+
+pkgname = otf-quivira-font
+
