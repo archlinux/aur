@@ -30,6 +30,7 @@ sha256sums=('4d0e224257a29671b694bd9054edf0dd213aa690fd02844ecf3329b86ac506f4'
 core_perl_dir='/usr/bin/core_perl'
 export MAKEFLAGS+=" POD2MAN=${core_perl_dir}/pod2man"
 export MAKEFLAGS+=" POD2HTML=${core_perl_dir}/pod2html"
+export MAKEFLAGS+=" PODCHECKER=${core_perl_dir}/podchecker"
 export MAKEFLAGS+=" PROVE=${core_perl_dir}/prove"
 export MAKEFLAGS+=" PYTHON=python3"
 
