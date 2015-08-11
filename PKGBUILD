@@ -1,6 +1,6 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-dropbear
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Archlinux mkinitcpio hook to install and enable the dropbear daemon in early userspace"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('dropbear_initrd_encrypt')
 install=$pkgname.install
 source=($url/archive/v$pkgver.tar.gz)
 changelog='ChangeLog'
-sha512sums=('3fe0d9bbec71e0957003410ca1487b30d0fe97dc86bf1282135c041eaf92cce1488809ee918e0fbc27ec57e7fc8e4ae2fcd76276e662a69f3ca97e98573255d8')
+sha512sums=('65d9d794411dc9da03d900655b748cdda72ad39f4b0188a25c1521ed656d9c92bbbf248b09e8eb7f345839001944fc56c10e1c1fe123a73732fea8ffb6fb78d4')
 
 package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/dropbear_hook"      "$pkgdir/usr/lib/initcpio/hooks/dropbear"
