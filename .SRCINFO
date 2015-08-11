@@ -1,0 +1,16 @@
+pkgbase = guile-dbd-sqlite3-git
+	pkgdesc = guile-dbi database driver for sqlite version 3
+	pkgver = 19.16435ab
+	pkgrel = 1
+	url = https://github.com/jkalbhenn/guile-dbd-sqlite3
+	arch = any
+	license = gpl3
+	makedepends = git
+	depends = guile
+	depends = guile-dbi
+	depends = sqlite3
+	source = git://github.com/jkalbhenn/guile-dbd-sqlite3.git
+	md5sums = SKIP
+
+pkgname = guile-dbd-sqlite3-git
+
