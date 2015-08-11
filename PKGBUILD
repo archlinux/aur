@@ -2,7 +2,7 @@
 
 _pkgname=epymc
 pkgname=$_pkgname-git
-pkgver=1.0.0.r10.gb582278
+pkgver=1.1.0.r0.g65778e2
 pkgrel=1
 pkgdesc="Media Center based on EFL - Development version"
 arch=('any')
