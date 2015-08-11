@@ -1,0 +1,17 @@
+pkgbase = libconfig-vapi-git
+	pkgdesc = X11 Screen Saver extension library (vala bindings).
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/semplice/libconfig-vapi
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = vala
+	provides = libconfig-vapi-git
+	conflicts = libconfig-vapi-git
+	conflicts = ${pkgname%-git}
+	source = libconfig-vapi::git://github.com/semplice/libconfig-vapi.git#branch=master
+	md5sums = SKIP
+
+pkgname = libconfig-vapi-git
+
