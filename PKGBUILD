@@ -12,8 +12,8 @@ depends=('glibc' 'libpcap')
 makedepends=('git' 'make')
 conflicts=('onics')
 provides=('onics')
-source=('git+https://gitorious.org/catlib/catlib.git#branch=master'
-        'git+https://gitorious.org/onics/onics.git#branch=master')
+source=('git+https://github.com/ctelfer/catlib.git#branch=master'
+        'git+https://github.com/ctelfer/onics.git#branch=master')
 md5sums=('SKIP' 'SKIP')
 
 

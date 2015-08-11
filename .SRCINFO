@@ -12,8 +12,8 @@ pkgbase = onics-git
 	depends = libpcap
 	provides = onics
 	conflicts = onics
-	source = git+https://gitorious.org/catlib/catlib.git#branch=master
-	source = git+https://gitorious.org/onics/onics.git#branch=master
+	source = git+https://github.com/ctelfer/catlib.git#branch=master
+	source = git+https://github.com/ctelfer/onics.git#branch=master
 	md5sums = SKIP
 	md5sums = SKIP
 
