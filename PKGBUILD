@@ -21,7 +21,7 @@ package_python-fixtures() {
 }
 
 package_python2-fixtures() {
-    depends=('python' 'python-testtools')
+    depends=('python2' 'python2-testtools')
     cd "$srcdir/fixtures-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1 
     local license_dir="$pkgdir/usr/share/doc/$pkgname/"

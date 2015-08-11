@@ -16,6 +16,6 @@ pkgname = python-fixtures
 	depends = python-testtools
 
 pkgname = python2-fixtures
-	depends = python
-	depends = python-testtools
+	depends = python2
+	depends = python2-testtools
 
