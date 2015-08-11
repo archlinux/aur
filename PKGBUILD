@@ -21,6 +21,8 @@ optdepends=(
   'fpc: support for Pascal submissions'
   'sgi-stl-doc: support for STL documentation inside the contest'
   'python2-yaml: support for cmsMake (for tasks in the "italian format")'
+  'python2-pycups: support for printing'
+  'python2-pypdf2: support for printing'
 )
 makedepends=('git')
 provides=('cms')
