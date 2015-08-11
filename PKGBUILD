@@ -7,7 +7,7 @@ arch=('any')
 license=('custom')
 url="http://www.enoriaka.gr"
 depends=('fontconfig' 'xorg-font-utils')
-source=('http://members.hellug.gr/sng/public_html/AUR/ttf-sk-polytonic-fonts.tar.gz')
+source=('http://members.hellug.gr/sng/AUR/ttf-sk-polytonic-fonts.tar.gz')
 md5sums=('bccb32b5c0e1d8c1b01feccb44b1dca6')
 install=${pkgname}.install
 
