@@ -3,7 +3,7 @@
 
 pkgname=firefox-extension-downthemall
 pkgver=2.0.18
-pkgrel=2
+pkgrel=3
 pkgdesc="A Download Manager extension for Firefox with advanced capabilities"
 arch=('any')
 url="http://www.downthemall.net/"

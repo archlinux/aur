@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-downthemall
 	pkgdesc = A Download Manager extension for Firefox with advanced capabilities
 	pkgver = 2.0.18
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.downthemall.net/
 	arch = any
 	license = GPL2
