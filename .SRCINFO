@@ -1,0 +1,13 @@
+pkgbase = pwexec-git
+	pkgdesc = Replace command line argument with a password stored in GNOME Keyring and execute.
+	pkgver = 20120419
+	pkgrel = 1
+	url = https://github.com/dayflower/pwexec
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libgnome-keyring
+
+pkgname = pwexec-git
+
