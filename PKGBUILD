@@ -2,12 +2,11 @@
 # Contributor: akane      <grangerspit@gmail.com> <xmpp:heiß@neko.im>
 pkgname=dict-freedict-eng-deu
 pkgver=0.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="English -> German dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
 license=('GPL')
-makedepends=('dictd')
 optdepends=('dictd: dict client and server')
 install=$pkgname.install
 source=("http://sourceforge.net/projects/freedict/files/English%20-%20German/$pkgver/freedict-eng-deu-$pkgver.tar.bz2")
