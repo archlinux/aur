@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-fi
 	pkgdesc = Finnish language package for Iceweasel
-	pkgver = 39.0.deb1
+	pkgver = 39.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-fi_39.0-1_all.deb
-	sha256sums = dfea46fbd77487058d3d6b2be114f8552f740f0f53db2ed1c6174664315ec122
+	depends = iceweasel>=39.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-fi_39.0.3-1_all.deb
+	sha256sums = 330762cf58ebb05a461ad640efe46a001b3abf1e371292719e405b16c970bf2b
 
 pkgname = iceweasel-i18n-fi
 
