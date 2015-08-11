@@ -17,7 +17,7 @@ pkgver() {
 }
 
 package() {
-  # Install License (License is in README)
+  # Install License
   install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install binary
