@@ -3,21 +3,21 @@
 
 _pkgname=spice-protocol
 pkgname=$_pkgname-git
-pkgver=0.12.8.1.g4ba5072
+pkgver=0.12.9.158.g03a28f5
 pkgrel=1
-pkgdesc='Headers defining SPICE protocols'
-arch=('any')
-url='http://www.spice-space.org'
-license=('custom')
-makedepends=('git')
-provides=('spice-protocol')
-conflicts=('spice-protocol')
-source=('git://anongit.freedesktop.org/spice/spice-protocol')
-sha256sums=('SKIP')
+pkgdesc="Headers defining SPICE protocols"
+arch=("any")
+url="http://www.spice-space.org"
+license=("BSD")
+makedepends=("git" "python-six" "python-pyparsing")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git://anongit.freedesktop.org/spice/spice-protocol")
+sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
-    git describe --always | sed 's/-/./g'
+    git describe --always | sed "s/-/./g"
 }
 
 build() {
