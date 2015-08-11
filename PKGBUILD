@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sddm
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
 url='http://github.com/sddm/sddm'
@@ -13,11 +14,17 @@ install="${pkgname}.install"
 backup=('usr/share/sddm/scripts/Xsetup')
 conflicts=('display-manager')
 provides=('display-manager')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('e110a7683867400dc9484d4744fd41dd')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
+        kubuntu_dbus-config-rename.patch)
+md5sums=('e110a7683867400dc9484d4744fd41dd'
+         '7c2934003e61c46d1d82d3d9a93ed35b')
 
 prepare() {
   mkdir -p build
+
+  cd $pkgname-$pkgver
+  # FS#42445
+  patch -p1 -i ../kubuntu_dbus-config-rename.patch
 }
 
 build() {
