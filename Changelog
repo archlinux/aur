@@ -1,3 +1,11 @@
+2015-08-11 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.2 :
+	- Initial support for systemd enabled initrd:
+		+ Check for any files ending in .initramfs in the /etc/systemd/network directory, and copies them to the initrd, and also copy and install systemd-networkd.
+		+ There are some caveats, specially that it won't remove any ip addresses added to the interface: https://github.com/systemd/systemd/issues/780
+	- Corrected the help text.
+
 2015-07-15 Giancarlo Razzolini <grazzolini@gmail.com>
 
 	* 0.0.1 :

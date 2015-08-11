@@ -1,6 +1,6 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-netconf
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Archlinux mkinitcpio hook for configuring early userspace networking"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mkinitcpio-nfs-utils' 'iproute2')
 install=$pkgname.install
 source=($url/archive/v$pkgver.tar.gz)
 changelog='Changelog'
-sha512sums=('86a79da8994b79df34407744400a5fc125e984e7550068e176d98e1c348e3c0bed78f21e901a215c10de6eb65beac53cfdb17ee73014a7ab38ac09ce937c634c')
+sha512sums=('d63b763dd5093ac6f18042ce3c9971c0293bc4dcf364bfb4fb33cdfafc8b4eaed705cc90148e972bf8d8e5b34e636fe854b4c8613fa5e2f7a2859fa247434951')
 
 package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/netconf_hook"      "$pkgdir/usr/lib/initcpio/hooks/netconf"
