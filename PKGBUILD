@@ -1,16 +1,17 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=todoman
-pkgver=1.2.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
-url="https://git.barrera.io/hobarrera/todoman"
+url="https://gitlab.com/hobarrera/todoman"
 license=('MIT')
-depends=(python-docopt python-icalendar python-urwid python-xdg
-         python-atomicwrites)
-source=("$pkgver.tar.gz::https://git.barrera.io/hobarrera/$pkgname/repository/archive.tar.gz?ref=v$pkgver")
-md5sums=('63347d4d4dfce90d2eec546894caf66e')
+depends=(python-icalendar python-urwid python-xdg python-ansi
+         python-parsedatetime python-atomicwrites python-click)
+optdepends=('python-click-repl-git: the repl command.')
+source=("$pkgver.tar.gz::https://gitlab.com/hobarrera/$pkgname/repository/archive.tar.gz?ref=v$pkgver")
+md5sums=('014cf154b0253ded3bb4a39f6dd1f4f9')
 
 build() {
   cd "$srcdir/$pkgname.git"
