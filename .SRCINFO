@@ -1,4 +1,4 @@
-pkgbase = bake
+pkgbase = bake-sl
 	pkgdesc = An easy to use build system. Designed to be make/autotools for the 21st century. (with Semplice Linux patches)
 	pkgver = 0.1.49
 	pkgrel = 1
@@ -9,8 +9,7 @@ pkgbase = bake
 	makedepends = itstool
 	makedepends = vala
 	provides = bake
-	conflicts = bake
-	conflicts = bake
+	conflicts = bake-sl
 	source = https://launchpad.net/bake/0.1/0.1.49/+download/bake-0.1.49.tar.gz
 	source = https://github.com/semplice/bake/compare/gir_lookup.patch
 	source = https://github.com/semplice/bake/compare/python_version.patch
@@ -18,5 +17,5 @@ pkgbase = bake
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = bake
+pkgname = bake-sl
 

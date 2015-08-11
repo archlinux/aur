@@ -1,6 +1,6 @@
 # Maintainer: gld1982ltd <gld1982ltd@gmail.com>
 
-pkgname=bake
+pkgname=bake-sl
 pkgver=0.1.49
 pkgrel=1
 pkgdesc="An easy to use build system. Designed to be make/autotools for the 21st century. (with Semplice Linux patches)"
