@@ -1,4 +1,5 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
