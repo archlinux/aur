@@ -1,17 +1,16 @@
 pkgbase = tao
 	pkgdesc = Standards-based, CORBA middleware framework
 	pkgver = 6.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cs.wustl.edu/~schmidt/TAO.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = ace
-	conflicts = libace
 	options = !libtool
 	source = http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO-6.3.2.tar.gz
 	source = license.txt
-	sha1sums = 66af88cb5cc6e0c97d7161aa27dc9e24521e7780
+	sha1sums = 7b182a23ac1c04ac2012316062338e31c7fd54eb
 	sha1sums = b21054d0aa546fabe4bb0c2769401314d4a5bfe3
 
 pkgname = tao
