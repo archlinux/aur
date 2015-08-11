@@ -29,6 +29,12 @@ pkgver() {
 	printf "%s" "$(git describe --abbrev=0 | sed 's/[A-Za-z]*//g;s/[!@#\$%^&*()/]//g;s/-/./g')"
 }
 
+prepare() {
+	cd "$srcdir/${pkgname%-sl-git}"
+	git merge python_version
+	git merge gir_lookup
+}
+
 build() {
 	cd "$srcdir/${pkgname%-sl-git}"
 	make
