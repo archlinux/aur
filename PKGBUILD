@@ -10,7 +10,7 @@ license=('BSD')
 depends=('elementary')
 options=('!emptydirs')
 source=("http://download.enlightenment.org/releases/$pkgname-$pkgver.tar.bz2")
-md5sums=('ed8aabe52b71e54db6f9104725e61645')
+sha256sums=('4d9c2f2deb017d67909d88718f1a97e80ab611538491956995377189f780ca0d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,11 +28,8 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" ChangeLog NEWS README
 
 # install license files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }

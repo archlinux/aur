@@ -9,7 +9,7 @@ pkgbase = etrophy
 	depends = elementary
 	options = !emptydirs
 	source = http://download.enlightenment.org/releases/etrophy-0.5.1.tar.bz2
-	md5sums = ed8aabe52b71e54db6f9104725e61645
+	sha256sums = 4d9c2f2deb017d67909d88718f1a97e80ab611538491956995377189f780ca0d
 
 pkgname = etrophy
 
