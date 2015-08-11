@@ -5,14 +5,13 @@
 
 pkgname=tao
 pkgver=6.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standards-based, CORBA middleware framework"
 url="http://www.cs.wustl.edu/~schmidt/TAO.html"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=(ace)
 options=(!libtool)
-conflicts=('libace')
 source=(http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO-${pkgver}.tar.gz
         license.txt)
 
