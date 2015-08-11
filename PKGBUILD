@@ -5,7 +5,7 @@
 
 pkgname=mutter-hide-legacy-decorations
 _pkgname=mutter
-pkgver=3.16.2
+pkgver=3.16.3
 pkgrel=1
 pkgdesc="A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ options=('!emptydirs')
 install=mutter.install
 source=("http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-$pkgver.tar.xz" "hideTitlebar.patch")
 
-sha256sums=('4a2b752f0b3aa59f50563190222623324f5154acbb6bf174213f5849e77d0763' 'ec1a0f5f98213c340e907761e72fc3e22cb9c8ff503c6c234a4a41aac4ec7ac4')
+sha256sums=('ee0098487d1bfb8f28e3927fbb9df227d846555142d352f8693f56a08441c755' 'ec1a0f5f98213c340e907761e72fc3e22cb9c8ff503c6c234a4a41aac4ec7ac4')
 
 prepare() {
   cd "${_pkgname}-$pkgver"
