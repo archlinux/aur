@@ -1,0 +1,23 @@
+pkgbase = cammill-git
+	pkgdesc = CAM application to produce tool paths and gcode from DXF files
+	pkgver = 0.9.test.17.r62.gf6fe006
+	pkgrel = 1
+	url = https://github.com/cammill/cammill
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = cppcheck
+	makedepends = clang
+	makedepends = git
+	depends = freeglut
+	depends = glib2
+	depends = gtkglext
+	depends = gtksourceview2
+	depends = gtk2
+	depends = lua51
+	provides = cammill
+	source = git+https://github.com/cammill/cammill.git
+	md5sums = SKIP
+
+pkgname = cammill-git
+
