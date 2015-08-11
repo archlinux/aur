@@ -1,27 +1,29 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=hexchat-autoaway
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A HexChat plugin to set away on idle"
 arch=('i686' 'x86_64')
 url="https://github.com/andreyv/hexchat-autoaway"
 license=('GPL3')
 depends=('hexchat' 'libxss')
+makedepends=('cmake')
 conflicts=('hexchat-autoaway-git')
 source=("https://github.com/andreyv/hexchat-autoaway/archive/v$pkgver.tar.gz")
-sha256sums=('afd78ff8777f162e634d97804787ad8ff9928a3e16d8ef659d0d93b49518b252')
+sha256sums=('35367a4e0d6f1c83ec36f2ae11d9274cd874aa990f69c8b8690cca4045709e80')
 
 build() {
   cd "${pkgname}-${pkgver}"
 
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -D autoaway.so "$pkgdir/usr/lib/hexchat/plugins/autoaway.so"
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
