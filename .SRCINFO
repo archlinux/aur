@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-af
 	pkgdesc = Afrikaans language pack for Iceweasel
-	pkgver = 39.0.deb1
+	pkgver = 39.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-af_39.0-1_all.deb
-	sha256sums = 93e142b52b2a4a76b25f06f7c044ff1d38fb46694716840e15491d882ce9973b
+	depends = iceweasel>=39.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-af_39.0.3-1_all.deb
+	sha256sums = f6269f3bae576c01dec62f53b58ae736852137bd445471440fc85e26334824dc
 
 pkgname = iceweasel-i18n-af
 
