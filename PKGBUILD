@@ -1,35 +1,49 @@
-# Maintainer: Troy C < rstrox -ta yahoo -tod com >
+# Maintainer: Carl George < arch at cgtx dot us >
+# Contributor: Troy C < rstrox -ta yahoo -tod com >
 
-pkgname=('python-oslo-utils' 'python2-oslo-utils')
-pkgver=1.9.0
-pkgrel=1
-pkgdesc="OpenStack Common Libraries - A library of various low-level utility modules"
-arch=('any')
-url="https://github.com/openstack/oslo.utils"
-license=('GPL')
-provides=("$pkgname=$pkgver")
-makedepends=('python-setuptools' 'python2-setuptools' 'python-pbr>=0.8' 'python2-pbr>=0.8')
-source=("https://pypi.python.org/packages/source/o/oslo.utils/oslo.utils-$pkgver.tar.gz")
-md5sums=('a0dd90dfbec1308c45db935d2367e7ae')
+_name="oslo.utils"
+_module="${_name/./-}"
 
-build() {
-	cd "$srcdir/oslo.utils-$pkgver"
-	python setup.py build
-	python2 setup.py build
+pkgname=("python-${_module}" "python2-${_module}")
+pkgver="2.2.0"
+pkgrel="1"
+pkgdesc="Oslo Utility library"
+arch=("any")
+url="https://github.com/openstack/${_name}"
+license=("Apache")
+makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
+source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('75edebbb9715d9658e12a0b1b510389f5af5b66da7035bae48b3c79c6ac14aad')
+
+prepare() {
+    cd "${srcdir}/${_name}-${pkgver}"
+    sed -ri '/pbr/d' requirements.txt
 }
 
 package_python-oslo-utils() {
-
-	depends=('python' 'python-babel>=1.3' 'python-iso8601>=0.1.9' 'python-six>=1.9.0' 'python-oslo-i18n>=1.5.0' 'python-monotonic>=0.1' 'python-pytz>=2013.6' 'python-netaddr>=0.7.12' 'python-netifaces>=0.10.4' 'python-pbr>=0.11' 'python-debtcollector>=0.3.0')
-
-	cd "$srcdir/oslo.utils-$pkgver"
-	python setup.py install --root=${pkgdir}
+    depends=("python-babel>=1.3"
+             "python-debtcollector>=0.3.0"
+             "python-iso8601>=0.1.9"
+             "python-monotonic>=0.1"
+             "python-netaddr>=0.7.12"
+             "python-netifaces>=0.10.4"
+             "python-oslo-i18n>=1.5.0"
+             "python-pytz>=2013.6"
+             "python-six>=1.9.0")
+    cd "${srcdir}/${_name}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-oslo-utils() {
-
-	depends=('python2' 'python2-babel>=1.3' 'python2-iso8601>=0.1.9' 'python2-six>=1.9.0' 'python2-oslo-i18n>=1.5.0' 'python2-monotonic>=0.1' 'python2-pytz>=2013.6' 'python2-netaddr>=0.7.12' 'python2-netifaces>=0.10.4' 'python2-pbr>=0.11' 'python2-debtcollector>=0.3.0')
-
-	cd "$srcdir/oslo.utils-$pkgver"
-	python2 setup.py install --root=${pkgdir}
+    depends=("python2-babel>=1.3"
+             "python2-debtcollector>=0.3.0"
+             "python2-iso8601>=0.1.9"
+             "python2-monotonic>=0.1"
+             "python2-netaddr>=0.7.12"
+             "python2-netifaces>=0.10.4"
+             "python2-oslo-i18n>=1.5.0"
+             "python2-pytz>=2013.6"
+             "python2-six>=1.9.0")
+    cd "${srcdir}/${_name}-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 }
