@@ -1,0 +1,13 @@
+[Unit]
+Description=Simple, fast work queue
+Documentation=man:beanstalkd(1)
+After=network.target
+
+[Service]
+User=nobody
+Group=nobody
+EnvironmentFile=/etc/conf.d/beanstalkd
+ExecStart=/usr/bin/beanstalkd -l ${BEANSTALKD_LISTEN_ADDR} -p ${BEANSTALKD_LISTEN_PORT} $BEANSTALKD_EXTRA
+
+[Install]
+WantedBy=multi-user.target

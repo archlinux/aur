@@ -1,0 +1,20 @@
+pkgbase = beanstalkd
+	pkgdesc = Fast, simple message queue server
+	pkgver = 1.10
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	conflicts = beanstalkd-git
+	backup = etc/conf.d/beanstalkd
+	source = https://github.com/kr/beanstalkd/archive/v1.10.tar.gz
+	source = beanstalkd@.service
+	source = beanstalkd.service
+	source = beanstalkd.conf
+	md5sums = 0994d83b03bde8264a555ea63eed7524
+	md5sums = f6151d5d2f07c24977cafba38a9e67c9
+	md5sums = d05b907abfb19174a7321676ecc0c819
+	md5sums = 7fdc2e3d1dc9c6559b7b007b74588a09
+
+pkgname = beanstalkd
+
