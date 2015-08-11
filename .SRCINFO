@@ -1,0 +1,18 @@
+pkgbase = python2-anolis
+	pkgdesc = HTML TOC generator
+	pkgver = r450.061718e61cb5
+	pkgrel = 1
+	url = https://bitbucket.org/ms2ger/anolis
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-lxml
+	depends = python2-html5lib
+	depends = python2-cssselect
+	source = python2-anolis::hg+https://bitbucket.org/ms2ger/anolis
+	md5sums = SKIP
+
+pkgname = python2-anolis
+
