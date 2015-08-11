@@ -1,0 +1,14 @@
+pkgbase = grub2-theme-vimix
+	pkgdesc = A blur theme for grub
+	pkgver = 1.0
+	pkgrel = 5
+	url = https://github.com/Se7endAY/grub2-theme-vimix
+	install = grub2-theme-vimix.install
+	arch = any
+	license = GPLv3
+	depends = grub
+	source = https://github.com/Se7endAY/grub2-theme-vimix/archive/master.zip
+	md5sums = SKIP
+
+pkgname = grub2-theme-vimix
+
