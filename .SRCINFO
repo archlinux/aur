@@ -1,0 +1,19 @@
+pkgbase = openbox-menu
+	pkgdesc = Dynamic XDG menu for openbox
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://mimasgpc.free.fr/openbox-menu.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = menu-cache
+	optdepends = lxmenu-data: LXDE menus
+	optdepends = gnome-menus: GNOME menus
+	source = https://bitbucket.org/fabriceT/openbox-menu/downloads/openbox-menu-0.7.0.tar.bz2
+	source = with-svg.patch
+	md5sums = bd7e746452931e48340788c9e8ececa4
+	md5sums = 484bd49f619e57f9fb2be42931d57dd5
+
+pkgname = openbox-menu
+
