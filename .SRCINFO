@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-j820dn
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J820DN
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-j820dn.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = perl
+	makedepends = deb2targz
+	depends = a2ps
+	depends = lib32-gcc-libs
+	source = http://download.brother.com/welcome/dlf100831/mfcj820dnlpr-3.0.0-1.i386.deb
+	source = http://download.brother.com/welcome/dlf100830/mfcj820dncupswrapper-3.0.0-1.i386.deb
+	md5sums = adc132ccdd135a7b3729d9af9db9e3b5
+	md5sums = ab0731da6b3d8a170e81f6c55db9f5a3
+
+pkgname = brother-mfc-j820dn
+
