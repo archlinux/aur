@@ -20,18 +20,18 @@ md5sums=('20eda033c1482900da0cccfb90a77f6d'
 )
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/${pkgname%-sl}-$pkgver"
 	patch -p1 -i ${srcdir}/gir_lookup.patch
 	patch -p1 -i ${srcdir}/python_version.patch
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/${pkgname%-sl}-$pkgver"
     make
     ./bake-bootstrap --configure install-directory="$pkgdir/"
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver" 
+    cd "$srcdir/${pkgname%-sl}-$pkgver" 
     ./bake-bootstrap install
 }
