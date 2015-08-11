@@ -28,10 +28,150 @@ index 7621345..179f0d6 100644
 +	color: #9E9D9B;
  }
 diff --git a/src/lxdm.c b/src/lxdm.c
-index 507189d..842f4b8 100644
+index 507189d..43a98c7 100644
 --- a/src/lxdm.c
 +++ b/src/lxdm.c
-@@ -1269,6 +1269,9 @@ void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
+@@ -886,26 +886,57 @@ static void put_lock(void)
+     g_free(lockfile);
+ }
+ 
++static int get_run_level(void)
++{
++#if defined(HAVE_UTMPX_H) && defined(RUN_LVL)
++	int res;
++	struct utmpx *ut,tmp;
++
++	setutxent();
++	tmp.ut_type=RUN_LVL;
++	ut=getutxid(&tmp);
++	if(!ut)
++	{
++		endutxent();
++		return '5';
++	}
++	res=ut->ut_pid & 0xff;
++	endutxent();
++	//g_message("runlevel %c\n",res);
++	return res;
++#else
++	return '5';
++#endif
++}
++
+ static void on_xserver_stop(void *data,int pid, int status)
+ {
+ 	LXSession *s=data;
+ 	LXSession *greeter;
+-
+-	g_message("xserver stop, restart. return status %x\n",status);
++	int level;
+ 
+ 	stop_pid(pid);
+ 	s->server = -1;
+ 	lxsession_stop(s);
++	
++	level=get_run_level();
++	if(level=='6' || level=='0')
++	{
++		return;
++	}
++	
++	g_message("xserver stop, restart. return status %x\n",status);
++
+ 	greeter=lxsession_find_greeter();
+ 	if(s->greeter || !greeter)
+ 	{
+ 		s->greeter=TRUE;
+ 		xconn_close(s->dpy);
+ 		s->dpy=NULL;
+-		lxdm_startx(s);
+ 		ui_drop();
++		lxdm_startx(s);
+ 		ui_prepare();
+-		lxsession_set_active(greeter);
++		lxsession_set_active(s);
+ 	}
+ 	else
+ 	{
+@@ -914,7 +945,7 @@ static void on_xserver_stop(void *data,int pid, int status)
+ 	}
+ }
+ 
+-void lxdm_startx(LXSession *s)
++static void lxdm_startx(LXSession *s)
+ {
+ 	char *arg;
+ 	char **args;
+@@ -997,27 +1028,32 @@ static void exit_cb(void)
+ 	g_key_file_free(config);
+ }
+ 
+-static int get_run_level(void)
++static gboolean delayed_restart_greeter(LXSession *s)
+ {
+-#if defined(HAVE_UTMPX_H) && defined(RUN_LVL)
+-	int res=0;
+-	struct utmpx *ut,tmp;
+-
+-	setutxent();
+-	tmp.ut_type=RUN_LVL;
+-	ut=getutxid(&tmp);
+-	if(!ut)
++	int level;
++	
++	level=get_run_level();
++	if(level=='0' || level=='6')
+ 	{
+-		endutxent();
+-		return 5;
++		if(level=='0')
++			g_spawn_command_line_sync("/etc/lxdm/PreShutdown",0,0,0,0);
++		else
++			g_spawn_command_line_sync("/etc/lxdm/PreReboot",0,0,0,0);
++		g_message("run level %c\n",level);
++		lxdm_quit_self(0);
++		return FALSE;
+ 	}
+-	res=ut->ut_pid & 0xff;
+-	endutxent();
+-	//g_message("runlevel %c\n",res);
+-	return res;
+-#else
+-	return 5;
+-#endif
++	
++	if(s && s!=lxsession_greeter())
++	{
++		lxsession_free(s);
++	}
++	else if(!s)
++	{
++		lxsession_greeter();
++	}
++	
++	return FALSE;
+ }
+ 
+ static void on_session_stop(void *data,int pid, int status)
+@@ -1047,15 +1083,9 @@ static void on_session_stop(void *data,int pid, int status)
+ 			g_spawn_command_line_sync("/etc/lxdm/PreReboot",0,0,0,0);
+ 		g_message("run level %c\n",level);
+ 		lxdm_quit_self(0);
++		return;
+ 	}
+-	if(s && s!=lxsession_greeter())
+-	{
+-		lxsession_free(s);
+-	}
+-	else if(!s)
+-	{
+-		lxsession_greeter();
+-	}
++	g_timeout_add(300,(GSourceFunc)delayed_restart_greeter,s);
+ }
+ 
+ gboolean lxdm_get_session_info(const char *session,char **pname,char **pexec,char **pdesktop_names)
+@@ -1269,6 +1299,9 @@ void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
  	{
  		if(s) lxsession_free(s);
  		lxsession_set_active(prev);
@@ -41,7 +181,7 @@ index 507189d..842f4b8 100644
  		return;
  	}
  	if(!s) s=lxsession_find_idle();
-@@ -1514,7 +1517,7 @@ static void lxdm_signal_handler(void *data,int sig)
+@@ -1514,7 +1547,7 @@ static void lxdm_signal_handler(void *data,int sig)
  	switch(sig){
  	case SIGTERM:
  	case SIGINT:
@@ -50,7 +190,7 @@ index 507189d..842f4b8 100644
  		lxdm_quit_self(0);
  		break;
  	default:
-@@ -1650,6 +1653,7 @@ static GString *lxdm_user_cmd(void *data,int user,int arc,char **arg)
+@@ -1650,6 +1683,7 @@ static GString *lxdm_user_cmd(void *data,int user,int arc,char **arg)
  		if(p)
  		{
  			res=g_string_new_len(p,len);
@@ -194,7 +334,7 @@ index 43bd687..a377157 100644
  	while(file_get_line(cmd,sizeof(cmd),stdin)>=0)
  	{
 diff --git a/src/xconn.c b/src/xconn.c
-index 5c62d4b..df4824f 100644
+index 5c62d4b..7e040b7 100644
 --- a/src/xconn.c
 +++ b/src/xconn.c
 @@ -172,7 +172,7 @@ void xconn_close(xconn_t c)
@@ -206,7 +346,71 @@ index 5c62d4b..df4824f 100644
  static xcb_window_t xconn_get_root(xconn_t c)
  {
  	const xcb_setup_t *setup;
-@@ -185,7 +185,7 @@ static xcb_window_t xconn_get_root(xconn_t c)
+@@ -181,11 +181,71 @@ static xcb_window_t xconn_get_root(xconn_t c)
+ 	xcb_screen_t *screen = iter.data;
+ 	return screen->root;
+ }
++
++static char *xconn_atom_name(xcb_connection_t *c,xcb_atom_t atom)
++{
++	xcb_get_atom_name_cookie_t cookie;
++	xcb_get_atom_name_reply_t *reply;
++	char *buf;
++	int len;
++	char *res=NULL;
++	cookie=xcb_get_atom_name(c,atom);
++	reply=xcb_get_atom_name_reply(c,cookie,NULL);
++	if(!reply)
++		return NULL;
++	buf=xcb_get_atom_name_name(reply);
++	len=xcb_get_atom_name_name_length(reply);
++	if(buf && len>0)
++	{
++		res=malloc(len+1);
++		memcpy(res,buf,len);
++		res[len]=0;
++	}
++	free(reply);
++	return res;
++}
++
++static void xconn_clear_props(xcb_connection_t *c,xcb_window_t w)
++{
++	xcb_list_properties_cookie_t cookie;
++	xcb_list_properties_reply_t *reply;
++	xcb_atom_t *atoms;
++	int i,len;
++	xcb_atom_t temp[16];
++	int temp_len=0;
++	cookie=xcb_list_properties(c,w);
++	reply=xcb_list_properties_reply(c,cookie,NULL);
++	if(!reply)
++		return;
++	len=xcb_list_properties_atoms_length(reply);
++	atoms=xcb_list_properties_atoms(reply);
++	for(i=0;i<len;i++)
++	{
++		int prop=atoms[i];
++		//if(prop<=68)
++		//	continue;
++		char *name=xconn_atom_name(c,prop);
++		if(!name)
++			break;
++		if(!strcmp(name,"PULSE_SERVER") ||
++			!strcmp(name,"PULSE_COOKIE"))
++		{
++			temp[temp_len++]=prop;
++		}
++		free(name);
++	}
++	free(reply);
++	for(i=0;i<temp_len;i++)
++	{
++		xcb_delete_property_checked(c,w,temp[i]);
++	}
++}
++
+ #endif
  
  void xconn_clean(xconn_t c)
  {
@@ -215,3 +419,11 @@ index 5c62d4b..df4824f 100644
  	xcb_query_tree_cookie_t wintree;
  	xcb_query_tree_reply_t *rep;
  	xcb_window_t *children;
+@@ -201,6 +261,7 @@ void xconn_clean(xconn_t c)
+ 	for(i=0;i<len;i++)
+ 		xcb_kill_client(c->c,children[i]);
+ 	free(rep);
++	xconn_clear_props(c->c,root);
+ 	xcb_flush(c->c);
+ #endif
+ }

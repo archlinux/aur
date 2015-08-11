@@ -28,7 +28,7 @@ source=(http://downloads.sourceforge.net/lxdm/$_pkgname-$pkgver.tar.xz
         lxdm.pam
         Xsession)
 md5sums=('9e03ce5f6d303bc9b689732401934dc6'
-         '8f514a4ba8fe204c8f0db293246dba3d'
+         '1290d9f6e1863fc69407a07be89d9f7e'
          'f0ae6c072f151104c53a030fd7757821'
          'c941ef896248bc7c03901b513490425c'
          '6ff73570368501a06ee7badc8e415d0a')
@@ -45,9 +45,6 @@ prepare(){
   # Use our custom pam and Xsession files
   cp ../lxdm.pam pam/lxdm
   cp ../Xsession data/Xsession
-
-  # Support for pulseaudio
-  echo 'test -x /usr/bin/pax11publish && /usr/bin/pax11publish -r' >>data/PostLogout.in
 }
 
 build() {
