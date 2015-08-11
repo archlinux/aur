@@ -1,0 +1,13 @@
+pkgbase = sph-scheme-mode
+	pkgdesc = emacs major mode for standard scheme editing
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://sph.mn
+	arch = any
+	license = gpl3
+	depends = emacs
+	source = http://files.sph.mn/s/computer/sph-scheme-mode.el
+	md5sums = 21b3640ee3cb68190dd652c145a5f99c
+
+pkgname = sph-scheme-mode
+
