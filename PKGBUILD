@@ -7,7 +7,7 @@
 _pkgname='influxdb'
 pkgname='influxdb08'
 pkgver='0.8.8'
-pkgrel='1'
+pkgrel='2'
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('i686' 'x86_64')
@@ -20,7 +20,6 @@ checkdepends=()
 optdepends=()
 provides=('influxdb')
 conflicts=('influxdb')
-replaces=('influxdb')
 backup=('etc/influxdb.conf')
 options=()
 install="$_pkgname.install"

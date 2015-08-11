@@ -1,7 +1,7 @@
 pkgbase = influxdb08
 	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://influxdb.org/
 	install = influxdb.install
 	arch = i686
@@ -18,7 +18,6 @@ pkgbase = influxdb08
 	depends = rocksdb
 	provides = influxdb
 	conflicts = influxdb
-	replaces = influxdb
 	backup = etc/influxdb.conf
 	source = http://s3.amazonaws.com/influxdb/influxdb-0.8.8.src.tar.gz
 	source = influxdb.service
