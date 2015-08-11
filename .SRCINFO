@@ -1,0 +1,25 @@
+pkgbase = rompr-svn
+	pkgdesc = Web frontend to MPD
+	pkgver = r606
+	pkgrel = 1
+	url = http://sourceforge.net/projects/rompr/
+	arch = any
+	license = custom:"SpongWare"
+	makedepends = subversion
+	depends = imagemagick
+	depends = php
+	optdepends = apache
+	optdepends = lighttpd
+	optdepends = nginx
+	optdepends = php-jsonreader-git: Low Memory Mode
+	optdepends = mopidy
+	optdepends = mpd
+	provides = rompr
+	conflicts = rompr
+	source = rompr-code::svn+http://svn.code.sf.net/p/rompr/code/trunk
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 01af84e14f9f7a43ce0b408adf3b67b2
+
+pkgname = rompr-svn
+
