@@ -2,16 +2,13 @@
 
 pkgname=openbox-theme-surreal
 pkgver=20070916
-pkgrel=3
+pkgrel=4
 pkgdesc='A dark gray theme for Openbox.'
 arch=('any')
 url='http://box-look.org/content/show.php?content=66397'
 license=('GPL3')
 
 depends=('openbox')
-optdepends=(
-	'openbox-git: for bleeding-edge openbox features'
-)
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
 
@@ -28,7 +25,7 @@ sha512sums=(
 
 prepare() {
 	cd ${srcdir}/Surreal
-	patch ./openbox-3/themerc ../osd_tweaks.patch
+	patch openbox-3/themerc ../osd_tweaks.patch
 }
 
 package() {	
