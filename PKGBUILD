@@ -2,7 +2,7 @@
 pkgname=(lua-luafilesystem lua52-luafilesystem lua51-luafilesystem)
 pkgver=1.6.3
 _tag=v_${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="A lua library to access the underlying directory structure and file attributes"
 arch=(i686 x86_64)
 url="http://keplerproject.github.io/luafilesystem/"
