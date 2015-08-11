@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
 license=('GPL')
-url="http://sopel.readthedocs.org"
+url='http://sopel.chat'
 depends=('python-feedparser' 'python-pytz' 'python-lxml' 'python-praw' 'python-pyenchant'
          'python-pygeoip' 'python-setuptools' 'sqlite')
 makedepends=('git')
