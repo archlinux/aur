@@ -1,0 +1,19 @@
+pkgbase = vim-commentary-git
+	pkgdesc = Comment stuff out
+	pkgver = 20150727
+	pkgrel = 1
+	url = https://github.com/tpope/vim-commentary
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim>=7.0
+	provides = vim-commentary
+	conflicts = vim-commentary
+	source = git+https://github.com/tpope/vim-commentary.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vim-commentary-git
+
