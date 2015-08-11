@@ -6,6 +6,7 @@ pkgbase = perl-math-clipper
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	makedepends = perl-module-build
 	depends = perl>=5.10.0
 	depends = perl-extutils-typemaps-default
 	depends = perl-test-deep

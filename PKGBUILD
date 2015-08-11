@@ -7,7 +7,7 @@ arch=('any')
 url="https://metacpan.org/release/Math-Clipper/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-extutils-typemaps-default' 'perl-test-deep' 'perl-module-build-withxspp' 'perl-extutils-xspp')
-makedepends=()
+makedepends=('perl-module-build')
 provides=()
 conflicts=()
 replaces=()
