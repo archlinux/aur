@@ -5,7 +5,7 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox
-pkgver=39.0.3
+pkgver=40.0
 pkgrel=1
 pkgdesc="Firefox 32bit for Arch 64 bit (en-US)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('bin32-firefox-i18n: i18n support'
             'lib32-gtk-engines: libclearlooks.so library')
 source=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2"
         'firefox32.desktop' 'firefox32-safe.desktop' 'mozplugin.patch')
-md5sums=('4d22ac22086608406297d696a58d26f2'
+md5sums=('4d3e29bba3d8b75c607247c378a583ac'
          '467b7e46030ee36d7a0e0752d0fa5480'
          '9957b560418ad4baf6c6a0d015df2b15'
          '8ef4b2a15b9d5e9d5bd5df323dbf012f')
