@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=ttf-sawarabi-gothic
-pkgver=20140215
+pkgver=20150215
 _sfver=62786
 pkgrel=1
 pkgdesc="A gothic font for Japanese"
@@ -20,4 +20,4 @@ package() {
   install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF"
 }
 
-md5sums=('8f7b5f433b649dd262ff64e197b461e0')
+md5sums=('b58e3a33f01b9515f7e66658ebff00cc')
