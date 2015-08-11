@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-hy-am
 	pkgdesc = Croatian language package for Iceweasel
-	pkgver = 39.0.deb1
+	pkgver = 39.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-hy-am_39.0-1_all.deb
-	sha256sums = b445ab1d7ee325cd61aa78a675a6b38326257a008c0049b9d82ae834eef444bc
+	depends = iceweasel>=39.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-hy-am_39.0.3-1_all.deb
+	sha256sums = 8b81953e58d2e076837d2913a61ba2bb718e1e4f6316d5fc879ba00ff5f46826
 
 pkgname = iceweasel-i18n-hy-am
 
