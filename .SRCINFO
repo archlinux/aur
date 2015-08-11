@@ -1,0 +1,21 @@
+pkgbase = spotifile
+	pkgdesc = FUSE file system for Spotify
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/catharsis/spotifile
+	arch = x86_64
+	license = BSD
+	checkdepends = glib2
+	checkdepends = fuse
+	checkdepends = check
+	makedepends = glib2
+	makedepends = fuse
+	makedepends = libspotify
+	depends = glib2
+	depends = fuse
+	depends = libspotify
+	source = https://github.com/catharsis/spotifile/archive/v0.1.1.tar.gz
+	md5sums = 1a55380678960415d4f35a109b2203f3
+
+pkgname = spotifile
+
