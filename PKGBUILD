@@ -12,7 +12,7 @@ source=("https://github.com/JeffHoogland/Exterminator/archive/$pkgver.tar.gz")
 sha256sums=('8acf7c5c6e8161ecfed4644b05caa12ec8daeb5949fd7ec55e6ebb109c6ba626')
 
 package() {
-  cd "$srcdir/Exterminator-$pkgver"
+  cd Exterminator-$pkgver
 
   install -Dm755 exterminator "$pkgdir/usr/bin/exterminator"
   install -Dm644 exterminator.desktop "$pkgdir/usr/share/applications/exterminator.desktop"
