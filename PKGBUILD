@@ -15,8 +15,8 @@
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=4.1
-_paxver=test11
-pkgver=${_basekernel}.4
+_paxver=test12
+pkgver=${_basekernel}.5
 pkgrel=1
 arch=(x86_64)
 url='http://grsecurity.net/~paxguy1/'
@@ -280,8 +280,8 @@ package_linux-pax-headers() {
 }
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
-            '0976127a60a950acf2796f642ac647e5231573b9a0f25703a37a50b988bf3b88'
-            '192ac09e73fb1e5bd0c9333e0b7cc8734d23430eb31d8c4bcbb9fc4333d550fb'
+            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
+            'a532c7081db57fff4a02fdfe2aac0156603d7107c003afab84ffe25dbd13a41b'
             '4966c3b5441b4e3aa94080b700ef04dafb01340de76a37de99292d5919980da1'
             'c048941d45cdaa9b93916b88952e1b745a48a477f45aceb6ae5433161ff719c3'
             '92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a')
