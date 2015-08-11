@@ -1,3 +1,4 @@
+# Maintainer:  Benjamin Chrétien <chretien at lirmm dot fr>
 # Contributor: DaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 # Contributor: Gereon Schomber <Gereon_Schomber@fastmail.fm>
@@ -7,7 +8,7 @@ pkgname=ace
 pkgver=6.3.2
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
-url="http://www.cs.wustl.edu/~schmidt/ACE.html"
+url="http://www.dre.vanderbilt.edu/~schmidt/ACE.html"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=()
