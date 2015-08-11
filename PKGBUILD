@@ -9,7 +9,6 @@ license=('AGPL3')
 depends=('vtk' 'libcl' 'boost' 'libmatio')
 makedepends=('cmake' 'opencl-headers')
 conflicts=('libasl-git')
-options=(!buildflags)
 changelog='NEWS.md'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AvtechScientific/ASL/archive/v${pkgver}.tar.gz")
 sha256sums=('c90be05a6f0b5c7bf12a9630355838e86edf8e2199a238b44b042147d85dfb18')
