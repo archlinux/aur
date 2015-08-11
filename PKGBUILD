@@ -1,8 +1,8 @@
 # Maintainer: Kyle Manna <kyle(at)kylemanna(dot)com>
 
-_srcname=linux-4.1
+_srcname=linux-4.2
 pkgname=linux-can-dkms
-pkgver=4.1.6
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="CAN kernel modules (DKMS)"
 arch=('i686' 'x86_64')
@@ -17,9 +17,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'dkms.conf'
         'Makefile'
        )
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070'
+            '8b4578f1e1dcfbef1e39c39b861d4715aa99917af0b7c2dc324622d65884dcb5'
             'SKIP'
             'b213142af20f9c0bdfdb52104cc2daed2de3edb2e45a6e4e243b9e980ce3c5db'
             '3653b26f843ad66d31ffe3c916d2b26bd59e2e6273e9d967bfdb8af4e693162d')
