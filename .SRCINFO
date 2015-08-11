@@ -1,0 +1,20 @@
+pkgbase = acpitool
+	pkgdesc = ACPI client - replacement for apm tool
+	pkgver = 0.5.1
+	pkgrel = 6
+	url = http://sourceforge.net/projects/acpitool/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/sourceforge/acpitool/acpitool-0.5.1.tar.bz2
+	source = linux-3.0.patch
+	source = sysfs-battery.patch
+	source = 0001-Use-dynamic-structures-instead-of-predefined-ones.patch
+	md5sums = 9e4ec55201be0be71ffbc56d38b42b57
+	md5sums = eb149edb32be6cdf20a7d16beb3e9f70
+	md5sums = 969fc4929cc215756db27168646c2b7a
+	md5sums = e5baf736eac5b030355533782660c92b
+
+pkgname = acpitool
+
