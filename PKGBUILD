@@ -2,7 +2,7 @@
 
 pkgname=ultra-flat-icons
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple flat icon theme, derived from Flattr icon theme.'
 arch=('any')
 url='http://gnome-look.org/content/show.php?content=167477'
@@ -10,7 +10,6 @@ license=('CCPL:cc-by-nc-sa-4.0')
 
 depends=('xdg-utils')
 provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
 
 options=(!strip !emptydirs)
 install=${pkgname}.install
@@ -48,39 +47,39 @@ icon_fix() {
 		# Change current working directory
 		cd ${1}
 		
-		# App icons fix
-		if [[ -d ./apps ]]; then
+		# Apps
+		if [[ -d apps ]]; then
 			# AMD Catalyst icons fix
-			ln -fsr ./apps/scalable/amd.svg ./apps/scalable/ccc_large.svg
+			ln -fsr apps/scalable/amd.svg apps/scalable/ccc_large.svg
 			
 			# Wicd icon fix
-			mkdir -p ./extras/pixmaps/wicd
-			ln -fsr ./apps/scalable/wicd.svg ./extras/pixmaps/wicd/wicd.svg
-			ln -fsr ./apps/scalable/wicd-qt.svg ./extras/pixmaps/wicd/wicd-qt.svg
-			ln -fsr ./apps/scalable/wicd-gtk.svg ./extras/pixmaps/wicd/wicd-gtk.svg
+			mkdir -p extras/pixmaps/wicd
+			ln -fsr apps/scalable/wicd.svg extras/pixmaps/wicd/wicd.svg
+			ln -fsr apps/scalable/wicd-qt.svg extras/pixmaps/wicd/wicd-qt.svg
+			ln -fsr apps/scalable/wicd-gtk.svg extras/pixmaps/wicd/wicd-gtk.svg
 		fi
 		
-		# Categories icons fix
-		if [[ -d ./categories ]]; then
+		# Categories
+		if [[ -d categories ]]; then
 			# System tools category fix
-			ln -fsr ./categories/scalable/preferences-other.svg ./categories/scalable/applications-system.svg
+			ln -fsr categories/scalable/preferences-other.svg categories/scalable/applications-system.svg
 		fi
 		
-		# Places icons fix
-		if [[ -d ./places ]]; then
+		# Places
+		if [[ -d places ]]; then
 			# Symbolic links fix
-			ln -fsr ./places/scalable/folder-music.svg ./places/scalable/library-music.svg
-			ln -fsr ./places/scalable/folder-favorites.svg ./places/scalable/folder-important.svg
+			ln -fsr places/scalable/folder-music.svg places/scalable/library-music.svg
+			ln -fsr places/scalable/folder-favorites.svg places/scalable/folder-important.svg
 		fi
 		
-		# Status icons fix
-		if [[ -d ./status ]]; then
+		# Status
+		if [[ -d status ]]; then
 			# Volume icons fix
-			ln -fsr ./status/scalable/audio-volume-muted-panel.svg ./status/scalable/audio-volume-muted.svg
-			ln -fsr ./status/scalable/audio-output-none-panel.svg ./status/scalable/audio-output-none.svg
-			ln -fsr ./status/scalable/audio-volume-low-panel.svg ./status/scalable/audio-volume-low.svg
-			ln -fsr ./status/scalable/audio-volume-medium-panel.svg ./status/scalable/audio-volume-medium.svg
-			ln -fsr ./status/scalable/audio-volume-high-panel.svg ./status/scalable/audio-volume-high.svg
+			ln -fsr status/scalable/audio-volume-muted-panel.svg status/scalable/audio-volume-muted.svg
+			ln -fsr status/scalable/audio-output-none-panel.svg status/scalable/audio-output-none.svg
+			ln -fsr status/scalable/audio-volume-low-panel.svg status/scalable/audio-volume-low.svg
+			ln -fsr status/scalable/audio-volume-medium-panel.svg status/scalable/audio-volume-medium.svg
+			ln -fsr status/scalable/audio-volume-high-panel.svg status/scalable/audio-volume-high.svg
 		fi
 	fi
 }
@@ -90,49 +89,49 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/icons
 	cd ${pkgdir}/usr/share/icons
 	
-	msg2 'Installing default icon theme...'
+	# Default
 	mkdir ${_iconset}
-	cp -a ${srcdir}/${pkgname}/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ./${_iconset}
-	rm -fR ./${_iconset}/status/scalable\ white\ panel status
-	patch ./${_iconset}/index.theme < ${srcdir}/default_theme.patch
+	cp -a ${srcdir}/${pkgname}/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}
+	rm -fR ${_iconset}/status/scalable\ white\ panel status
+	patch ${_iconset}/index.theme < ${srcdir}/default_theme.patch
 	
-	msg2 'Installing default dark icon theme...'
+	# Default dark
 	mkdir ${_iconset}Dark
-	cp -a ${srcdir}/${pkgname}/{status,index.theme} ./${_iconset}Dark
-	rm -fR ./${_iconset}Dark/status/scalable
-	mv ./${_iconset}Dark/status/scalable\ white\ panel ./${_iconset}Dark/status/scalable
-	patch ./${_iconset}Dark/index.theme < ${srcdir}/default_dark_theme.patch
+	cp -a ${srcdir}/${pkgname}/{status,index.theme} ${_iconset}Dark
+	rm -fR ${_iconset}Dark/status/scalable
+	mv ${_iconset}Dark/status/scalable\ white\ panel ${_iconset}Dark/status/scalable
+	patch ${_iconset}Dark/index.theme < ${srcdir}/default_dark_theme.patch
 	
-	msg2 'Installing icon theme folders...'
+	# Orange
 	mkdir ${_iconset}Orange
-	cp -a ${srcdir}/${pkgname}-orange/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ./${_iconset}Orange
-	rm -fR ./${_iconset}Orange/status/scalable\ white\ panel status
-	patch ./${_iconset}Orange/index.theme < ${srcdir}/orange_theme.patch
+	cp -a ${srcdir}/${pkgname}-orange/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}Orange
+	rm -fR ${_iconset}Orange/status/scalable\ white\ panel status
+	patch ${_iconset}Orange/index.theme < ${srcdir}/orange_theme.patch
 	
-	msg2 'Installing dark icon theme orange folders...'
+	# Orange dark
 	mkdir ${_iconset}OrangeDark
-	cp -a ${srcdir}/${pkgname}-orange/{status,index.theme} ./${_iconset}OrangeDark
-	rm -fR ./${_iconset}OrangeDark/status/scalable
-	mv ./${_iconset}OrangeDark/status/scalable\ white\ panel ./${_iconset}OrangeDark/status/scalable
-	patch ./${_iconset}OrangeDark/index.theme < ${srcdir}/orange_dark_theme.patch
+	cp -a ${srcdir}/${pkgname}-orange/{status,index.theme} ${_iconset}OrangeDark
+	rm -fR ${_iconset}OrangeDark/status/scalable
+	mv ${_iconset}OrangeDark/status/scalable\ white\ panel ${_iconset}OrangeDark/status/scalable
+	patch ${_iconset}OrangeDark/index.theme < ${srcdir}/orange_dark_theme.patch
 	
-	msg2 'Installing icon theme green folders...'
+	# Green
 	mkdir ${_iconset}Green
-	cp -a ${srcdir}/${pkgname}-mint-green/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ./${_iconset}Green
-	rm -fR ./${_iconset}Green/status/scalable\ white\ panel status
-	patch ./${_iconset}Green/index.theme < ${srcdir}/green_theme.patch
+	cp -a ${srcdir}/${pkgname}-mint-green/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}Green
+	rm -fR ${_iconset}Green/status/scalable\ white\ panel status
+	patch ${_iconset}Green/index.theme < ${srcdir}/green_theme.patch
 	
-	msg2 'Installing dark icon theme green folders...'
+	# Green dark
 	mkdir ${_iconset}GreenDark
-	cp -a ${srcdir}/${pkgname}-mint-green/{status,index.theme} ./${_iconset}GreenDark
-	rm -fR ./${_iconset}GreenDark/status/scalable
-	mv ./${_iconset}GreenDark/status/scalable\ white\ panel ./${_iconset}GreenDark/status/scalable
-	patch ./${_iconset}GreenDark/index.theme < ${srcdir}/green_dark_theme.patch
+	cp -a ${srcdir}/${pkgname}-mint-green/{status,index.theme} ${_iconset}GreenDark
+	rm -fR ${_iconset}GreenDark/status/scalable
+	mv ${_iconset}GreenDark/status/scalable\ white\ panel ${_iconset}GreenDark/status/scalable
+	patch ${_iconset}GreenDark/index.theme < ${srcdir}/green_dark_theme.patch
 	
-	msg2 'Fixing icons...'
+	# Fix
 	icon_fix ${pkgdir}/usr/share/icons/${_iconset}{,Dark,Orange,OrangeDark,Green,GreenDark}
 	
-	msg2 'Installing license...'
+	# License
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
 	cp ${srcdir}/${pkgname}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

@@ -1,14 +1,13 @@
 pkgbase = ultra-flat-icons
 	pkgdesc = A simple flat icon theme, derived from Flattr icon theme.
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gnome-look.org/content/show.php?content=167477
 	install = ultra-flat-icons.install
 	arch = any
 	license = CCPL:cc-by-nc-sa-4.0
 	depends = xdg-utils
 	provides = ultra-flat-icons=1.3.4
-	conflicts = ultra-flat-icons
 	options = !strip
 	options = !emptydirs
 	source = https://www.dropbox.com/s/35k1ckffe17ba8r/ultra-flat-icons-1.3.4.tar.gz
