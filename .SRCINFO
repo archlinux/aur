@@ -1,0 +1,15 @@
+pkgbase = ttf-sawarabi-gothic
+	pkgdesc = A gothic font for Japanese
+	pkgver = 20140215
+	pkgrel = 1
+	url = http://sawarabi-fonts.osdn.jp/
+	install = ttf.install
+	arch = any
+	license = Creative Commons Attribution 3.0
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://jaist.dl.osdn.jp/sawarabi-fonts/62786/sawarabi-gothic-20140215.tar.xz
+	md5sums = 8f7b5f433b649dd262ff64e197b461e0
+
+pkgname = ttf-sawarabi-gothic
+
