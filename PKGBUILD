@@ -3,7 +3,7 @@
 _themename=urbanlifestyle
 pkgname=sddm-${_themename}-theme
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and colorful SDDM theme.'
 arch=('any')
 url='https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme'
@@ -11,7 +11,6 @@ license=('GPL3')
 
 depends=('sddm')
 provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
 
 install=${pkgname}.install
 
@@ -25,8 +24,8 @@ sha512sums=(
 )
 
 package() {
-	msg2 "Installing theme..."
+	# Installing theme
 	cd ${srcdir}/${pkgname}-${pkgver}
 	mkdir -p ${pkgdir}/usr/share/sddm/themes
-	cp -R ./${_themename} ${pkgdir}/usr/share/sddm/themes
+	cp -R ${_themename} ${pkgdir}/usr/share/sddm/themes
 }
