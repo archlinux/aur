@@ -16,6 +16,7 @@ pkgbase = firefox-developer-fr
 	depends = mime-types
 	depends = nss
 	depends = gtk2
+	depends = gtk3
 	depends = sqlite3
 	depends = dbus-glib
 	provides = firefox-developer
