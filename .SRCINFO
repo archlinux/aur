@@ -1,0 +1,14 @@
+pkgbase = emacs-yasnippet
+	pkgdesc = Yet another snippet extension for Emacs.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/capitaomorte/yasnippet
+	install = yasnippet.install
+	arch = any
+	license = MIT
+	depends = emacs
+	source = https://github.com/downloads/capitaomorte/yasnippet/yasnippet-0.8.0.tar.gz
+	md5sums = fa343adae588fde44b4ecf4f23c1e2d0
+
+pkgname = emacs-yasnippet
+

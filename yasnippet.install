@@ -1,0 +1,13 @@
+post_install() {
+  echo " add the following in your .emacs file:"
+  echo "    (add-to-list 'load-path \"/usr/share/emacs/site-lisp/yas\")"
+  echo "    (require 'yasnippet) ;; not yasnippet-bundle"
+  echo "    (yas/global-mode 1) ;; or manually load it with yas-global-mode"
+}
+
+post_upgrade() {
+   post_install  
+}
+pre_remove() {
+   echo "If you like remove the yasnippet stuff from your .emacs"
+}
