@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Gumprich <sebastian.gumprich@38.de>
 pkgname=tuxemon-git
 pkgver=r34.fcee2e8
-pkgrel=1.0.1
+pkgrel=2
 pkgdesc="A free, open source monster-fighting RPG."
 arch=('i686' 'x86_64')
 url="http://www.tuxemon.org"
@@ -11,6 +11,7 @@ depends=('python2' 'python2-pygame' 'python2-pytmx' 'python2-yapsy')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install=${pkgname}.install
 source=('git://github.com/Tuxemon/Tuxemon.git')
 md5sums=('SKIP')
 
