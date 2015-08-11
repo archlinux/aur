@@ -20,6 +20,6 @@ package() {
 	cd $srcdir/arm-*
 	mkdir -p $pkgdir/usr
 	cp -a * $pkgdir/usr
-	mkdir -p $pkgdir/usr/share/licenses/arm-none-eabi
+	mkdir -p $pkgdir/usr/share/licenses/arm-none-linux-gnueabi
 	cp share/doc/arm-arm-none-linux-gnueabi/LICENSE.txt $pkgdir/usr/share/licenses/arm-none-linux-gnueabi
 }
