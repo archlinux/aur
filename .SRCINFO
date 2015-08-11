@@ -10,10 +10,10 @@ pkgbase = chromium-widevine
 	options = !strip
 	source = chrome-eula_text.html::https://www.google.com/chrome/intl/en/eula_text.html
 	sha256sums = b35811bb330576631e64f7885c66720e0be4ca81afb04328b3a0f288a708e37f
-	source_i686 = google-chrome-stable_44.0.2403.130_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-	sha256sums_i686 = bb041e86d8ccc571c5c4f327bb8643e2b11fb72a879534b6e35129c13d86f27b
-	source_x86_64 = google-chrome-stable_44.0.2403.130_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sha256sums_x86_64 = 0b29ab582fd82a1587626f33025a50d4748df7ddea0eca6e36df63bb5ba6fcb7
+	source_i686 = google-chrome-stable_44.0.2403.155_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+	sha256sums_i686 = 0692fca787ade1b70e6fc2b11b618359c342c9a9e8c4a58abf245cb48810c885
+	source_x86_64 = google-chrome-stable_44.0.2403.155_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	sha256sums_x86_64 = 75d995681a30125364f52389f66a73c94d88acee406bb3f3080f0fa28f7a0bd6
 
 pkgname = chromium-widevine
 
