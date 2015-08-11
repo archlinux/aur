@@ -64,7 +64,7 @@ build() {
   cd comm-*
 
   # Build flags
-  export LDFLAGS="$LDFLAGS -Wl,-rpath,/opt/$pkgname-$pkgver"
+  export LDFLAGS="$LDFLAGS -Wl,-rpath,/opt/$pkgname"
   export PYTHON="/usr/bin/python2"
 
   if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
@@ -99,13 +99,13 @@ package() {
   msg2 "Moving stuff in place..."
   cd dist
   tar -xf thunderbird-*.tar.bz2
-  cp -r thunderbird/ "$pkgdir"/opt/$pkgname-$pkgver
+  cp -r thunderbird/ "$pkgdir"/opt/$pkgname
   
   # /usr/bin symlink
-  ln -sf /opt/$pkgname-$pkgver/thunderbird "$pkgdir"/usr/bin/$pkgname
+  ln -sf /opt/$pkgname/thunderbird "$pkgdir"/usr/bin/$pkgname
 
   # vendor.js
-  install -Dm644 "$srcdir"/vendor.js "$pkgdir"/opt/$pkgname-$pkgver/defaults/preferences/vendor.js
+  install -Dm644 "$srcdir"/vendor.js "$pkgdir"/opt/$pkgname/defaults/preferences/vendor.js
 
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
@@ -117,7 +117,7 @@ package() {
   install -m644 "$srcdir"/*.desktop "$pkgdir"/usr/share/applications/
 
   # Dictionaries/hyphenation
-  rm -rf "$pkgdir"/opt/$pkgname-$pkgver/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "$pkgdir"/opt/$pkgname-$pkgver/dictionaries
-  ln -sf /usr/share/hyphen "$pkgdir"/opt/$pkgname-$pkgver/hyphenation
+  rm -rf "$pkgdir"/opt/$pkgname/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "$pkgdir"/opt/$pkgname/dictionaries
+  ln -sf /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
 }
