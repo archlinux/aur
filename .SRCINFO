@@ -1,0 +1,15 @@
+pkgbase = guile-ncurses
+	pkgdesc = Guile bindings for the GNU NCurses library
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.gnu.org/software/guile-ncurses/
+	arch = any
+	license = GLPL3
+	depends = guile
+	depends = ncurses
+	depends = libunistring
+	source = ftp://ftp.gnu.org/gnu/guile-ncurses/guile-ncurses-1.6.tar.gz
+	md5sums = 9f158bfdae0ce424a104136b3306a108
+
+pkgname = guile-ncurses
+
