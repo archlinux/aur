@@ -1,0 +1,54 @@
+From 9ae53766b3a3344653c9f9bc9be1ea36f81eadd3 Mon Sep 17 00:00:00 2001
+From: Scott Talbert <swt@techie.net>
+Date: Sat, 20 Jun 2015 13:55:53 -0400
+Subject: [PATCH] Fix mhgui for SupportedCapabilities change in web service
+
+NOTE: this patch will need to be cherry-picked by distributions to
+keep mhgui functional.
+---
+ mhgui        | 4 ++--
+ mhmanager.py | 6 ++++++
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/mhgui b/mhgui
+index 090722e..10cac18 100755
+--- a/mhgui
++++ b/mhgui
+@@ -629,7 +629,7 @@ class RemoteConfigurationPanel(WizardPanelBase):
+ 
+         # Populate remote-specific buttons in rightButtonSizer
+         self.rightButtonSizer.Clear(deleteWindows=True)
+-        capabilities = self.product.SupportedCapabilities.SupportedCapability
++        capabilities = mhMgr.GetCapabilityNames(self.product)
+         if "FavoriteChannels" in capabilities:
+             self.AddFavoriteChannelsButton()
+         if "CompiledRemoteButtonMapping" in capabilities or \
+@@ -1316,7 +1316,7 @@ class ConfigureDevicePanel(WizardPanelBase):
+         # Only populate the buttons list if this remote has buttons; if the
+         # 'remote' is a Harmony Link, it has no ProductButtonList.
+         self.remoteButtons = None
+-        capabilities = self.product.SupportedCapabilities.SupportedCapability
++        capabilities = mhMgr.GetCapabilityNames(self.product)
+         if "CompiledRemoteButtonMapping" in capabilities:
+             self.remoteButtons = mhMgr.GetProductButtonList(self.skinId)
+         self.deviceCommands = mhMgr.GetCommands(self.deviceId)
+diff --git a/mhmanager.py b/mhmanager.py
+index 791e03a..cace8e9 100644
+--- a/mhmanager.py
++++ b/mhmanager.py
+@@ -207,6 +207,12 @@ class MHManager():
+     def GetProductButtonList(self, skinId):
+         return self.client.service['ProductsManager'].GetProductButtonList(skinId).Buttons.ButtonDefinition
+ 
++    def GetCapabilityNames(self, product):
++        capabilityNames = []
++        for capability in product.SupportedCapabilities.ProductCapability:
++            capabilityNames.append(capability.Name)
++        return capabilityNames
++
+     def GetCommands(self, deviceId):
+         deviceIds = self.client.factory.create('{' + DATA_NS + '}deviceIds')
+         deviceIds.DeviceId.append(deviceId)
+-- 
+2.5.0
+
