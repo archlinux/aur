@@ -1,0 +1,13 @@
+pkgbase = wolfssl
+	pkgdesc = Embedded SSL Library for Applications, Devices, IoT, and the Cloud
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = https://www.wolfssl.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/wolfSSL/wolfssl/archive/v3.6.2.tar.gz
+	sha1sums = 70477370f1ebbfddc49ec49723d50a74753f9118
+
+pkgname = wolfssl
+
