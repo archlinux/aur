@@ -2,7 +2,7 @@
 # Contributors: Achilleas Pipinellis, speed145a, Schnouki
 
 pkgname=firefox-beta-bin
-pkgver=40.0rc5
+pkgver=40.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
