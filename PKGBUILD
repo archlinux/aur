@@ -16,13 +16,13 @@ source=("git://git.enlightenment.org/devs/discomfitor/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   make DESTDIR="$pkgdir" PREFIX="/usr" install
 
