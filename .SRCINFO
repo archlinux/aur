@@ -10,6 +10,7 @@ pkgbase = bake-sl
 	makedepends = vala
 	provides = bake
 	conflicts = bake-sl
+	conflicts = bake
 	source = https://launchpad.net/bake/0.1/0.1.49/+download/bake-0.1.49.tar.gz
 	source = https://github.com/semplice/bake/compare/gir_lookup.patch
 	source = https://github.com/semplice/bake/compare/python_version.patch
