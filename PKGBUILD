@@ -2,7 +2,7 @@
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 pkgname=php-codesniffer-drupal
 pkgver=8.x_2.3
-_pkgver=8.x-2.3
+_pkgver=${pkgver//[_]/-}
 pkgrel=1
 pkgdesc="Drupal coding standard for PHP_CodeSniffer"
 arch=("any")
