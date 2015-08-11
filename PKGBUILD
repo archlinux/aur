@@ -2,7 +2,7 @@
 # Contributor: Andreas Wagner <AndreasBWagner@pointfree.net>
 
 pkgname=vim-vimwiki-dev-git
-pkgver=v2.1.166.g9949465
+pkgver=2.1.r178.g854219f
 pkgrel=1
 pkgdesc='Personal Wiki for Vim; dev branch'
 arch=('any')
@@ -18,13 +18,12 @@ source=('git+https://github.com/vimwiki/vimwiki.git#branch=dev' license.txt)
 md5sums=('SKIP' 'e19fa0689d06a724fc8ddfe824ef2680')
 
 pkgver() {
-	cd "$srcdir/vimwiki"
-	local ver="$(git describe --long --tags)"
-	printf "%s" "${ver//-/.}"
+	cd vimwiki
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/vimwiki"
+  cd vimwiki
   install -d ${pkgdir}/usr/share/vim/vimfiles/autoload/vimwiki
   install -m644 ${srcdir}/vimwiki/autoload/vimwiki/* \
     ${pkgdir}/usr/share/vim/vimfiles/autoload/vimwiki/
@@ -39,5 +38,3 @@ package() {
   install -m644 ${srcdir}/vimwiki/doc/vimwiki.txt \
     ${pkgdir}/usr/share/vim/vimfiles/doc/
 }
-
-# vim:set ts=2 sw=2 et:
