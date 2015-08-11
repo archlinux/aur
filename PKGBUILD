@@ -2,13 +2,13 @@
 
 _pkgname=rage
 pkgname=$_pkgname-git
-pkgver=0.1.0.r63.f15ebca
+pkgver=0.1.4.r95.4093611
 pkgrel=1
 pkgdesc="Video Player based on EFL - Development version"
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/p.php?p=about/rage"
 license=('BSD')
-depends=('elementary>=1.11')
+depends=('elementary')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -17,7 +17,7 @@ source=("git://git.enlightenment.org/apps/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -36,15 +36,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
 
 # install license files
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
