@@ -1,8 +1,9 @@
 
 # Maintainer: Malte Veerman <maldela@halloarsch.de>
 
-pkgname=fancontrol-gui-git
-pkgver=0.1.r63.gf38582a
+_srcname=fancontrol-gui
+pkgname=${_srcname}-git
+pkgver=0.1.r64.gb098570
 pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('any')
@@ -12,41 +13,34 @@ depends=('qt5-base' 'qt5-quickcontrols' 'qt5-declarative' 'lm_sensors' 'kauth' '
 makedepends=('git' 'gcc' 'cmake' 'extra-cmake-modules' )
 provides=('fancontrol-gui')
 conflicts=('fancontrol-gui')
-source=('https://github.com/Maldela/Fancontrol-GUI.git')
+source=('git://github.com/Maldela/fancontrol-gui.git')
 md5sums=('SKIP')
-
-_gitroot=https://github.com/Maldela/Fancontrol-GUI
-_gitname=Fancontrol-GUI
 
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_srcname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  mkdir -p "$srcdir/$_srcname/build"
+}
+
+
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_srcname/build"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake .. \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DLIB_INSTALL_DIR=lib \
+        -DBUILD_TESTING=off
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_srcname/build"
   make DESTDIR="$pkgdir/" install
 }
