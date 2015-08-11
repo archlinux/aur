@@ -2,7 +2,7 @@
 
 _srcname=linux-4.3
 pkgname=linux-can-dkms
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="CAN kernel modules (DKMS)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
        )
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            'a96b8a4e90887dea82066b4d804ac193700c200b6c0075fecba0b691b0240a5e'
+            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
             'SKIP'
             'b213142af20f9c0bdfdb52104cc2daed2de3edb2e45a6e4e243b9e980ce3c5db'
             '3653b26f843ad66d31ffe3c916d2b26bd59e2e6273e9d967bfdb8af4e693162d')
