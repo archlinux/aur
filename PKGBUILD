@@ -21,15 +21,13 @@ package() {
 
   cd "fmodstudioapi${pkgver//[.]/}linux"
   install -d "$pkgdir/usr/"{lib,include,share/doc}
-
   # lowlevel
-  install -m0644 api/lowlevel/lib/$_carch/* "$pkgdir/usr/lib/"
-  install -m0644 api/lowlevel/inc/* "$pkgdir/usr/include/"
-
+  install -m644 api/lowlevel/lib/$_carch/* "$pkgdir/usr/lib/"
+  install -m644 api/lowlevel/inc/* "$pkgdir/usr/include/"
   # studio
-  install -m0644 api/studio/lib/$_carch/* "$pkgdir/usr/lib/"
-  install -m0644 api/studio/inc/* "$pkgdir/usr/include/"
-
-  install -m0644 doc/* "$pkgdir/usr/share/doc/"
-  install -Dm0644 doc/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 api/studio/lib/$_carch/* "$pkgdir/usr/lib/"
+  install -m644 api/studio/inc/* "$pkgdir/usr/include/"
+  # docs
+  install -m644 doc/* "$pkgdir/usr/share/doc/"
+  install -Dm644 doc/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
