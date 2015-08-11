@@ -4,17 +4,15 @@
 _themename=simpliX
 pkgname=xfce-theme-simplix
 pkgver=r3.888f015
-pkgrel=3
+pkgrel=4
 pkgdesc='A very bright, simple but daily usable theme for Xfce.'
 arch=('any')
 url='http://sixsixfive.deviantart.com/art/simpliX-346404452'
 license=('CCPL:cc-by-sa-4.0')
 
 depends=('gtk-engines' 'gtk-engine-murrine')
-optdepends=()
 makedepends=('git')
 provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
 
 source=(
 	"git+https://github.com/sixsixfive/${_themename}.git"
@@ -39,13 +37,13 @@ package() {
 	
 	# Index, GTK 2.0, Window Manager and Motification theme
 	mkdir -p ${pkgdir}/usr/share/themes/${_themename}
-	cp -R ./{gtk-2.0,metacity-1,xfce-notify-4.0,xfwm4,index.theme} ${pkgdir}/usr/share/themes/${_themename}
+	cp -R {gtk-2.0,metacity-1,xfce-notify-4.0,xfwm4,index.theme} ${pkgdir}/usr/share/themes/${_themename}
 	
 	# GTK 3.0 theme (unsupported by the author)
 	# See note at <https://github.com/sixsixfive/themes/tree/master/simpliX/Extras/GTK3>
-	cp -R ./extras/GTK3/GTK-3.14/${_themename}/gtk-3.0 ${pkgdir}/usr/share/themes/${_themename}
+	cp -R extras/GTK3/GTK-3.14/${_themename}/gtk-3.0 ${pkgdir}/usr/share/themes/${_themename}
 	
 	# Wallpaper (pattern)
 	mkdir -p ${pkgdir}/usr/share/backgrounds/${_themename}
-	cp ./extras/Wallpapers/Patterns/wallpaper1.png ${pkgdir}/usr/share/backgrounds/${_themename}/${_themename}-wallpaper.png
+	cp extras/Wallpapers/Patterns/wallpaper1.png ${pkgdir}/usr/share/backgrounds/${_themename}/${_themename}-wallpaper.png
 }
