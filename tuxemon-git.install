@@ -1,5 +1,5 @@
 post_install() {
-    msg "Start the game like this:"
-    msg "cd /usr/share/Tuxemon/"
-    msg "python2 main.py"
+    printf "Start the game like this:"
+    printf "cd /usr/share/Tuxemon/"
+    printf "python2 main.py"
 }
