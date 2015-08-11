@@ -1,0 +1,19 @@
+pkgbase = lingot
+	pkgdesc = A Guitar tuner
+	pkgver = 0.9.1
+	pkgrel = 2
+	url = http://www.nongnu.org/lingot/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perlxml
+	makedepends = intltool
+	makedepends = gtk2
+	depends = gtk2
+	depends = libglade
+	depends = jack
+	source = http://download.savannah.gnu.org/releases/lingot/lingot-0.9.1.tar.gz
+	md5sums = 5a61c88e3770270246385ab9dbc39793
+
+pkgname = lingot
+
