@@ -1,3 +1,11 @@
+2015-08-11 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.2 :
+	- Initial systemd support. It will add the tinyssh@22.socket unit, create a dependency on cryptsetup.target and enable the unit.
+	- Changed the root user home dir to /root.
+	- TMPDIR juggling cleanup.
+	- Hook help text correction.
+
 2015-08-03 Giancarlo Razzolini <grazzolini@gmail.com>
 
 	* 0.0.1 :
