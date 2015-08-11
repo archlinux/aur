@@ -1,0 +1,19 @@
+pkgbase = guile-reader-git
+	pkgdesc = a simple framework for building readers for GNU Guile
+	pkgver = 64a32bc
+	pkgrel = 1
+	url = http://www.nongnu.org/guile-reader
+	install = guile-reader.install
+	arch = i686
+	arch = x86_64
+	license = gpl
+	makedepends = gperf
+	makedepends = git
+	depends = guile
+	provides = guile-reader
+	conflicts = guile-reader
+	source = git://git.sv.gnu.org/guile-reader.git
+	md5sums = SKIP
+
+pkgname = guile-reader-git
+
