@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-th
 	pkgdesc = Thai language pack for Iceweasel
-	pkgver = 39.0.deb1
+	pkgver = 39.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-th_39.0-1_all.deb
-	sha256sums = bd318477e0cf0fb6f44435e43956b22fc632bde9c5198fd849dc2ae7c486fede
+	depends = iceweasel>=39.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-th_39.0.3-1_all.deb
+	sha256sums = ff0500c343ab6617dd3d88e5a42ca1c332c432fac6b84776587f45f1e4cef1ae
 
 pkgname = iceweasel-i18n-th
 
