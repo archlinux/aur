@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 conflicts=('ccat-git')
 options=('!strip' '!emptydirs')
 source=("https://github.com/jingweno/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('2bc1f3aa7d3b9764cfb3c0aa0270392c')
+md5sums=('28e74e4d534d1135c12564b69313e29c')
 
 
 build() {
