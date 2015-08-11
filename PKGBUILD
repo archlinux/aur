@@ -9,7 +9,7 @@
 pkgbase=linux-rt-lts             # Build kernel with a different name
 _srcname=linux-3.18
 _pkgver=3.18.18
-_rtpatchver=rt15
+_rtpatchver=rt16
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
             'bd43b683811ecd3b9515a3047ded08a8263f02750e335b96dfc99bf589e90d9e'
             'SKIP'
-            'c78ce7466bb1fcc107e4a044286ed26bfd7b48848f3eb61225804bfbfe67e617'
+            'cfa89571b42385add51144b987ff2fa3b1f22d2acb5df8c81b51c1f9caedb837'
             'SKIP'
             '3c876bd83489e56e62629fc09ce85391bef5ef94cb2feab7751841c221c000c6'
             '49202f4733bd9de254083a85d0a17390f78e68fc6e4bea9e91bfce7e8167349e'
