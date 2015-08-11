@@ -1,7 +1,7 @@
 pkgbase = peazip-gtk2
 	pkgdesc = GTK2 archiver utility
 	pkgver = 5.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.peazip.org/peazip-linux.html
 	install = peazip.install
 	arch = i686

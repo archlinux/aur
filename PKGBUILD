@@ -4,7 +4,7 @@
 
 pkgname=peazip-gtk2
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK2 archiver utility"
 arch=(i686 x86_64)
 url=http://www.peazip.org/peazip-linux.html
