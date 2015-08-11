@@ -2,8 +2,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-committia-git
-pkgver=20150529
+pkgver=r66.447fb27
 pkgrel=1
+epoch=1
 pkgdesc='A Vim plugin for more pleasant editing of Git commit messages'
 arch=('any')
 depends=('vim')
@@ -19,7 +20,7 @@ install=vimdoc.install
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
