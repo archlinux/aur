@@ -1,4 +1,5 @@
-# Maintainer: Federico Damián <federicodamians@gmail.com>
+# Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
+# Contributor: Federico Damián <federicodamians@gmail.com>
 #
 # PKGBUILD for Vimix Icon Theme
 #
