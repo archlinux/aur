@@ -1,0 +1,42 @@
+# From: librecad's git repository, trimmed patch to only dxflib
+
+commit 689a2263776b75cc60a75f167b22fc0e85bc9dde
+Author: R. van Twisk <rvt@R-Twisks-iMac.local>
+Date:   Fri Aug 12 18:54:52 2011 -0500
+
+    Patch that fix bug #3159842 (AcadDXF2000 hatching errors) - ID: 3388472
+    
+    Thanks to Rallaz for the patch
+
+diff --git a/src/dl_dxf.cpp b/src/dl_dxf.cpp
+index aafefe1..b42d5ce 100644
+--- a/src/dl_dxf.cpp
++++ b/src/dl_dxf.cpp
+@@ -1358,6 +1358,7 @@ bool DL_Dxf::handleHatchData(DL_CreationInterface* /*creationInterface*/) {
+             hatchLoopIndex++;
+             hatchLoops[hatchLoopIndex]
+             = DL_HatchLoopData(toInt(groupValue));
++            hatchLoops[hatchLoopIndex].pathType = toInt(values[92]);
+ 
+             maxHatchEdges[hatchLoopIndex] = toInt(groupValue);
+             hatchEdgeIndex[hatchLoopIndex] = -1;
+@@ -1948,6 +1949,7 @@ void DL_Dxf::addHatch(DL_CreationInterface* creationInterface) {
+ 
+     for (int l=0; l<maxHatchLoops; l++) {
+         DL_HatchLoopData ld(maxHatchEdges[l]);
++        ld.pathType = hatchLoops[l].pathType;
+         creationInterface->addHatchLoop(ld);
+         for (int b=0; b<maxHatchEdges[l]; b++) {
+             creationInterface->addHatchEdge(hatchEdges[l][b]);
+diff --git a/src/dl_entities.h b/src/dl_entities.h
+index b4c0c5f..8fa14b8 100644
+--- a/src/dl_entities.h
++++ b/src/dl_entities.h
+@@ -1272,6 +1272,7 @@ struct DL_HatchLoopData {
+ 
+     /*! Number of edges in this loop. */
+     int numEdges;
++    int pathType; //Boundary path type
+ };
+ 
+ 

@@ -1,0 +1,110 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-10-18 01:13:18.085596872 +0200
+Upstream: tbd
+
+Use automake+libtool, it's _so_ much easier.
+
+---
+ Makefile.am      |   23 +++++++++++++++++++++++
+ autogen.sh       |    3 +++
+ configure.in     |   24 +++++++-----------------
+ test/Makefile.am |    8 ++++++++
+ 4 files changed, 41 insertions(+), 17 deletions(-)
+
+Index: dxflib-2.5.0.0-1.src/Makefile.am
+===================================================================
+--- /dev/null
++++ dxflib-2.5.0.0-1.src/Makefile.am
+@@ -0,0 +1,25 @@
++# -*- Makefile -*-
++
++SUBDIRS = . test
++
++AM_CPPFLAGS = -I${top_srcdir}/src
++
++lib_LTLIBRARIES = lib/libdxflib.la
++
++lib_libdxflib_la_SOURCES = src/dl_dxf.cpp src/dl_writer_ascii.cpp
++lib_libdxflib_la_LDFLAGS = -release ${PACKAGE_VERSION}
++
++pkginclude_HEADERS = \
++	src/dl_attributes.h \
++	src/dl_codes.h \
++	src/dl_creationadapter.h \
++	src/dl_creationinterface.h \
++	src/dl_dxf.h \
++	src/dl_entities.h \
++	src/dl_exception.h \
++	src/dl_extrusion.h \
++	src/dl_writer.h \
++	src/dl_writer_ascii.h
++
++docu:
++	-doxygen ./doxygen.cfg
+Index: dxflib-2.5.0.0-1.src/autogen.sh
+===================================================================
+--- /dev/null
++++ dxflib-2.5.0.0-1.src/autogen.sh
+@@ -0,0 +1,3 @@
++#!/bin/sh -ex
++
++autoreconf -fi;
+Index: dxflib-2.5.0.0-1.src/configure.in
+===================================================================
+--- dxflib-2.5.0.0-1.src.orig/configure.in
++++ dxflib-2.5.0.0-1.src/configure.in
+@@ -2,7 +2,9 @@
+ #
+ # Check for one project file
+ #
+-AC_INIT(src/dl_dxf.cpp)
++AC_INIT([dxflib], [2.5.0.0.1])
++AC_CONFIG_SRCDIR([src/dl_dxf.cpp])
++AM_INIT_AUTOMAKE([-Wall foreign])
+ 
+ PRODUCT=dxflib
+ 
+@@ -23,17 +25,8 @@ AC_PROG_CC
+ AC_PROG_CPP
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+-AC_CHECK_PROG(FIND, find, find, :)
+-AC_CHECK_PROG(MAKEDEPEND, makedepend, makedepend, :)
+-
+-#
+-# Try to locate the X Window System include files and libraries
+-# and add /usr/local to include and lib path and add -lm (for testing)
+-#
+-AC_PATH_XTRA
+-CFLAGS="$CFLAGS $X_CFLAGS"
+-LDFLAGS="$LDFLAGS $X_LIBS -L/usr/local/lib"
+-
++AC_DISABLE_STATIC
++LT_INIT
+ 
+ #
+ # Declare variables which we want substituted in the Makefile.in's
+@@ -48,8 +41,5 @@ AC_CHECK_HEADERS(limits.h)
+ # finally create makefiles using Makefile.in
+ #
+ echo
+-AC_OUTPUT(Makefile test/Makefile)
+-
+-echo
+-echo "Run 'make depend' to create dependencies."
+-echo
++AC_CONFIG_FILES([Makefile test/Makefile])
++AC_OUTPUT
+Index: dxflib-2.5.0.0-1.src/test/Makefile.am
+===================================================================
+--- /dev/null
++++ dxflib-2.5.0.0-1.src/test/Makefile.am
+@@ -0,0 +1,8 @@
++# -*- Makefile -*-
++
++AM_CPPFLAGS = -I${top_srcdir}/src
++
++check_PROGRAMS = test
++
++test_SOURCES = main.cpp test_creationclass.cpp
++test_LDADD   = ../lib/libdxflib.la
