@@ -1,0 +1,22 @@
+pkgbase = polyml-fixes-git
+	pkgdesc = Poly/ML implementation of Standard ML (latest release + fixes)
+	pkgver = 5.5.2
+	pkgrel = 1
+	url = http://polyml.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = gmp
+	provides = polyml
+	provides = polyml-git
+	conflicts = polyml
+	conflicts = polyml-git
+	conflicts = polyml-svn
+	replaces = polyml-svn
+	options = staticlibs
+	source = git+https://github.com/polyml/polyml.git#branch=fixes-5.5.2
+	md5sums = SKIP
+
+pkgname = polyml-fixes-git
+
