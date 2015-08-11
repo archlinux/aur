@@ -8,6 +8,7 @@ url="https://github.com/sk1418/zhuaxia"
 license=('MIT')
 makedepends=('git')
 depends=('python2-requests' 'mutagen' 'python2-beautifulsoup4' 'python2-setuptools')
+conflicts=('python2-mutagen')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 source="$pkgname::git+http://github.com/sk1418/${pkgname%-*}.git"
