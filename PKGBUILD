@@ -20,15 +20,16 @@ depends=(# See setup.py, README.rst, and requirements.txt for version dependenci
   'python-botocore-git>=1.1.7' # == can't work with the long git version string.
   'python-colorama>=0.2.5' 'python-colorama<=0.3.3'
   'python-docutils>=0.10'
-  'python-rsa>=3.1.2' # 'python-rsa<=3.1.4' # We're already at 3.2
-  #'python-rsa<3.2.0' # Arch can't fulfill this since 3/17/2015. Let's hope it's fixed!
-  'python-jmespath'
-  'python-tox>=1.4'
-  'python-sphinx>=1.1.3'
-  'python-nose>=1.3.0'
-  'python-mock>=1.0.1'
+  'python-rsa>=3.1.2' 'python-rsa<=3.1.4' # See AUR for this version
   'python-wheel>=0.24.0'
-  'python-six' # This is all over the code but not found in the requirements
+
+  ### These are handled by botocore
+  ###'python-jmespath'
+  ###'python-tox>=1.4'
+  ###'python-sphinx>=1.1.3'
+  ###'python-nose>=1.3.0'
+  ###'python-mock>=1.0.1'
+  ###'python-six' # This is all over the code but not found in the requirements
 )
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
