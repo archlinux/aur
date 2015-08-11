@@ -1,0 +1,22 @@
+pkgbase = streamtuner2
+	pkgdesc = An internet radio browser
+	pkgver = 2.1.9
+	pkgrel = 3
+	url = http://sourceforge.net/projects/streamtuner2
+	arch = any
+	license = custom
+	makedepends = libarchive
+	depends = python2
+	depends = pygtk
+	depends = python2-xdg
+	depends = python2-pillow
+	depends = python2-keybinder2
+	depends = python2-lxml
+	depends = python2-cssselect
+	depends = python2-pyquery
+	depends = python2-requests
+	source = http://downloads.sourceforge.net/sourceforge/streamtuner2/streamtuner2-2.1.9.rpm
+	md5sums = c2fe91f38cbdadf7052f731fd0fa8789
+
+pkgname = streamtuner2
+
