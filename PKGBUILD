@@ -1,7 +1,8 @@
 # Maintainer: M0Rf30
+# Contributor: brikler 
 
 pkgname=fwts-git
-pkgver=2325.c519fe0
+pkgver=3056.9ddce1f
 pkgrel=1
 pkgdesc="The FirmWare Test Suite is a tool to do automatic testing of a PC's firmware"
 arch=('i686' 'x86_64')
@@ -14,7 +15,8 @@ source=('fwts::git://kernel.ubuntu.com/hwe/fwts.git')
 build() {
   cd fwts
   autoreconf -ivf
-  ./configure --prefix=/usr 
+  CPPFLAGS="$CPPFLAGS -O2"
+  CFLAGS=--sysroot= ./configure --prefix=/usr
   make
 }
 
