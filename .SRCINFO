@@ -1,6 +1,6 @@
 pkgbase = yourkit
 	pkgdesc = Java CPU and memory profiler.
-	pkgver = 2015b15070
+	pkgver = 2015b15072
 	pkgrel = 1
 	url = http://www.yourkit.com
 	install = yourkit.install
@@ -13,8 +13,8 @@ pkgbase = yourkit
 	optdepends = eclipse: A Java IDE that integrates with Yourkit
 	optdepends = netbeans: A Java IDE that integrates with Yourkit
 	options = !strip
-	source = http://www.yourkit.com/download/yjp-2015-build-15070-linux.tar.bz2
-	sha256sums = 85c3a0e9f1b0a34801318633b6e4127593fa0039bcd5d136422fe30eedaa7c61
+	source = http://www.yourkit.com/download/yjp-2015-build-15072-linux.tar.bz2
+	sha256sums = e22558d62fdcc28d912a46594efba6ae0187ef60de3b163364a99181b9d5ab1f
 
 pkgname = yourkit
 
