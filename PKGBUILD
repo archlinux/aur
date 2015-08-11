@@ -1,14 +1,15 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-committia-git
-pkgver=20140831
+pkgver=20150529
 pkgrel=1
-pkgdesc="A Vim plugin for more pleasant editing of Git commit messages"
+pkgdesc='A Vim plugin for more pleasant editing of Git commit messages'
 arch=('any')
 depends=('vim')
 makedepends=('git')
 groups=('vim-plugins')
-url="https://github.com/rhysd/committia.vim"
+url='https://github.com/rhysd/committia.vim'
 license=('MIT')
 source=(${pkgname%-git}::git+https://github.com/rhysd/committia.vim)
 sha256sums=('SKIP')
@@ -35,4 +36,8 @@ package() {
 
   msg 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+
+  # Install licence
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname%-git}"
+  grep '## License' README.md -A 100 > "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENCE"
 }

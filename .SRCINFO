@@ -1,6 +1,6 @@
 pkgbase = vim-committia-git
 	pkgdesc = A Vim plugin for more pleasant editing of Git commit messages
-	pkgver = 20140831
+	pkgver = 20150529
 	pkgrel = 1
 	url = https://github.com/rhysd/committia.vim
 	install = vimdoc.install
