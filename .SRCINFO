@@ -11,7 +11,7 @@ pkgbase = bake-sl-git
 	provides = bake
 	conflicts = bake-sl-git
 	conflicts = bake
-	source = bake::git://github.com/semplice/bake.git#branch=semplice
+	source = bake::git://github.com/semplice/bake.git#branch=master
 	md5sums = SKIP
 
 pkgname = bake-sl-git

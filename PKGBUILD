@@ -1,7 +1,7 @@
 # Maintainer: Gary DeLaney <gld1982ltd@gmail.com>
 
 _gitroot="git://github.com/semplice/bake.git"
-_gitbranch="semplice"
+_gitbranch="master"
 _gitname="bake"
 
 pkgname="$_gitname-sl-git"
@@ -31,6 +31,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-sl-git}"
+	git merge --no-edit origin/semplice
 	git merge --no-edit origin/python_version
 	git merge --no-edit origin/gir_lookup
 }
