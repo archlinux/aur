@@ -1,26 +1,27 @@
 # INotifyX: Installer: Arch
+# Maintainer:  Joost Bremmer <toost dot b at gmail dot com>
 # Maintainer:  Tom Vincent <http://tlvince.com/contact>
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
 pkgbase=python2-inotifyx
 pkgname=python2-inotifyx
-_pkgname=inotifyx
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Python binding to the Linux inotify file system event monitoring API"
 arch=("i686" "x86_64")
-url="http://www.alittletooquiet.net/software/inotifyx/"
+url=("http://www.alittletooquiet.net/software/inotifyx/")
 license=("MIT")
 depends=("python2")
+makedepends=("python2-setuptools")
 options=(!emptydirs)
 provides=(inotifyx)
 conflicts=(inotifyx)
-source=(http://launchpad.net/${_pkgname}/dev/v${pkgver}/+download/${_pkgname}-${pkgver}.tar.gz)
-sha1sums=('e29996f6882227e390464de2185eb25fc4e0c951')
+source=("http://launchpad.net/${pkgname:8}/dev/v${pkgver}/+download/${pkgname:8}-${pkgver}.tar.gz")
+sha256sums=('bad6a84df2a110f282d398dff112b1d3c838a6d50907305121a9af590d185fab')
 
 package() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
+	cd ${srcdir}/${pkgname:8}-${pkgver}
 
 	# Install
-	python2 setup.py install --prefix=/usr --root=${pkgdir} 
+	python2 setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
 }
