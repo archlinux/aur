@@ -7,7 +7,7 @@ pkgver=5.7.0
 pkgrel=1
 pkgdesc="GTK2 archiver utility"
 arch=(i686 x86_64)
-url=http://peazip.sourceforge.net/peazip-linux.html
+url=http://www.peazip.org/peazip-linux.html
 license=(LGPL3)
 depends=(balz desktop-file-utils lib32-curl lib32-gmp4 lib32-gtk2 lib32-ncurses lpaq paq8o p7zip upx zpaq)
 [[ $CARCH == "i686" ]] && depends=(${depends[@]/lib32-/})
