@@ -1,8 +1,9 @@
-# Maintainer: Marc Straube <m.straube@skunk-coding.de>>
+# Maintainer: Marc Straube <m.straube@skunk-coding.de>
+# Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
 
 pkgname='phpdox'
 pkgver='0.8.1.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation generator for PHP Code using standard technology (SRC, DOCBLOCK, XML and XSLT)"
 url="http://phpdox.de"
 license=('custom')
@@ -10,10 +11,11 @@ install="${pkgname}.install"
 arch=('any')
 depends=('php>=5.3.3' 'php-xsl')
 source=("https://github.com/theseer/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.phar"
-	'LICENSE')
-sha256sums=('1424d4603e0fdb0c80e39266fb832060bffbcc665a8c8d29b411e88d096d5da2'
-            'b9f0017ad3f5fcb80fd561870543fe92ac89a65dbd14e759f6be93b25670250a')
-
+        "https://raw.githubusercontent.com/theseer/${pkgname}/${pkgver}/LICENSE"
+        "${pkgname}.install")
+sha512sums=('9355bafa1006c72ec97b8e8f2f0e5191604b5d43b583e80b08d72efc47b537cce0cb95e2b33180948072c55e8097974ffd3a4da6c21849a62194c700f8718d2b'
+            '61e052222ec37de300fe3013c1f58ac8c877df58f529f87eca99e516b8d207d0a588376746e3f14262bfa853ac9e53dc937de3456372cb6159274cfb729cde7c'
+            'e36a606204dadf88b03356bb30d45b1019c875af2f2cee6af38207f2c87ceae790a86efa5e2873d174ae7658c488023b36e513a775bfafc5177f24ee0da7f1ea')
 package() {
   cd "${srcdir}"
 
