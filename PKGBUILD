@@ -1,41 +1,47 @@
-pkgname=beanstalkd
-pkgver=1.10
+pkgname=beanstalkd-git
+pkgver=dev1.10.r1.g86231ba
 pkgrel=1
 epoch=
-pkgdesc="Fast, simple message queue server"
+pkgdesc="Fast, simple message queue server, git version"
 arch=('i686' 'x86_64')
 url=""
 license=('GPL')
 depends=()
 makedepends=()
-conflicts=('beanstalkd-git')
+conflicts=('beanstalkd')
+provides=('beanstalkd')
 backup=('etc/conf.d/beanstalkd')
 options=()
 install=
 changelog=
-source=("https://github.com/kr/beanstalkd/archive/v${pkgver}.tar.gz"
+source=("git://github.com/kr/beanstalkd.git"
 	"beanstalkd@.service"
 	"beanstalkd.service"
 	"beanstalkd.conf")
-md5sums=('0994d83b03bde8264a555ea63eed7524'
+md5sums=('SKIP'
          'f6151d5d2f07c24977cafba38a9e67c9'
          'd05b907abfb19174a7321676ecc0c819'
          '7fdc2e3d1dc9c6559b7b007b74588a09')
 
+pkgver() {
+  cd "$srcdir/beanstalkd"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/beanstalkd"
 
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/beanstalkd"
   make CFLAGS="${CFLAGS}"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/beanstalkd"
 
   make DESTDIR="$pkgdir/" PREFIX="/usr" install
   #systemd files
