@@ -1,0 +1,14 @@
+pkgbase = gimp-plugin-layerfx
+	pkgdesc = A GIMP plugin for layer effects (Layer->Layer Effects)
+	pkgver = 20120412
+	pkgrel = 1
+	url = http://registry.gimp.org/node/186
+	arch = any
+	license = GPLv3
+	depends = gimp
+	depends = python2
+	source = http://registry.gimp.org/files/layerfx.2.8.py.txt
+	md5sums = 408c5191552a7639f64bd6bd25891f85
+
+pkgname = gimp-plugin-layerfx
+
