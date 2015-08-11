@@ -1,0 +1,14 @@
+pkgbase = gimp-plugin-insanebump
+	pkgdesc = A GIMP plugin for bump maps
+	pkgver = 3
+	pkgrel = 1
+	url = http://registry.gimp.org/node/28117
+	arch = any
+	license = GPLv3
+	depends = gimp
+	depends = python2
+	source = http://registry.gimp.org/files/InsaneBump.py_3.txt
+	md5sums = 48a85ef45387b621303ac72fb67be3fe
+
+pkgname = gimp-plugin-insanebump
+
