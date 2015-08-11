@@ -15,7 +15,7 @@ source=("https://github.com/profusion/lightmediascanner/archive/release_$pkgver.
 sha256sums=('d08434b957eb8b4e2d84cb081406ce86af20113a30f9d0d097e32b7a667f1174')
 
 build() {
-  cd "$srcdir/$pkgname-release_$pkgver"
+  cd $pkgname-release_$pkgver
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -26,11 +26,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-release_$pkgver"
+  cd $pkgname-release_$pkgver
 
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -d "$pkgdir/usr/share/doc/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS NEWS README TODO
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS NEWS README TODO
 }
