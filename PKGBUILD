@@ -7,8 +7,8 @@ pkgdesc="An easy to use build system. Designed to be make/autotools for the 21st
 arch=('i686' 'x86_64')
 url="https://launchpad.net/bake"
 license=("GPL3")
-provides=("${pkgname%-sl}")
-conflicts=("${pkgname%}" "${pkgname%-sl}")
+provides=("bake")
+conflicts=("${pkgname%}")
 makedepends=('itstool' 'vala')
 source=("https://launchpad.net/bake/0.1/${pkgver}/+download/bake-${pkgver}.tar.gz"
         "https://github.com/semplice/bake/compare/gir_lookup.patch"
