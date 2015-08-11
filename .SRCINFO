@@ -1,5 +1,5 @@
 pkgbase = yices
-	pkgdesc = An automatic theorem prover
+	pkgdesc = An automatic theorem prover - compile from source
 	pkgver = 2.4.1
 	pkgrel = 1
 	url = http://yices.csl.sri.com/

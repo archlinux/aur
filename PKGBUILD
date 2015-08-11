@@ -3,7 +3,7 @@
 pkgname=yices
 pkgver=2.4.1
 pkgrel=1
-pkgdesc="An automatic theorem prover"
+pkgdesc="An automatic theorem prover - compile from source"
 arch=('i686' 'x86_64')
 url="http://yices.csl.sri.com/"
 license=('custom')
