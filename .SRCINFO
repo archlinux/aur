@@ -1,0 +1,17 @@
+pkgbase = sescript-git
+	pkgdesc = a scheme syntax to ecmascript and javascript compiler
+	pkgver = 3d8cd12
+	pkgrel = 1
+	url = http://sph.mn/content/3d3
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	depends = guile
+	depends = sph-lib-git
+	provides = sescript
+	source = git://git.sph.mn/sescript
+	md5sums = SKIP
+
+pkgname = sescript-git
+
