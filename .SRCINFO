@@ -1,0 +1,18 @@
+pkgbase = xdo-git
+	pkgdesc = Small X utility to perform elementary actions on windows
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/baskerville/xdo
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = libxcb
+	depends = xcb-util-wm
+	provides = xdo
+	conflicts = xdo
+	source = git://github.com/baskerville/xdo.git
+	md5sums = SKIP
+
+pkgname = xdo-git
+
