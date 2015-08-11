@@ -1,0 +1,16 @@
+post_install() {
+cat <<EOF
+  In order to use this plugin the KDevelop C++ support (kdevcpp) must be disabled.
+
+  To disable kdevcpp, either run kdevelop using the following command:
+    KDEV_DISABLE_PLUGINS=kdevcppsupport kdevelop
+  or disable disable compilation of the old C++ plugin by passing:
+    -DBUILD_cpp=false
+  to CMake when compiling KDevelop.
+
+  The first time kdev-clang is used, the KDevelop cache must be wiped by adding:
+    CLEAR_DUCHAIN_DIR=1
+  to the KDevelop start command.
+EOF
+}
+

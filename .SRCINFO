@@ -1,0 +1,21 @@
+pkgbase = kdevelop-clang-git
+	pkgdesc = Clang integration plugin for KDevelop
+	pkgver = r664.caf0117
+	pkgrel = 1
+	url = http://www.kdevelop.org/
+	install = kdevelop-clang.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = kdevelop-git
+	depends = clang
+	depends = llvm
+	provides = kdevelop-clang
+	source = git+git://anongit.kde.org/kdev-clang
+	sha256sums = SKIP
+
+pkgname = kdevelop-clang-git
+
