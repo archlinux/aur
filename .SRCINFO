@@ -1,7 +1,7 @@
 pkgbase = epymc
 	pkgdesc = Media Center based on EFL
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DaveMDS/epymc
 	install = epymc.install
 	arch = any

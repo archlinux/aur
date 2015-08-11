@@ -2,7 +2,7 @@
 
 pkgname=epymc
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Media Center based on EFL"
 arch=('any')
 url="https://github.com/DaveMDS/epymc"
