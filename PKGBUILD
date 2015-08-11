@@ -2,7 +2,7 @@
 
 pkgname=python2-gnupg-hg
 _pkgsrcname=python-gnupg
-pkgver=r60.975b7e7a64b7
+pkgver=r63.2a6d156219a0
 pkgrel=1
 pkgdesc="The gnupg module allows Python programs to make use of the functionality provided by the GNU Privacy Guard."
 url="https://bitbucket.org/vinay.sajip/python-gnupg"
