@@ -1,17 +1,17 @@
 pkgbase = python-appdirs-git
 	pkgdesc = A small Python module for determining appropriate platform-specific dirs, e.g. a "user data dir".
 	pkgver = 1.4.1.r141.c3f3545
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ActiveState/appdirs
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
+	provides = python-appdirs=1.4.1.r141.c3f3545
 	conflicts = python-appdirs
 	source = appdirs::git+https://github.com/ActiveState/appdirs.git
 	md5sums = SKIP
 
 pkgname = python-appdirs-git
-	provides = python-appdirs=1.4.1.r141.c3f3545
 
