@@ -24,8 +24,8 @@ source=("$pkgname.desktop"
         'vendor.js')
 source_i686=("https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2")
 source_x86_64=("https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2")
-md5sums=('6c94c2e7f041c5c947af1ed958c0d227'
-         '00fef0a11f3643454a1af66bb7e4af35'
+md5sums=('fe18423c55d549722870573695b3bd60'
+         '7f826c0d64cb62f9fed7e16221cb2f00'
          '5a53179d14ae9631b7afe5e4d0fc0b25')
 md5sums_i686=('237de0f7fb9e2b58b9eba6854bfb2d4f')
 md5sums_x86_64=('da6b06a87953a2d41ef1b2eb66b91469')
