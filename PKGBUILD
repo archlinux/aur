@@ -1,6 +1,6 @@
 # Maintainer: David Roheim <david dot roheim at gmail dot com>
 pkgname=apigility
-pkgver=1.1.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="The world's easiest way to create high-quality APIs."
 arch=('any')
@@ -11,7 +11,7 @@ options=(!strip)
 optdepends=()
 conflicts=()
 source=("https://github.com/zfcampus/zf-apigility-skeleton/releases/download/$pkgver/zf-apigility-skeleton-${pkgver}.tgz")
-sha256sums=('3dd01dc8cca5cccea96c0c597bcda2a97fc785a303ed42f22420851ae551a94c')
+sha256sums=('e04ba711dd1fc4373f39e3f9c4291bee95e589df8fe8628f248b1aa9e8eaafcb')
 
 build() {
     true
