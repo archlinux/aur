@@ -17,8 +17,6 @@ pkgver() {
 }
 
 package() {
-  ls $pkgname
-  
   # Install License (License is in README)
   install -Dm644 $pkgname/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
