@@ -1,0 +1,34 @@
+pkgbase = peazip-qt
+	pkgdesc = QT archiver utility
+	pkgver = 5.7.0
+	pkgrel = 1
+	url = http://www.peazip.org/peazip-linux.html
+	install = peazip.install
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = balz
+	depends = desktop-file-utils
+	depends = lib32-curl
+	depends = lib32-gmp4
+	depends = lib32-libx11
+	depends = lib32-ncurses
+	depends = qt4pas
+	depends = p7zip
+	depends = upx
+	depends = lrzip
+	optdepends = quad
+	optdepends = unace
+	provides = peazip
+	conflicts = peazip-gtk2
+	conflicts = peazip-qt-build
+	noextract = peazip-qt-5.7.0.tgz
+	source = peazip-qt-5.7.0.tgz::https://github.com/giorgiotani/PeaZip/releases/download/5.7.0/peazip-5.7.0.LINUX.Qt.tgz
+	source = peazip.desktop
+	sha256sums = 13a7de32b09b973e2e540b0ec1247b45d10c6db76f9c9b981df27a4685afc8a9
+	sha256sums = 4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b
+	sha512sums = 3782083e6959cc00dd2ab6c81743dceb71e5f573299f9d5d0e281fabafc3655257805fc916f9a64d8e282e3565e464838a9c7c6843bbd1382f603174e15c1138
+	sha512sums = bc86d42b33285c2709081ddca7c06fe789cc2d42c69c4cbed595c077a776d91e5526eb799dcdc404375a3bfb212927165a02d3d79301f53adb8a89039bf7bb5f
+
+pkgname = peazip-qt
+
