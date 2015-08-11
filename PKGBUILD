@@ -3,7 +3,7 @@ true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
 _srcname=linux-4.1
-pkgver=4.1.1
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	config-i686
 	config-x86_64)
 md5sums=('fe9dc0f6729f36400ea81aa41d614c37'
-         '7766291e05ecf0b53d79c532cb44db6c'
+         '79d9a168b73d91544c15b3b77221528a'
          '3f269b45d681772081d1ef7f5a5b2701'
          '87db1e4450352d472798b98996501e1a')
 
