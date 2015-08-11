@@ -1,0 +1,57 @@
+Common subdirectories: gdevilspie-0.5-orig/debian and gdevilspie-0.5/debian
+Common subdirectories: gdevilspie-0.5-orig/gDevilspie and gdevilspie-0.5/gDevilspie
+diff -iEZbwBu gdevilspie-0.5-orig/gdevilspie gdevilspie-0.5/gdevilspie
+--- gdevilspie-0.5-orig/gdevilspie	2013-02-03 13:10:57.913213102 -0700
++++ gdevilspie-0.5/gdevilspie	2013-02-03 13:11:21.336468365 -0700
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # gdevilspie.py
+ # Copyright (C) Islam Amer 2008 <iamer@open-craft.com>
+@@ -40,16 +40,17 @@
+ try:
+ 	import gDevilspie.filler as filler
+ except:
+-	error = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, "Make sure that Python-Wnck is correctly installed for 'filler' module to run properly.")
++	error = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, "Make sure that python2-wnck is correctly installed for 'filler' module to run properly.")
+ 	response = error.run()
+ 	error.destroy()
+ 	DISABLE_FILLER="True"
+ 
+ DISABLE_XDG=""
+ try:
++    import xdg.BaseDirectory
+     import xdg.DesktopEntry
+ except:
+-	error = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, "Make sure that Python-xdg is correctly installed if you need autostart handling.")
++	error = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, "Make sure that python2-xdg is correctly installed if you need autostart handling.")
+ 	response = error.run()
+ 	error.destroy()
+ 	DISABLE_XDG="True"
+@@ -542,12 +543,12 @@
+ 		if ( DISABLE_XDG == "True" ):
+ 				self.DaemonAutostart.set_sensitive(False)
+ 		else:
+-				if (os.path.exists(xdg.DesktopEntry.xdg_config_home + "/autostart/devilspie.desktop")):
+-					df = xdg.DesktopEntry.DesktopEntry(xdg.DesktopEntry.xdg_config_home + "/autostart/devilspie.desktop")
++				if (os.path.exists(xdg.BaseDirectory.xdg_config_home + "/autostart/devilspie.desktop")):
++					df = xdg.DesktopEntry.DesktopEntry(xdg.BaseDirectory.xdg_config_home + "/autostart/devilspie.desktop")
+ 					if (df.get('X-GNOME-Autostart-enabled') == 'true'):
+ 							self.DaemonAutostart.set_active(True)
+ 				else:
+-						df = xdg.DesktopEntry.DesktopEntry(xdg.DesktopEntry.xdg_config_home + "/autostart/devilspie.desktop")
++						df = xdg.DesktopEntry.DesktopEntry(xdg.BaseDirectory.xdg_config_home + "/autostart/devilspie.desktop")
+ 						df.set('Name','Devilspie')
+ 						df.set('Exec','devilspie')
+ 						df.set('X-GNOME-Autostart-enabled','false')
+@@ -555,7 +556,7 @@
+ 
+ 					
+   def on_DaemonAutostart_toggled(self,widget):
+-			df = xdg.DesktopEntry.DesktopEntry(xdg.DesktopEntry.xdg_config_home + "/autostart/devilspie.desktop")
++			df = xdg.DesktopEntry.DesktopEntry(xdg.BaseDirectory.xdg_config_home + "/autostart/devilspie.desktop")
+ 			if (widget.get_active()):
+ 					df.set('X-GNOME-Autostart-enabled','true')
+ 					df.write()
+Common subdirectories: gdevilspie-0.5-orig/po and gdevilspie-0.5/po
