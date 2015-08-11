@@ -1,7 +1,7 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=docker-compose-bin
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Pythonless package of a fast, isolated development environments using Docker"
 depends=('docker')
@@ -14,16 +14,16 @@ source=(
 )
 url="https://www.docker.com/"
 license="Apache"
-sha256sums=('97ce4770d4857731d952af492800f2fcc3199e8c40b146b994ca48a912e0450c'
-            '9cf4f02f897ff2f0df6e46e3d46f9f91271856cc52680928d916b0d4c969218f')
+sha256sums=('63a30b5bc7a8ad3767f27f68a0d17f6f6ac70d24ff3a3be3363ed47a4e0ad2b4'
+            '96875473fdb1cce1d63c4bc21c2bc9bf620820fb3bdf8c590618965733418115')
 
 package() {
-  cd $srcdir
-  install -Dm755 docker-compose-Linux-x86_64 $pkgdir/usr/bin/docker-compose
-  ln -s docker-compose $pkgdir/usr/bin/fig
+  cd "$srcdir"
+  install -Dm755 docker-compose-Linux-x86_64 "$pkgdir/usr/bin/docker-compose"
+  ln -s docker-compose "$pkgdir/usr/bin/fig"
 
-  cd $srcdir/compose-$pkgver
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 contrib/completion/bash/docker-compose $pkgdir/etc/bash_completion.d/docker-compose
-  install -Dm644 contrib/completion/zsh/_docker-compose $pkgdir/usr/share/zsh/site-functions/_docker-compose
+  cd "$srcdir/compose-$pkgver"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 contrib/completion/bash/docker-compose "$pkgdir/etc/bash_completion.d/docker-compose"
+  install -Dm644 contrib/completion/zsh/_docker-compose "$pkgdir/usr/share/zsh/site-functions/_docker-compose"
 }
