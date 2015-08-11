@@ -2,7 +2,7 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=openspades-git
-pkgver=0.0.12.16.g6ffc0b2
+pkgver=0.0.12.59.g50abf95
 pkgrel=1
 pkgdesc="A clone of Voxlap Ace of Spades 0.75 (git version)"
 arch=('i686' 'x86_64')
