@@ -1,1 +1,10 @@
-shellcheck-git
+*
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!.gitignore
