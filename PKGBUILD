@@ -6,7 +6,7 @@
 pkgname=rtorrent-color
 _pkgname="rtorrent"
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Ncurses BitTorrent client based on libTorrent with color patch."
 url="http://libtorrent.rakshasa.no"
 arch=("i686" "x86_64")
@@ -15,13 +15,16 @@ depends=("curl" "libtorrent=0.13.5" "xmlrpc-c" "libsigc++")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/${_pkgname}/archive/${pkgver}.tar.gz"
+#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/${_pkgname}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/rtorrent/archive/0.9.4.tar.gz"
         "${_pkgname}-${pkgver}_color.patch")
-sha1sums=('ae2e2c6444bb29278406118527db19429c8095cf'
+#sha1sums=('ae2e2c6444bb29278406118527db19429c8095cf'
+sha1sums=('c1f0b27425f6b025db550cf5ce1997a16af6ff7b'
           '78429b5cf5976270dc1a55d8dc0ef4644675512b')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  #cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-0.9.4"
 
   patch -uNp1 -i "${srcdir}/${_pkgname}-${pkgver}_color.patch"
   
@@ -38,7 +41,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  #cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-0.9.4"
   make DESTDIR="${pkgdir}" install
   install -Dm644 doc/rtorrent.rc  "${pkgdir}/usr/share/doc/rtorrent/rtorrent.rc"
 }
