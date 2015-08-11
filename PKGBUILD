@@ -3,7 +3,7 @@
 
 _pkgname=places
 pkgname=$_pkgname-git
-pkgver=0.20.r212.90b79a4
+pkgver=0.20.r215.2115f5a
 pkgrel=1
 pkgdesc='Enlightenment module: Manage the mounting of volumes'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("git://git.enlightenment.org/enlightenment/modules/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   ./autogen.sh \
     --prefix=/usr \
@@ -35,15 +35,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
 
 # install license files
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
