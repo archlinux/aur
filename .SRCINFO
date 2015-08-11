@@ -1,7 +1,7 @@
 pkgbase = tuxemon-git
 	pkgdesc = A free, open source monster-fighting RPG.
 	pkgver = r34.fcee2e8
-	pkgrel = 1
+	pkgrel = 1.0.1
 	url = http://www.tuxemon.org
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tuxemon-git
 	makedepends = git
 	depends = python2
 	depends = python2-pygame
-	depends = python-pytmx
+	depends = python2-pytmx
 	depends = python2-yapsy
 	provides = tuxemon
 	conflicts = tuxemon
