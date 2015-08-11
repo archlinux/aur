@@ -1,0 +1,48 @@
+#pkgname=gnome-chemistry-utils
+
+post_install() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  /usr/bin/update-mime-database /usr/share/mime > /dev/null 2>&1
+
+  echo " "
+  echo "Note : When you upgrade your goffice package by one major"
+  echo "version number (i.e. from 0.6.x to 0.8.x), you will have"
+  echo "to recompile gcu if you want some programs such as"
+  echo "gchempaint to remain functional."
+  echo " "
+
+  glib-compile-schemas usr/share/glib-2.0/schemas
+
+}
+
+pre_upgrade() {
+  if [ -f usr/share/gconf/schemas/gnome-chemistry-utils.schemas ]; then
+    usr/sbin/gconfpkg --uninstall gnome-chemistry-utils
+  fi
+}
+
+post_upgrade() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  /usr/bin/update-mime-database /usr/share/mime > /dev/null 2>&1
+
+  echo " "
+  echo "Note : When you upgrade your goffice package by one major"
+  echo "version number (i.e. from 0.8.x to 0.10.x), you will have"
+  echo "to recompile gcu if you want some programs such as"
+  echo "gchempaint to remain functional."
+  echo " "
+
+  glib-compile-schemas usr/share/glib-2.0/schemas
+
+
+}
+
+post_remove() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  /usr/bin/update-mime-database /usr/share/mime > /dev/null 2>&1
+
+  glib-compile-schemas usr/share/glib-2.0/schemas
+
+}
