@@ -21,15 +21,16 @@ depends=(# See setup.py, README.rst, and requirements.txt for version dependenci
   'python-botocore-git>=1.1.7' # == can't work with the long git version string.
   'python-colorama>=0.2.5' 'python-colorama<=0.3.3'
   'python-docutils>=0.10'
-  'python-rsa>=3.1.2' # 'python-rsa<=3.1.4' # We're already at 3.2
-  #'python-rsa<3.2.0' # Arch can't fulfill this since 3/17/2015. Let's hope it's fixed!
-  'python-jmespath'
-  'python-tox>=1.4'
-  'python-sphinx>=1.1.3'
-  'python-nose>=1.3.0'
-  'python-mock>=1.0.1'
+  'python-rsa>=3.1.2' 'python-rsa<=3.1.4' # See AUR for this version
   'python-wheel>=0.24.0'
-  'python-six' # This is all over the code but not found in the requirements
+
+  ### These are handled by botocore
+  ###'python-jmespath'
+  ###'python-tox>=1.4'
+  ###'python-sphinx>=1.1.3'
+  ###'python-nose>=1.3.0'
+  ###'python-mock>=1.0.1'
+  ###'python-six' # This is all over the code but not found in the requirements
 )
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
@@ -47,7 +48,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then
   provides+=("${_pkgname}")
   source=("${_srcdir}::${url/https:/git:}.git")
   :;sha256sums=('SKIP')
-  pkgver() {
+pkgver() {
     set -u
     cd "${_srcdir}"
     printf '%s.r%s.g%s' "$(sed -ne "s:__version__ = '\(.*\)'"'$:\1:p' 'awscli/__init__.py')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" # "
@@ -56,7 +57,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then
 else
   _srcdir="${pkgname}-${pkgver}"
   # Return sorted list of all version numbers available (used by git-aurcheck)
-  _version() {
+_version() {
     local LC_ALL=C # for sort
     curl -s -l "${url}/releases" | _getlinks | sed -ne "s:^/aws/${_pkgname}/archive/"'\(.*\)\.tar\.gz$:\1:p' | tr '.' ':' | sort -n | tr ':' '.'
   }
