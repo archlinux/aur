@@ -5,7 +5,7 @@
 # Contributor: Cluxter <contact@cluxter.email>
 # Maintainer: morning_star<themorningstar@riseup.net>
 
-pkgname=meteorjs
+pkgname=meteor-js
 pkgver=1.1.0.3
 pkgrel=2
 pkgdesc="Open-source platform for building top-quality web apps in a fraction of the time."

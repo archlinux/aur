@@ -1,4 +1,4 @@
-pkgbase = meteorjs
+pkgbase = meteor-js
 	pkgdesc = Open-source platform for building top-quality web apps in a fraction of the time.
 	pkgver = 1.1.0.3
 	pkgrel = 2
@@ -14,5 +14,5 @@ pkgbase = meteorjs
 	source_x86_64 = https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/1.1.0.3/meteor-bootstrap-os.linux.x86_64.tar.gz
 	sha256sums_x86_64 = 8e29914142861123f57c6183b3e1096e3ae25a8ef86af1255c244f805915c925
 
-pkgname = meteorjs
+pkgname = meteor-js
 
