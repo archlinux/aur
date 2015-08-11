@@ -1,0 +1,17 @@
+
+msg(){
+  echo -e "[1;32m==> [0m ${@}"
+}
+
+post_install(){
+  msg "Updating CA certificates..."
+  /usr/bin/update-ca-trust > /dev/null 2>&1 
+}
+
+post_upgrade(){
+  post_install
+}
+
+post_remove(){
+ post_install
+}

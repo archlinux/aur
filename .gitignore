@@ -1,0 +1,13 @@
+pkg/
+src/
+
+*.swp
+
+*.zip
+*.t?z
+*.tar.*
+
+*.log
+*.log.*
+*.sig
+.AURINFO

@@ -1,0 +1,15 @@
+pkgbase = ca-certificates-icp_br
+	pkgdesc = Brazilian government Certification Authorities
+	pkgver = 20153107
+	pkgrel = 1
+	url = http://www.iti.gov.br/icp-brasil/certificados/188-atualizacao/4530-ac-raiz
+	install = ca-certificates-icp_br.install
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = ca-certificates
+	source = http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip
+	sha512sums = 3102c3ac9dfa3fd550f6267966ad71ecb83d2ca3ddd5a4e1f553230670c9dab96bc224370da18924bb5d6154872a90b656c77c10f2ddfbf58fd00b15cae56256
+
+pkgname = ca-certificates-icp_br
+
