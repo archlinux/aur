@@ -1,0 +1,17 @@
+pkgbase = guile-fuse-git
+	pkgdesc = guile bindings for fuse - filesystems in userspace
+	pkgver = 3b3f498
+	pkgrel = 1
+	url = http://sph.mn/content/467
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sph-sc-git
+	depends = guile
+	depends = fuse
+	provides = guile-fuse
+	source = git://sph.mn/guile-fuse
+	md5sums = SKIP
+
+pkgname = guile-fuse-git
+
