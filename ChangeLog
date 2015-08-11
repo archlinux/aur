@@ -1,3 +1,9 @@
+2015-08-11 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.2 :
+	- Got rid of TMPDIR juggling by using BUILDROOT directly.
+	- Changed the root home dir to /root.
+
 2015-07-22 Giancarlo Razzolini <grazzolini@gmail.com>
 
 	* 0.0.1 :

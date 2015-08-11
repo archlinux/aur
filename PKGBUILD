@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-utils
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Collection of Archlinux mkinitcpio utilities performing various tasks"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-utils"
@@ -12,7 +12,7 @@ conflicts=('dropbear_initrd_encrypt')
 install=$pkgname.install
 changelog='ChangeLog'
 source=($url/archive/v$pkgver.tar.gz)
-sha512sums=('5d7f91e0d5a5d437d941eba6e3e944125f89a0e18e72d2ee464030e03a2cc2d96b38d0346521c9876e25bd8e4c094cd897dafb3e0dcd2c95dd98b9b20d2aad47')
+sha512sums=('3740756b7f8808aa370749da69f5bcd3c817b225171d8aa38510400bbec2bbdadfab65ea44b0bd904a37100cc27f22146c21813d2b08cb73c869726a3169db0a')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/utils/shells/cryptsetup_shell"       "$pkgdir/usr/share/$pkgname/utils/shells/cryptsetup_shell"
