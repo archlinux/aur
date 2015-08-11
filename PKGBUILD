@@ -1,3 +1,4 @@
+# Maintainer: Tom Kuther <archlinux@kuther.net>
 # Maintainer: kevku <kevku@gmx.com>
 # Contributor: Cedric Sougne <cedric@sougne.name>
 # Contributor: Tom < reztho at archlinux dot us >
