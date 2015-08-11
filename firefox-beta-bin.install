@@ -22,11 +22,12 @@ _update() {
 post_install() {
     _update
     note 1 "This package installs side-by-side with [extra]'s firefox."
-    note 2 "The binary is called 'firefox-beta-bin'."
+    note 2 "The binary is called 'firefox-beta'."
 }
 
 post_upgrade() {
-    _update
+    #_update
+	post_install
 }
 
 post_remove() {

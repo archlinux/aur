@@ -2,6 +2,7 @@
 # Contributors: Achilleas Pipinellis, speed145a, Schnouki
 
 pkgname=firefox-beta-bin
+_pkgname=firefox-beta
 pkgver=40.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
@@ -20,6 +21,7 @@ optdepends=('gstreamer0.10-base: vorbis decoding, ogg demuxing'
             'libpulse: PulseAudio driver'
             'networkmanager: Location detection via available WiFi networks')
 makedepends=('pacman>=4.2.0')
+provides=("firefox=$pkgver")
 install=$pkgname.install
 source=("$pkgname.desktop"
         "$pkgname-safe.desktop")
@@ -30,8 +32,8 @@ if [[ $_build = ? ]]; then
   source_i686=("https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_major-candidates/build$_build/linux-i686/en-US/firefox-$_major.tar.bz2")
   source_x86_64=("https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
-md5sums=('13bd50c37f55a83539a680ce83162468'
-         'a85c53ccb2b78514f37833d288a20ba2')
+md5sums=('f7d82a1aac76f0bead4245fc1572eee1'
+         '6616cf32c69b50a126812334c8d65329')
 md5sums_i686=('4d3e29bba3d8b75c607247c378a583ac')
 md5sums_x86_64=('0cc7b398175a48144f3fd658a2ff052c')
 
@@ -45,10 +47,11 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Install
-  cp -r firefox/ "$pkgdir"/opt/$pkgname-$pkgver
+  cp -r firefox/ "$pkgdir"/opt/$_pkgname
 
-  # /usr/bin link
-  ln -s /opt/$pkgname-$pkgver/firefox "$pkgdir"/usr/bin/$pkgname
+  # /usr/bin symlinks
+  ln -s /opt/$_pkgname/firefox "$pkgdir"/usr/bin/$_pkgname
+  ln -s /opt/$_pkgname/firefox "$pkgdir"/usr/bin/$pkgname  # compatibility
 
   # Desktops
   install -m644 *.desktop "$pkgdir"/usr/share/applications/
@@ -56,10 +59,11 @@ package() {
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
     install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$pkgname-$pkgver/browser/chrome/icons/default/default${i/x*}.png \
-          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$pkgname.png
+    ln -s /opt/$_pkgname/browser/chrome/icons/default/default${i/x*}.png \
+          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
   done
 
-  ln -s /opt/$pkgname-$pkgver/browser/icons/mozicon128.png \
-        "$pkgdir"/usr/share/icons/hicolor/128x128/apps/$pkgname.png
+  # 128x128
+  ln -s /opt/$_pkgname/browser/icons/mozicon128.png \
+        "$pkgdir"/usr/share/icons/hicolor/128x128/apps/$_pkgname.png
 }

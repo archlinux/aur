@@ -29,10 +29,11 @@ pkgbase = firefox-beta-bin
 	optdepends = gstreamer0.10-ffmpeg: more decoders
 	optdepends = libpulse: PulseAudio driver
 	optdepends = networkmanager: Location detection via available WiFi networks
+	provides = firefox=40.0
 	source = firefox-beta-bin.desktop
 	source = firefox-beta-bin-safe.desktop
-	md5sums = 13bd50c37f55a83539a680ce83162468
-	md5sums = a85c53ccb2b78514f37833d288a20ba2
+	md5sums = f7d82a1aac76f0bead4245fc1572eee1
+	md5sums = 6616cf32c69b50a126812334c8d65329
 	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0/linux-i686/en-US/firefox-40.0.tar.bz2
 	md5sums_i686 = 4d3e29bba3d8b75c607247c378a583ac
 	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0/linux-x86_64/en-US/firefox-40.0.tar.bz2
