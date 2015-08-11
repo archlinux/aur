@@ -2,8 +2,8 @@
 
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
-pkgver=20150325.r35.4c705ff
-pkgrel=4
+pkgver=20150809.r36.f1a3d52
+pkgrel=1
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
 license=('MIT')
@@ -19,7 +19,7 @@ source=(
   "git+https://github.com/$_pkgname/syncthing.git"
   "git+https://github.com/$_pkgname/protocol.git"
   'git+https://github.com/syndtr/goleveldb.git'
-  'git+https://github.com/google/go-snappy.git'
+  'git+https://github.com/golang/snappy'
   'git+https://github.com/juju/ratelimit.git'
   'git+https://github.com/golang/groupcache.git'
   'git+https://github.com/calmh/logger.git'
@@ -53,8 +53,9 @@ prepare() {
   install -d src/github.com/syndtr
   mv goleveldb src/github.com/syndtr/
 
-  install -d src/github.com/google
-  mv go-snappy src/github.com/google/
+  install -d src/github.com/golang
+  mv snappy src/github.com/golang/
+
 
   install -d src/github.com/juju
   mv ratelimit src/github.com/juju/

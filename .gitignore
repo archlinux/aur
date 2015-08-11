@@ -3,7 +3,6 @@ pkg
 src
 discosrv
 go-lz4
-go-snappy
 go.text
 goleveldb
 groupcache
@@ -12,6 +11,7 @@ luhn
 pkg
 protocol
 ratelimit
+snappy
 src
 suture
 syncthing
