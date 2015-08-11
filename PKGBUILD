@@ -2,14 +2,14 @@
 # Contributor: Leo von Klenze <leo.vonklenze@tngtech.com>
 
 pkgname=atlassian-plugin-sdk
-pkgver=5.0.14
+pkgver=5.1.1
 pkgrel=1
-pkgdesc="Atlassian Plugin SDK for Developing Plugins for Atlassian Products"
+pkgdesc="Atlassian plugin software developer kit"
 arch=('i686' 'x86_64')
 url="http://confluence.atlassian.com/x/rwWzDQ"
 license=('Apache License 2.0')
 source=("https://maven.atlassian.com/public/com/atlassian/amps/atlassian-plugin-sdk/$pkgver/atlassian-plugin-sdk-$pkgver.tar.gz")
-sha256sums=('87d83dddf49923b656c1593171ed4007f8903848b482c65e0dd447754aecec2e')
+sha256sums=('a92ec51c7d6afaea148907acbe7f0adf1207abc48e1f9fb50c6ced105e0c80d1')
 depends=('jdk')
 
 package() {
@@ -24,7 +24,7 @@ package() {
   # add executable flag for every user
   chmod -R +X opt/atlassian/plugin-sdk
 
-  # add sun jasva path settings to atlas files
+  # add sun java path settings to atlas files
   #find opt/atlassian/plugin-sdk -type f -executable -exec sed -ie 's/# Execute Maven #/# Execute Maven #\nsource \/opt\/java7\/etc\/profile.d\/jdk.sh/g' {} \;
 
   # update PATH
