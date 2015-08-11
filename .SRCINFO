@@ -1,0 +1,15 @@
+pkgbase = sph-lib-git
+	pkgdesc = set of over 80 guile scheme libraries
+	pkgver = a641d33
+	pkgrel = 2
+	url = http://sph.mn/content/187
+	arch = any
+	license = gpl3
+	makedepends = git
+	depends = guile
+	provides = sph-lib
+	source = git://git.sph.mn/sph-lib
+	md5sums = SKIP
+
+pkgname = sph-lib-git
+
