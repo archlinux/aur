@@ -1,0 +1,15 @@
+pkgbase = jpnevulator
+	pkgdesc = Jpnevulator is a nice serial sniffer and you can use it to send data on a serial line too.
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = http://jpnevulator.snarl.nl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = setuptools
+	depends = glibc
+	source = http://jpnevulator.snarl.nl/download/jpnevulator-2.1.3.tgz
+	md5sums = a2a5c27c5cdea7d22d7fc8f10cbef183
+
+pkgname = jpnevulator
+
