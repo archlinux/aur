@@ -1,6 +1,6 @@
 pkgbase = beanstool-git
 	pkgver = v0.2.0.r0.g18464dc
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = GPL
