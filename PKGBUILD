@@ -2,14 +2,13 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=4075.92a3dc1
+pkgver=4079.c77f9ae
 pkgrel=1
 pkgdesc="A decentralized marketplace proof of concept. It is based off of the POC code by the darkmarket team and protected by the GPL"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(
-	    curl
+depends=(   curl
 	    #gnupg1
 	    jquery
             python2-bitcoin
@@ -31,7 +30,6 @@ depends=(
 )
 
 makedepends=(git)
-optdepends=('pybitmessage-git: Send and receive messages to anyone on the bitmessage network')
 source=("${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar.git#branch=develop"
 	 ${_pkgname}.service
 	 ${_pkgname}.sh
@@ -46,9 +44,6 @@ replaces=(${_pkgname})
 
 package(){
   cd $srcdir/${_pkgname}
-
- # msg2 "Patch against Gnupg2"
- # patch -Np1 -i ../gnupg1.patch
 
   msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service

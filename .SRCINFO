@@ -1,6 +1,6 @@
 pkgbase = openbazaar-git
 	pkgdesc = A decentralized marketplace proof of concept. It is based off of the POC code by the darkmarket team and protected by the GPL
-	pkgver = 4075.92a3dc1
+	pkgver = 4079.c77f9ae
 	pkgrel = 1
 	url = http://openbazaar.org
 	install = openbazaar.install
@@ -25,7 +25,6 @@ pkgbase = openbazaar-git
 	depends = python2-requests
 	depends = python2-rfc3986
 	depends = python2-tornado
-	optdepends = pybitmessage-git: Send and receive messages to anyone on the bitmessage network
 	provides = openbazaar
 	replaces = openbazaar
 	options = !strip
