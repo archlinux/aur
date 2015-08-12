@@ -1,16 +1,16 @@
 pkgbase = perl-extutils-f77
 	pkgdesc = Perl module providing simple interface to F77 libraries
-	pkgver = 1.17
-	pkgrel = 2
-	url = http://search.cpan.org/dist/ExtUtils-F77
+	pkgver = 1.18
+	pkgrel = 1
+	url = https://metacpan.org/release/ExtUtils-F77
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
 	depends = gcc-fortran
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KG/KGB/ExtUtils-F77-1.17.tar.gz
-	md5sums = c0143b5342587ed2ee5db3f6cfb9cc13
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/ExtUtils-F77-1.18.tar.gz
+	md5sums = 7a9abbf3c68b96a44a2e0875a0663412
 
 pkgname = perl-extutils-f77
 
