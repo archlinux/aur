@@ -1,5 +1,5 @@
 pkgbase = menda-icon-themes-git
-	pkgver = 20141219
+	pkgver = r1.a2eb4a0
 	pkgrel = 1
 	url = https://github.com/manjaro/menda-icon-themes
 	arch = any
