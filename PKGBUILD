@@ -10,8 +10,8 @@ pkgrel=1
 pkgdesc="NVIDIA drivers for linux-fbcondecor."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-fbcondecor>=4.1' 'linux-fbcondecor<4.2' "nvidia-libgl" "nvidia-utils=${pkgver}")
-makedepends=('linux-fbcondecor-headers>=4.1' 'linux-fbcondecor-headers<4.2')
+depends=('linux-fbcondecor' "nvidia-libgl" "nvidia-utils=${pkgver}")
+makedepends=('linux-fbcondecor-headers')
 conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvidia-96xx-ck' 'nvidia-beta-ck' 'nvidia-ck' 'nvidia-ck-atom' 'nvidia-ck-barcelona' 'nvidia-ck-bulldozer' 'nvidia-ck-corex' 'nvidia-ck-core2' 'nvidia-ck-haswell' 'nvidia-ck-ivybridge' 'nvidia-ck-kx' 'nvidia-ck-k10' 'nvidia-ck-nehalem' 'nvidia-ck-p4' 'nvidia-ck-piledriver' 'nvidia-ck-pentm' 'nvidia-ck-sandybridge' 'nvidia-304xx-ck-atom' 'nvidia-304xx-ck-barcelona' 'nvidia-304xx-ck-corex' 'nvidia-304xx-ck-core2' 'nvidia-304xx-ck-haswell' 'nvidia-304xx-ck-ivybridge' 'nvidia-304xx-ck-kx' 'nvidia-304xx-ck-k10' 'nvidia-304xx-ck-nehalem' 'nvidia-304xx-ck-p4' 'nvidia-304xx-ck-piledriver' 'nvidia-304xx-ck-pentm' 'nvidia-304xx-ck-sandybridge' 'nvidia-340xx-ck-atom' 'nvidia-340xx-ck-barcelona' 'nvidia-340xx-ck-bulldozer' 'nvidia-340xx-ck-core2' 'nvidia-340xx-ck-haswell' 'nvidia-340xx-ck-ivybridge' 'nvidia-340xx-ck-kx' 'nvidia-340xx-ck-k10' 'nvidia-340xx-ck-nehalem' 'nvidia-340xx-ck-p4' 'nvidia-340xx-ck-piledriver' 'nvidia-340xx-ck-pentm' 'nvidia-340xx-ck-sandybridge')
 # conflicts=('nvidia-96xx' 'nvidia-173xx')
 #groups=('ck-generic')
@@ -21,8 +21,8 @@ install=nvidia-fbcondecor.install
 options=(!strip)
 source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
         "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('59597d5dfaaf0fc83a5e78d29a97ccac'
-         '3e04208affde8c35a8b96975eec0486b')
+md5sums=('c4d2ae0dd6338874e5e8358fe630ba8f'
+         '8bdf64adc94bd9e170e4a7412ca9e5ba')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"

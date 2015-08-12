@@ -7,10 +7,8 @@ pkgbase = nvidia-fbcondecor
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-fbcondecor-headers>=4.1
-	makedepends = linux-fbcondecor-headers<4.2
-	depends = linux-fbcondecor>=4.1
-	depends = linux-fbcondecor<4.2
+	makedepends = linux-fbcondecor-headers
+	depends = linux-fbcondecor
 	depends = nvidia-libgl
 	depends = nvidia-utils=355.06
 	conflicts = nvidia-340xx-ck
@@ -63,8 +61,8 @@ pkgbase = nvidia-fbcondecor
 	options = !strip
 	source = ftp://download.nvidia.com/XFree86/Linux-x86/355.06/NVIDIA-Linux-x86-355.06.run
 	source = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.06/NVIDIA-Linux-x86_64-355.06-no-compat32.run
-	md5sums = 59597d5dfaaf0fc83a5e78d29a97ccac
-	md5sums = 3e04208affde8c35a8b96975eec0486b
+	md5sums = c4d2ae0dd6338874e5e8358fe630ba8f
+	md5sums = 8bdf64adc94bd9e170e4a7412ca9e5ba
 
 pkgname = nvidia-fbcondecor
 
