@@ -1,0 +1,15 @@
+pkgbase = eternallands-music
+	pkgdesc = Music files for Eternal Lands
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.eternal-lands.com/
+	arch = i686
+	arch = x86_64
+	license = custom:eternallands
+	makedepends = unzip
+	depends = eternallands>=1.5.0
+	source = http://www.eternallands.co.uk/music_full.zip
+	md5sums = 95220e0df0be0eb4f2b9646cc5d6b7e5
+
+pkgname = eternallands-music
+
