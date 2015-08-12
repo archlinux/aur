@@ -9,7 +9,7 @@
 
 pkgname=smartmontools-svn
 _pkgname=smartmontools
-pkgver=4110
+pkgver=4117
 pkgrel=1
 pkgdesc="Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives - latest SVN version"
 url="http://smartmontools.sourceforge.net"
@@ -38,7 +38,7 @@ build() {
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --sysconfdir=/etc \
-              --enable-drivedb \
+              --with-drivedb \
               --with-libcap-ng=yes \
               --with-systemdsystemunitdir=/usr/lib/systemd/system
   make

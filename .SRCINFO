@@ -1,6 +1,6 @@
 pkgbase = smartmontools-svn
 	pkgdesc = Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives - latest SVN version
-	pkgver = 4110
+	pkgver = 4117
 	pkgrel = 1
 	url = http://smartmontools.sourceforge.net
 	arch = i686
