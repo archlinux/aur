@@ -1,13 +1,13 @@
 # CPAN Name  : Jifty::DBI
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname=perl-jifty-dbi
-pkgver=0.77
+pkgver=0.78
 pkgrel=1
 pkgdesc='An object-relational persistence framework for Jifty'
 arch=('any')
-url='http://search.cpan.org/dist/Jifty-DBI'
+url='https://metacpan.org/release/Jifty-DBI'
 license=('GPL' 'PerlArtistic')
 
 depends=(
@@ -42,22 +42,30 @@ optdepends=(
 	'perl-uri: URI filter')
 
 options=(!emptydirs)
-source=(http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/Jifty-DBI-0.77.tar.gz)
-md5sums=('26c329a4c8fd85e33a2faf2c549ec64e')
+source=(http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/Jifty-DBI-0.78.tar.gz)
+md5sums=('512027a847753c08383597e4dffbf1af')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1
+}
 
 build() {
-	cd Jifty-DBI-0.77
-	PERL_MM_USE_DEFAULT=1 perl Makefile.PL --skipdeps INSTALLDIRS=vendor
+	cd Jifty-DBI-0.78
+	sanitize
+	perl Makefile.PL --skipdeps INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd Jifty-DBI-0.77
+	cd Jifty-DBI-0.78
+	sanitize
 	make test
 }
 
 package() {
-	cd Jifty-DBI-0.77
+	cd Jifty-DBI-0.78
+	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
