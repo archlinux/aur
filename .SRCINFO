@@ -1,0 +1,14 @@
+pkgbase = openmpi-1.10
+	pkgdesc = A High Performance Message Passing Library
+	pkgver = 1.10.0rc2
+	pkgrel = 1
+	url = http://www.open-mpi.org
+	arch = any
+	license = BSD
+	makedepends = gcc
+	makedepends = gcc-fortran
+	source = http://www.open-mpi.org/software/ompi/v1.10/downloads/openmpi-1.10.0rc2.tar.gz
+	md5sums = a4f37a1e76b9f90bfd6cc293a887ac4b
+
+pkgname = openmpi-1.10
+
