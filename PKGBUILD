@@ -6,7 +6,7 @@
 
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.0.9.3.10801.gfda316b
+pkgver=release.0.9.3.10806.g5c68bb3-1
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url=http://www.darktable.org/
 license=('GPL3')
 depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'libglade' 'dbus-glib'
 	 'curl' 'libgnome-keyring' 'libgphoto2' 'libusb-compat' 'openexr' 'sqlite' 'libxslt'
-	 'libsoup' 'gtk-engines' 'osm-gps-map-gtk3' 'pugixml-shared')
+	 'libsoup' 'gtk-engines' 'osm-gps-map-gtk3' 'pugixml')
 makedepends=(git 'intltool>=0.40' 'cmake' 'librsvg' 'flickcurl')
 optdepends=('librsvg' 'flickcurl: flickr upload')
 conflicts=(darktable)
