@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=repoctl-git
-pkgver=v0.13.13.gfee62fa
+pkgver=v0.13.24.g29d0ea6
 pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64')
@@ -46,4 +46,7 @@ package() {
   # Install completion files
   install -d ${pkgdir}/usr/share/zsh/site-functions/
   install -m644 contrib/zsh_completion ${pkgdir}/usr/share/zsh/site-functions/_repoctl
+  
+  # install LICENSE
+  install -Dm644 LICENSE $pkgdir/usr/share/license/repoctl-git
 }
