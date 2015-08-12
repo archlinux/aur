@@ -1,0 +1,8 @@
+post_install() {
+  (cd /usr/share/webapps/carddavmate/ &&
+    exec /usr/share/webapps/carddavmate/cache_update.sh)
+}
+
+post_upgrade() {
+  post_install
+}
