@@ -2,8 +2,8 @@
 # Contributor: Ng Oon-Ee <n g  o o n  e e dot t a l k AT g m a i l DOT c o m>
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
-pkgver=2015r22
-pkgrel=4
+pkgver=2015r23
+pkgrel=1
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -12,16 +12,17 @@ source=("http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rac
 "xojo.desktop"
 "lingua.desktop"
 "RemoteDebuggerDesktop.desktop")
-[ $CARCH = i686 ] && depends=(gtk2 expat glib2 glibc mesa icu gcc-libs) && makedepends=(lib32-webkitgtk2)
-[ $CARCH = x86_64 ] && depends=(lib32-gtk2 lib32-expat lib32-glib2 lib32-glibc lib32-mesa lib32-icu lib32-gcc-libs) && makedepends=(lib32-webkitgtk2)
-sha256sums=('1ba6699dd8990a03d6b404111077dea7758e1cf93080a088cad8bb81383e879a'
+#[ $CARCH == i686 ] && depends=(gtk2 expat glib2 glibc mesa icu gcc-libs) && makedepends=(lib32-webkitgtk2)
+[[ $CARCH == i686 ]] && depends=(gtk2 expat glib2 glibc mesa icu gcc-libs) && makedepends=(lib32-webkitgtk2)
+[[ $CARCH == x86_64 ]] && depends=(lib32-gtk2 lib32-expat lib32-glib2 lib32-glibc lib32-mesa lib32-icu lib32-gcc-libs) && makedepends=(lib32-webkitgtk2)
+sha256sums=('3749a5cf98095d971b9fc1feae7422763df282949496b8b00ce1f955fa4d8bda'
             '17250f624de25bb575a3ca5d3158a60cba95248c624d71959c0bcb823384e9ee'
             '7b084164ba9430b389a500a551a0cec5283f4eaa54dc27c01e7f0aa477e69612'
             '024cbfa8d23766b54aed636a52708f656776a45d6109cde3ca4278d463958e97')
 
 package() {
 	cd $srcdir
-	mv "xojo2015r2.2" "xojo$pkgver"
+	mv "xojo2015r2.3" "xojo$pkgver"
 	find . -name '.DS_Store' -exec rm {} \;
 	find "./xojo$pkgver/Extras" -type d \( -name 'OS X' -o -name 'Windows' -o -name 'Visual Studio*' -o -name 'Xcode' \) |
     xargs -rtl1 -I {} rm -r {}
