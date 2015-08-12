@@ -1,15 +1,15 @@
 pkgbase = perl-set-intersection
 	pkgdesc = Perl package to get intersection (of set theory) of ARRAYs.
-	pkgver = 0.02
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Set-Intersection
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/Set-Intersection
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TU/TURUGINA/Set-Intersection-0.02.tar.gz
-	md5sums = d373ed67980d1495b8c6f7ea73cc9985
+	source = http://search.cpan.org/CPAN/authors/id/T/TU/TURUGINA/Set-Intersection-0.04.tar.gz
+	md5sums = 780910ae60f3e91c547db69f0ebb6c4e
 
 pkgname = perl-set-intersection
 
