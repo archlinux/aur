@@ -4,9 +4,12 @@ pkgbase = openmpi-1.10
 	pkgrel = 1
 	url = http://www.open-mpi.org
 	arch = any
-	license = BSD
-	makedepends = gcc
+	license = custom
 	makedepends = gcc-fortran
+	makedepends = inetutils
+	makedepends = valgrind
+	depends = libtool
+	depends = hwloc
 	source = http://www.open-mpi.org/software/ompi/v1.10/downloads/openmpi-1.10.0rc2.tar.gz
 	md5sums = a4f37a1e76b9f90bfd6cc293a887ac4b
 
