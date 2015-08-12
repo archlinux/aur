@@ -1,0 +1,15 @@
+pkgbase = exif
+	pkgdesc = A small command-line utility to show EXIF information hidden in JPEG files.
+	pkgver = 0.6.21
+	pkgrel = 1
+	url = http://sourceforge.net/projects/libexif
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libexif
+	depends = popt
+	source = http://downloads.sf.net/sourceforge/libexif/exif-0.6.21.tar.bz2
+	md5sums = 0e744471b8c3b3b1534d5af38bbf6408
+
+pkgname = exif
+
