@@ -1,0 +1,15 @@
+pkgbase = libnatspec
+	pkgdesc = A collection of functions for request various charsets and locales for host system and for other system.
+	pkgver = 0.2.6
+	pkgrel = 2
+	url = http://sourceforge.net/projects/natspec/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = LGPL
+	source = http://sourceforge.net/projects/natspec/files/natspec/0.2.6/libnatspec-0.2.6.tar.bz2
+	md5sums = b57683f2e7be837992bffead1a6d3733
+
+pkgname = libnatspec
+
