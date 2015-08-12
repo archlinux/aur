@@ -1,6 +1,6 @@
-# Maintainer: Yuri Bugelli <yuri.bugelli@gmail.com>
+# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 pkgname=mysql-connector-net
-pkgver=6.8.3
+pkgver=6.9.7
 pkgrel=1
 pkgdesc="A MySQL database connector for .NET Framework 4.5"
 arch=('any')
@@ -8,18 +8,17 @@ url="http://dev.mysql.com/downloads/connector/net/"
 license=('GPL')
 depends=('mono' 'mysql-clients')
 conflicts=('mysql-connector-net-2.0' 'mysql-connector-net-4.0')
-source=("http://cdn.mysql.com/Downloads/Connector-Net/mysql-connector-net-$pkgver-noinstall.zip"
+source=("http://dev.mysql.com/get/Downloads/Connector-Net/${pkgname}-${pkgver}-noinstall.zip"
 	MySql.Data.Entity.EF6.pc
 	MySql.Data.Entity.EF5.pc
 	MySql.Data.pc
 	MySql.Web.pc
 )
-md5sums=('75d93e8c12376fb255648d0f00ae935e'
-	bcc68388070e08719f4ede85bf52bb56
-	a6670383e74be37e0cb695387e2f2858
-	0da037b9ed24ade65a91db148862a01a  
-	6282ae4b6efa683532f1c07c7aeada0f  
-)
+md5sums=('cb36afae3fa268e52971cdc146fce539'
+         'bcc68388070e08719f4ede85bf52bb56'
+         'a6670383e74be37e0cb695387e2f2858'
+         '0da037b9ed24ade65a91db148862a01a'
+         '6282ae4b6efa683532f1c07c7aeada0f')
 install=$pkgname.install
 
 package() {
@@ -33,15 +32,15 @@ package() {
   sed "s/#VERSION#/${pkgver}.0/;s/#DEB_CLI_ABI_VERSION#/${v4cli}/" ../MySql.Data.Entity.EF5.pc > $pkgdir/usr/lib/pkgconfig/mysql.data.entity.ef5.pc
   sed "s/#VERSION#/${pkgver}.0/;s/#DEB_CLI_ABI_VERSION#/${v4cli}/" ../MySql.Web.pc > $pkgdir/usr/lib/pkgconfig/mysql.web.pc
 
-  install -m 644 -D v4.5/mysql.data.dll $gacdir/MySql.Data/${v4cli}/MySql.Data.dll
-  install -m 644 -D v4.5/mysql.data.entity.EF5.dll $gacdir/MySql.Data.Entity.EF5/${v4cli}/MySql.Data.Entity.EF5.dll
-  install -m 644 -D v4.5/mysql.data.entity.EF6.dll $gacdir/MySql.Data.Entity.EF6/${v4cli}/MySql.Data.Entity.EF6.dll
-  install -m 644 -D v4.5/mysql.web.dll $gacdir/MySql.Web/${v4cli}/MySql.Web.dll
+  install -m 644 -D v4.5/MySql.Data.dll $gacdir/MySql.Data/${v4cli}/MySql.Data.dll
+  install -m 644 -D v4.5/MySql.Data.Entity.EF5.dll $gacdir/MySql.Data.Entity.EF5/${v4cli}/MySql.Data.Entity.EF5.dll
+  install -m 644 -D v4.5/MySql.Data.Entity.EF6.dll $gacdir/MySql.Data.Entity.EF6/${v4cli}/MySql.Data.Entity.EF6.dll
+  install -m 644 -D v4.5/MySql.Web.dll $gacdir/MySql.Web/${v4cli}/MySql.Web.dll
 
-  mdoc update -o en v4.5/mysql.data.dll
-  mdoc update -o en v4.5/mysql.web.dll
-  mdoc update -o en v4.5/mysql.data.entity.EF5.dll
-  mdoc update -o en v4.5/mysql.data.entity.EF6.dll
+  mdoc update -o en v4.5/MySql.Data.dll
+  mdoc update -o en v4.5/MySql.Web.dll
+  mdoc update -o en v4.5/MySql.Data.Entity.EF5.dll
+  mdoc update -o en v4.5/MySql.Data.Entity.EF6.dll
   mdoc assemble -o mysql-connector-net en
 
 cat > mysql-connector-net.source <<EOF
