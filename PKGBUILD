@@ -6,7 +6,7 @@
  
 pkgname="osmc-installer-bin"
 pkgver="1.1.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="OSMC Installer allows you to install OSMC on a variety of devices."
 url="http://osmc.tv"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ sha256sums_x86_64=('78a36059d9410615e02f7e35e5da8c35512c63e2ceeb37b0db5e965996e7
  
 package() {
     cd "${srcdir}"
-    ar p *.deb data.tar.gz | tar zx -C "${pkgdir}" ./usr
+    ar p *.deb data.tar.xz | tar xJ -C "${pkgdir}" ./usr
 
     cd "${pkgdir}"
     rm -rf ./usr/share/doc

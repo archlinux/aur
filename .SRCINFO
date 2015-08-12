@@ -1,7 +1,7 @@
 pkgbase = osmc-installer-bin
 	pkgdesc = OSMC Installer allows you to install OSMC on a variety of devices.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://osmc.tv
 	arch = i686
 	arch = x86_64
