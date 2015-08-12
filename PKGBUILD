@@ -1,3 +1,4 @@
+# Maintainer : Immae <ismael.bouya@normalesup.org>
 # Contributor: Nayden Pendov <darkwolf1984@gmail.com>
 
 pkgname=eternallands-music
@@ -9,10 +10,10 @@ depends=('eternallands>=1.5.0')
 makedepends=('unzip')
 license=('custom:eternallands')
 arch=('i686' 'x86_64')
-source=('http://www.eternallands.co.uk/music_full.zip')
+source=('http://www.gm.fh-koeln.de/~linke/EL-Downloads/EL_music_full.zip')
 md5sums=('95220e0df0be0eb4f2b9646cc5d6b7e5')
 
-build()
+package()
 {
   cd $srcdir
   mkdir music
