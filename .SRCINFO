@@ -6,7 +6,6 @@ pkgbase = python-rsa-3.1.2
 	arch = any
 	license = BSD
 	depends = python
-	provides = python-rsa
 	provides = python-rsa=3.1.2
 	conflicts = python-rsa
 	replaces = python-rsa

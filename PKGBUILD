@@ -16,7 +16,7 @@ depends=('python')
 source=("http://pypi.python.org/packages/source/r/${_libname}/${_libname}-${pkgver}.tar.gz")
 #source=("https://bitbucket.org/sybren/${pkgname}/get/version-${pkgver}.tar.bz2")
 sha256sums=('66eb8752a1de9b92d7679ea0e1556cf2e4a155161d0024e97e06999041e35f58')
-provides=("${_pkgname}" "${_pkgname}=${pkgver}") # The version is required until Pacman bug #45954 is fixed.
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=("${_pkgname}")
 
