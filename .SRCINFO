@@ -1,7 +1,7 @@
 pkgbase = steam-wrapper
 	pkgdesc = Steam wrapper for common operations
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyamsoft/steam-wrapper/archive/0.1.8.tar.gz
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = steam-wrapper
 	depends = bash
 	depends = coreutils
 	optdepends = steam-native: Native runtime library support
+	optdepends = steam-libs: Native steam libraries support
 	provides = steam-wrapper
 	conflicts = steam-wrapper
 	source = https://github.com/pyamsoft/steam-wrapper/archive/0.1.8.tar.gz
