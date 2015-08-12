@@ -6,16 +6,17 @@ pkgbase = python-odfpy-git
 	arch = any
 	license = GPL
 	makedepends = git
-	md5sums = SKIP
 
 pkgname = python-odfpy-git
 	depends = python
+	conflicts = python2-odfpy-git
 	conflicts = python-odfpy
 	conflicts = odfpy
 	conflicts = odfpy-git
 
 pkgname = python2-odfpy-git
 	depends = python2
+	conflicts = python-odfpy-git
 	conflicts = python2-odfpy
 	conflicts = odfpy
 	conflicts = odfpy-git
