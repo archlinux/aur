@@ -1,19 +1,22 @@
 pkgbase = linux-libre-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace
-	pkgver = 4.0_gnu
+	pkgver = 4.1.4_gnu
 	pkgrel = 1
 	url = http://www.gnu.org/software/libc
 	arch = i686
 	arch = x86_64
-	arch = mips64el
 	license = GPL2
-	provides = linux-api-headers=4.0
+	provides = linux-api-headers=4.1.4
 	conflicts = linux-api-headers
 	replaces = linux-api-headers
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
-	md5sums = 87edb0b508abb8d8484bc08daa2ee96d
-	md5sums = SKIP
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz.sign
+	sha512sums = 84101bdfb42c6b54a13925b86e0ddc9fdfc40c187251d1655b7d4f51d82dbff8f392ebd534dc720b5ce67cbc553e636b5c45c2a7b65bd85767cb831f6b88e4b7
+	sha512sums = SKIP
+	sha512sums = 9ef80f5ac37b2e633f38b5ff16548d1da5c6d14faea3d5d4be62f8f8c177326bf402c1b52275b78af6961c4aaa1cbfb9cab43de7cb855059ed07715c4218a7c2
+	sha512sums = SKIP
 
 pkgname = linux-libre-api-headers
 
