@@ -15,7 +15,7 @@ source=("mtd-utils::git://git.infradead.org/mtd-utils.git")
 
 prepare() {
   cd mtd-utils
-  sed -i 's/sbin/bin/' $pkgname-$pkgver/common.mk
+  sed -i 's/sbin/bin/' common.mk
 }
 
 package ()
