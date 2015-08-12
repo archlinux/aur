@@ -1,6 +1,6 @@
 pkgbase = texiteasy
 	pkgdesc = Simple and Powerful Latex Editor
-	pkgver = 0.20.0.1
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = http://texiteasy.com/
 	arch = any
