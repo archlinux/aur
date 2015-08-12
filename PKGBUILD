@@ -11,45 +11,89 @@ _pkgdesc="NVIDIA drivers for linux-ck-fbcondecor."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck-fbcondecor>=4.1' 'linux-ck-fbcondecor<4.2' "nvidia-libgl" "nvidia-utils=${pkgver}")
-makedepends=('linux-ck-fbcondecor-headers>=4.1' 'linux-ck-fbcondecor-headers<4.2')
-conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvidia-96xx-ck' 'nvidia-beta-ck' 'nvidia-ck-atom' 'nvidia-ck-barcelona' 'nvidia-ck-bulldozer' 'nvidia-ck-corex' 'nvidia-ck-core2' 'nvidia-ck-haswell' 'nvidia-ck-ivybridge' 'nvidia-ck-kx' 'nvidia-ck-k10' 'nvidia-ck-nehalem' 'nvidia-ck-p4' 'nvidia-ck-piledriver' 'nvidia-ck-pentm' 'nvidia-ck-sandybridge' 'nvidia-304xx-ck-atom' 'nvidia-304xx-ck-barcelona' 'nvidia-304xx-ck-corex' 'nvidia-304xx-ck-core2' 'nvidia-304xx-ck-haswell' 'nvidia-304xx-ck-ivybridge' 'nvidia-304xx-ck-kx' 'nvidia-304xx-ck-k10' 'nvidia-304xx-ck-nehalem' 'nvidia-304xx-ck-p4' 'nvidia-304xx-ck-piledriver' 'nvidia-304xx-ck-pentm' 'nvidia-304xx-ck-sandybridge' 'nvidia-340xx-ck-atom' 'nvidia-340xx-ck-barcelona' 'nvidia-340xx-ck-bulldozer' 'nvidia-340xx-ck-core2' 'nvidia-340xx-ck-haswell' 'nvidia-340xx-ck-ivybridge' 'nvidia-340xx-ck-kx' 'nvidia-340xx-ck-k10' 'nvidia-340xx-ck-nehalem' 'nvidia-340xx-ck-p4' 'nvidia-340xx-ck-piledriver' 'nvidia-340xx-ck-pentm' 'nvidia-340xx-ck-sandybridge' 'nvidia-ck')
+license=('custom:NVIDIA')
+depends=('linux-ck-fbcondecor' "nvidia-libgl" "nvidia-utils=${pkgver}")
+makedepends=('linux-ck-fbcondecor-headers' )
+conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvidia-96xx-ck' 'nvidia-beta-ck' 'nvidia-ck-atom' 'nvidia-ck-barcelona' 'nvidia-ck-bulldozer' 'nvidia-ck-corex' 'nvidia-ck-core2' 'nvidia-ck-haswell' 'nvidia-ck-ivybridge' 'nvidia-ck-kx' 'nvidia-ck-k10' 'nvidia-ck-nehalem' 'nvidia-ck-p4' 'nvidia-ck-piledriver' 'nvidia-ck-pentm' 'nvidia-ck-sandybridge' 'nvidia-304xx-ck-atom' 'nvidia-304xx-ck-barcelona' 'nvidia-304xx-ck-corex' 'nvidia-304xx-ck-core2' 'nvidia-304xx-ck-haswell' 'nvidia-304xx-ck-ivybridge' 'nvidia-304xx-ck-kx' 'nvidia-304xx-ck-k10' 'nvidia-304xx-ck-nehalem' 'nvidia-304xx-ck-p4' 'nvidia-304xx-ck-piledriver' 'nvidia-304xx-ck-pentm' 'nvidia-304xx-ck-sandybridge' 'nvidia-340xx-ck-atom' 'nvidia-340xx-ck-barcelona' 'nvidia-340xx-ck-bulldozer' 'nvidia-340xx-ck-core2' 'nvidia-340xx-ck-haswell' 'nvidia-340xx-ck-ivybridge' 'nvidia-340xx-ck-kx' 'nvidia-340xx-ck-k10' 'nvidia-340xx-ck-nehalem' 'nvidia-340xx-ck-p4' 'nvidia-340xx-ck-piledriver' 'nvidia-340xx-ck-pentm' 'nvidia-340xx-ck-sandybridge' 'nvidia-ck' 'nvidia')
 #groups=('ck-generic')
 #replaces=()
-license=('custom')
-install=nvidia-ck-fbcondecor.install
 options=(!strip)
-source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+install=nvidia-ck-fbcondecor.install
+# Installer name
+case "$CARCH" in
+  i686)   _pkg="NVIDIA-Linux-x86-$pkgver" ;;
+  x86_64) _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32" ;;
+esac
+
+# Source
+source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
+source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 md5sums_i686=('c4d2ae0dd6338874e5e8358fe630ba8f')
 md5sums_x86_64=('8bdf64adc94bd9e170e4a7412ca9e5ba')
-[[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
-[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+
+# Auto-detect patches (e.g. nvidia-linux-4.1.patch)
+for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
+  source+=("$_patch")
+  md5sums+=('SKIP')
+done
 
 prepare() {
-    sh "${_pkg}.run" --extract-only
-    cd "${_pkg}"
-    # patches here
+  # Remove previous builds
+  if [[ -d $_pkg ]]; then
+    rm -rf $_pkg
+  fi
+
+  # Extract
+  msg2 "Self-Extracting $_pkg.run..."
+  sh $_pkg.run -x
+  cd $_pkg
+
+  # Loop patches
+  for _patch in $(ls "$srcdir"/*.patch 2>/dev/null); do
+    # Version variables
+    _kernel=$(cat /usr/lib/modules/$_extramodules/version)
+    _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
+      
+    # Check version
+    if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
+      msg2 "Applying ${_patch##*/}..."
+      patch -p1 -i "$_patch"
+    fi
+  done
 }
 
 build() {
-	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
-	cd "${_pkg}/kernel"
-	make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+  # Version of 'linux'
+  _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
+  _kernel=$(cat /usr/lib/modules/$_extramodules/version)
 
-	if [[ "$CARCH" = "x86_64" ]]; then
-		cd uvm
-		make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-	fi
+  # Build module
+  cd $_pkg/kernel
+  msg2 "Building Nvidia module for $_kernel..."
+  make SYSSRC=/usr/lib/modules/$_kernel/build module
 }
 
 package() {
-	install -Dm644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
-		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
-	install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
-		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
-	gzip -9 "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
-	install -dm755 "${pkgdir}/usr/lib/modprobe.d"
-	echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-ck-fbcondecor.conf"
-#	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/nvidia-ck-fbcondecor.install"
+  # Version of 'linux'
+  _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
+
+  # Install
+  install -Dm644 $_pkg/kernel/nvidia.ko \
+         "$pkgdir"/usr/lib/modules/$_extramodules/nvidia.ko
+
+  # Install UVM Module: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
+  if [[ $CARCH = x86_64 ]]; then
+    install -Dm644 $_pkg/kernel/nvidia-uvm.ko \
+            "$pkgdir/usr/lib/modules/$_extramodules/nvidia-uvm.ko"
+  fi
+
+  # Compress
+  gzip "$pkgdir"/usr/lib/modules/$_extramodules/nvidia*.ko
+
+  # Write _extramodules to .install
+  sed -i "s/_extramodules='.*'/_extramodules='$_extramodules'/" "$startdir"/$install
+
+  # Blacklist Nouveau
+  install -d "$pkgdir"/usr/lib/modprobe.d/
+  echo "blacklist nouveau" >> "$pkgdir"/usr/lib/modprobe.d/nvidia.conf
 }
