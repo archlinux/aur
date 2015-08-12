@@ -36,7 +36,7 @@ build() {
 	fi
 	
 	export DRM_DRIVERS
-	make -e
+	make -e PREFIX="/usr"
 }
 
 package() {
