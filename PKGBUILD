@@ -9,6 +9,7 @@ pkgrel=1
 epoch=0
 pkgdesc="Your Party with Spotify - but without ads!"
 arch=('any')
+makedepends=('git')
 license=('GPL3')
 depends=("xorg-xprop" "libpulse" "libnotify")
 md5sums=('SKIP')
