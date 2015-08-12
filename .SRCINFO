@@ -1,0 +1,17 @@
+pkgbase = command-runner-applet
+	pkgdesc = Applet for GNOME Flashback panel which periodically displays a command output
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/porridge/command-runner-applet
+	install = command-runner-applet.install
+	arch = any
+	license = GPL
+	depends = gnome-panel
+	depends = python-gobject
+	source = command-runner-applet-0.4.tar.gz::https://github.com/porridge/command-runner-applet/archive/upstream/0.4.tar.gz
+	source = python3-port.patch
+	md5sums = d6587f80cd96c0f7ea2a7a429a6e8cb1
+	md5sums = 25452bb3ad4723cc164b469a819c75dc
+
+pkgname = command-runner-applet
+

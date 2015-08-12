@@ -1,0 +1,58 @@
+From 0ebf9957db5d7613476a7f2339de3664128ecfd9 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Mon, 15 Dec 2014 18:02:11 +0300
+Subject: [PATCH] Port to Python 3.
+
+* Use `except Foo as bar` instead of `except Foo, bar` (this is also
+  compatible with Python 2).
+* Decode command output as UTF-8.
+* Update shebang.
+---
+ command_runner | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/command_runner b/command_runner
+index 323968a..e7877c1 100755
+--- a/command_runner
++++ b/command_runner
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: UTF-8 -*-
+ """A panel applet which periodically runs a command and displays its output."""
+ 
+@@ -49,9 +49,9 @@ def logged(f):
+ 	def wrapped(*args, **kwargs):
+ 		try:
+ 			return f(*args, **kwargs)
+-		except Exception, e:
++		except Exception as e:
+ 			logging.exception(e)
+-			raise e
++			raise
+ 	wrapped.__doc__ = f.__doc__
+ 	return wrapped
+ 
+@@ -186,10 +186,10 @@ class CommandRunner(object):
+ 			t = subprocess.Popen(self.command, stdout=subprocess.PIPE, shell=True).communicate()[0].rstrip()
+ 			# TODO: the output could be large, it needs to be trimmed to a sensible size
+ 			logging.debug('Got [%s] from command', t)
+-			self.label.set_text(t)
+-		except Exception, e:
++			self.label.set_text(t.decode('utf-8', 'replace'))
++		except Exception as e:
+ 			logging.exception(e)
+-			raise e
++			raise
+ 		finally:
+ 			GObject.timeout_add(5000, self.run_command)
+ 
+@@ -204,7 +204,7 @@ def command_applet_factory(applet, iid, data):
+ 		logging.info('Applet created successfully. Showing it now.')
+ 		runner.run()
+ 		return True
+-	except Exception, e:
++	except Exception as e:
+ 		logging.info('Failed to create or run applet.')
+ 		logging.exception(e)
+ 		os._exit(1)
