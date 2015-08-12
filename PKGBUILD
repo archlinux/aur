@@ -1,7 +1,7 @@
 # Maintainer: Alexiobash <me@alexiobash.com>
 
 pkgname='tor-browser-it'
-pkgver='4.5.3'
+pkgver='5.0'
 _language='it'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: browsing anonimo usando firefox e tor'
@@ -31,9 +31,9 @@ source+=("${pkgname}.desktop"
 md5sums=('f0cfc7681d58a77251abc49b250802d3'
          '494afbfa60fb4ce21840244cc3f7208c'
          'bb53b2544e2038943e703c7c6ccf48a1')
-md5sums_x86_64=('38c97d9964019a6cf965dced0fdf41de'
+md5sums_x86_64=('cf4183247911ec69c2a33b1ae6c3cdd2'
                 'SKIP')
-md5sums_i686=('2e4a3cd8e75f33b02f4cc84714be4748'
+md5sums_i686=('d56bc5f55e94d57ea1fc38888017a978'
               'SKIP')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
