@@ -3,31 +3,32 @@
 
 pkgname=tor-browser-es
 _language=es-ES
-pkgver=4.5.3
+pkgver=5.0
 pkgrel=1
-pkgdesc="Navegación anónima utilizando Firefox y Tor"
+pkgdesc="Tor Browser Bundle: Navegación anónima utilizando Firefox y Tor"
 arch=('i686' 'x86_64')
 url="https://www.torproject.org/projects/torbrowser.html"
 license=('GPL')
-depends=('dbus-glib' 'gtk2')
+depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'hicolor-icon-theme'
+         'hunspell' 'icu' 'libevent' 'libvpx' 'libxt' 'mime-types'
+         'mozilla-common' 'nss' 'sqlite' 'startup-notification')
 optdepends=('kdebase-kdialog: KDE dialog boxes'
             'libnotify: Gnome dialog boxes'
-            'zenity: simple dialog boxes')
+            'zenity: simple dialog boxes'
+            'gst-libav: h.264 video'
+            'gst-plugins-good: h.264 video'
+            'libpulse: PulseAudio audio driver')
 install=$pkgname.install
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
-source_x86_64=("https://www.torproject.org/dist/torbrowser/$pkgver/tor-browser-linux64-${pkgver}_${_language}.tar.xz"
-               "https://www.torproject.org/dist/torbrowser/$pkgver/tor-browser-linux64-${pkgver}_${_language}.tar.xz.asc")
-source_i686=("https://www.torproject.org/dist/torbrowser/$pkgver/tor-browser-linux32-${pkgver}_${_language}.tar.xz"
-             "https://www.torproject.org/dist/torbrowser/$pkgver/tor-browser-linux32-${pkgver}_${_language}.tar.xz.asc")
+source_x86_64=("https://dist.torproject.org/torbrowser/$pkgver/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc})
+source_i686=("https://dist.torproject.org/torbrowser/$pkgver/tor-browser-linux32-${pkgver}_${_language}.tar.xz"{,.asc})
 source+=("$pkgname.desktop"
          "$pkgname.png"
          "$pkgname.sh")
 
-sha256sums_x86_64=('df7961b4384012eedd96c31d62633c9b95ae727f12f5e650ffdf7f6d5ca30617'
-                 'SKIP')
-sha256sums_i686=('196cfd81e726d0e1f7ecf0fe0183eac6b7e2cf8e8c5bc89b9105ce4d82e0922a'
-               'SKIP')
+sha256sums_x86_64=('1cf31255c855179089f4585f28435eecfc2f52994f7529ffe8d8ef47ff9aa9bf' 'SKIP')
+sha256sums_i686=('72d89b8cb0008109c06eb6cac23956703c52ef75fea1d6f1b72dabfc0de6486a' 'SKIP')
 sha1sums=('28e65f7537e7dc76af475166365ad0deabb91cb9'
           '7a283313a21bb9cd8331891f99d2646186231636'
           'd4da2996d4b99d847a9ed382401b9f41cea4098b')
