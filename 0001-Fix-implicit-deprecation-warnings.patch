@@ -1,0 +1,84 @@
+From 950b91475e84863ad9a5b3092385763d93ba38d2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 12 Aug 2015 19:09:32 +0200
+Subject: [PATCH] Fix implicit deprecation warnings
+
+---
+ sensors-applet/sensors-applet-conf.h    |  4 ++--
+ sensors-applet/sensors-applet-plugins.c |  1 +
+ sensors-applet/sensors-applet.c         |  2 +-
+ sensors-applet/sensors-applet.h         | 18 ++++++++++++++++++
+ 4 files changed, 22 insertions(+), 3 deletions(-)
+
+diff --git a/sensors-applet/sensors-applet-conf.h b/sensors-applet/sensors-applet-conf.h
+index 9267bd8..50e1447 100644
+--- a/sensors-applet/sensors-applet-conf.h
++++ b/sensors-applet/sensors-applet-conf.h
+@@ -85,8 +85,8 @@
+                                                          * config
+                                                          * data */
+ 
+-gboolean sensors_applet_gconf_save_sensors(SensorsApplet *sensors_applet);
+-gboolean sensors_applet_gconf_setup_sensors(SensorsApplet *sensors_applet);
++gboolean sensors_applet_conf_save_sensors(SensorsApplet *sensors_applet);
++gboolean sensors_applet_conf_setup_sensors(SensorsApplet *sensors_applet);
+ void sensors_applet_conf_setup(SensorsApplet *sensors_applet);
+ 
+ #endif /* SENSORS_APPLET_GCONF_H*/
+diff --git a/sensors-applet/sensors-applet-plugins.c b/sensors-applet/sensors-applet-plugins.c
+index ce4b89b..ffb3cdb 100644
+--- a/sensors-applet/sensors-applet-plugins.c
++++ b/sensors-applet/sensors-applet-plugins.c
+@@ -24,6 +24,7 @@
+ #include <dlfcn.h>
+ #endif /* HAVE_DLFCN_H */
+ 
++#include "sensors-applet.h"
+ #include "sensors-applet-plugins.h"
+ #include "sensors-applet-sensor.h"
+ 
+diff --git a/sensors-applet/sensors-applet.c b/sensors-applet/sensors-applet.c
+index a493ec9..1d561f1 100644
+--- a/sensors-applet/sensors-applet.c
++++ b/sensors-applet/sensors-applet.c
+@@ -1361,7 +1361,7 @@ gdouble sensors_applet_convert_temperature(gdouble value,
+ 
+ void sensors_applet_init(SensorsApplet *sensors_applet) {
+ 
+-	GActionGroup *action_group;
++	GSimpleActionGroup *action_group;
+ 	gchar *ui_path;
+ 
+ 	g_assert(sensors_applet);
+diff --git a/sensors-applet/sensors-applet.h b/sensors-applet/sensors-applet.h
+index 404842b..e740a42 100644
+--- a/sensors-applet/sensors-applet.h
++++ b/sensors-applet/sensors-applet.h
+@@ -165,6 +165,24 @@ void sensors_applet_icon_changed(SensorsApplet *sensors_applet,
+ void sensors_applet_update_sensor(SensorsApplet *sensors_applet,
+                                   GtkTreePath *path);
+ 
++gboolean sensors_applet_add_sensor(SensorsApplet *sensors_applet,
++                                   const gchar *path,
++                                   const gchar *id,
++                                   const gchar *label,
++                                   const gchar *interface,
++                                   SensorType type,
++                                   gboolean enable,
++                                   gdouble low_value,
++                                   gdouble high_value,
++                                   gboolean alarm_enable,
++                                   const gchar *low_alarm_command,
++                                   const gchar *high_alarm_command,
++                                   gint alarm_timeout,
++                                   gdouble multiplier,
++                                   gdouble offset,
++                                   IconType icon_type,
++                                   const gchar *graph_color);
++
+ void sensors_applet_display_layout_changed(SensorsApplet *sensors_applet);
+ void sensors_applet_reorder_sensors(SensorsApplet *sensors_applet);
+ gdouble sensors_applet_convert_temperature(gdouble value, 
+-- 
+2.5.0
+

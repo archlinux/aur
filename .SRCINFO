@@ -18,8 +18,10 @@ pkgbase = sensors-applet
 	optdepends = udisks: get HDD temperatures
 	source = http://downloads.sourceforge.net/sensors-applet/sensors-applet-3.0.0.tar.gz
 	source = git-fixes.patch
+	source = 0001-Fix-implicit-deprecation-warnings.patch
 	md5sums = 425078fc1ff5a98af1547e039002a73f
 	md5sums = cac4b6f28a493e904d76cfe400590d50
+	md5sums = c5693cbdfeeec2c1e166bf2be643f371
 
 pkgname = sensors-applet
 

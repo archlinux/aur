@@ -14,15 +14,20 @@ optdepends=('hddtemp: get HDD temperatures'
             'udisks: get HDD temperatures')
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/sensors-applet/$pkgname-$pkgver.tar.gz
-        git-fixes.patch)
+        git-fixes.patch
+        0001-Fix-implicit-deprecation-warnings.patch)
 md5sums=('425078fc1ff5a98af1547e039002a73f'
-         'cac4b6f28a493e904d76cfe400590d50')
+         'cac4b6f28a493e904d76cfe400590d50'
+         'c5693cbdfeeec2c1e166bf2be643f371')
 
 prepare() {
   cd $pkgname-$pkgver
 
   # Apply fixes from git
   patch -Np1 -i ../git-fixes.patch
+
+  # Fix implicit deprecation warnings
+  patch -Np1 -i ../0001-Fix-implicit-deprecation-warnings.patch
 
   autoreconf -fi
 }
