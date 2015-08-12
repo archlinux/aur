@@ -1,6 +1,6 @@
 pkgbase = xurls-git
 	pkgdesc = Extract urls from plain text
-	pkgver = v0.6.0.19.g0837a76
+	pkgver = v0.7.0
 	pkgrel = 1
 	url = https://github.com/mvdan/xurls
 	arch = i686
