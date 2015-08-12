@@ -5,15 +5,15 @@
 _numixicons=
 
 pkgname=jabref-git
-pkgver=2.11b3.251.g9b010a4
-_pkgver=2.11dev
+pkgver=2.11b3.635.gf69e933
+_pkgver=2.80dev
 _gitname="jabref"
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
 url="http://jabref.sourceforge.net/"
 license=('GPL')
-depends=('java-environment' 'sh')
+depends=('java-environment=8')
 makedepends=('git')
 provides=('jabref')
 conflicts=('jabref')
@@ -23,7 +23,7 @@ source=('jabref::git+https://github.com/JabRef/jabref.git'
         'crystal_16.tar.gz')
 md5sums=('SKIP'
          '5f76feb6b2f66a2ea8b52bca999a934f'
-         '9da2f8a5010e25bb04c81225309cc9e5'
+         '6d4ef1d79495d2e09e4c616c9227b0cb'
          'b03d877ebe4312b6c05dbe4a27d13001')
 
 pkgver() {
@@ -40,19 +40,21 @@ prepare(){
 }
 
 build() {
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+  PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
   cd "$srcdir/$_gitname"
-  ./gradlew antTargets.addgitinfo generateSource antTargets.jars
+  ./gradlew releaseJar
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  install -Dm644 buildant/lib/JabRef-*.jar \
+  install -Dm644 build/releases/JabRef-$_pkgver.jar \
     ${pkgdir}/usr/share/java/JabRef.jar 
   install -Dm755 $srcdir/jabref.sh ${pkgdir}/usr/bin/jabref
   install -Dm644 $srcdir/jabref.desktop \
     ${pkgdir}/usr/share/applications/jabref.desktop
-  install -Dm644 buildant/images/JabRef-icon-48.png \
+  install -Dm644 build/resources/main/images/icons/JabRef-icon-48.png \
     ${pkgdir}/usr/share/pixmaps/jabref.png
   install -d ${pkgdir}/usr/share/doc/$pkgname
-  cp -r buildant/help ${pkgdir}/usr/share/doc/$pkgname
+  cp -r build/resources/main/help ${pkgdir}/usr/share/doc/$pkgname
 }
