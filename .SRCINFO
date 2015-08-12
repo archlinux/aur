@@ -1,0 +1,13 @@
+pkgbase = unrpyc
+	pkgdesc = A ren'py script decompiler
+	pkgver = 20150709
+	pkgrel = 1
+	url = http://github.com/CensoredUsername/unrpyc
+	arch = any
+	license = MIT
+	depends = python2
+	source = git+http://github.com/CensoredUsername/unrpyc
+	md5sums = SKIP
+
+pkgname = unrpyc
+
