@@ -1,13 +1,9 @@
-# Maintainer: Renato Garcia <fgarcia.renato@gmail.com>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
-# Contributor: James Rayner <james@archlinux.org>
-# Contributor: Partha Chowdhury <kira.laucas@gmail.com>
-# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: alexiobash < me (at) alexiobash (dot) com >
 
 pkgname=conky-lua
 _pkgname=conky
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight system monitor for X, with Lua support enabled'
 url='http://conky.sourceforge.net/'
 license=('BSD' 'GPL')
