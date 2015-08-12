@@ -5,13 +5,14 @@
 
 pkgname=tao
 pkgver=6.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Standards-based, CORBA middleware framework"
 url="http://www.dre.vanderbilt.edu/~schmidt/TAO.html"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=(ace)
+depends=()
 options=(!libtool)
+conflicts=('ace')
 source=(http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO-${pkgver}.tar.gz
         license.txt)
 
@@ -31,7 +32,9 @@ build() {
   make
 }
 package() {
-  cd $srcdir/ACE_wrappers/TAO/tao
+  cd $srcdir/ACE_wrappers/
+  make DESTDIR="$pkgdir/" install
+  cd $srcdir/ACE_wrappers/TAO
   make DESTDIR="$pkgdir/" install
 }
 sha1sums=('7b182a23ac1c04ac2012316062338e31c7fd54eb'
