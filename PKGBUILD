@@ -61,7 +61,7 @@ build_jbigi() {
     msg "Building libjbigi..."
     cd "$srcdir/$_gitname/core/c/jbigi"
     CFLAGS+=" -fPIC -Wall"
-    INCLUDES="-I./jbigi/include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
+    INCLUDES="-I./jbigi/include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so"
     gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
     gcc $LDFLAGS $INCLUDES -o libjbigi.so jbigi.o -lgmp
@@ -72,7 +72,7 @@ build_jcpuid() {
 if [[ "$CARCH" != @(arm)* ]]; then
     msg "Building libjcpuid..."
     cd "$srcdir/$_gitname/core/c/jcpuid"
-    INCLUDES="-I./include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
+    INCLUDES="-I./include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-${CARCH}-linux.so"
     gcc $CFLAGS $LDFLAGS $INCLUDES src/jcpuid.c -o libjcpuid-${CARCH}-linux.so
     install -Dm644 libjcpuid-${CARCH}-linux.so "$srcdir/$_gitname/pkg-temp/lib/libjcpuid.so"
@@ -82,6 +82,7 @@ fi
 build() {
     source /etc/profile.d/apache-ant.sh
     source /etc/profile.d/jre.sh
+    export _JAVA_HOME=/usr/lib/jvm/java-default-runtime
 
     build_jbigi
     build_jcpuid
