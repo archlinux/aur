@@ -1,0 +1,16 @@
+pkgbase = python-randomio
+	pkgdesc = Storj Client for storing and auditing data
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Storj/dataserv-client
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pip
+	depends = python-future
+	depends = 
+	source = https://github.com/Storj/randomio/archive/v0.2.1.tar.gz
+	sha256sums = db46a523bb3cd257667b4f158c00f76d21417d780ba9506a27ecdcc5c9523ee8
+
+pkgname = python-randomio
+
