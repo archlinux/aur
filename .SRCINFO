@@ -1,0 +1,12 @@
+pkgbase = fluxbox-styles-tenr
+	pkgdesc = Fluxbox style set from tenr.de
+	pkgver = 2015.08.12
+	pkgrel = 1
+	url = http://tenr.de/styles/
+	arch = any
+	license = CCPL
+	source = http://tenr.de/styles/archives/tenr.de-styles-pkg.tar.bz2
+	md5sums = SKIP
+
+pkgname = fluxbox-styles-tenr
+
