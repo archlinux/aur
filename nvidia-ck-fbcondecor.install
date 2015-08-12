@@ -1,18 +1,45 @@
+_depmod() {
+    _extramodules='extramodules-4.1-ck-fbcondecor'
+
+    # Update module dependencies
+    depmod $(cat /usr/lib/modules/$_extramodules/version)
+}
+
+_rmmod() {
+    # Try unloading
+    if lsmod | grep -q nvidia; then
+        rmmod nvidia
+    fi
+
+    # What?
+    if [[ $? != 0 ]]; then
+        # X running?
+        if pidof Xorg >/dev/null; then
+            echo ":: Please reboot or exit X first."
+        fi
+    fi
+}
+
 post_install() {
-	EXTRAMODULES='extramodules-4.0-ck-fbcondecor'
-	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
-	echo 'In order to use nvidia module, reboot the system.'
+    _depmod
+
+    # X running?
+    if pidof Xorg >/dev/null; then
+        echo ":: Please reboot or exit X to unload the current module."
+    fi
 }
 
 post_upgrade() {
-	EXTRAMODULES='extramodules-4.0-ck-fbcondecor'
-	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
-	if [ "$(vercmp $2 310.19-2)" -lt 0 ]; then
-		echo 'If your card is from the 7xxx series or earlier, install nvidia-304xx-ck'
-	fi
+    _depmod
+
+    # Not rebuilding?
+    if (( $(vercmp $1 $2) != 0 )); then
+        _rmmod
+    fi
 }
 
 post_remove() {
-	EXTRAMODULES='extramodules-4.0-ck-fbcondecor'
-	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+    _depmod
+
+    _rmmod
 }
