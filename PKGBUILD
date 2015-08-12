@@ -2,7 +2,7 @@
 # Contributo: dhead666 <myfoolishgames@gmail.com>
 # https://github.com/AlD/archlinux
 
-pkgname=kodi-addon-pvr-hts
+pkgname=kodi-addon-pvr-hts_b0rked
 pkgbase=${pkgname}.git
 _gitname=pvr.hts
 pkgver=2.1.13
