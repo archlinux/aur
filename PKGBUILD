@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_clonedir"
-  printf "%s.r%s" "$(git describe --abbrev=0 --tags)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git describe)"
 }
 
 build() {
