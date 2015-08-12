@@ -1,7 +1,7 @@
 # Maintainer: Liganic <liganic-aur@gmx.net>
 pkgname=ckb-git
-pkgver=v0.2.r0.gdfc4b15
-pkgrel=2
+pkgver=v0.2.r2.g909776d
+pkgrel=1
 pkgdesc="Corsair Keyboard Input Driver (K65 RGB, K70[RGB], K95[RGB], M65 RGB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ccMSC/ckb"
@@ -27,11 +27,14 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-VCS}"
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm755 bin/ckb{,-daemon} "$pkgdir/usr/bin/"
 
   install -dm755 "$pkgdir/opt/ckb/ckb-animations"
+  install -Dm755 bin/ckb{,-daemon} "$pkgdir/opt/ckb/"
   install -D bin/ckb-animations/* "$pkgdir/opt/ckb/ckb-animations/"
+
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /opt/ckb/ckb "$pkgdir/usr/bin/"
+  ln -s /opt/ckb/ckb-daemon "$pkgdir/usr/bin/"
   
   install -Dm644 usr/ckb.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ckb.png"
   install -Dm644 usr/ckb.desktop "${pkgdir}/usr/share/applications/ckb.desktop"
