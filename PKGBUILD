@@ -2,6 +2,7 @@
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 
 # Set to 'y' to enable Numix-like theme for JabRef
+# DOESN'T WORK FOR NOW, ENABLING WILL RESULT IN A BROKEN BUILD
 _numixicons=
 
 pkgname=jabref-git
@@ -24,7 +25,7 @@ source=('jabref::git+https://github.com/JabRef/jabref.git'
 md5sums=('SKIP'
          '5f76feb6b2f66a2ea8b52bca999a934f'
          '6d4ef1d79495d2e09e4c616c9227b0cb'
-         'b03d877ebe4312b6c05dbe4a27d13001')
+         '4e84f6a13b94ffc112e1990d8b7861b3')
 
 pkgver() {
   cd $_gitname

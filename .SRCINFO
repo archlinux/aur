@@ -16,7 +16,7 @@ pkgbase = jabref-git
 	md5sums = SKIP
 	md5sums = 5f76feb6b2f66a2ea8b52bca999a934f
 	md5sums = 6d4ef1d79495d2e09e4c616c9227b0cb
-	md5sums = b03d877ebe4312b6c05dbe4a27d13001
+	md5sums = 4e84f6a13b94ffc112e1990d8b7861b3
 
 pkgname = jabref-git
 
