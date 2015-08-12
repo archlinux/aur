@@ -1,0 +1,18 @@
+pkgbase = gr-rds-git
+	pkgdesc = An FM-RDS Receiver for GNU Radio
+	pkgver = r220.201f32b
+	pkgrel = 1
+	url = https://github.com/bastibl/gr-rds
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	makedepends = swig
+	depends = gnuradio
+	source = git://github.com/bastibl/gr-rds.git
+	md5sums = SKIP
+
+pkgname = gr-rds-git
+
