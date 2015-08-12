@@ -1,0 +1,20 @@
+pkgbase = python2-astroquery
+	pkgdesc = Set of tools for querying astronomical web forms and databases
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = http://astroquery.readthedocs.org/en/latest/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cython2
+	depends = python2>=2.6
+	depends = python2-numpy>=1.6
+	depends = python2-astropy>=0.4
+	depends = python2-requests
+	depends = python2-keyring
+	depends = python2-beautifulsoup4
+	source = http://pypi.python.org/packages/source/a/astroquery/astroquery-0.2.6.tar.gz
+	md5sums = 96e857cc8a33e390409006ceb49c1fef
+
+pkgname = python2-astroquery
+
