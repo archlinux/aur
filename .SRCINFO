@@ -1,0 +1,14 @@
+pkgbase = leet-plugins
+	pkgdesc = Ladspa Plugins for use with ardour
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://code.google.com/p/leetplugins/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gcc-libs
+	source = http://leetplugins.googlecode.com/files/LEET-plugins-0.2.tar.gz
+	md5sums = 9bd803f4a204a78686ffd8df82f1e5ce
+
+pkgname = leet-plugins
+
