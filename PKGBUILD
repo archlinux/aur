@@ -11,7 +11,7 @@ license=('unknown')
 depends=('quake3')
 makedepends=('unrar')
 source=("http://ioquake3.org/files/mods/q3rally_v132.rar"
-        "http://media1.gamefront.com/moddb/2010/02/01/qvms.7z")
+        "http://ams1.dl.dbolical.com/2010/02/01/qvms.7z")
 noextract=("q3rally_v132.rar") # bsdtar fails on this
 sha256sums=('89cc44cad536af96c84acb4f3286accc4e143169991e69474aca8bd6ea592f2a'
             '11ac74670b094c065903b62faea76b0d861990e630ea3044cc5b1c397109f151')
