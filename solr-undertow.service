@@ -7,9 +7,9 @@ Type=simple
 User=solr
 Group=solr
 PrivateTmp=true
-WorkingDirectory=/var/lib/solr-undertow
-ExecStartPre=/usr/bin/mkdir /tmp/solr-undertow
-ExecStart=/usr/bin/solr-undertow /etc/solr-undertow/default.conf
+WorkingDirectory=/etc/solr
+ExecStartPre=/usr/bin/mkdir --parents /dev/shm/solr-undertow
+ExecStart=/usr/bin/solr-undertow /etc/solr/default.conf
 
 [Install]
 WantedBy=multi-user.target

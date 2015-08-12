@@ -1,10 +1,15 @@
+declare _active=/tmp/.solr
+
 post_install() {
   post_upgrade
+
+  echo '>>> A WAR file for Solr must be installed and targeted by /etc/solr/default.conf in order to run a Solr service.'
+  echo '>>> Solr 3.x, 4.x, and 5.x can be installed from their respective AUR packages: solr3-war, solr4-war, and solr5-war.'
+  echo '>>> Alternatively, the WAR file(s) can be manually installed into /usr/share/java/lib/solr.'
 }
 
 pre_upgrade() {
   # Stop solr-undertow.service if its active, to be restarted after upgrade.
-  local _active=/tmp/.solr
   systemctl daemon-reload
   if [ $(systemctl is-active solr-undertow.service) ]; then
     systemctl --quiet stop solr-undertow.service
@@ -20,7 +25,6 @@ post_upgrade() {
   getent passwd solr >/dev/null 2>&1 || useradd --gid 521 --home-dir /var/lib/solr --shell /usr/bin/nologin --uid 521 solr &>/dev/null
 
   # Start solr.server unit if it was active before upgrade.
-  local _active=/tmp/.solr
   systemctl daemon-reload
   if [ -f $_active ]; then
     systemctl --quiet start solr-undertow.service
@@ -30,8 +34,8 @@ post_upgrade() {
 
 pre_remove() {
   # Stop solr-undertow.service if its active.
-  if [ $(systemctl is-active macfanctld.service) ]; then
-    systemctl --quiet stop macfanctld.service
+  if [ $(systemctl is-active solr-undertow.service) ]; then
+    systemctl --quiet stop solr-undertow.service
   fi
   if getent passwd solr >/dev/null 2>&1; then
     userdel solr
