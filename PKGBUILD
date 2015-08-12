@@ -6,8 +6,8 @@
 #
 # Check this file for alternative mirrors!
 pkgname=('hadoop')
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.7.1
+pkgrel=1
 pkgdesc="Hadoop - MapReduce implementation and distributed filesystem"
 arch=('i686' 'x86_64')
 url="http://hadoop.apache.org"
@@ -66,7 +66,7 @@ backup=(
 	etc/${pkgname}/task-log4j.properties
 )
 
-sha256sums=('ad270af05fff59d3f7021efe79328ed92dadfa64aa5ab4fcde4a204f803dbf9e' # [downloaded hadoop.tar]
+sha256sums=('991dc34ea42a80b236ca46ff5d207107bcc844174df0441777248fdb6d8c9aa0' # [downloaded hadoop.tar]
             'b6607cb8531244d9be9241d8d4980d5695869f89fa598c8d24b35ec503df413b' # hadoop.profile
             'e584c32246fd23fe5f35b13399372419584c27a234364b12d1479f3c87e70748' # hadoop-conf
             '93cb40f76f6bb0c1924b7ef083b82d39bf32190f86c28fc6304839703cdda7b1' # hadoop.sh
