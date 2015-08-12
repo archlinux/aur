@@ -1,7 +1,7 @@
-# Maintainer: Peter Gottesman<peter@petergottesman.com>
+# Maintainer: Peter Gottesman <peter@petergottesman.com>
 pkgname=openmpi-1.10
 pkgver=1.10.0rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="A High Performance Message Passing Library"
 arch=(any)
 url="http://www.open-mpi.org"
@@ -45,11 +45,11 @@ package() {
 
     # FS#28583
     install -d -m 755 "$pkgdir"/usr/lib/pkgconfig
-    for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
+    for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi-fort.pc ompi.pc; do
         ln -sf /usr/lib/openmpi/pkgconfig/$i "$pkgdir"/usr/lib/pkgconfig/
     done
 
-    # Openmpi's otfinfo conflicts with the one from texlive
+    # Open MPI's otfinfo conflicts with the one from texlive
     mv "$pkgdir"/usr/bin/otfinfo{,mpi}
 
     # Remove dangling symlink and useless file
