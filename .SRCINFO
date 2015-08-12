@@ -1,0 +1,19 @@
+pkgbase = menda-icon-themes-git
+	pkgver = 20141219
+	pkgrel = 1
+	url = https://github.com/manjaro/menda-icon-themes
+	arch = any
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = librsvg
+	optdepends = menda-themes: Recommended themes
+	optdepends = menda-themes-dark: Recommended themes
+	replaces = menda-icon-themes
+	options = !emptydirs
+	options = !strip
+	source = menda-icon-themes-git::git+https://github.com/manjaro/menda-icon-themes.git
+	sha1sums = SKIP
+
+pkgname = menda-circle-icon-theme-git
+	pkgdesc = Menda Circle Icon Theme
+
