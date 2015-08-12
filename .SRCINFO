@@ -16,6 +16,7 @@ pkgbase = logger-pro-beta
 	sha256sums_x86_64 = bdbec10d6f48723c16f1792b7c049660cfff61ec438dc057018da29350cfbcb5
 
 pkgname = logger-pro-beta
+	pkgver = 3.8.4.6
 	install = logger-pro.install
 	depends = 
 	depends = gtkmm
@@ -28,6 +29,7 @@ pkgname = logger-pro-beta
 
 pkgname = logger-pro-drivers-beta
 	pkgdesc = Logger Pro for Linux Public Beta from Vernier Software (drivers)
+	pkgver = 1.5.1.1
 	depends = glib2
 	depends = alsa-lib
 	provides = logger-pro-drivers
