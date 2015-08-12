@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Cave Story
+Comment=Traditional 2D platformer
+Exec=/usr/bin/doukutsu 
+Icon=doukutsu
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;AdventureGame;
+Encoding=UTF-8
