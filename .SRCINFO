@@ -28,7 +28,7 @@ pkgbase = canon-pixma-mg7100-complete
 	depends_x86_64 = lib32-popt
 	depends_x86_64 = lib32-libpng12
 	depends_x86_64 = lib32-libusb-compat
-	depends_x86_64 = lib32-libtiff4
+	depends_x86_64 = lib32-libtiff
 	depends_x86_64 = lib32-libxml2
 	depends_x86_64 = lib32-gtk2
 
