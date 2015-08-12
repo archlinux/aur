@@ -58,6 +58,7 @@ pkgbase = grub
 	source = 60_memtest86+
 	source = grub.default
 	source = grub.cfg
+	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 728b7439ac733a7c0d56049adec364c7

@@ -73,6 +73,7 @@ md5sums=('SKIP'
          'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
          'c8b9511586d57d6f2524ae7898397a46')
+validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33')  #Paul Hardy
 
 _pkgver() {
 	cd "${srcdir}/grub-${_pkgver}/"
