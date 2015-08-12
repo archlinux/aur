@@ -1,0 +1,35 @@
+pkgbase = weechat-git
+	pkgdesc = Fast, light & extensible IRC client (curses UI)
+	pkgver = 0.4.3.308.g9a51449
+	pkgrel = 1
+	epoch = 1
+	url = http://www.weechat.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkgconfig
+	makedepends = perl
+	makedepends = python2
+	makedepends = lua
+	makedepends = tcl
+	makedepends = ruby
+	makedepends = aspell
+	depends = gnutls
+	depends = ncurses
+	depends = libgcrypt
+	optdepends = perl
+	optdepends = python2
+	optdepends = lua
+	optdepends = tcl
+	optdepends = ruby
+	optdepends = aspell
+	provides = weechat
+	conflicts = weechat
+	options = !libtool
+	source = weechat-git::git://github.com/weechat/weechat.git
+	md5sums = SKIP
+
+pkgname = weechat-git
+
