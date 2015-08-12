@@ -82,7 +82,7 @@ fi
 build() {
     source /etc/profile.d/apache-ant.sh
     source /etc/profile.d/jre.sh
-    export _JAVA_HOME=/usr/lib/jvm/java-default-runtime
+    export _JAVA_HOME=/usr/lib/jvm/default
 
     build_jbigi
     build_jcpuid
