@@ -4,14 +4,14 @@
 _mintrel=rafaela
 pkgname=nemo-compare
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Context menu comparison extension for Nemo file manager"
 arch=("any")
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL3')
 depends=('nemo>=1' 'nemo-python>=1.0' 'python-xdg' 'python2' 'meld')
 optdepends=('kdiff3: Additional comparison options (preferred diff, three-way, multi-compare)'
-	   'duffuse: Additional comparison options (preferred diff, three-way, multi-compare)'
+	   'diffuse: Additional comparison options (preferred diff, three-way, multi-compare)'
 	   'kompare: Additional comparison options (preferred diff, three-way, multi-compare)'
 	   'fldiff: Additional comparison options (preferred diff, three-way, multi-compare)')
 install=${pkgname}.install
