@@ -1,0 +1,11 @@
+post_install() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	update-desktop-database -q
+	echo "==> Install your songs in ~/.stepmania-5.0/Songs ; you can find"
+	echo "==> content at http://code.google.com/p/sm-ssc/wiki/FindingContent"
+}
+
+post_remove() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	update-desktop-database -q
+}
