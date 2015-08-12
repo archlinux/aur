@@ -1,0 +1,16 @@
+pkgbase = otf-pecita-font-stable
+	pkgdesc = OpenType hand-written font whose letters are connected
+	pkgver = 4.3
+	pkgrel = 1
+	url = http://pecita.eu
+	install = otf-pecita-font-stable.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://members.hellug.gr/sng/AUR/pecita-4.3.tar.gz
+	md5sums = e2fb13bee02fbbc0a988a8854ec6638f
+
+pkgname = otf-pecita-font-stable
+
