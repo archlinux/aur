@@ -5,7 +5,7 @@ _pkgname=synergy
 pkgname=$_pkgname-1.6
 pkgver=1.6.3
 pkgrel=1
-pkgdesc='Share a single mouse and keyboard between multiple computers'
+pkgdesc='Synergy upstream 1.6 branch. 1.7.x is very unstable on Linux.'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64')
 depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl')
@@ -16,7 +16,7 @@ optdepends=(
 )
 license=('GPL2')
 source=(
-  "$_pkgname::git+https://github.com/$_pkgname/$_pkgname.git"
+  "https://github.com/synergy/synergy/archive/1.6.3-final.tar.gz"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
   'missing-include-fix.patch'
@@ -24,17 +24,15 @@ source=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 sha512sums=(
-  'SKIP'
+  '8af7a920cb38f0bf057f005d612317fc81f937f74bff49aaf85e95559548d8a85de968e5f55690382ac2e133e0e6c3ae61c94156fc97a8f075956a7803db0825'
   'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
   'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
   '679cc88794d2ef65325ef93f1034f465824efeb2f01521eda7050556c1200df31abf9b5d055b9438d24f040c234d37b74c489e4db6acbf15a2e7fec8e1da226d'
 )
 
-
 prepare() {
-  cd $_pkgname
+  cd $_pkgname-1.6.3-final
 
-  git checkout 1.6.3-final
   patch -p1 < ../missing-include-fix.patch
 
   cd ext
@@ -44,7 +42,7 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname
+  cd $_pkgname-1.6.3-final
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
@@ -59,7 +57,7 @@ package() {
   install -Dm644 ${_pkgname}s_at.service "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.service"
   install -Dm644 ${_pkgname}s_at.socket "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.socket"
 
-  cd $_pkgname
+  cd $_pkgname-1.6.3-final
 
   # install binary
   install -Dm755 bin/$_pkgname "$pkgdir/usr/bin/$_pkgname"
