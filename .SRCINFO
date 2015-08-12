@@ -1,11 +1,12 @@
 pkgbase = veracrypt
 	pkgdesc = Disk encryption with strong security based on TrueCrypt
 	pkgver = 1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://veracrypt.codeplex.com/
 	install = veracrypt.install
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = custom
 	makedepends = nasm
 	depends = fuse

@@ -5,9 +5,9 @@ pkgname=veracrypt
 _pkgname=VeraCrypt
 pkgver=1.13
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk encryption with strong security based on TrueCrypt"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 url="http://veracrypt.codeplex.com/"
 license=('custom')
 depends=('fuse' 'wxgtk>=3.0.0' 'libsm' 'device-mapper')
