@@ -1,7 +1,7 @@
 # Maintainer: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 
 pkgname=swc-git
-pkgver=r522.6d0c548
+pkgver=r524.5fd275a
 pkgrel=1
 pkgdesc='A library for making a simple Wayland compositor'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  make
+  make PREFIX="/usr"
   
 }
 

@@ -1,6 +1,6 @@
 pkgbase = swc-git
 	pkgdesc = A library for making a simple Wayland compositor
-	pkgver = r522.6d0c548
+	pkgver = r524.5fd275a
 	pkgrel = 1
 	url = https://github.com/michaelforney/swc
 	arch = i686
