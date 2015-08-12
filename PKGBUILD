@@ -13,6 +13,11 @@ provides=('mtd-uitls')
 replaces=('mtd-utils')
 source=("mtd-utils::git://git.infradead.org/mtd-utils.git")
 
+prepare() {
+  cd mtd-utils
+  sed -i 's/sbin/bin/' $pkgname-$pkgver/common.mk
+}
+
 package ()
 {
   cd mtd-utils
