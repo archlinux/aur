@@ -1,0 +1,16 @@
+pkgbase = turbomem-git
+	pkgdesc = Linux driver for Intel Turbo Memory Controller (Robson) PCIe card
+	pkgver = r135.b618013
+	pkgrel = 1
+	url = https://github.com/yarrick/turbomem
+	install = turbomem.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = mtd-utils: format MTD device
+	provides = turbomem
+	source = turbomem-git::git+https://github.com/yarrick/turbomem.git
+	md5sums = SKIP
+
+pkgname = turbomem-git
+
