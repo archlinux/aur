@@ -13,9 +13,9 @@ post_install() {
   then
     /etc/domjudge/gendbpasswords > /etc/domjudge/dbpasswords.secret
   fi
-  if [ ! -f /etc/domjudge/htpasswd-jury ];
+  if [ ! -f /etc/domjudge/restapi.secret ];
   then
-    htpasswd -b -c /etc/domjudge/htpasswd-jury domjudge_jury `grep '^dummy:' /etc/domjudge/dbpasswords.secret | cut -d : -f 5`
+    /etc/domjudge/genrestapicredentials > /etc/domjudge/restapi.secret
   fi
 
   chown domjudge /var/lib/domjudge/judgings
@@ -27,8 +27,8 @@ post_install() {
   chown domjudge:http /var/lib/domjudge/submissions
   chmod 0770 /var/lib/domjudge/submissions
 
-  chown domjudge:http /etc/domjudge/{dbpasswords.secret,htpasswd-jury}
-  chmod 0640 /etc/domjudge/{dbpasswords.secret,htpasswd-jury}
+  chown domjudge:http /etc/domjudge/{dbpasswords.secret,restapi.secret}
+  chmod 0640 /etc/domjudge/{dbpasswords.secret,restapi.secret}
 
   chown domjudge /etc/domjudge/{domserver-config.php,judgehost-config.php,common-config.php}
 
@@ -45,14 +45,14 @@ post_upgrade() {
 }
 
 post_remove() {
-  if getent passwd domjudge >/dev/null; then
-    userdel domjudge
-  fi
   if getent passwd domjudge-run >/dev/null; then
     userdel domjudge-run
   fi
-  if getent group domjudge-run >/dev/null; then
-    groupdel domjudge-run
+  if getent passwd domjudge >/dev/null; then
+    userdel domjudge
+  fi
+  if getent group domjudge >/dev/null; then
+    groupdel domjudge
   fi
 }
 
