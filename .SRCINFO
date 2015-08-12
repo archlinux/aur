@@ -1,7 +1,7 @@
 pkgbase = purple-facebook
 	pkgdesc = Facebook Messenger protocol into pidgin, finch, and libpurple
-	pkgver = 12
-	pkgrel = 3d30d24fdbef
+	pkgver = 13
+	pkgrel = 1
 	url = https://github.com/jgeboski/purple-facebook
 	arch = x86_64
 	arch = i686
