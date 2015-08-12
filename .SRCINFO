@@ -1,0 +1,16 @@
+pkgbase = sfemovie-git
+	pkgdesc = sfeMovie is a simple C++ library that lets you play movies in SFML based applications. It relies on FFmpeg to read medias and remains consistent with SFML's naming conventions.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Yalir/sfeMovie
+	arch = x86_64
+	arch = i686
+	license = LGPLv2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	depends = sfml
+	depends = ffmpeg
+
+pkgname = sfemovie-git
+
