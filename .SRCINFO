@@ -1,0 +1,17 @@
+pkgbase = perl-convert-tnef
+	pkgdesc = Perl module to read TNEF files.
+	pkgver = 0.18
+	pkgrel = 3
+	url = http://search.cpan.org/~dougw/Convert-TNEF/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-io-stringy
+	depends = perl-mime-tools
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOUGW/Convert-TNEF-0.18.tar.gz
+	md5sums = 6f69ff242a807b861c6e68a3d93a58f7
+
+pkgname = perl-convert-tnef
+
