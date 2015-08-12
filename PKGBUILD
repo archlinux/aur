@@ -5,7 +5,7 @@ pkgdesc="A library that allows you to use TrueType fonts in your SDL application
 arch=(any)
 url="http://libsdl.org"
 license=("MIT")
-depends=(mingw-w64-sdl2 mingw-w64-freetype mingw-w64-bzip2)
+depends=(mingw-w64-sdl2 mingw-w64-freetype2 mingw-w64-bzip2)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("http://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-$pkgver.tar.gz")
@@ -33,3 +33,4 @@ package() {
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
+
