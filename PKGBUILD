@@ -3,13 +3,13 @@
 
 pkgname=texlive-moderncv
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern curriculum vitae class."
 arch=('any')
 url="http://www.ctan.org/pkg/moderncv/"
 license=('GPL')
 depends=('texlive-core' 'texlive-latexextra' 'texlive-fontsextra')
-source=(moderncv.zip::http://mirror.ctan.org/macros/latex/contrib/moderncv.zip)
+source=(moderncv-${pkgver}-${pkgrel}.zip::http://mirror.ctan.org/macros/latex/contrib/moderncv.zip)
 md5sums=('01818d8bf1aa0812cee87cc7a2a9d471')
 install=texlive-moderncv.install
 
