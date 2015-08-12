@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=vim-Qt
+GenericName=An experimental Qt GUI for Vim
+Comment=Qt UI written in Qt similar to its GTK counterpart gvim
+Icon=vim-qt
+Categories=Utility;
+TryExec=qvim
+Exec=qvim
+Terminal=false
+StartupNotify=false
