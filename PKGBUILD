@@ -1,7 +1,7 @@
 # Maintainer: James W. Barnett <jbarnet4@tulane.edu>
 pkgname=gromacs-git
 pkgver=5.1.beta1.r121.gabc4a07
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. Development branch.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -18,6 +18,7 @@ optdepends=('openmpi: needed for parallelization across nodes'
 options=('!libtool')
 source=(git://git.gromacs.org/gromacs.git)
 sha1sums=('SKIP')
+conflicts=('gromacs')
 
 build() {
   mkdir -p ${srcdir}/gromacs/build

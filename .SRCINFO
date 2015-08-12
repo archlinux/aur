@@ -1,7 +1,7 @@
 pkgbase = gromacs-git
 	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. Development branch.
 	pkgver = 5.1.beta1.r121.gabc4a07
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gromacs.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = gromacs-git
 	optdepends = libx11: needed for gmx view
 	optdepends = lesstif: needed for gmx view
 	optdepends = vmd: visualization
+	conflicts = gromacs
 	options = !libtool
 	source = git://git.gromacs.org/gromacs.git
 	sha1sums = SKIP
