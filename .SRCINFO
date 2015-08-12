@@ -8,6 +8,7 @@ pkgbase = xcalib
 	license = GPL2
 	makedepends = git
 	depends = libxxf86vm
+	depends = libxrandr
 	source = xcalib::git://github.com/OpenICC/xcalib.git
 	sha256sums = SKIP
 
