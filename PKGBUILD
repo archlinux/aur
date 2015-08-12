@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk3
-pkgver=39.0.3
+pkgver=40.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-fixed-loading-icon.png firefox-build.patch firefox-build-prbool.patch
         firefox-enable-addons.patch xulrunner-24.0-jemalloc-ppc.patch xulrunner-24.0-s390-inlines.patch)
 
-sha256sums=('8c16df4ce94b30f1308655f9ed6ac3e76aaa2eb3643739b9263226c086d0177b'
+sha256sums=('e3a26164b3a7f1aefbe13a07f0fdcd322726e4bb8c7e9432d1671c8c9e37145a'
             '65104e4f4facadbf828e6c308c9b97e74c4978c5451716abadec286f89c35eb1'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
