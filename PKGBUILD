@@ -3,16 +3,16 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname=perl-path-tiny
-pkgver=0.068
-pkgrel=2
+pkgver=0.072
+pkgrel=1
 pkgdesc='A small and fast Perl module for working with file paths'
 arch=('any')
 url='https://metacpan.org/release/Path-Tiny'
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.17.8')
-source=(http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Path-Tiny-0.068.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Path-Tiny-0.072.tar.gz)
 options=(!emptydirs)
-md5sums=('76e99fd1bb615f56954025ae636c6233')
+md5sums=('840696b295230682c727297c87fe42d6')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -20,20 +20,20 @@ sanitize() {
 }
 
 build() {
-	cd Path-Tiny-0.068
+	cd Path-Tiny-0.072
 	sanitize
 	perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd Path-Tiny-0.068
+	cd Path-Tiny-0.072
 	sanitize
 	make test
 }
 
 package() {
-	cd Path-Tiny-0.068
+	cd Path-Tiny-0.072
 	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
