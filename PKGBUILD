@@ -15,9 +15,14 @@ provides=('ycm-generator-git' 'ycm-generator')
 source=("git://github.com/rdnetto/YCM-Generator.git")
 md5sums=('SKIP')
 
-pkgver() {
+prepare()
+{
+    #switch to develop branch for archlinux support
 	cd $srcdir/YCM-Generator/
     git checkout develop
+}
+pkgver() {
+	cd $srcdir/YCM-Generator/
 	printf "develop%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
