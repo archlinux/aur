@@ -13,18 +13,18 @@ md5sums=('72959be66e26b09641a1e3902f631e62')
 
 package_python-fixtures() {
     depends=('python' 'python-testtools')
+    local license_dir="$pkgdir/usr/share/licenses/$pkgname/"
     cd "$srcdir/fixtures-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 
-    local license_dir="$pkgdir/usr/share/doc/$pkgname/"
     install -D -m644 "COPYING" "$license_dir/COPYING"
     install -D -m644 "BSD" "$license_dir/BSD"
 }
 
 package_python2-fixtures() {
     depends=('python2' 'python2-testtools')
+    local license_dir="$pkgdir/usr/share/licenses/$pkgname/"
     cd "$srcdir/fixtures-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1 
-    local license_dir="$pkgdir/usr/share/doc/$pkgname/"
     install -D -m644 "COPYING" "$license_dir/COPYING"
     install -D -m644 "BSD" "$license_dir/BSD"
 }
