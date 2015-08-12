@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!crc32.patch
+!cve20149636.patch
+!getZip64Data.patch
+!overflow-fsize.patch
+!test_compr_eb.patch
