@@ -2,17 +2,17 @@
 # Contributor: Henning Garus <henning.garus@gmail.com>
 
 pkgname=jflex
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A lexer generator written in Java"
 arch=('any')
 url="http://www.jflex.de/"
 license=('GPL')
-depends=('java-environment')
+depends=('java-environment' 'bash')
 changelog='Changelog'
 source=(http://jflex.de/$pkgname-$pkgver.tar.gz
         jflex.sh)
-md5sums=('df8cc9ca50b549bf705bd23479c100dc'
+md5sums=('fd88dcbd681325e621f929dbf4bfb0f3'
          '69cd460b4345372103b8301b456cbd1d')
 
 package() {
