@@ -1,6 +1,6 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=storj-dataserv-client
-_pkgname=${pkgname/storj-//}
+_pkgname=${pkgname/storj-/}
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="Storj Client for storing and auditing data"
