@@ -1,9 +1,8 @@
 # Based on linux-firmware by Thomas BÃ¤chler <thomas@archlinux.org>
-# Maintainer: Victor Dmitriyev <mrvvitek@gmail.com>
-# Contributor: xduugu
+# Maintainer: Matthew Pallissard <matthew.paul@pallissard.net>
 
 pkgname=linux-firmware-git-iwlwifi
-pkgrel=1
+pkgrel=2
 pkgdesc="Emmanuel Grumbach's fork of linux-firmware.git"
 makedepends=('git')
 arch=('any')
@@ -25,7 +24,7 @@ conflicts=('linux-firmware-git'
 pkgver=20150722.75cc3ef
 provides=("linux-firmware=$pkgver")
 options=(!strip)
-source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git")
+source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware.git")
 md5sums=('SKIP')
 
 pkgver() {
