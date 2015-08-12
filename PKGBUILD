@@ -36,6 +36,11 @@ build() {
 
   msg "Found installer, unpacking..."
   $pkgpath/Maple18Linux${_arch}Installer.run --mode unattended --installdir ${srcdir}/maple18 --desktopshortcut 0
+  
+  # removing the installer's .desktop files from where they shouldn't be
+  rm ~/.local/share/applications/maple18.desktop
+  rm ~/.local/share/applications/mapleclassic18.desktop
+  rm ~/.local/share/applications/maplearchive18.desktop
 }
 
 package () {
@@ -55,10 +60,5 @@ package () {
   
   find ${pkgdir}/ -name "*.log" -delete
   find ${pkgdir}/ -type f -exec sed -i "s|${srcdir}|/usr/share|g" {} \;
-  
-  # removing the installer's .desktop files from where they shouldn't be
-  rm ~/.local/share/applications/maple18.desktop
-  rm ~/.local/share/applications/mapleclassic18.desktop
-  rm ~/.local/share/applications/maplearchive18.desktop
 }
 
