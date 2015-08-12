@@ -2,15 +2,15 @@
 # Maintainer: Emiliano Vavassori <syntaxerrormmm AT gmail.com>
 
 pkgname=texlive-moderncv
-pkgver=1.5.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A modern curriculum vitae class."
 arch=('any')
-url="http://www.launchpad.net/moderncv/"
+url="http://www.ctan.org/pkg/moderncv/"
 license=('GPL')
 depends=('texlive-core' 'texlive-latexextra' 'texlive-fontsextra')
 source=(moderncv.zip::http://mirror.ctan.org/macros/latex/contrib/moderncv.zip)
-md5sums=('cb7c15c6a88f7a056aca44bfc5d8329e')
+md5sums=('01818d8bf1aa0812cee87cc7a2a9d471')
 install=texlive-moderncv.install
 
 package() {
