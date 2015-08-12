@@ -1,7 +1,7 @@
 pkgbase = solr-conf-drupal
 	pkgdesc = Configuration files to enable Drupal 7.x or 8.x to use Solr 3.x, 4.x, or 5.x as its search provider
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://drupal.org/project/search_api_solr
 	arch = any
 	license = GPL
