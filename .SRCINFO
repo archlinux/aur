@@ -1,0 +1,19 @@
+pkgbase = qt5-gstreamer
+	pkgdesc = Qt5 bindings for GStreamer
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://gstreamer.freedesktop.org/modules/qt-gstreamer.html
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = boost
+	makedepends = mesa
+	makedepends = doxygen
+	depends = qt5-declarative
+	depends = gst-plugins-good
+	source = http://gstreamer.freedesktop.org/src/qt-gstreamer/qt-gstreamer-1.2.0.tar.xz
+	md5sums = fd794045a828c184acc1794b08a463fd
+
+pkgname = qt5-gstreamer
+
