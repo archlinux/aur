@@ -5,8 +5,7 @@ pkgver=1.0.2
 pkgrel=4
 pkgdesc="tvtime is a high quality television application for use with video capture cards. Added some patches (Xinemara, save matte settings, icon bug, ...)"
 depends=('libpng' 'libxml2' 'freetype2' 'libxss' 'libxinerama' 'libxv' 'libsm' 'libxxf86vm')
-source=(http://pkgs.fedoraproject.org/repo/pkgs/tvtime/tvtime-1.0.2.tar.gz/4b3d03afe61be239b08b5e522cd8afed/tvtime-$pkgver.tar.gz 
-\
+source=(http://pkgs.fedoraproject.org/repo/pkgs/tvtime/tvtime-1.0.2.tar.gz/4b3d03afe61be239b08b5e522cd8afed/tvtime-$pkgver.tar.gz \
 		tvtime-1.0.2-linuxheaders.patch \
 		tvtime-1.0.2-gcc41.patch \
 		tvtime-1.0.2-libsupc++.patch \
