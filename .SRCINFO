@@ -1,0 +1,14 @@
+pkgbase = hfp
+	pkgdesc = Hoerfahrplanprogramm
+	pkgver = 0.5.0
+	pkgrel = 0
+	url = http://www.bwalle.de
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt
+	source = http://www.bwalle.de/programme/hfp/hfp-0.5.0.tar.bz2
+	md5sums = 772eea223bce3e2b3fe36ea583462f6e
+
+pkgname = hfp
+
