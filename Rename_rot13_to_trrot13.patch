@@ -1,0 +1,107 @@
+From 3bc43fa346975130379b76b2b7882854f3d93763 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Tue, 13 May 2014 22:54:53 +0200
+Subject: renaming rot13 to trrot13 to avoid nameclash with bsd-games package
+
+---
+ LICENSES.txt       |  2 +-
+ doc/Makefile.am    |  2 +-
+ doc/hxtools.7      |  2 +-
+ doc/trrot13.1      | 10 +++++-----
+ examples/437cipher |  2 +-
+ suser/Makefile.am  |  2 +-
+ suser/trrot13      |  2 +-
+ 7 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/LICENSES.txt b/LICENSES.txt
+index a2698dd..524012b 100644
+--- a/LICENSES.txt
++++ b/LICENSES.txt
+@@ -61,7 +61,7 @@ suser/fxterm			WTFPL-2.0+
+ suser/mailsplit			WTFPL-2.0+
+ suser/pesubst			WTFPL-2.0+
+ suser/qtar			WTFPL-2.0+
+-suser/rot13			WTFPL-2.0+
++suser/trrot13			WTFPL-2.0+
+ suser/sysinfo			GPL-2.0+
+ suser/tailhex			GPL-2.0+
+ suser/wktimer			GPL-2.0+
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 8f7b5f7..b0591b1 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -44,7 +44,7 @@ dist_man_MANS = \
+ 	printcaps.8 \
+ 	psthreads.1 \
+ 	recursive_lower.1 \
+-	rot13.1 \
++	trrot13.1 \
+ 	sourcefuncsize.1 \
+ 	spec-beautifier.1 \
+ 	ssa2srt.1 \
+diff --git a/doc/hxtools.7 b/doc/hxtools.7
+index 6dd3551..3ca42ed 100644
+--- a/doc/hxtools.7
++++ b/doc/hxtools.7
+@@ -129,7 +129,7 @@ display
+ .PP
+ \fBrecursive_lower\fP(1) \(en recursively lowercase all filenames
+ .PP
+-\fBrot13\fP(1) \(en shortcut to invoke tr(1) for ROT13
++\fBtrrot13\fP(1) \(en shortcut to invoke tr(1) for TRROT13
+ .PP
+ \fBrpmdep.pl\fP(1) \(en read RPM dependencies and output a graph
+ .PP
+diff --git a/doc/trrot13.1 b/doc/trrot13.1
+index 648fc1d..e9630da 100644
+--- a/doc/trrot13.1
++++ b/doc/trrot13.1
+@@ -1,15 +1,15 @@
+-.TH rot13 1 "2013-08-02" "hxtools" "hxtools"
++.TH trrot13 1 "2013-08-02" "hxtools" "hxtools"
+ .SH Name
+ .PP
+-rot13 \(em shortcut to tr(1) for ROT13
++trrot13 \(em shortcut to tr(1) for TRROT13
+ .SH Syntax
+ .PP
+-\fBrot13\fP [\fIfile\fP...]
++\fBtrrot13\fP [\fIfile\fP...]
+ .SH Description
+ .PP
+-ROT13 ("rotate by 13 places", sometimes hyphenated ROT-13) is a simple letter
++TRROT13 ("rotate by 13 places", sometimes hyphenated ROT-13) is a simple letter
+ substitution cipher that replaces a letter with the letter 13 letters after it
+ in the Latin alphabet.
+ .PP
+-rot13(1) will call out to tr(1) to do this substitution, and will read from
++trrot13(1) will call out to tr(1) to do this substitution, and will read from
+ standard input unless some filenames are given.
+diff --git a/suser/Makefile.am b/suser/Makefile.am
+index 50002a4..50012da 100644
+--- a/suser/Makefile.am
++++ b/suser/Makefile.am
+@@ -14,7 +14,7 @@ dist_bin_SCRIPTS = \
+ 	fduphl \
+ 	fxterm \
+ 	pesubst \
+-	rot13 \
++	trrot13 \
+ 	qtar \
+ 	wktimer
+ 
+diff --git a/suser/trrot13 b/suser/trrot13
+index 6e41265..42be0da 100755
+--- a/suser/trrot13
++++ b/suser/trrot13
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ #
+-#	do ROT13 substituion cipher
++#	do TRROT13 substituion cipher
+ #	written by Jan Engelhardt, 2013
+ #
+ #	This program is free software; you can redistribute it and/or
+-- 
+1.9.2
+
