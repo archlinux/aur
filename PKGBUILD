@@ -1,8 +1,8 @@
 pkgname=myagent-im-git
 pkgver=20130319
-pkgrel=1
+pkgrel=2
 pkgdesc="Mail.Ru Agent"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://code.google.com/p/myagent-im/"
 license="GPL2"
 depends=('zlib' 'xapian-core' 'aspell' 'libxss' 'qtmobility')
@@ -30,5 +30,9 @@ sed -e '/isEmpty(PREFIX):PREFIX/ s/\/usr\/local/\/usr/' -i ./src/configure.pri
 
 qmake
 make
+}
+
+package() {
+cd ${srcdir}/${_gitname}
 make INSTALL_ROOT="$pkgdir" install
 }

@@ -1,7 +1,7 @@
 pkgbase = myagent-im-git
 	pkgdesc = Mail.Ru Agent
 	pkgver = 20130319
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/myagent-im/
 	arch = i686
 	arch = x86_64
