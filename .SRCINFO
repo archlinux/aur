@@ -36,11 +36,11 @@ pkgbase = tor-browser-pt
 	sha256sums = 89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e
 	source_x86_64 = https://dist.torproject.org/torbrowser/5.0/tor-browser-linux64-5.0_pt-PT.tar.xz
 	source_x86_64 = https://dist.torproject.org/torbrowser/5.0/tor-browser-linux64-5.0_pt-PT.tar.xz.asc
-	sha256sums_x86_64 = 115e8c0ee14c6a1062149d0315eca633dd08a89f4a6dfa05c024f002dc4b65c0
+	sha256sums_x86_64 = 2bde7ab54b7c847ef7063e4b1ae12894ec33ccbb83b0ec45298e4e274b5eeac9
 	sha256sums_x86_64 = SKIP
 	source_i686 = https://dist.torproject.org/torbrowser/5.0/tor-browser-linux32-5.0_pt-PT.tar.xz
 	source_i686 = https://dist.torproject.org/torbrowser/5.0/tor-browser-linux32-5.0_pt-PT.tar.xz.asc
-	sha256sums_i686 = 78688df77ad688c0458e5ff959b5ff1bf5579435ee480093e98f9ad537400dbd
+	sha256sums_i686 = 0e3677faa2cadbcaaad90bf470b72ed204a99f5c03e4e05d6a32396a9dc2476f
 	sha256sums_i686 = SKIP
 
 pkgname = tor-browser-pt
