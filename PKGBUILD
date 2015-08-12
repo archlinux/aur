@@ -4,7 +4,7 @@
 
 pkgname=gogs
 _pkgname=${pkgname}
-pkgver=0.6.1
+pkgver=0.6.3
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."

@@ -1,3 +1,27 @@
+2015-08-02
+
+	* V0.6.2
+	Bug fix: Label disappeared after edited a label #542
+	Bug fix: Filename cut off in DIFF when containing spaces #985
+	Bug fix: Migrate repository requires HTTPS address #1000
+	Bug fix: Private repositories issues included in "Public Activity" #1112
+	Bug fix: All users email are public #1127
+	Bug fix: API calls are not hidden behind sign in #1128
+	Bug fix: 404 on files with url-encoded names #1137
+	Bug fix: It is possible to access user profiles using organization URL #1169
+	Bug fix: Didn't check blank user name on LDAP #1207
+	Bug fix: Generated certificate doesn't have CN with the hostname #1231
+	Bug fix: Removing user from organization collaboration removes repositiory #1279
+	Bug fix: Create repo for other users by hacking uid field #1289
+	Improvement: Clearer error message for illegal characters #1070
+	Improvement: Add full name field to admin's user edit page #1130
+	Improvement: Hide organization email for non logged-in users #1204
+	Improvement: Visit Repository home page with ".git" appended URL #1227
+	Feature: Support realtime webhook #835
+	Others: Add Italian language support.
+	Others: Disable Macaron color log in production mode to improve performance
+	Others: Show repository owner name in explore page #1150
+
 2015-03-26
 
 	* V0.6.1
