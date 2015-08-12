@@ -1,0 +1,16 @@
+pkgbase = solr5-war
+	pkgdesc = Solr / SolrCloud web application archive (WAR) ready to deploy on any Java EE container
+	pkgver = 5.2.1
+	pkgrel = 1
+	url = http://lucene.apache.org/solr
+	arch = any
+	license = Apache
+	depends = java-environment>=7
+	provides = solr=5
+	provides = solr5=5
+	noextract = solr-5.2.1.war
+	source = https://github.com/bremeld/solr-undertow/raw/master/example/solr-wars/solr-5.2.1.war
+	md5sums = 592258911be0a39ca8751f6ee6157763
+
+pkgname = solr5-war
+
