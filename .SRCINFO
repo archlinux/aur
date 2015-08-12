@@ -1,0 +1,20 @@
+pkgbase = renoise3-demo
+	pkgdesc = A music composition program
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.renoise.com
+	arch = i686
+	arch = x86_64
+	license = custom:renoise
+	makedepends = xdg-utils
+	depends = alsa-lib
+	depends = libx11
+	depends = gcc-libs
+	optdepends = jack: For JACK audio support
+	optdepends = jack2: For JACK2 audio support
+	options = !strip
+	source = http://files.renoise.com/demo/Renoise_3_0_1_Demo_x86.tar.bz2
+	md5sums = e58958e8634c13a8291ce33e9b11c643
+
+pkgname = renoise3-demo
+
