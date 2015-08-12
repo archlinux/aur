@@ -1,6 +1,6 @@
 pkgbase = darktable-git
 	pkgdesc = A virtual lighttable and darkroom for photographers
-	pkgver = release.0.9.3.10801.gfda316b
+	pkgver = release.0.9.3.10806.g5c68bb3-1
 	pkgrel = 1
 	url = http://www.darktable.org/
 	install = darktable.install
@@ -28,7 +28,7 @@ pkgbase = darktable-git
 	depends = libsoup
 	depends = gtk-engines
 	depends = osm-gps-map-gtk3
-	depends = pugixml-shared
+	depends = pugixml
 	optdepends = librsvg
 	optdepends = flickcurl: flickr upload
 	provides = darktable
