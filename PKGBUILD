@@ -2,7 +2,7 @@
 # Contributor: Jerome Barnett <techryda at silentdome dot com>
 
 pkgname=firefox-extension-htitle
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="Hide Firefox title bar if window is maximized (Useful in GNOME Shell)"
 url="https://github.com/seleznev/firefox-extension-htitle"
@@ -10,8 +10,8 @@ arch=('any')
 license=('MPLv2')
 depends=("firefox")
 makedepends=('unzip')
-source=("https://github.com/seleznev/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.xpi")
-md5sums=('6336be974764f5bb65bbdb7f2db32999')
+source=("https://github.com/seleznev/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.xpi")
+md5sums=('d1ff5eb802d5ff7bd89f5c20892752b9')
 
 package() {
   local emid=$(sed -n -e '/<\?em:id>\?/!d; s/.*\([\"{].*[}\"]\).*/\1/; s/\"//g; p; q' install.rdf)

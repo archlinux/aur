@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-htitle
 	pkgdesc = Hide Firefox title bar if window is maximized (Useful in GNOME Shell)
-	pkgver = 3.3
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://github.com/seleznev/firefox-extension-htitle
 	arch = any
 	license = MPLv2
 	makedepends = unzip
 	depends = firefox
-	source = https://github.com/seleznev/firefox-extension-htitle/releases/download/3.3/firefox-extension-htitle-3.3.xpi
-	md5sums = 6336be974764f5bb65bbdb7f2db32999
+	source = https://github.com/seleznev/firefox-extension-htitle/releases/download/v3.4/firefox-extension-htitle-3.4.xpi
+	md5sums = d1ff5eb802d5ff7bd89f5c20892752b9
 
 pkgname = firefox-extension-htitle
 
