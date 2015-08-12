@@ -5,14 +5,12 @@
 
 pkgname=xar
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='eXtensible ARchive format'
 arch=('i686' 'x86_64')
-url='http://code.google.com/p/xar/'
+url='http://mackyle.github.io/xar/'
 license=('custom:BSD')
 depends=('libxml2' 'openssl' 'bzip2')
-provides=("$pkgname")
-conflicts=("$pkgname")
 options=('!libtool')
 source=("http://github.com/mackyle/xar/archive/xar-${pkgver}.tar.gz")
 md5sums=('2fa5e3d2c1c2beaf58ef684552d2dbff')
