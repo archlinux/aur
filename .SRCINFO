@@ -1,0 +1,19 @@
+pkgbase = sbrowser-git
+	pkgdesc = Simple browser based on PyQt5 and QtWebKit
+	pkgver = 9b861d4
+	pkgrel = 1
+	url = https://github.com/kinokoio/sbrowser
+	arch = any
+	license = GPL
+	makedepends = coreutils
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = python-setuptools
+	source = git+https://github.com/kinokoio/sbrowser
+	sha256sums = SKIP
+
+pkgname = sbrowser-git
+
