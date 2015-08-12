@@ -7,15 +7,16 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 pkgname=cone-simple
-pkgver=0.90
+pkgver=0.92
 pkgrel=1
 epoch=
 pkgdesc="Curses text-based mail client - handles multiple POP3, IMAP accounts, and local mail folders. contains a simple newsreader. This version has no dependencies to other courier libraries."
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
+_pkgname=cone
 url="http://courier-mta.org/cone/"
 license=('GPL2')
 groups=()
-depends=('libxml2' 'libidn' 'libldap' 'gamin' 'aspell')
+depends=('libxml2' 'libidn' 'libldap' 'gamin' 'aspell' 'courier-unicode')
 makedepends=('configure')
 checkdepends=()
 optdepends=()
@@ -28,26 +29,25 @@ install=
 changelog=
 source=(http://sourceforge.net/projects/courier/files/cone/$pkgver/cone-$pkgver.tar.bz2)
 noextract=()
-md5sums=('fce2ff83bef7294aca7caffa20090a6b')
+md5sums=('6bcc25fdc2b425720eabdd6518d6137e')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  #patch -p1 -i "$srcdir/fastforward-cc-conf.patch"
+  cd "$srcdir/$_pkgname-$pkgver"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  "$srcdir/$pkgname-$pkgver/configure" -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc
+  cd "$srcdir/$_pkgname-$pkgver"
+  "$srcdir/$_pkgname-$pkgver/configure" -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   make -k check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
 
