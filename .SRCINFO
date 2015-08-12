@@ -1,0 +1,23 @@
+pkgbase = rtmpdump-ksv-git
+	pkgdesc = A version of rtmpdump-git including numerous patches released by KSV.
+	pkgver = r499.a107cef
+	pkgrel = 2
+	url = http://stream-recorder.com/forum/-t16103.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	depends = openssl
+	provides = rtmpdump
+	provides = rtmpdump-git
+	conflicts = rtmpdump
+	conflicts = rtmpdump-svn
+	conflicts = rtmpdump-git
+	conflicts = rtmpdump-ksv
+	source = git://git.ffmpeg.org/rtmpdump
+	source = Patch.diff
+	sha256sums = SKIP
+	sha256sums = 106ce20cad83d5aae11c9359f9c505f5ca870790385ef57a08be1439e9c91d16
+
+pkgname = rtmpdump-ksv-git
+
