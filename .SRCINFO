@@ -1,0 +1,16 @@
+pkgbase = solr4-war
+	pkgdesc = Solr / SolrCloud web application archive (WAR) ready to deploy on any Java EE container
+	pkgver = 4.10.4
+	pkgrel = 1
+	url = http://lucene.apache.org/solr
+	arch = any
+	license = Apache
+	depends = java-environment>=7
+	provides = solr=4
+	provides = solr4=4
+	noextract = solr-4.10.4.war
+	source = http://central.maven.org/maven2/org/apache/solr/solr/4.10.4/solr-4.10.4.war
+	md5sums = c2bd351c295f811621afdaf971fbd392
+
+pkgname = solr4-war
+
