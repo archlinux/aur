@@ -1,7 +1,7 @@
 pkgbase = ttf-roboto-mono
 	pkgdesc = Roboto Mono is a monospaced addition to the Roboto type family.
 	pkgver = 2.000985
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.google.com/fonts/specimen/Roboto+Mono
 	install = ttf-roboto-mono.install
@@ -9,8 +9,28 @@ pkgbase = ttf-roboto-mono
 	license = Apache
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = ttf-roboto-mono-2.000985-1.zip::https://www.google.com/fonts/download?kit=rqQ1zSE-ZGCKVZgew-A9dofD-WQWLbF4rYwcBGowFYY
-	sha256sums = b5895fa5c5adae8ce8af8fb17e135ca394a8ad2a0ca2edf9326c67ea9e11c184
+	source = https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/LICENSE.txt
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-Bold.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-BoldItalic.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-Italic.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-Light.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-LightItalic.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-Medium.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-MediumItalic.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-Regular.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-Thin.ttf
+	source = https://github.com/google/fonts/blob/master/apache/robotomono/RobotoMono-ThinItalic.ttf
+	md5sums = 3b83ef96387f14655fc854ddc3c6bd57
+	md5sums = fd6e2dfdc0e85a1609486f2f13460d97
+	md5sums = 1ec0dc28a2ff435cdd2b061f84e5cf2a
+	md5sums = 50ca87398919a20d322a73927b1f38bc
+	md5sums = 1fb2e867d7ea79803cbffe471621f7fb
+	md5sums = 01ec8b091eef8410cc5964633ee25c84
+	md5sums = 27051aaba28792ba5ffa2caf73c0fd08
+	md5sums = 1af971e67cbb6f0a724eb43fd9e2927e
+	md5sums = ef512838b400291403759acf4062c89b
+	md5sums = 21d6d1adf2c46f5a95ba8aae49b4eb93
+	md5sums = 88879604cbd25924977dbe1575fab854
 
 pkgname = ttf-roboto-mono
 
