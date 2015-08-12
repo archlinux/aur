@@ -1,0 +1,25 @@
+pkgbase = sensors-applet
+	pkgdesc = Applet for GNOME Flashback panel to display readings from hardware sensors, including CPU temperature, fan speeds and voltage readings
+	pkgver = 3.0.0
+	pkgrel = 4
+	url = http://sensors-applet.sourceforge.net/
+	install = sensors-applet.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = libxnvctrl
+	makedepends = yelp-tools
+	depends = gnome-panel
+	depends = libatasmart
+	depends = lm_sensors
+	optdepends = hddtemp: get HDD temperatures
+	optdepends = udisks: get HDD temperatures
+	source = http://downloads.sourceforge.net/sensors-applet/sensors-applet-3.0.0.tar.gz
+	source = git-fixes.patch
+	md5sums = 425078fc1ff5a98af1547e039002a73f
+	md5sums = cac4b6f28a493e904d76cfe400590d50
+
+pkgname = sensors-applet
+
