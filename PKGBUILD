@@ -14,7 +14,7 @@ source=('vlmcsd.7z::http://higgs.rghost.ru/download/8cJHNJQxg/0956b238f0dd06e33e
         'vlmcsd.service')
 install='vlmcsd.install'
 sha256sums=("2d49dc56fdae7093c5ce99619e1920242cfe97da9080be4eee5483874b9ee9b6"
-            "bcaff9edeb0b215535d1d273283c5c5b79cbb652c5a1dfab6798e8b2a671ae7a")
+            "d6e0eafab2223e83a265ac9879217189e5a17a79ccf7323f21c9d8916cc10a82")
 noextract=('vlmcsd.7z')
 
 prepare() {
