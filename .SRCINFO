@@ -1,0 +1,15 @@
+pkgbase = ssx
+	pkgdesc = A graphical frontend for su/sudo (X11)
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://almin-soft.ru/index.php?programmy/ssx/tags/ssx
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	optdepends = sudo: Give certain users the ability to run some commands as root
+	options = !strip
+	source = ssx.tar.bz2::http://almin-soft.fsay.net/data/files/ssx/download.php?get=ssx.tar.bz2
+	md5sums = dad1cbb1a4bd001ade7f30d9603dfbde
+
+pkgname = ssx
+
