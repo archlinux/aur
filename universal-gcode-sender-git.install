@@ -1,0 +1,17 @@
+post_install() {
+    echo
+    echo 'ADDITIONAL COMMENTS:'
+    echo 'Script to run the Universal G-Code Sender is located at' \
+         '/usr/bin/universal-gcode-sender'
+    echo 'A desktop entry file has not been provided'
+    echo
+}
+
+post_upgrade() {
+    echo
+    echo 'ADDITIONAL COMMENTS:'
+    echo 'Script to run the Universal G-Code Sender is located at' \
+         '/usr/bin/universal-gcode-sender'
+    echo 'A desktop entry file has not been provided'
+    echo
+}
