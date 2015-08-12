@@ -1,0 +1,17 @@
+pkgbase = python-pymediainfo
+	pkgdesc = A Python wrapper around the MediaInfo command line utility
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/paltman/pymediainfo
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = mediainfo
+	depends = python-beautifulsoup4
+	depends = python-six
+	source = git+https://github.com/paltman/pymediainfo.git#commit=8c26bf0b93f684f6ec4649dc7f64c6b90f30fc22
+	sha256sums = SKIP
+
+pkgname = python-pymediainfo
+
