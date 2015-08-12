@@ -1,0 +1,21 @@
+pkgbase = rednotebook
+	pkgdesc = A simple desktop diary
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = http://rednotebook.sourceforge.net
+	install = rednotebook.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2-gtkspell
+	depends = pygtk
+	depends = python2-yaml
+	depends = pywebkitgtk
+	depends = hicolor-icon-theme
+	depends = librsvg
+	optdepends = python-chardet: Python3 module for character encoding auto-detection
+	source = rednotebook-1.10.1.tar.gz::http://downloads.sourceforge.net/project/rednotebook/rednotebook-1.10.1.tar.gz
+	sha256sums = c03bf07d78c4d27ce8d2794af156c7fba1d6b3a7ae4c87b71be0216c3512e6fe
+
+pkgname = rednotebook
+
