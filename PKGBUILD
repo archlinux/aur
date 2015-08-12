@@ -1,15 +1,16 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-roboto-mono
-pkgver=20150606
+pkgver=2.000985
 pkgrel=1
+epoch=1
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc='Roboto Mono is a monospaced addition to the Roboto type family.'
 arch=('any')
 url='https://www.google.com/fonts/specimen/Roboto+Mono'
 license=('Apache')
-source=("http://www.markusweimar.de/public/ttf-roboto-mono-${pkgver}.zip")
+source=("$pkgname-$pkgver-$pkgrel.zip::https://www.google.com/fonts/download?kit=rqQ1zSE-ZGCKVZgew-A9dofD-WQWLbF4rYwcBGowFYY")
 install=${pkgname}.install
-sha256sums=('16ca33e93e1c6d9d60eb57045c3d49811df4bef0f8c7f91fd077529388fcfced')
+sha256sums=('b5895fa5c5adae8ce8af8fb17e135ca394a8ad2a0ca2edf9326c67ea9e11c184')
 
 package() {
   cd ${srcdir}
