@@ -1,0 +1,21 @@
+pkgbase = hfpforlinux-svn
+	pkgdesc = HFP for Linux is a Bluetooth Hands-Free Profile server
+	pkgver = 88
+	pkgrel = 8
+	url = http://nohands.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	makedepends = speex
+	depends = bluez-libs
+	optdepends = libtool
+	optdepends = libsalsa
+	optdepends = audiofile
+	optdepends = dbus
+	optdepends = qt3
+	source = hfpforlinux::svn+https://nohands.svn.sourceforge.net/svnroot/nohands/trunk
+	md5sums = SKIP
+
+pkgname = hfpforlinux-svn
+
