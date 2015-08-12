@@ -6,8 +6,8 @@ pkgrel=5
 pkgdesc="Cross-platform serial port class libary for Qt4 and Qt5."
 arch=('i686' 'x86_64')
 url='https://github.com/qextserialport/qextserialport'
-license=('BSD')
-depends=('qt4' 'qt5-base')
+license=('MIT')
+makedepends=('qt4' 'qt5-base')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/qextserialport/qextserialport/archive/${pkgver}.tar.gz")
 sha1sums=('2cd3ec6771b056db1bdf471517f8e20e8a4ecff2')
 
@@ -27,7 +27,12 @@ build() {
 }
 
 package_qextserialport-qt4() {
-  make -C build-qt4 INSTALL_ROOT="$pkgdir" install
+  pkgdesc="Cross-platform serial port class libary for Qt4."
+  depends=('qt4')
+
+  make -C build-qt4 INSTALL_ROOT="${pkgdir}" install
+
+  install -Dm644 "qextserialport-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/qextserialport-qt4/LICENSE"
 
   # Fix wrong path in prl files
   find "${pkgdir}/usr/lib" -type f -name '*.prl' \
@@ -35,7 +40,13 @@ package_qextserialport-qt4() {
 }
 
 package_qextserialport-qt5() {
-  make -C build-qt5 INSTALL_ROOT="$pkgdir" install
+  pkgdesc="Cross-platform serial port class libary for Qt5."
+  depends=('qt5-base')
+  conflicts=('qextserialport')
+
+  make -C build-qt5 INSTALL_ROOT="${pkgdir}" install
+
+  install -Dm644 "qextserialport-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/qextserialport-qt5/LICENSE"
 
   # Fix wrong path in prl files
   find "${pkgdir}/usr/lib" -type f -name '*.prl' \
