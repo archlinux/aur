@@ -1,5 +1,5 @@
-# Contributor:  JJ Hiblot  <jjhiblot att traphandler dott com>
 # Maintainer: Carl Mueller  archlinux at carlm e4ward com
+# Contributor:  JJ Hiblot  <jjhiblot att traphandler dott com>
 
 # Based on PKGBUILD from https://aur.archlinux.org/packages/canon-pixma-mg5200-complete/
 # Scanner icon source: http://openiconlibrary.sourceforge.net/gallery2/open_icon_library-full/icons/png/64x64/devices/scanner-3.png
@@ -7,15 +7,15 @@
 # Only tested with x86_64 architecture
 
 pkgname=canon-pixma-mg7100-complete
-pkgver=3.40
-pkgrel=2
+pkgver=4.00
+pkgrel=1
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MG7100 series (MG7150 etc.)"
 url='http://www.canon.fr/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG7150.aspx'
 arch=('i686' 'x86_64')
 license=('custom')
 install="${pkgname}.install"
 depends_x86_64=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-libxml2' 'lib32-gtk2')
-depends_i686=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'libxml2' 'gtk2')
+depends_i686=('popt' 'libpng12' 'libusb-compat' 'libtiff' 'libxml2' 'gtk2')
 makedepends=('deb2targz' 'sed')
 source=('http://gdlp01.c-wss.com/gds/2/0100005512/01/cnijfilter-mg7100series-4.00-1-deb.tar.gz'
          'http://gdlp01.c-wss.com/gds/9/0100005529/01/scangearmp-mg7100series-2.20-1-deb.tar.gz'
