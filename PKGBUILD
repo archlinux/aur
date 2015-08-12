@@ -10,7 +10,6 @@ _fred=#tag=build01469  # build 1469: 2015-07-19
 BUILDENV+=('!check')
 
 # plugins failing to build:
-# 'WebOfTrust'
 _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
 
 pkgname=freenet
@@ -56,7 +55,6 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-KeyUtils.git"
         "git+https://github.com/freenet/plugin-WebOfTrust.git#branch=next"
         "${url}/alpha/opennet/seednodes.fref"
-        #"http://www.aqute.biz/repo/biz/aQute/bnd/0.0.401/bnd.jar"
         "${url}/contrib/jar/latest/commons-compress.jar"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h"
@@ -172,8 +170,9 @@ build_jbigi() {
     CFLAGS+=" -fPIC -Wall"
     INCLUDES="-I./jbigi/include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so -lgmp"
+
     gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
-    gcc $LDFLAGS $INCLUDES -o "$_objdir"/libjbigi-linux-none.so jbigi.o
+    gcc $LDFLAGS -o "$_objdir"/libjbigi-linux-none.so jbigi.o
 }
 
 build_nativethread() {
@@ -183,9 +182,10 @@ build_nativethread() {
     _objdir='lib/freenet/support/io'
     INCLUDES="-I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,llibnative.so -lc"
+
     javah -o NativeThread.h -classpath ../../fred/src freenet.support.io.NativeThread
     gcc -c $CFLAGS $INCLUDES NativeThread.c
-    gcc $LDFLAGS $INCLUDES -o "$_objdir"/libNativeThread-${__arch}.so NativeThread.o
+    gcc $LDFLAGS NativeThread.o -o "$_objdir"/libNativeThread-${__arch}.so
 }
 
 build_jcpuid() {
@@ -195,38 +195,37 @@ build_jcpuid() {
     _objdir='lib/freenet/support/CPUInformation'
     INCLUDES="-I./include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-x86-linux.so"
+
     gcc -c $CFLAGS $INCLUDES src/jcpuid.c
-    gcc $LDFLAGS $INCLUDES -o "$_objdir"/libjcpuid-${_arch}-linux.so jcpuid.o
+    gcc $LDFLAGS $INCLUDES jcpuid.o -o "$_objdir"/libjcpuid-${_arch}-linux.so
 }
 
 build_fec() {
     msg "Building onion-fec..."
     cd "$srcdir/contrib/onion-fec/src/csrc"
 
+    _objdir='../../bin/lib/linux-${_arch}'
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro"
     INCLUDES="-I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     _CLASSPATH="-classpath ../ com.onionnetworks.fec"
 
+    mkdir -p "$_objdir"
     rm -f *.o *.S com_*.h
 
     javah -o com_onionnetworks_fec_Native8Code.h  ${_CLASSPATH}.Native8Code
     javah -o com_onionnetworks_fec_Native16Code.h ${_CLASSPATH}.Native16Code
 
-    gcc fec.c -o fec8.S  -S $CFLAGS -DGF_BITS=8
-    gcc fec.c -o fec16.S -S $CFLAGS -DGF_BITS=16
+    gcc -S $CFLAGS fec.c -DGF_BITS=8  -o fec8.S
+    gcc -S $CFLAGS fec.c -DGF_BITS=16 -o fec16.S
 
-    gcc fec-jinterf.c -o fec8-jinterf.o  -c $CFLAGS $INCLUDES -DGF_BITS=8
-    gcc fec-jinterf.c -o fec16-jinterf.o -c $CFLAGS $INCLUDES -DGF_BITS=16
+    gcc -c $CFLAGS $INCLUDES fec-jinterf.c -DGF_BITS=8  -o fec8-jinterf.o
+    gcc -c $CFLAGS $INCLUDES fec-jinterf.c -DGF_BITS=16 -o fec16-jinterf.o
 
-    gcc fec8.S -o fec8.o   -c $CFLAGS -DGF_BITS=8
-    gcc fec16.S -o fec16.o -c $CFLAGS -DGF_BITS=16
+    gcc -c $CFLAGS fec8.S  -DGF_BITS=8  -o fec8.o
+    gcc -c $CFLAGS fec16.S -DGF_BITS=16 -o fec16.o
 
-    gcc fec8.o fec8-jinterf.o   -o libfec8.so $LDFLAGS
-    gcc fec16.o fec16-jinterf.o -o libfec16.so $LDFLAGS
-
-    _DEST="../../bin/lib/linux-${_arch}"
-    mkdir -p "$_DEST"
-    cp libfec*.so "$_DEST"
+    gcc $LDFLAGS fec8.o fec8-jinterf.o   -o "$_objdir"/libfec8.so
+    gcc $LDFLAGS fec16.o fec16-jinterf.o -o "$_objdir"/libfec16.so $LDFLAGS
 }
 
 build_plugins() {
@@ -269,7 +268,6 @@ package() {
     for plugin in ${_plugins[@]}; do
     install -m640 "$srcdir"/plugin-${plugin}/dist/${plugin}.jar "$pkgdir"/opt/freenet/plugins
     done
-    #install -m640 "$srcdir"/WebOfTrust.jar           "$pkgdir"/opt/freenet/plugins
 
     echo "pluginmanager.loadplugin=$(echo ${_plugins[@]}|sed 's| |;|g')" \
         >>"$pkgdir"/opt/freenet/conf/freenet.ini
