@@ -1,18 +1,18 @@
 pkgbase = nvidia-ck-fbcondecor
 	pkgdesc = NVIDIA drivers for linux-ck-fbcondecor.
-	pkgver = 349.16
-	pkgrel = 3
+	pkgver = 355.06
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-ck-fbcondecor.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-ck-fbcondecor-headers>=4.0
-	makedepends = linux-ck-fbcondecor-headers<4.1
-	depends = linux-ck-fbcondecor>=4.0
-	depends = linux-ck-fbcondecor<4.1
+	makedepends = linux-ck-fbcondecor-headers>=4.1
+	makedepends = linux-ck-fbcondecor-headers<4.2
+	depends = linux-ck-fbcondecor>=4.1
+	depends = linux-ck-fbcondecor<4.2
 	depends = nvidia-libgl
-	depends = nvidia-utils=349.16
+	depends = nvidia-utils=355.06
 	conflicts = nvidia-340xx-ck
 	conflicts = nvidia-304xx-ck
 	conflicts = nvidia-275xx-ck
@@ -61,10 +61,10 @@ pkgbase = nvidia-ck-fbcondecor
 	conflicts = nvidia-340xx-ck-sandybridge
 	conflicts = nvidia-ck
 	options = !strip
-	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/349.16/NVIDIA-Linux-x86-349.16.run
-	md5sums_i686 = 59597d5dfaaf0fc83a5e78d29a97ccac
-	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/349.16/NVIDIA-Linux-x86_64-349.16-no-compat32.run
-	md5sums_x86_64 = 3e04208affde8c35a8b96975eec0486b
+	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/355.06/NVIDIA-Linux-x86-355.06.run
+	md5sums_i686 = c4d2ae0dd6338874e5e8358fe630ba8f
+	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/355.06/NVIDIA-Linux-x86_64-355.06-no-compat32.run
+	md5sums_x86_64 = 8bdf64adc94bd9e170e4a7412ca9e5ba
 
 pkgname = nvidia-ck-fbcondecor
 
