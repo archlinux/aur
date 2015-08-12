@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-pyethash
-pkgver=23.1
+pkgver=0.1.27
 pkgrel=1
 pkgdesc="Python wrappers for ethash, the Ethereum proof of work hashing function"
 arch=('i686' 'x86_64')
@@ -12,19 +12,19 @@ url="https://github.com/ethereum/ethash"
 license=('GPL')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/p/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('bdb22f4a88fb0c0e8f5da5fad0c840cc')
-sha256sums=('1e001fe8b75b5c86e60a0685b3e6a0f1b02df494629240c720ffdcf991e518be')
+md5sums=('0ede7aff7f9279b2451ecdb187b91590')
+sha256sums=('ff66319ce26b9d77df1f610942634dac9742e216f2c27b051c0a2c2dec9c2818')
 
 build() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   python2 setup.py build
 }
 
 package() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
