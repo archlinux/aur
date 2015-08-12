@@ -1,0 +1,25 @@
+pkgbase = byzanz
+	pkgdesc = Record what's happening on your desktop
+	pkgver = 0.3.0.1
+	pkgrel = 1
+	url = http://git.gnome.org/browse/byzanz/
+	install = byzanz.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = gnome-panel
+	makedepends = intltool
+	depends = gtk3
+	depends = gst-plugins-base
+	optdepends = gnome-panel: panel applet
+	source = git://git.gnome.org/byzanz#commit=78fb3de3
+	source = 0001-Port-to-libpanel-applet-5.patch
+	source = flv-audio.patch
+	md5sums = SKIP
+	md5sums = 39e44b82a042a07349997f5847e780ee
+	md5sums = 1150232a7a49cf3748b8b7fe8a90fae1
+
+pkgname = byzanz
+

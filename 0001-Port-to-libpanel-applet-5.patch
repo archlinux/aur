@@ -1,0 +1,177 @@
+From efe03b6fe075aece3a95bd89eedc83f5f546f1cc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 12 Aug 2015 17:43:00 +0200
+Subject: [PATCH] Port to libpanel-applet 5
+
+This makes byzanz-applet compatible with gnome-panel>=3.14.
+---
+ configure.ac         |  2 +-
+ src/Makefile.am      | 10 ++++++++++
+ src/byzanzapplet.c   | 40 ++++++++++++++++++----------------------
+ src/byzanzapplet.xml |  8 ++++++--
+ 4 files changed, 35 insertions(+), 25 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 620bb26..270b207 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -75,7 +75,7 @@ PKG_CHECK_MODULES(GTK, cairo >= $CAIRO_REQ gtk+-3.0 >= $GTK_REQ x11 gio-2.0 >= $
+ 
+ PKG_CHECK_MODULES(XDAMAGE, xdamage >= $XDAMAGE_REQ)
+ 
+-LIBPANEL_APPLET="libpanelapplet-4.0"
++LIBPANEL_APPLET="libpanel-applet"
+ PKG_CHECK_MODULES(APPLET, $LIBPANEL_APPLET >= $APPLET_REQ,
+                   have_applet=yes, have_applet=no)
+ AM_CONDITIONAL(HAVE_APPLET, [test x$have_applet = xyes])
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 2f922ed..d9fa297 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -93,6 +93,15 @@ $(applet_in_files): $(applet_in_files).in Makefile
+ 
+ %.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+ 
++servicedir       = $(datadir)/dbus-1/services
++service_in_files = org.gnome.panel.applet.ByzanzAppletFactory.service.in
++service_DATA     = $(service_in_files:.service.in=.service)
++
++org.gnome.panel.applet.ByzanzAppletFactory.service: $(service_in_files)
++	$(AM_V_GEN)sed \
++            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
++            $< > $@
++
+ uidir = $(datadir)/byzanz
+ ui_DATA = byzanzapplet.xml
+ 
+@@ -107,6 +116,7 @@ CLEANFILES = \
+ 
+ EXTRA_DIST = \
+ 	org.gnome.ByzanzApplet.panel-applet.in.in \
++	$(service_in_files)	\
+ 	$(gsettings_schemas_in_in)	\
+ 	$(man_MANS) \
+ 	$(ui_DATA)
+diff --git a/src/byzanzapplet.c b/src/byzanzapplet.c
+index 616acf9..8657180 100644
+--- a/src/byzanzapplet.c
++++ b/src/byzanzapplet.c
+@@ -99,10 +99,10 @@ static struct {
+   const char *  stock_icon;             /* icon to use for this state */
+   gboolean      active;                 /* wether the togglebutton should be active */
+ } state_info[BYZANZ_APPLET_N_STATES] = {
+-  [BYZANZ_APPLET_IDLE] = { N_("Record your desktop"), GTK_STOCK_MEDIA_RECORD, FALSE },
+-  [BYZANZ_APPLET_SELECT_AREA] = { N_("Select area to record"), GTK_STOCK_CANCEL, TRUE },
+-  [BYZANZ_APPLET_RECORDING] = { N_("End current recording"), GTK_STOCK_MEDIA_STOP, TRUE },
+-  [BYZANZ_APPLET_ENCODING] = { N_("Abort encoding of recording"), GTK_STOCK_STOP, TRUE }
++  [BYZANZ_APPLET_IDLE] = { N_("Record your desktop"), "media-record", FALSE },
++  [BYZANZ_APPLET_SELECT_AREA] = { N_("Select area to record"), "gtk-cancel", TRUE },
++  [BYZANZ_APPLET_RECORDING] = { N_("End current recording"), "media-playback-stop", TRUE },
++  [BYZANZ_APPLET_ENCODING] = { N_("Abort encoding of recording"), "process-stop", TRUE }
+ };
+ 
+ static ByzanzAppletState
+@@ -264,7 +264,7 @@ byzanz_applet_start_recording (AppletPrivate *priv)
+ 
+     priv->dialog = gtk_file_chooser_dialog_new (_("Record your desktop"),
+         GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (priv->applet))),
+-        GTK_FILE_CHOOSER_ACTION_SAVE, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
++        GTK_FILE_CHOOSER_ACTION_SAVE, "gtk-cancel", GTK_RESPONSE_CANCEL,
+         NULL);
+     g_assert (G_N_ELEMENTS (method_response_codes) >= byzanz_select_get_method_count ());
+     for (i = 0; i < byzanz_select_get_method_count (); i++) {
+@@ -348,7 +348,7 @@ destroy_applet (GtkWidget *widget, AppletPrivate *priv)
+ }
+ 
+ static void 
+-byzanz_about_cb (GtkAction *action, AppletPrivate *priv)
++byzanz_about_cb (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+ {
+   const gchar *authors[] = {
+     "Benjamin Otte <otte@gnome.org>", 
+@@ -356,7 +356,8 @@ byzanz_about_cb (GtkAction *action, AppletPrivate *priv)
+    };
+ 
+   gtk_show_about_dialog( NULL,
+-    "name",                _("Desktop Session"), 
++    "name",                _("Desktop Session"),
++    "logo-icon-name",      "media-record",
+     "version",             VERSION,
+     "copyright",           "\xC2\xA9 2005-2006 Benjamin Otte",
+     "comments",            _("Record what's happening on your desktop"),
+@@ -365,27 +366,23 @@ byzanz_about_cb (GtkAction *action, AppletPrivate *priv)
+     NULL );
+ }
+ 
+-static const GtkActionEntry byzanz_menu_actions [] = {
+-  { "ByzanzAbout", GTK_STOCK_ABOUT, N_("_About"),
+-    NULL, NULL,
+-    G_CALLBACK (byzanz_about_cb) }
++static const GActionEntry byzanz_menu_actions [] = {
++  { "about", byzanz_about_cb, NULL, NULL, NULL }
+ };
+ 
+ static gboolean
+ byzanz_applet_fill (PanelApplet *applet, const gchar *iid, gpointer data)
+ {
+   AppletPrivate *priv;
+-  GtkActionGroup *action_group;
++  GSimpleActionGroup *action_group;
+   char *ui_path;
+   char *method;
+   
+   if (!index_quark)
+     index_quark = g_quark_from_static_string ("Byzanz-Index");
+-#ifdef GETTEXT_PACKAGE
+   bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
+   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+   textdomain (GETTEXT_PACKAGE);
+-#endif
+ 
+   gtk_window_set_default_icon_name ("byzanz-record-desktop");
+ 
+@@ -394,21 +391,20 @@ byzanz_applet_fill (PanelApplet *applet, const gchar *iid, gpointer data)
+   priv->settings = panel_applet_settings_new (applet, "org.gnome.byzanz.applet");
+ 
+   g_signal_connect (applet, "destroy", G_CALLBACK (destroy_applet), priv);
+-  panel_applet_add_preferences (applet, "/schemas/apps/byzanz-applet/prefs",
+-      NULL);
+   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
+-  action_group = gtk_action_group_new ("Byzanz Applet Actions");
+-#ifdef GETTEXT_PACKAGE
+-  gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+-#endif
+-  gtk_action_group_add_actions (action_group,
++  action_group = g_simple_action_group_new ();
++  g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+ 				byzanz_menu_actions,
+ 				G_N_ELEMENTS (byzanz_menu_actions),
+ 				priv);
+   ui_path = g_build_filename (BYZANZ_MENU_UI_DIR, "byzanzapplet.xml", NULL);
+   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
+-				     ui_path, action_group);
++				     ui_path, action_group, GETTEXT_PACKAGE);
+   g_free (ui_path);
++
++  gtk_widget_insert_action_group (GTK_WIDGET (applet), "byzanzapplet",
++                                  G_ACTION_GROUP (action_group));
++
+   g_object_unref (action_group);
+ 
+   method = g_settings_get_string (priv->settings, "method");
+diff --git a/src/byzanzapplet.xml b/src/byzanzapplet.xml
+index d3a6d6c..7c37b24 100644
+--- a/src/byzanzapplet.xml
++++ b/src/byzanzapplet.xml
+@@ -1,2 +1,6 @@
+-<menuitem name="Byzanz About Item" action="ByzanzAbout"/>
+-
++<section>
++       <item>
++               <attribute name="label" translatable="yes">_About</attribute>
++               <attribute name="action">byzanzapplet.about</attribute>
++       </item>
++</section>
+-- 
+2.5.0
+
