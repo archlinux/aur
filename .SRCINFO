@@ -1,0 +1,19 @@
+pkgbase = caldavzap
+	pkgdesc = A CalDav web client
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = http://www.inf-it.com/open-source/clients/caldavzap
+	install = caldavzap.install
+	arch = any
+	license = AGPL3
+	depends = ed
+	optdepends = apache: Webserver to run CalDavZAP
+	backup = etc/webapps/caldavzap/config.js
+	backup = etc/webapps/caldavzap/apache.example.conf
+	source = http://www.inf-it.com/CalDavZAP_0.12.0.zip
+	source = apache.example.conf
+	sha256sums = 8ffaab17b46aa58e225add95c5ea4496d9124ee019b13f4918a7216e44d87655
+	sha256sums = b3d469c43c48f74185d11ea896c807230247ab7dc3694fbe5d61ab16a81e11a3
+
+pkgname = caldavzap
+

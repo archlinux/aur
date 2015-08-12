@@ -1,0 +1,8 @@
+post_install() {
+    (cd /usr/share/webapps/caldavzap/ &&
+        exec /usr/share/webapps/caldavzap/cache_update.sh)
+}
+
+post_upgrade() {
+    post_install
+}
