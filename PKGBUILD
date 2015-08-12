@@ -20,7 +20,8 @@ install=datamash.install
 pkgver() {
   cd datamash
   set -o pipefail
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+  # git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+  git describe --long | sed -r 's/^v//' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
