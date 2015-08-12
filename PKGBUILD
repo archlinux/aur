@@ -172,7 +172,7 @@ build_jbigi() {
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so -lgmp"
 
     gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
-    gcc $LDFLAGS -o "$_objdir"/libjbigi-linux-none.so jbigi.o
+    gcc $LDFLAGS jbigi.o -o "$_objdir"/libjbigi-linux-none.so
 }
 
 build_nativethread() {
@@ -197,7 +197,7 @@ build_jcpuid() {
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-x86-linux.so"
 
     gcc -c $CFLAGS $INCLUDES src/jcpuid.c
-    gcc $LDFLAGS $INCLUDES jcpuid.o -o "$_objdir"/libjcpuid-${_arch}-linux.so
+    gcc $LDFLAGS jcpuid.o -o "$_objdir"/libjcpuid-${_arch}-linux.so
 }
 
 build_fec() {
@@ -214,18 +214,14 @@ build_fec() {
 
     javah -o com_onionnetworks_fec_Native8Code.h  ${_CLASSPATH}.Native8Code
     javah -o com_onionnetworks_fec_Native16Code.h ${_CLASSPATH}.Native16Code
-
     gcc -S $CFLAGS fec.c -DGF_BITS=8  -o fec8.S
     gcc -S $CFLAGS fec.c -DGF_BITS=16 -o fec16.S
-
     gcc -c $CFLAGS $INCLUDES fec-jinterf.c -DGF_BITS=8  -o fec8-jinterf.o
     gcc -c $CFLAGS $INCLUDES fec-jinterf.c -DGF_BITS=16 -o fec16-jinterf.o
-
     gcc -c $CFLAGS fec8.S  -DGF_BITS=8  -o fec8.o
     gcc -c $CFLAGS fec16.S -DGF_BITS=16 -o fec16.o
-
     gcc $LDFLAGS fec8.o fec8-jinterf.o   -o "$_objdir"/libfec8.so
-    gcc $LDFLAGS fec16.o fec16-jinterf.o -o "$_objdir"/libfec16.so $LDFLAGS
+    gcc $LDFLAGS fec16.o fec16-jinterf.o -o "$_objdir"/libfec16.so
 }
 
 build_plugins() {
