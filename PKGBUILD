@@ -7,7 +7,7 @@
 pkgname=chromium-minimum
 _pkgname=chromium
 pkgver=44.0.2403.155
-pkgrel=1
+pkgrel=2
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
 arch=('i686' 'x86_64')
@@ -31,12 +31,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium.desktop
         0001-NSS-reject-DH-groups-smaller-than-1024-bits.patch
         0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
+        0001-Demand-for-newer-POSIX-macro.patch
         chromium-widevine.patch)
 sha256sums=('eba271c210a020dd61b72c940abeecdafc562a1d15fb45615dda72bcb6219f3c'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
             '8fb428244be7b50268a2848a34405c5551232e5c77f9e553cfdd3103979748d2'
+            'd908939b10161efe658f0f82d2c132bf28dff54e08f02c6fed93815c3656f328'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -64,6 +66,9 @@ prepare() {
 
   # https://code.google.com/p/chromium/issues/detail?id=490260
   patch -Np1 -i ../0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
+
+  # Fix BoringSSL build with glibc 2.22 (FS#45965)
+  patch -Np1 -d third_party/boringssl/src < ../0001-Demand-for-newer-POSIX-macro.patch
 
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
