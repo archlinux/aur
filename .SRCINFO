@@ -1,0 +1,37 @@
+pkgbase = openoffice
+	pkgdesc = Repackaged from upstream
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = http://www.openoffice.org/
+	install = openoffice.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = rpmextract
+	depends = freetype2
+	depends = glibc>=2.5
+	depends = gtk2>=2.10.4
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	optdepends = apr-util: adds apr support
+	optdepends = java-environment: adds java support
+	optdepends = gconf: adds additional gnome support
+	optdepends = gstreamer0.10-base: + some gstr-plugins to support multimedia content, e.g. in impress
+	optdepends = mesa: for the OGLTrans extension of impress
+	optdepends = mime-types: provides /etc/mime.types
+	optdepends = nss: adds support for signed files/macros
+	optdepends = openoffice-de-bin: adds additional language pack (example)
+	optdepends = python2: adds python support
+	optdepends = raptor1: adds rdf support
+	optdepends = sqlite: adds sqlite support
+	conflicts = openoffice-base-bin-unstable
+	replaces = openoffice-base-bin
+	options = !strip
+	options = docs
+	backup = opt/openoffice4/program/sofficerc
+	source = http://downloads.sourceforge.net/project/openofficeorg.mirror/4.1.1/binaries/en-US/
+	sha256sums = 0000000000000000000000000000000000000000
+
+pkgname = openoffice
+
