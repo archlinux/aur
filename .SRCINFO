@@ -1,8 +1,8 @@
 pkgbase = python2-pywavelets
 	pkgdesc = PyWavelets, wavelet transform module
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = http://www.pybytes.com/pywavelets/
+	url = http://pywavelets.readthedocs.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = python2-pywavelets
 	makedepends = unzip
 	depends = python2
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/P/PyWavelets/PyWavelets-0.2.2.zip
-	md5sums = 77d3528e59058935d23ff7e2f02c4968
+	source = http://pypi.python.org/packages/source/P/PyWavelets/PyWavelets-0.3.0.zip
+	md5sums = b7f01bf7d8dff25d470d3deb3d5a9d0f
 
 pkgname = python2-pywavelets
 

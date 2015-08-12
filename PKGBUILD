@@ -1,17 +1,17 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python2-pywavelets
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="PyWavelets, wavelet transform module"
 arch=('i686' 'x86_64')
-url="http://www.pybytes.com/pywavelets/"
+url="http://pywavelets.readthedocs.org/"
 license=('MIT')
 depends=('python2')
 makedepends=('python2-distribute' 'cython2' 'unzip')
 options=(!emptydirs)
 
 source=(http://pypi.python.org/packages/source/P/PyWavelets/PyWavelets-$pkgver.zip)
-md5sums=('77d3528e59058935d23ff7e2f02c4968')
+md5sums=('b7f01bf7d8dff25d470d3deb3d5a9d0f')
 
 build() {
   cd "$srcdir"/PyWavelets-$pkgver
