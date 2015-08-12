@@ -1,13 +1,14 @@
 pkgbase = hexchat-autoaway
 	pkgdesc = A HexChat plugin to set away on idle
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andreyv/hexchat-autoaway
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	depends = hexchat
+	depends = libx11
 	depends = libxss
 	conflicts = hexchat-autoaway-git
 	source = https://github.com/andreyv/hexchat-autoaway/archive/v1.0.3.tar.gz

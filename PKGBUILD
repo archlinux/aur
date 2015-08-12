@@ -2,12 +2,12 @@
 
 pkgname=hexchat-autoaway
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A HexChat plugin to set away on idle"
 arch=('i686' 'x86_64')
 url="https://github.com/andreyv/hexchat-autoaway"
 license=('GPL3')
-depends=('hexchat' 'libxss')
+depends=('hexchat' 'libx11' 'libxss')
 makedepends=('cmake')
 conflicts=('hexchat-autoaway-git')
 source=("https://github.com/andreyv/hexchat-autoaway/archive/v$pkgver.tar.gz")
@@ -24,6 +24,8 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   make DESTDIR="$pkgdir" install
+
+  install -D -m 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim:set ts=2 sw=2 et:
