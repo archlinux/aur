@@ -1,7 +1,7 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname='vlmcsd-svn'
 pkgver=svn796
-pkgrel=1
+pkgrel=2
 pkgdesc="KMS activation using vlmcs."
 arch=('any')
 url="http://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-Windows-platforms"
