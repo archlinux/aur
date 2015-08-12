@@ -1,7 +1,7 @@
-# Wuala: Installer: Arch
-# Maintainer: Sven Schober <sschober (at) sssm (dot) de>
+# Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
+# Contributor: Sven Schober <sschober (at) sssm (dot) de>
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
-# Maintainer: SanskritFritz (gmail)
+# Contributor: SanskritFritz (gmail)
 
 pkgname=wuala
 pkgver=1
