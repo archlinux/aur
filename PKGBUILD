@@ -16,6 +16,7 @@ source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz
 sha256sums=('7baed2ff39c12e1a1a289ec0b46fcc49ff094ca58b8d8d5f29b36ac649ee5b26'
             'SKIP'
             '860976d954bd1db95861b95f0ef42e4e80618aa23a9f2aed26d17ee3d09110df')
+validpgpkeys=('03300E11FED16F59715F9996C29D97ED198D22A3')  # Samuli Seppänen
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
