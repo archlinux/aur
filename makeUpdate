@@ -16,6 +16,7 @@ echo Updating PKBUILD
 VERSION=`cat PKGBUILD | grep "^pkgver=" | cut -d = -f 2`
 VERSION=$((VERSION+1))
 sed -i "s/pkgver=.*/pkgver=$VERSION/g" PKGBUILD || exit $?
+sed -i "s/VERSION=.*/VERSION=$1/g" PKGBUILD || exit $?
 sed -i "s/md5sums=.*/md5sums=\(\"$MD5\"\)/g" PKGBUILD || exit $?
 
 echo mksrcinfo
