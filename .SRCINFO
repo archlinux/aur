@@ -1,6 +1,6 @@
 pkgbase = note
 	pkgdesc = A Perl-based note taking application with multiple backends
-	pkgver = 1.3.18
+	pkgver = 1.3.22
 	pkgrel = 1
 	url = http://www.daemon.de/NOTE
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = note
 	optdepends = perl-crypt-rijndael: encryption support
 	optdepends = perl-dbd-mysql: mysql db backend
 	optdepends = perl-dbi: mysql db backend
-	source = http://cpan.perl.org/modules/by-authors/id/T/TL/TLINDEN/note-1.3.18.tar.gz
-	sha1sums = 1415c08c2c21ff444d8a0f29ab77f032718ad0a1
+	source = http://cpan.perl.org/modules/by-authors/id/T/TL/TLINDEN/note-1.3.22.tar.gz
+	sha1sums = ef26e44e20f96ca298acf4bcf1463a9193a6da36
 
 pkgname = note
 

@@ -1,8 +1,10 @@
-# Maintainer: David Pflug <Viaken@Gmail.com>
+# Maintainer : Immae <ismael.bouya@normalesup.org>
+# Contributor: David Pflug <Viaken@Gmail.com>
+
 _author=TLINDEN
 _perlmod=note
 pkgname=$_perlmod
-pkgver=1.3.18
+pkgver=1.3.22
 pkgrel=1
 pkgdesc="A Perl-based note taking application with multiple backends"
 arch=('i686' 'x86_64')
@@ -18,7 +20,7 @@ optdepends=(
             'perl-dbi: mysql db backend'
             )
 source=(http://cpan.perl.org/modules/by-authors/id/T/TL/$_author/$_perlmod-$pkgver.tar.gz)
-sha1sums=('1415c08c2c21ff444d8a0f29ab77f032718ad0a1')
+sha1sums=('ef26e44e20f96ca298acf4bcf1463a9193a6da36')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
