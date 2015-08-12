@@ -1,13 +1,13 @@
 #Maintainer: M0Rf30
 
 pkgname=eselect-git
-pkgver=751.f035e07
+pkgver=800.b88d19c
 pkgrel=1
 pkgdesc="Gentoo's multi-purpose configuration and management tool"
 url="http://www.gentoo.org/proj/en/eselect/"
 arch=('i686' 'x86_64')
 license=('GPL')
-source=('eselect::git://git.overlays.gentoo.org/proj/eselect.git')
+source=('eselect::git://anongit.gentoo.org/proj/eselect.git')
 makedepends=('git')
 
 build() {
