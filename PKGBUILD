@@ -2,8 +2,8 @@
 
 _perlmod=Travel-Status-DE-VRR
 pkgname=perl-travel-status-de-vrr
-pkgver=1.11
-pkgrel=2
+pkgver=1.12
+pkgrel=1
 pkgdesc='Interface to the efa.vrr.de departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-VRR/'
 license=('PerlArtistic')
@@ -13,7 +13,7 @@ makedepends=('perl-module-build' 'perl-file-slurp' 'perl-test-pod')
 options=('!emptydirs')
 validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')
 source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
-md5sums=('c6259251ad8c089dc94479dbdd102476' '8737b8617c606fd969915aa1713f709e')
+md5sums=('d351e335ee93f59c191bded3cf9c7513' '5e4ca53dbb05a5c148ca67b60b39379c')
 
 build() {
   cd "${srcdir}"/${_perlmod}-${pkgver}
