@@ -1,16 +1,19 @@
 pkgbase = logger-pro-beta
 	pkgdesc = Logger Pro for Linux Public Beta from Vernier Software
 	pkgver = 3846
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.vernier.com/downloads/logger-pro-linux/
 	arch = i686
 	arch = x86_64
 	license = unknown
 	options = !strip
-	source = http://www.vernier.com/files/downloads/LPL-3846-.tar.gz
 	source = wrapper.sh
 	sha256sums = b195e4d410643d19095dfaa5dc3810c9f18b8fb59a2191853a47a2fa701406b4
+	source_i686 = http://www.vernier.com/files/downloads/LPL-3846-32.tar.gz
+	sha256sums_i686 = d405e1a2135c0b3fd3a0893ef32ff66f2e446a37f8a8d4d0aa184538a3b1cfb4
+	source_x86_64 = http://www.vernier.com/files/downloads/LPL-3846-64.tar.gz
+	sha256sums_x86_64 = bdbec10d6f48723c16f1792b7c049660cfff61ec438dc057018da29350cfbcb5
 
 pkgname = logger-pro-beta
 	install = logger-pro.install
