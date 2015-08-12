@@ -10,7 +10,7 @@ url="https://usfirst.collab.net/sf/projects/wpilib/"
 license=('custom=FRC-BSD')
 groups=('frc-2015')
 depends=('arm-frc-linux-gnueabi-gcc')
-makedepends=('git')
+makedepends=('git' 'java-environment' 'doxygen')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
 source=("git+https://usfirst.collab.net/gerrit/allwpilib")
 sha512sums=('SKIP')

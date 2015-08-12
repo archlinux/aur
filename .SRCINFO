@@ -8,6 +8,8 @@ pkgbase = arm-frc-linux-gnueabi-wpilib-git
 	groups = frc-2015
 	license = custom=FRC-BSD
 	makedepends = git
+	makedepends = java-environment
+	makedepends = doxygen
 	depends = arm-frc-linux-gnueabi-gcc
 	provides = arm-frc-linux-gnueabi-wpilib
 	options = !strip
