@@ -1,0 +1,23 @@
+post_install() {
+chmod a+x /usr/share/caja/scripts/add_to_audacious.sh
+
+cat <<EOF
+To install script on caja:
+	ln -s /usr/share/caja/scripts/add_to_audacious.sh /home/your_user/.config/caja/scripts/name_what_you_want
+
+To set language:
+	sudo /usr/share/caja/scripts/add_to_audacious.sh
+
+There is a brief doc on /usr/share/doc/caja-script-audacious
+
+Don't forget to restart caja: caja -q
+
+Coming soon:
+'caja-script-manager' on aur: for managing your scripts.
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
+

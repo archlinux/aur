@@ -1,0 +1,18 @@
+pkgbase = caja-script-audacious
+	pkgdesc = Caja-script for adding files to audacious playlist
+	pkgver = r5.e7c5347
+	pkgrel = 1
+	url = https://github.com/nashgul/caja-script-audacious
+	install = caja-script-audacious.install
+	arch = any
+	license = GPL
+	checkdepends = audacious
+	checkdepends = zenity
+	makedepends = git
+	depends = audacious
+	depends = zenity
+	source = git://github.com/nashgul/caja-script-audacious.git
+	md5sums = SKIP
+
+pkgname = caja-script-audacious
+
