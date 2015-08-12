@@ -56,14 +56,14 @@ _BFQ_enable_=
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
 _srcname=linux-4.1
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
-_ckpatchversion=1
+_ckpatchversion=2
 _ckpatchname="patch-4.1-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8"
@@ -85,14 +85,14 @@ fbcondecor-4.1.patch
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '0976127a60a950acf2796f642ac647e5231573b9a0f25703a37a50b988bf3b88'
+            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
-            '033c6119ba470999da228dd0db94194089e5215027fd817c682abc9a2ad14868'
-            'b5ca80ee7611077b51b8da25002050e1f6ebd3dd578117758c03cce38f02ad00'
+            '1e1e592503a7e3c7e93e4f65624dfae4f8f3221468b7219e7ccfd8df7e668cbc'
+            '14ef2bb50aca50a2e7388012497e70b4cd69eb505b13bba2ffd72f1de975a8ea'
             '2b264754fb155101481e44ea583ff219fdd35a6d88e59bda63b7e854eac7aa7b'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'd383e24325333b0045ddbfee4cfc2491ab25d9a6446094dbe0e5ad7ed3de133a'
+            '87726411f583862e456156fe82ef51b188e5d92e7a4bd944e01a091cd7c46428'
             '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
             'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
             'c5c2c48638c2a8180948bd118ffcc33c8b7ff5f9f1e4b04c8e2cafeca2bde87b'
@@ -116,7 +116,7 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck1 including BFS v0.463"
+	msg "Patching source with ck2 including BFS v0.463"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
@@ -249,8 +249,8 @@ build() {
 }
 
 package_linux-ck-fbcondecor() {
-	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.463 and the fbcondecor framebuffer decoration support.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.463 and the fbcondecor framebuffer decoration support.'
+	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.463 and the fbcondecor framebuffer decoration support.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.463 and the fbcondecor framebuffer decoration support.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
