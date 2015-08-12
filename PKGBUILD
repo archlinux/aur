@@ -203,7 +203,27 @@ build_fec() {
     msg "Building onion-fec..."
     cd "$srcdir/contrib/onion-fec/src/csrc"
 
-    make
+    LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro"
+    INCLUDES="-I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
+    _CLASSPATH="-classpath ../ com.onionnetworks.fec"
+
+    rm -f *.o *.S com_*.h
+
+    javah -o com_onionnetworks_fec_Native8Code.h  ${_CLASSPATH}.Native8Code
+    javah -o com_onionnetworks_fec_Native16Code.h ${_CLASSPATH}.Native16Code
+
+    gcc fec.c -o fec8.S  -S $CFLAGS -DGF_BITS=8
+    gcc fec.c -o fec16.S -S $CFLAGS -DGF_BITS=16
+
+    gcc fec-jinterf.c -o fec8-jinterf.o  -c $CFLAGS $INCLUDES -DGF_BITS=8
+    gcc fec-jinterf.c -o fec16-jinterf.o -c $CFLAGS $INCLUDES -DGF_BITS=16
+
+    gcc fec8.S -o fec8.o   -c $CFLAGS -DGF_BITS=8
+    gcc fec16.S -o fec16.o -c $CFLAGS -DGF_BITS=16
+
+    gcc fec8.o fec8-jinterf.o   -o libfec8.so $LDFLAGS
+    gcc fec16.o fec16-jinterf.o -o libfec16.so $LDFLAGS
+
     _DEST="../../bin/lib/linux-${_arch}"
     mkdir -p "$_DEST"
     cp libfec*.so "$_DEST"
