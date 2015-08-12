@@ -1,7 +1,7 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
 pkgname=websocketd
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="Like inetd, but for WebSockets. Turn any application that uses STDIO/STDOUT into a WebSocket server."
 arch=('x86_64' 'i686' 'arm')
@@ -10,13 +10,13 @@ license=('BSD-2-Clause ')
 depends=('glibc')
 
 source_x86_64=("https://github.com/joewalnes/websocketd/releases/download/v${pkgver}/websocketd-${pkgver}-linux_amd64.zip")
-md5sums_x86_64=('a8c7c05717419be68fcfbb6fe8f652f6')
+md5sums_x86_64=('fa2db4feab033fb01630bcd90a1c1ca4')
+md5sums_i686=('de34029d44ce5d8b51e1b4b027b868e1')
+md5sums_arm=('abd72919f77a2ef4efd174e4e5c2944d')
 
 source_i686=("https://github.com/joewalnes/websocketd/releases/download/v${pkgver}/websocketd-${pkgver}-linux_386.zip")
-md5sums_i686=('1eec5c3471406a38aaa01c9f1708717e')
 
 source_arm=("https://github.com/joewalnes/websocketd/releases/download/v${pkgver}/websocketd-${pkgver}-linux_arm.zip")
-md5sums_arm=('61c653b9dbaf5cdb4813755973322789')
 
 package() {
     cd "${srcdir}"
