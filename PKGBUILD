@@ -7,8 +7,8 @@
 
 set -u
 _pkgname='aws-cli'
-pkgname="${_pkgname}"
-pkgver=1.7.44
+pkgname="${_pkgname}" # Add -git for the git package
+pkgver=1.7.45
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services.'
 arch=('any')
@@ -18,10 +18,12 @@ depends=(# See setup.py, README.rst, and requirements.txt for version dependenci
   'python'
   'python-bcdoc<0.15.0'
   # We must depend on the git version because of a pacman bug between provides=('foo') in a git package and depends=('foo>=0.0') in another package
-  'python-botocore-git>=1.1.7' # == can't work with the long git version string.
+  'python-botocore-git>=1.1.8'
+  #'python-botocore>=1.1.8' # == can't work with the long git version string.
   'python-colorama>=0.2.5' 'python-colorama<=0.3.3'
   'python-docutils>=0.10'
-  'python-rsa>=3.1.2' 'python-rsa<=3.1.4' # See AUR for this version
+  'python-rsa-3.1.2>=3.1.2' 'python-rsa-3.1.2<=3.1.4' # See AUR for this version
+  #'python-rsa>=3.1.2' 'python-rsa<=3.1.4' # See AUR for this version
   'python-wheel>=0.24.0'
 
   ### These are handled by botocore
@@ -37,7 +39,7 @@ conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
 replaces=(                   'python-aws-cli' 'awscli')
 provides=('awscli')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7f3b6778ea526af1dbcf21007f98b375fadc69e342114be5dc5a7d5cf5f5b097')
+sha256sums=('eaaeef9c6baa1268aeeacd7e8910410e5a0a4fe0794d67d4af601e1ec452b8da')
 options=('!emptydirs')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then

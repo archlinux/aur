@@ -1,6 +1,6 @@
 pkgbase = aws-cli
 	pkgdesc = Universal Command Line Interface for Amazon Web Services.
-	pkgver = 1.7.44
+	pkgver = 1.7.45
 	pkgrel = 1
 	url = https://github.com/aws/aws-cli
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = aws-cli
 	makedepends = python-distribute
 	depends = python
 	depends = python-bcdoc<0.15.0
-	depends = python-botocore-git>=1.1.7
+	depends = python-botocore-git>=1.1.8
 	depends = python-colorama>=0.2.5
 	depends = python-colorama<=0.3.3
 	depends = python-docutils>=0.10
-	depends = python-rsa>=3.1.2
-	depends = python-rsa<=3.1.4
+	depends = python-rsa-3.1.2>=3.1.2
+	depends = python-rsa-3.1.2<=3.1.4
 	depends = python-wheel>=0.24.0
 	provides = awscli
 	conflicts = python2-aws-cli
@@ -22,8 +22,8 @@ pkgbase = aws-cli
 	replaces = python-aws-cli
 	replaces = awscli
 	options = !emptydirs
-	source = https://github.com/aws/aws-cli/archive/1.7.44.tar.gz
-	sha256sums = 7f3b6778ea526af1dbcf21007f98b375fadc69e342114be5dc5a7d5cf5f5b097
+	source = https://github.com/aws/aws-cli/archive/1.7.45.tar.gz
+	sha256sums = eaaeef9c6baa1268aeeacd7e8910410e5a0a4fe0794d67d4af601e1ec452b8da
 
 pkgname = aws-cli
 
