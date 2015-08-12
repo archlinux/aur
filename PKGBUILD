@@ -13,7 +13,7 @@ sha1sums=('6c6d59ad900f9c5b3e071124b2f376b5d73926e9')
 
 build() {
   cd $pkgname-$pkgver
-  make VERSION="${pkgver}"
+  make cava VERSION="${pkgver}"
 }
 
 package() {
