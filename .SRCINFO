@@ -1,0 +1,19 @@
+pkgbase = xar
+	pkgdesc = eXtensible ARchive format
+	pkgver = 1.5.2
+	pkgrel = 5
+	url = http://code.google.com/p/xar/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = libxml2
+	depends = openssl
+	depends = bzip2
+	provides = xar
+	conflicts = xar
+	options = !libtool
+	source = http://xar.googlecode.com/files/xar-1.5.2.tar.gz
+	md5sums = 8eabb055d3387b8edc30ecfb08d2e80d
+
+pkgname = xar
+
