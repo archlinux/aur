@@ -138,6 +138,7 @@ prepare() {
 build() {
     source /etc/profile.d/apache-ant.sh
     source /etc/profile.d/jre.sh
+    export _JAVA_HOME=/usr/lib/jvm/java-default-runtime
 
     build_jbigi
     build_nativethread
@@ -169,7 +170,7 @@ build_jbigi() {
 
     _objdir='lib/net/i2p/util'
     CFLAGS+=" -fPIC -Wall"
-    INCLUDES="-I./jbigi/include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
+    INCLUDES="-I./jbigi/include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so -lgmp"
     gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
     gcc $LDFLAGS $INCLUDES -o "$_objdir"/libjbigi-linux-none.so jbigi.o
@@ -180,7 +181,7 @@ build_nativethread() {
     cd "$srcdir/contrib/NativeThread"
 
     _objdir='lib/freenet/support/io'
-    INCLUDES="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
+    INCLUDES="-I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,llibnative.so -lc"
     javah -o NativeThread.h -classpath ../../fred/src freenet.support.io.NativeThread
     gcc -c $CFLAGS $INCLUDES NativeThread.c
@@ -192,7 +193,7 @@ build_jcpuid() {
     cd "$srcdir/contrib/jcpuid"
 
     _objdir='lib/freenet/support/CPUInformation'
-    INCLUDES="-I./include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
+    INCLUDES="-I./include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-x86-linux.so"
     gcc -c $CFLAGS $INCLUDES src/jcpuid.c
     gcc $LDFLAGS $INCLUDES -o "$_objdir"/libjcpuid-${_arch}-linux.so jcpuid.o
