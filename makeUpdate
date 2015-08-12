@@ -2,6 +2,7 @@
 
 if [ "$1" = "" ] ; then
   echo Usage $0 version
+  exit 1
 fi
 
 git pull
@@ -12,7 +13,9 @@ echo $MD5
 
 
 echo Updating PKBUILD
-sed -i "s/pkgver=.*/pkgver=$1/g" PKGBUILD || exit $?
+VERSION=`cat PKGBUILD | grep "^pkgver=" | cut -d = -f 2`
+VERSION=$((VERSION+1))
+sed -i "s/pkgver=.*/pkgver=$VERSION/g" PKGBUILD || exit $?
 sed -i "s/md5sums=.*/md5sums=\(\"$MD5\"\)/g" PKGBUILD || exit $?
 
 echo mksrcinfo
@@ -20,7 +23,7 @@ mksrcinfo
 
 echo Commit and push
 git stage .SRCINFO PKGBUILD 
-git commit -m "Version bump to $1"
+git commit -m "Version bump to $VERSION"
 git push
 
 echo
