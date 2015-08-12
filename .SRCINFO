@@ -1,0 +1,14 @@
+pkgbase = python2-texttable
+	pkgdesc = Generate a formatted text table using ASCII characters.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/texttable/
+	arch = any
+	license = LGPL
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/t/texttable/texttable-0.8.3.tar.gz
+	sha512sums = d9a50f6fd9cd2a6d55afd5e686ac8ff2b2ebcf8c8041209ffae3e3864529c54a384840a65df2b87a942528005ca864d00bb01dfaeb33308843c01db7471931c8
+
+pkgname = python2-texttable
+
