@@ -1,13 +1,13 @@
 pkgbase = python-randomio
 	pkgdesc = Generates random bytes and files from a seed
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Storj/RandomIO
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pip
-	depends = pycrypto
+	depends = python-crypto
 	depends = python-redis
 	source = https://github.com/Storj/randomio/archive/v0.2.1.tar.gz
 	sha256sums = db46a523bb3cd257667b4f158c00f76d21417d780ba9506a27ecdcc5c9523ee8
