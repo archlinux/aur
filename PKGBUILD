@@ -1,30 +1,27 @@
-# Maintainer: Daniel Stumpner <bigstumpi@gmx.de>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Daniel Stumpner <bigstumpi@gmx.de>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=leet-plugins
 _pkgname=LEET-plugins
-_subname=leetplugins
 pkgver=0.2
-pkgrel=1
-pkgdesc="Ladspa Plugins for use with ardour"
-arch=(i686 x86_64)
-url="http://code.google.com/p/leetplugins/"
+pkgrel=2
+pkgdesc='LADSPA plugins especially for use with Ardour'
+arch=('i686' 'x86_64')
+url='http://code.google.com/p/leetplugins/'
 license=('GPL2')
 depends=('gcc-libs')
-source=("http://$_subname.googlecode.com/files/$_pkgname-$pkgver.tar.gz")
-md5sums=('9bd803f4a204a78686ffd8df82f1e5ce')
-
+source=("http://${pkgname/-/}.googlecode.com/files/$_pkgname-$pkgver.tar.gz")
+sha256sums=('e2868cffe65a6fc4f7325ef1fb3831e1530718c75aa28c9cbb44f4399e5059a1')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-
+  cd ${_pkgname}-${pkgver}
   make all
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-install -Dm 755 LEET_chorus.so ${pkgdir}/usr/lib/ladspa/LEET_chorus.so
-install -Dm 755 LEET_eqbw2x2_1.so ${pkgdir}/usr/lib/ladspa/LEET_eqbw2x2_1.so
-install -Dm 755 LEET_eqbw2x2.so ${pkgdir}/usr/lib/ladspa/LEET_eqbw2x2.so
-
+  cd ${_pkgname}-${pkgver}
+  install -Dm 755 LEET_chorus.so ${pkgdir}/usr/lib/ladspa/LEET_chorus.so
+  install -Dm 755 LEET_eqbw2x2_1.so ${pkgdir}/usr/lib/ladspa/LEET_eqbw2x2_1.so
+  install -Dm 755 LEET_eqbw2x2.so ${pkgdir}/usr/lib/ladspa/LEET_eqbw2x2.so
 }
