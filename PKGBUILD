@@ -27,7 +27,7 @@ install=desura.install
 depends=('lsb-release'
          'orbit2'
          'gtk2'
-         'libjpeg6-turbo'
+         'libjpeg-turbo'
          'libpng12'
          'libxpm'
          'libcurl-compat'
