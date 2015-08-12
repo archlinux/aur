@@ -6,7 +6,7 @@ _sdkver=4.4W.2
 _sdkint=20
 pkgname=android-platform-${_sdkint,,}
 pkgver=${_sdkver}_${_rev}
-pkgrel=4
+pkgrel=5
 pkgdesc="Android SDK Platform, API-${_sdkint}"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
@@ -23,7 +23,7 @@ package() {
   #chmod -R ugo+rX "${pkgdir}/opt"
 
   #Change group users  
-  chown -R :sdkusers "${pkgdir}/opt/android-sdk"
+  #chown -R :${_sdkgroup} "${pkgdir}/opt/android-sdk"
   #Change permisions
   chmod -R ug+rwX,o=rX "${pkgdir}/opt/android-sdk"	
 }

@@ -1,7 +1,7 @@
 pkgbase = android-platform-20
 	pkgdesc = Android SDK Platform, API-20
 	pkgver = 4.4W.2_r02
-	pkgrel = 4
+	pkgrel = 5
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
