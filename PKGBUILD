@@ -2,23 +2,35 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.162
-pkgrel=2
+pkgver=0.164
+pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
-url="http://mamedev.org/"
+url='http://mamedev.org'
 license=('custom:MAME License')
 arch=('i686' 'x86_64')
 conflicts=('sdlmame' 'sdlmamefamily-tools')
-depends=('sdl2_ttf' 'alsa-lib')
-makedepends=('nasm' 'mesa' 'glu' 'wget' 'python2')
+depends=('sdl2_ttf'
+         'alsa-lib'
+         'lua'
+         'flac'
+         'portmidi'
+         'libjpeg-turbo'
+         'sqlite'
+         )
+makedepends=('nasm'
+             'mesa'
+             'glu'
+             'wget'
+             'python2'
+             )
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
-        "sdlmame.sh"
-        "extras.tar.gz")
-sha1sums=('1d44bddea9cd4bb1d683f0ea1788a02e2f18e185'
+        'sdlmame.sh'
+        'extras.tar.gz')
+sha1sums=('bb6379ff2257ced39e21f154e16b819e53edb4d1'
           '1ed8016f41edecfca746fadcfb40eab78845a3d6'
           '75732974431844670aa3904d8f9ce3f5c5504827')
 install=sdlmame-wout-toolkits.install
-noextract=("extras.tar.gz")
+noextract=('extras.tar.gz')
 
 prepare() {
   cd "mame-mame${pkgver/./}"
@@ -40,9 +52,16 @@ build() {
        NOWERROR=1 \
        USE_OPENGL=1 \
        USE_QTDEBUG=0 \
-       TESTS=0 \
        TOOLS=1 \
-       STRIP_SYMBOLS=1
+       STRIP_SYMBOLS=1 \
+       VERBOSE=1 \
+       USE_SYSTEM_LIB_EXPAT=1 \
+       USE_SYSTEM_LIB_ZLIB=1 \
+       USE_SYSTEM_LIB_JPEG=1 \
+       USE_SYSTEM_LIB_FLAC=1 \
+       USE_SYSTEM_LIB_LUA=1 \
+       USE_SYSTEM_LIB_SQLITE3=1 \
+       USE_SYSTEM_LIB_PORTMIDI=1
 }
 
 package() {
@@ -51,9 +70,9 @@ package() {
   # Install the sdlmame script
   install -Dm755 ../sdlmame.sh "${pkgdir}/usr/bin/sdlmame"
 
+  # Install the applications and the UI font in /usr/share
   [ "${CARCH}" = "i686" ] && _suffix=""
   [ "${CARCH}" = "x86_64" ] && _suffix="64"
-  # Install the applications and the UI font in /usr/share
   install -Dm755 "mame${_suffix}" "${pkgdir}/usr/share/sdlmame/sdlmame"
 
   # Install the applications
@@ -75,10 +94,6 @@ package() {
   install -Dm755 unidasm    "${pkgdir}/usr/bin/unidasm"
 
   # Install the extra bits
-  install -d "${pkgdir}/usr/share/man/man1"
-  install -m644 src/osd/sdl/man/*.1* "${pkgdir}/usr/share/man/man1/"
-
-  # Install the extra bits
   install -d "${pkgdir}/usr/share/sdlmame/"{artwork,ctrlr,keymaps,shader}
   install -m644 artwork/* "${pkgdir}/usr/share/sdlmame/artwork/"
   install -m644 ctrlr/* "${pkgdir}/usr/share/sdlmame/ctrlr/"
@@ -86,10 +101,14 @@ package() {
   install -m644 src/osd/modules/opengl/shader/glsl*.*h "${pkgdir}/usr/share/sdlmame/shader/"
 
   # Install man
+  (cd src/osd/sdl/man/; for i in $(find . -type f -name '*.1'); do install -Dm644 "${i}" "${pkgdir}/usr/share/man/man1/${i}"; done)
   install -Dm644 src/osd/sdl/man/mame.6 "${pkgdir}/usr/share/man/man6/sdlmame.6"
 
   # Include the license
   install -Dm644 docs/mamelicense.txt "${pkgdir}/usr/share/licenses/${pkgname}/mamelicense.txt"
+
+  # documentation
+  (cd docs; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}/${i}"; done)
 
   # FS#28203
   sed -e 's|KEYCODE_2_PAD|KEYCODE_2PAD|' \
@@ -97,8 +116,4 @@ package() {
       -e 's|KEYCODE_6_PAD|KEYCODE_6PAD|' \
       -e 's|KEYCODE_8_PAD|KEYCODE_8PAD|' \
       -i "${pkgdir}/usr/share/sdlmame/ctrlr/"*.cfg
-
-  # documentation
-  cd docs
-  for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}/${i}"; done
 }
