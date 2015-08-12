@@ -3,7 +3,7 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2015r23
-pkgrel=1
+pkgrel=2
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -12,7 +12,6 @@ source=("http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rac
 "xojo.desktop"
 "lingua.desktop"
 "RemoteDebuggerDesktop.desktop")
-#[ $CARCH == i686 ] && depends=(gtk2 expat glib2 glibc mesa icu gcc-libs) && makedepends=(lib32-webkitgtk2)
 [[ $CARCH == i686 ]] && depends=(gtk2 expat glib2 glibc mesa icu gcc-libs) && makedepends=(lib32-webkitgtk2)
 [[ $CARCH == x86_64 ]] && depends=(lib32-gtk2 lib32-expat lib32-glib2 lib32-glibc lib32-mesa lib32-icu lib32-gcc-libs) && makedepends=(lib32-webkitgtk2)
 sha256sums=('3749a5cf98095d971b9fc1feae7422763df282949496b8b00ce1f955fa4d8bda'
