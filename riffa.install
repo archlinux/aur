@@ -1,0 +1,19 @@
+
+_depmod() {
+  EXTRAMODULES=extramodules-4.1-ARCH
+  depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+  echo '==> You must load the riffa kernel module before using Riffa: # modprobe riffa'
+  _depmod
+}
+
+post_upgrade() {
+  _depmod
+  echo '==> Manually reload the riffa kernel module to use the new version.'
+}
+
+post_remove() {
+  _depmod
+}

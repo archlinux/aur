@@ -1,0 +1,19 @@
+pkgbase = riffa-git
+	pkgdesc = RIFFA: A Reusable Integration Framework For FPGA Accelerators
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://riffa.ucsd.edu/
+	install = riffa.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = linux-headers
+	source = git://github.com/drichmond/riffa.git
+	source = riffa.install
+	source = 99-riffa.rules
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = d37355781ef46d1f4aa21cd169964f08
+
+pkgname = riffa-git
+
