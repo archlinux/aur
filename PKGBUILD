@@ -6,7 +6,7 @@
 pkgbase=linux-fbcondecor               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.1
-pkgver=4.1.3
+pkgver=4.1.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -29,11 +29,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
+            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
-            '94d0987bca23a4c0a4d4e81df1badf655136f70b7541f1d47fe429159e737c96'
-            'f0eae16576ddc5309ebf557e9f6026a5afbcdafba9517bb0a574fbb3d21a95d7'
+            '4289c86cd918f34c9a147339247ccbaf5d27a023b91d929e09ab6b05fd151bf9'
+            'b0fb05bc1a92f9cc46d10b51cc9fc157d1323d2c0c0e3eed44c64b3dc3613c62'
             '521b572c7fcd08112eb9b15d302fa30ac9bc72c590164742da3c405ba54e00ef'
             '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
             'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
@@ -58,20 +58,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # Fix deadlock with stacked loop devices (FS#45129)
-  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
-  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
-  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
-
-  # Fix bluetooth chip initialization on some macbooks (FS#45554)
-  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
-  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
-  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-
-  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
-  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
-  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream

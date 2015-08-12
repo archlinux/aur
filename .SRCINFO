@@ -1,6 +1,6 @@
 pkgbase = linux-fbcondecor
 	pkgdesc = The linux-fbcondecor kernel and modules with frame buffer decoration support.
-	pkgver = 4.1.3
+	pkgver = 4.1.5
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = linux-fbcondecor
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.3.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.3.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.sign
 	source = fbcondecor-4.1.patch
 	source = config
 	source = config.x86_64
@@ -27,11 +27,11 @@ pkgbase = linux-fbcondecor
 	source = change-default-console-loglevel.patch
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e
+	sha256sums = b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc
 	sha256sums = SKIP
 	sha256sums = b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42
-	sha256sums = 94d0987bca23a4c0a4d4e81df1badf655136f70b7541f1d47fe429159e737c96
-	sha256sums = f0eae16576ddc5309ebf557e9f6026a5afbcdafba9517bb0a574fbb3d21a95d7
+	sha256sums = 4289c86cd918f34c9a147339247ccbaf5d27a023b91d929e09ab6b05fd151bf9
+	sha256sums = b0fb05bc1a92f9cc46d10b51cc9fc157d1323d2c0c0e3eed44c64b3dc3613c62
 	sha256sums = 521b572c7fcd08112eb9b15d302fa30ac9bc72c590164742da3c405ba54e00ef
 	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
 	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
@@ -47,20 +47,20 @@ pkgname = linux-fbcondecor
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-fbcondecor=4.1.3
+	provides = kernel26-fbcondecor=4.1.5
 	conflicts = kernel26-fbcondecor
 	replaces = kernel26-fbcondecor
 	backup = etc/mkinitcpio.d/linux-fbcondecor.preset
 
 pkgname = linux-fbcondecor-headers
 	pkgdesc = Header files and scripts for building modules for Linux-fbcondecor kernel
-	provides = kernel26-fbcondecor-headers=4.1.3
+	provides = kernel26-fbcondecor-headers=4.1.5
 	conflicts = kernel26-fbcondecor-headers
 	replaces = kernel26-fbcondecor-headers
 
 pkgname = linux-fbcondecor-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-fbcondecor kernel
-	provides = kernel26-fbcondecor-docs=4.1.3
+	provides = kernel26-fbcondecor-docs=4.1.5
 	conflicts = kernel26-fbcondecor-docs
 	replaces = kernel26-fbcondecor-docs
 
