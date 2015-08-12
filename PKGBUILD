@@ -3,12 +3,13 @@
 pkgname='openarena'
 pkgver='0.8.8'
 _pkgver='088'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="A violent, sexy, multiplayer first person shooter based on the ioquake3 engine (binary package)"
 arch=('i686' 'x86_64')
 url="http://openarena.ws/"
 license=('GPL')
-depends=('sdl' 'libvorbis' 'curl') 
+depends=('sdl' 'libvorbis' 'curl')
+optdepends=('openal: to silence SDL fallback warning')
 source=("http://download.tuxfamily.org/openarena/rel/${_pkgver}/openarena-${pkgver}.zip"
         'openarena-runner.sh'
         'openarena.png'
