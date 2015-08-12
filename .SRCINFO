@@ -1,12 +1,11 @@
 pkgbase = octopi
 	pkgver = 0.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/aarnt/octopi
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = qt5-declarative
-	makedepends = qt4
 	makedepends = knotifications
 	makedepends = libnotify
 	source = https://github.com/aarnt/octopi/archive/v0.7.0.tar.gz
@@ -31,7 +30,6 @@ pkgname = octopi
 	optdepends = octopi-repoeditor: for editing functions
 	optdepends = octopi-cachecleaner: for cleaning functions
 	optdepends = octopi-notifier: for notifications
-	optdepends = octopi-notifier-qt4: for notifications
 	optdepends = pacmanlogviewer: to view pacman log files
 	conflicts = oktopi-git
 

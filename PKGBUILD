@@ -7,7 +7,7 @@ pkgrel=5
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
-makedepends=('qt5-declarative' 'qt4' 'knotifications' 'libnotify')
+makedepends=('qt5-declarative' 'knotifications' 'libnotify')
 source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 				'octopi-repoeditor.desktop'
 				'qt55.patch')
@@ -60,7 +60,6 @@ package_octopi() {
               'octopi-repoeditor: for editing functions'
               'octopi-cachecleaner: for cleaning functions'
               'octopi-notifier: for notifications'
-              'octopi-notifier-qt4: for notifications'
 							'pacmanlogviewer: to view pacman log files')
 	conflicts=('oktopi-git')
 
