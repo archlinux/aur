@@ -1,7 +1,7 @@
 #
 # PKGBUILD for cone
 #
-# This version has no dependencies to other courier libraries.
+# This version has no dependencies to other courier libraries (other than the minimal courier-unicode).
 #
 # Contributor: Uffe Jakobsen <uffe@uffe.org>
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
@@ -17,7 +17,6 @@ url="http://courier-mta.org/cone/"
 license=('GPL2')
 groups=()
 depends=('libxml2' 'libidn' 'libldap' 'gamin' 'aspell' 'courier-unicode')
-makedepends=('configure')
 checkdepends=()
 optdepends=()
 provides=()
