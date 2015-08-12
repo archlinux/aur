@@ -1,8 +1,9 @@
-# Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
+# Maintainer : Immae <ismael.bouya@normalesup.org>
+# Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 # Contributor: Derek Leach <mail@derek.name>
 
 pkgname=caldavzap
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A CalDav web client"
 arch=('any')
@@ -15,7 +16,7 @@ backup=('etc/webapps/caldavzap/config.js'
 install=${pkgname}.install
 source=("http://www.inf-it.com/CalDavZAP_${pkgver}.zip"
         'apache.example.conf')
-sha256sums=('8ffaab17b46aa58e225add95c5ea4496d9124ee019b13f4918a7216e44d87655'
+sha256sums=('6d8e451cc89d9547dd8317ae3892e1ec4031c733799ab91082a2f9d86d631214'
             'b3d469c43c48f74185d11ea896c807230247ab7dc3694fbe5d61ab16a81e11a3')
 
 package() {
