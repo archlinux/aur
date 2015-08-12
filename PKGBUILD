@@ -1,7 +1,7 @@
 # Maintainer: Spiros Georgaras <sng@hellug.gr>
 pkgname=ttf-sk-polytonic-fonts
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Greek polytonic fonts by Spiros Krontiris"
 arch=('any')
 license=('custom')
