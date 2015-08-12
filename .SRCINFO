@@ -1,0 +1,36 @@
+pkgbase = splashtop-streamer
+	pkgdesc = Remotely access your desktop from any device from anywhere! - Server version
+	pkgver = 2.2.5.1
+	pkgrel = 4
+	url = http://www.splashtop.com/streamer/linux
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = curl
+	makedepends = p7zip
+	depends = python2
+	depends = pywebkitgtk
+	depends = python2-keyring
+	depends = python2-crypto
+	depends = apr
+	depends = apr-util
+	depends = dbus
+	depends = dbus-glib
+	depends = glib2
+	depends = libpulse
+	depends = openssl
+	depends = util-linux
+	depends = libx11
+	depends = libx264
+	depends = libxfixes
+	depends = libxrandr
+	depends = libxtst
+	depends = libappindicator-gtk2
+	depends = networkmanager
+	source = http://d17kmd0va0f0mp.cloudfront.net/linux/Splashtop_Streamer_Ubuntu_14.04_v2.2.5.1-4_i386.deb
+	source = splashtop-streamer
+	md5sums = d9806b33adeb6ea11a6e992f513b9e83
+	md5sums = 9867062d727d41fff1ba47cf9bc501a1
+
+pkgname = splashtop-streamer
+
