@@ -67,7 +67,7 @@ prepare() {
 
 	# now that we fixed dynamic linking let's remove binary libs
 	# we create symlinks in package() function
-	rm "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.1
+	rm -f "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.1
 }
 
 package_vmware-horizon-client() {
