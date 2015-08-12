@@ -1,0 +1,16 @@
+pkgbase = solr3-war
+	pkgdesc = Solr / SolrCloud web application archive (WAR) ready to deploy on any Java EE container
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = http://lucene.apache.org/solr
+	arch = any
+	license = Apache
+	depends = java-environment>=7
+	provides = solr=3
+	provides = solr3=3
+	noextract = solr-3.6.2.war
+	source = http://central.maven.org/maven2/org/apache/solr/solr/3.6.2/solr-3.6.2.war
+	md5sums = 19aad37fec4e21b5402e863a49ffcbf2
+
+pkgname = solr3-war
+
