@@ -18,7 +18,7 @@ depends=()
 source=(
     https://swdl.bluejeans.com/skinny/rbjnplugin_${pkgver}-1_amd64.deb
 )
-sha1sums=('e5eeaf5cfa61c3a3d5255dca646c5d3d274eb224')
+sha1sums=('881b268b27723c5eaf7f8a9554e2a7af088003b7')
 
 package() {
     ar x rbjnplugin_${pkgver}-${pkgrel}_amd64.deb "${pkgdir}"
