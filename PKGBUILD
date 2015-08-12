@@ -3,7 +3,7 @@
 # Upstream URL: https://github.com/atom/atom
 #
 # For improvements/fixes to this package, please send a pull request:
-# https://github.com/sjug/arch
+# https://github.com/sjug/atom-editor 
 
 pkgname=atom-editor
 pkgver=1.0.6
