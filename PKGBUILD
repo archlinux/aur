@@ -1,11 +1,11 @@
 # Maintainer: Aaron Rogers <aaron.kyle.rogers at gmail dot com>
 pkgname="obd-auto-doctor"
 pkgver="2.0.4"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="obd scan and diagnostics"
 arch=('i686' 'x86_64')
 url="http://www.obdautodoctor.com/"
-license="LGPG3"
+license="LGPL3"
 
 source_i686=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_i386.tar.gz")
 source_x86_64=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_amd64.tar.gz")
