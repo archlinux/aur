@@ -1,0 +1,16 @@
+pkgbase = spotify-adkiller
+	pkgdesc = Your Party with Spotify - but without ads!
+	pkgver = 10
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/SecUpwN/Spotify-AdKiller
+	arch = any
+	license = GPL3
+	depends = xorg-xprop
+	depends = libpulse
+	depends = libnotify
+	source = spotify-adkiller::git+http://github.com/SecUpwN/Spotify-AdKiller#branch=master
+	md5sums = SKIP
+
+pkgname = spotify-adkiller
+
