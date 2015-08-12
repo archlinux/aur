@@ -11,6 +11,7 @@ arch=('any')
 url="https://github.com/manjaro/artwork-menda"
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines')
+optdepends=("menda-circle-icon-theme-git: Recommended icon theme")
 source=("${pkgbase}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/${_git}.tar.gz")
 sha1sums=('SKIP')
 
