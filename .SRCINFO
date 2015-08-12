@@ -1,7 +1,7 @@
 pkgbase = atom-editor
 	pkgdesc = Chrome-based text editor from Github
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atom/atom
 	arch = x86_64
 	arch = i686
