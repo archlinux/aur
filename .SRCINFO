@@ -1,12 +1,12 @@
 pkgbase = conky-lua-arch
 	pkgdesc = A conky-lua for ArchLinux
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://alexiobash.com/conky-lua-arch/
 	install = conky-lua-arch.install
 	arch = any
 	license = GPL
-	depends = conky
+	depends = conky-lua
 	depends = git
 	backup = etc/conky/conky-arch.conf
 	source = conky-lua-arch::git+http://git.alexiobash.com/git/conky-lua-arch
