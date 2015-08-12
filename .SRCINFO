@@ -1,0 +1,14 @@
+pkgbase = hunspell-tr
+	pkgdesc = Turkish Dictionary for Hunspell
+	pkgver = 0.1
+	pkgrel = 4
+	url = http://tr-spell.googlecode.com/
+	arch = any
+	license = LGPL
+	license = BSD
+	depends = hunspell
+	source = http://tr-spell.googlecode.com/files/Hunspell_tr_TR_v.0.1.zip
+	md5sums = 774eae07421f2823898a2a423245b472
+
+pkgname = hunspell-tr
+
