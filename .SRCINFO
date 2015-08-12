@@ -1,0 +1,15 @@
+pkgbase = vim-gundo
+	pkgdesc = Vim plugin to visualize your Vim undo tree
+	pkgver = 2.5.0
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=3304
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL2
+	depends = vim>=7.3
+	source = gundo-2.5.0.zip::http://www.vim.org/scripts/download_script.php?src_id=20505
+	md5sums = 540561a9d08ca3a4aef837253c0187f0
+
+pkgname = vim-gundo
+
