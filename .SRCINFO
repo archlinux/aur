@@ -1,6 +1,6 @@
 pkgbase = deutex-devel
 	pkgdesc = A WAD file composer for Doom, Heretic, Hexen and Strife
-	pkgver = 4.4.902.r14.g89e5a6a
+	pkgver = 4.4.902.r14.g2e06c95
 	pkgrel = 1
 	url = http://www.teaser.fr/~amajorel/deutex/
 	arch = i686
