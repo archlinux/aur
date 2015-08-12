@@ -50,7 +50,7 @@ build() {
 package_octopi() {
 	pkgdesc="A powerful Pacman frontend using Qt5 libs"
   install="octopi.install"
-  depends=('qt5-base' 'qt5-declarative' 'xterm')
+  depends=('qt5-declarative' 'xterm')
   optdepends=('kdesu: for KDE'
               'gksu: for XFCE, Gnome, LXDE, Cinnamon'
               'gnome-keyring: for password management'
@@ -102,6 +102,7 @@ package_octopi-notifier() {
 package_octopi-repoeditor() {
   pkgdesc="Pacman repo editor for Octopi"
   install=octopi.install
+  depends=('qt5-base')
 
   install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/repoeditor/bin/octopi-repoeditor" "${pkgdir}/usr/bin/octopi-repoeditor"
   install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -109,11 +110,12 @@ package_octopi-repoeditor() {
 }
 
 package_octopi-cachecleaner() {
-   pkgdesc="Cachecleaner for Octopi"
+  pkgdesc="Cachecleaner for Octopi"
+  depends=('qt5-base')
 
-   #Octopi-cachecleaner file
-   install -D -m755 ${srcdir}/${pkgbase}-${pkgver}/cachecleaner/bin/octopi-cachecleaner ${pkgdir}/usr/bin/octopi-cachecleaner
-   install -D -m644 ${srcdir}/${pkgbase}-${pkgver}/cachecleaner/$pkgname.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
+  #Octopi-cachecleaner file
+  install -D -m755 ${srcdir}/${pkgbase}-${pkgver}/cachecleaner/bin/octopi-cachecleaner ${pkgdir}/usr/bin/octopi-cachecleaner
+  install -D -m644 ${srcdir}/${pkgbase}-${pkgver}/cachecleaner/$pkgname.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:

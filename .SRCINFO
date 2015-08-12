@@ -18,7 +18,6 @@ pkgbase = octopi
 pkgname = octopi
 	pkgdesc = A powerful Pacman frontend using Qt5 libs
 	install = octopi.install
-	depends = qt5-base
 	depends = qt5-declarative
 	depends = xterm
 	optdepends = kdesu: for KDE
@@ -43,7 +42,9 @@ pkgname = octopi-notifier
 pkgname = octopi-repoeditor
 	pkgdesc = Pacman repo editor for Octopi
 	install = octopi.install
+	depends = qt5-base
 
 pkgname = octopi-cachecleaner
 	pkgdesc = Cachecleaner for Octopi
+	depends = qt5-base
 
