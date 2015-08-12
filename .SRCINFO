@@ -1,0 +1,14 @@
+pkgbase = storj-dataserv-client
+	pkgdesc = Storj Client for storing and auditing data
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Storj/dataserv-client
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pip
+	source = https://github.com/Storj//dataserv-client/archive/v1.1.0.tar.gz
+	sha256sums = d454a110484857dd2ba4103b3b09a5fab8cf38bbe1e16d95f63032b2c9f80cbe
+
+pkgname = storj-dataserv-client
+
