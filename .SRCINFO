@@ -1,0 +1,16 @@
+pkgbase = python2-dogpile-core
+	pkgdesc = A 'dogpile' lock, typically used as a component of a larger caching solution
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = http://pypi.python.org/pypi/dogpile.core
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-dogpile
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/d/dogpile.core/dogpile.core-0.4.1.tar.gz
+	md5sums = 01cb19f52bba3e95c9b560f39341f045
+
+pkgname = python2-dogpile-core
+
