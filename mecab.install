@@ -1,0 +1,10 @@
+#/bin/sh
+
+post_install() {
+	echo '==> NOTE: Some paths have changed so you have to update mecab-ipadic as well'
+	echo '==> if you use it!'
+}
+
+post_upgrade() {
+	post_install
+}
