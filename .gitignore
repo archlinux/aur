@@ -1,9 +1,5 @@
-src/
-pkg/
-*.tar.gz
-*.tar.xz
-*.tgz
-*.rpm
-*.zip
-*.bz2
-*.deb
+*
+!44-wqy-microhei.conf
+!PKGBUILD
+!wqy-microhei.install
+!.SRCINFO
