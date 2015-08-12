@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=mtd-tools-git
-pkgver=928.dcea43e
+pkgver=965.0e602bf
 pkgrel=1
 pkgdesc="MTD userspace tools"
 arch=('i686' 'x86_64')
@@ -9,6 +9,8 @@ url="http://www.linux-mtd.infradead.org/index.html"
 license=('GPL')
 depends=('util-linux' 'lzo2')
 makedepends=('git')
+provides=('mtd-uitls')
+replaces=('mtd-utils')
 source=("mtd-utils::git://git.infradead.org/mtd-utils.git")
 
 package ()
