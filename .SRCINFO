@@ -1,0 +1,17 @@
+pkgbase = qextserialport
+	pkgdesc = Cross-platform serial port class libary for Qt4 and Qt5.
+	pkgver = 1.2rc
+	pkgrel = 5
+	url = https://github.com/qextserialport/qextserialport
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = qt4
+	depends = qt5-base
+	source = qextserialport-1.2rc.tar.gz::https://github.com/qextserialport/qextserialport/archive/1.2rc.tar.gz
+	sha1sums = 2cd3ec6771b056db1bdf471517f8e20e8a4ecff2
+
+pkgname = qextserialport-qt4
+
+pkgname = qextserialport-qt5
+
