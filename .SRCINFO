@@ -1,13 +1,13 @@
 pkgbase = zendframework2-apidoc
 	pkgdesc = API Documentation for ZendFramework2
-	pkgver = 2.4.6
+	pkgver = 2.4.7
 	pkgrel = 1
 	url = http://framework.zend.com/
 	arch = any
 	license = BSD
 	options = !strip
-	source = http://packages.zendframework.com/releases/ZendFramework-2.4.6/ZendFramework-2.4.6-apidoc.tgz
-	sha256sums = b470415e37c843fb67c05bc01c9f9a78e3b6fe3a4f1febe5bf11fd223aa9412e
+	source = http://packages.zendframework.com/releases/ZendFramework-2.4.7/ZendFramework-2.4.7-apidoc.tgz
+	sha256sums = b931a0334c353626505795ca50302d34d413ce5e0b28e60d2f53e4d0496d99f4
 
 pkgname = zendframework2-apidoc
 
