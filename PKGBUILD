@@ -7,8 +7,7 @@ pkgdesc='Console-based Audio Visualizer for Alsa'
 arch=(i686 x86_64)
 url='https://github.com/karlstav/cava'
 license=(MIT)
-depends=(glibc ncurses)
-makedepends=(fftw)
+depends=(fftw alsa-lib)
 source=(https://codeload.github.com/karlstav/cava/tar.gz/${pkgver})
 sha1sums=('6c6d59ad900f9c5b3e071124b2f376b5d73926e9')
 
@@ -20,4 +19,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -Dm755 cava "$pkgdir/usr/bin/cava"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }

@@ -6,9 +6,8 @@ pkgbase = cava
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = fftw
-	depends = glibc
-	depends = ncurses
+	depends = fftw
+	depends = alsa-lib
 	source = https://codeload.github.com/karlstav/cava/tar.gz/0.3.2
 	sha1sums = 6c6d59ad900f9c5b3e071124b2f376b5d73926e9
 
