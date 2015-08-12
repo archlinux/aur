@@ -1,7 +1,7 @@
 pkgbase = aftershotpro
 	pkgdesc = Professional Workflow and RAW Conversion
 	pkgver = 2.2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.aftershotpro.com/en/products/aftershot/pro
 	install = aftershotpro.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = aftershotpro
 	optdepends = opencl-nvidia
 	optdepends = opencl-mesa
 	optdepends = opencl-catalyst
-	source = http://dwnld.aftershotpro.com/updates/v2/${pkgver}/AfterShotPro2_64bit.rpm
+	source = http://dwnld.aftershotpro.com/updates/v2/2.2.1/AfterShotPro2_64bit.rpm
 	source = LICENSE.rtf
 	sha256sums = b90ba08be6e419b1d1a6befcb8509257e2844b6c73efd1a70109e0be4e4591c6
 	sha256sums = 45333ed8867b9f09226a4a19bf47ab966e3d735eb4f5dcbc4541a02eda88d2df

@@ -2,13 +2,13 @@
 
 pkgname=aftershotpro
 pkgver=2.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Professional Workflow and RAW Conversion"
 arch=('x86_64')
 license=('custom')
 depends=( 'bzip2' 'expat' 'fontconfig' 'freetype2' 'glib2' 'libgl' 'libsm' 'libxdamage' 'libxrender' 'pcre' 'util-linux' )
 optdepends=( 'opencl-nvidia' 'opencl-mesa' 'opencl-catalyst' )
-source=('http://dwnld.aftershotpro.com/updates/v2/${pkgver}/AfterShotPro2_64bit.rpm' 'LICENSE.rtf')
+source=('http://dwnld.aftershotpro.com/updates/v2/2.2.1/AfterShotPro2_64bit.rpm' 'LICENSE.rtf')
 url="http://www.aftershotpro.com/en/products/aftershot/pro"
 install="aftershotpro.install"
 
