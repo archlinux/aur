@@ -10,7 +10,7 @@ url='https://www.google.com/fonts/specimen/Roboto+Mono'
 license=('Apache')
 source=("$pkgname-$pkgver-$pkgrel.zip::https://www.google.com/fonts/download?kit=rqQ1zSE-ZGCKVZgew-A9dofD-WQWLbF4rYwcBGowFYY")
 install=${pkgname}.install
-sha256sums=('b5895fa5c5adae8ce8af8fb17e135ca394a8ad2a0ca2edf9326c67ea9e11c184')
+sha256sums=('SKIP')
 
 package() {
   cd ${srcdir}
