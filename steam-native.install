@@ -12,10 +12,10 @@ bold="${all_off}$(tput bold)"
 yellow="${bold}$(tput setaf 3)"
 blue="${bold}$(tput setaf 4)"
 
-mirror_url='https://www.dropbox.com/sh/xexyu68u2xnfgn6/AACEvmC_k22iLY9brSA9tgIQa'
+RESTART=0
+MIRROR_URL='https://www.dropbox.com/sh/xexyu68u2xnfgn6/AACEvmC_k22iLY9brSA9tgIQa'
 
 post_install() {
-	RESTART=0
 	if grep -q 'STEAM_RUNTIME=1' /etc/environment; then
 		msg_blue 'Removing Steam runtime'
 		sed -i '/STEAM_RUNTIME/d' /etc/environment
@@ -36,26 +36,25 @@ post_install() {
 		echo 'STEAM_FRAME_FORCE_CLOSE=1' >> /etc/environment
 		RESTART=1
 	fi
-	if grep -q 'LD_LIBRARY_PATH' /etc/environment; then
-		msg_blue 'Default library path variable exists'
-	else
-		msg_blue 'Setting default library path variable'
-		echo 'LD_LIBRARY_PATH=/usr/lib' >> /etc/environment
-		RESTART=1
-	fi
 	update-desktop-database -q
 	[ $RESTART -eq 1 ] && \
 		note 'Relog or restart your system to access changes'
 	[ "$(uname -m)" == 'x86_64' ] && \
-		note "If native isn't working try to overwrite these files to '/usr/lib32':\n\t${mirror_url}"
+		note "If native isn't working try to overwrite these files to '/usr/lib32':\n\t${MIRROR_URL}"
 }
 
 post_upgrade() {
+	if [ $(vercmp "$2" '1.0.0.50-12') -le 0 ]; then
+		if grep -q 'LD_LIBRARY_PATH=/usr/lib' /etc/environment; then
+			note 'Library path set by prior package version was removed since it is not needed anymore'
+			sed -i '/LD_LIBRARY_PATH/d' /etc/environment
+			RESTART=1
+		fi
+	fi
 	post_install
 }
 
 post_remove() {
-	RESTART=0
 	if grep -q 'STEAM_RUNTIME=0' /etc/environment; then
 		msg_blue 'Removing native runtime'
 		sed -i '/STEAM_RUNTIME/d' /etc/environment
@@ -70,16 +69,9 @@ post_remove() {
 	else
 		msg_blue 'No close to tray detected'
 	fi
-	if grep -q 'LD_LIBRARY_PATH=/usr/lib' /etc/environment; then
-		msg_blue 'Library path set by package was removed'
-		sed -i '/LD_LIBRARY_PATH/d' /etc/environment
-		RESTART=1
-	else
-		msg_blue 'No default library path variable exists'
-	fi
 	update-desktop-database -q
 	[ $RESTART -eq 1 ] && \
 		note 'Relog or restart your system to access changes'
 	[ "$(uname -m)" == 'x86_64' ] && \
-		note "Don't forget to remove these if you copied them separately:\n\t${mirror_url}"
+		note "Don't forget to remove these if you copied them separately:\n\t${MIRROR_URL}"
 }
