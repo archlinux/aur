@@ -1,4 +1,4 @@
-# Maintainer: Justin Dray <justin[at]dray[dot]be>
+# Maintainer: Justin Dray <justin[at]dray[dot]be> 
 pkgname=lsi-sas2ircu
 pkgver=5.00.00.00
 pkgrel=2
