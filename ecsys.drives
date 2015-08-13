@@ -1,0 +1,30 @@
+
+# ECSYS-4 format for the EC65K.
+# Tracks are actually cylinders, 
+# side 0 and then side 1 make a whole track.
+#
+diskdef ecsys-4
+  seclen 1024
+  tracks 40
+  sectrk 10
+  blocksize 2048
+  maxdir 128
+  skew 0
+  boottrk 2
+  # this format wastes half of the directory entry
+  logicalextents 1
+  os p2dos
+end
+
+diskdef ecsys-8
+  seclen 1024
+  tracks 80
+  sectrk 10
+  blocksize 2048
+  maxdir 128
+  skew 0
+  boottrk 2
+  os p2dos
+end
+
+

@@ -1,0 +1,26 @@
+
+# z80pack 4mb harddisk
+diskdef z80pack-hd
+  seclen 128
+  tracks 255
+  sectrk 128
+  blocksize 2048
+  maxdir 1024
+  skew 0
+  boottrk 0
+  os 2.2
+end
+
+
+# z80pack 512mb harddisk
+diskdef z80pack-hdb
+  seclen 128
+  tracks 256
+  sectrk 16384
+  blocksize 16384
+  maxdir 8192
+  skew 0
+  boottrk 0
+  os 2.2
+end
+
