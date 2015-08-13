@@ -1,0 +1,27 @@
+pkgbase = gcc-arm-none-eabi-bin
+	pkgdesc = GNU Tools ARM Embedded Processors (binary distribution, includes GDB and newlib)
+	pkgver = 4.9_2014_q4_major
+	pkgrel = 2
+	url = https://launchpad.net/gcc-arm-embedded
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	depends = glibc
+	provides = gcc-arm-none-eabi
+	provides = arm-none-eabi-gcc
+	provides = arm-none-eabi-gdb
+	provides = arm-none-eabi-binutils
+	provides = arm-none-eabi-newlib
+	conflicts = gcc-arm-none-eabi
+	conflicts = arm-none-eabi-gcc
+	conflicts = arm-none-eabi-gdb
+	conflicts = arm-none-eabi-binutils
+	conflicts = arm-none-eabi-newlib
+	options = !strip
+	options = staticlibs
+	source = https://launchpad.net/gcc-arm-embedded/4.9/4.9-2014-q4-major/+download/gcc-arm-none-eabi-4_9-2014q4-20141203-linux.tar.bz2
+	md5sums = 74cc4f012699c171089e72832d95bf4c
+
+pkgname = gcc-arm-none-eabi-bin
+
