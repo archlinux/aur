@@ -33,8 +33,17 @@ pkgver()
 
 prepare()
 {
+    # Okay, this may not be the ideal place to download the data file,
+    # but we DO want to update it on every run -- if we let makepkg
+    # download it for us, it will not be re-downloaded if it already
+    # exists locally (and that would be bad since the data file could
+    # have been updated on the server since the last download).
+    #
+    # Instead, we instruct curl to only download the file if it is
+    # newer than the local copy (if it exists).
+
     msg2 "Downloading data file..."
-    curl -fL -o "${srcdir}/bofh-excuses.raw" "${_dlurl}"
+    curl -fL -Ro "${srcdir}/bofh-excuses.raw" -z "${srcdir}/bofh-excuses.raw" "${_dlurl}"
 }
 
 build()
