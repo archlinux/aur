@@ -27,10 +27,12 @@ package() {
   cd "build_unix"
   make prefix="$pkgdir/usr" includedir="$pkgdir/usr/include/db4.8" install
 
+# Remove documents to save space, these can be found online if needed.
+  rm -rf "$pkgdir/usr/docs"
+
 # Remove conflicting symlinks created by make, should never overwrite 
 # main libdb symlinks to current version. Programs that need or use 
 # db4.8 should be able to find it.
-  rm -rf "$pkgdir/usr/docs"
   rm -f "$pkgdir/usr/lib/libdb.so"
   rm -f "$pkgdir/usr/lib/libdb_cxx.so"
   rm -f "$pkgdir/usr/lib/libdb-4.so"
@@ -44,7 +46,7 @@ package() {
     mv $i db4.8_${i/db_/}
   done
 
-# Install license
+# Install license.
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 "$srcdir/db-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
