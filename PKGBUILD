@@ -1,4 +1,4 @@
-# Maintainer: Ingo Bürk <ingo.buerk@airblader.de>
+# Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=qelectrotech
 pkgver=0.4
 pkgrel=2
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url='http://qelectrotech.org/'
 license=('GPL')
 provides=('qelectrotech')
-depends=('qt4')
+depends=('qt4' 'icu')
 makedepends=('tar')
 source=('http://download.tuxfamily.org/qet/tags/20150220/qelectrotech-0.4-src.tar.gz')
 sha1sums=('SKIP')
