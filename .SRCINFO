@@ -8,6 +8,7 @@ pkgbase = yubico-pam-git
 	license = BSD
 	checkdepends = perl-net-ldap-server
 	makedepends = git
+	makedepends = asciidoc
 	depends = pam
 	depends = yubico-c-client
 	depends = yubikey-personalization
