@@ -11,9 +11,9 @@ pkgdesc="A new way of storing, sharing and publishing files on the Internet.  It
 arch=("any")
 url="http://www.wuala.com/"
 license=("custom:wuala")
-depends=('java-runtime')
-optdepends=('fuse: filesystem integration'
-            'xdg-utils: desktop integration')
+depends=('java-runtime' 'xdg-utils' 'desktop-file-utils')
+optdepends=('fuse: filesystem integration')
+install="wuala.install"
 source=("http://cdn.wuala.com/repo/other/wuala.tar.gz"
         "${pkgname}.png"
         "${pkgname}.desktop"
