@@ -3,9 +3,9 @@
 pkgname=opera-ffmpeg-codecs
 pkgver=44.0.2403.130
 _opver=31
-_opbver=31
+_opbver=32
 _opdver=32
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
