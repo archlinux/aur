@@ -8,14 +8,14 @@
 
 pkgname=canon-pixma-mg7100-complete
 pkgver=4.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MG7100 series (MG7150 etc.)"
 url='http://www.canon.fr/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG7150.aspx'
 arch=('i686' 'x86_64')
 license=('custom')
 install="${pkgname}.install"
-depends_x86_64=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff' 'lib32-libxml2' 'lib32-gtk2')
-depends_i686=('popt' 'libpng12' 'libusb-compat' 'libtiff' 'libxml2' 'gtk2')
+depends_x86_64=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libxml2' 'lib32-gtk2')
+depends_i686=('popt' 'libpng12' 'libusb-compat' 'libxml2' 'gtk2')
 makedepends=('deb2targz' 'sed')
 source=('http://gdlp01.c-wss.com/gds/2/0100005512/01/cnijfilter-mg7100series-4.00-1-deb.tar.gz'
          'http://gdlp01.c-wss.com/gds/9/0100005529/01/scangearmp-mg7100series-2.20-1-deb.tar.gz'
