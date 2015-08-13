@@ -1,0 +1,28 @@
+diff -ur qosmic-1.5.0/src/lua/lunar.h qosmic-1.5.0_globalpatch/src/lua/lunar.h
+--- qosmic-1.5.0/src/lua/lunar.h	2011-10-22 01:58:08.000000000 +0200
++++ qosmic-1.5.0_globalpatch/src/lua/lunar.h	2013-03-04 09:18:47.665761092 +0100
+@@ -37,7 +37,7 @@
+ 			// store method table in globals so that
+ 			// scripts can add functions written in Lua.
+ 			lua_pushvalue(L, methods);
+-			set(L, LUA_GLOBALSINDEX, T::className);
++			lua_setglobal(L, T::className);
+ 
+ 			// hide metatable from Lua getmetatable()
+ 			lua_pushvalue(L, methods);
+--- qosmic-1.5.0/src/lua/lunar.h	2013-03-04 09:18:47.665761092 +0100
++++ qosmic-1.5.0_typerrorpatch/src/lua/lunar.h	2013-03-04 09:47:26.265659858 +0100
+@@ -18,6 +18,13 @@
+ 
+ namespace Lua
+ {
++
++inline LUALIB_API int luaL_typerror (lua_State *L, int narg, const char *tname) {
++  const char *msg = lua_pushfstring(L, "%s expected, got %s",
++                                    tname, luaL_typename(L, narg));
++  return luaL_argerror(L, narg, msg);
++}
++
+ template <typename T> class Lunar
+ {
+ 		typedef struct { T* pT; } userdataType;
