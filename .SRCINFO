@@ -1,6 +1,6 @@
 pkgbase = riofs-git
 	pkgdesc = FUSE userspace filesystem for Amazon AWS S3 buckets
-	pkgver = v0.5.r60.gc6d8e8e
+	pkgver = 0.5.r60.gc6d8e8e
 	pkgrel = 1
 	url = https://github.com/skoobe/riofs
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = riofs-git
 	depends = libevent
 	depends = libxml2
 	depends = openssl
-	provides = riofs
+	provides = riofs=0.5
 	conflicts = riofs
 	source = riofs-git::git+https://github.com/skoobe/riofs.git
 	sha256sums = SKIP
