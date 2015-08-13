@@ -3,10 +3,10 @@
 
 pkgname='phpdox'
 pkgver='0.8.1.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Documentation generator for PHP Code using standard technology (SRC, DOCBLOCK, XML and XSLT)"
 url="http://phpdox.de"
-license=('custom')
+license=('BSD')
 install="${pkgname}.install"
 arch=('any')
 depends=('php>=5.3.3' 'php-xsl')

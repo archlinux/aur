@@ -1,11 +1,11 @@
 pkgbase = phpdox
 	pkgdesc = Documentation generator for PHP Code using standard technology (SRC, DOCBLOCK, XML and XSLT)
 	pkgver = 0.8.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://phpdox.de
 	install = phpdox.install
 	arch = any
-	license = custom
+	license = BSD
 	depends = php>=5.3.3
 	depends = php-xsl
 	source = https://github.com/theseer/phpdox/releases/download/0.8.1.1/phpdox-0.8.1.1.phar
