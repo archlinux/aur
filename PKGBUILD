@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url=('https://bitbucket.org/jeromerobert/k4dirstat')
 license=('GPL')
 depends=('hicolor-icon-theme' 'kdelibs4support' )
-makedepends=('extra-cmake-modules' 'kdoctools')
+makedepends=('extra-cmake-modules' 'kdoctools' 'karchive')
 source=("https://bitbucket.org/jeromerobert/k4dirstat/get/k4dirstat-$pkgver.tar.bz2")
 sha256sums=('edbae93e477556e48dc45b93f6462e8b7ca61cacf3d38c97d1a81c412860bb12')
 
