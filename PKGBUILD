@@ -3,7 +3,7 @@
 
 pkgname=turses
 pkgver=0.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A Twitter client for the console"
 arch=('any')
 url="https://github.com/dialelo/turses"
