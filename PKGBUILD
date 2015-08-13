@@ -16,19 +16,22 @@ optdepends=('fuse: filesystem integration'
             'xdg-utils: desktop integration')
 options=(!emptydirs)
 source=("http://cdn.wuala.com/repo/other/wuala.tar.gz"
-	"0001-fix-loader3-location.patch"
 	"${pkgname}.png"
 	"${pkgname}.desktop"
 	"LICENSE")
 sha256sums=('bf06e729fcfadcd88b2c84b5117bc292e838ad5dbd1d881fb5f689753533ccf7'
-            '1ca6b850dce553a2188e7be87d603d9c7d830ddcab9e61eaffa6ef92f764cd7b'
             '20cee0643762403e5498dc3c0b9d1f958c21bfd1b2c776d6a2ab7a5989fb6e80'
             '7877eac17e3d447f52979bbc21e32b31267382a5cb418463ba47a9b259953a53'
             'ff272cf434454a903a7f4eba82a6c34e48cc58eebb53c9f232028b61e2af8b31')
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-	patch -Np1 -i "${srcdir}/0001-fix-loader3-location.patch"
+	
+    # Adjust loader3.jar location
+    sed -i -e "s|loader3\.jar|/usr/share/java/${pkgname}/loader3\.jar|" wuala
+
+    # Don't leave a waiting shell process when running Wuala
+    sed -i -e 's/^  \$JAVA/  exec \$JAVA/' wuala
 }
 
 package() {
