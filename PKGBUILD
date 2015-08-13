@@ -1,6 +1,6 @@
 pkgname=python-autobahn
 _pkgname=autobahn
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=2
 pkgdesc='WebSocket and WAMP for Twisted and Asyncio'
 url='http://autobahn.ws/python/'
@@ -17,7 +17,7 @@ optdepends=(
 	'python-msgpack: WAMPv2 binary serialization support')
 makedepends=('python-distribute')
 source=("https://pypi.python.org/packages/source/a/autobahn/$_pkgname-$pkgver.tar.gz")
-md5sums=('4ae22413ee9ba8f6692e80e171b68777')
+md5sums=('75cbbead47bdac8ee606ca3ce9ee742e')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
