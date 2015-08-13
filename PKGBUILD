@@ -5,23 +5,23 @@ pkgver=5.0.0
 pkgrel=1
 pkgdesc="Qt bindings for FTP"
 arch=('i686' 'x86_64')
-url='https://qt.gitorious.org/qt/qtftp/'
+url='https://github.com/qtproject/qtftp/'
 license=('LGPL')
 depends=('qt5-base')
 makedepends=('git')
-source=("qtftp-qt5::git+https://gitorious.org/qt/qtftp.git#commit=80823b53d2025d9c0c15075c325ee0c2e364551b")
-md5sums=('SKIP')
+source=("https://github.com/qtproject/qtftp/archive/v5.0.0.zip")
+md5sums=('36da57bf362ff7964c97250af938b0a5')
 options=('staticlibs')
 
 build() {
   _qt_ver=$(qmake -version | grep -o -E 'Qt version .* in' | awk '{print $3}')
-  cd "$pkgname"
+  cd "qtftp-${pkgver}"
   /usr/bin/syncqt.pl-qt5 -version ${_qt_ver}
   qmake-qt5
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "qtftp-${pkgver}"
   make INSTALL_ROOT="$pkgdir/" install
 }
