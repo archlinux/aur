@@ -1,0 +1,20 @@
+pkgbase = ldapvi
+	pkgdesc = Interactive LDAP client for Unix terminals
+	pkgver = 1.7.r15.gf1d42ba
+	pkgrel = 1
+	url = http://www.lichteblau.com/ldapvi/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glib2
+	depends = libldap
+	depends = libsasl
+	depends = ncurses
+	depends = openssl
+	depends = popt
+	depends = readline
+	source = git+http://www.lichteblau.com/git/ldapvi.git
+	sha256sums = SKIP
+
+pkgname = ldapvi
+
