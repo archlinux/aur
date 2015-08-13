@@ -2,7 +2,7 @@
 
 pkgname=gr-air-modes-git
 pkgver=20150710
-pkgrel=1
+pkgrel=2
 pkgdesc="A software-defined radio receiver for Mode S transponder signals, including ADS-B reports from equipped aircraft."
 arch=('i686' 'x86_64')
 url='https://github.com/bistromath/gr-air-modes'
@@ -15,27 +15,25 @@ optdepends=('python2-pyqt4: GUI application (needs rebuild, install before).'
             'python2-scipy: FlightGear interface support.')
 provides=('gr-air-modes')
 install="${pkgname}.install"
-source=('git+https://github.com/bistromath/gr-air-modes.git'
+source=("$pkgname::git+https://github.com/bistromath/gr-air-modes.git"
        'fix-pyqtconfig-missing-for-new-pyqt4.patch')
 sha256sums=('SKIP'
            '346532b617e5557188a3493a5be2bd08ff29823eb11cc207336a0e32f9ac7344')
 
-_gitname="gr-air-modes"
-
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
   git show -s --format="%cd" --date=short HEAD | tr -d '-'
 }
 
 prepare() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
   # Fix pyqt4 detection, this patch should be deleted when this pull request
   # is accepted https://github.com/bistromath/gr-air-modes/pull/67
   patch -Np1 -i "../fix-pyqtconfig-missing-for-new-pyqt4.patch"
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
   mkdir -p build
   cd build
 
@@ -52,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname/build/"
+  cd "$srcdir/$pkgname/build/"
   make DESTDIR="$pkgdir" install
 
   # Fix shebangs

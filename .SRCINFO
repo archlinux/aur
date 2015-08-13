@@ -1,7 +1,7 @@
 pkgbase = gr-air-modes-git
 	pkgdesc = A software-defined radio receiver for Mode S transponder signals, including ADS-B reports from equipped aircraft.
 	pkgver = 20150710
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bistromath/gr-air-modes
 	install = gr-air-modes-git.install
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = gr-air-modes-git
 	optdepends = python2-numpy: FlightGear interface support.
 	optdepends = python2-scipy: FlightGear interface support.
 	provides = gr-air-modes
-	source = git+https://github.com/bistromath/gr-air-modes.git
+	source = gr-air-modes-git::git+https://github.com/bistromath/gr-air-modes.git
 	source = fix-pyqtconfig-missing-for-new-pyqt4.patch
 	sha256sums = SKIP
 	sha256sums = 346532b617e5557188a3493a5be2bd08ff29823eb11cc207336a0e32f9ac7344
