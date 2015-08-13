@@ -1,0 +1,13 @@
+pkgbase = arc
+	pkgdesc = Arc file archiver and compressor. Long since superceeded by zip/unzip but useful if have old .arc files need to unpack.
+	pkgver = 5.21p
+	pkgrel = 2
+	url = http://sourceforge.net/projects/arc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://download.sourceforge.net/arc/arc-5.21p.tar.gz
+	sha1sums = 902ce24b23422880d474df6f1d9eba5e
+
+pkgname = arc
+
