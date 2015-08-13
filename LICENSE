@@ -1,31 +1,338 @@
-The below licensing information was copied from Wuala's "Terms of
-Service" webpage, located at: http://wua.la/en/terms.html
+License text downloaded from the Wuala website on 2015-08-13.
+Visit https://wuala.com/en/about/terms for updates.
 
-
-4. Services of Caleido / Usage License
-
-Subject of the agreement is Wuala, namely the Wuala client software,
-the website of Wuala and the network of Wuala.
-
-Caleido grants the user within the scope of this agreement a
-personal, non-commercial, non-exclusive, non-transferable,
-non-sublicenseable licence to download, install and use Wuala within
-the scope of the terms and conditions of this agreement. As for the
-rest, the rights to Wuala, namely all intellectual property rights,
-remain with Caleido.
-
-The licence includes the right to download and to install the Wuala
-client software on as many computers as desired. However, the user
-may have one user account only.
-
-The Wuala client software contains software or other technology that is licensed from third parties. Insofar as required by these licenses, they are an integral part of the present GTC. A list of these licenses as well as instructions on how to obtain their licensed source code (if available) can be found at wua.la/en/3rdparty_code.html.
-
-It is explicitly prohibited to copy or to otherwise reproduce the software completely or in part in its original or any modified form or in any form mixed with any other software or in any form included in other software. Wuala may neither be sold, given away, leased or lent nor otherwise be assigned or be left for the use of third parties. Exempt are the pieces of software listed at wua.la/en/3rdparty_code.html which are the property of third parties.
-
-The user is not allowed to modify, translate, reverse engineer, decompile or to disassemble Wuala or to process Wuala in any form or to setup any derivative works from Wuala, even for the purpose of removing possible bugs. Reserved are parts which may also be acquired under other licenses if these license require such a reservation. Copyrights, serial numbers as well as other features serving the program identification may under no circumstances be removed or amended. The source code of Wuala shall not be released and the reconstruction of the source codes or of parts of the source codes is prohibited.
-
-Caleido is entitled to display targeted and untargeted advertising in the context of publicly accessible contents and/or to carry out other promotional measures. The user explicitly declares his agreement therewith.
-
-Wuala may contain links to other websites and services.
-
-Sept 23, 2008
+****** Wuala Terms of Use ******
+Date of last revision: 2011-10-05 (Complete revision, removed trading feature,
+business-friendlier).
+These Terms of Use (“Terms”) apply to the use of the Wuala Cloud Storage
+(“Service”) by you (“you” or “Customer”). The Service is provided
+by LaCie AG, Davidsbodenstrasse 15A, 4004 Basel, Switzerland (“LaCie”). IF
+YOU WISH TO USE the Service, YOU MUST AGREE TO THESE TERMS. IF YOU DO NOT AGREE
+TO THE TERMS, ANY USE OF the SERVICE IS UNAUTHORIZED, AND YOU SHOULD STOP
+ACCESSING THE SERVICE IMMEDIATELY. YOUR CONTINUED USE OF THE SERVICE WILL
+CONSTITUTE ASSENT TO THESE TERMS. You represent that: (a) you have full legal
+capacity to contractually obligate yourself to these Terms; (b) you have read,
+understood and accepted these Terms; and (c) you have not violated these or
+other terms provided by LaCie previously.
+   1. **** Use of Service ****
+         1. LaCie operates an cloud storage system named Wuala ("Service"). The
+            system consists of the client software ("Client Software"), the
+            website ("Website") and the Wuala network ("Network"). It enables
+            its users to store and access files over the Internet, and to share
+            them with selected other users. The Client Software and the Website
+            can differ in features and appearance, depending on which Service
+            (the "Product") is used and the used system.
+         2. Subject to these Terms, LaCie agrees to provide the Service to
+            Customer.
+         3. LaCie agrees that all files you store using the Service, including
+            their metadata (file name, description, comments, thumbnail images,
+            etc.), ("Data") will be encrypted such that they can neither be
+            read by LaCie nor by any third party, unless the Data is
+            explicitely shared or made public by you. LaCie has no access to
+            your password, does not know it and cannot reset or recover it. You
+            acknowledge that if you forget your password, your Data will be
+            irrevocably lost.
+         4. Depending on the Product, the Client Software can consist of one or
+            more different programs running on your PC and/or other devices.
+            These programs can come pre-installed on your device or might need
+            to be downloaded and installed by the Customer. You are responsible
+            to keep the Client Software up to date. For some programs or pieces
+            of the Client Software, updates are performed automatically. In
+            other cases, you may need to download and install the latest
+            version of the Client Software or the complete firmware of the
+            device to keep the Client Software up to date. If the Client
+            Software is not kept up to date, the Service may cease to be
+            available or may not properly perform.
+         5. As part of the evolution of the Service, LaCie may discontinue,
+            modify or add new features to the Service without prior notice to
+            you.
+   2. **** Customer Obligations and Responsibilities ****
+         1. Customer shall use the Service in compliance with all applicable
+            laws, including without limitation the laws of Switzerland, and in
+            accordance with such usage policies and guidelines as LaCie may
+            establish from time to time. Usage policies and guidelines are
+            published on the Website.
+         2. Without limiting the foregoing, in connection with Customer’s use
+            of the Service, Customer shall not: (a) use the Service to change,
+            damage, delete or edit Data without authorization; (b) attempt to
+            access the Service with unauthorized software; (c) use the Service
+            in a way that infringes the intellectual property, privacy or other
+            rights of third parties or otherwise causes damage to any third
+            party; (d) use the Service, directly or indirectly, to offer any
+            service that competes with the Service; (e) use the Service to gain
+            unauthorized access to files stored on the Network by other users;
+            (f) use the Service to gain unauthorized access to any other
+            computer or network; (g) use the Service to facilitate any mass
+            mails, spam, chain letters, snowball systems, or similar
+            communications, regardless of whether they are commercial in
+            nature; (h) store or transmit any software or data containing any
+            virus, malware, worm, trap-door, Trojan Horse, spyware or other
+            software or program code that is malicious in nature; (i)
+            misrepresent Customer’s identity, including without limitation by
+            representing that Customer is a LaCie employee or representative or
+            another user of the Service; (j) use the Service to collect, store
+            or transmit personal data of any person without such person’s
+            consent; (k) or participate in any group that encourages violation
+            of LaCie’s terms and policies; (l) send us untruthful abuse
+            reports; (m) fraudulently gain or attempt to gain access to the
+            Network; or (n) gain or attempt to gain cloud storage resources the
+            Customer is not entitled to, including without limitation the use
+            of a promotional code Customer is not eligible to use or the
+            creation of multiple user accounts for the purpose of gaining
+            additional cloud storage.
+         3. Customer shall bear responsibility for all activities conducted
+            under Customer’s account, whether by Customer or a third party.
+         4. LaCie does not monitor the data stored or distributed through use
+            of the Service, and assumes no responsibility for such data.
+            Customer acknowledges that in using the Service, Customer may be
+            exposed to content which Customer may find to be insulting,
+            offensive, or otherwise objectionable. Customer waives any claim
+            against LaCie, its affiliates, and their officers, directors,
+            agents, and employees based upon the content of data stored or
+            distributed through use of the Service.
+         5. Customer agrees to maintain the accuracy of Customer’s account
+            details at all times. LaCie will use the email address specified in
+            your account details or suitable means of communication within
+            Wuala to inform you about legally binding declarations (for example
+            modifications of these Terms, blocking/cancellation etc.) or send
+            you other notices. It is your responsibility to regularly check
+            your email account for new emails and to make sure emails from
+            LaCie can pass your spam and/or other filters. ANY COMMUNICATIONS
+            FROM LACIE TO CUSTOMER SHALL BE DEEMED GIVEN IF SENT TO CUSTOMER AT
+            THE EMAIL ADDRESS SPECIFIED IN THE CUSTOMER’S ACCOUNT DETAILS,
+            INCLUDING WITHOUT LIMITATION ANY AMENDMENTS TO THESE TERMS AND ANY
+            NOTICE THAT CUSTOMER’S ACCOUNT WILL BE BLOCKED OR CANCELLED.
+         6. It is the Customer’s responsibility to choose a secure password,
+            to retain the password, and to maintain the password’s security.
+            In case the password is lost, all data stored online becomes
+            inaccessible and cannot be recovered.
+         7. Customer shall refrain from any activity which interferes or may
+            interfere with the efficiency of the Service (for example through
+            software or other scripts). This includes without limitation
+            excessive use of the Service or using the Service in ways for which
+            it is not intended.
+   3. **** Termination ****
+         1. LaCie reserves the right to block Data and/or to terminate user
+            accounts for any reason LaCie in good faith determines to be
+            appropriate, including without limitation in order to prevent or
+            remedy violation of LaCie’s policies and/or these Terms.
+            LaCie’s rights under this section shall apply regardless of
+            whether LaCie is able to determine the content of the Data.
+         2. You may terminate your right to use the Service (your
+            “Account“) by email without indication of reasons at any time.
+         3. LaCie has the right to terminate your Account: (a) if you have not
+            accessed your account for at least ninety (90) consecutive days;
+            (b) if you exceed your available storage space; or (c) if LaCie
+            elects to discontinue the Service completely or in part.
+         4. In case of termination under Section 3.3, LaCie shall provideat
+            least thirty (30) days prior notice of termination. Such notice may
+            be provided by email or by any other means. Notice shall be
+            sufficient if emailed to you at the email address currently on file
+            with LaCie.
+         5. In case of a violation of these Terms, LaCie may limit, block,
+            terminate or delete your Account without notice.
+         6. Customer may not assist a user who has violated these Terms to
+            regain access to Wuala
+         7. In case of a termination of Customer's account, Customer shall: (a)
+            cease all use of the Service and the Client Software; (b) delete
+            all Client Software from any computer, disk, or other media under
+            your control; (c) refrain from accessing the Network without the
+            written consent of LaCie; and (d) refrain from using any other user
+            account to regain access to the Network.
+         8. UPON TERMINATION OF YOUR ACCOUNT FOR ANY REASON, LACIE SHALL HAVE
+            THE RIGHT TO DELETE ALL FILES AND DATA YOU HAVE STORED USING THE
+            SERVICE. CUSTOMER AGREES TO MAINTAIN AN ADDITIONAL COPY OF ANY
+            FILES SUBMITTED TO LACIE.
+   4. **** License and Proprietary Rights ****
+         1. Subject to these Terms, LaCie grants Customer a non-exclusive, non-
+            transferable, non-sublicenseable license to download, install and
+            use the Client Software. Download and installation might not be
+            necessary for devices that have the Client Software pre-installed.
+            The license includes the right to download and to install the
+            Client Software on more than one computer.
+         2. The Client Software contains software or other technology that is
+            licensed from third parties. LaCie may add, delete, or modify such
+            third party software from time to time. Customer agrees to be bound
+            by the terms of all applicable third party licenses. Lists of these
+            licenses as well as instructions on how to obtain their licensed
+            source code (if available) can be found at http://wuala.com/about/
+            thirdpartycode and http://www.lacie.com/gpl.
+         3. The Service is protected by intellectual property laws. Title to
+            the Client Software and all other software used by LaCie in the
+            delivery of the Service, and any other intellectual property rights
+            associated with the Service and the Software, shall remain in LaCie
+            and its licensors. You may not modify, adapt, translate, reverse
+            engineer, decompile, disassemble or create a derivative work based
+            upon the Software. You may not duplicate the Software or permit the
+            Software to be accessed through a public computer bulletin board or
+            “shareware” distribution process. You may not remove from the
+            Software or the Website any proprietary indications or legends, use
+            the trademarks LACIE or WUALA without authorization, or sell,
+            assign or sublicense any Software or any rights to the Software.
+   5. **** Available Storage Space ****
+         1. La Cie will display available storage and storage usage in the
+            Client Software, but La Cie makes no warranty that the display is
+            current or accurate.
+         2. LaCie may provide the Customer with a basic amount of cloud storage
+            (e.g. 1 GB) at no charge as communicated on the Website. Addition
+            cloud storage may be obtainable for a fee, through relevant
+            promotional codes, bundled with other LaCie products, through La
+            Cie’s referral program as communicated on the Website or other
+            offers.
+         3. Depending on the Product, Customer can subscribe to additional
+            storage according to the storage plans communicated on the Website.
+            LaCie reserves the right to change the available plans at any time.
+            Payments for additional storage space are made in advance for the
+            relevant period and are non-refundable. LaCie may in its sole
+            discretion accept payments by credit card, PayPal or other means of
+            payments acceptable to LaCie. You agree to notify LaCie prior to
+            any purchase in case you are not a business customer and/or you
+            have no VAT registration� in� the country where you have your place
+            of business, or a permanent establishment for which the delivery is
+            made, or, in the absence of such a place of business or such a
+            permanent establishment, your place of residence or the place from
+            which you work. The purchased additional storage will be made
+            available after reception of the payment, but at most three working
+            days after the reception of the payment. If Customer chooses a plan
+            with automatic renewal, the plan will automatically be renewed for
+            the same period and same amount of storage unless LaCie or Customer
+            cancels the plan fourteen days before expiration by email
+            (sales@wuala.com ).
+         4. When obtaining cloud storage through any offer (including
+            subscriptions, promotional codes, product bundlings, gift cards,
+            etc.), terms and conditions that are specific to that offer may
+            apply. Customer agrees to abide by such terms when making use of
+            any offer. If not stated otherwise, unredeemed offers expire after
+            a period of six months.
+         5. If you fill your cloud storage, no additional Data can be uploaded
+            until the available storage capacity exceeds the amount of Data
+            stored. In case the available storage is exceeded, LaCie may
+            terminate your account as described in section 3.4 .
+         6. All orders are subject to acceptance by LaCie. In case of errors or
+            omissions in a published offer (e.g. on the Website), LaCie can
+            correct them prior to acceptance of the order.
+   6. **** Abuse ****
+      If LaCie becomes aware of a misuse of the Service or any violation of
+      these Terms, it may in its sole discretion: (a) inform involved users;
+      (b) request a response from involved users; (c) block the data concerned;
+      (d) delete the data concerned; (e) block the responsible user; (f) block
+      or delete involved groups; (g) terminate Service to the responsible user
+      without notice; (h) inform affected private parties and/or competent
+      authorities; (i) release data to government authorities and/or private
+      right holders; (j) take any suitable action to eliminate the misuse if
+      applicable; (k) seek compensation for damages; or (l) take any other
+      action LaCie considers appropriate.
+   7. **** Privacy Policy ****
+         1. The customer and LaCie are bound by the privacy policy of the
+            Service [http://www.wuala.com/about/privacy ]. LaCie shall comply
+            with applicable laws and regulations regarding data privacy.
+         2. Customer agrees that LaCie may transmit any data stored by Customer
+            to a third party if LaCie believes in good faith that it is
+            required to do so in order to: (a) comply with any law or order
+            issued by any legal authority; (b) avoid infringement of the rights
+            of a third party; or (c) protect the property of LaCie or the
+            personal safety of its users and the public.
+   8. **** Disclaimer of Warranty ****
+         1. Customer acknowledges the inherent risks involved in online data
+            storage, including without limitation the risk of destruction or
+            loss of data. LACIE PROVIDES ALL SERVICES “AS IS” AND WITH ALL
+            FAULTS. THE ENTIRE RISK ASSOCIATED WITH THE SERVICES IS ASSUMED BY
+            CUSTOMER. LACIE EXTENDS NO WARRANTIES TO CUSTOMER OR TO ANY OTHER
+            PERSON, EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTY OF
+            MERCHANTABILITY, WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE, OR
+            WARRANTY THAT THE SERVICES ARE OF ANY PARTICULAR QUALITY.
+         2. The Service may contain links to other websites and services. LaCie
+            has no influence on the contents of these linked pages, dissociates
+            itself herewith explicitely from all such contents, and makes no
+            warranty whatsoever with respect to such links, websites, or
+            services.
+   9. **** Limitation of Liability ****
+         1. IN NO EVENT WILL LACIE BE LIABLE FOR ANY SPECIAL, INCIDENTAL, OR
+            CONSEQUENTIAL DAMAGES UNDER ANY LEGAL THEORY (INCLUDING FOR THE
+            CONDITION, EXISTENCE, OR LOSS OF DATA SENT TO LACIE OR THE DATA
+            LACIE RECOVERS) EVEN IF IT HAS BEEN ADVISED OF THE POSSIBILITY OF
+            SUCH DAMAGES. THIS LIMITATION APPLIES REGARDLESS ON THE LEGAL
+            THEORY ON WHICH THE CLAIM IS ASSERTED (INCLUDING, WITHOUT
+            LIMITATION, CONTRACT, BREACH OF CONTRACT, AND TORT). Some states do
+            not allow the exclusion or limitation of implied warranties or
+            liability for incidental or consequential damages, so the above
+            limitation or exclusion may not apply to you.
+         2. LaCie will not be liable to Customer or to any other person for
+            failure to perform or any delay in the performance of the Service
+            due to fire, flood, war, riot, strike, explosion, lock out,
+            injunction, natural disaster, interruption of transportation, acts
+            of war, terrorism, labor disputes, acts of civil or military
+            authority, power blackouts, computer viruses, or any other event
+            beyond LaCie’s reasonable control.
+         3. Customer agrees that the sole and exclusive remedy for
+            unsatisfactory services shall be termination of the Service and a
+            refund of any amount actually paid by Customer for the then current
+            service term. LACIE’S LIABILITY OF ANY KIND WITH RESPECT TO THE
+            SERVICES, INCLUDING ANY NEGLIGENCE ON ITS PART, SHALL BE LIMITED TO
+            THE AMOUNT CUSTOMER HAS PAID LACIE FOR THE SERVICES FOR THE THEN
+            CURRENT TERM OF SERVICE.
+  10. **** Indemnification ****
+      CUSTOMER SHALL INDEMNIFY, DEFEND, AND HOLD HARMLESS LACIE AND ITS
+      EMPLOYEES, AFFILIATES, CONTRACTORS, AND AGENTS FROM AND AGAINST ANY AND
+      ALL CLAIMS, DAMAGES, LOSSES, LIABILITIES, SUITS, ACTIONS, DEMANDS,
+      PROCEEDINGS (WHETHER LEGAL OR ADMINISTRATIVE), AND EXPENSES (INCLUDING,
+      WITHOUT LIMITATION, REASONABLE ATTORNEYS’ FEES) ARISING FROM OR RELATED
+      TO (A) ANY BREACH OF THIS AGREEMENT BY CUSTOMER; (B) ANY USE OF THE
+      SERVICE BY CUSTOMER; OR (C) ANY CLAIMS FOR INFRINGEMENT OF ANY THIRD
+      PARTY RIGHTS ARISING FROM OR RELATED TO CUSTOMER’S DATA.
+  11. **** Compliance with Laws ****
+      The transactions contemplated hereby may be subject to the customs and
+      export control laws and regulations of your country of residence and the
+      countries where our data recovery facilities are located. You agree to
+      comply with all customs and export laws and all other applicable laws,
+      statues, ordinances and regulations relating to use of the Service. You
+      acknowledge that violations of these Terms could subject you to criminal
+      or civil penalties.
+  12. **** Modifications ****
+      CUSTOMER AGREES THAT LACIE SHALL HAVE THE RIGHT IN ITS SOLE DISCRETION TO
+      AMEND THESE TERMS AND CONDITIONS FROM TIME TO TIME AND THAT ANY SUCH
+      AMENDMENT SHALL BE EFFECTIVE AS OF THE EARLIER OF THE DATE LACIE SENDS
+      CUSTOMER AN EMAIL TO THE ADDRESS SPECIFIED IN THE CUSTOMER'S ACCOUNT
+      DETAILS OR THE DATE LACIE OTHERWISE NOTIFIES CUSTOMER OF THE CHANGE
+      (E.G., BY DISPLAYING THE NOTICE IN THE CLIENT SOFTWARE). NOTWITHSTANDING
+      THE FOREGOING, IF CUSTOMER HAS PURCHASED STORAGE AND IS USING SUCH
+      ADDITIONAL STORAGE AT THE TIME OF THE CHANGE, CUSTOMER MAY OBJECT TO ANY
+      CHANGE IN THESE TERMS BY PROVIDING LACIE WITH NOTICE WITHIN 10 DAYS OF
+      THE DATE OF THE NOTICE TO CUSTOMER. UPON RECEIPT OF SUCH OBJECTION, LACIE
+      SHALL, AT ITS OPTION, HAVE THE RIGHT TO: (A) TERMINATE THE SERVICE AND
+      REFUND TO CUSTOMER A PRO RATA PORTION OF ANY FEES CUSTOMER HAS PAID FOR
+      STORAGE NOT YET USED; OR (B) CONTINUE TO PROVIDE THE SERVICE PURSUANT TO
+      THE TERMS IN EXISTENCE PRIOR TO THE CHANGE, IN WHICH EVENT THE CHANGE
+      WILL BECOME EFFECTIVE UPON ANY RENEWAL OF THE SERVICE BY CUSTOMER.
+  13. **** General ****
+         1. If any provision of these Terms is held invalid, illegal or
+            unenforceable, such provision shall be enforced to the fullest
+            extent permitted by applicable law and the validity, legality and
+            enforceability of the remaining provisions shall not be affected
+            thereby.
+         2. The failure of either party to exercise any rights provided for in
+            this Agreement shall not be deemed a waiver of any rights under
+            this Agreement.
+         3. You may not assign your rights or obligations under these Terms
+            without LaCie’s express written consent.
+         4. Both parties agree that except for claims related to the
+            indemnification obligations above, all claims arising under or
+            related to the Terms must be brought within 2 years after the date
+            the cause of action arose.
+         5. In the event either party brings an action against the other to
+            enforce any term of the Agreement, the prevailing party in such
+            action shall be entitled to recover the court costs and reasonable
+            attorney’s fees at trial and on any appeal.
+         6. This agreement and all associated documentation has been written in
+            the English language and the parties agree that the English
+            language version will govern. All communications and any dispute
+            associated with this agreement shall be in the English language.
+            (For Canada: Les Parties aux présentes confirment leur volonté
+            que cette convention de même que tous les documents y compris tout
+            avis qui s’y rattache, et toute la communication écrite et de
+            vive voix, soient rédigés en langue anglaise.)
+         7. These Terms and the dealings between the parties shall be governed
+            by the laws of Switzerland, excluding the United Nations Convention
+            on Contracts for the International Sale of Goods (CISG). The
+            parties consent that the courts of Basel, Switzerland shall be the
+            exclusive forum for all disputes arising or related to these Terms.
