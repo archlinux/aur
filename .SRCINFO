@@ -1,5 +1,5 @@
 pkgbase = linux-libre-knock
-	pkgver = 4.1.4_gnu
+	pkgver = 4.1.5_gnu
 	pkgrel = 1
 	url = https://gnunet.org/knock
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-libre-knock
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.4-gnu/patch-4.1-gnu-4.1.4-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.5-gnu/patch-4.1-gnu-4.1.5-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.5-gnu/patch-4.1-gnu-4.1.5-gnu.xz.sign
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
@@ -27,9 +27,10 @@ pkgbase = linux-libre-knock
 	source = config.x86_64
 	source = linux.preset
 	source = change-default-console-loglevel.patch
+	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97
+	sha256sums = 2f8b5d3176112f3b1679a77acbdd303e9e45bffde76a1972f7e90d457614afb3
 	sha256sums = SKIP
 	sha256sums = da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc
 	sha256sums = SKIP
@@ -43,6 +44,7 @@ pkgbase = linux-libre-knock
 	sha256sums = 6076bfc7c8b794a7591a9cea2b1e58e4a4fd8fbd44be66f70d8b1372abc7f917
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d
 
 pkgname = linux-libre-knock
 	pkgdesc = The Linux-libre-knock kernel and modules with support for stealth TCP sockets
@@ -54,7 +56,7 @@ pkgname = linux-libre-knock
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-knock=4.1.4
+	provides = linux-knock=4.1.5
 	conflicts = kernel26-knock
 	conflicts = kernel26-libre-knock
 	replaces = linux-knock
@@ -64,7 +66,7 @@ pkgname = linux-libre-knock
 
 pkgname = linux-libre-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-knock kernel
-	provides = linux-knock-headers=4.1.4
+	provides = linux-knock-headers=4.1.5
 	conflicts = kernel26-knock-headers
 	conflicts = kernel26-libre-knock-headers
 	replaces = linux-knock-headers
@@ -73,7 +75,7 @@ pkgname = linux-libre-knock-headers
 
 pkgname = linux-libre-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-knock kernel
-	provides = linux-knock-docs=4.1.4
+	provides = linux-knock-docs=4.1.5
 	conflicts = kernel26-knock-docs
 	conflicts = kernel26-libre-knock-docs
 	replaces = linux-knock-docs

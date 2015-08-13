@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-knock
 _pkgbasever=4.1-gnu
-_pkgver=4.1.4-gnu
+_pkgver=4.1.5-gnu
 _knockpatchver=4.1_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -43,10 +43,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97'
+            '2f8b5d3176112f3b1679a77acbdd303e9e45bffde76a1972f7e90d457614afb3'
             'SKIP'
             'da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc'
             'SKIP'
@@ -59,7 +60,8 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             '748dce2e5fb24dfb5b29410c28a0233382cbb22b2dd9b22047fe4c78e58bd418'
             '6076bfc7c8b794a7591a9cea2b1e58e4a4fd8fbd44be66f70d8b1372abc7f917'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -98,6 +100,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # Make the radeon driver load without the firmwares
+  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
+  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
