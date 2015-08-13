@@ -51,7 +51,7 @@ build() {
 
 package_libqgit2-qt4-git() {
   pkgdesc='libgit2 bindings for Qt4. (GIT Version)'
-  depends=('qt4' 'libgit2-git')
+  depends=('qt4' 'libgit2')
   conflicts=('libqgit2-qt4' 'libqgit2-qt5')
   provides=('libqgit2-qt4')
 
@@ -60,7 +60,7 @@ package_libqgit2-qt4-git() {
 
 package_libqgit2-qt5-git() {
   pkgdesc='libgit2 bindings for Qt5. (GIT Version)'
-  depends=('qt5-base' 'libgit2-git')
+  depends=('qt5-base' 'libgit2')
   conflicts=('libqgit2-qt5' 'libqgit2-qt4')
   provides=('libqgit2-qt5')
 
