@@ -1,13 +1,13 @@
 pkgbase = console-tdm-git
+	pkgdesc = Console display manager based on CDM
 	pkgver = 1
 	pkgrel = 1
-	url = http://qelectrotech.org/
-	arch = i686
-	arch = x86_64
+	url = http://github.com/dopsi/console-tdm
+	arch = any
 	license = GPL
 	depends = xorg-xinit
 	optdepends = dialog: for curses UI
-	provides = qelectrotech
+	provides = console-tdm
 	source = git://github.com/dopsi/console-tdm
 	sha1sums = SKIP
 
