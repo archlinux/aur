@@ -3,7 +3,7 @@
 # Maintainer stable version: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
-pkgbase=bullet
+pkgbase=('bullet-git')
 pkgname=('bullet-git' 'bullet-docs-git')
 pkgver=2.83.6.r2.g6c24193
 pkgrel=1

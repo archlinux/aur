@@ -1,4 +1,4 @@
-pkgbase = bullet
+pkgbase = bullet-git
 	pkgdesc = A 3D Collision Detection and Rigid Body Dynamics Library for games and animation
 	pkgver = 2.83.6.r2.g6c24193
 	pkgrel = 1
