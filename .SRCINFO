@@ -13,6 +13,7 @@ pkgbase = airvpn-beta-bin
 	depends = stunnel
 	provides = airvpn
 	conflicts = airvpn
+	conflicts = airvpn-bin
 	source_i686 = https://airvpn.org/repository/experimental/airvpn_linux_x86_debian.deb
 	md5sums_i686 = 341a03823f6289ed4b66a6cc2cd304e0
 	sha256sums_i686 = 78b0030aa39570b57cb79784cb4480ee2829a60953a3b81066bde2560db3cb21

@@ -10,7 +10,7 @@ url=https://airvpn.org/linux/
 license=(GPL3)
 depends=(gksu mono openvpn stunnel)
 provides=('airvpn')
-conflicts=('airvpn')
+conflicts=('airvpn' 'airvpn-bin')
 install=airvpn.install
 source_i686=("https://airvpn.org/repository/experimental/airvpn_linux_x86_debian.deb")
 source_x86_64=("https://airvpn.org/repository/experimental/airvpn_linux_x64_debian.deb")
@@ -26,7 +26,4 @@ package() {
   msg2 "Moving stuff in place..."
   chmod -R g-w usr
   mv usr "${pkgdir}"
-
-  # License
-  install -Dm644 "$pkgdir"/usr/share/doc/airvpn/copyright "$pkgdir"/usr/share/licenses/airvpn/eula_text.html
 }
