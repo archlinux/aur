@@ -1,7 +1,7 @@
 pkgbase = orgmk-git
 	pkgdesc = Export Org mode documents to HTML, PDF, etc.
 	pkgver = r45.42ceb56
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fniessen/orgmk
 	arch = any
 	license = GPL
