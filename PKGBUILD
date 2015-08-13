@@ -11,6 +11,7 @@ arch=(any)
 url="http://bitbucket.org/$_hgauthor/$_hgname"
 license=('GPL')
 depends=('python')
+makedepends=('python-setuptools')
 options=(!emptydirs)
 
 source=("https://bitbucket.org/$_hgauthor/$_hgname/get/$pkgver.tar.gz")

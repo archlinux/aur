@@ -5,6 +5,7 @@ pkgbase = python-wget
 	url = http://bitbucket.org/techtonik/python-wget
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
 	source = https://bitbucket.org/techtonik/python-wget/get/2.2.tar.gz
