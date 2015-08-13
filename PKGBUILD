@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+  sed -i '/ORGMK_ROOT=\$\(PWD\)/c\ORGMK_ROOT=/usr/share/orgmk' Makefile
   make
 }
 
@@ -31,6 +32,8 @@ package() {
   mkdir -p "${pkgdir}"/usr/share/orgmk
   mkdir -p "${pkgdir}"/usr/bin
   cd "${srcdir}"
+
+
   cp -R ${_pkgname}/* "${pkgdir}"/usr/share/orgmk
 
   ln -s /usr/share/orgmk/bin/* "${pkgdir}"/usr/bin 
