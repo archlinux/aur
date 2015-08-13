@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CdCat the Hyper's CdCatalog
+GenericName=CD/DVD Catalog
+Comment=CD/DVD Catalog Tool
+Type=Application
+Exec=cdcat
+Icon=cdcat
+Categories=DiscBurning;AudioVideo;Video;Application;
+StartupNotify=true
+Terminal=false

@@ -1,0 +1,23 @@
+pkgbase = cdcat
+	pkgdesc = CD/DVD/Media catalog software (Qt based)
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = http://cdcat.sourceforge.net/
+	install = cdcat.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libmediainfo
+	makedepends = libexif
+	depends = qt4
+	depends = libtar
+	depends = lib7zip
+	depends = p7zip
+	depends = crypto++
+	source = http://downloads.sourceforge.net/project/cdcat/cdcat/cdcat-2.3.1/cdcat-2.3.1.tar.bz2
+	source = cdcat.desktop
+	md5sums = b7b4ea3e213620c1126c64125b93e63a
+	md5sums = 919c7e03e085a1af5a1e4d30075e30a7
+
+pkgname = cdcat
+
