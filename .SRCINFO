@@ -1,6 +1,6 @@
 pkgbase = polyml-fixes-git
 	pkgdesc = Poly/ML implementation of Standard ML (latest release + fixes)
-	pkgver = 5.5.2
+	pkgver = 5.5.2r4.88a7241
 	pkgrel = 1
 	url = http://polyml.org
 	arch = i686
