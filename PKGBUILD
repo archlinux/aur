@@ -1,13 +1,14 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=crystal
-pkgver=0.7.5
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 _binary_rel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
 license=('Apache')
 depends=('libunwind' 'gc-static' 'llvm' 'libatomic_ops' 'pcre' 'libpcl' 'libevent')
+makedepends=('libxml2')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git')
 optdepends=('libyaml: For YAML support'
             'gmp: For BigInt support'
@@ -31,10 +32,8 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  if [ "$CARCH" = "x86_64" ]; then # TODO: remove with 0.7.6
-    make spec CRYSTAL_PATH="$srcdir/$pkgname-$pkgver/src" \
-              CRYSTAL_CONFIG_VERSION="$pkgver"
-  fi
+  make spec CRYSTAL_PATH="$srcdir/$pkgname-$pkgver/src" \
+            CRYSTAL_CONFIG_VERSION="$pkgver"
 }
 
 package() {
@@ -53,8 +52,10 @@ package() {
   install -dm755 "$pkgdir/usr/share/doc/crystal"
   cp -av doc     "$pkgdir/usr/share/doc/crystal/api"
   cp -av samples "$pkgdir/usr/share/doc/crystal/"
+
+  install -Dm644 etc/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_crystal"
 }
 
-sha256sums=('e07e6f033f72db00861c68dc71f7d5f1afb00800f77d0cbf1dcb5634e6b95d5e')
-sha256sums_i686=('d0ee8b5d81917c7ae559760793d8b611034590bfb965fe450f3d430d97d56c34')
-sha256sums_x86_64=('e852d176d26e749083005fb7689ff2c28f3a987df62cb29b6dd8e7f417c90a6c')
+sha256sums=('28ba8fd5ccc43be6bfa8069ce2d61134a8fbed0332c81a2d49629b919d1de5b6')
+sha256sums_i686=('6f9d8d7bb3795c590c49fc7da33110ca9977323ff1bd61fbace589ddb44f57b0')
+sha256sums_x86_64=('5fd6781ecf7243d2a71ec9c1aa93ad6a1fadef0d231c329280720c271183c1ff')
