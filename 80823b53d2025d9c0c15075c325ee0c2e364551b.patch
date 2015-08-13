@@ -1,0 +1,58 @@
+From 80823b53d2025d9c0c15075c325ee0c2e364551b Mon Sep 17 00:00:00 2001
+From: Marcel Krems <m.krems@software-vision.eu>
+Date: Tue, 28 Oct 2014 13:45:06 +0100
+Subject: [PATCH] Add CMake tests.
+
+Task-number: QTBUG-41445
+Change-Id: Ia3b903aa41d5b8c5de72e9a31ccd37b222e72b5c
+Reviewed-by: Stephen Kelly <steveire@gmail.com>
+---
+ tests/auto/auto.pro             |  1 +
+ tests/auto/cmake/CMakeLists.txt | 14 ++++++++++++++
+ tests/auto/cmake/cmake.pro      |  7 +++++++
+ 3 files changed, 22 insertions(+)
+ create mode 100644 tests/auto/cmake/CMakeLists.txt
+ create mode 100644 tests/auto/cmake/cmake.pro
+
+diff --git a/tests/auto/auto.pro b/tests/auto/auto.pro
+index e82032e..1eadad7 100644
+--- a/tests/auto/auto.pro
++++ b/tests/auto/auto.pro
+@@ -2,3 +2,4 @@ TEMPLATE = subdirs
+ 
+ SUBDIRS += headersclean
+ SUBDIRS += qftp
++SUBDIRS += cmake
+diff --git a/tests/auto/cmake/CMakeLists.txt b/tests/auto/cmake/CMakeLists.txt
+new file mode 100644
+index 0000000..1221436
+--- /dev/null
++++ b/tests/auto/cmake/CMakeLists.txt
+@@ -0,0 +1,14 @@
++
++cmake_minimum_required(VERSION 2.8)
++
++project(qmake_cmake_files)
++
++enable_testing()
++
++find_package(Qt5Core REQUIRED)
++
++include("${_Qt5CTestMacros}")
++
++test_module_includes(
++    Ftp QFtp
++)
+diff --git a/tests/auto/cmake/cmake.pro b/tests/auto/cmake/cmake.pro
+new file mode 100644
+index 0000000..961dc81
+--- /dev/null
++++ b/tests/auto/cmake/cmake.pro
+@@ -0,0 +1,7 @@
++
++# Cause make to do nothing.
++TEMPLATE = subdirs
++
++CMAKE_QT_MODULES_UNDER_TEST = ftp
++
++CONFIG += ctest_testcase
