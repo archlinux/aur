@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 install="${pkgname}.install"
 depends_x86_64=('lib32-popt' 'lib32-libpng12' 'lib32-libtiff4' 'lib32-libusb-compat' 'lib32-libxml2' 'lib32-gtk2')
-depends_i686=('popt' 'libpng12' 'lib32-libtiff4' 'libusb-compat' 'libxml2' 'gtk2')
+depends_i686=('popt' 'libpng12' 'libtiff4' 'libusb-compat' 'libxml2' 'gtk2')
 makedepends=('deb2targz' 'sed')
 source=('http://gdlp01.c-wss.com/gds/2/0100005512/01/cnijfilter-mg7100series-4.00-1-deb.tar.gz'
          'http://gdlp01.c-wss.com/gds/9/0100005529/01/scangearmp-mg7100series-2.20-1-deb.tar.gz'
