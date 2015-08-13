@@ -1,0 +1,16 @@
+pkgbase = qtftp-qt5
+	pkgdesc = Qt bindings for FTP
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://qt.gitorious.org/qt/qtftp/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	options = staticlibs
+	source = qtftp-qt5::git+https://gitorious.org/qt/qtftp.git#commit=80823b53d2025d9c0c15075c325ee0c2e364551b
+	md5sums = SKIP
+
+pkgname = qtftp-qt5
+
