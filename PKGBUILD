@@ -5,17 +5,17 @@
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
-# Based on linux-grsec package
+# Based on linux-grsec-lts package
 
 pkgbase=linux-libre-lts-grsec-knock
 _pkgbasever=3.14-gnu
-_pkgver=3.14.49-gnu
+_pkgver=3.14.50-gnu
 _grsecver=3.1
-_timestamp=201508032312
+_timestamp=201508102128
 _knockpatchver=3.16_1
 
-_replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
-_replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
+_replacesarchkernel=('linux-grsec-knock-lts') # '%' gets replaced with _kernelname
+_replacesoldkernels=('kernel26-grsec-knock-lts' 'kernel26-libre%') # '%' gets replaced with _kernelname
 _replacesoldmodules=() # '%' gets replaced with _kernelname
 
 _srcname=linux-${_pkgbasever%-*}
@@ -50,12 +50,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
         '0006-genksyms-fix-typeof-handling.patch'
-        'gcc5_buildfixes.diff')
+        'gcc5_buildfixes.diff'
+        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            '8146f5e0dda01cb95bf8841bc76acea42fd04a2e864cbe2ecfe55092453cc929'
+            '811f8820610d9c8622229151c638f08d62b693242cac6b0c04428b6f5df863a2'
             'SKIP'
-            'caf36e8cbef0015a20d23b281b51e09041ce055836c2eb1b4864b32693f4eddb'
+            '64ca1482a0eb070df19c279dae3a34f9352e1cf6d7adce043497452891fde1f5'
             'SKIP'
             '70cbe962aa01989ffa83490bb0765d6e4c781f6133dc8d768d84bd6716ac0209'
             'SKIP'
@@ -65,15 +66,16 @@ sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '55d6a5064c87789eea62b8e449958e6bd03b07a3d2301652562ed52552cf45c2'
-            '554a075b4d6fda2d5da3b8eb078dadcb6242a81f9f9328062d3fb66840ba45b0'
+            'f80f832876b6b4aa54076215e36eb1bb9b9fbe11e05b92c50213f53d7fab93f6'
+            'd1188db8146553cbe23280e721e569b704254f67f4bcd7500a5c9ec9c9b283af'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
             '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
             '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
             'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a')
+            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a'
+            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -133,6 +135,10 @@ prepare() {
   # Fix generation of symbol CRCs
   # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
   patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
+
+  # Make the radeon driver load without the firmwares
+  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
+  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
