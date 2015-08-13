@@ -3,7 +3,7 @@
 
 pkgname='fortune-mod-bofh-excuses'
 pkgver=20121125.190600
-pkgrel=1
+pkgrel=2
 pkgdesc='BOFH excuses fortune cookie files'
 arch=('any')
 url='http://www.cs.wisc.edu/~ballard/bofh/'
@@ -24,10 +24,11 @@ pkgver()
     local lastmod=$(curl -fL -I "${_dlurl}" | tac | sed -n '/^Last-modified:[[:space:]]*/I { s///p; q }')
 
     if [ -z "$lastmod" ]; then
-        error "Could not determine time of last modification, see above for possible errors."
+        warning "Could not determine time of last modification, not updating pkgver."
+        return 1
     fi
 
-    date -ud "${lastmod}" '+%Y%m%d.%H%M%S'
+    date -ud "${lastmod}" '+%Y%m%d.%H%M%S' || { warning "Failed to generate pkgver, it will not be updated."; return 1; }
 }
 
 prepare()
