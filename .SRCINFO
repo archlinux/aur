@@ -5,7 +5,7 @@ pkgbase = wuala
 	epoch = 1
 	url = http://www.wuala.com/
 	arch = any
-	license = custom
+	license = custom:wuala
 	depends = java-runtime
 	depends = rpcbind
 	depends = nfs-utils
@@ -15,11 +15,11 @@ pkgbase = wuala
 	source = wuala.png
 	source = wuala.desktop
 	source = LICENSE
-	md5sums = 91192a3bc4d345a034b86e2fe95d3dd7
-	md5sums = 37f5021c623c4b2fcad6d274a05de0dd
-	md5sums = 5c0d0ec01eaa7075fc7e3197d2a0a2ee
-	md5sums = 6073b5fdda17ab8b423bde329adfa80f
-	md5sums = 1085f1b2c391b8c72cb4b53b15191336
+	sha256sums = bf06e729fcfadcd88b2c84b5117bc292e838ad5dbd1d881fb5f689753533ccf7
+	sha256sums = 1ca6b850dce553a2188e7be87d603d9c7d830ddcab9e61eaffa6ef92f764cd7b
+	sha256sums = 20cee0643762403e5498dc3c0b9d1f958c21bfd1b2c776d6a2ab7a5989fb6e80
+	sha256sums = 7877eac17e3d447f52979bbc21e32b31267382a5cb418463ba47a9b259953a53
+	sha256sums = ff272cf434454a903a7f4eba82a6c34e48cc58eebb53c9f232028b61e2af8b31
 
 pkgname = wuala
 
