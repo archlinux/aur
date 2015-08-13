@@ -1,6 +1,6 @@
 pkgbase = mdadm-git
 	pkgdesc = create, manage, and monitor Linux mdraid block device RAID arrays
-	pkgver = mdadm.3.3.4.r22.gccc93b3
+	pkgver = 3.3.4.r22.gccc93b3
 	pkgrel = 1
 	url = http://neil.brown.name/blog/mdadm
 	install = mdadm.install
@@ -9,7 +9,7 @@ pkgbase = mdadm-git
 	license = GPL
 	makedepends = git
 	depends = glibc
-	provides = mdadm
+	provides = mdadm=3.3.4
 	conflicts = mkinitcpio<0.7
 	conflicts = mdadm
 	replaces = raidtools

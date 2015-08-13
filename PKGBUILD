@@ -7,7 +7,7 @@
 set -u
 _pkgname='mdadm'
 pkgname="${_pkgname}-git"
-pkgver=mdadm.3.3.4.r22.gccc93b3
+pkgver=3.3.4.r22.gccc93b3
 pkgrel=1
 pkgdesc='create, manage, and monitor Linux mdraid block device RAID arrays'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL')
 #url='https://github.com/neilbrown/mdadm'
 url='http://neil.brown.name/blog/mdadm'
 conflicts=('mkinitcpio<0.7' "${_pkgname}")
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%.r*}")
 makedepends=('git')
 depends=('glibc')
 #optdepends=('lvm2' 'dm-crypt' 'bcache')
@@ -41,7 +41,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd mdadm_git*/
-  git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  git describe --long | sed -e 's/^mdadm-//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
 }
 
 prepare() {
