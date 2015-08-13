@@ -1,23 +1,23 @@
-# Maintainer: Patrice Peterson <runiq at archlinux dot us>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Patrice Peterson <runiq at archlinux dot us>
+
 pkgname=vim-tagbar
-_pkgname=tagbar
 pkgver=2.6.1
-pkgrel=2
-pkgdesc="Vim plugin that displays tags in a window, ordered by class etc."
+pkgrel=3
+pkgdesc='Vim plugin to browse the tags of the current file and get an overview of its structure'
 arch=('any')
-url="http://majutsushi.github.com/tagbar/"
+url='https://majutsushi.github.io/tagbar/'
 license=('custom:vim')
 depends=('ctags>=5.5' 'vim>=7.0')
 makedepends=('unzip')
 install=vimdoc.install
-source=($pkgname-$pkgver.tar.gz::"https://github.com/majutsushi/$_pkgname/tarball/v$pkgver"
-        "LICENSE")
-md5sums=('74043a78d072fa70eb449e206602d3dd'
-         'cd49910a3dde6fe0a7e24ebe8cbf7066')
+source=("https://github.com/majutsushi/${pkgname#vim-}/archive/v${pkgver}.tar.gz"
+        'LICENSE')
+sha256sums=('c061a7e0a45a166f4558b31e6c47b9fd701f5fa1319527b65a268ea054dea5fb'
+            'c05eac35d5c38c79d85a85bf437e13b59c1f1abdfab3a2701dcd48fc61b9677f')
 
 package() {
-  cd majutsushi-tagbar-e872e67
-
+  cd ${pkgname#vim-}-${pkgver}
   _installpath="${pkgdir}/usr/share/vim/vimfiles"
   install -Dm644 doc/tagbar.txt ${_installpath}/doc/tagbar.txt
   install -Dm644 autoload/tagbar.vim ${_installpath}/autoload/tagbar.vim
@@ -25,4 +25,3 @@ package() {
   install -Dm644 syntax/tagbar.vim ${_installpath}/syntax/tagbar.vim
   install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/license.txt
 }
-# vim:set ts=2 sw=2 et:

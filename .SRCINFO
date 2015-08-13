@@ -1,18 +1,18 @@
 pkgbase = vim-tagbar
-	pkgdesc = Vim plugin that displays tags in a window, ordered by class etc.
+	pkgdesc = Vim plugin to browse the tags of the current file and get an overview of its structure
 	pkgver = 2.6.1
-	pkgrel = 2
-	url = http://majutsushi.github.com/tagbar/
+	pkgrel = 3
+	url = https://majutsushi.github.io/tagbar/
 	install = vimdoc.install
 	arch = any
 	license = custom:vim
 	makedepends = unzip
 	depends = ctags>=5.5
 	depends = vim>=7.0
-	source = vim-tagbar-2.6.1.tar.gz::https://github.com/majutsushi/tagbar/tarball/v2.6.1
+	source = https://github.com/majutsushi/tagbar/archive/v2.6.1.tar.gz
 	source = LICENSE
-	md5sums = 74043a78d072fa70eb449e206602d3dd
-	md5sums = cd49910a3dde6fe0a7e24ebe8cbf7066
+	sha256sums = c061a7e0a45a166f4558b31e6c47b9fd701f5fa1319527b65a268ea054dea5fb
+	sha256sums = c05eac35d5c38c79d85a85bf437e13b59c1f1abdfab3a2701dcd48fc61b9677f
 
 pkgname = vim-tagbar
 
