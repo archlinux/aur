@@ -1,0 +1,29 @@
+pkgbase = openra-bleed
+	pkgdesc = An open-source implementation of the Red Alert engine using .NET/mono and OpenGL (git version)
+	pkgver = r17766.9dabf90
+	pkgrel = 1
+	url = http://openra.net
+	install = openra-bleed.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra
+	provides = openra-dedicated-bleed
+	conflicts = openra
+	conflicts = openra-dedicated-bleed
+	source = openra-bleed-src::git+https://github.com/OpenRA/OpenRA.git#branch=bleed
+	sha512sums = SKIP
+
+pkgname = openra-bleed
+
