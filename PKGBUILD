@@ -8,10 +8,9 @@ pkgrel=1
 pkgdesc='Synergy upstream 1.6 branch. 1.7.x is very unstable on Linux.'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl')
-makedepends=('libxt' 'cmake' 'qt5-base' 'unzip')
+depends=('libxtst' 'qt5-base' 'avahi')
+makedepends=('libxt' 'cmake' 'unzip')
 optdepends=(
-  'qt5-base: gui support'
   'openssl: encryption support'
 )
 license=('GPL2')
