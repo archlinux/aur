@@ -1,7 +1,7 @@
 # Maintainer: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=seafile-shared
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Shared components of seafile: seafile-daemon, libseafile, libseafile python bindings, manuals"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -34,4 +34,4 @@ package ()
 
 	install -D -m644 ${srcdir}/seafile-${pkgver}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 }
-sha256sums=('ebc47d055c48bc3832498415ee4ca95e818ca9a018796c34116843bb32e7794f')
+sha256sums=('56791c096dfde0283d8280102139f7c7df88789a4152a1a037c8e573087ac9ce')
