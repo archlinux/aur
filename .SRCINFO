@@ -1,0 +1,12 @@
+pkgbase = gtk-theme-elegant-brit
+	pkgdesc = This is the Elegant Brit gtk theme ported to gtk3. Includes gtk2, gtk3, Metacity and GNOME Shell themes.
+	pkgver = 20150813
+	pkgrel = 3
+	url = https://github.com/corebob/gtk-theme-elegant-brit
+	arch = any
+	license = GPL3
+	source = https://github.com/corebob/gtk-theme-elegant-brit/archive/master.zip
+	md5sums = 5ddcb951e8fa74b2f544df70c6ea5de6
+
+pkgname = gtk-theme-elegant-brit
+
