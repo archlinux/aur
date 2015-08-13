@@ -1,7 +1,8 @@
 # Maintainer: Justin R. St-Amant <jstamant24 at gmail dot com>
 pkgname=universal-gcode-sender-git
 pkgver=1.0.8.r125.g48452ca
-pkgrel=1
+#TODO already raised to 2 for next submition
+pkgrel=2
 pkgdesc="Java based GRBL compatible cross-paltform G-Code sender"
 arch=('any')
 url="https://github.com/winder/Universal-G-Code-Sender"
@@ -36,7 +37,7 @@ check() {
 
 package() {
   cd $srcdir
-  install -Dm 755 universal-gcode-sender.sh -T $pkgdir/usr/bin/universal-gcode-sender
+  install -Dm 755 universal-gcode-sender.sh -T $pkgdir/usr/bin/ugs
   cd $pkgname
   install -Dm 644 target/UniversalGcodeSender.jar \
                -t $pkgdir/usr/share/java
