@@ -20,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -46,6 +46,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
         '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
         'bitmap-enable-booting-for-dm-md-raid1.patch'
+        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         'change-default-console-loglevel.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
@@ -59,13 +60,14 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '6ed39920f77f08b9e309d16ba815c58081eeb5fed6057778ebe8ba278df83b2c'
-            '068a1ae5ab0455a5eef0b51f9616082a30943f1cc0cdd307d9d371c78a23153e'
+            '98fc866cef6a9e58abbf2ad41895cd03a31fbe766b25d3048802eec24de911d6'
+            '7b2087cf14036ded27a2599a2f5dda1b19f16e07c5fb4f0aac88ba522ced2699'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
             'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
             '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
             '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
+            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -116,6 +118,10 @@ prepare() {
   # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
   patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
 
+  # Make the radeon driver load without the firmwares
+  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
+  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -124,7 +130,7 @@ prepare() {
   cat "${srcdir}/config.${CARCH}" > ./.config
 
   # append pkgrel to extraversion
-  sed -ri "s|^(EXTRAVERSION =.*\S).*|\1-${_rtpatchver}-${pkgrel}|" Makefile
+  sed -ri "s|^(EXTRAVERSION =.*\S).*|\1-${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
