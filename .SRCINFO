@@ -1,0 +1,27 @@
+pkgbase = xfdashboard
+	pkgdesc = Maybe a Gnome shell like dashboard for Xfce
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/applications/xfdashboard/start
+	install = xfdashboard.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = libwnck3
+	depends = clutter
+	depends = glib2
+	depends = xfconf
+	depends = dbus-glib
+	depends = garcon
+	depends = gtk3
+	depends = libxfce4util
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxinerama
+	depends = xdg-utils
+	source = http://archive.xfce.org/src/apps/xfdashboard/0.4/xfdashboard-0.4.2.tar.bz2
+	sha256sums = d00f8378b5813f307a54d97150cad1ba9f5fc2c4e175e127b787610d603cec3a
+
+pkgname = xfdashboard
+
