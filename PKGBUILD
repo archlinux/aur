@@ -11,7 +11,9 @@ pkgdesc="A new way of storing, sharing and publishing files on the Internet.  It
 arch=("any")
 url="http://www.wuala.com/"
 license=("custom:wuala")
-depends=("java-runtime" "rpcbind" "nfs-utils")
+depends=('java-runtime')
+optdepends=('fuse: filesystem integration'
+            'xdg-utils: desktop integration')
 options=(!emptydirs)
 source=("http://cdn.wuala.com/repo/other/wuala.tar.gz"
 	"0001-fix-loader3-location.patch"
