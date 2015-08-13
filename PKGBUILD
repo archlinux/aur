@@ -8,13 +8,13 @@ pkgdesc="A fast multi-platform image stacking and blending software, developed p
 arch=('i686' 'x86_64')
 url="http://www.markus-enzweiler.de/StarStaX/StarStaX.html"
 licence='freeware'
-depends=('glibc' 'java-runtime' 'freeglut')
+depends=('libpng12' 'glibc' 'java-runtime' 'freeglut')
 optdepends=('libjpeg6-turbo: working with jpg images')
 
 source=('starstax' 'starstax.desktop')
 
-source_i686=("${pkgname}-${pkgver}.tgz::https://doc-0c-7o-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/j0ea8dg3fbr06bd9kprl3lpfvqse5b6s/1435384800000/13461038729986161175/*/0B7ixs0uSdAuBRjI4QmNVanRzN1U?e=download")
-source_x86_64=("${pkgname}-${pkgver}.tgz::https://doc-08-7o-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/vpof7apbqci1gmp647rsrgp1916mr1fa/1435384800000/13461038729986161175/*/0B7ixs0uSdAuBSHl2RW5UZU9zM2M?e=download")
+source_i686=("${pkgname}-${pkgver}.tgz::https://docs.google.com/uc?export=download&id=0B7ixs0uSdAuBRjI4QmNVanRzN1U")
+source_x86_64=("${pkgname}-${pkgver}.tgz::https://docs.google.com/uc?export=download&id=0B7ixs0uSdAuBSHl2RW5UZU9zM2M")
 
 sha256sums=('07ddaa7839d7af1cfef937f3098b6d5ff00eb1d4d57529bbbfdcb755ad642cda'
             'd697cea41d7e28a24b170c447af41e2edc8e2ee6ce7e664b94d5c74d86827a59') 
