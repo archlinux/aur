@@ -8,12 +8,13 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-tomoyo       # Build kernel with a different name
 _srcname=linux-4.1
-pkgver=4.1.3
+pkgver=4.1.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+provides=('linux')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -30,7 +31,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
+            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
             'SKIP'
             'f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d'
             '58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755'
