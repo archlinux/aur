@@ -1,0 +1,17 @@
+pkgbase = lorem-ipsum-generator
+	pkgdesc = Generates random lorem ipsum text
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://code.google.com/p/lorem-ipsum-generator/
+	arch = any
+	license = New BSD License
+	makedepends = python2-distribute
+	makedepends = python2
+	makedepends = pygtk
+	makedepends = gtk
+	options = !emptydirs
+	source = http://lorem-ipsum-generator.googlecode.com/files/lorem-ipsum-generator-0.3.tar.gz
+	md5sums = 318b3c890ffa575c6467d033785b2f0f
+
+pkgname = lorem-ipsum-generator
+
