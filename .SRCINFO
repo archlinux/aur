@@ -1,0 +1,14 @@
+pkgbase = compiz-alone-utils-git
+	pkgdesc = A few Compiz Standalone utilities based off of some scripts that come with Openbox.
+	pkgver = 20110403
+	pkgrel = 1
+	url = https://github.com/ShadowKyogre/Compiz-Standalone-Utils
+	install = compiz-alone-utils.install
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = pyxdg: for the xdg-autostart script
+	conflicts = compiz-alone-utils
+
+pkgname = compiz-alone-utils-git
+

@@ -1,0 +1,11 @@
+post_install() {
+cat <<-EndOfMessage
+Place autostart.sh in ~/.config/compiz
+It can be found in /etc/xdg/compiz
+EndOfMessage
+/bin/true
+}
+
+post_upgrade() {
+	post_install
+}
