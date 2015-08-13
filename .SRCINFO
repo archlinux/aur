@@ -1,0 +1,16 @@
+pkgbase = jrnl-git
+	pkgdesc = A simple command line journal application that stores your journal in a plain text file
+	pkgver = 1.9.7.r16.g15ef974
+	pkgrel = 1
+	url = http://maebert.github.io/jrnl/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	conflicts = jrnl
+	options = !emptydirs
+	source = jrnl::git+https://github.com/maebert/jrnl.git
+	md5sums = SKIP
+
+pkgname = jrnl-git
+
