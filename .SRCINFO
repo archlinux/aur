@@ -1,0 +1,30 @@
+pkgbase = emerald
+	pkgdesc = Emerald window decorator
+	pkgver = 0.8.10
+	pkgrel = 2
+	url = http://blog.northfield.ws/compiz-0-8-10-release-announcement/
+	install = emerald.install
+	arch = i686
+	arch = x86_64
+	groups = compiz-fusion
+	groups = compiz-fusion-kde
+	groups = compiz-fusion-gtk
+	license = GPL
+	makedepends = intltool
+	makedepends = pkg-config
+	makedepends = gettext
+	depends = compiz-core>=0.8.10
+	depends = libwnck
+	depends = gtk2
+	depends = libxres
+	depends = shared-mime-info
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	conflicts = emerald0.9
+	options = !libtool
+	source = http://www.northfield.ws/projects/compiz/releases/0.8.10/emerald.tar.gz
+	sha1sums = 01544a6e97acc954ea924403904f32c7c556302f
+
+pkgname = emerald
+
