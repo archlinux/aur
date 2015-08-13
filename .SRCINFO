@@ -1,0 +1,34 @@
+pkgbase = compiz-core
+	pkgdesc = This is the latest stable release of Compiz without DE deps
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = http://blog.northfield.ws/compiz-0-8-10-release-announcement/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MIT
+	makedepends = intltool
+	makedepends = gconf
+	makedepends = libice
+	depends = startup-notification
+	depends = librsvg
+	depends = dbus
+	depends = glu
+	depends = libxslt
+	depends = libxrandr
+	depends = libsm
+	depends = libxcomposite
+	depends = libxinerama
+	provides = compiz-core=0.8.10
+	conflicts = compiz
+	conflicts = compiz-core
+	conflicts = compiz-core-git
+	conflicts = compiz-git
+	options = !libtool
+	options = !emptydirs
+	source = http://www.northfield.ws/projects/compiz/releases/0.8.10/core.tar.gz
+	md5sums = a502e17eb7f61c5c66ec889c019a1f62
+
+pkgname = compiz-core
+
