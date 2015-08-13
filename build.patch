@@ -1,0 +1,21 @@
+diff a/src/Makefile b/src/Makefile
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -2,7 +2,7 @@
+ CPPFLAGS= -O2 -Wall -W
+ CPPFLAGS+= $(shell fltk-config --cflags)
+ LFLAGS= -ljack -lm
+-LFLAGS+= $(shell fltk-config --ldflags) 
++LFLAGS+= -pthread $(shell fltk-config --ldflags) 
+ FLUIDFLAGS=
+ 
+ VERSION=$(shell cat VERSION)
+@@ -26,7 +26,7 @@ OBJECTS=main.o window_vocoder.o window_vocoder.fl.o window_vocoder_band.o window
+ 	$(FLUID) $(FLUIDFLAGS) -c $<
+ 
+ vocoder: $(OBJECTS)
+-	$(LD) $(LFLAGS) -o $@ $(OBJECTS)
++	$(LD) -o $@ $(OBJECTS) $(LFLAGS)
+ 
+ 
+ # Tool rules #fold00
