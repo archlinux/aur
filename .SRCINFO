@@ -1,7 +1,7 @@
 pkgbase = libjpeg6-turbo
 	pkgdesc = libjpeg derivative with accelerated baseline JPEG compression and decompression
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libjpeg-turbo.virtualgl.org/
 	arch = i686
 	arch = x86_64
