@@ -1,6 +1,6 @@
 pkgbase = oglplus
 	pkgdesc = A C++ wrapper for modern OpenGL
-	pkgver = 0.63
+	pkgver = 0.64
 	pkgrel = 1
 	url = http://oglplus.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = oglplus
 	depends = freeglut
 	depends = glew
 	provides = oglplus
-	source = http://downloads.sourceforge.net/project/oglplus/oglplus-0.63.x/oglplus-0.63.0.tar.gz
-	md5sums = b54aa0e499f06e139ebcdbc552adba6a
+	source = http://downloads.sourceforge.net/project/oglplus/oglplus-0.64.x/oglplus-0.64.0.tar.gz
+	md5sums = c67593b02975a939b457f92532f73306
 
 pkgname = oglplus
 
