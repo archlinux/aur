@@ -1,0 +1,16 @@
+pkgbase = lib32-libtiff4
+	pkgdesc = A package that installs libtiff.so.4
+	pkgver = 3.9.5
+	pkgrel = 8
+	epoch = 1
+	url = http://bbs.archlinux.org/viewtopic.php?id=45393
+	arch = x86_64
+	groups = lib32
+	license = custom
+	depends = lib32-zlib
+	depends = lib32-libjpeg-turbo
+	source = http://security.ubuntu.com/ubuntu/pool/main/t/tiff/libtiff4_3.9.5-2ubuntu1.8_i386.deb
+	sha256sums = 1959867388974afbc5d14e22c26654949ec578917fbb3ea7cfa1790859080990
+
+pkgname = lib32-libtiff4
+
