@@ -1,0 +1,17 @@
+pkgbase = mozplugger-aur
+	pkgdesc = A Mozilla & Firefox multimedia plugin.
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = http://mozplugger.mozdev.org
+	install = mozplugger-aur.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = m4
+	depends = libx11
+	backup = etc/mozpluggerrc
+	source = http://mozplugger.mozdev.org/files/mozplugger-2.1.6.tar.gz
+	sha256sums = 294cf06ad37b8d89e57ee9c4dc9e7549fd1b0dcec9769171d65dad36099e5fef
+
+pkgname = mozplugger-aur
+
