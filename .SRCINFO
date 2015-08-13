@@ -9,7 +9,7 @@ pkgbase = nvidia-ck-fbcondecor
 	license = custom:NVIDIA
 	makedepends = linux-ck-fbcondecor-headers
 	depends = linux-ck-fbcondecor
-	depends = nvidia-libgl
+	depends = libgl
 	depends = nvidia-utils=355.06
 	conflicts = nvidia-340xx-ck
 	conflicts = nvidia-304xx-ck
