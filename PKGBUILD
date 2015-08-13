@@ -1,48 +1,31 @@
 # Maintainer: Ramana Kumar <firstname at member.fsf.org>
 pkgname=pacnews-git
-pkgver=20130814
+pkgver=r1062.1a83f29
 pkgrel=1
 pkgdesc="Find .pacnew files and merge them with vimdiff"
 arch=(any)
-url="http://github.com/pbrisbin/scripts/blob/master/pacnews"
+url="https://github.com/pbrisbin/dotfiles/blob/master/tag-scripts/local/bin/pacnews"
 license=('unknown')
 groups=()
 depends=()
 makedepends=('git')
-provides=()
-conflicts=()
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
 install=
-source=()
+source=("git+https://github.com/pbrisbin/dotfiles.git")
 noextract=()
-md5sums=() #generate with 'makepkg -g'
+md5sums=('SKIP')
 
-_gitroot="git://github.com/pbrisbin/scripts.git"
-_gitname="scripts"
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+pkgver() {
+	cd "$srcdir/dotfiles"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+	cd "$srcdir/dotfiles/tag-scripts/local/bin"
   mkdir -p "$pkgdir/usr/bin"
   install ${pkgname%-git} "$pkgdir/usr/bin/"
 }
