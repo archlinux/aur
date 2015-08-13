@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-rugged
-pkgver=0.23.1
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="Ruby binding to the libgit2 linkable library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/libgit2/rugged"
 license=('MIT')
 depends=('libgit2' 'ruby')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('66ab84e9d20e33ed8588776aa7dbd60847ea1b8d5cb034d5b75c9e6caa4d218c')
+sha256sums=('6dd00edb3cbe7648a2f040ef94590f916e63c9eff82f15bfd2d21c9ef124375e')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 
 package() {
