@@ -1,12 +1,13 @@
 pkgbase = onioncat
 	pkgdesc = An IP-Transparent Tor Hidden Service Connector
 	pkgver = 0.2.2.r569
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cypherpunk.at/onioncat/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = tor
+	depends = net-tools
 	source = http://www.cypherpunk.at/ocat/download/Source/0.2.2/onioncat-0.2.2.r569.tar.gz
 	source = http://www.cypherpunk.at/ocat/download/Source/0.2.2/onioncat-0.2.2.r569.tar.gz.asc
 	md5sums = 9e38a26947e30594c91ea870d2aa2c65
