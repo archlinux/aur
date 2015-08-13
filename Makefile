@@ -15,7 +15,7 @@ static: libircclient.a
 shared_mingw: libircclient.dll
 
 libircclient.dll: $(OBJS)
-	$(CC) -shared -s -o libircclient.dll -Wl,-out-implib,libircclient.dll.a $(OBJS) ../../src/libircclient.def -lkernel32 -lwsock32  -lz -lwsock32 -lgdi32 -lkernel32
+	$(CC) -shared -s -o libircclient.dll -Wl,-out-implib,libircclient.dll.a $(OBJS) ../../src/libircclient.def -lkernel32 -lwsock32 -lwsock32 -lgdi32 -lkernel32
 
 libircclient.a: $(OBJS)
 	$(AR) libircclient.a $(OBJS)
