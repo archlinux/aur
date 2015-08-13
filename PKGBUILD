@@ -3,7 +3,7 @@
 
 pkgbase=tlp-git
 pkgname=('tlp-git' 'tlp-rdw-git')
-pkgver=0.7.r40.ce9e638
+pkgver=0.8.r0.6f7bca9
 pkgrel=1
 arch=('any')
 url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd tlp
 
-  tag='0.7'
+  tag='0.8'
 
   echo "${tag}.r$(git rev-list --count ${tag}..HEAD).$(git rev-parse --short HEAD)"
 }
