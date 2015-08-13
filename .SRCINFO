@@ -1,6 +1,6 @@
 pkgbase = libqgit2-git
 	pkgdesc = libgit2 bindings for Qt. (GIT Version)
-	pkgver = 0.22.1.r368.207e7b6
+	pkgver = 0.22.1.r369.bc8e7b0
 	pkgrel = 1
 	url = https://projects.kde.org/projects/playground/libs/libqgit2
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libqgit2-git
 	makedepends = git
 	makedepends = qt5-base
 	makedepends = qt4
-	makedepends = libgit2-git
+	makedepends = libgit2
 	makedepends = doxygen
 	source = git://anongit.kde.org/libqgit2.git
 	sha1sums = SKIP

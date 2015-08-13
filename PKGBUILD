@@ -2,20 +2,26 @@
 
 pkgbase=libqgit2-git
 pkgname=('libqgit2-qt4-git' 'libqgit2-qt5-git')
-pkgver=0.22.1.r368.207e7b6
+pkgver=0.22.1.r369.bc8e7b0
 pkgrel=1
 pkgdesc='libgit2 bindings for Qt. (GIT Version)'
 arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/playground/libs/libqgit2"
+url='https://projects.kde.org/projects/playground/libs/libqgit2'
 license=('GPL2')
-makedepends=('cmake' 'git' 'qt5-base' 'qt4' 'libgit2-git' 'doxygen')
+makedepends=('cmake'
+             'git'
+             'qt5-base'
+             'qt4'
+             'libgit2'
+             'doxygen'
+             )
 source=('git://anongit.kde.org/libqgit2.git')
 sha1sums=('SKIP')
 
 pkgver() {
   cd libqgit2
-  _ver="$(cat qgit2.h | grep LIBQGIT2_VERSION | cut -d '"' -f2)"
-  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat qgit2.h | grep -m1 LIBQGIT2_VERSION | cut -d '"' -f2)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -25,13 +31,12 @@ prepare() {
 build() {
   cd "${srcdir}/build-qt4"
   cmake ../libqgit2 \
-    -DQT4_BUILD=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
     -DLIBGIT2_TESTS=OFF \
     -DBUILD_TESTS=OFF \
-    -DINSTALL_INC=/usr/include
+    -DQT4_BUILD=ON
   make
 
   cd "${srcdir}/build-qt5"
@@ -40,8 +45,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
     -DLIBGIT2_TESTS=OFF \
-    -DBUILD_TESTS=OFF \
-    -DINSTALL_INC=/usr/include
+    -DBUILD_TESTS=OFF
   make
 }
 
