@@ -1,5 +1,5 @@
 pkgbase = lib32-libtiff4
-	pkgdesc = A package that installs libtiff.so.4
+	pkgdesc = Library for manipulation of TIFF images (32 bit, legacy version, provides libtiff.so.4)
 	pkgver = 3.9.5
 	pkgrel = 8
 	epoch = 1

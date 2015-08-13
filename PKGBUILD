@@ -5,7 +5,7 @@ pkgver=3.9.5
 _pkgrel32=2ubuntu1.8
 pkgrel=8
 epoch=1
-pkgdesc="A package that installs libtiff.so.4"
+pkgdesc="Library for manipulation of TIFF images (32 bit, legacy version, provides libtiff.so.4)"
 arch=('x86_64')
 url="http://bbs.archlinux.org/viewtopic.php?id=45393"
 license=('custom')
