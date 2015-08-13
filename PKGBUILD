@@ -2,8 +2,8 @@
 # Maintainer: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3
-_srcname=linux-4.1
-pkgver=4.1.1
+_srcname=linux-4.2
+pkgver=4.2.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/matthewwardrop/linux-surfacepro3"
@@ -18,27 +18,29 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        '0001-block-loop-convert-to-per-device-workqueue.patch'
-        '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
         'change-default-console-loglevel.patch'
+	'0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
+        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
+        '0001-fix-bridge-regression.patch'
         'cam.patch'
         'buttons.patch'
         'multitouch.patch'
         'surface3-touchpad.conf'
         )
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '48a813fb6795153f6906759501bea9e290db528894d1c0726667efc8e55dd7ad'
+            '8b4578f1e1dcfbef1e39c39b861d4715aa99917af0b7c2dc324622d65884dcb5'
             'SKIP'
-            '765ac92c574b44c4e15fa6cdb74b0b7294f3d9b67a8b139635a9013ce86fb666'
-            '026e9d061c0d9ef72e6b05308e16bd7b842c1ee837996bfe25251a33d33d35c4'
+            'cca7068bfe075128ef67449763eeb56a737d29b261f0e67b6f7930a261c8957c'
+            '3cc5befdf5482e150714c12e05cacbfe92571cc327bc5ea4f0fd452f3c5f3d2d'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
-            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'            
+            '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
+            '6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3'
+            '0a8fe4434e930d393c7983e335842f6cb77ee263af5592a0ca7e14bae7296183'
             'a6c5c5dc3fa3e35e9eb762c36c4596f889df7c52be8d0533d697e47786fdef32'
-            'e149dda8c92feca0fc9bbcbca0d0c3b749246b441ab9f7d34a0f68aeae76504c'
-            '4ed061724498d6c7017641caad7c749dad53a20f7c648f23b70c1e402715e002'
+            'a1d41c0cf7726e7ecd3274767aa6b26bfe1dabe133168cf1b37e549d6c235340'
+            'ced627a726a582e96ebb2fc2d0ba2b6b56d07a692c9c1e520b47278af405095f'
             'a4f8197e5efd61c04a531cfc7ffc5fc2c000299bdd93480745a992eec16d0580'
             )
 validpgpkeys=(
@@ -58,11 +60,19 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # Fix deadlock with stacked loop devices (FS#45129)
-  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
-  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
-  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
+  # https://lkml.org/lkml/2015/8/18/292
+  patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
 
+  # add not-yet-mainlined patch to fix network unavailability when iptables
+  # rules are applied during startup - happened with Shorewall; journal had
+  # many instances of this error: nf_conntrack: table full, dropping packet
+  patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
+
+  # add not-yes-mainlined patch to fix bridge code
+  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
+  patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
+  
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -119,9 +129,6 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("kernel26${_kernelname}=${pkgver}")
-  conflicts=("kernel26${_kernelname}")
-  replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
@@ -174,18 +181,10 @@ _package() {
 
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
-  
-  # add xorg touchpad configuration
-  if [[ $multitouch = 'y' ]]; then
-    install -D -m644 "${srcdir}/surface3-touchpad.conf" "${pkgdir}/etc/X11/xorg.conf.d/surface3-touchpad.conf"
-  fi
 }
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-headers=${pkgver}")
-  conflicts=("kernel26${_kernelname}-headers")
-  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -303,9 +302,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-docs=${pkgver}")
-  conflicts=("kernel26${_kernelname}-docs")
-  replaces=("kernel26${_kernelname}-docs")
 
   cd "${srcdir}/${_srcname}"
 

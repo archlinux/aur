@@ -1,38 +1,55 @@
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cbeb4c1..884d398 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -6709,6 +6709,12 @@ T:	git git://git.monstr.eu/linux-2.6-microblaze.git
+ S:	Supported
+ F:	arch/microblaze/
+ 
++MICROSOFT SURFACE PRO 3 BUTTON DRIVER
++M:	Chen Yu <yu.c.chen@intel.com>
++L:	platform-driver-x86@vger.kernel.org
++S:	Supported
++F:	drivers/platform/x86/surfacepro3_button.c
++
+ MICROTEK X6 SCANNER
+ M:	Oliver Neukum <oliver@neukum.org>
+ S:	Maintained
 diff --git a/drivers/platform/x86/Kconfig b/drivers/platform/x86/Kconfig
-index 9752761..0205201 100644
+index 6dc13e4..c69bb70 100644
 --- a/drivers/platform/x86/Kconfig
 +++ b/drivers/platform/x86/Kconfig
-@@ -884,4 +884,11 @@ config PVPANIC
- 	  a paravirtualized device provided by QEMU; it lets a virtual machine
- 	  (guest) communicate panic events to the host.
+@@ -919,4 +919,9 @@ config INTEL_PMC_IPC
+ 	The PMC is an ARC processor which defines IPC commands for communication
+ 	with other entities in the CPU.
  
-+config SURFACE_BUTTON
-+	tristate "Surface Pro Button Driver"
-+	depends on ACPI
++config SURFACE_PRO3_BUTTON
++	tristate "Power/home/volume buttons driver for Microsoft Surface Pro 3 tablet"
++	depends on ACPI && INPUT
 +	---help---
-+	  This driver provides button support for the surface pro tablet, including
-+	  Power Button, Home Button, Volume Button.
-+
++	  This driver handles the power/home/volume buttons on the Microsoft Surface Pro 3 tablet.
  endif # X86_PLATFORM_DEVICES
 diff --git a/drivers/platform/x86/Makefile b/drivers/platform/x86/Makefile
-index f82232b..ef87d7a 100644
+index dda95a9..ada5128 100644
 --- a/drivers/platform/x86/Makefile
 +++ b/drivers/platform/x86/Makefile
-@@ -58,3 +58,4 @@ obj-$(CONFIG_INTEL_SMARTCONNECT)	+= intel-smartconnect.o
- 
+@@ -60,3 +60,4 @@ obj-$(CONFIG_INTEL_SMARTCONNECT)	+= intel-smartconnect.o
  obj-$(CONFIG_PVPANIC)           += pvpanic.o
  obj-$(CONFIG_ALIENWARE_WMI)	+= alienware-wmi.o
-+obj-$(CONFIG_SURFACE_BUTTON)	+= surface_button.o
-diff --git a/drivers/platform/x86/surface_button.c b/drivers/platform/x86/surface_button.c
+ obj-$(CONFIG_INTEL_PMC_IPC)	+= intel_pmc_ipc.o
++obj-$(CONFIG_SURFACE_PRO3_BUTTON)	+= surfacepro3_button.o
+diff --git a/drivers/platform/x86/surfacepro3_button.c b/drivers/platform/x86/surfacepro3_button.c
 new file mode 100644
-index 0000000..19582da
+index 0000000..f7dade3
 --- /dev/null
-+++ b/drivers/platform/x86/surface_button.c
-@@ -0,0 +1,224 @@
++++ b/drivers/platform/x86/surfacepro3_button.c
+@@ -0,0 +1,216 @@
 +/*
-+ * Button support for surface.
++ * power/home/volume button support for
++ * Microsoft Surface Pro 3 tablet.
 + *
-+ * (C) Copyright 2015 Intel Corporation
++ * Copyright (c) 2015 Intel Corporation.
++ * All rights reserved.
 + *
 + * This program is free software; you can redistribute it and/or
 + * modify it under the terms of the GNU General Public License
@@ -49,9 +66,8 @@ index 0000000..19582da
 +#include <acpi/button.h>
 +
 +#define SURFACE_BUTTON_HID		"MSHW0028"
-+#define SURFACE_BUTTON_CLASS               "button"
-+#define SURFACE_BUTTON_SUB_CLASS	"ec"
-+#define SURFACE_BUTTON_DEVICE_NAME		"EC"
++#define SURFACE_BUTTON_OBJ_NAME		"VGBI"
++#define SURFACE_BUTTON_DEVICE_NAME	"Surface Pro 3 Buttons"
 +
 +#define SURFACE_BUTTON_NOTIFY_PRESS_POWER	0xc6
 +#define SURFACE_BUTTON_NOTIFY_RELEASE_POWER	0xc7
@@ -65,49 +81,29 @@ index 0000000..19582da
 +#define SURFACE_BUTTON_NOTIFY_PRESS_VOLUME_DOWN	0xc2
 +#define SURFACE_BUTTON_NOTIFY_RELEASE_VOLUME_DOWN	0xc3
 +
-+ACPI_MODULE_NAME("surface button");
-+
-+#define _COMPONENT              ACPI_BUTTON_COMPONENT
++ACPI_MODULE_NAME("surface pro 3 button");
 +
 +MODULE_AUTHOR("Chen Yu");
-+MODULE_DESCRIPTION("Surface Button Driver");
-+MODULE_LICENSE("GPL");
++MODULE_DESCRIPTION("Surface Pro3 Button Driver");
++MODULE_LICENSE("GPL v2");
 +
 +/*
-+ * Power button, Home button, Volume button are handled by EC
++ * Power button, Home button, Volume buttons support is supposed to
++ * be covered by drivers/input/misc/soc_button_array.c, which is implemented
++ * according to "Windows ACPI Design Guide for SoC Platforms".
++ * However surface pro3 seems not to obey the specs, instead it uses
++ * device VGBI(MSHW0028) for dispatching the events.
++ * We choose acpi_driver rather than platform_driver/i2c_driver because
++ * although VGBI has an i2c resource connected to i2c controller, it
++ * is not embedded in any i2c controller's scope, thus neither platform_device
++ * will be created, nor i2c_client will be enumerated, we have to use
++ * acpi_driver.
 + */
 +static const struct acpi_device_id surface_button_device_ids[] = {
 +	{SURFACE_BUTTON_HID,    0},
 +	{"", 0},
 +};
 +MODULE_DEVICE_TABLE(acpi, surface_button_device_ids);
-+
-+static int surface_button_add(struct acpi_device *device);
-+static int surface_button_remove(struct acpi_device *device);
-+static void surface_button_notify(struct acpi_device *device, u32 event);
-+
-+#ifdef CONFIG_PM_SLEEP
-+static int surface_button_suspend(struct device *dev);
-+static int surface_button_resume(struct device *dev);
-+#else
-+#define surface_button_suspend NULL
-+#define surface_button_resume NULL
-+#endif
-+
-+static SIMPLE_DEV_PM_OPS(surface_button_pm,
-+		surface_button_suspend, surface_button_resume);
-+
-+static struct acpi_driver surface_button_driver = {
-+	.name = "surface button",
-+	.class = SURFACE_BUTTON_CLASS,
-+	.ids = surface_button_device_ids,
-+	.ops = {
-+		.add = surface_button_add,
-+		.remove = surface_button_remove,
-+		.notify = surface_button_notify,
-+	},
-+	.drv.pm = &surface_button_pm,
-+};
 +
 +struct surface_button {
 +	unsigned int type;
@@ -121,51 +117,52 @@ index 0000000..19582da
 +{
 +	struct surface_button *button = acpi_driver_data(device);
 +	struct input_dev *input;
-+	int key_code = KEY_RESERVED, pressed = 0;
++	int key_code = KEY_RESERVED;
++	bool pressed = false;
 +
 +	switch (event) {
++	/* Power button press,release handle */
 +	case SURFACE_BUTTON_NOTIFY_PRESS_POWER:
-+		pressed = 1;
-+		/*go through*/
++		pressed = true;
++		/*fall through*/
 +	case SURFACE_BUTTON_NOTIFY_RELEASE_POWER:
 +		key_code = KEY_POWER;
 +		break;
++	/* Home button press,release handle */
 +	case SURFACE_BUTTON_NOTIFY_PRESS_HOME:
-+		pressed = 1;
++		pressed = true;
++		/*fall through*/
 +	case SURFACE_BUTTON_NOTIFY_RELEASE_HOME:
 +		key_code = KEY_LEFTMETA;
 +		break;
++	/* Volume up button press,release handle */
 +	case SURFACE_BUTTON_NOTIFY_PRESS_VOLUME_UP:
-+		pressed = 1;
++		pressed = true;
++		/*fall through*/
 +	case SURFACE_BUTTON_NOTIFY_RELEASE_VOLUME_UP:
 +		key_code = KEY_VOLUMEUP;
 +		break;
++	/* Volume down button press,release handle */
 +	case SURFACE_BUTTON_NOTIFY_PRESS_VOLUME_DOWN:
-+		pressed = 1;
++		pressed = true;
++		/*fall through*/
 +	case SURFACE_BUTTON_NOTIFY_RELEASE_VOLUME_DOWN:
 +		key_code = KEY_VOLUMEDOWN;
 +		break;
-+
 +	default:
-+		ACPI_DEBUG_PRINT((ACPI_DB_INFO,
-+				  "Unsupported event [0x%x]\n", event));
++		dev_info_ratelimited(&device->dev,
++				  "Unsupported event [0x%x]\n", event);
 +		break;
 +	}
-+
 +	input = button->input;
-+
 +	if (KEY_RESERVED == key_code)
 +		return;
-+
 +	if (pressed)
 +		pm_wakeup_event(&device->dev, 0);
-+
 +	if (button->suspended)
 +		return;
-+
-+	input_report_key(input, key_code, pressed);
++	input_report_key(input, key_code, pressed?1:0);
 +	input_sync(input);
-+
 +}
 +
 +#ifdef CONFIG_PM_SLEEP
@@ -193,15 +190,18 @@ index 0000000..19582da
 +	struct surface_button *button;
 +	struct input_dev *input;
 +	const char *hid = acpi_device_hid(device);
-+	char *name, *class;
++	char *name;
 +	int error;
++
++	if (strncmp(acpi_device_bid(device), SURFACE_BUTTON_OBJ_NAME,
++	    strlen(SURFACE_BUTTON_OBJ_NAME)))
++		return -ENODEV;
 +
 +	button = kzalloc(sizeof(struct surface_button), GFP_KERNEL);
 +	if (!button)
 +		return -ENOMEM;
 +
 +	device->driver_data = button;
-+
 +	button->input = input = input_allocate_device();
 +	if (!input) {
 +		error = -ENOMEM;
@@ -209,31 +209,23 @@ index 0000000..19582da
 +	}
 +
 +	name = acpi_device_name(device);
-+	class = acpi_device_class(device);
-+
 +	strcpy(name, SURFACE_BUTTON_DEVICE_NAME);
-+	sprintf(class, "%s/%s",
-+		SURFACE_BUTTON_CLASS, SURFACE_BUTTON_SUB_CLASS);
-+
-+	snprintf(button->phys, sizeof(button->phys), "%s/button/input0", hid);
++	snprintf(button->phys, sizeof(button->phys), "%s/buttons", hid);
 +
 +	input->name = name;
 +	input->phys = button->phys;
 +	input->id.bustype = BUS_HOST;
 +	input->dev.parent = &device->dev;
-+
 +	input_set_capability(input, EV_KEY, KEY_POWER);
 +	input_set_capability(input, EV_KEY, KEY_LEFTMETA);
 +	input_set_capability(input, EV_KEY, KEY_VOLUMEUP);
 +	input_set_capability(input, EV_KEY, KEY_VOLUMEDOWN);
 +
-+
 +	error = input_register_device(input);
 +	if (error)
 +		goto err_free_input;
-+
-+	ACPI_DEBUG_PRINT((ACPI_DB_INFO,
-+			"%s [%s]\n", name, acpi_device_bid(device)));
++	dev_info(&device->dev,
++			"%s [%s]\n", name, acpi_device_bid(device));
 +	return 0;
 +
 + err_free_input:
@@ -251,5 +243,20 @@ index 0000000..19582da
 +	kfree(button);
 +	return 0;
 +}
++
++static SIMPLE_DEV_PM_OPS(surface_button_pm,
++		surface_button_suspend, surface_button_resume);
++
++static struct acpi_driver surface_button_driver = {
++	.name = "surface_pro3_button",
++	.class = "SurfacePro3",
++	.ids = surface_button_device_ids,
++	.ops = {
++		.add = surface_button_add,
++		.remove = surface_button_remove,
++		.notify = surface_button_notify,
++	},
++	.drv.pm = &surface_button_pm,
++};
 +
 +module_acpi_driver(surface_button_driver);

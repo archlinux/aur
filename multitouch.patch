@@ -2,17 +2,17 @@ diff --git a/drivers/hid/hid-core.c b/drivers/hid/hid-core.c
 index 56ce8c2..5a80896 100644
 --- a/drivers/hid/hid-core.c
 +++ b/drivers/hid/hid-core.c
-@@ -705,9 +705,8 @@ static void hid_scan_collection(struct hid_parser *parser, unsigned type)
+@@ -705,10 +705,9 @@ static void hid_scan_collection(struct hid_parser *parser, unsigned type)
  		hid->group = HID_GROUP_SENSOR_HUB;
- 
+
  	if (hid->vendor == USB_VENDOR_ID_MICROSOFT &&
 -	    (hid->product == USB_DEVICE_ID_MS_TYPE_COVER_3 ||
--	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_3_JP) &&
--	    hid->group == HID_GROUP_MULTITOUCH)
-+		hid->product == USB_DEVICE_ID_MS_TYPE_COVER_3_JP &&
-+		hid->group == HID_GROUP_MULTITOUCH)
+-	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_3_JP ||
++	    (hid->product == USB_DEVICE_ID_MS_TYPE_COVER_3_JP ||
+ 	     hid->product == USB_DEVICE_ID_MS_POWER_COVER) &&
+ 	    hid->group == HID_GROUP_MULTITOUCH)
  		hid->group = HID_GROUP_GENERIC;
- 
+
  	if ((parser->global.usage_page << 16) == HID_UP_GENDESK)
 @@ -1878,7 +1877,6 @@ static const struct hid_device_id hid_have_special_driver[] = {
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_DIGITAL_MEDIA_3K) },
@@ -26,7 +26,7 @@ diff --git a/drivers/hid/hid-microsoft.c b/drivers/hid/hid-microsoft.c
 index af935eb..7e84463 100644
 --- a/drivers/hid/hid-microsoft.c
 +++ b/drivers/hid/hid-microsoft.c
-@@ -276,11 +276,8 @@ static const struct hid_device_id ms_devices[] = {
+@@ -276,13 +276,11 @@ static const struct hid_device_id ms_devices[] = {
  		.driver_data = MS_NOGET },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_COMFORT_MOUSE_4500),
  		.driver_data = MS_DUPLICATE_USAGES },
@@ -34,7 +34,9 @@ index af935eb..7e84463 100644
 -		.driver_data = MS_HIDINPUT },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_3_JP),
  		.driver_data = MS_HIDINPUT },
--
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_POWER_COVER),
+ 		.driver_data = MS_HIDINPUT },
+
  	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_PRESENTER_8K_BT),
  		.driver_data = MS_PRESENTER },
  	{ }
