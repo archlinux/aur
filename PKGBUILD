@@ -1,7 +1,7 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack-git
 _pkgname=stack
-pkgver=20150813.908b042
+pkgver=0.1.3.1.r0.g908b042
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('i686' 'x86_64')
@@ -19,19 +19,21 @@ md5sums=('SKIP')
 
 prepare() {
   STACK_ROOT=$srcdir
+  cd "$srcdir/${_pkgname}"
   stack setup
 }
 
 build() {
   STACK_ROOT=$srcdir
   cd "$srcdir/${_pkgname}"
-  stack build --no-system-ghc
+  pwd
+  stack build stack:stack --no-system-ghc
 }
 
 check() {
   STACK_ROOT=$srcdir
   cd "$srcdir/${_pkgname}"
-  stack test
+  stack test stack:test:stack-test
 }
 
 package() {
@@ -46,7 +48,7 @@ package() {
 
 pkgver() {
 cd "${srcdir}/${_pkgname}"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # vim:set ts=2 sw=2 et:
