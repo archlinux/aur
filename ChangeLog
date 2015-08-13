@@ -1,3 +1,9 @@
+2015-08-13 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.5:
+	- The cmdline name/value pair is now mandatory.
+	- Improved the check for the mbr bootdisk to see if the device specified in the configuration is really a block device.
+
 2015-06-08 Giancarlo Razzolini <grazzolini@gmail.com>
 
 	* 0.0.4:
