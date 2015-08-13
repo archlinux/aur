@@ -4,13 +4,13 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=wuala
-pkgver=1
-pkgrel=20150323
+pkgver=20141107 # Loader version
+pkgrel=1
 epoch=1
 pkgdesc="A new way of storing, sharing and publishing files on the Internet.  It's free, simple and secure."
-arch=("any")
+arch=('any')
 url="http://www.wuala.com/"
-license=("custom:wuala")
+license=('custom:wuala')
 depends=('java-runtime' 'xdg-utils' 'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('fuse: filesystem integration')
 install="wuala.install"
