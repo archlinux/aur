@@ -1,0 +1,26 @@
+pkgbase = youdao-dict
+	pkgdesc = YouDao Dictionary
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://cidian.youdao.com/index-linux.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-pyqt5
+	depends = python-requests
+	depends = python-xlib
+	depends = python-pillow
+	depends = tesseract-data-eng
+	depends = tesseract-data-chi_tra
+	depends = tesseract-data-chi_sim
+	depends = python-lxml
+	depends = python-xdg
+	depends = python-webob
+	source_i686 = http://codown.youdao.com/cidian/linux/youdao-dict_1.0.2~binary_i386.tar.gz
+	sha256sums_i686 = ecab295766c3d54e71ca48820b56a92c61810c77715dac1fb3883be1ede51130
+	source_x86_64 = http://codown.youdao.com/cidian/linux/youdao-dict_1.0.2~binary_amd64.tar.gz
+	sha256sums_x86_64 = 084eb6aa64de0b6c018d6081b59d10714fcf302c10cf2d7ce988b1eceaafb275
+
+pkgname = youdao-dict
+
