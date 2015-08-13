@@ -1,7 +1,7 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack-git
 _pkgname=stack
-pkgver=20150718.b939373
+pkgver=20150813.908b042
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('i686' 'x86_64')
