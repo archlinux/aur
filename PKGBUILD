@@ -17,7 +17,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver-src"
     sed -i -e "s_/usr/local_$pkgdir/usr_g" qelectrotech.pro
     qmake-qt4 DEFINES+=QET_COMMON_COLLECTION_PATH=/usr/share/qelectrotech/elements -o Makefile qelectrotech.pro
-    make -j4
+    make -j8
 }
 
 package() {
@@ -26,8 +26,6 @@ package() {
     mv $pkgdir/share $pkgdir/usr/share
     mv $pkgdir/usr/man $pkgdir/usr/share
     mv $pkgdir/usr/doc $pkgdir/usr/share
-    mv $pkgdir/usr/share/share/* $pkgdir/usr/share
-    rmdir $pkgdir/usr/share/share
 }
 
 # vim:ts=4:sw=4:expandtab
