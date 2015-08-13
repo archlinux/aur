@@ -1,6 +1,6 @@
 pkgbase = console-tdm-git
 	pkgdesc = Console display manager based on CDM
-	pkgver = 1
+	pkgver = 1.0
 	pkgrel = 1
 	url = http://github.com/dopsi/console-tdm
 	arch = any
