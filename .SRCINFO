@@ -1,0 +1,15 @@
+pkgbase = php-igbinary-git
+	pkgdesc = Igbinary is a drop in replacement for the standard php serializer.
+	pkgver = 1.1.0.r65.g9e5fdb6
+	pkgrel = 1
+	url = https://github.com/igbinary/igbinary/
+	arch = any
+	license = BSD
+	makedepends = php
+	makedepends = git
+	backup = etc/php/conf.d/igbinary.ini
+	source = php-igbinary-git::git+https://github.com/igbinary/igbinary.git
+	sha256sums = SKIP
+
+pkgname = php-igbinary-git
+
