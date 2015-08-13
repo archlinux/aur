@@ -1,13 +1,13 @@
 pkgbase = unity-like-plank-theme
 	pkgdesc = A plank dock theme that doesn't look like Unity but gives you a similar interface
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Kycko/unity-like-plank-theme
 	arch = any
 	license = GPL
 	depends = plank
-	source = https://github.com/Kycko/unity-like-plank-theme/archive/0.1.tar.gz
-	sha1sums = 57e6158b2bef869941e55abca326c8c9f6e9cbf4
+	source = https://github.com/Kycko/unity-like-plank-theme/archive/0.1.1.tar.gz
+	sha1sums = e297621faef555c47f2ccc71ac39df380fe2585c
 
 pkgname = unity-like-plank-theme
 
