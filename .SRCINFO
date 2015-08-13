@@ -1,0 +1,13 @@
+pkgbase = rcm
+	pkgdesc = rc file (dotfiles) management
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/thoughtbot/rcm
+	arch = any
+	license = BSD
+	makedepends = ruby-mustache
+	source = https://thoughtbot.github.io/rcm/dist/rcm-1.2.3.tar.gz
+	md5sums = 7ac43eef04cacb91a00f902852369aaf
+
+pkgname = rcm
+
