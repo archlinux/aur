@@ -1,0 +1,29 @@
+pkgbase = bullet
+	pkgdesc = A 3D Collision Detection and Rigid Body Dynamics Library for games and animation
+	pkgver = 2.83.6.r2.g6c24193
+	pkgrel = 1
+	url = http://www.bulletphysics.com/Bullet/
+	arch = i686
+	arch = x86_64
+	license = custom:zlib
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ttf-dejavu
+	makedepends = mesa
+	makedepends = glu
+	optdepends = glu: for the example browser
+	source = git+https://github.com/bulletphysics/bullet3.git
+	md5sums = SKIP
+
+pkgname = bullet-git
+	optdepends = bullet-docs: documentation
+	provides = bullet
+	conflicts = bullet
+
+pkgname = bullet-docs-git
+	pkgdesc = Documentation for bullet
+	depends = 
+	provides = bullet-docs
+	conflicts = bullet-docs
+
