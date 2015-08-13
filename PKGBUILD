@@ -9,9 +9,9 @@
 
 pkgbase=linux-libre-grsec
 _pkgbasever=4.1-gnu
-_pkgver=4.1.4-gnu
+_pkgver=4.1.5-gnu
 _grsecver=3.1
-_timestamp=201508032312
+_timestamp=201508102129
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -42,12 +42,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '4929cf8776f454ec34af5e1d89fa0ceda666da17e5d0878f7c9f6db5e0e1af97'
+            '2f8b5d3176112f3b1679a77acbdd303e9e45bffde76a1972f7e90d457614afb3'
             'SKIP'
-            'd16f9699b0cf59f8ef73cb444468a6d8d8344024c86a1e6896585caa8cb8a2bb'
+            'edf25146df39686581c63b91c80e83dc4568bd50ce4d91ca73cfd00cf9e1528d'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -56,9 +57,10 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
             '591f20645c2d5d91edf49af5b934de45866d1d0588b461c5d5963640fc4e1b5d'
-            'd5b068642b76b369369ee03f51f063ee49104ad6fc6574d29e7212f61e702de9'
+            'a302f37d082cb9c8c03b44a8f1d5fafcd5c73a2f7e32cd62d36009a8421a952a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -97,6 +99,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # Make the radeon driver load without the firmwares
+  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
+  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
