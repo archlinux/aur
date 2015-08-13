@@ -1,5 +1,5 @@
 pkgbase = linux-libre-lts
-	pkgver = 3.14.49_gnu
+	pkgver = 3.14.50_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-libre-lts
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.49-gnu/patch-3.14-gnu-3.14.49-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.49-gnu/patch-3.14-gnu-3.14.49-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.50-gnu/patch-3.14-gnu-3.14.50-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.50-gnu/patch-3.14-gnu-3.14.50-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -30,9 +30,10 @@ pkgbase = linux-libre-lts
 	source = 0003-module-remove-MODULE_GENERIC_TABLE.patch
 	source = 0006-genksyms-fix-typeof-handling.patch
 	source = gcc5_buildfixes.diff
+	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 	sha256sums = 477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b
 	sha256sums = SKIP
-	sha256sums = 8146f5e0dda01cb95bf8841bc76acea42fd04a2e864cbe2ecfe55092453cc929
+	sha256sums = 811f8820610d9c8622229151c638f08d62b693242cac6b0c04428b6f5df863a2
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -49,6 +50,7 @@ pkgbase = linux-libre-lts
 	sha256sums = 65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d
 	sha256sums = cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7
 	sha256sums = 9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a
+	sha256sums = 38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d
 
 pkgname = linux-libre-lts
 	pkgdesc = The Linux-libre-lts kernel and modules - stable longtime supported kernel package suitable for servers
@@ -58,7 +60,7 @@ pkgname = linux-libre-lts
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-lts=3.14.49
+	provides = linux-lts=3.14.50
 	conflicts = kernel26-lts
 	conflicts = kernel26-libre-lts
 	conflicts = linux-libre-lts-kmod-alx
@@ -70,7 +72,7 @@ pkgname = linux-libre-lts
 
 pkgname = linux-libre-lts-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-lts kernel
-	provides = linux-lts-headers=3.14.49
+	provides = linux-lts-headers=3.14.50
 	conflicts = kernel26-lts-headers
 	conflicts = kernel26-libre-lts-headers
 	replaces = linux-lts-headers
@@ -79,7 +81,7 @@ pkgname = linux-libre-lts-headers
 
 pkgname = linux-libre-lts-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-lts kernel
-	provides = linux-lts-docs=3.14.49
+	provides = linux-lts-docs=3.14.50
 	conflicts = kernel26-lts-docs
 	conflicts = kernel26-libre-lts-docs
 	replaces = linux-lts-docs
