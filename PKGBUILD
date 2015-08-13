@@ -7,6 +7,7 @@ arch=('any')
 url='http://github.com/dopsi/console-tdm'
 license=('GPL')
 provides=('console-tdm')
+conflicts=('console-tdm')
 depends=('xorg-xinit')
 optdepends=('dialog: for curses UI')
 source=('git://github.com/dopsi/console-tdm')

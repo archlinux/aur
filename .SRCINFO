@@ -8,6 +8,7 @@ pkgbase = console-tdm-git
 	depends = xorg-xinit
 	optdepends = dialog: for curses UI
 	provides = console-tdm
+	conflicts = console-tdm
 	source = git://github.com/dopsi/console-tdm
 	sha1sums = SKIP
 
