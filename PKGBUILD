@@ -2,7 +2,7 @@
 
 pkgname=blis
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software Framework by the Science of High-Performance Computing Group"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -34,6 +34,7 @@ build() {
 check() {
   cd "${srcdir}/blis-${pkgver}/testsuite"
   make
+  ./test_libblis.x
 }
 
 package() {
