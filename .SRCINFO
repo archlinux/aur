@@ -1,0 +1,15 @@
+pkgbase = tag
+	pkgdesc = Console tag based file manager
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/Nycroth/tag
+	arch = any
+	license = custom:unlicense
+	depends = coreutils
+	depends = sed
+	depends = bash
+	source = https://gitlab.com/Nycroth/tag/repository/archive.tar.gz?ref=v0.1
+	md5sums = efbf5a42221b7445431002ce402c868b
+
+pkgname = tag
+
