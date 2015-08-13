@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 243040 2015-08-05 00:47:34Z svenstaro $
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Philipp Mildenberger <philipp.mildenberger.. __AATT__ .. student.uibk.ac.at>
+# Maintainer stable version: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgbase=bullet
