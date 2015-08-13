@@ -1,7 +1,6 @@
 # Maintainer: Justin R. St-Amant <jstamant24 at gmail dot com>
 pkgname=universal-gcode-sender-git
 pkgver=1.0.8.r125.g48452ca
-#TODO already raised to 2 for next submition
 pkgrel=2
 pkgdesc="Java based GRBL compatible cross-paltform G-Code sender"
 arch=('any')
