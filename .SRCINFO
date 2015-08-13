@@ -1,0 +1,14 @@
+pkgbase = python-wget
+	pkgdesc = pure python download utility
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://bitbucket.org/techtonik/python-wget
+	arch = any
+	license = GPL
+	depends = python
+	options = !emptydirs
+	source = https://bitbucket.org/techtonik/python-wget/get/2.2.tar.gz
+	md5sums = 47cca89b0915d13e4793067f0e634d7c
+
+pkgname = python-wget
+
