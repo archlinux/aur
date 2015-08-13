@@ -1,0 +1,16 @@
+pkgbase = python-botocore
+	pkgdesc = The low-level, core functionality of boto 3.
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/boto/botocore
+	arch = any
+	license = apache
+	makedepends = python-setuptools
+	depends = python-jmespath=0.7.1
+	depends = python-dateutil<3.0.0
+	conflicts = python-botocore-git python2-botocore-git
+	source = https://github.com/boto/botocore/archive/1.1.8.tar.gz
+	sha256sums = 338fed0119d819a60b2b7cf1a1a38f93603c5f012a2a483b713425816a43a57c
+
+pkgname = python-botocore
+
