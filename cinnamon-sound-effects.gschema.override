@@ -25,4 +25,3 @@ unplug-file="/usr/share/mint-artwork-cinnamon/sounds/unplug.oga"
 [org.cinnamon.desktop.sound]
 volume-sound-enabled=true
 volume-sound-file="/usr/share/mint-artwork-cinnamon/sounds/volume.oga"
-

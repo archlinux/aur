@@ -7,7 +7,9 @@ pkgbase = mint-artwork-cinnamon
 	license = GPL
 	depends = cinnamon
 	source = http://packages.linuxmint.com/pool/main/m/mint-artwork-cinnamon/mint-artwork-cinnamon_4.9.tar.gz
+	source = cinnamon-sound-effects.gschema.override
 	sha256sums = 4523f3043977f352309043350bfafc33d07dd3ac9e794e75c481e3733ac7a28c
+	sha256sums = ca9d9d22c2ca9b0e257f93bd624fc27a53cab258797e009438a82e9b6902100e
 
 pkgname = cinnamon-sound-effects
 	pkgdesc = Sound effects from mint-artwork-cinnamon package for the Cinnamon desktop.

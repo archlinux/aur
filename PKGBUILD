@@ -9,9 +9,11 @@ pkgdesc='Default artwork for the Cinnamon edition of Linux Mint.'
 arch=('any')
 license=('GPL')
 depends=('cinnamon')
-url="http://linuxmint.com"
-source=("http://packages.linuxmint.com/pool/main/m/${pkgbase}/${pkgbase}_${pkgver}.tar.gz")
-sha256sums=('4523f3043977f352309043350bfafc33d07dd3ac9e794e75c481e3733ac7a28c')
+url='http://linuxmint.com'
+source=("http://packages.linuxmint.com/pool/main/m/${pkgbase}/${pkgbase}_${pkgver}.tar.gz"
+	"${pkgname}.gschema.override")
+sha256sums=('4523f3043977f352309043350bfafc33d07dd3ac9e794e75c481e3733ac7a28c'
+	'ca9d9d22c2ca9b0e257f93bd624fc27a53cab258797e009438a82e9b6902100e')
 
 package_cinnamon-sound-effects() {
 	pkgdesc="Sound effects from ${pkgbase} package for the Cinnamon desktop."
