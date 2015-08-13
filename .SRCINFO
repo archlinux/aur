@@ -13,6 +13,7 @@ pkgbase = octave-hg
 	makedepends = gperf
 	makedepends = rsync
 	makedepends = gnuplot
+	makedepends = gettext
 	makedepends = suitesparse
 	makedepends = transfig
 	makedepends = epstool

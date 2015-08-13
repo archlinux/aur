@@ -14,7 +14,7 @@ depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'gl2ps'
 	 'qrupdate' 'qscintilla' 'qhull' 'graphicsmagick' 'portaudio'
 	 'mesa' 'suitesparse')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
-	     'suitesparse' 'transfig' 'epstool' 'texlive-core' 'icoutils')
+	     'gettext' 'suitesparse' 'transfig' 'epstool' 'texlive-core' 'icoutils')
 optdepends=('texinfo: for help-support in octave'
 	    'gnuplot: alternative plotting')
 conflicts=('octave')
@@ -22,12 +22,12 @@ install=octave.install
 options=('!emptydirs' '!makeflags')
 _appver="4.1.0+"
 provides=("octave=$_appver")
-_hgroot=http://www.octave.org/hg/
+_hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
 
 pkgver() {
   cd "$srcdir/${_hgrepo}"
-  printf "r%s.%s" "$(hg log | head -1|awk -F: '{print $2}'| cut -c9-13)" "$(hg identify -i http://hg.savannah.gnu.org/hgweb/octave)"
+  printf "r%s.%s" "$(hg log | head -1|awk -F: '{print $2}'| cut -c9-13)" "$(hg identify -i)" 
 }
 
 build() {
@@ -60,7 +60,7 @@ build() {
     --with-quantum-depth=16 --enable-java  \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
     --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
-    --with-java-libdir=/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server 
+    --with-java-libdir=/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server 
   CXXFLAGS+="-fexceptions `llvm-config --cxxflags`" make
 }
 
