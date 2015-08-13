@@ -9,7 +9,7 @@ set -u
 _pkgname='pcre'
 pkgname="${_pkgname}-svn"
 _srcdir="${pkgname}"
-pkgver=8.38.1586
+pkgver=8.38.r1592
 pkgrel=1
 pkgdesc='A regex library that implements Perl 5-style regular expressions, includes pcregrep'
 arch=('i686' 'x86_64')
@@ -23,14 +23,14 @@ source=("${_srcdir}::svn://vcs.exim.org/${_pkgname}/code/trunk"
         "${_archlink//@@@/01-seven-security-patches.patch}")
 sha256sums=('SKIP'
             'c27607ae7907d0ecfa360c1a679618475b674541cb36c366d8b58c3571ec6a79')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
 
 pkgver() {
   set -u
   cd "${_srcdir}/"
   local _version="$(sed -ne 's:^Version\s\([0-9]\+\.[0-9]\+\)\s.*$:\1:p' 'ChangeLog' | head -n1)"
-  _version="${_version//-/.}.$(svnversion | tr -d 'a-zA-z')"
+  _version="${_version//-/.}.r$(svnversion | tr -d 'a-zA-z')"
   echo "${_version}"
   set +u
 }
