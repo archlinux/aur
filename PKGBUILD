@@ -10,29 +10,42 @@ url="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
 depends=('gcc-libs')
 options=('!libtool' '!makeflags')
 source=(http://download.oracle.com/berkeley-db/db-${pkgver}.tar.gz)
+md5sums=('f80022099c5742cd179343556179aa8c')
+sha1sums=('ab36c170dda5b2ceaad3915ced96e41c6b7e493c')
 
-package() {
-  cd ${srcdir}/db-${pkgver}/
+build() {
+  cd "$srcdir/db-$pkgver/"
 
-  cd build_unix
-  ../dist/configure --prefix=/usr --enable-compat185 \
-    --enable-shared --disable-static --enable-cxx
+  cd "build_unix"
+  ../dist/configure --prefix=/usr --enable-compat185 --enable-shared --disable-static --enable-cxx
   make LIBSO_LIBS=-lpthread || return 1
-  make prefix=${pkgdir}/usr \
-       includedir=${pkgdir}/usr/include/db4.8 install
+}
 
-  rm -rf ${pkgdir}/usr/docs
-  rm -f ${pkgdir}/usr/lib/libdb{,_cxx}.so
-  rm -f ${pkgdir}/usr/lib/libdb{,_cxx}-4.so
+package() {  
+  cd "$srcdir/db-$pkgver/"
+  
+  cd "build_unix"
+  make prefix="$pkgdir/usr" includedir="$pkgdir/usr/include/db4.8" install
 
-  cd ${pkgdir}/usr/bin
+# Remove conflicting symlinks created by make, should never overwrite 
+# main libdb symlinks to current version. Programs that need or use 
+# db4.8 should be able to find it.
+  rm -rf "$pkgdir/usr/docs"
+  rm -f "$pkgdir/usr/lib/libdb.so"
+  rm -f "$pkgdir/usr/lib/libdb_cxx.so"
+  rm -f "$pkgdir/usr/lib/libdb-4.so"
+  rm -f "$pkgdir/usr/lib/libdb_cxx-4.so"
+
+# Rename db4.8 bin files to not conflict with current db version 
+# installed. Programs that need or use db4.8 should be aware of this 
+# name change. 
+  cd "$pkgdir/usr/bin"
   for i in *; do
     mv $i db4.8_${i/db_/}
   done
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-  install -m644 ${srcdir}/db-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-}
 
-md5sums=('f80022099c5742cd179343556179aa8c')
-sha1sums=('ab36c170dda5b2ceaad3915ced96e41c6b7e493c')
+# Install license
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 "$srcdir/db-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
 
