@@ -1,7 +1,7 @@
 pkgbase = atom-editor
 	pkgdesc = Chrome-based text editor from Github
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atom/atom
 	arch = x86_64
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = atom-editor
 	depends = nodejs
 	depends = nss
 	depends = python2
+	optdepends = gvfs: file deletion support
 	conflicts = atom-editor-bin
 	conflicts = atom-editor-git
 	source = https://github.com/atom/atom/archive/v1.0.7.tar.gz
