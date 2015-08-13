@@ -1,0 +1,18 @@
+pkgbase = mopidy-soundcloud
+	pkgdesc = Mopidy extension for playing music from SoundCloud
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mopidy/mopidy-soundcloud
+	arch = any
+	license = MIT
+	makedepends = python2
+	depends = python2
+	depends = python2-requests
+	depends = python2-pykka>=1.1
+	depends = gstreamer0.10-ugly-plugins
+	depends = mopidy>=1.0
+	source = https://pypi.python.org/packages/source/M/Mopidy-SoundCloud/Mopidy-SoundCloud-2.0.0.tar.gz
+	md5sums = edb1dbc6d7c494cf093235a500c7d20e
+
+pkgname = mopidy-soundcloud
+
