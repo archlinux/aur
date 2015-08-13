@@ -1,5 +1,5 @@
 post_install() {
-    EXTRAMODULES='extramodules-4.0-ck-fbcondecor'
+    EXTRAMODULES='extramodules-4.1-ck-fbcondecor'
     depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 

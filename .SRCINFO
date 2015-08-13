@@ -7,10 +7,8 @@ pkgbase = bbswitch-ck-fbcondecor
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = linux-ck-fbcondecor-headers>=4.0
-	makedepends = linux-ck-fbcondecor-headers<4.1
-	depends = linux-ck>=4.0
-	depends = linux-ck<4.1
+	makedepends = linux-ck-fbcondecor-headers
+	depends = linux-ck-fbcondecor
 	source = https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
 	md5sums = 5b116b31ace3604ddf9d1fc1f4bc5807
 
