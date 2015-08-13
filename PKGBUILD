@@ -2,8 +2,8 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.7.5.r54.g6a1d9ac
-_last_release="0.7.5-1"
+pkgver=0.7.6.r0.geb13f75
+_last_release="0.7.6-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -43,10 +43,8 @@ build() {
 check() {
   cd "$srcdir/${pkgname/-git/}"
 
-  if [ "$CARCH" = "x86_64" ]; then
-    make spec CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
-              CRYSTAL_CONFIG_VERSION="$pkgver"
-  fi
+  make spec CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
+            CRYSTAL_CONFIG_VERSION="$pkgver"
 }
 
 package() {
@@ -65,8 +63,10 @@ package() {
   install -dm755 "$pkgdir/usr/share/doc/crystal"
   cp -av doc     "$pkgdir/usr/share/doc/crystal/api"
   cp -av samples "$pkgdir/usr/share/doc/crystal/"
+
+  install -Dm644 etc/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_crystal"
 }
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('d0ee8b5d81917c7ae559760793d8b611034590bfb965fe450f3d430d97d56c34'
-                   'e852d176d26e749083005fb7689ff2c28f3a987df62cb29b6dd8e7f417c90a6c')
+sha256sums_x86_64=('6f9d8d7bb3795c590c49fc7da33110ca9977323ff1bd61fbace589ddb44f57b0'
+                   '5fd6781ecf7243d2a71ec9c1aa93ad6a1fadef0d231c329280720c271183c1ff')
