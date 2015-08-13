@@ -9,7 +9,6 @@ pkgbase = wuala
 	depends = java-runtime
 	optdepends = fuse: filesystem integration
 	optdepends = xdg-utils: desktop integration
-	options = !emptydirs
 	source = http://cdn.wuala.com/repo/other/wuala.tar.gz
 	source = wuala.png
 	source = wuala.desktop

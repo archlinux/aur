@@ -14,7 +14,6 @@ license=("custom:wuala")
 depends=('java-runtime')
 optdepends=('fuse: filesystem integration'
             'xdg-utils: desktop integration')
-options=(!emptydirs)
 source=("http://cdn.wuala.com/repo/other/wuala.tar.gz"
         "${pkgname}.png"
         "${pkgname}.desktop"
@@ -44,21 +43,23 @@ package() {
   # Directories
   install -d "${JAVA_DIR}" "${DOC_DIR}" "${BIN_DIR}"
 
-  # binary
-  install -D wuala{,cmd} "${pkgdir}/usr/bin/"
+  # Launcher scripts
+  install -m 755 wuala{,cmd} "${BIN_DIR}"
 
   # jar
-  install -D loader3.jar "${JAVA_DIR}/"
+  install -m 644 loader3.jar "${JAVA_DIR}"
 
-  # readme and copyright
-  install -D readme.txt copyright "${DOC_DIR}"
+  # Docs
+  install -m 644 readme.txt copyright "${DOC_DIR}"
 
-  # Desktop
-  install -D "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -D "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
+  cd "${srcdir}"
+
+  # Desktop files
+  install -D -m 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m 644 "${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
 
   # License
-  install -D "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
