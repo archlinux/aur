@@ -1,0 +1,15 @@
+pkgbase = console-tdm-git
+	pkgver = 1
+	pkgrel = 1
+	url = http://qelectrotech.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xorg-xinit
+	optdepends = dialog: for curses UI
+	provides = qelectrotech
+	source = git://github.com/dopsi/console-tdm
+	sha1sums = SKIP
+
+pkgname = console-tdm-git
+
