@@ -1,0 +1,17 @@
+pkgbase = lib7zip
+	pkgdesc = A library using 7z.dll/7z.so(from 7-Zip) to handle different archive types.
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = http://code.google.com/p/lib7zip/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = libtool
+	options = !libtool
+	source = http://lib7zip.googlecode.com/files/lib7zip-1.6.5.tar.gz
+	source = http://downloads.sourceforge.net/project/p7zip/p7zip/9.20.1/p7zip_9.20.1_src_all.tar.bz2
+	md5sums = a127ec183797dcf685938372dc5bf72a
+	md5sums = bd6caaea567dc0d995c990c5cc883c89
+
+pkgname = lib7zip
+
