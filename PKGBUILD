@@ -1,5 +1,7 @@
+# Maintainer: Matt Harrison <matt@harrison.us.com>
 # Original Author: Erik van der Kolk <developer at smerik dot nl>
-# Maintainer: Hong Xu
+# Contributor: Hong Xu
+
 pkgname=editorconfig-core-c
 pkgver=0.12.0
 pkgrel=1
