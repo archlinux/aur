@@ -1,0 +1,25 @@
+pkgbase = libcompizconfig
+	pkgdesc = Compiz configuration system library
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = http://www.compiz.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = libxrandr
+	makedepends = libice
+	makedepends = libsm
+	makedepends = mesa
+	depends = compiz-core
+	depends = libxml2
+	depends = libxcomposite
+	depends = libxinerama
+	depends = protobuf
+	depends = startup-notification
+	options = !emptydirs
+	source = http://www.northfield.ws/projects/compiz/releases/0.8.10/libcompizconfig.tar.gz
+	sha1sums = 7e64ef43f6fca7a3770bbf8e62516be56c9c51f1
+
+pkgname = libcompizconfig
+
