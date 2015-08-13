@@ -4,7 +4,7 @@
 
 pkgname=adom-noteye
 pkgver=1.2.0_pre59
-pkgrel=2
+pkgrel=3
 pkgdesc="roguelike game with a quest-centric, plot driven structure"
 arch=('i686' 'x86_64')
 depends=('ncurses' 'mesa' 'lua51' 'libtinfo' 'libcaca' 'libmad' 'fluidsynth'
@@ -16,7 +16,7 @@ source=(LICENSE
 source_i686+=(http://media1.gamefront.com/moddb/2015/07/20/adom_noteye_linux_ubuntu_32_r59_pub.tar.gz)
 source_x86_64+=(http://media1.gamefront.com/moddb/2015/07/20/adom_noteye_linux_ubuntu_64_r59_pub.tar.gz)
 sha1sums=('51d28fe3f0420cd354113fd7ceb2a1a7abf1b069'
-          'c99d3f55f59b2ee51e327b6d9e58fefd1e051ff2')
+          'd1d1a279e6d4d296f09519381674b5ea99007599')
 sha1sums_i686=('ce3bb56bafa0e90b08d209c37543710f6cde9244')
 sha1sums_x86_64=('3caf871e9ce1a3e33d240829de626ec670e0bd3a')
 
@@ -46,7 +46,7 @@ prepare() {
 package() {
   # Copy entire contents of the archive to /opt
   install -d "${pkgdir}/opt"
-  cp -R "${srcdir}/adom" "${pkgdir}/opt/"
+  cp -R "${srcdir}/adom" "${pkgdir}/opt/adom-noteye"
 
   # Since the adom binary uses a relative RPATH, it's either
   # this or patching the binary

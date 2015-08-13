@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cd /opt/adom && ./adom
+cd /opt/adom-noteye && ./adom
