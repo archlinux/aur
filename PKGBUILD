@@ -2,7 +2,7 @@
 
 pkgname=vscode-bin
 pkgdesc='Visual Studio Code for Linux'
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -13,8 +13,8 @@ depends=('gtk2' 'gconf')
 _src_base="https://az764295.vo.msecnd.net/public/${pkgver}"
 source_i686=("${_src_base}/VSCode-linux-ia32.zip")
 source_x86_64=("${_src_base}/VSCode-linux-x64.zip")
-sha1sums_i686=('bd1c96bb06e1e68c8b9c58eb5093aeadc96f7088')
-sha1sums_x86_64=('35a0609d00b90db5573b70e0b363900cc12b4e65')
+sha1sums_i686=('b6f26d8d8837be2c8d6d16f084588c2ba67fb35e')
+sha1sums_x86_64=('864ef607d831702cf4c91decc9da661d09f05351')
 
 package() {
     _dirname=INVALID
