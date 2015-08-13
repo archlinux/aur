@@ -28,11 +28,17 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
- 
-  make DESTDIR="$pkgdir/" install
+  mkdir -p "${pkgdir}"/usr/share/orgmk
+  mkdir -p "${pkgdir}"/usr/bin
+  cd "${srcdir}"
+  cp -R ${_pkgname}/* "${pkgdir}"/usr/share/orgmk
+
+  ln -s /usr/share/orgmk/bin/{org2beamerpdf,org2html,org2latex,org2odt,org2pdf,org2txt,orgmk,orgmk-init,orgmk-update-src-check-diff,org-tangle} "${pkgdir}"/usr/bin 
+  
+  #cd "${srcdir}/${_pkgname}"
+  #install -Dm755 orgmk "${pkgdir}/src/orgmk/bin/"
+  #make DESTDIR="$pkgdir" install
   #make
   # Install the program.
-  #install -Dm755 aurvote "${pkgdir}/usr/bin/aurvote"
   #install -Dm644 zsh-completion "${pkgdir}/usr/share/zsh/site-functions/_aurvote"
 }
