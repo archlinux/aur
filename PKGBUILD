@@ -2,7 +2,7 @@
 
 pkgname=python-kitchen
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kitchen contains a cornucopia of useful code"
 url="https://fedorahosted.org/kitchen"
 depends=('python2' )
@@ -11,6 +11,8 @@ license=('LGPLv2+')
 arch=('any')
 source=('https://pypi.python.org/packages/source/k/kitchen/kitchen-1.1.1.tar.gz')
 md5sums=('059d7ce048ca1d0fb53e6755145137b0')
+provides=(python2-kitchen)
+conflicts=(python2-kitchen)
 
 build() {
     cd $srcdir/kitchen-1.1.1
