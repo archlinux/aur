@@ -1,7 +1,7 @@
 pkgbase = qtftp-qt5
 	pkgdesc = Qt bindings for FTP
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qtproject/qtftp/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = qtftp-qt5
 	depends = qt5-base
 	options = staticlibs
 	source = https://github.com/qtproject/qtftp/archive/v5.0.0.zip
+	source = 80823b53d2025d9c0c15075c325ee0c2e364551b.patch
 	md5sums = 36da57bf362ff7964c97250af938b0a5
+	md5sums = 277970c25e476041fcaf957c9eb5bf19
 
 pkgname = qtftp-qt5
 
