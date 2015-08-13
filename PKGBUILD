@@ -1,32 +1,54 @@
+# Maintainer: Tblue <tilman (at) ax86 (dot) net>
 # Contributor: lanrat
-# Contributor: Tblue <tilman (at) ax86 (dot) net>
 
 pkgname='fortune-mod-bofh-excuses'
-pkgver=1.2
-pkgrel=2
+pkgver=20121125.190600
+pkgrel=1
 pkgdesc='BOFH excuses fortune cookie files'
 arch=('any')
 url='http://www.cs.wisc.edu/~ballard/bofh/'
 depends=('fortune-mod')
+makedepends=('curl')
 groups=('fortune-mods')
 license=('Public domain')
-source=("http://ftp.debian.org/debian/pool/main/f/fortunes-bofh-excuses/fortunes-bofh-excuses_${pkgver}.orig.tar.gz")
+
+_dlurl='http://pages.cs.wisc.edu/~ballard/bofh/excuses'
+
+pkgver()
+{
+    # Make a HTTP HEAD request and use the Last-Modified header of the data file
+    # to generate the pkgver. Thanks to djmattyg007 for the idea (and the hint that
+    # the Debian package I used previously is somewhat outdated by now :-)!
+
+    msg2 "Determining data file's time of last modification..."
+    local lastmod=$(curl -fL -I "${_dlurl}" | tac | sed -n '/^Last-modified:[[:space:]]*/I { s///p; q }')
+
+    if [ -z "$lastmod" ]; then
+        error "Could not determine time of last modification, see above for possible errors."
+    fi
+
+    date -ud "${lastmod}" '+%Y%m%d.%H%M%S'
+}
+
+prepare()
+{
+    msg2 "Downloading data file..."
+    curl -fL -o "${srcdir}/bofh-excuses.raw" "${_dlurl}"
+}
 
 build()
 {
-    cd "${srcdir}/fortunes-bofh-excuses-${pkgver}"
+    cd "${srcdir}"
 
+    awk '{ printf "BOFH excuse #%d:\n\n%s\n%%\n", FNR, $0 }' \
+        bofh-excuses.raw > bofh-excuses
     strfile ./bofh-excuses
 }
 
 package()
 {
-    cd "${srcdir}/fortunes-bofh-excuses-${pkgver}"
+    cd "${srcdir}"
     
-    install -D -m644 "${srcdir}/fortunes-bofh-excuses-${pkgver}/bofh-excuses" \
-        "${pkgdir}/usr/share/fortune/bofh-excuses"
-    install -D -m644 "${srcdir}/fortunes-bofh-excuses-${pkgver}/bofh-excuses.dat" \
-        "${pkgdir}/usr/share/fortune/bofh-excuses.dat"
+    install -D -m644 bofh-excuses "${pkgdir}/usr/share/fortune/bofh-excuses"
+    install -D -m644 bofh-excuses.dat "${pkgdir}/usr/share/fortune/bofh-excuses.dat"
 }
-
-md5sums=('54742a9f82d49721e3f64280e916c604')
