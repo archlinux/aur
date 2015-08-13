@@ -1,3 +1,6 @@
+# Maintainer: Aleksey Filippov <sarum9in@gmail.com>
+# Contributor: Eduardo Sánchez Muñoz <eduardosanchezmunoz@gmail.com>
+
 pkgname=cppdb
 pkgver=0.3.1
 pkgrel=1
@@ -14,19 +17,19 @@ source=("http://sourceforge.net/projects/cppcms/files/cppdb/$pkgver/cppdb-$pkgve
 sha256sums=('d60eef5a732d8f84ef5e4a2845a8cefc543a6c75bf3782589c2cf6aa150b992e')
 
 build() {
-	rm -rf "$srcdir/cppdb-build"
-	mkdir -p "$srcdir/cppdb-build"
-	cd "$srcdir/cppdb-build"
-	
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/cppdb-$pkgver"
-	make
+  rm -rf "$srcdir/cppdb-build"
+  mkdir -p "$srcdir/cppdb-build"
+  cd "$srcdir/cppdb-build"
+
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/cppdb-$pkgver"
+  make
 }
 
 package() {
-	cd "$srcdir/cppdb-build"
-	make DESTDIR="$pkgdir" install
-	
-	cd "$srcdir/cppdb-$pkgver"
-	install -Dm644 "LICENSE_1_0.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE_1_0.txt"
-	install -Dm644 "MIT.txt" "$pkgdir/usr/share/licenses/$pkgname/MIT.txt"
+  cd "$srcdir/cppdb-build"
+  make DESTDIR="$pkgdir" install
+
+  cd "$srcdir/cppdb-$pkgver"
+  install -Dm644 "LICENSE_1_0.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE_1_0.txt"
+  install -Dm644 "MIT.txt" "$pkgdir/usr/share/licenses/$pkgname/MIT.txt"
 }
