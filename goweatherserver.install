@@ -1,0 +1,24 @@
+post_install() {
+    systemctl daemon-reload
+
+    echo "Adding goweatherserver in systemctl:"
+    echo "  systemctl enable goweatherserver"
+    echo "  systemctl start goweatherserver"
+
+    true
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+
+    true
+}
+
+pre_remove() {
+    systemctl disable goweatherserver
+    systemctl stop goweatherserver
+    
+    systemctl daemon-reload
+
+    true
+}

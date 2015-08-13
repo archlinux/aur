@@ -1,0 +1,15 @@
+pkgbase = goweatherserver
+	pkgdesc = A server who take temperature from TCP connection and save into a database
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Chipsterjulien/goweatherserver
+	install = goweatherserver.install
+	arch = any
+	license = WTFPL
+	makedepends = go
+	options = !strip
+	source = goweatherserver-0.1.tar.gz
+	sha512sums = 4095fcaed1df1e2a91464824cf565284f39df2718d97cf8d06e2f8958d99b31884ca716ea1cc3cf3973960e6912401d52bc3a0ab7540271c6579e6e8ba921641
+
+pkgname = goweatherserver
+
