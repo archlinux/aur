@@ -6,10 +6,10 @@
 _gemname=mini_portile
 pkgname=ruby-$_gemname
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simplistic port-like solution for developers'
 arch=(any)
-url='https://github.com/luislavena/mini_portile'
+url='https://github.com/flavorjones/mini_portile'
 license=(MIT)
 depends=(ruby)
 options=(!emptydirs)
