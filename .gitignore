@@ -1,9 +1,4 @@
-go-gpm-local/
-src/
-pkg/
-*.tar.gz
-*.tar.xz
-*.tgz
-*.rpm
-*.zip
-*.bz2
+*
+!.gitginore
+!PKGBUILD
+!.SRCINFO
