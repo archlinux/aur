@@ -1,16 +1,16 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=gog-tri
 pkgver=2.4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Puzzle game about triangles and foxes (GOG.com version)"
 arch=('i686' 'x86_64')
 url="http://www.gog.com/game/tri"
 license=('custom: GOG.com EULA')
 depends=('glu')
-makedepends=('dos2unix' 'unzip')
+makedepends=('dos2unix')
 source=(local://gog_tri_$pkgver.sh
-	$pkgname
-	$pkgname.desktop)
+        $pkgname
+        $pkgname.desktop)
 sha256sums=('67e9f5ac366a92e8f75d894c260208386e1ec0f53874d7b6681aeef5785cf30f'
             '7a01b6e86edf010c170816e3b55bb5f762b719096dfe05081e49bed487365498'
             '6bf4fc465f259b0e4a2b025ba1b1a12b865d24dda3a12b161fddd776a3311f5c')

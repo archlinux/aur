@@ -1,13 +1,12 @@
 pkgbase = gog-tri
 	pkgdesc = Puzzle game about triangles and foxes (GOG.com version)
 	pkgver = 2.4.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gog.com/game/tri
 	arch = i686
 	arch = x86_64
 	license = custom: GOG.com EULA
 	makedepends = dos2unix
-	makedepends = unzip
 	depends = glu
 	source = local://gog_tri_2.4.0.7.sh
 	source = gog-tri
