@@ -4,7 +4,7 @@
 
 pkgname=maple18
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A commercial computer algebra system developed and sold commercially by Maplesoft.  Version 18."
 url=http://www.maplesoft.com/products/maple/
 arch=('i686' 'x86_64')
