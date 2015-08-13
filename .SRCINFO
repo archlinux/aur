@@ -1,7 +1,7 @@
 pkgbase = meandmyshadow
-	pkgdesc = Puzzle/platform game in which you try to reach the exit by solving puzzles
+	pkgdesc = Puzzle/platform game in which you try to reach the exit by solving puzzles.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://meandmyshadow.sourceforge.net/
 	install = meandmyshadow.install
 	arch = i686
@@ -18,7 +18,9 @@ pkgbase = meandmyshadow
 	depends = hicolor-icon-theme
 	depends = libgl
 	source = https://sourceforge.net/projects/meandmyshadow/files/0.4.1/meandmyshadow-0.4.1-src.tar.gz
+	source = XFree.patch
 	md5sums = 724cb4a1822572dbe04131b5db658d19
+	md5sums = 571408e6efdf82358570e9f89db115e4
 
 pkgname = meandmyshadow
 
