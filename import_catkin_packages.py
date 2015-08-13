@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# vim:set et sw=4 ts=2 shiftwidth=2:
 
 from __future__ import print_function
 
@@ -14,6 +15,7 @@ import re
 from collections import OrderedDict
 from termcolor import colored, cprint
 import pickle
+import subprocess
 
 # Directory containing some data files
 updates_packages_dir = "/tmp/import_catkin_packages"
@@ -135,9 +137,9 @@ class PackageBase(object):
     Returns (build_dependencies, run_dependencies)
     """
     known_packages = self.distro.package_names(expand_metapackages=True)
-    build_dep = list(set([self._rosify_package_name('ros-%s-' % self.distro.name + dependency)
+    build_dep = list(set([self._get_full_package_name(dependency)
                            for dependency in self.build_dependencies if dependency in known_packages]))
-    run_dep = list(set([self._rosify_package_name('ros-%s-' % self.distro.name + dependency)
+    run_dep = list(set([self._get_full_package_name(dependency)
                            for dependency in self.run_dependencies if dependency in known_packages]))
     return build_dep, run_dep
 
@@ -155,6 +157,9 @@ class PackageBase(object):
 
   def _rosify_package_name(self, name):
     return name.replace('_', '-')
+
+  def _get_full_package_name(self, name):
+    return "ros-%s-%s" % (self.distro.name, name.replace('_', '-'))
 
   def _ensure_python2_dependency(self, dependency):
     # python     ---> python2
@@ -543,6 +548,51 @@ def github_raw_url(repo_url, path, commitish):
     }
 
 
+def create_submodule(url_ro, url_rw, full_dir):
+  parent_dir = os.path.dirname(full_dir)
+  relative_dir = os.path.basename(full_dir)
+  # First call may fail if the remote AUR package does not exist yet
+  fail = subprocess.call(['git', '-C', parent_dir, 'submodule', 'add', '--force',
+                          url_ro, relative_dir], stderr=subprocess.PIPE,
+                         stdout=subprocess.PIPE)
+  if fail:
+    subprocess.check_call(['git', '-C', parent_dir, 'submodule', 'add', '--force',
+                           url_ro, relative_dir], stdout=subprocess.PIPE)
+  subprocess.check_call(['git', '-C', full_dir, 'remote', 'set-url', '--push',
+                         'origin', url_rw], stderr=subprocess.PIPE,
+                         stdout=subprocess.PIPE)
+
+
+def create_clone(url_ro, url_rw, full_dir):
+  subprocess.check_call(['git', 'clone', url_ro, full_dir],
+                        stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+  subprocess.check_call(['git', '-C', full_dir, 'remote', 'set-url', '--push',
+                         'origin', url_rw], stderr=subprocess.PIPE,
+                         stdout=subprocess.PIPE)
+
+
+def create_package_directory(directory, package):
+  """
+  Create a directory or an AUR submodule based on the context.
+  """
+  full_dir = os.path.join(directory, package.name)
+
+  full_package_name = package._get_full_package_name(package.name)
+  url_ro = "https://aur.archlinux.org/%s.git" % (full_package_name)
+  url_rw = "ssh+git://aur@aur.archlinux.org/%s.git" % (full_package_name)
+
+  is_git_dir = subprocess.call(['git', '-C', directory, 'rev-parse', '--is-inside-work-tree'],
+                               stdout=subprocess.PIPE, stderr=subprocess.PIPE) == 0
+
+  if not os.path.exists(full_dir):
+    if not is_git_dir:
+      create_clone(url_ro, url_rw, full_dir)
+    else:
+      create_submodule(url_ro, url_rw, full_dir)
+
+  return full_dir
+
+
 def generate_pkgbuild(distro, package, directory, force=False,
                       no_overwrite=False, recursive=False, update=False,
                       exclude_dependencies=[], rosdep_urls=[],
@@ -580,11 +630,8 @@ def generate_pkgbuild(distro, package, directory, force=False,
                           rosdep_urls=rosdep_urls, generated=generated,
                           written=written)
 
-  output_directory = os.path.join(directory, package.name)
-
-  # If the directory does not exist, create it
-  if not os.path.exists(output_directory):
-    os.mkdir(output_directory)
+  # If the directory/submodule does not exist, create it
+  output_directory = create_package_directory(directory, package)
 
   # If PKGBUILD already exists
   if os.path.exists(os.path.join(output_directory, 'PKGBUILD')):
