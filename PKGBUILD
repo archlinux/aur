@@ -2,7 +2,7 @@
 
 pkgname=rtl-sdr-keenerd-git
 pkgver=20150428
-pkgrel=2
+pkgrel=3
 pkgdesc="Turns Realtek RTL2832 based DVB dongle into a SDR receiver transferring the raw I/Q samples to the host. Keenerd's experimental fork."
 arch=('i686' 'x86_64')
 url='https://github.com/keenerd/rtl-sdr'
