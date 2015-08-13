@@ -1,0 +1,12 @@
+pkgbase = fluxbox-style-elegant-brit
+	pkgdesc = Elegant Brit style for Fluxbox
+	pkgver = 20150813
+	pkgrel = 1
+	url = https://github.com/corebob/fluxbox-style-elegant-brit
+	arch = any
+	license = GPL3
+	source = https://github.com/corebob/fluxbox-style-elegant-brit/archive/master.zip
+	md5sums = a2c9691207fb539312aa7bdad58d3fe9
+
+pkgname = fluxbox-style-elegant-brit
+
