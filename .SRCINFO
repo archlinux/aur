@@ -1,0 +1,29 @@
+pkgbase = compiz-fusion-plugins-main
+	pkgdesc = Compiz Fusion Main plugins
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = http://blog.northfield.ws/compiz-0-8-10-release-announcement/
+	arch = i686
+	arch = x86_64
+	groups = compiz-fusion
+	groups = compiz-fusion-kde
+	groups = compiz-fusion-gtk
+	license = GPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = gettext
+	depends = compiz-core>=0.8.10
+	depends = libjpeg>=7
+	depends = librsvg
+	depends = compiz-bcop
+	depends = libxdamage
+	depends = libxcomposite
+	depends = libxinerama
+	depends = startup-notification
+	conflicts = compiz-fusion-plugins-main-git
+	options = !libtool
+	source = http://www.northfield.ws/projects/compiz/releases/0.8.10/plugins-main.tar.gz
+	sha1sums = 64973a098bfc4f3f43cd604202600a551a93ada3
+
+pkgname = compiz-fusion-plugins-main
+
