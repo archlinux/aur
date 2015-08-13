@@ -6,7 +6,8 @@ pkgdesc="A simple command line journal application that stores your journal in a
 arch=('any')
 url="http://maebert.github.io/jrnl/"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-dateutil' 'python-keyring' 'python-parsedatetime' \
+         'python-pytz' 'python-tzlocal')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 options=(!emptydirs)
