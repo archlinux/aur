@@ -9,12 +9,12 @@ pkgrel=1
 epoch=1
 pkgdesc="A new way of storing, sharing and publishing files on the Internet.  It's free, simple and secure."
 arch=('any')
-url="http://www.wuala.com/"
+url="https://www.wuala.com/"
 license=('custom:wuala')
 depends=('java-runtime' 'xdg-utils' 'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('fuse: filesystem integration')
 install="wuala.install"
-source=("http://cdn.wuala.com/repo/other/wuala.tar.gz"
+source=("https://cdn.wuala.com/repo/other/wuala.tar.gz"
         "${pkgname}.png"
         "${pkgname}.desktop"
         "LICENSE")
