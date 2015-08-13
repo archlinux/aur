@@ -15,7 +15,7 @@ pkgbase = systemtap
 	depends = python2
 	optdepends = sqlite3
 	optdepends = linux-fedora
-	source = http://sourceware.org/systemtap/ftp/releases/systemtap-2.7.tar.gz
+	source = http://sourceware.org/systemtap/ftp/releases/systemtap-2.8.tar.gz
 	sha1sums = 95034e8243e1f9fd33b765afda06546083df1b7f
 
 pkgname = systemtap
