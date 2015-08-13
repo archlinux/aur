@@ -1,14 +1,14 @@
 pkgbase = decox
 	pkgdesc = Decreasing continuous exponentials; toy decompression planner
-	pkgver = 1.8
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://fenua.org/gaetan/src/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = ISC
-	source = http://fenua.org/gaetan/src//decox-1.8.c
-	sha1sums = 25f19704a42a455386c93322e4b3f9bc9f9322b1
+	source = http://fenua.org/gaetan/src//decox-2.0.c
+	sha1sums = 263e9afff35b97142b542f5cb11d49357938caa0
 
 pkgname = decox
 
