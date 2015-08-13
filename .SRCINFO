@@ -1,0 +1,13 @@
+pkgbase = swisseph-fixstars
+	pkgdesc = High precision Swiss Ephemeris developed by Astrodienst (Fixstars).
+	pkgver = 2006.03.03
+	pkgrel = 1
+	url = http://www.astro.com/swisseph/
+	arch = any
+	groups = swisseph-all
+	license = GPL
+	source = http://www.astro.com/ftp/swisseph/ephe/fixstars.cat
+	md5sums = 19d2486e8ba2abc9109692c403430f3f
+
+pkgname = swisseph-fixstars
+
