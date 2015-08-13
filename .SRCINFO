@@ -9,7 +9,7 @@ pkgbase = goweatherserver
 	makedepends = go
 	options = !strip
 	source = goweatherserver-0.1.tar.gz
-	sha512sums = 4095fcaed1df1e2a91464824cf565284f39df2718d97cf8d06e2f8958d99b31884ca716ea1cc3cf3973960e6912401d52bc3a0ab7540271c6579e6e8ba921641
+	sha512sums = dbc6588828d76a951bf63350624565bd1acf8b40cc347df131a900897b86fe8d8195b1099c6b0994de1999de4b78679ca60c29dd0c6b119e2ab71423321aff3a
 
 pkgname = goweatherserver
 
