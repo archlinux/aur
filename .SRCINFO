@@ -1,7 +1,7 @@
 pkgbase = scangearmp
 	pkgdesc = Canon IJ Scanner Driver for MP250, MP270, MP490, MP550, MP560, and MP640 series
 	pkgver = 1.40
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.canon-europe.com/support/pixma_software/
 	arch = i686
 	arch = x86_64
@@ -20,10 +20,12 @@ pkgbase = scangearmp
 	makedepends_i686 = libtool
 	makedepends_i686 = gimp
 	makedepends_i686 = libusb-compat
+	makedepends_i686 = gtk2
 	makedepends_x86_64 = gcc-multilib
 	makedepends_x86_64 = libtool-multilib
 	makedepends_x86_64 = lib32-gimp
 	makedepends_x86_64 = lib32-libusb-compat
+	makedepends_x86_64 = lib32-gtk2
 
 pkgname = scangearmp-mpseries-common
 	pkgdesc = Canon IJ Scanner Driver (Common Package)
