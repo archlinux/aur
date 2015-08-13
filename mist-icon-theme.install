@@ -1,24 +1,12 @@
-ICONDIR="/usr/share/icons/Mist"
-
-update_icon_cache() {
-  echo "Updating GTK icon cache..." || return 1
-  gtk-update-icon-cache -f -t "${ICONDIR}" || return 1
-}
-
-
-# arg 1:  the new package version
 post_install() {
-  update_icon_cache
+  xdg-icon-resource forceupdate --theme Mist || return 1
 }
 
-# arg 1:  the new package version
-# arg 2:  the old package version
 post_upgrade() {
-  update_icon_cache
+  post_install $1
 }
 
-# arg 1:  the old package version
 post_remove() {
-  update_icon_cache
-  rmdir "${ICONDIR}"
+  post_install $1
+  rmdir "/usr/share/icons/Mist"
 }
