@@ -18,12 +18,12 @@ source=("git://github.com/nochowderforyou/clams.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_gitname
-  git describe | sed "s/^v//; s/-/./g"
+        cd "$srcdir/$_gitname"
+        git describe | sed "s/^v//; s/-/./g"
 }
 
 build() {
-	cd $srcdir/$_gitname
+	cd "$srcdir/$_gitname"
         ./autogen.sh
         ./configure
         make
