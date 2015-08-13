@@ -5,6 +5,39 @@
                               http://www.fmod.org
 ===============================================================================
 
+12/08/15 1.06.08 - Studio API patch release (build 66772)
+----------------------------------------------------
+
+Features:
+* UE4          - Added FMOD init settings.
+* UE4          - Added preliminary support for 4.9 engine preview build.
+* LowLevel API - Add Channel::setPosition support to HTTP streams.
+
+Fixes:
+* LowLevel API - Fixed System::getDefaultMixMatrix crashing if passed
+                 FMOD_SPEAKERMODE_RAW. Now returns FMOD_ERR_INVALID_PARAM.
+* LowLevel API - Xbox One - Fixed crash if all SHAPE contexts are consumed.
+* LowLevel API - Xbox One - Fixed XMA loops not being seamless.
+* Studio API   - Fixed potential crash when disconnecting from live update
+                 while recording a profiling session.
+* Studio API   - WiiU - Fixed hang on shutdown when exiting game from home menu.
+* LowLevel API - Fix for inaccurate metering levels when the calculation spanned
+                 multiple mix blocks.
+* LowLevel API - Fixed System::getRecordPosition race condition that could cause
+                 the returned value to be out of bounds.
+* Unity        - Fixed missing functionality from C# wrapper for beat callbacks 
+                 and metering.
+* Unity        - Fix leaking native system objects in editor.
+* UE4          - Fixed multiple listeners.
+* FSBank       - Fixed crash encoding FADPCM format in 64bit version of tool.
+
+Notes:
+* Studio API   - Reduced memory usage for instruments that do not require
+                 up/down mix.
+* LowLevel API - Improved performance of DSP::getParameterFloat,
+                 DSP::getParameterInt, DSP::getParameterBool and
+                 DSP::getParameterData when 'valuestr' argument is NULL.
+
 22/07/15 1.06.07 - Studio API patch release (build 66161)
 ----------------------------------------------------
 
