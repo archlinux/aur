@@ -1,4 +1,4 @@
-# Maintainer: Dimitri Merejkowsky <d.merej@archlinux.org>
+# Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 
 pkgname=soprano-qt5-git
 pkgver=v2.9.3.90.g3e00d37
