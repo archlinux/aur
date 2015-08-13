@@ -1,11 +1,12 @@
-# Maintainer: Miguel Revilla <yo@miguelrevilla.com>
+# Maintainer: Sam S <smls75@gmail.com>
+# Contributor: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=libtiff3
 pkgver=3.9.7
 pkgrel=1
-pkgdesc="Library for manipulation of TIFF images, legacy version, links to libtiff.so.3"
+pkgdesc="Library for manipulation of TIFF images (legacy version, provides libtiff.so.3)"
 arch=('any')
 url="http://www.remotesensing.org/libtiff/"
 license=('custom')
