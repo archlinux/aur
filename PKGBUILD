@@ -14,8 +14,8 @@ makedepends=('cmake>=2.6')
 provides=('editorconfig-core' 'editorconfig-core-c')
 conflicts=('editorconfig-core')
 replaces=('editorconfig-core<=0.10.0')
-source=("http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.tar.gz/download")
-md5sums=('b2eefcc47656f4166f3326eeeaddc076')
+source=("https://github.com/editorconfig/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('a53b67aca5ba307c37e9e002fa6cc5e5399ac0099eaeeca700ad703ee6e5278b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,11 +23,6 @@ build() {
   msg "Starting make..."
   cmake -D CMAKE_INSTALL_PREFIX=/usr -D INSTALL_HTML_DOC=ON .
   make
-}
-
-check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make test
 }
 
 package() {

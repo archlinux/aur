@@ -12,8 +12,8 @@ pkgbase = editorconfig-core-c
 	provides = editorconfig-core-c
 	conflicts = editorconfig-core
 	replaces = editorconfig-core<=0.10.0
-	source = http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.tar.gz/download
-	md5sums = b2eefcc47656f4166f3326eeeaddc076
+	source = https://github.com/editorconfig/editorconfig-core-c/archive/v0.12.0.tar.gz
+	sha256sums = a53b67aca5ba307c37e9e002fa6cc5e5399ac0099eaeeca700ad703ee6e5278b
 
 pkgname = editorconfig-core-c
 
