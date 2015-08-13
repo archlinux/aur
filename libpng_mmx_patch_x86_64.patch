@@ -1,0 +1,11 @@
+--- a/coders/png.c	2012-12-10 18:19:07.149721232 -0500
++++ b/coders/png.c	2012-12-10 18:24:17.442782178 -0500
+@@ -631,6 +631,8 @@
+ #define PNG_UINT_31_MAX (png_uint_32) 0x7fffffffL
+ #endif
+ 
++#undef PNG_ASSEMBLER_CODE_SUPPORTED
++
+ /*
+   Constant strings for known chunk types.  If you need to add a chunk,
+   add a string holding the name here.   To make the code more
