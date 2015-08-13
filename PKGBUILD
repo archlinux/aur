@@ -1,7 +1,7 @@
 # Maintainer: Ingo Bürk <ingo.buerk@airblader.de>
 pkgname=qelectrotech
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc=''
 arch=('i686' 'x86_64')
 url='http://qelectrotech.org/'
