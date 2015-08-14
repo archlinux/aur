@@ -3,7 +3,7 @@
 pkgname=airvpn-bin
 pkgver=2.9.2
 _version=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='AirVPN client "Eddie", stable version. Based on OpenVPN and operated by activists and hacktivists
 in defense of net neutrality, privacy and against censorship.'
 arch=('i686' 'x86_64')
