@@ -1,0 +1,15 @@
+pkgbase = zelda-roth-se
+	pkgdesc = Zelda : Return of the Hylian solarus edition.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://www.zelda-solarus.com/
+	arch = any
+	license = custom
+	makedepends = zip
+	makedepends = cmake
+	depends = solarus>=1.4.0
+	source = http://www.zelda-solarus.com/downloads/zelda-roth-se/zelda-roth-se-1.0.3.tar.gz
+	md5sums = fdddc764e0515d99a122f219f41836b0
+
+pkgname = zelda-roth-se
+
