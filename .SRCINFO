@@ -8,7 +8,6 @@ pkgbase = hexchat-autoaway
 	license = GPL3
 	makedepends = cmake
 	depends = hexchat
-	depends = libx11
 	depends = libxss
 	conflicts = hexchat-autoaway-git
 	source = https://github.com/andreyv/hexchat-autoaway/archive/v1.0.3.tar.gz
