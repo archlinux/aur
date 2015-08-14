@@ -4,7 +4,7 @@ pkgver=1.6.0
 pkgrel=1
 pkgdesc="Savage Wheels is a 2D car crashing arcade game similar to the old classic Destruction Derby."
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/savagewheels/"
+url="https://github.com/petarov/savagewheels"
 license=('MIT')
 groups=()
 depends=('cmake' 'sdl' 'sdl_mixer')
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/petarov/savagewheels/archive/v$pkgver.tar.gz https://savagewheels.googlecode.com/files/savagewheels-gamedata.tar.gz)
+source=(https://github.com/petarov/savagewheels/archive/v$pkgver.tar.gz https://github.com/petarov/savagewheels/releases/download/v1.4/savagewheels-gamedata.tar.gz)
 noextract=(savagewheels-gamedata.tar.gz)
 md5sums=('8154fe4ba5471dac31319b93d247785e'
          '98f2c9750c0dab008fbb74fa97a5f10d')
@@ -49,7 +49,7 @@ check() {
 	cd "$srcdir/$pkgname-$pkgver"
 	cd release
 	if [ ! -f savagewheels ]; then
-	  echo "Binary not found! Is compile successful?"
+	  echo "Binary not found! Was compile successful?"
 	fi
 }
 
