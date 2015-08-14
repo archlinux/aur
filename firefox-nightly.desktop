@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Firefox Nightly
+GenericName=Web Browser
+GenericName[fr]=Navigateur web
+Icon=firefox-nightly
+Exec=firefox-nightly %u
+Terminal=false
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+Categories=Network;X-WebBroswer;
+StartupNotify=false
