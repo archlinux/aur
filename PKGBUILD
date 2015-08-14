@@ -2,23 +2,23 @@
 # Contributor: Henrik Tunedal <putte_xvi at tunedal dot nu>
 pkgname=wmbattery
 pkgver=2.48
-pkgrel=2
+pkgrel=3
 pkgdesc="Battery monitor dockapp for Window Maker"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://windowmaker.org/dockapps/?name=wmbattery"
 license=('GPL')
-depends=(libxpm upower)
+depends=('libxpm' 'upower')
 source=("$pkgname-$pkgver.tar.gz::http://windowmaker.org/dockapps/?download=wmbattery-2.48.tar.gz")
-md5sums=('315e1546036674170ea2035e2f3604dc')
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/dockapps-"*
+  cd dockapps-*
   autoreconf -fiv
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/dockapps-"*
+  cd dockapps-*
   make DESTDIR="$pkgdir/" install
 }

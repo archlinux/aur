@@ -1,7 +1,7 @@
 pkgbase = wmbattery
 	pkgdesc = Battery monitor dockapp for Window Maker
 	pkgver = 2.48
-	pkgrel = 2
+	pkgrel = 3
 	url = http://windowmaker.org/dockapps/?name=wmbattery
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wmbattery
 	depends = libxpm
 	depends = upower
 	source = wmbattery-2.48.tar.gz::http://windowmaker.org/dockapps/?download=wmbattery-2.48.tar.gz
-	md5sums = 315e1546036674170ea2035e2f3604dc
+	md5sums = SKIP
 
 pkgname = wmbattery
 
