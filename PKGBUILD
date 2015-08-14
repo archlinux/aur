@@ -1,5 +1,5 @@
 pkgname=openturns
-pkgver=1.6rc1
+pkgver=1.6
 pkgrel=1
 pkgdesc="Uncertainty treatment library in C++/Python"
 license=('LGPL')
@@ -11,7 +11,7 @@ optdepends=('r: plotting, linear model and statistical tests'
 makedepends=('python' 'python-sphinx' 'r' 'cmake' 'gcc-fortran' 'swig' 'boost')
 backup=('etc/openturns/openturns.conf')
 source=("http://downloads.sourceforge.net/sourceforge/openturns/openturns/openturns-$pkgver.tar.bz2")
-sha1sums=('e424323b8c32e638cee0b3630fc3d531334bf419')
+sha1sums=('d937a6f37b4b2ffa0a8c070f865a2e103b9ad2b5')
 
 build() {
   cd openturns-$pkgver
