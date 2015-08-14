@@ -1,6 +1,6 @@
 pkgbase = git-town
 	pkgdesc = A git extension for generic high-level git workflow support
-	pkgver = 0.6.63.gde450dd15e07
+	pkgver = 0.6.63
 	pkgrel = 1
 	url = https://github.com/Originate/git-town
 	arch = x86_64
