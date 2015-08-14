@@ -13,6 +13,9 @@ depends=()
 provides=('docker-machine')
 conflicts=('docker-machine-bin')
 
+source=('https://raw.githubusercontent.com/docker/machine/master/LICENSE')
+sha256sums=('SKIP')
+
 source_x86_64=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-amd64")
 source_i686=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-386")
 
