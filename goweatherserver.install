@@ -3,7 +3,7 @@ pre_install() {
     name=goweatherserver
     num=488
     getent group $name &>/dev/null || groupadd -r -g $num $name >/dev/null
-    getent passwd $name &>/dev/null ||_useradd -r -u $num -g $name -d /tmp -s /bin/bash >/dev/null $name
+    getent passwd $name &>/dev/null || useradd -r -u $num -g $name -d /tmp -s /bin/bash >/dev/null $name
 
     true
 }
