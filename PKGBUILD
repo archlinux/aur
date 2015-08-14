@@ -6,7 +6,7 @@ _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
 pkgname=openresty
 _pkgname=ngx_openresty
-pkgver=1.7.10.2
+pkgver=1.9.3.1
 pkgrel=1
 pkgdesc="a powerful web app server by extending nginx"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(http://openresty.org/download/$_pkgname-$pkgver.tar.gz
         service
         openresty.logrotate)
 noextract=()
-sha256sums=('5e8beafb7b32ba62fd34b323b2e9cf49884b4f0491fccf189f0b88b3e25dd0e4'
+sha256sums=('dbcfd21f84431a7d13fe3c3656dcd9dd81236a8f7a114ac8d4afb86665f788bb'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
             '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23')
 
