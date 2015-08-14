@@ -1,6 +1,6 @@
 pkgbase = petsc-maint
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.6.0
+	pkgver = 54093.928c5b4
 	pkgrel = 1
 	url = http://www.mcs.anl.gov/petsc/petsc-as
 	install = petsc.install

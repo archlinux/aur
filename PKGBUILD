@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=petsc-maint
 _pkgname=petsc
-pkgver=3.6.0
+pkgver=54093.928c5b4
 pkgrel=1
 _config=arch-linux2-cxx-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -41,6 +41,7 @@ build() {
 
 	find ${srcdir} -name "*" -type f -exec \
 	sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
+	sed -i 's/self.publicInstall    = 1/self.publicInstall    = 0/' ${_build_dir}/config/BuildSystem/config/package.py
 
 	CONFOPTS="--with-shared-libraries=1 --with-clanguage=C++ --COPTFLAGS=-O2 --CXXOPTFLAGS=-O2"
 
@@ -60,7 +61,7 @@ build() {
 	CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
 
 	python2 ./configure \
-		--prefix=${pkgdir}${_install_dir} \
+		--prefix=${_install_dir} \
 		--PETSC_ARCH=${_config} \
 		${CONFOPTS}
 
@@ -69,41 +70,31 @@ build() {
 
 package() {
 	_build_dir="${srcdir}/${_pkgname}"
+	_dest_dir="${pkgdir}${_install_dir}"
 	cd ${_build_dir}
-	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install"
+	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} DESTDIR=${_dest_dir} install"
 	export PETSC_DIR=${_build_dir}
-	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install # > /dev/null
+	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} DESTDIR=${_dest_dir} install   # > /dev/null
 
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/variables"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/petscvariables"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/rules"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/include/petscconf.h"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/include/petscconfiginfo.h"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/petscrules"
+ 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/pkgconfig/PETSc.pc"
+ 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/variables"
+ 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/petscvariables"
+ 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/rules"
+ 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/include/petscconf.h"
+ 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/include/petscconfiginfo.h"
+ 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/petscrules"
 
 	export PETSC_DIR=${_install_dir}
 	
 	# Note: the hyperlinks between documentation, tutorials and examples are
 	# not perfect yet
 
-	# documentation
-	mkdir -p ${pkgdir}/usr/share/doc/$pkgname/
-	cp -r ${_build_dir}/docs ${pkgdir}/usr/share/doc/$pkgname/
-
+	mkdir -p ${pkgdir}/usr/share/doc/$_pkgname/
 	# tutorials
-	cp -r ${_build_dir}/tutorials ${pkgdir}/usr/share/doc/$pkgname/
+	cp -r ${_build_dir}/tutorials ${pkgdir}/usr/share/doc/$_pkgname/
 
 	# src for tutorials
-	cp -r ${_build_dir}/src ${pkgdir}/usr/share/doc/$pkgname/
-
-	# html versions of header files
-	mkdir -p ${pkgdir}/usr/share/doc/$pkgname/include
-	cp -r ${_build_dir}/include/*.html ${pkgdir}/usr/share/doc/$pkgname/include/
-
-	# install licenCe (even though there is no such word as licenSes)
-	mkdir -p ${pkgdir}/usr/share/licenses/petsc
-	cp ${_build_dir}/docs/copyright.html ${pkgdir}/usr/share/licenses/$pkgname/
+	cp -r ${_build_dir}/src ${pkgdir}/usr/share/doc/$_pkgname/
 
 	mkdir -p ${pkgdir}/etc/profile.d
 	echo "export PETSC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/petsc.sh
