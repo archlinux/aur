@@ -1,10 +1,10 @@
 # Contributor: maz-1 <loveayawaka_at_gmail_dot_com>
-# Contributor:
+# Contributor: eimis
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=gimp-apng
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A GIMP plugin to support animated PNG (APNG)."
 url="http://sourceforge.net/projects/gimp-apng/"
 depends=("gimp>=2.6.0" "libpng")
@@ -50,9 +50,8 @@ package() {
   rmdir "${pkgdir}/usr/bin/"
 
   mkdir -p "${pkgdir}/usr/share/gimp/2.0/ui/"
-  mv "${pkgdir}/usr/share/gimp-apng/ui/plug-ins/plug-in-file-apng.ui" \
+  cp "${pkgdir}/usr/share/gimp-apng/ui/plug-ins/plug-in-file-apng.ui" \
   	"${pkgdir}/usr/share/gimp/2.0/ui"
-  rm -r "${pkgdir}/usr/share/gimp-apng/ui/"
 }
 
 md5sums=('af83f8dfc6cfedc9ce3e898d1eef1768')

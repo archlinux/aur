@@ -1,7 +1,7 @@
 pkgbase = gimp-apng
 	pkgdesc = A GIMP plugin to support animated PNG (APNG).
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/gimp-apng/
 	arch = i686
 	arch = x86_64
