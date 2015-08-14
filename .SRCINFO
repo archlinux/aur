@@ -1,0 +1,23 @@
+pkgbase = vim-runtime-git
+	pkgdesc = Vim the editor. Components used by vim-minimal-git and gvim-git.
+	pkgver = 7.4.824
+	pkgrel = 1
+	url = http://www.vim.org
+	arch = i686
+	arch = x86_64
+	license = custom:vim
+	makedepends = git
+	makedepends = gtk2
+	makedepends = lua
+	makedepends = python
+	makedepends = python2
+	makedepends = ruby
+	depends = gpm
+	depends = gawk
+	provides = vim-runtime
+	conflicts = vim-runtime
+	source = git+https://github.com/vim/vim.git
+	sha256sums = SKIP
+
+pkgname = vim-runtime-git
+
