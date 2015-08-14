@@ -3,7 +3,7 @@
 pkgname=htmlcxx
 pkgver=0.85
 pkgrel=4
-pkgdesc="A simple non-validating css1 and html parser for C++."
+pkgdesc="A simple non-validating CSS1 and HTML parser for C++."
 arch=('i686' 'x86_64')
 url="http://htmlcxx.sourceforge.net/"
 license=('LGPL')
@@ -11,17 +11,16 @@ depends=()
 makedepends=()
 conflicts=('htmlcxx' 'libhtmlcxx' 'libcss_parser')
 provides=('htmlcxx' 'libhtmlcxx' 'libcss_parser')
-source=("http://heanet.dl.sourceforge.net/project/htmlcxx/htmlcxx/$pkgver/htmlcxx-$pkgver.tar.gz"
+source=("http://heanet.dl.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "missing-header.patch")
-md5sums=(dbe13c25b5846eb7cbbfa63d85f00f74
-         6c89882e310e9945fb0f4cdbb1f965bf)
-
-# Thanks to jgehring for the patch.
+sha256sums=('ab02a0c4addc82f82d564f7d163fe0cc726179d9045381c288f5b8295996bae5'
+            '2df7ea556410979f4ede3cb70d2067ba83eaadd437e3f68d67d0834cc8e4d33c')
 
 build() {
-	cd "$srcdir/htmlcxx-$pkgver"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	
-	patch -p1 -i "$srcdir/missing-header.patch"
+	# Thanks to jgehring for the patch.
+	patch -p1 -i "${srcdir}/missing-header.patch"
 	
 	LDFLAGS="$LDFLAGS -Wl,--no-as-needed"
 	./configure --prefix=/usr
@@ -29,6 +28,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/htmlcxx-$pkgver"
-	make DESTDIR="$pkgdir" install
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}" install
 }
