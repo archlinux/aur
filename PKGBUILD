@@ -2,14 +2,14 @@
 
 _git=1070c08c2dab9d4bdcab15591a75e7cb3f8ecde4 # lastest commit 20150806
 pkgname=zpm
-pkgver=20150809
+pkgver=20150815
 pkgrel=1
 pkgdesc="ZPM ( Zsh plugin manager ) is an yet another plugin manager for zsh similar to vim-plug"
 arch=('any')
 url="https://github.com/horosgrisa/${pkgname}"
 license=('LGPL3')
 depends=('zsh')
-makedepends=('git')
+makedepends=('git' 'fakeroot')
 install='zpm.install'
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
