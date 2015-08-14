@@ -1,22 +1,22 @@
-# Maintainer: Can Altıparmak (gulaghad) <can6parmak <AT> gmail <DOT> com>
+# Maintainer: Can Altıparmak (c6parmak) <can6parmak <AT> gmail <DOT> com>
 
 pkgname=droidassault-hib
 _pkgname=droidassault
 pkgver=1395265019
-pkgrel=2
+pkgrel=3
 pkgdesc="A unique tactical arcade shooter, with the fun addictive gameplay of classics like Paradroid and Quazatron. (Commercial)"
 arch=('any')
 url='http://www.puppygames.net/droid-assault/'
 license=('custom:commercial')
-depends=('java-runtime' 'openal' 'lwjgl')
+depends=('java-runtime' 'openal' 'lwjgl2')
 conflicts=("droid-assault")
-_gamepkg="DroidAssault-HIB_linux_$pkgver.tar.gz"
-source=("$_gamepkg::hib://$_gamepkg"
+source=("hib://DroidAssault-HIB_linux_$pkgver.tar.gz"
         "droidassault.sh"
         "droidassault.desktop")
 md5sums=('cf983be41c35969473a9b33b50dd8054'
-         '79577c365e3faa05b4f18798975f2e5d'
+         '25778b4726497be9ef9e941b2d5beee0'
          'c6d9b4b20727df8deff17e266eed0132')
+DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
 package() {
 # Create pkgdir folders

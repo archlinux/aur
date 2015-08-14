@@ -10,7 +10,7 @@ JVM="/usr/bin/java"
 # XMODIFIERS is cleared here to prevent SCIM screwing up keyboard input
 _JAVA_OPTIONS= XMODIFIERS= "${JVM}" \
     -server \
-    -Dorg.lwjgl.librarypath="/usr/share/lwjgl/native/linux" \
+    -Dorg.lwjgl.librarypath="/usr/share/lwjgl2/native/linux" \
     -Dorg.lwjgl.util.NoChecks=false \
     -Djava.net.preferIPv4Stack=true \
     -Dnet.puppygames.applet.Launcher.resources=resources-hib.dat \
