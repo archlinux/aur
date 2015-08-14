@@ -8,7 +8,7 @@ pkgrel=3
 pkgdesc="Flexible Isometric Free Engine is a cross platform game creation framework"
 arch=(i686 x86_64)
 url="http://fifengine.net/"
-license=('GPL')
+license=('LGPL')
 depends=('boost-libs' 'guichan' 'libgl' 'libvorbis' 'libxcursor' 'tinyxml'
          'openal' 'python2' 'sdl_image' 'sdl_ttf')
 makedepends=('scons' 'boost' 'mesa' 'swig' 'zlib')
