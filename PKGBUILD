@@ -18,15 +18,16 @@ arch=('any')
 url="https://github.com/boto/${_pkgname}"
 license=('Apache') # Apache License 2.0
 depends=('python' # See setup.py, README.rst, and requirements.txt for version dependencies
-  'python-bcdoc<0.15.0'
-  'python-wheel>=0.24.0'
-  'python-jmespath>=0.7.1'
-  'python-tox>=1.4'
-  'python-sphinx>=1.1.3'
-  'python-dateutil>=2.1' # 'python-dateutil<3.0.0' this is an old requirement
-  'python-nose>=1.3.0'
-  'python-mock>=1.0.1'
-  'python-six>=1.1.0'
+  'python-bcdoc<0.15.0'    # AUR
+  'python-wheel>=0.24.0'   # AUR ==
+  'python-jmespath>=0.7.1' # AUR == is possible for repositories. Makes upgrades impossible in AUR.
+  'python-tox>=1.4'        # COM == is possible because this is from a repository. Unfortunatley Arch isn't the primary dev environment for botocore/aws so our packages are likely to be newer.
+  'python-sphinx>=1.1.3' #'python-sphinx<1.3'     # COM Arch is already newer. Documentation might not work.
+  'python-dateutil>=2.1' 'python-dateutil<3.0.0' # COM
+  'python-nose>=1.3.0'     # COM ==
+  'python-mock>=1.0.1'     # COM ==
+  'python-docutils>=0.10'  # COM
+  'python-six>=1.1.0'      # COM This is in the sources but I'm not sure where the version comes from.
 )
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-botocore')
