@@ -1,0 +1,13 @@
+post_install() {
+cat << 'EOM'
+
+   Copy the datafiles folder from /usr/share/libretro/nxengine_libretro
+   to your home dir(or wherever you have read/write access)
+   run Doukutsu.exe from that folder as game
+
+EOM
+}
+
+post_upgrade() {
+  post_install
+}
