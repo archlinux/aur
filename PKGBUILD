@@ -1,7 +1,7 @@
 # Maintainer: Aaron DeVore <aaron.devore@gmail.com>
 
 pkgname=python2-selenium
-pkgver=2.44.0
+pkgver=2.47.1
 pkgrel=1
 pkgdesc="Python binding for Selenium Remote Control [Python 2]"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 optdepends=('lib32-glibc: Firefox x86 webdriver support for x86_64')
 source=("http://pypi.python.org/packages/source/s/selenium/selenium-${pkgver}.tar.gz")
-md5sums=('8802d73fb989d007ba1b43f070361cd1')
+md5sums=('7a2e267e8ef5c221bfd6387c2ad5f3bc')
 
 build() {
   cd "$srcdir/selenium-$pkgver"
