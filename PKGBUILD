@@ -3,7 +3,7 @@
 # Contributor: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=mingw-w64-seafile-shared
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Shared components of seafile: seafile-daemon, libseafile, libseafile python bindings (mingw-w64)."
 arch=(any)
@@ -14,7 +14,7 @@ depends=('mingw-w64-crt' 'mingw-w64-ccnet>=3.0' 'mingw-w64-curl')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("seafile-${pkgver}.tar.gz::https://github.com/haiwen/seafile/archive/v${pkgver}.tar.gz"
 	"seafile-pull-1265.patch::https://patch-diff.githubusercontent.com/raw/haiwen/seafile/pull/1265.patch")
-sha256sums=('1e4bdd6dc5e2903fafc410cf2596e98c3083c91b0f2d1371cdc1286fa0f6866e'
+sha256sums=('56791c096dfde0283d8280102139f7c7df88789a4152a1a037c8e573087ac9ce'
             '50ef89aa3d4382af7ba45c9c95530ce8b3a9c355dd1c425c35a26651c62692bb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
