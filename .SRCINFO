@@ -1,0 +1,24 @@
+pkgbase = vim-minimal-git
+	pkgdesc = Vim the editor. CLI version providing small subset of available features.
+	pkgver = 7.4.824
+	pkgrel = 1
+	url = http://www.vim.org
+	arch = i686
+	arch = x86_64
+	license = custom:vim
+	makedepends = git
+	depends = vim-runtime-git
+	provides = vim-minimal
+	provides = xxd
+	conflicts = vim-git
+	conflicts = gvim-git
+	conflicts = vim-minimal
+	conflicts = vim
+	conflicts = vim-python3
+	conflicts = gvim
+	conflicts = gvim-python3
+	source = git+https://github.com/vim/vim.git
+	sha256sums = SKIP
+
+pkgname = vim-minimal-git
+
