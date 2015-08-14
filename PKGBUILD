@@ -10,13 +10,20 @@ license=('BSD')
 
 conflicts=('cppformat')
 depends=('gcc-libs')
-makedepends=('cmake' 'git' 'doxygen' 'npm' 'python-virtualenv')
+makedepends=('cmake' 'git' 'doxygen' 'nodejs-less' 'npm' 'python-virtualenv')
 source=("$pkgname"::'git+https://github.com/cppformat/cppformat')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$pkgname"
+
+	sed -i "/'-b', 'html', doc_dir, 'html'])/a\  check_call(['npm', 'install', 'less-plugin-clean-css'])" doc/build.py
+	sed -i "s/--clean-css/--plugin=..\/node_modules\/less-plugin-clean-css/" doc/build.py
 }
 
 build() {

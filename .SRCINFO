@@ -9,6 +9,7 @@ pkgbase = cppformat-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = doxygen
+	makedepends = nodejs-less
 	makedepends = npm
 	makedepends = python-virtualenv
 	depends = gcc-libs
