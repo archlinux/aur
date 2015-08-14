@@ -2,7 +2,7 @@
 
 pkgname=terraria-server
 pkgver=1.3.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -18,7 +18,7 @@ source=("http://terraria.org/server/${pkgname}-linux-${_pkgver}.tar.gz"
 
 sha256sums=('0ab1ee17d78ae1ec039363519840cb1651c6aa22f5a76f014d9cfdca4fb7a333'
             '8a7e23efe3f72d8c88024cf32e53daa4b293bb2b17070dbf80e86876af1e22f9'
-            '47b5b370da9f29a3d95bda3770c7bad3c2b3122361d17860fa7d7824051ae2a6')
+            '1c5ffd66b61f34e25ccbe355c8769b37dc338295b7f50961b22b6d6383e31de7')
 
 package() {
     cd "${srcdir}/${pkgname}-linux-${_pkgver}/"
