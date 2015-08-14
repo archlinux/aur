@@ -1,0 +1,21 @@
+pkgbase = fatrat-git
+	pkgdesc = Qt Download/Upload Manager
+	pkgver = 1.2.0_beta2.20.gc76986b
+	pkgrel = 1
+	url = http://fatrat.dolezel.info
+	arch = i686
+	arch = x86_64
+	license = custom: GPL2 + complement
+	makedepends = git
+	makedepends = cmake
+	makedepends = libtorrent-rasterbar
+	makedepends = boost
+	depends = qt5-tools
+	depends = qt5-svg
+	provides = fatrat
+	conflicts = fatrat
+	source = git://git.dolezel.info/fatrat.git
+	sha256sums = SKIP
+
+pkgname = fatrat-git
+
