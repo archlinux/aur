@@ -2,10 +2,10 @@
 pkgname=knightos-kcc
 _pkgname=kcc
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 license=('GPL')
 pkgdesc='A C compiler for z80 systems'
-depends=("scas")
+depends=("scas" "boost")
 makedepends=("cmake" "asciidoc")
 arch=("i386" "x86_64")
 url='https://github.com/KnightOS/kcc'
