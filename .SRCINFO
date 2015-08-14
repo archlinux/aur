@@ -1,7 +1,7 @@
 pkgbase = entityx-git
 	pkgdesc = A fast, type-safe C++ Entity-Component system
 	pkgver = 1.2.0.r0.ga7535d8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alecthomas/entityx
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = entityx-git
 	depends = gcc-libs
 	conflicts = entityx
 	source = entityx-git::git+https://github.com/alecthomas/entityx
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = entityx-git
 

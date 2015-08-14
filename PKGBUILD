@@ -2,16 +2,18 @@
 
 pkgname=entityx-git
 pkgver=1.2.0.r0.ga7535d8
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, type-safe C++ Entity-Component system"
 arch=('i686' 'x86_64')
 url="https://github.com/alecthomas/entityx"
 license=('MIT')
-depends=('gcc-libs')
+
 conflicts=('entityx')
+depends=('gcc-libs')
 makedepends=('cmake' 'git')
+
 source=("$pkgname"::'git+https://github.com/alecthomas/entityx')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
@@ -29,6 +31,7 @@ build() {
 		-DENTITYX_BUILD_TESTING=0 \
 		-Wno-dev \
 		..
+
 	make
 }
 
@@ -47,7 +50,8 @@ check() {
 package() {
 	cd "$pkgname"
 
-	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "cmake/FindEntityX.cmake" "${pkgdir}/usr/share/cmake-3.3/Modules/FindEntityX.cmake"
 
 	cd build
 	make DESTDIR="$pkgdir" install
