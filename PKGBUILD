@@ -1,9 +1,10 @@
-# Maintainer: Lubosz Sarnecki <lubosz at gmail>
+# Maintainer: Sam S. <smls75@gmail.com>
+# Contributor: Lubosz Sarnecki <lubosz at gmail>
 
 pkgname=arx-git
 pkgver=20111108
 pkgrel=1
-pkgdesc='Cross-platform port of Arx Fatalis.'
+pkgdesc='Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only; Git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/arx/ArxLibertatis'
 license=('GPL3')

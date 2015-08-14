@@ -1,5 +1,5 @@
 pkgbase = arx-git
-	pkgdesc = Cross-platform port of Arx Fatalis.
+	pkgdesc = Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only; Git version)
 	pkgver = 20111108
 	pkgrel = 1
 	url = https://github.com/arx/ArxLibertatis
