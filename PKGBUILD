@@ -10,6 +10,7 @@ license=('MIT')
 
 depends=('libgl')
 makedepends=('cmake' 'git' 'gmock' 'gtest')
+conflicts=('glbinding')
 
 source=("$pkgname"::'git+https://github.com/hpicgs/glbinding.git')
 sha256sums=('SKIP')

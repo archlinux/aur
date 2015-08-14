@@ -11,6 +11,7 @@ pkgbase = glbinding-git
 	makedepends = gmock
 	makedepends = gtest
 	depends = libgl
+	conflicts = glbinding
 	source = glbinding-git::git+https://github.com/hpicgs/glbinding.git
 	sha256sums = SKIP
 
