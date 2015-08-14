@@ -9,7 +9,7 @@ pkgbase = cjson-git
 	makedepends = git
 	provides = cjson
 	options = !libtool
-	source = git://github.com/chefpeyo/cJSON.git
+	source = git://github.com/pohuguet/cJSON.git
 	md5sums = SKIP
 
 pkgname = cjson-git

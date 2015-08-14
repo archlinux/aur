@@ -14,7 +14,7 @@ makedepends=('git')
 conflits=()
 provides=('cjson')
 options=('!libtool')
-source=('git://github.com/chefpeyo/cJSON.git')
+source=('git://github.com/pohuguet/cJSON.git')
 md5sums=(SKIP)
 
 _gitname="cJSON"
