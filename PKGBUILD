@@ -2,7 +2,7 @@
 pkgname=virtio-win
 pkgver=0.1.109.1
 pkgver_=0.1.109-1
-pkgrel=3
+pkgrel=4
 pkgdesc="virtio drivers for Windows (2000, XP, Vista, 7, 8) guests and floppy images for Windows XP"
 arch=('i686' 'x86_64')
 url="https://fedoraproject.org/wiki/Windows_Virtio_Drivers"
@@ -10,6 +10,7 @@ license=('GPL2')
 depends=('qemu')
 # https://fedorapeople.org/groups/virt/virtio-win/CHANGELOG
 changelog="${pkgname}.changelog"
+install="${pkgname}.install"
 source=("https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${pkgname}-${pkgver_}/${pkgname}.iso"
         "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${pkgname}-${pkgver_}/${pkgname}_amd64.vfd"
         "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${pkgname}-${pkgver_}/${pkgname}_x86.vfd")
