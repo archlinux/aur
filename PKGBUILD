@@ -21,7 +21,7 @@ install=easymp3gain.install
 [ "$CARCH" = "x86_64" ] && source=("http://sourceforge.net/projects/easymp3gain/files/easymp3gain%20x86_64/easymp3gain-${pkgver}/easymp3gain-gtk2_${pkgver}_${_arch}.tar.gz") || source=("http://sourceforge.net/projects/easymp3gain/files/easymp3gain%20i386/easymp3gain-${pkgver}/easymp3gain-gtk2_${pkgver}_${_arch}.tar.gz")
 [ "$CARCH" = "x86_64" ] && md5sums=('0e1a42c4d376057849e385b8c2b9fa4f') || md5sums=('69b5a186022678955086134d06db74a6')
 
-build() {
+package() {
 	mkdir -p ${pkgdir}/usr/{share/{applications,doc/easymp3gain-gtk2,easymp3gain/{help,lang},icons/hicolor/},bin}
 
 	cd ${srcdir}/easymp3gain-gtk2_${pkgver}-1_${_arch}/
