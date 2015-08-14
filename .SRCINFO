@@ -1,8 +1,8 @@
 pkgbase = arx-git
 	pkgdesc = Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only; Git version)
-	pkgver = 20111108
+	pkgver = 1.1.2.r5464.gc87968a
 	pkgrel = 1
-	url = https://github.com/arx/ArxLibertatis
+	url = http://arx-libertatis.org/
 	install = arx.install
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = arx-git
 	optdepends = gdb: generate detailed crash reports
 	provides = arx
 	conflicts = arx
+	source = git+https://github.com/arx/ArxLibertatis.git
+	md5sums = SKIP
 
 pkgname = arx-git
 
