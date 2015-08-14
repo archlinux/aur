@@ -1,0 +1,16 @@
+pkgbase = gog-terraria
+	pkgdesc = The very world is at your fingertips as you fight for survival, fortune, and glory.
+	pkgver = 2.0.0.3
+	pkgrel = 1
+	url = http://terraria.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	source = gog://gog_terraria_2.0.0.3.sh
+	source = gog-terraria.desktop
+	sha256sums = b2e895c6b60242f98455fefc243683d4e61b758e27469409210df3ecabe7c8e7
+	sha256sums = 815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093
+
+pkgname = gog-terraria
+

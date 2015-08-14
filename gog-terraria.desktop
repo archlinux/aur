@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Terraria
+Comment=Dig, Fight, Build!
+Exec=gog-terraria
+Icon=gog-terraria
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
