@@ -1,32 +1,33 @@
-# Contributor: Travis Willard <travis@archlinux.org> 
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Travis Willard <travis@archlinux.org>
 # Contributor: Paul Mattal <paul@mattal.com>
 # Contributor: Thanasis Georgiou <contact@thgeorgiou.com>
 
 pkgname=imwheel
 pkgver=1.0.0pre12
 pkgrel=5
-pkgdesc="Mouse Wheel Tool for XFree86/Xorg"
+pkgdesc='Mouse wheel configuration tool for XFree86/Xorg'
 arch=(i686 x86_64)
-url="http://imwheel.sourceforge.net"
+url='http://imwheel.sourceforge.net'
 license=('GPL')
 depends=('libxtst' 'libxmu')
 backup=(etc/X11/imwheel/imwheelrc)
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz 
-	etcdir-install.patch)
-md5sums=('21d81db739ae95d96f9b650f7b826a14'
-	'51359d20eb2a95136564db2d32e3ec38')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
+        'etcdir-install.patch')
+sha256sums=('2320ed019c95ca4d922968e1e1cbf0c075a914e865e3965d2bd694ca3d57cfe3'
+            '602a466e5537e7edb53247648fef62ea5bfa51e56f68dfd9f4fcb4b19e38fd16')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  # patch to fix buggy location of ETCDIR
-  patch -p1 -i ${srcdir}/etcdir-install.patch || return 1
+  cd "$pkgname-$pkgver"
 
-  ./configure --prefix=/usr \
-    --mandir=/usr/share/man
-  make || return 1
+  # patch to fix buggy location of ETCDIR
+  patch -p1 -i "${srcdir}/etcdir-install.patch"
+
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir/ install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
