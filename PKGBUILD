@@ -1,8 +1,9 @@
-# Maintainer: Xentec <artificial.i7 at gmail dot com>
+# Maintainer: Xentec <xentec at aix0 dot eu>
+# Contributor: Scott Linder <scott dot linder18 at gmail dot com>
 
 pkgname=entityx-git
 pkgver=1.2.0.r0.ga7535d8
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, type-safe C++ Entity-Component system"
 arch=('i686' 'x86_64')
 url="https://github.com/alecthomas/entityx"
