@@ -1,0 +1,19 @@
+pkgbase = libretro-catsfc-git
+	pkgdesc = libretro implementation of CATSFC. (Super Nintendo Entertainment System)
+	pkgver = 453.7721924
+	pkgrel = 1
+	url = https://github.com/libretro/CATSFC-libretro
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	makedepends = git
+	source = git+https://github.com/libretro/CATSFC-libretro.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/catsfc_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-catsfc-git
+
