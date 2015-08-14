@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-xengt' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-xengt"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-xengt.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-xengt-fallback.img"
+fallback_options="-S autodetect"

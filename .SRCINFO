@@ -1,0 +1,47 @@
+pkgbase = linux-igvtg
+	pkgver = master_2015Q3_3.18.0
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/01org/Igvtg-kernel.git#branch=2015q3-3.18.0
+	source = linux-igvtg.preset
+	source = config.x86_64
+	source = HD_4400_devid.patch
+	sha256sums = SKIP
+	sha256sums = c5cd1579087fe8cae531a612f87187c631730e909d24e4df03541a246abe030e
+	sha256sums = b373e1cb34dade1c89e3224c998259cb838bd4e3f8c7d27c0efd7346f3f4a2ea
+	sha256sums = 0b475002e5299683a34b21d641bdff6f7717d6f52489330261c3c6da0979897e
+
+pkgname = linux-igvtg
+	pkgdesc = The Linux kernel and modules (git version)
+	install = linux-igvtg.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-igvtg=master_2015Q3_3.18.0
+	conflicts = kernel26-igvtg
+	replaces = kernel26-igvtg
+	backup = etc/mkinitcpio.d/linux-igvtg.preset
+
+pkgname = linux-igvtg-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = kernel26-igvtg-headers=master_2015Q3_3.18.0
+	conflicts = kernel26-igvtg-headers
+	replaces = kernel26-igvtg-headers
+
+pkgname = linux-igvtg-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = kernel26-igvtg-docs=master_2015Q3_3.18.0
+	conflicts = kernel26-igvtg-docs
+	replaces = kernel26-igvtg-docs
+

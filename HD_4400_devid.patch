@@ -1,0 +1,24 @@
+From d9c03f8e0182928bc4403e7a9ba67689a44cbc9e Mon Sep 17 00:00:00 2001
+From: Joseph Kogut <joseph.kogut@gmail.com>
+Date: Fri, 20 Nov 2015 11:26:06 -0700
+Subject: [PATCH] Add device id for HD 4400 graphics
+
+---
+ drivers/gpu/drm/i915/vgt/devtable.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/i915/vgt/devtable.h b/drivers/gpu/drm/i915/vgt/devtable.h
+index 3389d46..248ab2c 100644
+--- a/drivers/gpu/drm/i915/vgt/devtable.h
++++ b/drivers/gpu/drm/i915/vgt/devtable.h
+@@ -77,6 +77,7 @@ static inline int _is_haswell(int devid)
+ 	case 0x0412:
+ 	case 0x0416:
+ 	case 0x041a:
++	case 0x041e:
+ 	case 0x0422:
+ 	case 0x0426:
+ 	case 0x042a:
+-- 
+2.6.2
+
