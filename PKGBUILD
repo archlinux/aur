@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=decompose-git
-pkgver=r35.d3236e2
+pkgver=r38.bcb0046
 pkgrel=1
 pkgdesc="Development Environment Compose - templating framework to help \
   developers easily create and switch environments"
