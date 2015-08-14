@@ -1,0 +1,21 @@
+pkgbase = unison-240-compat
+	pkgdesc = File-synchronization tool
+	pkgver = 2.40.128
+	pkgrel = 1
+	url = http://www.cis.upenn.edu/~bcpierce/unison/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml
+	makedepends = lablgtk2
+	makedepends = imagemagick
+	optdepends = gtk2: for gtk2 support
+	conflicts = unison
+	options = !makeflags
+	source = http://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.40.128/unison-2.40.128.tar.gz
+	source = desktop
+	sha1sums = 392a573cbf331d71cac8ccb32f5440dceec88470
+	sha1sums = 9dad1737dd8d90e7ee2744a96cf71bd9f802a12a
+
+pkgname = unison-240-compat
+
