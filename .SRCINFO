@@ -5,6 +5,7 @@ pkgbase = reaver-wps-fork-t6x-git
 	url = https://github.com/t6x/reaver-wps-fork-t6x
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = GPL2
 	depends = libpcap
 	depends = sqlite3
