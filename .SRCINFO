@@ -1,0 +1,19 @@
+pkgbase = miro-video-converter
+	pkgdesc = Simple video converter that has presets for popular (Android)phones, iPhones and iPads.
+	pkgver = 3.0.2
+	pkgrel = 4
+	url = http://www.mirovideoconverter.com/
+	install = miro-video-converter.install
+	arch = any
+	license = GPL3
+	makedepends = python2-distribute
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	depends = pygtk
+	source = miro-video-converter-3.0.2.tar.gz::https://github.com/pculture/mirovideoconverter3/archive/v3.0.2.tar.gz
+	source = miro-video-converter.install
+	md5sums = cc636577fa810a24fdcc846f5de80efa
+	md5sums = 6b3443ecc6a059b1b3e6cfa61310931a
+
+pkgname = miro-video-converter
+
