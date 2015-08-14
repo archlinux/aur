@@ -1,0 +1,22 @@
+pkgbase = ncxmms2-git
+	pkgdesc = An ncurses xmms2 client
+	pkgver = 20150814
+	pkgrel = 1
+	url = https://github.com/pkunavin/ncxmms2
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = gcc>=4.6
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconfig
+	depends = xmms2
+	depends = ncurses
+	depends = glib2
+	source = git+https://github.com/pkunavin/ncxmms2.git
+	md5sums = SKIP
+
+pkgname = ncxmms2-git
+
