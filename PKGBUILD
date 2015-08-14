@@ -46,8 +46,8 @@ package() {
     cd "$_builddir"
 
     # goweatherserver.toml
-    install -Dm644 cfg/"$pkgname".toml \
-        "$pkgdir"/etc/$pkgname/"$pkgname".toml || return 1
+    install -Dm644 cfg/"$pkgname"_sample.toml \
+        "$pkgdir"/etc/$pkgname/"$pkgname"_sample.toml || return 1
 
     # Create log directory
     install -dm755 "$pkgdir"/var/log/$pkgname || return 1
@@ -63,4 +63,4 @@ package() {
     install -m755 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
-sha512sums=('5cd25af3a85f6a376fea7739a329577b8a51ea614c171675884fdb845a6af390f9594ba506b96e0d34c0992e82ff632c604538475783b2ddbbd3eee38f191856')
+sha512sums=('b673c5a20680469cb5d91d4c8473c6566cf7889cf720e48c4740802cd013b218deafadaf22e6dd63033ac5ded5fb7520ce00ffa3bd1abd5f95d647b9db31c669')
