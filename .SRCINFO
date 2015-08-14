@@ -1,0 +1,19 @@
+pkgbase = atari++
+	pkgdesc = An emulator of Atari 400/800/400XL/800XL/130XE/5200
+	pkgver = 1.73
+	pkgrel = 1
+	url = http://www.xl-project.com/
+	arch = i686
+	arch = x86_64
+	license = custom:TPL
+	depends = sdl
+	depends = libpng
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = libsm
+	noextract = atari++_1.73.tar.gz
+	source = http://www.xl-project.com/download/atari++_1.73.tar.gz
+	md5sums = 13af66f605282f84ae33359e4c8d740a
+
+pkgname = atari++
+
