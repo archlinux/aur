@@ -5,14 +5,14 @@
 pkgname=httpcli
 provides=('httpcli')
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="RESTful command line HTTP client (simpler than cURL)."
 arch=('any')
 url="http://github.com/dolph/httpcli"
 license=('MIT')
 
 groups=()
-depends=('python2' 'python2-httplib2')
+depends=('python2' 'python2-httplib2' 'python2-argparse')
 makedepends=()
 provides=()
 conflicts=('python-httpie' 'python2-httpie')
