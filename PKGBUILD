@@ -2,6 +2,7 @@
 
 pkgname=airvpn-bin
 pkgver=2.9.2
+_version=${pkgver%.*}
 pkgrel=1
 pkgdesc='AirVPN client "Eddie", stable version. Based on OpenVPN and operated by activists and hacktivists
 in defense of net neutrality, privacy and against censorship.'
@@ -12,8 +13,8 @@ depends=(gksu mono openvpn stunnel)
 provides=('airvpn')
 conflicts=('airvpn' 'airvpn-beta-bin')
 install=airvpn.install
-source_i686=("https://airvpn.org/repository/${pkgver}/airvpn_linux_x86_debian.deb")
-source_x86_64=("https://airvpn.org/repository/${pkgver}/airvpn_linux_x64_debian.deb")
+source_i686=("https://airvpn.org/repository/${_version}/airvpn_linux_x86_debian.deb")
+source_x86_64=("https://airvpn.org/repository/${_version}/airvpn_linux_x64_debian.deb")
 md5sums_i686=('c3f1ed16b8e72b530c5786799bb13b89')
 md5sums_x86_64=('edceba29c0ca6b58eb36478e12c2f71c')
 sha256sums_i686=('8dcae5773fda5f0955dcbd19a2364ac700909b8ae3f564de298a9add5879575a')
