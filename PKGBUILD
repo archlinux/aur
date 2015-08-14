@@ -22,18 +22,18 @@ source=("$_clonedir"::'git+https://bitbucket.org/xiannox/quill.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_clonedir"
+  cd "$srcdir/$_clonedir/src"
   printf "%s.%s.r%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list `git describe --abbrev=0 --tags`..HEAD --count)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_clonedir"
+  cd "$srcdir/$_clonedir/src"
   #lrelease-qt5 resources/translations/*.ts
   qmake-qt5 PREFIX=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_clonedir"
+  cd "$srcdir/$_clonedir/src"
   make INSTALL_ROOT="${pkgdir}" install
 }
