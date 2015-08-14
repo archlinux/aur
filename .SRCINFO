@@ -1,0 +1,14 @@
+pkgbase = fbrokendesktop
+	pkgdesc = Search for broken Exec in *.desktop
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/AndyCrowd/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	source = fbrokendesktop::git+https://github.com/AndyCrowd/fbrokendesktop.git
+	md5sums = SKIP
+
+pkgname = fbrokendesktop
+
