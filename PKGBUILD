@@ -1,7 +1,7 @@
-# Maintainer: Xentec <artificial.i7 at gmail dot com>
+# Maintainer: Xentec <xentec at aix0 dot eu>
 
 pkgname=cppformat-git
-pkgver=1.1.0.r256.g69a0317
+pkgver=1.1.0.r282.g32fbc08
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 
 conflicts=('cppformat')
 depends=('gcc-libs')
-makedepends=('cmake' 'git' 'doxygen' 'nodejs-less-plugin-clean-css' 'python-virtualenv')
+makedepends=('cmake' 'git' 'doxygen' 'npm' 'python-virtualenv')
 source=("$pkgname"::'git+https://github.com/cppformat/cppformat')
 sha256sums=('SKIP')
 
@@ -29,6 +29,7 @@ build() {
 		-DBUILD_SHARED_LIBS=1 \
 		-Wno-dev \
 		..
+
 	make
 	make doc
 }
@@ -46,6 +47,6 @@ package() {
 	install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	cd build
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" make install
 }
 
