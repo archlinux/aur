@@ -11,7 +11,6 @@ makedepends=('git')
 optdepends=('patch: for specifying any additional patches to apply')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=
 source=("git+$url")
 md5sums=('SKIP')
 
