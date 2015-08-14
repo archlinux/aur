@@ -1,14 +1,14 @@
-# Maintainer: Can Altıparmak (gulaghad) <can6dev <AT> gmail <DOT> com>
+# Maintainer: Can Altıparmak (c6parmak) <can6parmak <AT> gmail <DOT> com>
 
 pkgname=tmxparser-git
 pkgver=124.9aa25dd
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for parsing TMX files (Tiled Maps) using TinyXML's DOM interface."
 url='https://github.com/andrewrk/tmxparser'
 license=('BSD')
 depends=('tinyxml2' 'zlib')
 makedepends=('git')
-replaces=('tmx-parser-svn')
+conflicts=('tmx-parser-svn')
 arch=('i686' 'x86_64')
 source=("$pkgname"::'git://github.com/andrewrk/tmxparser.git')
 md5sums=('SKIP')
