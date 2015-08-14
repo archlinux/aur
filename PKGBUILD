@@ -10,8 +10,23 @@ license="MIT"
 arch=("any")
 depends=("php>=5.3.6")
 makedepends=("php-box" "php-composer")
-source=("https://github.com/FriendsOfPHP/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('755eb4bc11e791569b1297719181b4e343ef0f37559176c100515e5715b2348d64a487fd8733a8cf8be1ac2aa23270a2ea524117665036de2cf50fe6a51cc677')
+install="${pkgname}.install"
+source=("https://github.com/FriendsOfPHP/${_pkgname}/archive/v${pkgver}.tar.gz"
+        "${pkgname}.install")
+sha512sums=('755eb4bc11e791569b1297719181b4e343ef0f37559176c100515e5715b2348d64a487fd8733a8cf8be1ac2aa23270a2ea524117665036de2cf50fe6a51cc677'
+            '0eff98de88ad715939217f16138941bb3e9c8bb6e34d85db875c1fc0166e3fb4b0ec8dd9df5d9865c9f772621dc5a6aaf668d2ba8e26b632905bdaedf435feb5')
+
+prepare() {
+  if ! php -i | grep 'PHP Archive support => enabled' >/dev/null 2>&1; then
+    echo "Error: phar.so must be enabled and phar.readonly = Off in your php.ini to compile"
+    exit 1
+  fi
+
+  if ! php -i | grep 'phar.readonly => Off' >/dev/null 2>&1; then
+    echo "Error: phar.so is enabled but phar.readonly must be set to 'Off' in your php.ini to compile"
+    exit 1
+  fi
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
