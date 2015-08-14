@@ -1,13 +1,17 @@
 pkgbase = brother-lpr-drivers-laser
 	pkgdesc = Provides all LPR drivers for models DCP-7010 DCP-7020 DCP-7025 DCP-8060 DCP-8065DN FAX-2820 FAX-2920 HL-2030 HL-2040 HL-2070N HL-5240 HL-5250DN HL-5270DN HL-5280DW MFC-7220 MFC-7225N MFC-7420 MFC-7820N MFC-8460N MFC-8660DN MFC-8860DN MFC-8870DW
-	pkgver = 2.0.1
+	pkgver = 2.0.1_3_0ubuntu5
 	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = custom:brother commercial license
-	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-lpr-drivers-laser/brother-lpr-drivers-laser_2.0.1-3-0ubuntu3_.deb
+	depends = brother-lpr-drivers-common
+	depends = a2ps
+	depends = lib32-glibc
+	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-lpr-drivers-laser/brother-lpr-drivers-laser_2.0.1-3-0ubuntu5__amd64.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-lpr-drivers-laser/brother-lpr-drivers-laser_2.0.1-3-0ubuntu5__i386.deb
 
 pkgname = brother-lpr-drivers-laser
 
