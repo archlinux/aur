@@ -1,4 +1,5 @@
 # Mantainer: Bruno Galeotti <bgaleotti at gmail dot com>
+# Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
 
 pkgname=php-cs-fixer
 _pkgname=PHP-CS-Fixer
