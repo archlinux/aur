@@ -3,8 +3,8 @@
 
 _pkgname=qbittorrent
 pkgname=${_pkgname}-qt5-git
-pkgver=3.3.0alpha.r6030.g647140c
-pkgrel=1
+pkgver=3.3.0beta.r6164.g331219d
+pkgrel=2
 pkgdesc='A bittorrent client based on libtorrent-rasterbar. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://www.qbittorrent.org/'
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=('boost' 'which' 'git' 'qt5-tools' 'geoip-database')
 provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-qt4")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 
 install=${pkgname}.install
 
