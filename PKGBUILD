@@ -2,7 +2,7 @@
 pkgname=goweatherserver
 url="https://github.com/Chipsterjulien/goweatherserver"
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A server who take temperature from TCP connection and save into a database"
 arch=('any')
 license=('WTFPL')
@@ -25,7 +25,7 @@ build() {
         export GOPATH=~/.gopath
     fi
 
-    # Getting some lib
+    # Getting some libs
     go get github.com/gin-gonic/gin
     go get github.com/jinzhu/gorm
     go get github.com/mattn/go-sqlite3
@@ -35,12 +35,17 @@ build() {
     cd "$_builddir"
 
     go build || return 1
+
+    if [ $GOPATH_exist == 0 ]; then
+        rm -rf ~/.gopath
+        export GOPATH=
+    fi
 }
 
 package() {
     cd "$_builddir"
 
-    # gonsupdate.toml
+    # goweatherserver.toml
     install -Dm644 cfg/"$pkgname".toml \
         "$pkgdir"/etc/$pkgname/"$pkgname".toml || return 1
 
@@ -58,4 +63,4 @@ package() {
     install -m750 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
-sha512sums=('dbc6588828d76a951bf63350624565bd1acf8b40cc347df131a900897b86fe8d8195b1099c6b0994de1999de4b78679ca60c29dd0c6b119e2ab71423321aff3a')
+sha512sums=('b466f4aeb12d5e6b46447c7d0bb4f8eddd611214221d3948814938207503fdf834a31c7387384bdd1d97fb233dc438bd72d03bc44191fed8e4bb732dc05366ac')
