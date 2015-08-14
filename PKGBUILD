@@ -7,8 +7,7 @@ pkgdesc="Maybe a Gnome shell like dashboard for Xfce"
 arch=('i686' 'x86_64')
 url="http://goodies.xfce.org/projects/applications/xfdashboard/start"
 license=('GPL')
-depends=('libwnck3' 'clutter' 'glib2' 'xfconf' 'dbus-glib' 'garcon' 'gtk3'
-         'libxfce4util' 'libxcomposite' 'libxdamage' 'libxinerama' 'xdg-utils')
+depends=('libwnck3' 'clutter' 'garcon' 'xdg-utils')
 makedepends=('intltool')
 install="xfdashboard.install"
 source=("http://archive.xfce.org/src/apps/${pkgname}/0.5/${pkgname}-${pkgver}.tar.bz2")
