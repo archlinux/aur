@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-km
 	pkgdesc = Khmer language pack for Iceweasel
-	pkgver = 39.0.3.deb1
+	pkgver = 40.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-km_39.0.3-1_all.deb
-	sha256sums = 867f9559b697fb2447ca37e71e42f3ec9d9e861f1498b8f5bf8faec4812df2f7
+	depends = iceweasel>=40.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-km_40.0-1_all.deb
+	sha256sums = 0bfbdc9a329f89f6568e7867ea6b46a4c3f9bf552ed8bef93142709cd18b012e
 
 pkgname = iceweasel-i18n-km
 
