@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-da
 	pkgdesc = Danish language package for Iceweasel
-	pkgver = 39.0.3.deb1
+	pkgver = 40.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-da_39.0.3-1_all.deb
-	sha256sums = 6b77f1556f4c258eebd99a8f4486147aba37dd7673264758e9bed1f530d6b514
+	depends = iceweasel>=40.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-da_40.0-1_all.deb
+	sha256sums = d2e844c0bd9bd9621dc306ff89582c27b24f0c09bbaea9e04c833c7a58ab74ca
 
 pkgname = iceweasel-i18n-da
 
