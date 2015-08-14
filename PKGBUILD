@@ -1,7 +1,7 @@
 # Maintainer: Manuel Olguin <molguin@dcc.uchile.cl>
 pkgname=battmon
 pkgver=0.5beta1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A lightweight battery monitor in C++."
 arch=('any')
