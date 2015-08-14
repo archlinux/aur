@@ -24,7 +24,7 @@ package() {
 	install -Dm644 ckjefchnfjhjfedoccjbhjpbncimppeg.json "$pkgdir/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json"
 	
 	mkdir -p $pkgdir/etc/{opt/chrome,chrome,chromium,chromium-browser}/native-messaging-hosts
-	mkdir -p $pkgdir/usr/share/{chrome,google-chrome,chromium,chromium-browser,opera}/extensions/
+	mkdir -p $pkgdir/usr/share/{chrome,google-chrome,chromium,chromium-browser}/extensions/
 	
 	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/chrome/native-messaging-hosts/ee.ria.esteid.json"
 	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/chromium/native-messaging-hosts/ee.ria.esteid.json"
