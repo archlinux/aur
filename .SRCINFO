@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-mk
 	pkgdesc = Macedonian language pack for Iceweasel
-	pkgver = 39.0.3.deb1
+	pkgver = 40.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=39.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-mk_39.0.3-1_all.deb
-	sha256sums = fe7ba654111f853dc91651f9f8115e6afb35ca295bf1f8b6a38e3a84f9212cc8
+	depends = iceweasel>=40.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-mk_40.0-1_all.deb
+	sha256sums = ccf4e442dd7637697b5d3517ae33c93a4614138763ea6a157f64b06feb829f8d
 
 pkgname = iceweasel-i18n-mk
 
