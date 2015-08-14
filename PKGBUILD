@@ -1,4 +1,4 @@
-# Maintainer: whenov <whenov@gmail.com>
+# Maintainer: ImAli <alsajadali12@gmail.com>
 
 pkgname=sourcery-codebench-arm-none-linux-gnueabi
 pkgver=2014.05
