@@ -2,9 +2,9 @@
 pkgname=virtio-win
 pkgver=0.1.109.1
 pkgver_=0.1.109-1
-pkgrel=4
+pkgrel=5
 pkgdesc="virtio drivers for Windows (2000, XP, Vista, 7, 8) guests and floppy images for Windows XP"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://fedoraproject.org/wiki/Windows_Virtio_Drivers"
 license=('GPL2')
 depends=('qemu')
@@ -27,4 +27,4 @@ package() {
     "$pkgdir/usr/share/virtio/${pkgname}_x86_32.vfd"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2 ft=sh et:
