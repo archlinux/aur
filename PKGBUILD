@@ -4,13 +4,13 @@
 _gitname=zulucrypt
 _build=build
 pkgname=${_gitname}-git
-pkgver=4.7.5.33.ga1a29d8
+pkgver=4.7.6.73.g7987675
 pkgrel=1
 pkgdesc="a cli and gui frontend to cryptsetup."
 arch=('x86_64' 'i686')
 url="https://github.com/mhogomchungu/zuluCrypt/"
 license=('GPL')
-depends=('cryptsetup' 'qt4' 'libpwquality' 'libsecret' 'tcplay')
+depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret')
 makedepends=('cmake' 'git')
 provides=(${_gitname})
 conflicts=(${_gitname})
@@ -21,7 +21,6 @@ options=('!buildflags')
 # 'pacman41' is then checked out upon cloning, expediating versioning:
 # source=("git+https://code.google.com/p/${_gitname}/")
 source=("git+https://github.com/mhogomchungu/${_gitname}/")
-
 
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
@@ -43,8 +42,7 @@ build() {
     fi
     mkdir -p ${_build}
     cd ${_build}
-
-    cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOKDE=true -DCMAKE_BUILD_TYPE=release . ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=true -DHOMEMOUNTPREFIX=false -DNOKDE=true -DCMAKE_BUILD_TYPE=release . ..
     make
 }
  
