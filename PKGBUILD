@@ -8,9 +8,9 @@ arch=('i686' 'x86_64')
 url="https://github.com/alecthomas/entityx"
 license=('MIT')
 
-conflicts=('entityx')
 depends=('gcc-libs')
 makedepends=('cmake' 'git')
+conflicts=('entityx')
 
 source=("$pkgname"::'git+https://github.com/alecthomas/entityx')
 sha256sums=('SKIP')
@@ -54,5 +54,5 @@ package() {
 	install -D -m644 "cmake/FindEntityX.cmake" "${pkgdir}/usr/share/cmake-3.3/Modules/FindEntityX.cmake"
 
 	cd build
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" make install
 }
