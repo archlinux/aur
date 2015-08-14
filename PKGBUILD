@@ -19,7 +19,7 @@ sha256sums=('1d3c7a19d05ae426af6ccd50a8ba79a71eb6e6f18f0226d1abdaeae7fcf9d3a8'
             'c7b7cd96a0115ba196b5c38268bb49ec48b40d90f5f5dd3378b3ef9f3d8f40a6')
 
 prepare() {
-  cd ${pkgname}_$pkgver
+  cd "${pkgname}_$pkgver"
 
   # use python2
   export PYTHON=python2
@@ -29,17 +29,17 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}_$pkgver
-  scons --prefix=/usr -j4 fife
+  cd "${pkgname}_$pkgver"
+  scons --prefix=/usr fife
 }
 
 prepare() {
-  cd ${pkgname}_$pkgver
+  cd "${pkgname}_$pkgver"
   patch -p1 < "$srcdir/0001-Use-proper-bools-necessary-to-work-with-fifechan-HEA.patch"
 }
 
 package() {
-  cd ${pkgname}_$pkgver
+  cd "${pkgname}_$pkgver"
   scons --prefix=/usr DESTDIR="$pkgdir/" install-all
 }
 
