@@ -1,7 +1,7 @@
 pkgbase = juffed-qt5-git
 	pkgdesc = A lightweight cross-platform text editor. Qt5 UI. Development version.
 	pkgver = 0.10.r71.gc3c1a3f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://juffed.com/
 	install = juffed-qt5-git.install
 	arch = i686
@@ -16,7 +16,6 @@ pkgbase = juffed-qt5-git
 	provides = juffed=0.10.r71.gc3c1a3f
 	provides = juffed-plugins=0.10.r71.gc3c1a3f
 	conflicts = juffed
-	conflicts = juffed-git
 	source = git+https://github.com/Mezomish/juffed.git
 	source = juffed-qt5-git.install
 	sha512sums = SKIP
