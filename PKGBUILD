@@ -1,17 +1,18 @@
 # Maintainer: Jesse Juhani Jaara <jesse@Euler>
 
 pkgname=mingw-w64-ki18n
-pkgver=5.11.0
+_basever=5.13
+pkgver=${_basever}.0
 pkgrel=1
 pkgdesc="Advanced internationalization framework (mingw-w64)"
 arch=('any')
 url="https://projects.kde.org/projects/frameworks/ki18n"
 license=('LGPL')
-depends=('mingw-w64-qt5-script' 'mingw-w64-gettext')
-makedepends=('mingw-w64-cmake')
+depends=('mingw-w64-qt5-script')
+makedepends=("mingw-w64-extra-cmake-modules>=${_basever}")
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/ki18n-${pkgver}.tar.xz")
-md5sums=('a6bd7a449ccfbbab1a3e400d984ceabe')
+md5sums=('cfd83c271590f9e627fafd3a2a0420c7')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
