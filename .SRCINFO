@@ -1,7 +1,7 @@
 pkgbase = php-cs-fixer
 	pkgdesc = Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible).
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cs.sensiolabs.org/
 	arch = any
 	license = MIT
