@@ -1,6 +1,6 @@
 pkgbase = pbpst-git
 	pkgdesc = A small tool to interact with pb instances
-	pkgver = 0.r133.629fb67
+	pkgver = 0.r153.54b98b7
 	pkgrel = 1
 	url = https://github.com/HalosGhost/pbpst
 	arch = i686
