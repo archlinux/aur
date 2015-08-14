@@ -4,7 +4,7 @@
 _pkg=mongo-cxx-driver
 _subpkg=legacy-0.0-26compat
 pkgname=${_pkg}-${_subpkg}
-pkgver=2.6.10
+pkgver=2.6.11
 pkgrel=1
 pkgdesc='Official MongoDB C++ driver (26compat).'
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ build() {
     --use-system-snappy \
     --use-sasl-client \
     --ssl \
+    --disable-warnings-as-errors \
     --sharedclient
 }
 
@@ -39,9 +40,10 @@ package() {
     --use-system-snappy \
     --use-sasl-client \
     --ssl \
+    --disable-warnings-as-errors \
     --sharedclient \
     --prefix="$pkgdir/usr" \
     install-mongoclient
 }
 
-sha512sums=('375227bdf5ffa2b85f2ad3e3132ae3f55a825bbc58f5cff62ee53d075bd57a6f85e11cd4f2eb14c62ea2ad3e5cba936dd5355df8c5db7df7daec0fab96ff3f08')
+sha512sums=('9323b58b7ae80257d02b61c7c71f087f1953db9b8a5d0b7cad185cda844d37f710c07ef5dcbbc728f261b08aa2e474ef5f3044abcbcd0d4c954d39ef94468bfe')
