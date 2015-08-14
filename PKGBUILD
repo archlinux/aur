@@ -14,7 +14,7 @@ _channel=nightly
 _lang=it
 _full_name=${_name}-${_channel}
 pkgname=${_full_name}-${_lang}
-pkgdesc="Standalone Web Browser from Mozilla — Nightly build" ${_lang}
+pkgdesc='Standalone Web Browser from Mozilla — Localized Nightly build'
 url='https://nightly.mozilla.org/'
 _version=43.0a1
 pkgver=43.0a1.20150812
@@ -28,7 +28,7 @@ optdepends=('gstreamer0.10-ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation')
 _base_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
-_base_url="https://ftp.mozilla.org/pub/mozilla.org/${_name}/nightly/latest-mozilla-central-l10n"
+_base_url="https://ftp.mozilla.org/pub/mozilla.org/${_name}/${_channel}/latest-mozilla-central-l10n"
 _tarball="${_base_src}.tar.bz2"
 source=(
     "${_base_url}/${_tarball}"
@@ -45,7 +45,7 @@ install=$pkgname.install
 
 pkgver() {
   SRC_VER="${_name}-${_version}.en-US.linux-${CARCH}.txt"
-  curl -OR "https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/${SRC_VER}"
+  curl -OR "https://ftp.mozilla.org/pub/mozilla.org/${_name}/${_channel}/latest-trunk/${SRC_VER}"
   echo "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
 }
 
