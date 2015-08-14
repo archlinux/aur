@@ -1,4 +1,4 @@
-# Maintainer: Xentec <artificial.i7 at gmail dot com>
+# Maintainer: Xentec <xentec at aix0 dot eu>
 
 pkgname=cppformat
 pkgver=1.1.0
@@ -7,9 +7,11 @@ pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
 url="http://cppformat.github.io"
 license=('BSD')
+
 depends=('gcc-libs')
-conflicts=('cppformat-git')
 makedepends=('cmake')
+conflicts=('cppformat-git')
+
 source=("https://github.com/cppformat/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('d859f7e520629351294e194f0d1fb889b1edda9a44c139b126562107c1783142')
 
@@ -23,12 +25,14 @@ build() {
 		-DBUILD_SHARED_LIBS=1 \
 		-Wno-dev \
 		..
+
 	make
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 	cd build
+
 	make test
 }
 
@@ -38,10 +42,7 @@ package() {
 	sed -n '/License/{:a;n;/Documentation License/b;p;ba}' README.rst | tail -n +1 >> LICENSE
 
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 format.h "${pkgdir}/usr/include/format.h"
-	
-	cd build
-	
-	install -D -m755 libformat.so "$pkgdir/usr/lib/libformat.so"
+	install -D -m644 format.h "${pkgdir}/usr/include/format.h"	
+	install -D -m755 build/libformat.so "$pkgdir/usr/lib/libformat.so"
 }
 
