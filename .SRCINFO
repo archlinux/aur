@@ -1,0 +1,18 @@
+pkgbase = python-proboscis
+	pkgdesc = Proboscis is a Python test framework that extends Python’s built-in unittest module and Nose with features from TestNG.
+	pkgver = 1.2.6.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/proboscis/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = http://pypi.python.org/packages/source/p/proboscis/proboscis-1.2.6.0.tar.gz
+	md5sums = e4b36449ef7c18f70b8243f4c8bddbca
+
+pkgname = python-proboscis
+	depends = python
+
+pkgname = python2-proboscis
+	depends = python2
+
