@@ -1,0 +1,19 @@
+pkgbase = libretro-hatari-git
+	pkgdesc = libretro implementation of Hatari. (Atari ST/STE/TT/Falcon)
+	pkgver = 5417.9f18e35
+	pkgrel = 1
+	url = https://github.com/libretro/hatari
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = GPL
+	makedepends = git
+	depends = zlib
+	source = git+https://github.com/libretro/hatari.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/hatari_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-hatari-git
+
