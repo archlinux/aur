@@ -1,21 +1,21 @@
-# Maintainer: Can Altıparmak (gulaghad) <can6dev <AT> gmail <DOT> com>
+# Maintainer: Can Altıparmak (c6parmak) <can6parmak <AT> gmail <DOT> com>
 
 pkgname=ultratron-hib
 _pkgname=ultratron
 pkgver=1395265019
-pkgrel=2
+pkgrel=3
 pkgdesc="Intense shoot-em-up with 100% pure frenzied gameplay. (Commercial)"
 arch=('any')
 url='http://www.puppygames.net/ultratron/'
 license=('custom:commercial')
-depends=('java-runtime' 'openal' 'lwjgl')
+depends=('java-runtime' 'openal' 'lwjgl2')
 conflicts=("ultratron")
 _gamepkg="Ultratron-HIB_$pkgver.tar.gz"
 source=("$_gamepkg::hib://$_gamepkg"
         "ultratron.sh"
         "ultratron.desktop")
 md5sums=('a7833a3fe3cccc5833fcfa36479c11fb'
-         '2bbb6d0934561de9f745424458c13791'
+         '9f0a87d5be57ea81e8d94133ebf05e40'
          '12feb119173b94a44285444088777314')
 
 package() {

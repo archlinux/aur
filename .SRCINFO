@@ -1,13 +1,13 @@
 pkgbase = ultratron-hib
 	pkgdesc = Intense shoot-em-up with 100% pure frenzied gameplay. (Commercial)
 	pkgver = 1395265019
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.puppygames.net/ultratron/
 	arch = any
 	license = custom:commercial
 	depends = java-runtime
 	depends = openal
-	depends = lwjgl
+	depends = lwjgl2
 	conflicts = ultratron
 	source = Ultratron-HIB_1395265019.tar.gz::hib://Ultratron-HIB_1395265019.tar.gz
 	source = ultratron.sh
