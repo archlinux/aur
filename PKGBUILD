@@ -1,8 +1,8 @@
 # Maintainer: Chipster Julien <julien dot chipster @ archlinux dot fr>
 pkgname=goweatherserver
 url="https://github.com/Chipsterjulien/goweatherserver"
-pkgver=0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="A server who take temperature from TCP connection and save into a database"
 arch=('any')
 license=('WTFPL')
@@ -63,4 +63,4 @@ package() {
     install -m755 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
-sha512sums=('9ada4d9c8a4d935988d0815c74d8984ece668c6642e3e26e9d591d8418eb11d3c89f537a6517e8507a17f9d15f16e7189716e774808883c4297fa4bccae027a1')
+sha512sums=('019bcf7a4ac07d8e65051ef141ca33ddedf17267d630a83102c33d23d1fafdd2d2b438dc30cd6f41ce3d057b0d623d2a74287b5d18cfd5d374f8c7223ddc43dc')
