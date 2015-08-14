@@ -1,6 +1,6 @@
 pkgname=python2-rtsprofile
 _name=rtsprofile
-pkgver=2.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Library to read, manipulate and write RT system profiles using the RTSProfile XML schema"
 url="https://github.com/gbiggs/rtsprofile"
@@ -8,8 +8,8 @@ depends=('python2')
 makedepends=('python2' 'python2-setuptools')
 license=('EPLv1.0')
 arch=('any')
-source=("https://github.com/gbiggs/${_name}/archive/${pkgver}.tar.gz")
-md5sums=('fd82cc2a8ca986e375d4eff613d8e102')
+source=("https://github.com/gbiggs/${_name}/archive/v${pkgver}.tar.gz")
+sha256sums=('0e7707eb601dbfab53cefbff7c014bc358aca46ef5b49702a4291517043fd108')
 
 # FIXME: probably some dependencies missing
 
