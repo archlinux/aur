@@ -1,0 +1,14 @@
+pkgbase = ruby-kramdown
+	pkgdesc = A fast, pure-Ruby Markdown-superset converter
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://kramdown.gettalong.org
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = kramdown-1.8.0.gem
+	source = https://rubygems.org/downloads/kramdown-1.8.0.gem
+	md5sums = ad7f75fe981513f7ae18e93504d13406
+
+pkgname = ruby-kramdown
+
