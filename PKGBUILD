@@ -7,7 +7,6 @@ arch=('any')
 url='https://github.com/sirnuke/steambridge'
 license=('MIT')
 depends=('python2')
-makedepends=('git')
 optdepends=('steamcmd: fully downloads content deemed incompatible by steam'
             'steam: exposes native interface for steambridge to hook into'
             'wine: compatibility layer that provides mswin library routines'
