@@ -9,6 +9,12 @@ arch=('i686' 'x86_64')
 url='https://github.com/arx/ArxLibertatis'
 license=('GPL3')
 depends=('sdl' 'devil' 'openal' 'zlib' 'boost' 'glew' 'mesa' 'libgl')
+optdepends=('arxfatalis-data-gog: game data from GOG.com installer'
+            'arxfatalis-data-copy: game data from existing win32 installation'
+            'arxfatalis-data-demo: game data from official freeware demo'
+            'qt: enable built-in crash handler (Qt5 version; recompile needed)'
+            'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
+            'gdb: generate detailed crash reports')
 makedepends=('git' 'cmake')
 provides=('arx')
 conflicts=('arx')

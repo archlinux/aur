@@ -17,6 +17,12 @@ pkgbase = arx-git
 	depends = glew
 	depends = mesa
 	depends = libgl
+	optdepends = arxfatalis-data-gog: game data from GOG.com installer
+	optdepends = arxfatalis-data-copy: game data from existing win32 installation
+	optdepends = arxfatalis-data-demo: game data from official freeware demo
+	optdepends = qt: enable built-in crash handler (Qt5 version; recompile needed)
+	optdepends = qt4: enable built-in crash handler (Qt4 version; recompile needed)
+	optdepends = gdb: generate detailed crash reports
 	provides = arx
 	conflicts = arx
 
