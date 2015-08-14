@@ -10,32 +10,37 @@ arch=('any')
 url='[% url %]'
 license=('GPL')
 options=(!emptydirs)
-depends=('perl>=5.19.6'
+depends=(
 	'perl-attribute-handlers>=0.77'
-	'perl-mro-compat>=0.11')
+	'perl-mro-compat>=0.11'
+	'perl-try-tiny'
+	'perl-module-runtime')
 checkdepends=(
 	'perl-test-exception>=0.25')
 source=([% source %])
 md5sums=('[% md5sums %]')
 
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+}
+
 build() {
 	cd [% distdir %]
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+	sanitize
 	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
 	cd [% distdir %]
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1
+	sanitize
 	make test
 }
 
 package() {
 	cd [% distdir %]
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }

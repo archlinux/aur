@@ -1,17 +1,18 @@
 pkgbase = perl-test-class
 	pkgdesc = Perl module to easily create test classes in an xUnit/JUnit style
-	pkgver = 0.47
+	pkgver = 0.50
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Test-Class
+	url = https://metacpan.org/release/Test-Class
 	arch = any
 	license = GPL
 	checkdepends = perl-test-exception>=0.25
-	depends = perl>=5.19.6
 	depends = perl-attribute-handlers>=0.77
 	depends = perl-mro-compat>=0.11
+	depends = perl-try-tiny
+	depends = perl-module-runtime
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-Class-0.47.tar.gz
-	md5sums = 952f7ee1f490760a99e812eea33c053c
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-Class-0.50.tar.gz
+	md5sums = 4cc3aaad36b72f424ed90122701d2451
 
 pkgname = perl-test-class
 
