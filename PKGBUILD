@@ -1,22 +1,16 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: kevku <kevku@gmx.com>
 pkgname=chrome-token-signing
-pkgver=3.9.0.374
-pkgrel=2
+pkgver=1.0.0.388
+pkgrel=1
+epoch=1
 pkgdesc="Estonian ID Card signing for Chrome. Chrome extension and native messaging client."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL2.1')
 depends=('gtkmm3' 'pcsclite' 'ccid')
-source=("https://installer.id.ee/media/sources/${pkgname}-${pkgver}.tar.gz"
-        "https://installer.id.ee/media/sources/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('6055149e110d290ac93e52ee904d2ebdd43d5a5a7d6b242b8d5f28dec0bb7111'
-            'SKIP')
+source=("https://installer.id.ee/media/ubuntu/pool/main/c/$pkgname/${pkgname}_$pkgver.orig.tar.gz")
+sha256sums=('af078b2734b9a4cf661d97c4a5f9e9b9feb2bb03c453b53584c94805c50c6a60')
 validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
-
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-        rm json/jsonxx.o
-}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -25,25 +19,22 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm755 out/$pkgname "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 ee.ria.esteid.json "$pkgdir/usr/share/$pkgname/native-messaging-hosts/ee.ria.esteid.json"
-	install -Dm644 esteid_policy.json "$pkgdir/usr/share/$pkgname/policies/managed/esteid_policy.json"
-	install -Dm644 $pkgname.crx "$pkgdir/usr/share/$pkgname/$pkgname.crx"
-	install -Dm644 update.xml "$pkgdir/usr/share/$pkgname/update.xml"
-	mkdir -p $pkgdir/etc/{chrome,chromium,chromium-browser}/native-messaging-hosts
-	mkdir -p $pkgdir/etc/{chrome,chromium,chromium-browser}/policies/managed
-	mkdir -p $pkgdir/etc/opt/chrome/native-messaging-hosts
-	mkdir -p $pkgdir/etc/opt/chrome/policies/managed
+	install -Dm755 host-linux/$pkgname "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 host-linux/ee.ria.esteid.json "$pkgdir/usr/share/$pkgname/ee.ria.esteid.json"
+	install -Dm644 ckjefchnfjhjfedoccjbhjpbncimppeg.json "$pkgdir/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json"
 	
-	ln -sf "/usr/share/$pkgname/native-messaging-hosts/ee.ria.esteid.json" "$pkgdir/etc/chrome/native-messaging-hosts/ee.ria.esteid.json" 
-	ln -sf "/usr/share/$pkgname/policies/managed/esteid_policy.json" "$pkgdir/etc/chrome/policies/managed/esteid_policy.json"
-	ln -sf "/usr/share/$pkgname/native-messaging-hosts/ee.ria.esteid.json" "$pkgdir/etc/chromium/native-messaging-hosts/ee.ria.esteid.json" 
-	ln -sf "/usr/share/$pkgname/policies/managed/esteid_policy.json" "$pkgdir/etc/chromium/policies/managed/esteid_policy.json"
-	ln -sf "/usr/share/$pkgname/native-messaging-hosts/ee.ria.esteid.json" "$pkgdir/etc/chromium-browser/native-messaging-hosts/ee.ria.esteid.json" 
-	ln -sf "/usr/share/$pkgname/policies/managed/esteid_policy.json" "$pkgdir/etc/chromium-browser/policies/managed/esteid_policy.json"
-	ln -sf "/usr/share/$pkgname/native-messaging-hosts/ee.ria.esteid.json" "$pkgdir/etc/opt/chrome/native-messaging-hosts/ee.ria.esteid.json" 
-	ln -sf "/usr/share/$pkgname/policies/managed/esteid_policy.json" "$pkgdir/etc/opt/chrome/policies/managed/esteid_policy.json"
+	mkdir -p $pkgdir/etc/{opt/chrome,chrome,chromium,chromium-browser}/native-messaging-hosts
+	mkdir -p $pkgdir/usr/share/{chrome,google-chrome,chromium,chromium-browser,opera}/extensions/
 	
+	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/chrome/native-messaging-hosts/ee.ria.esteid.json"
+	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/chromium/native-messaging-hosts/ee.ria.esteid.json"
+	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/chromium-browser/native-messaging-hosts/ee.ria.esteid.json"
+	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/opt/chrome/native-messaging-hosts/ee.ria.esteid.json"
 	
-	
+	ln -sf "$pkgdir/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json" $pkgdir/usr/share/chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
+	ln -sf "$pkgdir/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json" $pkgdir/usr/share/google-chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
+	ln -sf "$pkgdir/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json" $pkgdir/usr/share/chromium/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
+	ln -sf "$pkgdir/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json" $pkgdir/usr/share/chromium-browser/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
+
+
 }
