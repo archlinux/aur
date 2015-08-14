@@ -2,12 +2,12 @@
 _nginxver=1.8.0
 
 pkgname=nginx-passenger-git
-pkgver=5.0.15.r3.g4ae1c74
+pkgver=5.0.15.r12.g4595e9a
 pkgrel=1
 pkgdesc='A fast and robust web server and application server for Ruby, Python, and Node.js'
 arch=('i686' 'x86_64')
 url='https://www.phusionpassenger.com'
-license=('custom' 'custom')
+license=('custom')
 depends=('openssl' 'pcre' 'zlib' 'geoip' 'ruby')
 makedepends=('hardening-wrapper' 'git')
 optdepends=('nodejs: Support for nodejs web apps'
@@ -40,7 +40,7 @@ sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
             'SKIP'
             '0a8359248a1dd1e98a96b036a636095af0c2fe770d661ab7dd988b3999d08b9f'
             'd85edb44894468d2e471d38176b6827635fb0c1251ce55765f4aa59c1bcb1791'
-            '6a99bd6544cadd0563b549a5fb24d0aed98fe51f5dcdaacbfa2f9b8026360d1e')
+            '10ba5a23200b73c9c80d7617c857f98667ddbb3f7bf195dc7d0830689f509454')
 
 pkgver() {
   cd "$srcdir/passenger"
@@ -138,8 +138,8 @@ package() {
   install -Dm755 buildout/support-binaries/PassengerAgent \
     "$pkgdir"/usr/lib/passenger/support-binaries/PassengerAgent
 
-  install -d "$pkgdir"/usr/share/passenger/helper-scripts
-  mv helper-scripts/* "$pkgdir"/usr/share/passenger/helper-scripts/
+  install -d "$pkgdir"/usr/share/passenger
+  mv helper-scripts/ "$pkgdir"/usr/share/passenger/
 
   install -d "$pkgdir"/usr/lib/ruby/vendor_ruby
   mv lib/* "$pkgdir"/usr/lib/ruby/vendor_ruby/
@@ -149,14 +149,15 @@ package() {
   install -d "$pkgdir"/usr/share/passenger/ruby_extension_source
   mv ext/ruby/* "$pkgdir"/usr/share/passenger/ruby_extension_source/
 
-  install -d "$pkgdir"/usr/share/passenger/node
-  mv node_lib/* "$pkgdir"/usr/share/passenger/node/
+  install -d "$pkgdir"/usr/share/passenger/ngx_http_passenger_module
+  mv ext/nginx/* "$pkgdir"/usr/share/passenger/ngx_http_passenger_module/
+
+  mv node_lib/ "$pkgdir"/usr/share/passenger/
 
   install -d "$pkgdir"/usr/share/doc/passenger
   mv doc/* "$pkgdir"/usr/share/doc/passenger/
 
-  install -d "$pkgdir"/usr/share/passenger/templates
-  mv resources/templates/* "$pkgdir"/usr/share/passenger/templates/
+  mv resources/templates/ "$pkgdir"/usr/share/passenger/
 
   install -d "$pkgdir"/usr/share/man/man1/
   gzip -9c "$srcdir"/passenger/man/passenger-config.1 > "$pkgdir"/usr/share/man/man1/passenger-config.1.gz
