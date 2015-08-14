@@ -1,14 +1,15 @@
 pkgbase = minisat-git
 	pkgdesc = A minimalistic and high-performance SAT solver
-	pkgver = 2.2.0.r303.37dc6c6
-	pkgrel = 1
+	pkgver = 2.2.0.r68.g37dc6c6
+	pkgrel = 2
 	url = http://minisat.se/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	source = minisat::git+https://github.com/niklasso/minisat.git
+	conflicts = minisat
+	source = minisat-git::git+https://github.com/niklasso/minisat.git
 	md5sums = SKIP
 
 pkgname = minisat-git
