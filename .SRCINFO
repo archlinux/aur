@@ -1,0 +1,19 @@
+pkgbase = libretro-prosystem-git
+	pkgdesc = libretro implementation of ProSystem. (Atari 7800)
+	pkgver = 65.d37def2
+	pkgrel = 1
+	url = https://github.com/libretro/prosystem-libretro
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = GPL
+	makedepends = git
+	depends = zlib
+	source = git+https://github.com/libretro/prosystem-libretro.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/prosystem_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-prosystem-git
+
