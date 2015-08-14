@@ -2,7 +2,7 @@
 
 _pkgname=lightdm-webkit-archsingle-theme
 pkgname=$_pkgname-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=2
 pkgdesc="Archlinux signeluser theme for LightDM Webkit"
 arch=('i686' 'x86_64')
