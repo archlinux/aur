@@ -1,6 +1,6 @@
 pkgbase = firefox-kde-opensuse
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE
-	pkgver = 40.0
+	pkgver = 40.0.2
 	pkgrel = 1
 	url = https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox
 	install = firefox.install
@@ -41,10 +41,10 @@ pkgbase = firefox-kde-opensuse
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = gst-plugins-good: h.264 video
 	optdepends = gst-libav: h.264 video
-	provides = firefox=40.0
+	provides = firefox=40.0.2
 	conflicts = firefox
 	options = !emptydirs
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0/source/firefox-40.0.source.tar.bz2
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0.2/source/firefox-40.0.2.source.tar.bz2
 	source = mozconfig
 	source = firefox.desktop
 	source = firefox-install-dir.patch
@@ -62,7 +62,7 @@ pkgbase = firefox-kde-opensuse
 	source = unity-menubar.patch
 	source = add_missing_pgo_rule.patch
 	source = pgo_fix_missing_kdejs.patch
-	sha256sums = e3a26164b3a7f1aefbe13a07f0fdcd322726e4bb8c7e9432d1671c8c9e37145a
+	sha256sums = 057dd75d6fb4fd264cd175788518d458cb7792fd905a6fa450968526305121fd
 	sha256sums = 94410d3e8bfe74b79ecd9dace9c4a339c25fa10908a7471001f533d843b582c9
 	sha256sums = c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
