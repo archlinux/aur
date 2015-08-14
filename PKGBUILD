@@ -4,7 +4,7 @@
 _pkgname=qbittorrent
 pkgname=${_pkgname}-qt5-git
 pkgver=3.3.0beta.r6164.g331219d
-pkgrel=2
+pkgrel=3
 pkgdesc='A bittorrent client based on libtorrent-rasterbar. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://www.qbittorrent.org/'
@@ -14,7 +14,7 @@ depends=('qt5-base' 'xdg-utils' 'desktop-file-utils' 'hicolor-icon-theme' 'libto
 optdepends=(
 	'python: for the search engine'
 )
-makedepends=('boost' 'which' 'git' 'qt5-tools' 'geoip-database')
+makedepends=('git' 'boost' 'which' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 
@@ -44,17 +44,6 @@ pkgver() {
 prepare() {	
 	# Create build directory
 	mkdir -p ${srcdir}/build
-	
-	# Build with GeoIP support
-	# geoip-database is already installed at this point as dependency
-	# (libtorrent-rasterbar -> geoip) but another check won't hurt
-	local geoip_database=/usr/share/GeoIP/GeoIP.dat
-	if [[ -f ${geoip_database} ]]; then
-		# Make a copy due that qBittorrent needs the file in the source
-		# directory, see qBittorrent/src/gui/geoip/geoip.qrc
-		cd ${srcdir}/qBittorrent
-		cp ${geoip_database} src/gui/geoip
-	fi
 }
 
 build() {
@@ -70,8 +59,7 @@ build() {
 	
 	../qBittorrent/configure \
 		--prefix=/usr \
-		--with-qt5 \
-		--with-geoip-database-embedded
+		--with-qt5
 	qmake-qt5 ../qBittorrent \
 		CONFIG+=release \
 		CONFIG+=c++14 \
