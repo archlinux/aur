@@ -9,11 +9,11 @@ pkgbase = ultratron-hib
 	depends = openal
 	depends = lwjgl2
 	conflicts = ultratron
-	source = Ultratron-HIB_1395265019.tar.gz::hib://Ultratron-HIB_1395265019.tar.gz
+	source = hib://Ultratron-HIB_1395265019.tar.gz
 	source = ultratron.sh
 	source = ultratron.desktop
 	md5sums = a7833a3fe3cccc5833fcfa36479c11fb
-	md5sums = 2bbb6d0934561de9f745424458c13791
+	md5sums = 9f0a87d5be57ea81e8d94133ebf05e40
 	md5sums = 12feb119173b94a44285444088777314
 
 pkgname = ultratron-hib

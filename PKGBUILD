@@ -10,8 +10,7 @@ url='http://www.puppygames.net/ultratron/'
 license=('custom:commercial')
 depends=('java-runtime' 'openal' 'lwjgl2')
 conflicts=("ultratron")
-_gamepkg="Ultratron-HIB_$pkgver.tar.gz"
-source=("$_gamepkg::hib://$_gamepkg"
+source=("hib://Ultratron-HIB_$pkgver.tar.gz"
         "ultratron.sh"
         "ultratron.desktop")
 md5sums=('a7833a3fe3cccc5833fcfa36479c11fb'
