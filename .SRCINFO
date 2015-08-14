@@ -24,7 +24,7 @@ pkgbase = arx-git
 	optdepends = qt4: enable built-in crash handler (Qt4 version; recompile needed)
 	optdepends = gdb: generate detailed crash reports
 	provides = arx
-	conflicts = arx
+	conflicts = arx arxlibertatis
 	source = git+https://github.com/arx/ArxLibertatis.git
 	md5sums = SKIP
 
