@@ -9,7 +9,7 @@ pkgbase = texlive-gantt
 	depends = texlive-core
 	depends = texlive-latexextra
 	source = http://www.martin-kumm.de/tex/gantt.sty
-	md5sums = e942191eb0024633155aa3188b4bbc06
+	sha256sums = fb62a18c664f4e039775b97705e34e0a374043fe3b3bcaea94318496aadd2a73
 
 pkgname = texlive-gantt
 
