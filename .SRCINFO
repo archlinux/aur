@@ -1,14 +1,17 @@
 pkgbase = decompose-git
 	pkgdesc = Development Environment Compose - templating framework to help developers easily create and switch environments
-	pkgver = r21.6632368
+	pkgver = r35.d3236e2
 	pkgrel = 1
 	url = https://github.com/dmp1ce/decompose
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = txt2man
 	depends = bash
-	depends = mo-git
+	depends = bash-completion
 	source = decompose-git::git+https://github.com/dmp1ce/decompose.git
+	source = decompose-git-mo::git+https://github.com/tests-always-included/mo.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = decompose-git
