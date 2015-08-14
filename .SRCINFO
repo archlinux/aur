@@ -1,7 +1,7 @@
 pkgbase = h2o
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h2o/h2o
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = h2o
 	makedepends = make
 	depends = libuv
 	depends = libyaml
-	depends = openssl
 	depends = wslay
 	provides = h2o
 	provides = libh2o
