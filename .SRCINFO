@@ -6,7 +6,6 @@ pkgbase = rofi
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = pkg-config
 	depends = libx11
 	depends = libxft
 	depends = freetype2
