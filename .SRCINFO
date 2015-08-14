@@ -1,14 +1,14 @@
 pkgbase = ammonite
 	pkgdesc = Ammonite is a cleanroom re-implementation of the Scala REPL from first principles.
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/lihaoyi/Ammonite
 	install = ammonite.install
 	arch = any
 	license = Unkown
 	depends = scala>=2.11.7
-	source = amm::https://github.com/lihaoyi/Ammonite/releases/download/0.4.3/ammonite-repl-0.4.3-2.11.7
-	sha256sums = 6a0953401ffed56d8abb0c1c4339a842bf515c1007cd7f25c538faf7c8e617ec
+	source = https://github.com/lihaoyi/Ammonite/releases/download/0.4.4/ammonite-repl-0.4.4-2.11.7
+	sha256sums = 5bedc2ec3e263f6608e1bc719aef2023302bc4af6d220839b13c55b9dc44f746
 
 pkgname = ammonite
 
