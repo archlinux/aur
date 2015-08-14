@@ -1,6 +1,6 @@
 pkgbase = qmmp-svn
 	pkgdesc = A Qt4 based audio-player. (SVN Version)
-	pkgver = 0.9.0.svn.r5045
+	pkgver = 1.0.0.svn.r5415
 	pkgrel = 1
 	url = http://qmmp.ylsoftware.com
 	install = qmmp-svn.install
@@ -37,7 +37,7 @@ pkgbase = qmmp-svn
 	makedepends = alsa-lib
 	depends = curl
 	depends = hicolor-icon-theme
-	depends = qt4
+	depends = qt5-x11extras
 	depends = xdg-utils
 	depends = taglib
 	optdepends = qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin
@@ -68,7 +68,7 @@ pkgbase = qmmp-svn
 	optdepends = libogg: OGG audio support
 	provides = qmmp
 	conflicts = qmmp
-	source = svn://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp
+	source = qmmp::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-1.0
 	sha1sums = SKIP
 
 pkgname = qmmp-svn

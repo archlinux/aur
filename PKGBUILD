@@ -3,15 +3,45 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-svn
-pkgver=0.9.0.svn.r5045
+pkgver=1.0.0.svn.r5415
 pkgrel=1
 pkgdesc="A Qt4 based audio-player. (SVN Version)"
 arch=('i686' 'x86_64')
 url="http://qmmp.ylsoftware.com"
 license=('GPL')
-depends=('curl' 'hicolor-icon-theme' 'qt4' 'xdg-utils' 'taglib')
-makedepends=('subversion' 'cmake' 'flac' 'jack2' 'libmpcdec' 'libpulse' 'ffmpeg' 'libcdio-paranoia' 'libcddb' 'enca' 'wildmidi' 'libgme' 'libmad' 'libvorbis' 'libogg'
-             'libmms' 'libsamplerate' 'libmodplug' 'libsndfile' 'wavpack' 'projectm' 'mesa' 'libsidplayfp' 'opusfile' 'faad2' 'libbs2b' 'taglib' 'alsa-lib')
+depends=('curl'
+         'hicolor-icon-theme'
+         'qt5-x11extras'
+         'xdg-utils'
+         'taglib')
+makedepends=('subversion'
+             'cmake'
+             'flac'
+             'jack2'
+             'libmpcdec'
+             'libpulse'
+             'ffmpeg'
+             'libcdio-paranoia'
+             'libcddb'
+             'enca'
+             'wildmidi'
+             'libgme'
+             'libmad'
+             'libvorbis'
+             'libogg'
+             'libmms'
+             'libsamplerate'
+             'libmodplug'
+             'libsndfile'
+             'wavpack'
+             'projectm'
+             'mesa'
+             'libsidplayfp'
+             'opusfile'
+             'faad2'
+             'libbs2b'
+             'taglib'
+             'alsa-lib')
 optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             'flac: native FLAC support'
             'jack2: JACK sound output'
@@ -40,9 +70,9 @@ optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             'libogg: OGG audio support')
 provides=('qmmp')
 conflicts=('qmmp')
-source=('svn://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp')
+source=('qmmp::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-1.0')
 sha1sums=('SKIP')
-install="${pkgname}.install"
+install=qmmp-svn.install
 
 pkgver() {
   cd qmmp
