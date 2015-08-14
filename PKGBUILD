@@ -10,7 +10,7 @@ license=('BSD')
 groups=()
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-source=('http://semanchuk.com/philip/sysv_ipc/sysv_ipc-$pkgver.tar.gz')
+source=("http://semanchuk.com/philip/sysv_ipc/sysv_ipc-$pkgver.tar.gz")
 sha1sums=('c95c0854d7cddeb1cd12fc8a309a6d2b701e7af6')
 
 build() {
