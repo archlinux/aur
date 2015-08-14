@@ -20,22 +20,21 @@ arch=('any')
 url="https://github.com/aws/${_pkgname}"
 license=('Apache') # Apache License 2.0
 depends=('python' # See setup.py, README.rst, and requirements.txt for version dependencies
-  'python-bcdoc<0.15.0'
-  'python-botocore>=1.1.8' # Using = would make upgrades impossible. This package will advance the version!
-  'python-colorama>=0.2.5' 'python-colorama<=0.3.3'
-  'python-docutils>=0.10'
-  'python-rsa-3.1.2>=3.1.2' 'python-rsa-3.1.2<=3.1.4' # See AUR for this version
-  #'python-rsa>=3.1.2' 'python-rsa<=3.1.4'
-  'python-wheel>=0.24.0'
+  'python-bcdoc<0.15.0'    # AUR
+  'python-botocore>=1.1.8' # AUR == would make upgrades from AUR imposible. See below.
+  'python-colorama>=0.2.5'  'python-colorama<=0.3.3'  # COM
+  'python-rsa-3.1.2>=3.1.2' 'python-rsa-3.1.2<=3.1.4' # AUR It would be nice to move to the newer version.
+  #'python-rsa>=3.1.2' 'python-rsa<=3.1.4'            # COM
 
   ### These are from python-botocore
-  'python-jmespath>=0.7.1'
-  'python-tox>=1.4'
-  'python-sphinx>=1.1.3'
-  'python-nose>=1.3.0'
-  'python-mock>=1.0.1'
-  # six is all over the code but not found in the requirements
-  'python-six>=1.1.0'
+  'python-wheel>=0.24.0'   # AUR ==
+  'python-jmespath>=0.7.1' # AUR == is possible for repositories. Makes upgrades impossible in AUR.
+  'python-tox>=1.4'        # COM == is possible because this is from a repository. Unfortunatley Arch isn't the primary dev environment for botocore/aws so our packages are likely to be newer.
+  'python-sphinx>=1.1.3'   # COM ==
+  'python-nose>=1.3.0'     # COM ==
+  'python-mock>=1.0.1'     # COM ==
+  'python-docutils>=0.10'  # COM
+  'python-six>=1.1.0'      # COM This is in the sources but I'm not sure where the version comes from.
 )
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
