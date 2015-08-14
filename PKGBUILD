@@ -1,5 +1,5 @@
 pkgname=otrs
-pkgver=4.0.10
+pkgver=4.0.11
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -27,8 +27,7 @@ depends=("perl"
          "perl-xml-parser"
          "perl-crypt-eksblowfish")
 optdepends=("mariadb:  Fast SQL database server, drop-in replacement for MySQL"
-            "apache:   A high performance Unix-based HTTP server"
-            "mod_perl: Apache module that embeds the Perl interpreter within the server")
+            "apache:   A high performance Unix-based HTTP server")
 backup=("etc/webapps/${pkgname}/Config.pm"
         "etc/webapps/${pkgname}/GenericAgent.pm"
         "etc/webapps/${pkgname}/scheduler_watchdog")
@@ -36,9 +35,9 @@ install="${pkgname}.install"
 source=("${pkgname}.install"
         "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz")
 md5sums=("e505e3d39240f04185888fa674a0feb2"
-         "09e8452247d4296113568af05ebd456a")
+         "23dc954f5fe12d31dbf85040869f7393")
 sha1sums=("e141800b7ff0c6130d4bb36063ec4ab824d2ca4c"
-          "a7f3e4e932f762378b678d120830e47aba0881fa")
+          "f8d230ef9ab024e07725d6e25b350da9c83ebf7f")
 
 package() {
   install -dm 0755 "${pkgdir}/etc/webapps/${pkgname}"
