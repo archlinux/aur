@@ -1,0 +1,15 @@
+pkgbase = libdrng
+	pkgdesc = Intel library for rdrand and rdseed instructions
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://software.intel.com/en-us/articles/the-drng-library-and-manual
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = https://software.intel.com/sites/default/files/managed/89/f5/libdrng-1.0.tar.gz
+	source = drng.pc
+	md5sums = 507ec88510b6d8d77d171b402ae08335
+	md5sums = 62535e6fdcfd245e9bab66142ab8755f
+
+pkgname = libdrng
+
