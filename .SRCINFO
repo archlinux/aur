@@ -1,7 +1,7 @@
 pkgbase = openvpn-pkcs11
 	pkgdesc = An easy-to-use, robust, and highly configurable VPN (Virtual Private Network) with smartcard support
-	pkgver = 2.3.7
-	pkgrel = 2
+	pkgver = 2.3.8
+	pkgrel = 0
 	url = http://openvpn.net/index.php/open-source.html
 	install = openvpn.install
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = openvpn-pkcs11
 	depends = lzo
 	depends = iproute2
 	depends = pkcs11-helper
-	source = http://swupdate.openvpn.net/community/releases/openvpn-2.3.7.tar.gz
-	sha256sums = 1f02a4cd6aeb6250ca9311560875b10ce8957a3c9101a8005bd1e17e5b03146e
+	source = http://swupdate.openvpn.net/community/releases/openvpn-2.3.8.tar.gz
+	sha256sums = 532435eff61c14b44a583f27b72f93e7864e96c95fe51134ec0ad4b1b1107c51
 
 pkgname = openvpn-pkcs11
-
