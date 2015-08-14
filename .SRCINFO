@@ -1,0 +1,18 @@
+pkgbase = libretro-virtualjaguar-git
+	pkgdesc = libretro implementation of Virtual Jaguar. (Atari Jaguar)
+	pkgver = 47.c918ddc
+	pkgrel = 1
+	url = https://github.com/libretro/virtualjaguar-libretro
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/libretro/virtualjaguar-libretro.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/virtualjaguar_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-virtualjaguar-git
+
