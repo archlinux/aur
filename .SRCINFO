@@ -1,4 +1,4 @@
-pkgbase = vecx-git
+pkgbase = vecx
 	pkgdesc = SDL-based Vectrex console emulator
 	pkgver = v1.0.r11.ga8b2f3f
 	pkgrel = 1
