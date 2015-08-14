@@ -1,6 +1,6 @@
 pkgbase = sawfish-session-dialog-git
 	pkgdesc = A graphical Sawfish extension to edit the session preferences
-	pkgver = 20140825
+	pkgver = 20150813
 	pkgrel = 1
 	url = http://sawfish.wikia.com
 	arch = any

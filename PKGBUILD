@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sawfish-session-dialog-git
-pkgver=20140825
+pkgver=20150813
 pkgrel=1
 pkgdesc="A graphical Sawfish extension to edit the session preferences"
 arch=('any')
