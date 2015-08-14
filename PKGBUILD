@@ -4,12 +4,12 @@
 
 pkgname=peazip-qt
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="QT archiver utility"
 arch=(i686 x86_64)
 url=http://www.peazip.org/peazip-linux.html
 license=(LGPL3)
-depends=(balz desktop-file-utils lib32-curl lib32-gmp4 lib32-libx11 lib32-ncurses lib32-qt4pas p7zip upx lrzip)
+depends=(balz desktop-file-utils lib32-{curl,gmp4,libx11,ncurses,qt4pas} p7zip upx lrzip)
 [[ $CARCH == "i686" ]] && depends=(${depends[@]/lib32-/})
 optdepends=(quad unace)
 provides=(${pkgname%-*})
