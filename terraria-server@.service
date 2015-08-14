@@ -7,7 +7,10 @@ User=terraria
 ExecStart=/usr/bin/screen -DmS terraria-%i /usr/bin/terraria-server -config /etc/terraria-server/%i.conf
 ExecStop=/usr/bin/screen -p 0 -S terraria-%i -X eval 'stuff "say Server shutting down. Saving world."\\015'
 ExecStop=/usr/bin/screen -p 0 -S terraria-%i -X eval 'stuff "exit"\\015'
-ExecStop=/usr/bin/sh -c 'while screen -ls | grep 'terraria-%i' >/dev/null; do sleep 0.1; done'
+# Don't stop process automatically, but still send SIGKILL after a timeout
+KillMode=control-group
+KillSignal=SIGUSR1
+SendSIGKILL=yes
 
 [Install]
 WantedBy=multi-user.target
