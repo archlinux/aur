@@ -1,0 +1,22 @@
+pkgbase = cryptominisat4-git
+	pkgdesc = A modern, multi-threaded, feature-rich, simplifying SAT solver
+	pkgver = 4.5.2.r17.ge365c73
+	pkgrel = 1
+	url = http://www.msoos.org/cryptominisat4/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2
+	makedepends = boost
+	makedepends = xxd
+	depends = zlib
+	depends = gcc-libs
+	depends = boost-libs
+	depends = intel-tbb
+	optdepends = python2: python module
+	conflicts = cryptominisat4
+	source = cryptominisat4-git::git+https://github.com/msoos/cryptominisat.git
+	md5sums = SKIP
+
+pkgname = cryptominisat4-git
+

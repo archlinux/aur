@@ -1,0 +1,5 @@
+cryptominisat4-git
+pkg
+src
+*.tar.xz
+
