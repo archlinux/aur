@@ -1,0 +1,15 @@
+pkgbase = pam_eye
+	pkgdesc = A PAM module that send hostname to gateway host
+	pkgver = 2.6e89c90
+	pkgrel = 1
+	url = http://github.com/kovetskiy/pam_eye
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = util-linux
+	depends = curl
+	source = git://github.com/kovetskiy/pam_eye.git
+	md5sums = SKIP
+
+pkgname = pam_eye
+
