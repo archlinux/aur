@@ -1,66 +1,45 @@
-# Maintainer: Yichao Yu <yyc1992@gmail.com>
+# Maintainer:  Michael Lass <bevan@bi-co.net>
+# Contributor: Yichao Yu <yyc1992@gmail.com>
 # Contributor: David Manouchehri <david@davidmanouchehri.com>
+
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
 
 pkgname=eagle
 pkgver=7.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('i686' 'x86_64')
 url="http://www.cadsoft.de/"
 license=('custom')
 depends=(
-  'libxrender'
-  'libxrandr'
-  'libxcursor'
-  'freetype2'
+  'desktop-file-utils'
   'fontconfig'
-  'libxext'
-  'libx11'
+  'libcups'
+  'libxcursor'
   'libxi'
-  'openssl'
-  'zlib'
-  'gcc-libs')
-_fname32=$pkgname-lin32-$pkgver.run
-_fname64=$pkgname-lin64-$pkgver.run
-[[ $CARCH = i686 ]] && {
-  _fname=$_fname32
-} || {
-  _fname=$_fname64
-}
-# depends=(
-#   'lib32-libxrender'
-#   'lib32-libxrandr'
-#   'lib32-libxcursor'
-#   'lib32-freetype2'
-#   'lib32-fontconfig'
-#   'lib32-libxext'
-#   'lib32-libx11'
-#   'lib32-libxi'
-#   'lib32-openssl'
-#   'lib32-zlib'
-#   'lib32-gcc-libs'
-# )
-source=(ftp://ftp.cadsoft.de/$pkgname/program/${pkgver%.*}/$_fname32
-        ftp://ftp.cadsoft.de/$pkgname/program/${pkgver%.*}/$_fname64
-        $pkgname.desktop
-        $pkgname.sh
-        $pkgname.install
-        $pkgname.xml)
-md5sums=('9aa8b67100226d1455920f63c1902726'
-         '32ddeb345b477aec20dad47a5e360ad5'
-         '191fc21122f21b827244b6f761d3d599'
-         'c6ab1922cd76bae647a20eadfc97ded2'
-         'ad1e992269e84e7ba2f622a536baefe9'
-         '2068b18ac6caf7c07b48acee09f40247')
-options=('!emptydirs' '!upx')
+  'libxrandr'
+  'shared-mime-info'
+)
+options=('!emptydirs')
 install=eagle.install
+source=($pkgname.desktop
+        $pkgname.sh
+        $pkgname.xml)
+source_x86_64=($pkgname-$pkgver.run::ftp://ftp.cadsoft.de/$pkgname/program/${pkgver%.*}/$pkgname-lin64-$pkgver.run)
+source_i686=($pkgname-$pkgver.run::ftp://ftp.cadsoft.de/$pkgname/program/${pkgver%.*}/$pkgname-lin32-$pkgver.run)
+sha256sums=('86307352ad81aa0dee0dfe58ab6799b06200d489a8f6cef77845e772202d20a6'
+            '0e38128c87ad72b692e16d5be75b7b21182e4e89caeadfc2bb285588c060176c'
+            '293ef717030e171903ba555a5c698e581f056d2a33884868018ab2af96a94a06')
+sha256sums_i686=('93428e5cd6938f6a5efccce5f9ca1d2223ba2118868efd810a3fc84caf871232')
+sha256sums_x86_64=('2e7d98dc3c03bbd6ff3c10b54001722f57e25f8db8776851beac6fe755c8a7a5')
 
 package() {
   cd "$srcdir"
 
   msg2 "Extracting package content (this may take a while)..."
   install -dm755 "$pkgdir/opt"
-  sed -e '1,/^__DATA__$/d' "$_fname" | \
+  sed -e '1,/^__DATA__$/d' $pkgname-$pkgver.run | \
       tar --no-same-owner -xjC "$pkgdir/opt"
 
   msg2 "Fixing path name and permission..."
