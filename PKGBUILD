@@ -27,7 +27,6 @@ build() {
 
     (cd src && autoconf)
 
-
     # with-x=yes provides FEAT_XCLIPBOARD which provides FEAT_CLIENTSERVER
     ./configure \
         --prefix=/usr \
