@@ -6,10 +6,6 @@ _fred=#tag=build01469  # build 1469: 2015-07-19
 #_fred=#tag=testing-build-1469-pre2
 #_fred=#branch=next    # git HEAD
 
-# comment out to run unit tests
-BUILDENV+=('!check')
-
-# plugins failing to build:
 _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
 
 pkgname=freenet
@@ -26,6 +22,8 @@ install='freenet.install'
 depends=('java-runtime' 'bcprov151>=1.52' 'gmp' 'java-service-wrapper')
 makedepends=('java-environment' 'unzip' 'apache-ant' 'apache-ant-contrib' 'git')
 checkdepends=('junit')
+# comment out to run unit tests
+BUILDENV+=('!check')
 
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
@@ -145,7 +143,8 @@ build() {
 
     msg "Building Freenet-ext..."
     cd "$srcdir/fred/contrib/freenet-ext"
-    ant -propertyfile "$srcdir/contrib.properties"
+    ant -propertyfile "$srcdir/contrib.properties" \
+        -Djavac.target.version=1.7
 
     cd dist
     for dep in bitcollider-core commons-compress db4o lzmajio mantissa wrapper
@@ -170,9 +169,12 @@ build_jbigi() {
     CFLAGS+=" -fPIC -Wall"
     INCLUDES="-I./jbigi/include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so -lgmp"
+    rm -f *.o *.so
 
+    set -x
     gcc -c $CFLAGS $INCLUDES jbigi/src/jbigi.c
     gcc $LDFLAGS jbigi.o -o "$_objdir"/libjbigi-linux-none.so
+    set +x
 }
 
 build_nativethread() {
@@ -182,10 +184,13 @@ build_nativethread() {
     _objdir='lib/freenet/support/io'
     INCLUDES="-I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,llibnative.so -lc"
+    rm -f *.o *.so NativeThread.h
 
+    set -x
     javah -o NativeThread.h -classpath ../../fred/src freenet.support.io.NativeThread
     gcc -c $CFLAGS $INCLUDES NativeThread.c
     gcc $LDFLAGS NativeThread.o -o "$_objdir"/libNativeThread-${__arch}.so
+    set +x
 }
 
 build_jcpuid() {
@@ -195,9 +200,12 @@ build_jcpuid() {
     _objdir='lib/freenet/support/CPUInformation'
     INCLUDES="-I./include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-x86-linux.so"
+    rm -f *.o *.so
 
+    set -x
     gcc -c $CFLAGS $INCLUDES src/jcpuid.c
     gcc $LDFLAGS jcpuid.o -o "$_objdir"/libjcpuid-${_arch}-linux.so
+    set +x
 }
 
 build_fec() {
@@ -210,8 +218,9 @@ build_fec() {
     _CLASSPATH="-classpath ../ com.onionnetworks.fec"
 
     mkdir -p "$_objdir"
-    rm -f *.o *.S com_*.h
+    rm -f *.o *.so *.S com_*.h
 
+    set -x
     javah -o com_onionnetworks_fec_Native8Code.h  ${_CLASSPATH}.Native8Code
     javah -o com_onionnetworks_fec_Native16Code.h ${_CLASSPATH}.Native16Code
     gcc -S $CFLAGS fec.c -DGF_BITS=8  -o fec8.S
@@ -222,6 +231,7 @@ build_fec() {
     gcc -c $CFLAGS fec16.S -DGF_BITS=16 -o fec16.o
     gcc $LDFLAGS fec8.o fec8-jinterf.o   -o "$_objdir"/libfec8.so
     gcc $LDFLAGS fec16.o fec16-jinterf.o -o "$_objdir"/libfec16.so
+    set +x
 }
 
 build_plugins() {
@@ -231,8 +241,8 @@ build_plugins() {
         ant dist \
             -Dfreenet-cvs-snapshot.location=../fred/dist/freenet.jar \
             -Dfreenet-ext.location=../contrib/freenet-ext/dist/freenet-ext.jar \
-            -Djunit.location=/usr/share/java/junit.jar \
-            -Dtest.skip=true -Djavac.target.version=1.6
+            -Djunit.location=/usr/share/java/junit.jar -Dtest.skip=true \
+            -Djavac.target.version=1.7 -Dtarget-version=1.7
     done
 }
 
