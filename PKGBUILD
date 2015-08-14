@@ -63,4 +63,4 @@ package() {
     install -m755 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
-sha512sums=('b466f4aeb12d5e6b46447c7d0bb4f8eddd611214221d3948814938207503fdf834a31c7387384bdd1d97fb233dc438bd72d03bc44191fed8e4bb732dc05366ac')
+sha512sums=('6da5b910c664e213cd55f06971bc5ac2e66afba9c4821c5a6929efcd14c3b4885b813b789b47a405b0b2a96ca231e471ac88a38658b905dbf8b2eb417b05bcea')
