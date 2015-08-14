@@ -1,0 +1,14 @@
+pkgbase = lockrun
+	pkgdesc = Exclusively run things via lock files
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/hilbix/lockrun
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://scylla-charybdis.com/download/lockrun-0.6.2-20110613-163042.tar.gz
+	md5sums = 304146202b9972ae9cb3afa37fe16c51
+
+pkgname = lockrun
+
