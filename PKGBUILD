@@ -1,12 +1,12 @@
 # Maintainer: gosella <gosella@gmail.com>
 # Submitter: OK100 <ok100.ok100.ok100@gmail.com>
 
-pkgname=(python-pager python2-pager)
+pkgname=('python-pager' 'python2-pager')
 pkgver=3.3
-pkgrel=1
-pkgdesc="Terminal/console pager module for Python"
+pkgrel=2
+pkgdesc='Terminal/console pager module for Python'
 arch=('any')
-url="http://pypi.python.org/pypi/pager"
+url='http://pypi.python.org/pypi/pager'
 license=('Public Domain')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("http://pypi.python.org/packages/source/p/pager/pager-$pkgver.tar.gz")
