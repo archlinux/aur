@@ -64,6 +64,8 @@ makedepends=(autoconf ncurses bison perl fontforge flex prelink git
 )
 
 optdepends=(
+  libva           lib32-libva
+  gtk3            lib32-gtk3
   giflib          lib32-giflib
   libpng          lib32-libpng
   libldap         lib32-libldap
