@@ -10,9 +10,7 @@ arch=('any')
 url="https://github.com/jpfleury/clearlooks-phenix"
 license=('GPL3')
 depends=('gtk-engines')
-optdepends=(
-  'mist-icon-theme: a visually compatible icon theme'
-)
+optdepends=('mist-icon-theme: a visually compatible icon theme')
 conflicts=('clearlooks-phenix-gtk-theme-git')
 source=("https://github.com/jpfleury/clearlooks-phenix/archive/$pkgver.tar.gz")
 sha256sums=('663a40368107434b1333e42a630de74704f7b71a864e08d6b4ac1a5a68ccd874')
