@@ -1,7 +1,7 @@
 pkgbase = stp-git
 	pkgdesc = Simple Theorem Prover
 	pkgver = 2.1.0.r4.g52b23b5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stp.github.io/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = stp-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
+	depends = minisat-git
+	depends = cryptominisat4-git
 	source = stp-git::git+https://github.com/stp/stp.git
 	md5sums = SKIP
 
