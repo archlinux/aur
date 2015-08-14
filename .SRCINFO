@@ -1,4 +1,4 @@
-pkgbase = arx-git
+pkgbase = arxlibertatis-git
 	pkgdesc = Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only; Git version)
 	pkgver = 1.1.2+r5464.gc87968a
 	pkgrel = 1
@@ -24,9 +24,10 @@ pkgbase = arx-git
 	optdepends = qt4: enable built-in crash handler (Qt4 version; recompile needed)
 	optdepends = gdb: generate detailed crash reports
 	provides = arx
-	conflicts = arx arxlibertatis
+	conflicts = arx arx-git arxlibertatis
+	replaces = arx-git
 	source = git+https://github.com/arx/ArxLibertatis.git
 	md5sums = SKIP
 
-pkgname = arx-git
+pkgname = arxlibertatis-git
 

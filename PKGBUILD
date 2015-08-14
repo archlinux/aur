@@ -1,7 +1,7 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 # Contributor: Lubosz Sarnecki <lubosz at gmail>
 
-pkgname=arx-git
+pkgname=arxlibertatis-git
 _installname=arx
 pkgver=1.1.2+r5464.gc87968a
 pkgrel=1
@@ -18,7 +18,8 @@ optdepends=('arxfatalis-data-gog: game data from GOG.com installer'
             'gdb: generate detailed crash reports')
 makedepends=('git' 'cmake' 'boost')
 provides=('arx')
-conflicts=('arx arxlibertatis')
+replaces=('arx-git')
+conflicts=('arx arx-git arxlibertatis')
 install=arx.install
 
 _gitname=ArxLibertatis
