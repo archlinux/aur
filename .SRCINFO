@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-libsigc++
+	pkgdesc = Libsigc++ implements a full callback system for use in widget libraries - V2 (mingw-w64)
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://libsigc.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.4/libsigc++-2.4.1.tar.xz
+	md5sums = 55945ba6e1652f89999e910f6b52047c
+
+pkgname = mingw-w64-libsigc++
+
