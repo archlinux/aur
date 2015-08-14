@@ -9,13 +9,14 @@
 pkgbase=handbrake-svn
 pkgname=('handbrake-gtk-svn' 'handbrake-cli-svn')
 _svnmod=HandBrake
-pkgver=r7388
+pkgver=r7401
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
 url="http://handbrake.fr/"
 license=('GPL')
-depends=('dbus-glib' 'desktop-file-utils' 'gst-plugins-base-libs' 'gtk3' 'jansson' 'lame' 'libass' 'libx264' 'libnotify' 'libsamplerate' 'libtheora')
+depends=('dbus-glib' 'desktop-file-utils' 'gst-plugins-base-libs' '
+gtk3' 'jansson' 'lame' 'libass' 'libx264' 'libnotify' 'libsamplerate' 'libtheora')
 makedepends=('cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm')
 options=('!makeflags')
 source=("$_svnmod::svn://svn.handbrake.fr/HandBrake/trunk")
