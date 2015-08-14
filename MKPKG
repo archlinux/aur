@@ -1,4 +1,5 @@
 pkgname=('pyanimenc-git')
+builddeps=('python-pymediainfo')
 
 check_git $packagedir/$pkgname/${pkgname%-*}
 
