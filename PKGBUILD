@@ -4,7 +4,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=0.9.71
+pkgver=0.9.73
 pkgrel=1
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://developers.google.com/cloud/sdk/"
@@ -17,7 +17,7 @@ makedepends=('python2')
 optdepends=('go: for Go version of App Engine'
             'java-environment: for Java version of App Engine'
             'php: for PHP version of App Engine')
-md5sums=('fa47d4f428639f164df9c82210e9cf9e'
+md5sums=('ef65f9dca55a6ee5bb7829a3d6f2fcea'
          'd7c7ccb7d32a871d67288228f5b4cd94')
 options=('!strip' 'staticlibs')
 
