@@ -1,0 +1,5 @@
+minisat-git
+pkg
+src
+*.tar.xz
+
