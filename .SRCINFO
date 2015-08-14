@@ -1,0 +1,16 @@
+pkgbase = postfix-policyd-spf-perl
+	pkgdesc = Postfix SPF policy engine for Sender Policy Framework (SPF) checking, written in perl
+	pkgver = 2.010
+	pkgrel = 1
+	url = https://launchpad.net/postfix-policyd-spf-perl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl-mail-spf
+	depends = perl-netaddr-ip
+	depends = perl-sys-hostname-long
+	source = https://launchpad.net/postfix-policyd-spf-perl/trunk/release2.010/+download/postfix-policyd-spf-perl-2.010.tar.gz
+	md5sums = 768f5425db736aedc9c40a68e2d58414
+
+pkgname = postfix-policyd-spf-perl
+
