@@ -1,0 +1,14 @@
+[Unit]
+Description=Terraria server %i
+After=network.target
+
+[Service]
+User=terraria
+ExecStart=/usr/bin/screen -DmS terraria-%i /usr/bin/terraria-server -config /etc/terraria-server/%i.conf
+ExecStop=/usr/bin/screen -p 0 -S terraria-%i -X eval 'stuff "say Server shutting down. Saving world."\\015'
+ExecStop=/usr/bin/screen -p 0 -S terraria-%i -X eval 'stuff "save"\\015'
+ExecStop=/usr/bin/screen -p 0 -S terraria-%i -X eval 'stuff "exit"\\015'
+ExecStop=/usr/bin/sh -c 'while screen -ls | grep 'terraria-test' >/dev/null; do sleep 0.1; done'
+
+[Install]
+WantedBy=multi-user.target

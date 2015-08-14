@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /opt/terraria-server
+export MONO_IOMAP=all
+arch=$(uname -m)
+./TerrariaServer.bin.${arch} "$@"
