@@ -1,15 +1,15 @@
 # Maintainer: Maxs <max dot van dot den dot branden @t gmail dot com>
-pkgname=solarus-quest-editor
-pkgver=1.4.2
-pkgrel=1
+pkgname="solarus-quest-editor"
+pkgver="1.4.3"
+pkgrel="1"
 epoch=
 pkgdesc="A graphical user interface to create and modify quests for the Solarus engine."
-arch=(i686 x86_64)
-url=http://www.solarus-games.org/
-license=(GPL custom)
+arch=("i686" "x86_64")
+url="http://www.solarus-games.org/"
+license=("GPL" "custom")
 groups=()
-depends=(solarus qt5-base qt5-tools)
-makedepends=(cmake zip)
+depends=("solarus" "qt5-base" "qt5-tools")
+makedepends=("cmake" "zip")
 checkdepends=()
 optdepends=()
 provides=()
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/christopho/$pkgname/archive/v$pkgver.tar.gz $pkgname.desktop)
+source=("https://github.com/christopho/$pkgname/archive/v$pkgver.tar.gz" "$pkgname.desktop")
 noextract=()
-md5sums=(e8cad3ca7cbe741c4270e57317887933 38afc75a98448ddc6470f1efa41d7904)
+md5sums=("04e37a02f998a2c81c5f817b34edf8e6" "38afc75a98448ddc6470f1efa41d7904")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
