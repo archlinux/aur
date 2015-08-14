@@ -1,0 +1,13 @@
+pkgbase = upeditor
+	pkgdesc = Security plugin for UnionPay Online Pay
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.95516.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = glibc
+
+pkgname = upeditor
+
