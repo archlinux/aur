@@ -8,6 +8,8 @@ pkgbase = pam_eye
 	license = GPL
 	depends = util-linux
 	depends = curl
+    depends = blah'
+    depends = blah<b>wow</b>
 	source = git://github.com/kovetskiy/pam_eye.git
 	md5sums = SKIP
 
