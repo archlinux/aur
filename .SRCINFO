@@ -1,11 +1,10 @@
 pkgbase = imgurbash
 	pkgdesc = A simple bash script to upload an image to imgur from the commandline
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://imgur.com/tools/
 	arch = any
-	license = PD
-	depends = bash
+	license = custom:PublicDomain
 	depends = curl
 	optdepends = xsel: automatically putting the URL on the X selection for easy pasting
 	optdepends = xclip: an alternative to xsel
