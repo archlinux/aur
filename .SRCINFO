@@ -1,5 +1,5 @@
 pkgbase = firefox-nightly-it
-	pkgdesc = Standalone Web Browser from Mozilla — Nightly build ${_lang}
+	pkgdesc = Standalone Web Browser from Mozilla — Localized Nightly build
 	pkgver = 43.0a1.20150812
 	pkgrel = 1
 	url = https://nightly.mozilla.org/
