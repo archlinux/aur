@@ -10,8 +10,10 @@ pkgbase = docker-machine
 	license = Apache
 	provides = docker-machine
 	conflicts = docker-machine-bin
-	source = docker-machine::https://github.com/docker/machine/releases/download/v0.4.0/docker-machine_linux-amd64
-	sha256sums = 58a665440c210de7e864cdb8ae811d24fd34e6ae43344810bcd351724760a843
+	source_i686 = docker-machine::https://github.com/docker/machine/releases/download/v0.4.0/docker-machine_linux-386
+	sha256sums_i686 = 0d56ccf20e80fce5d3822ef14d4faf64875482ae73cdcfebf9ac6a0f38d2f474
+	source_x86_64 = docker-machine::https://github.com/docker/machine/releases/download/v0.4.0/docker-machine_linux-amd64
+	sha256sums_x86_64 = 58a665440c210de7e864cdb8ae811d24fd34e6ae43344810bcd351724760a843
 
 pkgname = docker-machine
 

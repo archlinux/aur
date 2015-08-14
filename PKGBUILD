@@ -13,14 +13,12 @@ depends=()
 provides=('docker-machine')
 conflicts=('docker-machine-bin')
 
-_arch=amd64
-[[ $CARCH = i686 ]] && _arch=386
+source_x86_64=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-amd64")
+source_i686=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-386")
 
-source=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-${_arch}")
-
-sha256sums=('58a665440c210de7e864cdb8ae811d24fd34e6ae43344810bcd351724760a843')
-[[ $CARCH = i686 ]] && sha256sums[0]='0d56ccf20e80fce5d3822ef14d4faf64875482ae73cdcfebf9ac6a0f38d2f474'
+sha256sums_x86_64=('58a665440c210de7e864cdb8ae811d24fd34e6ae43344810bcd351724760a843')
+sha256sums_i686=('0d56ccf20e80fce5d3822ef14d4faf64875482ae73cdcfebf9ac6a0f38d2f474')
 
 package() {
-    install -Dm755 docker-machine "${pkgdir}/usr/bin/docker-machine"
+    install -Dm755 ${srcdir}/docker-machine ${pkgdir}/usr/bin/docker-machine
 }
