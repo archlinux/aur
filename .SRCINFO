@@ -1,0 +1,17 @@
+pkgbase = chunkfs
+	pkgdesc = A FUSE based filesystem that allows mounting an arbitrary file or block device as a directory tree of files that each represent a chunk of user-specified size of the mounted file.
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://chunkfs.florz.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl
+	depends = fuse
+	provides = chunkfs
+	conflicts = chunkfs
+	source = http://chunkfs.florz.de/chunkfs_0.7.tar.gz
+	sha256sums = 4c168fc2b265a6ba34afc565707ea738f34375325763c0596f2cfa1c9b8d40f1
+
+pkgname = chunkfs
+
