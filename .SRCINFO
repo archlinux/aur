@@ -1,0 +1,24 @@
+pkgbase = thttpd
+	pkgdesc = Simple, small, portable, fast, and secure HTTP server
+	pkgver = 2.26
+	pkgrel = 5
+	url = http://www.acme.com/software/thttpd/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	backup = etc/thttpd.conf
+	source = http://www.acme.com/software/thttpd/thttpd-2.26.tar.gz
+	source = forwarded-for.patch
+	source = discreet.patch
+	source = crypt.patch
+	source = service
+	source = config
+	sha1sums = 9b943aeeab9ef92dfd60595649cbe9cf7394968c
+	sha1sums = 1293fbaf83a489c65d6d2b107d797c687233d96a
+	sha1sums = b954028d4360ad856f7fb1edc8534f0652f33d20
+	sha1sums = 603007a9292e84eea864b9ffb3bdf34c7e4dd8c9
+	sha1sums = 73bd76de0e89a9cc31e5605659837d83b3c8dfde
+	sha1sums = 7a6413491b6ba68625d450caa3c6f071af0ca1ac
+
+pkgname = thttpd
+

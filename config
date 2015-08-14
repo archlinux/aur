@@ -1,0 +1,4 @@
+dir=/srv/http
+vhost
+user=http
+cgipat=**.cgi

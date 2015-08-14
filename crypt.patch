@@ -1,0 +1,24 @@
+diff -Naur old/extras/htpasswd.c new/extras/htpasswd.c
+--- old/extras/htpasswd.c	2014-10-19 10:28:39.782856897 -1000
++++ new/extras/htpasswd.c	2014-10-19 10:29:12.842911168 -1000
+@@ -8,6 +8,8 @@
+ ** if stdin is a pipe or file.  This is necessary for use from CGI.
+ */
+ 
++#define _XOPEN_SOURCE
++
+ #include <sys/types.h>
+ #include <stdio.h>
+ #include <string.h>
+diff -Naur old/libhttpd.c new/libhttpd.c
+--- old/libhttpd.c	2014-10-19 10:28:39.782856897 -1000
++++ new/libhttpd.c	2014-10-19 10:29:01.679559501 -1000
+@@ -39,6 +39,8 @@
+ #include <sys/param.h>
+ #include <sys/stat.h>
+ 
++#define __USE_XOPEN
++
+ #include <ctype.h>
+ #include <errno.h>
+ #include <fcntl.h>

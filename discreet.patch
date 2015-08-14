@@ -1,0 +1,37 @@
+diff -Naur old/libhttpd.c new/libhttpd.c
+--- old/libhttpd.c	2014-08-15 11:32:31.040595413 +0900
++++ new/libhttpd.c	2014-08-15 11:34:57.690595931 +0900
+@@ -754,7 +754,7 @@
+     <title>%d %s</title>\n\
+   </head>\n\
+ \n\
+-  <body bgcolor=\"#cc9999\" text=\"#000000\" link=\"#2020ff\" vlink=\"#4040cc\">\n\
++  <body>\n\
+ \n\
+     <h2>%d %s</h2>\n",
+ 	status, title, status, title );
+@@ -780,14 +780,9 @@
+     char buf[1000];
+ 
+     (void) my_snprintf( buf, sizeof(buf), "\
+-    <hr>\n\
+-\n\
+-    <address><a href=\"%s\">%s</a></address>\n\
+-\n\
+   </body>\n\
+ \n\
+-</html>\n",
+-	SERVER_ADDRESS, EXPOSED_SERVER_SOFTWARE );
++</html>\n" );
+     add_response( hc, buf );
+     }
+ 
+@@ -2798,7 +2793,7 @@
+     <title>Index of %.80s</title>\n\
+   </head>\n\
+ \n\
+-  <body bgcolor=\"#99cc99\" text=\"#000000\" link=\"#2020ff\" vlink=\"#4040cc\">\n\
++  <body>\n\
+ \n\
+     <h2>Index of %.80s</h2>\n\
+ \n\
