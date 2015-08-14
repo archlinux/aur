@@ -1,7 +1,7 @@
 #Maintainer : Grigory Mishchenko <grishkokot[at]gmail[dot]com>
 
 pkgname=menu-cache-git
-pkgver=1.0.0.2.g2097b14
+pkgver=1.0.0.5.ge9ece4a
 pkgrel=1
 pkgdesc='Caching mechanism for freedesktop.org compliant menus'
 arch=('i686' 'x86_64')
@@ -12,8 +12,7 @@ options=('!libtool')
 makedepends=('gtk-doc' 'git' 'intltool' 'pkg-config' 'automake' 'pkgconfig')
 conflicts=('menu-cache')
 provides=('menu-cache')
-
-source=('git://git.lxde.org/git/lxde/menu-cache.git')
+source=("git+https://github.com/lxde/menu-cache.git")
 md5sums=('SKIP')
 
 _gitname="menu-cache"
