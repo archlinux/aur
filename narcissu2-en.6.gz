@@ -1,0 +1,60 @@
+.TH narcissu2-en 6 2009-01-17 "Narcissu Side 2nd" "Narcissu Side 2nd manual"
+.
+.SH NAME
+narcissu2-en \- Narcissu Side 2nd launcher
+.
+.SH SYNOPSIS
+.B narcissu2-en
+.RI [ OPTIONS ]
+.
+.SH DESCRIPTION
+.
+The command "narcissu2-en" launches the visual novel
+.IR "Narcissu Side 2nd" .
+.
+.PP
+This manpage documents only the launcher command.
+.
+Documentation for the game itself, including in-game controls, is
+provided separately in the README file.
+.
+.SH OPTIONS
+.
+The following named options are recognised by
+.BR narcissu2-en ,
+in additional to the standard
+.BR \-\-help " and " \-\-version
+flags which should need no further introduction:
+.
+.TP
+.BR \-\-window ", " \-\-fullscreen
+Sets the initial screen mode (windowed or fullscreen).
+.IP
+If neither option is specified, the game will default to whichever
+mode it was in most recently, or, on the first run, to windowed mode.
+.
+.TP
+.BR \-\-debug ",\fP " \-d
+Enables debugging mode.
+.IP
+This turns on Ponscripter's internal debugging feature.
+.
+It's rather verbose, but may be useful for tracking down problems in
+the (hopefully unlikely) case where you have any.
+.
+.TP
+.BI \-\-save \ path
+Sets the path to use for saved data.
+.IP
+You should not normally need to use this option; the default,
+.IR ~/.Narcissu_Side_2nd ,
+should be suitable for most users.
+.
+.SH BUGS
+.
+We were not aware of any bugs at the time of shipping.
+.
+We were probably mistaken, and the entire game is probably ridden with
+the darn things.
+.
+If you must disillusion us, please do so gently.

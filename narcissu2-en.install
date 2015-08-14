@@ -1,0 +1,12 @@
+post_install() {
+  echo
+  echo "==> To launch game type:"
+  echo "==> narcissu2-en"
+  echo "==> To view man type:"
+  echo "==> man narcissu2-en"
+  echo
+}
+
+post_upgrade() {
+  post_install $1
+}
