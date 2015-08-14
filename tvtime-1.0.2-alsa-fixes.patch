@@ -1,0 +1,143 @@
+diff -Naur a/src/audiolib.c b/src/audiolib.c
+--- a/src/audiolib.c	2010-05-06 12:07:34.000000000 +0200
++++ b/src/audiolib.c	2010-05-06 12:08:06.000000000 +0200
+@@ -74,6 +74,7 @@
+ struct alsa_device *alsa_open(char *input, char *output, unsigned long format, int channels, unsigned int rate)
+ {
+ 	int result;
++	int rv;
+ 	struct alsa_device *dev = malloc(sizeof(struct alsa_device));
+ 
+ 	dev->fmt.format = format;
+@@ -93,17 +94,27 @@
+ 
+ //	snd_pcm_nonblock( dev->playback, 1);
+ 
+-	alsa_set_params(dev->playback, &dev->fmt, 0);
++	rv = alsa_set_params(dev->playback, &dev->fmt, 0);
++	if (rv == -1) {
++		snd_pcm_close(dev->playback);
++		return NULL;
++	}
+ 
+ 	if ((result = snd_pcm_open( &dev->capture, input, SND_PCM_STREAM_CAPTURE, SND_PCM_NONBLOCK))<0)
+ 	{
++		snd_pcm_close(dev->playback);
+ 		free(dev);
+ 		return NULL;
+ 	}
+ 
+ //	snd_pcm_nonblock(dev->playback, 1);
+ 
+-	alsa_set_params(dev->capture, &dev->fmt, 1);
++	rv = alsa_set_params(dev->capture, &dev->fmt, 1);
++	if (rv == -1) {
++		snd_pcm_close(dev->playback);
++		snd_pcm_close(dev->capture);
++		return NULL;
++	}
+ 
+ 	return dev;
+ }
+@@ -212,8 +223,8 @@
+ 	snd_pcm_sw_params_alloca(&swparams);
+ 	err = snd_pcm_hw_params_any(handle, params);
+ 	if (err < 0) {
+-		printf("Broken configuration for this PCM: no configurations available");
+-		exit(EXIT_FAILURE);
++		printf("Broken configuration for this PCM: no configurations available\n");
++		return -1;
+ 	}
+ 
+ 
+@@ -223,18 +234,18 @@
+ 	err = snd_pcm_hw_params_set_access_mask(handle, params, mask);
+ 
+ 	if (err < 0) {
+-		printf("Access type not available");
+-		exit(EXIT_FAILURE);
++		printf("Access type not available\n");
++		return -1;
+ 	}
+ 	err = snd_pcm_hw_params_set_format(handle, params, fmt->format);
+ 	if (err < 0) {
+-		printf("Sample format non available");
+-		exit(EXIT_FAILURE);
++		printf("Sample format non available\n");
++		return -1;
+ 	}
+ 	err = snd_pcm_hw_params_set_channels(handle, params, fmt->channels);
+ 	if (err < 0) {
+-		printf("Channels count non available");
+-		exit(EXIT_FAILURE);
++		printf("Channels count non available\n");
++		return -1;
+ 	}
+ 
+ 	rate = fmt->rate;
+@@ -277,22 +288,22 @@
+ 	assert(err >= 0);
+ 	err = snd_pcm_hw_params(handle, params);
+ 	if (err < 0) {
+-		printf("Unable to install hw params");
+-		return -EINVAL;
++		printf("Unable to install hw params\n");
++		return -1;
+ 	}
+ 	snd_pcm_hw_params_get_period_size(params, &chunk_size, 0);
+ 	snd_pcm_hw_params_get_buffer_size(params, &buffer_size);
+ 
+ 	if (chunk_size == buffer_size) {
+-		printf("Can't use period equal to buffer size (%lu == %lu)", chunk_size, buffer_size);
+-		return -EINVAL;
++		printf("Can't use period equal to buffer size (%lu == %lu)\n", chunk_size, buffer_size);
++		return -1;
+ 	}
+ 
+ 	snd_pcm_sw_params_current(handle, swparams);
+ 	err = snd_pcm_sw_params_get_xfer_align(swparams, &xfer_align);
+ 	if (err < 0) {
+ 		printf("Unable to obtain xfer align\n");
+-		exit(EXIT_FAILURE);
++		return -1;
+ 	}
+ 
+ 	err = snd_pcm_sw_params_set_sleep_min(handle, swparams, 0);
+@@ -331,8 +342,8 @@
+ 	assert(err >= 0);
+ 
+ 	if (snd_pcm_sw_params(handle, swparams) < 0) {
+-		printf("unable to install sw params");
+-		return -EINVAL;
++		printf("unable to install sw params\n");
++		return -1;
+ 	}
+ 
+ 	fmt->bits_per_sample = snd_pcm_format_physical_width(fmt->format);
+diff -Naur a/src/tvtime.c b/src/tvtime.c
+--- a/src/tvtime.c	2010-05-06 12:07:34.000000000 +0200
++++ b/src/tvtime.c	2010-05-06 12:08:06.000000000 +0200
+@@ -1184,6 +1184,7 @@
+     char prevloc[ 256 ];
+     char *empia_device;
+     int i;
++    int audio_state = 0;
+ 
+     ct = config_new();
+     if( !ct ) {
+@@ -2061,10 +2062,14 @@
+                session.
+             */
+ 
+-            if (empia_device && videoinput_get_audio(vidin) == NULL) {
++            if (empia_device && audio_state == 0 && videoinput_get_audio(vidin) == NULL) {
+                     videoinput_set_audio(vidin, alsa_open(empia_device, "default", SND_PCM_FORMAT_S16_LE, 2 /* 2 channels */, 48000 /* rate */));
+                     if (videoinput_get_audio(vidin)) {
++                            audio_state = 0;
++                            printf("starting alsa transfer\n");
+                             alsa_start_threaded_loop(videoinput_get_audio(vidin));
++                    } else {
++                            audio_state = -1;
+                     }
+             }
+ 

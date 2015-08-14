@@ -1,0 +1,69 @@
+diff -Naur tvtime.orig/configure.ac tvtime/configure.ac
+--- tvtime.orig/configure.ac	2011-02-01 02:35:26.000000000 +0100
++++ tvtime/configure.ac	2011-05-29 21:45:16.825993007 +0200
+@@ -10,6 +10,7 @@
+ 
+ # Check for compilers.
+ AC_PROG_CC
++AM_PROG_CC_C_O
+ AC_CHECK_PROG(found_cc, "$CC", yes, no)
+ test "x$found_cc" = "xyes" || exit 1
+ 
+@@ -18,7 +19,6 @@
+ test "x$found_cxx" = "xyes" || exit 1
+ 
+ # Check for libtool.
+-AC_PROG_LIBTOOL
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+@@ -67,10 +67,7 @@
+ dnl freetype
+ dnl ---------------------------------------------
+ dnl Test for freetype
+-AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, no)
+-if test "$FREETYPE_CONFIG" = "no" ; then
+-  AC_MSG_ERROR(freetype2 needed and freetype-config not found)
+-fi
++PKG_CHECK_MODULES([TTF], [freetype2])
+ 
+ dnl ---------------------------------------------
+ dnl libxml2
+diff -Naur tvtime.orig/src/Makefile.am tvtime/src/Makefile.am
+--- tvtime.orig/src/Makefile.am	2011-02-01 02:35:26.000000000 +0100
++++ tvtime/src/Makefile.am	2011-05-29 21:42:32.156993111 +0200
+@@ -19,9 +19,6 @@
+ tmpdir = /tmp
+ localedir = $(datadir)/locale
+ 
+-TTF_CFLAGS = `$(FREETYPE_CONFIG) --cflags`
+-TTF_LIBS = `$(FREETYPE_CONFIG) --libs`
+-
+ # Set the following if you want to specify an additional font directory
+ # FONT_CFLAGS = -DFONTDIR='/usr/share/fonts/truetype/freefont/'
+ 
+@@ -76,20 +73,20 @@
+ tvtime_CFLAGS = $(TTF_CFLAGS) $(PNG_CFLAGS) $(OPT_CFLAGS) \
+ 	$(PLUGIN_CFLAGS) $(X11_CFLAGS) $(XML2_FLAG) \
+ 	$(FONT_CFLAGS) $(AM_CFLAGS)
+-tvtime_LDFLAGS  = $(TTF_LIBS) $(ZLIB_LIBS) $(PNG_LIBS) \
++tvtime_LDADD  = $(TTF_LIBS) $(ZLIB_LIBS) $(PNG_LIBS) \
+ 	$(X11_LIBS) $(XML2_LIBS) $(ASOUND_LIBS) -lm -lsupc++
+ 
+ tvtime_command_SOURCES = utils.h utils.c tvtimeconf.h tvtimeconf.c \
+ 	tvtime-command.c
+ tvtime_command_CFLAGS = $(OPT_CFLAGS) $(XML2_FLAG) $(AM_CFLAGS)
+-tvtime_command_LDFLAGS  = $(ZLIB_LIBS) $(XML2_LIBS)
++tvtime_command_LDADD  = $(ZLIB_LIBS) $(XML2_LIBS)
+ tvtime_configure_SOURCES = utils.h utils.c tvtimeconf.h tvtimeconf.c \
+ 	tvtime-configure.c
+ tvtime_configure_CFLAGS = $(OPT_CFLAGS) $(XML2_FLAG) $(AM_CFLAGS)
+-tvtime_configure_LDFLAGS  = $(ZLIB_LIBS) $(XML2_LIBS)
++tvtime_configure_LDADD  = $(ZLIB_LIBS) $(XML2_LIBS)
+ tvtime_scanner_SOURCES = utils.h utils.c videoinput.h videoinput.c \
+ 	tvtimeconf.h tvtimeconf.c station.h station.c tvtime-scanner.c \
+ 	mixer.h mixer.c
+ tvtime_scanner_CFLAGS = $(OPT_CFLAGS) $(XML2_FLAG) $(AM_CFLAGS)
+-tvtime_scanner_LDFLAGS  = $(ZLIB_LIBS) $(XML2_LIBS)
++tvtime_scanner_LDADD  = $(ZLIB_LIBS) $(XML2_LIBS)
+ 

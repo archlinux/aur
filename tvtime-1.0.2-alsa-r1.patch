@@ -1,0 +1,552 @@
+Add support for ALSA in combination with USB audio devices, bug #323797
+Patch from Ubuntu, rebased to our upstream
+
+diff -Naur tvtime-111b28cca42d.orig/src/audiolib.c tvtime-111b28cca42d/src/audiolib.c
+--- tvtime-111b28cca42d.orig/src/audiolib.c	1970-01-01 01:00:00.000000000 +0100
++++ tvtime-111b28cca42d/src/audiolib.c	2011-08-14 11:53:47.726915264 +0200
+@@ -0,0 +1,342 @@
++/*
++   Copyright 2008 Empia Technology Inc.
++   Copyright 2008 Markus Rechberger <mrechberger@empiatech.com>
++
++   alsa_set_params is derived from aplay.c
++
++   TODO:
++	more sysfs hacking for determining the empia audio device
++
++*/
++
++#include <stdio.h>
++#include "audiolib.h"
++
++static int alsa_set_params(snd_pcm_t *handle, struct alsa_stream_format *fmt, int start_delay);
++
++char *get_empia_device() {
++        int err;
++        int card = -1;
++        char dev[64];
++        int pcm_device = -1;
++        snd_ctl_t *ctl;
++        snd_pcm_info_t *pcm_info;
++        char *card_name;
++        do {
++                err = snd_card_next(&card);
++                if (card > -1) {
++                        sprintf(dev, "hw:%i", card);
++                        snd_ctl_open(&ctl, dev, 0);
++                        snd_card_get_name(card, &card_name);
++                        snd_pcm_info_alloca(&pcm_info);
++
++                        for (;;)
++                        {
++                                char device[500], descr[1024];
++
++                                if ((err = snd_ctl_pcm_next_device(ctl, &pcm_device)) < 0)
++                                        pcm_device = -1;
++
++                                if (pcm_device < 0)
++                                        break;
++
++                                snd_pcm_info_set_subdevice(pcm_info, 0);
++                                snd_pcm_info_set_device(pcm_info, pcm_device);
++                                snd_pcm_info_set_stream(pcm_info, SND_PCM_STREAM_CAPTURE);
++                                if ((err = snd_ctl_pcm_info(ctl, pcm_info))==0) {
++                                        sprintf(device,"hw:%d,%d", card, pcm_device);
++                                        sprintf(descr,"%s : %s (%s)", card_name, snd_pcm_info_get_name(pcm_info),device);
++                                        if(strcmp(snd_pcm_info_get_name(pcm_info), "USB Audio") == 0) {
++                                                printf("Found \"%s\"\n", descr);
++                                                snd_ctl_close(ctl);
++                                                return strdup(device);
++
++                                        }
++                                }
++                        }
++                        snd_ctl_close(ctl);
++                }
++
++        } while(card > -1);
++        return NULL;
++}
++
++int alsa_get_state(struct alsa_device *dev)
++{
++	return dev->state;
++}
++
++void alsa_set_state(struct alsa_device *dev, enum alsa_state state)
++{
++	dev->state = state;
++}
++
++struct alsa_device *alsa_open(char *input, char *output, unsigned long format, int channels, unsigned int rate)
++{
++	int result;
++	struct alsa_device *dev = malloc(sizeof(struct alsa_device));
++
++	dev->fmt.format = format;
++	dev->fmt.channels = channels;
++	dev->fmt.rate = rate;
++	dev->state = ALSA_STATE_STOPPED;
++
++	if (dev == NULL)
++		return NULL;
++
++
++	if ((result = snd_pcm_open( &dev->playback, output, SND_PCM_STREAM_PLAYBACK, SND_PCM_NONBLOCK))<0)
++	{
++		free(dev);
++		return NULL;
++	}
++
++//	snd_pcm_nonblock( dev->playback, 1);
++
++	alsa_set_params(dev->playback, &dev->fmt, 0);
++
++	if ((result = snd_pcm_open( &dev->capture, input, SND_PCM_STREAM_CAPTURE, SND_PCM_NONBLOCK))<0)
++	{
++		free(dev);
++		return NULL;
++	}
++
++//	snd_pcm_nonblock(dev->playback, 1);
++
++	alsa_set_params(dev->capture, &dev->fmt, 1);
++
++	return dev;
++}
++
++void alsa_close(struct alsa_device **dev)
++{
++	struct alsa_device *cdev = *dev;
++	snd_pcm_drain(cdev->playback);
++	snd_pcm_close(cdev->playback);
++	snd_pcm_drain(cdev->capture);
++	snd_pcm_close(cdev->capture);
++	free(*dev);
++	snd_config_update_free_global();
++	*dev = NULL;
++}
++
++#define TRANSFER_BUFSIZE 256
++
++void *alsa_start_thread(void *data)
++{
++	struct alsa_device *dev = data;
++	alsa_loop(dev);
++	return NULL;
++}
++
++int alsa_start_threaded_loop(struct alsa_device *dev)
++{
++	int pret = 0;
++	if (dev->state == ALSA_STATE_STOPPED)
++	{
++		dev->state = ALSA_STATE_RUNNING;
++		pthread_create(&dev->athread, NULL, alsa_start_thread, dev);
++	}
++	return pret;
++}
++
++int alsa_join_threaded_loop(struct alsa_device *dev)
++{
++	if (dev->state == ALSA_STATE_RUNNING)
++	{
++		dev->state = ALSA_STATE_STOPPED;
++		pthread_join(dev->athread, NULL);
++	}
++	return 0;
++}
++
++int alsa_loop(struct alsa_device *dev)
++{
++	int length, ret;
++	unsigned char buf[TRANSFER_BUFSIZE];
++	snd_pcm_uframes_t frames = TRANSFER_BUFSIZE/dev->fmt.bits_per_sample;
++	dev->state = ALSA_STATE_RUNNING;
++	while (dev->state == ALSA_STATE_RUNNING) {
++		length = snd_pcm_readi(dev->capture, buf, frames);
++		switch(length) {
++		case -EAGAIN:
++			snd_pcm_wait(dev->capture, 5);
++			continue;
++		case -EPIPE:
++			snd_pcm_drain(dev->capture);
++			snd_pcm_prepare(dev->capture);
++			continue;
++		default:
++			break;
++		}
++		if (length>0) {
++			ret = snd_pcm_writei(dev->playback, buf, length);
++			switch (ret) {
++			case -EPIPE:
++				snd_pcm_drain(dev->playback);
++				snd_pcm_prepare(dev->playback);
++				continue;
++			default:
++				break;
++			}
++		}
++	}
++	snd_pcm_drain(dev->capture);
++	snd_pcm_drain(dev->playback);
++	return 0;
++}
++
++/* set start_delay to 1 for capture */
++/* taken from aplay.c */
++static int alsa_set_params(snd_pcm_t *handle, struct alsa_stream_format *fmt, int start_delay)
++{
++	snd_pcm_uframes_t chunk_size = 0;
++	snd_pcm_hw_params_t *params;
++	snd_pcm_sw_params_t *swparams;
++	snd_pcm_uframes_t buffer_size;
++
++	unsigned buffer_time = 0;
++	unsigned period_time = 0;
++	snd_pcm_uframes_t buffer_frames = 0;
++	snd_pcm_uframes_t period_frames = 0;
++
++	int err;
++	size_t n;
++	snd_pcm_uframes_t xfer_align;
++	unsigned int rate;
++	int avail_min = -1;
++	int stop_delay = 0;
++
++	snd_pcm_uframes_t start_threshold, stop_threshold;
++	snd_pcm_hw_params_alloca(&params);
++	snd_pcm_sw_params_alloca(&swparams);
++	err = snd_pcm_hw_params_any(handle, params);
++	if (err < 0) {
++		printf("Broken configuration for this PCM: no configurations available");
++		exit(EXIT_FAILURE);
++	}
++
++
++	snd_pcm_access_mask_t *mask = alloca(snd_pcm_access_mask_sizeof());
++	snd_pcm_access_mask_none(mask);
++	snd_pcm_access_mask_set(mask, SND_PCM_ACCESS_RW_INTERLEAVED);
++	err = snd_pcm_hw_params_set_access_mask(handle, params, mask);
++
++	if (err < 0) {
++		printf("Access type not available");
++		exit(EXIT_FAILURE);
++	}
++	err = snd_pcm_hw_params_set_format(handle, params, fmt->format);
++	if (err < 0) {
++		printf("Sample format non available");
++		exit(EXIT_FAILURE);
++	}
++	err = snd_pcm_hw_params_set_channels(handle, params, fmt->channels);
++	if (err < 0) {
++		printf("Channels count non available");
++		exit(EXIT_FAILURE);
++	}
++
++	rate = fmt->rate;
++	err = snd_pcm_hw_params_set_rate_near(handle, params, &rate, 0);
++
++	assert(err >= 0);
++
++	rate = fmt->rate;
++
++	if (buffer_time == 0 && buffer_frames == 0) {
++		err = snd_pcm_hw_params_get_buffer_time_max(params,
++				&buffer_time, 0);
++		assert(err >= 0);
++		if (buffer_time > 500000)
++			buffer_time = 500000;
++	}
++
++	if (period_time == 0 && period_frames == 0) {
++		if (buffer_time > 0)
++			period_time = buffer_time / 4;
++		else
++			period_frames = buffer_frames / 4;
++	}
++
++	if (period_time > 0)
++		err = snd_pcm_hw_params_set_period_time_near(handle, params,
++				&period_time, 0);
++	else
++		err = snd_pcm_hw_params_set_period_size_near(handle, params,
++				&period_frames, 0);
++
++	assert(err >= 0);
++	if (buffer_time > 0)
++		err = snd_pcm_hw_params_set_buffer_time_near(handle, params,
++				&buffer_time, 0);
++	else
++		err = snd_pcm_hw_params_set_buffer_size_near(handle, params,
++				&buffer_frames);
++
++	assert(err >= 0);
++	err = snd_pcm_hw_params(handle, params);
++	if (err < 0) {
++		printf("Unable to install hw params");
++		return -EINVAL;
++	}
++	snd_pcm_hw_params_get_period_size(params, &chunk_size, 0);
++	snd_pcm_hw_params_get_buffer_size(params, &buffer_size);
++
++	if (chunk_size == buffer_size) {
++		printf("Can't use period equal to buffer size (%lu == %lu)", chunk_size, buffer_size);
++		return -EINVAL;
++	}
++
++	snd_pcm_sw_params_current(handle, swparams);
++	err = snd_pcm_sw_params_get_xfer_align(swparams, &xfer_align);
++	if (err < 0) {
++		printf("Unable to obtain xfer align\n");
++		exit(EXIT_FAILURE);
++	}
++
++	err = snd_pcm_sw_params_set_sleep_min(handle, swparams, 0);
++
++	assert(err >= 0);
++	if (avail_min < 0)
++		n = chunk_size;
++	else
++		n = (double) rate * avail_min / 1000000;
++
++	err = snd_pcm_sw_params_set_avail_min(handle, swparams, n);
++
++	/* round up to closest transfer boundary */
++	n = (buffer_size / xfer_align) * xfer_align;
++	if (start_delay <= 0) {
++		start_threshold = n + (double) rate * start_delay / 1000000;
++	} else
++		start_threshold = (double) rate * start_delay / 1000000;
++	if (start_threshold < 1)
++		start_threshold = 1;
++	if (start_threshold > n)
++		start_threshold = n;
++
++	err = snd_pcm_sw_params_set_start_threshold(handle, swparams, start_threshold);
++	assert(err >= 0);
++
++	if (stop_delay <= 0)
++		stop_threshold = buffer_size + (double) rate * stop_delay / 1000000;
++	else
++		stop_threshold = (double) rate * stop_delay / 1000000;
++
++	err = snd_pcm_sw_params_set_stop_threshold(handle, swparams, stop_threshold);
++	assert(err >= 0);
++
++	err = snd_pcm_sw_params_set_xfer_align(handle, swparams, xfer_align);
++	assert(err >= 0);
++
++	if (snd_pcm_sw_params(handle, swparams) < 0) {
++		printf("unable to install sw params");
++		return -EINVAL;
++	}
++
++	fmt->bits_per_sample = snd_pcm_format_physical_width(fmt->format);
++	fmt->bits_per_frame = fmt->bits_per_sample * fmt->channels;
++	fmt->chunk_bytes = chunk_size * fmt->bits_per_frame / 8;
++	return 0;
++}
+diff -Naur tvtime-111b28cca42d.orig/src/audiolib.h tvtime-111b28cca42d/src/audiolib.h
+--- tvtime-111b28cca42d.orig/src/audiolib.h	1970-01-01 01:00:00.000000000 +0100
++++ tvtime-111b28cca42d/src/audiolib.h	2011-08-14 11:53:47.771915261 +0200
+@@ -0,0 +1,38 @@
++#ifndef _AUDIO_LIB_H
++#define _AUDIO_LIB_H
++#include <alsa/asoundlib.h>
++#include <pthread.h>
++
++struct alsa_stream_format {
++	unsigned long format;
++	int channels;
++	unsigned int rate;
++	size_t bits_per_sample;
++	size_t bits_per_frame;
++	size_t chunk_bytes;
++};
++
++enum alsa_state {
++	ALSA_STATE_STOPPED,
++	ALSA_STATE_RUNNING
++};
++
++struct alsa_device {
++	snd_pcm_t *capture;
++	snd_pcm_t *playback;
++	enum alsa_state state;
++	struct alsa_stream_format fmt;
++	pthread_t athread;
++};
++
++struct alsa_device *alsa_open(char *input, char *output, unsigned long format, int channels, unsigned int rate);
++char *get_empia_device();
++int alsa_loop(struct alsa_device *dev);
++int alsa_get_state(struct alsa_device *dev);
++void alsa_close(struct alsa_device **dev);
++int alsa_get_state(struct alsa_device *dev);
++void alsa_set_state(struct alsa_device *dev, enum alsa_state state);
++int alsa_start_threaded_loop(struct alsa_device *dev);
++int alsa_join_threaded_loop(struct alsa_device *dev);
++
++#endif // _AUDIO_LIB_H
+diff -Naur tvtime-111b28cca42d.orig/src/Makefile.am tvtime-111b28cca42d/src/Makefile.am
+--- tvtime-111b28cca42d.orig/src/Makefile.am	2011-08-14 11:52:43.404917552 +0200
++++ tvtime-111b28cca42d/src/Makefile.am	2011-08-14 11:56:09.243910228 +0200
+@@ -37,7 +37,7 @@
+ 	utils.h utils.c pulldown.h pulldown.c hashtable.h hashtable.c \
+ 	cpuinfo.h cpuinfo.c videodev2.h menu.c menu.h \
+ 	outputfilter.h outputfilter.c xmltv.h xmltv.c gettext.h tvtimeglyphs.h \
+-	copyfunctions.h copyfunctions.c alsa_stream.c
++	copyfunctions.h copyfunctions.c alsa_stream.c audiolib.h audiolib.c
+ 
+ if ARCH_X86
+ DSCALER_SRCS = $(top_srcdir)/plugins/dscalerapi.h \
+@@ -74,7 +74,7 @@
+ 	$(PLUGIN_CFLAGS) $(X11_CFLAGS) $(XML2_FLAG) \
+ 	$(FONT_CFLAGS) $(AM_CFLAGS)
+ tvtime_LDADD  = $(TTF_LIBS) $(ZLIB_LIBS) $(PNG_LIBS) \
+-	$(X11_LIBS) $(XML2_LIBS) $(ASOUND_LIBS) -lm -lsupc++ -lpthread
++	$(X11_LIBS) $(XML2_LIBS) $(ASOUND_LIBS) -lm -lsupc++ -lpthread -lasound
+ 
+ tvtime_command_SOURCES = utils.h utils.c tvtimeconf.h tvtimeconf.c \
+ 	tvtime-command.c
+diff -Naur tvtime-111b28cca42d.orig/src/tvtime.c tvtime-111b28cca42d/src/tvtime.c
+--- tvtime-111b28cca42d.orig/src/tvtime.c	2011-02-01 02:35:26.000000000 +0100
++++ tvtime-111b28cca42d/src/tvtime.c	2011-08-14 11:56:35.443909297 +0200
+@@ -78,6 +78,7 @@
+ #include "menu.h"
+ #include "tvtimeglyphs.h"
+ #include "alsa_stream.h"
++#include "audiolib.h"
+ 
+ /**
+  * This is how many frames to wait until deciding if the pulldown phase
+@@ -1210,6 +1211,7 @@
+     int last_current_id = -1;
+     int quiet_screenshots = 0;
+     char prevloc[ 256 ];
++    char *empia_device;
+     int i;
+ 
+     ct = config_new();
+@@ -1581,6 +1583,8 @@
+     build_fspos_menu( commands_get_menu( commands, "fspos" ),
+                       config_get_fullscreen_position( ct ) );
+ 
++    empia_device = get_empia_device();
++
+     /* Initialize our timestamps. */
+     for(;;) {
+         const char *fifo_args = 0;
+@@ -2056,9 +2060,30 @@
+ 
+         if( tuner_state == TUNER_STATE_HAS_SIGNAL ) {
+             has_signal = 1;
++            /* reopen the device for now, there are several issues which don't allow pausing the
++               audio data transfer.
++
++               TODO:
++               The driver(?) seems to crash when setting up the alsa parameters again during the same
++               session.
++            */
++
++            if (empia_device && videoinput_get_audio(vidin) == NULL) {
++                    videoinput_set_audio(vidin, alsa_open(empia_device, "default", SND_PCM_FORMAT_S16_LE, 2 /* 2 channels */, 48000 /* rate */));
++                    if (videoinput_get_audio(vidin)) {
++                            alsa_start_threaded_loop(videoinput_get_audio(vidin));
++                    }
++            }
++
+             if( osd ) tvtime_osd_signal_present( osd, 1 );
+         } else if( tuner_state == TUNER_STATE_NO_SIGNAL ) {
+             if( osd ) tvtime_osd_signal_present( osd, 0 );
++            if (videoinput_get_audio(vidin)) {
++                    alsa_join_threaded_loop(videoinput_get_audio(vidin));
++                    alsa_close(videoinput_get_audio_p(vidin));
++                    videoinput_set_audio(vidin, NULL);
++            }
++
+             if( fadepos < 256 ) {
+                 crossfade_frame( fadeframe, saveframe, blueframe, width,
+                                  height, width*2, width*2, width*2, fadepos );
+@@ -2499,6 +2524,11 @@
+     /* Return to normal scheduling. */
+     set_default_priority();
+ 
++    if (videoinput_get_audio(vidin)) {
++            alsa_join_threaded_loop(videoinput_get_audio(vidin));
++            alsa_close(videoinput_get_audio_p(vidin));
++    }
++
+     /* Remember to save our settings if we were scanning. */
+     if( scanning ) {
+         station_writeconfig( stationmgr );
+diff -Naur tvtime-111b28cca42d.orig/src/videoinput.c tvtime-111b28cca42d/src/videoinput.c
+--- tvtime-111b28cca42d.orig/src/videoinput.c	2011-02-01 02:35:26.000000000 +0100
++++ tvtime-111b28cca42d/src/videoinput.c	2011-08-14 12:03:39.783894207 +0200
+@@ -38,6 +38,7 @@
+ #include <linux/videodev2.h>
+ #include "videoinput.h"
+ #include "mixer.h"
++#include "audiolib.h"
+ 
+ /**
+  * How long to wait when we lose a signal, or acquire a signal.
+@@ -198,8 +199,25 @@
+     /* V4L2 capture state. */
+     capture_buffer_t capbuffers[ MAX_CAPTURE_BUFFERS ];
+     int is_streaming;
++
++    struct alsa_device *adev;
+ };
+ 
++struct alsa_device *videoinput_get_audio( videoinput_t *vidin )
++{
++    return vidin->adev;
++}
++
++struct alsa_device **videoinput_get_audio_p( videoinput_t *vidin )
++{
++    return &vidin->adev;
++}
++
++void videoinput_set_audio( videoinput_t *vidin, struct alsa_device *dev )
++{
++    vidin->adev = dev;
++}
++
+ static void videoinput_start_capture_v4l2( videoinput_t *vidin )
+ {
+     if( !vidin->is_streaming ) {
+@@ -347,6 +365,7 @@
+     vidin->norm = norm;
+     vidin->volume = volume;
+     vidin->amode = 0;
++    vidin->adev = NULL;
+     vidin->height = videoinput_get_norm_height( norm );
+     vidin->cur_tuner_state = TUNER_STATE_NO_SIGNAL;
+ 
+diff -Naur tvtime-111b28cca42d.orig/src/videoinput.h tvtime-111b28cca42d/src/videoinput.h
+--- tvtime-111b28cca42d.orig/src/videoinput.h	2011-02-01 02:35:26.000000000 +0100
++++ tvtime-111b28cca42d/src/videoinput.h	2011-08-14 11:53:47.775915262 +0200
+@@ -278,6 +278,20 @@
+ const char *videoinput_get_driver_name( videoinput_t *vidin );
+ 
+ /**
++ * Returns the audio handle of the device struct.
++ */
++struct alsa_device *videoinput_get_audio( videoinput_t *vidin );
++
++/**
++ * Returns a pointer to the alsa_device pointer, used for cleaning up
++ */
++struct alsa_device **videoinput_get_audio_p (videoinput_t *vidin );
++
++/**
++ * Set adev for vidin
++ */
++void videoinput_set_audio( videoinput_t *vidin, struct alsa_device *dev);
++/**
+  * Sets the capture card volume to use as a percentage from 0-100.
+  * If the value is negative, the capture card volume will remain unset.
+  */
