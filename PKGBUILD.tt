@@ -9,7 +9,7 @@ pkgdesc='A Moose role for processing command line options'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-builddepends=('perl-module-build-tiny>=0.039')
+makedepends=('perl-module-build-tiny>=0.039')
 depends=(
 	'perl>=5.8.9'
 	'perl-getopt-long-descriptive>=0.088'
@@ -32,20 +32,27 @@ source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
 
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+}
+
 build() {
 	cd [% distdir %]
-	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT
-	PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	sanitize
+	perl Build.PL --installdirs vendor --destdir "$pkgdir"
 	perl Build
 }
 
 check() {
 	cd [% distdir %]
+	sanitize
 	perl Build test
 }
 
 package() {
 	cd [% distdir %]
+	sanitize
 	perl Build install
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
