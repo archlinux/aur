@@ -1,7 +1,7 @@
 pkgbase = terraria-server
 	pkgdesc = Official dedicated server for Terraria
 	pkgver = 1.3.0.8
-	pkgrel = 3
+	pkgrel = 5
 	url = https://terraria.org/
 	install = terraria-server.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = terraria-server
 	source = terraria-server@.service
 	sha256sums = 0ab1ee17d78ae1ec039363519840cb1651c6aa22f5a76f014d9cfdca4fb7a333
 	sha256sums = 8a7e23efe3f72d8c88024cf32e53daa4b293bb2b17070dbf80e86876af1e22f9
-	sha256sums = 7b871f41d73286ff4fad6cf1f046fc7b1ad0a0d9685baed57e4f97af730b81a8
+	sha256sums = 27dfa3e01b4da26bccace69bcf02fd91293cac701e48ab358d9495070365c2ac
 
 pkgname = terraria-server
 

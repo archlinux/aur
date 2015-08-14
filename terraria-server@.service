@@ -9,7 +9,7 @@ ExecStop=/usr/bin/screen -p 0 -S terraria-%i -X eval 'stuff "say Server shutting
 ExecStop=/usr/bin/screen -p 0 -S terraria-%i -X eval 'stuff "exit"\\015'
 # Don't stop process automatically, but still send SIGKILL after a timeout
 KillMode=control-group
-KillSignal=SIGUSR1
+KillSignal=SIGCONT
 SendSIGKILL=yes
 
 [Install]
