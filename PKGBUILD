@@ -2,13 +2,13 @@
 
 _gitname=telegram-qt
 pkgname=telegram-qt-git
-pkgver=r260.66c8547
+pkgver=r439.3409c3f
 pkgrel=1
 pkgdesc="Qt bindings for the Telegram protocol"
 arch=(i686 x86_64)
 url="https://projects.kde.org/telegram-qt/"
 license=(GPL)
-depends=(qt5-base)
+depends=(zlib)
 makedepends=(cmake git)
 provides=(telegram-qt)
 conflicts=(telegram-qt)
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../_gitname \
+  cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release
