@@ -1,0 +1,15 @@
+diff --git 1/CMakeLists.txt 2/CMakeLists-new.txt
+index f36e8aa..f1386ff 100644
+--- 1/CMakeLists.txt
++++ 2/CMakeLists-new.txt
+@@ -223,6 +223,10 @@ if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANG)
+ 		set(CMAKE_CXX_LINK_FLAGS "${CMAKE_CXX_LINK_FLAGS} -stdlib=libc++")
+ 	endif()
+ 
++  if(SUPERNOVA)
++		set(CMAKE_CXX_LINK_FLAGS "${CMAKE_CXX_LINK_FLAGS} -latomic")
++	endif()
++
+ 	if(FORTIFY)
+ 		add_definitions( -D_FORTIFY_SOURCE=2 )
+ 	endif()
