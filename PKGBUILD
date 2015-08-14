@@ -2,7 +2,7 @@
 
 pkgname=terraria-server
 pkgver=1.3.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -37,6 +37,9 @@ package() {
     install -d "${pkgdir}/usr/lib/systemd/system/"
     install -m755 terraria-server@.service "${pkgdir}/usr/lib/systemd/system/"
 
-    install -o 197 -g 196 -d "${pkgdir}/etc/terraria-server/"
+    install -o 197 -g 197 -d "${pkgdir}/etc/terraria-server/"
     install -o 197 -g 197 -d "${pkgdir}/var/lib/terraria-server/"
+
+    install -d "${pkgdir}/usr/lib/"
+    ln -s "/usr/lib/libmonosgen-2.0.so.1.0.0" "${pkgdir}/usr/lib/libmonosgen-2.0.so.0"
 }
