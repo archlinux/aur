@@ -1,7 +1,7 @@
 pkgbase = meep
 	pkgdesc = A free finite-difference time-domain simulation software package
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ab-initio.mit.edu/wiki/index.php/Meep
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = meep
 	depends = hdf5
 	depends = gsl
 	depends = fftw
-	depends = guile1.8
 	optdepends = h5utils: for visualization and conversion of scientific data
 	options = !libtool
 	options = !makeflags

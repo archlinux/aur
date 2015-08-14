@@ -3,12 +3,12 @@
 
 pkgname=meep
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A free finite-difference time-domain simulation software package"
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/Meep"
 license=('GPL')
-depends=('openmpi' 'harminv' 'libctl' 'hdf5' 'gsl' 'fftw' 'guile1.8')
+depends=('openmpi' 'harminv' 'libctl' 'hdf5' 'gsl' 'fftw')
 makedepends=('gcc-fortran' 'suitesparse')
 optdepends=('h5utils: for visualization and conversion of scientific data')
 options=('!libtool' '!makeflags')
