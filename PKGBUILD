@@ -8,7 +8,7 @@ pkgdesc="Terminal/console pager module for Python"
 arch=('any')
 url="http://pypi.python.org/pypi/pager"
 license=('Public Domain')
-makedepends=('python-setuptools python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("http://pypi.python.org/packages/source/p/pager/pager-$pkgver.tar.gz")
 md5sums=('fbebda4d8d537c8aa0de883d15b87b95')
 
