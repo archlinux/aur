@@ -1,15 +1,14 @@
 pkgbase = dsh
-	pkgdesc = Distributed shell, or dancer’s shell executes command remotely on several different machines at the same time.
+	pkgdesc = Distributed shell (or dancer’s shell) executes command remotely on several different machines at the same time.
 	pkgver = 0.25.9
 	pkgrel = 1
 	url = http://www.netfort.gr.jp/~dancer/software/dsh.html
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL2``
 	depends = glibc
 	depends = libdshconfig
 	source = https://www.netfort.gr.jp/~dancer/software/downloads/dsh-0.25.9.tar.gz
 	md5sums = 60734780242172fca9e68d223654292d
 
 pkgname = dsh
-
