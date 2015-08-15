@@ -25,7 +25,7 @@ prepare() {
   # fix build, thanks to mikezackles
   sed -e "s/'sphinx-build'/'sphinx-build2'/g" \
     -e 's|${user.home}/\.|${vim.files}/|g' \
-    -e "s|File(getVariable('eclipse')|File('/usr/share/eclipse/'|g" \
+    -e "s|File(getVariable('eclipse')|File('/usr/lib/eclipse/'|g" \
     -e '68,88d' \
     -i ant/build.gant
 
@@ -45,7 +45,7 @@ build() {
 
   cd ../..
 
-  ant -Declipse.home=/usr/share/eclipse \
+  ant -Declipse.home=/usr/lib/eclipse \
       -Dvim.files=/usr/share/vim/vimfiles \
       build
 }
@@ -53,14 +53,14 @@ build() {
 package() {
   cd $srcdir/${pkgname}_$pkgver
 
-  mkdir -p $pkgdir/usr/share/eclipse
+  mkdir -p $pkgdir/usr/lib/eclipse
   mkdir -p $pkgdir/usr/share/vim/vimfiles
 
-  ant -Declipse.home=/usr/share/eclipse \
+  ant -Declipse.home=/usr/lib/eclipse \
       -Dvim.files=$pkgdir/usr/share/vim/vimfiles \
       docs vimdocs
 
-  ant -Declipse.home=$pkgdir/usr/share/eclipse \
+  ant -Declipse.home=$pkgdir/usr/lib/eclipse \
       -Dvim.files=$pkgdir/usr/share/vim/vimfiles \
       deploy
 
@@ -71,8 +71,8 @@ package() {
   # fix eclim paths
   sed -e "s|$pkgdir||g" \
     -i $pkgdir/usr/share/vim/vimfiles/eclim/plugin/eclim.vim \
-    -i $pkgdir/usr/share/eclipse/plugins/org.eclim_$pkgver/bin/eclimd \
-    -i $pkgdir/usr/share/eclipse/plugins/org.eclim_$pkgver/plugin.properties
+    -i $pkgdir/usr/lib/eclipse/plugins/org.eclim_$pkgver/bin/eclimd \
+    -i $pkgdir/usr/lib/eclipse/plugins/org.eclim_$pkgver/plugin.properties
 
   # delete doctrees
   rm -fr $pkgdir/usr/share/doc/eclim/.doctrees
@@ -80,5 +80,5 @@ package() {
   # delete Windows stuff
   for i in $(find $pkgdir -regex ".*bat\|.*cmd\|.*exe"); do  rm -f $i ; done
 
-  rm $pkgdir/usr/share/eclipse/plugins/org.eclim_${pkgver}/nailgun/config.status
+  rm $pkgdir/usr/lib/eclipse/plugins/org.eclim_${pkgver}/nailgun/config.status
 }
