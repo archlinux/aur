@@ -2,7 +2,7 @@
 
 pkgname='lbe'
 pkgver=2.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple Java-based LDAP Browser/Editor (last freeware version)"
 arch=('any')
 #url="http://www.openchannelsoftware.com/projects/LDAP_Browser_Editor"
@@ -15,7 +15,7 @@ source=("http://nullroute.eu.org/mirrors/files/ldapbrowser-$pkgver.zip"
 noextract=("ldapbrowser-$pkgver.zip")
 sha256sums=('6c1a1b80b81d83f005d4a006bc070b1b8f44f90151f7af6b14004c96e26687ec'
             'ccdc18f2879c6ab10aa0f3ad087a3aa225a6146340be7e2fb46302b961255972'
-            '2b1f6f498cc9a00a5b9392b5d162e5425ec63418d930a2e9d96c442f99ed3771')
+            '30576a49af65362a3de47e7636d02c7c4bf7528ba7dd02230bbe20de06d1fe50')
 
 prepare() {
   unzip -o -d "$srcdir/ldapbrowser-$pkgver" "$srcdir/ldapbrowser-$pkgver.zip"
@@ -25,6 +25,13 @@ package() {
   mkdir -p "$pkgdir/opt"
 
   cp -a "$srcdir/ldapbrowser-$pkgver" "$pkgdir/opt/lbe"
+
+  {
+    echo
+    echo "# added by packager"
+    echo "krbextradata=binary"
+    echo "krbprincipalkey=binary"
+  } >> "$pkgdir/opt/lbe/attributes.config"
 
   install -Dm755 "$srcdir/lbe.desktop"   "$pkgdir/usr/share/applications/lbe.desktop"
   install -Dm755 "$srcdir/lbe.sh"        "$pkgdir/usr/bin/lbe"

@@ -21,9 +21,11 @@ if [ ! -d "$confdir" ]; then
 
 	cp -a "$appdir/help/uofmichigan.cfg.sample" "$confdir/U of Michigan.cfg"
 
-	cp -a "$appdir/attributes.config" "$confdir/"
-
 	cp -a "$appdir/templates" "$confdir/"
+fi
+
+if [ ! -t "$appdir/attributes.config" ]; then
+	cp -a "$appdir/attributes.config" "$confdir/"
 fi
 
 cd "$confdir" # FIXME: if we do this, we can ditch lbe.properties; any disadvantages?
