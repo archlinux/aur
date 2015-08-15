@@ -1,0 +1,37 @@
+pkgbase = ardesia
+	pkgdesc = Free digital sketchpad to draw on the X11 session
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://code.google.com/p/ardesia/
+	install = ardesia.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = gtk3
+	makedepends = atk
+	makedepends = libx11
+	makedepends = libpng
+	makedepends = glib2
+	makedepends = gconf
+	makedepends = fontconfig
+	makedepends = freetype2
+	makedepends = gsl
+	makedepends = libxml2
+	makedepends = xdg-utils
+	makedepends = libgsf
+	depends = gtk3
+	depends = gsl
+	depends = libgsf
+	depends = desktop-file-utils
+	source = https://ardesia.googlecode.com/files/ardesia-1.1.tar.gz
+	md5sums = b0abe145ce4ade50ab897ec658d2d664
+	sha1sums = 2c0603cefe7bb33909787d030df5cd60cfee009f
+
+pkgname = ardesia
+

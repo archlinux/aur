@@ -1,0 +1,7 @@
+install() {
+	update-desktop-database -q
+}
+
+uninstall() {
+	update-desktop-database -q
+}
