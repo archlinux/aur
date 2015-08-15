@@ -1,14 +1,14 @@
 pkgbase = python-weblib
 	pkgdesc = Set of tools for web scraping projects
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/weblib
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python2
-	source = https://pypi.python.org/packages/source/w/weblib/weblib-0.1.14.tar.gz
-	sha256sums = f9602ce66a6c5e010509d515a57b55d8c9d1eda8c4cbf5544a9ae11382618d8a
+	source = https://pypi.python.org/packages/source/w/weblib/weblib-0.1.15.tar.gz
+	sha256sums = f62e84fe1b378274ff06e518f42bc79c53182ab00581b891482f301e7206a86c
 
 pkgname = python-weblib
 	depends = python
