@@ -50,8 +50,7 @@ fi" >> $pkgdir/usr/bin/$_pkgabbrev.sh
 
 	# Automatic generation of a .desktop file
 
-	mkdir -p -m644 "$pkgdir/usr/share/" 
-	mkdir -p -m644 "$pkgdir/usr/share/applications/" 
+	mkdir -p -m755 "$pkgdir/usr/share/applications/" 
 
 	printf "[Desktop Entry]
 Version=$pkgver
