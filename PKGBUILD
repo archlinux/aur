@@ -23,6 +23,7 @@ depends=(
   'gmp'
   'libxft'
   'libxinerama'
+  'libxpm'
   'libxrandr'
   'wireless_tools')
 conflicts=('xmobar' 'xmobar-darcs' 'xmobar-git')
