@@ -1,11 +1,12 @@
 pkgbase = lnkedit
 	pkgdesc = Command line editor of Windows shortcuts (.lnk files)
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://iain.cx/src/lnkedit/
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = wine
 	source = http://iain.cx/src/lnkedit/lnkedit-1.1.zip
 	source = lnkedit.patch
 	sha1sums = 3e11d05032772739b5ced89cbad20a668d112d98
