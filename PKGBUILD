@@ -2,8 +2,8 @@
 
 pkgname=lazyusf2-git
 pkgver=r65.679f709
-pkgrel=1
-pkgdesc="Library for decoding Nintendo DS Sound Format files using Mupen64plus"
+pkgrel=2
+pkgdesc="Library for decoding Nintendo 64 Sound Format files using Mupen64plus"
 arch=(i686 x86_64)
 url='https://bitbucket.org/kode54/lazyusf2'
 license=(GPL2 custom:CC0)
