@@ -2,7 +2,7 @@
 pkgname=goweatherserver
 url="https://github.com/Chipsterjulien/goweatherserver"
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A server who take temperature from TCP connection and save into a database"
 arch=('any')
 license=('WTFPL')
@@ -63,4 +63,4 @@ package() {
     install -m755 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
-sha512sums=('b673c5a20680469cb5d91d4c8473c6566cf7889cf720e48c4740802cd013b218deafadaf22e6dd63033ac5ded5fb7520ce00ffa3bd1abd5f95d647b9db31c669')
+sha512sums=('97e8ae2646639064df87199f25844060a794dda7f7ac68a683a9b5bc0af85ab4cea7b69e9829112512e8f28f2cf5c723553211e7ed0233946de6689326ec79e5')
