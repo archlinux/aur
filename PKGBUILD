@@ -3,7 +3,7 @@
 
 pkgname=ledger-git
 pkgdesc="A double-entry accounting system with a command-line reporting interface"
-pkgver=20150730
+pkgver=20150808
 pkgrel=1
 
 _branch=next
@@ -42,7 +42,6 @@ prepare() {
 
 build() {
   cd ledger; rm -rf build
-  ./acprep submodule
   ./acprep "${_build:-opt}" --output=./build --prefix=/usr make all doc -- "${_defines[@]/#/-D}"
 }
 
