@@ -1,7 +1,7 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=zopflipng-git
-pkgver=6ff3ba2
-pkgrel=2
+pkgver=1.0.0.r31.g6ff3ba2
+pkgrel=1
 pkgdesc="PNG optimisation tool using Google's zopfli library, git version."
 arch=('i686' 'x86_64' 'ARM')
 url="https://github.com/google/zopfli"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/zopfli"
-    printf "%s" "$(git rev-parse --short HEAD)"
+    git describe | sed -r 's/zopfli-//; s/([^-]*-g)/r\1/; s/-/./g'
 }
 
 build() {
