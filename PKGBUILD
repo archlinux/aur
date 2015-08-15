@@ -3,7 +3,7 @@
 
 pkgname=chicken-readline
 _pkgname=readline
-pkgver=4.0.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='An interface to the GNU readline library'
 arch=('i686' 'x86_64')

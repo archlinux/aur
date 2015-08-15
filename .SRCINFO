@@ -1,6 +1,6 @@
 pkgbase = chicken-readline
 	pkgdesc = An interface to the GNU readline library
-	pkgver = 4.0.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://wiki.call-cc.org/eggref/4/readline
 	arch = i686
