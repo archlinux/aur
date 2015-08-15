@@ -1,7 +1,7 @@
 # Maintainer: Pouar <thepouar@gmail.com>
 
 pkgname=easytether-bin
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 _debrel=1
 pkgdesc="Internet access via smartphone"
@@ -13,11 +13,11 @@ conflicts=('easytether-rpm')
 _filearch=i386
 [ "${CARCH}" == "x86_64" ] && _filearch=amd64
 _file=easytether_${pkgver}-${_debrel}_${_filearch}.deb
-source=("http://www.mobile-stream.com/beta/ubuntu/12.04/${_file}")
+source=("http://www.mobile-stream.com/beta/ubuntu/14.04/${_file}")
 _extglob="!(*.deb)" # for some reason makepkg doesnt parse extglob correctly, this is a workaround
 changelog=CHANGELOG
-[ $CARCH == i686 ] && md5sums=('5b1bbf7d7effc6d345a0c730a494a18d')
-[ $CARCH == x86_64 ] && md5sums=('5651c1ef7aa83735f435f0e5081f9b23')
+[ $CARCH == x86_64 ] && md5sums=('c20be7f5c5c80865f8ca0d2a266cdd19')
+[ $CARCH == i686 ] && md5sums=('600b827826a346fbc9a32a5d16672463')
 
 build()
 {
