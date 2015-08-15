@@ -1,5 +1,5 @@
 pkgbase = pantheon-default-settings-bzr
-	pkgver = r138
+	pkgver = r143
 	pkgrel = 1
 	url = https://code.launchpad.net/~elementary-os/elementaryos/default-settings-trusty
 	install = pantheon-default-settings.install
@@ -10,7 +10,7 @@ pkgbase = pantheon-default-settings-bzr
 	source = pantheon-default-settings::bzr+lp:~elementary-os/elementaryos/default-settings-trusty
 	source = arch-tweaks.patch
 	sha256sums = SKIP
-	sha256sums = be262f2b4cb410f12751032b20b021821f7155f0f3d663b3fab698f41fb8e943
+	sha256sums = a9b72179d183c25d7c247a904bf8e4d3d4f2e91ab962916f4d2aad6642ffdfeb
 
 pkgname = elementary-dpms-helper-bzr
 	pkgdesc = DPMS helper for Pantheon

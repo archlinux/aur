@@ -2,7 +2,7 @@
 
 pkgbase=pantheon-default-settings-bzr
 pkgname=('elementary-dpms-helper-bzr' 'pantheon-default-settings-bzr')
-pkgver=r138
+pkgver=r143
 pkgrel=1
 arch=('any')
 url='https://code.launchpad.net/~elementary-os/elementaryos/default-settings-trusty'
@@ -13,7 +13,7 @@ install='pantheon-default-settings.install'
 source=('pantheon-default-settings::bzr+lp:~elementary-os/elementaryos/default-settings-trusty'
         'arch-tweaks.patch')
 sha256sums=('SKIP'
-            'be262f2b4cb410f12751032b20b021821f7155f0f3d663b3fab698f41fb8e943')
+            'a9b72179d183c25d7c247a904bf8e4d3d4f2e91ab962916f4d2aad6642ffdfeb')
 
 pkgver() {
   cd pantheon-default-settings
@@ -60,6 +60,7 @@ package_pantheon-default-settings-bzr() {
   install -m 644 light-locker.desktop "${pkgdir}"/etc/xdg/xdg-elementary/
   cp -dr --no-preserve='ownership' plank "${pkgdir}"/etc/skel/.config/
   cp -dr --no-preserve='ownership' midori "${pkgdir}"/etc/xdg/
+  cp -dr --no-preserve='ownership' profile.d "${pkgdir}"/etc/
 }
 
 # vim: ts=2 sw=2 et:

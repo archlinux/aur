@@ -1,6 +1,6 @@
 diff -rupN pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override pantheon-default-settings/debian/elementary-default-settings.gsettings-override
---- pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override	2015-04-15 15:05:13.789584577 +0200
-+++ pantheon-default-settings/debian/elementary-default-settings.gsettings-override	2015-04-15 15:05:47.801907004 +0200
+--- pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override	2015-08-15 20:06:16.609411891 +0200
++++ pantheon-default-settings/debian/elementary-default-settings.gsettings-override	2015-08-15 20:06:27.228450909 +0200
 @@ -6,7 +6,6 @@ show-day=true
  show-events=false
  
@@ -26,19 +26,19 @@ diff -rupN pantheon-default-settings.orig/debian/elementary-default-settings.gse
  [org.gnome.settings-daemon.plugins.power]
  idle-dim=false
 diff -rupN pantheon-default-settings.orig/midori/config pantheon-default-settings/midori/config
---- pantheon-default-settings.orig/midori/config	2015-04-15 15:05:13.789584577 +0200
-+++ pantheon-default-settings/midori/config	2015-04-15 15:05:22.675987125 +0200
+--- pantheon-default-settings.orig/midori/config	2015-08-15 20:06:16.609411891 +0200
++++ pantheon-default-settings/midori/config	2015-08-15 20:07:27.899614019 +0200
 @@ -3,7 +3,7 @@ default-font-family=Droid Sans
  enable-spell-checking=true
  enable-webgl=true
- homepage=http://start.elementaryos.org/
+ homepage=http://start.elementary.io/
 -text-editor=gnome-text-editor %F
 +text-editor=scratch-text-editor %F
  show-statusbar=false
  close-buttons-left=true
  first-party-cookies-only=false
 diff -rupN pantheon-default-settings.orig/plank/dock1/launchers/softwarecenter.dockitem pantheon-default-settings/plank/dock1/launchers/softwarecenter.dockitem
---- pantheon-default-settings.orig/plank/dock1/launchers/softwarecenter.dockitem	2015-04-15 15:05:13.789584577 +0200
+--- pantheon-default-settings.orig/plank/dock1/launchers/softwarecenter.dockitem	2015-08-15 20:06:16.609411891 +0200
 +++ pantheon-default-settings/plank/dock1/launchers/softwarecenter.dockitem	1970-01-01 01:00:00.000000000 +0100
 @@ -1,4 +0,0 @@
 -[PlankItemsDockItemPreferences]
@@ -46,8 +46,8 @@ diff -rupN pantheon-default-settings.orig/plank/dock1/launchers/softwarecenter.d
 -
 -
 diff -rupN pantheon-default-settings.orig/plank/dock1/settings pantheon-default-settings/plank/dock1/settings
---- pantheon-default-settings.orig/plank/dock1/settings	2015-04-15 15:05:13.789584577 +0200
-+++ pantheon-default-settings/plank/dock1/settings	2015-04-15 15:05:22.675987125 +0200
+--- pantheon-default-settings.orig/plank/dock1/settings	2015-08-15 20:06:16.609411891 +0200
++++ pantheon-default-settings/plank/dock1/settings	2015-08-15 20:06:27.231783941 +0200
 @@ -11,7 +11,7 @@ UnhideDelay=0
  #The monitor number for the dock. Use -1 to keep on the primary monitor.
  Monitor=-1
@@ -57,3 +57,25 @@ diff -rupN pantheon-default-settings.orig/plank/dock1/settings pantheon-default-
  #The position for the dock on the monitor.
  Position=3
  #The dock's position offset from center (in percent).
+diff -rupN pantheon-default-settings.orig/policykit.desktop pantheon-default-settings/policykit.desktop
+--- pantheon-default-settings.orig/policykit.desktop	2015-08-15 20:06:16.609411891 +0200
++++ pantheon-default-settings/policykit.desktop	2015-08-15 20:10:28.123193063 +0200
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=Authentication Dialog
+-Exec=/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
++Exec=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+ Icon=dialog-password
+ Terminal=false
+ Type=Application
+diff -rupN pantheon-default-settings.orig/settings.ini pantheon-default-settings/settings.ini
+--- pantheon-default-settings.orig/settings.ini	2015-08-15 20:06:16.609411891 +0200
++++ pantheon-default-settings/settings.ini	2015-08-15 20:09:15.959776311 +0200
+@@ -2,6 +2,6 @@
+ gtk-theme-name = elementary
+ gtk-icon-theme-name = elementary
+ gtk-fallback-icon-theme = gnome
+-gtk-sound-theme-name = ubuntu
++gtk-sound-theme-name = freedesktop
+ gtk-icon-sizes = panel-menu-bar=24,24
+ gtk-font-name = Droid Sans 9
