@@ -1,7 +1,7 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
 pkgname=python-igraph
-pkgdesc="Python library for interacting with JIRA via REST APIs."
+pkgdesc="igraph is a collection of network analysis tools with the emphasis on efficiency, portability and ease of use."
 pkgver=0.7.1
 pkgrel=1
 url="http://igraph.org/python/"
