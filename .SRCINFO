@@ -1,0 +1,19 @@
+pkgbase = html-embed-git
+	pkgdesc = Embed HTML resources using base64
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/v--/html-embed
+	arch = i686
+	arch = x86_64
+	license = BSL 1.0
+	makedepends = git
+	makedepends = dub
+	makedepends = dmd
+	depends = curl
+	provides = html-embed
+	conflicts = html-embed
+	source = git://github.com/v--/html-embed.git
+	md5sums = SKIP
+
+pkgname = html-embed-git
+
