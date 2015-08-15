@@ -1,7 +1,8 @@
-# Maintainer: (epsilom) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
+# Maintainer: XavierCLL
 
 pkgname=python2-pynio
-pkgver=1.4.1
+pkgver=1.5.0_beta
+_pkgver=1.5.0-beta
 pkgrel=1
 pkgdesc="PyNIO is a Python programming language module that allows read and/or write access to a variety of data formats using an interface modelled on netCDF."
 url="http://www.pyngl.ucar.edu/Nio.shtml"
@@ -10,12 +11,12 @@ arch=('i686' 'x86_64')
 depends=('netcdf' 'hdf5' 'hdf-eos2' 'hdf-eos5' 'hdf4-nonetcdf' 'python2' 'g2clib' 'gdal')
 makedepends=('glibc' 'gcc' 'gcc-fortran' 'libjpeg' 'jasper' 'zlib' 'unzip')
 provides=('pynio')
-source=("http://dl.dropbox.com/u/3383807/PyNIO-${pkgver}.tar.gz")
-md5sums=('eec7b6b7ed960de253632d0636d0cc2d')
+source=(http://www.pyngl.ucar.edu/Training/SEA2015/PyNIO-${_pkgver}.tar.gz)
+md5sums=('88c64d1196ce820a5a172cf1c0cce781')
 
 package() {
   
-  cd $srcdir/PyNIO-${pkgver}
+  cd $srcdir/PyNIO-${_pkgver}
   
   export HAS_GDAL=1
   export HAS_GRIB2=1
@@ -32,10 +33,11 @@ package() {
   export HDFEOS5_PREFIX=/usr/lib
   export NETCDF_PREFIX=/usr/lib
   export NETCDF4_PREFIX=/usr/lib
-
+  
   sed -i "s|hdf/||g" libsrc/NclHDFEOS.c
   sed -i "s|hdf/||g" libsrc/NclHDFEOS5.c
   sed -i "s|hdf/||g" libsrc/NclHDF.c
+  sed -i "s|LIBRARIES.append('iconv')|#LIBRARIES.append('iconv')|g" setup.py
   
   python2 setup.py install --root=${pkgdir}
 
