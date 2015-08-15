@@ -1,0 +1,58 @@
+pre_install() {
+    # Create group and goweatherserver user
+    name=goweatherclient
+    num=489
+    getent group $name &>/dev/null || groupadd -r -g $num $name >/dev/null
+    getent passwd $name &>/dev/null || useradd -r -u $num -g $name -d /tmp -s /bin/bash >/dev/null $name
+
+    true
+}
+
+post_install() {
+    pkgname=goweatherclient
+
+    # Fixing membership
+    chown "$pkgname": /var/log/$pkgname
+    chown "$pkgname": /var/lib/$pkgname
+    chown -R "$pkgname": /etc/$pkgname
+
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "Adding goweatherclient in systemctl:"
+    echo "  systemctl enable goweatherclient.timer"
+    echo "  systemctl start goweatherclient.timer"
+
+    true
+}
+
+post_upgrade() {
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "You should restart goweatherclient:"
+    echo "  systemctl restart goweatherclient.timer"
+
+    true
+}
+
+pre_remove() {
+    pkgname=goweatherclient
+    # Remove symlink in systemd
+    systemctl disable $pkgname
+    # Stop server
+    systemctl stop $pkgname
+    # Reload systemctl
+    systemctl daemon-reload
+
+    true
+}
+
+post_remove() {
+    # Remove group and goweatherserver user
+    name=goweatherclient
+    getent passwd $name &>/dev/null && userdel $name >/dev/null
+    getent group $name &>/dev/null && groupdel $name >/dev/null
+
+    true
+}

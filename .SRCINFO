@@ -1,0 +1,15 @@
+pkgbase = goweatherclient
+	pkgdesc = A client for goweatherserver who get and send temperature in json via tcp
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Chipsterjulien/goweatherclient
+	install = goweatherclient.install
+	arch = any
+	license = WTFPL
+	makedepends = go
+	options = !strip
+	source = goweatherclient-0.0.1.tar.gz
+	sha512sums = ddd827a22013a1432cf5a27ca48146f4f860e43079d4324612ca05695869f3b66bacf719893e368ea28bb523eeb4f9e5a3cfd47df8d447102e6798d7e2d062c9
+
+pkgname = goweatherclient
+
