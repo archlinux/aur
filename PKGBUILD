@@ -5,16 +5,19 @@ pkgname=tv-maxe-git
 pkgver=0.11+r43.0906f69
 pkgrel=1
 pkgdesc="Watch TV channels on Linux."
-url="http://code.google.com/p/tv-maxe"
+url="https://github.com/ov1d1u/tv-maxe"
+# http://code.google.com/p/tv-maxe
 arch=('any')
-license=('GPL v3')
+license=('GPLv3')
 makedepends=('git')
-depends=('python2' 'pygtk' 'vlc' 'mplayer' 'libstdc++5' 'sopcast' 'gstreamer0.10-python' 'ffmpeg' 'python2-pillow' 'python-virtkey')
+depends=('python2' 'pygtk' 'vlc' 'mplayer' 'libstdc++5' 'sopcast' 'gstreamer0.10-python' 'ffmpeg' 'python2-pillow')
+# depends delete: 'python-virtkey'
 # conflicts=('')
 # provides=('')
 optdepends=('lirc' 'mencoder')
 install="$pkgname.install"
-source=("$pkgname"::'git+https://code.google.com/p/tv-maxe')
+# source change:'git+https://code.google.com/p/tv-maxe'
+source=("$pkgname"::'git+https://github.com/ov1d1u/tv-maxe')
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
