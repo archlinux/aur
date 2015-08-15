@@ -2,7 +2,7 @@
 
 pkgname=easytether-bin
 pkgver=0.8.5
-pkgrel=2
+pkgrel=3
 _debrel=1
 pkgdesc="Internet access via smartphone"
 arch=(i686 x86_64)
