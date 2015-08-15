@@ -8,7 +8,7 @@ license=('GPL')
 url=('http://pyswisseph.chaosorigin.com/')
 depends=('python')
 source=("http://pypi.python.org/packages/source/p/${_orig}/${_orig}-${pkgver%%.2}-${pkgver##*.}.tar.bz2")
-md5sums=('3ce9b9a013430d2d28f6c2f5a4f8a67f')
+md5sums=('b26e26f2c7e27b3e9d25fa0e082d7be8')
 
 package() {
     cd "$srcdir/${_orig}-${pkgver%%.2}-${pkgver##*.}"
