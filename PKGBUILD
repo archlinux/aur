@@ -1,8 +1,8 @@
 # Maintainer: Pouar <thepouar@gmail.com>
 
 pkgname=easytether-rpm
-_debrel=1
-pkgver=0.8.4
+_rpmrel=1
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Internet access via smartphone"
 arch=('x86_64')
@@ -13,11 +13,11 @@ makedepends=('rpmextract')
 conflicts=('easytether-bin')
 _arch=i686
 changelog=CHANGELOG
-[ $CARCH == i686 ] && md5sums=('be7408425ca3ff1580eaf712a62910a0')
-[ $CARCH == x86_64 ] && md5sums=('be7408425ca3ff1580eaf712a62910a0') && _arch=x86_64
-_file="easytether-${pkgver}-${_debrel}.el7.${_arch}.rpm"
+[ $CARCH == i686 ] && md5sums=('c65052843459c3a5565529526d7a77fe')
+[ $CARCH == x86_64 ] && md5sums=('0042ffbc182abda41f1475858508843f') && _arch=x86_64
+_file="easytether-${pkgver}-${_rpmrel}.fc20.${_arch}.rpm"
 _extglob="!(*.rpm)" # for some reason makepkg doesnt parse extglob correctly, this is a workaround
-source=("http://www.mobile-stream.com/beta/centos/7/${_file}")
+source=("http://www.mobile-stream.com/beta/fedora/20/${_file}")
 build()
 {
   cd ${srcdir}
