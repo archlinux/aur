@@ -2,7 +2,7 @@
 
 pkgname=letsencrypt-git
 _pkgname=letsencrypt
-pkgver=2496.8e63bbe
+pkgver=2698.dd4b8e8
 pkgrel=1
 pkgdesc="A utility that works alongside Apache and nginx to automatically obtain a certificate and convert a website to HTTPS"
 arch=('any')
