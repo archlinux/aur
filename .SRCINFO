@@ -1,6 +1,6 @@
 pkgbase = mailpile
 	pkgdesc = A modern, fast web-mail client with user-friendly encryption and privacy features.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 2
 	url = http://www.mailpile.is
 	install = mailpile.install
@@ -14,9 +14,9 @@ pkgbase = mailpile
 	depends = python2-pillow
 	depends = python2-pydns
 	depends = spambayes>=1.1a6
-	source = https://github.com/pagekite/mailpile/archive/0.5.1.tar.gz
+	source = https://github.com/pagekite/mailpile/archive/0.5.2.tar.gz
 	source = mailpile.service
-	sha256sums = d7ba2413092ed4c2e7b4ea9af113874e5f939395905d47f981bd38d605302b44
+	sha256sums = 2619dd0711628e25e216bec196d42381e50d45d943a727177f11f8ce89e26004
 	sha256sums = 07adbd61cda225bf11818d39776240ee1077a3f2ddc9e5ef0f11825dd4ca504d
 
 pkgname = mailpile
