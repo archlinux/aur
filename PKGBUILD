@@ -2,15 +2,18 @@
 # Contributors:
 #
 
-_fred=#tag=build01469  # build 1469: 2015-07-19
+_fred=#tag=build01469
 #_fred=#tag=testing-build-1469-pre2
-#_fred=#branch=next    # git HEAD
+#_fred=#branch=next
+
+_wot=#tag=build0016
+#_wot=#branch=next
 
 _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
 
 pkgname=freenet
 pkgver=0.7.5.1469
-pkgrel=2
+pkgrel=3
 epoch=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
@@ -42,7 +45,7 @@ noextract=('lzma465.tar.bz2'
            'jBitcollider-0.8.zip'
            'mantissa-7.2-src.zip'
            'db4o-7.4-java.zip'
-           *.jar)
+           'commons-compress.jar')
 
 # here we have only java-commons-compress and java-db4o coming
 # prebuilt by the freenetproject, the rest we attempt to build ourselves
@@ -51,7 +54,7 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-JSTUN.git"
         "git+https://github.com/freenet/plugin-UPnP.git"
         "git+https://github.com/freenet/plugin-KeyUtils.git"
-        "git+https://github.com/freenet/plugin-WebOfTrust.git#branch=next"
+        "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
         "${url}/alpha/opennet/seednodes.fref"
         "${url}/contrib/jar/latest/commons-compress.jar"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
