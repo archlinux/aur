@@ -1,0 +1,96 @@
+post_install() {
+  _mkuser
+  _mkssl
+  chown -R bitcoin:bitcoin /etc/bitcoin /srv/bitcoin
+  printf "%b\n" "$bitcoin"
+}
+
+post_upgrade() {
+  _mkuser
+  chown -R bitcoin:bitcoin /etc/bitcoin /srv/bitcoin
+  printf "%b\n" "$bitcoin"
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /srv/bitcoin
+}
+
+_mkuser() {
+  getent passwd bitcoin &>/dev/null || {
+    echo -n "Creating bitcoin user... "
+    grep -E "^bitcoin:" /etc/group >/dev/null || groupadd bitcoin
+    useradd -m -d /etc/bitcoin -g bitcoin -s /usr/bin/nologin bitcoin 2>/dev/null
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing bitcoin user... "
+  userdel -rf bitcoin 2>/dev/null
+  echo "done"
+}
+
+_mkssl() {
+  echo -n "Enabling SSL..." # https://en.bitcoin.it/wiki/Enabling_SSL_on_original_client_daemon
+  mkdir -p /{etc,srv}/bitcoin
+  openssl genrsa -out /etc/bitcoin/server.pem 2048
+  expect <<EOF | perl -ne 'print if /-----BEGIN\sCERTIFICATE-----/../-----END\sCERTIFICATE-----/' > /etc/bitcoin/server.cert
+    spawn openssl req -new -x509 -nodes -sha1 -days 3650 -key /etc/bitcoin/server.pem
+    expect "Country*" {
+      send "\r"
+    }
+    expect "State*" {
+      send "\r"
+    }
+    expect "Locality*" {
+      send "\r"
+    }
+    expect "Organization*" {
+      send "\r"
+    }
+    expect "Organizational*" {
+      send "\r"
+    }
+    expect "Common*" {
+      send "\r"
+    }
+    expect "Email*" {
+      send "\r"
+    }
+    expect eof
+EOF
+  echo "done"
+}
+
+read -d '' bitcoin <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  BitcoinXT                                                         ##
+##  _________                                                         ##
+##                                                                    ##
+##  To start bitcoinxt:                                               ##
+##                                                                    ##
+##      # systemctl start bitcoin                                     ##
+##                                                                    ##
+##  To communicate with bitcoinxt as a normal user:                   ##
+##                                                                    ##
+##      $ mkdir -p ~/.bitcoin                                         ##
+##      $ cat > ~/.bitcoin/bitcoin.conf <<'EOF'                       ##
+##      rpcconnect=127.0.0.1                                          ##
+##      rpcport=8332                                                  ##
+##      rpcuser=bitcoin                                               ##
+##      rpcpassword=secret                                            ##
+##      rpcssl=1                                                      ##
+##      EOF                                                           ##
+##                                                                    ##
+##      $ bitcoin-cli getmininginfo                                   ##
+##                                                                    ##
+##  Config:        /etc/bitcoin/bitcoin.conf                          ##
+##  Blockchain:    /srv/bitcoin                                       ##
+##  Documentation: /usr/share/doc/bitcoin                             ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF
