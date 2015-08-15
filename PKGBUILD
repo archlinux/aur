@@ -1,25 +1,21 @@
 # Maintainer: Duong Pham <dthpham@gmail.com>
 pkgname=butterflow
-pkgver=0.1.7
+pkgver=0.1.9
 pkgrel=1
-pkgdesc="Make slow motion and smooth motion videos from the command line"
+pkgdesc="Make slow motion and motion interpolated videos from the command line"
 arch=('x86_64')
 url="https://github.com/dthpham/butterflow"
 license=('custom')
-makedepends=('git' 'python2-setuptools')
-depends=('python2-numpy' 'ffmpeg>=2.4.1' 'opencv>=2.4.8' 'opencl-icd' 'x264')
-optdepends=('opencl-nvidia: NVIDIA device support'
-            'opencl-nvidia-304xx: NVIDIA legacy device support'
-            'opencl-nvidia-340xx: NVIDIA device support'
-            'amdapp-sdk: AMD device suppport'
-            'opencl-mesa: AMD/ATI Radeon device support'
-            'intel-opencl-runtime: Intel processor device support'
-            'beignet-git: Intel IvyBridge device support')
+makedepends=('python2-setuptools')
+depends=('python2-numpy' 'ffmpeg' 'opencv' 'ocl-icd')
+optdepends=('intel-opencl-runtime: Intel processor device support'
+            'opencl-nvidia: NVIDIA device support'
+            'amdapp-sdk: AMD device suppport')
 provides=('butterflow')
 conflicts=('butterflow')
 install=butterflow.install
 source=("http://srv.dthpham.me/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f0f12fd90cddf7fa2079247f3f55b26bfaaca5d83e19a22697ed20b2169ec3a3')
+sha256sums=('9f62960bb1a58c7fd7b67e7260d32a51e95ef5c7ff9f0811307463c1f1f338cf')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
