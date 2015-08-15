@@ -1,7 +1,7 @@
 pkgbase = lazyusf2-git
 	pkgdesc = Library for decoding Nintendo 64 Sound Format files using Mupen64plus
 	pkgver = r65.679f709
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/kode54/lazyusf2
 	arch = i686
 	arch = x86_64

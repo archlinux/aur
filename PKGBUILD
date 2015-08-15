@@ -2,7 +2,7 @@
 
 pkgname=lazyusf2-git
 pkgver=r65.679f709
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for decoding Nintendo 64 Sound Format files using Mupen64plus"
 arch=(i686 x86_64)
 url='https://bitbucket.org/kode54/lazyusf2'
@@ -32,9 +32,10 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   ROPTS="-c -O3 -I."
-  { grep \^flags /proc/cpuinfo | fgrep -qw ssse3 && ROPTS+=" -DARCH_MIN_SSSE3"; } ||
-    { grep \^flags /proc/cpuinfo | fgrep -qw sse2 && ROPTS+=" -DARCH_MIN_SSE2"; }
-  make liblazyusf.{a,so} CFLAGS="$CFLAGS -fPIC" ROPTS="$ROPTS"
+  CFLAGS="$CFLAGS -fPIC"
+  { grep \^flags /proc/cpuinfo | fgrep -qw ssse3 && CFLAGS+=" -mssse3" && ROPTS+=" -DARCH_MIN_SSSE3"; } ||
+    { grep \^flags /proc/cpuinfo | fgrep -qw sse2 && CFLAGS+=" -msse2" && ROPTS+=" -DARCH_MIN_SSE2"; }
+  make liblazyusf.{a,so} CFLAGS="$CFLAGS" ROPTS="$ROPTS"
 }
 
 package() {
