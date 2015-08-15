@@ -1,0 +1,22 @@
+pkgbase = indicator-keylock
+	pkgdesc = An indicator that displays the status of the keyboard lock keys
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://launchpad.net/indicator-keylock/
+	install = indicator-keylock.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = gconf
+	depends = libappindicator-gtk3
+	depends = libunique3
+	depends = libnotify
+	depends = libx11
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	optdepends = notification-daemon: for notificiations
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/i/indicator-keylock/indicator-keylock_3.0.2.tar.xz
+	md5sums = 8e9f20e25cdadaf5ccc8174e3b60bcf4
+
+pkgname = indicator-keylock
+
