@@ -1,0 +1,14 @@
+post_install(){
+	echo -e "see the following users guides"
+	echo -e "man -u -a ignsdk"
+	echo -e "man -u -a ignsdk-app-creator"
+	echo -e "man -u -a ignsdk-app-builder"
+	
+	echo -e "Thank You For Installations"
+}
+
+post_remove(){
+	echo -e "thanks for your installations\n"
+	echo -e "good bye"
+}
+

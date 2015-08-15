@@ -1,0 +1,19 @@
+pkgbase = ignsdk
+	pkgdesc = IGN Software Development Kit IOT For Raspberry Pi type 2
+	pkgver = 0.1.3
+	pkgrel = 160815
+	url = https://github.com/anak10thn/ignsdk-qt
+	install = ignsdk.install
+	arch = armv7h
+	license = BSD
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = qt5-websockets
+	depends = qt5-serialport
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/anak10thn/ignsdk-iot/archive/0.1.3.tar.gz
+	md5sums = SKIP
+
+pkgname = ignsdk
+
