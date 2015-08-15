@@ -1,4 +1,4 @@
-pkgbase = ignsdk
+pkgbase = ignsdk-iot
 	pkgdesc = IGN Software Development Kit IOT For Raspberry Pi type 2
 	pkgver = 0.1.3
 	pkgrel = 160815
@@ -15,5 +15,5 @@ pkgbase = ignsdk
 	source = https://github.com/anak10thn/ignsdk-iot/archive/0.1.3.tar.gz
 	md5sums = SKIP
 
-pkgname = ignsdk
+pkgname = ignsdk-iot
 
