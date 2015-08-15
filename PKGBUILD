@@ -1,5 +1,6 @@
 # Maintainer: Ben Reedy <breed808 *AT* breed808 *DOT* com>
 # Contributor: xylosper <darklin20@gmail.com>
+# Contributor: Kaan Kasım <kaankasim88@gmail.com>
 
 _pkgbase=bomi
 
