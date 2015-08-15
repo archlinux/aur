@@ -1,0 +1,32 @@
+pkgbase = rxvt-unicode-256xresources
+	pkgdesc = urxvt with support for 256 Xresource colors and patches for line/font spacing
+	pkgver = 9.21
+	pkgrel = 1
+	url = http://software.schmorp.de/pkg/rxvt-unicode.html
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	depends = gcc-libs
+	depends = libxft
+	depends = gdk-pixbuf2
+	optdepends = perl: lots of utilities
+	optdepends = gtk2-perl: to use the urxvt-tabbed
+	provides = rxvt-unicode
+	conflicts = rxvt-unicode
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.21.tar.bz2
+	source = font-width-fix.patch
+	source = line-spacing-fix.patch
+	source = 256color.patch
+	source = urxvt.desktop
+	source = urxvtc.desktop
+	md5sums = a9a06c608258c5fd247c3725d8f44582
+	md5sums = df0c3a8b6bb0578d1b91e4081c47881c
+	md5sums = d4e03127a0d3bbf2e173850770651b08
+	md5sums = fb78c2ecf87626962734320cc2bb7ab1
+	md5sums = 88d8786d74b819450adf722180db09fd
+	md5sums = bebf5b6b399b74b557fcedbdb47cc387
+
+pkgname = rxvt-unicode-256xresources
+
