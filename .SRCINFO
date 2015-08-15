@@ -1,0 +1,55 @@
+pkgbase = linux-baytrail
+	pkgver = 4.1.5
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
+	sha256sums = SKIP
+	sha256sums = b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc
+	sha256sums = SKIP
+	sha256sums = 6a0f516978b89c1e7b7ca17b91196d06d4b12efd51593312fd8d3efbc1d52743
+	sha256sums = f1e053bb6fccc95ef4fc00fa9bc06f063da6353af70435df9ab540ff918fb191
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+
+pkgname = linux-baytrail
+	pkgdesc = The Linux-baytrail kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-baytrail=4.1.5
+	conflicts = kernel26-baytrail
+	replaces = kernel26-baytrail
+	backup = etc/mkinitcpio.d/linux-baytrail.preset
+
+pkgname = linux-baytrail-headers
+	pkgdesc = Header files and scripts for building modules for Linux-baytrail kernel
+	provides = kernel26-baytrail-headers=4.1.5
+	conflicts = kernel26-baytrail-headers
+	replaces = kernel26-baytrail-headers
+
+pkgname = linux-baytrail-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-baytrail kernel
+	provides = kernel26-baytrail-docs=4.1.5
+	conflicts = kernel26-baytrail-docs
+	replaces = kernel26-baytrail-docs
+
