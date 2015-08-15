@@ -15,7 +15,6 @@ source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
 sha256sums=('934b2d28a88c155f41702512e186be4cfd9d7bf1f2370be29bd32da0ec8b6e25')
 
 package() {
-	ls ${srcdir}/${_repo}-${_git}/
     install -d ${pkgdir}/usr/share/bomi/skins
     cp -r ${srcdir}/${_repo}-${_git}/bomi-skins/Papirus ${pkgdir}/usr/share/bomi/skins/
     install -D -m644  ${srcdir}/${_repo}-${_git}/bomi-skins/Papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
