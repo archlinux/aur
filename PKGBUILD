@@ -3,9 +3,9 @@
 pkgname=easytether-rpm
 _rpmrel=1
 pkgver=0.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Internet access via smartphone"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://www.mobile-stream.com/easytether/drivers.html"
 license=('unknown:freeware')
 depends=('glibc' 'libusb' 'udev')
