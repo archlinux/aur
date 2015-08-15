@@ -1,6 +1,6 @@
 pkgbase = sawfish-git
 	pkgdesc = A window manager extensible using a Lisp-based scripting language.
-	pkgver = 1.11.29.g89799ca
+	pkgver = 1.11.33.gcc2e49b
 	pkgrel = 1
 	url = http://sawfish.wikia.com
 	install = sawfish.install
@@ -11,7 +11,8 @@ pkgbase = sawfish-git
 	makedepends = gettext
 	makedepends = emacs
 	depends = libsm
-	depends = rep-gtk
+	depends = librep-git
+	depends = rep-gtk-git
 	depends = hicolor-icon-theme
 	depends = libxtst
 	depends = gtk2
