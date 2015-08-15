@@ -3,8 +3,8 @@
 
 pkgname=postfix-policyd-spf-perl
 pkgver=2.010
-pkgrel=2
-pkgdesc='Postfix SPF policy engine, written in perl'
+pkgrel=3
+pkgdesc='Postfix SPF policy engine, written in Perl'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/postfix-policyd-spf-perl/'
 license=('GPL')
