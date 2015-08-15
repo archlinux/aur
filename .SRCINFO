@@ -1,6 +1,6 @@
 pkgbase = eel-language-git
 	pkgdesc = A scripting and programming language, git version
-	pkgver = 0.3.6.65.ga9e7e34
+	pkgver = 0.3.6.119.g295b9b3
 	pkgrel = 1
 	url = http://www.olofson.net
 	arch = i686

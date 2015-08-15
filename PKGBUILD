@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=eel-language-git
-pkgver=0.3.6.65.ga9e7e34
+pkgver=0.3.6.119.g295b9b3
 pkgrel=1
 pkgdesc="A scripting and programming language, git version"
 arch=('i686' 'x86_64')
