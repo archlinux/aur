@@ -3,7 +3,7 @@
 pkgname=easytether-rpm
 _rpmrel=1
 pkgver=0.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Internet access via smartphone"
 arch=('x86_64')
 url="http://www.mobile-stream.com/easytether/drivers.html"
