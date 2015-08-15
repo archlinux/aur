@@ -1,0 +1,26 @@
+pkgbase = pond-git
+	pkgdesc = Forward-Secure asynchronous messaging
+	pkgver = 439.f422bc3
+	pkgrel = 1
+	url = https://pond.imperialviolet.org/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	makedepends = git
+	makedepends = mercurial
+	makedepends = gtkspell3
+	makedepends = trousers
+	depends = hunspell-en
+	depends = tor
+	depends = gtkspell3
+	optdepends = trousers: TPM support
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/agl/pond.git
+	sha256sums = SKIP
+
+pkgname = pond-git
+
+pkgname = pond-server-git
+
