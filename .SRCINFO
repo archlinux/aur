@@ -1,13 +1,13 @@
 pkgbase = faenzaflattr-zephyr-icon-theme
 	pkgdesc = A mix of Faenza and Flattr icon theme. Zephyr variant. For KDE4 and Plasma 5.
-	pkgver = 20150710
+	pkgver = 20150815
 	pkgrel = 1
 	url = https://github.com/FadeMind/FaenzaFlattr2-Zephyr
 	arch = any
 	license = CCPL:by-nc-sa
 	options = !strip
-	source = faenzaflattr-zephyr-icon-theme-20150710.tar.gz::https://github.com/FadeMind/FaenzaFlattr2-Zephyr/archive/ee54d470cdb0743569057264e90657f137212d93.tar.gz
-	sha256sums = 2d69d50fe2c9028aa93e34bcdd3b99f8447de599320b651e766249038d3087d2
+	source = faenzaflattr-zephyr-icon-theme-20150815.tar.gz::https://github.com/FadeMind/FaenzaFlattr2-Zephyr/archive/b2c0e30303723fbb98ec04c91eb6a5b9e5c44908.tar.gz
+	sha256sums = 5e056d9e436dbbb802f67d32e279285126f0d7ef66f2ec3d146ee7d2567e182d
 
 pkgname = faenzaflattr-zephyr-icon-theme
 
