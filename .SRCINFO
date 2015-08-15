@@ -1,5 +1,4 @@
-pkgbase = zopflipng-git
-	pkgdesc = PNG optimisation tool using Google's zopfli library, git version.
+pkgbase = zopfli-git
 	pkgver = 1.0.0.r31.g6ff3ba2
 	pkgrel = 1
 	url = https://github.com/google/zopfli
@@ -10,8 +9,21 @@ pkgbase = zopflipng-git
 	makedepends = git
 	depends = gcc-libs
 	provides = zopflipng
+	provides = zopfli
+	provides = libzopfli
+	provides = libzopflipng
 	source = git+https://github.com/google/zopfli.git
 	md5sums = SKIP
 
+pkgname = zopfli-git
+	pkgdesc = Compression utility by Google, git version.
+
+pkgname = libzopfli-git
+	pkgdesc = Compression library by Google, git version.
+
 pkgname = zopflipng-git
+	pkgdesc = PNG optimisation tool using Google's zopfli library, git version.
+
+pkgname = libzopflipng-git
+	pkgdesc = PNG optimisation library using Google's zopfli library, git version.
 
