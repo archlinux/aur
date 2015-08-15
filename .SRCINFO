@@ -1,0 +1,58 @@
+pkgbase = firefox-hg
+	pkgdesc = Latest firefox browser built from the trunk code
+	pkgver = 257362.8584e1ea8f6a
+	pkgrel = 1
+	url = https://www.mozilla.org/firefox/
+	install = firefox.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = unzip
+	makedepends = zip
+	makedepends = diffutils
+	makedepends = python2
+	makedepends = yasm
+	makedepends = mesa
+	makedepends = imake
+	makedepends = xorg-server-xvfb
+	makedepends = libpulse
+	makedepends = gst-plugins-base-libs
+	makedepends = inetutils
+	makedepends = mercurial
+	makedepends = autoconf2.13
+	makedepends = nss>=3.19.1
+	makedepends = nspr>=4.10.8
+	makedepends = libpng>=1.6.17
+	depends = gtk2
+	depends = mozilla-common
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libvpx
+	depends = icu
+	depends = libevent
+	depends = nss
+	depends = hunspell
+	depends = sqlite
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = gst-plugins-good: h.264 video
+	optdepends = gst-libav: h.264 video
+	optdepends = upower: Battery API
+	conflicts = firefox
+	source = hg+http://hg.mozilla.org/mozilla-central
+	source = mozconfig
+	source = firefox.desktop
+	source = firefox-install-dir.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d2a7610393ba259c35e3227b92e02ec91095a95189f56ac93ccdf6732772719c
+	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
+
+pkgname = firefox-hg
+
