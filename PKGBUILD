@@ -2,7 +2,7 @@
 # Based on PMS PKGBUILD
 
 pkgname=ums
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=("vlc: Internet video/audio support"
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
 source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver-Java8.tgz")
-sha1sums=('06558e29ae0bcc73b2be3896e7debc20f71489f8')
+sha1sums=('940d7dea2c18fb3b7fd3d763cd804a893f014997')
 
 package() {
   mkdir -p $pkgdir/opt/ums
