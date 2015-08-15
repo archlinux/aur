@@ -1,0 +1,12 @@
+diff --git a/latexdraw-core/net.sf.latexdraw/pom.xml b/latexdraw-core/net.sf.latexdraw/pom.xml
+index e518091..4dea5fe 100644
+--- a/latexdraw-core/net.sf.latexdraw/pom.xml
++++ b/latexdraw-core/net.sf.latexdraw/pom.xml
+@@ -61,7 +61,6 @@
+         <version>2.5.5</version>
+         <configuration>
+           <descriptors>
+-            <descriptor>src/assembly/assemblySrc.xml</descriptor>
+             <descriptor>src/assembly/assemblyBin.xml</descriptor>
+           </descriptors>
+          <finalName>LaTeXDraw-${project.version}</finalName>

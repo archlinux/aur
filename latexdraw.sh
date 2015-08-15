@@ -1,3 +1,4 @@
 #!/bin/sh
 
-java -jar /usr/share/java/latexdraw/LaTeXDraw.jar
+set -e
+java $JAVA_OPTS -cp '/usr/share/java/latexdraw/*' net.sf.latexdraw.LaTeXDraw $*
