@@ -1,0 +1,15 @@
+pkgbase = dir2ogg
+	pkgdesc = dir2ogg converts mp3, m4a, wma, and wav files into ogg-vorbis format.
+	pkgver = 0.11.8
+	pkgrel = 4
+	url = http://jak-linux.org/projects/dir2ogg
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = mutagen
+	depends = vorbis-tools
+	source = http://jak-linux.org/projects/dir2ogg/0.11/dir2ogg-0.11.8.tar.gz
+	sha256sums = 0b6fd089fc1eb20cc92b7901c947ff6033ce04c897f9af9f962fa421a67ba7e0
+
+pkgname = dir2ogg
+
