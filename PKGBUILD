@@ -3,7 +3,7 @@
 #PKGBUILD
 #Sofyan Saputra/Iank (meongbego@gmail.com)
 
-pkgname=ign-sdk
+pkgname=ignsdk
 pkgver=1.1.7
 pkgrel=160815
 pkgdesc="IGN Software Development Kit"

@@ -1,6 +1,9 @@
 post_install(){
 	echo -e "see the following users guides"
-	man -u -a ignsdk
+	echo -e "man -u -a ignsdk"
+	echo -e "man -u -a ignsdk-app-creator"
+	echo -e "man -u -a ignsdk-app-builder"
+	
 	echo -e "Thank You For Installations"
 }
 

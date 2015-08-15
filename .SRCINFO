@@ -1,4 +1,4 @@
-pkgbase = ign-sdk
+pkgbase = ignsdk
 	pkgdesc = IGN Software Development Kit
 	pkgver = 1.1.7
 	pkgrel = 160815
@@ -14,5 +14,5 @@ pkgbase = ign-sdk
 	source = https://github.com/anak10thn/ignsdk-qt/archive/v1.1.7.tar.gz
 	md5sums = SKIP
 
-pkgname = ign-sdk
+pkgname = ignsdk
 
