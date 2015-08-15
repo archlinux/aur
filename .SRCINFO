@@ -1,0 +1,17 @@
+pkgbase = oneko
+	pkgdesc = A modified version of oneko. KINOMOTO Sakura chases around your mouse cursor.
+	pkgver = 1.2.sakura.5
+	pkgrel = 1
+	url = http://www.daidouji.com/oneko/
+	arch = i686
+	arch = x86_64
+	license = Unknown
+	makedepends = libxext
+	depends = libx11
+	source = http://www.daidouji.com/oneko/distfiles/oneko-1.2.sakura.5.tar.gz
+	source = add-includes.patch
+	md5sums = 456b318fa6e61431bf4f0a42b110014a
+	md5sums = fae2e02a36ececa2bcf13e08afa2bd95
+
+pkgname = oneko
+
