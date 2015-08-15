@@ -1,0 +1,24 @@
+pkgbase = sha3sum
+	pkgdesc = Keccak-family checksum calculator, including SHA-3
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/maandree/sha3sum
+	install = sha3sum.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = libkeccak
+	makedepends = argparser
+	makedepends = glibc
+	makedepends = auto-auto-complete
+	makedepends = texman
+	makedepends = sed
+	makedepends = texinfo
+	depends = libkeccak
+	depends = argparser
+	depends = glibc
+	source = https://github.com/maandree/sha3sum/archive/1.0.tar.gz
+	sha256sums = d4f4729f6065c489d6ed95e1c997e1bda4308ba37ebb3eb8a666fef17d4fc22f
+
+pkgname = sha3sum
+
