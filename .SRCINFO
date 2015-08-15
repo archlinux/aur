@@ -1,0 +1,27 @@
+pkgbase = gcc46-multilib
+	pkgdesc = The GNU Compiler Collection for multilib (4.6.x)
+	pkgver = 4.6.4
+	pkgrel = 4
+	url = http://gcc.gnu.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = binutils>=2.24
+	makedepends = libmpc
+	makedepends = cloog
+	makedepends = ppl
+	makedepends = lib32-glibc>=2.14
+	provides = gcc46
+	conflicts = gcc46
+	options = staticlibs
+	options = !libtool
+	options = !emptydirs
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.6.4/gcc-4.6.4.tar.bz2
+	source = gcc-hash-style-both.patch
+	md5sums = b407a3d1480c11667f293bfb1f17d1a4
+	md5sums = 4df25b623799b148a0703eaeec8fdf3f
+
+pkgname = gcc46-multilib
+
