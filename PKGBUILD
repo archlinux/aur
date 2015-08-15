@@ -1,8 +1,8 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack
 _pkgname=stack
-pkgver='0.1.1.0'
-pkgrel=3
+pkgver='0.1.3.1'
+pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('x86_64')
 url="https://www.github.com/commercialhaskell/stack"
@@ -14,19 +14,23 @@ provides=('haskell-stack')
 conflicts=('haskell-stack-git')
 if [ "${CARCH}" = 'x86_64' ]; then
     _arch='x86_64'
-    sha1sums=('62109910c250cc895ae20c1501c310fd6ff23418')
+    sha1sums=('7a10f4a79110b3420aba21babcbd386ca43da4ab')
+elif [ "${CARCH}" = 'i686' ]; then
+    _arch='i686'
+    sha1sums=('1a0270381c7dcd2e866dd04f74520fb234392511')
 fi
 source=("https://s3.amazonaws.com/download.fpcomplete.com/archlinux/${_pkgname}_${pkgver}-${_arch}.tar.gz")
 # install=
 
 package() {
-  cd "$srcdir"
-  STACK_BIN=usr/bin/stack
-  install -Dm755 $STACK_BIN "$pkgdir/usr/bin/stack" 
-  STACK_MAN_DIR=usr/share/man/man1
-  install -Dm755 $STACK_BIN "$pkgdir/usr/bin/stack" 
-  gzip $STACK_MAN_DIR/stack.1
-  install -Dm755 $STACK_MAN_DIR/stack.1.gz "$pkgdir/$STACK_MAN_DIR/stack.1.gz" 
+   cd "$srcdir"
+   STACK_BIN=usr/bin/stack
+   install -Dm755 $STACK_BIN "$pkgdir/usr/bin/stack"
+   #STACK_MAN_DIR=usr/share/man/man1
+   #gzip $STACK_MAN_DIR/stack.1
+   #install -Dm644 $STACK_MAN_DIR/stack.1.gz "$pkgdir/$STACK_MAN_DIR/stack.1.gz"
+   STACK_COMPLETION_DIR=etc/bash_completion.d
+   install -Dm644 $STACK_COMPLETION_DIR/stack "$pkgdir/$STACK_COMPLETION_DIR/stack"
 }
 
 # vim:set ts=2 sw=2 et:
