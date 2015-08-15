@@ -21,12 +21,10 @@ optdepends=('qhull: calculating convex hulls'
             'ttf-freefont: enables use of ttf fonts for some drivers'
             'cairo: displays plots and save to different file formats')
 options=('!libtool' '!makeflags')
-source=(http://downloads.sourceforge.net/sourceforge/plplot/${pkgname}-${pkgver}.tar.gz \
-    plplot.patch)
+source=(http://downloads.sourceforge.net/sourceforge/plplot/${pkgname}-${pkgver}.tar.gz)
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p1 < ../../plplot.patch
   if [ -d build ]; then
       rm -r build
   fi
@@ -45,5 +43,4 @@ package() {
     make DESTDIR=${pkgdir} install
     install -D -m644 ../Copyright ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-md5sums=('7a3dbbe49a00f925b095bc06cadbaf63'
-         '9a50d8aa4c088bd29355076f6fc91f31')
+md5sums=('7a3dbbe49a00f925b095bc06cadbaf63')
