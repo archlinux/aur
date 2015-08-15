@@ -19,6 +19,8 @@ post_install() {
 
 pre_upgrade() {
   systemctl stop "basis_lmgrd.service"
+  rm -rf '/var/tmp/.flexlm'
+  rm -f '/var/tmp/lockbasis' # otherwise a user change cannot work
   if ! chattr -i "/usr/local/basis/pro5"/{ext,std,graphics}/*; then
     # We must do this because of bug https://bugs.archlinux.org/task/45988
     case "/usr/local/basis" in

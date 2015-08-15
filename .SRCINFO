@@ -1,6 +1,6 @@
 pkgbase = basis-pro5
 	pkgdesc = BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj
-	pkgver = 15.01
+	pkgver = 15.00
 	pkgrel = 1
 	url = http://www.basis.com/
 	install = basis-pro5-install.sh
