@@ -1,8 +1,9 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-editor-git
-pkgver=0.2.1.507.g0b1bebd
+pkgver=0.2.1.518.g144f28c
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('i686' 'x86_64')
