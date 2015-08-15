@@ -1,7 +1,7 @@
 pkgbase = staden
 	pkgdesc = Tools for DNA sequence assembly (Gap4/5), editing and analysis (Spin)
 	pkgver = 2.0.0b10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://staden.sourceforge.net/
 	arch = i686
 	arch = x86_64

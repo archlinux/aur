@@ -1,10 +1,9 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Stunts <f.pinamartins@gmail.com>
 # Contributor: LoneWolf <lonewolf@xs4all.nl> 
-
 pkgname=staden
 pkgver=2.0.0b10
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for DNA sequence assembly (Gap4/5), editing and analysis (Spin)"
 arch=('i686' 'x86_64')
 url="http://staden.sourceforge.net/"
@@ -26,7 +25,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver-src/"
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --with-tklib=/usr/lib/tklib0.6
     make
 }
 
