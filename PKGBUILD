@@ -1,13 +1,13 @@
 # Maintainer: unclesam <web _AT_ shinobi-mail _DOT_ de>
 pkgname=mintstick-git
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Format or write images to usb-sticks (Linux Mint tool)"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/mintstick"
 license=('GPL2')
-depends=('python2' 'python2-gobject' 'udisks' 'python2-pyparted')
+depends=('python2' 'python2-gobject' 'udisks' 'python2-pyparted' 'python2-dbus')
 optdepends=()
 makedepends=()
 provides=()
