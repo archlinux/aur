@@ -3,7 +3,7 @@
 
 pkgname=python-pyramid
 pkgver=1.6a2
-pkgrel=1
+pkgrel=2
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
 url='http://www.pylonsproject.org/'
@@ -19,8 +19,9 @@ source=(https://pypi.python.org/packages/source/p/pyramid/pyramid-${pkgver}.tar.
 sha256sums=('205e8bbffe27c3f1e74e3c9414b20e65b805cbeddc783cd957126b84469cc949')
 
 build() {
-  cd $srcdir
-  cp -r pyramid-$pkgver
+  msg "Building Pyramid for Python3"
+  cd "$srcdir"/pyramid-$pkgver
+  python3 setup.py build
 }
 
 check() {
