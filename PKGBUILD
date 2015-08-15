@@ -2,19 +2,19 @@
 
 pkgname=atari++
 pkgver=1.73
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator of Atari 400/800/400XL/800XL/130XE/5200"
 arch=('i686' 'x86_64')
-url="http://www.xl-project.com/"
+url="http://www.xl-project.com"
 license=('custom:TPL')
 depends=('sdl' 'libpng' 'alsa-lib' 'gcc-libs' 'libsm') 
-source=(${url}download/${pkgname}_${pkgver}.tar.gz)
+source=(${url}/download/${pkgname}_${pkgver}.tar.gz)
 md5sums=('13af66f605282f84ae33359e4c8d740a')
 noextract=(${pkgname}_${pkgver}.tar.gz)
 
 prepare() {
   cd "${srcdir}"
-  tar xfz "../${pkgname}_${pkgver}.tar.gz"
+  tar xfz "${srcdir}/${pkgname}_${pkgver}.tar.gz"
 }
 
 build() {

@@ -1,8 +1,8 @@
 pkgbase = atari++
 	pkgdesc = An emulator of Atari 400/800/400XL/800XL/130XE/5200
 	pkgver = 1.73
-	pkgrel = 1
-	url = http://www.xl-project.com/
+	pkgrel = 2
+	url = http://www.xl-project.com
 	arch = i686
 	arch = x86_64
 	license = custom:TPL
