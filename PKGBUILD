@@ -15,8 +15,7 @@ source=("https://github.com/tonsky/$_realpackagename/archive/$pkgver.tar.gz")
 md5sums=('fb55f89b756d24bccc0685d1ecd78719')
 
 package() {
-    mkdir -p $pkgdir/usr/share/fonts
-    install -m644 "$srcdir/$_realpackagename-$pkgver/$_realpackagename-Regular.otf" "$pkgdir/usr/share/fonts/OTF"
+    install -m644 -D "$srcdir/$_realpackagename-$pkgver/$_realpackagename-Regular.otf" "$pkgdir/usr/share/fonts/OTF/$_realpackagename-Regular.otf"
     install -m644 -D "$srcdir/$_realpackagename-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     echo -e '\nRemember to call "fc-cache -rv" to update the font-cache!\n'
 }
