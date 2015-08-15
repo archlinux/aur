@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
 options=('!strip')
+depends=('yakuake')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
 sha256sums=('934b2d28a88c155f41702512e186be4cfd9d7bf1f2370be29bd32da0ec8b6e25')
 
