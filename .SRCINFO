@@ -1,0 +1,22 @@
+pkgbase = lifeograph
+	pkgdesc = Standalone web browser from mozilla.org
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.mozilla.org/firefox/
+	install = lifeograph.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtkmm3
+	depends = enchant
+	provides = lifeograph
+	conflicts = lifeograph
+	options = !emptydirs
+	options = !makeflags
+	source = https://launchpad.net/lifeograph/trunk/1.2.1/+download/lifeograph-1.2.1.tar.gz
+	sha256sums = ea693ebbba93f2d72790f37fb411d982d86663138c62ab05b33a538135e19819
+
+pkgname = lifeograph
+
