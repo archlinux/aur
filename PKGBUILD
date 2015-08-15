@@ -2,26 +2,33 @@
 # Contributor: Košava <kosava at archlinux dot us>
 
 pkgname=yarock-qt5
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Qt Modern Music Player with collection browse based on cover art"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/yarock"
 license=('GPL3')
 makedepends=('cmake' 'mpv')
-depends=('qt5-x11extras' 'phonon-qt5' 'taglib')
+depends=('htmlcxx' 'qt5-x11extras' 'phonon-qt5' 'taglib')
 optdepends=('mpv: alternative (working) engine')
 source=("https://launchpad.net/yarock/1.x/${pkgver}/+download/Yarock_${pkgver}_source.tar.gz"
+        "qt-build.patch"
         "phonon.patch")
-md5sums=('88733d9bed252c132a378dfecb158697'
-         'd6f84a05159c8b7035723cbdeb6fc611')
+md5sums=('4131e469cbd0bc717b44a0145c7b637a'
+         'ba9c30cd8dc4132da33e57255b40076a'
+         '87802d76e0bf86c10ec9969a62a12203')
 
 prepare() {
-  patch -p0 -i "${srcdir}/phonon.patch"
+  rm -rf "build"
+  mkdir "build"
+
+  # phonon include patch
+  patch -p0 -i "phonon.patch"
+  # patch to fix build with recent qt5
+  patch -p0 -i "qt-build.patch"
 }
 
 build() {
-  mkdir build
   cd build
   cmake "../Yarock_${pkgver}_source" \
     -DCMAKE_BUILD_TYPE=Release \
@@ -36,3 +43,9 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
+md5sums=('4131e469cbd0bc717b44a0145c7b637a'
+         'cd4475b787153c516e613d14cd60bef4'
+         '87802d76e0bf86c10ec9969a62a12203')
+md5sums=('4131e469cbd0bc717b44a0145c7b637a'
+         '84e7160c3b4e055cdcc55551389ce08d'
+         '87802d76e0bf86c10ec9969a62a12203')
