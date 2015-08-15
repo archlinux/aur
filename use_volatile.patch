@@ -1,0 +1,30 @@
+Binary files b/pgms/arithoh and a/pgms/arithoh differ
+Binary files b/pgms/context1 and a/pgms/context1 differ
+Binary files b/pgms/dhry2 and a/pgms/dhry2 differ
+Binary files b/pgms/dhry2reg and a/pgms/dhry2reg differ
+Binary files b/pgms/double and a/pgms/double differ
+Binary files b/pgms/execl and a/pgms/execl differ
+Binary files b/pgms/float and a/pgms/float differ
+Binary files b/pgms/fstime and a/pgms/fstime differ
+Binary files b/pgms/hanoi and a/pgms/hanoi differ
+Binary files b/pgms/int and a/pgms/int differ
+Binary files b/pgms/long and a/pgms/long differ
+Binary files b/pgms/looper and a/pgms/looper differ
+Binary files b/pgms/pipe and a/pgms/pipe differ
+Binary files b/pgms/register and a/pgms/register differ
+Binary files b/pgms/short and a/pgms/short differ
+Binary files b/pgms/spawn and a/pgms/spawn differ
+Binary files b/pgms/syscall and a/pgms/syscall differ
+Binary files b/pgms/whetstone-double and a/pgms/whetstone-double differ
+diff -ruN b/src/arith.c a/src/arith.c
+--- b/src/arith.c	2011-01-17 23:44:53.000000000 -0700
++++ a/src/arith.c	2015-03-21 20:38:49.082836753 -0600
+@@ -35,7 +35,7 @@
+ 
+ int dumb_stuff(int);
+ 
+-unsigned long iter;
++unsigned volatile long iter;
+ 
+ /* this function is called when the alarm expires */
+ void report()

@@ -1,0 +1,12 @@
+diff -ruN UnixBench/Makefile b/Makefile
+--- a/Makefile	2015-06-04 11:20:18.000000000 -0600
++++ b/Makefile	2015-08-15 01:47:44.310787298 -0600
+@@ -196,7 +196,7 @@
+ $(PROGDIR)/double: $(SRCDIR)/arith.c
+ 	$(CC) -o $(PROGDIR)/double ${CFLAGS} ${OPTON} -Ddatum=double $(SRCDIR)/arith.c
+ $(PROGDIR)/whetstone-double: $(SRCDIR)/whets.c
+-	$(CC) -o $(PROGDIR)/whetstone-double ${CFLAGS} ${OPTON} -DDP -DUNIX -DUNIXBENCH $(SRCDIR)/whets.c -lm
++	$(CC) -o $(PROGDIR)/whetstone-double ${CFLAGS} ${OPTON} -DDP -DGTODay -DUNIXBENCH $(SRCDIR)/whets.c -lm
+ $(PROGDIR)/hanoi: $(SRCDIR)/hanoi.c
+ 	$(CC) -o $(PROGDIR)/hanoi ${CFLAGS} ${OPTON} $(SRCDIR)/hanoi.c
+ 

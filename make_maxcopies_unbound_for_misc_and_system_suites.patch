@@ -1,0 +1,59 @@
+From 910276909baacebea038750aecec32c9a32eddd4 Mon Sep 17 00:00:00 2001
+From: Steven Noonan <steven@uplinklabs.net>
+Date: Sat, 6 Jun 2015 17:40:32 -0500
+Subject: [PATCH] make maxCopies unbounded for 'system' and 'misc' suites
+
+Quoting original author of this patch:
+
+Simply un-limits the 'misc' and 'system' suites.
+
+Half-related thoughts about testing quality:
+
+I'm curious why there's a shell1, shell8, and shell16 set of tests. Aren't the
+latter two equivalent to './Run -c 8 shell1' and './Run -c 16 shell1'? I think
+shell8 and shell16 are pointless if this is the case.
+
+At the very least, I think shell8 should be out of the default run (the $index
+set), because it will essentially give a misleading number if you have more
+than a single core in the system. Isn't the purpose of the serial run to
+essentially measure how well the system performs on single-threaded activities?
+Or perhaps to measure how well a single core performs? Having 'shell8' in the
+$index set artificially inflates the score for serialized runs and artificially
+damages the score during maxed-out parallelized runs. If you are actually
+interested in seeing how well 'shell8' does on exactly one core, shouldn't you
+do the equivalent of 'taskset 1' on it, forcing the child processes to stay on
+that single core?
+
+End of quote.
+
+Signed-off-by: Carlos L. Torres <carlos.torres@rackspace.com>
+---
+ UnixBench/Run | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/UnixBench/Run b/UnixBench/Run
+index d615935..ce5fb15 100755
+--- a/UnixBench/Run
++++ b/UnixBench/Run
+@@ -106,10 +106,10 @@ my $TESTDIR = getDir('UB_TESTDIR', $BASEDIR . "/testdir");
+ 
+ # Configure the categories to which tests can belong.
+ my $testCats = {
+-    'system'    => { 'name' => "System Benchmarks", 'maxCopies' => 16 },
++    'system'    => { 'name' => "System Benchmarks", 'maxCopies' => 0 },
+     '2d'        => { 'name' => "2D Graphics Benchmarks", 'maxCopies' => 1 },
+     '3d'        => { 'name' => "3D Graphics Benchmarks", 'maxCopies' => 1 },
+-    'misc'      => { 'name' => "Non-Index Benchmarks", 'maxCopies' => 16 },
++    'misc'      => { 'name' => "Non-Index Benchmarks", 'maxCopies' => 0 },
+ };
+ 
+ 
+@@ -1329,7 +1329,7 @@ sub runTests {
+         # If the benchmark doesn't want to run with this many copies, skip it.
+         my $cat = $params->{'cat'};
+         my $maxCopies = $testCats->{$cat}{'maxCopies'};
+-        next if ($copies > $maxCopies);
++        next if ($maxCopies > 0 && $copies > $maxCopies);
+ 
+         # Run the benchmark.
+         my $bresult = runBenchmark($bench, $params, $verbose, $logFile, $copies);

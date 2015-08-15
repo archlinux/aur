@@ -1,0 +1,36 @@
+diff -ruN a/Run b/Run
+--- a/Run	2011-01-17 23:44:53.000000000 -0700
++++ b/Run	2015-03-14 15:17:39.000000000 -0600
+@@ -785,13 +785,13 @@
+     $ENV{'LANG'} = $language;
+ 
+     # Check that the required files are in the proper places.
+-    system("make check");
+-    if ($? != 0) {
+-        system("make all");
+-        if ($? != 0) {
+-            abortRun("\"make all\" failed");
+-        }
+-    }
++#    system("make check");
++#    if ($? != 0) {
++#        system("make all");
++#        if ($? != 0) {
++#            abortRun("\"make all\" failed");
++#        }
++#    }
+ 
+     # Create a script to kill this run.
+     system("echo \"kill -9 $$\" > \"${TMPDIR}/kill_run\"");
+diff -ruN a/src/dhry_1.c b/src/dhry_1.c
+--- a/src/dhry_1.c	2011-01-17 23:44:53.000000000 -0700
++++ b/src/dhry_1.c	2015-03-14 15:34:29.000000000 -0600
+@@ -75,7 +75,7 @@
+ 
+ #ifdef TIMES
+ struct tms      time_info;
+-extern  int     times ();
++//extern  int     times ();
+                 /* see library function "times" */
+ #define Too_Small_Time 120
+                 /* Measurements should last at least about 2 seconds */

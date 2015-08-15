@@ -1,0 +1,12 @@
+diff -ruN UnixBench/Makefile b/Makefile
+--- a/Makefile	2015-08-15 01:52:22.539585616 -0600
++++ b/Makefile	2015-08-15 02:00:13.772259951 -0600
+@@ -71,7 +71,7 @@
+ #	-m386 -malign-loops=1 -malign-jumps=1 -malign-functions=1
+ 
+ ## For Solaris 2, or general-purpose GCC 2.7.x
+-OPTON = -O2 -fomit-frame-pointer -fforce-addr -ffast-math -Wall
++OPTON = -O2 -ffast-math -Wall -march=native
+ 
+ ## For Digital Unix v4.x, with DEC cc v5.x
+ #OPTON = -O4
