@@ -1,7 +1,7 @@
 # Maintainer: Spiros Georgaras <sng@hellug.gr>
 pkgname=ttf-linex-fonts
 pkgver=2.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fonts suitable for education and institutional use"
 arch=('any')
 license=('GPL2')
