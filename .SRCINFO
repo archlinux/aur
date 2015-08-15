@@ -1,0 +1,15 @@
+pkgbase = boost-nowide
+	pkgdesc = Boost.Nowide is a library implemented by Artyom Beilis that make cross platform Unicode aware programming easier.
+	pkgver = 1.58.0
+	pkgrel = 1
+	url = http://cppcms.com/files/nowide/html/
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = unzip
+	depends = boost
+	source = http://cppcms.com/files/nowide/nowide_standalone.zip
+	md5sums = 5aa92f6d8f3734bd0b511c78b8aa8835
+
+pkgname = boost-nowide
+
