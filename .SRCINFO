@@ -1,5 +1,5 @@
 pkgbase = papirus-gtk-theme
-	pkgdesc = Modified and adaptive Paper icon theme for KDE
+	pkgdesc = Modified and adaptive Paper gtk theme
 	pkgver = 20150808
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
