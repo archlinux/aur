@@ -1,0 +1,34 @@
+pkgbase = zoom
+	pkgdesc = Start or join Zoom meetings
+	pkgver = 1.0.22331.0731
+	pkgrel = 1
+	url = https://zoom.us/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = qt5-svg
+	depends = qt5-declarative
+	depends = qt5-location
+	depends = qt5-xmlpatterns
+	depends = qt5-webchannel
+	depends = qt5-sensors
+	depends = qt5-script
+	depends = glib2
+	depends = lib32-mesa
+	depends = lib32-libxcb
+	depends = lib32-libgl
+	depends = lib32-libxi
+	depends = lib32-libsm
+	depends = lib32-fontconfig
+	depends = lib32-libpulse
+	depends = lib32-libxcomposite
+	depends = lib32-libxslt
+	depends = gstreamer0.10-base-plugins
+	options = !strip
+	source = https://zoom.us/client/latest/ZoomInstaller_i386.deb
+	md5sums = 519689cc7b2b399adf12ffbe41adef46
+
+pkgname = zoom
+
