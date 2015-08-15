@@ -1,7 +1,7 @@
 pkgbase = zopflipng-git
 	pkgdesc = PNG optimisation tool using Google's zopfli library, git version.
 	pkgver = 6ff3ba2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/zopfli
 	arch = i686
 	arch = x86_64
