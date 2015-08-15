@@ -13,8 +13,8 @@ pkgbase = papirus
 	optdepends = bomi-skin-papirus: Papirus theme for Bomi
 	optdepends = libreoffice-papirus-theme: Papirus theme for Libreoffice
 	options = !strip
-	source = papirus-pack-kde-20150808.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/10391273ed3b7b56f98330db1efd8c1e51922bba.tar.gz
-	sha256sums = 934b2d28a88c155f41702512e186be4cfd9d7bf1f2370be29bd32da0ec8b6e25
+	source = papirus-pack-kde-20150808.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/31ecaaa6e7fbf16c8a90e1baf14a2121715ca0cb.tar.gz
+	sha256sums = 9b205862cfbbe22b7d661b072b6b09b97ede579e9543f053f84f3657e1453d4f
 
 pkgname = papirus
 
