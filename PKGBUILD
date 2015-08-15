@@ -2,7 +2,7 @@
 
 pkgname=airvpn-bin
 pkgver=2.9.2
-pkgrel=5
+pkgrel=6
 pkgdesc='AirVPN client "Eddie", stable version. Based on OpenVPN and operated by activists and hacktivists
 in defense of net neutrality, privacy and against censorship.'
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ package() {
   install -Dm644 "$srcdir/usr/share/doc/airvpn/changelog.gz" "$pkgdir/usr/share/doc/airvpn/changelog.gz"
   install -Dm644 "$srcdir/usr/share/doc/airvpn/copyright" "$pkgdir/usr/share/doc/airvpn/copyright"
   install -Dm644 "$srcdir/usr/share/man/man1/airvpn.1.gz" "$pkgdir/usr/share/man/man1/airvpn.1.gz"
+  install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/AirVPN.png"
   cd "$srcdir/usr/share/applications"
   desktop-file-install -m 644 --add-category=KDE --dir "$pkgdir/usr/share/applications/" "AirVPN.desktop"
 }
