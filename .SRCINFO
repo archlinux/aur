@@ -1,0 +1,18 @@
+pkgbase = gnomishdark-theme
+	pkgdesc = A clean dark theme for GTK3 / GTK2, based on Adwaita (provided by gnome-themes-standard), plus a matching GNOME-Shell theme.
+	pkgver = 20140509
+	pkgrel = 2
+	url = http://tsujan.deviantart.com/art/GnomishDark-300548460
+	arch = any
+	license = CC
+	makedepends = p7zip
+	depends = gtk-engine-murrine
+	optdepends = gnome-themes-standard: Default themes for the GNOME desktop
+	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options
+	optdepends = gnome-shell-extension-user-theme: User Theme extension for GNOME Shell
+	optdepends = nouvegnomegray-icon-theme: nouveGnomeGray is a gray icon set made for dark GTK themes
+	source = http://fc03.deviantart.net/fs71/f/2014/129/9/c/gnomishdark_by_tsujan-d4yxsoc.7z
+	sha256sums = ff238a19d813f974bad75d6c070d5bfc9b9d31e684b8bb161be35ab496ffbeba
+
+pkgname = gnomishdark-theme
+
