@@ -5,14 +5,17 @@ set -u
 _pkgname='riofs'
 pkgname="${_pkgname}-git"
 _srcdir="${pkgname}"
-pkgver=0.5.r60.gc6d8e8e
+pkgver=0.6.r47.gc6d8e8e
 pkgrel=1
 pkgdesc='FUSE userspace filesystem for Amazon AWS S3 buckets'
 arch=('i686' 'x86_64')
-url='https://github.com/skoobe/riofs'
+url="https://github.com/skoobe/${_pkgname}"
 license=('GPL3')
 depends=('fuse' 'glib2' 'libevent' 'libxml2' 'openssl')
 makedepends=('pkg-config' 'git')
+_verurl="${url}/releases"
+_versed="${url#*github.com}/archive/v\(.*\)\.tar\.gz" # used with ^...$
+_veropt='l'
 source=("${_srcdir}::git+${url}.git") # #commit=${pkgver##*.g}
 sha256sums=('SKIP')
 conflicts="${_pkgname}"
@@ -21,7 +24,7 @@ provides="${_pkgname}=${pkgver%.r*}"
 pkgver() {
   set -u
   cd "${_srcdir}"
-  git describe --long | sed -e 's/^v//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  git describe --long --tags | sed -e 's/^v//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
   set +u
 }
 
