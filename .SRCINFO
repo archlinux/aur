@@ -1,0 +1,22 @@
+pkgbase = sim
+	pkgdesc = Multiple protocol instant messenger
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://www.sim-im.org/
+	install = sim.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = aspell
+	depends = hicolor-icon-theme
+	depends = libxslt
+	depends = libxss
+	depends = qt3
+	source = http://downloads.sourceforge.net/project/sim-im.berlios/sim-0.9.5-svn20080806-dfsg.tar.bz2
+	source = arch-sim-build.patch
+	md5sums = aae36d0ef026ed0041c02f28218705fd
+	md5sums = bd83c5b67bee6d7dd606538ebd20d8fa
+
+pkgname = sim
+
