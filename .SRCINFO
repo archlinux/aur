@@ -1,6 +1,6 @@
 pkgbase = ccl-svn
 	pkgdesc = The Clozure Common Lisp implementation
-	pkgver = 1.11.dev.r16500
+	pkgver = 1.11.dev.r16128.trunk
 	pkgrel = 1
 	url = http://ccl.clozure.com/
 	arch = i686
