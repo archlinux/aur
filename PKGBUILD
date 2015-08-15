@@ -6,7 +6,7 @@
 
 _pkgname=ardour
 pkgname="${_pkgname}-git"
-pkgver=4.0.r306.gdeeb565
+pkgver=4.2.r16.g041b31d
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://ardour.org/"
 license=('GPL')
 depends=('aubio' 'cwiid' 'gtkmm' 'liblo' 'liblrdf' 'libltc' 'lilv' 'suil'
          'rubberband' 'taglib')
-makedepends=('git' 'python' 'boost' 'cppunit' 'doxygen' 'graphviz')
+makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git://github.com/Ardour/ardour.git"
@@ -31,7 +31,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf configure \
+  python2 waf configure \
     --prefix=/usr \
     --configdir=/etc \
     --docs \
@@ -44,13 +44,13 @@ build() {
     --with-backends=jack,alsa,dummy \
     --use-external-libs
 
-  python waf build $MAKEFLAGS
+  python2 waf build $MAKEFLAGS
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf --destdir="${pkgdir}" install
+  python2 waf --destdir="${pkgdir}" install
 
   # Install freedesktop.org compatibile applictaion starter desktop file
   install -Dm644 "${srcdir}/ardour.desktop" \
