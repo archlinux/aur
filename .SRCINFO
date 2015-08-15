@@ -1,14 +1,14 @@
 pkgbase = python-selection
 	pkgdesc = API to extract content from HTML & XML documents
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/selection
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python2
-	source = https://pypi.python.org/packages/source/s/selection/selection-0.0.9.tar.gz
-	sha256sums = 2e89d6eea792447a7c23da77b81fd7df84526791f64cbff4a50edf363697759e
+	source = https://pypi.python.org/packages/source/s/selection/selection-0.0.10.tar.gz
+	sha256sums = efebb9518bb391a819a9d73753487271ac4e23dec70387770d6b2d686bc92c43
 
 pkgname = python-selection
 	depends = python
