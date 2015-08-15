@@ -1,0 +1,21 @@
+pkgbase = twmn-git
+	pkgdesc = A notification system for tiling window managers
+	pkgver = 151.9492a47
+	pkgrel = 1
+	url = https://github.com/sboli/twmn
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = boost>=1.46
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = boost-libs>=1.46
+	depends = libxext
+	depends = libxkbcommon-x11
+	replaces = twmn
+	source = twmn::git://github.com/sboli/twmn.git
+	sha256sums = SKIP
+
+pkgname = twmn-git
+
