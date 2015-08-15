@@ -1,14 +1,14 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=maya-calendar-bzr
-pkgver=r789
+pkgver=r807
 pkgrel=1
 pkgdesc='The Pantheon Calendar'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/maya'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('folks' 'granite-bzr' 'libchamplain' 'libpeas')
+depends=('contractor-bzr' 'folks' 'granite-bzr' 'libchamplain' 'libpeas')
 makedepends=('bzr' 'cmake' 'vala')
 install='maya-calendar.install'
 source=('maya-calendar::bzr+lp:maya'

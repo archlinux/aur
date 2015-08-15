@@ -1,6 +1,6 @@
 pkgbase = maya-calendar-bzr
 	pkgdesc = The Pantheon Calendar
-	pkgver = r789
+	pkgver = r807
 	pkgrel = 1
 	url = https://launchpad.net/maya
 	install = maya-calendar.install
@@ -11,6 +11,7 @@ pkgbase = maya-calendar-bzr
 	makedepends = bzr
 	makedepends = cmake
 	makedepends = vala
+	depends = contractor-bzr
 	depends = folks
 	depends = granite-bzr
 	depends = libchamplain

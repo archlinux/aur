@@ -1,5 +1,5 @@
 pkgname=('maya-calendar-bzr')
-builddeps=('granite-bzr')
+builddeps=('contractor-bzr' 'granite-bzr')
 
 check_bzr $packagedir/$pkgname/${pkgname%-*}
 
