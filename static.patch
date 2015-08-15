@@ -1,0 +1,12 @@
+diff -up src/hivex-1.3.11/ocaml/hivex_c.c.orig src/hivex-1.3.11/ocaml/hivex_c.c
+--- src/hivex-1.3.11/ocaml/hivex_c.c.orig	2015-06-28 11:52:33.000000000 -0600
++++ src/hivex-1.3.11/ocaml/hivex_c.c	2015-06-28 11:52:38.000000000 -0600
+@@ -48,7 +48,7 @@ extern value unix_error_of_code (int err
+ #endif
+ 
+ #ifndef HAVE_CAML_RAISE_WITH_ARGS
+-static void
++void
+ caml_raise_with_args (value tag, int nargs, value args[])
+ {
+   CAMLparam1 (tag);
