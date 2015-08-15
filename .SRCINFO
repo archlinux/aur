@@ -1,0 +1,14 @@
+pkgbase = gnome-kra-ora-thumbnailer
+	pkgdesc = A thumbnailer for KRA ( Krita native file ) and ORA ( open-raster ) for the Gnome desktop
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Deevad/gnome-kra-ora-thumbnailer
+	arch = i686
+	arch = x86_64
+	license = DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+	makedepends = git
+	source = git://github.com/Deevad/gnome-kra-ora-thumbnailer
+	md5sums = SKIP
+
+pkgname = gnome-kra-ora-thumbnailer
+
