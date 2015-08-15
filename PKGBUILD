@@ -4,17 +4,17 @@
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
 
 pkgname=spring-ba
-pkgver=9.02
+pkgver=9.05
 pkgrel=1
 pkgdesc="A popular balanced Spring mod based on Absolute Annihilation"
 arch=(any)
 url='https://springrts.com/wiki/Balanced_Annihilation'
 license=('GPL' 'CCPL' 'custom:non-free')
 depends=('spring')
-source=("ba-v$pkgver.sdz::http://springfiles.com/downloadmain/start/19687"
+source=("ba-v$pkgver.sdz::http://packages.springrts.com/builds/ba-V$pkgver.sdz"
 	'license-non-free')
 noextract=("ba-v$pkgver.sdz")
-md5sums=('7d0de19467ce1899ff904810be6f3f66'
+md5sums=('5fb424c97ba200e71e2ae733321c12db'
          '28872feaac21fc4b2b4ae00b3f86e52a')
 
 PKGEXT='.pkg.tar'
