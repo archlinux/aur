@@ -1,12 +1,12 @@
 pkgbase = firacode
 	pkgdesc = Monospaced font with programming ligatures
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/tonsky/FiraCode/releases
 	arch = any
 	license = SIL
-	source = https://github.com/tonsky/FiraCode/archive/0.5.tar.gz
-	md5sums = 11e49eee5e0540828a8ba8298c404258
+	source = https://github.com/tonsky/FiraCode/archive/0.6.tar.gz
+	md5sums = fb55f89b756d24bccc0685d1ecd78719
 
 pkgname = firacode
 
