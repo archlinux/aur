@@ -1,6 +1,6 @@
 pkgbase = qt4-fsarchiver
 	pkgdesc = GUI for fsarchiver
-	pkgver = 0.6.19_14
+	pkgver = 0.6.19_15
 	pkgrel = 2
 	url = http://sourceforge.net/projects/qt4-fsarchiver/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = qt4-fsarchiver
 	makedepends = qt4
 	depends = fsarchiver
 	depends = gksu
-	source = http://sourceforge.net/projects/qt4-fsarchiver/files/source/qt4-fsarchiver-0.6.19-14.tar.gz
-	sha256sums = 26b0039eab497ad357a6e899875f040b6f5a3b04a5df013fe1624658444a7c9b
+	source = http://sourceforge.net/projects/qt4-fsarchiver/files/source/qt4-fsarchiver-0.6.19-15.tar.gz
+	sha256sums = b7533ac6be67256e972ba1996de1213268e784abb2eb81be11b0d354d17e719e
 
 pkgname = qt4-fsarchiver
 

@@ -2,7 +2,7 @@
 # PKGBUILD by hasufell, updated by DaarkWel
 
 pkgname=qt4-fsarchiver
-pkgver=0.6.19_14
+pkgver=0.6.19_15
 pkgrel=2
 pkgdesc='GUI for fsarchiver'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('fsarchiver' 'gksu')
 makedepends=('qt4')
 source=("http://sourceforge.net/projects/${pkgname}/files/source/${pkgname}-${pkgver//_/-}.tar.gz")
 
-sha256sums=('26b0039eab497ad357a6e899875f040b6f5a3b04a5df013fe1624658444a7c9b')
+sha256sums=('b7533ac6be67256e972ba1996de1213268e784abb2eb81be11b0d354d17e719e')
 
 build() {
 	cd "${srcdir}/${pkgname}"
@@ -35,8 +35,7 @@ mv ${pkgdir}/usr/sbin/qt4-fsarchiver_polkit ${pkgdir}/usr/bin/
 rmdir ${pkgdir}/usr/sbin
 	
 	sed s/sbin/bin/ -i ${pkgdir}/usr/bin/qt4-fsarchiver_polkit
-	sed s/Terminal=true/Terminal=false/ -i ${pkgdir}/usr/share/applications/qt4-fsarchiver.desktop
-	sed s/sudo/gksu/ -i ${pkgdir}/usr/share/applications/qt4-fsarchiver.desktop
+#	sed s/sudo/gksu/ -i ${pkgdir}/usr/share/applications/gnome-qt4-fsarchiver.desktop
 	
 }
 
