@@ -1,0 +1,22 @@
+2011-09-01 Romain Schmitz <slopjong@hackerspace.lu>
+
+	* 0.9.0-3 :
+	A bug was introduced in 0.9.0-2 . The symbolic link to the erwiz script
+	wasn't set correctly. 
+
+	* erwiz.changelog :
+	Added to keep track of changes.
+	
+2011-09-01 Romain Schmitz <slopjong@hackerspace.lu>
+
+	* 0.9.0-2 :
+	Improved the install() and installing erwiz to
+	/usr/share/java/erwiz instead of /usr/share/java/erwiz-<pkgver> 
+
+	* depends :
+	Changed the java dependency from openjdk6 to java-runtime.
+
+2011-09-01 Romain Schmitz <slopjong@hackerspace.lu>
+
+	* 0.9.0-1 :
+	Initial release.
