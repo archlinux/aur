@@ -2,9 +2,9 @@
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
 pkgbase=python-pytils
-pkgname=python-pytils
+pkgname=('python-pytils' 'python2-pytils')
 pkgver=0.3
-pkgrel=1 
+pkgrel=1
 pkgdesc="Russian-specific string utils"
 arch=('any')
 url="https://pypi.python.org/pypi/pytils/"
@@ -19,11 +19,11 @@ build() {
 }
 
 check() {
-  cd $srcdir/pytils-$pkgver 
+  cd $srcdir/pytils-$pkgver
   python3 setup.py check
-  
-  cd $srcdir/pytils2-$pkgver 
-  python2 setup.py check  
+
+  cd $srcdir/pytils2-$pkgver
+  python2 setup.py check
 }
 
 package_python-pytils() {

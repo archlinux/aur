@@ -13,3 +13,6 @@ pkgbase = python-pytils
 pkgname = python-pytils
 	depends = python
 
+pkgname = python2-pytils
+	depends = python2
+
