@@ -1,15 +1,15 @@
 # Maintainer: Luca Béla Palkovics <luca.bela.palkovics@gmail.com>
 
 pkgrel=1
-pkgver=r728.88eb4a8
+pkgver=r823.9f8ab17
 pkgname=('gtox-git')
 pkgdesc="a GTK-based tox-client"
 url="https://github.com/KoKuToru/gTox.git"
 license='GPL3'
 arch=('i686' 'x86_64')
-depends=('gtkmm3' 'libnotifymm' 'libconfig' 'sqlite' 'gettext' 'libcanberra' 'desktop-file-utils' 'gtk-update-icon-cache' 'gstreamermm' 'tox-git')
+depends=('gtkmm3' 'libconfig' 'gettext' 'desktop-file-utils' 'gtk-update-icon-cache' 'gstreamermm' 'flatbuffers' 'tox-git')
 makedepends=('check' 'git' 'cmake' 'librsvg')
-source=("${pkgname%-git}::git+https://github.com/KoKuToru/gTox.git")
+source=("${pkgname%-git}::git+https://github.com/KoKuToru/gTox.git#branch=AUR")
 conflicts=('gtox')
 install="gTox.install"
 
@@ -26,11 +26,9 @@ pkgver()
 build()
 {
     cd ${pkgname%-git}
-    git submodule init
-    git submodule update
-    cd Source
-    mkdir Build
-    cd Build
+    cd src
+    mkdir build
+    cd build
     cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr ..
     make
 }
@@ -38,8 +36,8 @@ build()
 package()
 {
         cd ${pkgname%-git}
-        cd Source
-        cd Build
+        cd src
+        cd build
         make install
 }
 md5sums=('SKIP')
