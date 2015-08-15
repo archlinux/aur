@@ -3,7 +3,7 @@
 _git=10391273ed3b7b56f98330db1efd8c1e51922bba # lastest commit 20150731
 _repo=papirus-pack-kde
 pkgname=papirus-icon-theme
-pkgver=20150808
+pkgver=20150809
 pkgrel=1
 pkgdesc="Modified and adaptive Paper icon theme for KDE"
 arch=('any')
