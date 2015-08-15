@@ -53,11 +53,6 @@ else
     exit 2
   fi
   mksrcinfo
-  mkaurball
-  if ! ls *.gz &> /dev/null ; then
-    echo "Source tarball creation failure"
-    exit 2
-  fi
   echo "$SCRIPT_HOME/PKGBUILD updated for TWS ${VER}"
   exit 1
 fi

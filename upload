@@ -15,8 +15,6 @@ SCRIPT_HOME=`dirname "$PRG"`
 
 $SCRIPT_HOME/update
 if [ "$?" -eq 1 ]; then
-  echo "Uploading updated TWS"
-  burp -c office $SCRIPT_HOME/*.gz
   echo "Updating Git"
   cd $SCRIPT_HOME
   git commit -a -m "Commit from upload script due to new version"
