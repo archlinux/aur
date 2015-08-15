@@ -4,7 +4,7 @@
 # Contributor: Malkov Fyodor aka krox <iksut@yandex.ru>
 
 pkgname=python-djvulibre
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A set of Python bindings for the DjVuLibre library"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('djvulibre' 'python2')
 makedepends=('cython2')
 source=("http://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fb09ef4f748251fbe21cc8f09c98da38fc5da2e6f0fa1333f44e133666209fe7')
+sha256sums=('7897d4bd828c8adba0fb6086edfa8c71be29db22187a02e8ec11e4b18398419e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
