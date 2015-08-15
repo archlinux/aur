@@ -2,7 +2,7 @@
 
 pkgname=airvpn-beta-bin
 pkgver=2.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc='AirVPN client "Eddie", beta version. Based on OpenVPN and operated by activists and hacktivists
 in defense of net neutrality, privacy and against censorship.'
 arch=('i686' 'x86_64')
