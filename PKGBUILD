@@ -1,40 +1,45 @@
-# MAINTAINER:   winlu <derwinlu AT gmail DOT com>
-
+# MAINTAINER: winlu <derwinlu AT gmail DOT com>
 pkgname=soundsense
-pkgver=43_187
-pkgrel=3
+_pkgver="2015-1_194"
+pkgver=${_pkgver//-/_}
+pkgrel=1
 pkgdesc="SoundSense is a sound-engine tool for Dwarf Fortress."
 arch=("any")
 url="http://df.zweistein.cz/soundsense/"
-license=('custom')
-depends=("java-environment" 
-         "coreutils")
-source=("http://df.zweistein.cz/soundsense/soundSense_$pkgver.zip"
-        "soundsense_run")
-md5sums=("b3dfea9716e7bdfe05ca2c0f44f582d8"
-         "9584745318a6ae276feb72b08a1e35ef")
+license=("custom")
+install="soundsense.install"
+depends=("java-runtime")
+makedepends=("coreutils"
+             "unzip")
+source=("http://df.zweistein.cz/soundsense/soundSense_${_pkgver}.zip"
+        "soundsense.install")
+md5sums=('95eebf4bdd0e048e217288b80aaae658'
+         '15fd5fb1136348807f7f5351887b3ef9')
 
-DEST="opt/soundsense/"
+DEST="/opt/soundsense"
+
+prepare() {
+  cd $srcdir/$pkgname
+
+  # fix line breaks
+  sed -i $'s/\r$//' soundSense.sh
+  # set correct working dir
+  sed -i 's:${0\%/\*}:'"${DEST}"':' soundSense.sh
+
+  unzip -q -o packSkeletons.zip
+}
 
 package() {
-    mkdir -p ${pkgdir}/${DEST}
-    mkdir -p ${pkgdir}/usr/bin/
-    #fix line breaks
-    mv $srcdir/$pkgname/soundSense.sh $srcdir/$pkgname/soundSense.sh.dos
-    tr -d '\r' < $srcdir/$pkgname/soundSense.sh.dos > $srcdir/$pkgname/soundSense.sh
-    rm $srcdir/$pkgname/soundSense.sh.dos
-    #rm windows files
-    rm $srcdir/$pkgname/*.cmd
-    rm $srcdir/$pkgname/*.exe
-    #rm sources zip
-    rm $srcdir/$pkgname/soundSense_${pkgver}_source.zip
-    #copy over and set permissions
-    cp -r $srcdir/$pkgname/. ${pkgdir}/${DEST}
-    chown :games -R ${pkgdir}/${DEST}
-    find ${pkgdir}/${DEST}/ -type d -exec chmod 775 {} +
-    find ${pkgdir}/${DEST}/ -type f -exec chmod 664 {} +
-    find ${pkgdir}/${DEST}/ -type f -name "*.jar" -exec chmod 644 {} +
-    chmod 755 ${pkgdir}/${DEST}/soundSense.sh
-    #install soundsense script
-    install -Dm755 $srcdir/soundsense_run $pkgdir/usr/bin/soundsense
+  # install runner
+  install -Dm755 ${srcdir}/${pkgname}/soundSense.sh $pkgdir/usr/bin/soundsense
+  # rm unneeded files
+  rm $srcdir/$pkgname/*.{cmd,exe,zip,sh}
+  # copy over and set permissions
+  install -dm755 -o root -g games ${pkgdir}${DEST}
+  cp -r $srcdir/$pkgname/. ${pkgdir}${DEST}
+  chown root:games -R ${pkgdir}${DEST}
+  find ${pkgdir}${DEST}/ -type d -exec chmod 6775 {} +
+  find ${pkgdir}${DEST}/ -type f -exec chmod 664 {} +
 }
+
+# vim:set ts=2 sw=2 et:

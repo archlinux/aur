@@ -1,16 +1,18 @@
 pkgbase = soundsense
 	pkgdesc = SoundSense is a sound-engine tool for Dwarf Fortress.
-	pkgver = 43_187
-	pkgrel = 3
+	pkgver = 2015_1_194
+	pkgrel = 1
 	url = http://df.zweistein.cz/soundsense/
+	install = soundsense.install
 	arch = any
 	license = custom
-	depends = java-environment
-	depends = coreutils
-	source = http://df.zweistein.cz/soundsense/soundSense_43_187.zip
-	source = soundsense_run
-	md5sums = b3dfea9716e7bdfe05ca2c0f44f582d8
-	md5sums = 9584745318a6ae276feb72b08a1e35ef
+	makedepends = coreutils
+	makedepends = unzip
+	depends = java-runtime
+	source = http://df.zweistein.cz/soundsense/soundSense_2015-1_194.zip
+	source = soundsense.install
+	md5sums = 95eebf4bdd0e048e217288b80aaae658
+	md5sums = 15fd5fb1136348807f7f5351887b3ef9
 
 pkgname = soundsense
 

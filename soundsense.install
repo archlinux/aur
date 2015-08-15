@@ -1,0 +1,10 @@
+post_install() {
+  echo "Make sure to add your user to the games group to use soundsense."
+}
+
+post_remove() {
+  echo "Removing /opt/soundsense directory."
+  rm -Rf /opt/soundsense
+}
+
+# vim:set ts=2 sw=2 et:
