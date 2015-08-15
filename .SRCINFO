@@ -1,7 +1,7 @@
 pkgbase = the-incredible-machine-2
 	pkgdesc = A classic puzzle game from Abandonia, played in DosBox.
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.abandonia.com/en/games/395/Incredible+Machine+2,+The.html
 	install = tim2.install
 	arch = any

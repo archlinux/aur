@@ -1,9 +1,10 @@
 # Contributor: Jens Staal <staal1978@gmail.com>
-# Contributor: Mark Coolen <mark.coolen@gmail.com>
+# Contributor: Mark Coolen <mark d_t coolen _t gmail d_t com>
+# Maintainer: Mark Coolen
 
 pkgname="the-incredible-machine-2"
 pkgver="1.0"
-pkgrel=4
+pkgrel=5
 pkgdesc="A classic puzzle game from Abandonia, played in DosBox."
 url='http://www.abandonia.com/en/games/395/Incredible+Machine+2,+The.html'
 arch=('any')
@@ -17,7 +18,8 @@ _pkgabbrev="TIM2"
 _exe="TIM2.EXE"
 _icon="TIM2.png"
 
-build() {
+package() {
+
 	mkdir -p -m755 "$pkgdir/opt/" 
 	mkdir -p -m755 "$pkgdir/opt/abandonia" 
 	mkdir -p -m755 "$pkgdir/opt/abandonia/$_pkgabbrev" 
@@ -26,7 +28,7 @@ build() {
 
 	#ok, let's use a script to start the game
 
-	mkdir -p -m755 /$pkgdir/usr/bin/ 
+	mkdir -p -m755 $pkgdir/usr/bin/ 
 	printf "#!${SHELL}
 if whereis unionfs-fuse>/dev/null 2>&1;
     then
@@ -42,9 +44,8 @@ if whereis unionfs-fuse>/dev/null 2>&1;
 	fi
     else
  	echo '==> Please be sure to have unionfs-fuse installed and in your PATH.'
-fi
-return \$?" >> /$pkgdir/usr/bin/$_pkgabbrev.sh 
-	chmod +x /$pkgdir/usr/bin/$_pkgabbrev.sh 
+fi" >> $pkgdir/usr/bin/$_pkgabbrev.sh 
+	chmod +x $pkgdir/usr/bin/$_pkgabbrev.sh 
 	ln -s $_pkgabbrev.sh /$pkgdir/usr/bin/$_pkgabbrev 
 
 	# Automatic generation of a .desktop file
@@ -61,5 +62,5 @@ Exec=/usr/bin/$_pkgabbrev
 Icon=/opt/abandonia/$_pkgabbrev/$_icon
 Categories=Game;Abandonia;
 Terminal=false
-StartupNotify=false" >> /$pkgdir/usr/share/applications/$_pkgabbrev.desktop
+StartupNotify=false" >> $pkgdir/usr/share/applications/$_pkgabbrev.desktop
 } 
