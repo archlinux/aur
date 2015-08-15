@@ -1,6 +1,6 @@
 pkgbase = eclim
 	pkgdesc = Brings Eclipse functionality to Vim
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://eclim.org/
 	install = eclim.install
@@ -17,8 +17,8 @@ pkgbase = eclim
 	optdepends = eclipse-dltk-ruby: Eclipse Ruby support
 	optdepends = eclipse-wtp: Eclipse Web Developer Tools support
 	conflicts = eclim-git
-	source = http://downloads.sourceforge.net/project/eclim/eclim/2.4.1/eclim_2.4.1.tar.gz
-	md5sums = 0d44bf58f468b2c5bc72ed675379cd8c
+	source = http://downloads.sourceforge.net/project/eclim/eclim/2.5.0/eclim_2.5.0.tar.gz
+	md5sums = c1c09cff1e84216ea6666e9c3e051621
 
 pkgname = eclim
 
