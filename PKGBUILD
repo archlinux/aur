@@ -3,7 +3,7 @@
 #PKGBUILD
 #Sofyan Saputra/Iank (meongbego@gmail.com)
 
-pkgname=ignsdk
+pkgname=ignsdk-iot
 pkgver=0.1.3
 pkgrel=160815
 pkgdesc="IGN Software Development Kit IOT For Raspberry Pi type 2"
