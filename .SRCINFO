@@ -1,0 +1,16 @@
+pkgbase = linuxbrew-git
+	pkgdesc = A fork of Homebrew for Linux: master branch
+	pkgver = r50809.f53a396
+	pkgrel = 1
+	url = http://brew.sh/linuxbrew/
+	arch = x86_64
+	license = Simplified BSD
+	makedepends = git
+	depends = ruby>=1.8.6
+	depends = gcc>=4.2
+	conflicts = linuxbrew
+	source = linuxbrew-git::git+https://github.com/Homebrew/linuxbrew.git
+	md5sums = SKIP
+
+pkgname = linuxbrew-git
+
