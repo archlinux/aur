@@ -8,8 +8,8 @@
 # to latest tagged release, there's no need to manually change pkgver.
 # Please don't flag out-of-date!
 pkgname=atom-editor-git
-pkgver=0.209.0.r18.g01be252
-pkgrel=4
+pkgver=v1.0.7.r46.g927ec7a
+pkgrel=1
 pkgdesc="Chrome-based text editor from Github"
 arch=('i686' 'x86_64')
 url="https://github.com/atom/atom"
