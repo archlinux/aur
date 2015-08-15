@@ -11,6 +11,6 @@ source=("http://pypi.python.org/packages/source/p/${_orig}/${_orig}-${pkgver%%.2
 md5sums=('3ce9b9a013430d2d28f6c2f5a4f8a67f')
 
 package() {
-    cd "$srcdir/${_orig}-$pkgver-0"
+    cd "$srcdir/${_orig}-${pkgver%%.2}-${pkgver##*.}"
     python setup.py install --root=$pkgdir || return 1
 }
