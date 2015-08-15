@@ -1,0 +1,47 @@
+diff --git a/Makefile b/Makefile
+index ec1a99b..9ad7988 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,11 +1,12 @@
+-CXX=gcc
+-CXXFLAGS=-fvtable-thunks
++CXX=wineg++
++CXXFLAGS=-fvtable-thunks -I/usr/include/wine/windows
++LDFLAGS=-luuid -lole32
+ OBJS=com.o re.o main.o
+ 
+ all: lnkedit
+ 
+ lnkedit: $(OBJS)
+-	$(CXX) -o lnkedit $(OBJS)
++	$(CXX) -o lnkedit $(OBJS) $(LDFLAGS)
+ 
+ .cpp.o:
+-	$(CXX) -c $(CXXFLAGSS) $<
++	$(CXX) -c $(CXXFLAGS) $<
+diff --git a/com.cpp b/com.cpp
+index 07e5782..993f879 100644
+--- a/com.cpp
++++ b/com.cpp
+@@ -30,10 +30,10 @@ int doit(char *filename, regex_t *re, char *replace, int options) {
+   }
+ 
+   /* Convert filename to unicode */
+-  MultiByteToWideChar(CP_ACP, 0, filename, -1, widepath, sizeof(widepath));
++  MultiByteToWideChar(CP_ACP, 0, filename, -1, (LPWSTR)widepath, sizeof(widepath));
+ 
+   /* Load unicode path into link */
+-  result = file->Load(widepath, STGM_READWRITE | STGM_SHARE_DENY_NONE);
++  result = file->Load((LPWSTR)widepath, STGM_READWRITE | STGM_SHARE_DENY_NONE);
+   if (result != S_OK) {
+     file->Release();
+     link->Release();
+@@ -134,7 +134,7 @@ int doit(char *filename, regex_t *re, char *replace, int options) {
+ 
+   /* Update the link */
+   if (need_write) {
+-    result = file->Save(widepath, 1);
++    result = file->Save((LPWSTR)widepath, 1);
+     if (result != S_OK) {
+       fprintf(stderr, "Error saving shortcut!\n");
+       file->Release();
