@@ -1,6 +1,6 @@
 pkgbase = python-pynbody-git
 	pkgdesc = Pynbody is a light-weight, portable, format-transparent analysis framework for N-body and hydrodynamic astrophysical simulations.
-	pkgver = 1943.4938c7a
+	pkgver = 2053.a58f770
 	pkgrel = 1
 	url = http://pynbody.github.io/
 	arch = any
