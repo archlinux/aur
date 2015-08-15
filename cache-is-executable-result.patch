@@ -1,0 +1,25 @@
+diff --git a/hphp/test/run b/hphp/test/run
+index f3baa1e..0190423 100755
+--- a/hphp/test/run
++++ b/hphp/test/run
+@@ -1424,6 +1424,11 @@ function run_and_lock_test($options, $test) {
+ }
+ 
+ function run_test($options, $test) {
++  static $timeout_executable_available = null;
++  if (is_null($timeout_executable_available)) {
++    $timeout_executable_available = is_executable('/usr/bin/timeout');
++  }
++
+   if (skip_test($options, $test)) return 'skip';
+ 
+   $test_ext = pathinfo($test, PATHINFO_EXTENSION);
+@@ -1433,7 +1438,7 @@ function run_test($options, $test) {
+     return 'skip';
+   }
+ 
+-  if (is_executable('/usr/bin/timeout')) {
++  if ($timeout_executable_available) {
+     $hhvm = '/usr/bin/timeout 300 '.$hhvm;
+   } else {
+     $hhvm = __DIR__.'/../tools/timeout.sh -t 300 '.$hhvm;

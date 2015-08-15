@@ -1,0 +1,10 @@
+/fbthrift/
+/folly/
+/re2/
+/webscalesql-5.6/
+/mcrouter/
+/proxygen/
+/squangle/
+/hhvm/
+/hhvm-third-party/
+/clang-force-libstdc++.patch

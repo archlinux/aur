@@ -5,7 +5,7 @@
 _pkgname=hhvm
 _github_addr=facebook/hhvm
 pkgname=${_pkgname}-git
-pkgver=20150720
+pkgver=20150813
 pkgrel=1
 pkgdesc="Virtual Machine, Runtime, and JIT for PHP"
 arch=('x86_64')
@@ -47,8 +47,7 @@ source=("git+https://github.com/$_github_addr" #1
         'hhvm@.service'
         'server.ini'
         'systemd-server.conf'
-        'fix_latomic_check.patch'::'https://github.com/facebook/hhvm/pull/5397.patch'
-        'clang-force-libstdc++.patch')
+        'cache-is-executable-result.patch')
 backup=('etc/hhvm/server.ini' 'etc/hhvm/systemd-server.conf')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'SKIP' 'SKIP' 'SKIP' 'SKIP'
@@ -56,8 +55,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'dddf4325926a41b3f1b5a41a1a42364ee463ab627f9d9b05ccf7c4660af3a51c'
             'bca85e0445f3e26df65876c52e507aec8146cd31cce12c82846b55705529caed'
             '66ae41fb6ef07dd02a9c959ab6b6e07bcb1d17b0c164a091fc5ecd9dc7967cd0'
-            'cca20abfc2742062d77ae448942bc2feea4073c41198a4fe8db93620cc6fea76'
-            'a8173502536c6f8e3af5d2cfaf73214b1869e1e780a842f915e8e657083a515a')
+            '1a255f99387f4fbf8c337bc44683a330cce2b1930fa150669932f7d14f2dccab')
 
 install=hhvm.install
 
@@ -70,8 +68,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    patch -p1 -i ../fix_latomic_check.patch
-    patch -p1 -i ../clang-force-libstdc++.patch
+    patch -p1 -i ../cache-is-executable-result.patch
 
     git submodule init
     git config submodule.third-party.url "${srcdir}/hhvm-third-party"
@@ -134,6 +131,7 @@ check() {
 
    cd "${srcdir}/${_pkgname}/hphp/test"
     ./run --threads 2 quick
+    # ./run --threads 2 all
 }
 
 package() {
