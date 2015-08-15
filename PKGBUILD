@@ -42,7 +42,7 @@ build() {
         --enable-netbeans \
         --enable-perlinterp \
         --enable-pythoninterp \
-        --enable-python3interp \
+        --disable-python3interp \
         --enable-rubyinterp \
         --enable-luainterp
 
