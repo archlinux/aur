@@ -1,0 +1,35 @@
+pkgbase = lxc-git
+	pkgdesc = Linux Containers from git
+	pkgver = 1.1.0.89.g83828d6
+	pkgrel = 1
+	epoch = 1
+	url = http://linuxcontainers.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = docbook2x
+	makedepends = lua
+	depends = bash
+	depends = perl
+	depends = libseccomp
+	depends = libcap
+	depends = python
+	depends = cgmanager
+	optdepends = arch-install-scripts: for archlinux template
+	optdepends = lua
+	optdepends = lua-filesystem: lxc-top
+	optdepends = lua-alt-getopt: lxc-top
+	provides = lxc
+	conflicts = lxc
+	options = emptydirs
+	backup = etc/lxc/default.conf
+	source = git://github.com/lxc/lxc
+	source = lxc.tmpfiles.d
+	source = lxc.service
+	md5sums = SKIP
+	md5sums = df94c9fb8a753011c86ee664e9f521ff
+	md5sums = 32db4ef06b27f36e15ff4b67c049dfeb
+
+pkgname = lxc-git
+
