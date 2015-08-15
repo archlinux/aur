@@ -3,7 +3,7 @@
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dictd-foldoc
 pkgver=20150814
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free On-line Dictionary of Computing for dict"
 arch=('any')
 url="http://foldoc.org/"
@@ -12,7 +12,7 @@ optdepends=('dictd: dict client and server')
 makedepends=('dictd')
 install=$pkgname.install
 source=("http://foldoc.org/Dictionary.txt")
-md5sums=('7086633cc91edacf4bfb7d47b2b431ab')
+md5sums=('e2d7bd6d929188bf4038ad203f2b4c04')
 
 pkgver()
 {
