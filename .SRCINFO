@@ -1,0 +1,43 @@
+pkgbase = hplip-raw-ledm
+	pkgdesc = HPLIP with patch for uncompressed scanning on LEDM-based peripherals
+	pkgver = 3.15.7
+	pkgrel = 1
+	url = http://hplipopensource.com
+	install = hplip.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-pyqt4
+	makedepends = python-gobject
+	makedepends = sane
+	makedepends = rpcbind
+	makedepends = cups
+	makedepends = libusb
+	depends = python
+	depends = ghostscript>=8.64-6
+	depends = net-snmp>=5.7.1
+	depends = wget
+	depends = foomatic-db-engine
+	optdepends = cups: for printing support
+	optdepends = python-dbus: for dbus support
+	optdepends = sane: for scanner support
+	optdepends = python-pillow: for commandline scanning support
+	optdepends = python-reportlab: for pdf output in hp-scan
+	optdepends = rpcbind: for network support
+	optdepends = python-pyqt4: for running GUI and hp-toolbox
+	optdepends = python-gobject: for running hp-toolbox
+	optdepends = hplip-plugin: binary blobs for specific devices (AUR) or run hp-setup to download the plugin
+	optdepends = libusb: for advanced usb support
+	provides = hplip
+	conflicts = hplip
+	source = http://downloads.sourceforge.net/hplip/hplip-3.15.7.tar.gz
+	source = http://downloads.sourceforge.net/hplip/hplip-3.15.7.tar.gz.asc
+	source = disable_upgrade.patch
+	source = hpscan-ledm-raw.patch
+	sha1sums = f84e33b749ef34939c11b253767686c00ca2c30c
+	sha1sums = SKIP
+	sha1sums = 2348bcbca0c52dc09cceb47ed13281a4ccb9d83e
+	sha1sums = 7e4b095d8bf9a0af9f0d035ca37691f733e271e0
+
+pkgname = hplip-raw-ledm
+

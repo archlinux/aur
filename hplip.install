@@ -1,0 +1,18 @@
+post_install() {
+  cat << EOF
+
+NOTE
+----
+# If you want to use this driver with sane:
+#  echo "hpaio" >> /etc/sane.d/dll.conf
+
+EOF
+}
+
+post_upgrade() {
+  if [ "`vercmp $2 3.12.4-2`" -lt 0 ]; then
+    # important upgrade notice
+    echo "> Please remove your printer in cups, then add it"
+    echo "> back and reconfigure it to make it work again!"
+  fi
+}
