@@ -2,7 +2,7 @@
 # Contributor: jfperini <@jfperini>
 
 pkgname=encuentro-bzr
-pkgver=3.1+r260
+pkgver=3.2+r269
 pkgrel=1
 pkgdesc="Busque, descargue, y vea el maravilloso contenido ofrecido por el Canal Encuentro, Paka Paka, Educ.ar y otros."
 url="http://encuentro.taniquetil.com.ar"
@@ -23,7 +23,7 @@ pkgver() {
 	cd $pkgname
     
 	# bzr revno
-    	printf "3.1+r%s" "$(bzr revno)"
+    	printf "3.2+r%s" "$(bzr revno)"
     
 }
 
