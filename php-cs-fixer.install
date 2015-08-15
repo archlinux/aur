@@ -1,0 +1,8 @@
+post_install() {
+  echo
+  echo "Warning: If you previously changed phar.readonly = Off you may now set phar.readonly = On in your php.ini";
+}
+
+post_upgrade() {
+	post_install
+}
