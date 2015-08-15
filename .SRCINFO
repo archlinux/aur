@@ -1,0 +1,15 @@
+pkgbase = mocicon
+	pkgdesc = GTK panel applet that lets you control MOC (Music On Console)
+	pkgver = 0.1.4
+	pkgrel = 8
+	url = http://mocicon.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = moc
+	depends = gtk2
+	source = http://downloads.sourceforge.net/sourceforge/mocicon/mocicon-0.1.4.tar.bz2
+	sha256sums = 5bf4b4af5dee77c72f80e842c974972fb8908953f1cbaab51617057a53dc178a
+
+pkgname = mocicon
+
