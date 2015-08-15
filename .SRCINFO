@@ -1,5 +1,5 @@
 pkgbase = libreoffice-papirus-theme
-	pkgdesc = Modified and adaptive Paper icon theme for KDE
+	pkgdesc = Libreoffice Paper theme
 	pkgver = 20150808
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
