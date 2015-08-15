@@ -29,7 +29,7 @@ package() {
 	#ok, let's use a script to start the game
 
 	mkdir -p -m755 $pkgdir/usr/bin/ 
-	printf "#!${SHELL}
+	printf "#!/bin/sh
 if whereis unionfs-fuse>/dev/null 2>&1;
     then
 	if whereis dosbox>/dev/null 2>&1;
