@@ -3,16 +3,17 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.3.1.r1297.9fa473a
+pkgver=1.3.1.r1836.9c7d417
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=('i686' 'x86_64')
 url='http://www.pcsx2.net'
 license=('GPL2' 'GPL3' 'LGPL2.1' 'LGPL3')
-depends_i686=('glew' 'libaio' 'libjpeg-turbo' 'portaudio' 'sdl' 'soundtouch'
-              'wxgtk')
+depends_i686=('glew' 'libaio' 'libjpeg-turbo' 'nvidia-cg-toolkit' 'portaudio'
+              'sdl' 'soundtouch' 'wxgtk')
 depends_x86_64=('lib32-glew' 'lib32-libaio' 'lib32-libjpeg-turbo'
-                'lib32-portaudio' 'lib32-sdl' 'lib32-soundtouch' 'lib32-wxgtk')
+                'lib32-nvidia-cg-toolkit' 'lib32-portaudio' 'lib32-sdl'
+                'lib32-soundtouch' 'lib32-wxgtk')
 makedepends=('cmake' 'git' 'png++')
 makedepends_x86_64=('gcc-multilib')
 optdepends_i686=('libcanberra: Hide silly warning')
