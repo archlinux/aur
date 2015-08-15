@@ -1,7 +1,7 @@
 # Maintainer: Spiros Georgaras <sng@hellug.gr>
 pkgname=ttf-linex-fonts
 pkgver=2.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Fonts suitable for education and institutional use"
 arch=('any')
 license=('GPL2')
@@ -10,6 +10,7 @@ depends=('fontconfig' 'xorg-font-utils' 'sed' 'binutils')
 source=('http://httpredir.debian.org/debian/pool/main/f/fonts-linex/fonts-linex_2.2-7_all.deb')
 md5sums=('d1bf208d3df1efe26718357863c0a016')
 install=${pkgname}.install
+changelog=ChangeLog
 
 build(){
 cd "${srcdir}"
