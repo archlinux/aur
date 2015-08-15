@@ -8,7 +8,7 @@ pkgname=yasem-git
 _pkgname=yasem
 pkgver=0.1
 _pkgver=$pkgver
-pkgrel=22
+pkgrel=23
 pkgdesc="IPTV STB emulator"
 arch=('i686' 'x86_64' 'armv7h')
 url=("https://github.com/mvasilchuk/yasem")
@@ -29,7 +29,7 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init --recursive
 	git submodule foreach --recursive git submodule update --init 
-	qmake
+	qmake CONFIG+=silent
 	make
 }
 
