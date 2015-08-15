@@ -7,22 +7,16 @@
 # Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
 
 pkgname=lib32-libgnutls28
-pkgver=3.3.15
+pkgver=3.3.17.1
 pkgrel=1
 pkgdesc='A library which provides a secure layer over a reliable transport layer'
 arch=('x86_64')
 url='http://gnutls.org/'
 license=('GPL3' 'LGPL2.1')
-depends=('lib32-nettle4' 'lib32-p11-kit' 'lib32-zlib')
+depends=('lib32-nettle' 'lib32-p11-kit' 'lib32-zlib')
 makedepends=('gcc-multilib' 'lib32-libidn')
-source=("ftp://ftp.gnutls.org/gcrypt/gnutls/v${pkgver%.*}/gnutls-${pkgver}.tar.xz")
-sha256sums=('8961227852911a1974e15bc017ddbcd4779876c867226d199f06648d8b27ba4b')
-
-prepare() {
-  cd gnutls-${pkgver}
-
-  sed 's|<nettle/|<nettle4/|g' -i $(grep -rl '<nettle/')
-}
+source=("ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-${pkgver}.tar.xz")
+sha256sums=('b40f158030a92f450a07b20300a3996710ca19800848d9f6fd62493170c5bbb4')
 
 build() {
   cd gnutls-${pkgver}
@@ -30,15 +24,12 @@ build() {
   export CC='gcc -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  export NETTLE_CFLAGS='-I/usr/include'
-  export NETTLE_LIBS='-L/usr/lib32 -l:libnettle.so.4'
-  export HOGWEED_CFLAGS='-I/usr/include'
-  export HOGWEED_LIBS='-L/usr/lib32 -l:libhogweed.so.2'
-
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
     --with-zlib \
+    --without-included-libtasn1 \
+    --enable-local-libopts \
     --disable-cxx \
     --disable-guile \
     --disable-hardware-acceleration \
