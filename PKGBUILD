@@ -1,7 +1,7 @@
 # Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=soletta-git
 pkgver=20150812
-pkgrel=2
+pkgrel=3
 pkgdesc="Soletta Project is a framework for making IoT devices"
 arch=('any')
 url="http://github.com/solettaproject/soletta"
@@ -10,6 +10,7 @@ depends=()
 makedepends=('git' 'python>=3.4' 'python-jsonschema' 'chrpath')
 optdepends=('gtk3' 'icu' 'curl' 'systemd')
 checkdepends=('python>3.4')
+conflicts=('soletta')
 
 _gitroot="git://github.com/solettaproject/soletta.git"   
 _gitname=$pkgname
@@ -37,6 +38,7 @@ build() {
 }
 
 check() {
+    cd "$srcdir/$_gitname-build"
     make -k check
     make -k check-fbp
 }

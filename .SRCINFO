@@ -1,10 +1,11 @@
 pkgbase = soletta-git
 	pkgdesc = Soletta Project is a framework for making IoT devices
 	pkgver = 20150812
-	pkgrel = 1
+	pkgrel = 3
 	url = http://github.com/solettaproject/soletta
 	arch = any
 	license = custom:BSD3
+	checkdepends = python>3.4
 	makedepends = git
 	makedepends = python>=3.4
 	makedepends = python-jsonschema
@@ -13,6 +14,7 @@ pkgbase = soletta-git
 	optdepends = icu
 	optdepends = curl
 	optdepends = systemd
+	conflicts = soletta
 
 pkgname = soletta-git
 
