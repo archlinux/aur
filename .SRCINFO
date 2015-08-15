@@ -1,0 +1,17 @@
+pkgbase = gphotofs
+	pkgdesc = FUSE filesystem module to mount your camera as a filesystem on Linux.
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://www.gphoto.org/proj/gphotofs/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconfig
+	depends = fuse
+	depends = glib2
+	depends = libgphoto2
+	source = http://downloads.sourceforge.net/sourceforge/gphoto/gphotofs-0.5.tar.bz2
+	sha256sums = 676ec4de69a81c193ffc31bdc7b587ac2a2cc3780b14f0e7c9c4c0a517b343cc
+
+pkgname = gphotofs
+
