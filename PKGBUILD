@@ -5,7 +5,7 @@ _repo=papirus-pack-kde
 pkgname=papirus
 pkgver=20150808
 pkgrel=1
-pkgdesc="Meta package for modified and adaptive Paper theme for KDE."
+pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
@@ -18,5 +18,9 @@ source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
 sha256sums=('934b2d28a88c155f41702512e186be4cfd9d7bf1f2370be29bd32da0ec8b6e25')
 
 package() {
-   true
+   install -d ${pkgdir}/usr/share/plasma/look-and-feel
+   cp -r ${srcdir}/${_repo}-${_git}/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
+   install -D -m644  ${srcdir}/${_repo}-${_git}/plasma-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+   find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+   find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 } 

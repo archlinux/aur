@@ -1,5 +1,5 @@
 pkgbase = papirus
-	pkgdesc = Meta package for modified and adaptive Paper theme for KDE.
+	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE.
 	pkgver = 20150808
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
