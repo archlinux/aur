@@ -1,0 +1,222 @@
+diff -Naur metacity-2.34.13.orig/src/core/delete.c metacity-2.34.13/src/core/delete.c
+--- metacity-2.34.13.orig/src/core/delete.c	2011-11-10 15:14:34.000000000 +0100
++++ metacity-2.34.13/src/core/delete.c	2012-11-08 21:36:48.373976906 +0100
+@@ -90,23 +90,41 @@
+       return;
+     }
+ 
+-  window_title = g_locale_from_utf8 (window->title, -1, NULL, NULL, NULL);
++  /* This is to get a better string if the title isn't representable
++   * in the locale encoding; actual conversion to UTF-8 is done inside
++   * meta_show_dialog */
++
++  if (window->title && window->title[0])
++    {
++      tmp = g_locale_from_utf8 (window->title, -1, NULL, NULL, NULL);
++      if (tmp == NULL)
++        window_title = NULL;
++      else
++        window_title = window->title;
++      g_free (tmp);
++    }
++  else
++    {
++      window_title = NULL;
++    }
+ 
+   /* Translators: %s is a window title */
+-  tmp = g_strdup_printf (_("<tt>%s</tt> is not responding."),
+-                         window_title);
++  if (window_title)
++    tmp = g_markup_printf_escaped (_("<tt>%s</tt> is not responding."),
++                                   window_title);
++  else
++    tmp = g_strdup (_("Application is not responding."));
++
+   window_content = g_strdup_printf (
+       "<big><b>%s</b></big>\n\n<i>%s</i>",
+       tmp,
+       _("You may choose to wait a short while for it to "
+         "continue or force the application to quit entirely."));
+ 
+-  g_free (window_title);
+-
+   dialog_pid =
+     meta_show_dialog ("--question",
+-                      window_content, 0,
+-                      window->screen->number,
++                      window_content, NULL,
++                      window->screen->screen_name,
+                       _("_Wait"), _("_Force Quit"), window->xwindow,
+                       NULL, NULL);
+ 
+diff -Naur metacity-2.34.13.orig/src/core/session.c metacity-2.34.13/src/core/session.c
+--- metacity-2.34.13.orig/src/core/session.c	2011-11-10 15:14:34.000000000 +0100
++++ metacity-2.34.13/src/core/session.c	2012-11-08 21:35:56.896216322 +0100
+@@ -1809,7 +1809,7 @@
+                            "and will have to be restarted manually next time "
+                            "you log in."),
+                          "240",
+-                         meta_screen_get_screen_number (meta_get_display()->active_screen),
++                         meta_get_display()->active_screen->screen_name,
+                          NULL, NULL,
+                          None,
+                          columns,
+diff -Naur metacity-2.34.13.orig/src/core/util.c metacity-2.34.13/src/core/util.c
+--- metacity-2.34.13.orig/src/core/util.c	2011-11-10 15:14:34.000000000 +0100
++++ metacity-2.34.13/src/core/util.c	2012-11-08 21:36:41.373828115 +0100
+@@ -538,11 +538,30 @@
+     }
+ }
+ 
++/* Command line arguments are passed in the locale encoding; in almost
++ * all cases, we'd hope that is UTF-8 and no conversion is necessary.
++ * If it's not UTF-8, then it's possible that the message isn't
++ * representable in the locale encoding.
++ */
++static void
++append_argument (GPtrArray  *args,
++                 const char *arg)
++{
++  char *locale_arg = g_locale_from_utf8 (arg, -1, NULL, NULL, NULL);
++
++  /* This is cheesy, but it's better to have a few ???'s in the dialog
++   * for an unresponsive application than no dialog at all appear */
++  if (!locale_arg)
++    locale_arg = g_strdup ("???");
++
++  g_ptr_array_add (args, locale_arg);
++}
++
+ GPid
+ meta_show_dialog (const char *type,
+                   const char *message,
+                   const char *timeout,
+-                  const gint screen_number,
++                  const char *display,
+                   const char *ok_text,
+                   const char *cancel_text,
+                   const int transient_for,
+@@ -550,61 +569,58 @@
+                   GSList *entries)
+ {
+   GError *error = NULL;
+-  char *screen_number_text = g_strdup_printf("%d", screen_number);
+   GSList *tmp;
+-  int i=0;
+   GPid child_pid;
+-  const char **argvl = g_malloc(sizeof (char*) *
+-                                (17 +
+-                                 g_slist_length (columns)*2 +
+-                                 g_slist_length (entries)));
+-
+-  argvl[i++] = "zenity";
+-  argvl[i++] = type;
+-  argvl[i++] = "--screen";
+-  argvl[i++] = screen_number_text;
+-  argvl[i++] = "--class";
+-  argvl[i++] = "metacity-dialog";
+-  argvl[i++] = "--title";
++  GPtrArray *args;
++
++  args = g_ptr_array_new ();
++
++  append_argument (args, "zenity");
++  append_argument (args, type);
++  append_argument (args, "--display");
++  append_argument (args, display);
++  append_argument (args, "--class");
++  append_argument (args, "metaicty-dialog");
++  append_argument (args, "--title");
+   /* Translators: This is the title used on dialog boxes */
+-  argvl[i++] = _("Metacity");
+-  argvl[i++] = "--text";
+-  argvl[i++] = message;
+-  
++  append_argument (args, _("Metacity"));
++  append_argument (args, "--text");
++  append_argument (args, message);
++
+   if (timeout)
+     {
+-      argvl[i++] = "--timeout";
+-      argvl[i++] = timeout;
++      append_argument (args, "--timeout");
++      append_argument (args, timeout);
+     }
+ 
+   if (ok_text)
+     {
+-      argvl[i++] = "--ok-label";
+-      argvl[i++] = ok_text;
++      append_argument (args, "--ok-label");
++      append_argument (args, ok_text);
+      }
+ 
+   if (cancel_text)
+     {
+-      argvl[i++] = "--cancel-label";
+-      argvl[i++] = cancel_text;
++      append_argument (args, "--cancel-label");
++      append_argument (args, cancel_text);
+     }
+-  
++
+   tmp = columns;
+   while (tmp)
+     {
+-      argvl[i++] = "--column";
+-      argvl[i++] = tmp->data;
++      append_argument (args, "--column");
++      append_argument (args, tmp->data);
+       tmp = tmp->next;
+     }
+ 
+   tmp = entries;
+   while (tmp)
+     {
+-      argvl[i++] = tmp->data;
++      append_argument (args, tmp->data);
+       tmp = tmp->next;
+     }
+-    
+-  argvl[i] = NULL;
++
++  g_ptr_array_add (args, NULL); /* NULL-terminate */
+ 
+   if (transient_for)
+     {
+@@ -615,7 +631,7 @@
+ 
+   g_spawn_async (
+                  "/",
+-                 (gchar**) argvl, /* ugh */
++                 (gchar**) args->pdata,
+                  NULL,
+                  G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD,
+                  NULL, NULL,
+@@ -626,8 +642,7 @@
+   if (transient_for)
+     unsetenv ("WINDOWID");
+ 
+-  g_free (argvl);
+-  g_free (screen_number_text);
++  g_ptr_array_free (args, TRUE);
+ 
+   if (error)
+     {
+diff -Naur metacity-2.34.13.orig/src/include/util.h metacity-2.34.13/src/include/util.h
+--- metacity-2.34.13.orig/src/include/util.h	2011-11-10 15:14:34.000000000 +0100
++++ metacity-2.34.13/src/include/util.h	2012-11-08 21:36:27.206860608 +0100
+@@ -99,9 +99,9 @@
+ void  meta_free_gslist_and_elements (GSList *list_to_deep_free);
+ 
+ GPid meta_show_dialog (const char *type,
+-                       const char *title,
+                        const char *message,
+-                       gint timeout,
++                       const char *timeout,
++                       const char *display,
+                        const char *ok_text,
+                        const char *cancel_text,
+                        const int transient_for,

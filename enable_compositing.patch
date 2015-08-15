@@ -1,0 +1,12 @@
+diff -Naur metacity-2.34.13.orig/src/org.gnome.metacity.gschema.xml.in metacity-2.34.13/src/org.gnome.metacity.gschema.xml.in
+--- metacity-2.34.13.orig/src/org.gnome.metacity.gschema.xml.in	2012-02-15 18:31:44.000000000 +0100
++++ metacity-2.34.13/src/org.gnome.metacity.gschema.xml.in	2013-04-10 20:14:39.837033219 +0200
+@@ -3,7 +3,7 @@
+   <schema id="org.gnome.metacity" path="/org/gnome/metacity/"
+           gettext-domain="@GETTEXT_PACKAGE@">
+     <key name="compositing-manager" type="b">
+-      <default>false</default>
++      <default>true</default>
+       <_summary>Compositing Manager</_summary>
+       <_description>
+         Determines whether Metacity is a compositing manager.

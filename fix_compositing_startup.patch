@@ -1,0 +1,12 @@
+diff -Naur metacity-2.34.5.orig/src/compositor/compositor-xrender.c metacity-2.34.5/src/compositor/compositor-xrender.c
+--- metacity-2.34.5.orig/src/compositor/compositor-xrender.c	2011-11-10 15:14:34.000000000 +0100
++++ metacity-2.34.5/src/compositor/compositor-xrender.c	2012-08-28 14:23:04.093750568 +0200
+@@ -3066,6 +3057,8 @@
+ #endif
+ 
+   xrc->enabled = TRUE;
++  xrc->show_redraw = FALSE;
++  xrc->debug = FALSE;
+   g_timeout_add (2000, (GSourceFunc) timeout_debug, xrc);
+ 
+   return compositor;

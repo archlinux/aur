@@ -1,0 +1,26 @@
+diff -Naur metacity-2.34.13.orig/src/50-metacity-navigation.xml.in metacity-2.34.13/src/50-metacity-navigation.xml.in
+--- metacity-2.34.13.orig/src/50-metacity-navigation.xml.in	2012-10-15 20:06:27.000000000 +0200
++++ metacity-2.34.13/src/50-metacity-navigation.xml.in	2013-04-23 02:35:18.000734619 +0200
+@@ -29,7 +29,7 @@
+ 	<KeyListEntry name="move-to-workspace-down"
+ 	              _description="Move window one workspace down" />
+ 
+-	<KeyListEntry name="switch-windows"
++	<KeyListEntry name="switch-applications"
+ 	              _description="Switch applications"/>
+ 
+ 	<KeyListEntry name="switch-group"
+diff -Naur metacity-2.34.13.orig/src/include/all-keybindings.h metacity-2.34.13/src/include/all-keybindings.h
+--- metacity-2.34.13.orig/src/include/all-keybindings.h	2012-02-09 19:07:40.000000000 +0100
++++ metacity-2.34.13/src/include/all-keybindings.h	2013-04-23 02:34:22.632775305 +0200
+@@ -126,8 +126,8 @@
+ keybind (switch-group, handle_switch, META_TAB_LIST_GROUP, BINDING_REVERSES)
+ keybind (switch-group-backward, handle_switch, META_TAB_LIST_GROUP,
+          REVERSES_AND_REVERSED)
+-keybind (switch-windows, handle_switch, META_TAB_LIST_NORMAL, BINDING_REVERSES)
+-keybind (switch-windows-backward, handle_switch, META_TAB_LIST_NORMAL,
++keybind (switch-applications, handle_switch, META_TAB_LIST_NORMAL, BINDING_REVERSES)
++keybind (switch-applications-backward, handle_switch, META_TAB_LIST_NORMAL,
+          REVERSES_AND_REVERSED)
+ keybind (switch-panels, handle_switch, META_TAB_LIST_DOCKS, BINDING_REVERSES)
+ keybind (switch-panels-backward, handle_switch, META_TAB_LIST_DOCKS,
