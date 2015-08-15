@@ -1,0 +1,10 @@
+post_install(){
+	echo -e "see the following users guides"
+	man -u -a ignsdk
+	echo -e "Thank You For Installations"
+}
+
+post_remove(){
+	echo -e "thanks for your installations\n"
+	echo -e "good bye"
+}

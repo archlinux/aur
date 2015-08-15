@@ -1,0 +1,18 @@
+pkgbase = ign-sdk
+	pkgdesc = IGN Software Development Kit
+	pkgver = 1.1.7
+	pkgrel = 160815
+	url = https://github.com/anak10thn/ignsdk-qt
+	install = ignsdk.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = qt5-base
+	depends = qt5-webkit
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/anak10thn/ignsdk-qt/archive/v1.1.7.tar.gz
+	md5sums = SKIP
+
+pkgname = ign-sdk
+
