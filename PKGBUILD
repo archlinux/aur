@@ -1,7 +1,7 @@
 # Maintainer: Lizao (Larry) Li <lzlarryli gmail com>
 
 pkgname=lib32-libcurl-gnutls
-pkgver=7.43.0
+pkgver=7.44.0
 pkgrel=0
 pkgdesc='An URL retrieval utility and library'
 arch=('x86_64')
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=('!libtool' '!strip')
 source=("http://curl.haxx.se/download/curl-$pkgver.tar.gz"{,.asc})
-md5sums=('3037f0b6ce03d434618e9db5506ae6be'
+md5sums=('cf46112b5151e2f1a3fd38439bdade23'
          'SKIP')
 validpgpkeys=('914C533DF9B2ADA2204F586D78E11C6B279D5C91') # Daniel Stenberg
 
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-  install -Dm644 $srcdir/curl-$pkgver/lib/.libs/libcurl.so.4.3.0 $pkgdir/usr/lib32/libcurl-gnutls.so.4.3.0
-  ln -s libcurl-gnutls.so.4.3.0 $pkgdir/usr/lib32/libcurl-gnutls.so.4
+  install -Dm644 $srcdir/curl-$pkgver/lib/.libs/libcurl.so.4.4.0 $pkgdir/usr/lib32/libcurl-gnutls.so.4.4.0
+  ln -s libcurl-gnutls.so.4.4.0 $pkgdir/usr/lib32/libcurl-gnutls.so.4
   install -Dm644 $srcdir/curl-$pkgver/docs/LICENSE-MIXING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
