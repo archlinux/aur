@@ -1,14 +1,12 @@
 # Maintainer : ksj <podhorsky.ksj@gmail.com>
-# Contributor : Ionut Biru <ibiru@archlinux.org>
-# Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=lifeograph
 pkgver=1.2.1
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org"
+pkgdesc="off-line and private journal and note taking application"
 arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL')
-url="https://www.mozilla.org/firefox/"
+license=('GNU GPL v3')
+url="https://launchpad.net/lifeograph"
 depends=('gtkmm3' 'enchant')
 makedepends=()
 optdepends=()

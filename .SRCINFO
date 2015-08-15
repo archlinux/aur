@@ -1,14 +1,12 @@
 pkgbase = lifeograph
-	pkgdesc = Standalone web browser from mozilla.org
+	pkgdesc = off-line and private journal and note taking application
 	pkgver = 1.2.1
 	pkgrel = 1
-	url = https://www.mozilla.org/firefox/
+	url = https://launchpad.net/lifeograph
 	install = lifeograph.install
 	arch = i686
 	arch = x86_64
-	license = MPL
-	license = GPL
-	license = LGPL
+	license = GNU GPL v3
 	depends = gtkmm3
 	depends = enchant
 	provides = lifeograph
