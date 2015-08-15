@@ -15,7 +15,7 @@ build() {
 	cd "$pkgname-$pkgver"
 	./configure \
         --prefix=/usr \
-        --sysconfdir='/etc/dsh'
+        --sysconfdir='/etc/$pkgname'
 	make
 }
 
