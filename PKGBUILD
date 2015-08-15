@@ -4,7 +4,7 @@
 _pkgname=powerline
 pkgname="python-${_pkgname}"
 pkgdesc='The ultimate statusline/prompt utility (stable package).'
-pkgver=2.1.4
+pkgver=2.2
 pkgrel=1
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=('MIT')
@@ -23,7 +23,7 @@ provides=('otf-powerline-symbols')
 install="${_pkgname}.install"
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
         "${install}")
-sha256sums=('4e657ff7c03c3c7269d0faeaefc9408c96da10b1ea561fe165b84ea6bc2fd03e'
+sha256sums=('0f1b8e0737f3ae91486e29e5c7c110f6ebb33ca7933e4cbaae2e28b47c3d2995'
             'af07852748ddba1544feee53fdf747d3dd163597f026719f8a6f80045d0c5425')
 
 build(){
