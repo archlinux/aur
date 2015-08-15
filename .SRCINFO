@@ -1,0 +1,17 @@
+pkgbase = zpaq
+	pkgdesc = Programmable file compressor, library and utilities. Based on the PAQ compression algorithm
+	pkgver = 7.05
+	pkgrel = 1
+	url = http://mattmahoney.net/dc/zpaq.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = MIT
+	makedepends = perl
+	source = http://mattmahoney.net/dc/zpaq705.zip
+	source = LICENSE
+	sha512sums = 1bcd22524b0433cc35ee28217eec04e1e743ec84e8ec7fe4392eb511873ff5c8571435da081de6b54a9675f206537f5d091a682383c84607905731ee132a9e66
+	sha512sums = 7ae68096163998f926be15c16da9540fa32d052a02d73db10678d965db5dfdf7e958b2d474c509d622056cc844abceda15657f2b0b5e97f6b12cb552185748e4
+
+pkgname = zpaq
+
