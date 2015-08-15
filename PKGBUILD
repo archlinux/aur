@@ -2,7 +2,7 @@
 
 pkgname=easytether-bin
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 _debrel=1
 pkgdesc="Internet access via smartphone"
 arch=(i686 x86_64)
@@ -22,9 +22,9 @@ changelog=CHANGELOG
 build()
 {
   cd ${srcdir}
-  bsdtar -xf "${_file}" data.tar.gz
-  bsdtar -xf data.tar.gz
-  rm data.tar.gz control.tar.gz debian-binary
+  bsdtar -xf "${_file}"
+  bsdtar -xf  data.tar.xz
+  rm data.tar.xz control.tar.gz debian-binary
 }
 
 package()
