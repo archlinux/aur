@@ -1,13 +1,13 @@
 pkgbase = swisseph
 	pkgdesc = High precision Swiss Ephemeris developed by Astrodienst.
-	pkgver = 1.77.00
+	pkgver = 2.02.01
 	pkgrel = 1
 	url = http://www.astro.com/swisseph/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://www.astro.com/ftp/swisseph/swe_unix_src_1.77.00.tar.gz
-	md5sums = 62ec933bbe7dde6a96d0b363ca1e18e3
+	source = http://www.astro.com/ftp/swisseph/swe_unix_src_2.02.01.tar.gz
+	md5sums = e0bca95f36cd7502716d19fd3e979b14
 
 pkgname = swisseph
 
