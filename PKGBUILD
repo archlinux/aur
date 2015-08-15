@@ -2,13 +2,13 @@
 
 pkgname=gitlab-ci-multi-runner
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The official GitLab CI runner written in Go"
 arch=('i686' 'x86_64')
 url='https://gitlab.com/gitlab-org/gitlab-ci-multi-runner'
 license=('GPLv3')
 depends=('glibc' 'ca-certificates' 'git')
-makedepends=('go' 'godep' 'make')
+makedepends=('git' 'go' 'godep' 'make' 'mercurial')
 install='gitlab-runner.install'
 source=("${pkgname}-${pkgver}.tar.gz"::"https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/repository/archive.tar.gz?ref=v${pkgver}"
         "gitlab-runner.install"
