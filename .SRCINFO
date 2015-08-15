@@ -1,0 +1,16 @@
+pkgbase = otpw
+	pkgdesc = A one-time password login package using PAM
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.cl.cam.ac.uk/~mgk25/otpw.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = pam
+	source = http://www.cl.cam.ac.uk/~mgk25/download/otpw-1.5.tar.gz
+	source = LICENSE
+	sha1sums = 99bb4094514617ba5ea11aa26a89977390b6358d
+	sha1sums = e6572dd6ef26883120850ec009a7d40df62a2d2d
+
+pkgname = otpw
+
