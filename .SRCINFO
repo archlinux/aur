@@ -1,6 +1,6 @@
 pkgbase = twmn-git
 	pkgdesc = A notification system for tiling window managers
-	pkgver = 151.9492a47
+	pkgver = 162.690dcf5-1
 	pkgrel = 1
 	url = https://github.com/sboli/twmn
 	arch = any
