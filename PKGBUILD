@@ -2,22 +2,13 @@
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
 pkgname=python-pyramid
-pkgver=1.5.7
+pkgver=1.6a2
 pkgrel=1
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
 url='http://www.pylonsproject.org/'
 license=('custom:BSD')
-depends=('python'
-	 'python-mako'
-	 'python-webob'
-	 'python-repoze.lru'
-	 'python-zope-deprecation'
-	 'python-zope-interface'
-	 'python-venusian'
-	 'python-translationstring'
-	 'python-setuptools'
-	)
+makedepends=('python')
 optdepends=(
          'python-pyramid-debugtoolbar: development mode'
          'python3-paste-deploy: pserve/pcreate'
@@ -25,16 +16,24 @@ optdepends=(
          'python-waitress: pserve/pcreate'
 	)
 source=(https://pypi.python.org/packages/source/p/pyramid/pyramid-${pkgver}.tar.gz)
-sha256sums=('c1302d5ccb6833e8794ddb649aa9bb64d86c05adb127c93e329f8863907449b4')
+sha256sums=('205e8bbffe27c3f1e74e3c9414b20e65b805cbeddc783cd957126b84469cc949')
 
 build() {
-  cd "$srcdir/pyramid-$pkgver"
-  python setup.py build
+  cd $srcdir
+  cp -r pyramid-$pkgver
 }
 
-package() {
-  cd $srcdir/pyramid-${pkgver}
-  python setup.py install --root=$pkgdir/ --optimize=1
+check() {
+  cd $srcdir/pyramid-$pkgver 
+  python3 setup.py check
+}
+
+package_python-pyramid() {
+  depends=('python' 'python-mako' 'python-webob' 'python-repoze.lru' \
+    'python-zope-deprecation' 'python-zope-interface' 'python-venusian' \
+    'python-translationstring' 'python-setuptools')
+  cd "$srcdir/pyramid-$pkgver"
+  python3 setup.py install --root "${pkgdir}" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
