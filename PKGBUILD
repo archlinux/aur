@@ -1,15 +1,14 @@
-# Maintainer: Jonian <https://github.com/jonian/>
-# Contributor: ValdikSS <https://github.com/ValdikSS/>
+# Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-proxy
 pkgver=0.9.1
 pkgrel=1
-pkgdesc="AceProxy allows you to watch Ace Stream live streams or BitTorrent files over HTTP."
+pkgdesc="AceProxy allows you to watch Ace Stream live streams or BitTorrent files over HTTP"
 arch=('any')
 url="https://github.com/ValdikSS/aceproxy"
 license=('GPL')
 groups=()
 depends=('acestream-engine' 'python2-gevent' 'python2-psutil')
-makedepends=('git')
+makedepends=()
 optdepends=()
 provides=('acestream-proxy')
 conflicts=()
@@ -18,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=($pkgname::git+https://github.com/ValdikSS/aceproxy)
+source=(https://github.com/ValdikSS/aceproxy/archive/v$pkgver.tar.gz)
 noextract=()
 md5sums=('SKIP')
 
@@ -27,9 +26,9 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/lib/systemd/system"
 
-  cp -a "$srcdir/$pkgname" "$pkgdir/opt/aceproxy"
-  cp -a "$srcdir/$pkgname/systemd/aceproxy.service" "$pkgdir/usr/lib/systemd/system/aceproxy@.service"
-  cp -a "$srcdir/$pkgname/systemd/aceproxy.service" "$pkgdir/usr/lib/systemd/system/aceproxy.service"
+  cp -a "$srcdir/aceproxy-$pkgver" "$pkgdir/opt/aceproxy"
+  cp -a "$srcdir/aceproxy-$pkgver/systemd/aceproxy.service" "$pkgdir/usr/lib/systemd/system/aceproxy@.service"
+  cp -a "$srcdir/aceproxy-$pkgver/systemd/aceproxy.service" "$pkgdir/usr/lib/systemd/system/aceproxy.service"
 
   ln -s "/opt/aceproxy/acehttp.py" "$pkgdir/usr/bin/aceproxy"
 
@@ -37,6 +36,5 @@ package() {
   sed -i "/\b\(User\|nobody\)\b/d" "$pkgdir/usr/lib/systemd/system/aceproxy.service"
   sed -i "s/User=nobody/User=%i/g" "$pkgdir/usr/lib/systemd/system/aceproxy@.service"
 
-  rm -R "$pkgdir/opt/aceproxy/.git"
   rm -R "$pkgdir/opt/aceproxy/systemd"
 }
