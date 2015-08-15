@@ -9,24 +9,32 @@ pkgdesc='Perl package for Ngram analysis of text'
 arch=('i686' 'x86_64')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl')
+depends=('perl-unicode-casefold')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
 
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+}
+
 build() {
-  cd "$srcdir/[% distdir %]"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+	cd [% distdir %]
+	sanitize
+	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
-  make test
+	cd [% distdir %]
+	sanitize
+	make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd [% distdir %]
+	sanitize
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
