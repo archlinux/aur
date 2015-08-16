@@ -2,7 +2,7 @@
 # Contributor: Rob McCathie <archaur at rmcc dot com dot au>
 
 pkgname=qconnman-git
-pkgver=r202.g6b9d09b
+pkgver=1.24
 pkgrel=1
 epoch=4
 pkgdesc="QConnman Library (Qt)"
@@ -11,14 +11,14 @@ url="https://bitbucket.org/OSSystems/qconnman"
 license=('LGPL')
 depends=('connman' 'qt4')
 makedepends=('git')
+conflicts=("qconnman")
+provides=("qconnman=$pkgver")
 source=(git+https://bitbucket.org/devonit/qconnman.git)
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/qconnman
-  local r=$(git rev-list --count HEAD)
-  local h=$(git rev-parse --short HEAD)
-  echo "r$r.g$h"
+  git describe | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
 build() {
