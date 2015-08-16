@@ -1,7 +1,7 @@
 pkgbase = bitcoinxt-only-bigblocks-git
-	pkgdesc = BitcoinXT headless P2P node
-	pkgver = 20150815
-	pkgrel = 1
+	pkgdesc = BitcoinXT headless P2P node with only bigblocks patch
+	pkgver = 20150806.83e0b45
+	pkgrel = 2
 	url = https://bitcoinxt.software
 	install = bitcoin.install
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = bitcoinxt-only-bigblocks-git
 	conflicts = bitcoin-tx
 	backup = etc/bitcoin/bitcoin.conf
 	backup = etc/logrotate.d/bitcoin
-	source = git+https://github.com/bitcoinxt/bitcoinxt
+	source = git+https://github.com/bitcoinxt/bitcoinxt#branch=only-bigblocks
 	source = bitcoin.conf
 	source = bitcoin.logrotate
 	source = bitcoin.service

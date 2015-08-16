@@ -2,8 +2,8 @@
 
 pkgname=bitcoinxt-only-bigblocks-git
 pkgver=20150806.83e0b45
-pkgrel=1
-pkgdesc="BitcoinXT headless P2P node"
+pkgrel=2
+pkgdesc="BitcoinXT headless P2P node with only bigblocks patch"
 arch=('i686' 'x86_64')
 url="https://bitcoinxt.software"
 depends=('boost'
