@@ -10,6 +10,7 @@ pkgbase = miller-git
 	makedepends = gcc
 	makedepends = flex
 	makedepends = ctags
+	makedepends = valgrind
 	depends = glibc
 	provides = miller
 	conflicts = miller-git
