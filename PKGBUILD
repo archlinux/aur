@@ -2,18 +2,18 @@
 # Contributors:
 #
 
-_fred=#tag=build01470
+_fred=#tag=build01469
 #_fred=#tag=testing-build-1469-pre2
 #_fred=#branch=next
 
-#_wot=#tag=build0016
-_wot=#branch=next
+_wot=#commit=c4435c
+#_wot=#branch=next
 
 _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
 
 pkgname=freenet
-pkgver=0.7.5.1470
-pkgrel=1
+pkgver=0.7.5.1469
+pkgrel=3
 epoch=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
@@ -244,8 +244,8 @@ build_plugins() {
         ant dist \
             -Dfreenet-cvs-snapshot.location=../fred/dist/freenet.jar \
             -Dfreenet-ext.location=../contrib/freenet-ext/dist/freenet-ext.jar \
-            -Djunit.location=/usr/share/java/junit.jar -Dtest.skip=true \
-            -Djavac.target.version=1.7 -Dtarget-version=1.7
+            -Djunit.location=/usr/share/java/junit.jar \
+            -Dtest.skip=true
     done
 }
 
