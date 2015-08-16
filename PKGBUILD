@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=vicare-scheme-git
-pkgver=20141216.ae68c14
+pkgver=20150806.492960a
 pkgrel=1
 pkgdesc="R6RS scheme implementation, from github's devel branch"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('vicare-scheme')
 conflicts=('vicare-scheme')
 install=vicare-scheme.install
-source=("vicare-scheme::git://github.com/marcomaggi/vicare.git#branch=devel")
+source=("vicare-scheme::git://github.com/marcomaggi/vicare.git")
 md5sums=('SKIP')
 _gitname="vicare-scheme"
 
