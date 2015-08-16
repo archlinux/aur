@@ -3,7 +3,7 @@
 
 pkgname=katawa-shoujo-nolib
 _pkgname=katawa-shoujo
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Ren'Py game Katawa Shoujo (only data file, need renpy installed)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('renpy')
 provides=('katawa-shoujo')
 conflicts=('katawa-shoujo')
 install="${_pkgname}.install"
-source=("[4ls]_katawa_shoujo_${pkgver}-[linux-x86][FCF758CC].tar.bz2::http://dl.katawa-shoujo.com/gold_${pkgver}/%5b4ls%5d_katawa_shoujo_${pkgver}-%5blinux-x86%5d%5bFCF758CC%5d.tar.bz2"
+source=("[4ls]_katawa_shoujo_${pkgver}-[linux-x86][18161880].tar.bz2::http://dl.katawa-shoujo.com/gold_${pkgver}/%5b4ls%5d_katawa_shoujo_${pkgver}-%5blinux-x86%5d%5b18161880%5d.tar.bz2"
         "${_pkgname}.sh"
         "${_pkgname}.desktop"
         "${_pkgname}.png")
