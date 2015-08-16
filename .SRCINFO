@@ -1,0 +1,17 @@
+pkgbase = liblastfm-qt5
+	pkgdesc = A Qt5 C++ library for the Last.fm webservices
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/lastfm/liblastfm/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt5-base
+	depends = fftw
+	depends = libsamplerate
+	source = liblastfm-1.0.9.tar.gz::https://github.com/lastfm/liblastfm/tarball/1.0.9
+	sha1sums = cd8c6f160529dbf9e0566973a8f37130c83a78c0
+
+pkgname = liblastfm-qt5
+
