@@ -5,6 +5,12 @@ pkgbase = transmission-remote-gtk
 	url = https://code.google.com/p/transmission-remote-gtk/
 	arch = any
 	license = GPL2
+	makedepends = intltool
+	depends = curl
+	depends = libnotify
+	depends = geoip
+	depends = desktop-file-utils
+	depends = gtk3
 	source = https://transmission-remote-gtk.googlecode.com/files/transmission-remote-gtk-1.1.1.tar.gz
 	sha1sums = 2fdfe0526a64a2ee5f24f1c31ca55771ea00ac7b
 

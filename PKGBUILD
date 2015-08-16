@@ -9,6 +9,8 @@ arch=(any)
 license=(GPL2)
 source=('https://transmission-remote-gtk.googlecode.com/files/transmission-remote-gtk-1.1.1.tar.gz')
 sha1sums=('2fdfe0526a64a2ee5f24f1c31ca55771ea00ac7b')
+depends=('curl' 'libnotify' 'geoip' 'desktop-file-utils' 'gtk3')
+makedepends=('intltool')
 
 
 build() {
