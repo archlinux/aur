@@ -4,7 +4,7 @@
 pkgname=libkolabxml-git
 pkgver=1.2.r569.06823bc
 pkgrel=1
-pkgdesc="Kolab XML Format Schema Definitions Library.(GIT Version)"
+pkgdesc="Kolab XML Format Schema Definitions Library. (GIT Version)"
 url='https://kolab.org'
 arch=('i686' 'x86_64')
 license=('GPL')
