@@ -2,12 +2,12 @@
 
 pkgname=kup
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A KDE-based frontend for the bup backup software"
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php/Kup+Backup+System?content=147465"
 license=('GPL')
-depends=('kdebase-runtime')
+depends=('kdebase-runtime' 'kde-cli-tools')
 makedepends=('cmake' 'extra-cmake-modules' 'kidletime' 'automoc4')
 optdepends=('bup: support for incremental backups'
             'rsync: support for synced backups')
