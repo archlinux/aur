@@ -1,18 +1,18 @@
 pkgbase = perl-xml-compile-wsdl11
 	pkgdesc = Perl package to create SOAP messages defined by WSDL 1.1
-	pkgver = 3.02
+	pkgver = 3.03
 	pkgrel = 1
-	url = http://search.cpan.org/dist/XML-Compile-WSDL11
+	url = https://metacpan.org/release/XML-Compile-WSDL11
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-xml-compile>=1.37
-	depends = perl-xml-compile-cache>=0.995
-	depends = perl-xml-compile-soap>=3.03
-	depends = perl-log-report>=1.00
+	depends = perl-xml-compile>=1.48
+	depends = perl-xml-compile-cache>=1.03
+	depends = perl-xml-compile-soap>=3.06
+	depends = perl-log-report>=1.05
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-WSDL11-3.02.tar.gz
-	md5sums = 86fee8a5ae14392c1c3efb87f4e1620b
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-WSDL11-3.03.tar.gz
+	md5sums = 5bdc01315bee9192872ee9053bdce9e7
 
 pkgname = perl-xml-compile-wsdl11
 
