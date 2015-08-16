@@ -3,10 +3,10 @@
 
 pkgname=dmenu-xft-wxy-mouse
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic X menu - with xft, width, x, y and mouse support"
 url="http://tools.suckless.org/dmenu/"
-arch=('any')
+arch=('i686' 'x86_64')
 license=('MIT')
 depends=('sh' 'libxinerama' 'libxft')
 conflicts=('dmenu' 'dmenu-xft' 'dmenu2')
