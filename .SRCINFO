@@ -5,11 +5,10 @@ pkgbase = boost-nowide
 	url = http://cppcms.com/files/nowide/html/
 	arch = x86_64
 	license = custom
-	makedepends = cmake
 	makedepends = unzip
 	depends = boost
-	source = http://cppcms.com/files/nowide/nowide_standalone.zip
-	md5sums = 5aa92f6d8f3734bd0b511c78b8aa8835
+	source = http://cppcms.com/files/nowide/nowide.zip
+	md5sums = 05869af83b7f72ef310e690ca2444078
 
 pkgname = boost-nowide
 
