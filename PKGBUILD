@@ -3,13 +3,12 @@
 pkgname=airvpn-bin
 pkgver=2.9.2
 pkgrel=7
-pkgdesc='AirVPN client "Eddie", stable version. Based on OpenVPN and operated by activists and hacktivists
-in defense of net neutrality, privacy and against censorship.'
+pkgdesc='AirVPN client "Eddie" based on OpenVPN, stable version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
 license=(GPL3)
 depends=(gksu mono openvpn)
-optdepends=(stunnel openssh)
+optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 provides=('airvpn')
 conflicts=('airvpn' 'airvpn-beta-bin')
 install=airvpn.install
