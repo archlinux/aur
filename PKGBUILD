@@ -1,16 +1,16 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
-pkgname="python2-jaydebeapi"
+pkgname=python2-jaydebeapi
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A bridge from JDBC database drivers to Python DB-API"
-arch=(any)
-url="https://launchpad.net/jaydebeapi"
+arch=('any')
+url="https://github.com/baztian/jaydebeapi"
 license=('GPL3')
 makedepends=('python2')
-depends=('python2' 'jpype')
+depends=('python2' 'python2-jpype1' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/J/JayDeBeApi/JayDeBeApi-${pkgver}.tar.gz")
-md5sums=('71db1776c90d2ba77d889aeb4b193627')
+sha256sums=('a08cdb69038904215ae84b5adf28e21fc8d9efeaded1401a6c3d23632c47f07a')
 
 package() {
   cd "JayDeBeApi-${pkgver}"
