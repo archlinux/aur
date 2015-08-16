@@ -1,0 +1,17 @@
+pkgbase = sniffjoke
+	pkgdesc = An internet client running SniffJoke injects in the transmission flow some packets able to seriously disturb passive analysis like sniffing, interception and low level information theft
+	pkgver = 0.4.1
+	pkgrel = 3
+	url = http://www.delirandom.net/sniffjoke/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cmake
+	depends = gcc
+	depends = iptables
+	depends = tcpdump
+	source = http://www.delirandom.net/sniffjoke/sniffjoke-0.4.1.tar.bz2
+	md5sums = 5a916a830abef8b5c26d4f0e38941b40
+
+pkgname = sniffjoke
+
