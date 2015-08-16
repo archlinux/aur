@@ -1,10 +1,10 @@
 pkgbase = servo-git
 	pkgdesc = Parallel Browser Project: web browser written in Rust
-	pkgver = 10609.c63fc4d
+	pkgver = 11957.a2978f2
 	pkgrel = 1
-	url = https://github.com/mozilla/servo
-	arch = x86_64
+	url = https://github.com/servo/servo
 	arch = i686
+	arch = x86_64
 	license = MPL
 	makedepends = git
 	makedepends = curl
