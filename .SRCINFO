@@ -1,0 +1,16 @@
+pkgbase = mediterranean-gtk-themes-git
+	pkgdesc = The Mediterranean family of GTK+2/3 themes
+	pkgver = v2.03.0.1.r30.g1c33164
+	pkgrel = 1
+	url = https://github.com/rbrito/mediterranean-gtk-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = gtk-engines: For GTK2 support
+	optdepends = gtk-engine-murrine: for GTK2 support
+	optdepends = gtk3: for GTK3 support
+	source = mediterranean-gtk-themes-git::git+https://github.com/rbrito/mediterranean-gtk-themes
+	sha256sums = SKIP
+
+pkgname = mediterranean-gtk-themes-git
+
