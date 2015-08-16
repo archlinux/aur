@@ -6,7 +6,7 @@ pkgver=0.1.2_16_g0147c0e
 epoch=1
 _gitver=0147c0ee6222bd10714ef36f42dcee94495bdb92
 _vdrapi=2.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="skin based on the Enigma text2skin addon"
 url="http://andreas.vdr-developer.org/enigmang/index.html"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -43,10 +43,7 @@ build() {
 
 package() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  make DESTDIR="$srcdir" install
-
-  mkdir -p "$pkgdir/var/lib/vdr/themes"
-  cp themes/* "$pkgdir/var/lib/vdr/themes"
+  make DESTDIR="$pkgdir" install
 
   install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
 
