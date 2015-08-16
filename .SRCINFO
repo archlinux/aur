@@ -1,0 +1,16 @@
+pkgbase = intel-opencl-runtime
+	pkgdesc = Intel's implementation of the OpenCL standard optimized for Intel processors
+	pkgver = 2014_R2
+	pkgrel = 3
+	url = http://software.intel.com/en-us/vcsource/tools/opencl
+	install = intel-opencl-runtime.install
+	arch = x86_64
+	license = intel
+	makedepends = rpmextract
+	depends = intel-opencl-sdk
+	provides = opencl
+	source = http://registrationcenter.intel.com/irc_nas/4181/opencl_runtime_14.2_x64_4.5.0.8.tgz
+	sha256sums = 2f89eed6e8e1ebfd7d22ea4a10cfc63cbe8ffb41445d78e98de02f99806d2aac
+
+pkgname = intel-opencl-runtime
+
