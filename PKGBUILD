@@ -1,7 +1,7 @@
 # Maintainer: NanoArch <nanoarch77@gmail.com>
 
 pkgname=gdm3setup
-pkgver=20150507
+pkgver=20150813
 pkgrel=1
 pkgdesc="An interface to configure GDM3 and autologin options"
 arch=(any)
@@ -11,7 +11,7 @@ source=(https://raw.github.com/Nano77/various/master/src/$pkgname/master/$pkgnam
 depends=('gdm' 'gnome-shell' 'python2-lxml' 'python2-dbus' 'gdm3setup-utils>=20150507')
 optdepends=('archlinux-artwork: Set an Archlinux logo')
 conflicts=('gdm3setup-native-theme' 'gdm3setup-vala' 'gdm3setup-vala-native-theme')
-sha256sums=('890790d07afca426bffd42eabc59038d47c8bc08233e9286ab4331e81ba6b3ce')
+sha256sums=('8724e0369f9fb9cda61135d3a78e5d5546eb167a6fcf30132ff6431419ad587d')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
