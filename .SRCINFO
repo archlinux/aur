@@ -1,0 +1,29 @@
+pkgbase = opentk
+	pkgver = 1.1_4c
+	pkgrel = 1
+	epoch = 2
+	url = http://www.opentk.com
+	arch = any
+	license = MIT
+	makedepends = doxygen
+	makedepends = texlive-core
+	makedepends = ghostscript
+	options = !emptydirs
+	source = https://github.com/opentk/opentk/archive/1.1-4c.tar.gz
+	source = opentk.pc.in
+	source = opentk-winforms.pc.in
+	source = opentk-compat.pc.in
+	sha1sums = 1eae1729720eb06cdd22ad6372346e2aa37b55c1
+	sha1sums = 1af9b1b5edd2b56023bf85c7aa79d6867fa6c94c
+	sha1sums = b30246f657626e2223c252fbf9d176f32e56fb18
+	sha1sums = 933814784c3f73f007ed899abfea16e990c2836b
+
+pkgname = opentk
+	pkgdesc = Open source game development toolkit for .Net/Mono.
+	depends = mono
+	depends = sdl2
+	depends = openal
+
+pkgname = opentk-docs
+	pkgdesc = OpenTK documentation
+
