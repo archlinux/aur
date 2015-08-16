@@ -2,10 +2,10 @@
 pkgname=sway-git
 _pkgname=sway
 pkgver=r171.909bae0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
-makedepends=("cmake")
+makedepends=("cmake" "git")
 depends=("wlc-git")
 optdepends=("xorg-server-xwayland: running xorg windows under sway")
 arch=("i386" "x86_64")
