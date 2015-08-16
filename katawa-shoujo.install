@@ -1,0 +1,11 @@
+post_install() {
+    echo
+    echo "==> You can find game manual at"
+    echo "==> /usr/share/doc/katawa-shoujo/gamemanual.pdf"
+    echo
+}
+
+post_upgrade() {
+  post_install
+}
+
