@@ -1,7 +1,7 @@
 pkgbase = crypted-backups-git
 	pkgdesc = Backup scripts using systemd timer/service units and gpg encryption
-	pkgver = r31.9c4c4f4
-	pkgrel = 2
+	pkgver = 0.1.r0.g3700dbe
+	pkgrel = 1
 	url = https://sleepmap.de/projects/crypted-backups
 	arch = any
 	license = GPL3
