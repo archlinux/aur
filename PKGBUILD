@@ -1,6 +1,6 @@
 # Maintainer: Benedikt Bergenthal <b.bergenthal@cern.ch>
 pkgname=benelib
-pkgver=0.22.fad95b5
+pkgver=0.28.203e14c
 pkgrel=1
 pkgdesc="A library containing many code snippets mostly for ROOT"
 arch=('x86_64')
