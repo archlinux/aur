@@ -4,12 +4,12 @@
 name=asciinema
 pkgname=asciinema-git
 pkgver=1.0.0.r8.g365b36c
-pkgrel=1
+pkgrel=2
 pkgdesc="Record and share your terminal sessions, the right way"
 arch=('any')
 url="https://github.com/sickill/$name"
 license=('MIT')
-makedepends=('git' 'go' 'gcc-go')
+makedepends=('git' 'gcc-go')
 conflicts=("$name")
 source=("$pkgname::git+https://github.com/sickill/${name}.git")
 sha256sums=('SKIP')
