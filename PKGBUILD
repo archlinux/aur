@@ -3,7 +3,7 @@
 # Package Repository: https://github.com/mij-aur-packages/lubuntu-artwork
 
 pkgname=lubuntu-artwork
-pkgver=0.54
+pkgver=0.55
 pkgrel=1
 pkgdesc='artwork of Lubuntu'
 arch=('any')
