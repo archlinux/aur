@@ -7,7 +7,11 @@ license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
 makedepends=("cmake" "git")
 depends=("wlc-git")
-optdepends=("xorg-server-xwayland: running xorg windows under sway")
+optdepends=(
+	"xorg-server-xwayland: running xorg windows under sway"
+	"rxvt-unicode: default terminal emulator"
+	"dmenu: default for launching applications"
+)
 arch=("i386" "x86_64")
 url='https://github.com/SirCmpwn/sway'
 source=("${pkgname%-*}::git+https://github.com/SirCmpwn/sway.git")
