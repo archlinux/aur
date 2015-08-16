@@ -13,8 +13,8 @@ pkgbase = phreeqc
 	source = https://github.com/jaalto/project-emacs--folding-mode/blob/master/folding.el
 	md5sums = ec206646be8135eb54416bc80d535c9d
 	md5sums = 8facd6e784cd1985b2c57c092b753002
-	md5sums = 96771b3edfac85312b20260d677e2260
-	md5sums = d262512bd4a19a68805914d35f8f9019
+	md5sums = 3100a0db4223f0432868392ddeeddbdc
+	md5sums = 365241b97b697b55c285cd6eeb1e4be4
 
 pkgname = phreeqc
 
