@@ -41,6 +41,6 @@ package() {
   mv "$pkgdir/usr/man" "$pkgdir/usr/share"
 
   # Rename pgrep to pkgrep to avoid conflict with package procps-ng
-  mv "$pkgdir/usr/bin/pgrep" "$pkgdir/usr/bin/pkgrep"
-  mv "$pkgdir/usr/share/man/man1/pgrep.1" "$pkgdir/usr/share/man/man1/pkgrep.1"
+  mv "$pkgdir/usr/bin/pgrep" "$pkgdir/usr/bin/pktgrep"
+  mv "$pkgdir/usr/share/man/man1/pgrep.1" "$pkgdir/usr/share/man/man1/pktgrep.1"
 }
