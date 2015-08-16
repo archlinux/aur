@@ -1,6 +1,6 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura-git
-pkgver=0.0.700.g84ac3cd
+pkgver=0.0.2160.gaada7d7
 pkgrel=1
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends."
 arch=(i686 x86_64)
@@ -10,8 +10,8 @@ depends=(libgl mesa glew glm sdl2 sdl2_image sdl2_ttf sdl2_mixer libpng boost-li
 optdepends=('frogatto-git: the default game module'
             'box2d: box2d physics')
 makedepends=(git boost)
-source=(git+https://github.com/anura-engine/anura.git
-        anura.sh)
+source=('git+https://github.com/anura-engine/anura.git#branch=trunk'
+        anura.sh
 md5sums=('SKIP'
          '15f4c03c2404bcfd7618b8f9e0c850ba')
 install=anura.install
