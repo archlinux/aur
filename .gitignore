@@ -1,2 +1,5 @@
+makepasswd_*.tar.gz
+makepasswd_*.diff.gz
+makepasswd-*.pkg.tar
 pkg/*
 src/*

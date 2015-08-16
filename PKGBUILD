@@ -6,22 +6,26 @@
 
 pkgname=makepasswd
 pkgver=1.10_10
-pkgrel=1
+pkgrel=2
 pkgdesc='Generates true random passwords with the emphasis on security over pronounceability (Debian version)'
 arch=('any')
 url='http://packages.qa.debian.org/m/makepasswd.html'
 license=('GPL2')
-depends=('perl-passwd-md5' 'perl-crypt-openssl-random')
+depends=('perl-passwd-md5'
+         'perl-crypt-openssl-random'
+         'perl-bytes-random-secure'
+         'perl-crypt-random-seed')
 source=("http://ftp.debian.org/debian/pool/main/m/${pkgname}/${pkgname}_${pkgver%_*}.orig.tar.gz"
         "http://ftp.debian.org/debian/pool/main/m/${pkgname}/${pkgname}_${pkgver//_/-}.diff.gz")
-md5sums=('55842bb4c064ebcdedffb4afd5f0945a'
-         'e9ec121ed24c08f7b9b21b325f3a9fef')
+sha256sums=('41491f361d810f9bb3e08b40df3c3034faec306d434dab15534e19023f91a75c'
+            'f552c468789c8ed326fd1506c93f04378085a198e332ac206539367948c4ad93')
 
 prepare() {
   patch -p1 -d "$pkgname-${pkgver%_*}" < "${pkgname}_${pkgver//_/-}.diff"
 }
 
 check() {
+  cd "$srcdir/$pkgname-${pkgver%_*}"
   ./makepasswd
 }
 
