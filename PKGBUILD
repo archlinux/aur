@@ -80,7 +80,7 @@ build() {
 
 prepare() {
   cd "${srcdir}/$_pkgname-$pkgver"
-  patch -p1 < ../patch.http2.txt
+  patch -p1 < ../patch.http2-v2_1.9.3.txt
 }
 
 package() {
