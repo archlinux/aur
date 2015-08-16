@@ -1,0 +1,7 @@
+post_install() {
+    echo 'Now, look at'
+    echo
+    echo '    http://git.gnome.org/browse/jhbuild/tree/examples/sample.jhbuildrc'
+    echo
+    echo 'and create your ~/.config/jhbuildrc file.'
+}
