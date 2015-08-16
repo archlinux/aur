@@ -12,8 +12,12 @@ optdepends=('frogatto-git: the default game module'
 makedepends=(git boost)
 source=('git+https://github.com/anura-engine/anura.git#branch=trunk'
         anura.sh
+        0001-Change-Makefile-to-enable-ccache-to-work.patch
+        0002-Fix-a-Linux-compilation-error.patch)
 md5sums=('SKIP'
-         '15f4c03c2404bcfd7618b8f9e0c850ba')
+         '15f4c03c2404bcfd7618b8f9e0c850ba'
+         '63fee48f8260aa1e51f7d4ab9bdb925f'
+         '39a6636cdfe007beb20b754820618601')
 install=anura.install
 
 _gitname=anura
@@ -33,7 +37,11 @@ pkgver() {
 prepare() {
   cd $_gitname
 
-  sed -i -e 's/-lSDL2main//' Makefile
+  git apply ../0001-Change-Makefile-to-enable-ccache-to-work.patch
+  git apply ../0002-Fix-a-Linux-compilation-error.patch
+
+  # use system boost headers
+  rm -r external/include/boost
 }
 
 build() {
