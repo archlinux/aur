@@ -1,13 +1,14 @@
 pkgbase = perl-bytes-random-secure
 	pkgdesc = Perl extension to generate cryptographically-secure random bytes.
 	pkgver = 0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Bytes-Random-Secure
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl
 	depends = perl-math-random-isaac
+	depends = perl-crypt-random-seed
 	options = !emptydirs
 	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVIDO/Bytes-Random-Secure-0.29.tar.gz
