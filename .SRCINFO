@@ -1,0 +1,22 @@
+pkgbase = kluppe
+	pkgdesc = A loop-player and recorder, designed for live use.
+	pkgver = 0.6.15
+	pkgrel = 1
+	url = http://kluppe.klingt.org/
+	install = kluppe.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = gtk2
+	depends = liblo
+	depends = libusb-compat
+	source = http://kluppe.klingt.org/downloads/kluppe-0.6.15.tar.gz
+	source = kluppe-0.6.15.patch
+	source = kluppe.desktop
+	md5sums = 9763bbc90ea44675081bd086edb70320
+	md5sums = c839aee60b8a15848dc2b790bc791d01
+	md5sums = d649153f0f0203b9663cee55e062d2a4
+
+pkgname = kluppe
+

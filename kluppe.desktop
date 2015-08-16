@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kluppe
+Comment=A loop-player and recorder, designed for live use
+GenericName=Kluppe
+Exec=kluppe
+Icon=/usr/share/pixmaps/kluppe.png
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Audio;
+StartupNotify=true

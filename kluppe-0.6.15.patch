@@ -1,0 +1,60 @@
+diff -aur kluppe-0.6.15/Makefile kluppe-0.6.15.patched/Makefile
+--- kluppe-0.6.15/Makefile	2009-04-15 16:04:32.000000000 +0200
++++ kluppe-0.6.15.patched/Makefile	2013-08-01 19:09:02.039228436 +0200
+@@ -1,12 +1,12 @@
+ CC = gcc
+ VERSION = `cat VERSION`
+-INSTALL_PREFIX = /usr/local
++INSTALL_PREFIX = /usr
+ BIN_DIR = $(INSTALL_PREFIX)/bin
+ PIXMAPS_DIR = $(INSTALL_PREFIX)/share/pixmaps
+ TEMP_ROOT = /tmp
+ TEMP_DIR = kluppe-$(VERSION)
+-CFLAGS = -pthread -march=pentium-m -mfpmath=sse -msse3 -g -O3 -Wall -DHAVE_ALSA -DHAVE_USB -DHAVE_OSC
+-#CFLAGS = -pthread -O3 -Wall -DHAVE_ALSA -DHAVE_USB -DHAVE_OSC
++#CFLAGS = -pthread -march=pentium-m -mfpmath=sse -msse3 -g -O3 -Wall -DHAVE_ALSA -DHAVE_USB -DHAVE_OSC
++CFLAGS = -pthread -O3 -Wall -DHAVE_ALSA -DHAVE_USB -DHAVE_OSC
+ export 
+ 
+ kluppe: commons 
+diff -aur kluppe-0.6.15/src/common/alphatrack.h kluppe-0.6.15.patched/src/common/alphatrack.h
+--- kluppe-0.6.15/src/common/alphatrack.h	2010-10-02 13:30:54.000000000 +0200
++++ kluppe-0.6.15.patched/src/common/alphatrack.h	2013-08-01 22:32:14.575881966 +0200
+@@ -9,14 +9,8 @@
+ 
+ #include <pthread.h>
+ #include <usb.h>
+-#ifndef __KERNEL__
+-#define uint32_t unsigned int
+-#define uint16_t unsigned short
+-#define uint8_t unsigned char
+-#define uint64_t unsigned long long
+-#else
++#include <stdint.h>
+ #include <linux/types.h>
+-#endif
+ 
+ 
+ #define ALPHATRACK_VENDORID  0x165b
+diff -aur kluppe-0.6.15/src/frontend/kluppe/kluppe.c kluppe-0.6.15.patched/src/frontend/kluppe/kluppe.c
+--- kluppe-0.6.15/src/frontend/kluppe/kluppe.c	2008-07-08 18:09:30.000000000 +0200
++++ kluppe-0.6.15.patched/src/frontend/kluppe/kluppe.c	2013-08-01 21:06:39.442554165 +0200
+@@ -1075,7 +1075,6 @@
+ 	/* start the jack threads */
+         jack_info = mixer_launch(looperdatalist);
+ 
+-        g_thread_init(NULL);
+         gdk_threads_init();
+ /*        gdk_threads_enter();*/
+ 
+diff -aur kluppe-0.6.15/src/frontend/kluppe/Makefile kluppe-0.6.15.patched/src/frontend/kluppe/Makefile
+--- kluppe-0.6.15/src/frontend/kluppe/Makefile	2013-06-24 18:54:19.000000000 +0200
++++ kluppe-0.6.15.patched/src/frontend/kluppe/Makefile	2013-08-01 22:35:23.565881761 +0200
+@@ -1,6 +1,6 @@
+ BIN_DIR = $(INSTALL_PREFIX)/bin
+ PIXMAPS_DIR = $(INSTALL_PREFIX)/share/pixmaps
+-MAN_DIR = $(INSTALL_PREFIX)/man/man1
++MAN_DIR = $(INSTALL_PREFIX)/share/man/man1
+ SOURCES = sfpreview.c configfile.c griddialog.c threshdialog.c graindialog.c customcurve.c looper.c gtkmeter.c gtkloopview.c kluppe.c alphatrack_callback.c
+ TARGETS = $(SOURCES:.c=.o)
+ 
