@@ -17,6 +17,6 @@ package() {
   mkdir -p $pkgdir/usr/share/themes
   cd $srcdir
   cp -r $pkgname $pkgdir/usr/share/themes/
-  chmod 644 $pkgdir/usr/share/themes/$pkgname
+  chmod -R 644 $pkgdir/usr/share/themes/$pkgname
 
 }
