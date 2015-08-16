@@ -1,4 +1,6 @@
+# Maintainer: Mark Weiman <mark dot weiman at markzz dot com>
 # Contributor: Aleksei Lissitsin <aleksei.lissitsin@gmail.com>
+
 pkgname=gedit-latex
 pkgver=3.8.0
 pkgrel=1
