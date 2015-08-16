@@ -14,6 +14,7 @@ conflicts=('katawa-shoujo')
 package() {
   msg "katawa-shoujo-nolib has been moved to katawa-shoujo, please migrate :)"
   msg "Quitting build process..."
+  exit 1
 }
 
 # vim:set ts=2 sw=2 et:
