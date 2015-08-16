@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r170.0d04189
+pkgver=r171.909bae0
 pkgrel=1
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'

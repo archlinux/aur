@@ -1,13 +1,13 @@
 pkgbase = sway-git
 	pkgdesc = i3 compatible window manager for Wayland
-	pkgver = r170.0d04189
+	pkgver = r171.909bae0
 	pkgrel = 1
 	url = https://github.com/SirCmpwn/sway
 	arch = i386
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	depends = wlc
+	depends = wlc-git
 	optdepends = xorg-server-xwayland: running xorg windows under sway
 	source = sway::git+https://github.com/SirCmpwn/sway.git
 	sha1sums = SKIP
