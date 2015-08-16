@@ -1,5 +1,5 @@
 pkgbase = sourcery-codebench-arm-none-linux-gnueabi
-	pkgdesc = Sourcery CodeBench Lite for ARM EABI
+	pkgdesc = Sourcery CodeBench Lite for ARM NONE LINUX GNUEABI
 	pkgver = 2014.05
 	pkgrel = 1
 	url = http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/
