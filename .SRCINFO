@@ -1,6 +1,6 @@
 pkgbase = ptxdist
 	pkgdesc = Embedded Linux build system
-	pkgver = 2015.07.0
+	pkgver = 2015.08.0
 	pkgrel = 1
 	url = http://www.ptxdist.org
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = ptxdist
 	depends = bison
 	depends = patch
 	depends = python2
-	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2015.07.0.tar.bz2
-	sha256sums = 7d01cac23276c23b50b91901d9a3acfe42f8b4363f790444a6424988045206f7
-	sha512sums = a8e5eb66b47b27dc6ed5acf40f4e7451a62015c2101b05de736b4c24d84ef76903bf40541ad6b6dca88af1b5dce94c553dcd3022a18ddd793eacfcd329ed8691
+	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2015.08.0.tar.bz2
+	sha256sums = 5561e90e4c2067400a90367809f121152ee47b57e95adf22c6fbf3e34f0d5f4c
+	sha512sums = e3f4f01cc467358b1b91c747317175b63d5679f7bac1b509e4d60c62555fc4c697d158c60c06c0fcfc14e1752f687758f7805651a291a79792dc182a2a23ec51
 
 pkgname = ptxdist
 
