@@ -25,6 +25,6 @@ package() {
   tar -xzf data.tar.gz --exclude="usr/share/lintian" -C "${pkgdir}"/
 
   # Install license file
-  install -dm 755 "${pkgdir}"/usr/share/licenses/digilent.waveforms
-  ln -s /usr/share/doc/digilent.waveforms/copyright "${pkgdir}"/usr/share/licenses/digilent.waveforms/copyright
+  install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
 }
