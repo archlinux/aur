@@ -1,7 +1,7 @@
 pkgbase = dictd-foldoc
 	pkgdesc = The Free On-line Dictionary of Computing for dict
-	pkgver = 20150814
-	pkgrel = 2
+	pkgver = 20150814_224817
+	pkgrel = 1
 	url = http://foldoc.org/
 	install = dictd-foldoc.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dictd-foldoc
 	makedepends = dictd
 	optdepends = dictd: dict client and server
 	source = http://foldoc.org/Dictionary.txt
-	md5sums = e2d7bd6d929188bf4038ad203f2b4c04
+	md5sums = SKIP
 
 pkgname = dictd-foldoc
 
