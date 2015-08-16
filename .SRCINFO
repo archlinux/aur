@@ -1,7 +1,7 @@
 pkgbase = monaco-linux-font
 	pkgdesc = Mono-spaced Macintosh system font
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.apple.com
 	install = monaco-linux.install
 	arch = any

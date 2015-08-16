@@ -1,10 +1,11 @@
 # $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: Laszlo Papp
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=monaco-linux-font
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Mono-spaced Macintosh system font"
 arch=('any')
 license=('unknown')
