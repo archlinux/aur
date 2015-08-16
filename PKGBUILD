@@ -4,7 +4,7 @@
 pkgname=cardpeek
 pkgver=0.8.4
 pkgrel=1
-pkgdesc="A tool to read the contents of smartcards"
+pkgdesc="A tool to read-only the contents of smartcards"
 arch=(i686 x86_64)
 url="http://pannetrat.com/Cardpeek"
 license=('GPL')
