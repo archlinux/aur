@@ -1,7 +1,7 @@
 pkgbase = iceweasel
 	pkgdesc = Debian Browser based on Mozilla Firefox
 	pkgver = 40.0.deb1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/experimental/iceweasel
 	install = iceweasel.install
 	arch = i686

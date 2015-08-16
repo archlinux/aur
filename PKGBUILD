@@ -29,7 +29,7 @@ _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -164,15 +164,15 @@ package() {
   
   # According to debian choices, we prefer to use /etc/icewasel/searchplugins
   install -d "$pkgdir/etc/${pkgname}/searchplugins/common"
-  install -d "$pkgdir/etc/${pkgname}/searchplugins/locale"
   
   # Add common web searchplugins
   # install -Dm644 "$srcdir/$DEBIAN_BUILD/debian/duckduckgo.xml" "$pkgdir/etc/${pkgname}/searchplugins/common/duckduckgo.xml"
   install -Dm644 "$srcdir/$DEBIAN_BUILD/debian/debsearch.xml" "$pkgdir/etc/${pkgname}/searchplugins/common/debsearch.xml"
   
   # Add web searchplugins for default locale (en-US)
-  cp -R "$pkgdir/usr/lib/$pkgname/browser/searchplugins" "$pkgdir/etc/${pkgname}/searchplugins/locale/en-US"
-  
-  rm -rv "$pkgdir/usr/lib/$pkgname/browser/searchplugins"    
+  # WORNING!! It seems they aren't included anymore
+  # install -d "$pkgdir/etc/${pkgname}/searchplugins/locale"
+  # cp -R "$pkgdir/usr/lib/$pkgname/browser/searchplugins" "$pkgdir/etc/${pkgname}/searchplugins/locale/en-US"
+  # rm -rv "$pkgdir/usr/lib/$pkgname/browser/searchplugins"    
 }
 
