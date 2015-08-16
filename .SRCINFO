@@ -1,0 +1,16 @@
+pkgbase = ruby-json
+	pkgdesc = JSON implementation as a Ruby extension in C
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = http://flori.github.io/json/
+	arch = any
+	license = GPL
+	depends = ruby
+	optdepends = jruby
+	optdepends = java-environment
+	noextract = json-1.8.2.gem
+	source = https://rubygems.org/downloads/json-1.8.2.gem
+	sha256sums = 256f73d107635f54e3dd84daba65da7b08f9d6a6e6aeb046db6a46b98bd8fb7f
+
+pkgname = ruby-json
+
