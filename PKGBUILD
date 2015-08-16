@@ -29,7 +29,7 @@ package() {
   [ -d "${pkgdir}"/usr/sbin ] && mv "${pkgdir}"/usr/{sbin,bin}
 
   # License files
-  install -dm 755 "${pkgdir}"/usr/share/licenses/digilent.adept.runtime
-  ln -s /usr/share/doc/digilent.adept.runtime/copyright "${pkgdir}"/usr/share/licenses/digilent.adept.runtime/copyright
-  ln -s /usr/share/doc/digilent.adept.runtime/EULA "${pkgdir}"/usr/share/licenses/digilent.adept.runtime/EULA
+  install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
+  ln -s "/usr/share/doc/${pkgname}/EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
 }
