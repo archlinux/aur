@@ -1,0 +1,18 @@
+pkgbase = klook-git
+	pkgdesc = A quick file content preview application that supports integration with Dolphin
+	pkgver = v2.0_10_5_gf01e033
+	pkgrel = 1
+	url = https://abf.rosalinux.ru/uxteam/klook-devel
+	install = klook-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	makedepends = git
+	depends = kdebase-runtime
+	source = git+https://abf.rosalinux.ru/uxteam/klook-devel.git
+	md5sums = SKIP
+
+pkgname = klook-git
+
