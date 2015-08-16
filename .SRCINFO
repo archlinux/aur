@@ -1,0 +1,23 @@
+pkgbase = nvidia-tomoyo
+	pkgdesc = NVIDIA drivers for the linux-tomoyo kernel
+	pkgver = 352.30
+	pkgrel = 2
+	url = http://www.nvidia.com/
+	install = nvidia.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = linux-headers>=4.1
+	makedepends = linux-headers<4.2
+	depends = linux>=4.1
+	depends = linux<4.2
+	depends = nvidia-utils=352.30
+	depends = libgl
+	options = !strip
+	source = ftp://download.nvidia.com/XFree86/Linux-x86/352.30/NVIDIA-Linux-x86-352.30.run
+	source = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.30/NVIDIA-Linux-x86_64-352.30-no-compat32.run
+	md5sums = 7e59d84eafe2482b2f02df692b9168d5
+	md5sums = 135dd90db609cecad8e74bde0054cf6f
+
+pkgname = nvidia-tomoyo
+
