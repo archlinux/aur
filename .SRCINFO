@@ -1,5 +1,5 @@
 pkgbase = airvpn-bin
-	pkgdesc = AirVPN client "Eddie", stable version. Based on OpenVPN and operated by activists and hacktivists in defense of net neutrality, privacy and against censorship.
+	pkgdesc = AirVPN client "Eddie" based on OpenVPN, stable version.
 	pkgver = 2.9.2
 	pkgrel = 7
 	url = https://airvpn.org/linux/
@@ -10,8 +10,8 @@ pkgbase = airvpn-bin
 	depends = gksu
 	depends = mono
 	depends = openvpn
-	optdepends = stunnel
-	optdepends = openssh
+	optdepends = stunnel: VPN over SSL
+	optdepends = openssh: VPN over SSH
 	provides = airvpn
 	conflicts = airvpn
 	conflicts = airvpn-beta-bin
