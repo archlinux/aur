@@ -1,0 +1,13 @@
+pkgbase = fakeroute
+	pkgdesc = a hack that makes your host appear (to unix traceroute) to be anywhere
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://www.thoughtcrime.org/software/fakeroute/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = http://www.thoughtcrime.org/software/fakeroute/fakeroute-0.3.tar.gz
+	md5sums = d35c1894f2774993e785825f9fd06fa2
+
+pkgname = fakeroute
+
