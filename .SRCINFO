@@ -1,6 +1,6 @@
 pkgbase = delicolour
 	pkgdesc = Colour finder utility (GUI)
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/eepp/delicolour
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = delicolour
 	depends = python-colormath
 	provides = delicolour
 	conflicts = delicolour
-	source = https://github.com/eepp/delicolour/archive/v1.0.1.tar.gz
-	md5sums = 0bc305727a3772339be42db129942047
+	source = https://github.com/eepp/delicolour/archive/v1.1.0.tar.gz
+	md5sums = 7882b240043ebf10ed3139f69dfffd3f
 
 pkgname = delicolour
 
