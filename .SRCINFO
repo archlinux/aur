@@ -1,0 +1,34 @@
+pkgbase = tomahawk-qt5
+	pkgdesc = A Music Player App written in C++/Qt5
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = http://tomahawk-player.org/
+	install = tomahawk.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = sparsehash
+	depends = attica-qt5
+	depends = gnutls
+	depends = libechonest-qt5
+	depends = liblastfm-qt5
+	depends = lucene++
+	depends = phonon-qt5
+	depends = qca-qt5
+	depends = qt5-svg
+	depends = qt5-webkit
+	depends = qtkeychain-qt5
+	depends = quazip
+	depends = taglib
+	optdepends = telepathy-qt5: integration with Telepathy
+	provides = tomahawk
+	conflicts = tomahawk
+	source = http://download.tomahawk-player.org/tomahawk-0.8.4.tar.bz2
+	source = arch-build.patch
+	md5sums = 04832abe1786edcc55805875b5882445
+	md5sums = 0e2c2eda5e7a966e89c08cea9576f16a
+
+pkgname = tomahawk-qt5
+

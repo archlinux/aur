@@ -1,0 +1,249 @@
+diff -ruN tomahawk-0.8.4.orig/CMakeModules/FindEchonest.cmake tomahawk-0.8.4/CMakeModules/FindEchonest.cmake
+--- tomahawk-0.8.4.orig/CMakeModules/FindEchonest.cmake	2015-08-16 22:42:45.703388001 +0300
++++ tomahawk-0.8.4/CMakeModules/FindEchonest.cmake	2015-08-16 23:10:08.985694721 +0300
+@@ -13,7 +13,7 @@
+ 
+ PKG_CHECK_MODULES(PC_ECHONEST QUIET libechonest${LIBECHONEST_SUFFIX})
+ 
+-FIND_PATH(ECHONEST_INCLUDE_DIR NAMES echonest/Track.h
++FIND_PATH(ECHONEST_INCLUDE_DIR NAMES echonest${LIBECHONEST_SUFFIX}/Track.h
+     HINTS
+         ${PC_ECHONEST_INCLUDEDIR}
+         ${PC_ECHONEST_INCLUDE_DIRS}
+diff -ruN tomahawk-0.8.4.orig/CMakeModules/FindLibLastFm.cmake tomahawk-0.8.4/CMakeModules/FindLibLastFm.cmake
+--- tomahawk-0.8.4.orig/CMakeModules/FindLibLastFm.cmake	2015-08-16 22:42:45.703388001 +0300
++++ tomahawk-0.8.4/CMakeModules/FindLibLastFm.cmake	2015-08-16 23:11:38.255520184 +0300
+@@ -14,7 +14,7 @@
+ # Include dir
+ find_path(LIBLASTFM_INCLUDE_DIR
+   # Track.h doesn't exist in liblastfm-0.3.1, was called Track back then
+-  NAMES lastfm/Track.h
++  NAMES lastfm${LASTFM_LIB_SUFFIX}/Track.h
+   PATHS ${KDE4_INCLUDE_DIR}
+ )
+ 
+diff -ruN tomahawk-0.8.4.orig/src/infoplugins/generic/echonest/EchonestPlugin.cpp tomahawk-0.8.4/src/infoplugins/generic/echonest/EchonestPlugin.cpp
+--- tomahawk-0.8.4.orig/src/infoplugins/generic/echonest/EchonestPlugin.cpp	2015-08-16 22:42:45.763385657 +0300
++++ tomahawk-0.8.4/src/infoplugins/generic/echonest/EchonestPlugin.cpp	2015-08-16 23:17:40.127977670 +0300
+@@ -23,7 +23,7 @@
+ #include "utils/Logger.h"
+ #include "utils/NetworkAccessManager.h"
+ 
+-#include <echonest/ArtistTypes.h>
++#include <echonest5/ArtistTypes.h>
+ 
+ #include <QNetworkConfiguration>
+ 
+diff -ruN tomahawk-0.8.4.orig/src/infoplugins/generic/echonest/EchonestPlugin.h tomahawk-0.8.4/src/infoplugins/generic/echonest/EchonestPlugin.h
+--- tomahawk-0.8.4.orig/src/infoplugins/generic/echonest/EchonestPlugin.h	2015-08-16 22:42:45.763385657 +0300
++++ tomahawk-0.8.4/src/infoplugins/generic/echonest/EchonestPlugin.h	2015-08-16 23:17:47.547686503 +0300
+@@ -25,7 +25,7 @@
+ #include "infosystem/InfoSystem.h"
+ #include "infosystem/InfoSystemWorker.h"
+ 
+-#include <echonest/Artist.h>
++#include <echonest5/Artist.h>
+ 
+ #include <QObject>
+ 
+@@ -49,7 +49,7 @@
+ 
+ protected slots:
+     virtual void init();
+-    
++
+     virtual void getInfo( Tomahawk::InfoSystem::InfoRequestData requestData );
+ 
+     virtual void pushInfo( Tomahawk::InfoSystem::InfoPushData pushData )
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/EchonestCatalogSynchronizer.cpp tomahawk-0.8.4/src/libtomahawk/EchonestCatalogSynchronizer.cpp
+--- tomahawk-0.8.4.orig/src/libtomahawk/EchonestCatalogSynchronizer.cpp	2015-08-16 22:42:45.710054407 +0300
++++ tomahawk-0.8.4/src/libtomahawk/EchonestCatalogSynchronizer.cpp	2015-08-16 23:15:20.363463651 +0300
+@@ -34,8 +34,8 @@
+ #include "TomahawkSettings.h"
+ #include "Track.h"
+ 
+-#include <echonest/CatalogUpdateEntry.h>
+-#include <echonest/Config.h>
++#include <echonest5/CatalogUpdateEntry.h>
++#include <echonest5/Config.h>
+ 
+ using namespace Tomahawk;
+ 
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/EchonestCatalogSynchronizer.h tomahawk-0.8.4/src/libtomahawk/EchonestCatalogSynchronizer.h
+--- tomahawk-0.8.4.orig/src/libtomahawk/EchonestCatalogSynchronizer.h	2015-08-16 22:42:45.713387610 +0300
++++ tomahawk-0.8.4/src/libtomahawk/EchonestCatalogSynchronizer.h	2015-08-16 23:15:55.898735270 +0300
+@@ -22,7 +22,7 @@
+ #include "DllMacro.h"
+ #include "Query.h"
+ 
+-#include <echonest/Catalog.h>
++#include <echonest5/Catalog.h>
+ 
+ #include <QObject>
+ #include <QQueue>
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/GlobalActionManager.cpp tomahawk-0.8.4/src/libtomahawk/GlobalActionManager.cpp
+--- tomahawk-0.8.4.orig/src/libtomahawk/GlobalActionManager.cpp	2015-08-16 22:42:45.713387610 +0300
++++ tomahawk-0.8.4/src/libtomahawk/GlobalActionManager.cpp	2015-08-16 23:17:05.605999154 +0300
+@@ -61,7 +61,7 @@
+ #include <QClipboard>
+ #include <QMessageBox>
+ 
+-#include <echonest/Playlist.h>
++#include <echonest5/Playlist.h>
+ 
+ 
+ GlobalActionManager* GlobalActionManager::s_instance = 0;
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/accounts/lastfm/LastFmConfig.cpp tomahawk-0.8.4/src/libtomahawk/accounts/lastfm/LastFmConfig.cpp
+--- tomahawk-0.8.4.orig/src/libtomahawk/accounts/lastfm/LastFmConfig.cpp	2015-08-16 22:42:45.753386047 +0300
++++ tomahawk-0.8.4/src/libtomahawk/accounts/lastfm/LastFmConfig.cpp	2015-08-16 23:18:34.325850963 +0300
+@@ -29,10 +29,10 @@
+ #include "utils/Closure.h"
+ #include "utils/NetworkAccessManager.h"
+ 
+-#include <lastfm/ws.h>
+-#include <lastfm/User.h>
+-#include <lastfm/XmlQuery.h>
+-#include <lastfm/Track.h>
++#include <lastfm5/ws.h>
++#include <lastfm5/User.h>
++#include <lastfm5/XmlQuery.h>
++#include <lastfm5/Track.h>
+ 
+ #include <boost/bind.hpp>
+ 
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.cpp tomahawk-0.8.4/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.cpp
+--- tomahawk-0.8.4.orig/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.cpp	2015-08-16 22:42:45.753386047 +0300
++++ tomahawk-0.8.4/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.cpp	2015-08-16 23:19:00.628152330 +0300
+@@ -34,8 +34,8 @@
+ #include "TomahawkSettings.h"
+ #include "utils/NetworkAccessManager.h"
+ 
+-#include <lastfm/ws.h>
+-#include <lastfm/XmlQuery.h>
++#include <lastfm5/ws.h>
++#include <lastfm5/XmlQuery.h>
+ 
+ using namespace Tomahawk::Accounts;
+ using namespace Tomahawk::InfoSystem;
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.h tomahawk-0.8.4/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.h
+--- tomahawk-0.8.4.orig/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.h	2015-08-16 22:42:45.753386047 +0300
++++ tomahawk-0.8.4/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.h	2015-08-16 23:18:47.831987709 +0300
+@@ -24,9 +24,9 @@
+ #include "infosystem/InfoSystemWorker.h"
+ #include "DllMacro.h"
+ 
+-#include <lastfm/Track.h>
+-#include <lastfm/Audioscrobbler.h>
+-#include <lastfm/ScrobblePoint.h>
++#include <lastfm5/Track.h>
++#include <lastfm5/Audioscrobbler.h>
++#include <lastfm5/ScrobblePoint.h>
+ 
+ #include <QObject>
+ 
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/network/acl/AclRegistry.cpp tomahawk-0.8.4/src/libtomahawk/network/acl/AclRegistry.cpp
+--- tomahawk-0.8.4.orig/src/libtomahawk/network/acl/AclRegistry.cpp	2015-08-16 22:42:45.756719250 +0300
++++ tomahawk-0.8.4/src/libtomahawk/network/acl/AclRegistry.cpp	2015-08-16 23:24:07.856104293 +0300
+@@ -19,6 +19,7 @@
+ 
+ #include "AclRegistry.h"
+ 
++#include <QDataStream>
+ #include <QThread>
+ #include <QVariant>
+ 
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/playlist/dynamic/echonest/EchonestControl.h tomahawk-0.8.4/src/libtomahawk/playlist/dynamic/echonest/EchonestControl.h
+--- tomahawk-0.8.4.orig/src/libtomahawk/playlist/dynamic/echonest/EchonestControl.h	2015-08-16 22:42:45.716720814 +0300
++++ tomahawk-0.8.4/src/libtomahawk/playlist/dynamic/echonest/EchonestControl.h	2015-08-16 23:16:49.516630633 +0300
+@@ -24,7 +24,7 @@
+ #include <QTimer>
+ #include <QPointer>
+ 
+-#include <echonest/Playlist.h>
++#include <echonest5/Playlist.h>
+ 
+ namespace Tomahawk
+ {
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/playlist/dynamic/echonest/EchonestGenerator.h tomahawk-0.8.4/src/libtomahawk/playlist/dynamic/echonest/EchonestGenerator.h
+--- tomahawk-0.8.4.orig/src/libtomahawk/playlist/dynamic/echonest/EchonestGenerator.h	2015-08-16 22:42:45.716720814 +0300
++++ tomahawk-0.8.4/src/libtomahawk/playlist/dynamic/echonest/EchonestGenerator.h	2015-08-16 23:16:32.817286086 +0300
+@@ -28,7 +28,7 @@
+ 
+ #include "DllMacro.h"
+ 
+-#include <echonest/Playlist.h>
++#include <echonest5/Playlist.h>
+ 
+ namespace Tomahawk
+ {
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/playlist/dynamic/echonest/EchonestSteerer.cpp tomahawk-0.8.4/src/libtomahawk/playlist/dynamic/echonest/EchonestSteerer.cpp
+--- tomahawk-0.8.4.orig/src/libtomahawk/playlist/dynamic/echonest/EchonestSteerer.cpp	2015-08-16 22:42:45.716720814 +0300
++++ tomahawk-0.8.4/src/libtomahawk/playlist/dynamic/echonest/EchonestSteerer.cpp	2015-08-16 23:18:03.627055530 +0300
+@@ -24,7 +24,7 @@
+ #include "utils/TomahawkUtils.h"
+ #include "utils/Logger.h"
+ 
+-#include <echonest/Playlist.h>
++#include <echonest5/Playlist.h>
+ 
+ #include <QPaintEvent>
+ #include <QHBoxLayout>
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/utils/TomahawkCache.h tomahawk-0.8.4/src/libtomahawk/utils/TomahawkCache.h
+--- tomahawk-0.8.4.orig/src/libtomahawk/utils/TomahawkCache.h	2015-08-16 22:42:45.740053235 +0300
++++ tomahawk-0.8.4/src/libtomahawk/utils/TomahawkCache.h	2015-08-16 23:25:34.106102925 +0300
+@@ -22,6 +22,7 @@
+ #include "DllMacro.h"
+ #include "utils/TomahawkUtils.h"
+ 
++#include <QDataStream>
+ #include <QMutex>
+ #include <QSettings>
+ #include <QObject>
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/utils/TomahawkUtils.cpp tomahawk-0.8.4/src/libtomahawk/utils/TomahawkUtils.cpp
+--- tomahawk-0.8.4.orig/src/libtomahawk/utils/TomahawkUtils.cpp	2015-08-16 22:42:45.720054017 +0300
++++ tomahawk-0.8.4/src/libtomahawk/utils/TomahawkUtils.cpp	2015-08-16 23:19:25.497176675 +0300
+@@ -32,7 +32,7 @@
+ #include "Track.h"
+ 
+ #ifdef LIBLASTFM_FOUND
+-    #include <lastfm/ws.h>
++    #include <lastfm5/ws.h>
+ #endif
+ 
+ #include <quazip/quazip.h>
+diff -ruN tomahawk-0.8.4.orig/src/tomahawk/Scrobbler.h tomahawk-0.8.4/src/tomahawk/Scrobbler.h
+--- tomahawk-0.8.4.orig/src/tomahawk/Scrobbler.h	2015-08-16 22:42:45.706721204 +0300
++++ tomahawk-0.8.4/src/tomahawk/Scrobbler.h	2015-08-16 23:20:10.732068886 +0300
+@@ -20,7 +20,7 @@
+ #ifndef TOMAHAWK_SCROBBLER_H
+ #define TOMAHAWK_SCROBBLER_H
+ 
+-#include "lastfm/ScrobblePoint.h"
++#include "lastfm5/ScrobblePoint.h"
+ #include "Result.h"
+ #include "infosystem/InfoSystem.h"
+ 
+diff -ruN tomahawk-0.8.4.orig/src/tomahawk/TomahawkApp.h tomahawk-0.8.4/src/tomahawk/TomahawkApp.h
+--- tomahawk-0.8.4.orig/src/tomahawk/TomahawkApp.h	2015-08-16 22:42:45.706721204 +0300
++++ tomahawk-0.8.4/src/tomahawk/TomahawkApp.h	2015-08-16 23:19:59.602505450 +0300
+@@ -64,7 +64,7 @@
+ }
+ 
+ #ifdef LIBLASTFM_FOUND
+-    #include <lastfm/NetworkAccessManager.h>
++    #include <lastfm5/NetworkAccessManager.h>
+     #include "Scrobbler.h"
+ #endif
+ 
+diff -ruN tomahawk-0.8.4.orig/src/tomahawk/sourcetree/items/CategoryItems.cpp tomahawk-0.8.4/src/tomahawk/sourcetree/items/CategoryItems.cpp
+--- tomahawk-0.8.4.orig/src/tomahawk/sourcetree/items/CategoryItems.cpp	2015-08-16 22:42:45.706721204 +0300
++++ tomahawk-0.8.4/src/tomahawk/sourcetree/items/CategoryItems.cpp	2015-08-16 23:17:24.248600839 +0300
+@@ -33,7 +33,7 @@
+ #include "utils/ImageRegistry.h"
+ #include "utils/Logger.h"
+ 
+-#include <echonest/Playlist.h>
++#include <echonest5/Playlist.h>
+ 
+ using namespace Tomahawk;
+ 
