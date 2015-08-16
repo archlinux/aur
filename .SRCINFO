@@ -1,6 +1,6 @@
 pkgbase = sway-git
 	pkgdesc = i3 compatible window manager for Wayland
-	pkgver = 1.0.0
+	pkgver = r170.0d04189
 	pkgrel = 1
 	url = https://github.com/SirCmpwn/sway
 	arch = i386
