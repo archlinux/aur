@@ -1,0 +1,17 @@
+pkgbase = rtlsdr-waterfall
+	pkgdesc = rtlsdr spectrum plot / Python FFT GUI for Realtek RTL2832U based SDR's
+	pkgver = 7b424fa2b8
+	pkgrel = 1
+	url = https://github.com/keenerd/rtlsdr-waterfall
+	arch = any
+	license = GPLv3
+	depends = python2
+	depends = python2-pyglet
+	depends = python2-pyrtlsdr-git
+	provides = pyrtlsdr
+	provides = python2-pyrtlsdr
+	source = https://codeload.github.com/keenerd/rtlsdr-waterfall/zip/master
+	md5sums = e5bbd9318358701dae12812e5aa1603e
+
+pkgname = rtlsdr-waterfall
+
