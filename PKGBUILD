@@ -49,10 +49,10 @@ pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.1
-_pkgver=4.1.3
-_rtpatchver=rt3
+_pkgver=4.1.5
+_rtpatchver=rt5
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -76,11 +76,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
-        '0004-block-loop-convert-to-per-device-workqueue.patch'
-        '0005-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
-        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
-        'bitmap-enable-booting-for-dm-md-raid1.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
         
 prepare() {
     cd ${_srcname}
@@ -92,25 +88,6 @@ prepare() {
     ### Add rt patch
         msg "Add rt patch"
         patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch" 
-        
-    ### Fix deadlock with stacked loop devices (FS#45129)
-     # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
-        msg "Fix deadlock with stacked loop devices (FS#45129)"
-        for p in "${srcdir}"/000{4,5}-block*.patch; do
-        msg " $p"
-        patch -Np1 -i "$p"
-        done
-        
-    ### Fix bluetooth chip initialization on some macbooks (FS#45554)
-    # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
-    # https://bugzilla.kernel.org/show_bug.cgi?id=100651
-        msg "Fix bluetooth chip initialization on some macbooks (FS#45554)"
-        patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-
-    ### Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
-   # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
-        msg "Fix kernel oops when booting with root on RAID1 LVM (FS#45548)"
-        patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
  
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
@@ -460,9 +437,9 @@ package_linux-rt-bfq-docs() {
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'c0889485e049fd91402cbf16ec21391b88abe948d3861b7c000687c20ff560d70d4ec4f71a924065e187264f362006e6244834195561f8108ba0c2a39e49ec09'
+            '1325cdb35ea1f277d513932af37804f788b96ae63b94cedeb3c9b916ee8963bbd6aca5d0e13279e36a81f1de06005c5f3666ecfc845609932686f261fa4250c5'
             'SKIP'
-            'b90ec666cbb5ffc0a2dfebb9c73ffdf6f6803bb5b9ca7d4a6bd60e4dd37e945cbc47c994047c2848ad22c35c93a53ac7a5346743dd61988f51d893d19a315d4c'
+            '60a6870c3cf018bdc38fc6939411540dcc0d99620829581026cc005fa408747f144335621e306338a7bb57b60742b492c444bfd62003c25db6bc0d7952f2e750'
             'SKIP'
             '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
             'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
@@ -472,11 +449,7 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '9b00cba261fef37390dc33ba6743e6176d053020207872d7ce18fd1264037a241cc578a19ed5e45e1447e26f24601707bdab5118e5e02abfb58cfabcfe69da74'
             '2679ad01ea2348844079e71b9e4d51d60a2cfe590958342261a5a1316fa929db68f9d4fb34bba7ed6a27101b6c1d12614e79f7d6dd8e7e52633aef0647c8dd48'
-            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528'
-            'c82288451d71fc4d268092702ab547ae513d94cc78a31c0fd3543397a3d3a3304936db6a0f3f0ee09e063c94cb2cffcc1c95cba74beb86f6a3806c9f5fa00282'
-            '0870b20411538738879fc24ad2363c8a7bfab98c2e00c231e54e991444a8aeda7a4141704097c82f2576d826a8eef2c318d4b1308e871983af1be337e051d28e'
-            '4fb043734a99125407dcb13aafa7fb73b0fad4ef9cb55ddf2e4daaf79368606c697556e8945bf6b2b7c2ff4de976ff38340bd349e56aba50978c958c844e13e0'
-            '09f7400ee9d49ecbbb64c622de6039fc91b4800abd3bf46e4ee8d906869ba7b5d62ed06e8b5814a108b35d2a1a2614024682d6d39dd36b6498f11c8481ffd153')
+            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
