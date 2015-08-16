@@ -1,4 +1,5 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=vicare-scheme-git
 pkgver=20150806.492960a
 pkgrel=1
@@ -27,8 +28,12 @@ prepare() {
 
 build() {
   cd "$srcdir"/"$_gitname"
-  ./autogen.sh
-  LDFLAGS="-Wl,-z,noexecstack" ./configure --prefix=/usr --libexecdir=/usr/lib \
+  make distclean || true
+  sh ./autogen.sh
+  [ -d build ] && rm -rf build
+  mkdir build
+  cd build
+  LDFLAGS="-Wl,-z,noexecstack" ../configure --prefix=/usr --libexecdir=/usr/lib \
 	 --enable-maintainer-mode
   make
 }
