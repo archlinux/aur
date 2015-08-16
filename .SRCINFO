@@ -1,0 +1,18 @@
+pkgbase = ice-ssb
+	pkgdesc = a simple Site Specific Browser for Chromium and Google Chrome from "Peppermint OS" Project
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = http://peppermintos.com/guide/ice/
+	arch = any
+	license = GPL2
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python
+	depends = python-gobject
+	optdepends = chromium: Browser to use
+	optdepends = google-chrome: Browser to use
+	source = ice-5.0.1.tar.gz::https://launchpad.net/~peppermintos/+archive/ubuntu/p6-release/+files/ice_5.0.1.tar.gz
+	sha256sums = 51e611d38950a216a45bf426b808f6e90b375304106036dd68a9ec246522705c
+
+pkgname = ice-ssb
+
