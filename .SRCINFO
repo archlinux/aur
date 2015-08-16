@@ -1,0 +1,15 @@
+pkgbase = zscroll-git
+	pkgdesc = A text scroller for use with panels
+	pkgver = 0.1.r0.gc270651
+	pkgrel = 1
+	url = https://github.com/angelic-sedition/zscroll
+	arch = any
+	license = Simplified BSD
+	makedepends = git
+	depends = python
+	provides = zscroll
+	source = git://github.com/angelic-sedition/zscroll.git
+	md5sums = SKIP
+
+pkgname = zscroll-git
+
