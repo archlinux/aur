@@ -1,0 +1,25 @@
+pkgbase = grub4dos
+	pkgdesc = A GRUB boot loader support menu on windows(fat,ntfs)/linux(ext2,3,4)
+	pkgver = 0.4.5c_20140822
+	pkgrel = 1
+	url = http://grub4dos.chenall.net/
+	install = grub4dos.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = upx
+	makedepends = nasm
+	conflicts = grub4dos
+	options = !strip
+	options = !buildflags
+	options = !makeflags
+	backup = grub/menu.lst
+	source = https://github.com/chenall/grub4dos/archive/81aad9a50e380814107af0baaf5e05949f12b0cc.zip
+	source = README_arch.txt
+	source = menu.lst
+	md5sums = 4e97c87e13fbe0ec08585edcd84814b0
+	md5sums = d84dde7476cb6ef37df3b159a1c3f1e8
+	md5sums = 32cc5705f5328dc30077e9d0a96ded3b
+
+pkgname = grub4dos
+

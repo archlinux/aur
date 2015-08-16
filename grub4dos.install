@@ -1,0 +1,21 @@
+msg()
+{
+  echo "Read the installation tips on /usr/share/doc/grub4dos/README_arch.txt"
+}
+
+
+## arg 1:  the new package version
+post_install()
+{
+  msg
+  /bin/true
+}
+
+## arg 1:  the old package version
+post_remove()
+{
+  echo "To remove an installed grub4dos from a device:"
+  echo "1) Restore original MBR"
+  echo "2) Delete /grldr or /boot/grldr"
+  /bin/true
+}
