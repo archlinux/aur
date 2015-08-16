@@ -17,5 +17,6 @@ package() {
   mkdir -p $pkgdir/usr/share/themes
   cd $srcdir
   cp -r $pkgname $pkgdir/usr/share/themes/
+  chmod 755 /usr/share/themes/zukitwo-manjaro
 
 }
