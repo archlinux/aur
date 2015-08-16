@@ -1,7 +1,7 @@
 pkgbase = freenet
 	pkgdesc = An encrypted network without censorship
-	pkgver = 0.7.5.1469
-	pkgrel = 3
+	pkgver = 0.7.5.1470
+	pkgrel = 1
 	epoch = 1
 	url = https://downloads.freenetproject.org
 	install = freenet.install
@@ -25,12 +25,12 @@ pkgbase = freenet
 	noextract = commons-compress.jar
 	backup = opt/freenet/wrapper.config
 	backup = opt/freenet/conf/freenet.ini
-	source = git+https://github.com/freenet/fred.git#tag=build01469
+	source = git+https://github.com/freenet/fred.git#tag=build01470
 	source = git+https://github.com/freenet/contrib.git
 	source = git+https://github.com/freenet/plugin-JSTUN.git
 	source = git+https://github.com/freenet/plugin-UPnP.git
 	source = git+https://github.com/freenet/plugin-KeyUtils.git
-	source = git+https://github.com/freenet/plugin-WebOfTrust.git#tag=build0016
+	source = git+https://github.com/freenet/plugin-WebOfTrust.git#branch=next
 	source = https://downloads.freenetproject.org/alpha/opennet/seednodes.fref
 	source = https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar
 	source = https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c
