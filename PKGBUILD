@@ -16,8 +16,8 @@ sha256sums=('cca0a6290e7a9c998f84cc0b30b5d3f330e91c64f756f6371c626858d8acfbdf')
 
 package() {
     install -d ${pkgdir}/usr/share/bomi/skins
-    cp -r ${srcdir}/${_repo}-${_git}/bomi-skins/Papirus ${pkgdir}/usr/share/bomi/skins/
-    install -D -m644  ${srcdir}/${_repo}-${_git}/bomi-skins/Papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    cp -r ${srcdir}/${_repo}-${_git}/bomi-skin/Papirus ${pkgdir}/usr/share/bomi/skins/
+    install -D -m644  ${srcdir}/${_repo}-${_git}/bomi-skin/Papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 } 
