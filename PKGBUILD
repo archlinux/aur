@@ -9,7 +9,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=2.7.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC and opencl)"
 arch=('i686' 'x86_64')
@@ -20,11 +20,12 @@ depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi
          'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libmodplug' 'libpulse' 'libsoxr' 
          'libutvideo-git' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'libxv' 'mesa' 'openal' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 
-         'sdl' 'speex' 'rtmpdump' 'shine' 'twolame' 'v4l-utils' 'vid.stab' 
-         'vo-aacenc' 'vo-amrwbenc' 'xvidcore' 'wavpack' 'zeromq' 'zlib' 'zvbi'
+         'libxv' 'mesa' 'openal' 'opencl-headers12-svn' 'opencore-amr' 
+         'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'rtmpdump' 'shine'
+         'twolame' 'v4l-utils' 'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'xvidcore' 
+         'wavpack' 'zeromq' 'zlib' 'zvbi'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so')
-makedepends=('hardening-wrapper' 'libvdpau' 'nvenc-api' 'opencl-headers' 'yasm')
+makedepends=('hardening-wrapper' 'libvdpau' 'nvenc-api' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
             'cuda: for CUDA support'
             'opencl-nvidia: for OpenCL support')
@@ -108,6 +109,7 @@ build() {
     --enable-nonfree \
     --enable-nvenc \
     --enable-openal \
+    --enable-opencl \
     --enable-opengl \
     --enable-openssl \
     --enable-postproc\
