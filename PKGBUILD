@@ -3,20 +3,31 @@
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
 pkgver=1.12.7
-pkgrel=1
+pkgrel=2
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
 url='http://www.wireshark.org/'
 license=('GPL2')
 
-depends=('krb5' 'libgcrypt' 'libcap' 'libpcap' 'bash' 'gnutls' 'glib2' 'sbc' 'lua52' 'portaudio' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('krb5' 'libgcrypt' 'libcap' 'libpcap' 'bash' 'gnutls' 'glib2' 'lua52' 'portaudio' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python')
 
 provides=('wireshark-cli' 'wireshark-gtk')
 conflicts=('wireshark-cli' 'wireshark-gtk')
 install=wireshark-gtk2.install
-source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.bz2)
-sha1sums=('bed365bacfd0b5c653d8568ad25e52957659bd9f')
+source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.bz2
+		optional_sbc_2021845.patch)
+sha1sums=('bed365bacfd0b5c653d8568ad25e52957659bd9f'
+		  '6f4fe6ca4b21f32aa7678e0f2837c22bc0b2ee65')
+
+prepare() {
+	cd ${_pkgbase}-${pkgver}
+
+	# Make sbc optional
+	# https://code.wireshark.org/review/#/c/6399/
+	patch -p1 < ../optional_sbc_2021845.patch
+}
+
 
 build() {
 	cd ${_pkgbase}-${pkgver}
@@ -38,7 +49,8 @@ build() {
 		--without-c-ares \
 		--without-adns \
 		--without-libsmi \
-		--without-geoip
+		--without-geoip \
+		--without-sbc
 	make all
 }
 
