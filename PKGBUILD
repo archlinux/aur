@@ -10,7 +10,7 @@ url="http://opendesktop.org/content/show.php?content=170824"
 license=('CCPL:by-sa')
 depends=('yakuake')
 makedepends=('unzip')
-source=("${_pkgname}.tar.xz::http://kde-look.org/CONTENT/content-files/170824-${_pkgname}.zip")
+source=("${_pkgname}.zip::http://kde-look.org/CONTENT/content-files/170824-${_pkgname}.zip")
 sha256sums=('e4c4b0a7b5766cf946222a680cf806bbf9bf9996f9146fecc1e7cad4edbf404a')
 
 package() {
