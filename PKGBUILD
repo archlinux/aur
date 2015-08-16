@@ -1,10 +1,11 @@
-# Maintainer: Amr Hassan <amr.hassan@gmail.com>
-# Maintainer: Nathan Owe <ndowens.aur at gmail dot com>
-# Maintainer: G. Richard Bellamy <rbellamy@pteradigm.com>
+# Maintainer: S. Leduc <sebastien@sleduc.fr>
+# Contributor: Amr Hassan <amr.hassan@gmail.com>
+# Contributor: Nathan Owe <ndowens.aur at gmail dot com>
+# Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.344
+pkgver=1.2.345
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -51,7 +52,7 @@ source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}
 
 changelog=ChangeLog
 
-sha256sums=('fb40100c30a9fbaf6c3c3e4eeddfc7e636eb5b8aa7d68bc8c24de441b818f7bd'
+sha256sums=('c9a11527502593a5d5a8fd3d819c7e001aac52e36261b912e5ca95bad8d91621'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
