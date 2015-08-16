@@ -1,0 +1,17 @@
+pkgbase = perl-crypt-random-seed
+	pkgdesc = Simple method to get strong randomness.
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/Crypt-Random-Seed
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-crypt-random-tesha2
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DANAJ/Crypt-Random-Seed-0.03.tar.gz
+	sha256sums = 593da54b522c09cc26bbcc0e4e49c1c8e688a6fd33b0726af801d722a5c8d0f1
+
+pkgname = perl-crypt-random-seed
+
