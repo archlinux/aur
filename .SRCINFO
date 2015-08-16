@@ -1,0 +1,13 @@
+pkgbase = keepass-serpentcipher
+	pkgdesc = Enables KeePass to encrypt databases using the serpent algorithm.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/drizzt/KeePass-SerpentCipher/
+	arch = any
+	license = GPL3
+	depends = keepass
+	source = https://github.com/drizzt/KeePass-SerpentCipher/releases/download/v1.0/SerpentCipher-1.0.zip
+	sha256sums = 5e52d648845bc955ad18609313e8ce415a7d5cb5ddc342845656cc131518c8b3
+
+pkgname = keepass-serpentcipher
+
