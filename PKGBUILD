@@ -2,13 +2,13 @@
 # NOTE: Installs from a zipball since the git repository is very large
 pkgname=miller-git
 pkgver=20150816
-pkgrel=1
+pkgrel=2
 pkgdesc="Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV"
 arch=('x86_64' 'i686')
 url="https://github.com/johnkerl/miller"
 license=('MIT')
 depends=('glibc')
-makedepends=('make' 'gcc' 'flex')
+makedepends=('make' 'gcc' 'flex' 'ctags')
 provides=('miller')
 conflicts=('miller-git')
 source=(\
