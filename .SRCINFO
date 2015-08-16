@@ -1,5 +1,5 @@
 pkgbase = arxlibertatis
-	pkgdesc = Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only)
+	pkgdesc = Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only)
 	pkgver = 1.1.2
 	pkgrel = 1
 	url = http://arx-libertatis.org/
