@@ -29,7 +29,7 @@ prepare() {
 
 }
 
-buid() {
+build() {
     cd "gtk+-$pkgver"
 
     CXX=/bin/false ./configure --prefix=/usr \
@@ -48,10 +48,18 @@ buid() {
 }
 
 package() {
+    depends+=(gtk-update-icon-cache)
+    optdepends=('libcanberra: gtk3-widget-factory demo')
+    install=gtk3.install
+
     cd "gtk+-$pkgver"
     make DESTDIR="$pkgdir" install
     install -Dm644 ../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
+
+    # split this out to use with gtk2 too
+    rm "$pkgdir/usr/bin/gtk-update-icon-cache"
 }
+
 md5sums=('fc59e5c8b5a4585b60623dd708df400b'
          '52bca1105d029c5142909b9e349bb89c'
          '5f3d11d95a94415f63ba5b9eacf3ddd4')
