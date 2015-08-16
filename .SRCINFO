@@ -1,0 +1,16 @@
+pkgbase = transmission-remote-gui-svn
+	pkgdesc = A feature rich cross platform front-end to remotely control Transmission daemon. (gtk2)
+	pkgver = 978
+	pkgrel = 1
+	url = http://code.google.com/p/transmisson-remote-gui/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = lazarus
+	makedepends = subversion
+	depends = gtk2
+	conflicts = transmission-remote-gui-gtk2
+	conflicts = transmission-remote-gui
+
+pkgname = transmission-remote-gui-svn
+
