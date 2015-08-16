@@ -5,7 +5,7 @@ pkgver=2.16.1
 pkgrel=1
 pkgdesc="The Adept Runtime consists of the shared libraries, firmware images, and configuration files necessary to communicate with Digilent's devices."
 arch=('i686' 'x86_64')
-url="https://www.digilentinc.com/Products/Detail.cfm?NavPath=2,66,828&Prod=ADEPT2"
+url="https://www.digilentinc.com/Products/Detail.cfm?Prod=ADEPT2"
 license=('custom')
 depends=('libusb')
 conflicts=('libftd2xx')
