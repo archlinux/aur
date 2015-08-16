@@ -13,25 +13,33 @@ depends=(
 	'perl-xml-compile>=1.40'
 	'perl-xml-compile-tester>=0.05'
 	'perl-xml-compile-cache>=0.995'
-	'perl-xml-compile-soap>=3.04')
+	'perl-xml-compile-soap>=3.08')
 checkdepends=('perl-test-deep>=0.095')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
 
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+}
+
 build() {
 	cd [% distdir %]
-	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	sanitize
+	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
 	cd [% distdir %]
+	sanitize
 	make test
 }
 
 package() {
 	cd [% distdir %]
+	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
