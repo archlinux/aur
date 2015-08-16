@@ -7,8 +7,8 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.3.8.3
-_pkgver=0.3.8-3
+pkgver=0.3.8.2
+_pkgver=v0.3.8-2
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ fi
 source=("desktop-${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=${_pkgver}"
         "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
         "popcorntime.desktop")
-sha256sums=('f6b4ebd11ec50a5c2a1ddaf42a043b16c21d8bbcdde634a8672236e85c68268d'
+sha256sums=('d6d489fbbb8b57b25d36866ac8fc75f10ccb1c4fd9cb6a1332d06b38edf20d48'
             'SKIP'
             'f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec')
 
@@ -56,8 +56,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_gitname}"
 
-  grunt css
   grunt bower_clean
+  grunt css
   grunt nodewebkit || grunt nodewebkit
 }
 
