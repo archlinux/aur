@@ -1,9 +1,5 @@
-go-gpm-all/
-src/
-pkg/
-*.tar.gz
-*.tar.xz
-*.tgz
-*.rpm
-*.zip
-*.bz2
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!name-conflict.patch
