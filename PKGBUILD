@@ -5,7 +5,7 @@
 pkgname=spotify-beta
 pkgver=1.0.11.131
 _anotherpkgver=.gf4d47cb0
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary peer-to-peer music streaming service"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -20,7 +20,7 @@ source=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-cl
 md5sums=('af4bd4604c29d5d0ed2dde6e84453537'
 'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4')
 
-depends=("alsa-lib>=1.0.14" "glibc>=2.6" "openssl" "gconf" "nss" "systemd" "gtk2" "libxtst" "libx11" "libcurl-compat")
+depends=("alsa-lib>=1.0.14" "glibc>=2.6" "openssl" "gconf" "nss" "systemd" "gtk2" "libxtst" "libx11" "libcurl-compat" "libxss")
 optdepends=('desktop-file-utils: Adds URI support to compatible desktop environments'
 'ffmpeg-compat: Adds support for playback of local files'
 'libnotify: Adds desktop notifications')
