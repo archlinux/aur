@@ -2,13 +2,13 @@
 
 pkgname=fluxbox-style-zukitwo
 pkgver=20150815
-pkgrel=2
+pkgrel=3
 pkgdesc="Zukitwo style for Fluxbox"
 url="https://github.com/corebob/fluxbox-style-zukitwo"
 license=('CCPL')
 arch=('any')
 source=("https://github.com/corebob/fluxbox-style-zukitwo/archive/master.zip")
-md5sums=('b61b7491510a2edd277fab5aa4907759')
+md5sums=('a2183ea2a0f6c4af9c5f5c887c7411c5')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/fluxbox/styles/zukitwo/"
