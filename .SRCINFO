@@ -7,6 +7,7 @@ pkgbase = mingw-w64-libdbus
 	license = custom
 	license = GPL
 	makedepends = mingw-w64-configure
+	makedepends = docbook-xsl
 	depends = mingw-w64-expat
 	provides = mingw-w64-dbus
 	conflicts = mingw-w64-dbus
