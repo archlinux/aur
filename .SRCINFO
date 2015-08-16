@@ -1,0 +1,20 @@
+pkgbase = m4baker-git
+	pkgdesc = Bake full-featured m4b-audiobooks
+	pkgver = 0.1.92.r23.gf282d42
+	pkgrel = 1
+	url = https://github.com/crabmanX/m4baker
+	arch = any
+	license = unknown
+	depends = python2
+	depends = qt4>=4.5
+	depends = python2-pyqt4>=4.6
+	depends = faac>=1.26
+	depends = sox>=14.3
+	depends = libmp4v2>=1.9
+	conflicts = m4baker
+	replaces = m4baker
+	source = m4baker::git+https://github.com/Sonic-Y3k/m4baker.git
+	sha256sums = SKIP
+
+pkgname = m4baker-git
+
