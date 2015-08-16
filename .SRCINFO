@@ -1,0 +1,16 @@
+pkgbase = ruby-faraday-0.8
+	pkgdesc = HTTP/REST API client library.
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/lostisland/faraday
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-multipart-post-1
+	noextract = faraday-0.8.9.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/faraday-0.8.9.gem
+	sha1sums = ff14a9daea42ec7d68571ddc3eab922d857efc9e
+
+pkgname = ruby-faraday-0.8
+
