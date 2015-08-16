@@ -4,7 +4,7 @@
 pkgname=katawa-shoujo
 pkgver=1.3.1
 pkgrel=1
-pkgdesc="Ren'Py game Katawa Shoujo (only data file, need renpy installed)"
+pkgdesc="a bishoujo-style visual novel by Four Leaf Studios built on renpy"
 arch=('any')
 url='http://katawa-shoujo.com/'
 license=('CCPL:BY-NC-ND')
@@ -18,7 +18,7 @@ source=("[4ls]_katawa_shoujo_${pkgver}-[linux-x86][18161880].tar.bz2::http://dl.
         "${pkgname}.png")
 
 md5sums=('8511b385c755e810893d05e5264b363d'
-         '88bb1f3a99762f8ea1e4fd3b7effec23'
+         '2747251eaa282a464d7ad7b80dc286b4'
          '52da5f2a8365a9b88d65fad1301e439b'
          '6d70e339e33d7c13a8ab03a5d3498c4f')
 
