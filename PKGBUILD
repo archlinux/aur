@@ -6,7 +6,7 @@ provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 _pkgname=nginx
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with early alpha HTTP/2 support'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -25,15 +25,15 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/logrotate.d/nginx')
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz
-        $url/patches/http2/patch.http2.txt
+        $url/patches/http2/patch.http2-v2_1.9.3.txt
         service
         logrotate)
 md5sums=('125282e2a7321265e7dfd7d05e4e2a3d'
-         '637e268f04f027b0d5b4c81ebce45e4c'
+         '7cf13d2b21aa0cd3e1453c898b99bed8'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '19a26a61c8afe78defb8b4544f79a9a0')
 sha256sums=('4298c5341b2a262fdb8dbc0a1389756181af8f098c7720abfb30bd3060f673eb'
-            '14e37643c43e24ed7de9cc57bd4a082ff3b5d85423a998dc1a3226c9d00b1d6e'
+            '8fe4d8ca0301370902123136b401e8bd7112ed6c36e92a8fd8a0d9277dc870cb'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '2613986dd5faab09ca962264f16841c8c55c3a0bc7a5bb737eabd83143090878')
 
@@ -109,5 +109,3 @@ package() {
 
   rmdir "$pkgdir"/run
 }
-
-# vim:set ts=2 sw=2 et:
