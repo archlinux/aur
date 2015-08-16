@@ -1,0 +1,13 @@
+pkgbase = srt-delay
+	pkgdesc = A commandline tool to adjust srt's time stamp.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://code.google.com/p/trizen/downloads/detail?name=srt-delay-0.0.3.tar.gz
+	arch = any
+	license = GPL
+	depends = perl>=5.10.1
+	source = http://trizen.googlecode.com/files/srt-delay-0.0.3.tar.gz
+	md5sums = 61417d74fa64e394e69124d133c0bf6b
+
+pkgname = srt-delay
+
