@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=crypted-backups-git
-pkgver=r31.9c4c4f4
+pkgver=0.1.r0.g3700dbe
 _basename=crypted-backups
-pkgrel=2
+pkgrel=1
 pkgdesc="Backup scripts using systemd timer/service units and gpg encryption"
 arch=('any')
 url="https://sleepmap.de/projects/crypted-backups"
@@ -37,7 +37,6 @@ package() {
   install -d ${pkgdir}/usr/lib/systemd/scripts/
   install -Dm 755 scripts/* ${pkgdir}/usr/lib/systemd/scripts/
   install -Dm 644 README.md ${pkgdir}/usr/share/doc/${_basename}/README.md
-  install -Dm 644 LICENSE ${pkgdir}/usr/share/licenses/${_basename}/LICENSE
   install -d ${pkgdir}/usr/lib/systemd/system/
   install -Dm 644 system/* ${pkgdir}/usr/lib/systemd/system/
   install -d ${pkgdir}/usr/lib/systemd/user/
