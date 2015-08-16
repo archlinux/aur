@@ -1,6 +1,6 @@
 pkgbase = python2-jaydebeapi
 	pkgdesc = A bridge from JDBC database drivers to Python DB-API
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/baztian/jaydebeapi
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-jaydebeapi
 	depends = python2
 	depends = python2-jpype1
 	depends = python2-setuptools
-	source = https://pypi.python.org/packages/source/J/JayDeBeApi/JayDeBeApi-0.1.6.tar.gz
-	sha256sums = 3234c39d2d3d36f876dab9919db13a2eb4d76382a21c92cee047c19da8332b31
+	source = https://pypi.python.org/packages/source/J/JayDeBeApi/JayDeBeApi-0.2.0.tar.gz
+	sha256sums = f34f7d8215207fd8c597bdf547c56ef6fe29cebd8114b9729746757f53133cfa
 
 pkgname = python2-jaydebeapi
 
