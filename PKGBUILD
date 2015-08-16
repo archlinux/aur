@@ -15,7 +15,7 @@ source=("http://nullroute.eu.org/mirrors/files/ldapbrowser-$pkgver.zip"
 noextract=("ldapbrowser-$pkgver.zip")
 sha256sums=('6c1a1b80b81d83f005d4a006bc070b1b8f44f90151f7af6b14004c96e26687ec'
             'ccdc18f2879c6ab10aa0f3ad087a3aa225a6146340be7e2fb46302b961255972'
-            '30576a49af65362a3de47e7636d02c7c4bf7528ba7dd02230bbe20de06d1fe50')
+            '88424107b75e55cfc35f26d044e4288656a17d1f769d28e087d6adb0cd1e066f')
 
 prepare() {
   unzip -o -d "$srcdir/ldapbrowser-$pkgver" "$srcdir/ldapbrowser-$pkgver.zip"

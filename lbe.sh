@@ -24,7 +24,7 @@ if [ ! -d "$confdir" ]; then
 	cp -a "$appdir/templates" "$confdir/"
 fi
 
-if [ ! -t "$appdir/attributes.config" ]; then
+if [ ! -k "$appdir/attributes.config" ]; then
 	cp -a "$appdir/attributes.config" "$confdir/"
 fi
 
