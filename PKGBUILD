@@ -5,7 +5,7 @@
 # Contributor: bender02 at gmx dot com
 
 pkgname=asymptote-svn
-pkgver=r5723
+pkgver=r5724
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
