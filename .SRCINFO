@@ -1,7 +1,7 @@
 pkgbase = bleachbit-cli
 	pkgdesc = Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bleachbit.sourceforge.net/
 	arch = any
 	license = GPL3
@@ -10,7 +10,9 @@ pkgbase = bleachbit-cli
 	provides = bleachbit=1.8
 	conflicts = bleachbit
 	source = http://downloads.sourceforge.net/bleachbit/bleachbit-1.8.tar.bz2
+	source = fix_localization_debug.patch
 	sha256sums = dbf50fcbf24b8b3dd1c4325cd62352628d089f88a76eab804df5d90c872ee592
+	sha256sums = b09c80ae700f4368d4075da371b16c90a0367103418284fb0329db7f9bbba779
 
 pkgname = bleachbit-cli
 
