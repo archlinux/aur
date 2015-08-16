@@ -1,0 +1,20 @@
+pkgbase = libktnef-git
+	pkgdesc = API for handling TNEF data
+	pkgver = r271.572e41d
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/pim/ktnef
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = kcalutils-git
+	depends = kcontacts-git
+	provides = libktnef
+	conflicts = libktnef
+	source = git://anongit.kde.org/ktnef.git
+	md5sums = SKIP
+
+pkgname = libktnef-git
+
