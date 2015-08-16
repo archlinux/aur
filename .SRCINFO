@@ -1,0 +1,13 @@
+pkgbase = hurl-git
+	pkgdesc = hURL is a hexadecimal & URL encoder + decoder, and does several base conversions (similar to radare's rax(2) utility)
+	pkgver = 20120714
+	pkgrel = 1
+	url = https://github.com/fnord0/hURL
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = hurl
+
+pkgname = hurl-git
+
