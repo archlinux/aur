@@ -1,0 +1,15 @@
+pkgbase = cargo-watch
+	pkgdesc = Utility for cargo to compile projects when sources change
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/passcod/cargo-watch
+	arch = i686
+	arch = x86_64
+	license = CC0-1.0
+	depends = cargo
+	depends = rust
+	source = https://github.com/passcod/cargo-watch/archive/v2.1.5.tar.gz
+	sha256sums = 6b1ac3dd563dd88289374e04c404295e077b55c4493b190e7bee7e31883fcffd
+
+pkgname = cargo-watch
+
