@@ -1,9 +1,9 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=7add4846d4e9f2319d4e8d9b54ecb2615d260af8 # lastest commit 20150731
+_git=34b782f24427afcf7f6123748d325eb32ed91fb9 # lastest commit 20150731
 _repo=papirus-pack-kde
 pkgname=papirus
-pkgver=20150811
+pkgver=20150812
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('papirus-yakuake-theme: Modified and adaptive Paper theme for Yakuak
 			'libreoffice-papirus-theme: Papirus theme for Libreoffice')
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('cca0a6290e7a9c998f84cc0b30b5d3f330e91c64f756f6371c626858d8acfbdf')
+sha256sums=('164a58ade9acd267e3b83f5398fbe6333e31e2007dbfa14efe1225c08e2c3a65')
 
 package() {
    install -d ${pkgdir}/usr/share/plasma/look-and-feel
