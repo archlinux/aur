@@ -7,8 +7,8 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.3.8.2
-_pkgver=v0.3.8-2
+pkgver=0.3.8.3
+_pkgver=v0.3.8-3
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ fi
 source=("desktop-${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=${_pkgver}"
         "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
         "popcorntime.desktop")
-sha256sums=('d6d489fbbb8b57b25d36866ac8fc75f10ccb1c4fd9cb6a1332d06b38edf20d48'
+sha256sums=('c8a41e3751439ba2f109f4543511999f0f2b6e8844a3bfea3d864174529a64b8'
             'SKIP'
             'f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec')
 
