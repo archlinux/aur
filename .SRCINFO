@@ -1,7 +1,7 @@
 pkgbase = qbrew
 	pkgdesc = Homebrewer's beer recipe calculator
 	pkgver = 0.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.usermode.org/code.html
 	arch = i686
 	arch = x86_64
