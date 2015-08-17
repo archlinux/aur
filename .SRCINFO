@@ -1,6 +1,6 @@
 pkgbase = papirus
 	pkgdesc = Look-and-feel package for modified and adaptive Paper theme for KDE.
-	pkgver = 20150817
+	pkgver = 20150818
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = papirus
 	optdepends = bomi-skin-papirus: Papirus theme for Bomi
 	optdepends = libreoffice-papirus-theme: Papirus theme for Libreoffice
 	options = !strip
-	source = papirus-pack-kde-20150817.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/dd7a90b1ac22cff0cf63449fa4252e242f1aac33.tar.gz
-	sha256sums = b6c69ead3d912c3af4ba234251c17e21752488eeaaad000aad18f5ae22762f56
+	source = papirus-pack-kde-20150818.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/bd6b167e33e8a36cc15e550830161aa7037d5899.tar.gz
+	sha256sums = f652eb750fa51d270af24aa792327c32995866eaec1d65cda2115d92e81f935a
 
 pkgname = papirus
 
