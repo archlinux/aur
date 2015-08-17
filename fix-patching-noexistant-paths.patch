@@ -1,0 +1,23 @@
+diff --git a/com.cpp b/com.cpp
+index 993f879..2c6c9ef 100644
+--- a/com.cpp
++++ b/com.cpp
+@@ -74,12 +74,12 @@ int doit(char *filename, regex_t *re, char *replace, int options) {
+       do_regex(prog, re, replace, replaced, &need_show);
+       if (replaced[0]) {
+         result = link->SetPath(replaced);
+-        if (result != S_OK) {
+-          fprintf(stderr, "Error setting new path!\n");
+-          file->Release();
+-          link->Release();
+-          return 7;
+-        }
++        // if (result != S_OK) {
++        //   fprintf(stderr, "Error setting new path!\n");
++        //   file->Release();
++        //   link->Release();
++        //   return 7;
++        // }
+         need_write = 1;
+         memmove(prog, replaced, strlen(replaced));
+         prog[strlen(replaced)] = '\0';
