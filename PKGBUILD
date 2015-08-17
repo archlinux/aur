@@ -1,13 +1,13 @@
 # Contributor: Christopher Reimer <mail[at]creimer[dot]net>
 pkgname=sundtek
-pkgver=150630.105834
+pkgver=150728.175535
 pkgrel=1
 pkgdesc='Driver for Sundtek MediaTV Pro'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://www.sundtek.com'
 license=('custom')
 install="$pkgname.install"
-depends=('lib32-gcc-libs' 'libpulse')
+optdepends=('lib32-gcc-libs: FM Radio' 'libpulse: FM Radio')
 source=('sundtek.rules'
         'sundtek.service'
         'sundtek-restart.service')
