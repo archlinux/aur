@@ -1,0 +1,15 @@
+pkgbase = skf
+	pkgdesc = Simple Kanji Filter - i18n kanji converter
+	pkgver = 2.00.1
+	pkgrel = 1
+	url = http://osdn.jp/projects/skf/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = perl
+	depends = glibc
+	source = http://jaist.dl.osdn.jp/skf/63430/skf_2.00.1.tar.gz
+	md5sums = 94bedc238bd3cc0db054cf40670771b2
+
+pkgname = skf
+
