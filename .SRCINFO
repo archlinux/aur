@@ -1,6 +1,6 @@
 pkgbase = repose-git
 	pkgdesc = A archlinux repo building tool
-	pkgver = 3.34.gc663937
+	pkgver = 5
 	pkgrel = 1
 	url = http://github.com/vodik/repose
 	arch = i686
