@@ -1,6 +1,6 @@
 pkgbase = faustlive-git
 	pkgdesc = A graphical frontend to the Faust compiler.
-	pkgver = 633.116467c
+	pkgver = 689.318f5e8
 	pkgrel = 1
 	url = http://faust.grame.fr/
 	arch = i686
