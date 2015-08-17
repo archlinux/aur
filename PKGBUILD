@@ -2,8 +2,9 @@
 # Maintainer: Achilleas Pipinellis <axilleas archlinux info>
 
 pkgname=ooniprobe
+_pkgname=ooni-probe
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Observatory of Network Interference"
 arch=('any')
 url="https://ooni.torproject.org"
@@ -20,7 +21,7 @@ depends=( 'python2'
           'python2-txsocksx'
           'python2-parsley'
           'scapy'
-          'python2-pcapy'
+          'python2-pypcap'
           'python2-service-identity'
           'geoip-asndata'
           'geoip-database'
@@ -32,13 +33,16 @@ makedepends=(
           'python2-docutils'
           'python2-zope-interface'
           'libdnet'
+          'libpcap'
+          'libffi'
+          'openssl'
             )
-source=("https://pypi.python.org/packages/source/o/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/TheTorProject/$_pkgname/archive/v${pkgver}.tar.gz")
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" -O1
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('056735d6955a4f210701d7a304dba821')
+md5sums=('c4f64bb1ce4acc88b08d33bb35fbf7ed')
