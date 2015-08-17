@@ -1,6 +1,7 @@
 [Unit]
 Description=generic RADIUS proxy
 After=network.target
+Conflicts=radsecproxy-keepalive.service
 
 [Service]
 Type=forking

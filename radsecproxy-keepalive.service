@@ -1,6 +1,7 @@
 [Unit]
 Description=generic RADIUS proxy
 After=network.target
+Conflicts=radsecproxy.service
 ConditionPathExists=/usr/lib/libkeepalive.so
 
 [Service]
