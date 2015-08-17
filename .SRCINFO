@@ -1,7 +1,7 @@
 pkgbase = python2-smartypants
 	pkgdesc = A smart-quotes plugin
 	pkgver = 1.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://web.chad.org/projects/smartypants.py/
 	arch = any
 	license = BSD

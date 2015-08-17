@@ -4,7 +4,7 @@
 pkgname=python2-smartypants
 _pkgname=smartypants
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A smart-quotes plugin"
 url="http://web.chad.org/projects/smartypants.py/"
 arch=('any')
@@ -23,5 +23,8 @@ package()
   sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' setup.py
   sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2|' smartypants{.py,}
   python2 setup.py install --root="${pkgdir}" -O1
+
+  # Prevent conflict with python-smartypants
+   mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}2"
 }
 md5sums=('97484a618fc35508ca2961445f4aa597')
