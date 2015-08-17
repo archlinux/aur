@@ -7,7 +7,7 @@
 
 _pkgbasename=gnutls
 pkgname=lib32-${_pkgbasename}28
-pkgver=3.3.16
+pkgver=3.3.17.1
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (32-bit, legacy version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ url="http://gnutls.org/"
 depends=('lib32-zlib' 'lib32-nettle' 'lib32-p11-kit' 'lib32-libtasn1' $_pkgbasename)
 makedepends=('gcc-multilib' 'lib32-libidn')
 source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/${_pkgbasename}-${pkgver}.tar.xz{,.sig})
-sha256sums=('80a471c723572a43ddbe75d7825a3275f640650cc99eae42963ab39b9d0b7552'
+sha256sums=('b40f158030a92f450a07b20300a3996710ca19800848d9f6fd62493170c5bbb4'
             'SKIP')
 validpgpkeys=(1F42418905D8206AA754CCDC29EE58B996865171)
 
@@ -25,7 +25,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd ${srcdir}/${_pkgbasename}-${pkgver}
+  cd "${srcdir}/${_pkgbasename}-${pkgver}"
 
   # build fails without --disable-hardware-acceleration because of assembler errors
   ./configure --prefix=/usr --libdir=/usr/lib32 \
@@ -45,7 +45,6 @@ check() {
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  find $pkgdir
 
   install -m 755 -d "${pkgdir}"/usr/lib32/gnutls28
   mv "${pkgdir}"/usr/{include,lib32/gnutls28}

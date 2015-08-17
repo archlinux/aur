@@ -1,6 +1,6 @@
 pkgbase = lib32-gnutls28
 	pkgdesc = A library which provides a secure layer over a reliable transport layer (32-bit, legacy version)
-	pkgver = 3.3.16
+	pkgver = 3.3.17.1
 	pkgrel = 1
 	url = http://gnutls.org/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = lib32-gnutls28
 	depends = lib32-p11-kit
 	depends = lib32-libtasn1
 	depends = gnutls
-	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.16.tar.xz
-	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.16.tar.xz.sig
-	sha256sums = 80a471c723572a43ddbe75d7825a3275f640650cc99eae42963ab39b9d0b7552
+	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.17.1.tar.xz
+	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.17.1.tar.xz.sig
+	sha256sums = b40f158030a92f450a07b20300a3996710ca19800848d9f6fd62493170c5bbb4
 	sha256sums = SKIP
 
 pkgname = lib32-gnutls28
