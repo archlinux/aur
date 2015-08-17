@@ -1,7 +1,7 @@
 # Author : Esclapion <esclapion at gmail dot com>
 
 pkgname=breeze-lxqt
-pkgver=1.1
+pkgver=1.2
 pkgrel=0
 pkgdesk="Variant of breeze-dark for lxqt"
 url="http://kde-look.org/content/show.php/?content=165578"
