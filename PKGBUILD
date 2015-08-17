@@ -1,4 +1,5 @@
-# Maintainer: Armin K. <krejzi at email dot com>
+# Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
+# Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
@@ -10,21 +11,23 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-git
-pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-git' 'lib32-mesa-libgl-git')
-pkgver=10.5.0_devel.67557
+pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git')
+pkgver=11.0.0_devel.72046.1af0641
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
-             'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-elfutils' 'lib32-llvm' 'lib32-systemd'
-             'lib32-libvdpau' 'lib32-wayland' 'python2-mako' 'git')
+             'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-elfutils' 'lib32-llvm-libs-svn' 'lib32-llvm-svn' 'lib32-systemd'
+             'lib32-libvdpau' 'lib32-wayland' 'python2-mako' 'lib32-libtxc_dxtn' 'git' 'mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'lib32-gnutls' 'lib32-openssl')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master')
-md5sums=('SKIP')
+source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
+        'LICENSE')
+md5sums=('SKIP'
+         '5c65a0fe315dd347e09b1f2826a1df5a')
 
 pkgver() {
     cd "${srcdir}/mesa"
-    echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD)
+    echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 _mesaver() {
@@ -48,7 +51,8 @@ build() {
                --with-gallium-drivers=r300,r600,radeonsi,nouveau,swrast \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
-               --disable-va \
+               --enable-va \
+               --with-va-libdir=/usr/lib32/dri \
                --disable-xvmc \
                --enable-llvm-shared-libs \
                --enable-egl \
@@ -72,9 +76,22 @@ build() {
   make DESTDIR="${srcdir}/fakeinstall" install
 }
 
+package_lib32-libva-mesa-driver-git() {
+  pkgdesc="VA-API implementation for gallium (32-bit)"
+  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-llvm-libs-svn' 'lib32-expat' 'lib32-elfutils' 'lib32-nettle' 'libva-mesa-driver-git')
+  provides=("lib32-libva-mesa-driver=$(_mesaver)")
+  conflicts=('lib32-libva-mesa-driver')
+
+  install -v -m755 -d "${pkgdir}/usr/lib32"
+  mv -v "${srcdir}/fakeinstall/usr/lib32/dri" "${pkgdir}/usr/lib32/"
+
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/lib32-libva-mesa-driver-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-libva-mesa-driver-git/"
+}
+
 package_lib32-mesa-vdpau-git() {
   pkgdesc="Mesa VDPAU drivers (32-bit)"
-  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-expat' 'lib32-llvm-libs' 'lib32-elfutils')
+  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-expat' 'lib32-llvm-libs-svn' 'lib32-elfutils' 'mesa-vdpau-git' 'lib32-nettle')
   provides=('lib32-mesa-vdpau')
   replaces=('lib32-mesa-vdpau')
   conflicts=('lib32-mesa-vdpau')
@@ -82,26 +99,20 @@ package_lib32-mesa-vdpau-git() {
   install -v -m755 -d "${pkgdir}/usr/lib32"
   mv -v "${srcdir}/fakeinstall/usr/lib32/vdpau" "${pkgdir}/usr/lib32/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses"
-  ln -sfv mesa-vdpau "$pkgdir/usr/share/licenses/${pkgname}"
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/lib32-mesa-vdpau-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-mesa-vdpau-git/"
 }
 
 package_lib32-mesa-git() {
   pkgdesc="an open-source implementation of the OpenGL specification (32-bit)"
   depends=('lib32-libdrm' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-systemd'
-           'lib32-elfutils' 'lib32-llvm-libs' 'lib32-wayland' 'lib32-libtxc_dxtn' 'lib32-expat' 'mesa')
+           'lib32-elfutils' 'lib32-llvm-libs-svn' 'lib32-wayland' 'lib32-libtxc_dxtn' 'lib32-expat' 'mesa-git')
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'lib32-mesa-vdpau-git: for accelerated video playback')
-  provides=("lib32-mesa=$(_mesaver)" 'lib32-libglapi' 'lib32-osmesa' 'lib32-libgbm' 'lib32-libgles' 'lib32-libegl'
-            'lib32-ati-dri' 'lib32-intel-dri' 'lib32-nouveau-dri' 'lib32-mesa-dri'
-            'lib32-ati-dri-git' 'lib32-intel-dri-git' 'lib32-nouveau-dri-git' 'lib32-mesa-dri-git')
-  replaces=('lib32-mesa' 'lib32-libglapi' 'lib32-osmesa' 'lib32-libgbm' 'lib32-libgles' 'lib32-libegl'
-            'lib32-ati-dri' 'lib32-intel-dri' 'lib32-nouveau-dri' 'lib32-mesa-dri'
-            'lib32-ati-dri-git' 'lib32-intel-dri-git' 'lib32-nouveau-dri-git' 'lib32-mesa-dri-git')
-  conflicts=('lib32-mesa' 'lib32-libglapi' 'lib32-osmesa' 'lib32-libgbm' 'lib32-libgles' 'lib32-libegl'
-            'lib32-ati-dri' 'lib32-intel-dri' 'lib32-nouveau-dri' 'lib32-mesa-dri'
-            'lib32-ati-dri-git' 'lib32-intel-dri-git' 'lib32-nouveau-dri-git' 'lib32-mesa-dri-git')
-
+  provides=("lib32-mesa=$(_mesaver)" 'lib32-mesa-dri' 'lib32-mesa-r300-r600-radeonsi-git')
+  replaces=('lib32-mesa' 'lib32-mesa-dri' 'lib32-mesa-r300-r600-radeonsi-git' )
+  conflicts=('lib32-mesa' 'lib32-mesa-dri' 'lib32-mesa-r300-r600-radeonsi-git' )
+  
   install -v -m755 -d "${pkgdir}/usr/lib32/xorg/modules/dri"
   # ati-dri, nouveay-dri, intel-dri, swrast
   mv -v "${srcdir}"/fakeinstall/usr/lib32/xorg/modules/dri/* "${pkgdir}/usr/lib32/xorg/modules/dri/"
@@ -118,13 +129,13 @@ package_lib32-mesa-git() {
   mv -v "${pkgdir}"/usr/lib32/libEGL.so*   "${pkgdir}/usr/lib32/mesa/"
   mv -v "${pkgdir}"/usr/lib32/libGLES*.so* "${pkgdir}/usr/lib32/mesa/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses"
-  ln -sfv mesa "$pkgdir/usr/share/licenses/${pkgname}"
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/lib32-mesa-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-mesa-git/"
 }
 
 package_lib32-mesa-libgl-git() {
   pkgdesc="Mesa 3-D graphics library (32-bit)"
-  depends=("lib32-mesa=$(_mesaver)")
+  depends=('lib32-mesa-git')
   provides=("lib32-mesa-libgl=$(_mesaver)" "lib32-libgl=$(_mesaver)")
   replaces=('lib32-mesa-libgl')
   conflicts=('lib32-mesa-libgl')
@@ -147,6 +158,6 @@ package_lib32-mesa-libgl-git() {
   ln -sv libGLESv2.so.2.0.0                 "${pkgdir}/usr/lib32/libGLESv2.so.2"
   ln -sv libGLESv2.so.2.0.0                 "${pkgdir}/usr/lib32/libGLESv2.so"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses"
-  ln -sfv mesa-libgl "$pkgdir/usr/share/licenses/${pkgname}"
+  install -v -m755 -d "${pkgdir}/usr/share/licenses/lib32-mesa-libgl-git"
+  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-mesa-libgl-git/"
 }
