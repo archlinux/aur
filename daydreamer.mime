@@ -12,9 +12,9 @@
     <comment xml:lang="en">DayDreamer Zipped Interactive fiction story</comment>
     <comment xml:lang="pl">Plik ZIP DayDreamer fikcji interaktywnej</comment>
     <icon name="application-x-daydreamer-game"/>
-    <magic priority="50">
+    <!-- <magic priority="50">
       <match value="PK\03" type="string" offset="0"/>
-    </magic>
+    </magic> -->
     <glob pattern="*.ddz"/>
   </mime-type>
   <mime-type type="application/x-daydreamer-save">
