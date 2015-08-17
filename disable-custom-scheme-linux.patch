@@ -1,5 +1,5 @@
 diff --git a/Telegram/SourceFiles/pspecific_linux.cpp b/Telegram/SourceFiles/pspecific_linux.cpp
-index d0af098..1961d1f 100644
+index 3c96e06..c32f229 100644
 --- a/Telegram/SourceFiles/pspecific_linux.cpp
 +++ b/Telegram/SourceFiles/pspecific_linux.cpp
 @@ -1163,6 +1163,7 @@ namespace {
@@ -17,4 +17,4 @@ index d0af098..1961d1f 100644
 +    #endif
  }
  
- bool _execUpdater(bool update = true) {
+ void psNewVersion() {

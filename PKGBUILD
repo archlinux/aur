@@ -1,5 +1,5 @@
 pkgname=telegram-desktop
-pkgver=0.8.48
+pkgver=0.8.51
 pkgrel=1
 _qtver=5.5.0
 pkgdesc='Official desktop version of Telegram messaging app.'
@@ -12,10 +12,10 @@ source=("http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtve
 	"disable-custom-scheme-linux.patch"
 	"disable-updater.patch"
 	"telegramdesktop.desktop"
-	"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=1b16064db6f73dc8d83dbed7172f510dfbc40fb0")
+	"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=20f1610d6094d88cfdce3d8bc5da792d3ef7be42")
 sha256sums=('bf3cfc54696fe7d77f2cf33ade46c2cc28841389e22a72f77bae606622998e82'
-	    'f0eef6b9d0b9293f28e9cc73ccd58e23a453b119dc65aa062ffc73b25eb26e2a'
-	    'fb0da9f69b0c6c41e0d2cda300db4f59284dd6cfc96ad82594d4308c4852a8df'
+	    '6cadef3ddabd2543493e71beee86ca6ac43cc258faaa724d7b8952e9ed6bf9e9'
+	    '8fa833f33f4a2c23291049f4338a4e64a03a6dbccd7c53f9782f1a5a2a057aad'
 	    'fb466e51758ba409cd0b9da8147c6854430e8e7f485476d5107b3bf572a82777'
 	    'SKIP')
 install="$pkgname.install"
@@ -36,6 +36,7 @@ prepare() {
 	fi
 	
 	sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
+	sed -i 's,LIBS += /usr/local/lib/libxkbcommon.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 	
 	echo "DEFINES += TDESKTOP_DISABLE_AUTOUPDATE" >> "$srcdir/tdesktop/Telegram/Telegram.pro"
 	

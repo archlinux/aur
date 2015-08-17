@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop
 	pkgdesc = Official desktop version of Telegram messaging app.
-	pkgver = 0.8.48
+	pkgver = 0.8.51
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	install = telegram-desktop.install
@@ -27,10 +27,10 @@ pkgbase = telegram-desktop
 	source = disable-custom-scheme-linux.patch
 	source = disable-updater.patch
 	source = telegramdesktop.desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=1b16064db6f73dc8d83dbed7172f510dfbc40fb0
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=20f1610d6094d88cfdce3d8bc5da792d3ef7be42
 	sha256sums = bf3cfc54696fe7d77f2cf33ade46c2cc28841389e22a72f77bae606622998e82
-	sha256sums = f0eef6b9d0b9293f28e9cc73ccd58e23a453b119dc65aa062ffc73b25eb26e2a
-	sha256sums = fb0da9f69b0c6c41e0d2cda300db4f59284dd6cfc96ad82594d4308c4852a8df
+	sha256sums = 6cadef3ddabd2543493e71beee86ca6ac43cc258faaa724d7b8952e9ed6bf9e9
+	sha256sums = 8fa833f33f4a2c23291049f4338a4e64a03a6dbccd7c53f9782f1a5a2a057aad
 	sha256sums = fb466e51758ba409cd0b9da8147c6854430e8e7f485476d5107b3bf572a82777
 	sha256sums = SKIP
 
