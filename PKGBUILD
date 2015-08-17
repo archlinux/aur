@@ -11,7 +11,6 @@ arch=('any')
 url="http://www.inf-it.com/open-source/clients/infcloud/"
 license=('AGPL3')
 depends=('ed')
-optdepends=('apache: Webserver to run infcloud')
 backup=('etc/webapps/infcloud/config.js')
 install=${pkgname}.install
 source=("https://www.inf-it.com/InfCloud_${pkgver}.zip")
