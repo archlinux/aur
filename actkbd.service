@@ -1,0 +1,9 @@
+[Unit]
+Description=Actkbd: Daemon for X-independent shortcuts
+
+[Service]
+ExecStart=/usr/bin/actkbd
+
+[Install]
+WantedBy=multi-user.target
+

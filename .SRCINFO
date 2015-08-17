@@ -1,0 +1,17 @@
+pkgbase = actkbd
+	pkgdesc = A keyboard shortcut daemon
+	pkgver = 0.2.8
+	pkgrel = 8
+	url = http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	backup = etc/actkbd.conf
+	source = http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/files/actkbd-0.2.8.tar.bz2
+	source = actkbd.service
+	md5sums = d055690da0465cefcf168c5532efcb2e
+	md5sums = e86dd1852596fcc64c5185804b3b9f3f
+
+pkgname = actkbd
+
