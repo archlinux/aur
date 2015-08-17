@@ -1,8 +1,7 @@
 pkgbase = etlegacy-git
-	pkgver = LATEST
+	pkgver = 2.73.91.ga1d3419
 	pkgrel = 1
 	url = http://etlegacy.com/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -41,8 +40,6 @@ pkgname = etlegacy-git
 	backup = etc/xdg/etlegacy/etmain/lmscycle.cfg
 	backup = etc/xdg/etlegacy/etmain/mapvotecycle.cfg
 	backup = etc/xdg/etlegacy/etmain/objectivecycle.cfg
-	conflicts_x86_64 = etlegacy64-git
-	replaces_x86_64 = etlegacy64-git
 
 pkgname = etlegacy-mod-git
 	pkgdesc = Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy mod)

@@ -1,18 +1,19 @@
-# Maintainer: Artem 'skybon' Vorotnikov <artem@vorotnikov.me>
-# Contributor: Remy 'spyhawk' Marquis <remy.marquis@gmail.com>
+# Full 64 bit ET:Legacy clients can only connect to ET:Legacy servers running mods providing a 64 bit version.
+# If you want to connect to existing 32 bit only mods, install the cross-compiled "etlegacy32-git" package instead.
+# Other optional deps: 'openal' 'ncurses' 'jansson'
 
-_gitname=etlegacy
-pkgbase=$_gitname-git
+pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=LATEST
+pkgver=2.73.91.ga1d3419
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://etlegacy.com/"
 license=('GPL3')
 makedepends=('git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2')
 options=(!strip)
 source=('git+https://github.com/etlegacy/etlegacy.git')
 sha512sums=('SKIP')
+_gitname=etlegacy
 
 pkgver() {
     cd "$srcdir/$_gitname"
@@ -38,14 +39,12 @@ build() {
         "-D INSTALL_DEFAULT_BINDIR=bin"
         "-D INSTALL_DEFAULT_MODDIR=lib/etlegacy"
     )
-
-    # arch && cross-compilation
+    # arch
     cmakeopts+=(
         "-D CMAKE_LIBRARY_PATH=/usr/lib"
         "-D CMAKE_INCLUDE_PATH=/usr/include"
         "-D CROSS_COMPILE32=0"
     )
-
     # options
     cmakeopts+=(
         "-D BUILD_SERVER=1"
@@ -107,8 +106,6 @@ package_etlegacy-git() {
     depends=('etlegacy-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2')
     provides=('etlegacy')
     conflicts=('etlegacy')
-    conflicts_x86_64=('etlegacy64-git')
-    replaces_x86_64=('etlegacy64-git')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
             'etc/xdg/etlegacy/etmain/legacy.cfg'
             'etc/xdg/etlegacy/etmain/campaigncycle.cfg'
