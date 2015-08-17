@@ -2,9 +2,9 @@
 # Contributor: Raimar Bühmann <raimar@buehmann.de>
 # Contributor: Benjamin Robinben <jarobin@gmail.com>
 pkgname=eclipse-arm
-pkgver=2.8.1
-date=201504061754
-pkgrel=3
+pkgver=2.9.2
+date=201508071246
+pkgrel=1
 pkgdesc="GNU ARM Eclipse Plug-in"
 arch=('any')
 url="http://sourceforge.net/projects/gnuarmeclipse"
@@ -13,7 +13,7 @@ license=("GPL")
 options=('!strip')
 depends=('eclipse-cpp')
 source=("http://sourceforge.net/projects/gnuarmeclipse/files/Current%20Releases/2.x/ilg.gnuarmeclipse.repository-$pkgver-$date.zip")
-md5sums=('08b62e19361d99c20c383c00bfba82ea')
+md5sums=('2bf6c4ed6214c482e7cf43ca2ea36abd')
 
 package() {
   _dest="${pkgdir}/usr/lib/eclipse/dropins/arm/eclipse"
