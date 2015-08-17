@@ -1,0 +1,16 @@
+pkgbase = tzsp2pcap-git
+	pkgdesc = Simple live TaZmen Sniffer Protocol (TZSP) to pcap converter
+	pkgver = r16.e2e5d91
+	pkgrel = 1
+	url = https://github.com/thefloweringash/tzsp2pcap
+	arch = i686
+	arch = x86_64
+	groups = network
+	license = BSD
+	makedepends = git
+	depends = libpcap
+	source = tzsp2pcap-git::git+https://github.com/thefloweringash/tzsp2pcap.git
+	md5sums = SKIP
+
+pkgname = tzsp2pcap-git
+
