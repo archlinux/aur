@@ -1,0 +1,15 @@
+pkgbase = g_lomepro
+	pkgdesc = Local Membrane Property Analysis
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://www3.mpibpc.mpg.de/groups/grubmueller/start/g_lomepro.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gromacs-4.6-complete=4.6.7
+	options = !libtool
+	source = http://www3.mpibpc.mpg.de/groups/grubmueller/start/g_lomepro_v1.0.2.tar
+	sha1sums = 902f4e4329136572f6f54ff293c354a5c30d82c9
+
+pkgname = g_lomepro
+
