@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=haroopad
+Version=0.12.2
+Exec=haroopad %F
+Comment=The Next Document processor based on Markdown
+Icon=haroopad
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Development;GTK;GNOME;
+MimeType=text/x-markdown;

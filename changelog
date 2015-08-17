@@ -1,0 +1,11 @@
+New Features	
+* Add Search & Replace
+* Add bug report in Help menu
+* Add donattion in Help Menu
+
+Enhancements	
+* #94	Ehancement markdown rendering performance (x??)
+* #93	Prevent anti virus dectect
+* #82	Advertisements (export html)
+* Editing line auto position at viewer
+* Change Help menu action (Mac Only)
