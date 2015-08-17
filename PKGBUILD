@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=x265-hg
-pkgver=1.7.r286.1162fb0b99f8
+pkgver=1.7.r424.996ebce8c874
 pkgrel=1
 pkgdesc='CLI tools for encoding H265/HEVC video streams.'
 arch=('i686' 'x86_64')
@@ -11,15 +11,11 @@ url='https://bitbucket.org/multicoreware/x265'
 license=('GPL')
 depends=('gcc-libs')
 provides=('x265'
-          'libx265.so' 'libx265_main10.so' 'libx265_main12.so')
+          'libx265.so')
 conflicts=('x265')
 makedepends=('cmake' 'mercurial' 'yasm')
-source=('hg+https://bitbucket.org/multicoreware/x265'
-        'libx265_main10-soname.patch'
-        'libx265_main12-soname.patch')
-sha256sums=('SKIP'
-            '8cd78f04ef35c2edc3319da4c1d98a3273d23581cb8dc80b7a87f3a888831068'
-            '343364f7bd230b80c2e1d3e273616032392ddb3c5b97f0a6734e8222ed2cb938')
+source=('hg+https://bitbucket.org/multicoreware/x265')
+sha256sums=('SKIP')
 
 pkgver() {
   cd x265
@@ -28,73 +24,57 @@ pkgver() {
 }
 
 prepare() {
-  cp -r x265 x265-12bit
-  cp -r x265 x265-10bit
+  cd x265
 
-  cd x265-12bit
-
-  patch -Np1 -i ../libx265_main12-soname.patch
-
-  cd ../x265-10bit
-
-  patch -Np1 -i ../libx265_main10-soname.patch
+  for d in 8 10 12; do
+    if [[ -d build-$d ]]; then
+      rm -rf build-$d
+    fi
+    mkdir build-$d
+  done
 }
 
 build() {
-  cd x265-12bit
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
+  cd x265/build-12
 
   cmake ../source \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DHIGH_BIT_DEPTH='TRUE' \
     -DMAIN12='TRUE' \
-    -DENABLE_SHARED='TRUE'
+    -DEXPORT_C_API='FALSE' \
+    -DENABLE_CLI='FALSE' \
+    -DENABLE_SHARED='FALSE'
   make
 
-  cd ../../x265-10bit
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
+  cd ../build-10
 
   cmake ../source \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DHIGH_BIT_DEPTH='TRUE' \
-    -DENABLE_SHARED='TRUE'
+    -DEXPORT_C_API='FALSE' \
+    -DENABLE_CLI='FALSE' \
+    -DENABLE_SHARED='FALSE'
   make
 
-  cd ../../x265
+  cd ../build-8
 
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
+  ln -s ../build-10/libx265.a libx265_main10.a
+  ln -s ../build-12/libx265.a libx265_main12.a
 
   cmake ../source \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DENABLE_SHARED='TRUE'
+    -DENABLE_SHARED='TRUE' \
+    -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
+    -DEXTRA_LINK_FLAGS='-L.' \
+    -DLINKED_10BIT='TRUE' \
+    -DLINKED_12BIT='TRUE'
   make
 }
 
 package() {
-  cd x265-12bit/build
+  cd x265/build-8
 
   make DESTDIR="${pkgdir}" install
-
-  cd ../../x265-10bit/build
-
-  make DESTDIR="${pkgdir}" install
-
-  cd ../../x265/build
-
-  make DESTDIR="${pkgdir}" install
-
-  rm -rf "${pkgdir}"/usr/lib/libx265.a
 }
 
 # vim: ts=2 sw=2 et:
