@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 pkgname=phpunit
-pkgver=4.8.3
+pkgver=4.8.4
 pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
@@ -11,7 +11,7 @@ depends=("php")
 install="${pkgname}.install"
 source=("https://phar.phpunit.de/${pkgname}-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/${pkgname}/${pkgver}/LICENSE")
-sha512sums=('a0f0f2af51f902e4920eaa696c3a4ca706ebe592665c236bda4cba2509c54c619ef2c26bff7557f1c8e49520042ec41bdca90c0e43fc06a6988253d253e81c69'
+sha512sums=('2757ddc4ad08642a17873609ac719b0f0d23f673275098e2bd291a49b13a6a749939f1da70294c5346db2d95203bf47523f8830177b9c2bdbc378ac4a52542aa'
             '8cd4a84df128f54ef6cf657d2d6e4307b2f4fe92f60b94f6639c16c2ebcffcb20923fcfee3cf7becddf0e138c5affacb887ac43d356c7ef220f73e6d75bd9fef')
 
 package() {
