@@ -1,16 +1,16 @@
 # Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot]com>
 
 pkgname=adminer
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="A full-featured MySQL management tool written in PHP"
 arch=('any')
 license=('Apache License, Version 2.0')
-depends=('php') 
+depends=('php')
 conflicts=('adminer-git')
 optdepends=('mysql' 'apache' 'adminer-skins' 'postgresql' 'sqlite3')
 url="http://www.adminer.org"
-install=adminer.install
+install=${pkgname}.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.php")
 
 package() {
@@ -26,7 +26,7 @@ package() {
 		AllowOverride All
 		Options FollowSymlinks
 		Require all granted
-        php_admin_value open_basedir "/srv/:/tmp/:/usr/share/webapps/:/etc/webapps:/usr/share/pear/"
+		php_admin_value open_basedir "/srv/:/tmp/:/usr/share/webapps/:/etc/webapps:/usr/share/pear/"
 	</Directory>
 EOF
 
@@ -35,4 +35,4 @@ EOF
 
 }
 
-md5sums=('7b65ca8647349ca14d96735b414e439f')
+sha512sums=('0b996a58bbf8f2ac611bd63bce1c3563edb89f4ca8cd8bbe00b6d6481df86eaa7574853a24cf1751ee15356df39b5276202034223386ed18b514f7f7e01259ef')
