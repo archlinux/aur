@@ -20,6 +20,9 @@ makedepends=('git')
 depends=('glibc')
 #optdepends=('lvm2' 'dm-crypt' 'bcache')
 backup=("etc/${_pkgname}.conf")
+_verurl='ftp://ftp.kernel.org/pub/linux/utils/raid/mdadm/'
+_versed='mdadm-\(.*\)\.tar\.xz'
+_veropt='f'
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=(# use either one, but not both. Reset with makepkg -sCf. My comparison shows these are identical, including the tags. Github is faster.
         #"mdadm_gitnb::git://neil.brown.name/${_pkgname}"
@@ -31,7 +34,6 @@ source=(# use either one, but not both. Reset with makepkg -sCf. My comparison s
         "mdadm_udev_hook")
 install="${_pkgname}.install"
 replaces=('raidtools')
-
 sha256sums=('SKIP'
             '4ce1e90690282f98e4828e11576fbd61be65e97a2cdae6c7eac7035ea5ee53e5'
             'd297b4fa6213016ec08e4f66d07cf7eb03426e4e17ab31eddfa5c5c1d82ea294'
@@ -56,16 +58,18 @@ prepare() {
 build() {
   set -u
   cd mdadm_git*/
-  make -s -j $(nproc) CXFLAGS='-O' BINDIR='/usr/bin' UDEVDIR='/usr/lib/udev'
+  msg2 'Build mdadm'
+  make -s -j $(nproc) CXFLAGS="${CFLAGS}" BINDIR='/usr/bin' UDEVDIR='/usr/lib/udev'
   # build static mdassemble for Arch's initramfs for use with mkinitcpio hook mdadm. Hook mdadm_udev does not use mdassemble.
-  make -s -j $(nproc) CXFLAGS='-O' MDASSEMBLE_AUTO=1 mdassemble
+  msg2 'Build mdassemble'
+  make -s -j $(nproc) CXFLAGS="${CFLAGS}" MDASSEMBLE_AUTO=1 mdassemble
   set +u
 }
 
 check() {
   set -u
   cd mdadm_git*/
-  make -s -j $(nproc) CXFLAGS='-O' test
+  make -s -j $(nproc) CXFLAGS="${CFLAGS}" test
   #sudo ./test # can't do sudo in a PKGBUILD
   set +u
 }
