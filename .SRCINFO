@@ -1,7 +1,7 @@
 pkgbase = python-twine
 	pkgdesc = A utility for interacting with PyPI
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/twine
 	arch = any
 	license = APACHE
@@ -9,6 +9,10 @@ pkgbase = python-twine
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	makedepends = python-requests
+	makedepends = python2-requests
+	makedepends = python-pkginfo
+	makedepends = python2-pkginfo
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/t/twine/twine-1.5.0.tar.gz
 	md5sums = 12948245aeb59acf32f663e1d81fed34
@@ -16,8 +20,12 @@ pkgbase = python-twine
 pkgname = python-twine
 	depends = python
 	depends = python-setuptools
+	depends = python-requests
+	depends = python-pkginfo
 
 pkgname = python2-twine
 	depends = python2
 	depends = python2-setuptools
+	depends = python2-requests
+	depends = python2-pkginfo
 
