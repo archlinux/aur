@@ -20,8 +20,8 @@ sha256sums=('058dc832c096139a059e6df814080f50251a8d313c21b13364c54a1e70109122'
 	    '6c97a8cedd00d711cc5db14bbe15e5765d32706473a23b635b84870aae0a8d58')
 
 prepare() {
-  cd wpa_supplicant-${pkgver}/wpa_supplicant/wpa_gui-qt4
-  patch -p1 -i "${srcdir}/wpa_gui2.2-add_qt5_support.patch"
+  cd wpa_supplicant-${pkgver}
+  patch -p1 -i "${srcdir}/wpa_gui2.4-add_qt5_support.patch"
 }
 
 build() {
