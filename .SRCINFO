@@ -1,0 +1,14 @@
+pkgbase = drupal7
+	pkgdesc = A PHP-based content management platform
+	pkgver = 7.35
+	pkgrel = 1
+	url = http://www.drupal.org/
+	install = drupal7.install
+	arch = any
+	license = GPL
+	depends = php
+	source = http://www.drupal.org/files/projects/drupal-7.35.tar.gz
+	sha512sums = 0bc0a5fef14aa7086eb5cef7893d90c9b4826aade43d17d35c200af6bc3e3268d9bbc3158ef666657cb68763f4c1b381e27df11e8a49d91b2905f7bac658978d
+
+pkgname = drupal7
+
