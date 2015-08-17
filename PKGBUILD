@@ -39,8 +39,13 @@ depends=('openssl>=1.0.2'
 
 optdepends=('python2-numpy: reliability test')
 
-source=("https://tahoe-lafs.org/source/tahoe-lafs/releases/allmydata-tahoe-$pkgver.tar.bz2")
-sha256sums=('fed5d719c966d9528a45e8ad66e6c8ff3dcb3c06db94775194c7c75566047be7')
+source=("https://tahoe-lafs.org/source/tahoe-lafs/releases/allmydata-tahoe-$pkgver.tar.bz2"
+        "https://tahoe-lafs.org/source/tahoe-lafs/releases/allmydata-tahoe-$pkgver.tar.bz2.asc")
+
+sha256sums=('fed5d719c966d9528a45e8ad66e6c8ff3dcb3c06db94775194c7c75566047be7'
+            'SKIP')
+
+validpgpkeys=('E34E62D06D0E69CFCA4179FFBDE0D31D68666A7A')
 
 build(){
     cd "${srcdir}/allmydata-tahoe-${pkgver}"
