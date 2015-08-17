@@ -1,0 +1,30 @@
+pkgbase = pb-git
+	pkgdesc = My attempt at a light pastebin
+	pkgver = r254.ab55849
+	pkgrel = 1
+	url = https://github.com/ptpb/pb
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	makedepends = git
+	makedepends = graphicsmagick
+	makedepends = npm
+	depends = python
+	depends = python-werkzeug
+	depends = python-flask-git
+	depends = python-yaml
+	depends = python-requests
+	depends = python-docutils
+	depends = python-xdg
+	depends = python-pymongo
+	depends = python-markdown
+	depends = uwsgi
+	depends = uwsgi-plugin-python
+	provides = pb
+	backup = etc/xdg/pb/config.yaml
+	backup = etc/uwsgi/pb.ini
+	source = pb-git::git+https://github.com/ptpb/pb.git
+	md5sums = SKIP
+
+pkgname = pb-git
+
