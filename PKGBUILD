@@ -1,9 +1,9 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=a2f023d8a3a5eefc2abd31c87bb8b06f196a9f82
+_git=8bba0fce5d210df4fc06ff0bb1a3335af11693ab
 _repo=papirus-pack-kde
 pkgname=papirus-icon-theme
-pkgver=20150821
+pkgver=20150822
 pkgrel=1
 pkgdesc="Modified and adaptive Paper icon theme for KDE"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('d4b1e07edaaee2edfa8aa1a5733b4216e9bd66f127808e85977aec02d6a340cb')
+sha256sums=('e0c17a6d0500c14544aabe45486c73b6836c5ad5d7e55e12e8891dcd3f1169e4')
 
 package() {
     install -d ${pkgdir}/usr/share/icons
