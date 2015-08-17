@@ -1,0 +1,16 @@
+pkgbase = perl-parse-debcontrol
+	pkgdesc = Easy OO parsing of debian control-like files
+	pkgver = 2.005
+	pkgrel = 3
+	url = https://metacpan.org/module/Parse::DebControl
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-io-stringy
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/J/JA/JAYBONCI/Parse-DebControl-2.005.tar.gz
+	sha256sums = b64bce1ff212d7e3ef9d4368e7b62749cf27751fa8360cdf53e969123346a729
+
+pkgname = perl-parse-debcontrol
+
