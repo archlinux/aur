@@ -1,7 +1,7 @@
 # Maintainer: helix <stargr[at]gmail[dot]com>
 pkgname=libreoffice-extension-libregreek
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An advanced Greek & English dictionary for LibreOffice'
 arch=('any')
 url='https://github.com/squibbylinux/LibreGreek'
@@ -10,10 +10,31 @@ depends=('libreoffice')
 groups=('libreoffice-extensions')
 conflicts=('languagetool')
 source=(https://github.com/squibbylinux/LibreGreek/archive/master.tar.gz)
-sha512sums=('6604237e300fdd873c03da58c87d4bce001593cf13173187da1c886eba5ef8f7dff108f3636024c5243288f483477f15c874ed5ec0a525ac0dad1c3f50dbfdd7')
+sha512sums=('473976031069a7518e2eaf8cfc899dbc022039c819dcf13186a588bddd9e064c0d89429db4f4774c7540c57262d8451ed67594550b83532eeb47661b9444c311')
+
+build() {
+
+  #tar xzf $srcdir/master.tar.gz -C $srcdir --strip-components=1 LibreGreek-master/libregreek
+  cd ${srcdir}/LibreGreek-master/makedict
+  make
+  cp elen.dic ${srcdir}/LibreGreek-master/libregreek/dicts/
+}
 
 package() {
-  install -dm755 $pkgdir/usr/lib/libreoffice/share/extensions
-  tar xzf $srcdir/master.tar.gz -C $pkgdir/usr/lib/libreoffice/share/extensions --strip-components=1 LibreGreek-master/libregreek
-  install -dm755 $pkgdir/usr/lib/libreoffice/share/extensions/libregreek
+  install -d ${pkgdir}/usr/lib/libreoffice/share/extensions/libregreek
+  for templateDir in dicts help META-INF templates;do
+      install -dm775 ${pkgdir}/usr/lib/libreoffice/share/extensions/libregreek/${templateDir}
+      if [ ${templateDir} = "templates" ];then
+          install -d ${pkgdir}/usr/lib/libreoffice/share/extensions/libregreek/templates/el-GR
+          for templateType in Drawing Presentation Writer;do
+              install -dm775 ${pkgdir}/usr/lib/libreoffice/share/extensions/libregreek/templates/el-GR/${templateType}
+              install -Dm644 ${srcdir}/LibreGreek-master/libregreek/templates/el-GR/${templateType}/* ${pkgdir}/usr/lib/libreoffice/share/extensions/libregreek/templates/el-GR/${templateType}
+          done
+          rm -rf ${srcdir}/LibreGreek-master/libregreek/templates
+      else
+          install -Dm644 ${srcdir}/LibreGreek-master/libregreek/${templateDir}/* ${pkgdir}/usr/lib/libreoffice/share/extensions/libregreek/${templateDir}
+          rm -rf ${srcdir}/LibreGreek-master/libregreek/${templateDir}
+      fi
+  done
+  install -Dm644 ${srcdir}/LibreGreek-master/libregreek/* ${pkgdir}/usr/lib/libreoffice/share/extensions/libregreek
 }
