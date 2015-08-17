@@ -1,14 +1,14 @@
 # Maintainer: Aaron Abbott <aabmass at gmail dot com>
 pkgname=neovim-qt-git
 pkgver=r219.49a61e0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt gui for Neovim (Neovim RPC and GUI using Qt5)."
 arch=('i686' 'x86_64')
 url="https://github.com/equalsraf/neovim-qt"
 license=('custom')
 groups=()
 # not sure which qt5 dependency to add
-depends=('neovim' 'qt5-base' 'msgpack-c')
+depends=('neovim' 'qt5-base' 'msgpack-c' 'libxkbcommon-x11')
 makedepends=('git' 'cmake')
 provides=()
 conflicts=('neovim-qt')
