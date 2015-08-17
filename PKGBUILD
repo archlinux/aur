@@ -2,8 +2,8 @@
 pkgbase=python-doit
 pkgname=('python-doit' 'python2-doit')
 _pyname=doit
-pkgver=0.28.0
-pkgrel=2
+pkgver=0.29.0
+pkgrel=1
 pkgdesc='doit automation tool'
 arch=('any')
 url='http://pydoit.org/'
@@ -13,7 +13,7 @@ makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "LICENSE")
-md5sums=('ff08327b41d8d0f97bbb7ad1885a366a'
+md5sums=('9968e1a669bad0a999212ab9f5c591a3'
          '7d6fd7c8e022bae9010af272c31eb45f')
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = python-doit
 	pkgdesc = doit automation tool
-	pkgver = 0.28.0
-	pkgrel = 2
+	pkgver = 0.29.0
+	pkgrel = 1
 	url = http://pydoit.org/
 	arch = any
 	license = MIT
@@ -14,9 +14,9 @@ pkgbase = python-doit
 	makedepends = python2-pyinotify
 	makedepends = python2-six
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/d/doit/doit-0.28.0.tar.gz
+	source = https://pypi.python.org/packages/source/d/doit/doit-0.29.0.tar.gz
 	source = LICENSE
-	md5sums = ff08327b41d8d0f97bbb7ad1885a366a
+	md5sums = 9968e1a669bad0a999212ab9f5c591a3
 	md5sums = 7d6fd7c8e022bae9010af272c31eb45f
 
 pkgname = python-doit
