@@ -1,0 +1,15 @@
+pkgbase = replicode-git
+	pkgdesc = Constructivist AI language and runtime
+	pkgver = r582.7b38710
+	pkgrel = 1
+	url = http://wiki.humanobs.org/public:replicode:replicode-main
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/sandsmark/replicode.git
+	md5sums = SKIP
+
+pkgname = replicode-git
+
