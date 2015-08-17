@@ -1,0 +1,18 @@
+pkgbase = alan2-git
+	pkgdesc = An openbox menu builder.
+	pkgver = 2.0.0.1
+	pkgrel = 1
+	url = https://github.com/semplice/alan2
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python2
+	provides = alan2-git
+	provides = alan2
+	conflicts = alan2-git
+	conflicts = alan2
+	source = alan2::git://github.com/semplice/alan2.git#branch=master
+	md5sums = SKIP
+
+pkgname = alan2-git
+
