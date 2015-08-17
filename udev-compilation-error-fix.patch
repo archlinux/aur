@@ -1,0 +1,11 @@
+diff --git a/kone/libkoneeventhandler/CMakeLists.txt b/kone/libkoneeventhandler/CMakeLists.txt
+index d460bba..f633e92 100644
+--- a/kone/libkoneeventhandler/CMakeLists.txt
++++ b/kone/libkoneeventhandler/CMakeLists.txt
+@@ -21,6 +21,7 @@ TARGET_LINK_LIBRARIES(libkoneeventhandler
+   libroccathelper
+   ${GAMINGGEAR0_LIBRARY}
+   ${DBUS-GLIB_LIBRARIES}
++  ${GUDEV_LIBRARIES}
+   ${GLIB2_LIBRARIES}
+ )
