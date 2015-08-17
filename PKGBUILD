@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 pkgname=cpp-alsa-volume
 _upstreamname=cppAlsaVolume
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Tray Alsa Volume Changer written using gtkmm"
 arch=('x86_64' 'i686')
@@ -25,4 +25,4 @@ package() {
 	cd "$_upstreamname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('9a8646e6aa2f9a0d469f41830ab0f3a6')
+md5sums=('9f0a6e1aef9ec4e848313afb6b8e9800')
