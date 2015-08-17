@@ -6,7 +6,7 @@
 
 _name=apache
 pkgname=apache22
-pkgver=2.2.29
+pkgver=2.2.31
 pkgrel=1
 pkgdesc='A high performance Unix-based HTTP server'
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ source=(http://www.apache.org/dist/httpd/httpd-${pkgver}.tar.bz2
         httpd.logrotate
         httpd.service
         arch.layout)
-md5sums=('579342fdeaa7b8b68d17fee91f8fab6e'
+md5sums=('6c10e15835ab214464228a9beb7afba8'
          'f1d9d41360908ceb2374da55ae99197a'
          'cdfa04985a0efa850976aef01c2a0c40'
          '0930d2d0612eb0a53a0d00aea7e8687f'
