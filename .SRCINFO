@@ -1,8 +1,8 @@
 pkgbase = wrapaur
 	pkgdesc = A simple pacman and AUR wrapper written in bash to help with everyday package tasks
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
-	url = https://aur4.archlinux.org/packages/wrapaur/
+	url = https://aur.archlinux.org/packages/wrapaur/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = wrapaur
 	depends = sudo
 	optdepends = s-nail: required for mail notifications
 	source = wrapaur
-	md5sums = 2655a2e9a5ea2c2fb91ee7598a1abc32
+	md5sums = af7906c52280744b0cac9dd296a11dd5
 
 pkgname = wrapaur
 
