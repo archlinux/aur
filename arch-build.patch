@@ -247,3 +247,61 @@ diff -ruN tomahawk-0.8.4.orig/src/tomahawk/sourcetree/items/CategoryItems.cpp to
  
  using namespace Tomahawk;
  
+diff -ruN tomahawk-0.8.4.orig/CMakeModules/FindQCA2.cmake tomahawk-0.8.4/CMakeModules/FindQCA2.cmake
+--- tomahawk-0.8.4.orig/CMakeModules/FindQCA2.cmake	2015-08-17 21:43:38.870990247 +0300
++++ tomahawk-0.8.4/CMakeModules/FindQCA2.cmake	2015-08-17 21:48:26.224024129 +0300
+@@ -16,6 +16,10 @@
+ 
+ include(FindLibraryWithDebug)
+ 
++if( TOMAHAWK_QT5 )
++  set(QCA_SUFFIX "-qt5")
++endif()
++
+ if (QCA2_INCLUDE_DIR AND QCA2_LIBRARIES)
+ 
+   # in cache already
+@@ -26,13 +30,13 @@
+ 
+   if (NOT WIN32)
+     find_package(PkgConfig)
+-    pkg_check_modules(PC_QCA2 qca2)
++    pkg_check_modules(PC_QCA2 qca2${QCA_SUFFIX})
+     set(QCA2_DEFINITIONS ${PC_QCA2_CFLAGS_OTHER})
+   endif (NOT WIN32)
+ 
+   find_library_with_debug(QCA2_LIBRARIES
+                   WIN32_DEBUG_POSTFIX d
+-                  NAMES qca
++                  NAMES qca${QCA_SUFFIX}
+                   HINTS ${PC_QCA2_LIBDIR} ${PC_QCA2_LIBRARY_DIRS}
+                   )
+ 
+diff -ruN tomahawk-0.8.4.orig/CMakeModules/FindQuaZip.cmake tomahawk-0.8.4/CMakeModules/FindQuaZip.cmake
+--- tomahawk-0.8.4.orig/CMakeModules/FindQuaZip.cmake	2015-08-17 21:43:38.870990247 +0300
++++ tomahawk-0.8.4/CMakeModules/FindQuaZip.cmake	2015-08-17 22:07:35.426244138 +0300
+@@ -1,5 +1,8 @@
+-find_path(QuaZip_INCLUDE_DIR quazip/quazip.h ${CMAKE_INSTALL_PREFIX}/include/quazip ${CMAKE_INSTALL_PREFIX}/include /usr/include/quazip /usr/local/include/quazip ${QT_INCLUDE_DIR}/quazip ${QT_INCLUDE_DIR} ${QUAZIP_DIR}/include/quazip ${QUAZIP_DIR}/quazip ${QUAZIP_DIR}/include)
+-find_library(QuaZip_LIBRARY NAMES quazip PATHS ${CMAKE_INSTALL_PREFIX}/lib64 ${CMAKE_INSTALL_PREFIX}/lib ${CMAKE_INSTALL_PREFIX}/Library/Frameworks ${QUAZIP_DIR}/lib64 ${QUAZIP_DIR}/lib ${QUAZIP_DIR}/quazip ${QUAZIP_DIR})
++if( TOMAHAWK_QT5 )
++  set(QUAZIP_SUFFIX "5")
++endif()
++find_path(QuaZip_INCLUDE_DIR quazip${QUAZIP_SUFFIX}/quazip.h ${CMAKE_INSTALL_PREFIX}/include/quazip${QUAZIP_SUFFIX} ${CMAKE_INSTALL_PREFIX}/include /usr/include/quazip${QUAZIP_SUFFIX} /usr/local/include/quazip${QUAZIP_SUFFIX} ${QT_INCLUDE_DIR}/quazip${QUAZIP_SUFFIX} ${QT_INCLUDE_DIR} ${QUAZIP_DIR}/include/quazip${QUAZIP_SUFFIX} ${QUAZIP_DIR}/quazip${QUAZIP_SUFFIX} ${QUAZIP_DIR}/include)
++find_library(QuaZip_LIBRARY NAMES quazip${QUAZIP_SUFFIX} PATHS ${CMAKE_INSTALL_PREFIX}/lib64 ${CMAKE_INSTALL_PREFIX}/lib ${CMAKE_INSTALL_PREFIX}/Library/Frameworks ${QUAZIP_DIR}/lib64 ${QUAZIP_DIR}/lib ${QUAZIP_DIR}/quazip${QUAZIP_SUFFIX} ${QUAZIP_DIR})
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(quazip DEFAULT_MSG QuaZip_LIBRARY QuaZip_INCLUDE_DIR)
+ set(QuaZip_LIBRARIES ${QuaZip_LIBRARY})
+diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/utils/TomahawkUtils.cpp tomahawk-0.8.4/src/libtomahawk/utils/TomahawkUtils.cpp
+--- tomahawk-0.8.4.orig/src/libtomahawk/utils/TomahawkUtils.cpp	2015-08-17 22:22:11.737968746 +0300
++++ tomahawk-0.8.4/src/libtomahawk/utils/TomahawkUtils.cpp	2015-08-17 22:22:39.493618770 +0300
+@@ -35,8 +35,8 @@
+     #include <lastfm5/ws.h>
+ #endif
+ 
+-#include <quazip/quazip.h>
+-#include <quazip/quazipfile.h>
++#include <quazip5/quazip.h>
++#include <quazip5/quazipfile.h>
+ 
+ // We need this for the version info (if available)
+ #include <taglib/taglib.h>
