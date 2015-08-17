@@ -1,14 +1,14 @@
 pkgbase = papirus-yakuake-theme
 	pkgdesc = Modified and adaptive Paper theme for Yakuake
-	pkgver = 20150817
+	pkgver = 20150820
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
 	depends = yakuake
 	options = !strip
-	source = papirus-pack-kde-20150817.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/dd7a90b1ac22cff0cf63449fa4252e242f1aac33.tar.gz
-	sha256sums = b6c69ead3d912c3af4ba234251c17e21752488eeaaad000aad18f5ae22762f56
+	source = papirus-pack-kde-20150820.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/eade2fe14249abd0f134e6aa17508bb14072439a.tar.gz
+	sha256sums = cefe9895346cfdcb9ce1e3000e09cb74ed96208f4ee369cbde75859377971bc8
 
 pkgname = papirus-yakuake-theme
 
