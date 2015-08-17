@@ -13,7 +13,7 @@ pkgbase = chruby-git
 	source = git+https://github.com/postmodern/chruby
 	source = profile.sh
 	md5sums = SKIP
-	md5sums = 043367f68110c70fe1aa8104be466274
+	md5sums = ed2a77e37a4511b7253145624a775945
 
 pkgname = chruby-git
 
