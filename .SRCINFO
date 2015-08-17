@@ -1,6 +1,6 @@
-pkgbase = goldendict-git
+pkgbase = goldendict-qt5-git
 	pkgdesc = Feature-rich dictionary lookup program.
-	pkgver = 1.5.0.RC.489.gb4bb1e9
+	pkgver = 1.5.0.RC.550.g1df1b3d
 	pkgrel = 1
 	url = http://goldendict.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = goldendict-git
 	depends = libvorbis
 	depends = libxtst
 	depends = lzo2
-	depends = qt4
-	depends = qtwebkit
+	depends = qt5-base
+	depends = qt5-webkit
 	depends = zlib
 	provides = goldendict
 	conflicts = goldendict
@@ -24,8 +24,8 @@ pkgbase = goldendict-git
 	replaces = goldendict
 	replaces = goldendict-svn
 	replaces = goldendict-git-opt
-	source = git://github.com/goldendict/goldendict.git
+	source = git://github.com/goldendict/goldendict.git#branch=qt4x5
 	sha256sums = SKIP
 
-pkgname = goldendict-git
+pkgname = goldendict-qt5-git
 

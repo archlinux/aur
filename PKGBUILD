@@ -1,19 +1,19 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
-pkgname=goldendict-git
-pkgver=1.5.0.RC.489.gb4bb1e9
+pkgname=goldendict-qt5-git
+pkgver=1.5.0.RC.550.g1df1b3d
 pkgrel=1
 pkgdesc="Feature-rich dictionary lookup program."
 arch=('i686' 'x86_64')
 url="http://goldendict.org/"
 license=('GPL3')
-depends=('ffmpeg' 'hunspell' 'libao' 'libeb' 'libvorbis' 'libxtst' 'lzo2' 'qt4' 'qtwebkit' 'zlib')
+depends=('ffmpeg' 'hunspell' 'libao' 'libeb' 'libvorbis' 'libxtst' 'lzo2' 'qt5-base' 'qt5-webkit' 'zlib')
 makedepends=('git')
 conflicts=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
 replaces=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
 _gitname="goldendict"
-source=(git://github.com/goldendict/goldendict.git)
+source=(git://github.com/goldendict/goldendict.git#branch=qt4x5)
 sha256sums=(SKIP)
 
 pkgver() {
@@ -30,7 +30,7 @@ prepare() {
 
 build(){
   cd ${_gitname}
-  PREFIX="/usr" qmake-qt4
+  PREFIX="/usr" qmake-qt5
   make
 }
 
