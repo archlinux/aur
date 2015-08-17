@@ -1,6 +1,6 @@
 # Maintainer: Aaron Abbott <aabmass at gmail dot com>
 pkgname=mycli
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='CLI for MySQL Database. With auto-completion and syntax highlighting.'
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 
 source=("https://pypi.python.org/packages/source/m/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('1035b0ca37ec01bd6b470e5e146b05db')
+md5sums=('c05dfe3c3b676b0e75fbca5ea89869b4')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
