@@ -8,7 +8,7 @@ url="http://kde-look.org/content/show.php/?content=165578"
 license="cc-by-nc-nd-4.0"
 arch=any
 source="http://esclapion.free.fr/AUR/$pkgname-$pkgver.tar.gz"
-md5sums=('6902234a33547b4e1f041b6b5250865a')
+md5sums=('66230a49dfa434b92145b96316f6feb2')
 
 package(){
   mkdir -p $pkgdir/usr/share/icons
