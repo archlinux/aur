@@ -6,7 +6,7 @@
 
 pkgname=clion-eap
 _pkgname=clion
-pkgbuild=141.2346.5
+pkgbuild=141.2347.10
 pkgver=${pkgbuild}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -22,7 +22,7 @@ optdepends=(
   'biicode: C/C++ dependency manager'
 )
 source=("http://download.jetbrains.com/cpp/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('c343070eddf8dc44fccc82d540026daf893130c52dd9c76ff04235641ba62d8714b9472604efa61e959bf283f1406e398d543603841e4c795460845eccbc620a')
+sha512sums=('7c8d329a6d6c3e385dc90e589deac475867dac27cf199ddbef71633a340df8d0ba4c8c97e745b45b6d59497458a911dd9cfe6f42e7e80fd735824ab70539435c')
 noextract=("${_pkgname}-${pkgver}.tar.gz")
 
 package() {
