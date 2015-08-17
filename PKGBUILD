@@ -6,28 +6,28 @@
 
 pkgname=('roccat-tools-full')
 _pkgbase=roccat-tools
-pkgver=3.2.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear>=0.7.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
+depends=('libgaminggear>=0.10.1' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.'
             'roccat-dkms: Adds support for the old kone device with dynamic rebuild.')
 conflicts=('roccat-tools-common')
 replaces=('roccat-tools-common')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
-        'ryosmk-dbus-bindings-v320.patch')
+        '')
 install=roccat-tools.install
-sha1sums=('f75c1068f773242b343df663d51707e6b0511afb'
+sha1sums=('2eb75f596a282a388714a3449ee45836f42c76b6'
           '56cde9cd4f1c296f5316b0d47b7d917c6819900f')
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
 
-  patch -p1 -i ../ryosmk-dbus-bindings-v320.patch
+  patch -p1 -i ../udev-compilation-error-fix.patch
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DUDEVDIR=/usr/lib/udev/rules.d -DWITHOUT_PYTHON=TRUE
   make
 }

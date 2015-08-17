@@ -1,6 +1,6 @@
 pkgbase = roccat-tools-full
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
-	pkgver = 3.2.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = http://roccat.sourceforge.net
 	install = roccat-tools.install
@@ -8,7 +8,7 @@ pkgbase = roccat-tools-full
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = libgaminggear>=0.7.0
+	depends = libgaminggear>=0.10.1
 	depends = libcanberra
 	depends = gtk2
 	depends = libnotify>=0.7.0
@@ -19,9 +19,9 @@ pkgbase = roccat-tools-full
 	optdepends = roccat-dkms: Adds support for the old kone device with dynamic rebuild.
 	conflicts = roccat-tools-common
 	replaces = roccat-tools-common
-	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.2.0.tar.bz2
-	source = ryosmk-dbus-bindings-v320.patch
-	sha1sums = f75c1068f773242b343df663d51707e6b0511afb
+	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.5.0.tar.bz2
+	source = 
+	sha1sums = 2eb75f596a282a388714a3449ee45836f42c76b6
 	sha1sums = 56cde9cd4f1c296f5316b0d47b7d917c6819900f
 
 pkgname = roccat-tools-full
