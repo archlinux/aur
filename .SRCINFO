@@ -1,6 +1,6 @@
 pkgbase = pb-git
 	pkgdesc = My attempt at a light pastebin
-	pkgver = r254.ab55849
+	pkgver = r269.61d49ec
 	pkgrel = 1
 	url = https://github.com/ptpb/pb
 	arch = any
@@ -18,6 +18,8 @@ pkgbase = pb-git
 	depends = python-xdg
 	depends = python-pymongo
 	depends = python-markdown
+	depends = python-dateutil
+	depends = python-magic
 	depends = uwsgi
 	depends = uwsgi-plugin-python
 	provides = pb
