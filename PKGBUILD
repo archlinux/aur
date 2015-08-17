@@ -12,7 +12,6 @@ optdepends=('gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
             'gstreamer0.10-bad-plugins: aac, vp8 and opus decoding'
             'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
             'gstreamer0.10-ffmpeg: more decoders'
-            'libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification')
 provides=('palemoon')

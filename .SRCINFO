@@ -21,7 +21,6 @@ pkgbase = palemoon-bin
 	optdepends = gstreamer0.10-bad-plugins: aac, vp8 and opus decoding
 	optdepends = gstreamer0.10-ugly-plugins: h.264 and mp3 decoding
 	optdepends = gstreamer0.10-ffmpeg: more decoders
-	optdepends = libpulse: PulseAudio audio driver
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	provides = palemoon
