@@ -22,11 +22,11 @@
 < AVATAR_UPLOAD_PATH = data/avatars
 ---
 > AVATAR_UPLOAD_PATH = /srv/gogs/data/avatars
-208c208
+209c209
 < PATH = data/attachments
 ---
 > PATH = /srv/gogs/data/attachments
-223c223
+224c224
 < ROOT_PATH =
 ---
 > ROOT_PATH = /var/log/gogs
