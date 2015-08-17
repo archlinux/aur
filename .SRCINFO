@@ -1,0 +1,16 @@
+pkgbase = hayai-git
+	pkgdesc = Benchmark framework for c++ inspired by googletest
+	pkgver = r128.680064a
+	pkgrel = 1
+	url = https://github.com/nickbruun/hayai
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	provides = hayai
+	conflicts = hayai
+	source = hayai::git+https://github.com/nickbruun/hayai.git
+	md5sums = SKIP
+
+pkgname = hayai-git
+
