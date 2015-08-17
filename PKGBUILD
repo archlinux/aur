@@ -2,7 +2,7 @@
 # Maintainer : Mark Lee <mark@markelee.com>
 
 pkgname=zswap
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Sets up zram-based swap devices on boot"
 arch=('any')

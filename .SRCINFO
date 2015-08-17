@@ -1,6 +1,6 @@
 pkgbase = zswap
 	pkgdesc = Sets up zram-based swap devices on boot
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/bluerider/zswap.git
 	arch = any
