@@ -1,6 +1,6 @@
 # Maintainer: Liviu Cristian Mirea-Ghiban <contact at liviucmg dot com>
 pkgname=heidisql
-pkgver=9.2
+pkgver=9.3
 pkgrel=1
 pkgdesc="A lightweight GUI for managing MySQL and Microsoft SQL databases. Uses Wine. Package repo: https://github.com/WeCodePixels/heidisql-aur"
 arch=(any)
@@ -12,7 +12,7 @@ source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${pkgver}_Portable.
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('e023fbe06e49b6c12d8d2d232f234353'
+md5sums=('880bcb6ee668db0bf4daca47285bfe08'
          'df3673bc694beceb8ed6cfeace6b6c3f'
          'ea4fc6959a315ef5c2bf8e22c479e22a'
          '3cdbca3164df7d3629ffc469d52e53a0')
