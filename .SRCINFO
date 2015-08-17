@@ -1,0 +1,19 @@
+pkgbase = lua51-posix
+	pkgdesc = POSIX library for Lua 5.1
+	pkgver = 31
+	pkgrel = 1
+	url = https://github.com/luaposix/luaposix
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = LGPL
+	makedepends = lua51
+	makedepends = git
+	makedepends = help2man
+	depends = lua51
+	options = !makeflags
+	source = lua51-posix::git://github.com/luaposix/luaposix.git#tag=v31
+	md5sums = SKIP
+
+pkgname = lua51-posix
+
