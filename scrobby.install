@@ -1,0 +1,5 @@
+## arg 1:  the new package version
+post_install() {
+ echo "Copy Example config from /usr/share/doc/scrobby/scrobby.conf.example"
+ echo "to /etc and edit it to your needs"
+}
