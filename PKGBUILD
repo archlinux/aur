@@ -1,9 +1,9 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=7add4846d4e9f2319d4e8d9b54ecb2615d260af8 # lastest commit 20150731
+_git=dd7a90b1ac22cff0cf63449fa4252e242f1aac33 # lastest commit 20150731
 _repo=papirus-pack-kde
 pkgname=papirus-gtk-theme
-pkgver=20150811
+pkgver=20150817
 pkgrel=1
 pkgdesc="Modified and adaptive Paper gtk theme"
 arch=('any')
@@ -12,7 +12,7 @@ license=('CCPL:by-sa')
 options=('!strip')
 depends=('gtk-engine-murrine')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('cca0a6290e7a9c998f84cc0b30b5d3f330e91c64f756f6371c626858d8acfbdf')
+sha256sums=('b6c69ead3d912c3af4ba234251c17e21752488eeaaad000aad18f5ae22762f56')
 
 package() {
     install -d ${pkgdir}/usr/share/themes
