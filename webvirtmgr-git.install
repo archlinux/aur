@@ -1,0 +1,33 @@
+post_install() {
+  login='webvirtmgr'
+
+  getent group "${login}" > /dev/null || groupadd -r "${login}" > /dev/null
+  getent passwd "${login}" > /dev/null || useradd -r -g "${login}" -d "/var/lib/${login}" "${login}" -m > /dev/null
+
+  cat <<- EOF
+    To finalize the installation you need to run:
+
+    # sudo python2 /usr/lib/webvirtmgr/manage.py syncdb
+    # chown webvirtmgr:webvirtmgr /usr/lib/webvirtmgr/webvirtmgr/local/.secret_key_store /usr/lib/webvirtmgr/webvirtmgr.sqlite3 /usr/lib/webvirtmgr # temporary, see https://github.com/retspen/webvirtmgr/issues/391
+    # sudo python2 /usr/lib/webvirtmgr/manage.py collectstatic
+
+    WebVirtMgr daemon is managed by Supervisord.
+    # systemctl enable supervisord
+    # systemctl start supervisord
+
+    To access VNC console you need to enable the NoVNC proxy.
+    # systemctl enable webvirtmgr-novnc
+    # systemctl start webvirtmgr-novnc
+
+    See the wiki for more details:
+    https://github.com/retspen/webvirtmgr/wiki/Install-WebVirtMgr
+
+    You also need to configure libvirt if you haven't yet done it:
+    https://wiki.archlinux.org/index.php/libvirt#Server_configuration
+    https://wiki.archlinux.org/index.php/libvirt#Remote_access_to_libvirt
+EOF
+}
+
+post_upgrade() {
+  echo
+}

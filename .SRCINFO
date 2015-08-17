@@ -1,0 +1,29 @@
+pkgbase = webvirtmgr-git
+	pkgdesc = Web front-end for KVM virtual machines
+	pkgver = 4.8.7.r0.g05ff41c
+	pkgrel = 2
+	url = https://www.webvirtmgr.net/
+	install = webvirtmgr-git.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = python2-pip
+	depends = libvirt
+	depends = libvirt-python
+	depends = qemu
+	depends = dnsmasq
+	depends = bridge-utils
+	depends = ebtables
+	depends = dmidecode
+	depends = python2
+	depends = supervisor
+	depends = websockify
+	source = git+https://github.com/retspen/webvirtmgr.git
+	source = webvirtmgr.ini
+	source = webvirtmgr-novnc.service
+	options = !strip
+	options = !emptydirs
+
+pkgname = webvirtmgr-git
+
