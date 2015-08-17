@@ -1,6 +1,6 @@
 pkgbase = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
-	pkgver = 4.1.5
+	pkgver = 4.1.6
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -14,24 +14,24 @@ pkgbase = linux-ice
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.6.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.6.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
 	source = linux.install
 	source = change-default-console-loglevel.patch
-	source = http://tuxonice.net/downloads/all/tuxonice-for-linux-4.1.3-2015-08-10.patch.bz2
+	source = http://tuxonice.net/downloads/all/tuxonice-for-linux-4.1.5-2015-08-14.patch.bz2
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc
+	sha256sums = 64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070
 	sha256sums = SKIP
 	sha256sums = e5212a169d064d3958b4e5e4d8fcc58da4734516b5a0c4718c46d662eb89f7b5
 	sha256sums = 6620afce55b56ea6f4dd8ccc108db9074ec3f4262893ddb35f1cf87ecf3c9d33
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = a11122e8e521f8f90e5e4bf09139ca19ca4a02dddaf0e5e12145b98386072cb1
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = 1ff28ccbd6c6469c636290d3eb4bfd9fe3b4d5b7b520c9eb98f81d2afa644431
+	sha256sums = ada3a931774838dc4752d1b2ba3000f35ac9dd75456bd7e2f1f0d88f2fc0c87c
 
 pkgname = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
@@ -41,23 +41,23 @@ pkgname = linux-ice
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-ice=4.1.5
-	provides = linux=4.1.5
+	provides = kernel26-ice=4.1.6
+	provides = linux=4.1.6
 	conflicts = kernel26-ice
 	replaces = kernel26-ice
 	backup = etc/mkinitcpio.d/linux-ice.preset
 
 pkgname = linux-ice-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ice kernel
-	provides = kernel26-ice-headers=4.1.5
-	provides = linux-headers=4.1.5
+	provides = kernel26-ice-headers=4.1.6
+	provides = linux-headers=4.1.6
 	conflicts = kernel26-ice-headers
 	replaces = kernel26-ice-headers
 
 pkgname = linux-ice-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ice kernel
-	provides = kernel26-ice-docs=4.1.5
-	provides = linux-docs=4.1.5
+	provides = kernel26-ice-docs=4.1.6
+	provides = linux-docs=4.1.6
 	conflicts = kernel26-ice-docs
 	replaces = kernel26-ice-docs
 
