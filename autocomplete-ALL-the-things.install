@@ -1,0 +1,12 @@
+post_install ()
+{
+  echo "==> To enable autocomplete-ALL-the-things,"
+  echo "==> add the following to your ~/.Xresources (or ~/.Xdefaults):"
+  echo "==>   URxvt.perl-ext-common: [your previous plugins],autocomplete-ALL-the-things"
+  echo "==>   URxvt.keysym.M-slash:  perl:aAtt:complete"
+}
+
+post_upgrade ()
+{
+  post_install $1
+}

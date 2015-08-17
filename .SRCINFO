@@ -1,0 +1,13 @@
+pkgbase = urxvt-autocomplete-all-the-things-git
+	pkgdesc = an urxvt plugin allowing user to easily complete words
+	pkgver = 20120115
+	pkgrel = 1
+	url = https://github.com/Vifon/autocomplete-ALL-the-things
+	install = autocomplete-ALL-the-things.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = rxvt-unicode
+
+pkgname = urxvt-autocomplete-all-the-things-git
+
