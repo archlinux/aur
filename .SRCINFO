@@ -1,5 +1,5 @@
 pkgbase = tgt
-	pkgdesc = tgt daemon and userspace tools (ISCSI Support)
+	pkgdesc = iSCSI TGT Daemon and userspace tools
 	pkgver = 1.0.60
 	pkgrel = 1
 	url = http://stgt.sourceforge.net/
@@ -12,8 +12,8 @@ pkgbase = tgt
 	backup = etc/tgt/targets.conf
 	source = https://github.com/ksovi/tgt/archive/v1.0.60.tar.gz
 	source = tgtd.service
-	md5sums = 5956ced52446802db9f5f8ff65e3bda2
-	md5sums = c9d573d4dbbf5b424c4041fe13ada55a
+	md5sums = 605d3d2d45f780f2d2010004c513d68e
+	md5sums = b69ec0100191627d415a1f0a5a2ffbc8
 
 pkgname = tgt
 
