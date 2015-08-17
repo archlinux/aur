@@ -1,0 +1,15 @@
+pkgbase = spiffy-git
+	pkgdesc = spiffy builds a binary spiffs image for you to write_flash to a esp8266 runing nodemcu so you can get all the files onto your cool IoT device in one fell swoop. (git-version)
+	pkgver = 20150818.r11.3b66e66
+	pkgrel = 1
+	url = https://github.com/xlfe/spiffy
+	arch = any
+	license = unknown
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	source = spiffy::git+https://github.com/xlfe/spiffy.git#branch=master
+	sha256sums = SKIP
+
+pkgname = spiffy-git
+
