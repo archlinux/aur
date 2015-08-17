@@ -1,0 +1,20 @@
+pkgbase = opencryptoki
+	pkgdesc = PKCS11 implementation for Linux
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/opencryptoki
+	arch = i686
+	arch = x86_64
+	license = CPL
+	license = GPL
+	makedepends = libtool
+	depends = openssl
+	depends = trousers
+	depends = expect
+	source = http://downloads.sourceforge.net/project/opencryptoki/opencryptoki/3.3/opencryptoki-v3.3.tgz
+	source = opencryptoki.tmpfiles.conf
+	sha256sums = 9e056f520147f1e55fa9ab9661b4a7b8589d9b13fa3bb1f122c6a0a79d416bb5
+	sha256sums = e315fc996a1f416efd34f6f3e3149378118cded0da9f8a919e9501ea8db90fac
+
+pkgname = opencryptoki
+
