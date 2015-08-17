@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Sooper Looper
+Comment=Make music with a live looper
+Exec=slgui
+Icon=slgui
+Categories=AudioVideo;Audio;
+Terminal=false
+Type=Application

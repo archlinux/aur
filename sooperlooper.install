@@ -1,0 +1,27 @@
+post_install() {
+  cat << EOF
+
+>>> If slgui cannot connect to the engine giving:
+
+    "Lost connection to SooperLooper engine.
+     See the Preferences->Connections tab to start a new one"
+
+>>> then you have to manually add your hostname alias in your /etc/hosts:
+
+    127.0.0.1	localhost.localdomain	localhost	yourhostname
+
+>>> or you can do it automatically using this one liner (you need su or sudo):
+
+    sed -i "/127.0.0.1/s/$/\t$(hostname)/" /etc/hosts
+
+EOF
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
