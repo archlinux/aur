@@ -9,8 +9,8 @@ url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('git')
-provides=('numix-themes-osx')
-conflicts=('numix-themes-osx')
+provides=('numix-themes-osx-git')
+conflicts=('numix-themes-osx-git')
 source=('numix-themes::git+https://github.com/samhorlbeck/Numix-OSX.git')
 md5sums=('SKIP')
 

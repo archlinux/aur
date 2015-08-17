@@ -7,8 +7,8 @@ pkgbase = numix-themes-osx-git
 	license = GPL3
 	makedepends = git
 	depends = gtk-engine-murrine
-	provides = numix-themes-osx
-	conflicts = numix-themes-osx
+	provides = numix-themes-osx-git
+	conflicts = numix-themes-osx-git
 	source = numix-themes::git+https://github.com/samhorlbeck/Numix-OSX.git
 	md5sums = SKIP
 
