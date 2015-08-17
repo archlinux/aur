@@ -2,7 +2,7 @@
 # Contributor: Dmitry Nosachev <quartz64@gmail.com>
 
 pkgname=ipmicfg
-pkgver=1.20.3_20141105
+pkgver=1.21.0_general_20150615
 pkgrel=1
 pkgdesc="Supermicro IPMI configuration tool"
 makedepends=('unzip')
@@ -11,7 +11,7 @@ arch=('x86_64' 'i686')
 license=('custom:"Super Micro Computer"')
 url="http://www.supermicro.com/products/nfo/ipmi.cfm"
 source=("ftp://ftp.supermicro.com/utility/IPMICFG/${pkgname}_${pkgver}.zip")
-sha256sums=('3636aa630ead6a2c4287ebb61c26d7ac8d4600e16194e832f1e9d1821371db74')
+sha256sums=('2a8e7cf1b77c6e70d2354df41383741d8916671e003e28120e060d7940083bfa')
 
 package() {
 	cd ${srcdir}/${pkgname}_${pkgver}/linux
