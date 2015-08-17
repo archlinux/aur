@@ -1,0 +1,22 @@
+pkgbase = python-mycli
+	pkgdesc = CLI for MySQL Database. With auto-completion and syntax highlighting.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/mycli
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-click
+	depends = python-pygments
+	depends = python-prompt_toolkit
+	depends = python-pymysql
+	depends = python-sqlparse
+	depends = python-configobj
+	conflicts = mycli
+	conflicts = python2-mycli
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/m/mycli/mycli-1.3.0.tar.gz
+	md5sums = c05dfe3c3b676b0e75fbca5ea89869b4
+
+pkgname = python-mycli
+
