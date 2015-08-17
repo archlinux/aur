@@ -1,5 +1,5 @@
 pkgbase = hayai-git
-	pkgdesc = Benchmark framework for c++ inspired by googletest
+	pkgdesc = Benchmarking framework for c++ inspired by googletest
 	pkgver = r128.680064a
 	pkgrel = 1
 	url = https://github.com/nickbruun/hayai
