@@ -1,7 +1,7 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=firefox-extension-cookie-controller
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc='Buttons for managing cookies, cookie permissions, and site cookie exceptions.'
 url=https://addons.mozilla.org/en-US/firefox/addon/cookie-controller
@@ -9,7 +9,7 @@ arch=('any')
 license=('custom:MPLv2')
 depends=('firefox')
 source=("https://addons.cdn.mozilla.net/user-media/addons/334572/cookie_controller-$pkgver-fx.xpi")
-sha256sums=('d2b97008a5508f0e59a596eb4a3a71d01b5cfa1c24e61ece9e6a830ca62aa3a4')
+sha256sums=('03c34f18471fd49f43b127901a9be19096f47c77b5038911febc5a485ef8e05b')
 
 package() {
   local GLOBIGNORE=*.xpi:license.txt
