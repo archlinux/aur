@@ -4,7 +4,7 @@
 
 pkgdesc="Standalone systemd libs (including -compat)"
 pkgname=( 'libsystemd-standalone' 'libsystemd-login' 'libsystemd-journal' 'libsystemd-id128' 'libsystemd-daemon' 'libsystemd-udev' )
-pkgver=223
+pkgver=224
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -30,7 +30,7 @@ package_libsystemd-standalone() {
 
   cd "$srcdir/systemd-${pkgver}"
   install -Dm644 .libs/libsystemd.so.0.10.0 "${pkgdir}/usr/lib/libsystemd.so.0.8.0"
-  ln -s libsystemd.so.0.10.0 "${pkgdir}/usr/lib/libsystemd.so"
+  ln -s libsystemd.so.0.10.1 "${pkgdir}/usr/lib/libsystemd.so"
 
   # Headers
   install -Dm644 src/systemd/_sd-common.h "${pkgdir}/usr/include/systemd/_sd-common.h"
@@ -101,4 +101,4 @@ package_libsystemd-udev() {
   install -Dm644 src/libudev/libudev.h "${pkgdir}/usr/include/libudev.h"
 }
 
-sha1sums=('24b598e3bc09952a0a6251e446c633d324684799')
+sha1sums=('ecf6e8f64704a34627f2502d9f951c7a5e92141a')
