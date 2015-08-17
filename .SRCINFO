@@ -1,7 +1,7 @@
 pkgbase = libreoffice-extension-libregreek
 	pkgdesc = An advanced Greek & English dictionary for LibreOffice
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/squibbylinux/LibreGreek
 	arch = any
 	groups = libreoffice-extensions
