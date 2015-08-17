@@ -1,5 +1,5 @@
 pkgname=pb-git
-pkgver=r254.ab55849
+pkgver=r269.61d49ec
 pkgrel=1
 pkgdesc="My attempt at a light pastebin"
 arch=('any')
@@ -8,8 +8,8 @@ license=('GPLv3')
 
 depends=('python' 'python-werkzeug' 'python-flask-git' 'python-yaml'
          'python-requests' 'python-docutils' 'python-xdg'
-         'python-pymongo' 'python-markdown' 'uwsgi'
-         'uwsgi-plugin-python')
+         'python-pymongo' 'python-markdown' 'python-dateutil'
+         'python-magic' 'uwsgi' 'uwsgi-plugin-python')
 
 makedepends=('python-setuptools' 'git' 'graphicsmagick' 'npm')
 #checkdepends=('tox' 'python-pytest' 'python-pytest-cov')
