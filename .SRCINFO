@@ -1,14 +1,14 @@
-pkgbase = libreoffice-theme-papirus
+pkgbase = libreoffice-papirus-theme
 	pkgdesc = Libreoffice Papirus theme
-	pkgver = 20150820
+	pkgver = 20150821
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
 	depends = libreoffice
 	options = !strip
-	source = papirus-pack-kde-20150820.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/eade2fe14249abd0f134e6aa17508bb14072439a.tar.gz
+	source = papirus-pack-kde-20150821.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/eade2fe14249abd0f134e6aa17508bb14072439a.tar.gz
 	sha256sums = cefe9895346cfdcb9ce1e3000e09cb74ed96208f4ee369cbde75859377971bc8
 
-pkgname = libreoffice-theme-papirus
+pkgname = libreoffice-papirus-theme
 
