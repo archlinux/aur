@@ -3,7 +3,7 @@
 
 pkgname=qt-color-picker-common
 pkgver=0.r92.2e1ec20
-pkgrel=1
+pkgrel=3
 pkgdesc='Common files used by qt4- and qt5-color-picker packages'
 arch=('any')
 url='https://github.com/mbasaglia/Qt-Color-Picker'
