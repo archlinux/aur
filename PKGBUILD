@@ -1,7 +1,7 @@
 # Maintainer: BenObiWan <benobiwan @t gmail dot com>
 
 pkgname=zelda-roth-se
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 epoch=
 pkgdesc="Zelda : Return of the Hylian solarus edition."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=(http://www.zelda-solarus.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('6340e66fc28d5105fbf55fa8f5f47289')
+md5sums=('a3180df45d01c2deeb384925e1c55e97')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
