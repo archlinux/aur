@@ -1,0 +1,21 @@
+pkgbase = rtl8192ee-dkms
+	pkgdesc = Driver for Realtek RTL8192EE chipset wireless cards (DKMS)
+	pkgver = 07052014
+	pkgrel = 2
+	url = http://www.lwfinger.com/realtek_drivers
+	install = rtl8192ee-dkms.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = dkms
+	depends = linux-headers
+	conflicts = rtl8192ee
+	source = http://www.lwfinger.com/realtek_drivers/0001-staging-r8192ee-Add-new-driver.patch
+	source = http://www.lwfinger.com/realtek_drivers/0002-staging-r8192ee-Add-new-driver.patch
+	source = dkms.conf
+	md5sums = 697740cca4ec040273fbfd0bc2b6c20c
+	md5sums = 5ca4cdfdd59092d3900f7d3a9405d3f3
+	md5sums = af944acfacec852151ed9d271de6d364
+
+pkgname = rtl8192ee-dkms
+
