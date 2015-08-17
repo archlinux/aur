@@ -12,7 +12,7 @@ license=('CCPL:by-sa')
 depends=('papirus-plasma-theme' 'papirus-icon-theme' 'papirus-color-scheme' 'papirus-gtk-theme')
 optdepends=('papirus-yakuake-theme: Modified and adaptive Paper theme for Yakuake'
 			'bomi-skin-papirus: Papirus theme for Bomi'
-			'libreoffice-theme-papirus: Papirus theme for Libreoffice')
+			'libreoffice-papirus-theme: Papirus theme for Libreoffice')
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
 sha256sums=('cefe9895346cfdcb9ce1e3000e09cb74ed96208f4ee369cbde75859377971bc8')
