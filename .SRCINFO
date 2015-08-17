@@ -22,7 +22,7 @@ pkgbase = choreonoid-git
 	depends = zlib
 	conflicts = choreonoid
 	replaces = choreonoid
-	source = git+https://github.com/haudren/choreonoid#branch=fork
+	source = git+https://github.com/s-nakaoka/choreonoid
 	md5sums = SKIP
 
 pkgname = choreonoid-git

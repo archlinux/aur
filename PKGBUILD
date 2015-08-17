@@ -13,7 +13,7 @@ makedepends=('cmake')
 conflicts=($_name)
 replaces=($_name)
 
-source=("git+https://github.com/haudren/$_name#branch=fork")
+source=("git+https://github.com/s-nakaoka/$_name")
 md5sums=('SKIP')
 
 pkgver() {
