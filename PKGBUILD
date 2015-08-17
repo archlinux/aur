@@ -7,9 +7,9 @@ pkgrel=1
 pkgdesc="Experimental Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gst-plugins-base' 'gst-libav' 'taglib' 'glew' 'liblastfm-qt5-git'
+depends=('gst-plugins-base' 'gst-libav' 'taglib' 'glew' 'liblastfm-qt5'
          'libgpod' 'desktop-file-utils' 'libmtp' 'libplist' 'hicolor-icon-theme'
-         'qt5-base' 'sparsehash' 'libechonest-qt5-git' 'libcdio' 'protobuf'
+         'qt5-base' 'sparsehash' 'libechonest-qt5' 'libcdio' 'protobuf'
          'crypto++' 'chromaprint' 'libmygpo-qt5-git')
 optdepends=('gst-plugins-good: for use with "Good" plugin libraries'
             'gst-plugins-bad: for use with "Bad" plugin libraries'
