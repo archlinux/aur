@@ -1,9 +1,5 @@
-go-cross-all-platforms-1.4.2/
-src/
-pkg/
-*.tar.gz
-*.tar.xz
-*.tgz
-*.rpm
-*.zip
-*.bz2
+*
+!.gitignore
+!go-cross-all-platforms.install
+!PKGBUILD
+!.SRCINFO
