@@ -19,10 +19,10 @@ optdepends=('kmod-roccat: Adds support for the old kone device.'
 conflicts=('roccat-tools-common')
 replaces=('roccat-tools-common')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
-        '')
+        'udev-compilation-error-fix.patch')
 install=roccat-tools.install
 sha1sums=('2eb75f596a282a388714a3449ee45836f42c76b6'
-          '56cde9cd4f1c296f5316b0d47b7d917c6819900f')
+          'd31ad74bf91628f21415a631ec0f57b707266d0f')
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
