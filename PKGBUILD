@@ -2,10 +2,10 @@
 
 _gitname=graphite-api
 pkgname=${_gitname}-git
-pkgver=1.0.1.r121.gb3f3cee
-pkgrel=3
+pkgver=1.0.1.r184.ga8de55a
+pkgrel=1
 pkgdesc="Graphite-web, without the interface. Just the rendering HTTP API."
-url="https://github.com/Dieterbe/graphite-api"
+url="https://github.com/brutasse/graphite-api"
 license=('Apache')
 depends=('python' 'python-pytz' 'python-six' 'python-flask' 'python-structlog'
          'python-yaml' 'python-tzlocal' 'python-cairocffi' 'python-pyparsing'
@@ -17,7 +17,7 @@ optdepends=('python-flask-cache: For caching'
 install='graphite-api.install'
 backup=('etc/graphite-api.yaml' 'etc/conf.d/graphite-api.conf')
 arch=('any')
-source=("$_gitname::git+https://github.com/Dieterbe/graphite-api"
+source=("$_gitname::git+https://github.com/brutasse/graphite-api"
         "graphite-api.sh"
 	"graphite-api.conf"
 	"graphite-api.service"
@@ -33,7 +33,6 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "$_gitname"
-	git checkout support-templates2 &>/dev/null
 	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
