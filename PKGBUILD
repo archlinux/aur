@@ -35,11 +35,11 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  mkdir build
+  mkdir -p build
   make
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${pkgname%-git}/build"
   install -Dm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 }
