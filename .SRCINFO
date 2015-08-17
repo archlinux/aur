@@ -1,0 +1,18 @@
+pkgbase = suricata-emerging-rules
+	pkgdesc = Suricata rules from emergingthreatspro.com
+	pkgver = 8084
+	pkgrel = 1
+	url = https://rules.emergingthreatspro.com/open/suricata/
+	arch = any
+	license = custom
+	optdepends = suricata
+	options = !strip
+	source = https://rules.emergingthreatspro.com/open/suricata/LICENSE
+	source = https://rules.emergingthreatspro.com/open/suricata/emerging.rules.tar.gz
+	source = https://rules.emergingthreatspro.com/open/suricata/version.txt
+	md5sums = 6d3d08af2da41f6ff042fdd5ade4091a
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = suricata-emerging-rules
+
