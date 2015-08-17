@@ -5,7 +5,7 @@
 # Contributor: Andreas Harter <aur@andreas-harter.de>
  
 pkgname=keebuntu
-pkgver=0.5.6.1
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="App indicator icon for keepass (for unity, cinnamon & gnome)"
 arch=(any)
@@ -16,7 +16,7 @@ depends=('keepass' 'libappindicator-gtk2' 'libappindicator-sharp' 'libdbusmenu-g
 makedepends=('git' 'libappindicator-sharp')
 source=("https://github.com/dlech/Keebuntu/archive/debian/${pkgver}.tar.gz")
 install=$pkgname.install
-sha256sums=('2003f2575b68d5472dea87b81b094b963d2592120b73c79ea217dba1d22a490f')
+sha256sums=('70bb5fc404f42240322021bf39ac7af9123ccb9aff7af2a3b5ec61d6dac552b3')
  
 _keepassdir=usr/share/keepass/appindicator
 _icondir=icons/hicolor/256x256/apps
