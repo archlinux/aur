@@ -1,0 +1,18 @@
+pkgbase = python-pygal-maps-world
+	pkgdesc = World maps for pygal
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://pygal.org/
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/pygal_maps_world/pygal_maps_world-1.0.2.tar.gz
+	sha256sums = 8987fcf7f067b56f40f2f83b4f87baf9456164bbff0995715377020fc533db0f
+
+pkgname = python-pygal-maps-world
+	depends = python-pygal>=2
+
+pkgname = python2-pygal-maps-world
+	depends = python2-pygal>=2
+
