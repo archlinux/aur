@@ -1,0 +1,15 @@
+pkgbase = ruby-minitest
+	pkgdesc = A complete suite of testing facilities supporting TDD, BDD, mocking and benchmarking
+	pkgver = 5.8.0
+	pkgrel = 1
+	url = http://rubygems.org/gems/minitest
+	arch = any
+	license = MIT
+	depends = rubygems
+	noextract = minitest-5.8.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/minitest-5.8.0.gem
+	md5sums = 08b56ee3f3217f328382527177557438
+
+pkgname = ruby-minitest
+
