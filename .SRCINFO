@@ -1,0 +1,15 @@
+pkgbase = ruby-i18n
+	pkgdesc = New wave internationalisation support for Ruby
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://rubygems.org/gems/i18n
+	arch = any
+	license = MIT
+	depends = rubygems
+	noextract = i18n-0.7.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/i18n-0.7.0.gem
+	md5sums = e9f92faf73a805a95c92d42031f4dca3
+
+pkgname = ruby-i18n
+
