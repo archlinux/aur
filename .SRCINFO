@@ -1,0 +1,14 @@
+pkgbase = ruby-rmail-sup
+	pkgdesc = RMail is a lightweight mail library containing various utility classes and modules that allow ruby scripts to parse, modify, and generate MIME mail messages.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/rmail-sup
+	arch = any
+	license = unknown
+	depends = ruby
+	noextract = rmail-sup-1.0.1.gem
+	source = http://gems.rubyforge.org/gems/rmail-sup-1.0.1.gem
+	md5sums = 6ff1575a8e84d68c7e589d03a39adf75
+
+pkgname = ruby-rmail-sup
+
