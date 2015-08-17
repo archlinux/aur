@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-bisnap
+	pkgdesc = A collection of quotes from bisnap's Twitch channel for use with fortune.
+	pkgver = 20150817
+	pkgrel = 1
+	url = https://github.com/crescentrose/fortune-mod-bisnap
+	arch = any
+	groups = fortune-mods
+	license = custom:none
+	makedepends = git
+	depends = fortune-mod
+
+pkgname = fortune-mod-bisnap
+
