@@ -1,0 +1,13 @@
+#!/bin/bash
+unset WINEPREFIX
+export WINEPREFIX="$HOME"/.gog-heroes-of-might-and-magic-3-complete-edition 
+export WINEDEBUG=-all
+if [ ! -d "$WINEPREFIX" ]
+then
+  mkdir -p "$WINEPREFIX"
+  wineboot -i
+  regedit /usr/share/gog-heroes-of-might-and-magic-3-complete-edition/local_machine.reg
+fi
+cd /opt/gog/heroes-of-might-and-magic-3-complete-edition
+#wine Heroes3.exe "$@"
+wine HD3_Launcher.exe "$@"
