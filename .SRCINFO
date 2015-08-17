@@ -1,7 +1,7 @@
 pkgbase = vim-inkpot-git
 	pkgdesc = Inkpot, a dark scheme for GUI and 88/256 colour terms
-	pkgver = 20120720
-	pkgrel = 2
+	pkgver = r9.b86ad4d
+	pkgrel = 1
 	url = http://github.com/ciaranm/inkpot
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = vim-inkpot-git
 	license = GPL
 	makedepends = git
 	depends = vim
+	source = git://github.com/ciaranm/inkpot.git
+	md5sums = SKIP
 
 pkgname = vim-inkpot-git
 
