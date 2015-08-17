@@ -37,16 +37,12 @@ if [ "$CARCH" = 'i686' ]; then
 fi
 
 source=("desktop-${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=${_pkgver}"
-        "desktop-i18n-master.tar.bz2::https://git.popcorntime.io/popcorntime/desktop-i18n/repository/archive.tar.bz2?ref=master"
         "popcorntime.desktop")
 sha256sums=('c8a41e3751439ba2f109f4543511999f0f2b6e8844a3bfea3d864174529a64b8'
-            'SKIP'
             'f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec')
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-
-  cp "${srcdir}"/desktop-i18n.git/* src/app/language
 
   export PYTHON=/usr/bin/python2
 
