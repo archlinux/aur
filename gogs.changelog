@@ -1,6 +1,22 @@
+2015-08-16
+
+	* V0.6.5
+	Bug fix: Does not allow anonymous SSH clone
+	Bug fix: Private repository cannot trigger webhook by pushing through SSH
+	Bug fix: Owners cannot assign any issue to themselves #747
+	Bug fix: Issue assignee doesn't show organisation members #839
+	Bug fix: Can send multiple requests when create issue #1051
+	Bug fix: Attachments a file said "Could not parse JSON" #1233
+	Bug fix: Did not remove the temporary directory after initialized new repository #1331
+	Bug fix: Rename organization doesn't restrict Chinese #1439
+	Improvement: Allow custom avatar source #1457
+	Feature: Add deploy key support #334
+	Feature: Generate random avatar based on e-mail when disable Gravatar
+	Feature: Able to sort issues
+
 2015-08-02
 
-	* V0.6.2
+	* V0.6.3
 	Bug fix: Label disappeared after edited a label #542
 	Bug fix: Filename cut off in DIFF when containing spaces #985
 	Bug fix: Migrate repository requires HTTPS address #1000

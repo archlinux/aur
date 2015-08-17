@@ -12,7 +12,6 @@ pkgbase = gogs
 	arch = armv7h
 	license = MIT
 	makedepends = go>=1.2
-	makedepends = git>=1.7.1
 	makedepends = patch
 	depends = git>=1.7.1
 	optdepends = sqlite: SQLite support
