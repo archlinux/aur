@@ -1,5 +1,5 @@
 pkgname=wlc-git
-pkgver=r668.997f2ce
+pkgver=r675.a9598bc
 pkgrel=1
 
 pkgdesc='Wayland compositor library.'
