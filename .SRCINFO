@@ -1,5 +1,5 @@
 pkgbase = dpsprep-git
-	pkgdesc = Python DJVU to PDF converter which preserves OCR text and bookmark metadata (e.g. TOC)
+	pkgdesc = Python DJVU to PDF (djvu2pdf) converter which preserves OCR text and bookmarks (table of contents)
 	pkgver = r10.e52d7ca
 	pkgrel = 1
 	url = https://github.com/kcroker/dpsprep
