@@ -1,0 +1,15 @@
+pkgbase = ruby-tzinfo
+	pkgdesc = Daylight savings aware transformations between times in different time zones
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://rubygems.org/gems/tzinfo
+	arch = any
+	license = MIT
+	depends = rubygems
+	noextract = tzinfo-1.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tzinfo-1.2.2.gem
+	md5sums = 972fe2c6d57be47edb144c51340fd428
+
+pkgname = ruby-tzinfo
+
