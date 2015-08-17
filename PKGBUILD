@@ -2,13 +2,13 @@
 
 pkgname=fluxbox-style-solarized-light
 pkgver=20150816
-pkgrel=2
+pkgrel=3
 pkgdesc="Solarized Light style for Fluxbox"
 url="https://github.com/corebob/fluxbox-style-solarized-light"
 license=('CCPL')
 arch=('any')
 source=("https://github.com/corebob/fluxbox-style-solarized-light/archive/master.zip")
-md5sums=('251d88e6c6a2596ad3c0665ecf85bb1c')
+md5sums=('a3ede014254a4b04c9571abb074eae6a')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/fluxbox/styles/solarized-light/"
