@@ -5,20 +5,20 @@
 
 _pkgname=kbibtex
 pkgname=kbibtex-git
-pkgver=20150108_1fba709
+pkgver=20150815_bdaefdf
 pkgrel=1
 pkgdesc="A BibTeX editor for KDE"
 arch=('i686' 'x86_64')
 url='http://home.gna.org/kbibtex/'
 license=('GPL2')
-depends=('kdebase-runtime')
+depends=('kdebase-runtime' 'poppler-qt5')
 optdepends=('kdegraphics-okular: Document preview')
-makedepends=('git' 'cmake' 'automoc4')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools')
 install=$pkgname.install
 provides=('kbibtex')
 conflicts=('kbibtex')
 replaces=('kbibtex-svn')
-source=("git://anongit.kde.org/kbibtex")
+source=("git://anongit.kde.org/kbibtex#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
@@ -26,22 +26,17 @@ pkgver() {
   echo "$(git log -1 --format="%cd" --date=short | sed 's|-||g')_$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/$_pkgname"
+prepare() {
+  mkdir -p build
+}
 
-  [ -d build ] && rm -rf build
-  mkdir build
+build() { 
   cd build
-
-  cmake .. \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-
+  cmake ../$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_USE_QT_SYS_PATHS=ON     
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname/build"
+  cd build
   make DESTDIR="$pkgdir" install
 }
