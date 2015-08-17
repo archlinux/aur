@@ -1,6 +1,6 @@
 pkgbase = goldendict-git
 	pkgdesc = Feature-rich dictionary lookup program.
-	pkgver = 1.5.0.RC.487.g043a10c
+	pkgver = 1.5.0.RC.489.gb4bb1e9
 	pkgrel = 1
 	url = http://goldendict.org/
 	arch = i686
