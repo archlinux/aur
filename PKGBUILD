@@ -1,7 +1,7 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-gettext
-pkgver=0.19.4
-pkgrel=6
+pkgver=0.19.5
+pkgrel=1
 arch=(any)
 pkgdesc="GNU internationalization library (mingw-w64)"
 depends=(mingw-w64-termcap mingw-w64-libunistring)
@@ -15,7 +15,7 @@ source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"{,.sig}
 "06-dont-include-ctype-after-gnulibs-wctype.mingw.patch"
 "07-fix-asprintf-conflict.mingw.patch"
 "08-vs-compatible.patch")
-md5sums=('d3511af1e604a3478900d2c2b4a4a48e'
+md5sums=('0f3c108d64e8dcd9e6fbdff4ca722feb'
          'SKIP'
          '397d7d6d4abd15a70edb3c9f2bab4cd2'
          '27852a388b8cf38188dc392c244230ff'
@@ -27,13 +27,15 @@ validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # Daiki Ueno
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-	cd gettext-$pkgver
-	patch -p1 -i ${srcdir}/00-relocatex-libintl-0.18.3.1.patch
+  cd gettext-$pkgver
+  rm -f gettext-runtime/intl/canonicalize.c
+  rm -f gettext-runtime/intl/relocatex.{h,c}
+  rm -f MINGW-PATCHES/README-relocatex-libintl.txt
+  patch -p1 -i ${srcdir}/00-relocatex-libintl-0.18.3.1.patch
   patch -p0 -i ${srcdir}/05-always-use-libintl-vsnprintf.mingw.patch
   patch -p0 -i ${srcdir}/06-dont-include-ctype-after-gnulibs-wctype.mingw.patch
   patch -p0 -i ${srcdir}/07-fix-asprintf-conflict.mingw.patch
   patch -p0 -i ${srcdir}/08-vs-compatible.patch
-  sed -i "s|plural.\$lo:|\$(PLURAL_OBJECT):|g" gettext-runtime/intl/Makefile.in
 }
 
 build() {
