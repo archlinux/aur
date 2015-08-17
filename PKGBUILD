@@ -3,7 +3,7 @@
 _git=eade2fe14249abd0f134e6aa17508bb14072439a
 _repo=papirus-pack-kde
 pkgname=papirus
-pkgver=20150820
+pkgver=20150821
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
 arch=('any')
