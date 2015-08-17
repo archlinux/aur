@@ -1,0 +1,19 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'textile-mode)
+(add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
+
+op=$1
+shift
+$op $*

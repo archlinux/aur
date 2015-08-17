@@ -1,0 +1,15 @@
+pkgbase = emacs-textile-mode
+	pkgdesc = Emacs major mode for editing files in Textile markup
+	pkgver = 6
+	pkgrel = 2
+	url = http://dev.nozav.org/textile-mode.html
+	install = emacs-textile-mode.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = emacs
+	source = http://dev.nozav.org/scripts/textile-mode.el
+	md5sums = cf663f90d0eff12260e3e3dd6ec72a50
+
+pkgname = emacs-textile-mode
+
