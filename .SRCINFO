@@ -1,0 +1,14 @@
+pkgbase = palemoon-i18n-default
+	pkgdesc = Pale Moon language pack for system default language.
+	pkgver = 25.6
+	pkgrel = 1
+	url = http://www.palemoon.org/
+	arch = any
+	license = MPL
+	license = GPL
+	depends = palemoon>=25.6
+	source = lang-pref.js
+	md5sums = c654129d7633ca682436825e6eb0aead
+
+pkgname = palemoon-i18n-default
+
