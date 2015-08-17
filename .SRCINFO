@@ -1,0 +1,16 @@
+pkgbase = gnome-exe-thumbnailer
+	pkgdesc = Wine .exe and other executable thumbnailer for GNOME
+	pkgver = 0.9.3
+	pkgrel = 2
+	url = http://wiki.winehq.org/exe-thumbnailer
+	arch = any
+	license = LGPL2.1
+	depends = imagemagick
+	depends = icoutils
+	depends = glib2
+	optdepends = wine: support .msi installer version and .lnk shortcuts
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gnome-exe-thumbnailer_0.9.3-0ubuntu1.tar.gz
+	md5sums = f11c0c897b670cc1504c8fc31e1aa055
+
+pkgname = gnome-exe-thumbnailer
+
