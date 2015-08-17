@@ -20,6 +20,6 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" PREFIX=/usr install
+  cd "$srcdir/${pkgname%-git}"
+  make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
