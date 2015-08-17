@@ -1,0 +1,15 @@
+post_install() {
+	echo "/opt/opendylan/lib" >> /etc/ld.so.conf.d/opendylan.conf
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+pre_remove() {
+	rm /etc/ld.so.conf.d/opendylan.conf
+}
+
+op=$1
+shift
+$op $*
