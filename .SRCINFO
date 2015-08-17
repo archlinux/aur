@@ -1,0 +1,16 @@
+pkgbase = numix-themes-osx-git
+	pkgdesc = A modified version of the Numix GTK theme modeled to look somewhat like OSX
+	pkgver = 1.2.ea4c2bd
+	pkgrel = 1
+	url = http://numixproject.org/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-engine-murrine
+	provides = numix-themes-osx
+	conflicts = numix-themes-osx
+	source = numix-themes::git+https://github.com/samhorlbeck/Numix-OSX.git
+	md5sums = SKIP
+
+pkgname = numix-themes-osx-git
+
