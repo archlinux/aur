@@ -1,15 +1,15 @@
 # Contributor: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=1.4.3
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3'  'LGPL')
 depends=('libtinfo' 'qt5-tools' 'qt5-websockets' 'qt5-webengine' 'wget' 'pcre')
-source=('http://www.jsoftware.com/gitlist/qtide.git/zipball/master' 'http://www.databaserossoverde.it/jsoftware/j804_env_20150720.tar.gz')
-md5sums=('SKIP' 'a4fc1f54932e8b12d8236458e2f3dc7a')
+source=('http://www.jsoftware.com/gitlist/qtide.git/zipball/master' 'http://www.databaserossoverde.it/jsoftware/j804_env_20150817.tar.gz')
+md5sums=('SKIP' '1fbd2156f716c0a2981b30822f6d9a4d')
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
 _noarch=i686
