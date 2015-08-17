@@ -1,0 +1,225 @@
+diff -crB ./config.h.in ../BRP_PACU-2.1.1_patch/config.h.in
+*** ./config.h.in	2010-01-24 04:59:28.000000000 +0100
+--- ../BRP_PACU-2.1.1_patch/config.h.in	2015-07-14 14:44:34.796359026 +0200
+***************
+*** 1,6 ****
+  /* config.h.in.  Generated from configure.ac by autoheader.  */
+  
+! /* Define to 1 if you have the `fftw' library (-lfftw). */
+  #undef HAVE_LIBFFTW
+  
+  /* Define to 1 if you have the `m' library (-lm). */
+--- 1,6 ----
+  /* config.h.in.  Generated from configure.ac by autoheader.  */
+  
+! /* Define to 1 if you have the `fftw' library (-lsfftw). */
+  #undef HAVE_LIBFFTW
+  
+  /* Define to 1 if you have the `m' library (-lm). */
+diff -crB ./configure ../BRP_PACU-2.1.1_patch/configure
+*** ./configure	2010-01-24 04:59:07.000000000 +0100
+--- ../BRP_PACU-2.1.1_patch/configure	2015-07-14 14:23:43.547870476 +0200
+***************
+*** 4789,4801 ****
+  fi
+  
+  
+! { echo "$as_me:$LINENO: checking for fftw_create_plan in -lfftw" >&5
+! echo $ECHO_N "checking for fftw_create_plan in -lfftw... $ECHO_C" >&6; }
+! if test "${ac_cv_lib_fftw_fftw_create_plan+set}" = set; then
+    echo $ECHO_N "(cached) $ECHO_C" >&6
+  else
+    ac_check_lib_save_LIBS=$LIBS
+! LIBS="-lfftw  $LIBS"
+  cat >conftest.$ac_ext <<_ACEOF
+  /* confdefs.h.  */
+  _ACEOF
+--- 4789,4801 ----
+  fi
+  
+  
+! { echo "$as_me:$LINENO: checking for fftw_create_plan in -lsfftw" >&5
+! echo $ECHO_N "checking for fftw_create_plan in -lsfftw... $ECHO_C" >&6; }
+! if test "${ac_cv_lib_sfftw_fftw_create_plan+set}" = set; then
+    echo $ECHO_N "(cached) $ECHO_C" >&6
+  else
+    ac_check_lib_save_LIBS=$LIBS
+! LIBS="-lsfftw  $LIBS"
+  cat >conftest.$ac_ext <<_ACEOF
+  /* confdefs.h.  */
+  _ACEOF
+***************
+*** 4836,4861 ****
+  	 test ! -s conftest.err
+         } && test -s conftest$ac_exeext &&
+         $as_test_x conftest$ac_exeext; then
+!   ac_cv_lib_fftw_fftw_create_plan=yes
+  else
+    echo "$as_me: failed program was:" >&5
+  sed 's/^/| /' conftest.$ac_ext >&5
+  
+! 	ac_cv_lib_fftw_fftw_create_plan=no
+  fi
+  
+  rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+        conftest$ac_exeext conftest.$ac_ext
+  LIBS=$ac_check_lib_save_LIBS
+  fi
+! { echo "$as_me:$LINENO: result: $ac_cv_lib_fftw_fftw_create_plan" >&5
+! echo "${ECHO_T}$ac_cv_lib_fftw_fftw_create_plan" >&6; }
+! if test $ac_cv_lib_fftw_fftw_create_plan = yes; then
+    cat >>confdefs.h <<_ACEOF
+  #define HAVE_LIBFFTW 1
+  _ACEOF
+  
+!   LIBS="-lfftw $LIBS"
+  
+  else
+    { { echo "$as_me:$LINENO: error: could not link to fftw please install the fftw package." >&5
+--- 4836,4861 ----
+  	 test ! -s conftest.err
+         } && test -s conftest$ac_exeext &&
+         $as_test_x conftest$ac_exeext; then
+!   ac_cv_lib_sfftw_fftw_create_plan=yes
+  else
+    echo "$as_me: failed program was:" >&5
+  sed 's/^/| /' conftest.$ac_ext >&5
+  
+! 	ac_cv_lib_sfftw_fftw_create_plan=no
+  fi
+  
+  rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+        conftest$ac_exeext conftest.$ac_ext
+  LIBS=$ac_check_lib_save_LIBS
+  fi
+! { echo "$as_me:$LINENO: result: $ac_cv_lib_sfftw_fftw_create_plan" >&5
+! echo "${ECHO_T}$ac_cv_lib_sfftw_fftw_create_plan" >&6; }
+! if test $ac_cv_lib_sfftw_fftw_create_plan = yes; then
+    cat >>confdefs.h <<_ACEOF
+  #define HAVE_LIBFFTW 1
+  _ACEOF
+  
+!   LIBS="-lsfftw $LIBS"
+  
+  else
+    { { echo "$as_me:$LINENO: error: could not link to fftw please install the fftw package." >&5
+diff -crB ./configure.ac ../BRP_PACU-2.1.1_patch/configure.ac
+*** ./configure.ac	2010-01-21 20:30:02.000000000 +0100
+--- ../BRP_PACU-2.1.1_patch/configure.ac	2015-07-14 14:36:58.816933815 +0200
+***************
+*** 17,23 ****
+  AC_CONFIG_FILES([Makefile])
+  AC_OUTPUT
+  AC_CHECK_LIB(m,cos,,AC_MSG_ERROR([could not link to mathlib.]))
+! AC_CHECK_LIB(fftw,fftw_create_plan,,AC_MSG_ERROR([could not link to fftw please install the fftw package.]))
+  PKG_CHECK_MODULES(GTK, gtk+-2.0,,exit)
+  PKG_CHECK_MODULES(PANGO, pango,,exit)
+  PKG_CHECK_MODULES(CAIRO, cairo,,exit)
+--- 17,23 ----
+  AC_CONFIG_FILES([Makefile])
+  AC_OUTPUT
+  AC_CHECK_LIB(m,cos,,AC_MSG_ERROR([could not link to mathlib.]))
+! AC_CHECK_LIB(sfftw,fftw_create_plan,,AC_MSG_ERROR([could not link to fftw please install the fftw package.]))
+  PKG_CHECK_MODULES(GTK, gtk+-2.0,,exit)
+  PKG_CHECK_MODULES(PANGO, pango,,exit)
+  PKG_CHECK_MODULES(CAIRO, cairo,,exit)
+diff -crB ./main.h ../BRP_PACU-2.1.1_patch/main.h
+*** ./main.h	2009-12-21 15:46:03.000000000 +0100
+--- ../BRP_PACU-2.1.1_patch/main.h	2015-07-14 14:29:11.430829780 +0200
+***************
+*** 24,30 ****
+  #include <gtk/gtkmain.h>
+  #include <gtk/gtksignal.h>
+  #include <gtk/gtk.h>
+! #include <fftw.h>
+  #include <math.h>
+  #define pi 3.141592653
+  
+--- 24,30 ----
+  #include <gtk/gtkmain.h>
+  #include <gtk/gtksignal.h>
+  #include <gtk/gtk.h>
+! #include <sfftw.h>
+  #include <math.h>
+  #define pi 3.141592653
+  
+diff -crB ./Makefile.am ../BRP_PACU-2.1.1_patch/Makefile.am
+*** ./Makefile.am	2010-01-24 16:39:03.000000000 +0100
+--- ../BRP_PACU-2.1.1_patch/Makefile.am	2015-07-14 14:44:15.849716287 +0200
+***************
+*** 21,27 ****
+  EXTRA_DIST = BRP_PACU.ui sinc.png info.plist \
+   sinc.icns sinc.xcf brpData.icns README-Mac.txt INSTALL-Mac.txt movelibraries.sh
+  AM_CFLAGS =  -O2 -Wall -g `pkg-config --cflags gtk+-2.0` `pkg-config --cflags gdk-2.0` `pkg-config --cflags glib-2.0`  `pkg-config --cflags  gtkdatabox` -DDATADIR=\"$(datadir)\" -lgthread-2.0
+! LIBS =   -lm  -lfftw  `pkg-config --libs  gtk+-2.0` `pkg-config --libs  gdk-2.0` `pkg-config --libs glib-2.0` `pkg-config --libs gthread-2.0` `pkg-config --libs gtkdatabox`  `pkg-config --libs jack` 
+  pkgdata_DATA = BRP_PACU.ui sinc.png
+  #########  Macintosh implementation #########
+  if APPLE
+--- 21,27 ----
+  EXTRA_DIST = BRP_PACU.ui sinc.png info.plist \
+   sinc.icns sinc.xcf brpData.icns README-Mac.txt INSTALL-Mac.txt movelibraries.sh
+  AM_CFLAGS =  -O2 -Wall -g `pkg-config --cflags gtk+-2.0` `pkg-config --cflags gdk-2.0` `pkg-config --cflags glib-2.0`  `pkg-config --cflags  gtkdatabox` -DDATADIR=\"$(datadir)\" -lgthread-2.0
+! LIBS =   -lm  -lsfftw  `pkg-config --libs  gtk+-2.0` `pkg-config --libs  gdk-2.0` `pkg-config --libs glib-2.0` `pkg-config --libs gthread-2.0` `pkg-config --libs gtkdatabox`  `pkg-config --libs jack` 
+  pkgdata_DATA = BRP_PACU.ui sinc.png
+  #########  Macintosh implementation #########
+  if APPLE
+diff -crB ./Makefile.in ../BRP_PACU-2.1.1_patch/Makefile.in
+*** ./Makefile.in	2010-01-24 16:39:53.000000000 +0100
+--- ../BRP_PACU-2.1.1_patch/Makefile.in	2015-07-14 14:44:01.223068090 +0200
+***************
+*** 140,146 ****
+  JACK_LIBS = @JACK_LIBS@
+  LDFLAGS = @LDFLAGS@
+  LIBOBJS = @LIBOBJS@
+! LIBS = -lm -lfftw `pkg-config --libs gtk+-2.0` `pkg-config --libs \
+  	gdk-2.0` `pkg-config --libs glib-2.0` `pkg-config --libs \
+  	gthread-2.0` `pkg-config --libs gtkdatabox` `pkg-config --libs \
+  	jack` $(am__append_3)
+--- 140,146 ----
+  JACK_LIBS = @JACK_LIBS@
+  LDFLAGS = @LDFLAGS@
+  LIBOBJS = @LIBOBJS@
+! LIBS = -lm -lsfftw `pkg-config --libs gtk+-2.0` `pkg-config --libs \
+  	gdk-2.0` `pkg-config --libs glib-2.0` `pkg-config --libs \
+  	gthread-2.0` `pkg-config --libs gtkdatabox` `pkg-config --libs \
+  	jack` $(am__append_3)
+diff -crB ./testfft.c ../BRP_PACU-2.1.1_patch/testfft.c
+*** ./testfft.c	2010-01-14 22:22:09.000000000 +0100
+--- ../BRP_PACU-2.1.1_patch/testfft.c	2015-07-14 14:23:57.947854142 +0200
+***************
+*** 19,25 ****
+  *  along with this program; if not, write to the Free Software
+  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+! #include <fftw.h>
+  #include <math.h>
+  #include "main.h"
+  #include "testfft.h"
+--- 19,25 ----
+  *  along with this program; if not, write to the Free Software
+  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+! #include <sfftw.h>
+  #include <math.h>
+  #include "main.h"
+  #include "testfft.h"
+diff -crB ./testfft.h ../BRP_PACU-2.1.1_patch/testfft.h
+*** ./testfft.h	2009-12-19 19:44:54.000000000 +0100
+--- ../BRP_PACU-2.1.1_patch/testfft.h	2015-07-14 14:24:06.741177497 +0200
+***************
+*** 19,25 ****
+  *  along with this program; if not, write to the Free Software
+  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+! #include <fftw.h>
+  #include <math.h>
+  #include "main.h"
+  #define DELAY_BUFFER_SIZE 44100
+--- 19,25 ----
+  *  along with this program; if not, write to the Free Software
+  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+! #include <sfftw.h>
+  #include <math.h>
+  #include "main.h"
+  #define DELAY_BUFFER_SIZE 44100

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Brp-pacu
+GenericName=Brp-pacu
+Comment=Sound Analysis
+Keywords=audio;sound;jackd,measurement,compare
+Icon=/usr/share/BRP_PACU/sinc.png
+TryExec=BRP_PACU
+Exec=BRP_PACU
+Terminal=false
+Categories=AudioVideo;Music;
