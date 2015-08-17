@@ -4,8 +4,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=arch-aurora-search
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Firefox-Aurora Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)"
 arch=('any')
 url="http://archlinux.org/"
@@ -28,11 +28,11 @@ md5sums=('df18835df1ea78bc3fc0e05f934b1e46'
          'bd0896ec148707b6980d23adc6015448')
 
 package() {
-#  _ffver=`pacman -Q firefox | cut -f2 -d\ | cut -f1 -d-`
-#  depends=("firefox>=${_ffver}" "firefox<=${_ffver/0/99}")
+#  _auroraver=`pacman -Q aurora | cut -f2 -d\ | cut -f1 -d-`
+#  depends=("aurora>=${_auroraver}" "aurora<=${_auroraver/0/99}")
 
   cd "${srcdir}"
-  local _prefix="${pkgdir}"/usr/lib/aurora/browser/searchplugins
+  local _prefix="${pkgdir}"/usr/lib/aurora/distribution/searchplugins/common
 
   for i in ${source[@]}; do
     install -D -m 0644 "${srcdir}"/$i ${_prefix}/$i
