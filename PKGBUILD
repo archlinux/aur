@@ -10,12 +10,12 @@
 pkgname="pentadactyl-git"
 _pkgname="pentadactyl"
 license=(MIT)
-pkgver=r7111.aca9da8
+pkgver=r7170.41d023a
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=2
+pkgrel=1
 pkgdesc="Vim-like five-fingered interface for Firefox"
 arch=(any)
 url="http://dactyl.sourceforge.net/pentadactyl"
@@ -29,7 +29,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$_pkgname"
-  sed -i 's/maxVersion="[^"]*/maxVersion="40/' pentadactyl/install.rdf 
+  sed -i 's/maxVersion="[^"]*/maxVersion="41/' pentadactyl/install.rdf 
   make -C pentadactyl xpi
 }
 
