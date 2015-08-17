@@ -5,7 +5,7 @@
 
 pkgname=wuala
 pkgver=20141107 # Loader version
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A new way of storing, sharing and publishing files on the Internet.  It's free, simple and secure."
 arch=('any')

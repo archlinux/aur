@@ -1,6 +1,16 @@
-post_install() {
+function upd() {
   update-desktop-database -q || return 1
   xdg-icon-resource forceupdate --theme hicolor || return 1
+}
+
+post_install() {
+  upd || return 1
+
+  echo ">>>" || return 1
+  echo ">>> IMPORTANT NOTICE: Wuala is shutting down." || return 1
+  echo ">>>" || return 1
+  echo ">>> Details: https://support.wuala.com/2015/08/wuala-shutdown-notice/" || return 1
+  echo ">>>" || return 1
 }
 
 post_upgrade() {
@@ -8,5 +18,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  post_install $1
+  upd
 }
