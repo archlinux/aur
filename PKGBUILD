@@ -11,8 +11,8 @@ makedepends=('git')
 optdepends=('zsh')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url")
-md5sums=('SKIP')
+source=("git+$url" 'profile.sh')
+md5sums=('SKIP' 'ed2a77e37a4511b7253145624a775945')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -22,4 +22,5 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
+  install -Dm644 "$srcdir/profile.sh" "$pkgdir/etc/profile.d/chruby.sh"
 }

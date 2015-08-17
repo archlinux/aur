@@ -11,7 +11,9 @@ pkgbase = chruby-git
 	provides = chruby
 	conflicts = chruby
 	source = git+https://github.com/postmodern/chruby
+	source = profile.sh
 	md5sums = SKIP
+	md5sums = 043367f68110c70fe1aa8104be466274
 
 pkgname = chruby-git
 
