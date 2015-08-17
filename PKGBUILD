@@ -1,8 +1,8 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=libosmpbf-git
-pkgver=1.3.3.r10.g3730430
+pkgver=1.3.3.r15.g1283c4a
 pkgver() {
-  cd "$srcdir/$_gitname-build/src"
+  cd "$pkgname"
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 pkgrel=1
@@ -13,33 +13,16 @@ license=('LGPL3')
 depends=('protobuf')
 makedepends=('git')
 provides=('libosmpbf')
-
-_gitroot=https://github.com/scrosby/OSM-binary.git
-_gitname=libosmpbf
+source=("$pkgname::git+https://github.com/scrosby/OSM-binary.git")
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build/src"
-
+  cd "$pkgname/src"
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build/src"
+  cd "$pkgname/src"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
 
