@@ -6,7 +6,7 @@
 # deleted if my patch is accepted upstream! -- Steven
 
 pkgname=wpa_supplicant_gui-qt5
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc="A Qt frontend to wpa_supplicant - ported to Qt5"
 url="https://github.com/stevenhoneyman/wpa_gui"
@@ -15,9 +15,9 @@ depends=('qt5-base' 'wpa_supplicant')
 conflicts=('wpa_supplicant_gui')
 license=('GPL')
 source=("http://hostap.epitest.fi/releases/wpa_supplicant-$pkgver.tar.gz"
-	"wpa_gui2.2-add_qt5_support.patch")
-sha256sums=('e0d8b8fd68a659636eaba246bb2caacbf53d22d53b2b6b90eb4b4fef0993c8ed'
-	    '65d23a1eca85e46fb075b63406ebde10b61491c448311618bd60acb056c1639b')
+	"wpa_gui2.4-add_qt5_support.patch")
+sha256sums=('058dc832c096139a059e6df814080f50251a8d313c21b13364c54a1e70109122'
+	    '6c97a8cedd00d711cc5db14bbe15e5765d32706473a23b635b84870aae0a8d58')
 
 prepare() {
   cd wpa_supplicant-${pkgver}/wpa_supplicant/wpa_gui-qt4
