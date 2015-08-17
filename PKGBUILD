@@ -4,11 +4,11 @@
 
 pkgname=casperjs-git
 pkgver=20150602
-pkgrel=2
+pkgrel=3
 pkgdesc="Navigation scripting & testing utility for PhantomJS and SlimerJS"
 arch=('i686' 'x86_64')
 depends=('nodejs' 'python2')
-makedepends=('git' 'npm' 'python2-sphinx')
+makedepends=('git' 'npm' 'python-sphinx')
 optdepends=('slimerjs: run your tests against Gecko (Firefox) instead of Webkit (just add –engine=slimerjs to your command line options)')
 url="https://github.com/n1k0/casperjs"
 license=('MIT')
