@@ -2,7 +2,7 @@
 
 pkgname=airvpn-beta-bin
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
@@ -33,9 +33,8 @@ package() {
   install -Dm644 "$srcdir/usr/share/doc/airvpn/changelog.gz" "$pkgdir/usr/share/doc/airvpn/changelog.gz"
   install -Dm644 "$srcdir/usr/share/doc/airvpn/copyright" "$pkgdir/usr/share/doc/airvpn/copyright"
   install -Dm644 "$srcdir/usr/share/man/man1/airvpn.1.gz" "$pkgdir/usr/share/man/man1/airvpn.1.gz"
-  install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
+  install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/AirVPN.png"
   cd "$srcdir/usr/share/applications"
-  mv "AirVPN.desktop" "airvpn.desktop"
-  desktop-file-install -m 644 --add-category=KDE --set-icon=/usr/share/pixmaps/airvpn.png\
-  --set-comment="VPN service based on OpenVPN" --dir="$pkgdir/usr/share/applications/" "airvpn.desktop"
+  desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
+  --dir="$pkgdir/usr/share/applications/" "AirVPN.desktop"
 }
