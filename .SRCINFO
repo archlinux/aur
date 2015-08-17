@@ -1,20 +1,19 @@
 pkgbase = acd_cli
-	pkgdesc = acd_cli provides a command line interface to Amazon Cloud Drive and allows mounting your cloud drive using FUSE for read access. It is currently in beta stage. AUR package by Raansu, acd_cli project by yadayada
-	pkgver = 0.3.0
+	pkgdesc = a command line interface to Amazon Cloud Drive and allows mounting your cloud drive using FUSE for read access.
+	pkgver = 0.3.0a4
 	pkgrel = 1
 	url = https://github.com/yadayada/acd_cli
 	arch = any
 	license = GPL
 	makedepends = python
+	makedepends = python-setuptools
 	depends = python-appdirs
 	depends = python-requests>=2.1.0
 	depends = python-sqlalchemy
 	depends = python-dateutil
 	depends = python-requests-toolbelt
-	provides = acd_cli
-	conflicts = acd_cli
-	source = git+https://github.com/yadayada/acd_cli.git
-	md5sums = SKIP
+	source = https://github.com/yadayada/acd_cli/archive/0.3.0a4.tar.gz
+	sha256sums = 1f1d61394be741f70a410c921f0b7cef12ba3def86df84851461e7cc562368ba
 
 pkgname = acd_cli
 
