@@ -1,0 +1,17 @@
+pkgbase = openpipe
+	pkgdesc = Puzzle game with simple rules
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://smiszym.github.io/openpipe
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	depends = glfw
+	depends = libsndfile
+	depends = openal
+	source = https://github.com/smiszym/openpipe/archive/v0.0.5.tar.gz
+	md5sums = 7030b217543b9063901bb5a810a774ef
+
+pkgname = openpipe
+
