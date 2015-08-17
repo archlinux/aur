@@ -1,7 +1,7 @@
 pkgbase = airvpn-bin
 	pkgdesc = AirVPN client "Eddie" based on OpenVPN, stable version.
 	pkgver = 2.9.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://airvpn.org/linux/
 	install = airvpn.install
 	arch = i686
