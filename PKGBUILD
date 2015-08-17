@@ -1,6 +1,6 @@
 # Maintainer: Amiad Bareli <amiad@hatul.info>
 pkgname=python2-stormssh-git
-pkgver=20130829
+pkgver=20150306
 pkgrel=1
 pkgdesc="storm is a command line tool to manage your hosts at sshconfig"
 arch=('any')
