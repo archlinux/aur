@@ -16,6 +16,7 @@ pkgbase = palemoon-bin
 	depends = mime-types
 	depends = nss
 	depends = alsa-lib
+	optdepends = palemoon-i18n-default: language pack for system active language
 	optdepends = gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing
 	optdepends = gstreamer0.10-good-plugins: webm and mp4 demuxing
 	optdepends = gstreamer0.10-bad-plugins: aac, vp8 and opus decoding

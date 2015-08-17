@@ -7,7 +7,8 @@ arch=('i686' 'x86_64')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
-optdepends=('gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
+optdepends=('palemoon-i18n-default: language pack for system active language'
+            'gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
             'gstreamer0.10-good-plugins: webm and mp4 demuxing'
             'gstreamer0.10-bad-plugins: aac, vp8 and opus decoding'
             'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
