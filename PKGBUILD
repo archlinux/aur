@@ -2,8 +2,8 @@
 # Contributor: Paul Préfontaine <paul+archlinuxaur@prefontaine.name>
 
 pkgname=h2o
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 depends=('libuv' 'libyaml' 'wslay')
@@ -12,7 +12,7 @@ url="https://github.com/h2o/h2o"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v$pkgver
         h2o.service)
-sha256sums=('3024e6a8b704d119570551db2cbca701cb6c2fa7126336239044674ee02ea09c'
+sha256sums=('b41cdbadd2a345bc4a91295fd6faf39923c83beb00ad795f87fde69e2ba66f43'
             'dadc4d08e8149ac0f9f2156251a639380795d1fed2068958b487da88161d4bb7')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
