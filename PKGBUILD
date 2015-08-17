@@ -6,7 +6,7 @@
 # Contributor: Behem0th <grantipak@gmail.com> 
 
 pkgname=freshplayerplugin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='PPAPI-host NPAPI-plugin adapter.'
 arch=( 'i686' 'x86_64' )
@@ -44,5 +44,5 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha1sums=('9d80eeefb45bede2b6ba97e06bcad1e9e5193a04'
+sha1sums=('eb8062e5f2d9e99792cd374182b4f9c26fe84ed5'
           '331a3b3877249eaf1c3db917bde1dea6c4d374ab')
