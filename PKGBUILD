@@ -8,15 +8,15 @@
 pkgname=conky-lua-nv
 _pkgname=conky
 pkgver=1.10.0
-pkgrel=6
+pkgrel=7
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
-license=('custom')
+license=('GPL3' 'BSD')
 replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky' 'conky-lua')
-depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51' )
+depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51' 'librsvg')
 makedepends=('docbook2x' 'libxnvctrl' 'tolua++' 'perl-xml-libxml' 'docbook-xml' 'docbook-xsl' 'cmake')
 optdepends=('nvidia: for GT4xx and newer GPUs',
   'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
@@ -77,7 +77,8 @@ build() {
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
-  install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
+  install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 LICENSE.BSD ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD
   install -D -m644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
   install -D -m644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
 }
