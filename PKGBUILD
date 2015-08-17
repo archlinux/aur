@@ -4,7 +4,7 @@ _python=python2
 _distname=pkginfo
 pkgname=${_python}-${_distname}
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Query metadatdata from sdists / bdists / installed packages'
 arch=('any')
 url='https://pypi.python.org/pypi/pkginfo'
@@ -17,4 +17,7 @@ sha256sums=('ad3f6dfe8a831f96a7b56a588ca874137ca102cc6b79fc9b0a1c3b7ab7320f3c')
 package() {
     cd "${srcdir}/${_distname}-${pkgver}"
     ${_python} setup.py install --root="${pkgdir}" --optimize=1
+
+    # To avoid conflicts with python-pkginfo
+    mv "${pkgdir}/usr/bin/pkginfo" "${pkgdir}/usr/bin/pkginfo2"
 }
