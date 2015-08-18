@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-hook-lexwrap'
-pkgver='0.24'
+pkgver='0.25'
 pkgrel='1'
 pkgdesc="Lexically scoped subroutine wrappers"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/Hook-LexWrap'
-source=('http://search.cpan.org/CPAN/authors/id/C/CH/CHORNY/Hook-LexWrap-0.24.tar.gz')
-md5sums=('3c08c1f388c529c532f71422d33913d1')
-sha512sums=('113641b89cce644ca739eab371786971bbb966dcb0e9eb7612379063ad71318af594f351771cafc8fc0c50c8a325ed76fb257ef7f0511a6fac0a80d52039ad31')
-_distdir="Hook-LexWrap-0.24"
+url='https://metacpan.org/release/Hook-LexWrap'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Hook-LexWrap-0.25.tar.gz')
+md5sums=('140af3d36b3e80dce414b9a68adf0ad8')
+sha512sums=('63623164ac67a33bd12ef771725a09647bdfe19d2f8eb84a0049ca0bdf4adc325143889a5751b1aefaca23eedb1a503ee42071b2fe3e7e3f033c148c0716eca9')
+_distdir="Hook-LexWrap-0.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
