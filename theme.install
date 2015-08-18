@@ -3,5 +3,5 @@ post_install()
     echo "Setting ArchLinux as the default LightDM Theme"
     sed -i 's|greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
     sed -i 's|#greeter-session=.*webkit2.*|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
-    sed -i '/^webkit-theme=/s/default/archlinux/' /etc/lightdm/lightdm-webkit2-greeter.conf
+    sed -i '/^webkit-theme=/s/antergos/archlinux/' /etc/lightdm/lightdm-webkit2-greeter.conf
 }
