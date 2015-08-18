@@ -1,7 +1,7 @@
 pkgname=zabbix-server-mysql
 _pkgname=zabbix-server
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64")
@@ -15,7 +15,6 @@ depends=("php"
          "nmap"
          "sudo"
          "curl"
-         "iksemel"
          "libssh2"
          "openipmi")
 optdepends=("mariadb: Fast SQL database server, drop-in replacement for MySQL"
@@ -103,7 +102,6 @@ build() {
     --with-mysql \
     --with-net-snmp \
     --with-openipmi \
-    --with-jabber \
     --with-libcurl \
     --with-ssh2 \
     --with-libxml2

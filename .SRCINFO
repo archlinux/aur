@@ -1,7 +1,7 @@
 pkgbase = zabbix-server-mysql
 	pkgdesc = Zabbix is an enterprise-class open source distributed monitoring solution.
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zabbix.com/
 	install = zabbix-server.install
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = zabbix-server-mysql
 	depends = nmap
 	depends = sudo
 	depends = curl
-	depends = iksemel
 	depends = libssh2
 	depends = openipmi
 	optdepends = mariadb: Fast SQL database server, drop-in replacement for MySQL
