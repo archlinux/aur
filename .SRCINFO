@@ -1,6 +1,6 @@
 pkgbase = ruby-sprockets-rails
 	pkgdesc = Sprockets Rails integration
-	pkgver = 2.2.4
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/rails/sprockets-rails
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-sprockets-rails
 	depends = ruby-sprockets
 	depends = ruby-actionpack
 	depends = ruby-activesupport
-	noextract = sprockets-rails-2.2.4.gem
+	noextract = sprockets-rails-2.3.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sprockets-rails-2.2.4.gem
-	sha1sums = d3e1f38574808e8bb1125e49c19d43a97fb92ab6
+	source = https://rubygems.org/downloads/sprockets-rails-2.3.2.gem
+	sha1sums = 726a577ec3d1afcd20964f8324ac0b737a68856c
 
 pkgname = ruby-sprockets-rails
 
