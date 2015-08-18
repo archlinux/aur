@@ -1,12 +1,12 @@
 pkgbase = fluxbox-style-solarized-light
 	pkgdesc = Solarized Light style for Fluxbox
-	pkgver = 20150817
+	pkgver = 20150818
 	pkgrel = 1
 	url = https://github.com/corebob/fluxbox-style-solarized-light
 	arch = any
 	license = CCPL
 	source = https://github.com/corebob/fluxbox-style-solarized-light/archive/master.zip
-	md5sums = 3954a0298af7c188d82e8d9f929743b4
+	md5sums = e9312cbbd60fd31fd56e7399da845b47
 
 pkgname = fluxbox-style-solarized-light
 
