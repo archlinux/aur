@@ -1,0 +1,14 @@
+pkgbase = catstalker
+	pkgdesc = Python library for energenie remote board access on a Raspberry Pi
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://github.com/ohjames/catstalker
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-raspberry-gpio
+	source = http://pypi.python.org/packages/source/C/CatStalker/CatStalker-0.0.1.tar.gz
+	md5sums = 0713465b9cd393b450f5020d6641c3fc
+
+pkgname = catstalker
+
