@@ -5,7 +5,7 @@
 _pkgname=hhvm
 _github_addr=facebook/hhvm
 pkgname=${_pkgname}-git
-pkgver=20150813
+pkgver=20150816
 pkgrel=1
 pkgdesc="Virtual Machine, Runtime, and JIT for PHP"
 arch=('x86_64')
@@ -33,7 +33,7 @@ depends=('boost-libs'
 # gd is bundled in hphp/runtime/ext/gd/libgd
 # libxml2 included in libxslt
 # pcre included in lots of packages
-makedepends=('git' 'cmake' 'clang' 'boost' 'python2' 'pfff-git' 'ocaml-findlib' 'gperf')
+makedepends=('git' 'cmake' 'clang' 'boost' 'python2' 'pfff' 'ocaml-findlib' 'gperf')
 source=("git+https://github.com/$_github_addr" #1
         "git+https://github.com/hhvm/hhvm-third-party"
         "git+https://github.com/facebook/folly"
@@ -47,7 +47,7 @@ source=("git+https://github.com/$_github_addr" #1
         'hhvm@.service'
         'server.ini'
         'systemd-server.conf'
-        'cache-is-executable-result.patch')
+        'php_ini.patch')
 backup=('etc/hhvm/server.ini' 'etc/hhvm/systemd-server.conf')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'SKIP' 'SKIP' 'SKIP' 'SKIP'
@@ -55,7 +55,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'dddf4325926a41b3f1b5a41a1a42364ee463ab627f9d9b05ccf7c4660af3a51c'
             'bca85e0445f3e26df65876c52e507aec8146cd31cce12c82846b55705529caed'
             '66ae41fb6ef07dd02a9c959ab6b6e07bcb1d17b0c164a091fc5ecd9dc7967cd0'
-            '1a255f99387f4fbf8c337bc44683a330cce2b1930fa150669932f7d14f2dccab')
+            'f878bca477ce33d43a0a110a961b1b9aa600cf7000df756d1fe25f8dcde87da8')
 
 install=hhvm.install
 
@@ -68,7 +68,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    patch -p1 -i ../cache-is-executable-result.patch
 
     git submodule init
     git config submodule.third-party.url "${srcdir}/hhvm-third-party"
@@ -127,10 +126,12 @@ build() {
 }
 
 check() {
-   msg2 "Make sure to enable posix.so and sysvmsg.so in php.ini for correct testing"
+    cd "${srcdir}"
+    cp /etc/php/php.ini php_patched.ini
+    patch -p1 -i php_ini.patch
 
-   cd "${srcdir}/${_pkgname}/hphp/test"
-    ./run --threads 2 quick
+    cd "${srcdir}/${_pkgname}/hphp/test"
+    php -c "${srcdir}/php_patched.ini" ./run --threads 2 quick
     # ./run --threads 2 all
 }
 

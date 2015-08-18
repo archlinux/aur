@@ -1,0 +1,37 @@
+--- a/php.ini	2015-08-07 01:24:13.000000000 +0800
++++ b/php_patched.ini	2015-08-19 02:13:40.040393690 +0800
+@@ -295,7 +295,7 @@
+ ; and below.  This directive makes most sense if used in a per-directory
+ ; or per-virtualhost web server configuration file.
+ ; http://php.net/open-basedir
+-open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/:/usr/share/webapps/
++open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/:/usr/share/webapps/:/build/:/usr/bin/:/proc/
+ 
+ ; This directive allows you to disable certain functions for security reasons.
+ ; It receives a comma-delimited list of function names.
+@@ -606,7 +606,7 @@
+ ; Development Value: "GPCS"
+ ; Production Value: "GPCS";
+ ; http://php.net/variables-order
+-variables_order = "GPCS"
++variables_order = "EGPCS"
+ 
+ ; This directive determines which super global data (G,P & C) should be
+ ; registered into the super global array REQUEST. If so, it also determines
+@@ -897,14 +897,14 @@
+ ;extension=pdo_sqlite.so
+ ;extension=pgsql.so
+ ;extension=phar.so
+-;extension=posix.so
++extension=posix.so
+ ;extension=pspell.so
+ ;extension=shmop.so
+ ;extension=snmp.so
+ ;extension=soap.so
+ ;extension=sockets.so
+ ;extension=sqlite3.so
+-;extension=sysvmsg.so
++extension=sysvmsg.so
+ ;extension=sysvsem.so
+ ;extension=sysvshm.so
+ ;extension=tidy.so
