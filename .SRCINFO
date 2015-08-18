@@ -13,7 +13,9 @@ pkgbase = python-grip-git
 	depends = python-markdown
 	depends = python-pygments
 	depends = python-path-and-address
-	source = python-grip-git::git://github.com/joeyespo/grip.git
+	provides = python-grip
+	conflicts = python-grip
+	source = python-grip::git+https://github.com/joeyespo/grip
 	md5sums = SKIP
 
 pkgname = python-grip-git
