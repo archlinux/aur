@@ -1,32 +1,38 @@
 post_install() {
-	echo
-	echo "Becareful, you must edit /etc/sshd_autoban/sshd_autoban.json"
-	echo
+    pkgname=sshd_autoban
 
-	# Create directories
+    # Fixing membership
+    chown root: /var/log/$pkgname
+    chown -R root: /etc/$pkgname
 
-	# mkdir -p "$pkgdir/var/log/sshd_autoban/"
+    # Reload systemctl
+    systemctl daemon-reload
 
-	# Fixing right
+    echo "Adding sshd_autoban in systemctl:"
+    echo "  systemctl enable sshd_autoban"
+    echo "  systemctl start sshd_autoban"
 
-	chmod 644 "$pkgdir/etc/sshd_autoban/sshd_autoban.json"
-	chmod 755 "$pkgdir/var/log/sshd_autoban"
-	chmod 755 "$pkgdir/var/log/sshd_autoban/errors.log"
-	chmod 755 "$pkgdir/usr/bin/sshd_autoban"
-
-	# Fixing membership
-
-	chown -R root: "/var/log/sshd_autoban"
-	chown root: "/etc/sshd_autoban/sshd_autoban.json"
-
-	true
+    true
 }
 
 post_upgrade() {
-    echo "Reload systemctl"
+    # Reload systemctl
     systemctl daemon-reload
+
+    echo "You should restart sshd_autoban:"
+    echo "  systemctl restart sshd_autoban"
+
+    true
 }
 
-post_remove() {
-	true
+pre_remove() {
+    pkgname=sshd_autoban
+    # Remove symlink in systemd
+    systemctl disable $pkgname
+    # Stop server
+    systemctl stop $pkgname
+    # Reload systemctl
+    systemctl daemon-reload
+
+    true
 }

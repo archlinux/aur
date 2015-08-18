@@ -1,17 +1,16 @@
 pkgbase = sshd_autoban
 	pkgdesc = A ssh autoban for fast and slow brute force attack
-	pkgver = 0.3
-	pkgrel = 5
+	pkgver = 0.0.4
+	pkgrel = 1
 	url = https://github.com/Chipsterjulien/go-sshd_autoban
 	install = sshd_autoban.install
 	arch = any
 	license = WTFPL
 	makedepends = go
 	options = !strip
-	options = !emptydirs
 	backup = etc/sshd_autoban/sshd_autoban.json
-	source = sshd_autoban-0.3.tar.gz
-	sha256sums = 0c26a63db2985ff65f52e3dde178a947ceab0a5f5c99bc18948616c630146e10
+	source = sshd_autoban-0.0.4.tar.gz
+	sha512sums = c6c8a447636d629cb62e246b8a26ee03aca96a198b9fa533fc6048793ceace94ecfd21d4f525e60b6c733ba977dafec2fa92c96510b5c2d4b62a1b0bed8c20e0
 
 pkgname = sshd_autoban
 
