@@ -2,20 +2,14 @@ post_install(){
 
 cat << EOF
 
-Phing performs some configuration auto-discovery and detection for the
-presence of Composer-specific files and may cause PHP to generate messages
-if open_basedir is configured. Although annoying, these messages will not
-affect Phing's behavior. The solution, though certainly not ideal, is to
-add "/usr/share" to open_basedir as Phing attempts to probe one level up
-from the PEAR root (/usr/share/pear). Optionally, using separate php.ini
-configurations for the PHP CLI and web server modules may be more
-appropriate if you're a developer or perform a great deal of work using
-PHP on the command line.
+=========
+As of PKGREL phing-2.11.0-2, this PKGBUILD downloads the PHAR build of
+phing.
 
-Phing in stand-alone format works well, but the recommended method is to
-install it on a per-project basis using Composer (http://getcomposer.org).
-I would highly recommend installing Phing per-project rather than
-system-wide.
+Stand-alone Phing works well, but the recommended means of using it is
+to install the package on a per-project basis via Composer
+(http://getcomposer.org).
+=========
 
 EOF
 
@@ -25,20 +19,14 @@ post_upgrade(){
 
 cat << EOF
 
-Phing performs some configuration auto-discovery and detection for the
-presence of Composer-specific files and may cause PHP to generate messages
-if open_basedir is configured. Although annoying, these messages will not
-affect Phing's behavior. The solution, though certainly not ideal, is to
-add "/usr/share" to open_basedir as Phing attempts to probe one level up
-from the PEAR root (/usr/share/pear). Optionally, using separate php.ini
-configurations for the PHP CLI and web server modules may be more
-appropriate if you're a developer or perform a great deal of work using
-PHP on the command line.
+=========
+As of PKGREL phing-2.11.0-2, this PKGBUILD downloads the PHAR build of
+phing.
 
-Phing in stand-alone format works well, but the recommended method is to
-install it on a per-project basis using Composer (http://getcomposer.org).
-I would highly recommend installing Phing per-project rather than
-system-wide.
+Stand-alone Phing works well, but the recommended means of using it is
+to install the package on a per-project basis via Composer
+(http://getcomposer.org).
+=========
 
 EOF
 

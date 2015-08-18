@@ -3,37 +3,26 @@
 
 pkgname=phing
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP project build system based on Apache Ant."
 arch=(any)
 url="http://www.phing.info/"
 license=(LGPL)
 depends=(php)
-makedepends=(php-pear)
 install="${pkgname}.install"
 source=(
-    "http://pear.phing.info/get/${pkgname}-${pkgver}.tgz"
+    "http://www.phing.info/get/phing-${pkgver}.phar"
     phing.install
+    phar.ini
 )
 sha256sums=(
-    f7fbd82d1c47e7de753df34e675cf705ef24247c44c94b7ea6354767c028d5ba # phing tarball
-    d6b73432293ff2dfe9ae4866d77b68c05721b0ffd3bd332bc58678f624c03f4b # phing.install
+    355ff478baa0dc67d80fb2b0bcc6f231ff25e0dfa600f08c4b107f689d551dd8 # phing PHAR
+    9c9926fcea67efad95adceeaa973cd86f99681a74d22b93d2c5fa506679c65cd # phing.install
+    b189ab599a2760b7627820dffece09a4323c9ed2e042c2517e97801f602b318e # phar.ini
 )
 
 package() {
-
-    # Work around for the inability to use channel-discover as non-root
-    # without tweaking or adding a ~/.pearrc. This is a kluge, yikes!
-    cat "${srcdir}/package.xml" | sed -e "s/^ <channel>pear.phing.info<\/channel>/ <channel>pear.php.net<\/channel>/" > "${srcdir}/package.xml.new"
-    mv "${srcdir}/package.xml.new" "${srcdir}/package.xml"
-
-    cd "${srcdir}"
-    tar czvf "${pkgname}-rebuild.tgz" package.xml ${pkgname}-${pkgver}
-
-    pear install -P"${pkgdir}" -O -n "${srcdir}/${pkgname}-rebuild.tgz"
-
-    rm -r "${pkgdir}"/usr/share/pear/{.channels,.depdb*,.filemap,.lock}
-
-    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+    install -Dm0644 "${srcdir}/phar.ini" "${pkgdir}/etc/php/conf.d/phar.ini"
+    install -Dm0755 "${srcdir}/${pkgname}-${pkgver}.phar" "${pkgdir}/usr/bin/${pkgname}-${pkgver}.phar"
+    ln --relative -s "${pkgdir}/usr/bin/${pkgname}-${pkgver}.phar" "${pkgdir}/usr/bin/phing"
 }
