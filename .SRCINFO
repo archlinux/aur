@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-l2740dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-l2740DW
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-l2740dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://download.brother.com/welcome/dlf101729/mfcl2740dwlpr-3.2.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101728/mfcl2740dwcupswrapper-3.2.0-1.i386.rpm
+	md5sums = e4e27264d8255274c6ad8af1e65588b7
+	md5sums = 399fde3fff6c41338b0fe84517f7148b
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l2740dw
+
