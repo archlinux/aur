@@ -5,13 +5,13 @@ _pkgname=archlinux
 pkgver=0.5.0
 _bgver=0.6
 pkgrel=1
-pkgdesc="ArchLinux version of the official Antergos lightdm greeter"
+pkgdesc="ArchLinux version of the official Antergos greeter"
 arch=('any')
 url="https://github.com/Dissonant-Tech/lightdm-webkit-theme-archlinux"
 license=('GPLv2')
 depends=('lightdm' 'lightdm-webkit2-greeter')
 install=theme.install
-source=("https://github.com/Dissonant-Tech/${pkgname}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dissonant-Tech/${pkgname}/archive/${pkgver}.tar.gz"
         "http://antergos.com/antergos-wallpapers-${_bgver}.zip")
 md5sums=('fd3885f57962eb3a6760b60fab87ed5d'
             'c996d26914e71897019c33854b0ae634')

@@ -1,5 +1,5 @@
 pkgbase = lightdm-webkit-theme-archlinux
-	pkgdesc = ArchLinux version of the official Antergos lightdm greeter
+	pkgdesc = ArchLinux version of the official Antergos greeter
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Dissonant-Tech/lightdm-webkit-theme-archlinux
@@ -8,7 +8,7 @@ pkgbase = lightdm-webkit-theme-archlinux
 	license = GPLv2
 	depends = lightdm
 	depends = lightdm-webkit2-greeter
-	source = https://github.com/Dissonant-Tech/lightdm-webkit-theme-archlinux/archive/0.5.0.tar.gz
+	source = lightdm-webkit-theme-archlinux-0.5.0.tar.gz::https://github.com/Dissonant-Tech/lightdm-webkit-theme-archlinux/archive/0.5.0.tar.gz
 	source = http://antergos.com/antergos-wallpapers-0.6.zip
 	md5sums = fd3885f57962eb3a6760b60fab87ed5d
 	md5sums = c996d26914e71897019c33854b0ae634
