@@ -1,5 +1,6 @@
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
+# Contributor: Boyan Ding <stu_dby@126.com>
 
 # TODO
 # once icedtea:
@@ -9,11 +10,12 @@
 pkgname=('jre8-openjdk-headless-infinality' 'jre8-openjdk-infinality' 'jdk8-openjdk-infinality')
 pkgbase=java8-openjdk
 _java_ver=8
+# http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 _jdk_update=51
-_jdk_build=14
+_jdk_build=16
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://openjdk.java.net/'
 license=('custom')
@@ -30,19 +32,21 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
         004_add-fontconfig.patch
         005_enable-infinality.patch
-        006_allow-linux-4.patch)
+        JDK-8074312-hotspot.patch
+        JVM_fastdebug_build_compiled_with_GCC_5_asserts_with_widen_increases.patch)
 
-sha256sums=('d0aa9ce02ec3db609e13171f497292542756c08a55960991bdb087c0cd4b199b'
-            'a751bea9bb51425ce952c3bed5df1f57cd746789376ebeec28c6ba78b7d6e3be'
-            '5fe038a9a0a7248a693ff441cf56082dc7d18af26a509d2c63604e00d1ed4dc3'
-            'efa924c3bea56bd52cb716b60cfc603520d4b667f9a86f3021619a02e8a7de05'
-            'fb0a9f5cb25c33e5b278d232105b24824e90371c444bf76d67e51ba865f79cb0'
-            'ff7d23f4393c4d711aff46fb369d65ad7c788b29a7fb0ee4bb71a2c731e4b144'
-            '225c21a101ae81f2228902f0f9b76879ef5f14cc7191fd593e8eb6865245abdc'
-            'c19ff4f7da1eeca43f8e25cf75c0a5c30e011fd7996d8dce1052f95c88bed689'
+sha256sums=('02eab2b937ed83c4505e93f58ad0b84a4e1a69e6d0baa4d041ec09ed98f18c2d'
+            '00d783dda3a7d87eb55a72febe7666c4b3297616ef3f11bbd679a05f19a81825'
+            'a7236d5e5824cea20b48ca4efb8e5109007024af9b85214e9153c4d633665d0a'
+            'f7554dc2fba5dfd36af0ed618ebe4c7b1527b5a067052299a1679a4142bbbeee'
+            'aa202ddf3bcc1dc54723bb26c0ae5ccaefc1693647e6b463955065d2b1720382'
+            '5d6faf6c726392212659cebd93fdbf89a11b86bab60f5b220493d9d8e7ff0686'
+            '3171ec4dbd96747eeb876a8fd3caf1e1e52da3dc91b63308193c914a5501d6e4'
+            'ffdd0446fce7b624f2cdc80297b99eecfdf30adfee39d3b8832a78c1dc202636'
             '7eccdeda71d651423a066c942b3d300eccd8d95e161725fa508d84f0bc010ceb'
             'efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac'
-            '769cd85c0fe71345224eb5a61faff7441070e612a3ccfbb8e92d4dd827d21b04')
+            '95fbd155806cac22de9e6df6f4f92ae79530f86d63cea1deaf98e607953e0b50'
+            '8df4d5d78753ebc5bc425fd1c8fe788106ac8b9d3155feb162a748a96c81cc05')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -72,8 +76,11 @@ prepare() {
   patch -p1 < "${srcdir}/005_enable-infinality.patch"
 
   cd "${srcdir}/hotspot-${_repo_ver}"
-  # Apply linux version patch
-  patch -p1 < "${srcdir}/006_allow-linux-4.patch"
+  # https://bugs.openjdk.java.net/browse/JDK-8074312
+  patch -p1 < "${srcdir}"/JDK-8074312-hotspot.patch
+  # https://bugs.archlinux.org/task/45386
+  # https://bugs.openjdk.java.net/browse/JDK-8078666
+  patch -p1 < "${srcdir}"/JVM_fastdebug_build_compiled_with_GCC_5_asserts_with_widen_increases.patch
 }
 
 build() {
@@ -202,7 +209,8 @@ package_jre8-openjdk-infinality() {
   depends=("jre8-openjdk-headless-infinality=${pkgver}-${pkgrel}" 'xdg-utils' 'hicolor-icon-theme')
   optdepends=('icedtea-web: web browser plugin + Java Web Start'
               'alsa-lib: for basic sound support'
-              'gtk2: for the Gtk+ look and feel - desktop usage')
+              'gtk2: for the Gtk+ look and feel - desktop usage'
+              'java-openjfx: for JavaFX GUI components support')
   # TODO when adding IcedTea: 'giflib: for gif format support'
   # TODO when adding IcedTea: 'libpulse: for advanced sound support'
   provides=('java-runtime=8' 'java-runtime-openjdk=8')
