@@ -2,15 +2,16 @@ pkgbase = perl-wordpress-cli
 	pkgdesc = command line access to wordpress
 	pkgver = 1.04
 	pkgrel = 1
-	url = http://search.cpan.org/dist/WordPress-CLI
+	url = https://metacpan.org/release/WordPress-CLI
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl-date-manip>=5.48
 	depends = perl-getopt-std-strict>=1.01
+	depends = perl-leocharre-basename
 	depends = perl-leocharre-strings>=1.02
-	depends = perl-smart-comments>=0
-	depends = perl-string-shellquote>=0
+	depends = perl-smart-comments
+	depends = perl-string-shellquote
 	depends = perl-wordpress-xmlrpc>=1.23
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/WordPress-CLI-1.04.tar.gz
