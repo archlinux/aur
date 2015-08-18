@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=31.0.1889.99
+pkgver=31.0.1889.174
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
@@ -17,10 +17,9 @@ install=${pkgname}.install
 options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
-depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'alsa-lib' 'nss' 'ttf-font')
+depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'alsa-lib' 'nss' 'ttf-font' 'libnotify')
 optdepends=(
     'curl: opera crash reporter and autoupdate checker'
-    'libnotify: native desktop notifications'
 )
 arch=('x86_64')
 source_x86_64=(
@@ -32,7 +31,7 @@ source=(
 )
 sha256sums=('508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
-sha256sums_x86_64=('51dc961957cd1b7169c6922f5433feee2320300f7c52f96bf349fa478b2b9745')
+sha256sums_x86_64=('4459bfa8b4469fe2ef68373dfd61616919266c87a18125973afee60c06beaf29')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
