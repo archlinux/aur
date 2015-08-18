@@ -3,7 +3,7 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2015r24
-pkgrel=1
+pkgrel=2
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, and the web."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -21,7 +21,7 @@ sha256sums=('c47a29c0a00b613be0a8db907cc25bea259fb09a2a7b85c863f8f0efe98fe679'
 
 package() {
 	cd $srcdir
-	mv "xojo2015r2.3" "xojo$pkgver"
+	mv "xojo2015r2.4" "xojo$pkgver"
 	find . -name '.DS_Store' -exec rm {} \;
 	find "./xojo$pkgver/Extras" -type d \( -name 'OS X' -o -name 'Windows' -o -name 'Visual Studio*' -o -name 'Xcode' \) |
     xargs -rtl1 -I {} rm -r {}
