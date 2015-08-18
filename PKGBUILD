@@ -1,9 +1,9 @@
 # CPAN Name  : Data-UUID
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-data-uuid'
-pkgver='1.220'
+pkgver='1.221'
 pkgrel='1'
 pkgdesc="Globally/Universally Unique Identifiers (GUIDs/UUIDs)"
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
-url='http://search.cpan.org/dist/Data-UUID'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Data-UUID-1.220.tar.gz')
-md5sums=('3db849cb2ebedd969cb0090d91e39712')
-sha512sums=('6d4508cd37f06c549276c1021781a5cf81cb823eaad0152447e9515b9ecf4fb8c6d1c5bfe44eda3296adde6a50d5f6c435269eb5db6207f669d1e12b68fdf657')
-_distdir="Data-UUID-1.220"
+url='https://metacpan.org/release/Data-UUID'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Data-UUID-1.221.tar.gz')
+md5sums=('7619929e8fe205a7fb83bc1c29ecbf99')
+sha512sums=('fa40219890f9adeb486a7ff636603d8695d81765ee858e396130100aaba96b524d80eef76e0c06eac2086fe3bb2d26114d94459466d29ddc82a7a7fcb2f5adac')
+_distdir="Data-UUID-1.221"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
