@@ -3,8 +3,8 @@
 # Contributor: Adrián Pérez de Castro <adrian at perezdecastro dor org> PGP-Key: 91C559DBE4C9123B
 
 pkgname=rkt
-pkgver=0.7.0
-pkgrel=5
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -15,7 +15,7 @@ provides=('rkt')
 replaces=('rocket')
 conflicts=('rocket')
 source=("https://github.com/coreos/rkt/archive/v${pkgver}.tar.gz")
-sha256sums=('1e5996c9c26a69f107d9d4f8dd2a3e55ca3a9b8491ecbd9fe2dfe423c7c384ce')
+sha256sums=('c9eb0126b8ff2f059d7cedaab17ca73dce256f342092c9bf4a7ae20661f2a5aa')
 install="${pkgname}.install"
 
 prepare() {
