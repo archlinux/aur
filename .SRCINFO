@@ -1,7 +1,7 @@
 pkgbase = pam_kwallet-git
 	pkgdesc = PAM KWallet.
 	pkgver = r69.91ae142
-	pkgrel = 1
+	pkgrel = 4
 	url = http://quickgit.kde.org/?p=scratch/afiestas/pam-kwallet.git
 	arch = i686
 	arch = x86_64
