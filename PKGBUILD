@@ -12,7 +12,7 @@ optdepends=()
 source=('http://www.astro.com/ftp/swisseph/ephe/fixstars.cat')
 md5sums=('19d2486e8ba2abc9109692c403430f3f')
 
-build() {
+package() {
     install -d -m 755 $pkgdir/usr/share/swisseph/
     install -m 755 $srcdir/* $pkgdir/usr/share/swisseph/
 }
