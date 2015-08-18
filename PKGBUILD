@@ -1,7 +1,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-game-git
-pkgver=20150802
+pkgver=v0.20.r173.g29a073f
 pkgrel=1
 pkgdesc="Fantasy action RPG using the FLARE engine - Git version"
 url="http://www.flarerpg.org/"
@@ -11,31 +11,17 @@ makedepends=('git>=1.7.10-1' 'cmake')
 depends=('flare-engine-git')
 conflicts=('flare-game')
 replaces=('flare-game')
+source=("git://github.com/clintbellanger/flare-game.git")
+sha1sums=('SKIP')
 
-_gitroot="git://github.com/clintbellanger/"
-_gitname="flare-game"
-_repo="flare-game"
+pkgver() {
+    cd $srcdir/flare-engine
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd $srcdir
-	msg "Connecting to the GIT server..."
+    cd $srcdir/flare-game
 
-	if [[ -d $srcdir/$_repo ]] ; then
-		msg "Updating flare-game"
-		cd $_repo
-		msg "Removing build files..."
-		git clean -dfx
-		msg "Updating..."
-		git pull --no-tags
-		msg "Updating flare"
-	else
-		msg "Cloning..."
-		git clone $_gitroot$_repo --depth 1 --single-branch
-
-		msg "Clone done."
-	fi
-
-	cd $srcdir/$_repo
 	msg "Running cmake..."
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DDATADIR=share/flare
 	msg "Compiling..."
@@ -43,7 +29,7 @@ build() {
 }
 
 package() {
-	cd $srcdir/$_repo
+	cd $srcdir/flare-game
 	msg "Installing..."
 	make install DESTDIR=$pkgdir
 }
