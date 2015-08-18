@@ -2,7 +2,7 @@
 # Inspired by the netbeans-nightly PKGBUILD by Pavol Hluchy (Lopo) <lopo at losys dot eu>
 
 pkgname=openttd-opengfx-snapshot
-pkgver=0.5.1+s20141109
+pkgver=0.5.2+s20150519
 pkgrel=1
 pkgdesc='A free graphics set for openttd (latest snapshot release)'
 arch=('any')
@@ -27,16 +27,17 @@ pkgver() {
 prepare() {
     cd "${SRCDEST}"
     _snapshotnum="$(grep -Po '^NEWGRF_VERSION.*?:\K.*' custom_tags.txt)"
-    _file="opengfx-${_snapshotnum}.zip"
-    download_file "${_webroot}/${_file}"
+    _file="opengfx-v${_snapshotnum}"
+    msg2 "${_webroot}/${_file}.zip"
+    download_file "${_webroot}/${_file}.zip"
     
     cd "$srcdir"
-    extract_file "${_file}"
+    extract_file "${_file}.zip"
+    tar xvf "${_file}.tar"
+    mv -T "${_file}" opengfx
 }
 
 package() {
-    cd "${srcdir}"
-    tar xvf "opengfx.tar"
     cd opengfx
     install -d "${pkgdir}"/usr/share/openttd/data   
     install -m644 *.grf "${pkgdir}"/usr/share/openttd/data
