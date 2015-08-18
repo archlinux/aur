@@ -8,7 +8,7 @@ pkgbase = ccrtp
 	arch = x86_64
 	license = GPL
 	license = custom
-	depends = ucommon
+	depends = ucommon>=6.2.2
 	depends = libgcrypt
 	source = http://dev.gnutelephony.org/dist/tarballs/ccrtp-2.1.2.tar.gz
 	source = http://dev.gnutelephony.org/dist/tarballs/ccrtp-2.1.2.tar.gz.sig

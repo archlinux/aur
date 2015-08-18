@@ -11,7 +11,7 @@ pkgdesc="An implementation of RTP, the real-time transport protocol from the IET
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/ccrtp/"
 license=('GPL' 'custom')
-depends=('ucommon' 'libgcrypt')
+depends=('ucommon>=6.2.2' 'libgcrypt')
 install=$pkgname.install
 source=("http://dev.gnutelephony.org/dist/tarballs/$pkgname-$pkgver.tar.gz"{,.sig})
 md5sums=('e6792cbd8b705901c205a509bd7f812f'
