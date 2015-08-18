@@ -1,0 +1,9 @@
+[Unit]
+Description=Spreed WebRTC audio/video call and conferencing server
+
+[Service]
+ExecStart=/usr/bin/spreed-webrtc-server
+
+[Install]
+WantedBy=multi-user.target
+

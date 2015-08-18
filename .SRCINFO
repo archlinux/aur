@@ -1,0 +1,16 @@
+pkgbase = spreed-webrtc-server
+	pkgdesc = WebRTC audio/video call and conferencing server
+	pkgver = 0.24.8
+	pkgrel = 1
+	url = https://www.spreed.me
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	conflicts = spreed-webrtc-server-git
+	source = https://github.com/strukturag/spreed-webrtc/archive/v0.24.8.tar.gz
+	source = spreed-webrtc-server.service
+	sha1sums = 63276e8fd321e30d2b3c86ab79e0efd5df945ba4
+	sha1sums = 847ff91a7b1ae884f73289d386853977eb14a78d
+
+pkgname = spreed-webrtc-server
+
