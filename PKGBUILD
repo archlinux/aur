@@ -5,9 +5,9 @@
 #PKGEXT=.pkg.tar
 
 pkgname=clion
-pkgbuild=1.0.5
-pkgver=${pkgbuild}
-pkgrel=2
+pkgver=1.1.0
+_pkgver=1.1
+pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
 arch=('x86_64')
 options=(!strip)
@@ -20,31 +20,40 @@ optdepends=(
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
 )
-source=("https://download.jetbrains.com/cpp/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ca042146f68af6efbc5f2241c8b78b50a1844dd5f106e06809d8acb391f56c0f')
-noextract=("${pkgname}-${pkgver}.tar.gz")
+source=("https://download.jetbrains.com/cpp/${pkgname}-${_pkgver}.tar.gz")
+sha256sums=('81b657da4906f3ccb573e6e8ddee6f14006274016d391a38c25f9c07b612954d')
+noextract=("${pkgname}-${_pkgver}.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  bsdtar --strip-components 1 -xf "${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
+  bsdtar --strip-components 1 -xf "${pkgname}-${_pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
 
   # Uncomment to use system JRE, CMake and/or GDB instead of the bundled one(s)
   #rm -r "${pkgdir}/opt/${pkgname}/jre"
   #rm -r "${pkgdir}/opt/${pkgname}/bin/cmake"
   #rm -r "${pkgdir}/opt/${pkgname}/bin/gdb"
 
+  if [[ $CARCH = 'i686' ]]; then
+   rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
+   rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
+  fi
+  if [[ $CARCH = 'x86_64' ]]; then
+   rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so"
+   rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier"
+  fi
+
 (
 cat <<EOF
 [Desktop Entry]
-Version=${pkgver}
 Type=Application
-Name=Clion
-Exec="/usr/bin/${pkgname}" %f
-Icon=${pkgname}
-Comment=${pkgdesc}
+Version=1.0
+Name=CLion
 GenericName=${pkgname}
-Categories=Development;IDE;
+Comment=${pkgdesc}
+Icon=${pkgname}
+Exec="/usr/bin/${pkgname}" %f
 Terminal=false
+Categories=Development;IDE;
 StartupNotify=true
 StartupWMClass=jetbrains-${pkgname}
 EOF
@@ -57,7 +66,7 @@ EOF
 
   install -m 644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
-  ln -s "/opt/${pkgname}/bin/clion.svg"                     "${pkgdir}/usr/share/pixmaps/clion.svg"
+  ln -s "/opt/${pkgname}/bin/${pkgname}.svg"                     "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
   ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/opt/${pkgname}/bin/${pkgname}.sh"                 "${pkgdir}/usr/bin/${pkgname}"
 }
