@@ -1,0 +1,19 @@
+post_install() {
+    cat << EOF
+==> Make possible settimer.sh runs under root/sudo privileges without password
+     > run sudo visudo
+     > Append:
+Cmnd_Alias PVR_CMDS = /usr/share/kodi/addons/service.hts.pvrmanager/resources/lib/*.sh
+$<kodi user> ALL=NOPASSWD: PVR_CMDS
+
+==> Read https://github.com/Helly1206/service.hts.pvrmanager/blob/master/README.txt for more informations
+EOF
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+op=$1
+shift
+$op $*
