@@ -12,7 +12,7 @@ optdepends=()
 source=('http://www.astro.com/ftp/swisseph/ephe/archive_gzip/sweph_12.tar.gz')
 md5sums=('b5e23c2bba2c0d5d54d925f46e635d74')
 
-build() {
+package() {
     install -d -m 755 $pkgdir/usr/share/swisseph/
     install -m 755 $srcdir/*.se1 $pkgdir/usr/share/swisseph/
 }
