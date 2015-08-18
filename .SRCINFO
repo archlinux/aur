@@ -10,7 +10,7 @@ pkgbase = sshd_autoban
 	options = !strip
 	backup = etc/sshd_autoban/sshd_autoban.json
 	source = sshd_autoban-0.0.4.tar.gz
-	sha512sums = 94a24f3eda8f0850122b8b8489b4b7dbe84ae7247ec25d70e08774e1c7bbb2036c64b0e2b618f915b3f9f2cb853cadfcce1b2ffb53d17ac7fcd99cac1b03be1b
+	sha512sums = 4af94ab53ed72842b3aa229faae507587cea7260b959d0c7d4c142244eaf55011210cd29618685fc116deebf009d8ae59f0dd6e49e426372bb63c8101efa089e
 
 pkgname = sshd_autoban
 
