@@ -1,6 +1,6 @@
 pkgbase = git-annex-cabal
 	pkgdesc = manage files with git, without checking their contents into git (cabal sandbox build)
-	pkgver = 5.20150528
+	pkgver = 5.20150812
 	pkgrel = 1
 	url = http://git-annex.branchable.com/
 	arch = i686
@@ -23,11 +23,11 @@ pkgbase = git-annex-cabal
 	depends = openssh
 	depends = rsync
 	depends = util-linux
-	provides = git-annex=5.20150528
+	provides = git-annex=5.20150812
 	conflicts = git-annex-git
 	conflicts = git-annex
 	options = !makeflags
-	source = git-annex::git://git.kitenet.net/git-annex#tag=5.20150528
+	source = git-annex::git://git.kitenet.net/git-annex#tag=5.20150812
 	sha256sums = SKIP
 
 pkgname = git-annex-cabal
