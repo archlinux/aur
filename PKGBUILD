@@ -3,7 +3,7 @@
 
 _pkgname=repo
 pkgname=$_pkgname-git
-pkgver=v1.12.26.r7.g5d0c3a6
+pkgver=1.12.26.r7.g5d0c3a6
 pkgrel=1
 pkgdesc="Tool built on top of git to help manage many git repositories. Part of the Android project."
 arch=("any")
@@ -18,7 +18,7 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

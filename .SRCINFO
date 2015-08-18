@@ -1,6 +1,6 @@
 pkgbase = repo-git
 	pkgdesc = Tool built on top of git to help manage many git repositories. Part of the Android project.
-	pkgver = v1.12.22.17.g185307d
+	pkgver = 1.12.26.r7.g5d0c3a6
 	pkgrel = 1
 	url = https://source.android.com/source/developing.html
 	arch = any
