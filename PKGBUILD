@@ -1,42 +1,49 @@
 # Maintainer: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 
 pkgname=pam_kwallet-git
-pkgver=r58.49a5bc0
-pkgrel=2
+pkgver=r69.91ae142
+pkgrel=1
 pkgdesc="PAM KWallet."
 url="http://quickgit.kde.org/?p=scratch/afiestas/pam-kwallet.git"
 license=('LGPL')
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('pam' 'libgcrypt')
+depends=('pam' 'libgcrypt' 'socat')
 conflicts=('pam_kwallet-svn')
 groups=('kde')
 makedepends=('git' 'cmake' 'automoc4')
 provides=('pam_kwallet')
-source=('git://anongit.kde.org/scratch/afiestas/pam-kwallet.git')
+source=('git://anongit.kde.org/kwallet-pam')
 md5sums=('SKIP')
-#xinstall=kscreen-git.install
 
 pkgver() {
-  cd pam-kwallet
+  cd kwallet-pam
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  mkdir -p build
+  mkdir -p build-kde4
+  mkdir -p build-kde5
 }
 
 build() {
-  cd build
-
-  cmake ../pam-kwallet \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_LIBDIR=usr/lib \
-      -DQT_QMAKE_EXECUTABLE=qmake-qt4
+  pushd build-kde4
+  cmake ../kwallet-pam \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_LIBDIR=usr/lib \
+  -DKWALLET4=1
   make
+  popd
+
+  pushd build-kde5
+  cmake ../kwallet-pam \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_LIBDIR=usr/lib
+  make
+  popd
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  make -C build-kde4 DESTDIR="${pkgdir}" install
+  make -C build-kde5 DESTDIR="${pkgdir}" install
 }
