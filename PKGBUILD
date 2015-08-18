@@ -2,7 +2,7 @@
 
 pkgname=php-rql
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="RethinkDB driver for PHP"
 arch=(any)
 url="https://github.com/danielmewes/php-rql"
@@ -26,5 +26,6 @@ package() {
     rm composer.json README.md 
     rm -r tests docs
     echo 'move files...'
+    mkdir -p "${pkgdir}"/usr/include/php/
     cp -a src/ "${pkgdir}"/usr/include/php/
 }
