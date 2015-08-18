@@ -1,7 +1,7 @@
 pkgbase = pybgsetter
-	pkgdesc = Multi-backend (hsetroot, Esetroot, habak, feh) User Friendly GUI/CLI tool to set desktop wallpaper
+	pkgdesc = Multi-backend GUI/CLI tool to set the desktop wallpaper.
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://bbs.archlinux.org/viewtopic.php?id=88997
 	install = pybgsetter.install
 	arch = any
@@ -13,9 +13,8 @@ pkgbase = pybgsetter
 	optdepends = esetroot: to activate support for Esetroot
 	optdepends = habak: to activate support for Habak
 	optdepends = feh: to activate support for Feh
-	source = pybgsetter-0.5.tar.bz2
-	sha256sums = 7b430784ce0e7f3d7508ac2bcba2b422252270de82c913294628bb4c110cbc4b
-	sha256sums = ce72846ec5d40061736ebc977bedeef8002c0504bb08efe3b85b127c13b951da
+	source = git+https://github.com/stefanhusmann/pybgsetter
+	sha256sums = SKIP
 
 pkgname = pybgsetter
 
