@@ -1,0 +1,22 @@
+pkgbase = perl-path-isdev
+	pkgdesc = Determine if a given Path resembles a development source tree
+	pkgver = 1.001002
+	pkgrel = 1
+	url = https://metacpan.org/release/Path-IsDev
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	depends = perl-class-tiny>=0.010
+	depends = perl-file-homedir
+	depends = perl-module-runtime
+	depends = perl-path-tiny>=0.004
+	depends = perl-role-tiny
+	depends = perl-sub-exporter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KE/KENTNL/Path-IsDev-1.001002.tar.gz
+	md5sums = 8907c626bb16558151f7dc11f1c47719
+	sha512sums = fb9c24ad02899c501001615c315a62b620e243f2ad8c17acebce5571b0918a18c61549bd637c6d68ec2ebc9e739921c8168d99ef84bc8373f6c3c8726ac84125
+
+pkgname = perl-path-isdev
+
