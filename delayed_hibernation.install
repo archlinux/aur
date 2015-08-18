@@ -1,0 +1,14 @@
+post_install() {
+cat << EOF
+
+    Be sure to have configured hibernation first! Read the wiki for more info:
+        https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation
+    
+    Check '/etc/delayed_hibernation.conf' for further configuration.
+
+EOF
+}
+
+post_upgrade() {
+        post_install
+}
