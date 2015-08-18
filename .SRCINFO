@@ -1,11 +1,11 @@
 pkgbase = gam
-	pkgdesc = CLI frontend to Google Apps Provisioning API
+	pkgdesc = Command line tool for Google Apps Administrators to manage domain and user settings
 	pkgver = 3.51
 	pkgrel = 1
 	url = http://code.google.com/p/google-apps-manager/
 	arch = any
 	license = Apache
-	makedepends = unzip
+	makedepends = tar gzip
 	depends = python2
 	noextract = v3.51.tar.gz
 	source = https://github.com/jay0lee/GAM/archive/v3.51.tar.gz
