@@ -1,7 +1,7 @@
 [Unit]
 Description=Mailcatcher SMTP Activation Socket
-Requires=mailcatcher.service
-After=network.target mailcatcher.service
+Wants=mailcatcher.service
+After=network.target
 
 [Socket]
 ListenStream=25

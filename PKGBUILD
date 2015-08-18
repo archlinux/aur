@@ -27,7 +27,7 @@ md5sums=('bdeb5656e0931d1b211b52aa0f9e31f5'
          'cf357f9859b6f24210d07ccce7313879'
          'd21981c2877a578555bcd61c0c6bc718'
          'a8a07564d971bc1df3cc786cda27c333'
-         '2c1d5788aff53e89600f037b523cab69'
+         '99cb313118e735cd021e476111d9cd62'
          '8e57104285979856653f99e5564b613d')
 noextract=("$_pkgname-$pkgver.gem")
 
