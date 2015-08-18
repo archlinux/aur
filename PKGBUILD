@@ -1,5 +1,5 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-wordpress-xmlrpc'
 pkgver='1.23'
@@ -8,9 +8,9 @@ pkgdesc="api to wordpress xml rpc calls"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-leocharre-cli2>=0' 'perl-leocharre-debug>=0' 'perl-soap-lite>=0' 'perl-smart-comments>=0' 'perl-xmlrpc-lite>=0' 'perl-yaml>=0')
+depends=('perl-leocharre-cli2' 'perl-leocharre-debug' 'perl-soap-lite' 'perl-smart-comments' 'perl-xmlrpc-lite' 'perl-yaml')
 makedepends=()
-url='http://search.cpan.org/dist/WordPress-XMLRPC'
+url='https://metacpan.org/release/WordPress-XMLRPC'
 source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/WordPress-XMLRPC-1.23.tar.gz')
 md5sums=('cdbf3f7002b2fb44e69895b805b3c24c')
 sha512sums=('f1fcd73ac4550680f5e9591c716eb2322facdf235b8515de8dd1846693d372a20f3fe495838a6b847a7d46c57d8db27601c94b04e59e76fcb0830772e4f9ed2a')
