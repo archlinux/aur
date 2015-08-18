@@ -45,7 +45,7 @@ package() {
 		'x86_64')
 			mkdir -p "${pkgdir}/usr/lib32"
 			ln -s '/usr/lib32/libudev.so' "${pkgdir}/usr/lib32/libudev.so.0"
-			tar -xJf 'lib32-nm09810.tar.xz' -C "${pkgdir}" --no-same-owner
+			bsdtar -xJf 'lib32-nm09810.tar.xz' -C "${pkgdir}" --no-same-owner
 			;;
 	esac
 
