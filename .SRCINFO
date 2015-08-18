@@ -1,0 +1,16 @@
+pkgbase = android-platform-23
+	pkgdesc = Android SDK Platform, API-23
+	pkgver = 6.0_r01
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	depends = android-sdk-platform-tools
+	conflicts = android-platform==23
+	options = !strip
+	source = http://dl.google.com/android/repository/android-23_r01.zip
+	sha1sums = cbccca8d3127e894845556ce999b28281de541bd
+
+pkgname = android-platform-23
+
