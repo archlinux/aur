@@ -1,11 +1,11 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r171.909bae0
-pkgrel=2
+pkgver=r223.4b64e48
+pkgrel=1
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
-makedepends=("cmake" "git")
+makedepends=("cmake" "git" "asciidoc")
 depends=("wlc-git")
 optdepends=(
 	"xorg-server-xwayland: running xorg windows under sway"
