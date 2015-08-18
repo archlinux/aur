@@ -3,7 +3,7 @@
 
 pkgname=sentry
 pkgver=7.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
@@ -13,16 +13,19 @@ depends=(
     redis
 )
 makedepends=(python2-pip python2-setuptools python2-virtualenv)
+optdepends=(
+    'mariadb: MySQL backend support'
+    'postgresql: PostgreSQL backend support'
+    'sqlite: SQLite backend support'
+)
 options=(!strip)
 install="${pkgname}.install"
 source=(
-    "https://pypi.python.org/packages/source/s/${pkgname}/${pkgname}-${pkgver}.tar.gz"
     "${pkgname}.install"
     "sentry.service"
     "sentry-celery.service"
 )
 md5sums=(
-    573898542b801d265d1b84ce99a44ec7 # sentry tarball
     8aab776f3d428c417f51522c256b5aeb # sentry.install
     8d1d8d166a88bc89ad2265fd67ab3523 # sentry.service
     78dd3e18109c2bf92f7f884de0237781 # sentry-celery.service
@@ -35,18 +38,12 @@ package () {
 
     source "${pkgdir}/opt/sentry/bin/activate"
 
-    # Workaround for circumstances where cssutils may not be installed
-    # into the virtualenv at the correct version.
-    "${pkgdir}/opt/sentry/bin/pip" install "cssutils>=0.9.9,<0.10.0"
+    # Begin Sentry installation for our specific version via PyPI. This
+    # guarantees we'll grab all of the appropriate dependencies and
+    # automates the process.
+    "${pkgdir}/opt/sentry/bin/pip" install "sentry==${pkgver}"
 
-    # Recent versions of Sentry rely on pytest to be installed as part
-    # of the package dependencies. Unfortunately, it doesn't install
-    # correctly inside a virtualenv. Preload it here.
-    "${pkgdir}/opt/sentry/bin/pip" install "pytest"
-
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    "${pkgdir}/opt/sentry/bin/python2" setup.py install --optimize=1
-
+    # Make certain the virtualenv is relocatable.
     virtualenv2 --relocatable "${pkgdir}/opt/sentry"
     sed -i "s#${pkgdir}##" "${pkgdir}/opt/sentry/bin/activate"
 
@@ -58,7 +55,6 @@ package () {
     # them. :) More information: http://en.wikipedia.org/wiki/.DS_Store
     find "${pkgdir}" -name '.DS_Store' -delete
 
-    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm0644 "${srcdir}/sentry.service" "${pkgdir}/usr/lib/systemd/system/sentry.service"
     install -Dm0644 "${srcdir}/sentry-celery.service" "${pkgdir}/usr/lib/systemd/system/sentry-celery.service"
 
