@@ -1,0 +1,16 @@
+pkgbase = sinac
+	pkgdesc = A cleaner/simpler alternative to xautolock for screen locking.
+	pkgver = 0.1.2
+	pkgrel = 4
+	url = http://www.suckless.org/pipermail/dwm/2007-December/004691.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xproto
+	makedepends = scrnsaverproto
+	depends = libxss
+	source = sinac.c
+	md5sums = d7d3642a880636015bd507edf2f04ca2
+
+pkgname = sinac
+
