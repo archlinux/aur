@@ -11,7 +11,6 @@ url=('https://github.com/winged/worklog')
 depends=('python' 'sqlite')
 provides=('worklog')
 conflicts=()
-#makedepends=('python2-setuptools')
 optdepends=()
 
 source=("$pkgname::git://github.com/winged/worklog.git")
