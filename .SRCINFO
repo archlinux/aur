@@ -11,14 +11,16 @@ pkgbase = seafile-shared
 	license = GPL
 	makedepends = vala
 	makedepends = intltool
-	depends = ccnet>=1.4.2
+	depends = ccnet>=4.4.2
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	depends = fuse
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/haiwen/seafile/archive/v4.3.4.tar.gz
+	source = seafile-v4.3.4.tar.gz::https://github.com/haiwen/seafile/archive/v4.3.4.tar.gz
+	source = libseafile.in.patch
 	sha256sums = 572b8d20620cabbe12464acb14694bf6d1113b019776f23c7834e0ac157fc360
+	sha256sums = a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076
 
 pkgname = seafile-shared
 
