@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o pipefail
+set -o nounset
+
+cd /usr/share/3dgame/
+mkdir -p ~/.config/3dgame/
+for file in *; do
+  if [ ! -e ~/.config/3dgame/"$file" ]; then
+    ln -s /usr/share/3dgame/"$file" ~/.config/3dgame/"$file"
+  fi
+done
+cd ~/.config/3dgame/
+/usr/lib/3dgame/3dgame

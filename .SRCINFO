@@ -1,0 +1,23 @@
+pkgbase = 3dgame-git
+	pkgdesc = A voxel game proof-of-concept
+	pkgver = 20150818
+	pkgrel = 1
+	url = https://github.com/speedy-consoles/3dgamecpp
+	arch = x86
+	arch = x86_64
+	license = none
+	depends = boost-libs
+	depends = ftgl
+	depends = glew
+	depends = glu
+	depends = libgl
+	depends = log4cxx
+	depends = sdl2
+	depends = sdl2_image
+	source = git://github.com/speedy-consoles/3dgamecpp
+	source = 3dgame
+	sha256sums = SKIP
+	sha256sums = 7ff10ee8a254e8c69f17e26b73749721d9a81f5081c6163c2ae8dcf5858d2997
+
+pkgname = 3dgame-git
+
