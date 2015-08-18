@@ -1,0 +1,14 @@
+pkgbase = android-sources-23
+	pkgdesc = Android SDK Sources, API-23
+	pkgver = 6.0_r01
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	conflicts = android-sources==23
+	options = !strip
+	source = http://dl.google.com/android/repository/sources-23_r01.zip
+	sha1sums = b0f15da2762b42f543c5e364c2b15b198cc99cc2
+
+pkgname = android-sources-23
+
