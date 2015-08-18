@@ -1,7 +1,7 @@
 pkgbase = hrpsys-base
 	pkgdesc = Basic RT components and utilities to control robots using OpenRTM
 	pkgver = 315.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fkanehiro/hrpsys-base
 	arch = i686
 	arch = x86_64

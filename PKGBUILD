@@ -2,7 +2,7 @@
 
 pkgname=hrpsys-base
 pkgver=315.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic RT components and utilities to control robots using OpenRTM"
 arch=('i686' 'x86_64')
 url="https://github.com/fkanehiro/hrpsys-base"
@@ -23,6 +23,7 @@ build() {
   find . -type f -exec sed -i 's|include/qhull/qhull.h|include/libqhull/libqhull.h|g' {} \;
 
   find . -type f -exec sed -i 's|COMMAND python -c|COMMAND python2 -c|g' {} \;
+  find . -type f -exec sed -i 's|dist-packages|site-packages|g' {} \;
 
   # Create build directory
   mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
