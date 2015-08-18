@@ -16,7 +16,7 @@
 #define	HDF5lib	-lhdf5_hl -lhdf5 -lsz -lz
 
 #define LibSearch -L/usr/lib
-#define IncSearch -I/usr/include -I/usr/include/cairo -I/usr/include/curl -I/usr/include/X11 -I/usr/include/libpng14 -I/usr/include/freetype2/freetype -I/usr/include/freetype2 -I/usr/include/udunits2  -I/usr/include/gdal -I/usr/include/rx 
+#define IncSearch -I/usr/include -I/usr/include/cairo -I/usr/include/curl -I/usr/include/X11 -I/usr/include/libpng14 -I/usr/include/freetype2/freetype -I/usr/include/freetype2 -I/usr/include/udunits2  -I/usr/include/gdal -I/usr/include/rx -I/usr/include/Xm 
 
 #define BuildCAIRO 1
 #define BuildGDAL 1
