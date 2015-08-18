@@ -15,11 +15,11 @@ backup=('etc/btsync.conf')
 optdepends=("btsync-autoconfig: Auto-create users' config files if needed") 
 conflicts=('btsync-1.4')
 source=(btsync.service btsync_user.service btsync.conf)
-source_arm=("https://download-cdn.getsyncapp.com/${pkgver}/linux-arm/BitTorrent-Sync_arm.tar.gz")
-source_armv6h=("https://download-cdn.getsyncapp.com/${pkgver}/linux-arm/BitTorrent-Sync_arm.tar.gz")
-source_armv7h=("https://download-cdn.getsyncapp.com/${pkgver}/linux-arm/BitTorrent-Sync_arm.tar.gz")
-source_i686=("https://download-cdn.getsyncapp.com/${pkgver}/linux-i386/BitTorrent-Sync_i386.tar.gz")
-source_x86_64=("https://download-cdn.getsyncapp.com/${pkgver}/linux-x64/BitTorrent-Sync_x64.tar.gz")
+source_arm=("https://download-cdn.getsync.com/${pkgver}/linux-arm/BitTorrent-Sync_arm.tar.gz")
+source_armv6h=("https://download-cdn.getsync.com/${pkgver}/linux-arm/BitTorrent-Sync_arm.tar.gz")
+source_armv7h=("https://download-cdn.getsync.com/${pkgver}/linux-arm/BitTorrent-Sync_arm.tar.gz")
+source_i686=("https://download-cdn.getsync.com/${pkgver}/linux-i386/BitTorrent-Sync_i386.tar.gz")
+source_x86_64=("https://download-cdn.getsync.com/${pkgver}/linux-x64/BitTorrent-Sync_x64.tar.gz")
 sha1sums=('05038b03a673dd0207b2758a2e01db5d28c409d1'
           'd30deb7e41ba1d163b4a5e442b8d8118758d312a'
           'bf7d6bd7ffe2d23cce51a51e92fac3b82a7c87bb')
@@ -28,9 +28,6 @@ sha1sums_x86_64=('4ee51168ae9859b0d1416721ffc395eb2312035e')
 sha1sums_arm=('7d0be9ddf56afcf75292da2e3ea170934a898703')
 sha1sums_armv6h=('7d0be9ddf56afcf75292da2e3ea170934a898703')
 sha1sums_armv7h=('7d0be9ddf56afcf75292da2e3ea170934a898703')
-
-# Moronic server
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 package() {
 	# install main binary
