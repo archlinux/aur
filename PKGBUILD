@@ -1,6 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=vicare-scheme  
-pkgver=0.3d7
+pkgver=0.4d0pre1
+_pkgver=0.4d0
 pkgrel=1
 pkgdesc="R6RS scheme implementation"
 url="http://marcomaggi.github.io/vicare.html"
@@ -8,14 +9,14 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gmp')
 install=$pkgname.install
-source=(http://sourceforge.net/projects/$pkgname/files/0.3/$pkgname-$pkgver.tar.xz)
-md5sums=('59e9103da8a87e1185a2681443f58c71')
+source=("https://bitbucket.org/marcomaggi/$pkgname/downloads/$pkgname-${pkgver}.tar.xz")
+md5sums=('fd7dcfc1189a6c2636d606f86ed6f0bd')
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  LDFLAGS="-Wl,-z,noexecstack" ./configure --prefix=/usr --libexecdir=/usr/lib
+  cd $srcdir/$pkgname-${_pkgver}
+  ./configure --prefix=/usr --libexecdir=/usr/lib
   make 
 }
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname-${_pkgver}
   make DESTDIR=$pkgdir install
 }
