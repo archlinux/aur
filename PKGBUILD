@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 checkdepends=('perl-test-fatal>=0.003')
-url='http://search.cpan.org/dist/Role-Tiny'
+url='http://search.mcpan.org/dist/Role-Tiny'
 source=('http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/Role-Tiny-2.000000.tar.gz')
 md5sums=('1005f7d427590aac51b1e734b8a2febc')
 sha512sums=('afa256d6a5882e7a466294fb0b24bad31fbb5c28e080cd072e704a05b15b702aabe3deb16deddedc892450345c06e2c5cbf0acbaf66432b3982fd481a92db40f')
