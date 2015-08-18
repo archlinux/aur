@@ -1,7 +1,7 @@
 pkgbase = perl-webservice-linode
 	pkgdesc = Perl Interface to the Linode.com API
-	pkgver = 0.19
-	pkgrel = 4
+	pkgver = 0.28
+	pkgrel = 1
 	url = http://search.cpan.org/~mikegrb/WebService-Linode/
 	arch = any
 	license = GPL1
@@ -9,7 +9,7 @@ pkgbase = perl-webservice-linode
 	makedepends = perl-module-build-tiny
 	depends = perl-json
 	depends = perl-lwp-protocol-https
-	source = perl-webservice-linode::git+https://github.com/mikegrb/WebService-Linode.git#tag=0.19
+	source = perl-webservice-linode::git+https://github.com/mikegrb/WebService-Linode.git#tag=0.28
 	sha256sums = SKIP
 
 pkgname = perl-webservice-linode

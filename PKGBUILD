@@ -3,8 +3,8 @@
 # Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
 
 pkgname=perl-webservice-linode
-pkgver=0.19
-pkgrel=4
+pkgver=0.28
+pkgrel=1
 pkgdesc="Perl Interface to the Linode.com API"
 url="http://search.cpan.org/~mikegrb/WebService-Linode/"
 license=('GPL1')
