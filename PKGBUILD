@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-b-utils'
-pkgver='0.25'
+pkgver='0.27'
 pkgrel='1'
 pkgdesc="Helper functions for op tree manipulation"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-task-weaken' 'perl>=5.6.0')
-makedepends=('perl-extutils-depends>=0.301')
-url='http://search.mcpan.org/dist/B-Utils'
-source=('http://search.mcpan.org/CPAN/authors/id/J/JJ/JJORE/B-Utils-0.25.tar.gz')
-md5sums=('a45b286d9a0281c98416f2bdf689b800')
-sha512sums=('9a198f400d0a138c73a1d52f69e58b3a9100bb0aa4f851b9cec1f54cc2f9cb7e65c67fcad0495deeaf1ad427862b8135d262c46a7945e7cc26ee6a7a879e2ad7')
-_distdir="B-Utils-0.25"
+depends=('perl-task-weaken' 'perl>=5.006')
+makedepends=()
+url='https://metacpan.org/release/B-Utils'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/B-Utils-0.27.tar.gz')
+md5sums=('340d6461afcec016ce6d0a0ba27290ba')
+sha512sums=('a896476f59a424fa9062c5dfe6431493c020e51746fa7f7b4c7fcdb109d1c0fa252292b891263d676884f064db95f16958a5d2ed5981dc5997436dced6579e74')
+_distdir="B-Utils-0.27"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
