@@ -2,7 +2,7 @@
 
 pkgname=sshd_autoban
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A ssh autoban for fast and slow brute force attack"
 arch=('any')
 url="https://github.com/Chipsterjulien/go-sshd_autoban"
@@ -61,4 +61,4 @@ package() {
 }
 
 
-sha512sums=('b0a3e30163c9995458696e3c39f8797a128f00b8bd0d05e570fbeb34b7c9992600cfecef3e9b37583dcbdf8c06344867c0a4e7a50f32b91df688b085a35e181c')
+sha512sums=('1e1e6d6948dd1642e627cb8157e8f37b2e2f33d5ef7624d345ce27a54206c77c6f0a31df9e659e2c8235d03217615cc7c99cc2c450fb23d20f2ed1bdfce8eeb6')
