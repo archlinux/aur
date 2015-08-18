@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='http://quickgit.kde.org/?p=plasma-pa.git'
 license=('LGPL')
 depends=('pulseaudio' 'plasma-workspace')
-makedepends=('extra-cmake-modules' 'git')
+makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 provides=('plasma-volume-control' 'plasma-pa')
 conflicts=('plasma-volume-control' 'plasma-volume-control-git' 'plasma-pa')
 source=('git://anongit.kde.org/plasma-pa.git')

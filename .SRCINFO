@@ -8,6 +8,7 @@ pkgbase = plasma-pa-git
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = kdoctools
 	depends = pulseaudio
 	depends = plasma-workspace
 	provides = plasma-volume-control
