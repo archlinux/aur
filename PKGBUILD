@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=eade2fe14249abd0f134e6aa17508bb14072439a # lastest commit 20150731
+_git=ca8a010a01800dba756ffbc33e5b7e4497f64f32 # lastest commit 20150731
 _repo=papirus-pack-kde
 pkgname=libreoffice-papirus-theme
 pkgver=20150821
@@ -12,7 +12,7 @@ license=('CCPL:by-sa')
 options=('!strip')
 depends=('libreoffice')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('cefe9895346cfdcb9ce1e3000e09cb74ed96208f4ee369cbde75859377971bc8')
+sha256sums=('b254dd75c57993307b9b16f2347dd5a220821acf4ad76cb3d09d0db7c9f35733')
 
 package() {
     install -d ${pkgdir}/usr/lib/libreoffice/share/config
