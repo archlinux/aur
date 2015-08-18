@@ -1,5 +1,5 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-string-prettify'
 pkgver='1.04'
@@ -8,9 +8,9 @@ pkgdesc="subs to cleanup a filename and or garble for human eyes"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
+depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/String-Prettify'
+url='https://metacpan.org/release/String-Prettify'
 source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/String-Prettify-1.04.tar.gz')
 md5sums=('e0e71f7035368b9f5dfded2bf89ff279')
 sha512sums=('5b14916e6888ff00838a63a78dafc3e6cd339d0c5e7c8a420952e6c60c4f5a2db70e1c1c1be1cb8abd90c3137fe7004ac00f709113f9c5f6e1c3fa1d8d28276d')
