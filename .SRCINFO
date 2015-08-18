@@ -1,0 +1,15 @@
+pkgbase = nfrotz
+	pkgdesc = Z-machine interpreter for playing Interactive Fiction games, with support for unicode
+	pkgver = 0.3.3
+	pkgrel = 2
+	url = http://www.ifarchive.org/indexes/if-archiveXinfocomXinterpreters.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = glibc
+	source = http://www.ifarchive.org/if-archive/infocom/interpreters/frotz/nfrotz-0.3.3.tgz
+	md5sums = 78e0cafcb30b1539629ea5f5b8a61dbf
+
+pkgname = nfrotz
+
