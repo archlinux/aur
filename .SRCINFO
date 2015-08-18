@@ -12,7 +12,9 @@ pkgbase = mingw-w64-freeimage
 	options = !buildflags
 	options = staticlibs
 	source = http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage3170.zip
+	source = gcc5.patch
 	md5sums = 459e15f0ec75d6efa3c7bd63277ead86
+	md5sums = ea0a75f431a09ce8fbd539bb9a969679
 
 pkgname = mingw-w64-freeimage
 
