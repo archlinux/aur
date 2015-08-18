@@ -1,0 +1,7 @@
+makedepends+=('git')
+source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+md5sums+=('SKIP')
+provides+=($_gitname)
+conflicts+=($_gitname)
+
+# vim: filetype=sh
