@@ -1,7 +1,7 @@
 pkgbase = gam
-	pkgdesc = Command line tool for Google Apps Administrators to manage domain and user settings
+	pkgdesc = Command line tool for Google Apps Administrators to manage domain and user settings; patched for managed installation
 	pkgver = 3.51
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/google-apps-manager/
 	arch = any
 	license = Apache
@@ -9,7 +9,9 @@ pkgbase = gam
 	depends = python2
 	noextract = v3.51.tar.gz
 	source = https://github.com/jay0lee/GAM/archive/v3.51.tar.gz
+	source = client_secrets.patch
 	md5sums = 0ab658cb70b375a4634d477edcd02123
+	md5sums = b9f182cf06a9a058c7866a6930aeb755
 
 pkgname = gam
 
