@@ -1,5 +1,5 @@
 post_install() {
-    ln -sf /opt/peazip-x64/peazip /usr/bin/peazip
+    ln -sf /opt/peazip-gtk2-portable/peazip /usr/bin/peazip
     update-desktop-database -q
 }
 

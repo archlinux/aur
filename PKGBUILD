@@ -50,7 +50,7 @@ package() {
                      "$pkgdir$HOME/.local/share/nautilus/scripts/PeaZip/Extract Here"
       install -Dm755 "./nautilus-scripts/Archiving/PeaZip/Extract to Folder"\
                      "$pkgdir$HOME/.local/share/nautilus/scripts/PeaZip/Extract to Folder"
-      install -Dm777 "./nautilus-scripts/Archiving/PeaZip/Open Archive"\
+      install -Dm755 "./nautilus-scripts/Archiving/PeaZip/Open Archive"\
                      "$pkgdir$HOME/.local/share/nautilus/scripts/PeaZip/Open Archive"
       chown -R --reference="$pkgdir$HOME/.local/share/nautilus/scripts"\
                            "$pkgdir$HOME/.local/share/nautilus/scripts/PeaZip"
