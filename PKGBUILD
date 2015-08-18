@@ -46,7 +46,7 @@ md5sums=('SKIP'
          'bd04a0699b80c8042e1cf63a7e0e4222'
          '0a2bbaf74c7160ba33876dcc2f050f14'
          'b09d4632ba18f643b9f1ec8ccf1def9a'
-         '8ae8f5ea7806b451773c642f087a47a6'
+         '23e215888c8c45cfc6b816b02f473c1b'
          '1258acfc82c50a8f452ace87fef0b416')
 
 pkgver() {
