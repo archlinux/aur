@@ -1,7 +1,7 @@
 pkgbase = mediatomb
 	pkgdesc = Free UPnP/DLNA media server
 	pkgver = 0.12.1
-	pkgrel = 12
+	pkgrel = 13
 	url = http://mediatomb.cc/
 	install = mediatomb.install
 	arch = i686
@@ -30,17 +30,17 @@ pkgbase = mediatomb
 	source = libmp4v2_191_p497.patch
 	source = libavformat.patch
 	source = symlinks.patch
-	md5sums = e927dd5dc52d3cfcebd8ca1af6f0d3c2
-	md5sums = 951b133930436a0ffc1c9b0c9f8145a3
-	md5sums = 27e796979c7778c3876b9a16452eb6e4
-	md5sums = 6503695608c811133db647e0991698eb
-	md5sums = 0ae34c0d73b76e3d215887834c3c08cf
-	md5sums = d9e02a9956eecf5ff645bddf6dac0331
-	md5sums = a7509bdaa0301ccbd9e564f727c1dd22
-	md5sums = 88144653ff2dc602bcb737f59b2421ce
-	md5sums = 915fa5b3b72649454009511a152b6102
-	md5sums = 932d29fbaaea6f1715bb6da456fb5f44
-	md5sums = e1de449736dab88cbb7e10e6bb63ff0d
+	sha256sums = 31163c34a7b9d1c9735181737cb31306f29f1f2a0335fb4f53ecccf8f62f11cd
+	sha256sums = e46de674e49aa85116a8ff127908f7bac21198ce7625404004b8b7832eccd3f4
+	sha256sums = 9c917f0d6e568ce0ad77c0ed17e4bbaabc0e7a1c0a3e4772b786fb1565db9768
+	sha256sums = 70e4a4b89cef9a7f6f5f800e1793a6cb807f52b39e5a17d0a91356608b95e62d
+	sha256sums = 0c02a20032f0c296800b1bb9644638970c2dedbc5ab7141d66a637235e9da6ce
+	sha256sums = 2cd8f5628c3a38b290526f008bae351b90211825f86e5959bf95f140748de574
+	sha256sums = d9a3062858900d32b977f0d50d168fd7d36785b6ecc038c019e661e27f7b1c17
+	sha256sums = c6523e8bf5e2da89b7475d6777ef9bffe7d089752ef2f7b27b5e39a4130fb0ff
+	sha256sums = d39c2f9aab051c5447461718fd0ec72cf5982f6c920a4a985a50831f34babe84
+	sha256sums = 76b11706d70ed8f5e157d96ca441c90c46c42176102fcb651b4ab1102b61bfee
+	sha256sums = 72f7532d7cd827ab655df652d2912175739fe16d2b1ad989d987a0b147a1d2e8
 
 pkgname = mediatomb
 
