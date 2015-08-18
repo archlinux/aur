@@ -1,0 +1,15 @@
+--- a/gpgwrap/Makefile
++++ b/gpgwrap/Makefile
+@@ -1,9 +1,11 @@
+ MAKE=make
+ 
+-.PHONY: all clean
++.PHONY: all clean install
+ 
+ all:
+ 	cd src && ${MAKE} all DIET="${DIET}"
+ 
++install:
++
+ clean:
+ 	cd src && ${MAKE} clean

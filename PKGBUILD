@@ -1,7 +1,7 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname=signing-party
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="Collection for all kinds of pgp related things, including signing scripts, party preparation scripts etc."
 url="http://pgp-tools.alioth.debian.org/"
 arch=(i686 x86_64)
@@ -15,19 +15,26 @@ depends=(perl-class-methodmaker
 	 perl-term-readkey
 	 perl-text-template
 	 qprint)
-makedepends=(subversion)
+makedepends=(subversion
+             quilt)
 optdepends=('python: keyart support'
             'qrencode: QR code support in gpg-key2latex'
             'texlive-core: QR code support in gpg-key2latex')
 conflicts=(caff mutt sig2dot signing-party-svn)
 install=$pkgname.install
-source=('http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-party_2.0.orig.tar.gz'
-        'gpgwrap_makefile.diff')
-sha256sums=('cc23e48b2f06dee7cbf7b80ee4dfbed69908cb4584d3d5fa29ed7b2f962ec16e'
-            '696da094676e7cea7562b8c97349d5ef49a6e189bd05736917b54bb505141b9d')
+source=("http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-party_$pkgver.orig.tar.gz"
+        "series"
+        "gpgwrap_makefile.patch")
+
+sha256sums=('ca87849a74ea4c271e92422bfe6b1be2bfe2c2de9a723bf11aa088e4ea88965d'
+            'ca79e24dfd09a261e32a51382c81340b47fee0b0d34287adb4c0974eb33d06ea'
+            '2816acc843c914b60110c7829cf44eb350f140df664998f3837d2731028c2f34')
 
 prepare() {
-  patch -p1 -d $srcdir -i gpgwrap_makefile.diff
+  mkdir patches
+  cp series patches/
+  cp gpgwrap_makefile.patch patches/
+  quilt push -a
 }
 
 build() {
