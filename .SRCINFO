@@ -1,0 +1,23 @@
+pkgbase = zyre-git
+	pkgdesc = Zyre - an open-source framework for proximity-based peer-to-peer applications (ZeroMQ)
+	pkgver = 20161108
+	pkgrel = 1
+	url = https://github.com/zeromq/zyre
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	depends = czmq-git
+	provides = zyre
+	conflicts = zyre
+	source = git+https://github.com/zeromq/zyre
+	sha256sums = SKIP
+
+pkgname = zyre-git
+
