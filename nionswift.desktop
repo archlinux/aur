@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=NionSwift
+Icon=nionswift
+GenericName=Nion Swift Capture and Analysis Platform
+Comment=Powerful Python based scripting and extension based platform for Microscopists.
+Exec=/usr/bin/NionSwift
+Terminal=true
+Type=Application
+Categories=Development;IDE;
+StartupNotify=true

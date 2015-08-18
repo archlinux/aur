@@ -1,0 +1,18 @@
+pkgbase = nion-swift
+	pkgdesc = Program developed by Nion Co. for interfacing with electron microscopes and for data analysis.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://nion.com/swift/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = qt5-svg
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	source = nion-swift.zip::http://a.nion.com/swift/files/NionSwift_Linux_x64_0.5.1.zip
+	md5sums = SKIP
+
+pkgname = nion-swift
+
