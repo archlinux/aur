@@ -2,7 +2,7 @@
 # Contributor: Army
 _pkgname=vim-latexsuite
 pkgname=$_pkgname-git
-pkgver=0.r817.392577f
+pkgver=0.r835.ae5a9cb
 pkgrel=1
 epoch=1
 pkgdesc="Provides a comprehensive set of tools to view, edit, and compile LaTeX documents within Vim. Also provides macros to speed up the creation of LaTeX documents."
