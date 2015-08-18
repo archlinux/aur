@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=raxml-mpi
-pkgver=8.2.0
+pkgver=8.2.3
 pkgrel=1
 pkgdesc="Randomized Axelerated Maximum Likelihood"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=(raxml)
 install='raxml.install'
 source=("raxml-$pkgver.tar.gz::https://github.com/stamatak/standard-RAxML/archive/v$pkgver.tar.gz"
         'raxml.install')
-md5sums=('c0462dd734e57b8f007df60067add6ec'
+md5sums=('71cda55651f89ea89fa7f5a2dd67f5b6'
          '8192c20ff65d4cce74568e4d20aceed2')
 
 build() {
