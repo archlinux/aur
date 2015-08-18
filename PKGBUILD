@@ -2,7 +2,7 @@
 
 pkgname=pandoc-cabal
 pkgdesc='Conversion between markup formats (cabal sandbox build)'
-pkgver=1.14.0.4
+pkgver=1.15.0.6
 pkgrel=1
 
 url='http://johnmacfarlane.net/pandoc/'
@@ -14,7 +14,7 @@ conflicts=(pandoc haskell-pandoc)
 provides=("pandoc=$pkgver")
 makedepends=(ghc "cabal-install>=1.18" happy alex)
 source=("http://hackage.haskell.org/package/pandoc-${pkgver}/pandoc-${pkgver}.tar.gz")
-md5sums=('03eef88935f7940a2f403559966b92df')
+md5sums=('dc3d1d5b1bc23a3de1915614cafd06f9')
 
 _cabal_flags=(--force-reinstalls --reinstall --user)
 
@@ -51,7 +51,4 @@ package() {
 
   cabal copy --destdir="${pkgdir}/"
   rm -r "${pkgdir}/usr/lib"
-
-  install -D -m644 man/man1/pandoc.1 "${pkgdir}/usr/share/man/man1/pandoc.1"
-  install -D -m644 man/man5/pandoc_markdown.5 "${pkgdir}/usr/share/man/man5/pandoc_markdown.5"
 }
