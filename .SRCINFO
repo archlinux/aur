@@ -3,8 +3,11 @@ pkgbase = vpcs
 	pkgver = 0.6
 	pkgrel = 1
 	url = http://sourceforge.net/projects/vpcs/
+	arch = i686
 	arch = x86_64
 	license = BSD
+	source_i686 = vpcs::http://dl.sourceforge.net/vpcs/vpcs_0.6_Linux32
+	md5sums_i686 = 3fd73f87a295e389af67cd5358dbdfab
 	source_x86_64 = vpcs::http://dl.sourceforge.net/vpcs/vpcs_0.6_Linux64
 	md5sums_x86_64 = 2aa0db130699da7462b742e8a435ae50
 
