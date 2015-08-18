@@ -1,7 +1,7 @@
 pkgbase = elmerfem
 	pkgdesc = Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver.
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.csc.fi/english/pages/elmer
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = elmerfem
 	makedepends = cmake
 	depends = qwt
 	depends = vtk
-	depends = suitesparse
 	depends = arpack
 	depends = glu
 	depends = tk
