@@ -1,5 +1,5 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-leocharre-debug'
 pkgver='1.03'
@@ -8,9 +8,9 @@ pkgdesc="debug sub"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
+depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/LEOCHARRE-Debug'
+url='https://metacpan.org/release/LEOCHARRE-Debug'
 source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/LEOCHARRE-Debug-1.03.tar.gz')
 md5sums=('2dd645b9656f496b4c18058ff429ea25')
 sha512sums=('b287525c74d8505f2b0987fbd776cf8bc3382d1a68394c2d793a8175a07b728f2ee420ad219da7096922731ac465e4c14ecdd65db0828b20fd3db7dd6e473173')
