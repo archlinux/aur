@@ -1,0 +1,186 @@
+Index: src/config_manager.cc
+===================================================================
+--- src/config_manager.cc	(revision 2102)
++++ src/config_manager.cc	(working copy)
+@@ -1433,6 +1433,14 @@
+     NEW_BOOL_OPTION(temp == "yes" ? true : false);
+     SET_BOOL_OPTION(CFG_SERVER_EXTEND_PROTOCOLINFO_CL_HACK);
+ */
++    temp = getOption(_("/server/protocolInfo/attribute::samsung-hack"),
++                     _(DEFAULT_EXTEND_PROTOCOLINFO_SM_HACK));
++    if (!validateYesNo(temp))
++        throw _Exception(_("Error in config file: samsung-hack attribute of the "
++                          "protocolInfo tag must be either \"yes\" or \"no\""));
++
++    NEW_BOOL_OPTION(temp == "yes" ? true : false);
++    SET_BOOL_OPTION(CFG_SERVER_EXTEND_PROTOCOLINFO_SM_HACK);
+ #endif
+ 
+     temp = getOption(_("/server/pc-directory/attribute::upnp-hide"),
+Index: src/common.h
+===================================================================
+--- src/common.h	(revision 2102)
++++ src/common.h	(working copy)
+@@ -196,6 +196,8 @@
+ #define XML_DC_NAMESPACE                "http://purl.org/dc/elements/1.1/"
+ #define XML_UPNP_NAMESPACE_ATTR         "xmlns:upnp"
+ #define XML_UPNP_NAMESPACE              "urn:schemas-upnp-org:metadata-1-0/upnp/"
++#define XML_SEC_NAMESPACE_ATTR          "xmlns:sec"
++#define XML_SEC_NAMESPACE               "http://www.sec.co.kr/"
+ 
+ // default values
+ #define DEFAULT_INTERNAL_CHARSET        "UTF-8"
+@@ -243,6 +245,7 @@
+ #define DEFAULT_LAYOUT_TYPE             "builtin" 
+ #define DEFAULT_EXTEND_PROTOCOLINFO     NO
+ //#define DEFAULT_EXTEND_PROTOCOLINFO_CL_HACK     NO
++#define DEFAULT_EXTEND_PROTOCOLINFO_SM_HACK     NO
+ #define DEFAULT_HIDE_PC_DIRECTORY       NO
+ #ifdef YOUTUBE
+     #define YOUTUBE_PAGESIZE            106496
+Index: src/config_manager.h
+===================================================================
+--- src/config_manager.h	(revision 2102)
++++ src/config_manager.h	(working copy)
+@@ -73,6 +73,7 @@
+     CFG_SERVER_EXTEND_PROTOCOLINFO_CL_HACK,
+ #endif
+ #endif//EXTEND_PROTOCOLINFO
++    CFG_SERVER_EXTEND_PROTOCOLINFO_SM_HACK,
+     CFG_SERVER_HIDE_PC_DIRECTORY,
+     CFG_SERVER_BOOKMARK_FILE,
+     CFG_SERVER_CUSTOM_HTTP_HEADERS,
+Index: src/cds_resource_manager.cc
+===================================================================
+--- src/cds_resource_manager.cc	(revision 2102)
++++ src/cds_resource_manager.cc	(working copy)
+@@ -482,6 +482,14 @@
+         res_attrs->put(MetadataHandler::getResAttrName(R_PROTOCOLINFO),
+                        protocolInfo);
+ 
++        if (config->getBoolOption(CFG_SERVER_EXTEND_PROTOCOLINFO_SM_HACK))
++        {
++            if (mimeType.startsWith(_("video"))) 
++            {
++                element->appendElementChild(UpnpXML_DIDLRenderCaptionInfo(url));
++            }
++        }
++
+         log_debug("extended protocolInfo: %s\n", protocolInfo.c_str());
+         }
+ #endif
+Index: src/file_request_handler.cc
+===================================================================
+--- src/file_request_handler.cc	(revision 2102)
++++ src/file_request_handler.cc	(working copy)
+@@ -305,6 +305,53 @@
+                     /// header, since chunked encoding may be active and we do not
+                     /// know that here
+                 }
++
++#ifdef EXTEND_PROTOCOLINFO
++                    Ref<ConfigManager> cfg = ConfigManager::getInstance();
++                    if (cfg->getBoolOption(CFG_SERVER_EXTEND_PROTOCOLINFO_SM_HACK))
++                    {
++                        if (item->getMimeType().startsWith(_("video"))) {
++                            // Look for subtitle file and returns it's URL
++                            // in CaptionInfo.sec response header.
++                            // To be more compliant with original Samsung
++                            // server we should check for getCaptionInfo.sec: 1
++                            // request header.
++                            Ref<Array<StringBase> > subexts(new Array<StringBase>());
++                            subexts->append(_(".srt"));
++                            subexts->append(_(".ssa"));
++                            subexts->append(_(".smi"));
++                            subexts->append(_(".sub"));
++
++                            String bfilepath = path.substring(0, path.rindex('.'));
++                            String validext;
++                            for (int i=0; i<subexts->size(); i++) {
++                                String ext = subexts->get(i);
++
++                                String fpath = bfilepath + ext;
++                                if (access(fpath.c_str(), R_OK) == 0) 
++                                {
++                                    validext = ext;
++                                    break;
++                                }
++                            }
++
++
++                            if (validext.length() > 0) 
++                            {
++                                String burlpath = _(filename);
++                                burlpath = burlpath.substring(0, burlpath.rindex('.'));
++                                Ref<Server> server = Server::getInstance();
++                                String url = _("http://") 
++                                    + server->getIP() + ":" + server->getPort() 
++                                    + burlpath + validext;
++
++                                if (string_ok(header))
++                                    header = header + _("\r\n");
++                                header = header + "CaptionInfo.sec: " + url;
++                            }
++                        }
++#endif
++                    }
+             }
+ 
+         if (!string_ok(mimeType))
+Index: src/upnp_cds_actions.cc
+===================================================================
+--- src/upnp_cds_actions.cc	(revision 2102)
++++ src/upnp_cds_actions.cc	(working copy)
+@@ -106,6 +106,14 @@
+ 
+     Ref<ConfigManager> cfg = ConfigManager::getInstance();
+ 
++#ifdef EXTEND_PROTOCOLINFO
++    if (cfg->getBoolOption(CFG_SERVER_EXTEND_PROTOCOLINFO_SM_HACK))
++    {
++        didl_lite->setAttribute(_(XML_SEC_NAMESPACE_ATTR), 
++                                _(XML_SEC_NAMESPACE));
++    }
++#endif
++
+     for(int i = 0; i < arr->size(); i++)
+     {
+         Ref<CdsObject> obj = arr->get(i);
+Index: src/upnp_xml.cc
+===================================================================
+--- src/upnp_xml.cc	(revision 2102)
++++ src/upnp_xml.cc	(working copy)
+@@ -381,3 +381,20 @@
+ 
+     return res;
+ }
++
++Ref<Element> UpnpXML_DIDLRenderCaptionInfo(String URL) {
++    Ref<Element> cap(new Element(_("sec:CaptionInfoEx")));
++
++	 // Samsung DLNA clients don't follow this URL and
++	 // obtain subtitle location from video HTTP headers.
++	 // We don't need to know here what the subtitle type 
++	 // is and even if there is a subtitle.
++	 // This tag seems to be only a hint for Samsung devices,
++	 // though it's necessary.
++    
++    int endp = URL.rindex('.');    
++    cap->setText(URL.substring(0, endp) + ".srt");
++    cap->setAttribute(_("sec:type"), _("srt"));
++    
++    return cap;
++}
+Index: src/upnp_xml.h
+===================================================================
+--- src/upnp_xml.h	(revision 2102)
++++ src/upnp_xml.h	(working copy)
+@@ -76,4 +76,8 @@
+ /// \param URL download location of the item (will be child element of the <res> tag)
+ /// \param attributes Dictionary containing the <res> tag attributes (like resolution, etc.)
+ zmm::Ref<mxml::Element> UpnpXML_DIDLRenderResource(zmm::String URL, zmm::Ref<Dictionary> attributes);
++
++/// \brief Renders a subtitle resource tag (Samsung proprietary extension)
++/// \param URL download location of the video item
++zmm::Ref<mxml::Element> UpnpXML_DIDLRenderCaptionInfo(zmm::String URL);
+ #endif // __UPNP_XML_H__
