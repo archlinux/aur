@@ -4,8 +4,8 @@
 # Contributor: Brice Maron <brice bmaron net>
 
 pkgname=merkaartor
-pkgver=0.18.1
-pkgrel=2
+pkgver=0.18.2
+pkgrel=1
 pkgdesc='OpenStreetMap editor'
 url='http://merkaartor.be/'
 arch=('i686' 'x86_64')
@@ -14,17 +14,13 @@ depends=('desktop-file-utils' 'exiv2' 'gdal' 'hicolor-icon-theme' 'qtwebkit')
 optdepends=('gpsd' 'libproxy')
 install="$pkgname.install"
 source=("https://github.com/openstreetmap/merkaartor/archive/$pkgver.tar.gz")
-sha256sums=('e9fa5e30e6392c9224f73e9bb7d17b66c4eb6c023633eb2af0cf58ba8acf684f')
+sha256sums=('9e04d554ebc4f9999d0dd6d0cdf4e50a38135f34ded68f5dfd8cb295e20bf508')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  echo 'QMAKE_MOC = $$QMAKE_MOC -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED' >> src/src.pro
-  lrelease-qt4 src/src.pro
-  qmake-qt4 Merkaartor.pro \
+  qmake Merkaartor.pro \
     PREFIX="/usr" \
-    GEOIMAGE=1 \
     NODEBUG=1 \
-    RELEASE=1 \
 
   make
 }
