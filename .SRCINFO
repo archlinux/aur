@@ -1,5 +1,5 @@
 pkgbase = linux-libre-pck
-	pkgver = 4.1.5_gnu.pck1
+	pkgver = 4.1.6_gnu.pck1
 	pkgrel = 1
 	url = https://wiki.parabola.nu/PCK
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = linux-libre-pck
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.5-gnu/patch-4.1-gnu-4.1.5-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.5-gnu/patch-4.1-gnu-4.1.5-gnu.xz.sign
-	source = https://repo.parabola.nu/other/pck/patches/4.1.5-gnu/patch-4.1.5-gnu-pck1.patch
-	source = https://repo.parabola.nu/other/pck/patches/4.1.5-gnu/patch-4.1.5-gnu-pck1.patch.sig
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.6-gnu/patch-4.1-gnu-4.1.6-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.6-gnu/patch-4.1-gnu-4.1.6-gnu.xz.sign
+	source = https://repo.parabola.nu/other/pck/patches/4.1.6-gnu/patch-4.1.6-gnu-pck1.patch
+	source = https://repo.parabola.nu/other/pck/patches/4.1.6-gnu/patch-4.1.6-gnu-pck1.patch.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -29,9 +29,9 @@ pkgbase = linux-libre-pck
 	source = change-default-console-loglevel.patch
 	sha256sums = 48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324
 	sha256sums = SKIP
-	sha256sums = 2f8b5d3176112f3b1679a77acbdd303e9e45bffde76a1972f7e90d457614afb3
+	sha256sums = 335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34
 	sha256sums = SKIP
-	sha256sums = 183faa34a7ef069ebb0f5f7c8f9a54cda01b81769092758e80bc29ac8006a338
+	sha256sums = 985ce51fbed0630802badaa1848671395b897557969a1109bb0a9da28426d695
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -54,7 +54,7 @@ pkgname = linux-libre-pck
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-zen=4.1.5
+	provides = linux-zen=4.1.6
 	conflicts = kernel26-zen
 	replaces = linux-zen
 	replaces = kernel26-zen
@@ -62,14 +62,14 @@ pkgname = linux-libre-pck
 
 pkgname = linux-libre-pck-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-pck kernel
-	provides = linux-zen-headers=4.1.5
+	provides = linux-zen-headers=4.1.6
 	conflicts = kernel26-zen-headers
 	replaces = linux-zen-headers
 	replaces = kernel26-zen-headers
 
 pkgname = linux-libre-pck-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-pck kernel
-	provides = linux-zen-docs=4.1.5
+	provides = linux-zen-docs=4.1.6
 	conflicts = kernel26-zen-docs
 	replaces = linux-zen-docs
 	replaces = kernel26-zen-docs

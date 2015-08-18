@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.1-gnu
-_pkgver=4.1.5-gnu
+_pkgver=4.1.6-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -44,9 +44,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '2f8b5d3176112f3b1679a77acbdd303e9e45bffde76a1972f7e90d457614afb3'
+            '335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34'
             'SKIP'
-            '183faa34a7ef069ebb0f5f7c8f9a54cda01b81769092758e80bc29ac8006a338'
+            '985ce51fbed0630802badaa1848671395b897557969a1109bb0a9da28426d695'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
