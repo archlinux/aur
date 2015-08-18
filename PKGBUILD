@@ -1,21 +1,21 @@
-# Contributor: Christos Nouskas <nous@archlinux.us>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-json-maybexs'
-pkgver='1.002002'
+pkgver='1.003005'
 pkgrel='1'
-pkgdesc="use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP"
+pkgdesc="Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-cpanel-json-xs>=2.3310' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-without-module>=0.17')
-url='http://search.cpan.org/dist/JSON-MaybeXS'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/JSON-MaybeXS-1.002002.tar.gz')
-md5sums=('cb8c66ece7518270ea31ffc4951d5f02')
-sha512sums=('a4421abe54ec2b71892f4a1e04794dd3cc99773659cb32e8bf95a89db411eaadc6d90145be0a25da70946edded021962f6eaa48e7d8287773eb5d677ee042e7f')
-_distdir="JSON-MaybeXS-1.002002"
+url='https://metacpan.org/release/JSON-MaybeXS'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/JSON-MaybeXS-1.003005.tar.gz')
+md5sums=('653c088177982f8ac4e6b1697c2c94f4')
+sha512sums=('101b5b693eabeaf4e8417d021b3d311b9c8669a0121b97af7781cfbdb3ba24b8aef80d15a3cf4d78b40e47230e9f1c4450c73741675ec6d5ea018c6b06ea49d7')
+_distdir="JSON-MaybeXS-1.003005"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
