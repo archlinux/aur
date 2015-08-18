@@ -11,7 +11,6 @@ pkgbase = steam-native
 	depends = networkmanager
 	optdepends = mono: game dependency
 	optdepends = mono-addins: game dependency
-	conflicts = chromium-browser-bin
 	options = !emptydirs
 	source = steam-runtime.desktop
 	source = 51-steam.rules
