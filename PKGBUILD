@@ -12,7 +12,7 @@ optdepends=('palemoon-i18n-default: language pack for system active language'
             'gstreamer0.10-good-plugins: webm and mp4 demuxing'
             'gstreamer0.10-bad-plugins: aac, vp8 and opus decoding'
             'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
-            'gstreamer0.10-ffmpeg: more decoders'
+            'gstreamer0.10-ffmpeg: h.264 decoding'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification')
 provides=('palemoon=$pkgver')
