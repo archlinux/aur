@@ -17,7 +17,7 @@ source=('steam-runtime.desktop'
 source_x86_64=('lib32-nm09810.tar.xz')
 
 sha256sums=('8ce140660b4c6295ff0e580a02cebafce1ed22828561304e3f99ee78b8cfdb5d'
-	'12d6d0a96e66f10eaeee94ddb6d1048c0e40a8132521fa7b00b844d6454d641c')
+	'10996aea68afc633b614404fd91143b738ce0fd929af91659f4c6dd960776c40')
 sha256sums_x86_64=('b56b9da85e5647ef2b8013d14378b30917d7701cd61b27ba6a39045ab5ecc529')
 
 depends=('steam' 'networkmanager')
