@@ -7,7 +7,7 @@
 
 pkgname=trousers
 pkgver=0.3.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Open-source TCG Software Stack implementation for use with a TPM"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/trousers"
