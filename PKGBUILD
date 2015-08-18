@@ -3,9 +3,9 @@
 pkgname=openhrp3
 pkgver=3.1.8
 pkgrel=1
-pkgdesc=""
+pkgdesc="Open Architecture Human-centered Robotics Platform"
 arch=('i686' 'x86_64')
-url=""
+url="https://github.com/fkanehiro/openhrp3"
 license=('EPL')
 # FIXME: probably tons of dependencies missing
 depends=('omniorb' 'lapack' 'f2c' 'boost' 'eigen3'
