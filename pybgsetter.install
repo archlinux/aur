@@ -1,5 +1,6 @@
 post_install(){
-    printf '\nPlease install at least one of the optional dependencies.\n'
+    update-desktop-database -q
+    printf '\n%s\n' 'Please install at least one of the optional dependencies.'
 }
 
 post_upgrade(){
