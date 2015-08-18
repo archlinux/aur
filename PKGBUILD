@@ -5,7 +5,7 @@
 pkgname=apachedirectorystudio
 _pkgname=ApacheDirectoryStudio
 pkgver=2.0.0.v20150606
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse based LDAP browser and directory client"
 arch=('i686' 'x86_64')
 url="http://directory.apache.org/studio/"
@@ -22,14 +22,14 @@ package() {
   ln -sf /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
   ln -sf /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${pkgname}
 
-  cat > ${_pkgname}.desktop << EoF
+  cat > ${srcdir}/${_pkgname}.desktop << EoF
 [Desktop Entry]
 Version=${pkgver}
 Encoding=UTF-8
 Name=Apache Directory Studio
 Comment=${pkgdesc}
 Exec=/opt/${_pkgname}/${_pkgname}
-Icon=/opt/${_pkgname}/${_pkgname}.xpm
+Icon=/opt/ApacheDirectoryStudio/features/org.apache.directory.studio.ldapbrowser.feature_2.0.0.v20150606-M9/studio.png
 Terminal=false
 Type=Application
 Categories=Java;Network;

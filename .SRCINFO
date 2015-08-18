@@ -1,7 +1,7 @@
 pkgbase = apachedirectorystudio
 	pkgdesc = Eclipse based LDAP browser and directory client
 	pkgver = 2.0.0.v20150606
-	pkgrel = 1
+	pkgrel = 2
 	url = http://directory.apache.org/studio/
 	arch = i686
 	arch = x86_64
