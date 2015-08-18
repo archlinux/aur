@@ -16,7 +16,6 @@ if test "$CARCH" == 'i686'; then
   depends+=(libpng12)
   depends+=(libsm)
   depends+=(alsa-lib)
-  depends+=(libtiff4)
   depends+=(libxtst)
 fi
 if test "$CARCH" == 'x86_64'; then
@@ -26,7 +25,6 @@ if test "$CARCH" == 'x86_64'; then
   depends+=(lib32-libpng12)
   depends+=(lib32-libsm)
   depends+=(lib32-alsa-lib)
-  depends+=(lib32-libtiff4)
   depends+=(lib32-libxtst)
 fi
 provides=(dbmain)
