@@ -13,6 +13,7 @@ pkgbase = rust-racer-git
 	optdepends = rust-src
 	provides = rust-racer
 	conflicts = rust-racer
+	replaces = racer-git
 	source = git+https://github.com/phildawes/racer.git
 	md5sums = SKIP
 
