@@ -1,7 +1,7 @@
 # Maintainer: Andy Crowd <andy_crowd@ainsdata.se>
 pkgname=fbrokendesktop
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 pkgdesc="Search for broken Exec in *.desktop"
 arch=(any)
 depends=(bash)

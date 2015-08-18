@@ -1,7 +1,7 @@
 pkgbase = fbrokendesktop
 	pkgdesc = Search for broken Exec in *.desktop
-	pkgver = 1.0.1
-	pkgrel = 1
+	pkgver = 1.0.2
+	pkgrel = 2
 	url = https://github.com/AndyCrowd/
 	arch = any
 	license = GPL2
