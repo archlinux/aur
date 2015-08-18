@@ -1,7 +1,7 @@
 pkgbase = libpam_pwdfile
 	pkgdesc = A PAM module allowing authentication via an /etc/passwd-like file
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tiwe-de/libpam-pwdfile
 	arch = i686
 	arch = x86_64
