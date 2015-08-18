@@ -1,0 +1,15 @@
+pkgbase = modrana
+	pkgdesc = ModRana is a flexible GPS navigation software for (not only) mobile Linux devices.
+	pkgver = 0.52.10
+	pkgrel = 1
+	url = http://modrana.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = pygtk
+	source = http://www.modrana.org/tarballs/modrana/modrana-0.52.10.tar.gz
+	md5sums = 43d9cdff55c5852bc4990a51d57bf5da
+
+pkgname = modrana
+
