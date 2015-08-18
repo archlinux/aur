@@ -3,7 +3,7 @@
 pkgname=thunderbird-exchangecalendar
 pkgver=3.4.0.beta5
 _pkgver=3.4.0-beta5
-pkgrel=1
+pkgrel=2
 pkgdesc="Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)."
 url="https://github.com/Ericsson/exchangecalendar"
 arch=('any')
@@ -32,18 +32,25 @@ package() {
   _emver=$(grep -m 1 em:version ${srcdir}/${_name}-${_pkgver}/install.rdf \
     | sed 's/.*>\(.*\)<.*/\1/')
 
-  # Extract all files from extension .xpi file
-  _pkgsrc=usr/lib/thunderbird/extensions
-  mkdir -p ${pkgdir}/${_pkgsrc}/${pkgname}-${pkgver}
-  bsdtar -x --cd ${pkgdir}/${_pkgsrc}/${pkgname}-${pkgver} \
-    -f ${srcdir}/${_name}-${_pkgver}/${_name}-${_emver}.xpi
-
   # Extract extension name
   _emid=$(grep -m 1 em:id ${srcdir}/${_name}-${_pkgver}/install.rdf \
     | sed 's/.*>\(.*\)<.*/\1/')
-   mv ${srcdir}/${_name}-${_pkgver} ${_emid}
 
-  # Fix permissions in extension directory
+  # Thunderbird extensions directory path
+  _pkgsrc=usr/lib/thunderbird/extensions
+
+  # Create thunderbird extensions directory with another emid directory
+  # extension name
+  mkdir -p ${pkgdir}/${_pkgsrc}/${_emid}
+
+  # Work under thunderbird extensions directory
+  cd ${pkgdir}/${_pkgsrc}
+
+  # Extract all files from .xpi file in emid directory
+  bsdtar -x --cd ${_emid} \
+    -f ${srcdir}/${_name}-${_pkgver}/${_name}-${_emver}.xpi
+
+  # Fix permissions in emid extension directory
   find ${_emid} -type d -exec chmod 0755 \{\} \+
   find ${_emid} -type f -exec chmod 0644 \{\} \+
   find ${_emid} -name '*.so' -exec chmod 0755 \{\} \+
