@@ -1,7 +1,7 @@
 # Maintainer: Milo Mirate <mmirate@gmx.com>
 _pkgname=plumbum
 pkgname=python2-plumbum
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Shell combinators library."
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('38b526af9012a5282ae91dfe372cefd3')
+md5sums=('685dbf47344f2523b582782a4b87fcbf')
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
