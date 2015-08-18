@@ -1,0 +1,14 @@
+pkgbase = makoureactor-git
+	pkgdesc = Final Fantasy 7 Field Editor
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = https://github.com/myst6re/makoureactor
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	source = git://github.com/myst6re/makoureactor.git
+	md5sums = SKIP
+
+pkgname = makoureactor-git
+
