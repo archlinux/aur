@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Exec=ElmerGUIlogger
+#MimeType=
+Comment=Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver
+Icon=/usr/share/pixmaps/elmerfem.png
+Terminal=false
+Name=ElmerGUI
+Categories=Science
