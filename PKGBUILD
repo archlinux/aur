@@ -7,7 +7,7 @@
 
 _hgname=hgsubversion
 pkgname=$_hgname-hg
-pkgver=1000.09b5e6a76724
+pkgver=1346.538bbb927609
 pkgrel=1
 pkgdesc="extension for Mercurial that allows using Mercurial as a Subversion client"
 arch=(any)
@@ -15,6 +15,7 @@ url="http://mercurial.selenic.com/wiki/HgSubversion"
 license=('GPL2')
 install=hgsubversion-hg.install
 depends=('mercurial' 'subversion')
+conflicts=('hgsubversion')
 makedepends=('mercurial')
 source=('hg+http://bitbucket.org/durin42/hgsubversion')
 md5sums=('SKIP')
