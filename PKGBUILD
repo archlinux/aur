@@ -5,8 +5,8 @@
 
 pkgname=phpstorm
 _pkgname=PhpStorm
-_pkgbuild=141.2402
-pkgver=9.0.1
+_pkgbuild=141.2462
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("http://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "phpstorm.desktop"
         "phpstorm.sh"
         "phpstorm.install")
-sha256sums=('99f421b1093347d00fa1b249a3c0d22846f38fe91508514156121d1c6cf719c3'
+sha256sums=('75156763c11f90fcaaf9783e611b2995464495e16c8d4ce5f2d23c8664b479bb'
             'e84e01936b4d1a3d909ca5f17122ccfdb071ad98cd908fd67714f784ddd05471'
             '76fb549efe568de294a1f403f0fbc292c9e3f1201e150e491a6e31c97ab9323e'
             '3dd0738870932c8bfafc6a47a4b2a65be5bebbaa07ce88708c750b3e51b97cb5')
