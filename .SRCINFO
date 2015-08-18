@@ -1,0 +1,23 @@
+pkgbase = openhrp3
+	pkgver = 3.1.8
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python2-yaml
+	depends = omniorb
+	depends = lapack
+	depends = f2c
+	depends = boost
+	depends = eigen3
+	depends = collada-dom
+	depends = openrtm-aist
+	depends = uuid
+	source = https://github.com/fkanehiro/openhrp3/archive/3.1.8.tar.gz
+	sha256sums = 100dd486e8a3504c242835fc44f2e6830c78360623b98f981b9d2667949ffccf
+
+pkgname = openhrp3
+
