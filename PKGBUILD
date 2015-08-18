@@ -1,10 +1,10 @@
 # Maintainer: Slithery <aur at slithery dot uk>
-# Maintainer: Zack Buhman <zbuhman@linode.com>
+# Contributor: Zack Buhman <zbuhman@linode.com>
 # Contributor: Graham Edgecombe <graham@grahamedgecombe.com>
 
 pkgname=linode-cli
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.4.6
+pkgrel=1
 pkgdesc='A simple command-line interface to the Linode platform'
 url='https://github.com/linode/cli'
 license=('GPL2')
