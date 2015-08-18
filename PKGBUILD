@@ -1,20 +1,19 @@
 # Maintainer: Tristelune  <tristelune at archlinux dot info>
 pkgname=upplay
-pkgver=0.10.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Qt-based UPnP audio Control point"
 url="http://www.lesbonscomptes.com/upplay/"
 arch=('x86_64')
 license=('GPL2')
-depends=('libupnpp' 'qtwebkit')
+depends=('libupnpp>=0.12.1' 'qtwebkit')
 makedepends=('qtchooser')
 source=("http://www.lesbonscomptes.com/upplay/downloads/${pkgname}-${pkgver}.tar.gz")
-md5sums=('ddaf5bba24371b063b21a268fc8a8a93')
+md5sums=('5d52fc1de4a0d764b37b23d9ac139508')
          
 
 build(){
 	cd "${srcdir}/${pkgname}-${pkgver}"
-#	patch -p1 -i ${srcdir}/upplay.patch
 	qmake-qt4 PREFIX="${pkgdir}/usr"
 }
 
