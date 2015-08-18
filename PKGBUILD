@@ -8,7 +8,7 @@
 
 pkgname='ruby-jemalloc'
 pkgdesc='An object-oriented language for quick and easy programming'
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 arch=(i686 x86_64)
 url='http://www.ruby-lang.org/en/'
@@ -26,7 +26,7 @@ install=ruby.install
 options=(!emptydirs)
 source=(http://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz
         gemrc)
-sha256sums=('f033b5d08ab57083e48c1d81bcd7399967578c370b664da90e12a32891424462'
+sha256sums=('c6ec90e9ed018e6d9a578fc93755d8565839908d5796809e1aecd1798c7ea8a7'
             '7afacaadf26274155b35357c9f5c38ead15853a8fb9124039063abaad8544f59')
 
 build() {
