@@ -1,28 +1,20 @@
 # Maintainer: m4sk1n <m4sk1n@vivaldi.net>
-pkgname=xnots-git
-pkgver=r34.3f3e8d1
-pkgrel=1
-pkgdesc="A desktop post-it/sticky note system for the unix geek"
-arch=('i686' 'x86_64')
-url="https://github.com/thePalindrome/xnots"
+# Maintainer: Eivind Eide <xenofil A-T gmail D-O-T com>
+# Contributor: Renato Coutinho <renato.coutinho@gmail.com>
+
+pkgname=xnots
+pkgver=0.2.1
+pkgrel=2
+pkgdesc="A desktop sticky notes application for Unix geeks"
+depends=('libxrandr' 'pango' 'xorg-server')
+makedepends=('pkg-config' 'git')
+source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('27f0fef6fb2ebb46b7b4a7cafdaf665d')
+url="http://xnots.sourceforge.net/"
 license=('GPL')
-depends=('xorg-server' 'xorg-xrandr' 'pango')
-makedepends=('git')
-provides=('xnots')
-conflicts=('xnots')
-options=()
-source=(git://github.com/thePalindrome/xnots.git)
-sha256sums=('SKIP')
+arch=('i686' 'x86_64')
 
-build() {
-  cd "xnots"
-  export CFLAGS="-O2"
-
-  make
-}
-
-package() {
-  cd "xnots"
-
-  make prefix="$pkgdir/usr/" datadir="$pkgdir/usr/share/doc" install
+package() { 
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make prefix="${pkgdir}/usr" install
 }
