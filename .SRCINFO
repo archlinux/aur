@@ -6,7 +6,6 @@ pkgbase = lib32-libaudio2
 	arch = x86_64
 	groups = lib32
 	license = custom
-	makedepends = pkgextract
 	depends = lib32-libxt
 	source = http://security.ubuntu.com/ubuntu/pool/main/n/nas/libaudio2_1.9.4-3_i386.deb
 	source = LICENSE

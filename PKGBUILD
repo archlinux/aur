@@ -11,8 +11,9 @@ url="http://www.radscan.com/nas.html"
 license=('custom')
 groups=('lib32')
 depends=('lib32-libxt')
-makedepends=('pkgextract')
+makedepends=()
 source=("http://security.ubuntu.com/ubuntu/pool/main/n/nas/libaudio2_${pkgver}-${_pkgrel32}_i386.deb" "LICENSE")
+sha512sums=('9918915d36fd181dccfd8416d31df744991f880e1ae7aa7659a5de49bfa873879063361d002eaf86e5c62aff350a5451553415129eb680f6ae3a557aa706958a' '26ca385b79639e7f834531bb7bb3694e8d43b814ddd8f5112039a51bef56d284ecca42700707cd66a8a699a40cb854ffbcf7e120cec83120811c1d74d65ecfb3')
 
 package() {
   bsdtar -xf data.tar.xz
@@ -22,4 +23,3 @@ package() {
   install -D -m644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
-sha512sums=('9918915d36fd181dccfd8416d31df744991f880e1ae7aa7659a5de49bfa873879063361d002eaf86e5c62aff350a5451553415129eb680f6ae3a557aa706958a' '26ca385b79639e7f834531bb7bb3694e8d43b814ddd8f5112039a51bef56d284ecca42700707cd66a8a699a40cb854ffbcf7e120cec83120811c1d74d65ecfb3')
