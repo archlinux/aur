@@ -1,6 +1,6 @@
 pkgbase = xss-lock-git
 	pkgdesc = Use external locker as X screen saver
-	pkgver = v0.3.0.4.g1e158fb
+	pkgver = 0.3.0.r4.g1e158fb
 	pkgrel = 1
 	url = https://bitbucket.org/raymonad/xss-lock
 	arch = i686
