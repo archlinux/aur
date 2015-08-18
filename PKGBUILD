@@ -1,5 +1,5 @@
 pkgname=tuxonice-userui
-pkgver=1.1.2
+pkgver=1.1.2332823e0a
 pkgrel=1
 pkgdesc="TuxOnIce userspace user interface"
 url="https://github.com/NigelCunningham/Tuxonice-Userui"
@@ -34,7 +34,7 @@ package () {
   make INSTDIR=$pkgdir/usr/bin DESTDIR=$pkgdir PREFIX=/usr install
 }
 
-md5sums=('5b6aba10d64691ce7c75eb59b6e6167e'
+md5sums=('b323fd2082565b54f0c084f57e65876a'
          'a8e8ecb03e319321713652e25bc34a98'
          '96a359994273ab0e8baa198914ef0433'
          '9f647880008584b7751c3f9ecec7945b'
