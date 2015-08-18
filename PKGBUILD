@@ -2,7 +2,7 @@
 
 _gitname=vita-toolchain
 pkgname=vita-toolchain-git
-pkgver=0
+pkgver=r71.8a5048d
 pkgrel=1
 pkgdesc="Open source tools for PSP2"
 arch=('any')
