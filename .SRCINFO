@@ -9,7 +9,7 @@ pkgbase = caddy
 	arch = armv6h
 	license = Apache
 	conflicts = caddy-git
-	source = https://github.com/mholt/caddy/releases/download/v0.7.5/caddy_linux_386.zip
+	source = https://github.com/mholt/caddy/releases/download/v0.7.5/caddy_linux_.tar.gz
 
 pkgname = caddy
 
