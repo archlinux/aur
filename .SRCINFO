@@ -1,0 +1,12 @@
+pkgbase = vpcs
+	pkgdesc = Simple virtual PC simulator
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://sourceforge.net/projects/vpcs/
+	arch = x86_64
+	license = BSD
+	source_x86_64 = vpcs::http://dl.sourceforge.net/vpcs/vpcs_0.6_Linux64
+	md5sums_x86_64 = 2aa0db130699da7462b742e8a435ae50
+
+pkgname = vpcs
+
