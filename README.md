@@ -20,6 +20,10 @@ This will start create a docker image tagged as php-oci8-aur and build the
 package inside the container.  As a result you should get the built package in
 your current directory.
 
+## License
+php-oci8-aur is licensed under the MIT license.  See [LICENSE](LICENSE) for
+the full license text.
+
 [AUR]: https://aur.archlinux.org/
 [oci8]: http://pecl.php.net/package/oci8
 [makepkg]: https://wiki.archlinux.org/index.php/Makepkg
