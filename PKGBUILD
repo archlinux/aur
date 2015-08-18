@@ -1,8 +1,8 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=uchardet-git
 pkgver=r28.84e292d
-pkgrel=1
-pkgdesc="An encoding detector library ported from Mozilla"
+pkgrel=2
+pkgdesc="Encoding detector library ported from Mozilla"
 arch=('i686' 'x86_64')
 url="https://github.com/BYVoid/uchardet"
 license=('MPL')
