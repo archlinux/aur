@@ -1,14 +1,14 @@
 # Contributor: Daniel YC Lin <dlin (at) gmail.com>
 # Maintainer: Daniel YC Lin <dlin (at) gmail.com>
 pkgname=bcpp
-pkgver=20131209
+pkgver=20150811
 pkgrel=1
 pkgdesc="utility for indents C/C++ source programs"
 arch=('i686' 'x86_64' sh4)
 url="http://dickey.his.com/bcpp/bcpp.html"
 license=("custom")
 makedepends=(gcc)
-depends=(gcc-libs bash)
+depends=(bash)
 source=(http://invisible-island.net/datafiles/release/bcpp.tar.gz)
 
 build() {
@@ -24,4 +24,4 @@ package() {
   mkdir -p "$pkgdir/usr/share/licenses/bcpp"
   install -m644 COPYING "$pkgdir/usr/share/licenses/bcpp/"
 }
-md5sums=('36d8902e611c7e6c74a40b4ee44e3925')
+md5sums=('bc67edacc3a8d43026529afda8102d39')
