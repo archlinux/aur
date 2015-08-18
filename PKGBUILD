@@ -4,8 +4,8 @@
 # Contributor: Matthew <pyther@pyther.net>
 
 pkgname=bacula-client
-pkgver=7.0.5
-pkgrel=2
+pkgver=7.2.0
+pkgrel=1
 pkgdesc='A network backup tool for Linux, Unix, Mac and Windows - client edition'
 conflicts=('bacula')
 depends=('openssl')
@@ -18,7 +18,7 @@ backup=('etc/bacula/bconsole.conf'
 validpgpkeys=('2CA9F510CA5CCAF61AB529F59E98BF3210A792AD')
 source=("http://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz"{,.sig}
 	'bacula-fd.service')
-sha256sums=('1457849eb33011b43371801b62ffa13d29bebe51be8d5a36da563b87bb094a49'
+sha256sums=('818606fe69c50c3ca21b91e609d4ac6ca08e4189419b89d3ec2e81c8c0389e1c'
             'SKIP'
             '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
 
@@ -44,6 +44,8 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 
+	# we do not take the service file provided by bacula package
+	# as it needs too much customization
 	install -D -m0644 "${srcdir}/bacula-fd.service" "${pkgdir}/usr/lib/systemd/system/bacula-fd.service"
 }
 
