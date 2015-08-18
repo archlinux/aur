@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-padwalker'
-pkgver='2.0'
+pkgver='2.1'
 pkgrel='1'
 pkgdesc="play with other peoples' lexical variables"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/PadWalker'
-source=('http://search.cpan.org/CPAN/authors/id/R/RO/ROBIN/PadWalker-2.0.tar.gz')
-md5sums=('9d602cf26e3e9086865a57708b2a0db2')
-sha512sums=('9ad282f0f37f3dfec5eb93df1c10d75380fdcda2291ad6945e62581a01b7b1ca3b1e3a5633e371068aaa00a58aa925ce79010068fbee2faf14d3d89940b26e51')
-_distdir="PadWalker-2.0"
+source=('http://search.cpan.org/CPAN/authors/id/R/RO/ROBIN/PadWalker-2.1.tar.gz')
+md5sums=('fdd962c6e519aad58606997d11448fd3')
+sha512sums=('632100ef9f13def71aa496737d6a49977d311cae749a1b4827f2b965ae797357fbb5ab756ead0927f200ba8a8a62a9b6fcce3a49f3cc0c4e196855d8427502d3')
+_distdir="PadWalker-2.1"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
