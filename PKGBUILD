@@ -1,21 +1,20 @@
-# Maintainer: Antergos Devs <dev@antergos.com>
+# Maintainer: David Rodriguez <dissonant.tech@gmail.com>
 
-pkgname=lightdm-webkit-theme-antergos
-_pkgname=antergos
-pkgver=2.1.0
+pkgname=lightdm-webkit-theme-archlinux
+_pkgname=archlinux
+pkgver=0.5.0
 _bgver=0.6
-pkgrel=2
-pkgdesc="The official greeter theme of Antergos Linux"
+pkgrel=1
+pkgdesc="ArchLinux version of the official Antergos lightdm greeter"
 arch=('any')
-url="http://www.antergos.com"
+url="https://github.com/Dissonant-Tech/lightdm-webkit-theme-archlinux"
 license=('GPLv2')
 depends=('lightdm' 'lightdm-webkit2-greeter')
-confilcts=('lightdm-webkit-theme-antergos-git')
 install=theme.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Antergos/${pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/Dissonant-Tech/${pkgname}/archive/${pkgver}.tar.gz"
         "http://antergos.com/antergos-wallpapers-${_bgver}.zip")
-sha256sums=('5f963e0a22022cac820c99d51c264c6188096d8055ecbab1131bb340973ec165'
-            '383484231d5d4c1e785d8b5e7635909e3e3200a9fe18fef5dbc6fc2f23961b28')
+md5sums=('fd3885f57962eb3a6760b60fab87ed5d'
+            'c996d26914e71897019c33854b0ae634')
 
 build()
 {
