@@ -1,12 +1,12 @@
 pkgbase = fluxbox-style-hellbent
 	pkgdesc = Hellbent style for Fluxbox
 	pkgver = 20150818
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/corebob/fluxbox-style-hellbent
 	arch = any
 	license = CCPL
 	source = https://github.com/corebob/fluxbox-style-hellbent/archive/master.zip
-	md5sums = 36ea04b497d0664e8ab3e0ed4a59592b
+	md5sums = 31f824635b3b3fcba03479923d1006b2
 
 pkgname = fluxbox-style-hellbent
 
