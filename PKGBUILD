@@ -1,9 +1,10 @@
-# Maintainer: Håvard Pettersson <mail@haavard.me>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Madotsuki <madotsuki at cock dot li>
 
 _pkgname=utox
 pkgname=utox-git
-pkgver=r1519.c46ae4c
+pkgver=0.3.2.r41.gd16f539
 pkgrel=1
 
 pkgdesc='Lightweight Tox client'
@@ -37,7 +38,7 @@ install="${pkgname}.install"
 pkgver()
 {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
@@ -51,5 +52,3 @@ package()
   cd "${srcdir}/${pkgname}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
-
-
