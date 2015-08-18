@@ -8,7 +8,7 @@
 pkgname=conky19-lua-nv
 _pkgname=conky
 pkgver=1.9.0
-pkgrel=7
+pkgrel=8
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="http://conky.sourceforge.net/"
@@ -17,7 +17,7 @@ replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky' 'conky-lua')
 depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51')
-makedepends=('pkgconfig' 'tolua++' 'libxnvctrl' 'docbook-xml' 'docbook-xsl')
+makedepends=('pkgconfig' 'tolua++' 'libxnvctrl' 'docbook2x' 'docbook-xml' 'docbook-xsl')
 optdepends=('nvidia: for GT4xx and newer GPUs',
   'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
   'nvidia-304xx: for GeForce 6/7 GPUs')
