@@ -9,9 +9,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.1-gnu
-_pkgver=4.1.3-gnu
+_pkgver=4.1.5-gnu
 _rtbasever=4.1
-_rtpatchver=rt3
+_rtpatchver=rt5
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -42,17 +42,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        '0001-block-loop-convert-to-per-device-workqueue.patch'
-        '0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch'
-        '0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch'
-        'bitmap-enable-booting-for-dm-md-raid1.patch'
-        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            'd52669f17a1cd13abba4f47a04e1991be59cfa707926b21f9c5bf031ec10c5d0'
+            '2f8b5d3176112f3b1679a77acbdd303e9e45bffde76a1972f7e90d457614afb3'
             'SKIP'
-            '42a8d2a54dfd6dc8f351f3b56855b55fcc1aadb8805cc6d07c3b9479aea55c96'
+            '0cfa47bedd98fb7c542d422c79c52390be622d3e524fed54c976049d0050fec8'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -60,15 +56,11 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '98fc866cef6a9e58abbf2ad41895cd03a31fbe766b25d3048802eec24de911d6'
-            '7b2087cf14036ded27a2599a2f5dda1b19f16e07c5fb4f0aac88ba522ced2699'
+            '634f531ddc13b19fd1bdf179631e278b3ab00440777f74a625ef3a59852c4d85'
+            'be040e3358f424ab56baaad6d13caeb3e5fdcbb87cb8b6eb09913364b5c019ca'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f'
-            'bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81'
-            '08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82'
-            '959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0'
-            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
@@ -104,28 +96,14 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # Fix deadlock with stacked loop devices (FS#45129)
-  # http://marc.info/?l=linux-kernel&m=143280649731902&w=2
-  patch -Np1 -i ../0001-block-loop-convert-to-per-device-workqueue.patch
-  patch -Np1 -i ../0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
-
-  # Fix bluetooth chip initialization on some macbooks (FS#45554)
-  # http://marc.info/?l=linux-bluetooth&m=143690738728402&w=2
-  # https://bugzilla.kernel.org/show_bug.cgi?id=100651
-  patch -Np1 -i ../0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-
-  # Fix kernel oops when booting with root on RAID1 LVM (FS#45548)
-  # https://bugzilla.kernel.org/show_bug.cgi?id=100491#c24
-  patch -Np1 -i ../bitmap-enable-booting-for-dm-md-raid1.patch
-
-  # Make the radeon driver load without the firmwares
-  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
-  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
-
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # Make the radeon driver load without the firmwares
+  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
+  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
