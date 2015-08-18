@@ -1,8 +1,9 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Juston Li <juston.h.li@gmail.com>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=repo
 pkgname=$_pkgname-git
-pkgver=v1.12.22.17.g185307d
+pkgver=v1.12.26.r7.g5d0c3a6
 pkgrel=1
 pkgdesc="Tool built on top of git to help manage many git repositories. Part of the Android project."
 arch=("any")
@@ -17,7 +18,7 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	echo $(git describe --always | sed "s/-/./g")
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
