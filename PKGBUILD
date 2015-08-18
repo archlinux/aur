@@ -5,7 +5,7 @@
 
 pkgname=libpam_pwdfile
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A PAM module allowing authentication via an /etc/passwd-like file"
 arch=('i686' 'x86_64')
 url="https://github.com/tiwe-de/libpam-pwdfile"
@@ -24,6 +24,6 @@ build() {
 package() {
   cd "$srcdir/libpam-pwdfile-${pkgver}"
 
-  make PAM_LIB_DIR="$pkgdir/lib/security" INSTALL=$(which install) install
+  make PAM_LIB_DIR="$pkgdir/usr/lib/security" INSTALL=$(which install) install
 }
 
