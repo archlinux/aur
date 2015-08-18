@@ -1,6 +1,6 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-gettext
-pkgver=0.19.5
+pkgver=0.19.5.1
 pkgrel=1
 arch=(any)
 pkgdesc="GNU internationalization library (mingw-w64)"
@@ -15,7 +15,7 @@ source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"{,.sig}
 "06-dont-include-ctype-after-gnulibs-wctype.mingw.patch"
 "07-fix-asprintf-conflict.mingw.patch"
 "08-vs-compatible.patch")
-md5sums=('0f3c108d64e8dcd9e6fbdff4ca722feb'
+md5sums=('2b2ab90f6405a414bbe30cf6655f3e28'
          'SKIP'
          '397d7d6d4abd15a70edb3c9f2bab4cd2'
          '27852a388b8cf38188dc392c244230ff'
