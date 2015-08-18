@@ -39,7 +39,7 @@ provides=()
 # Change the default behavior of makepkg see PKGBUILD#options
 options=()
 
-source=("https://github.com/haiwen/libsearpc/archive/v${_seafilever}.tar.gz"
+source=("libsearpc-v${_seafilever}.tar.gz::https://github.com/haiwen/libsearpc/archive/v${_seafilever}.tar.gz"
 	"libsearpc.pc.patch")
 
 configure_libsearpc() {
