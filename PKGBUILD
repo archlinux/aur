@@ -5,15 +5,15 @@
 # Contributor: 325.15 - patch : Ninez 
 
 pkgname=nvidia-last-rt
-pkgver=352.21
-_extramodules=extramodules-4.0-rt
+pkgver=352.30
+_extramodules=extramodules-4.1-rt
 _kernver="$(cat /lib/modules/${_extramodules}/version)"
 pkgrel=1
 pkgdesc="NVIDIA last drivers for linux-rt."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-rt>=4.0' 'linux-rt<4.1' "nvidia-utils=${pkgver}")
-makedepends=('linux-rt-headers>=4.0' 'linux-rt-headers<4.1')
+depends=('linux-rt>=4.1' 'linux-rt<4.2' "nvidia-utils=${pkgver}")
+makedepends=('linux-rt-headers>=4.1' 'linux-rt-headers<4.2')
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia-rt' 'nvidia-340xx-rt')
 provides=('nvidia-rt')
 license=('custom')

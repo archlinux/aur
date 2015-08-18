@@ -1,17 +1,17 @@
 pkgbase = nvidia-last-rt
 	pkgdesc = NVIDIA last drivers for linux-rt.
-	pkgver = 352.21
+	pkgver = 352.30
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-rt-headers>=4.0
-	makedepends = linux-rt-headers<4.1
-	depends = linux-rt>=4.0
-	depends = linux-rt<4.1
-	depends = nvidia-utils=352.21
+	makedepends = linux-rt-headers>=4.1
+	makedepends = linux-rt-headers<4.2
+	depends = linux-rt>=4.1
+	depends = linux-rt<4.2
+	depends = nvidia-utils=352.30
 	provides = nvidia-rt
 	conflicts = nvidia-96xx
 	conflicts = nvidia-173xx
