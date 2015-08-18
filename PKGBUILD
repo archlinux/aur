@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=vicare-scheme-git
-pkgver=20150806.492960a
+pkgver=20150808.4a78812
 pkgrel=1
-pkgdesc="R6RS scheme implementation, from github's devel branch"
+pkgdesc="R6RS scheme implementation, from github's master branch"
 arch=('i686' 'x86_64')
 url="http://marcomaggi.github.io/vicare.html"
 license=('GPL3')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('vicare-scheme')
 conflicts=('vicare-scheme')
 install=vicare-scheme.install
-source=("vicare-scheme::git://github.com/marcomaggi/vicare.git")
+source=("vicare-scheme::git+https://github.com/marcomaggi/vicare.git")
 md5sums=('SKIP')
 _gitname="vicare-scheme"
 
@@ -33,12 +33,12 @@ build() {
   [ -d build ] && rm -rf build
   mkdir build
   cd build
-  LDFLAGS="-Wl,-z,noexecstack" ../configure --prefix=/usr --libexecdir=/usr/lib \
+  ../configure --prefix=/usr --libexecdir=/usr/lib \
 	 --enable-maintainer-mode
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_gitname/build"
   make DESTDIR="$pkgdir" install
 }
