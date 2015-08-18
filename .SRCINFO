@@ -8,12 +8,12 @@ pkgbase = seafile-client
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	depends = seafile-shared>=4.3.4
+	depends = seafile-shared>=4.4.2
 	depends = qt4
 	depends = qtwebkit
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/haiwen/seafile-client/archive/v4.3.4.tar.gz
+	source = seafile-client-v4.3.4.tar.gz::https://github.com/haiwen/seafile-client/archive/v4.3.4.tar.gz
 	md5sums = 137a474aca893cec66e5f1e87dc2d0d1
 
 pkgname = seafile-client
