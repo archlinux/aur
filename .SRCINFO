@@ -11,6 +11,7 @@ pkgbase = steam-native
 	depends = networkmanager
 	optdepends = mono: game dependency
 	optdepends = mono-addins: game dependency
+	noextract = lib32-nm09810.tar.xz
 	options = !emptydirs
 	source = steam-runtime.desktop
 	source = 51-steam.rules
