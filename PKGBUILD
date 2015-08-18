@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20150804
+pkgver=20150817
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -32,7 +32,7 @@ makedepends=('gettext'
 optdepends=('desktop-file-utils: update desktop icon'
             'gtk-update-icon-cache: update desktop icon'
             'python2-amodem: air-gapped transaction signing over audio modem'
-            'python2-btchip: BTChip hardware wallet support'
+            'python2-btchip: Ledger hardware wallet support'
             'python2-jsonrpclib: merchant script'
             'python2-matplotlib: plot transaction history in graphical mode'
             'python2-rpyc: send commands to Electrum Python console from an external script'
