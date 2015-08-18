@@ -10,6 +10,7 @@ pkgdesc="The VP8, VP9 & VP10 Codec SDK (git version)"
 arch=('i686' 'x86_64')
 url="http://www.webmproject.org/"
 license=('BSD')
+depends=('gcc-libs')
 makedepends=('git' 'yasm')
 provides=('libvpx=1.4.0')
 conflicts=('libvpx')
