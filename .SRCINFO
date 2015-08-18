@@ -1,0 +1,24 @@
+pkgbase = gnome-shell-extension-aggregatemenu-hider-git
+	pkgdesc = A generator for Gnome Shell extensions that hide items from the aggregate menu.
+	pkgver = 3
+	pkgrel = 2
+	url = https://github.com/dffischer/gnome-aggregatemenu-hider
+	arch = any
+	license = GPLv3
+	makedepends = waf
+	depends = gnome-shell
+	source = gnome-shell-extension-aggregatemenu-hider-git::git://github.com/dffischer/gnome-aggregatemenu-hider.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-hide-brightness-git
+	pkgdesc = Hides the brightness slider from the aggregate menu
+
+pkgname = gnome-shell-extension-hide-volume-git
+	pkgdesc = Hides the volume controls from the aggregate menu. The volume can still be adjusted via hardware keys
+
+pkgname = gnome-shell-extension-hide-user-git
+	pkgdesc = Hides the switch user sub menu from the aggregated menu, removing the logout option. Handy for a single-user system
+
+pkgname = gnome-shell-extension-hide-location-git
+	pkgdesc = Hides the location options from the aggregate menu
+
