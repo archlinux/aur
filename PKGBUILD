@@ -1,6 +1,6 @@
 # Maintainer: Dominik Fischer <d dot f dot fischer at web dot de>
 pkgname=git-makepkg-template-git
-pkgver=1
+pkgver=r0
 pkgrel=1
 pkgdesc="makepkg-template for git source packages"
 arch=('any')
