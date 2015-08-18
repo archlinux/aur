@@ -1,0 +1,20 @@
+pre_install() {
+	groupadd --system mediatomb
+	useradd -M --no-user-group --system --shell /bin/false --home /var/lib/mediatomb --gid mediatomb mediatomb && passwd -l mediatomb &>/dev/null
+	install --directory --owner=mediatomb --group=mediatomb "/var/lib/mediatomb"
+}
+
+post_install() {
+	systemctl enable mediatomb.service
+	systemctl start mediatomb.service
+}
+
+pre_remove() {
+	systemctl stop mediatomb.service
+	systemctl disable mediatomb.service
+}
+
+post_remove() {
+	userdel mediatomb &>/dev/null
+	groupdel mediatomb &>/dev/null
+}

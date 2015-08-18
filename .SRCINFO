@@ -1,0 +1,32 @@
+pkgbase = mediatomb-git
+	pkgdesc = Free UPnP/DLNA media server mediatomb
+	pkgver = 7ab7616
+	pkgrel = 1
+	url = http://www.mediatomb.cc
+	install = mediatomb.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf>=2.61
+	depends = curl
+	depends = ffmpegthumbnailer
+	depends = file
+	depends = js185
+	depends = libexif
+	depends = libmariadbclient
+	depends = sqlite3
+	depends = taglib
+	provides = mediatomb
+	conflicts = mediatomb
+	backup = etc/conf.d/mediatomb
+	source = git://mediatomb.git.sourceforge.net/gitroot/mediatomb/mediatomb
+	source = mediatomb.install
+	source = mediatomb.service
+	source = mediatomb.conf
+	sha256sums = SKIP
+	sha256sums = a0f9801cd910a574b701359e80906a1d2040b5bc64b6c0510639de2460f2ab6c
+	sha256sums = 62dfa849f8b93af55ef9fe33af8f588113031094e98f29f0daac645caf93db3c
+	sha256sums = c9b43dfa23e58e8c104421733cafa5f441c280db3ede3ee9bfb9bf6a7ade6d8c
+
+pkgname = mediatomb-git
+
