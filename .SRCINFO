@@ -1,7 +1,7 @@
 pkgbase = zeal
 	pkgdesc = Simple offline API documentation browser
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://zealdocs.org/
 	install = zeal.install
@@ -14,8 +14,10 @@ pkgbase = zeal
 	depends = libarchive
 	conflicts = zeal-git
 	source = zeal-0.1.1.tar.gz::https://github.com/jkozera/zeal/archive/v0.1.1.tar.gz
+	source = add_qdatastream_include.patch
 	source = zeal.install
 	sha256sums = f4e959f9bc66a6e350ee8a33d34695379633432d103db9776c0c7a76cbc5a9d6
+	sha256sums = 8aa8b29ea5d0ff06766eac6c8ad659012bfa71b0b62167bb0b2382291be7ad6b
 	sha256sums = 00c8482dd54eaa217682adee62267e8b9e45cc72842cba82ae7de370301cd4eb
 
 pkgname = zeal
