@@ -1,0 +1,17 @@
+pkgbase = upipe-git
+	pkgdesc = Framework designed for the pipeline of multimedia player, transcoder or streamer.
+	pkgver = 0.4.r1226.39e1b6b
+	pkgrel = 1
+	url = http://www.upipe.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = upipe=0.4.r1226.39e1b6b
+	conflicts = upipe
+	options = debug
+	source = git+https://github.com/cmassiot/upipe.git
+	sha256sums = SKIP
+
+pkgname = upipe-git
+
