@@ -7,9 +7,12 @@ pkgbase = python-path-and-address-git
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
+	makedepends = git
 	depends = python
+	provides = python-path-and-address
+	conflicts = python-path-and-address
 	options = !emptydirs
-	source = python-path-and-address-git::git://github.com/joeyespo/path-and-address
+	source = python-path-and-address::git+https://github.com/joeyespo/path-and-address
 	md5sums = SKIP
 
 pkgname = python-path-and-address-git

@@ -9,18 +9,20 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
-source=("$pkgname::git://github.com/joeyespo/path-and-address")
-md5sums=('SKIP')
+
+makedepends+=('git')
+source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+md5sums+=('SKIP')
+provides+=($_gitname)
+conflicts+=($_gitname)
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$_gitname"
   grep -Po "(?<=version=').*(?=',)" setup.py | tr '\n' '.'
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$_gitname"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
