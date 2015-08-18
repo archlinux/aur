@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin-all-localizations
 	pkgdesc = Perl script for installing latest FF beta in the language of your choice
-	pkgver = 40.0b1
+	pkgver = 40.0b2
 	pkgrel = 1
 	url = http://www.mozilla.com/firefox/channel/
 	install = firefox.install
