@@ -20,6 +20,10 @@ This will start create a docker image tagged as php-imagick-aur and build the
 package inside the container.  As a result you should get the built package in
 your current directory.
 
+## License
+php-imagick-aur is licensed under the MIT license.  See [LICENSE](LICENSE) for
+the full license text.
+
 [AUR]: https://aur.archlinux.org/
 [imagick]: http://pecl.php.net/package/imagick
 [makepkg]: https://wiki.archlinux.org/index.php/Makepkg
