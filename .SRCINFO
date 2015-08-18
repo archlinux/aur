@@ -8,6 +8,7 @@ pkgbase = spreed-webrtc-server
 	license = AGPL
 	makedepends = go
 	makedepends = nodejs
+	makedepends = mercurial
 	makedepends = autoconf
 	makedepends = automake
 	conflicts = spreed-webrtc-server-git
