@@ -5,11 +5,11 @@ pkgname=knode
 pkgdesc='News reader for KDE. Standalone version coinstallable with kdepim>=15.08'
 pkgver=4.14.10
 _kdeappver=15.04.3
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://kde.org/applications/internet/knode/"
 license=(GPL LGPL FDL)
-depends=(kdepimlibs4)
+depends=(kdepimlibs4 grantlee-qt4)
 makedepends=(cmake automoc4 boost libxss)
 conflicts=('kdepim-libkdepim<5')
 source=("http://download.kde.org/stable/applications/${_kdeappver}/src/kdepim-${pkgver}.tar.xz")
