@@ -2,11 +2,11 @@ pkgbase = perl-leocharre-strings
 	pkgdesc = Combines string procedures I frequently use
 	pkgver = 1.02
 	pkgrel = 1
-	url = http://search.cpan.org/dist/LEOCHARRE-Strings
+	url = https://metacpan.org/release/LEOCHARRE-Strings
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-smart-comments>=1
+	depends = perl-smart-comments
 	depends = perl-string-prettify>=1.03
 	depends = perl-string-shellquote>=1.03
 	options = !emptydirs
