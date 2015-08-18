@@ -1,0 +1,27 @@
+--- a/configure.in
++++ b/configure.in
+@@ -36,7 +36,7 @@ AM_GLIB_GNU_GETTEXT
+ AC_PROG_INTLTOOL
+
+ # Check for python > 2.4 and pygtk > 2.6
+-AM_PATH_PYTHON_VERSION(2.4, 2.4.0, 2.5, 2.5.0)
++AM_PATH_PYTHON_VERSION(2.4, 2.4.0, 2.5, 2.5.0, 2.6, 2.6.0, 2.7, 2.7.0)
+ AC_DEFUN([required_pygtk_version], [2.6.0])
+ AC_SUBST([PYOPTIONS], [-OOt])
+ AC_MSG_CHECKING(for pygtk >= required_pygtk_version installed)
+
+--- a/ntfs-config.in
++++ b/ntfs-config.in
+@@ -65,12 +65,2 @@ def main(args, opts) :
+-    # Check for ntfs-3g
+-    info = get_diskinfo_backend()()
+-    if not "ntfs-3g" in info.get_drivers("ntfs")["all"].keys() :
+-        dialog("error", _("Read/Write NTFS driver not installed"), \
+-            _("In order to enable write support for your NTFS devices, "
+-              "you'll need first to install the ntfs-3g driver.\n"
+-              "If your distribution don't provide it, you can get it from :\n"
+-              "http://www.ntfs-3g.org"))
+-        return
+-
+     app = NtfsConfig()
+     app.run()

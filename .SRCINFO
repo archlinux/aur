@@ -1,0 +1,24 @@
+pkgbase = ntfs-config
+	pkgdesc = Enable/disable NTFS write support with a simple click
+	pkgver = 1.0.1
+	pkgrel = 13
+	url = http://flomertens.free.fr/ntfs-config/
+	arch = any
+	license = GPL2
+	makedepends = intltool
+	depends = ntfs-3g
+	depends = pygtk
+	depends = udev
+	optdepends = hal: external devices
+	optdepends = gnome-mount: external devices (or any other that can handle ntfs-3g using hal as backend)
+	optdepends = device-mapper: crypt, lvm and raid devices
+	optdepends = e2fsprogs: blkid
+	source = http://l42y.googlecode.com/files/ntfs-config-1.0.1.tar.gz
+	source = ntfs-config.patch
+	sha256sums = 611dbcfa7aebf44ef8ad170d16952e256aec055e4f2cb334cf20a12a75bbdcb2
+	sha256sums = 795d9270667993a638b2c187b7b8340fd9157cbfae2ed35fcc6413d17087e8d2
+	sha512sums = f09cd863b35dfdd53ee24b2f663bf356de5b270f13020553002aadf68c84ea2d2aa704a3b3e7f8e4d0cb468eb5dfc568229cc04c8555ba2848142959e89f0b52
+	sha512sums = 6f4740087a2874c0a0190110ad55554e433b9bc8550f391baec0e34a62f3cee34c28e084849a38f63761fffe5fa901c48b88b73c984d5c76f7c430893b2c3e43
+
+pkgname = ntfs-config
+
