@@ -1,0 +1,17 @@
+post_install() {
+    echo "==> adding  *.dll to etl_bin.pk3 package"
+    cd /usr/lib/etlegacy/legacy/
+    zip etl_bin*.pk3 *.dll
+}
+
+pre_remove() {
+    echo "==> removing  *.dll from etl_bin.pk3 package"
+    cd /usr/lib/etlegacy/legacy/
+    zip -d etl_bin*.pk3 *.dll
+}
+
+post_upgrade() {
+    echo "==> updating  *.dll in etl_bin.pk3 package"
+    cd /usr/lib/etlegacy/legacy/
+    zip etl_bin*.pk3 *.dll
+}
