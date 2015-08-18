@@ -1,0 +1,21 @@
+pkgbase = hrpsys-base
+	pkgdesc = Basic RT components and utilities to control robots using OpenRTM
+	pkgver = 315.6.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = cmake
+	makedepends = doxygen
+	depends = openhrp3
+	depends = openrtm-aist-python
+	depends = libxml2
+	depends = sdl
+	depends = opencv
+	depends = qhull
+	depends = glew
+	source = https://github.com/fkanehiro/hrpsys-base/archive/315.6.0.tar.gz
+	sha256sums = 9cc0c1a6147b65b38f16f53533826dbabd083aae172f0f6ab06760825f5144fe
+
+pkgname = hrpsys-base
+
