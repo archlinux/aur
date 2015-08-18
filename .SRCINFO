@@ -1,0 +1,21 @@
+pkgbase = kaffeine-git
+	pkgdesc = Multimedia player for KDE4
+	pkgver = r1005.500e25f
+	pkgrel = 1
+	url = http://kaffeine.kde.org
+	install = kaffeine-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = vlc
+	provides = kaffeine
+	conflicts = kaffeine
+	source = git://anongit.kde.org/kaffeine.git
+	md5sums = SKIP
+
+pkgname = kaffeine-git
+
