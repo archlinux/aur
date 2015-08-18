@@ -1,7 +1,7 @@
 # Maintainer: Maxim Kraev <maxim.kraev@gmail.com>
 
 pkgname=chef-dk
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 _ubuntuver=raring
 _ubunturel=4
@@ -11,8 +11,8 @@ url="https://downloads.chef.io/chef-dk/"
 license=('Apache')
 depends=()
 conflicts=( chef chef-solo )
-source=("https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.6.2-1_amd64.deb")
-sha512sums=('f840a9561d1d55e853196fed7238a7739b65dfeef0d525ee39d8ffe5e1eea7996559419c60291710e2c5b6e2402f6f3569dbe9d99754c89d7a6e46b450b50164')
+source=("https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb")
+sha512sums=('205bedfc08d47c1e0a98c2e052f17568b4be4c62d8343783959c4bbd61eaad457327da61dda100c78f28175b7744586a37a3f9d7ade559bc086850c3e6d460a6')
 
 
 package() {
@@ -30,5 +30,5 @@ package() {
   for binary in $binaries; do
     ln -sf /opt/chefdk/bin/$binary $pkgdir/usr/bin/ || error_exit "Cannot link $binary to /usr/bin"
   done
-  chown -R 0:0 $pkgdir
+  chown -Rh 0:0 $pkgdir
 }
