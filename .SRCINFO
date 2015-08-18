@@ -1,0 +1,23 @@
+pkgbase = texlive-localmanager-git
+	pkgdesc = A shell and command-line utility to manage TeXLive on Arch Linux
+	pkgver = v0.4.5.r3.g8c9f9e4
+	pkgrel = 1
+	url = http://wiki.archlinux.org/index.php?title=TeXLive#TeXLive_Local_Manager
+	install = tllocalmgr.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = texlive-core>=2011
+	depends = perl-libwww
+	depends = perl-term-shellui
+	depends = perl-term-readline-gnu
+	depends = perl-list-moreutils
+	depends = perl-http-message
+	provides = texlive-localmanager=v0.4.5.r3.g8c9f9e4
+	conflicts = texlive-localmanager
+	replaces = texlive-localmanager
+	source = texlive-localmanager::git://projects.archlinux.org/users/remy/texlive-localmanager.git
+	md5sums = SKIP
+
+pkgname = texlive-localmanager-git
+

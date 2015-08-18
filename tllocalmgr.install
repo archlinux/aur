@@ -1,0 +1,7 @@
+post_install() {
+  cat <<WARNING
+Notice that tllocalmgr only manages packages from the texlive distribution.
+It also often leaves you with very cryptic error messages normally just
+indicating that it could not find the package you were asking it for.
+WARNING
+}
