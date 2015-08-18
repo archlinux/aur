@@ -1,6 +1,6 @@
 pkgbase = py3status
 	pkgdesc = An extensible i3status replacement/wrapper written in python
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://www.ultrabug.fr/tag/py3status/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = py3status
 	depends = python
 	depends = python-setuptools
 	optdepends = i3status: for some of the functionality
-	source = py3status-2.4.tar.gz::https://github.com/ultrabug/py3status/archive/2.4.tar.gz
+	source = py3status-2.5.tar.gz::https://github.com/ultrabug/py3status/archive/2.5.tar.gz
 	sha256sums = 35021e5d9085f6d99de0e406d961cf0f79415ed9eb933181b3cf08b3ebec6826
 
 pkgname = py3status
