@@ -2,7 +2,7 @@
 
 pkgname=spreed-webrtc-server-git
 _pkgname=spreed-webrtc
-pkgver=v0.24.8.r0.g873314e
+pkgver=0.24.8.r0.g873314e
 pkgrel=1
 pkgdesc="WebRTC audio/video call and conferencing server (Development version)"
 url="https://www.spreed.me"
@@ -15,7 +15,7 @@ sha1sums=('SKIP' 847ff91a7b1ae884f73289d386853977eb14a78d)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	echo $(git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g')
+	echo $(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
 }
       
 build() {
