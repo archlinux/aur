@@ -1,6 +1,6 @@
 pkgbase = ruby2.0
 	pkgdesc = An object-oriented language for quick and easy programming
-	pkgver = 2.0.0_p645
+	pkgver = 2.0.0_p647
 	pkgrel = 1
 	url = http://www.ruby-lang.org/en/
 	arch = i686
@@ -24,8 +24,8 @@ pkgbase = ruby2.0
 	options = !emptydirs
 	options = !makeflags
 	options = staticlibs
-	source = http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p645.tar.bz2
-	sha256sums = 2dcdcf9900cb923a16d3662d067bc8c801997ac3e4a774775e387e883b3683e9
+	source = http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p647.tar.bz2
+	sha256sums = 3c3782e313d1ec3ed06c104eafd133cc54ff5183b991786ece9e957fd6cf1cb9
 
 pkgname = ruby2.0
 
