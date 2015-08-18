@@ -1,0 +1,15 @@
+pkgbase = kservicemenueditor
+	pkgdesc = A simple editor for Dolphin service menus
+	pkgver = 0.2a
+	pkgrel = 4
+	url = http://www.sharpley.org.uk/node/3
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = kdebindings-python2
+	source = http://sharpley.org.uk/sites/default/files/software/servicemenu/kservicemenueditor-0.2a.tar.gz
+	md5sums = ec3e5a1b39ebc16ee174ccd195162309
+	sha256sums = fc14ac538da6d039d8bdf69d7606cd47a652e97203e39296ca6c8497c9ab9c4e
+
+pkgname = kservicemenueditor
+
