@@ -2,11 +2,11 @@
 
 pkgname=gam
 pkgver=3.51
-pkgrel=2
+pkgrel=3
 holdver=$pkgver
 pkgdesc="Command line tool for Google Apps Administrators to manage domain and user settings; patched for managed installation"
 arch=('any')
-url="http://code.google.com/p/google-apps-manager/"
+url="https://github.com/jay0lee/GAM"
 license=('Apache')
 depends=('python2')
 makedepends=('tar gzip')
@@ -16,7 +16,7 @@ source=("https://github.com/jay0lee/GAM/archive/v${pkgver}.tar.gz"
         "client_secrets.patch")
 noextract=("v${pkgver}.tar.gz")
 md5sums=('0ab658cb70b375a4634d477edcd02123'
-         'b9f182cf06a9a058c7866a6930aeb755')
+         '89d247a2ab0612c0edf098d0284d9a8b')
 
 build() {
 	cd $srcdir
