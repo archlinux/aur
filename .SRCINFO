@@ -1,0 +1,16 @@
+pkgbase = cryptoverif
+	pkgdesc = Cryptographic protocol verifier in the computational model
+	pkgver = 1.20
+	pkgrel = 1
+	url = http://prosecco.gforge.inria.fr/personal/bblanche/cryptoverif/
+	arch = i686
+	arch = x86_64
+	license = custom:CeCILL-B
+	depends = ocaml
+	optdepends = ocaml-cryptokit
+	source = cryptoverif::http://prosecco.gforge.inria.fr/personal/bblanche/cryptoverif/cryptoverif1.20.tar.gz
+	sha1sums = 067bba576f823b76a3ab2ca1b295fee08b4311a1
+	sha256sums = 72f705acce85034a81da05ba90d51cff55254e273443359ab221f359eef8c603
+
+pkgname = cryptoverif
+
