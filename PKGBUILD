@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-critic'
-pkgver='1.125'
+pkgver='1.126'
 pkgrel='1'
 pkgdesc="Critique Perl source code for best-practices."
 arch=('any')
@@ -12,10 +12,9 @@ depends=('perl-b-keywords>=1.05' 'perl-config-tiny>=2' 'perl-email-address>=1.88
 makedepends=()
 checkdepends=('perl-test-deep')
 url='https://metacpan.org/release/Perl-Critic'
-source=('http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Perl-Critic-1.125.tar.gz')
-md5sums=('c22b0e945cfbc75fadb0a7b110e00de3')
-sha512sums=('f812167d6857bc6da2e8cb6b215aca33e2903e00a4c66aecb8349fcbd1fcb9854de0ee2e5cc000acc67b5023091897e46f59af316cd3c2028a42132a6977a453')
-_distdir="Perl-Critic-1.125"
+source=('http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Perl-Critic-1.126.tar.gz')
+md5sums=('c5c698baa7fd373ea893ff39f29ed7b9')
+_distdir="Perl-Critic-1.126"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

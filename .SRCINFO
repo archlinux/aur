@@ -1,6 +1,6 @@
 pkgbase = perl-critic
 	pkgdesc = Critique Perl source code for best-practices.
-	pkgver = 1.125
+	pkgver = 1.126
 	pkgrel = 1
 	url = https://metacpan.org/release/Perl-Critic
 	arch = any
@@ -25,9 +25,8 @@ pkgbase = perl-critic
 	depends = perl-string-format>=1.13
 	depends = perl-task-weaken
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Perl-Critic-1.125.tar.gz
-	md5sums = c22b0e945cfbc75fadb0a7b110e00de3
-	sha512sums = f812167d6857bc6da2e8cb6b215aca33e2903e00a4c66aecb8349fcbd1fcb9854de0ee2e5cc000acc67b5023091897e46f59af316cd3c2028a42132a6977a453
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Perl-Critic-1.126.tar.gz
+	md5sums = c5c698baa7fd373ea893ff39f29ed7b9
 
 pkgname = perl-critic
 
