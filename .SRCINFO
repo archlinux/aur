@@ -1,0 +1,16 @@
+pkgbase = fx9860g-screenstreamer-qt5
+	pkgdesc = A tool to display the screen of a connected Casio fx-9860g-family calculator
+	pkgver = 25
+	pkgrel = 1
+	url = http://sourceforge.net/p/fxsdk/code/HEAD/tree/screenstreamer/trunk/
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = qt5-base
+	depends = libusb
+	depends = gcc-libs
+	source = svn://svn.code.sf.net/p/fxsdk/code/
+	md5sums = SKIP
+
+pkgname = fx9860g-screenstreamer-qt5
+
