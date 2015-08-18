@@ -1,6 +1,6 @@
 pkgbase = pam-selinux
 	pkgdesc = SELinux aware PAM (Pluggable Authentication Modules) library
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://linux-pam.org
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = pam-selinux
 	depends = libtirpc
 	depends = pambase-selinux
 	depends = libselinux
-	provides = pam=1.2.0-1
-	provides = selinux-pam=1.2.0-1
+	provides = pam=1.2.1-1
+	provides = selinux-pam=1.2.1-1
 	conflicts = pam
 	conflicts = selinux-pam
 	options = !emptydirs
@@ -30,11 +30,11 @@ pkgbase = pam-selinux
 	backup = etc/security/time.conf
 	backup = etc/default/passwd
 	backup = etc/environment
-	source = http://linux-pam.org/library/Linux-PAM-1.2.0.tar.bz2
+	source = http://linux-pam.org/library/Linux-PAM-1.2.1.tar.bz2
 	source = https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
 	source = pam_unix2-glibc216.patch
 	source = pam_unix2-rm_selinux_check_access.patch
-	md5sums = ee4a480d77b341c99e8b1375f8f180c0
+	md5sums = 9dc53067556d2dd567808fd509519dd6
 	md5sums = da6a46e5f8cd3eaa7cbc4fc3a7e2b555
 	md5sums = dac109f68e04a4df37575fda6001ea17
 	md5sums = 6a0a6bb6f6f249ef14f6b21ab9880916
