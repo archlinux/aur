@@ -1,0 +1,19 @@
+pkgbase = xmms2-reseeker
+	pkgdesc = A tiny xmms2 client that skips back a few seconds every time a song resumes from pause.
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/dffischer/xmms2-reseeker
+	install = xmms2-reseeker.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = waf
+	makedepends = git
+	depends = xmms2
+	provides = xmms2-reseeker
+	conflicts = xmms2-reseeker
+	source = xmms2-reseeker::git+https://github.com/dffischer/xmms2-reseeker
+	md5sums = SKIP
+
+pkgname = xmms2-reseeker
+

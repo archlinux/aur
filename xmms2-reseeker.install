@@ -1,0 +1,6 @@
+post_install() {
+  echo 'To activate reseeking in every new startet xmms2d session'
+  echo '  ln -s /usr/share/xmms2/scripts/startup.d/xmms2-reseeker.sh .config/xmms2/startup.d'
+  echo 'from the home directory of the xmms2 user.'
+  echo 'See the manpage for further configuration options.'
+}
