@@ -1,7 +1,7 @@
 pkgbase = pam_kwallet-git
 	pkgdesc = PAM KWallet.
-	pkgver = r58.49a5bc0
-	pkgrel = 2
+	pkgver = r69.91ae142
+	pkgrel = 1
 	url = http://quickgit.kde.org/?p=scratch/afiestas/pam-kwallet.git
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = pam_kwallet-git
 	makedepends = automoc4
 	depends = pam
 	depends = libgcrypt
+	depends = socat
 	provides = pam_kwallet
 	conflicts = pam_kwallet-svn
-	source = git://anongit.kde.org/scratch/afiestas/pam-kwallet.git
+	source = git://anongit.kde.org/kwallet-pam
 	md5sums = SKIP
 
 pkgname = pam_kwallet-git

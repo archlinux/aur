@@ -2,7 +2,7 @@
 
 pkgname=pam_kwallet-git
 pkgver=r69.91ae142
-pkgrel=1
+pkgrel=3
 pkgdesc="PAM KWallet."
 url="http://quickgit.kde.org/?p=scratch/afiestas/pam-kwallet.git"
 license=('LGPL')
