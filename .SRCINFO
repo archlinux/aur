@@ -1,0 +1,19 @@
+pkgbase = etlegacy-mod-i386-git
+	pkgdesc = Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy mod i386)
+	pkgver = 2.74
+	pkgrel = 1
+	url = http://www.etlegacy.com/
+	install = etlegacy-mod-i386.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = zip
+	makedepends = lib32-lua
+	depends = etlegacy-mod-git
+	options = !strip
+	source = git://github.com/etlegacy/etlegacy.git
+	md5sums = SKIP
+
+pkgname = etlegacy-mod-i386-git
+

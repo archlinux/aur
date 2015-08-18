@@ -1,0 +1,17 @@
+post_install() {
+    echo "==> adding  *.so to etl_bin.pk3 package"
+    cd /usr/lib/etlegacy/legacy/
+    zip etl_bin*.pk3 *.so
+}
+
+pre_remove() {
+    echo "==> removing  *.so from etl_bin.pk3 package"
+    cd /usr/lib/etlegacy/legacy/
+    zip -d etl_bin*.pk3 *.mp.i686.so
+}
+
+post_upgrade() {
+    echo "==> updating  *.so in etl_bin.pk3 package"
+    cd /usr/lib/etlegacy/legacy/
+    zip etl_bin*.pk3 *.so
+}
