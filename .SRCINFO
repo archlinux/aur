@@ -1,13 +1,13 @@
 pkgbase = kodi-addon-hts-pvrmanager
 	pkgdesc = Poweroff management for current active recordings and wakeup procedures for future schedules using the XML-Interface of TVHeadend.
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Helly1206/service.hts.pvrmanager
 	install = install
 	arch = any
 	groups = kodi-addons
 	license = GPL
-	depends = kodi
+	depends = kodi tvheadend
 	source = https://github.com/Helly1206/service.hts.pvrmanager/archive/48fd63361f7fbaf042f2fb620eed6ad0ecb2257b.tar.gz
 	md5sums = 883b7674164f0cd406f63f8c627e137e
 
