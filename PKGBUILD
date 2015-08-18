@@ -1,5 +1,5 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-leocharre-basename'
 pkgver='1.08'
@@ -8,9 +8,9 @@ pkgdesc="very basic filename string and path operations such as ext and paths"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
+depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/LEOCHARRE-Basename'
+url='https://metacpan.org/release/LEOCHARRE-Basename'
 source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/LEOCHARRE-Basename-1.08.tar.gz')
 md5sums=('326e383de8392b0509b51c4d25af60f0')
 sha512sums=('ea06509c371cf1905bd67363557873a013450fc322fc7402f6bef9fd5b0f06f2fd2ae8f8ebd7164b13d0ecf7027278b9c036d5d5ec0f8a0c4707212f37d6b1fb')

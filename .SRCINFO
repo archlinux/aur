@@ -2,11 +2,11 @@ pkgbase = perl-leocharre-basename
 	pkgdesc = very basic filename string and path operations such as ext and paths
 	pkgver = 1.08
 	pkgrel = 1
-	url = http://search.cpan.org/dist/LEOCHARRE-Basename
+	url = https://metacpan.org/release/LEOCHARRE-Basename
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl>=0
+	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/LEOCHARRE-Basename-1.08.tar.gz
 	md5sums = 326e383de8392b0509b51c4d25af60f0
