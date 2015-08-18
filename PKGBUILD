@@ -4,19 +4,19 @@
 
 pkgname=thinkingrock
 pkgver=2.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Java-based GTD application"
 arch=('any')
 url="http://www.thinkingrock.com.au"
 license=('CDDL')
-depends=('jre6-compat' 'xdg-utils' 'hicolor-icon-theme' 'gendesk')
+depends=('jre6' 'xdg-utils' 'hicolor-icon-theme' 'gendesk')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/thinkingrock/tr-$pkgver.tar.gz"
         'dirstructure.patch'
         "$pkgname.png"
         "$pkgname.install")
 sha256sums=('f54d3206fed91aacef776f3d66979bc0bb97893e3e922738fa3156c4fcdedc42'
-            '9d2f499543fb5062d38aedd17b480e46ad3c44e4c6e00e583e651d90eaaf3c1e'
+            'e5bd24fafa08bdc2655447c82f0ad1cb282f16d36098f2cac6084205f3c605cb'
             '921b96171fa464fada4362e8bc14e217f23e15aa4745d297b44ec504ce98db06'
             'f8f6bdbcd42d322f7325beaf927b3ef7b5a769070e91d2b89f1a6815f1fa68f7')
 

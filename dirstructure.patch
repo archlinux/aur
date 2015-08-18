@@ -13,7 +13,7 @@ diff -Naur tr-2.0.1.original/bin/tr tr-2.0.1/bin/tr
 -if [ -f "$progdir/../etc/$APPNAME".conf ] ; then
 -    . "$progdir/../etc/$APPNAME".conf
 +
-+jdkhome=/opt/java6/jre
++jdkhome=/usr/lib/jvm/java-6-jre/jre
 +
 +
 +if [ -f "$progdir/etc/$APPNAME".conf ] ; then
