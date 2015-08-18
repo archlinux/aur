@@ -8,7 +8,7 @@ pkgname=lib32-$_pkgname
 _pkgbase=x264
 pkgver=148.20150725
 _apiver=${pkgver%.*}
-pkgrel=3
+pkgrel=4
 pkgdesc='Free library for encoding H264/AVC video streams (32 bit)'
 arch=('x86_64')
 url='http://www.videolan.org/developers/x264.html'
@@ -32,21 +32,15 @@ pkgver() {
 
 build() {
   cd ${srcdir}/${_pkgbase}
-  if [ -n "`pacman -Q hardening-wrapper 2> /dev/null`" ]; then
-    # hardening-wrapper adds -fstack-check (by default)
-    # this effectively reduces the number of available registers
-    # leading to: 'asm' operand has impossible constraints
-    # to compensate we disable PIC and also don't let the wrapper add -fPIE
-    export CFLAGS="$CFLAGS -fno-PIC"
-    ./configure --prefix=/usr --libdir=/usr/lib32 --host=i686-linux-gnu \
-      --enable-shared
-  else
-    # without hardening PIC can safely be enabled
-    export CFLAGS="$CFLAGS -fno-PIC"
-    ./configure --prefix=/usr --libdir=/usr/lib32 --host=i686-linux-gnu \
-      --enable-pic \
-      --enable-shared
-  fi
+  # -fstack-check (default in makepkg.conf) triggers a register allocation
+  # problem in gcc so when PIC is also enabled we get this error:
+  # 'asm' operand has impossible constraints
+  # To compensate we don't enable PIC in configure
+  # we also keep hardening-wrapper from enabling -fPIE
+  #  --enable-pic \
+  export CFLAGS="$CFLAGS -fno-PIC"
+  ./configure --prefix=/usr --libdir=/usr/lib32 --host=i686-linux-gnu \
+    --enable-shared
 
   make
 }
