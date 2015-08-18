@@ -1,0 +1,173 @@
+# Maintainer: M0Rf30
+# Contributor: SÃƒÂ©bastien Luttringer <seblu@aur.archlinux.org>
+# Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Contributor: thotypous <matiasÎ˜archlinux-brÂ·org>
+# Contributor: xduugu <xduuguÎ˜gmxÂ·com>
+# Contributor: Peter 'piie' Feuerer <peterÎ˜piieÂ·net>
+# Contributor: Sascha Pfau <MrPeacockÎ˜gmailÂ·com>
+# Contributor: iggy <iggy.mfÎ˜gmailÂ·com>
+# Contributor: Rainmaker <rainmaker52@gmail.com>
+
+pkgname=virtualbox-bin
+pkgver=5.0.2
+_build=102096
+pkgrel=1
+pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
+arch=('i686' 'x86_64')
+url='http://virtualbox.org/'
+license=('GPL2')
+options=('!strip')
+depends=(
+  'dkms'
+  'fontconfig'
+  'gcc'
+  'libgl'
+  'libidl2'
+  'libxcursor'
+  'libxinerama'
+  'libxmu'
+  'linux-headers'
+  'python2'
+  'sdl'
+)
+optdepends=('virtualbox-ext-oracle: for Oracle extensions')
+provides=("virtualbox=${pkgver}")
+conflicts=('virtualbox' 'virtualbox-ose' 'virtualbox-modules')
+replaces=('virtualbox_bin' 'virtualbox-sun')
+backup=('etc/vbox/vbox.cfg' 'etc/conf.d/vboxweb')
+install='install'
+_arch='amd64'
+[[ "${CARCH}" = i686 ]] && _arch='x86'
+source=(
+  "VirtualBox-${pkgver}-${_build}-Linux_${_arch}.run::http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_${_arch}.run"
+  'VBoxFixUSB'
+  '10-vboxdrv.rules'
+  'vboxweb.rc'
+  'vboxweb.conf'
+)
+
+
+md5sums=('a32555a8d8af6e3b562adb6b259fb4ee'
+         '2d04c2e2d8c71558c910a51ec773731a'
+         'fe60f9510502bea67383d9198ae8c13c'
+         'c159d683ba1947290fc2ad2c64194150'
+         '3ac185709bfe688bb753c46e170d0546')
+
+_installdir='/opt/VirtualBox'
+
+package() {
+  # Check and unpack the run package via sh(1)
+  sh "VirtualBox-$pkgver-$_build-Linux_$_arch.run" --check
+  echo yes | sh "VirtualBox-$pkgver-$_build-Linux_$_arch.run" --target "$srcdir" \
+    --nox11 --noexec &> /dev/null
+
+  # Unpack bundled files
+  install -d "$pkgdir/$_installdir"
+  cd "$pkgdir/$_installdir"
+  tar -xjf "$srcdir/VirtualBox.tar.bz2"
+
+  # Hardened build: Mark binaries suid root, create symlinks for working around
+  #                 unsupported $ORIGIN/.. in VBoxC.so and make sure the
+  #                 directory is only writable by the user (paranoid).
+  chmod 4511 VirtualBox VBox{SDL,Headless,NetDHCP,NetAdpCtl}
+  for _lib in VBox{VMM,REM,RT,DDU,XPCOM}.so; do
+    ln -sf "$_installdir/$_lib" "components/$_lib"
+  done
+  chmod go-w .
+
+  # Replace VirtualBox built-in Qt by system Qt libraries (disabled as of
+  # 2010-03-26, 3.1.6-1)
+  #for _lib in libQt{Core,Gui,Network,OpenGL}; do
+  #  rm "${_lib}VBox.so.4"
+  #  ln -s "/usr/lib/${_lib}.so.4" "${_lib}VBox.so.4"
+  #done
+
+  # Install the SDK
+  pushd 'sdk/installer'
+  VBOX_INSTALL_PATH="${_installdir}" python2 vboxapisetup.py install --root "${pkgdir}"
+  rm -r -f build
+  popd
+
+  # Install udev rules
+  install -D -m 0644 "$srcdir/10-vboxdrv.rules" "$pkgdir/usr/lib/udev/rules.d/10-vboxdrv.rules"
+  # we need to move and not symlink VBoxCreateUSBNode.sh in /usr/lib/udev to avoid udevd
+  # to look /opt when /opt is not mounted. This can be done until VBoxCreateUSBNode.sh doesn't
+  # need more stuff from /opt
+  mv VBoxCreateUSBNode.sh "$pkgdir/usr/lib/udev/"
+
+  # Install Fixusb script
+  install -D -m 0755 "$srcdir/VBoxFixUSB" VBoxFixUSB
+
+  # Patch "vboxshell.py" to use Python 2.x instead of Python 3
+  sed -i 's#/usr/bin/python#\02#' vboxshell.py
+
+  # Update Arch initscripts way of life in VBox.sh
+  sed -i -e 's,sudo /etc/init.d/vboxdrv setup,/etc/rc.d/dkms start,g' \
+    "$pkgdir/$_installdir/VBox.sh"
+  sed -i -e 's,sudo /etc/init.d/vboxdrv restart,/etc/rc.d/dkms start,g' \
+    "$pkgdir/$_installdir/VBox.sh"
+
+  # Install vboxweb initscript
+  install -D -m 0755 "$srcdir/vboxweb.rc" "$pkgdir/etc/rc.d/vboxweb"
+  install -D -m 0644 "$srcdir/vboxweb.conf" "$pkgdir/etc/conf.d/vboxweb"
+
+  # Symlink the launchers. Second link can fail if fs is not case sensitive.
+  install -d -m 0755 "$pkgdir/usr/bin"
+  for _bin in VirtualBox VBox{Headless,Manage,SDL,SVC,Tunctl,NetAdpCtl,FixUSB} rdesktop-vrdp; do
+    ln -s "$_installdir/$_bin" "$pkgdir/usr/bin/$_bin"
+    ln -s "$_installdir/$_bin" "$pkgdir/usr/bin/${_bin,,}" &>/dev/null || :
+  done
+
+  # Symlink the desktop icon and ".desktop" files
+  install -d -m 0755 "$pkgdir/usr/"{share/applications,share/pixmaps}
+  ln -s "$_installdir/VBox.png" "$pkgdir/usr/share/pixmaps/VBox.png"
+  ln -s "$_installdir/icons/128x128/virtualbox.png" "$pkgdir/usr/share/pixmaps/virtualbox.png"
+  ln -s "$_installdir/virtualbox.desktop" "$pkgdir/usr/share/applications/virtualbox.desktop"
+
+  # Symlink mime info
+  install -d -m 0755 "$pkgdir/usr/share/mime/packages"
+  ln -s "$_installdir/virtualbox.xml" "$pkgdir/usr/share/mime/packages/virtualbox.xml"
+
+  # Symlink doc
+  install -d -m 0755 "$pkgdir/usr/share/doc/$pkgname"
+  ln -s "$_installdir/VirtualBox.chm" "$pkgdir/usr/share/doc/$pkgname/virtualbox.chm"
+
+  # Symlink module sources in /usr/src
+  install -d -m 0755 "$pkgdir/usr/src"
+  ln -s "$_installdir/src/vboxhost" "$pkgdir/usr/src/vboxhost-$pkgver"
+
+  # Symlink icons
+  pushd icons
+  for _dir in *; do
+    cd "$_dir"
+    install -d -m 0755 "$pkgdir/usr/share/icons/hicolor/$_dir/"{apps,mimetypes}
+    for _icon in *; do
+      if [[ "$_icon" = 'virtualbox.png' ]]; then
+          ln -s "$_installdir/icons/$_dir/$_icon" "$pkgdir/usr/share/icons/hicolor/$_dir/apps/$_icon"
+      else
+          ln -s "$_installdir/icons/$_dir/$_icon" "$pkgdir/usr/share/icons/hicolor/$_dir/mimetypes/$_icon"
+      fi
+    done
+    cd - >/dev/null
+  done
+  popd
+
+  # Write the configuration file
+  install -D -m 0644 /dev/null "$pkgdir/etc/vbox/vbox.cfg"
+  cat > "$pkgdir/etc/vbox/vbox.cfg" <<EOF
+# VirtualBox installation directory"
+INSTALL_DIR='$_installdir'
+
+# VirtualBox version
+INSTALL_VER='$pkgver'
+INSTALL_REV='$_build'
+EOF
+
+  # Register into DKMS
+  install -dm 755 "$pkgdir/var/lib/dkms/vboxhost/$pkgver"
+  ln -s '/opt/VirtualBox/src/vboxhost' "$pkgdir/var/lib/dkms/vboxhost/$pkgver/source"
+
+}
+
+# vim:set ts=2 sw=2 ft=sh et:
+
