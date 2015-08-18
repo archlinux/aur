@@ -1,0 +1,16 @@
+pkgbase = worklog-git
+	pkgdesc = A script to help you manage your notes and access them quickly
+	pkgver = 0.r21.79801a0
+	pkgrel = 1
+	url = https://github.com/winged/worklog
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = python
+	depends = sqlite
+	provides = worklog
+	source = worklog-git::git://github.com/winged/worklog.git
+	sha256sums = SKIP
+
+pkgname = worklog-git
+
