@@ -3,15 +3,15 @@
 
 pkgname=kmozillahelper
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Mozilla KDE Integration"
 url="https://build.opensuse.org/package/show/openSUSE:Factory/mozilla-kde4-integration"
 arch=("i686" "x86_64")
 license=('MIT')
-depends=("kdebase-workspace")
+depends=("kdelibs")
 makedepends=("cmake" "automoc4")
+source=("${pkgname}-${pkgver}.tar.bz2::https://build.opensuse.org/source/openSUSE:Factory/mozilla-kde4-integration/${pkgname}-${pkgver}.tar.bz2")
 
-source=("https://build.opensuse.org/package/rawsourcefile/openSUSE:Factory/mozilla-kde4-integration/${pkgname}-${pkgver}.tar.bz2")
 
 build() {
 	mkdir "$srcdir/$pkgname-build"
