@@ -28,7 +28,8 @@ optdepends=('mercurial: for fetching sources from mercurial repositories'
 conflicts=(go)
 provides=(go)
 install="$pkgname.install"
-source=("$pkgname-$pkgver::git+https://go.googlesource.com/go#tag=$_gitname$pkgver")
+#source=("$pkgname-$pkgver::git+https://go.googlesource.com/go#tag=$_gitname$pkgver")
+source=("$pkgname-$pkgver::git+https://github.com/golang/go.git#tag=$_gitname$pkgver")
 md5sums=('SKIP')
 
 build() {
