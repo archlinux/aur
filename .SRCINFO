@@ -1,0 +1,20 @@
+pkgbase = n98-magerun
+	pkgdesc = The swiss army knife for Magento developers, sysadmins and devops.
+	pkgver = 1.97.5
+	pkgrel = 1
+	url = http://magerun.net/
+	arch = any
+	license = MIT
+	makedepends = php
+	makedepends = php-composer
+	makedepends = wget
+	makedepends = git
+	depends = php
+	backup = usr/share/n98-magerun/php.ini
+	source = https://github.com/netz98/n98-magerun/archive/1.97.5.tar.gz
+	source = php.ini
+	sha256sums = b6e7f8db86c393a6227c13af339a4de369618c7e70fac6f2838223a90208e296
+	sha256sums = d60d6f4a53854ce9b7b638044f498f1b1a269615f0e5310653632aab4c61b909
+
+pkgname = n98-magerun
+
