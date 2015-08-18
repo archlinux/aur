@@ -7,8 +7,13 @@ pkgbase = python-argparse-manpager-git
 	arch = x86_64
 	license = GPL3
 	makedepends = waf
+	makedepends = git
 	depends = python
 	optdepends = waf: to use the corresponding waf tool
+	provides = python-argparse-manpager
+	conflicts = python-argparse-manpager
+	source = python-argparse-manpager::git+https://github.com/dffischer/argparse-manpager
+	md5sums = SKIP
 
 pkgname = python-argparse-manpager-git
 
