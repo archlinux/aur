@@ -3,7 +3,7 @@
 
 pkgname=dbmain
 pkgver=9.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free data-modeling and data-architecture tool"
 arch=(i686 x86_64)
 url=http://www.db-main.eu/
