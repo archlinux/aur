@@ -1,0 +1,16 @@
+pkgbase = ruby-ethon
+	pkgdesc = Libcurl wrapper.
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/typhoeus/ethon
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-ffi
+	noextract = ethon-0.7.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ethon-0.7.4.gem
+	sha1sums = 0d0541c27cdbd645e4f7c8a40a88828558ed7659
+
+pkgname = ruby-ethon
+
