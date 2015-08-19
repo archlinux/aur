@@ -13,6 +13,7 @@ sha256sums=('03062c8bd5c0cd92dda0278421ca59ca14fff433cb430a200e9e8f56b7cc602e')
 install="${pkgname}.install"
 
 package() {
+    cd "$pkgname-$pkgver"
     install -Dm755 pia-tools "$pkgdir"/usr/bin/pia-tools
     install -Dm644 pia-tools.groff "$pkgdir"/usr/share/man/man1/pia-tools.1
     install -Dm644 pia@.service "$pkgdir"/usr/lib/systemd/system/pia@.service
