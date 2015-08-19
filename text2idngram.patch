@@ -1,0 +1,39 @@
+From 15f3b4f0eed26c2d66fd07552552c07a7318d983 Mon Sep 17 00:00:00 2001
+From: Alain Kalker <a.c.kalker@gmail.com>
+Date: Wed, 19 Aug 2015 22:38:26 +0200
+Subject: [PATCH 2/2] freespeech: Fix invocation of text2idngram
+
+- Change to temp directory
+- Pass idngram file
+---
+ freespeech.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/freespeech.py b/freespeech.py
+index afe2860..72acffc 100755
+--- a/freespeech.py
++++ b/freespeech.py
+@@ -27,7 +27,7 @@ import gobject
+ gobject.threads_init()
+ import gst
+ import subprocess
+-import platform, os, shutil, sys, codecs
++import platform, os, shutil, sys, codecs, tempfile
+ import appdirs
+ import re
+ import json
+@@ -295,8 +295,9 @@ If new commands don't work click the learn button to train them.")
+             self.err('Trouble writing ' + vocab)
+         # update the idngram\
+         # http://www.speech.cs.cmu.edu/SLM/toolkit_documentation.html#text2idngram
+-        if subprocess.call('text2idngram -vocab ' + vocab + \
+-            ' -n 3 < ' + lang_ref + ' > ' + idngram, shell=True):
++        if subprocess.call('cd ' + tempfile.gettempdir() + '; ' + \
++            'text2idngram -vocab ' + vocab + ' -idngram ' + idngram + \
++            ' -n 3 < ' + lang_ref, shell=True):
+             self.err('Trouble writing ' + idngram)
+         
+         # (re)build arpa language model
+-- 
+2.5.0
+

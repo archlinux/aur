@@ -1,0 +1,47 @@
+From b2523cb6c10d8c4e09fb02e7181935f27338dd72 Mon Sep 17 00:00:00 2001
+From: Alain Kalker <a.c.kalker@gmail.com>
+Date: Mon, 17 Aug 2015 18:49:30 +0200
+Subject: [PATCH 1/2] Fix refdir and confdir paths
+
+- Make refdir path absolute, refer to actual installation directory.
+- Determine confdir in an OS-neutral way (depends on appdirs module).
+---
+ freespeech.py | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
+
+diff --git a/freespeech.py b/freespeech.py
+index 45aa8a5..afe2860 100755
+--- a/freespeech.py
++++ b/freespeech.py
+@@ -28,25 +28,15 @@ gobject.threads_init()
+ import gst
+ import subprocess
+ import platform, os, shutil, sys, codecs
++import appdirs
+ import re
+ import json
+ from send_key import *
+ 
+ """ global variables """
+ appname = 'FreeSpeech'
+-refdir = 'lm'
+-
+-# hmmm, where to put files? How about XDG_CONFIG_HOME?
+-# This will work on most Linux
+-if os.environ.has_key('XDG_CONFIG_HOME'):
+-    confhome = os.environ['XDG_CONFIG_HOME']
+-    confdir  = os.path.join(confhome, appname)
+-else:
+-    if os.environ.has_key('HOME'):
+-        confhome = os.path.join(os.environ['HOME'],".config")
+-        confdir  = os.path.join(confhome, appname)
+-    else:
+-        confdir = refdir
++refdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lm')
++confdir = appdirs.user_config_dir(appname)
+ 
+ # reference files written by this application
+ lang_ref= os.path.join(confdir, 'freespeech.ref.txt')
+-- 
+2.5.0
+
