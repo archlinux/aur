@@ -2,7 +2,7 @@
 # Contributor: SpotlightKid
 pkgname=libgig-svn
 _pkgname="${pkgname%-svn}"
-pkgver=r2658    
+pkgver=r2835
 pkgrel=1
 pkgdesc="Gigasampler file access library"
 arch=("i686" "x86_64")
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make -f Makefile.cvs
+  make -f Makefile.svn
   ./configure --prefix=/usr
   make
 }
