@@ -14,11 +14,11 @@ optdepends=('insync-nautilus: file-manager integration for nautilus'
             'sni-qt: To show the icon in Plasma 5 tray')
 arch=('i686' 'x86_64')
 source=('insync.service')
+source_i686=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-trusty_i386.deb")
+source_x86_64=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-trusty_amd64.deb")
 sha256sums=('995d9131bd454015ff11414d002b8927b7397835969e27061008264c0c5f225d')
 sha256sums_i686=('87a2390400fa40ce00717087805e096d0ea16f774e4bac1cec40fb46192eae65')
 sha256sums_x86_64=('423170713180bb65fb3c2a7143514c9fabd3893c7a4e2c4b5dd3325e62a093d5')
-source_i686=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-trusty_i386.deb")
-source_x86_64=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-trusty_amd64.deb")
 
 package() {
    cd $srcdir
