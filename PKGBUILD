@@ -2,8 +2,8 @@
 
 pkgname=breeze-lxqt
 pkgver=1.2
-pkgrel=0
-pkgdesk="Variant of breeze-dark for lxqt"
+pkgrel=1
+pkgdesc="Variant of breeze-dark for lxqt"
 url="http://kde-look.org/content/show.php/?content=165578"
 license="cc-by-nc-nd-4.0"
 arch=any

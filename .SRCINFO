@@ -1,11 +1,12 @@
 pkgbase = breeze-lxqt
+	pkgdesc = Variant of breeze-dark for lxqt
 	pkgver = 1.2
-	pkgrel = 0
+	pkgrel = 1
 	url = http://kde-look.org/content/show.php/?content=165578
 	arch = any
 	license = cc-by-nc-nd-4.0
 	source = http://esclapion.free.fr/AUR/breeze-lxqt-1.2.tar.gz
-	md5sums = 6902234a33547b4e1f041b6b5250865a
+	md5sums = 66230a49dfa434b92145b96316f6feb2
 
 pkgname = breeze-lxqt
 
