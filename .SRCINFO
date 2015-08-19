@@ -1,6 +1,6 @@
 pkgbase = jdk-docs
 	pkgdesc = Documentation for Oracle Java Development Kit
-	pkgver = 8u51
+	pkgver = 8u60
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = jdk-docs
 	optdepends = java-runtime>=8: Run the examples
 	optdepends = java-environment>=8: Compile and run the examples
 	options = !strip
-	source = http://download.oracle.com/otn-pub/java/jdk/8u51-b16/jdk-8u51-docs-all.zip
-	source = http://download.oracle.com/otn-pub/java/javafx/8.0.51-b16/javafx-8u51-apidocs.zip
+	source = http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-docs-all.zip
+	source = http://download.oracle.com/otn-pub/java/javafx/8.0.60-b27/javafx-8u60-apidocs.zip
 	source = LICENSE-Documentation
 	source = LICENSE-JavaFX
 	md5sums = 319c85a9b3e282749b53df07fda2cb94

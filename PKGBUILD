@@ -4,8 +4,8 @@
 
 pkgname=('jdk-docs' 'javafx-docs')
 _major=8
-_minor=51
-_build=b16
+_minor=60
+_build=b27
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Documentation for Oracle Java Development Kit"
