@@ -4,10 +4,10 @@
 _pkgname=jre
 pkgname=bin32-jre
 _major=8
-_minor=51
-_build=b16
+_minor=60
+_build=b27
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc="Oracle Java Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -48,7 +48,7 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '271b97a9b95d809a99999ec5fb74313c')
-md5sums_x86_64=('f234dacdff97e6ac5ff3e85d58f2d158')
+md5sums_x86_64=('')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
