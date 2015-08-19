@@ -1,4 +1,5 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
+# Contributor: perlawk
 
 pkgname=dlib
 _pkgname=dlib
