@@ -20,14 +20,14 @@ source=(glcs::git+https://github.com/lano1106/glcs.git)
 md5sums=('SKIP')
 
 prepare(){
-	cd "${srcdir}/$pkgname"
+	cd "${srcdir}/glcs"
 
 	git submodule init
 	git submodule update
 }
 
 build() {
-	cd "${srcdir}/$pkgname"
+	cd "${srcdir}/glcs"
 	DESTDIR=$pkgdir/usr
 	if [ $CARCH == "x86_64" ]; then
 		CFLAGS="$CFLAGS -m64"
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/$pkgname"
+	cd "${srcdir}/glcs"
 	DESTDIR=$pkgdir/usr
 	./package.sh $DESTDIR || return 1;
 }
