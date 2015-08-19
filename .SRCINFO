@@ -1,7 +1,7 @@
 pkgbase = diamond
 	pkgdesc = Diamond is daemon that collects system metrics and publishes them to graphite and others
 	pkgver = 4.0.41
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/python-diamond/Diamond
 	arch = any
 	license = mit
@@ -16,7 +16,7 @@ pkgbase = diamond
 	source = https://pypi.python.org/packages/source/d/diamond/diamond-4.0.41.tar.gz
 	source = diamond.service
 	md5sums = 063ee62fc30a678260df582335a583c3
-	md5sums = 98d7bd00ba751ab416c325eda82e740f
+	md5sums = 4294f34a8a4644c28788b997dcb4ba22
 
 pkgname = diamond
 

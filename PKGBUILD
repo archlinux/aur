@@ -3,7 +3,7 @@
 
 pkgname=diamond
 pkgver=4.0.41
-pkgrel=2
+pkgrel=3
 pkgdesc="Diamond is daemon that collects system metrics and publishes them to graphite and others"
 arch=(any)
 url="https://github.com/python-diamond/Diamond"
@@ -18,7 +18,7 @@ backup=(etc/diamond/diamond.conf)
 source=("https://pypi.python.org/packages/source/d/diamond/diamond-${pkgver}.tar.gz"
         'diamond.service')
 md5sums=('063ee62fc30a678260df582335a583c3'
-         '98d7bd00ba751ab416c325eda82e740f')
+         '4294f34a8a4644c28788b997dcb4ba22')
 
 package() {
 	cd "$srcdir/diamond-${pkgver}"
