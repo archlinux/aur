@@ -1,7 +1,7 @@
 # Maintainer: Patrice Peterson <runiq at archlinux dot us>
 pkgname=dmenu-pango-imlib
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="dmenu with pango and imlib support"
 arch=('i686' 'x86_64')
 url="https://github.com/Cloudef/dmenu-pango-imlib"
@@ -20,5 +20,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
