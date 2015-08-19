@@ -3,12 +3,12 @@
 
 pkgname='perl-critic'
 pkgver='1.126'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Critique Perl source code for best-practices."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-b-keywords>=1.05' 'perl-config-tiny>=2' 'perl-email-address>=1.889' 'perl-exception-class>=1.23' 'perl-file-homedir' 'perl-file-which' 'perl-io-string' 'perl-list-moreutils>=0.19' 'perl-module-pluggable>=3.1' 'perl-ppi>=1.220' 'perl-ppix-regexp>=0.027' 'perl-ppix-utilities' 'perl-tidy' 'perl-pod-spell>=1' 'perl-readonly>=2' 'perl-string-format>=1.13' 'perl-task-weaken')
+depends=('perl-module-build' 'perl-b-keywords>=1.05' 'perl-config-tiny' 'perl-email-address>=1.889' 'perl-exception-class>=1.23' 'perl-file-homedir' 'perl-file-which' 'perl-io-string' 'perl-list-moreutils>=0.19' 'perl-module-pluggable>=3.1' 'perl-ppi>=1.220' 'perl-ppix-regexp>=0.027' 'perl-ppix-utilities' 'perl-tidy' 'perl-pod-spell' 'perl-readonly' 'perl-string-format>=1.13' 'perl-task-weaken')
 makedepends=()
 checkdepends=('perl-test-deep')
 url='https://metacpan.org/release/Perl-Critic'
