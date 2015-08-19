@@ -1,18 +1,6 @@
-diff -ruN dlib-18.16/dlib/cmake dlib-18.16-fixed/dlib/cmake
---- dlib-18.16/dlib/cmake	2015-06-04 08:15:45.000000000 +0800
-+++ dlib-18.16-fixed/dlib/cmake	2015-06-12 09:59:41.793632173 +0800
-@@ -16,7 +16,7 @@
-     # By default, g++ won't warn or error if you forget to return a value in a
-     # function which requires you to do so.  This option makes it give a warning
-     # for doing this. 
--    add_definitions("-Wreturn-type")
-+    set(${CMAKE_CXX_FLAGS} "${CMAKE_CXX_FLAGS} -Wreturn-type")
- endif()
- 
- # Setup some options to allow a user to enable SSE and AVX instruction use.  
-diff -ruN dlib-18.16/dlib/cmake_find_blas.txt dlib-18.16-fixed/dlib/cmake_find_blas.txt
---- dlib-18.16/dlib/cmake_find_blas.txt	2015-06-04 08:15:45.000000000 +0800
-+++ dlib-18.16-fixed/dlib/cmake_find_blas.txt	2015-06-12 09:59:41.793632173 +0800
+diff -ruN dlib-18.17/dlib/cmake_find_blas.txt dlib-18.17-fixed/dlib/cmake_find_blas.txt
+--- dlib-18.17/dlib/cmake_find_blas.txt	2015-08-16 10:26:10.000000000 +0800
++++ dlib-18.17-fixed/dlib/cmake_find_blas.txt	2015-08-19 16:23:12.199042876 +0800
 @@ -261,6 +261,89 @@
      endif()
  
@@ -103,9 +91,9 @@ diff -ruN dlib-18.16/dlib/cmake_find_blas.txt dlib-18.16-fixed/dlib/cmake_find_b
  endif()
  
  
-diff -ruN dlib-18.16/dlib/CMakeLists.txt dlib-18.16-fixed/dlib/CMakeLists.txt
---- dlib-18.16/dlib/CMakeLists.txt	2015-06-04 08:15:45.000000000 +0800
-+++ dlib-18.16-fixed/dlib/CMakeLists.txt	2015-06-12 09:59:41.793632173 +0800
+diff -ruN dlib-18.17/dlib/CMakeLists.txt dlib-18.17-fixed/dlib/CMakeLists.txt
+--- dlib-18.17/dlib/CMakeLists.txt	2015-08-16 10:26:10.000000000 +0800
++++ dlib-18.17-fixed/dlib/CMakeLists.txt	2015-08-19 16:23:12.202376276 +0800
 @@ -227,6 +227,7 @@
           if (PNG_FOUND AND LIBPNG_IS_GOOD)
              include_directories(${PNG_INCLUDE_DIR})
