@@ -1,25 +1,28 @@
-# Maintainer: Moritz Kiefer <moritz.kiefer at gmail dot com>
+# Maintainer: Moritz Kiefer <moritz.kiefer at purelyfunctional dot org>
 # Contributor: Jiri Prochazka <ojirio at gmail dot com>
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=linuxsampler-svn
 _pkgname="${pkgname%-svn}"
-pkgver=r2729
+pkgver=r2835
 pkgrel=1
 pkgdesc="Sampler backend, including sampler engine, audio and MIDI drivers, network layer (LSCP) API and native C++ API"
 arch=("i686" "x86_64")
 url="http://www.linuxsampler.org/"
 license=("GPL" "custom")
-depends=("libgig-svn" "jack" "sqlite" "util-linux" "perl-xml-parser")
+depends=("libgig-svn" "jack" "sqlite" "perl-xml-parser")
 makedepends=("subversion" "ladspa" "dssi")
 optdepends=()
 provides=('linuxsampler')
 conflicts=('linuxsampler')
 options=("libtool")
 source=("$pkgname"::"svn+https://svn.linuxsampler.org/svn/$_pkgname/trunk"
+        "http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip"
         "license.txt")
 sha256sums=('SKIP'
+            '74e41da563a1c91e86677530936cb46a15f1af76b29d4c1877134cf29eafb718'
             'fe9613dc00d4dafdbe9132ba00e82b0c6f333c53dffe02e29a8dfe1753c7b622')
 
 pkgver() {
@@ -30,8 +33,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make -f Makefile.cvs
-  ./configure --prefix=/usr --enable-vst-sdk=../vstsdk2.4
+  make -f Makefile.svn
+  ./configure --prefix=/usr --enable-vstsdk-dir="$srcdir/VST3 SDK"
   make
 }
 
