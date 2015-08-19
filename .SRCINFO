@@ -1,6 +1,6 @@
 pkgbase = borgbackup-git
 	pkgdesc = A deduplicating backup program for efficient and secure backups
-	pkgver = 0.23.0.r86.g3be55be
+	pkgver = 0.24.0.r50.g0926c28
 	pkgrel = 1
 	url = https://borgbackup.github.io/
 	arch = i686
