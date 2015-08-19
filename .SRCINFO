@@ -12,8 +12,8 @@ pkgbase = jdk-docs
 	source = http://download.oracle.com/otn-pub/java/javafx/8.0.60-b27/javafx-8u60-apidocs.zip
 	source = LICENSE-Documentation
 	source = LICENSE-JavaFX
-	md5sums = 319c85a9b3e282749b53df07fda2cb94
-	md5sums = 7d0053378c31298c3a32df53894710c0
+	md5sums = 58cfb0cf82a4dabdbf5129a2ab21118f
+	md5sums = 923897d15e66eb479f121219cabb24af
 	md5sums = 4d54057ca75b691366977dab2277e869
 	md5sums = b2a9fa7a855645ba5e1ea2ea555cce25
 

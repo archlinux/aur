@@ -19,8 +19,8 @@ source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver
         "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/javafx-$pkgver-apidocs.zip"
         'LICENSE-Documentation'
         'LICENSE-JavaFX')
-md5sums=('319c85a9b3e282749b53df07fda2cb94'
-         '7d0053378c31298c3a32df53894710c0'
+md5sums=('58cfb0cf82a4dabdbf5129a2ab21118f'
+         '923897d15e66eb479f121219cabb24af'
          '4d54057ca75b691366977dab2277e869'
          'b2a9fa7a855645ba5e1ea2ea555cce25')
 
