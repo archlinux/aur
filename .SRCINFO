@@ -1,14 +1,14 @@
 pkgbase = xidel
 	pkgdesc = A command line tool to download and extract data from html/xml pages
-	pkgver = 0.8.4
+	pkgver = 0.9
 	pkgrel = 1
 	url = http://videlibri.sourceforge.net/xidel.html
 	arch = x86_64
 	arch = i686
 	license = GPL
 	optdepends = openssl: for HTTPS connections
-	source = xidel-0.8.4.src.tar.gz::http://sourceforge.net/projects/videlibri/files/Xidel/Xidel%200.8.4/xidel-0.8.4.linux32.tar.gz/download
-	md5sums = 6951145a8ac3f10af675b38a41d02b7d
+	source = xidel-0.9.src.tar.gz::http://sourceforge.net/projects/videlibri/files/Xidel/Xidel%200.9/xidel-0.9.linux32.tar.gz/download
+	md5sums = c2843b8baf400bf4ac140bfe4d12d48a
 
 pkgname = xidel
 
