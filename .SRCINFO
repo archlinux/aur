@@ -1,0 +1,14 @@
+pkgbase = ruby-net-http-pipeline
+	pkgdesc = An HTTP/1.1 pipelining implementation atop Net::HTTP
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://docs.seattlerb.org/net-http-pipeline
+	arch = any
+	depends = ruby
+	noextract = net-http-pipeline-1.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/net-http-pipeline-1.0.1.gem
+	sha1sums = a4054e2def2ea1ef570dccc6c26d8875d38c24e8
+
+pkgname = ruby-net-http-pipeline
+
