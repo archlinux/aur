@@ -24,9 +24,11 @@ pkgbase = jasp-desktop-git
 	source = jasp-desktop::git+https://github.com/jasp-stats/jasp-desktop.git
 	source = https://static.jasp-stats.org/development/R%20U1410%20for%20JASP%20%282015-02-19%29.zip
 	source = rbundle.R
+	source = jasp-desktop.svg
 	md5sums = SKIP
 	md5sums = 03a719ec42763bed930fe265c8cd3b41
 	md5sums = 21deab63134207840ff88bdc39504ef1
+	md5sums = bcaf403001283553bb63b72c268d0290
 
 pkgname = jasp-desktop-git
 

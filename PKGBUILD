@@ -14,7 +14,8 @@ provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
 source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git" 
         "https://static.jasp-stats.org/development/R%20U1410%20for%20JASP%20%282015-02-19%29.zip"
-	"rbundle.R")
+	"rbundle.R"
+	"jasp-desktop.svg")
 options=("!strip" "debug")
 
 pkgver() {
@@ -58,8 +59,6 @@ prepare() {
 	  echo "Restoring previously created R bundle"
 	  cp -r $srcdir/RBundle/* ./R
   fi
-  #term.h needs #include <vector>
-  #sed -i -e '5i\#include <vector>\n' $srcdir/$_pkgname/JASP-Desktop/term.h
 
   echo "Creating Makefile"
   qmake PREFIX=/usr ../$_pkgname
@@ -68,13 +67,6 @@ prepare() {
 build() {
   cd $srcdir/$_buildname
   make 
-
-  #Grab icon
-  cd $srcdir/$_pkgname/JASP-Desktop/
-  mkdir imgs
-  icoutils -x -o imgs -w 256 icon.ico
-  cd imgs
-  mv icon_1_256x256x32.png jasp-desktop.png
 }
 
 package() {
@@ -85,7 +77,7 @@ package() {
 
   #Install icon
   mkdir -p $pkgdir/usr/share/pixmaps/
-  cp $srcdir/$_pkgname/JASP-Desktop/imgs/jasp-desktop.png $pkgdir/usr/share/pixmaps
+  cp $srcdir/jasp-desktop.svg $pkgdir/usr/share/pixmaps/
 
   #Install .desktop file
   mkdir -p $pkgdir/usr/share/applications
@@ -102,4 +94,5 @@ EOF
 }
 md5sums=('SKIP'
          '03a719ec42763bed930fe265c8cd3b41'
-         '21deab63134207840ff88bdc39504ef1')
+         '21deab63134207840ff88bdc39504ef1'
+         'bcaf403001283553bb63b72c268d0290')
