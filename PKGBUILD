@@ -2,21 +2,19 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=r1753.2e53da4
+pkgver=v0.7.1.7.r0.g4885971
 pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
 url="http://jasp-stats.org"
 license=('AGPL3')
-depends=('qt5-base' 'boost' 'pcre' 'libarchive' 'zlib' 'boost-nowide')
-makedepends=('git' 'qtchooser' 'r' 'icoutils')
+depends=('qt5-base' 'boost' 'pcre' 'r' 'libarchive' 'zlib' 'boost-nowide')
+makedepends=('git' 'qtchooser' 'r')
 provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git" 
-        "https://static.jasp-stats.org/development/R%20U1410%20for%20JASP%20%282015-02-19%29.zip"
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.1.7" 
 	"rbundle.R"
 	"jasp-desktop.svg")
-options=("!strip" "debug")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -46,12 +44,8 @@ prepare() {
 
 	  #Copy JASP to new R bundle for it to later compile
 	  echo "Installing JASP to bundle"
-	  R CMD INSTALL -l $srcdir/$_buildname/R/library/ $srcdir/$_buildname/JASP-Engine/JASP
+	  R CMD INSTALL -l $srcdir/$_buildname/R/library/ $srcdir/$_pkgname/JASP-Engine/JASP
 
-	  #Copy modified gnm to bundle
-	  echo "Copying modified gnm from packaged bundle to created bundle"
-	  cp -r $srcdir/R/library/gnm $srcdir/$_buildname/R/library/
-	  
 	  ## Save new R bundle for future use
 	  echo "Creating R bundle backup for future compilation"
 	  cp -r R $srcdir/RBundle
@@ -93,6 +87,5 @@ Categories=Science;
 EOF
 }
 md5sums=('SKIP'
-         '03a719ec42763bed930fe265c8cd3b41'
-         '21deab63134207840ff88bdc39504ef1'
+         '85087ac1d6e0ffa885f4887c40985982'
          'bcaf403001283553bb63b72c268d0290')

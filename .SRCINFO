@@ -1,6 +1,6 @@
 pkgbase = jasp-desktop-git
 	pkgdesc = JASP, a low fat alternative to SPSS, a delicious alternative to R.
-	pkgver = r1753.2e53da4
+	pkgver = v0.7.1.7.r0.g4885971
 	pkgrel = 1
 	url = http://jasp-stats.org
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = jasp-desktop-git
 	makedepends = git
 	makedepends = qtchooser
 	makedepends = r
-	makedepends = icoutils
 	depends = qt5-base
 	depends = boost
 	depends = pcre
+	depends = r
 	depends = libarchive
 	depends = zlib
 	depends = boost-nowide
@@ -19,15 +19,11 @@ pkgbase = jasp-desktop-git
 	provides = jasp-desktop
 	conflicts = jasp
 	conflicts = jasp-desktop
-	options = !strip
-	options = debug
-	source = jasp-desktop::git+https://github.com/jasp-stats/jasp-desktop.git
-	source = https://static.jasp-stats.org/development/R%20U1410%20for%20JASP%20%282015-02-19%29.zip
+	source = jasp-desktop::git+https://github.com/jasp-stats/jasp-desktop.git#tag=v0.7.1.7
 	source = rbundle.R
 	source = jasp-desktop.svg
 	md5sums = SKIP
-	md5sums = 03a719ec42763bed930fe265c8cd3b41
-	md5sums = 21deab63134207840ff88bdc39504ef1
+	md5sums = 85087ac1d6e0ffa885f4887c40985982
 	md5sums = bcaf403001283553bb63b72c268d0290
 
 pkgname = jasp-desktop-git
