@@ -1,27 +1,29 @@
-# Maintainer: Antonio Rojas ( nqn1976 @ gmail.com )
+# Maintainer: Antonio Rojas < arojas @ archlinux.org >
 
 pkgname=zanshin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="To-do management application for KDE based on Akonadi"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://zanshin.kde.org"
-license=('GPL')
+license=(GPL)
 install=$pkgname.install
-depends=('kdepim-runtime')
-makedepends=('cmake' 'automoc4' 'boost')
+depends=(kdepim4-runtime)
+makedepends=(cmake automoc4 boost)
 source=("http://files.kde.org/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('e8c920f07374cb08200f990ef592938c')
+md5sums=('94b2c142b7afcab0ee4fdb4e5000329c')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd $pkgname-$pkgver
-  mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ../$pkgname-$pkgver
   make
 }
 
 package() {
-  cd $pkgname-$pkgver/build
+  cd build
   make DESTDIR="$pkgdir" install
 }
