@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-rosdoc-lite
+	pkgdesc = ROS - This ROS package wraps documentation tools like doxygen, sphinx, and epydoc, making it convenient to generate ROS package documentation.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://wiki.ros.org/rosdoc_lite
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-genmsg
+	depends = epydoc
+	depends = python2-catkin-pkg
+	depends = doxygen
+	depends = python2-yaml
+	depends = python2-rospkg
+	depends = python2-sphinx
+	depends = python2-kitchen
+	source = rosdoc_lite::git+https://github.com/ros-gbp/rosdoc_lite-release.git#tag=release/indigo/rosdoc_lite/0.2.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosdoc-lite
+
