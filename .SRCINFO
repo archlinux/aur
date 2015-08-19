@@ -1,0 +1,16 @@
+pkgbase = ruby-typhoeus
+	pkgdesc = Parallel HTTP library on top of libcurl multi.
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/typhoeus/typhoeus
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-ethon
+	noextract = typhoeus-0.7.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/typhoeus-0.7.3.gem
+	sha1sums = 7e1344b42aba92985475c708717cadc031818948
+
+pkgname = ruby-typhoeus
+
