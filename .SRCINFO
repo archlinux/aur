@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 41.0b1
+	pkgver = 41.0b2
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	install = firefox-beta-bin.install
@@ -29,15 +29,15 @@ pkgbase = firefox-beta-bin
 	optdepends = gstreamer0.10-ffmpeg: more decoders
 	optdepends = libpulse: PulseAudio driver
 	optdepends = networkmanager: Location detection via available WiFi networks
-	provides = firefox=41.0b1
+	provides = firefox=41.0b2
 	source = firefox-beta-bin.desktop
 	source = firefox-beta-bin-safe.desktop
 	md5sums = f7d82a1aac76f0bead4245fc1572eee1
 	md5sums = 6616cf32c69b50a126812334c8d65329
-	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/41.0b1/linux-i686/en-US/firefox-41.0b1.tar.bz2
-	md5sums_i686 = cda140f791ec9843a2497e636df18a2f
-	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/41.0b1/linux-x86_64/en-US/firefox-41.0b1.tar.bz2
-	md5sums_x86_64 = 744c5562a97ae65f63133053cf8bb95d
+	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/41.0b2/linux-i686/en-US/firefox-41.0b2.tar.bz2
+	md5sums_i686 = 7ae7bc55232f6e157e4a0f5b43252029
+	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/41.0b2/linux-x86_64/en-US/firefox-41.0b2.tar.bz2
+	md5sums_x86_64 = 2e863af671d17cd9f9dd6718723dea26
 
 pkgname = firefox-beta-bin
 
