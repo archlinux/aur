@@ -15,7 +15,7 @@ depends=(
     'qt5-quickcontrols'
     'qt5-webkit'
     'qt5-x11extras'
-    'mlt-git'
+    'mlt'
     'ffmpeg'
     'libx264'
     'libvpx'
