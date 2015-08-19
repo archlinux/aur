@@ -3,7 +3,7 @@ Version=1.0
 Type=Application
 Name=Neovim
 Icon=neovim
-Exec=nvim-wrapper %F
+Exec=env NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim-wrapper %F
 NoDisplay=false
 Categories=X-GNOME-Other;
 StartupNotify=false
