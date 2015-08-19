@@ -1,0 +1,21 @@
+pkgbase = ruby-gh
+	pkgdesc = layered github client
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = http://gh.rkh.im/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-faraday
+	depends = ruby-backports
+	depends = ruby-multi_json
+	depends = ruby-addressable
+	depends = ruby-net-http-persistent
+	depends = ruby-net-http-pipeline
+	noextract = gh-0.14.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gh-0.14.0.gem
+	sha1sums = fa7796541322f4b7bc9808d6e286f13878bbdb08
+
+pkgname = ruby-gh
+
