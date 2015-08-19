@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 240393 2015-06-07 09:11:44Z tpowa $
+# $Id: PKGBUILD 243799 2015-08-17 06:38:41Z tpowa $
 # Contributor: ${CONTRIBUTOR}
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-user-ns-enabled
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.0
-pkgver=4.0.5
+_srcname=linux-4.1
+pkgver=4.1.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,12 +22,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0'
+            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
             'SKIP'
-            '0a09a1a38168af8808c20516b46393545259138140dd32060745364cac93ce19'
-            '9b3c2fd9bf74f4f2384e26b775367417269d29bc4dded44bfe51cf0f787c069a'
+            'd923f9b46bee7633019f00030db2fbe62e459f169fc102b905a766663d62fc67'
+            '03d30d44059c5e0938a826f118a7598f7a22a14bb86b28c2d95623f61347de33'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
