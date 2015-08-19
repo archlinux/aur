@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-uuid-tiny'
-pkgver='1.03'
+pkgver='1.04'
 pkgrel='1'
 pkgdesc="Pure Perl UUID Support With Functional Interface"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-digest-sha1')
+depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/UUID-Tiny'
-source=('http://search.cpan.org/CPAN/authors/id/C/CA/CAUGUSTIN/UUID-Tiny-1.03.tar.gz')
-md5sums=('5120b9b90b4c986f82441d096112f3d7')
-sha512sums=('30b1aabdc067316d868c06a8723bd1d0e022e991de40f351b61a1c0ed657cb4dc99d5467a02b780c0749915cc30021cc4fc60c44b889bccd958a3a8e745cd491')
-_distdir="UUID-Tiny-1.03"
+url='https://metacpan.org/release/UUID-Tiny'
+source=('http://search.cpan.org/CPAN/authors/id/C/CA/CAUGUSTIN/UUID-Tiny-1.04.tar.gz')
+md5sums=('2d7c18711e64e0a64cc7c7fbb870947e')
+sha512sums=('a28b0684a558ba0e81bc99493904c0ca43c8c145d53a9343e5496695054138f1791fe423c5e714344c58a8313b46f635a3ad1cb2eb88389f6906b6cb47ddec26')
+_distdir="UUID-Tiny-1.04"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 

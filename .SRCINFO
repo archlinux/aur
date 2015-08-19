@@ -1,16 +1,16 @@
 pkgbase = perl-uuid-tiny
 	pkgdesc = Pure Perl UUID Support With Functional Interface
-	pkgver = 1.03
+	pkgver = 1.04
 	pkgrel = 1
-	url = http://search.cpan.org/dist/UUID-Tiny
+	url = https://metacpan.org/release/UUID-Tiny
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-digest-sha1
+	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CA/CAUGUSTIN/UUID-Tiny-1.03.tar.gz
-	md5sums = 5120b9b90b4c986f82441d096112f3d7
-	sha512sums = 30b1aabdc067316d868c06a8723bd1d0e022e991de40f351b61a1c0ed657cb4dc99d5467a02b780c0749915cc30021cc4fc60c44b889bccd958a3a8e745cd491
+	source = http://search.cpan.org/CPAN/authors/id/C/CA/CAUGUSTIN/UUID-Tiny-1.04.tar.gz
+	md5sums = 2d7c18711e64e0a64cc7c7fbb870947e
+	sha512sums = a28b0684a558ba0e81bc99493904c0ca43c8c145d53a9343e5496695054138f1791fe423c5e714344c58a8313b46f635a3ad1cb2eb88389f6906b6cb47ddec26
 
 pkgname = perl-uuid-tiny
 
