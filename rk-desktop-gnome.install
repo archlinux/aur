@@ -1,0 +1,26 @@
+post_install() {
+	echo "enabling services..."
+	echo "cronie.service"
+	usr/bin/systemctl enable cronie
+	echo "preload.service"
+	usr/bin/systemctl enable preload
+	echo "acpid.service"
+	usr/bin/systemctl enable acpid
+	echo "ntpd.service"
+	usr/bin/systemctl enable ntpd
+	echo "avahi-daemon.service"
+	usr/bin/systemctl enable avahi-daemon
+	echo "haveged.service"
+	usr/bin/systemctl enable haveged
+	echo "systemd-readahead-collect.service"
+	usr/bin/systemctl enable systemd-readahead-collect
+	echo "systemd-readahead-replay.service"
+	usr/bin/systemctl enable systemd-readahead-replay
+	echo "NetworkManager.service"
+	usr/bin/systemctl enable NetworkManager
+	echo "ModemManager.service"
+	usr/bin/systemctl enable ModemManager
+	echo "gdm.service"
+	usr/bin/systemctl enable gdm
+	echo "done"
+}
