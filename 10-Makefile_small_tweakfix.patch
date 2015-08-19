@@ -1,0 +1,20 @@
+--- Makefile.orig	2015-08-19 12:02:25.595782072 +0000
++++ Makefile	2015-08-19 12:08:24.987308899 +0000
+@@ -2,7 +2,7 @@
+ # Stefan Saring & Mathias Obst, 2007/03/05
+ 
+ # specify the directory for installation
+-prefix = /usr/local
++prefix = $(DESTDIR)/usr
+ 
+ bindir  = $(prefix)/bin
+ datadir = $(prefix)/share
+@@ -26,6 +26,8 @@
+ REMOVE_DIR     = $(REMOVE) -r -f
+ 
+ 
++default: gmo
++
+ # Install DiskSearch
+ install: uninstall_disksearch uninstall_cdsearch install_disksearch
+ 

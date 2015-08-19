@@ -1,0 +1,18 @@
+pkgbase = disksearch
+	pkgdesc = is a tool for searching for files on removable media disks (e.g. for songs on your MP3-CD's)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.saring.de/disksearch/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pygtk
+	source = http://downloads.sourceforge.net/disksearch/disksearch-1.2.1.tar.gz
+	source = 10-Makefile_small_tweakfix.patch
+	source = 11-disksearch_bin_script_paths_fix.patch
+	sha256sums = 58711b617382582ad59d9d3ccf95d9a6eb9b620237455b4e586a6efa387258d7
+	sha256sums = 3d698b3eb7c18af4f9f045fb23246569608bcab8d2567c87629f693120a9e71b
+	sha256sums = c611e37f5804f35cc26f2a14ec34fe630c0e26d6735e649ac57e54bb45fb76cb
+
+pkgname = disksearch
+
