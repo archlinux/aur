@@ -1,3 +1,6 @@
+# Maintainer: Binaymin Darshan Hcohen <bennydarshan@gmail.com>
+# Submitter: Martin Wimpress <code@flexion.org>
+
 pkgname=yuyo-gtk-theme-git
 _pkgname=yuyo-gtk-theme
 pkgver=100.8f75db1
