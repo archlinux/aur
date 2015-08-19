@@ -1,0 +1,16 @@
+pkgbase = ruby-faraday_middleware
+	pkgdesc = Various middleware for Faraday
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/lostisland/faraday_middleware
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-faraday
+	noextract = faraday_middleware-0.10.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/faraday_middleware-0.10.0.gem
+	sha1sums = f9cce29c0aff6011f395610d6d2945a07910a84d
+
+pkgname = ruby-faraday_middleware
+
