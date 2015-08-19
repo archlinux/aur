@@ -1,7 +1,7 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=airtame-streamer
-pkgver=1.0.1_12
-pkgrel=2
+pkgver=1.0.2_13
+pkgrel=1
 pkgdesc="Stream your display to an airtame dongle."
 arch=('x86_64')
 url="http://www.airtame.com"
@@ -17,7 +17,7 @@ source=("http://downloads.airtame.com/update/ga/lin_x64/AIRTAME-v${pkgver//_/-}_
         "x264::git+git://git.videolan.org/x264.git#branch=stable"
         "streamer.sh"
         "airtame-streamer.service")
-md5sums=('03e6a5928d5658d4ca7c984c8154e8d4'
+md5sums=('4f07107c5cf872dbf83d0952a543ea0e'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -43,8 +43,6 @@ build() {
 
 package() {
   cd "$srcdir"
-  #unpack
-  unzip -o AIRTAME || true
 
   #create directories
   install -d ${pkgdir}/opt/airtame
@@ -60,13 +58,13 @@ package() {
   cp airtame-streamer.service ${pkgdir}/usr/lib/systemd/user/
 
   #copy the executable to bin directory
-  cp streamer/bin/airtame-streamer ${pkgdir}/opt/airtame/bin
+  cp app/streamer/bin/airtame-streamer ${pkgdir}/opt/airtame/bin
 
   #copy the modules
-  cp -r streamer/lib/airtame-modules ${pkgdir}/opt/airtame/modules
+  cp -r app/streamer/lib/airtame-modules ${pkgdir}/opt/airtame/modules
 
   #copy the airtame shared libraries only (the other libraries we use from our dependencies)
-  cp streamer/lib/libairtame-* ${pkgdir}/opt/airtame/lib
+  cp app/streamer/lib/libairtame-* ${pkgdir}/opt/airtame/lib
 
   #copy the libraries that airtame have forked or used newer versions of,
   #and that we've built in the build() function
