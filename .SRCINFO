@@ -1,0 +1,15 @@
+pkgbase = ps2emu-git
+	pkgdesc = PS/2 emulation tools for recording and playing back PS/2 devices
+	pkgver = v0.1.r39.gf04ff09
+	pkgrel = 1
+	url = https://github.com/lyude/ps2emu
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	provides = ps2emu
+	conflicts = ps2emu
+	source = ps2emu::git+https://github.com/Lyude/ps2emu.git#branch=master
+	sha512sums = SKIP
+
+pkgname = ps2emu-git
+
