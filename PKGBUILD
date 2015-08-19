@@ -3,7 +3,7 @@
 pkgname=thunderbird-exchangecalendar
 pkgver=3.4.0.beta7
 _pkgver=3.4.0-beta7
-pkgrel=2
+pkgrel=1
 pkgdesc="Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)."
 url="https://github.com/Ericsson/exchangecalendar"
 arch=('any')
