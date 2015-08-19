@@ -1,0 +1,10 @@
+--- MathMod.pro.orig	2015-08-19 20:20:57.298036145 +0200
++++ MathMod.pro	2015-08-19 20:21:04.731295707 +0200
+@@ -54,7 +54,6 @@
+ 			 
+ RC_FILE 	= mm.rc
+ RESOURCES  += myressources.qrc
+-LIBS += -lopengl32
+ QT         += opengl widgets
+ 
+ OTHER_FILES += \

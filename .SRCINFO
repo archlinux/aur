@@ -1,0 +1,19 @@
+pkgbase = mathmod-cvs
+	pkgdesc = Mathematical modeling software
+	pkgver = r202
+	pkgrel = 1
+	url = http://sourceforge.net/projects/mathmod/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = svn
+	depends = qt5-base
+	depends = mesa
+	provides = mathmod-cvs
+	source = mathmod-cvs::svn+http://svn.code.sf.net/p/mathmod/branches/trunk/#revision=202
+	source = MathMod.pro.diff
+	md5sums = SKIP
+	md5sums = 7f398f5e2cea4b4bc65ec9f978780b21
+
+pkgname = mathmod-cvs
+
