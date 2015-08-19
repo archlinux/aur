@@ -1,0 +1,6 @@
+post_install() {
+    /opt/openresty/luajit/bin/luajit-2.1.0-alpha /opt/openresty/luajit/bin/luarocks-admin-5.1 make_manifest --local-tree
+}
+post_remove() {
+    /opt/openresty/luajit/bin/luajit-2.1.0-alpha /opt/openresty/luajit/bin/luarocks-admin-5.1 make_manifest --local-tree
+}
