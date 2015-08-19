@@ -1,0 +1,6 @@
+post_install() {
+	echo "enabling service..."
+	echo "bluetooth.service"
+	usr/bin/systemctl enable bluetooth
+	echo "done"
+}
