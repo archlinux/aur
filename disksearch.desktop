@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DiskSearch
+Comment=A database tool for searching removable media
+TryExec=/usr/bin/disksearch
+Exec=disksearch
+Icon=disksearch
+Categories=Office;Database;
