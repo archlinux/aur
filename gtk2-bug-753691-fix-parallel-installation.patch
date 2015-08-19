@@ -1,0 +1,76 @@
+From 46c28bd54d274c1d8c7d75795b043e21122749eb Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Wed, 19 Aug 2015 10:38:39 +0800
+Subject: [PATCH] Makefiles: Fix parallel installation for MinGW
+
+Make sure that the destination exists before installing files.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=753691
+---
+ gdk/Makefile.am                             | 2 ++
+ gtk/Makefile.am                             | 2 ++
+ modules/other/gail/libgail-util/Makefile.am | 2 ++
+ 3 files changed, 6 insertions(+)
+
+diff --git a/gdk/Makefile.am b/gdk/Makefile.am
+index c880f6e..bccd7b8 100644
+--- a/gdk/Makefile.am
++++ b/gdk/Makefile.am
+@@ -263,6 +263,7 @@ endif # HAVE_INTROSPECTION
+ 
+ if OS_WIN32
+ install-def-file: gdk.def
++	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ 	$(INSTALL) $(srcdir)/gdk.def $(DESTDIR)$(libdir)/gdk-win32-2.0.def
+ uninstall-def-file:
+ 	-rm $(DESTDIR)$(libdir)/gdk-win32-2.0.def
+@@ -278,6 +279,7 @@ gdk-win32-$(GTK_API_VERSION).lib: libgdk-win32-$(GTK_API_VERSION).la gdk.def
+ 	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgdk-win32-$(GTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gdk.def -out:$@
+ 
+ install-ms-lib:
++	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ 	$(INSTALL) gdk-win32-$(GTK_API_VERSION).lib $(DESTDIR)$(libdir)
+ 
+ uninstall-ms-lib:
+diff --git a/gtk/Makefile.am b/gtk/Makefile.am
+index 248220d..1b2afc5 100644
+--- a/gtk/Makefile.am
++++ b/gtk/Makefile.am
+@@ -73,6 +73,7 @@ gtk-win32-res.o : gtk-win32.rc
+ 	$(WINDRES) gtk-win32.rc $@
+ 
+ install-def-file: gtk.def
++	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ 	$(INSTALL) $(srcdir)/gtk.def $(DESTDIR)$(libdir)/gtk-win32-2.0.def
+ uninstall-def-file:
+ 	-rm $(DESTDIR)$(libdir)/gtk-win32-2.0.def
+@@ -88,6 +89,7 @@ gtk-win32-$(GTK_API_VERSION).lib: libgtk-win32-$(GTK_API_VERSION).la gtk.def
+ 	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgtk-win32-$(GTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gtk.def -out:$@
+ 
+ install-ms-lib:
++	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ 	$(INSTALL) gtk-win32-$(GTK_API_VERSION).lib $(DESTDIR)$(libdir)
+ 
+ uninstall-ms-lib:
+diff --git a/modules/other/gail/libgail-util/Makefile.am b/modules/other/gail/libgail-util/Makefile.am
+index 3145719..22d18d9 100644
+--- a/modules/other/gail/libgail-util/Makefile.am
++++ b/modules/other/gail/libgail-util/Makefile.am
+@@ -7,6 +7,7 @@ endif
+ if OS_WIN32
+ export_symbols = -export-symbols $(srcdir)/gailutil.def
+ install-def-file: gailutil.def
++	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ 	$(INSTALL) $(srcdir)/gailutil.def $(DESTDIR)$(libdir)
+ uninstall-def-file:
+ 	-rm $(DESTDIR)$(libdir)/gailutil.def
+@@ -19,6 +20,7 @@ if MS_LIB_AVAILABLE
+ noinst_DATA = gailutil.lib
+ 
+ install-ms-lib:
++	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ 	$(INSTALL) gailutil.lib $(DESTDIR)$(libdir)
+ 
+ uninstall-ms-lib:
+-- 
+2.4.3

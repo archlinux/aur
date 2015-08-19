@@ -19,7 +19,9 @@ pkgbase = mingw-w64-gtk2
 	options = !buildflags
 	options = staticlibs
 	source = https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.28.tar.xz
+	source = gtk2-bug-753691-fix-parallel-installation.patch
 	sha256sums = b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656
+	sha256sums = 6c74279653fdeed9a5c79a13f1593460398e8409a850eddfe437c333f60be8be
 
 pkgname = mingw-w64-gtk2
 
