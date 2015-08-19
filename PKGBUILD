@@ -2,15 +2,17 @@
 
 pkgname=borgbackup-git
 _pkgname=borg
-pkgver=0.23.0.r86.g3be55be
+pkgver=0.24.0.r50.g0926c28
 pkgrel=1
-pkgdesc="A deduplicating backup program for efficient and secure backups."
+pkgdesc="A deduplicating backup program for efficient and secure backups"
 url="https://borgbackup.github.io/"
 license=('BSD')
 arch=('i686' 'x86_64')
 depends=('acl'
+         'lz4'
          'openssl'
-         'python-msgpack')
+         'python-msgpack'
+         'xz')
 optdepends=('openssh: repositories on remote hosts'
             'python-llfuse: mounting backups as a FUSE filesystem')
 makedepends=('cython'
