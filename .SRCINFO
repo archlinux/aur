@@ -1,0 +1,22 @@
+pkgbase = prometheus-node-exporter
+	pkgdesc = Prometheus exporter for machine metrics
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/prometheus/node_exporter
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	makedepends = git
+	makedepends = mercurial
+	provides = prometheus-node-exporter
+	conflicts = prometheus-node-exporter
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/prometheus/node_exporter/archive/0.11.0.tar.gz
+	source = prometheus-node-exporter.service
+	sha256sums = 459580fab840432ee520b9341b8361fe6017d271cf2502c07b95225a6fb966b6
+	sha256sums = 360d44488e2c0617e8436e2420e9e1a1e657055b1bb41e1e121524f7dc99ed57
+
+pkgname = prometheus-node-exporter
+
