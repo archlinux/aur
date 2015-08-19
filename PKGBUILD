@@ -1,5 +1,5 @@
 pkgname='swisseph-fixstars'
-pkgver='2006.03.03'
+pkgver='2012.09.10'
 pkgrel='1'
 pkgdesc='High precision Swiss Ephemeris developed by Astrodienst (Fixstars).'
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 makedepends=()
 optdepends=()
 source=('http://www.astro.com/ftp/swisseph/ephe/fixstars.cat')
-md5sums=('19d2486e8ba2abc9109692c403430f3f')
+md5sums=('126e710e2a5da180789cd82c3c181cca')
 
 package() {
     install -d -m 755 $pkgdir/usr/share/swisseph/
