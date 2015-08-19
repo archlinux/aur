@@ -1,0 +1,16 @@
+pkgbase = ruby-launchy
+	pkgdesc = Launchy is helper class for launching cross-platform applications in a fire and forget manner.
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = http://github.com/copiousfreetime/launchy
+	arch = any
+	license = ISC
+	depends = ruby
+	depends = ruby-addressable
+	noextract = launchy-2.4.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/launchy-2.4.3.gem
+	sha1sums = 03fae3a8897169a2625649b8c4be55c24e57090b
+
+pkgname = ruby-launchy
+
