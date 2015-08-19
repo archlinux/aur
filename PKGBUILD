@@ -48,7 +48,7 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '271b97a9b95d809a99999ec5fb74313c')
-md5sums_x86_64=('')
+md5sums_x86_64=('51512cfe055125570b5215a48a553d83')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
