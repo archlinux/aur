@@ -1,0 +1,29 @@
+# set up the sidebar, default not visible
+ set sidebar_width=12
+ set sidebar_visible=no
+#
+# # which mailboxes to list in the sidebar
+ mailboxes =inbox =ml
+#
+# # color of folders with new mail
+ color sidebar_new yellow default
+#
+# # ctrl-n, ctrl-p to select next, prev folder
+# # ctrl-o to open selected folder
+ bind index \CP sidebar-prev
+ bind index \CN sidebar-next
+ bind index \CO sidebar-open
+ bind pager \CP sidebar-prev
+ bind pager \CN sidebar-next
+ bind pager \CO sidebar-open
+#
+# # I don't need these.  just for documentation purposes.  See below.
+# # sidebar-scroll-up
+# #sidebar-scroll-down
+#
+# # b toggles sidebar visibility
+ macro index b '<enter-command>toggle sidebar_visible<enter>'
+ macro pager b '<enter-command>toggle sidebar_visible<enter>'
+#
+# # Remap bounce-message function to "B"
+ bind index B bounce-message

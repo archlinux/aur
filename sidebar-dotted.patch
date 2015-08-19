@@ -1,0 +1,65 @@
+From: Evgeni Golov <sargentd@die-welt.net>
+License: 3-BSD
+
+When using IMAP, a '.' is often used as a separator instead of '/'.
+This patch enables mutt to find these dots and
+1. correctly intend the dir in the sidebar
+2. if "sidebar_shortpath" is set, shorten the dir to the part after
+   the last dot
+
+I hope, it's usefull for someone ;)
+
+--- a/sidebar.c
++++ b/sidebar.c
+@@ -255,14 +255,23 @@
+ 			int i;
+ 			tmp_folder_name = tmp->path + strlen(Maildir);
+ 			for (i = 0; i < strlen(tmp->path) - strlen(Maildir); i++) {
+-				if (tmp_folder_name[i] == '/') sidebar_folder_depth++;
++ 				if (tmp_folder_name[i] == '/'  || tmp_folder_name[i] == '.') sidebar_folder_depth++;
+ 			}   
+ 			if (sidebar_folder_depth > 0) {
+-				sidebar_folder_name = malloc(strlen(basename(tmp->path)) + sidebar_folder_depth + 1);
++ 				if (option(OPTSIDEBARSHORTPATH)) {
++ 					tmp_folder_name = strrchr(tmp->path, '.');
++ 					if (tmp_folder_name == NULL)
++ 						tmp_folder_name = tmp->path;
++ 					else
++						tmp_folder_name++;
++ 				}
++ 				else
++ 					tmp_folder_name = tmp->path;
++ 				sidebar_folder_name = malloc(strlen(basename(tmp_folder_name)) + sidebar_folder_depth + 1);
+ 				for (i=0; i < sidebar_folder_depth; i++)
+ 					sidebar_folder_name[i]=' ';
+ 				sidebar_folder_name[i]=0;
+-				strncat(sidebar_folder_name, basename(tmp->path), strlen(basename(tmp->path)) + sidebar_folder_depth);
++ 				strncat(sidebar_folder_name, basename(tmp_folder_name), strlen(basename(tmp_folder_name)) + sidebar_folder_depth);
+ 			}
+ 		}
+ 		printw( "%.*s", SidebarWidth - delim_len + 1,
+--- a/init.h
++++ b/init.h
+@@ -1981,6 +1981,11 @@
+   ** .pp
+   ** The width of the sidebar.
+   */
++  { "sidebar_shortpath", DT_BOOL, R_BOTH, OPTSIDEBARSHORTPATH, 0 },
++  /*
++  ** .pp
++  ** Should the sidebar shorten the path showed.
++  */
+   { "pgp_use_gpg_agent", DT_BOOL, R_NONE, OPTUSEGPGAGENT, 0},
+   /*
+   ** .pp
+--- a/mutt.h
++++ b/mutt.h
+@@ -432,6 +432,7 @@
+   OPTSAVENAME,
+   OPTSCORE,
+   OPTSIDEBAR,
++  OPTSIDEBARSHORTPATH,
+   OPTSIDEBARSORT,
+   OPTSIGDASHES,
+   OPTSIGONTOP,
+   OPTSORTRE,
