@@ -1,5 +1,5 @@
 pkgbase = rusti-git
-	pkgdesc = REPL for the Rust
+	pkgdesc = REPL for Rust
 	pkgver = r121.13b5940
 	pkgrel = 1
 	url = https://github.com/murarth/rusti
