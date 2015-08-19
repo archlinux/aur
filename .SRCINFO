@@ -1,0 +1,15 @@
+pkgbase = tpc-git
+	pkgdesc = For AMD processors. It can manipulate power states, frequencies, DRAM timings, power settings and can report temperatures, monitor pstate changes and precise cpu usage. Currently supported families are: 10h, 11h, 12h, 14h, 15h
+	pkgver = 0.44rc2plus
+	pkgrel = 1
+	url = https://code.google.com/p/turionpowercontrol/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = gcc-libs
+	depends = ncurses
+	source = https://github.com/mh0rst/turionpowercontrol/archive/master.zip
+	md5sums = SKIP
+
+pkgname = tpc-git
+
