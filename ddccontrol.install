@@ -1,0 +1,10 @@
+post_install() {
+  cat <<EOF
+For some of nvidia proprietary driver users will be necessary to add this:
+  >>  Option "RegistryDwords" "RMUseSwI2c=0x01; RMI2cSpeed=100"
+to "Device" section in:
+  >>  /etc/X11/xorg.conf.d/20-nvidia.conf
+or similar place.
+EOF
+}
+post_install
