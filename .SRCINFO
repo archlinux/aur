@@ -1,0 +1,17 @@
+pkgbase = ruby-pry-0.9
+	pkgdesc = An IRB alternative and runtime developer console
+	pkgver = 0.9.12.6
+	pkgrel = 1
+	url = http://pry.github.com
+	arch = any
+	depends = ruby
+	depends = ruby-coderay
+	depends = ruby-slop-3
+	depends = ruby-method_source
+	noextract = pry-0.9.12.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pry-0.9.12.6.gem
+	sha1sums = 7cc5d15d71b6c8d75a3b9f66d3ae15aedcdd3f0a
+
+pkgname = ruby-pry-0.9
+
