@@ -1,0 +1,17 @@
+pkgbase = optipng-hg
+	pkgdesc = PNG Optimizer which recompresses image files to a smaller size losslessly.
+	pkgver = r16.6f7b91f24302
+	pkgrel = 1
+	url = http://optipng.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	makedepends = mercurial
+	depends = glibc
+	provides = optipng
+	conflicts = optipng
+	source = optipng-hg::hg+http://optipng.hg.sourceforge.net:8000/hgroot/optipng/optipng
+	md5sums = SKIP
+
+pkgname = optipng-hg
+
