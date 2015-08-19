@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Udev-browse
+Comment=Graphical browser for the Linux sysfs device tree
+Exec=udev-browse
+Icon=emblem-system
+Terminal=false
+StartupNotify=false
+Categories=Application;System;

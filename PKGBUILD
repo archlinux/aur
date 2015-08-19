@@ -1,42 +1,37 @@
+# Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 # Contributor: Marti Raudsepp <marti@juffo.org>
-
 pkgname=udev-browse-git
-pkgver=20110324
+pkgver=0.3.r0.g7ba128e
 pkgrel=1
-pkgdesc="Graphical browser for the Linux sysfs device tree"
-arch=('i686' 'x86_64')
-url="http://0pointer.de/blog/projects/udev-browse.html"
-license=('LGPL')
-depends=('udev' 'libgee' 'gtk2')
-options=()
-makedepends=('vala' 'git')
-replaces=()
-provides=('udev-browse')
-conflicts=('udev-browse')
-source=()
 
-_gitroot="git://git.0pointer.de/udev-browse.git"
-_gitname="udev-browse"
+pkgdesc="Graphical browser for the Linux sysfs device tree"
+url=http://0pointer.de/blog/projects/udev-browse.html
+arch=('i686' 'x86_64')
+license=('LGPL')
+
+depends=('udev' 'libgee' 'gtk3')
+makedepends=('vala' 'git')
+
+source=($pkgname::git://git.0pointer.de/udev-browse.git
+	udev-browse.desktop)
+sha256sums=('SKIP'
+            '2e6168eec25a8107a2a825ccb7b9081dd0eaf633b67ec3cbafc1f204261dc688')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/^v//; s/-/.r/; s/-/./'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd "$pkgname"
+  sed -i 's/gee-1.0/gee-0.8/' Makefile
+  sed -i 's/ListStore/Gtk.ListStore/' udev-browse.vala
   make
-  install -d $pkgdir/usr/bin
-  install -m 755 udev-browse $pkgdir/usr/bin
+}
+
+package() {
+  cd "$pkgname"
+  install -Dm755 udev-browse "$pkgdir"/usr/bin/udev-browse
+  install -Dm644 "$srcdir"/udev-browse.desktop \
+	  "$pkgdir"/usr/share/applications/udev-browse.desktop
 }
