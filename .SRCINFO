@@ -59,6 +59,7 @@ pkgbase = bin32-jdk
 	optdepends_x86_64 = lib32-gtk2: for Gtk+ look and feel (desktop)
 	optdepends_x86_64 = ttf-font: fonts
 	makedepends_x86_64 = pacman>=4.2.0
+	md5sums_x86_64 = a46d706babbd63f459d7ca6d4057d80f
 
 pkgname = bin32-jdk
 

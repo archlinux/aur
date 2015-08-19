@@ -56,7 +56,7 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '9dfed511010a54eb377b692638d17585'
          '915f23fd70bb5a6bbfbd7160a35ab035'
          '65d3a4147634b7cf0923caafed7edda4')
-md5sums_x86_64=('')
+md5sums_x86_64=('a46d706babbd63f459d7ca6d4057d80f')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
