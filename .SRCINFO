@@ -1,0 +1,18 @@
+pkgbase = python2-crack
+	pkgdesc = Python bindings for cracklib.
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = http://www.nongnu.org/python-crack/
+	arch = i686
+	arch = x86_64
+	license = MIT/X
+	depends = python2
+	depends = glibc
+	depends = cracklib
+	source = http://download.savannah.gnu.org/releases/python-crack/python-crack-0.5.1.tar.gz
+	source = python2_only.patch
+	sha256sums = 3164ef072a405b5bb8d023760bf79d465b42574481888b466a66a5aeb7bc03e8
+	sha256sums = a5048ae26d8f6cae5e1ac7e67d530d57cfac83bd44627270a20080344192b52f
+
+pkgname = python2-crack
+
