@@ -1,5 +1,5 @@
 pkgname='qemu-static'
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -10,7 +10,7 @@ makedepends=('perl' 'python2'
 	     'glibc-static' 'glib2-static' 'pcre-static')
 options=(!strip)
 source=(http://wiki.qemu.org/download/qemu-${pkgver}.tar.bz2)
-md5sums=('2fab3ea4460de9b57192e5b8b311f221')
+md5sums=('186ee8194140a484a455f8e3c74589f4')
 
 build() {
   cd "${srcdir}/qemu-${pkgver}"
@@ -36,6 +36,7 @@ package() {
   # https://bugs.archlinux.org/task/32565
   chmod u+s "${pkgdir}/usr/lib/qemu/qemu-bridge-helper"
   # add sample config
+  mkdir -p $pkgdir/etc/qemu
   echo "allow br0" > ${pkgdir}/etc/qemu/bridge.conf.sample
   # strip scripts directory
     find "${pkgdir}/usr/src/linux-${_kernver}/scripts"  -type f -perm -u+w 2>/dev/null | while read binary ; do
