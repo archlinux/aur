@@ -1,0 +1,26 @@
+pkgbase = juffed-git
+	pkgdesc = Advanced text editor written in Qt
+	pkgver = 0.10.71.gc3c1a3f
+	pkgrel = 1
+	url = http://juffed.com
+	install = juffed-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt4
+	depends = qscintilla
+	depends = enca
+	depends = desktop-file-utils
+	provides = juffed
+	provides = juffed-git
+	provides = juffed-qt5-git
+	conflicts = juffed
+	conflicts = juffed-git
+	conflicts = juffed-qt5-git
+	source = git+https://github.com/Mezomish/juffed.git
+	sha256sums = SKIP
+
+pkgname = juffed-git
+
