@@ -49,5 +49,5 @@ package_gddccontrol() {
     "$srcdir/org.ddccontrol.pkexec.gddccontrol.policy" \
     "${pkgdir}/usr/share/polkit-1/actions/org.ddccontrol.pkexec.gddccontrol.policy"
   sed -e 's/Exec=gddccontrol/Exec=pkexec gddccontrol/' \
-    -i "${pkgdir}/usr/share/applications/gddccontrol/gddccontrol.desktop"
+    -i "${pkgdir}/usr/share/applications/gddccontrol.desktop"
 }
