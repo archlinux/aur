@@ -2,7 +2,7 @@
 # Based on /var/abs/community/mythtv/PKGBUILD version 0.27.4
 
 pkgname=mythtv-git
-pkgver=v0.28.pre.r2987.g52c8a9d
+pkgver=v0.28.pre.r3051.gd03d51d
 pkgrel=1
 pkgdesc='Free Open Source software digital video recorder (DVR) project'
 arch=('i686' 'x86_64')
@@ -46,7 +46,9 @@ prepare() {
 
 build() {
   cd "$srcdir/mythtv/mythtv"
-  ./configure --prefix=/usr --python=/usr/bin/python2 --disable-distcc
+  ./configure --compile-type=debug --prefix=/usr --disable-distcc \
+              --enable-libmp3lame --enable-libx264 --enable-libvpx --enable-libxvid --enable-sdl \
+              --python=python2 --perl-config-opts=INSTALLDIRS=vendor
   make
 }
 
