@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=duperemove-git
-pkgver=300.da5f1db
+pkgver=344.976b3ee
 pkgrel=1
 pkgdesc="Btrfs extent deduplication utility"
 arch=('any')
@@ -25,6 +25,5 @@ build() {
 
 package() {
   cd $srcdir/$pkgname
-  install -Dm755 ./duperemove $pkgdir/usr/bin/duperemove
-  install -Dm644 ./duperemove.8 $pkgdir/usr/share/man/man8/duperemove.8
+  make PREFIX=/usr SBINDIR=/usr/bin DESTDIR="${pkgdir}" install
 }
