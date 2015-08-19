@@ -1,0 +1,23 @@
+pkgbase = timeshift
+	pkgdesc = A system restore utility for Linux
+	pkgver = 1.7.3~177
+	pkgrel = 1
+	url = https://launchpad.net/~teejee2008/+archive/ubuntu/ppa
+	install = timeshift.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	depends = gtk3
+	depends = libsoup
+	depends = desktop-file-utils
+	depends = rsync
+	depends = libgee>=0.18.0
+	depends = json-glib
+	optdepends = gksu: run timeshift from a menu
+	options = !emptydirs
+	source = https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/timeshift_1.7.3~177~ubuntu14.04.1.tar.gz
+	sha256sums = eaf30b0ed47fab1f15c896ed06008f2f15839c66ce891130311fef4bff860b32
+
+pkgname = timeshift
+
