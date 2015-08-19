@@ -1,0 +1,27 @@
+pkgbase = socklog
+	pkgdesc = Small and secure syslogd replacement for use with Runit
+	pkgver = 2.1.0
+	pkgrel = 2
+	url = http://smarden.org/socklog/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	depends = glibc
+	depends = runit
+	provides = socklog
+	source = http://smarden.org/socklog/socklog-2.1.0.tar.gz
+	source = headers.patch
+	source = klog.sv.run
+	source = socklog.sv.check
+	source = socklog.sv.log
+	source = socklog.sv.run
+	sha256sums = aa869a787ee004da4e5509b5a0031bcc17a4ab4ac650c2ce8d4e488123acb455
+	sha256sums = 6687d9d7c93c993b99f47948999c03b6b1402cda78d5f854d093ac881171ddf3
+	sha256sums = ae9864e8dc86fb9d0de74bc988bb0f896c4811d12d52a649374903bd3257246a
+	sha256sums = f84241c1dff3b67499ecec7be9385c6c190b3b43c839956df8458fb2c0b58f2b
+	sha256sums = 72a094547454b44dfda5cd50a5992ac2f0829450b99033900e68eb301130637f
+	sha256sums = f62fd60c54e735f95153d1f0018cadb556c56833235f24653855445dc91e152f
+
+pkgname = socklog
+
