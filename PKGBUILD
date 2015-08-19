@@ -6,6 +6,8 @@
 #  aws-cli & aws-cli-git
 #  python-botocore & python-botocore-git
 
+# TODO: Do we need split packages for python2 (see python-wheel for example)
+
 # Note: the primary use of this package is with aws-cli
 
 set -u
@@ -52,10 +54,6 @@ else
   _verurl="${url}/releases"
   _versed="${url#*github.com}/archive/\(.*\)\.tar\.gz" # used with ^...$
   _veropt='l'
-# Return sorted list of all version numbers available (used by git-aurcheck)
-_version() {
-  curl -s -l "${_verurl}" | _getlinks "${_veropt}" | sed -ne "s:^${_versed}"'$:\1:p' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
-}
 fi
 
 build() {
@@ -73,7 +71,7 @@ check() {
 }
 
 package() {
-  set -u
+  # set -u # not compatible with msg and makepkg --nocolor
   cd "${_srcdir}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
@@ -86,7 +84,7 @@ package() {
 
   # Do not include the tests/ generated from the install
   # rm -Rfv "${pkgdir}"/usr/lib/python*/site-packages/tests
-  set +u
+  # set +u # not compatible with msg and makepkg --nocolor
 }
 set +u
 
