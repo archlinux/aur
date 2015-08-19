@@ -1,6 +1,6 @@
 pkgbase = acd_cli
 	pkgdesc = a command line interface to Amazon Cloud Drive and allows mounting your cloud drive using FUSE for read access.
-	pkgver = 0.3.0a4
+	pkgver = 0.3.0a5
 	pkgrel = 1
 	url = https://github.com/yadayada/acd_cli
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = acd_cli
 	depends = python-sqlalchemy
 	depends = python-dateutil
 	depends = python-requests-toolbelt
-	source = https://github.com/yadayada/acd_cli/archive/0.3.0a4.tar.gz
-	sha256sums = 1f1d61394be741f70a410c921f0b7cef12ba3def86df84851461e7cc562368ba
+	source = https://github.com/yadayada/acd_cli/archive/0.3.0a5.tar.gz
+	sha256sums = 71df914777406f147b159a486fced015104dc10680d9c20144e19b140c7d7867
 
 pkgname = acd_cli
 
