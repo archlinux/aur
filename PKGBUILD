@@ -1,12 +1,13 @@
-# Contributor:  Bartosz Chmura <chmurli@gmail.com>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Bartosz Chmura <chmurli@gmail.com>
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 # Contributor: alfplayer
 # Contributor: menta
 
 pkgname=retext
-pkgver=5.0.2
-_pkgverline=5.0
-pkgrel=2
+pkgver=5.1.0
+_pkgverline=5.1
+pkgrel=1
 pkgdesc="A simple editor for Markdown and ReStructuredText markup languages"
 arch=('any')
 url="http://retext.sourceforge.net/"
@@ -23,7 +24,7 @@ source=("http://downloads.sourceforge.net/project/${pkgname}/ReText-${_pkgverlin
         "x-retext-markdown.xml"
         "x-retext-rst.xml")
 install="${pkgname}".install
-sha256sums=('SKIP'
+sha256sums=('09b12892a0520bb8b0692f5aec7aa88911d07a5048a3402a9e9d4ac57322b5ca'
             '7782f4402fe62e48335c1bdd5c1fd5cbb48c408fabaf4f018a074f8b3eef838e'
             'b51611479d3224eec2b58264ed91ace3eccb502b7b806dae3e7a3ab4aab8c4b8'
             '6fef80cccb14813d9cc74810c397a6cd7831d1ca243536759a47c6e8b6cc977a')
