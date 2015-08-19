@@ -1,0 +1,15 @@
+pkgbase = vqmt-git
+	pkgdesc = Video Quality Measurement Tool which can compute PSNR, SSIM, MS-SSIM, VIFp, PSNR-HVS and PSNR-HVS-M metrics
+	pkgver = 20130910
+	pkgrel = 1
+	url = http://mmspg.epfl.ch/vqmt
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = opencv
+	conflicts = vqmt
+
+pkgname = vqmt-git
+
