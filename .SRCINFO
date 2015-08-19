@@ -8,7 +8,7 @@ pkgbase = cryptoverif
 	license = custom:CeCILL-B
 	depends = ocaml
 	optdepends = ocaml-cryptokit: compiling extracted implementations
-	source = cryptoverif::http://prosecco.gforge.inria.fr/personal/bblanche/cryptoverif/cryptoverif1.20.tar.gz
+	source = http://prosecco.gforge.inria.fr/personal/bblanche/cryptoverif/cryptoverif1.20.tar.gz
 	sha1sums = 067bba576f823b76a3ab2ca1b295fee08b4311a1
 	sha256sums = 72f705acce85034a81da05ba90d51cff55254e273443359ab221f359eef8c603
 
