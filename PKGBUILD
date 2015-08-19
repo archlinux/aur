@@ -14,7 +14,7 @@ arch=('x86_64' 'i686')
 url="http://www.twinklephone.com/"
 license=('GPL')
 depends=('file' 'qt5-quick1' 'ccrtp' 'ilbc' 'bcg729')
-makedepends=('pkg-config' 'boost' 'cmake')
+makedepends=('pkg-config' 'boost' 'cmake' 'git' 'qt5-tools')
 source=("git+https://github.com/LubosD/$_pkgname.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
