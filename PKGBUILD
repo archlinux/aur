@@ -2,7 +2,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=15.10.1
+pkgver=15.10.2
 pkgrel=1
 _uver=wily
 pkgdesc="Xubuntu themes and artwork"
@@ -23,12 +23,12 @@ source=("http://security.ubuntu.com/ubuntu/pool/universe/x/${pkgname}/${pkgname}
         "0001_Plymouth_dir.patch")
 
 prepare() {
-  cd "${srcdir}/trunk"
+  cd "${srcdir}/xubuntu-artwork"
   patch -p1 -i "${srcdir}/0001_Plymouth_dir.patch"
 }
 
 package() {
-  cd "${srcdir}/trunk"
+  cd "${srcdir}/xubuntu-artwork"
   
   make DESTDIR="${pkgdir}" prefix=/usr \
 	sbindir=/usr/bin bindir=/usr/bin \
@@ -36,7 +36,7 @@ package() {
 }
 
 package() {
-  cd "${srcdir}/trunk"
+  cd "${srcdir}/xubuntu-artwork"
 
   make DESTDIR="${pkgdir}" install
 
@@ -60,6 +60,6 @@ package() {
   rm -frv "${pkgdir}"/usr/share/xfce4/backdrops
 }
 
-# I use MD5 because is what "makepkg -g" give by default, blame Arch dessicion
-md5sums=('1e3b96a06fe4b54ce8c05b23d6d60157'
+# I use MD5 because is what "makepkg -g" give by default, blame Allan
+md5sums=('45c6f0d32677da44baa9e88e1fc305f0'
          'c9a1b1997abf7d43dda91bf7991ed42c')
