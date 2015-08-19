@@ -1,6 +1,6 @@
 pkgbase = aws-cli-git
 	pkgdesc = Universal Command Line Interface for Amazon Web Services.
-	pkgver = 1.7.45.r2705.g4ae70ae
+	pkgver = 1.7.45.r2710.ge7eeb6d
 	pkgrel = 1
 	url = https://github.com/aws/aws-cli
 	arch = any
