@@ -9,6 +9,7 @@
 
 # TODO: Can we move to bcdoc 0.16. Is the bug fixed in 0.15?
 # TODO: When will we be able to move to the new rsa?
+# TODO: Do we need split packages for python2 (see python-wheel for example)
 
 set -u
 _pkgname='aws-cli'
@@ -62,10 +63,6 @@ else
   _verurl="${url}/releases"
   _versed="${url#*github.com}/archive/\(.*\)\.tar\.gz" # used with ^...$
   _veropt='l'
-# Return sorted list of all version numbers available (used by git-aurcheck)
-_version() {
-  curl -s -l "${_verurl}" | _getlinks "${_veropt}" | sed -ne "s:^${_versed}"'$:\1:p' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
-}
 fi
 
 build() {
@@ -83,7 +80,7 @@ check() {
 }
 
 package() {
-  set -u
+  # set -u # not compatible with msg and makepkg --nocolor
   cd "${_srcdir}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
@@ -107,7 +104,7 @@ EOF
 
   # Do not include the tests/ generated from the install
   # rm -Rfv "${pkgdir}"/usr/lib/python*/site-packages/tests
-  set +u
+  # set +u # not compatible with msg and makepkg --nocolor
 }
 set +u
 
