@@ -2,11 +2,11 @@
 pkgname='ducklauncher-git'
 _gitname='launcher'
 pkgver=r61.e160dd1
-pkgrel=2
+pkgrel=3
 replaces=('ducklauncher')
 arch=('i686' 'x86_64')
 url="https://the-duck.github.io/"
-depends=('python2-pyside' 'python2-xlib' 'pygtk' 'python2-wnck' 'python2-cssutils' 'hicolor-icon-theme' 'python2-simplejson' 'python2-xdg' 'python2-notify2' 'python2-pyqt4')
+depends=('python2-pyside' 'python2-xlib' 'pygtk' 'python2-wnck' 'python2-cssutils' 'hicolor-icon-theme' 'python2-simplejson' 'python2-xdg' 'python2-notify2' 'python2-pyqt4' 'python2-numpy')
 makedepends=('git')
 license=('GPL2')
 pkgdesc="Duck Launcher Application Laucher by Mark Spurgeon <markspurgeon96@hotmail.com>"

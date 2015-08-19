@@ -1,7 +1,7 @@
 pkgbase = ducklauncher-git
 	pkgdesc = Duck Launcher Application Laucher by Mark Spurgeon <markspurgeon96@hotmail.com>
 	pkgver = r61.e160dd1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://the-duck.github.io/
 	install = ducklauncher.install
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = ducklauncher-git
 	depends = python2-xdg
 	depends = python2-notify2
 	depends = python2-pyqt4
+	depends = python2-numpy
 	provides = ducklauncher
 	conflicts = ducklauncher
 	replaces = ducklauncher
