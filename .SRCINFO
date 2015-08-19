@@ -1,0 +1,19 @@
+pkgbase = dmenu-pango-imlib
+	pkgdesc = dmenu with pango and imlib support
+	pkgver = 4.5.3
+	pkgrel = 1
+	url = https://github.com/Cloudef/dmenu-pango-imlib
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = libx11
+	depends = pango
+	depends = imlib2
+	provides = dmenu
+	conflicts = dmenu
+	source = https://github.com/Cloudef/dmenu-pango-imlib/archive/4.5.3.zip
+	sha256sums = ac2856500bfca809f2650e6e0cf958dfbf03ba01d2ca20a32fdc80d44711f2cc
+
+pkgname = dmenu-pango-imlib
+
