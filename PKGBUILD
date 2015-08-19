@@ -1,11 +1,11 @@
 pkgname=openresty_luafilesystem
 pkgver=1.6.3
 _pkgver=v_${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="File System Library for the Lua Programming Language in Openresty"
 arch=('any')
-url="http://openresty.org/"
-license=('BSD')
+url="https://keplerproject.github.io/luafilesystem/"
+license=('custom')
 depends=('openresty_luarocks')
 install=rock.install
 source=(https://github.com/keplerproject/luafilesystem/archive/$_pkgver.tar.gz)

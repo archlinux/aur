@@ -1,11 +1,11 @@
 pkgbase = openresty_luafilesystem
 	pkgdesc = File System Library for the Lua Programming Language in Openresty
 	pkgver = 1.6.3
-	pkgrel = 1
-	url = http://openresty.org/
+	pkgrel = 2
+	url = https://keplerproject.github.io/luafilesystem/
 	install = rock.install
 	arch = any
-	license = BSD
+	license = custom
 	depends = openresty_luarocks
 	source = https://github.com/keplerproject/luafilesystem/archive/v_1_6_3.tar.gz
 	sha256sums = 5525d2b8ec7774865629a6a29c2f94cb0f7e6787987bf54cd37e011bfb642068
