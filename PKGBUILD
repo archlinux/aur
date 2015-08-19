@@ -9,13 +9,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=python-gitlab
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Interact with GitLab API"
 arch=(any)
 url="ttps://github.com/gpocentek/python-gitlab"
 license=('LGPLv3')
 groups=()
-depends=('python')
+depends=('python' 'python-requests' 'python-six')
 makedepends=()
 provides=()
 conflicts=()
