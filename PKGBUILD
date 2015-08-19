@@ -18,11 +18,6 @@ options=('!libtool')
 sha256sums=('986f3b4b27ec04e1da493de3aaab01cd5ea9566d7572c1a40b8d43cd7a491e84'
             '811bf1ecc85045e80757ea553591c00e32bb93d529a761b18bb501d0f2bf82c5')
 
-prepare() {
-  sed -e 's/Exec=gddccontrol/Exec=pkexec gddccontrol/' \
-    -i "${srcdir}/${pkgbase}-${pkgver}/src/gddccontrol/gddccontrol.desktop"
-}
-
 build() {
   cd "${srcdir}"/${pkgbase}-${pkgver}
   ./configure \
@@ -49,7 +44,10 @@ package_gddccontrol() {
   cd "${srcdir}"/${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install -C src/gddccontrol
 
+  # policykit
   install -Dm644 \
     "$srcdir/org.ddccontrol.pkexec.gddccontrol.policy" \
     "${pkgdir}/usr/share/polkit-1/actions/org.ddccontrol.pkexec.gddccontrol.policy"
+  sed -e 's/Exec=gddccontrol/Exec=pkexec gddccontrol/' \
+    -i "${pkgdir}/usr/share/applications/gddccontrol/gddccontrol.desktop"
 }
