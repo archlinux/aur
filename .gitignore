@@ -1,0 +1,6 @@
+*.pkg.tar
+*.pkg.tar.*
+pkg/
+src/
+Send2Trash-1.3.0.tar.gz
+LICENSE
