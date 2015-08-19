@@ -6,7 +6,6 @@ pkgbase = qt-color-picker-common
 	arch = any
 	license = LGPL3
 	makedepends = git
-	makedepends = qtchooser
 	source = qt-color-picker-common::git+git://github.com/mbasaglia/Qt-Color-Picker.git
 	sha256sums = SKIP
 
