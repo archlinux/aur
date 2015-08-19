@@ -6,6 +6,9 @@ pkgbase = binnavi-git
 	arch = any
 	license = Apache
 	makedepends = git
+	makedepends = maven
+	makedepends = apache-ant
+	depends = java-environment>=7
 	provides = binnavi
 	conflicts = binnavi
 	source = binnavi-git::https://github.com/google/binnavi.git

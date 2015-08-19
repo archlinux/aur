@@ -6,8 +6,8 @@ pkgdesc="BinNavi is a binary analysis IDE that allows to inspect, navigate, edit
 url="https://github.com/google/binnavi"
 arch=('any')
 license=('Apache')
-depends=()
-makedepends=('git')
+depends=('java-environment>=7')
+makedepends=('git' 'maven' 'apache-ant')
 provides=('binnavi')
 conflicts=('binnavi')
 source=(${pkgname}::https://github.com/google/binnavi.git)
@@ -18,8 +18,17 @@ pkgver() {
   printf "%s.%s.%s" "0.0" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "${srcdir}/$pkgname-$pkgver"
+  mvn dependency:copy-dependencies
+  ant -f src/main/java/com/google/security/zynamics/build.xml \
+  build-binnavi-fat-jar
+}
+
 package() {
-  echo "in work"
+  mkdir -p "${pkgdir}/opt/binnavi"
+  cd "${srcdir}/target/" 
+  mv * "${pkgdir}/opt/binnavi/*"  
 }
 
 # vim:set et sw=2 ts=2 tw=80:
