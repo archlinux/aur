@@ -1,0 +1,30 @@
+diff --git a/freespeech.py b/freespeech.py
+index a487bec..5ad57f7 100755
+--- a/freespeech.py
++++ b/freespeech.py
+@@ -28,22 +28,15 @@ gobject.threads_init()
+ import gst
+ import subprocess
+ import platform, os, shutil, sys, codecs
++import appdirs
+ import re
+ import json
+ from send_key import *
+ 
+ """ global variables """
+ appname = 'FreeSpeech'
+-refdir = 'lm'
+-
+-# hmmm, where to put files? How about XDG_CONFIG_HOME?
+-# This will work on most Linux
+-if os.environ.has_key('XDG_CONFIG_HOME'):
+-    confhome = os.environ['XDG_CONFIG_HOME']
+-    confdir  = os.path.join(confhome, appname)
+-else:
+-    # todo: determine suitable writable location for other os
+-    confdir = refdir
++refdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lm')
++confdir = appdirs.user_config_dir(appname)
+ 
+ # reference files written by this application
+ lang_ref= os.path.join(confdir, 'freespeech.ref.txt')

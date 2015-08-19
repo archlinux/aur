@@ -1,26 +1,31 @@
 # Maintainer: Alain Kalker <a {dot} c {dot} kalker "at" gmail {dot} com>
 pkgname=freespeech-vr
 pkgver=0.120
-pkgrel=1
+pkgrel=2
 pkgdesc="Free streaming voice recognition with dynamic language learning"
 arch=('any')
-url="https://code.google.com/p/freespeech-vr/"
+url="https://thenerdshow.com/freespeech.html"
 license=('GPL3')
 depends=('python2' 'pygtk' 'python2-xlib' 'python2-simplejson'
-        'gstreamer0.10-python' 'pocketsphinx' 'cmu-sml-toolkit')
+         'gstreamer0.10-python' 'pocketsphinx' 'cmuclmtk'
+         'python2-appdirs')
 options=(!emptydirs)
 source=("https://freespeech-vr.googlecode.com/files/${pkgname}_r${pkgver#0.}.zip"
         'setup.py.in'
-        'fix-paths.patch')
+        'confdir.patch'
+        'text2idngram.patch')
 md5sums=('033aeddcaf3b21c693016f6017260480'
-         '68061c33e5bff6d8b1aed4d433ce555c'
-         '1a7a33b9a68c648f77fe66ee5e17bc25')
+         'b9b63900c73b4c03d88c2946fd17668a'
+         '4dbd98a88871f69742d82bf72ce86fbe'
+         '4c56a2a3bc3b006e0ea36166045ce75c')
 
 prepare() {
   cd "$srcdir/$pkgname"
 
-  # Fix paths
-  patch -p1 -i ../fix-paths.patch
+  # Fix location of configuration directory
+  patch -p1 -i ../confdir.patch
+  # Fix text2idngram invocation
+  patch -p1 -i ../text2idngram.patch
 
   # Use python2
   sed -i -e '1s/python$/python2/' *.py

@@ -1,0 +1,25 @@
+diff --git a/freespeech.py b/freespeech.py
+index 5ad57f7..69ff99b 100755
+--- a/freespeech.py
++++ b/freespeech.py
+@@ -27,7 +27,7 @@ import gobject
+ gobject.threads_init()
+ import gst
+ import subprocess
+-import platform, os, shutil, sys, codecs
++import platform, os, shutil, sys, codecs, tempfile
+ import appdirs
+ import re
+ import json
+@@ -287,8 +287,9 @@ If new commands don't work click the learn button to train them.")
+             self.err('Trouble writing ' + vocab)
+         # update the idngram\
+         # http://www.speech.cs.cmu.edu/SLM/toolkit_documentation.html#text2idngram
+-        if subprocess.call('text2idngram -vocab ' + vocab + \
+-            ' -n 3 < ' + lang_ref + ' > ' + idngram, shell=True):
++        if subprocess.call('cd ' + tempfile.gettempdir() + '; ' + \
++            'text2idngram -vocab ' + vocab + ' -idngram ' + idngram + \
++            ' -n 3 < ' + lang_ref, shell=True):
+             self.err('Trouble writing ' + idngram)
+         
+         # (re)build arpa language model
