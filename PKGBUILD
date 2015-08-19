@@ -1,8 +1,8 @@
 # Maintainer: SaultDon <sault.don gmail>
 pkgname=filegdb-api
 _pkgname=FileGDB_API
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="ESRI File Geodatabase (FileGDB) API"
 arch=('i686' 'x86_64')
 url="http://www.esri.com/apps/products/download/#File_Geodatabase_API_1.3"
@@ -10,34 +10,38 @@ license=('custom:"ESRI - User Restrictions"')
 makedepends=('libxml2' 'gcc>=3.4.6')
 optdepends=('gdal-filegdb: wrapper')
 changelog=$pkgname.changelog
-install=$pkgname.install
 case $CARCH in
 i686)
   source=($pkgname-$pkgver.tar.gz::http://downloads2.esri.com/Software/${_pkgname}_${pkgver//./_}-32.tar.gz)
-  md5sums=('f54739d309436f96d0a23149bf08ac53')
+  md5sums=('e6eae3f612b7001ae3b1313d9797f3ef')
   ;; 
 x86_64)
   source=($pkgname-$pkgver.tar.gz::http://downloads2.esri.com/Software/${_pkgname}_${pkgver//./_}-64.tar.gz)
-  md5sums=('167ed3d756ad961c0849a9387f4be733')
+  md5sums=('40c3e48e080947c1b6890063fa9f64c5')
   ;; 
 esac
-noextract=($pkgname-$pkgver.tar.gz)
+
+prepare() {
+    cd $srcdir
+    mv FileGDB_API-* $pkgname
+}
 
 build() {
-	tar xzvf $pkgname-$pkgver.tar.gz
+    cd $srcdir/$pkgname
 
     #Build for linux
-    export CPPFLAGS=-Dlinux
+    export CPPFLAGS+=" -Dlinux"
 
 	#Setup LD_LIBRARY_PATH
-	export LD_LIBRARY_PATH=$srcdir/${_pkgname}/lib:$LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH=$srcdir/${pkgname}/lib:$LD_LIBRARY_PATH
+    
 
     #Building all samples
-	cd "$srcdir/${_pkgname}/samples"
+	cd "$srcdir/${pkgname}/samples"
 	make
 
 	# Building ProcessTopology
-	cd "$srcdir/${_pkgname}/samples/ProcessTopologies"
+	cd "$srcdir/${pkgname}/samples/ProcessTopologies"
 
 	# Insert libxml2 library path to Makefile
 	sed -i '/^CXXFLAGS=/ s/$/ -I\/usr\/include\/libxml2\//' Makefile
@@ -56,17 +60,19 @@ build() {
 #}
 
 package() {
-	mkdir -p $pkgdir/usr/{lib,include,share/{doc,licenses}}/$pkgname
-	mkdir -p $pkgdir/usr/lib/$pkgname/{lib,include}
-	mkdir -p $pkgdir/etc/ld.so.conf.d
-	install -Dm644 $srcdir/${_pkgname}/license/* "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 $srcdir/${_pkgname}/lib/* "$pkgdir/usr/lib/$pkgname/lib/"
-	install -Dm644 $srcdir/${_pkgname}/include/* "$pkgdir/usr/lib/$pkgname/include/"
-	cp -r $srcdir/${_pkgname}/doc/html "$pkgdir/usr/share/doc/$pkgname/"
-	echo "/usr/lib/$pkgname/lib" > $pkgdir/etc/ld.so.conf.d/$pkgname.conf
+    cd $pkgdir
+
+	mkdir -p $pkgdir/usr/{lib,share/{doc,licenses}/$pkgname}
+	mkdir -p $pkgdir/usr/include
+
+    install -Dm644 $srcdir/${pkgname}/license/* "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 $srcdir/${pkgname}/lib/* "$pkgdir/usr/lib/"
+	install -Dm644 $srcdir/${pkgname}/include/* "$pkgdir/usr/include/"
+
+	cp -r $srcdir/${pkgname}/doc/html "$pkgdir/usr/share/doc/$pkgname/"
+
 	find $pkgdir/usr/share/doc/$pkgname/ -type d -exec chmod 755 '{}' \;
 	find $pkgdir/usr/share/doc/$pkgname/ -type f -exec chmod 644 '{}' \;
+
 	chown root: $pkgdir/usr/share/doc/$pkgname/*
-	chmod 644 $pkgdir/etc/ld.so.conf.d/$pkgname.conf
-	chown root: $pkgdir/etc/ld.so.conf.d/$pkgname.conf
 }
