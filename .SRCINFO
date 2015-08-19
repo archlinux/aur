@@ -1,0 +1,21 @@
+pkgbase = openresty_luarocks
+	pkgdesc = Deployment and management system for Openresty Luajit 2.1 modules
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://luarocks.org/
+	arch = any
+	license = custom
+	depends = openresty
+	depends = zip
+	depends = unzip
+	depends = curl
+	optdepends = cvs: for fetching sources from CVS repositories
+	optdepends = git: for fetching sources from git repositories
+	optdepends = mercurial: for fetching sources from mercurial repositories
+	optdepends = cmake: for building rocks that use the cmake build system
+	options = !makeflags
+	source = http://keplerproject.github.io/luarocks/releases/luarocks-2.2.2.tar.gz
+	sha256sums = 4f0427706873f30d898aeb1dfb6001b8a3478e46a5249d015c061fe675a1f022
+
+pkgname = openresty_luarocks
+
