@@ -1,13 +1,13 @@
 # Maintainer: Lars Hagström <lars@teg>
 pkgname=airtame-cli-git
 pkgver=r36.0eb1a15
-pkgrel=1
+pkgrel=2
 pkgdesc="The AIRTAME Command Line interface"
 arch=('i686' 'x86_64')
 url="http://www.airtame.com"
 license=('GPLv3')
 groups=()
-depends=("jsonrpc-c-git")
+depends=("airtame-streamer" "jsonrpc-c-git")
 makedepends=()
 backup=()
 options=()
