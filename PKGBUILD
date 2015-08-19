@@ -9,17 +9,18 @@ arch=('any')
 url="http://www.emacswiki.org/emacs/Icicles"
 license=('GPL')
 makedepends=(wget)
-source=(http://www.emacswiki.org/emacs/download/get-icicles.sh)
-md5sums=('93857a3934a576e9fbf69f2c7f355ebd')
 install=icicles.install
 
-build() {
+pkgver() {
   [ -d icicles ] && rm -r icicles
-  chmod +x get-icicles.sh
-  ./get-icicles.sh -v
+  mkdir icicles
   cd icicles
+  wget http://www.emacswiki.org/emacs/download/icicles{,-chg,-cmd1,-cmd2,-doc1,-doc2,-face,-fn,-mac,-mcmd,-mode,-opt,-var}.el
+  
+  echo $(awk '/Update #:/ {print $4}' icicles.el) 
   emacs -Q -batch -L . -f batch-byte-compile *.el || true
 }
+
 package() {
   install -d  "$pkgdir"/usr/share/emacs/site-lisp/icicles
   cp -r "$srcdir"/icicles/* "$pkgdir"/usr/share/emacs/site-lisp/icicles

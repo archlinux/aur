@@ -7,8 +7,6 @@ pkgbase = emacs-icicles
 	arch = any
 	license = GPL
 	makedepends = wget
-	source = http://www.emacswiki.org/emacs/download/get-icicles.sh
-	md5sums = 93857a3934a576e9fbf69f2c7f355ebd
 
 pkgname = emacs-icicles
 
