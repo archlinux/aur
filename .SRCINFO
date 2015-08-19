@@ -1,6 +1,6 @@
 pkgbase = yaah
 	pkgdesc = Yet another AUR helper
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://bitbucket.org/the_metalgamer/yaah
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = yaah
 	depends = pacman
 	depends = jshon
 	depends = tar
-	source = https://bitbucket.org/the_metalgamer/yaah/downloads/yaah-0.6.4.tar.gz
-	sha512sums = 93d590e4724ac98ed93148e5037300a1604f6b3910721eb1aad3683792986dfde4ffd2b0f2a36f842b763579e1c8be4e044b852e38f34d5c97cdba618e7b25aa
+	source = https://bitbucket.org/the_metalgamer/yaah/downloads/yaah-0.6.5.tar.gz
+	sha512sums = fdab55669b5f396716475601c88dc030c031980a3e1cb2ca0ec840f3aa50bd885aafe946f2983111ce57abf795159bcaa38a641622beafc944b06050d43bb65c
 
 pkgname = yaah
 
