@@ -16,7 +16,7 @@ depends=('python-appdirs' 'python-requests>=2.1.0'
 'python-requests-toolbelt')
 makedepends=('python' 'python-setuptools')
 source=("https://github.com/yadayada/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('71df914777406f147b159a486fced015104dc10680d9c20144e19b140c7d7867')
+sha256sums=('136e981f1cec4a49b0775829810fac6494c6935686649b42cf8fcf2e7ca92895')
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
