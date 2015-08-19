@@ -1,0 +1,12 @@
+pkgbase = jd-cmd
+	pkgver = 0.9.1.Final
+	pkgrel = 1
+	url = https://github.com/kwart/jd-cmd
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	source = https://github.com/kwart/jd-cmd/releases/download/jd-cmd-0.9.1.Final/jd-cli-0.9.1.Final-dist.tar.gz
+	sha256sums = 959bde5ba8d41009dae4c3690ca172697c9c9525eccd21e51a940fa3f13f525f
+
+pkgname = jd-cmd
+
