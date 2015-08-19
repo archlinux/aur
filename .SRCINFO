@@ -11,7 +11,9 @@ pkgbase = jdk-demos
 	optdepends = java-environment>=8: Compile and run the examples
 	options = !strip
 	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u60-b27-demos/jdk-8u60-linux-i586-demos.tar.gz
+	md5sums_i686 = aa469b7263f156ec4e4bf03039364a29
 	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u60-b27-demos/jdk-8u60-linux-x64-demos.tar.gz
+	md5sums_x86_64 = 835b449a5a232efd75fbec43112a2043
 
 pkgname = jdk-demos
 
