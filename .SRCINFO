@@ -1,0 +1,11 @@
+pkgbase = gitflow-git
+	pkgdesc = Git extensions to provide high-level repository operations for Vincent Driessen's branching model.
+	pkgver = 20130316
+	pkgrel = 1
+	url = http://github.com/nvie/gitflow
+	arch = any
+	license = BSD
+	depends = git
+
+pkgname = gitflow-git
+
