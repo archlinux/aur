@@ -1,0 +1,15 @@
+pkgbase = sunxi-tools
+	pkgdesc = Tools to help hacking Allwinner A10 devices.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/linux-sunxi/sunxi-tools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libusb
+	depends = libusb
+	source = https://github.com/linux-sunxi/sunxi-tools/archive/v1.2.tar.gz
+	sha256sums = 86c1f2ace861a320b90bf5962a45329120ddc903cf0df678f1d31a44d6ba6b6e
+
+pkgname = sunxi-tools
+
