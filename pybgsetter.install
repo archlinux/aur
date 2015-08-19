@@ -1,5 +1,4 @@
 post_install(){
-    update-desktop-database -q
     printf '\n%s\n' 'Please install at least one of the optional dependencies.'
 }
 
