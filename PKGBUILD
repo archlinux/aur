@@ -3,7 +3,7 @@
 
 pkgname=gtkhtml3
 pkgver=3.32.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A lightweight HTML renderer/editor widget for GTK2"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -26,5 +26,4 @@ build() {
 package() {
   cd "${srcdir}/${pkgname//3/}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  rm -f "${pkgdir}/usr/bin/"
 }

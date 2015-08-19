@@ -1,7 +1,7 @@
 pkgbase = gtkhtml3
 	pkgdesc = A lightweight HTML renderer/editor widget for GTK2
 	pkgver = 3.32.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnome.org
 	arch = i686
 	arch = x86_64
