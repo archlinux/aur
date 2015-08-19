@@ -1,10 +1,7 @@
-2015-07-30 SaultDon <sault.don gmail>
+2015-08-19 SaultDon <sault.don gmail>
     * 2.0-2
-    * removed unneeded perl patch, fixed in upstream
-
-2015-07-02 SaultDon <sault.don gmail>
-    * 2.0-1
-    * updated to latest release
+    * updated build to find filegdb-api
+    * removed upstream applied patch for ogr_perl building
 
 2015-03-10 SaultDon <sault.don gmail>
     * 1.11.2-1
