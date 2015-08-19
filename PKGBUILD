@@ -27,8 +27,8 @@ build() {
 
 package() {
   mkdir -p "${pkgdir}/opt/binnavi"
-  cd "${srcdir}/target/" 
-  mv * "${pkgdir}/opt/binnavi/*"  
+  cd "${srcdir}/$pkgname-$pkgver/target/" 
+  mv * "${pkgdir}/opt/binnavi/"  
 }
 
 # vim:set et sw=2 ts=2 tw=80:
