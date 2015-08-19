@@ -1,0 +1,15 @@
+pkgbase = nodejs-share-term
+	pkgdesc = Share the terminal with your friends.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://share-term.me/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = share-term-1.1.0.tgz
+	source = http://registry.npmjs.org/share-term/-/share-term-1.1.0.tgz
+	sha1sums = b6e6698b634d8cf46e6e8a56aa2ddfabc5b87a5f
+
+pkgname = nodejs-share-term
+
