@@ -1,8 +1,8 @@
 pkgbase = perl-email-sender
 	pkgdesc = a library for sending email
-	pkgver = 1.300016
+	pkgver = 1.300018
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Email-Sender
+	url = https://metacpan.org/release/Email-Sender
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -17,12 +17,10 @@ pkgbase = perl-email-sender
 	depends = perl-sub-exporter
 	depends = perl-throwable
 	depends = perl-try-tiny
-	depends = perl-mro-compat
-	depends = perl-module-pluggable
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Sender-1.300016.tar.gz
-	md5sums = 758b2dcb2ca1dfb6f9c94ddf94aa0a57
-	sha512sums = b64ae8308f066b864bc414d9574a0ab9e04f08aeb31e25b296d740f094c6c4abcd208dbc0b668a9b1fe9dcbbb22e8cfb398101f20d05d1403db320348fdc01eb
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Sender-1.300018.tar.gz
+	md5sums = 03a3d018c52ce2a10ed541753196b0e8
+	sha512sums = 1ac1db7bb7c38eb0c8dc5f5fee540bb5d82d308292a7a3c928262ee5b528f6a3c4e8613d3bceb2c48abbc2f5d0bf5e56e7f91348a0d0984d13223a9d9706ddec
 
 pkgname = perl-email-sender
 
