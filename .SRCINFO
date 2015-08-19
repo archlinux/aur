@@ -1,0 +1,13 @@
+pkgbase = android-docs
+	pkgdesc = API docs for Google Android SDK
+	pkgver = 23_r01
+	pkgrel = 1
+	url = http://developer.android.com
+	arch = any
+	license = Apache
+	options = !strip
+	source = http://dl-ssl.google.com/android/repository/docs-23_r01.zip
+	sha1sums = 060ebab2f74861e1ddd9136df26b837312bc087f
+
+pkgname = android-docs
+
