@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=tau
-pkgver=2.23.1
+pkgver=2.24.1
 pkgrel=1
 pkgdesc="Profiling and tracing toolkit for Fortran, C, C++, Java and Python programs"
 arch=('i686' 'x86_64')
@@ -23,7 +23,8 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ./configure -LINUXTIMERS -pthread
+  # useropt is required for proper detection of BFD and demangle.h
+  ./configure -LINUXTIMERS -pthread -useropt="-DPACKAGE -DPACKAGE_VERSION -ldl -I/usr/include/libiberty"
   make install
 }
 
