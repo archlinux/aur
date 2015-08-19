@@ -1,0 +1,23 @@
+pkgbase = tpkbdctl-git
+	pkgdesc = A tool that can be used to control features of the "Lenovo ThinkPad USB Keyboard with TrackPoint"
+	pkgver = 20150819
+	pkgrel = 1
+	url = https://github.com/bseibold/tpkbdctl
+	install = tpkbdctl.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	depends = linux>=3.0
+	depends = python
+	backup = etc/default/tpkbdctl
+	source = 10-tpkbdctl.rules
+	source = tpkbdctl.default
+	source = tpkbdctl_runner
+	md5sums = 47dc611bbbef728ab5f016afbd3e86b5
+	md5sums = cc40b7b7c32ed713aafabc0af385a168
+	md5sums = 69fd4aafd2a21798f86d98a9eb2d6ecd
+
+pkgname = tpkbdctl-git
+

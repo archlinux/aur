@@ -1,0 +1,5 @@
+## arg 1:  the new package version
+post_install() {
+  echo '>>> The default configuration can be modified in /etc/default/tpkbdctl'
+  echo '>>> Call tpkbdctl -h to see the available options'
+}
