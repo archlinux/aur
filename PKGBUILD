@@ -4,7 +4,7 @@ BUILD_SELINUX=false
 
 pkgname=389-ds-base
 pkgver=1.3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
 url="http://port389.org/"
@@ -42,6 +42,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
+    --localstatedir=/var \
     --with-tmpfiles-d=/usr/lib/tmpfiles.d \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-systemdsystemconfdir=/etc/systemd/system \
