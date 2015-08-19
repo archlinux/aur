@@ -1,0 +1,30 @@
+pkgbase = acrylamid
+	pkgdesc = Static blog compiler with incremental updates
+	pkgver = 0.7.10
+	pkgrel = 5
+	url = http://posativ.org/acrylamid/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-jinja
+	depends = python-markdown
+	depends = python-unidecode
+	optdepends = discount: Discount
+	optdepends = python-asciimathml: AsciiMathML to MathML
+	optdepends = python-ansi2html: ANSI escape codes in HTML code examples
+	optdepends = python-docutils: reStructuredText
+	optdepends = python-magic: Non-ASCII text detection
+	optdepends = python-mako: Mako Templating
+	optdepends = python-pygments: Syntax Highlighting
+	optdepends = python-smartypants: Typography enhancements
+	optdepends = python-textile: Textile
+	optdepends = python-twitter: Twitter
+	optdepends = python-yaml: YAML parser
+	provides = python-acrylamid
+	conflicts = python-acrylamid
+	options = !emptydirs
+	source = acrylamid-0.7.10.tar.gz::https://codeload.github.com/posativ/acrylamid/tar.gz/0.7.10
+	md5sums = 1feb45145984e5732c39dbe1a71f47ad
+
+pkgname = acrylamid
+
