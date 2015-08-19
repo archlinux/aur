@@ -1,0 +1,18 @@
+pkgbase = perl-throwable
+	pkgdesc = a role for classes that can be thrown
+	pkgver = 0.200013
+	pkgrel = 1
+	url = https://metacpan.org/release/Throwable
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-devel-stacktrace>=1.32
+	depends = perl-module-runtime>=0.002
+	depends = perl-moo>=1.000001
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Throwable-0.200013.tar.gz
+	md5sums = 92d4934f601c2d291a65b0bf2ab08dd3
+	sha512sums = 81ce73709c7c6a0160da42b00ce06ddf4cce79a6801df7aa90ddcce67efed6ace17b06171ac42b2737a98515c17ab46b5a3b7fd9e5bd3079b109a977dc6c0963
+
+pkgname = perl-throwable
+
