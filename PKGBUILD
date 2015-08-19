@@ -1,6 +1,6 @@
 # Maintainer: Josip Janzic <josip.janzic@gmail.com>
 pkgname=iojs-bin
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Evented I/O for V8 JavaScript - Node.js fork"
 arch=('i686' 'x86_64'  'armv6h' 'armv7h')
@@ -19,10 +19,10 @@ _arch=x64
 
 source=("https://iojs.org/dist/v${pkgver}/iojs-v${pkgver}-linux-${_arch}.tar.xz")
 
-sha256sums=('a625308ba6148b9aefabbd524773dd1028c19e6a85d9ea6bc60fc426b7f8b7e8')
-[[ $CARCH = i686 ]] && sha256sums[0]='9f3314761b3b534db3dbbc52f555b44c0e16be14ed572fb8eb5769a38aadae1d'
-[[ $CARCH = armv6h ]] && sha256sums[0]='e5c2dea20d8bd07032a43e9d170992a511585e0ed90d329d68778b253f8c6a10'
-[[ $CARCH = armv7h ]] && sha256sums[0]='e26b7334da98e7da9b35e08a322a0fc6ff63df63bc296666e2c149ede5f7b769'
+sha256sums=('5e990b7b70c8ddba32a402e05ce074ddece2b93ccac0414700ec4b3054c0d0f4')
+[[ $CARCH = i686 ]] && sha256sums[0]='4d05cc91345b3d005d2ac8db2b22af47d92cbcf1027fed3ab1fa2f1f5ca7b476'
+[[ $CARCH = armv6h ]] && sha256sums[0]='e6fdd01cdcb2e381743d501a7f031b363a48ac8f8160252c3dc58b36505919aa'
+[[ $CARCH = armv7h ]] && sha256sums[0]='855f9cef9904b1642832327bf27cd08e196b422abfb747cfa05ce5850657c160'
 
 _extracted_arch=$_arch
 [[ $CARCH = i686 ]] && _extracted_arch=ia32
