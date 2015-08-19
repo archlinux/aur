@@ -1,0 +1,16 @@
+pkgbase = libboard
+	pkgdesc = C++ library for simple Postscript, SVG, and XFig drawings
+	pkgver = 0.9.0
+	pkgrel = 3
+	url = http://libboard.sourceforge.net
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/project/libboard/libboard/0.9.0/libboard-0.9.0.tar.gz
+	source = configure.diff
+	md5sums = 6dc8049db96eb852d5d3946cd042ace4
+	md5sums = 376eb103386057b7b3bb31c5648660ed
+
+pkgname = libboard
+

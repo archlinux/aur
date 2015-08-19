@@ -1,0 +1,32 @@
+--- ./configure.orig	2013-12-14 15:42:47.367732350 +0100
++++ ./configure	2013-12-14 20:01:29.821479626 +0100
+@@ -220,20 +220,28 @@
+ 	chmod 755 \$(PREFIX)/include/board
+ 	chmod 644 \$(PREFIX)/include/Board.h
+ 	chmod 644 \$(PREFIX)/include/board/*.h
++	chmod 644 \$(PREFIX)/include/board/*.ih
+ 	install -d \$(PREFIX)/share/libboard/examples
+ 	\$(CP) examples/*.cpp \$(PREFIX)/share/libboard/examples
+ 	\$(CP) examples/README \$(PREFIX)/share/libboard/examples
++	chmod 644 \$(PREFIX)/share/libboard/examples/*.cpp
++	chmod 644 \$(PREFIX)/share/libboard/examples/README
+ 	\$(CP) ${LICENSE} \$(PREFIX)/share/libboard/
+ 
+ doc: doc/html/index.html
+ 
+ doc/html/index.html: src/*.cpp include/Board.h include/board/*.h
+-	\$(RM) -rf doc/html/* ; doxygen
++	\$(RM) -rf doc/html/*
++	doxygen
+ 
+ install-doc: doc
+ 	\$(RM) -rf \$(PREFIX)/share/doc/libboard/html
+ 	install -d \$(PREFIX)/share/doc/libboard
+ 	\$(CP) -r doc/html \$(PREFIX)/share/doc/libboard
++	\$(RM) -rf \$(PREFIX)/share/doc/libboard/html/.svn
++	chmod 755 \$(PREFIX)/share/doc/libboard
++	chmod 755 \$(PREFIX)/share/doc/libboard/html
++	chmod 644 \$(PREFIX)/share/doc/libboard/html/*
+ EOF
+ 
+ ${ECHO} "done."
