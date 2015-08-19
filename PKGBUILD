@@ -1,6 +1,6 @@
 # Mantainer Jens Staal <staal1978@gmail.com>
 
-pkgname=open_watcom-v2-git
+pkgname=openwatcom-v2-git
 pkgver=0.r2482.g7a44a32
 pkgrel=1
 pkgdesc="The Open Watcom C/C++ compiler, github source fork"

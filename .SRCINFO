@@ -1,4 +1,4 @@
-pkgbase = open_watcom-v2-git
+pkgbase = openwatcom-v2-git
 	pkgdesc = The Open Watcom C/C++ compiler, github source fork
 	pkgver = 0.r2482.g7a44a32
 	pkgrel = 1
@@ -23,5 +23,5 @@ pkgbase = open_watcom-v2-git
 	sha256sums = SKIP
 	sha256sums = 44f0b3bff2b722be9cf97b0246cf16d4526fcf6cc09353949ce82552243ccdb8
 
-pkgname = open_watcom-v2-git
+pkgname = openwatcom-v2-git
 
