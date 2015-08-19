@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-test-sharedfork'
-pkgver='0.29'
+pkgver='0.33'
 pkgrel='1'
 pkgdesc="fork test"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-test-requires' 'perl')
 makedepends=()
 url='https://metacpan.org/release/Test-SharedFork'
-source=('http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Test-SharedFork-0.29.tar.gz')
-md5sums=('acbc5baf82d78edf3771dfecaacd2345')
-sha512sums=('ef392d615bc0be2fb04f27f0f1dcbaf8041a52242131c62d00357228b532087a50beae44bdb3d94f883a009741847641fed87665198b624139c762dcba5488ec')
-_distdir="Test-SharedFork-0.29"
+source=('http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Test-SharedFork-0.33.tar.gz')
+md5sums=('5e9445ea773211f743ac0f64e276f70d')
+sha512sums=('3218023d48b05c31bfba8d9629f8acb1379c91efa7713187741fd9851c8c645ec62143025d7c0038e5d52a3fbd21cac6030e15c816745de5461a40529ceb4bf3')
+_distdir="Test-SharedFork-0.33"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
