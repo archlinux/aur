@@ -1,0 +1,16 @@
+pkgbase = xpybutil-git
+	pkgdesc = An incomplete xcb-util port plus some extras
+	pkgver = r89.8ee7dc4
+	pkgrel = 1
+	url = https://github.com/BurntSushi/xpybutil
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	depends = python2
+	depends = xpyb-git
+	optdepends = python-imaging
+	source = git+https://github.com/BurntSushi/xpybutil.git
+	sha256sums = SKIP
+
+pkgname = xpybutil-git
+
