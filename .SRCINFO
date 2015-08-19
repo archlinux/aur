@@ -1,0 +1,16 @@
+pkgbase = jazz
+	pkgdesc = A fairly standard chess program
+	pkgver = r840
+	pkgrel = 1
+	url = http://www.eglebbk.dds.nl/program/chess-index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	source = http://www.eglebbk.dds.nl/program/download/jazz-840-src.tar.gz
+	source = install-lib.patch
+	md5sums = 0a5cfb8b90aca975ab651f53a12f78bc
+	md5sums = c9027d0eb853221601ad0d4886c1699e
+
+pkgname = jazz
+

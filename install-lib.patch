@@ -1,0 +1,12 @@
+diff -aur package.pristine/CMakeLists.txt package.new/CMakeLists.txt
+--- package.pristine/CMakeLists.txt	2015-08-19 08:30:39.696261908 +0200
++++ package.new/CMakeLists.txt	2015-08-19 08:51:24.487169332 +0200
+@@ -324,7 +324,7 @@
+ endif(WANT_RELEASE)
+ 
+ # Installation targets
+-install (TARGETS "xbjazz" RUNTIME DESTINATION "bin")
++install (TARGETS "jazz" "xbjazz" LIBRARY DESTINATION "lib" RUNTIME DESTINATION "bin")
+ install (FILES "${CMAKE_SOURCE_DIR}/misc/jazz.eng" DESTINATION "share/games/plugins/xboard/")
+ install (FILES "${CMAKE_SOURCE_DIR}/misc/jazz_logo0.png" DESTINATION "share/games/plugins/logos/")
+ 
