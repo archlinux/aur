@@ -1,5 +1,4 @@
 # Maintainer: Yauhen Kirylau <yawghen AT gmail.com>
-# Contributor: Yauhen Kirylau <yawghen AT gmail.com>
 # Upstream URL: https://wickr.com/
 
 pkgname=wickr-bin
