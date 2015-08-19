@@ -1,6 +1,6 @@
 pkgbase = python-botocore-git
 	pkgdesc = A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3
-	pkgver = 1.1.8.r2084.gc47c708
+	pkgver = 1.1.8.r2097.g9325508
 	pkgrel = 1
 	url = https://github.com/boto/botocore
 	arch = any
