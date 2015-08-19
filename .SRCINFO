@@ -1,0 +1,20 @@
+pkgbase = perl-www-aur
+	pkgdesc = API for the Archlinux User Repository website.
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://metacpan.org/release/WWW-AUR
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-http-cookies
+	depends = perl-json
+	depends = perl-lwp-protocol-https>=6
+	depends = perl-uri
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JU/JUSTER/WWW-AUR-0.19.tar.gz
+	md5sums = 0d7b378481e0eb28918d24419aeaa485
+	sha512sums = 50f3fd25413a88ec094f730f489a8f7b879bbc2ea49b3d39d83c52b5aaf2771300ae50eb40123112a2bd9a3fd867a57f304eab1f042391170fe92d281cb80f0c
+
+pkgname = perl-www-aur
+
