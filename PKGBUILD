@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-moox-types-mooselike'
-pkgver='0.27'
+pkgver='0.29'
 pkgrel='1'
 pkgdesc="some Moosish types and a type builder"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-module-runtime>=0.012' 'perl-moo>=0.09101')
+depends=('perl-module-runtime>=0.014' 'perl-moo>=1.004002')
 makedepends=()
 checkdepends=('perl-test-fatal>=0.003')
-url='http://search.mcpan.org/dist/MooX-Types-MooseLike'
-source=('http://search.mcpan.org/CPAN/authors/id/M/MA/MATEU/MooX-Types-MooseLike-0.27.tar.gz')
-md5sums=('049e99292aa848454ae1e42b09603fa9')
-sha512sums=('bfd221e2dd6b2f292b87b6bb3062fc00fa1f90426961c1c6de0dc266e0745e6ec3a3a9443aec006d8e999912c03f24a0735d01a3a4228803b556e14b608f2153')
-_distdir="MooX-Types-MooseLike-0.27"
+url='https://metacpan.org/release/MooX-Types-MooseLike'
+source=('http://search.cpan.org/CPAN/authors/id/M/MA/MATEU/MooX-Types-MooseLike-0.29.tar.gz')
+md5sums=('0905b92c1b44578e05e7f08fa7adb9ee')
+sha512sums=('69ddd0d663d1ea23dfc7e47ec35192f1951f195f70f788bac47cc93e98d9e888394c07fc39f1740b7c1fd04f8724f2b0dfa14183fe33bceb9f77c1f1d1b8752e')
+_distdir="MooX-Types-MooseLike-0.29"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
