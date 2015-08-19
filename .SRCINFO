@@ -1,0 +1,37 @@
+pkgbase = gvim-python3-noconflict
+	pkgver = 7.4.778
+	pkgrel = 1
+	url = http://www.vim.org
+	arch = i686
+	arch = x86_64
+	license = custom:vim
+	makedepends = gpm
+	makedepends = python2
+	makedepends = python
+	makedepends = ruby
+	makedepends = libxt
+	makedepends = desktop-file-utils
+	makedepends = gtk2
+	makedepends = lua
+	makedepends = mercurial
+	source = vim-repo::hg+https://vim.googlecode.com/hg#tag=v7.4.778
+	source = launch-python-vim.sh
+	source = launch-python-gvim.sh
+	sha1sums = SKIP
+	sha1sums = 386e86891915cc97d1acc5b08197fe5088e439b3
+	sha1sums = af7d241e19235bcaa6ee7ee571c6b575236b3a45
+
+pkgname = gvim-python3-noconflict
+	pkgdesc = Vi Improved, compiled with Python 3 support that can co-exist with the Arch maintained Python 2 compiled gvim package
+	install = gvim.install
+	depends = vim-runtime>=7.4.778-1
+	depends = gpm
+	depends = ruby
+	depends = libxt
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = lua
+	depends = python
+	depends = gvim
+	conflicts = gvim-python3
+

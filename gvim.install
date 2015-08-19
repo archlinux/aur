@@ -1,0 +1,27 @@
+update_desktop_database() {
+  update-desktop-database --quiet
+}
+
+print_message() {
+  echo    ">>> gvim-python3-noconflict: Your local Python 3 vim .vimrc is at:"
+  echo    "                             ~/.vimrc-python3"
+  echo    ">>> gvim-python3-noconflict: To transparently launch the correct Python enabled"
+  echo    "                             version of vim and gvim, you should alias 'vim' and"
+  echo    "                             'gvim' in your .bashrc by doing:"
+  echo    "                             alias vim='/usr/bin/launch-python-vim.sh'"
+  echo    "                             alias gvim='/usr/bin/launch-python-gvim.sh'"
+}
+
+post_install() {
+  update_desktop_database
+  print_message
+}
+
+post_upgrade() {
+  update_desktop_database
+  print_message
+}
+
+post_remove() {
+  update_desktop_database
+}
