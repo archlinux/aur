@@ -1,6 +1,6 @@
 pkgbase = emacs-ess-git
 	pkgdesc = Emacs Speaks Statistics: A Universal Interface for Statistical Analysis - git-version
-	pkgver = 15.03.1.122.ge8e0f04
+	pkgver = 15.03.1.123.g46d4860
 	pkgrel = 1
 	url = http://ess.r-project.org
 	install = ess.install
