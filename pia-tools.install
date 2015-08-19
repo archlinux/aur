@@ -1,0 +1,10 @@
+post_install() {
+    echo "Get started:"
+    echo "- run # pia-tools --setup"
+    echo "- start the service: # systemctl start pia@Sweden"
+}
+
+post_remove() {
+    echo "Removing /etc/openvpn/pia/"
+    rm -rf /etc/openvpn/pia
+}
