@@ -1,6 +1,6 @@
 pkgbase = tau
 	pkgdesc = Profiling and tracing toolkit for Fortran, C, C++, Java and Python programs
-	pkgver = 2.23.1
+	pkgver = 2.24.1
 	pkgrel = 1
 	url = http://www.cs.uoregon.edu/research/tau/home.php
 	arch = i686
