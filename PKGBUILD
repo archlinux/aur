@@ -1,13 +1,13 @@
 # Maintainer: Jimmy Stelzer <jimmy.stelzer@gmail.com>
 pkgname=glcs-git
 pkgver=r511aeb71fa
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL and ALSA Screencast Tool, based in GLC"
 arch=('i686' 'x86_64')
 url="https://github.com/lano1106/glcs/"
 license=('GPL3')
 depends=("libpng" "alsa-lib" "libgl" "libxxf86vm")
-makedepends=('git' 'cmake' 'make')
+makedepends=('git' 'cmake')
 optdepends=()
 provides=('glcs')
 install=
