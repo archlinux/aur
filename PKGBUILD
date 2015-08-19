@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	eval "qmake-${pkgname:0:3} PREFIX=${pkgdir}/usr"
+	eval "qmake-${pkgname::3} PREFIX=${pkgdir}/usr"
 	make
 }
 
