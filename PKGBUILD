@@ -3,7 +3,7 @@
 # Upstream URL: https://wickr.com/
 
 pkgname=wickr-bin
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Wickr messenger"
 PKGEXT='.pkg.tar'
@@ -16,8 +16,8 @@ depends=( 'libutil-linux' 'glibc' 'gcc-libs' 'glib2' 'zlib' 'lz4' 'xz'
 'libsndfile' 'libpulse' 'libdrm' 'gstreamer0.10' 'gstreamer0.10-base' 'flac'
 'libvorbis' 'libogg' 'mesa' 'libx11' 'libxcb' 'libxrender' 'libxcomposite'
 'libxext' 'libxdamage' 'libxfixes' 'libxshmfence' 'libxxf86vm' 'libasyncns'
-'orc' 'libxau' 'libxdmcp' 'libcap' 'libgcrypt' 'libgpg-error' 'attr')
-md5sums=('f218c7902f6f6eba802dc41cc3321d87')
+'orc' 'libxau' 'libxdmcp' 'libcap' 'libgcrypt' 'libgpg-error' 'attr' 'libx264')
+sha256sums=('f29cfbe136fb66d57186bebd474ad07d3186edcf97964694f03eec4531e091f1')
 source=("https://mywickr.info/download.php?p=364")
 package() {
   bsdtar xf data.tar.xz
