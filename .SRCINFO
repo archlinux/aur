@@ -1,0 +1,14 @@
+pkgbase = ruby-method_source
+	pkgdesc = retrieve the sourcecode for a method
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://banisterfiend.wordpress.com
+	arch = any
+	depends = ruby
+	noextract = method_source-0.8.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/method_source-0.8.2.gem
+	sha1sums = ea691a5adb25c9485d9916690dbc339e646aa8b1
+
+pkgname = ruby-method_source
+
