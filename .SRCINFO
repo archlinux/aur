@@ -1,7 +1,7 @@
 pkgbase = openastro
 	pkgdesc = OpenAstro is an open source fully featured astrology software.
 	pkgver = 1.1.48
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openastro.org/
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,9 @@ pkgbase = openastro
 	depends = python2-rsvg
 	depends = python2-pytz
 	depends = pyswisseph
-	depends = swisseph_12
-	depends = swisseph_18
-	depends = swisseph-fixstars
 	conflicts = openastro-dev
+	conflicts = swisseph_18
+	conflicts = swisseph-fixstars
 	source = openastro.org_1.1.48.orig.tar.gz::http://www.openastro.org/download.php?file=source&type=openastro
 	source = openastro.org-data_1.6.orig.tar.gz::http://openastro.org/download.php?file=source&type=data
 	md5sums = b64d7263b5ab4e5a61b05cf57a2aea5b
