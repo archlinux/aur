@@ -1,7 +1,7 @@
 pkgbase = dargui
 	pkgdesc = GUI for the backup tool dar (disk archiver).
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dargui.sourceforge.net/
 	arch = i686
 	license = GPL

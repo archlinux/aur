@@ -3,7 +3,7 @@
 
 pkgname=dargui
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for the backup tool dar (disk archiver)."
 arch=('i686')
 url="http://dargui.sourceforge.net/"
@@ -12,7 +12,7 @@ depends=('vte' 'gtk2' 'dar' 'xterm' 'at')
 source=("http://downloads.sourceforge.net/$pkgname/${pkgname}-${pkgver}-bin.tar.gz")
 sha256sums=('a699d5df7e7c6aa151c1c3cbdea54f54e03ccce3f33b622f14c7471795f1559b')
 
-build() {
+package() {
   cd $srcdir/$pkgname-$pkgver/
 
   mkdir -p ../../pkg/usr/share/doc/dargui
