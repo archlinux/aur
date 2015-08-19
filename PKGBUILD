@@ -10,8 +10,8 @@
 
 _pkgname=socat2
 pkgname=${_pkgname}-git
-pkgver=2.0.0.b6.0.gc22863e
-pkgrel=4
+pkgver=2.0.0.b6.120.g2dee720
+pkgrel=1
 pkgdesc='Multipurpose relay (development version)'
 url='http://www.dest-unreach.org/socat/socat-version2.html'
 license=('GPL2')

@@ -1,7 +1,7 @@
 pkgbase = socat2-git
 	pkgdesc = Multipurpose relay (development version)
-	pkgver = 2.0.0.b6.0.gc22863e
-	pkgrel = 4
+	pkgver = 2.0.0.b6.120.g2dee720
+	pkgrel = 1
 	url = http://www.dest-unreach.org/socat/socat-version2.html
 	arch = i686
 	arch = x86_64
