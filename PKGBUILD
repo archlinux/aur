@@ -1,8 +1,9 @@
 # Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
-# Contributor: Pável Varela Rodríguez [NeOnsKuLL] <neonskull@gmail.com>
+# Contributor: Stefan Husmann [haawda]
+# Contributor: Pável Varela Rodríguez [NeOnsKuLL]
 pkgname=pybgsetter
-pkgver=0.5
-pkgrel=4
+pkgver=0.50.2.g4fdeb33
+pkgrel=1
 
 pkgdesc="Multi-backend GUI/CLI tool to set the desktop wallpaper."
 url="http://bbs.archlinux.org/viewtopic.php?id=88997"
@@ -18,8 +19,13 @@ optdepends=(
 )
 
 source=(git+https://github.com/stefanhusmann/pybgsetter)
-sha256sums=('SKIP')
 install=pybgsetter.install
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed 's/-/./g'
+}
 
 package() {
   cd "$pkgname"
