@@ -1,0 +1,19 @@
+pkgbase = rusti-git
+	pkgdesc = REPL for the Rust
+	pkgver = r121.13b5940
+	pkgrel = 1
+	url = https://github.com/murarth/rusti
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = rust
+	provides = rusti
+	conflicts = rusti
+	source = git+https://github.com/murarth/rusti.git
+	sha256sums = SKIP
+
+pkgname = rusti-git
+
