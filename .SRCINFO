@@ -1,7 +1,7 @@
 pkgbase = binnavi-git
 	pkgdesc = BinNavi is a binary analysis IDE that allows to inspect, navigate, edit and annotate control flow graphs and call graphs of disassembled code
-	pkgver = 0.0.590.8512d7c
-	pkgrel = 1
+	pkgver = 1
+	pkgrel = 2
 	url = https://github.com/google/binnavi
 	arch = any
 	license = Apache
@@ -13,7 +13,7 @@ pkgbase = binnavi-git
 	provides = binnavi
 	conflicts = binnavi
 	source = git+https://github.com/google/binnavi.git
-	source = binnavi
+	source = binnavi.sh
 	sha512sums = SKIP
 	sha512sums = bb274ca29a994ef8b98aa77e0be745e297bd2f7e65dd394594169ffec3910b4dd4982e353202c6b201472632a3f7b16bd7d905b7006e21d76b7299b78fc7f390
 
