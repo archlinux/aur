@@ -12,7 +12,7 @@ pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
 _pkgver=2.8
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='QGIS (long-term release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -51,7 +51,7 @@ optdepends=('grass: GRASS plugin support'           # Uncomment relevant cmake o
             'osgearth: QGIS Globe plugin support'   # or the Globe Plugin enabled
             'gpsbabel: GPS toolbar support')
 provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname-git" "$_pkgname" "$pkgname")
+conflicts=("$_pkgname")
 install="$pkgname.install"
 source=("${_pkgname}::git://github.com/qgis/QGIS.git#branch=release-${_pkgver//./_}"
         "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
@@ -60,10 +60,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^final.//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g' ||
-    printf "%s.r%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
