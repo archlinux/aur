@@ -9,9 +9,9 @@
 
 pkgbase=linux-libre-lts-grsec
 _pkgbasever=3.14-gnu
-_pkgver=3.14.50-gnu
+_pkgver=3.14.51-gnu
 _grsecver=3.1
-_timestamp=201508102128
+_timestamp=201508181951
 
 _replacesarchkernel=('linux-grsec-lts') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26-grsec-lts' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -51,9 +51,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            '811f8820610d9c8622229151c638f08d62b693242cac6b0c04428b6f5df863a2'
+            'b12b75dfeac07e8bfe7c76bc7b4d9012dfbfc25201b7cdf9edf31466ee5a0fac'
             'SKIP'
-            '64ca1482a0eb070df19c279dae3a34f9352e1cf6d7adce043497452891fde1f5'
+            '8b28ae2f46283274dbd6fd77bba36e6a18be633887125e2077ea269587b0b0b7'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
