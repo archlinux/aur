@@ -1,0 +1,17 @@
+pkgbase = pqiv
+	pkgdesc = Modern rewrite of Quick Image Viewer
+	pkgver = 2.3.5
+	pkgrel = 1
+	url = https://github.com/phillipberndt/pqiv/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	optdepends = libspectre: PS/EPS support
+	optdepends = poppler: PDF support
+	optdepends = imagemagick: additional image formats like psd
+	source = pqiv-2.3.5.tar.gz::https://github.com/phillipberndt/pqiv/archive/2.3.5.tar.gz
+	sha256sums = e3913ce83e708b16071925ba09888734893d9c66bc2130f5f575398f05e02460
+
+pkgname = pqiv
+
