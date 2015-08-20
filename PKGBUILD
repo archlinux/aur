@@ -6,7 +6,7 @@
 
 # We're getting this from Debian Sid
 _debname=icedove
-_debver=31.7.0
+_debver=38.1.0
 _debrel=deb1
 _debrepo=http://ftp.debian.org/debian/pool/main/
 debfile() { echo $@|sed -r 's@(.).*@\1/&/&@'; }
@@ -14,13 +14,16 @@ debfile() { echo $@|sed -r 's@(.).*@\1/&/&@'; }
 pkgname=${_debname}
 epoch=1
 pkgver=${_debver}.${_debrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="A libre version of Debian Icedove, the standalone mail/news reader based on Mozilla Thunderbird. This is ported from Parabola GNU/Linux."
-arch=('i686' 'x86_64' 'mips64el')
+arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="http://packages.debian.org/sid/${pkgname}"
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libvpx=1.4.0' 'libxt' 'mime-types' 'mozilla-common' 'mozilla-searchplugins' 'nss' 'sqlite' 'startup-notification')
-makedepends=('unzip' 'zip' 'pkg-config' 'python2' 'wireless_tools' 'yasm' 'mesa' 'libpulse' 'autoconf2.13' 'quilt' 'jquery-ui')
+depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'mozilla-searchplugins')
+makedepends=('unzip' 'zip' 'python2' 'wireless_tools' 'yasm' 'mesa' 'libpulse'
+             'pkg-config' 'autoconf2.13' 'quilt' 'jquery-ui')
 optdepends=('libcanberra: for sound support')
 replaces=('thunderbird' "${pkgname}-libre")
 conflicts=('thunderbird' "${pkgname}-libre")
@@ -30,55 +33,49 @@ source=("${_debrepo}/`debfile ${_debname}`_${_debver}.orig.tar.xz"
         "${_debrepo}/`debfile ${_debname}`_${_debver}-${_debrel#deb}.debian.tar.xz"
         mozconfig
         ${pkgname}.desktop
-        ${pkgname}-install-dir.patch
+        changing-the-default-search-engine.patch
         vendor.js)
-options=(!emptydirs)
-sha256sums=('00ce17575690400e22e7ce21dc5b3b4f71092b7708ee9aad74448d1401da8794'
-            '04c30b4e72819b764bc463d36c39f55741d3e47ae994ba89fd14e63fe32c6561'
-            '09a0041f7f12498d933284b3d3a44e19002515accaff767d145a8f404b79e86a'
+options=(!emptydirs !makeflags)
+sha256sums=('b59c74f67d2f9684d9cf0db62b5c60d3ef155807e17a91ebf0899dd55670f6a0'
+            '29de44253624814ae3ce3e0a6a786ba229c62e78d8c97e36257f730d38d542f7'
+            'e3d0f5f78fede687dfc38a2787c2c8f33c8213be286abeb9176e3dcebabb0b74'
             '0b0d25067c64c6b829c84e5259ffca978e3971f85acc8483f47bdbed5b0b5b6a'
-            '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d'
-            'b44f0eb82dce8a02aa71f0eab4b0d820e5383f613becc62cc995aac8638b54ec')
+            '9765d9bbcae82d0006766741c813840db46c56ee16f79d39b8d7d96d716ee2d7'
+            '798d5bff1e6025e9a803b67f629afac740f16e537b714ee7c7e829b2345fb6a2')
 
 prepare() {
-  export DEBIAN_BUILD="comm-esr31"
+  export DEBIAN_BUILD=comm-esr${pkgver%%.*}
 
   export QUILT_PATCHES=debian/patches
   export QUILT_REFRESH_ARGS='-p ab --no-timestamps --no-index'
   export QUILT_DIFF_ARGS='--no-timestamps'
 
-  mv debian "${srcdir}/${DEBIAN_BUILD}"
-  cd "${srcdir}/${DEBIAN_BUILD}"
+  mv debian ${srcdir}/${DEBIAN_BUILD}
+  cd ${srcdir}/${DEBIAN_BUILD}
 
-  mv debian/${pkgname}-branding "${srcdir}/${DEBIAN_BUILD}/mail/branding/${pkgname}"
+  # Prepare branding for the Icedove packages
+  mkdir -v mail/branding/${pkgname}
 
-  cp -a debian/app-icons/${pkgname}big.svg debian/app-icons/${pkgname}_icon.svg
-  for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
-      install -Dm644 "debian/app-icons/${pkgname}${i/x*/}.png" "${srcdir}/${DEBIAN_BUILD}/mail/branding/${pkgname}/mailicon${i/x*/}.png"
+  # Copy needed icons
+  cp -va debian/${pkgname}-branding/* mail/branding/${pkgname}
+  for i in 16 22 24 32 48 256; do
+    install -vDm 644 debian/app-icons/${pkgname}${i}.png mail/branding/${pkgname}/mailicon${i}.png
   done
-  for i in 48x48 64x64; do
-      install -Dm644 "debian/app-icons/${pkgname}${i/x*/}.png" "${srcdir}/${DEBIAN_BUILD}/mail/branding/${pkgname}/content/icon${i/x*/}.png"
+  for i in 48 64; do
+    install -vDm 644 debian/app-icons/${pkgname}${i}.png mail/branding/${pkgname}/content/icon${i}.png
   done
+  cp -va debian/preview.png mail/themes/linux/mail/preview.png
 
-  # We are doing it from sed commands
-  rm -v debian/patches/fixes/vp8_impl.cc-backporting-naming-for-constants.patch || true
+  # Useless since we are doing it ourselves
+  rm -v debian/patches/debian-hacks/changing-the-default-search-engine.patch || true
 
   quilt push -av
 
-  # Fix paths on makefile
-  sed -i 's|topsrcdir = [.][.]/[.][.]/[.][.]/|topsrcdir = @top_srcdir@|;
-          s|include $(topsrcdir)/config/autoconf.mk|include $(DEPTH)/config/autoconf.mk|;
-          s|include $(DEPTH)/config/rules.mk|include $(topsrcdir)/config/rules.mk|;
-         ' mail/branding/icedove/Makefile.in
-
-  sed -i 's|topsrcdir      = [.][.]/[.][.]/[.][.]/[.][.]|topsrcdir      = @top_srcdir@|;
-          s|include $(topsrcdir)/config/autoconf.mk|include $(DEPTH)/config/autoconf.mk|;
-          s|include $(DEPTH)/config/rules.mk|include $(topsrcdir)/config/rules.mk|;
-         ' mail/branding/icedove/locales/Makefile.in
-
-  # Fix package-manifest.in
-  sed -i '\|; Phishing Protection| s|$|\n#ifdef MOZ_SAFE_BROWSING|;
-          \|@BINPATH@/components/url-classifier[.]xpt| s|$|\n#endif|
+  # Remove url-classifier from package-manifest.in to build and disable Phishing Protection
+  sed -i '\|Phishing Protection|d
+          \|UrlClassifier|d
+          \|URLClassifier|d
+          \|url-classifier|d
          ' mail/installer/package-manifest.in
 
   # Fix branding
@@ -91,62 +88,59 @@ prepare() {
           \|extensions[.]webservice[.]discoverURL| s|https://services[.]addons[.]mozilla[.]org.\+["][)][;]|http://directory.fsf.org/wiki/Icedove");|g;
          ' mail/app/profile/all-thunderbird.js
 
-  cp "${srcdir}/mozconfig" .mozconfig
+  cp -v ${srcdir}/mozconfig .mozconfig
 
-  # configure script misdetects the preprocessor without an optimization level
+  # Configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
   sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' mozilla/configure
 
-  # Install to /usr/lib/$pkgname
-  patch -Np1 -i "$srcdir/${pkgname}-install-dir.patch"
+  # Change the default search engine using our system-provided searchplugins
+  patch -Np1 -i ${srcdir}/changing-the-default-search-engine.patch
 
-  # Add symlinks to use jquery files built for us
-  ln -s /usr/share/javascript/jquery/jquery.min.js mail/jquery
-  ln -s /usr/share/javascript/jquery-ui/jquery-ui.min.js mail/jquery
-
-  # Fixing for libvpx >= 1.4.0
-  sed -i 's|IMG_FMT_I420|VPX_IMG_FMT_I420|;
-          s|PLANE_U|VPX_PLANE_U|;
-          s|PLANE_V|VPX_PLANE_V|;
-          s|PLANE_Y|VPX_PLANE_Y|;
-          s|VPX_VPX_PLANE_|VPX_PLANE_|;
-         ' mozilla/content/media/encoder/VP8TrackEncoder.cpp \
-           mozilla/media/webrtc/trunk/webrtc/modules/video_coding/codecs/vp8/vp8_impl.cc
+  # Add symlinks to use jquery files built by us
+  ln -vs /usr/share/javascript/jquery/jquery.min.js mail/jquery
+  ln -vs /usr/share/javascript/jquery-ui/jquery-ui.min.js mail/jquery
 }
 
 build() {
-  export DEBIAN_BUILD="comm-esr31"
+  export DEBIAN_BUILD=comm-esr${pkgver%%.*}
 
-  cd "${srcdir}/${DEBIAN_BUILD}"
+  cd ${srcdir}/${DEBIAN_BUILD}
 
-  export LDFLAGS="${LDFLAGS} -Wl,-rpath,/usr/lib/${pkgname}"
-  export PYTHON="/usr/bin/python2"
+  export PYTHON=/usr/bin/python2
 
-  make -j1 -f client.mk build MOZ_MAKE_FLAGS="${MAKEFLAGS}"
+  make -f client.mk build
 }
 
 package() {
-  export DEBIAN_BUILD="comm-esr31"
+  export DEBIAN_BUILD=comm-esr${pkgver%%.*}
 
-  cd "${srcdir}/${DEBIAN_BUILD}"
+  cd ${srcdir}/${DEBIAN_BUILD}
 
-  make -j1 -f client.mk DESTDIR="${pkgdir}" install
+  make -f client.mk DESTDIR=${pkgdir} install
 
-  install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/usr/lib/${pkgname}/defaults/preferences/vendor.js"
+  install -vDm 644 ${srcdir}/vendor.js ${pkgdir}/usr/lib/${pkgname}/defaults/preferences/vendor.js
 
-  for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
-      install -Dm644 "debian/app-icons/${pkgname}${i/x*/}.png" "${pkgdir}/usr/share/icons/hicolor/$i/apps/${pkgname}.png"
+  # Install Icedove menu icon
+  install -vDm 644 debian/${pkgname}.xpm ${pkgdir}/usr/share/pixmaps/${pkgname}.xpm
+
+  # Install Icedove icons
+  for i in 16 22 24 32 48 64 128 256; do
+    install -vDm 644 debian/app-icons/${pkgname}${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png
   done
-  install -Dm644 "debian/app-icons/${pkgname}_icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-  
-  install -Dm644 "${srcdir}/${pkgname}.desktop" \
-      "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  
-  rm -rf "${pkgdir}"/usr/lib/${pkgname}/{dictionaries,hyphenation,searchplugins}
-  ln -sf /usr/share/hunspell "${pkgdir}/usr/lib/${pkgname}/dictionaries"
-  ln -sf /usr/share/hyphen "${pkgdir}/usr/lib/${pkgname}/hyphenation"
-  ln -sf /usr/lib/mozilla/searchplugins "${pkgdir}/usr/lib/${pkgname}/searchplugins"
+  install -vDm 644 debian/app-icons/${pkgname}big.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg
 
-  # We don't want the development stuff
-  rm -r "${pkgdir}"/usr/{include,lib/${pkgname}-devel,share/idl}
+  # Install Icedove desktop
+  install -vDm 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+
+  # Use system-provided dictionaries
+  rm -vrf ${pkgdir}/usr/lib/${pkgname}/{dictionaries,hyphenation,searchplugins}
+  ln -vsf /usr/share/hunspell ${pkgdir}/usr/lib/${pkgname}/dictionaries
+  ln -vsf /usr/share/hyphen ${pkgdir}/usr/lib/${pkgname}/hyphenation
+
+  # Use system-provided searchplugins
+  ln -vsf /usr/lib/mozilla/searchplugins ${pkgdir}/usr/lib/${pkgname}/searchplugins
+
+  # Remove development stuff
+  rm -vr ${pkgdir}/usr/{include,lib/${pkgname}-devel,share/idl}
 }
