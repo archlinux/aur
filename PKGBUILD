@@ -6,8 +6,8 @@
 
 pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
-pkgver=4.11.21
-_kdever=15.04.3
+pkgver=4.11.22
+_kdever=15.08.0
 pkgrel=1
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('GPL' 'LGPL' 'FDL')
 # note on libxdamage:
 # not detected by namcap because libgl depends on it
 # but nvidia providing libgl does not depend on libxdamage
-depends=("kdelibs>=${pkgver}" 'kdepim-runtime' 'lm_sensors' 'libraw1394'
+depends=('kdebase-runtime' 'kdepimlibs4' 'lm_sensors' 'libraw1394'
          'qimageblitz' 'polkit-kde' 'xorg-xprop' 'libxdamage' 'libqalculate'
          'libxklavier' 'xorg-xsetroot' 'libxcomposite' 'libxinerama'
          'xorg-xrdb' 'libxres' 'xorg-xrandr' 'xorg-xmessage' 'libusb-compat'
@@ -25,7 +25,8 @@ depends=("kdelibs>=${pkgver}" 'kdepim-runtime' 'lm_sensors' 'libraw1394'
          'consolekit' 'glu')
 makedepends=('cmake' 'automoc4' 'boost' 'kdebindings-python2' 'networkmanager')
 optdepends=('kde-wallpapers: wallpapers for KDE Plasma Workspaces'
-            'appmenu-qt: menu applications over dbus')
+            'appmenu-qt: menu applications over dbus'
+            'kdepim4-runtime: to display events in the calendar')
 provides=("kdebase-workspace=$pkgver")
 conflicts=('kdebase-workspace')
 install="kdebase-workspace.install"
@@ -34,7 +35,7 @@ source=("http://download.kde.org/stable/applications/${_kdever}/src/${_pkgname}-
 	'kdm' 'kde.pam' 'kde-np.pam' 'kscreensaver.pam' 'kdm.service' 'kdm.logrotate'
 	'etc-scripts.patch' 'terminate-server.patch' 'kdm-xinitrd.patch'
 	'khotkeys-qt4.patch')
-sha1sums=('984e09caca204968ee8dacb8c268afbeab11e4a7'
+sha1sums=('f08fbe309ed16c51ad31b0b260b2adeb7af1bb37'
           '5db3a245201bd4a50e65aa2ef583cf5490e4f646'
           '660eae40a707d2711d8d7f32a93214865506b795'
           '6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe'
