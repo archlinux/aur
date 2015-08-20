@@ -1,0 +1,19 @@
+pkgbase = perl-data-munge
+	pkgdesc = various utility functions
+	pkgver = 0.095
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-Munge
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-test-simple>=0
+	checkdepends = perl-test-warnings>=0
+	depends = perl
+	depends = perl-exporter>=0
+	depends = perl-base>=0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MAUKE/Data-Munge-0.095.tar.gz
+	sha256sums = 2e635a6ce9566a4ecee9c7eec774bc44ded9cf3f9c46fb6e12ddad4950805354
+
+pkgname = perl-data-munge
+
