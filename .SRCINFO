@@ -1,6 +1,6 @@
 pkgbase = princexml
 	pkgdesc = Convert HTML documents to PDF with CSS
-	pkgver = 10r2
+	pkgver = 10r4
 	pkgrel = 1
 	url = http://www.princexml.com/
 	arch = i686
@@ -9,10 +9,11 @@ pkgbase = princexml
 	depends = fontconfig
 	depends = libidn
 	depends = libxml2
-	source_i686 = http://www.princexml.com/download/prince-10r2-linux-generic-i686.tar.gz
-	source_x86_64 = http://www.princexml.com/download/prince-10r2-linux-generic-x86_64.tar.gz
-	md5sums_i686 = ca6c74d30d11d33e4bba2b6b65bd6479
-	md5sums_x86_64 = 64db57c92cf83e6a460a4c023de2632b
+	depends = ca-certificates-utils
+	source_i686 = http://www.princexml.com/download/prince-10r4-linux-generic-i686.tar.gz
+	source_x86_64 = http://www.princexml.com/download/prince-10r4-linux-generic-x86_64.tar.gz
+	md5sums_i686 = 165db0a887ed9dcf11c45b112ea8a82a
+	md5sums_x86_64 = 926459a17601d70ecfed3daaf048603c
 
 pkgname = princexml
 
