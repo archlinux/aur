@@ -1,0 +1,16 @@
+pkgbase = perl-scalar-util-numeric
+	pkgdesc = numeric tests for perl scalars
+	pkgver = 0.40
+	pkgrel = 1
+	url = https://metacpan.org/release/Scalar-Util-Numeric
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-extutils-makemaker>=0
+	depends = perl>=5.8
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHOCOLATE/Scalar-Util-Numeric-0.40.tar.gz
+	sha256sums = d7501b6d410703db5b1c1942fbfc41af8964a35525d7f766058acf5ca2cc4440
+
+pkgname = perl-scalar-util-numeric
+
