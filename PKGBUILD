@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('685dbf47344f2523b582782a4b87fcbf')
+md5sums=('88d2537fb6310920e000f87f6608b07f')
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
