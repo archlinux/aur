@@ -1,7 +1,7 @@
 pkgbase = system-tar-and-restore
 	pkgdesc = Backup and Restore your system using tar or Transfer it with rsync
 	pkgver = 4.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tritonas00/system-tar-and-restore
 	install = readme.install
 	arch = any
