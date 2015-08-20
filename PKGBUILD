@@ -2,7 +2,7 @@
 
 pkgname='binnavi'
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="BinNavi is a binary analysis IDE that allows to inspect, navigate, edit
 and annotate control flow graphs and call graphs of disassembled code"
 arch=('any')
@@ -25,7 +25,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/java/binnavi"
   cd "${srcdir}/$pkgname-$pkgver/target/" 
   mv * "${pkgdir}/usr/share/java/binnavi/"
-  install -D -m755 ${srcdir}/binnavi ${pkgdir}/usr/bin/binnavi
+  install -D -m755 "${srcdir}/binnavi" "${pkgdir}/usr/bin/binnavi"
 }
 
 # vim:set et sw=2 ts=2 tw=80:
