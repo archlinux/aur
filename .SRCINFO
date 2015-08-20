@@ -1,0 +1,18 @@
+pkgbase = netbsd-fs-utils-git
+	pkgdesc = File System Access Utilities in Userland on top of the NetBSD Rump kernel
+	pkgver = 1.00_56_gd704885
+	pkgrel = 1
+	url = http://rumpkernel.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = netbsd-rump-git
+	provides = netbsd-fs-utils
+	conflicts = netbsd-fs-utils
+	options = !libtool
+	source = git://github.com/rumpkernel/fs-utils
+	md5sums = SKIP
+
+pkgname = netbsd-fs-utils-git
+
