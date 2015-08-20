@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Wibbly
+GenericName=Metrics Collector for Wobbly
+Comment=Metrics Collector for Wobbly
+Type=Application
+Exec=wibbly
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;

@@ -1,6 +1,6 @@
 pkgbase = wobbly-git
 	pkgdesc = IVTC assistant for VapourSynth, similar to Yatta. (GIT version)
-	pkgver = r53.b949628
+	pkgver = v1.0.g915e082
 	pkgrel = 1
 	url = https://github.com/dubhater/Wobbly
 	install = wobbly-git.install
@@ -9,14 +9,18 @@ pkgbase = wobbly-git
 	license = GPL
 	makedepends = git
 	depends = qt5-base
+	depends = vapoursynth-plugin-scxvid-git
 	depends = vapoursynth-plugin-fieldhint-git
 	depends = vapoursynth-plugin-d2vsource-git
+	depends = xdg-utils
 	provides = wobbly
 	conflicts = wobbly
 	source = wobbly::git+https://github.com/dubhater/Wobbly.git
 	source = wobbly.desktop
+	source = wibbly.desktop
 	sha1sums = SKIP
 	sha1sums = 0fda5064306cf489879fa5234c8baf40879bb805
+	sha1sums = ed2a296f2cb88506beadb9ea2e11802154126405
 
 pkgname = wobbly-git
 
