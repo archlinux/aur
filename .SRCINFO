@@ -1,0 +1,21 @@
+pkgbase = info-beamer-git
+	pkgdesc = Allows you to develop interactive information displays using the Lua programming language.
+	pkgver = 217.8309433
+	pkgrel = 1
+	url = http://info-beamer.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = ffmpeg
+	depends = lua51
+	depends = libevent
+	depends = glfw
+	depends = devil
+	depends = glew
+	depends = ftgl
+	source = git+https://github.com/dividuum/info-beamer.git
+	sha256sums = SKIP
+
+pkgname = info-beamer-git
+
