@@ -1,5 +1,5 @@
 pkgbase = blis
-	pkgdesc = BLAS-like Library Instantiation Software Framework by the Science of High-Performance Computing Group
+	pkgdesc = BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group
 	pkgver = 0.1.8
 	pkgrel = 2
 	url = https://code.google.com/p/blis/
