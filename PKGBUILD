@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -14,11 +14,15 @@ makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('52638576f4e1e621fed6c3410d3a1b12')
+source=("http://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz" 'kdelibs-4.14.11.patch')
+md5sums=('52638576f4e1e621fed6c3410d3a1b12'
+         '1eeec67ab4bff6d92430d52acdbde142')
 
 prepare() {
   cd ${pkgname}-${pkgver}
+
+# fix build of KDE4 applications with kdelibs 4.14.11 http://www.cmake.org/gitweb?p=cmake.git;a=commit;h=b9ec9392da21a3421e48c6961976060d872faffb
+  patch -p1 -i ../kdelibs-4.14.11.patch
 }
 
 build() {
