@@ -3,11 +3,11 @@
 
 pkgname=hunspell-da
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Danish hunspell dictionaries"
-arch=(any)
+arch="any"
 url="http://www.stavekontrolden.dk/"
-license=('GPL2' 'LGPL2.1' 'MPL1.1')
+license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=(http://extensions.libreoffice.org/extension-center/stavekontrolden-danish-dictionary/pscreleasefolder.2011-09-30.0280139318/$pkgver/dict-da-${pkgver/./-}.oxt)
 sha256sums=('16e0bc0ae9cf90b141b69e45f7d56a61d6629542661bea03d79efb8912a5938f')
