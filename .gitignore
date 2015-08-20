@@ -1,0 +1,3 @@
+*.log
+*.pkg.tar.xz
+qtwayland-opensource-src-*.tar.xz
