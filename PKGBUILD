@@ -15,7 +15,7 @@ optdepends=('smtp-forwarder: to send mail')
 depends=('openssl' 'gdbm' 'mime-types' 'libsasl' 'gnupg' 'gpgme' 'libidn' 'krb5' 'slang')
 conflicts=('mutt')
 provides=('mutt')
-source=(ftp://ftp.mutt.org/mutt/mutt-${pkgver}.tar.gz
+source=(https://bitbucket.org/mutt/mutt/downloads/mutt-${pkgver}.tar.gz
         sidebar.patch
         sidebar-drawing-fix.patch
         trash_folder-1.5.18.patch
