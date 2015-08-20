@@ -1,0 +1,5 @@
+*.pkg.tar
+*.pkg.tar.*
+pkg/
+src/
+flvlib-*.tar.bz2

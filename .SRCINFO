@@ -1,0 +1,14 @@
+pkgbase = python2-flvlib
+	pkgdesc = A library for manipulating, parsing and verifying FLV files.
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/flvlib
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://pypi.python.org/packages/source/f/flvlib/flvlib-0.1.13.tar.bz2
+	md5sums = b0da79254d69ab38796167a2f55a1dd5
+
+pkgname = python2-flvlib
+
