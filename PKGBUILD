@@ -71,8 +71,8 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 pkgname=(linux-lts-ck linux-lts-ck-headers)
 _kernelname=-lts-ck
 _srcname=linux-3.14
-pkgver=3.14.50
-pkgrel=2
+pkgver=3.14.51
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -105,7 +105,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 
 sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e'
             'SKIP'
-            'aa0adfb5e96847944565a9afeebd17305d41a04ada246bc5451fc92575a00a170147b55c610a084472e9f58a1daf272127162f8f341c45158fd7afc7295a3f73'
+            'bf4a20698634c69c1fe16c7a6344a48aaa31e44ec9092f4a92cff93a8e36ec789b4e5f2f34d51e4724158afc35ab8eaa6ddb43737766baeca5d400e6d8b6c974'
             'SKIP'
             'd745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305'
             '1a112daacec768b588af4549a6e90fa24a251b4632bd14dd1ccbb818838a009df25f9df369ad71e3ef9a6900f4e8ff37f8132bd8450c1653c1a6eb7bdffb0ad5'
