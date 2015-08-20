@@ -1,6 +1,6 @@
 pkgbase = python-click
 	pkgdesc = A simple wrapper around optparse for powerful command line utilities.
-	pkgver = 4.1
+	pkgver = 5.1
 	pkgrel = 1
 	url = http://click.pocoo.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-click
 	checkdepends = python2-pytest
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/c/click/click-4.1.tar.gz
-	sha256sums = e339ed09f25e2145314c902a870bc959adcb25653a2bd5cc1b48d9f56edf8ed8
+	source = https://pypi.python.org/packages/source/c/click/click-5.1.tar.gz
+	sha256sums = 678c98275431fad324275dec63791e4a17558b40e5a110e20a82866139a85a5a
 
 pkgname = python-click
 	depends = python>=3.3

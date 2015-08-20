@@ -4,7 +4,7 @@ _name="click"
 _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="4.1"
+pkgver="5.1"
 pkgrel="1"
 pkgdesc="A simple wrapper around optparse for powerful command line utilities."
 arch=("any")
@@ -13,7 +13,7 @@ license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
 checkdepends=("python-pytest" "python2-pytest")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e339ed09f25e2145314c902a870bc959adcb25653a2bd5cc1b48d9f56edf8ed8')
+sha256sums=('678c98275431fad324275dec63791e4a17558b40e5a110e20a82866139a85a5a')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
@@ -27,10 +27,13 @@ build() {
 }
 
 check() {
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export PYTHONPATH="$(pwd)/build/lib:$PYTHONPATH"
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py test
+    py.test --tb=short
     cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py test
+    py.test2 --tb=short
 }
 
 package_python-click() {
