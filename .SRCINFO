@@ -1,6 +1,6 @@
 pkgbase = dh-make-golang
 	pkgdesc = debianize go library packages
-	pkgver = 0.0git20150727.0.3f59ff12f2
+	pkgver = 0.0git20150803.0.bd09cd9
 	pkgrel = 1
 	url = https://github.com/Debian/dh-make-golang
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = dh-make-golang
 	makedepends = go
 	options = !strip
 	options = !emptydirs
-	source = git+https://github.com/Debian/dh-make-golang.git#commit=3f59ff12f284fea0c66b81062a02f34cb0992061
-	source = http://ftp.debian.org/debian/pool/main/d/dh-make-golang/dh-make-golang_0.0~git20150726.0.fc4210a-1.debian.tar.xz
-	sha256sums = SKIP
-	sha256sums = 048e1ea8219781b6ae37ce9373605e9b9ce7ad847e6f231f9b1198ebeca50440
+	source = http://httpredir.debian.org/debian/pool/main/d/dh-make-golang/dh-make-golang_0.0~git20150803.0.bd09cd9.orig.tar.bz2
+	source = http://httpredir.debian.org/debian/pool/main/d/dh-make-golang/dh-make-golang_0.0~git20150803.0.bd09cd9-1.debian.tar.xz
+	sha256sums = bfc00b8fcd5d6c8005ab4c5fdf7188e63304953c337345c6a48165ad203adf0a
+	sha256sums = b8e5b8bb4b2c77608f0399a19da94541325eea0ab78947b00a9e956c83414a15
 
 pkgname = dh-make-golang
 
