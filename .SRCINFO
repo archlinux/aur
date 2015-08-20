@@ -1,20 +1,20 @@
 pkgbase = python-oslo-utils
 	pkgdesc = Oslo Utility library
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/openstack/oslo.utils
 	arch = any
 	license = Apache
 	makedepends = python-pbr>=1.3
 	makedepends = python2-pbr>=1.3
-	source = https://pypi.python.org/packages/source/o/oslo.utils/oslo.utils-2.2.0.tar.gz
-	sha256sums = 75edebbb9715d9658e12a0b1b510389f5af5b66da7035bae48b3c79c6ac14aad
+	source = https://pypi.python.org/packages/source/o/oslo.utils/oslo.utils-2.3.0.tar.gz
+	sha256sums = c0ee7075a04a4c432d74d7b578fdc3478a5e831c9bd26fdff13b9bcc1e745ed4
 
 pkgname = python-oslo-utils
 	depends = python-babel>=1.3
 	depends = python-debtcollector>=0.3.0
 	depends = python-iso8601>=0.1.9
-	depends = python-monotonic>=0.1
+	depends = python-monotonic>=0.3
 	depends = python-netaddr>=0.7.12
 	depends = python-netifaces>=0.10.4
 	depends = python-oslo-i18n>=1.5.0
@@ -25,7 +25,7 @@ pkgname = python2-oslo-utils
 	depends = python2-babel>=1.3
 	depends = python2-debtcollector>=0.3.0
 	depends = python2-iso8601>=0.1.9
-	depends = python2-monotonic>=0.1
+	depends = python2-monotonic>=0.3
 	depends = python2-netaddr>=0.7.12
 	depends = python2-netifaces>=0.10.4
 	depends = python2-oslo-i18n>=1.5.0
