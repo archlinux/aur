@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=44.0.2403.130
+pkgver=46.0.2471.2
 _opver=31
 _opbver=32
 _opdver=32
@@ -20,7 +20,7 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   "patch_ffmpeg_gyp.patch"
 )
-sha256sums=('37779b2f4844e1a6ac75d69897031955541ad97f3dd1d4ad641c371c1d63b414'
+sha256sums=('efd52b2ffc76acacf512c4913e525ce3c96f1f31f92e6f884f5430a9c962adbe'
             '73127edde4450f007cc696711ab0ea84a8c498d7fe369df7bad3c29a0ac075a8')
 
 
@@ -32,6 +32,10 @@ prepare() {
   # There are still a lot of relative calls which need a workaround
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
+
+  # chromium 46 gives an error about a missing file
+  # workaround create empty
+  touch chrome/test/data/webui/i18n_process_css_test.html
 
   # make sure we can build ffmpeg so
   (
@@ -51,7 +55,7 @@ build() {
     -Duse_gnome_keyring=0 \
     -Duse_gconf=0 \
     -Dcomponent=shared_library \
-    -Dffmpeg_branding=Chrome
+    -Dffmpeg_branding=ChromeOS
 
   ninja -C out/Release ffmpeg
 }
