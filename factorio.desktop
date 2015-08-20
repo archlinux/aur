@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Factorio
+GenericName=Factorio
+Comment=A 2D game about building and maintaining factories.
+Exec=factorio
+Icon=/usr/share/factorio/core/graphics/factorio.png
+Terminal=false
+Type=Application
+Categories=Game;
