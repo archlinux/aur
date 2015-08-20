@@ -1,6 +1,6 @@
 pkgbase = solarus-quest-editor
 	pkgdesc = A graphical user interface to create and modify quests for the Solarus engine.
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = http://www.solarus-games.org/
 	arch = i686
@@ -12,10 +12,8 @@ pkgbase = solarus-quest-editor
 	depends = solarus
 	depends = qt5-base
 	depends = qt5-tools
-	source = https://github.com/christopho/solarus-quest-editor/archive/v1.4.3.tar.gz
-	source = solarus-quest-editor.desktop
-	md5sums = 04e37a02f998a2c81c5f817b34edf8e6
-	md5sums = 38afc75a98448ddc6470f1efa41d7904
+	source = https://github.com/christopho/solarus-quest-editor/archive/v1.4.4.tar.gz
+	md5sums = f825a67a598f30b28ac17612cff63654
 
 pkgname = solarus-quest-editor
 

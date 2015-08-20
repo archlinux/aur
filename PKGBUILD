@@ -1,6 +1,6 @@
 # Maintainer: Maxs <max dot van dot den dot branden @t gmail dot com>
 pkgname="solarus-quest-editor"
-pkgver="1.4.3"
+pkgver="1.4.4"
 pkgrel="1"
 epoch=
 pkgdesc="A graphical user interface to create and modify quests for the Solarus engine."
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/christopho/$pkgname/archive/v$pkgver.tar.gz" "$pkgname.desktop")
+source=("https://github.com/christopho/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=("04e37a02f998a2c81c5f817b34edf8e6" "38afc75a98448ddc6470f1efa41d7904")
+md5sums=("f825a67a598f30b28ac17612cff63654")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -34,11 +34,8 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "images/logo/sqe-logo.png" "$pkgdir/usr/share/pixmaps/sqe-logo.png"
   install -Dm644 "license.txt" "$pkgdir/usr/share/licences/$pkgname/license.txt"
-
-  cd "$startdir"
-
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "images/logo/sqe-logo.png" "$pkgdir/usr/share/pixmaps/sqe-logo.png"
+  install -Dm644 "resources/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
