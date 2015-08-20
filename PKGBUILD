@@ -1,6 +1,6 @@
 # Maintainer: Victor A. Santos  <victoraur.santos@gmail.com>
 pkgname=qsubber-git
-pkgver=r8.5281b0b
+pkgver=r9.e71235c
 pkgrel=1
 pkgdesc="OpenSubtitles.org client for download subtiltes"
 arch=('x86' 'x86_64')
@@ -29,4 +29,5 @@ package() {
 	cd "$srcdir/${pkgname}"
 
     install -Dm755 build/qsubber "$pkgdir/usr/bin/qsubber"
+    install -Dm644 data/qsubber.desktop "$pkgdir/usr/share/applications/qsubber.desktop"
 }
