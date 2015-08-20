@@ -1,8 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 3564325..07b7240 100755
+index 35f2be4..86c99e5 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -239,18 +239,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -241,18 +241,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
                      
                      my_scriptname = sys.argv[0]
                      

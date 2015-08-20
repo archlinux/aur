@@ -1,8 +1,8 @@
 diff --git a/include/ClientDB.py b/include/ClientDB.py
-index e0abe97..ab8b28f 100755
+index bb9593f..a499ef0 100755
 --- a/include/ClientDB.py
 +++ b/include/ClientDB.py
-@@ -2611,7 +2611,7 @@ class DB( HydrusDB.HydrusDB ):
+@@ -2597,7 +2597,7 @@ class DB( HydrusDB.HydrusDB ):
                  counts_iterable = self._c.execute( nonzero_counts_query )
                  
              
@@ -12,12 +12,12 @@ index e0abe97..ab8b28f 100755
          
          #
 diff --git a/include/ClientGUICanvas.py b/include/ClientGUICanvas.py
-index 41b5c9e..293ea50 100755
+index 400b4ad..9e2a3cf 100755
 --- a/include/ClientGUICanvas.py
 +++ b/include/ClientGUICanvas.py
-@@ -49,7 +49,8 @@ NON_ZOOMABLE_MIMES = list( HC.AUDIO ) + [ HC.APPLICATION_PDF ]
+@@ -47,7 +47,8 @@ ZOOMOUTS = [ 20.0, 10.0, 5.0, 3.0, 2.0, 1.5, 1.2, 1.1, 1.0, 0.9, 0.8, 0.7, 0.5,
  
- EMBED_BUTTON_MIMES = [ HC.VIDEO_FLV, HC.APPLICATION_FLASH ]
+ OPEN_EXTERNALLY_BUTTON_SIZE = ( 200, 45 )
  
 -def CalculateCanvasZoom( media, ( canvas_width, canvas_height ) ):
 +def CalculateCanvasZoom( media, canvas_dims ):
@@ -47,7 +47,7 @@ index b8294b6..77878eb 100755
 \ No newline at end of file
 +    
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index b73c6ef..f1ea71c 100755
+index 3c3841a..188a8fc 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
 @@ -242,7 +242,8 @@ class Dialog( wx.Dialog ):
@@ -61,7 +61,7 @@ index b73c6ef..f1ea71c 100755
          wx.Dialog.SetInitialSize( self, ( width, height ) )
          
 diff --git a/include/ClientGUIManagement.py b/include/ClientGUIManagement.py
-index 3a54639..8dcbf37 100755
+index 6ecbdef..9fde07a 100755
 --- a/include/ClientGUIManagement.py
 +++ b/include/ClientGUIManagement.py
 @@ -66,26 +66,6 @@ def CreateManagementController( management_type, file_service_key = None ):
@@ -91,7 +91,7 @@ index 3a54639..8dcbf37 100755
      
  def CreateManagementControllerImportGallery( site_type, gallery_type ):
      
-@@ -702,734 +682,6 @@ class ManagementPanel( wx.lib.scrolledpanel.ScrolledPanel ):
+@@ -706,734 +686,6 @@ class ManagementPanel( wx.lib.scrolledpanel.ScrolledPanel ):
      
      def TestAbleToClose( self ): pass
      
@@ -826,42 +826,11 @@ index 3a54639..8dcbf37 100755
  
  class ManagementPanelImport( ManagementPanel ):
      
-diff --git a/include/ClientImporting.py b/include/ClientImporting.py
-index 833d6a2..bb81c6c 100644
---- a/include/ClientImporting.py
-+++ b/include/ClientImporting.py
-@@ -118,26 +118,6 @@ class ImportController( HydrusSerialisable.SerialisableBase ):
-             
-         
-     
--    def _DAEMONProcessSearchSeeds( self ):
--        
--        while True:
--            
--            # if searcher paused
--            
--            with self._lock:
--                
--                result = import_seed_queue.GetNextUnknownSeed()
--                
--            
--            if result is not None:
--                
--                ( seed, seed_info ) = result
--                
--                self._ProcessSearchSeed( seed, seed_info )
--                
--            
--        
--    
-     def GetOptions( self, name ):
-         
-         with self._lock:
 diff --git a/include/ClientMedia.py b/include/ClientMedia.py
-index 7d00441..ee77ba2 100644
+index a40543b..3641eb4 100644
 --- a/include/ClientMedia.py
 +++ b/include/ClientMedia.py
-@@ -1325,7 +1325,7 @@ class TagsManagerSimple( object ):
+@@ -1333,7 +1333,7 @@ class TagsManagerSimple( object ):
          combined_current = combined_statuses_to_tags[ HC.CURRENT ]
          combined_pending = combined_statuses_to_tags[ HC.PENDING ]
          
@@ -870,7 +839,7 @@ index 7d00441..ee77ba2 100644
          
          if collapse_siblings:
              
-@@ -1469,4 +1469,4 @@ class TagsManager( TagsManagerSimple ):
+@@ -1477,4 +1477,4 @@ class TagsManager( TagsManagerSimple ):
              self._RecalcCombined()
              
          
@@ -878,10 +847,10 @@ index 7d00441..ee77ba2 100644
 \ No newline at end of file
 +    
 diff --git a/include/HydrusData.py b/include/HydrusData.py
-index 6ebeb04..70218ff 100644
+index 1442ba2..0a831fb 100644
 --- a/include/HydrusData.py
 +++ b/include/HydrusData.py
-@@ -1007,15 +1007,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
+@@ -1078,15 +1078,15 @@ class ClientToServerContentUpdatePackage( HydrusYAMLBase ):
                  
                  if data_type in ( HC.CONTENT_DATA_TYPE_TAG_SIBLINGS, HC.CONTENT_DATA_TYPE_TAG_PARENTS ) and action in ( HC.CONTENT_UPDATE_PENDING, HC.CONTENT_UPDATE_PETITION ):
                      

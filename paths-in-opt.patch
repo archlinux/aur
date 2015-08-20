@@ -1,8 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index f102d86..3564325 100755
+index 26e1eb9..35f2be4 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -134,7 +134,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -136,7 +136,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
          aboutinfo.SetVersion( HydrusData.ToString( HC.SOFTWARE_VERSION ) )
          aboutinfo.SetDescription( CC.CLIENT_DESCRIPTION )
          
@@ -11,7 +11,7 @@ index f102d86..3564325 100755
          
          aboutinfo.SetLicense( license )
          
-@@ -1945,7 +1945,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
+@@ -1975,7 +1975,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
                  
              elif command == '8chan_board': webbrowser.open( 'http://8ch.net/hydrus/index.html' )
              elif command == 'file_integrity': self._CheckFileIntegrity()
@@ -21,7 +21,7 @@ index f102d86..3564325 100755
              elif command == 'help_shortcuts': wx.MessageBox( CC.SHORTCUT_HELP )
              elif command == 'import_files': self._ImportFiles()
 diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
-index 465fc3e..b73c6ef 100755
+index 3c03b10..3c3841a 100755
 --- a/include/ClientGUIDialogs.py
 +++ b/include/ClientGUIDialogs.py
 @@ -620,7 +620,7 @@ class DialogFirstStart( Dialog ):
@@ -62,7 +62,7 @@ index 90fb7ea..beb17d2 100644
 \ No newline at end of file
 +    
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 024421b..5f62b9a 100755
+index 83942d3..927155e 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,9 +3,9 @@ import sys

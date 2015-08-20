@@ -13,7 +13,7 @@ $build_cython || options=(!strip)  # Don't strip libs because there aren't any; 
 DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
-pkgver=168
+pkgver=170
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -21,12 +21,13 @@ license=(WTFPL)
 url=http://hydrusnetwork.github.io/hydrus/
 depends=(python2 wxpython opencv python2-beautifulsoup4 python2-yaml
          hsaudiotag python2-pypdf2 python2-pafy python2-lz4 python2-numpy
-         python2-twisted python2-pillow python2-potr python2-flvlib python2-socks)
+         python2-twisted python2-pillow python2-potr python2-flvlib python2-socks
+         python2-psutil python2-send2trash)
 makedepends=(git)
 $build_cython && makedepends+=(cython2 parallel)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding')
-source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=e843462c5e3722489c9b96b94a94d26e19354a83"
+source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=cc3f59732186848c80799b010c1ef412a866a50a"
         paths-in-opt.patch
         running-the-server.patch
         cython-workarounds.patch
@@ -34,9 +35,9 @@ source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            'd46fb9021fa8bc0b19a2911ebf0282f8cf73c36683ea7b7148b3a7fc004a8170'
-            '4cac6ffb5c9b219129d29a7d7630a13da7a80078710a26b7004caae151e904ce'
-            '21b6eaa34e32b9bada53299537d7adbf1884322dca11d66f6cc4c55c65443ba0'
+            '83a77de17be848f58b549d43ca6ef073a0209090c64a210743c9fbed672e1852'
+            'b039650432e3031a4efcad2d2e999d51d5dec94fbe1c30b7f522015fead0e531'
+            'b7174fb3509d89b1f15ccdcdc9c419be79161ff8bff0642bbf1d6effc8fb7730'
             'b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678'
             'ac7254e3cdb359ebae302655b72b9f74b85d9e817c326fa28173791b3fb4f114'
             '9ba3942ac1a37f6b39c98ae6592573402bf08d8376f64554d0696c0fed6fd0e2')
