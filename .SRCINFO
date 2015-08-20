@@ -1,0 +1,20 @@
+pkgbase = ols
+	pkgdesc = A software client for the Open Bench Logic Sniffer logic analyser hardware.
+	pkgver = 0.9.7.2
+	pkgrel = 1
+	url = http://ols.lxtreme.nl/
+	install = ols.install
+	arch = any
+	license = GPL
+	depends = java-runtime
+	source = http://ols.lxtreme.nl//ols-0.9.7.2-full.tar.gz
+	source = ols
+	source = ols.desktop
+	source = ols.png
+	md5sums = 4dc1a573b9daa94e0c0be2b76f47967d
+	md5sums = 7503e8fd7b6d99a916eaf8a68378224b
+	md5sums = 019dda14116456715fb6d16d1ac4bdc8
+	md5sums = e22239705b9b8e6c29a5058ab863aa2b
+
+pkgname = ols
+

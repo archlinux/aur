@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=logic_sniffer
+Icon=/opt/ols/ols.png
+Type=Application
+Terminal=false
+Name=Logic sniffer
+Categories=Development;

@@ -1,0 +1,11 @@
+post_install() {
+	ln -s -f -d /tmp/ols /opt/ols/.fwcache
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	rm -rf /opt/ols/
+}
