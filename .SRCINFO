@@ -1,0 +1,27 @@
+pkgbase = qcomicbook-qt5-git
+	pkgdesc = QComicBook is a viewer for comic book archives. Qt5 build. (GIT version)
+	pkgver = 0.8.2.85.g2b1748f
+	pkgrel = 1
+	url = http://qcomicbook.org
+	install = qcomicbook-qt5-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-x11extras
+	depends = desktop-file-utils
+	depends = poppler-qt5
+	optdepends = unzip
+	optdepends = unace
+	optdepends = unrar
+	optdepends = p7zip
+	optdepends = tar
+	provides = qcomicbook
+	provides = qcomicbook-qt5
+	conflicts = qcomicbook
+	source = qcomicbook::git+https://github.com/stolowski/QComicBook.git
+	sha1sums = SKIP
+
+pkgname = qcomicbook-qt5-git
+
