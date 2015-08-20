@@ -10,7 +10,7 @@ url="http://pypi.python.org/pypi/hsaudiotag"
 arch=(any)
 license=('BSD')
 depends=('python2')
-makedepends=('python2-distribute')
+makedepends=('python2-setuptools')
 source=("http://pypi.python.org/packages/source/h/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('751a554bd22c8c588bf25dd7ef00b9ac')
 
