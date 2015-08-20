@@ -1,31 +1,28 @@
-# Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
+# Maintainer: Simon Doppler (dopsi) <dop.simon_at_gmail.com>
+
+# Former maintaining team :
+# (Contributor) Nick B <Shirakawasuna at gmail _dot_com>
+# (Maintainer) moostik <mooostik_at_gmail.com>
 pkgname=qelectrotech
 pkgver=0.4
-pkgrel=2
-pkgdesc=''
+pkgrel=3
+pkgdesc="An electric diagram editor"
 arch=('i686' 'x86_64')
-url='http://qelectrotech.org/'
-license=('GPL')
-provides=('qelectrotech')
-depends=('qt4' 'icu')
-makedepends=('tar')
-source=('http://download.tuxfamily.org/qet/tags/20150220/qelectrotech-0.4-src.tar.gz')
-sha1sums=('SKIP')
-install=qelectrotech.install
+url="http://qelectrotech.tuxfamily.org/"
+install='qelectrotech.install'
+license=('GPL2')
+depends=('qt4' 'shared-mime-info')
+md5sums=('3699e5718e0adc361511513c9f1f7ea1')
+source=(http://download.tuxfamily.org/qet/tags/20150220/${pkgname}-${pkgver}-src.tar.gz)
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver-src"
-    sed -i -e "s_/usr/local_$pkgdir/usr_g" qelectrotech.pro
-    qmake-qt4 DEFINES+=QET_COMMON_COLLECTION_PATH=/usr/share/qelectrotech/elements -o Makefile qelectrotech.pro
-    make
+  cd ${srcdir}/${pkgname}-${pkgver}-src
+  sed -i s,usr\/local,usr,g qelectrotech.pro
+  qmake-qt4
+  make
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver-src"
-    make install
-    mv $pkgdir/share $pkgdir/usr/share
-    mv $pkgdir/usr/man $pkgdir/usr/share
-    mv $pkgdir/usr/doc $pkgdir/usr/share
+  cd ${srcdir}/${pkgname}-${pkgver}-src
+  make INSTALL_ROOT=${pkgdir} install
 }
-
-# vim:ts=4:sw=4:expandtab
