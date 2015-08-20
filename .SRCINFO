@@ -1,0 +1,16 @@
+pkgbase = psi-l10n-git
+	pkgdesc = Language packs for Psi-git
+	pkgver = 0.16_translations_20141111
+	pkgrel = 1
+	url = http://psi.im
+	arch = any
+	license = GPL2
+	makedepends = qt4
+	depends = psi-git
+	options = !strip
+	options = !zipman
+	source = git://github.com/psi-im/psi-translations.git
+	md5sums = SKIP
+
+pkgname = psi-l10n-git
+
