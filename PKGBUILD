@@ -1,4 +1,5 @@
 # Maintainer: Ista Zahn <istazahn@gmail.com>
+# Contributor: Lex Black <autumn-wind at web dot de>
 # Source: http://junolab.org
 pkgname=juno
 pkgver=1.0.2
