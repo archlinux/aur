@@ -1,0 +1,13 @@
+pkgbase = fmtools
+	pkgdesc = A pair of simple command-line utilities for v4l2 radio tuner cards
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = http://benpfaff.org/fmtools/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://benpfaff.org/fmtools/fmtools-2.0.7.tar.gz
+	md5sums = 132b6d305b0c48eb8da0610873b15d62
+
+pkgname = fmtools
+
