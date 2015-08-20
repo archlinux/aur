@@ -3,7 +3,7 @@
 pkgname=ow-curses-win32a
 pkgdesc="An extended PDCurses directly on Win32 api (watcom-win32)"
 groups=('watcom-win32' 'watcom-win16')
-pkgver=14.03 #date of last release year.month
+pkgver=15.05 #date of last release year.month
 pkgrel=1
 arch=('any')
 license=('custom: Public Domain')
@@ -14,7 +14,7 @@ provides=("watcom-curses-win32" "watcom-curses-win16")
 url="http://www.projectpluto.com/win32a.htm"
 source=("http://www.projectpluto.com/win32a.zip")
 options=(!strip !buildflags staticlibs emptydirs)
-md5sums=('bfe45ee4f766bd74e9dbfc99dd1ce1af')
+md5sums=('835356e2ffa311c5bb908063cfda7dfa')
 
 build() {
   cd "$srcdir"/win32a
@@ -25,19 +25,19 @@ build() {
   cp "$srcdir"/*.h "$srcdir"/pdcurses/
   sed 's|SRCDIR)\\|SRCDIR)\/|g' -i wccwin*.mak
   sed 's|copy |cp |g' -i wccwin*.mak
-  sed 's|\/ei \/zq \/wx \/i=|-ei -zq -wx -fo=.obj -i=|g' -i wccwin*.mak
-  sed 's|\/oneatx|-oneatx|g' -i wccwin*.mak
-  sed 's|wlib \/q \/n \/t|wlib -q -n -t|g' -i wccwin*.mak
-  #sed 's|-oneatx|-oneatx -aa -D__wargv=NULL|g' -i wccwin16.mak 
-  sed 's|-oneatx|-oneatx -aa -D__wargv=NULL|g' -i wccwin32.mak #not present in win headers
+  sed 's|-ei -zq -wx -i=|-ei -zq -wx -fo=.obj -i=|g' -i wccwin*.mak
+  sed 's|-oneatx|-oneatx -aa -D__wargv=NULL|g' -i wccwin*.mak #not present in win headers
   #sed 's|\/DPDC_WIDE|-DPDC_WIDE|g' -i wccwin*.mak
   #sed 's|\/DPDC_FORCE_UTF8|-DPDC_FORCE_UTF8|g' -i wccwin*.mak
+  
+  export PDCURSES_SRCDIR="$srcdir"
     
   #msg "build for Win16..." 
   #export INCLUDE=$WATCOM/h:$WATCOM/h/win
   #wmake -f wccwin16.mak pdcurses.lib
   #mv pdcurses.lib curses.lib16
   #rm -f panel.lib
+  #rm -f *.obj
   
   msg "build for Win32..."
   export INCLUDE=$WATCOM/h:$WATCOM/h/nt
@@ -47,14 +47,12 @@ build() {
 
 package() {
   cd "$srcdir/win32a"
-  #mkdir -p ${pkgdir}${WATCOM}/{lib286/win,lib386/nt,h/{nt,win}}/
-  mkdir -p "${pkgdir}${WATCOM}/{lib386,h}/nt"
+  mkdir -p "${pkgdir}${WATCOM}"/{lib286/win,lib386/nt,h/{nt,win}}/
   chmod -R 755 "$pkgdir/opt"
-  cp pdcurses.lib "${pkgdir}${WATCOM}"/lib386/nt/
-  cp pdcurses.lib "${pkgdir}${WATCOM}"/lib386/nt/panel.lib
-  chmod 644 "${pkgdir}${WATCOM}"/lib386/nt/{pdcurses,panel}.lib
+  install -m644 pdcurses.lib "${pkgdir}${WATCOM}"/lib386/nt/
+  cp "${pkgdir}${WATCOM}"/lib386/nt/pdcurses.lib "${pkgdir}${WATCOM}"/lib386/nt/panel.lib
   #install -m644 curses.lib16 ${pkgdir}${WATCOM}/lib286/win/{pdcurses,panel}.lib
-  #install -m644 $srcdir/*.h ${pkgdir}${WATCOM}/h/{nt,win}/
+  install -m644 "$srcdir"/*.h "${pkgdir}${WATCOM}"/h/win/
   install -m644 "$srcdir"/*.h "${pkgdir}${WATCOM}"/h/nt/
 }
 
