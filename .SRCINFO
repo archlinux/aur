@@ -1,6 +1,6 @@
 pkgbase = trash-cli-git
 	pkgdesc = Command line trashcan (recycle bin) interface
-	pkgver = 413.7913a0b
+	pkgver = 415.e888f86
 	pkgrel = 1
 	url = http://github.com/andreafrancia/trash-cli
 	arch = any
@@ -11,7 +11,9 @@ pkgbase = trash-cli-git
 	provides = trash-cli
 	conflicts = trash-cli
 	source = git+http://github.com/andreafrancia/trash-cli.git
+	source = 53.patch
 	md5sums = SKIP
+	md5sums = 5f9f91c242c4c79de663e6481d226451
 
 pkgname = trash-cli-git
 
