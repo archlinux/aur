@@ -74,16 +74,16 @@ prepare() {
     for _patch in $(ls "$srcdir"/*.patch 2>/dev/null); do
       # Patch version
       _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
-        
+
       # Cd in place
       cd kernel-$_kernel
 
       # Check version
       if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
-        msg2 "Applying ${_patch##*/} for $_kernel..."
+        msg2 "Applying $_patch for $_kernel..."
         patch -p2 -i "$_patch"
       fi
-      
+
       # Return
       cd ..
     done
