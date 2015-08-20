@@ -5,7 +5,6 @@ pkgbase = soletta-git
 	url = http://github.com/solettaproject/soletta
 	arch = any
 	license = custom:BSD3
-	checkdepends = python>3.4
 	makedepends = git
 	makedepends = python>=3.4
 	makedepends = python-jsonschema
