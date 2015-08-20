@@ -13,20 +13,20 @@
 pkgname=go-cross-major-platforms
 _gitname=go
 epoch=2
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc='Compiler and tools for the Go programming language from Google (Windows,OSX and Linux with arm)'
 arch=('x86_64' 'i686')
 url='http://golang.org/doc/install/source#environment'
 license=('BSD')
-makedepends=('inetutils' 'git' 'mercurial')
+makedepends=('inetutils' 'git' 'mercurial' 'go>=1.4')
 options=('!strip' 'staticlibs')
 optdepends=('mercurial: for fetching sources from mercurial repositories'
             'git: for fetching sources from git repositories'
             'bzr: for fetching sources from bazaar repositories'
             'subversion: for fetching sources from subversion repositories')
 conflicts=(go)
-provides=(go)
+provides=(go=1.5)
 install="$pkgname.install"
 #source=("$pkgname-$pkgver::git+https://go.googlesource.com/go#tag=$_gitname$pkgver")
 source=("$pkgname-$pkgver::git+https://github.com/golang/go.git#tag=$_gitname$pkgver")
@@ -39,6 +39,7 @@ build() {
   export GOBIN="$GOROOT/bin"
   export GOPATH="$srcdir/"
   export GOROOT_FINAL=/usr/lib/go
+  export GOROOT_BOOTSTRAP="$GOROOT_FINAL"
 
   #
   # Arch Linux normally does not enable SSE2 for i686 because of older CPUs.
@@ -56,18 +57,9 @@ build() {
   # export GO386=387
   #
 
-  # Crosscompilation for various platforms without arm
-  for os in darwin windows; do #darwin windows dragonfly openbsd plan9; do
-    for arch in amd64 386; do
-      export GOOS="$os"
-      export GOARCH="$arch"
-      bash make.bash --no-clean
-    done
-  done
-
   # Crosscompilation for various platforms with arm (including linux)
-  for os in linux; do #freebsd netbsd linux; do
-    for arch in amd64 386 arm; do
+  for os in darwin linux; do #darwin openbsd freebsd netbsd linux; do
+    for arch in arm amd64 386 ; do
       export GOOS="$os"
       export GOARCH="$arch"
       # export GOARM=7
@@ -75,11 +67,22 @@ build() {
     done
   done
 
+  # Crosscompilation for various platforms without arm
+  for os in windows; do #windows plan9; do
+    for arch in amd64 386; do
+      export GOOS="$os"
+      export GOARCH="$arch"
+      bash make.bash --no-clean
+    done
+  done
+
+
   ## Crosscompilation for solaris only on amd64
-  #export GOOS=solaris
-  #export GOARCH=amd64
-  #
-  #bash make.bash --no-clean
+  #for os in dragonfly solaris ; do 
+  #  export GOOS="$os"
+  #  export GOARCH=amd64
+  #  bash make.bash --no-clean
+  #done
 
 
   GOOS=linux
@@ -136,9 +139,9 @@ package() {
   cp -a pkg "$pkgdir/usr/lib/go"
   cp -a "$GOROOT/src" "$pkgdir/usr/lib/go/"
   cp -a "$GOROOT/src/cmd" "$pkgdir/usr/lib/go/src/cmd"
-  cp -a "$GOROOT/src/lib9" "$pkgdir/usr/lib/go/src/"
+  #cp -a "$GOROOT/src/lib9" "$pkgdir/usr/lib/go/src/"
   cp -a "$GOROOT/lib" "$pkgdir/usr/lib/go/"
-  cp -a "$GOROOT/include" "$pkgdir/usr/lib/go/"
+  #cp -a "$GOROOT/include" "$pkgdir/usr/lib/go/"
 
   install -Dm644 src/Make.* "$pkgdir/usr/lib/go/src"
 
@@ -151,11 +154,11 @@ package() {
   # Remove all executable source files
   find "$pkgdir/usr/lib/go/src" -type f -executable -delete
 
-  # Headers for C modules
-  install -Dm644 src/runtime/runtime.h \
-    "$pkgdir/usr/lib/go/src/runtime/runtime.h"
-  install -Dm644 src/runtime/cgocall.h \
-    "$pkgdir/usr/lib/go/src/runtime/cgocall.h"
+  ## Headers for C modules
+  #install -Dm644 src/runtime/runtime.h \
+  #  "$pkgdir/usr/lib/go/src/runtime/runtime.h"
+  #install -Dm644 src/runtime/cgocall.h \
+  #  "$pkgdir/usr/lib/go/src/runtime/cgocall.h"
 
   # This is to make go get code.google.com/p/go-tour/gotour and
   # then running the gotour executable work out of the box.
