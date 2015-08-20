@@ -1,15 +1,16 @@
 pkgname=mingw-w64-karchive
-pkgver=5.12.0
+pkgver=5.13.0
 pkgrel=1
 arch=(any)
 pkgdesc="Qt 5 addon providing access to numerous types of archives (mingw-w64)"
 license=("LGPL")
 depends=(mingw-w64-qt5-base mingw-w64-bzip2 mingw-w64-xz)
+groups=(mingw-w64-kf5)
 makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/karchive"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/karchive-${pkgver}.tar.xz")
-md5sums=('024f3f34236bd64823a5350ef8670557')
+md5sums=('dd01dc1252cb3d862959970ef7d7f5eb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
