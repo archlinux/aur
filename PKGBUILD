@@ -11,18 +11,18 @@ _build_voip=false
 ### Nothing to be changed below this line ###
 
 _pkgname=retroshare
-pkgname=${_pkgname}-git
-pkgver=v0.6.0.RC2.r52.gf6b830d
+pkgname=${_pkgname}-git-no-sqlcipher
+pkgver=v0.6.0.RC2.r57.g48c3eed
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 
-depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlite')
+depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd')
 makedepends=('git')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 
 install='retroshare.install'
 
@@ -44,8 +44,8 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	_qmake='qmake-qt4'
-  	_qmake='qmake-qt4  DEFINES+=NO_SQLCIPHER'
+	_qmake='qmake-qt4 DEFINES+=NO_SQLCIPHER'
+
 	#
 	# BUILD HERE
 	#
