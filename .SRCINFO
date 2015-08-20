@@ -1,0 +1,15 @@
+pkgbase = multibootusb
+	pkgdesc = Boot multiple live Linux distros from a usb flash drive.
+	pkgver = 7.5.0
+	pkgrel = 1
+	url = http://multibootusb.org
+	arch = any
+	license = GPL
+	depends = python2-pyqt4
+	depends = mtools
+	depends = util-linux
+	source = http://downloads.sourceforge.net/project/multibootusb/7.5.0/Source/multibootusb-7.5.0.tar.gz
+	sha512sums = b5a01dd81d90abd45b8443d922704432e84ceb58ad67c8cfe289064230f721baec420244000533d82e5c66db29767054556d8f8f2606918a8b3e51e24199a867
+
+pkgname = multibootusb
+
