@@ -1,5 +1,5 @@
 pkgbase = qgis-ltr
-	pkgdesc = Quantum GIS is a Geographic Information System (GIS) that supports vector, raster & database formats
+	pkgdesc = QGIS (long-term release) is a Geographic Information System (GIS) that supports vector, raster & database formats
 	pkgver = 2.8
 	pkgrel = 1
 	url = http://qgis.org/
