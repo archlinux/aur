@@ -1,0 +1,16 @@
+pkgbase = bitlbee-steam-git
+	pkgdesc = Steam protocol plugin for BitlBee
+	pkgver = 323.439d777
+	pkgrel = 1
+	url = https://github.com/jgeboski/bitlbee-steam
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bitlbee
+	depends = libgcrypt
+	source = git+https://github.com/jgeboski/bitlbee-steam
+	sha256sums = SKIP
+
+pkgname = bitlbee-steam-git
+
