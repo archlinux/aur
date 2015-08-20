@@ -3,7 +3,7 @@
 pkgname=matrix-synapse
 _pkgver=0.9.4-rc1
 pkgver="${_pkgver//-/.}"
-pkgrel=5
+pkgrel=6
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
 arch=('any')
@@ -12,6 +12,7 @@ depends=('python2-syutil' 'python2-twisted>=15.1.0' 'python2-service-identity'
          'python2-pyopenssl' 'python2-yaml' 'python2-pyasn1' 'python2-pynacl'
          'python2-daemonize' 'python2-py-bcrypt' 'python2-frozendict'
 		 'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
+		 'python2-saml2'
 		 'python2-matrix-angular-sdk')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 source=("git://github.com/matrix-org/synapse#tag=v$_pkgver"
