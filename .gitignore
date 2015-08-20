@@ -16,3 +16,17 @@ src
 suture
 syncthing
 xdr
+b
+bufs
+crypto
+du
+exp
+fileutil
+lock
+mathutil
+pq
+ql
+relaysrv
+sortutil
+strutil
+zappy
