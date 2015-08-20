@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mm-common-git
-pkgver=0.9.8.2.g94b9404
+pkgver=0.9.8.5.ge733743
 pkgrel=1
 pkgdesc="The build infrastructure and utilities shared among the GNOME C++ binding libraries"
 arch=('any')
