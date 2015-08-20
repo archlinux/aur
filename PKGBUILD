@@ -11,7 +11,7 @@ depends=('qt5-base' 'qt5-tools')
 optdepends=('qt5-svg: for svg support'
             'qt5-imageformats: for mng, tga, tiff, bmp image support')
 makedepends=('cmake')
-conflicts=('hawaii-eyesight' 'eyesight')
+conflicts=('hawaii-eyesight' 'eyesight-git')
 replaces=('hawaii-eyesight')
 groups=('hawaii')
 options=('debug')
