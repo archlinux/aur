@@ -1,8 +1,8 @@
 pkgbase = procps-ng-nosystemd
 	pkgdesc = Utilities for monitoring your system and its processes
-	pkgver = 3.3.10
+	pkgver = 3.3.11
 	pkgrel = 1
-	url = http://sourceforge.net/projects/procps-ng/
+	url = https://gitlab.com/procps-ng/procps
 	install = procps-ng.install
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = procps-ng-nosystemd
 	license = LGPL
 	depends = ncurses
 	provides = procps
-	provides = procps-ng=3.3.10
+	provides = procps-ng=3.3.11
 	provides = sysvinit-tools
 	conflicts = procps
 	conflicts = procps-ng
@@ -21,9 +21,9 @@ pkgbase = procps-ng-nosystemd
 	replaces = procps-ng
 	replaces = sysvinit-tools
 	replaces = sysctl-default-conf
-	source = http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-3.3.10.tar.xz
+	source = http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-3.3.11.tar.xz
 	source = sysctl.conf
-	sha1sums = 484db198d6a18a42b4011d5ecb2cb784a81b0e4f
+	sha1sums = 1bdca65547df9ed019bd83649b0f8b8eaa017e25
 	sha1sums = 674282245d8ab2e09017b8f8cdce20a3ff81e631
 
 pkgname = procps-ng-nosystemd
