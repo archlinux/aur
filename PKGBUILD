@@ -1,3 +1,4 @@
+# Maintainer: Chiu-Hsiang Hsu <wdv4758h at gmail.com>
 # Contributor: HIME team
 _pkgname=hime
 pkgname=hime-git
