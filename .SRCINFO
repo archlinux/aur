@@ -1,22 +1,22 @@
 pkgbase = magiclauncher
 	pkgdesc = A custom minecraft launcher
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
-	url = http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-tools/1262884-launcher-magic-launcher-1-3-0-mods-options
+	url = http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-tools/1262884-launcher-magic-launcher-1-3-1-mods-options
 	arch = any
 	license = custom
 	depends = java-runtime
 	depends = xorg-server-utils
 	depends = openal
-	noextract = MagicLauncher_1.3.0.jar
+	noextract = MagicLauncher_1.3.1.jar
 	source = magiclauncher
 	source = magiclauncher.desktop
 	source = magiclauncher.png
-	source = magiclauncher.jar::http://magiclauncher.com/download.php?f=MagicLauncher_1.3.0.jar
+	source = magiclauncher.jar::http://magiclauncher.com/download.php?f=MagicLauncher_1.3.1.jar
 	md5sums = 0bbbe81d3cc79b2de68be50357da8ec2
 	md5sums = ee8801b5238cce051e89fc16641f2cb3
 	md5sums = b2c25797bf513a5ee215dd90b4b828e3
-	md5sums = 77ad787a6bb991aff3cddaa9b24c2e96
+	md5sums = 3e54d619526aa857b28e1d8d50f05f20
 
 pkgname = magiclauncher
 
