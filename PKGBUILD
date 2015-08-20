@@ -5,7 +5,7 @@
 _pkgname=hhvm
 _github_addr=facebook/hhvm
 pkgname=${_pkgname}-git
-pkgver=20150816
+pkgver=20150820
 pkgrel=1
 pkgdesc="Virtual Machine, Runtime, and JIT for PHP"
 arch=('x86_64')
@@ -42,7 +42,8 @@ source=("git+https://github.com/$_github_addr" #1
         "git+https://github.com/facebook/proxygen" #6
         "git+https://github.com/facebook/mcrouter"
         "git+https://github.com/google/re2"
-        "git+https://github.com/webscalesql/webscalesql-5.6" #9
+        "git+https://github.com/webscalesql/webscalesql-5.6"
+        "git+https://github.com/facebook/wangle" #10
         'hhvm.tmpfile'
         'hhvm@.service'
         'server.ini'
@@ -50,7 +51,7 @@ source=("git+https://github.com/$_github_addr" #1
         'php_ini.patch')
 backup=('etc/hhvm/server.ini' 'etc/hhvm/systemd-server.conf')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'c049b53f5ca7f8384d3b0a9d257018770b3a171f3b7ae8865cbb2c402a26b5e9'
             'dddf4325926a41b3f1b5a41a1a42364ee463ab627f9d9b05ccf7c4660af3a51c'
             'bca85e0445f3e26df65876c52e507aec8146cd31cce12c82846b55705529caed'
@@ -82,6 +83,7 @@ prepare() {
     git config submodule.squangle/squangle.url "${srcdir}/squangle"
     git config submodule.thrift/src.url "${srcdir}/fbthrift"
     git config submodule.webscalesqlclient/webscalesql-5.6.url "${srcdir}/webscalesql-5.6"
+    git config submodule.wangle/src.url "${srcdir}/wangle"
     git submodule update
 }
 

@@ -5,6 +5,7 @@
 /mcrouter/
 /proxygen/
 /squangle/
+/wangle/
 /hhvm/
 /hhvm-third-party/
 /clang-force-libstdc++.patch
