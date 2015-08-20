@@ -1,7 +1,7 @@
 pkgbase = juno
 	pkgdesc = IDE for Julia based on lighttable
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 0
 	url = http://junolab.org
 	install = juno.install
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = juno
 	depends = gconf
 	depends = gtk2
 	conflicts = juno-git
-	source = https://junolab.s3.amazonaws.com/release/1.0.0/juno-linux-x64.zip
-	md5sums = de3210449d95ec02e00820a0b6ef06cf
+	source = https://junolab.s3.amazonaws.com/release/1.0.2/juno-linux-x64.zip
+	md5sums = 4217aa28b3c11c5c7eaabc2f1368e3fa
 
 pkgname = juno
 
