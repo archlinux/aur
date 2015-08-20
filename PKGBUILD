@@ -1,26 +1,11 @@
-# Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot].com
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Sabart Otto - Seberm <seberm[at]gmail[dot].com
 # Contributor: Zsolt Udvari - uzsolt <udvzsolt X gmail X com>
 
-_name=adminer-skins
-pkgname=$_name
-
-true && pkgname=(
-    'adminer-skins'
-    'adminer-skins-hever'
-    'adminer-skins-brade'
-    'adminer-skins-haeckel'
-    'adminer-skins-pokorny'
-    'adminer-skins-paranoiq'
-    'adminer-skins-bueltge'
-    'adminer-skins-konya'
-    'adminer-skins-ng9'
-    'adminer-skins-pilot'
-    'adminer-skins-kahi'
-    'adminer-skins-cvicebni-ubor'
-    'adminer-skins-jukin'
-)
-
-pkgver=20150316
+set -u
+pkgbase="adminer-skins"
+pkgname=("${pkgbase}-"{brade,bueltge,cvicebni-ubor,galkaev,haeckel,hever,jukin,kahi,konya,nette,ng9,nicu,pappu687,paranoiq,pepa-linha,pilot,pokorny,price})
+pkgver=20150806
 pkgrel=1
 pkgdesc='Adminer skins'
 url='http://www.adminer.org'
@@ -29,94 +14,30 @@ license=('Apache License, Version 2.0')
 depends=('adminer')
 provides=('adminer-skin')
 conflicts=('adminer-skin')
-makedepends=()
-optdepends=()
+source=()
+for _skin in "${pkgname[@]}"; do
+  _skin="${_skin#${pkgbase}-}"
+  source+=("${_skin}.css::https://raw.github.com/vrana/adminer/master/designs/${_skin}/adminer.css")
+  eval "package_adminer-skins-${_skin}() { set -u; install -Dpm644 '${_skin}.css' \"\${pkgdir}/usr/share/webapps/adminer/adminer.css\"; set +u; }"
+done
+unset _skin
+sha256sums=('4223123faaa06e09503ee88a3c422141ca0755e6f8de5835ce1957ba0cfeec11'
+            'e7293e1ba36619e2fac60fa2a9bb1a75dada3700512a12d0a692d91d3ba85eb4'
+            '529046f59eeae650913322a7b500c435944d435bcddc7f1689fd8167071a5f46'
+            'db299f10a11b492a2d16821f2347f8b89f0da76e103db29731ea7ac0cabe6873'
+            'cc79cbdf83fe809fcc6b166a0645a201368538fd9624d7cff007bb62ca6fb2e0'
+            '1eca9b1ff30ff6dfb7051a44beed31d72135b79a2f2b05edebb98d1eef8bf155'
+            'b7194678b1b6872212b85f0e5100bd0b9a097fca5bef57b862c4f205e467e89f'
+            'b0ef4026fda0bcbbda46e958e0d90df984d40debe23669892a66724ae37717c2'
+            'd050b8630e5019eef09afc802b99b43016a9514aaad785b01278632a8cd27cd1'
+            '632965d2ca4440d73a27c47ac208da30e57ac018395411bcdd8528d108a56f2a'
+            'a82d803b62182cdc96cb8ecfa81d298727941e43b8e10a6e8e21e9aeff8a214a'
+            '9edf7f6bebdea1c7045c56d8c5238ffb491edaada98805c0b58ee53f2301e682'
+            '906524e9d3f2d34cd4ecec27f3fbd1f4457b4510e696d6ce6b2594612c96b185'
+            'ba758be19293ce11698ab8c64e15653bd77f08ef754b12dcdc7eda994f2c5324'
+            '2e73d03c4e2a239fb362ccb7670c57275008ab0249bb093f67020e1d52c95399'
+            '504ce185b2c7f51762baf24dd499a989cfb081a49a38fbca766181b8be29f206'
+            '219a3fc765f26830a25c39631868c203b34b908ed05430b251953c196ab83492'
+            'ae36ed3d7ea9a263ce5f15ffe5cf3f15a5c296cd26afb04cf4929c7ae9faf41d')
 
-source=(
-    'hever.css::https://raw.github.com/vrana/adminer/master/designs/hever/adminer.css'
-    'brade.css::https://raw.github.com/vrana/adminer/master/designs/brade/adminer.css'
-    'haeckel.css::https://raw.github.com/vrana/adminer/master/designs/haeckel/adminer.css'
-    'pokorny.css::https://raw.github.com/vrana/adminer/master/designs/pokorny/adminer.css'
-    'paranoiq.css::https://raw.github.com/vrana/adminer/master/designs/paranoiq/adminer.css'
-    'bueltge.css::https://raw.github.com/vrana/adminer/master/designs/bueltge/adminer.css'
-    'konya.css::https://raw.github.com/vrana/adminer/master/designs/konya/adminer.css'
-    'ng9.css::https://raw.github.com/vrana/adminer/master/designs/ng9/adminer.css'
-    'pilot.css::https://raw.github.com/vrana/adminer/master/designs/pilot/adminer.css'
-    'kahi.css::https://raw.github.com/vrana/adminer/master/designs/kahi/adminer.css'
-    'cvicebni-ubor.css::https://raw.github.com/vrana/adminer/master/designs/cvicebni-ubor/adminer.css'
-    'jukin.css::https://raw.github.com/vrana/adminer/master/designs/jukin/adminer.css'
-)
-
-md5sums=('cd9f03ca11aa47f5e43ccb675588007c'
-         '9da6b73dfa3bb538b253676e14c50d1e'
-         'aa4a8849f110f89a56c12dc4b1b48e7e'
-         '0c01f846113983d30254abba6dac7584'
-         'aa030a380ca2dca615d01856a333e4d8'
-         '091b443d5a728c4745c1ae95760e0cca'
-         '0596554c5535bc792edb051e5dcd15c0'
-         '6c69bf9a12232832d99cf508f2eb8b7f'
-         '0429c1df7811e6730e5e5e81f6a3dc10'
-         '379d27d158530d478dc68e144c3004c4'
-         '34227ef300208595674f421639dace53'
-         'f1857afe4b6f71dfbc354a9535f63ec5')
-
-_copy_css() {
-    install -d $pkgdir/usr/share/webapps/adminer
-    cp ${1}.css $pkgdir/usr/share/webapps/adminer/adminer.css
-}
-
-package_adminer-skins-hever() {
-    _copy_css hever
-}
-
-package_adminer-skins-brade() {
-    _copy_css brade
-}
-
-package_adminer-skins-haeckel() {
-    _copy_css haeckel
-}
-
-package_adminer-skins-pokorny() {
-    _copy_css pokorny
-}
-
-package_adminer-skins-paranoiq() {
-    _copy_css paranoiq
-}
-
-package_adminer-skins-bueltge() {
-    _copy_css bueltge
-}
-
-package_adminer-skins-konya() {
-    _copy_css konya
-}
-
-package_adminer-skins-ng9() {
-    _copy_css ng9
-}
-
-package_adminer-skins-pilot() {
-    _copy_css pilot
-}
-
-package_adminer-skins-kahi() {
-    _copy_css kahi
-}
-
-package_adminer-skins-cvicebni-ubor() {
-    _copy_css cvicebni-ubor
-}
-
-package_adminer-skins-jukin() {
-    _copy_css jukin
-}
-
-package_adminer-skins() {
-    true
-}
-
-build() {
-    true
-}
+set +u
