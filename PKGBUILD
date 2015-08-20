@@ -9,7 +9,7 @@ url='http://git.kolab.org/libkolabxml/'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('xerces-c' 'boost-libs')
-makedepends=('cmake' 'boost' 'xsd' 'qt4' 'swig')
+makedepends=('cmake' 'boost' 'xsd' 'swig')
 source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"{,.gpg})
 md5sums=('9cb1cb2ffc3496af3df9cba2bf56ac0c'
          'af0f43509c0bed1b9d9f917cd5a01679')
