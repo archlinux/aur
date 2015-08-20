@@ -10,8 +10,8 @@ pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
-             'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
+makedepends=('kdepimlibs4' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
+             'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
@@ -31,7 +31,7 @@ build() {
 
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
-  depends=('kdebase-runtime' 'kdepimlibs' 'libgphoto2' 'opencv' 'liblqr'
+  depends=('kdebase-runtime' 'kdepimlibs4' 'libgphoto2' 'opencv' 'liblqr'
            'libkipi' 'libkexiv2' 'libkdcraw' 'libkface' 'libkgeomap' 'lensfun' 
 	   'libpgf' 'libbaloo4')
   optdepends=('kipi-plugins: more tools and plugins' 'kdebase-workspace: Theme configuration dialog')
@@ -63,7 +63,7 @@ package_libmediawiki() {
 
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
-  depends=('kdebase-runtime' 'kdepimlibs' 'libkdcraw' 'libkipi' 'libksane' 'libkexiv2')
+  depends=('kdebase-runtime' 'kdepimlibs4' 'libkdcraw' 'libkipi' 'libksane' 'libkexiv2')
   optdepends=('libkgeomap: Geolocalize tool'
               'libmediawiki: MediaWiki Export plugin'
               'libkvkontakte: VKontakte.ru Exporter plugin'
