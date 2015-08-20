@@ -4,9 +4,9 @@
 
 _pkgname=crawl
 pkgname=crawl-git
-pkgver=0.17.a0.r1629.g32e70c7
+pkgver=0.17.a0.r1698.ga4b5924
 pkgrel=1
-pkgdesc="A modern roguelike game played in the console."
+pkgdesc="A modern roguelike game played in the console"
 arch=('i686' 'x86_64')
 url="http://crawl.develz.org"
 license=('GPL')
