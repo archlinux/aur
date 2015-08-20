@@ -1,7 +1,7 @@
 # Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 pkgname=cargo
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust package manager"
 url="http://crates.io/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -33,6 +33,9 @@ package() {
   #Contains reference to $srcdir and $pkgdir
   find "$pkgdir" -name install.log -delete
   find "$pkgdir" -name manifest-cargo -delete
+
+  #Conflict with rust package
+  find "$pkgdir" -name uninstall.sh -delete
 
   mkdir -p "$pkgdir/usr/share/bash-completion/completions"
   mv "$pkgdir/usr/etc/bash_completion.d/cargo" "$pkgdir/usr/share/bash-completion/completions/cargo"

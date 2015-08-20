@@ -1,7 +1,7 @@
 pkgbase = cargo
 	pkgdesc = Rust package manager
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://crates.io/
 	arch = x86_64
 	arch = i686
