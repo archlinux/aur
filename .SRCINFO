@@ -11,7 +11,7 @@ pkgbase = hqplayer-network-audio-daemon
 	source = https://www.signalyst.eu/bins/naa/v3/jessie/networkaudiod_3.1.0-25_amd64.deb
 	source = networkaudio@.service
 	source = copyright
-	sha256sums = f072f63e4ab228a5c3500a54735b67e30ed097535af48af2c96e01572e5ea5ca
+	sha256sums = 33baea518001c57c77833d942a12940fd90187c3e2ec7c4dd5cc28d72c921e29
 	sha256sums = fe16438e5905dbe0cea2d49404aa7bed6cf7f1ab1769c3cbcccc664ebd3dd309
 	sha256sums = 9dfe227985be1cb760d1ac3166b13e46345c64132f47a3f18f82ec0d5c121118
 
