@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.1
-_pkgver=4.1.3
-_rtpatchver=rt3
+_pkgver=4.1.5
+_rtpatchver=rt5
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -29,12 +29,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b949517b832af2fc90c57a35e475340f32c186f391cbdbfbe0aba7720dbb0b3e'
+            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
             'SKIP'
-            '42a8d2a54dfd6dc8f351f3b56855b55fcc1aadb8805cc6d07c3b9479aea55c96'
+            '0cfa47bedd98fb7c542d422c79c52390be622d3e524fed54c976049d0050fec8'
             'SKIP'
-            '1f1ea890961c906c59dff078de3a40907e5dd1462d88535700b242c0aa25bbdd'
-            'cbf94fd6abef173a957fc01276af8da34e165bb226d52974953ceb6c6621d5ec'
+            'dbfb2d8ec8cf18e9eca2071231456d21ef7fdee6dd9af57fe5e40d9090357650'
+            'da8f54fde0370a1c11c6a7bc4321873163f6a16a8517f0776b5dec106098da46'
             '2abb6e506e4a687723d6a6dc21703f5d2b42a8956fbc3313e3da2b03c718c80d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda')
