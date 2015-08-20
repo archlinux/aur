@@ -1,0 +1,18 @@
+pkgbase = sharpfonts
+	pkgdesc = Display sharp and clear fonts on Linux like on Windows XP
+	pkgver = 1
+	pkgrel = 8
+	url = http://support.mcsnet.ca/sharpfonts/
+	install = sharpfonts.install
+	arch = any
+	license = unknown
+	depends = ttf-ms-fonts
+	depends = fontconfig
+	depends = freetype2
+	source = http://support.mcsnet.ca/sharpfonts/sf-upd.tar.bz2
+	source = sharpfonts.install
+	md5sums = 809c83cd576d452d09d07a662237c07d
+	md5sums = 1347de3be491d2576c5567265dbbdfc7
+
+pkgname = sharpfonts
+
