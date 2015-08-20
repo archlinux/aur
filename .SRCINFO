@@ -1,6 +1,6 @@
 pkgbase = mythtv-git
 	pkgdesc = Free Open Source software digital video recorder (DVR) project
-	pkgver = v0.28.pre.r2987.g52c8a9d
+	pkgver = v0.28.pre.r3051.gd03d51d
 	pkgrel = 1
 	url = http://www.mythtv.org/
 	install = mythtv.install
