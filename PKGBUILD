@@ -5,7 +5,7 @@ _name="oslo.i18n"
 _module="${_name/./-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.3.0"
+pkgver="2.4.0"
 pkgrel="1"
 pkgdesc="Oslo i18n library"
 arch=("any")
@@ -13,7 +13,7 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('9cd35cd12104672e4675465d59badf9b1d1c1bfc54ceef57d076d4fa8a12afc6')
+sha256sums=('b788a543416483196015177daf77c2d2a8ba84ea72b4372a7afa54707333308c')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
