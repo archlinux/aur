@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
 
 pkgname=('python-django-bootstrap3' 'python2-django-bootstrap3')
-pkgver=6.2.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="Bootstrap 3 integration with Django"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://github.com/dyve/django-bootstrap3"
 license=('Apache')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/d/django-bootstrap3/django-bootstrap3-${pkgver}.tar.gz")
-md5sums=('b58985ec0084734feedd2e7be427f6c8')
+md5sums=('b49d83fbd5e33216ccbd21bf1b1ba381')
 
 build() {
   cp -r ${srcdir}/django-bootstrap3-${pkgver} ${srcdir}/django-bootstrap3-${pkgver}-py2
