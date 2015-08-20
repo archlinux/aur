@@ -1,6 +1,6 @@
 pkgbase = adminer-git
-	pkgdesc = Adminer (formerly phpMinAdmin) is a full-featured MySQL management tool written in PHP. GIT version.
-	pkgver = v4.1.0.r0.g6aed2f5
+	pkgdesc = a full-featured MySQL management tool written in PHP. Formerly phpMinAdmin.
+	pkgver = 4.2.2.r0.g596f8df
 	pkgrel = 1
 	url = http://www.adminer.org
 	install = adminer.install
@@ -14,10 +14,10 @@ pkgbase = adminer-git
 	optdepends = postgresql
 	optdepends = sqlite: for sqlite3
 	optdepends = sqlite2
-	provides = adminer
+	provides = adminer=4.2.2
 	conflicts = adminer
 	source = adminer-git::git://adminer.git.sourceforge.net/gitroot/adminer/adminer
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = adminer-git
 

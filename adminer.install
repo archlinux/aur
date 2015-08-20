@@ -1,17 +1,30 @@
-TEXT='
-If you want to access adminer interface by your apache server, run following command as root:\n
-echo "Include conf/extra/httpd-adminer.conf" >> /etc/httpd/conf/httpd.conf\n\n
-
-And restart your apache running "rc.d restart httpd"\n
-Or (if you are using systemd) "systemctl restart httpd"\n\n
-
-After you can browse adminer on http://localhost/adminer\n';
-
+_instname='Adminer'
+_instwww="${_instname,,}"
+_instwww="${_instwww// /-}"
+_inststr="Include conf/extra/httpd-${_instwww}.conf"
+_instfile='/etc/httpd/conf/httpd.conf'
 
 post_install() {
-	echo -e $TEXT;
+  if ! grep -ql "^${_inststr}"'$' "${_instfile}"; then
+    local TEXT="
+If you want to access ${_instname} by your Apache server, run following command as root:
+echo '${_inststr}' >> '${_instfile}'
+
+And restart your Apache running 'rc.d restart httpd'
+Or (if you are using systemd) 'systemctl restart httpd'
+
+After you can browse ${_instname} on http://localhost/${_instwww}";
+    echo -e "${TEXT}"
+  fi
 }
 
 post_upgrade() {
-	echo -e $TEXT;
+  post_install
+}
+
+post_remove() {
+  if grep -ql "^${_inststr}"'$' "${_instfile}"; then
+    echo "To completely remove ${_instname}, remove its include from ${_instfile}"
+    echo 'and restart your httpd server'
+  fi
 }
