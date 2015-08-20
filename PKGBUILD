@@ -2,12 +2,12 @@
 _gemname=tmuxinator
 pkgname=tmuxinator
 pkgver=0.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
 license=(MIT)
-depends=(ruby ruby-erubis ruby-activesupport ruby-thor)
+depends=(ruby ruby-erubis ruby-thor)
 makedepends=(rubygems)
 source=(http://rubygems.org/downloads/tmuxinator-$pkgver.gem)
 noextract=(tmuxinator-$pkgver.gem)
