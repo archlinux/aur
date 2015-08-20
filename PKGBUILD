@@ -3,7 +3,7 @@
 pkgname=perl-auth-googleauthenticator
 pkgver=0.0.3
 pkgrel=1
-pkgdesc="Perl/CPAN module Net::Google::Authenticator"
+pkgdesc="Perl/CPAN module Auth::Google::Authenticator"
 url="http://search.cpan.org/~CORION/Auth-GoogleAuthenticator-0.03"
 license="GPL"
 arch=('any')
