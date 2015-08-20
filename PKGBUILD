@@ -2,7 +2,7 @@
 
 pkgname=proovread
 pkgver=2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="large-scale high accuracy PacBio correction through iterative short read consensus"
 arch=('i686' 'x86_64')
 url="https://github.com/BioInf-Wuerzburg/proovread"
@@ -21,6 +21,13 @@ prepare() {
       -e "s|'shrimp-path' => \$RealBin.'/../util/shrimp-2.2.3/'|'shrimp-path' => ''|" \
       -e "s|'blasr-path' => \$RealBin.'/../util/blasr-1.3.1/'|'blasr-path' => ''|" \
       -i proovread.cfg
+
+  sed -e 's|my $cfg_core_file = "$RealBin/../proovread.cfg";|my $cfg_core_file = "/usr/share/proovread/proovread.cfg";|' \
+      -e 's|my $cfg_core_file = "../proovread.cfg";|my $cfg_core_file = "/usr/share/proovread/proovread.cfg";|' \
+      -i bin/bam2cns \
+         bin/proovread \
+         bin/sam2cns \
+         bin/test_cfg.pl
 }
 
 build() {
@@ -28,6 +35,14 @@ build() {
 
   make
 }
+
+# check() {
+#   cd $srcdir/$pkgname/t
+
+#   for testfile in *.t ; do
+#     perl $testfile
+#   done
+# }
 
 package() {
   cd $srcdir/$pkgname
