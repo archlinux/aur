@@ -1,0 +1,12 @@
+pkgbase = lib_mysqludf_sys
+	pkgdesc = User-defined functions for interacting with OS from MySQL
+	pkgver = 1.87fda59
+	pkgrel = 1
+	url = https://github.com/mysqludf/lib_mysqludf_sys
+	arch = any
+	license = GPL
+	source = git+https://github.com/mysqludf/lib_mysqludf_sys
+	md5sums = SKIP
+
+pkgname = lib_mysqludf_sys
+
