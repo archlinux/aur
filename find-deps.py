@@ -9,6 +9,7 @@ on dynamically linked libraries.
 """
 
 import sys
+import os
 import subprocess
 import re
 
@@ -23,6 +24,7 @@ def subprocess_get_lines(args, fail_okay=False):
     return output.decode().splitlines()
 
 # Get the filenames of the libs we need
+del os.environ['LD_LIBRARY_PATH'], os.environ['LD_PRELOAD'] # otherwise fakeroot will interfere
 ldd_output = subprocess_get_lines(['ldd'] + sys.argv[1:])
 regex = re.compile(r' => (.*) \(0x[0-9a-f]+\)$')
 libs = set(match.group(1) for match in map(regex.search, ldd_output) if match)
@@ -32,9 +34,6 @@ deps = set(subprocess_get_lines(
     ['pacman', '--query', '--owns', '--quiet'] + list(libs),
     fail_okay=True
 ))
-
-# fakeroot will be linked when building with makepkg, but isn't really needed
-deps.discard('fakeroot')
 
 # Remove redundant dependencies
 needed = set(deps)

@@ -11,7 +11,7 @@
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.9.2_955_gf72028d
+pkgver=0.9.2_1355_gb144da6
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64')
@@ -28,9 +28,9 @@ install=mpv.install
 source=('git+https://github.com/mpv-player/mpv'
         'find-deps.py')
 md5sums=('SKIP'
-         'ddbaa32dbb359220e9f62b925152c015')
+         'ffb774b13decbefc62908dda0332046b')
 sha256sums=('SKIP'
-            '9b0a338b4621c5d0d101009b0195a801e8e773811ec3a47dbf1cc339e9f16e99')
+            'ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -70,6 +70,8 @@ package() {
           "$pkgdir"/usr/share/doc/mpv
 
   # Update dependencies automatically based on dynamic libraries
-  depends=("${_undetected_depends[@]}"
-           $("$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
+  _detected_depends=($("$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
+  echo 'Auto-detected dependencies:'
+  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
+  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
