@@ -1,14 +1,14 @@
 # Maintainer: tritonas00 <tritonas00@gmail.com>
 pkgname=system-tar-and-restore
 pkgver=4.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Backup and Restore your system using tar or Transfer it with rsync'
 arch=('any')
 license=('GPL')
 depends=('rsync' 'wget')
 optdepends=('dialog: Ncurses interface support' 'grub: Grub support' 'dosfstools: UEFI support' 'efibootmgr: UEFI support'
-                          'syslinux: Syslinux support' 'gptfdisk: GPT with Syslinux support' 'pigz: multicore compression' 'pbzip2: multicore compression'
-                          'pxz: multicore compression' 'gtkdialog: GUI wrapper')
+            'syslinux: Syslinux support' 'gptfdisk: GPT with Syslinux support' 'pigz: multicore compression' 'pbzip2: multicore compression'
+            'pxz: multicore compression' 'gtkdialog: GUI wrapper')
 url="https://github.com/tritonas00/system-tar-and-restore"
 source=("https://github.com/tritonas00/system-tar-and-restore/archive/$pkgver.tar.gz"
         "readme.install")
