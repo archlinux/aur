@@ -5,9 +5,9 @@
 _appname_=vlc
 pkgname=${_appname_}-nightly
 pkgver=3.0.0
-_snapshot_=20150706-0829
-pkgrel=5
-pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly GIT snapshot"
+_snapshot_=20150817-0534
+pkgrel=6
+pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
 arch=("i686" "x86_64")
 url="http://www.videolan.org/vlc/"
 license=("LGPL2.1" "GPL2")
@@ -104,4 +104,4 @@ package() {
 	done
 }
 
-sha1sums=('efc7e8030b177ab6d1758eaf732c2199598a9e80')
+sha1sums=('da59486b28eaa158991dcf85580915adf48b1ccd')
