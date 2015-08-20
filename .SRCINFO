@@ -1,0 +1,13 @@
+pkgbase = mswatch
+	pkgdesc = A utility to watch mailstores for changes and initiate mailbox syncs
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://mswatch.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	source = http://downloads.sourceforge.net/mswatch/mswatch-1.2.0.tar.gz
+	sha256sums = 2623514442237e11c91a06ab406d9594669ddb70fd1d55b84371ea613e8ac1a7
+
+pkgname = mswatch
+
