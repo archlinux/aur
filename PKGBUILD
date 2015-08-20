@@ -1,14 +1,14 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=firefox-extension-privacybadger
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Privacy Badger blocks spying ads and invisible trackers."
 license=('GPL3')
 arch=('any')
 url="https://www.eff.org/privacybadger"
 depends=("firefox")
 source=("https://www.eff.org/files/privacy-badger-latest.xpi")
-sha256sums=('3495dc439a96c9f2067654527de5e111f1da3427d48334024246413fbf49d5d6')
+sha256sums=('d94e072469cff621afdbae1d7e6a8ff578564906d1595dc93f7d3c629df1f92d')
 
 package() {
   cd $srcdir
