@@ -3,8 +3,8 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 
 pkgname=gmusicbrowser
-pkgver=1.1.14
-pkgrel=3
+pkgver=1.1.15
+pkgrel=1
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
@@ -15,13 +15,14 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'mpg321: mp3 support for the ALSA backend'
             'vorbis-tools: vorbis support for the ALSA backend'
             'mplayer: enables the mplayer backend'
+            'mpv: enables the mpv backend'
 	    'gstreamer: enables the gstreamer backend'
             'perl-glib-object-introspection: enables the gstreamer backend'
             'gst-plugins-base: vorbis support for the gstreamer backend' 
             'gst-plugins-good: flac support for the gstreamer backend'
             'gst-plugins-bad: mpc support for the gstreamer backend'
             'gst-plugins-ugly: mp3 support for the gstreamer backend'
-            'perl-gstreamer: enables the gstreamer0.10 backend'
+            'perl-gstreamer: enables the old gstreamer0.10 backend'
             'gstreamer0.10-base: vorbis support for the gstreamer0.10 backend' 
             'gstreamer0.10-good-plugins: flac support for the gstreamer0.10 backend'
             'gstreamer0.10-bad-plugins: mpc support for the gstreamer0.10 backend'
@@ -38,7 +39,7 @@ conflicts=('gmusicbrowser-devel' 'gmusicbrowser-development' 'gmusicbrowser-git'
 options=('!libtool')
 install=$pkgname.install
 source=($url/download/$pkgname-$pkgver.tar.gz)
-md5sums=('8eb2d3f22e0734a7f5efbf4f0b2bd71e')
+md5sums=('4a16dcbe369d4b3cb78fb1a6967a60b3')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -46,8 +47,5 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   # put some images in sane locations
-  install -Dm644 pix/trayicon.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/gmusicbrowser.png
-  install -Dm644 pix/gmusicbrowser32x32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/gmusicbrowser.png
-  install -Dm644 pix/gmusicbrowser.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/gmusicbrowser.png
-  install -Dm644 pix/gmusicbrowser.png "$pkgdir"/usr/share/pixmaps/gmusicbrowser.png
+  install -Dm644 pix/gmusicbrowser.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/gmusicbrowser.svg
 }

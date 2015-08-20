@@ -1,7 +1,7 @@
 pkgbase = gmusicbrowser
 	pkgdesc = A customizable open-source jukebox for large collections
-	pkgver = 1.1.14
-	pkgrel = 3
+	pkgver = 1.1.15
+	pkgrel = 1
 	url = http://gmusicbrowser.org
 	install = gmusicbrowser.install
 	arch = any
@@ -13,13 +13,14 @@ pkgbase = gmusicbrowser
 	optdepends = mpg321: mp3 support for the ALSA backend
 	optdepends = vorbis-tools: vorbis support for the ALSA backend
 	optdepends = mplayer: enables the mplayer backend
+	optdepends = mpv: enables the mpv backend
 	optdepends = gstreamer: enables the gstreamer backend
 	optdepends = perl-glib-object-introspection: enables the gstreamer backend
 	optdepends = gst-plugins-base: vorbis support for the gstreamer backend
 	optdepends = gst-plugins-good: flac support for the gstreamer backend
 	optdepends = gst-plugins-bad: mpc support for the gstreamer backend
 	optdepends = gst-plugins-ugly: mp3 support for the gstreamer backend
-	optdepends = perl-gstreamer: enables the gstreamer0.10 backend
+	optdepends = perl-gstreamer: enables the old gstreamer0.10 backend
 	optdepends = gstreamer0.10-base: vorbis support for the gstreamer0.10 backend
 	optdepends = gstreamer0.10-good-plugins: flac support for the gstreamer0.10 backend
 	optdepends = gstreamer0.10-bad-plugins: mpc support for the gstreamer0.10 backend
@@ -38,8 +39,8 @@ pkgbase = gmusicbrowser
 	conflicts = gmusicbrowser-shimmer
 	conflicts = gmusicbrowser-shimmer-git
 	options = !libtool
-	source = http://gmusicbrowser.org/download/gmusicbrowser-1.1.14.tar.gz
-	md5sums = 8eb2d3f22e0734a7f5efbf4f0b2bd71e
+	source = http://gmusicbrowser.org/download/gmusicbrowser-1.1.15.tar.gz
+	md5sums = 4a16dcbe369d4b3cb78fb1a6967a60b3
 
 pkgname = gmusicbrowser
 
