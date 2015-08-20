@@ -1,8 +1,8 @@
 pkgbase=virtualbox-modules-e531
 pkgname=('virtualbox-host-modules-e531' 'virtualbox-guest-modules-e531')
 groups=('ThinkPad-E531')
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
