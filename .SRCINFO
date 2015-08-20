@@ -1,0 +1,21 @@
+pkgbase = perl-url-encode-xs
+	pkgdesc = XS implementation of URL::Encode
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/URL-Encode-XS
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-test-simple>=0.88
+	depends = perl>=5.8.1
+	depends = perl-xsloader>=0
+	depends = perl-url-encode>=0.03
+	depends = perl-carp>=0
+	depends = perl-exporter>=0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/URL-Encode-XS-0.03.tar.gz
+	sha256sums = d44f416bd3e58e3b3366ab420705da02c7118fc848a97ce089366ea0461fa823
+
+pkgname = perl-url-encode-xs
+
