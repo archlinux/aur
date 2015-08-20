@@ -2,8 +2,8 @@
 
 pkgname=hunspell-ru-aot
 _realname=dict_ru_ru-aot
-pkgver=0.3.9
-_pkgver=0-3-9
+pkgver=0.4.0
+_pkgver=0-4-0
 pkgrel=1
 pkgdesc="Russian spellcheck dictionary. Based on works of AOT.ru group. Dictionary «only yo»."
 provides=('hunspell-ru')
@@ -15,7 +15,7 @@ license=('LGPL')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=(http://extensions.libreoffice.org/extension-center/russian-spellcheck-dictionary.-based-on-works-of-aot-group/pscreleasefolder.2011-09-06.6209385965/${pkgver}/${_realname}-${_pkgver}.oxt)
 #source=(http://extensions.libreoffice.org/extension-center/russian-dictionary-pack/releases/0.3.8/dict_pack_ru-aot-0-3-8.oxt)
-md5sums=('1c5e5fb1dc441da3b132d22bb067de79')
+md5sums=('01f7f7cb8975029dca39cc144b75022c')
 
 build() {
   /bin/true
