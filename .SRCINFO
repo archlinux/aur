@@ -1,17 +1,30 @@
 pkgbase = python-tweepy
 	pkgdesc = A Python library for accessing the entire Twitter API
-	pkgver = 3.3.0
-	pkgrel = 2
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = http://www.tweepy.org
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-pip
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	makedepends = python-requests
+	makedepends = python-requests-oauthlib
+	makedepends = python-six
+	makedepends = python2-requests
+	makedepends = python2-requests-oauthlib
+	makedepends = python2-six
+	source = tweepy-3.4.0.tar.gz::https://github.com/tweepy/tweepy/archive/v3.4.0.tar.gz
+	sha512sums = 4d4fc25eaf765562810c4b874e6db3c7de892d183df2cc97bd02aa1938e0c2f5a53d8e152ab8481d7669434254126b896bc2eba3e8912d3a313f5b7855e4f576
+
+pkgname = python-tweepy
 	depends = python-requests
 	depends = python-requests-oauthlib
 	depends = python-six
-	source = tweepy-3.3.0.tar.gz::https://github.com/tweepy/tweepy/archive/v3.3.0.tar.gz
-	sha512sums = f88cfc6abc95295930947ca4cd86717bac93b1a2b976048e7c9c606da314ca953d849b176f27f46ca4f46db6165d0dbdb45858921bcdab3f3afcd18fcf2bdc40
 
-pkgname = python-tweepy
+pkgname = python2-tweepy
+	depends = python2-requests
+	depends = python2-requests-oauthlib
+	depends = python2-six
 
