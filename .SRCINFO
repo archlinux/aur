@@ -1,0 +1,20 @@
+pkgbase = perl-math-random-isaac-xs
+	pkgdesc = C implementation of the ISAAC PRNG algorithm
+	pkgver = 1.004
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-Random-ISAAC-XS
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-extutils-parsexs>=0
+	makedepends = perl-module-build>=0.2808_01
+	makedepends = perl-extutils-cbuilder>=0
+	makedepends = perl-test-nowarnings>=0.084
+	makedepends = perl-test-simple>=0.62
+	depends = perl>=5.6
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAWNSY/Math-Random-ISAAC-XS-1.004.tar.gz
+	sha256sums = 9af790eb92d1c6330d33c6daa8decf8a9c5dcc87b81779d6b12e14b931c3b87b
+
+pkgname = perl-math-random-isaac-xs
+
