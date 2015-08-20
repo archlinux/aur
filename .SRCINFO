@@ -1,0 +1,29 @@
+pkgbase = perl-pod-elemental-perlmunger
+	pkgdesc = a thing that takes a string of Perl and rewrites its documentation
+	pkgver = 0.200002
+	pkgrel = 1
+	url = https://metacpan.org/release/Pod-Elemental-PerlMunger
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-test-simple>=0.96
+	checkdepends = perl-pod-elemental>=0.103000
+	checkdepends = perl-version>=0
+	checkdepends = perl-moose>=0
+	checkdepends = perl-pathtools>=0
+	checkdepends = perl-extutils-makemaker>=0
+	checkdepends = perl-scalar-list-utils>=0
+	depends = perl
+	depends = perl-encode>=0
+	depends = perl-pod-elemental>=0.103000
+	depends = perl-moose>=0
+	depends = perl-ppi>=0
+	depends = perl-params-util>=0
+	depends = perl-list-allutils>=0
+	depends = perl-namespace-autoclean>=0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Elemental-PerlMunger-0.200002.tar.gz
+	sha256sums = 10d4adaaf293574907f1317e4b6cf992a520dee0bdcbd4d25137f96cbc80d3d4
+
+pkgname = perl-pod-elemental-perlmunger
+
