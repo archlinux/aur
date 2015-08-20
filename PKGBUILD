@@ -3,7 +3,7 @@
 
 pkgname=python2-ftdi
 pkgver=0.20
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings to libftdi"
 arch=("i686" "x86_64")
 url="http://www.intra2net.com/en/developer/libftdi/download.php"
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+  cd "${srcdir}/libftdi-${pkgver}"
   ./configure --prefix=/usr/ --enable-python-binding --without-examples
   make
 }
