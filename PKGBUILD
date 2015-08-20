@@ -1,7 +1,7 @@
 # Maintainer: Dario Giovannetti <dev at dariogiovannetti dot net>
 
 pkgname='python-configfile'
-pkgver='1.2.0'
+pkgver='1.2.1'
 pkgrel=1
 pkgdesc="Python library for dynamically parsing and editing configuration files with support for subsections."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://kynikos.github.io/lib.py.configfile"
 license=('GPL3')
 depends=('python')
 source=("http://downloads.sourceforge.net/project/kynikos/lib.py.configfile/$pkgname-$pkgver.tar.bz2")
-sha256sums=('b7f3f2fd7e02cc9bdf92e7820faf5507dc95559b760ce5f224726cc0834087c4')
+sha256sums=('a9d1d6fe4a59a2b45e020b61c86f6119650dd715733e890df63a18694414c726')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
