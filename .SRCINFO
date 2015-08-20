@@ -1,0 +1,20 @@
+pkgbase = netbsd-rump-git
+	pkgdesc = The NetBSD Rump kernel
+	pkgver = 1294.ad55254
+	pkgrel = 1
+	url = http://rumpkernel.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = netbsd-rump
+	conflicts = netbsd-rump
+	options = !emptydirs
+	source = buildrump-scripts::git://github.com/rumpkernel/buildrump.sh
+	source = rump-src::git://github.com/rumpkernel/src-netbsd#branch=buildrump-src
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = netbsd-rump-git
+
