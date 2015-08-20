@@ -1,4 +1,4 @@
-pkgbase = python-wordnik
+pkgbase = python2-wordnik
 	pkgdesc = Wordnik API for Python
 	pkgver = 2.1.3
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = python-wordnik
 	source = https://pypi.python.org/packages/source/w/wordnik/wordnik-2.1.3.tar.gz
 	md5sums = b64ff6a8baf16ba3c819ae36fc16917c
 
-pkgname = python-wordnik
+pkgname = python2-wordnik
 
