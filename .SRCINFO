@@ -1,7 +1,7 @@
 pkgbase = openhrp3
 	pkgdesc = Open Architecture Human-centered Robotics Platform
 	pkgver = 3.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fkanehiro/openhrp3
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = openhrp3
 	depends = collada-dom
 	depends = openrtm-aist
 	depends = uuid
+	depends = python2
 	source = https://github.com/fkanehiro/openhrp3/archive/3.1.8.tar.gz
 	sha256sums = 100dd486e8a3504c242835fc44f2e6830c78360623b98f981b9d2667949ffccf
 
