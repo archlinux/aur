@@ -1,0 +1,13 @@
+pkgbase = udt
+	pkgdesc = A protocol built on top of UDP by adding reliability control and congestion control.
+	pkgver = 4.11
+	pkgrel = 1
+	url = http://udt.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://downloads.sourceforge.net/udt/udt.sdk.4.11.tar.gz
+	md5sums = 30b1556e5cf0afe179e40a53a1371b08
+
+pkgname = udt
+
