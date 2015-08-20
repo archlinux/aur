@@ -1,3 +1,13 @@
+From 66da8f60d057527fe74ff5790973d2865c980efb Mon Sep 17 00:00:00 2001
+From: Mark Haines <mark.haines@matrix.org>
+Date: Mon, 15 Jun 2015 16:27:20 +0100
+Subject: [PATCH] Bump the version of twisted needed for setup_requires to
+ 15.2.1
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/setup.py b/setup.py
 index f992959..c790484 100755
 --- a/setup.py
@@ -11,3 +21,6 @@ index f992959..c790484 100755
          "setuptools_trial",
          "mock"
      ],
+-- 
+2.5.0
+

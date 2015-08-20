@@ -1,24 +1,28 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse
-_pkgver=0.9.2-r2
+_pkgver=0.9.4-rc1
 pkgver="${_pkgver//-/.}"
 pkgrel=4
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
 arch=('any')
 url="https://github.com/matrix-org/synapse"
-depends=('python2-syutil' 'python2-twisted=15.2.1' 'python2-service-identity'
+depends=('python2-syutil' 'python2-twisted>=15.1.0' 'python2-service-identity'
          'python2-pyopenssl' 'python2-yaml' 'python2-pyasn1' 'python2-pynacl'
          'python2-daemonize' 'python2-py-bcrypt' 'python2-frozendict'
 		 'python2-pillow' 'python2-pydenticon' 'python2-ujson'
 		 'python2-matrix-angular-sdk')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 source=("git://github.com/matrix-org/synapse#tag=v$_pkgver"
-        "twisted-15.2.1-compat.patch"
+        "0001-Use-Twisted-15.2.1-Use-Agent.usingEndpointFactory-ra.patch"
+        "0002-Bump-the-version-of-twisted-needed-for-setup_require.patch"
+        "0003-Depend-on-Twisted-15.1-rather-than-pining-to-a-parti.patch"
 		'sysusers-synapse.conf')
 md5sums=('SKIP'
-         '32b1c21157531ff514a4a67b98ee80cc'
+         'a06775e3e321834b4e7ef157013c9bf9'
+         'efc4ca16c9b0d83ba164fdf3baee81b4'
+         '8ead3a9fc2216c0970852aa3d296e712'
          'dfbffdd307c5559357a2ff51a1906700')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
@@ -27,8 +31,9 @@ prepare() {
 	cd "synapse"
 
 	# be compatible with python2-twisted 15.2.1 in arch repos
-	git pull --no-edit origin pull/173/head
-	git apply "$srcdir/twisted-15.2.1-compat.patch"
+    git am -3 < "$srcdir/0001-Use-Twisted-15.2.1-Use-Agent.usingEndpointFactory-ra.patch"
+    git am -3 < "$srcdir/0002-Bump-the-version-of-twisted-needed-for-setup_require.patch"
+    git am -3 < "$srcdir/0003-Depend-on-Twisted-15.1-rather-than-pining-to-a-parti.patch"
 }
 
 build() {
