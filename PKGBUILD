@@ -9,7 +9,7 @@ license=('custom')
 options=('!strip')
 source=("http://dl.google.com/android/repository/google_play_services_${_build}_${pkgver}.zip" "source.properties")
 md5sums=('3354f1f10af385732c00326a33042251'
-         '9a7a2458bb13ee3bb0fdfedb7de34f9c')
+         '3bc21395b7a8182cd8442a0b4ceb02ac')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/extras/google/"
