@@ -1,0 +1,31 @@
+pkgbase = hime-git
+	pkgdesc = A GTK2+/GTK3+ based universal input method platform
+	pkgver = 1020.5046bf6
+	pkgrel = 1
+	url = http://hime-ime.github.io/
+	install = hime-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	license = FDL
+	license = GPL2
+	makedepends = git
+	makedepends = gettext
+	makedepends = gtk3
+	makedepends = qt4
+	makedepends = anthy
+	makedepends = libchewing
+	depends = gtk2
+	depends = libxtst
+	optdepends = gtk3: enable gtk3 im module
+	optdepends = qt4: enable qt4 im module
+	optdepends = anthy: enable Anthy input method
+	optdepends = libchewing: enable Chewing input method
+	provides = hime
+	conflicts = hime
+	options = !strip
+	source = hime::git+https://github.com/hime-ime/hime.git
+	sha512sums = SKIP
+
+pkgname = hime-git
+

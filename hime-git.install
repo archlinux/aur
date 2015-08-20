@@ -1,0 +1,14 @@
+post_install() {
+	echo -n "updating gtk immodules... "
+	[ -x /usr/bin/gtk-query-immodules-2.0 ] && /usr/bin/gtk-query-immodules-2.0 --update-cache> /etc/gtk-2.0/gtk.immodules
+	[ -x /usr/bin/gtk-query-immodules-3.0 ] && /usr/bin/gtk-query-immodules-3.0 --update-cache> `pkg-config --variable=libdir gtk+-3.0`/gtk-3.0/`pkg-config --variable=gtk_binary_version gtk+-3.0`/immodules.cache
+	echo "done."
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
