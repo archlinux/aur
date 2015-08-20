@@ -1,7 +1,7 @@
 pkgbase = gmusicbrowser
 	pkgdesc = A customizable open-source jukebox for large collections
 	pkgver = 1.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gmusicbrowser.org
 	install = gmusicbrowser.install
 	arch = any

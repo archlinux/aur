@@ -4,7 +4,7 @@
 
 pkgname=gmusicbrowser
 pkgver=1.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
@@ -45,7 +45,4 @@ package() {
   cd "$srcdir"/$pkgname-$pkgver
 
   make DESTDIR="$pkgdir/" install
-
-  # put some images in sane locations
-  install -Dm644 pix/gmusicbrowser.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/gmusicbrowser.svg
 }
