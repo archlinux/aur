@@ -11,5 +11,8 @@ echo 'The sample configuration file can be found at /usr/share/system-tar-and-re
 echo
 echo 'RESTORE/TRANSFER'
 echo 'Run as root: restore.sh'
+echo
+echo 'GUI'
+echo 'Run as root: star-gui.sh'
 echo '--------------------------------------------------------------------------'
 }
