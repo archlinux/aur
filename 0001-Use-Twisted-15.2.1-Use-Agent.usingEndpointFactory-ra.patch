@@ -1,16 +1,16 @@
-From 0eb6bb77681c0ed56b6052aa3f79051140b11c69 Mon Sep 17 00:00:00 2001
+From 941b241d0a3247ddbe0c4412011e893be4481273 Mon Sep 17 00:00:00 2001
 From: Mark Haines <mark.haines@matrix.org>
 Date: Mon, 1 Jun 2015 10:51:50 +0100
-Subject: [PATCH] Use Twisted-15.2.1, Use Agent.usingEndpointFactory rather
+Subject: [PATCH 1/3] Use Twisted-15.2.1, Use Agent.usingEndpointFactory rather
  than implement our own Agent
 
 ---
- synapse/http/matrixfederationclient.py | 75 ++++++++++------------------------
- synapse/python_dependencies.py         |  4 +-
- 2 files changed, 24 insertions(+), 55 deletions(-)
+ synapse/http/matrixfederationclient.py | 75 +++++++++++-----------------------
+ synapse/python_dependencies.py         |  2 +-
+ 2 files changed, 25 insertions(+), 52 deletions(-)
 
 diff --git a/synapse/http/matrixfederationclient.py b/synapse/http/matrixfederationclient.py
-index ed47e70..07167de 100644
+index ed47e70..c5026ac 100644
 --- a/synapse/http/matrixfederationclient.py
 +++ b/synapse/http/matrixfederationclient.py
 @@ -16,7 +16,7 @@
@@ -105,16 +105,18 @@ index ed47e70..07167de 100644
          )
  
          txn_id = "%s-O-%s" % (method, self._next_id)
-@@ -139,26 +122,18 @@ class MatrixFederationHttpClient(object):
+@@ -139,8 +122,8 @@ class MatrixFederationHttpClient(object):
          # (once we have reliable transactions in place)
          retries_left = 5
  
 -        endpoint = preserve_context_over_fn(
 -            self._getEndpoint, reactor, destination
--        )
--
++        http_url_bytes = urlparse.urlunparse(
++            ("", "", path_bytes, param_bytes, query_bytes, "")
+         )
+ 
          log_result = None
-         try:
+@@ -148,17 +131,13 @@ class MatrixFederationHttpClient(object):
              while True:
                  producer = None
                  if body_callback:
@@ -134,7 +136,7 @@ index ed47e70..07167de 100644
                              Headers(headers_dict),
                              producer
                          )
-@@ -452,12 +427,6 @@ class MatrixFederationHttpClient(object):
+@@ -452,12 +431,6 @@ class MatrixFederationHttpClient(object):
  
          defer.returnValue((length, headers))
  
@@ -148,16 +150,14 @@ index ed47e70..07167de 100644
  class _ReadBodyToFileProtocol(protocol.Protocol):
      def __init__(self, stream, deferred, max_size):
 diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index f9e59dd..12af870 100644
+index f9e59dd..c76e16c 100644
 --- a/synapse/python_dependencies.py
 +++ b/synapse/python_dependencies.py
-@@ -18,8 +18,8 @@ from distutils.version import LooseVersion
- logger = logging.getLogger(__name__)
+@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
  
  REQUIREMENTS = {
--    "syutil>=0.0.7": ["syutil>=0.0.7"],
+     "syutil>=0.0.7": ["syutil>=0.0.7"],
 -    "Twisted==14.0.2": ["twisted==14.0.2"],
-+    "syutil>=0.0.6": ["syutil>=0.0.6"],
 +    "Twisted==15.2.1": ["twisted==15.2.1"],
      "service_identity>=1.0.0": ["service_identity>=1.0.0"],
      "pyopenssl>=0.14": ["OpenSSL>=0.14"],

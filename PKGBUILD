@@ -3,7 +3,7 @@
 pkgname=matrix-synapse
 _pkgver=0.9.4-rc1
 pkgver="${_pkgver//-/.}"
-pkgrel=8
+pkgrel=9
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
 arch=('any')
@@ -21,9 +21,9 @@ source=("git://github.com/matrix-org/synapse#tag=v$_pkgver"
         "0003-Depend-on-Twisted-15.1-rather-than-pining-to-a-parti.patch"
 		'sysusers-synapse.conf')
 md5sums=('SKIP'
-         '258eee41f199194a7ae3671130ebd9b1'
-         'efc4ca16c9b0d83ba164fdf3baee81b4'
-         '8ead3a9fc2216c0970852aa3d296e712'
+         '63d3cd5568ebd63473405f212ad1ab14'
+         'c93f0b301befcf7192033783986cf03d'
+         '0d99585035d9c0f652530f1744fe807b'
          'dfbffdd307c5559357a2ff51a1906700')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'

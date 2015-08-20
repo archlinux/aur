@@ -1,8 +1,8 @@
-From 9ad975962993d4e7fab897b4fe379c55535eb2ee Mon Sep 17 00:00:00 2001
+From cb3f8b27e11808cba6161cff4565045f711ba8d4 Mon Sep 17 00:00:00 2001
 From: Mark Haines <mark.haines@matrix.org>
 Date: Wed, 12 Aug 2015 17:25:13 +0100
-Subject: [PATCH] Depend on Twisted>=15.1 rather than pining to a particular
- version
+Subject: [PATCH 3/3] Depend on Twisted>=15.1 rather than pining to a
+ particular version
 
 ---
  setup.py                       | 2 +-
@@ -23,13 +23,13 @@ index c790484..16ccc0f 100755
          "mock"
      ],
 diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index 27b83de..d13877a 100644
+index c76e16c..26f86c0 100644
 --- a/synapse/python_dependencies.py
 +++ b/synapse/python_dependencies.py
 @@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
  
  REQUIREMENTS = {
-         "syutil>=0.0.6": ["syutil>=0.0.6"],
+     "syutil>=0.0.7": ["syutil>=0.0.7"],
 -    "Twisted==15.2.1": ["twisted==15.2.1"],
 +    "Twisted>=15.1.0": ["twisted>=15.1.0"],
      "service_identity>=1.0.0": ["service_identity>=1.0.0"],

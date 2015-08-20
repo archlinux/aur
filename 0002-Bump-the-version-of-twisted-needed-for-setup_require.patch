@@ -1,7 +1,7 @@
-From 66da8f60d057527fe74ff5790973d2865c980efb Mon Sep 17 00:00:00 2001
+From af0ed680ed58253ee379a102e214cab966e955dd Mon Sep 17 00:00:00 2001
 From: Mark Haines <mark.haines@matrix.org>
 Date: Mon, 15 Jun 2015 16:27:20 +0100
-Subject: [PATCH] Bump the version of twisted needed for setup_requires to
+Subject: [PATCH 2/3] Bump the version of twisted needed for setup_requires to
  15.2.1
 
 ---
