@@ -1,0 +1,23 @@
+pkgbase = dwm-pango
+	pkgdesc = A dynamic window manager for X - with Pango support
+	pkgver = 6.0
+	pkgrel = 4
+	url = http://dwm.suckless.org
+	install = dwm.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libxinerama
+	depends = pango
+	provides = dwm
+	conflicts = dwm
+	options = zipman
+	source = http://dl.suckless.org/dwm/dwm-6.0.tar.gz
+	source = dwm-6.0-pango.patch
+	source = config.h
+	sha256sums = b2b9483de69259eeea56844899bb2385158d3e79a42d82b10c142099fc8eeb56
+	sha256sums = 44c0208f75e6cf908a584eabe13df57c162d2675b267e672445711a7138359bc
+	sha256sums = aa9910cfe973d82428dac7da8772fa9b67c94e8ad577d6e088ade4aea2690d54
+
+pkgname = dwm-pango
+
