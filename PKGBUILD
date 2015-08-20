@@ -1,17 +1,18 @@
 # Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
 pkgname=binnavi-git
 pkgver=0.0.590.8512d7c
-pkgrel=1
+pkgrel=2
 pkgdesc="BinNavi is a binary analysis IDE that allows to inspect, navigate, edit and annotate control flow graphs and call graphs of disassembled code"
 url="https://github.com/google/binnavi"
 arch=('any')
 license=('Apache')
-depends=('java-environment>=7')
+depends=('java-environment>=7' 'postgresql')
 makedepends=('git' 'maven' 'apache-ant')
 provides=('binnavi')
 conflicts=('binnavi')
-source=(${pkgname}::https://github.com/google/binnavi.git)
-sha512sums=('SKIP')
+source=(git+https://github.com/google/binnavi.git 'binnavi')
+sha512sums=('SKIP'
+            'bb274ca29a994ef8b98aa77e0be745e297bd2f7e65dd394594169ffec3910b4dd4982e353202c6b201472632a3f7b16bd7d905b7006e21d76b7299b78fc7f390')
 
 pkgver() {
   cd ${pkgname}
@@ -26,9 +27,9 @@ build() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt/binnavi"
-  cd "${srcdir}/$pkgname-$pkgver/target/" 
-  mv * "${pkgdir}/opt/binnavi/"  
+  mkdir -p "${pkgdir}/usr/share/java/binnavi"
+  cd "${srcdir}/$pkgname-$pkgver/target/"
+  mv * "${pkgdir}/usr/share/java/binnavi/"
+  install -D -m755 ${srcdir}/binnavi ${pkgdir}/usr/bin/binnavi
 }
-
 # vim:set et sw=2 ts=2 tw=80:

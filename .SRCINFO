@@ -9,10 +9,13 @@ pkgbase = binnavi-git
 	makedepends = maven
 	makedepends = apache-ant
 	depends = java-environment>=7
+	depends = postgresql
 	provides = binnavi
 	conflicts = binnavi
-	source = binnavi-git::https://github.com/google/binnavi.git
+	source = git+https://github.com/google/binnavi.git
+	source = binnavi
 	sha512sums = SKIP
+	sha512sums = bb274ca29a994ef8b98aa77e0be745e297bd2f7e65dd394594169ffec3910b4dd4982e353202c6b201472632a3f7b16bd7d905b7006e21d76b7299b78fc7f390
 
 pkgname = binnavi-git
 
