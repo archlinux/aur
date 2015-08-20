@@ -1,0 +1,4 @@
+post_install() {
+    echo Now run following command as MySQL root:
+    echo mysql \< /usr/share/mysql/lib_mysqludf_sys.sql
+}

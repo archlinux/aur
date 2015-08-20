@@ -8,6 +8,7 @@ license=('GPL')
 makedepends=()
 source=(git+https://github.com/mysqludf/lib_mysqludf_sys)
 md5sums=(SKIP)
+install=(lib_mysqludf_sys.install)
 
 pkgver() {
     cd "${pkgname}"
@@ -23,5 +24,6 @@ build() {
 }
 
 package() {
-    install -Dm644 "$srcdir/$pkgname/lib_mysqludf_sys.so" "${pkgdir}/usr/bin/lib_mysqludf_sys.so"
+    install -Dm644 "$srcdir/$pkgname/lib_mysqludf_sys.so" "${pkgdir}/usr/lib/mysql/plugin/lib_mysqludf_sys.so"
+    install -Dm644 "$srcdir/$pkgname/lib_mysqludf_sys.sql" "${pkgdir}/usr/share/mysql/lib_mysqludf_sys.sql"
 }
