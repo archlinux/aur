@@ -2,7 +2,7 @@
 
 pkgname=proovread
 pkgver=2.12
-pkgrel=3
+pkgrel=4
 pkgdesc="large-scale high accuracy PacBio correction through iterative short read consensus"
 arch=('i686' 'x86_64')
 url="https://github.com/BioInf-Wuerzburg/proovread"
@@ -28,6 +28,9 @@ prepare() {
          bin/proovread \
          bin/sam2cns \
          bin/test_cfg.pl
+
+  sed -e 's|$RealBin/../sample|/usr/share/proovread/sample|' \
+      -i bin/proovread
 }
 
 build() {
@@ -49,7 +52,7 @@ package() {
 
   mkdir -p $pkgdir/usr/bin \
            $pkgdir/usr/lib/perl5/vendor_perl \
-           $pkgdir/usr/share/proovread
+           $pkgdir/usr/share/proovread/sample
 
   for file in bin/* util/SeqChunker/bin/* util/bwa/bwa-proovread ; do
     install -Dm755 $file $pkgdir/usr/bin/$(basename $file .pl)
@@ -58,4 +61,6 @@ package() {
   cp -r lib/* $pkgdir/usr/lib/perl5/vendor_perl
 
   install -Dm644 proovread.cfg $pkgdir/usr/share/proovread/proovread.cfg
+
+  cp sample/* $pkgdir/usr/share/proovread/sample
 }
