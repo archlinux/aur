@@ -1,0 +1,21 @@
+pkgbase = gopm-git
+	pkgdesc = Go Package Manager
+	pkgver = 20150820
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/gpmgo/gopm
+	changelog = gopm.changelog
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go>=1.2
+	conflicts = gopm
+	options = !strip
+	options = !emptydirs
+	source = gopm::git+https://github.com/gpmgo/gopm.git
+	sha512sums = SKIP
+
+pkgname = gopm-git
+
