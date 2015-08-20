@@ -1,0 +1,19 @@
+pkgbase = qsubber-git
+	pkgdesc = OpenSubtitles.org client for download subtiltes
+	pkgver = r8.5281b0b
+	pkgrel = 1
+	url = https://github.com/hotvic/QSubber
+	install = qsubber.install
+	arch = x86
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base
+	depends = desktop-file-utils
+	depends = xmlrpc-c
+	depends = qt5-base
+	source = qsubber-git::git+https://github.com/hotvic/QSubber.git
+	md5sums = SKIP
+
+pkgname = qsubber-git
+
