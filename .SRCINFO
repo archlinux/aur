@@ -1,0 +1,16 @@
+pkgbase = perl-cgi-deurl-xs
+	pkgdesc = Fast decoder for URL parameter strings
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/CGI-Deurl-XS
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-extutils-makemaker>=0
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/A/AT/ATHOMASON/CGI-Deurl-XS-0.08.tar.gz
+	sha256sums = 9a3c325582eab31e0ed431edd095f6f008fd734ee313bc65f582a1f3378b52a1
+
+pkgname = perl-cgi-deurl-xs
+
