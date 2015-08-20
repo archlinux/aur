@@ -23,15 +23,20 @@ build() {
   #hacking away windowsisms from the makefile...
   sed 's|SRCDIR)\\|SRCDIR)\/|g' -i "$srcdir"/watcom.mif
   cp "$srcdir"/*.h "$srcdir"/pdcurses/
-  sed 's|SRCDIR)\\|SRCDIR)\/|g' -i wccwin*.mak
-  sed 's|copy |cp |g' -i wccwin*.mak
-  sed 's|-ei -zq -wx -i=|-ei -zq -wx -fo=.obj -i=|g' -i wccwin*.mak
-  sed 's|-oneatx|-oneatx -aa -D__wargv=NULL|g' -i wccwin*.mak #not present in win headers
+  sed 's|SRCDIR)\\|SRCDIR)\/|g' -i wccwin32.mak
+  sed 's|copy |cp |g' -i wccwin32.mak
+  sed 's|-ei -zq -wx -i=|-ei -zq -wx -fo=.obj -i=|g' -i wccwin32.mak
+  sed 's|-oneatx|-oneatx -aa -D__wargv=NULL|g' -i wccwin32.mak #not present in win headers
   #sed 's|\/DPDC_WIDE|-DPDC_WIDE|g' -i wccwin*.mak
   #sed 's|\/DPDC_FORCE_UTF8|-DPDC_FORCE_UTF8|g' -i wccwin*.mak
+  #update win16 makefile
+  cat wccwin32.mak | sed 's|wcc386|wcc|g' | sed 's|win_nt|windows|g' > wccwin16.mak
   
   export PDCURSES_SRCDIR="$srcdir"
-    
+  
+  rm -f *.obj
+  
+  # compilation faliure in pdcclip.c
   #msg "build for Win16..." 
   #export INCLUDE=$WATCOM/h:$WATCOM/h/win
   #wmake -f wccwin16.mak pdcurses.lib
@@ -51,7 +56,8 @@ package() {
   chmod -R 755 "$pkgdir/opt"
   install -m644 pdcurses.lib "${pkgdir}${WATCOM}"/lib386/nt/
   cp "${pkgdir}${WATCOM}"/lib386/nt/pdcurses.lib "${pkgdir}${WATCOM}"/lib386/nt/panel.lib
-  #install -m644 curses.lib16 ${pkgdir}${WATCOM}/lib286/win/{pdcurses,panel}.lib
+  #install -m644 curses.lib16 "${pkgdir}${WATCOM}"/lib286/win/pdcurses.lib
+  #cp "${pkgdir}${WATCOM}"/lib286/win/pdcurses.lib "${pkgdir}${WATCOM}"/lib286/win/panel.lib
   install -m644 "$srcdir"/*.h "${pkgdir}${WATCOM}"/h/win/
   install -m644 "$srcdir"/*.h "${pkgdir}${WATCOM}"/h/nt/
 }
