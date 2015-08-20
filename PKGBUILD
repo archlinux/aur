@@ -6,7 +6,7 @@
 
 pkgname=nvidia-rt
 pkgver=352.30
-pkgrel=2
+pkgrel=3
 
 pkgdesc="NVIDIA drivers for linux-rt."
 arch=('i686' 'x86_64')
