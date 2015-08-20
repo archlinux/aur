@@ -1,6 +1,6 @@
 pkgbase = dbvis
 	pkgdesc = DbVisualizer free - The Universal Database Tool
-	pkgver = 9.2.8
+	pkgver = 9.2.9
 	pkgrel = 1
 	url = http://www.dbvis.com/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = dbvis
 	makedepends = grep
 	makedepends = unzip
 	depends = java-runtime
-	source = http://www.dbvis.com/product_download/dbvis-9.2.8/media/dbvis_unix_9_2_8.tar.gz
-	sha256sums = 87f0952a1489299631f98059148d434aef74b045cd1664f880ac50ae2a07a38d
+	source = http://www.dbvis.com/product_download/dbvis-9.2.9/media/dbvis_unix_9_2_9.tar.gz
+	sha256sums = bab0d841e1f8d3735a4cada779b6d031e9cd4cdb10560f5be91b9e1596de6794
 
 pkgname = dbvis
 
