@@ -1,6 +1,6 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 
-pkgname=python-wordnik
+pkgname=python2-wordnik
 pkgver=2.1.3
 pkgrel=1
 pkgdesc="Wordnik API for Python"
