@@ -1,6 +1,6 @@
 # Maintainer: Peter Krauß <ptrxyz@gmail.com>
 
-pkgname=trayer-srg-git
+pkgname=trayer-srg
 _gitname=trayer-srg
 pkgver=r106.fcb92d6
 pkgrel=1
