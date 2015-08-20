@@ -12,7 +12,7 @@ depends=('java-runtime')
 makedepends=()
 optdepends=()
 backup=()
-source=('http://hivelocity.dl.sourceforge.net/project/neotextureedit/0.6/0.6.4/NeoTextureEdit_0.6.4.tar.gz' 'neotextureedit.desktop' 'neotextureedit' 'neotextureedit.png')
+source=('http://iweb.dl.sourceforge.net/project/neotextureedit/0.6/0.6.4/NeoTextureEdit_0.6.4.tar.gz' 'neotextureedit.desktop' 'neotextureedit' 'neotextureedit.png')
 md5sums=('fca10a15260f8435291353cc77a92a11' 'd8f09181b3f103b3b3693cad827d11ff' '328343739771327d9c58069702aa3518' '7503e1364f05a7c8cc6ee63b8a3c0826')
 
 package() {
