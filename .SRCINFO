@@ -1,13 +1,13 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = libgaminggear=0.10.0
+	depends = libgaminggear=0.11.0
 	depends = libcanberra
 	depends = gtk2
 	depends = libnotify>=0.7.0
@@ -16,9 +16,9 @@ pkgbase = roccat-tools
 	depends = hicolor-icon-theme
 	depends = libgudev
 	optdepends = kmod-roccat: Adds support for the old kone device.
-	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.5.0.tar.bz2
+	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.6.0.tar.bz2
 	source = udev-compilation-error-fix.patch
-	md5sums = 056ca3872c10c9cbb859517f235e7f0f
+	md5sums = c602eb0adb10fec14fc2dac52287db63
 	md5sums = 414d6306796c659a3adc86ef213e3569
 
 pkgname = roccat-tools-common
@@ -98,5 +98,9 @@ pkgname = roccat-tools-savu
 
 pkgname = roccat-tools-tyon
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT Tyon devices
+	depends = roccat-tools-common
+
+pkgname = roccat-tools-nyth
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Nyth devices
 	depends = roccat-tools-common
 

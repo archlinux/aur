@@ -21,22 +21,23 @@ pkgname=('roccat-tools-common'
          'roccat-tools-ryosmk'
          'roccat-tools-ryostkl'
          'roccat-tools-savu'
-         'roccat-tools-tyon')
+         'roccat-tools-tyon'
+         'roccat-tools-nyth')
 pkgbase=roccat-tools
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear=0.10.1' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev')
+depends=('libgaminggear=0.11.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
 conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
         'udev-compilation-error-fix.patch')
 
-md5sums=('056ca3872c10c9cbb859517f235e7f0f'
+md5sums=('c602eb0adb10fec14fc2dac52287db63'
          '414d6306796c659a3adc86ef213e3569')
 
 build() {
@@ -232,4 +233,14 @@ package_roccat-tools-tyon() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-tyon.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-tyon.rules
+}
+
+package_roccat-tools-nyth() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Nyth devices'
+  depends=('roccat-tools-common')
+
+  cd "$srcdir/$pkgbase-$pkgver/nyth"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-nyth.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-nyth.rules
 }
