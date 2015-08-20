@@ -11,7 +11,7 @@
 pkgname=qgis
 _pkgver=2.10
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Quantum GIS is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -38,6 +38,7 @@ depends=('qt4'
          'python2-pytz'
          'python2-httplib2'
          'libspatialite'
+         'icu'
          'spatialindex')
 makedepends=('cmake'
              'flex'
@@ -50,7 +51,6 @@ optdepends=('grass: GRASS plugin support'           # Uncomment relevant cmake o
             'osgearth: QGIS Globe plugin support'   # or the Globe Plugin enabled
             'gpsbabel: GPS toolbar support')
 provides=("$pkgname=$pkgver")
-conflicts=("$pkgname-git" "$pkgname")
 install="$pkgname.install"
 source=("${pkgname}::git://github.com/qgis/QGIS.git#branch=release-${_pkgver//./_}"
         "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
@@ -59,10 +59,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^final.//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g' ||
-    printf "%s.r%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
