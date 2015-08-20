@@ -1,4 +1,6 @@
-TEXT='
+post_install() {
+  if ! grep '^Include conf/extra/httpd-adminer-editor.conf$' '/etc/httpd/conf/httpd.conf'; then
+    TEXT='
 If you want to access adminer interface by your apache server, run following command as root:\n
 echo "Include conf/extra/httpd-adminer-editor.conf" >> /etc/httpd/conf/httpd.conf\n\n
 
@@ -6,12 +8,17 @@ And restart your apache running "rc.d restart httpd"\n
 Or (if you are using systemd) "systemctl restart httpd"\n\n
 
 After you can browse adminer editor on http://localhost/adminer-editor\n';
-
-
-post_install() {
-	echo -e $TEXT;
+    echo -e $TEXT
+  fi
 }
 
 post_upgrade() {
-	echo -e $TEXT;
+  post_install
+}
+
+post_remove() {
+  if grep '^Include conf/extra/httpd-adminer-editor.conf$' '/etc/httpd/conf/httpd.conf'; then
+    echo 'To completely remove Adminer Editor, remove its include from /etc/httpd/conf/httpd.conf'
+    echo 'and restart your httpd server'
+  fi
 }
