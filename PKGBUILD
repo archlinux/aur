@@ -1,12 +1,12 @@
 # Maintainer: Libernux <dutchman55@gmx.com>
 pkgname="brother-hl1118"
-pkgver="3.0.1"
+pkgver="3.0.2"
 pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother HL-1110, HL-1110R, HL-1111, HL-1112, HL-1112R, HL-1118"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
-depends=('cups')
+depends=('cups' 'ghostscript' 'foomatic-db' 'foomatic-db-engine' 'foomatic-db-nonfree')
 install="$pkgname.install"
 source=(
 	"http://www.brother.com/pub/bsc/linux/dlf/hl1110lpr-3.0.1-1.i386.rpm"
