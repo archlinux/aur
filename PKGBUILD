@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-gtk3'
-pkgver='0.021'
+pkgver='0.023'
 pkgrel='1'
 pkgdesc="Perl interface to the 3.x series of the gtk+ toolkit"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cairo-gobject>=1.000' 'perl-glib-object-introspection>=0.016')
+depends=('gtk3' 'perl-cairo-gobject>=1.000' 'perl-glib-object-introspection>=0.016')
 makedepends=()
-url='http://search.mcpan.org/dist/Gtk3'
-source=('http://search.mcpan.org/CPAN/authors/id/X/XA/XAOC/Gtk3-0.021.tar.gz')
-md5sums=('c8813ad522bf75af4126796d6b6418c2')
-sha512sums=('c6d53e96191a60f645e87260e10b53b5be340b5a3b15d11d6453b958c5b02b275931d8b558c82b4a6cbbb5f0fb403d0c81754e2f44b98681a598718f00555633')
-_distdir="Gtk3-0.021"
+checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
+url='https://metacpan.org/release/Gtk3'
+source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Gtk3-0.023.tar.gz')
+md5sums=('6688b2aa6a9ad884cf68c2e3bb8aee6b')
+sha512sums=('7b028426e7b70c2932babc9dc02e9d31214e82dd5e3ea129fc179c46baebe9987c038fe7d8c5f038cb01655747dcbd9afe4ade7625af88216ea1b4ccff2333f2')
+_distdir="Gtk3-0.023"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -32,14 +33,13 @@ build() {
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" make test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 

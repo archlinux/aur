@@ -1,17 +1,20 @@
 pkgbase = perl-gtk3
 	pkgdesc = Perl interface to the 3.x series of the gtk+ toolkit
-	pkgver = 0.021
+	pkgver = 0.023
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Gtk3
+	url = https://metacpan.org/release/Gtk3
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = ttf-dejavu
+	checkdepends = xorg-server-xvfb
+	depends = gtk3
 	depends = perl-cairo-gobject>=1.000
 	depends = perl-glib-object-introspection>=0.016
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/X/XA/XAOC/Gtk3-0.021.tar.gz
-	md5sums = c8813ad522bf75af4126796d6b6418c2
-	sha512sums = c6d53e96191a60f645e87260e10b53b5be340b5a3b15d11d6453b958c5b02b275931d8b558c82b4a6cbbb5f0fb403d0c81754e2f44b98681a598718f00555633
+	source = http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Gtk3-0.023.tar.gz
+	md5sums = 6688b2aa6a9ad884cf68c2e3bb8aee6b
+	sha512sums = 7b028426e7b70c2932babc9dc02e9d31214e82dd5e3ea129fc179c46baebe9987c038fe7d8c5f038cb01655747dcbd9afe4ade7625af88216ea1b4ccff2333f2
 
 pkgname = perl-gtk3
 
