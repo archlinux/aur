@@ -1,7 +1,7 @@
 pkgbase = matrix-synapse
 	pkgdesc = Matrix reference homeserver
 	pkgver = 0.9.4.rc1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = matrix-synapse
 	depends = python2-pydenticon
 	depends = python2-ujson
 	depends = python2-blist
-	depends = python2-saml2
+	depends = python2-pysaml2
 	depends = python2-matrix-angular-sdk
 	backup = etc/synapse/log_config.yaml
 	source = git://github.com/matrix-org/synapse#tag=v0.9.4-rc1
