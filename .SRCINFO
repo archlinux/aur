@@ -1,6 +1,6 @@
 pkgbase = chromium-ext-chromiumos-tts-git
 	pkgdesc = Chromium OS text-to-speech as a Chromium extension
-	pkgver = r492.e5a7af0
+	pkgver = r494.1d829fa
 	pkgrel = 1
 	url = http://www.chromium.org/chromium-os
 	install = chromium-ext-chromiumos-tts.install

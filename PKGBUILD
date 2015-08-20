@@ -1,7 +1,7 @@
 # Maintainer: Alain Kalker <a.c.kalker@gmail.com>
 _pkgbase=chromium-ext-chromiumos-tts
 pkgname=$_pkgbase-git
-pkgver=r492.e5a7af0
+pkgver=r494.1d829fa
 pkgrel=1
 pkgdesc="Chromium OS text-to-speech as a Chromium extension"
 arch=('arm' 'i686' 'x86_64')
@@ -37,16 +37,16 @@ build() {
     rm $f
   done
 
-  # Add missing Dutch voice (note: very low quality, uncomment if you want it)
-  #patch < "$srcdir/0001-Add-missing-Dutch-voice.patch"
-  #sed -i -e '/ko-KR/{p;s//nl-NL/}' manifest.json
-
   # Adjust files
   for f in voice_data_*.js; do
     d=$(basename "$f" .js)
 
     # Make paths relative
-    sed -i -e "s|'/|'|g" "$f"
+    sed -i -e "s|: '/|: '|" "$f"
+
+    # The following no longer applies from r494.1d829fa onwards
+    continue
+
     sed -i -e 's|"/|"|g' "$d/project"
 
     # Update md5sum and size
@@ -88,5 +88,6 @@ package() {
 
   install -d -m755 "$pkgdir/usr/share/chromium/extensions"
   cp -a $_pkgbase "$pkgdir/usr/share/chromium/extensions/"
+  chmod 555 "$pkgdir/usr/share/chromium/extensions/$_pkgbase"/*.nexe
   #cp *.crx *.conf "$pkgdir/usr/share/chromium/extensions/"
 }
