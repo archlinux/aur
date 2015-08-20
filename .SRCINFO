@@ -1,0 +1,21 @@
+pkgbase = perl-archive-tar-wrapper
+	pkgdesc = API wrapper around the 'tar' utility
+	pkgver = 0.23
+	pkgrel = 1
+	url = https://metacpan.org/release/Archive-Tar-Wrapper
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-extutils-makemaker>=0
+	depends = perl
+	depends = perl-file-temp>=0
+	depends = perl-file-which>=0
+	depends = perl-log-log4perl>=0
+	depends = perl-pathtools>=0
+	depends = perl-ipc-run>=0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHILLI/Archive-Tar-Wrapper-0.23.tar.gz
+	sha256sums = 4c02393a513619e123cff5f6bd3021b64b3e3146fac9dc2da02329de440674fa
+
+pkgname = perl-archive-tar-wrapper
+
