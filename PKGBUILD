@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 
 pkgver(){
 	cd $srcdir/$pkgname
-	grep "Latest version" README.md | awk '$3 >0 { print $3 }' | sed 's/^v//g'
+	grep "Latest version" README.md | awk '{ print $3 }' | sed 's/^v//g'
 }
 build() {
 	cd $srcdir/$pkgname/src
