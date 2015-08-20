@@ -3,7 +3,7 @@
 _npmname=broccoli-cli
 pkgname=nodejs-$_npmname
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Global CLI for broccoli.js"
 arch=('any')
 url="http://broccolijs.com/"
@@ -24,5 +24,7 @@ package() {
   mkdir -p "$_npmdir"
   cd "$_npmdir"
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+
+  rmdir "${pkgdir}/usr/etc"
 }
 
