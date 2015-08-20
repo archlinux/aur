@@ -6,14 +6,14 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.2.1.21.g6ecf9af
+pkgver=3.2.1.35.gabb289c
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
 license=(GPL2)
 url=http://www.rhythmbox.org
 depends=(dconf desktop-file-utils gst-plugins-base gst-plugins-good libsoup json-glib libnotify libpeas media-player-info totem-plparser tdb webkitgtk3 libgudev)
-makedepends=(itstool intltool brasero gobject-introspection vala grilo libdmapsharing lirc libgpod libmtp)
+makedepends=(itstool intltool brasero gobject-introspection vala grilo libdmapsharing lirc libgpod libmtp gtk-doc)
 optdepends=('gst-plugins-ugly: Extra media codecs'
             'gst-plugins-bad: Extra media codecs'
             'gst-libav: Extra media codecs'
