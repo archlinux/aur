@@ -7,6 +7,7 @@
 # Contributor: UshakovVasilii <UshakovVasilii [at] yahoo [dot] com>
 # Contributor: Giulio Fidente <gfidente [at] gmail [dot] com>
 # Contributor: xantares <xantares09 [at] hotmail [dot] com>
+# Contributor: petterk <stifler3k [at] hotmail [dot] com>
 
 pkgname=popcorntime-bin
 pkgver=0.3.8.3
@@ -17,7 +18,7 @@ arch=('x86_64' 'i686')
 url="http://popcorntime.io/"
 license=('GPL3')
 depends=('libnotify' 'desktop-file-utils' 'ttf-font' 'gconf' 'nss' 'libxtst' 'gtk2' 'alsa-lib')
-optdepends=('net-tools: necessary for the new vpn feature' 'ttf-liberation')
+optdepends=('net-tools: necessary for the new vpn feature' 'ttf-liberation: open source ttf fonts')
 provides=('popcorntime')
 conflicts=('popcorntime')
 options=('!strip')
