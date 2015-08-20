@@ -1,0 +1,20 @@
+pkgbase = perl-return-multilevel
+	pkgdesc = return across multiple call levels
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/Return-MultiLevel
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-simple>=0
+	depends = perl>=5.8
+	depends = perl-exporter>=0
+	depends = perl-data-munge>=0.07
+	depends = perl-carp>=0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MAUKE/Return-MultiLevel-0.04.tar.gz
+	sha256sums = 4c807ca670cfb8db05ccc4b2848ba28618eecfc8147fdadc97f79fb74403a547
+
+pkgname = perl-return-multilevel
+
