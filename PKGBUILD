@@ -2,7 +2,7 @@
 # Maintainer:  saxonbeta <saxonbeta at gmail __com
 pkgname=elmerfem
 pkgver=8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver."
 arch=('i686' 'x86_64')
 url="http://www.csc.fi/english/pages/elmer"
@@ -48,8 +48,9 @@ package() {
     install -D -m644 "ElmerGUI/Application/images/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     
-    ln -s ElmerSolver_mpi $pkgdir/usr/bin/ElmerSolver
+    ln -s ElmerSolver_mpi "${pkgdir}/usr/bin/ElmerSolver"
     rm -- $pkgdir/usr/lib/{libparpack.so,libarpack.so}
-    mv $pkgdir/usr/share/elmersolver/lib/*.so $pkgdir/usr/lib
+    mv “${pkgdir}/usr/share/elmersolver/lib/*.so” “$pkgdir/usr/lib”
+    cp “${pkgdir}/usr/share/ElmerGUI/edf-extra/*” “${pkgdir}/usr/share/ElmerGUI/edf/”
 }
  
