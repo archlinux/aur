@@ -6,8 +6,7 @@
 # Contributor: Tim Zebulla <amon at faumrahrer dot de>
 
 pkgname=weechat-git
-pkgver=1.3.rc1.20.g6b75516
-epoch=1
+pkgver=1.3.4.g5c5bd1a
 pkgver(){
     cd $pkgname
     git describe --tags --long |sed 's/-/./g;s/^v//'
@@ -29,10 +28,9 @@ md5sums=('SKIP')
 
 build() {
   cd $pkgname
-  cmake -DPREFIX=/usr \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so
-  make
 }
 
 package() {
