@@ -1,0 +1,5 @@
+*.oxt
+LICENSE
+*.tar.xz
+pkg
+src
