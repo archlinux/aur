@@ -18,7 +18,7 @@ sha512sums=('b5a01dd81d90abd45b8443d922704432e84ceb58ad67c8cfe289064230f721baec4
 #makepkgopt = zipman
 #makepkgopt = purge
 #makepkgopt = !upx
-source=("http://downloads.sourceforge.net/project/$pkgname/${pkgver}/Source/$pkgname-${pkgver}.tar.gz")
+source=("http://iweb.dl.sourceforge.net/project/$pkgname/${pkgver}/Source/$pkgname-${pkgver}.tar.gz")
 
 package () {
     cd "$srcdir/$pkgname-$pkgver"
