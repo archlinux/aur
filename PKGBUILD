@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-scope-upper'
-pkgver='0.22'
+pkgver='0.28'
 pkgrel='1'
 pkgdesc="Act on upper scopes."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.6.1')
+depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Scope-Upper'
-source=('http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/Scope-Upper-0.22.tar.gz')
-md5sums=('ad98b934247be411c1cc15d73844bca4')
-sha512sums=('90b4866cbeb2f5149f57ea369e823b9efa89b74922e2195316b999f7db37c9954427a872fedd0b64db3d25b54d02d0b5853354ef79281dc9e6ee981c4424bf66')
-_distdir="Scope-Upper-0.22"
+url='https://metacpan.org/release/Scope-Upper'
+source=('http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/Scope-Upper-0.28.tar.gz')
+md5sums=('031bccd403f52b83da8f06036070458c')
+sha512sums=('318a7daf6d0e4a710ce73c9c2c243963de408c0bfcbfc038c6da5a21bca3b93e9da59e82dfe97a017ec42e892796d6a4d245502e7f3c151651b00d662128d143')
+_distdir="Scope-Upper-0.28"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
