@@ -1,0 +1,20 @@
+pkgbase = dnds-git
+	pkgdesc = Dynamic Network Directory Service - easy to use VPN
+	pkgver = 20140328
+	pkgrel = 1
+	url = https://github.com/nicboul/DNDS
+	install = dnds-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = scons
+	depends = qt4
+	source = dnds-git.patch
+	source = dnds-git-tapcfg.patch
+	md5sums = 09f1f49cd6b5317e11698495668f26bb
+	md5sums = 17d70917c22e1792303f86c8c13aa62f
+
+pkgname = dnds-git
+

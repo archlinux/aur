@@ -1,0 +1,13 @@
+diff --git a/SConstruct b/SConstruct
+index c8c497e..30814ac 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -44,7 +44,7 @@ if GetOption('gcc64'):
+ 	env.Append(CXXFLAGS = ['-m64'])
+ 	env.Append(LINKFLAGS = ['-m64'])
+ 
+-env.Append(CFLAGS = ['-Wall', '-O2'])
++env.Append(CFLAGS = ['-Wall', '-O2', '-fPIC'])
+ 
+ conf = Configure(env)
+ conf.CheckLib('socket')

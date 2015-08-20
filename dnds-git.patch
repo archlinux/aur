@@ -1,0 +1,14 @@
+diff --git a/dnc/src/CMakeLists.txt b/dnc/src/CMakeLists.txt
+index d1d390b..74455cf 100644
+--- a/dnc/src/CMakeLists.txt
++++ b/dnc/src/CMakeLists.txt
+@@ -100,8 +100,8 @@ else()
+ 		tapcfg
+ 		config
+ 		dnds
+-		ssl
+ 		-Wl,-Bdynamic
++		ssl
+ 		crypto
+ 		pthread
+ 	)
