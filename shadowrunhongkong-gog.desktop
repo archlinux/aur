@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/shadowrunhongkong-gog.png
+Exec=/usr/bin/shadowrunhongkong-gog
+Terminal=false
+StartupNotify=false
+
+Name=Shadowrun: Hong Kong
+Comment=Harebrained Schemes' third Shadowrun cRPG
+
+Categories=Game;
