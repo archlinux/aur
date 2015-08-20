@@ -1,0 +1,12 @@
+pkgbase = perl-authen-oath
+	pkgdesc = Perl/CPAN module Authen::OATH
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://search.cpan.org/~sifukurt/Authen-OATH/
+	arch = any
+	license = GPL
+	source = http://search.cpan.org/CPAN/authors/id/S/SI/SIFUKURT/Authen-OATH-v1.0.0.tar.gz
+	md5sums = fb744e4213f9d90b0f6dfbb5ac4dbca3
+
+pkgname = perl-authen-oath
+
