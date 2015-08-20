@@ -1,6 +1,6 @@
 pkgbase = python2-influxdb
 	pkgdesc = Python client for InfluxDB
-	pkgver = 2.6.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/influxdb/influxdb-python/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python2-influxdb
 	depends = python2-requests
 	optdepends = influxdb
 	options = !emptydirs
-	source = https://github.com/influxdb/influxdb-python/archive/v2.6.0.tar.gz
+	source = https://github.com/influxdb/influxdb-python/archive/v2.8.0.tar.gz
 	md5sums = ece1d726317993af24182ca30dbb866f
 
 pkgname = python2-influxdb
