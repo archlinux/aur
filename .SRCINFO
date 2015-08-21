@@ -1,7 +1,7 @@
 pkgbase = qgis-git
 	pkgdesc = QGIS (master) is a Geographic Information System (GIS) that supports vector, raster & database formats
 	pkgver = 2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qgis.org/
 	install = qgis-git.install
 	arch = i686

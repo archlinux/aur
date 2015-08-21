@@ -12,7 +12,7 @@ pkgname=qgis-git
 _pkgname=${pkgname//-git}
 _pkgver=2.11
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc='QGIS (master) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -90,9 +90,9 @@ build() {
     -Wno-dev \
     -DCMAKE_SKIP_BUILD_RPATH=FALSE \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE \
-    -DCMAKE_INSTALL_RPATH=/usr/local/lib \
+    -DCMAKE_INSTALL_RPATH=/opt/qgis-git/lib \
     -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=FALSE \
-    -DCMAKE_INSTALL_PREFIX=/usr/local/ \
+    -DCMAKE_INSTALL_PREFIX=/opt/qgis-git/ \
     -DENABLE_TESTS=OFF \
     -DQGIS_MANUAL_SUBDIR=man \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
@@ -130,38 +130,42 @@ package() {
   
   # qgis.desktop
   sed -i -e "s,^Name=QGIS Desktop\$,Name=QGIS Desktop (Master)," \
-         -e "s,^Icon=qgis\$,Icon=/usr/local/share/pixmaps/${_pkgname}.png," \
-         -e "s,^TryExec=/usr/bin/qgis\$,TryExec=/usr/local/bin/qgis-dev," \
-         -e "s,^Exec=/usr/bin/qgis %F\$,Exec=/usr/local/bin/qgis-dev %F," \
+         -e "s,^Icon=qgis\$,Icon=qgis-dev," \
+         -e "s,^TryExec=/usr/bin/qgis\$,TryExec=/usr/bin/qgis-dev," \
+         -e "s,^Exec=/usr/bin/qgis %F\$,Exec=QGIS_PREFIX_PATH=/opt/qgis-git /usr/bin/qgis-dev --configpath $HOME/.qgis2-dev %F," \
          "${srcdir}/${_pkgname}/debian/qgis.desktop"
 
   # qbrowser.desktop
   sed -i -e "s,^Name=QGIS Browser\$,Name=QGIS Browser (Master)," \
-         -e "s,^Icon=qbrowser\$,Icon=/usr/local/share/pixmaps/qbrowser.png," \
-         -e "s,^TryExec=/usr/bin/qbrowser\$,TryExec=/usr/local/bin/qbrowser-dev," \
-         -e "s,^Exec=/usr/bin/qbrowser %F\$,Exec=/usr/local/bin/qbrowser-dev %F," \
+         -e "s,^Icon=qbrowser\$,Icon=qbrowser-dev," \
+         -e "s,^TryExec=/usr/bin/qbrowser\$,TryExec=/usr/bin/qbrowser-dev," \
+         -e "s,^Exec=/usr/bin/qbrowser %F\$,Exec=/usr/bin/qbrowser-dev %F," \
          "${srcdir}/${_pkgname}/debian/qbrowser.desktop"
 
   # install some freedesktop.org compatibility
   install -D -m644 "$srcdir/$_pkgname/debian/qgis.desktop" \
     "$pkgdir/usr/share/applications/qgis-dev.desktop"
+
   install -D -m644 "$srcdir/$_pkgname/debian/qbrowser.desktop" \
     "$pkgdir/usr/share/applications/qbrowser-dev.desktop"
 
+  install -Dm644 $srcdir/$_pkgname/debian/qgis-icon.xpm \
+    "$pkgdir/usr/share/pixmaps/qgis-dev.xpm"
+
+  install -Dm644 $srcdir/$_pkgname/debian/qbrowser-icon.xpm \
+    "$pkgdir/usr/share/pixmaps/qbrowser-dev.xpm"
+
+
   # rename executables incase qgis stable/release is already installed
-  mv $pkgdir/usr/local/bin/qgis $pkgdir/usr/local/bin/qgis-dev
-  mv $pkgdir/usr/local/bin/qbrowser $pkgdir/usr/local/bin/qbrowser-dev
-  mv $pkgdir/usr/local/bin/qgis_mapserv.fcgi $pkgdir/usr/local/bin/qgis_dev_mapserv.fcgi
+  install -Dm755 $pkgdir/opt/qgis-git/bin/qgis $pkgdir/usr/bin/qgis-dev
+  install -Dm755 $pkgdir/opt/qgis-git/bin/qbrowser $pkgdir/usr/bin/qbrowser-dev
+  install -Dm755 $pkgdir/opt/qgis-git/bin/qgis_mapserv.fcgi $pkgdir/usr/bin/qgis_mapserv_dev.fcgi
 
   # TODO: these aren't working for some reason, ie, .qgs files are not opened by QGIS...
   # Appears to be a conflict with some file types being defaulted to google-chrome/chromium if that's installed as well.
-  install -dm755 "$pkgdir/usr/local/share/pixmaps" \
-    "$pkgdir/usr/local/share/mimelnk/application"
-  for mime in "$srcdir/$_pkgname/debian/mime/application/"*.desktop
-    do install -m644 "$mime" "$pkgdir/usr/local/share/mimelnk/application"
-  done
-
-  ln -s /usr/local/share/qgis/images/icons/qgis-icon.png "$pkgdir/usr/local/share/pixmaps/qgis.png"
-  ln -s /usr/local/share/qgis/images/icons/qbrowser-icon.png "$pkgdir/usr/local/share/pixmaps/qbrowser.png"
-  ln -s /usr/local/share/qgis/images/icons/qgis-mime-icon.png "$pkgdir/usr/local/share/pixmaps/qgis-mime-icon.png"  
+  #install -dm755 "$pkgdir/usr/share/pixmaps" \
+  #  "$pkgdir/usr/share/mimelnk/application"
+  #for mime in "$srcdir/$_pkgname/debian/mime/application/"*.desktop
+  #  do install -m644 "$mime" "$pkgdir/usr/share/mimelnk/application"
+  #done
 }
