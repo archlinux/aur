@@ -1,10 +1,7 @@
 
 _pipname=Flask-SQLAlchemy
 pkgbase=python-flask-sqlalchemy
-# it should be:
-#pkgname=('python2-flask-sqlalchemy' 'python-flask-sqlalchemy')
-# temporary it is, until python2 only package is not removed:
-pkgname=('python-flask-sqlalchemy')
+pkgname=('python2-flask-sqlalchemy' 'python-flask-sqlalchemy')
 pkgver=2.0
 pkgrel=2
 pkgdesc="Adds SQLAlchemy support to your Flask application"
