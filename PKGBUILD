@@ -4,7 +4,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=openssh-git
-pkgver=7.0.P1.r0.g1dc8d93
+pkgver=7.1.P1.r1.g189de02
 pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools'
 url='http://www.openssh.org/portable.html'
