@@ -2,8 +2,19 @@
 
 # 2015-07-18 git-aurcheck by severach (GPLv3+)
 
-# TODO: Finish version checker
-# TODO: Switch origin on git packages from aur4 to aur (if necessary)
+# -TODO: Version checker
+# -TODO: ability to specify and exclude packages on the command line
+# -TODO: Ability to elevate the version check return code
+# -TODO: Switch origin on git packages from aur4 to aur (if necessary)
+# -TODO: (TBD) pkgver=[a-z] not allowed in more pedantic mode
+# TODO: Better link scanner for version checker, xidel maybe?
+# TODO: An explain switch that outputs implementation details about less obvious warnings.
+# TODO: Github?
+# TODO: Average release cycle (daily, weekly, monthly, yearly)
+# TODO: (TBD) Version check in alternate file
+# TODO: (TBD) Convert pedantic level to warn/err values
+# TODO: Rearrange code to allow many checks without .git folder
+# TODO: man page
 
 # a helper like namcap that checks and offers solutions for common problems in git submissions to the AUR
 
@@ -23,9 +34,6 @@
 # over and over. All possible next steps are shown but only a few may be
 # appropriate. Perform the first related steps and run again for updated next
 # steps.
-
-# This does not check the quality of your package. Use namecap for that, though
-# I haven't found namecap to be very useful.
 
 # Option -h for help.
 
@@ -62,9 +70,9 @@ _opt_VERSION='0.3'
 _opt_AUR4='aur'
 
 # After August 8, these 3 time bomb lines can be removed and _opt_AUR4 can be gotten rid of altogether
-if [ "$(date +'%s')" -lt 1439006400 ]; then # date +%s -d'2015-08-08'
-  _opt_AUR4='aur4'
-fi
+#if [ "$(date +'%s')" -lt 1439006400 ]; then # date +%s -d'2015-08-08'
+#  _opt_AUR4='aur4'
+#fi
 
 for _var_cmd in 'mksrcinfo' 'md5sum' 'pcre2grep'; do
   if ! command -v "${_var_cmd}" >/dev/null 2>&1; then
@@ -84,7 +92,36 @@ fi
 srcinfo_write_attr() {
   :
 }
+export -f srcinfo_write_attr
 
+# A special starts-with version of find that hunts for foo*, usually used with 'foo='
+_var_findst_in='
+_fn_findst_in_@@@() {
+  local _var_find
+  if [ "${#_var_@@@[@]}" -ne 0 ]; then
+    for _var_find in "${_var_@@@[@]}"; do
+      case "${_var_find}" in
+      "$1"*) return 0;;
+      esac
+    done
+  fi
+  return 1
+}
+'
+# A special starts-with version of find that hunts for foo or foo=version
+_var_findver_in='
+_fn_findver_in_@@@() {
+  local _var_find
+  if [ "${#_var_@@@[@]}" -ne 0 ]; then
+    for _var_find in "${_var_@@@[@]}"; do
+      case "${_var_find}" in
+      "$1"|"$1="*) return 0;;
+      esac
+    done
+  fi
+  return 1
+}
+'
 _var_find_in='
 _fn_find_in_@@@() {
   local _var_find
@@ -98,6 +135,11 @@ _fn_find_in_@@@() {
   return 1
 }
 '
+_opt_find_in="${_var_find_in//_var_@@@/_opt_@@@}"
+eval "${_opt_find_in//@@@/EXCLUDES}"
+eval "${_var_findst_in//@@@/provides}"
+eval "${_var_findver_in//@@@/provides}"
+eval "${_var_find_in//@@@/conflicts}"
 eval "${_var_find_in//@@@/depends}"
 eval "${_var_find_in//@@@/makedepends}"
 eval "${_var_find_in//@@@/wantmakedepends}"
@@ -107,7 +149,7 @@ eval "${_var_find_in//@@@/srcfileswantgit}"
 eval "${_var_find_in//@@@/srcfilesdontwantgit}"
 eval "${_var_find_in//@@@/srcfiles}"
 eval "${_var_find_in//@@@/gitfiles}"
-unset _var_find_in
+unset _opt_find_in _var_find_in _var_findver_in _var_findst_in
 
 # This accepts no parameters. The caller must cd to the directory to be checked.
 _fn_aurcheck() {
@@ -176,6 +218,11 @@ fi
     local _var_pkgnames=()
     local _var_makedepends=()
     local _var_depends=()
+    local _var_conflicts=()
+    local _var_provides=()
+    local _var_pkgvernew=() # We take advantage of forgetting to update .SRCINFO.
+    local _var_pkgverold=()
+    local _var_pkgrelnew=()
     if [ -s 'PKGBUILD' ]; then
       if grep -ql '||\s*return\s\+1$' 'PKGBUILD'; then
         echo "Warning: '|| return 1' deprecated. Please remove. makepkg does this with 'set -e'"
@@ -193,12 +240,12 @@ fi
       fi
       rm -f "${_PKGBUILDtmp}"
       unset _PKGBUILDtmp
-      if [ "${_opt_PEDANTIC}" -gt 0 ]; then
+      if [ "${_opt_PEDANTIC}" -ge 1 ]; then
         if ! grep -ql 'set -u' 'PKGBUILD' || ! grep -ql 'set +u' 'PKGBUILD'; then
           echo 'Warning: set -u/set +u are recommended to catch script errors.'
           [ $returnv -ge 1 ] || returnv=1
         fi
-        if [ "${_opt_PEDANTIC}" -gt 1 ]; then
+        if [ "${_opt_PEDANTIC}" -ge 3 ]; then
           # These test commands are specially crafted to fail correctly with set -e
           local _var_forbiddens=('/bin|! test -d "${pkgdir}/bin"' '/sbin|! test -d "${pkgdir}/sbin"' '/lib|! test -d "${pkgdir}/lib"' '/share|! test -d "${pkgdir}/share"' '/usr/sbin|! test -d "${pkgdir}/usr/sbin"' '/usr/local|! test -d "${pkgdir}/usr/local"')
           local _var_forbidden
@@ -253,10 +300,77 @@ fi
           IFS=$'\n' read -r -d '' -a _var_pkgnames < <(sed -ne 's:^pkgname = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
           IFS=$'\n' read -r -d '' -a _var_makedepends < <(sed -ne 's:^\tmakedepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
           IFS=$'\n' read -r -d '' -a _var_depends < <(sed -ne 's:^\tdepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+          IFS=$'\n' read -r -d '' -a _var_conflicts < <(sed -ne 's:^\tconflicts = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+          IFS=$'\n' read -r -d '' -a _var_provides < <(sed -ne 's:^\tprovides = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+          IFS=$'\n' read -r -d '' -a _var_pkgvernew < <(sed -ne 's:^\tpkgver = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+          IFS=$'\n' read -r -d '' -a _var_pkgrelnew < <(sed -ne 's:^\tpkgrel = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
           if [ ! -s "${_var_pwd}/.SRCINFO" ] || [ "$(md5sum < '.SRCINFO')" != "$(md5sum < "${_var_pwd}/.SRCINFO")" ]; then
             echo ".SRCINFO is missing or out of date. Try 'mksrcinfo'"
             [ $returnv -ge 2 ] || returnv=2
             _var_gitadds+=('.SRCINFO') # this is the first add so no dups possible
+          fi
+
+          if [ "${_opt_VERSION}" -ne 0 ] && grep -qlF $'_verurl\n_vercheck' '../PKGBUILD'; then
+            _fn_runpkgbuild() {
+              set -u
+              source '../PKGBUILD'
+              set -u
+              # http://stackoverflow.com/questions/1881237/easiest-way-to-extract-the-urls-from-an-html-page-using-sed-or-awk-only
+              # A real getlinks would use an html decoder and not sed+grep.
+              # $1: l get link href (default), t get link text, f FTP listing or other no html
+              declare -f -F _getlinks >/dev/null || _getlinks() {
+                case "${1}" in
+                l) grep -F 'href=' | grep -o '<[aA] .*href=.*>' | sed -e 's/<[aA] /\n<a /g' | sed -ne 's/^<a .*href=["'"'"']\{0,1\}\([^ \t"'"'"'>]*\).*$/\1/p' -e '/^$/d';;
+                t) grep -F 'href=' | grep -o '<[aA] .*href=.*>' | sed -e 's/<[aA] /\n<a /g' | sed -ne 's/^<a [^>]*>\([^<]*\)<.*$/\1/p' -e '/^$/d';;
+                f) cat;;
+                esac
+              }
+              # The PKGBUILD can replace any of these functions deemed necessary. It's common to replace _vercheck
+              # Return sorted list of all version numbers available
+              local _var_has_vercheck=0
+              declare -f -F _vercheck >/dev/null && _var_has_vercheck=1 || _vercheck() {
+                local _versed2="${_versed//:/\\:}" # Escape the two things that the PKGBUILD is not permitted to do
+                _versed2="${_versed2//$/\\$}" # End of line (though sed doesn't seem to require this), and end of search
+                curl -s -l "${_verurl}" | _getlinks "${_veropt}" | sed -ne "s:^${_versed2}"'$:\1:p' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
+              }
+              # Polling is better than version announcements. Everyone's poll cron time will be different. An announcement would generate an immediate traffic rush.
+              # _vercheck and _verscan depend only on pacman, coreutils, sed, and grep
+              # $1, return code 0=found update 1=no update found; $1=1 always return 0=true
+              # $2, echo nothing, $2=1 echo latest file found, $2=2 echo all newer files found, $2=3 echo comparison and all files
+              declare -f -F _verscan >/dev/null || _verscan() {
+                #local _pkgfile="${pkgname}-${pkgver}.tar.xz"
+                local _rv=1
+                [ "$1" -ne 0 ] && _rv=0
+                local _rvfile=''
+                local _remfile
+                local IFS=$'\n'
+                while read _remfile; do
+                  local _vercmp="$(vercmp "${_remfile}" "${pkgver}")"
+                  [ "$2" -eq 3 ] && printf '%-s %s\n' "${_vercmp}" "${_remfile}"
+                  if [ "${_vercmp}" -ge 1 ]; then
+                    [ "$2" -eq 2 ] && echo "${_remfile}"
+                    _rvfile="${_remfile}"
+                    _rv=0
+                  fi
+                done < <(_vercheck)
+                [ "$2" -eq 1 ] && echo "${_rvfile}"
+                return ${_rv}
+              }
+              # It's assumed the PKGBUILD has provided all the right variables if a _vercheck() is provided. Some _vercheck don't use variables.
+              if [ "${_var_has_vercheck}" -ne 0 ] || [ ! -z "${_verurl:-}" -a ! -z "${_veropt:-}" -a ! -z "${_versed:-}" ]; then
+                set -u
+                _verscan 0 1
+              fi
+            }
+            #set -u; _vercheck 0 3 && echo 'Update detected'; exit 1
+            export -f _fn_runpkgbuild
+            local _var_newver="$(bash -c _fn_runpkgbuild)"
+            unset -f _fn_runpkgbuild
+            if [ ! -z "${_var_newver}" ]; then
+              echo "Warning: a new version ${_var_newver} may be available."
+              [ $returnv -ge "${_opt_VEREXITCODE}" ] || returnv="${_opt_VEREXITCODE}"
+            fi
+            unset _var_newver
           fi
         else
           echo 'Your PKGBUILD crashes with mksrcinfo.'
@@ -269,7 +383,7 @@ fi
         rmdir -f "${_var_tempdir}"
       fi
       unset _var_tempdir
-    fi
+    fi # -s 'PKGBUILD'
     # Nail the screwups no matter where they are!
     if [ -s '.SRCINFO' ]; then
       if [ -z "${_var_install}" ]; then
@@ -288,8 +402,15 @@ fi
         IFS=$'\n' read -r -d '' -a _var_makedepends < <(sed -ne 's:^\tmakedepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
       fi
       if [ "${#_var_depends[@]}" -eq 0 ]; then
-        IFS=$'\n' read -r -d '' -a _var_depends < <(sed -ne 's:^\tdepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :      fi
+        IFS=$'\n' read -r -d '' -a _var_depends < <(sed -ne 's:^\tdepends = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
       fi
+      if [ "${#_var_conflicts[@]}" -eq 0 ]; then
+        IFS=$'\n' read -r -d '' -a _var_conflicts < <(sed -ne 's:^\tconflicts = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+      fi
+      if [ "${#_var_provides[@]}" -eq 0 ]; then
+        IFS=$'\n' read -r -d '' -a _var_provides < <(sed -ne 's:^\tprovides = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
+      fi
+      IFS=$'\n' read -r -d '' -a _var_pkgverold < <(sed -ne 's:^\tpkgver = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
       local _var_srcfiles1=()
       local _var_srcfile1
       IFS=$'\n' read -r -d '' -a _var_srcfiles1 < <(sed -ne 's:^\s\+source[^ =]* = \(.\+\)$:\1:p' '.SRCINFO'; echo -n $'\0') || :
@@ -355,6 +476,35 @@ fi
     unset _var_install
     unset _var_changelog
 
+    if [ "${#_var_pkgrelnew[@]}" -gt 1 ]; then
+      echo 'Warning: a package with multiple pkgrel is unexpected. If this is valid please report to the author so this program can be improved.'
+      [ $returnv -ge 1 ] || returnv=1
+    fi
+    # These are arrays but we'll only check the first one.
+    if [ ! -z "${_var_pkgrelnew:-}" ] && [[ "${_var_pkgrelnew}" != [1-9] ]]; then
+      echo 'pkgrel must be a digit from 1 to 9'
+      [ $returnv -ge 2 ] || returnv=2
+    fi
+    if [ ! -z "${_var_pkgvernew:-}" ]; then
+      if [ ! -z "${_var_pkgverold:-}" -a ! -z "${_var_pkgrelnew:-}" ] && [ "${_var_pkgvernew}" != "${_var_pkgverold}" -a "${_var_pkgrelnew}" != '1' ]; then
+        echo 'When the version changes the pkgrel must be set back to 1'
+        [ $returnv -ge 2 ] || returnv=2
+      fi
+      if [ "${_opt_PEDANTIC}" -ge 3 ]; then
+        if [[ "${_var_pkgvernew:-}" != [0-9]* ]]; then
+          echo 'Warning: version numbers typically should not start with a letter'
+          [ $returnv -ge 1 ] || returnv=1
+        fi
+      else
+        if [[ "${_var_pkgvernew:-}" == [vV][0-9]* ]]; then
+          echo 'Warning: version numbers typically should not start with a v'
+          [ $returnv -ge 1 ] || returnv=1
+        fi
+      fi
+    fi
+    unset _var_pkgvernew
+    unset _var_pkgverold
+
     # Generate specific arrays from _var_srcfiles. Note that since we're mean and read both .SRCINFO, there may be false dups.
     local _var_srclinks=() # Sometimes this contains false dups. I don't care since it's not used for anything yet.
     local _var_srcfileswantgit=()
@@ -385,10 +535,10 @@ fi
         if [ "${_var_srcfile/:\/\//}" != "${_var_srcfile}" ]; then # it's a link ://
           _var_srclink=("${_var_srcfile}") # We don't about what's on the end here
           case "${_var_srclink}" in
-          bzr*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'bzr' && _var_wantmakedepends+=('bzr|bzr');;
-          git*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'git' && _var_wantmakedepends+=('git|git');;
-          hg*) _var_srcvcs=1; ! _fn_find_in_wantmakedepends 'hg'  && _var_wantmakedepends+=('hg|mercurial');;
-          svn*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'svn' && _var_wantmakedepends+=('svn|subversion');;
+          bzr*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'bzr|bzr'        && _var_wantmakedepends+=('bzr|bzr');;
+          git*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'git|git'        && _var_wantmakedepends+=('git|git');;
+          hg*) _var_srcvcs=1; ! _fn_find_in_wantmakedepends 'hg|mercurial'   && _var_wantmakedepends+=('hg|mercurial');;
+          svn*)_var_srcvcs=1; ! _fn_find_in_wantmakedepends 'svn|subversion' && _var_wantmakedepends+=('svn|subversion');;
           *)
             _var_srcfile="${_var_srcfile##*/}" # bash string version of basename
             _var_srcfilesdontwantgit+=("${_var_srcfile}")
@@ -428,7 +578,7 @@ fi
       for _var_wantmakedepend in "${_var_wantmakedepends[@]}"; do
         _var_wantmakedepend="${_var_wantmakedepend#*|}"
         if ! _fn_find_in_makedepends "${_var_wantmakedepend}" && ! _fn_find_in_depends "${_var_wantmakedepend}"; then
-          echo "For this vcs package ${_var_wantmakedepend} must be added to makedepends or possibly depends."
+          echo "For this vcs package '${_var_wantmakedepend}' must be added to makedepends or possibly depends."
           [ $returnv -ge 2 ] || returnv=2
         fi
       done
@@ -450,7 +600,25 @@ fi
       fi
       unset _var_wantmakedepend
     fi
+
+    case "${_var_pkgbase}" in
+    *-bzr|*-git|*-hg|*-svn)
+      if ! _fn_find_in_conflicts "${_var_pkgbase%-*}" || ! _fn_findver_in_provides "${_var_pkgbase%-*}"; then
+        echo 'Warning: most vcs packages should have a conflicts and provides'
+        [ $returnv -ge 1 ] || returnv=1
+      fi
+      if ! _fn_findst_in_provides "${_var_pkgbase%-*}="; then
+        echo 'Warning: vcs packages cannot satisfy versioned dependencies without a provides=version'
+        [ $returnv -ge 1 ] || returnv=1
+      fi
+      if [ "${_var_pkgrelnew:-}" != '1' ]; then
+        echo 'Warning: vcs packages usually have pkgrel=1'
+        [ $returnv -ge 1 ] || returnv=1
+      fi
+      ;;
+    esac
     unset _var_pkgbase
+    unset _var_pkgrelnew
 
     local _var_reqfile
     for _var_reqfile in "${!_var_644[@]}"; do
@@ -540,13 +708,14 @@ fi
       echo ''
     fi
     local _var_gitmodified="$(git ls-files -m)"
-    if [ ! -z "${_var_gitmodified}" ]; then
+    if [ "${_opt_PEDANTIC}" -ge 2 -o "${_opt_ALL}" -eq 0 ] && [ ! -z "${_var_gitmodified}" ]; then
       echo "Warning: There are modified files. Try 'git status' and maybe 'git add -u'"
       [ $returnv -ge 1 ] || returnv=1
     fi
+    local _var_gitadded="$(git status --porcelain | grep '^M ')" || :
 
     local _var_returnvbeforestaged="${returnv}"
-    if [ ! -z "$(git status --porcelain | grep -v '^?')" ]; then
+    if [ "${_opt_PEDANTIC}" -ge 2 -o "${_opt_ALL}" -eq 0 ] && [ ! -z "$(git status --porcelain | grep -v '^?')" ]; then
       echo "Warning: There are staged files. Try 'git status' and maybe commit and push"
       [ $returnv -ge 1 ] || returnv=1
     fi
@@ -573,9 +742,9 @@ fi
       set -e
     elif [ ! -z "${_var_push}" ]; then
       # Unfortunately this does not detect multiple commits before the first commit is made
-      if [ "${#_var_gitadds[@]}" -gt 0 -o ! -z "${_var_gitmodified}" -o "$(git rev-list HEAD --count)" -ge 2 ]; then
+      if [ "${#_var_gitadds[@]}" -gt 0 -o ! -z "${_var_gitmodified}" -o ! -z "${_var_gitadded}" ] || [ "$(git log @{push}.. | grep '^commit' | wc -l)" -ge 2 ]; then
         # http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit\
-        echo "There are modifications after a commit. A push or another commit may not do what you want. Maybe try: git reset --soft 'HEAD~1'; git status"
+        echo "There are modifications after a commit. A push or another commit may not do what you want. Maybe try multiple times: git reset --soft 'HEAD~1'; git status"
         [ $returnv -ge 2 ] || returnv=2
       else
         echo "Warning: There are commits not pushed. Try 'git cherry -v' and maybe push"
@@ -586,11 +755,21 @@ fi
     unset _var_push
     unset _var_returnvbeforestaged
     unset _var_gitmodified
+    unset _var_gitadded
 
     local _var_remoteurl="$(git ls-remote --get-url)"
     local _var_remoteurlbn="$(basename "${_var_remoteurl}" ".git")"
-    if ! grep -ql '^ssh://' <<< "${_var_remoteurl}"; then
+    if ! grep -qlF $'ssh://\nssh+git://' <<< "${_var_remoteurl}"; then
       echo "Warning: You don't have write access to this package so you can't fix these problems."
+      # I see no reason to report this as a warning.
+    fi
+    if [ "${_var_remoteurl//aur4.archlinux.org/}" != "${_var_remoteurl}" ]; then
+      if [ "${_opt_ALL}" -ne 0 ]; then
+        echo "Warning: You should change your origin away from AUR4. Try: pushd '${_var_pwdbn}' >/dev/null && { git remote set-url origin '${_var_remoteurl//aur4.archlinux.org/aur.archlinux.org}'; popd >/dev/null; }"
+      else
+        echo "Warning: You should change your origin away from AUR4. Try: git remote set-url origin '${_var_remoteurl//aur4.archlinux.org/aur.archlinux.org}'"
+      fi
+      [ $returnv -ge 1 ] || returnv=1
     fi
     # git-clone from AUR should block the cloning of new repository packages in core/extra, but it doesn't.
     if [ "${_var_remoteurlbn}" != "${_var_pwdbn}" ]; then
@@ -638,40 +817,66 @@ cat << EOF
 git-aurcheck ${_opt_VERSION} (C)2015 by severach for Arch Linux (GPL3+)
   -h: crude help
   -a: from ~/build, check all packages with write access
-  -p: pedantic, adds extra checks. Up to twice for maximum pedantry.
+  -x=: exclude package folders from -a scan. Ignored with -a.
+  package[s]: scan only specific packages. Exclusions dominate.
+  -p: pedantic, adds extra checks. Up to thrice for maximum pedantry.
+  -v: check for new version with PKGBUILD _verurl related vars.
+  -t=: change to target folder before starting. Useful for cron.
+  -V=: elevate new version warning to desired exit code. Numbers only.
 
-To check for problems in a package folder:
+To check for common problems in a package folder:
   cd ~/build/foo
   ${_var_BN}
-To check for problems in all packages with git ssh write access
+To check for all problems and new versions in a package folder:
+  ${_var_BN} -pppv
+To check for problems in all packages with git ssh write access except foo,bar
   cd ~/build
-  ${_var_BN} -a
+  ${_var_BN} -a -x foo -x bar
+To scan for updates in packages foo and bar
+  ${_var_BN} -t $HOME/user/build -Vva foo bar
 EOF
 }
 
 _opt_ALL=0
 _opt_FORCE=0 # If ever implemented, would automatically perform as many safe changes as possible.
 _opt_PEDANTIC=0
+_opt_VERSION=0
+_opt_EXCLUDES=()
+_opt_VEREXITCODE=1
 
-while getopts ':hafp' _var_opt; do
+while getopts ':hafpvx:t:V:' _var_opt; do
   case "${_var_opt}" in
     h) _fn_usage; exit 0;;
     a) _opt_ALL=1;;
     f) _opt_FORCE=1;; # cannot be specified with -a
     p) _opt_PEDANTIC=$((${_opt_PEDANTIC} + 1));;
+    v) _opt_VERSION=1;;
+    x) _opt_EXCLUDES+=("${OPTARG}");;
+    t) cd "${OPTARG}";; # from install -t
+    V) _opt_VEREXITCODE="${OPTARG}";;
     :) echo "$(basename "$0"): Option '-${OPTARG}' requires an argument" >&2
-       exit 126 ;;
+       exit 126;;
     *) echo "$(basename "$0"): Invalid option '-${OPTARG}'" >&2
-       _fn_usage; exit 126 ;;
+       _fn_usage; exit 126;;
   esac
 done
 unset _var_opt
+_opt_POSARGS=("${@: ${OPTIND}}")
 
 returnv=0
 if [ "${_opt_ALL}" -ne 0 ]; then
   if [ -e 'PKGBUILD' ] ;then
     echo 'This looks like a package folder. Maybe you want to leave -a off.'
     exit 126
+  elif [ "${#_opt_POSARGS[@]}" -ne 0 ]; then
+    _opt_FORCE=0
+    for builddir in "${_opt_POSARGS[@]}"; do
+      if [ -s "${builddir}/.git/config" ] && ! _fn_find_in_EXCLUDES "${builddir}" && pushd "${builddir}" >/dev/null; then
+        echo "Checking ${builddir}"
+        _fn_aurcheck
+        popd >/dev/null
+      fi
+    done
   else
     _opt_FORCE=0
     for builddir in *; do
@@ -679,12 +884,12 @@ if [ "${_opt_ALL}" -ne 0 ]; then
       # We consider writable ssh:// to be yours and read only http:// to not be yours.
       # Use https:// to clone packages you don't have write access to.
       # You can fix errant clones with the https url on the package page.
-      # Example: (change aur4 to aur after 2015-08-08)
+      # Example:
       # cd ~/build/foo
       # git ls-remote --get-url
-      # git remote set-url origin "https://aur4.archlinux.org/$(basename "$(pwd)").git/"
+      # git remote set-url origin "https://aur.archlinux.org/$(basename "$(pwd)").git/"
       # git remote show origin -n
-      if [ -s "${builddir}/.git/config" ] && grep -ql 'url = ssh://' "${builddir}/.git/config" && pushd "${builddir}" >/dev/null; then
+      if [ -s "${builddir}/.git/config" ] && ! _fn_find_in_EXCLUDES "${builddir}" && grep -ql 'url = ssh://' "${builddir}/.git/config" && pushd "${builddir}" >/dev/null; then
         echo "Checking ${builddir}"
         _fn_aurcheck
         popd >/dev/null
