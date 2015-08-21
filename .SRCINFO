@@ -1,6 +1,6 @@
 pkgbase = navit
 	pkgdesc = A modular turn-by-turn car navigation system
-	pkgver = v0.5.0_rc.1
+	pkgver = 0.5.0_rc.1
 	pkgrel = 1
 	url = http://www.navit-project.org/
 	install = navit.install

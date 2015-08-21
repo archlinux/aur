@@ -4,7 +4,7 @@
 # Contributor: Thermionix <thermionix at gmail dot com>
 
 pkgname=navit
-pkgver=v0.5.0_rc.1
+pkgver=0.5.0_rc.1
 pkgrel=1
 pkgdesc="A modular turn-by-turn car navigation system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,7 +15,7 @@ optdepends=('cegui>=0.5.0: OpenGL gui' 'quesoglc: OpenGL gui')
 makedepends=('cmake')
 options=('!libtool')
 install=navit.install
-source=(http://downloads.sourceforge.net/$pkgname/${pkgver/_/-}.tar.gz)
+source=(http://downloads.sourceforge.net/$pkgname/v${pkgver/_/-}.tar.gz)
 md5sums=('cb6ee913eea1fa06c90852e1dfbdcb94')
 
 build() {
