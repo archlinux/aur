@@ -2,8 +2,8 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 # % Trigger: 1439307323 %
 
-pkgname=('vdev-git' 'vdev-libudev-compat-git')
-pkgver=r576.ac97c47
+pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
+pkgver=r582.072fd7a
 pkgrel=1
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
@@ -33,10 +33,11 @@ build() {
 }
 
 package_vdev-git() {
-	depends=( 'libpstat' 'fskit' 'util-linux' 'kmod' 'iproute2' 'sed' 'grep' 'device-mapper' 'lvm2' 'fuse' 'dash' )
+	depends=( 'util-linux' 'kmod' 'iproute2' 'sed' 'grep' 'device-mapper' 'lvm2' 'dash' )
 
 	cd "$pkgname"
-	make PREFIX='/usr' \
+	make -C vdevd \
+	     PREFIX='/usr' \
 	     DESTDIR="${pkgdir}" \
 	     SBINDIR="${pkgdir}/usr/bin" \
 	     USRSBINDIR="${pkgdir}/usr/bin" \
@@ -51,6 +52,18 @@ package_vdev-git() {
 	# Config files
 	backup+=( etc/vdev/actions/*.act )
 	backup+=( etc/vdev/*.conf )
+}
+
+package_vdevfs-git() {
+	depends=( 'libpstat' 'fskit' 'fuse' 'libstdc++5' )
+
+	cd "$pkgname"
+	make -C vdevfs \
+	     PREFIX='/usr' \
+	     DESTDIR="${pkgdir}" \
+	     SBINDIR="${pkgdir}/usr/bin" \
+	     USRSBINDIR="${pkgdir}/usr/bin" \
+	install
 }
 
 package_vdev-libudev-compat-git() {
