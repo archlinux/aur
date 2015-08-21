@@ -2,7 +2,7 @@
 
 pkgname=rtbth-dkms
 pkgver=3.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="rtbth Kernel module sources for Ralink RT3290 bluetooth"
 arch=('i686' 'x86_64')
 url='http://www.mediatek.com/'
@@ -25,9 +25,11 @@ prepare() {
 
 package() {
   cd "${srcdir}/${pkgname}-aur-${pkgver}"
-  cd ..
-  mkdir "${pkgdir}"/usr
-  mkdir "${pkgdir}"/usr/src
-  cp -r "${pkgname}-aur-${pkgver}" "${pkgdir}/usr/src/rtbth-${pkgver}"
+  mkdir -p "${pkgdir}"/usr/bin
+  mkdir -p "${pkgdir}"/usr/src
+  mkdir -p "${pkgdir}"/etc/modprobe.d/
+  cp -r ./ "${pkgdir}/usr/src/rtbth-${pkgver}"
+  cp  tools/rtbt "${pkgdir}"/usr/bin/rtbt
+  cp  tools/ralink-bt.conf "${pkgdir}"/etc/modprobe.d/ralink-bt.conf 
 }
 
