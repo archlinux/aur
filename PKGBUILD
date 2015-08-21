@@ -1,13 +1,13 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=symengine-git
 _pkgname=symengine
-pkgver=r2144.2b06a0c
+pkgver=r2437.b873693
 pkgrel=1
 pkgdesc="Fast symbolic manipulation library, written in C++"
 url="http://sympy.org/"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('gmp' 'arb' 'boost-libs' 'gperftools')
+depends=('gmp' 'arb' 'gperftools') # boost-libs
 makedepends=('cmake' 'git' 'boost')
 optdepends=('python2')
 replaces=('csympy-git')
@@ -23,24 +23,24 @@ pkgver() {
 build() {
     cd "$srcdir/$_pkgname"
 
-    sed -i "s/python -c/python2 -c/g" cmake/FindPython.cmake
-    sed -i "s/cython /cython2 /g" cmake/FindCython.cmake
-        
     mkdir -p build && cd build
     cmake .. \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DWITH_PYTHON:BOOL=ON \
-        -DWITH_ARB:BOOL=ON \
-        -DWITH_BOOST:BOOL=ON \
-        -DWITH_PTHREAD:BOOL=ON \
+        -DPYTHON_BIN=python2.7 \
         -DWITH_TCMALLOC:BOOL=ON \
-        -DWITH_SYMENGINE_THREAD_SAFE:BOOL=ON
+        -DWITH_PTHREAD:BOOL=ON \
+        -DWITH_SYMENGINE_THREAD_SAFE:BOOL=ON \
+        -DWITH_ARB:BOOL=ON #\
+#        -DWITH_BOOST:BOOL=ON \
+#        -DBoost_NO_BOOST_CMAKE=TRUE \
+#        -DBoost_NO_SYSTEM_PATHS=TRUE \
+#        -DBOOST_ROOT:PATHNAME=/usr \
+#        -DBoost_LIBRARY_DIRS:FILEPATH=/usr/lib
     make
 }
 
 package() {
     cd "$srcdir/$_pkgname/build"
     make DESTDIR="$pkgdir" install
-
-    mv "$pkgdir"/usr/include/symengine/complex{,_sympy}.h
 }
