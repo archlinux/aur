@@ -28,6 +28,9 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
+	
+	mv fs/main.c fs/main.cpp
+
 	make PREFIX=/usr
 	make -C libudev-compat
 }
@@ -58,7 +61,7 @@ package_vdevfs-git() {
 	depends=( 'libpstat' 'fskit' 'fuse' 'libstdc++5' )
 
 	cd "$pkgname"
-	make -C vdevfs \
+	make -C fs \
 	     PREFIX='/usr' \
 	     DESTDIR="${pkgdir}" \
 	     SBINDIR="${pkgdir}/usr/bin" \
