@@ -4,15 +4,15 @@
 
 pkgname=scribus-svn
 pkgver=20343
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('custom:(L)GPL')
 url="http://www.scribus.net"
 install=${pkgname}.install
-depends=('qt5-webkit' 'hunspell' 'podofo' 'python2' 'libcups'
-	 'graphicsmagick' 'shared-mime-info' 'poppler' 'libcdr' 
-	 'desktop-file-utils' 'libvisio' 'libpagemaker')
+depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
+	 'shared-mime-info' 'poppler' 'libcdr' 'desktop-file-utils'
+	 'libvisio' 'libpagemaker')
 makedepends=('subversion' 'cmake' 'qt5-tools')
 conflicts=('scribus')
 provides=('scribus')
