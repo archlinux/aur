@@ -1,0 +1,16 @@
+pkgbase = vlc-htsp-plugin-git
+	pkgdesc = The HTSP VLC plugin allows VLC to act as a standalone Tvheadend client.
+	pkgver = r147
+	pkgrel = 1
+	url = https://github.com/BtbN/vlc-htsp-plugin/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = vlc
+	provides = vlc-htsp-plugin
+	conflicts = vlc-htsp-plugin
+	source = git+https://github.com/BtbN/vlc-htsp-plugin.git
+	md5sums = SKIP
+
+pkgname = vlc-htsp-plugin-git
+
