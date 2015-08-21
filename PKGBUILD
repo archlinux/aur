@@ -4,7 +4,7 @@
 
 _pkgname=freeminer
 pkgname=${_pkgname}-git
-pkgver=0.4.12.6.r976.g9715672
+pkgver=0.4.13.7.r0.gc58c7a1
 pkgrel=1
 pkgdesc='An open source sandbox game inspired by Minecraft. Development version.'
 arch=('i686' 'x86_64')

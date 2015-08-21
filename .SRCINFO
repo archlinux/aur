@@ -1,6 +1,6 @@
 pkgbase = freeminer-git
 	pkgdesc = An open source sandbox game inspired by Minecraft. Development version.
-	pkgver = 0.4.12.6.r976.g9715672
+	pkgver = 0.4.13.7.r0.gc58c7a1
 	pkgrel = 1
 	url = http://freeminer.org/
 	install = freeminer-git.install
@@ -23,7 +23,7 @@ pkgbase = freeminer-git
 	depends = jsoncpp
 	depends = libvorbis
 	depends = hicolor-icon-theme
-	provides = freeminer=0.4.12.6.r976.g9715672
+	provides = freeminer=0.4.13.7.r0.gc58c7a1
 	conflicts = freeminer
 	source = git+https://github.com/freeminer/freeminer.git
 	source = freeminer-git.install
