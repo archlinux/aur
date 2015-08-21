@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30 
 # Contributor: marlock
 pkgname=android-udev-git
-pkgver=146
+pkgver=149
 pkgrel=1
 pkgdesc='Udev rules to connect Android devices to your linux box'
 arch=('any')
