@@ -1,5 +1,5 @@
 pkgbase = sage-data-cremona_ellcurve
-	pkgdesc = John Cremona's large database of elliptic curves for Sage
+	pkgdesc = John Cremona's large database of elliptic curves for SageMath
 	pkgver = 20150519
 	pkgrel = 1
 	url = http://www.sagemath.org
