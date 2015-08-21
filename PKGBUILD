@@ -1,5 +1,5 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
-# % Trigger: 1440170744 %
+# % Trigger: 1440186708 %
 
 pkgname=fskit-git
 pkgver=r239.1d3423b
