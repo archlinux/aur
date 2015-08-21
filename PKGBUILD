@@ -1,7 +1,8 @@
 # Maintainer: Det <nimetonmaili g-mail>
 # Based on jre: https://aur.archlinux.org/packages/jre/
 
-pkgname=jdk
+pkgname=jdk-arm
+_pkgname=jdk
 _major=8
 _minor=60
 _build=b27
@@ -24,8 +25,8 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
 
 # Variables
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
-_jname=${pkgname}${_major}
-_jvmdir=/usr/lib/jvm/java-$_major-$pkgname
+_jname=${_pkgname}${_major}
+_jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
 
 backup=("etc/java-$_jname/$_carch/jvm.cfg"
         "etc/java-$_jname/images/cursors/cursors.properties"
@@ -42,13 +43,13 @@ backup=("etc/java-$_jname/$_carch/jvm.cfg"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
-install=$pkgname.install
+install=$_pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
-		"http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
+		"http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'b4f0da18e03f7a9623cb073b65dde6c1'
          '8f0ebcead2aecad67fbd12ef8ced1503'
@@ -56,16 +57,16 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '98245ddb13914a74f0cc5a028fffddca'
 		 'cb2e24899fd03551acdef9a33193b758')
 ## Alternative mirror, if your local one is throttled:
-#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")
+#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$_pkgname-$pkgver-linux-x64.gz")
 
 package() {
-    cd ${pkgname}1.${_major}.0_${_minor}
+    cd ${_pkgname}1.${_major}.0_${_minor}
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
-    install -d "$pkgdir"/usr/lib/jvm/java-$_major-$pkgname/bin
+    install -d "$pkgdir"/usr/lib/jvm/java-$_major-$_pkgname/bin
     install -d "$pkgdir"/usr/lib/mozilla/plugins
-    install -d "$pkgdir"/usr/share/licenses/java$_major-$pkgname
+    install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
 
     msg2 "Removing redundancies..."
     rm    db/bin/*.bat
@@ -136,8 +137,8 @@ package() {
     mv man/ "$pkgdir"/usr/share
 
     # Move/link licenses
-    mv COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java$_major-$pkgname/
-    ln -sf /usr/share/licenses/java$_major-$pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
+    mv COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$_pkgname
 
     msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
     # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
@@ -146,7 +147,7 @@ package() {
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
     install -m644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/*.jar jre/lib/security/
     install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/README.txt \
-                   "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
+                   "$pkgdir"/usr/share/doc/$_pkgname/README_-_Java_JCE_Unlimited_Strength.txt
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
