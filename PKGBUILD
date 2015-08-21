@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	make CXX='g++ -fPIC'
+	make
 }
 
 package() {
