@@ -18,7 +18,7 @@ sha256sums_x86_64=('4934d682d5fcac4ba1aa30fa1b8ee0ff98b4ec8b6dbbf433c6f08cd2543f
 sha256sums_i686=('ec361c5a264912f5fc1ab6f95aeb8978732022530324432b4a96f929b79b9f1a')
 
 package() {
-    bsdtar -O -xf "slack-1.1.7-amd64.deb" data.tar.xz | bsdtar -C "$pkgdir" -xJf -
+    bsdtar -O -xf "slack-${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
 
     find "${pkgdir}" -type d -exec chmod 755 {} +
 
