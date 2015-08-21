@@ -1,0 +1,15 @@
+pkgbase = vim-indent-guides
+	pkgdesc = Visually display indent levels in Vim
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=3361
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	source = https://github.com/nathanaelkane/vim-indent-guides/archive/1.6.tar.gz
+	sha256sums = 11c401fb1b23e42536238011c28027e1e2807b210686d94f5f445638bbc075fe
+
+pkgname = vim-indent-guides
+
