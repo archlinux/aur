@@ -1,7 +1,8 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
+# % Trigger: 1440171070 %
 
 pkgname=libpstat-git
-pkgver=r15.5ae5764
+pkgver=r29.f7c42c4
 pkgrel=1
 pkgdesc='Library for getting information about running processes'
 url='https://github.com/jcnelson/libpstat'
