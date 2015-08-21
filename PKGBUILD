@@ -9,6 +9,7 @@ url='https://github.com/jcnelson/libpstat'
 arch=( 'x86_64' 'i686' )
 license=( 'ISC' )
 provides=( 'libpstat' )
+conflicts=( 'libpstat' )
 
 source=( "${pkgname}::git+https://github.com/jcnelson/libpstat.git" )
 sha1sums=( 'SKIP' )
@@ -26,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	make
+	make OS=LINUX
 }
 
 package() {
