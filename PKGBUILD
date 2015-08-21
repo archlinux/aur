@@ -13,11 +13,9 @@ optdepends=("zlib: zlib compression support"
 			"bzip2: bzip2 compression support")
 install=$pkgname.install
 source=("https://github.com/dun/munge/archive/$pkgname-$pkgver.tar.gz"
-        "arch_munge.init"
-        "munged-tmpfiles.conf")
+        "arch_munge.init")
 md5sums=('0b00f0a352f9619f205d41a31a2f3f80'
-         '668942f323275199d35db5a534d9a80e'
-         'b6e6a73c8a678777645ffcdb4b3e9d27')
+         '668942f323275199d35db5a534d9a80e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
@@ -41,7 +39,6 @@ package() {
   rmdir $pkgdir/etc/init.d
 
   install -D -m755 ../arch_munge.init $pkgdir/etc/rc.d/munge
-  install -D -m644 ../munged-tmpfiles.conf $pkgdir/etc/tmpfiles.d/munged-tmpfiles.conf
 
   # /usr/sbin is deprecated in arch, hence using /usr/bin
   sed -i 's/\/usr\/sbin/\/usr\/bin/g' $pkgdir/usr/lib/systemd/system/munge.service
