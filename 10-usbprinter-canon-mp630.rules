@@ -1,0 +1,2 @@
+#mp630
+ATTR{idVendor}=="04a9", ATTR{idProduct}=="172e", MODE:="0660", GROUP:="lp", ENV{libsane_matched}:="yes"
