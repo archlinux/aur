@@ -1,0 +1,7 @@
+post_install() {
+  cat << MSG
+==> See http://www.thedigitalmachine.net/alsaequal.html and the Arch ALSA wiki
+    page for configuration instructions.
+MSG
+}
+
