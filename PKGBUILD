@@ -5,7 +5,7 @@
 
 pkgname=phpdocumentor2
 _pkgreal=phpDocumentor
-pkgver=2.8.2
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="Documentation Generator for PHP"
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=('phpdocumentor')
 install=$pkgname.install
 source=("http://pear.phpdoc.org/get/${_pkgreal}-${pkgver}.tgz"
         "${pkgname}.install")
-sha256sums=('77446ce240393a798fdf092c28c8f0bad2004c7588e338aa3acd320eac0dc20a'
+sha256sums=('17b20d7648392e72064590347f6092f80d67f8c418d759ed54982716dfafebf2'
             'b6066d62de3b131ac4d71a13eea8c6419f62282c7e229dc55b06acf0c8b5b60a')
 
 package() {
