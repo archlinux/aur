@@ -1,0 +1,17 @@
+pkgbase = atlas-maps-beta-bin
+	pkgdesc = Map and navigation application using offline vector maps (beta version)
+	pkgver = 1.2.17
+	pkgrel = 1
+	url = http://wiki.openstreetmap.org/wiki/Atlas_(navigation_application)
+	arch = any
+	license = proprietary (free)
+	depends = java-runtime
+	provides = atlas-maps
+	conflicts = atlas-maps
+	source = http://www.talent.gr/public/atlas/Atlas-Beta-1.2.17.zip
+	source = atlas-maps.sh
+	md5sums = c0d198bbb4d67faa77725d6277e71e2f
+	md5sums = 509caab1fb6ad3990e87890a5dfb7d81
+
+pkgname = atlas-maps-beta-bin
+
