@@ -1,6 +1,6 @@
 pkgbase = armory-git
 	pkgdesc = Full-featured Bitcoin wallet management application
-	pkgver = v0.93.1.r2.g35320e7
+	pkgver = v0.93.2.r0.g73b533c
 	pkgrel = 1
 	url = https://github.com/etotheipi/BitcoinArmory
 	install = armory-git.install

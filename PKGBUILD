@@ -1,7 +1,7 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 pkgname=armory-git
-pkgver=v0.93.1.r2.g35320e7
+pkgver=v0.93.2.r0.g73b533c
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
