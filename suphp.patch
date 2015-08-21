@@ -1,0 +1,12 @@
+diff -uN a/configure.ac b/configure.ac
+--- a/configure.ac  2013-05-20 19:26:56.000000000 +0300
++++ b/configure.ac  2013-05-20 20:33:03.616154646 +0300
+@@ -66,7 +66,7 @@
+                     | cut -f2 -d"/" \
+                     | cut -f1 -d" "`
+     major_version=`echo $APACHE_VERSION|cut -f1,2 -d.`
+-    if test "$major_version" = "2.0" -o "$major_version" = "2.2"; then
++    if test "$major_version" = "2.0" -o "$major_version" = "2.2" -o "$major_version" = "2.4"; then
+       APACHE_VERSION_2=true
+       APACHE_VERSION_1_3=false
+      else
