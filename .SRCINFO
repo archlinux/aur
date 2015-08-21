@@ -1,0 +1,16 @@
+pkgbase = fof++-git
+	pkgdesc = Frets On Fire++, a completely new FoF written in c++.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Salamandar/FoF-.git
+	arch = any
+	groups = games
+	license = GPL
+	makedepends = git
+	depends = boost-libs
+	depends = gcc-libs
+	source = fof++-git::git+https://github.com/Salamandar/FoF-
+	sha256sums = SKIP
+
+pkgname = fof++-git
+
