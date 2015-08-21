@@ -3,18 +3,18 @@
 
 pkgname=aur-comment-fetcher-git
 _gitname=aur-comment-fetcher
-pkgver=r6.14351b6
+pkgver=r13.431dce3
 pkgrel=1
 pkgdesc="A simple script fetching the comments of packages in AUR"
 arch=('any')
 url="https://github.com/mortbauer/aur-comment-fetcher"
 license=('GPL')
-depends=('python-termcolor' 'python-requests' 'python-beautifulsoup4' 'python3-aur')
+depends=('python-click' 'python-requests' 'python-beautifulsoup4' 'python3-aur')
 makedepends=('git')
 provides=('aur-comment-fetcher')
 conflicts=('aur-comment-fetcher')
 source=('git://github.com/mortbauer/aur-comment-fetcher.git')
-sha256sums=('SKIP') 
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
