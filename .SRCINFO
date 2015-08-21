@@ -1,0 +1,26 @@
+pkgbase = ttf-ms-win10
+	pkgdesc = Microsoft Windows 10 TrueType fonts
+	pkgver = 10.0.10240
+	pkgrel = 1
+	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
+	install = ttf-ms-win10.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	provides = ttf-font
+	provides = ttf-ms-fonts
+	provides = ttf-tahoma
+	provides = ttf-vista-fonts
+	provides = ttf-win7-fonts
+	provides = ttf-ms-win8
+	conflicts = ttf-ms-fonts
+	conflicts = ttf-tahoma
+	conflicts = ttf-vista-fonts
+	conflicts = ttf-win7-fonts
+	conflicts = ttf-ms-win8
+
+pkgname = ttf-ms-win10
+

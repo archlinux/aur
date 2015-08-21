@@ -1,0 +1,17 @@
+post_install() {
+  fc-cache -s
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}
+
+post_upgrade() {
+  fc-cache -s
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}
+
+post_remove() {
+  fc-cache -s
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}
