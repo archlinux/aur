@@ -4,7 +4,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=0.9.73
+pkgver=0.9.74
 pkgrel=1
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://developers.google.com/cloud/sdk/"
@@ -17,7 +17,7 @@ makedepends=('python2')
 optdepends=('go: for Go version of App Engine'
             'java-environment: for Java version of App Engine'
             'php: for PHP version of App Engine')
-md5sums=('ef65f9dca55a6ee5bb7829a3d6f2fcea'
+md5sums=('9225a49f5edd59b9202f909d730dcb10'
          'd7c7ccb7d32a871d67288228f5b4cd94')
 options=('!strip' 'staticlibs')
 
@@ -38,15 +38,16 @@ package() {
 
 	msg2 "Fixing python references..."
 	grep -rl 'python' "$pkgdir/opt/$pkgname" | xargs sed -i 's|#!.*python\b|#!/usr/bin/env python2|g'
-	find "$pkgdir/opt/google-cloud-sdk/bin/" -type f -maxdepth 1 -exec sed -i 's/CLOUDSDK_PYTHON=python/CLOUDSDK_PYTHON=python2/g' {} \;
+	find "$pkgdir/opt/google-cloud-sdk/bin/" -maxdepth 1 -type f -exec sed -i 's/CLOUDSDK_PYTHON=python/CLOUDSDK_PYTHON=python2/g' {} \;
 
-	msg2 "Installing man pages"
-	mkdir -p "$pkgdir/usr/share"
-	mv "$pkgdir"/opt/google-cloud-sdk/help/man "$pkgdir"/usr/share/
+	# These were removed from 0.9.73 -> 0.9.74
+	#msg2 "Installing man pages"
+	#mkdir -p "$pkgdir/usr/share"
+	#mv "$pkgdir"/opt/google-cloud-sdk/help/man "$pkgdir"/usr/share/
 
 	msg2 "Creating symlinks for binaries"
 	mkdir -p "$pkgdir/usr/bin"
-	find "$pkgdir/opt/$pkgname/bin" -type f -maxdepth 1 -printf "/opt/$pkgname/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin"
+	find "$pkgdir/opt/$pkgname/bin" -maxdepth 1 -type f -printf "/opt/$pkgname/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin"
 
 	msg2 "Cleaning files and folders"
 	rm -rf "$pkgdir/opt/google-cloud-sdk/.install/"
