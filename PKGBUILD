@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sly-git
-pkgver=beta.98.g1d1eb86
+pkgver=1.0.0.beta.101.gfe4f565
 pkgrel=1
 pkgdesc="Common Lisp IDE for Emacs. Fork of slime."
 arch=('any')
 url="https://github.com/capitaomorte/sly"
 license=('custom')
-depends=('emacs')
+depends=('emacs' 'gawk')
 makedepends=('git')
 provides=('sly')
 conflicts=('sly')
@@ -17,7 +17,7 @@ _gitname="sly"
 
 pkgver() {
   cd "$srcdir"/"$_gitname"
-  echo $(git describe --tags | sed 's|-|.|g' | cut -c7-)
+  echo $(git describe --tags | sed 's|-|.|g')
 }
 
 build() {
