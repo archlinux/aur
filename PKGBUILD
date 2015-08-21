@@ -7,7 +7,6 @@ arch=('any')
 url="http://packages.debian.org/source/sid/molly-guard" # Didn't find anything else
 license=('Artistic2.0')
 depends=('openssh' 'run-parts')
-conflicts=('systemd-sysvcompat')
 makedepends=('docbook-xsl')
 source=("http://ftp.de.debian.org/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.orig.tar.gz" 'molly-guard.sh')
 md5sums=('891b8b2762cb658140214acd2e54dc9b'
