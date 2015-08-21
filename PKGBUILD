@@ -3,9 +3,9 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=polkit-consolekit
-pkgver=0.112
+pkgver=0.113
 pkgrel=2
-pkgdesc="PolyciKit with ConsoleKit support for non-systemd systems"
+pkgdesc="PolicyKit with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://www.freedesktop.org/wiki/Software/polkit"
@@ -39,5 +39,5 @@ package() {
   install -m644 "$srcdir/polkit.pam" "$pkgdir/etc/pam.d/polkit-1"
 }
 
-md5sums=('b0f2fa00a55f47c6a5d88e9b73f80127'
+md5sums=('4b77776c9e4f897dcfe03b2c34198edf'
          '6564f95878297b954f0572bc1610dd15')
