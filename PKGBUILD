@@ -1,6 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 pkgname=phpmetrics
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=2
 pkgdesc="A static analysis tool for PHP"
 url="http://www.phpmetrics.org/"
@@ -10,7 +10,7 @@ depends=("php")
 install="${pkgname}.install"
 source=("https://github.com/Halleck45/PhpMetrics/raw/v${pkgver}/build/${pkgname}.phar"
         "https://raw.githubusercontent.com/Halleck45/PhpMetrics/v${pkgver}/LICENSE")
-sha512sums=('bc83bb187268e09a6d7e52fb72704ecae73a5cbf8e3afb5be18c5478a32da09eb769cecf70c223da304a62aeda3c130d3d8ee1e1867c96ad83917748620898f1'
+sha512sums=('89642602cd2e9ccf77bd12d9ccaa26afba835d397dec6659c7c907625feeb189c9106316d8a193b390f072d49f990b28f6cfff7e5c8e9fdb3ac8399a4f6f0add'
             'be822058c3c747ff43933ef66163ae99ed3901f8633f561811ada1d7d761309188301ae6ace33d3f53195793f0a500462ee666c7089faa2c80b6d9809a1b61b3')
 
 package() {
