@@ -1,0 +1,57 @@
+post_remove() {
+	update-mime-database /usr/share/mime
+	update-desktop-database -q
+	gtk-update-icon-cache
+	[[ -z $2 ]] && echo -e "Stopping conveyor.service"
+	[[ -z $2 ]] && echo -e "Disabling conveyor.service"
+	systenctl disable conveyor 2>/dev/null
+	userdel -r conveyor >/dev/null 2>/dev/null
+	[[ -z "$2" ]] && echo -e "Restoring /run/lock's permissions"
+	chmod g-w /run/lock
+	true
+}
+
+post_install() {
+	## Reuse post_remove code
+	post_remove "null" "null"
+	
+	## Create conveyor user
+	echo -e "\nAdding user: conveyor"
+	if ! getent passwd conveyor >/dev/null; then
+		useradd --system \
+			-M -d /dev/null \
+			--shell /bin/false conveyor
+		gpasswd -a conveyor lp
+		gpasswd -a conveyor uucp
+	fi
+	# Create and set permissions for /var/run/conveyor
+	mkdir -p -m 3777 /var/run/conveyor
+	chmod g+s /var/run/conveyor
+	chgrp conveyor /var/run/conveyor
+	# Set proper permissions for any existing lock files
+	chgrp conveyor /var/run/conveyor/* >/dev/null 2>&1 || true
+	chown conveyor /var/run/conveyor/* >/dev/null 2>&1 || true
+	chmod 0644 /var/run/conveyor/* >/dev/null 2>&1 || true
+
+	# Create and set permissions for /var/log/conveyor
+	mkdir -p -m 3777 /var/log/conveyor
+	chmod g+w /var/log/conveyor
+	chgrp conveyor /var/log/conveyor
+	# Set proper permissions for any existing log files
+	chgrp conveyor /var/log/conveyor/* >/dev/null 2>&1 || true
+	chown conveyor /var/log/conveyor/* >/dev/null 2>&1 || true
+	chmod 0664 /var/log/conveyor/* >/dev/null 2>&1 || true
+	
+	echo -e "Changing /run/lock's permissions. Setting g+w"
+	chmod g+w /run/lock
+	
+	gpasswd -a conveyor root
+	
+	## Enable and start conveyor service
+	echo -e "Enabling and starting conveyor.service"
+	systemctl enable conveyor
+	systemctl start conveyor
+}
+
+
+
