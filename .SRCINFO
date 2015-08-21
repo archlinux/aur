@@ -6,10 +6,13 @@ pkgbase = python-slumber
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python2-setuptools
 	source = https://pypi.python.org/packages/source/s/slumber/slumber-0.7.1.tar.gz
 	md5sums = 58fe531e23b7324b9fbd3faa89a115e2
 
 pkgname = python-slumber
 	depends = python-requests
+
+pkgname = python2-slumber
+	depends = python2-requests
 
