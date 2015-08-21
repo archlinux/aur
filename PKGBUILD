@@ -1,8 +1,9 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
+# % Trigger: 1440170744 %
 
 pkgname=fskit-git
-pkgver=r209.bddabd0
-pkgrel=2
+pkgver=r239.1d3423b
+pkgrel=1
 pkgdesc='Filesystem utility library and SDK'
 url='https://github.com/jcnelson/fskit.git'
 arch=( 'x86_64' 'i686' )
