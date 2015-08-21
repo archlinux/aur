@@ -26,8 +26,7 @@ sha256sums=('f0cf09c2cbd801e65f0e6388889a4ac6efbc0f832799864314e67f14ff7da56d'
             'a4ed852bad975451d528f5d38ce551ec53ff121926ee493dc6ec0d869f67636a'
             '03ca791dd57d6b64c7e79d0c98b45616ce9f0de4a432481728e1c52dbc96fd94'
             'eeac4dcd17849be75bcc30c879bab365091835c328c209218fa3749b6ab94461'
-            '69081aeaae634403fb19183225d2f948a13015055b5d7fdd53010503bc79ef5d')
-
+            'd7e2dd6116e63a0ba3e0b55d3fb920161ec59df3b5e944b0a0b9206221d7841a')
 prepare() {
 	#patching
 	cd $srcdir/cnijfilter-common-$pkgver
