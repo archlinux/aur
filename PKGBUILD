@@ -6,7 +6,7 @@
 pkgbase=linux-fbcondecor               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.1
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
+            '64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
             '4289c86cd918f34c9a147339247ccbaf5d27a023b91d929e09ab6b05fd151bf9'
