@@ -2,7 +2,7 @@
 # Maintainer:  saxonbeta <saxonbeta at gmail __com
 pkgname=elmerfem
 pkgver=8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver."
 arch=('i686' 'x86_64')
 url="http://www.csc.fi/english/pages/elmer"
@@ -28,12 +28,13 @@ build() {
         -DELMER_SOLVER_HOME=/usr/share/elmersolver \
         -DWITH_MPI:BOOL=TRUE \
         -DWITH_OpenMP:BOOL=TRUE \
-        -DWITH_ELMERGUI:BOOL=TRUE \
         -DWITH_QWT:BOOL=TRUE \
         -DWITH_VTK:BOOL=TRUE \
-        -DWITH_ELMERPOST:BOOL=TRUE \
-        -DWITH_ELMERGUILOGGER:BOOL=TRUE
-
+        -DWITH_ELMERGUI:BOOL=TRUE \
+        -DWITH_ELMERGUILOGGER:BOOL=TRUE \
+        #Deprecated
+        -DWITH_ELMERPOST:BOOL=TRUE
+        
     make all
 }
 
@@ -50,7 +51,7 @@ package() {
     
     ln -s ElmerSolver_mpi "${pkgdir}/usr/bin/ElmerSolver"
     rm -- $pkgdir/usr/lib/{libparpack.so,libarpack.so}
-    mv “${pkgdir}/usr/share/elmersolver/lib/*.so” “$pkgdir/usr/lib”
-    cp “${pkgdir}/usr/share/ElmerGUI/edf-extra/*” “${pkgdir}/usr/share/ElmerGUI/edf/”
+    mv $pkgdir/usr/share/elmersolver/lib/*.so $pkgdir/usr/lib
+    cp $pkgdir/usr/share/ElmerGUI/edf-extra/* ${pkgdir}/usr/share/ElmerGUI/edf/
 }
  
