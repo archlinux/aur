@@ -1,7 +1,7 @@
 pkgbase = sugar
 	pkgdesc = Sugar is the core component of a worldwide effort to provide every child with equal opportunity for a quality education
 	pkgver = 0.106.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sugarlabs.org/
 	install = sugar.install
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = sugar
 	depends = python2-dateutil
 	depends = sugar-toolkit-gtk3
 	depends = python2-simplejson
-	depends = python2-gwebsockets-git
+	depends = python2-gwebsockets
 	source = http://download.sugarlabs.org/sources/sucrose/glucose/sugar/sugar-0.106.0.tar.xz
 	md5sums = 420ec473500fdd94218409c6eee84c86
 
