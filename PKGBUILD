@@ -14,7 +14,7 @@ md5sums=('e851064cfbee414de3190b01d351a0dc')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-shared --disable-static
   make
 }
 
