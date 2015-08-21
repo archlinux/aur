@@ -2,7 +2,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=r72137.f6b8b96
+pkgver=r74550.907373e
 pkgrel=1
 pkgdesc="Universal multimedia toolkit"
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ build() {
   ./configure            \
     --prefix=/usr        \
     --shlibdir=/usr/lib  \
+	--pkg-config-flags="--static" \
     --disable-static     \
     --enable-gpl         \
 	--enable-gnutls      \
