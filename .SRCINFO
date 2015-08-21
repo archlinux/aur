@@ -1,0 +1,12 @@
+pkgbase = akonadi-fake-qt4
+	pkgdesc = A fake empty akonadi-qt4 package for those who don't want akonadi installed on their system. Derived from the akonadi-fake package.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/akonadi-fake-qt4/
+	arch = any
+	license = GPL
+	provides = akonadi-qt4
+	replaces = akonadi-qt4
+
+pkgname = akonadi-fake-qt4
+
