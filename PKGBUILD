@@ -407,6 +407,7 @@ if [ "${_opt_IncludeWin7Fonts}" -ne 0 ]; then
 'SEGOEUI.TTF' 'SEGOEUIB.TTF' 'SEGOEUII.TTF' 'SEGOEUIZ.TTF' # In ttf-win7-fonts
 )
 _fonts=("${_fonts[@],,}")
+# Fonts from the Office 2007 DVD
 _fnt256sums+=(
   '8316b1b5c1e47aad6220e10c83537cd32704e99e7885aabf56a1d897b3d3f1ee' # 187 calibri.ttf   Version 1.02 Calibri
   '5fc2218b5ef0ca1edabe1e694eb6a710f505c8c865a27e377c79d987a9a336e2' # 188 calibrib.ttf  Version 1.02 Calibri Bold
@@ -543,8 +544,8 @@ _fnt256sumsx+=(
   '6ca040031a8387ad3a7fb815f896fdbd21fa181ad6fe19e5a193a72bf6a7d396' # 193 cambriai.ttf  Version 5.90 Cambria Italic
   '9cbc78f6fe5ffec33ca9240e64f48ae2c5b158cfacb0a1f6a40521e8d06045b6' # 194 cambriaz.ttf  Version 5.90 Cambria Bold Italic
 
-# Copying from Office2007 on Vista will get you these fonts from the Vista DVD.
-# It appears that Vista didn't have the constantly updated font that Windows 7 and 8 do.
+# Fonts from the Vista DVD
+# It appears that Vista didn't have the constantly updated fonts that Windows 7 and 8 do.
   '41b9212abf5fac93dfda4ac485bd72a01ade998eefb12dca6f2a97d884624975' # 187 calibri.ttf   Version 5.00 Calibri
   'aaedcd4eec7529d3131a6475665260ab31bf7a18dd903a983167b65d00197614' # 188 calibrib.ttf  Version 5.00 Calibri Bold
   '294924218fa4cc98bc53cf94d4e25d243a59385f9648b7fe4102f4ae399c0e3d' # 189 calibrii.ttf  Version 5.00 Calibri Italic
