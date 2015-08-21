@@ -1,14 +1,14 @@
 # Maintainer: Luca Béla Palkovics <luca.bela.palkovics@gmail.com>
 
 pkgrel=1
-pkgver=alpha.r31.g7453953
+pkgver=alpha.r34.ga4bbc05
 pkgname=('gtox-git')
 pkgdesc="a GTK-based tox-client"
 url="https://github.com/KoKuToru/gTox.git"
 license='GPL3'
 arch=('i686' 'x86_64')
-depends=('gtkmm3' 'libconfig' 'gettext' 'desktop-file-utils' 'gtk-update-icon-cache' 'gstreamermm' 'flatbuffers' 'tox-git')
-makedepends=('check' 'git' 'cmake' 'librsvg')
+depends=('gtkmm3' 'gettext' 'desktop-file-utils' 'gtk-update-icon-cache' 'gstreamermm' 'flatbuffers' 'tox-git')
+makedepends=('git' 'cmake' 'librsvg')
 source=("${pkgname%-git}::git+https://github.com/KoKuToru/gTox.git#branch=AUR")
 conflicts=('gtox')
 install="gTox.install"
