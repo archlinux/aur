@@ -1,0 +1,10 @@
+[Unit]
+Description=Pertino Client that provides access to the Pertino Network.
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pGateway
+Restart=on-abort
+
+[Install]
+WantedBy=basic.target
