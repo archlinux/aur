@@ -5,7 +5,7 @@
 _npmname=grunt-cli
 pkgname=nodejs-$_npmname
 pkgver=0.1.13
-pkgrel=5
+pkgrel=6
 pkgdesc="The grunt command line interface."
 arch=('any')
 url="http://gruntjs.com/"
@@ -21,4 +21,6 @@ package() {
   mkdir -p "$_npmdir"
   cd "$_npmdir"
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+
+  rmdir "$pkgdir"/usr/etc
 }

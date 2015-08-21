@@ -1,7 +1,7 @@
 pkgbase = nodejs-grunt-cli
 	pkgdesc = The grunt command line interface.
 	pkgver = 0.1.13
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gruntjs.com/
 	arch = any
 	license = MIT
