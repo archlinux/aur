@@ -1,7 +1,7 @@
 # Contributor: fill <mailbox@fillo.ru>
 
 pkgname=flashrom-svn
-pkgver=0.9.8.r1888
+pkgver=0.9.8.r1896
 pkgrel=1
 pkgdesc='Flashrom is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI).'
 url='http://www.flashrom.org/'
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd flashrom
-  make
+  CONFIG_DEDIPROG=yes make
 }
 
 package() {

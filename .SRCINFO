@@ -1,6 +1,6 @@
 pkgbase = flashrom-svn
 	pkgdesc = Flashrom is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI).
-	pkgver = 0.9.8.r1888
+	pkgver = 0.9.8.r1896
 	pkgrel = 1
 	url = http://www.flashrom.org/
 	arch = i686
