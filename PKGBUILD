@@ -1,38 +1,39 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=xtrkcad-hg
-pkgver=576.1707c9d938c9
-pkgrel=1
+pkgver=671.4bbd80c266cb
+pkgrel=2
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('gtk2' 'webkitgtk2')
-optdepends=()
 makedepends=('cmake' 'mercurial' 'gettext')
 conflicts=('xtrkcad')
-provide=('xtrkcad')
-replaces=()
-backup=()
-_hgroot='http://xtrkcad-fork.hg.sourceforge.net:8000/hgroot/xtrkcad-fork'
-_hgrepo='xtrkcad'
-source=(hg+http://xtrkcad-fork.hg.sourceforge.net:8000/hgroot/xtrkcad-fork/xtrkcad)
-sha512sums=(SKIP)
+provides=('xtrkcad')
+source=(hg+http://hg.code.sf.net/p/xtrkcad-fork/xtrkcad)
+sha512sums=('SKIP')
+_hgname='xtrkcad'
 
 pkgver() {
-  cd ${srcdir}/${_hgrepo}
+  cd ${_hgname}
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+}
+
+pkgver() {
+  cd ${_hgname}
   echo $(hg identify -n).$(hg identify -i)
 }
 
 build() {
-  cd ${srcdir}/${_hgrepo}
+  cd ${_hgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_EXE_LINKER_FLAGS="-lm" -DCMAKE_BUILD_TYPE="Release" -DXTRKCAD_USE_GETTEXT="ON"
   make
 }
 
 package() {
-  cd ${srcdir}/${_hgrepo}
+  cd ${_hgname}
   make DESTDIR=${pkgdir} install
-  install -Dm644 "${srcdir}/${_hgrepo}/app/lib/xtrkcad.desktop" "${pkgdir}/usr/share/applications/xtrkcad.desktop"
-  install -Dm644 "${srcdir}/${_hgrepo}/app/lib/icon.png" "${pkgdir}/usr/share/pixmaps/xtrkcad.png"
+  install -Dm644 "app/lib/xtrkcad.desktop" "${pkgdir}/usr/share/applications/xtrkcad.desktop"
+  install -Dm644 "app/lib/icon.png" "${pkgdir}/usr/share/pixmaps/xtrkcad.png"
 }
 
