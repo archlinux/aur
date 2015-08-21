@@ -3,7 +3,7 @@
 
 pkgname=libpstat-git
 pkgver=r29.f7c42c4
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for getting information about running processes'
 url='https://github.com/jcnelson/libpstat'
 arch=( 'x86_64' 'i686' )
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	make OS=LINUX
+	make CFLAGS="-fPIC $CFLAGS"
 }
 
 package() {
