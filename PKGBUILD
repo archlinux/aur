@@ -13,7 +13,7 @@ depends=("aria2" "python")
 makedepends=("git")
 provides=("$_name")
 conflicts=("$_name")
-source=(git://github.com/baskerville/diana)
+source=(git+https://github.com/baskerville/diana)
 sha512sums=(SKIP)
 
 pkgver() {

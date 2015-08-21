@@ -10,7 +10,7 @@ pkgbase = diana-git
 	depends = python
 	provides = diana
 	conflicts = diana
-	source = git://github.com/baskerville/diana
+	source = git+https://github.com/baskerville/diana
 	sha512sums = SKIP
 
 pkgname = diana-git
