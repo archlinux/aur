@@ -65,12 +65,13 @@ pre_remove() {
 }
 
 post_remove() {
-  echo -e "\e[34;1m==>\e[39;1m Removing the munge user and group from the system... \e[0m"
-  userdel munge
+    # Removing obsolete dir
+    rm -rf /var/run/munge
 
-  rm -rf /var/run/munge
+	# Notifying the user of kept dirs and change owner
+	[ -d /etc/munge ] && chown root:root -R /etc/munge && echo -e "\e[34;1m==>\e[39;1m NOTE: Custom configuration-file(s) in /etc/munge/ were kept on your system.\e[0m"
+	[ -d /var/log/munge ] && chown root:root -R /var/log/munge && echo -e "\e[34;1m==>\e[39;1m NOTE: Logfiles were preserved. They reside under /var/log/munge .\e[0m"
 
-  # notifying the user of kept dirs
-  [ -d /etc/munge ] && echo -e "\e[34;1m==>\e[39;1m NOTE: Custom configuration-file(s) in /etc/munge/ were kept on your system.\e[0m"
-  [ -d /var/log/munge ] && echo -e "\e[34;1m==>\e[39;1m NOTE: Logfiles were preserved. They reside under /var/log/munge .\e[0m"
+	echo -e "\e[34;1m==>\e[39;1m Removing the munge user and group from the system... \e[0m"
+	userdel munge
 }

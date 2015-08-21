@@ -3,7 +3,7 @@
 
 pkgname=munge
 pkgver=0.5.11
-pkgrel=4
+pkgrel=5
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64')
 url="https://github.com/dun/munge/wiki"
