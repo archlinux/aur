@@ -1,0 +1,13 @@
+pkgbase = liblscp
+	pkgdesc = LinuxSampler Control Protocol C++ library
+	pkgver = 0.5.6
+	pkgrel = 2
+	url = http://www.linuxsampler.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = http://download.linuxsampler.org/packages/liblscp-0.5.6.tar.gz
+	md5sums = f5f076af8fd83767889a66abc1da21d5
+
+pkgname = liblscp
+
