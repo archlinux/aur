@@ -3,7 +3,7 @@
 
 pkgname=libpstat-git
 pkgver=r29.f7c42c4
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for getting information about running processes'
 url='https://github.com/jcnelson/libpstat'
 arch=( 'x86_64' 'i686' )
