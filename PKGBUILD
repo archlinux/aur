@@ -2,7 +2,7 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 # % Trigger: 1439307323 %
 
-pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
+pkgname=('vdev-git' 'vdev-libudev-compat-git')
 pkgver=r582.072fd7a
 pkgrel=2
 pkgdesc='A virtual device manager for *nix'
@@ -27,7 +27,10 @@ pkgver() {
 build() {
 	cd "${pkgname}"
 	
-	make PREFIX=/usr
+	make PREFIX=/usr -C vdevd
+	make PREFIX=/usr -C hwdb
+#	make PREFIX=/usr -C fs
+
 	make -C libudev-compat
 }
 
@@ -51,6 +54,8 @@ package_vdev-git() {
 	     USRSBINDIR="${pkgdir}/usr/bin" \
 	install
 
+	make PREFIX=/usr -C hwdb install
+
 	cd "$pkgdir"
 
 	# There is no way to tell the Makefile not to install these.
@@ -62,19 +67,19 @@ package_vdev-git() {
 	backup+=( etc/vdev/*.conf )
 }
 
-package_vdevfs-git() {
-	depends=( 'libpstat' 'fskit' 'fuse' 'libstdc++5' )
-	provides=( 'vdevfs' )
-	conflicts=( 'vdevfs' )
-
-	cd vdev-git
-	make -C fs \
-	     PREFIX='/usr' \
-	     DESTDIR="${pkgdir}" \
-	     SBINDIR="${pkgdir}/usr/bin" \
-	     USRSBINDIR="${pkgdir}/usr/bin" \
-	install
-}
+#package_vdevfs-git() {
+#	depends=( 'libpstat' 'fskit' 'fuse' 'libstdc++5' )
+#	provides=( 'vdevfs' )
+#	conflicts=( 'vdevfs' )
+#
+#	cd vdev-git
+#	make -C fs \
+#	     PREFIX='/usr' \
+#	     DESTDIR="${pkgdir}" \
+#	     SBINDIR="${pkgdir}/usr/bin" \
+#	     USRSBINDIR="${pkgdir}/usr/bin" \
+#	install
+#}
 
 package_vdev-libudev-compat-git() {
 	provides=( "libudev" 'libudev.so' )
