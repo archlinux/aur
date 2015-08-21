@@ -797,7 +797,7 @@ fi
       # To keep things safe does make the command a bit complex. I'm hoping this is histexpand safe.
       echo 'You can easily upgrade to read or write access without losing your files with:'
       echo "Write: test -s PKGBUILD -a '!' -d .git -a '!' -d '${_var_pwdbn}.aurtmp' && { git clone 'ssh://aur@${_opt_AUR4}.archlinux.org/${_var_pwdbn}.git' '${_var_pwdbn}.aurtmp' && mv '${_var_pwdbn}.aurtmp/.git' . && rm -rf '${_var_pwdbn}.aurtmp'} || echo 'How about NO!'"
-      echo "Read: test -s PKGBUILD -a '!' -d .git -a '!' -d '${_var_pwdbn}.aurtmp' && { git clone 'https://${_opt_AUR4}.archlinux.org/${_var_pwdbn}.git/ '${_var_pwdbn}.aurtmp'' && mv '${_var_pwdbn}.aurtmp/.git' . && rm -rf '${_var_pwdbn}.aurtmp'} || echo 'How about NO!'"
+      echo "Read: test -s PKGBUILD -a '!' -d .git -a '!' -d '${_var_pwdbn}.aurtmp' && { git clone 'https://${_opt_AUR4}.archlinux.org/${_var_pwdbn}.git/' '${_var_pwdbn}.aurtmp' && mv '${_var_pwdbn}.aurtmp/.git' . && rm -rf '${_var_pwdbn}.aurtmp'} || echo 'How about NO!'"
     fi
     [ $returnv -ge 3 ] || returnv=3
   fi
