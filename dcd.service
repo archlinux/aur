@@ -1,0 +1,13 @@
+[Unit]
+Description=DCD server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dcd-server
+ExecReload=/bin/kill $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

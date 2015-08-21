@@ -1,0 +1,24 @@
+pkgbase = dcd-git
+	pkgdesc = D Completion Daemon: auto-complete for the D programming language
+	pkgver = r608.f018754
+	pkgrel = 1
+	url = https://github.com/Hackerpilot/DCD
+	arch = i686
+	arch = x86_64
+	groups = dlang
+	license = GPL3
+	makedepends = dmd
+	makedepends = git
+	depends = libphobos
+	provides = dcd
+	conflicts = dcd
+	options = !strip
+	source = git+https://github.com/Hackerpilot/DCD
+	source = dcd.service
+	source = dcd.conf
+	sha256sums = SKIP
+	sha256sums = 7d3483ee92e42101d07395775aac5f0b277780f847c3823879fb35d1f2a9fbb3
+	sha256sums = fb765020c49a918b157f5be2cabd71c16bbb050ddd762f1e08c84d1eddd4c97b
+
+pkgname = dcd-git
+
