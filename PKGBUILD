@@ -48,10 +48,6 @@ package_vdev-git() {
 
 	cd "$pkgdir"
 
-	# There is no way to tell the Makefile not to install these.
-	rm etc/init.d/vdev
-	rmdir etc/init.d
-
 	# Config files
 	backup+=( etc/vdev/actions/*.act )
 	backup+=( etc/vdev/*.conf )
