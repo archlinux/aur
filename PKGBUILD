@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL')
 depends=('bash' 'pkgbuild-introspection' 'git' 'pcre2')
 source=("${pkgname}.sh")
-sha256sums=('cee8f3e7ac7016f7caf99acace019cecf1a691cb0288493b73dff21f97bd26b8')
+sha256sums=('62ea69b8f33f670e0c4d6477765632a475bbe8d89135589402faf324635f1901')
 
 #install='installfoo'; source+=("${install}") # generate errors for us to detect
 #changelog='changefoo'; source+=("${changelog}")
