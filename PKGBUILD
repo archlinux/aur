@@ -3,7 +3,7 @@
 # Adapted for development version and new Python3 environment
 # 
 pkgname=wikidpad-dev
-pkgver=2.3beta12
+pkgver=2.3beta13_01
 pkgrel=1
 pkgdesc="wikidPad is a Wiki-like notebook for storing your thoughts, ideas, todo lists, contacts, or anything else you can think of to write down. [Development version]"
 arch=('any')
@@ -21,7 +21,7 @@ source=(http://downloads.sourceforge.net/wikidpad/WikidPad-$pkgver-src.zip
 )
 
 noextract=(WikidPad-$pkgver-src.zip)
-md5sums=('0a29912e96a0bb74ace1b93824e58145'
+md5sums=('bee0713652c1598470d46c14fed363d8'
          '37ff74df2af02a091c7b8d8533d5ad2b'
          'e93014425c38f4a7a023258fde5ac512'
          'c44e552a8b856610a3e859d1602d5cf1') 
