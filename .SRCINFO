@@ -1,7 +1,7 @@
 pkgbase = freeminer
 	pkgdesc = An open source sandbox game inspired by Minecraft.
 	pkgver = 0.4.13.7
-	pkgrel = 5
+	pkgrel = 1
 	url = http://freeminer.org/
 	install = freeminer.install
 	arch = i686

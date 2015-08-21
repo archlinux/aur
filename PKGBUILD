@@ -3,7 +3,7 @@
 
 pkgname=freeminer
 pkgver=0.4.13.7
-pkgrel=5
+pkgrel=1
 pkgdesc='An open source sandbox game inspired by Minecraft.'
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
