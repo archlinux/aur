@@ -2,7 +2,7 @@
 
 pkgname=rbdyn-git
 _name=rbdyn
-pkgver=20150701
+pkgver=20150821
 pkgver() {
   date +%Y%m%d
 }
@@ -14,7 +14,7 @@ license=('GPLv3')
 depends=('eigen3' 'python2' 'spacevecalg')
 makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost' 'python2-pybindgen')
 provides=('rbdyn')
-source=("${_name}::git+https://github.com/bchretien/RBDyn")
+source=("${_name}::git+https://github.com/jorisv/RBDyn")
 md5sums=('SKIP')
 
 build()

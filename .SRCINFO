@@ -1,6 +1,6 @@
 pkgbase = rbdyn-git
 	pkgdesc = A set of classes and functions to model the dynamics of rigid body systems.
-	pkgver = 20150701
+	pkgver = 20150821
 	pkgrel = 1
 	url = https://github.com/jorisv/RBDyn
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = rbdyn-git
 	depends = python2
 	depends = spacevecalg
 	provides = rbdyn
-	source = rbdyn::git+https://github.com/bchretien/RBDyn
+	source = rbdyn::git+https://github.com/jorisv/RBDyn
 	md5sums = SKIP
 
 pkgname = rbdyn-git
