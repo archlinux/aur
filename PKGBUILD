@@ -6,8 +6,8 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=44.0.2403.155
-pkgrel=2
+pkgver=44.0.2403.157
+pkgrel=1
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
         0001-Demand-for-newer-POSIX-macro.patch
         chromium-widevine.patch)
-sha256sums=('eba271c210a020dd61b72c940abeecdafc562a1d15fb45615dda72bcb6219f3c'
+sha256sums=('e1a4d5fd030842684d69e840d411f45b4e5ccf377d7f131fe37ce1a13439f3b4'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
