@@ -1,5 +1,5 @@
-pkgbase = jdk
-	pkgdesc = Oracle Java Development Kit
+pkgbase = jdk-arm
+	pkgdesc = Oracle Java Development Kit (v8) for armv7h and armv6h
 	pkgver = 8u60
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -59,5 +59,5 @@ pkgbase = jdk
 	md5sums = 98245ddb13914a74f0cc5a028fffddca
 	md5sums = cb2e24899fd03551acdef9a33193b758
 
-pkgname = jdk
+pkgname = jdk-arm
 
