@@ -54,7 +54,7 @@ package_vdev-git() {
 	     USRSBINDIR="${pkgdir}/usr/bin" \
 	install
 
-	make PREFIX=/usr -C hwdb install
+	make DESTDIR="${pkgdir}" PREFIX=/usr -C hwdb install
 
 	cd "$pkgdir"
 
