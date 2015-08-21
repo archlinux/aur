@@ -2,7 +2,7 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=freeminer
-pkgver=0.4.12.6
+pkgver=0.4.13.7
 pkgrel=5
 pkgdesc='An open source sandbox game inspired by Minecraft.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://freeminer.org/'
 license=('GPL3' 'CCPL:cc-by-sa-3.0')
 
 depends=('irrlicht' 'leveldb' 'libvorbis' 'openal' 'sqlite' 'curl' 'luajit' 'xdg-utils' 'hicolor-icon-theme' 'hiredis')
-makedepends=('cmake' 'msgpack-c-0.5')
+makedepends=('cmake' 'msgpack-c')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
@@ -21,7 +21,7 @@ source=(
 	"${pkgname}.install"
 )
 sha512sums=(
-	'046f08088e500c6cc2f454c1b7599a7829b9b865a14240dfa7d0d3ded5dd2daf12f2c9f9bed2c9620f44983b0b4c23e9abaddf10bcd8252eb6593722ea5b87fd'
+	'd650bf3b2f471407d448f080f6cf16af818b4c72607b8e2b1c5e36e0c8ed8447c944a3f148a90de410f507f0eb999a28d77e2de8798f3280559c94d39a2ac505'
 	'd590345e9b87e4350b7420eebf8f69e4ad65a53415257573b569ed1c85568a40b4f65fc8df5925f7c03af75d340c52a10a4d1389e5d868816aef9711102ebef1'
 )
 
