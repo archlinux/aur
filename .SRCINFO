@@ -1,0 +1,17 @@
+pkgbase = acpica
+	pkgdesc = An implementation of the ACPI specification. Contains tools like acpidump, iasl, acpixtract, etc.
+	pkgver = 20150515
+	pkgrel = 2
+	url = https://www.acpica.org/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = flex
+	makedepends = bison
+	depends = glibc
+	conflicts = iasl
+	source = https://acpica.org/sites/acpica/files/acpica-unix-20150515.tar.gz
+	md5sums = c8c128b2d4859b52bc9c802faba2e908
+
+pkgname = acpica
+
