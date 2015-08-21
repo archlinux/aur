@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 0.9.3.r257.ge624cde
+	pkgver = 0.9.3.r332.g21b71b6
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -22,6 +22,8 @@ pkgbase = matrix-synapse-git
 	depends = python2-pillow
 	depends = python2-pydenticon
 	depends = python2-ujson
+	depends = python2-blist
+	depends = python2-pysaml2
 	depends = python2-matrix-angular-sdk-git
 	provides = matrix-synapse
 	conflicts = matrix-synapse
