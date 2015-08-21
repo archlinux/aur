@@ -9,6 +9,7 @@ pkgbase = rofi-pass-git
 	makedepends = git
 	depends = xorg-xprop
 	depends = wmctrl
+	depends = xdg-utils
 	depends = rofi-git
 	depends = pass
 	depends = xdotool
