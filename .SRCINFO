@@ -1,0 +1,22 @@
+pkgbase = kde-servicemenus-dropbox
+	pkgdesc = A servicemenu for KDE4 which allows easy access to most of Dropbox features. It uses Dropbox CLI to generate public urls, and pyndexer to allow sharing directories in public directory.
+	pkgver = 0.16.1
+	pkgrel = 7
+	url = http://kde-apps.org/content/show.php?content=124416
+	arch = any
+	license = GPL
+	depends = dropbox
+	depends = python2
+	depends = kdebase-kdialog
+	depends = python2-m2crypto
+	depends = sharutils
+	depends = recode
+	depends = perl
+	depends = sqlite
+	depends = xdg-utils
+	conflicts = dropbox-servicemenu
+	source = http://kde-look.org/CONTENT/content-files/124416-DropboxServiceMenu-0.16.1.tar.gz
+	md5sums = 3c0186649311611abfbb8ac016a67791
+
+pkgname = kde-servicemenus-dropbox
+
