@@ -1,16 +1,18 @@
 pkgbase = navit
 	pkgdesc = A modular turn-by-turn car navigation system
-	pkgver = 0.2.0
+	pkgver = v0.5.0_rc.1
 	pkgrel = 1
 	url = http://www.navit-project.org/
 	install = navit.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL
-	depends = qt
-	depends = cairo
+	makedepends = cmake
+	depends = glu
+	depends = freeglut
 	depends = dbus-glib
-	depends = fribidi
+	depends = cairo
 	depends = imlib2
 	depends = sdl_image
 	depends = gtk2
@@ -19,8 +21,8 @@ pkgbase = navit
 	optdepends = cegui>=0.5.0: OpenGL gui
 	optdepends = quesoglc: OpenGL gui
 	options = !libtool
-	source = http://downloads.sourceforge.net/navit/navit-0.2.0.tar.gz
-	sha256sums = 9c9e8f16d36c318cdc352ef3627ce70e4ac319bfd7261c2155b4c96d76716dca
+	source = http://downloads.sourceforge.net/navit/v0.5.0-rc.1.tar.gz
+	md5sums = cb6ee913eea1fa06c90852e1dfbdcb94
 
 pkgname = navit
 
