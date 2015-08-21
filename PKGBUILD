@@ -1,5 +1,5 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
-# % Trigger: 1440171504 %
+# % Trigger: 1440171640 %
 
 pkgname=libpstat-git
 pkgver=r29.f7c42c4
