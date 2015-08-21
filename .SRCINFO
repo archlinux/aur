@@ -1,0 +1,14 @@
+pkgbase = python2-ivisual
+	pkgdesc = IVisual provides VPython visual API for inline use in an IPython Notebook
+	pkgver = 0.1.99
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/IVisual/0.1.99
+	arch = any
+	license = GPL
+	depends = python2-vpython
+	depends = ipython2
+	source = https://pypi.python.org/packages/source/I/IVisual/IVisual-0.1.99.zip
+	md5sums = 520879c5852e619e379baa148707915d
+
+pkgname = python2-ivisual
+
