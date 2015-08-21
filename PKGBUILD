@@ -19,7 +19,6 @@ build() {
 	sed -i 's/"modplug\.h"/"libmodplug\/modplug.h"/' music_modplug.h
 	sed -i 's/"modplug\.h"/"libmodplug\/modplug.h"/' dynamic_modplug.h
 	for _arch in ${_architectures}; do
-		export LIBMIKMOD_CONFIG=/usr/${_arch}/bin/libmikmod-config
 		mkdir -p build-${_arch} && pushd build-${_arch}
 		${_arch}-configure
 		make
