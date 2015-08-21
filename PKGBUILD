@@ -1,9 +1,10 @@
-# Maintainer: Ray Rashif <schiv@archlinux.org>
+# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 
 pkgname=liblscp
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="LinuxSampler Control Protocol C++ library"
 arch=('i686' 'x86_64')
 url="http://www.linuxsampler.org/"
