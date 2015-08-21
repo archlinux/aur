@@ -1,0 +1,77 @@
+post_install() {
+	# the installation process is described at https://code.google.com/p/munge/wiki/InstallationGuide
+	# create munge /var/run/munge dir
+	mkdir -p /var/run/munge
+
+	# add munge user/group
+	echo -e "\e[34;1m==>\e[39;1m Adding munge system group... \e[0m"
+	groupadd -r munge
+
+	echo -e "\e[34;1m==>\e[39;1m Adding munge system user... \e[0m"
+	useradd -r -c "Munge Daemon" -d /var/log/munge -g munge munge
+
+	echo -e "\e[34;1m==>\e[39;1m Locking Munge User Account... \e[0m"
+	passwd -l munge &>/dev/null
+
+	# create munge key
+	if [ ! -e /etc/munge/munge.key ] && [ -c /dev/urandom ]; then
+		echo -e "\e[34;1m==>\e[39;1m Creating random munge key : /etc/munge/munge.key\e[0m"
+		dd if=/dev/urandom bs=1 count=1024 of=/etc/munge/munge.key
+		chmod 0400 /etc/munge/munge.key
+	else
+		if [ -c /dev/urandom ]; then
+			echo -e "\e[34;1m==>\e[39;1m INFO: no munge key is generated since /etc/munge/munge.key already exists \e[0m"
+		else
+			echo -e "\e[34;1m==>\e[39;1m WARNING: did not create /etc/munge/munge.key since /dev/urandom is not found \e[0m"
+		fi
+	fi
+
+	# set permissions
+	chown munge:munge -R /etc/munge
+	chown munge:munge -R /var/log/munge
+	chown munge:munge -R /var/lib/munge
+	chown munge:munge -R /var/run/munge
+
+	# securing the installation, this is optional!
+	#chmod 0700 /etc/munge
+	#chmod 0711 /var/lib/munge
+	#chmod 0700 /var/log/munge
+	#chmod 0755 /var/run/munge
+}
+
+post_upgrade() {
+	# set permissions
+	chown munge:munge -R /etc/munge
+	chown munge:munge -R /var/log/munge
+	chown munge:munge -R /var/lib/munge
+	chown munge:munge -R /var/run/munge
+	if [ -e /etc/munge/munge.key ]; then
+		chmod 0400 /etc/munge/munge.key
+	fi
+}
+
+pre_remove() {
+	which systemctl >& /dev/null
+	if [ $? -eq 0 ]; then
+		echo -e "\e[34;1m==>\e[39;1m Stopping munge using SystemD... \e[0m"
+		systemctl stop munge
+
+		echo -e "\e[34;1m==>\e[39;1m Disabling SystemD related file(s)... \e[0m"
+		systemctl disable munge.service
+	else
+		echo -e "\e[34;1m==>\e[39;1m Stopping munge... "
+		/etc/rc.d/munge stop
+	fi
+}
+
+post_remove() {
+    # Removing obsolete dir
+    rm -rf /var/run/munge
+
+	# Notifying the user of kept dirs and change owner
+	[ -d /etc/munge ] && chown root:root -R /etc/munge && echo -e "\e[34;1m==>\e[39;1m NOTE: Custom configuration-file(s) in /etc/munge/ were kept on your system.\e[0m"
+	[ -d /var/log/munge ] && chown root:root -R /var/log/munge && echo -e "\e[34;1m==>\e[39;1m NOTE: Logfiles were preserved. They reside under /var/log/munge .\e[0m"
+
+	echo -e "\e[34;1m==>\e[39;1m Removing the munge user and group from the system... \e[0m"
+	userdel munge
+}
