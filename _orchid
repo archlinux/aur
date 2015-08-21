@@ -1,0 +1,15 @@
+#compdef orchid
+
+_orchid_comp() {
+	if [[ $words[2] = "list" ]]; then
+		compadd jobs actions machines
+	else
+		typeset -A legendHash
+		legendHash=(run jobs exec actions ssh machines)
+		compadd $(orchid list $legendHash[$words[2]] | grep -E '^\w')
+	fi
+}
+
+_arguments \
+	"1: :(run exec ssh list)" \
+	"*: :_orchid_comp"

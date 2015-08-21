@@ -1,0 +1,12 @@
+pkgbase = orchid-zsh-completion
+	pkgdesc = zsh completion for orchid
+	pkgver = 3
+	pkgrel = 1
+	arch = any
+	license = custom
+	provides = orchid-zsh-completion
+	source = _orchid
+	sha1sums = 36cc17181b08ef4e997dd442adfd55885e2b51fb
+
+pkgname = orchid-zsh-completion
+
