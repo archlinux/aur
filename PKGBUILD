@@ -20,6 +20,11 @@ md5sums=('cb6ee913eea1fa06c90852e1dfbdcb94')
 
 build() {
   cd "$srcdir/navit-gps-navit"*
+
+  if [ $(grep -c '^SET(LIBDIR lib)' CMakeLists.txt) -ne 1 ]; then
+    sed -i 's/^ENDIF (UNIX AND NOT ANDROID AND NOT APPLE)$/ENDIF (UNIX AND NOT ANDROID AND NOT APPLE)\nSET(LIB_DIR lib)/' CMakeLists.txt
+  fi
+
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DCMAKE_LIBDIR=lib \
