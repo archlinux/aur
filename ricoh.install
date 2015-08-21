@@ -1,0 +1,24 @@
+# arg 1:  the new package version
+post_install() {
+    echo -n "Restarting the CUPS daemon... "
+    if grep init /proc/1/comm > /dev/null; then
+        /etc/rc.d/cupsd restart > /dev/null && echo "done"
+    else
+        systemctl restart org.cups.cupsd.service > /dev/null && echo "done"
+    fi
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    post_install
+}
+
+# arg 1:  the old package version
+post_remove() {
+    post_install
+}
+
+op=$1
+shift
+$op $*
