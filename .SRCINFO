@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-git
 	pkgdesc = Universal multimedia toolkit
-	pkgver = r72137.f6b8b96
+	pkgver = r74550.907373e
 	pkgrel = 1
 	url = http://ffmpeg.org/
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = ffmpeg-git
 	depends = libx264
 	depends = x265-hg
 	depends = zlib
-	provides = ffmpeg=r72137.f6b8b96
+	provides = ffmpeg=r74550.907373e
 	provides = qt-faststart
 	conflicts = ffmpeg
 	source = ffmpeg-git::git://source.ffmpeg.org/ffmpeg.git
