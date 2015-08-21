@@ -2,14 +2,14 @@
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 
 pkgname=vim-gitgutter-git
-pkgver=280.2e98692
+pkgver=285.0e66fc9
 pkgrel=1
 pkgdesc="A Vim plugin which shows a git diff in the 'gutter'"
 arch=('any')
 url="https://github.com/airblade/${pkgname%-git}"
 license=('MIT')
-depends=('vim')
-makedepends=('git')
+groups=('vim-plugins')
+depends=('vim' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=vimdoc.install
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    echo "$(git rev-list --count master).$(git rev-parse --short master)"
+    echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
