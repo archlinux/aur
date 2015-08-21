@@ -1,6 +1,7 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer: yantis@yantis.net
 
 # R package isn't compiling anymore so temp removed.
+# Python packages are not working any more either and will need some work.
 
 pkgbase=xgboost-git
 pkgname=('xgboost-git'
@@ -8,11 +9,11 @@ pkgname=('xgboost-git'
          'python2-xgboost-git'
          )
          # 'r-xgboost-git'
-pkgver=r1639.00a8076
-pkgrel=2
-url='https://github.com/tqchen/xgboost'
+pkgver=r1826.19eef1d
+pkgrel=1
+url='https://github.com/dmlc/xgboost'
 license=('APACHE')
-source=('git+https://github.com/tqchen/xgboost.git')
+source=('git+https://github.com/dmlc/xgboost.git')
 sha256sums=('SKIP')
 makedepends=('git')
 arch=('x86_64')
