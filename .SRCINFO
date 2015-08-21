@@ -1,0 +1,15 @@
+pkgbase = python-slumber
+	pkgdesc = A library that makes consuming a REST API easier and more convenient
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/slumber/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/s/slumber/slumber-0.7.1.tar.gz
+	md5sums = 58fe531e23b7324b9fbd3faa89a115e2
+
+pkgname = python-slumber
+	depends = python-requests
+
