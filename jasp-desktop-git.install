@@ -1,0 +1,8 @@
+post_install() {
+	echo "JASP was built with simple SEM enabled. This feature is UNSUPPORTED by the developer currently."
+}
+
+post_upgrade() {
+	post_install
+}
+

@@ -3,7 +3,7 @@ pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
 pkgver=v0.7.1.7.r0.g4885971
-pkgrel=2
+pkgrel=4
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
 url="http://jasp-stats.org"
@@ -12,9 +12,11 @@ depends=('qt5-base' 'boost' 'pcre' 'r' 'libarchive' 'zlib' 'boost-nowide' 'qt5-w
 makedepends=('git' 'qtchooser' 'r')
 provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
+install=('jasp-desktop-git.install')
 source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.1.7" 
 	"rbundle.R"
-	"jasp-desktop.svg")
+	"jasp-desktop.svg"
+	"sem.patch")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -25,6 +27,9 @@ pkgver() {
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
+  patch -p1 < $srcdir/sem.patch
+  echo "Patching in the SEM feature. This feature is UNSUPPORTED by the developer currently"
   mkdir -p $srcdir/$_buildname
   cd $srcdir/$_buildname
   
@@ -88,4 +93,5 @@ EOF
 }
 md5sums=('SKIP'
          '85087ac1d6e0ffa885f4887c40985982'
-         'bcaf403001283553bb63b72c268d0290')
+         'bcaf403001283553bb63b72c268d0290'
+         '9e04c417faac1e36f7ddb9f8350620ab')

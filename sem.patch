@@ -1,0 +1,46 @@
+diff --git a/JASP-Desktop/mainwindow.cpp b/JASP-Desktop/mainwindow.cpp
+index 80cd705..d8ccc6c 100644
+--- a/JASP-Desktop/mainwindow.cpp
++++ b/JASP-Desktop/mainwindow.cpp
+@@ -87,9 +87,7 @@ MainWindow::MainWindow(QWidget *parent) :
+ 	ui->tabBar->setFocusPolicy(Qt::NoFocus);
+ 	ui->tabBar->addTab("File");
+ 	ui->tabBar->addTab("Common");
+-#ifndef __linux__
+ 	ui->tabBar->addOptionsTab(); // no SEM under linux for now
+-#endif
+ 	ui->tabBar->addHelpTab();
+ 
+ 	connect(ui->tabBar, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
+@@ -543,7 +541,6 @@ void MainWindow::tabChanged(int index)
+ 	{
+ 		ui->topLevelWidgets->setCurrentIndex(0);
+ 	}
+-#ifndef __linux__
+ 	else if (index == ui->tabBar->count() - 1)
+ 	{
+ 		if (_optionsForm == NULL)
+@@ -555,7 +552,6 @@ void MainWindow::tabChanged(int index)
+ 
+ 		ui->topLevelWidgets->setCurrentWidget(_optionsForm);
+ 	}
+-#endif
+ 	else
+ 	{
+ 		ui->topLevelWidgets->setCurrentIndex(1);
+@@ -789,15 +785,12 @@ void MainWindow::updateMenuEnabledDisabledStatus()
+ 
+ void MainWindow::updateUIFromOptions()
+ {
+-#ifdef __linux__
+ 	ui->tabBar->removeTab("SEM");
+-#else
+ 	QVariant sem = _settings.value("plugins/sem", false);
+ 	if (sem.canConvert(QVariant::Bool) && sem.toBool())
+ 		ui->tabBar->addTab("SEM");
+ 	else
+ 		ui->tabBar->removeTab("SEM");
+-#endif
+ 
+ 	QVariant rl = _settings.value("toolboxes/r11tLearn", false);
+ 	if (rl.canConvert(QVariant::Bool) && rl.toBool())
