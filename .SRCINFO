@@ -1,7 +1,7 @@
 pkgbase = ttf-ms-win10
 	pkgdesc = Microsoft Windows 10 TrueType fonts
 	pkgver = 10.0.10240
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	install = ttf-ms-win10.install
 	arch = any
@@ -11,16 +11,36 @@ pkgbase = ttf-ms-win10
 	depends = xorg-mkfontscale
 	depends = xorg-mkfontdir
 	provides = ttf-font
-	provides = ttf-ms-fonts
 	provides = ttf-tahoma
+	provides = ttf-ms-fonts
 	provides = ttf-vista-fonts
 	provides = ttf-win7-fonts
 	provides = ttf-ms-win8
-	conflicts = ttf-ms-fonts
+	provides = ttf-ms-win8-arabic
+	provides = ttf-ms-win8-hebrew
+	provides = ttf-ms-win8-indic
+	provides = ttf-ms-win8-japanese
+	provides = ttf-ms-win8-korean
+	provides = ttf-ms-win8-other
+	provides = ttf-ms-win8-sea
+	provides = ttf-ms-win8-thai
+	provides = ttf-ms-win8-zh_cn
+	provides = ttf-ms-win8-zh_tw
 	conflicts = ttf-tahoma
+	conflicts = ttf-ms-fonts
 	conflicts = ttf-vista-fonts
 	conflicts = ttf-win7-fonts
 	conflicts = ttf-ms-win8
+	conflicts = ttf-ms-win8-arabic
+	conflicts = ttf-ms-win8-hebrew
+	conflicts = ttf-ms-win8-indic
+	conflicts = ttf-ms-win8-japanese
+	conflicts = ttf-ms-win8-korean
+	conflicts = ttf-ms-win8-other
+	conflicts = ttf-ms-win8-sea
+	conflicts = ttf-ms-win8-thai
+	conflicts = ttf-ms-win8-zh_cn
+	conflicts = ttf-ms-win8-zh_tw
 
 pkgname = ttf-ms-win10
 

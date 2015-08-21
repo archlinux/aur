@@ -50,14 +50,14 @@
 
 pkgname=ttf-ms-win10
 pkgver=10.0.10240
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Windows 10 TrueType fonts"
 arch=('any')
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=('custom')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-mkfontscale' 'xorg-mkfontdir')
-provides=('ttf-font' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-win7-fonts' 'ttf-ms-win8')
-conflicts=('ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-win7-fonts' 'ttf-ms-win8')
+provides=(ttf-font ttf-tahoma ttf-{ms,vista,win7}-fonts ttf-ms-win8{,-arabic,-hebrew,-indic,-japanese,-korean,-other,-sea,-thai,-zh_cn,-zh_tw})
+conflicts=(ttf-tahoma ttf-{ms,vista,win7}-fonts ttf-ms-win8{,-arabic,-hebrew,-indic,-japanese,-korean,-other,-sea,-thai,-zh_cn,-zh_tw})
 install="${pkgname}.install"
 
 _fonts=(
