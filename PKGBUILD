@@ -8,7 +8,7 @@ pkgdesc="A complete, free 3D printing solution for discovering, managing, and sh
 arch=('x86_64')
 url="https://www.makerbot.com/desktop"
 license=('GPL')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-webkit' 'jsoncpp' 'postgresql-libs' 'python2'
+depends=('qt5-base' 'qt5-multimedia' 'qt5-webkit' 'jsoncpp=0.6.0rc2' 'postgresql-libs' 'python2'
 'libjpeg6' 'yajl' 'qt4' 'libmariadbclient' 'shared-mime-info' 'opencv' 'gl2ps' 'hdf5' 'tcl' 'zenity')
 makedepends=('rpmextract')
 options=('!strip')
@@ -80,6 +80,5 @@ package() {
 	
 	msg2 "Creating log files"
 	touch var/log/conveyor/conveyord.log
-	chmod g+w var/log/conveyor/conveyord.log
-	
+	chmod g+w var/log/conveyor/conveyord.log	
 }

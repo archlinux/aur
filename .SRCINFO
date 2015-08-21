@@ -10,7 +10,7 @@ pkgbase = makerbot-desktop
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-webkit
-	depends = jsoncpp
+	depends = jsoncpp=0.6.0rc2
 	depends = postgresql-libs
 	depends = python2
 	depends = libjpeg6

@@ -47,11 +47,14 @@ post_install() {
 	
 	gpasswd -a conveyor root
 	
+	chown /var/log/conveyor/conveyord.log
+	
 	## Enable and start conveyor service
 	echo -e "Enabling and starting conveyor.service"
 	systemctl enable conveyor
 	systemctl start conveyor
 }
 
-
-
+post_upgrade() {
+        chown conveyor /var/log/conveyor/conveyord.log
+}
