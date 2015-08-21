@@ -24,7 +24,8 @@ pkgver() {
 package() {
   cd "${srcdir}/${_gitname}"
 
-  install -Dm755 "aur-comment-fetch" -t "$pkgdir/usr/bin"
+  install -D aur-comment-fetch -t "${pkgdir}/usr/bin"
+  install -Dm644 bash_completion "${pkgdir}/usr/share/bash-completion/completions/aur-comment-fetch"
 }
 
 # vim:set ts=2 sw=2 et:
