@@ -1,0 +1,22 @@
+pkgbase = symengine
+	pkgdesc = Fast symbolic manipulation library, written in C++
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://sympy.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = boost
+	depends = gmp
+	depends = arb
+	depends = gperftools
+	optdepends = python2
+	conflicts = csympy-git
+	replaces = csympy-git
+	source = symengine-0.1.0.tar.gz::https://github.com/sympy/symengine/archive/v0.1.0.tar.gz
+	md5sums = 41ad7daed61fc5a77c285eb6c7303425
+
+pkgname = symengine
+
