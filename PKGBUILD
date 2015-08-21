@@ -1,4 +1,4 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: edoz90
 # Based on jre: https://aur.archlinux.org/packages/jre/
 
 pkgname=jdk-arm
@@ -23,7 +23,6 @@ makedepends=('pacman>=4.2.0')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major")
 
-# Variables
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
@@ -56,8 +55,6 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca'
 		 'cb2e24899fd03551acdef9a33193b758')
-## Alternative mirror, if your local one is throttled:
-#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$_pkgname-$pkgver-linux-x64.gz")
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -70,12 +67,8 @@ package() {
 
     msg2 "Removing redundancies..."
     rm    db/bin/*.bat
-    #rm -r jre/lib/desktop/icons/HighContrast
-    #rm -r jre/lib/desktop/icons/HighContrastInverse
-    #rm -r jre/lib/desktop/icons/LowContrast
     rm    jre/lib/fontconfig.*.bfc
     rm    jre/lib/fontconfig.*.properties.src
-    #rm -r jre/plugin/
     rm    jre/*.txt
     rm    jre/COPYRIGHT
     rm    jre/LICENSE
@@ -94,20 +87,6 @@ package() {
         ln -sf "$_jvmdir/jre/bin/$i" "bin/$i"
     done
 
-    # Suffix .desktops + icons (sun-java.png -> sun-java-$_jname.png)
-    #for i in $(find jre/lib/desktop/ -type f); do
-    #    rename -- "." "-$_jname." $i
-    #done
-
-    # Fix .desktop paths
-    #sed -e "s|Exec=|&$_jvmdir/jre/bin/|" \
-    #    -e "s|.png|-$_jname.png|" \
-    #-i jre/lib/desktop/applications/*
-
-    # Move .desktops + icons to /usr/share
-    #mv jre/lib/desktop/* "$pkgdir"/usr/share/
-    #install -m644 "$srcdir"/*.desktop "$pkgdir"/usr/share/applications/
-
     # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/jre/lib -> /etc
     for new_etc_path in ${backup[@]}; do
         # Old location
@@ -117,12 +96,6 @@ package() {
         install -Dm644 "$old_usr_path" "$pkgdir/$new_etc_path"
         ln -sf "/$new_etc_path" "$old_usr_path"
     done
-
-    # Link NPAPI plugin
-    #case "$CARCH" in
-    #    i686)   ln -sf $_jvmdir/jre/lib/arm/libnpjp2.so  "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    #    x86_64) ln -sf $_jvmdir/jre/lib/arm/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    #esac
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts jre/lib/security/cacerts
