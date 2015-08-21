@@ -1,9 +1,80 @@
 # disable version check. updates come via package management
-Index: chatty-0.7.3/src/chatty/Version.java
-===================================================================
---- chatty-0.7.3.orig/src/chatty/Version.java	2015-01-19 21:39:08.293772537 +0100
-+++ chatty-0.7.3/src/chatty/Version.java	2015-01-19 21:39:08.285772538 +0100
-@@ -32,8 +32,8 @@
+diff --git a/src/chatty/Chatty.java b/src/chatty/Chatty.java
+index 2fdc077..5c39dd8 100644
+--- a/src/chatty/Chatty.java
++++ b/src/chatty/Chatty.java
+@@ -53,7 +53,7 @@ public class Chatty {
+      * Enable Version Checker (if you compile and distribute this yourself, you
+      * may want to disable this)
+      */
+-    public static final boolean VERSION_CHECK_ENABLED = true;
++    public static final boolean VERSION_CHECK_ENABLED = false;
+     
+     /**
+      * The regular URL of the textfile where the most recent version is stored.
+diff --git a/src/chatty/TwitchClient.java b/src/chatty/TwitchClient.java
+index 8bea1db..b900837 100644
+--- a/src/chatty/TwitchClient.java
++++ b/src/chatty/TwitchClient.java
+@@ -262,7 +262,7 @@ public class TwitchClient {
+         checkForVersionChange();
+         // Check version, if enabled in this build
+         if (Chatty.VERSION_CHECK_ENABLED) {
+-            checkNewVersion();
++            //checkNewVersion();
+         }
+         
+         // Connect or open connect dialog
+@@ -370,44 +370,7 @@ public class TwitchClient {
+      * Checks for a new version if the last check was long enough ago.
+      */
+     private void checkNewVersion() {
+-        if (!settings.getBoolean("checkNewVersion")) {
+-            return;
+-        }
+-        /**
+-         * Check if enough time has passed since the last check.
+-         */
+-        long ago = System.currentTimeMillis() - settings.getLong("versionLastChecked");
+-        if (ago/1000 < CHECK_VERSION_INTERVAL) {
+-            /**
+-             * If not checking, check if update was detected last time.
+-             */
+-            String updateAvailable = settings.getString("updateAvailable");
+-            if (!updateAvailable.isEmpty()) {
+-                g.setUpdateAvailable(updateAvailable);
+-            }
+-            return;
+-        }
+-        settings.setLong("versionLastChecked", System.currentTimeMillis());
+-        g.printSystem("Checking for new version..");
+         
+-        new Version(new VersionListener() {
+-
+-            @Override
+-            public void versionChecked(String version, String info, boolean isNewVersion) {
+-                if (isNewVersion) {
+-                    String infoText = "";
+-                    if (!info.isEmpty()) {
+-                        infoText = "[" + info + "] ";
+-                    }
+-                    g.printSystem("New version available: "+version+" "+infoText
+-                            +"(Go to <Help-Website> to download)");
+-                    g.setUpdateAvailable(version);
+-                    settings.setString("updateAvailable", version);
+-                } else {
+-                    g.printSystem("You already have the newest version.");
+-                }
+-            }
+-        });
+     }
+     
+     /**
+diff --git a/src/chatty/Version.java b/src/chatty/Version.java
+index 2f6d9c4..6ac5227 100644
+--- a/src/chatty/Version.java
++++ b/src/chatty/Version.java
+@@ -32,8 +32,8 @@ public class Version {
      }
      
      private void checkForNewVersion() {
@@ -14,47 +85,6 @@ Index: chatty-0.7.3/src/chatty/Version.java
      }
      
      /**
-Index: chatty-0.7.3/src/chatty/TwitchClient.java
-===================================================================
---- chatty-0.7.3.orig/src/chatty/TwitchClient.java	2015-01-19 21:39:08.293772537 +0100
-+++ chatty-0.7.3/src/chatty/TwitchClient.java	2015-01-19 21:39:08.289772538 +0100
-@@ -282,7 +282,7 @@
-         
-         // Check version, if enabled in this build
-         if (Chatty.VERSION_CHECK_ENABLED) {
--            checkNewVersion();
-+            //checkNewVersion();
-         }
- 
-         // Connect or open connect dialog
-@@ -341,7 +341,7 @@
-      */
-     private void checkNewVersion() {
-         //g.setUpdateAvailable();
--        if (!settings.getBoolean("checkNewVersion")) {
-+        /*if (!settings.getBoolean("checkNewVersion")) {
-             return;
-         }
-         long ago = System.currentTimeMillis() - settings.getLong("versionLastChecked");
-@@ -367,7 +367,7 @@
-                     g.printSystem("You already have the newest version.");
-                 }
-             }
--        });
-+        });*/
-     }
-     
-     /**
-Index: chatty-0.7.3/src/chatty/Chatty.java
-===================================================================
---- chatty-0.7.3.orig/src/chatty/Chatty.java	2015-01-19 21:39:08.293772537 +0100
-+++ chatty-0.7.3/src/chatty/Chatty.java	2015-01-19 21:39:08.289772538 +0100
-@@ -53,7 +53,7 @@
-      * Enable Version Checker (if you compile and distribute this yourself, you
-      * may want to disable this)
-      */
--    public static final boolean VERSION_CHECK_ENABLED = true;
-+    public static final boolean VERSION_CHECK_ENABLED = false;
-     
-     /**
-      * The regular URL of the textfile where the most recent version is stored.
+-- 
+2.5.0
+
