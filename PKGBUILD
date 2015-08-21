@@ -1,7 +1,7 @@
 # Maintainer: Bhushan Shah <bshah@kde.org>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=kcm-user-manager-git
+pkgname=user-manager-git
 pkgver=r274.e74e910
 pkgrel=1
 pkgdesc="A simple system settings module to manage the users of your system (GIT version)"
@@ -12,6 +12,7 @@ depends=('accountsservice' 'libpwquality' 'kdelibs4support')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git')
 conflicts=('kcm-user-manager' 'user-manager')
 provides=('kcm-user-manager' 'user-manager')
+replaces=('kcm-user-manager-git')
 groups=('plasma')
 source=('git://anongit.kde.org/user-manager')
 sha1sums=('SKIP')

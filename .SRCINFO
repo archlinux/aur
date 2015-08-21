@@ -1,4 +1,4 @@
-pkgbase = kcm-user-manager-git
+pkgbase = user-manager-git
 	pkgdesc = A simple system settings module to manage the users of your system (GIT version)
 	pkgver = r274.e74e910
 	pkgrel = 1
@@ -19,8 +19,9 @@ pkgbase = kcm-user-manager-git
 	provides = user-manager
 	conflicts = kcm-user-manager
 	conflicts = user-manager
+	replaces = kcm-user-manager-git
 	source = git://anongit.kde.org/user-manager
 	sha1sums = SKIP
 
-pkgname = kcm-user-manager-git
+pkgname = user-manager-git
 
