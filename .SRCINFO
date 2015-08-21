@@ -1,0 +1,14 @@
+pkgbase = chromium-chromevox
+	pkgdesc = Causes the Chromium web browser to automatically install and update the ChromeVox screen reader extention. Note: This package does not contain the extension code.
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.chromevox.com
+	arch = any
+	license = Apache2
+	depends = chromium
+	depends = speech-dispatcher
+	source = http://the-brannons.com/kgejglhpjiefppelpmljglcjbhoiplfn.json
+	md5sums = 60f442d325b1b1838128ba2124183666
+
+pkgname = chromium-chromevox
+
