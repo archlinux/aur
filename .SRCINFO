@@ -1,6 +1,6 @@
 pkgbase = streem
 	pkgdesc = Stream based concurrent scripting language
-	pkgver = 201509
+	pkgver = 201510
 	pkgrel = 1
 	url = https://github.com/matz/streem
 	install = streem.install
@@ -11,8 +11,8 @@ pkgbase = streem
 	makedepends = flex
 	makedepends = gcc
 	makedepends = make
-	source = streem-201509.tar.gz::https://codeload.github.com/matz/streem/tar.gz/201509
-	sha256sums = f914ce765121b568f2c7f14f7e1c120c93cbb4a01a80b5735824bd1655709a34
+	source = streem-201510.tar.gz::https://codeload.github.com/matz/streem/tar.gz/201510
+	sha256sums = 7124f73f457e19eb5e771a527c2945fad5b366d9a04dc0756bf34ec7964917a3
 
 pkgname = streem
 
