@@ -5,13 +5,15 @@ _dbname=odlyzko_zeta
 pkgname=sage-data-$_dbname
 pkgver=20061209
 pkgrel=1
-pkgdesc="Table of zeros of the Riemann zeta function for Sage"
+pkgdesc="Table of zeros of the Riemann zeta function for SageMath"
 arch=(any)
 url="http://www.sagemath.org"
 license=(GPL)
 depends=()
-makedepends=(sage-mathematics)
-source=("http://www.sagemath.org/packages/upstream/database_$_dbname/database_$_dbname-$pkgver.tar.bz2" 'spkg-install')
+makedepends=(sagemath)
+#source=("http://www.sagemath.org/packages/upstream/database_$_dbname/database_$_dbname-$pkgver.tar.bz2" 
+source=("http://mirrors.mit.edu/sage/spkg/upstream/database_odlyzko_zeta/database_$_dbname-$pkgver.tar.bz2"
+	'spkg-install')
 md5sums=('c93f63760540d5a787728a7a89ca2d9c'
          'c1c5c4b15ea6a727aeeed9e389ae3311')
 
