@@ -1,0 +1,17 @@
+pkgbase = latte-integrale
+	pkgdesc = Computer software dedicated to the problems of counting lattice points and integration inside convex polytopes
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://www.math.ucdavis.edu/~latte/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = 4ti2
+	depends = ntl
+	depends = cddlib
+	depends = lidia
+	source = https://www.math.ucdavis.edu/~latte/software/packages/latte_current/latte-int-1.7.3.tar.gz
+	md5sums = 2ec40606c6755ba1770c8ac31155ecd9
+
+pkgname = latte-integrale
+
