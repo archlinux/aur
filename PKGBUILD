@@ -1,7 +1,7 @@
 # Maintainer: Niklas Hedlund <nojan1989@gmail.com>
 
 pkgname=motioneye
-pkgver=0.25.1
+pkgver=0.26
 pkgrel=1
 pkgdesc="web-based user interface for motion"
 arch=(any)
@@ -25,7 +25,7 @@ backup=('opt/motioneye/settings.py')
 source=(https://bitbucket.org/ccrisan/motioneye/get/$pkgver.tar.gz
         motioneye.service)
 
-md5sums=('d0312756cc0bd2c263aa438aa14b11e4'
+md5sums=('9365129f5953fc7255f4e7477d50ce42'
          '63ac2ce77f638d8ade8afa80179b8b9c')
 
 prepare() {
