@@ -33,6 +33,8 @@ build() {
 package() {
 	cd "${pkgname}"
 	make PREFIX="${pkgdir}/usr" install
+	make PREFIX="${pkgdir}/usr" headers-install
+
 	install -Dm644 LICENSE.ISC "$pkgdir/usr/share/licenses/$pkgname/LICENSE.ISC"
 }
 
