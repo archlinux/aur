@@ -13,7 +13,7 @@
 set -u
 _pkgname='botocore'
 pkgname="python-${_pkgname}"
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -24,17 +24,19 @@ depends=('python' # See setup.py, README.rst, and requirements.txt for version d
   'python-wheel>=0.24.0'   # AUR ==
   'python-jmespath>=0.7.1' # AUR == is possible for repositories. Makes upgrades impossible in AUR.
   'python-tox>=1.4'        # COM == is possible because this is from a repository. Unfortunatley Arch isn't the primary dev environment for botocore/aws so our packages are likely to be newer.
-  'python-sphinx>=1.1.3' #'python-sphinx<1.3'     # COM Arch is already newer. Documentation might not work.
-  'python-dateutil>=2.1' 'python-dateutil<3.0.0' # COM
+  'python-dateutil'{'>=2.1','<3.0.0'} # COM
   'python-nose>=1.3.0'     # COM ==
   'python-mock>=1.0.1'     # COM ==
   'python-docutils>=0.10'  # COM
   'python-six>=1.1.0'      # COM This is in the sources but I'm not sure where the version comes from.
+  # requirements-docs.txt
+  'python-sphinx>=1.1.3' #'python-sphinx'{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
+  'python-guzzle-sphinx-theme'{'>=0.7.10','<0.8'}
 )
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-botocore')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('338fed0119d819a60b2b7cf1a1a38f93603c5f012a2a483b713425816a43a57c')
+sha256sums=('a10208e7e3e8ad3df8a5a9686a6ac2e3b9def2f837ebc7fda91db1304bd565c7')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
