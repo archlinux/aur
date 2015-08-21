@@ -9,8 +9,6 @@ pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
 arch=( 'x86_64' 'i686' )
 license=( 'custom:ISC' )
-conflicts=( 'vdev' )
-provides=( 'vdev' )
 makedepends=( 'libpstat' 'fskit' 'squashfs-tools' 'dash' )
 
 source=( "${pkgname}::git+${url}" )
@@ -29,14 +27,14 @@ pkgver() {
 build() {
 	cd "${pkgname}"
 	
-	mv fs/main.c fs/main.cpp
-
 	make PREFIX=/usr
 	make -C libudev-compat
 }
 
 package_vdev-git() {
 	depends=( 'util-linux' 'kmod' 'iproute2' 'sed' 'grep' 'device-mapper' 'lvm2' 'dash' )
+	provides=( 'vdev' )
+	conflicts=( 'vdev' )
 
 	cd "$pkgname"
 	make -C vdevd \
@@ -46,7 +44,18 @@ package_vdev-git() {
 	     USRSBINDIR="${pkgdir}/usr/bin" \
 	install
 
+	make -C example \
+	     PREFIX='/usr' \
+	     DESTDIR="${pkgdir}" \
+	     SBINDIR="${pkgdir}/usr/bin" \
+	     USRSBINDIR="${pkgdir}/usr/bin" \
+	install
+
 	cd "$pkgdir"
+
+	# There is no way to tell the Makefile not to install these.
+	rm etc/init.d/vdev
+	rmdir etc/init.d
 
 	# Config files
 	backup+=( etc/vdev/actions/*.act )
@@ -55,8 +64,10 @@ package_vdev-git() {
 
 package_vdevfs-git() {
 	depends=( 'libpstat' 'fskit' 'fuse' 'libstdc++5' )
+	provides=( 'vdevfs' )
+	conflicts=( 'vdevfs' )
 
-	cd "$pkgname"
+	cd vdev-git
 	make -C fs \
 	     PREFIX='/usr' \
 	     DESTDIR="${pkgdir}" \
