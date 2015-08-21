@@ -1,14 +1,14 @@
 # Author: Boteium <echo Ym90ZWl1bUBnbWFpbC5jb20=|base64 -d>
 
 pkgname=bashbullet
-pkgver=20150820
+pkgver=20150822
 pkgrel=1
 pkgdesc="A pushbullet systray notification daemon for linux. also a simple client to receive and to send pushes."
 arch=('any')
 url="https://github.com/Boteium/bashbullet"
 license=('GPL')
-depends=(jshon nodejs notify-osd yad nodejs-ws)
-optdepends=(surl)
+depends=(jshon nodejs libnotify yad nodejs-ws)
+optdepends=( 'surl: url shortener support' )
 source=('git://github.com/Boteium/bashbullet.git')
 md5sums=('SKIP')
 

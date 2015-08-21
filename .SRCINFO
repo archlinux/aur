@@ -1,16 +1,16 @@
 pkgbase = bashbullet
 	pkgdesc = A pushbullet systray notification daemon for linux. also a simple client to receive and to send pushes.
-	pkgver = 20150820
+	pkgver = 20150822
 	pkgrel = 1
 	url = https://github.com/Boteium/bashbullet
 	arch = any
 	license = GPL
 	depends = jshon
 	depends = nodejs
-	depends = notify-osd
+	depends = libnotify
 	depends = yad
 	depends = nodejs-ws
-	optdepends = surl
+	optdepends = surl: url shortener support
 	source = git://github.com/Boteium/bashbullet.git
 	md5sums = SKIP
 
