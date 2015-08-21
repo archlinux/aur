@@ -1,0 +1,17 @@
+pkgbase = atlas-maps-bin
+	pkgdesc = Map and navigation application using offline vector maps
+	pkgver = 1.1.14
+	pkgrel = 1
+	url = http://wiki.openstreetmap.org/wiki/Atlas_(navigation_application)
+	arch = any
+	license = proprietary (free)
+	depends = java-runtime
+	provides = atlas-maps
+	conflicts = atlas-maps
+	source = http://www.talent.gr/public/atlas/Atlas-1.1.14.zip
+	source = atlas-maps.sh
+	md5sums = b662c6a3fe2029d7c022c463c8e4b35e
+	md5sums = 509caab1fb6ad3990e87890a5dfb7d81
+
+pkgname = atlas-maps-bin
+
