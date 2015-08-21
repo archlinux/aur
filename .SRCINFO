@@ -1,0 +1,14 @@
+pkgbase = lidia
+	pkgdesc = A library for computational number theory
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://www.math.ucdavis.edu/~latte/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gmp
+	source = https://www.math.ucdavis.edu/~latte/software/packages/lidia/current/lidia-2.3.0+latte-patches-2014-10-04.tar.bz2
+	md5sums = 6d0e4d4271af9df322087ae3325f5028
+
+pkgname = lidia
+
