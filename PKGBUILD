@@ -3,7 +3,7 @@
 # Contributor: Matthieu Rakotojaona <rakoo>
 
 pkgname=bup-git
-pkgver=1279.fc2bffc
+pkgver=1282.ea6e06e
 pkgrel=1
 pkgdesc='Highly efficient file backup system based on the git packfile format (development version)'
 arch=('i686' 'x86_64')
