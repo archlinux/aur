@@ -11,6 +11,7 @@ pkgbase = munge
 	depends = openssl
 	optdepends = zlib: zlib compression support
 	optdepends = bzip2: bzip2 compression support
+	conflicts = munge-git
 	source = https://github.com/dun/munge/archive/munge-0.5.11.tar.gz
 	source = arch_munge.init
 	md5sums = 0b00f0a352f9619f205d41a31a2f3f80
