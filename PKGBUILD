@@ -4,7 +4,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=ssllabs-scan
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Command-line client for the SSL Labs APIs'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ url='https://github.com/ssllabs/ssllabs-scan'
 license=('apache')
 depends=("gcc-go")
 source=("https://github.com/ssllabs/ssllabs-scan/archive/v${pkgver}.tar.gz")
-sha256sums=('0a4366040b6e0a707a4da24bc12a11fd970670d553efd8442372a5cee2ba7102')
+sha256sums=('c8becd57a4aa65f5c4c32824e392d8373ae169ff055192107e9411032dfcd017')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
