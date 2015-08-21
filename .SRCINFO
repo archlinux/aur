@@ -1,0 +1,17 @@
+pkgbase = gog-shovel-knight
+	pkgdesc = Yacht Club Games
+	pkgver = 2.3.0.5
+	pkgrel = 1
+	url = http://www.gog.com/game/shovel_knight
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom:commercial
+	depends = sdl2
+	source = gog://gog_shovel_knight_2.3.0.5.sh
+	source = gog-shovel-knight.desktop
+	sha512sums = 7c4d8329acd2ee8fe05551e34a9d2de5181b03c08480871938741f8b53b876ab58bf5261d75817a3931f49f695a5aa7a75e2bf1e946fb923636566c333a6e679
+	sha512sums = a30a86d218c1249aef5e4f8116d90b61913c74a0bb0629ef1a04c3736d2a3d1960d6b28d562aa83bbc49383594c55de346f9e1893e222e50bba6ebe0d8cd43fc
+
+pkgname = gog-shovel-knight
+

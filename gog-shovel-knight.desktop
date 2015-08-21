@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Shovel Knight
+GenericName=Shovel Knight
+Comment=Shovel Knight
+Exec=gog-shovel-knight
+Icon=gog-shovel-knight
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
