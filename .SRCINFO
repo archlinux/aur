@@ -1,0 +1,21 @@
+pkgbase = ihaskell-sandbox-git
+	pkgdesc = A Haskell kernel for IPython.
+	pkgver = c7196b1029
+	pkgrel = 1
+	url = https://github.com/gibiansky/IHaskell
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = ghc
+	makedepends = happy
+	makedepends = gtk2hs-buildtools
+	makedepends = cabal-install
+	depends = ipython<3.3
+	depends = python-pyzmq
+	provides = ihaskell
+	source = git+https://github.com/gibiansky/IHaskell
+	sha512sums = SKIP
+
+pkgname = ihaskell-sandbox-git
+
