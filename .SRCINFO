@@ -1,7 +1,7 @@
 pkgbase = matrix-synapse
 	pkgdesc = Matrix reference homeserver
-	pkgver = 0.9.4.rc1
-	pkgrel = 9
+	pkgver = 0.10.0.rc1
+	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
 	arch = any
@@ -26,15 +26,9 @@ pkgbase = matrix-synapse
 	depends = python2-pysaml2
 	depends = python2-matrix-angular-sdk
 	backup = etc/synapse/log_config.yaml
-	source = git://github.com/matrix-org/synapse#tag=v0.9.4-rc1
-	source = 0001-Use-Twisted-15.2.1-Use-Agent.usingEndpointFactory-ra.patch
-	source = 0002-Bump-the-version-of-twisted-needed-for-setup_require.patch
-	source = 0003-Depend-on-Twisted-15.1-rather-than-pining-to-a-parti.patch
+	source = git://github.com/matrix-org/synapse#tag=v0.10.0-rc1
 	source = sysusers-synapse.conf
 	md5sums = SKIP
-	md5sums = 63d3cd5568ebd63473405f212ad1ab14
-	md5sums = c93f0b301befcf7192033783986cf03d
-	md5sums = 0d99585035d9c0f652530f1744fe807b
 	md5sums = dfbffdd307c5559357a2ff51a1906700
 
 pkgname = matrix-synapse
