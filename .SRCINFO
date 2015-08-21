@@ -11,5 +11,6 @@ pkgbase = python-flask-sqlalchemy
 	md5sums = 06ae73194cca73b72e178f870d1dac7c
 
 pkgname = python-flask-sqlalchemy
-	depends = python-flask
+	depends = python-flask,
+	depends = python-sqlalchemy
 

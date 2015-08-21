@@ -31,7 +31,7 @@ prepare() {
 #}
 
 package_python-flask-sqlalchemy() {
-depends=('python-flask')
+depends=('python-flask', 'python-sqlalchemy')
 
     cd $_pipname-$pkgver 
     python setup.py install --root="$pkgdir/" --optimize=1
