@@ -1,5 +1,5 @@
 post_install() {
-    ln -sf /opt/peazip-gtk2-portable/peazip /usr/bin/peazip
+    rm -fr /opt/peazip-gtk2-portable
     update-desktop-database -q
 }
 
@@ -8,5 +8,10 @@ post_upgrade() {
 }
 
 postmove() {
+    post_install
+}
+
+post_remove() {
+    rm -f /usr/bin/peazip
     post_install
 }
