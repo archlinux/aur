@@ -1,8 +1,8 @@
 # Maintainer: shmilee <echo c2htaWxlZS56anVAZ21haWwuY29tCg==|base64 -d>
 
 _pkgname=wps-office
-_pkgver=9.1.0.4961~a18p1
-_srcurl="http://kdl.cc.ksosoft.com/wps-community/download/a18"
+_pkgver=9.1.0.4975~a19p1
+_srcurl="http://kdl.cc.ksosoft.com/wps-community/download/a19"
 _common_dirs=(./etc ./usr ./opt/kingsoft/wps-office/office6/{addins,cfgs,data,dicts,mui,res,skins})
 
 pkgbase=wpsforlinux
@@ -19,10 +19,10 @@ options=(!emptydirs !strip)
 
 [[ "$CARCH" = "i686" ]] && _archext=i386 || _archext=amd64
 source=("${_srcurl}/${_pkgname}_${_pkgver}_${_archext}.deb" 'wps-office.xml' 'check_data.sh')
-sha1sums=('8c593dd34baf0e481378ed696334e3d7f853906a'
+sha1sums=('27db649595758d847941d7e6149d03cd55d6266b'
           'dfa2ae8b74ac763d6d7e1d28e33dcb289bca9112'
           '1819bae14fa888f92c29c9fd01b59246f53e6937')
-[[ "$CARCH" = "i686" ]] && sha1sums[0]='753d1843ec6cfd1fb6144c175cd31afc788c3224'
+[[ "$CARCH" = "i686" ]] && sha1sums[0]='2ad6c211eeade4aeb0e1fdee6cc1332787791500'
 
 #PKGEXT='.pkg.tar' ##reduce the time of compression
 
@@ -75,8 +75,8 @@ package_wpsoffice() {
     depends=('fontconfig' 'libpng12' 'glib2' 'libsm' 'libxext' 'libxrender' 'libxml2' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' "wpsoffice-common=${pkgver}")
     optdepends=('cups: for printing support'
                 'pango: for complex (right-to-left) text support')
-    install=wpsoffice.install 
-    
+    install=wpsoffice.install
+
     cd "${srcdir}"
     tar xv -C "${pkgdir}" -f data.tar.xz ${_common_dirs[@]/\.\//--exclude=\.\/}
 }
