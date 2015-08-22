@@ -8,7 +8,7 @@ _pkgbase=vim
 pkgname=vim-x11
 # list of tags can be found at https://code.google.com/p/vim/source/list
 _topver=7.4
-_patchlevel=712
+_patchlevel=778
 _tag=v${_topver/./-}-${_patchlevel}
 _versiondir="vim${_topver//./}"
 pkgver=${_topver}.${_patchlevel}
