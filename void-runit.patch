@@ -1,17 +1,19 @@
 --- a/1
 +++ b/1
-@@ -4,8 +4,9 @@
+@@ -4,8 +4,11 @@
  PATH=/usr/bin:/usr/sbin
  
  . /etc/runit/functions
-+[ -d /run ] && rm -rf /run
++if ! mountpoint -q /run; then
++	[ -d /run ] && rm -rf /run
++fi
  
 -msg "Welcome to Void!"
 +msg "Welcome to Arch with runit!"
  
  [ -r /etc/rc.conf ] && . /etc/rc.conf
  
-@@ -22,7 +23,8 @@ else
+@@ -22,7 +25,8 @@ else
  	chmod 0644 /var/log/dmesg.log
  fi
  
@@ -143,6 +145,19 @@
  	ln -sf /run/runit/reboot ${DESTDIR}/etc/runit/
  	ln -sf /run/runit/stopit ${DESTDIR}/etc/runit/
  	cp -aP runsvdir/* ${DESTDIR}/etc/runit/runsvdir/
+diff --git a/functions b/functions
+index d1cd318..1f42127 100644
+--- a/functions
++++ b/functions
+@@ -38,7 +38,7 @@ detect_virt() {
+ deactivate_vgs() {
+    _group=${1:-All}
+    if [ -x /sbin/vgchange -o -x /bin/vgchange ]; then
+-       vgs=$(vgs|wc -l)
++       vgs=$(vgs 2>/dev/null|wc -l)
+        if [ $vgs -gt 0 ]; then
+            msg "Deactivating $_group LVM Volume Groups..."
+            vgchange -an
 --- a/halt.c
 +++ b/halt.c
 @@ -14,14 +14,14 @@ int main(int argc, char *argv[]) {
