@@ -1,0 +1,40 @@
+pkgbase = slimjet
+	pkgdesc = Fast, smart and powerful browser based on Blink
+	pkgver = 4.0.15.0
+	pkgrel = 2
+	url = http://www.slimjet.com
+	arch = i686
+	arch = x86_64
+	license = custom:slimjet
+	makedepends = pacman>=4.2.0
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = flac
+	depends = gconf
+	depends = gtk2
+	depends = harfbuzz
+	depends = harfbuzz-icu
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = libpng
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = opus
+	depends = snappy
+	depends = speech-dispatcher
+	depends = ttf-font
+	depends = xdg-utils
+	optdepends = kdebase-kdialog: needed for file dialogs in KDE
+	optdepends = ttf-liberation: fix fonts for some PDFs
+	provides = slimjet
+	provides = pepper-flash
+	options = !emptydirs
+	options = !strip
+	source_i686 = slimjet_i386.deb::http://www.slimjet.com//slimjet_i386.deb
+	sha512sums_i686 = b0d7e80ed9340f48bfe71af834602c4aa508386d76fda74d32c824e8e24b8ac0cc1b48e65a4831dce9e8af1dc7dd0879f9d7fa8b8d6786bed447ba3abdc72b4f
+	source_x86_64 = slimjet_amd64.deb::http://www.slimjet.com/{}/slimjet_amd64.deb
+	sha512sums_x86_64 = 72d2029c805a8b91c9a7e386291235fb410181eefd14b22176822dc4d7584b7a3f95b743c43669399ce552d0ea73e901c16b045ca7d7c33aa308338d31fc87a9
+
+pkgname = slimjet
+
