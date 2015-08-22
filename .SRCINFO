@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = 20150530.47d8414
+	pkgver = 20150822.0e2024e
 	pkgrel = 1
 	url = http://mpv.io/
 	install = mpv-build-git.install
@@ -42,6 +42,8 @@ pkgbase = mpv-build-git
 	depends = lcms2
 	depends = libva
 	depends = rubberband
+	depends = uchardet
+	depends = libarchive
 	optdepends = youtube-dl: Another way to view youtuve videos with mpv
 	optdepends = zsh-completions: Additional completion definitions for Zsh users
 	provides = mpv

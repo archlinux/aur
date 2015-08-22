@@ -1,16 +1,52 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20150530.47d8414
+pkgver=20150822.0e2024e
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
-depends=('desktop-file-utils' 'smbclient' 'libguess' 'enca' 'libxv' 'libfdk-aac' 'libcdio-paranoia' 'openal' 'lua52' 'libssh'
-         'libcaca' 'rsound' 'libxss' 'libdvdnav' 'jack2' 'libbs2b' 'libbluray' 'libpulse' 'libx264' 'mesa'
-         'libxinerama' 'libxrandr' 'libxkbcommon' 'hicolor-icon-theme' 'sdl' 'sdl2' 'lcms2' 'lame' 'lcms2' 'libva' 'rubberband') # 'vapoursynth'
+depends=('desktop-file-utils'
+         'smbclient'
+         'libguess'
+         'enca'
+         'libxv'
+         'libfdk-aac'
+         'libcdio-paranoia'
+         'openal'
+         'lua52'
+         'libssh'
+         'libcaca'
+         'rsound'
+         'libxss'
+         'libdvdnav'
+         'jack2'
+         'libbs2b'
+         'libbluray'
+         'libpulse'
+         'libx264'
+         'mesa'
+         'libxinerama'
+         'libxrandr'
+         'libxkbcommon'
+         'hicolor-icon-theme'
+         'sdl'
+         'sdl2'
+         'lcms2'
+         'lame'
+         'lcms2'
+         'libva'
+         'rubberband'
+         'uchardet'
+         'libarchive'
+         # 'vapoursynth'
+         )
 license=('GPL2')
 url="http://mpv.io/"
-makedepends=('git' 'python-docutils' 'yasm' 'ladspa')
+makedepends=('git'
+             'python-docutils'
+             'yasm'
+             'ladspa'
+             )
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users')
 provides=('mpv')
@@ -36,17 +72,18 @@ pkgver() {
 
 prepare() {
   cd mpv-build
-  git clone "file://${srcdir}/mpv" --depth 1
-  git clone "file://${srcdir}/ffmpeg" --depth 1
-  git clone "file://${srcdir}/libass" --depth 1
-  git clone "file://${srcdir}/fribidi" --depth 1
+  ln -s ../mpv
+  ln -s ../ffmpeg
+  ln -s ../libass
+  ln -s ../fribidi
 
   # Set ffmpeg/libass/fribidi/mpv flags
   echo "--disable-programs --enable-libx264 --enable-libmp3lame --enable-libfdk-aac --enable-libssh --enable-nonfree" > ffmpeg_options
-  echo "--prefix=/usr --confdir=/etc/mpv --enable-openal --enable-sdl2 --enable-libmpv-shared --enable-zsh-comp --lua=52arch --enable-egl-x11" > mpv_options
+  echo "--prefix=/usr --confdir=/etc/mpv --enable-openal --enable-sdl2 --enable-libmpv-shared --enable-zsh-comp --lua=52arch --enable-egl-x11 --enable-libarchive" > mpv_options
+
+  cd mpv
 
   # Download Waf script
-  cd mpv
   ./bootstrap.py
 }
 
