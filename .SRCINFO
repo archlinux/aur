@@ -4,7 +4,7 @@ pkgbase = libra-gtk-theme
 	pkgrel = 1
 	url = http://gnome-look.org/content/show.php/Libra?content=167689
 	arch = any
-	license = unknown
+	license = GPL
 	depends = gtk-engines
 	depends = gtk-engine-murrine
 	source = Libra.tar.gz::http://gnome-look.org/CONTENT/content-files/167689-Libra2.3.tar.gz

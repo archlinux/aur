@@ -3,7 +3,7 @@ pkgver=2.3
 pkgrel=1
 pkgdesc="GTK-2.0 & GTK-3.0 compatible theme"
 arch=('any')
-license=('unknown')
+license=('GPL')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=()
 url="http://gnome-look.org/content/show.php/Libra?content=167689"
