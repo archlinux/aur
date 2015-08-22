@@ -1,0 +1,7 @@
+post_install() {
+    echo "Feather is designed to be run from cron like this:"
+    echo "   */5 * * * * /usr/bin/feather path/to/config.yaml"
+    echo "However, NO out of the box configuration file comes with this package."
+    echo "You can copy an example file from /usr/share/feather-git/feather.yaml.dist,"
+    echo "modify it to your needs and change to cron line accordingly."
+}

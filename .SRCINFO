@@ -1,0 +1,18 @@
+pkgbase = feather-git
+	pkgdesc = A tarsnap script that performs and maintains a set of backups as defined by a yaml configuration file
+	pkgver = 30.503fb9f
+	pkgrel = 1
+	url = https://github.com/danrue/feather
+	install = feather.install
+	arch = any
+	license = custom:beerware
+	makedepends = git
+	depends = tarsnap
+	depends = python2-yaml
+	source = git://github.com/danrue/feather.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 11e83d27bfac8416111b464909fc9adf
+
+pkgname = feather-git
+
