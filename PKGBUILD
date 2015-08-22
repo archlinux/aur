@@ -1,30 +1,30 @@
-# Maintainer: Grey Christoforo <grey[at]christoforo[dot]net>
+# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+
 pkgname=uranium
-pkgver=15.06.02
+pkgver=15.06.03
 pkgrel=1
 pkgdesc="A Python framework for building Desktop applications."
 url="https://github.com/Ultimaker/Uranium"
 arch=('any')
 license=('GPLv3')
 depends=('python' 'qt5-quickcontrols' 'pyqt5-common' 'python-pyqt5' 'python-numpy' 'arcus')
-#optdepends=('java-runtime')
 makedepends=('cmake')
-conflicts=()
-replaces=()
-backup=()
-#install='foo.install'
 source=("https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('c3b5e070090b2d026e1547ef8d4532fe')
+md5sums=('60c583b462494c2de015a678ba134eb3')
 
 build() {
-  cd "${srcdir}/Uranium-${pkgver}"
+  cd Uranium-${pkgver}
   cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/Uranium-${pkgver}"
+  cd Uranium-${pkgver}
   make DESTDIR="${pkgdir}" install
+  SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+  mkdir -p "${pkgdir}${SITE_PACKAGES}"
+  mv "${pkgdir}"/usr/lib/python3/dist-packages/* "${pkgdir}${SITE_PACKAGES}"/.
+  rm -rf "${pkgdir}"/usr/lib/python3
   #install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
