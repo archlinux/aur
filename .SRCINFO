@@ -1,0 +1,16 @@
+pkgbase = cnijfilter2-mg7500
+	pkgdesc = Canon InkJet Printer Driver (MG7500, MG6600, MG5600, MG2900, MB5300, MB5000, MB2300, MB2000, IP110, IB4000, E460 Series)
+	pkgver = 5.00
+	pkgrel = 1
+	url = http://cweb.canon.jp/drv-upd/ij-mfp/linux-pd-20142h-500.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libcups
+	depends = libxml2
+	provides = cnijfilter2=5.00
+	source = http://gdlp01.c-wss.com/gds/5/0100006265/01/cnijfilter2-5.00-1-deb.tar.gz
+	md5sums = 433e5d53041067deb90584397daec07d
+
+pkgname = cnijfilter2-mg7500
+
