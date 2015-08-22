@@ -1,7 +1,7 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=xtrkcad-hg
-pkgver=671.4bbd80c266cb
-pkgrel=2
+pkgver=r671.4bbd80c266cb
+pkgrel=3
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
 arch=('x86_64' 'i686')
@@ -17,11 +17,6 @@ _hgname='xtrkcad'
 pkgver() {
   cd ${_hgname}
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
-
-pkgver() {
-  cd ${_hgname}
-  echo $(hg identify -n).$(hg identify -i)
 }
 
 build() {
