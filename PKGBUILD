@@ -4,7 +4,7 @@
 
 _name=gnome-commander
 pkgname=$_name-git
-pkgver=1.4.0.202.g1e29392
+pkgver=1.4.0.209.gd0350bb
 pkgrel=1
 pkgdesc="Graphical two-pane filemanager for GNOME"
 arch=('i686' 'x86_64')
