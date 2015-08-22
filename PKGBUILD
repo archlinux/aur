@@ -3,7 +3,7 @@
 # Contributor: Jesús Jerez <jerezmoreno@gmail.com>
 pkgname=eclipse-eclipsecolortheme
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Eclipse Color Theme"
 url="http://www.eclipsecolorthemes.org"
 license=("EPL/1.0")
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-  _dest="${pkgdir}"/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  _dest="${pkgdir}"/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
   # Features
   find features -type f | while read _feature ; do
