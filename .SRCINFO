@@ -1,6 +1,6 @@
 pkgbase = qtcreator-cmakeprojectmanager2-plugin-git
 	pkgdesc = Enhanced CMake Project Manager plugin for Qt Creator
-	pkgver = r3.4.26.f7c2dbf
+	pkgver = r3.5.32.47c6a9c
 	pkgrel = 1
 	url = https://github.com/amezin/cmakeprojectmanager2
 	arch = i686
@@ -9,10 +9,12 @@ pkgbase = qtcreator-cmakeprojectmanager2-plugin-git
 	groups = qt5
 	license = Unknown
 	makedepends = git
-	makedepends = qtcreator-src
-	depends = qtcreator
-	source = qtcreator-cmakeprojectmanager2-plugin-git::git+https://github.com/amezin/cmakeprojectmanager2.git#branch=qtc-3.4
+	makedepends = qtcreator-src>=3.5
+	depends = qtcreator>=3.5
+	source = qtcreator-cmakeprojectmanager2-plugin-git::git+https://github.com/h4tr3d/cmakeprojectmanager2.git#branch=3.5
+	source = ide_build_tree.patch
 	sha256sums = SKIP
+	sha256sums = 6e55c880eedf525122f4edc0617a7994c2a76f6ef1d99970e10a872261582ad0
 
 pkgname = qtcreator-cmakeprojectmanager2-plugin-git
 

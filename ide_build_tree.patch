@@ -1,0 +1,25 @@
+From 661498da1d596be7f6f366867665313ae46f3ba3 Mon Sep 17 00:00:00 2001
+From: Alexander Mezin <mezin.alexander@gmail.com>
+Date: Mon, 3 Aug 2015 17:33:21 +0600
+Subject: [PATCH] Allow setting IDE_BUILD_TREE from environment variable
+
+With empty IDE_BUILD_TREE it tries to move files to '/lib' during
+build on Linux.
+---
+ cmakeprojectmanager.pro | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/cmakeprojectmanager.pro b/cmakeprojectmanager.pro
+index 673d2b9..7533d7d 100644
+--- a/cmakeprojectmanager.pro
++++ b/cmakeprojectmanager.pro
+@@ -2,8 +2,7 @@
+ QTCREATOR_SOURCES = $$(QTC_SOURCE)
+ 
+ ## set the QTC_BUILD environment variable to override the setting here
+-#IDE_BUILD_TREE = $$(QTC_BUILD)
+-IDE_BUILD_TREE =
++IDE_BUILD_TREE = $$(QTC_BUILD)
+ 
+ DEFINES += CMAKEPROJECTMANAGER_LIBRARY
+ include(cmakeprojectmanager_dependencies.pri)
