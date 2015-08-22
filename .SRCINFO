@@ -1,0 +1,13 @@
+pkgbase = glide-git
+	pkgdesc = Simplified Go project management, dependency management, and vendoring.
+	pkgver = 0.5.0.r2.g94e1de0
+	pkgrel = 1
+	url = https://github.com/Masterminds/glide
+	arch = any
+	makedepends = git
+	makedepends = go
+	source = glide-git::git+https://github.com/Masterminds/glide.git
+	md5sums = SKIP
+
+pkgname = glide-git
+
