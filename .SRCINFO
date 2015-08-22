@@ -1,0 +1,14 @@
+pkgbase = libra-dark-gtk-theme
+	pkgdesc = GTK-2.0 & GTK-3.0 compatible theme
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Libra?content=167689
+	arch = any
+	license = GPL
+	depends = gtk-engines
+	depends = gtk-engine-murrine
+	source = Libra-Dark.tar.gz::https://www.dropbox.com/s/tif9lq158ijdnaf/Libra-Dark2.3.tar.gz?dl=1
+	md5sums = 706324efffb3fbede5534744f7103e65
+
+pkgname = libra-dark-gtk-theme
+
