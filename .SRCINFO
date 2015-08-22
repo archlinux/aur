@@ -1,0 +1,16 @@
+pkgbase = iaca
+	pkgdesc = Intel® Architecture Code Analyzer AUR install package.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://software.intel.com/en-us/articles/intel-architecture-code-analyzer
+	arch = x86_64
+	license = custom
+	depends = gcc-libs-multilib
+	depends = bash
+	source = https://software.intel.com/system/files/article/157552/iaca-lin64.zip
+	source = LICENSE
+	md5sums = d1d22f1044f0325a2832d237ddb5e95e
+	md5sums = 5d35a259dd29bfd46e4705a96eb008f3
+
+pkgname = iaca
+
