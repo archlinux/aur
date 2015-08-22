@@ -1,8 +1,8 @@
 pkgbase = imagemagick-git
 	pkgdesc = An image viewing/manipulation program
-	pkgver = 7.0.0.0.r10071.g3de10e8
+	pkgver = 7.0.0.0.r10090.g7e784cd
 	pkgrel = 1
-	url = https://www.imagemagick.org/
+	url = http://www.imagemagick.org/script/
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -38,8 +38,6 @@ pkgname = imagemagick-git
 	depends = libxext
 	depends = liblqr
 	depends = libcl
-	depends = perl>=
-	depends = perl<
 	optdepends = imagemagick-doc: for additional information
 	optdepends = ghostscript: for Ghostscript support
 	optdepends = openexr: for OpenEXR support

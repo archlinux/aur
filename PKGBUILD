@@ -11,17 +11,20 @@ _pkgname='imagemagick'
 pkgbase="${_pkgname}-git"
 _srcdir="${pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-doc")
-pkgver=7.0.0.0.r10071.g3de10e8
+pkgver=7.0.0.0.r10090.g7e784cd
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 arch=('i686' 'x86_64')
-url='https://www.imagemagick.org/'
+url='http://www.imagemagick.org/script/'
 license=('custom')
 makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
              'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2'
              'opencl-headers' 'libcl' 'libwebp' 'git')
 #source=("ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-${pkgver%.*}-${pkgver##*.}".tar.xz{,.asc})
 #source=("${pkgname}::svn+https://subversion.imagemagick.org/subversion/ImageMagick/trunk/") # svn was shut down August 10, 2015
+_verurl="${url/script/download/}"
+_versed='ImageMagick-\([-0-9\.]\+\)\.tar\.bz2'
+_veropt='l'
 _archlink="@@@::https://projects.archlinux.org/togit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=("${pkgname}::git+http://git.imagemagick.org/repos/ImageMagick.git"
     'libpng_mmx_patch_x86_64.patch'
@@ -109,7 +112,7 @@ package_imagemagick-git() {
     if [ ! -z "$(find "${pkgdir}/usr/lib/perl5/" -name '*.so')" ]; then
       local _perlver_min="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')"
       local _perlver_max="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')"
-      depends+=("perl>=${_perlver_min}" "perl<${_perlver_max}")
+      eval 'dep''ends+=("perl>=${_perlver_min}" "perl<${_perlver_max}")' # keep mksrcinfo from reading this
     fi
     # template end;
   fi
