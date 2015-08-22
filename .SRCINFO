@@ -1,0 +1,18 @@
+pkgbase = pomodoro-applet
+	pkgdesc = GNOME Panel applet for timing the intervals used in the Pomodoro Techinique(tm)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/stump/pomodoro-applet
+	install = pomodoro-applet.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gnome-panel
+	source = http://ftp.stump.io/software/pomodoro-applet/pomodoro-applet-1.0.tar.gz
+	source = 0001-Port-to-libpanel-applet-5-and-gstreamer-1.0.patch
+	md5sums = 39c1a7f6892c6764c3ab78962c830d14
+	md5sums = 649185c6208949ec54af7edd6207e2df
+
+pkgname = pomodoro-applet
+

@@ -1,0 +1,114 @@
+From 51834d5fbbf28ff6570630d35de3518b9bf2e87c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 23 Aug 2015 00:48:57 +0200
+Subject: [PATCH] Port to libpanel-applet 5 and gstreamer 1.0
+
+---
+ configure.ac   |  6 +++---
+ src/pomodoro.c | 25 +++++++++++++++----------
+ 2 files changed, 18 insertions(+), 13 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 78fa8f2..7028cce 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,13 +27,13 @@ AM_PROG_CC_C_O
+ CFLAGS="$CFLAGS -W -Wall"
+ 
+ # Checks for libraries.
+-PKG_CHECK_MODULES([LIBPANELAPPLET], [libpanelapplet-4.0])
++PKG_CHECK_MODULES([LIBPANELAPPLET], [libpanel-applet])
+ AC_SUBST([LIBPANELAPPLET_CFLAGS])
+ AC_SUBST([LIBPANELAPPLET_LIBS])
+ PKG_CHECK_MODULES([LIBNOTIFY], [libnotify >= 0.7])
+ AC_SUBST([LIBNOTIFY_CFLAGS])
+ AC_SUBST([LIBNOTIFY_LIBS])
+-PKG_CHECK_MODULES([GSTREAMER], [gstreamer-0.10])
++PKG_CHECK_MODULES([GSTREAMER], [gstreamer-1.0])
+ AC_SUBST([GSTREAMER_CFLAGS])
+ AC_SUBST([GSTREAMER_LIBS])
+ PKG_CHECK_MODULES([LIBRSVG], [librsvg-2.0 >= 2.36])
+@@ -58,7 +58,7 @@ AC_CHECK_HEADERS([string.h])
+ AS_AC_EXPAND([APPLETDIR], ["${libdir}/pomodoro-applet"])
+ AC_SUBST([APPLETDIR])
+ AC_MSG_CHECKING([where panel-applet files go])
+-AS_AC_EXPAND([PANELAPPLETDIR], ["`${PKG_CONFIG} --variable=libpanel_applet_dir libpanelapplet-4.0`"])
++AS_AC_EXPAND([PANELAPPLETDIR], ["`${PKG_CONFIG} --variable=libpanel_applet_dir libpanel-applet`"])
+ AC_SUBST([PANELAPPLETDIR])
+ AC_MSG_RESULT([$PANELAPPLETDIR])
+ AC_MSG_CHECKING([where dbus service files go])
+diff --git a/src/pomodoro.c b/src/pomodoro.c
+index 89c5728..f6c39ed 100644
+--- a/src/pomodoro.c
++++ b/src/pomodoro.c
+@@ -24,7 +24,6 @@
+ #include <libnotify/notify.h>
+ #include <gst/gst.h>
+ #include <librsvg/rsvg.h>
+-#include <librsvg/rsvg-cairo.h>
+ #include <glib/gi18n.h>
+ 
+ #include <string.h>
+@@ -178,13 +177,14 @@ static gboolean pom_button_pressed(GtkWidget* ebox, GdkEventButton* event, struc
+   return FALSE;
+ }
+ 
+-static void pom_about(GtkAction* action, gpointer data)
++static void pom_about(GSimpleAction *action, GVariant *parameter, gpointer data)
+ {
+   const gchar* authors[] = {"John Stumpo", NULL};
+   const gchar* artists[] = {"J\xc3\xa1nos Horv\xc3\xa1th (icon)", NULL};
+   GdkPixbuf* logo = rsvg_handle_get_pixbuf(((struct pom_state*)data)->tomato_svg);
+ 
+   (void) action;
++  (void) parameter;
+   (void) data;
+ 
+   gtk_show_about_dialog(NULL,
+@@ -202,11 +202,16 @@ static void pom_about(GtkAction* action, gpointer data)
+ }
+ 
+ static const gchar* menu_xml =
+-  "<menuitem name=\"About\" action=\"About\" />"
++  "<section>\
++     <item>\
++       <attribute name=\"label\" translatable=\"yes\">_About</attribute>\
++       <attribute name=\"action\">pomodoro.about</attribute>\
++     </item>\
++   </section>"
+ ;
+ 
+-static const GtkActionEntry menu_actions[] = {
+-  {"About", GTK_STOCK_ABOUT, N_("_About"), NULL, NULL, G_CALLBACK(pom_about)},
++static const GActionEntry menu_actions[] = {
++  {"about", pom_about, NULL, NULL, NULL, NULL},
+ };
+ 
+ static gboolean pomodoro_applet_fill(PanelApplet* applet, const gchar* iid, gpointer data)
+@@ -216,7 +221,7 @@ static gboolean pomodoro_applet_fill(PanelApplet* applet, const gchar* iid, gpoi
+   gchar* logo_filename;
+   GdkPixbuf* minitomato;
+   GtkWidget* hbox;
+-  GtkActionGroup* action_group;
++  GSimpleActionGroup* action_group;
+   (void) data;
+ 
+   if (strcmp(iid, "PomodoroApplet") != 0)
+@@ -269,10 +274,10 @@ static gboolean pomodoro_applet_fill(PanelApplet* applet, const gchar* iid, gpoi
+   g_free(logo_filename);
+ 
+   /* Set up the action group and menu. */
+-  action_group = gtk_action_group_new("Pomodoro Applet Actions");
+-  gtk_action_group_set_translation_domain(action_group, GETTEXT_PACKAGE);
+-  gtk_action_group_add_actions(action_group, menu_actions, G_N_ELEMENTS(menu_actions), state);
+-  panel_applet_setup_menu(applet, menu_xml, action_group);
++  action_group = g_simple_action_group_new ();
++  g_action_map_add_action_entries (G_ACTION_MAP (action_group), menu_actions, G_N_ELEMENTS(menu_actions), state);
++  panel_applet_setup_menu(applet, menu_xml, action_group, GETTEXT_PACKAGE);
++  gtk_widget_insert_action_group (GTK_WIDGET (applet), "pomodoro", G_ACTION_GROUP (action_group));
+   g_object_unref(action_group);
+   panel_applet_set_flags(applet, PANEL_APPLET_EXPAND_MINOR);
+   gtk_box_pack_start(GTK_BOX(hbox), state->label, FALSE, FALSE, 0);
+-- 
+2.5.0
+
