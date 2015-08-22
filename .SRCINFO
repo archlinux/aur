@@ -1,6 +1,6 @@
 pkgbase = javafx-devel-samples
 	pkgdesc = Demos and samples for JavaFX
-	pkgver = 9b77
+	pkgver = 9b78
 	pkgrel = 1
 	url = https://jdk9.java.net/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = javafx-devel-samples
 	optdepends = java-runtime>=9: Run the examples
 	optdepends = java-environment>=9: Compile and run the examples from source
 	options = !strip
-	source = http://download.java.net/jdk9/archive/b77/binaries/javafx_samples-9-ea-b77-linux-11_aug_2015.zip
+	source = http://download.java.net/jdk9/archive/b78/binaries/javafx_samples-9-ea-b78-linux-18_aug_2015.zip
 	source = OTN-Early-Adopter-License-Terms.txt
-	md5sums = 4386fbba227cdea24a2dbdf004c25428
+	md5sums = b04d7a4cdbc6658b30ead9d455368774
 	md5sums = f09947a67691a2d78d20a3885889981c
 
 pkgname = javafx-devel-samples
