@@ -1,0 +1,20 @@
+pkgbase = protobuf
+	pkgdesc = Protocol Buffers - Google's data interchange format (with modifications by Ultimaker)
+	pkgver = 15.06.03
+	pkgrel = 1
+	url = https://github.com/Ultimaker/protobuf
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	depends = python-setuptools
+	depends = python2-setuptools
+	depends = unzip
+	provides = protobuf3
+	conflicts = protobuf3
+	source = https://github.com/Ultimaker/protobuf/archive/15.06.03.tar.gz
+	sha1sums = 09c8f014e47bf451cea548ddba72524a42c05991
+
+pkgname = protobuf
+
