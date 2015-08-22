@@ -14,19 +14,19 @@ source=(https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz)
 sha1sums=('09c8f014e47bf451cea548ddba72524a42c05991')
 
 build(){
-  cd ${pkgname}-${pkgver}
+  cd protobuf-${pkgver}
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 check(){
-  cd ${pkgname}-${pkgver}
+  cd protobuf-${pkgver}
   make check
 }
 
 package(){
-  cd ${pkgname}-${pkgver}
+  cd protobuf-${pkgver}
   make DESTDIR="$pkgdir" install
 }
 
