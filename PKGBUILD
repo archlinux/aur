@@ -1,21 +1,21 @@
 pkgname=lantern
 pkgver=2.0.0+stable
-pkgrel=1
+pkgrel=2
 pkgdesc='Lantern is a free desktop application that delivers fast, reliable and secure access to the
-open Internet.'
+open Internet. Stable version'
 arch=('i686' 'x86_64')
 url='https://getlantern.org/'
 license=('custom')
 # I got it by ldd the lantern-binary as deb metadata doesn't provides it.
 # And remove duplicated, like atk required by gtk3
-depends=('gtk3' 'bzip2' 'dbus' 'glib2' 'dbus' 'libappindicator-gtk3' 'xcb-util'
+depends=('gtk3' 'bzip2' 'dbus' 'glib2' 'libappindicator-gtk3' 'xcb-util'
 	 'zlib' 'mesa')
 
-source_i686=("https://s3.amazonaws.com/lantern/lantern-installer-beta-32-bit.deb")
-source_x86_64=("https://s3.amazonaws.com/lantern/lantern-installer-beta-64-bit.deb")
+source_i686=("lantern-installer-32.deb::https://github.com/getlantern/lantern-binaries/blob/master/lantern-installer-32.deb?raw=true")
+source_x86_64=("lantern-installer-64.deb::https://github.com/getlantern/lantern-binaries/blob/master/lantern-installer-64.deb?raw=true")
 
-md5sums_i686=('457bdc53ebe06759c271382b63407d6d')
-md5sums_x86_64=('4bc31f5bd94d71bad9747e3623c9e2f6')
+sha1sums_i686=('3c8649d2a54986604b08c712625bd9468bf1549c')
+sha1sums_x86_64=('884bc1cadf2cdafd17e6d10414361ccf56d2b0bd')
 
 package() {
 	tar xf data.tar.xz
