@@ -1,0 +1,19 @@
+pkgbase = libscrobbler
+	pkgdesc = A fork of liblastfm which allow custom hosts
+	pkgver = 1.0.8.r20.g15fc24a
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4>4.8
+	depends = fftw
+	depends = libsamplerate
+	provides = libscrobbler
+	conflicts = libscrobbler
+	replaces = libscrobbler
+	source = git+https://github.com/Chocobozzz/libscrobbler
+	sha256sums = SKIP
+
+pkgname = libscrobbler
+
