@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xfractint  
-pkgver=20.04p13
+pkgver=20.04p14
 pkgrel=1
 pkgdesc="A fractal generator wellknown from good old DOS days"
 url="http://www.fractint.org/"
@@ -11,7 +11,7 @@ makedepends=('yasm')
 source=(fractint.sh \
 http://www.fractint.org/ftp/current/linux/$pkgname-$pkgver.tar.gz)
 md5sums=('90a680dbcee2063e05c2e9c0b235649d'
-         'cd3c322b81457c72aa660e678530a0bb')
+         'cf956f0701deeb489a10dff9bfb13cce')
 
 build() {
   cd $srcdir/$pkgname-$pkgver

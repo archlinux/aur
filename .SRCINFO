@@ -1,6 +1,6 @@
 pkgbase = xfractint
 	pkgdesc = A fractal generator wellknown from good old DOS days
-	pkgver = 20.04p13
+	pkgver = 20.04p14
 	pkgrel = 1
 	url = http://www.fractint.org/
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = xfractint
 	makedepends = yasm
 	depends = libxft
 	source = fractint.sh
-	source = http://www.fractint.org/ftp/current/linux/xfractint-20.04p13.tar.gz
+	source = http://www.fractint.org/ftp/current/linux/xfractint-20.04p14.tar.gz
 	md5sums = 90a680dbcee2063e05c2e9c0b235649d
-	md5sums = cd3c322b81457c72aa660e678530a0bb
+	md5sums = cf956f0701deeb489a10dff9bfb13cce
 
 pkgname = xfractint
 
