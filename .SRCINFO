@@ -1,0 +1,15 @@
+pkgbase = march-overlay-git
+	pkgdesc = march default system config (git version)
+	pkgver = 186.9f5f009
+	pkgrel = 1
+	url = http://github.com/taylorchu/march-overlay
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	depends = expac
+	source = git://github.com/taylorchu/march-overlay.git
+	md5sums = SKIP
+
+pkgname = march-overlay-git
+
