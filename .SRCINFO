@@ -13,7 +13,7 @@ pkgbase = protobuf-ultimaker
 	depends = unzip
 	provides = protobuf3
 	conflicts = protobuf3
-	source = https://github.com/Ultimaker/protobuf-ultimaker/archive/15.06.03.tar.gz
+	source = https://github.com/Ultimaker/protobuf/archive/15.06.03.tar.gz
 	sha1sums = 09c8f014e47bf451cea548ddba72524a42c05991
 
 pkgname = protobuf-ultimaker
