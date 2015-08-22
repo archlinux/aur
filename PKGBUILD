@@ -32,11 +32,11 @@ source=(# Chrome
         "lp_linux_$_ffver.xpi::$url/lp_linux.xpi"
         'profiles.ini')
 noextract=("lp_linux_$_ffver.xpi")
-md5sums=('67020ae984406043cae7f80085bd0374'
+md5sums=('87fc7adfd303a0d6cb6faa2b790988a3'
          '560746ff6a325200de014a0a599a69bb'
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
-         '87fc7adfd303a0d6cb6faa2b790988a3'
+         'ca1710ba2b873e6c9f8005bb504ac924'
          'd0f555a644484baccf649f7969794ece')
 
 # 64-bit?
