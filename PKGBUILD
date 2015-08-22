@@ -4,7 +4,7 @@
 _pkgname=qtox
 pkgname=qtox-git
 pkgver=r2712.2fed672
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/tux3/qTox'
@@ -18,7 +18,7 @@ depends=(
   'openal'
   'qt5-svg'
   'qrencode'
-  'tox-git'
+  'toxcore'
 )
 makedepends=('git' 'qt5-tools')
 provides=("$_pkgname")
