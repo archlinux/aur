@@ -2,6 +2,7 @@ pkgbase = libscrobbler
 	pkgdesc = A fork of liblastfm which allow custom hosts
 	pkgver = 1.0.8.r20.g15fc24a
 	pkgrel = 1
+	url = https://github.com/Chocobozzz/libscrobbler
 	arch = i686
 	arch = x86_64
 	license = GPL

@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('qt4>4.8' 'fftw' 'libsamplerate')
 makedepends=( 'cmake' )
+url="https://github.com/Chocobozzz/libscrobbler"
 
 source=('git+https://github.com/Chocobozzz/libscrobbler')
 sha256sums=('SKIP')
