@@ -1,0 +1,24 @@
+pkgbase = ihaskell-git
+	pkgdesc = A Haskell kernel for IPython, built in a sandbox.
+	pkgver = c7196b1029
+	pkgrel = 1
+	url = https://github.com/gibiansky/IHaskell
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = ghc<7.11
+	makedepends = happy
+	makedepends = gtk2hs-buildtools
+	makedepends = haskell-stack
+	depends = ipython>=4
+	depends = python-pyzmq
+	depends = jupyter
+	provides = ihaskell
+	source = git+https://github.com/gibiansky/IHaskell
+	source = stack.patch
+	sha512sums = SKIP
+	sha512sums = 04f6797a49deda3300fb058501a5cc500549f1e436d91e4cd8416ff4bbbf4f1033984cd9ca5304fddbd5aca7a3bf4bc66473fbad5f7f55187359ecd0d9353f8c
+
+pkgname = ihaskell-git
+
