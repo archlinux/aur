@@ -1,7 +1,7 @@
 # Contributor: Artem Alabin <kirpicheff@yandex.ru>
 # Contributor: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup-server
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('gcc-libs' 'gcc' 'make')
 depends=('crypto++')
 source=("http://downloads.sourceforge.net/project/urbackup/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz")
 install=('urbackup.install')
-md5sums=('b195f0d06a6750d9cace3874070e2373')
+md5sums=('3452b47f727d5debf0f27bc64c0538d0')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
