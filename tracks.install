@@ -1,6 +1,6 @@
 post_install() {
     echo "
-Tracks is pre-configured to use Mongrel as a web server and SQLite as a
+Tracks is pre-configured to use WEBrick as a web server and SQLite as a
 database. Simply start the systemd unit and navigate to http://server:10008/
 
   # systemctl start tracks
