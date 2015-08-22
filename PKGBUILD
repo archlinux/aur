@@ -1,32 +1,31 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net
 pkgname=xtrkcad
-pkgver=4.2.0_beta1
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('gtk2' 'webkitgtk2')
 optdepends=()
-makedepends=('cmake' 'mercurial' 'gettext')
+makedepends=('cmake' 'gettext')
 conflicts=('xtrkcad')
-provides=()
-replaces=()
+provides=('xtrkcad')
 backup=()
-source=(
-    "http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%20${pkgver//_/-}/xtrkcad-source-${pkgver//_/-}.tar.bz2")
-md5sums=('48f00a37206a0a8c8e9fe794f7fc3e53')
+_srcname="${pkgname}-source-${pkgver}"
+source=("http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%20${pkgver}/${_srcname}.tar.gz")
+sha256sums=('ac1a6a1cdffc799a7cfed1a12a320724e97081fcc8b8759f4e0b920f06cda668')
  
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver//_/-}"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_EXE_LINKER_FLAGS="-lm"  -DCMAKE_BUILD_TYPE="Release" -DXTRKCAD_USE_GETTEXT="ON"
+  cd "${_srcname}"
+  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_EXE_LINKER_FLAGS="-lm" -DCMAKE_BUILD_TYPE="Release" -DXTRKCAD_USE_GETTEXT="ON"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver//_/-}"
+  cd "${_srcname}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/app/lib/xtrkcad.desktop" "${pkgdir}/usr/share/applications/xtrkcad.desktop"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/app/lib/icon.png" "${pkgdir}/usr/share/pixmaps/xtrkcad.png"
+  install -Dm644 "app/lib/xtrkcad.desktop" "${pkgdir}/usr/share/applications/xtrkcad.desktop"
+  install -Dm644 "app/lib/icon.png" "${pkgdir}/usr/share/pixmaps/xtrkcad.png"
 }
 
