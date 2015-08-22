@@ -1,17 +1,17 @@
 # Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
-pkgname=oxygen-cursors-extra
-_kdever_=4.14.3
-pkgver=4.11.14
+_pkgbase_=oxygen
+pkgname=${_pkgbase_}-cursors-extra
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="KDE's Oxygen mouse cursor theme - the extra flavours"
 arch=("any")
-url="http://www.kde.org"
-license=("GPL3")
-makedepends=('pkgconfig' 'cmake' 'automoc4' 'inkscape' 'libltdl' 'xorg-xcursorgen')
-#optdepends=("kdebase-workspace: contains the default cursor colours")
+url="https://projects.kde.org/projects/kde/workspace/oxygen"
+license=("LGPL")
+makedepends=('cmake' 'automoc4' 'inkscape' 'libltdl' 'xorg-xcursorgen')
+optdepends=("oxygen-cursors: contains the default Oxygen cursor colours")
 options=(!emptydirs)
-source=("http://download.kde.org/stable/${_kdever_}/src/kde-workspace-${pkgver}.tar.xz")
+source=("http://download.kde.org/stable/plasma/${pkgver}/${_pkgbase_}-${pkgver}.tar.xz")
 
 # Cursor size
 _cursorsize_=""
@@ -22,7 +22,7 @@ _themelist_="bluecurve brown cherry chrome desert emerald green grey honeycomb h
 #_themelist_="${_themelist_} black blue white yellow zion"
 
 build() {
-	cd "${srcdir}"/kde-workspace-${pkgver}/cursors/src
+	cd "${srcdir}"/${_pkgbase_}-${pkgver}/cursors/src
 
 	cmake .
 
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}"/kde-workspace-${pkgver}/cursors/src
+	cd "${srcdir}"/${_pkgbase_}-${pkgver}/cursors/src
 
 	# Directories
 	install -d "${pkgdir}"/usr/share/icons/
@@ -44,4 +44,4 @@ package() {
 	done
 }
 
-sha1sums=('ec79a5d638a93b1abbb99b22a7bea52d9a2c26eb')
+sha1sums=('86cd76b3eafaf3fd5664f2dadac43b76a54c6e29')
