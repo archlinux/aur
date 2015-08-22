@@ -2,13 +2,13 @@
 
 _name=gnome-2048
 pkgname=$_name-git
-pkgver=0.1.0.r87.e2b36b5
+pkgver=3.17.90.r101.253e3c0
 pkgrel=1
 pkgdesc="Obtain the 2048 tile"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/2048"
 license=('GPL')
-depends=('clutter-gtk' 'libgee' 'libgames-support')
+depends=('clutter-gtk' 'libgee' 'libgames-support-git')
 makedepends=('vala' 'yelp-tools' 'gnome-common' 'intltool' 'git' 'appstream-glib')
 options=(!libtool)
 install=$_name.install
