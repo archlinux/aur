@@ -2,15 +2,15 @@
 
 pkgname=ow-curses-win32a
 pkgdesc="An extended PDCurses directly on Win32 api (watcom-win32)"
-groups=('watcom-win32' 'watcom-win16')
+groups=('watcom-win32' 'watcom-win16' 'watcom-dos')
 pkgver=15.05 #date of last release year.month
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('custom: Public Domain')
 depends=(openwatcom-v2)
 makedepends=(openwatcom-v2)
-provides=("watcom-curses-win32" "watcom-curses-win16")
-#win16 does not build
+provides=("watcom-curses-win32" "watcom-curses-win16" "watcom-curses-dos")
+#win16 fails at the moment
 url="http://www.projectpluto.com/win32a.htm"
 source=("http://www.projectpluto.com/win32a.zip")
 options=(!strip !buildflags staticlibs emptydirs)
@@ -18,6 +18,7 @@ md5sums=('835356e2ffa311c5bb908063cfda7dfa')
 
 build() {
   cd "$srcdir"/win32a
+  
   source /opt/watcom/owsetenv.sh
   
   #hacking away windowsisms from the makefile...
@@ -35,30 +36,59 @@ build() {
   export PDCURSES_SRCDIR="$srcdir"
   
   rm -f *.obj
-  
-  # compilation faliure in pdcclip.c
-  #msg "build for Win16..." 
-  #export INCLUDE=$WATCOM/h:$WATCOM/h/win
-  #wmake -f wccwin16.mak pdcurses.lib
-  #mv pdcurses.lib curses.lib16
-  #rm -f panel.lib
-  #rm -f *.obj
+#missing strlen, strcpy, TCHAR, LPTSTR
+# windows.h --> win16.h
+#  msg "build for Win16..." 
+#  export INCLUDE=$WATCOM/h:$WATCOM/h/win
+#  wmake -f wccwin16.mak pdcurses.lib
+#  mv pdcurses.lib curses.lib16
+#  rm -f panel.lib
+#  rm -f *.obj
   
   msg "build for Win32..."
   export INCLUDE=$WATCOM/h:$WATCOM/h/nt
   wmake -f wccwin32.mak pdcurses.lib
   rm -f panel.lib
- }
+  mv pdcurses.lib curses.lib32
+  rm -f *.obj
+  
+  msg "build for DOS..."
+  cd "$srcdir"/dos
+  #hacking away dosisms from makefile
+  sed 's|\/|-|g' -i wccdos*.mak
+  sed 's|SRCDIR)\\|SRCDIR)\/|g' -i wccdos*.mak
+  sed 's|-zq -wx|-zq -wx -fo=.obj|g' -i wccdos*.mak
+  msg2 "16-bit ..."
+  wmake -f wccdos16.mak pdcurses.lib
+  mv pdcurses.lib curses.lib16
+  rm -f panel.lib
+  rm -f *.obj
+  msg2 "32-bit (4GW) ..."
+  wmake -f wccdos4g.mak pdcurses.lib
+  mv pdcurses.lib curses.lib32
+  rm -f panel.lib
+  rm -f *.obj
+  }
 
 package() {
-  cd "$srcdir/win32a"
-  mkdir -p "${pkgdir}${WATCOM}"/{lib286/win,lib386/nt,h/{nt,win}}/
+  cd "$srcdir"/win32a
+  mkdir -p "${pkgdir}${WATCOM}"/{lib286/{dos,win},lib386/{dos,nt},h/{nt,win}}/
   chmod -R 755 "$pkgdir/opt"
-  install -m644 pdcurses.lib "${pkgdir}${WATCOM}"/lib386/nt/
+  chmod 644 curses.lib*
+  cp curses.lib32 "${pkgdir}${WATCOM}"/lib386/nt/pdcurses.lib
   cp "${pkgdir}${WATCOM}"/lib386/nt/pdcurses.lib "${pkgdir}${WATCOM}"/lib386/nt/panel.lib
-  #install -m644 curses.lib16 "${pkgdir}${WATCOM}"/lib286/win/pdcurses.lib
-  #cp "${pkgdir}${WATCOM}"/lib286/win/pdcurses.lib "${pkgdir}${WATCOM}"/lib286/win/panel.lib
-  install -m644 "$srcdir"/*.h "${pkgdir}${WATCOM}"/h/win/
+#  cp curses.lib16 "${pkgdir}${WATCOM}"/lib286/win/pdcurses.lib
+#  cp "${pkgdir}${WATCOM}"/lib286/win/pdcurses.lib "${pkgdir}${WATCOM}"/lib286/win/panel.lib
+#  install -m644 "$srcdir"/*.h "${pkgdir}${WATCOM}"/h/win/
   install -m644 "$srcdir"/*.h "${pkgdir}${WATCOM}"/h/nt/
+  
+  cd "$srcdir"/dos
+  install -m644 "$srcdir"/*.h "${pkgdir}${WATCOM}"/h/
+  chmod 644 curses.lib*
+  cp curses.lib16 "${pkgdir}${WATCOM}"/lib286/dos/pdcurses.lib
+  cp "${pkgdir}${WATCOM}"/lib286/dos/pdcurses.lib "${pkgdir}${WATCOM}"/lib286/dos/panel.lib
+  cp curses.lib32 "${pkgdir}${WATCOM}"/lib386/dos/pdcurses.lib
+  cp "${pkgdir}${WATCOM}"/lib386/dos/pdcurses.lib "${pkgdir}${WATCOM}"/lib386/dos/panel.lib  
+  
 }
 
