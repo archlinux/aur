@@ -3,7 +3,7 @@
 
 pkgname=jasper
 pkgver=1.900.1
-pkgrel=13
+pkgrel=14
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard"
 arch=('i686' 'x86_64')
 url="http://www.ece.uvic.ca/~mdadams/jasper/"
@@ -19,7 +19,8 @@ source=(http://www.ece.uvic.ca/~mdadams/${pkgname}/software/${pkgname}-${pkgver}
 	jasper-1.900.1-CVE-2011-4516-and-CVE-2011-4517.patch
         jasper-1.900.1-fix-filename-buffer-overflow.patch
 	jasper-1.900.1-CVE-2014-8157.patch
-	jasper-1.900.1-CVE-2014-8158.patch)
+	jasper-1.900.1-CVE-2014-8158.patch
+        jasper-1.900.1-CVE-2015-5203.patch)
 sha1sums=('9c5735f773922e580bf98c7c7dfda9bbed4c5191'
           'f298566fef08c8a589d072582112cd51c72c3983'
           '2483dba925670bf29f531d85d73c4e5ada513b01'
@@ -32,7 +33,8 @@ sha1sums=('9c5735f773922e580bf98c7c7dfda9bbed4c5191'
           '3bfb37a4c732caa824563bad2603fcf5f2acf7f7'
           '577dfce40da75818c4d32eb1c4532b1370950bee'
           'aaf96946073d2ece35f3695e8cc7956b5cad9a1d'
-          'e69b339de43d1dc2fbb98368cee3d20f76d35941')
+          'e69b339de43d1dc2fbb98368cee3d20f76d35941'
+          'b28a15079e6c5dd4cde8d63c21763c8abb9d187c')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -48,6 +50,7 @@ prepare() {
   patch -p1 -i "${srcdir}/jasper-1.900.1-fix-filename-buffer-overflow.patch"
   patch -p1 -i "${srcdir}/jasper-1.900.1-CVE-2014-8157.patch"
   patch -p1 -i "${srcdir}/jasper-1.900.1-CVE-2014-8158.patch"
+  patch -p1 -i "${srcdir}/jasper-1.900.1-CVE-2015-5203.patch"
 }
 
 build() {
