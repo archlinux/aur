@@ -1,7 +1,7 @@
 pkgbase = dynamorio
-	pkgdesc = Foo is an example package for this PKGBUILD file.
+	pkgdesc = A dynamic binary instrumentation framework
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dynamorio.org
 	arch = x86_64
 	arch = i686

@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Eyolfson <jon@eyl.io>
 pkgname=dynamorio
 pkgver=5.0.0
-pkgrel=1
-pkgdesc="Foo is an example package for this PKGBUILD file."
+pkgrel=2
+pkgdesc="A dynamic binary instrumentation framework"
 url="http://dynamorio.org"
 arch=('x86_64' 'i686')
 license=('BSD')
@@ -22,12 +22,15 @@ build() {
            -DBUILD_TOOLS=ON \
            -DBUILD_SAMPLES=ON \
            -DCMAKE_INSTALL_PREFIX="${pkgdir}/opt/dynamorio"
-  make
+  make -j
 }
 
 package() {
   cd "${srcdir}/${pkgname}-release_${pkgver//./_}/build"
   make install
+
+  chmod 755 "${pkgdir}/opt/dynamorio/lib64/release/libdynamorio.so.4.2"
+
   cd "${pkgdir}"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   mv opt/dynamorio/License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
