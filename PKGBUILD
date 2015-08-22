@@ -11,6 +11,7 @@ url="https://github.com/jarun/google-cli"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
+conflicts=('google-cli')
 source=('git://github.com/jarun/google-cli.git')
 md5sums=('SKIP')
 
