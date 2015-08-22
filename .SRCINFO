@@ -1,6 +1,6 @@
 pkgbase = backintime
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/backintime
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgname = backintime
 	depends = ttf-font
 	depends = icu
 	depends = polkit
-	optdepends = kdesdk-kompare: diff/patch frontend
+	optdepends = kompare: diff/patch frontend
 	optdepends = meld: diff/patch frontend
 	optdepends = python-keyring: store and access passwords safely
 	conflicts = backintime<1.1.0

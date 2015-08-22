@@ -4,7 +4,7 @@
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://launchpad.net/backintime"
 license=('GPL')
@@ -46,8 +46,8 @@ package_backintime() {
 	depends=("backintime-cli=$pkgver" 'xorg-xdpyinfo' 'python-pyqt4' 'libnotify'
 	'ttf-font' 'icu' 'polkit')
 	
-	# note users can optionally install EITHER kdesdk-kompare OR meld but not both!
-	optdepends=('kdesdk-kompare: diff/patch frontend'
+	# note users can optionally install EITHER kompare OR meld but not both!
+	optdepends=('kompare: diff/patch frontend'
 	'meld: diff/patch frontend'
 	'python-keyring: store and access passwords safely')
 	conflicts=("backintime<1.1.0")
