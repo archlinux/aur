@@ -1,5 +1,6 @@
 # vim: ft=PKGBUILD
 # Maintainer: Jack Frost <fbt@fleshless.org>
+# % Trigger: 1434983485 %
 
 pkgname=watchman-sm
 pkgdesc='A service manager for linux written in bash'
@@ -27,9 +28,12 @@ package() {
 	DESTDIR="$pkgdir" USR="$install_prefix" ./make.sh install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+	# BASH completion
+	install -Dm644 bash/completion/watchman "$pkgdir/usr/share/bash-completion/completions/watchman"
+	ln -s /usr/share/bash-completion/completions/watchman "$pkgdir/usr/share/bash-completion/completions/service"
+
 	# a link to provide a system-wide 'service' script
 	cd "${pkgdir}${install_prefix}/bin"; ln -s watchman-service service
-
 }
 
 sha1sums=('4c9ed3f011eddd5650418b84a020376b954e2271')
