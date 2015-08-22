@@ -1,6 +1,6 @@
 pkgbase = go-ethereum
 	pkgdesc = Ethereum Go Client (CLI)
-	pkgver = 1.0.1.2
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/ethereum/go-ethereum
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = go-ethereum
 	optdepends = mist: Ether Browser
 	options = !strip
 	options = !emptydirs
-	source = go-ethereum-1.0.1.2.tar.gz::https://codeload.github.com/ethereum/go-ethereum/tar.gz/v1.0.1.2
+	source = go-ethereum-1.0.2.tar.gz::https://codeload.github.com/ethereum/go-ethereum/tar.gz/v1.0.2
 	source = git+https://github.com/ethereum/go-ethereum.wiki
-	sha256sums = 62d531b60ebd3f096db7cc791d646f8ff90e01fad8b650184be59d7ed743fe96
+	sha256sums = 614b8ac53c3e91328be0662bdabbf484c49248287e076c53f1ccf89ea1ff7aa6
 	sha256sums = SKIP
 
 pkgname = go-ethereum
