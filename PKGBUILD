@@ -1,7 +1,7 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-jozoor
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Arabic fonts designed by Jozoor Team, working on Linux, Mac and Windows"
 arch=('any')
 url="http://jozoor.com/"
