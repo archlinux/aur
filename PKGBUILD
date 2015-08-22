@@ -5,7 +5,7 @@ pkgdesc="Simplified Go project management, dependency management, and vendoring.
 arch=('any')
 url=('https://github.com/Masterminds/glide')
 licence=('MIT')
-makedepends=('git' 'go')
+makedepends=('git' 'go>=1.5')
 source=(${pkgname}::git+https://github.com/Masterminds/glide.git)
 md5sums=('SKIP')
 
