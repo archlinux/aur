@@ -5,7 +5,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-rt
-pkgver=1.7.49
+pkgver=1.7.50
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -14,7 +14,7 @@ source=(http://prdownloads.sourceforge.net/wine/wine-$_pkgbasever.tar.bz2{,.sign
         30-win32-aliases.conf
         wine-rt-101107.patch)
 
-sha256sums=('c8a1589753493cb6b71b3772b730cdf90059fe0f29cbfb369fc9a2339766b789'
+sha256sums=('7c5410fab820281f337d478c18305027363c9012f30f742339ef1eb0f9dd711e'
             'SKIP'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             'cd8c48c9e5111b6acb47120da0272bc7afe3acc1f021443c81bb75d5d40ba4cc')
@@ -24,7 +24,7 @@ validpgpkeys=('5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7')
 pkgdesc="Realtime Wine - maps windows priority levels to linux scheduling policies"
 url="http://www.winehq.com"
 arch=(i686 x86_64)
-options=(staticlibs)
+options=(staticlibs !ccache)
 license=(LGPL)
 install=wine-rt.install
 
@@ -125,7 +125,8 @@ build() {
   cd "$srcdir"
 
   # remove once https://bugs.winehq.org/show_bug.cgi?id=38653 is resolved
-  export CFLAGS="${CFLAGS/-O2/} -O0"
+  export CFLAGS="${CFLAGS/-O2/} -O0 -std=gnu89"
+#  export CFLAGS="${CFLAGS/-O2/} -O0"
   export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
 
   # Allow ccache to work
