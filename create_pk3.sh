@@ -13,6 +13,5 @@ echo "Creating bin.pk3"
 	cd ../../build/release-linux*
 	cd coopmain/
         zip -r bin.pk3 *.so
-        cp bin.pk3 ~/.wolf/coopmain/
         mv bin.pk3 ../../../media/
 

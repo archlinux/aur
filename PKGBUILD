@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=bzzwolfsp
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Return to Castle Wolfenstein Single Player engine mod to make Cooperative play possible (aka RTCW Coop)"
 arch=('i686' 'x86_64')
@@ -10,21 +10,19 @@ depends=('lib32-sdl' 'lib32-mesa' 'wolf-data')
 depends=('sdl' 'mesa' 'wolf-data')
 conflicts=('bzzwolfsp-svn')
 install='bzzwolfsp.install'
-source=("https://dl.dropboxusercontent.com/u/7226803/rtcwcoop_${pkgver}_linux.tar.gz"
+source=("https://github.com/rtcwcoop/rtcwcoop/archive/${pkgver}.tar.gz"
 	'bzzwolfsp.launcher'
 	'bzzwolfspded.launcher'
 	'Makefile.local'
 	'create_pk3.sh')
 
 	
-	
-	
 build() {
-  cd "$srcdir/rtcwcoop_${pkgver}_linux"
+  cd "$srcdir/rtcwcoop-${pkgver}"
   if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
     echo "pak0.pk3 doesn't exist. This process will be terminated"
     echo "Follow the wolf-data package instructions!"
-  exit 1
+    exit 1
   fi
   
   cp $srcdir/Makefile.local .
@@ -32,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/rtcwcoop_${pkgver}_linux"
+  cd "$srcdir/rtcwcoop-${pkgver}"
   mkdir -p $pkgdir/opt/bzzwolfsp/{coopmain,main}
   
   make COPYDIR=$pkgdir/opt/bzzwolfsp/ copyfiles
@@ -91,8 +89,8 @@ package() {
         $pkgdir/usr/bin/bzzwolfspded
 }
 
-md5sums=('0f8065c60740d9f733b9a36e93fd14a6'
+md5sums=('9df83a81f5d1da8ea841e755ba62bc9a'
          'e7d7237e08b1affeab32e52f7d5e3244'
          'b1f5b0189e4576e4b606f98dd2ec0141'
          '53a8ec6a5b3a67f73fe876dbe2384b95'
-         'cbdfd0fcc3b6ca0bec6cc28c0ec66aa8')
+         '563e6aef1885085394a3dbaf70ba5330')
