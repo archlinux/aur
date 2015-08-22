@@ -1,0 +1,37 @@
+pkgbase = kwave-frameworks-git
+	pkgdesc = A sound editor for KDE. KF5 Frameworks. (GIT version)
+	pkgver = 0.9.0.r3173.7df055f
+	pkgrel = 1
+	url = http://kwave.sourceforge.net
+	install = kwave-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = doxygen
+	makedepends = python
+	makedepends = librsvg
+	makedepends = flac
+	makedepends = opus
+	makedepends = fftw
+	makedepends = libvorbis
+	makedepends = id3lib
+	makedepends = libmad
+	depends = kio
+	depends = audiofile
+	depends = libsamplerate
+	depends = hicolor-icon-theme
+	optdepends = libmad: MP3 plugin
+	optdepends = id3lib: MP3 ID3 tag plugin
+	optdepends = opus: OGG plugin
+	optdepends = fftw: Sonagram plugin
+	provides = kwave
+	conflicts = kwave
+	source = git://anongit.kde.org/kwave.git#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = kwave-frameworks-git
+
