@@ -1,7 +1,7 @@
 pkgbase = arch-runit
 	pkgdesc = Arch native runit package
 	pkgver = 2.1.2_20150603
-	pkgrel = 3
+	pkgrel = 4
 	url = http://smarden.org/runit/
 	install = runit.install
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = arch-runit
 	sha256sums = SKIP
 	sha256sums = 51c17405558f5bbbe631d92a37adff872b9518fe1876a56b24efb05bedffae94
 	sha256sums = 527f68f501cc9eb4bbab33f8ad374822624342c7d74b5c795efe4aac6b3f170a
-	sha256sums = 14c48eb40c030e6f3d2ea487f11d6e331bd0d73b56adad187d546997f815b055
+	sha256sums = 3f48a333263328d26f036f4ef5cc4922f5351c4977ecfec5b0826095b777f92c
 
 pkgname = arch-runit
 

@@ -8,7 +8,7 @@
 pkgname=arch-runit
 pkgver=2.1.2_20150603
 _runit_ver=2.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Arch native runit package'
 url='http://smarden.org/runit/'
 license=('Creative Commons')
@@ -22,7 +22,7 @@ sha256sums=('6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18'
 			'SKIP'
 			'51c17405558f5bbbe631d92a37adff872b9518fe1876a56b24efb05bedffae94'
 			'527f68f501cc9eb4bbab33f8ad374822624342c7d74b5c795efe4aac6b3f170a'
-			'14c48eb40c030e6f3d2ea487f11d6e331bd0d73b56adad187d546997f815b055'
+			'3f48a333263328d26f036f4ef5cc4922f5351c4977ecfec5b0826095b777f92c'
 			)
 backup=('etc/rc.conf' 'etc/rc.shutdown' 'etc/rc.local')
 depends=()
@@ -48,10 +48,8 @@ prepare(){
 	sed -i -e's:^char \*varservice ="/service/";$:char \*varservice ="/var/service/";:' ${pd}/src/sv.c
 	patch -d ${pd} -Np1 <${srcdir}/cross.patch
 	patch -d ${pd} -Np1 <${srcdir}/utmpset-time_t.patch
-	touch "${pd}/.makepkg.patched"
 	cd "${srcdir}/void-runit"
 	patch -Np1 <${srcdir}/void-runit.patch
-	touch ".makepkg.patched"
 	}
 
 build(){

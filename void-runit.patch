@@ -1,5 +1,3 @@
-diff --git a/1 b/1
-index 6938bc8..65d64c5 100755
 --- a/1
 +++ b/1
 @@ -4,8 +4,11 @@
@@ -15,16 +13,16 @@ index 6938bc8..65d64c5 100755
  
  [ -r /etc/rc.conf ] && . /etc/rc.conf
  
-@@ -23,6 +26,7 @@ else
+@@ -22,7 +25,8 @@ else
+ 	chmod 0644 /var/log/dmesg.log
  fi
  
- mkdir -p /run/runit
+-mkdir -p /run/runit
++[ ! -d /run/runit ] && mkdir -p /run/runit
 +[ ! -d /run/lock ] && mkdir /run/lock
  install -m100 /dev/null /run/runit/stopit
  
  msg "Initialization complete, running stage 2..."
-diff --git a/2 b/2
-index 0a39298..0020949 100755
 --- a/2
 +++ b/2
 @@ -5,6 +5,9 @@ PATH=/usr/bin:/usr/sbin
@@ -37,8 +35,6 @@ index 0a39298..0020949 100755
      if [ -d /etc/runit/runsvdir/"$arg" ]; then
          echo "Runlevel detected: '$arg' (via kernel cmdline)"
          runlevel="$arg"
-diff --git a/Makefile b/Makefile
-index 5747f5f..2406ee0 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,4 +1,4 @@
@@ -81,8 +77,17 @@ index 5747f5f..2406ee0 100644
  	ln -sf /run/runit/reboot ${DESTDIR}/etc/runit/
  	ln -sf /run/runit/stopit ${DESTDIR}/etc/runit/
  	cp -aP runsvdir/* ${DESTDIR}/etc/runit/runsvdir/
-diff --git a/rc.conf b/rc.conf
-index 5dbad2e..7af3e37 100644
+--- a/functions
++++ b/functions
+@@ -38,7 +38,7 @@ detect_virt() {
+ deactivate_vgs() {
+    _group=${1:-All}
+    if [ -x /sbin/vgchange -o -x /bin/vgchange ]; then
+-       vgs=$(vgs|wc -l)
++       vgs=$(vgs 2>/dev/null|wc -l)
+        if [ $vgs -gt 0 ]; then
+            msg "Deactivating $_group LVM Volume Groups..."
+            vgchange -an
 --- a/rc.conf
 +++ b/rc.conf
 @@ -1,20 +1,20 @@
@@ -110,8 +115,6 @@ index 5dbad2e..7af3e37 100644
  
  # Console font to load, see setfont(8).
  #FONT="lat9w-16"
-diff --git a/rc.local b/rc.local
-index 3b80f85..7f65986 100644
 --- a/rc.local
 +++ b/rc.local
 @@ -1,4 +1,4 @@
