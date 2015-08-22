@@ -1,13 +1,13 @@
 pkgbase = papirus-plasma-theme
 	pkgdesc = Modified and adaptive Paper plasma theme for KDE
-	pkgver = 20150822
+	pkgver = 20150823
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
 	options = !strip
-	source = papirus-pack-kde-20150822.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/0a3abcc84f09f2b832e8b715756dbef9f9768b93.tar.gz
-	sha256sums = df8e98be8bf66d0d2ac925a47d245cf9125aa9af5db1c57438468e26794d0e44
+	source = papirus-pack-kde-20150823.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/95400ee36ef0b362c36191a9d60c9cea2035e6b4.tar.gz
+	sha256sums = ab301cea99204ffe4a9a4cde42b08e121f1026ded3a7877abbf861fc3778cfe1
 
 pkgname = papirus-plasma-theme
 
