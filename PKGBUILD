@@ -1,6 +1,6 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=asciiplanets-git
-pkgver=f7e3d1f
+pkgver=15.02.3.ge1bbe96
 pkgrel=1
 pkgdesc="ASCII solar system observer"
 arch=('any')
@@ -24,5 +24,6 @@ package() {
   install -Dm755 asciiplanets "$pkgdir"/usr/bin/asciiplanets
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
+  install -Dm644 man1/"${pkgname%-git}".1 \
+    "$pkgdir"/usr/share/man/man1/"${pkgname%-git}".1
 }

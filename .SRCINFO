@@ -1,6 +1,6 @@
 pkgbase = asciiplanets-git
 	pkgdesc = ASCII solar system observer
-	pkgver = f7e3d1f
+	pkgver = 15.02.3.ge1bbe96
 	pkgrel = 1
 	url = https://github.com/vain/asciiplanets
 	arch = any
