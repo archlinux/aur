@@ -1,0 +1,18 @@
+pkgbase = qtads
+	pkgdesc = A Qt-based interpreter for TADS text adventures. Support TADS 2 and 3, both for text-only and multimedia adventures.
+	pkgver = 2.1.6
+	pkgrel = 2
+	url = http://qtads.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = sdl_sound
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/sourceforge/qtads/qtads-2.1.6.tar.bz2
+	source = qtads.desktop
+	md5sums = 58ed4a2cb3e9615cbeaca266998b86d4
+	md5sums = 53e37927a65bb80f4af9ba7d40d3f32a
+
+pkgname = qtads
+

@@ -1,0 +1,19 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=QTads
+Name[fr]=QTads
+Name[pl]=QTads
+GenericName=QTads IF interpreter
+GenericName[fr]=QTads Interpréteur de jeux textuels
+GenericName[pl]=QTads fikcja interaktywna
+Comment=A text-only interpreter for TADS text adventures. Support TADS 2 and 3.
+Comment[fr]=Un interpréteur pour les aventures textuelles au format TADS.
+Comment[pl]=Interpretator fikcji interaktywnej. Obsługuje formaty TADS 2 i 3.
+Icon=qtads.png
+Exec=qtads
+Categories=Game;
+Keywords=TADS;Interactive;Fiction;Game;Story;
+Keywords[fr]=TADS;Interactif;Fiction;Jeu;Conte;
+Keywords[pl]=TADS;Interaktywne;Fikcja;Gra;Opowieść;
+
