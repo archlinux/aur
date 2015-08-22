@@ -1,7 +1,7 @@
 # Maintainer: Loic Bidoux <loic.bidoux [at] owndata.org>
 
 pkgname=servicemix
-pkgver=5.4.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='Apache ESB that unifies features and functionality of ActiveMQ, Camel, CXF, ODE and Karaf.'
 arch=(any)
@@ -10,8 +10,8 @@ license=('Apache')
 depends=('bash' 'java-runtime')
 install='.install'
 changelog='.Changelog'
-source=("http://mir2.ovh.net/ftp.apache.org/dist/servicemix/servicemix-5/$pkgver/apache-servicemix-$pkgver.zip" 'servicemix')
-sha256sums=('36400a31218c92fd6034e23d32f48b52a512fd245afe559f43ffdf10f7b1237c'
+source=("http://apache.mirrors.ovh.net/ftp.apache.org/dist/servicemix/servicemix-6/$pkgver/apache-servicemix-$pkgver.zip" 'servicemix')
+sha256sums=('e162e05cb8ccf2cb56505f355d2f2945e4bfb54c65189e0ebf334f733dc4fc6f'
             'cf95697567ac4364178ecae1fbd1f4e488c9f7d8e27eca2e1e19dad3a8231ca1')
 
 package() {
