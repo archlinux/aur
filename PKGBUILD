@@ -9,7 +9,7 @@ url="https://github.com/papylhomme/diskmonitor"
 license=('GPL2')
 provides=('diskmonitor')
 conflicts=('diskmonitor')
-depends=('udisks2' 'qt5-base' 'kdelibs' 'ki18n' 'kiconthemes' 'plasma-framework' )
+depends=('udisks2' 'qt5-base' 'ki18n' 'kiconthemes' 'plasma-framework' )
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 options=()
 source=( "$pkgname::git+https://github.com/papylhomme/diskmonitor.git#tag=${pkgver}" )
