@@ -1,7 +1,7 @@
 pkgbase = utox
 	pkgdesc = Lightweight Tox client
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/notsecure/uTox
 	install = utox.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = utox
 	depends = libxext
 	depends = libxrender
 	depends = openal
-	depends = tox-git
+	depends = toxcore
 	depends = v4l-utils
 	optdepends = gtk2: GTK file picker
 	source = https://github.com/notsecure/uTox/archive/v0.3.2.tar.gz

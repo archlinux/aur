@@ -5,7 +5,7 @@
 pkgname=utox
 _pkgname=uTox
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/notsecure/uTox"
@@ -18,7 +18,7 @@ depends=('desktop-file-utils'
          'libxext'
          'libxrender'
          'openal'
-         'tox-git'
+         'toxcore'
          'v4l-utils')
 optdepends=('gtk2: GTK file picker')
 source=("https://github.com/notsecure/$_pkgname/archive/v$pkgver.tar.gz")
