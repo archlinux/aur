@@ -7,7 +7,6 @@ pkgbase = rofi-pass-git
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = xorg-xprop
 	depends = xdg-utils
 	depends = rofi-git
 	depends = pass

@@ -8,7 +8,7 @@ pkgdesc="bash script to handle pass storages in a convenient way"
 arch=('any')
 url='https://github.com/carnager/rofi-pass'
 license=('GPL')
-depends=('xorg-xprop' 'xdg-utils' 'rofi-git' 'pass' 
+depends=('xdg-utils' 'rofi-git' 'pass' 
 'xdotool' 
 'xclip')
 
