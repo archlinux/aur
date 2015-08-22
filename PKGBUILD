@@ -10,6 +10,7 @@ url="https://github.com/jarun/google-cli"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
+conflicts=('google-cli-git')
 source=("https://github.com/jarun/google-cli/archive/v$pkgver.tar.gz")
 md5sums=('c43a32ff04af8a739a8c76ed50139fb7')
 
