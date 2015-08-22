@@ -1,0 +1,21 @@
+pkgbase = rakarrack-git
+	pkgdesc = Stereo digital effects processor with Jack support
+	pkgver = a620840
+	pkgrel = 1
+	url = http://rakarrack.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = alsa-utils
+	depends = fftw
+	depends = fltk
+	depends = jack
+	depends = libxpm
+	provides = rakarrack
+	conflicts = rakarrack
+	source = rakarrack::git://git.code.sf.net/p/rakarrack/git
+	sha256sums = SKIP
+
+pkgname = rakarrack-git
+
