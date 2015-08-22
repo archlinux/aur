@@ -7,19 +7,18 @@
 
 pkgname=chromium-wayland
 _pkgname=chromium
-pkgver=45.0.2421.0
-_wayland_pkgver="Chromium-V45.0"
+pkgver=45.0.2454.37
+_wayland_release="Trask"
 pkgrel=1
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
-         'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
-         'hicolor-icon-theme' 'libxkbcommon')
+depends=('gtk2' 'nss' 'alsa-lib' 'bzip2' 'libevent' 'icu' 'libgcrypt'
+         'ttf-font' 'systemd' 'dbus' 'flac' 'snappy' 'pciutils'
+         'harfbuzz' 'libsecret' 'libvpx-git' 'perl' 'perl-file-basedir'
+         'desktop-file-utils' 'libxslt' 'hicolor-icon-theme' 'libxkbcommon')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -30,11 +29,11 @@ provides=('chromium')
 options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
-        https://github.com/01org/ozone-wayland/archive/${_wayland_pkgver}.tar.gz
+        "ozone-wayland::git+https://github.com/01org/ozone-wayland#branch=Milestone-${_wayland_release}"
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop)
-sha256sums=('53c34e85619d2c1c600af339c0c8c0dc8cb2ded49a0d7677eedb7258810788e1'
-            'dfa82876f02f7ae5983cd9bddf33529de7a26d1dd3a86fef388c33d753b3fdd7'
+sha256sums=('869adfc21a22d6a677d4bef381ed79aa2ed10acdc300a87dab704c9477f773ed'
+            'SKIP'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322')
 
@@ -77,9 +76,7 @@ prepare() {
   fi
 
   # Ozone-Wayland
-  mv ../ozone-wayland-${_wayland_pkgver} ozone
-  # Rm broken patches. TODO: Figure out _why_ this is broken...
-  rm ozone/patches/0010*
+  mv ../ozone-wayland ozone
 
   # Patch!
   for patchfile in ozone/patches/00*; do
@@ -109,16 +106,15 @@ build() {
     -Dpython_ver=2.7
     -Dlinux_link_gsettings=1
     -Dlinux_link_libpci=1
-    -Dlinux_link_libspeechd=1
-    -Dlinux_link_pulseaudio=1
+    -Dlinux_link_libspeechd=0
+    -Dlinux_link_pulseaudio=0
     -Dlinux_strip_binary=1
     -Dlinux_use_bundled_binutils=0
     -Dlinux_use_bundled_gold=0
     -Dlinux_use_gold_flags=0
     -Dicu_use_data_file_flag=0
     -Dlogging_like_official_build=1
-    -Drelease_extra_cflags="$CFLAGS -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include"
-    -Dlibspeechd_h_prefix=speech-dispatcher/
+    -Drelease_extra_cflags="$CFLAGS -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -D_GNU_SOURCE"
     -Dffmpeg_branding=Chrome
     -Dproprietary_codecs=1
     -Duse_gnome_keyring=0
@@ -131,7 +127,7 @@ build() {
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
     -Duse_system_libvpx=1
-    -Duse_system_libxml=0
+    -Duse_system_libxml=1
     -Duse_system_snappy=1
     -Duse_system_xdg_utils=1
     -Duse_system_yasm=1
@@ -177,13 +173,12 @@ package() {
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
 
-  cp out/Release/{*.pak,*.bin,libffmpegsumo.so} \
+  cp out/Release/{*.pak,*.bin} \
     "$pkgdir/usr/lib/chromium/"
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
   strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
     "$pkgdir/usr/lib/chromium/chromedriver"
-  strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libffmpegsumo.so"
 
   if (( $_build_nacl )); then
     cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
