@@ -1,0 +1,15 @@
+23a24,26
+> daemonize = true
+> pidfile = "/var/run/metronome/metronome.pid"
+> 
+61c64,71
+<  
+---
+> 
+> log = {
+> 	info = "/var/log/metronome/metronome.log"; -- Change 'info' to 'debug' for verbose logging
+> 	error = "/var/log/metronome/metronome.err";
+> 	"*syslog"; -- Uncomment this for logging to syslog
+> 	-- "*console"; -- Log to the console, useful for debugging with daemonize=false
+> }
+> 

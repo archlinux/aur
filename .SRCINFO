@@ -1,0 +1,30 @@
+pkgbase = metronome-hg
+	pkgdesc = LW.Org IM's XMPP Server Development
+	pkgver = 3.7.7
+	pkgrel = 1
+	url = http://www.lightwitch.org/
+	install = metronome.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = ISC
+	makedepends = mercurial
+	depends = lua51
+	depends = lua51-socket
+	depends = lua51-expat
+	depends = lua51-filesystem
+	depends = lua51-event
+	depends = lua51-sec
+	depends = libidn
+	depends = openssl
+	optdepends = lua51-zlib: compression support
+	backup = etc/metronome/metronome.cfg.lua
+	source = metronome.service
+	source = fix-config.patch
+	source = metronome::hg+http://code.lightwitch.org/metronome
+	md5sums = 5c418a4215426021deaadb23228b750e
+	md5sums = 79a390c8f661fb6242dc8997b5879efc
+	md5sums = SKIP
+
+pkgname = metronome-hg
+

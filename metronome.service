@@ -1,0 +1,12 @@
+[Unit]
+Description=XMPP (Jabber) Server
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/metronome/metronome.pid
+ExecStart=/usr/bin/metronomectl start
+ExecStop=/usr/bin/metronomectl stop
+
+[Install]
+WantedBy=multi-user.target
