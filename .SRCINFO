@@ -1,6 +1,6 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Official git trunk.
-	pkgver = 25.0.50.r121790
+	pkgver = 25.0.50.r122445
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -15,6 +15,7 @@ pkgbase = emacs-git
 	depends = libotf
 	depends = m17n-lib
 	depends = gtk3
+	depends = cairo
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = alsa-lib
