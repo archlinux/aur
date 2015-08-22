@@ -1,8 +1,8 @@
 pkgbase = lives
 	pkgdesc = A Video Editing System
-	pkgver = 2.2.8
+	pkgver = 2.4.1
 	pkgrel = 1
-	url = http://lives.sourceforge.net
+	url = http://lives-video.com
 	changelog = lives.changelog
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = lives
 	depends = mjpegtools
 	depends = python
 	depends = ffmpeg
-	depends = ffmpeg-compat
 	depends = jack
 	depends = fftw
 	optdepends = xorg-utils
@@ -31,8 +30,8 @@ pkgbase = lives
 	optdepends = lame
 	optdepends = youtube-dl
 	options = !libtool
-	source = http://www.xs4all.nl/%7Esalsaman/lives/current/LiVES-2.2.8.tar.bz2
-	md5sums = 8440e2a2b6e83655dfc39c9fef5ee903
+	source = http://lives-video.com/releases/LiVES-2.4.1.tar.bz2
+	md5sums = 83279d1e0e73973a9bf41b48af2cb03c
 
 pkgname = lives
 

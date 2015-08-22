@@ -1,3 +1,9 @@
+2015-08-22 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Project URL updated
+	Removed ffmpeg-compat as a dependency
+
 2013-12-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :

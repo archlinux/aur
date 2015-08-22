@@ -1,17 +1,17 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=lives
-pkgver=2.2.8
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A Video Editing System"
 arch=('i686' 'x86_64')
-url="http://lives.sourceforge.net"
+url="http://lives-video.com"
 license=('GPL')
-depends=('mplayer' 'imagemagick' 'gtk3' 'sox' 'libvisual' 'liboil' 'libavc1394' 'mjpegtools' 'python' 'ffmpeg' 'ffmpeg-compat' 'jack' 'fftw')
+depends=('mplayer' 'imagemagick' 'gtk3' 'sox' 'libvisual' 'liboil' 'libavc1394' 'mjpegtools' 'python' 'ffmpeg' 'jack' 'fftw')
 optdepends=('xorg-utils' 'sdl' 'libogg' 'mkvtoolnix-cli' 'libmatroska' 'ogmtools' 'dvgrab' 'cdrkit' 'lame' 'youtube-dl')
 options=(!libtool)
 changelog=lives.changelog
-source=(http://www.xs4all.nl/%7Esalsaman/lives/current/LiVES-$pkgver.tar.bz2)
-md5sums=('8440e2a2b6e83655dfc39c9fef5ee903')
+source=(http://lives-video.com/releases/LiVES-$pkgver.tar.bz2)
+md5sums=('83279d1e0e73973a9bf41b48af2cb03c')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
