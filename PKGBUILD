@@ -1,6 +1,6 @@
 # Maintainer: Brendan MacDonell <macdonellba@gmail.com>
 pkgname=rc
-pkgver=1.7.2
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="An alternative implementation of the plan 9 rc shell."
 url="http://tobold.org/article/rc"
@@ -9,12 +9,16 @@ arch=('i686' 'x86_64')
 depends=('readline')
 options=('strip')
 source=(http://static.tobold.org/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('ef8b4be56cee9a95558f538339dc96f1')
+md5sums=('f99732d7a8be3f15f81e99c3af46dc95')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr --datarootdir=/usr/share --with-edit=gnu
   make
+}
+
+check() {
+  cd $srcdir/$pkgname-$pkgver
   ./rc < trip.rc
 }
 
