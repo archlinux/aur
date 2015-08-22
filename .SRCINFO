@@ -1,0 +1,14 @@
+pkgbase = google-cli
+	pkgdesc = Google Search from command line
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jarun/google-cli
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	source = https://github.com/jarun/google-cli/archive/v1.0.tar.gz
+	md5sums = c43a32ff04af8a739a8c76ed50139fb7
+
+pkgname = google-cli
+
