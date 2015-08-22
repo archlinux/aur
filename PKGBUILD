@@ -1,5 +1,5 @@
-# Maintainer: eagleeyetom <eagleeyetom@gmail.com>
-# Contrubutor: raininja <raijin@rai.ninja>
+# Maintainer: raininja <raijin@rai.ninja>
+# Contributor: eagleeyetom <eagleeyetom@gmail.com>
 
 pkgname=slimjet
 pkgver=4.0.15.0
