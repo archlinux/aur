@@ -9,6 +9,7 @@ pkgbase = lxqt-admin-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = qt5-tools
 	depends = liblxqt-git
 	depends = liboobs
 	provides = lxqt-admin

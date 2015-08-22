@@ -1,4 +1,5 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Georg Pfahler <georgpfahler@wachenzell.org>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Matthew Stobbs <matthew@stobbstechnical.com>
 
 _pkgname=lxqt-admin
@@ -10,7 +11,7 @@ arch=("i686" "x86_64" "armv6h")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt-git" "liboobs")
-makedepends=("git" "cmake")
+makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxde/$_pkgname.git")
