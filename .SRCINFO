@@ -1,5 +1,5 @@
 pkgbase = wpsforlinux
-	pkgver = 9.1.0.4961_a18p1
+	pkgver = 9.1.0.4975_a19p1
 	pkgrel = 1
 	url = http://wps-community.org/
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = wpsforlinux
 	conflicts = kingsoft-office
 	options = !emptydirs
 	options = !strip
-	source = http://kdl.cc.ksosoft.com/wps-community/download/a18/wps-office_9.1.0.4961~a18p1_amd64.deb
+	source = http://kdl.cc.ksosoft.com/wps-community/download/a19/wps-office_9.1.0.4975~a19p1_amd64.deb
 	source = wps-office.xml
 	source = check_data.sh
-	sha1sums = 8c593dd34baf0e481378ed696334e3d7f853906a
+	sha1sums = 27db649595758d847941d7e6149d03cd55d6266b
 	sha1sums = dfa2ae8b74ac763d6d7e1d28e33dcb289bca9112
 	sha1sums = 1819bae14fa888f92c29c9fd01b59246f53e6937
 
@@ -35,7 +35,7 @@ pkgname = wpsoffice
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = xdg-utils
-	depends = wpsoffice-common=9.1.0.4961_a18p1
+	depends = wpsoffice-common=9.1.0.4975_a19p1
 	optdepends = cups: for printing support
 	optdepends = pango: for complex (right-to-left) text support
 
