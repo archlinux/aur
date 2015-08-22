@@ -1,0 +1,27 @@
+pkgbase = mpdcron-git
+	pkgdesc = A 'cron' like program for mpd. It can execute scripts based on mpd's idle events
+	pkgver = v0.3.49.g1dd1618
+	pkgrel = 1
+	url = http://alip.github.io/mpdcron/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = autoconf
+	depends = libmpdclient>=2.1
+	depends = libdaemon
+	depends = glib2
+	depends = curl
+	depends = sqlite3
+	provides = mpdcron
+	provides = eugene
+	provides = homescrape
+	provides = walrus
+	options = !libtool
+	source = git+git://github.com/alip/mpdcron.git
+	md5sums = SKIP
+
+pkgname = mpdcron-git
+
