@@ -1,3 +1,5 @@
+#Maintainer wicast <wicastchen at hotmail>
+
 pkgname=glide-git
 pkgver=0.5.0.r2.g94e1de0
 pkgrel=1
