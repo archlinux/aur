@@ -1,0 +1,14 @@
+pkgbase = pulseaudio-fake
+	pkgdesc = A fake pulseaudio package (to bypass dependency)
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/
+	arch = any
+	license = GPL
+	provides = pulseaudio=fake
+	provides = pulseaudio-alsa=fake
+	conflicts = pulseaudio
+	conflicts = pulseaudio-alsa
+
+pkgname = pulseaudio-fake
+
