@@ -8,7 +8,7 @@ After=postgresql.service
 [Service]
 Type=simple
 WorkingDirectory=/usr/share/webapps/tracks
-ExecStart=/usr/bin/bundle exec rails server mongrel -e production -p 10008
+ExecStart=/usr/bin/bundle exec rails server -e production -p 10008
 User=http
 Group=http
 StandardOutput=syslog

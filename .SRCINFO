@@ -1,6 +1,6 @@
 pkgbase = tracks
 	pkgdesc = Web-based application helping to implement the 'Getting things done' methodology
-	pkgver = 2.2.3
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://www.getontracks.org/
 	install = tracks.install
@@ -16,10 +16,10 @@ pkgbase = tracks
 	backup = usr/share/webapps/tracks/db/tracks.sqlite3.db
 	source = default_db.patch
 	source = tracks.service
-	source = tracks.zip::https://github.com/TracksApp/tracks/zipball/v2.2.3
+	source = tracks.zip::https://github.com/TracksApp/tracks/zipball/v2.3.0
 	sha256sums = d6a762be317e3753d50aca29a953cd5c8ef0aae6ddabd5807124e2e41ba46f48
 	sha256sums = 31f09cd39b632c91dd47e92780d29e84e2173abe268f0286de14f6126e1ba018
-	sha256sums = 3bd7eb466aefb65e7bea2ae05c64f0494be5df71555ff9711f74981b275f6472
+	sha256sums = f9e9524e89748f11e797a09f53ea201ec9438a62465fdfa3cfbc4e9cfbb86ce4
 
 pkgname = tracks
 

@@ -3,7 +3,7 @@
 # Contributor: Sebastian Schäfer <sarek@uliweb.de>
 
 pkgname=tracks
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Web-based application helping to implement the 'Getting things done' methodology"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 install="${pkgname}.install"
 sha256sums=('d6a762be317e3753d50aca29a953cd5c8ef0aae6ddabd5807124e2e41ba46f48'
             '31f09cd39b632c91dd47e92780d29e84e2173abe268f0286de14f6126e1ba018'
-            '3bd7eb466aefb65e7bea2ae05c64f0494be5df71555ff9711f74981b275f6472')
+            'f9e9524e89748f11e797a09f53ea201ec9438a62465fdfa3cfbc4e9cfbb86ce4')
 _tracks_archive_path='TracksApp-tracks-f98d32c'
 
 prepare() {
@@ -35,9 +35,6 @@ prepare() {
     # Patch database.yml to use the sqlite default database
     patch -p0 < "${srcdir}/default_db.patch"
 
-    # Add Mongrel to Gemfile
-    sed -i "4igem 'mongrel', '>=1.2.0.pre2'\n" Gemfile
-
     # Configure Tracks to serve static assets via Mongrel
     sed -i \
       's/config.serve_static_assets = false/config.serve_static_assets = true/' \
@@ -48,13 +45,13 @@ build() {
     cd "${srcdir}/${_tracks_archive_path}"
 
     # Use bundler to install required gems
-    bundle install --without development,test --path .bundle
+    bundle install --without development test --path vendor/bundle
 
     # Initialize the default sqlite Database
     bundle exec rake db:migrate RAILS_ENV=production
 
     # Precompile static assets
-    bundle exec rake assets:precompile
+    bundle exec rake assets:precompile RAILS_ENV=production
 }
 
 package() {

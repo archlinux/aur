@@ -8,7 +8,7 @@ database. Simply start the systemd unit and navigate to http://server:10008/
 If you want to use your own webserver or a different database please consult
 the Tracks installation documentation here:
 
-  https://github.com/TracksApp/tracks/blob/v2.2.2/doc/installation.textile
+  https://github.com/TracksApp/tracks/blob/master/doc/installation.md
 
 All tracks data is stored in /usr/share/webapps/tracks/ (where you'll need to
 run the commands listed in the documentation)
