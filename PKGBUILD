@@ -1,16 +1,16 @@
 # Maintainer: Spiros Georgaras <sng@hellug.gr>
 pkgname=otf-pecita-font-stable
-pkgver=4.3
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc="OpenType hand-written font whose letters are connected"
 arch=('any')
 license=('custom:OFL')
 url="http://pecita.eu"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=('http://members.hellug.gr/sng/AUR/pecita-4.3.tar.gz')
-md5sums=('e2fb13bee02fbbc0a988a8854ec6638f')
+source=('http://members.hellug.gr/sng/AUR/pecita-5.1.tar.gz')
+md5sums=('c5f3fc4b555b1e50978e4ab98fa9cef2')
 install=${pkgname}.install
-conflicts=('otf-pecita' 'otf-pecita-v3')
+replace=('otf-pecita' 'otf-pecita-v3')
 
 package() {
 install -d ${pkgdir}/usr/share/fonts/OTF
