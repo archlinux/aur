@@ -1,4 +1,4 @@
-pkgbase = gl_presenter
+pkgbase = glpresenter
 	pkgdesc = A dual-screen OpenGL PDF presentation software
 	pkgver = 0.3.3
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = gl_presenter
 	source = http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/download/source/gl_presenter-0.3.3.tar.bz2
 	md5sums = 738065023c500584346d1351a02c6f90
 
-pkgname = gl_presenter
+pkgname = glpresenter
 
