@@ -3,7 +3,7 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: MThinkCpp <mtc.maintainer[at]outlook.com>
 pkgname=libc++-msan
-pkgver=3.6.0
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='Standard C++ library implementation from the LLVM project (Memory Sanitizer enabled)'
 url='http://libcxx.llvm.org'
@@ -11,11 +11,11 @@ license=('custom:University of Illinois/NCSA Open Source License')
 arch=('i686' 'x86_64')
 # gcc-libs needed for libgcc_s, because Arch doesn't use a pure compiler-rt clang
 depends=('glibc' 'libc++abi' 'gcc-libs')
-makedepends=('clang' 'subversion' 'cmake')
+makedepends=('clang' 'cmake')
 provides=('libc++')
 conflicts=('libc++')
 source=("http://www.llvm.org/releases/$pkgver/libcxx-${pkgver}.src.tar.xz")
-md5sums=('5d4a2ff4e2023eaa3f2025e26274d504')
+md5sums=('22214c90697636ef960a49aef7c1823a')
 options=('debug' '!strip')
 install=${pkgname}.install
 

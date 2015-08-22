@@ -1,5 +1,6 @@
 post_install() {
-  echo compile with \`clang++ -std=c++11 -stdlib=libc++ -lc++abi\` to use libc++
+  echo compile with \`clang++ -std=c++11 -stdlib=libc++ -fsanitize=memory -lc++abi\` to use libc++-msan
+  echo "see http://clang.llvm.org/docs/MemorySanitizer.html for further instructions"
 }
 
 post_upgrade() {
