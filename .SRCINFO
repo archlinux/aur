@@ -8,7 +8,8 @@ pkgbase = arcus
 	license = GPLv3
 	makedepends = cmake
 	makedepends = python
-	depends = protobuf-ultimaker
+	depends = protobuf3
+	depends = python-protobuf3
 	source = https://github.com/Ultimaker/libArcus/archive/15.06.03.tar.gz
 	md5sums = c61fafaa82f71cef5e0f6780688f853e
 
