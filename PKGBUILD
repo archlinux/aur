@@ -3,12 +3,12 @@
 
 pkgname=tox-prpl-git
 pkgver=0.4.2.r11.g18cc684
-pkgrel=1
+pkgrel=2
 pkgdesc='Tox protocol plugin for pidgin / libpurple - git checkout'
 arch=('i686' 'x86_64')
 url='http://tox.dhs.org/'
 license=('GPL3')
-depends=('libpurple' 'tox-git')
+depends=('libpurple' 'toxcore')
 makedepends=('git' 'libconfig')
 optdepends=('pidgin: Use tox in pidgin messenger')
 options=('!libtool')

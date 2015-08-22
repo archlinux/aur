@@ -1,7 +1,7 @@
 pkgbase = tox-prpl-git
 	pkgdesc = Tox protocol plugin for pidgin / libpurple - git checkout
 	pkgver = 0.4.2.r11.g18cc684
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tox.dhs.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tox-prpl-git
 	makedepends = git
 	makedepends = libconfig
 	depends = libpurple
-	depends = tox-git
+	depends = toxcore
 	optdepends = pidgin: Use tox in pidgin messenger
 	provides = tox-prpl
 	conflicts = tox-prpl
