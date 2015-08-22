@@ -1,0 +1,37 @@
+post_install() {
+    if [ -x /sbin/ldconfig ]; then
+        /sbin/ldconfig
+    fi
+    
+    #reload udev rules
+    if [ -x /sbin/udevadm ]; then
+        /sbin/udevadm control --reload-rules 2> /dev/null
+        /sbin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
+    fi
+}
+post_upgrade() {
+    if [ -x /sbin/ldconfig ]; then
+        /sbin/ldconfig
+    fi
+    
+    #reload udev rules
+    if [ -x /sbin/udevadm ]; then
+        /sbin/udevadm control --reload-rules 2> /dev/null
+        /sbin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
+    fi
+}
+post_remove() {
+    for LIBS in libcncpmslld2 libcncpnet2
+    do
+        if [ -h /usr/lib/${LIBS}.so ]; then
+            rm -f /usr/lib/${LIBS}.so
+        fi    
+    done
+    
+    # remove sgmp_setting files
+    rm -f /var/tmp/canon_sgmp2_setting*.*
+
+    if [ -x /sbin/ldconfig ]; then
+        /sbin/ldconfig
+    fi
+}

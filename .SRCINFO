@@ -1,0 +1,16 @@
+pkgbase = scangearmp2-mg7500
+	pkgdesc = Canon InkJet Printer Driver (MG7500, MG5600, MB5300, MB5000, MB2300, MB2000 Series)
+	pkgver = 3.00
+	pkgrel = 1
+	url = http://cweb.canon.jp/drv-upd/ij-mfp/linux-sd-20142h-300.html
+	install = scangearmp2-mg7500.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	provides = scangearmp2=3.00
+	source = http://gdlp01.c-wss.com/gds/1/0100006271/01/scangearmp2-3.00-1-deb.tar.gz
+	md5sums = b6ccbe9bf884efb9f8ae1aa0fd390609
+
+pkgname = scangearmp2-mg7500
+
