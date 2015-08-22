@@ -1,3 +1,5 @@
+#Maintainer: Kars Wang <jaklsy g-mail>
+
 pkgname=lantern-beta
 pkgver=2.0.1.20150821.200810
 pkgrel=1
@@ -5,7 +7,7 @@ pkgdesc='Lantern is a free desktop application that delivers fast, reliable and 
 arch=('i686' 'x86_64')
 url='https://getlantern.org'
 license=('Apache')
-depends=('libappindicator-gtk3' 'hicolor-icon-theme' 'xdg-utils')
+depends=('hicolor-icon-theme' 'bzip2' 'dbus' 'glib2' 'gtk3' 'libappindicator-gtk3' 'mesa' 'xcb-util' 'xdg-utils' 'zlib')
 provides=('lantern')
 options=('!emptydirs' '!strip' '!docs')
 install=$pkgname.install
