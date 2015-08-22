@@ -1,6 +1,6 @@
 pkgbase = vim-x11
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (X11 support, no GUI)
-	pkgver = 7.4.712
+	pkgver = 7.4.778
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = i686
@@ -13,19 +13,20 @@ pkgbase = vim-x11
 	makedepends = desktop-file-utils
 	makedepends = lua
 	makedepends = mercurial
-	depends = vim-runtime=7.4.712-1
+	depends = vim-runtime=7.4.778-1
 	depends = gpm
 	depends = ruby
 	depends = lua
 	depends = python2
 	depends = acl
-	provides = vim
+	provides = vim=7.4.778-1
+	provides = xxd
 	conflicts = vim-minimal
 	conflicts = vim
 	conflicts = vim-python3
 	conflicts = gvim
 	conflicts = gvim-python3
-	source = vim-repo::hg+https://vim.googlecode.com/hg#tag=v7-4-712
+	source = vim-repo::hg+https://vim.googlecode.com/hg#tag=v7-4-778
 	source = vimrc
 	source = archlinux.vim
 	sha1sums = SKIP
