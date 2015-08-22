@@ -1,6 +1,6 @@
 pkgbase = teeworlds-git
 	pkgdesc = Multiplayer 2D shooter
-	pkgver = 0.7.start.480.g19e3433
+	pkgver = 0.7.start.574.ge592d1b
 	pkgrel = 1
 	url = http://teeworlds.com
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = teeworlds-git
 	depends = glu
 	depends = mesa
 	depends = gcc-libs
-	depends = sdl
+	depends = sdl2
 	depends = freetype2
 	provides = teeworlds
 	conflicts = teeworlds

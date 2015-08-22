@@ -2,13 +2,13 @@
 # Maintainer: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=teeworlds-git
-pkgver=0.7.start.480.g19e3433
+pkgver=0.7.start.574.ge592d1b
 pkgrel=1
 pkgdesc='Multiplayer 2D shooter'
 arch=('i686' 'x86_64')
 url="http://teeworlds.com"
 license=('custom')
-depends=('alsa-lib' 'glu' 'mesa' 'gcc-libs' 'sdl' 'freetype2')
+depends=('alsa-lib' 'glu' 'mesa' 'gcc-libs' 'sdl2' 'freetype2')
 makedepends=('python' 'git' 'bam' 'imagemagick' 'gendesk')
 provides=('teeworlds')
 conflicts=('teeworlds')
@@ -24,14 +24,14 @@ pkgver() {
 
 prepare() {
   convert "teeworlds/other/icons/Teeworlds.ico" "$srcdir/teeworlds.png"
-  gendesk -n --pkgname "teeworlds" --pkgdesc "$pkgdesc" \
+  gendesk -f -n --pkgname "teeworlds" --pkgdesc "$pkgdesc" \
     --name 'Teeworlds' --categories 'Game;ArcadeGame'
     
   cd teeworlds
   git submodule init
   git config submodule.data/languages.url "$srcdir/teeworlds-translation"
   git config submodule.data/maps.url "$srcdir/teeworlds-maps"
-  git submodule update
+  git submodule update 
 }
 
 build() {
@@ -47,7 +47,7 @@ package() {
                  "$pkgdir"/usr/share/{licenses/teeworlds,teeworlds/data}
   
    # Install data files
-  cp -r data/* "$pkgdir"/usr/share/teeworlds/data
+  cp -r datasrc/* "$pkgdir"/usr/share/teeworlds/data
 
   install -m755 build/$CARCH/debug/teeworlds "$pkgdir"/usr/bin/teeworlds
   install -m755 build/$CARCH/debug/teeworlds_srv "$pkgdir"/usr/bin/teeworlds_srv
