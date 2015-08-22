@@ -1,7 +1,7 @@
 pkgbase = eclipse-eclipsecolortheme
 	pkgdesc = Eclipse Color Theme
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.eclipsecolorthemes.org
 	arch = any
 	license = EPL/1.0
@@ -9,7 +9,7 @@ pkgbase = eclipse-eclipsecolortheme
 	depends = eclipse
 	noextract = eclipse-eclipsecolortheme.zip
 	source = eclipse-eclipsecolortheme.zip::http://eclipse-color-theme.github.io/update/eclipse-color-theme-update-site.zip
-	md5sums = 52b5a7fa1d2a207e8219234fa75239d0
+	md5sums = c0df9d934ec90c983382e266514601c9
 
 pkgname = eclipse-eclipsecolortheme
 

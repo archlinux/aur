@@ -3,7 +3,7 @@
 # Contributor: Jesús Jerez <jerezmoreno@gmail.com>
 pkgname=eclipse-eclipsecolortheme
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Eclipse Color Theme"
 url="http://www.eclipsecolorthemes.org"
 license=("EPL/1.0")
@@ -13,7 +13,7 @@ makedepends=("unzip")
 noextract=("${pkgname}.zip")
 source=("${pkgname}.zip::http://eclipse-color-theme.github.io/update/eclipse-color-theme-update-site.zip")
 noextract=("${pkgname}.zip")
-md5sums=('52b5a7fa1d2a207e8219234fa75239d0')
+md5sums=('c0df9d934ec90c983382e266514601c9')
 
 _extract() {
   [[ -d plugins ]] && return
