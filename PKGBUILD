@@ -2,7 +2,7 @@
 
 _name=girl
 pkgname=$_name-git
-pkgver=6.0.0.r139.ccd7d72
+pkgver=6.0.0.4.g309cc2d
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
 arch=('i686' 'x86_64')
@@ -19,10 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_name"
-  v=$(git describe --tags | sed 's/GIRL_//g;s/_/./g')
-  l=$(git rev-list --count HEAD)
-  p=$(git rev-parse --short HEAD)
-  printf "$v.r$l.$p"
+  git describe --tags | sed 's/GIRL_//g;s/_/./g;s/-/./g'
 }
 
 build() {
