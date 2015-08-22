@@ -1,22 +1,19 @@
-# Maintainer: Grey Christoforo <grey[at]christoforo[dot]net>
+# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+
 pkgname=arcus
-pkgver=15.06.02
-pkgrel=2
+pkgver=15.06.03
+pkgrel=1
 pkgdesc="Communication library between internal components for Ultimaker software"
 url="https://github.com/Ultimaker/libArcus"
 arch=('any')
 license=('GPLv3')
 makedepends=('cmake')
-depends=('protobuf3')
-conflicts=()
-replaces=()
-backup=()
-#install='foo.install'
-source=("https://github.com/Ultimaker/libArcus/archive/master.zip")
-md5sums=('781f2bd61d652335a26d7f7a17393d29')
+depends=('protobuf-ultimaker')
+source=(https://github.com/Ultimaker/libArcus/archive/${pkgver}.tar.gz)
+md5sums=('c61fafaa82f71cef5e0f6780688f853e')
 
 build() {
-  cd "${srcdir}/libArcus-master"
+  cd libArcus-${pkgver}
   mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
@@ -24,7 +21,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/libArcus-master/build"
+  cd libArcus-${pkgver}/build
   make DESTDIR="${pkgdir}" install
   mv ${pkgdir}/usr/lib64  ${pkgdir}/usr/lib
   #install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
