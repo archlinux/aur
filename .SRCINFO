@@ -1,22 +1,22 @@
 pkgbase = ruby-docs-rdocs
 	pkgdesc = Documentation for the Ruby programming language
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = http://www.ruby-doc.org/
 	arch = any
 	license = BSD
 	license = custom
-	noextract = ruby_2_2_2_core_rdocs.tgz
-	noextract = ruby_2_2_2_stdlib_rdocs.tgz
+	noextract = ruby_2_2_3_core_rdocs.tgz
+	noextract = ruby_2_2_3_stdlib_rdocs.tgz
 	options = !strip
 	options = docs
 	options = libtool
 	options = staticlibs
 	options = !zipman
-	source = http://www.ruby-doc.org/downloads/ruby_2_2_2_core_rdocs.tgz
-	source = http://www.ruby-doc.org/downloads/ruby_2_2_2_stdlib_rdocs.tgz
-	md5sums = 38287fc968e17289580266166494be84
-	md5sums = 999aca9972932de51c4a2b0ecd0cb3d0
+	source = http://www.ruby-doc.org/downloads/ruby_2_2_3_core_rdocs.tgz
+	source = http://www.ruby-doc.org/downloads/ruby_2_2_3_stdlib_rdocs.tgz
+	md5sums = d50c3966b8d4d24d87f46477d85ac097
+	md5sums = ddbca6d4cd3eb5a17fbc7f55017738d6
 
 pkgname = ruby-docs-rdocs
 
