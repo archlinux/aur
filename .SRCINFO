@@ -7,7 +7,6 @@ pkgbase = pipman-git
 	license = GPL
 	depends = python
 	depends = python-pip
-	depends = python-virtualenv
 	source = git+https://github.com/sollidsnake/pipman
 	md5sums = SKIP
 

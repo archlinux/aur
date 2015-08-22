@@ -7,7 +7,7 @@ pkgdesc="Generate PKGBUILD from pip packages"
 arch=('any')
 url="http://github.com/sollidsnake/pipman"
 license=('GPL')
-depends=('python' 'python-pip' 'python-virtualenv')
+depends=('python' 'python-pip')
 source=(git+https://github.com/sollidsnake/pipman)
 md5sums=('SKIP')
 
