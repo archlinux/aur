@@ -30,7 +30,7 @@ sha1sums=('SKIP'
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (X11 support, no GUI)'
 depends=("vim-runtime=${pkgver}-${_upstream_pkgrel}" 'gpm' 'ruby' 'lua' 'python2' 'acl')
 conflicts=('vim-minimal' 'vim' 'vim-python3' 'gvim' 'gvim-python3')
-provides=('vim')
+provides=("vim=${pkgver}-${_upstream_pkgrel}" 'xxd')
 
 prepare() {
   cd ${_pkgbase}-repo
