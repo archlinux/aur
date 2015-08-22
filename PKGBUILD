@@ -8,7 +8,7 @@
 
 pkgname="amd-adl-sdk"
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API to access display driver functionality for AMD graphics cards."
 arch=('i686' 'x86_64')
 url="http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/"
