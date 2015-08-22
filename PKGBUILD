@@ -3,7 +3,7 @@ _pipname=Flask-SQLAlchemy
 pkgbase=python-flask-sqlalchemy
 pkgname=('python2-flask-sqlalchemy' 'python-flask-sqlalchemy')
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Adds SQLAlchemy support to your Flask application"
 arch=('any')
 url="https://pythonhosted.org/Flask-SQLAlchemy/"
@@ -18,7 +18,7 @@ prepare() {
 }
 
 package_python2-flask-sqlalchemy() {
-depends=('python2-flask', 'python2-sqlalchemy')
+depends=('python2-flask' 'python2-sqlalchemy')
 
     cd python2-$_pipname-$pkgver
     python2 setup.py install --root="$pkgdir/" --optimize=1
@@ -28,7 +28,7 @@ depends=('python2-flask', 'python2-sqlalchemy')
 }
 
 package_python-flask-sqlalchemy() {
-depends=('python-flask', 'python-sqlalchemy')
+depends=('python-flask' 'python-sqlalchemy')
 
     cd $_pipname-$pkgver 
     python setup.py install --root="$pkgdir/" --optimize=1
