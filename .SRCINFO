@@ -1,0 +1,19 @@
+pkgbase = plasma5-runners-translator
+	pkgdesc = Translates into any language using Google Translate
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/krunner-googletranslator?content=156498
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ki18n
+	makedepends = qt5-base
+	depends = krunner
+	conflicts = kdeplasma-addons-runners-translator
+	source = http://kde-look.org/CONTENT/content-files/156498-krunner_translator.zip
+	md5sums = ae995e6a83ca5f56e65486b06bafeb92
+
+pkgname = plasma5-runners-translator
+
