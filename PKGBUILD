@@ -1,6 +1,6 @@
 # Maintainer: Grey Christoforo <my first name [at] my last name [dot] net>
 
-pkgname=protobuf
+pkgname=protobuf-ultimaker
 pkgver=15.06.03
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format (with modifications by Ultimaker)"
