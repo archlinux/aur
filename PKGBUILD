@@ -26,4 +26,5 @@ package() {
     ln -s $srcdir/$pkgname $srcdir/src/github.com/Masterminds/glide
     cd $srcdir/src/github.com/Masterminds/glide
     make DESTDIR="$pkgdir/" install
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
