@@ -2,9 +2,9 @@ pkgname=libra-gtk-theme
 pkgver=2.3
 pkgrel=1
 pkgdesc="GTK-2.0 & GTK-3.0 compatible theme"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('unknown')
-depends=()
+depends=('gtk-engines', 'gtk-engine-murrine')
 optdepends=()
 url="http://gnome-look.org/content/show.php/Libra?content=167689"
 source=(Libra.tar.gz::http://gnome-look.org/CONTENT/content-files/167689-Libra2.3.tar.gz)
