@@ -1,6 +1,6 @@
 pkgbase = lib32-lzo
 	pkgdesc = Portable lossless data compression library (32 bit)
-	pkgver = 2.08
+	pkgver = 2.09
 	pkgrel = 1
 	url = http://www.oberhumer.com/opensource/lzo
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = lib32-lzo
 	depends = lib32-glibc
 	depends = lzo
 	options = !libtool
-	source = http://www.oberhumer.com/opensource/lzo/download/lzo-2.08.tar.gz
-	md5sums = fcec64c26a0f4f4901468f360029678f
+	source = http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz
+	sha1sums = e2a60aca818836181e7e6f8c4f2c323aca6ac057
 
 pkgname = lib32-lzo
 
