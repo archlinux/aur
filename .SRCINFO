@@ -1,0 +1,15 @@
+pkgbase = json-sh
+	pkgdesc = command line json tool written in bash
+	pkgver = r84.ed3f9dd
+	pkgrel = 1
+	url = https://github.com/dominictarr/JSON.sh
+	arch = any
+	license = MIT
+	license = APACHE
+	makedepends = git
+	depends = bash
+	source = git://github.com/dominictarr/JSON.sh.git
+	md5sums = SKIP
+
+pkgname = json-sh
+
