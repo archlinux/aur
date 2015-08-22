@@ -2,18 +2,18 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=v0.7.1.7.r0.g4885971
-pkgrel=4
+pkgver=v0.7.1.8.r0.g051e611
+pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
 url="http://jasp-stats.org"
 license=('AGPL3')
 depends=('qt5-base' 'boost' 'r' 'libarchive' 'zlib' 'qt5-webkit' 'qt5-declarative' 'qt5-sensors' 'qt5-svg' 'tk')
-makedepends=('git' 'qtchooser' 'r' 'boost-nowide' 'gcc-fortran')
+makedepends=('git' 'qtchooser' 'r' 'gcc-fortran')
 provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
 install=('jasp-desktop-git.install')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.1.7" 
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.1.8" 
 	"rbundle.R"
 	"jasp-desktop.svg"
 	"sem.patch")
