@@ -6,11 +6,11 @@ pkgname=toxic-git
 pkgdesc='CLI Frontend in ncurses for Tox'
 license=('GPL3')
 pkgver=r1521.4d73f8b
-pkgrel=3
+pkgrel=4
 depends=('desktop-file-utils'
          'freealut'
          'libnotify'
-         'tox-git')
+         'toxcore')
 makedepends=('git')
 conflicts=($_pkgname)
 provides=($_pkgname)

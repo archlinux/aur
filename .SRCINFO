@@ -1,7 +1,7 @@
 pkgbase = toxic-git
 	pkgdesc = CLI Frontend in ncurses for Tox
 	pkgver = r1521.4d73f8b
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tox.chat
 	install = toxic-git.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = toxic-git
 	depends = desktop-file-utils
 	depends = freealut
 	depends = libnotify
-	depends = tox-git
+	depends = toxcore
 	provides = toxic
 	conflicts = toxic
 	source = toxic-git::git+https://github.com/Tox/toxic.git
