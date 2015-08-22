@@ -5,7 +5,7 @@
 pkgname=watchman-sm
 pkgdesc='A service manager for linux written in bash'
 license=( 'custom:ISC' )
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 arch=( 'any' )
 url='https://github.com/fbt/watchman'
@@ -36,4 +36,4 @@ package() {
 	cd "${pkgdir}${install_prefix}/bin"; ln -s watchman-service service
 }
 
-sha1sums=('4c9ed3f011eddd5650418b84a020376b954e2271')
+sha1sums=('6edf0d06c4189041ab487d0608c803516e954096')
