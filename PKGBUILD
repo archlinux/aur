@@ -2,18 +2,18 @@
 
 pkgname=teeworlds-ddnet-git
 _name=teeworlds-ddnet
-pkgver=7.0.r5578.8ecd66f
+pkgver=8.1.1.r6113.79a523e
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game (Git)"
 arch=('i686' 'x86_64')
 url="http://ddnet.tw"
 license=('custom')
-depends=('alsa-lib' 'glu' 'sdl' 'freetype2')
+depends=('alsa-lib' 'glu' 'sdl' 'freetype2'  'openssl098')
 makedepends=('git' 'bam' 'gendesk' 'imagemagick')
 optdepends=('teeworlds-ddnet-skins: extra skins')
 provides=('teeworlds' 'teeworlds-ddnet')
 conflicts=('teeworlds')
-source=($pkgname::git+https://github.com/def-/ddnet)
+source=($pkgname::git+https://github.com/ddnet/ddnet)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -42,8 +42,8 @@ package() {
   install -Dm755 dilate "$pkgdir"/usr/bin/dilate
 
     # Install data files
-  mkdir -p ${pkgdir}/usr/share/teeworlds/data
-  cp -r data/* ${pkgdir}/usr/share/teeworlds/data
+  mkdir -p "$pkgdir"/usr/share/teeworlds/data
+  cp -r data/* "$pkgdir"/usr/share/teeworlds/data
 
     # Remove skins provided by teeworlds-ddnet-skins
   for skin in \
@@ -76,5 +76,4 @@ package() {
   
     # Install license files
   install -Dm644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-  install -Dm644 "license_DDRace.txt" "$pkgdir/usr/share/licenses/$pkgname/license_DDRace.txt"
 }

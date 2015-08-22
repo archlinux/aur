@@ -1,6 +1,6 @@
 pkgbase = teeworlds-ddnet-git
 	pkgdesc = A customized version by DDRaceNetwork of this 2D shooting game (Git)
-	pkgver = 7.0.r5578.8ecd66f
+	pkgver = 8.1.1.r6113.79a523e
 	pkgrel = 1
 	url = http://ddnet.tw
 	arch = i686
@@ -14,11 +14,12 @@ pkgbase = teeworlds-ddnet-git
 	depends = glu
 	depends = sdl
 	depends = freetype2
+	depends = openssl098
 	optdepends = teeworlds-ddnet-skins: extra skins
 	provides = teeworlds
 	provides = teeworlds-ddnet
 	conflicts = teeworlds
-	source = teeworlds-ddnet-git::git+https://github.com/def-/ddnet
+	source = teeworlds-ddnet-git::git+https://github.com/ddnet/ddnet
 	sha256sums = SKIP
 
 pkgname = teeworlds-ddnet-git
