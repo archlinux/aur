@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdk-pixbuf2
-pkgver=2.31.5
+pkgver=2.31.6
 pkgrel=1
 pkgdesc='An image loading library (mingw-w64)'
 arch=(any)
@@ -19,7 +19,7 @@ depends=(
 options=(!strip !buildflags staticlibs)
 source=(
   "https://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz")
-sha256sums=('0a76e70497cd25ef2ac0da63a489c158ea3926724eb83d5254f9a0bc985ff7a6')
+sha256sums=('111203d6f295d69d36e7190204248331cd37285130ac483becdedcd3f0135d18')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
