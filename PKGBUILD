@@ -4,7 +4,7 @@
 pkgname=watchman-sm
 pkgdesc='A service manager for linux written in bash'
 license=( 'custom:ISC' )
-pkgver=1.9.3
+pkgver=1.10.1
 pkgrel=1
 arch=( 'any' )
 url='https://github.com/fbt/watchman'
@@ -32,4 +32,4 @@ package() {
 
 }
 
-sha1sums=('0fb981a05aa6e1b5359bb75b94ec664a2b5feb01')
+sha1sums=('4c9ed3f011eddd5650418b84a020376b954e2271')
