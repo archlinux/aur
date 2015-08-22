@@ -1,5 +1,5 @@
 pkgname=wlc-git
-pkgver=r706.3725b22
+pkgver=r716.d7f7f40
 pkgrel=1
 
 pkgdesc='Wayland compositor library.'
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
     cd wlc
-    cmake -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
     make
 }
 
