@@ -3,7 +3,7 @@
 # Contributor: Tianjiao Yin <ytj000+aur@gmail.com>
 
 pkgname=firefox-extension-video-downloadhelper
-pkgver=5.3.1
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="A Firefox extension to download/convert videos from hundreds of YouTube-like sites"
 arch=('any')

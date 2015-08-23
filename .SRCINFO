@@ -1,12 +1,12 @@
 pkgbase = firefox-extension-video-downloadhelper
 	pkgdesc = A Firefox extension to download/convert videos from hundreds of YouTube-like sites
-	pkgver = 5.3.1
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://addons.mozilla.org/firefox/addon/video-downloadhelper
 	arch = any
 	license = custom
 	depends = firefox
-	source = https://addons.mozilla.org/firefox/downloads/file/303088/video_downloadhelper-5.3.1-fx.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/303088/video_downloadhelper-5.4.1-fx.xpi
 	source = LICENSE
 	md5sums = 65c2204e20ebc9a1784503380c5142df
 	md5sums = 937544fbad2e07cfb6509e42db6f98e5
