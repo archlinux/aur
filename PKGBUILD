@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sxemacs-git
-pkgver=22.1.15.187.ge01219e
+pkgver=22.1.15.199.g2074af4
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
@@ -23,21 +23,21 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/${_gitname}"
-  git describe --always | sed -e 's|-|.|g' -e 's|v||'
+  git describe --tags | sed -e 's|-|.|g' -e 's|v||'
 }
 
 build() {
   cd "$srcdir/$_gitname"
   [ -d libltdl/m4 ] || mkdir -p libltdl/m4
-  ./autogen.sh --force
-  sed -i 2s+cl.info+cl-sxemacs.info+ info/cl.texi
-  sed -i 2s+widget.info+widget-sxemacs.info+ info/widget.texi
-  LIBS="$LIBS -ldl -fPIC" CFLAGS="$CFLAGS -I/usr/include/freetype2" ./configure --prefix=/usr
+  [ -d build ] || mkdir -p build
+  cd build
+  ../autogen.sh --force
+  LIBS="$LIBS -ldl -fPIC" CFLAGS="$CFLAGS -I/usr/include/freetype2" ../configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_gitname/build"
   make DESTDIR="$pkgdir/" install
 # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.sxemacs}
