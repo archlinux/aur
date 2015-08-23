@@ -2,14 +2,15 @@
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 pkgname=dict-gcide
 pkgver=0.48.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU version of the Collaborative International Dictionary of English in dict format"
 arch=('any')
 url="http://www.dict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
 makedepends=('dictd')
-replaces=('dictd-gcide')
+provides=('dictd-gcide')
+conflicts=('dictd-gcide')
 install=$pkgname.install
 source=("ftp://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.gz")
 md5sums=('44fa2d940c58e65635357fee76772a35')
