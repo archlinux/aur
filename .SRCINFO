@@ -1,0 +1,15 @@
+pkgbase = toxfile-git
+	pkgdesc = Utilities for toxfiles.
+	pkgver = 43.650640c
+	pkgrel = 1
+	url = https://github.com/saneki/toxfile
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = jansson
+	depends = toxcore
+	source = git://github.com/saneki/toxfile.git
+	sha256sums = SKIP
+
+pkgname = toxfile-git
+
