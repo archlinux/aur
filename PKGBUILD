@@ -10,9 +10,9 @@ pkgname="${_name}-${_channel}"
 pkgname=firefox-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build'
 url='http://www.mozilla.org/projects/firefox'
-pkgver=42.0a1.20150703
-_version=42.0a1
-pkgrel=3
+pkgver=43.0a1.20150823
+_version=43.0a1
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${_version}.en-US.linux"
@@ -36,9 +36,11 @@ package() {
   # uncomment these lines to enable GnuPG signature verification. You'll need Firefox's GnuPG release key.
   # Their current fingerprint (2015-07-17) is 14F2 6682 D091 6CDD 81E3 7B6D 61B7 B526 D98F 0353
   #msg "Verifying GnuPG signature..."
-  #FX_GPG="${_file}.checksums.asc"
+  # Add your architecture here (i686 or x86_64)
+  #CARCH=
+  #FX_GPG="${_file}-${CARCH}.checksums.asc"
   #FX_GPG_URI="${_srcurl}/${FX_GPG}"
-  #FX_CHKSUM_URI="${_srcurl}/${_file}.checksums"
+  #FX_CHKSUM_URI="${_srcurl}/${_file}-${CARCH}.checksums"
   #curl -OR ${FX_CHKSUM_URI}
   #curl -OR ${FX_GPG_URI} 
   #gpg --verify ${FX_GPG} 
