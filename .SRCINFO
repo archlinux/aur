@@ -1,0 +1,17 @@
+pkgbase = udis86-git
+	pkgdesc = Disassembler library for x86
+	pkgver = 1.7.1.140.g8731227
+	pkgrel = 1
+	url = http://udis86.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-sphinx
+	provides = udis86
+	conflicts = udis86
+	source = git://github.com/radare/udis86.git
+	md5sums = SKIP
+
+pkgname = udis86-git
+
