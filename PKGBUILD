@@ -2,7 +2,7 @@
 
 pkgname=domoticz-git
 _gitname="domoticz"
-pkgver=r659.c357e92
+pkgver=r2808
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,8 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+  printf "r%s" "$(git rev-list --count HEAD| awk '{print $1 + 2107}')"
 }
 
 build() {
