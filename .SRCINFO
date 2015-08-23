@@ -6,7 +6,6 @@ pkgbase = python-adafruit_bbio-git
 	arch = armv7h
 	license = GPLv3
 	depends = python
-	depends = base-devel
 	source = git://github.com/adafruit/adafruit-beaglebone-io-python
 	md5sums = SKIP
 

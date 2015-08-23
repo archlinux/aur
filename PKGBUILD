@@ -7,7 +7,7 @@ boards"
 url="https://github.com/adafruit/adafruit-beaglebone-io-python"
 arch=('armv7h')
 license=('GPLv3')
-depends=('python' 'base-devel')
+depends=('python')
 optdepends=()
 makedepends=()
 conflicts=()
