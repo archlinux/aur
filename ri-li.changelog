@@ -1,0 +1,4 @@
+2015-08-23 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a package() function

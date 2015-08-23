@@ -1,8 +1,9 @@
 pkgbase = ri-li
 	pkgdesc = Drive a toy wood engine in many levels and collect all the coaches to win
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ri-li.sourceforge.net/
+	changelog = ri-li.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
