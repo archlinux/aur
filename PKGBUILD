@@ -1,4 +1,4 @@
-# Maintainer: Valentin-Costel Haloiu <vially.ichb@gmail.com>
+# Maintainer: Valentin-Costel Hăloiu <vially.ichb@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=the_platinum_searcher
