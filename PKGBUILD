@@ -5,7 +5,7 @@
 # Contributor: Holodoc <archlinux@bananapro.de>
 
 pkgname=giteye
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A desktop for Git. It works with TeamForge, CloudForge, GitHub and other Git services."
 arch=('i686' 'x86_64')
@@ -14,19 +14,20 @@ license=('custom')
 depends=('git' 'java-environment' 'python2')
 makedepends=('unzip')
 options=('!strip')
-source=("https://downloads-guests.open.collab.net/files/documents/61/10458/GitEye-${pkgver}-linux.x86.zip"
-        "LICENSE"
+source=("LICENSE"
         "${pkgname}.desktop")
-md5sums=('4ff6ee5c75cc05cd374b32563bd75de1'
-	 '4df23a2c4f45c567feae7665694cd11a'
-	 '3144b18d4ddf6ac166afe374872ce4b4')
+md5sums=('4df23a2c4f45c567feae7665694cd11a'
+         '3144b18d4ddf6ac166afe374872ce4b4')
+md5sums_x86_64=('a6c3e91d9dee12877a27aafabc77f38e')
+md5sums_x86=('2ab57f083344ead599d0f64b811adc36')
 
-if [ "$CARCH" == "x86_64" ]; then
-    source[0]="https://downloads-guests.open.collab.net/files/documents/61/10459/GitEye-${pkgver}-linux.x86_64.zip"
-    md5sums[0]='a8fb375b0ae86be9df9dd644e2e0d49f'
-fi
+_subfolder="61/11867"
+_antver="1.9.4.v201504302020"
 
-noextract=(${source[@]##*/}) # extract nothing
+source_x86_64=("https://downloads-guests.open.collab.net/files/documents/${_subfolder}/GitEye-${pkgver}-linux.x86_64.zip")
+source_x86=("https://downloads-guests.open.collab.net/files/documents/${_subfolder}/GitEye-${pkgver}-linux.x86.zip")
+
+noextract=(*.zip) # extract nothing
 
 package() {
     cd "${srcdir}"
@@ -40,6 +41,9 @@ package() {
     ln -s "/opt/${pkgname}/GitEye" "${pkgdir}/usr/bin/"
 
     msg2 "Installing LICENSE..."
+    if [[ "$CARCH" = "x_86_64" ]]; then
+	sed -i 's/32-bit/64-bit/' LICENSE
+    fi
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     msg2 "Installing desktop file..."
@@ -47,5 +51,5 @@ package() {
     install -Dm644 "${pkgdir}/opt/${pkgname}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
 
     msg2 "Making apache ant use python2 instead of python..."
-    sed -i 's/python/python2/' "${pkgdir}/opt/giteye/plugins/org.apache.ant_1.9.2.v201404171502/bin/runant.py"
+    sed -i 's/python/python2/' "${pkgdir}/opt/giteye/plugins/org.apache.ant_${_antver}/bin/runant.py"
 }
