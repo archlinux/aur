@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git')
 _gitname='xbmc'
-pkgver=20150810.6d50460
+pkgver=20150823.183b213
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -31,7 +31,7 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
   'python2-pybluez' 'python2-simplejson' 'rtmpdump' 'sdl2' 'sdl_image'
   'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
-  'mesa'
+  'mesa' 'libcrossguid-git'
 )
 source=(
   "$_gitname::git://github.com/xbmc/xbmc.git"

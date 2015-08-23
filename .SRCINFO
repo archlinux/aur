@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = 20150810.6d50460
+	pkgver = 20150823.183b213
 	pkgrel = 1
 	url = http://kodi.tv
 	arch = i686
@@ -55,6 +55,7 @@ pkgbase = kodi-git
 	makedepends = yajl
 	makedepends = zip
 	makedepends = mesa
+	makedepends = libcrossguid-git
 	source = xbmc::git://github.com/xbmc/xbmc.git
 	sha256sums = SKIP
 
