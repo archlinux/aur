@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sly-git
-pkgver=1.0.0.beta.104.gd6502e1
+pkgver=1.0.0.beta.105.gb7bddf1
 pkgrel=1
 pkgdesc="Common Lisp IDE for Emacs. Fork of slime."
 arch=('any')
