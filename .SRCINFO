@@ -1,0 +1,20 @@
+pkgbase = pymclevel
+	pkgdesc = Python library for reading Minecraft levels (version matched to MCEdit stable release)
+	pkgver = 0.1.8build799
+	pkgrel = 1
+	url = https://github.com/mcedit/pymclevel
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cython2
+	makedepends = unzip
+	depends = python2
+	depends = python2-numpy
+	depends = python2-yaml
+	depends = python2-distribute
+	conflicts = pymclevel-git
+	source = https://github.com/mcedit/pymclevel/archive/8bf7b3d76479e007a51f3055198a8bcddb626c84.zip
+	md5sums = 859764d44809b21f6945123ecc5d0710
+
+pkgname = pymclevel
+
