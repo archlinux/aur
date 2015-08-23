@@ -1,5 +1,5 @@
 pkgname=tagspaces
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="TagSpaces is an open source personal data manager. It helps you organize files with tags on every platform."
 arch=("i686" "x86_64")
@@ -7,7 +7,7 @@ url="http://tagspaces.org"
 license=("AGPL")
 depends=("node-webkit")
 makedepends=("gendesk")
-sha256sums=("36f4cda13851bfcc72b603882fad4c81e7ef4891fef31ee7c3a991feac409844")
+sha256sums=("ac22d4e2becebba0bb3d341b720ec547ec9556d769139184eebdc9c8d7c453e1")
 source=("https://github.com/uggrock/tagspaces/archive/v${pkgver}.tar.gz")
 
 prepare() {
