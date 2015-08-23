@@ -1,8 +1,8 @@
 # Maintainer: Jim Turner <jturner314 @t gmail dot com>
 
 pkgname=thinkpad-scripts
-pkgver=4.4.1
-pkgrel=2
+pkgver=4.4.2
+pkgrel=1
 pkgdesc="Scripts for ThinkPad X220 & X230 Tablet rotation, docking, etc."
 arch=('any')
 url="http://martin-ueding.de/en/projects/thinkpad-scripts"
@@ -18,7 +18,7 @@ optdepends=('glib2: for rotating subpixel anti-aliasing'
 conflicts=('think-rotate')
 install="$pkgname.install"
 source=("https://github.com/martin-ueding/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('be65104b88bffb076640ad5c5d710d8b555d492c85e6e5cf34bf83f66b2b33a1')
+sha256sums=('b0798b1f80b641ab046278b8c324f33dca5e8f6eda9de9adb9f71d38e6191241')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
