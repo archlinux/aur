@@ -1,17 +1,17 @@
 pkgbase = gogs
 	pkgdesc = Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language.
 	pkgver = 0.6.5
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = http://gogs.io/
 	install = gogs.install
-	changelog = gogs.changelog
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	license = MIT
 	makedepends = go>=1.2
+	makedepends = git>=1.7.1
 	makedepends = patch
 	depends = git>=1.7.1
 	optdepends = sqlite: SQLite support
@@ -21,16 +21,18 @@ pkgbase = gogs
 	optdepends = memcached: MemCached support
 	optdepends = openssh: GIT over SSH support
 	conflicts = gogs-bin
+	conflicts = gogs
 	conflicts = gogs-git
-	conflicts = gogs-git-dev
 	options = !strip
 	options = !emptydirs
 	backup = srv/gogs/conf/app.ini
 	source = gogs.service
 	source = app.ini.patch
+	source = helper.sh
 	source = gogs::git+https://github.com/gogits/gogs.git#tag=v0.6.5
 	sha512sums = 2b4303f850e3b13b2fc3c9f0bc5820dae431d228002b35f01be0d4bfbcf05de8dcec2a559a85e318b609e4a4d492d44306eadf5f6508fd72333b198661bb0bb7
 	sha512sums = 939be9ad851ae6e20b786e2e189b0b67c0198edfc8c83442934ec48c7be073e03c75172e79f23a6ee1e0eb467c6fa18096a66d69d1142ebba28fdc8bb2a3964c
+	sha512sums = e746dbdafc4c8d0b15a224dba95ae3151611ba9ff468ee6f0b1789e489955e4d7eaac0dbdf28a22e5b8211559af5950726f4a37d699a2490fd349f034401028c
 	sha512sums = SKIP
 
 pkgname = gogs

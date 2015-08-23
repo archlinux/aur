@@ -1,0 +1,94 @@
+#!/bin/bash 
+
+# $1 = package name
+# $2 = target directory path
+# $3 = branch/commit/revision string, if empty then maste ist used
+function go_get {
+  if [[ $1 == github.com* ]]
+  then 
+    get_git $1 $2 $3
+  elif [[ $1 == code.google.com* ]]
+  then 
+    get_hg $1 $2 $3
+  elif [[ $1 == golang.org* ]]
+  then 
+    get_golang $1 $2 $3
+  else
+    go get $1
+  fi
+}
+
+# $1 = git package
+# $2 = target directory path
+# $3 = branch/commit/revision string, if empty then maste ist used
+function get_git {
+  git clone https://$1 $2
+  if [[ $3 != "master" ]] && [[ ${3:0} == commit* ]]
+  then
+    cd $2
+    git checkout -q ${3:7}
+  elif [[ $3 != "master" ]] && [[ ${3:0} == tag* ]]
+  then
+    cd $2
+    git checkout -q tags/${3:4}
+  else
+    cd $2
+    git checkout -q ${3:7}
+  fi
+}
+
+# $1 = mercury package name
+# $2 = target directory path
+# $3 = branch/commit/revision string, if empty then maste ist used
+function get_hg {
+  if [[ $3 == "master" ]] || [[ $3 == "" ]]
+  then
+    hg clone https://$1 $2
+  else
+    hg clone https://$1 -r $3 $2
+  fi
+}
+
+function get_golang {
+  if [[ $1 == "golang.org/x/net" ]]
+  then
+    echo $1 $2 $3
+    get_git "github.com/golang/net" $2
+  elif [[ $1 == "golang.org/x/text" ]]
+  then
+    echo $1 $2 $3
+    get_git "github.com/golang/text" $2
+  else
+    echo $1 $2 $3
+  fi
+
+}
+
+# Read the .gopmfile file and clone the branch/commits of the depends
+# $1 = .gopmfile file path
+# $2 = target directory path
+function get_gopm {
+  local startStr=""
+  local revStr=""
+
+  while read line
+  do
+    if [[ $startStr == 'X' ]] && [[ $line == '' ]]
+    then
+      break
+    elif [[ $startStr == 'X' ]]
+    then
+      IFS="=" read -a array <<< "$line"
+      if [[ ${array[1]} != "" ]]
+      then
+        local revStr=${array[1]//\`}
+        go_get ${array[0]} "$2/${array[0]}" $revStr
+      else
+        go_get ${array[0]} "$2/${array[0]}" master
+      fi
+    elif [[ $line == '[deps]' ]]
+    then
+      local startStr="X"
+    fi
+  done <$1
+}
