@@ -1,0 +1,20 @@
+pkgbase = telepathy-kde-integration-module-git
+	pkgdesc = Sits in KDED and takes care of various bits of system integration like setting user to auto-away or handling connection errors
+	pkgver = r329.af3187d
+	pkgrel = 1
+	url = http://community.kde.org/Real-Time_Communication_and_Collaboration
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = telepathy-kde-common-internals-git
+	conflicts = telepathy-kde-integration-module
+	replaces = telepathy-kde-integration-module-frameworks-git
+	source = git://anongit.kde.org/ktp-kded-module.git
+	sha256sums = SKIP
+
+pkgname = telepathy-kde-integration-module-git
+
