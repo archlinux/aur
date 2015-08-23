@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-downthemall
 	pkgdesc = A Download Manager extension for Firefox with advanced capabilities
 	pkgver = 2.0.18
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.downthemall.net/
 	arch = any
 	license = GPL2
 	depends = firefox
-	source = https://addons.cdn.mozilla.net/user-media/addons/201/downthemall-2.0.18-sm+fx.xpi
-	md5sums = 7d7b014579db7b90e0cd356ef9c18eef
+	source = downthemall-2.0.18-4-sm+fx.xpi::https://addons.cdn.mozilla.net/user-media/addons/201/downthemall-2.0.18-sm+fx.xpi
+	md5sums = 6d23f4ec928701fea55de1d0968bf0aa
 
 pkgname = firefox-extension-downthemall
 
