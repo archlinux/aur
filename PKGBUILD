@@ -2,13 +2,13 @@
 # Maintainer: McNoggins <Gagnon88 (at) gmail (dot) com>
 
 pkgname=go-mtpfs-git
-pkgver=20150424
+pkgver=20150801
 pkgrel=1
 pkgdesc="Simple tool for viewing MTP devices as FUSE filesystems"
 arch=('x86_64' 'i686')
 url="http://github.com/hanwen/go-mtpfs"
 license=('BSD')
-depends=('libmtp' 'fuse')
+depends=('libusb' 'fuse')
 makedepends=('go>=1.3.0' 'git')
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/hanwen/go-mtpfs.git")
