@@ -1,0 +1,15 @@
+pkgbase = tagspaces
+	pkgdesc = TagSpaces is an open source personal data manager. It helps you organize files with tags on every platform.
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = http://tagspaces.org
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = gendesk
+	depends = node-webkit
+	source = https://github.com/uggrock/tagspaces/archive/v1.11.0.tar.gz
+	sha256sums = 36f4cda13851bfcc72b603882fad4c81e7ef4891fef31ee7c3a991feac409844
+
+pkgname = tagspaces
+
