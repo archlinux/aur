@@ -5,7 +5,7 @@
 
 pkgname=tintin
 pkgver=2.01.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A console-based MUD client"
 arch=('i686' 'x86_64')
 url="http://tintin.sourceforge.net/"
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('zlib' 'pcre')
 options=('strip')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('110a8dc9a26d12905582c9dc58b9d3c1')
+md5sums=('4972a502b14456e145ee3fb75e3203bb')
 
 build() {
   cd $srcdir/tt/src
