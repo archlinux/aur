@@ -4,7 +4,7 @@
 pkgname=tomahawk-qt5
 _pkgname=tomahawk
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Music Player App written in C++/Qt5"
 arch=('i686' 'x86_64')
 url='http://tomahawk-player.org/'
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('attica-qt5' 'gnutls' 'libechonest-qt5' 'liblastfm-qt5' 'lucene++'
          'phonon-qt5' 'qca-qt5' 'qt5-svg' 'qt5-webkit' 'qtkeychain-qt5' 'quazip-qt5'
          'taglib')
-makedepends=('boost' 'cmake' 'sparsehash')
+makedepends=('boost' 'cmake' 'sparsehash' 'qt5-tools')
 optdepends=('telepathy-qt5: integration with Telepathy')
 provides=('tomahawk')
 conflicts=('tomahawk')

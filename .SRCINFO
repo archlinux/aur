@@ -1,7 +1,7 @@
 pkgbase = tomahawk-qt5
 	pkgdesc = A Music Player App written in C++/Qt5
 	pkgver = 0.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tomahawk-player.org/
 	install = tomahawk.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = tomahawk-qt5
 	makedepends = boost
 	makedepends = cmake
 	makedepends = sparsehash
+	makedepends = qt5-tools
 	depends = attica-qt5
 	depends = gnutls
 	depends = libechonest-qt5
