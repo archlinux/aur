@@ -23,7 +23,7 @@ source=("https://s3.amazonaws.com/bitcoinarmory-releases/armory_${pkgver}_ubuntu
 sha256sums=('677b484cbafcaff8a520cd4526beff985ca73eed54b437fa5cfdc123bd2c517a')
 
 package() {
-  tar xvf data.tar.gz
+  tar xvf "$srcdir/data.tar.xz"
 
   # Python 2.
   sed -i 's/python/python2/g' usr/bin/armory
