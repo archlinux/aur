@@ -1,8 +1,8 @@
 pkgbase = python2-pywebdav
-	pkgdesc = Zolera SOAP Infrastructure
+	pkgdesc = WebDAV library including a standalone server for python
 	pkgver = 0.9.8
 	pkgrel = 1
-	url = http://pywebsvcs.sourceforge.net
+	url = http://code.google.com/p/pywebdav/
 	arch = any
 	license = GPL3
 	depends = python2
