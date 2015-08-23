@@ -1,4 +1,5 @@
-# Maintainer: Maxime Buquet <tidusx62 at gmail dot com>
+# Submitter: Maxime Buquet <tidusx62 at gmail dot com>
+# Maintainer: Jesse Watson <me@9mmtylenol.me>
 pkgname=metronome-hg
 pkgver=3.7.7
 pkgrel=1
