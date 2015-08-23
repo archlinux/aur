@@ -1,7 +1,7 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=freecad-assembly2
-pkgver=0.r66.g7935cb5
+pkgver=0.r117.g1804b71
 pkgrel=1
 pkgdesc="Assembly workbench for FreeCAD v0.15"
 arch=('any')
