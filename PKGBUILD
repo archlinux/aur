@@ -5,7 +5,7 @@
 
 pkgname=caelum
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for OGRE targeted to help create nice-looking atmospheric effects."
 arch=('i686' 'x86_64')
 url="http://www.ogre3d.org/tikiwiki/Caelum"
@@ -13,17 +13,17 @@ depends=('ogre' 'cegui' 'doxygen' 'boost')
 makedepends=('cmake')
 provides=('caelum')
 license=('LGPL')
-source=(http://caelum.googlecode.com/files/caelum-${pkgver}.zip caelumplugin.patch libname.patch caelum-ogre-1.9.patch)
-sha512sums=('e1f5a8d3992c7e45a5e70febdb962935c0fb31e8d84c4a6576f3aa757d15678ddca2f24fb9888a6806cbcfb4171a9c10e97714d7e7154a5fb98d5ac4078ddb98'
-            'cc446e97eceef568e23ef15cbd32b183b5bb54e859ba558b1703c8c668fbc92f3bb904ffe95fa604d77937e653c96c2b80234d77dec5977fdc3656442a09f266'
-            'c8e368ee203273e8cbfc7b8aa4b65e37e2a58275292bf061ccc15428f54f7da68e7de5d183626e008dd3a92fdd401ccb231d1c5ab98434878871b1ec453a2ba0'
-            'SKIP')
+source=("http://caelum.googlecode.com/files/caelum-${pkgver}.zip"
+        "caelum-ogre-1.9.patch"
+        "caelumplugin.patch")
+sha512sums=('d1c6135f88491c3d45211de1652c0b11d8de30dbba8edeb440f52e35964be48b3cf45cfc4cfa926642b4d6e43751e4e449524046af21a2c3d1b20ae3576585f1'
+            '3df2935c9191a7bf6a923edf09461379ee6a69370baba6b526e82d577821dafe28d3cc3ccaa949447ec32c625845bf39bebea076866530356ed4b712689b3c10'
+            'b4306ad8402ed9e2619c77c671f62b89f6ce105109b10573abb0a1465d505938312561d46eda5ec3620435b6388a1476eb317c38e7d8aa3248e51b341645ed3e')
 
 build() {
   cd ${srcdir}/caelum-${pkgver}
-  patch -p0 < ${srcdir}/caelumplugin.patch main/src/CaelumPlugin.cpp
-  patch -p0 < ${srcdir}/libname.patch
   patch -p0 < ${srcdir}/caelum-ogre-1.9.patch
+  patch -p0 < ${srcdir}/caelumplugin.patch
 
   # get a clean build dir
   [[ -d build ]] && rm -rf build
