@@ -1,0 +1,16 @@
+pkgbase = python-ftputil
+	pkgdesc = High-level FTP client library
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://ftputil.sschwarzer.net/
+	arch = any
+	license = BSD 3-Clause
+	source = http://ftputil.sschwarzer.net/trac/attachment/wiki/Download/ftputil-3.2.tar.gz?format=raw
+	sha1sums = c29ae759d41af3a6558f6e5ecf76a402669275a2
+
+pkgname = python2-ftputil
+	depends = python2
+
+pkgname = python-ftputil
+	depends = python
+
