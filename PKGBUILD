@@ -31,11 +31,15 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         "ozone-wayland::git+https://github.com/01org/ozone-wayland#branch=Milestone-${_wayland_release}"
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium.desktop)
+        chromium.desktop
+        nacl_posix_source.patch
+        posix_macro.patch)
 sha256sums=('869adfc21a22d6a677d4bef381ed79aa2ed10acdc300a87dab704c9477f773ed'
             'SKIP'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
-            '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322')
+            '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
+            '17e656549a82b782fe809c4e2a19fbaf564a45b30cec07b1a1d6a08eb0739675'
+            '599f5ef7d98f42fdc877bf2fa82e828ed718c38f87c08b361e76f376bd5145c8')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -83,6 +87,13 @@ prepare() {
     echo "Applying ${patchfile}."
     patch -p1 <$patchfile
   done
+
+  # Apply the patches for boringssl...
+  cd third_party/boringssl/src/
+  for patchfile in posix_macro.patch nacl_posix_source.patch; do
+    echo "Applying boringssl patch ${patchfile}."
+    patch -p1 <"${srcdir}/${patchfile}"
+  done
 }
 
 build() {
@@ -114,7 +125,7 @@ build() {
     -Dlinux_use_gold_flags=0
     -Dicu_use_data_file_flag=0
     -Dlogging_like_official_build=1
-    -Drelease_extra_cflags="$CFLAGS -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -D_GNU_SOURCE"
+    -Drelease_extra_cflags="$CFLAGS -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include"
     -Dffmpeg_branding=Chrome
     -Dproprietary_codecs=1
     -Duse_gnome_keyring=0
