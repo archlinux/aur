@@ -1,8 +1,8 @@
 # Maintainer of AUR package: Raansu <gero3977@gmail.com>
 # Maintainer of acd_cli project: yadayada <https://github.com/yadayada>
 _pkgname=acd_cli
-pkgname=$_pkgname-git
-pkgver=0.3.0
+pkgname="$_pkgname"-git
+pkgver=0.3.0a5.r1.g3ce0983
 pkgrel=1
 pkgdesc="acd_cli provides a command line interface to 
 Amazon Cloud Drive and allows mounting your cloud drive 
@@ -21,7 +21,12 @@ conflicts=('acd_cli')
 source=(git+https://github.com/yadayada/acd_cli.git)
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
-   cd $_pkgname 
+   cd "$_pkgname" 
    python setup.py install --root="$pkgdir/" --optimize=1
 }
