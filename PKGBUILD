@@ -3,9 +3,9 @@
 pkgname=freecad-assembly2
 pkgver=0.r66.g7935cb5
 pkgrel=1
-pkgdesc="Drawing dimensioning workbench for FreeCAD"
+pkgdesc="Assembly workbench for FreeCAD v0.15"
 arch=('any')
-url="https://github.com/hamish2014/FreeCAD_drawing_dimensioning"
+url="https://github.com/hamish2014/FreeCAD_assembly2"
 license=('GPL3')
 depends=('freecad>=0.15')
 _gitname=FreeCAD_assembly2
