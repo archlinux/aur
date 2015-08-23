@@ -8,6 +8,8 @@ arch=('any')
 url=('https://github.com/Masterminds/glide')
 licence=('MIT')
 makedepends=('git' 'go>=1.5')
+provides=('glide')
+conflicts=('glide')
 source=(${pkgname}::git+https://github.com/Masterminds/glide.git)
 md5sums=('SKIP')
 

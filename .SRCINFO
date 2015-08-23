@@ -5,7 +5,9 @@ pkgbase = glide-git
 	url = https://github.com/Masterminds/glide
 	arch = any
 	makedepends = git
-	makedepends = go
+	makedepends = go>=1.5
+	provides = glide
+	conflicts = glide
 	source = glide-git::git+https://github.com/Masterminds/glide.git
 	md5sums = SKIP
 
