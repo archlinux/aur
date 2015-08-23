@@ -1,18 +1,411 @@
-diff -aur expyriment-0.7.0.orig/CHANGES.md expyriment-0.7.0/CHANGES.md
---- expyriment-0.7.0.orig/CHANGES.md	2014-04-10 11:47:10.975914182 +0100
-+++ expyriment-0.7.0/CHANGES.md	2014-04-10 11:47:52.995588231 +0100
-@@ -209,7 +209,7 @@
-   - extra plugins can be now also included in the folder 
-     $HOME/.expyriment/<module_name>/  (or ~expyriment)
- - command line interface: 
--  - see "python -m expyriment.cli -h" for help
-+  - see "python2 -m expyriment.cli -h" for help
- - better on- and offline documentation:
-   - new function: expyriment.show_documentation()
-   - new Api Reference Tool (API browse and search GUI)
-diff -aur expyriment-0.7.0.orig/setup.py expyriment-0.7.0/setup.py
---- expyriment-0.7.0.orig/setup.py	2014-04-10 11:47:10.979247489 +0100
-+++ expyriment-0.7.0/setup.py	2014-04-10 11:47:35.982386869 +0100
+diff -aur python2-expyriment-orig/documentation/api/create_api_reference.py python2-expyriment-0.8.0/documentation/api/create_api_reference.py
+--- python2-expyriment-orig/documentation/api/create_api_reference.py	2015-08-23 19:28:43.704998756 +0100
++++ python2-expyriment-0.8.0/documentation/api/create_api_reference.py	2015-08-23 19:35:32.627268409 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Create the API reference HTML documentation.
+diff -aur python2-expyriment-orig/documentation/sphinx/create_rst_api_reference.py python2-expyriment-0.8.0/documentation/sphinx/create_rst_api_reference.py
+--- python2-expyriment-orig/documentation/sphinx/create_rst_api_reference.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/documentation/sphinx/create_rst_api_reference.py	2015-08-23 19:35:32.630602355 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """Make rst files for the expyriment API reference"""
+ 
+diff -aur python2-expyriment-orig/examples/callback_functions.py python2-expyriment-0.8.0/examples/callback_functions.py
+--- python2-expyriment-orig/examples/callback_functions.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/callback_functions.py	2015-08-23 19:35:32.633936302 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/examples/csv_load_design.py python2-expyriment-0.8.0/examples/csv_load_design.py
+--- python2-expyriment-orig/examples/csv_load_design.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/csv_load_design.py	2015-08-23 19:35:32.637270249 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/examples/csv_save_design.py python2-expyriment-0.8.0/examples/csv_save_design.py
+--- python2-expyriment-orig/examples/csv_save_design.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/csv_save_design.py	2015-08-23 19:35:32.640604196 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/examples/line-bisection.py python2-expyriment-0.8.0/examples/line-bisection.py
+--- python2-expyriment-orig/examples/line-bisection.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/line-bisection.py	2015-08-23 19:35:32.643938142 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/examples/moving_stimulus.py python2-expyriment-0.8.0/examples/moving_stimulus.py
+--- python2-expyriment-orig/examples/moving_stimulus.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/moving_stimulus.py	2015-08-23 19:35:32.647272089 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """Example: moving stimulus in Expyriment using none OpenGL mode"""
+diff -aur python2-expyriment-orig/examples/really_short_exp.py python2-expyriment-0.8.0/examples/really_short_exp.py
+--- python2-expyriment-orig/examples/really_short_exp.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/really_short_exp.py	2015-08-23 19:35:32.650606036 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/examples/simon_task.py python2-expyriment-0.8.0/examples/simon_task.py
+--- python2-expyriment-orig/examples/simon_task.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/simon_task.py	2015-08-23 19:35:32.650606036 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/examples/snarc_data_preprocessing.py python2-expyriment-0.8.0/examples/snarc_data_preprocessing.py
+--- python2-expyriment-orig/examples/snarc_data_preprocessing.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/snarc_data_preprocessing.py	2015-08-23 19:35:32.653939982 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/examples/snarc_experiment.py python2-expyriment-0.8.0/examples/snarc_experiment.py
+--- python2-expyriment-orig/examples/snarc_experiment.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/snarc_experiment.py	2015-08-23 19:35:32.657273929 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/examples/word_fragment_completion_task.py python2-expyriment-0.8.0/examples/word_fragment_completion_task.py
+--- python2-expyriment-orig/examples/word_fragment_completion_task.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/examples/word_fragment_completion_task.py	2015-08-23 19:35:32.660607876 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/expyriment/_api_reference_tool.py python2-expyriment-0.8.0/expyriment/_api_reference_tool.py
+--- python2-expyriment-orig/expyriment/_api_reference_tool.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/expyriment/_api_reference_tool.py	2015-08-23 19:35:32.663941822 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ The Expyriment documentation
+diff -aur python2-expyriment-orig/expyriment/callback_functions.py python2-expyriment-0.8.0/expyriment/callback_functions.py
+--- python2-expyriment-orig/expyriment/callback_functions.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/expyriment/callback_functions.py	2015-08-23 19:35:32.667275769 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/expyriment/cli.py python2-expyriment-0.8.0/expyriment/cli.py
+--- python2-expyriment-orig/expyriment/cli.py	2015-08-23 19:28:43.708333129 +0100
++++ python2-expyriment-0.8.0/expyriment/cli.py	2015-08-23 19:35:32.670609716 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """A command line interface for Expyriment.
+ 
+@@ -53,7 +53,7 @@
+ unknown_option = "Unknown option '{0}' (use --help for information)"
+ 
+ def create_template():
+-    template_file = '''#!/usr/bin/env python
++    template_file = '''#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff -aur python2-expyriment-orig/expyriment/design/extras/_stimulationprotocol.py python2-expyriment-0.8.0/expyriment/design/extras/_stimulationprotocol.py
+--- python2-expyriment-orig/expyriment/design/extras/_stimulationprotocol.py	2015-08-23 19:28:43.711667503 +0100
++++ python2-expyriment-0.8.0/expyriment/design/extras/_stimulationprotocol.py	2015-08-23 19:35:32.673943663 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A stimulation protocol.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_blankscreen.py python2-expyriment-0.8.0/expyriment/stimuli/_blankscreen.py
+--- python2-expyriment-orig/expyriment/stimuli/_blankscreen.py	2015-08-23 19:28:43.711667503 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_blankscreen.py	2015-08-23 19:35:32.677277609 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A blank screen stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_canvas.py python2-expyriment-0.8.0/expyriment/stimuli/_canvas.py
+--- python2-expyriment-orig/expyriment/stimuli/_canvas.py	2015-08-23 19:28:43.711667503 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_canvas.py	2015-08-23 19:35:32.680611556 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A Canvas stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_circle.py python2-expyriment-0.8.0/expyriment/stimuli/_circle.py
+--- python2-expyriment-orig/expyriment/stimuli/_circle.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_circle.py	2015-08-23 19:35:32.683945503 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A circle stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_ellipse.py python2-expyriment-0.8.0/expyriment/stimuli/_ellipse.py
+--- python2-expyriment-orig/expyriment/stimuli/_ellipse.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_ellipse.py	2015-08-23 19:35:32.687279449 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ An ellipse stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_dotcloud.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_dotcloud.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_dotcloud.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_dotcloud.py	2015-08-23 19:35:32.730620757 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A dotcloud stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_gaborpatch.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_gaborpatch.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_gaborpatch.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_gaborpatch.py	2015-08-23 19:35:32.730620757 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A Gabor patch stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_lcdsymbol.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_lcdsymbol.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_lcdsymbol.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_lcdsymbol.py	2015-08-23 19:35:32.737288650 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A LCD symbol.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_noisetone.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_noisetone.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_noisetone.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_noisetone.py	2015-08-23 19:35:32.740622597 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ The noise tone stimulus module.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_polygondot.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_polygondot.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_polygondot.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_polygondot.py	2015-08-23 19:35:32.743956543 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A dot stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_polygonellipse.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_polygonellipse.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_polygonellipse.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_polygonellipse.py	2015-08-23 19:35:32.747290490 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ An ellipse stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_polygonline.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_polygonline.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_polygonline.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_polygonline.py	2015-08-23 19:35:32.747290490 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A Line stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_polygonrectangle.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_polygonrectangle.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_polygonrectangle.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_polygonrectangle.py	2015-08-23 19:35:32.750624437 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A Rectangle stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_randomdotkinematogram.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_randomdotkinematogram.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_randomdotkinematogram.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_randomdotkinematogram.py	2015-08-23 19:35:32.753958384 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A random dot kinematogram (stimulus-like).
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_stimuluscircle.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_stimuluscircle.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_stimuluscircle.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_stimuluscircle.py	2015-08-23 19:35:32.760626277 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A stimulus circle stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_stimuluscloud.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_stimuluscloud.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_stimuluscloud.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_stimuluscloud.py	2015-08-23 19:35:32.763960224 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A stimulus cloud stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_thermometerdisplay.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_thermometerdisplay.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_thermometerdisplay.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_thermometerdisplay.py	2015-08-23 19:35:32.767294170 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A thermometer display stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/extras/_visualmask.py python2-expyriment-0.8.0/expyriment/stimuli/extras/_visualmask.py
+--- python2-expyriment-orig/expyriment/stimuli/extras/_visualmask.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/extras/_visualmask.py	2015-08-23 19:35:32.770628118 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A Visual Mask.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_fixcross.py python2-expyriment-0.8.0/expyriment/stimuli/_fixcross.py
+--- python2-expyriment-orig/expyriment/stimuli/_fixcross.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_fixcross.py	2015-08-23 19:35:32.690613396 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A fixation cross stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_line.py python2-expyriment-0.8.0/expyriment/stimuli/_line.py
+--- python2-expyriment-orig/expyriment/stimuli/_line.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_line.py	2015-08-23 19:35:32.693947343 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A Line stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_obsolete.py python2-expyriment-0.8.0/expyriment/stimuli/_obsolete.py
+--- python2-expyriment-orig/expyriment/stimuli/_obsolete.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_obsolete.py	2015-08-23 19:35:32.697281290 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Obsolete stimuli
+diff -aur python2-expyriment-orig/expyriment/stimuli/_picture.py python2-expyriment-0.8.0/expyriment/stimuli/_picture.py
+--- python2-expyriment-orig/expyriment/stimuli/_picture.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_picture.py	2015-08-23 19:35:32.697281290 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A picture stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_rectangle.py python2-expyriment-0.8.0/expyriment/stimuli/_rectangle.py
+--- python2-expyriment-orig/expyriment/stimuli/_rectangle.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_rectangle.py	2015-08-23 19:35:32.700615236 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A Rectangle stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_shape.py python2-expyriment-0.8.0/expyriment/stimuli/_shape.py
+--- python2-expyriment-orig/expyriment/stimuli/_shape.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_shape.py	2015-08-23 19:35:32.707283130 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A Shape stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_stimulus.py python2-expyriment-0.8.0/expyriment/stimuli/_stimulus.py
+--- python2-expyriment-orig/expyriment/stimuli/_stimulus.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_stimulus.py	2015-08-23 19:35:32.710617076 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ This module contains the base classes for stimuli.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_textbox.py python2-expyriment-0.8.0/expyriment/stimuli/_textbox.py
+--- python2-expyriment-orig/expyriment/stimuli/_textbox.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_textbox.py	2015-08-23 19:35:32.713951023 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A text box stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_textline.py python2-expyriment-0.8.0/expyriment/stimuli/_textline.py
+--- python2-expyriment-orig/expyriment/stimuli/_textline.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_textline.py	2015-08-23 19:35:32.717284970 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A text line stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_textscreen.py python2-expyriment-0.8.0/expyriment/stimuli/_textscreen.py
+--- python2-expyriment-orig/expyriment/stimuli/_textscreen.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_textscreen.py	2015-08-23 19:35:32.720618916 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A text screen stimulus.
+diff -aur python2-expyriment-orig/expyriment/stimuli/_tone.py python2-expyriment-0.8.0/expyriment/stimuli/_tone.py
+--- python2-expyriment-orig/expyriment/stimuli/_tone.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/expyriment/stimuli/_tone.py	2015-08-23 19:35:32.723952863 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ The tone stimulus module.
+diff -aur python2-expyriment-orig/setup.py python2-expyriment-0.8.0/setup.py
+--- python2-expyriment-orig/setup.py	2015-08-23 19:28:43.715001877 +0100
++++ python2-expyriment-0.8.0/setup.py	2015-08-23 19:35:32.773962065 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2

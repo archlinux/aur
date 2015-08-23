@@ -1,6 +1,6 @@
 pkgbase = python2-expyriment
 	pkgdesc = Library for behavioural and neuroimaging experiments
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = http://www.expyriment.org/
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = python2-expyriment
 	optdepends = python2-pyparallel: Parallel port communication
 	optdepends = python2-numpy: Data export tools etc
 	options = !emptydirs
-	source = https://github.com/expyriment/expyriment/releases/download/v0.7.0/expyriment-0.7.0.zip
+	source = python2-expyriment-0.8.0::git://github.com/expyriment/expyriment.git#tag=v0.8.0
 	source = python2.patch
-	md5sums = db9d08cbd45f82815abd00cf663b10c4
-	md5sums = 9669f786af1775474369f578a59a73fc
+	md5sums = SKIP
+	md5sums = 4682c22a943df56a7e5654cc2bc0c0a9
 
 pkgname = python2-expyriment
 
