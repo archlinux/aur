@@ -1,7 +1,7 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=freecad-drawingdimensioning
-pkgver=0.r76.g6b2dc49
+pkgver=0.r108.g8e1cd66
 pkgrel=1
 pkgdesc="Drawing dimensioning workbench for FreeCAD"
 arch=('any')
