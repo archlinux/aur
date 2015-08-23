@@ -1,7 +1,7 @@
 pkgbase = openambit
 	pkgdesc = Open software for the Suunto Ambit(2)
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://openambit.org/
 	arch = i686
