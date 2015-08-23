@@ -14,7 +14,7 @@ pkgbase = pymclevel
 	depends = python2-distribute
 	conflicts = pymclevel-git
 	source = https://github.com/mcedit/pymclevel/archive/8bf7b3d76479e007a51f3055198a8bcddb626c84.zip
-	md5sums = 859764d44809b21f6945123ecc5d0710
+	md5sums = d976fa75ae790a292e46526b26a8b449
 
 pkgname = pymclevel
 

@@ -29,4 +29,4 @@ package() {
 	cp *.yaml "$target"
 }
 
-md5sums=('859764d44809b21f6945123ecc5d0710')
+md5sums=('d976fa75ae790a292e46526b26a8b449')
