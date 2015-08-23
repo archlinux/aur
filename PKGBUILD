@@ -13,7 +13,7 @@ md5sums=('a7cd980dfed2aeeb28ca8610f541fb3d')
 
 build() {
   cd CuraEngine-${pkgver}
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ./ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
