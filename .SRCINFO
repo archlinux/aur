@@ -1,0 +1,14 @@
+pkgbase = gogui
+	pkgdesc = SGF editor, also allow to play against engines
+	pkgver = 1.4.9
+	pkgrel = 1
+	url = http://gogui.sourceforge.net
+	install = gogui.install
+	arch = any
+	license = GPL
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/gogui/gogui-1.4.9.zip
+	md5sums = fad893003182af318d07287e3fd9c091
+
+pkgname = gogui
+
