@@ -2,8 +2,8 @@
 
 pkgname=odoo
 pkgver=8.0
-_pkgsubver=20150608
-pkgrel=1
+_pkgsubver=20150823
+pkgrel=4
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
@@ -57,7 +57,7 @@ depends=(
     'python2-xlwt'
     'python2-yaml'
     'wkhtmltopdf-static'
-    'zsi'
+    'python2-zsi'
 )
 optdepends=(
     'antiword'
@@ -84,7 +84,7 @@ package()
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
 }
-md5sums=('31c2002c73e1e3d7668c9fd793c93e4c'
+md5sums=('cad92fede070a689f4a2facdfc8428cd'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '00314ef227c9075767d0165527de9841'
          '0c205f95168a60d140411cce4e173eb8')
