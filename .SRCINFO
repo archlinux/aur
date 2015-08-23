@@ -1,0 +1,22 @@
+pkgbase = pslib
+	pkgdesc = pslib is a C-library to create PostScript files on the fly
+	pkgver = 0.4.5
+	pkgrel = 4
+	url = http://pslib.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	depends = glibc
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	depends = perl
+	depends = perl-xml-parser
+	depends = intltool
+	source = http://downloads.sourceforge.net/project/pslib/pslib/0.4.5/pslib-0.4.5.tar.gz
+	sha256sums = 7a33928982b281660206bb3749a4a563e3ac987eea64f41696f212df345212be
+
+pkgname = pslib
+
