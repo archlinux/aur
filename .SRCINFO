@@ -1,0 +1,29 @@
+pkgbase = modoboa
+	pkgdesc = Modoboa is a django mail hosting and management platform
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = www.modoboa.org
+	arch = any
+	license = GPL
+	makedepends = python2
+	makedepends = cairo
+	makedepends = rrdtool
+	makedepends = pango
+	makedepends = python2-rrdtool
+	makedepends = python2-lxml
+	makedepends = zlib
+	optdepends = python2-virtualenv
+	optdepends = mysql
+	optdepends = postgresql
+	optdepends = sqlite
+	optdepends = python2-mysql-connector
+	optdepends = python2-psycopg2
+	optdepends = python2-aspw
+	provides = modoboa
+	conflicts = modoboa-git
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/m/modoboa/modoboa-1.3.4.tar.gz
+	sha512sums = 9aecea8e0c8282292ba1cc11749956967ceb66332157267338bf08a05ffdc13bfeae64968cffb3df955ee7d73ad25a9370e639c363fe6de4167044de40413e6b
+
+pkgname = modoboa
+
