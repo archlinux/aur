@@ -1,0 +1,18 @@
+pkgbase = freegemas
+	pkgdesc = An open source version of the well known Bejeweled, for GNU/Linux and Windows. It's written in C++ using SDL2
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/JoseTomasTocino/freegemas
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	source = git+https://github.com/JoseTomasTocino/freegemas.git
+	sha256sums = SKIP
+
+pkgname = freegemas
+
