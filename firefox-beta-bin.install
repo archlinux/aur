@@ -13,8 +13,9 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 _update() {
-    msg_blue "Updating desktop database..."
+    msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
+
     msg_blue "Updating icon cache.."
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 }
@@ -22,11 +23,10 @@ _update() {
 post_install() {
     _update
     note 1 "This package installs side-by-side with [extra]'s firefox."
-    note 2 "The binary is called 'firefox-beta'."
+    note 2 "The launcher is called: 'firefox-beta'."
 }
 
 post_upgrade() {
-    #_update
     post_install
 }
 
