@@ -1,0 +1,32 @@
+--- editortools/filter.py.orig	2013-08-30 11:27:03.192204427 +0200
++++ editortools/filter.py	2013-08-30 11:29:30.482476023 +0200
+@@ -365,7 +365,10 @@
+ 
+     def reloadFilters(self):
+         filterDir = mcplatform.filtersDir
++        userFilterDir = mcplatform.userFiltersDir
+         filterFiles = os.listdir(filterDir)
++        if os.path.exists(userFilterDir):
++            filterFiles += os.listdir(userFilterDir)
+         filterPyfiles = filter(lambda x: x.endswith(".py"), filterFiles)
+ 
+         def tryImport(name):
+--- mcplatform.py.orig	2013-04-26 01:02:44.000000000 +0200
++++ mcplatform.py	2013-08-30 11:26:34.187710099 +0200
+@@ -419,12 +427,14 @@
+     portable = False
+ 
+ filtersDir = os.path.join(directories.dataDir, "filters")
+-if filtersDir not in [s.decode(sys.getfilesystemencoding())
++userFiltersDir = os.path.expanduser("~/.mcedit/filters")
++for d in [ userFiltersDir, filtersDir ] :
++    if d not in [s.decode(sys.getfilesystemencoding())
+                       if isinstance(s, str)
+                       else s
+                       for s in sys.path]:
+ 
+-    sys.path.append(filtersDir.encode(sys.getfilesystemencoding()))
++        sys.path.append(d.encode(sys.getfilesystemencoding()))
+ 
+ if portable:
+     serverJarStorageDir = (os.path.join(parentDir, "ServerJarStorage"))

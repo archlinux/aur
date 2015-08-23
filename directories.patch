@@ -1,0 +1,34 @@
+# Just hardcoded path for everyday Arch use
+
+--- directories.py.orig	2012-11-18 02:22:26.641212000 +0100
++++ directories.py	2012-11-18 02:23:12.252390509 +0100
+@@ -76,6 +76,8 @@
+ 
+     elif sys.platform == "darwin":
+         dataDir = os.getcwdu()
++    elif sys.platform.startswith("linux"):
++        dataDir = "/usr/share/mcedit"
+     else:
+         dataDir = os.getcwdu()
+ 
+--- albow/resource.py.orig	2012-03-15 19:48:27.844000304 +0100
++++ albow/resource.py	2012-03-15 19:52:56.671251316 +0100
+@@ -73,6 +73,8 @@
+ 
+ def get_font(size, *names, **kwds):
+     path = _resource_path("fonts", names, **kwds)
++    if sys.platform.startswith("linux"):
++        path = os.path.join("/usr/share/fonts/TTF", *names)
+     key = (path, size)
+     font = font_cache.get(key)
+     if not font:
+
+--- mcedit.py.orig	2012-04-19 16:28:33.458451942 +0200
++++ mcedit.py	2012-04-19 16:28:37.504926664 +0200
+@@ -29,4 +29,6 @@
+     elif sys.platform == "darwin":
+         logfile = os.path.expanduser("~/Library/Logs/" + logfile)
++    elif sys.platform.startswith("linux"):
++        logfile = os.path.expanduser('~/.mcedit/mcedit.log')
+ fh = logging.FileHandler(logfile, mode="w")
+ fh.setLevel(logging.DEBUG)

@@ -1,0 +1,32 @@
+pkgbase = mcedit
+	pkgdesc = Minecraft world editor
+	pkgver = 0.1.8build799
+	pkgrel = 1
+	url = https://github.com/mcedit/mcedit
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-numpy
+	depends = python2-opengl
+	depends = python2-pygame
+	depends = ttf-bitstream-vera
+	depends = pymclevel>=0.1.8build799
+	conflicts = mcedit-git
+	conflicts = pymclevel-git
+	source = MCEdit
+	source = MCEdit.desktop
+	source = directories.patch
+	source = disable-portable-mode.patch
+	source = numpy1.7-compatibility.patch
+	source = filters-in-home.patch
+	source = https://github.com/mcedit/mcedit/archive/0.1.8build799.tar.gz
+	md5sums = b9de4195ddf84d85c0170e816ec0659e
+	md5sums = e598244d2770ee075d397d6c11dc140d
+	md5sums = 732f8e3faa3806a9fcdf8697b9d8d5d8
+	md5sums = b8b5e679ed9bbf9f6a0e489599d2c587
+	md5sums = a4f4e6645e0f00898fed0830127c727f
+	md5sums = 5f84a8bf43e385e16f476fbd8ee4dc51
+	md5sums = 8745d3b8bb4765755d2c31e539f6476d
+
+pkgname = mcedit
+

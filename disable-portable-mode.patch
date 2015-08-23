@@ -1,0 +1,56 @@
+# Portable mode casuses various problems on Linux. Also, there is no sense
+# in making system-wide package and starting it in portable mode afterwards
+
+
+
+# 1. Disable all code related to portable mode
+
+--- mcplatform.py.orig	2012-03-15 19:32:33.595921677 +0100
++++ mcplatform.py	2012-03-15 19:38:26.285862212 +0100
+@@ -361,6 +361,9 @@
+ 
+ def goPortable():
+     global configFilePath, schematicsDir, portable
++    if sys.platform.startswith("linux"):
++        raise RuntimeError("Portable mode is not available on Linux")
++        # 'cos you can't even imagine what _that_ would do
+ 
+     if os.path.exists(fixedSchematicsDir):
+         move_displace(fixedSchematicsDir, portableSchematicsDir)
+@@ -406,7 +409,12 @@
+     return (os.path.exists(portableConfigFilePath)  # mcedit.ini in MCEdit folder
+         or (sys.platform != 'darwin' and not os.path.exists(fixedConfigFilePath)))  # no mcedit.ini in Documents folder (except on OS X when we always want it in Library/Preferences
+ 
+-if portableConfigExists():
++if sys.platform.startswith("linux"):
++    print "We are on Linux. Forcing fixed install mode. MCEdit-schematics and mcedit.ini are in your home folder."
++    configFilePath = os.path.expanduser("~/.mcedit/mcedit.ini")
++    schematicsDir = os.path.expanduser("~/.mcedit/schematics")
++    portable = False
++elif portableConfigExists():
+     print "Running in portable mode. MCEdit-schematics and mcedit.ini are stored alongside " + (sys.platform == "darwin" and "the MCEdit app bundle" or "MCEditData")
+     portable = True
+     schematicsDir = portableSchematicsDir
+
+
+# 2. Disable portable mode button in UI
+
+--- mcedit.py.orig	2012-04-19 16:20:56.890109345 +0200
++++ mcedit.py	2012-04-19 16:21:49.577610104 +0200
+@@ -473,6 +473,8 @@
+             tooltipText="Moving forward and backward will not change your altitude in Fly Mode.")
+ 
+         self.goPortableButton = goPortableButton = albow.Button("Change", action=self.togglePortable)
++        if sys.platform.startswith("linux"):
++            self.goPortableButton.enabled = False
+ 
+         goPortableButton.tooltipText = self.portableButtonTooltip()
+         goPortableRow = albow.Row((albow.ValueDisplay(ref=albow.AttrRef(self, 'portableLabelText'), width=250, align='r'), goPortableButton))
+@@ -530,6 +532,8 @@
+         Settings.blockBuffer.set(int(val * 1048576))
+ 
+     def portableButtonTooltip(self):
++        if sys.platform.startswith("linux"):
++            return "Sorry, portable mode is not available on Linux"
+         return ("Click to make your MCEdit install self-contained by moving the settings and schematics into the program folder",
+                 "Click to make your MCEdit install persistent by moving the settings and schematics into your Documents folder")[mcplatform.portable]

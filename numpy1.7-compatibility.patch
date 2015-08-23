@@ -1,0 +1,112 @@
+# Patch for compatibility with new, Arch's default version of numpy
+
+diff -ru mcedit-build.orig/renderer.py mcedit-build/renderer.py
+--- mcedit-build.orig/renderer.py	2012-11-01 12:57:30.000000000 +0100
++++ mcedit-build/renderer.py	2012-11-03 19:07:59.482818624 +0100
+@@ -49,6 +49,13 @@
+ import sys
+ #import time
+ 
++def numpy17_combine_colors(target, colors):
++    """ Combines colors without upseting new version of numpy """
++    target = numpy.array(target, "f")
++    target *= colors
++    target = numpy.array(target, "uint8")
++    return target
++
+ 
+ def chunkMarkers(chunkSet):
+     """ Returns a mapping { size: [position, ...] } for different powers of 2
+@@ -1093,7 +1100,8 @@
+ 
+             if self.detailLevel == 2:
+                 heightfactor = (y / float(2.0 * ch.world.Height)) + 0.5
+-                flatcolors[..., :3] *= heightfactor[:, numpy.newaxis, numpy.newaxis]
++                flatcolors[..., :3] = \
++                    numpy17_combine_colors(flatcolors[..., :3], heightfactor[:, numpy.newaxis, numpy.newaxis])
+ 
+             _RGBA = numpy.s_[..., 12:16]
+             va0.view('uint8')[_RGBA] = flatcolors
+@@ -1116,6 +1124,7 @@
+             va1[_XYZ][:, :, 0] *= step
+             va1[_XYZ][:, :, 2] *= step
+ 
++            flatcolors = numpy.array(flatcolors, "f")
+             flatcolors *= 0.8
+ 
+             va1.view('uint8')[_RGBA] = flatcolors
+@@ -1163,8 +1172,8 @@
+ 
+             def setGrassColors():
+                 grass = theseBlocks == pymclevel.materials.alphaMaterials.Grass.ID
+-                vertexArray.view('uint8')[_RGB][grass] *= self.grassColor
+-
++                vertexArray.view('uint8')[_RGB][grass] = \
++                    numpy17_combine_colors(vertexArray.view('uint8')[_RGB][grass], self.grassColor)
+             def getBlockLight():
+                 return facingBlockLight[blockIndices]
+ 
+@@ -1249,9 +1258,12 @@
+ 
+             vertexArray.view('uint8')[_RGB] *= facingBlockLight[blockIndices][..., numpy.newaxis, numpy.newaxis]
+             if self.materials.name in ("Alpha", "Pocket"):
+-                vertexArray.view('uint8')[_RGB][leaves] *= self.leafColor
+-                vertexArray.view('uint8')[_RGB][pines] *= self.pineLeafColor
+-                vertexArray.view('uint8')[_RGB][birches] *= self.birchLeafColor
++                vertexArray.view('uint8')[_RGB][leaves] = \
++                    numpy17_combine_colors(vertexArray.view('uint8')[_RGB][leaves], self.leafColor)
++                vertexArray.view('uint8')[_RGB][pines] = \
++                    numpy17_combine_colors(vertexArray.view('uint8')[_RGB][pines], self.pineLeafColor)
++                vertexArray.view('uint8')[_RGB][birches] = \
++                    numpy17_combine_colors(vertexArray.view('uint8')[_RGB][birches], self.birchLeafColor)
+ 
+             yield
+             arrays.append(vertexArray)
+@@ -1314,7 +1326,7 @@
+             vertexArray.view('uint8')[_RGBA] = 0xf  # ignore precomputed directional light
+             vertexArray.view('uint8')[_RGB] *= lights
+             if colorize is not None:
+-                vertexArray.view('uint8')[_RGB][colorize] *= LeafBlockRenderer.leafColor
++                numpy17_combine_colors(vertexArray.view('uint8')[_RGB][colorize], LeafBlockRenderer.leafColor)
+ 
+             arrays.append(vertexArray)
+             yield
+@@ -1565,7 +1565,8 @@
+         railBlocks = blocks[blockIndices]
+         tex = texMap(railBlocks, bdata, pymclevel.faces.FaceYIncreasing)[:, numpy.newaxis, :]
+ 
+         # disable 'powered' or 'pressed' bit for powered and detector rails
+-        bdata[railBlocks != pymclevel.materials.alphaMaterials.Rail.ID] &= ~0x8
++        bdata[railBlocks != pymclevel.materials.alphaMaterials.Rail.ID] = \
++            numpy.uint8(bdata[railBlocks != pymclevel.materials.alphaMaterials.Rail.ID] & ~0x8)
+ 
+         vertexArray = self.makeTemplate(direction, blockIndices)
+@@ -1911,6 +1911,6 @@
+         lights = blockLight[blockIndices][..., numpy.newaxis, numpy.newaxis]
+         vertexArray.view('uint8')[_RGB] *= lights
+ 
+-        vertexArray.view('uint8')[_RGB] *= LeafBlockRenderer.leafColor
++        vertexArray.view('uint8')[_RGB] *= numpy.uint8(LeafBlockRenderer.leafColor)
+ 
+         if direction == pymclevel.faces.FaceZIncreasing:
+diff -ru mcedit-build.orig/leveleditor.py mcedit-build/leveleditor.py
+--- mcedit-build.orig/leveleditor.py	2012-11-01 12:57:30.000000000 +0100
++++ mcedit-build/leveleditor.py	2012-11-03 19:06:41.813168731 +0100
+@@ -410,7 +410,7 @@
+ 
+     def setModelview(self):
+         pos = self.cameraPosition
+-        look = numpy.array(self.cameraPosition)
++        look = numpy.array(self.cameraPosition, dtype='f')
+         look += self.cameraVector
+         up = (0, 1, 0)
+         GLU.gluLookAt(pos[0], pos[1], pos[2],
+@@ -1697,7 +1697,7 @@
+                 yield i, box.chunkCount
+                 blocks = numpy.array(chunk.Blocks[slices], dtype='uint16')
+                 blocks |= (numpy.array(chunk.Data[slices], dtype='uint16') << 12)
+-                b = numpy.bincount(blocks.ravel())
++                b = numpy.array(numpy.bincount(blocks.ravel()), dtype='uint16')
+                 types[:b.shape[0]] += b
+ 
+                 for ent in chunk.getEntitiesInBox(box):
