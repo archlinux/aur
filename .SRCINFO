@@ -1,0 +1,20 @@
+pkgbase = telepathy-logger-qt-git
+	pkgdesc = Qt Wrapper around TpLogger client library
+	pkgver = r292.332b933
+	pkgrel = 1
+	url = http://community.kde.org/Real-Time_Communication_and_Collaboration
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = doxygen
+	depends = telepathy-qt5
+	depends = telepathy-logger
+	provides = telepathy-logger-qt
+	conflicts = telepathy-logger-qt
+	source = git://anongit.kde.org/telepathy-logger-qt.git
+	sha256sums = SKIP
+
+pkgname = telepathy-logger-qt-git
+
