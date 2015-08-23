@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Hudson <jh+w1retap@daria.co.uk>
 pkgname=w1retap
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="one wire weather station data acquisition to RDBMS"
 arch=('x86_64' 'i686' 'ppc' 'arm' 'armv6h')
 url="https://sourceforge.net/projects/w1retap/"
@@ -12,15 +12,15 @@ source=(https://sourceforge.net/projects/w1retap/files/latest/download/$pkgname-
 md5sums=('f0b8a200ad39d4bec2a42b203f1f277b')
 
 build() {
- cd "$startdir/src/$pkgname-$pkgver"
+ cd "$pkgname-$pkgver"
   ./configure --prefix=/usr --sysconfdir=/etc
   make || return 1
 }
 
 
 package() {
- cd "$startdir/src/$pkgname-$pkgver"
- make DESTDIR="$startdir/pkg" install
+ cd "$pkgname-$pkgver"
+ make DESTDIR="$pkgdir" install
 }
 
 

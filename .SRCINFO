@@ -1,7 +1,7 @@
 pkgbase = w1retap
 	pkgdesc = one wire weather station data acquisition to RDBMS
 	pkgver = 1.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/w1retap/
 	arch = x86_64
 	arch = i686
