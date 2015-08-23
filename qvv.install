@@ -1,0 +1,21 @@
+post_install() {
+  echo "Updating mime database..."
+  update-mime-database /usr/share/mime &> /dev/null
+  echo "Updating desktop mime database..."
+  update-desktop-database /usr/share/applications &> /dev/null
+  echo "Updating icon cache..."
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}
+
+op=$1
+shift
+
+$op $*

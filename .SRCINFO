@@ -1,0 +1,16 @@
+pkgbase = qvv
+	pkgdesc = Qt-based image browser
+	pkgver = 4.04.2
+	pkgrel = 1
+	url = http://cade.datamax.bg/qvv/
+	install = qvv.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	source = qvv-4.04.2.tar.gz::https://github.com/cade-vs/qvv/archive/4.04.2.tar.gz
+	md5sums = 258b42527abec739d3496244aa495b7e
+
+pkgname = qvv
+
