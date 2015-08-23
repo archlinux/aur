@@ -1,14 +1,16 @@
 [Unit]
-Description=h2o, a very fast HTTP server written in C
-After=network.target
+Description=H2O - the optimized HTTP/1, HTTP/2 server
+After=network.target nss-lookup.target remote-fs.target
 
 [Service]
 Type=simple
-SyslogLevel=notice
-
+PIDFile=/run/h2o.pid
 ExecStart=/usr/bin/h2o --mode master --conf /etc/h2o.conf
 ExecReload=/usr/bin/kill -HUP $MAINPID
-KillMode=process
+ExecStop=/usr/bin/kill -TERM $MAINPID
+SyslogLevel=notice
+PrivateTmp=true
+LimitNOFILE=infinity
 
 [Install]
-WantedBy=multiuser.target
+WantedBy=multi-user.target

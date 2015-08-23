@@ -1,9 +1,10 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Paul Préfontaine <paul+archlinuxaur@prefontaine.name>
+# Contributor: HLHF
 
 pkgname=h2o
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 depends=('libuv' 'libyaml' 'wslay')
@@ -13,7 +14,7 @@ license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v$pkgver
         h2o.service)
 sha256sums=('0297ca73dba460653c6edb14dab17095f60616baf7c51e45ac9f8a6d54b9ba55'
-            'dadc4d08e8149ac0f9f2156251a639380795d1fed2068958b487da88161d4bb7')
+            '63cd9134cdf47ca2b69bb0bf2a4ccd8b4fd3fd5c79e2a791bdec9a8d1691679b')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
 conflicts=('libh2o')
