@@ -1,0 +1,19 @@
+pkgbase = ttwatch-git
+	pkgdesc = TomTom GPS Watch Utilities
+	pkgver = 20150729
+	pkgrel = 1
+	url = https://github.com/ryanbinns/ttwatch
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = curl
+	makedepends = libusb
+	makedepends = openssl
+	depends = libusb
+	depends = curl
+	source = ttwatch-git::git+https://github.com/ryanbinns/ttwatch.git
+	md5sums = SKIP
+
+pkgname = ttwatch-git
+
