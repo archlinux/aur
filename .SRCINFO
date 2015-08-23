@@ -1,17 +1,17 @@
 pkgbase = screenkey
 	pkgdesc = Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features.
-	pkgver = 0.5
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/wavexx/screenkey
 	arch = any
 	license = GPL3
 	makedepends = python2-distutils-extra
 	makedepends = python2-setuptools
+	depends = python2
 	depends = pygtk
-	depends = python2-xlib
-	depends = xorg-xmodmap
-	source = https://github.com/wavexx/screenkey/archive/screenkey-0.5.tar.gz
-	sha1sums = aa62cc6af4849fd9ca4e2cde7c19243e14cd105d
+	depends = libx11
+	source = https://github.com/wavexx/screenkey/archive/screenkey-0.6.1.tar.gz
+	sha256sums = d0b69ef75b1c220bc299552f7918b884927a3ef7d10bf5e848ae7dd76a82f973
 
 pkgname = screenkey
 
