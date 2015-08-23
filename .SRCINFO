@@ -1,0 +1,14 @@
+pkgbase = python-fritzconnection
+	pkgdesc = Communicate with the AVM FritzBox
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://bitbucket.org/kbr/fritzconnection
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/f/fritzconnection/fritzconnection-0.4.6.tar.gz
+	sha512sums = d84f8812f561b4a20813d1b83d8885ac43c764b3ddf4398edc5d444b30c854e5b45e515407ee8a8931d6f500aa8a3bd3d0c5fdb4618475b5c67623e262bc2c21
+
+pkgname = python-fritzconnection
+
