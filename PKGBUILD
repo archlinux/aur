@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgbase=uzbl-next-git
-pkgrel=1
+pkgrel=2
 pkgname=('uzbl-core-next-git' 'uzbl-browser-next-git' 'uzbl-tabbed-next-git')
 pkgver=2012.05.14.1154.g35db169
 arch=('i686' 'x86_64')
@@ -35,6 +35,8 @@ build() {
 
 package_uzbl-core-next-git() {
   pkgdesc="Webpage interface component meant for integration with other tools and scripts"
+  provides=('uzbl-core')
+  conflicts=('uzbl-core')
   depends=('webkitgtk' 'cairo')
   optdepends=('socat: to interface with the socket'
 	      'dmenu: to run some of the example scripts'
@@ -52,7 +54,9 @@ package_uzbl-browser-next-git() {
   install=uzbl.install
   pkgdesc="A complete browser experience based on uzbl-core"
   depends=("uzbl-core-next-git=$pkgver" 'desktop-file-utils' \
-	   'python' 'python2' 'webkitgtk')
+					'python' 'python2' 'webkitgtk')
+  provides=('uzbl-browser')
+  conflicts=('uzbl-browser')
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir/" PREFIX=/usr install install-uzbl-browser
 }
@@ -61,6 +65,8 @@ package_uzbl-tabbed-next-git() {
   pkgdesc="Tabbing manager providing multiple uzbl-browser instances in 1 window"
   arch=('any')
   depends=('python2')
+  provides=('uzbl-tabbed')
+  conflicts=('uzbl-tabbed')
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir/" PREFIX=/usr install-uzbl-tabbed
 }

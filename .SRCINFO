@@ -1,6 +1,6 @@
 pkgbase = uzbl-next-git
 	pkgver = 2012.05.14.1154.g35db169
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.uzbl.org
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,8 @@ pkgname = uzbl-core-next-git
 	optdepends = python2: to run some of the example scripts
 	optdepends = xclip: for clipboard related keybindings
 	optdepends = pygtk: for uzbl-tabbed
+	provides = uzbl-core
+	conflicts = uzbl-core
 
 pkgname = uzbl-browser-next-git
 	pkgdesc = A complete browser experience based on uzbl-core
@@ -30,9 +32,13 @@ pkgname = uzbl-browser-next-git
 	depends = python
 	depends = python2
 	depends = webkitgtk
+	provides = uzbl-browser
+	conflicts = uzbl-browser
 
 pkgname = uzbl-tabbed-next-git
 	pkgdesc = Tabbing manager providing multiple uzbl-browser instances in 1 window
 	arch = any
 	depends = python2
+	provides = uzbl-tabbed
+	conflicts = uzbl-tabbed
 
