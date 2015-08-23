@@ -1,7 +1,7 @@
 pkgbase = libgaminggear
 	pkgdesc = Provides functionality for gaming input devices
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/libgaminggear/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = libgaminggear
 	depends = gtk2
 	depends = sqlite3>=3.7
 	source = http://downloads.sourceforge.net/project/libgaminggear/libgaminggear-0.11.0.tar.bz2
+	source = swarm.patch
 	md5sums = 83e7ddb2ba40c6f53fd7f91beb1022da
+	md5sums = 997f81df70a67195aaac9397ced3a263
 
 pkgname = libgaminggear
 
