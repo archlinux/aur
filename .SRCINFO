@@ -1,6 +1,6 @@
 pkgbase = define-git
 	pkgdesc = Terminal dictionary
-	pkgver = r18.93f7e37
+	pkgver = r23.4a27365
 	pkgrel = 1
 	url = https://github.com/SethDusek/define
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = define-git
 	depends = python2
 	depends = python2-wget
 	depends = python2-wordnik
+	depends = python2-requests
 	source = git://github.com/SethDusek/define.git
 	md5sums = SKIP
 
