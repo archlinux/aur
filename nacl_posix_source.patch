@@ -1,0 +1,23 @@
+Fix Chromium NaCl build.
+
+Chromium's NaCl build has _POSIX_SOURCE already defined, so #undef it first.
+The compiler used also dislikes static asserts with the same name.
+
+EDIT: Alastair Hughes: Removed second part of the patch, since it didn't apply.
+
+Change-Id: I0283fbad1a2ccf98cdb0ca2a7965b15441806308
+Reviewed-on: https://boringssl-review.googlesource.com/5430
+Reviewed-by: Adam Langley <agl@google.com>
+diff --git a/crypto/bio/socket_helper.c b/crypto/bio/socket_helper.c
+index 481278f..7e677f7 100644
+--- a/crypto/bio/socket_helper.c
++++ b/crypto/bio/socket_helper.c
+@@ -12,6 +12,7 @@
+  * OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
+ 
++#undef _POSIX_C_SOURCE
+ #define _POSIX_C_SOURCE 200112L
+ 
+ #include <openssl/bio.h>
+
