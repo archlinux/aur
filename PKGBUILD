@@ -1,7 +1,7 @@
 # Maintainer:  respiranto <respiranto@icloud.com>
 pkgname=dict-freedict-spa-eng
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Spanish -> English dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
