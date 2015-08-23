@@ -13,12 +13,8 @@ arch=('armv7h' 'armv6h')
 _carch=arm
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
 license=('custom')
-depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java-environment-common'
-         'java-runtime-common' 'libx11' 'libxrender' 'libxslt' 'libxtst' 'shared-mime-info' 'xdg-utils')
-optdepends=('alsa-lib: for basic sound support'
-            'eclipse: to use "Oracle Java Mission Control" plugins in Eclipse'
-            'gtk2: for Gtk+ look and feel (desktop)'
-            'ttf-font: fonts')
+depends=('ca-certificates-java' 'java-environment-common' 'java-runtime-common')
+optdepends=('alsa-lib: for basic sound support' 'ttf-font: fonts')
 makedepends=('pacman>=4.2.0')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major")
