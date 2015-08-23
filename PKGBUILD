@@ -6,7 +6,7 @@
 
 pkgname=omniorb416
 pkgver=4.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A CORBA object request broker for C++ and Python. Legacy version."
 arch=('i686' 'x86_64')
 url="http://omniorb.sourceforge.net/"
@@ -39,6 +39,8 @@ package() {
   cd "${srcdir}/omniORB-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
+  
+  install -D -m 644 sample.cfg "${pkgdir}/etc/omniORB.cfg"
 
   for i in man/man1/*.1; do
     install -D -m 644 $i "${pkgdir}/usr/share/${i}"
