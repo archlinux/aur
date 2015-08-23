@@ -1,0 +1,18 @@
+pkgbase = mhwaveedit
+	pkgdesc = mhWaveEdit is a graphical program for editing, playing and recording sound files.
+	pkgver = 1.4.23
+	pkgrel = 1
+	url = https://gna.org/projects/mhwaveedit/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	depends = gtk2
+	depends = libsndfile
+	depends = libsamplerate
+	source = http://download.gna.org/mhwaveedit/mhwaveedit-1.4.23.tar.bz2
+	sha256sums = 2352175b63092fda786ca26095b2f6ff6d257a6fcfb18401213a0c932b991904
+
+pkgname = mhwaveedit
+
