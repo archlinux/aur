@@ -22,7 +22,7 @@ if [ "$CARCH" == "i686" ];then
         "LICENSE.txt"
     )
     md5sums=(
-        '9457d399ff5ef419da653a4633562063'
+        '35289139aae9da85ecee4947e9f6fb13'
         '58c2c8b15c886b838dc2ed5186361507'
     )
     _64=
@@ -34,7 +34,7 @@ if [ "$CARCH" == "x86_64" ]; then
         "LICENSE.txt"
     )
     md5sums=(
-        '115f52125933e49d1620b2a40326b6c5'
+        '75cd1b29210be098ee8baf2c8e7ef0c8'
         '58c2c8b15c886b838dc2ed5186361507'
     )
     _64=64
