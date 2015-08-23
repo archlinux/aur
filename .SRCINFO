@@ -14,7 +14,7 @@ pkgbase = todoman
 	depends = python-click
 	optdepends = python-click-repl-git: the repl command.
 	source = 1.3.tar.gz::https://gitlab.com/hobarrera/todoman/repository/archive.tar.gz?ref=v1.3
-	md5sums = 014cf154b0253ded3bb4a39f6dd1f4f9
+	md5sums = c770a1078552596390f852495684361c
 
 pkgname = todoman
 
