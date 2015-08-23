@@ -2,7 +2,7 @@
 
 pkgname=airvpn-beta-bin
 pkgver=2.10.3
-pkgrel=3
+pkgrel=4
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
@@ -22,7 +22,6 @@ sha256sums_x86_64=('af028728cf551edfce6525d5fd05bc356440ad5f23bf344865b3a6997400
 package() {
   msg2 "Extracting the data.tar.lzma..."
   bsdtar -xf data.tar.gz
-
   msg2 "Moving stuff in place..."
   install -Dm755 "$srcdir/usr/lib/AirVPN/AirVPN.exe" "$pkgdir/usr/lib/AirVPN//AirVPN.exe"
   install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Core.dll" "$pkgdir/usr/lib/AirVPN/Lib.Core.dll"
@@ -33,9 +32,18 @@ package() {
   install -Dm644 "$srcdir/usr/share/doc/airvpn/changelog.gz" "$pkgdir/usr/share/doc/airvpn/changelog.gz"
   install -Dm644 "$srcdir/usr/share/doc/airvpn/copyright" "$pkgdir/usr/share/doc/airvpn/copyright"
   install -Dm644 "$srcdir/usr/share/man/man1/airvpn.1.gz" "$pkgdir/usr/share/man/man1/airvpn.1.gz"
-  install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
-  cp "$srcdir/usr/share/applications/AirVPN.desktop" "$srcdir/airvpn.desktop"
+  ## Fix .desktop file for KDE
+  if [ -f "/usr/bin/dolphin" ]; then
+    msg2 "Installing desktop file for KDE..."
+    install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
+    cp "$srcdir/usr/share/applications/AirVPN.desktop" "$srcdir/airvpn.desktop"
+    desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
+    --dir="$pkgdir/usr/share/applications/" --add-category="Qt;KDE"\
+    --set-icon="/usr/share/pixmaps/airvpn.png" "airvpn.desktop"
+  else
+  msg2 "Installing desktop file..."
+  install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/AirVPN.png"
   desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
-  --dir="$pkgdir/usr/share/applications/" --add-category="Qt;KDE"\
-  --set-icon="/usr/share/pixmaps/airvpn.png" "airvpn.desktop"
+  --dir="$pkgdir/usr/share/applications/" "$srcdir/usr/share/applications/AirVPN.desktop"
+  fi
 }
