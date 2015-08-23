@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/satellitereign-hib.png
+Exec=/usr/bin/satellitereign-hib
+Terminal=false
+StartupNotify=false
+
+Name=Satellite Reign
+Comment=Spiritual successor to the Syndicate games
+
+Categories=Game;

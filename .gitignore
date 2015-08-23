@@ -1,0 +1,5 @@
+*.swp
+*.zip
+*.tar
+/src
+/pkg
