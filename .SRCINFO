@@ -1,0 +1,17 @@
+pkgbase = simple-mtpfs
+	pkgdesc = A FUSE filesystem that supports reading/writing from MTP devices
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/phatina/simple-mtpfs/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libmtp
+	depends = fuse
+	depends = gcc-libs
+	options = strip
+	source = https://github.com/phatina/simple-mtpfs/archive/simple-mtpfs-0.2.tar.gz
+	md5sums = 7dd93d869b26ebf3b630cd7c0bdd8e32
+
+pkgname = simple-mtpfs
+
