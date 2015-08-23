@@ -1,0 +1,24 @@
+pkgbase = openambit
+	pkgdesc = Open software for the Suunto Ambit(2)
+	pkgver = 0.3
+	pkgrel = 1
+	epoch = 1
+	url = http://openambit.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = qt4
+	makedepends = qjson
+	makedepends = zlib
+	makedepends = libusb
+	makedepends = libpcap
+	options = !strip
+	options = !emptydirs
+	source = openambit::git+https://github.com/openambitproject/openambit.git#tag=0.3
+	sha512sums = SKIP
+
+pkgname = openambit
+
