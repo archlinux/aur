@@ -23,7 +23,6 @@ md5sums=('SKIP'
          'SKIP'
          '543c109cf8753f5d834d1b206312f049'
          'c8b7db20a44edb41c8675812e17b5c42')
-options=('!makeflags')
 
 pkgver() {
   cd $srcdir/emscripten
