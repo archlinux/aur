@@ -1,0 +1,19 @@
+pkgbase = cal3d-svn
+	pkgdesc = A skeletal-based 3D character animation library
+	pkgver = 579
+	pkgrel = 1
+	url = https://gna.org/projects/cal3d
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	makedepends = cmake
+	depends = gcc-libs
+	provides = cal3d
+	conflicts = cal3d
+	options = !libtool
+	source = cal3d::svn://svn.gna.org/svn/cal3d/trunk/cal3d
+	md5sums = SKIP
+
+pkgname = cal3d-svn
+
