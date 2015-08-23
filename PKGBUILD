@@ -16,7 +16,7 @@ build() {
   cd libArcus-${pkgver}
   mkdir build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF
   make
 }
 
