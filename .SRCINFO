@@ -1,0 +1,16 @@
+pkgbase = color-icc-srgb
+	pkgdesc = ICC's sRGB profiles
+	pkgver = 20150823
+	pkgrel = 1
+	url = http://www.color.org/srgbprofiles.xalter
+	arch = any
+	license = custom
+	source = http://www.color.org/sRGB_v4_ICC_preference.icc
+	source = http://www.color.org/sRGB_v4_ICC_preference_displayclass.icc
+	source = http://www.color.org/sRGB_IEC61966-2-1_black_scaled.icc
+	md5sums = a3fe13b83e7cb992f9ecc60c21ed9722
+	md5sums = b11a602ca66a0b746b894c4a8301e216
+	md5sums = 4b699a4c3a7d97acf0a356aed883fd85
+
+pkgname = color-icc-srgb
+
