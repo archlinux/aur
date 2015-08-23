@@ -8,7 +8,6 @@ pkgdesc="Simplified Go project management, dependency management, and vendoring.
 arch=('x86_64' 'i686')
 url=('https://github.com/Masterminds/glide')
 licence=('MIT')
-makedepends=('git' 'go>=1.5')
 provides=('glide')
 conflicts=('glide')
 source_x86_64=("https://github.com/Masterminds/glide/releases/download/${pkgver}/${_pkgname}-linux-amd64.zip")

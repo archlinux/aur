@@ -5,8 +5,6 @@ pkgbase = glide-bin
 	url = https://github.com/Masterminds/glide
 	arch = x86_64
 	arch = i686
-	makedepends = git
-	makedepends = go>=1.5
 	provides = glide
 	conflicts = glide
 	source_x86_64 = https://github.com/Masterminds/glide/releases/download/0.5.0/glide-linux-amd64.zip
