@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-xproto
+	pkgdesc = X11 core wire protocol and auxiliary headers (mingw-w64)
+	pkgver = 7.0.28
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	source = http://xorg.freedesktop.org//releases/individual/proto/xproto-7.0.28.tar.bz2
+	sha256sums = 29e85568d1f68ceef8a2c081dad9bc0e5500a53cfffde24b564dc43d46ddf6ca
+
+pkgname = mingw-w64-xproto
+
