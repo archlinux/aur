@@ -17,7 +17,7 @@ post_install()
 			echo "$pkgname already configured in $dictd_conf"
 		else
 			echo "Adding configuration for $pkgname to $dictd_conf"
-			echo -e "$conf" >> "$dictd_conf"
+			echo "$conf" >> "$dictd_conf"
 		fi
 		
 		if systemctl -q is-active dictd.service
@@ -66,6 +66,13 @@ post_remove()
 				echo "User created / modified configuration" \
 					 "for $pkgname in $dictd_conf is left untouched."
 			fi
+		fi
+
+		if systemctl -q is-active dictd.service
+		then
+			echo "Restarting dictd service in order to" \
+			     "stop using the removed dictionary database"
+			systemctl restart dictd.service
 		fi
 	fi
 }
