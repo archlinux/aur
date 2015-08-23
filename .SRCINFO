@@ -1,9 +1,10 @@
 pkgbase = uranium
 	pkgdesc = A Python framework for building Desktop applications.
-	pkgver = 15.06.02
+	pkgver = 15.06.03
 	pkgrel = 1
 	url = https://github.com/Ultimaker/Uranium
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPLv3
 	makedepends = cmake
 	depends = python
@@ -12,8 +13,8 @@ pkgbase = uranium
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = arcus
-	source = https://github.com/Ultimaker/uranium/archive/15.06.02.tar.gz
-	md5sums = c3b5e070090b2d026e1547ef8d4532fe
+	source = https://github.com/Ultimaker/uranium/archive/15.06.03.tar.gz
+	md5sums = 60c583b462494c2de015a678ba134eb3
 
 pkgname = uranium
 
