@@ -33,9 +33,18 @@ package() {
   install -Dm644 "$srcdir/usr/share/doc/airvpn/changelog.gz" "$pkgdir/usr/share/doc/airvpn/changelog.gz"
   install -Dm644 "$srcdir/usr/share/doc/airvpn/copyright" "$pkgdir/usr/share/doc/airvpn/copyright"
   install -Dm644 "$srcdir/usr/share/man/man1/airvpn.1.gz" "$pkgdir/usr/share/man/man1/airvpn.1.gz"
-  install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
-  cp "$srcdir/usr/share/applications/AirVPN.desktop" "$srcdir/airvpn.desktop"
+  ## Fix .desktop file for KDE
+  if [ -f "/usr/bin/dolphin" ]; then
+    msg2 "Installing desktop file for KDE..."
+    install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
+    cp "$srcdir/usr/share/applications/AirVPN.desktop" "$srcdir/airvpn.desktop"
+    desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
+    --dir="$pkgdir/usr/share/applications/" --add-category="Qt;KDE"\
+    --set-icon="/usr/share/pixmaps/airvpn.png" "airvpn.desktop"
+  else
+  msg2 "Installing desktop file..."
+  install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/AirVPN.png"
   desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
-  --dir="$pkgdir/usr/share/applications/" --add-category="Qt;KDE"\
-  --set-icon="/usr/share/pixmaps/airvpn.png" "airvpn.desktop"
+  --dir="$pkgdir/usr/share/applications/" "$srcdir/usr/share/applications/AirVPN.desktop"
+  fi
 }
