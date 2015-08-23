@@ -9,20 +9,20 @@ license=(MIT)
 url='https://github.com/etsy/Hound'
 makedepends=(go)
 source=($pkgname-$pkgver.zip::https://github.com/etsy/Hound/archive/v$pkgver.zip)
-sha1sums=('0cd7a363aa1b6f56733c2909e63a08c60032d07c')
+sha1sums=('3d04d830e2601e732001ed3c04e92f73a6c8043c')
 
 build() {
-  cd Hound-$pkgver
+  cd $pkgname-$pkgver
   make
 }
 
 check() {
-  cd Hound-$pkgver
+  cd $pkgname-$pkgver
   make test
 }
 
 package() {
-  cd Hound-$pkgver
+  cd $pkgname-$pkgver
   install -m755 -d "$pkgdir/usr/bin"
   install -m755 -t "$pkgdir/usr/bin" bin/{hound,houndd}
   install -m 644 -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
