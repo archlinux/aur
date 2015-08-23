@@ -1,0 +1,16 @@
+pkgbase = dict-gcide
+	pkgdesc = GNU version of the Collaborative International Dictionary of English in dict format
+	pkgver = 0.48.1
+	pkgrel = 1
+	url = http://www.dict.org/
+	install = dict-gcide.install
+	arch = any
+	license = GPL
+	makedepends = dictd
+	optdepends = dictd: dict client and server
+	replaces = dictd-gcide
+	source = ftp://ftp.debian.org/debian/pool/main/d/dict-gcide/dict-gcide_0.48.1.tar.gz
+	md5sums = 44fa2d940c58e65635357fee76772a35
+
+pkgname = dict-gcide
+
