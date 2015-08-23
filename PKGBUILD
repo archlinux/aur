@@ -14,10 +14,10 @@ makedepends=('cmake' 'zip')
 makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2')
 makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2')
 source=("https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz"
-        "http://www.etlegacy.com/download/file/74") # only for pre-built libraries
+        "http://www.etlegacy.com/download/file/72") # only for pre-built libraries
 #noextract=("etl_bin_v$pkgver.pk3" "pak3_v$pkgver.pk3")
 sha512sums=('eafeb40fed714db76635ee2656b66ff738435385314e4a3d45d48643c0147365d643f3b024ea87c3fd984a08f48a963342226decbc2f878dcd6d863edd570c0f'
-            'aea236a3d17d418df2381d324e7ddbda4a0663aa5e3ed5f2c2dd39ee2e08cbb02b036dc20d2ca897d27bf59bc4b1ed18db874b5ff7e73bd80b760710e9e2f881')
+            'c229efb237f5267887d7e8f6cc451ad5e045cd27b056338ba8059fe095d9d6367c439c259355211a6d268f3b0cd366dd6976310f391aecf36fcae3c89428b9ae')
 
 build() {
     cd "$_pkgbase-$pkgver"
