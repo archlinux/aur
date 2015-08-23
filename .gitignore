@@ -1,0 +1,5 @@
+noice
+pkg
+src
+*.pkg.tar
+*.pkg.tar.xz

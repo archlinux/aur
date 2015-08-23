@@ -1,0 +1,17 @@
+pkgbase = noice-git
+	pkgdesc = Small file browser
+	pkgver = 0.2.r15.gc528339
+	pkgrel = 1
+	url = http://git.2f30.org/noice/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = BSD
+	depends = ncurses
+	source = git://git.2f30.org/noice
+	source = config.h
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = noice-git
+
