@@ -1,8 +1,8 @@
 # $Id: PKGBUILD 110816 2014-05-07 16:32:16Z arodseth $
-# Maintainer: Alexander Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=http2check
-pkgver=0.4
+pkgver=0.6
 pkgrel=1
 pkgdesc='Utility for checking if a given webserver supports HTTP/2'
 arch=('x86_64' 'i686')
