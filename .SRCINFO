@@ -1,0 +1,19 @@
+pkgbase = brother-hl2250dn
+	pkgdesc = Brother HL-2250DN CUPS Driver
+	pkgver = 2.0.4_2
+	pkgrel = 4
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = a2ps
+	depends = cups
+	source = http://www.brother.com/pub/bsc/linux/dlf/hl2250dnlpr-2.1.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2250DN-2.0.4-2.i386.rpm
+	source = HL2250DN.ppd.patch
+	md5sums = 53a55ce29a97262a99af8cc76a0d3cc8
+	md5sums = 6d01f29dd0d4d1366bb0e701744f9cd5
+	md5sums = 7c701d586af8dac410cce86678ddfe96
+
+pkgname = brother-hl2250dn
+

@@ -1,0 +1,8 @@
+279c279,283
+< 
+---
+> *OpenUI *Margins/Page Margins/Offsets: PickOne
+> *DefaultMargins: Custom
+> *Margins Default/Driver Default: ""
+> *Margins Custom/Custom (set with 'alignmargins'): "<</.HWMargins[18 12 0 0] /Margins[-18 12]>>setpagedevice"
+> *CloseUI: *Margins
