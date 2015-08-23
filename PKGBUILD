@@ -1,7 +1,7 @@
 pkgname=zabbix-server-mysql
 _pkgname=zabbix-server
 pkgver=2.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64")
@@ -30,9 +30,9 @@ options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
         "${_pkgname}.install")
 md5sums=("a82eb0d55d3ca947e10a4a55238f4388"
-         "b2acc80fef16823183b26dc93ec1546b")
+         "ff761cbdafa70b6c4b26a39b8115ac64")
 sha1sums=("4e5ed20341b7178a032fc131960eafd7683610f0"
-          "efd7dbc0c43f20c8ccfa4478c5980666deb55584")
+          "173b60c310ae9453a0e75429b0917ad8bbf31e6f")
 
 prepare() {
 cat << EOL > "${srcdir}/${_pkgname}.sudoers"

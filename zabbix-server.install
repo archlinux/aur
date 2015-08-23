@@ -1,7 +1,7 @@
 post_install() {
   mkdir /var/lib/zabbix
-  getent group zabbix > /dev/null || groupadd zabbix > /dev/null
-  getent passwd zabbix > /dev/null || useradd -g zabbix -d /var/lib/zabbix/home zabbix -m > /dev/null
+  getent group zabbix > /dev/null || groupadd -r zabbix > /dev/null
+  getent passwd zabbix > /dev/null || useradd -r -m -g zabbix -s /bin/bash -d /var/lib/zabbix/home zabbix > /dev/null
   chown -R zabbix:zabbix /var/log/zabbix \
                          /etc/zabbix \
                          /usr/share/zabbix \
