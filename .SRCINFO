@@ -1,0 +1,13 @@
+pkgbase = evtviewer
+	pkgdesc = Viewer for MS *.evt log files
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://contribs.martymac.org
+	arch = any
+	license = GPL
+	depends = perl
+	source = http://downloads.sourceforge.net/evtviewer/evtViewer-0.6.tgz
+	md5sums = e1e5abb010fe75225ffdcd8b49059b1e
+
+pkgname = evtviewer
+
