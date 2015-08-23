@@ -1,6 +1,6 @@
 pkgbase = define-git
 	pkgdesc = Terminal dictionary
-	pkgver = r23.4a27365
+	pkgver = r32.ee0ba49
 	pkgrel = 1
 	url = https://github.com/SethDusek/define
 	arch = any

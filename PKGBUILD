@@ -10,7 +10,7 @@ url="https://github.com/SethDusek/define"
 license=('BSD')
 depends=('sox' 'python2' 'python2-wget' 'python2-wordnik' 'python2-requests')
 makedepends=('git')
-source=('git://github.com/shaggytwodope/define.git')
+source=('git://github.com/SethDusek/define.git')
 md5sums=('SKIP')
 
 pkgver() {
