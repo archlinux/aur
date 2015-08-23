@@ -28,4 +28,5 @@ package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 define.py "${pkgdir}/usr/bin/define"
   install -Dm644 LICENSE "${pkgdir}/usr/share/doc/define/LICENSE"
+  install -Dm644 define.1 "${pkgdir}/usr/share/man/man1/define.1"
 }
