@@ -1,0 +1,27 @@
+pkgbase = lantern-headless
+	pkgdesc = Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Headless Version)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://getlantern.org
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go>=1.4
+	depends = bzip2
+	depends = dbus
+	depends = glib2
+	depends = mesa
+	depends = xcb-util
+	depends = xdg-utils
+	depends = zlib
+	provides = lantern
+	options = !emptydirs
+	options = !strip
+	options = !docs
+	source = https://github.com/getlantern/lantern/archive/2.0.1.tar.gz
+	source = lantern.service
+	sha1sums = d7897cd685046c76a0169f85fa3c926461f8ea51
+	sha1sums = 822a905e8fe1d221a7ac5b7f0417d4ab82bed45a
+
+pkgname = lantern-headless
+
