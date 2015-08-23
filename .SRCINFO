@@ -1,0 +1,43 @@
+pkgbase = spotify094
+	pkgdesc = A proprietary music streaming service (pre dark-UI version)
+	pkgver = 0.9.4.183
+	pkgrel = 1
+	url = http://www.spotify.com
+	install = spotify.install
+	changelog = spotify.changelog
+	arch = x86_64
+	arch = i686
+	license = custom:"Copyright (c) 2006-2010 Spotify Ltd"
+	depends = alsa-lib>=1.0.14
+	depends = glibc>=2.6
+	depends = libxss>=1.2.0
+	depends = qt4>=4.5.0
+	depends = openssl
+	depends = usbutils
+	depends = nspr>=4.0
+	depends = nspr<5.0
+	depends = gconf
+	depends = nss
+	depends = glib2
+	depends = xdg-utils
+	depends = dbus
+	depends = systemd
+	depends = libgcrypt15
+	depends = gtk2
+	optdepends = desktop-file-utils: Adds URI support to compatible desktop environments
+	optdepends = ffmpeg-compat: Adds support for playback of local files
+	provides = spotify=0.9.4.183
+	conflicts = spotify-beta
+	conflicts = spotify
+	options = !strip
+	source = spotify.protocol
+	source = spotify
+	md5sums = ef25ddc5b6bf8fe1a0d64cbd79e1f7b4
+	md5sums = 375af807fdd88d17dc16a6a746e57ce5
+	source_x86_64 = http://filedump.swooshalicio.us/spotify/deb/spotify-client_0.9.4.183.g644e24e.428-1_amd64.deb
+	md5sums_x86_64 = e5d6049689a8ef0f3699986e47478fe2
+	source_i686 = http://filedump.swooshalicio.us/spotify/deb/spotify-client_0.9.4.183.g644e24e.428-1_i386.deb
+	md5sums_i686 = 20113ac3d6760ded6940fef8143fa9a3
+
+pkgname = spotify094
+
