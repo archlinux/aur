@@ -2,26 +2,26 @@
 
 pkgname=singularityviewer
 pkgver=1.8.6.6157
-pkgrel=1
+pkgrel=2
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology."
 url="http://www.singularityviewer.org/"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
 optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'flashplugin: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
-source=(	"https://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity-$CARCH-$pkgver.tar.bz2"
-		"singularityviewer.desktop"
-		"singularityviewer.launcher")
+source_i686=("http://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity-i686-$pkgver.tar.bz2"
+	"singularityviewer.desktop"
+	"singularityviewer.launcher")
+md5sums_i686=('d2ef47e3a52b92afa0a979dfbe2d9966'
+	'21b1e68507a1dd851da8ef7d766afe58'
+	'eb596f5cf7b6f2d0c55c0082fb99a905')
+source_x86_64=("http://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity-x86_64-$pkgver.tar.bz2"
+	"singularityviewer.desktop"
+	"singularityviewer.launcher")
+md5sums_x86_64=('5fec78052e9f1a99c0d192658137ee8c'
+	'21b1e68507a1dd851da8ef7d766afe58'
+	'eb596f5cf7b6f2d0c55c0082fb99a905')
 
-if [ "$CARCH" = "i686" ]; then
-md5sums=('d2ef47e3a52b92afa0a979dfbe2d9966'
-         '21b1e68507a1dd851da8ef7d766afe58'
-         'eb596f5cf7b6f2d0c55c0082fb99a905')
-elif [ "$CARCH" = "x86_64" ]; then
-md5sums=('5fec78052e9f1a99c0d192658137ee8c'
-         '21b1e68507a1dd851da8ef7d766afe58'
-         'eb596f5cf7b6f2d0c55c0082fb99a905')
-fi
 
 package() {
 cd $srcdir

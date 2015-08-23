@@ -1,7 +1,7 @@
 pkgbase = singularityviewer
 	pkgdesc = An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology.
 	pkgver = 1.8.6.6157
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.singularityviewer.org/
 	arch = i686
 	arch = x86_64
@@ -22,9 +22,18 @@ pkgbase = singularityviewer
 	optdepends = flashplugin: for inworld Flash support
 	optdepends = gstreamer0.10: for video support, may need good, bad and ugly plugins
 	optdepends = lib32-freealut: for OpenAL support
-	source = https://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity--1.8.6.6157.tar.bz2
-	source = singularityviewer.desktop
-	source = singularityviewer.launcher
+	source_i686 = http://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity-i686-1.8.6.6157.tar.bz2
+	source_i686 = singularityviewer.desktop
+	source_i686 = singularityviewer.launcher
+	md5sums_i686 = d2ef47e3a52b92afa0a979dfbe2d9966
+	md5sums_i686 = 21b1e68507a1dd851da8ef7d766afe58
+	md5sums_i686 = eb596f5cf7b6f2d0c55c0082fb99a905
+	source_x86_64 = http://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity-x86_64-1.8.6.6157.tar.bz2
+	source_x86_64 = singularityviewer.desktop
+	source_x86_64 = singularityviewer.launcher
+	md5sums_x86_64 = 5fec78052e9f1a99c0d192658137ee8c
+	md5sums_x86_64 = 21b1e68507a1dd851da8ef7d766afe58
+	md5sums_x86_64 = eb596f5cf7b6f2d0c55c0082fb99a905
 
 pkgname = singularityviewer
 
