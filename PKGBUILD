@@ -6,7 +6,7 @@
 
 pkgname=wine-staging-d3dadapter
 _pkgbasename=wine
-pkgver=1.7.49
+pkgver=1.7.50
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -15,10 +15,10 @@ source=(http://ftp.winehq.org/pub/wine/source/1.7/wine-${pkgver}.tar.bz2
         "wine-staging-patches-v${pkgver}.tar.gz"::https://github.com/wine-compholio/wine-staging/archive/v${pkgver}.tar.gz
         30-win32-aliases.conf
 	wine-d3d9-$pkgver.patch)
-sha1sums=('1d481104b13a207e6719d584b1fa2287199cba15'
-          'b21fb4152fff57297d4b450a1225733412be982f' 
+sha1sums=('fef9e2e54dca8fe783ece06f153a62d7a5d48ce3'
+          'f784c343c3ba43fff20f8c02c723f8e2f44d48a1' 
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-          '079cc65d0567c2d495732d7076b613f794743933')
+          'aea61469fd107ad3daa3c1811faf758eb7683bf8')
 
 # Uncomment to verify signature on tarball
 # (disabled by default due to most AUR auto-builders choking on this feature and

@@ -1,6 +1,6 @@
 pkgbase = wine-staging-d3dadapter
 	pkgdesc = A compatibility layer for running Windows programs, with additional staging patches not yet upstreamed (with d3dadapter patch)
-	pkgver = 1.7.49
+	pkgver = 1.7.50
 	pkgrel = 1
 	url = http://www.wine-staging.com
 	install = wine.install
@@ -129,24 +129,24 @@ pkgbase = wine-staging-d3dadapter
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = bin32-wine=1.7.49
-	provides = wine-wow64=1.7.49
-	provides = wine=1.7.49
-	provides = wine-compholio=1.7.49
-	provides = wine-silverlight=1.7.49
+	provides = bin32-wine=1.7.50
+	provides = wine-wow64=1.7.50
+	provides = wine=1.7.50
+	provides = wine-compholio=1.7.50
+	provides = wine-silverlight=1.7.50
 	conflicts = bin32-wine
 	conflicts = wine-wow64
 	conflicts = wine
 	conflicts = wine-staging
 	options = staticlibs
-	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.49.tar.bz2
-	source = wine-staging-patches-v1.7.49.tar.gz::https://github.com/wine-compholio/wine-staging/archive/v1.7.49.tar.gz
+	source = http://ftp.winehq.org/pub/wine/source/1.7/wine-1.7.50.tar.bz2
+	source = wine-staging-patches-v1.7.50.tar.gz::https://github.com/wine-compholio/wine-staging/archive/v1.7.50.tar.gz
 	source = 30-win32-aliases.conf
-	source = wine-d3d9-1.7.49.patch
-	sha1sums = 1d481104b13a207e6719d584b1fa2287199cba15
-	sha1sums = b21fb4152fff57297d4b450a1225733412be982f
+	source = wine-d3d9-1.7.50.patch
+	sha1sums = fef9e2e54dca8fe783ece06f153a62d7a5d48ce3
+	sha1sums = f784c343c3ba43fff20f8c02c723f8e2f44d48a1
 	sha1sums = 023a5c901c6a091c56e76b6a62d141d87cce9fdb
-	sha1sums = 079cc65d0567c2d495732d7076b613f794743933
+	sha1sums = aea61469fd107ad3daa3c1811faf758eb7683bf8
 
 pkgname = wine-staging-d3dadapter
 	depends = fontconfig
