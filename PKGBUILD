@@ -1,6 +1,6 @@
 pkgname=orbment-git
-pkgver=r431.de11bda
-pkgrel=1
+pkgver=r442.f8fbb3c
+pkgrel=2
 
 pkgdesc='A modular wayland compositor based on wlc.'
 url='https://github.com/Cloudef/orbment'
@@ -41,17 +41,17 @@ prepare() {
     git submodule init
     git config submodule.chck.url "$srcdir"/chck
     git config submodule.lib/inihck.url "$srcdir"/inihck
-    git submodule update lib/chck/src lib/inihck
+    git submodule update lib/chck lib/inihck
 
     cd lib/inihck
     git submodule init
-    git config submodule.lib/chck/src.url "$srcdir"/chck
-    git submodule update lib/chck/src
+    git config submodule.lib/chck.url "$srcdir"/chck
+    git submodule update lib/chck
 }
 
 build() {
     cd orbment
-    cmake -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
     make
 }
 
