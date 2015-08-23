@@ -6,7 +6,7 @@
 
 pkgname=ruby-highline
 _gemname=highline
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="A high-level text user interface toolkit for Ruby"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha256sums=('5beef0869e444075e701ffd87f47a9ebc6beb4c417976425d454d2775bdf9d91')
+sha256sums=('d2f7b7bf88499a156130e40038d0b3046e1da20fd8eece46a31577a533ab2d0d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
