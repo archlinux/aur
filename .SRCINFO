@@ -1,0 +1,16 @@
+pkgbase = whatis-git
+	pkgdesc = Terminal dictionary
+	pkgver = r74.5bd5816
+	pkgrel = 1
+	url = https://github.com/SethDusek/whatis
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = python2-wget
+	depends = python2-wordnik
+	source = git://github.com/SethDusek/whatis.git
+	md5sums = SKIP
+
+pkgname = whatis-git
+
