@@ -5,18 +5,19 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.eternal-lands.com/"
-depends=('sdl_net' 'sdl_image' 'openal' 'cal3d' 'libxml2' 'libvorbis' 'libgl' 'mesa')
-makedepends=('unzip' 'git')
+depends=('sdl_net' 'sdl_image' 'openal' 'cal3d' 'libxml2' 'libvorbis' 'glu')
+makedepends=('gzip' 'git')
+optdepends=('zenity: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=('http://www.eternal-lands.com/el_linux_193.zip' 'eternallands.desktop')
-md5sums=('a1d0c7c5983d7c33ee0edc7a4e4867d6' '4564fba195fc39fce438f717dde0ad9e')
+source=('http://www.eternal-lands.com/el_linux_installer_194.sh')
+md5sums=('46962fe07907fd5ebcd030d4ebebbacd')
 
 build()
 {
@@ -40,15 +41,14 @@ build()
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
-  git checkout d151c3d12c5984b3a2a953153811bf9961573374
+  git checkout 1.9.4.1
 
-  # Compile the client...
-  if [ "$CARCH" == "x86_64" ]; then
-    sed -i "s|i686|x86-64|" make.defaults
-    sed -i "s|OPTIONS = |OPTIONS = -DX86_64 |" Makefile.linux
-  fi
-  sed -i "s@OPTIONS = @OPTIONS = -DDATA_DIR="\\\\\"/usr/share/eternallands/"\\\\\" @g" Makefile.linux
-  sed -i "s@^LDFLAGS=@LDFLAGS=-lstdc++ -lX11 @" Makefile.linux
+  make -f Makefile.linux gen_git_version
+  sed -i "s|#data_dir = \"c:\\\Program Files\\\Eternal Lands\\\\\"|#data_dir = /usr/share/eternallands|" el.ini 
+  sed -i "s|/usr/games/|/usr/bin/|" pkgfiles/eternallands
+  sed -i "s|/usr/share/games/EternalLands/|/usr/share/eternallands/|" pkgfiles/eternallands
+  sed -i "s|#data_dir = /usr/share/games/EternalLands|#data_dir = /usr/share/eternallands|" pkgfiles/eternallands
+  sed -i "s|#data_dir = \\\/usr\\\/share\\\/games\\\/EternalLands|#data_dir = \\\/usr\\\/share\\\/eternallands|" pkgfiles/eternallands
   make -f Makefile.linux release
 }
 
@@ -56,20 +56,30 @@ package() {
   cd "$srcdir"
 
   mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/licenses/eternallands/"
-  mkdir -p "${pkgdir}/usr/share/applications"
+  mkdir -p "${pkgdir}/usr/share/man/man6"
   mkdir -p "${pkgdir}/usr/share/pixmaps"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  mkdir -p "${pkgdir}/usr/share/licenses/eternallands/"
   mkdir -p "${pkgdir}/usr/share/eternallands"
   
-  install -m755 elc-build/el.x86.linux.bin "${pkgdir}/usr/bin/el"
+  install -m755 elc-build/el.x86.linux.bin "${pkgdir}/usr/bin/"
+  install -m755 elc-build/pkgfiles/eternallands "${pkgdir}/usr/bin/"
+  install -m644 elc-build/pkgfiles/eternallands.6 "${pkgdir}/usr/share/man/man6"
+  install -m644 elc-build/pkgfiles/el.x86.linux.bin.6 "${pkgdir}/usr/share/man/man6"
+  install -m644 elc-build/pkgfiles/eternallands.png "${pkgdir}/usr/share/pixmaps/"
+  install -m644 elc-build/pkgfiles/eternallands.xpm "${pkgdir}/usr/share/pixmaps/"
+  install -m644 elc-build/pkgfiles/eternallands.desktop "${pkgdir}/usr/share/applications"
   install -m644 elc-build/eternal_lands_license.txt "${pkgdir}/usr/share/licenses/eternallands/"
-  install -m644 elc-build/elc.png "${pkgdir}/usr/share/pixmaps/eternallands.png"
-  install -m644 eternallands.desktop "${pkgdir}/usr/share/applications"
 
-  cd el_linux
+  sh el_linux_installer_194.sh --noexec --target el_linux_installer_194
+  cd el_linux_installer_194
+  mkdir -p subarch_uncompressed && tar --lzma -xvpf subarch -C subarch_uncompressed
+  cd subarch_uncompressed
+  mkdir -p instarchive_uncompressed && tar --lzma -xvpf instarchive_all -C instarchive_uncompressed
+  cd instarchive_uncompressed
 
   # Compress textures and maps
-  find \( -name *.bmp -or -name *.elm \) -exec gzip {} \;
+  find \( -name *.bmp -or -name *.elm \) -exec gzip -f {} \;
 
   for dir in 2dobjects 3dobjects actor_defs animations languages maps meshes particles shaders skeletons skybox textures; do
 	cp -R ${dir} "${pkgdir}/usr/share/eternallands/"
@@ -78,4 +88,6 @@ package() {
   for file in *.ini *.txt *.lst *.xml; do
     install -m644 ${file} "${pkgdir}/usr/share/eternallands/"
   done
+
+  install -m644 ${srcdir}/elc-build/el.ini "${pkgdir}/usr/share/eternallands/"
 }

@@ -1,3 +1,9 @@
+2015-08-23 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated all dependency arrays
+	Install launch script, man pages and icons from source
+
 2012-02-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
