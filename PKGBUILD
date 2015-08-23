@@ -1,6 +1,6 @@
 pkgname=etlegacy-omnibot
-pkgver=0.84.1051 # etlegacy version is slightly newer than the official 0.84 omnibot release
-pkgrel=2
+pkgver=0.84.2001 # etlegacy version is slightly newer than the official 0.84 omnibot release
+pkgrel=1
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (omni-bot files)"
 arch=('i686' 'x86_64')
 url="http://omni-bot.invisionzone.com"
@@ -17,5 +17,3 @@ package() {
     # writable user config
     chmod 666 $pkgdir/usr/lib/etlegacy/legacy/omni-bot/et/user/omni-bot.cfg
 }
-
-# vim:set ts=4 sw=2 et:
