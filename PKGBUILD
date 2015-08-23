@@ -3,7 +3,7 @@
 
 pkgname=libpstat-git
 pkgver=r34.a71fee8
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for getting information about running processes'
 url='https://github.com/jcnelson/libpstat'
 arch=( 'x86_64' 'i686' )
@@ -32,7 +32,7 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" PREFIX='/usr' INCLUDE_DIR="${pkgdir}/usr/include" install
+	make DESTDIR="${pkgdir}" PREFIX='/usr' INCLUDE_PREFIX='/usr' install
 
 	install -Dm644 LICENSE.ISC "$pkgdir/usr/share/licenses/$pkgname/LICENSE.ISC"
 }
