@@ -1,0 +1,21 @@
+pkgbase = caelum-git
+	pkgdesc = Library for OGRE targeted at helping to create nice-looking atmospheric effects.
+	pkgver = 0.6.1
+	pkgrel = 4
+	url = http://www.ogre3d.org/tikiwiki/Caelum
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	depends = ogre
+	depends = cegui
+	depends = doxygen
+	depends = boost
+	provides = caelum
+	conflicts = caelum
+	source = git+https://github.com/skybon/caelum
+	sha512sums = SKIP
+
+pkgname = caelum-git
+
