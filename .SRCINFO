@@ -1,7 +1,7 @@
 pkgbase = singularityviewer-alpha
 	pkgdesc = An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)
 	pkgver = 1.8.6.6583
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.singularityviewer.org/
 	arch = i686
 	arch = x86_64
@@ -24,9 +24,18 @@ pkgbase = singularityviewer-alpha
 	optdepends = lib32-freealut: for OpenAL support
 	provides = singularityviewer
 	conflicts = singularityviewer
-	source = http://downloads.sourceforge.net/project/singularityview/alphas/SingularityAlpha--1.8.6.6583.tar.bz2
-	source = singularityviewer.desktop
-	source = singularityviewer.launcher
+	source_i686 = http://downloads.sourceforge.net/project/singularityview/alphas/SingularityAlpha-i686-1.8.6.6583.tar.bz2
+	source_i686 = singularityviewer.desktop
+	source_i686 = singularityviewer.launcher
+	md5sums_i686 = 1bd147c4d9377687486c356497217ba6
+	md5sums_i686 = ff7aa34dcd7548e3acdb3c2d44ae6604
+	md5sums_i686 = eb596f5cf7b6f2d0c55c0082fb99a905
+	source_x86_64 = http://downloads.sourceforge.net/project/singularityview/alphas/SingularityAlpha-x86_64-1.8.6.6583.tar.bz2
+	source_x86_64 = singularityviewer.desktop
+	source_x86_64 = singularityviewer.launcher
+	md5sums_x86_64 = 8d410e627bb112e19e95ef69d356634e
+	md5sums_x86_64 = ff7aa34dcd7548e3acdb3c2d44ae6604
+	md5sums_x86_64 = eb596f5cf7b6f2d0c55c0082fb99a905
 
 pkgname = singularityviewer-alpha
 
