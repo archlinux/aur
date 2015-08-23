@@ -11,7 +11,8 @@ depends=('jdk8-openjdk'
          'java-openjfx')
 makedepends=('git'
              'jdk8-openjdk'
-             'java-openjfx')
+             'java-openjfx'
+             'gradle')
 source=("git+https://github.com/TemporaryTeam/NoticEditor")
 md5sums=('SKIP')
 
