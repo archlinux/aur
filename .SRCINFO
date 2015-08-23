@@ -1,15 +1,15 @@
 pkgbase = argbash
 	pkgdesc = Bash argument parsing code generator
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/matejak/argbash
 	arch = any
 	license = BSD
 	makedepends = make
 	depends = autoconf
-	source = argbash-1.0.0.tar.gz
+	source = argbash-1.0.1.tar.gz
 	source = LICENSE
-	md5sums = cbd075a8e13f7e7ee32e33f8cc191f41
+	md5sums = cea70f809ddc07c2d2d927831e2b2a6d
 	md5sums = 830d8b1dc53dad7f53d6112c924c91ec
 
 pkgname = argbash

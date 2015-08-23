@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <matej.tyc@gmail.com>
 pkgname=argbash
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Bash argument parsing code generator"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz" LICENSE)
 noextract=()
-md5sums=('cbd075a8e13f7e7ee32e33f8cc191f41' '830d8b1dc53dad7f53d6112c924c91ec')
+md5sums=('cea70f809ddc07c2d2d927831e2b2a6d' '830d8b1dc53dad7f53d6112c924c91ec')
 validpgpkeys=()
 
 build() {
