@@ -1,9 +1,6 @@
 post_install() {
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-    
-        ARCH=$(uname -m)
-
-    
+        
     # Add icons to the system icons
     XDG_ICON_RESOURCE="`which xdg-icon-resource 2> /dev/null || true`"
     if [ ! -x "$XDG_ICON_RESOURCE" ]; then
@@ -80,63 +77,9 @@ post_install() {
     # first "<web-browsers>" line we find in gnome-default-applications.xml
       fgrep -q "FlashPeak Slimjet" "$GNOME_DFL_APPS" || insert_after_first_match     "$GNOME_DFL_APPS"     "^[ 	]*<web-browsers>[ 	]*$"     "/opt/slimjet/default-app-block"
     fi
-    
-    
-    get_lib_dir() {
-      if [ "$ARCH" = "i686" ]; then
-    LIBDIR=/usr/lib
-      elif [ "$ARCH" = "x86_64" ]; then
-    LIBDIR=/usr/lib64
-      else
-    echo Unknown CPU Architecture: "$ARCH"
-    exit 1
-      fi
-    }
-    
-    NSS_FILES="libnspr4.so.0d libplds4.so.0d libplc4.so.0d libssl3.so.1d     libnss3.so.1d libsmime3.so.1d libnssutil3.so.1d"
-    
-    add_nss_symlinks() {
-      get_lib_dir
-      for f in $NSS_FILES
-      do
-    target=$(echo $f | sed 's/.[01]d$//')
-    if [ -f "/$LIBDIR/$target" ]; then
-      ln -snf "/$LIBDIR/$target" "/opt/slimjet/$f"
-    elif [ -f "/usr/$LIBDIR/$target" ]; then
-      ln -snf "/usr/$LIBDIR/$target" "/opt/slimjet/$f"
-    else
-      echo $f not found in "/$LIBDIR/$target" or "/usr/$LIBDIR/$target".
-      exit 1
-    fi
-      done
-    }
-    
-    remove_nss_symlinks() {
-      for f in $NSS_FILES
-      do
-    rm -rf "/opt/slimjet/$f"
-      done
-    }
-    
-    # Fedora 18 now has libudev.so.1. http://crbug.com/145160
-    # Same for Ubuntu 13.04. http://crbug.com/226002
-    LIBUDEV_0=libudev.so.0
-    LIBUDEV_1=libudev.so.1
-    
-    add_udev_symlinks() {
-      get_lib_dir
 
-    ln -snf "/$LIBDIR/$LIBUDEV_1" "/opt/slimjet/$LIBUDEV_0"
-      
-    }
-    
-    remove_udev_symlinks() {
-      rm -rf "/opt/slimjet/$LIBUDEV_0"
-    }
-    
-    remove_udev_symlinks
-    add_udev_symlinks
     update-desktop-database -q
+    echo "You must run Slimjet from a terminal the first time!"
 }
 
 post_upgrade() {
@@ -169,57 +112,5 @@ pre_remove() {
 
 post_remove() {
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-    
-    
-    ARCH=$(uname -m)
-    
-    
-    get_lib_dir() {
-      if [ "$ARCH" = "i686" ]; then
-    LIBDIR=/usr/lib
-      elif [ "$ARCH" = "x86_64" ]; then
-    LIBDIR=/usr/lib64
-      else
-    echo Unknown CPU Architecture: "$ARCH"
-    exit 1
-      fi
-    }
-    
-    NSS_FILES="libnspr4.so.0d libplds4.so.0d libplc4.so.0d libssl3.so.1d     libnss3.so.1d libsmime3.so.1d libnssutil3.so.1d"
-    
-    add_nss_symlinks() {
-      get_lib_dir
-      for f in $NSS_FILES
-      do
-    target=$(echo $f | sed 's/.[01]d$//')
-    if [ -f "/$LIBDIR/$target" ]; then
-      ln -snf "/$LIBDIR/$target" "/opt/slimjet/$f"
-    elif [ -f "/usr/$LIBDIR/$target" ]; then
-      ln -snf "/usr/$LIBDIR/$target" "/opt/slimjet/$f"
-    else
-      echo $f not found in "/$LIBDIR/$target" or "/usr/$LIBDIR/$target".
-      exit 1
-    fi
-      done
-    }
-    
-    remove_nss_symlinks() {
-      for f in $NSS_FILES
-      do
-    rm -rf "/opt/slimjet/$f"
-      done
-    }
-    
-    # Fedora 18 now has libudev.so.1. http://crbug.com/145160
-    # Same for Ubuntu 13.04. http://crbug.com/226002
-    LIBUDEV_0=libudev.so.0
-    LIBUDEV_1=libudev.so.1
-
-    
-    remove_udev_symlinks() {
-      rm -rf "/opt/slimjet/$LIBUDEV_0"
-    }
-    
-    remove_udev_symlinks
     update-desktop-database -q
 }
