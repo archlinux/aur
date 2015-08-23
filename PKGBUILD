@@ -9,8 +9,14 @@ arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('python' 'qt5-quickcontrols' 'pyqt5-common' 'python-pyqt5' 'python-numpy' 'arcus')
 makedepends=('cmake')
-source=("https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('60c583b462494c2de015a678ba134eb3')
+source=("https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz" qt5.patch)
+md5sums=('60c583b462494c2de015a678ba134eb3'
+         'e4975dddd0524845b9574b4142274f5a')
+
+prepare(){
+  cd Uranium-${pkgver}
+  patch -Np1 -i ../qt5.patch
+}
 
 build() {
   cd Uranium-${pkgver}

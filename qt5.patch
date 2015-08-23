@@ -1,0 +1,149 @@
+From 041ae0ee89b9af5a53c20589a51c70a7a9e761d7 Mon Sep 17 00:00:00 2001
+From: Arjen Hiemstra <ahiemstra@heimr.nl>
+Date: Thu, 23 Jul 2015 16:37:07 +0200
+Subject: [PATCH] Fix issues related to PyQt 5.5
+
+---
+ UM/Qt/Bindings/AngledCornerRectangle.py | 63 +++++++++++++++++++--------------
+ UM/Qt/ListModel.py                      | 14 ++++----
+ 2 files changed, 44 insertions(+), 33 deletions(-)
+
+diff --git a/UM/Qt/Bindings/AngledCornerRectangle.py b/UM/Qt/Bindings/AngledCornerRectangle.py
+index 00481b5..e6b01dd 100644
+--- a/UM/Qt/Bindings/AngledCornerRectangle.py
++++ b/UM/Qt/Bindings/AngledCornerRectangle.py
+@@ -1,7 +1,7 @@
+ # Copyright (c) 2015 Ultimaker B.V.
+ # Uranium is released under the terms of the AGPLv3 or higher.
+ 
+-from PyQt5.QtCore import pyqtSlot, pyqtProperty, pyqtSignal
++from PyQt5.QtCore import pyqtSlot, pyqtProperty, pyqtSignal, PYQT_VERSION
+ from PyQt5.QtGui import QColor
+ from PyQt5.QtQuick import QQuickItem, QSGGeometryNode, QSGGeometry, QSGFlatColorMaterial, QSGSimpleRectNode
+ 
+@@ -17,6 +17,7 @@ def __init__(self, parent = None):
+         self._geometry = None
+         self._material = None
+         self._node = None
++        self._attributes = None
+ 
+     def getCornerSize(self):
+         return self._corner_size
+@@ -43,38 +44,46 @@ def color(self):
+         return self._color
+ 
+     def updatePaintNode(self, paint_node, update_data):
+-        self._node = QSGGeometryNode()
++        if PYQT_VERSION < 0x050500:
++            self._node = QSGGeometryNode()
+ 
+-        self._geometry = QSGGeometry(QSGGeometry.defaultAttributes_Point2D(), 6, 12)
+-        self._geometry.setDrawingMode(0x0004)
+-        self._geometry.vertexDataAsPoint2D()[0].set(self._corner_size, 0)
+-        self._geometry.vertexDataAsPoint2D()[1].set(0, self._corner_size)
+-        self._geometry.vertexDataAsPoint2D()[2].set(0, self.height())
+-        self._geometry.vertexDataAsPoint2D()[3].set(self.width() - self._corner_size, self.height())
+-        self._geometry.vertexDataAsPoint2D()[4].set(self.width(), self.height() - self._corner_size)
+-        self._geometry.vertexDataAsPoint2D()[5].set(self.width(), 0)
++            attribs = QSGGeometry.defaultAttributes_Point2D()
++            self._geometry = QSGGeometry(attribs, 6, 12)
++            self._geometry.setDrawingMode(0x0004)
++            self._geometry.vertexDataAsPoint2D()[0].set(self._corner_size, 0)
++            self._geometry.vertexDataAsPoint2D()[1].set(0, self._corner_size)
++            self._geometry.vertexDataAsPoint2D()[2].set(0, self.height())
++            self._geometry.vertexDataAsPoint2D()[3].set(self.width() - self._corner_size, self.height())
++            self._geometry.vertexDataAsPoint2D()[4].set(self.width(), self.height() - self._corner_size)
++            self._geometry.vertexDataAsPoint2D()[5].set(self.width(), 0)
+ 
+-        self._geometry.indexDataAsUShort()[0] = 0
+-        self._geometry.indexDataAsUShort()[1] = 1
+-        self._geometry.indexDataAsUShort()[2] = 2
++            self._geometry.indexDataAsUShort()[0] = 0
++            self._geometry.indexDataAsUShort()[1] = 1
++            self._geometry.indexDataAsUShort()[2] = 2
+ 
+-        self._geometry.indexDataAsUShort()[3] = 0
+-        self._geometry.indexDataAsUShort()[4] = 2
+-        self._geometry.indexDataAsUShort()[5] = 3
++            self._geometry.indexDataAsUShort()[3] = 0
++            self._geometry.indexDataAsUShort()[4] = 2
++            self._geometry.indexDataAsUShort()[5] = 3
+ 
+-        self._geometry.indexDataAsUShort()[6] = 0
+-        self._geometry.indexDataAsUShort()[7] = 3
+-        self._geometry.indexDataAsUShort()[8] = 4
++            self._geometry.indexDataAsUShort()[6] = 0
++            self._geometry.indexDataAsUShort()[7] = 3
++            self._geometry.indexDataAsUShort()[8] = 4
+ 
+-        self._geometry.indexDataAsUShort()[9] = 0
+-        self._geometry.indexDataAsUShort()[10] = 4
+-        self._geometry.indexDataAsUShort()[11] = 5
++            self._geometry.indexDataAsUShort()[9] = 0
++            self._geometry.indexDataAsUShort()[10] = 4
++            self._geometry.indexDataAsUShort()[11] = 5
+ 
+-        self._node.setGeometry(self._geometry)
++            self._node.setGeometry(self._geometry)
+ 
+-        self._material = QSGFlatColorMaterial()
+-        self._material.setColor(self._color)
++            self._material = QSGFlatColorMaterial()
++            self._material.setColor(self._color)
+ 
+-        self._node.setMaterial(self._material)
++            self._node.setMaterial(self._material)
++        else:
++            if paint_node is None:
++                paint_node = QSGSimpleRectNode()
+ 
+-        return self._node
++            paint_node.setRect(0, 0, self.width(), self.height())
++            paint_node.setColor(self._color)
++
++        return paint_node
+diff --git a/UM/Qt/ListModel.py b/UM/Qt/ListModel.py
+index c2fb363..5d71bc5 100644
+--- a/UM/Qt/ListModel.py
++++ b/UM/Qt/ListModel.py
+@@ -1,7 +1,7 @@
+ # Copyright (c) 2015 Ultimaker B.V.
+ # Uranium is released under the terms of the AGPLv3 or higher.
+ 
+-from PyQt5.QtCore import QObject, QAbstractListModel, QVariant, QModelIndex, pyqtSlot, pyqtProperty
++from PyQt5.QtCore import QObject, QAbstractListModel, QVariant, QModelIndex, pyqtSlot, pyqtProperty, QByteArray
+ 
+ ##  Convenience base class for models of a list of items.
+ #
+@@ -21,16 +21,18 @@ def rowCount(self, parent = None):
+         return len(self._items)
+ 
+     def addRoleName(self,role,name):
+-        self._role_names[role] = name
+-        
++        # Qt roleNames expects a QByteArray. PyQt 5.5 does not convert str to bytearray implicitly so
++        # force the conversion manually.
++        self._role_names[role] = name.encode("utf-8")
++
+     def roleNames(self):
+         return self._role_names
+-    
++
+     ##  Reimplemented from QAbstractListModel
+     def data(self, index, role):
+         if not index.isValid():
+             return QVariant()
+-        return self._items[index.row()][self._role_names[role]]
++        return self._items[index.row()][self._role_names[role].decode("utf-8")]
+ 
+     ##  Get an item from the list
+     @pyqtSlot(int, result="QVariantMap")
+@@ -70,7 +72,7 @@ def clear(self):
+         self.beginResetModel()
+         self._items.clear()
+         self.endResetModel()
+-        
++
+     @pyqtSlot(int, str, QVariant)
+     def setProperty(self, index, property, value):
+         self._items[index][property] = value
