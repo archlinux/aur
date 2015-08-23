@@ -3,7 +3,7 @@
 
 _debname=iceweasel-l10n-pt-br
 _lang=pt-br
-_debver=31.8.0esr
+_debver=38.2.0esr
 _debrel=1~deb8u1
 _debrepo=http://security.debian.org/debian-security/pool/updates/main/i/
 
@@ -17,7 +17,7 @@ license=('MPL' 'GPL' 'LGPL')
 provides=("$_debname"="$_debver")
 depends=("iceweasel>=$_debver")
 source=("${_debrepo}/iceweasel/iceweasel-l10n-${_lang}_${_debver}-${_debrel}_all.deb")
-sha256sums=('c17a111dbfe122fd9a5dc5096e751c339962aaa2b6acf1c071f23038912b6ced')
+sha256sums=('86b841c76eba62f21a1d76fa3981c04377370bcfa8d092a7f69535c789670587')
 
 package() {
   msg2 "Installing Language Pack..."
