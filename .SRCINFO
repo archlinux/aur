@@ -1,13 +1,13 @@
 pkgbase = virtio-win
 	pkgdesc = virtio drivers for Windows (2000, XP, Vista, 7, 8) guests and floppy images for Windows XP
 	pkgver = 0.1.109.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://fedoraproject.org/wiki/Windows_Virtio_Drivers
 	install = virtio-win.install
 	changelog = virtio-win.changelog
 	arch = any
 	license = GPL2
-	depends = qemu
+	optdepends = qemu
 	noextract = virtio-win.iso
 	noextract = virtio-win_amd64.vfd
 	noextract = virtio-win_x86.vfd
