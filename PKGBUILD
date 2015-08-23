@@ -2,8 +2,8 @@
 # Contributor: peace4all <markspost at rocketmail dot com>
 
 pkgname=unified-remote-server
-pkgver=3.2.7.706
-pkgrel=2
+pkgver=3.3.0.724
+pkgrel=1
 pkgdesc="Unified Remote Server"
 arch=('x86_64')
 url="http://www.unifiedremote.com/"
@@ -11,8 +11,8 @@ depends=('libxext' 'libx11' 'bluez-libs')
 optdepends=('bluez' 'bluez-utils')
 license=('freeware')
 install=$pkgname.install
-source=("http://www.unifiedremote.com/static/builds/server/linux-x64/706/urserver-$pkgver.deb" "urserver.service")
-sha256sums=('9469f0ad046e0a2cd3840a8b43a0b3c347cc6b263a7514344cafb39ba7ecbfc1' 'ca049fc2e6b08276bf22b262577feca3fb4f83bef95e8f95a95d16b8d59fd107' )
+source=("http://www.unifiedremote.com/static/builds/server/linux-x64/724/urserver-$pkgver.deb" "urserver.service")
+sha256sums=('d088e2938b2f015932870e116678db2d977f2a7c8452c5ad65af75bac418a9f5' 'ca049fc2e6b08276bf22b262577feca3fb4f83bef95e8f95a95d16b8d59fd107' )
 
 package() {
 	cd ${srcdir}
