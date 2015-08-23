@@ -1,0 +1,19 @@
+pkgbase = telepathy-kde-auth-handler-git
+	pkgdesc = Provide UI/KWallet Integration For Passwords and SSL Errors on Account Connect
+	pkgver = r236.c666e95
+	pkgrel = 1
+	url = http://community.kde.org/Real-Time_Communication_and_Collaboration
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qca-qt5
+	depends = telepathy-kde-common-internals-git
+	conflicts = telepathy-kde-auth-handler
+	replaces = telepathy-kde-auth-handler-frameworks-git
+	source = git://anongit.kde.org/ktp-auth-handler.git
+	sha256sums = SKIP
+
+pkgname = telepathy-kde-auth-handler-git
+
