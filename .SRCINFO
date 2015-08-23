@@ -9,6 +9,7 @@ pkgbase = paraview-salome
 	makedepends = cmake
 	makedepends = mesa
 	makedepends = eigen3
+	makedepends = doxygen
 	depends = qtwebkit
 	depends = python2
 	depends = ffmpeg-compat

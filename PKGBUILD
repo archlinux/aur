@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
 depends=('qtwebkit' 'python2' 'ffmpeg-compat' 'boost' 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf')
-makedepends=('cmake' 'mesa' 'eigen3')
+makedepends=('cmake' 'mesa' 'eigen3' 'doxygen')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language' 'python2-numpy: Needed for using some filters such as "Python Calculator"')
 source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz" "${pkgname}.png" "${pkgname}.desktop" "uint.patch" "gcc49.patch" "ParaView-4.2.0.patch" "surface_lic.png" )
 
