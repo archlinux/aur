@@ -1,0 +1,14 @@
+pkgbase = python-adafruit_bbio-git
+	pkgdesc = Python adafruit library for using GPIO of the beaglebone boards
+	pkgver = 0.0.30
+	pkgrel = 1
+	url = https://github.com/adafruit/adafruit-beaglebone-io-python
+	arch = armv7h
+	license = GPLv3
+	depends = python
+	depends = base-devel
+	source = git://github.com/adafruit/adafruit-beaglebone-io-python
+	md5sums = SKIP
+
+pkgname = python-adafruit_bbio-git
+
