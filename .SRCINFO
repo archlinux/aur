@@ -1,6 +1,6 @@
 pkgbase = lightfirefox
 	pkgdesc = A light Firefox edition
-	pkgver = 38.0
+	pkgver = 40.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/lightfirefox
 	install = lightfirefox.install
@@ -14,7 +14,8 @@ pkgbase = lightfirefox
 	depends = libxt
 	depends = dbus-glib
 	depends = alsa-lib
-	source = http://cznic.dl.sourceforge.net/project/lightfirefox/38/light-38.0.en-US.linux-.rpm
+	optdepends = gtk3: GTK+3 support
+	source = http://cznic.dl.sourceforge.net/project/lightfirefox/40/light-40.0.en-US.linux-.rpm
 
 pkgname = lightfirefox
 
