@@ -26,6 +26,10 @@ package()
   cd ${srcdir}/${_pkgname}
   # Force package data inclusion
   python2 setup.py install --root="${pkgdir}"
-  mkdir ${pkgdir}/usr/share/applications/ -p
+  mkdir ${pkgdir}/usr/share/applications -p
   install -Dm 644 trelby.desktop ${pkgdir}/usr/share/applications/trelby.desktop
+  mkdir ${pkgdir}/usr/share/trelby/resources -p
+  install -Dm 644 resources/icon256.png ${pkgdir}/usr/share/trelby/resources/icon256.png
+  mkdir ${pkgdir}/usr/bin -p
+  install -Dm 755 ${pkgdir}/opt/trelby/bin/trelby ${pkgdir}/usr/bin/trelby
 }
