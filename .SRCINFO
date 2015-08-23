@@ -1,0 +1,21 @@
+pkgbase = telepathy-kde-approver-git
+	pkgdesc = KDE Channel Approver for Telepathy
+	pkgver = r246.15c82c4
+	pkgrel = 1
+	url = http://community.kde.org/Real-Time_Communication_and_Collaboration
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = telepathy-qt5
+	depends = knotifications
+	conflicts = telepathy-kde-approver
+	replaces = telepathy-kde-approver-frameworks-git
+	source = git://anongit.kde.org/ktp-approver.git
+	sha256sums = SKIP
+
+pkgname = telepathy-kde-approver-git
+
