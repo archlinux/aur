@@ -2,7 +2,7 @@
 
 _pkgname=define
 pkgname=define-git
-pkgver=r18.93f7e37
+pkgver=r23.4a27365
 pkgrel=1
 pkgdesc="Terminal dictionary"
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  sed -i -e 's/env pypy/python2/' define.py
+  sed -i -e 's/python/python2/' define.py
 }
 
 package() {
