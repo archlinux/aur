@@ -3,10 +3,10 @@
 
 pkgname=tvheadend-atsc-epg-git
 _gitname='tvheadend'
-pkgver=4.1.r390.g198a892
+pkgver=4.1.r404.g5613770
 pkgrel=1
 pkgdesc="TV streaming server for Linux (with PSIP ATSC EPG Grabber)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tvheadend.org/"
 license=('GPL3')
 depends=('avahi' 'openssl' 'python2' 'uriparser' 'ffmpeg')
