@@ -11,6 +11,7 @@ pkgbase = acd_cli-git
 	depends = python-sqlalchemy
 	depends = python-dateutil
 	depends = python-requests-toolbelt
+	optdepends = fuse: Filesystem mount support
 	provides = acd_cli
 	conflicts = acd_cli
 	source = git+https://github.com/yadayada/acd_cli.git

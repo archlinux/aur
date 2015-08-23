@@ -16,6 +16,7 @@ depends=('python-appdirs' 'python-requests>=2.1.0'
 'python-sqlalchemy' 'python-dateutil' 
 'python-requests-toolbelt')
 makedepends=('python')
+optdepends=('fuse: Filesystem mount support')
 provides=('acd_cli')
 conflicts=('acd_cli')
 source=(git+https://github.com/yadayada/acd_cli.git)
