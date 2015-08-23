@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('custom')
 depends=('curl')
 makedepends=('git')
-source=("git://github.com/rust-lang/cargo.git#tag=$pkgver")
+source=("git+https://github.com/rust-lang/cargo.git#tag=$pkgver")
 options=('!emptydirs')
 md5sums=('SKIP')
 
