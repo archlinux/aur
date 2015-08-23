@@ -1,0 +1,12 @@
+[Unit]
+Description=Domoticz Daemon
+After=network-online.target
+
+[Service]
+User=http
+ExecStart=/opt/domoticz/domoticz -www 8080 -loglevel=1 -log /var/log/domoticz/domoticz.log -daemon &> /dev/null
+RestartSec=5
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

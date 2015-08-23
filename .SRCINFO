@@ -1,0 +1,25 @@
+pkgbase = domoticz-git
+	pkgdesc = Web based home automation
+	pkgver = r659.c357e92
+	pkgrel = 1
+	url = http://www.domoticz.com
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = openzwave
+	depends = libusb-compat
+	depends = curl
+	depends = sqlite
+	depends = boost-libs
+	conflicts = domoticz-svn
+	source = git://github.com/domoticz/domoticz.git
+	source = domoticz.service
+	sha256sums = SKIP
+	sha256sums = 1aead77748b3987bd915370904d959b81be56fde68aee5bf356ed864dbb75516
+
+pkgname = domoticz-git
+
