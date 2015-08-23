@@ -1,4 +1,4 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Det <nimetonmaili g mail>
 # Contributor: Matt Parnell/ilikenwf <parwok@gmail.com>
 # Based on [extra]'s xproto: https://projects.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/xproto
 
