@@ -1,7 +1,7 @@
 pkgbase = ciphr
 	pkgdesc = A CLI tool for encoding, decoding, encryption, decryption, and hashing streams of data.
 	pkgver = 104.0ecd5fe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frohoff/ciphr
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = ciphr
 	depends = ruby
 	depends = ruby-parslet
 	depends = ruby-base32
-	depends = ruby-slop
+	depends = ruby-slop-3
 	source = git+https://github.com/frohoff/ciphr.git
 	sha256sums = SKIP
 
