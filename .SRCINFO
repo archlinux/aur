@@ -1,0 +1,15 @@
+pkgbase = xsnap
+	pkgdesc = Simple program for screenshot making with window select area and saving his in many formats :)
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = http://freecode.com/projects/xsnap
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	depends = imake
+	optdepends = xproto
+	source = ftp://ftp.ac-grenoble.fr/ge/Xutils/xsnap-1.5.8.tar.bz2
+	md5sums = 5a27d5af93893ec8ce2fc80a662c1736
+
+pkgname = xsnap
+
