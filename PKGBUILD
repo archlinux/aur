@@ -4,7 +4,7 @@
 # We're getting this from Debian Stable (Jessie)
 
 _debname=iceweasel
-_debver=31.8.0esr
+_debver=38.2.0esr
 _debrel=1~deb8u1
 _debrepo=http://security.debian.org/debian-security/pool/updates/main/i/
  
@@ -33,10 +33,10 @@ install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    sha1sums=('8a60bea0859b726d208821342eee21b18cd85bf8')
+    sha1sums=('3bcf4c044a89b9a09515067de7ac6ff64070ebc9')
 else
     _debarch=i386
-    sha1sums=('ab192c318d7ce8c30cefb680d007b0a8191ab478')
+    sha1sums=('7593f9f15cf00b2077d4860010065a677c1a80c3')
  fi
  
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
