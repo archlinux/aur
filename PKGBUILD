@@ -5,8 +5,8 @@
 
 pkgname=keepassx-git
 _gitname=keepassx
-pkgver=2.0.beta1.r38.g4fcce6f
-pkgrel=2
+pkgver=2.0.beta1.r41.g943ba1f
+pkgrel=1
 pkgdesc="KeePassX is a cross platform port of the windows application 'Keepass Password Safe'. It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way. It uses a highly encrypted database locked with one master key."
 arch=('i686' 'x86_64')
 url="https://github.com/keepassx/keepassx"
