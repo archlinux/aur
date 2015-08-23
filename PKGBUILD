@@ -3,7 +3,7 @@
 
 _gemname=commander
 pkgname=ruby-$_gemname
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="The complete solution for Ruby command-line executables"
 arch=('any')
@@ -14,7 +14,7 @@ options=(!emptydirs)
 source=("http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem"
         "https://raw.githubusercontent.com/commander-rb/commander/master/LICENSE")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('ef77fec9ab31a67790f3d6b0ae311d76a51e20bb03c916117bf5aa69997805a7'
+sha256sums=('23234d4a975c9b5356c9795a46ca2b7786999720321ba3c4a3ec417fea15965f'
             'd1c0118f15b4e197c63ce1894a1f72f786020adad84a0930157dc0f74c38e0c0')
 
 package() {
