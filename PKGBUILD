@@ -2,7 +2,7 @@
 # % Trigger: 1440186708 %
 
 pkgname=fskit-git
-pkgver=r239.1d3423b
+pkgver=r244.af620ba
 pkgrel=1
 pkgdesc='Filesystem utility library and SDK'
 url='https://github.com/jcnelson/fskit.git'
@@ -32,8 +32,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make INCLUDEDIR="${pkgdir}/usr/include" \
-	     LIBDIR="${pkgdir}/usr/lib" \
-	     PKGCONFIGDIR="${pkgdir}/usr/lib/pkgconfig" \
-	     install
+	make DESTDIR="${pkgdir}" PREFIX='/usr' INCLUDE_PREFIX='/usr' install
 }
