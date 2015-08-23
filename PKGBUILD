@@ -2,7 +2,7 @@
 # Contributor: akane      <grangerspit@gmail.com> <xmpp:heiß@neko.im>
 pkgname=dict-freedict-deu-eng
 pkgver=0.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc="German -> English dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
