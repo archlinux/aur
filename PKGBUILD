@@ -1,7 +1,8 @@
+# Maintainer: Valentin-Costel Haloiu <vially.ichb@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=the_platinum_searcher
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="A code search tool similar to ack and the_silver_searcher(ag)"
 arch=('i686' 'x86_64')
@@ -22,13 +23,10 @@ build() {
 }
 
 check() {
-  [[ -f /etc/profile.d/go.sh ]] && source /etc/profile.d/go.sh
   GOPATH="$GOPATH:$srcdir" go test -v -x github.com/monochromegane/the_platinum_searcher/
 }
 
 package() {
-  [[ -f /etc/profile.d/go.sh ]] && source /etc/profile.d/go.sh
-
   msg 'Installing binaries...'
   for _bin in `find "$srcdir/bin" -mindepth 1 -maxdepth 1 -type f -printf '%f\n'`; do
     install -Dm 755 "$srcdir/bin/$_bin" "$pkgdir/usr/bin/$_bin"
