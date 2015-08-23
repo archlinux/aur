@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=soundcloud-dl-git
-pkgver=r30.d875165
+pkgver=r91.31562a3
 pkgrel=1
 pkgdesc="Souncloud music downloader"
 url=(https://github.com/flyingrub/scdl)
@@ -20,7 +20,6 @@ pkgver() {
 package() {
 	cd $srcdir/$pkgname
 	python3 setup.py install --root="$pkgdir"
-	rm -r $pkgdir/home
 }
 
 
