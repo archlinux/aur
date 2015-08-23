@@ -1,0 +1,13 @@
+--- old/eatmydata.in	2015-02-09 09:57:30.182604033 +0100
++++ new/eatmydata.in	2015-02-09 09:58:17.145870310 +0100
+@@ -15,9 +15,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-export `dpkg-architecture|grep DEB_BUILD_MULTIARCH`
+-
+-shlib="/usr/lib/$DEB_BUILD_MULTIARCH/eatmydata.sh"
++shlib="/usr/lib/libeatmydata/eatmydata.sh"
+ if [ -f "$shlib" ]; then
+     . "$shlib"
+ else
