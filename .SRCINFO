@@ -1,0 +1,16 @@
+pkgbase = define-git
+	pkgdesc = Terminal dictionary
+	pkgver = r18.93f7e37
+	pkgrel = 1
+	url = https://github.com/SethDusek/define
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = python2-wget
+	depends = python2-wordnik
+	source = git://github.com/SethDusek/define.git
+	md5sums = SKIP
+
+pkgname = define-git
+
