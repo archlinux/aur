@@ -1,11 +1,14 @@
 pkgbase = tvheadend-git
 	pkgdesc = TV streaming server for Linux
-	pkgver = 4.1.r390.g198a892
+	pkgver = 4.1.r373.gcb5f6a1
 	pkgrel = 1
 	url = https://tvheadend.org/
 	install = tvheadend.install
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
 	license = GPL3
 	makedepends = git
 	depends = avahi
