@@ -1,13 +1,13 @@
 # Maintainer: mickele
 pkgname=opensees
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="OpenSees, a software framework for developing applications to simulate the performance of structural and geotechnical systems subjected to earthquakes"
 arch=("i686" "x86_64")
 url="http://opensees.berkeley.edu/"
 depends=('tk>=8.6' 'openssl' 'libpng' 'mesa' 'lapack')
 makedepends=('svn')
-options=('')
+options=()
 license=("custom")
 
 # This release is available only through svn
@@ -15,8 +15,9 @@ license=("custom")
 # source=("http://opensees.berkeley.edu/OpenSees/code/OpenSees${pkgver}.tar.gz" "Makefile.def")
 source=("Makefile.def")
 
-_svntrunk="svn://opensees.berkeley.edu/usr/local/svn/OpenSees/trunk"
-_svnrel="5855"
+# _svntrunk="svn://opensees.berkeley.edu/usr/local/svn/OpenSees/trunk"
+_svntrunk="svn://peera.berkeley.edu/usr/local/svn/OpenSees/trunk"
+_svnrel="6016"
 _svnmod="OpenSees"
 _installdir="/usr"
 

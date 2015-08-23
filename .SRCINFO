@@ -1,6 +1,6 @@
 pkgbase = opensees
 	pkgdesc = OpenSees, a software framework for developing applications to simulate the performance of structural and geotechnical systems subjected to earthquakes
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = http://opensees.berkeley.edu/
 	arch = i686
