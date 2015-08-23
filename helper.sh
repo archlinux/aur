@@ -10,6 +10,9 @@ function go_get {
   elif [[ $1 == code.google.com* ]]
   then 
     get_hg $1 $2 $3
+  elif [[ $1 == golang.org* ]]
+  then 
+    get_golang $1 $2 $3
   else
     go get $1
   fi
@@ -23,14 +26,14 @@ function get_git {
   if [[ $3 != "master" ]] && [[ ${3:0} == commit* ]]
   then
     cd $2
-    git checkout ${3:7}
+    git checkout -q ${3:7}
   elif [[ $3 != "master" ]] && [[ ${3:0} == tag* ]]
   then
     cd $2
-    git checkout tags/${3:4}
+    git checkout -q tags/${3:4}
   else
     cd $2
-    git checkout ${3:7}
+    git checkout -q ${3:7}
   fi
 }
 
@@ -44,6 +47,21 @@ function get_hg {
   else
     hg clone https://$1 -r $3 $2
   fi
+}
+
+function get_golang {
+  if [[ $1 == "golang.org/x/net" ]]
+  then
+    echo $1 $2 $3
+    get_git "github.com/golang/net" $2
+  elif [[ $1 == "golang.org/x/text" ]]
+  then
+    echo $1 $2 $3
+    get_git "github.com/golang/text" $2
+  else
+    echo $1 $2 $3
+  fi
+
 }
 
 # Read the .gopmfile file and clone the branch/commits of the depends

@@ -7,7 +7,7 @@ After=network.target
 Type=simple
 User=gogs
 Group=gogs
-ExecStart=/usr/share/gogs/start.sh
+ExecStart=/usr/share/gogs/gogs web --config /srv/gogs/conf/app.ini
 WorkingDirectory=/usr/share/gogs/
 
 [Install]
