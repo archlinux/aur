@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2015-07-27 08:51:09.000000000 +0100
++++ b/CMakeLists.txt	2015-08-23 18:30:00.642231499 +0100
+@@ -82,6 +82,7 @@
+     install(DIRECTORY UM DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages)
+ endif()
+ install(DIRECTORY resources DESTINATION ${CMAKE_INSTALL_DATADIR}/uranium)
++install(DIRECTORY scripts DESTINATION ${CMAKE_INSTALL_DATADIR}/uranium USE_SOURCE_PERMISSIONS)
+ install(DIRECTORY plugins DESTINATION lib/uranium)
+ 
+ include(CPackConfig.cmake)

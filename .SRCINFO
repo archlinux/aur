@@ -15,8 +15,10 @@ pkgbase = uranium
 	depends = arcus
 	source = https://github.com/Ultimaker/uranium/archive/15.06.03.tar.gz
 	source = qt5.patch
+	source = scripts.patch
 	md5sums = 60c583b462494c2de015a678ba134eb3
 	md5sums = e4975dddd0524845b9574b4142274f5a
+	md5sums = d1832c5533c1ab6ceffd0a70768ccbd6
 
 pkgname = uranium
 
