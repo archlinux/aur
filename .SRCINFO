@@ -1,6 +1,6 @@
 pkgbase = opensesame
 	pkgdesc = A graphical, open-source experiment builder for the social sciences, with ability to deploy on Android
-	pkgver = 2.9.6
+	pkgver = 2.9.7
 	pkgrel = 1
 	url = http://www.cogsci.nl/software/opensesame
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = opensesame
 	optdepends = python2-expyriment: Expyriment backend
 	optdepends = python2-pyserial: Serial/Parallel port communication
 	options = !emptydirs
-	source = opensesame-2.9.6::git://github.com/smathot/OpenSesame.git#tag=release/2.9.6
+	source = opensesame-2.9.7::git://github.com/smathot/OpenSesame.git#tag=release/2.9.7
 	source = python2.patch
 	md5sums = SKIP
 	md5sums = b7238618028cffb2169c5b05a332e144
