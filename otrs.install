@@ -1,5 +1,5 @@
 post_install() {
-  getent passwd otrs > /dev/null || useradd -g http -d /usr/share/webapps/otrs otrs -M -N > /dev/null
+  getent passwd otrs > /dev/null || useradd -r -M -N -g http -s /bin/bash -d /usr/share/webapps/otrs otrs > /dev/null
   /usr/share/webapps/otrs/bin/./otrs.SetPermissions.pl \
     --otrs-user=otrs  \
     --web-group=http  \

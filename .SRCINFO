@@ -1,7 +1,7 @@
 pkgbase = otrs
 	pkgdesc = OTRS is the leading open-source Help Desk and IT Service Management (ITSM)
 	pkgver = 4.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.otrs.com/
 	install = otrs.install
 	arch = any
@@ -34,9 +34,9 @@ pkgbase = otrs
 	backup = etc/webapps/otrs/scheduler_watchdog
 	source = otrs.install
 	source = http://ftp.otrs.org/pub/otrs/otrs-4.0.11.tar.gz
-	md5sums = e505e3d39240f04185888fa674a0feb2
+	md5sums = 9305e7a2dd41a19a10c0d9ab376965fd
 	md5sums = 23dc954f5fe12d31dbf85040869f7393
-	sha1sums = e141800b7ff0c6130d4bb36063ec4ab824d2ca4c
+	sha1sums = d88cdb1d905aebe146cc83bcf31dec9dcff62c30
 	sha1sums = f8d230ef9ab024e07725d6e25b350da9c83ebf7f
 
 pkgname = otrs

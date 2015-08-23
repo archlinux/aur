@@ -1,6 +1,6 @@
 pkgname=otrs
 pkgver=4.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
 options=("emptydirs")
@@ -34,9 +34,9 @@ backup=("etc/webapps/${pkgname}/Config.pm"
 install="${pkgname}.install"
 source=("${pkgname}.install"
         "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz")
-md5sums=("e505e3d39240f04185888fa674a0feb2"
+md5sums=("9305e7a2dd41a19a10c0d9ab376965fd"
          "23dc954f5fe12d31dbf85040869f7393")
-sha1sums=("e141800b7ff0c6130d4bb36063ec4ab824d2ca4c"
+sha1sums=("d88cdb1d905aebe146cc83bcf31dec9dcff62c30"
           "f8d230ef9ab024e07725d6e25b350da9c83ebf7f")
 
 package() {
