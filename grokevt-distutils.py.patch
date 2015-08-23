@@ -1,0 +1,9 @@
+--- grokevt-distutils.py.old	2012-02-24 22:26:24.628620887 +0100
++++ grokevt-distutils.py	2012-02-24 22:28:01.395976836 +0100
+@@ -1,4 +1,6 @@
+ # Called from make with appropriate python version
+ 
+ from distutils.core import setup
++import os, sys
++sys.prefix = os.environ['PREFIX']
+ setup(name='grokevt', version='0.5', package_dir={'':'lib'}, py_modules=['grokevt'])

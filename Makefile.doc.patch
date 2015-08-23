@@ -1,0 +1,14 @@
+--- Makefile.old	2012-02-24 22:36:01.999511742 +0100
++++ Makefile	2012-02-24 22:41:40.280268695 +0100
+@@ -16,8 +16,9 @@
+ install:
+ 	mkdir -p $(MAN_PREFIX)/man1
+ 	mkdir -p $(MAN_PREFIX)/man7
+-	ln -sf $(DOC_PREFIX)/man/man1/* $(MAN_PREFIX)/man1
+-	ln -sf $(DOC_PREFIX)/man/man7/* $(MAN_PREFIX)/man7
++	mv $(DOC_PREFIX)/man/man1/* $(MAN_PREFIX)/man1
++	mv $(DOC_PREFIX)/man/man7/* $(MAN_PREFIX)/man7
++	rm -r $(DOC_PREFIX)/man
+ 
+ 
+ #XXX: Used during release only

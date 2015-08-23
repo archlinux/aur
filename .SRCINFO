@@ -1,0 +1,19 @@
+pkgbase = grokevt
+	pkgdesc = Collection of scripts for reading Windows log files
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://projects.sentinelchicken.org/grokevt
+	arch = any
+	license = GPL
+	makedepends = make
+	depends = python>=2.3
+	depends = reglookup
+	source = http://grokevt.googlecode.com/files/grokevt-0.5.0.tar.gz
+	source = Makefile.doc.patch
+	source = grokevt-distutils.py.patch
+	md5sums = 787a28d5d253e07522305208ca65bc96
+	md5sums = 1f338294554020312b588e6555d977ce
+	md5sums = 048c85f9ddade2b1ea238896c3d35611
+
+pkgname = grokevt
+
