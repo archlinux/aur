@@ -1,7 +1,7 @@
 # Maintainer:  respiranto <respiranto@icloud.com>
 pkgname=dict-freedict-deu-fra
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="German -> French dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
