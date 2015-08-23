@@ -2,7 +2,7 @@
 # Contributor: Benjamin Vanderford <hazor_at_swrpg_dot_info
 pkgname=dict-freedict-fra-eng
 pkgver=0.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="French -> English dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
