@@ -1,0 +1,12 @@
+pkgbase = color-icc-adobe
+	pkgdesc = ICC profiles from Adobe
+	pkgver = cs4
+	pkgrel = 1
+	url = http://www.adobe.com/support/downloads/detail.jsp?ftpID=4075
+	arch = any
+	license = custom
+	source = http://download.adobe.com/pub/adobe/iccprofiles/win/AdobeICCProfilesCS4Win_end-user.zip
+	md5sums = 82879176584c66d243a4ea85c5ebb14e
+
+pkgname = color-icc-adobe
+
