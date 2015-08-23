@@ -1,13 +1,21 @@
 pkgbase = libtiff3
-	pkgdesc = Library for manipulation of TIFF images (legacy version, provides libtiff.so.3)
+	pkgdesc = Library for manipulation of TIFF images (legacy version)
 	pkgver = 3.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.remotesensing.org/libtiff/
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = custom
-	depends = libtiff4
+	makedepends = freeglut
+	depends = libjpeg
+	depends = zlib
+	depends = libtiff
 	optdepends = freeglut: for using tiffgt
+	provides = libtiff3
+	provides = libtiff4
 	options = !libtool
+	source = http://download.osgeo.org/libtiff/tiff-3.9.7.tar.gz
+	sha256sums = f5d64dd4ce61c55f5e9f6dc3920fbe5a41e02c2e607da7117a35eb5c320cef6a
 
 pkgname = libtiff3
 
