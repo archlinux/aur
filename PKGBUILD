@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
 options=('!strip')
-depends=()
+depends=('konsole')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
 sha256sums=('6e758251e8dabb649b3cb3dd0e2b740ef48b0254b12ffee39c6d4b9e32f3a0fe')
 

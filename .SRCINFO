@@ -5,6 +5,7 @@ pkgbase = papirus-konsole-colorscheme
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
+	depends = konsole
 	options = !strip
 	source = papirus-pack-kde-20150823.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/a8ca2dbeb9b0bfffb64fa45f01c98c2f284313b0.tar.gz
 	sha256sums = 6e758251e8dabb649b3cb3dd0e2b740ef48b0254b12ffee39c6d4b9e32f3a0fe
