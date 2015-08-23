@@ -2,7 +2,7 @@
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 pkgname=dict-gcide
 pkgver=0.48.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Collaborative International Dictionary of English in dict format"
 arch=('any')
 url="http://www.dict.org/"
