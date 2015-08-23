@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-xvdr
 	pkgdesc = PVR add-on for XBMC to add VDR as a TV/PVR Backend
-	pkgver = 0.9.8_70_g8489520
+	pkgver = 0.9.8_83_g88265b8
 	pkgrel = 1
 	url = https://github.com/pipelka/xbmc-addon-xvdr
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = kodi-addon-xvdr
 	depends = zlib
 	conflicts = xbmc-addon-xvdr
 	replaces = xbmc-addon-xvdr
-	source = git+https://github.com/pipelka/xbmc-addon-xvdr.git#commit=8489520f6c2331c6ccbc6e54986829e3d9397517
+	source = git+https://github.com/pipelka/xbmc-addon-xvdr.git#commit=88265b86896513a219acb8d5f0c0f77956fae939
 	md5sums = SKIP
 
 pkgname = kodi-addon-xvdr
