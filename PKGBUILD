@@ -4,7 +4,7 @@
 pkgname=('python-nmap' 'python2-nmap')
 pkgbase='python-nmap'
 _realname=python-nmap
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 depends=('nmap')
 pkgdesc="A Python library which helps in using the nmap port scanner. required nmap software"
@@ -12,7 +12,7 @@ arch=("any")
 url="http://xael.org/norman/python/python-nmap"
 license=('GPL3')
 source="http://xael.org/norman/python/python-nmap/$pkgname-$pkgver.tar.gz"
-md5sums=('2046fa63e969ae77b68e91664e97876b')
+md5sums=('b466e4b2ef30a0b9c0cb80aac215fb79')
 
 prepare() {
   cp -a "${srcdir}/${_realname}-${pkgver}"{,-python2}
