@@ -1,0 +1,16 @@
+pkgbase = python2-zsi
+	pkgdesc = Zolera SOAP Infrastructure
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://pywebsvcs.sourceforge.net
+	arch = any
+	license = GPL3
+	depends = python2
+	provides = ZSI
+	conflicts = zsi
+	replaces = zsi
+	source = https://pypi.python.org/packages/source/Z/ZSI/ZSI-2.0-rc3.tar.gz
+	md5sums = 22fda3fbf7349de14d18f4cf7f947cb0
+
+pkgname = python2-zsi
+
