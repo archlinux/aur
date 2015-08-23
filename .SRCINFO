@@ -28,9 +28,9 @@ pkgbase = lilypond-git
 	conflicts = lilypond-devel
 	options = !makeflags
 	source = git://git.sv.gnu.org/lilypond.git
-	source = no_fontforge-versioncheck.patch
+	source = fix_fontforge-versioncheck.patch
 	md5sums = SKIP
-	md5sums = 84c92f047d703a4b798092cfc4d83e32
+	md5sums = 7f418a0cf53b70d7f5b68ffe016794b5
 
 pkgname = lilypond-git
 

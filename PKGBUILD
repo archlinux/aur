@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.25.1.42.g59a6d1a
+pkgver=2.19.25.1.46.gc8d62ec
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -29,8 +29,8 @@ optdepends=('netpbm: building HTML documentation'
             'rsync: installing HTML documentation')
 provides=('lilypond')
 conflicts=('lilypond' 'lilypond-devel')
-source=(git://git.sv.gnu.org/lilypond.git 'no_fontforge-versioncheck.patch')
-md5sums=('SKIP' '84c92f047d703a4b798092cfc4d83e32')
+source=(git://git.sv.gnu.org/lilypond.git 'fix_fontforge-versioncheck.patch')
+md5sums=('SKIP' '7f418a0cf53b70d7f5b68ffe016794b5')
 options=('!makeflags')
 
 pkgver() {
@@ -50,8 +50,9 @@ prepare() {
   sed -i 's|GUILE_CFLAGS=.*|GUILE_CFLAGS="`pkg-config --cflags guile`"|' configure.ac
   sed -i 's|GUILE_LDFLAGS=.*|GUILE_LDFLAGS="`pkg-config --libs guile`"|' configure.ac
   
-  patch -Np1 < $srcdir/no_fontforge-versioncheck.patch
+  patch -Np1 < $srcdir/fix_fontforge-versioncheck.patch
   rm -rf python/out/
+  sed -i '28iusing namespace std;' lily/main.cc
 }
 
 build() {
