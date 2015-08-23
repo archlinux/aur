@@ -3,8 +3,8 @@
 
 pkgname=openerp
 pkgver=7.0
-_pkgsubver=20150608
-pkgrel=1
+_pkgsubver=20150823
+pkgrel=4
 pkgdesc="Advanced OpenSource ERP and CRM server"
 url=http://openerp.com/
 arch=('any')
@@ -42,7 +42,7 @@ depends=(
     'python2-mock'
     'python2-unittest2'
     'python2-yaml'
-    'zsi'
+    'python2-zsi'
 )
 optdepends=(
     'wkhtmltopdf: Webkit reports'
@@ -78,7 +78,3 @@ package()
   #install -Dm 644  openerp-server.1.gz ${pkgdir}/usr/share/man/man1
   #install -Dm 644  openerp_serverrc.5.gz ${pkgdir}/usr/share/man/man5
 }
-md5sums=('48c9a896dc14423e87515e3f75bf3e9d'
-         'effb44e444602a0e59f8fe5b4ebc47b4'
-         'a6b183fa1bb5c8e4224b81d6480cecbc'
-         '3fd6f291a4ca289e3d1354e4e09a1d70')
