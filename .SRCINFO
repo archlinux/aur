@@ -1,6 +1,6 @@
 pkgbase = imgmin-git
 	pkgdesc = Automated lossy JPEG optimization
-	pkgver = 20150814
+	pkgver = 1.1.r6.gea2b77c
 	pkgrel = 1
 	url = https://github.com/rflynn/imgmin
 	arch = i686
@@ -8,6 +8,10 @@ pkgbase = imgmin-git
 	license = MIT
 	makedepends = git
 	depends = imagemagick
+	provides = imgmin
+	conflicts = imgmin
+	source = imgmin::git+https://github.com/rflynn/imgmin.git
+	md5sums = SKIP
 
 pkgname = imgmin-git
 

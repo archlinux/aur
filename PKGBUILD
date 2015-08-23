@@ -1,7 +1,9 @@
 # Maintainer: Zach Callear <zach@callear.org>
-# Original Maintainer: Mark Quinn <mmq.arch@dekinai.com>
-pkgname=imgmin-git
-pkgver=20150814
+# Contributor: Mark Quinn <mmq.arch@dekinai.com>
+# Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
+_pkgname=imgmin
+pkgname=$_pkgname-git
+pkgver=1.1.r6.gea2b77c
 pkgrel=1
 pkgdesc="Automated lossy JPEG optimization"
 arch=('i686' 'x86_64')
@@ -9,40 +11,32 @@ url="https://github.com/rflynn/imgmin"
 license=('MIT')
 depends=('imagemagick')
 makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+md5sums=('SKIP')
 
-_gitroot=git://github.com/rflynn/imgmin.git
-_gitname=imgmin
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+  sed -i 's/\(MAGICK_CONFIG.*\?xargs\)/\1|sed "s\/-fopenmp\\s\/\/g"/' src/apache2/Makefile.am
+  autoreconf -fi
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname" 
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  # Fix a build problem with Apache module
-  sed -i 's/\(MAGICK_CONFIG.*\?xargs\)/\1|sed "s\/-fopenmp\\s\/\/g"/' src/apache2/Makefile.am
-
-  autoreconf -fi
+  cd "$_pkgname"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$_pkgname"
   make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE-MIT.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE-MIT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
