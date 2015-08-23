@@ -1,0 +1,19 @@
+pkgbase = gr-fosphor-git
+	pkgdesc = GNU Radio block for RTSA-like spectrum visualization using OpenCL and OpenGL acceleration
+	pkgver = 3fdfe7c
+	pkgrel = 1
+	url = http://sdr.osmocom.org/trac/wiki/fosphor
+	arch = any
+	license = unknown
+	makedepends = cmake
+	depends = gnuradio
+	depends = boost
+	depends = swig
+	depends = glfw
+	depends = opencl-headers
+	provides = gr-fosphor
+	source = git://git.osmocom.org/gr-fosphor
+	sha1sums = SKIP
+
+pkgname = gr-fosphor-git
+
