@@ -1,0 +1,15 @@
+pkgbase = python-axolotl-git
+	pkgdesc = The python-axolotl package, needed for Whatsapp Moxie support
+	pkgver = r39.9585d72
+	pkgrel = 1
+	url = https://github.com/tgalal/python-axolotl
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dateutil
+	source = git://github.com/tgalal/python-axolotl
+	sha512sums = SKIP
+
+pkgname = python-axolotl-git
+
