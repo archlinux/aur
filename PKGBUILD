@@ -4,13 +4,14 @@ pkgbase=python-pydispatcher
 _realname=PyDispatcher
 pkgname=('python-pydispatcher' 'python2-pydispatcher')
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="provides loosely-coupled message passing between Python objects (signal senders and receivers)."
+_baseurl='https://pypi.python.org'
 url="http://sourceforge.net/projects/${pkgbase}/"
 arch=('any')
 license=('GPL')
 makedepends=('python-distribute' 'python2-distribute')
-source=("http://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${_realname}-${pkgver}.zip")
+source=("${_baseurl}/packages/source/P/${_realname}/${_realname}-${pkgver}.tar.gz")
 md5sums=('1b9c2ca33580c2770577add7130b0b28')
 
 prepare() {
