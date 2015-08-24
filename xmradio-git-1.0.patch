@@ -1,0 +1,12 @@
+diff -uNr xmradio-master/cmake/compile-schemas.cmake xmradio-master2/cmake/compile-schemas.cmake
+--- xmradio-master/cmake/compile-schemas.cmake	2015-06-14 14:29:54.000000000 +0800
++++ xmradio-master2/cmake/compile-schemas.cmake	2015-08-24 17:00:20.411473735 +0800
+@@ -1,7 +1,7 @@
+ find_program(COMPILE_SCHEMA glib-compile-schemas)
+ if (COMPILE_SCHEMA)
+ 	message(STATUS "Compiling schemas...")
+-	execute_process(COMMAND ${COMPILE_SCHEMA} "${CMAKE_INSTALL_PREFIX}/share/glib-2.0/schemas")
++    execute_process(COMMAND sudo ${COMPILE_SCHEMA} "${CMAKE_INSTALL_PREFIX}/share/glib-2.0/schemas")
+ else(COMPILE_SCHEMA)
+ 	message(WARNING "Not found glib-compile-schemas")
+ endif()
