@@ -13,7 +13,7 @@ optdepends=('gtk-engine-murrine: gtk2 theme support'
             'elementary-icon-theme: icons support'
             'gtk-engine-unico: gtk3 theme support')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/${pkgname}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('bff24c0a460aac00aaeb021fe408c935a1f2000c5f4aa00595e89c6470f6bb81')
+sha256sums=('fe0161a2a9b00211c35c0c1acc3915040513b3db8cddda7aa643a9b6e2d6ca96')
 
 package(){
     cp -r "${srcdir}/${pkgname}-${pkgver}/src/usr" "${pkgdir}"
