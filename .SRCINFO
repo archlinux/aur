@@ -1,0 +1,39 @@
+pkgbase = ros-indigo-gazebo-ros-control
+	pkgdesc = ROS - gazebo_ros_control.
+	pkgver = 2.4.9
+	pkgrel = 1
+	url = http://ros.org/wiki/gazebo_ros_control
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-hardware-interface
+	makedepends = ros-indigo-control-toolbox
+	makedepends = ros-indigo-angles
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-controller-manager
+	makedepends = ros-indigo-joint-limits-interface
+	makedepends = ros-indigo-transmission-interface
+	makedepends = ros-indigo-urdf
+	makedepends = ros-indigo-pluginlib
+	makedepends = gazebo
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-gazebo-ros
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-hardware-interface
+	depends = ros-indigo-control-toolbox
+	depends = ros-indigo-angles
+	depends = ros-indigo-controller-manager
+	depends = ros-indigo-joint-limits-interface
+	depends = ros-indigo-transmission-interface
+	depends = ros-indigo-urdf
+	depends = ros-indigo-pluginlib
+	depends = gazebo
+	source = gazebo_ros_control::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/indigo/gazebo_ros_control/2.4.9-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-gazebo-ros-control
+
