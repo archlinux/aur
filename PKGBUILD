@@ -3,7 +3,7 @@
 
 _gemname=execjs
 pkgname=ruby-$_gemname
-pkgver=2.5.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Run JavaScript code from Ruby'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('67c5a2b8513b5de27371afc4365c994ca3f9914a0918964f97220ac509114eda6801d34e0bde4c28b0daa2e7980bf6aba8851aaedf9dacc2abffd1e020963cc8')
+sha512sums=('366e968b8fbec7ebc8117cc507073e3905d51606463c8c25df46047f66a9299e1b8f1d935ca6bed5d6841c07d156f0fff67073ea382aa1beb3f32283c020c1c4')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
