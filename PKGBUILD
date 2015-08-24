@@ -2,21 +2,20 @@
 # Contributor: Marco Elver <el.marcoe+arch at gmail dot com>
 
 pkgname=python-nevow
-pkgver=0.10.0
-pkgrel=3
+pkgver=0.11.1
+pkgrel=1
 arch=(any)
 license=('custom')
 pkgdesc="Web application construction kit and templating engine written in python."
-url="http://divmod.org/trac/wiki/DivmodNevow"
+url="https://github.com/twisted/nevow"
 depends=('python2')
-optdepends=('twisted: to use all the advanced features of nevow, such as LivePage')
-makedepends=('twisted' 'python2-distribute')
+optdepends=('python2-twisted: to use all the advanced features of nevow, such as LivePage')
+makedepends=('python2-twisted' 'python2-setuptools')
 source=("http://pypi.python.org/packages/source/N/Nevow/Nevow-${pkgver}.tar.gz")
-md5sums=('66dda2ad88f42dea05911add15f4d1b2')
+md5sums=('acc5d23bd94a5399752065baae6117f6')
 options=(!emptydirs)
-changelog=Changelog
 
-build() {
+package() {
   cd $srcdir/Nevow-$pkgver
   python2 setup.py install --root=$pkgdir --optimize=1
 
@@ -25,17 +24,8 @@ build() {
   mv $pkgdir/usr/doc/man $pkgdir/usr/share/
   mv $pkgdir/usr/doc/* $pkgdir/usr/share/doc/nevow/
   rm -r $pkgdir/usr/doc
-  
-  # Same as above - in v0.9.33 nevow_widget.py was in the right
-  # place. Can anybody explain why this has changed? Let's hope this
-  # gets fixed in their next setup.py.
-  _python_version=`python2 -c "import sys; print sys.version[:3]"`
-  _python_twisted_plugins="$pkgdir/usr/lib/python${_python_version}/site-packages/twisted/plugins/"
-  mkdir -p $_python_twisted_plugins
-  mv $pkgdir/usr/twisted/plugins/nevow_widget.py $_python_twisted_plugins
-  rm -r $pkgdir/usr/twisted
 
-  # Distribute doesn't kill off #!/usr/bin/python shebangs
+  # Setuptools doesn't kill off #!/usr/bin/python shebangs
   find $pkgdir -name "*.py" -exec \
     sed -i '1s/python[[:space:]]*$/python2/' {} \;
 
