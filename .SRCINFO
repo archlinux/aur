@@ -1,13 +1,13 @@
 pkgbase = lastpass-pocket
 	pkgdesc = Backup and offline access for LastPass
 	pkgver = 3.1.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lastpass.com
 	arch = i686
 	arch = x86_64
 	license = custom:LastPass
 	depends = ca-certificates
-	depends = openssl098
+	depends = openssl>=1.0.0
 	depends = libldap
 	depends = libidn
 	depends = gtk2

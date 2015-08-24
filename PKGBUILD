@@ -7,13 +7,13 @@
 
 pkgname=lastpass-pocket
 pkgver=3.1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup and offline access for LastPass"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
 license=('custom:LastPass')
 options=('!strip')
-depends=('ca-certificates' 'openssl098' 'libldap' 'libidn' 'gtk2' 'libpng12')
+depends=('ca-certificates' 'openssl>=1.0.0' 'libldap' 'libidn' 'gtk2' 'libpng12')
 source=('lastpass.desktop' 'lastpass.png')
 sha1sums=('4e8258a93d2a72c86abc916fee1faab0d34fc8a7'
           '043994fdbb2af48eadb17e2ffe48a9a1652c297b')
@@ -26,6 +26,7 @@ package() {
   [ "$CARCH" == i686 ] && _pocket_bin=pocket
   [ "$CARCH" == x86_64 ] && _pocket_bin=pocket_x64
   install -Dm755 ${_pocket_bin} "${pkgdir}/usr/bin/lastpass"
+  sed -i -e 's/libssl.so.0.9.8/libssl.so.1.0.0/g' -e 's/libcrypto.so.0.9.8/libcrypto.so.1.0.0/g' "${pkgdir}/usr/bin/lastpass"
   install -Dm644 lastpass.png "${pkgdir}/usr/share/icons/lastpass.png"
   install -Dm644 lastpass.desktop "${pkgdir}/usr/share/applications/lastpass.desktop"
 }
