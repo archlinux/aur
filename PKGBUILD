@@ -2,7 +2,7 @@
 
 pkgname=python-catkin-pkg
 _name=catkin_pkg
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Standalone Python library for the catkin build system"
 url="http://wiki.ros.org/catkin_pkg"
@@ -11,18 +11,18 @@ makedepends=('python3')
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/c/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('66b484e850748b38a5a66f70debc4914')
+sha256sums=('d4d069eaeb29d6a9ee71773b20c41515b6e0feb9ea2765ebaf3e599d0ceef050')
 conflicts=(python2-catkin_pkg)
 
 # This is not ideal, but should not break Groovy/Hydro dependencies for now...
 provides=(python2-catkin_pkg)
 
 build() {
-    cd ${srcdir}/${_name}-${pkgver}
-    python3 setup.py build
+  cd ${srcdir}/${_name}-${pkgver}
+  python3 setup.py build
 }
 
 package() {
-    cd ${srcdir}/${_name}-${pkgver}
-    python3 setup.py install --root="$pkgdir" --optimize=1
+  cd ${srcdir}/${_name}-${pkgver}
+  python3 setup.py install --root="$pkgdir" --optimize=1
 }
