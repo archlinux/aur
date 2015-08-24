@@ -12,13 +12,12 @@ arch=('any')
 url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('mingw-w64-xproto' 'mingw-w64-crt')
-makedepends=('xorg-util-macros' 'mingw-w64-gcc' 'mingw-w64-configure')
+makedepends=('mingw-w64-xorg-util-macros' 'mingw-w64-gcc' 'mingw-w64-configure')
 source=(${url}/releases/individual/lib/libXdmcp-${pkgver}.tar.bz2)
 sha256sums=('81fe09867918fff258296e1e1e159f0dc639cb30d201c53519f25ab73af4e4e2')
 options=('!strip' 'staticlibs' '!buildflags')
 
-_architectures="i686-w64-mingw32" 
-# x86_64-w64-mingw32 build errors - conflicting types
+_architectures="i686-w64-mingw32" # x86_64-w64-mingw32 fails (type conflicts)
 
 build() {
   cd libXdmcp-${pkgver}
