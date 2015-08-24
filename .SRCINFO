@@ -1,0 +1,16 @@
+pkgbase = netsoul-purple
+	pkgdesc = Protocol Plugin (prpl) for libpurple, this plugin provide netsoul IM protocol
+	pkgver = 0.3
+	pkgrel = 0
+	url = http://projects.irq6.net/projects/netsoul-purple
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libpurple
+	provides = netsoul-purple
+	conflicts = netsoul-purple
+	source = http://git.irq6.net/netsoul-purple.git/snapshot/netsoul-purple-0.3.0.tar.gz
+	md5sums = d54154fb4e14435b0412fbc1b0e7e8ce
+
+pkgname = netsoul-purple
+
