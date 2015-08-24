@@ -23,6 +23,7 @@ pkgname = vdev-git
 	depends = lvm2
 	depends = dash
 	provides = vdev
+	provides = udev
 	conflicts = vdev
 	backup = 
 	backup = etc/vdev/actions/*.act
