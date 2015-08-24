@@ -17,7 +17,7 @@ conflicts=('modoboa-git')
 source=("https://pypi.python.org/packages/source/m/$pkgname/$pkgname-$pkgver.tar.gz" 
 		   'python2.patch')
 sha512sums=('9aecea8e0c8282292ba1cc11749956967ceb66332157267338bf08a05ffdc13bfeae64968cffb3df955ee7d73ad25a9370e639c363fe6de4167044de40413e6b'
-			      'b7a26db760633acbc6104af1d63c8df1cb5b7b806654d64129d65f7129d715e8abf6997e2ca5b0090a8319f6059beb82ac600ed1a392eb7fc7df6a6e81157e7a')
+			      'a70429bd59ccf77384feff700df95facd9f7b674d0378d872233136a6ba5c61acdc6614b35493eecdfc01ae0fede12171aa143e493a45441aa87667e93903cfb')
 
 prepare() {
   cd "$srcdir"
