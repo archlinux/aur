@@ -1,6 +1,6 @@
 pkgbase = subberthehut
 	pkgdesc = A command-line based OpenSubtitles.org downloader
-	pkgver = 18
+	pkgver = 19
 	pkgrel = 1
 	url = https://github.com/mus65/subberthehut
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = subberthehut
 	depends = xmlrpc-c
 	depends = glib2
 	depends = zlib
-	source = https://github.com/mus65/subberthehut/archive/18.tar.gz
-	md5sums = 34c7b8b3a788e2f40b3d8d3e5c78f365
+	source = https://github.com/mus65/subberthehut/archive/19.tar.gz
+	md5sums = 71c94db5fba5355866f077e832757f60
 
 pkgname = subberthehut
 
