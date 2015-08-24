@@ -11,7 +11,7 @@ set -u
 _pkgname='pcre2'
 pkgname="${_pkgname}-svn"
 _srcdir="${pkgname}"
-pkgver=10.21.336
+pkgver=10.21.r344
 pkgrel=1
 pkgdesc='A regex library that implements Perl 5-style regular expressions, 2nd version, includes pcregrep'
 arch=('i686' 'x86_64')
@@ -20,16 +20,19 @@ license=('BSD')
 depends=('gcc-libs' 'readline' 'zlib' 'bzip2' 'bash')
 makedepends=('subversion' 'libtool')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
+_verurl='ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/'
+_versed='pcre2-\([0-9\.]\+\)\.tar\.bz2'
+_veropt='f'
 source=("${_srcdir}::svn://vcs.exim.org/${_pkgname}/code/trunk")
 sha256sums=('SKIP')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
 
 pkgver() {
   set -u
   cd "${_srcdir}/"
   local _version="$(sed -ne 's:^Version\s\([0-9]\+\.[0-9]\+\)\s.*$:\1:p' 'ChangeLog' | head -n1)"
-  _version="${_version//-/.}.$(svnversion | tr -d 'a-zA-z')"
+  _version="${_version//-/.}.r$(svnversion | tr -d 'a-zA-z')"
   echo "${_version}"
   set +u
 }
