@@ -1,0 +1,14 @@
+pkgbase = vim-comments
+	pkgdesc = Vim plugin to comment and un-comment lines in different source files
+	pkgver = 2.12
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1528
+	install = vimdoc.install
+	arch = any
+	license = unknown
+	depends = vim>=7.0
+	source = comments.vim::http://www.vim.org/scripts/download_script.php?src_id=9801
+	sha256sums = 2f8e28280d1146b41fd0306c862cad70cc75b5520eb71302dcf4c7734663b3e6
+
+pkgname = vim-comments
+
