@@ -10,6 +10,7 @@ url='http://waf.io/'
 arch=('any')
 license=('BSD')
 depends=('python')
+makedepends=('unzip')
 provides=('python-waf')
 source=("https://waf.io/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('e61a2bc3fa27286852d6c93c61979615')

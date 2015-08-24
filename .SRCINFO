@@ -5,6 +5,7 @@ pkgbase = waf
 	url = http://waf.io/
 	arch = any
 	license = BSD
+	makedepends = unzip
 	depends = python
 	provides = python-waf
 	source = https://waf.io/waf-1.8.12.tar.bz2
