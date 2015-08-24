@@ -1,0 +1,13 @@
+pkgbase = stardict-langdao-ec-gb
+	pkgdesc = English-Chinese dictionary of Langdao for Stardict
+	pkgver = 2.4.2
+	pkgrel = 4
+	url = http://stardict.huzheng.org
+	arch = any
+	license = GPL
+	depends = stardict
+	source = http://abloz.com/huzheng/stardict-dic/zh_CN/stardict-langdao-ec-gb-2.4.2.tar.bz2
+	md5sums = 41a71f5b3952709746dd7e52cf155b8b
+
+pkgname = stardict-langdao-ec-gb
+
