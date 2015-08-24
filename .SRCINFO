@@ -1,7 +1,7 @@
 pkgbase = acpi_call-ck
 	pkgdesc = A linux-ck kernel module that enables calls to ACPI methods through /proc/acpi/call
 	pkgver = 1.1.0
-	pkgrel = 15
+	pkgrel = 7
 	url = http://github.com/mkottman/acpi_call
 	install = acpi_call-ck.install
 	arch = i686
