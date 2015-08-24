@@ -1,13 +1,14 @@
 pkgbase = fwupdate
 	pkgdesc = Tools for using the ESRT and UpdateCapsule() to apply firmware updates
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhinstaller/fwupdate
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = pesign
 	depends = efivar
+	depends = gnu-efi-libs
 	source = fwupdate-0.4.tar.gz::https://github.com/rhinstaller/fwupdate/archive/0.4.tar.gz
 	sha256sums = 83ec7b2bf8d3bc37c6a60044d964503233c359150bcdb6f30e9f01ef1edd97dd
 
