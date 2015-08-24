@@ -21,8 +21,8 @@ echo "Create web-directory ($WEBDIR)"
 install -d $WEBDIR || exit 1
 echo "Copy index.php to $WEBDIR"
 install $CI_DIR/index.php $WEBDIR || exit 1
-sed -i "s@\$application_folder.*=.*@\$application_folder = \"$APPDIR\";@" $WEBDIR/index.php || exit 1
-sed -i "59 s@\$system_path.*=.*@\$system_path = \"$CI_DIR/system\";@" $WEBDIR/index.php || exit 1
+sed -i "0,/\$application_folder.*=.*/s@@\$application_folder = \"$APPDIR\";@" $WEBDIR/index.php || exit 1
+sed -i "0,/\$system_path.*=.*/s@@\$system_path = \"$CI_DIR\/system\";@" $WEBDIR/index.php || exit 1
 
 echo "Create main app directory ($APPDIR)"
 install -d $APPDIR || exit 1
