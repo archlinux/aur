@@ -22,7 +22,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p cd ${srcdir}/${_srcname}/build
+  mkdir -p ${srcdir}/${_srcname}/build
 }
 
 build() {
