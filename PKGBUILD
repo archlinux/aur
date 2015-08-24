@@ -6,11 +6,12 @@ pkgdesc="Modoboa is a django mail hosting and management platform"
 arch=(any)
 url="www.modoboa.org"
 license=('GPL')
-makedepends=('python2' 'cairo' 'rrdtool' 'pango' 'python2-rrdtool' 'python2-lxml' 'zlib')
-optdepends=('python2-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python2-mysql-connector' 'python2-psycopg2' 'python2-aspw' )
+makedepends=('python2' 'python2-rrdtool' 'python2-lxml' 'python2-setuptools' 'zlib' 'python2-django' 'python2-dj-database-url'
+				  'python2-pip' 'python2-requests')
+optdepends=('python2-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python2-mysql-connector' 'python2-psycopg2' 'python2-aspw'
+			     'python2-gunicorn')
 provides=('modoboa')
 conflicts=('modoboa-git')
-options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/m/$pkgname/$pkgname-$pkgver.tar.gz" 
 		   'shebang.patch')
 sha512sums=('9aecea8e0c8282292ba1cc11749956967ceb66332157267338bf08a05ffdc13bfeae64968cffb3df955ee7d73ad25a9370e639c363fe6de4167044de40413e6b'
