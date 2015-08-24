@@ -1,0 +1,19 @@
+pkgbase = gopchop
+	pkgdesc = Cut and merge MPEG2-PS files at GOP boundaries without reencoding.
+	pkgver = 1.1.8
+	pkgrel = 3
+	url = http://outflux.net/unix/software/GOPchop/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = libmpeg2
+	depends = libxml2
+	depends = gtk2
+	source = https://downloads.sourceforge.net/project/gopchop/GOPchop%20-%20Development/1.1.8/gopchop-1.1.8.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/g/gopchop/gopchop_1.1.8-5.debian.tar.gz
+	md5sums = 614bd1d34960b2dc420acde423f246e1
+	md5sums = b602e55c38cfbe182d0619f8932a7f13
+
+pkgname = gopchop
+
