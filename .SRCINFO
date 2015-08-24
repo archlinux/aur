@@ -8,7 +8,7 @@ pkgbase = ruby-listen
 	depends = ruby
 	depends = ruby-rb-inotify>=0.9
 	depends = ruby-rb-fsevent>=0.9.3
-	depends = ruby-celluloid
+	depends = ruby-celluloid-0.16
 	noextract = -2.8.3.gem
 	source = http://gems.rubyforge.org/gems/listen-2.8.3.gem
 	sha256sums = fcad2e4342713fd12eadff0650a0d7d9a8aa88e88c5331d430ffe0692eca76b3
