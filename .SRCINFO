@@ -1,0 +1,16 @@
+pkgbase = cc65-git
+	pkgdesc = C compiler for 6502 family microprocessors
+	pkgver = 2.13.3.r6521.a85ac88
+	pkgrel = 1
+	url = https://cc65.github.io/cc65/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = linuxdoc-tools
+	provides = cc65
+	conflicts = cc65
+	source = git+https://github.com/cc65/cc65
+	sha256sums = SKIP
+
+pkgname = cc65-git
+

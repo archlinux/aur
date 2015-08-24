@@ -1,0 +1,5 @@
+*.pkg.tar*
+*.src.tar*
+/cc65/
+src
+pkg
