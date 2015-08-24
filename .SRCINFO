@@ -15,6 +15,7 @@ pkgbase = java8-openjdk
 	makedepends = fontconfig
 	makedepends = libcups
 	makedepends = alsa-lib
+	makedepends = fontconfig-infinality
 	source = jdk8u-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/archive/jdk8u60-b24.tar.gz
 	source = corba-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/corba/archive/jdk8u60-b24.tar.gz
 	source = hotspot-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u60-b24.tar.gz

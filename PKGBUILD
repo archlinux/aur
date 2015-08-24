@@ -22,7 +22,8 @@ arch=('i686' 'x86_64')
 url='http://openjdk.java.net/'
 license=('custom')
 makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip'
-             'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
+             'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib'
+             'fontconfig-infinality')
 _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         corba-${_repo_ver}.tar.gz::${_url_src}/corba/archive/${_repo_ver}.tar.gz
