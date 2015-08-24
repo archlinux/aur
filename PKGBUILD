@@ -1,3 +1,6 @@
+#Created by dromi (arelange)
+#Packaged by ryanvade 
+
 pkgname=gnome-shell-extension-hibernate-status-git
 pkgver=r11.e358c28
 pkgrel=1
@@ -18,7 +21,7 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  _uuid='suspend-button@laserb'
+  _uuid='hibernate-status@dromi'
 
   install -Dm644 "metadata.json" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
