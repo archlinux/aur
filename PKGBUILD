@@ -8,7 +8,7 @@ pkgdesc="A fast, safe VPN based on libsodium"
 arch=('i686' 'x86_64')
 url="https://github.com/clowwindy/${_pkgname}"
 license=('MIT')
-depends=('sh' 'libsodium')
+depends=('libsodium')
 provides=("shadowvpn")
 conflicts=("shadowvpn")
 makedepends=('git')
@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname}
-  rm -rf libsodium
+  rmdir libsodium
 
   sed -e 's|SUBDIRS = ../libsodium||' \
       -e 's|AM_CFLAGS = .*libsodium.*$|AM_CFLAGS = -lsodium|' \
@@ -43,7 +43,6 @@ prepare() {
 
 build() {
   cd ${_pkgname}
-  git submodule update --init libsodium
   ./autogen.sh
   ./configure --sysconfdir=/etc --disable-static --prefix=/usr
   make
@@ -52,6 +51,6 @@ build() {
 package() {
   cd ${_pkgname}
   make DESTDIR="$pkgdir" install
-  install -Dm644 samples/shadowvpn@.service "$pkgdir"/lib/systemd/system/shadowvpn@.service
+  install -Dm644 samples/shadowvpn@.service "$pkgdir"/usr/lib/systemd/system/shadowvpn@.service
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
 }
