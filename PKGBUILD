@@ -1,6 +1,5 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
 # Contributor: Raansu <gero3977@gmail.com>
-# Contributor: ShapeShifter499
 
 pkgname=acd_cli
 pkgver=0.3.0a5
