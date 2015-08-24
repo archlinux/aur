@@ -1,0 +1,74 @@
+#!/usr/bin/bash
+
+
+add_full_dir_resolve() {
+    # Add a directory and all its contents, recursively, to the initcpio image.
+    # adds symlink targets as well and adds binaries as binary
+    
+    local f= filter=${2:-*}
+
+    if [[ -n $1 && -d $1 ]]; then
+        add_dir "$1"
+
+        for f in "$1"/*; do
+            if [[ -L $f ]]; then
+                if [[ $f = $filter ]]; then
+                    add_symlink "$f" "$(readlink "$f")"
+                    add_binary "$(readlink "$f")"
+                fi
+            elif [[ -d $f ]]; then
+                add_full_dir_resolve "$f"
+            elif [[ -f $f ]]; then
+                if [[ $f = $filter ]]; then
+                    add_binary "$f"
+                fi
+            fi
+        done
+    fi
+}
+
+build() {
+
+    # GPG files
+    add_binary 'gpg'
+    add_binary 'gpg-agent'
+    add_binary 'gpgconf'
+    add_binary 'gpg-connect-agent'
+    add_binary 'applygnupgdefaults'
+    add_binary 'addgnupghome'
+    add_binary '/usr/lib/gnupg/scdaemon'
+    
+    # PCSC files
+    add_binary 'pcscd'
+    add_binary '/usr/lib/libpcsclite.so'
+    add_binary '/usr/lib/libpcscspy.so'
+    add_binary '/usr/lib/libgcc_s.so'
+    
+    add_full_dir_resolve '/usr/lib/pcsc'
+    
+    # GPG Agent configuration    
+    mkdir -p "$BUILDROOT/.gnupg"
+    printf '%s\n%s\n%s' 'allow-loopback-pinentry' 'default-cache-ttl 60' 'max-cache-ttl 60'>"$BUILDROOT/.gnupg/gpg-agent.conf"
+    
+    
+    add_runscript
+}
+
+help() {
+  cat <<HELPEOF
+This hook enables smartcard support in initramfs. It uses GPG 2 to decrypt a
+keyfile and use it as the keyfile for the 'encrypt' hook.
+
+The smartcard hook can be configured by the 'gpgdir=device:fstype:directory'
+kernel parameter, where directory is the path to a directory (without leading
+slash) containing a file named 'key.gpg' and a directory called 'homedir',
+whose contents will be used for the GPG home directory (there you can store
+the key database that links to the secret keys on the smart card, but
+obviously shouldn't contain any secret keys).
+
+The hook will decrypt the 'key.gpg' file and use it as key file for the [encrypt]
+hook.
+If the 'cryptkey' kernel parameter is also provided, it will be ignored and
+overwritten by the smartcard hook.
+HELPEOF
+}

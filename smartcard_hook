@@ -1,0 +1,103 @@
+#!/usr/bin/ash
+
+run_hook() {
+    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
+
+    if [ -n "$gpgdir" ]; then
+        IFS=: read gpgdir_dev gpgdir_fs gpgdir_dirname <<EOF
+$gpgdir
+EOF
+
+        if [ -n "$cryptkey" ]; then
+            echo "Warning: The 'cryptkey' kernel parameter has also been provided."
+            echo "The 'cryptkey' parameter will be overwritten by the [smartcard] hook."
+        fi
+    
+        ckeyfile="/crypto_keyfile.bin.gpg"
+        ckeyfile_out="/crypto_keyfile.bin"
+        dogpgdecryption=0
+
+
+        # Copy the GPG directory
+        if resolved=$(resolve_device "${gpgdir_dev}" ${rootdelay}); then
+
+            # Mount
+            mkdir /gpgdrive
+            mount -r -t "$gpgdir_fs" "$resolved" /gpgdrive
+            
+            gpgdir_basepath="/gpgdrive/$gpgdir_dirname"
+            if [ -d "$gpgdir_basepath" ]; then
+            
+                # Copy .gnupg homedirectory
+                if [ -d "$gpgdir_basepath/homedir" ]; then
+                    mkdir -p "/.gnupg"
+                    cp -a -r -T "$gpgdir_basepath/homedir/" "/.gnupg/"
+                fi
+                
+                # Copy keyfile
+                if [ -f "$gpgdir_basepath/key.gpg" ]; then
+                    dd if="$gpgdir_basepath/key.gpg" of="$ckeyfile" >/dev/null 2>&1
+                    dogpgdecryption=1
+                else
+                    echo "GPG directory found, but it contains no key.gpg"
+                fi
+              
+            else
+                echo "Could not access GPG directory."
+            fi
+                
+            umount /gpgdrive
+        fi
+        
+        # Check for encrypted keyfile
+        [ ! -f ${ckeyfile} ] && echo "GPG-encrypted Keyfile could not be opened. Reverting to normal keyfile or passphrase." && dogpgdecryption=0
+        
+        
+        # Decrypt keyfile using GPG
+        if [ ${dogpgdecryption} -gt 0 ]; then
+        
+            # Run PCSC daemon
+            pcscd &
+            
+            # Limit the number of tries
+            maxtries=2
+            tries=0
+            success=0
+            
+            while [ $maxtries -gt $tries ] && [ $success -ne 1 ]; do
+                tries=$((tries+1))
+            
+                echo "Enter PIN or passphrase for GPG decryption:"
+                read -s pincode
+                
+                # todo: run gpg --card-status
+                # That imports the private key stubs from the card.
+                # However, it doesn't create the public keys and thus the decryption will not work
+                # without public keys being available seperately.
+                
+                if eval printf '%s' "$pincode" | gpg --batch --passphrase-fd 0 --pinentry-mode loopback --homedir "/.gnupg" --output ${ckeyfile_out} --decrypt ${ckeyfile} ${CSQUIET}; then
+                    
+                    success=1
+                    # Set cryptkey for encrypt hook
+                    cryptkey="rootfs:${ckeyfile_out}:"
+                else
+                    echo "GPG decryption failed! Wrong PIN? Smart card device inserted?"
+                fi
+            done
+            
+            
+            if [ $success -ne 1 ]; then
+                echo "Aborting GPG decryption!"
+            fi
+            
+            # for now: kill gpg-agent and pcscd so that the smart card can be used by the normal user. In that case, the PIN has to be entered again.
+            # todo: maybe somehow pass the GPG agent session on to the user
+            killall gpg-agent
+            killall pcscd
+        fi
+        
+        
+    else
+        echo "No GPG-encrypted keyfile provided."
+    fi
+}
