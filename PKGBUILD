@@ -1,6 +1,6 @@
 pkgname=crane-gps-watch-git
 _pkgname=crane_gps_watch
-pkgver=20150818
+pkgver=20150824
 pkgrel=1
 pkgdesc="Linux client for Crane gps watch (from Aldi or Hofer). It reads from the watch and writes to '.tcx', Garmin Training Center file."
 arch=('any')
@@ -25,8 +25,5 @@ package(){
   ./configure --prefix=/usr || return 1
   make || return 1
   make DESTDIR="$pkgdir/" install
-
-#  install -d "${pkgdir}"/usr/bin
-#  install -Dm755 "${srcdir}/${_pkgname}/crane_gps_watch_client" "${pkgdir}/usr/bin/crane_gps_watch_client"
 }
 md5sums=('SKIP')
