@@ -1,6 +1,6 @@
 pkgbase = java8-openjdk
-	pkgver = 8.u51
-	pkgrel = 2
+	pkgver = 8.u60
+	pkgrel = 1
 	url = http://openjdk.java.net/
 	arch = i686
 	arch = x86_64
@@ -15,30 +15,26 @@ pkgbase = java8-openjdk
 	makedepends = fontconfig
 	makedepends = libcups
 	makedepends = alsa-lib
-	source = jdk8u-jdk8u51-b16.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/archive/jdk8u51-b16.tar.gz
-	source = corba-jdk8u51-b16.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/corba/archive/jdk8u51-b16.tar.gz
-	source = hotspot-jdk8u51-b16.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u51-b16.tar.gz
-	source = jdk-jdk8u51-b16.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jdk/archive/jdk8u51-b16.tar.gz
-	source = jaxws-jdk8u51-b16.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxws/archive/jdk8u51-b16.tar.gz
-	source = jaxp-jdk8u51-b16.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxp/archive/jdk8u51-b16.tar.gz
-	source = langtools-jdk8u51-b16.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/langtools/archive/jdk8u51-b16.tar.gz
-	source = nashorn-jdk8u51-b16.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/jdk8u51-b16.tar.gz
+	source = jdk8u-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/archive/jdk8u60-b24.tar.gz
+	source = corba-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/corba/archive/jdk8u60-b24.tar.gz
+	source = hotspot-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u60-b24.tar.gz
+	source = jdk-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jdk/archive/jdk8u60-b24.tar.gz
+	source = jaxws-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxws/archive/jdk8u60-b24.tar.gz
+	source = jaxp-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxp/archive/jdk8u60-b24.tar.gz
+	source = langtools-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/langtools/archive/jdk8u60-b24.tar.gz
+	source = nashorn-jdk8u60-b24.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/jdk8u60-b24.tar.gz
 	source = 004_add-fontconfig.patch
 	source = 005_enable-infinality.patch
-	source = JDK-8074312-hotspot.patch
-	source = JVM_fastdebug_build_compiled_with_GCC_5_asserts_with_widen_increases.patch
-	sha256sums = 02eab2b937ed83c4505e93f58ad0b84a4e1a69e6d0baa4d041ec09ed98f18c2d
-	sha256sums = 00d783dda3a7d87eb55a72febe7666c4b3297616ef3f11bbd679a05f19a81825
-	sha256sums = a7236d5e5824cea20b48ca4efb8e5109007024af9b85214e9153c4d633665d0a
-	sha256sums = f7554dc2fba5dfd36af0ed618ebe4c7b1527b5a067052299a1679a4142bbbeee
-	sha256sums = aa202ddf3bcc1dc54723bb26c0ae5ccaefc1693647e6b463955065d2b1720382
-	sha256sums = 5d6faf6c726392212659cebd93fdbf89a11b86bab60f5b220493d9d8e7ff0686
-	sha256sums = 3171ec4dbd96747eeb876a8fd3caf1e1e52da3dc91b63308193c914a5501d6e4
-	sha256sums = ffdd0446fce7b624f2cdc80297b99eecfdf30adfee39d3b8832a78c1dc202636
+	sha256sums = 97e368187b08067d57eb10bce08fb9057e63242c263f63ab7b7dd036cbf7aebf
+	sha256sums = 76736786a1205367167b1abd10b6f173885f8ca8b2c3f56d5ff94b9e65a98865
+	sha256sums = 9e7830631897679c97127387a1e962bfac46bafbe2b5a4be88e8bbf238e6c84c
+	sha256sums = 999f0242213a4d048cee4e990d62024d277bcc8d49ab6fd807e32271fe078985
+	sha256sums = 9643d8c22c4d6a680609168d84ac5a92421aa9973aea15cac687e4ccf167ff96
+	sha256sums = cb854984714541af5cba6e920958d0c68f2de52bff5acf723387fa03d63d8c3d
+	sha256sums = 93a553f2e9dfc820e50bfd70f989c96cd330857849ddba23dc50246e99ab1329
+	sha256sums = 518dd422df787547bbeedb57a524501548a6efd8f96443ebc59276cc7922e801
 	sha256sums = 7eccdeda71d651423a066c942b3d300eccd8d95e161725fa508d84f0bc010ceb
 	sha256sums = efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac
-	sha256sums = 95fbd155806cac22de9e6df6f4f92ae79530f86d63cea1deaf98e607953e0b50
-	sha256sums = 8df4d5d78753ebc5bc425fd1c8fe788106ac8b9d3155feb162a748a96c81cc05
 
 pkgname = jre8-openjdk-headless-infinality
 	pkgdesc = OpenJDK Java 8 headless runtime environment with infinality patch applied
@@ -56,7 +52,7 @@ pkgname = jre8-openjdk-headless-infinality
 pkgname = jre8-openjdk-infinality
 	pkgdesc = OpenJDK Java 8 full runtime environment with infinality patch applied
 	install = install_jre8-openjdk.sh
-	depends = jre8-openjdk-headless-infinality=8.u51-2
+	depends = jre8-openjdk-headless-infinality=8.u60-1
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -72,7 +68,7 @@ pkgname = jdk8-openjdk-infinality
 	pkgdesc = OpenJDK Java 8 development kit with infinality patch applied
 	install = install_jdk8-openjdk.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-infinality=8.u51-2
+	depends = jre8-openjdk-infinality=8.u60-1
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	conflicts = jdk8-openjdk
