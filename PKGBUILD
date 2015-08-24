@@ -6,15 +6,15 @@
 _gemname=jekyll
 pkgname=ruby-$_gemname
 pkgver=2.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple, blog aware, static site generator.'
 arch=(any)
 url='http://github.com/mojombo/jekyll'
 license=(MIT)
-depends=(ruby ruby-liquid-2 ruby-kramdown ruby-mercenary ruby-safe_yaml
+depends=(ruby-liquid-2 ruby-kramdown ruby-mercenary ruby-safe_yaml
          ruby-colorator ruby-pygments.rb ruby-redcarpet ruby-toml
-         ruby-classifier-reborn ruby-jekyll-paginate ruby-jekyll-gist
-         ruby-jekyll-coffeescript)
+         ruby-jekyll-paginate ruby-jekyll-gist ruby-jekyll-coffeescript
+         ruby-jekyll-sass-converter ruby-classifier-reborn ruby-jekyll-watch)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
