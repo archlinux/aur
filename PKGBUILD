@@ -24,9 +24,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}.${pkgrel}"
     make DESTDIR="${pkgdir}" install
-    libtool --finish /usr/lib/purple-2
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-    rm -rf $(find "$pkgdir" -type d -name ".git")
 }
 
 # vim:set ts=2 sw=2 et:
