@@ -3,7 +3,7 @@
 # Contributor: Iven Hsu <ivenvd AT gmail>
 
 pkgname=compiz-bzr
-pkgver=3958
+pkgver=3971
 pkgrel=1
 _bzrname=compiz
 _bzrbranch=0.9.12
@@ -19,14 +19,14 @@ optdepends=(
 conflicts=('compiz-core' 'compiz')
 provides=("compiz=$_bzrbranch")
 replaces=('compiz-core-bzr')
-source=("$_bzrname::bzr+http://bazaar.launchpad.net/~compiz-team/$_bzrname/$_bzrbranch/#revision=3958"
+source=("$_bzrname::bzr+http://bazaar.launchpad.net/~compiz-team/$_bzrname/$_bzrbranch/"
         "set-gwd-default.patch"
         "focus-prevention-disable.patch"
-        "client-frame-api.patch")
+        "gtk-extents.patch")
 sha256sums=('SKIP'
             '3aa6cb70f357b3d34d51735f4b5bcb0479086d7c7336de4bd8157569d6c52c08'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
-            '4cb451857a2e6deef15dd04e68ca8bd1d898344b6a175fa1a9f2fb0c11b119d7')
+            '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9')
 install='compiz-bzr.install'
 
 pkgver() {
@@ -50,7 +50,7 @@ prepare() {
   sed -i 's/${PY_BUILD_DIR}/lib/g' compizconfig/ccsm/CMakeLists.txt
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
-  patch -Np1 -i "${srcdir}/client-frame-api.patch"
+  patch -Np1 -i "${srcdir}/gtk-extents.patch"
 }
 
 build() {
