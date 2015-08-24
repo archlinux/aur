@@ -1,0 +1,15 @@
+pkgbase = ruby-celluloid
+	pkgdesc = Actor-based concurrent object framework for Ruby
+	pkgver = 0.17.1.2
+	pkgrel = 1
+	url = https://celluloid.io/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-timers
+	noextract = -0.17.1.2.gem
+	source = http://gems.rubyforge.org/gems/celluloid-0.17.1.2.gem
+	md5sums = b9e83eafce24171a83536b13e9c6ba39
+
+pkgname = ruby-celluloid
+
