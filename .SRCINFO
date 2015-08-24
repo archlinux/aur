@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-realtime-tools
+	pkgdesc = ROS - Contains a set of tools that can be used from a hard realtime thread, without breaking the realtime behavior.
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://ros.org/wiki/realtime_tools
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rospy
+	depends = ros-indigo-roscpp
+	source = realtime_tools::git+https://github.com/ros-gbp/realtime_tools-release.git#tag=release/indigo/realtime_tools/1.9.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-realtime-tools
+
