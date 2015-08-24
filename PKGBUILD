@@ -1,6 +1,6 @@
 # Maintainer: Andrea Girotto echo "naqern.tvebggb@tznvy.pbz" | tr '[a-z]' '[n-za-m]'
 pkgname=sagittarius
-pkgver=0.6.5
+pkgver=0.6.7
 pkgrel=1
 pkgdesc='R6RS/R7RS Scheme system.'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=(gc libffi zlib unixodbc)
 makedepends=('cmake>=2.8.4')
 source=(https://bitbucket.org/ktakashi/sagittarius-scheme/downloads/$pkgname-$pkgver.tar.gz)
-md5sums=('4f5ed1df9f845ae4d961dcb2902ce9da')
+md5sums=('7d6c1918e0d2067d028432e33a1358e9')
 
 build(){
  cd ${srcdir}/${pkgname}-${pkgver}
@@ -35,5 +35,6 @@ package() {
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make test
+  make test-ext
 }
 
