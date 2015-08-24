@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-controller-manager-msgs
+	pkgdesc = ROS - Messages and services for the controller manager.
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_control/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	source = controller_manager_msgs::git+https://github.com/ros-gbp/ros_control-release.git#tag=release/indigo/controller_manager_msgs/0.9.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-controller-manager-msgs
+
