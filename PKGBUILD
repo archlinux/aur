@@ -4,7 +4,7 @@
 # Contributor: NeoRaider <neoraider@universe-factory.net>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=mingw-w64-libxcb-win32-git
+pkgname=mingw-w64-libxcb
 pkgver=1.11.r59.g4033d39
 pkgrel=1
 pkgdesc="X11 client-side library on top of Win32 - git version (mingw-w64)"
@@ -13,7 +13,7 @@ url="http://xcb.freedesktop.org/win32port/"
 depends=('mingw-w64-crt' 'mingw-w64-libxau' 'mingw-w64-winpthreads' \
 'mingw-w64-libxdmcp' 'mingw-w64-xcb-proto')
 makedepends=('git' 'mingw-w64-libxslt' 'python' 'mingw-w64-xorg-util-macros')
-provides=("mingw-w64-libxcb=$pkgver")
+provides=("mingw-w64-libxcb-win32-git=$pkgver")
 license=('custom')
 source=('xcb-win32'::'git+http://anongit.freedesktop.org/git/xcb/libxcb.git')
 sha256sums=('SKIP')
