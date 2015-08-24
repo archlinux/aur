@@ -11,9 +11,9 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('dbus>=1.2.0' 'ctemplate')
 makedepends=()
-url="http://git.chromium.org/gitweb/?p=chromiumos/third_party/dbus-cplusplus.git"
+url="http://chromium.googlesource.com/chromiumos/third_party/dbus-cplusplus"
 
-source=("git+http://git.chromium.org/chromiumos/third_party/dbus-cplusplus.git")
+source=("git+http://chromium.googlesource.com/chromiumos/third_party/dbus-cplusplus.git")
 md5sums=('SKIP')
 
 build() {
