@@ -19,7 +19,7 @@ backup=('etc/shadowvpn/client.conf'
         'etc/shadowvpn/server.conf'
         'etc/shadowvpn/server_down.sh'
         'etc/shadowvpn/server_up.sh')
-source=("git+https://github.com/clowwindy/${_pkgname}.git")
+source=("git+https://github.com/rains31/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
