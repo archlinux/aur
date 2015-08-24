@@ -7,8 +7,8 @@
 
 pkgname=acpi_call-ck
 pkgver=1.1.0
-pkgrel=15
-_extramodules=extramodules-4.0-ck
+pkgrel=7
+_extramodules=extramodules-4.1-ck
 pkgdesc='A linux-ck kernel module that enables calls to ACPI methods through /proc/acpi/call'
 arch=('i686' 'x86_64')
 url="http://github.com/mkottman/${pkgname%-*}"
