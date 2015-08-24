@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sxemacs-git
-pkgver=22.1.15.199.g2074af4
+pkgver=22.1.15.201.g6a46975
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
@@ -27,12 +27,13 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  [ -d libltdl/m4 ] || mkdir -p libltdl/m4
+  cd "$srcdir"
+  [ -d ${_gitname}/libltdl/m4 ] || mkdir -p ${_gitname}/libltdl/m4
   [ -d build ] || mkdir -p build
   cd build
-  ../autogen.sh --force
-  LIBS="$LIBS -ldl -fPIC" CFLAGS="$CFLAGS -I/usr/include/freetype2" ../configure --prefix=/usr
+  ../${_gitname}/autogen.sh 
+  LIBS="$LIBS -ldl -fPIC" CFLAGS="$CFLAGS -I/usr/include/freetype2" \
+      ../${_gitname}/configure --prefix=/usr
   make
 }
 
