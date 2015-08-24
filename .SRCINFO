@@ -1,14 +1,14 @@
 pkgbase = opentheory
 	pkgdesc = a tool for processing higher-order logic theory packages
-	pkgver = 1.3r20150815
+	pkgver = 1.3r20150820
 	pkgrel = 1
 	url = http://www.gilith.com/software/opentheory
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = mlton
-	source = opentheory-1.3r20150815.tar.gz::http://www.gilith.com/software/opentheory/opentheory.tar.gz
-	md5sums = 9548ca29673aa57801dcf540572a3e76
+	source = opentheory-1.3r20150820.tar.gz::http://www.gilith.com/software/opentheory/opentheory.tar.gz
+	md5sums = 4321a0a289435368d671d18a0a99f6df
 
 pkgname = opentheory
 
