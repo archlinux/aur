@@ -1,15 +1,15 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=yash
-pkgver=2.37
-pkgrel=2
+pkgver=2.38
+pkgrel=1
 pkgdesc="Yet Another SHell is a POSIX-compliant command line shell"
 arch=("i686" "x86_64")
 license=("GPL2")
 url="http://sourceforge.jp/projects/yash/"
 #ToDo: Add propper deps
 makedepends=("pax")
-source=("${pkgname}-${pkgver}.tar.xz::http://iij.dl.sourceforge.jp/yash/62651/${pkgname}-${pkgver}.tar.xz")
+source=("${pkgname}-${pkgver}.tar.xz::http://osdn.jp/frs/redir.php?m=iij&f=%2Fyash%2F63432%2Fyash-2.38.tar.xz")
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -49,4 +49,4 @@ package() {
 }
 
 #Default to md5 as makepkg do, blame Allan McRae
-md5sums=('c119e542d58d5555d36f237c0011e83d')
+md5sums=('7cdebec758b8301622d0e33e99305be2')

@@ -1,14 +1,14 @@
 pkgbase = yash
 	pkgdesc = Yet Another SHell is a POSIX-compliant command line shell
-	pkgver = 2.37
-	pkgrel = 2
+	pkgver = 2.38
+	pkgrel = 1
 	url = http://sourceforge.jp/projects/yash/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = pax
-	source = yash-2.37.tar.xz::http://iij.dl.sourceforge.jp/yash/62651/yash-2.37.tar.xz
-	md5sums = c119e542d58d5555d36f237c0011e83d
+	source = yash-2.38.tar.xz::http://osdn.jp/frs/redir.php?m=iij&f=%2Fyash%2F63432%2Fyash-2.38.tar.xz
+	md5sums = 7cdebec758b8301622d0e33e99305be2
 
 pkgname = yash
 
