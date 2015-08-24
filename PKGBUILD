@@ -1,7 +1,7 @@
 # Maintainer: naelstrof <naelstrof@gmail.com>
 pkgname=slop-git
 _realname=slop
-pkgver=v4.1.16.r0.gf6e72a9
+pkgver=v4.2.19.r0.ga8f1e5c
 pkgrel=1
 conflicts=( 'slop' )
 pkgdesc="slop (Select Operation) is an application that queries for a selection from the user and prints the region to stdout."
@@ -9,7 +9,7 @@ arch=( 'i686' 'x86_64' )
 url="https://github.com/naelstrof/$_realname"
 license=( 'GPL3' )
 depends=( 'libxext' 'libx11' 'imlib2' 'mesa' 'glew' 'libxrender' )
-makedepends=( 'make' 'cmake' )
+makedepends=( 'make' 'cmake' 'glm' )
 source=( "slop::git+https://github.com/naelstrof/slop.git" )
 md5sums=('SKIP')
 
