@@ -5,7 +5,7 @@
 # Package Repository: https://github.com/mij-aur-packages/android-google-apis
 
 _rev=r01
-_apilevel=22
+_apilevel=23
 pkgname=android-google-apis
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
@@ -17,10 +17,10 @@ depends=("android-platform")
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/google_apis-22_r01.zip"
+source=("http://dl-ssl.google.com/android/repository/google_apis-23_r01.zip"
         "source.properties")
-sha1sums=('5def0f42160cba8acff51b9c0c7e8be313de84f5'
-          'a123d703f71ac5f6724bcab570fe84c9b2eb043f')
+sha1sums=('04c5cc1a7c88967250ebba9561d81e24104167db'
+          'f964af7b906e23ec7df84023190209c77e6df382')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/add-ons/"

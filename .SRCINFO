@@ -1,18 +1,18 @@
 pkgbase = android-google-apis
 	pkgdesc = Android Google APIs, latest API
-	pkgver = 22_r01
+	pkgver = 23_r01
 	pkgrel = 1
 	url = http://code.google.com/android/add-ons/google-apis
 	arch = any
 	license = custom
 	depends = android-platform
-	provides = android-google-apis-22
-	conflicts = android-google-apis-22
+	provides = android-google-apis-23
+	conflicts = android-google-apis-23
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/google_apis-22_r01.zip
+	source = http://dl-ssl.google.com/android/repository/google_apis-23_r01.zip
 	source = source.properties
-	sha1sums = 5def0f42160cba8acff51b9c0c7e8be313de84f5
-	sha1sums = a123d703f71ac5f6724bcab570fe84c9b2eb043f
+	sha1sums = 04c5cc1a7c88967250ebba9561d81e24104167db
+	sha1sums = f964af7b906e23ec7df84023190209c77e6df382
 
 pkgname = android-google-apis
 
