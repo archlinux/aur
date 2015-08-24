@@ -1,6 +1,6 @@
 pkgbase = fskit-git
 	pkgdesc = Filesystem utility library and SDK
-	pkgver = r197.e626604
+	pkgver = r239.1d3423b
 	pkgrel = 1
 	url = https://github.com/jcnelson/fskit.git
 	arch = x86_64
