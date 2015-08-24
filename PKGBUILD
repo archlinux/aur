@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface for using ROS with the Gazebo simulator."
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-ros-pkgs'
-pkgver='2.4.8'
+pkgver='2.4.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
