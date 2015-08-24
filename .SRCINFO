@@ -1,7 +1,7 @@
 pkgbase = keepassx-git
 	pkgdesc = KeePassX is a cross platform port of the windows application 'Keepass Password Safe'. It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way. It uses a highly encrypted database locked with one master key.
 	pkgver = 2.0.beta1.r41.g943ba1f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keepassx/keepassx
 	install = keepassx.install
 	arch = i686
@@ -17,11 +17,14 @@ pkgbase = keepassx-git
 	depends = libxtst
 	depends = shared-mime-info
 	depends = qt5-x11extras
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
 	conflicts = keepassx-svn
 	conflicts = keepassx
 	conflicts = keepassx2-git
 	conflicts = keepassx2
 	conflicts = keepassx2-yubikey-git
+	options = !emptydirs
 	source = git+https://github.com/keepassx/keepassx.git#branch=qt5
 	md5sums = SKIP
 
