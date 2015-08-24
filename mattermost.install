@@ -1,0 +1,13 @@
+post_install() {
+  systemd-sysusers mattermost.conf
+
+  if [[ ! -e var/lib/mattermost ]]; then
+    install -dm700 -o mattermost var/lib/mattermost
+  fi
+
+  chown mattermost var/log/mattermost
+}
+
+post_upgrade() {
+  post_install
+}

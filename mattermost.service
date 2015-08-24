@@ -1,0 +1,17 @@
+[Unit]
+Description=Mattermost Chat Server
+After=mysqld.service
+After=postgresql.service
+
+[Service]
+Type=simple
+User=mattermost
+Group=mattermost
+ExecStart=/usr/bin/mattermost
+WorkingDirectory=/usr/share/webapps/mattermost
+
+Restart=on-failure
+PrivateTmp=false
+
+[Install]
+WantedBy=multi-user.target
