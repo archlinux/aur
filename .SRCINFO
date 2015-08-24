@@ -1,0 +1,19 @@
+pkgbase = sguil-sensor
+	pkgdesc = A network security monitoring program (sensor instance)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://www.sguil.net/
+	arch = any
+	license = GPL3
+	depends = tcl
+	depends = tls
+	optdepends = barnyard2: A dedicated spooler for Snort's unified2 binary output format.
+	optdepends = snort: IPS\IDS detection solution
+	optdepends = suricata: Multi-threaded IPS\IDS
+	optdepends = pads: Passive Asset Detection System (pads)
+	source = https://github.com/bammv/sguil/archive/v0.9.0.tar.gz
+	md5sums = c59dccc15835204ace2a335356dfd487
+	sha256sums = 412be894d67a6487312dd16a98a580dda8c38cff2e24f7a6c25405857769782b
+
+pkgname = sguil-sensor
+
