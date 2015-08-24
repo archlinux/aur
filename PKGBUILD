@@ -1,28 +1,33 @@
 # Maintainer: Elvis Angelaccio <elvis dot angelaccio at kdemail dot net>
 
 pkgname=kronometer
-pkgver=1.6.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A simple chronometer application built for KDE."
+pkgdesc="A simple chronometer application."
 arch=('i686' 'x86_64')
 url="http://aelog.org/kronometer"
 license=('GPL2')
-depends=('kdelibs')
+depends=('kconfig' 'kxmlgui' 'kwidgetsaddons')
+makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kronometer-git')
-makedepends=('automoc4' 'cmake' 'make')
 install=$pkgname.install
 source=(http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('7c196902805a57ae8afc476e80fe534ca73900992aa551cdb9cab10a12e0f1f8')
+sha256sums=('9dbecf73b58b727039f8b82f2bffa171d9adf8c495804a8c925d2caacd5353fe')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  	cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` \
-		  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-		  .
-	make
+  cd build
+  cmake ../$pkgname-$pkgver \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF
+  make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd build
   make DESTDIR="$pkgdir" install
-} 
+}
