@@ -1,9 +1,10 @@
 # Maintainer: Thomas Sarboni <max-k@post.com>
 
-pkgname=python-flask-restful
+pkgbase=python-flask-restful
+pkgname=('python-flask-restful' 'python2-flask-restful')
 _realname=Flask-RESTful
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Flask extension for creating REST APIs'
 _baseurl='https://pypi.python.org'
 url="${_baseurl}/pypi/${_realname}"
@@ -37,7 +38,7 @@ package_python-flask-restful() {
   cd "${srcdir}/${_realname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 
-  _licenses_path="${pkgdir}/usr/share/licenses/${pkgname}"
+  _licenses_path="${pkgdir}/usr/share/licenses/python-flask-restful"
   install -D -m644 ${srcdir}/LICENSE "${_licenses_path}/LICENSE"
 }
 
