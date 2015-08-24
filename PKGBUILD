@@ -15,7 +15,7 @@ conflicts=('emacs')
 provides=('emacs')
 options=('docs' '!emptydirs' '!makeflags')
 install=emacs.install
-source=("$pkgname::git://git.savannah.gnu.org/emacs.git")
+source=("git://git.sv.gnu.org/emacs.git")
 md5sums=('SKIP')
 
 pkgver() {
