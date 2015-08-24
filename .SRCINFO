@@ -1,6 +1,6 @@
 pkgbase = jrebel
 	pkgdesc = JRebel is a JVM-plugin that makes it possible for Java developers to instantly see any code change made to an app without redeploying.
-	pkgver = 6.2.2
+	pkgver = 6.2.3
 	pkgrel = 1
 	url = http://zeroturnaround.com/software/jrebel/
 	install = jrebel.install
@@ -11,10 +11,10 @@ pkgbase = jrebel
 	provides = jrebel
 	backup = etc/profile.d/jrebel.sh
 	backup = etc/profile.d/jrebel.csh
-	source = jrebel-6.2.2-nosetup.zip::https://dl.zeroturnaround.com/?token=f67b6b4dc3f8cbdc4dd398202295cf656a351c87
+	source = jrebel-6.2.3-nosetup.zip::https://dl.zeroturnaround.com/?token=e529e57061e48193b2528ff875ae019e4fc71db6
 	source = jrebel.sh
 	source = jrebel.csh
-	md5sums = ba84d6c1d0dafc67174d49b57fe9ce28
+	md5sums = 85b852f2939c8a8662eb633acef7965e
 	md5sums = 3acd6fe2b66cc18c74d15fff985bac33
 	md5sums = 4f7cfc0ab796d6de2da1c650247fe3d1
 
