@@ -2,7 +2,7 @@ pkgbase = dbus-c++-chromiumos
 	pkgdesc = A C++ API for D-BUS with fixes from Google
 	pkgver = master
 	pkgrel = 0
-	url = http://git.chromium.org/gitweb/?p=chromiumos/third_party/dbus-cplusplus.git
+	url = http://chromium.googlesource.com/chromiumos/third_party/dbus-cplusplus
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = dbus-c++-chromiumos
 	depends = ctemplate
 	provides = dbus-c++
 	conflicts = dbus-c++
-	source = git+http://git.chromium.org/chromiumos/third_party/dbus-cplusplus.git
+	source = git+http://chromium.googlesource.com/chromiumos/third_party/dbus-cplusplus.git
 	md5sums = SKIP
 
 pkgname = dbus-c++-chromiumos
