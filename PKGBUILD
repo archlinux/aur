@@ -9,7 +9,7 @@ license=('GPL2')
 url="https://github.com/daid/Cura"
 provides=('cura')
 conflicts=('cura')
-depends=('python' 'python-pyqt5' 'python-opengl' 'python-pyserial' 'python-numpy' 'python-power-git' 'python-protobuf3' 'libarcus-git' 'qt5-quickcontrols')
+depends=('python' 'python-pyqt5' 'python-pyserial' 'python-numpy' 'python-protobuf3' 'libarcus-git' 'qt5-quickcontrols')
 makedepends=('git' 'cmake')
 source=('git+https://github.com/Ultimaker/Cura.git'
         'git+https://github.com/Ultimaker/CuraEngine.git'
