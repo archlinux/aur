@@ -5,9 +5,9 @@
 pkgname=st-pizz
 _pkgname=st
 epoch=1
-pkgver=20150127.629f8cd
-pkgrel=2
-pkgdesc='Simple virtual terminal emulator for X from Github.'
+pkgver=20150129.fb845ba
+pkgrel=1
+pkgdesc='Simple virtual terminal emulator for X from Github. Customizations: Droid Sans font; solarized; xcompmgr (optional for transparency)'
 url='https://github.com/pizzooid/st'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
@@ -31,7 +31,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
+	make PREFIX=/usr DESTDIR="${pkgdir}" TERMINFO="$pkgdir/usr/share/terminfo" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/README"
 }
