@@ -15,7 +15,7 @@ options=('docs' '!emptydirs' '!makeflags')
 provides=('emacs')
 conflicts=('emacs')
 install=emacs.install
-source=("git://git.savannah.gnu.org/emacs.git#branch=xwidget_mvp")
+source=("git://git.sv.gnu.org/emacs.git#branch=xwidget_mvp")
 md5sums=('SKIP')
 _gitname="emacs"
 
