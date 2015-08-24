@@ -1,0 +1,23 @@
+pkgbase = binreader
+	pkgdesc = Simple No-nonsense NZB download manager.
+	pkgver = 1.0beta3
+	pkgrel = 1
+	url = http://www.binreader.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt4
+	depends = glibc
+	depends = libxdmcp
+	depends = libxcb
+	depends = openssl
+	depends = libpng
+	depends = freetype2
+	depends = libxrender
+	depends = libx11
+	depends = par2cmdline
+	source = https://web.archive.org/web/20140122123931/http://www.binreader.com/binreader_1.0beta3_i386.deb
+	md5sums = 1563486ebedbb3959711d6f2a339f567
+
+pkgname = binreader
+
