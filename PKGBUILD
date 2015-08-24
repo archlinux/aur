@@ -4,7 +4,7 @@
 _pkgname=imgmin
 pkgname=$_pkgname-git
 pkgver=1.1.r6.gea2b77c
-pkgrel=1
+pkgrel=2
 pkgdesc="Automated lossy JPEG optimization"
 arch=('i686' 'x86_64')
 url="https://github.com/rflynn/imgmin"
@@ -23,7 +23,8 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  sed -i 's/\(MAGICK_CONFIG.*\?xargs\)/\1|sed "s\/-fopenmp\\s\/\/g"/' src/apache2/Makefile.am
+  #temporarily fix https://github.com/rflynn/imgmin/issues/56 (Quality Worse than with ImageMagick convert)
+  sed -i 's~        (void) MagickSetImageProperty(mw, "jpeg:sampling-factor", "2x2");~//\0~' src/imgmin.c
   autoreconf -fi
 }
 
