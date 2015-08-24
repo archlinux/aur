@@ -3,7 +3,7 @@
 pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
 _pkgname=${pkgname[0]/-git/}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=2.2.0
+pkgver=2.2.0.r77.1821d8b
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
@@ -15,10 +15,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  local version=$(git describe)
-  local version=${version/chocolate-doom-/}
-  local version=${version//-/.}
-  echo $version
+  local version="$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf %s "${version##chocolate.doom.}"
 }
 
 prepare() {
