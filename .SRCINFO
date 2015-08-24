@@ -1,0 +1,16 @@
+pkgbase = ruby-timers-4.0
+	pkgdesc = Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/celluloid/timers
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-hitimes
+	noextract = timers-4.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/timers-4.0.1.gem
+	sha1sums = e4b0324f6ef2687bfd5e350399e9bd66c8acca63
+
+pkgname = ruby-timers-4.0
+
