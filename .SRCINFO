@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-transmission-interface
+	pkgdesc = ROS - Transmission Interface.
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_control/wiki
+	arch = any
+	license = Modified BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-resource-retriever
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-hardware-interface
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-pluginlib
+	makedepends = tinyxml
+	depends = ros-indigo-resource-retriever
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-pluginlib
+	depends = tinyxml
+	source = transmission_interface::git+https://github.com/ros-gbp/ros_control-release.git#tag=release/indigo/transmission_interface/0.9.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-transmission-interface
+
