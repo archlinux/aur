@@ -3,15 +3,16 @@
 
 pkgname=pixiewps-git
 _pkgname=pixiewps
-pkgver=r21.c849ad1
+pkgver=r23.d917f8f
 pkgrel=1
 pkgdesc="Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs"
 arch=('i686' 'x86_64')
 url="https://github.com/wiire/pixiewps"
 license=('GPL')
 depends=('openssl')
+conflicts=('pixiewps')
+provides=('pixiewps')
 source=(git+https://github.com/wiire/pixiewps.git)
-#source=(https://github.com/wiire/pixiewps/archive/v$pkgver.tar.gz)
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,7 +22,8 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"/src/
-	sed -e 14,15d -e '16 s/m/D&/'  -i Makefile
+	# edit makefile
+	sed -e 14d -e 16d -e '15 s/install/& -Dm 755 /'  -i Makefile
 	make
 }
 

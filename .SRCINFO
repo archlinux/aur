@@ -1,12 +1,14 @@
 pkgbase = pixiewps-git
 	pkgdesc = Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs
-	pkgver = r21.c849ad1
+	pkgver = r23.d917f8f
 	pkgrel = 1
 	url = https://github.com/wiire/pixiewps
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = openssl
+	provides = pixiewps
+	conflicts = pixiewps
 	source = git+https://github.com/wiire/pixiewps.git
 	md5sums = SKIP
 
