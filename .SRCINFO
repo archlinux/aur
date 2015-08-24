@@ -1,6 +1,6 @@
 pkgbase = gnome-flashback-git
 	pkgdesc = GNOME Flashback session (development version)
-	pkgver = 3.17.2.r41.g68aa436
+	pkgver = 3.17.2.r57.gc375d0f
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	install = gnome-flashback.install
@@ -17,6 +17,7 @@ pkgbase = gnome-flashback-git
 	depends = gnome-panel
 	depends = gnome-screensaver
 	depends = gnome-session
+	depends = gnome-settings-daemon
 	depends = metacity
 	depends = nautilus
 	depends = notification-daemon
