@@ -37,7 +37,7 @@ curl -fLC - --retry 3 --retry-delay 3 "$mirrorlist_url" -o "$temp_mirrorlist_fil
 #TODO: Better sanity checking.
 if [[ $(diff <(head -n 2 "$temp_mirrorlist_file") <(echo -e '##\n## Arch Linux repository mirrorlist')) ]]; then
 	echo -e 'The downloaded mirrorlist file does not contain the following two lines, so it might be invalid.\n##\n## Arch Linux repository mirrorlist' >&2
-	exit 1;
+	exit 1
 fi
 
 #TODO: Only uncomment if necessary.
