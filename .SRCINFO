@@ -1,0 +1,13 @@
+pkgbase = cppreference-devhelp
+	pkgdesc = Offline cppreference documentation for devhelp
+	pkgver = 20140827
+	pkgrel = 1
+	url = http://en.cppreference.com/w/
+	arch = any
+	license = GPL
+	depends = devhelp
+	source = https://github.com/htfy96/cppreference-devhelp/raw/master/cppreference-devhelp-20140827.tar.gz
+	md5sums = 716565757597d502e6fcd9991e010581
+
+pkgname = cppreference-devhelp
+
