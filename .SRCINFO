@@ -1,7 +1,7 @@
 pkgbase = gnustep-corebase-clang-svn
 	pkgdesc = The GNUstep CoreBase Library is a library of general-purpose, non-graphical C objects, using Clang.
 	pkgver = r38298
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.gnustep.org/
 	arch = i686
@@ -20,8 +20,10 @@ pkgbase = gnustep-corebase-clang-svn
 	source = gnustep-corebase::svn://svn.gna.org/svn/gnustep/libs/corebase/trunk/
 	md5sums = SKIP
 	makedepends_i686 = clang
+	makedepends_i686 = gcc-objc
 	depends_x86_64 = lib32-libdispatch-clang-git
 	makedepends_x86_64 = lib32-clang
+	makedepends_x86_64 = gcc-objc-multilib
 
 pkgname = gnustep-corebase-clang-svn
 
