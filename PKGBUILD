@@ -2,7 +2,7 @@
 
 pkgname=shadowvpn-git
 _pkgname=ShadowVPN
-pkgver=0.2.0.6.g17f86cc
+pkgver=0.2.0.7.g84135b1
 pkgrel=1
 pkgdesc="A fast, safe VPN based on libsodium"
 arch=('i686' 'x86_64')
@@ -18,7 +18,8 @@ backup=('etc/shadowvpn/client.conf'
         'etc/shadowvpn/client_up.sh'
         'etc/shadowvpn/server.conf'
         'etc/shadowvpn/server_down.sh'
-        'etc/shadowvpn/server_up.sh')
+        'etc/shadowvpn/server_up.sh'
+        'lib/systemd/system/shadowvpn@.service')
 source=("git+https://github.com/rains31/${_pkgname}.git")
 md5sums=('SKIP')
 
@@ -29,7 +30,7 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname}
-  rmdir libsodium
+  rm -rf libsodium
 
   sed -e 's|SUBDIRS = ../libsodium||' \
       -e 's|AM_CFLAGS = .*libsodium.*$|AM_CFLAGS = -lsodium|' \
@@ -42,6 +43,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}
+  git submodule update --init libsodium
   ./autogen.sh
   ./configure --sysconfdir=/etc --disable-static --prefix=/usr
   make
@@ -50,5 +52,6 @@ build() {
 package() {
   cd ${_pkgname}
   make DESTDIR="$pkgdir" install
+  install -Dm644 samples/shadowvpn@.service "$pkgdir"/lib/systemd/system/shadowvpn@.service
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
 }
