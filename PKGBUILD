@@ -2,7 +2,7 @@
 
 pkgname=flake8-pep257
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Flake8 plugin for the pep257 Python utility for validating docstrings."
 arch=('any')
 url="https://github.com/Robpol86/flake8-pep257"
