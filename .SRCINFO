@@ -1,21 +1,22 @@
 pkgbase = cura
-	pkgdesc = A software solution for 3D printing aimed at RepRaps and the Ultimaker (built from source).
-	pkgver = 15.06.02
+	pkgdesc = A software solution for 3D printing aimed at RepRaps and the Ultimaker.
+	pkgver = 15.06.03
 	pkgrel = 1
 	url = https://ultimaker.com/en/products/cura-software
-	install = cura.install
 	arch = i686
 	arch = x86_64
 	license = AGPLv3
-	depends = python2
-	depends = wxpython
-	depends = python2-opengl
-	depends = python2-pyserial
-	depends = python2-numpy
-	depends = python2-power-git
+	makedepends = qt5-tools
+	depends = qt5-svg
+	depends = python-pyserial
+	depends = python-numpy
+	depends = uranium
+	depends = curaengine
 	provides = cura
-	source = https://github.com/Ultimaker/Cura/archive/15.06.02.tar.gz
-	sha1sums = 3dd2affd90183a9c9ad5ea95f653b4936cc93657
+	source = https://github.com/Ultimaker/Cura/archive/15.06.03.tar.gz
+	source = site-packages-dir.patch
+	sha1sums = d03d3e86fd40de6e791301b696c8c53ae288faa7
+	sha1sums = a1a21f761ababccf366ce100c536b21e83c69fb9
 
 pkgname = cura
 

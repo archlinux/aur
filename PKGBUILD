@@ -1,30 +1,36 @@
-# Maintainer: Grey Christoforo <my first name at my last name dot net>
+# Maintainer: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=cura
-pkgver=15.06.02
+pkgver=15.06.03
 pkgrel=1
-pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker (built from source)."
-depends=('python2' 'wxpython' 'python2-opengl' 'python2-pyserial' 'python2-numpy' 'python2-power-git')
+pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
+depends=('qt5-svg' 'python-pyserial' 'python-numpy' 'uranium' 'curaengine')
+makedepends=('qt5-tools')
 provides=('cura')
 url="https://ultimaker.com/en/products/cura-software"
 license=('AGPLv3')
 arch=('i686' 'x86_64')
-source=(https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz)
-sha1sums=('3dd2affd90183a9c9ad5ea95f653b4936cc93657')
+source=(https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz site-packages-dir.patch)
+sha1sums=('d03d3e86fd40de6e791301b696c8c53ae288faa7'
+          'a1a21f761ababccf366ce100c536b21e83c69fb9')
 
-install=cura.install
+#install=cura.install
 
-build()
-{
-	cd "${srcdir}"
-	
-	# unpack
-	#tar --xz -xf data.tar.xz
+prepare(){
+  cd Cura-${pkgver}
+  patch -Np1 -i ../site-packages-dir.patch
 }
 
-package()
-{
-	msg2 "Packaging"
+build(){
+  cd Cura-${pkgver}
+  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DURANIUM_SCRIPTS_DIR=/usr/share/uranium/scripts
+  make
+}
+
+package(){
+  cd Cura-${pkgver}
+  #python setup.py install --root="$pkgdir/" --optimize=1
+  make DESTDIR="${pkgdir}" install
 	# remove python-power since we have it in the deps:
 	#rm -rf "${srcdir}"/usr/share/cura/power/
 	
