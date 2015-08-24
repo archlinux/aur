@@ -25,7 +25,7 @@ sha1sums=('04c5cc1a7c88967250ebba9561d81e24104167db'
 package() {
   _destdir="${pkgdir}/opt/android-sdk/add-ons/"
   _apidir="addon-google_apis-google_inc_-${_apilevel}"
-  _apisrcdir=$(echo "${srcdir}"/google_phone_armv7-[0-9]*-mac-x86)
+  _apisrcdir=$(echo "${srcdir}"/google_phone_x86-[0-9]*-mac-x86)
 
   mkdir -p "${_destdir}"
   mv "${_apisrcdir}" "${_destdir}/${_apidir}"
