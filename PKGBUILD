@@ -3,7 +3,7 @@
 # Contributor: Andrew Engelbrecht <sudoman@ninthfloor.org>
 pkgname=dict-wn
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WordNet in dict format"
 arch=('any')
 url="http://wordnet.princeton.edu/"
@@ -34,8 +34,11 @@ package() {
 	cd WordNet-$pkgver
 	install -m 0755 -d $pkgdir/usr/share/doc/$pkgname/
 	install -m 0644 -t $pkgdir/usr/share/doc/$pkgname/ AUTHORS COPYING NEWS README
-
+	
 	cd contrib/wordnet_structures/
 	install -m 0755 -d $pkgdir/usr/share/dictd/
 	install -m 0644 -t $pkgdir/usr/share/dictd/ wn.dict.dz wn.index 
+	
+	mkdir -p /usr/share/licenses/dict-wn
+	ln -s /usr/share/doc/dict-wn/COPYING /usr/share/licenses/dict-wn
 }
