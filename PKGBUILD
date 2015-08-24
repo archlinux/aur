@@ -45,6 +45,9 @@ package() {
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
 
+  msg2 'Installing documentation...'
+  install -D -m655 README.md "${pkgdir}/usr/share/doc/opendht/README.md"
+
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
