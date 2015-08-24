@@ -1,6 +1,6 @@
 # Maintainer: Sulhan <ms at kilabit.info>
 pkgname=pgmodeler-git
-pkgver=v0.8.1.beta1.r3.gd75bd0c
+pkgver=v0.8.1.r4.g949d15a
 pkgrel=1
 pkgdesc="PostgreSQL Database Modeler"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'patch')
 provides=('pgmodeler')
 conflicts=('pgmodeler')
 source=(
-  "${pkgname}::git+https://github.com/pgmodeler/pgmodeler.git#branch=develop"
+  "${pkgname}::git+https://github.com/pgmodeler/pgmodeler.git#branch=0.8.2-alpha"
   "pgmodeler.desktop"
   "pgmodeler-git.install"
   "0001.patch"
