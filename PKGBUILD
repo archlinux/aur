@@ -24,6 +24,8 @@ build() {
 
   msg2 'Building...'
   ./autogen.sh
+  # Python bindings are disabled as of 2015-08-24 because they don't
+  # build.  See https://github.com/savoirfairelinux/opendht/issues/15
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -31,7 +33,8 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/opendht \
     --localstatedir=/var/lib/opendht \
-    --with-gnu-ld
+    --with-gnu-ld \
+    --disable-python
   make
 }
 
