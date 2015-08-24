@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('python2' 'python2-rrdtool' 'python2-lxml' 'python2-setuptools' 'zlib' 'python2-django' 'python2-dj-database-url'
 				  'python2-pip' 'python2-requests' 'python2-crypto' 'python2-sievelib' 'python2-chardet' 'python2-argparse' 'python2-django-reversion')
 optdepends=('python2-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python2-mysql-connector' 'python2-psycopg2' 'python2-aspw'
-			     'python2-gunicorn')
+			     'python2-gunicorn' 'python2-vex')
 provides=('modoboa')
 conflicts=('modoboa-git')
 source=("https://pypi.python.org/packages/source/m/$pkgname/$pkgname-$pkgver.tar.gz" 
