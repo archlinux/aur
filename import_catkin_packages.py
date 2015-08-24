@@ -608,9 +608,9 @@ def generate_pkgbuild(distro, package, directory, force=False,
 
   generated.add(package.name)
 
-  if package.packages:
-    for child_package in package.packages:
-      generate_pkgbuild(distro, child_package, directory,
+  if distro._is_meta_package(package.name):
+    for child_name in distro.meta_package_package_names(package.name):
+      generate_pkgbuild(distro, distro.package(child_name), directory,
                         force=force,
                         exclude_dependencies=exclude_dependencies,
                         no_overwrite=no_overwrite, recursive=recursive,

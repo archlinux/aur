@@ -1,7 +1,7 @@
 pkgbase = ros-build-tools
 	pkgdesc = Utilities for building arch packages for ROS stacks.
-	pkgver = 0.1.0
-	pkgrel = 5
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/bchretien/arch-ros-stacks
 	arch = i686
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = ros-build-tools
 	md5sums = d257f7f20384e894b0431ee61068aa96
 	md5sums = 563c9d1320a3a997db25d3087303dcfb
 	md5sums = 8d6d7eb89a12c449497b209f1a06655b
-	md5sums = 6686b653fd628d8cd31bd46ed7a33053
+	md5sums = 590922c9cb12d6e2f8e295df241e08ef
 	md5sums = 07f5253eb3f8cb5295c32026a20ab6c0
 
 pkgname = ros-build-tools
