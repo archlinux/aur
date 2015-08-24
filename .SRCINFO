@@ -1,0 +1,15 @@
+pkgbase = ruby-nenv
+	pkgdesc = Convenience wrapper for Ruby's ENV
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/e2/nenv
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = nenv-0.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nenv-0.2.0.gem
+	sha1sums = abadad26da4efca39096135b0a3bc864381e78ce
+
+pkgname = ruby-nenv
+
