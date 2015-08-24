@@ -1,0 +1,14 @@
+pkgbase = termboy
+	pkgdesc = A Nintendo GameBoy emulator for the Linux console
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dobyrch/termboy-go
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/dobyrch/termboy-go/archive/v0.1.1.tar.gz
+	sha256sums = a74b7c616fc895846259bd19ef6805f2ac1542b0c3a0cbaa457deb4a982b9588
+
+pkgname = termboy
+
