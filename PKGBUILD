@@ -5,12 +5,12 @@
 _gemname=jekyll-sass-converter
 pkgname=ruby-$_gemname
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A basic Sass converter for Jekyll.'
 arch=(any)
 url='https://github.com/jekyll/jekyll-sass-converter'
 license=(MIT)
-depends=(ruby-sass)
+depends=(ruby-sass ruby-jekyll-sass)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
