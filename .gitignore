@@ -1,4 +1,5 @@
 spl/
+*.tar.gz
 *.tar.xz
 *.sig
 *.log
