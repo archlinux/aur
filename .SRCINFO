@@ -1,0 +1,18 @@
+pkgbase = ogre-pagedgeometry-git
+	pkgdesc = Paged Geometry plugin for OGRE for fast rendering of trees and grass. Built against OGRE 1.8.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://code.google.com/p/ogre-paged
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ogre
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	provides = ogre-pagedgeometry
+	source = git+https://github.com/skybon/PagedGeometry.git
+	sha512sums = SKIP
+
+pkgname = ogre-pagedgeometry-git
+
