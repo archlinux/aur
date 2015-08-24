@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-libxdmcp
+	pkgdesc = X11 Display Manager Control Protocol library
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-xproto
+	depends = mingw-w64-crt
+	options = !strip
+	options = staticlibs
+	options = !buildflags
+	source = http://xorg.freedesktop.org//releases/individual/lib/libXdmcp-1.1.2.tar.bz2
+	sha256sums = 81fe09867918fff258296e1e1e159f0dc639cb30d201c53519f25ab73af4e4e2
+
+pkgname = mingw-w64-libxdmcp
+
