@@ -41,17 +41,18 @@ package_vdev-git() {
 
 	cd "$pkgname"
 	make -C vdevd \
-	     PREFIX='/usr' \
-	     DESTDIR="${pkgdir}" \
-	     SBINDIR="${pkgdir}/usr/bin" \
-	     USRSBINDIR="${pkgdir}/usr/bin" \
+		PREFIX='/usr' \
+		DESTDIR="${pkgdir}" \
+		SBINDIR="${pkgdir}/usr/bin" \
+		USRSBINDIR="${pkgdir}/usr/bin" \
 	install
 
 	make -C example \
-	     PREFIX='/usr' \
-	     DESTDIR="${pkgdir}" \
-	     SBINDIR="${pkgdir}/usr/bin" \
-	     USRSBINDIR="${pkgdir}/usr/bin" \
+		PREFIX='/usr' \
+		CONFDIR='/etc/vdev' \
+		DESTDIR="${pkgdir}" \
+		SBINDIR="${pkgdir}/usr/bin" \
+		USRSBINDIR="${pkgdir}/usr/bin" \
 	install
 
 	make DESTDIR="${pkgdir}" PREFIX=/usr -C hwdb install
@@ -74,10 +75,10 @@ package_vdevfs-git() {
 
 	cd vdev-git
 	make -C fs \
-	     PREFIX='/usr' \
-	     DESTDIR="${pkgdir}" \
-	     SBINDIR="${pkgdir}/usr/bin" \
-	     USRSBINDIR="${pkgdir}/usr/bin" \
+		PREFIX='/usr' \
+		DESTDIR="${pkgdir}" \
+		SBINDIR="${pkgdir}/usr/bin" \
+		USRSBINDIR="${pkgdir}/usr/bin" \
 	install
 }
 
