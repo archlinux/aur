@@ -1,0 +1,14 @@
+pkgbase = python-fritzconnection-git
+	pkgdesc = Communicate with the AVM FritzBox (python 3 fixes)
+	pkgver = r24.825d90687d62
+	pkgrel = 1
+	url = https://bitbucket.org/kbr/fritzconnection
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-setuptools
+	source = hg+https://bitbucket.org/Fettlaus/fritzconnection
+	sha512sums = SKIP
+
+pkgname = python-fritzconnection-git
+
