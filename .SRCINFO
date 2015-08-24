@@ -6,6 +6,7 @@ pkgbase = eclipse-eclipsecolortheme
 	arch = any
 	license = EPL/1.0
 	makedepends = unzip
+	makedepends = java-environment
 	depends = eclipse
 	noextract = eclipse-eclipsecolortheme.zip
 	source = eclipse-eclipsecolortheme.zip::http://eclipse-color-theme.github.io/update/eclipse-color-theme-update-site.zip
