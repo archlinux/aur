@@ -1,15 +1,15 @@
 pkgbase = nvm
 	pkgdesc = Simple bash script to manage multiple active node.js versions
-	pkgver = 0.26.0
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://github.com/creationix/nvm
 	install = nvm.install
 	arch = any
 	license = MIT
 	optdepends = bash: bash completion
-	source = https://github.com/creationix/nvm/archive/v0.26.0.zip
+	source = https://github.com/creationix/nvm/archive/v0.26.1.zip
 	source = init-nvm.sh
-	md5sums = ef900d10c402d81eb53638613b5899c0
+	md5sums = 82f6451d0e028b2856799b67f1f37330
 	md5sums = 359e7cff11f9053a1d380272591d29f3
 
 pkgname = nvm
