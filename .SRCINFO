@@ -1,18 +1,18 @@
 pkgbase = android-armv7a-eabi-system-image
 	pkgdesc = Android ARM EABI v7a System Image, latest API
-	pkgver = 22_r01
+	pkgver = 23_r03
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
 	depends = android-platform
-	provides = android-armv7a-eabi-system-image-22
-	conflicts = android-armv7a-eabi-system-image-22
+	provides = android-armv7a-eabi-system-image-23
+	conflicts = android-armv7a-eabi-system-image-23
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_arm-22_r01.zip
+	source = http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_arm-23_r03.zip
 	source = source.properties
-	sha1sums = 2aa6a887ee75dcf3ac34627853d561997792fcb8
-	sha1sums = be0f8cc96b89bb98764be3108056d3db18c5f730
+	sha1sums = 7bb8768ec4333500192fd9627d4234f505fa98dc
+	sha1sums = c259150d426672ddbd6dc33819984a502eb0f0c9
 
 pkgname = android-armv7a-eabi-system-image
 

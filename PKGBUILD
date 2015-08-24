@@ -4,8 +4,8 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 # Package Repository: https://github.com/mij-aur-packages/android-armv7a-eabi-system-image
 
-_rev=r01
-_apilevel=22
+_rev=r03
+_apilevel=23
 pkgname=android-armv7a-eabi-system-image
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
@@ -17,10 +17,10 @@ depends=("android-platform")
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_arm-22_r01.zip"
+source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_arm-23_r03.zip"
         "source.properties")
-sha1sums=('2aa6a887ee75dcf3ac34627853d561997792fcb8'
-          'be0f8cc96b89bb98764be3108056d3db18c5f730')
+sha1sums=('7bb8768ec4333500192fd9627d4234f505fa98dc'
+          'c259150d426672ddbd6dc33819984a502eb0f0c9')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
