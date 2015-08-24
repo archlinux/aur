@@ -1,7 +1,7 @@
 pkgbase = imapsync
 	pkgdesc = IMAP synchronisation, sync, copy or migration tool
 	pkgver = 1.644
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.linux-france.org/prj/
 	arch = any
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = imapsync
 	depends = perl-data-uniqid
 	depends = perl-io-socket-inet6
 	optdepends = perl-ntlm
+	optdepends = perl-test-pod
 	source = https://github.com/imapsync/imapsync/archive/imapsync-1.644.tar.gz
 	sha256sums = cdca8c91eba7e6b771d52e9092521c523ee5042ce669c6e126f3c2171029a74a
 
