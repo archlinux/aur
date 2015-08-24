@@ -34,7 +34,8 @@ build() {
     --sharedstatedir=/usr/share/opendht \
     --localstatedir=/var/lib/opendht \
     --with-gnu-ld \
-    --disable-python
+    --disable-python \
+    --disable-doc
   make
 }
 
