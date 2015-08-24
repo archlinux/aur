@@ -1,0 +1,17 @@
+pkgbase = rr
+	pkgdesc = a nondeterministic debugger
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://rr-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = libpfm4
+	depends = libdisasm
+	source = https://github.com/mozilla/rr/archive/3.0.0.tar.gz
+	sha1sums = 5435124699a629ca933ebed9515fed5cc92f3bbc
+
+pkgname = rr
+
