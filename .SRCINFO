@@ -1,17 +1,17 @@
 pkgbase = android-platform
 	pkgdesc = Android SDK Platform, latest API
-	pkgver = 22_r02
+	pkgver = 23_r01
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
 	depends = android-sdk
 	depends = android-sdk-platform-tools
-	provides = android-platform-22
-	conflicts = android-platform-22
+	provides = android-platform-23
+	conflicts = android-platform-23
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/android-22_r02.zip
-	sha1sums = 5d1bd10fea962b216a0dece1247070164760a9fc
+	source = https://dl-ssl.google.com/android/repository/android-23_r01.zip
+	sha1sums = cbccca8d3127e894845556ce999b28281de541bd
 
 pkgname = android-platform
 
