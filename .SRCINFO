@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-controller-manager
+	pkgdesc = ROS - The controller manager.
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_control/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-controller-interface
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-realtime-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-hardware-interface
+	makedepends = ros-indigo-controller-manager-msgs
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-controller-interface
+	depends = ros-indigo-rostest
+	depends = ros-indigo-realtime-tools
+	depends = ros-indigo-hardware-interface
+	depends = ros-indigo-controller-manager-msgs
+	depends = ros-indigo-pluginlib
+	source = controller_manager::git+https://github.com/ros-gbp/ros_control-release.git#tag=release/indigo/controller_manager/0.9.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-controller-manager
+
