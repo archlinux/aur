@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-roslisp
 	pkgdesc = ROS - Lisp client library for ROS, the Robot Operating System.
-	pkgver = 1.9.18
+	pkgver = 1.9.19
 	pkgrel = 1
 	url = http://ros.org/wiki/roslisp
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-indigo-roslisp
 	depends = ros-indigo-rospack
 	depends = ros-indigo-std-srvs
 	depends = sbcl
-	source = roslisp::git+https://github.com/ros-gbp/roslisp-release.git#tag=release/indigo/roslisp/1.9.18-0
+	source = roslisp::git+https://github.com/ros-gbp/roslisp-release.git#tag=release/indigo/roslisp/1.9.19-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roslisp
