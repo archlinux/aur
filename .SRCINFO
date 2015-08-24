@@ -1,14 +1,16 @@
 pkgbase = ruby-timers
-	pkgdesc = Pure Ruby one-shot and periodic timers
-	pkgver = 4.0.1
+	pkgdesc = Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout
+	pkgver = 4.1.1
 	pkgrel = 1
-	url = https://rubygems.org/gems/timers
+	url = https://github.com/celluloid/timers
 	arch = any
 	license = MIT
+	depends = ruby
 	depends = ruby-hitimes
-	noextract = -4.0.1.gem
-	source = http://gems.rubyforge.org/gems/timers-4.0.1.gem
-	sha256sums = f45ca1b8ce6b26e29226c2144c512801a9019c3e781054d878c205cb0fd8500d
+	noextract = timers-4.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/timers-4.1.1.gem
+	sha1sums = ec3fded43e0985be6fbc69621eed278116b71ce2
 
 pkgname = ruby-timers
 
