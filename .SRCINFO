@@ -1,7 +1,7 @@
 pkgbase = vdev-git
 	pkgdesc = A virtual device manager for *nix
-	pkgver = r582.072fd7a
-	pkgrel = 2
+	pkgver = r586.5f102f0
+	pkgrel = 1
 	url = https://github.com/jcnelson/vdev.git
 	arch = x86_64
 	arch = i686
@@ -27,6 +27,14 @@ pkgname = vdev-git
 	backup = 
 	backup = etc/vdev/actions/*.act
 	backup = etc/vdev/*.conf
+
+pkgname = vdevfs-git
+	depends = libpstat
+	depends = fskit
+	depends = fuse
+	depends = libstdc++5
+	provides = vdevfs
+	conflicts = vdevfs
 
 pkgname = vdev-libudev-compat-git
 	provides = libudev
