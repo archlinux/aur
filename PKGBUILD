@@ -4,7 +4,7 @@
 pkgname='watchman-sm-services-git'
 pkgdesc='Service scripts for watchman'
 license=( 'BSD' )
-pkgver=r136.6d33ef6
+pkgver=r143.623cf07
 pkgrel=1
 arch=( 'any' )
 url='https://github.com/fbt/watchman-services'
