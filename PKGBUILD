@@ -3,7 +3,7 @@
 
 _srcname=fancontrol-gui
 pkgname=${_srcname}-git
-pkgver=0.1.r103.g677facc
+pkgver=0.1.r104.g16987cf
 pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('any')
