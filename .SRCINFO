@@ -1,0 +1,13 @@
+pkgbase = mingw-w64-xorg-util-macros
+	pkgdesc = X.Org Autotools macros (mingw-w64)
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	source = http://xorg.freedesktop.org//releases/individual/util/util-macros-1.19.0.tar.bz2
+	sha256sums = 2835b11829ee634e19fa56517b4cfc52ef39acea0cd82e15f68096e27cbed0ba
+
+pkgname = mingw-w64-xorg-util-macros
+
