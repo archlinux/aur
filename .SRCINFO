@@ -1,0 +1,17 @@
+pkgbase = spc2it-git
+	pkgdesc = Converts SPC700 sound files to the Impulse Tracker format
+	pkgver = r26.gb95b6ac
+	pkgrel = 1
+	url = https://github.com/uyjulian/spc2it
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = spc2it
+	conflicts = spc2it
+	source = spc2it-git::git+https://github.com/uyjulian/spc2it.git
+	md5sums = SKIP
+
+pkgname = spc2it-git
+
