@@ -4,15 +4,23 @@
 
 pkgname=fatrat
 pkgver=1.2.0_beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Download/Upload Manager"
 arch=("i686" "x86_64")
 url="http://fatrat.dolezel.info"
 license=("custom: GPL2 + complement")
 depends=("qt4")
 makedepends=("cmake")
-source=("https://github.com/LubosD/fatrat/archive/1.2.0_beta2.tar.gz")
-sha256sums=("187081ad9d6f6f542eab2176c2c00936c7307c08cf903ed752bfc6be13892109")
+source=("https://github.com/LubosD/fatrat/archive/1.2.0_beta2.tar.gz"
+        "qt4-binary-path.patch")
+sha256sums=("187081ad9d6f6f542eab2176c2c00936c7307c08cf903ed752bfc6be13892109"
+            "da116ae89f82b8cd57e14c91975d3414f4221b1855aa9a9e205fec90ae17564b")
+
+prepare() {
+
+  patch -p1 < qt4-binary-path.patch
+
+}
 
 build() {
 

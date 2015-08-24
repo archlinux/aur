@@ -1,0 +1,11 @@
+--- a/fatrat-1.2.0_beta2/CMakeLists.txt	2012-07-14 13:44:27.000000000 +0200
++++ b/fatrat-1.2.0_beta2/CMakeLists.txt	2015-08-24 16:38:12.282592139 +0200
+@@ -654,7 +654,7 @@
+ endif(WITH_JPLUGINS)
+ 
+ if(WITH_DOCUMENTATION)
+-	execute_process(COMMAND qcollectiongenerator
++	execute_process(COMMAND ${QT_QCOLLECTIONGENERATOR_EXECUTABLE}
+ 	${CMAKE_CURRENT_SOURCE_DIR}/doc/fatrat.qhcp -o
+ 	${CMAKE_CURRENT_SOURCE_DIR}/doc/fatrat.qhc)
+ 	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/doc/fatrat.qhc DESTINATION share/fatrat/doc)
