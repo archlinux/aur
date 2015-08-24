@@ -24,7 +24,6 @@ pkgbase = papyros-shell-git
 	depends = plasma-nm
 	optdepends = pulseaudio: audio support
 	optdepends = sddm: login screen theme
-	provides = papyros-shell
 	provides = papyros-shell-git
 	conflicts = papyros-shell
 	source = papyros-shell-git::git+https://github.com/papyros/papyros-shell.git#branch=develop
