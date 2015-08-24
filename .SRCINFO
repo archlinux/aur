@@ -1,6 +1,6 @@
 pkgbase = android-x86-system-image
 	pkgdesc = Android x86 Atom System Image, latest API
-	pkgver = 22_r01
+	pkgver = 23_r03
 	pkgrel = 1
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = android-x86-system-image
 	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
-	provides = android-x86-system-image-22
-	conflicts = android-x86-system-image-22
+	provides = android-x86-system-image-23
+	conflicts = android-x86-system-image-23
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86-22_r01.zip
+	source = http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86-23_r03.zip
 	source = source.properties
-	sha1sums = 6c7bb51e41a16099bb1f2a3cc81fdb5aa053fc15
-	sha1sums = 69ca9800cda1b5c027cd40688beb11a2a03bbb07
+	sha1sums = 3cb2e8efb575c35a558b091eac7e1bc5843f5f12
+	sha1sums = 43848a43b1c223c23f6410755edc19f65e55cc10
 
 pkgname = android-x86-system-image
 
