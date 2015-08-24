@@ -54,6 +54,7 @@ package() {
 
   chmod +x "$pkgdir/usr/bin/cura_app.py"
 
-  mv "$pkgdir/usr/lib64/" "$pkgdir/usr/lib/"
+  mv "$pkgdir/usr/lib/python3/" "$pkgdir/usr/lib/python3.4/"
+  mv "$pkgdir/usr/lib/python3.4/dist-packages/" "$pkgdir/usr/lib/python3.4/site-packages/"
 }
 
