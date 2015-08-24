@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-controller-interface
+	pkgdesc = ROS - Interface base class for controllers.
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_control/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-hardware-interface
+	makedepends = ros-indigo-pluginlib
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-hardware-interface
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-roscpp
+	source = controller_interface::git+https://github.com/ros-gbp/ros_control-release.git#tag=release/indigo/controller_interface/0.9.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-controller-interface
+
