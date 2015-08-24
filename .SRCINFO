@@ -1,6 +1,6 @@
 pkgbase = xiphos-svn
 	pkgdesc = A Bible study tool -- svn version
-	pkgver = 4922
+	pkgver = 4924
 	pkgrel = 1
 	url = http://xiphos.org
 	install = xiphos-svn.install
