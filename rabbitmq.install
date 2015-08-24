@@ -1,11 +1,10 @@
 post_install() {
   groupadd -r rabbitmq
   useradd -r -g rabbitmq -m -d /var/lib/rabbitmq -c "RabbitMQ messaging server" rabbitmq
-  # mkdir -p /var/lib/rabbitmq/mnesia
+  sed -ie "/NODENAME/s/rabbit/rabbit@$(hostname)/" /etc/rabbitmq/rabbitmq-env.conf
   chown -R rabbitmq:rabbitmq /var/log/rabbitmq
   chown -R rabbitmq:rabbitmq /var/lib/rabbitmq
   chown -R rabbitmq:root /etc/rabbitmq
-
 cat << EOF
 
 ==> WARNING:

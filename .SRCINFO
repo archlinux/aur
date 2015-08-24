@@ -1,7 +1,7 @@
 pkgbase = rabbitmq
 	pkgdesc = Highly reliable and performant enterprise messaging implementation of AMQP written in Erlang/OTP
 	pkgver = 3.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rabbitmq.com
 	install = rabbitmq.install
 	arch = i686

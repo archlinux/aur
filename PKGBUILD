@@ -8,7 +8,7 @@
 
 pkgname=rabbitmq
 pkgver=3.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly reliable and performant enterprise messaging implementation of AMQP written in Erlang/OTP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://rabbitmq.com"
