@@ -1,0 +1,12 @@
+diff -urpN system-config-samba-docs-1.0.9/doc/ca/ca.po changed-docs/doc/ca/ca.po
+--- system-config-samba-docs-1.0.9/doc/ca/ca.po	2010-08-24 15:01:52.000000000 +0200
++++ changed-docs/doc/ca/ca.po	2014-07-31 01:52:20.737625451 +0200
+@@ -164,7 +164,7 @@ msgstr ""
+ "tenir privilegis de root per tal de poder fer servir l'eina de configuració "
+ "de Samba. Per iniciar l'aplicació a l'escriptori, aneu al "
+ "<menuchoice><guimenu>menú principal al quadre (el menu amb la icona \"f\"</"
+-"guimenu>guisubmenu>Sistema</guisubmenu><guisubmenu>Administració</"
++"guimenu><guisubmenu>Sistema</guisubmenu><guisubmenu>Administració</"
+ "guisubmenu><guimenuitem>Samba</quimenuitem></menuchoice>."
+ 
+ #: /home/nils/src/docs/system-config-samba-docs/doc/C/system-config-samba-complete.xml:37(para)

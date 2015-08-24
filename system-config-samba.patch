@@ -1,0 +1,215 @@
+diff -urpN system-config-samba-1.2.100/Makefile changed/Makefile
+--- system-config-samba-1.2.100/Makefile	2013-02-01 15:45:10.000000000 +0100
++++ changed/Makefile	2014-07-30 21:44:34.883890568 +0200
+@@ -3,9 +3,6 @@
+ 
+ PKGNAME=system-config-samba
+ 
+-SCM_REMOTEREPO_RE = ^ssh://(.*@)?git.fedorahosted.org/git/$(PKGNAME).git$
+-UPLOAD_URL = ssh://fedorahosted.org/$(PKGNAME)
+-
+ PREFIX=/usr
+ SYSCONFDIR=/etc
+ BINDIR=${PREFIX}/bin
+@@ -14,14 +11,8 @@ MANDIR=${DATADIR}/man
+ PKGDATADIR=${DATADIR}/${PKGNAME}
+ PKGIMAGEDIR=${PKGDATADIR}/pixmaps
+ 
+-DBUS_POLICY_DIR=$(SYSCONFDIR)/dbus-1/system.d
+-DBUS_SERVICE_DIR=$(DATADIR)/dbus-1/system-services
+-
+-POLKIT_FILES			= config/org.fedoraproject.config.samba.policy.0 \
+-						  config/org.fedoraproject.config.samba.policy.1
+-
+ PY_SRC_DIR				= src
+-PY_SRC_APPS				= addUserWin.py basicPreferencesWin.py mainWindow.py sambaUserWin.py shareWindow.py system-config-samba.py system-config-samba-mechanism.py
++PY_SRC_APPS				= addUserWin.py basicPreferencesWin.py mainWindow.py sambaUserWin.py shareWindow.py system-config-samba.py
+ _PY_SRC_APPS			= $(patsubst %,$(PY_SRC_DIR)/%,$(PY_SRC_APPS))
+ PY_SRC_MODULES			= scsamba
+ _PY_SRC_MODULE_FILES	= $(shell find $(patsubst %,$(PY_SRC_DIR)/%,$(PY_SRC_MODULES)) -type f -a -name "*.py")
+@@ -29,20 +20,16 @@ PY_SOURCES				= $(_PY_SRC_APPS) $(_PY_SR
+ 
+ GLADE_SOURCES			= $(wildcard src/*.glade)
+ 
+-PO_SOURCES				= $(PY_SOURCES) $(PO_GLADEH_FILES) $(DESKTOPINH_FILES) $(POLKITINH_FILES)
++PO_SOURCES				= $(PY_SOURCES) $(PO_GLADEH_FILES) $(DESKTOPINH_FILES)
+ 
+-all:	py-build po-all polkit-all desktop-all
++all:	py-build po-all desktop-all
+ 
+-include rpmspec_rules.mk
+ include py_rules.mk
+-include git_rules.mk
+-include upload_rules.mk
+-include polkit_rules.mk
+ include desktop_rules.mk
+ include po_rules.mk
+ include icons_rules.mk
+ 
+-install:	all py-install po-install polkit-install desktop-install \
++install:	all py-install po-install desktop-install \
+ 	icons-install
+ 	install -d $(DESTDIR)$(PKGDATADIR)
+ 	install -d $(DESTDIR)$(BINDIR)
+@@ -53,7 +40,6 @@ install:	all py-install po-install polki
+ 		sed -e s,@VERSION@,$(PKGVERSION),g $${py} > $(DESTDIR)$(PKGDATADIR)/`basename $${py}` ; \
+ 	done
+ 	chmod 0755 $(DESTDIR)$(PKGDATADIR)/system-config-samba.py
+-	chmod 0755 $(DESTDIR)$(PKGDATADIR)/system-config-samba-mechanism.py
+ 	install -m 0644 src/*.glade $(DESTDIR)$(PKGDATADIR)
+ 	softdir=$(PKGDATADIR); \
+ 	if [ -n "$(DESTDIR)" ]; then \
+@@ -64,7 +50,5 @@ install:	all py-install po-install polki
+ 	softdir=$${softdir/#$$p} ; \
+ 	softdir=$${softdir/#\/} ; \
+ 	ln  -fs ../$${softdir}/system-config-samba.py $(DESTDIR)$(BINDIR)/system-config-samba
+-	install -D -m 0644 config/org.fedoraproject.Config.Samba.conf $(DESTDIR)$(DBUS_POLICY_DIR)/org.fedoraproject.Config.Samba.conf
+-	install -D -m 0644 config/org.fedoraproject.Config.Samba.service $(DESTDIR)$(DBUS_SERVICE_DIR)/org.fedoraproject.Config.Samba.service
+ 
+-clean: py-clean po-clean polkit-clean desktop-clean
++clean: py-clean po-clean desktop-clean
+diff -urpN system-config-samba-1.2.100/src/mainWindow.py changed/src/mainWindow.py
+--- system-config-samba-1.2.100/src/mainWindow.py	2013-02-01 15:45:10.000000000 +0100
++++ changed/src/mainWindow.py	2014-07-31 00:39:51.319299654 +0200
+@@ -25,6 +25,7 @@
+ from scsamba.core import sambaConfig
+ from scsamba.core import sambaToken
+ from scsamba.core.sambaParser import SambaParseError
++from scsamba.core import sambaBackend
+ 
+ import gtk
+ import gobject
+@@ -66,16 +67,9 @@ iconName = 'system-config-samba'
+ 
+ 
+ class MainWindow(object):
+-    def __init__(self, debug_flag=False, use_dbus=True):
++    def __init__(self, debug_flag=False):
+         self.debug_flag = debug_flag
+ 
+-        if use_dbus == None:
+-            if os.getuid() != 0 and os.geteuid() != 0:
+-                use_dbus = True
+-            else:
+-                use_dbus = False
+-        self.use_dbus = use_dbus
+-
+         if os.access("system-config-samba.glade", os.F_OK):
+             self.xml = gtk.glade.XML("system-config-samba.glade",
+                     domain="system-config-samba")
+@@ -101,29 +95,8 @@ class MainWindow(object):
+         self.nameTag = _("Samba")
+         self.commentTag = _("Create, modify, and delete samba shares")
+ 
+-        if use_dbus:
+-            # use monkey-patched SystemBus if available to have a default
+-            # method timeout of forever or at least very long
+-            try:
+-                from slip.dbus.bus import SystemBus
+-            except ImportError:
+-                from dbus import SystemBus
+-            import dbus.mainloop.glib
+-
+-            dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+-            self._bus = SystemBus()
+-            self._bus.default_timeout = None
+-
+-            from scsamba.dbus.proxy import sambaBackend
+-
+-            # Initialize smb.conf backend proxy
+-            self.samba_backend = sambaBackend.SambaBackend(bus=self._bus)
+-
+-        else:
+-            from scsamba.core import sambaBackend
+-
+-            # Initialize smb.conf backend
+-            self.samba_backend = sambaBackend.SambaBackend()
++        # Initialize smb.conf backend
++        self.samba_backend = sambaBackend.SambaBackend()
+ 
+         def exp_activate(expander, expander_label):
+             if expander.get_expanded():
+diff -urpN system-config-samba-1.2.100/src/scsamba/core/sambaBackend.py changed/src/scsamba/core/sambaBackend.py
+--- system-config-samba-1.2.100/src/scsamba/core/sambaBackend.py	2013-02-01 15:45:10.000000000 +0100
++++ changed/src/scsamba/core/sambaBackend.py	2014-07-31 00:43:40.601199340 +0200
+@@ -23,7 +23,7 @@
+ 
+ import os
+ import errno
+-from slip.util.files import copyfile
++from shutil import copy
+ 
+ from sambaParser import SambaParser
+ 
+@@ -70,7 +70,7 @@ class SambaBackend(object):
+         try:
+             f = open(self.smb_conf_path, "rb")
+         except IOError:
+-            copyfile(self.smb_conf_template_path, self.smb_conf_path)
++            copy(self.smb_conf_template_path, self.smb_conf_path)
+             f = open(self.smb_conf_path, "rb")
+         filecontents = f.read()
+         f.close()
+diff -urpN system-config-samba-1.2.100/src/setup.py.in changed/src/setup.py.in
+--- system-config-samba-1.2.100/src/setup.py.in	2013-02-01 15:45:10.000000000 +0100
++++ changed/src/setup.py.in	2014-07-30 21:46:16.583670021 +0200
+@@ -8,8 +8,3 @@ setup(
+         packages=["scsamba", "scsamba.core"]
+         )
+ 
+-setup(
+-        name="scsamba.dbus",
+-        version="@VERSION@",
+-        packages=["scsamba.dbus", "scsamba.dbus.service", "scsamba.dbus.proxy"]
+-        )
+diff -urpN system-config-samba-1.2.100/src/system-config-samba.py changed/src/system-config-samba.py
+--- system-config-samba-1.2.100/src/system-config-samba.py	2013-02-01 15:45:10.000000000 +0100
++++ changed/src/system-config-samba.py	2014-07-31 01:14:36.015167725 +0200
+@@ -32,28 +32,21 @@ signal.signal(signal.SIGINT, signal.SIG_
+ import gettext
+ _ = lambda x: unicode(gettext.ldgettext("system-config-samba", x), "utf-8")
+ 
+-debug_flag = "--debug" in sys.argv
+-if "--no-dbus" in sys.argv:
+-    use_dbus = False
+-elif "--dbus" in sys.argv:
+-    use_dbus = True
+-else:
+-    use_dbus = None
+-
+ try:
+     import gtk
+ except:
+-    print >>sys.stderr, _("system-config-samba requires an X-Window display.")
++    print >>sys.stderr, _("There was an error in initializing GTK+. Please make sure a X Server is running.")
+     sys.exit(0)
+ 
+ os.umask(0022)
+ 
+ import mainWindow
+ from scsamba.exc import AuthError
++
+ main_window = None
+ try:
+-    main_window = mainWindow.MainWindow(debug_flag=debug_flag,
+-            use_dbus=use_dbus)
++    debug_flag = "--debug" in sys.argv
++    main_window = mainWindow.MainWindow(debug_flag=debug_flag)
+     if "main" in dir(gtk):
+         gtk.main()
+     else:
+diff -urpN system-config-samba-1.2.100/system-config-samba.desktop.in changed/system-config-samba.desktop.in
+--- system-config-samba-1.2.100/system-config-samba.desktop.in	2013-02-01 15:45:10.000000000 +0100
++++ changed/system-config-samba.desktop.in	2014-07-30 21:35:48.130183290 +0200
+@@ -1,9 +1,9 @@
+ [Desktop Entry]
+-_Name=Samba
++_Name=Samba Server Configuration
+ _Comment=Create, modify, and delete samba shares
+ Categories=System;Settings;
+ Icon=system-config-samba
+-Exec=/usr/bin/system-config-samba
++Exec=gksu /usr/bin/system-config-samba
+ Type=Application
+ StartupNotify=true
+ Terminal=false

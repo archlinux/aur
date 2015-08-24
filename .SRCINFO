@@ -1,0 +1,29 @@
+pkgbase = system-config-samba
+	pkgdesc = The Samba configuration tool by Red Hat
+	pkgver = 1.2.100
+	pkgrel = 1
+	url = http://fedoraproject.org/wiki/SystemConfig/samba
+	install = system-config-samba.install
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	depends = samba
+	depends = libuser
+	depends = gksu
+	depends = python2
+	source = https://fedorahosted.org/released/system-config-samba/system-config-samba-1.2.100.tar.bz2
+	source = https://fedorahosted.org/released/system-config-samba-docs/system-config-samba-docs-1.0.9.tar.bz2
+	source = system-config-samba.patch
+	source = system-config-samba-docs.patch
+	source = system-config-samba.8
+	md5sums = 31f28460724553d4741e514462befaa3
+	md5sums = 4285494ecac5f4ed34bd515e40aa057c
+	md5sums = fa728f13b98dcd2e981aa2a4e61ca0d9
+	md5sums = ef9ed98bdf27661263477ef2d5ba92d6
+	md5sums = 5abeeeea50f3d57bf14f0125748dea4f
+
+pkgname = system-config-samba
+
