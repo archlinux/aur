@@ -1,0 +1,14 @@
+pkgbase = mingw-w64-xcb-proto
+	pkgdesc = XML-XCB protocol descriptions (mingw-w64)
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://xcb.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = python
+	makedepends = libxml2
+	source = http://xcb.freedesktop.org//dist/xcb-proto-1.11.tar.bz2
+	sha256sums = b4aceee6502a0ce45fc39b33c541a2df4715d00b72e660ebe8c5bb444771e32e
+
+pkgname = mingw-w64-xcb-proto
+
