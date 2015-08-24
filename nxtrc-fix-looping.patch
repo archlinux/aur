@@ -1,0 +1,13 @@
+diff -upr nxtrc-2.3.orig/nxtrc.c nxtrc-2.3/nxtrc.c
+--- nxtrc-2.3.orig/nxtrc.c	2013-03-27 10:37:23.120000008 +0100
++++ nxtrc-2.3/nxtrc.c	2013-03-27 10:37:58.370000007 +0100
+@@ -24,7 +24,8 @@ void print_usage(void);
+ int main(int argc, char **argv)
+ {
+ int s,i,verb=0,loop=0;
+-char c,rsp;
++int c;
++char rsp;
+ extern char *optarg;
+ extern int optind, opterr, optopt;
+ char name[20]={0x0};

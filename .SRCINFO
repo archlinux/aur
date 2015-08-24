@@ -1,0 +1,16 @@
+pkgbase = nxtrc
+	pkgdesc = A tool for communicating with lego nxt brick over bluetooth
+	pkgver = 2.3
+	pkgrel = 4
+	url = http://www.scienzaludica.it/index.php?page=88
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bluez-libs
+	source = http://www.scienzaludica.it/files/nxtrc-2.3.tar.gz
+	source = nxtrc-fix-looping.patch
+	md5sums = d4be8bafe65e6336363a515ed5199ccc
+	md5sums = 37316df0b601c1c87009757b7c92dd80
+
+pkgname = nxtrc
+
