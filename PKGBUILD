@@ -2,7 +2,7 @@
 
 pkgname=cura
 pkgver=15.06.03
-pkgrel=1
+pkgrel=2
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('qt5-svg' 'python-pyserial' 'python-numpy' 'uranium' 'curaengine')
 makedepends=('qt5-tools')
@@ -14,7 +14,7 @@ source=(https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz site-packages
 sha1sums=('d03d3e86fd40de6e791301b696c8c53ae288faa7'
           'a1a21f761ababccf366ce100c536b21e83c69fb9')
 
-#install=cura.install
+install=cura.install
 
 prepare(){
   cd Cura-${pkgver}
@@ -29,23 +29,9 @@ build(){
 
 package(){
   cd Cura-${pkgver}
-  #python setup.py install --root="$pkgdir/" --optimize=1
   make DESTDIR="${pkgdir}" install
-	# remove python-power since we have it in the deps:
-	#rm -rf "${srcdir}"/usr/share/cura/power/
-	
-	# change python to python2 everywhere:
-	#sed -i 's|\/usr\/bin\/python|\/usr\/bin\/python2|' "${srcdir}"/usr/share/applications/cura.desktop "${srcdir}"/usr/share/cura/cura.py "${srcdir}"/usr/bin/cura
-	
-	# add a new line (pedantic):
-	#echo >> "${srcdir}/usr/bin/cura"
-	
-	# add the path since we need to call slicer exactly from /usr/share/cura
-	#sed -i '6 i os.chdir("/usr/share/cura")' "${srcdir}"/usr/share/cura/cura.py
-	#sed -i 's|os.path.dirname(__file__)|"/usr/share/cura"|' "${srcdir}"/usr/share/cura/cura.py
-	
-	#cp -r "${srcdir}"/usr "${pkgdir}"/usr
-	
+  # rename executable
+  mv ${pkgdir}/usr/bin/cura_app.py ${pkgdir}/usr/bin/cura
 }
 
 
