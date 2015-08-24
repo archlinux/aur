@@ -1,0 +1,30 @@
+pkgbase = databaseanime-git
+	pkgdesc = Management of your collection Anime, Manga, AMV and Dorama
+	pkgver = 374.f821fe6
+	pkgrel = 1
+	url = https://github.com/LibertaSoft/DatabaseAnime
+	install = databaseanime.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = make
+	depends = qt5-base>=5.3
+	depends = qt5-translations
+	depends = sqlite>=3.7.9
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = giflib: GIF images support
+	optdepends = libjpeg: JPEG images support
+	optdepends = libpng: PNG images support
+	provides = databaseanime
+	conflicts = databaseanime
+	source = databaseanime-git::git+https://github.com/LibertaSoft/DatabaseAnime.git
+	source = DatabaseAnime.desktop
+	source = databaseanime.install
+	md5sums = SKIP
+	md5sums = 55dc0013104bcb53eb012389f30e5411
+	md5sums = 51eef5ac2bb99c96ecea1d705734e04d
+
+pkgname = databaseanime-git
+

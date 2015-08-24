@@ -1,0 +1,7 @@
+pkgbase = databaseanime
+pkgname = databaseanime
+pkgdesc = Management of your collection Anime, Manga, AMV, Dorama
+pkgver = 1.4.1
+pkgrel = 1
+url = https://github.com/LibertaSoft/DatabaseAnime
+install = databaseanime.install

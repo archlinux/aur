@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.4.1
+Type=Application
+Name=Database Anime
+Keywords=anime;database;manga;amv;dorama;
+Keywords[ru]=аниме;манга;амв;дорама;вфефифыу фтшьу;
+Comment=Management of your Anime, Manga, AMV and Dorama.
+Comment[ru]=Систематизация вашей коллекции Аниме, Манги, AMV и Дорамы.
+TryExec=dba
+Exec=dba %u
+Icon=DatabaseAnime
+Categories=Database;Anime;Media;
+Terminal=false
+MimeType=x-scheme-handler/DatabaseAnime;
