@@ -11,7 +11,7 @@ pkgdesc="XML-XCB protocol descriptions (mingw-w64)"
 arch=(any)
 url="http://xcb.freedesktop.org/"
 license=('custom')
-makedepends=('python' 'libxml2' 'git')
+makedepends=('python' 'mingw-w64-libxml2' 'git')
 source=("xcb-proto::git://git.freedesktop.org/git/xcb/proto")
 sha256sums=('SKIP')
 
