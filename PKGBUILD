@@ -1,4 +1,5 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: Emanuel Couto <unit73e@gmail.com>
 # Contributor: xgdgsc <xgdgsc@gmail.com>
 # Contributor: Jesús Jerez <jerezmoreno@gmail.com>
 pkgname=eclipse-eclipsecolortheme
