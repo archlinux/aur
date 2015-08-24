@@ -1,6 +1,6 @@
 pkgbase = zita-mu1
 	pkgdesc = a simple JACK app used to organise stereo monitoring
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 2
 	url = http://kokkinizita.linuxaudio.org/linuxaudio/zita-mu1-doc/quickguide.html
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = zita-mu1
 	depends = cairo
 	depends = clxclient
 	depends = clthreads
-	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/zita-mu1-0.2.0.tar.bz2
-	md5sums = de3d238fab51cdea5b27a63d453bf0d3
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/zita-mu1-0.2.2.tar.bz2
+	md5sums = 5dc01b98a6d98e2d64303e232707d71f
 
 pkgname = zita-mu1
 
