@@ -13,9 +13,8 @@ depends=('python' 'python-pyqt5' 'python-opengl' 'python-pyserial' 'python-numpy
 makedepends=('git' 'cmake')
 source=('git+https://github.com/Ultimaker/Cura.git'
         'git+https://github.com/Ultimaker/CuraEngine.git'
-        'git+https://github.com/Ultimaker/Uranium.git'
-        'Cura-CMakeLists.patch')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'd6f730df5704d52b98c08676fd513c6b')
+        'git+https://github.com/Ultimaker/Uranium.git')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 _gitname="Cura"
 _gitbranch="master"
