@@ -1,0 +1,18 @@
+pkgbase = pydispatcher
+	pkgdesc = provides loosely-coupled message passing between Python objects (signal senders and receivers).
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/pydispatcher/
+	arch = any
+	license = GPL
+	makedepends = python-distribute
+	makedepends = python2-distribute
+	source = http://downloads.sourceforge.net/project/pydispatcher/pydispatcher/2.0.5/PyDispatcher-2.0.5.zip
+	md5sums = 1b9c2ca33580c2770577add7130b0b28
+
+pkgname = python-pydispatcher
+	depends = python
+
+pkgname = python2-pydispatcher
+	depends = python2>=2.3.3
+
