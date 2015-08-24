@@ -7,7 +7,6 @@ pkgbase = chocolate-doom-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = autoconf
 	makedepends = python
 	depends = libsamplerate
 	depends = sdl_mixer

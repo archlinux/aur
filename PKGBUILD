@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
-makedepends=('git' 'autoconf' 'python')
+makedepends=('git' 'python')
 source=(git+https://github.com/chocolate-doom/chocolate-doom.git)
 sha256sums=('SKIP')
 
