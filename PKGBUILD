@@ -25,11 +25,6 @@ pkgver() {
   git describe --tags | sed 's/-/./g'
 }
 
-prepare() {
-  cd "$srcdir"
-  patch -p0 <Cura-CMakeLists.patch
-}
-
 build() {
   mkdir -p CuraEngine/build
   cd CuraEngine/build
@@ -43,7 +38,7 @@ build() {
 
   mkdir -p ../../Cura/build
   cd ../../Cura/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DURANIUM_SCRIPTS_DIR="$srcdir/Uranium/scripts" ..
   make
 }
 
