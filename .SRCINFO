@@ -1,6 +1,6 @@
 pkgbase = libarcus-git
 	pkgdesc = A library designed to facilitate the communication between Cura and its backend and similar code.
-	pkgver = r84.3d6e94d
+	pkgver = r96.a1692b9
 	pkgrel = 1
 	url = https://github.com/Ultimaker/libArcus
 	arch = i686

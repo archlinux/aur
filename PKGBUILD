@@ -1,6 +1,6 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 pkgname=libarcus-git
-pkgver=r84.3d6e94d
+pkgver=r96.a1692b9
 pkgrel=1
 pkgdesc="A library designed to facilitate the communication between Cura and its backend and similar code."
 arch=('i686' 'x86_64')
@@ -21,15 +21,13 @@ pkgver() {
 build() {
   mkdir -p libArcus/build
   cd libArcus/build
-  cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_INCLUDEDIR="/usr/include" -DCMAKE_INSTALL_LIBDIR="/usr/lib" -DPYTHON_SITE_PACKAGES_DIR="/usr/lib/python3.4/site-packages/" ..
   make
 }
 
 package() {
   cd "$srcdir/libArcus/build"
   make DESTDIR="$pkgdir/" install
-
-  mv "$pkgdir/usr/local/lib64/" "$pkgdir/usr/lib/"
 }
 
 # vim:set ts=2 sw=2 et:
