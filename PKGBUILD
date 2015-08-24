@@ -4,7 +4,7 @@
 # Contributor: NeoRaider <neoraider@universe-factory.net>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=mingw-w64-libxcb
+pkgname=mingw-w64-libxcb-win32-git
 pkgver=1.11.r59.g4033d39
 pkgrel=1
 pkgdesc="X11 client-side library on top of Win32 - git version (mingw-w64)"
@@ -12,8 +12,8 @@ arch=('any')
 url="http://xcb.freedesktop.org/win32port/"
 depends=('mingw-w64-crt' 'mingw-w64-libxau' 'mingw-w64-winpthreads' \
 'mingw-w64-libxdmcp' 'mingw-w64-xcb-proto')
-makedepends=('git' 'libxslt' 'python')
-provides=("mingw-w64-libxcb-win32-git=$pkgver")
+makedepends=('git' 'libxslt' 'python' 'mingw-w64-xorg-util-macros')
+provides=("mingw-w64-libxcb=$pkgver")
 license=('custom')
 source=('xcb-win32'::'git+http://anongit.freedesktop.org/git/xcb/libxcb.git')
 sha256sums=('SKIP')
@@ -37,7 +37,9 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"/xcb-win32
+
+  export LC_ALL="C"
+  cd "${srcdir}"/xcb-win32 
 
   #generic, to make configure
     ./autogen.sh \
@@ -50,11 +52,12 @@ build() {
   
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+    export CFLAGS="-O2 -g -pipe -Wno-error -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
     export CXXFLAGS=$CFLAGS
+    export BASE_CFLAGS="-Wno-error"
     export LDFLAGS="$LDFLAGS -lssp -lws2_32 -lwinpthread"  
     ${_arch}-configure
-    make
+    make CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" BASE_CFLAGS="$BASE_CFLAGS"
     popd
   done
 }
