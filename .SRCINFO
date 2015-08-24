@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-control-toolbox
+	pkgdesc = ROS - The control toolbox contains modules that are useful across all controllers.
+	pkgver = 1.13.2
+	pkgrel = 1
+	url = http://ros.org/wiki/control_toolbox
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-realtime-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = tinyxml
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-realtime-tools
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-cmake-modules
+	depends = ros-indigo-dynamic-reconfigure
+	depends = tinyxml
+	source = control_toolbox::git+https://github.com/ros-gbp/control_toolbox-release.git#tag=release/indigo/control_toolbox/1.13.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-control-toolbox
+
