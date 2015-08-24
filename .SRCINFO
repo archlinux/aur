@@ -1,13 +1,13 @@
 pkgbase = pypy-pip
 	pkgdesc = The PyPA recommended tool for installing Python packages
-	pkgver = 7.1.0
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://pip.pypa.io/
 	arch = any
 	license = MIT
 	makedepends = pypy-setuptools
-	source = http://pypi.python.org/packages/source/p/pip/pip-7.1.0.tar.gz
-	sha256sums = d5275ba3221182a5dd1b6bcfbfc5ec277fb399dd23226d6fa018048f7e0f10f2
+	source = http://pypi.python.org/packages/source/p/pip/pip-7.1.2.tar.gz
+	sha256sums = ca047986f0528cfa975a14fb9f7f106271d4e0c3fe1ddced6c1db2e7ae57a477
 
 pkgname = pypy-pip
 	depends = pypy-setuptools
