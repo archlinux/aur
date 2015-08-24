@@ -1,6 +1,6 @@
 # Maintainer: Thomas Sarboni <max-k@post.com>
 
-pkgbase=pydispatcher
+pkgbase=python-pydispatcher
 _realname=PyDispatcher
 pkgname=('python-pydispatcher' 'python2-pydispatcher')
 pkgver=2.0.5
