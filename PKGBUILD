@@ -12,7 +12,7 @@ arch=('any')
 url="http://xcb.freedesktop.org/win32port/"
 depends=('mingw-w64-crt' 'mingw-w64-libxau' 'mingw-w64-winpthreads' \
 'mingw-w64-libxdmcp' 'mingw-w64-xcb-proto')
-makedepends=('git' 'libxslt' 'python' 'mingw-w64-xorg-util-macros')
+makedepends=('git' 'mingw-w64-libxslt' 'python' 'mingw-w64-xorg-util-macros')
 provides=("mingw-w64-libxcb=$pkgver")
 license=('custom')
 source=('xcb-win32'::'git+http://anongit.freedesktop.org/git/xcb/libxcb.git')

@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-libxcb
+pkgbase = mingw-w64-libxcb-win32-git
 	pkgdesc = X11 client-side library on top of Win32 - git version (mingw-w64)
 	pkgver = 1.11.r59.g4033d39
 	pkgrel = 1
@@ -6,19 +6,20 @@ pkgbase = mingw-w64-libxcb
 	arch = any
 	license = custom
 	makedepends = git
-	makedepends = libxslt
+	makedepends = mingw-w64-libxslt
 	makedepends = python
+	makedepends = mingw-w64-xorg-util-macros
 	depends = mingw-w64-crt
 	depends = mingw-w64-libxau
 	depends = mingw-w64-winpthreads
 	depends = mingw-w64-libxdmcp
 	depends = mingw-w64-xcb-proto
-	provides = mingw-w64-libxcb-win32-git=1.11.r59.g4033d39
+	provides = mingw-w64-libxcb=1.11.r59.g4033d39
 	options = !strip
 	options = staticlibs
 	options = !buildflags
 	source = xcb-win32::git+http://anongit.freedesktop.org/git/xcb/libxcb.git
 	sha256sums = SKIP
 
-pkgname = mingw-w64-libxcb
+pkgname = mingw-w64-libxcb-win32-git
 
