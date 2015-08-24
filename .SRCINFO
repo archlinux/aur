@@ -1,7 +1,7 @@
 pkgbase = tcllauncher
 	pkgdesc = A launcher for Tcl applications
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flightaware/tcllauncher
 	changelog = tcllauncher.changelog
 	arch = i686
@@ -9,12 +9,9 @@ pkgbase = tcllauncher
 	arch = armv6h
 	arch = armv7h
 	license = BSD
-	makedepends = git
-	makedepends = autoconf
 	depends = tcl
-	provides = tcllauncher
-	source = https://github.com/flightaware/tcllauncher/archive/v1.5.tar.gz
-	md5sums = 7cae6fa8e257d76fd4f122842898c7e8
+	source = tcllauncher.tar.gz::https://github.com/flightaware/tcllauncher/archive/v1.5.tar.gz
+	sha1sums = 665b316094161eb649e2318a221e098323588177
 
 pkgname = tcllauncher
 
