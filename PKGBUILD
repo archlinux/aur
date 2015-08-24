@@ -6,7 +6,7 @@
 # Package Repository: https://github.com/mij-aur-packages/android-sources
 
 _rev=r01
-_apilevel=22
+_apilevel=23
 pkgname=android-sources
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
@@ -15,8 +15,8 @@ arch=('any')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
 options=('!strip')
-source=("https://dl-ssl.google.com/android/repository/sources-22_r01.zip")
-sha1sums=('98320e13976d11597a4a730a8d203ac9a03ed5a6')
+source=("https://dl-ssl.google.com/android/repository/sources-23_r01.zip")
+sha1sums=('b0f15da2762b42f543c5e364c2b15b198cc99cc2')
 
 package() {
   install -d "${pkgdir}/opt/android-sdk/sources/"
