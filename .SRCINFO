@@ -1,0 +1,19 @@
+pkgbase = ocaml-curl
+	pkgdesc = OCaml bindings to libcurl networking library
+	pkgver = 0.5.3
+	pkgrel = 5
+	url = http://sourceforge.net/projects/ocurl/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = curl>=7.9.8
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = http://sourceforge.net/projects/ocurl/files/ocurl/0.5.3/ocurl-0.5.3.tgz
+	md5sums = c8b955e51f79dd2c62ab89577b27fe37
+
+pkgname = ocaml-curl
+
