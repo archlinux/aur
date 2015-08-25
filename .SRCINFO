@@ -1,0 +1,24 @@
+pkgbase = 4store
+	pkgdesc = Efficient, scalable and stable RDF database
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = http://www.4store.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = raptor
+	depends = rasqal
+	depends = glib2
+	depends = libxml2
+	depends = pcre
+	depends = avahi
+	depends = readline
+	depends = ncurses
+	depends = termcap
+	depends = expat
+	depends = zlib
+	source = http://4store.org/download/4store-v1.1.5.tar.gz
+	md5sums = 90512417abc588c6b60d7b2167f7dc39
+
+pkgname = 4store
+
