@@ -1,0 +1,32 @@
+pkgbase = mindi
+	pkgdesc = Create bootable disks or CD image with your system files, to allow system maintenance
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.mondorescue.org/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bzip2>=0.9
+	depends = udev>=173
+	depends = cdrkit
+	depends = ncurses
+	depends = binutils
+	depends = gawk
+	depends = dosfstools
+	depends = mindi-busybox>=1.7.3
+	depends = parted
+	depends = perl
+	depends = mtools
+	depends = which
+	depends = grep>=2.5
+	depends = cpio
+	depends = inetutils
+	backup = etc/mindi/mindi.conf
+	backup = etc/mindi/deplist.txt
+	backup = etc/mindi/deplist.d/addon.conf
+	source = ftp://ftp.mondorescue.org/src/mindi-3.0.0.tar.gz
+	md5sums = ea734e58dc617f6d4e1f7fffb79edd6a
+
+pkgname = mindi
+

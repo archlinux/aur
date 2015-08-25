@@ -1,0 +1,1295 @@
+# $Id$
+
+MINDI CHANGES
+
+2.1.2 (2012-06-03)
+- Fix a bug on RHEL 5 where lvdisplay doesn't support redirection. Adds a | cat in between, as was done for vgdisplay (Bruno Cornec)
+- Fix #617 and #615: Only non directtory are transferred to the rootfs by tar, in order to avoid linked dirs such as /lib to finish fully on it. (Bruno Cornec)
+- Adding pata_acpi support (Bruno Cornec)
+- Fix #607 by including kernel modules symlinked to modules out of tree (hpsa case from HP PSP) (Sanjeev V Kumar)
+- Fix #618 by adding support for new command tune4fs for labelling ext4 FS (needed on RHEL 5.6 at least) (Bruno Cornec)
+- Add support for HP CNA in Blades for PXE boot (Bruno Cornec)
+- Call kpartx to force device creation in case it wasn't done automatically as it should (Bruno Cornec)
+- Avoids useless warning by using the right regexp for 2.4.x kernel detection (Bruno Cornec)
+- Fix #609 by using option -L of stat in order to get the correct value for major and minor numbers of mapper links (bzium)
+- Fix #600 by linking /bin/sh to /bin/bash when it's in the initrd as the default shell used. Adds support for pushd/popd at least. (Bruno Cornec)
+- Fix #614 to add correct keyboard support on SLES 10 (Bruno Cornec)
+- Solve #610 by adding a --nolog option to mindi, which needs to be the first one, and used in analyze-my-lvm with a redirection of errors to /dev/null. (Bruno Cornec)
+- Fix #598 by increasing again boot sizes (Bruno Cornec)
+- Adds support for upstart (RHEL 6.2) to try having CTRL-ALT-DEL work again (Bruno Cornec)
+- Adds cnic net driver for bnx2i support on RHEL 6.2 at least (Bruno Cornec)
+- Prepare a new script to compute IP addresses mr-net-find (not used yet) (Bruno Cornec)
+- Fix #589 by removing fixed path for grep in mindi, and managing correctly paths for udev related binaries in mindi and rcS, and improving Arch Linux support (MC)
+- mv udev.files to udev.conf under deplist.d to be more coherent (Bruno Cornec)
+- Use LogFile everywhere possible as a echo replacement (Bruno Cornec)
+- Fix #590 by adding a warning in case of McAfee detection, and checking tar files before their copy. (Bruno Cornec)
+
+2.1.1 (2012-02-24)
+- Adds rpcbind support. Fixes RHEL6.2 NFS restore, and hopefully Debian as well. (Bruno Cornec)
+- Force inclusion all files mentioned in minimal.conf (Bruno Cornec)
+- Fix #576 by truncating the mesage text created with cut (Bruno Cornec)
+- Fix #586: mindi now skips swap files in the mountlist creation (Bruno Cornec)
+- Adds module usb_common support for Linux kernel 3.2 (Bruno Cornec)
+- Adds brtfs support (Michael Caerwyn mcaerwyn_at_gmail.com)
+- Fix a bug where lvm libes were duplicated (Michael Caerwyn mcaerwyn_at_gmail.com)
+- Fix #582 by avoiding the use of the term WARNING and using now INFO and a hopefully improved msg (Bruno Cornec)
+- Fix #519 for good by cjecking syslinux version 4.02 and making a special call to --stupid for it. THat's all it deserves ;-) (Bruno Cornec)
+- Adds support for more VIA device drivers (pata and rhine) (Bruno Cornec)
+- debugfs should be excluded from the device considered for fstab analysis (Bruno Cornec)
+
+2.1.0 (2011-12-23)
+- Fix a bug in analyze-my-lvm where LVs were created in random order (the one of lvscan) instead of using the dm-xxx order, which creates issues at restore time between the mapping created then and the one we had at backup time which could be inconsistent (Bruno Cornec)
+- Force activation of first partition which should not be optional as everything is destroyed before (Bruno Cornec)
+- Exclude sysfs devpts and tmpfs partitions found in RHEL 6.2 from analyze by mindi (made error messages) (Bruno Cornec)
+- Fix a bug in mindi when having multiple swap partiions with same starting string (/dev/dm-1 and /dev/dm-16). (Bruno Cornec)
+- Exclude /run similarly to /sys and /proc (Bruno Cornec)
+- Fix #525 and improve printing when no /etc/raidtab, but still md devices (Bruno Cornec)
+- Adds support for a new pata_atiixp, bnx2i, virtio drivers (Bruno Cornec)
+- Force block size back to 32768 in OBDR mode after skipping the 2 tape marks, to read the additional rootfs data corerctly (Bruno Cornec)
+- Fix #498 by using an external program (hpsa_obdr_mode) which can set the mode of the tape to CD-ROM or Sequential at will. (Bruno Cornec)
+- Simplify the function engaging SCSI for Smart Array controllers, and support as many controller as we have (Bruno Cornec)
+- Attempt to solve #503 by handling /lib64 separately for udev and only if not a link (to /lib) for Ubuntu 64 (Bruno Cornec)
+- Fix #499 by using a real init from busybox and moving our init script to etc/init.d/rcS. We also now call the reboot from busybox to exit, which indeed reset the system correctly (in a VM at least which wasn't the case before). Requires a new mindi-busybox as well. (Bruno Cornec)
+- Improve mindi support for kernel 3.x (Bruno Cornec)
+- Improve again ProLiant HW support, by adding references to the yet to come SSSTK rpm so that conrep is called at its future right place. (Bruno Cornec)
+- Fix #491 by correctly checking Xen kernel used for a dom0 env (Bruno Cornec)
+- Adds support for hwaddr (MAC addresses) at restore time, and map to the correct NIC if it's found at restore time (Stefan Heijmans/Bruno Cornec)
+- Fix an issue on udevadm call (Bruno Cornec)
+- Fix #501 by pushing BOOT_SIZE to 36864 for certain Ubuntu cases (Bruno Cornec)
+- Add compatibility with the latest SSSTK + PSP content for HP ProLiant + branding homogeneous now. Using hpacuscripting now. (Bruno Cornec)
+- Fix bugs in the kernel detection routine of mindi related to echo badly captured (Bruno Cornec)
+- Uses the -d option of the mount command to avoid leaving loop devices in use. Should fix the problems reported on the ML with NFS and more than 8 ISO images (Bruno Cornec)
+- Copy everything under .ssh of root account to allow for sshfs mount without passwd at restore time. (Bruno Cornec)
+- Improve msgs printed during kbd analysis (Bruno Cornec)
+- Fix an error when dmidecode reports comments before system name (Bruno Cornec)
+- Move fvat nd fat modules to CDROM_MODS in order to have them in the initrd to support saving logs to a USB device e.g. (Bruno Cornec)
+- Fix #492 by removing an extra useless fi (Bruno Cornec)
+- Fix issues in test of FindKernel for Xen and non Xen cases (Bruno Cornec)
+- Improve mbr.bin handling (Bruno Cornec)
+- Improve error message in case mondorestore isn't found (Bruno Cornec)
+- Install an MBR on USB devices when possible (Bruno Cornec)
+- Fix a compatibility bug in mindi where exclude lists with '|' was incorrectly analyzed (' ' still expected) (Bruno Cornec)
+- Adds 3 binaries called potentially by udev to support USB key mount at restore time (Victor Gattegno)
+- Removes a warning when trying to launch udevadm and it doesn't exist (RHEL 5 e.g.) (Bruno Cornec)
+
+2.0.7.8 (2011-06-27)
+- Fix mindi-get-perl-modules when perl dirs in @INC are symlinks (case on Ubuntu 11.04) (Bruno Cornec)
+- Fix option --findkernel in case of Xen kernel so that mondoarchive get a correct answer instead of an empty one. (Bruno Cornec)
+- Fix #484 by adding support for the arcmsr driver (to support the Areca ARC-1220 RAID Controller) (Bruno Cornec)
+- Avoids error msgs if no mondo-restore.cfg file exists (when mindi used stdalone) (Bruno Cornec)
+- Attempt to fix Xen kernel support by avoiding to remove xen kernel fro; the possible_kernels list too early, whereas it's used afterwards to get them. (Bruno Cornec)
+- Fix #481 by supporting the new kbd file in latest Ubuntu 10.10+ (Victor Gattegno)
+- Propose more variables in the mindi.conf example (Bruno Cornec)
+- More explicit messages when size unsufficient in mindi for kernel + initrd as per #471 (Bruno Cornec)
+- Log content of mondo-restore.cfg  (Bruno Cornec)
+- Remove very old code creating confusing symlinks pico to nano in init. Fix #477 (patch from MC)
+
+2.0.7.7 (2011-04-12)
+- Increase sizes again more for Debian 6/Ubuntu 10.x and Fedora 14 support (Victor Gattegno)
+- Adds a UdevadmTrigger function at restore time to deal with the various syntax formats changes ddepending on version (MC)
+- Improved Arch Linux support, boot message, keyboard, ... (MC)
+- Adds reboot to fix #435 (Bruno Cornec)
+- Use modprobe instead of insmod to load loop, cd, ... modules (in order to force them at restore time) (Bruno Cornec)
+- Add support for libahci driver (Bruno Cornec)
+
+2.0.7.6 (2011-02-27)
+- Adds functions and /bin/loadkeys (new location) to minimal set of commands to have (Bruno Cornec)
+- provides a makemessage option to mindi and this function now works with pbdistrocheck (Bruno Cornec)
+- Latest lvdisplay on RHEL6 prints MiB instead of MB. Impact on analyze-my-lvm fixed. (Bruno Cornec)
+- With mindi-busybox 1.18.3 the syntax of openvt changed. Mindi is now compatible with this as well as the older one. (Bruno Cornec)
+- Adds a restore quiet option (Bruno Cornec)
+- Fixes for RHEL6 support with additional modules (Bruno Cornec)
+- Fix #462 (removes temp dir if analyze-my-lvm launched in stand alone mode) (Bruno Cornec)
+- Fix issue with mindi when launched from a dir containing spaces (Bruno Cornec)
+- Fix #459 by correcting an old README containing info on the edit-mountlist binary which doesn't exist. (Bruno Cornec)
+- Adds support for hpsa (new HP Smart Array driver), r8169, xhci, virtio, mega_sr, ide_gd_mod, pata_jmicron, cp210x, dca, raid6_pq, xor async_tx, async_memcpy, async_xor, pata_sil680 drivers (Bruno Cornec)
+- Replace usage of pvs with pvscan for speed reasons in analyze-my-lvm (Bruno Cornec)
+- Workaround problems met on RHEL 5.2 and 5.4 around pvs command generating a list of \n separated pvs with back quotes in an unexpected way. (Bruno Cornec)
+- Adds /etc/rpc and /etc/netconfig as minimal deps for mindi for latest NFS support (Bruno Cornec)
+- Boot size and extra size pushed to 24MB and 70MB to support correctly Fedora 14 and Debian 6.0 (Bruno Cornec)
+- Fix #446 by exiting mindi before doing anything weird in it (Bruno Cornec)
+- Fix #445 to avoid vg with similar names to be wrongly excluded (vgroot and vgroot-san e.g.) (Michael Shapiro/Bruno Cornec)
+- Fix #426 by rewriting Xen kernel support to use TryToFindKernelPath systematically (Bruno Cornec)
+- mindi now copies also the /lib/firmware content in order to have it for drivers needing it (bnx2 reported) (Bruno Cornec)
+- Fix #434 by really testing thet udevd is not running already (chucky)
+- mindi is now able to handle compressed kernel with .gz or .bz2 suffix (case of OpenSuSE 11.2) (Bruno Cornec)
+
+2.0.7.5 (2010-06-15)
+- Fix Xen kernel detection (Michael Shapiro)
+- Remove libata warning (Bruno Cornec)
+
+2.0.7.4 (2010-06-09)
+- Fix #425: Do not blindly remove partitions at end of mindi (Don Hoover)
+- Integrate patch on Xen Kernel support for RHEL 5 (only atm) and fixes #418 (Michael Shapiro)
+- Fix a bug on ia64 where the boot image generated was removed before use in mondo (Bruno Cornec)
+
+2.0.7.3 (2010-04-12)
+- Fix #414 by adding a function GetPVsForLV to remove PVs from excluded LVs (Mike Shapiro)
+- Fix #415 by avoiding integration of unknown devices report from pvscan (Mike Shapiro)
+- Fix #413 where list of devices was not re-initialized correctly in a loop (Michael Shapiro)
+- Fix a bug on Mandriva modules analysis (Bruno Cornec)
+- Avoid perl warning by removing non-exitent dirs from @INC in mindi-get-perl-modules (Bruno Cornec)
+- Avoids error messages from stat in analyze-my-lvm (Bruno Cornec)
+- Adds a missing module for iSCSI support (Bruno Cornec)
+- Minor improvements for logs and display (Bruno Cornec)
+- Attempt to fix #394 by making the script executable and checking existence (Bruno Cornec)
+- Fix #393. When using excludevs= also exclude from mountlist the devices mentioned (Bruno Cornec)
+- Fix #395. analyze-my-lvm now provides an option to call GiveMapperOfdm that can be used in mindi (Bruno Cornec)
+- Fix #391. Adds support for sata_svw for Porliant DL 385 G5p (Bruno Cornec)
+- Adds support for ums-cypress, ocfs2 and Xen modules (Bruno Cornec)
+
+2.0.7.2 (2010-02-05)
+- Adds support for sata_svw for Porliant DL 385 G5p. Fixes #391 (Bruno Cornec/Robert)
+- Adds support for ums-cypress/ums_cypress (Bruno Cornec)
+- Improves device exclusion for LVM (support for symlinks, mapper at all levels: PV, VG, LV, and new boot option excludedevs) and fixes #382, #384, #385 (Bruno Cornec)
+- Rename some variables exported to avoid accidental conflict (EXCLUDE_DEVS => MINDI_EXCLUDE_DEVS and ADDITIONAL_BOOT_PARAMS => MINDI_ADDITIONAL_BOOT_PARAMS) (Bruno Cornec)
+- Using forcemods="mod1 mod2" will now do something and load those modules first (Bruno Cornec)
+- Adds support for links to modules (.ko pointing to .o) such as with VMWare extensions (Bruno Cornec)
+- Adds i-want-my-lvm content in mindi log file (Bruno Cornec)
+- Adds vmxnet3 driver support to mindi for some VMWare versions (Bruno Cornec)
+- Adds scsi_dump_register to mindi SCSI_MODS for RHEL3 + IBM servers (Bruno Cornec)
+- nfsopt restore boot time option added to support custom mount options for network restore (Bruno Cornec)
+
+2.0.7.1 (2009-11-28)
+- Improve support for serial console devices with a new serial boot param keyword (Bruno Cornec)
+- Improve analysis of kernel modules by printing whether it's a live or extra module which has not been found as reported in #362 (Matthew Cline) 
+- Update deplist for Debian support for bzip2, bunzip2 (Bruno Cornec/John Rentner)
+- some distro hold lvm commands under /usr/sbin (Bruno Cornec)
+- Adds a nolvm boot option at restore time (Bruno Cornec)
+- Adds support for diskdumplib driver useful for RHEL 3 and IBM xseries 336 (Bruno Cornec)
+- Adds support for variable serial port console, with defalut to /dev/ttyS0, and a boot param to change it with serial=/dev/ttySx (Bruno Cornec)
+- umount freshly created VFAT partition on USB key as Ubuntu has an automounter mounting it as soon as created (Steffen Neumann)
+
+2.0.7 (2009-10-09)
+- Adds a conf file example for mindi. Fix #360 (Bruno Cornec)
+- cdrkit support for mindi. Fix #359 (Matthew Cline)
+- Exclude CIFS mounts from the mountlist. Fix #288 (Bruno Cornec)
+- Adds support for initramfs (gzip/bzip2/lzma) or ext2/3/cpio initrd support with kernel 2.6.30+. Fix #353 (Bruno Cornec/Hugo Vanwoerkom)
+- Improve udev timeouts (Bruno Cornec)
+- Fix udev support in init for Mandriva 2009.1 (Bruno Cornec)
+- Split deplist.txt in multiple conf files under deplist.d (Bruno Cornec)
+- Adds Fuse SSHFS support at restore time (Bruno Cornec)
+- Adds support for ext3 compressed initrd and other compression format initramfs for Debian (Bruno Cornec)
+- analyze-my-lvm now removes excluded devices from list coming from mondoarchive (Bruno Cornec)
+- Adds support for bnx2x (BL 460 G6), igb (Intel cards) and auth_rpcgss Debian kernel 2.6.31 (Bruno Cornec/Maxime)
+- Split deplist.conf in multiple files under deplist.d and keep it only for local changes (Bruno Cornec)
+- Change NFS support into a generic NetFS support. keyword changed from nfs... to netfs... and proto added (Bruno Cornec)
+- Addition of a nomd option to avoid starting mdadm (Bruno Cornec)
+- mpath is only started if there was a mpath entry in mountlist (Bruno Cornec)
+- Fix SElinux support (Laurent Gehlen)
+- Message file rewritten. Fix #160 and #346 (Bruno Cornec)
+- Add support for pre and post scripts at restore time (Bruno Cornec)
+- Remove inactive vg from lvmscan output in analyze-my-lvm (Bruno Cornec)
+- Do not exit abruptly in any case in analyze-my-lvm when detecting an analysis issue, but return instead (Bruno Cornec)
+- MINDI_CACHE is only purged if a real work is asked to mindi (Bruno Cornec)
+- Adds ssh features (client and server) in the DR set (Bruno Cornec)
+- Tries to create tmpfs starting at 128 MB to allow for larger content (Adolf Hartsenberg/Bruno Cornec)
+- Adds the timeout parameter to udevadm to avoid default timeout of 180 s (Bruno Cornec)
+- Fix a bug on Debian 5 where proc appears in fstab and afio in /bin (Bud Rogers/Bruno Cornec)
+- Security Fix for a remaining /tmp hard coded reference for 1 log file only used on ia64 (parted2fdisk.pl) (Gentoo/Bruno Cornec)
+- Fix #310: adds support for nfspath (Bruno Cornec)
+- mindi now adds to DR set the perl modules it needs to work (now for ia64) (Bruno Cornec)
+- Fix #331 by forcing nfs mode in case of pxe boot (Bruno Cornec)
+- Adds support of keyword net at boot prompt (Bruno Cornec)
+- ReadAllLink now normalize paths with .. in their name to remove that (fix bug on OEL4) (Bruno Cornec)
+- Fix version syntax for new lvmdiskscan commands by calling --version instead of --help (Bruno Cornec)
+- Adds support for additional Intel Network driver e1000e, ide-gd_mod, sata_via, dc395x (Bruno Cornec)
+- Fix a bug with nosegneg optimized libs on RHEL (Bruno Cornec)
+- multiple ia64 fixes in mindi, parted2fdisk.pl and init (Giuseppe Grassi)
+- Fix serial support on ia64 by linking /dev/tty to /dev/ttyS0 (Giuseppe Grassi)
+
+2.0.6 (2009-02-16)
+- Adds ff-memless, useful for keyboard support and fix #317 (Jeffs)
+- Check return status of mktemp call to avoid nasty stuff when /tmp is full and fix #156 (Jean-Marc André/Bruno Cornec)
+- udevsettle needed for fedora 9 to fix #313 (Conor Daly)
+- Adds NTFS support tools (Conor Daly)
+- Avoids NIC MAC mapping on Ubuntu (Bruno Cornec)
+
+2.0.5 (2009-02-04)
+- iSCSI modules support added (Bruno Cornec)
+- Adds a new documentation file around boot parameters at restore time (Bruno Cornec)
+- Allows use of -H with tapes (Bruno Cornec)
+- Adding lots of modules which are now required with latest kernels 2.6.27+ (Bruno Cornec)
+- Remove the scsi_debug driver which seems to create ghost 8MB disks (Bruno Cornec)
+- Fix #302 adds ext4 support (Bruno Cornec)
+- Use the distro df instead of the busybox one, to better support -P option usage now (Bruno Cornec)
+- Fix OBDR tape support for ia64 (Grassi Giuseppe)
+- Add support for new 2.6.27 modules and udev 128 used on mdv 2009.0 (Bruno Cornec)
+- fdomain may prevent booting at restore time, so propose it as example of DENY_MODS (Bruno Cornec)
+- MakeBootConfFile handle a bit separately syslinux and isolinux, improves USB key support (Bruno Cornec)
+- Adds multipath support for RHEL 5.2 (Bruno Cornec/Matthieu Losmede)
+- Fix #271 by adding a '/' in front of the string we want to exclude for cd, floppies (Bruno Cornec)
+- Adds support for jmicron ide pata controller (Arne Bernin)
+- Fix #297 by using syslinux on a local file and moving it later on to a potential NFS share (Bruno Cornec)
+- Fix #294 by adding crc_t10dif module needed on FC9 as a sd_mod dep (Bruno Cornec)
+- In PXE, increase ram size needed for the initrd which has increased in the recent versions (Bruno Cornec)
+- Use option -s of syslinux in case in improve USB support (Bruno Cornec)
+- Adds support for more dm drivers (dm_multipath, dm_round_robin) (Bruno Cornec)
+- Modify EXT-fs dtection in order to support RHAS 2.1 as well. Remove of the kernel <3> tag which is not printed in this kernel (Bruno Cornec)
+
+2.0.4 (2008-10-10)
+- Fix a bug with LVMv1 on RHEL3 where mondorestore segfaults at restore time by returning false to LVM in that conf - CASE:1602066867 (Bruno Cornec)
+- Fix a USB support bug where the key wasn't made bootable (syslinux.cfg copied in the wrong place) (Brian McKee)
+- Fix a bug in USB mode of mindi when confirmation on device wasn't waiting for an answer (Brian McKee)
+- Use native ld.so config files instead of static ones (Mark Pinkerton)
+- Support /lib64 being a link on Debian (Andree Leidenfrost)
+- Fix for debian lenny support concerning modules dock and ide_cd_mod/ide-cd_mod (Andree Leidenfrost/Arne Bernin)
+- Force LVM to false and remove i-want-my-lvm if analyze-my-lvm fails (Bruno Cornec)
+- Add support for partprobe in deplist.txt (Bruno Cornec)
+- Add support for labeled reiser FS (Ulrich Tehrani)
+- Add support for new Qlogic drivers in mindi (Ulrich Tehrani)
+- Fix a rpmlint warning with modes on rootfs subdirs at 755 in SVN (Bruno Cornec)
+- Fix mindi in wc -l usage, as with parameter instead of on stdin it creates a different output (Bruno Cornec)
+- Add support for OCFS2 file systems at restore time, by adding mkfs.ocfs2 to initrd if needed (Bruno Cornec)
+- Improve logging by adding some /proc content both at backup and restore time (Bruno Cornec)
+- Fix Labelled swap to support 2.6.12 kernel on FC3 which skip only 16 bytes and not 105 to find the label. May need further fixes for other kernels (Bruno Cornec)
+- Adds support for sis5513 module (IDE) which seems required on some machines (Bruno Cornec)
+- Fix #243 parse /etc/modprobe.conf, look for include statements, and then add the included files to the dependency list (Michael Shapiro)
+- Adds support for ide_cd_mod  and pata_sis (Bruno Cornec)
+
+2.0.3 (2008-07-12)
+- Fix #270 where mondo images stored on an NFS shared were all removed (Bruno Cornec)
+
+2.0.2 (2008-05-31)
+- Adds OBDR support (Bruno Cornec)
+- Do not propose to use LILO in mindi standalone (Bruno Cornec)
+- Remove temporary .img files at the end of mindi (Bruno Cornec)
+- Add intermodule to the module list (Bruno Cornec)
+- Remove ScanCDandTape (Bruno Cornec)
+- Fix for LVM lv sizes detected incorrectly (Thomas Kjeldsen)
+- Fix a problem in case of initramfs type of boot file in the path of the file generated (Bruno Cornec)
+- mindi code simplification and cleanup (removal of CopyImageToDisk, MakeModuleLoadingScript, InsertEssentialModules, MyInsmod) (Bruno Cornec)
+- CopyImageToDisk in mindi removed as useless (Bruno Cornec)
+- Fixing broken NFS support in 2.2.5 for rhel5 at least (Kyle Johnson/Bruno Cornec)
+- Clarify the PXE doc (Bruno Cornec)
+- Usage of modprobe systematically (Bruno Cornec)
+- Do not mess with modules.conf anymore. Just use what is in deplist.txt (Bruno Cornec)
+- Fix for gentoo (Francesco Talamona/Bruno Cornec)
+- Complete removal of cp --parents. Now using tar everywhere (Bruno Cornec)
+- Fix bugs - incorrect paths - in HW restoration (Bruno Cornec)
+- Remove the lib and usr/lib dir from SVN and symlinks.tgz (Bruno Cornec)
+- Remove all code related to floppies (Bruno Cornec)
+
+2.0.1 (2008-04-06)
+- Fix an issue with tapes where required compressed in boot process files were removed (Bruno Cornec)
+
+2.0.0 (2008-03-22)
+- Fix #172 kernel panic during restore (Angelo Pozzi)
+- Remove floppy support from mindi (Bruno Cornec)
+- Align more mindi with the version from stable (Bruno Cornec)
+- ReadAllLink rewritten again to fix bug reports on ML (Bruno Cornec)
+- Improved dmidecode error handling (Bruno Cornec)
+- More logs on dependencies computation to help debug (Bruno Cornec)
+- Try to overcome OpenSuSE stupidity in fstab format (Bruno Cornec)
+- mindi now logs FORCE|DENY_MODS variables (Bruno Cornec)
+- Fix lack of /etc/raidtab at restore rime in the right place (Dirk Husung)
+- Add efibootmgr to deplist.txt in order to be able to modify EFI menu at restore time on ia64 (Bruno Cornec)
+- Adds support for nls_utf8 and pata_serverworks (Dirk Husung)
+- Fix an issue on parted output (K instead of KB) in parted2fdisk at restore time (Bruno Cornec)
+- Add support for hardware backup/restore on Proliant (Bruno Cornec)
+- Add boot option denymods to avoid loading some modules (Bruno Cornec)
+- iLO Virtual media is systematically available at restore time (Bruno Cornec)
+- Adds udev support and modprobe at restore time (Bruno Cornec)
+- Build process adapted to use pb http://trac.project-builder.org (Bruno Cornec)
+- Increase BOOT_SIZE and EXTRA_SIZE to support features such as HW recovery (Bruno Cornec)
+- Adds support for nohw boot option to avoid re-setuping the HW conf (Bruno Cornec)
+- Fix #215 mindi does not find failsafe kernel's modules (Bruno Cornec)
+- Fix #214 mindi ignores FAILSAFE kernel choice (xdelaruelle)
+- parted2fdisk binary replaced by the perl version at restore time on ia64 (Bruno Cornec)
+- For all modules supported, create symlinks under the mountpoint to the traditional kernel place where they are (Bruno Cornec)
+- Fix NICs renumbering on Debian at least (Bruno Cornec)
+- Load USB earlier in order to support KBD such as with iLO (Bruno Cornec)
+- Fix mindi for Debian x86_64 where /lib64 is a link (Bruno Cornec)
+- Fix issue at restore time for ext2fs params not reused (Klaus Ade Johnstad)
+- Fix modes on mindi-bkphw (Phil Walker)
+- Use RESTORE consistently across mondo to restore without interaction (Takeshi Shoji/Bruno Cornec)
+- perl is now required at restore time to support uuid swap partitions (Bruno Cornec)
+- Small optimization in mindi on keyboard handling (one single find instead of multiple) (Bruno Cornec)
+- Automatically guess block disk size for ramdisk (Bruno Cornec)
+- Adds full UUID support especially on Ubuntu 7.10 (Bruno Cornec)
+- Adds magic file to deplist in order to have file working + ldd and strace (Bruno Cornec)
+- Adds USB disk/key support (Bruno Cornec)
+- On ia64 elilo.efi is now searched throughout /boot/efi and not in a fixed place as there is no standard (Bruno Cornec)
+- Suppress useless softlinks creation/removal in boot process (Bruno Cornec)
+- Increase # of disks to 99 as in mindi at restore time (Bruno Cornec)
+- Fix a bug in supporting OpenSusE 10.3 kernel for initramfs (Bruno Cornec)
+- Exclusion of modules denied now works (Bruno Cornec)
+- Handles dynamically linked busybox/udev/... (Bruno Cornec)
+- Improve Ubuntu/Debian keyboard detection and support (Bruno Cornec)
+- Install isolinux.cfg correctly (Bruno Cornec)
+- Adaptation of build process to pb http://trac.project-builder.org (Bruno Cornec)
+- Really Fix #163 support for 3w-9xxx 3w_9xxx (Bruno Cornec)
+- /tmp => /var/log for mondorestore.log (Bruno Cornec)
+- Update linux terminfo to fix a color issue (Andree Leidenfrost)
+- Add nsswitch.conf to deplist (Zachár Balázs)
+- Add mdadm.conf to deplist (Bruno Cornec)
+- Fix #194 automatically rebooting at the end of PXE restore process (Bruno Cornec)
+- Fix #190 mondo-restore replaced by mondorestore (veelo)
+- Fix #189 older mdadm support (Mark Nienberg)
+- Add a MAX_DISKS variable and increase to 99 (Tilman Schmidt/Bruno Cornec)
+- Add support of pata_marvell module (Tilman Schmidt)
+- Add support of pata_amd module (Andy Wright)
+- Fix gentoo issues again (Francesco Talamona)
+- Fix a bug in interactive mode on ia64 where lilo wasn't forced (Bruno Cornec)
+- Fix mindi iso build for ia64 (Bruno Cornec)
+- Add support for gzip compressed kernel - ia64 SLES 10 is in that category (Bruno Cornec)
+- arch => uname -m everywhere (Bruno Cornec)
+- parted2fdisk adapted for parted differences on SLES 10 ia64 (Bruno Cornec)
+- reiserfs support added for parted2fdisk (Bruno Cornec)
+- decode_Bsuf function added for parted2fdisk (Bruno Cornec)
+- README.ia64 improved for SLES 10 (Bruno Cornec)
+
+1.2.4 (2007-07-06)
+- Support for swap with UUID on VMWare ESX 3 at least with dumpuuid (Bruno Cornec)
+- Fix a problem in directory link handling in mindi seen on gentoo64 (Francesco Talamona/Bruno Cornec)
+- Add README.proliant to document Virtual Media usage (Bruno Cornec)
+- Add support for megaraid_sas (Daniel Hill/Bruno Cornec)
+- No more acpi=off by default during restore (Bruno Cornec)
+- /var/cache/mindi now useed by default for mindi images (Bruno Cornec)
+- Add support for LSI SAS1064E (Brandon Poyner/Bruno Cornec)
+- Fix a bug on the MODULE variable and grep -F usage with spaces. (Bruno Cornec)
+- Fix Virtual media usage (Patrick Albert)
+- Improve VMWare ESX support (Bruno Cornec)
+- Fix a x86_64 bug (Bruno Cornec)
+- MINDI_TMP now used in analyze-my-lvm (Bruno Cornec)
+- Fx bugs for optimised libs (Debian, Centos/RHEL5) (Brandon Poyner/Andree Leidenfrost/Bruno Cornec)
+- Remove a hack for x86_64 in spec file due to a RH bug (Bruno Cornec)
+- Remove all support for mindi.conf for 2.2.x branch (Bruno Cornec)
+- Gentoo support improvements (kernel, kbd, deps, ...) (Francesco Talamona/Bruno Cornec)
+- parted is required by mindi (Francesco Talamona/Bruno Cornec)
+- Add support for i2o (Fix #165) (Bruno Cornec)
+- Now supports USB keyboard/mouse at restore time better (Bruno Cornec)
+- Support for HP xw9300 NIC (forcedeth) added (Bruno Cornec)
+- Improved log at restore time (Bruno Cornec)
+- Add support for 3w-9xxx 3w_9xxx (Fix #163) (Bruno Cornec)
+- Fix a bug where mondorestore.log was truncated (Bruno Cornec)
+- Fix a Debian packaging bug for good (#142 and #126)
+- Removes some now unnecessary commands concerning /root/images/mindi. (Andree Leidenfrost)
+- Support of Debian optimised libraries in /lib/i686/cmov (Andree Leidenfrost)
+- lsmod usage replaced by /proc/modules and a MODULES variable (Andree Leidenfrost/Bruno Cornec)
+- Fix a fedora build bug for /etc/mindi (Bruno Cornec)
+
+1.2.3 (2007-04-26)
+- FORCE_MODS variable to support additional modules at will (Bruno Cornec)
+- Better log file content in mondoarchive.log from the copy of the mindi log (Bruno Cornec)
+- Stricter POSIX compliance for mindi to allow usage with dash on Ubuntu (Fix for #154)
+
+1.2.2 (2007-04-16)
+- Add support for new megaraid driver (HP NetServers with 2.6) (P.C.J.G.Brunier)
+- Add support for adpahci (Proliant DL 140 G3 - SATA) (Abhijit Das/Bruno Cornec)
+- Mindi log file is now added to mondoarchive log file to ease debug (Bruno Cornec)
+- Suppress losetup usage in start-nfs (unreliable and doesn't work with QEMU (Bruno Cornec)
+- Fix a bug where losetup is called with only one parameter (#140) (Bruno Cornec)
+- Fix a bug on NFS in FC6 - fscache module needed (Bruno Cornec)
+- Add build support for Mandriva 2007.1, RREL 5 and Debian 4.0 (Bruno Cornec)
+- Fix a bug for FC6 where the boot disk size was again insufficient (Rene Ribaud/Bruno Cornec)
+- On CentOS 4.4 mdrun isn't available anymore so init should use mdadm instead (Momtchil Momtchev/Bruno Cornec)
+- Add support for raid456 driver (Mark Nienberg/Bruno Cornec)
+- Add the DENY_MODS variable in mindi allowing to describes modules that you don't want to include as part of the restore boot environment (HP Open Call OCMP e.g; needs it) (Bruno Cornec)
+- Add GetInitrdFilesystemToUse function to support initramfs type of initrd (SuSE 10.2/Debian 3.x/FC 6/...) (Andree Leidenfrost)
+- Fix a bug for ia64 in kernel reference in elilo.conf (Andree Leidenfrost)
+- Check that /boot/efi is mounted on ia64 (Andree Leidenfrost)
+- Protect some rm -rf to avoid raw removals (Bruno Cornec)
+- Better messages for analyze-my-lvm (Bruno Cornec)
+- Add support for newer Qlogic drivers (qla2300 & 2400), mpt, dm and ohci (Josef Jetzinger/Bruno Cornec)
+- Fix a bug in mindi for the FAILSAFE support (Scott Cummings)
+- PATH fixed for init in restore (/usr/games added for petris) (Andree Leidenfrost)
+- Fiw a bug where restore failing because no archive files are found when -G is used (Andree Leidenfrost)
+- /media is now completely excluded as per StandardsCompliance (Bruno Cornec)
+
+1.2.1 (2006-12-23)
+- mindi now supports a configuration file (Bruno Cornec)
+- Fix again support for LABEL on swap partitions (Bruno Cornec)
+- mindi now prints mindi-busybox version (Bruno Cornec)
+- mindi now supports gzip compression format (#113) (Bruno Cornec)
+- Inline code of some useless functions for readability (Bruno Cornec)
+- Add support for nvidia and ahci drivers (Bruno Cornec)
+- Remove wrong full path name for cut (Matija Nalis/Bruno Cornec)
+- UUID support (Bruno Cornec)
+- Cleaner messages generated on screen (with defaults) and in logs (Bruno Cornec)
+- First use of a configuration file with mindi to permit variable to be overwritten (Bruno Cornec)
+- All temporary files are now under MINDI_TMP, unique dir under /tmp by default and not removed when called by mondo (Bruno Cornec)
+- All generated files are now under CACHE_LOC, /var/cache/mindi by default (Bruno Cornec)
+- Fix bug #100 where the temporary dir could be removed and be /home (Matija Nalis/Bruno Cornec)
+- Should now work correctly under x86_64 distributions (Bruno Cornec)
+- Fix a blocking bug in mindi where a " was misplaced (Bruno Cornec)
+- New MindiExit function called everywhere (Bruno Cornec)
+- TAG is now per package (Bruno Cornec)
+- Add CentOS build support (Andy Wright/Bruno Cornec)
+- Removal of grep -w|-x during restore as not supported by busybox fixes bug #101 (Alfred Chua/Bruno Cornec)
+- init now reports the mindi version when executed (Bruno Cornec)
+
+1.2.0 (2006-10-04)
+- busybox is now a separate package and binaries are not provided anymore in mindi - Fix #37 (Bruno Cornec)
+- deplist.txt adapted to use more busybox modules (Bruno Cornec)
+- start-nfs now exports variables taken from PXE command line to mondo to override parameters during archiving - Fix bug #21 (Bruno Cornec)
+- Fix for bug #71 mindi now works correctly on x86_64 (Brendan Bouffler/Bruno Cornec)
+- ReadAllLink function added to mindi and 3 older functions suppressed + use of readlink where useful (Bruno Cornec)
+- Other fixes for labelled swap support (Michael Shapiro/Bruno Cornec)
+- Fix for bug #4 (B. Baumer)
+- Fix PXE documentation (Brendan Bouffler)
+- Attempt to fix bug #25 - bonding support (Michael Shapiro/Bruno Cornec)
+- Write start and finish time to log - Fix bug #33 (Bruno Cornec)
+- Fix for bug #46 (Klaus Ade Johnstad)
+
+1.0.9 (2006-08-05)
+- Fix for bug #22 RHEL4 + LVM + LABEL support (Bruno Cornec)
+- Fix for bug #8 keyboard support incorrect (Bruno Cornec)
+- New NFS/PXE support. start-nfs is now a fixed script. Allow more possibilities at restore time (Bruno Cornec)
+- new global variables + Bug fixes for LVM (Bruno Cornec)
+- SuSE RPMS now use bzip2 (Lars Rupp/Bruno Cornec)
+- Fix a bug for filesystems with LABEL in fstab not mounted (Bruno Cornec)
+- Qlogic 2300 and 2200 are now supported (Bruno Cornec)
+- Use busybox 1.1.3 for net part (Bruno Cornec)
+- Fix various screen corruption for 'Configure LVM' (Andree Leidenfrost)
+- Fix Adaptec Zero-Channel RAID Cards support bug #6455 (Bruno Cornec)
+- Fix a bug with redhat_label not initialized in the loop systematically
+(Anthony P. Machon/Bruno Cornec)
+- nfsmount option added to allow redeployment from another NFS server (Bruno Cornec)
+- Replaced all occurrences of egrep with 'grep -E' and of fgrep with 'grep -F' (Andree Leidenfrost)
+- Fix a bug in analyze-my-lvm for RHEL3 where vgdisplay prints an additional
+field sometimes (#) (severine.lombardo_at_acoss.fr/Bruno Cornec)
+- Deal properly with LVM tool lvmiopversion and with lvmcreate_initrd and pvdata - fixes [[debianBTS(351687)]] (Andree Leidenfrost)
+- Handle the format /dev/mapper/<VG>-<LV> for LVM devices - fix for [[debianBTS(362926)]] (Andree Leidenfrost)
+
+1.0.8-3 (2006-06-07)
+- exec-shield removed for mindi (Bruno Cornec)
+- Fix a bug for ia64 build in mindi where locallib was undefined (Bruno Cornec)
+- Fix a bug for SuSE and Debian where $dfam was used in install.sh (Bruno Cornec)
+- Make the init script mdadm-aware (Andree Leidenfrost)
+
+1.0.8-2 (2006-06-02)
+- Fix bugs in the swap+LABEL code found on rhel4 (Peter Naber/Bruno Cornec)
+- PXE mode now supports change of NIC for redeployment (Bruno Cornec)
+
+1.0.8-1 (2006-05-25)
+- new build process (Bruno Cornec)
+- Fix a bug when a disk less than 2.8 MB can be built, to include enough modules to support SCSI cds (Bruno Cornec)
+- Fix a bug in .spec for RPM build (attr now unused) (Bruno Cornec)
+- Add support for LABEL on swap partitions (Michel Loiseleur + Julien Pinon)
+- Attempt to fix bug 6827 (addition of a script for busybox udhcpc to support pxe/dhcp restore) (Bruno Cornec)
+- support of dm and LVM v2 (Andree Leidenfrost)
+- analyze-my-lvm is under $MINDI_LIB (Andree Leidenfrost)
+- Fix a bug introduced by trying to avoid an error message when modprobe.d doesn't exist (Johannes Franken)
+- Fix for Bug #6975 (/net is now excluded from kernel search location) (Bruno Cornec)
+- Allow 5670 MB fllopy disks for lilo as well (Bruno Cornec)
+- Add missing net modules (Klaus Ade Johnstad)
+
+1.0.7 (2006-03-10)
+- Fix issue for 2.6 kernels with VIA chipsets (Andree Leidenfrost)
+- stop creating further size of floppy disks if the smaller one succeeds (Bruno Cornec)
+- init revamped (removed unnecessary second general module loading phase, start NFS appropriately depending on PXE or simple NFS) (Andree Leidenfrost)
+- Changed module 'nfsacl' to 'nfs_acl' (Andree Leidenfrost)
+- Mindi/DiskSize is gone (Bruno Cornec)
+- useless cat, sort|uniq commands removed (Bruno Cornec/Sébastien Aperghis-Tramoni)
+- Doc cleanup (Andree Leidenfrost)
+- Bug fix for chown in install.sh (JeffS)
+- CHANGES renamed also in install.sh now (Bruno Cornec)
+- rpmlint cleanups
+- Get mindi to look for analyze-my-lvm in it's library directory MINDI_LIB (See also [[debianBTS(351446)]].)
+- mindi only deletes freshly created 1440kb images in case of error (See also [[debianBTS(348966)]].) (Andree Leidenfrost)
+- try standard grub-install in grub-MR restore script before trying anything fancy (Andree Leidenfrost)
+- busybox mount should be called with -o ro for PXE (Make RHEL 3 works in PXE
+with a 2.6 failsafe kernel now available) (Bruno Cornec)
+- Fix mindi for 2.6 Failsafe support (Bruno Cornec)
+- mindi now depends on grep >= 2.5 (for -m option) (Marco Puggelli/Bruno Cornec)
+- Fix a bug in LVM context for RHEL4 in GetValueFromField (Rémi Bondoin/Bruno Cornec)
+- New RPM Build environement (Bruno Cornec)
+- mindi now supports x86_64 natively (Bruno Cornec)
+- stop creating further size of floppy disks if the smaller one succeeds (Bruno Cornec)
+
+1.06 (2005-12-23)
+- mindi manpage added (Andree Leidenfrost)
+- clean up remaining mount points, mindi.err at the end (Wolfgang Rosenauer)
+- fix bugs for SuSE distro around tar, tr and find arguments order (Wolfgang Rosenauer)
+- new busybox.net version used for better PXE support (Bruno Cornec)
+- USB keyboard support (Bruno Cornec)
+- -p should now work with ISO/PXE/NFS modes (Bruno Cornec)
+- relocate what was under /usr/share to /usr/lib (FHS compliance) (Bruno Cornec/Andree Leidenfrost)
+- manage non ambiguous delivery under /usr (packages) or /usr/local (tar ball) (Bruno Cornec)
+- install script rewritten and used for RPM build, with new layout (Sébastien Aperghis-Tramoni/Bruno Cornec)
+- use parted2fdisk everywhere (Bruno Cornec)
+- use MONDO_LIB exported by mondoarchive instead of MONDO_HOME guessed (Bruno Cornec)
+- RPM build for fedora core 4, sles9, redhat 7.3, rhel 3/4, mandriva 2006.0, mandrake 10.2/10.1 (Bruno Cornec/Gary Granger)
+- VERSION/RELEASE Tag added (Bruno Cornec)
+- VMPlayer support
+- Code cleanup, small fixes, PXE/NFS code improvements (Wolfgang Rosenauer/Sébastien Aperghis-Tramoni/Bruno Cornec
+- New switches for PXE mode (ping & ipconf, Cf README.pxe) (Sébastien Aperghis-Tramoni/Bruno Cornec)
+- mindi-kernel added to SVN (Bruno Cornec)
+
+1.05 (2005-11-19)
+- Bug fix for ldd output incorrectly handled, leading to "grep not found" error (Andree Leidenfrost)
+- NFS now works in interactive mode, and nolock problems are solve (Andree Leidenfrost)
+- IA-64 support is now working for rhel 3 (Bruno Cornec)
+- add MINDI_CONF to the mindi LOGFILE (Philippe De Muyter)
+- Speed up fdisk'ing dev/ida raid devices (Philippe De Muyter)
+
+1.04 (2005-05-03)
+- support exec-shield
+- added 'ide-generic' module to IDE modules in mindi to ensure that kernels with fully modularised IDE sub-system boot
+- rewrote script 'wait-for-petris' to ensure that petris actually starts and can be restarted reliably
+- fixed syntax error in mindi where a wrong delimiter is used in and sed call when processing file '/etc/issue.net'
+- removed '#!/bin/bash' from file 'rootfs/etc/bashrc' (bashrc get sourced, not executed)
+- removed executable flag from:
+- 'rootfs/etc/ld.so.cache'
+- 'rootfs/root/.profile'
+
+1.03 (2004-09-29)
+- better support of SLES 8
+
+1.02 (2004-07-21)
+- better kernel-level logging
+- added ACL, xattr binaries to deplist.txt
+- fixed obscure bug which occasionally stopped mindi from correctly finding and documenting all LVM2 LVM-on-RAID volumes 
+
+1.01 (2004-06-21)
+- added ide_tape and other modules to mindi's config detection
+- unmount errant ramdisk ($mtpt) if fail to create boot floppy
+- better support of ISO dirs at restore-time (Conor Daly)
+
+1.00 (2004-06-18)
+- first 1.0x release
+- catch Ctrl-Alt-Del; trigger soft reset
+- better support of SuSE 9.1
+- added mdadm to deplist.txt
+- better detection of multiple Mindis (Martin FÃ¼rstenau)
+- don't complain if just a Mindi boot CD & not a platform for Mondo
+- updated busybox to 1.0.0pre10
+- removed uClibc
+- add memtest support
+- 2.6 kernel support
+- removed Embleer files (Andree Leidenfrost)
+- LVM v2 support for 2.6 (Takeru Komoriya)
+- added kernel-only floppy support, to accommodate really big kernels
+- updated+rebuilt busybox
+- added star support
+- mount /sys at boot-time
+- better 64-bit and 2.6 kernel support
+- better LVM, failsafe kernel support (Jim Richard)
+- use LILO, not raw kernel, on 1.4MB boot floppy
+- record names of unsaved modules for future reference
+- enlarged ramdisk by 8MB
+
+v0.95 (2004-03-25)
+- changed some '==' to '=' --- now more RH6-friendly
+- allow absolute pathnames again in deplist
+- disable multifunc cd thing
+- better Gentoo support (Bill)
+- better OnStream support
+- better Slackware support (Laurenz)
+- added partimagehack-static to deplist.txt
+- recompiled Busybox - 10k smaller, better stack-handling
+- fixed boot screen typo
+- added support for 'auto' fs format
+- better devfs support for Mandrake users
+- better Debian+LVM support (Ralph Grewe)
+- updated analyze-my-lvm to handle floating-point gigabyte -L values
+
+v0.94 (2003-09-24)
+- altered rootfs's /dev entry to stop cvs from becoming confused
+- tweaked MAX_COMPRESSED_SIZE
+- added multi-function CD support to mindi and sbin/post-init
+- re-mount root as rw just in case
+- ask user to remove last data (floppy) disk if nec. (Tom Mortell)
+- added support for 5th column in mountlist.txt for labels
+- added symlinks.tgz
+- suppress erroneous error messages re: failsafe kernel
+
+v0.93 (2003-06-04)
+- added cciss.o to SCSI_MODS
+- if format type is (e.g.) ext3,ext2 then use 1st entry
+- re-enabled fsck*
+- if cciss in use then enable it at boot-time
+- added /dev/ataraid/* to boot disk via ataraid.tgz (Luc S.)
+- better ISO support
+- tweaked mindi to use 10-15 percent fewer floppies
+- added RUN_AFTER_INITIAL_BOOT_PHASE var at start of Mindi, which user may use to force Mindi to run command before bootstrapping to aux data disks or CD - e.g. 'echo engage > /proc/scsi/something'
+- allow for Debian & other Stiefkinder that use 'none', not 'swap' as the mountpoint of the swap partition
+- removed afio dependency
+- added RUN_AFTER_BOOT_PHASE_COMPLETE to let user specify a command to be run by Mindi after it boots but before it runs mondorestore
+- re-worked install.sh and tarball not to use tgz's
+- cleared up the boot msg
+- updated busybox to 0.60.5; updated uClibc to 0.9.19
+- add #!/bin/sh to start of insert-all-my-modules
+- fixed obscure bug in install-additional-tools
+- change grep -m1 to grep | head -n1, for Debian users
+- moved lib.tar.bz2 and vmlinuz to mindi-kernel tarball/rpm
+
+v0.92 (2003-05-04)
+- fixed LVM/RAID bugs (Brian Borgeson)
+- if bad lilo, give more verbose error before quitting
+- added mt and perl to deplist.txt
+- insmod ide-cd, cdrom, isofs, just in case
+- boot-time tmpfs ramdisk is now 40m (was 34m)
+- cleaned up logs
+- iso mode now calls Interactive
+- make SizeOfPartition() more Debian-friendly (Andree Leidenfrost)
+- clean up some calls to grep, esp. partition_mountpt=...
+- corrected some bashisms, to suit Debian ped- er, users
+- made first line refer to bash, not sh, to make sure the Debian people know Mindi requires bash, not hs
+- changed grep -v "#" and grep -vx "#.*" to grep -vx " *#.*"
+- disabled code which would make Mindi use sfdisk instead of fdisk if it looked as if Debian's fdisk would misbehave
+
+v0.91 (2003-04-04)
+- updated ResolveSoftlinks() to work better with b0rkn Gentoo devfs /dev
+- patched analyze-my-lvm (Benjamin Mampaey)
+- detect built-in boot.b files in lilo
+- return w/err, don't abort, if Matt Nelson's RH8 system is farked
+- better at finding isolinux.bin
+- better at analyzing dependencies when running on broken distributions
+- try harder to boot from CD, even if tape fails
+- added ADDITIONAL_BOOT_PARAMS to be sent to kernel
+- better resolution of relative softlinks, leading to fewer duplicates on data disks and therefore fewer data disks
+- detect Debian+devfs; use sfdisk instead of fdisk in that eventuality, to work around yet another of Debian's warts
+- removed /lib/libuuid.* from rootfs.tgz
+- fixed vi
+- mindi now uses gawk --traditional (making gawk behave in a functionally identical way to awk) - PASS; great, so now Debian needs to fix its awk :)
+- removed / from list of dirs accessed when trying to resolve deplist entry
+- spinner bugfix; handle odd LABELs properly (Tom Mortell)
+
+v0.90 (2002-12-08)
+- new stable branch
+- EXTRA_SPACE=16384
+- fixed deplist.txt
+
+v0.72 (2002-12-02)
+- misc code clean-ups
+- save boot device's boot sector
+- detect and beware Compaq diagnostic partitions
+- better handling of devfs V non-devfs kernels and boot devs
+- trimmed to busybox 0.60.3 binary on boot disk
+- mindi now resides in /usr/local/bin
+- removed lilo from dependencies
+- more Gentoo-friendly
+
+v0.71 (2002-11-17)
+- if your kernel's builddate doesn't match any of the kernels in your /boot directory then fudge the issue & find the closest match (*grumble* Debian)
+- scan tape & CD at start, to force inclusion of modules on boot device
+- double EXTRA_SPACE if >7 disks
+- slimmer, more lithesome logfile
+- now accepts --findkernel
+- line 1982 - dd count=24000 should be count=$ramdisksize (Andras Korn)
+- better handling of non-Linux partitions on DevFS-enabled kernels
+- fixed Debian/ramdisksize/bloat problem (Johannes Franken)
+- fixed 2.4.20/fdisk eccentricity (Alistair Stevens)
+- updated kernel to 2.4.18-mdk6
+- generate mountlist in dev-abetical order ;)
+- fixed minor bug in .spec file
+- better at finding /boot/boot.b if your distro breaks the de facto standard
+- fixed minor bug in MakeMountlist
+- fixed install.sh
+- cleaned up deplist.txt
+- added rudimentary -v / -version flag
+- line 1180 or so --- duplicate mindi.iso entires --- fixed
+- added /bin/[ - a softlink to /bin/sh
+- ListAllPartitions() - sanity fix (KP)
+- fixed .spec bug
+- better feedback
+- added Markus's RAID patch
+- ListAllPartitions() - include /mnt/win* (Hugo)
+
+v0.70 (2002-09-08)
+- better logging by dependency-calculating code
+- better handling of dependencies, specifically softlinks
+- if called by mondo then use mondo's temp dir as our temp dir too
+- changed gawk to $AWK in a few places, to allow for Debian
+- added host* config files to deplist
+- added tftp, ifconfig to busybox
+- added RPC support to uClibc
+- cleaned up creation of Mondo-Mindi configuration file
+- fixed bug in TryToFindKernelPath which stopped it from handling multiple, same-version kernels gracefully
+- cleaned up deplist.txt
+- receive 'DIFFERENTIAL' variable from Mondo
+- better Debian compatibility, esp. w/detection of ver# (Hector Alvarez)
+- better devfs support; call fgrep in places instead of grep (Andrew Korn)
+- fixed analyze-my-lvm (Ralph Gruwe)
+
+v0.65-1 (2002-07-14)
+- moved 50K of stuff from rootfs.tgz to aux-tools.tgz
+- added x11-tools.tgz option
+- updated /dev/console and /dev/tty0 (Paul Stevens)
+- cleaned up /mnt/groovy-stuff V /tmp/tmpfs code
+- catch sigint, sighup, etc.
+- fixed LILO-related message.txt mistake
+- .spec file clean-up; automation; config file (Carl Wilhem Soderstrom)
+
+v0.64-1 (2002-07-13)
+- fixed RH7.3 readonly bug
+- improved nfs config file creation
+- search more locations for isolinux.bin
+- added isonuke option
+- faster data disk creation
+- better DevFS support (Hector Alvarez, DuckX)
+- nfs-related fix (Hans Lie)
+- abort if vfat filesystem present but mkfs.vfat missing
+- removed softlink to pico
+- allow Mondo to say no compression will be used
+- added [ to ramdisk
+- tar data disks with -b [block size] of 32k
+- don't autoboot to 'RESTORE' screen - it's scary!
+- let user choose lilo or syslinux as boot loader
+- added syslinux support
+- cleaned up message screens
+
+v0.63-7 (2002-06-04)
+- improved logging
+
+v0.63-6 (2002-06-02)
+- sped it up a bit
+- fixed ISO creation bug
+
+v0.63-5 (2002-05-22)
+- fixed RAID mountlist bug (Daniel Grandjean)
+- better at German kbd support (Klaus Guntermann)
+- no longer abort if MONDO_PATH cannot be discerned
+- updated .spec file (Jesse Keating)
+
+v0.63-4 (2002-05-06)
+- added less.bin to deplist.txt
+- copy mondo-restore.cfg configuration file to /var/cache/mondo-archive
+- increased EXTRA_SPACE to 16384
+- fixed bug in -H (RESTORE) function
+
+v0.63-2 (2002-04-25)
+- added mkdir -p to fix mountlist.txt-copying bug (Bruno Vidal)
+- made sure mindi.iso (for tape users) copies kernel to [cd dir]/vmlinuz
+
+v0.63 (2002-04-23)
+- minor cosmetic improvements
+- improved homedir-locating code
+- make sure the kernel is copied to [cd build dir]/vmlinuz
+
+v0.62 (2002-04-08)
+- keep certain /dev directories compressed until boot-time, to allow Mindi to support larger kernels
+- cleaned up logging a lot
+- better detection of the kernel currently in use
+- added /dev/nst* to ramdisk
+- amend isolinux.cfg to specify the correct ramdisk size
+
+v0.60 (2002-03-31)
+- bootable CD's now use ISOLINUX instead of LILO (Andy Glass)
+- abort if isolinux not found
+- abort if multiple copies of Mindi found lying around
+- include mountlist.txt in ramdisk
+
+v0.59 (2002-03-21)
+- change sbin/init's Die() function (Carl Wilhelm Soderstrom)
+- improve friendliness of kernel-related warning msg (Andy Glass)
+- added s/w switch re: making floppies (Carl Wilhelm Soderstrom)
+
+v0.58-r7 (2002-03-10)
+- excluded two unused vars (Carl Soderstrom)
+
+v0.58-r6 (2002-03-03)
+- reassemble large data/library files who have older 'mv' code which doesn't like to overwrite symlinks - affects older RH+Slack systems (Andrew Bulhak)
+- call /usr/bin/logger, not 'logger', in LogIt()
+- run chmod 755 `which start-nfs` before running start-nfs
+
+v0.58-r5 (2002-02-24)
+- pathname problem fixed (Fred Feirtag)
+- patch to Debianize mindi a bit (Hï¿½tor Garcï¿½ ï¿½varez)
+- removed mondo-manual.html
+- moved /dev/{cciss,ida,rd} from rootfs.tgz to aux-tools.tgz
+- cleaned up the refs to analyze-my-lvm a bit (Hugo)
+- sped up disk-creation by 20-30 percent
+- make sure mondo-restore.cfg is on data disk as well as boot disk
+- added support for -C (cdstream) mode
+
+v0.58-r4 (2002-02-18)
+- quash error if /opt not found
+- use /tmp/groovy-stuff instead of /mnt/groovy-stuff for handling data disks and their contents, for tape users
+
+v0.58-r3 (2002-02-17)
+- misc enhancements
+- uses self-resizing ramdisk (tmpfs) for /tmp
+- allows Mondo to exclude certain devices from mountlist
+- incorporated .spec patch (Ian Kent)
+- replaced &> /dev/null with > /dev/null 2> /dev/null
+- added vi to busybox again
+
+v0.58-r2 (2002-02-11)
+- fixed errant tar warning
+- replaced libc5 with uClibc
+- compiled busybox and open against uClibc
+- moved minor scripts+tools from rootfs.tgz to aux-tools.tgz
+- Mindi can now accommodate a kernel of up to 1290KB in size
+- no longer insists on cdrecord being present
+
+v0.58 (2002-02-10)
+- more pointed error messages
+- fixed silly 'cp' error (Markus Marquardt)
+- use type C's embleer file for type B Windows partitions
+- increased EXTRA_SPACE from 4096 to 8192
+- cosmetic bugfixes
+- nfs users boot into nfs options by default
+
+v0.57 (2002-02-05)
+- abort if mounted partition is specified as an imagedev
+- understand 'FAILSAFE' as kernel alternative
+- added analyze-my-lvm to tools available thru PATH
+- better discovery of locale and keymap file (Claude Mahï¿½
+- compatible with 1.2x and the new 1.38+ stuff
+- better 'bug-me' script (Troff)
+
+v0.56 (2002-02-01)
+- compatible with Mondo v1.5x devel branch
+- mindi's softlink now goes in /usr/sbin; was /usr/bin
+- include nfs.o, nfsd.o, lockd.o and sunrpc.o on data disks if available
+- patched .spec file to make it easier to change installdir (Ian Mortimer)
+- updated README
+- moved many global vars to start of script
+- better at finding US kbd maps
+- migrating to a single configuration file, /tmp/mondo-restore.cfg, for Mondo users; file is not in use yet but is there for future expansion
+
+v0.55 (2002-01-28)
+- MINDI_HOME and MONDO_HOME defined at start of each source file, making it easier to relocate Mindi and Mondo if desired
+- tries to mount /dev/hd[a-h] at boot-time, looking for CD-ROM; was hd[a-d]
+- re-enabled the msg asking user to upgrade LILO if v21.6
+- Lin/Win users are much, _much_ less likely to run out of disk space now when restoring from backups (Carlos Molina)
+- patch from Andrej Borsenkow to help w/Mandrake 8.1
+- disabled ramdisk free space checker (some distros don't like it)
+
+v0.54 (2002-01-25)
+- don't abort if kernel is too big for 1.72MB floppy
+- better handling of eccentric distros and their keybd layouts
+- cosmetic fixes
+- sprinkled comments liberally inside deplist.txt
+- added gawk and awk to deplist
+- lilo has been added to .spec file
+- changed a couple of FatalError()'s to Die()'s
+- better TurboLinux 7 / LVM compatibility
+
+v0.53 (2002-01-20)
+- better support of non-Red Hat, non-Debian keyboard resource files
+- cleaned up /sbin/init's output
+- replaced libc5 mount with user's own 'mount'
+- updated embleer.C.bz2
+- missing /dev/hdb2 found & replaced (thanks, Troff)
+- populated /dev/rd and /dev/ida on ramdisk (Michael Eisenberg)
+- improved SizeOfPartition() function
+- improved TryToFindKernelPath() function
+- don't offer NFS users Nuke Mode
+- finds and uses lilo.real if user is using Debian, a distro which installs a shell script where the lilo executable should go
+- improved support for XFS users who opt to use failsafe kernel
+- uses user's lsmod, depmod, insmod, etc.
+- fixed freeze-up resulting from missing 'cat $mappath' command
+- mount tmpfs at /tmp/tmpfs for mondo-restore's benefit
+- try to create /dev/fd0u1722 if it is missing from /dev
+- added .spec file to tarball
+
+v0.52-2 (2002-01-10)
+- fixed a bug in the handling of non-English keyboard maps
+- force failsafe kernel to provide reiserfs.o, xfs.o, jfs.o, ext2.o, ext3.o and loop.o at boot-time, just in case
+- added /dev/sr[0-3] devices
+- copy LAST_FILELIST_NUMBER to /tmp, for compatibility with Mondo v1.3x
+- incorporates NFS-related settings, if supplied by Mondo v1.3x
+- replace busybox's mount with standard libc5 mount ater restoring tools from floppies: NFS mounting requires full mount
+- always make mindi.iso
+
+v0.52-1 (2002-01-06)
+- ramdisk's size has been tweaked
+- if script 'bootstrap' is found at boot-time then execute it
+- use tty8 to show mondo's output log
+- use tty7 to offer a game of Petris (if it exists on disk)
+- be sure to use i386-only keymaps
+- if LILO's "/tmp/dev.0" error occurs then abort & tell user to reboot
+- /sbin and /usr/sbin added temporarily to PATH when Mindi runs
+- if Mondo asks then force LILO to run in backward-compatible mode
+- if Mondo's tmpdir has post-nuke.tgz in it then extract it and incorporate its files in the data disks
+- losetup /dev/loop0 -d before calling LILO (Norm Crowfoot)
+- if keyboard mapping dir (usu. /lib/kbd or /usr/lib/kbd) cannot be found then don't abort; simply tell the user the default keyboard mapping will be used
+- added /dev/hd[a,b,c,d][17-24] to the rootfs tarball
+- won't use LILO's optimizations when creating boot floppy; however, optimizations are used on CD unless --broken-bios in call to Mondo
+- won't write data disks to start of tape; lets Mondo do that
+- tweaked how Mindi moves all.tar.gz around, to make it more Mondo-friendly
+- tweaked Mindi's disk-splitter
+- user must unmount /dev/loop0 before calling Mindi: LILO insists...
+- added NFS-related entries to deplist.txt
+- if not called by Mondo then don't let user choose Interactive/Nuke/ whatever; just offer Expert
+
+v0.51-1 (2001-12-25)
+- removed libm.* from rootfs.tgz
+- replaced sh with busybox's ash
+- upgraded busybox to 0.60-2; pared it down, too
+- include tape-related modules on boot disk, if backing up to tape
+- creates a tape-friendly tarball containing tools+modules
+- reassembly of tools+libraries is more reliable now
+- streamlined deplist.txt
+- give user their localized keyboard layout at boot-time
+- fix some cosmetic bugs
+
+v0.50-4 (2001-12-19)
+- log Mindi's version# in the event of a fatal error
+- make Mindi's boot-time output more esthetically pleasing
+- if filesystem is type 'image', according to Mondo, then in filelist its partition type will be listed as the hexadecimal string (e.g.  'b', '83', etc.) and the partition mountpoint will be 'image'
+
+v0.50-2 (2001-12-15)
+- support for newer features in Mondo v1.3x
+
+v0.50-1 (2001-12-14)
+- correctly lists RAID constituent partitions in mountlist
+- breaks compatibility with Mondo v1.2x
+- if user's fstab has weird line(s) then ignore; don't abort
+- working on CDROM_MODS, trying to make it work on Stewart Charnell's hardware setup
+- cleaned up /sbin/init and /sbin/post-init a bit
+
+v0.48-2 (2001-12-09)
+- when insmod'g modules from ramdisk's root dir, use 'ls /*.o*' (was 'ls /*.*') to find them
+- if RAID controller(s) are detected then pause for 10s to let them intialize by themselves (some 3ware RAID controllers require this)
+- cleaned up /sbin/init and /sbin/post-ini; the former now controls initialization of hardware, drivers, tools, etc. and the latter runs mondo-restore if it exists
+- better detection of and compatibility with SCSI CD-ROM drives
+- chopsize is now 64KB; was 128KB
+- cleaned up mindi's logging
+
+v0.48-1 (2001-12-08)
+- better logging of find-and-mount-cdrom's progress (to /tmp/mondo-restore.log)
+- somehow, lilo was re-enabled in deplist.txt; DISABLED (again *g*)
+- added 'linear' to the list of modules Mindi always backs up
+- if called by Mondo then pass the name & device of the user's boot loader to the restore phase, by copying BOOTLOADER.* to the ramdisk
+- if loading from floppies then try to mount CD-ROM a 2nd time after extracting files from data floppies, just in case user is a CD user who couldn't get their CD-ROM drive to work initially
+- added fix to make sure /root/images/mindi is created (Charlie Root)
+- aware of 'iso' boot mode, for future expansion
+
+v0.47 (2001-12-04)
+- added /dev/cdrom/cdrom[1-4] to the devices automatically excluded from mountlist.txt
+- added '-f-' to the end of most tar commands, to see if it fixes a bug in some obscure Debian distros
+- added network-related dependencies to deplist.txt
+- if called by Mondo then don't write floppy images to disks; let Mondo do that: less irritating for user
+- if called by Mondo then do some clever tricks to add mondo-restore and its dependencies (mondo-restore is now a dynamic executable)
+- finally gotten klogd to squelch echoing of kernel msgs to console
+
+v0.46 (2001-11-29)
+- finally fixed that 'lib/modules/2.4.12-xfs not found' bug! :-D
+- cosmetic changes and minor bugfixes
+- excluded lilo.conf and lilo from deplist.txt; use user's copy instead
+- if your fstab mentions a RAID partition but your raidtab doesn't then Mindi will terminate in a sane manner with a sane error message
+- fixed a bug in bug-me (heh, how ironic)
+- include and run (sys)klogd to try to pipe kernel msgs to logfile
+- call hdparm to speed up access to CD-ROM drive
+
+v0.45 (2001-11-15)
+- disabled fsck.* in deplist.txt
+- include /etc/fstab in logfile
+- removed lzop.* from aux-tools; should come from user's distro anyway
+- tweaked data disk size and data disk formatting command
+- make ISO bootable image (as well as floppies) when backing up to tape
+- copy boot images (floppy + CD) from temp dir to /root/images/mindi after making them, just in case the user wants them later
+- added md5sum to deplist.txt
+- added pico->vi softlink to ramdisk
+- in the ramdisk's /etc/bashrc, added /usr/local/bin and /usr/local/sbin to the PATH= command
+- call insert-all-modules as background task; pause 3 seconds after calling it, before proceeding <--- /sbin/init
+- call to devfs has been moved to before call to post-init
+- added 'md5sum -> busybox' softlink
+- Mindi now uses busybox's printf, md5sum, mount, umount, vi ...NB: I said, 'vi' :-) Now you have an editor again! :-)
+- added lilo.real to deplist.txt, to allow for Debian's evil new distro
+- added lzop to deplist.txt
+- no longer including lzop in Mindi's tarball / RPM
+- improved Mindi's error-reporting a little bit
+- changed deplist.txt's /etc/* to just *
+- restructured the calls in /sbin/post-init that reinitialize the LVM and RAID modules
+- if mkfs.ext2 is not in PATH then abort
+- Mindi uses a 'filename cache' to speed itself up at run-time (Jean-David Marrow)
+- Red Hat 7.2 uses a weird /etc/issue.net; I've worked around it...
+- tested with Linux-Mandrake 8.0 and Red Hat 7.2
+
+v0.44 (2001-10-28)
+- at boot-time, activate LV's if they exist
+- restructured deplist.txt a bit (cosmetic change)
+- re-enabled fsck.* in deplist.txt
+- analyze-my-lvm fails gracefully if you're not using LVM but inserted the module anyway
+
+v0.43 (2001-10-21)
+- made Mindi work with Red Hat 6.2 and 2.2.19 kernel
+- if mkisofs is not found, say so; don't just say, 'an error occurred while I was trying to make an ISO image'
+- when formatting and writing floppies, if /dev/fd0's size is indeterminable then I'll use /dev/fd0H1440 instead 
+- make sure xfs.o, jfs.o, reiserfs.o, ext2.o, ext3.o modules are backed up (if they exist) to boot disks
+- fixed a silly bug that stopped Mindi from handling its own modules properly; only affects newbie users with broken kernels (i.e. the very people that Mindi's failsafe kernel was meant to help!)
+- added lzop (Marcus Oberhumer's file compressor) to aux-tools.tgz
+- added Bruno Cornec's "--cd-recovery" patch; if user uses the switch (i.e. '--cd-recovery yes') then the CD will boot to a screen that pauses until the user types RESTORE; then, it will enter Nuke Mode
+- added Stephan Zegherd's "superformat" patch
+- failsafe kernel is now 2.4.12 with XFS, JFS and lots of SCSI modules; the addition of XFS and extensive SCSI support will increase the size of Mindi's RPM / tarball significantly but I think it's worth it
+- at boot-time, find out whether there are any RAID partitions; and if there are, whether they are 'started' yet; if not, run raidstart to start them at boot-time, before user can try to mount anything
+- Mindi's failsafe kernel & modules are handled more elegantly now; if you have raid1.o, scsi.o, etc. loaded at backup-time then Mindi finds its corresponding modules in its tarball of failsafe modules and stores them so that at boot-time you can do SCSI, RAID, etc.
+- removed gawk, printf from deplist.txt
+
+v0.42 (2001-10-10)
+- make sure lvm-mod, raid0, raid1 and raid5 modules are backed up
+- added 'you need a ramdisk' to FAQ
+- changed the slice size from 20KB to 64KB; speeds up Mindi by 25 percent and doesn't have any negative side-effects (...that I can see)
+- when searching for your current kernel version, do not examine a file if it does not exist (it sounds obvious, I know...)
+- when asking user to send me a copy of their log file, point out that it may contain info which they do not want me to see but that they are SOL unless I can actually see their log file
+- fixed a silly bug that would crop up when a Linux-Mandrake 8.1 user would use a devfs-enabled kernel and RAID partitions at the same time
+- plays nicely with devfs-enabled kernels and distros
+- data floppies are now 1.44MB each; boot floppy is still 1.72MB
+- if binutils or libbinutils is not installed, abort
+- fixed a bug which meant that some big files overwrote each other at backup-time and caused library-related problems are boot-time
+- enabled comments ('#') in deplist.txt
+- disabled fsck.* in deplist.txt; user may re-enable the line if s/he wants those tools available at boot-time
+- tested successfully with the following distros - Linux-Mandrake 8.1 and its 2.4.8, devfs-enabled stock kernel - Red Hat 7.1 and its 2.4.2 stock kernel
+- better at guessing the size of swap partition
+- drop minix tools from deplist; user can restore them if s/he wants to use the minix filesystem
+- don't backup _all_ cdrom modules (if backing up 'cdrom.o'); be selective! ...minor bug in ListKerneModulePaths has been fixed
+- if the user has two glibc libraries - one in /lib and one in /lib/i686 - then Mindi will re-jig the softlinks so that only the version in /lib is backed up, to save space on the data disks
+- major rewrite of the code that copies the tools and libraries from the data disks; prettier, faster and more stable (and did I mention how kind it is to your hard-working hands?)
+- better handling of crazy libraries and softlinks thereto
+- new boot-time script, 'bug-me', copies user's logs to a floppy and tells him/her to e-mail them to me if mondo-restore aborts
+- ignore kernels named vmlinux (note the 'X'); traditionally, kernels are named vmlinuz (note the 'Z') or something similar
+- no longer backup all modules to CD/tape; just backup the ones loaded at backup-time; this saves boot-time ramdisk space
+- removed all references to LOOPDEVICE
+- LVM is supported (experimental; watch this space...)
+- included a tarball of 'sane' /dev/loop* nodes which will be extracted and added to the boot disk; this helps maintain Mindi's backward- compatibility with non-devfs kernels and distros
+- when copying modules to boot or data disks, uncompress them first if they are gzipped (some distros come with compressed modules)
+- no longer copies all loaded modules to the 2.88 MB El Torito bootable floppy image; instead, it copies FLOPPY_MODS to the 1.72 MB image, CDROM_MODS to the 2.88 MB image, and _all_ modules that were loaded at backup-time to the data disks - supports tape streamers, in conjunction with Mondo
+- uses busybox's sync again; let's see if that breaks anything...
+- if Mondo is backing up to tape streamer then write the tape's size to /tmp/TAPESIZE and the drive's device to /tmp/TAPEDEV-LIVES-HERE on the ramdisk
+- floppy disk modules (ide-floppy.o and floppy.o) now are copied to the ramdisk, whether the user's kernel or the failsafe kernel is being used
+
+v0.41 (2001-09-28)
+- excluded *.old from the 'boot.b' list when searching for boot.b
+- updated Mindi's own failsafe kernel+modules to v2.4.10
+- added umount to deplist again
+- improved Mindi's support of modular kernels (esp. modular CD-ROM drive and floppy disk drives)
+- don't accuse Linux 2.4.10 users of having a 'buggy kernel'
+- restored the libc5 versions of sync and umount (dropped from deplist but also from busybox)
+- fixed a lot of silly bugs related to incorporating Busybox in Mindi
+- experimental LVM support
+- added 'analyze-my-lvm' script to the tarball; Mindi uses it now
+- able to recognize & record LVM mounts, adding them to the mountlist
+- added the LVM executables (listed in the lvm-0.xx-i386.rpm) to deplist.txt; they won't be added unless you have them and you won't
+ 	  have them unless you're using LVM, so this is not 'bloat' IMO :)
+- added date and sync to deplist again
+- when working on LVM stuff, use 'echo y | pvcreate -ff' (was '..-f')
+- amended format-...-kludge to allow for mountlists with >1 spaces between cols checked the fsck.reiserfs is in deplist.txt (yes it is)
+- incorporated busybox 0.60-1; now, Mindi is faster at run-time and smaller at boot-time; you can fit a typical system onto 3 floppies; also, a kernel up to 1MB in size (approx.) can now be accommodated
+- supports kernels that have MODULAR support for CD-ROM's or floppies
+- Mindi copies only the loaded modules to the data disks but it copies _all_ modules to the CD, just in case
+- thanks to busybox your floppy-based Mindi boot disk set should now be able to accommodate a kernel of up to 1MB in size
+- boot into Expert Mode unless boot disk was generated by Mondo
+- exclude all softlinks from list of 'eligible' kernels
+- exclude kernels with 'vmlinux' in their names
+- removed A LOT of files from deplist.txt's dependency list; they are listed in deplist.removed, in case you want to put them back :-)
+- excludes libX11, libXext, libXi, libgtk, libgdk ALWAYS, whether you add them to deplist.txt or not; [cancel this by editing line 485]
+- rewrote AddFileToDir() to make it more efficient (but slower...)
+- strip chaff from binaries; strip comments from bash scripts; strip comments from /etc/termcap
+
+v0.40 (2001-09-16)
+- if you use a softlink to your CD dev, e.g. /dev/cdrecorder->scd0, then Mindi should handle it properly now (i.e. not bomb out)
+- if you have a large kernel & lots of modules loaded, Mindi will only copy as many modules to the ramdisk as will _fit_ on a ramdisk that will have to go alongside your kernel on a 2.88MB floppy disk
+- if your kernel does not support loopfs, Mindi will say so & abort
+- turned some warnings into fatal errors, to help the user to figure out exactly why Mindi won't work on their kernel
+- changed mke2fs -N24 to -N32, to see if it helps braindead distros
+- Mondo now tells Mindi whether or not to use its stock kernel
+- gone back to the old 'insert-my-modules' for now; it's more reliable
+- working on the 'insert-all-my-modules' script, to make it compatible with a wider range of insane distros and kernels
+- dropped the '-c' option from LILO call - removed cdrecord, mkisofs, vi, route and diff from deplist.txt
+- slowed down the 'split data between floppies' routine; made it try harder to squeeze more data onto each floppy
+- excluding nvidia modules from the "insert-all-my-modules" script because it sometimes causes freeze-ups
+- added code to copy your fstab, lilo.conf, etc. to a tarball which, in the event of an error, Mindi will ask the user to e-mail me
+
+v0.39 (2001-09-08)
+- plays nicely with devfs, so long as your old /dev/hdX, /dev/sdX softlinks are still there :-)
+- if your swap partition isn't mounted, Mindi will decide that it is 125MB; it used to abort but now it just warns & makes a good guess
+- testing the failsafe kernel & associated scripts
+- only use lilo's "-c" option if NOT a 2.88MB floppy disk image
+- copes better with .o, .gz, etc. module suffixes
+- better 'loaded modules / not loaded modules' feedback at boot-time
+- semi-forces isofs and ide-cd (not isofs.o and ide-cd.o); the former will be more compatible with stock kernels - e.g. Red Hat, Mandrake; also added vfat, fat & a few other modules to the list of 'foced'.
+- removed the '-c' switch from the call to LILO (some BIOSes don't like it very much)
+- removed chaff from ramdisk's /etc/login.defs, saving approx 7K
+- format the boot disks with -N 24 (was -N 64)
+- do not insist on CD #1 (at boot-time) if there is no 'CD #' marker
+- amend format-and-kludge-vfat; now, it will not abort if it cannot find its entry in mountlist; it doesn't need to find the entry anyway, except to check that the kludge works (which it does)
+- if user chooses to use Mindi's failsafe 2.4.9 kernel, Mindi will load Mindi's versions of user's modules at boot-time
+- make label-devices-as-necessary log its efforts
+- added e2label and tune2fs to deplist.txt
+- if you boot in Normal Mode, I'll call mondo-restore --interactive instead of just mondo-restore
+- replaced K7-compatible 2.4.7 kernel with a 586-comp'ble 2.4.9 kernel
+- improved the post-run clean-up
+- force the copying/loading of isofs.o and ide-cd.o, which enhances Mindi's support for kernels that have modular CD-ROM support
+- Interactive Mode offers to edit /tmp/mountlist.txt before running mondo-restore (good idea from F. Boon)
+- /dev/hd[e-h]* have been added to the ramdisk
+- disabled Cuckoo and Bootstrap Modes (they weren't doing anything anyway & were probably confusing some users)
+- removed 'edit mountlist?' question (because mondo-restore takes care of that now, via a user-friendly mountlist editor)
+- included a copy of mondo-manual.html
+- only kludge /dev/hda1 or /dev/sda1 (if vfat, of course); otherwise, use regular mkfs.vfat
+- use mkfs.dos if mkfs.vfat does not exist
+- moved some scripts from rootfs.tgz to Mondo's restore-scripts.tgz
+
+v0.38 (2001-08-18)
+- clarified the 'more than one kernel found' comment
+- updated the README to emphasize that the scripts are deprecated
+- when displaying mountlist on screen, make it easier to read
+- changed most 'echo's to 'LogIt()'s; log most screen output to /var/log/mindi.log
+- user can now use a stock 2.4.7 kernel (which comes with Mindi) if the user's distro's kernel isn't right for a boot disk
+
+v0.37 (2001-08-11) - changed the boot screen a little bit
+- changed the "cannot boot from CD-ROM" message (more informative now)
+- if an 'insmod'ed module cannot be found, warn but don't abort
+- that whole loop-mount/extract tgz to ramdisk thing --- if it fails, abort, don't try to continue; also, ask if loopfs is supported by kernel (if not, that might explain the error)
+- in addition to /lib/modules/`uname -r`/modules, also search /root/oss/modules for kernel modules (Phillip Deackes)
+- run syslog and klogd at restore-time, to pipe sys & knl messages to /tmp/mondo-restore.log
+- default restore-time boot mode is now 'interactive' (unless the disk is a 1.72MB, in which case default mode is still 'expert')
+- if CDROM can't find itself (long story, re: El Torito) then the script will say, "Your kernel is b0rken." This will reduce the number of erroneous error reports that I receive from users
+- working on implementing Cuckoo Mode again
+
+v0.36 (2001-08-03)
+- testing it with LM8, RH71 and Slack8
+- explicitily exluding /mnt/floppy and /floppy from mountlist.txt
+- warn if afio not found (Mondo needs afio)
+- optional --custom <temp dir> <out dir> switch added, to let the user specify where the temp dirs and created images will be stored
+- changed /sbin/init to install modules _before_ trying to mount CD-ROM (David Granz)
+- create a gawk->awk shortcut at restore-time if necessary
+- specifically exclude /dev/fd0h1440 and /dev/fd0H1440 from mountlist
+- removed silly "was CD inserted?" message
+
+v0.35 (2001-07-31)
+- if LILO fails, it writes its errors to the screen
+- use user's boot.b and LILO instead of Mindi's
+- tarball/RPM no longer includes boot.b or lilo
+- mke2fs' output will be echoed to screen, if an error occurs
+- doubled the -N inode allocations and removed some of the -i inode fiddles, just in case they are making Red Hat 7.1 choke
+
+v0.34 (2001-07-25)
+- includes patch to rid Mindi of its dependence on /dev/loop devices
+ 	  (Bill Davidsen)
+- includes patch from 0ystein Skalsem, to fix a disk-formatting problem
+- warns if kernel is 2.4.0-2.4.5; encourages user to upgrade
+
+v0.33 (2001-07-20)
+- excludes all devices containing ':/' (i.e. NFS mountlists)
+- the FORMAT/SYS replacement, "format-and-kludge-vfat" now writes its logfile to /tmp/format-and-kludge-vfat.log
+- /etc/fstab now mounts floppies for read/write access by default
+- format-and-kludge-vfat should only write to log once now
+- added vi, top to deplist.txt
+- updated the rootfs.tgz's README
+- mountlist is written to screen as well as mountlist.txt
+- tested with Linux 2.4.7; works fine
+- changed 'mkfs' lines, to format the loop-mounted files instead of the device nodes which makes Mindi work better with kernels 2.4.6+
+- Mindi can now handle kernels of up to 930K in size
+- sped up the process of spreading data files across data disks by approx 20 percent
+
+v0.32 (2001-07-18)
+- software RAID is now supported
+- added the 'raidtools' binaries to deplist.txt
+- add /etc/fstab and /etc/raidtab to deplist.txt
+- added /dev/md* to the ramdisk's /dev directory
+- modified MakeMountlist() to calculate correctly the sizes of RAID partitions, if they are present in /etc/fstab
+- moved the 'LOOPDEVICE=...' code into the regular main() section
+- install-additional-tools makes a softlink '/etc/raidtab' that points to /mnt/groovy-stuff/etc/raidtab; also, '/etc/fstab.orig' that points to /mnt/groovy-stuff/etc/fstab
+- added line to 'install-additional-tools' that will delete the dummy modprobe before installing data from datadisk(s)
+- mkdir -p $outdir at the beginning, just in case...
+
+v0.31 (2001-07-16) - included DoJ's patch to make Mindi play more nicely with devfs
+- slightly better install.sh and README
+
+v0.30 (2001-07-15)
+- added klogd and syslogd to deplist.txt
+- can now cope with Red Hat's "LABEL=" entries in /etc/fstab
+- should ignore NFS-mounted partitions now
+
+v0.29 (2001-07-14)
+- stopped the 'modprobe' errors that used to occur at the beginning; they didn't mean anything but they did worry some novice users
+- removed losetup from rootfs.tgz (wasn't doing anything useful)
+- removed the 'txt-or-gui' stuff from Mindi (never used it anyway)
+- added clear to deplist.txt
+- moved rootfs.tgz's "mondo/" scripts to Mondo's "restore-scripts.tgz" tarball; tarball will be untarred and contents added to the data disks at run-time, if Mindi finds the tarball
+- if user lacks fd0u1722 but has fd0h1722 then use the latter
+- boot-up msg is more informative
+- fixed obscure bug in find-and-mount-cdrom
+- better at coping with hda1/2/3/4 (normal people use hda1/5/6/7 but if you really want to exhaust your primaries, well hey, your life)
+- the 'outstring sucks!' message is now more informative
+
+v0.28 (2001-07-07)
+- if AddFileToDir() is called with a file that does not exist, Mindi warns but does not abort
+- should work with gzipped modules (which end in '.o.gz') and NVidia modules (which don't end in anything)
+- should work with Red Hat's issue.net now
+- misc. cosmetic changes to Mondo boot-time and restore-phase scripts, to make the visual output cleaner & more legible
+- insist-on-cd retracts the CD tray after asking for next CD, in case the user did not close the drive before pressing <enter>
+- if unable to create 1.72MB boot disk then warn but do not abort
+- put creation date on the boot-up screen
+- create data disks with tarballs up to 1700KB in size; tries harder to fill each data disk to the brim
+- changed the call to make ext3 partitions; now, it uses a call to mkfs -t ext3 -j -Jsize=10 -q <device> (as requested by ext3 manual)
+- tested w/ext3; works fine
+- install-additional-tools doesn't call sync until after all softlinks have been finalized; that's to make sure we call the _right_ sync
+- ramdisk is now (size of all files in data disks PLUS 8192) KB
+- RPM and SRPM published
+- mount CDROM at start of untar-me, just in case it wasn't mounted
+- when restoring selectively, log the archives that have matches & the number of matches (inc. if zero)
+
+v0.26 (2001-07-05)
+- has been tested with XFS, JFS, ReiserFS, ext2 and vfat
+- compatible (but not tested) with ext3
+- better at finding your kernel, even if you have several kernels of the same version (now checks the build date, too)
+- better file-spreading algorithm; a little faster; much more reliable
+- includes a copy of LILO, to make the boot disks properly
+- tells you how big the tarballs are, when it assembles them
+- compare-me uses 'insist-on-cd' instead of internal subroutine
+- it looks as if Mindi can actually cope with 920K kernels now :)
+- fixed some silly multi-CD bugs that would stop big files from being restored if they were spread across CD's
+
+v0.25 (2001-07-04)
+- uses its own copy of lilo
+- removed all "~" (backup copies) from rootfs.tgz
+- updated the rootfs's README - stablilo-me, not hack-me
+- improved the formatting of the lilo.conf as it is created
+- replace all libc5 tools with libc6 (user's) tools at restore-time
+- added diff to deplist.txt
+- copy io.sys and msdos.sys (if found) to data disk(s) at run-time; softlinks them to /*.sys at boot-time
+- fixed some vfat formatting-related issues w/Embleer (always tricky); the kludge's error-handling is better and its exit is more graceful
+- say 'type nuke to restore automatically' in msg if Mondo called me
+- backup all modules, not just the ones present/loaded at run-time; the loaded modules go on boot disk but ALL go on data disk
+- reduced the max data per disk from 1700 to 1680, to suit ext2's needs
+- DidMondoCallMe() replaces 'ps ax | grep | blah blah'
+- includes user's /etc/termcap and /usr/bin/pico on disk(s)
+- cosmetic changes to restore-time scripts (spaces, newlines, etc.)
+- pipe kernel's msgs to /var/log/messages
+- make sure /etc/lilo.conf is 600 (RW by root only)
+
+v0.24 (2001-07-03)
+- can accommodate a kernel >900KB in size
+- generates lilo.conf on-the-fly; no default/template file anymore
+- copies io.sys and msdos.sys to the CD (if you have them)
+- add the embleer tarballs to mindi-0.xx.tgz, so that users can format and make bootable msdos/Win9x partitions
+- added printf and hdparm to deplist.txt
+- incorporated Bruno Cornec's Mondo 0.991 scripts in Mindi
+- separated README into README, INSTALL and TODO
+- fixed silly {ramdisk}/sbin/InsistOnCD bug
+- took out mke2fs and libext from rootfs.tgz
+- rootfs.tgz's "/etc/bashrc" now includes /usr/share/mindi
+- compare-mode uses IDE optimization to speed things up
+- don't quibble over resizing partitions if <2MB difference
+- fixed silly InsistOnCD bug
+
+v0.23 (2001-07-02)
+- don't copy *.mdsg to boot floppy image
+- fixed erroneous 'cannot make ISO image' error message
+- can accommodate a kernel as large as 890K
+- now uses lilo, not syslinux (lilo works better w/2.88MB boot images)
+- creates & formats disk images on the fly (no more .img.gz templates)
+- boot disks are formatted ext2, like the data disks
+- creates 1.72MB and El Torito 2.88MB boot floppies/images
+- if called by Mondo, doesn't list images or offer to copy to FDD/CDRw
+- includes the distro's name and kernel version in LILO's message
+
+v0.22 (2001-07-01)
+- don't add a ramdisk; use rootfs & that's it
+- dependency-calculator runs approx. twice as fast as in v0.20
+- tested with Linux Mandrake 8.0; works well, if you recompile kernel to include floppy disk support (which LM8's kernel does not)
+- supports bigger kernels now, up to 900K in size
+- deplist.txt may now include directories, not just files
+- ignores kernel filenames that are hyperlinks
+- uses awk instead of gawk; drop the awk/gawk-finding thing
+- uses gzip, not bzip2; dropped bzip2, mv, ls to make rootfs smaller
+- copies user's /dev/fd0* devices to boot disk
+- calls Mindi's copy of syslinux, not user's copy
+- use modules' paths, e.g. instead of just 'insmod fubar', use 'insmod /lib/modules/2.4.5-ac117/vfat/fubar.o'
+- in boot.msg, XXXXX is part 1 of the 2nd line, YYYYY is part 2 of the 2nd line, and ZZZZZ is Mindi's version# (in the 1st line)
+
+v0.21 (2001-06-30)
+- df, du, find, lsmod, rmmod have been removed from rootfs.tgz
+- at boot-time, inserts kernel modules w/user's original parameters
+- deletes the slices after recombining them & restoring the files
+- includes the MINDI_VER version number in boot.msg
+- if boot disk is too small, lists the files & which one is too big
+- syslinux now waits 10 seconds before booting floppy
+- 'insert-all-my-modules' is copied to rootfs, not to a data disk
