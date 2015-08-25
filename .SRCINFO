@@ -1,0 +1,14 @@
+pkgbase = jgoodies-common
+	pkgdesc = A Java Swing common library required by other JGoodies libraries
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://www.jgoodies.com/
+	arch = any
+	groups = jgoodies
+	license = BSD
+	optdepends = java-runtime>=6
+	source = http://www.jgoodies.com/download/libraries/common/jgoodies-common-1_8_1-20140629.zip
+	md5sums = 24cc6aafe0bfe6b72d893caab6b38201
+
+pkgname = jgoodies-common
+
