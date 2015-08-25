@@ -1,0 +1,15 @@
+pkgbase = ticklemonster
+	pkgdesc = You're the TICKLE MONSTER! You tickle kids to ensure they are raised with proper amounts of fun! Game made for Ludum Dare 33
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://dosowisko.net/ticklemonster/
+	arch = i686
+	arch = x86_64
+	license = GPL2+
+	makedepends = cmake
+	depends = allegro
+	source = http://dosowisko.net/ticklemonster/TickleMonster-0.1.2-Linux.tar.gz
+	sha256sums = 9a117c38ca3eddd3bc80d14a2bdfcb9afe9a0777de533fa845bbd2b4bc2cd0b5
+
+pkgname = ticklemonster
+
