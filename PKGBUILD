@@ -2,7 +2,7 @@
 pkgname=python2-yt
 _module_name=yt
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A community-developed analysis and visualization toolkit for volumetric data"
 arch=(any)
 url="http://yt-project.org"
@@ -10,8 +10,15 @@ license=('BSD')
 depends=('python2-numpy' 'python2-matplotlib' 'cython2' 'python2-nose' 'python2-sympy' 'python2-h5py')
 optdepends=('ipython2' 'ipython2-notebook')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/y/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-md5sums=('1bd2eaa05a06a85c53dee87626454df8')
+source=("https://pypi.python.org/packages/source/y/${_module_name}/${_module_name}-${pkgver}.tar.gz"
+        "yt32.patch")
+md5sums=('1bd2eaa05a06a85c53dee87626454df8'
+         'SKIP')
+
+prepare() {
+    cd "$srcdir/${_module_name}-$pkgver"
+    patch -Np1 -i ../yt32.patch
+}
 
 package() {
   cd "$srcdir/${_module_name}-$pkgver"

@@ -1,0 +1,12 @@
+diff -aur yt-3.2-clean/setup.py yt-3.2/setup.py
+--- yt-3.2-clean/setup.py	2015-07-24 19:38:42.000000000 +0100
++++ yt-3.2/setup.py	2015-08-25 13:07:47.928947899 +0100
+@@ -205,7 +205,7 @@
+         keywords='astronomy astrophysics visualization ' +
+         'amr adaptivemeshrefinement',
+         entry_points={'console_scripts': [
+-        'yt = yt.utilities.command_line:run_main',
++        'yt2 = yt.utilities.command_line:run_main',
+         ],
+             'nose.plugins.0.10': [
+                 'answer-testing = yt.utilities.answer_testing.framework:AnswerTesting'
