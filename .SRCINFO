@@ -1,6 +1,6 @@
 pkgbase = ruby-rails
 	pkgdesc = Full-stack web application framework.
-	pkgver = 4.2.3
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = http://www.rubyonrails.org
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = ruby-rails
 	depends = ruby-railties
 	depends = ruby-bundler
 	depends = ruby-sprockets-rails
-	noextract = rails-4.2.3.gem
+	noextract = rails-4.2.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rails-4.2.3.gem
-	sha1sums = 0ef8f13382996c3480d09900e34988aae85f0886
+	source = https://rubygems.org/downloads/rails-4.2.4.gem
+	sha1sums = 67d7a12105f5389dd7b511eff5f56c6c048175d8
 
 pkgname = ruby-rails
 
