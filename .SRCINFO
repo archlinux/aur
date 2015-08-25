@@ -1,0 +1,14 @@
+pkgbase = djohn
+	pkgdesc = Cracks passwords over multiple computers using john
+	pkgver = 0.9.8.1
+	pkgrel = 1
+	url = http://ktulu.com.ar/blog/software/djohn/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = john: to actually crack passwords
+	source = http://downloads.sourceforge.net/sourceforge/djohn/djohn-0.9.8.1.tgz
+	md5sums = 89b6d49033438a86db40418b569dc03e
+
+pkgname = djohn
+
