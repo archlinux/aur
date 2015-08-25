@@ -3,7 +3,7 @@
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
 pkgver=20150821_081148
-pkgrel=2
+pkgrel=3
 pkgdesc="The Free On-line Dictionary of Computing for dict"
 arch=('any')
 url="http://foldoc.org/"
@@ -18,9 +18,9 @@ md5sums=('SKIP')
 
 pkgver()
 {
-	datestr=$(curl -sI foldoc.org/Dictionary.txt | grep "Last-Modified" \
+	_datestr=$(curl -sI foldoc.org/Dictionary.txt | grep "Last-Modified" \
 		| cut -c 21-)
-	date --utc --date="$datestr" +%Y%m%d_%H%M%S
+	date --utc --date="$_datestr" +%Y%m%d_%H%M%S
 }
 
 build()
