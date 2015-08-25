@@ -1,0 +1,13 @@
+pkgbase = sucrack
+	pkgdesc = a multi-threaded Linux/UNIX tool for brute-force cracking local user accounts via su
+	pkgver = 1.2.3
+	pkgrel = 3
+	url = http://labs.portcullis.co.uk/application/sucrack
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://labs.portcullis.co.uk/download/sucrack-1.2.3.tar.gz
+	md5sums = 6ebfe5e94577a53ce8dcabadd3581ec3
+
+pkgname = sucrack
+
