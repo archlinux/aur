@@ -1,6 +1,6 @@
 pkgbase = rr-git
 	pkgdesc = a nondeterministic debugger
-	pkgver = 3.0.0.r2.g1827858
+	pkgver = 3.2.0.r262.g1140d79
 	pkgrel = 1
 	url = http://rr-project.org/
 	arch = i686
@@ -10,6 +10,9 @@ pkgbase = rr-git
 	makedepends = cmake
 	depends = libpfm4
 	depends = libdisasm
+	depends = python2-pexpect
+	provides = rr
+	conflicts = rr
 	source = git://github.com/mozilla/rr
 	sha1sums = SKIP
 
