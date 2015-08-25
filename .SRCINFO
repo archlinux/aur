@@ -1,0 +1,16 @@
+pkgbase = ttf-keep-calm-medium
+	pkgdesc = A font developed from the now famous World War 2 poster.
+	pkgver = 1.2
+	pkgrel = 1
+	install = ttf-keep-calm-medium.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.k-type.com/freefonts/KEEP_CALM_MEDIUM.zip
+	source = license
+	md5sums = b53ffed6598fcfc48665f15cef6ead3d
+	md5sums = 3d96b169fb7d42077af1865825a00e89
+
+pkgname = ttf-keep-calm-medium
+
