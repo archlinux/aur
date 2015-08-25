@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 
 pkgname=python-wordnik
-pkgver=2.1.3
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Wordnik API for Python"
 arch=('any')
@@ -9,10 +9,10 @@ url="https://pypi.python.org/pypi/wordnik/"
 license=('APACHE')
 makedepends=('git')
 depends=('python' 'python-setuptools')
-source=(https://pypi.python.org/packages/source/w/wordnik/wordnik-$pkgver.tar.gz)
-md5sums=('b64ff6a8baf16ba3c819ae36fc16917c')
+source=(https://pypi.python.org/packages/source/w/wordnik-py3/wordnik-py3-$pkgver.tar.gz)
+md5sums=('1a73187cc7b61a0e426fda94ade31925')
 
 package() {
-   cd "$srcdir/wordnik-$pkgver"
+   cd "$srcdir/wordnik-py3-$pkgver"
    python setup.py install --root="$pkgdir/" --optimize=1
 }
