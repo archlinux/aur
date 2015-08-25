@@ -1,0 +1,12 @@
+pkgbase = paraview-bin
+	pkgdesc = ParaView is an open-source, multi-platform data analysis and visualization application. This package installs the binary build from the kitware website.
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = http://www.paraview.org/
+	arch = x86_64
+	license = BSD
+	source = http://paraview.org/files/v4.3/ParaView-4.3.1-Linux-64bit-glibc-2.3.6.tar.gz
+	md5sums = 86ca04f5064f2b4b940158848216bf8e
+
+pkgname = paraview-bin
+
