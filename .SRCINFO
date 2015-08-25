@@ -1,7 +1,7 @@
 pkgbase = any-dl
 	pkgdesc = Generic video downloader for principially any site.
-	pkgver = 0.16.0
-	pkgrel = 2
+	pkgver = 0.18.0
+	pkgrel = 1
 	url = http://www.first.in-berlin.de/software/tools/any-dl/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = any-dl
 	depends = gnutls
 	depends = ocaml-csv
 	options = !makeflags
-	source = http://www.first.in-berlin.de/software/tools/any-dl/any-dl-0.16.0.tgz
-	md5sums = ff0b025ba32496a761ee54fe59a108e3
+	source = http://www.first.in-berlin.de/software/tools/any-dl/any-dl-0.18.0.tgz
+	md5sums = 5f268f364bd6e021b35d1c1f283058b1
 
 pkgname = any-dl
 
