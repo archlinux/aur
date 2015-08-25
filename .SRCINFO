@@ -17,7 +17,6 @@ pkgbase = lantern
 	depends = xcb-util
 	depends = xdg-utils
 	depends = zlib
-	provides = lantern
 	options = !emptydirs
 	options = !strip
 	options = !docs

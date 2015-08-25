@@ -12,7 +12,6 @@ license=('Apache')
 # neo: I got it by ldd the lantern-binary as deb metadata doesn't provides it,
 # and remove duplicated, like atk required by gtk3
 depends=('hicolor-icon-theme' 'bzip2' 'dbus' 'glib2' 'gtk3' 'libappindicator-gtk3' 'mesa' 'xcb-util' 'xdg-utils' 'zlib')
-provides=('lantern')
 options=('!emptydirs' '!strip' '!docs')
 install=$pkgname.install
 source=('lantern.service')
