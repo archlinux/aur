@@ -9,7 +9,8 @@ pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
 url="https://github.com/untitaker/vdirsyncer"
 license=('MIT')
-depends=("${_python}-click>=3.1" "${_python}-lxml>=3.0"
+depends=("${_python}-click>=5.0"
+         "${_python}-click-log" "${_python}-click-threading"
          "${_python}-requests-toolbelt>=0.4.0" "${_python}-atomicwrites")
 makedepends=("git" "${_python}-sphinx")
 checkdepends=("${_python}-pytest-xprocess" "${_python}-pytest-localserver"
