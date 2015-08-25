@@ -1,6 +1,6 @@
 pkgbase = ruby-actionpack
 	pkgdesc = Web-flow and rendering framework putting the VC in MVC (part of Rails).
-	pkgver = 4.2.3
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = http://www.rubyonrails.org
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ruby-actionpack
 	depends = ruby-rack
 	depends = ruby-rack-test
 	depends = ruby-actionview
-	noextract = actionpack-4.2.3.gem
+	noextract = actionpack-4.2.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/actionpack-4.2.3.gem
-	sha1sums = d824941013ba3616aa643d4c5016d00bf2dc028f
+	source = https://rubygems.org/downloads/actionpack-4.2.4.gem
+	sha1sums = b625e58fb8fa11185ff81630f3bef5c517e294e4
 
 pkgname = ruby-actionpack
 
