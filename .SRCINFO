@@ -1,6 +1,6 @@
 pkgbase = ruby-railties
 	pkgdesc = Tools for creating, working with, and running Rails applications.
-	pkgver = 4.2.3
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = http://www.rubyonrails.org
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-railties
 	depends = ruby-activesupport
 	depends = ruby-actionpack
 	depends = ruby-thor
-	noextract = railties-4.2.3.gem
+	noextract = railties-4.2.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/railties-4.2.3.gem
-	sha1sums = 0fa6b51c3e9f70f0ce9fb1d1977169537d19ae86
+	source = https://rubygems.org/downloads/railties-4.2.4.gem
+	sha1sums = 8e9eab180dbd97eaf7626601c55e61ea1ae68284
 
 pkgname = ruby-railties
 
