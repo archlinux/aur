@@ -2,7 +2,7 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 pkgname=openmpi
-pkgver=1.8.8
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='High performance message passing library (MPI)'
 arch=(i686 x86_64)
@@ -12,8 +12,8 @@ depends=(libltdl hwloc)
 makedepends=(inetutils valgrind gcc-fortran)
 optdepends=('gcc-fortran: fortran support')
 options=(staticlibs)
-source=(http://www.open-mpi.org/software/ompi/v1.8/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('0c9cc2ad1ee73838bed1a445793e36671d631447')
+source=(http://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('683fecac252a6139fbf538188d8b35454425c412')
 
 build() {
    cd $pkgname-$pkgver
