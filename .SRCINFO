@@ -1,0 +1,12 @@
+pkgbase = avbin7
+	pkgdesc = Cross-platform media decoding library
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = http://avbin.github.com
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = https://github.com/downloads/AVbin/AVbin/avbin-linux-x86--7.tar.gz
+
+pkgname = avbin7
+
