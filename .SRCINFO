@@ -13,7 +13,6 @@ pkgbase = libasl
 	depends = libcl
 	depends = boost
 	depends = libmatio
-	conflicts = libasl-git
 	source = libasl-0.1.6.tar.gz::https://github.com/AvtechScientific/ASL/archive/v0.1.6.tar.gz
 	sha256sums = b35510c2a82f96237d5cc54d727922db00b71c7d6439591ff50882d08f8314d6
 

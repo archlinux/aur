@@ -8,7 +8,6 @@ url='http://asl.org.il/'
 license=('AGPL3')
 depends=('vtk' 'libcl' 'boost' 'libmatio')
 makedepends=('cmake' 'opencl-headers')
-conflicts=('libasl-git')
 changelog='NEWS.md'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AvtechScientific/ASL/archive/v${pkgver}.tar.gz")
 sha256sums=('b35510c2a82f96237d5cc54d727922db00b71c7d6439591ff50882d08f8314d6')
