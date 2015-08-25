@@ -1,6 +1,6 @@
 # Contributor: thorsten w. <p@thorsten-wissmann.de>
 pkgname=katarakt-git
-pkgver=20130311
+pkgver=r187.ce41e7a
 pkgrel=1
 pkgdesc="A simple PDF viewer with two layouts"
 arch=('i686' 'x86_64')
@@ -11,24 +11,18 @@ optdepends=( )
 makedepends=( asciidoc )
 provides=( )
 backup=( )
-source=( )
-md5sums=( )
-_gitroot="git://git.informatik.uni-erlangen.de/katarakt"
+source=( git://git.informatik.uni-erlangen.de/katarakt )
+md5sums=( SKIP )
 _gitname="katarakt"
 
+
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd $srcdir
-  echo "Fetching source from GIT"
-  if ! [ -d "$_gitname" ] ; then
-    # if git dir does not exist yet
-    # then clone git repo
-    git clone "$_gitroot" || return 1
-    cd "$_gitname"
-  else
-    # else pull sources
-    cd "$_gitname" && git pull origin || return 1
-  fi
-  # compile
+  cd "$srcdir/${_gitname}"
   qmake-qt4
   make
   a2x -f manpage -a "date=`date +%Y-%m-%d`" doc/katarakt.txt
