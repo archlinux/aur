@@ -10,7 +10,7 @@ pkgrel=1
 arch=('any');
 source=('http://www.ozone3d.net/glslhacker/dl/GLSLHacker_CodeSamplePack.zip')
 md5sums=('8a3b41f3029f4bf8cd15d4969a9b1079')
-makedepends=('unzip')
+makedepends=('unzip' 'aria2')
 
 package() {
     cd "GLSLHacker_CodeSamplePack"

@@ -6,6 +6,7 @@ pkgbase = glslhacker-sample-pack
 	arch = any
 	license = custom
 	makedepends = unzip
+	makedepends = aria2
 	source = http://www.ozone3d.net/glslhacker/dl/GLSLHacker_CodeSamplePack.zip
 	md5sums = 8a3b41f3029f4bf8cd15d4969a9b1079
 
