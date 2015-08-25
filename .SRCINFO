@@ -1,7 +1,7 @@
 pkgbase = protobuf3
 	pkgdesc = Protocol Buffers - Google's data interchange format
 	pkgver = 3.0.0_alpha_3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/protocol-buffers/
 	arch = i686
 	arch = x86_64
