@@ -3,7 +3,7 @@
 pkgname=underscorejs
 _script=underscore
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Underscore is a utility-belt library for JavaScript that provides a lot of the functional programming support that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects."
 arch=(any)
 url=http://underscorejs.org
@@ -17,7 +17,6 @@ package() {
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 "${_script}-min.js" "${pkgdir}/usr/share/${pkgname}/${_script}-min.js"
   install -Dm644 "${_script}.js" "${pkgdir}/usr/share/${pkgname}/${_script}.js"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
