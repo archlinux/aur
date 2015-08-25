@@ -1,39 +1,42 @@
-# Maintainer: Joel Teichroeb <joel@teichroeb.net>
+# Maintainer: dequis <dx@dxzone.com.ar>
+# Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
-pkgver=3.0.0.r2.g1827858
+pkgver=3.2.0.r262.g1140d79
 pkgrel=1
 pkgdesc='a nondeterministic debugger'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('libpfm4' 'libdisasm')
+depends=('libpfm4' 'libdisasm' 'python2-pexpect')
 makedepends=('git' 'cmake')
 source=(git://github.com/mozilla/rr)
 sha1sums=('SKIP')
+provides=('rr')
+conflicts=('rr')
 
 pkgver() {
-    cd rr
+	cd rr
 	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd rr
-	mkdir build
+	mkdir -p build
 	sed -i~ -e 's/ python / python2 /g' CMakeLists.txt
 	sed -i~ -e 's/^\(#define \)_BSD_SOURCE$/\1_DEFAULT_SOURCE/' src/Command.cc
 }
 
 build() {
-    cd rr/build
+	cd rr/build
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 
-    make
+	make
 }
 
 package() {
-    cd rr/build
-    make DESTDIR="${pkgdir}" install
+	cd rr/build
+	make DESTDIR="${pkgdir}" install
 	cd ..
 	install -D LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
 }
