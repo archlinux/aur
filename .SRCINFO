@@ -11,6 +11,7 @@ pkgbase = hungry-sniffer-git
 	depends = jsoncpp
 	depends = qt5-base
 	depends = libcap
+	depends = python
 	source = hungry-sniffer::git+git://github.com/arthurzam/hungry-sniffer.git
 	sha1sums = SKIP
 
