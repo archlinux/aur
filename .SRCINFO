@@ -1,7 +1,7 @@
 pkgbase = libasl
 	pkgdesc = Multiphysics simulation software package (Advanced Simulation Library)
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = http://asl.org.il/
 	changelog = NEWS.md
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = libasl
 	depends = boost
 	depends = libmatio
 	conflicts = libasl-git
-	source = libasl-0.1.5.tar.gz::https://github.com/AvtechScientific/ASL/archive/v0.1.5.tar.gz
-	sha256sums = c90be05a6f0b5c7bf12a9630355838e86edf8e2199a238b44b042147d85dfb18
+	source = libasl-0.1.6.tar.gz::https://github.com/AvtechScientific/ASL/archive/v0.1.6.tar.gz
+	sha256sums = b35510c2a82f96237d5cc54d727922db00b71c7d6439591ff50882d08f8314d6
 
 pkgname = libasl
 

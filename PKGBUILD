@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=libasl
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='Multiphysics simulation software package (Advanced Simulation Library)'
 arch=('i686' 'x86_64')
 url='http://asl.org.il/'
@@ -11,7 +11,7 @@ makedepends=('cmake' 'opencl-headers')
 conflicts=('libasl-git')
 changelog='NEWS.md'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AvtechScientific/ASL/archive/v${pkgver}.tar.gz")
-sha256sums=('c90be05a6f0b5c7bf12a9630355838e86edf8e2199a238b44b042147d85dfb18')
+sha256sums=('b35510c2a82f96237d5cc54d727922db00b71c7d6439591ff50882d08f8314d6')
 
 build() {
   cd "$srcdir/ASL-$pkgver"
