@@ -1,12 +1,13 @@
 pkgbase = sickrage-git
 	pkgdesc = A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage and torrents support.
-	pkgver = 4.0.24.r2.gf9246bc
+	pkgver = 4.0.54.r0.g3fb81bd
 	pkgrel = 1
 	url = https://github.com/SiCKRAGETV/SickRage
 	install = sickrage-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = python2-mako
 	depends = python2-cheetah
 	optdepends = python2-notify: desktop notifications
 	optdepends = python2-pyopenssl: enable ssl

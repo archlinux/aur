@@ -3,13 +3,13 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=4.0.24.r2.gf9246bc
+pkgver=4.0.54.r0.g3fb81bd
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage and torrents support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
 license=('GPL3')
-depends=('python2-cheetah')
+depends=('python2-mako' 'python2-cheetah')
 makedepends=('git')
 optdepends=('python2-notify: desktop notifications'
             'python2-pyopenssl: enable ssl'
