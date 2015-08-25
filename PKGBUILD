@@ -13,7 +13,7 @@ changelog='NEWS.md'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AvtechScientific/ASL/archive/v${pkgver}.tar.gz")
 sha256sums=('b35510c2a82f96237d5cc54d727922db00b71c7d6439591ff50882d08f8314d6')
 
-build() {
+prepare() {
   cd "$srcdir/ASL-$pkgver"
   mkdir -p build
   cd build
@@ -26,13 +26,16 @@ build() {
         -DWITH_MATIO=ON \
         -DWITH_API_DOC=OFF \
         -DWITH_TESTS=OFF
+}
+
+build() {
+  cd "$srcdir/ASL-$pkgver/build"
   make
 }
 
 package() {
   cd "$srcdir/ASL-$pkgver/build"
   make DESTDIR="$pkgdir/" install
-
   # Add LICENSE file
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
