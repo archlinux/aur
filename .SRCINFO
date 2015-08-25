@@ -1,0 +1,21 @@
+pkgbase = iozone
+	pkgdesc = A filesystem benchmark tool
+	pkgver = 3_420
+	pkgrel = 1
+	url = http://www.iozone.org/
+	install = iozone.install
+	arch = i686
+	arch = x86_64
+	arch = ppc
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	depends = sh
+	optdepends = gnuplot: for generating graph reports
+	source = http://www.iozone.org/src/current/iozone3_420.tar
+	source = iozone-3_420.diff
+	md5sums = 5205cd571c6e68440772f7e0af0712d6
+	md5sums = a8fcaa9f51095d4c65bddcf7f4ed7cd8
+
+pkgname = iozone
+
