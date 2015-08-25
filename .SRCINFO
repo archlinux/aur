@@ -1,18 +1,17 @@
 pkgbase = xyscan
 	pkgdesc = Tool to extract data points from graphical plots
-	pkgver = 3.3.3
-	pkgrel = 2
-	url = http://star.physics.yale.edu/~ullrich/xyscanDistributionPage/
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://rhig.physics.yale.edu/~ullrich/software/xyscan/
 	install = xyscan.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt5-multimedia>=5.2.0
-	source = http://rhig.physics.yale.edu/~ullrich/software/xyscan/Distributions/3.33/xyscan-3.33-src.tar.gz
-	source = xyscan-3.3.3-docs.patch
+	depends = poppler-qt5
+	source = http://rhig.physics.yale.edu/~ullrich/software/xyscan/Distributions/4.00/xyscan-4.00-src.tar.gz
 	source = xyscan.desktop
-	md5sums = d236ee95950edbf0dfef895ea59aafcd
-	md5sums = 22093f1c22b73f95de1cbfee14d74dc4
+	md5sums = 57000c8e4192c9185647ffb37fad6eca
 	md5sums = 2df01c952f8425d05e0d138778ca5be9
 
 pkgname = xyscan
