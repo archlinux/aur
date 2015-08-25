@@ -33,9 +33,10 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
-    for f in ${srcdir}/*.patch
+    for _p in ${srcdir}/*.patch
     do
-        patch -p1 -i $f
+        msg2 "Applying $_p"
+        patch -p1 -i $_p
     done
 
     ./autogen.sh
