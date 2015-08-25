@@ -1,0 +1,16 @@
+pkgbase = picasso-3ds-git
+	pkgdesc = Picasso shader assembler for 3DS homebrew
+	pkgver = cefa910b5887f62f82bac6de0c67ffefd20b824f
+	pkgrel = 1
+	url = https://github.com/fincs/picasso/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	makedepends = autoconf
+	makedepends = automake
+	source = picasso::git://github.com/fincs/picasso
+	md5sums = SKIP
+
+pkgname = picasso-3ds-git
+
