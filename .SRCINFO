@@ -1,0 +1,32 @@
+pkgbase = mondo
+	pkgdesc = A disaster recovery solution to create backup media that can be used to redeploy the damaged system
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://www.mondorescue.org/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = libnewt>=0.50
+	makedepends = gcc
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	depends = mindi>=2.0.7
+	depends = bzip2>=0.9
+	depends = afio
+	depends = cdrkit
+	depends = binutils
+	depends = libnewt>=0.50
+	depends = buffer
+	depends = syslinux>=1.52
+	depends = slang
+	optdepends = lzop: File compressor using lzo lib
+	optdepends = lzo: A portable lossless data compression library
+	source = ftp://ftp.mondorescue.org/src/mondo-3.0.2.tar.gz
+	source = mondo-initrd.patch
+	md5sums = 6c1475911daef9e2e95eaf4394e399d7
+	md5sums = 13746686b22550efc6d7d6471561a9bf
+
+pkgname = mondo
+

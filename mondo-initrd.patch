@@ -1,0 +1,11 @@
+--- mondo-3.0.2/src/mondorestore/mondo-rstr-tools.c	2012-03-30 01:43:01.000000000 +0100
++++ mondo-3.0.2/src/mondorestore/mondo-rstr-tools-patch.c	2012-06-07 21:32:29.101163056 +0100
+@@ -1246,7 +1246,7 @@
+ 		("You will now be able to re-generate your initrd.\nThis is especially useful if you changed of hardware configuration, cloned, made P2V, used multipath...\nDo you need to do it ?")) {
+ 		log_msg(1,"Launching shell for manual initrd recreation");
+ 		if (does_file_exist(MNT_RESTORING"/etc/arch-release")) {
+-			popup_and_OK("You'll now be chrooted under your future / partition.\nEdit /etc/mkinitcpio.conf if needed and rebuild your initrd with the kernel preset name e.g.\nmkinitcpio -p kernel26\nThen type exit to finish.\n");
++			popup_and_OK("You'll now be chrooted under your future / partition.\nEdit /etc/mkinitcpio.conf if needed and rebuild your initrd with the kernel preset name e.g.\nmkinitcpio -p linux\nThen type exit to finish.\n");
+ 		} else {
+ 			popup_and_OK("You'll now be chrooted under your future / partition.\nGo under /boot and rebuild your initrd with\nmkinitrd -f -v initrd-2.x.y.img 2.x.y e.g.\nThen type exit to finish.");
+ 		}
