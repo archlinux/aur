@@ -1,7 +1,7 @@
 # Maintainer: Lit Wakefield <noct[at]openmailbox[dot]org>
 _pkgname=zscroll
 pkgname=zscroll-git
-pkgver=0.1.r5.gd42dc2c-1
+pkgver=0.1.r5.gd42dc2c
 pkgrel=1
 pkgdesc="A text scroller for use with panels"
 arch=('any')
