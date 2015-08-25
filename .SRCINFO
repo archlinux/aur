@@ -1,0 +1,14 @@
+pkgbase = field
+	pkgdesc = Extact fields from a file or stdin
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/field/0.2.0
+	arch = any
+	license = GPL3
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/f/field/field-0.2.0.tar.gz
+	md5sums = 64eb76b875a128041eb31b625b435616
+
+pkgname = field
+
