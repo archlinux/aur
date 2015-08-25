@@ -26,4 +26,4 @@ while [ $# -gt 0 ]; do
 	shift
 done
 
-exec java -Xmx${mem}m -Xms${stack}m -jar /opt/gprojector/G.Projector.jar
+exec java -Xmx${mem}m -Xms${stack}m -jar /opt/gprojector/jars/G.Projector.jar
