@@ -1,8 +1,8 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=zstd-git
 _pkgname=zstd
-pkgver=r71.1eca5f5
-pkgrel=1
+pkgver=v0.1.0.r0.g305c8c2
+pkgrel=2
 pkgdesc='A fast and efficient compression algorithm.'
 arch=('i686' 'x86_64')
 url='https://github.com/Cyan4973/zstd'
@@ -10,13 +10,15 @@ license=('BSD' 'GPL2')
 groups=()
 depends=('glibc')
 makedepends=('git')
+conflicts=('zstd')
+provides=('zstd')
 source=('git://github.com/Cyan4973/zstd.git')
 noextract=()
 md5sums=('SKIP') 
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
