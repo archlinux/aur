@@ -1,0 +1,16 @@
+pkgbase = httping
+	pkgdesc = A 'ping'-like tool for http-requests
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = http://www.vanheusden.com/httping/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	optdepends = ncurses
+	optdepends = fftw
+	source = http://www.vanheusden.com/httping/httping-2.3.4.tgz
+	md5sums = 7a71ed513f9f22fe331b783a3d36767e
+
+pkgname = httping
+
