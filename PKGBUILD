@@ -2,7 +2,7 @@
 
 pkgname=domoticz-git
 _gitname="domoticz"
-pkgver=r2808
+pkgver=r2826
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'armv7h')
@@ -14,7 +14,7 @@ conflicts=('domoticz-svn')
 source=('git://github.com/domoticz/domoticz.git'
          'domoticz.service')
 sha256sums=('SKIP'
-             '1aead77748b3987bd915370904d959b81be56fde68aee5bf356ed864dbb75516')
+             '480960485b8573d96adcf3a257ae26b27418f752cf5300a0b4b9fc5135245d48')
 
 pkgver() {
   cd $_gitname

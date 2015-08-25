@@ -1,6 +1,6 @@
 pkgbase = domoticz-git
 	pkgdesc = Web based home automation
-	pkgver = r2808
+	pkgver = r2826
 	pkgrel = 1
 	url = http://www.domoticz.com
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = domoticz-git
 	source = git://github.com/domoticz/domoticz.git
 	source = domoticz.service
 	sha256sums = SKIP
-	sha256sums = 1aead77748b3987bd915370904d959b81be56fde68aee5bf356ed864dbb75516
+	sha256sums = 480960485b8573d96adcf3a257ae26b27418f752cf5300a0b4b9fc5135245d48
 
 pkgname = domoticz-git
 
