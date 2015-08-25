@@ -2,7 +2,7 @@
 #Packaged by ryanvade 
 
 pkgname=gnome-shell-extension-battery-percentage-git
-pkgver=r11.e358c28
+pkgver=r11.e358c28-1
 pkgrel=1
 pkgdesc="This extension just shows the battery power remainging percentage at the panel."
 arch=('any')
