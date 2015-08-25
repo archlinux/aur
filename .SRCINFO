@@ -1,0 +1,14 @@
+pkgbase = xprintidle
+	pkgdesc = Print X idle time
+	pkgver = 0.2
+	pkgrel = 6
+	url = http://www.dtek.chalmers.se/~henoch/text/xprintidle.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxss
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/xprintidle_0.2.orig.tar.gz
+	md5sums = 254071bee32447566be4a4f42b9a19ff
+
+pkgname = xprintidle
+
