@@ -1,7 +1,7 @@
 pkgbase = field
 	pkgdesc = Extact fields from a file or stdin
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/field/0.2.0
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = field
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/f/field/field-0.2.0.tar.gz
 	md5sums = 64eb76b875a128041eb31b625b435616
+	sha256sums = 29394bc076ac37e1b40aa5d9249d8a60056f244bf6167d29cc66ec9d6b7dd182
 
 pkgname = field
 
