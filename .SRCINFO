@@ -1,0 +1,15 @@
+pkgbase = yaftx
+	pkgdesc = X Window System port of yaft (yet another framebuffer terminal)
+	pkgver = 0.2.9
+	pkgrel = 2
+	url = https://github.com/uobikiemukot/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	backup = usr/share/terminfo/y/yaft-256color
+	source = https://github.com/uobikiemukot//yaft/archive/v0.2.9.tar.gz
+	md5sums = ddcbe929c51c453b01e3d18579b0860a
+
+pkgname = yaftx
+
