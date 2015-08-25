@@ -5,7 +5,7 @@ pkgbase = 4store
 	url = http://www.4store.org
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = GPL
 	depends = raptor
 	depends = rasqal
 	depends = glib2
@@ -17,6 +17,7 @@ pkgbase = 4store
 	depends = termcap
 	depends = expat
 	depends = zlib
+	options = !emptydirs
 	source = http://4store.org/download/4store-v1.1.5.tar.gz
 	md5sums = 90512417abc588c6b60d7b2167f7dc39
 
