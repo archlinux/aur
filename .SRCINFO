@@ -1,0 +1,12 @@
+pkgbase = numix-utouch-icon-theme
+	pkgdesc = Touch style of Numix icon theme
+	pkgver = 0.4
+	pkgrel = 4
+	url = https://launchpad.net/~numix-icon-theme-dev/+archive/utouch
+	arch = any
+	license = GPL3
+	source = https://launchpad.net/~numix-icon-theme-dev/+archive/utouch/+files/numix-utouch-icon-theme_0.4-24%7Eppa%2B20130808%7Esaucy1.tar.gz
+	md5sums = 655f043a84f06468dcfac666b30fc64f
+
+pkgname = numix-utouch-icon-theme
+
