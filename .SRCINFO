@@ -1,7 +1,7 @@
 pkgbase = dict-gcide
-	pkgdesc = GNU version of the Collaborative International Dictionary of English for dictd
+	pkgdesc = GNU version of the Collaborative International Dictionary of English for dictd et al.
 	pkgver = 0.48.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.dict.org/
 	install = dict-gcide.install
 	arch = any
