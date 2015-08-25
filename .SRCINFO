@@ -1,0 +1,16 @@
+pkgbase = vocoder-ladspa
+	pkgdesc = Vocoder LADSPA plugin
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.sirlab.de/linux/download_vocoder_ladspa.html
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = GPL
+	makedepends = ladspa
+	depends = glibc
+	source = http://www.sirlab.de/linux/download/vocoder-ladspa-0.4.tgz
+	md5sums = c9a2a36666b8c22284ef1f5f1d24ced3
+
+pkgname = vocoder-ladspa
+
