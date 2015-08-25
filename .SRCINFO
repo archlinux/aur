@@ -45,7 +45,6 @@ pkgname = spyder3-git
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	optdepends = python-pylint: powerful code analysis
-	optdepends = ipython: enhanced Python interpreter
 	optdepends = python-rope: editor code completion, calltips and go-to-definition
 	optdepends = python-sphinx: rich text help on the object inspector
 	optdepends = python-numpy: N-dimensional arrays

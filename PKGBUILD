@@ -73,7 +73,6 @@ package_spyder3-git() {
   #'ipython<4.0: enhanced Python interpreter'
   #'jupyter>=4.0: enhanced Python interpreter (qtconsole)'
   optdepends=('python-pylint: powerful code analysis'
-              'ipython: enhanced Python interpreter'
               'python-rope: editor code completion, calltips and go-to-definition'
               'python-sphinx: rich text help on the object inspector'
               'python-numpy: N-dimensional arrays'
