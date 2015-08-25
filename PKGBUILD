@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Jqs7 <7@jqs7.com>
 pkgname=goproxy-git
 _pkgname=goproxy
 pkgver=v2.1.2.r77.gb1e59a4
