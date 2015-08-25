@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=2.3.5.2.r1957.gcda8dd6
+pkgver=3.0.0b1.r134.g2e7699b
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -25,17 +25,9 @@ prepare() {
   rm -rf $_pkgname3
   cp -a $_pkgname2 $_pkgname3
 
-  cd $_pkgname2
-
-  # Patch PYLINT_PATH = programs.find_program('pylint')
-  sed -i "s/find_program('pylint'/find_program('pylint2'/" spyderplugins/widgets/pylintgui.py
-  # Patch process = subprocess.Popen(['pylint', '--version'],
-  sed -i "s/subprocess.Popen(\['pylint'/subprocess.Popen(\['pylint2'/" spyderplugins/widgets/pylintgui.py
-  # Patch match = re.match('(pylint|pylint-script.py) ([0-9\.]*)', lines[0])
-  sed -i "s/re.match('(pylint|pylint-script.py/re.match('(pylint2|pylint2-script.py/" spyderplugins/widgets/pylintgui.py
-
   # Patch Python/Python2
-  sed -i 's|#![ ]*/usr/bin/env python[ \t\r]*$|#!/usr/bin/env python2|' spyderlib/userconfig.py spyderlib/utils/external/pickleshare.py
+  cd $_pkgname2
+  sed -i 's|#![ ]*/usr/bin/env python[ \t\r]*$|#!/usr/bin/env python2|' spyderlib/utils/external/pickleshare.py
 }
 
 build() {
