@@ -1,7 +1,7 @@
 pkgname=libctru-git
 _gitname=ctrulib
 _libname=libctru
-pkgver=24fd71c4add247454c41812c16f4c207e84acdf6
+pkgver=24fd71c
 pkgrel=1
 pkgdesc="Library for Nintendo 3DS homebrew development"
 arch=('any')
@@ -32,5 +32,5 @@ package() {
 
   # license
   install -d "${pkgdir}"/usr/share/licenses/${_libname}
-  sed '/license/,$!d' README.md > "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  sed '/license/,$!d' README.md > "${pkgdir}/usr/share/licenses/${_libname}/LICENSE"
 }

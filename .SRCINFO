@@ -1,6 +1,6 @@
 pkgbase = libctru-git
 	pkgdesc = Library for Nintendo 3DS homebrew development
-	pkgver = 24fd71c4add247454c41812c16f4c207e84acdf6
+	pkgver = 24fd71c
 	pkgrel = 1
 	url = https://github.com/smealum/ctrulib
 	arch = any
