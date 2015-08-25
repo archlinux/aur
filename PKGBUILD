@@ -1,7 +1,7 @@
 # Maintainer: Joost Bremmer <toost dot b at gmail dot com>
 
 pkgname=mackup
-pkgver=0.8.9
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="a small Python utitlity to keep your application settings in sync."
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
 
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz")
 
-sha256sums=('9c8a9fe64446256cf86a116296105e2009e8e5c9421512962219690af7372741')
+sha256sums=('a95ba796d4325ffc32f677a101972bfda18514ce0a3d629fa946e9165b8e1c28')
 
 
 
