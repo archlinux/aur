@@ -1,7 +1,7 @@
 pkgbase = dict-wn
-	pkgdesc = WordNet for dictd
+	pkgdesc = WordNet for dictd et al.
 	pkgver = 3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://wordnet.princeton.edu/
 	install = dict-wn.install
 	arch = any
