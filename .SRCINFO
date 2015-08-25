@@ -1,0 +1,21 @@
+pkgbase = pack
+	pkgdesc = Password Analysis and Cracking Kit
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://thesprawl.org/projects/pack/
+	arch = any
+	license = unknown
+	depends = python2
+	depends = aspell
+	depends = aspell-en
+	source = http://thesprawl.org/media/projects/PACK-0.0.4.tar.gz
+	source = fix-python2-invocation.patch
+	source = reorganize-enchant-modules.patch
+	source = fix-rulegen-module-refs.patch
+	md5sums = 710963e952e71a889a97624994400219
+	md5sums = 0992472aa06bb6b0950f2a8d10c07c70
+	md5sums = 29f727b5930aa0bef58e2e16de728e6b
+	md5sums = 7d77d5f620af287f829b34b2831114f5
+
+pkgname = pack
+

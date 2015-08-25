@@ -1,0 +1,50 @@
+diff -ruN a/maskgen.py b/maskgen.py
+--- a/maskgen.py	2013-08-07 02:52:09.000000000 +0200
++++ b/maskgen.py	2013-12-19 12:47:49.530816515 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ # MaskGen - Generate Password Masks
+ #
+ # This tool is part of PACK (Password Analysis and Cracking Kit)
+@@ -269,4 +269,4 @@
+             sorting_mode = "optindex"
+ 
+         print "[*] Sorting masks by their [%s]." % sorting_mode
+-        maskgen.generate_masks(sorting_mode)
+\ No newline at end of file
++        maskgen.generate_masks(sorting_mode)
+diff -ruN a/policygen.py b/policygen.py
+--- a/policygen.py	2013-07-27 01:49:02.000000000 +0200
++++ b/policygen.py	2013-12-19 12:47:58.400875431 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ # PolicyGen - Analyze and Generate password masks according to a password policy
+ #
+ # This tool is part of PACK (Password Analysis and Cracking Kit)
+@@ -203,4 +203,4 @@
+     print "    Max strength: l:%s u:%s d:%s s:%s" % (policygen.maxlower, policygen.maxupper, policygen.maxdigit, policygen.maxspecial)
+ 
+     print "[*] Generating [%s] masks." % ("compliant" if not options.noncompliant else "non-compliant")
+-    policygen.generate_masks(options.noncompliant)
+\ No newline at end of file
++    policygen.generate_masks(options.noncompliant)
+diff -ruN a/rulegen.py b/rulegen.py
+--- a/rulegen.py	2013-08-08 18:35:40.000000000 +0200
++++ b/rulegen.py	2013-12-19 12:48:34.804450960 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # Rulegen.py - Advanced automated password rule and wordlist generator for the 
+ #              Hashcat password cracker using the Levenshtein Reverse Path 
+ #              algorithm and Enchant spell checking library.
+diff -ruN a/statsgen.py b/statsgen.py
+--- a/statsgen.py	2013-08-08 03:38:47.000000000 +0200
++++ b/statsgen.py	2013-12-19 12:48:39.801150921 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # StatsGen - Password Statistical Analysis tool
+ #
+ # This tool is part of PACK (Password Analysis and Cracking Kit)

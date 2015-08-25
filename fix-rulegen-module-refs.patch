@@ -1,0 +1,12 @@
+diff -ruN a/rulegen.py b/rulegen.py
+--- a/rulegen.py	2013-12-19 12:53:11.209567208 +0100
++++ b/rulegen.py	2013-12-19 12:51:46.165734347 +0100
+@@ -16,7 +16,7 @@
+ import re
+ import time
+ import operator
+-import enchant
++from pack import enchant
+ 
+ from optparse import OptionParser, OptionGroup
+ 
