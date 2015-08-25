@@ -1,0 +1,15 @@
+pkgbase = debianutils
+	pkgdesc = Miscellaneous utilities specific to Debian
+	pkgver = 4.4
+	pkgrel = 1
+	url = http://packages.qa.debian.org/d/debianutils.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = run-parts
+	depends = which
+	source = http://ftp.debian.org/debian/pool/main/d/debianutils/debianutils_4.4.tar.gz
+	md5sums = c0cb076754d7f4eb1e3397d00916647f
+
+pkgname = debianutils
+
