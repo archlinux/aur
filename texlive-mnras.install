@@ -1,0 +1,20 @@
+post_install() {
+  post_remove
+  echo "The mnras.bst file was installed in:"
+  kpsewhich mnras.bst
+  echo "The mnras.cls file was installed in:"
+  kpsewhich mnras.cls
+  echo "The mn2e.bst file was installed in:"
+  kpsewhich mn2e.bst
+  echo "The mnras.cls file was installed in:"
+  kpsewhich mn2e.cls
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Upgrading package database..."
+  mktexlsr
+}
