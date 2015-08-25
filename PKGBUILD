@@ -3,7 +3,7 @@
 
 _pkgname="ncmpcpp"
 pkgname="${_pkgname}-vim-git"
-pkgver=1919.c8ee598
+pkgver=1925.dbe655d
 pkgrel=1
 epoch=1
 pkgdesc="An almost exact clone of ncmpc with some new features. Patched for vim-like keybindings."

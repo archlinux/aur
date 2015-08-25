@@ -1,6 +1,6 @@
 pkgbase = ncmpcpp-vim-git
 	pkgdesc = An almost exact clone of ncmpc with some new features. Patched for vim-like keybindings.
-	pkgver = 1919.c8ee598
+	pkgver = 1925.dbe655d
 	pkgrel = 1
 	epoch = 1
 	url = http://unkart.ovh.org/ncmpcpp/
