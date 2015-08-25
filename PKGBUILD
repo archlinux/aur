@@ -30,7 +30,7 @@ prepare() {
 }
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-netfilter --with-bdb --without-spf
+	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-netfilter --with-bdb --with-spf
 	make clean && make
 }
 
