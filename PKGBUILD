@@ -21,6 +21,7 @@ prepare() {
         -DCMAKE_INSTALL_BINDIR=bin \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_INCLUDEDIR=include \
+        -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$pkgname \
         -DBUILD_SHARED_LIBS=ON \
         -DWITH_EXAMPLES=ON \
         -DWITH_MATIO=ON \
