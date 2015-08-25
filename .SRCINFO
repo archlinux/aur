@@ -1,0 +1,15 @@
+pkgbase = python2-easygui
+	pkgdesc = A module for very simple, very easy GUI programming in Python
+	pkgver = 0.97.4
+	pkgrel = 1
+	url = http://easygui.sourceforge.net
+	arch = any
+	license = CCPL
+	makedepends = python2-setuptools
+	depends = python2
+	depends = tk
+	source = http://sourceforge.net/projects/easygui/files/0.97.4/easygui-0.97.4.zip
+	sha256sums = 6440b5bb6bc04cfb2d3dddbc4a7af7b913b35c1bbcb49805039a132361f2f8f5
+
+pkgname = python2-easygui
+
