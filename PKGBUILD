@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=('any')
 url='https://www.archlinux.org/'
@@ -14,7 +14,6 @@ depends=('bluedevil'
         'kdeplasma-addons'
         'khelpcenter'
         'kinfocenter'
-        'kio-extras'
         'ksysguard'
         'kscreen'
         'ksshaskpass'
