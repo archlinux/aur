@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=duc-git
 pkgver=1.3.3.42.g8a19c54
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="collection of tools for inspecting and visualizing disk usage (git version)"
 arch=('i686' 'x86_64')
 url="http://duc.zevv.nl/"
 license=('GPL2')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/"$_gitname"
-  automake --add-missing
+  aclocal && autoconf && automake -a -f
   ./configure --prefix=/usr --with-db-backend=sqlite3 --disable-ui
   make
 }
