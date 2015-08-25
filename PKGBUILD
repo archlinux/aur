@@ -5,15 +5,15 @@ _name="oslo.utils"
 _module="${_name/./-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.3.0"
+pkgver="2.4.0"
 pkgrel="1"
 pkgdesc="Oslo Utility library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
-makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
+makedepends=("python-pbr>=1.4" "python2-pbr>=1.4")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c0ee7075a04a4c432d74d7b578fdc3478a5e831c9bd26fdff13b9bcc1e745ed4')
+sha256sums=('fe210740eca9ef168afbb98038b94e48e3beb17f48b8a771f044a5fbfc7d0397')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
