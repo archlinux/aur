@@ -17,6 +17,10 @@ package() {
   cd "$srcdir/${_module_name}-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 COPYING.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd $pkgdir/usr/bin
+  mv iyt iyt2
+  mv pyro_queue.py pyro_queue2.py
+  mv yt_lodgeit.py yt_lodgeit2.py
 }
 
 # vim:set ts=2 sw=2 et:
