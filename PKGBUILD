@@ -12,7 +12,9 @@ depends=('readline' 'libffi')
 makedepends=('git' 'python')
 provides=('micropython')
 conflicts=('micropython')
-optdepends=('micropython-lib')
+optdepends=('micropython-lib'
+            'python-virtualenv: for pip-micropython command'
+            'python-setuptools: for pip-micropython command')
 source=('git://github.com/micropython/micropython.git')
 md5sums=('SKIP')
 
