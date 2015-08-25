@@ -3,10 +3,11 @@
 _name="falcon"
 _module="${_name}"
 _cmd="falcon-bench"
+_check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="0.3.0"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
 url="https://github.com/falconry/${_name}"
@@ -47,10 +48,14 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    nosetests
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    nosetests2
+    if [[ "${_check}" == "enabled" ]]; then
+        cd "${srcdir}/${_name}-${pkgver}"
+        nosetests
+        cd "${srcdir}/${_name}-${pkgver}-python2"
+        nosetests2
+    else
+        echo "_check is not set to \"enabled\", skipping check()"
+    fi
 }
 
 package_python-falcon() {
