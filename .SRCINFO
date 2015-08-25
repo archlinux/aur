@@ -1,0 +1,14 @@
+pkgbase = katarakt-git
+	pkgdesc = A simple PDF viewer with two layouts
+	pkgver = 20130311
+	pkgrel = 1
+	url = http://git.informatik.uni-erlangen.de/?p=katarakt
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = asciidoc
+	depends = qt4
+	depends = poppler-qt
+
+pkgname = katarakt-git
+
