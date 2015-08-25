@@ -2,10 +2,11 @@
 
 _name="click"
 _module="${_name}"
+_check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="5.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A simple wrapper around optparse for powerful command line utilities."
 arch=("any")
 url="http://click.pocoo.org/"
@@ -27,13 +28,16 @@ build() {
 }
 
 check() {
-    export LC_ALL=en_US.UTF-8
-    export LANG=en_US.UTF-8
-    export PYTHONPATH="$(pwd)/build/lib:$PYTHONPATH"
-    cd "${srcdir}/${_name}-${pkgver}"
-    py.test --tb=short
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    py.test2 --tb=short
+    if [[ "${_check}" == "enabled" ]]; then
+        export LC_ALL="en_US.UTF-8"
+        export PYTHONPATH="$(pwd)/build/lib:$PYTHONPATH"
+        cd "${srcdir}/${_name}-${pkgver}"
+        py.test --tb=short
+        cd "${srcdir}/${_name}-${pkgver}-python2"
+        py.test2 --tb=short
+    else
+        echo "_check is not set to \"enabled\", skipping check()"
+    fi
 }
 
 package_python-click() {
