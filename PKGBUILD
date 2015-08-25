@@ -4,7 +4,7 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.73.91.ga1d3419
+pkgver=2.74.28.g09b02fd
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
