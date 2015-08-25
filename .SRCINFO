@@ -1,7 +1,7 @@
 pkgbase = python-mechanicalsoup
 	pkgdesc = A Python library for automating interaction with websites
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hickford/MechanicalSoup
 	arch = any
 	license = MIT
@@ -12,5 +12,9 @@ pkgbase = python-mechanicalsoup
 	source = https://github.com/hickford/MechanicalSoup/archive/v0.3.1.tar.gz
 	md5sums = fe5855a6a8b8e07691e29e25e4f0ef0d
 
+pkgname = python2-mechanicalsoup
+	depends = python2
+
 pkgname = python-mechanicalsoup
+	depends = python
 
