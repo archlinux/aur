@@ -11,7 +11,7 @@ depends=('fuse' 'python2-fusepy')
 makedepends=('python2' 'python2-setuptools')
 provides=('splitviewfuse' 'unionviewfuse')
 conflicts=('splitviewfuse-git' 'splitviewfuse' 'unionviewfuse')
-source=("https://github.com/seiferma/splitviewfuse/archive/v$pkgver.tar.gz")
+source=("https://github.com/seiferma/splitviewfuse/archive/v${pkgver}.tar.gz")
 sha256sums=('dae6806c227d06296f251237d89ad6886a567681842b948fd8f6500cc96a0108')
 
 package() {
