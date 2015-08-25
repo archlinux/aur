@@ -4,17 +4,17 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=car
-pkgver=12.0
+pkgver=2015.08.10
 pkgrel=1
-url="http://zirkel.sourceforge.net"
+url="http://car.rene-grothmann.de/"
 pkgdesc="Circle and Ruler is a dynamic geometry program"
 arch=('any')
 license=('GPL')
 depends=('java-runtime' 'xdg-utils')
-source=("http://$pkgname.rene-grothmann.de/download/$pkgname.zip"
+source=("http://car.rene-grothmann.de/download/zirkel.zip"
         "${pkgname}.desktop"
 	"${pkgname}.sh")
-md5sums=('476d8776cc259fc37b0c9d7abb529832'
+md5sums=('a15c1a69e325374af71e94b4302e74d2'
          '9bf9a70cf538378bde46f3da2c252a4c'
          '2539542867d5f23e823b7a7704f17443')
 
