@@ -3,8 +3,8 @@
 # Contributor: Andrew Engelbrecht <sudoman@ninthfloor.org>
 pkgname=dict-wn
 pkgver=3.0
-pkgrel=3
-pkgdesc="WordNet in dict format"
+pkgrel=4
+pkgdesc="WordNet for dictd"
 arch=('any')
 url="http://wordnet.princeton.edu/"
 license=('custom: WordNet License' 'GPL')
