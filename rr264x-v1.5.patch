@@ -1,0 +1,883 @@
+diff -rupN rr264x-linux-src-v1.5.org/inc/linux/Makefile.def rr264x-linux-src-v1.5/inc/linux/Makefile.def
+--- rr264x-linux-src-v1.5.org/inc/linux/Makefile.def	2012-07-19 03:47:34.000000000 -0500
++++ rr264x-linux-src-v1.5/inc/linux/Makefile.def	2014-03-28 04:04:34.975685844 -0500
+@@ -74,22 +74,14 @@ ifndef KERNELDIR
+ KERNELDIR := /lib/modules/$(shell uname -r)/build
+ endif
+ 
+-MAJOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 65536 % 65536)
+-MINOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 256 % 256)
++MAJOR := $( shell uname -r | cut -f1 -d. )
++MINOR := $( shell uname -r | cut -f2 -d. )
+ KERNEL_VER := $(MAJOR).$(MINOR)
+ 
+ ifeq ($(KERNEL_VER),)
+ $(error Cannot find kernel version. Check $(KERNELDIR)/include/linux/version.h.)
+ endif
+ 
+-ifneq ($(MAJOR), 3)
+-ifneq ($(KERNEL_VER), 2.6)
+-ifneq ($(KERNEL_VER), 2.4)
+-$(error Only kernel 2.4/2.6/3.x is supported but you use $(KERNEL_VER))
+-endif
+-endif
+-endif
+-
+ ifneq ($(KERNEL_VER), 2.4)
+ 
+ TARGET := $(TARGETNAME).ko
+@@ -153,8 +145,8 @@ CFLAGS := $(C_OPTS) $(C_DEFINES) $(C_INC
+ # export variables used by the scripts.
+ export HPT_ROOT TARGETNAME TARGETMODS TARGETOBJS KERNELDIR C_DEFINE KERNEL_VER
+ 
+-#patchkernel:
+-#	@sh $(HPT_ROOT)/osm/linux/patch.sh
++patchkernel:
++	@sh $(HPT_ROOT)/osm/linux/patch.sh
+ 
+ install: $(TARGET)
+ 	@sh $(HPT_ROOT)/osm/linux/install.sh
+diff -rupN rr264x-linux-src-v1.5.org/inc/linux/Makefile.def.orig rr264x-linux-src-v1.5/inc/linux/Makefile.def.orig
+--- rr264x-linux-src-v1.5.org/inc/linux/Makefile.def.orig	1969-12-31 18:00:00.000000000 -0600
++++ rr264x-linux-src-v1.5/inc/linux/Makefile.def.orig	2014-03-28 04:04:34.975685844 -0500
+@@ -0,0 +1,165 @@
++# $Id: Makefile.def,v 1.29 2010/03/30 09:05:55 wsw Exp $
++#
++# Default makefile for Linux driver
++# Copyright (C) 2004-2005 HighPoint Technologies, Inc. All Rights Reserved.
++# History:
++#   2004-12-14 gmm initial code
++#
++# Make options:
++#
++#   DEBUG=1           - enable debug
++#   V=1               - verbose output
++#   CROSS_COMPILE=    - cross compiler prefix
++#   ARCH=             - target arch
++#   KERNELDIR=        - kernel headers dir, to build modules
++#
++
++HPT_ROOT := $(shell (cd $(HPT_ROOT); pwd))
++
++ARCH := $(shell uname -m)
++
++CC := gcc
++CROSS_COMPILE :=
++
++C_INCLUDES := -I$(HPT_ROOT)/inc -I$(HPT_ROOT)/inc/linux
++
++C_DEFINES := -DLINUX -D_LINUX_ -D__KERNEL__=1 $(C_DEFINES)
++
++DEBUG ?= 0
++ifeq ($(DEBUG),1)
++C_DEFINES += -DDBG=1
++else
++C_DEFINES += -DDBG=0
++endif
++
++# This is only for patch script to make the Makefile include the proper defined C_DEFINES.
++# In patching mode, we can not add -DMODVERSIONS -DMODULES, or will make confusion while 
++# the user compiles our driver into the kernel image. Also we should determine the ARCH
++# while compile the kernel module and add proper EXTRA_CFLAGS.
++C_DEFINE := $(C_DEFINES)
++
++SHARED_HEADERS := \
++		$(HPT_ROOT)/inc/linux/osm.h \
++		$(HPT_ROOT)/inc/ldm.h \
++		$(HPT_ROOT)/inc/him.h \
++		$(HPT_ROOT)/inc/himfuncs.h \
++		$(HPT_ROOT)/inc/array.h \
++		$(HPT_ROOT)/inc/list.h \
++		$(HPT_ROOT)/inc/hptintf.h
++
++C_OPTS := -O2 -pipe \
++		-Wunused -Wparentheses -Wuninitialized -Wchar-subscripts \
++		-Wtrigraphs -Wswitch -Wreturn-type -Wimplicit \
++		-Wstrict-prototypes -fomit-frame-pointer
++
++ifeq ($(ARCH), x86_64)
++C_OPTS += -mcmodel=kernel -mno-red-zone
++C_DEFINES += -DBITS_PER_LONG=64
++endif
++
++HPT_LIB := $(HPT_ROOT)/lib/linux/$(if $(DEBUG:1=),free,chk)-$(ARCH)
++
++ifeq ("$(TARGETTYPE)", "LIBRARY")
++include $(HPT_ROOT)/inc/linux/hptlib.mk
++endif
++
++ifeq ("$(TARGETTYPE)", "KMOD")
++
++C_DEFINES += -DMODVERSIONS -DMODULE
++
++#
++# change KERNELDIR according to your system
++#
++ifndef KERNELDIR
++KERNELDIR := /lib/modules/$(shell uname -r)/build
++endif
++
++MAJOR := $( shell uname -r | cut -f1 -d. )
++MINOR := $( shell uname -r | cut -f2 -d. )
++KERNEL_VER := $(MAJOR).$(MINOR)
++
++ifeq ($(KERNEL_VER),)
++$(error Cannot find kernel version. Check $(KERNELDIR)/include/linux/version.h.)
++endif
++
++ifneq ($(MAJOR), 3)
++ifneq ($(KERNEL_VER), 2.6)
++ifneq ($(KERNEL_VER), 2.4)
++$(error Only kernel 2.4/2.6/3.x is supported but you use $(KERNEL_VER))
++endif
++endif
++endif
++
++ifneq ($(KERNEL_VER), 2.4)
++
++TARGET := $(TARGETNAME).ko
++
++$(TARGETNAME).ko: $(CURDIR)/.build/Makefile
++	@$(MAKE) -C $(KERNELDIR) SUBDIRS=$(CURDIR)/.build modules
++	@cp -f $(CURDIR)/.build/$(TARGETNAME).ko $(CURDIR)/
++
++.PHONY: $(CURDIR)/.build/Makefile
++$(CURDIR)/.build/Makefile:
++	@mkdir -p $(CURDIR)/.build
++	@echo '# auto generated makefile' > $@
++	@echo 'HPT_ROOT := $(HPT_ROOT)' >> $@
++	@echo 'HPT_REGPARM := $$(shell echo "$$(CFLAGS) $$(KBUILD_CFLAGS)" | awk '"'"'{ match($$$$0,"-mregparm="); if (RSTART>0) print substr($$$$0,RSTART+10,1);}'"'"')' >> $@
++	@echo 'HPT_REGPARM := $$(if $$(HPT_REGPARM),$$(HPT_REGPARM),0)' >> $@
++	@echo 'HPT_LIB := $(HPT_LIB)-regparm$$(HPT_REGPARM)' >>$@
++	@echo 'TARGETNAME := $(TARGETNAME)' >>$@
++	@echo 'TARGETOBJS := $(TARGETOBJS)' >>$@
++	@echo 'TARGETMODS := $(TARGETMODS)' >>$@
++	@echo >>$@
++	@echo 'obj-m := $$(TARGETNAME).o' >>$@
++	@echo >>$@
++	@echo '$$(TARGETNAME)-objs := $$(TARGETOBJS) $$(TARGETMODS)' >>$@
++	@echo >>$@
++	@echo 'EXTRA_CFLAGS := $(C_DEFINES) -Idrivers/scsi -I$$(HPT_ROOT)/inc/linux -I$$(HPT_ROOT)/inc -I$$(HPT_ROOT)/osm/linux' >>$@
++	@echo >>$@
++	@echo '$$(addprefix $$(obj)/,$$(TARGETOBJS:.o=.c)): FORCE' >>$@
++	@echo '	@{ test -f $(CURDIR)/$$(notdir $$@) && cp -f $(CURDIR)/$$(notdir $$@) $$@; } ||\' >>$@
++	@echo '	{ test -f $$(HPT_ROOT)/osm/linux/$$(notdir $$@) && cp -f $$(HPT_ROOT)/osm/linux/$$(notdir $$@) $$@; }' >>$@
++	@echo >>$@
++	@echo '$$(addprefix $$(obj)/,$$(TARGETMODS)): $$(obj)/%.o: $$(HPT_LIB)/%.o' >>$@
++	@echo '	@cp -f $$< $$@' >>$@
++
++else # for kernel 2.4 modules
++
++HPT_LIB := $(HPT_LIB)-regparm0
++_TARGETMODS := $(addprefix $(HPT_LIB)/,$(TARGETMODS))
++
++VPATH := .. $(HPT_ROOT)/osm/linux
++TARGET := $(TARGETNAME).o
++
++C_INCLUDES += -I$(HPT_ROOT)/osm/linux -I$(KERNELDIR)/include -I$(KERNELDIR)/drivers/scsi
++
++$(TARGET): $(TARGETOBJS) $(_TARGETMODS)
++	@echo $(if $V,,[LD] $@)
++	$(if $V,,@)$(CROSS_COMPILE)$(LD) -r -o $@ $^
++
++endif # KERNEL_VER
++
++endif # KMOD
++
++wrong_target:
++	@echo Wrong or missing TARGETTYPE
++
++CFLAGS := $(C_OPTS) $(C_DEFINES) $(C_INCLUDES)
++
++%.o: %.c $(SHARED_HEADERS)
++	@echo $(if $V,,[CC] $<)
++	$(if $V,,@)$(CROSS_COMPILE)$(CC) $(CFLAGS) -c -o $@ $<
++
++# export variables used by the scripts.
++export HPT_ROOT TARGETNAME TARGETMODS TARGETOBJS KERNELDIR C_DEFINE KERNEL_VER
++
++#patchkernel:
++#	@sh $(HPT_ROOT)/osm/linux/patch.sh
++
++install: $(TARGET)
++	@sh $(HPT_ROOT)/osm/linux/install.sh
++
++clean::
++	@rm -f $(TARGET) $(TARGETOBJS) *.o *.ko *~ core
++	@rm -rf .build spp update_revision.sh 
++	@rm -f $(HPT_ROOT)/osm/linux/*.o
+diff -rupN rr264x-linux-src-v1.5.org/inc/linux/Makefile.def.rej rr264x-linux-src-v1.5/inc/linux/Makefile.def.rej
+--- rr264x-linux-src-v1.5.org/inc/linux/Makefile.def.rej	1969-12-31 18:00:00.000000000 -0600
++++ rr264x-linux-src-v1.5/inc/linux/Makefile.def.rej	2014-03-28 04:04:34.975685844 -0500
+@@ -0,0 +1,20 @@
++--- rr264x-linux-src-v1.5.orig/inc/linux/Makefile.def	2012-07-19 10:47:34.000000000 +0200
+++++ rr264x-linux-src-v1.5/inc/linux/Makefile.def	2013-09-29 19:08:31.819426622 +0200
++@@ -74,8 +74,15 @@
++ KERNELDIR := /lib/modules/$(shell uname -r)/build
++ endif
++ 
++-MAJOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 65536 % 65536)
++-MINOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 256 % 256)
+++VERSION_H := $(shell sh -c " \
+++if test -f $(KERNELDIR)/include/linux/version.h; then \
+++    echo $(KERNELDIR)/include/linux/version.h; \
+++elif test -f $(KERNELDIR)/include/generated/uapi/linux/version.h; then \
+++    echo $(KERNELDIR)/include/generated/uapi/linux/version.h; \
+++fi")
+++
+++MAJOR := $(shell expr `grep LINUX_VERSION_CODE $(VERSION_H) | cut -d\  -f3` / 65536 % 65536)
+++MINOR := $(shell expr `grep LINUX_VERSION_CODE $(VERSION_H) | cut -d\  -f3` / 256 % 256)
++ KERNEL_VER := $(MAJOR).$(MINOR)
++ 
++ ifeq ($(KERNEL_VER),)
+diff -rupN rr264x-linux-src-v1.5.org/osm/linux/hptinfo.c rr264x-linux-src-v1.5/osm/linux/hptinfo.c
+--- rr264x-linux-src-v1.5.org/osm/linux/hptinfo.c	2012-07-19 03:47:35.000000000 -0500
++++ rr264x-linux-src-v1.5/osm/linux/hptinfo.c	2014-03-28 04:04:34.969018443 -0500
+@@ -8,6 +8,7 @@
+ #include "osm_linux.h"
+ #include "hptintf.h"
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ typedef struct _hpt_GET_INFO {
+ 	char *buffer;
+ 	int buflength;
+@@ -52,6 +53,10 @@ static int hpt_copy_info(HPT_GET_INFO *p
+ 	hpt_copy_mem_info(pinfo, buf, len);
+ 	return len;
+ }
++#else // >= KERNEL_VERSION(3,10,0)
++typedef struct seq_file HPT_GET_INFO;
++#define hpt_copy_info seq_printf
++#endif
+ 
+ #define HPT_DO_IOCTL(code, inbuf, insize, outbuf, outsize) ({\
+ 	IOCTL_ARG arg;\
+@@ -181,7 +186,7 @@ static void hpt_dump_devinfo(HPT_GET_INF
+ 					devinfo.u.device.ControllerId+1,
+ 					devinfo.u.device.PathId+1,
+ 					devinfo.u.device.TargetId+1,
+-					devinfo.u.device.IdentifyData.ModelNumber
++					(char*)devinfo.u.device.IdentifyData.ModelNumber
+ 				);
+ 		else {
+ 			memcpy(sn, devinfo.u.device.IdentifyData.SerialNumber,
+@@ -193,7 +198,7 @@ static void hpt_dump_devinfo(HPT_GET_INF
+ 				(devinfo.u.device.Flags & DEVICE_FLAG_IN_ENCLOSURE) ? "E" : "",
+ 				devinfo.u.device.PathId+1,
+ 				devinfo.u.device.TargetId+1,
+-				devinfo.u.device.IdentifyData.ModelNumber, sn,
++				(char*)devinfo.u.device.IdentifyData.ModelNumber, sn,
+ 				(int)(devinfo.Capacity*512/1000000),
+ 				(devinfo.u.device.Flags & DEVICE_FLAG_DISABLED)? "Disabled" : "Normal",
+ 				devinfo.u.device.ReadAheadEnabled? "[RA]":"",
+@@ -234,15 +239,25 @@ static void hpt_dump_devinfo(HPT_GET_INF
+ }
+ 
+ #define MAX_PHYSICAL_DEVICE	128
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ int hpt_proc_get_info(struct Scsi_Host *host, char *buffer, char **start, off_t offset, int length)
++#else
++int hpt_proc_show_info(struct seq_file *m, struct Scsi_Host *host)
++#endif
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ 	HPT_GET_INFO info;
++#else
++#define info (*m)
++#define buffillen count ? 0 : 0
++#endif
+ 	int i, j, count;
+ 	CONTROLLER_INFO_V2 conInfo2;
+ 	DEVICEID *ids;
+ 	int devs;	
+ 	PVBUS_EXT vbus_ext = get_vbus_ext(host);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ 	info.buffer     = buffer;
+ 	info.buflength  = length;
+ 	info.bufoffset  = offset;
+@@ -250,6 +265,7 @@ int hpt_proc_get_info(struct Scsi_Host *
+ 	info.buffillen  = 0;
+ 
+ 	if (start) *start = buffer;
++#endif
+ 
+ 	hpt_copy_info(&info, "%s %s\n\n", driver_name_long, driver_ver);
+ 
+diff -rupN rr264x-linux-src-v1.5.org/osm/linux/install.sh rr264x-linux-src-v1.5/osm/linux/install.sh
+--- rr264x-linux-src-v1.5.org/osm/linux/install.sh	2012-07-19 03:47:35.000000000 -0500
++++ rr264x-linux-src-v1.5/osm/linux/install.sh	2014-03-28 04:04:34.969018443 -0500
+@@ -5,16 +5,8 @@ if test "${TARGETNAME-set}" = set; then
+ 
+ PWD=`pwd`
+ 
+-case ${KERNEL_VER} in
+-	2.4 )
+-	OBJ=o
+-	MODVER=`modinfo -f%{kernel_version} ${PWD}/${TARGETNAME}.${OBJ}`
+-	;;
+-	2.6 | 3.* )
+ 	OBJ=ko
+ 	MODVER=`modinfo -F vermagic ${PWD}/${TARGETNAME}.${OBJ} | cut -d' ' -f1`
+-	;;
+-esac
+ 
+ if test "${MODVER}" = "" ; then
+ 	echo "Can not get kernel version from ${TARGETNAME}.${OBJ}."
+@@ -70,95 +62,3 @@ else
+ 	exit 1
+ fi
+ 
+-MKINITRD=`which mkinitrd 2> /dev/null`
+-[ "$MKINITRD" = "" ] && MKINITRD=`which mkinitramfs 2> /dev/null`
+-[ "$MKINITRD" = "" ] && MKINITRD=`which dracut 2> /dev/null`
+-
+-if test "$MKINITRD" = "" ; then
+-	echo "Can not find command 'mkinitrd' or 'mkinitramfs' or 'dracut'."
+-	exit 1
+-fi
+-
+-echo "Checking for initrd images to be updated..."
+-
+-#### Next if the system is on controller, make the system loadable
+-# mandrake redhat fedora debian rhel turbo sles redflag
+-distinfo() {
+-	local issue=/etc/issue
+-	[ -e /etc/mandrake-release ] && { echo mandrake; return; }
+-	[ -e /etc/redhat-release ] && { echo redhat; return; }
+-	[ -e /etc/fedora-release ] && { echo fedora; return; }
+-	[ -e /etc/SuSE-release ] && { echo suse; return; }
+-	[ -e /etc/debian_version ] && { echo debian; return; }
+-	[ -e /etc/turbolinux-release ] && { echo turbo; return; }
+-	if [ -e $issue ]; then
+-		grep -i "debian" $issue && { echo debian; return; }
+-		grep -i "ubuntu" $issue && { echo ubuntu; return; }
+-		grep -i "red *hat" $issue && { echo redhat; return; }
+-		grep -i "suse\|s\.u\.s\.e" $issue && { echo suse; return; }
+-	fi
+-}
+-
+-DIST=`distinfo`
+-case ${DIST} in
+-fedora | redhat )
+-	if [ -f /boot/initrd-${MODVER}.img ] ; then
+-		if [ ! -f /boot/initrd-${MODVER}.img.${TARGETNAME} ]; then
+-			echo "Backup /boot/initrd-${MODVER}.img to /boot/initrd-${MODVER}.img.${TARGETNAME}."
+-			mv /boot/initrd-${MODVER}.img /boot/initrd-${MODVER}.img.${TARGETNAME}
+-		else
+-			rm /boot/initrd-${MODVER}.img
+-		fi
+-		$MKINITRD /boot/initrd-${MODVER}.img ${MODVER}
+-	elif [ -f /boot/initramfs-${MODVER}.img ] ; then
+-		if [ ! -f /boot/initramfs-${MODVER}.img.${TARGETNAME} ]; then
+-			echo "Backup /boot/initramfs-${MODVER}.img to /boot/initramfs-${MODVER}.img.${TARGETNAME}."
+-			mv /boot/initramfs-${MODVER}.img /boot/initramfs-${MODVER}.img.${TARGETNAME}
+-		else
+-			rm /boot/initramfs-${MODVER}.img
+-		fi
+-		$MKINITRD /boot/initramfs-${MODVER}.img ${MODVER}
+-	else
+-		echo "WARNING!!! No initrd image found, skip mkinitrd."
+-		sleep 3
+-	fi
+-;;
+-suse )
+-	if [ -f /etc/modprobe.d/unsupported-modules ]; then
+-		echo "Enable loading of unsupported modules."
+-		sed -i /^allow_unsupported_modules/s/0/1/g /etc/modprobe.d/unsupported-modules
+-	fi
+-	if [ -f /etc/sysconfig/hardware/config ]; then
+-		echo "Enable loading of unsupported modules."
+-		sed -i /^LOAD_UNSUPPORTED_MODULES_AUTOMATICALLY/s/no/yes/g /etc/sysconfig/hardware/config
+-	fi
+-	if [ -f /boot/initrd-${MODVER} ] ; then
+-		if [ ! -f /boot/initrd-${MODVER}.${TARGETNAME} ]; then
+-			echo "Backup /boot/initrd-${MODVER} to /boot/initrd-${MODVER}.${TARGETNAME}."
+-			mv /boot/initrd-${MODVER} /boot/initrd-${MODVER}.${TARGETNAME}
+-		fi
+-	fi
+-	$MKINITRD
+-;;
+-debian | ubuntu )
+-	if [ -f /boot/initrd.img-${MODVER} ] ; then
+-		if [ ! -f /boot/initrd.img-${MODVER}.${TARGETNAME} ]; then
+-			echo "backup /boot/initrd.img-${MODVER} to /boot/initrd.img-${MODVER}.${TARGETNAME}."
+-			mv /boot/initrd.img-${MODVER} /boot/initrd.img-${MODVER}.${TARGETNAME}
+-		else
+-			rm /boot/initrd.img-${MODVER}
+-		fi
+-	fi
+-	if [ -f /etc/initramfs-tools/initramfs.conf ]; then
+-		if grep ^ROOTDELAY -s -q /etc/initramfs-tools/initramfs.conf; then
+-			sed -i s"#^ROOTDELAY.*#ROOTDELAY=180#" /etc/initramfs-tools/initramfs.conf
+-		else
+-			echo "ROOTDELAY=180" >> /etc/initramfs-tools/initramfs.conf
+-		fi
+-	fi
+-	$MKINITRD -o /boot/initrd.img-${MODVER} ${MODVER}
+-;;
+-* )
+-	echo "Unknown distribution - You have to update the initrd image manually."
+-;;
+-esac
+diff -rupN rr264x-linux-src-v1.5.org/osm/linux/os_linux.c rr264x-linux-src-v1.5/osm/linux/os_linux.c
+--- rr264x-linux-src-v1.5.org/osm/linux/os_linux.c	2012-07-19 03:47:35.000000000 -0500
++++ rr264x-linux-src-v1.5/osm/linux/os_linux.c	2014-03-28 04:04:34.969018443 -0500
+@@ -203,7 +203,11 @@ void *os_kmap_sgptr(PSG psg)
+ 
+ 	if (page)
+ 		return (PageHighMem(page)?
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
++				(char *)kmap_atomic(page) :
++#else
+ 				(char *)kmap_atomic(page, HPT_KMAP_TYPE) :
++#endif
+ 				(char *)page_address(page))
+ 			+ (psg->addr.bus & 0xffffffff);
+ 	else
+@@ -213,7 +217,11 @@ void *os_kmap_sgptr(PSG psg)
+ void os_kunmap_sgptr(void *ptr)
+ {
+ 	if ((HPT_UPTR)ptr >= (HPT_UPTR)high_memory)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
++		kunmap_atomic(ptr);
++#else
+ 		kunmap_atomic(ptr, HPT_KMAP_TYPE);
++#endif
+ }
+ #else 
+ void *os_kmap_sgptr(PSG psg) { return psg->addr._logical; }
+diff -rupN rr264x-linux-src-v1.5.org/osm/linux/osm_linux.c rr264x-linux-src-v1.5/osm/linux/osm_linux.c
+--- rr264x-linux-src-v1.5.org/osm/linux/osm_linux.c	2012-07-19 03:47:35.000000000 -0500
++++ rr264x-linux-src-v1.5/osm/linux/osm_linux.c	2014-03-28 04:04:34.969018443 -0500
+@@ -449,7 +449,11 @@ static int scsicmd_buf_get(Scsi_Cmnd *cm
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,23)
+ 	struct scatterlist *sg;
+ 	sg = scsi_sglist(cmd);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
++	*pbuf = kmap_atomic(HPT_SG_PAGE(sg)) + sg->offset;
++#else
+ 	*pbuf = kmap_atomic(HPT_SG_PAGE(sg), HPT_KMAP_TYPE) + sg->offset;
++#endif
+ 	buflen = sg->length;
+ #else 
+ 
+@@ -479,7 +483,11 @@ static inline void scsicmd_buf_put(struc
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,23)
+ 	struct scatterlist *sg;
+ 	sg = scsi_sglist(cmd);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
++	kunmap_atomic((char *)buf - sg->offset);
++#else
+ 	kunmap_atomic((char *)buf - sg->offset, HPT_KMAP_TYPE);
++#endif
+ #else 
+ 
+ 	if (cmd->use_sg) {
+@@ -1799,6 +1807,7 @@ invalid:
+ 	return -EINVAL;
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ static int hpt_proc_info26(struct Scsi_Host *host, char *buffer, char **start,
+ 					off_t offset, int length, int inout)
+ {
+@@ -1808,6 +1817,7 @@ static int hpt_proc_info26(struct Scsi_H
+ 	else
+ 		return hpt_proc_get_info(host, buffer, start, offset, length);
+ }
++#endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
+ static int hpt_proc_info24(char *buffer,char **start, off_t offset,
+@@ -2108,7 +2118,12 @@ static Scsi_Host_Template driver_templat
+ 	#endif
+ #else /* 2.6.x */
+ 	proc_name:               driver_name,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ 	proc_info:               hpt_proc_info26,
++#else
++	show_info:               hpt_proc_show_info,
++	write_info:              hpt_proc_set_info,
++#endif
+ 	max_sectors:             128,
+ #endif
+ 	this_id:                 -1
+diff -rupN rr264x-linux-src-v1.5.org/osm/linux/osm_linux.h rr264x-linux-src-v1.5/osm/linux/osm_linux.h
+--- rr264x-linux-src-v1.5.org/osm/linux/osm_linux.h	2012-07-19 03:47:35.000000000 -0500
++++ rr264x-linux-src-v1.5/osm/linux/osm_linux.h	2014-03-28 04:04:34.969018443 -0500
+@@ -176,7 +176,6 @@ typedef void irqreturn_t;
+ #endif
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
+-#define HPT_KMAP_TYPE KM_BIO_SRC_IRQ
+ #define HPT_FIND_PCI_DEVICE pci_get_device
+ #else 
+ #define HPT_KMAP_TYPE KM_BH_IRQ
+@@ -297,6 +296,9 @@ VBUS_EXT, *PVBUS_EXT;
+ void refresh_sd_flags(PVBUS_EXT vbus_ext);
+ void hpt_do_ioctl(IOCTL_ARG *ioctl_args);
+ void hpt_stop_tasks(PVBUS_EXT vbus_ext);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ int hpt_proc_get_info(struct Scsi_Host *host, char *buffer, char **start, off_t offset, int length);
+-
++#else
++int hpt_proc_show_info(struct seq_file *m, struct Scsi_Host *host);
++#endif
+ #endif
+diff -rupN rr264x-linux-src-v1.5.org/osm/linux/osm_linux.h.orig rr264x-linux-src-v1.5/osm/linux/osm_linux.h.orig
+--- rr264x-linux-src-v1.5.org/osm/linux/osm_linux.h.orig	1969-12-31 18:00:00.000000000 -0600
++++ rr264x-linux-src-v1.5/osm/linux/osm_linux.h.orig	2014-03-28 04:04:34.969018443 -0500
+@@ -0,0 +1,301 @@
++/* $Id: osm_linux.h,v 1.26 2010/05/11 03:09:27 lcn Exp $
++ *
++ * HighPoint RAID Driver for Linux
++ * Copyright (C) 2005 HighPoint Technologies, Inc. All Rights Reserved.
++ */
++#ifndef _OSM_LINUX_H
++#define _OSM_LINUX_H
++
++#include <linux/version.h>
++
++/* system headers */
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,38)
++#ifndef AUTOCONF_INCLUDED
++#include <linux/config.h>
++#endif
++#endif
++
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)) && defined(MODVERSIONS)
++#include <linux/modversions.h>
++#endif
++
++#include <linux/module.h>
++
++#if LINUX_VERSION_CODE > KERNEL_VERSION(2,5,0)
++#include <linux/moduleparam.h>
++#endif
++
++#include <linux/types.h>
++#include <linux/string.h>
++#include <linux/kernel.h>
++#include <linux/pci.h>
++#include <linux/interrupt.h>
++#include <linux/errno.h>
++#include <linux/ioport.h>
++#include <linux/delay.h>
++#include <linux/proc_fs.h>
++#include <linux/stat.h>
++#include <linux/kdev_t.h>
++#include <linux/timer.h>
++#include <linux/spinlock.h>
++#include <linux/reboot.h>
++#include <linux/random.h>
++
++#include <asm/uaccess.h>
++#include <asm/io.h>
++#include <asm/div64.h>
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
++#include <linux/blk.h>
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
++#include <linux/nmi.h>
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
++#include "scsi.h"
++#include <scsi/scsi_ioctl.h>
++#else 
++#include <linux/blkdev.h>
++#include <scsi/scsi_cmnd.h>
++#include <scsi/scsi_device.h>
++#include <scsi/scsi.h>
++typedef struct scsi_host_template Scsi_Host_Template;
++typedef struct scsi_device Scsi_Device;
++typedef struct scsi_cmnd Scsi_Cmnd;
++typedef struct scsi_request Scsi_Request;
++typedef struct scsi_pointer Scsi_Pointer;
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,4)
++#include "hosts.h"
++#else 
++#include <scsi/scsi_host.h>
++#endif
++
++#pragma pack(1)
++typedef struct _INQUIRYDATA {
++#ifdef __BIG_ENDIAN_BITFIELD
++	u8 DeviceTypeQualifier : 3;
++	u8 DeviceType : 5;
++	u8 RemovableMedia : 1;
++	u8 DeviceTypeModifier : 7;
++#else 
++	u8 DeviceType : 5;
++	u8 DeviceTypeQualifier : 3;
++	u8 DeviceTypeModifier : 7;
++	u8 RemovableMedia : 1;
++#endif
++	u8 Versions;
++	u8 ResponseDataFormat;
++	u8 AdditionalLength;
++	u8 Reserved[2];
++#ifdef __BIG_ENDIAN_BITFIELD
++	u8 RelativeAddressing : 1;
++	u8 Wide32Bit : 1;
++	u8 Wide16Bit : 1;
++	u8 Synchronous : 1;
++	u8 LinkedCommands : 1;
++	u8 Reserved2 : 1;
++	u8 CommandQueue : 1;
++	u8 SoftReset : 1;
++#else 
++	u8 SoftReset : 1;
++	u8 CommandQueue : 1;
++	u8 Reserved2 : 1;
++	u8 LinkedCommands : 1;
++	u8 Synchronous : 1;
++	u8 Wide16Bit : 1;
++	u8 Wide32Bit : 1;
++	u8 RelativeAddressing : 1;
++#endif
++	u8 VendorId[8];
++	u8 ProductId[16];
++	u8 ProductRevisionLevel[4];
++	u8 VendorSpecific[20];
++	u8 Reserved3[40];
++} __attribute__((packed)) INQUIRYDATA, *PINQUIRYDATA;
++
++#pragma pack()
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,4,18)
++#define pci_set_dma_mask(pcidev, mask) 1
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,4,4)
++#define scsi_set_pci_device(pshost, pcidev)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
++#define scsi_set_pci_device(pshost, pcidev)
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
++#define sc_host(sc)    sc->device->host
++#define sc_channel(sc) sc->device->channel
++#define sc_target(sc)  sc->device->id
++#define sc_lun(sc)     sc->device->lun
++#else 
++#define sc_host(sc)    sc->host
++#define sc_channel(sc) sc->channel
++#define sc_target(sc)  sc->target
++#define sc_lun(sc)     sc->lun
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,30)
++#ifndef IRQ_HANDLED
++typedef void irqreturn_t;
++#define IRQ_NONE
++#define IRQ_HANDLED
++#define IRQ_RETVAL(x)
++#endif
++#else 
++#define SUGGEST_ABORT 0
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
++#define scsi_assign_lock(host, lock)
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
++#define spin_lock_irq_io_request_lock    spin_lock_irq(&io_request_lock)
++#define spin_unlock_irq_io_request_lock  spin_unlock_irq(&io_request_lock)
++#define spin_lock_irqsave_io_request_lock(flags)      spin_lock_irqsave (&io_request_lock, flags)
++#define spin_unlock_irqrestore_io_request_lock(flags) spin_unlock_irqrestore (&io_request_lock, flags)
++#else 
++#define spin_lock_irq_io_request_lock
++#define spin_unlock_irq_io_request_lock
++#define spin_lock_irqsave_io_request_lock(flags)
++#define spin_unlock_irqrestore_io_request_lock(flags)
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
++#define scsi_set_max_cmd_len(host, len)
++#else 
++#define scsi_set_max_cmd_len(host, len) host->max_cmd_len = len
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
++#define HPT_FIND_PCI_DEVICE pci_get_device
++#else 
++#define HPT_KMAP_TYPE KM_BH_IRQ
++#define HPT_FIND_PCI_DEVICE pci_find_device
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
++#define scsi_to_pci_dma_dir(scsi_dir) ((int)(scsi_dir))
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
++#define hpt_verify_area(type, addr, size) (!access_ok((type), (addr), (size)))
++#else 
++#define hpt_verify_area(type, addr, size) (verify_area((type), (addr), (size)))
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20)
++#define HPT_SA_SHIRQ		IRQF_SHARED
++#else 
++#define HPT_SA_SHIRQ		SA_SHIRQ
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,24)
++#define HPT_SG_PAGE(sg)		sg_page(sg)
++#else 
++#define HPT_SG_PAGE(sg)		(sg)->page
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,21)
++#define HPT_FIND_SLOT_DEVICE pci_get_bus_and_slot
++#else 
++#define HPT_FIND_SLOT_DEVICE pci_find_slot
++#endif
++
++struct hpt_scsi_pointer {
++	int mapped;
++	int sgcnt;
++	dma_addr_t dma_handle;
++};
++
++typedef char check_sizeof_hpt_scsi_pointer[sizeof(struct scsi_pointer)-sizeof(struct hpt_scsi_pointer)];
++#define HPT_SCP(SCpnt) ((struct hpt_scsi_pointer *)&(SCpnt)->SCp)
++
++/* private headers */
++
++#include "osm.h"
++#include "him.h"
++#include "ldm.h"
++
++/* driver parameters */
++extern char driver_name[];
++extern char driver_name_long[];
++extern char driver_ver[];
++extern int  osm_max_targets;
++
++/*
++ * adapter/vbus extensions:
++ * each physical controller has an adapter_ext, passed to him.create_adapter()
++ * each vbus has a vbus_ext passed to ldm_create_vbus().
++ */
++#define EXT_TYPE_HBA  1
++#define EXT_TYPE_VBUS 2
++
++typedef struct _hba {
++	int ext_type;
++	LDM_ADAPTER ldm_adapter;
++	PCI_ADDRESS pciaddr;
++	struct pci_dev *pcidev;
++	struct _vbus_ext *vbus_ext;
++	struct _hba *next;
++	
++	/* HIM instance continues */
++	unsigned long him_handle[0] __attribute__((aligned(sizeof(unsigned long))));
++}
++HBA, *PHBA;
++
++typedef struct _vbus_ext {
++	int ext_type;
++	PHBA hba_list;
++	struct freelist *freelist_head;
++	struct freelist *freelist_dma_head;
++	
++	/*
++	 * all driver entries (except hpt_release/hpt_intr) are protected by 
++	 * io_request_lock on kernel 2.4, and by host->host_lock on kernel 2.6.
++	 * so, it's not necessarily to have our own spinlocks; we just need
++	 * to pay attention to our proc/ioctl routines.
++	 */
++	spinlock_t *lock;
++	struct semaphore sem;
++	
++	struct Scsi_Host *host;
++	
++	struct tasklet_struct worker;
++	OSM_TASK *tasks;
++	struct timer_list timer;
++	
++	HPT_U8 *sd_flags;
++	int needs_refresh;
++	
++	/* the LDM vbus instance continues */
++	unsigned long vbus[0] __attribute__((aligned(sizeof(unsigned long))));
++}
++VBUS_EXT, *PVBUS_EXT;
++
++#define SD_FLAG_IN_USE     1
++#define SD_FLAG_REVALIDATE 2
++#define SD_FLAG_REMOVE     0x80
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
++#define set_vbus_lock(vbus_ext) vbus_ext->lock = &io_request_lock
++#else 
++#define set_vbus_lock(vbus_ext) vbus_ext->lock = vbus_ext->host->host_lock
++#endif
++
++#define get_vbus_ext(host) (*(PVBUS_EXT *)host->hostdata)
++
++void refresh_sd_flags(PVBUS_EXT vbus_ext);
++void hpt_do_ioctl(IOCTL_ARG *ioctl_args);
++void hpt_stop_tasks(PVBUS_EXT vbus_ext);
++int hpt_proc_get_info(struct Scsi_Host *host, char *buffer, char **start, off_t offset, int length);
++
++#endif
+diff -rupN rr264x-linux-src-v1.5.org/osm/linux/osm_linux.h.rej rr264x-linux-src-v1.5/osm/linux/osm_linux.h.rej
+--- rr264x-linux-src-v1.5.org/osm/linux/osm_linux.h.rej	1969-12-31 18:00:00.000000000 -0600
++++ rr264x-linux-src-v1.5/osm/linux/osm_linux.h.rej	2014-03-28 04:04:34.969018443 -0500
+@@ -0,0 +1,13 @@
++--- rr264x-linux-src-v1.5.orig/osm/linux/osm_linux.h	2012-07-19 10:47:35.000000000 +0200
+++++ rr264x-linux-src-v1.5/osm/linux/osm_linux.h	2013-09-29 19:09:28.890307159 +0200
++@@ -175,7 +175,9 @@
++ #define scsi_set_max_cmd_len(host, len) host->max_cmd_len = len
++ #endif
++ 
++-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
+++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
+++#define HPT_FIND_PCI_DEVICE pci_get_device
+++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
++ #define HPT_KMAP_TYPE KM_BIO_SRC_IRQ
++ #define HPT_FIND_PCI_DEVICE pci_get_device
++ #else 
+diff -rupN rr264x-linux-src-v1.5.org/osm/linux/patch.sh rr264x-linux-src-v1.5/osm/linux/patch.sh
+--- rr264x-linux-src-v1.5.org/osm/linux/patch.sh	2012-07-19 03:47:35.000000000 -0500
++++ rr264x-linux-src-v1.5/osm/linux/patch.sh	2014-03-28 04:04:34.969018443 -0500
+@@ -143,7 +143,7 @@ CONFIG_SCSI_${UTARGETNAME}=y
+ 		fi
+ 	fi
+ 	;;
+-	2.6 )
++	2.6 | 3.* )
+ 	cd ${HPT_ROOT}/lib/linux/free-${ARCH}-regparm0
+ 	ld -r -o ${ARCH}-${TARGETNAME}.obj ${TARGETMODS}
+ 	mv ${ARCH}-${TARGETNAME}.obj $KERNELDIR/drivers/scsi/${TARGETNAME}/	
+--- rr264x-linux-src-v1.5.org/product/rr2640/linux/config.c	2015-04-07 18:47:04.148813946 -0500
++++ rr264x-linux-src-v1.5/product/rr2640/linux/config.c	2015-04-07 18:47:39.456928237 -0500
+@@ -23,7 +23,7 @@ int init_config(void)
+ 
+ char driver_name[] = "rr26xx";
+ char driver_name_long[] = "RocketRAID 26xx controller driver";
+-char driver_ver[] = "v1.5 (" __DATE__ " " __TIME__ ")";
++char driver_ver[] = "v1.5";
+ int  osm_max_targets = 32;
+ int os_max_cache_size = 0x800000;
+ 
+--- rr264x-linux-src-v1.5.org/product/rr2640/linux/Makefile	2015-04-09 12:26:18.626616606 -0500
++++ rr264x-linux-src-v1.5/product/rr2640/linux/Makefile	2015-04-09 12:27:03.249299422 -0500
+@@ -4,7 +4,7 @@
+ # All Rights Reserved.
+ #
+ 
+-HPT_ROOT := ../../..
++HPT_ROOT := ./
+ 
+ C_DEFINES := -DSUPPORT_ARRAY
+ 

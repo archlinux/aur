@@ -1,0 +1,23 @@
+pkgbase = rr264x-dkms
+	pkgdesc = Kernel modules for Highpoint RocketRAID 2640X1 SAS Card. (DKMS version)
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.highpoint-tech.com/USA_new/cs-series_rr2600.htm
+	install = rr264x-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	provides = rr264x=1.5
+	conflicts = rr264x
+	conflicts = rr264x-lts
+	options = !strip
+	source = http://www.highpoint-tech.com/BIOS_Driver/rr26xx/2640X1-2640X4-2642/Linux/RR264x-Linux-Src-v1.5-120817-1641.tar.gz
+	source = rr264x-v1.5.patch
+	source = dkms.conf
+	md5sums = f10172e1443f169d7c845602295f38be
+	md5sums = c84ae6a0afb8f4bd0110df976df77577
+	md5sums = f7d8847dcfdca530aef7b76182b2435a
+
+pkgname = rr264x-dkms
+
