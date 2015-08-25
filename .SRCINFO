@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-battery-percentage-git
 	pkgdesc = This extension just shows the battery power remainging percentage at the panel.
-	pkgver = r11.e358c28-1
+	pkgver = r4.414ae28
 	pkgrel = 1
 	url = https://github.com/eagleoneraptor/battery-percentage-extension
 	install = gnome-shell-extension-battery-percentage-git.install
