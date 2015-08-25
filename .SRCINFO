@@ -14,7 +14,9 @@ pkgbase = libasl
 	depends = boost
 	depends = libmatio
 	source = libasl-0.1.6.tar.gz::https://github.com/AvtechScientific/ASL/archive/v0.1.6.tar.gz
+	source = suppress-deprecated-warnings.patch
 	sha256sums = b35510c2a82f96237d5cc54d727922db00b71c7d6439591ff50882d08f8314d6
+	sha256sums = ff6e9d031d8dc53b30a3d69f044e86898a0d7d8fafdc204c9a37ded3dc90c93e
 
 pkgname = libasl
 

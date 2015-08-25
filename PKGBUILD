@@ -9,11 +9,18 @@ license=('AGPL3')
 depends=('vtk' 'libcl' 'boost' 'libmatio')
 makedepends=('cmake' 'opencl-headers')
 changelog='NEWS.md'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/AvtechScientific/ASL/archive/v${pkgver}.tar.gz")
-sha256sums=('b35510c2a82f96237d5cc54d727922db00b71c7d6439591ff50882d08f8314d6')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/AvtechScientific/ASL/archive/v${pkgver}.tar.gz"
+        'suppress-deprecated-warnings.patch')
+sha256sums=('b35510c2a82f96237d5cc54d727922db00b71c7d6439591ff50882d08f8314d6'
+            'ff6e9d031d8dc53b30a3d69f044e86898a0d7d8fafdc204c9a37ded3dc90c93e')
 
 prepare() {
   cd "$srcdir/ASL-$pkgver"
+
+  # Patch to suppress 'deprecated' warning messages
+  # caused by 'opencl-headers' since update to 2.0
+  patch -p1 < "$srcdir/suppress-deprecated-warnings.patch"
+
   mkdir -p build
   cd build
   cmake .. \
