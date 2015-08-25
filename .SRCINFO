@@ -1,0 +1,20 @@
+pkgbase = goproxy-git
+	pkgdesc = a proxy tunnel wirtten in go
+	pkgver = v2.1.2.r77.gb1e59a4
+	pkgrel = 1
+	url = https://github.com/shell909090/goproxy
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = GPL
+	makedepends = go
+	makedepends = git
+	backup = etc/goproxy/client.json
+	backup = etc/goproxy/server.json
+	source = git+https://github.com/shell909090/goproxy.git
+	source = goproxy@.service
+	md5sums = SKIP
+	md5sums = f0e3e1cd3b33c7a8c6cac0f8e58215bc
+
+pkgname = goproxy-git
+
