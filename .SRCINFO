@@ -1,0 +1,18 @@
+pkgbase = chapcrack-git
+	pkgdesc = A tool for parsing and decrypting MS-CHAPv2 network handshakes.
+	pkgver = ae2827f
+	pkgrel = 2
+	url = https://github.com/moxie0/chapcrack
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = python2-dpkt
+	depends = python2-m2crypto
+	depends = python2-passlib
+	depends = python2-m2crypto
+	source = git+https://github.com/moxie0/chapcrack.git
+	md5sums = SKIP
+
+pkgname = chapcrack-git
+
