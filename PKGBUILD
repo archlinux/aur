@@ -3,12 +3,12 @@
 
 pkgname=slack-chat
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Chat (Beta) for Linux"
 arch=('i686' 'x86_64')
 url="https://slack.com"
 license=('custom')
-depends=('gconf' 'gtk2' 'libgcrypt' 'libnotify' 'libxtst' 'gvfs' 'xdg-utils')
+depends=('gconf' 'gtk2' 'libgcrypt' 'libnotify' 'libxtst' 'gvfs' 'xdg-utils' 'hunspell')
 optdepends=('gnome-keyring')
 
 source_x86_64=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-${pkgver}-amd64.deb")
