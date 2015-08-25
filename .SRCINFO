@@ -1,0 +1,15 @@
+pkgbase = scrounge-ntfs
+	pkgdesc = Data recovery program for NTFS file systems
+	pkgver = 0.9
+	pkgrel = 2
+	url = http://memberwebs.com/stef/software/scrounge/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = autoconf
+	makedepends = automake
+	source = http://thewalter.net/stef/software/scrounge/scrounge-ntfs-0.9.tar.gz
+	md5sums = 851cbb9a1ce417cf61f2612626a1bc58
+
+pkgname = scrounge-ntfs
+
