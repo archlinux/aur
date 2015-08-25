@@ -1,0 +1,14 @@
+pkgbase = ducount
+	pkgdesc = Calculates disk usage for files in a given directory
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/simon-thorpe/ducount
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-termcolor
+	source = https://cdn.rawgit.com/simon-thorpe/ducount/v1.2.0/ducount
+	sha256sums = 473675c80e50ee9b7a6ec95425059ad22891b97cfa98afc2245ef1c1dc3bb70c
+
+pkgname = ducount
+
