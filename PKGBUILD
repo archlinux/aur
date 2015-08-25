@@ -2,16 +2,16 @@
 
 pkgname=openambit
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Open software for the Suunto Ambit(2)"
 arch=('i686' 'x86_64')
 url="http://openambit.org/"
-license=('MIT')
+license=('BSD')
 #depends=('qt4' 'qjson' 'zlib' 'libusb' 'libpcap')
 optdepends=()
 makedepends=('cmake' 'gcc' 'glibc' 'qt4' 'qjson' 'zlib' 'libusb' 'libpcap')
-conflicts=()
+conflicts=('openambit-git')
 options=('!strip' '!emptydirs')
 
 source=("$pkgname::git+https://github.com/openambitproject/${pkgname}.git#tag=${pkgver}")
