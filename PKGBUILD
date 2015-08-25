@@ -3,7 +3,7 @@
 _pkgname=click-log
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver="0.1.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Logging integration for Click"
 arch=("any")
 url="https://pypi.python.org/pypi/click-log"
@@ -47,7 +47,7 @@ package_python-click-log() {
 }
 
 package_python2-click-log() {
-  depends=("python2-clik")
+  depends=("python2-click")
   cd "${srcdir}/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
