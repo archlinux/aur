@@ -3,11 +3,11 @@
 _pkgname=click-log
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver="0.1.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Logging integration for Click"
 arch=("any")
 url="https://pypi.python.org/pypi/click-log"
-license=("BSD")
+license=("MIT")
 makedepends=("python-setuptools"
              "python2-setuptools")
 checkdepends=("python-pytest" "python-click"

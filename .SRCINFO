@@ -1,10 +1,10 @@
 pkgbase = python-click-log
 	pkgdesc = Logging integration for Click
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/click-log
 	arch = any
-	license = BSD
+	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-click
 	checkdepends = python2-pytest
