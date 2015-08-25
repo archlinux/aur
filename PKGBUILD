@@ -2,8 +2,8 @@
 # Contributor: Benjamin Vanderford <hazor_at_swrpg_dot_info
 pkgname=dict-freedict-eng-fra
 pkgver=0.1.4
-pkgrel=5
-pkgdesc="English -> French dictionary for dictd from Freedict.org"
+pkgrel=6
+pkgdesc="English -> French dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
 license=('GPL')
