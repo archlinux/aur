@@ -1,4 +1,4 @@
-#  Maintainer: Sinnamon (Georgie Aladin) <AngleSi at yahoo dot com>
+#  Maintainer: Sinnamon (George Aladin) <AngleSi at yahoo dot com>
 
 pkgname=opendpi-netfilter-git
 _pkgname=opendpi-netfilter
@@ -13,7 +13,7 @@ depends=('iptables>=1.4.8' 'glibc' 'linux>=3.1')
 makedepends=('linux-headers' 'linux-api-headers' 'git')
 install=${_pkgname}.install
 source=(${_pkgsrc}'::git+https://github.com/thomasbhatia/OpenDPI.git'
-		'opendpi-netfilter::git+https://github.com/thomasbhatia/opendpi-netfilter.git'
+		${_pkgname}'::git+https://github.com/thomasbhatia/opendpi-netfilter.git'
 		'protocols_make.patch')
 md5sums=('SKIP' 'SKIP' 
 		 '93d73ebf999433451fc6c2ca8b2858dd')
