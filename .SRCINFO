@@ -1,0 +1,16 @@
+pkgbase = texlive-sbc-article
+	pkgdesc = LaTeX style package for Brazilian Computer Society conference papers
+	pkgver = 20111103
+	pkgrel = 1
+	url = http://www.sbc.org.br/
+	install = texlive-sbc-article.install
+	arch = any
+	license = LPPL
+	makedepends = unrar
+	depends = texlive-core
+	noextract = sbc-article.rar
+	source = sbc-article.rar::http://www.sbc.org.br/index.php?option=com_jdownloads&Itemid=195&task=finish&cid=38&catid=32
+	sha512sums = ca5304e417dc81642b64fcaed96af68dec74839759d29d2138baa2ca4d600592294c09641bdf25c3288c0e1eb0db8109d8ca0f2498ef5efc63c582b1ba76330f
+
+pkgname = texlive-sbc-article
+
