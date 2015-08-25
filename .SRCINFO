@@ -1,0 +1,13 @@
+pkgbase = iscan-plugin-gt-x820
+	pkgdesc = iscan plugin for Epson Colorio GT-X820/Perfection Photo V600 scanners.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	install = gt-x820.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = iscan
+
+pkgname = iscan-plugin-gt-x820
+

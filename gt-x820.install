@@ -1,0 +1,9 @@
+post_install() {
+    echo "Running iscan-registry to register plugins and firmware with iscan"
+    iscan-registry -a interpreter usb 0x04b8 0x013a /usr/lib/iscan/libesintA1 /usr/share/iscan/esfwA1.bin 
+}
+
+pre_remove() {
+    echo "Unregistering gt-x820 plugins/firmware"
+    iscan-registry -r interpreter usb 0x04b8 0x013a /usr/lib/iscan/libesintA1 /usr/share/iscan/esfwA1.bin 
+}
