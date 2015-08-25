@@ -1,6 +1,6 @@
 pkgbase = zscroll-git
 	pkgdesc = A text scroller for use with panels
-	pkgver = 0.1.r5.gd42dc2c-1
+	pkgver = 0.1.r5.gd42dc2c
 	pkgrel = 1
 	url = https://github.com/noctuid/zscroll
 	arch = any
