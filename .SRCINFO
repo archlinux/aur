@@ -1,7 +1,7 @@
 pkgbase = airvpn-bin
 	pkgdesc = AirVPN client "Eddie" based on OpenVPN, stable version.
-	pkgver = 2.9.2
-	pkgrel = 10
+	pkgver = 2.10.3
+	pkgrel = 1
 	url = https://airvpn.org/linux/
 	install = airvpn.install
 	arch = i686
@@ -15,12 +15,12 @@ pkgbase = airvpn-bin
 	provides = airvpn
 	conflicts = airvpn
 	conflicts = airvpn-beta-bin
-	source_i686 = https://airvpn.org/repository/2.9/airvpn_linux_x86_debian.deb
-	md5sums_i686 = c3f1ed16b8e72b530c5786799bb13b89
-	sha256sums_i686 = 8dcae5773fda5f0955dcbd19a2364ac700909b8ae3f564de298a9add5879575a
-	source_x86_64 = https://airvpn.org/repository/2.9/airvpn_linux_x64_debian.deb
-	md5sums_x86_64 = edceba29c0ca6b58eb36478e12c2f71c
-	sha256sums_x86_64 = 2013ff2dc9f474a8d8fa95ef41a441a55e3b31c96a836ba17dad2bfc75da2c43
+	source_i686 = https://airvpn.org/repository/2.10/airvpn_linux_x86_debian.deb
+	md5sums_i686 = 0138d03df3f14c2103720b30f00f4400
+	sha256sums_i686 = bdf64987d98558b499bdf2ce5518a7d8ade63b975323bafe903d03d53050f539
+	source_x86_64 = https://airvpn.org/repository/2.10/airvpn_linux_x64_debian.deb
+	md5sums_x86_64 = 796a053cb937e50a656cde65f6dc1968
+	sha256sums_x86_64 = af028728cf551edfce6525d5fd05bc356440ad5f23bf344865b3a69974006a3b
 
 pkgname = airvpn-bin
 
