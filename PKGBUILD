@@ -9,7 +9,7 @@
 _pack=splines
 pkgname=octave-$_pack
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional spline functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -30,7 +30,7 @@ md5sums=('ef569ae0257586e608bc0af54e811978')
 build() {
   cd "$srcdir"
   mkdir -p builddir
-  octave -q -f --eval "pkg build -verbose -nodeps builddir $_archive"
+  octave-cli -q -f --eval "pkg build -verbose -nodeps builddir $_archive"
 }
 
 package() {
