@@ -9,7 +9,9 @@ url="www.modoboa.org"
 license=('MIT')
 makedepends=('python2' 'python2-rrdtool' 'python2-lxml' 'python2-setuptools' 'zlib')
 depends=( 'python2-django' 'python2-dj-database-url' 'python2-pip' 'python2-requests' 'python2-crypto'
-		       'python2-sievelib' 'python2-chardet' 'python2-argparse' 'python2-django-reversion')
+		       'python2-sievelib' 'python2-chardet' 'python2-argparse' 'python2-django-reversion'
+		       'python2-passlib' 'python2-django-versionfield2' 'python2-factory_boy'
+		       'python2-django-xforwardedfor-middleware')
 optdepends=('python2-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python2-mysql-connector' 'python2-psycopg2' 'python2-aspw'
 			     'python2-gunicorn' 'python2-vex')
 provides=('modoboa')
