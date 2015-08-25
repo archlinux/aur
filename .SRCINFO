@@ -1,0 +1,14 @@
+pkgbase = memtester
+	pkgdesc = A userspace utility for testing the memory subsystem for faults
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = http://pyropus.ca/software/memtester/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://pyropus.ca/software/memtester/old-versions/memtester-4.3.0.tar.gz
+	md5sums = 598f41b7308e1f736164bca3ab84ddbe
+
+pkgname = memtester
+
