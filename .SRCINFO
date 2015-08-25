@@ -1,0 +1,32 @@
+pkgbase = ws-session-git
+	pkgdesc = Session manager for virtual desktops written in bash
+	pkgver = 292
+	pkgrel = 1
+	url = https://github.com/ctx/ws-session
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = xdotool
+	depends = xorg-xprop
+	depends = wmctrl
+	optdepends = bspwm: you need at least one supported windowmanager
+	optdepends = herbstluftwm: supported wm
+	optdepends = i3-wm: supported wm
+	optdepends = wingo-git: supported wm
+	optdepends = wmii: supported wm
+	optdepends = dwb: supported browser
+	optdepends = gvim: supported editor
+	optdepends = luakit: supported browser
+	optdepends = rxvt-unicode: supported terminal emulator
+	optdepends = zathura: supported pdf reader
+	optdepends = mupdf: supported pdf reader
+	optdepends = zsh: supported shell
+	optdepends = dmenu: for a menu to open and close sessions
+	optdepends = zenity: for a menu to open and close sessions
+	provides = ws-session
+	conflicts = ws-session
+	source = git://github.com/ctx/ws-session.git
+	md5sums = SKIP
+
+pkgname = ws-session-git
+
