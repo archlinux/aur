@@ -1,0 +1,10 @@
+[Unit]
+Description=Htpdate Daemon
+
+[Service]
+Type=forking
+PIDFile=/run/htpdate.pid
+ExecStart=/usr/bin/htpdate -D -s -i /run/htpdate.pid www.linux.org www.freebsd.org
+
+[Install]
+WantedBy=multi-user.target

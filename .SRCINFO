@@ -1,0 +1,16 @@
+pkgbase = htpdate
+	pkgdesc = A client for time synchronisation
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.vervest.org/htp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://www.vervest.org/htp/archive/c/htpdate-1.1.1.tar.xz
+	source = htpdate.service
+	md5sums = c612f63282e3f23b709f37a5c81d4739
+	md5sums = b419153625904d9a5544e585f69c66c5
+
+pkgname = htpdate
+
