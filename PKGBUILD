@@ -2,7 +2,7 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-vim-git
-pkgver=538.c33d32e
+pkgver=584.8f07868
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer. Patched for vim keybindings"
 url="https://github.com/hishamhm/${_pkgname}"
@@ -16,13 +16,9 @@ provides=('htop')
 conflicts=('htop' 'htop-git')
 options=('!emptydirs')
 source=("git+${url}.git"
-        '0001-Change-navigation-bindings-to-vi-standards.patch'
-        '0002-Detail-changes-in-README.patch'
-        '0003-Bind-o-to-expand-collapse.patch')
+        'vim-keybindings.patch')
 sha256sums=('SKIP'
-            '6721c4975ed07bf4e7f64fefa2d9fe1c0a597e95a71ebc4f84e3064382525e0e'
-            '14657468183b7f53a8076490cdd4bbc1c2cd8bbff0ab4148f2858ee8a2d4b61e'
-            '603f7eacfa05f773f512e0a18625aac0b5cbaf5948fcb50aa45392a4f5584e80')
+            'd58771be77157419f539a3cd5271aa6adeba1d86a90053e7e63d035cb654cb30')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
