@@ -1,0 +1,18 @@
+pkgbase = rr264x
+	pkgdesc = Kernel modules for Highpoint RocketRAID 2640X1 SAS Card.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.highpoint-tech.com/USA_new/cs-series_rr2600.htm
+	install = rr264x.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = linux-headers
+	depends = linux>=3.10
+	source = http://www.highpoint-tech.com/BIOS_Driver/rr26xx/2640X1-2640X4-2642/Linux/RR264x-Linux-Src-v1.5-120817-1641.tar.gz
+	source = rr264x-v1.5.patch
+	md5sums = f10172e1443f169d7c845602295f38be
+	md5sums = b0ca801156b41183f2828156ad2446cd
+
+pkgname = rr264x
+
