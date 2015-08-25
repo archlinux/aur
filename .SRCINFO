@@ -1,0 +1,15 @@
+pkgbase = jgoodies-animation
+	pkgdesc = A Java Swing animation library
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://www.jgoodies.com/
+	arch = any
+	groups = jgoodies
+	license = BSD
+	depends = jgoodies-common>=1.5.0
+	optdepends = java-runtime>=6
+	source = http://www.jgoodies.com/download/libraries/animation/jgoodies-animation-1_4_3.zip
+	md5sums = 396a57df79ec6fabd205b0733f67539d
+
+pkgname = jgoodies-animation
+
