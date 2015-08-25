@@ -1,7 +1,7 @@
 pkgbase = boxbackup-client
 	pkgdesc = An open source, completely automatic on-line backup system for UNIX.
 	pkgver = 0.11.1
-	pkgrel = 0
+	pkgrel = 1
 	url = http://boxbackup.org
 	arch = i686
 	arch = x86_64
