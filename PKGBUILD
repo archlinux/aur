@@ -2,7 +2,7 @@
 # Contributor: pisuka <tekmon@gmail.com>
 
 pkgname=heroku-toolbelt
-pkgver=3.41.3
+pkgver=3.41.4
 pkgrel=1
 pkgdesc="Everything you need to get started using Heroku (including foreman)"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=("ruby-bundler")
 optdepends=('git')
 conflicts=('ruby-heroku' 'ruby-foreman' 'heroku-client')
 source=('Gemfile' 'Gemfile.lock')
-sha256sums=('d013869613a830805c25922e85233446e5dc672f82c397634012ec7a3eb6e3ce'
-            'ab99e9f25eaf6fb311070083e7a4bf38de572372f7784ab0871a74dc62d93ec7')
+sha256sums=('bfb90633814fcf850db1fc8edc529437db2b2e9d24868e0948afeea162ef19b6'
+            'd30052507eb98f3ee8389d8cce1b71c9f5eb0cbaa7d077729bfebd0d51ecf543')
 
 package() {
   cd "$pkgdir"
