@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-pdcurses-win32a
+	pkgdesc = Curses library on the Win32 API for MinGW-w64
+	pkgver = 3.4
+	pkgrel = 1505
+	url = http://www.projectpluto.com/win32a.htm
+	arch = any
+	license = public domain
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	provides = mingw-w64-pdcurses
+	conflicts = mingw-w64-pdcurses
+	replaces = mingw-w64-pdcurses
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.projectpluto.com/win32a.zip
+	md5sums = 835356e2ffa311c5bb908063cfda7dfa
+
+pkgname = mingw-w64-pdcurses-win32a
+
