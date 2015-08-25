@@ -4,7 +4,7 @@
 
 pkgname=boxbackup-server
 pkgver=0.11.1
-pkgrel=0
+pkgrel=1
 pkgdesc="An open source, completely automatic on-line backup system for UNIX."
 arch=('i686' 'x86_64')
 url="http://boxbackup.org"
@@ -16,7 +16,7 @@ source=(http://www.boxbackup.org/svn/box/packages/boxbackup-${pkgver}.tgz  bbser
 md5sums=('c4c4786a918a9c026f80833614c40a6b'
          '7a85ba0caf36febfb8e6871c45aa108e')
 
-build() {
+package() {
 	cd ${srcdir}/boxbackup-${pkgver}
 
 	./configure
