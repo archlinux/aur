@@ -1,5 +1,5 @@
 pkgbase = spyder-git
-	pkgver = 2.3.4.r1866.g76a9a5f
+	pkgver = 3.0.0b1.r134.g2e7699b
 	pkgrel = 1
 	url = https://github.com/spyder-ide/spyder
 	install = spyder-git.install
@@ -15,6 +15,7 @@ pkgbase = spyder-git
 
 pkgname = spyder-git
 	pkgdesc = Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 2 version)
+	depends = ipython2-notebook
 	depends = python2-pyqt4
 	depends = python2-pyflakes
 	depends = python2-pyzmq
@@ -22,7 +23,6 @@ pkgname = spyder-git
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	optdepends = python2-pylint: powerful code analysis
-	optdepends = ipython2: enhanced Python interpreter
 	optdepends = python2-rope: editor code completion, calltips and go-to-definition
 	optdepends = python2-sphinx: rich text help on the object inspector
 	optdepends = python2-numpy: N-dimensional arrays
@@ -37,6 +37,7 @@ pkgname = spyder-git
 
 pkgname = spyder3-git
 	pkgdesc = Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)
+	depends = jupyter
 	depends = python-pyqt4
 	depends = python-pyflakes
 	depends = python-pyzmq

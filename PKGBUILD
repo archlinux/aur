@@ -40,10 +40,11 @@ build() {
 
 package_spyder-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 2 version)"
-  depends=('python2-pyqt4' 'python2-pyflakes' 'python2-pyzmq' 'python2-pygments'
+  depends=('ipython2-notebook' 'python2-pyqt4' 'python2-pyflakes' 'python2-pyzmq' 'python2-pygments'
            'desktop-file-utils' 'gtk-update-icon-cache')
+  #'ipython2<4.0: enhanced Python interpreter'
+  #'ipython2-notebook>=4.0: enhanced Python interpreter (qtconsole)'
   optdepends=('python2-pylint: powerful code analysis'
-              'ipython2: enhanced Python interpreter'
               'python2-rope: editor code completion, calltips and go-to-definition'
               'python2-sphinx: rich text help on the object inspector'
               'python2-numpy: N-dimensional arrays'
@@ -67,8 +68,10 @@ package_spyder-git() {
 
 package_spyder3-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)"
-  depends=('python-pyqt4' 'python-pyflakes' 'python-pyzmq' 'python-pygments'
+  depends=('jupyter' 'python-pyqt4' 'python-pyflakes' 'python-pyzmq' 'python-pygments'
            'desktop-file-utils' 'gtk-update-icon-cache')
+  #'ipython<4.0: enhanced Python interpreter'
+  #'jupyter>=4.0: enhanced Python interpreter (qtconsole)'
   optdepends=('python-pylint: powerful code analysis'
               'ipython: enhanced Python interpreter'
               'python-rope: editor code completion, calltips and go-to-definition'
