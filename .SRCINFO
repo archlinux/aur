@@ -1,0 +1,34 @@
+pkgbase = kismet-allplugins
+	pkgdesc = 802.11 layer2 wireless network detector, sniffer, and intrusion detection system(all plugins enabled)
+	pkgver = 2013_03_R1b
+	pkgrel = 2
+	url = http://www.kismetwireless.net/
+	install = kismet.install
+	changelog = kismet.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap
+	depends = pcre
+	depends = bluez-libs
+	depends = libcap
+	optdepends = gpsd: log coordinates of detected networks
+	optdepends = wireshark-cli: provide OUI files used to determine device manufacturer
+	optdepends = wireshark-cli: mergecap, to merge multiple capture files
+	optdepends = sox: provide the default kismet sound playback binary
+	optdepends = festival: text-to-speech support
+	optdepends = flite: alternative/lightweight text-to-speech support
+	optdepends = ruby: ruby interface
+	provides = kismet
+	conflicts = kismet
+	conflicts = kismet-svn
+	conflicts = kismet-ptw
+	backup = etc/kismet.conf
+	backup = etc/kismet_drone.conf
+	source = http://www.kismetwireless.net/code/kismet-2013-03-R1b.tar.gz
+	source = http://www.kismetwireless.net/code/kismet-2013-03-R1b.tar.gz.asc
+	md5sums = 6cdcd78baf2e15edbe8a9de3c5493f02
+	md5sums = SKIP
+
+pkgname = kismet-allplugins
+
