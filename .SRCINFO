@@ -1,0 +1,17 @@
+pkgbase = truecrack-svn
+	pkgdesc = TrueCrack is a brute-force password cracker for TrueCrypt volume files.
+	pkgver = 50
+	pkgrel = 1
+	url = https://code.google.com/p/truecrack
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = svn
+	makedepends = gcc
+	optdepends = cuda: GPU Support
+	provides = truecrack
+	source = svn+http://truecrack.googlecode.com/svn
+	md5sums = SKIP
+
+pkgname = truecrack-svn
+
