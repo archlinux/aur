@@ -1,0 +1,19 @@
+pkgbase = node-webkit
+	pkgdesc = node-webkit is an app runtime based on Chromium and node.js.
+	pkgver = 0.10.5
+	pkgrel = 1
+	url = https://github.com/rogerwang/node-webkit
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	depends = ttf-font
+	optdepends = nodejs: npm package support
+	optdepends = nw-gyp: native add-on build tool for node-webkit
+	source = http://dl.node-webkit.org/v0.10.5/node-webkit-v0.10.5-linux-.tar.gz
+
+pkgname = node-webkit
+
