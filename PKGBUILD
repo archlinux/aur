@@ -2,7 +2,7 @@
 # Contributor:
 _npmname=wordwrap
 pkgname=nodejs-${_npmname}
-pkgver=0.0.2
+pkgver=1.0.0
 pkgrel=2
 pkgdesc='Light-weight option parsing with an argv hash. No optstrings attached.'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('nodejs')
 source=(http://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz)
 noextract=(${_npmname}-${pkgver}.tgz)
-md5sums=('337b01f9fc79d9fbe9981ce70ad34d6f')
+md5sums=('748373c6c83ec94002281797913c8a85')
 
 package() {
   cd $srcdir
