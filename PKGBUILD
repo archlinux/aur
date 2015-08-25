@@ -2,11 +2,11 @@
 
 _pkgname=tdrop
 pkgname=tdrop-git
-pkgver=
+pkgver=0.1.r23.g682ec14-1
 pkgrel=1
 pkgdesc="A WM-Independent dropdown window and terminal creator"
 arch=('any')
-url="https://github.com/angelic-sedition/tdrop"
+url="https://github.com/noctuid/tdrop"
 license=('Simplified BSD')
 depends=('bash' 'xdotool' 'xorg-xwininfo' 'xorg-xprop')
 optdepends=('tmux: session starting support' 
@@ -15,7 +15,7 @@ optdepends=('tmux: session starting support'
 makedepends=('git')
 provides=("${_pkgname}")
 md5sums=('SKIP')
-source=("git://github.com/angelic-sedition/${_pkgname}.git")
+source=("git://github.com/noctuid/${_pkgname}.git")
 
 pkgver() {
   cd "$srcdir/$_pkgname"

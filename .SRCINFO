@@ -1,8 +1,8 @@
 pkgbase = tdrop-git
 	pkgdesc = A WM-Independent dropdown window and terminal creator
-	pkgver = 0.1.r1.ge6da22d
+	pkgver = 0.1.r23.g682ec14-1
 	pkgrel = 1
-	url = https://github.com/angelic-sedition/tdrop
+	url = https://github.com/noctuid/tdrop
 	arch = any
 	license = Simplified BSD
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = tdrop-git
 	optdepends = tmuxinator: session starting support
 	optdepends = sxhkd: for a tdrop keybinding
 	provides = tdrop
-	source = git://github.com/angelic-sedition/tdrop.git
+	source = git://github.com/noctuid/tdrop.git
 	md5sums = SKIP
 
 pkgname = tdrop-git
