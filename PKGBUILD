@@ -3,12 +3,12 @@
 pkgname=openambit-git
 _pkgname=openambit
 pkgver=20150825
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc="Open software for the Suunto Ambit(2)"
+pkgdesc="Open software for the Suunto Ambit(2) - Git master branch"
 arch=('i686' 'x86_64')
 url="http://openambit.org/"
-license=('MIT')
+license=('BSD')
 #depends=('qt4' 'qjson' 'zlib' 'libusb' 'libpcap')
 optdepends=()
 makedepends=('cmake' 'gcc' 'glibc' 'qt4' 'qjson' 'zlib' 'libusb' 'libpcap')
