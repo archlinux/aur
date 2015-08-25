@@ -1,0 +1,15 @@
+pkgbase = texlive-sbc-bookchapter
+	pkgdesc = LaTeX class for Brazilian Computer Society book chapters
+	pkgver = 20111103
+	pkgrel = 1
+	url = http://www.sbc.org.br/
+	install = texlive-sbc-bookchapter.install
+	arch = any
+	license = LPPL
+	depends = texlive-core
+	optdepends = texlive-sbc-article: for sbc bibtex style
+	source = sbc-bookchapter.zip::http://www.sbc.org.br/index.php?option=com_jdownloads&Itemid=195&task=finish&cid=102&catid=32
+	sha512sums = 4521c246c0840c65ca2c66a308da82b3449d37f2bf610220a8af62e98edfdecf6b5095cdead945fe493ac968d0f4ff3ea838057fda731481d93edb077e6b4e21
+
+pkgname = texlive-sbc-bookchapter
+
