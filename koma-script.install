@@ -1,0 +1,13 @@
+post_install() {
+  texhash
+}
+
+post_upgrade() {
+  texhash
+}
+
+post_remove() {
+  texhash
+}
+
+# vim:set ts=2 sw=2 et:

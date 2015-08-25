@@ -1,0 +1,16 @@
+pkgbase = koma-script
+	pkgdesc = A versatile bundle of LaTeX2e document classes and packages
+	pkgver = 3.16.2150
+	pkgrel = 3
+	url = http://www.komascript.de/
+	install = koma-script.install
+	arch = any
+	license = LPPL
+	makedepends = unzip
+	depends = texlive-latexextra
+	noextract = koma-script-2150.zip
+	source = http://sourceforge.net/projects/koma-script/files/KOMA-Script/koma-script-2150.zip
+	sha1sums = acc976e8d2a073b4fe1ab772466e0f35337fe2ee
+
+pkgname = koma-script
+
