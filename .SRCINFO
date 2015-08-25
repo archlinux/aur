@@ -1,0 +1,26 @@
+pkgbase = gnupot
+	pkgdesc = Yet another libre Dropbox clone written in bash and based on git.
+	pkgver = 0.1.r0.gec65a2e
+	pkgrel = 1
+	url = https://github.com/frnmst/gnupot
+	install = .INSTALL
+	arch = any
+	license = GPL3
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = git>=2.4
+	depends = coreutils
+	depends = bash
+	depends = openssh
+	depends = inotify-tools
+	depends = util-linux
+	depends = libnotify
+	depends = git>=2.4
+	depends = dialog
+	depends = glibc
+	depends = trickle
+	source = git://github.com/frnmst/gnupot.git
+	md5sums = SKIP
+
+pkgname = gnupot
+
