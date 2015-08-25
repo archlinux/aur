@@ -1,0 +1,12 @@
+--- buffer-1.19/buffer.c.orig	2009-01-13 18:11:35.000000000 +0100
++++ buffer-1.19/buffer.c	2009-01-13 18:11:49.000000000 +0100
+@@ -134,7 +134,7 @@
+ #endif
+ 
+-#ifndef __alpha
++#ifndef __linux__
+ extern char *shmat();
+-#endif /* __alpha */
++#endif /* __linux__ */
+ 
+ /* General macros */

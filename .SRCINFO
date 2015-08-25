@@ -1,0 +1,17 @@
+pkgbase = buffer
+	pkgdesc = Speed up writing tapes on remote tape drives
+	pkgver = 1.19
+	pkgrel = 5
+	url = http://www.hello-penguin.com/software.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.hello-penguin.com/software/buffer/buffer-1.19.tar.gz
+	source = 01-debian-patches.all
+	source = 02-fedora-patch.all
+	md5sums = 35951ffca7e4df9ad7f97092e1f05b75
+	md5sums = a7ef774fa16f70129df285c4a571cd53
+	md5sums = b16176e87c5f0e1561483c39f20802ef
+
+pkgname = buffer
+
