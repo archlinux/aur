@@ -1,0 +1,22 @@
+pkgbase = htop-blueweb
+	pkgdesc = Interactive process viewer with blueweb theme patch
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://htop.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	depends = ncurses
+	optdepends = lsof: show files opened by a process
+	optdepends = strace: attach to a running process
+	provides = htop
+	conflicts = htop
+	options = !emptydirs
+	source = http://hisham.hm/htop/releases/1.0.3/htop-1.0.3.tar.gz
+	source = htop-blueweb-theme-1.0.3.patch
+	md5sums = e768b9b55c033d9c1dffda72db3a6ac7
+	md5sums = eddab24184b8681acaac70e2c35eb318
+
+pkgname = htop-blueweb
+
