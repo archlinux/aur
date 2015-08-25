@@ -1,0 +1,14 @@
+pkgbase = mbr
+	pkgdesc = A replacement master boot record
+	pkgver = 1.1.11
+	pkgrel = 2
+	url = http://www.chiark.greenend.org.uk/~neilt/mbr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bin86
+	source = http://www.chiark.greenend.org.uk/~neilt/mbr/mbr-1.1.11.tar.gz
+	md5sums = 4e406ded185f94c2d2bf5fc793ac1842
+
+pkgname = mbr
+
