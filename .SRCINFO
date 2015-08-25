@@ -1,0 +1,20 @@
+pkgbase = htpdate-git
+	pkgdesc = HTTP time protocol, time synchronisation client
+	pkgver = 0.r7.gb707e2f
+	pkgrel = 1
+	url = http://www.vervest.org/htp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = patch
+	depends = gcc-libs
+	provides = htpdate
+	conflicts = htpdate
+	options = !libtool
+	source = git+http://www.github.com/iridium77/htpdate.git
+	source = htpdate.service
+	md5sums = SKIP
+	md5sums = b419153625904d9a5544e585f69c66c5
+
+pkgname = htpdate-git
+
