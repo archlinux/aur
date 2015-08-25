@@ -1,0 +1,22 @@
+pkgbase = python-click-threading
+	pkgdesc = Multithreaded Click apps made easy
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/click-threading
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-click
+	checkdepends = python2-pytest
+	checkdepends = python2-click
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = click-threading-0.1.0.tar.gz::https://github.com/click-contrib/click-threading/archive/0.1.0.tar.gz
+	sha256sums = b0c7a082476d356730c66e261c37d063be8880e30afc3f106dfef0a2349cc465
+
+pkgname = python-click-threading
+	depends = python-click
+
+pkgname = python2-click-threading
+	depends = python2-clik
+
