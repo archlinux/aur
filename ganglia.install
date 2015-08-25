@@ -1,0 +1,27 @@
+# Arg 1: the new package version
+post_install() {
+
+  # Create user and group
+  systemd-sysusers ganglia.conf
+
+  # Required at this stage to ensure ganglia user & group are available
+  install -d -o ganglia -g ganglia /var/lib/ganglia{,/rrds}
+}
+
+# Arg 1: the new package version
+# Arg 2: the old package version
+post_upgrade() {
+  if [ "`vercmp $2 3.4.0`" -lt 0 ]; then
+    echo "WARNING: The ganglia package has been split. If you use the" \
+         "web frontend, you'll need to install the ganglia-web package as well."
+  fi
+}
+
+# Arg 1: the old package version
+post_remove() {
+  echo "This package does not automatically remove the ganglia data "
+  echo "directory (default /var/lib/ganglia) or ganglia user. Please do so "
+  echo "manually if they are no longer required."
+}
+
+# vim:set ts=2 sw=2 et:
