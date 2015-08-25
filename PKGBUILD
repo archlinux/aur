@@ -2,8 +2,8 @@
 # Contributor: akane      <grangerspit@gmail.com> <xmpp:heiß@neko.im>
 pkgname=dict-freedict-deu-eng
 pkgver=0.3.4
-pkgrel=5
-pkgdesc="German -> English dictionary for dictd from Freedict.org"
+pkgrel=6
+pkgdesc="German -> English dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
 license=('GPL')
