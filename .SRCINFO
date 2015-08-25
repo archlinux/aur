@@ -1,0 +1,26 @@
+pkgbase = burp-backup-git
+	pkgdesc = Burp is a backup and restore program. It uses librsync in order to save on the amount of space that is used by each backup. Builts from Git-master
+	pkgver = 2.0.16.r0.g2aacabd
+	pkgrel = 2
+	url = http://burp.grke.org/
+	arch = any
+	license = AGPLv3
+	makedepends = uthash
+	makedepends = git
+	depends = librsync
+	depends = openssl
+	provides = burp-backup
+	conflicts = burp-backup
+	conflicts = burp-backup-dev
+	backup = etc/burp/burp.conf
+	backup = etc/burp/burp-server.conf
+	backup = etc/cron.d/burp
+	backup = etc/burp/CA-client
+	backup = etc/burp/clientconfdir
+	source = burp::git+https://github.com/grke/burp.git#branch=master
+	source = burp.service
+	sha256sums = SKIP
+	sha256sums = e598b81d6d3dff2d336cf87191d52a7f336adc497c818742424fea73070cef24
+
+pkgname = burp-backup-git
+
