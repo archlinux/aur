@@ -3,8 +3,8 @@
 _projectname=gmusicapi
 _pkgname=python2-${_projectname}
 pkgname=$_pkgname-git
-pkgver=VERSION
-pkgrel=3
+pkgver=6.0.0.r35.b2401a7-1
+pkgrel=4
 pkgdesc="Allows control of Google Music with Python"
 arch=('any')
 url="https://github.com/simon-weber/gmusicapi"
