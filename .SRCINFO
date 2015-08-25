@@ -1,7 +1,7 @@
 pkgbase = python-ddt
 	pkgdesc = Data-Driven/Decorated Tests
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/txels/ddt
 	arch = any
 	license = MIT

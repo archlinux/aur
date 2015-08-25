@@ -2,10 +2,11 @@
 
 _name="ddt"
 _module="${_name}"
+_check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.0.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Data-Driven/Decorated Tests"
 arch=("any")
 url="https://github.com/txels/ddt"
@@ -31,10 +32,14 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    nosetests -s --with-coverage --cover-package=ddt --cover-html
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    nosetests2 -s --with-coverage --cover-package=ddt --cover-html
+    if [[ "${_check}" == "enabled" ]]; then
+        cd "${srcdir}/${_name}-${pkgver}"
+        nosetests -s --with-coverage --cover-package=ddt --cover-html
+        cd "${srcdir}/${_name}-${pkgver}-python2"
+        nosetests2 -s --with-coverage --cover-package=ddt --cover-html
+    else
+        echo "_check is not set to \"enabled\", skipping check()"
+    fi
 }
 
 package_python-ddt() {
