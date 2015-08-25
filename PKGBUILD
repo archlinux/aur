@@ -3,7 +3,7 @@
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
 pkgver=20150821_081148
-pkgrel=3
+pkgrel=4
 pkgdesc="The Free On-line Dictionary of Computing for dict"
 arch=('any')
 url="http://foldoc.org/"
@@ -25,7 +25,7 @@ pkgver()
 
 build()
 {
-	cat $srcdir/Dictionary.txt | dictfmt -f \
+	cat Dictionary.txt | dictfmt -f \
 		--allchars -u http://foldoc.org/Dictionary.txt \
 		-s "The Free On-line Dictionary of Computing ($pkgver)" \
 		--utf8 foldoc
@@ -35,5 +35,5 @@ build()
 package()
 {
 	mkdir -p $pkgdir/usr/share/dictd
-	mv $srcdir/foldoc.{dict.dz,index} $pkgdir/usr/share/dictd/
+	cp foldoc.{dict.dz,index} $pkgdir/usr/share/dictd/
 }
