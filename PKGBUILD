@@ -1,16 +1,16 @@
 # Maintainer: Lit Wakefield <noct[at]openmailbox[dot]org>
 _pkgname=zscroll
 pkgname=zscroll-git
-pkgver=0.1.r0.gc270651
+pkgver=0.1.r5.gd42dc2c-1
 pkgrel=1
 pkgdesc="A text scroller for use with panels"
 arch=('any')
-url="https://github.com/angelic-sedition/zscroll"
+url="https://github.com/noctuid/zscroll"
 license=('Simplified BSD')
 depends=('python')
 makedepends=('git')
 provides=("${_pkgname}")
-source=("git://github.com/angelic-sedition/${_pkgname}.git")
+source=("git://github.com/noctuid/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
