@@ -1,0 +1,30 @@
+pkgbase = wifite-mod-pixiewps-git
+	pkgdesc = A tool to attack multiple WEP and WPA encrypted networks at the same time mod with Pixie Dust Attack support
+	pkgver = 46.39371b5
+	pkgrel = 1
+	url = https://github.com/aanarchyy/wifite-mod-pixiewps
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = aircrack-ng
+	depends = aircrack-ng-scripts
+	depends = python2-pexpect
+	depends = reaver-wps-fork-t6x-git
+	optdepends = tk
+	optdepends = macchanger
+	optdepends = pyrit-svn
+	optdepends = cowpatty
+	optdepends = wireshark-cli
+	provides = wifite
+	conflicts = wifite
+	conflicts = wifite-svn
+	conflicts = wifite-git
+	replaces = wifite
+	replaces = wifite-svn
+	replaces = wifite-git
+	source = wifite-mod-pixiewps-git::git+https://github.com/aanarchyy/wifite-mod-pixiewps.git
+	sha256sums = SKIP
+
+pkgname = wifite-mod-pixiewps-git
+
