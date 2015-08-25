@@ -1,0 +1,17 @@
+pkgbase = python2-getch
+	pkgdesc = Functions to read one single char from standard input without waiting for a newline
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/getch
+	arch = i686
+	arch = x86_64
+	license = Unknown
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/g/getch/getch-1.0-python2.tar.gz
+	md5sums = 586ea0f1f16aa094ff6a30736ba03c50
+	sha256sums = be451438f7a2b389f96753aea39b6ed2540a390f1b9a12badcbc110cf9a5ce7f
+
+pkgname = python2-getch
+
