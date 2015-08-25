@@ -3,7 +3,7 @@
 pkgname=openambit-git
 _pkgname=openambit
 pkgver=20150825
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Open software for the Suunto Ambit(2) - Git master branch"
 arch=('i686' 'x86_64')
@@ -32,12 +32,18 @@ build() {
 package() {
   msg2 "Package"
   install -Dm0644 "${srcdir}/${_pkgname}/libambit-build/libambit.so.0.3.0" "${pkgdir}/usr/lib/${_pkgname}/libambit.so.0.3.0"
-  ln -s /usr/lib/${_pkgname}/libambit.so.0.3.0 $pkgdir/usr/lib/libambit.so.0
-  ln -s /usr/lib/${_pkgname}/libambit.so.0 $pkgdir/usr/lib/libambit.so
+  ln -s /usr/lib/${_pkgname}/libambit.so.0.3.0 $pkgdir/usr/lib/${_pkgname}/libambit.so.0
+  ln -s /usr/lib/${_pkgname}/libambit.so.0 $pkgdir/usr/lib/${_pkgname}/libambit.so
+
+  install -Dm0644 "${srcdir}/${_pkgname}/movescount-build/libmovescount.so.0.3.0" "${pkgdir}/usr/lib/${_pkgname}/libmovescount.so.0.3.0"
+  ln -s /usr/lib/${_pkgname}/libmovescount.so.0.3.0 $pkgdir/usr/lib/${_pkgname}/libmovescount.so.0
+  ln -s /usr/lib/${_pkgname}/libmovescount.so.0.3.0 $pkgdir/usr/lib/${_pkgname}/libmovescount.so
 
   install -Dm0755 "${srcdir}/${_pkgname}/openambit-build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm0644 "${srcdir}/${_pkgname}/src/libambit/libambit.rules" "${pkgdir}/usr/lib/udev/rules.d/99-libambit.rules"
 
   install -Dm0644 "${srcdir}/${_pkgname}/tools/movescountXmlDiff.pl" "${pkgdir}/usr/share/${_pkgname}/movescountXmlDiff.pl"
   install -Dm0644 "${srcdir}/${_pkgname}/tools/openambit2gpx.py" "${pkgdir}/usr/share/${_pkgname}/openambit2gpx.py"
+
+  install -Dm0644 "${srcdir}/${_pkgname}/src/openambit/deployment/openambit.desktop" "${pkgdir}/usr/share/applications/openambit.desktop"
 }
