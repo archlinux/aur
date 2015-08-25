@@ -1,0 +1,24 @@
+pkgbase = opendpi-netfilter-git
+	pkgdesc = This package is a GPL implementation of an iptables and netfilter module for OpenDPI integration into the Linux kernel.
+	pkgver = r7.c0fb9c1
+	pkgrel = 1
+	url = http://opendpi.org/
+	install = opendpi-netfilter.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	makedepends = linux-api-headers
+	makedepends = git
+	depends = iptables>=1.4.8
+	depends = glibc
+	depends = linux>=3.1
+	source = opendpi::git+https://github.com/thomasbhatia/OpenDPI.git
+	source = opendpi-netfilter::git+https://github.com/thomasbhatia/opendpi-netfilter.git
+	source = protocols_make.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 93d73ebf999433451fc6c2ca8b2858dd
+
+pkgname = opendpi-netfilter-git
+

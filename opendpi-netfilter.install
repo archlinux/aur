@@ -1,0 +1,15 @@
+post_install() {
+	depmod -a
+	echo ""
+    echo -e "\033[1;35mVisit\033[0m \033[32;4mhttp://www.ntop.org/products/deep-packet-inspection/ndpi/\033[0m \033[1;35mfor more information.\033[0m"
+    echo ""
+    echo -e "\033[1;35mAlso\033[0m \033[1;36miptables -m opendpi --help\033[0m \033[1;35mand\033[0m \033[1;36mman iptables\033[0m \033[1;35m- will always help you! \033[0m"
+    echo ""
+    echo -e "\033[1;35mExample:\033[0m \033[31m#\033[0m\033[1;36miptables -I OUTPUT \033[1;35m(INPUT or/and FORWARD)\033[0m \033[1;36m-m opendpi --http -j LOG --log-prefix 'OpenDPI http output: '\033[0m\033[1;35m.Go to the website\033[0m \033[32;4mexample.com\033[0m \033[1;35mand run\033[0m \033[1;36mdmesg | tail\033[0m \033[1;35mto see the result\033[0m"
+    echo ""
+}
+post_upgrade() {
+    post_install $1
+}
+
+
