@@ -1,0 +1,18 @@
+pkgbase = hungry-sniffer-git
+	pkgdesc = Modular Sniffer with Plugins for new protocols
+	pkgver = v1.0.r19.ga00c891
+	pkgrel = 1
+	url = https://github.com/arthurzam/hungry-sniffer
+	install = hungry-sniffer.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libpcap
+	depends = jsoncpp
+	depends = qt5-base
+	depends = libcap
+	source = hungry-sniffer::git+git://github.com/arthurzam/hungry-sniffer.git
+	sha1sums = SKIP
+
+pkgname = hungry-sniffer-git
+

@@ -1,0 +1,18 @@
+post_install() {
+    getent group hungry-sniffer >/dev/null 2>&1 ||  groupadd -g 155 hungry-sniffer &>/dev/null
+
+    setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' usr/bin/hungry-sniffer
+    echo "NOTE: To run Hungry Sniffer as normal user you have to add yourself into hungey-sniffer group"
+}
+
+post_upgrade() {
+    getent group hungry-sniffer >/dev/null 2>&1 ||  groupadd -g 155 hungry-sniffer &>/dev/null
+
+    setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' usr/bin/hungry-sniffer
+}
+
+post_remove() {
+    if getent group hungry-sniffer >/dev/null 2>&1; then
+        groupdel hungry-sniffer
+    fi
+}
