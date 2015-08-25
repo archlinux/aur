@@ -1,0 +1,15 @@
+pkgbase = jgoodies-validation
+	pkgdesc = A Java Swing validation library
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = http://www.jgoodies.com/
+	arch = any
+	groups = jgoodies
+	license = BSD
+	depends = jgoodies-common>=1.5.0
+	optdepends = java-runtime>=6
+	source = http://www.jgoodies.com/download/libraries/validation/jgoodies-validation-2_5_1-20141229.zip
+	md5sums = 70aae66acf290a6072a1bddddce0f053
+
+pkgname = jgoodies-validation
+
