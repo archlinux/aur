@@ -1,0 +1,22 @@
+pkgbase = python-click-log
+	pkgdesc = Logging integration for Click
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/click-log
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-click
+	checkdepends = python2-pytest
+	checkdepends = python2-click
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = click-log-0.1.1.tar.gz::https://github.com/click-contrib/click-log/archive/0.1.1.tar.gz
+	sha256sums = f37e4da8e8fb4f6f71b9e013f4313c644ab3352d286a3906575228edccd87e89
+
+pkgname = python-click-log
+	depends = python-click
+
+pkgname = python2-click-log
+	depends = python2-clik
+
