@@ -1,0 +1,17 @@
+pkgbase = great-little-radio-player
+	pkgdesc = A robust internet radio station streamer
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = https://sites.google.com/site/glrpgreatlittleradioplayer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	depends = phonon
+	depends = freetype2
+	optdepends = phonon-gstreamer
+	source = https://www.dropbox.com/s/3skkc58a9egi3bm/greatlittleradioplayer_1.4.7.tar.gz
+	sha1sums = 2cf142b38130de51471cb451e9b88f14ce6ebb0f
+
+pkgname = great-little-radio-player
+
