@@ -1,4 +1,5 @@
 # Maintainer: Eduard Kracmar <eduard[at]adaptiware[dot]company>
+# Contributor: Simon Weald <simon[at]simonweald[dot]com>
 
 pkgname=rclone
 pkgver=1.18
