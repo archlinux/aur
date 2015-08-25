@@ -1,7 +1,7 @@
 # Maintainer: Gavin Costello <gavcos at gmail dot com>
 # Contributor:
 pkgname=angularjs
-pkgver=1.3.15
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="An open-source JavaScript framework, whose goal is to augment browser-based applications with model–view–controller (MVC) capability, in an effort to make both development and testing easier."
 arch=(any)
