@@ -3,8 +3,8 @@
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
 pkgver=20150821_081148
-pkgrel=5
-pkgdesc="The Free On-line Dictionary of Computing for dictd"
+pkgrel=6
+pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
 arch=('any')
 url="http://foldoc.org/"
 license=('GPL')
