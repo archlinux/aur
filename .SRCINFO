@@ -1,0 +1,21 @@
+pkgbase = splitviewfuse
+	pkgdesc = A view on a given directory that splits large files into segments implemented as FUSE file system. An additional filesystem that merges such segments into regular files is included as well. AUR package by Raansu, project by seiferma
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/seiferma/splitviewfuse
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = fuse
+	depends = python2-fusepy
+	provides = splitviewfuse
+	provides = unionviewfuse
+	conflicts = splitviewfuse-git
+	conflicts = splitviewfuse
+	conflicts = unionviewfuse
+	source = https://github.com/seiferma/splitviewfuse/archive/v0.2.2.tar.gz
+	sha256sums = dae6806c227d06296f251237d89ad6886a567681842b948fd8f6500cc96a0108
+
+pkgname = splitviewfuse
+
