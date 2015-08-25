@@ -1,0 +1,23 @@
+pkgbase = kwin-standalone-git
+	pkgdesc = Standalone version of KWin which doesn't pull in the rest of kdebase-workspace.
+	pkgver = v4.5.95.6482.g2f23192
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	depends = kdebase-runtime
+	depends = xcb-util-renderutil
+	depends = xcb-util-image
+	provides = kwin
+	conflicts = kde-workspace
+	source = git://anongit.kde.org/clones/kde-workspace/graesslin/kde-workspace.git#branch=kwin/standalone
+	sha256sums = SKIP
+
+pkgname = kwin-standalone-git
+
