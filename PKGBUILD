@@ -2,8 +2,8 @@
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 pkgname=dict-gcide
 pkgver=0.48.1
-pkgrel=4
-pkgdesc="GNU version of the Collaborative International Dictionary of English in dict format"
+pkgrel=5
+pkgdesc="GNU version of the Collaborative International Dictionary of English for dictd"
 arch=('any')
 url="http://www.dict.org/"
 license=('GPL')
