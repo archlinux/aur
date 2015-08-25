@@ -1,0 +1,15 @@
+pkgbase = jgoodies-forms
+	pkgdesc = A Java Swing form layout library
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://www.jgoodies.com/
+	arch = any
+	groups = jgoodies
+	license = BSD
+	depends = jgoodies-common>=1.6.0
+	optdepends = java-runtime>=6
+	source = http://www.jgoodies.com/download/libraries/forms/jgoodies-forms-1_9_0-20150202.zip
+	md5sums = 958e721df514a629d2e3d06430bcefd7
+
+pkgname = jgoodies-forms
+
