@@ -1,0 +1,15 @@
+pkgbase = mindi-busybox
+	pkgdesc = This package provides a busybox version suited for Mindi
+	pkgver = 1.18.5
+	pkgrel = 2
+	url = http://www.mondorescue.org/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	source = ftp://ftp.mondorescue.org/src/mindi-busybox-1.18.5.tar.gz
+	md5sums = 0668d3bba33989dbaab3f84771578438
+
+pkgname = mindi-busybox
+

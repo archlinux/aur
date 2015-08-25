@@ -1,0 +1,53 @@
+# $Id$
+
+MINDI-BUSYBOX CHANGES
+
+1.18.5-1 (2011-12-23)
+- Adds support for SUID binaries (Bruno Cornec)
+- Fix #499 for good, by using a real init from busybox and moving our init script to etc/init.d/rcS. We also now call the reboot from busybox to exit, which indeed reset the system correctly (in a VM at least which wasn't the case before). Requires a new mindi-busybox as well. (Bruno Cornec)
+- Fixes the shell msg error by using setsid as per Busybox FAQ (Bruno Cornec)
+- Update to upstream busybox 1.18.5 (Bruno Cornec)
+
+1.18.3-3 (2011-06-27)
+- Adds the swapon feature to mindi-busybox (Bruno Cornec)
+- Removes telinit call in busybox to try to fix problems when reboot at end of restore (Bruno Cornec)
+- Addes an extraversion for revision support (Bruno Cornec)
+- Adds support for ifconfig and ping for PXE+NFS boot for this version of mindi-busybox (Bruno Cornec)
+- Adds support for MT back mandatory for OBDR (Bruno Cornec)
+
+1.18.3-2 (2011-04-12)
+- Remove blkid from busybox to solve #435 (Bruno Cornec)
+
+1.18.3-1 (2011-02-27)
+- Updated based on busybox 1.18.3 to solve tar issues with latest RHEL 6 e.g. (Bruno Cornec)
+
+1.7.3-1 (2008-03-22)
+- Updated based on busybox 1.7.3 (Bruno Cornec)
+- Fix gentoo installation issue (Francesco Talamona/Bruno Cornec)
+- remove MONOTONIC clock to continue to support 2.4 kernels (RHEL 3 e.g. or ESX) (Bruno Cornec)
+- Adds dd support for swap partition label (Bruno Cornec)
+- Try to add cttyhack to suppress an error message at shell level (Bruno Cornec)
+
+1.7.2-1 (2007-10-30)
+- Updated based on busybox 1.7.2 (Bruno Cornec)
+
+1.2.2-4 (2007-10-11)
+- Build process adapted to use pb (http://trac.project-builder.org) (Bruno Cornec)
+- Fix another issue in mindi-busybox gentoo's ebuild (Francesco Talamona)
+
+1.2.2-3 (2007-05-17)
+- Fix a blocking bug in mindi-busybox gentoo's ebuild (Francesco Talamona)
+
+1.2.2-2 (2007-04-08)
+- Improve Gentoo packaging (Linos)
+
+1.2.2 (2006-12-23)
+- mindi-busybox version is now extended with the SVN revision (Bruno Cornec)
+- Fix a known bug for busybox where -gc-section in makefile + static for link crea tes a buggy busybox with glibc (Bruno Cornec)
+- Updated based on busybox 1.2.2 (Bruno Cornec)
+- Handles modules back again (Bruno Cornec)
+- Fix bug #88 around install conflicts (Bruno Cornec)
+
+1.2.1 (2006-10-04)
+- Creation based on busybox 1.2.1 (Bruno Cornec)
+- Remove module management, bunzip2 in config file (Bruno Cornec)
