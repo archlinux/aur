@@ -1,0 +1,14 @@
+pkgbase = python-partialhash
+	pkgdesc = Library to partialy hash files
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/F483/partialhash
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pip
+	source = https://github.com/F483/partialhash/archive/v1.1.2.tar.gz
+	sha256sums = 29672997af56de1df69304bbddc217b252d7b7f96599a0617aa5db745da928d3
+
+pkgname = python-partialhash
+
