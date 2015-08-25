@@ -2,7 +2,7 @@
 
 _pkgname=tdrop
 pkgname=tdrop-git
-pkgver=0.1.r23.g682ec14-1
+pkgver=0.1.r23.g682ec14
 pkgrel=1
 pkgdesc="A WM-Independent dropdown window and terminal creator"
 arch=('any')
