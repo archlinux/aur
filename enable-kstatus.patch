@@ -1,0 +1,12 @@
+diff -Naur octopi-master-current/notifier/octopi-notifier/octopi-notifier.pro octopi-master-current-kstatus/notifier/octopi-notifier/octopi-notifier.pro
+--- octopi-master-current/notifier-kde/octopi-notifier/octopi-notifier.pro	2015-08-09 13:12:50.000000000 +0200
++++ octopi-master-current-kstatus/notifier-kde/octopi-notifier/octopi-notifier.pro	2015-08-14 10:15:02.645977100 +0200
+@@ -7,7 +7,7 @@
+ QT += core xml gui network dbus
+ 
+ # This controls whether octopi-notifier uses KStatusNotifier lib
+-#DEFINES += KSTATUS
++DEFINES += KSTATUS
+ 
+ contains(DEFINES, KSTATUS){
+   QT += KNotifications

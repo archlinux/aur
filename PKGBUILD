@@ -1,27 +1,36 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgbase=octopi
-pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
+pkgname=('octopi' 'octopi-notifier' 'octopi-notifier-kde' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.7.0
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
 makedepends=('qt5-declarative' 'knotifications' 'libnotify')
 source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 				'octopi-repoeditor.desktop'
-				'qt55.patch')
+				'qt55.patch'
+				'enable-kstatus.patch')
 sha256sums=('03d15458ebe482e5a9a00e7a3db5676a53886c754b13a7c56e36d75b73f2d496'
             '131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
-            '459f924eba5bc780cb3a0cb955e9d7c634fe77d7e9f7b1a44d86c827535acbe3')
+            '459f924eba5bc780cb3a0cb955e9d7c634fe77d7e9f7b1a44d86c827535acbe3'
+            'f163ebc22b7443b929a479ab13484d10bc3cade1a8ed9b77c06e5d48bbb160f8')
 
-build() {
+prepare() {
   _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
   _jc=$((${_cpucount:-1}))
    
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-	patch -p1 < ../qt55.patch
+  patch -p1 < ../qt55.patch
+  
+  cp -r "notifier" "notifier-kde"
+  patch -p1 < ../enable-kstatus.patch
+}            
+            
+build() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   qmake-qt5 octopi.pro
   make -j $_jc
@@ -33,6 +42,11 @@ build() {
 
   cd "${srcdir}/${pkgbase}-${pkgver}/notifier/octopi-notifier"
   msg "Building octopi-notifier..."
+  qmake-qt5 octopi-notifier.pro
+  make -j $_jc
+  
+  cd "${srcdir}/${pkgbase}-${pkgver}/notifier-kde/octopi-notifier"
+  msg "Building octopi-notifier-kde..."
   qmake-qt5 octopi-notifier.pro
   make -j $_jc
 
@@ -60,8 +74,9 @@ package_octopi() {
               'octopi-repoeditor: for editing functions'
               'octopi-cachecleaner: for cleaning functions'
               'octopi-notifier: for notifications'
+              'octopi-notifier-kde: for notifications on kde'
 							'pacmanlogviewer: to view pacman log files')
-	conflicts=('oktopi-git')
+	conflicts=('octopi-git')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
  
@@ -90,11 +105,23 @@ package_octopi-notifier() {
   depends=('octopi' 'libnotify')
   optdepends=('xfce4-notifyd: for notifications in XFCE')
   install=octopi.install
-	conflicts='octopi-notifier-qt4'
-	replaces='octopi-notifier-qt4'
+  conflicts=('octopi-notifier-qt4' 'octopi-notifier-kde')
+  replaces=('octopi-notifier-qt4')
 
   #Octopi-notifier file
   install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/notifier/bin/octopi-notifier" "${pkgdir}/usr/bin/octopi-notifier"
+  install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/etc/xdg/autostart/octopi-notifier.desktop"
+}
+
+package_octopi-notifier-kde() {
+  pkgdesc="Notifier for Octopi (KDE)"
+  depends=('octopi' 'libnotify')
+  install=octopi.install
+  conflicts=('octopi-notifier')
+
+  #Octopi-notifier-kde file
+  install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/notifier-kde/bin/octopi-notifier" "${pkgdir}/usr/bin/octopi-notifier"
   install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m644 "${srcdir}/${pkgbase}-${pkgver}/octopi-notifier.desktop" "${pkgdir}/etc/xdg/autostart/octopi-notifier.desktop"
 }
