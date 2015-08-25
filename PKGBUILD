@@ -1,8 +1,8 @@
 # Maintainer:  respiranto <respiranto@icloud.com>
 pkgname=dict-freedict-eng-spa
 pkgver=0.2.1
-pkgrel=5
-pkgdesc="English -> Spanish dictionary for dictd from Freedict.org"
+pkgrel=6
+pkgdesc="English -> Spanish dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
 license=('GPL')
