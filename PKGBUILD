@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sly-git
-pkgver=1.0.0.beta.105.gb7bddf1
+pkgver=1.0.0.beta.122.gd5491ef
 pkgrel=1
 pkgdesc="Common Lisp IDE for Emacs. Fork of slime."
 arch=('any')
@@ -14,6 +14,7 @@ conflicts=('sly')
 source=("git+https://github.com/capitaomorte/sly.git")
 md5sums=('SKIP')
 _gitname="sly"
+options=('!makeflags')
 
 pkgver() {
   cd "$srcdir"/"$_gitname"
@@ -21,16 +22,16 @@ pkgver() {
 }
 
 build() {
+  LANG=C
   cd "$srcdir"/"$_gitname"
-  make
-}
+  make --debug
+ }
 
 package() {
   cd "$srcdir/$_gitname"
   install -d $pkgdir/usr/share/emacs/site-lisp/sly
   cp -r $srcdir/sly/* \
     $pkgdir/usr/share/emacs/site-lisp/sly
- 
   install -D -m644 README.md \
     $pkgdir/usr/share/licenses/$pkgname/public_domain.txt 
 }
