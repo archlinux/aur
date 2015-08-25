@@ -1,6 +1,6 @@
 pkgbase = yubico-piv-tool
 	pkgdesc = Tool to interact with the PIV applet on a YubiKey NEO
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://developers.yubico.com/yubico-piv-tool/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = yubico-piv-tool
 	license = GPL3
 	depends = pcsclite
 	options = !libtool
-	source = yubico-piv-tool-1.0.0.tar.gz::https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.0.0.tar.gz
-	md5sums = 71168736ca7fd154e432ebcc09afcd20
+	source = yubico-piv-tool-1.0.1.tar.gz::https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.0.1.tar.gz
+	md5sums = 0a3f13f67c0f7e907df9563c71acf605
 
 pkgname = yubico-piv-tool
 
