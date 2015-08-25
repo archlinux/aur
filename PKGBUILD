@@ -5,8 +5,8 @@ pkgdesc='cryptovision software to use the RUB (Ruhr-Uni-Bochum) student identity
 url='https://web-rubicon.ruhr-uni-bochum.de/rubicon/download/rubcard.html'
 arch=('x86_64' 'i686')
 license=('custom')
-depends=('pcsclite' 'deb2targz')
-makepdepends=('deb2targz')
+depends=('pcsclite')
+makedepends=('deb2targz')
 #install="${pkgname}.install"
 source=("https://web-rubicon.ruhr-uni-bochum.de/rubicon/download/files/rubcard/scInterface-${pkgver}-Ubuntu12-${CARCH}.deb")
 
