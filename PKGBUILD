@@ -2,7 +2,7 @@
 # Contributor: Benjamin Vanderford <hazor_at_swrpg_dot_info
 pkgname=dict-freedict-eng-fra
 pkgver=0.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="English -> French dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -15,5 +15,5 @@ md5sums=('b0ac25998cdebefc897cb2c20374a7f2')
 package()
 {
 	mkdir -p $pkgdir/usr/share/dictd
-	cp $srcdir/eng-fra/eng-fra.{dict.dz,index} $pkgdir/usr/share/dictd/
+	cp eng-fra/eng-fra.{dict.dz,index} $pkgdir/usr/share/dictd/
 }
