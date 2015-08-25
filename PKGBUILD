@@ -5,8 +5,8 @@
 
 _gemname=mini_portile
 pkgname=ruby-$_gemname
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.0.rc2
+pkgrel=1
 pkgdesc='Simplistic port-like solution for developers'
 arch=(any)
 url='https://github.com/flavorjones/mini_portile'
@@ -15,7 +15,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('5c60cd85db3df6b279e9a6807954c596dc0ced359a10fcd9b49969a6aa8d7d40')
+sha256sums=('d2b9776ed8d1f91d88c10d634d29ce6be9133b356bd17caede9b4bfb328e610d')
 
 
 package() {

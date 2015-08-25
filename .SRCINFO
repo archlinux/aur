@@ -1,15 +1,15 @@
 pkgbase = ruby-mini_portile
 	pkgdesc = Simplistic port-like solution for developers
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.7.0.rc2
+	pkgrel = 1
 	url = https://github.com/flavorjones/mini_portile
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = mini_portile-0.6.2.gem
+	noextract = mini_portile-0.7.0.rc2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mini_portile-0.6.2.gem
-	sha256sums = 5c60cd85db3df6b279e9a6807954c596dc0ced359a10fcd9b49969a6aa8d7d40
+	source = https://rubygems.org/downloads/mini_portile-0.7.0.rc2.gem
+	sha256sums = d2b9776ed8d1f91d88c10d634d29ce6be9133b356bd17caede9b4bfb328e610d
 
 pkgname = ruby-mini_portile
 
