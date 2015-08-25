@@ -1,0 +1,18 @@
+pkgbase = micropython-lib-git
+	pkgdesc = Core Python libraries ported to MicroPythona
+	pkgver = 20150823
+	pkgrel = 1
+	url = http://micropython.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	provides = micropython-lib
+	conflicts = micropython-lib
+	options = !emptydirs
+	source = git://github.com/micropython/micropython-lib.git
+	md5sums = SKIP
+
+pkgname = micropython-lib-git
+
