@@ -1,0 +1,19 @@
+pkgbase = boxbackup-client
+	pkgdesc = An open source, completely automatic on-line backup system for UNIX.
+	pkgver = 0.11.1
+	pkgrel = 0
+	url = http://boxbackup.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = openssl
+	depends = perl
+	depends = zlib
+	backup = etc/boxbackup/bbstored.conf
+	source = http://boxbackup.org/svn/box/packages/boxbackup-0.11.1.tgz
+	source = bbclient
+	md5sums = c4c4786a918a9c026f80833614c40a6b
+	md5sums = 7b8f75b84d277f21923d4e1a6a050105
+
+pkgname = boxbackup-client
+
