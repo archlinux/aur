@@ -1,7 +1,7 @@
 # Maintainer:  respiranto <respiranto@icloud.com>
 pkgname=dict-freedict-fra-deu
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="French -> German dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -14,5 +14,5 @@ md5sums=('b90134466560207553649c319bd92278')
 package()
 {
 	mkdir -p $pkgdir/usr/share/dictd
-	cp $srcdir/fra-deu/fra-deu.{dict.dz,index} $pkgdir/usr/share/dictd/
+	cp fra-deu/fra-deu.{dict.dz,index} $pkgdir/usr/share/dictd/
 }
