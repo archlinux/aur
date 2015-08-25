@@ -21,6 +21,7 @@ prepare() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_BINDIR=bin \
         -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_INCLUDEDIR=include \
         -DBUILD_SHARED_LIBS=ON \
         -DWITH_EXAMPLES=ON \
         -DWITH_MATIO=ON \
