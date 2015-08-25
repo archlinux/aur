@@ -1,0 +1,15 @@
+pkgbase = jgoodies-binding
+	pkgdesc = A Java Swing binding library
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = http://www.jgoodies.com/
+	arch = any
+	groups = jgoodies
+	license = BSD
+	depends = jgoodies-common>=1.8.0
+	optdepends = java-runtime>=6
+	source = http://www.jgoodies.com/download/libraries/binding/jgoodies-binding-2_13_0-20150121.zip
+	md5sums = d4c3e8dd2699faf52fa5e725f89d3893
+
+pkgname = jgoodies-binding
+
