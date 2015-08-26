@@ -15,6 +15,7 @@ pkgbase = docker-compose-git
 	depends = python-docker-py
 	depends = python-dockerpty
 	depends = python-six
+	depends = python-jsonschema
 	depends = python-setuptools
 	provides = docker-compose
 	conflicts = docker-compose

@@ -17,6 +17,7 @@ depends=(
     'python-docker-py'
     'python-dockerpty'
     'python-six'
+    'python-jsonschema'
     'python-setuptools'
 )
 makedepends=('git')
