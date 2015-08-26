@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-bag-plugins
 	pkgdesc = ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS bag files.
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_bag
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = ros-jade-rqt-bag-plugins
 	depends = ros-jade-rospy
 	depends = python2-pillow
 	depends = python2-cairo
-	source = rqt_bag_plugins::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_bag_plugins/0.3.11-0
+	source = rqt_bag_plugins::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_bag_plugins/0.3.12-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-bag-plugins
