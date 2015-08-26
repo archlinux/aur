@@ -8,7 +8,7 @@ pkgdesc="Random sound effect generator for games, etc."
 arch=('i686' 'x86_64')
 url="http://www.drpetter.se/project_sfxr.html"
 license=('MIT')
-depends=('gtk2' 'sdl' 'hicolor-icon-theme')
+depends=('gtk3' 'sdl' 'hicolor-icon-theme')
 install=sfxr.install
 source=(http://www.drpetter.se/files/$pkgname-sdl-$pkgver.tar.gz)
 md5sums=('794f18f5c527a344c7366687aa634d71')
@@ -16,8 +16,8 @@ md5sums=('794f18f5c527a344c7366687aa634d71')
 build() {
     cd "$srcdir/$pkgname-sdl-$pkgver"
     # Uncomment below and change the dependences
-    # if you plan to use GTK3 instead of GTK2
-    # sed -i 's|GTK=3.0|GTK=2.0|' Makefile
+    # if you plan to use GTK2 instead of GTK3
+    # sed -i 's|GTK=2.0|GTK=3.0|' Makefile
     make DESTDIR=$pkgdir || return 1
 }
 
