@@ -1,7 +1,23 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
+# NOTES:
+# Install this package instead of 'archdroid-icon-theme-git'.
+#
+# The git variant of this package, 'archdroid-icon-theme-git',
+#   is NOT a newer release than this one.
+#   Both packages are always updated at the same time.
+# This package downloads and installs MUCH faster than the git variant:
+#   'archdroid-icon-theme' == 1MB download,
+#   'archdroid-icon-theme-git' == 40MB download.
+# In other words, choose this package over 'archdroid-icon-theme-git',
+#   unless you have a specific reason to download the other one
+#   (e.g., this package doesn't download correctly).
+# 
+# To revert to an older version, you can find them here:
+#   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
+
 pkgname=archdroid-icon-theme
-pkgver=r86.ab8e2ae
+pkgver=r87.c3d81a2
 pkgrel=1
 pkgdesc="Port of Android 5.0 Lollipop's material design icons to Arch."
 arch=('any')
@@ -15,7 +31,7 @@ install="${pkgname}.install"
 source=("https://github.com/GreenRaccoon23/${pkgname}/raw/master/${pkgname}.tar.xz")
 # To revert to an older version, find them here:
 #   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
-md5sums=("8ca3630ee86e77799c013e9d10314360")
+md5sums=("7bcfa0eeeb0291b20da17712964054fb")
 
 prepare() {
   if fc-list | grep Roboto >/dev/null; then
