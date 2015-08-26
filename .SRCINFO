@@ -1,0 +1,16 @@
+pkgbase = haskell-constraints
+	pkgdesc = Constraint manipulation
+	pkgver = 0.4.1.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/constraints
+	install = haskell-constraints.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = haskell-newtype<0.3
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/constraints/0.4.1.3/constraints-0.4.1.3.tar.gz
+	md5sums = e47733d40752ff17784e493beebb4db4
+
+pkgname = haskell-constraints
+
