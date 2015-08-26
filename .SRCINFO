@@ -3,6 +3,7 @@ pkgbase = mangaget2-git
 	pkgver = r24.1ba0676
 	pkgrel = 1
 	url = https://github.com/darkdragn/mangaGet2
+	install = mangaget2-git.install
 	arch = any
 	makedepends = git
 	depends = ncurses
