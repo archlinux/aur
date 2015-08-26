@@ -6,7 +6,7 @@ pkgdesc="A free cross-platform demotool for creating demos. (Compatible with RPi
 url='http://www.geeks3d.com/glslhacker/'
 license="custom"
 pkgver=0.8.5.2
-pkgrel=2
+pkgrel=3
 
 arch=('x86_64' 'armv6h' 'armv7h');
 
@@ -25,9 +25,12 @@ makedepends=('aria2')
 test "$CARCH" == "x86_64" && makedepends+=('unzip')
 
 
-depends=('glu'
-         'ffmpeg'
-         'python2')
+depends=('ffmpeg'
+         'python2'
+         'fmodex'
+         'sdl2'
+         'freeimage'
+         'anttweakbar')
 test "$CARCH" == "armv6h" -o "$CARCH" == "armv7h" && depends+=('raspberrypi-firmware-tools')
 
 package() {
@@ -39,9 +42,10 @@ package() {
     fi
     install -Dm644 EULA.txt "$pkgdir"/usr/share/licenses/$pkgname/EULA.txt
 
-    install -dm755 "$pkgdir"/opt/$pkgname/
+    install -dm777 "$pkgdir"/opt/$pkgname/
     install -dm755 "$pkgdir"/opt/$pkgname/dylibs
-    cp -rf libs/ "$pkgdir"/opt/$pkgname/
+    cp -rf libs/ "$pkgdir"/opt/$pkgname/libs/
+    chmod -R 777 "$pkgdir"/opt/$pkgname/libs/
     test "$CARCH" == "x86_64" && \
         install -Dm644 dylibs/libPhys* "$pkgdir"/opt/$pkgname/dylibs/
     install -Dm755 dylibs/libgxl* "$pkgdir"/opt/$pkgname/dylibs/
