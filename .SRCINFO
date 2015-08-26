@@ -1,6 +1,6 @@
 pkgbase = linux-e531
 	pkgver = 4.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.hurrdurr.org/
 	arch = x86_64
 	groups = ThinkPad-E531
@@ -18,7 +18,7 @@ pkgbase = linux-e531
 	source = change-default-console-loglevel.patch
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = 64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070
-	sha256sums = cfe0623547395f3a0d9f002f06104b71f6b14e64539ef686a477aece7658496b
+	sha256sums = f860713235ca30ab35ff29f28bde4e7f645772c1b13d0a5291892dcc805eac00
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 

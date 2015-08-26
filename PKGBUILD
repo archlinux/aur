@@ -2,7 +2,7 @@ pkgbase=linux-e531
 _srcname=linux-4.1
 _patchname=patch-4.1.6
 pkgver=4.1.6
-pkgrel=1
+pkgrel=2
 groups=('ThinkPad-E531')
 arch=('x86_64')
 url="http://www.hurrdurr.org/"
@@ -18,7 +18,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             '64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070'
-            'cfe0623547395f3a0d9f002f06104b71f6b14e64539ef686a477aece7658496b'
+            'f860713235ca30ab35ff29f28bde4e7f645772c1b13d0a5291892dcc805eac00'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
