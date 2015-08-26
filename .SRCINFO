@@ -1,4 +1,4 @@
-pkgbase = k4dirstat
+pkgbase = k4dirstat2
 	pkgdesc = A graphical disk usage utility for KDE (KDE4 port)
 	pkgver = 2.7.8
 	pkgrel = 1
@@ -11,8 +11,9 @@ pkgbase = k4dirstat
 	makedepends = git
 	makedepends = cmake
 	depends = kdebase-lib
+	conflicts = k4dirstat
 	source = https://bitbucket.org/jeromerobert/k4dirstat/get/k4dirstat-2.7.8.tar.bz2
 	sha256sums = b897780cf2d8984c83de270bd4dc9b4f0ffb7fc69cd3e52ed3457b7c97e59c8d
 
-pkgname = k4dirstat
+pkgname = k4dirstat2
 
