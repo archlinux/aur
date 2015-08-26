@@ -1,0 +1,20 @@
+pkgbase = slimboat-fr
+	pkgdesc = ***TESTED*** Rapide, léger, sécurisé et puissant navigateur Web QtWebKit.
+	pkgver = 1.1.54
+	pkgrel = 1
+	url = http://www.slimboat.com/fr/dlpage.php
+	install = slimboat-fr.install
+	arch = i686
+	arch = x86_64
+	license = Freeware
+	depends = libstdc++5
+	depends = openssl>=0.9
+	depends = zlib>=1.1.4
+	depends = libjpeg6-turbo
+	depends = gstreamer0.10
+	depends = libpng12
+	source = http://www.slimboat.com/download.php?version=lnx&type=ubu32
+	md5sums = 83ddce57b30ecc155bb4cc1960af5d85
+
+pkgname = slimboat-fr
+
