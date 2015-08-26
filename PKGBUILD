@@ -2,7 +2,7 @@
 # Original author: ltwood <???>
 pkgname=texlive-mais
 pkgver=20130923
-pkgrel=3
+pkgrel=4
 pkgdesc="LaTeX classes for Modeling and Analysis of Information Systems journal (includes both russian and english versions)"
 arch=('any')
 url="http://mais.uniyar.ac.ru/en/node/13"
