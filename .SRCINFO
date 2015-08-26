@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-moveit
 	pkgdesc = ROS - An rqt-based tool that assists monitoring tasks for MoveIt! motion planner developers and users.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_moveit
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = ros-jade-rqt-moveit
 	depends = ros-jade-sensor-msgs
 	depends = ros-jade-rqt-py-common
 	depends = ros-jade-rospy
-	source = rqt_moveit::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_moveit/0.4.1-0
+	source = rqt_moveit::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_moveit/0.4.2-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-moveit
