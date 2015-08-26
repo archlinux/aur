@@ -2,7 +2,7 @@
 pkgname=unity-editor
 _pkgver=5.1.0f3
 pkgver=${_pkgver}+2015082501
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform game engine used to develop video games for PC, consoles, mobile devices and websites. Linux Preview package"
 arch=('x86_64')
 url="https://unity3d.com"

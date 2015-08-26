@@ -1,0 +1,3 @@
+postinstall() {
+  ln -s /usr/bin/Unity /opt/Unity/Editor/Unity
+}
