@@ -1,0 +1,16 @@
+pkgbase = libtifiles
+	pkgdesc = TI File format library
+	pkgver = 1.1.6
+	pkgrel = 2
+	url = http://lpg.ticalc.org/prj_tilp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libticonv
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.17/libtifiles2-1.1.6.tar.bz2
+	sha256sums = ec4d6acd1d135ee04256d04a5e1512c1ccaf82ad01e48f5e24d5c4da31ce898f
+	sha512sums = abc40275e7af921a67b658c6b6aa8ec511e965a3e9e00fcdc676c2b85e1d95dbae0f118e127e0806950d26afde9949251e47eb85af04d8f8ecca777dc3afcd23
+
+pkgname = libtifiles
+
