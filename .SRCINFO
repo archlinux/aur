@@ -1,6 +1,6 @@
 pkgbase = ros-jade-nodelet
 	pkgdesc = ROS - The nodelet package is designed to provide a way to run multiple algorithms in the same process with zero copy transport between algorithms.
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = http://ros.org/wiki/nodelet
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = ros-jade-nodelet
 	depends = util-linux
 	depends = boost
 	depends = tinyxml
-	source = nodelet::git+https://github.com/ros-gbp/nodelet_core-release.git#tag=release/jade/nodelet/1.9.2-0
+	source = nodelet::git+https://github.com/ros-gbp/nodelet_core-release.git#tag=release/jade/nodelet/1.9.3-0
 	md5sums = SKIP
 
 pkgname = ros-jade-nodelet
