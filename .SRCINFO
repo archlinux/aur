@@ -1,4 +1,4 @@
-pkgbase = papirus-yakuake-theme
+pkgbase = papirus-aurorae-theme
 	pkgdesc = Modified and adaptive Paper decorations for Kwin
 	pkgver = 20150825
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = papirus-yakuake-theme
 	depends = yakuake
 	options = !strip
 	source = papirus-pack-kde-20150825.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/2ebf0e5956d20c06435245307d5617e4afec5e82.tar.gz
-	sha256sums = f3cd3bf2644b7fdff6218bbea3fd2821125bd1decce192d968de4f0a5360afcb
+	sha256sums = 4ea1ef367cfd0ddd91fd16a043808ae36bb7000f0174b8ab9337b2b0a61f7795
 
-pkgname = papirus-yakuake-theme
+pkgname = papirus-aurorae-theme
 
