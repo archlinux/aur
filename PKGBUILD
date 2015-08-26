@@ -5,7 +5,7 @@
 pkgname=st-pizz
 _pkgname=st
 epoch=1
-pkgver=20150129.fb845ba
+pkgver=20150826.33615ae
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X from Github. Customizations: Droid Sans font; solarized; xcompmgr (optional for transparency)'
 url='https://github.com/pizzooid/st'
@@ -14,6 +14,7 @@ license=('MIT')
 depends=('libxft' 'ttf-droid')
 makedepends=('ncurses' 'libxext' 'git')
 source=('git://github.com/pizzooid/st')
+md5sums=('SKIP')
 sha1sums=('SKIP')
 
 provides=("${_pkgname}")
