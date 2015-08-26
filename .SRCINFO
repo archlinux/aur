@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-jackal-viz
+	pkgdesc = ROS - Visualization launchers and helpers for Jackal.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslaunch
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rviz
+	depends = ros-indigo-joint-state-publisher
+	depends = ros-indigo-jackal-description
+	source = jackal_viz::git+https://github.com/clearpath-gbp/jackal_desktop-release.git#tag=release/indigo/jackal_viz/0.3.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-jackal-viz
+
