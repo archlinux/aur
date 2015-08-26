@@ -1,6 +1,6 @@
 pkgbase = linux-samus4
 	pkgver = 4.1
-	pkgrel = 12
+	pkgrel = 13
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -10,10 +10,10 @@ pkgbase = linux-samus4
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = https://github.com/raphael/linux-4.1-samus/archive/v4.1-12.tar.gz
+	source = https://github.com/raphael/linux-4.1-samus/archive/v4.1-13.tar.gz
 	source = config
 	source = linux.preset
-	md5sums = f29deff20523558e42e19e2a9898e9fb
+	md5sums = 23df37a3ee098ad2a19cf41081c5d51c
 	md5sums = 658398c0d2c9721de373e88c16669e77
 	md5sums = 5aae464a8085b2f3adcdcaff29853d04
 
