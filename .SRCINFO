@@ -6,6 +6,7 @@ pkgbase = perl-cgi-ex
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	depends = perl-cgi
 	depends = perl-template-alloy>=1.016
 	options = !emptydirs
 	source = http://search.mcpan.org/CPAN/authors/id/L/LJ/LJEPSON/CGI-Ex-2.42.tar.gz

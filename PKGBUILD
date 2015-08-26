@@ -8,7 +8,7 @@ pkgdesc="CGI utility suite - makes powerful application writing fun and easy"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-template-alloy>=1.016')
+depends=('perl-cgi' 'perl-template-alloy>=1.016')
 makedepends=()
 url='http://search.mcpan.org/dist/CGI-Ex'
 source=('http://search.mcpan.org/CPAN/authors/id/L/LJ/LJEPSON/CGI-Ex-2.42.tar.gz')
