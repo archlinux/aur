@@ -1,6 +1,6 @@
 pkgbase = ros-jade-roslint
 	pkgdesc = ROS - CMake lint commands for ROS packages.
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = http://ros.org/wiki/roslint
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ros-jade-roslint
 	makedepends = git
 	makedepends = ros-build-tools
 	makedepends = ros-jade-catkin
-	source = roslint::git+https://github.com/ros-gbp/roslint-release.git#tag=release/jade/roslint/0.9.3-0
+	source = roslint::git+https://github.com/ros-gbp/roslint-release.git#tag=release/jade/roslint/0.10.0-0
 	md5sums = SKIP
 
 pkgname = ros-jade-roslint
