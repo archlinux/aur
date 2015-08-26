@@ -1,6 +1,6 @@
 pkgname=('python-docker-py')
 srcname='docker-py'
-pkgver='1.2.2'
+pkgver='1.3.1'
 pkgrel='1'
 pkgdesc='An API client for docker written in Python'
 arch=('any')
