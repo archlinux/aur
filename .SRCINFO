@@ -1,0 +1,15 @@
+pkgbase = libticonv
+	pkgdesc = TI character set conversion library
+	pkgver = 1.1.4
+	pkgrel = 2
+	url = http://lpg.ticalc.org/prj_tilp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.17/libticonv-1.1.4.tar.bz2
+	sha256sums = 1faecc71311bd95c94792cc72dd0844e7881a65156b006f045bb417eddd45183
+	sha512sums = 15ceb5acff888c841febc0d3ae96e3df649cce302b4ae2dc4ca150e3cb483337548fff0b32f0308bc759a08e6a167beaa8a2a4349f8ce47a2a7b62755a601018
+
+pkgname = libticonv
+
