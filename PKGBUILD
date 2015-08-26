@@ -14,7 +14,8 @@
 set -u
 _pkgname='aws-cli'
 pkgname="${_pkgname}-git" # Add -git for the git package
-pkgver=1.7.46.r2723.g7ce5a9d
+pkgver=1.7.47.r2741.g4c4fcd1
+# Change the vresion and you must also change the version of botocore below
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services.'
 arch=('any')
@@ -22,7 +23,7 @@ url="https://github.com/aws/${_pkgname}"
 license=('Apache') # Apache License 2.0
 depends=('python' # See setup.py, README.rst, and requirements.txt for version dependencies
   'python-bcdoc<0.15.0'    # AUR
-  'python-botocore>=1.1.9' # AUR == would make upgrades from AUR imposible. See below.
+  'python-botocore>=1.1.10' # AUR == would make upgrades from AUR imposible. See below.
   'python-colorama'{'>=0.2.5','<=0.3.3'}  # COM
   'python-rsa-3.1.2'{'>=3.1.2','<=3.1.4'} # AUR It would be nice to move to the newer version.
   #'python-rsa'{'>=3.1.2','<=3.1.4'}      # COM
@@ -31,11 +32,14 @@ depends=('python' # See setup.py, README.rst, and requirements.txt for version d
   'python-wheel>=0.24.0'   # AUR ==
   'python-jmespath>=0.7.1' # AUR == is possible for repositories. Makes upgrades impossible in AUR.
   'python-tox>=1.4'        # COM == is possible because this is from a repository. Unfortunatley Arch isn't the primary dev environment for botocore/aws so our packages are likely to be newer.
+  'python-dateutil'{'>=2.1','<3.0.0'} # COM
   'python-nose>=1.3.0'     # COM ==
   'python-mock>=1.0.1'     # COM ==
   'python-docutils>=0.10'  # COM
   'python-six>=1.1.0'      # COM This is in the sources but I'm not sure where the version comes from.
-  'python-sphinx>=1.1.3'   # COM ==
+  # requirements-docs.txt
+  'python-sphinx>=1.1.3' #'python-sphinx'{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
+  'python-guzzle-sphinx-theme'{'>=0.7.10','<0.8'}
 )
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
