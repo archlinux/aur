@@ -1,0 +1,26 @@
+post_install() {
+
+  getent group facette >/dev/null || groupadd facette
+  getent passwd facette >/dev/null || useradd -c 'facette'              \
+                                              -g facette                \
+                                              -m -d '/var/lib/facette'  \
+                                              -s /bin/false facette
+
+  echo '--------------------------------------------------------------------------'
+  echo ' After you start the service point your browser to http://localhost:12003 '
+  echo ' Choose a different port by editing "bind" in /etc/facette/facette.json   '
+  echo '--------------------------------------------------------------------------'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if getent passwd facette >/dev/null; then
+    userdel facette
+  fi
+  if getent group facette >/dev/null; then
+    groupdel facette
+  fi
+}
