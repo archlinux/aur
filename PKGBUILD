@@ -107,6 +107,8 @@ build() {
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
 
+  # Note that the extra include dirs are required because otherwise
+  # libsecret does not find the glib headers.
   local _chromium_conf=(
     -Dgoogle_api_key=$_google_api_key
     -Dgoogle_default_client_id=$_google_default_client_id
@@ -164,7 +166,7 @@ build() {
   build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
   build/gyp_chromium --depth=. "${_chromium_conf[@]}"
 
-  ninja "${MAKEFLAGS}" -C out/Release chrome chrome_sandbox chromedriver
+  ninja -C out/Release chrome chrome_sandbox chromedriver
 }
 
 package() {
