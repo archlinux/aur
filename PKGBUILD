@@ -5,9 +5,9 @@ url='http://ros.org/wiki/laser_filters'
 
 pkgname='ros-jade-laser-filters'
 pkgver='1.8.0'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-jade-filters

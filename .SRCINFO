@@ -1,7 +1,7 @@
 pkgbase = ros-jade-laser-filters
 	pkgdesc = ROS - Assorted filters designed to operate on 2D planar laser scanners, which use the sensor_msgs/LaserScan type.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/laser_filters
 	arch = any
 	license = BSD
@@ -30,7 +30,7 @@ pkgbase = ros-jade-laser-filters
 	depends = ros-jade-laser-geometry
 	depends = ros-jade-angles
 	depends = eigen3
-	source = laser_filters::git+https://github.com/ros-gbp/laser_filters-release.git#tag=release/jade/laser_filters/1.8.0-0
+	source = laser_filters::git+https://github.com/ros-gbp/laser_filters-release.git#tag=release/jade/laser_filters/1.8.0-1
 	md5sums = SKIP
 
 pkgname = ros-jade-laser-filters
