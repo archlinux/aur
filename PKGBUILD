@@ -4,7 +4,7 @@
 
 pkgname=velox-git
 pkgver=0.0.2.r244.g4e549c6
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple xcb window manager inspired by awesome, xmonad, and dwm."
 arch=('i686' 'x86_64')
 url="http://www.ohloh.net/p/velox-wm"
@@ -22,12 +22,18 @@ pkgver() {
 
 build() {
   cd $pkgname
-  make PREFIX=/usr
+  tee config.mk <<EOF
+PREFIX = /usr
+LIBEXECDIR = /usr/lib
+V = 1
+EOF
+
+  make
 }
 
 package() {
   cd $pkgname
-  make PREFIX=/usr LIBEXECDIR=/usr/lib DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
 
 # vim: ft=sh syn=sh et
