@@ -11,7 +11,7 @@
 pkgname=qgis
 _pkgver=2.10
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 pkgdesc='QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -58,12 +58,12 @@ md5sums=('SKIP'
          '57efd9c869ed2d0a50fb7cf35048d99d')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname
   printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-   cd "${srcdir}/${pkgname}"
+   cd $pkgname
 
    mv "${srcdir}/console.py" python/console/
 
@@ -76,7 +76,7 @@ build() {
   # Fix insecure RPATH is weird, but just works ;)
   # echo "os.system(\"sed -i '/^LFLAGS/s|-Wl,-rpath,.\+ ||g' gui/Makefile core/Makefile\")" >> python/configure.py.in
 
-  cd "$srcdir/$pkgname"
+  cd $pkgname
 
   if [ -d build ]; then
     rm -rf build
@@ -84,7 +84,7 @@ build() {
   mkdir build
   cd build
 
-  cmake ../ \
+  cmake -G "Unix Makefiles" ../ \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
@@ -119,25 +119,32 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  cd build
+  cd $pkgname/build
 
   make DESTDIR="$pkgdir/" install
   
   # install some freedesktop.org compatibility
-  install -D -m644 "$srcdir/$pkgname/debian/qgis.desktop" \
+  install -Dm755 "$srcdir/$pkgname/debian/qgis.desktop" \
     "$pkgdir/usr/share/applications/qgis.desktop"
-  install -D -m644 "$srcdir/$pkgname/debian/qbrowser.desktop" \
+
+  install -Dm755 "$srcdir/$pkgname/debian/qbrowser.desktop" \
     "$pkgdir/usr/share/applications/qbrowser.desktop"
+
+  install -Dm644 $srcdir/$pkgname/debian/qgis-icon512x512.png \
+    "$pkgdir/usr/share/pixmaps/qgis.png"
+
+  install -Dm644 $srcdir/$pkgname/debian/qbrowser-icon512x512.png \
+    "$pkgdir/usr/share/pixmaps/qbrowser.png"
 
   # TODO: these aren't working for some reason, ie, .qgs files are not opened by QGIS...
   # Appears to be a conflict with some file types being defaulted to google-chrome/chromium if that's installed as well.
   install -dm755 "$pkgdir/usr/share/pixmaps" \
     "$pkgdir/usr/share/mimelnk/application"
+
   for mime in "$srcdir/$pkgname/debian/mime/application/"*.desktop
-    do install -m644 "$mime" "$pkgdir/usr/share/mimelnk/application"
+    do install -m755 "$mime" "$pkgdir/usr/share/mimelnk/application"
   done
-  ln -s /usr/share/qgis/images/icons/qgis-icon.png "$pkgdir/usr/share/pixmaps/qgis.png"
-  ln -s /usr/share/qgis/images/icons/qbrowser-icon.png "$pkgdir/usr/share/pixmaps/qbrowser.png"
-  ln -s /usr/share/qgis/images/icons/qgis-mime-icon.png "$pkgdir/usr/share/pixmaps/qgis-mime-icon.png"  
+
+  install -Dm644 "$srcdir/$pkgname/images/icons/qgis-mime-icon.png" \
+    "$pkgdir/usr/share/pixmaps/qgis-mime.png"
 }

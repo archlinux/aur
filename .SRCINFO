@@ -1,7 +1,7 @@
 pkgbase = qgis
 	pkgdesc = QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats
 	pkgver = 2.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qgis.org/
 	install = qgis.install
 	arch = i686
