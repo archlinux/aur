@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GFM
+GenericName=TIgroups File Manager for TiLP
+Type=Application
+Exec=gfm
+Icon=gfm
+Categories=Utility;X-KDE-Utilities-Peripherals;
+MimeType=application/x-tilp;
