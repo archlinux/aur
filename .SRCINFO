@@ -1,0 +1,16 @@
+pkgbase = html2pdf
+	pkgdesc = An gui HTML to PDF Converter 1.0
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://code.google.com/p/foxoman
+	arch = any
+	license = GPL3
+	depends = wkhtmltopdf
+	depends = python2
+	depends = python2-gobject
+	depends = python2-notify
+	source = http://foxoman.googlecode.com/files/html2pdf_1.0-1_all.deb
+	md5sums = f1e1ab6a2887192741591fd1b0152dc0
+
+pkgname = html2pdf
+
