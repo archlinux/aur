@@ -13,6 +13,8 @@ provides=()
 source=(http://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('17d8989668016185b859332aacf9e7df')
 
+export QT_SELECT=4
+
 package() {
    cd $startdir/src/$pkgname-$pkgver
    qmake || return 1
