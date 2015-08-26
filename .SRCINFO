@@ -1,0 +1,19 @@
+pkgbase = chicken-xlib-utils
+	pkgdesc = Chicken Scheme Egg: utils for xlib programming
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/4/xlib-utils
+	install = chicken.install
+	arch = x86_64
+	license = BSD
+	depends = chicken-foreigners
+	depends = chicken-matchable
+	depends = chicken-xlib
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-xlib-utils-0.4.2.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=xlib-utils&version=0.4.2
+	md5sums = 7a5be1688b39bf53302f81d8c06f3cff
+
+pkgname = chicken-xlib-utils
+
