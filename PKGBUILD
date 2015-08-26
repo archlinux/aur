@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}-git
-pkgver=206
+pkgver=251
 pkgrel=1
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
 arch=('i686' 'x86_64')
@@ -34,10 +34,12 @@ EOF
     chmod +x "$pkgdir/usr/bin/yubicoauthenticator-disable-systray"
 	
     cd "$_pkgname"
+    git submodule init
+    git submodule update
 	python2 setup.py install --root=${pkgdir}
 
     mkdir -p ${pkgdir}/usr/share/applications/
-    install -D -m0644 ${srcdir}/yubioath-desktop/yubicoauthenticator/resources/yubicoauthenticator.desktop ${pkgdir}/usr/share/applications/
+    install -D -m0644 ${srcdir}/yubioath-desktop/resources/yubioath.desktop ${pkgdir}/usr/share/applications/
     mkdir -p ${pkgdir}/usr/share/pixmaps
-    install -D -m0644 ${srcdir}/yubioath-desktop/yubicoauthenticator/resources/yubicoauthenticator.xpm ${pkgdir}/usr/share/pixmaps
+    install -D -m0644 ${srcdir}/yubioath-desktop/resources/yubioath.xpm ${pkgdir}/usr/share/pixmaps
 }
