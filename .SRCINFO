@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-rqt-joint-trajectory-controller
+	pkgdesc = ROS - Graphical frontend for interacting with joint_trajectory_controller instances.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://wiki.ros.org/rqt_joint_trajectory_controller
+	arch = any
+	license = Modified BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-control-msgs
+	depends = ros-indigo-rqt-gui
+	depends = ros-indigo-trajectory-msgs
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rqt-gui-py
+	depends = ros-indigo-controller-manager-msgs
+	source = rqt_joint_trajectory_controller::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/indigo/rqt_joint_trajectory_controller/0.9.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-joint-trajectory-controller
+
