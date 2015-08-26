@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-robot-monitor
 	pkgdesc = ROS - rqt_robot_monitor displays diagnostics_agg topics messages that are published by diagnostic_aggregator.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_robot_monitor
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = ros-jade-rqt-robot-monitor
 	depends = ros-jade-rqt-py-common
 	depends = ros-jade-rospy
 	depends = python2-rospkg
-	source = rqt_robot_monitor::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_robot_monitor/0.4.1-0
+	source = rqt_robot_monitor::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_robot_monitor/0.4.2-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-robot-monitor
