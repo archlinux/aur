@@ -1,0 +1,91 @@
+diff -Naur src/svgalib-1.9.25/threeDKit/quickmath.h src/svgalib-1.9.25.new/threeDKit/quickmath.h
+--- src/svgalib-1.9.25/threeDKit/quickmath.h	2005-08-03 09:07:32.000000000 -0400
++++ src/svgalib-1.9.25/threeDKit/quickmath.h	2015-08-26 15:45:06.157175993 -0400
+@@ -76,76 +76,17 @@
+ 
+ #else
+ 
+-extern inline double fsqr (double x)
+-{
+-    return x * x;
+-}
+-
+-extern inline int lsqr (int x)
+-{
+-    return (int) x *x;
+-}
+-
+-extern inline double fmax (double a, double b)
+-{
+-    return max (a, b);
+-}
+-
+-extern inline double fmin (double a, double b)
+-{
+-    return min (a, b);
+-}
+-
+-extern inline double fsgn (double a)
+-{
+-    return (a == 0.0 ? 0.0 : (a > 0.0 ? 1.0 : -1.0));
+-}
+-
+-extern inline double dot (Vec a, Vec b)
+-{
+-    return a.x * b.x + a.y * b.y + a.z * b.z;
+-}
+-
+-extern inline Vec cross (Vec a, Vec b)
+-{
+-    Vec c;
+-    c.x = a.y * b.z - a.z * b.y;
+-    c.y = a.z * b.x - a.x * b.z;
+-    c.z = a.x * b.y - a.y * b.x;
+-    return c;
+-}
+-
+-extern inline Vec plus (Vec a, Vec b)
+-{
+-    Vec c;
+-    c.x = a.x + b.x;
+-    c.y = a.y + b.y;
+-    c.z = a.z + b.z;
+-    return c;
+-}
+-
+-extern inline Vec minus (Vec a, Vec b)
+-{
+-    Vec c;
+-    c.x = a.x - b.x;
+-    c.y = a.y - b.y;
+-    c.z = a.z - b.z;
+-    return c;
+-}
+-
+-extern inline Vec times (Vec a, double f)
+-{
+-    Vec c;
+-    c.x = a.x * f;
+-    c.y = a.y * f;
+-    c.z = a.z * f;
+-    return c;
+-}
+-
+-extern inline double norm (Vec a)
+-{
+-    return sqrt (sqr (a.x) + sqr (a.y) + sqr (a.z));
+-}
++extern inline double fsqr (double x);
++extern inline int lsqr (int x);
++extern inline double fmax (double a, double b);
++extern inline double fmin (double a, double b);
++extern inline double fsgn (double a);
++extern inline double dot (Vec a, Vec b);
++extern inline Vec cross (Vec a, Vec b);
++extern inline Vec plus (Vec a, Vec b);
++extern inline Vec minus (Vec a, Vec b);
++extern inline Vec times (Vec a, double f);
++extern inline double norm (Vec a);
+ 
+ #endif
+ 

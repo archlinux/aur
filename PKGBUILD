@@ -1,8 +1,8 @@
-# Maintainer: Pouar <thepouar@gmail.com>
+# Maintainer: nemesys <nemstar AT zoho DOT com>
 
 pkgname=svgalib
 pkgver=1.9.25
-pkgrel=4
+pkgrel=5
 pkgdesc="A low-level SuperVGA graphics library"
 arch=('i686' 'x86_64')
 url="http://www.svgalib.org/"
@@ -12,7 +12,8 @@ source=(http://mail.arava.co.il/~matan/${pkgname}/${pkgname}-${pkgver}.tar.gz
         svgalib-1.9.25-linux2.6.patch
         svgalib-1.9.25-linux2.6.28.patch
         svgalib-1.9.25-glibc210.patch
-        svgalib-1.9.25-linux2.6.36.patch)
+        svgalib-1.9.25-linux2.6.36.patch
+	svgalib-1.9.25-quickmath-h-redefinitions.patch)
 md5sums=('4dda7e779e550b7404cfe118f1d74222'
          'eadd4d3974a475ccc9d72f1e614c69df'
          '5c797ca334e4c7f326dc08df7a3eb5c9'
@@ -31,6 +32,7 @@ build() {
   patch -Np1 -i "${srcdir}"/svgalib-1.9.25-linux2.6.28.patch
   patch -Np1 -i "${srcdir}"/svgalib-1.9.25-glibc210.patch
   patch -Np1 -i "${srcdir}"/svgalib-1.9.25-linux2.6.36.patch
+  patch -Np1 -i "${srcdir}"/svgalib-1.9.25-quickmath-h-redefinitions.patch
   
   cd ${pkgname}-${pkgver}
   
