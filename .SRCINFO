@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-common-plugins
 	pkgdesc = ROS - rqt_common_plugins metapackage provides ROS backend graphical tools suite that can be used on/off of robot runtime.
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_common_plugins
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = ros-jade-rqt-common-plugins
 	depends = ros-jade-rqt-py-common
 	depends = ros-jade-rqt-plot
 	depends = ros-jade-rqt-top
-	source = rqt_common_plugins::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_common_plugins/0.3.11-0
+	source = rqt_common_plugins::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_common_plugins/0.3.12-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-common-plugins
