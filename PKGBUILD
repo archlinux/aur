@@ -1,7 +1,7 @@
 pkgname=broadcom-wl-e531
 groups=('ThinkPad-E531')
 pkgver=6.30.223.248
-pkgrel=11
+pkgrel=12
 pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver'
 url='http://www.broadcom.com/support/802.11/linux_sta.php'
 arch=('i686' 'x86_64')
