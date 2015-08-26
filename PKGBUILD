@@ -1,7 +1,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 _hkgname=reducers
 pkgname=haskell-reducers
-pkgver=3.10.3.2
+pkgver=3.11
 pkgrel=1
 pkgdesc="Semigroups, specialized containers and a general map/reduce framework"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('haskell-array' 'haskell-bytestring' 'haskell-comonad' 'haskell-containers' 'haskell-fingertree<0.2' 'haskell-hashable<1.3' 'haskell-keys<4' 'haskell-pointed' 'haskell-semigroupoids' 'haskell-semigroups<1' 'haskell-text' 'haskell-transformers' 'haskell-unordered-containers<0.3')
 options=('staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('74ad13256cf82611616490c1bdb669ad')
+md5sums=('74aed562ec6ede9e604ffd5bdcd386f1')
 install=${pkgname}.install
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}

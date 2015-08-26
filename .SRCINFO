@@ -1,6 +1,6 @@
 pkgbase = haskell-reducers
 	pkgdesc = Semigroups, specialized containers and a general map/reduce framework
-	pkgver = 3.10.3.2
+	pkgver = 3.11
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/reducers
 	install = haskell-reducers.install
@@ -21,8 +21,8 @@ pkgbase = haskell-reducers
 	depends = haskell-transformers
 	depends = haskell-unordered-containers<0.3
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/reducers/3.10.3.2/reducers-3.10.3.2.tar.gz
-	md5sums = 74ad13256cf82611616490c1bdb669ad
+	source = http://hackage.haskell.org/packages/archive/reducers/3.11/reducers-3.11.tar.gz
+	md5sums = 74aed562ec6ede9e604ffd5bdcd386f1
 
 pkgname = haskell-reducers
 
