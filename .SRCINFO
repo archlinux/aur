@@ -1,6 +1,6 @@
 pkgbase = perl-search-elasticsearch
 	pkgdesc = The official client for Elasticsearch
-	pkgver = 1.19
+	pkgver = 1.20
 	pkgrel = 1
 	url = https://metacpan.org/release/Search-Elasticsearch
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = perl-search-elasticsearch
 	checkdepends = perl-test-exception
 	depends = perl-any-uri-escape
 	depends = perl-http-message
-	depends = perl-hijk>=0.12
+	depends = perl-hijk>=0.20
 	depends = perl-io-socket-ssl
 	depends = perl-json-maybexs>=1.002002
 	depends = perl-log-any>=1.02
@@ -24,9 +24,9 @@ pkgbase = perl-search-elasticsearch
 	depends = perl-libwww
 	depends = perl-namespace-clean
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/Search-Elasticsearch-1.19.tar.gz
-	md5sums = 5ad130c47735c438603bcaf8503a2a8d
-	sha512sums = ec7e1e858c5efbe9641f27e44e4f89fe1cab7c65759f0d7a8fa7d6f72dee3075ea83ab52b137e94941bc299d8939768ca3b97e4938ce99040edc6495c24a7b8d
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/Search-Elasticsearch-1.20.tar.gz
+	md5sums = 0bd122b1d55a58fa0a37718dccc28930
+	sha512sums = b24df6f5b916b3be7eb7f6e64111eea4f0a7edee8a0b82a89198ba31ce1b48387ab9dc8b3d2b5239d4b222b9ef2bae19e174898d6ee8f62743ca19dec17a7be8
 
 pkgname = perl-search-elasticsearch
 
