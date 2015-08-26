@@ -1,6 +1,6 @@
 pkgbase = atlas-maps-bin
 	pkgdesc = Map and navigation application using offline vector maps
-	pkgver = 1.1.14
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = http://wiki.openstreetmap.org/wiki/Atlas_(navigation_application)
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = atlas-maps-bin
 	depends = java-runtime
 	provides = atlas-maps
 	conflicts = atlas-maps
-	source = http://www.talent.gr/public/atlas/Atlas-1.1.14.zip
+	source = http://www.talent.gr/public/atlas/Atlas-1.1.16.zip
 	source = atlas-maps.sh
-	md5sums = b662c6a3fe2029d7c022c463c8e4b35e
+	md5sums = 6e0f9bd92e0ebd1423f764ca9a5b1d2a
 	md5sums = 509caab1fb6ad3990e87890a5dfb7d81
 
 pkgname = atlas-maps-bin
