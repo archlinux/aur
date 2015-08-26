@@ -6,13 +6,14 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 
 pkgname=tengine
-pkgver=2.1.0
-pkgrel=4
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl')
+depends=('pcre' 'zlib' 'openssl' 'geoip')
+makedepends=('hardening-wrapper')
 backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/fastcgi_params'
         'etc/tengine/koi-win'
@@ -25,13 +26,13 @@ backup=('etc/tengine/fastcgi.conf'
         'etc/logrotate.d/tengine')
 install=tengine.install
 conflicts=('tengine-extra')
-replaces=('tengine-dev')
+provides=('nginx')
 source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate)
-sha256sums=('6d98e217deb6676438f0704eb51736239e390624479fedb8c59ebf7a8a30e7b3'
+sha256sums=('7729d3a51a5f267c6d39bec957d242b626b798ce0546f207bd0f1a8df86ed570'
             '7abffe0f1ba1ea4d6bd316350a03257cc840a9fbb2e1b640c11e0eb9351a9044'
-            'd6459f338d23d767cac57f72b91f73ece68b72f6c747a80c5bc5338fde47442f')
+            '4e2a1835d1e65e6c18b0c76699ff76f8c905124143e66bb686e4795f6b770a8c')
 
 build() {
     cd tengine-$pkgver
@@ -70,7 +71,8 @@ build() {
         --with-http_flv_module \
         --with-http_mp4_module \
         --with-http_secure_link_module \
-        --with-http_sub_module
+        --with-http_sub_module \
+        --with-http_geoip_module
 
     make
 }
@@ -78,6 +80,13 @@ build() {
 package() {
     cd tengine-$pkgver
     make DESTDIR="$pkgdir" install
+
+    install -Dm644 contrib/vim/ftdetect/nginx.vim \
+      "$pkgdir"/usr/share/vim/vimfiles/ftdetect/nginx.vim
+    install -Dm644 contrib/vim/syntax/nginx.vim \
+      "$pkgdir"/usr/share/vim/vimfiles/syntax/nginx.vim
+    install -Dm644 contrib/vim/indent/nginx.vim \
+      "$pkgdir"/usr/share/vim/vimfiles/indent/nginx.vim
 
     sed -e 's|\<user\s\+\w\+;|user html;|g' \
         -e '44s|html|/usr/share/tengine/html|' \
