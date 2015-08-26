@@ -61,22 +61,17 @@ vmware_check
 # Product name
 set_product_name
 
-# Make sure vmware.service includes our USB Arbitrator service
-if ! grep -q "usbarbitrator" /usr/lib/systemd/system/vmware.service; then
-    msg "Updating vmware.service.."
-    sed '/Description/a Requires=vmware-usbarbitrator.service\nBefore=vmware-usbarbitrator.service' \
-        -i /usr/lib/systemd/system/vmware.service
-fi
-
 # Use VMware's bundled libcurl.so.4 to prevent crashes at startup/checking for updates
-for script in vmware vmplayer; do
-    if [[ -f /usr/bin/$script ]]; then
-        if ! grep -q "libcurl" /usr/bin/$script; then
-            sed '/$vmmon/a\   export LD_LIBRARY_PATH=/usr/lib/vmware/lib/libcurl.so.4' \
-                -i /usr/bin/$script
+if [[ $ver != 12.* ]]; then
+    for script in vmware vmplayer; do
+        if [[ -f /usr/bin/$script ]]; then
+            if ! grep -q "libcurl" /usr/bin/$script; then
+                sed '/$vmmon/a\   export LD_LIBRARY_PATH=/usr/lib/vmware/lib/libcurl.so.4' \
+                    -i /usr/bin/$script
+            fi
         fi
-    fi
-done
+    done
+fi
 
 # Make sure there's a version in /etc/arch-release for Workstation 9 / Player 5
 # https://wiki.archlinux.org/index.php?title=VMware&oldid=274532#2.29_The_vmware-usbarbitrator_binary_is_segfaulting
@@ -88,17 +83,10 @@ if [[ $ver = 9.* ]] || [[ $ver = 5.* ]]; then
 fi
 
 # Fix VMCI/VSOCK loading for Workstation 10 / Player (Plus) 6 and earlier
-if [[ $ver != 11.* ]] && [[ $ver != 7.* ]]; then
+if [[ $ver != 12.* ]] && [[ $ver != 11.* ]] && [[ $ver != 7.* ]]; then
     if grep -q '$vsock_alias' /etc/init.d/vmware; then
         sed -e 's/mod=$(vmwareRealModName $vmci $vmci_alias)/mod=vmci/' \
             -e 's/mod=$(vmwareRealModName $vsock $vsock_alias)/mod=vsock/' \
-          -i /etc/init.d/vmware
-    fi
-else
-    if grep -q 'mod=vmci' /etc/init.d/vmware; then
-        # Revert the tweak for Workstation 11 / Player (Pro) 7
-        sed -e 's/mod=vmci/mod=$(vmwareRealModName $vmci $vmci_alias)/' \
-            -e 's/mod=vsock/mod=$(vmwareRealModName $vsock $vsock_alias)/' \
           -i /etc/init.d/vmware
     fi
 fi
@@ -143,12 +131,14 @@ for kernel in ${kernels[@]}; do
         exit 1
     fi
 
-    # Unload conflicting in-kernel modules in less than Workstation 11 / Player (Pro) 7
-    if [[ $ver != 11.* ]] && [[ $ver != 7.* ]]; then
-        rmmod "vsock" "vmw_vsock_vmci_transport" "vmw_vmci" 2>/dev/null || true
-    else
-        modprobe "vsock" "vmw_vsock_vmci_transport" "vmw_vmci" 2>/dev/null || true
-    fi
+#     # Unload conflicting in-kernel modules in less than Workstation 11 / Player (Pro) 7
+#     if [[ $ver != 12.* ]] && [[ $ver != 11.* ]] && [[ $ver != 7.* ]]; then
+#         rmmod "vsock" "vmw_vsock_vmci_transport" "vmw_vmci" 2>/dev/null || true
+#     else
+#         for mod in "vsock" "vmw_vsock_vmci_transport" "vmw_vmci"; do
+#             modprobe $mod 2>/dev/null || true
+#         done
+#     fi
 
     # Detect applicable patches (/usr/lib/vmware/modules/patches/[mod]-[ver]-[kernel].patch)
     unset patches
@@ -158,9 +148,9 @@ for kernel in ${kernels[@]}; do
         kernel_patch=$(echo $patch | grep -Po ".*-\K\d+\.\d+")
         kernel_major=$(echo $kernel | cut -d "." -f-2)
 
-        # Sync VMware Player (Plus) version by incrementing by 4
+        # Sync VMware Player (Pro / Plus) version by incrementing by 4
         ver2=$ver
-        if [[ $name =~ Player ]]; then
+        if [[ $name =~ Player ]] && [[ $ver != 12.* ]]; then
             major=$(( ${ver/.*} + 4 ))
             ver2=$major.${ver#*.}
         fi
@@ -243,7 +233,7 @@ for kernel in ${kernels[@]}; do
         # Run vmware-modconfig
         if ! vmware-modconfig --console --install-all -k "$kernel"; then
             # See logs
-            if ls /tmp/vmware-root/vmware-modconfig-*.log &>/dev/null; then
+            if ls /tmp/vmware-root/vmware-[0-9]*.log &>/dev/null; then
                 error "Unable to build. See:"
                 print_logs
             else 
@@ -256,7 +246,7 @@ for kernel in ${kernels[@]}; do
         # Run vmware-modconfig
         if ! vmware-modconfig --console --install-all -k "$kernel" &>/dev/null; then
             # See logs
-            if ls /tmp/vmware-root/vmware-modconfig-*.log &>/dev/null; then
+            if ls /tmp/vmware-root/vmware-*.log &>/dev/null; then
                 error "Unable to build. Re-run with '-v' (--verbose) or see:"
                 print_logs
             else

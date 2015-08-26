@@ -72,9 +72,19 @@ vmware_check() {
 set_product_name() {
     ver=$(vmware-installer -l |& grep -Po "(player|workstation) *\K(\d+\.){2}\d+")
     if vmware-installer -l |& grep -q "workstation"; then
-        name="VMware Workstation"
+        if [[ $ver = 12.* ]]; then
+            name="VMware Workstation Pro"
+        else
+            name="VMware Workstation"
+        fi
     else
-        name="VMware Player (Plus)"
+        if [[ $ver = 12.* ]]; then
+            name="VMware Workstation Player"
+        elif [[ $ver = 7.* ]]; then
+            name="VMware Player (Pro)"
+        else
+            name="VMware Player (Plus)"
+        fi
     fi
 }
 
@@ -156,7 +166,13 @@ patch_sources() {
 
 # Print vmware-modconfig-*.logs and exit
 print_logs() {
-    for log in /tmp/vmware-root/vmware-modconfig-*.log; do
+    if [[ $ver = 12.* ]]; then
+        logs=(/tmp/vmware-root/vmware-[0-9]*.log)
+    else
+        logs=(/tmp/vmware-root/vmware-modconfig*.log)
+    fi
+
+    for log in ${logs[@]}; do
         error2 "$log"
     done
     exit 1

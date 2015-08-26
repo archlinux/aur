@@ -2,9 +2,9 @@
 # Contributors: Igor Duarte Cardoso, haagch, Olivier Médoc
 
 pkgname=vmware-patch
-pkgver=11.1.0
-pkgrel=5
-pkgdesc="A post-install configuration solution for VMware Workstation and Player (Plus and Pro)"
+pkgver=12.0.0
+pkgrel=1
+pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/VMware#Configuration"
 license=('GPL')
@@ -49,9 +49,9 @@ package() {
 }
 
 # Generated using 'updpkgsums'
-md5sums=('2704cbc8b571d60e37ba3837638ccaef'
+md5sums=('5ead10eb9675f74d709586ce061e6f3a'
          'ba054b375308442d43a408dbae5e9401'
-         'e86bf4634661c8eb48823b4c69388bfc'
+         'ca1382966804d694894539c7bcac6bbb'
          'c12e765985b324585a548718a6ac9b43'
          'ea3817fb7952932707bfedcf33a70697'
          '56f7f642683e54250372bb57faaf4e95'
