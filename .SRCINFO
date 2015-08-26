@@ -1,6 +1,6 @@
 pkgbase = ros-jade-tf2-msgs
 	pkgdesc = ROS - tf2_msgs.
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = http://www.ros.org/wiki/tf2_msgs
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-jade-tf2-msgs
 	depends = ros-jade-actionlib-msgs
 	depends = ros-jade-message-generation
 	depends = ros-jade-geometry-msgs
-	source = tf2_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/jade/tf2_msgs/0.5.11-0
+	source = tf2_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/jade/tf2_msgs/0.5.12-0
 	md5sums = SKIP
 
 pkgname = ros-jade-tf2-msgs
