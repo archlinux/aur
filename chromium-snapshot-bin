@@ -15,8 +15,9 @@ for i in '/opt/google/chrome-unstable' '/usr/lib'; do
    fi
 done
 
+# Let the wrapped binary know that it has been run through the wrapper.
 export CHROME_WRAPPER="$(readlink -f $0)"
-export CHROME_DESKTOP="chromium-snapshot-bin.desktop"
+export CHROME_DESKTOP="$0.desktop"
 
 # Launch
 exec /opt/chromium-snapshot/chrome $CHROMIUM_USER_FLAGS $@

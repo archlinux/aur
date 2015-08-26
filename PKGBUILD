@@ -22,7 +22,7 @@ install=$pkgname.install
 source=('chromium-snapshot-bin'
         'chromium-snapshot-bin.desktop'
         'LICENSE')
-md5sums=('65607114be4390c9ecc90fc133157d3c'
+md5sums=('d0d1e6e0a3c3251a46af0d767880d3e5'
          '793b3dca6ae19d15a830e7de7e1f6fd3'
          '537e0b52077bf0a616d0a0c8a79bc9d5')
 
