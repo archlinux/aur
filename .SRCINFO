@@ -1,0 +1,17 @@
+pkgbase = defendguin
+	pkgdesc = The arcade oldschool fly and shot game
+	pkgver = 0.0.12
+	pkgrel = 2
+	url = http://www.newbreedsoftware.com/defendguin
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer
+	depends = sdl
+	source = ftp://ftp.tuxpaint.org/unix/x/defendguin/src/defendguin-0.0.12.tar.gz
+	source = Makefile.patch
+	md5sums = a543e3f5f4e935546116384c6f20d782
+	md5sums = 90808584660a8948b58569934bce05e4
+
+pkgname = defendguin
+

@@ -1,0 +1,10 @@
+--- ./defendguin-0.0.12/Makefile	2011-08-13 16:58:18.643647126 +0200
++++ ./defendguin-0.0.12/Makefile	2011-08-13 16:58:56.250895275 +0200
+@@ -38,6 +38,7 @@
+ 
+ install:	defendguin
+ 	install -d $(DATA_PREFIX)
++	install -d $(BIN_PREFIX)
+ 	cp -R data/* $(DATA_PREFIX)
+ 	chmod -R a+rX,g-w,o-w $(DATA_PREFIX)
+ 	cp defendguin $(BIN_PREFIX)/
