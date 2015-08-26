@@ -1,0 +1,15 @@
+pkgbase = graudit-git
+	pkgdesc = Grep rough source code auditing tool.
+	pkgver = 1440543599
+	pkgrel = 1
+	url = https://github.com/wireghoul/graudit
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = graudit
+	conflicts = graudit
+	source = git://github.com/wireghoul/graudit.git#branch=master
+	sha512sums = SKIP
+
+pkgname = graudit-git
+
