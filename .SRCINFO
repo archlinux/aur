@@ -1,6 +1,6 @@
 pkgbase = ros-jade-image-geometry
 	pkgdesc = ROS - image_geometry contains C++ and Python libraries for interpreting images geometrically.
-	pkgver = 1.11.7
+	pkgver = 1.11.8
 	pkgrel = 1
 	url = http://www.ros.org/wiki/image_geometry
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-jade-image-geometry
 	depends = ros-jade-sensor-msgs
 	depends = opencv
 	depends = python2-numpy
-	source = image_geometry::git+https://github.com/ros-gbp/vision_opencv-release.git#tag=release/jade/image_geometry/1.11.7-0
+	source = image_geometry::git+https://github.com/ros-gbp/vision_opencv-release.git#tag=release/jade/image_geometry/1.11.8-0
 	md5sums = SKIP
 
 pkgname = ros-jade-image-geometry
