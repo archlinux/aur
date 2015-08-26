@@ -27,7 +27,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/applications/"
   install -Dm644 "src/streamripper-gui.desktop" "$pkgdir/usr/share/applications/"
   mkdir -p "$pkgdir/usr/share/streamripper-gui"
-  install -Dm755 "src/streamripper-gui.py" "$pkgdir/usr/share/streamripper-gui/"
+  install -Dm755 "src/*.py" "$pkgdir/usr/share/streamripper-gui/"
   install -Dm644 "src/streamripper-gui.glade" "$pkgdir/usr/share/streamripper-gui/"
   mkdir "$pkgdir/usr/bin"
   cat > streamripper-gui <<EOF
