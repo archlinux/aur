@@ -1,6 +1,6 @@
 pkgbase = ros-jade-camera-info-manager
 	pkgdesc = ROS - This package provides a C++ interface for camera calibration information.
-	pkgver = 1.11.5
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://ros.org/wiki/camera_info_manager
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = ros-jade-camera-info-manager
 	depends = ros-jade-roslib
 	depends = ros-jade-image-transport
 	depends = boost
-	source = camera_info_manager::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/camera_info_manager/1.11.5-0
+	source = camera_info_manager::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/camera_info_manager/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-jade-camera-info-manager
