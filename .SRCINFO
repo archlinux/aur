@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-jackal-desktop
+	pkgdesc = ROS - Packages for working with Jackal from a ROS desktop.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://wiki.ros.org/jackal_desktop
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-jackal-viz
+	depends = ros-indigo-jackal-msgs
+	source = jackal_desktop::git+https://github.com/clearpath-gbp/jackal_desktop-release.git#tag=release/indigo/jackal_desktop/0.3.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-jackal-desktop
+
