@@ -1,0 +1,32 @@
+pkgbase = ros-indigo-hector-gazebo-plugins
+	pkgdesc = ROS - hector_gazebo_plugins provides gazebo plugins from Team Hector.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://ros.org/wiki/hector_gazebo_plugins
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-nav-msgs
+	makedepends = gazebo
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-gazebo-ros
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-tf
+	depends = ros-indigo-nav-msgs
+	source = hector_gazebo_plugins::git+https://github.com/tu-darmstadt-ros-pkg-gbp/hector_gazebo-release.git#tag=release/indigo/hector_gazebo_plugins/0.3.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-hector-gazebo-plugins
+
