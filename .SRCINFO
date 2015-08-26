@@ -10,6 +10,7 @@ pkgbase = python-docker-py-git
 	depends = python
 	depends = python-six
 	depends = python-requests
+	depends = python-websocket-client
 	provides = python-docker-py
 	conflicts = python-docker-py
 	source = docker-py::git+https://github.com/docker/docker-py.git
