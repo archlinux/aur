@@ -6,12 +6,12 @@ pkgdesc="A free cross-platform demotool for creating demos. (Compatible with RPi
 url='http://www.geeks3d.com/glslhacker/'
 license="custom"
 pkgver=0.8.5.2
-pkgrel=1
+pkgrel=2
 
 arch=('x86_64' 'armv6h' 'armv7h');
 
 source=('glsl-loader.sh' 'glslhacker.sh')
-md5sums=('b7b2dda2d8a3ec59f3cd5febb2a658d3' '62c54fd8be39472f52540825a75c00a0')
+md5sums=('847e9fce2e8fba065c13c4926bfa05ed' '62c54fd8be39472f52540825a75c00a0')
 source_x86_64=('http://www.ozone3d.net/glslhacker/dl/GLSLHacker_linux64.zip')
 md5sums_x86_64=('475e7cddf1cd73f09c3528e11e8781c3')
 source_arm=('http://www.ozone3d.net/glslhacker/dl/GLSLHacker_rpi.tar.gz')

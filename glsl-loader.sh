@@ -4,4 +4,4 @@ if test "$1" == ""; then
     exit 1
 fi
 
-glslhacker /demofile="$(realpath $1)"
+glslhacker /demofile=\"$(realpath $1)\"
