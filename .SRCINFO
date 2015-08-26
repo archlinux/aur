@@ -1,0 +1,16 @@
+pkgbase = haskell-newtype
+	pkgdesc = A typeclass and set of functions for working with newtypes.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/newtype
+	install = haskell-newtype.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/newtype/0.2/newtype-0.2.tar.gz
+	md5sums = fa44f4e2c6fdc3e356bd5c4a938559b2
+
+pkgname = haskell-newtype
+
