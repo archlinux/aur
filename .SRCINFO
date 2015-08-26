@@ -1,0 +1,15 @@
+pkgbase = ccsc
+	pkgdesc = Proprietary PIC C compiler by CCS
+	pkgver = 5.012
+	pkgrel = 1
+	url = http://www.ccsinfo.com/content.php?page=compilers
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = pcml.run
+	source = pcm.crg
+	sha512sums = 81d1a4a7ac535f1d31b95cdd2cd3af2d5f878472639ac1855bc451dc7774fe0250b17d7bf919e52ffc0276f42972081429d030de370e1ef3df07668fe9f5e73d
+	sha512sums = SKIP
+
+pkgname = ccsc
+
