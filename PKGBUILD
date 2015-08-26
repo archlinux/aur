@@ -12,7 +12,7 @@ url="http://www.scribus.net"
 install=${pkgname}.install
 depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
 	 'shared-mime-info' 'poppler' 'libcdr' 'desktop-file-utils'
-	 'libvisio' 'libpagemaker')
+	 'libvisio' 'libpagemaker' 'qt5-declarative')
 makedepends=('subversion' 'cmake' 'qt5-tools')
 conflicts=('scribus')
 provides=('scribus')

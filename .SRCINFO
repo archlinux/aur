@@ -21,6 +21,7 @@ pkgbase = scribus-svn
 	depends = desktop-file-utils
 	depends = libvisio
 	depends = libpagemaker
+	depends = qt5-declarative
 	provides = scribus
 	conflicts = scribus
 	options = !makeflags
