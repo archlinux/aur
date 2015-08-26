@@ -1,0 +1,25 @@
+pkgbase = ros-indigo-jackal-control
+	pkgdesc = ROS - Controllers for Jackal.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://wiki.ros.org/jackal_control
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslaunch
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-interactive-marker-twist-server
+	depends = ros-indigo-teleop-twist-joy
+	depends = ros-indigo-robot-localization
+	depends = ros-indigo-diff-drive-controller
+	depends = ros-indigo-joint-state-controller
+	depends = ros-indigo-controller-manager
+	depends = ros-indigo-joy
+	depends = ros-indigo-topic-tools
+	source = jackal_control::git+https://github.com/clearpath-gbp/jackal-release.git#tag=release/indigo/jackal_control/0.5.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-jackal-control
+
