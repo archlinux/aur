@@ -1,0 +1,17 @@
+pkgbase = ros-indigo-jackal-simulator
+	pkgdesc = ROS - Packages for simulating Jackal.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://wiki.ros.org/jackal_simulator
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-jackal-gazebo
+	source = jackal_simulator::git+https://github.com/clearpath-gbp/jackal_simulator-release.git#tag=release/indigo/jackal_simulator/0.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-jackal-simulator
+
