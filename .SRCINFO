@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gnudatalanguage.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = gnudatalanguage
 	depends = readline
 	depends = hdf5
 	depends = netcdf
-	depends = netcdf-cxx-legacy
 	depends = wxgtk
 	depends = fftw
 	depends = udunits
