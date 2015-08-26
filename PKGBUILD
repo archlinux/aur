@@ -2,7 +2,7 @@
 
 pkgname=python-libfiu
 _pkgname=libfiu
-pkgver=0.93
+pkgver=0.94
 pkgrel=1
 pkgdesc="userspace fault injection framework"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('libfiu' 'python')
 makedepends=('make' 'gcc')
 source=("https://blitiri.com.ar/p/$_pkgname/files/$pkgver/$_pkgname-$pkgver.tar.gz")
-md5sums=('8d8126a05a0fd7e833544c6a73deb256')
+md5sums=('b09c161c5a9c3bd888d600049549485d')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver/bindings/python
