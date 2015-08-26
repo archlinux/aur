@@ -1,0 +1,35 @@
+pkgbase = bitcoin-gui-git
+	pkgdesc = Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet
+	pkgver = v0.11.0.r12.g5c27f12
+	pkgrel = 1
+	url = https://bitcoinxt.software/
+	install = bitcoin-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	makedepends = protobuf
+	depends = boost-libs
+	depends = openssl
+	depends = miniupnpc
+	depends = protobuf
+	depends = qrencode
+	depends = qt4
+	provides = bitcoin-daemon
+	provides = bitcoin-cli
+	provides = bitcoin-qt
+	provides = bitcoin-tx
+	conflicts = bitcoin-daemon
+	conflicts = bitcoin-cli
+	conflicts = bitcoin-qt
+	conflicts = bitcoin-tx
+	source = git+https://github.com/bitcoin/bitcoin.git#branch=0.11
+	source = bitcoin-qt.install
+	sha256sums = SKIP
+	sha256sums = ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c
+
+pkgname = bitcoin-gui-git
+
