@@ -13,7 +13,7 @@ pkgbase = greenisland-papyros-git
 	makedepends = gdb
 	makedepends = extra-cmake-modules
 	depends = qt5-declarative
-	depends = qt5-wayland
+	depends = hawaii-qt5-wayland
 	options = debug
 	source = greenisland::git://github.com/greenisland/greenisland.git#branch=master
 	md5sums = SKIP
