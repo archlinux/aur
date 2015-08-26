@@ -1,6 +1,6 @@
 pkgbase = ros-jade-polled-camera
 	pkgdesc = ROS - polled_camera contains a service and C++ helper classes for implementing a polled camera driver node and requesting images from it.
-	pkgver = 1.11.5
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://ros.org/wiki/polled_camera
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ros-jade-polled-camera
 	depends = ros-jade-std-msgs
 	depends = ros-jade-roscpp
 	depends = ros-jade-image-transport
-	source = polled_camera::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/polled_camera/1.11.5-0
+	source = polled_camera::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/polled_camera/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-jade-polled-camera
