@@ -5,7 +5,7 @@
 _pkgname=avidemux
 pkgname=avidemux-2.6
 pkgver=2.6.10
-pkgrel=2
+pkgrel=1
 pkgdesc="A graphical tool to edit video (filter/re-encode/split)"
 arch=(i686 x86_64)
 url=http://fixounet.free.fr/avidemux/
