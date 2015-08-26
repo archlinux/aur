@@ -1,5 +1,5 @@
 pkgbase = isse
-	pkgdesc = An Interactive Source Separation Editor
+	pkgdesc = An Interactive Source Separation (e.g. vocal removal) Editor
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://isse.sourceforge.net/
@@ -9,6 +9,7 @@ pkgbase = isse
 	makedepends = git
 	depends = fftw
 	depends = jack
+	depends = zenity
 	source = isse.sh
 	source = zenity.sh
 	source = isse-code::git://git.code.sf.net/p/isse/code#commit=451aa4e3522a37e9057e972bdcf18b458e891340
