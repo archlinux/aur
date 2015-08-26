@@ -1,0 +1,15 @@
+pkgbase = pk2dft
+	pkgdesc = Modify PK2DeviceFile.dat files for pk2cmd
+	pkgver = 0.1b
+	pkgrel = 2
+	url = http://dangerousprototypes.com/forum/viewtopic.php?f=56&t=5304
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = confuse
+	optdepends = pk2cmd
+	source = pk2dft.c::http://dangerousprototypes.com/forum/download/file.php?id=9936
+	sha512sums = ddf349ca2fdc41dc02412d35bdbd13f05f044d1cb1ee8b3e640b284208cbccd0c9ad02d19f9fbdfc62cd0e269ef959c395353746e08333d158667f9bcd93470c
+
+pkgname = pk2dft
+
