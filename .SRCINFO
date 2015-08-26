@@ -1,13 +1,13 @@
 pkgbase = pim-git
 	pkgdesc = Python image viewer with vim-like keybindings. Git-Version
-	pkgver = 0.7.0.r0.g3554c2d
+	pkgver = 0.7.1.r0.g93b4289
 	pkgrel = 1
 	url = https://github.com/Narrat/Pim
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python-gobject
-	provides = pim=0.7.0
+	provides = pim=0.7.1
 	conflicts = pim
 	source = pim::git://github.com/Narrat/Pim.git
 	md5sums = SKIP
