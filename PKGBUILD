@@ -7,14 +7,14 @@
 #
 
 pkgname=emacs-git
-pkgver=25.0.50.r122445
+pkgver=25.0.50.r122501
 pkgrel=1
 pkgdesc="GNU Emacs. Official git trunk."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
 depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 
-	 'gtk3' 'cairo' 'hicolor-icon-theme' 'desktop-file-utils'
+	 'gtk3' 'hicolor-icon-theme' 'desktop-file-utils'
 	 'alsa-lib' 'imagemagick' 'gnutls')
 makedepends=('git')
 conflicts=('emacs')
@@ -53,7 +53,6 @@ build() {
     --with-sound=alsa \
     --without-gconf \
     --with-x-toolkit=gtk3 \
-    --with-cairo \
     --with-xft
 
   # Using "make" instead of "make bootstrap" makes incremental
