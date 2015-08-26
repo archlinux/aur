@@ -1,0 +1,14 @@
+pkgbase = pysize
+	pkgdesc = A graphical and console tool for exploring the size of directories
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://guichaz.free.fr/pysize/
+	arch = any
+	license = GPL
+	depends = python2
+	optdepends = pygtk: GTK+ GUI
+	source = http://guichaz.free.fr/pysize/files/pysize-0.2.tar.bz2
+	md5sums = e25fea5169b12e49f732f29a3de30d80
+
+pkgname = pysize
+
