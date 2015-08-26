@@ -1,7 +1,7 @@
 pkgbase = orbment-git
 	pkgdesc = A modular wayland compositor based on wlc.
-	pkgver = r442.f8fbb3c
-	pkgrel = 3
+	pkgver = r457.149bb49
+	pkgrel = 2
 	url = https://github.com/Cloudef/orbment
 	install = orbment-git.install
 	arch = i686

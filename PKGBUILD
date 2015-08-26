@@ -1,6 +1,6 @@
 pkgname=orbment-git
-pkgver=r442.f8fbb3c
-pkgrel=3
+pkgver=r457.149bb49
+pkgrel=2
 
 pkgdesc='A modular wayland compositor based on wlc.'
 url='https://github.com/Cloudef/orbment'
@@ -46,7 +46,7 @@ prepare() {
 
 build() {
     cd orbment
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    cmake -DCMAKE_BUILD_TYPE=Upstream -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
     make
 }
 
