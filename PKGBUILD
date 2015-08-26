@@ -22,7 +22,7 @@ install=$pkgname.install
 source=('chromium-continuous-bin'
         'chromium-continuous-bin.desktop'
         'LICENSE')
-md5sums=('6203259f7a8fe2fa55b64005a202828d'
+md5sums=('739c9f17f8c470c5b2a605b05b12da4f'
          '3f2bfd12b55b7153b60ad904207599dd'
          '537e0b52077bf0a616d0a0c8a79bc9d5')
 
