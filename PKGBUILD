@@ -3,8 +3,8 @@
 # Original Author: David Fuhr <david.fuhr@web.de>
 
 pkgname=ganttproject
-pkgver=2.7
-_build=r1891
+pkgver=2.7.1
+_build=r1924
 pkgrel=1
 pkgdesc="A project scheduling application featuring gantt chart, resource management, calendaring."
 arch=('i686' 'x86_64')
@@ -25,5 +25,5 @@ package() {
   ln -s "/opt/$pkgname/ganttproject" "$pkgdir/usr/bin/ganttproject"
 }
 
-md5sums=('301363bdeaa9c4de49d1f2f834ef9774'
+md5sums=('978013d4a275f0e5948eee21d1771060'
          '4851e795b2fd99ac416ff65d2c73ca75')
