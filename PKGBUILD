@@ -3,7 +3,7 @@
 pkgname=isse
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="An Interactive Source Separation Editor"
+pkgdesc="An Interactive Source Separation (e.g. vocal removal) Editor"
 url="http://isse.sourceforge.net/"
 arch=('x86_64' 'i686')
 license=('GPLv3')
