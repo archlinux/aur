@@ -1,7 +1,7 @@
 # Maintainer: metamer <metamer at openmailbox dot org>
 pkgname=infra-arcana
 pkgver=17.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Roguelike game inspired by H.P. Lovecraft"
 arch=('i686' 'x86_64')
@@ -37,7 +37,8 @@ package() {
 
 	mkdir -p "${pkgdir}/opt/${pkgname}/"
 	cp -R target/* "${pkgdir}/opt/${pkgname}/"
-	chmod a+w "${pkgdir}/opt/${pkgname}/data/save"
+	# required to allow users to write saved games and high scores to data
+	chmod -R a+w "${pkgdir}/opt/${pkgname}/data"
 
 	# this shell script is required as the compiled binary relies on relative references
 	install -Dm755 "../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
