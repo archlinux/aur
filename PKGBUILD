@@ -4,7 +4,7 @@ pkgdesc="ROS - Single image rectification and color processing."
 url='http://www.ros.org/wiki/image_proc'
 
 pkgname='ros-jade-image-proc'
-pkgver='1.12.12'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,7 +17,6 @@ ros_makedepends=(ros-jade-cv-bridge
   ros-jade-catkin
   ros-jade-image-transport
   ros-jade-image-geometry
-  ros-jade-camera-calibration-parsers
   ros-jade-dynamic-reconfigure)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
