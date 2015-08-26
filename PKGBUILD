@@ -1,6 +1,6 @@
-# Maintainer: Iwan Timmer <irtimmer at gmail dot com>
+# Maintainer: Vladislav Polukhin <nuklea at gmail dot com>
 
-pkgname=k4dirstat
+pkgname=k4dirstat2
 pkgver=2.7.8
 _commit=3a4663ee20e7
 pkgrel=1
@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url=('https://bitbucket.org/jeromerobert/k4dirstat')
 license=('GPL')
 depends=('kdebase-lib')
+conflicts=('k4dirstat')
 makedepends=('docbook-xsl' 'automoc4' 'git' 'cmake')
 source=("https://bitbucket.org/jeromerobert/k4dirstat/get/k4dirstat-$pkgver.tar.bz2")
 sha256sums=('b897780cf2d8984c83de270bd4dc9b4f0ffb7fc69cd3e52ed3457b7c97e59c8d')
