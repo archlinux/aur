@@ -4,10 +4,10 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-jade-gazebo-ros'
-pkgver='2.5.0'
+pkgver='2.5.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('Apache 2.0')
 
 ros_makedepends=(ros-jade-rosgraph-msgs

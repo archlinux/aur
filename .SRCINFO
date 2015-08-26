@@ -1,7 +1,7 @@
 pkgbase = ros-jade-gazebo-ros
 	pkgdesc = ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS.
-	pkgver = 2.5.0
-	pkgrel = 2
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = http://gazebosim.org/tutorials?cat=connect_ros
 	arch = any
 	license = Apache 2.0
@@ -34,7 +34,7 @@ pkgbase = ros-jade-gazebo-ros
 	depends = ros-jade-geometry-msgs
 	depends = gazebo
 	depends = tinyxml
-	source = gazebo_ros::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/jade/gazebo_ros/2.5.0-0
+	source = gazebo_ros::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/jade/gazebo_ros/2.5.1-0
 	md5sums = SKIP
 
 pkgname = ros-jade-gazebo-ros
