@@ -1,7 +1,7 @@
 pkgbase = flexget-git
 	pkgdesc = Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more.
-	pkgver = 1.2.345.r6166.f624fa6
-	pkgrel = 2
+	pkgver = 1.2.347.r6179.349ae92
+	pkgrel = 1
 	url = http://flexget.com/
 	arch = any
 	license = MIT
@@ -33,6 +33,7 @@ pkgbase = flexget-git
 	optdepends = python2-transmissionrpc: Transmission support
 	optdepends = python2-cherrypy: web interface
 	optdepends = python2-flask: web interface
+	optdepends = python2-rarfile: decompress plugin
 	provides = flexget
 	conflicts = flexget
 	source = git+https://github.com/Flexget/Flexget
