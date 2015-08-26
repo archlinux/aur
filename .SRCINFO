@@ -1,0 +1,19 @@
+pkgbase = libretro-4do-git
+	pkgdesc = libretro implementation of 4DO/libfreedo (3DO)
+	pkgver = 78.bd05c90
+	pkgrel = 1
+	url = https://github.com/libretro/4do-libretro
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	license = GPL
+	makedepends = git
+	depends = zlib
+	source = git+https://github.com/libretro/4do-libretro.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/4do_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-4do-git
+
