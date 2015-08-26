@@ -1,7 +1,30 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
+# NOTE!
+#   Install 'archdroid-icon-theme' instead of this package.
+#
+# OTHER NOTES:
+# This is the git variant of 'archdroid-icon-theme'.
+#
+# This git variant is NOT a newer release than 'archdroid-icon-theme';
+#   both packages are always updated at the same time.
+#   This one is merely an alternative in case the other fails to install.
+# The non-git variant downloads and installs MUCH faster than this one:
+#   'archdroid-icon-theme' == 1MB download (xz archive),
+#   'archdroid-icon-theme-git' == 40MB download (full git clone/gz archive).
+# In other words, download 'archdroid-icon-theme' instead of this package,
+#   unless you have a specific reason otherwise
+#   (e.g., 'archdroid-icon-theme' doesn't download correctly).
+#
+# If you find any problems or have any suggestions, ideas, or requests,
+#   by all means, PLEASE let me know.
+#   You can do that here:
+#     'https://github.com/GreenRaccoon23/archdroid-icon-theme/issues'
+#   I'd really appreciate your feedback,
+#     and I will most likely implement any additions you request.
+
 pkgname=archdroid-icon-theme-git
-pkgver=r86.ab8e2ae
+pkgver=r87.c3d81a2
 pkgrel=1
 pkgdesc="Port of Android 5.0 Lollipop's material design icons to Arch."
 arch=('any')
