@@ -2,7 +2,7 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 pkgname=neovim-git
-pkgver=0.r3607.20a57c4
+pkgver=0.r3908.b2ece14
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ build() {
 check() {
   cd "${pkgname}/build"
   ./bin/nvim --version
-  ./bin/nvim -u NONE -c ':quit'
+  ./bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
 
 package() {
