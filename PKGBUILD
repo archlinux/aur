@@ -8,14 +8,13 @@ pkgdesc="Google Search from command line"
 arch=('any')
 url="https://github.com/jarun/google-cli"
 license=('GPL3')
-depends=('python2')
+depends=('python')
 conflicts=('google-cli-git')
 source=("https://github.com/jarun/google-cli/archive/v$pkgver.tar.gz")
 md5sums=('d62b7909ef8bac354b0c7267ade34969')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  sed -i -e 's/python/python2/' google
 }
 
 package() {
