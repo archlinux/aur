@@ -4,10 +4,10 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-jade-gazebo-plugins'
-pkgver='2.5.0'
+pkgver='2.5.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-jade-rosgraph-msgs
@@ -23,6 +23,7 @@ ros_makedepends=(ros-jade-rosgraph-msgs
   ros-jade-camera-info-manager
   ros-jade-image-transport
   ros-jade-angles
+  ros-jade-std-msgs
   ros-jade-std-srvs
   ros-jade-dynamic-reconfigure
   ros-jade-urdf
@@ -51,6 +52,7 @@ ros_depends=(ros-jade-rosgraph-msgs
   ros-jade-camera-info-manager
   ros-jade-image-transport
   ros-jade-angles
+  ros-jade-std-msgs
   ros-jade-std-srvs
   ros-jade-dynamic-reconfigure
   ros-jade-urdf
