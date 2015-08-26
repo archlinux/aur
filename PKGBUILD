@@ -5,7 +5,7 @@
 
 pkgname=adom
 pkgver=60
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=("i686" "x86_64" "armv6h")
 conflicts=("adom")
@@ -14,7 +14,7 @@ depends=("ncurses")
 url="http://www.adom.de/"
 license=('custom: "adom"')
 
-_source_url="http://www.ancardia.com/download/"
+_source_url="http://www.ancardia.com/download"
 source=(LICENSE)
 source_i686=(${_source_url}/adom_linux_debian_32_r${pkgver}_pub.tar.gz)
 source_x86_64=(${_source_url}/adom_linux_debian_64_r${pkgver}_pub.tar.gz)
