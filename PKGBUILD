@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=exa
 pkgname=${_pkgname}-git
-pkgver=329
+pkgver=447
 pkgrel=1
 pkgdesc='Replacement for ls written in Rust.'
 arch=('i686' 'x86_64')
@@ -23,5 +23,5 @@ package() {
     cd "$srcdir/$_pkgname"
     make
     install -Dm755 "$srcdir/$_pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 "$srcdir/$_pkgname/man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
+    install -Dm644 "$srcdir/$_pkgname/contrib/man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
 }
