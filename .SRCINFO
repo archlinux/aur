@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-interactive-marker-twist-server
+	pkgdesc = ROS - Interactive control for generic Twist-based robots using interactive markers.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-interactive-markers
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-roslint
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-roslaunch
+	makedepends = ros-indigo-visualization-msgs
+	depends = ros-indigo-interactive-markers
+	depends = ros-indigo-visualization-msgs
+	depends = ros-indigo-roscpp
+	source = interactive_marker_twist_server::git+https://github.com/ros-gbp/interactive_marker_twist_server-release.git#tag=release/indigo/interactive_marker_twist_server/1.0.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-interactive-marker-twist-server
+
