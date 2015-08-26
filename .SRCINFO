@@ -1,0 +1,22 @@
+pkgbase = emacs-color-theme
+	pkgdesc = Emacs color themes
+	pkgver = 6.6.0
+	pkgrel = 8
+	url = https://gna.org/projects/color-theme
+	install = emacs-color-theme.install
+	arch = any
+	license = GPL2
+	makedepends = emacs
+	depends = emacs
+	depends = xorg-fonts-100dpi
+	provides = color-theme
+	replaces = color-theme
+	source = http://download.savannah.gnu.org/releases/color-theme/color-theme-6.6.0.tar.gz
+	source = gnus-bug.diff
+	source = fix-build.patch
+	md5sums = a4de73c236a6af11ab378bfe18dabcca
+	md5sums = 8b7ee1c4c6f80606f22c3de448ec92e8
+	md5sums = 25b92ea246716689502ebe050322a60a
+
+pkgname = emacs-color-theme
+
