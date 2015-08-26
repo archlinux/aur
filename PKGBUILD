@@ -18,8 +18,6 @@ build() {
 
   cd "${srcdir}/pg_rrule/src"
 
-  pwd
-
   msg "Making pg_rrule"
   qmake pg_rrule.pro
   make
