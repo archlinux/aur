@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rviz
 	pkgdesc = ROS - 3D visualization tool for ROS.
-	pkgver = 1.11.7
+	pkgver = 1.11.8
 	pkgrel = 1
 	url = http://ros.org/wiki/rviz
 	arch = any
@@ -69,7 +69,7 @@ pkgbase = ros-jade-rviz
 	depends = tinyxml
 	depends = mesa
 	depends = yaml-cpp
-	source = rviz::git+https://github.com/ros-gbp/rviz-release.git#tag=release/jade/rviz/1.11.7-0
+	source = rviz::git+https://github.com/ros-gbp/rviz-release.git#tag=release/jade/rviz/1.11.8-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rviz
