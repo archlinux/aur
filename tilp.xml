@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-tilp">
+        <comment xml:lang="en">TI File</comment>
+        <comment xml:lang="fr">Fichier TI</comment>
+        <glob pattern="*.73?" />
+        <glob pattern="*.8[23569x]?" />
+        <glob pattern="*.9[2x]?" />
+        <glob pattern="*.v2?" />
+	<magic priority="25">
+		<match type="string" offset="0" value="**TI"/>
+	</magic>
+  </mime-type>
+  <mime-type type="application/x-tilp-window_setup">
+        <comment xml:lang="en">Ti File (Window Setup)</comment>
+        <comment xml:lang="fr">Fichier TI (Window Setup)</comment>
+        <glob pattern="*.8[2356x]w" />
+	<glob pattern="*.73w" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-y_var">
+        <comment xml:lang="en">Ti File (Y-Var)</comment>
+        <comment xml:lang="fr">Fichier TI (Y-Var)</comment>
+        <glob pattern="*.8[2356]y" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-zip">
+        <comment xml:lang="en">Ti File (Zip'ed)</comment>
+        <comment xml:lang="fr">Fichier TI (Compressé)</comment>
+        <glob pattern="*.89y" />
+	<glob pattern="*.9[2x]y" />
+	<glob pattern="*.v2y" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-zoom">
+        <comment xml:lang="en">Ti File (Zoom)</comment>
+        <comment xml:lang="fr">Fichier TI (Zoom)</comment>
+        <glob pattern="*.73z" />
+	<glob pattern="*.8[2356x]z" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-app_var">
+        <comment xml:lang="en">Ti File (Application Variable)</comment>
+        <comment xml:lang="fr">Fichier TI (Variable Application)</comment>
+	<glob pattern="*.8xv" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-application">
+        <comment xml:lang="en">Ti File (Application)</comment>
+        <comment xml:lang="fr">Fichier TI (Application)</comment>
+        <glob pattern="*.73k" />
+	<glob pattern="*.8[9x]k" />
+	<glob pattern="*.9xk" />
+	<glob pattern="*.v2k" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-program">
+        <comment xml:lang="en">Ti File (Program)</comment>
+        <comment xml:lang="fr">Fichier TI (Programme)</comment>
+        <glob pattern="*.73p" />
+	<glob pattern="*.8[23569x]p" />
+	<glob pattern="*.9[2x]p" />
+	<glob pattern="*.v2p" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-backup">
+        <comment xml:lang="en">Ti File (Backup)</comment>
+        <comment xml:lang="fr">Fichier TI (Sauvegarde)</comment>
+        <glob pattern="*.73b" />
+	<glob pattern="*.8[2356x]b" />
+	<glob pattern="*.92b" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-certificate">
+        <comment xml:lang="en">Ti File (Certificate)</comment>
+        <comment xml:lang="fr">Fichier TI (Certificat)</comment>
+        <glob pattern="*.73q" />
+	<glob pattern="*.8[9x]q" />
+	<glob pattern="*.9xq" />
+	<glob pattern="*.v2q" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-complex">
+        <comment xml:lang="en">Ti File (Certificate)</comment>
+        <comment xml:lang="fr">Fichier TI (Certificat)</comment>
+        <glob pattern="*.73c" />
+	<glob pattern="*.8[2356x]c" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-constant">
+        <comment xml:lang="en">Ti File (Constant)</comment>
+        <comment xml:lang="fr">Fichier TI (Constante)</comment>
+	<glob pattern="*.8[56]k" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-data">
+        <comment xml:lang="en">Ti File (Data)</comment>
+        <comment xml:lang="fr">Fichier TI (Données)</comment>
+	<glob pattern="*.89c" />
+	<glob pattern="*.9[2x]c" />
+	<glob pattern="*.v2c" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-equation">
+        <comment xml:lang="en">Ti File (Equation)</comment>
+        <comment xml:lang="fr">Fichier TI (Equation)</comment>
+	<glob pattern="*.73e" />
+	<glob pattern="*.8[2356x]e" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-expression">
+        <comment xml:lang="en">Ti File (Expression)</comment>
+        <comment xml:lang="fr">Fichier TI (Expression)</comment>
+	<glob pattern="*.89e" />
+	<glob pattern="*.9[2x]ce" />
+	<glob pattern="*.v2e" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-expression">
+        <comment xml:lang="en">Ti File (Expression)</comment>
+        <comment xml:lang="fr">Fichier TI (Expression)</comment>
+	<glob pattern="*.89e" />
+	<glob pattern="*.9[2x]e" />
+	<glob pattern="*.v2e" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-figure">
+        <comment xml:lang="en">Ti File (Figure)</comment>
+        <comment xml:lang="fr">Fichier TI (Figure)</comment>
+	<glob pattern="*.89a" />
+	<glob pattern="*.9[2x]a" />
+	<glob pattern="*.v2a" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-function">
+        <comment xml:lang="en">Ti File (Function)</comment>
+        <comment xml:lang="fr">Fichier TI (Function)</comment>
+	<glob pattern="*.89f" />
+	<glob pattern="*.9[2x]f" />
+	<glob pattern="*.v2f" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-gdb">
+        <comment xml:lang="en">Ti File (GDB)</comment>
+        <comment xml:lang="fr">Fichier TI (GDB)</comment>
+        <glob pattern="*.73d" />
+	<glob pattern="*.8[23569x]d" />
+	<glob pattern="*.9[2x]d" />
+	<glob pattern="*.v2d" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-group">
+        <comment xml:lang="en">Ti File (Group)</comment>
+        <comment xml:lang="fr">Fichier TI (Groupe)</comment>
+        <glob pattern="*.73g" />
+	<glob pattern="*.8[23569x]g" />
+	<glob pattern="*.9[2x]g" />
+	<glob pattern="*.v2g" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-list">
+        <comment xml:lang="en">Ti File (List)</comment>
+        <comment xml:lang="fr">Fichier TI (List)</comment>
+        <glob pattern="*.73l" />
+	<glob pattern="*.8[23569x]l" />
+	<glob pattern="*.9[2x]l" />
+	<glob pattern="*.v2l" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-macro">
+        <comment xml:lang="en">Ti File (Macro)</comment>
+        <comment xml:lang="fr">Fichier TI (Macro)</comment>
+	<glob pattern="*.89x" />
+	<glob pattern="*.9[2x]x" />
+	<glob pattern="*.v2x" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-os_upgrade">
+        <comment xml:lang="en">Ti File (OS Update)</comment>
+        <comment xml:lang="fr">Fichier TI (MAJ du SE)</comment>
+        <glob pattern="*.73u" />
+	<glob pattern="*.8[9x]u" />
+	<glob pattern="*.9xu" />
+	<glob pattern="*.v2u" />
+	<glob pattern="*.tib" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-picture">
+        <comment xml:lang="en">Ti File (Picture)</comment>
+        <comment xml:lang="fr">Fichier TI (Image)</comment>
+        <glob pattern="*.73i" />
+	<glob pattern="*.8[23569x]i" />
+	<glob pattern="*.9[2x]i" />
+	<glob pattern="*.v2i" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-range">
+        <comment xml:lang="en">Ti File (Range)</comment>
+        <comment xml:lang="fr">Fichier TI (Intervalle)</comment>
+        <glob pattern="*.8[56]r" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-real">
+        <comment xml:lang="en">Ti File (Real Number)</comment>
+        <comment xml:lang="fr">Fichier TI (Nombre Réel)</comment>
+        <glob pattern="*.73n" />
+	<glob pattern="*.8[2356x]n" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-string">
+        <comment xml:lang="en">Ti File (String)</comment>
+        <comment xml:lang="fr">Fichier TI (Chaîne)</comment>
+        <glob pattern="*.73s" />
+	<glob pattern="*.8[23569x]s" />
+	<glob pattern="*.9[2x]s" />
+	<glob pattern="*.v2s" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-table_setup">
+        <comment xml:lang="en">Ti File (Table Setup)</comment>
+        <comment xml:lang="fr">Fichier TI (Table Setup)</comment>
+        <glob pattern="*.73t" />
+	<glob pattern="*.8[2356x]t" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-text">
+        <comment xml:lang="en">Ti File (Text)</comment>
+        <comment xml:lang="fr">Fichier TI (Texte)</comment>
+	<glob pattern="*.89t" />
+	<glob pattern="*.9[2x]t" />
+	<glob pattern="*.v2t" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-tigroup">
+        <comment xml:lang="en">Ti File (TiGroup)</comment>
+        <comment xml:lang="fr">Fichier TI (TiGroup)</comment>
+        <glob pattern="*.tig" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+  <mime-type type="application/x-tilp-vector">
+        <comment xml:lang="en">Ti File (Vector)</comment>
+        <comment xml:lang="fr">Fichier TI (Vecteur)</comment>
+        <glob pattern="*.86v" />
+	<sub-class-of type="application/x-tilp" />
+  </mime-type>
+</mime-info>
+
+
+
+

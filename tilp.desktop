@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=TiLP
+Name[fr_FR]=TiLP
+Comment=Linking program for TI calculators
+Comment[fr_FR]=Programme de connexion pour calculatrices TI
+GenericName=TI Linking Program
+GenericName[fr_FR]=Connexion calculatrices TI
+Version=1.0
+Type=Application
+Exec=tilp
+Icon=/usr/share/tilp2/pixmaps/icon.xpm
+Terminal=false
+Categories=Utility;X-KDE-Utilities-Peripherals;
+MimeType=application/x-tilp;
