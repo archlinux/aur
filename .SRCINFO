@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-position-controllers
+	pkgdesc = ROS - position_controllers.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-controller-interface
+	makedepends = ros-indigo-forward-command-controller
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-controller-interface
+	depends = ros-indigo-forward-command-controller
+	source = position_controllers::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/indigo/position_controllers/0.9.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-position-controllers
+
