@@ -12,31 +12,26 @@ _password=
 DLAGENTS=("http::/usr/bin/wget --user ${_username} --password ${_password} %u")
 
 pkgname=adom-restricted
-pkgver=58
+pkgver=60
 pkgrel=1
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
-arch=('i686' 'x86_64' 'armv6h')
-conflicts=('adom')
-provides=('adom')
-depends=('ncurses')
+arch=("i686" "x86_64" "armv6h")
+conflicts=("adom")
+provides=("adom")
+depends=("ncurses")
 url="http://www.adom.de/"
 license=('custom: "adom"')
-sha1sums=('' '51d28fe3f0420cd354113fd7ceb2a1a7abf1b069')
-if [ "$CARCH" = x86_64 ]
-  then
-  _arch_link='debian_64'
-  sha1sums[0]='ff6e73bf084992fbbf4730d4aa5cf21d9b132391'
- elif [ "$CARCH" = 'armv6h' ]
-  then
-  _arch_link='arm'
-  sha1sums[0]='e61fbb507c4d8c30ced3c8b4c99ea06db3b45c41'
- else
-  _arch_link='debian_32'
-  sha1sums[0]='4aa867795043a88d04c7fcf2a72aa302cc9f3c63'
-fi
 
+_source_url="http://www.ancardia.com/secure/download/current"
+source=(LICENSE)
+source_i686=(${_source_url}/adom_linux_debian_32_r${pkgver}.tar.gz)
+source_x86_64=(${_source_url}/adom_linux_debian_64_r${pkgver}.tar.gz)
+source_armv6h=(${_source_url}/adom_linux_arm_r${pkgver}.tar.gz)
 
-source=(http://www.ancardia.com/secure/download/current/adom_linux_${_arch_link}_r${pkgver}.tar.gz LICENSE)
+sha1sums=("51d28fe3f0420cd354113fd7ceb2a1a7abf1b069")
+sha1sums_i686=("3d860e9eaf6c48391fedd769391bef03f13b2bc6")
+sha1sums_x86_64=("bdd1ec9360345325ad80198eaaf85abd1687b10b")
+sha1sums_armv6h=("7698c63808c96268ed810582f60480d524c8dbfb")
 
 package() {
   cd ${srcdir}/adom

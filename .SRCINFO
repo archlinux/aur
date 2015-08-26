@@ -1,6 +1,6 @@
 pkgbase = adom-restricted
 	pkgdesc = A roguelike game with a quest-centric, plot driven structure
-	pkgver = 58
+	pkgver = 60
 	pkgrel = 1
 	url = http://www.adom.de/
 	arch = i686
@@ -10,10 +10,14 @@ pkgbase = adom-restricted
 	depends = ncurses
 	provides = adom
 	conflicts = adom
-	source = http://www.ancardia.com/secure/download/current/adom_linux_debian_32_r58.tar.gz
 	source = LICENSE
-	sha1sums = 4aa867795043a88d04c7fcf2a72aa302cc9f3c63
 	sha1sums = 51d28fe3f0420cd354113fd7ceb2a1a7abf1b069
+	source_i686 = http://www.ancardia.com/secure/download/current/adom_linux_debian_32_r60.tar.gz
+	sha1sums_i686 = 3d860e9eaf6c48391fedd769391bef03f13b2bc6
+	source_x86_64 = http://www.ancardia.com/secure/download/current/adom_linux_debian_64_r60.tar.gz
+	sha1sums_x86_64 = bdd1ec9360345325ad80198eaaf85abd1687b10b
+	source_armv6h = http://www.ancardia.com/secure/download/current/adom_linux_arm_r60.tar.gz
+	sha1sums_armv6h = 7698c63808c96268ed810582f60480d524c8dbfb
 
 pkgname = adom-restricted
 
