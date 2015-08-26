@@ -20,10 +20,12 @@ provides=('google-chrome' 'pepper-flash')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=unstable
-source=('eula_text.html')
+source=('google-chrome-unstable'
+        'eula_text.html')
 source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_i386.deb")
 source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
-md5sums=('b7e752f549b215ac77f284b6486794b6')
+md5sums=('00541a2eaedf40c2217f17f9345aaa5c'
+         'b7e752f549b215ac77f284b6486794b6')
 md5sums_i686=('3abe6d00eadda73e9a839b721edc5b23')
 md5sums_x86_64=('4cbe8b5b5fd11d1ca17c3fa6522c24aa')
 
@@ -36,6 +38,9 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 
   msg2 "Moving stuff in place..."
+  # Launcher
+  install -m755 google-chrome-unstable "$pkgdir"/usr/bin/
+
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
     install -Dm644 "$pkgdir"/opt/google/chrome-$_channel/product_logo_${i/x*}.png \
