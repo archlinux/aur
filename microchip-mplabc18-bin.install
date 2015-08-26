@@ -1,0 +1,16 @@
+post_install() {
+  echo "
+Before using MPLAB_C18 you have to agree with the LICENSE at:
+/usr/share/licenses/microchip-mplabc18_bin/LICENSE
+
+For using MPLAB_C18 with MPALB_X (microchip-mplab-bin), in MPLAB_X go to:
+Tools->Options->Embedded->Add
+
+and enter:
+/opt/microchip/mplabc18/v3.40/bin
+"
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,21 @@
+pkgbase = microchip-mplabc18-bin
+	pkgdesc = C compiler for PIC18 MCUs
+	pkgver = 3.40
+	pkgrel = 1
+	url = http://www.microchip.com/c18
+	install = microchip-mplabc18-bin.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	provides = mplabc18
+	conflicts = mplabc18
+	options = !strip
+	options = docs
+	options = libtool
+	options = emptydirs
+	options = !zipman
+	source = https://bitbucket.org/simbuckone/simbuckbaseproject/downloads/mplabc18-v3.40-linux-full-installer.run
+	md5sums = f29df9a4e5c9641a8909bd0a5452d4a9
+
+pkgname = microchip-mplabc18-bin
+
