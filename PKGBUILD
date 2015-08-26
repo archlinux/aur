@@ -20,7 +20,7 @@ package() {
    qmake || return 1
    make || return 1
    install -D -m755 $startdir/src/$pkgname-$pkgver/dist/debian/qsynergy.desktop \
-   	$startdir/pkg/usr/share/applications/qsynergy.desktop
-   install -D $startdir/src/$pkgname-$pkgver/dist/qsynergy.xpm $startdir/pkg/usr/share/pixmaps/qsynergy.xpm
-   install -D -m755 $startdir/src/$pkgname-$pkgver/qsynergy $startdir/pkg/usr/bin/qsynergy
+   	$pkgdir/usr/share/applications/qsynergy.desktop
+   install -D $startdir/src/$pkgname-$pkgver/dist/qsynergy.xpm $pkgdir/usr/share/pixmaps/qsynergy.xpm
+   install -D -m755 $startdir/src/$pkgname-$pkgver/qsynergy $pkgdir/usr/bin/qsynergy
 }
