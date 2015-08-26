@@ -2,7 +2,7 @@
 
 pkgname=non-mixer-git
 pkgver=1.1.0.r685.g18a299c
-pkgrel=1
+pkgrel=2
 pkgdesc="Jack audio mixer from the NON DAW"
 arch=('x86_64' 'i686')
 url="http://non.tuxfamily.org/"
