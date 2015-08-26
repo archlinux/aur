@@ -2,7 +2,7 @@
 # Original author: ltwood <???>
 pkgname=texlive-mais
 pkgver=20130923
-pkgrel=2
+pkgrel=3
 pkgdesc="LaTeX classes for Modeling and Analysis of Information Systems journal (includes both russian and english versions)"
 arch=('any')
 url="http://mais.uniyar.ac.ru/en/node/13"
@@ -14,7 +14,7 @@ depends=('texlive-core' 'texlive-langcyrillic')
 provides=('texlive-mais')
 conflicts=('texlive-mais')
 install=texlive-mais.install
-build() {
+package() {
     unzip $srcdir/mais.zip -d mais
     unzip $srcdir/maiseng.zip -d maiseng
     mkdir -p "$pkgdir/usr/share/texmf-dist/tex/latex/"
