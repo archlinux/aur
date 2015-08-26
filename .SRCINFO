@@ -1,0 +1,29 @@
+pkgbase = haskell-cheapskate
+	pkgdesc = Experimental markdown processor.
+	pkgver = 0.1.0.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/cheapskate
+	install = haskell-cheapskate.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-aeson
+	depends = haskell-blaze-html<0.10
+	depends = haskell-bytestring
+	depends = haskell-containers
+	depends = haskell-data-default<0.6
+	depends = haskell-http-types
+	depends = haskell-mtl
+	depends = haskell-syb
+	depends = haskell-text
+	depends = haskell-uniplate<1.7
+	depends = haskell-wai>=0.3
+	depends = haskell-wai-extra
+	depends = haskell-xss-sanitize<0.4
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/cheapskate/0.1.0.4/cheapskate-0.1.0.4.tar.gz
+	md5sums = ac42fb79b7d65fe63864cda3af538b26
+
+pkgname = haskell-cheapskate
+
