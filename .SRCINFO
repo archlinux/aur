@@ -1,0 +1,21 @@
+pkgbase = haskell-lifted-async
+	pkgdesc = Run lifted IO operations asynchronously and wait for their results
+	pkgver = 0.7.0.1
+	pkgrel = 1
+	url = https://github.com/maoe/lifted-async
+	install = haskell-lifted-async.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc
+	depends = haskell-async
+	depends = haskell-constraints
+	depends = haskell-lifted-base
+	depends = haskell-monad-control
+	depends = haskell-transformers-base
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/lifted-async/0.7.0.1/lifted-async-0.7.0.1.tar.gz
+	md5sums = 7de46b959f0d4842fab0c3841229ecca
+
+pkgname = haskell-lifted-async
+
