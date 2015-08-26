@@ -18,7 +18,8 @@ md5sums=('4dda7e779e550b7404cfe118f1d74222'
          'eadd4d3974a475ccc9d72f1e614c69df'
          '5c797ca334e4c7f326dc08df7a3eb5c9'
          '938f822ede2c9e76f2da0dd3ee38ba33'
-         '99e767dec306ff4d307eef151f352466')
+         '99e767dec306ff4d307eef151f352466'
+         'e584d783f50991881e8c16c1ba2be7b1')
 
 build() {
   cd ${pkgname}-${pkgver}
