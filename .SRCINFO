@@ -1,6 +1,6 @@
 pkgbase = ros-jade-image-view
 	pkgdesc = ROS - A simple viewer for ROS image topics.
-	pkgver = 1.12.12
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = http://www.ros.org/wiki/image_view
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = ros-jade-image-view
 	depends = ros-jade-camera-calibration-parsers
 	depends = opencv
 	depends = gtk2
-	source = image_view::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/image_view/1.12.12-0
+	source = image_view::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/image_view/1.12.14-0
 	md5sums = SKIP
 
 pkgname = ros-jade-image-view
