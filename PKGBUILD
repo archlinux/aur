@@ -1,7 +1,7 @@
 # Maintainer: Jiehong Ma <email@majiehong.com>
 
 pkgname=ihaskell-git
-pkgver=c7196b1029
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A Haskell kernel for IPython, built in a sandbox."
 arch=('i686' 'x86_64')
@@ -33,4 +33,6 @@ package() {
   cd "$srcdir/IHaskell/.stack-work/install/x86_64-linux/nightly-2015-08-03/7.10.1/bin"
   mkdir -p "$pkgdir/usr/bin/"
   cp ihaskell "$pkgdir/usr/bin/ihaskell"
+  printf '\n%s\n' "Now, install ihaskell with `ihaskell install`, and enjoy it in ipython notebook or console!"
+  printf '%s\n' 'Also make sure to set resolver to `resolver: nightly-2015-08-03` in your ~/.stack/global/stack.yaml file.'
 }
