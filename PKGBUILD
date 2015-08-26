@@ -58,10 +58,10 @@ cd $srcdir/build
 	  -DPYTHON_LIBRARIES=/usr/lib/libpython2.7.so \
 	  -DPYTHON_INCLUDE_PATH=/usr/include/python2.7/ \
 	  -DOTB_INSTALL_PYTHON_DIR=/usr/lib/python2.7/site-packages/ \
-	  -DITK_DIR=/usr/lib64/cmake/ITK-4.7 \
+	  -DITK_DIR=/usr/lib64/cmake/ITK-4.8 \
 	  -DBUILD_SHARED_LIBS=ON \
 	  -DOTB_USE_QT4=ON \
-	  -DOTB_USE_MAPNIK=ON \
+	  -DOTB_USE_MAPNIK=OFF \
 	  -DOTB_USE_OPENCV=ON \
 	  -DOTB_USE_MUPARSER=ON \
 	  -DOTB_USE_LIBKML=ON \
