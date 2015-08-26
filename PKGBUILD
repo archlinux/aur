@@ -20,11 +20,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-build() {
-  cd "$srcdir/$_pkgname"
-}
-
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 google "${pkgdir}/usr/bin/google"
