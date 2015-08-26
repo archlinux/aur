@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://pcp.io"
 license=('LGPL')
 depends=('python' 'nss' 'avahi' 'systemtap' 'procps-ng')
-makedepend=('libmicrohttpd' 'qt4')
+makedepends=('libmicrohttpd' 'qt4')
 optdepends=('libmicrohttpd: support for pmwebd'
             'qt4: support for PCP-GUI and pmchart')
 install="pcp.install"
