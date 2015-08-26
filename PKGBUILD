@@ -4,18 +4,17 @@ pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
 url='http://ros.org/wiki/perception_pcl'
 
 pkgname='ros-jade-perception-pcl'
-pkgver='1.2.6'
-_pkgver_patch=1
+pkgver='1.3.0'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-jade-pointcloud-to-laserscan
-  ros-jade-pcl-msgs
+ros_depends=(ros-jade-pcl-msgs
   ros-jade-pcl-ros
   ros-jade-pcl-conversions)
 depends=(${ros_depends[@]})
