@@ -1,0 +1,13 @@
+pkgbase = dunst-service
+	pkgdesc = A systemd service file for Dunst, the notification daemon.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/knopwob/dunst
+	arch = any
+	license = GPL2
+	depends = dunst
+	source = dunst.service
+	sha256sums = 10077cf4cf374fa17ca53a8bf6bc0bb672da6c3ad91f1b3c2d03e07c65506b07
+
+pkgname = dunst-service
+
