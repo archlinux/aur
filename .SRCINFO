@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-ros-controllers
+	pkgdesc = ROS - Library of ros controllers.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://ros.org/wiki/ros_controllers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-joint-trajectory-controller
+	depends = ros-indigo-gripper-action-controller
+	depends = ros-indigo-force-torque-sensor-controller
+	depends = ros-indigo-velocity-controllers
+	depends = ros-indigo-imu-sensor-controller
+	depends = ros-indigo-effort-controllers
+	depends = ros-indigo-joint-state-controller
+	depends = ros-indigo-joint-trajectory-controller
+	depends = ros-indigo-position-controllers
+	depends = ros-indigo-forward-command-controller
+	depends = ros-indigo-diff-drive-controller
+	source = ros_controllers::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/indigo/ros_controllers/0.9.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ros-controllers
+
