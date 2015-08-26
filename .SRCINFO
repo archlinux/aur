@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-runtime-monitor
 	pkgdesc = ROS - rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArray messages.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_runtime_monitor
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-jade-rqt-runtime-monitor
 	depends = ros-jade-qt-gui
 	depends = ros-jade-rospy
 	depends = python2-rospkg
-	source = rqt_runtime_monitor::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_runtime_monitor/0.4.1-0
+	source = rqt_runtime_monitor::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_runtime_monitor/0.4.2-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-runtime-monitor
