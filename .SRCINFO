@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-jackal-gazebo
+	pkgdesc = ROS - Launchfiles to use Jackal in Gazebo.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://wiki.ros.org/jackal_gazebo
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslaunch
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-gazebo-ros
+	depends = ros-indigo-hector-gazebo-plugins
+	depends = ros-indigo-gazebo-ros-control
+	depends = ros-indigo-jackal-description
+	depends = ros-indigo-gazebo-plugins
+	depends = ros-indigo-jackal-control
+	source = jackal_gazebo::git+https://github.com/clearpath-gbp/jackal_simulator-release.git#tag=release/indigo/jackal_gazebo/0.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-jackal-gazebo
+
