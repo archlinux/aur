@@ -1,0 +1,14 @@
+pkgbase = gimp-plugin-imgur-git
+	pkgdesc = A very simple gimp plugin to upload the current image anonymously to imgur.
+	pkgver = r11.027a23c
+	pkgrel = 1
+	url = https://github.com/utecht/gimp_imgur
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gimp
+	source = git://github.com/utecht/gimp_imgur.git#branch=master
+	sha512sums = SKIP
+
+pkgname = gimp-plugin-imgur-git
+
