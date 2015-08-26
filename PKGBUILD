@@ -4,23 +4,26 @@ pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
 url='http://ros.org/wiki/perception_pcl'
 
 pkgname='ros-jade-pcl-ros'
-pkgver='1.2.6'
-_pkgver_patch=1
+pkgver='1.3.0'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-pcl-msgs
+  ros-jade-roslib
   ros-jade-cmake-modules
   ros-jade-dynamic-reconfigure
   ros-jade-std-msgs
   ros-jade-sensor-msgs
+  ros-jade-genmsg
   ros-jade-nodelet
   ros-jade-roscpp
   ros-jade-catkin
   ros-jade-tf
   ros-jade-nodelet-topic-tools
   ros-jade-rosbag
+  ros-jade-rosconsole
   ros-jade-pluginlib
   ros-jade-pcl-conversions)
 makedepends=('cmake' 'git' 'ros-build-tools'
@@ -48,8 +51,10 @@ depends=(${ros_depends[@]}
 
 _tag=release/jade/pcl_ros/${pkgver}-${_pkgver_patch}
 _dir=pcl_ros
-source=("${_dir}"::"git+https://github.com/ros-gbp/perception_pcl-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=("${_dir}"::"git+https://github.com/ros-gbp/perception_pcl-release.git"#tag=${_tag}
+        "eigen3.patch")
+md5sums=('SKIP'
+         '88edcccaf4a04f30dd683ca304a90d82')
 
 build() {
   # Use ROS environment variables
@@ -59,6 +64,9 @@ build() {
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
+
+  # Apply patch
+  git -C ${srcdir}/${_dir} apply ${srcdir}/eigen3.patch
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}

@@ -1,0 +1,20 @@
+From 6e42c5511c5df5d8893a66761d76c36d8c3dcf62 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Benjamin=20Chr=C3=A9tien?= <chretien@lirmm.fr>
+Date: Wed, 26 Aug 2015 20:00:47 +0900
+Subject: Use pkg-config rather than FindEigen3.cmake
+
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f11bd18..3acbc95 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,8 @@ project(pcl_ros)
+ ## Find system dependencies
+ find_package(cmake_modules REQUIRED)
+ find_package(Boost REQUIRED COMPONENTS system filesystem thread)
+-find_package(Eigen3 REQUIRED)
++find_package(PkgConfig)
++pkg_search_module(Eigen3 REQUIRED eigen3)
+ find_package(PCL REQUIRED)
+ 
+ ## Find catkin packages
