@@ -55,9 +55,6 @@ package() {
   msg2 "Fixing permissions of documentation folder..."
   chmod 755 "$pkgdir"/usr/share/doc/google-chrome-$_channel/
 
-  msg2 "Adding support for CHROMIUM_USER_FLAGS..."
-  sed -i 's/ "$@"/ $CHROMIUM_USER_FLAGS "$@"/' "$pkgdir"/opt/google/chrome/google-chrome
-
   msg2 "Removing unnecessities (e.g. Debian Cron job)..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome/cron/
   rm "$pkgdir"/opt/google/chrome/product_logo_*.png
