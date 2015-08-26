@@ -1,4 +1,5 @@
-# Maintainer: Andreas Krinke <andreas dot krinke at gmx dot de>
+# Maintainer: Morten Linderud <morten@linderud.pw>
+# Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
 pkgname=gephi
 pkgver=0.8.2beta
 pkgrel=1
