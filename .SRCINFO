@@ -1,7 +1,7 @@
 pkgbase = headphones
 	pkgdesc = Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.
 	pkgver = 0.5.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rembo10/headphones
 	install = headphones.install
 	arch = any

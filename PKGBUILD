@@ -5,7 +5,7 @@
 _name=headphones
 pkgname=${_name}
 pkgver=0.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole."
 arch=('any')
 url="https://github.com/rembo10/${_name}"
@@ -32,7 +32,6 @@ package() {
 	mkdir -p "${pkgdir}/opt/${_name}"
 	chmod 775 "${pkgdir}/opt/${_name}"
 	cp -r ${_name}-${pkgver}/* "$pkgdir/opt/${_name}"
-	touch "$pkgdir/opt/${_name}/config.ini"
 
 	install -D -m644 ${_name}-system.service "$pkgdir/usr/lib/systemd/system/${_name}.service"
 	install -D -m644 ${_name}-user.service "$pkgdir/usr/lib/systemd/user/${_name}.service"
