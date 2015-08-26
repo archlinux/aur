@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-teleop-twist-joy
+	pkgdesc = ROS - Generic joystick teleop for twist robots.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://wiki.ros.org/teleop_twist_joy
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-roslint
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-joy
+	makedepends = ros-indigo-roslaunch
+	depends = ros-indigo-joy
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	source = teleop_twist_joy::git+https://github.com/ros-teleop/teleop_twist_joy-release.git#tag=release/indigo/teleop_twist_joy/0.1.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-teleop-twist-joy
+
