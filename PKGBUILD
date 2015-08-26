@@ -6,14 +6,14 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 
 pkgname=tengine-extra
-pkgver=2.1.0
-pkgrel=5
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'gperftools')
-makedepends=('lua51' 'geoip')
+depends=('pcre' 'zlib' 'openssl' 'gperftools' 'geoip')
+makedepends=('hardening-wrapper' 'lua51')
 backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/fastcgi_params'
         'etc/tengine/koi-win'
@@ -26,16 +26,16 @@ backup=('etc/tengine/fastcgi.conf'
         'etc/logrotate.d/tengine')
 install=tengine.install
 conflicts=('tengine')
+provides=('nginx' 'tengine')
 optdepends=(
 	'lua51: needed by http_lua_module'
-	'geoip: needed by http_geoip_module'
 	'memcached: needed by http_memcached_module')
 source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate)
-sha256sums=('6d98e217deb6676438f0704eb51736239e390624479fedb8c59ebf7a8a30e7b3'
+sha256sums=('7729d3a51a5f267c6d39bec957d242b626b798ce0546f207bd0f1a8df86ed570'
             '7abffe0f1ba1ea4d6bd316350a03257cc840a9fbb2e1b640c11e0eb9351a9044'
-            '22d7f8f7d8f3c320d3c6af8a76e6cc5b64451670cdeecb9f400000ceea91b4cb')
+            '4e2a1835d1e65e6c18b0c76699ff76f8c905124143e66bb686e4795f6b770a8c')
 
 build() {
     cd tengine-$pkgver
@@ -64,7 +64,7 @@ build() {
         --with-file-aio \
         --with-google_perftools_module \
         --with-http_dav_module \
-        --with-http_geoip_module=shared \
+        --with-http_geoip_module \
         --with-http_gunzip_module \
         --with-http_gzip_static_module \
         --with-http_lua_module=shared \
@@ -79,7 +79,8 @@ build() {
         --with-http_flv_module=shared \
         --with-http_mp4_module=shared \
         --with-http_sub_module=shared \
-        --with-http_sysguard_module=shared
+        --with-http_sysguard_module=shared \
+        --with-http_reqstat_module=shared
 
     make
 }
@@ -88,6 +89,13 @@ package() {
     cd tengine-$pkgver
     make DESTDIR="$pkgdir" install
     make DESTDIR="$pkgdir" dso_install
+
+    install -Dm644 contrib/vim/ftdetect/nginx.vim \
+      "$pkgdir"/usr/share/vim/vimfiles/ftdetect/nginx.vim
+    install -Dm644 contrib/vim/syntax/nginx.vim \
+      "$pkgdir"/usr/share/vim/vimfiles/syntax/nginx.vim
+    install -Dm644 contrib/vim/indent/nginx.vim \
+      "$pkgdir"/usr/share/vim/vimfiles/indent/nginx.vim
 
     sed -e 's|\<user\s\+\w\+;|user html;|g' \
         -e '44s|html|/usr/share/tengine/html|' \
