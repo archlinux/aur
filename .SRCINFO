@@ -1,0 +1,20 @@
+pkgbase = chicken-coops-utils
+	pkgdesc = Chicken Scheme Egg: coops-utils
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/4/coops-utils
+	install = chicken.install
+	arch = x86_64
+	license = BSD
+	depends = chicken-check-errors
+	depends = chicken-coops
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-coops-utils-1.0.0.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=coops-utils&version=1.0.0
+	source = chicken-coops-utils-1.0.0.html::http://wiki.call-cc.org/eggref/4/coops-utils.html
+	md5sums = 0c56e22842e869c7a5e35138a56176ae
+	md5sums = f438031ad187fada132b789446d9ea03
+
+pkgname = chicken-coops-utils
+
