@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-jackal-description
+	pkgdesc = ROS - URDF robot description for Jackal.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslaunch
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-urdf
+	depends = ros-indigo-xacro
+	depends = ros-indigo-robot-state-publisher
+	source = jackal_description::git+https://github.com/clearpath-gbp/jackal-release.git#tag=release/indigo/jackal_description/0.5.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-jackal-description
+
