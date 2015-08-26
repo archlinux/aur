@@ -1,0 +1,30 @@
+pkgbase = ros-jade-opencv-apps
+	pkgdesc = ROS - The opencv_apps package, most of code is taken from https://github.com/Itseez/opencv/tree/master/samples/cpp.
+	pkgver = 1.11.8
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-nodelet
+	makedepends = ros-jade-cv-bridge
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-image-transport
+	makedepends = ros-jade-std-srvs
+	makedepends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-cv-bridge
+	depends = ros-jade-message-runtime
+	depends = ros-jade-nodelet
+	depends = ros-jade-roscpp
+	depends = ros-jade-image-transport
+	depends = ros-jade-std-srvs
+	depends = ros-jade-dynamic-reconfigure
+	source = opencv_apps::git+https://github.com/ros-gbp/vision_opencv-release.git#tag=release/jade/opencv_apps/1.11.8-0
+	md5sums = SKIP
+
+pkgname = ros-jade-opencv-apps
+
