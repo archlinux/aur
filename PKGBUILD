@@ -2,14 +2,15 @@
 
 pkgname=pcp
 pkgver=3.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="System performance and analysis framework"
 arch=('i686' 'x86_64')
 url="http://pcp.io"
 license=('LGPL')
 depends=('python' 'nss' 'qt4' 'avahi' 'systemtap' 'procps-ng')
-makedepend=('libmicrohttpd')
-optdepends=('libmicrohttpd: support for pmwebd')
+makedepend=('libmicrohttpd' 'qt4')
+optdepends=('libmicrohttpd: support for pmwebd'
+            'qt4: support for PCP-GUI and pmchart')
 install="pcp.install"
 source=("ftp://ftp.pcp.io/projects/pcp/download/pcp-$pkgver.src.tar.gz"
         "pcp.install"
