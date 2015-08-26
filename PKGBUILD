@@ -16,7 +16,9 @@ source=('bzr+https://launchpad.net/streamripper-gui/trunk')
 md5sums=('SKIP')
 
 build() {
-  cd "${srcdir}/trunk"
+  cd "${srcdir}/trunk/src"
+  patch < ../../../dir_select.patch
+  cd ..
   make translations
 #  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
 #  make
