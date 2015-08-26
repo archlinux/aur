@@ -1,6 +1,6 @@
 pkgbase = ros-jade-tf2-geometry-msgs
 	pkgdesc = ROS - tf2_geometry_msgs.
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = http://www.ros.org/wiki/tf2_ros
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = ros-jade-tf2-geometry-msgs
 	depends = ros-jade-orocos-kdl
 	depends = ros-jade-geometry-msgs
 	depends = ros-jade-tf2-ros
-	source = tf2_geometry_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/jade/tf2_geometry_msgs/0.5.11-0
+	source = tf2_geometry_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/jade/tf2_geometry_msgs/0.5.12-0
 	md5sums = SKIP
 
 pkgname = ros-jade-tf2-geometry-msgs
