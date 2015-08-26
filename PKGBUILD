@@ -13,7 +13,6 @@ url="http://rigsofrods.com"
 license=('GPL')
 depends=('angelscript-2.22.1' 'openal' 'wxgtk' 'ogre-1.8' 'caelum-ogre1.8' 'mygui-ogre1.8' 'ogre-1.8-pagedgeometry' 'socketw')
 makedepends=('boost' 'cmake' 'git')
-replaces=('rigsofrods-hg')
 conflicts=('rigsofrods-git' 'rigsofrods-hg')
 provides=('rigsofrods')
 source=("https://github.com/RigsOfRods/rigs-of-rods/archive/$pkgver.tar.gz"

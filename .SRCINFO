@@ -20,7 +20,6 @@ pkgbase = rigsofrods
 	provides = rigsofrods
 	conflicts = rigsofrods-git
 	conflicts = rigsofrods-hg
-	replaces = rigsofrods-hg
 	source = https://github.com/RigsOfRods/rigs-of-rods/archive/0.4.5.1.tar.gz
 	source = plugins.cfg
 	source = rigsofrods.png
