@@ -1,6 +1,6 @@
 pkgbase = ros-jade-image-common
 	pkgdesc = ROS - Common code for working with images in ROS.
-	pkgver = 1.11.5
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://www.ros.org/wiki/image_common
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-jade-image-common
 	depends = ros-jade-camera-info-manager
 	depends = ros-jade-polled-camera
 	depends = ros-jade-image-transport
-	source = image_common::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/image_common/1.11.5-0
+	source = image_common::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/image_common/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-jade-image-common
