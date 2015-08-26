@@ -52,9 +52,6 @@ package() {
   msg2 "Fixing Chrome icon resolution..."
   sed -i "/Exec=/i\StartupWMClass=Google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
 
-  msg2 "Adding support for CHROMIUM_USER_FLAGS..."
-  sed -i 's/ "$@"/ $CHROMIUM_USER_FLAGS "$@"/' "$pkgdir"/opt/google/chrome-$_channel/google-chrome-$_channel
-
   msg2 "Removing unnecessities (e.g. Debian Cron job)..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome-$_channel/cron/
   rm "$pkgdir"/opt/google/chrome-$_channel/product_logo_*.png
