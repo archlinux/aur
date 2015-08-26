@@ -7,7 +7,7 @@ pkgdesc="System performance and analysis framework"
 arch=('i686' 'x86_64')
 url="http://pcp.io"
 license=('LGPL')
-depends=('python' 'nss' 'qt4' 'avahi' 'systemtap' 'procps-ng')
+depends=('python' 'nss' 'avahi' 'systemtap' 'procps-ng')
 makedepend=('libmicrohttpd' 'qt4')
 optdepends=('libmicrohttpd: support for pmwebd'
             'qt4: support for PCP-GUI and pmchart')

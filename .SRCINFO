@@ -9,7 +9,6 @@ pkgbase = pcp
 	license = LGPL
 	depends = python
 	depends = nss
-	depends = qt4
 	depends = avahi
 	depends = systemtap
 	depends = procps-ng
