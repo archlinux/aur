@@ -1,6 +1,6 @@
 pkgbase = picasso-3ds-git
 	pkgdesc = Picasso shader assembler for 3DS homebrew
-	pkgver = cefa910b5887f62f82bac6de0c67ffefd20b824f
+	pkgver = cefa910
 	pkgrel = 1
 	url = https://github.com/fincs/picasso/
 	arch = any

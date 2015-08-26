@@ -1,7 +1,7 @@
 pkgname=picasso-3ds-git
 _gitname=picasso
 pkgrel=1
-pkgver=cefa910b5887f62f82bac6de0c67ffefd20b824f
+pkgver=cefa910
 pkgdesc="Picasso shader assembler for 3DS homebrew"
 arch=('any')
 url="https://github.com/fincs/picasso/"
