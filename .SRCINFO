@@ -7,10 +7,10 @@ pkgbase = anttweakbar
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = custom:AntTweakBarLicense
+	license = zlib
 	makedepends = unzip
-	makedepends = glu
 	depends = gcc-libs
+	depends = glu
 	source = http://ufpr.dl.sourceforge.net/project/anttweakbar/AntTweakBar_116.zip
 	md5sums = 4349a13c0b5a493cf5b6b0757f3e7f0d
 
