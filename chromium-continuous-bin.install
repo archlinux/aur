@@ -15,22 +15,23 @@ yellow="${bold}$(tput setaf 3)"
 _update() {
     msg_blue "Updating icon cache.."
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
     msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
 }
 
 post_install() {
     _update
-   echo
+    echo
 
     note "Custom flags should be put directly in: ~/.config/chromium-flags.conf
     Setting CHROMIUM_FLAGS in /etc is deprecated."
-   echo
+    echo
 
     note "Pepper Flash is now auto-detected from: 
     - /usr/lib/PepperFlash (chromium-pepper-flash-dev)
     - /opt/google/chrome-unstable/PepperFlash (google-chrome-dev)"
-   echo
+    echo
 
     note "The launcher is called: 'chromium-continuous-bin'"
 }
