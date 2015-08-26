@@ -1,6 +1,6 @@
 pkgbase = sway-git
 	pkgdesc = i3 compatible window manager for Wayland
-	pkgver = r411.e232241
+	pkgver = r468.eb53f17
 	pkgrel = 1
 	url = https://github.com/SirCmpwn/sway
 	arch = i386
@@ -12,6 +12,7 @@ pkgbase = sway-git
 	depends = wlc-git
 	depends = xorg-server-xwayland
 	depends = xcb-util-image
+	depends = json-c
 	optdepends = rxvt-unicode: default terminal emulator
 	optdepends = dmenu: default for launching applications
 	source = sway::git+https://github.com/SirCmpwn/sway.git

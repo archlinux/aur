@@ -1,12 +1,12 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r411.e232241
+pkgver=r468.eb53f17
 pkgrel=1
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
 makedepends=("cmake" "git" "asciidoc")
-depends=("wlc-git" "xorg-server-xwayland" "xcb-util-image")
+depends=("wlc-git" "xorg-server-xwayland" "xcb-util-image" "json-c")
 optdepends=(
 	"rxvt-unicode: default terminal emulator"
 	"dmenu: default for launching applications"
