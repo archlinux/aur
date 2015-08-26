@@ -1,9 +1,9 @@
 # Contributor: Collin 'Fwirt' Skiles <sploopby at gmail dot com>
-# Maintainer: Brian "saikobee" Mock <mock.brian at gmail dot com>
+# Contributor: Brian "saikobee" Mock <mock.brian at gmail dot com>
 # Maintainer: Carlos Solis <csolisr at gmail dot com>
 pkgname=sfxr
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Random sound effect generator for games, etc."
 arch=('i686' 'x86_64')
 url="http://www.drpetter.se/project_sfxr.html"

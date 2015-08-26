@@ -1,18 +1,17 @@
 pkgbase = sfxr
 	pkgdesc = Random sound effect generator for games, etc.
 	pkgver = 1.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.drpetter.se/project_sfxr.html
 	install = sfxr.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = gtk2
+	depends = gtk3
 	depends = sdl
 	depends = hicolor-icon-theme
-	depends = gtk-update-icon-cache
 	source = http://www.drpetter.se/files/sfxr-sdl-1.2.1.tar.gz
-	sha256sums = ca93be8964c92fe3a2c945640cd3e93c95ae7abe24290818f4fe7f6e5a7cd835
+	md5sums = 794f18f5c527a344c7366687aa634d71
 
 pkgname = sfxr
 
