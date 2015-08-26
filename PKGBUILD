@@ -3,7 +3,7 @@
 
 _pkgname=tox-weechat
 pkgname=tox-weechat-git
-pkgver=r255.ed96d36
+pkgver=r260.210a644
 pkgrel=1
 
 pkgdesc='Tox protocol plugin for WeeChat'
@@ -12,7 +12,7 @@ url='https://github.com/haavardp/tox-weechat'
 license=('GPL3')
 
 depends=(
-  'tox-git'
+  'toxcore'
   'weechat>=1.0.1'
 )
 makedepends=('git' 'cmake')
