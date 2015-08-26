@@ -1,0 +1,12 @@
+pkgbase = graudit
+	pkgdesc = Grep rough source code auditing tool.
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/wireghoul/graudit
+	arch = any
+	license = GPL
+	source = http://www.justanotherhacker.com/projects/graudit-1.9_src.tar.gz
+	md5sums = bc7d05f29c87fc21fa3d16da690aead1
+
+pkgname = graudit
+
