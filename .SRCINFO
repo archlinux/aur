@@ -1,0 +1,18 @@
+pkgbase = qwinff
+	pkgdesc = A Qt4/5 GUI frontend for ffmpeg
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://qwinff.github.io/downloads.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = ffmpeg
+	depends = qt5-base
+	optdepends = sox: audio speed adjusting support
+	optdepends = libnotify: display desktop notifications
+	optdepends = mplayer: video cutting preview
+	source = http://sourceforge.net/projects/qwinff/files/release/v0.2.1/qwinff_0.2.1.tar.bz2
+	sha256sums = 5a3829a482a0c5f9fda3cf6680bff5941f1a6f1661187f3aae73983ec2113975
+
+pkgname = qwinff
+
