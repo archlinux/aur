@@ -1,0 +1,25 @@
+pkgbase = pk2cmd-plus
+	pkgdesc = PICkit 2 CLI software with updated DeviceFile and udev rules
+	pkgver = 1.21rc1_1.63.148
+	pkgrel = 2
+	url = http://www.microchip.com/pickit2
+	install = pk2cmd-plus.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libusb-compat
+	provides = pk2cmd
+	conflicts = pk2cmd
+	source = http://ww1.microchip.com/downloads/en/DeviceDoc/PICkit2_PK2CMD_WIN32_SourceV1-21_RC1.zip
+	source = PK2DeviceFile_v1.63.148.zip::http://www.microchip.com/forums/download.axd?file=0;749972
+	source = pk2_devicefile_osfile_paths.patch
+	source = 60-pickit2.rules
+	source = LICENSE
+	md5sums = 6f93ede97be484ab7859626a9156a5d6
+	md5sums = 3983ce4f45992318c4f0037c8d1acf9f
+	md5sums = c3972d96ac997eb35ae76a861eb4ae0c
+	md5sums = a5cf4ffff54af41c4d1cf8c97d007dcf
+	md5sums = 6d53baa09ac4ac3907d503992349b17a
+
+pkgname = pk2cmd-plus
+

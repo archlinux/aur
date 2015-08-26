@@ -1,0 +1,23 @@
+post_install() {
+  udevadm control --reload-rules &> /dev/null
+
+  echo "---------------------------------------------------------
+Before using PK2CMD you have to agree with LICENSE:
+/usr/share/licenses/pk2cmd-plus/LICENSE
+
+PICkit2 OS Firmware Version >= 2.32.00 is needed, if your
+PICkit2 don't have it just type:
+$ pk2cmd -DPK2V023200.hex
+
+For help type:
+$ pk2cmd
+---------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  udevadm control --reload-rules &> /dev/null
+}

@@ -1,0 +1,41 @@
+diff -Naur a/cmd_app.cpp b/cmd_app.cpp
+--- a/cmd_app.cpp	2009-01-07 20:59:18.000000000 +0000
++++ b/cmd_app.cpp	2012-07-25 04:01:20.237803773 +0100
+@@ -84,12 +84,8 @@
+ 		return;
+ 	}
+ 	else
+-	{ // no -B, check PATH
+-		_tsearchenv_s("PK2DeviceFile.dat", "PATH", tempString);
+-		if (_tcslen(tempString) < 17)
+-		{
+-			_tcsncpy_s(tempString, "PK2DeviceFile.dat", 17);
+-		}
++	{ // no -B
++		_tcsncpy_s(tempString, "/usr/share/pk2/PK2DeviceFile.dat", 32);
+ 	}
+ 	if (!PicFuncs.ReadDeviceFile(tempString))
+ 	{
+@@ -496,10 +492,18 @@
+ 			ret = Pk2BootLoadFuncs.ReadHexAndDownload(tempString, &PicFuncs, pk2UnitIndex);
+ 			if (!ret)
+ 			{
+-				printf("Error opening hex file.\n");
+-				fflush(stdout);
+-				ReturnCode = OPFAILURE;
+-				return true; // download command found
++				_TCHAR temp2String[MAX_PATH] = "";
++				_tcsncpy_s(temp2String, tempString, MAX_PATH-1);
++				_tcsncpy_s(tempString, "/usr/share/pk2/", 15);
++				_tcscat_s(tempString, temp2String);
++				ret = Pk2BootLoadFuncs.ReadHexAndDownload(tempString, &PicFuncs, pk2UnitIndex);
++				if (!ret)
++				{
++					printf("Error opening hex file.\n");
++					fflush(stdout);
++					ReturnCode = OPFAILURE;
++					return true; // download command found
++				}
+ 			}
+ 			ret = Pk2BootLoadFuncs.ReadHexAndVerify(tempString, &PicFuncs);
+ 			if (!ret)
