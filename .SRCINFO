@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-robot-steering
 	pkgdesc = ROS - rqt_robot_steering provides a GUI plugin for steering a robot using Twist messages.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_robot_steering
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-jade-rqt-robot-steering
 	depends = ros-jade-geometry-msgs
 	depends = ros-jade-rqt-gui
 	depends = python2-rospkg
-	source = rqt_robot_steering::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_robot_steering/0.4.1-0
+	source = rqt_robot_steering::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_robot_steering/0.4.2-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-robot-steering
