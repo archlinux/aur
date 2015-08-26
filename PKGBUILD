@@ -5,9 +5,9 @@ url='http://ros.org/wiki/filters'
 
 pkgname='ros-jade-filters'
 pkgver='1.7.4'
-_pkgver_patch=2
+_pkgver_patch=3
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-jade-roslib

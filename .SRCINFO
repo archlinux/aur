@@ -1,7 +1,7 @@
 pkgbase = ros-jade-filters
 	pkgdesc = ROS - This library provides a standardized interface for processing data as a sequence of filters.
 	pkgver = 1.7.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ros.org/wiki/filters
 	arch = any
 	license = BSD
@@ -18,7 +18,7 @@ pkgbase = ros-jade-filters
 	depends = ros-jade-pluginlib
 	depends = ros-jade-roslib
 	depends = ros-jade-roscpp
-	source = filters::git+https://github.com/ros-gbp/filters-release.git#tag=release/jade/filters/1.7.4-2
+	source = filters::git+https://github.com/ros-gbp/filters-release.git#tag=release/jade/filters/1.7.4-3
 	md5sums = SKIP
 
 pkgname = ros-jade-filters
