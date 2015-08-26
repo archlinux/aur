@@ -7,7 +7,12 @@ arch=('any')
 url='https://github.com/docker/docker-py'
 license=('Apache')
 
-depends=('python' 'python-six' 'python-requests')
+depends=(
+    'python'
+    'python-six'
+    'python-requests'
+    'python-websocket-client'
+)
 makedepends=('git' 'python-setuptools')
 provides=('python-docker-py')
 conflicts=('python-docker-py')
