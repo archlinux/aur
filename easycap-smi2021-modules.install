@@ -1,0 +1,22 @@
+_depmod() {
+	_major=$(pacman -Q linux | grep -Po "\d+\.\d+")
+	_extramodules=extramodules-$_major-ARCH
+	depmod $(cat /usr/lib/modules/$_extramodules/version)
+}
+
+post_install() {
+	cat << EOF
+===> You must load smi2021 module before using EasyCap:
+===> # modprobe smi2021
+EOF
+	_depmod
+}
+
+post_upgrade() {
+	_depmod
+	echo 'In order to use the new version, reload all the module(s) manually.'
+}
+
+post_remove() {
+	_depmod
+}
