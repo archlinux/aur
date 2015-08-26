@@ -10,7 +10,7 @@ pkgbase = rust-racer
 	makedepends = cargo
 	depends = rust
 	optdepends = rust-src
-	source = https://github.com/phildawes/racer/archive/v1.0.0.tar.gz
+	source = https://github.com/phildawes/racer/archive/v1.0.0/rust-racer-1.0.0.tar.gz
 	sha256sums = 78895296ed688eeccbaf7745235f0fc503407bfa718f53583a4dcc9e1246b7f5
 
 pkgname = rust-racer

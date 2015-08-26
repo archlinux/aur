@@ -13,7 +13,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
 install=$pkgname.install
-source=("https://github.com/phildawes/$_pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/phildawes/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('78895296ed688eeccbaf7745235f0fc503407bfa718f53583a4dcc9e1246b7f5')
 
 build() {
