@@ -3,8 +3,6 @@
 # Contributor: D. Can Celasun <dcelasun[at]gmail[dot]com>
 # Contributor: Slava Volkov <sv99sv[at]gmail[dot]com>
 # Contributor: Patrik Votoček <patrik[at]votocek[dot]cz>
-# 
-# GitHub Repo: https://github.com/KingYes/phpstorm-eap
 
 pkgname=phpstorm-eap
 _pkgname=PhpStorm # Directory name in the tar file
@@ -58,6 +56,6 @@ EOF
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/ || return 1
   install -m 644 ${startdir}/phpstorm-eap.desktop ${pkgdir}/usr/share/applications/
   install -m 644 ${pkgdir}/opt/${pkgname}/bin/webide.png ${pkgdir}/usr/share/pixmaps/phpstorm-eap.png
-  install -m 644 ${srcdir}/${_pkgname}-${pkgbuild}/license/${_pkgname}_license.txt ${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt
+  #install -m 644 ${srcdir}/${_pkgname}-${pkgbuild}/license/${_pkgname}_license.txt ${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt
   ln -s /opt/$pkgname/bin/phpstorm.sh "$pkgdir/usr/bin/phpstorm-eap"
 }
