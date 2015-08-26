@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-imu-sensor-controller
+	pkgdesc = ROS - Controller to publish state of IMU sensors.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-controller-interface
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-realtime-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-hardware-interface
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-controller-interface
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-realtime-tools
+	depends = ros-indigo-hardware-interface
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-pluginlib
+	source = imu_sensor_controller::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/indigo/imu_sensor_controller/0.9.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-imu-sensor-controller
+
