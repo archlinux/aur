@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-velocity-controllers
+	pkgdesc = ROS - velocity_controllers.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-control-msgs
+	makedepends = ros-indigo-controller-interface
+	makedepends = ros-indigo-control-toolbox
+	makedepends = ros-indigo-realtime-tools
+	makedepends = ros-indigo-angles
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-forward-command-controller
+	makedepends = ros-indigo-urdf
+	depends = ros-indigo-control-msgs
+	depends = ros-indigo-controller-interface
+	depends = ros-indigo-control-toolbox
+	depends = ros-indigo-realtime-tools
+	depends = ros-indigo-angles
+	depends = ros-indigo-forward-command-controller
+	depends = ros-indigo-urdf
+	source = velocity_controllers::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/indigo/velocity_controllers/0.9.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-velocity-controllers
+
