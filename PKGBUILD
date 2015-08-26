@@ -4,7 +4,7 @@ pkgdesc="ROS - The tf2_py package."
 url='http://ros.org/wiki/tf2_py'
 
 pkgname='ros-jade-tf2-py'
-pkgver='0.5.11'
+pkgver='0.5.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
