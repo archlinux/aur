@@ -1,0 +1,23 @@
+#Maintainer: DeaDDooMER <deaddoomer@deadsoftware.ru>
+
+pkgname=xkb-switch-git
+pkgver=20150826
+pkgrel=1
+pkgdesc='Program that allows to query and change the XKB layout state'
+arch=('i686' 'x86_64')
+url='https://github.com/ierton/xkb-switch'
+license=('GPL3')
+makedepends=('git' 'cmake')
+source=('git://github.com/ierton/xkb-switch')
+sha1sums=('SKIP')
+
+build() {
+	cd xkb-switch
+	cmake .
+	make
+}
+
+package() {
+	cd xkb-switch
+	make DESTDIR="$pkgdir/" install
+}
