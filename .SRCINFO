@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-tf-tree
 	pkgdesc = ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF frame tree.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_tf_tree
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = ros-jade-rqt-tf-tree
 	depends = ros-jade-tf2-ros
 	depends = ros-jade-rospy
 	depends = python2-rospkg
-	source = rqt_tf_tree::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_tf_tree/0.4.1-0
+	source = rqt_tf_tree::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_tf_tree/0.4.2-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-tf-tree
