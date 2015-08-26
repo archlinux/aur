@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-plot
 	pkgdesc = ROS - rqt_plot provides a GUI plugin visualizing numeric values in a 2D plot using different plotting backends.
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_plot
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ros-jade-rqt-plot
 	depends = python2-rospkg
 	depends = pyqwt
 	depends = python2-matplotlib
-	source = rqt_plot::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_plot/0.3.11-0
+	source = rqt_plot::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_plot/0.3.12-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-plot
