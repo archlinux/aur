@@ -7,13 +7,13 @@ vagga_source_version() {
 pkgver() {
 	vagga_source_version | tr '-' '_'
 }
-pkgver=0.2.5_146_gbae3de7
-pkgrel=2
+pkgver=0.2.5_148_gfb4dd7b
+pkgrel=1
 pkgdesc="Vagga is a containerisation tool without daemons"
 arch=('i686' 'x86_64')
 url="http://vagga.readthedocs.org"
 license=('MIT')
-depends=('shadow' 'glibc-static')
+depends=('shadow')
 makedepends=()
 checkdepends=()
 optdepends=('linux-user-ns-enabled: kernel with CONFIG_USER_NS enabled')
