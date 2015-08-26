@@ -20,7 +20,7 @@ sha1sums=('SKIP'
           'e5ae41c0157e8e318866be7785ff9bee3198d387'
           '0fe0fb09ce13383c26c39f016d23a37a9af82bef'
           '64fb34f100c4a94ab497581a871f006012727b5c'
-          '3f926508405a6546d31a819cc0909d312f0f0cdc'
+          '50f23061fcd03e0aafdefb3b676f1846c036c856'
           '2354eb8d1140e8e3ce523122a52a5d07fa80f739')
 install=dsview.install
 
