@@ -2,16 +2,27 @@
 pkgname=unity-editor
 _pkgver=5.1.0f3
 pkgver=${_pkgver}+2015082501
-pkgrel=1
+pkgrel=22
 pkgdesc="A cross-platform game engine used to develop video games for PC, consoles, mobile devices and websites. Linux Preview package"
 arch=('x86_64')
 url="https://unity3d.com"
 license=('custom')
-depends=('gtk2' 'gdk-pixbuf2' 'glib2' 'glibc' 'glib2' 'glu' 'atk' 'cairo' 'pango' 'fontconfig' 'libpng'
-	 'pcre' 'libffi' 'freetype2' 'alsa-lib' 'gconf' 'expat' 'libcups' 'libcap' 'libdbus' 'harfbuzz'
-	 'pixman' 'nspr' 'bzip2' 'dbus-glib' 'gnutls' 'avahi' 'attr' 'graphite' 'p11-kit' 'libtasn1'
-	 'nettle' 'gmp' 'libgl'
+depends=('libstdc++5' 'lib32-libstdc++5' 'lib32-gcc-libs' 'alsa-lib' 'glibc' 'lib32-glibc' 'cairo'
+	 'libcap' 'libcups' 'libdbus' 'expat' 'fontconfig' 'freetype2' 'freetype2' 'gcc-multilib'
+	 'gcc-libs-multilib' 'lib32-gcc-libs' 'gdk-pixbuf2' 'libgl' 'glu' 'glib2' 'nspr' 'nss' 'pango'
+	 'libx11' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr'
+	 'libxrender' 'libxtst' 'zlib'
 )
+
+# old deps got by ldd / before switching to doc from
+# http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
+#
+#'atk' 'libpng'
+#'pcre' 'libffi' 'gconf' 'harfbuzz'
+#'pixman' 'bzip2' 'dbus-glib' 'gnutls' 'avahi' 'attr' 'graphite' 'p11-kit' 'libtasn1'
+#'nettle' 'gmp'
+
+
 makedepends=('tar')
 source=("http://download.unity3d.com/download_unity/${pkgname}-installer-${pkgver}.sh"
 	"eula")
