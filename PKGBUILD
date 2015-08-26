@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+  sed -i -e 's/python/python2/' google
 }
 
 package() {
