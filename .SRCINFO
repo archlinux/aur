@@ -1,0 +1,15 @@
+pkgbase = rk-tools
+	pkgdesc = RockChip tools for RK29xx and RK30xx generations, mainly to modify ROMs (http://www.cnx-software.com/2012/11/04/rockchip-rk3066-rk30xx-processor-documentation-source-code-and-tools/).
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/rk3066/rk-tools.git
+	arch = i686
+	arch = x86_64
+	groups = system
+	license = unknown
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+
+pkgname = rk-tools
+
