@@ -1,0 +1,20 @@
+pkgbase = pycam
+	pkgdesc = Toolpath generator for 3-axis CNC machining, written in Python.
+	pkgver = 0.5.1
+	pkgrel = 4
+	url = http://pycam.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = python2-opengl
+	depends = python2-rsvg
+	depends = python2-gtkglext
+	depends = pstoedit
+	optdepends = psyco
+	source = http://downloads.sourceforge.net/project/pycam/pycam/0.5.1/pycam-0.5.1.tar.gz
+	source = memoryfix.patch
+	source = memoryfix.patch.sig
+
+pkgname = pycam
+

@@ -1,0 +1,36 @@
+-- pycam-0.5.1.orig/src/pycam/Utils/threading.py 2011-06-10 10:54:51.000000000 -0400
++++ pycam-0.5.1/src/pycam/Utils/threading.py 2011-11-13 15:50:34.294437639 -0500
+@@ -639,18 +639,21 @@
+     if __multiprocessing and not disable_multiprocessing:
+         # use the number of CPUs as the default number of worker threads
+         pool = __multiprocessing.Pool(__num_of_processes)
+-        if unordered:
+-            imap_func = pool.imap_unordered
+-        else:
+-            imap_func = pool.imap
+-        # Beware: we may not return "pool.imap" or "pool.imap_unordered"
+-        # directly. It would somehow loose the focus and just hang infinitely.
+-        # Thus we wrap our own generator around it.
+-        for result in imap_func(func, args):
+-            if callback and callback():
+-                # cancel requested
+-                break
+-            yield result
++        try:
++            if unordered:
++                imap_func = pool.imap_unordered
++            else:
++                imap_func = pool.imap
++            # Beware: we may not return "pool.imap" or "pool.imap_unordered"
++            # directly. It would somehow loose the focus and just hang infinitely.
++            # Thus we wrap our own generator around it.
++            for result in imap_func(func, args):
++                if callback and callback():
++                    # cancel requested
++                    break
++                yield result
++        finally:
++            pool.terminate()
+     else:
+         for arg in args:
+             if callback and callback():
