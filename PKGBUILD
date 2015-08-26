@@ -11,6 +11,7 @@ makedepends=('git')
 depends=('ncurses' 'python2' 'python2-six' 'python2-requests' 'python2-praw' 'python2-beautifulsoup4' 'python2-setuptools')
 source=('git+https://github.com/darkdragn/mangaGet2.git')
 sha256sums=('SKIP')
+install="${pkgname}.install"
 
 pkgver() {
   cd "$srcdir/mangaGet2"

@@ -1,0 +1,4 @@
+post_install() {
+    echo "Note the command to use mangaGet2 is mg2Cli.py"
+}
+
