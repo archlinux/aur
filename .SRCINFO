@@ -1,0 +1,17 @@
+pkgbase = streamripper-gui
+	pkgdesc = Detects on the automatic way, wich URL clementine/rhythmbox/amarok/etc. are now playing and rip it
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://skss.learnfree.eu/archives/3665
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-gobject
+	depends = pygtk
+	depends = python2-dbus
+	depends = streamripper
+	source = bzr+https://launchpad.net/streamripper-gui/trunk
+	md5sums = SKIP
+
+pkgname = streamripper-gui
+
