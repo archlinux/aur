@@ -1,0 +1,15 @@
+pkgbase = sdlroids
+	pkgdesc = Very hard and dynamic asteroids shooting game
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = http://david.hedbor.org/projects/sdlroids/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer
+	depends = sdl
+	source = http://downloads.sourceforge.net/project/sdlroids/sdlroids/1.3.4/sdlroids-1.3.4.tar.bz2
+	md5sums = ae3c310bf2871809a0e8317f47bf0b50
+
+pkgname = sdlroids
+
