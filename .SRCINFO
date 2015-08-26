@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-web
 	pkgdesc = ROS - rqt_web is a simple web content viewer for rqt.
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_web
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-jade-rqt-web
 	depends = ros-jade-qt-gui
 	depends = ros-jade-rospy
 	depends = python2-rospkg
-	source = rqt_web::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_web/0.3.11-0
+	source = rqt_web::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_web/0.3.12-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-web
