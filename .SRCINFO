@@ -9,9 +9,13 @@ pkgbase = isse
 	makedepends = git
 	depends = fftw
 	depends = jack
+	source = isse.sh
+	source = zenity.sh
 	source = isse-code::git://git.code.sf.net/p/isse/code#commit=451aa4e3522a37e9057e972bdcf18b458e891340
 	source = eigen::git://github.com/RLovelett/eigen.git#commit=4f8510325e951490df3249205ae8b69b7faed07f
 	source = juce::git://github.com/julianstorer/JUCE.git#commit=79d60f0b3523bac78822b805ff463cbd5db1cd2a
+	md5sums = 32f7cc11c8145d5c4713b56a24d31856
+	md5sums = c8edba2379d0fbcd5c2515fff4f3786f
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
