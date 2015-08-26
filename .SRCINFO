@@ -1,0 +1,14 @@
+pkgbase = f3
+	pkgdesc = Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised
+	pkgver = 5.0
+	pkgrel = 1
+	url = http://oss.digirati.com.br/f3/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = parted
+	source = https://github.com/AltraMayor/f3/archive/v5.0.zip
+	md5sums = 15859fe7af53330985821b8c91a19fef
+
+pkgname = f3
+
