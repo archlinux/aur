@@ -5,18 +5,13 @@ pkgdesc='Utilities for building arch packages for ROS stacks.'
 url="https://github.com/bchretien/arch-ros-stacks"
 
 pkgname='ros-build-tools'
-pkgver='0.1.2'
+pkgver='0.2.0'
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
 makedepends=()
 depends=()
-optdepends=('python2: package generation'
-            'python2-catkin_pkg: package generation'
-            'python2-certifi: package generation'
-            'python2-termcolor: package generation'
-            'python2-urllib3: package generation'
-            'python2-yaml: package generation')
+optdepends=('python2')
 
 pkg_destination_dir="/usr/share/ros-build-tools"
 
@@ -27,7 +22,6 @@ source=('fix-python-scripts.sh'
         'get_stack_dependencies.py'
         'generate_packages_makefile.py'
         'generate-python-patch.sh'
-        'import_catkin_packages.py'
         'clear-ros-env.sh')
 
 build() {
@@ -48,5 +42,4 @@ md5sums=('ed01573e0ecc0f7ca451d7e2849cc5ee'
          'd257f7f20384e894b0431ee61068aa96'
          '563c9d1320a3a997db25d3087303dcfb'
          '8d6d7eb89a12c449497b209f1a06655b'
-         '590922c9cb12d6e2f8e295df241e08ef'
          '07f5253eb3f8cb5295c32026a20ab6c0')
