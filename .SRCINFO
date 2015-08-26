@@ -1,7 +1,7 @@
 pkgbase = muttvcardsearch
 	pkgdesc = A small mutt carddav search utility.
-	pkgver = 1.9
-	pkgrel = 2
+	pkgver = 1.10
+	pkgrel = 1
 	url = https://github.com/tfl/muttvcardsearch
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = muttvcardsearch
 	depends = curl
 	depends = sqlite3
 	provides = muttvcardsearch
-	source = muttvcardsearch-1.9.tar.gz::https://github.com/BlackIkeEagle/muttvcardsearch/archive/v1.9.tar.gz
-	sha256sums = 4c099938dd02f577d8289bbc5e82f0af6f290a564a30f6fdcb5cc880cd02fc8d
+	source = muttvcardsearch-1.10.tar.gz::https://github.com/BlackIkeEagle/muttvcardsearch/archive/v1.10.tar.gz
+	sha256sums = 6014e4ccef00bd329cc9cfe8c8a94f9ecdb5167883bde4577816fcdfcd104f17
 
 pkgname = muttvcardsearch
 

@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Frank <ben+aur@pipsfrank.de>
 
 pkgname=muttvcardsearch
-pkgver=1.9
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="A small mutt carddav search utility."
 arch=('i686' 'x86_64')
 url="https://github.com/tfl/muttvcardsearch"
@@ -11,7 +11,7 @@ depends=('curl' 'sqlite3')
 makedepends=('cmake')
 provides=(muttvcardsearch)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BlackIkeEagle/muttvcardsearch/archive/v${pkgver}.tar.gz")
-sha256sums=('4c099938dd02f577d8289bbc5e82f0af6f290a564a30f6fdcb5cc880cd02fc8d')
+sha256sums=('6014e4ccef00bd329cc9cfe8c8a94f9ecdb5167883bde4577816fcdfcd104f17')
 
 build() {
   cd "$pkgname-$pkgver"
