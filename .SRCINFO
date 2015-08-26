@@ -1,14 +1,14 @@
 pkgbase = android-google-repository
 	pkgdesc = Android SDK Local Maven repository for Google Libraries
-	pkgver = r20
+	pkgver = r21
 	pkgrel = 1
 	url = https://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
 	depends = android-sdk
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/google_m2repository_r20.zip
-	sha1sums = 860eb15fa3f1bf6a9a5acac4f64a0e18cef43efc
+	source = https://dl-ssl.google.com/android/repository/google_m2repository_r21.zip
+	sha1sums = 056436bdbdb973e6f125bd16ba9e3bdcd1d33e6f
 
 pkgname = android-google-repository
 
