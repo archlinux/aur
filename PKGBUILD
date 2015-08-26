@@ -6,8 +6,8 @@
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.1
 pkgver=4.1.6
-pkgrel=1
-_toipatch=tuxonice-for-linux-4.1.5-2015-08-14.patch
+pkgrel=2
+_toipatch=tuxonice-for-linux-4.1.6-2015-08-22.patch
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -35,7 +35,7 @@ sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'a11122e8e521f8f90e5e4bf09139ca19ca4a02dddaf0e5e12145b98386072cb1'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ada3a931774838dc4752d1b2ba3000f35ac9dd75456bd7e2f1f0d88f2fc0c87c')
+            '4720c29dff3e8a3ab086ce4b66219aacc72ef291c82cf50571d2a73750e4a565')
 validpgpkeys=(
             'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
             '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman

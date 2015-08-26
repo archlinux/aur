@@ -1,7 +1,7 @@
 pkgbase = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
 	pkgver = 4.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = linux-ice
 	source = linux.preset
 	source = linux.install
 	source = change-default-console-loglevel.patch
-	source = http://tuxonice.net/downloads/all/tuxonice-for-linux-4.1.5-2015-08-14.patch.bz2
+	source = http://tuxonice.net/downloads/all/tuxonice-for-linux-4.1.6-2015-08-22.patch.bz2
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
 	sha256sums = 64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070
@@ -31,7 +31,7 @@ pkgbase = linux-ice
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = a11122e8e521f8f90e5e4bf09139ca19ca4a02dddaf0e5e12145b98386072cb1
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = ada3a931774838dc4752d1b2ba3000f35ac9dd75456bd7e2f1f0d88f2fc0c87c
+	sha256sums = 4720c29dff3e8a3ab086ce4b66219aacc72ef291c82cf50571d2a73750e4a565
 
 pkgname = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
