@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-srv
 	pkgdesc = ROS - A Python GUI plugin for introspecting available ROS message types.
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_srv
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-jade-rqt-srv
 	depends = ros-jade-rosmsg
 	depends = ros-jade-rqt-msg
 	depends = ros-jade-rospy
-	source = rqt_srv::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_srv/0.3.11-0
+	source = rqt_srv::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_srv/0.3.12-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-srv
