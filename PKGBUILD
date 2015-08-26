@@ -20,10 +20,12 @@ provides=('google-chrome' 'pepper-flash')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=stable
-source=('eula_text.html')
+source=('google-chrome-stable'
+        'eula_text.html')
 source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_i386.deb")
 source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
-md5sums=('b7e752f549b215ac77f284b6486794b6')
+md5sums=('9c9bd494c7cc5c98feff767be140a853'
+         'b7e752f549b215ac77f284b6486794b6')
 md5sums_i686=('cb57612d3c33503a3306489b222bdbc5')
 md5sums_x86_64=('24097e63c43976e9f9304edd5bcd4ac0')
 
@@ -32,6 +34,9 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 
   msg2 "Moving stuff in place..."
+  # Launcher
+  install -m755 google-chrome-stable "$pkgdir"/usr/bin/
+
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
     install -Dm644 "$pkgdir"/opt/google/chrome/product_logo_${i/x*}.png \
