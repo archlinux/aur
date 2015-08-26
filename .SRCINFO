@@ -1,0 +1,18 @@
+pkgbase = gephi
+	pkgdesc = An interactive graph visualization and exploration platform
+	pkgver = 0.8.2beta
+	pkgrel = 1
+	url = http://gephi.org
+	arch = i686
+	arch = x86_64
+	license = CDDL
+	license = GPL3
+	depends = java-runtime
+	depends = libxxf86vm
+	depends = jdk7-openjdk
+	options = !strip
+	source = http://launchpad.net/gephi/0.8/0.8.2beta/+download/gephi-0.8.2-beta.tar.gz
+	sha256sums = cc07dc6059f9a94dd729d8edfda230f95bc25d91dce17d94d73e5ead289bb365
+
+pkgname = gephi
+
