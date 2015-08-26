@@ -9,7 +9,7 @@ pkgdesc="Google Search from command line"
 arch=('any')
 url="https://github.com/jarun/google-cli"
 license=('GPL3')
-depends=('python2')
+depends=('python')
 makedepends=('git')
 conflicts=('google-cli')
 source=('git://github.com/jarun/google-cli.git')
@@ -23,7 +23,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  sed -i -e 's/python/python2/' google
 }
 
 package() {
