@@ -14,6 +14,7 @@ pkgbase = gnudatalanguage
 	depends = readline
 	depends = hdf5
 	depends = netcdf
+	depends = netcdf-cxx
 	depends = wxgtk
 	depends = fftw
 	depends = udunits

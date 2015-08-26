@@ -3,13 +3,13 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
 license=('GPL')
 depends=('python2' 'python2-numpy' 'plplot' 'gsl' 'readline' 'hdf5' 'netcdf' \
-    'wxgtk' 'fftw' 'udunits' 'pslib' 'grib_api' 'udunits' 'eigen3')
+    'netcdf-cxx' 'wxgtk' 'fftw' 'udunits' 'pslib' 'grib_api' 'udunits' 'eigen3')
 makedepends=('cmake')
 options=('!makeflags')
 source=(http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tar.gz \
