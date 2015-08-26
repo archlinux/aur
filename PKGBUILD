@@ -3,7 +3,7 @@
 _gitname=wget
 pkgname=$_gitname-git
 pkgver=1.16.3.r108.gd080a70
-pkgrel=1
+pkgrel=2
 pkgdesc="A network utility to retrieve files from the Web"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/wget/wget.html"
@@ -25,7 +25,7 @@ build() {
   git submodule init
   git config submodule.gnulib.url "$srcdir/gnulib"
   ./bootstrap
-  ./configure --prefix=/usr --without-included-regex --enable-nls --enable-dependency-tracking --with-ssl=gnutls --sysconfdir=/etc --with-metalink
+  ./configure --prefix=/usr --without-included-regex --enable-nls --enable-dependency-tracking --with-ssl=gnutls --sysconfdir=/etc --enable-assert --with-metalink
   make
 }
 
