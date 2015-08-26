@@ -17,7 +17,7 @@
 #   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
 
 pkgname=archdroid-icon-theme
-pkgver=r87.c3d81a2
+pkgver=r89.b9d90cf
 pkgrel=1
 pkgdesc="Port of Android 5.0 Lollipop's material design icons to Arch."
 arch=('any')
@@ -31,7 +31,7 @@ install="${pkgname}.install"
 source=("https://github.com/GreenRaccoon23/${pkgname}/raw/master/${pkgname}.tar.xz")
 # To revert to an older version, find them here:
 #   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
-md5sums=("7bcfa0eeeb0291b20da17712964054fb")
+md5sums=("8d3eea9c9407d578b27deb96195bf584")
 
 prepare() {
   if fc-list | grep Roboto >/dev/null; then
