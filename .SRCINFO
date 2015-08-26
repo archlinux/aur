@@ -1,0 +1,27 @@
+pkgbase = ros-jade-test-diagnostic-aggregator
+	pkgdesc = ROS - Basic diagnostic_aggregator tests are in the.
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = http://ros.org/wiki/test_diagnostic_aggregator
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-diagnostic-aggregator
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-diagnostic-msgs
+	makedepends = ros-jade-pluginlib
+	makedepends = ros-jade-rospy
+	depends = ros-jade-diagnostic-msgs
+	depends = ros-jade-roscpp
+	depends = ros-jade-diagnostic-aggregator
+	depends = ros-jade-pluginlib
+	depends = ros-jade-rospy
+	source = test_diagnostic_aggregator::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/jade/test_diagnostic_aggregator/1.8.7-0
+	md5sums = SKIP
+
+pkgname = ros-jade-test-diagnostic-aggregator
+
