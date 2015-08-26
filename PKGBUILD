@@ -3,11 +3,11 @@
 
 pkgname=anttweakbar
 pkgver=1.16
-pkgrel=5
+pkgrel=6
 pkgdesc="C/C++ lib that allows programmers to quickly add a light and intuitive GUI into graphic apps to interactively tweak their params"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://anttweakbar.sourceforge.net"
-license=('custom')
+license=('custom:AntTweakBarLicense')
 makedepends=('unzip' 'glu')
 depends=('gcc-libs')
 source=("http://ufpr.dl.sourceforge.net/project/anttweakbar/AntTweakBar_116.zip")

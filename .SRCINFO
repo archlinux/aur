@@ -1,11 +1,13 @@
 pkgbase = anttweakbar
 	pkgdesc = C/C++ lib that allows programmers to quickly add a light and intuitive GUI into graphic apps to interactively tweak their params
 	pkgver = 1.16
-	pkgrel = 5
+	pkgrel = 6
 	url = http://anttweakbar.sourceforge.net
 	arch = i686
 	arch = x86_64
-	license = custom
+	arch = armv6h
+	arch = armv7h
+	license = custom:AntTweakBarLicense
 	makedepends = unzip
 	makedepends = glu
 	depends = gcc-libs
