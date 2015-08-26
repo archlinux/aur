@@ -1,9 +1,10 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail.com>
+# Contributor: Piotr Krzemiński <pio.krzeminski@gmail.com>
 
 pkgname=qnapi
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="Qt5 client for downloading movie subtitles from NapiProjekt, OpenSubtitles, Napisy24"
 arch=('i686' 'x86_64')
 url="https://github.com/QNapi/${pkgname}"
@@ -11,7 +12,7 @@ license=('GPL')
 depends=('qt5-base')
 changelog=ChangeLog
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QNapi/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('83b4d54addc189df965a6a429918cadb904a201e3b250c26ad1cb97c56554b1a')
+sha256sums=('ea1d5056e2bfbe9a2feea928388bd411bac64b9b19327c73946c7d4dd0c9ec9b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
