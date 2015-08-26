@@ -1,0 +1,16 @@
+pkgbase = rkflashtool
+	pkgdesc = Flash tool for Rockchip
+	pkgver = 199.24593f3
+	pkgrel = 1
+	url = http://linux-rockchip.info/mw/index.php?title=Rkflashtool
+	install = rkflashtool.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb
+	provides = rkflashtool
+	source = git://github.com/linux-rockchip/rkflashtool.git
+	sha256sums = SKIP
+
+pkgname = rkflashtool
+
