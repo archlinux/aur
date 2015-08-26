@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-jackal-msgs
+	pkgdesc = ROS - Messages exclusive to Jackal, especially for representing low-level motor commands and sensors.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://wiki.ros.org/jackal_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	source = jackal_msgs::git+https://github.com/clearpath-gbp/jackal-release.git#tag=release/indigo/jackal_msgs/0.5.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-jackal-msgs
+
