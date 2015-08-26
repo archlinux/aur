@@ -1,0 +1,17 @@
+pkgbase = pg_rrule-git
+	pkgdesc = RRULE data type for PostgreSQL
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/petropavel13/pg_rrule
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = postgresql
+	depends = libical
+	provides = pg_rrule
+	source = git://github.com/petropavel13/pg_rrule.git
+	sha256sums = SKIP
+
+pkgname = pg_rrule-git
+
