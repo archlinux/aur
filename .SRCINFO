@@ -1,14 +1,14 @@
 pkgbase = papirus-kmail-theme
 	pkgdesc = Modified and adaptive Paper theme for Kmail
-	pkgver = 20150825
+	pkgver = 20150826
 	pkgrel = 1
 	url = https://github.com/varlesh/papirus-pack-kde
 	arch = any
 	license = CCPL:by-sa
 	depends = kmail
 	options = !strip
-	source = papirus-pack-kde-20150825.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/f7d48a6835fa1eb33dc882048228b6fbe8209669.tar.gz
-	sha256sums = 36d244e0facd648b3e141a965dd843a8e68081a5110027a5b506156e1b0d645a
+	source = papirus-pack-kde-20150826.tar.gz::https://github.com/varlesh/papirus-pack-kde/archive/2ebf0e5956d20c06435245307d5617e4afec5e82.tar.gz
+	sha256sums = 4ea1ef367cfd0ddd91fd16a043808ae36bb7000f0174b8ab9337b2b0a61f7795
 
 pkgname = papirus-kmail-theme
 
