@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-console
 	pkgdesc = ROS - rqt_console provides a GUI plugin for displaying and filtering ROS messages.
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_console
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-jade-rqt-console
 	depends = ros-jade-rqt-gui-py
 	depends = ros-jade-rospy
 	depends = python2-rospkg
-	source = rqt_console::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_console/0.3.11-0
+	source = rqt_console::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/jade/rqt_console/0.3.12-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-console
