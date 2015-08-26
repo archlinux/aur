@@ -1,0 +1,16 @@
+pkgbase = pdfminer-git
+	pkgdesc = python utils to extract& analyze text data of PDF files.
+	pkgver = 20130409
+	pkgrel = 1
+	url = http://www.unixuser.org/~euske/python/pdfminer/
+	arch = i686
+	arch = x86_64
+	license = MIT/X
+	makedepends = git
+	makedepends = python2
+	depends = python2
+	provides = pdfminer
+	conflicts = pdfminer
+
+pkgname = pdfminer-git
+
