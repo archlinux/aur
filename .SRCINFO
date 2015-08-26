@@ -1,6 +1,6 @@
 pkgbase = ros-jade-camera-calibration
 	pkgdesc = ROS - camera_calibration allows easy calibration of monocular or stereo cameras using a checkerboard calibration target.
-	pkgver = 1.12.12
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = http://www.ros.org/wiki/camera_calibration
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = ros-jade-camera-calibration
 	depends = ros-jade-image-geometry
 	depends = ros-jade-rospy
 	depends = opencv
-	source = camera_calibration::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/camera_calibration/1.12.12-0
+	source = camera_calibration::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/camera_calibration/1.12.14-0
 	md5sums = SKIP
 
 pkgname = ros-jade-camera-calibration
