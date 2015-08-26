@@ -1,0 +1,14 @@
+pkgbase = mediterraneannight-theme
+	pkgdesc = A gtk3, gtk2, metacity, xfwm4 and unity theme (variation of 'Adwaita cupertino').
+	pkgver = 2.03
+	pkgrel = 2
+	url = http://gnome-look.org/content/show.php/MediterraneanNight+Series?content=156782
+	arch = any
+	license = GPL
+	depends = gtk-engines
+	depends = gtk-engine-murrine
+	depends = gtk3
+	source = https://dl.dropboxusercontent.com/u/80497678/MediterraneanNight-2.03.tar.gz
+
+pkgname = mediterraneannight-theme
+
