@@ -12,7 +12,7 @@
 set -u
 _pkgname='botocore'
 pkgname="python-${_pkgname}-git"
-pkgver=1.1.9.r2100.g0bfe1c2
+pkgver=1.1.10.r2108.gaf77892
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -35,7 +35,7 @@ depends=('python' # See setup.py, README.rst, and requirements.txt for version d
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-botocore')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a10208e7e3e8ad3df8a5a9686a6ac2e3b9def2f837ebc7fda91db1304bd565c7')
+sha256sums=('97df642692123f805741a45ba9291dcfb4cfe37aab1230fa7710d4edeceee65a')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
