@@ -1,6 +1,6 @@
 pkgbase = ros-jade-image-rotate
 	pkgdesc = ROS - Contains a node that rotates an image stream in a way that minimizes the angle between a vector in some arbitrary frame and a vector in the camera frame.
-	pkgver = 1.12.12
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = http://ros.org/wiki/image_rotate
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = ros-jade-image-rotate
 	depends = ros-jade-tf2-ros
 	depends = ros-jade-dynamic-reconfigure
 	depends = opencv
-	source = image_rotate::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/image_rotate/1.12.12-0
+	source = image_rotate::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/jade/image_rotate/1.12.14-0
 	md5sums = SKIP
 
 pkgname = ros-jade-image-rotate
