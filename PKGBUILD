@@ -2,7 +2,7 @@
 pkgname=unity-editor
 _pkgver=5.1.0f3
 pkgver=${_pkgver}+2015082501
-pkgrel=22
+pkgrel=3
 pkgdesc="A cross-platform game engine used to develop video games for PC, consoles, mobile devices and websites. Linux Preview package"
 arch=('x86_64')
 url="https://unity3d.com"
@@ -24,6 +24,19 @@ depends=('libstdc++5' 'lib32-libstdc++5' 'lib32-gcc-libs' 'alsa-lib' 'glibc' 'li
 
 
 makedepends=('tar')
+
+optdepends=('ffmpeg: WebGL'
+	    'nodejs: WebGL'
+	    'jre6: WebGl'
+	    'gzip: WebGL'
+	    'java-environment-openjdk=7: Android / Tizen'
+	    'mono>=4.0.1: MonoDevelop'
+	    'mono-addins>=0.6.2: MonoDevelop'
+	    'gnome-sharp: MonoDevelop'
+	    'desktop-file-utils: MonoDevelop'
+	    'hicolor-icon-theme: MonoDevelop'
+	    'xsp: To run ASP.NET pages directly from monodevelop'
+	    )
 source=("http://download.unity3d.com/download_unity/${pkgname}-installer-${pkgver}.sh"
 	"eula")
 #source=("https://developer.android.com/training/index.html")
