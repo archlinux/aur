@@ -12,7 +12,7 @@ pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
 _pkgver=2.8
 pkgver=2.8
-pkgrel=2
+pkgrel=3
 pkgdesc='QGIS (long-term release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -39,7 +39,8 @@ depends=('qt4'
          'python2-pytz'
          'python2-httplib2'
          'libspatialite'
-         'spatialindex')
+         'spatialindex'
+         'icu')
 makedepends=('cmake'
              'flex'
              'bison'
@@ -51,20 +52,24 @@ optdepends=('grass: GRASS plugin support'           # Uncomment relevant cmake o
             'osgearth: QGIS Globe plugin support'   # or the Globe Plugin enabled
             'gpsbabel: GPS toolbar support')
 provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
 install="$pkgname.install"
 source=("${_pkgname}::git://github.com/qgis/QGIS.git#branch=release-${_pkgver//./_}"
+        "$pkgname.png"
+        "$pkgname.sh"
         "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
 md5sums=('SKIP'
+         '738cc27475119c899c1ce7bf495459ff'
+         '5bac82b00870c491056cd8705be482f0'
          '57efd9c869ed2d0a50fb7cf35048d99d')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
+
   printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-   cd "${srcdir}/${_pkgname}"
+   cd $_pkgname
 
    mv "${srcdir}/console.py" python/console/
 
@@ -77,7 +82,7 @@ build() {
   # Fix insecure RPATH is weird, but just works ;)
   # echo "os.system(\"sed -i '/^LFLAGS/s|-Wl,-rpath,.\+ ||g' gui/Makefile core/Makefile\")" >> python/configure.py.in
 
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   if [ -d build ]; then
     rm -rf build
@@ -85,11 +90,14 @@ build() {
   mkdir build
   cd build
 
-  cmake ../ \
+  cmake -G "Unix Makefiles" ../ \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_BUILD_RPATH=FALSE \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE \
+    -DCMAKE_INSTALL_RPATH=/opt/$pkgname/lib \
+    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=FALSE \
+    -DCMAKE_INSTALL_PREFIX=/opt/$pkgname/ \
     -DENABLE_TESTS=OFF \
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
@@ -120,25 +128,56 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  cd build
+  cd $_pkgname/build
 
   make DESTDIR="$pkgdir/" install
   
+  # qgis.desktop
+  sed -i -e "s,^Name=QGIS Desktop\$,Name=QGIS Desktop (long-term release)," \
+         -e "s,^Icon=qgis\$,Icon=$pkgname," \
+         -e "s,^TryExec=/usr/bin/qgis\$,TryExec=/usr/bin/$pkgname," \
+         -e "s,^Exec=/usr/bin/qgis %F\$,Exec=/usr/bin/$pkgname %F," \
+         "${srcdir}/${_pkgname}/debian/qgis.desktop"
+
+  # qbrowser.desktop
+  sed -i -e "s,^Name=QGIS Browser\$,Name=QGIS Browser (long-term release)," \
+         -e "s,^Icon=qgis\$,Icon=qbrowser," \
+         -e "s,^TryExec=/usr/bin/qbrowser\$,TryExec=/usr/bin/qbrowser-ltr," \
+         -e "s,^Exec=/usr/bin/qbrowser %F\$,Exec=/usr/bin/qbrowser-ltr %F," \
+         "${srcdir}/${_pkgname}/debian/qbrowser.desktop"
+
   # install some freedesktop.org compatibility
-  install -D -m644 "$srcdir/$_pkgname/debian/qgis.desktop" \
-    "$pkgdir/usr/share/applications/qgis.desktop"
-  install -D -m644 "$srcdir/$_pkgname/debian/qbrowser.desktop" \
-    "$pkgdir/usr/share/applications/qbrowser.desktop"
+  install -Dm755 "$srcdir/$_pkgname/debian/qgis.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  install -Dm755 "$srcdir/$_pkgname/debian/qbrowser.desktop" \
+    "$pkgdir/usr/share/applications/qbrowser-ltr.desktop"
+
+  install -Dm644 "$srcdir/$pkgname.png" \
+    "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
+  #install -Dm644 $srcdir/$_pkgname/debian/qbrowser-icon512x512.png \
+  #  "$pkgdir/usr/share/pixmaps/qbrowser-ltr.png"
+
+  # rename executables so they don't conflict with qgis or qgis-ltr
+  install -Dm755 $srcdir/$pkgname.sh \
+    $pkgdir/usr/bin/$pkgname
+
+  install -Dm755 $pkgdir/opt/$pkgname/bin/qbrowser \
+    $pkgdir/usr/bin/qbrowser-ltr
+
+  install -Dm755 $pkgdir/opt/$pkgname/bin/qgis_mapserv.fcgi \
+    $pkgdir/usr/bin/qgis_mapserv_ltr.fcgi
 
   # TODO: these aren't working for some reason, ie, .qgs files are not opened by QGIS...
   # Appears to be a conflict with some file types being defaulted to google-chrome/chromium if that's installed as well.
-  install -dm755 "$pkgdir/usr/share/pixmaps" \
-    "$pkgdir/usr/share/mimelnk/application"
-  for mime in "$srcdir/$_pkgname/debian/mime/application/"*.desktop
-    do install -m644 "$mime" "$pkgdir/usr/share/mimelnk/application"
-  done
-  ln -s /usr/share/qgis/images/icons/qgis-icon.png "$pkgdir/usr/share/pixmaps/qgis.png"
-  ln -s /usr/share/qgis/images/icons/qbrowser-icon.png "$pkgdir/usr/share/pixmaps/qbrowser.png"
-  ln -s /usr/share/qgis/images/icons/qgis-mime-icon.png "$pkgdir/usr/share/pixmaps/qgis-mime-icon.png"  
+  #install -dm755 "$pkgdir/usr/share/pixmaps" \
+  #  "$pkgdir/usr/share/mimelnk/application"
+
+  #for mime in "$srcdir/$_pkgname/debian/mime/application/"*.desktop
+  #  do install -m644 "$mime" "$pkgdir/usr/share/mimelnk/application"
+  #done
+
+  #install -Dm644 "$srcdir/$pkgname/images/icons/qgis-mime-icon.png \
+  #  "$pkgdir/usr/share/pixmaps/qgis-mime.png"
 }

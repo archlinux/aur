@@ -1,7 +1,7 @@
 pkgbase = qgis-ltr
 	pkgdesc = QGIS (long-term release) is a Geographic Information System (GIS) that supports vector, raster & database formats
 	pkgver = 2.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qgis.org/
 	install = qgis-ltr.install
 	arch = i686
@@ -35,15 +35,19 @@ pkgbase = qgis-ltr
 	depends = python2-httplib2
 	depends = libspatialite
 	depends = spatialindex
+	depends = icu
 	optdepends = grass: GRASS plugin support
 	optdepends = fcgi: QGIS Map Server support
 	optdepends = osgearth: QGIS Globe plugin support
 	optdepends = gpsbabel: GPS toolbar support
 	provides = qgis=2.8
-	conflicts = qgis
 	source = qgis::git://github.com/qgis/QGIS.git#branch=release-2_8
+	source = qgis-ltr.png
+	source = qgis-ltr.sh
 	source = https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py
 	md5sums = SKIP
+	md5sums = 738cc27475119c899c1ce7bf495459ff
+	md5sums = 5bac82b00870c491056cd8705be482f0
 	md5sums = 57efd9c869ed2d0a50fb7cf35048d99d
 
 pkgname = qgis-ltr
