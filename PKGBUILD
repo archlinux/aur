@@ -20,10 +20,12 @@ provides=('google-chrome' 'pepper-flash')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=beta
-source=('eula_text.html')
+source=('google-chrome-beta'
+        'eula_text.html')
 source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_i386.deb")
 source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
-md5sums=('b7e752f549b215ac77f284b6486794b6')
+md5sums=('aa5660e4808cd290ff7b50670a5ad380'
+         'b7e752f549b215ac77f284b6486794b6')
 md5sums_i686=('4aa3f5e82da809ac6fedba9c6303b031')
 md5sums_x86_64=('7086e37a8940714a9e9dfb2b5419ee36')
 
@@ -32,6 +34,9 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 
   msg2 "Moving stuff in place..."
+  # Launcher
+  install -m755 google-chrome-beta "$pkgdir"/usr/bin/
+
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
     install -Dm644 "$pkgdir"/opt/google/chrome-$_channel/product_logo_${i/x*}.png \
