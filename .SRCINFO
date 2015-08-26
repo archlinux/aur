@@ -1,0 +1,30 @@
+pkgbase = mowedline
+	pkgdesc = an X status bar program
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = http://retroj.net/mowedline
+	arch = x86_64
+	license = GPL3
+	depends = chicken
+	depends = chicken-coops
+	depends = chicken-dbus>=0.92
+	depends = chicken-filepath
+	depends = chicken-imperative-command-line-a>=0.4
+	depends = chicken-list-utils
+	depends = chicken-mailbox
+	depends = chicken-matchable
+	depends = chicken-miscmacros
+	depends = chicken-xft
+	depends = chicken-xlib
+	depends = chicken-xtypes
+	depends = chicken-coops-utils
+	depends = chicken-xlib-utils
+	provides = mowedline
+	conflicts = mowedline
+	source = mowedline-0.2.8.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=mowedline&version=0.2.8
+	source = mowedline-0.2.8.html::http://wiki.call-cc.org/eggref/4/mowedline.html
+	md5sums = e5964503fc3202f9f3978176eb4a6efe
+	md5sums = fbb161cb902a5ea3d77d8268e2c22a87
+
+pkgname = mowedline
+
