@@ -1,6 +1,6 @@
 pkgbase = ros-jade-image-transport
 	pkgdesc = ROS - image_transport should always be used to subscribe to and publish images.
-	pkgver = 1.11.5
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://ros.org/wiki/image_transport
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = ros-jade-image-transport
 	depends = ros-jade-message-filters
 	depends = ros-jade-rosconsole
 	depends = ros-jade-pluginlib
-	source = image_transport::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/image_transport/1.11.5-0
+	source = image_transport::git+https://github.com/ros-gbp/image_common-release.git#tag=release/jade/image_transport/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-jade-image-transport
