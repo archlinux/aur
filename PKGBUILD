@@ -15,7 +15,7 @@ set -u
 _pkgname='aws-cli'
 pkgname="${_pkgname}-git" # Add -git for the git package
 pkgver=1.7.47.r2741.g4c4fcd1
-# Change the vresion and you must also change the version of botocore below
+# Change the version and you must also change the version of botocore below
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services.'
 arch=('any')
@@ -46,7 +46,7 @@ conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
 replaces=(                   'python-aws-cli' 'awscli')
 provides=('awscli')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('2bbadda283a1ced4f1711795a8d423559074b6660a7fda54c0259d76462eb7b9')
+sha256sums=('3dfb61f1b7e06b05c80798887a1ff92c672f2829b7d593300c44bc1119fd7e8e')
 options=('!emptydirs')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
