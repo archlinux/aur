@@ -13,10 +13,6 @@ conflicts=('google-cli-git')
 source=("https://github.com/jarun/google-cli/archive/v$pkgver.tar.gz")
 md5sums=('d62b7909ef8bac354b0c7267ade34969')
 
-build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-}
-
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   install -Dm755 google "${pkgdir}/usr/bin/google"
