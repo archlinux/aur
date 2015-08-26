@@ -7,6 +7,7 @@ pkgbase = titan-git
 	arch = x86_64
 	groups = devel
 	license = eclipse
+	depends = expect
 	depends = openssl
 	depends = jdk7-openjdk
 	source = git+https://github.com/eclipse/titan.core
