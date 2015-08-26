@@ -1,0 +1,19 @@
+pkgbase = xwiimote-git
+	pkgdesc = Open Source Nintendo Wii Remote Linux Device Driver
+	pkgver = xwiimote.2
+	pkgrel = 1
+	url = http://dvdhrm.github.io/xwiimote
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ncurses
+	depends = udev
+	provides = xwiimote
+	conflicts = xwiimote
+	backup = etc/X11/xorg.conf.d/50-fix-xwiimote.conf
+	source = git://github.com/dvdhrm/xwiimote.git
+	md5sums = SKIP
+
+pkgname = xwiimote-git
+
