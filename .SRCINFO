@@ -1,6 +1,6 @@
 pkgbase = ros-jade-rqt-robot-dashboard
 	pkgdesc = ROS - rqt_robot_dashboard provides an infrastructure for building robot dashboard plugins in rqt.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_robot_dashboard
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ros-jade-rqt-robot-dashboard
 	depends = ros-jade-rqt-robot-monitor
 	depends = ros-jade-rqt-gui-py
 	depends = ros-jade-rospy
-	source = rqt_robot_dashboard::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_robot_dashboard/0.4.1-0
+	source = rqt_robot_dashboard::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/jade/rqt_robot_dashboard/0.4.2-0
 	md5sums = SKIP
 
 pkgname = ros-jade-rqt-robot-dashboard
