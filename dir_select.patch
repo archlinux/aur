@@ -1,0 +1,19 @@
+--- streamripper-gui.py	2015-08-26 21:50:44.165077894 +0200
++++ streamripper-gui.py	2015-08-26 21:49:33.373210570 +0200
+@@ -18,6 +18,7 @@
+         import subprocess
+         import signal
+         import shlex
++        import urlparse
+ except:
+         print "Please install all dependencies!"
+         sys.exit(1)
+@@ -141,7 +142,7 @@
+                 else:
+                         stream = url
+                 if stream:
+-                        dest_dir = self.window1.get_widget('filechooserbutton1').get_current_folder()
++                        dest_dir = urlparse.urlparse(self.window1.get_widget('filechooserbutton1').get_uri()).path
+                         self.ns = Namespace()
+                         self.record_active = True
+                         self.window1.get_widget("button2").hide()
