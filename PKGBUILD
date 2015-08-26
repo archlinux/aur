@@ -3,7 +3,7 @@
 
 pkgname=mopidy-youtube-git
 _pkgname=mopidy-youtube
-pkgver=1.0.1.r18.g2e7ce46
+pkgver=v2.0.1.r0.gc566175
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube"
 
@@ -11,7 +11,7 @@ arch=('any')
 url="http://www.mopidy.com"
 license=('APACHE')
 depends=(
-  'mopidy'
+  'mopidy>=1.0'
   'python2-pykka>=1.1'
   'python2-setuptools'
   'python2-pafy'
