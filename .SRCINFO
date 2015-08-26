@@ -1,0 +1,16 @@
+pkgbase = azmq-git
+	pkgdesc = C++ language binding library integrating ZeroMQ with Boost Asio
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/zeromq/azmq
+	arch = any
+	license = custom:boost
+	makedepends = git
+	makedepends = cmake>=2.8
+	makedepends = boost>=1.54
+	makedepends = zeromq>=4.0
+	depends = boost>=1.54
+	depends = zeromq>=4.0
+
+pkgname = azmq-git
+
