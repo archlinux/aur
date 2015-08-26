@@ -1,0 +1,21 @@
+pkgbase = haskell-charset
+	pkgdesc = Fast unicode character sets based on complemented PATRICIA tries
+	pkgver = 0.3.7.1
+	pkgrel = 1
+	url = http://github.com/ekmett/charset
+	install = haskell-charset.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc
+	depends = haskell-semigroups
+	depends = haskell-array
+	depends = haskell-bytestring
+	depends = haskell-containers
+	depends = haskell-unordered-containers
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/charset/0.3.7.1/charset-0.3.7.1.tar.gz
+	md5sums = 522caae63cc57efb9f5f3531f55e93bb
+
+pkgname = haskell-charset
+
