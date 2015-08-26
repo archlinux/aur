@@ -4,7 +4,7 @@ pkgdesc="ROS - Lisp client library for ROS, the Robot Operating System."
 url='http://ros.org/wiki/roslisp'
 
 pkgname='ros-jade-roslisp'
-pkgver='1.9.18'
+pkgver='1.9.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
