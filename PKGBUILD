@@ -28,7 +28,7 @@ if [ $I_WANT_WEBM_SUPPORT = yes ]; then
   optdepends+=('ffmpeg: basic video support e.g. WEBM')
 fi
 
-source=(git+https://github.com/phillipberndt/pqiv#branch=libav)
+source=(git+https://github.com/phillipberndt/pqiv)
 sha256sums=(SKIP)
 
 pkgver() {
