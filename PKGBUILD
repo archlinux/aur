@@ -1,45 +1,36 @@
-# Maintainer: Michael Kopp <kopp.michael@yahoo.de>
-pkgname=pdfminer-git
-pkgver=20130409
+# Maintainer: David Manouchehri <david@davidmanouchehri.com>
+# Contributor: Michael Kopp <kopp.michael@yahoo.de>
+
+_gitname=pdfminer
+pkgname=$_gitname-git
+_gitbranch=master
+_gitauthor=euske
+pkgver=r480.14fd0fd
 pkgrel=1
 pkgdesc="python utils to extract& analyze text data of PDF files."
-arch=('i686' 'x86_64')
 url="http://www.unixuser.org/~euske/python/pdfminer/"
 license=('MIT/X')
+source=("git://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch")
+validpgpkeys=('F0FE029614EA35BC9E4F9768A6ECFD0C40839755') # David Manouchehri
+sha512sums=('SKIP')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64') # arch=('any')
 depends=('python2')
 makedepends=('git' 'python2')
-conflicts=('pdfminer')
-provides=('pdfminer')
+conflicts=("$_gitname")
+provides=("$_gitname")
 
-_gitroot="git://github.com/euske/pdfminer.git"
-_gitname="pdfminer"
-
-build() {
-  msg "Connecting to GIT server...."
-
-  if [[ -d $_gitname ]] ; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-
-  rm -rf "$srcdir/$_gitname-build"
-  cp -r "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+pkgver() {
+  cd "$srcdir/$_gitname"
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
-  msg "Starting make..."
-
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname"
   python2 setup.py install --home=$pkgdir/usr
-  mv $pkgdir/usr/lib/python $pkgdir/usr/lib/python2.7
-
-  # todo: do this only when option 'doc' is set
-  msg "Copying documentation..."
-  cp -r docs $pkgdir/usr/share/doc/pdfminer
 }
 
-# vim: ft=sh syn=sh et
+# vim:set sw=2 sts=2 et:
