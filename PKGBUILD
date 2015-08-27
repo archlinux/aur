@@ -35,7 +35,7 @@ source=("http://download.unity3d.com/download_unity/unity-editor-installer-${_ve
         'monodevelop-unity')
 noextract=("unity-editor-installer-${_version}${_build}+${_buildtag}.sh")
 sha256sums=('bf73e7693ae15b271dbbd55010eb33fae3400b964fa4b70289bd5a17d19d5493'
-            '06dc55d6a701de1484e7b0487df3075e84a2bf2897875b9f971a5c450f434e9d'
+            'SKIP'
             'a03aaf639c6ba56a0ef03a591f0f629a3e015a3a3c6999ecc0feb6b2284c901b'
             '7309ac206fbb6eb5f1a073bf22e2571e1a574410ab410138a19fb66c3eee21e3')
 options=(!strip)
