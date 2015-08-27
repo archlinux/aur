@@ -9,9 +9,9 @@
 # Contributor: Antonio Santos <asantos at gmail dot com>
 
 pkgname=eclipse-android
-pkgver=23.0.6
+pkgver=23.0.7
 _sdkver=24.1.2
-pkgrel=2
+pkgrel=1
 pkgdesc='Eclipse plugin for Android'
 url='https://developer.android.com/sdk/eclipse-adt.html'
 license=('Apache' 'BSD' 'EPL' 'LGPL')
@@ -19,7 +19,7 @@ arch=('any')
 depends=("android-sdk>=${_sdkver}" 'java-environment' 'eclipse>=4.5' 'eclipse-wtp')
 options=('!strip')
 source=("http://dl.google.com/android/ADT-${pkgver}.zip" "LICENSE.kxml2")
-sha1sums=('1ce14cf4f6e3bf8e4213dd22cfd14c2237c8c22d'
+sha1sums=('3722429c2adfe9dc6d3dca89f6aa745835100023'
           'c0a96dc032bb53e2921200c85f5cf650e49878e9')
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = eclipse-android
 	pkgdesc = Eclipse plugin for Android
-	pkgver = 23.0.6
-	pkgrel = 2
+	pkgver = 23.0.7
+	pkgrel = 1
 	url = https://developer.android.com/sdk/eclipse-adt.html
 	arch = any
 	license = Apache
@@ -13,9 +13,9 @@ pkgbase = eclipse-android
 	depends = eclipse>=4.5
 	depends = eclipse-wtp
 	options = !strip
-	source = http://dl.google.com/android/ADT-23.0.6.zip
+	source = http://dl.google.com/android/ADT-23.0.7.zip
 	source = LICENSE.kxml2
-	sha1sums = 1ce14cf4f6e3bf8e4213dd22cfd14c2237c8c22d
+	sha1sums = 3722429c2adfe9dc6d3dca89f6aa745835100023
 	sha1sums = c0a96dc032bb53e2921200c85f5cf650e49878e9
 
 pkgname = eclipse-android
