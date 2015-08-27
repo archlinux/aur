@@ -1,19 +1,18 @@
 pkgbase = libtcod
 	pkgdesc = Roguelike graphics/utility library
 	pkgver = 1.5.1
-	pkgrel = 5
-	url = http://roguecentral.org/doryen/libtcod/
+	pkgrel = 6
+	url = https://bitbucket.org/libtcod/libtcod
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = mercurial
 	depends = libpng
 	depends = sdl
 	depends = glu
 	options = !makeflags
-	source = http://roguecentral.org/doryen/?file_id=26
-	source = makefile-linux64.patch
-	md5sums = 3efe844f03fa4d6fdff98aa4cc85ef3d
-	md5sums = af563a240f9a101c105d3abb25a1f19e
+	source = hg+https://bitbucket.org/libtcod/libtcod#tag=1.5.1
+	md5sums = SKIP
 
 pkgname = libtcod
 
