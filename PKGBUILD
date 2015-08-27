@@ -6,7 +6,7 @@ pkgdesc="Pale Moon language pack for system default language."
 arch=('any')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL')
-depends=("palemoon")
+depends=("palemoon>=$pkgver")
 source=("lang-pref.js")
 md5sums=('c654129d7633ca682436825e6eb0aead')
 

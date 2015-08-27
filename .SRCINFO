@@ -6,7 +6,7 @@ pkgbase = palemoon-i18n-default
 	arch = any
 	license = MPL
 	license = GPL
-	depends = palemoon
+	depends = palemoon>=25.6
 	source = lang-pref.js
 	md5sums = c654129d7633ca682436825e6eb0aead
 
