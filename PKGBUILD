@@ -3,14 +3,14 @@
 
 pkgname=riemann
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Monitors distributed systems"
 arch=('any')
 url="http://riemann.io/"
 license=('EPL')
 depends=('java-runtime' 'bash')
 install='riemann.install'
-source=("http://aphyr.com/riemann/$pkgname-$pkgver.tar.bz2"
+source=("https://aphyr.com/riemann/$pkgname-$pkgver.tar.bz2"
         'logging.patch'
         'riemann.install'
         'riemann.sysusers'
