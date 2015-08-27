@@ -1,0 +1,17 @@
+pkgbase = ros-indigo-rocon-python-redis
+	pkgdesc = ROS - Locally patched version of the python redis client (https://github.com/andymccurdy/redis-py).
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = https://github.com/andymccurdy/redis-py
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = python2-catkin-pkg
+	source = rocon_python_redis::git+https://github.com/yujinrobot-release/rocon_tools-release.git#tag=release/indigo/rocon_python_redis/0.1.23-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-python-redis
+
