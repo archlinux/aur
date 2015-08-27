@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-ess-git
-pkgver=15.03.1.146.g58e0ecc
+pkgver=15.03.1.161.g0cc8380
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
 arch=('any')
 url="http://ess.r-project.org"
 license=('GPL')
-depends=('emacs' 'r')
+depends=('emacs-julia-mode' 'r')
 makedepends=('git' 'texlive-plainextra')
 provides=('ess' 'emacs-ess')
 conflicts=('emacs-ess' 'emacs-ess-svn')
