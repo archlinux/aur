@@ -2,15 +2,12 @@
 
 pkgname=zoom
 pkgver=1.0.22331.0731
-pkgrel=1
+pkgrel=2
 pkgdesc="Start or join Zoom meetings"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://zoom.us/"
-depends=('qt5-base' 'qt5-webkit' 'qt5-svg' 'qt5-declarative' 'qt5-location' 'qt5-xmlpatterns'
-        'qt5-webchannel' 'qt5-sensors' 'qt5-script' 'glib2' 'lib32-mesa' 'lib32-libxcb'
-        'lib32-libgl' 'lib32-libxi' 'lib32-libsm' 'lib32-fontconfig' 'lib32-libpulse'
-        'lib32-libxcomposite' 'lib32-libxslt' 'gstreamer0.10-base-plugins')
+depends=('lib32-libxml2' 'lib32-libsm' 'lib32-sqlite' 'lib32-libxrender' 'lib32-fontconfig' 'lib32-libxcomposite' 'lib32-libxi' 'lib32-nvidia-utils')
 options=(!strip)
 source=("https://zoom.us/client/latest/ZoomInstaller_i386.deb")
 md5sums=('519689cc7b2b399adf12ffbe41adef46')
