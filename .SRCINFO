@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-yocs-velocity-smoother
+	pkgdesc = ROS - Bound incoming velocity messages according to robot velocity and acceleration limits.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://ros.org/wiki/yocs_velocity_smoother
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-ecl-threads
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-nav-msgs
+	makedepends = ros-indigo-pluginlib
+	makedepends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-ecl-threads
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-nav-msgs
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-nodelet
+	source = yocs_velocity_smoother::git+https://github.com/yujinrobot-release/yujin_ocs-release.git#tag=release/indigo/yocs_velocity_smoother/0.6.4-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-yocs-velocity-smoother
+
