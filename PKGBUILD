@@ -3,6 +3,7 @@
 # Contributor: Xpander <xpander0@gmail.com>
 # Contributor: Stefan Achatz <erazor_de@users.soruceforge.net>
 # Contributor: Zachary Lund <admin@computerquip.com>
+# Contributor: Jesus Gonzalez <jesusmgh@gmail.com>
 
 pkgname=('roccat-tools-common'
          'roccat-tools-arvo'
@@ -25,7 +26,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -142,7 +143,7 @@ package_roccat-tools-konepuremilitary() {
   cd "$srcdir/$pkgbase-$pkgver/konepuremilitary"
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
-  install -Dm644 udev/90-roccat-savu.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-konepuremilitary.rules
+  install -Dm644 udev/90-roccat-konepuremilitary.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-konepuremilitary.rules
 }
 
 package_roccat-tools-konextd() {
@@ -162,7 +163,7 @@ package_roccat-tools-konextdoptical() {
   cd "$srcdir/$pkgbase-$pkgver/konextdoptical"
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
-  install -Dm644 udev/90-roccat-savu.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-konextdoptical.rules
+  install -Dm644 udev/90-roccat-konextdoptical.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-konextdoptical.rules
 }
 
 package_roccat-tools-kovaplus() {

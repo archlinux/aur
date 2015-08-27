@@ -1,7 +1,7 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
