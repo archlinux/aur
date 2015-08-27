@@ -1,7 +1,7 @@
 # Maintainer: ant32 <antreimer@gmail.com>
 _qt_module=qtwinextras
 pkgname="mingw-w64-qt5-winextras"
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=('any')
 pkgdesc="Qt5 for Windows -- QtWinExtras component (mingw-w64)"
@@ -11,8 +11,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
 url="http://qt-project.org/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('11c3949a279ca6339e70cceed8d45ea2')
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('d6cbcbf3464d35a057ae08a6cd91aa29')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

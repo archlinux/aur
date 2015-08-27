@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-winextras
 	pkgdesc = Qt5 for Windows -- QtWinExtras component (mingw-w64)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-qt5-winextras
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtwinextras-opensource-src-5.4.2.tar.xz
-	md5sums = 11c3949a279ca6339e70cceed8d45ea2
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qtwinextras-opensource-src-5.5.0.tar.xz
+	md5sums = d6cbcbf3464d35a057ae08a6cd91aa29
 
 pkgname = mingw-w64-qt5-winextras
 
