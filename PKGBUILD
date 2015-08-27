@@ -1,6 +1,6 @@
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=(any)
 pkgdesc="Classes for audio, video, radio and camera functionality (mingw-w64)"
@@ -11,10 +11,10 @@ groups=(mingw-w64-qt mingw-w64-qt5)
 license=("custom, FDL, GPL3, LGPL")
 url="http://qt-project.org"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-qtmultimedia-mingw-w64-vsnprintf-workaround.patch"
         "qtmultimedia-dont-use-case-sensitive-headers.patch")
-md5sums=('b94baed3effda9187d71300b3e37d2d5'
+md5sums=('2759807c5d1842ee69e516aacd5e756a'
          'c21ff895212a17dc0a748aeadb67601d'
          '7ecd5ee2735440472fae4b7d7a32879e')
 
