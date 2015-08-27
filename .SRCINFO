@@ -1,0 +1,17 @@
+pkgbase = ros-indigo-rocon-bubble-icons
+	pkgdesc = ROS - Bubble icon library for rocon.
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = http://ros.org/wiki/rocon_bubble_icons
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = python2-catkin-pkg
+	source = rocon_bubble_icons::git+https://github.com/yujinrobot-release/rocon_tools-release.git#tag=release/indigo/rocon_bubble_icons/0.1.23-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-bubble-icons
+
