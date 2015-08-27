@@ -9,7 +9,7 @@ _build_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.0.RC2.r123.gb8459b3
+pkgver=v0.6.0.RC2.r126.g6e1a8fa
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -66,16 +66,4 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 
 	make INSTALL_ROOT="${pkgdir}" install
-
-	# Plugins
-	if [[ "$_build_voip" == "true" ]] ; then
-		install -D -m 755 \
-			"plugins/VOIP/libVOIP.so" \
-			"${pkgdir}/usr/lib/retroshare/extensions6/libVOIP.so"
-	fi
-	if [[ "$_build_feedreader" == "true" ]] ; then
-		install -D -m 755 \
-			"plugins/FeedReader/libFeedReader.so" \
-			"${pkgdir}/usr/lib/retroshare/extensions6/libFeedReader.so"
-	fi
 }
