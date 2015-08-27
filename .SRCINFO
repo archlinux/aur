@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-laptop-battery-monitor
+	pkgdesc = ROS - Simple script to check battery status.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://ros.org/wiki/laptop_battery_monitor
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-diagnostic-msgs
+	makedepends = ros-indigo-smart-battery-msgs
+	depends = ros-indigo-rospy
+	depends = ros-indigo-diagnostic-msgs
+	depends = ros-indigo-smart-battery-msgs
+	source = laptop_battery_monitor::git+https://github.com/ros-gbp/linux_peripheral_interfaces-release.git#tag=release/indigo/laptop_battery_monitor/0.1.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-laptop-battery-monitor
+
