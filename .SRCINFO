@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-ecl-config
+	pkgdesc = ROS - These tools inspect and describe your system with macros, types and functions.
+	pkgver = 0.61.1
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_config
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-license
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-ecl-build
+	depends = ros-indigo-ecl-license
+	depends = ros-indigo-ecl-build
+	source = ecl_config::git+https://github.com/yujinrobot-release/ecl_lite-release.git#tag=release/indigo/ecl_config/0.61.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ecl-config
+
