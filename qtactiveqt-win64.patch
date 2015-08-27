@@ -1,0 +1,39 @@
+diff -rupN qtactiveqt-opensource-src-5.4.1/src/activeqt/container/qaxbase.cpp qtactiveqt-opensource-src-5.4.1-new/src/activeqt/container/qaxbase.cpp
+--- qtactiveqt-opensource-src-5.4.1/src/activeqt/container/qaxbase.cpp	2015-02-17 05:56:13.000000000 +0100
++++ qtactiveqt-opensource-src-5.4.1-new/src/activeqt/container/qaxbase.cpp	2015-06-23 16:41:44.483979750 +0200
+@@ -2164,6 +2164,10 @@
+             QStringList versions = controls.childGroups();
+             foreach (const QString &version, versions) {
+                 tlfile = controls.value(QLatin1Char('/') + version + QLatin1String("/0/win32/.")).toString();
++                if(tlfile.isEmpty())
++                {
++                  tlfile = controls.value(QLatin1Char('/') + version + QLatin1String("/0/win64/.")).toString();
++                }
+                 if (!tlfile.isEmpty())
+                     break;
+             }
+diff -rupN qtactiveqt-opensource-src-5.4.1/tools/dumpcpp/main.cpp qtactiveqt-opensource-src-5.4.1-new/tools/dumpcpp/main.cpp
+--- qtactiveqt-opensource-src-5.4.1/tools/dumpcpp/main.cpp	2015-02-17 05:56:13.000000000 +0100
++++ qtactiveqt-opensource-src-5.4.1-new/tools/dumpcpp/main.cpp	2015-06-23 16:35:53.157273425 +0200
+@@ -1515,6 +1515,10 @@
+             typeLib = settings.value(QLatin1Char('/') + codes.at(c) + QLatin1String("/0/win32/.")).toString();
+             if (QFile::exists(typeLib))
+                 break;
++            typeLib = settings.value(QLatin1String("/") + codes.at(c) + QLatin1String("/0/win64/.")).toByteArray();
++            if (QFile::exists(typeLib)) {
++                break;
++            }
+         }
+ 
+         if (!typeLib.isEmpty())
+@@ -1577,6 +1581,10 @@
+                                      + QLatin1String("/win32/.")).toString();
+             if (QFile::exists(typeLib))
+                 break;
++            typeLib = settings.value(key + QLatin1String("/") + codes.at(c) + QLatin1String("/win64/.")).toByteArray();
++            if (QFile::exists(typeLib)) {
++                break;
++            }
+         }
+     }
+ 

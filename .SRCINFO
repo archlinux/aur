@@ -1,0 +1,29 @@
+pkgbase = mingw-w64-qt5-activeqt
+	pkgdesc = Qt's ActiveX Framework (mingw-w64)
+	pkgver = 5.5.0
+	pkgrel = 1
+	url = http://qt-project.org
+	arch = any
+	groups = mingw-w64-qt
+	groups = mingw-w64-qt5
+	license = custom, FDL, GPL3, LGPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-headers-git
+	makedepends = mingw-w64-crt-git
+	makedepends = mingw-w64-winpthreads-git
+	makedepends = python
+	depends = mingw-w64-qt5-base
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qtactiveqt-opensource-src-5.5.0.tar.xz
+	source = qt5-activeqt-fix-compilation.patch
+	source = qtactiveqt-fix-build.patch
+	source = qtactiveqt-win64.patch
+	md5sums = be5e0a79decc87d02c574348d9663e6a
+	md5sums = 86c63b9808b0c8c7a8c2203bee73c42b
+	md5sums = 7a7ba436452aa56613b3fbb15684e094
+	md5sums = 1264d0274586aec14f96a978b416b048
+
+pkgname = mingw-w64-qt5-activeqt
+
