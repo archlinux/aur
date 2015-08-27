@@ -1,0 +1,12 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>Internet Archive</os:ShortName>
+<os:Description>Search www.archive.org</os:Description>
+<os:InputEncoding>ISO-8859-1</os:InputEncoding>
+<os:Image width="16" height="16">data:image/x-icon;base64,R0lGODlhEAAQAPf0ABQAABMTERQTEhcXFxUYFRscGCwWEzYQDSAkHiAhICEiISQkIiUmJScnJSkpKSsrKi8vLDcvKjM0LzE1Mjc3NjU6Nj44NTw9OT0+Pj4/PD9CQUYdF00lJEE0KkQ9N0Y9NFItLFUvL1wzLFc/PV01MGE8PWU/OWk5NGo7OkBAP0RFREVJRURJRkVLR0ZIRkdJSUZLSEhMS0pPTFZOSllDQlZXVWFJRWVKQWRLRGtPRG9KSWxQRWxRRmhQTHJCQnFDRHVEQHZFQHpLS3hKTHlNSn5PSn5PTXxOUHRWTXBeU29jXXtgWHxjXn1mZIBQS4BQUIJZUoBZWIVeXYhfW4ZsX41jXYlrXoxuX4RuYoppYotza5NlZ5Zua5J4bpt5ZpaDeaKBb42MiY6MiY6NiY+QjJGIhZGKhZiLgp+IgJGRjJOSjZKSj5SWjpSTkJWVkJWUkpaUkZaVkquLgKmMgayPgK6Sh6mWj6ycj7GQgbKSgLWSgrqXi7maj7Sck7Smn72ilK+so6ytqbanobKppLysoLytor6uprqxqr2wqr+zrL23tMOklsCroMKvpcWqoMSsocStocSupcS1qce2rMa6r8m1rsO8ssa4sM65sty5q9C6sc3DttbEvdbKv9nFt9rHvODAsuDIuuHLvufKvurNvNDLwtDPy9nLwN3Oxt3Xz+TMwODQxuPTxuXRxefRxuHWzO3Ux+/WxunXy+vWyO3XzujYyuzYy+7bz+HZ0eHZ1eLc0uXc0+bc2Ore0u7c0O/f0vHf1eTg2+/h1O/h1u/j2u/m2vDh0/Hg1vDi1fHi1fPh1fPh1/bg1vLq3fXr3/ng1vjl2fnk2fTr5fTs4vHu6Pfw5vb07vnz5vvy5/zy5vry6Pv06vj17/7y6v/17fz47/757v/57v/38Pr58/358f358//68P778v/68/z89v/99f/+9f//9P7+9///9/z8+f//+P//+/7+/v///v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAQABAAAAj+ALeUoDHjAosYKlKsaAHjhYsMgYaAAGABggwNDgbUqMAAgwIKa47oMBChwIQHAQRIQEAgQYMFYX6EGFEmDZk2ceCoYePmjZgxpnxEaSKPntGjR+fRi/dESo9y3MYFy8ULl65Sit6loyaEgw14qQANQuTn0pkPHsxYa2eEC5Nu0ywlMmSn0Z0OSg6RW4fiAA512nahqoQGkqckgqShO+ekypJw2F6titTlTywsnLxtY3diww135k59cjRnESkqmMR9YwdEBI9imwoxqiMHTx4rmohVAxdExI5Wkgg94rNHj5crWr5QulYESo5bxmqJGgUqExg6fSZ1akaEBBJXvlgfybI1C1YoVbSA9XI2xUSWZ9B+IROWTFk0ZsuODcsWEAA7</os:Image>
+<UpdateInterval>7</UpdateInterval>
+<UpdateUrl>http://mycroft.mozdev.org/update.php/id0/archive.src</UpdateUrl>
+<IconUpdateUrl>http://mycroft.mozdev.org/update.php/id0/archive.gif</IconUpdateUrl>
+<SearchForm>http://www.archive.org/</SearchForm>
+<os:Url type="text/html" method="GET" template="http://www.archive.org/search.php?sourceid=Mozilla-search&amp;query={searchTerms}&amp;sort=-%2Fadditional%2Fitem%2Fdownloads">
+</os:Url>
+</SearchPlugin>

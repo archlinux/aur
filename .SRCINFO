@@ -1,0 +1,32 @@
+pkgbase = mozilla-searchplugins
+	pkgdesc = System-wide OpenSearch plugins common for Mozilla based browsers.
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://www.parabola.nu/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	source = list.txt
+	source = searx.xml
+	source = duckduckgo-html.xml
+	source = duckduckgo-lite.xml
+	source = seeks.xml::https://seeks.ru/opensearch.xml
+	source = internet-archive.xml
+	source = parabola-packages.xml::https://www.parabola.nu/opensearch/packages/
+	source = parabola-wiki-en.xml
+	source = yacy.xml
+	source = wikipedia-en.xml::https://en.wikipedia.org/w/opensearch_desc.php
+	sha256sums = f05c7f1505a2511ccb5a58174ed52605238431ae880e526176393fe72b73ffb9
+	sha256sums = 3e95dff7d062889c86531aa80962b80e3c0d6c87244ec838963b313193c3f367
+	sha256sums = cd8e9eb45567cb362acf607e65fcabfaf682f0051a251aa6a616ca25cd77106e
+	sha256sums = 1cd8dc8d1275a4e1fa10187997a0558f578c21a91e97c48222448e485de35d6a
+	sha256sums = 7ee18525957e05326db0bb2d6264bdceaf754b4df0a2fbe27d36707b7afae821
+	sha256sums = ec4a1054f4b9cca9cf410b3302fa86e2322a8dfdfe560b5dbbabba7d0bdd3197
+	sha256sums = 2480ca917a10d0955b818498171ecff6b86faf2eeae25684dd617ec4da40d585
+	sha256sums = 5e249e946193da91c95ade7f60fe227c28b99ecf40aba717b77d004ac9080905
+	sha256sums = 8ed0e09a96020c5ba0df60b74c37a23d1bb1f2c80b04608abed3d1d450001722
+	sha256sums = 44d8d849806e21a8e32489ade3e8191c4b4b23b416632beb258dea2484ed4ea3
+
+pkgname = mozilla-searchplugins
+
