@@ -1,27 +1,27 @@
-# Contributor: Sebastian Wolf <fatmike303 at googlemail dot com>
+# Contributor: Sebastian Wolf <swolf at melonkru dot de>
 pkgname=advancescan
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
-pkgdesc="A command line rom manager for MAME, MESS, AdvanceMAME, AdvanceMESS and Raine"
+pkgdesc="A command line rom manager for AdvanceMAME, AdvanceMESS and any other MAME derivative"
 arch=('i686' 'x86_64')
-url="http://advancemame.sourceforge.net"
+url='http://www.advancemame.it/scan-readme.html'
 depends=('')
 license=('GPL')
-source=(http://downloads.sourceforge.net/sourceforge/advancemame/$pkgname-$pkgver.tar.gz)
-md5sums=('9a231fc4f609b5ad08f79a392eb60c85')
+source=("https://github.com/amadvance/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('85d964fe0d34a5722ce923f7fbb8a115')
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
-	./configure --prefix=/usr || return 1
-	make || return 1
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr || return 1
+  make || return 1
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
-	# Binaries
-	install -D -m755 advscan $pkgdir/usr/bin/advscan
-	install -D -m755 advdiff $pkgdir/usr/bin/advdiff
-	# Documentation
-	install -D -m644 doc/advscan.1 $pkgdir/usr/share/man/man1/advscan.1
-	install -D -m644 doc/advdiff.1 $pkgdir/usr/share/man/man1/advdiff.1
+  cd $srcdir/$pkgname-$pkgver
+  # Binaries
+  install -D -m755 advscan $pkgdir/usr/bin/advscan
+  install -D -m755 advdiff $pkgdir/usr/bin/advdiff
+  # Documentation
+  install -D -m644 doc/advscan.1 $pkgdir/usr/share/man/man1/advscan.1
+  install -D -m644 doc/advdiff.1 $pkgdir/usr/share/man/man1/advdiff.1
 }
