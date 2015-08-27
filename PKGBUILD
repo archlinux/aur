@@ -1,16 +1,17 @@
 # Maintainer: Martchus <martchus@gmx.net>
-pkgname=tagparser
-pkgver=2.0.0
-pkgrel=1
+pkgname=c++utilities
+pkgver=2.0.1
+pkgrel=2
 arch=('i686' 'x86_64')
-pkgdesc="Library for reading and editing meta-data of several media formats."
+pkgdesc="Common C++ classes and routines used by my applications such
+as argument parser, IO and conversion utilities."
 license=('GPL')
-depends=('c++utilities')
+depends=('gcc-libs')
 makedepends=('qt5-base')
-url="https://github.com/Martchus/tagparser"
-source=("tagparser-${pkgver}.tar.gz::https://github.com/Martchus/tagparser/archive/v${pkgver}.tar.gz")
-_reponame=tagparser
-sha256sums=('skip')
+url="https://github.com/Martchus/cpp-utilities"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v${pkgver}.tar.gz")
+_reponame=cpp-utilities
+sha256sums=('13cd2a9fb394d0da7656880adb1e358fc40f1b4860f77fd64970c4d00f70b05f')
 
 build() {
     cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
