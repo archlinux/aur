@@ -3,7 +3,7 @@
 
 _qt_module=qtscript
 pkgname="mingw-w64-qt5-script"
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=('any')
 pkgdesc="Qt5 for Windows -- QtScript module (mingw-w64)"
@@ -13,8 +13,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
 url="http://qt-project.org/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('a615a02ab48e1e8e94c161d65f6af2ad')
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('1e9766d2651d6a81221525462378336d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
