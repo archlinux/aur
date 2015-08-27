@@ -1,0 +1,32 @@
+pkgbase = ros-indigo-ecl-devices
+	pkgdesc = ROS - Provides an extensible and standardised framework for input-output devices.
+	pkgver = 0.61.2
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_devices
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-errors
+	makedepends = ros-indigo-ecl-threads
+	makedepends = ros-indigo-ecl-utilities
+	makedepends = ros-indigo-ecl-license
+	makedepends = ros-indigo-ecl-containers
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-ecl-mpl
+	makedepends = ros-indigo-ecl-config
+	makedepends = ros-indigo-ecl-type-traits
+	depends = ros-indigo-ecl-errors
+	depends = ros-indigo-ecl-threads
+	depends = ros-indigo-ecl-utilities
+	depends = ros-indigo-ecl-license
+	depends = ros-indigo-ecl-containers
+	depends = ros-indigo-ecl-mpl
+	depends = ros-indigo-ecl-config
+	depends = ros-indigo-ecl-type-traits
+	source = ecl_devices::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_devices/0.61.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ecl-devices
+
