@@ -1,0 +1,20 @@
+pkgbase = babeltrace
+	pkgdesc = command-line trace reader for LTTng
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = http://lttng.org/
+	install = babeltrace.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = GPL2
+	license = LGPL2.1
+	depends = popt
+	depends = util-linux
+	depends = glib2>=2.22.0
+	options = !libtool
+	source = http://lttng.org/files/babeltrace/babeltrace-1.2.4.tar.bz2
+	sha1sums = c72a80e8fd905cb1ae3b0cf88885517faafe0fa1
+
+pkgname = babeltrace
+
