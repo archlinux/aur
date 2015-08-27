@@ -1,17 +1,13 @@
 pkgbase = vagga-bin
 	pkgdesc = Vagga is a containerisation tool without daemons
-	pkgver = 0.2.5_141_g18d8b61
+	pkgver = 0.2.5_148_gfb4dd7b
 	pkgrel = 1
 	url = http://vagga.readthedocs.org
 	install = vagga.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = make
-	makedepends = cargo-bin
 	depends = shadow
-	depends = glibc-static
 	optdepends = linux-user-ns-enabled: kernel with CONFIG_USER_NS enabled
 
 pkgname = vagga-bin
