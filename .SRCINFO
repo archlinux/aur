@@ -8,7 +8,6 @@ pkgbase = unity3d
 	license = custom
 	depends = desktop-file-utils
 	depends = xdg-utils
-	depends = lib32-libstdc++5
 	depends = gcc
 	depends = mesa-libgl
 	depends = glu

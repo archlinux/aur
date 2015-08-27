@@ -13,7 +13,6 @@ url='http://unity3d.com/'
 license=('custom')
 depends=('desktop-file-utils'
          'xdg-utils'
-         'lib32-libstdc++5'
          'gcc'
          'mesa-libgl'
          'glu'
