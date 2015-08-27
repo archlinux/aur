@@ -1,6 +1,6 @@
 pkgbase = pymultimonaprs
 	pkgdesc = RF2APRS-IG Gateway
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = http://asdil12.github.io/pymultimonaprs/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = pymultimonaprs
 	depends = rtl-sdr
 	depends = python2-setuptools
 	backup = etc/pymultimonaprs.json
-	source = pymultimonaprs-1.1.0.tar.gz::https://codeload.github.com/asdil12/pymultimonaprs/tar.gz/1.1.0
-	sha1sums = 134e49453335d32454930b70adf24db248c08687
+	source = pymultimonaprs-1.1.1.tar.gz::https://codeload.github.com/asdil12/pymultimonaprs/tar.gz/1.1.1
+	sha1sums = a4b767ae52d42238648bde15b260b3aae9bf5e36
 
 pkgname = pymultimonaprs
 
