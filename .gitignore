@@ -1,1 +1,7 @@
-*.un~
+*
+!.gitignore
+!PKGBUILD
+!*.install
+!unity3d
+!monodevelop-unity
+!.SRCINFO

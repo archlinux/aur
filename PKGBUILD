@@ -1,63 +1,72 @@
-#Maintainer: Leonard König <leonard dot r dot koenig at googlemail dot com>
-pkgname=unity-editor
-_pkgver=5.1.0f3
-pkgver=${_pkgver}+2015082501
-pkgrel=4
-pkgdesc="A cross-platform game engine used to develop video games for PC, consoles, mobile devices and websites. Linux Preview package"
+# Maintainer: Juraj Fiala <doctorjellyface at riseup dot net>
+# Maintainer: Florian Walch <florian+aur at fwalch dot com>
+# Maintainer: Leonard König <leonard.r.koenig at googlemail dot com>
+# Maintainer: Oscar Morante <spacepluk at gmail dot com>
+
+pkgname=unity3d
+_version=5.1.0
+_build=f3
+_buildtag=2015082501
+pkgver=${_version}${_build}+${_buildtag}
+pkgrel=2
+pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
-url="https://unity3d.com"
+url='http://unity3d.com/'
 license=('custom')
-depends=('libstdc++5' 'lib32-libstdc++5' 'lib32-gcc-libs' 'alsa-lib' 'glibc' 'lib32-glibc' 'cairo'
-	 'libcap' 'libcups' 'libdbus' 'expat' 'fontconfig' 'freetype2' 'freetype2' 'gcc-multilib'
-	 'gcc-libs-multilib' 'lib32-gcc-libs' 'gdk-pixbuf2' 'libgl' 'glu' 'glib2' 'nspr' 'nss' 'pango'
-	 'libx11' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr'
-	 'libxrender' 'libxtst' 'zlib'
-)
-
-# old deps got by ldd / before switching to doc from
-# http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
-#
-#'atk' 'libpng'
-#'pcre' 'libffi' 'gconf' 'harfbuzz'
-#'pixman' 'bzip2' 'dbus-glib' 'gnutls' 'avahi' 'attr' 'graphite' 'p11-kit' 'libtasn1'
-#'nettle' 'gmp'
-
-
-makedepends=('tar')
-
-optdepends=('ffmpeg: WebGL'
-	    'nodejs: WebGL'
-	    'jre6: WebGl'
-	    'gzip: WebGL'
-	    'java-environment-openjdk=7: Android / Tizen'
-	    'mono>=4.0.1: MonoDevelop'
-	    'mono-addins>=0.6.2: MonoDevelop'
-	    'gnome-sharp: MonoDevelop'
-	    'desktop-file-utils: MonoDevelop'
-	    'hicolor-icon-theme: MonoDevelop'
-	    'xsp: To run ASP.NET pages directly from monodevelop'
-	    )
-source=("http://download.unity3d.com/download_unity/${pkgname}-installer-${pkgver}.sh"
-	"eula")
-#source=("https://developer.android.com/training/index.html")
-md5sums=('dbe1ddc9ebc999b6b538829a90df99a8'
-	 '715ba338bad7d12b31bb3642dadd92d4')
-options=('!strip')
+depends=('desktop-file-utils'
+         'xdg-utils'
+         'gcc-multilib'
+         'libgl'
+         'glu'
+         'nss'
+         'libpng12'
+         'libxtst'
+         'monodevelop')
+optdepends=('ffmpeg: for WebGL exporting'
+            'nodejs: for WebGL exporting'
+            'java-runtime: for WebGL exporting'
+            'gzip: for WebGL exporting'
+            'java-environment: for Android and Tizen exporting'
+            'android-sdk: for Android Remote'
+            'android-udev: for Android Remote')
+conflicts=('unity-editor')
+replaces=('unity-editor')
+install="${pkgname}.install"
+source=("http://download.unity3d.com/download_unity/unity-editor-installer-${pkgver}.sh"
+        "https://unity3d.com/legal/eula"
+        'unity3d'
+        'monodevelop-unity')
+noextract=("unity-editor-installer-${pkgver}.sh")
+sha256sums=('bf73e7693ae15b271dbbd55010eb33fae3400b964fa4b70289bd5a17d19d5493'
+            'SKIP'
+            'a03aaf639c6ba56a0ef03a591f0f629a3e015a3a3c6999ecc0feb6b2284c901b'
+            '7309ac206fbb6eb5f1a073bf22e2571e1a574410ab410138a19fb66c3eee21e3')
+options=(!strip)
+PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
 build() {
-  ARCHIVE=$(awk '/^__ARCHIVE_BEGINS_HERE__/ {print NR + 1; exit 0; }' $pkgname-installer-$pkgver.sh)
-  echo $ARCHIVE
-  tail -n+$ARCHIVE $pkgname-installer-$pkgver.sh | tar xj
+  yes | fakeroot sh "unity-editor-installer-${pkgver}.sh"
 }
 
 package() {
- install -D -m644 eula "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
- mv $srcdir/$pkgname-$_pkgver/Editor/chrome-sandbox $srcdir/
- install -d $pkgdir/usr/share/applications
- mv $srcdir/$pkgname-$_pkgver/*.desktop $pkgdir/usr/share/applications/
- install -d $pkgdir/usr/share/icons
- mv $srcdir/$pkgname-$_pkgver/*.png $pkgdir/usr/share/icons/
- install -d /$pkgdir/opt/Unity
- mv $srcdir/$pkgname-$_pkgver/* $pkgdir/opt/Unity
- install -oroot -m4755 $srcdir/chrome-sandbox $pkgdir/opt/Unity/Editor/
+  local extraction_dir="${srcdir}/unity-editor-${_version}${_build}"
+
+  mkdir -p "${pkgdir}/opt/Unity"
+  cp -a "${extraction_dir}/." "${pkgdir}/opt/Unity"
+
+  # Remove bundled libresolv.so.2 for the time being (workarounds network problems)
+  rm "${pkgdir}/opt/Unity/Editor/Data/Tools/libresolv.so.2"
+
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "${extraction_dir}/unity-editor.desktop" \
+                                                       "${extraction_dir}/unity-monodevelop.desktop"
+
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${extraction_dir}/unity-editor-icon.png"
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps" "${extraction_dir}/unity-monodevelop.png"
+
+  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity3d"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/monodevelop-unity"
+
+  install -Dm644 "${srcdir}/eula" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim:set sw=2 sts=2 et:
