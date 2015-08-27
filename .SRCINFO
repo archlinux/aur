@@ -1,7 +1,7 @@
 pkgbase = qgis-ltr
 	pkgdesc = QGIS (long-term release) is a Geographic Information System (GIS) that supports vector, raster & database formats
-	pkgver = 2.8
-	pkgrel = 3
+	pkgver = 2.8.3
+	pkgrel = 4
 	url = http://qgis.org/
 	install = qgis-ltr.install
 	arch = i686
@@ -40,7 +40,7 @@ pkgbase = qgis-ltr
 	optdepends = fcgi: QGIS Map Server support
 	optdepends = osgearth: QGIS Globe plugin support
 	optdepends = gpsbabel: GPS toolbar support
-	provides = qgis=2.8
+	provides = qgis=2.8.3
 	source = qgis::git://github.com/qgis/QGIS.git#branch=release-2_8
 	source = qgis-ltr.png
 	source = qgis-ltr.sh

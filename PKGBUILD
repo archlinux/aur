@@ -11,8 +11,8 @@
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
 _pkgver=2.8
-pkgver=2.8
-pkgrel=3
+pkgver=2.8.3
+pkgrel=4
 pkgdesc='QGIS (long-term release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -62,11 +62,17 @@ md5sums=('SKIP'
          '5bac82b00870c491056cd8705be482f0'
          '57efd9c869ed2d0a50fb7cf35048d99d')
 
-pkgver() {
-  cd $_pkgname
 
-  printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
+pkgver() {
+  cd "$_pkgname"
+  # cutting off 'final' prefix that presents in the git tag
+  git describe --long | sed 's/^final-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
 }
+#pkgver() {
+#  cd $_pkgname
+#
+#  printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
+#}
 
 prepare() {
    cd $_pkgname
@@ -160,6 +166,8 @@ package() {
   #  "$pkgdir/usr/share/pixmaps/qbrowser-ltr.png"
 
   # rename executables so they don't conflict with qgis or qgis-ltr
+  mv $pkgdir/opt/$pkgname/bin/$_pkgname $pkgdir/opt/$pkgname/bin/$pkgname
+
   install -Dm755 $srcdir/$pkgname.sh \
     $pkgdir/usr/bin/$pkgname
 
