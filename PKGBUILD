@@ -52,6 +52,9 @@ package() {
   mkdir -p "${pkgdir}/opt/Unity"
   cp -a "${extraction_dir}/." "${pkgdir}/opt/Unity"
 
+  # Remove bundled libresolv.so.2 for the time being (workarounds network problems)
+  rm "${pkgdir}/opt/Unity/Editor/Data/Tools/libresolv.so.2"
+
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${extraction_dir}/unity-editor.desktop" \
                                                        "${extraction_dir}/unity-monodevelop.desktop"
 
