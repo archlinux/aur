@@ -1,7 +1,7 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 pkgname=webcamoid
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://github.com/hipersayanX/webcamoid'
@@ -12,7 +12,7 @@ makedepends=('qt5-tools')
 provides=('webcamoid')
 conflicts=('kdeplasma-applets-webcamoid' 'webcamoid-git')
 source=("https://github.com/hipersayanX/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('a27be3f6ebc060454c9b6ec9f85ac174')
+md5sums=('d9430f1bc6dd7f4f2b754898957406b5')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
