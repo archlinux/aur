@@ -1,8 +1,8 @@
 # Maintainer: Artem Bezsmertnyi <artem.bezsmertny@gmail.com>
 _author=tony
-_abbrev_commit=5eb1bd0
+_abbrev_commit=c5244c4
 pkgname=tmuxp
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=0
 pkgdesc="Manage tmux workspaces from JSON and YAML, pythonic API, shell completion."
 arch=(any)
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python' 'python-argcomplete' 'python-kaptan')
 options=(!emptydirs)
 source=("https://github.com/tony/tmuxp/archive/v${pkgver}.tar.gz")
-md5sums=('82260efadc770413873bfefd680a6fcd')
+md5sums=('d103d9d49a2282059c21f95d4d3ef11d')
 
 package() {
   # Use find because github packs sources into a dir named
