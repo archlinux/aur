@@ -1,6 +1,6 @@
 pkgname=fusedav-git
 _gitname=fusedav
-pkgver=fd90308
+pkgver=8c9bbc3
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A webdav filesystem based on FUSE"
@@ -37,11 +37,7 @@ package() {
   # so copy them manually
 
   mkdir -p "$pkgdir/usr/share/doc/$pkgname-$pkgver"
-  cp doc/README doc/README.html doc/style.css "$pkgdir/usr/share/doc/$pkgname-$pkgver/"
-
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  cp doc/fusedav.1 "$pkgdir/usr/share/man/man1/"
-  gzip "$pkgdir/usr/share/man/man1/fusedav.1"
+  cp README.md "$pkgdir/usr/share/doc/$pkgname-$pkgver/"
 }
 
 # vim:set ts=2 sw=2 et:
