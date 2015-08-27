@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-turtlebot-stdr
+	pkgdesc = ROS - Stdr version of turtlebot simulation.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://wiki.ros.org/turtlebot_stdr
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-stdr-gui
+	depends = ros-indigo-stdr-resources
+	depends = ros-indigo-navigation
+	depends = ros-indigo-yocs-velocity-smoother
+	depends = ros-indigo-stdr-server
+	depends = ros-indigo-yocs-virtual-sensor
+	depends = ros-indigo-turtlebot-bringup
+	depends = ros-indigo-stdr-robot
+	source = turtlebot_stdr::git+https://github.com/turtlebot-release/turtlebot_simulator-release.git#tag=release/indigo/turtlebot_stdr/2.2.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-stdr
+
