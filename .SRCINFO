@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-ecl-mobile-robot
+	pkgdesc = ROS - Contains transforms (e.g.
+	pkgver = 0.60.0
+	pkgrel = 2
+	url = http://wiki.ros.org/ecl_mobile_robot
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-errors
+	makedepends = ros-indigo-ecl-license
+	makedepends = ros-indigo-ecl-math
+	makedepends = ros-indigo-ecl-formatters
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-ecl-geometry
+	makedepends = ros-indigo-ecl-linear-algebra
+	depends = ros-indigo-ecl-errors
+	depends = ros-indigo-ecl-license
+	depends = ros-indigo-ecl-math
+	depends = ros-indigo-ecl-formatters
+	depends = ros-indigo-ecl-geometry
+	depends = ros-indigo-ecl-linear-algebra
+	source = ecl_mobile_robot::git+https://github.com/yujinrobot-release/ecl_navigation-release.git#tag=release/indigo/ecl_mobile_robot/0.60.0-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-ecl-mobile-robot
+
