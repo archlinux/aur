@@ -1,0 +1,20 @@
+pkgbase = lttngtop-git
+	pkgdesc = A top-like, ncurses-based utility to analyze trace information produced by LTTng
+	pkgver = 0.3.2.gd0377b6
+	pkgrel = 1
+	url = http://lttng.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glib2>=2.22.0
+	depends = ncurses
+	depends = popt>=1.13
+	depends = babeltrace
+	provides = lttngtop
+	conflicts = lttngtop
+	source = git://git.lttng.org/lttngtop.git
+	sha1sums = SKIP
+
+pkgname = lttngtop-git
+
