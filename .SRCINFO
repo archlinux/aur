@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-rocon-master-info
+	pkgdesc = ROS - Publish master information - name, description, icon.
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = http://ros.org/wiki/rocon_master_info
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = python2-catkin-pkg
+	depends = ros-indigo-rocon-icons
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rocon-python-utils
+	depends = ros-indigo-rocon-console
+	depends = ros-indigo-rocon-std-msgs
+	depends = ros-indigo-rocon-python-comms
+	source = rocon_master_info::git+https://github.com/yujinrobot-release/rocon_tools-release.git#tag=release/indigo/rocon_master_info/0.1.23-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-master-info
+
