@@ -1,0 +1,21 @@
+pkgbase = hostapd-git
+	pkgdesc = IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
+	pkgver = 20150824.20f331b
+	pkgrel = 1
+	url = http://w1.fi/hostapd/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = openssl
+	depends = libnl
+	provides = hostapd
+	conflicts = hostapd
+	options = emptydirs
+	source = git://w1.fi/hostap.git
+	source = service
+	sha1sums = SKIP
+	sha1sums = a8bc9ad3963001a53dedf6581f7be9750b1c3a73
+
+pkgname = hostapd-git
+
