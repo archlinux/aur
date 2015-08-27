@@ -3,7 +3,7 @@
 
 _qt_module=qtquick1
 pkgname="mingw-w64-qt5-quick1"
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=('any')
 pkgdesc="Qt5 for Windows -- QtQuick1 module (mingw-w64)"
@@ -13,8 +13,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
 url="http://qt-project.org/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('8275c3ca1f962905baf1f19310e1b6e4')
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('8cd53fd1100e7f7cdf5b14f7c227e7b9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
