@@ -1,12 +1,14 @@
 pkgbase = akonadi-fake
 	pkgdesc = A fake empty akonadi package for those who don't want akonadi installed on their system
 	pkgver = 1000.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/akonadi-fake/
 	arch = any
 	license = GPL
 	provides = akonadi
+	provides = akonadi-qt4
 	replaces = akonadi
+	replaces = akonadi-qt4
 
 pkgname = akonadi-fake
 
