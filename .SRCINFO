@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-rocon-uri
+	pkgdesc = ROS - Module for working with rocon uri strings.
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = http://ros.org/wiki/rocon_uri
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rocon-ebnf
+	depends = ros-indigo-rocon-console
+	depends = ros-indigo-rospy
+	source = rocon_uri::git+https://github.com/yujinrobot-release/rocon_tools-release.git#tag=release/indigo/rocon_uri/0.1.23-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-uri
+
