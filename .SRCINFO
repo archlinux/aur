@@ -1,0 +1,19 @@
+pkgbase = avrdude-svn
+	pkgdesc = AVRDUDE is an utility to download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers using the in-system programming technique (ISP).
+	pkgver = 20150506.1356
+	pkgrel = 1
+	url = http://www.nongnu.org/avrdude/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = svn
+	depends = libftdi
+	depends = libusb-compat
+	depends = elfutils
+	conflicts = avrdude
+	conflicts = avrdude-osuisp2-svn
+	source = avrdude-svn::svn+http://svn.savannah.nongnu.org/svn/avrdude/trunk
+	md5sums = SKIP
+
+pkgname = avrdude-svn
+
