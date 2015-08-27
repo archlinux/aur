@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 pkgname=videodownloader
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="A video downloader with Qt GUI (currently only YouTube is maintained)."
 license=('GPL')
@@ -11,7 +11,7 @@ install=${pkgname}.install
 url="https://github.com/Martchus/videodownloader"
 source=("videodownloader-${pkgver}.tar.gz::https://github.com/Martchus/videodownloader/archive/v${pkgver}.tar.gz")
 _reponame=videodownloader
-sha256sums=('skip')
+sha256sums=('3e8a969494be4d90c4d00725dbe16225f12b2fea71c44d9053c70f46716838d3')
 
 build() {
     cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
