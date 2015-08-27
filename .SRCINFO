@@ -1,0 +1,16 @@
+pkgbase = ros-indigo-create-driver
+	pkgdesc = ROS - Driver for iRobot Create and Roomba This is a generic driver for iRobot Create that currently holds implementations for Turtlebot and Roomba.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://ros.org/wiki/create_driver
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	source = create_driver::git+https://github.com/turtlebot-release/turtlebot_create-release.git#tag=release/indigo/create_driver/2.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-create-driver
+
