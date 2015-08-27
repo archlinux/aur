@@ -1,0 +1,15 @@
+pkgbase = otf-fira-fonts
+	pkgdesc = Mozilla's new typeface, used in Firefox OS
+	pkgver = 4.105
+	pkgrel = 1
+	url = http://www.carrois.com/en/fira-4-1/
+	install = otf-fira-fonts.install
+	arch = any
+	license = custom: SIL Open Font License
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.carrois.com/downloads/fira_4_1/FiraFonts4105.zip
+	sha256sums = dfadd8632bb0065bdb60fe98d03e7fcfa431614225755c750fcc9d7bec9da7a0
+
+pkgname = otf-fira-fonts
+
