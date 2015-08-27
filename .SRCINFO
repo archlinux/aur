@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-rocon-service-pair-msgs
+	pkgdesc = ROS - Paired pubsubs generators for non-blocking services.
+	pkgver = 0.7.12
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rocon_pair_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-uuid-msgs
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-uuid-msgs
+	depends = ros-indigo-rospy
+	source = rocon_service_pair_msgs::git+https://github.com/yujinrobot-release/rocon_msgs-release.git#tag=release/indigo/rocon_service_pair_msgs/0.7.12-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-service-pair-msgs
+
