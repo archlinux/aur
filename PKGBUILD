@@ -3,7 +3,7 @@
  
 pkgname=emacs-org-mode-git
 pkgver=8.3.1.181.g2e13d33
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs Org Mode from git"
 arch=('any')
 url="http://orgmode.org/"
@@ -31,5 +31,4 @@ package () {
   mv $pkgdir/usr/share/info/org $pkgdir/usr/share/info/orgmode
   install -d $pkgdir/usr/share/emacs/site-lisp/org_contrib
   cp -r contrib/{lisp,scripts} $pkgdir/usr/share/emacs/site-lisp/org_contrib
-  rm $pkgdir/usr/share/emacs/site-lisp/org/org-{loaddefs.el,version.el}
 }
