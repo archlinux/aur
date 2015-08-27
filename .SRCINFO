@@ -1,0 +1,24 @@
+pkgbase = babeltrace-git
+	pkgdesc = command-line trace reader for LTTng
+	pkgver = 1.2.0.369.g2b8dbf9
+	pkgrel = 1
+	url = http://lttng.org/
+	install = babeltrace-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	depends = popt
+	depends = flex
+	depends = util-linux
+	depends = glib2
+	provides = babeltrace
+	conflicts = babeltrace
+	options = !libtool
+	source = git://git.efficios.com/babeltrace.git
+	sha1sums = SKIP
+
+pkgname = babeltrace-git
+
