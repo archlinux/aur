@@ -1,7 +1,7 @@
 pkgbase = unity3d
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
 	pkgver = 5.1.0f3+2015082501
-	pkgrel = 1
+	pkgrel = 2
 	url = http://unity3d.com/
 	install = unity3d.install
 	arch = x86_64
@@ -22,6 +22,8 @@ pkgbase = unity3d
 	optdepends = java-environment: for Android and Tizen exporting
 	optdepends = android-sdk: for Android Remote
 	optdepends = android-udev: for Android Remote
+	conflicts = unity-editor
+	replaces = unity-editor
 	noextract = unity-editor-installer-5.1.0f3+2015082501.sh
 	options = !strip
 	source = http://download.unity3d.com/download_unity/unity-editor-installer-5.1.0f3+2015082501.sh
