@@ -1,0 +1,16 @@
+pkgbase = d2clr-git
+	pkgdesc = Auto click button 'Accept' in Dota 2 game
+	pkgver = 2014.12.18
+	pkgrel = 1
+	url = https://github.com/FTCr/d2clr
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = dbus
+	depends = xdotool
+	source = git://github.com/FTCr/d2clr.git
+	md5sums = SKIP
+
+pkgname = d2clr-git
+
