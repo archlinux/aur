@@ -18,12 +18,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make all
+  make PREFIX="/usr" all
 }
 
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" PREFIX="/usr" install
 }
 
