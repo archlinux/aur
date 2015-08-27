@@ -1,0 +1,15 @@
+pkgbase = ruby-mocha
+	pkgdesc = Mocking and stubbing library
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://gofreerange.com/mocha/docs
+	arch = any
+	depends = ruby
+	depends = ruby-metaclass
+	noextract = mocha-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mocha-1.1.0.gem
+	sha1sums = 688b422198a9115993ec24cb3349248e520a709c
+
+pkgname = ruby-mocha
+
