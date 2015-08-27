@@ -1,6 +1,6 @@
 pkgbase = libu2f-host-git
 	pkgdesc = Yubico Universal 2nd Factor (U2F) Host C Library - git checkout
-	pkgver = 0.0.4.r0.g2da945f
+	pkgver = 1.0.0.r0.g5e02a19
 	pkgrel = 1
 	url = https://github.com/Yubico/libu2f-host
 	install = libu2f-host.install

@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=libu2f-host-git
-pkgver=0.0.4.r0.g2da945f
+pkgver=1.0.0.r0.g5e02a19
 pkgrel=1
 pkgdesc="Yubico Universal 2nd Factor (U2F) Host C Library - git checkout"
 arch=('i686' 'x86_64')
