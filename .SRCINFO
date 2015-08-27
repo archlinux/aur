@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-turtlebot-stage
+	pkgdesc = ROS - Stage version of turtlebot simulation.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://wiki.ros.org/turtlebot_stage
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-navigation
+	depends = ros-indigo-yocs-velocity-smoother
+	depends = ros-indigo-yocs-virtual-sensor
+	depends = ros-indigo-stage-ros
+	depends = ros-indigo-turtlebot-bringup
+	depends = ros-indigo-turtlebot-navigation
+	source = turtlebot_stage::git+https://github.com/turtlebot-release/turtlebot_simulator-release.git#tag=release/indigo/turtlebot_stage/2.2.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-stage
+
