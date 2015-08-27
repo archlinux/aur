@@ -8,8 +8,6 @@ pkgdesc='suckless vim like editor'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
 depends=('ncurses')
-conflicts=('vis')
-provides=('vis')
 makedepends=('git' 'markdown')
 license=('custom')
 source=("git://repo.or.cz/vis.git#commit=${_commit}")

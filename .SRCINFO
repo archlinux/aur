@@ -9,8 +9,6 @@ pkgbase = vis
 	makedepends = git
 	makedepends = markdown
 	depends = ncurses
-	provides = vis
-	conflicts = vis
 	source = git://repo.or.cz/vis.git#commit=6f532df
 	sha256sums = SKIP
 
