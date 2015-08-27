@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-kobuki-msgs
+	pkgdesc = ROS - Kobuki message and service types: custom messages and services for Kobuki packages.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-actionlib-msgs
+	makedepends = ros-indigo-message-generation
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-actionlib-msgs
+	depends = ros-indigo-message-runtime
+	source = kobuki_msgs::git+https://github.com/yujinrobot-release/kobuki_msgs-release.git#tag=release/indigo/kobuki_msgs/0.6.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-msgs
+
