@@ -2,8 +2,8 @@
 
 pkgname=libretro-yabause-git
 pkgver=r2680.679eee6
-pkgrel=1
-pkgdesc='Sega Saturn libretro core'
+pkgrel=2
+pkgdesc='Sega Saturn core'
 arch=('i686' 'x86_64')
 url='https://github.com/libretro/yabause'
 license=('GPL2')
