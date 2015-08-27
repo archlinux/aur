@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-kobuki-description
+	pkgdesc = ROS - Description of the Kobuki model.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_description
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-urdf
+	makedepends = ros-indigo-xacro
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-urdf
+	depends = ros-indigo-xacro
+	source = kobuki_description::git+https://github.com/yujinrobot-release/kobuki-release.git#tag=release/indigo/kobuki_description/0.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-description
+
