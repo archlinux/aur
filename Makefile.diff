@@ -1,0 +1,11 @@
+--- Makefile	2014-12-10 19:16:36.918944447 +0000
++++ ../../Makefile.new	2014-12-10 19:15:39.080652123 +0000
+@@ -73,7 +73,7 @@
+ ####	P.S.	I admit that this makefile is more like a shell script.
+ ####
+ 
+-CONFIGURE_OPTIONS=--with-GTK
++CONFIGURE_OPTIONS=--with-MOTIF
+ 
+ compile:	tedlibs		\
+ 		Ted/Ted		\

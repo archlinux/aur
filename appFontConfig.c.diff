@@ -1,0 +1,11 @@
+--- appFontConfig.c	2014-12-10 18:56:38.981572317 +0000
++++ ../../../appFontConfig.c.new	2014-12-10 18:56:13.332114824 +0000
+@@ -889,7 +889,7 @@
+ 
+     static const n2s xftn2s[]=
+     {
+-#   include <freetype/fterrdef.h>
++#   include <freetype2/fterrdef.h>
+     };
+ 
+     for ( i= 0; i < sizeof(xftn2s)/sizeof(n2s); i++ )
