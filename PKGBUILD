@@ -1,6 +1,7 @@
 # Maintainer: Juraj Fiala <doctorjellyface at riseup dot net>
 # Maintainer: Florian Walch <florian+aur at fwalch dot com>
 # Maintainer: Leonard König <leonard.r.koenig at googlemail dot com>
+# Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 pkgname=unity3d
 _version=5.1.0
