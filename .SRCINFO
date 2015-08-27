@@ -1,0 +1,16 @@
+pkgbase = ros-indigo-stdr-resources
+	pkgdesc = ROS - Provides robot and sensor descripiton files for STDR Simulator.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://stdr-simulator-ros-pkg.github.io
+	arch = any
+	license = GPLv3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	source = stdr_resources::git+https://github.com/stdr-simulator-ros-pkg/stdr_simulator-release.git#tag=release/indigo/stdr_resources/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-stdr-resources
+
