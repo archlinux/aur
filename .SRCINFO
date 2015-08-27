@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-ecl-errors
+	pkgdesc = ROS - This library provides lean and mean error mechanisms.
+	pkgver = 0.61.1
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_errors
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-license
+	makedepends = ros-indigo-ecl-config
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-ecl-license
+	depends = ros-indigo-ecl-config
+	source = ecl_errors::git+https://github.com/yujinrobot-release/ecl_lite-release.git#tag=release/indigo/ecl_errors/0.61.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ecl-errors
+
