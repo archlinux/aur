@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-stdr-msgs
+	pkgdesc = ROS - Provides msgs, services and actions for STDR Simulator.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://stdr-simulator-ros-pkg.github.io
+	arch = any
+	license = GPLv3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-actionlib-msgs
+	makedepends = ros-indigo-nav-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-actionlib-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-nav-msgs
+	depends = ros-indigo-geometry-msgs
+	source = stdr_msgs::git+https://github.com/stdr-simulator-ros-pkg/stdr_simulator-release.git#tag=release/indigo/stdr_msgs/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-stdr-msgs
+
