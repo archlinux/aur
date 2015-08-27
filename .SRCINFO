@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-yocs-controllers
+	pkgdesc = ROS - Library for various controller types and algorithms.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://ros.org/wiki/yocs_controllers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-roscpp
+	source = yocs_controllers::git+https://github.com/yujinrobot-release/yujin_ocs-release.git#tag=release/indigo/yocs_controllers/0.6.4-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-yocs-controllers
+
