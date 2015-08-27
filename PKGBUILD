@@ -4,16 +4,15 @@
 
 build_pyc=false
 build_pyo=true
-build_cython=false
 remove_py=false
 remove_help=false
 
 #####
-$build_cython || options=(!strip)  # Don't strip libs because there aren't any; this wastes time
+options=(!strip)  # Don't strip libs because there aren't any; this wastes time
 DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
-pkgver=170
+pkgver=171
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -24,20 +23,17 @@ depends=(python2 wxpython opencv python2-beautifulsoup4 python2-yaml
          python2-twisted python2-pillow python2-potr python2-flvlib python2-socks
          python2-psutil python2-send2trash)
 makedepends=(git)
-$build_cython && makedepends+=(cython2 parallel)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding')
-source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=cc3f59732186848c80799b010c1ef412a866a50a"
+source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=a61df3303cf69a613fbfe43bf4ba78d172a1c676"
         paths-in-opt.patch
         running-the-server.patch
-        cython-workarounds.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            '83a77de17be848f58b549d43ca6ef073a0209090c64a210743c9fbed672e1852'
-            'b039650432e3031a4efcad2d2e999d51d5dec94fbe1c30b7f522015fead0e531'
-            'b7174fb3509d89b1f15ccdcdc9c419be79161ff8bff0642bbf1d6effc8fb7730'
+            '9575e8a46d04ad8a2f6d53612bf4c4e2905fe1f2d80a10aaeff5ef4cfbb249ce'
+            '1c2c154d044f56fb50a1f24b940f6127ef78640a723422af5e5853838deee03b'
             'b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678'
             'ac7254e3cdb359ebae302655b72b9f74b85d9e817c326fa28173791b3fb4f114'
             '9ba3942ac1a37f6b39c98ae6592573402bf08d8376f64554d0696c0fed6fd0e2')
@@ -47,9 +43,6 @@ prepare() {
   cd "$pkgname"
   patch -Np1 -i ../paths-in-opt.patch
   patch -Np1 -i ../running-the-server.patch
-
-  # Cython patches if applicable
-  $build_cython && patch -Np1 -i ../cython-workarounds.patch
 
   # Fix permissions
   chmod a-x include/*.py
@@ -68,21 +61,6 @@ build() {
   # Compile .py files
   $build_pyc && python2 -m compileall .
   $build_pyo && python2 -OO -m compileall .
-
-  if $build_cython; then
-      cd include
-      local -a files_to_compile
-      files_to_compile=()
-      for file in *.py; do
-          # ClientGUICommon.py and ClientController.py have problems when built under Cython
-          [ "$file" == ClientGUICommon.py -o "$file" == ClientController.py ] && continue
-          files_to_compile+=("${file%.py}")
-      done
-
-      cython2 -2 --fast-fail -Werror "${files_to_compile[@]/%/.py}"
-      parallel --bar '${CCLD:-gcc} -Os -s -fpic -shared -o {}.so {}.c $(python2-config --libs --includes) $LDFLAGS' ::: "${files_to_compile[@]}"
-      rm -f -- "${files_to_compile/%/.c}"
-  fi
 }
 
 package() {

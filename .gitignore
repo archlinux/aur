@@ -6,4 +6,4 @@ pkg
 src
 
 # Built packages
-*.pkg.tar.xz
+*-*.pkg.tar*
