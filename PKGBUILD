@@ -1,6 +1,6 @@
 # Maintainer: tritonas00 <tritonas00@gmail.com>
 pkgname=system-tar-and-restore
-pkgver=4.9.3
+pkgver=4.9.4
 pkgrel=1
 pkgdesc='Backup and Restore your system using tar or Transfer it with rsync'
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/tritonas00/system-tar-and-restore"
 source=("https://github.com/tritonas00/system-tar-and-restore/archive/$pkgver.tar.gz"
         "readme.install")
 
-md5sums=('c03b570f26209247a2de95579ae4d97d'
+md5sums=('0b0f6b5a9451380d6e2511e571f5fcdb'
          'c2df236e728583b3974f58034e888dc8')
 
 install=readme.install
