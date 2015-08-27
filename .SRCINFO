@@ -1,0 +1,16 @@
+pkgbase = ros-indigo-std-capabilities
+	pkgdesc = ROS - This package contains standard capability interfaces, which describe common robot capabilities in terms of ROS concepts such as topics, services, actions, and parameters.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://ros.org/wiki/std_capabilities
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	source = std_capabilities::git+https://github.com/ros-gbp/std_capabilities-release.git#tag=release/indigo/std_capabilities/0.1.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-std-capabilities
+
