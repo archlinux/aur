@@ -1,28 +1,27 @@
-# Contributor: Sebastian Wolf <fatmike303 at googlemail dot com>
+# Contributor: Sebastian Wolf <swolf at melonkru dot de>
 pkgname=advancemame
-pkgver=1.2
-pkgrel=2
-pkgdesc="A port of the MAME emulator for video hardware like TVs, Arcade monitors, PC monitors and LCD screens"
+pkgver=1.4
+pkgrel=1
+pkgdesc="Unofficial MAME version with an advanced video support for helping the use with TVs, Arcade Monitors, Fixed Frequencies Monitors and also for PC Monitors"
 arch=('i686' 'x86_64')
-url="http://advancemame.sourceforge.net"
+url="http://www.advancemame.it"
 depends=('sdl' 'alsa-lib' 'expat' 'freetype2' 'slang')
-#makedepends=('nasm')
 license=('GPL')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('ef0cfd38e7c8859bc03ada60f51295c6')
+source=("https://github.com/amadvance/advancemame/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('c11198e2e5eaa834a2bf00739e57b7fd')
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
-	./configure --prefix=/usr || return 1
-	make || return 1
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr || return 1
+  make || return 1
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
-	make	bindir="${pkgdir}/usr/bin/" \
-			datadir="${pkgdir}/usr/share/" \
-			mandir="${pkgdir}/usr/share/man/" \
-			pkgdocdir="${pkgdir}/usr/share/doc/${pkgname}/" \
-			install
+  cd $srcdir/$pkgname-$pkgver
+  make bindir="${pkgdir}/usr/bin/" \
+       datadir="${pkgdir}/usr/share/" \
+       mandir="${pkgdir}/usr/share/man/" \
+       pkgdocdir="${pkgdir}/usr/share/doc/${pkgname}/" \
+       install
 }
 
