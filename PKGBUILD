@@ -2,7 +2,7 @@
 
 pkgname=kolab
 pkgver=3.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Kolab Groupware solution meta-package'
 arch=('any')
 license=('AGPL3')
@@ -28,7 +28,7 @@ depends=('chwala>=0.3.0'
          'php-apache')
 url='http://kolab.org'
 source=('arch-setup-kolab')
-sha256sums=('af4a726053cd368ce7c276827bf1f56e71e93377afa0aefc71efe523a7ea78fc')
+sha256sums=('5edfea3a927c811c702d0ed00c7853fc878727043b309976333f1692b0a338e5')
 
 package() {
     install -Dm755 "${srcdir}/arch-setup-kolab" "${pkgdir}/usr/bin/arch-setup-kolab"
