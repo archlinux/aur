@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 depends=('glibc' 'dbus' 'xdotool')
 source=("git://github.com/FTCr/d2clr.git")
 md5sums=('SKIP')
-build(){
+package(){
   cd "${srcdir}/d2clr"
   make install PREFIX="${pkgdir}/usr"
 }
