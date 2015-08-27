@@ -8,6 +8,7 @@ arch=('any')
 url='https://moodle.org/'
 license=('GPLv3')
 depends=('php' 'php-intl' 'php-gd')
+conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/stable29/moodle-${pkgver}.tgz")
 md5sums=('a552b7d3901f2825d3d7ee6eec485d99')
