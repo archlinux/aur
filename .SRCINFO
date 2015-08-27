@@ -1,0 +1,15 @@
+pkgbase = ruby-puppet-syntax
+	pkgdesc = Syntax checks for Puppet manifests, templates, and Hiera YAML
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/gds-operations/puppet-syntax
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = puppet-syntax-2.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/puppet-syntax-2.0.0.gem
+	sha1sums = 888ef2e887d303c9b99019c2f16ddbb229d900ee
+
+pkgname = ruby-puppet-syntax
+
