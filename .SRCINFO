@@ -1,0 +1,15 @@
+pkgbase = tagparser
+	pkgdesc = Library for reading and editing meta-data of several media formats.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Martchus/tagparser
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-base
+	depends = c++utilities
+	source = tagparser-2.0.0.tar.gz::https://github.com/Martchus/tagparser/archive/v2.0.0.tar.gz
+	sha256sums = skip
+
+pkgname = tagparser
+
