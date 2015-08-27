@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-smart-battery-msgs
+	pkgdesc = ROS - Smart Battery Messages.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://wiki.ros.org/smart_battery_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	source = smart_battery_msgs::git+https://github.com/ros-gbp/smart_battery_msgs-release.git#tag=release/indigo/smart_battery_msgs/0.1.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-smart-battery-msgs
+
