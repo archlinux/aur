@@ -6,7 +6,7 @@ pkgname=unity3d
 _version=5.1.0
 _build=f3
 _buildtag=2015082501
-pkgver=${_version}${_build}
+pkgver=${_version}${_build}+{_buildtag}
 pkgrel=3
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
@@ -29,11 +29,11 @@ optdepends=('ffmpeg: for WebGL exporting'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote')
 install="${pkgname}.install"
-source=("http://download.unity3d.com/download_unity/unity-editor-installer-${_version}${_build}+${_buildtag}.sh"
+source=("http://download.unity3d.com/download_unity/unity-editor-installer-${pkgver}.sh"
         "https://unity3d.com/legal/eula"
         'unity3d'
         'monodevelop-unity')
-noextract=("unity-editor-installer-${_version}${_build}+${_buildtag}.sh")
+noextract=("unity-editor-installer-${pkgver}.sh")
 sha256sums=('bf73e7693ae15b271dbbd55010eb33fae3400b964fa4b70289bd5a17d19d5493'
             'SKIP'
             'a03aaf639c6ba56a0ef03a591f0f629a3e015a3a3c6999ecc0feb6b2284c901b'
@@ -42,7 +42,7 @@ options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
 build() {
-  yes | fakeroot sh "unity-editor-installer-${_version}${_build}+${_buildtag}.sh"
+  yes | fakeroot sh "unity-editor-installer-${pkgver}.sh"
 }
 
 package() {
