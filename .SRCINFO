@@ -1,0 +1,17 @@
+pkgbase = lttngtop
+	pkgdesc = A top-like, ncurses-based utility to analyze trace information produced by LTTng
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://lttng.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glib2>=2.22.0
+	depends = ncurses
+	depends = popt>=1.13
+	depends = babeltrace
+	source = http://lttng.org/files/lttngtop/lttngtop-0.3.tar.bz2
+	sha1sums = d94a9877267350c5ab5eb2195a3061e04771e6bb
+
+pkgname = lttngtop
+
