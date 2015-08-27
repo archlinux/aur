@@ -4,8 +4,8 @@
 
 _npmname=bower
 pkgname=nodejs-$_npmname
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.5.2
+pkgrel=1
 pkgdesc='The browser package manager'
 arch=('any')
 url='https://github.com/twitter/bower'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('df81b015316062da0ac7ab64a4677fb2')
+md5sums=('218d35f4106d00d27c8f4930fdd64547')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
