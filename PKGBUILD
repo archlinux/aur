@@ -7,8 +7,8 @@ pkgdesc="Static Analyzer by Facebook"
 arch=('x86_64')
 url="https://github.com/facebook/infer"
 license=('BSD')
-depends=('python2' 'python' 'java-environment<=7' 'opam')
-makedepends=('gcc>=4.7.2' 'git' 'rsync')
+depends=('python2' 'python' 'java-environment<=7' 'gcc>=4.7.2' 'opam')
+makedepends=('git' 'rsync')
 source=("${pkgname}::git://github.com/facebook/infer.git")
 sha256sums=('SKIP')
 

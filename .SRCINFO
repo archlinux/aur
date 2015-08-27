@@ -5,12 +5,12 @@ pkgbase = infer
 	url = https://github.com/facebook/infer
 	arch = x86_64
 	license = BSD
-	makedepends = gcc>=4.7.2
 	makedepends = git
 	makedepends = rsync
 	depends = python2
 	depends = python
 	depends = java-environment<=7
+	depends = gcc>=4.7.2
 	depends = opam
 	source = infer::git://github.com/facebook/infer.git
 	sha256sums = SKIP
