@@ -1,0 +1,21 @@
+pkgbase = lttng-modules-git
+	pkgdesc = Kernel Modules for LTTng
+	pkgver = 2.7.0.rc1.11.gc7d89a6
+	pkgrel = 1
+	url = http://lttng.org/
+	install = lttng-modules-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL2
+	license = MIT
+	makedepends = linux-headers
+	makedepends = git
+	depends = linux>=2.6.38
+	provides = lttng-modules
+	conflicts = lttng-modules
+	source = git://git.lttng.org/lttng-modules.git
+	sha1sums = SKIP
+
+pkgname = lttng-modules-git
+
