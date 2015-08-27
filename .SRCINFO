@@ -1,0 +1,15 @@
+pkgbase = ruby-metaclass
+	pkgdesc = Adds a metaclass method to all Ruby objects
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://github.com/floehopper/metaclass
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = metaclass-0.0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/metaclass-0.0.4.gem
+	sha1sums = 1c260bcb24bcf0867ca9d601a0b64d45d36e4a30
+
+pkgname = ruby-metaclass
+
