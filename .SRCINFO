@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-yocs-math-toolkit
+	pkgdesc = ROS - Math toolkit for Yujin open control system.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://ros.org/wiki/yocs_math_toolkit
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	depends = ros-indigo-tf
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	source = yocs_math_toolkit::git+https://github.com/yujinrobot-release/yujin_ocs-release.git#tag=release/indigo/yocs_math_toolkit/0.6.4-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-yocs-math-toolkit
+
