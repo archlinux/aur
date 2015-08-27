@@ -1,10 +1,11 @@
 # Maintainer: Justin Dray <justin@dray.be>
+# Contributor: Carl George <arch <at> cgtx.us>
 
 pkgname=couchpotato
 _pkgname=CouchPotato
 pkgver=2.6.3
 _fullname=CouchPotatoServer-build-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Movie Downloading via NZBs & Torrent"
 arch=('any')
 url="http://couchpota.to/"
@@ -16,8 +17,11 @@ source=("https://github.com/RuudBurger/CouchPotatoServer/archive/build/${pkgver}
 	"${pkgname}-confd.conf"
 	"${pkgname}.sh"
 	"${pkgname}-tmpfiles.conf")
-md5sums=('a2a39b1807828fd515ee71babc5a935d' 'af10d8c2e347005ee2ff465865456107' '42ec6846a96efdf6524d7905b3f03393' '48126ad1674d4679c2a645dfb9d5a2c2' 
-'95ebd431433b87d88c7a48cf0a32be7d')
+md5sums=('a2a39b1807828fd515ee71babc5a935d'
+         'af10d8c2e347005ee2ff465865456107'
+         '42ec6846a96efdf6524d7905b3f03393'
+         '48126ad1674d4679c2a645dfb9d5a2c2'
+         '95ebd431433b87d88c7a48cf0a32be7d')
 
 package() {
   install -d "${pkgdir}/usr/lib/${pkgname}"
