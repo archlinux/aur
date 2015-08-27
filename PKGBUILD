@@ -3,8 +3,8 @@
 # Contributor: Emil Velikov <emil.l.velikov@gmail.com>
 
 pkgname='waffle'
-pkgver='1.5.1'
-pkgrel='4'
+pkgver='1.5.2'
+pkgrel='1'
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('i686' 'x86_64')
 url='http://www.waffle-gl.org'
@@ -14,7 +14,7 @@ depends=('libx11' 'libxcb' 'wayland')
 makedepends=('cmake' 'xcb-proto' 'libegl' 'libgbm' 'libgl' 'libxslt' 'docbook-xsl')
 
 source=("https://github.com/waffle-gl/waffle/archive/v$pkgver.tar.gz")
-sha256sums=('1cc8e63b47bc2273eeab3d82bc804953adae70beceb59839612ecedc4ea3cd59')
+sha256sums=('d662f6743f688dc5ea4b7d29f558eb54bd8f57350080f04a006693d22e5d1d5b')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
