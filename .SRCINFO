@@ -1,0 +1,17 @@
+pkgbase = ros-indigo-rocon-python-wifi
+	pkgdesc = ROS - The pythonwifi package is available through pypi, but not through a deb package.
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = http://pythonwifi.wikispot.org/
+	arch = any
+	license = GPLv2
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = python2-catkin-pkg
+	source = rocon_python_wifi::git+https://github.com/yujinrobot-release/rocon_tools-release.git#tag=release/indigo/rocon_python_wifi/0.1.23-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-python-wifi
+
