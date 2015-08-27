@@ -3,7 +3,7 @@
 _npmname=gulp
 pkgname=nodejs-$_npmname
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The streaming build system"
 arch=('any')
 url="http://gulpjs.com/"
@@ -19,9 +19,10 @@ md5sums=('5b35a2a4187c45f6ea4e74a5f47de0f9'
 package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cd "$srcdir"
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+
+  rmdir "${pkgdir}/usr/etc"
 }
