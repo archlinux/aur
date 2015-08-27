@@ -4,7 +4,7 @@
 pkgname=orfeo-toolbox
 pkgver=5.0
 minorver=0
-pkgrel=2
+pkgrel=3
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
