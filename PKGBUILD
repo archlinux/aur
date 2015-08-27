@@ -2,7 +2,7 @@
 
 _qt_module=qtsvg
 pkgname="mingw-w64-qt5-svg"
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=('any')
 pkgdesc="Qt5 for Windows -- QtSvg module (mingw-w64)"
@@ -12,8 +12,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
 url="http://qt-project.org/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('5c7019682fdf37721b8477d69800559a')
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('08234e3c3696f1a75df30201ca16d4bc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
