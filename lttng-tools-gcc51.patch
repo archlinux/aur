@@ -1,0 +1,105 @@
+commit 96ffaa0c61089296dd5c9dd07810f32f97931fc8
+Author: Jérémie Galarneau <jeremie.galarneau@efficios.com>
+Date:   Fri May 22 12:55:57 2015 -0400
+
+    Clean-up: Remove ifdef-ed out function:entry feature
+    
+    Signed-off-by: Jérémie Galarneau <jeremie.galarneau@efficios.com>
+
+diff --git a/src/bin/lttng/commands/enable_events.c b/src/bin/lttng/commands/enable_events.c
+index ab32994..f1d0458 100644
+--- a/src/bin/lttng/commands/enable_events.c
++++ b/src/bin/lttng/commands/enable_events.c
+@@ -52,22 +52,15 @@ static int opt_python;
+ static int opt_enable_all;
+ static char *opt_probe;
+ static char *opt_function;
+-static char *opt_function_entry_symbol;
+ static char *opt_channel_name;
+ static char *opt_filter;
+ static char *opt_exclude;
+-#if 0
+-/* Not implemented yet */
+-static char *opt_cmd_name;
+-static pid_t opt_pid;
+-#endif
+ 
+ enum {
+ 	OPT_HELP = 1,
+ 	OPT_TRACEPOINT,
+ 	OPT_PROBE,
+ 	OPT_FUNCTION,
+-	OPT_FUNCTION_ENTRY,
+ 	OPT_SYSCALL,
+ 	OPT_USERSPACE,
+ 	OPT_LOGLEVEL,
+@@ -94,13 +87,6 @@ static struct poptOption long_options[] = {
+ 	{"tracepoint",     0,   POPT_ARG_NONE, 0, OPT_TRACEPOINT, 0, 0},
+ 	{"probe",          0,   POPT_ARG_STRING, &opt_probe, OPT_PROBE, 0, 0},
+ 	{"function",       0,   POPT_ARG_STRING, &opt_function, OPT_FUNCTION, 0, 0},
+-#if 0
+-	/*
+-	 * Currently removed from lttng kernel tracer. Removed from
+-	 * lttng UI to discourage its use.
+-	 */
+-	{"function:entry", 0,   POPT_ARG_STRING, &opt_function_entry_symbol, OPT_FUNCTION_ENTRY, 0, 0},
+-#endif
+ 	{"syscall",        0,   POPT_ARG_NONE, 0, OPT_SYSCALL, 0, 0},
+ 	{"loglevel",       0,     POPT_ARG_STRING, 0, OPT_LOGLEVEL, 0, 0},
+ 	{"loglevel-only",  0,     POPT_ARG_STRING, 0, OPT_LOGLEVEL_ONLY, 0, 0},
+@@ -144,10 +130,6 @@ static void usage(FILE *ofp)
+ 	fprintf(ofp, "                           Dynamic function entry/return probe.\n");
+ 	fprintf(ofp, "                           Addr and offset can be octal (0NNN...),\n");
+ 	fprintf(ofp, "                           decimal (NNN...) or hexadecimal (0xNNN...)\n");
+-#if 0
+-	fprintf(ofp, "    --function:entry symbol\n");
+-	fprintf(ofp, "                           Function tracer event\n");
+-#endif
+ 	fprintf(ofp, "    --syscall              System call event\n");
+ 	fprintf(ofp, "\n");
+ 	fprintf(ofp, "    --loglevel name\n");
+@@ -1053,11 +1035,6 @@ static int enable_events(char *session_name)
+ 					goto error;
+ 				}
+ 				break;
+-			case LTTNG_EVENT_FUNCTION_ENTRY:
+-				strncpy(ev.attr.ftrace.symbol_name, opt_function_entry_symbol,
+-						LTTNG_SYMBOL_NAME_LEN);
+-				ev.attr.ftrace.symbol_name[LTTNG_SYMBOL_NAME_LEN - 1] = '\0';
+-				break;
+ 			case LTTNG_EVENT_SYSCALL:
+ 				ev.type = LTTNG_EVENT_SYSCALL;
+ 				break;
+@@ -1069,14 +1046,6 @@ static int enable_events(char *session_name)
+ 			/* kernel loglevels not implemented */
+ 			ev.loglevel_type = LTTNG_EVENT_LOGLEVEL_ALL;
+ 		} else if (opt_userspace) {		/* User-space tracer action */
+-#if 0
+-			if (opt_cmd_name != NULL || opt_pid) {
+-				MSG("Only supporting tracing all UST processes (-u) for now.");
+-				ret = CMD_UNDEFINED;
+-				goto error;
+-			}
+-#endif
+-
+ 			DBG("Enabling UST event %s for channel %s, loglevel %s", event_name,
+ 					print_channel_name(channel_name), opt_loglevel ? : "<all>");
+ 
+@@ -1091,7 +1060,6 @@ static int enable_events(char *session_name)
+ 				break;
+ 			case LTTNG_EVENT_PROBE:
+ 			case LTTNG_EVENT_FUNCTION:
+-			case LTTNG_EVENT_FUNCTION_ENTRY:
+ 			case LTTNG_EVENT_SYSCALL:
+ 			default:
+ 				ERR("Event type not available for user-space tracing");
+@@ -1398,9 +1366,6 @@ int cmd_enable_events(int argc, const char **argv)
+ 		case OPT_FUNCTION:
+ 			opt_event_type = LTTNG_EVENT_FUNCTION;
+ 			break;
+-		case OPT_FUNCTION_ENTRY:
+-			opt_event_type = LTTNG_EVENT_FUNCTION_ENTRY;
+-			break;
+ 		case OPT_SYSCALL:
+ 			opt_event_type = LTTNG_EVENT_SYSCALL;
+ 			break;

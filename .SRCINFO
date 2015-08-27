@@ -1,0 +1,25 @@
+pkgbase = lttng-tools
+	pkgdesc = Trace control client for LTTng
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = http://lttng.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	depends = popt
+	depends = liburcu>=0.7.2
+	depends = lttng-ust
+	depends = linux>=2.6.27
+	depends = libxml2>=2.7.6
+	optdepends = lttng-modules: kernel tracing support
+	optdepends = babeltrace: trace viewing
+	provides = lttng
+	options = !libtool
+	source = http://lttng.org/files/lttng-tools/lttng-tools-2.6.0.tar.bz2
+	source = lttng-tools-gcc51.patch
+	sha1sums = cdcbcb527b665d4df409fd7a8013dba97566190a
+	sha1sums = fe1deab975f2a453b5abf3f173f57477fcb8ad45
+
+pkgname = lttng-tools
+
