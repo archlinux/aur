@@ -1,7 +1,7 @@
 pkgbase = lib32-waffle
 	pkgdesc = a library for choosing window system and OpenGL API at runtime (32 bits)
-	pkgver = 1.5.1
-	pkgrel = 3
+	pkgver = 1.5.2
+	pkgrel = 1
 	url = http://www.waffle-gl.org
 	arch = x86_64
 	license = BSD
@@ -14,9 +14,9 @@ pkgbase = lib32-waffle
 	depends = lib32-libx11
 	depends = lib32-libxcb
 	depends = lib32-wayland
-	depends = waffle=1.5.1
-	source = https://github.com/waffle-gl/waffle/archive/v1.5.1.tar.gz
-	sha256sums = 1cc8e63b47bc2273eeab3d82bc804953adae70beceb59839612ecedc4ea3cd59
+	depends = waffle=1.5.2
+	source = https://github.com/waffle-gl/waffle/archive/v1.5.2.tar.gz
+	sha256sums = d662f6743f688dc5ea4b7d29f558eb54bd8f57350080f04a006693d22e5d1d5b
 
 pkgname = lib32-waffle
 	optdepends = lib32-libegl: for x11_egl, gbm or wayland support
