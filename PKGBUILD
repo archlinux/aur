@@ -1,6 +1,4 @@
 # Maintainer: Andreas Hauser <andy-aur@splashground.de>
-# Former Maintainer: Christoph Drexler <chrdr at gmx dot at>
-
 
 pkgbase=ffindex
 pkgdesc="simple index/database for huge amounts of small files"
