@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-kobuki-dock-drive
+	pkgdesc = ROS - Dock driving library for Kobuki.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_dock_drive
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-linear-algebra
+	makedepends = ros-indigo-ecl-geometry
+	makedepends = ros-indigo-ecl-threads
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-ecl-linear-algebra
+	depends = ros-indigo-ecl-geometry
+	depends = ros-indigo-ecl-threads
+	source = kobuki_dock_drive::git+https://github.com/yujinrobot-release/kobuki_core-release.git#tag=release/indigo/kobuki_dock_drive/0.6.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-dock-drive
+
