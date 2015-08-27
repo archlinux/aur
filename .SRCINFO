@@ -1,0 +1,18 @@
+pkgbase = lttng-modules
+	pkgdesc = Kernel Modules for LTTng
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = http://lttng.org/
+	install = lttng-modules.install
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL2
+	license = MIT
+	makedepends = linux-headers
+	depends = linux>=2.6.38
+	source = http://lttng.org/files/lttng-modules/lttng-modules-2.6.2.tar.bz2
+	sha1sums = d4c3f195a1294571d409734beec77eec0a864272
+
+pkgname = lttng-modules
+
