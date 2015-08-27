@@ -3,20 +3,20 @@
 
 pkgname=pamac-aur
 _pkgname=pamac
-pkgver=2.3.3
-_pkgver=2.3.3
-pkgrel=2
+pkgver=2.4.0
+_pkgver=2.4.0
+pkgrel=4
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
 #_gitcommit="d8e9826ab0b84bdb6f4b6c0dcc4ce1461bf04595"
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=(any)
 url="https://github.com/manjaro/pamac"
 license=('GPL3')
-depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'yaourt' 'vte3>=0.38'
-         'gtk3>=3.16' 'libnotify' 'desktop-file-utils' 'pacman>=4.2'
-         'gnutls>=3.4')
+depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.16'
+         'libnotify' 'desktop-file-utils' 'pacman>=4.2' 'pacman>=4.2' 'gnutls>=3.4')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
-            'lxsession: needed for authentification in Xfce, LXDE etc.')
+            'lxsession: needed for authentification in Xfce, LXDE etc.'
+            'yaourt: needed for AUR support')
 makedepends=('gettext' 'itstool' 'vala>=0.28')
 backup=('etc/pamac.conf')
 provides=('pamac')
@@ -30,10 +30,10 @@ else
   source=("pamac-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 
-source+=("pamac-grid-row-resize.patch::https://github.com/manjaro/pamac/commit/07dc17b9709b272d1bcd2170e28c59495b2fa333.patch")
+source+=("pamac-git-patches-$pkgrel.patch::https://github.com/manjaro/pamac/compare/v$_pkgver...master.patch")
 
-sha256sums=('5683a5e14ceedc83a4aa0c1415c75aeb65ba334923b34528fa5da2523ebb12e4'
-            'afce6fdd69f57999fbf16e0777f0f9ca18fd2883953ff2d8a9730c49448975db')
+sha256sums=('f6918f9b820b14be8dd4967f76b65efe6754dff7e6c80915c3d1bad264e7bf2e'
+            'SKIP')
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
@@ -45,7 +45,7 @@ prepare() {
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" manager_window.vala
   cd "$srcdir/pamac-$pkgver/"
   # patches here
-  patch -Np1 -i $srcdir/pamac-grid-row-resize.patch
+  patch -Np1 -i $srcdir/pamac-git-patches-$pkgrel.patch
 }
 
 build() {

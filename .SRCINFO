@@ -1,7 +1,7 @@
 pkgbase = pamac-aur
 	pkgdesc = A Gtk3 frontend for libalpm
-	pkgver = 2.3.3
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 4
 	url = https://github.com/manjaro/pamac
 	install = pamac.install
 	arch = any
@@ -14,23 +14,24 @@ pkgbase = pamac-aur
 	depends = libsoup
 	depends = dbus-glib
 	depends = polkit
-	depends = yaourt
 	depends = vte3>=0.38
 	depends = gtk3>=3.16
 	depends = libnotify
 	depends = desktop-file-utils
 	depends = pacman>=4.2
+	depends = pacman>=4.2
 	depends = gnutls>=3.4
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
+	optdepends = yaourt: needed for AUR support
 	provides = pamac
 	conflicts = pamac
 	options = !emptydirs
 	backup = etc/pamac.conf
-	source = pamac-2.3.3.tar.gz::https://github.com/manjaro/pamac/archive/v2.3.3.tar.gz
-	source = pamac-grid-row-resize.patch::https://github.com/manjaro/pamac/commit/07dc17b9709b272d1bcd2170e28c59495b2fa333.patch
-	sha256sums = 5683a5e14ceedc83a4aa0c1415c75aeb65ba334923b34528fa5da2523ebb12e4
-	sha256sums = afce6fdd69f57999fbf16e0777f0f9ca18fd2883953ff2d8a9730c49448975db
+	source = pamac-2.4.0.tar.gz::https://github.com/manjaro/pamac/archive/v2.4.0.tar.gz
+	source = pamac-git-patches-4.patch::https://github.com/manjaro/pamac/compare/v2.4.0...master.patch
+	sha256sums = f6918f9b820b14be8dd4967f76b65efe6754dff7e6c80915c3d1bad264e7bf2e
+	sha256sums = SKIP
 
 pkgname = pamac-aur
 
