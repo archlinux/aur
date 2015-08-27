@@ -7,7 +7,7 @@ _version=5.1.0
 _build=f3
 _buildtag=2015082501
 pkgver=${_version}${_build}
-pkgrel=3
+pkgrel=4
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='http://unity3d.com/'
@@ -15,6 +15,8 @@ license=('custom')
 depends=('desktop-file-utils'
          'xdg-utils'
          'gcc-multilib'
+         'gcc-libs-multilib'
+         'lib32-gcc-libs'
          'libgl'
          'glu'
          'nss'

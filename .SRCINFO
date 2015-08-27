@@ -1,7 +1,7 @@
 pkgbase = unity3d
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
 	pkgver = 5.1.0f3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://unity3d.com/
 	install = unity3d.install
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = unity3d
 	depends = desktop-file-utils
 	depends = xdg-utils
 	depends = gcc-multilib
+	depends = gcc-libs-multilib
+	depends = lib32-gcc-libs
 	depends = libgl
 	depends = glu
 	depends = nss
