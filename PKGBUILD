@@ -11,8 +11,8 @@
 pkgname=qgis-git
 _pkgname=${pkgname//-git}
 _pkgver=2.11
-pkgver=2.11
-pkgrel=3
+pkgver=2.11.0
+pkgrel=4
 pkgdesc='QGIS (master) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -59,13 +59,15 @@ source=("${_pkgname}::git://github.com/qgis/QGIS.git"
         "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
 md5sums=('SKIP'
          'e9406ac7c4a2cbb36f820c4602660590'
-         '8af47ad4644f05ac3cadb94c392fd25d'
+         '59f82f01838d37d895312bf0c17ddc1e'
          '57efd9c869ed2d0a50fb7cf35048d99d')
 
 pkgver() {
   cd $_pkgname
-
-  printf "%s.r%s" $_pkgver "$(git rev-list --count HEAD)"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "$_pkgver.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
@@ -158,6 +160,8 @@ package() {
     "$pkgdir/usr/share/pixmaps/qbrowser-git.png"
 
   # rename executables so they don't conflict with qgis or qgis-ltr
+  mv $pkgdir/opt/$pkgname/bin/$_pkgname $pkgdir/opt/$pkgname/bin/$pkgname
+
   install -Dm755 $srcdir/$pkgname.sh \
     $pkgdir/usr/bin/$pkgname
 

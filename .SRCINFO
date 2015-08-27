@@ -1,7 +1,7 @@
 pkgbase = qgis-git
 	pkgdesc = QGIS (master) is a Geographic Information System (GIS) that supports vector, raster & database formats
-	pkgver = 2.11
-	pkgrel = 3
+	pkgver = 2.11.0
+	pkgrel = 4
 	url = http://qgis.org/
 	install = qgis-git.install
 	arch = i686
@@ -40,14 +40,14 @@ pkgbase = qgis-git
 	optdepends = fcgi: QGIS Map Server support
 	optdepends = osgearth: QGIS Globe plugin support
 	optdepends = gpsbabel: GPS toolbar support
-	provides = qgis-git=2.11
+	provides = qgis-git=2.11.0
 	source = qgis::git://github.com/qgis/QGIS.git
 	source = qgis-git.png
 	source = qgis-git.sh
 	source = https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py
 	md5sums = SKIP
 	md5sums = e9406ac7c4a2cbb36f820c4602660590
-	md5sums = 8af47ad4644f05ac3cadb94c392fd25d
+	md5sums = 59f82f01838d37d895312bf0c17ddc1e
 	md5sums = 57efd9c869ed2d0a50fb7cf35048d99d
 
 pkgname = qgis-git
