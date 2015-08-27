@@ -1,6 +1,7 @@
 # Maintainer: freaknils <nils@czserver.de>
 
 pkgname=moodle-plus
+_pkgname=moodle
 pkgver=2.9.1
 _pkgver='latest-29'
 pkgrel=1
@@ -18,7 +19,7 @@ package() {
     cd "$pkgdir"
     install -dm0755 usr/share/webapps
     install -dm0755 var/lib/moodle
-    cp -a "$srcdir"/$pkgname usr/share/webapps/moodle
+    cp -a "$srcdir"/$_pkgname usr/share/webapps/moodle
 
     # move data in var
     ln -s ../../../var/lib/moodle usr/share/webapps/moodledata
