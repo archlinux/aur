@@ -1,0 +1,23 @@
+pkgbase = libretro-bsnes-git
+	pkgdesc = bsnes libretro core
+	pkgver = r457.1f9f61a
+	pkgrel = 1
+	url = https://github.com/libretro/bsnes-libretro
+	arch = i686
+	arch = x86_64
+	groups = libretro
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = libretro-bsnes::git+https://github.com/libretro/bsnes-libretro
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_accuracy_libretro.info
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_balanced_libretro.info
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_performance_libretro.info
+	sha256sums = SKIP
+	sha256sums = 6a70cd34b75217c1b7e23ebba16e13b80bbda1c2370b5f2fcd83a99bfdc5b3e0
+	sha256sums = 444ed721643530446ff7dd93ff0fec24e1f53eff3a93524b4649593ba23e2e2f
+	sha256sums = 42e4369171f6aba98d389f6b097a561e225b9fcd63f0587fd75f0e57b580198f
+
+pkgname = libretro-bsnes-git
+
