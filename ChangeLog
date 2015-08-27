@@ -1,0 +1,11 @@
+2013-12-09  Matt Corallo <aur-maint@mattcorallo.com>
+	* Adopt package
+	* Add a packge() so makepkg shuts up about deprecated PKGBUILD
+	* Use sha256sum instead of md5 (just because I feel happier that way)
+
+2012-03-26  Stéphane Marguet (Stemp) <smarguet at gmail dot com>
+	* Fix namcap warnings
+	* Create changelog
+
+2012-01-22  Stéphane Marguet (Stemp) <smarguet at gmail dot com>
+	* Update to po-debconf_1.0.16+nmu2
