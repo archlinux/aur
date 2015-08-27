@@ -1,0 +1,31 @@
+pkgbase = ros-indigo-yocs-virtual-sensor
+	pkgdesc = ROS - Virtual sensor that uses semantic map information to see obstacles undetectable by robot sensors.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://ros.org/wiki/yocs_virtual_sensor
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-yocs-math-toolkit
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-yocs-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-tf
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-yocs-math-toolkit
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rospy-message-converter
+	depends = ros-indigo-yocs-msgs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-tf
+	depends = ros-indigo-visualization-msgs
+	source = yocs_virtual_sensor::git+https://github.com/yujinrobot-release/yujin_ocs-release.git#tag=release/indigo/yocs_virtual_sensor/0.6.4-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-yocs-virtual-sensor
+
