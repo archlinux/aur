@@ -13,7 +13,7 @@ license=('GPL')
 changelog=ChangeLog
 depends=('gettext' 'perl' 'intltool-debian')
 source=(http://ftp.debian.org/debian/pool/main/p/po-debconf/${pkgname}_${pkgver}_all.deb)
-sha256sums=('aec4d18a310988aebc55a14db7e5fd0dfee6b49cca1d5aa6e7e58b8645a7d29e')
+sha256sums=('2842ee181138de994f680a157c5915391f1163cce40be9691c8159015131bd2f')
 
 build() {
 	cd $srcdir
