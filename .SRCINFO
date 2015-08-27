@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-create-description
+	pkgdesc = ROS - Model description for the iRobot Create.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://ros.org/wiki/create_description
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-urdf
+	depends = ros-indigo-xacro
+	source = create_description::git+https://github.com/turtlebot-release/turtlebot_create-release.git#tag=release/indigo/create_description/2.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-create-description
+
