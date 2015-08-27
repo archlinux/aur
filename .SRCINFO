@@ -1,6 +1,6 @@
 pkgbase = retroshare-git-no-sqlcipher
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
-	pkgver = v0.6.0.RC2.r57.g48c3eed
+	pkgver = v0.6.0.RC2.r126.g6e1a8fa
 	pkgrel = 1
 	url = http://retroshare.sourceforge.net/
 	install = retroshare.install
@@ -22,7 +22,7 @@ pkgbase = retroshare-git-no-sqlcipher
 	source = retroshare::git+https://github.com/RetroShare/RetroShare.git
 	source = retroshare.install
 	sha256sums = SKIP
-	sha256sums = 47c23238cbfabb6f07b6a25666ee5941243176360ca28ec31378d94e87326ec1
+	sha256sums = 44ea7d8b0208e8954391184dcbb8ff94b2efc246580057a1d2b2e73ad262aad2
 
 pkgname = retroshare-git-no-sqlcipher
 
