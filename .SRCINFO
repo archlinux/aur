@@ -1,0 +1,17 @@
+pkgbase = sekaiju
+	pkgdesc = Sequencer for editing MIDI files
+	pkgver = 4.5
+	pkgrel = 2
+	url = http://openmidiproject.sourceforge.jp/Sekaiju_en.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gendesk
+	makedepends = imagemagick
+	depends = wine
+	optdepends = bash-completion: tab completion support
+	source = http://osdn.jp/frs/redir.php?f=%2Fopenmidiproject%2F63237%2FSekaiju4.5.zip
+	sha256sums = f86ac9715b6acb0022272a92d38d98043537dbff60c994c2edd221ca65b145b8
+
+pkgname = sekaiju
+
