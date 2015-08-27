@@ -1,0 +1,20 @@
+pkgbase = idris-git
+	pkgdesc = Functional Programming Language with Dependent Types
+	pkgver = v0.9.18.r472.7642503
+	pkgrel = 1
+	url = http://www.idris-lang.org/
+	install = idris-git.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = gmp
+	depends = libffi
+	depends = gcc
+	provides = idris
+	conflicts = idris
+	options = staticlibs
+	source = git://github.com/idris-lang/Idris-dev.git
+	md5sums = SKIP
+
+pkgname = idris-git
+
