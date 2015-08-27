@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-kobuki-ftdi
+	pkgdesc = ROS - Utilities for flashing and enabling Kobukis USB connection.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_ftdi
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-command-line
+	makedepends = ros-indigo-catkin
+	makedepends = ftdi-eeprom
+	makedepends = libftdi
+	makedepends = libusb-compat
+	depends = ros-indigo-ecl-command-line
+	depends = ftdi-eeprom
+	depends = libftdi
+	depends = libusb-compat
+	source = kobuki_ftdi::git+https://github.com/yujinrobot-release/kobuki_core-release.git#tag=release/indigo/kobuki_ftdi/0.6.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-ftdi
+
