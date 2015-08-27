@@ -1,0 +1,13 @@
+pkgbase = guile-dbi
+	pkgdesc = Guile Scheme generic database interface
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = http://home.gna.org/guile-dbi/
+	arch = any
+	license = GPL2
+	depends = guile
+	source = http://download.gna.org/guile-dbi/guile-dbi-2.1.5.tar.gz
+	md5sums = 1abdef4473760ed7f6687f4f25365aa8
+
+pkgname = guile-dbi
+
