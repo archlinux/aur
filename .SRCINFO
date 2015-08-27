@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-rocon-python-comms
+	pkgdesc = ROS - Service pair libraries for pub/sub non-blocking services.
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = http://ros.org/wiki/rocon_python_comms
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-catkin
+	makedepends = python2-catkin-pkg
+	depends = ros-indigo-rosservice
+	depends = ros-indigo-unique-id
+	depends = ros-indigo-genpy
+	depends = ros-indigo-uuid-msgs
+	depends = ros-indigo-rocon-console
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rostopic
+	depends = ros-indigo-rosgraph
+	depends = ros-indigo-roslib
+	depends = ros-indigo-rosnode
+	depends = ros-indigo-rocon-service-pair-msgs
+	depends = python2-yaml
+	source = rocon_python_comms::git+https://github.com/yujinrobot-release/rocon_tools-release.git#tag=release/indigo/rocon_python_comms/0.1.23-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-python-comms
+
