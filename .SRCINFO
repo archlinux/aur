@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-kobuki-rapps
+	pkgdesc = ROS - Robot apps for Kobuki.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_rapps
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-kobuki-random-walker
+	depends = ros-indigo-kobuki-auto-docking
+	depends = ros-indigo-nodelet
+	source = kobuki_rapps::git+https://github.com/yujinrobot-release/kobuki-release.git#tag=release/indigo/kobuki_rapps/0.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-rapps
+
