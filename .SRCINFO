@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-yocs-cmd-vel-mux
+	pkgdesc = ROS - A multiplexer for command velocity inputs.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://ros.org/wiki/yocs_cmd_vel_mux
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-pluginlib
+	makedepends = yaml-cpp
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = yaml-cpp
+	source = yocs_cmd_vel_mux::git+https://github.com/yujinrobot-release/yujin_ocs-release.git#tag=release/indigo/yocs_cmd_vel_mux/0.6.4-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-yocs-cmd-vel-mux
+
