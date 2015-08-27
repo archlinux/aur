@@ -1,16 +1,16 @@
 pkgbase = perl-mojolicious
 	pkgdesc = Real-time web framework
-	pkgver = 6.16
+	pkgver = 6.17
 	pkgrel = 1
 	url = https://metacpan.org/release/Mojolicious
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl
+	depends = perl>=5.10.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Mojolicious-6.16.tar.gz
-	md5sums = da05110bf02c5dcaa99c3d91079de0f1
-	sha512sums = ce089911c1068dca8c440fafafca256c6f0157a406ef94ecf939a0a65fb086111296189cbf68d9a36fbcd9ad1e7fd3989fddcfb82cd7e3b428f46808446e87e5
+	source = http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Mojolicious-6.17.tar.gz
+	md5sums = fcb2dc64067d0a06e23217aece4e874c
+	sha512sums = 795c8635495cd8326b7cf59ca34cd938f3700e73339d0bb309dc8093712a93576406519550a7ec1d8536a219a52ccf7af15ebc7d5f1a59731dd248f0b16fb8a1
 
 pkgname = perl-mojolicious
 
