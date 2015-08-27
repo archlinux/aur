@@ -15,7 +15,7 @@ source=("git://anongit.kde.org/purpose.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd kpeople
+  cd purpose
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
