@@ -1,6 +1,6 @@
 pkgbase = telegramqml-git
 	pkgdesc = Telegram API tools for QtQml and Qml
-	pkgver = 0.8.0.stable.r2.g2ef85fa
+	pkgver = 0.8.0.stable.r44.g8cd7abb
 	pkgrel = 1
 	url = https://github.com/Aseman-Land/TelegramQML
 	arch = i686
