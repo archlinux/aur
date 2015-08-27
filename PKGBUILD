@@ -5,14 +5,14 @@
 _build_nogui=true
 
 # Set this to true to build and install the plugins
-_build_feedreader=false
-_build_voip=false
+_build_feedreader=true
+_build_voip=true
 
 ### Nothing to be changed below this line ###
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.0.RC2.r29.g13e77fb
+pkgver=v0.6.0.RC2.r123.gb8459b3
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -123,11 +123,11 @@ package() {
 
 	# Binaries
 	install -D -m 755 \
-		retroshare-gui/src/RetroShare \
+		retroshare-gui/src/RetroShare06 \
 		"$pkgdir/usr/bin/retroshare"
 	if [[ "$_build_nogui" == "true" ]]; then
 		install -D -m 755 \
-			"retroshare-nogui/src/retroshare-nogui" \
+			"retroshare-nogui/src/RetroShare06-nogui" \
 			"${pkgdir}/usr/bin/retroshare-nogui"
 	fi
 
