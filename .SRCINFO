@@ -1,0 +1,26 @@
+pkgbase = swift
+	pkgver = 3.0beta2
+	pkgrel = 1
+	url = http://swift.im/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2
+	makedepends = openssl
+	makedepends = qt5-base
+	makedepends = boost
+	source = http://swift.im/downloads/releases/swift-3.0beta2/swift-3.0beta2.tar.gz
+	md5sums = SKIP
+
+pkgname = swift
+	pkgdesc = XMPP client written in C++ with Qt
+	depends = swiften=3.0beta2
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-webkit
+	depends = qt5-x11extras
+
+pkgname = swiften
+	pkgdesc = XMPP library written in C++ with Boost
+	depends = boost-libs
+
