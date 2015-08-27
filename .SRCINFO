@@ -1,0 +1,33 @@
+pkgbase = ros-indigo-kobuki-random-walker
+	pkgdesc = ROS - Random walker app for Kobuki.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_random_walker
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-ecl-threads
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-kobuki-msgs
+	makedepends = ros-indigo-yocs-controllers
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-yocs-cmd-vel-mux
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-ecl-threads
+	depends = ros-indigo-kobuki-msgs
+	depends = ros-indigo-yocs-controllers
+	depends = ros-indigo-pluginlib
+	source = kobuki_random_walker::git+https://github.com/yujinrobot-release/kobuki-release.git#tag=release/indigo/kobuki_random_walker/0.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-random-walker
+
