@@ -1,5 +1,5 @@
---- mondo-3.0.2/src/mondorestore/mondo-rstr-tools.c	2012-03-30 01:43:01.000000000 +0100
-+++ mondo-3.0.2/src/mondorestore/mondo-rstr-tools-patch.c	2012-06-07 21:32:29.101163056 +0100
+--- mondo-3.2.0/src/mondorestore/mondo-rstr-tools.c
++++ mondo-3.2.0/src/mondorestore/mondo-rstr-tools-patch.c
 @@ -1246,7 +1246,7 @@
  		("You will now be able to re-generate your initrd.\nThis is especially useful if you changed of hardware configuration, cloned, made P2V, used multipath...\nDo you need to do it ?")) {
  		log_msg(1,"Launching shell for manual initrd recreation");

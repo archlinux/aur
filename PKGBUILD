@@ -1,7 +1,7 @@
 # Maintainer: M.Carreira <arch@carreira.com.pt>
 # Contributor: M.Carreira <arch@carreira.com.pt>
 pkgname=mondo
-pkgver=3.0.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A disaster recovery solution to create backup media that can be used to redeploy the damaged system"
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ optdepends=('lzop: File compressor using lzo lib'
 source=(ftp://ftp.mondorescue.org/src/$pkgname-$pkgver.tar.gz
          mondo-initrd.patch)
 
-md5sums=('6c1475911daef9e2e95eaf4394e399d7'
-	'13746686b22550efc6d7d6471561a9bf')
+md5sums=('6f5ef27d940c90a858ce9b1888c23c2d'
+	'29ba10f84bd587aa1b80f70f91be6b02')
 
 
-build() {
+package() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 < ../mondo-initrd.patch
   ./configure --prefix=/usr
