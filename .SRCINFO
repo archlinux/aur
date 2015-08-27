@@ -1,16 +1,16 @@
 pkgbase = iceweasel-stable-bin-i18n-pt-br
 	pkgdesc = Portuguese language package for Iceweasel (Brazil)
-	pkgver = 31.8.0esr.deb1~deb8u1
+	pkgver = 38.2.0esr.deb1~deb8u1
 	pkgrel = 6
 	url = https://packages.debian.org/jessie/iceweasel-l10n-pt-br
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=31.8.0esr
-	provides = iceweasel-l10n-pt-br=31.8.0esr
-	source = http://security.debian.org/debian-security/pool/updates/main/i//iceweasel/iceweasel-l10n-pt-br_31.8.0esr-1~deb8u1_all.deb
-	sha256sums = c17a111dbfe122fd9a5dc5096e751c339962aaa2b6acf1c071f23038912b6ced
+	depends = iceweasel>=38.2.0esr
+	provides = iceweasel-l10n-pt-br=38.2.0esr
+	source = http://security.debian.org/debian-security/pool/updates/main/i//iceweasel/iceweasel-l10n-pt-br_38.2.0esr-1~deb8u1_all.deb
+	sha256sums = 86b841c76eba62f21a1d76fa3981c04377370bcfa8d092a7f69535c789670587
 
 pkgname = iceweasel-stable-bin-i18n-pt-br
 
