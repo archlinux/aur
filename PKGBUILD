@@ -3,7 +3,7 @@
 # Maintainer: Leonard König <leonard.r.koenig at googlemail dot com>
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-pkgname=unity3d
+pkgname=unity-editor
 _version=5.1.0
 _build=f3
 _buildtag=2015082501
@@ -29,8 +29,8 @@ optdepends=('ffmpeg: for WebGL exporting'
             'java-environment: for Android and Tizen exporting'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote')
-conflicts=('unity-editor')
-replaces=('unity-editor')
+conflicts=('unity3d')
+replaces=('unity3d')
 install="${pkgname}.install"
 source=("http://download.unity3d.com/download_unity/unity-editor-installer-${pkgver}.sh"
         "https://unity3d.com/legal/eula"
