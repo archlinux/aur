@@ -5,13 +5,13 @@
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
 
 pkgname=sky
-pkgver=2.0.390
+pkgver=2.0.391
 pkgrel=1
 pkgdesc="Lync & Skype for business on Linux"
 
 arch=(
     'x86_64'
-#    'i686' 
+    'i686' 
 )
 if [[ $CARCH == 'x86_64' ]]; then
     _arch=64
@@ -30,10 +30,11 @@ depends=('openssl' 'nss' 'gstreamer0.10-base' 'libpulse' 'alsa-lib' 'v4l-utils'
 optdepends=('ibus: Intelligent Input Bus (IBus) support')
 makedepends=('binutils' 'chrpath')
 
-source_x86_64=("http://tel.red/beta/sky_ubuntu64_v${pkgver}.deb")
+source_x86_64=("http://tel.red/linux/sky_ubuntu64_v${pkgver}.deb")
 source_i686=("http://tel.red/linux/sky_ubuntu32_v${pkgver}.deb")
 
-sha256sums_x86_64=('973dc50f15b43f2ea963da14d84be046a8299dbf417378624d74f61899d0ae18')
+sha256sums_x86_64=('6aae6e9ee0853d40e90c5e132ba3b901c081c96978cff5de43992c6492d4676d')
+sha256sums_i686=('6496287450e1656ba114a78dec044bc08cbac80616fef70594da256404da1fb6')
 
 package() {
     cd "${srcdir}"
@@ -49,6 +50,8 @@ package() {
     for lib in libsipw ${icu_libs}; do
         chrpath -d "${srcdir}"/opt/sky_linux/lib/${lib}.so*
     done
+    chrpath -d "${srcdir}/opt/sky_linux/platforminputcontexts/libfcitxplatforminputcontextplugin.so"
+
     
     cp -rf "${srcdir}/etc" "${pkgdir}/"
     install -Dm 644 "${srcdir}/usr/share/applications/sky.desktop" "${pkgdir}/usr/share/applications/sky.desktop"
