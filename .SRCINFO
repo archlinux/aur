@@ -1,6 +1,6 @@
 pkgbase = palemoon-bin
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 25.6.0
+	pkgver = 25.7.0
 	pkgrel = 1
 	url = http://linux.palemoon.org/
 	install = palemoon.install
@@ -28,10 +28,10 @@ pkgbase = palemoon-bin
 	conflicts = palemoon
 	source = palemoon.desktop
 	sha1sums = 83ff22ff7a034efac31f1dd5f27ad0115a778743
-	source_i686 = http://linux.palemoon.org/files/25.6.0/palemoon-25.6.0.en-US.linux-i686.tar.bz2
-	sha1sums_i686 = dec42f0bbf26d7a7a1e6d6320b653c198348c9dc
-	source_x86_64 = http://linux.palemoon.org/files/25.6.0/palemoon-25.6.0.en-US.linux-x86_64.tar.bz2
-	sha1sums_x86_64 = bc2c35d33422ea43d213ff1da92d80e3ea797a08
+	source_i686 = http://linux.palemoon.org/files/25.7.0/palemoon-25.7.0.en-US.linux-i686.tar.bz2
+	sha1sums_i686 = e59c963890c3c5276b20850abd81c622778f70ab
+	source_x86_64 = http://linux.palemoon.org/files/25.7.0/palemoon-25.7.0.en-US.linux-x86_64.tar.bz2
+	sha1sums_x86_64 = c1a9175ff9ac567e06dcefdbfa8c0c34fcb7508a
 
 pkgname = palemoon-bin
 
