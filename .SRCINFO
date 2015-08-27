@@ -1,0 +1,38 @@
+pkgbase = ros-indigo-rocon-app-manager
+	pkgdesc = ROS - The public interface and retaskable interface for a robot.
+	pkgver = 0.7.13
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rocon_app_manager
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslint
+	makedepends = ros-indigo-catkin
+	makedepends = python2-catkin-pkg
+	depends = ros-indigo-rocon-gateway-utils
+	depends = ros-indigo-capabilities
+	depends = ros-indigo-gateway-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-rocon-hub
+	depends = ros-indigo-rocon-gateway
+	depends = ros-indigo-rocon-std-msgs
+	depends = ros-indigo-rocon-app-utilities
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rocon-interactions
+	depends = ros-indigo-rocon-app-manager-msgs
+	depends = ros-indigo-rocon-uri
+	depends = ros-indigo-rocon-console
+	depends = ros-indigo-rocon-apps
+	depends = ros-indigo-rocon-master-info
+	depends = ros-indigo-roslib
+	depends = ros-indigo-rosmaster
+	depends = ros-indigo-rocon-python-utils
+	depends = ros-indigo-rocon-python-comms
+	depends = python2-rospkg
+	source = rocon_app_manager::git+https://github.com/yujinrobot-release/rocon_app_platform-release.git#tag=release/indigo/rocon_app_manager/0.7.13-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-app-manager
+
