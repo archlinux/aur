@@ -13,7 +13,6 @@ pkgbase = ros-indigo-kobuki-ftdi
 	makedepends = libftdi
 	makedepends = libusb-compat
 	depends = ros-indigo-ecl-command-line
-	depends = ftdi-eeprom
 	depends = libftdi
 	depends = libusb-compat
 	source = kobuki_ftdi::git+https://github.com/yujinrobot-release/kobuki_core-release.git#tag=release/indigo/kobuki_ftdi/0.6.1-0

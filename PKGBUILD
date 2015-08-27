@@ -19,7 +19,6 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=(ros-indigo-ecl-command-line)
 depends=(${ros_depends[@]}
-  ftdi-eeprom
   libftdi
   libusb-compat)
 
