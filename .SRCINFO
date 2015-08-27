@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-rocon-gateway-utils
+	pkgdesc = ROS - Utilities for gateway users (avoids large dependency requirements).
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = http://ros.org/wiki/rocon_gateway_utils
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rosservice
+	depends = ros-indigo-rosgraph
+	depends = ros-indigo-rocon-python-comms
+	depends = ros-indigo-gateway-msgs
+	depends = ros-indigo-rocon-console
+	source = rocon_gateway_utils::git+https://github.com/yujinrobot-release/rocon_multimaster-release.git#tag=release/indigo/rocon_gateway_utils/0.7.10-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-gateway-utils
+
