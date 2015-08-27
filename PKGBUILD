@@ -3,9 +3,9 @@
 pkgname=libretro-snes9x-git
 pkgver=r506.debfafb
 pkgrel=1
-pkgdesc='Snes9x libretro core'
+pkgdesc='Super Nintendo Entertainment System core'
 arch=('i686' 'x86_64')
-url='http://www.snes9x.com/'
+url='https://github.com/libretro/snes9x'
 license=('custom' 'GPL2' 'LGPL2.1')
 groups=('libretro')
 depends=('gcc-libs' 'glibc')
