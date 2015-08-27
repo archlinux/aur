@@ -1,0 +1,17 @@
+pkgbase = apk2gold-git
+	pkgdesc = CLI tool for decompiling Android apps to Java
+	pkgver = 20141108
+	pkgrel = 2
+	url = https://github.com/lxdvs/apk2gold
+	arch = any
+	license = Apache
+	makedepends = python2
+	makedepends = git
+	makedepends = maven
+	makedepends = mercurial
+	depends = java-environment
+	source = git+https://github.com/lxdvs/apk2gold.git
+	sha256sums = SKIP
+
+pkgname = apk2gold-git
+
