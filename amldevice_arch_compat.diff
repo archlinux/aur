@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index 7b0b31e..d6e4dd7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -47,8 +47,7 @@ SOFILE = libvdr-$(PLUGIN).so
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-LDLIBS   += $(shell pkg-config --libs libamcodec)
+-INCLUDES += $(shell pkg-config --cflags libamcodec)
++LDLIBS   += -L/usr/lib/aml_lib -lamavutils -lamadec -lamcodec
+ 
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ 
+diff --git a/amldevice.c b/amldevice.c
+index 3662f9a..a29a52d 100644
+--- a/amldevice.c
++++ b/amldevice.c
+@@ -10,7 +10,7 @@ extern "C" {
+ #include <codec.h>
+ }
+ 
+-#include <vdr/libsi/si.h>
++#include <libsi/si.h>
+ 
+ #include "tools.h"
+ #include "amldevice.h"

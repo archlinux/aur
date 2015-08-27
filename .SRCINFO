@@ -1,0 +1,22 @@
+pkgbase = vdr-amlhddevice
+	pkgdesc = Output device for Amlogic SOCs
+	pkgver = 0
+	pkgrel = 1
+	url = http://projects.vdr-developer.org/projects/plg-amlhddevice
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = aml-libs-c1
+	depends = ffmpeg
+	depends = mesa
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-amlhddevice.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-amlhddevice.git#commit=3620e2eebc6df1c86a6a5bb291f11ddf2b1caac8
+	source = amldevice_arch_compat.diff
+	source = 50-amlhddevice.conf
+	md5sums = SKIP
+	md5sums = b727e72154fe4fcb6c1f037fa90d4dcc
+	md5sums = c613f659043adf5ff3a7efa2388f5859
+
+pkgname = vdr-amlhddevice
+
