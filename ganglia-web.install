@@ -1,0 +1,14 @@
+# Arg 1: the new package version
+post_install() {
+  install -d -o http -g http /var/lib/ganglia/{conf,dwoo{,/cache,/compiled}}
+  echo "Make sure that your php open_basedir includes /usr/share/webapps" \
+       "and /var/lib/ganglia."
+}
+
+# Arg 1: the old package version
+post_remove() {
+  echo "NOTE: Please remove /var/lib/ganglia/{conf,dwoo} manually if they" \
+       "are no longer required."
+}
+
+# vim:set ts=2 sw=2 et:

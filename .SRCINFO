@@ -1,0 +1,20 @@
+pkgbase = ganglia-web
+	pkgdesc = Web front-end to Ganglia (see ganglia package)
+	pkgver = 3.6.2
+	pkgrel = 2
+	url = http://ganglia.sourceforge.net/
+	install = ganglia-web.install
+	arch = any
+	license = BSD
+	depends = ganglia
+	options = !libtool
+	options = !strip
+	source = http://downloads.sourceforge.net/ganglia/ganglia-web-3.6.2.tar.gz
+	source = ganglia-web.install
+	source = configuration.patch
+	sha256sums = 5368dc424fadc0fe1cc47730a628f514f710d59f7f6a4c53848f1a8f1116932a
+	sha256sums = 5d750ce804626eb657758875dc006fe467d92c20d79e3b4a05d099360887ec5b
+	sha256sums = 99991e9a17975b97c1049e7f8d6c92afb8dab75f987b2a13cb8cdf1faf1b1918
+
+pkgname = ganglia-web
+
