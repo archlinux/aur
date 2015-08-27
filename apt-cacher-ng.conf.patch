@@ -1,0 +1,12 @@
+apt-cacher-ng.service.patch by Jan Was <janek.jan@gmail.com>
+
+Fix paths for socket, pidfile and binaries in default systemd service file.
+
+diff -urNad systemd/apt-cacher-ng.conf systemd/apt-cacher-ng.conf.arch
+--- systemd/apt-cacher-ng.conf	2014-10-20 22:44:16.000000000 +0200
++++ systemd/apt-cacher-ng.conf.arch	2014-11-03 12:58:10.796511172 +0100
+@@ -1,2 +1,2 @@
+-Z /var/run/apt-cacher-ng 0755 apt-cacher-ng apt-cacher-ng - -
+-D /var/run/apt-cacher-ng 0755 apt-cacher-ng apt-cacher-ng - -
++Z /run/apt-cacher-ng 0755 apt-cacher-ng apt-cacher-ng - -
++D /run/apt-cacher-ng 0755 apt-cacher-ng apt-cacher-ng - -

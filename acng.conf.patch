@@ -1,0 +1,20 @@
+--- conf/acng.conf	2014-01-04 15:25:29.000000000 +0100
++++ conf/acng.conf.arch	2014-01-07 14:55:37.491160935 +0100
+@@ -79,7 +79,7 @@
+ # used with inetd bridge or cron client.
+ # Default: not set, UNIX socket bridge is disabled.
+ #
+-# SocketPath:/var/run/apt-cacher-ng/socket
++SocketPath:/run/apt-cacher-ng/socket
+ 
+ # If set to 1, makes log files be written to disk on every new line. Default
+ # is 0, buffers are flushed after the client disconnects. Technically,
+@@ -99,7 +99,7 @@
+ # Store the pid of the daemon process in the specified text file.
+ # Default: disabled
+ #
+-# PidFile: /var/run/apt-cacher-ng/pid
++PidFile: /run/apt-cacher-ng/pid
+ 
+ # Forbid outgoing connections and work without an internet connection or
+ # respond with 503 error where it's not possible.
