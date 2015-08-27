@@ -1,0 +1,19 @@
+pkgbase = tageditor
+	pkgdesc = Library for reading and editing meta-data of several media formats.
+	pkgver = 1.1.5
+	pkgrel = 5
+	url = https://github.com/Martchus/tageditor
+	install = tageditor.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = qt5-script
+	depends = qt5-webkit
+	depends = qtutilities
+	depends = tagparser
+	source = tageditor-1.1.5.tar.gz::https://github.com/Martchus/tageditor/archive/v1.1.5.tar.gz
+	sha256sums = skip
+
+pkgname = tageditor
+
