@@ -8,9 +8,7 @@ pkgbase = gnome-shell-theme-elegance-colors-git
 	arch = x86_64
 	license = GPL3
 	makedepends = vala
-	depends = gtk3
 	depends = gnome-shell>=3.6
-	depends = glib2
 	depends = imagemagick
 	provides = gnome-shell-themes-elegance-colors
 	conflicts = gnome-shell-themes-elegance-colors

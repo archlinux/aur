@@ -9,7 +9,7 @@ pkgdesc="A chameleon theme for Gnome Shell which can change colors according to 
 arch=('i686' 'x86_64')
 url="https://github.com/satya164/elegance-colors"
 license=('GPL3')
-depends=('gtk3' 'gnome-shell>=3.6' 'glib2' 'imagemagick')
+depends=('gnome-shell>=3.6' 'imagemagick')
 makedepends=('vala')
 conflicts=('gnome-shell-themes-elegance-colors')
 provides=('gnome-shell-themes-elegance-colors')
