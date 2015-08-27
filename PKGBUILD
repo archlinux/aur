@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=hangups
 pkgname=${_pkgname}-git
-pkgver=20150824
+pkgver=20150826
 pkgrel=1
 
 pkgdesc="The first third-party instant messaging client for Google Hangouts"
@@ -19,8 +19,8 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${_pkgname}
-  sed -i 's/^.*asyncio==.*$//' setup.py
-  sed -i 's/^.*enum34.*$//' setup.py
+  #sed -i 's/^.*asyncio==.*$//' setup.py
+  #sed -i 's/^.*enum34.*$//' setup.py
   sed -i 's/^.*purplex==.*$//' setup.py
   sed -i 's/^.*hangups-urwid.*$//' setup.py
   sed -i 's/==/>=/g' setup.py
