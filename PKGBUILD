@@ -4,12 +4,12 @@
 
 pkgname=qnapi
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5 client for downloading movie subtitles from NapiProjekt, OpenSubtitles, Napisy24"
 arch=('i686' 'x86_64')
 url="https://github.com/QNapi/${pkgname}"
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-base' 'ffmpeg')
 changelog=ChangeLog
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QNapi/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ea1d5056e2bfbe9a2feea928388bd411bac64b9b19327c73946c7d4dd0c9ec9b')
