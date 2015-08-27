@@ -1,7 +1,7 @@
 pkgbase = arch-runsvdir-init
 	pkgdesc = Arch native runit package with runsvdir as init (like busybox)
-	pkgver = 0.2.0
-	pkgrel = 5
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = http://smarden.org/runit/
 	install = runit.install
 	arch = i686
@@ -39,7 +39,7 @@ pkgbase = arch-runsvdir-init
 	sha256sums = 527f68f501cc9eb4bbab33f8ad374822624342c7d74b5c795efe4aac6b3f170a
 	sha256sums = f7bb155e76d2a5d441d72655764e7b83a48da7c1fda37f2781337f25c5ad7ba0
 	sha256sums = 4db8c30c75cc78770ec9f131f803e21ce1ebfc3ef5f634383af086cf0ed325f5
-	sha256sums = ead703406985f77ce52da925125e7e5756652963b7c6d3fbeb9059bd7319cd89
+	sha256sums = 51854d2fdd7764d02fed069d45b6842a595724f318037b3693eb5384b9b362a9
 
 pkgname = arch-runsvdir-init
 
