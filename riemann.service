@@ -1,0 +1,10 @@
+[Unit]
+Description=distributed system monitor
+After=network.target
+
+[Service]
+User=riemann
+ExecStart=/usr/bin/riemann /etc/riemann/riemann.config
+
+[Install]
+WantedBy=multi-user.target

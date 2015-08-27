@@ -1,0 +1,10 @@
+post_install() {
+    systemd-sysusers riemann.conf
+    install -d -o riemann -g riemann /var/{lib,log}/riemann
+}
+
+post_remove() {
+    echo "Note: this package does not automatically remove the riemann user " \
+         "and group. Please remove them manually if they are no longer " \
+         "required."
+}
