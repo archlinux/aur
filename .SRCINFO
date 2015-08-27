@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-turtlebot-navigation
+	pkgdesc = ROS - turtlebot_navigation.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_navigation
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-sensor-msgs
+	depends = ros-indigo-map-server
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-amcl
+	depends = ros-indigo-gmapping
+	depends = ros-indigo-dwa-local-planner
+	depends = ros-indigo-turtlebot-bringup
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-tf
+	depends = ros-indigo-move-base
+	source = turtlebot_navigation::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/turtlebot_navigation/2.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-navigation
+
