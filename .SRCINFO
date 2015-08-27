@@ -1,0 +1,15 @@
+pkgbase = pcmanfm-image-size-module-git
+	pkgdesc = Module for pcmanfm to print image size to status bar when file selected
+	pkgver = r7.8e7344d
+	pkgrel = 1
+	url = https://github.com/fenixk19/pcmanfm-image-size-module
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = pcmanfm
+	depends = imagemagick
+	source = pcmanfm-image-size-module::git+git://github.com/fenixk19/pcmanfm-image-size-module.git
+	sha1sums = SKIP
+
+pkgname = pcmanfm-image-size-module-git
+
