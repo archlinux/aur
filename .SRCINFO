@@ -1,0 +1,22 @@
+pkgbase = lttng-ust-git
+	pkgdesc = Userspace tracing library for LTTng
+	pkgver = 2.7.0.rc1.28.g0dafcd6
+	pkgrel = 1
+	url = http://lttng.org/
+	install = lttng-ust-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	depends = liburcu>=0.7.2
+	depends = util-linux
+	optdepends = babeltrace
+	provides = lttng-ust
+	conflicts = lttng-ust
+	options = !libtool
+	source = git://git.lttng.org/lttng-ust.git
+	sha1sums = SKIP
+
+pkgname = lttng-ust-git
+
