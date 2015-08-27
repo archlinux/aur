@@ -1,16 +1,16 @@
 pkgbase = advancemenu
-	pkgdesc = Emulator frontend with sound and animated previews of your games
-	pkgver = 2.7
+	pkgdesc = A frontend for AdvanceMAME, AdvanceMESS and any other emulator
+	pkgver = 2.8
 	pkgrel = 1
-	url = http://advancemame.sourceforge.net
+	url = http://www.advancemame.it/menu-readme.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	optdepends = advancemame
 	optdepends = sdlmame
 	optdepends = sdlmess
-	source = http://downloads.sourceforge.net/sourceforge/advancemame/advancemenu-2.7.tar.gz
-	md5sums = aa2dc9fb1f795420c92af8cc4dd5d938
+	source = https://github.com/amadvance/advancemame/releases/download/advancemenu-2.8/advancemenu-2.8.tar.gz
+	md5sums = 554bf0fd05648db57080d71d59b104ec
 
 pkgname = advancemenu
 
