@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-capabilities
+	pkgdesc = ROS - Package which implements capabilities, including code to parse capability interface specs, to parse capability provider specs, and implement the capability server.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://wiki.ros.org/capabilities
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-roslaunch
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-roslaunch
+	depends = ros-indigo-bondpy
+	depends = python2-yaml
+	source = capabilities::git+https://github.com/ros-gbp/capabilities-release.git#tag=release/indigo/capabilities/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-capabilities
+
