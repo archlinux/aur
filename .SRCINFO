@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-zeroconf-avahi
+	pkgdesc = ROS - Provides zeroconf services on avahi for ros systems.
+	pkgver = 0.2.3
+	pkgrel = 2
+	url = http://wiki.ros.org/zeroconf_avahi
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-zeroconf-msgs
+	makedepends = avahi
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-zeroconf-msgs
+	depends = avahi
+	source = zeroconf_avahi::git+https://github.com/yujinrobot-release/zeroconf_avahi_suite-release.git#tag=release/indigo/zeroconf_avahi/0.2.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-zeroconf-avahi
+
