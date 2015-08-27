@@ -1,0 +1,11 @@
+--- qtbase-opensource-src-5.5.0/src/plugins/platforms/windows/qwindowseglcontext.cpp.external_angle	2015-06-29 22:04:40.000000000 +0200
++++ qtbase-opensource-src-5.5.0/src/plugins/platforms/windows/qwindowseglcontext.cpp	2015-08-05 21:37:55.922142528 +0200
+@@ -366,7 +366,7 @@
+     EGLDisplay display = EGL_NO_DISPLAY;
+     EGLint major = 0;
+     EGLint minor = 0;
+-#ifdef EGL_ANGLE_platform_angle
++#if 0
+     if (libEGL.eglGetPlatformDisplayEXT
+         && (preferredType & QWindowsOpenGLTester::AngleBackendMask)) {
+         const EGLint anglePlatformAttributes[][5] = {
