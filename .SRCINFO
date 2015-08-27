@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-rocon-std-msgs
+	pkgdesc = ROS - Standard messages used by other rocon specific package types.
+	pkgver = 0.7.12
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rocon_std_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rocon-service-pair-msgs
+	makedepends = ros-indigo-std-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-rocon-service-pair-msgs
+	depends = ros-indigo-message-runtime
+	source = rocon_std_msgs::git+https://github.com/yujinrobot-release/rocon_msgs-release.git#tag=release/indigo/rocon_std_msgs/0.7.12-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-std-msgs
+
