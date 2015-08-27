@@ -1,0 +1,14 @@
+pkgbase = nodejs-doctoc
+	pkgdesc = Generates TOC for markdown files of local git repo.
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/thlorenz/doctoc
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = doctoc-0.15.0.tgz
+	source = http://registry.npmjs.org/doctoc/-/doctoc-0.15.0.tgz
+	sha1sums = 0a7a48e437a0efa98728a430ada124dd95039c0b
+
+pkgname = nodejs-doctoc
+
