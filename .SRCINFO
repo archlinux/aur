@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-zeroconf-msgs
+	pkgdesc = ROS - General ros communications used by the various zeroconf implementations.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://www.ros.org/wiki/zeroconf_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	source = zeroconf_msgs::git+https://github.com/yujinrobot-release/zeroconf_msgs-release.git#tag=release/indigo/zeroconf_msgs/0.2.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-zeroconf-msgs
+
