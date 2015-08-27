@@ -1,0 +1,17 @@
+pkgbase = ros-indigo-rocon-ebnf
+	pkgdesc = ROS - Internal packaging of the 0.91 version of the simple python EBNF parser written by LParis.
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = http://lparis45.free.fr/rp.html
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = python2-catkin-pkg
+	source = rocon_ebnf::git+https://github.com/yujinrobot-release/rocon_tools-release.git#tag=release/indigo/rocon_ebnf/0.1.23-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-ebnf
+
