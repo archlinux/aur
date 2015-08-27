@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-kobuki-capabilities
+	pkgdesc = ROS - Kobukis capabilities.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_capabilities
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rocon-apps
+	depends = ros-indigo-std-capabilities
+	depends = ros-indigo-kobuki-node
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-rocon-app-manager
+	source = kobuki_capabilities::git+https://github.com/yujinrobot-release/kobuki-release.git#tag=release/indigo/kobuki_capabilities/0.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-capabilities
+
