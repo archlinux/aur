@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-script
 	pkgdesc = Qt5 for Windows -- QtScript module (mingw-w64)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-qt5-script
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtscript-opensource-src-5.4.2.tar.xz
-	md5sums = a615a02ab48e1e8e94c161d65f6af2ad
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qtscript-opensource-src-5.5.0.tar.xz
+	md5sums = 1e9766d2651d6a81221525462378336d
 
 pkgname = mingw-w64-qt5-script
 
