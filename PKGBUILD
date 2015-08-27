@@ -2,7 +2,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=qmmp-plugin-pack
-pkgver=0.8.4
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Qmmp Plugin Pack"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=("qmmp>=$pkgver")
 makedepends=('cmake>=2.8.0')
 provides=('qmmp-plugin-pack')
 source=(http://qmmp.ylsoftware.com/files/plugins/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('f05c3a99060fc6faf873ae68eaefd6cb648e70b3')
+sha1sums=('db00362a6bdd4cd209dc6f723b907d342f4defe2')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
