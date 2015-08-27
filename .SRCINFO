@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-tools
 	pkgdesc = Qt5 for Windows -- QtTools module (mingw-w64)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-qt5-tools
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qttools-opensource-src-5.4.2.tar.xz
-	md5sums = 2949a16131b54169119d1a14b891a10b
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qttools-opensource-src-5.5.0.tar.xz
+	md5sums = 2057ef2110b6a1aec260a69e2860a502
 
 pkgname = mingw-w64-qt5-tools
 
