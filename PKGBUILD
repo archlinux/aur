@@ -16,7 +16,7 @@ pkgdesc='Eclipse plugin for Android'
 url='https://developer.android.com/sdk/eclipse-adt.html'
 license=('Apache' 'BSD' 'EPL' 'LGPL')
 arch=('any')
-depends=("android-sdk>=r${_sdkver}" 'java-environment' 'eclipse>=4.5' 'eclipse-wtp')
+depends=("android-sdk>=${_sdkver}" 'java-environment' 'eclipse>=4.5' 'eclipse-wtp')
 options=('!strip')
 source=("http://dl.google.com/android/ADT-${pkgver}.zip" "LICENSE.kxml2")
 sha1sums=('1ce14cf4f6e3bf8e4213dd22cfd14c2237c8c22d'

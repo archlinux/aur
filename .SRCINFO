@@ -8,7 +8,7 @@ pkgbase = eclipse-android
 	license = BSD
 	license = EPL
 	license = LGPL
-	depends = android-sdk>=r24.1.2
+	depends = android-sdk>=24.1.2
 	depends = java-environment
 	depends = eclipse>=4.5
 	depends = eclipse-wtp
