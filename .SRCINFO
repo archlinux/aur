@@ -1,0 +1,33 @@
+pkgbase = ros-indigo-create-node
+	pkgdesc = ROS - iRobot Create ROS driver node ROS bindings for the Create/Roomba driver.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://ros.org/wiki/create_node
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-create-driver
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-diagnostic-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-nav-msgs
+	depends = ros-indigo-tf
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-create-driver
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	depends = ros-indigo-diagnostic-msgs
+	depends = ros-indigo-python-orocos-kdl
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-nav-msgs
+	source = create_node::git+https://github.com/turtlebot-release/turtlebot_create-release.git#tag=release/indigo/create_node/2.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-create-node
+
