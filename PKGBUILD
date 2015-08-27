@@ -3,7 +3,7 @@
 
 pkgname=subsurface-libdc-git
 _pkgname=libdc
-pkgver=20150710.dfe59b0
+pkgver=20150826.ad4bcff
 pkgrel=1
 pkgdesc='Library for communication with dive computers'
 url='http://git.subsurface-divelog.org/'
@@ -11,7 +11,7 @@ license=('LGPL')
 arch=('i686' 'x86_64')
 depends=('libusb')
 makedepends=('git')
-source=('git://git.subsurface-divelog.org/libdc#branch=Subsurface-testing')
+source=('git://git.subsurface-divelog.org/libdc#branch=Subsurface-branch')
 sha1sums=('SKIP')
 
 conflicts=('subsurface-libdc')

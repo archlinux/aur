@@ -1,6 +1,6 @@
 pkgbase = subsurface-libdc-git
 	pkgdesc = Library for communication with dive computers
-	pkgver = 20150710.dfe59b0
+	pkgver = 20150826.ad4bcff
 	pkgrel = 1
 	url = http://git.subsurface-divelog.org/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = subsurface-libdc-git
 	depends = libusb
 	provides = subsurface-libdc
 	conflicts = subsurface-libdc
-	source = git://git.subsurface-divelog.org/libdc#branch=Subsurface-testing
+	source = git://git.subsurface-divelog.org/libdc#branch=Subsurface-branch
 	sha1sums = SKIP
 
 pkgname = subsurface-libdc-git
