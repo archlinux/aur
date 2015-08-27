@@ -5,7 +5,7 @@ pkgver=46.8
 pkgrel=1
 arch=('x86_64')
 license=('custom')
-janusver=$(curl http://www.dgp.toronto.edu/~mccrae/projects/firebox/version.html)
+janusver=$(curl http://www.janusvr.com/version.html)
 source=("janusvr${janusver}.gz::http://www.janusvr.com/downloads/janusvr_linux.tar.gz"
         "janusvr.sh" "http://www.dgp.toronto.edu/~mccrae/projects/firebox/img/janus_logo5.jpg"
         "janusvr.desktop")
