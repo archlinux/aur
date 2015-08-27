@@ -2,7 +2,7 @@
 
 pkgname=libretro-bsnes-git
 pkgver=r457.1f9f61a
-pkgrel=2
+pkgrel=3
 pkgdesc='Super Nintendo Entertainment System cores'
 arch=('i686' 'x86_64')
 url='https://github.com/libretro/bsnes-libretro'
