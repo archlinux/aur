@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-rospy-message-converter
+	pkgdesc = ROS - Converts between Python dictionaries and JSON to rospy messages.
+	pkgver = 0.3.0
+	pkgrel = 3
+	url = http://ros.org/wiki/rospy_message_converter
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	depends = ros-indigo-roslib
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	source = rospy_message_converter::git+https://github.com/jihoonl/rospy_message_converter-release.git#tag=release/indigo/rospy_message_converter/0.3.0-2
+	md5sums = SKIP
+
+pkgname = ros-indigo-rospy-message-converter
+
