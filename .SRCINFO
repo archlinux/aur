@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-ecl-type-traits
+	pkgdesc = ROS - Extends c++ type traits and implements a few more to boot.
+	pkgver = 0.61.2
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_type_traits
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-license
+	makedepends = ros-indigo-ecl-mpl
+	makedepends = ros-indigo-ecl-config
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-ecl-license
+	depends = ros-indigo-ecl-mpl
+	depends = ros-indigo-ecl-config
+	source = ecl_type_traits::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_type_traits/0.61.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ecl-type-traits
+
