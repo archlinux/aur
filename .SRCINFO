@@ -1,6 +1,6 @@
 pkgbase = domoticz-git
 	pkgdesc = Web based home automation
-	pkgver = r2826
+	pkgver = r2843
 	pkgrel = 1
 	url = http://www.domoticz.com
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = domoticz-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	depends = openzwave
+	depends = openzwave-git
 	depends = libusb-compat
 	depends = curl
 	depends = sqlite

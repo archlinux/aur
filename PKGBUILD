@@ -2,13 +2,13 @@
 
 pkgname=domoticz-git
 _gitname="domoticz"
-pkgver=r2826
+pkgver=r2843
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.domoticz.com"
 license=('GPL')
-depends=('openzwave' 'libusb-compat' 'curl' 'sqlite' 'boost-libs')
+depends=('openzwave-git' 'libusb-compat' 'curl' 'sqlite' 'boost-libs')
 makedepends=('git' 'cmake' 'boost')
 conflicts=('domoticz-svn')
 source=('git://github.com/domoticz/domoticz.git'
@@ -37,5 +37,5 @@ package() {
   chmod o+r "${pkgdir}/opt/domoticz/updatedomo"
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
   cp ../../domoticz.service "${pkgdir}/usr/lib/systemd/system/"
-  chown -R http:http . "${pkgdir}/opt/domoticz"
+  chown -R http:http "${pkgdir}/opt/domoticz"
 }
