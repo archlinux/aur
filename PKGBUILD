@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 pkgdesc="A webdav filesystem based on FUSE"
 url="https://github.com/pantheon-systems/fusedav/"
 license=('GPL')
-depends=('fuse' 'neon' 'leveldb' 'systemd' 'jemalloc' 'uriparser')
+depends=('libsystemd' 'expat' 'fuse' 'curl' 'glib2' 'leveldb' 'jemalloc' 'uriparser')
 makedepends=('git' 'autoconf')
 
 source=('git://github.com/pantheon-systems/fusedav.git')
