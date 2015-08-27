@@ -1,0 +1,21 @@
+pkgbase = libretro-snes9x-git
+	pkgdesc = Snes9x libretro core
+	pkgver = r506.debfafb
+	pkgrel = 1
+	url = http://www.snes9x.com/
+	arch = i686
+	arch = x86_64
+	groups = libretro
+	license = custom
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = libretro-snes9x::git+https://github.com/libretro/snes9x.git
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/snes9x_libretro.info
+	sha256sums = SKIP
+	sha256sums = f33c86afa1d776e0c1b10d5b3096d76a72630629f483b5101ce6c28808132af8
+
+pkgname = libretro-snes9x-git
+
