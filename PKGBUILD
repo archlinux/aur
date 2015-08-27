@@ -3,7 +3,7 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=('any')
 pkgdesc="Qt5 for Windows -- QtTools module (mingw-w64)"
@@ -13,8 +13,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
 url="http://qt-project.org/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('2949a16131b54169119d1a14b891a10b')
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('2057ef2110b6a1aec260a69e2860a502')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
