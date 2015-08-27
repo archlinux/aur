@@ -1,0 +1,16 @@
+pkgbase = onedrive-d-systemtray
+	pkgdesc = System tray icon for Microsoft OneDrive service (onedrive-d)
+	pkgver = 20150827.g212c478
+	pkgrel = 1
+	url = https://gitlab.com/rich4rd.macwan/onedrive-d-systemtray
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = onedrive-d-git
+	provides = onedrive-d-systemtray
+	source = onedrive-d-systemtray::git+https://gitlab.com/rich4rd.macwan/onedrive-d-systemtray.git
+	sha256sums = SKIP
+
+pkgname = onedrive-d-systemtray
+
