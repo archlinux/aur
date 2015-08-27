@@ -1,0 +1,7 @@
+post_install() {
+    echo
+    echo "Following PHP extensions are optional :"
+    echo "  * curl"
+    echo "  * openssl"
+    echo
+}

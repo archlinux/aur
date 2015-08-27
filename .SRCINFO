@@ -1,0 +1,20 @@
+pkgbase = pear-http-request2
+	pkgdesc = Provides an easy way to perform HTTP requests.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://pear.php.net/package/HTTP_Request2
+	install = pear-http-request2.install
+	arch = any
+	license = BSD3
+	makedepends = php-pear>=1.9.2
+	depends = php>=5.2.0
+	depends = pear-net-url2>=2.0.0
+	noextract = HTTP_Request2-2.2.1.tgz
+	options = !strip
+	source = http://download.pear.php.net/package/HTTP_Request2-2.2.1.tgz
+	source = pear-http-request2.install
+	md5sums = 36c8406b0d95bbdec54ad0fdafa73d00
+	md5sums = bd7b8d4499b021db6d181faf3893c76b
+
+pkgname = pear-http-request2
+
