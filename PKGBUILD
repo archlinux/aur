@@ -14,7 +14,7 @@ license=('custom')
 depends=('desktop-file-utils'
          'xdg-utils'
          'gcc'
-         'mesa-libgl'
+         'libgl'
          'glu'
          'nss'
          'libpng12'
