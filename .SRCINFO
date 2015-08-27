@@ -1,0 +1,18 @@
+pkgbase = vis
+	pkgdesc = suckless vim like editor
+	pkgver = 0.r531.g6f532df
+	pkgrel = 1
+	url = http://repo.or.cz/vis.git
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = markdown
+	depends = ncurses
+	provides = vis
+	conflicts = vis
+	source = git://repo.or.cz/vis.git#commit=6f532df
+	sha256sums = SKIP
+
+pkgname = vis
+
