@@ -10,9 +10,9 @@ url='https://moodle.org/'
 license=('GPLv3')
 depends=('php' 'php-intl' 'php-gd')
 conflicts=('moodle')
-options=('!sitrip')
+options=('!strip')
 source=("https://download.moodle.org/stable29/moodle-${_pkgver}.tgz")
-d5sums=('1bebd9e60d741f0e510d1cef5057ba68')
+md5sums=('1bebd9e60d741f0e510d1cef5057ba68')
 
 package() {
     cd "$pkgdir"
