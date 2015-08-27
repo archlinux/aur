@@ -5,7 +5,7 @@
 
 _pkgbasename=colord
 pkgname=lib32-$_pkgbasename
-pkgver=1.2.11
+pkgver=1.2.12
 pkgrel=1
 pkgdesc="System daemon for managing color devices (32-bit)"
 arch=(x86_64)
@@ -18,10 +18,10 @@ makedepends=(gcc-multilib intltool gobject-introspection vala argyllcms) # docbo
 conflicts=('shared-color-profiles')
 #install=colord.install
 source=($url/releases/$_pkgbasename-$pkgver.tar.xz)
-#sha1sums=('efd7b7b90ea17a46c12f4dc4138c45f3629a5d2c')
+#sha1sums=('46c6fda75928b118a8c5d152bba6234a9ffca0a4')
 #          'SKIP')
 #validpgpkeys=('163EB50119225DB3DF8F49EA17ACBA8DFA970E17')
-sha256sums=('dac29c83659703a8548db561bc670832f26b30f7a88ed90a6530eb052a10df8f')
+sha256sums=('d5241864c16a37f9e40d38d5009255456495a67f170ce0dc9250774442d68c3a')
 
 prepare() {
   cd $_pkgbasename-$pkgver

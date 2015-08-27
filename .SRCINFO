@@ -1,6 +1,6 @@
 pkgbase = lib32-colord
 	pkgdesc = System daemon for managing color devices (32-bit)
-	pkgver = 1.2.11
+	pkgver = 1.2.12
 	pkgrel = 1
 	url = http://www.freedesktop.org/software/colord
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = lib32-colord
 	depends = lib32-dconf
 	depends = lib32-dbus
 	depends = lib32-glib2
-	depends = colord>=1.2.11-1
+	depends = colord>=1.2.12-1
 	conflicts = shared-color-profiles
-	source = http://www.freedesktop.org/software/colord/releases/colord-1.2.11.tar.xz
-	sha256sums = dac29c83659703a8548db561bc670832f26b30f7a88ed90a6530eb052a10df8f
+	source = http://www.freedesktop.org/software/colord/releases/colord-1.2.12.tar.xz
+	sha256sums = d5241864c16a37f9e40d38d5009255456495a67f170ce0dc9250774442d68c3a
 
 pkgname = lib32-colord
 
