@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-declarative
 	pkgdesc = Classes for QML and JavaScript languages (mingw-w64)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://qt-project.org
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = mingw-w64-qt5-declarative
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtdeclarative-opensource-src-5.4.2.tar.xz
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qtdeclarative-opensource-src-5.5.0.tar.xz
 	source = qt5-build-qmldevtools-as-shared-library.patch
-	md5sums = 5b257cd097c315dab1b3c15e26211823
-	md5sums = 9caacc92a58eb05c3567ecc67ba433c4
+	md5sums = 1452c92f8c660dc7d23d9e17d89f8716
+	md5sums = 6c445ba7713b69d90f52bb2242303853
 
 pkgname = mingw-w64-qt5-declarative
 

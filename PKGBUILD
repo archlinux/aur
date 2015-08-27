@@ -1,7 +1,7 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=(any)
 pkgdesc="Classes for QML and JavaScript languages (mingw-w64)"
@@ -12,10 +12,10 @@ groups=(mingw-w64-qt mingw-w64-qt5)
 license=("custom, FDL, GPL3, LGPL")
 url="http://qt-project.org"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-build-qmldevtools-as-shared-library.patch")
-md5sums=('5b257cd097c315dab1b3c15e26211823'
-         '9caacc92a58eb05c3567ecc67ba433c4')
+md5sums=('1452c92f8c660dc7d23d9e17d89f8716'
+         '6c445ba7713b69d90f52bb2242303853')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
