@@ -1,0 +1,29 @@
+pkgbase = ros-indigo-depthimage-to-laserscan
+	pkgdesc = ROS - depthimage_to_laserscan.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = http://ros.org/wiki/depthimage_to_laserscan
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-image-geometry
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-nodelet
+	makedepends = gtest
+	depends = ros-indigo-image-geometry
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-nodelet
+	source = depthimage_to_laserscan::git+https://github.com/ros-gbp/depthimage_to_laserscan-release.git#tag=release/indigo/depthimage_to_laserscan/1.0.7-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-depthimage-to-laserscan
+
