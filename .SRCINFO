@@ -1,0 +1,34 @@
+pkgbase = dolphin-kde4
+	pkgdesc = File Manager
+	pkgver = 4.14.3
+	pkgrel = 1
+	url = http://kde.org/applications/system/dolphin
+	install = dolphin-kde4.install
+	arch = i686
+	arch = x86_64
+	arch = armv7
+	arch = armv6
+	arch = armv5
+	groups = kde-applications
+	groups = kdebase
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	makedepends = automoc4
+	depends = qt4
+	depends = kdebase-lib
+	depends = kdebase-runtime
+	depends = kdelibs4support
+	depends = knotifyconfig
+	provides = dolphin
+	provides = dolphinpart4
+	conflicts = dolphin
+	conflicts = kdebase-dolphin
+	conflicts = dolphinpart4
+	source = http://download.kde.org/stable/4.14.3/src/kde-baseapps-4.14.3.tar.xz
+	sha1sums = c4e28755454e1925b96eaf5374ca5c2f6c8bd9c8
+
+pkgname = dolphin-kde4
+
