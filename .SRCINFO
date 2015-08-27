@@ -1,0 +1,18 @@
+pkgbase = deadbeef-plugin-vk
+	pkgdesc = DeadBeef VKontakte plugin
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/scorpp/db-vk
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = deadbeef
+	depends = gtk3
+	depends = curl
+	depends = json-glib
+	source = https://github.com/scorpp/db-vk/archive/v0.2.2.tar.gz
+	md5sums = 4ecdae87aa821d2535933312f451531f
+
+pkgname = deadbeef-plugin-vk
+
