@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-ecl-build
+	pkgdesc = ROS - Collection of cmake/make build tools primarily for ecl development itself, but also contains a few cmake modules useful outside of the ecl.
+	pkgver = 0.61.1
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_build
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-license
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-ecl-license
+	source = ecl_build::git+https://github.com/yujinrobot-release/ecl_tools-release.git#tag=release/indigo/ecl_build/0.61.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ecl-build
+
