@@ -1,0 +1,17 @@
+pkgbase = ros-indigo-rocon-console
+	pkgdesc = ROS - Command line python console utilities (mostly for colourisation).
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = http://ros.org/wiki/rocon_console
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = python2-catkin-pkg
+	source = rocon_console::git+https://github.com/yujinrobot-release/rocon_tools-release.git#tag=release/indigo/rocon_console/0.1.23-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-console
+
