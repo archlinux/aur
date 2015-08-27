@@ -1,6 +1,6 @@
 pkgbase = forecast-git
 	pkgdesc = Query weather forecasts from forecast.io
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/2ion/forecast
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = forecast-git
 	depends = libconfig
 	depends = ncurses
 	depends = openssl
+	depends = lz4
 	provides = forecast
 	conflicts = forecast
 	source = forecast::git+https://github.com/2ion/forecast.git#branch=master
