@@ -4,7 +4,7 @@
 
 pkgname=rkt
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -28,7 +28,7 @@ build() {
   ./configure --prefix=/usr \
     --with-stage1=src \
     --with-stage1-image-path=/usr/share/rkt/stage1.aci \
-    --with-functional-tests
+    --enable-functional-tests
   make -s
 }
 
