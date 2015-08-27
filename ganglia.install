@@ -1,0 +1,14 @@
+# Arg 1: the new package version
+post_install() {
+
+  # Create user and group
+  systemd-sysusers ganglia.conf
+}
+
+# Arg 1: the old package version
+post_remove() {
+
+  id ganglia >& /dev/null && userdel ganglia
+}
+
+# vim:set ts=2 sw=2 et:
