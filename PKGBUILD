@@ -18,7 +18,6 @@ depends=('desktop-file-utils'
          'mesa-libgl'
          'glu'
          'nss'
-         'libstdc++5'
          'libpng12'
          'libxtst'
          'monodevelop')

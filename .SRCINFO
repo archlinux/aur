@@ -13,7 +13,6 @@ pkgbase = unity3d
 	depends = mesa-libgl
 	depends = glu
 	depends = nss
-	depends = libstdc++5
 	depends = libpng12
 	depends = libxtst
 	depends = monodevelop
