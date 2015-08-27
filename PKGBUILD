@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=racket-git
-pkgver=6.2.900.11.r20150827.4eeb164
+pkgver=6.2.900.11.35324.d71832f
 pkgrel=1
 pkgdesc="Minimal Racket installation, without useless DrRacket, from git"
 arch=('i686' 'x86_64')
@@ -19,11 +19,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  printf %s.r%s \
+  printf %s.%s.%s \
 	 $(grep ' MZSCHEME_VERSION ' \
 		${srcdir}/${_gitname}/${_gitname}/src/racket/src/schvers.h \
-		| cut -d '"' -f 2) \
-	 $(git log -1 --format='%cd.%h' --date=short | tr -d -)
+		| cut -d '"' -f 2) "$(git rev-list --count HEAD)" $(git log -1 --format='%h')
 }
 
 build() {
