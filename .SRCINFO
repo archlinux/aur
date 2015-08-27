@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-quickcontrols
 	pkgdesc = Qt5 for Windows -- QtQuickControls module (mingw-w64)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://qt-project.org/wiki/QtSerialPort
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-qt5-quickcontrols
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtquickcontrols-opensource-src-5.4.2.tar.xz
-	md5sums = 146f499a9f7c0009437077675134632d
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qtquickcontrols-opensource-src-5.5.0.tar.xz
+	md5sums = 24b59d5928092f02e0cba969d9548350
 
 pkgname = mingw-w64-qt5-quickcontrols
 
