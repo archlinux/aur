@@ -1,0 +1,20 @@
+pkgbase = kwalletmanager4
+	pkgdesc = KDE Wallet Management Tool (KDE4 version)
+	pkgver = 15.04.3
+	pkgrel = 1
+	url = http://kde.org/applications/system/kwalletmanager/
+	install = kwalletmanager4.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = kdepimlibs
+	source = http://download.kde.org/stable/applications/15.04.3/src/kwalletmanager-15.04.3.tar.xz
+	sha1sums = 47e892766dee14163e73bbad696a1ab8482082bc
+
+pkgname = kwalletmanager4
+
