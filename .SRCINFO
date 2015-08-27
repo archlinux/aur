@@ -1,0 +1,15 @@
+pkgbase = qtutilities
+	pkgdesc = Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Martchus/qtutilities
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = c++utilities
+	depends = qt5-base
+	source = qtutilities-2.0.1.tar.gz::https://github.com/Martchus/qtutilities/archive/v2.0.1.tar.gz
+	sha256sums = skip
+
+pkgname = qtutilities
+

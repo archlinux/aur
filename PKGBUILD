@@ -1,0 +1,1 @@
+../../pkgbuilds/qtutilities/default/PKGBUILD
