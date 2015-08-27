@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-stdr-parser
+	pkgdesc = ROS - Provides a library to STDR Simulator, to parse yaml and xml description files.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://stdr-simulator-ros-pkg.github.io
+	arch = any
+	license = GPLv3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslib
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-stdr-msgs
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	makedepends = yaml-cpp
+	makedepends = tinyxml
+	depends = ros-indigo-roslib
+	depends = ros-indigo-stdr-msgs
+	depends = ros-indigo-roscpp
+	depends = yaml-cpp
+	depends = tinyxml
+	source = stdr_parser::git+https://github.com/stdr-simulator-ros-pkg/stdr_simulator-release.git#tag=release/indigo/stdr_parser/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-stdr-parser
+
