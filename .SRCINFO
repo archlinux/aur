@@ -1,0 +1,32 @@
+pkgbase = ros-indigo-kobuki-safety-controller
+	pkgdesc = ROS - A controller ensuring the safe operation of Kobuki.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_safety_controller
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-ecl-threads
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-kobuki-msgs
+	makedepends = ros-indigo-yocs-controllers
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-ecl-threads
+	depends = ros-indigo-kobuki-msgs
+	depends = ros-indigo-yocs-controllers
+	depends = ros-indigo-pluginlib
+	source = kobuki_safety_controller::git+https://github.com/yujinrobot-release/kobuki-release.git#tag=release/indigo/kobuki_safety_controller/0.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-safety-controller
+
