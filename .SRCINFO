@@ -1,7 +1,7 @@
 pkgbase = python2-cerealizer
 	pkgdesc = A Python module for saving objects in a file [Python 2]
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://home.gna.org/oomadness/en/cerealizer/
 	arch = any
 	license = PSF
