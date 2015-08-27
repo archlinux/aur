@@ -3,7 +3,7 @@
 
 _qt_module=qtimageformats
 pkgname="mingw-w64-qt5-imageformats"
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=('any')
 pkgdesc="Qt5 for Windows -- QtImageformats module (mingw-w64)"
@@ -13,8 +13,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
 url="http://qt-project.org/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('b09f8aa0b04c96fddbdff623e7b4c17a')
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('72cbebfda5253dece90fa90ded64e953')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
