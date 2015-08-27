@@ -9,8 +9,9 @@ pkgbase = moodle-plus
 	depends = php-intl
 	depends = php-gd
 	conflicts = moodle
-	options = !sitrip
+	options = !strip
 	source = https://download.moodle.org/stable29/moodle-latest-29.tgz
+	md5sums = 1bebd9e60d741f0e510d1cef5057ba68
 
 pkgname = moodle-plus
 
