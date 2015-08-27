@@ -68,8 +68,7 @@ build() {
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCMAKE_MODULE_PATH="/usr/lib/OGRE/cmake/" \
-        -DCMAKE_CXX_FLAGS="--std=c++11"
+        -DCMAKE_MODULE_PATH="/usr/lib/OGRE/cmake/"
   make
 }
 
