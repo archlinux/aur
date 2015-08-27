@@ -14,7 +14,8 @@ md5sums=('a552b7d3901f2825d3d7ee6eec485d99')
 
 package() {
     cd "$pkgdir"
-    install -dm0755 usr/share/webapps var/lib/moodle
+    install -dm0755 usr/share/webapps
+    install -dm0755 var/lib/moodle
     cp -a "$srcdir"/$pkgname usr/share/webapps/moodle
 
     # move data in var
