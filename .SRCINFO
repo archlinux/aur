@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-rocon-hub-client
+	pkgdesc = ROS - Client api for discovery and connection to rocon hubs.
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = http://ros.org/wiki/rocon_hub_client
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rocon-gateway-utils
+	depends = ros-indigo-rocon-python-redis
+	depends = ros-indigo-rospy
+	depends = ros-indigo-gateway-msgs
+	source = rocon_hub_client::git+https://github.com/yujinrobot-release/rocon_multimaster-release.git#tag=release/indigo/rocon_hub_client/0.7.10-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-hub-client
+
