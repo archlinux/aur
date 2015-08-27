@@ -13,7 +13,7 @@ url='http://unity3d.com/'
 license=('custom')
 depends=('desktop-file-utils'
          'xdg-utils'
-         'gcc'
+         'gcc-multilib'
          'libgl'
          'glu'
          'nss'
