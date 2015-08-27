@@ -1,0 +1,34 @@
+pkgbase = ros-indigo-rocon-gateway
+	pkgdesc = ROS - A hub acts as a shared key-value store for multiple ros systems (primarily used by gateways).
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = http://ros.org/wiki/rocon_gateway
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslint
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rocon-gateway-utils
+	depends = ros-indigo-rosservice
+	depends = ros-indigo-rosgraph
+	depends = ros-indigo-rocon-hub-client
+	depends = ros-indigo-gateway-msgs
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-zeroconf-avahi
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rocon-python-utils
+	depends = ros-indigo-rostopic
+	depends = ros-indigo-rocon-console
+	depends = ros-indigo-zeroconf-msgs
+	depends = ros-indigo-roslib
+	depends = ros-indigo-rocon-python-redis
+	depends = ros-indigo-rocon-python-wifi
+	depends = ros-indigo-rocon-python-comms
+	depends = python2-crypto
+	source = rocon_gateway::git+https://github.com/yujinrobot-release/rocon_multimaster-release.git#tag=release/indigo/rocon_gateway/0.7.10-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rocon-gateway
+
