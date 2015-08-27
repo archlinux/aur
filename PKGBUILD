@@ -15,7 +15,7 @@ sha512sums=('6d55795c2aca3aa5ceb484e6549d1b64476abb018410821db8e74bb14a7993d57f8
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python2 setup.py install --root=$pkgdir
+  python setup.py install --root=$pkgdir
 }
 
 # vim:set ts=2 sw=2 et:
