@@ -1,13 +1,14 @@
 pkgbase = dwm-cdown-git
 	pkgdesc = dwm with cdown's personalisations
-	pkgver = 0.r1744.a117eb9
-	pkgrel = 1
+	pkgver = 0.r1747.7fb62b4
+	pkgrel = 2
 	url = https://github.com/cdown/dwm
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = libx11
 	depends = libxinerama
+	depends = libxft
 	provides = dwm
 	conflicts = dwm
 	source = git://github.com/cdown/dwm.git

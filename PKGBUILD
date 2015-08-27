@@ -2,12 +2,12 @@
 
 pkgname=dwm-cdown-git
 _gitname=dwm
-pkgver=0.r1744.a117eb9
-pkgrel=1
+pkgver=0.r1747.7fb62b4
+pkgrel=2
 pkgdesc="dwm with cdown's personalisations"
 license=('MIT')
 url='https://github.com/cdown/dwm'
-depends=('libx11' 'libxinerama')
+depends=('libx11' 'libxinerama' 'libxft')
 arch=('any')
 makedepends=('git')
 conflicts=('dwm')
