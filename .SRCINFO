@@ -1,0 +1,16 @@
+pkgbase = pear-net-url2
+	pkgdesc = Class for parsing and handling URL
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://pear.php.net/package/Net_URL2
+	arch = any
+	license = BSD
+	makedepends = php-pear>=1.4.0b1
+	depends = php>=5.0
+	noextract = Net_URL2-2.0.0.tgz
+	options = !strip
+	source = http://download.pear.php.net/package/Net_URL2-2.0.0.tgz
+	md5sums = 4ec4d47bc517b6b9caa7f2dd753d6424
+
+pkgname = pear-net-url2
+
