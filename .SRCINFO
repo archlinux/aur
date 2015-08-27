@@ -1,0 +1,17 @@
+pkgbase = abcm2ps
+	pkgdesc = Convert ABC music notation files to PostScript from the commandline
+	pkgver = 7.8.14
+	pkgrel = 1
+	url = http://moinejf.free.fr/
+	arch = i686
+	arch = x86_64
+	groups = abc
+	license = GPL
+	depends = pango
+	depends = freetype2
+	conflicts = abcm2ps-devel
+	source = http://moinejf.free.fr/abcm2ps-7.8.14.tar.gz
+	sha256sums = 31c55865a914d56c12e2b7cbeaf5e4a09b47bbe79f1c7b5cd1576a16f3753d07
+
+pkgname = abcm2ps
+
