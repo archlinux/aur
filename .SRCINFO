@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-kobuki-bumper2pc
+	pkgdesc = ROS - Bumper/cliff to pointcloud nodelet: Publish bumpers and cliff sensors events as points in a pointcloud, so navistack can use them for poor-man navigation.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_bumper2pc
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-kobuki-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-kobuki-msgs
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-sensor-msgs
+	source = kobuki_bumper2pc::git+https://github.com/yujinrobot-release/kobuki-release.git#tag=release/indigo/kobuki_bumper2pc/0.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-bumper2pc
+
