@@ -4,7 +4,7 @@
 _webviewprovider=qt5-webkit
 pkgname=tageditor
 pkgver=1.1.5
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 pkgdesc="Library for reading and editing meta-data of several media formats."
 license=('GPL')
@@ -14,7 +14,7 @@ install=${pkgname}.install
 url="https://github.com/Martchus/tageditor"
 source=("tageditor-${pkgver}.tar.gz::https://github.com/Martchus/tageditor/archive/v${pkgver}.tar.gz")
 _reponame=tageditor
-sha256sums=('skip')
+sha256sums=('bea7177c03e7594a277f8f95bf3d13519b466c9c98f3f234a33923104cb1f11e')
 
 build() {
     cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
