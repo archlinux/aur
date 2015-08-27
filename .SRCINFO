@@ -1,0 +1,21 @@
+pkgbase = libretro-nestopia-git
+	pkgdesc = Nestopia libretro core
+	pkgver = r586.4ee529f
+	pkgrel = 1
+	url = https://github.com/libretro/nestopia
+	arch = i686
+	arch = x86_64
+	groups = libretro
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = libretro-nestopia
+	conflicts = libretro-nestopia
+	source = libretro-nestopia::git+https://github.com/libretro/nestopia.git
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/nestopia_libretro.info
+	sha256sums = SKIP
+	sha256sums = eea21d5c2fb0fe95c2f84c8e957b18a7898699a3899e784f94feb87f68c847b1
+
+pkgname = libretro-nestopia-git
+
