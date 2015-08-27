@@ -5,7 +5,7 @@ pkgname=couchpotato
 _pkgname=CouchPotato
 pkgver=2.6.3
 _fullname=CouchPotatoServer-build-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic Movie Downloading via NZBs & Torrent"
 arch=('any')
 url="http://couchpota.to/"
@@ -16,12 +16,18 @@ source=("https://github.com/RuudBurger/CouchPotatoServer/archive/build/${pkgver}
         "${pkgname}.service"
 	"${pkgname}-confd.conf"
 	"${pkgname}.sh"
-	"${pkgname}-tmpfiles.conf")
+	"${pkgname}-tmpfiles.conf"
+	'journal-logging.patch')
 md5sums=('a2a39b1807828fd515ee71babc5a935d'
-         'af10d8c2e347005ee2ff465865456107'
+         '8fc7c9021900d0fa1fed20465232e322'
          '42ec6846a96efdf6524d7905b3f03393'
          '48126ad1674d4679c2a645dfb9d5a2c2'
-         '95ebd431433b87d88c7a48cf0a32be7d')
+         '95ebd431433b87d88c7a48cf0a32be7d'
+         '0ae6398c412aed1c8983b42098831acb')
+
+build() {
+	patch -Np1 -i journal-logging.patch
+}
 
 package() {
   install -d "${pkgdir}/usr/lib/${pkgname}"

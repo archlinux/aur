@@ -1,0 +1,17 @@
+diff --git a/couchpotato/runner.py b/couchpotato/runner.py
+index 95bc48c..87c9dc3 100644
+--- a/CouchPotatoServer-build-3.0.0/couchpotato/runner.py
++++ b/CouchPotatoServer-build-3.0.0/couchpotato/runner.py
+@@ -198,12 +198,6 @@ def runCouchPotato(options, base_path, args, data_dir = None, log_dir = None, En
+     logger.setLevel(level)
+     logging.addLevelName(19, 'INFO')
+ 
+-    # To screen
+-    if (debug or options.console_log) and not options.quiet and not options.daemon:
+-        hdlr = logging.StreamHandler(sys.stderr)
+-        hdlr.setFormatter(formatter)
+-        logger.addHandler(hdlr)
+-
+     # To file
+     hdlr2 = handlers.RotatingFileHandler(Env.get('log_path'), 'a', 500000, 10, encoding = Env.get('encoding'))
+     hdlr2.setFormatter(formatter)

@@ -6,7 +6,7 @@ After=network.target
 EnvironmentFile=/etc/conf.d/couchpotato
 User=couchpotato
 Group=couchpotato
-ExecStart=/usr/bin/couchpotato --config_file "$CP_CONF" --data_dir "$CP_DATA" --pid_file=/run/couchpotato/couchpotato.pid
+ExecStart=/usr/bin/couchpotato --config_file "$CP_CONF" --data_dir "$CP_DATA" --pid_file=/run/couchpotato/couchpotato.pid --console_log
 Type=simple
 PIDFile=/run/couchpotato/couchpotato.pid
 
