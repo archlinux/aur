@@ -17,12 +17,16 @@ pkgbase = retroshare-git
 	depends = libxss
 	depends = libmicrohttpd
 	depends = sqlcipher
+	depends = speex
+	depends = opencv
+	depends = curl
+	depends = libxslt
 	provides = retroshare
 	conflicts = retroshare
 	source = retroshare::git+https://github.com/RetroShare/RetroShare.git
 	source = retroshare.install
 	sha256sums = SKIP
-	sha256sums = 47c23238cbfabb6f07b6a25666ee5941243176360ca28ec31378d94e87326ec1
+	sha256sums = 44ea7d8b0208e8954391184dcbb8ff94b2efc246580057a1d2b2e73ad262aad2
 
 pkgname = retroshare-git
 
