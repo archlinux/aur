@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-xv-11-laser-driver
+	pkgdesc = ROS - Neato XV-11 Laser Driver.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://ros.org/wiki/xv_11_laser_driver
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-sensor-msgs
+	depends = boost
+	source = xv_11_laser_driver::git+https://github.com/rohbotics/xv_11_laser_driver-release.git#tag=release/indigo/xv_11_laser_driver/0.2.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-xv-11-laser-driver
+
