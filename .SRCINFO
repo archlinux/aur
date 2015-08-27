@@ -1,0 +1,17 @@
+pkgbase = nudoku-git
+	pkgdesc = Sudoku for the terminal
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://jubalh.github.io/nudoku/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	provides = nudoku
+	conflicts = nudoku
+	source = git+https://github.com/jubalh/nudoku.git
+	sha256sums = SKIP
+
+pkgname = nudoku-git
+
