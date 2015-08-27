@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-turtlebot-description
+	pkgdesc = ROS - turtlebot_description provides a complete 3D model of the TurtleBot for simulation and visualization.
+	pkgver = 2.3.11
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_description
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-urdf
+	makedepends = ros-indigo-xacro
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-kobuki-description
+	depends = ros-indigo-create-description
+	depends = ros-indigo-urdf
+	depends = ros-indigo-xacro
+	source = turtlebot_description::git+https://github.com/turtlebot-release/turtlebot-release.git#tag=release/indigo/turtlebot_description/2.3.11-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-description
+
