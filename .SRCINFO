@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-ecl-time
+	pkgdesc = ROS - Timing utilities are very dependent on the system api provided for their use.
+	pkgver = 0.61.2
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_time
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-errors
+	makedepends = ros-indigo-ecl-license
+	makedepends = ros-indigo-ecl-exceptions
+	makedepends = ros-indigo-ecl-build
+	makedepends = ros-indigo-ecl-time-lite
+	makedepends = ros-indigo-ecl-config
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-ecl-errors
+	depends = ros-indigo-ecl-license
+	depends = ros-indigo-ecl-exceptions
+	depends = ros-indigo-ecl-build
+	depends = ros-indigo-ecl-time-lite
+	depends = ros-indigo-ecl-config
+	source = ecl_time::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/indigo/ecl_time/0.61.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ecl-time
+
