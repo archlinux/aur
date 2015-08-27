@@ -1,0 +1,18 @@
+pkgbase = r8101-dkms
+	pkgdesc = r8101 realtek lan drivers (DKMS)
+	pkgver = 1.027.00
+	pkgrel = 1
+	url = http://realtek.com.tw/
+	install = r8101-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	optdepends = ethtool: device configuration
+	provides = r8101
+	conflicts = r8101
+	source = dkms.conf
+	sha256sums = 2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5
+
+pkgname = r8101-dkms
+
