@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-kobuki-driver
+	pkgdesc = ROS - C++ driver library for Kobuki: Pure C++ driver library for Kobuki.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_driver
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-ecl-mobile-robot
+	makedepends = ros-indigo-ecl-devices
+	makedepends = ros-indigo-ecl-converters
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-ecl-sigslots
+	makedepends = ros-indigo-ecl-time
+	makedepends = ros-indigo-ecl-geometry
+	makedepends = ros-indigo-ecl-command-line
+	depends = ros-indigo-ecl-mobile-robot
+	depends = ros-indigo-ecl-devices
+	depends = ros-indigo-ecl-converters
+	depends = ros-indigo-ecl-sigslots
+	depends = ros-indigo-ecl-time
+	depends = ros-indigo-ecl-geometry
+	depends = ros-indigo-ecl-command-line
+	source = kobuki_driver::git+https://github.com/yujinrobot-release/kobuki_core-release.git#tag=release/indigo/kobuki_driver/0.6.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-driver
+
