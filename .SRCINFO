@@ -1,0 +1,22 @@
+pkgbase = libu2f-host
+	pkgdesc = Yubico Universal 2nd Factor (U2F) Host C Library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Yubico/libu2f-host
+	install = libu2f-host.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = help2man
+	makedepends = gtk-doc
+	makedepends = gengetopt
+	depends = json-c
+	depends = hidapi
+	source = git://github.com/Yubico/libu2f-host.git#commit=libu2f-host-1.0.0
+	source = makefile.patch
+	sha256sums = SKIP
+	sha256sums = 15355aade08033f8373d85017534297ebceb4e2874334109a24e368aea7ac2c0
+
+pkgname = libu2f-host
+

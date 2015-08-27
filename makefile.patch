@@ -1,0 +1,26 @@
+From f241518e0dfd896eee6886aad2f3f6f8ef83f6da Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Tue, 14 Oct 2014 11:25:54 +0200
+Subject: [PATCH 1/1] Makefile: make help2man depend on u2f-host, not
+ u2f-host.c
+
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e9159a7..1afdddd 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -35,7 +35,7 @@ MAINTAINERCLEANFILES = $(BUILT_SOURCES)
+ dist_man_MANS = u2f-host.1
+ DISTCLEANFILES = $(dist_man_MANS)
+ 
+-u2f-host.1: $(srcdir)/u2f-host.c $(srcdir)/cmdline.ggo $(top_srcdir)/configure.ac
++u2f-host.1: $(builddir)/u2f-host$(EXEEXT) $(srcdir)/cmdline.ggo $(top_srcdir)/configure.ac
+ 	$(AM_V_GEN)$(HELP2MAN) \
+ 		--output=$@ $(builddir)/u2f-host$(EXEEXT) \
+ 		--name="Yubico Universal 2nd Factor (U2F) Host Tool" \
+-- 
+2.1.2
+
