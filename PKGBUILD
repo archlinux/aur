@@ -92,8 +92,7 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCMAKE_CXX_FLAGS="--std=c++11"
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
 
