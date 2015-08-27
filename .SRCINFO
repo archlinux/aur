@@ -1,0 +1,34 @@
+pkgbase = ros-indigo-kobuki-keyop
+	pkgdesc = ROS - Keyboard teleoperation for Kobuki: relays commands from a keyboard to Kobuki.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_keyop
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-ecl-threads
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-ecl-exceptions
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-kobuki-msgs
+	makedepends = ros-indigo-ecl-time
+	depends = ros-indigo-yocs-cmd-vel-mux
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-ecl-threads
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-ecl-exceptions
+	depends = ros-indigo-kobuki-msgs
+	depends = ros-indigo-ecl-time
+	depends = ros-indigo-yocs-velocity-smoother
+	source = kobuki_keyop::git+https://github.com/yujinrobot-release/kobuki-release.git#tag=release/indigo/kobuki_keyop/0.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-keyop
+
