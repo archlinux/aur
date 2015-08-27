@@ -1,0 +1,13 @@
+pkgbase = blackwidowcontrol
+	pkgdesc = Python script to enable macro keys of BlackWidow keyboard under GNU/Linux
+	pkgver = 1.0.0
+	pkgrel = 3
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-pyusb
+	source = blackwidowcontrol-1.0.0.tar.gz::https://github.com/Martchus/blackwidowcontrol/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = blackwidowcontrol
+
