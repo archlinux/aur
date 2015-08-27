@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-translations
 	pkgdesc = Qt5 for Windows -- QtTranslations module (mingw-w64)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-qt5-translations
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qttranslations-opensource-src-5.4.2.tar.xz
-	md5sums = 35151a736e3b720de4f5128386f9c834
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qttranslations-opensource-src-5.5.0.tar.xz
+	md5sums = 423cccbace459623a9a173cede968cbe
 
 pkgname = mingw-w64-qt5-translations
 
