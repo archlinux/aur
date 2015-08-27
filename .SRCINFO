@@ -1,0 +1,14 @@
+pkgbase = postgresql-multicorn
+	pkgdesc = Python Wrapper for Postgresql 9.2+ Foreign Data Wrapper
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://multicorn.org/
+	arch = x86_64
+	arch = i686
+	license = Postgresql
+	depends = postgresql>=9.2
+	source = https://github.com/Kozea/Multicorn/archive/v1.2.3.zip
+	md5sums = e6be80a309f0fb0ca15e0802f8ddf893
+
+pkgname = postgresql-multicorn
+

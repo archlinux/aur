@@ -1,0 +1,15 @@
+pkg
+src
+*.zip
+*.pkg.tar.xz
+*.tar.gz
+#### joe made this: https://goel.io/joe
+
+#####=== Vim ===#####
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
