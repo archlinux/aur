@@ -1,0 +1,25 @@
+pkgbase = lttng-tools-git
+	pkgdesc = Trace control client for LTTng
+	pkgver = 2.7.0.rc1.76.gb789735
+	pkgrel = 1
+	url = http://lttng.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	depends = popt
+	depends = flex>=2.5.35
+	depends = liburcu>=0.7.2
+	depends = lttng-ust
+	depends = linux>=2.6.27
+	optdepends = lttng-modules: kernel tracing support
+	optdepends = babeltrace: trace viewing
+	provides = lttng
+	conflicts = lttng-tools
+	options = !libtool
+	source = git://git.lttng.org/lttng-tools.git
+	sha1sums = SKIP
+
+pkgname = lttng-tools-git
+
