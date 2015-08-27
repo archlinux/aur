@@ -1,0 +1,19 @@
+pkgbase = vdr-duplicates
+	pkgdesc = displays the status of all available dvb devices
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = http://www.u32.de/vdr.html
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-duplicates.conf
+	source = http://tolleri.net/vdr/plugins/vdr-duplicates-0.0.6.tgz
+	md5sums = 76ba45b756712881bfd52b669fafb887
+
+pkgname = vdr-duplicates
+
