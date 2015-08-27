@@ -1,0 +1,17 @@
+pkgbase = mouseserver
+	pkgdesc = Mouse server for WiFi Mouse
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = http://wifimouse.necta.us/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = unrar
+	depends = gtk2
+	noextract = MSSourceForLinux.rar
+	source = http://wifimouse.necta.us/MSSourceForLinux.rar
+	md5sums = af6ad9380187fef3029cc9eb2f1881cb
+
+pkgname = mouseserver
+
