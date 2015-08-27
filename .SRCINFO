@@ -1,7 +1,7 @@
 pkgbase = po-debconf
 	pkgdesc = Debian manage translated Debconf templates files with gettext
-	pkgver = 1.0.16
-	pkgrel = 3
+	pkgver = 1.0.18
+	pkgrel = 1
 	url = http://www.debian.org/
 	changelog = ChangeLog
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = po-debconf
 	depends = gettext
 	depends = perl
 	depends = intltool-debian
-	source = http://ftp.debian.org/debian/pool/main/p/po-debconf/po-debconf_1.0.16+nmu2_all.deb
+	source = http://ftp.debian.org/debian/pool/main/p/po-debconf/po-debconf_1.0.18_all.deb
 	sha256sums = aec4d18a310988aebc55a14db7e5fd0dfee6b49cca1d5aa6e7e58b8645a7d29e
 
 pkgname = po-debconf
