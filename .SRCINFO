@@ -1,6 +1,6 @@
 pkgbase = flexget-git
 	pkgdesc = Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more.
-	pkgver = 1.2.347.r6179.349ae92
+	pkgver = 1.2.348.r6198.f99a5a3
 	pkgrel = 1
 	url = http://flexget.com/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = flexget-git
 	depends = python2-yaml
 	depends = python2-beautifulsoup4>=4.1
 	depends = python2-beautifulsoup4<4.4
-	depends = python2-guessit>=0.9.3
+	depends = python2-guessit<0.10.4
 	depends = python2-html5lib>=0.11
 	depends = python2-pyrss2gen
 	depends = python2-progressbar
