@@ -11,7 +11,9 @@ pkgbase = r8101-dkms
 	optdepends = ethtool: device configuration
 	provides = r8101
 	conflicts = r8101
+	source = ftp://WebUser:Lc9FuH5r@208.70.202.219/cn/nic/0002-r8101-1.027.00.tar.bz2
 	source = dkms.conf
+	sha256sums = 3f244cca2cfa171cf52d8562cabd475feca307ab6ec88174098baab2e965b96d
 	sha256sums = 2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5
 
 pkgname = r8101-dkms

@@ -20,7 +20,9 @@ install=${pkgname}.install
 # directory containing this PKGBUILD. Make sure the version matches pkgver.
 # http://www.realtek.com.tw/Downloads/downloadsView.aspx?Langid=1&PNid=14&PFid=7&Level=5&Conn=4&DownTypeID=3&GetDown=false
 
-source=('dkms.conf')
+# The source link below is only a placeholder.
+source=("ftp://WebUser:Lc9FuH5r@208.70.202.219/cn/nic/0002-r8101-1.027.00.tar.bz2"
+        'dkms.conf')
 
 package() {
 
@@ -36,4 +38,5 @@ package() {
   cp -r ${_pkgbase}-${pkgver}/src ${_pkgbase}-${pkgver}/Makefile \
         "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
-sha256sums=('2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5')
+sha256sums=('3f244cca2cfa171cf52d8562cabd475feca307ab6ec88174098baab2e965b96d'
+            '2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5')
