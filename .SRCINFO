@@ -1,0 +1,15 @@
+pkgbase = avarice-svn
+	pkgdesc = AVaRICE is a program for interfacing the Atmel JTAG ICE to GDB to allow users to debug their embedded AVR target.
+	pkgver = 20150713.350
+	pkgrel = 1
+	url = http://sourceforge.net/projects/avarice/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = svn
+	depends = libusb-compat
+	source = avarice-svn::svn+http://svn.code.sf.net/p/avarice/code/trunk
+	md5sums = SKIP
+
+pkgname = avarice-svn
+
