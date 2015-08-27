@@ -1,0 +1,16 @@
+pkgbase = meocloud-gui
+	pkgdesc = Cloud storage service and file synchronization service
+	pkgver = 0.2.29beta
+	pkgrel = 1
+	url = https://meocloud.pt
+	arch = x86_64
+	license = custom
+	options = !strip
+	options = !upx
+	source = https://meocloud.pt/binaries/linux/x86_64/meocloud-gui-0.2.29beta_x86_64.tar.gz
+	source = TOS.txt
+	sha256sums = 3cf1619a65b1b3e2ca4bce39b9a3ae504c4b53c105c4423e5a9419eba657a9d7
+	sha256sums = 240ca45ba26f1a9df5b277d9b51e2b53a152a9c20c74e6b965e4a60d965fce0f
+
+pkgname = meocloud-gui
+
