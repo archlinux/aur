@@ -6,7 +6,7 @@
 # http://creativecommons.org/publicdomain/zero/1.0/
 
 pkgname=arch-runsvdir-init
-pkgver=0.3.0
+pkgver=0.4.0
 _runit_ver=2.1.2
 pkgrel=1
 pkgdesc='Arch native runit package with runsvdir as init (like busybox)'
@@ -23,7 +23,7 @@ sha256sums=('6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18'
 			'SKIP'
 			'51c17405558f5bbbe631d92a37adff872b9518fe1876a56b24efb05bedffae94'
 			'527f68f501cc9eb4bbab33f8ad374822624342c7d74b5c795efe4aac6b3f170a'
-			'f7bb155e76d2a5d441d72655764e7b83a48da7c1fda37f2781337f25c5ad7ba0'
+			'ccb0a63e86035ccf0ad869310ab4213e7cc3be3a294e854ffa3cd806a139e077'
 			'4db8c30c75cc78770ec9f131f803e21ce1ebfc3ef5f634383af086cf0ed325f5'
 			'51854d2fdd7764d02fed069d45b6842a595724f318037b3693eb5384b9b362a9'
 			)
