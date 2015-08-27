@@ -1,0 +1,11 @@
+--- a/TSC-2.0.0/tsc/CMakeLists.txt	2015-08-18 11:21:45.558257165 +0200
++++ b/TSC-2.0.0/tsc/CMakeLists.txt	2015-08-18 11:22:30.348195821 +0200
+@@ -409,7 +409,7 @@
+   DESTINATION ${sharedir}/worlds
+   COMPONENT worlds)
+ install(FILES "${TSC_SOURCE_DIR}/docs/man/tsc.6"
+-  DESTINATION man/man6
++  DESTINATION share/man/man6
+   COMPONENT base)
+ install(FILES "${TSC_SOURCE_DIR}/extras/icons/tsc_icon_16.png"
+   DESTINATION share/icons/hicolor/16x16/apps

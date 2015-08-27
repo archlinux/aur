@@ -1,0 +1,23 @@
+# arg 1:  the new package version
+post_install() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_upgrade() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+# arg 1:  the old package version
+post_remove() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+# Copyright © 2013-2015 The TSC Contributors
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
