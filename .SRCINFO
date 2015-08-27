@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-stdr-server
+	pkgdesc = ROS - Implements synchronization and coordination functionalities of STDR Simulator.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://stdr-simulator-ros-pkg.github.io
+	arch = any
+	license = GPLv3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-map-server
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-stdr-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-actionlib
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-nav-msgs
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-stdr-msgs
+	depends = ros-indigo-actionlib
+	depends = ros-indigo-stdr-robot
+	depends = ros-indigo-tf
+	depends = ros-indigo-nav-msgs
+	source = stdr_server::git+https://github.com/stdr-simulator-ros-pkg/stdr_simulator-release.git#tag=release/indigo/stdr_server/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-stdr-server
+
