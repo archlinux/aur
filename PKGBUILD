@@ -10,8 +10,8 @@
 
 pkgname=qgis
 _pkgver=2.10
-pkgver=2.10
-pkgrel=3
+pkgver=2.10.1
+pkgrel=4
 pkgdesc='QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -59,7 +59,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
+  git describe --long | sed 's/^final-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
 }
 
 prepare() {

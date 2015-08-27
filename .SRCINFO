@@ -1,7 +1,7 @@
 pkgbase = qgis
 	pkgdesc = QGIS (current release) is a Geographic Information System (GIS) that supports vector, raster & database formats
-	pkgver = 2.10
-	pkgrel = 3
+	pkgver = 2.10.1
+	pkgrel = 4
 	url = http://qgis.org/
 	install = qgis.install
 	arch = i686
@@ -40,7 +40,7 @@ pkgbase = qgis
 	optdepends = fcgi: QGIS Map Server support
 	optdepends = osgearth: QGIS Globe plugin support
 	optdepends = gpsbabel: GPS toolbar support
-	provides = qgis=2.10
+	provides = qgis=2.10.1
 	source = qgis::git://github.com/qgis/QGIS.git#branch=release-2_10
 	source = https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py
 	md5sums = SKIP
