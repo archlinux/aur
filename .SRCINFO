@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-turtlebot-capabilities
+	pkgdesc = ROS - Capabilities for the TurtleBot.
+	pkgver = 2.3.11
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_capabilities
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-capabilities
+	depends = ros-indigo-std-capabilities
+	source = turtlebot_capabilities::git+https://github.com/turtlebot-release/turtlebot-release.git#tag=release/indigo/turtlebot_capabilities/2.3.11-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-capabilities
+
