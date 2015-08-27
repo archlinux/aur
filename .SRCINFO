@@ -1,0 +1,14 @@
+pkgbase = seatools
+	pkgdesc = The quick diagnostic tool that checks the health of your Seagate drive
+	pkgver = 2.64
+	pkgrel = 1
+	url = http://www.seagate.com/support/downloads/seatools/
+	arch = i686
+	arch = x86_64
+	license = custom:proprietary
+	depends = lib32-glibc
+	source = http://www.seagate.com/files/www-content/support-content/downloads/seatools/_shared/downloads/seatools_cli.tar
+	sha1sums = 9e9dbd61b8d7c156f864743a2109efce6dd75051
+
+pkgname = seatools
+
