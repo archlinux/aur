@@ -1,0 +1,16 @@
+pkgbase = ros-indigo-openslam-gmapping
+	pkgdesc = ROS - ROS-ified version of gmapping SLAM.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://openslam.org/gmapping
+	arch = any
+	license = CreativeCommons-by-nc-sa-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	source = openslam_gmapping::git+https://github.com/ros-gbp/openslam_gmapping-release.git#tag=release/indigo/openslam_gmapping/0.1.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-openslam-gmapping
+
