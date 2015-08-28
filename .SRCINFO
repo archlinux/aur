@@ -1,7 +1,7 @@
 pkgbase = madsonic
 	pkgdesc = Madsonic Mashup Mod is a fork of the Subsonic 4.8 Server Build 3436 with some Subsonic Data schema modifications!
 	pkgver = 5.1.5240
-	pkgrel = 3
+	pkgrel = 4
 	url = http://madsonic.org/
 	install = madsonic.install
 	changelog = CHANGELOG
@@ -11,6 +11,7 @@ pkgbase = madsonic
 	depends = jre7-openjdk-headless
 	depends = fontconfig
 	depends = libcups
+	optdepends = ffmpeg: Audio Transcoding
 	conflicts = subsonic-beta
 	conflicts = subsonic
 	conflicts = subsonic-git
