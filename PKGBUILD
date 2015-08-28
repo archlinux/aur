@@ -1,10 +1,10 @@
 # Maintainer: Jon Eyolfson <jon@eyl.io>
 pkgname=emacs-rust-mode
-pkgver=r188
+pkgver=r197
 pkgrel=1
 pkgdesc="A major Emacs mode for editing Rust source code"
 arch=('any')
-url="https://github.com/rust-lang/rust/tree/master/src/etc/emacs"
+url="https://github.com/rust-lang/rust-mode"
 depends=('emacs')
 license=('MIT')
 source=("$pkgname"::'git://github.com/rust-lang/rust-mode.git')
