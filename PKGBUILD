@@ -8,7 +8,7 @@
 pkgname=('roccat-tools-full')
 _pkgbase=roccat-tools
 pkgver=3.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
