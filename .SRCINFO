@@ -1,0 +1,15 @@
+pkgbase = pgindent
+	pkgdesc = Postgresql code indenter
+	pkgver = 9.4.4
+	pkgrel = 1
+	url = http://www.postgresql.org/
+	arch = i686
+	arch = x86_64
+	license = custom:PostgreSQL
+	depends = pg-bsd-indent
+	source = http://ftp.postgresql.org/pub/source/v9.4.4/postgresql-9.4.4.tar.bz2
+	md5sums = 1fe952c44ed26d7e6a335cf991a9c1c6
+	sha256sums = 538ed99688d6fdbec6fd166d1779cf4588bf2f16c52304e5ef29f904c43b0013
+
+pkgname = pgindent
+
