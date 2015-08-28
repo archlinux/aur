@@ -13,8 +13,8 @@ pkgbase = dgrp
 	depends = grep
 	depends = awk
 	depends = systemd
-	optdepends = tcl: digi config manager in X
-	optdepends = tk: digi config manager in X
+	optdepends = tcl: Digi config manager in X
+	optdepends = tk: Digi config manager in X
 	options = !docs
 	options = !emptydirs
 	backup = etc/dgrp.backing.store
@@ -32,8 +32,5 @@ pkgname = dgrp
 	depends = grep
 	depends = awk
 	depends = systemd
-	depends = linux=
 	depends = linux
-	conflicts = linux>
-	conflicts = linux<
 

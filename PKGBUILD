@@ -97,10 +97,8 @@ license=('GPL' 'custom') # OpenSSL=Apache. Arch is always new enough to not need
 makedepends=('linux-headers')
 depends=('openssl' 'grep' 'awk' 'systemd')
 backup=('etc/dgrp.backing.store')
-optdepends=('tcl: digi config manager in X' 'tk: digi config manager in X')
-_verurl='http://www.digi.com/support/includes/drivers?pid=2247&osvid=218'
-_versed='Realport Driver for Linux ver\. \([0-9\.]\+\), tgz version' # used with ^...$
-_veropt='t'
+optdepends=('tcl: Digi config manager in X' 'tk: Digi config manager in X')
+_verwatch=('http://www.digi.com/support/includes/drivers?pid=2247&osvid=218' 'Realport Driver for Linux ver\. \([0-9\.]\+\), tgz version' 't')
 source=("${pkgname}-${pkgver}-81000137_W.tgz::http://ftp1.digi.com/support/driver/81000137_W.tgz" 'drpadmin' 'drpadmin.1' "autorebuild-${pkgname}.sh")
 sha256sums=('218c3a873f8623d2e663735efdee384f7dac784327cea9e7211eddce700fe1c8'
             '1ab0ccdc361760ae078f9b69f603e99b40849cdf97ad69bb028ad6af27012634'
@@ -120,6 +118,8 @@ prepare() {
          -e 's:\(3.9\*|4.\*\))$:\1|5.*):g' \
          -e "# I can't find any other way to fix the modules dir" \
          -e 's:/lib/modules/:/usr&:g' \
+         -e '# Kill a harmless mkdir error. They mkdir the folder then dont use it.' \
+         -e 's@^\(\s\+\)\(mkdir -p /usr/lib/modules/${osrel}/misc\)$@\1: #\2@g' \
     'configure'
   # Eradicate sbin before we even get started
   sed -i -e 's:/usr/sbin:/usr/bin:g' -e 's:/sbin/:/usr/bin/:g' 'configure' Makefile* */Makefile scripts/{preun,post}install
@@ -162,6 +162,7 @@ prepare() {
          -e '# Fixing this file was almost useless. All it does after we disable everything is an rmmod' \
     'scripts/preuninstall'
   test ! -f 'scripts/postinstall.Arch' -a ! -f 'scripts/preuninstall.Arch'
+  # this generate a harmless error as it tries to make a folder in /usr/lib/modules...
   ./configure -q --sbindir='/usr/bin' --prefix='/usr' --mandir='/usr/share/man' # the module and DESTDIR-RPM_BUILD_ROOT dirs seem unsettable so are handled elsewhere
 
   # Produce a "file_locations" that we can pull in here.
@@ -201,11 +202,12 @@ package() {
   #. 'config/file_locations.Arch'
 
   # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
-  local _kernelversionsmall="$(uname -r)"
-  _kernelversionsmall="${_kernelversionsmall%%-*}"
-  conflicts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")
+  local _kernelversionsmall="$(pacman -Q linux)" # this differs from uname -r. pacman: 4.0, uname: 4.0.0
+  _kernelversionsmall="${_kernelversionsmall#* }"
+  _kernelversionsmall="${_kernelversionsmall%-*}"
+  eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")' # prevent the makepkg bash simulator from getting this line!
   if [ "${_opt_LocktoKernel}" -ne 0 ]; then
-    depends+=("linux=${_kernelversionsmall}")
+    eval 'dep''ends+=("linux=${_kernelversionsmall}")'
   else
     depends+=('linux') # Prevent installation into Docker
   fi
