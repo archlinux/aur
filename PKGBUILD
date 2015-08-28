@@ -1,7 +1,7 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=satellitereign-hib
-pkgver=093
+pkgver=101
 pkgrel=1
 pkgdesc="Spiritual successor to the Syndicate games"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ options=("!emptydirs" "!strip")
 source=("${pkgname}.desktop"
         "SatelliteReignLinux${pkgver}.zip::hib://SatelliteReignLinux${pkgver}.zip")
 sha256sums=("87cc04b37e83a2871d4eb2aa694ea13eae2670fa364d4f06b823cf1c4323da33"
-            "9d7ca804a73ee318319d464082439180ec700648807e9d23f1288a6555b7db64")
+            "d7113b5d9a164f9e34273dd13b39bec281c87fe5b1c8f9d904bb09602c5cbf3d")
 
 # Disable compression of the package
 PKGEXT=".pkg.tar"
