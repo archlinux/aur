@@ -1,0 +1,15 @@
+pkgbase = piconnect-git
+	pkgdesc = Small program wich allow to create easily a ssh connexion with a Raspberry Pi.
+	pkgver = 54.d3730da
+	pkgrel = 1
+	url = https://gitlab.com/MaximilienLIX/Piconnect
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = openssh
+	depends = tigervnc
+	source = git+https://gitlab.com/MaximilienLIX/Piconnect.git
+	md5sums = SKIP
+
+pkgname = piconnect-git
+
