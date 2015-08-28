@@ -1,0 +1,29 @@
+pkgbase = ros-indigo-turtlebot-follower
+	pkgdesc = ROS - Follower for the turtlebot.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_apps
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-pcl-ros
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-turtlebot-msgs
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-visualization-msgs
+	depends = ros-indigo-pcl-ros
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-turtlebot-bringup
+	depends = ros-indigo-turtlebot-msgs
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-visualization-msgs
+	source = turtlebot_follower::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/turtlebot_follower/2.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-follower
+
