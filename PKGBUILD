@@ -10,7 +10,8 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'gvfs' 'python-gobject'
          'python-pytoml' 'python-xdg' 'gtk3' 'python-beautifulsoup4'
          'python-xmltodict' 'qstat')
 makedepends=('git' 'python-setuptools')
-optdepends=('python-pygeoip: for geolocation support')
+optdepends=('python-pygeoip: for geolocation support'
+            'geoip-database: for geolocation support')
 provides=('obozrenie')
 conflicts=('obozrenie')
 install='obozrenie.install'

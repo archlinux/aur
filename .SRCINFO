@@ -19,6 +19,7 @@ pkgbase = obozrenie-git
 	depends = python-xmltodict
 	depends = qstat
 	optdepends = python-pygeoip: for geolocation support
+	optdepends = geoip-database: for geolocation support
 	provides = obozrenie
 	conflicts = obozrenie
 	source = git+https://github.com/obozrenie/obozrenie.git
