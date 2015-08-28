@@ -7,14 +7,24 @@
 # -TODO: Ability to elevate the version check return code
 # -TODO: Switch origin on git packages from aur4 to aur (if necessary)
 # -TODO: (TBD) pkgver=[a-z] not allowed in more pedantic mode
-# TODO: Better link scanner for version checker, xidel maybe?
+# -TODO: single watch variable
+# TODO: Better link scanner for version checker, perl or xidel maybe?
 # TODO: An explain switch that outputs implementation details about less obvious warnings.
 # TODO: Github?
 # TODO: Average release cycle (daily, weekly, monthly, yearly)
-# TODO: (TBD) Version check in alternate file
 # TODO: (TBD) Convert pedantic level to warn/err values
 # TODO: Rearrange code to allow many checks without .git folder
 # TODO: man page
+
+# BUG: -v can take a long time. ^C leaves a temporary folder.
+
+# NOWAY: Version check in alternate file or against read-only remote links.
+#   Won't be implemented. To minimize server abuse, version check is only
+#   available to the PKGBUILD maintainer. Users must use 'cower -u' or another
+#   AUR helper. If the maintainer won't check versions or implement _verwatch
+#   then they need to be pressed into orphaning the package to someone who
+#   will.
+#   You can always cheat and clone with ssh.
 
 # a helper like namcap that checks and offers solutions for common problems in git submissions to the AUR
 
@@ -42,11 +52,17 @@
 # 1 = some packages had warnings
 # 2 = some packages had errors
 # 3 = some packages had severe errors
+# nn = some packages have version updates (choose nn with -V)
 # 99 = some packages haven't been upgraded to AUR git
 # >=126 = something went wrong (probably your fault)
 
 # See below for how to change the origin if you are seeing packages
 # you don't have write access to.
+
+# List of AUR helpers that also check versions:
+# pkglivecheck (defunct), pkgbuild-watch, pkgcheck, pkgoutofdate
+# So far as I can tell, none of these used a sed expression to extract perfect
+# version numbers or used vercmp to properly compare them.
 
 set -u
 set -e # This is tricky to code around.
@@ -66,7 +82,7 @@ if [ "${_opt_Maintainer:=none}" = 'none' ]; then
   sleep 1
 fi
 
-_opt_VERSION='0.3'
+_opt_VERSION='0.4'
 _opt_AUR4='aur'
 
 # After August 8, these 3 time bomb lines can be removed and _opt_AUR4 can be gotten rid of altogether
@@ -310,11 +326,14 @@ fi
             _var_gitadds+=('.SRCINFO') # this is the first add so no dups possible
           fi
 
-          if [ "${_opt_VERSION}" -ne 0 ] && grep -qlF $'_verurl\n_vercheck' '../PKGBUILD'; then
+          if [ "${_opt_VERSION}" -ne 0 ] && grep -qlF $'_verwatch\n_vercheck' '../PKGBUILD'; then
             _fn_runpkgbuild() {
               set -u
               source '../PKGBUILD'
               set -u
+              local _verurl="${_verwatch[0]}"
+              local _versed="${_verwatch[1]}"
+              local _veropt="${_verwatch[2]}"
               # http://stackoverflow.com/questions/1881237/easiest-way-to-extract-the-urls-from-an-html-page-using-sed-or-awk-only
               # A real getlinks would use an html decoder and not sed+grep.
               # $1: l get link href (default), t get link text, f FTP listing or other no html
@@ -325,7 +344,7 @@ fi
                 f) cat;;
                 esac
               }
-              # The PKGBUILD can replace any of these functions deemed necessary. It's common to replace _vercheck
+              # The PKGBUILD can replace any of these functions deemed necessary. The most likely to replace is _vercheck
               # Return sorted list of all version numbers available
               local _var_has_vercheck=0
               declare -f -F _vercheck >/dev/null && _var_has_vercheck=1 || _vercheck() {
@@ -815,14 +834,14 @@ _fn_usage() {
   local _var_BN="$(basename "$0")"
 cat << EOF
 git-aurcheck ${_opt_VERSION} (C)2015 by severach for Arch Linux (GPL3+)
-  -h: crude help
-  -a: from ~/build, check all packages with write access
-  -x=: exclude package folders from -a scan. Ignored with -a.
-  package[s]: scan only specific packages. Exclusions dominate.
-  -p: pedantic, adds extra checks. Up to thrice for maximum pedantry.
-  -v: check for new version with PKGBUILD _verurl related vars.
-  -t=: change to target folder before starting. Useful for cron.
-  -V=: elevate new version warning to desired exit code. Numbers only.
+  -h crude help
+  -a from ~/build, check all packages with write access
+  -x= exclude package folders from -a scan. Ignored with -a.
+  package[s] scan only specific packages. Exclusions dominate.
+  -p pedantic, adds extra checks. Up to thrice for maximum pedantry.
+  -v check for new version with PKGBUILD _verurl related vars.
+  -t= change to target folder before starting. Useful for cron.
+  -V= elevate new version warning to desired exit code. Numbers only.
 
 To check for common problems in a package folder:
   cd ~/build/foo
