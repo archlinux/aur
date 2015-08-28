@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-examples-git
-pkgver=snapshot.2015.05.r30.gb27164a
+pkgver=snapshot.2015.05.r64.gc7ff155
 pkgrel=1
 pkgdesc="Examples for Magnum OpenGL graphics engine (Git version)"
 arch=('i686' 'x86_64')
 url="http://mosra.cz/blog/magnum.php"
 license=('MIT')
-depends=('magnum-git' 'magnum-plugins-git' 'magnum-integration-git' 'bullet')
+depends=('magnum-git' 'magnum-plugins-git' 'magnum-integration-git' 'bullet' 'openal')
 makedepends=('cmake' 'git')
 provides=('magnum-examples')
 conflicts=('magnum-examples')
@@ -25,6 +25,7 @@ build() {
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DWITH_AUDIO=ON \
         -DWITH_BULLET=ON \
         -DWITH_CUBEMAP=ON \
         -DWITH_MOTIONBLUR=ON \
