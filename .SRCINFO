@@ -5,9 +5,12 @@ pkgbase = qtcreator-cppcheck-plugin
 	url = http://downloads.sourceforge.net/project/qtc-cppcheck/
 	arch = i686
 	arch = x86_64
+	groups = qt
+	groups = qt5
 	license = MIT
 	depends = qtcreator=3.5.0
 	depends = cppcheck
+	provides = qtcreator-cppcheck-plugin
 
 pkgname = qtcreator-cppcheck-plugin
 
