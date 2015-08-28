@@ -1,15 +1,15 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=emacs-julia-mode
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.11
+pkgrel=1
 pkgdesc="Emacs major mode for the Julia programming language"
 arch=('any')
 url="http://www.julialang.org"
 license=('GPL')
 depends=('emacs')
 install=$pkgname.install
-source='https://raw.githubusercontent.com/JuliaLang/julia/master/contrib/julia-mode.el'
-md5sums=('be9be3a7b7e549b41674551f34b83ebf')
+source="https://raw.githubusercontent.com/JuliaLang/julia/v$pkgver/contrib/julia-mode.el"
+md5sums=('fb222370cff7401b00a33104add98347')
 _el="${pkgname#emacs-}.el"
 
 build() {
