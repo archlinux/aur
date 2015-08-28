@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-turtlebot-msgs
+	pkgdesc = ROS - Turtlebot messages, services and actions.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-sensor-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-sensor-msgs
+	source = turtlebot_msgs::git+https://github.com/turtlebot-release/turtlebot_msgs-release.git#tag=release/indigo/turtlebot_msgs/2.2.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-msgs
+
