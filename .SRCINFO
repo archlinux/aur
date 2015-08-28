@@ -1,7 +1,7 @@
 pkgbase = madsonic
 	pkgdesc = Madsonic Mashup Mod is a fork of the Subsonic 4.8 Server Build 3436 with some Subsonic Data schema modifications!
 	pkgver = 5.1.5240
-	pkgrel = 1
+	pkgrel = 2
 	url = http://madsonic.org/
 	install = madsonic.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = madsonic
 	conflicts = subsonic-beta
 	conflicts = subsonic
 	conflicts = subsonic-git
+	conflicts = madsonic-beta
 	backup = var/madsonic/db
 	backup = var/madsonic/madsonic.sh
 	source = http://madsonic.org/download/5.1/20150506_madsonic-5.1.5240-standalone.tar.gz
