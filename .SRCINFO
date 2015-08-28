@@ -1,0 +1,21 @@
+pkgbase = greenpak-designer-dev
+	pkgdesc = GreenPAK1-4 Designer
+	pkgver = 5.01
+	pkgrel = 5
+	url = http://www.silego.com/softdoc/software.html
+	install = greenpak-designer-dev.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = glu
+	depends = gtk-update-icon-cache
+	depends = libusb
+	depends = qtwebkit
+	depends = shared-mime-info
+	options = !strip
+	source = http://www.silego.com/uploads/resources/GP1-4_Designer_v5.01.005_LNX_Setup.zip
+	sha256sums = 41668325ce26c3b6d593553bece4a67296d15e561d6329f11ccc975e73a16bef
+
+pkgname = greenpak-designer-dev
+
