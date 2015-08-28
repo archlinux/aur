@@ -1,8 +1,8 @@
 # Maintainer: arch AT nnamuab DOT de
 pkgname=phreeqc
-pkgver=3.2.0
-_pkgsvn=9820
-pkgrel=5
+pkgver=3.2.2
+_pkgsvn=10160
+pkgrel=1
 pkgdesc="PHREEQC - A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations"
 arch=('i686' 'x86_64')
 url="http://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/"
@@ -19,14 +19,14 @@ backup=()
 options=()
 install="install.sh"
 changelog=
-source=("ftp://brrftp.cr.usgs.gov/pub/charlton/phreeqc/phreeqc-3.2.0-9820.tar.gz"
+source=("ftp://brrftp.cr.usgs.gov/pub/charlton/phreeqc/phreeqc-$pkgver-$_pkgsvn.tar.gz"
         install.sh
         phreeqc.el
         "https://github.com/jaalto/project-emacs--folding-mode/blob/master/folding.el")
-md5sums=('ec206646be8135eb54416bc80d535c9d'
+md5sums=('efa4a2259aa6cd089b7eb0c0e23c19fe'
          '8facd6e784cd1985b2c57c092b753002'
          '3100a0db4223f0432868392ddeeddbdc'
-         '365241b97b697b55c285cd6eeb1e4be4')
+         '887f36ddb202ebf3a451b633be7f328f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-$_pkgsvn"
