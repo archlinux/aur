@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-voxel-grid
+	pkgdesc = ROS - voxel_grid provides an implementation of an efficient 3D voxel grid.
+	pkgver = 1.11.11
+	pkgrel = 1
+	url = http://wiki.ros.org/voxel_grid
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-roscpp
+	source = voxel_grid::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/voxel_grid/1.11.11-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-voxel-grid
+
