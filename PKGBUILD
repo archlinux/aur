@@ -21,10 +21,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  sed -i -e 's/python/python2/' define
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
