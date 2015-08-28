@@ -26,9 +26,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 
 install=icecat.install
-#source=(http://jenkins.trisquel.info/icecat/binaries/${pkgname}-${pkgver}.tar.bz2{,.sig}
 source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
-#source=(http://mirrors.kernel.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.xz      ## Good mirror
+#source=(https://mirrors.kernel.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2      ## Good mirror
         icecat-CVE-2015-4473-partial.patch
         icecat-CVE-2015-4482.patch
         icecat-CVE-2015-4488.patch
