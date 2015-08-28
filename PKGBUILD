@@ -3,10 +3,10 @@
 
 pkgname=scrounge-ntfs
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Data recovery program for NTFS file systems"
 arch=('i686' 'x86_64')
-url="http://memberwebs.com/stef/software/scrounge/"
+url="http://thewalter.net/stef/software/scrounge/"
 license=('BSD')
 groups=()
 depends=()
@@ -23,8 +23,8 @@ md5sums=('851cbb9a1ce417cf61f2612626a1bc58')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	./configure --prefix=/usr
-	make || return 1
+	./configure --prefix=/usr --sbindir=/usr/bin
+	make
 }
 
 package() {
