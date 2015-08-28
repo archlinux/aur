@@ -2,13 +2,13 @@
 
 pkgname=decox
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Decreasing continuous exponentials; toy decompression planner'
 url='http://fenua.org/gaetan/src/'
 license=('ISC')
 arch=('i686' 'x86_64' 'armv7h')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha1sums=('6d940fb8c9c706ccb01a96ee479405301bfc0dc7')
+sha1sums=('b1793d8a8b48f3412c7b424b234bab0cc4a98f3c')
 
 build() {
 	cd "${srcdir}"
