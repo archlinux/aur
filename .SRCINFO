@@ -1,0 +1,14 @@
+pkgbase = nq
+	pkgdesc = Unix command line queue utility
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/chneukirchen/nq
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	source = https://github.com/chneukirchen/nq/archive/v0.1.tar.gz
+	md5sums = 377709040c90354e4e74aefc62f8172c
+
+pkgname = nq
+
