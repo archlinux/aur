@@ -1,0 +1,36 @@
+pkgbase = ros-indigo-pano-ros
+	pkgdesc = ROS - The ros frontend to the pano subsystem.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://ros.org/wiki/pano_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-cv-bridge
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-pano-py
+	makedepends = ros-indigo-actionlib-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-actionlib
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-cv-bridge
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-pano-py
+	depends = ros-indigo-actionlib-msgs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-actionlib
+	source = pano_ros::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/pano_ros/2.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-pano-ros
+
