@@ -1,6 +1,6 @@
 pkgbase = fofix-git
 	pkgdesc = Frets on Fire X (FoFiX). Highly improved version of Frets on Fire (Git Version)
-	pkgver = v4.0.0alpha2.r190.g3fe0f93
+	pkgver = v4.0.0alpha2.r209.gca25cd5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/fofix/fofix
@@ -16,6 +16,7 @@ pkgbase = fofix-git
 	depends = python2-opengl
 	depends = python2-numpy
 	depends = python2-imaging
+	depends = python2-cerealizer
 	depends = pyogg
 	depends = pyvorbis
 	depends = python2-pysqlite
