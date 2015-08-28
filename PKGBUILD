@@ -23,5 +23,5 @@ package() {
       install -d "$pkgdir/usr/share/man/man1/"
       
       install -m755 "$srcdir/$_pkgname_simple/src/"{piconnect,piconnect_functions.sh} "$pkgdir/usr/bin"
-      install -m644 "$srcdir/$_pkgname_simple/doc/piconnect.gz" "$pkgdir/usr/share/man/man1/"
+      install -m644 "$srcdir/$_pkgname_simple/doc/piconnect.gz" "$pkgdir/usr/share/man/fr/man1/"
 }
