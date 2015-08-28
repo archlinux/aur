@@ -3,12 +3,12 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=thunderbird-theme-tt-deepdark
-pkgver=10.0.2
+pkgver=10.0.3
 pkgrel=1
 pkgdesc='Smooth dark theme for Thunderbird'
 url='https://addons.mozilla.org/de/thunderbird/addon/tt-deepdark/'
 license=('custom:noncommercial')
-md5sums=('1f0145655476a796b9a07986017cc5db')
+md5sums=('3885774cdb2aaa33494002b1a2703ae1')
 
 [ "$arch" ] || arch=('any')
 
