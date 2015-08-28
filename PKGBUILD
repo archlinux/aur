@@ -2,7 +2,7 @@
 
 pkgname=osm2pgsql-git
 pkgver=0.88.0.r140.g8179cdb
-pkgrel=1
+pkgrel=2
 pkgdesc="tool for loading OpenStreetMap data into a PostgreSQL / PostGIS database"
 arch=('i686' 'x86_64')
 url="https://github.com/openstreetmap/osm2pgsql"
@@ -29,4 +29,5 @@ build() {
 package() {
         cd "$srcdir/$pkgname-$pkgver"
         make DESTDIR="$pkgdir/" install
+	install install-postgis-osm-{db,user}.sh "$pkgdir/usr/bin"
 }
