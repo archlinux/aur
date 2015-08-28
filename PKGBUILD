@@ -5,7 +5,7 @@
 
 pkgname=kraft
 pkgver=0.58
-pkgrel=1
+pkgrel=2
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
@@ -19,16 +19,19 @@ prepare() {
 
   sed -i 's/raise ValueError, "Not enough space"/raise ValueError("Not enough space")/' tools/erml2pdf.py
 
+  echo 'Warning! Locales are not built due to a workaround in the CMake configuration'
+  find po -name CMakeLists.txt -delete
+
   rm -rf build
   mkdir -p build
   cd build
-  cmake ".." \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cmake ".." \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 

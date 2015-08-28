@@ -1,7 +1,7 @@
 pkgbase = kraft
 	pkgdesc = A program suitable for all trades or crafts
 	pkgver = 0.58
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.volle-kraft-voraus.de/
 	arch = i686
 	arch = x86_64
