@@ -1,0 +1,29 @@
+pkgbase = ros-indigo-clear-costmap-recovery
+	pkgdesc = ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by reverting the costmaps used by the navigation stack to the static map outside of a given area.
+	pkgver = 1.11.11
+	pkgrel = 1
+	url = http://wiki.ros.org/clear_costmap_recovery
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nav-core
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-costmap-2d
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-pluginlib
+	makedepends = eigen3
+	depends = ros-indigo-nav-core
+	depends = ros-indigo-tf
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-costmap-2d
+	depends = eigen3
+	source = clear_costmap_recovery::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/clear_costmap_recovery/1.11.11-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-clear-costmap-recovery
+
