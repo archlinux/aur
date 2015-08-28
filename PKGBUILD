@@ -23,7 +23,7 @@ fi
 package() {
   # Extract the proper package
   ar p greenpak-designer-dev_${pkgver}-${pkgrel}_${_arch}.deb data.tar.gz | \
-    tar -xz --exclude="usr/share/lintian" -C "${pkgdir}"/
+    tar -xz --exclude="usr/share/doc-base" --exclude="usr/share/lintian" -C "${pkgdir}"/
 
   # Shuffle some files
   mv "${pkgdir}"/lib/* "${pkgdir}"/usr/lib/
