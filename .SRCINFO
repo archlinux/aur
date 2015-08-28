@@ -1,6 +1,6 @@
 pkgbase = purple-facebook
 	pkgdesc = Facebook Messenger protocol into pidgin, finch, and libpurple
-	pkgver = 16
+	pkgver = 17
 	pkgrel = 1
 	url = https://github.com/jgeboski/purple-facebook
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = purple-facebook
 	makedepends = make
 	depends = libpurple
 	depends = json-glib
-	source = https://github.com/jgeboski/purple-facebook/releases/download/5727ffb502c7/purple-facebook-5727ffb502c7.tar.gz
-	md5sums = cfa70d0387784c9b1701da25cbd2ae97
+	source = https://github.com/jgeboski/purple-facebook/releases/download/6a0a79182ebc/purple-facebook-6a0a79182ebc.tar.gz
+	md5sums = 5bac236bd4093b5ee7251430b1a83c36
 
 pkgname = purple-facebook
 
