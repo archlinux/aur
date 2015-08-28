@@ -1,5 +1,4 @@
 pkgbase = deadbeef-plugin-infobar-ng-hg
-	pkgdesc = The Infobar-ng plugin for the DeaDBeeF audio player
 	pkgver = 180
 	pkgrel = 1
 	url = https://bitbucket.org/IgnatLoskutov/deadbeef-infobar-ng
@@ -9,10 +8,12 @@ pkgbase = deadbeef-plugin-infobar-ng-hg
 	makedepends = mercurial
 	depends = deadbeef>=0.6,
 	depends = libxml2
-	source = hg+https://IgnatLoskutov@bitbucket.org/IgnatLoskutov/deadbeef-infobar-ng
+	source = hg+https://bitbucket.org/IgnatLoskutov/deadbeef-infobar-ng
 	md5sums = SKIP
 
 pkgname = deadbeef-plugin-infobar-ng-gtk2-hg
+	pkgdesc = The Infobar-ng plugin for the DeaDBeeF audio player. The GTK2 version.
 
 pkgname = deadbeef-plugin-infobar-ng-gtk3-hg
+	pkgdesc = The Infobar-ng plugin for the DeaDBeeF audio player. The GTK3 version.
 
