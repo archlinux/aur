@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname/build"
+  cd "$srcdir/build"
   make DESTDIR="$pkgdir/" install
 # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.sxemacs}
