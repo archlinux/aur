@@ -6,7 +6,7 @@ pkgdesc='Simple and easy to use game server browser'
 arch=('any')
 url='http://github.com/obozrenie'
 license=('GPL3')
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'glib' 'gvfs' 'python-gobject'
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'gvfs' 'python-gobject'
          'python-pytoml' 'python-xdg' 'gtk3' 'python-beautifulsoup4'
          'python-xmltodict' 'qstat')
 makedepends=('git' 'python-setuptools')

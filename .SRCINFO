@@ -10,7 +10,6 @@ pkgbase = obozrenie-git
 	makedepends = python-setuptools
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	depends = glib
 	depends = gvfs
 	depends = python-gobject
 	depends = python-pytoml
