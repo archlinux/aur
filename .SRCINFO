@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-pano-core
+	pkgdesc = ROS - Library for the opencv-based panorama stitching algorithm.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://ros.org/wiki/pano_core
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-cv-bridge
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-cv-bridge
+	source = pano_core::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/pano_core/2.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-pano-core
+
