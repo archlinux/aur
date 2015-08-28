@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-turtlebot-rapps
+	pkgdesc = ROS - The core set of turtlebot app manager apps are defined in this package.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_rapps
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-world-canvas-server
+	depends = ros-indigo-robot-pose-publisher
+	depends = ros-indigo-tf
+	depends = ros-indigo-compressed-image-transport
+	depends = ros-indigo-turtlebot-teleop
+	depends = ros-indigo-turtlebot-panorama
+	depends = ros-indigo-turtlebot-follower
+	depends = ros-indigo-turtlebot-bringup
+	depends = ros-indigo-topic-tools
+	depends = ros-indigo-warehouse-ros
+	depends = ros-indigo-turtlebot-navigation
+	depends = ros-indigo-kobuki-auto-docking
+	source = turtlebot_rapps::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/turtlebot_rapps/2.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-rapps
+
