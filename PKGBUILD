@@ -1,9 +1,8 @@
 # Maintainer: Ari Mizrahi <codemunchies at debugsecurity dot com>
-# Contributor: ArchAssault Project <https://www.archassault.org>
 
 pkgname=peepdf
 pkgver=svn
-pkgrel=4
+pkgrel=5
 pkgdesc="A python tool to explore PDF files in order to find out if the file can be harmful or not"
 arch=('any')
 url=('http://code.google.com/p/peepdf/')
@@ -30,8 +29,7 @@ package() {
 
   cat > "$pkgdir/usr/bin/peepdf" <<EOF
 #!/bin/sh
-cd /usr/share/peepdf
-python2 peepdf.py "\$@"
+exec python2 /usr/share/peepdf/peepdf.py "\$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/peepdf"
