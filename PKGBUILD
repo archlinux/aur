@@ -1,7 +1,7 @@
 # Maintainer: ant32 <antreimer@gmail.com>
 _qt_module=qtserialport
 pkgname="mingw-w64-qt5-serialport"
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 arch=('any')
 pkgdesc="Qt5 for Windows -- QtSerialPort module (mingw-w64)"
@@ -11,8 +11,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('LGPL')
 url="http://qt-project.org/wiki/QtSerialPort"
 _pkgfqn="${_qt_module}-opensource-src-$pkgver"
-source=("http://download.qt-project.org/official_releases/qt/5.4/$pkgver/submodules/qtserialport-opensource-src-$pkgver.tar.xz")
-md5sums=('546a62eee89722081b7ec13d72469772')
+source=("http://download.qt-project.org/official_releases/qt/5.5/$pkgver/submodules/qtserialport-opensource-src-$pkgver.tar.xz")
+md5sums=('8a76f051ed28a9c925d32f5864d33e78')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

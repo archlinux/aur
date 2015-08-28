@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-serialport
 	pkgdesc = Qt5 for Windows -- QtSerialPort module (mingw-w64)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://qt-project.org/wiki/QtSerialPort
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-qt5-serialport
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtserialport-opensource-src-5.4.2.tar.xz
-	md5sums = 546a62eee89722081b7ec13d72469772
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qtserialport-opensource-src-5.5.0.tar.xz
+	md5sums = 8a76f051ed28a9c925d32f5864d33e78
 
 pkgname = mingw-w64-qt5-serialport
 
