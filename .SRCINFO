@@ -7,6 +7,7 @@ pkgbase = nq-git
 	arch = x86_64
 	license = GPL
 	makedepends = make
+	conflicts = nq
 	source = nq-git::git+https://github.com/chneukirchen/nq.git
 	md5sums = SKIP
 
