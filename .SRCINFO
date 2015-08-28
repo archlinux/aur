@@ -1,0 +1,26 @@
+pkgbase = obozrenie-git
+	pkgdesc = Simple and easy to use game server browser
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/obozrenie
+	install = obozrenie.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = desktop-file-utils
+	depends = glib-networking
+	depends = gvfs
+	depends = hicolor-icon-theme
+	depends = python-gobject
+	depends = python-xdg
+	depends = python-pytoml
+	depends = qstat
+	optdepends = python-pygeoip: for geolocation support
+	provides = obozrenie
+	conflicts = obozrenie
+	source = git+https://github.com/obozrenie/obozrenie.git
+	sha256sums = SKIP
+
+pkgname = obozrenie-git
+
