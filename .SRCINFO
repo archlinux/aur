@@ -1,0 +1,27 @@
+pkgbase = avr-gcc-atmel
+	pkgdesc = The GNU AVR Compiler Collection
+	pkgver = 4.8.1
+	pkgrel = 1
+	url = http://www.atmel.com/tools/ATMELAVRTOOLCHAINFORLINUX.aspx
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = avr-binutils-atmel>=2.24
+	depends = gcc-libs>=4.8.0
+	depends = libmpc
+	optdepends = avr-libc: Standard C library for Atmel AVR development
+	provides = gcc-avr=4.8.1
+	conflicts = gcc-avr
+	options = staticlibs
+	options = !emptydirs
+	options = !strip
+	source = http://distribute.atmel.no/tools/opensource/Atmel-AVR-GNU-Toolchain/3.4.4/avr-gcc-4.8.1.tar.bz2
+	source = bugfix60486.patch
+	md5sums = e51124e20405c7598f9a01fb460f33e5
+	md5sums = 01714fbab726728fae37d1ea866e1384
+
+pkgname = avr-gcc-atmel
+
