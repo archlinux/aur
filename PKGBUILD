@@ -1,7 +1,7 @@
 # Maintainer: Tomas Ostasevicius <t dot ostasevicius at gmail dot com>
 pkgname=hyperspy-git
 _gitname=hyperspy
-pkgver=v0.8.72.gb053fd4
+pkgver=v0.8.2.r46.g8fe6966
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --tags | sed 's/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
