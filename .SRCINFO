@@ -1,0 +1,17 @@
+pkgbase = hpfall-git
+	pkgdesc = Disk protection for HP machines.
+	pkgver = r5.be24a8b
+	pkgrel = 1
+	url = https://github.com/srijan/hpfall.git
+	arch = x86_64
+	arch = i686
+	makedepends = git
+	source = hpfall-git::git://github.com/srijan/hpfall.git
+	source = log_to_syslog.patch
+	source = hpfall.service
+	md5sums = SKIP
+	md5sums = 3a6a193021fe5f3078f97b8c2a4c8538
+	md5sums = ac946477d1996e68fa63792829fd8a97
+
+pkgname = hpfall-git
+
