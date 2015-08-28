@@ -1,19 +1,14 @@
 # Maintainer: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
 pkgname=git-town
-pkgver=0.6.63
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A git extension for generic high-level git workflow support"
 url="https://github.com/Originate/git-town"
 arch=('x86_64' 'i686')
 license=('MIT')
 depends=('bash' 'git' 'dialog')
-source=("$pkgname"::'git://github.com/Originate/git-town#branch=master')
+source=("$pkgname"::'git://github.com/Originate/git-town#tag=v0.7.1')
 md5sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/$pkgname"
-      git describe --tags --abbrev=12 | sed -e 's:v::' -e 's/-/./g'
-}
 
 package() {
   cd "$srcdir/$pkgname"
