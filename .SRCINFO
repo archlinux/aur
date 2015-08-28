@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-world-canvas-msgs
+	pkgdesc = ROS - World canvas framework messages package.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://ros.org/wiki/world_canvas_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-uuid-msgs
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-uuid-msgs
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-geometry-msgs
+	source = world_canvas_msgs::git+https://github.com/corot/world_canvas_msgs-release.git#tag=release/indigo/world_canvas_msgs/0.1.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-world-canvas-msgs
+
