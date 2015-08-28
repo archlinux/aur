@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgbase=uzbl-next-git
-pkgrel=2
+pkgrel=1
 pkgname=('uzbl-core-next-git' 'uzbl-browser-next-git' 'uzbl-tabbed-next-git')
-pkgver=2012.05.14.1154.g35db169
+pkgver=2012.05.14.1188.g581fbed
 arch=('i686' 'x86_64')
 url="http://www.uzbl.org"
 license=('GPL3')
@@ -57,6 +57,7 @@ package_uzbl-browser-next-git() {
 					'python' 'python2' 'webkitgtk')
   provides=('uzbl-browser')
   conflicts=('uzbl-browser')
+  install -d $pkgdir/usr/share/appdata
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir/" PREFIX=/usr install install-uzbl-browser
 }
