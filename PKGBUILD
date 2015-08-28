@@ -1,10 +1,10 @@
-# Contributor: VargArch <roels.jorick@gmail.com>
+# Maintainer: VargArch <roels.jorick@gmail.com>
 # Contributor: zsrkmyn
 # Contributor: marsam
 
 pkgname=universal-ctags-git
 _gitname=ctags
-pkgver=0.r2366.2ead2d5
+pkgver=0.r2625.dc8e349
 pkgrel=1
 pkgdesc="multilanguage reimplementation of the Unix ctags utility"
 arch=('i686' 'x86_64')
