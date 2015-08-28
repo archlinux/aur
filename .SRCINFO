@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-opencv-apps
+	pkgdesc = ROS - The opencv_apps package, most of code is taken from https://github.com/Itseez/opencv/tree/master/samples/cpp.
+	pkgver = 1.11.8
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-cv-bridge
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-cv-bridge
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-dynamic-reconfigure
+	source = opencv_apps::git+https://github.com/ros-gbp/vision_opencv-release.git#tag=release/indigo/opencv_apps/1.11.8-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-opencv-apps
+
