@@ -1,0 +1,21 @@
+pkgbase = rtorrent-git
+	pkgdesc = A ncurses BitTorrent client written in C++, based on the libTorrent libraries for Unix.
+	pkgver = 0.9.4.r90.gd4905d5
+	pkgrel = 1
+	url = http://libtorrent.rakshasa.no
+	install = rtorrent-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cppunit
+	depends = curl
+	depends = libtorrent-git
+	depends = xmlrpc-c
+	provides = rtorrent
+	conflicts = rtorrent
+	source = rtorrent-git::git+https://github.com/rakshasa/rtorrent.git
+	md5sums = SKIP
+
+pkgname = rtorrent-git
+
