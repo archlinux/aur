@@ -331,9 +331,6 @@ fi
               set -u
               source '../PKGBUILD'
               set -u
-              local _verurl="${_verwatch[0]}"
-              local _versed="${_verwatch[1]}"
-              local _veropt="${_verwatch[2]}"
               # http://stackoverflow.com/questions/1881237/easiest-way-to-extract-the-urls-from-an-html-page-using-sed-or-awk-only
               # A real getlinks would use an html decoder and not sed+grep.
               # $1: l get link href (default), t get link text, f FTP listing or other no html
@@ -348,9 +345,9 @@ fi
               # Return sorted list of all version numbers available
               local _var_has_vercheck=0
               declare -f -F _vercheck >/dev/null && _var_has_vercheck=1 || _vercheck() {
-                local _versed2="${_versed//:/\\:}" # Escape the two things that the PKGBUILD is not permitted to do
+                local _versed2="${_verwatch[1]//:/\\:}" # Escape the two things that the PKGBUILD is not permitted to do
                 _versed2="${_versed2//$/\\$}" # End of line (though sed doesn't seem to require this), and end of search
-                curl -s -l "${_verurl}" | _getlinks "${_veropt}" | sed -ne "s:^${_versed2}"'$:\1:p' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
+                curl -s -l "${_verwatch[0]}" | _getlinks "${_verwatch[2]}" | sed -ne "s:^${_versed2}"'$:\1:p' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
               }
               # Polling is better than version announcements. Everyone's poll cron time will be different. An announcement would generate an immediate traffic rush.
               # _vercheck and _verscan depend only on pacman, coreutils, sed, and grep
@@ -375,8 +372,8 @@ fi
                 [ "$2" -eq 1 ] && echo "${_rvfile}"
                 return ${_rv}
               }
-              # It's assumed the PKGBUILD has provided all the right variables if a _vercheck() is provided. Some _vercheck don't use variables.
-              if [ "${_var_has_vercheck}" -ne 0 ] || [ ! -z "${_verurl:-}" -a ! -z "${_veropt:-}" -a ! -z "${_versed:-}" ]; then
+              # If _vercheck is provided then the PKGBUILD is expected to do it's own thing. If _getlinks is used then the watch must still be provided.
+              if [ "${_var_has_vercheck}" -ne 0 ] || [ ! -z "${_verwatch:-}" ]; then
                 set -u
                 _verscan 0 1
               fi
