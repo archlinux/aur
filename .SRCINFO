@@ -1,0 +1,15 @@
+pkgbase = pg-bsd-indent
+	pkgdesc = BSD indent (patched for postgresql)
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://www.postgresql.org/
+	arch = i686
+	arch = x86_64
+	license = custom:PostgreSQL
+	conflicts = indent
+	source = ftp://ftp.postgresql.org/pub/dev/pg_bsd_indent-1.3.tar.gz
+	md5sums = eab7754395c491a8205bfc21765b9709
+	sha256sums = f827b3cd7f36ab723bfdbacb46b9a9cac8cd2d8a2ed8a559a1b45bee6ab2f352
+
+pkgname = pg-bsd-indent
+
