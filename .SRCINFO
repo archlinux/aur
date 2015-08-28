@@ -1,0 +1,14 @@
+pkgbase = texlive-ufsc-thesis
+	pkgdesc = LaTeX class for Federal University of Santa Catarina (UFSC) theses
+	pkgver = 20140729
+	pkgrel = 1
+	url = http://portal.bu.ufsc.br/normas-e-procedimentos/normalizacao/
+	install = texlive-ufsc-thesis.install
+	arch = any
+	license = GPL
+	depends = abntex
+	source = http://sbu.paginas.ufsc.br/files/2011/03/modelo.zip
+	sha512sums = d47cf0e0ebfeb066284838b578a646e7ae22e836c74b7f56562a4787e7f97a1b31f0412c411df4c766eb2a6179c1ba39a7f7dc55f7023d94e938d91a87bd305b
+
+pkgname = texlive-ufsc-thesis
+
