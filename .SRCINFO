@@ -1,0 +1,19 @@
+pkgbase = avr-libc-atmel
+	pkgdesc = The C runtime library for the AVR family of microcontrollers
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://www.atmel.com/tools/ATMELAVRTOOLCHAINFORLINUX.aspx
+	arch = x86_64
+	arch = i686
+	license = BSD
+	license = custom
+	depends = avr-gcc-atmel
+	provides = avr-libc=1.8.0
+	conflicts = avr-libc
+	options = !strip
+	options = staticlibs
+	source = http://distribute.atmel.no/tools/opensource/Atmel-AVR-GNU-Toolchain/3.4.4/avr-libc-1.8.0.tar.bz2
+	md5sums = 9afc252d6457957622909af9f197abe8
+
+pkgname = avr-libc-atmel
+
