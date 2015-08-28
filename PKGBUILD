@@ -6,8 +6,9 @@ pkgdesc='Simple and easy to use game server browser'
 arch=('any')
 url='http://github.com/obozrenie'
 license=('GPL3')
-depends=('desktop-file-utils' 'glib-networking' 'gvfs' 'hicolor-icon-theme'
-         'python-gobject' 'python-xdg' 'python-pytoml' 'qstat')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'glib' 'gvfs' 'python-gobject'
+         'python-pytoml' 'python-xdg' 'python-beautifulsoup4' 'python-xmltodict'
+         'qstat')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-pygeoip: for geolocation support')
 provides=('obozrenie')
