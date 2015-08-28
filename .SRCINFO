@@ -1,7 +1,7 @@
 pkgbase = roccat-tools-full
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 3.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://roccat.sourceforge.net
 	install = roccat-tools.install
 	arch = i686
@@ -20,9 +20,7 @@ pkgbase = roccat-tools-full
 	conflicts = roccat-tools-common
 	replaces = roccat-tools-common
 	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.6.1.tar.bz2
-	source = udev-compilation-error-fix.patch
 	sha1sums = 3eab9a07dd586eb6c1648b060f36b4592525416b
-	sha1sums = d31ad74bf91628f21415a631ec0f57b707266d0f
 
 pkgname = roccat-tools-full
 
