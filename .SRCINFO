@@ -1,7 +1,7 @@
 pkgbase = urbackup-client
 	pkgdesc = Client Server backup system
 	pkgver = 1.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.urbackup.org/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = urbackup-client
 	depends = wxgtk
 	depends = crypto++
 	conflicts = urbackup-client-no-gui
-	source = http://sourceforge.net/projects/urbackup/files/Client/1.4.9/urbackup-client-1.4.9.tar.gz/download
+	source = http://downloads.sourceforge.net/project/urbackup/Client/1.4.9/urbackup-client-1.4.9.tar.gz
 	source = urbackup-client.service
 	md5sums = 2a90414f56d2c399788aea9e313bc747
 	md5sums = 1eb3db6d0e3bf40976bf7058290c62e1

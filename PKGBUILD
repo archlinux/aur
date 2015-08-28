@@ -2,7 +2,7 @@
 # Contributor: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup-client
 pkgver=1.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=("i686" "x86_64")
 url="http://www.urbackup.org/"
@@ -10,7 +10,7 @@ license=("GPL")
 makedepends=('gcc-libs' 'gcc' 'make')
 depends=('wxgtk' 'crypto++')
 conflicts=('urbackup-client-no-gui')
-source=("http://sourceforge.net/projects/urbackup/files/Client/${pkgver}/urbackup-client-${pkgver}.tar.gz/download"
+source=("http://downloads.sourceforge.net/project/urbackup/Client/${pkgver}/urbackup-client-${pkgver}.tar.gz"
         'urbackup-client.service')
 
 md5sums=('2a90414f56d2c399788aea9e313bc747'
