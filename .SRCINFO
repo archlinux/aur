@@ -1,0 +1,24 @@
+pkgbase = gpaste-daemon
+	pkgdesc = A clipboard management daemon
+	pkgver = 3.16.2.1
+	pkgrel = 1
+	url = http://www.imagination-land.org/tags/GPaste.html
+	install = gpaste-daemon.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = gtk3
+	depends = systemd
+	depends = xcb-util-keysyms
+	provides = gpaste
+	conflicts = cinnamon-extension-gpaste
+	conflicts = gpaste
+	options = !emptydirs
+	options = !libtool
+	source = http://www.imagination-land.org/files/gpaste/gpaste-3.16.2.1.tar.xz
+	md5sums = 935b66abf61e1a0d6385acdbecbb8134
+
+pkgname = gpaste-daemon
+
