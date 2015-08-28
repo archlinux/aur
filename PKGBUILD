@@ -7,7 +7,7 @@ pkgname='ros-indigo-costmap-2d'
 pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf
@@ -50,7 +50,7 @@ ros_depends=(ros-indigo-tf
   ros-indigo-dynamic-reconfigure
   ros-indigo-message-filters
   ros-indigo-pluginlib)
-depends=(${ros_depends[@]} jsoncpp-cs)
+depends=(${ros_depends[@]} jsoncpp)
 
 _tag=release/indigo/costmap_2d/${pkgver}-${_pkgver_patch}
 _dir=costmap_2d
