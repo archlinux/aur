@@ -1,7 +1,7 @@
 pkgbase = weplab
 	pkgdesc = A WEP encryption cracker
 	pkgver = 0.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/weplab
 	arch = x86_64
 	arch = i686
