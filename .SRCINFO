@@ -1,7 +1,7 @@
 pkgbase = gnustep-gui-clang-svn
 	pkgdesc = The GNUstep GUI class library, using Clang
 	pkgver = r38298
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.gnustep.org/
 	arch = i686
@@ -34,7 +34,6 @@ pkgbase = gnustep-gui-clang-svn
 	depends_x86_64 = lib32-libjpeg-turbo
 	depends_x86_64 = lib32-libpng
 	depends_x86_64 = lib32-giflib
-	depends_x86_64 = lib32-aspell
 	depends_x86_64 = lib32-libsndfile
 	depends_x86_64 = lib32-libao
 	depends_x86_64 = lib32-libcups
