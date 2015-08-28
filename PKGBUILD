@@ -3,7 +3,7 @@ pkgname=madsonic
 pkgver=5.1.5240
 pkgvera=5.1
 pkgdate=20150506
-pkgrel=2
+pkgrel=3
 pkgdesc="Madsonic Mashup Mod is a fork of the Subsonic 4.8 Server Build 3436 with some Subsonic Data schema modifications!"
 arch=('i686' 'x86_64')
 url="http://madsonic.org/"
@@ -16,6 +16,7 @@ source=(http://madsonic.org/download/${pkgvera}/${pkgdate}_${pkgname}-${pkgver}-
 'madsonic.conf')
 backup=('var/madsonic/db' 'var/madsonic/madsonic.sh')
 install=$pkgname.install
+changelog=CHANGELOG
  
 package() {
   cd ${srcdir}
