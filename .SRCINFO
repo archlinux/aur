@@ -1,0 +1,40 @@
+pkgbase = ros-indigo-navfn
+	pkgdesc = ROS - navfn provides a fast interpolated navigation function that can be used to create plans for a mobile base.
+	pkgver = 1.11.11
+	pkgrel = 1
+	url = http://wiki.ros.org/navfn
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nav-core
+	makedepends = ros-indigo-pcl-ros
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-costmap-2d
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-pcl-conversions
+	makedepends = ros-indigo-visualization-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-nav-msgs
+	makedepends = ros-indigo-pluginlib
+	makedepends = netpbm
+	depends = ros-indigo-nav-core
+	depends = ros-indigo-pcl-ros
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-costmap-2d
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-pcl-conversions
+	depends = ros-indigo-visualization-msgs
+	depends = ros-indigo-tf
+	depends = ros-indigo-nav-msgs
+	depends = ros-indigo-pluginlib
+	source = navfn::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/navfn/1.11.11-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-navfn
+
