@@ -1,0 +1,15 @@
+pkgbase = colormake-git
+	pkgdesc = A simple wrapper around make to make it's output more readable
+	pkgver = r33.05688ab
+	pkgrel = 1
+	url = https://github.com/pagekite/Colormake
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = perl
+	source = colormake-git::git+https://github.com/pagekite/Colormake.git
+	md5sums = SKIP
+
+pkgname = colormake-git
+
