@@ -2,8 +2,8 @@
 # Contributor: Tom Kuther <gimpel@sonnenkinder.org>
 
 pkgname=snapper
-pkgver=0.2.6
-pkgrel=2
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('i686' 'x86_64')
 url="http://snapper.io"
@@ -16,11 +16,6 @@ source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # boost fixlets - Arch doesn't use -mt suffix
-  sed -e 's@lboost_thread-mt@lboost_thread@g' \
-      -e 's@lboost_system-mt@lboost_system@g' \
-      -i snapper/Makefile.am
 
   # cron names
   sed -e 's@suse.de-snapper@snapper@g' -i scripts/Makefile.am
@@ -63,17 +58,6 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm644 data/sysconfig.snapper \
     "$pkgdir"/etc/conf.d/snapper
-  install -Dm755 client/.libs/systemd-helper \
-    "$pkgdir"/usr/lib/snapper/systemd-helper
-
-  rm -f "$pkgdir"/etc/snapper/zypp-plugin.conf
-  rm -f "$pkgdir"/usr/share/man/man*/snapper-zypp-plugin.*.gz
-
-  cd data
-  for unit in {cleanup,timeline}.{timer,service}; do
-    install -Dm644 $unit \
-      "$pkgdir"/usr/lib/systemd/system/snapper-$unit
-  done
 }
 
-sha256sums=('3390650be0e4709595d28df287a0e5902fb570e9fcb5ba992f435326bc53b75e')
+sha256sums=('a44608648ed21a1346f8ae9345044901c39ad01abb501806a22c9d4a771eadc5')
