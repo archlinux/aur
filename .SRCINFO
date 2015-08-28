@@ -1,0 +1,17 @@
+pkgbase = snake-ncurses
+	pkgdesc = snake game clone written in C and ncurses
+	pkgver = 8.7
+	pkgrel = 1
+	url = https://github.com/FedeDP/Snake
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = GPL3
+	depends = ncurses
+	source = snake.c
+	source = makefile
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = snake-ncurses
+
