@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-the-fox-only-better-git
 	pkgdesc = A Firefox add-on to improve the feeling of using the new Australis theme.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/Quicksaver/The-Fox--Only-Better
 	arch = any
