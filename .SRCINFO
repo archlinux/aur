@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-world-canvas-utils
+	pkgdesc = ROS - C++/Python utilities library for the world canvas framework.
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = http://ros.org/wiki/world_canvas_utils
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslib
+	makedepends = ros-indigo-world-canvas-msgs
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-roslib
+	depends = ros-indigo-world-canvas-msgs
+	depends = ros-indigo-rospy
+	source = world_canvas_utils::git+https://github.com/corot/world_canvas_libs-release.git#tag=release/indigo/world_canvas_utils/0.1.0-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-world-canvas-utils
+
