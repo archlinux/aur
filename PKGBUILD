@@ -13,9 +13,7 @@ url="https://github.com/skoobe/${_pkgname}"
 license=('GPL3')
 depends=('fuse' 'glib2' 'libevent' 'libxml2' 'openssl')
 makedepends=('pkg-config' 'git')
-_verurl="${url}/releases"
-_versed="${url#*github.com}/archive/v\(.*\)\.tar\.gz" # used with ^...$
-_veropt='l'
+_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 source=("${_srcdir}::git+${url}.git") # #commit=${pkgver##*.g}
 sha256sums=('SKIP')
 conflicts="${_pkgname}"
