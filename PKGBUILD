@@ -1,5 +1,5 @@
 pkgname=kf5-doc-qch
-pkgver=5.12
+pkgver=5.13
 pkgrel=1
 conflicts=('frameworks5-doc-qch')
 replaces=('frameworks5-doc-qch')
@@ -8,7 +8,7 @@ arch=('any')
 url='http://api.kde.org/'
 license=('FDL')
 source=("http://api.kde.org/qch/frameworks5-frameworks.qch")
-md5sums=('f8e3757a63f54af3d7cebce08cc8a1a2')
+md5sums=('61f1678041519d85fd64ad88eae01f72')
 
 package() {
     mkdir -p "$pkgdir/usr/share/doc/qt"
