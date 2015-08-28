@@ -1,0 +1,16 @@
+pkgbase = meocloud-cli
+	pkgdesc = Cloud storage service and file synchronization service, command line
+	pkgver = 0.2.29beta
+	pkgrel = 1
+	url = https://meocloud.pt
+	arch = x86_64
+	license = custom
+	options = !strip
+	options = !upx
+	source = https://meocloud.pt/binaries/linux/x86_64/meocloud-0.2.29beta_x86_64.tar.gz
+	source = TOS.txt
+	sha256sums = 577236de621f5bab7325bc8e89fcc895a8452a3bf1a4e1bc6353cc36cb46c9e0
+	sha256sums = 240ca45ba26f1a9df5b277d9b51e2b53a152a9c20c74e6b965e4a60d965fce0f
+
+pkgname = meocloud-cli
+
