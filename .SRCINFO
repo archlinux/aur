@@ -1,0 +1,14 @@
+pkgbase = mplus-font
+	pkgdesc = M+ Japanese bitmap fonts
+	pkgver = 2.2.4
+	pkgrel = 2
+	url = http://mplus-fonts.sourceforge.jp/
+	install = mplus-font.install
+	arch = any
+	license = custom
+	depends = xorg-xset
+	source = http://osdn.dl.sourceforge.jp/mplus-fonts/5030/mplus_bitmap_fonts-2.2.4.tar.gz
+	md5sums = a97a99acbee54976407dec828d03850c
+
+pkgname = mplus-font
+
