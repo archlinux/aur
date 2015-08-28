@@ -1,0 +1,17 @@
+pkgbase = dclock
+	pkgdesc = Digital clock for X
+	pkgver = 2.2.2
+	pkgrel = 5
+	url = http://opencircuitdesign.com/~tim/programs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libxft
+	depends = libxt
+	depends = libxext
+	source = http://ftp.de.debian.org/debian/pool/main/d/dclock/dclock_2.2.2.orig.tar.gz
+	md5sums = 2e9cd689201a62d4a15daf93e45a4e3b
+
+pkgname = dclock
+
