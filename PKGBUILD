@@ -6,7 +6,7 @@ _build_gnome_help="no" # yes|no
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.3.r1572.gdfc61ce
+pkgver=2.3.r1575.g7aa6796
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
