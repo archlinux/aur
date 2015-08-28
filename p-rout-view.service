@@ -1,0 +1,13 @@
+[Unit]
+Description=P-rout-view Daemon
+Requires=postgresql.service
+After=network.target postgresql.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/p-rout/p-rout-view.pid
+ExecStart=/usr/bin/p-rout-view.scm
+ExecStopPost=/bin/rm -f /var/run/p-rout/p-rout-view.pid
+
+[Install]
+WantedBy=multi-user.target

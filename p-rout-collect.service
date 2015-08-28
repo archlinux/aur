@@ -1,0 +1,13 @@
+[Unit]
+Description=P-rout-collect Daemon
+Requires=postgresql.service
+After=network.target postgresql.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/p-rout/p-rout-collect.pid
+ExecStart=/usr/bin/p-rout-collect.scm
+ExecStopPost=/bin/rm -f /var/run/p-rout/p-rout-collect.pid
+
+[Install]
+WantedBy=multi-user.target
