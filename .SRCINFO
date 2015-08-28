@@ -17,9 +17,7 @@ pkgbase = roccat-tools
 	depends = libgudev
 	optdepends = kmod-roccat: Adds support for the old kone device.
 	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.6.1.tar.bz2
-	source = udev-compilation-error-fix.patch
 	md5sums = a37dfbe7ea06519924aede890047cf6c
-	md5sums = 414d6306796c659a3adc86ef213e3569
 
 pkgname = roccat-tools-common
 	pkgdesc = ROCCAT tools common files

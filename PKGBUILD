@@ -35,18 +35,12 @@ depends=('libgaminggear=0.11.1' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-gl
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
 conflicts=
-source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
-        'udev-compilation-error-fix.patch')
+source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('a37dfbe7ea06519924aede890047cf6c'
-         '414d6306796c659a3adc86ef213e3569')
+md5sums=('a37dfbe7ea06519924aede890047cf6c')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
-
-  # See here for more detail and progress on this:
-  # https://sourceforge.net/p/roccat/bugs/51/
-  patch -p1 -i ../udev-compilation-error-fix.patch
 
   cmake \
 	-DCMAKE_INSTALL_PREFIX=/usr \
