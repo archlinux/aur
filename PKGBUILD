@@ -7,7 +7,7 @@
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
 pkgname=calibre-git
-pkgver=2.31.0.r80.gf7d246f
+pkgver=2.36.0.r5.g1654895
 pkgrel=1
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
@@ -25,8 +25,10 @@ optdepends=('ipython2: to use calibre-debug'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=calibre.install
-source=("git://github.com/kovidgoyal/${pkgname%-git}.git")
-md5sums=('SKIP')
+source=("git://github.com/kovidgoyal/${pkgname%-git}.git"
+        "git://github.com/kovidgoyal/${pkgname%-git}-translations.git")
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -36,23 +38,18 @@ pkgver() {
 prepare(){
   cd "${srcdir}/${pkgname%-git}"
 
-  sed -i "s/shlex.split(ldflags)/& + ['-fPIC']/" setup/extensions.py
-
-  # Use python2
-  sed -i 's:\(env[ ]\+python$\|/usr/bin/python$\):\12:g' $(find . -regex ".*\.py\|.*\.recipe")
+  # Link translations to build dir
+  ln -sfT ../calibre-translations translations
 
   # Desktop integration (e.g. enforce arch defaults)
+  # Use uppercase naming scheme, don't create uninstaller.
+  # xdg *cannot* be kludged into installing mime or desktop files properly.
   sed -e "/self.create_uninstaller()/,/os.rmdir(config_dir)/d" \
-      -e "/\(cc('xdg-icon-resource\|self.icon_resources.append\|'128'))\)/d" \
-      -e "/render_img/ s/\('calibre-.*\.png'\)/os.path.join(dir, \1)/g" \
-      -e "/dir, 'calibre-lrf.png'/i \
-\                dir = os.path.join(self.opts.staging_sharedir,'../pixmaps')\n\
-\                os.mkdir(dir)" \
       -e "/f = open/ s/\('calibre-.*\.desktop'\)/os.path.join(dir, \1)/g" \
       -e "/dir, 'calibre-lrfviewer.desktop'/i \
 \                dir = os.path.join(self.opts.staging_sharedir,'../applications')\n\
 \                os.mkdir(dir)" \
-      -e "s/'ctc-posml'/'text' not in mt and 'pdf' not in mt and 'xhtml'/" \
+      -e "s/xdg-\(desktop-menu\|mime\)/true/g" \
       -e "s/^Name=calibre/Name=Calibre/g" \
       -i  src/calibre/linux.py
 }
@@ -60,26 +57,33 @@ prepare(){
 build() {
   cd "${srcdir}/${pkgname%-git}"
 
-  LANG='en_US.UTF-8' python2 setup.py build
-  # LANG='en_US.UTF-8' python2 setup.py resources
+  # Don't use the bootstrapper, since it tries to checkout/pull
+  # the translations repo. Instead call each subcommand.
+  # LANG='en_US.UTF-8' python2 setup.py bootstrap
 
-  # Don't build translations since building them is broken badly
-  #LANG='en_US.UTF-8' python2 setup.py translations
+  LANG='en_US.UTF-8' python2 setup.py build
+  LANG='en_US.UTF-8' python2 setup.py iso639
+  LANG='en_US.UTF-8' python2 setup.py iso3166
+  LANG='en_US.UTF-8' python2 setup.py translations
+  LANG='en_US.UTF-8' python2 setup.py gui
+  LANG='en_US.UTF-8' python2 setup.py resources
 }
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
 
-  # Fix the environment module location
-  sed -i -e "s|(prefix=.*)|(prefix='$pkgdir/usr')|g" setup/install.py
 
-  install -d "${pkgdir}/usr/lib/python2.7/site-packages" \
-             "${pkgdir}/usr/share/zsh/site-functions"
+  # If these directories don't exist, zsh completion and icons won't install.
+  install -d "${pkgdir}/usr/share/zsh/site-functions" \
+      "${pkgdir}"/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/{mimetypes,apps}
 
-  LANG='en_US.UTF-8' python2 setup.py install --root="${pkgdir}" --prefix=/usr \
-    --staging-bindir="${pkgdir}/usr/bin" \
-    --staging-libdir="${pkgdir}/usr/lib" \
-    --staging-sharedir="${pkgdir}/usr/share"
+  XDG_DATA_DIRS="${pkgdir}/usr/share" LANG='en_US.UTF-8' python2 setup.py install \
+    --staging-root="${pkgdir}/usr" --prefix=/usr
+
+  install -Dm644 resources/calibre-mimetypes.xml "${pkgdir}/usr/share/mime/packages/calibre-mimetypes.xml"
+
+  sed -i "/numeric_version = .*/c\numeric_version = ('""${pkgver//./\', \'}""')" \
+      "${pkgdir}/usr/lib/calibre/calibre/constants.py"
 
   # Compiling bytecode FS#33392
   python2 -m compileall "${pkgdir}/usr/lib/calibre/"

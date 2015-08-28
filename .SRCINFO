@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application, from git
-	pkgver = 2.31.0.r80.gf7d246f
+	pkgver = 2.36.0.r5.g1654895
 	pkgrel = 1
 	url = http://calibre-ebook.com/
 	install = calibre.install
@@ -41,6 +41,8 @@ pkgbase = calibre-git
 	provides = calibre
 	conflicts = calibre
 	source = git://github.com/kovidgoyal/calibre.git
+	source = git://github.com/kovidgoyal/calibre-translations.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = calibre-git
