@@ -1,0 +1,13 @@
+pkgbase = qtcreator-cppcheck-plugin
+	pkgdesc = Qt Creator Cppcheck integration plugin
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://downloads.sourceforge.net/project/qtc-cppcheck/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = qtcreator=3.5.0
+	depends = cppcheck
+
+pkgname = qtcreator-cppcheck-plugin
+
