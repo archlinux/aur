@@ -35,7 +35,7 @@ replaces=('unity3d')
 install="${pkgname}.install"
 source=("http://download.unity3d.com/download_unity/unity-editor-installer-${pkgver}.sh"
         "https://unity3d.com/legal/eula"
-        'unity3d'
+        'unity-editor'
         'monodevelop-unity')
 noextract=("unity-editor-installer-${pkgver}.sh")
 sha256sums=('bf73e7693ae15b271dbbd55010eb33fae3400b964fa4b70289bd5a17d19d5493'
@@ -64,7 +64,7 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${extraction_dir}/unity-editor-icon.png"
   install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps" "${extraction_dir}/unity-monodevelop.png"
 
-  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity3d"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity-editor"
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/monodevelop-unity"
 
   install -Dm644 "${srcdir}/eula" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

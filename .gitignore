@@ -2,6 +2,6 @@
 !.gitignore
 !PKGBUILD
 !*.install
-!unity3d
+!unity-editor
 !monodevelop-unity
 !.SRCINFO
