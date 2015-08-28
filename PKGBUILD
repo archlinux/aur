@@ -1,6 +1,6 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xiphos-svn
-pkgver=4926 
+pkgver=4928 
 pkgrel=1
 pkgdesc="A Bible study tool -- svn version"
 arch=('i686' 'x86_64')
