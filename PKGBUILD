@@ -4,14 +4,14 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=laptop-mode-tools
-pkgver=1.67
+pkgver=1.68
 pkgrel=1
 _pkgrel=1
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools'
 source=(${pkgname}-${pkgver}-${_pkgrel}.tar.gz::https://github.com/rickysarraf/laptop-mode-tools/archive/debian/${pkgver}-${_pkgrel}.tar.gz)
-sha256sums=('9481c741ef0027479f218752230c2bb9b12edd54d6f43fafa10b72d37df17ebd')
+sha256sums=('c21b43fb9cd3d6c4d7f75fe3b720f25369bceb938ebd9073f4dbcd43ef93738a')
 license=('GPL2')
 depends=('bash')
 optdepends=('acpid: ACPI support'
