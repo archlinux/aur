@@ -1,0 +1,31 @@
+pkgbase = ros-indigo-turtlebot-calibration
+	pkgdesc = ROS - turtlebot_calibration.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_calibration
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-python-orocos-kdl
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-nav-msgs
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	depends = ros-indigo-python-orocos-kdl
+	depends = ros-indigo-turtlebot-bringup
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-nav-msgs
+	source = turtlebot_calibration::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/turtlebot_calibration/2.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-calibration
+
