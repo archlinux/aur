@@ -1,0 +1,25 @@
+Madsonic 5.1 Changelog
+
+Server 5.1.5250 - 2015-08-13
+--------------------------------------------
++ New:	Fixed taglib build error
++ New:	Update Madsonic project libs
++ New:	Upgrade to Spring Framework 3.2.14
++ New:	Upgrade to Spring Security 3.2.8
+
+Server 5.1.5240 - 2015-05-06
+--------------------------------------------
+- Fix:	Update servlet version
+- Fix:	Exclude protocols SSLv2Hello, SSLv3 from SSL
+
+Server 5.1.5200 - 2014-10-17
+--------------------------------------------
++ New:	Instant search (show results while typing).
++ New:	Control GenreMap parsing (on/off) from General-Settings
++ New:	Add new transcode-profile for ffmpeg compatibility
+- Fix:	Transcoder profile resets HLS and Downsampling command too
+- Fix:	Upgrade mencoder version
+- Fix:	Discover: Artist-Query show duplicated records
+- Fix:	Turn off warnings from Random-Search results
+- Fix:	Reset Download Statistics doesn't work
+- Fix:	Theme updates

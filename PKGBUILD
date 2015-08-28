@@ -3,18 +3,20 @@ pkgname=madsonic-beta
 pkgver=5.1.5250
 pkgvera=5.1
 pkgdate=20150813
-pkgrel=1
+pkgrel=2
 pkgdesc="Madsonic Mashup Mod is a fork of the Subsonic 4.8 Server Build 3436 with some Subsonic Data schema modifications! This is the latest Beta 5.1 Build."
 arch=('i686' 'x86_64')
 url="http://madsonic.org/"
 license=('GPL')
 depends=('jre7-openjdk-headless' 'fontconfig' 'libcups')
+optdepends=('ffmpeg: audio transcoding')
 conflicts=('subsonic-beta' 'subsonic' 'subsonic-git' 'madsonic')
 provides=('madsonic')
 source=(http://madsonic.org/download/${pkgvera}/${pkgdate}_madsonic-${pkgver}-standalone.tar.gz
 'madsonic.service' 
 'enable_config.patch' 
 'madsonic.conf')
+changelog=CHANGELOG
 backup=('var/madsonic/db' 'var/madsonic/madsonic.sh')
 install=madsonic.install
  
