@@ -1,5 +1,9 @@
 post_install() {
   gtk-update-icon-cache -f -q -t /usr/share/icons/hicolor
+
+  if ! getent passwd nm-openvpn >/dev/null; then
+    useradd -r -U -d / -c 'NetworkManager OpenVPN' -s /usr/bin/nologin nm-openvpn
+  fi
 }
 
 post_upgrade() {
