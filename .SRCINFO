@@ -1,0 +1,25 @@
+pkgbase = ros-indigo-turtlebot-apps
+	pkgdesc = ROS - turtlebot_apps is a group of simple demos and exmaples to run on your TurtleBot to help you get started with ROS and TurtleBot.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_apps
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-turtlebot-actions
+	depends = ros-indigo-turtlebot-rapps
+	depends = ros-indigo-turtlebot-panorama
+	depends = ros-indigo-pano-core
+	depends = ros-indigo-turtlebot-follower
+	depends = ros-indigo-pano-py
+	depends = ros-indigo-pano-ros
+	depends = ros-indigo-turtlebot-navigation
+	depends = ros-indigo-turtlebot-calibration
+	source = turtlebot_apps::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/turtlebot_apps/2.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-apps
+
