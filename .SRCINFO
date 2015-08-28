@@ -1,0 +1,22 @@
+pkgbase = vuescan-bin
+	pkgdesc = A powerful proprietary scanning tool developed by Hamrick Software
+	pkgver = 9.5
+	pkgrel = 1
+	url = http://www.hamrick.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = libsm
+	depends = libusb-compat
+	options = !strip
+	source = LICENSE
+	source = vuescan.sh
+	source = vuescan.desktop
+	md5sums = e4d56c48bc5ac80b83630238a7ab658d
+	md5sums = da269332a033a101a4509d34f1552c10
+	md5sums = 30e56e810df66e0d8425563903bcfa83
+	md5sums = SKIP
+
+pkgname = vuescan-bin
+
