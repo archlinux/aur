@@ -1,7 +1,7 @@
-pkgbase = madsonic
+pkgbase = madsonic-beta
 	pkgdesc = Madsonic Mashup Mod is a fork of the Subsonic 4.8 Server Build 3436 with some Subsonic Data schema modifications! This is the latest Beta 5.1 Build.
 	pkgver = 5.1.5250
-	pkgrel = 2
+	pkgrel = 1
 	url = http://madsonic.org/
 	install = madsonic.install
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = madsonic
 	depends = jre7-openjdk-headless
 	depends = fontconfig
 	depends = libcups
+	provides = madsonic
 	conflicts = subsonic-beta
 	conflicts = subsonic
 	conflicts = subsonic-git
 	conflicts = madsonic
-	replaces = madsonic
 	backup = var/madsonic/db
 	backup = var/madsonic/madsonic.sh
 	source = http://madsonic.org/download/5.1/20150813_madsonic-5.1.5250-standalone.tar.gz
@@ -26,5 +26,5 @@ pkgbase = madsonic
 	md5sums = 14518e65fbd97825e24f5801a5f723ad
 	md5sums = c590d9cb9e21a99b9cb29e224365c938
 
-pkgname = madsonic
+pkgname = madsonic-beta
 

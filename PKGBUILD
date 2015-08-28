@@ -1,22 +1,22 @@
 # Maintainer: Chris <alostengineer at narmos dot org>
-pkgname=madsonic
+pkgname=madsonic-beta
 pkgver=5.1.5250
 pkgvera=5.1
 pkgdate=20150813
-pkgrel=2
+pkgrel=1
 pkgdesc="Madsonic Mashup Mod is a fork of the Subsonic 4.8 Server Build 3436 with some Subsonic Data schema modifications! This is the latest Beta 5.1 Build."
 arch=('i686' 'x86_64')
 url="http://madsonic.org/"
 license=('GPL')
 depends=('jre7-openjdk-headless' 'fontconfig' 'libcups')
 conflicts=('subsonic-beta' 'subsonic' 'subsonic-git' 'madsonic')
-replaces=('madsonic')
-source=(http://madsonic.org/download/${pkgvera}/${pkgdate}_${pkgname}-${pkgver}-standalone.tar.gz
+provides=('madsonic')
+source=(http://madsonic.org/download/${pkgvera}/${pkgdate}_madsonic-${pkgver}-standalone.tar.gz
 'madsonic.service' 
 'enable_config.patch' 
 'madsonic.conf')
 backup=('var/madsonic/db' 'var/madsonic/madsonic.sh')
-install=$pkgname.install
+install=madsonic.install
  
 package() {
   cd ${srcdir}
@@ -29,7 +29,7 @@ package() {
   install -m 644 -t $pkgdir/etc $srcdir/madsonic.conf
 
 # Compatibility with both java runtime available in repos and AUR; locale fixes
-  patch $pkgdir/var/madsonic/${pkgname}.sh $srcdir/enable_config.patch
+  patch $pkgdir/var/madsonic/madsonic.sh $srcdir/enable_config.patch
 }
 
 
