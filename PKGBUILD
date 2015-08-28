@@ -8,7 +8,7 @@ _pkgdesc="The Infobar-ng plugin for the DeaDBeeF audio player."
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/IgnatLoskutov/deadbeef-infobar-ng"
 license=(GPL2)
-depends=('deadbeef>=0.6', libxml2)
+depends=('deadbeef>=0.6' 'libxml2')
 makedepends=(mercurial)
 source=('hg+https://bitbucket.org/IgnatLoskutov/deadbeef-infobar-ng')
 md5sums=('SKIP')
