@@ -1,7 +1,7 @@
 pkgbase = gnustep-corebase-clang-svn
 	pkgdesc = The GNUstep CoreBase Library is a library of general-purpose, non-graphical C objects, using Clang.
 	pkgver = r38298
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://www.gnustep.org/
 	arch = i686

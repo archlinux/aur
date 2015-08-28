@@ -4,7 +4,7 @@ _svnname=gnustep-corebase
 pkgname=$_svnname-clang-svn
 epoch=1
 pkgver=r38298
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNUstep CoreBase Library is a library of general-purpose, non-graphical C objects, using Clang."
 arch=('i686' 'x86_64')
 url="http://www.gnustep.org/"
@@ -28,9 +28,6 @@ pkgver() {
 }
 
 prepare() {
-	msg2 "Fix build error..."
-	sed -i -e 's|#error 96-bit long double currently not supported!|//#error 96-bit long double currently not supported!|g' "$srcdir/$_svnname/Source/GSUnicode.c"
-
 	if [[ $CARCH == "x86_64" ]]; then
 		msg2 "Make a clone of $_svnname"
 		cp -R "$srcdir/$_svnname" "$srcdir/$_svnname-32"
@@ -53,7 +50,7 @@ build() {
 		export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
 		msg2 "Run 'configure' (32-bit)..."
-		OBJCFLAGS="-fblocks" CC="clang -m32 -m96bit-long-double" CXX="clang++ -m32" ./configure --prefix=/usr --libdir=/usr/lib32 --sysconfdir=/etc/GNUstep
+		OBJCFLAGS="-fblocks" CC="clang -m32" CXX="clang++ -m32" ./configure --prefix=/usr --libdir=/usr/lib32 --sysconfdir=/etc/GNUstep
 
 		msg2 "Run 'make' (32-bit)..."
 		make
