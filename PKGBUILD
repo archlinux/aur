@@ -22,9 +22,7 @@ makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
              'opencl-headers' 'libcl' 'libwebp' 'git')
 #source=("ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-${pkgver%.*}-${pkgver##*.}".tar.xz{,.asc})
 #source=("${pkgname}::svn+https://subversion.imagemagick.org/subversion/ImageMagick/trunk/") # svn was shut down August 10, 2015
-_verurl="${url/script/download/}"
-_versed='ImageMagick-\([-0-9\.]\+\)\.tar\.bz2'
-_veropt='l'
+_verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
 _archlink="@@@::https://projects.archlinux.org/togit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=("${pkgname}::git+http://git.imagemagick.org/repos/ImageMagick.git"
     'libpng_mmx_patch_x86_64.patch'
