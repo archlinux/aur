@@ -74,5 +74,6 @@ Version=1.0
 Name=TextMaker 2012
 Icon=application-x-tml
 TryExec=/usr/bin/textmaker12
+StartupWMClass=tm
 Exec=/usr/bin/textmaker12 %F
 Path=/opt/smoffice2012

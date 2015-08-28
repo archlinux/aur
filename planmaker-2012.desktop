@@ -75,5 +75,6 @@ Version=1.0
 Name=PlanMaker 2012
 Icon=application-x-pml
 TryExec=/usr/bin/planmaker12
+StartupWMClass=pm
 Exec=/usr/bin/planmaker12 %F
 Path=/opt/smoffice2012

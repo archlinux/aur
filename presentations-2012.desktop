@@ -74,5 +74,6 @@ Version=1.0
 Name=Presentations 2012
 Icon=application-x-prl
 TryExec=/usr/bin/presentations12
+StartupWMClass=pr
 Exec=/usr/bin/presentations12 %F
 Path=/opt/smoffice2012
