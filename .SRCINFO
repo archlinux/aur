@@ -1,0 +1,13 @@
+pkgbase = emulationstation-themes
+	pkgdesc = EmulationStation themes pack
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://aloshi.com/emulationstation
+	install = emulationstation-themes.install
+	arch = any
+	license = WTFPL
+	source = emulationstation-themes-0.1.zip::http://www.aloshi.com/es_downloads/es_themes_jan_20_2013.zip
+	md5sums = d72d30690bce0f00ca6c276bbc5ff816
+
+pkgname = emulationstation-themes
+
