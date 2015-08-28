@@ -6,6 +6,7 @@ pkgbase = nodm
 	arch = i386
 	arch = x86_64
 	license = GPL
+	makedepends = help2man
 	depends = pam
 	depends = xorg-xinit
 	backup = etc/nodm.conf
