@@ -1,7 +1,7 @@
 pkgbase = cloudstation
 	pkgdesc = Synology Cloud Station. Cloud Station allows you to sync files among your Synology NAS and computers
 	pkgver = 3482
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.synology.com
 	install = cloudstation.install
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = cloudstation
 	depends = qt5-base
 	optdepends = nautilus: For nautilus integration
 	conflicts = cloudstation-beta
-	source_i686 = synology-cloud-station-32-3482.deb::http://global.download.synology.com/download/Tools/CloudStation/3482/Ubuntu/x32/synology-cloud-station-3482.deb
+	source_i686 = http://global.download.synology.com/download/Tools/CloudStation/3.2-3482/Ubuntu/Installer/i686/synology-cloud-station-3482.i686.deb
 	sha256sums_i686 = 713b42aaa2b77206100b772e90a2b0703b7ca867f0946ce594387e71cb842359
-	source_x86_64 = synology-cloud-station-64-3482.deb::http://global.download.synology.com/download/Tools/CloudStation/3482/Ubuntu/x64/synology-cloud-station-3482.deb
+	source_x86_64 = http://global.download.synology.com/download/Tools/CloudStation/3.2-3482/Ubuntu/Installer/x86_64/synology-cloud-station-3482.x86_64.deb
 	sha256sums_x86_64 = b1286cbeedc0d81d5f95c00464ed5bb08b160653029b2f4c2c1aec6539282b59
 
 pkgname = cloudstation
