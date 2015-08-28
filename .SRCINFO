@@ -1,0 +1,41 @@
+pkgbase = ros-indigo-turtlebot-panorama
+	pkgdesc = ROS - This app utilises pano_ros for taking snapshots and stitching them together to create panorama pictures.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://ros.org/wiki/turtlebot_panorama
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-actionlib
+	makedepends = ros-indigo-pano-ros
+	makedepends = ros-indigo-turtlebot-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-nav-msgs
+	makedepends = eigen3
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-yocs-velocity-smoother
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-actionlib
+	depends = ros-indigo-pano-ros
+	depends = ros-indigo-turtlebot-bringup
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-turtlebot-msgs
+	depends = ros-indigo-nav-msgs
+	depends = eigen3
+	source = turtlebot_panorama::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/turtlebot_panorama/2.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlebot-panorama
+
