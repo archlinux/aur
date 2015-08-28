@@ -1,0 +1,18 @@
+pkgbase = jsoncpp-cs
+	pkgdesc = A C++ library for interacting with JSON. Newer version using CMAKE and pkgconfig
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/open-source-parsers/jsoncpp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = custom:Public_Domain
+	makedepends = cmake
+	depends = gcc-libs
+	provides = jsoncpp
+	conflicts = jsoncpp
+	source = https://github.com/open-source-parsers/jsoncpp/archive/1.0.0.tar.gz
+	md5sums = 4c886ac3bfccc867a79f3a5280ce1152
+
+pkgname = jsoncpp-cs
+
