@@ -15,6 +15,7 @@ pkgbase = obozrenie-git
 	depends = python-gobject
 	depends = python-pytoml
 	depends = python-xdg
+	depends = gtk3
 	depends = python-beautifulsoup4
 	depends = python-xmltodict
 	depends = qstat
