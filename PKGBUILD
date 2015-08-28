@@ -1,6 +1,6 @@
 # Maintainer: Jan-Tarek Butt <tarek@ring0.de>
 pkgbase=cura-old
-pkgname=cura
+pkgname=cura-old
 pkgver=15.04.2
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker. (the old one)"

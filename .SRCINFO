@@ -15,5 +15,5 @@ pkgbase = cura-old
 	depends = python2-power-git
 	provides = cura
 
-pkgname = cura
+pkgname = cura-old
 
