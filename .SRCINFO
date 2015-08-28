@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-world-canvas-server
+	pkgdesc = ROS - Storage manager and server for WCF semantic maps.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://ros.org/wiki/world_canvas_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-world-canvas-msgs
+	depends = ros-indigo-rostest
+	depends = ros-indigo-rospy
+	depends = ros-indigo-world-canvas-utils
+	depends = ros-indigo-warehouse-ros
+	depends = ros-indigo-nav-msgs
+	depends = ros-indigo-visualization-msgs
+	depends = python2-pymongo
+	source = world_canvas_server::git+https://github.com/corot/world_canvas-release.git#tag=release/indigo/world_canvas_server/0.1.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-world-canvas-server
+
