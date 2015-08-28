@@ -7,9 +7,9 @@ pkgbase = define-git
 	license = BSD
 	makedepends = git
 	depends = gstreamer
-	depends = python2
-	depends = python2-wordnik
-	depends = python2-requests
+	depends = python
+	depends = python-wordnik
+	depends = python-requests
 	source = git://github.com/SethDusek/define.git
 	md5sums = SKIP
 
