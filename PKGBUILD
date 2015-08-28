@@ -14,7 +14,7 @@
 set -u
 _pkgname='aws-cli'
 pkgname="${_pkgname}" # Add -git for the git package
-pkgver=1.7.47
+pkgver=1.8.0
 # Change the version and you must also change the version of botocore below
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services.'
@@ -23,7 +23,7 @@ url="https://github.com/aws/${_pkgname}"
 license=('Apache') # Apache License 2.0
 depends=('python' # See setup.py, README.rst, and requirements.txt for version dependencies
   'python-bcdoc<0.15.0'    # AUR
-  'python-botocore>=1.1.10' # AUR == would make upgrades from AUR imposible. See below.
+  'python-botocore>=1.1.11' # AUR == would make upgrades from AUR imposible. See below.
   'python-colorama'{'>=0.2.5','<=0.3.3'}  # COM
   'python-rsa-3.1.2'{'>=3.1.2','<=3.1.4'} # AUR It would be nice to move to the newer version.
   #'python-rsa'{'>=3.1.2','<=3.1.4'}      # COM
@@ -46,7 +46,7 @@ conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
 replaces=(                   'python-aws-cli' 'awscli')
 provides=('awscli')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3dfb61f1b7e06b05c80798887a1ff92c672f2829b7d593300c44bc1119fd7e8e')
+sha256sums=('77865ab084faec7e10d51a3b024ab1d07acc380c5b45804355ddbd03d120b57f')
 options=('!emptydirs')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
