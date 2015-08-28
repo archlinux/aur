@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/chneukirchen/nq"
 license=('GPL')
 makedepends=('make')
-
+conflicts=("nq")
 source=("${pkgname}::git+https://github.com/chneukirchen/nq.git")
 md5sums=('SKIP')
 
@@ -21,9 +21,7 @@ build() {
   make PREFIX="/usr" all
 }
 
-
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" PREFIX="/usr" install
 }
-
