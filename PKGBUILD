@@ -14,7 +14,6 @@ md5sums=('9c3b1d3739a40698d7f92103ee8286ba')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    sed -i -e 's/tweepy==3.1.0/tweepy==3.3.0/' setup.py
     sed -i -e 's/future==0.14.3/future==0.15.0/' setup.py
 }
 
