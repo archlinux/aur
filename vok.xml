@@ -1,0 +1,35 @@
+<layout>
+  <configItem>
+    <name>vok</name>
+    <shortDescription>Vogo'\''s kbd</shortDescription>
+    <description>Czech keyboard by Vogo</description>
+    <languageList><iso639Id>cze</iso639Id></languageList>
+    <countryList><iso3166Id>CZ</iso3166Id></countryList>
+  </configItem>
+  <variantList>
+    <variant>
+      <configItem>
+        <name>basic</name>
+        <description>Qwerty (national chars with AltGr)</description>
+      </configItem>
+    </variant>
+    <variant>
+      <configItem>
+        <name>czech</name>
+        <description>Qwerty (digits with AltGr)</description>
+      </configItem>
+    </variant>
+    <variant>
+      <configItem>
+        <name>qwertz</name>
+        <description>Qwertz (national chars with AltGr)</description>
+      </configItem>
+    </variant>
+    <variant>
+      <configItem>
+        <name>czech_qwertz</name>
+        <description>Qwertz (digits with AltGr)</description>
+      </configItem>
+    </variant>
+  </variantList>
+</layout>
