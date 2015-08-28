@@ -20,9 +20,7 @@ makedepends=('git')
 depends=('glibc')
 #optdepends=('lvm2' 'dm-crypt' 'bcache')
 backup=("etc/${_pkgname}.conf")
-_verurl='ftp://ftp.kernel.org/pub/linux/utils/raid/mdadm/'
-_versed='mdadm-\(.*\)\.tar\.xz'
-_veropt='f'
+_verwatch=('ftp://ftp.kernel.org/pub/linux/utils/raid/mdadm/' 'mdadm-\(.*\)\.tar\.xz' 'f')
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=(# use either one, but not both. Reset with makepkg -sCf. My comparison shows these are identical, including the tags. Github is faster.
         #"mdadm_gitnb::git://neil.brown.name/${_pkgname}"
