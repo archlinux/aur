@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/Unity/Editor/Unity $@
+exec /opt/Unity/Editor/Unity "$@"
