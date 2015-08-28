@@ -1,0 +1,21 @@
+pkgbase = fqterm-qt5-git
+	pkgdesc = a terminal emulator used for Telnet-based BBS, with Telnet and SSH support
+	pkgver = 0.9.8.3.r4.7.g86810b9
+	pkgrel = 1
+	url = https://github.com/mytbk/fqterm/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-script
+	depends = qt5-tools
+	depends = qt5-multimedia
+	provides = fqterm
+	conflicts = fqterm
+	conflicts = fqterm-svn
+	source = git+https://github.com/mytbk/fqterm.git
+	md5sums = SKIP
+
+pkgname = fqterm-qt5-git
+
