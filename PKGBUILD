@@ -2,7 +2,7 @@
 # Contributor: M.Carreira <arch@carreira.com.pt>
 pkgname=mondo
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A disaster recovery solution to create backup media that can be used to redeploy the damaged system"
 arch=('i686' 'x86_64')
 url="http://www.mondorescue.org/"
@@ -23,7 +23,7 @@ md5sums=('6f5ef27d940c90a858ce9b1888c23c2d'
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 < ../mondo-initrd.patch
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sbindir=/usr/bin
   make
   make DESTDIR=$pkgdir install
   mkdir -p $pkgdir/var/cache/$pkgname

@@ -1,7 +1,7 @@
 pkgbase = mondo
 	pkgdesc = A disaster recovery solution to create backup media that can be used to redeploy the damaged system
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mondorescue.org/
 	changelog = ChangeLog
 	arch = i686
