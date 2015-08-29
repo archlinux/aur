@@ -1,7 +1,7 @@
 # Maintainer: Jqs7 <7@jqs7.com>
 pkgname=goproxy-git
 _pkgname=goproxy
-pkgver=v2.1.2.r77.gb1e59a4
+pkgver=r309.b1e59a4
 pkgrel=1
 pkgdesc="a proxy tunnel wirtten in go"
 url="https://github.com/shell909090/goproxy"
@@ -19,7 +19,7 @@ backup=('etc/goproxy/client.json'
 pkgver() {
    cd "$srcdir/$_pkgname"
    ( set -o pipefail
-     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
