@@ -2,12 +2,30 @@ post_install()
 {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
   update-desktop-database -q
+  echo "ATTENTION Nvidia/Nouveau driver users:"
+  echo "======================================"
+  echo
+  echo 'To fix the mouse lag issue in Draftsight SP3, you may have to turn off synchronization to VBlank and/or page flipping.'
+  echo 'For Nvidia driver users, this can be done through the nvidia-settings tool, and unchecking "Sync to VBlank" and "Allow Flipping" in the "OpenGL Settings"'
+  echo 'For Nouveau driver users, "GLXVBlank" and/or "PageFlip" options must be turned off in your xorg.conf files.'
+  echo
+  echo "Please refer to the comment section of this package in AUR: https://aur.archlinux.org/packages/draftsight/"
+  echo "Or for additional reading, refer to manual pages nv(4), nouveau(4), xorg.conf(5); and the Wiki pages for Nvidia, Nouveau, and Xorg."
 }
 
 post_update()
 {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
   update-desktop-database -q
+  echo "ATTENTION Nvidia/Nouveau driver users:"
+  echo "======================================"
+  echo
+  echo 'To fix the mouse lag issue in Draftsight SP3, you may have to turn off synchronization to VBlank and/or page flipping.'
+  echo 'For Nvidia driver users, this can be done through the nvidia-settings tool, and unchecking "Sync to VBlank" and "Allow Flipping" in the "OpenGL Settings"'
+  echo 'For Nouveau driver users, "GLXVBlank" and/or "PageFlip" options must be turned off in your xorg.conf files.'
+  echo
+  echo "Please refer to the comment section of this package in AUR: https://aur.archlinux.org/packages/draftsight/"
+  echo "Or for additional reading, refer to manual pages nv(4), nouveau(4), xorg.conf(5); and the Wiki pages for Nvidia, Nouveau, and Xorg."
 }
 
 post_remove()
