@@ -1,0 +1,17 @@
+pkgbase = zerotier-one-with-controller
+	pkgdesc = Creates virtual Ethernet networks of almost unlimited size. controller node version
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://www.zerotier.com/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	depends = sqlite3
+	conflicts = zerotier-one
+	conflicts = zerotier-one-lastest
+	source = https://github.com/zerotier/ZeroTierOne/archive/1.0.5.tar.gz
+	sha1sums = de1dfb3ecc3bcbdea38388f51e91ac5927eba2b6
+
+pkgname = zerotier-one-with-controller
+
