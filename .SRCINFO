@@ -1,0 +1,17 @@
+pkgbase = heirloom-sh
+	pkgdesc = Traditional sh derived from OpenSolaris code
+	pkgver = 050706
+	pkgrel = 3
+	url = http://heirloom.sourceforge.net/sh.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = CDDL
+	conflicts = heirloom-sh-cvs
+	source = http://sourceforge.net/projects/heirloom/files/heirloom-sh/050706/heirloom-sh-050706.tar.bz2
+	source = 000-config.diff
+	md5sums = 9169d9b3b845cb63c598ea29b8d2dfa0
+	md5sums = 991b32bee780ce48685dfd4d39d41443
+
+pkgname = heirloom-sh
+
