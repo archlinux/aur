@@ -19,7 +19,7 @@ backup=()
 options=()
 install="${pkgname}.install"
 source=("https://github.com/Ryochan7/antimicro/archive/${pkgver}.tar.gz")
-md5sums=('ad96ac8720d659e0db513d721633fa6e')
+md5sums=('23782c189d73aaff6d67ca60a39a0975')
 noextract=()
 
 build() {
