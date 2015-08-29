@@ -1,0 +1,37 @@
+--- configure	2014-10-13 11:26:01.000000000 +0200
++++ configure.new	2014-10-13 12:22:52.585006021 +0200
+@@ -582,7 +582,7 @@
+ ac_clean_files=
+ ac_config_libobj_dir=.
+ LIBOBJS=
+-cross_compiling=no
++cross_compiling=yes
+ subdirs=
+ MFLAGS=
+ MAKEFLAGS=
+@@ -3577,12 +3577,7 @@
+ $as_echo "$as_me: failed program was:" >&5
+ sed 's/^/| /' conftest.$ac_ext >&5
+ 
+-{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error 77 "C compiler cannot create executables
+-See \`config.log' for more details" "$LINENO" 5; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5 
+ $as_echo "yes" >&6; }
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for C compiler default output file name" >&5
+@@ -3619,11 +3614,6 @@
+     * ) break;;
+   esac
+ done
+-else
+-  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error $? "cannot compute suffix of executables: cannot compile and link
+-See \`config.log' for more details" "$LINENO" 5; }
+ fi
+ rm -f conftest conftest$ac_cv_exeext
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_exeext" >&5

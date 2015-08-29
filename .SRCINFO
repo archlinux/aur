@@ -1,0 +1,29 @@
+pkgbase = ow-libzip
+	pkgdesc = A C library for reading, creating, and modifying zip archives (watcom-cross)
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = http://www.nih.at/libzip/index.html
+	arch = any
+	license = BSD
+	makedepends = ow-zlib
+	makedepends = openwatcom-v2
+	options = !libtool
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = emptydirs
+	source = http://www.nih.at/libzip/libzip-0.11.2.tar.gz
+	source = pragma.patch
+	source = configure.patch
+	md5sums = c5437df15e4825d40cdc3ec8b9b7516c
+	md5sums = 274d5a2a6f678705d5fe70cec79fae30
+	md5sums = 6fee6dd1f561c7d5e314a81446e2910e
+
+pkgname = ow-libzip
+
+pkgname = ow-libzip-dos
+
+pkgname = ow-libzip-win32
+
+pkgname = ow-libzip-os2
+

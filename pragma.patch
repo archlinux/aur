@@ -1,0 +1,12 @@
+--- zip.h	2013-09-22 11:35:53.000000000 +0200
++++ zip.h.install	2014-10-12 10:14:11.100477471 +0200
+@@ -1,6 +1,9 @@
+ #ifndef _HAD_ZIP_H
+ #define _HAD_ZIP_H
+ 
++#pragma library ("libz.lib")
++#pragma library ("libzip.lib")
++
+ /*
+   zip.h -- exported declarations.
+   Copyright (C) 1999-2012 Dieter Baron and Thomas Klausner
