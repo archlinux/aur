@@ -2,7 +2,7 @@
 
 pkgname=wpscan
 pkgver=184
-pkgrel=1
+pkgrel=2
 pkgdesc='A vulnerability scanner which checks the security of WordPress installations using a black box approach'
 optdepends=('typhoeus' 'rspec' 'ruby-progressbar' 'webmock' 'terminal-table'
             'simplecov')
@@ -14,6 +14,8 @@ makedepends=('git')
 source=("git+https://github.com/wpscanteam/wpscan")
 md5sums=('SKIP')
 options=('!strip')
+conflicts=('wpscan-git')
+install="${pkgname}.install"
 
 package() {
   cd "$srcdir/$pkgname"
