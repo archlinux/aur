@@ -1,0 +1,14 @@
+pkgbase = storcli
+	pkgdesc = A successor to lsiutil
+	pkgver = 1.15.12
+	pkgrel = 1
+	url = https://www.thomas-krenn.com/en/wiki/StorCLI
+	arch = i686
+	arch = x86_64
+	license = unknown
+	provides = storcli
+	conflicts = megaraid-cli
+	source = http://archive.thomas-krenn.com/packages/pool/optional/s/storcli/storcli_1.15.12_.deb
+
+pkgname = storcli
+
