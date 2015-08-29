@@ -1,14 +1,15 @@
 pkgbase = fgdata-git
-	pkgdesc = Base-Data for the opensource flight-simulator.
-	pkgver = 20150613
+	pkgdesc = Base data for the flightgear flight simulator.
+	pkgver = 20150829
 	pkgrel = 1
 	url = http://www.flightgear.org
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	provides = fgdata-git
 	conflicts = flightgear-data
+	source = git://git.code.sf.net/p/flightgear/fgdata#branch=next
+	md5sums = SKIP
 
 pkgname = fgdata-git
 
