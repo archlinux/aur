@@ -17,7 +17,16 @@ md5sums=('85bda2872260213c8e336c0a98e451dd')
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  make || return 1
-  make doc || return 1
-  make DESTDIR=${pkgdir} install || return 1
+  make
+  make doc
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make DESTDIR=${pkgdir} install
+}
+
+check() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make check
 }
