@@ -1,0 +1,15 @@
+pkgbase = gtk-theme-shiki-colors
+	pkgdesc = Shiki-Colors GTK+ and Metacity theme
+	pkgver = 4.6
+	pkgrel = 1
+	url = http://gnome-colors.googlecode.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk-engines
+	optdepends = gnome-colors-icon-theme: Icon themes which well suited to shiki-colors
+	source = http://gnome-colors.googlecode.com/files/shiki-colors-4.6.tar.gz
+	md5sums = b0e5e6d20132ae46a3114ee357f9ec24
+
+pkgname = gtk-theme-shiki-colors
+
