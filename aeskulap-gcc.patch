@@ -1,0 +1,116 @@
+--- configuration/aconfiguration.cpp~	2006-03-06 12:07:25.000000000 +0100
++++ configuration/aconfiguration.cpp	2008-04-24 23:29:58.000000000 +0200
+@@ -29,0 +30 @@
++#include <libintl.h>
+--- dcmtk/dcmdata/libsrc/dcfilefo.cc~	2006-03-08 10:25:13.000000000 +0100
++++ dcmtk/dcmdata/libsrc/dcfilefo.cc	2008-04-24 23:35:07.000000000 +0200
+@@ -64,0 +65 @@
++#include <cstring>
+--- dcmtk/dcmdata/libsrc/dcistrmb.cc~	2006-03-08 10:25:13.000000000 +0100
++++ dcmtk/dcmdata/libsrc/dcistrmb.cc	2008-04-24 23:37:24.000000000 +0200
+@@ -37,0 +38 @@
++#include <cstring>
+--- dcmtk/dcmdata/libsrc/dcistrmf.cc~	2006-03-08 10:25:13.000000000 +0100
++++ dcmtk/dcmdata/libsrc/dcistrmf.cc	2008-04-24 23:37:52.000000000 +0200
+@@ -41 +41 @@
+-
++#include <cstring>
+--- dcmtk/dcmdata/libsrc/dcostrmf.cc~	2006-03-08 10:25:14.000000000 +0100
++++ dcmtk/dcmdata/libsrc/dcostrmf.cc	2008-04-24 23:39:22.000000000 +0200
+@@ -42 +42 @@
+-
++#include <cstring>
+--- dcmtk/dcmdata/libsrc/dcostrmb.cc~	2006-03-08 10:25:14.000000000 +0100
++++ dcmtk/dcmdata/libsrc/dcostrmb.cc	2008-04-24 23:39:10.000000000 +0200
+@@ -38 +38 @@
+-
++#include <cstring>
+--- dcmtk/dcmdata/libsrc/dcrleccd.cc~	2006-03-08 10:25:14.000000000 +0100
++++ dcmtk/dcmdata/libsrc/dcrleccd.cc	2008-04-24 23:40:27.000000000 +0200
+@@ -47 +47 @@
+-
++#include <cstring>
+--- dcmtk/dcmdata/libsrc/dctagkey.cc~	2006-03-08 10:25:14.000000000 +0100
++++ dcmtk/dcmdata/libsrc/dctagkey.cc	2008-04-24 23:41:26.000000000 +0200
+@@ -35,0 +36 @@
++#include <cstring>
+--- dcmtk/dcmimgle/libsrc/diciefn.cc~	2006-03-08 10:25:15.000000000 +0100
++++ dcmtk/dcmimgle/libsrc/diciefn.cc	2008-04-24 23:42:55.000000000 +0200
+@@ -41 +41 @@
+-
++#include <cstring>
+--- dcmtk/dcmimgle/libsrc/digsdfn.cc~	2006-03-08 10:25:21.000000000 +0100
++++ dcmtk/dcmimgle/libsrc/digsdfn.cc	2008-04-24 23:44:05.000000000 +0200
+@@ -44 +44 @@
+-
++#include <cstring>
+--- dcmtk/dcmimgle/libsrc/dimomod.cc~	2006-03-08 10:25:15.000000000 +0100
++++ dcmtk/dcmimgle/libsrc/dimomod.cc	2008-04-24 23:44:54.000000000 +0200
+@@ -41 +41 @@
+-
++#include <cstring>
+--- dcmtk/dcmjpeg/libsrc/djcodecd.cc~	2006-03-08 10:25:22.000000000 +0100
++++ dcmtk/dcmjpeg/libsrc/djcodecd.cc	2008-04-24 23:47:21.000000000 +0200
+@@ -35,0 +36 @@
++#include <cstring>
+--- dcmtk/dcmjpeg/libsrc/djdijg12.cc~	2006-03-08 10:25:22.000000000 +0100
++++ dcmtk/dcmjpeg/libsrc/djdijg12.cc	2008-04-24 23:49:35.000000000 +0200
+@@ -41,0 +42 @@
++#include <cstring>
+--- dcmtk/dcmjpeg/libsrc/djdijg16.cc~	2006-03-08 10:25:22.000000000 +0100
++++ dcmtk/dcmjpeg/libsrc/djdijg16.cc	2008-04-24 23:49:46.000000000 +0200
+@@ -41,0 +42 @@
++#include <cstring>
+--- dcmtk/dcmjpeg/libsrc/djdijg8.cc~	2006-03-08 10:25:22.000000000 +0100
++++ dcmtk/dcmjpeg/libsrc/djdijg8.cc	2008-04-24 23:49:55.000000000 +0200
+@@ -41,0 +42 @@
++#include <cstring>
+--- dcmtk/dcmjpeg/libsrc/djeijg12.cc~	2006-03-08 10:25:22.000000000 +0100
++++ dcmtk/dcmjpeg/libsrc/djeijg12.cc	2008-04-24 23:51:14.000000000 +0200
+@@ -41,0 +42 @@
++#include <cstring>
+--- dcmtk/dcmjpeg/libsrc/djeijg16.cc~	2006-03-08 10:25:22.000000000 +0100
++++ dcmtk/dcmjpeg/libsrc/djeijg16.cc	2008-04-24 23:51:22.000000000 +0200
+@@ -41,0 +42 @@
++#include <cstring>
+--- dcmtk/dcmjpeg/libsrc/djeijg8.cc~	2006-03-08 10:25:22.000000000 +0100
++++ dcmtk/dcmjpeg/libsrc/djeijg8.cc	2008-04-24 23:51:30.000000000 +0200
+@@ -41,0 +42 @@
++#include <cstring>
+--- dcmtk/dcmnet/libsrc/dccfuidh.cc~	2006-03-08 10:25:24.000000000 +0100
++++ dcmtk/dcmnet/libsrc/dccfuidh.cc	2008-04-24 23:53:03.000000000 +0200
+@@ -39,0 +40 @@
++#include <cstring>
+--- dcmtk/ofstd/libsrc/ofconapp.cc~	2006-03-08 10:25:25.000000000 +0100
++++ dcmtk/ofstd/libsrc/ofconapp.cc	2008-04-24 23:54:03.000000000 +0200
+@@ -39 +39 @@
+-
++#include <cstring>
+--- dcmtk/ofstd/libsrc/oflogfil.cc~	2006-03-08 10:25:25.000000000 +0100
++++ dcmtk/ofstd/libsrc/oflogfil.cc	2008-04-24 23:54:24.000000000 +0200
+@@ -38,0 +39 @@
++#include <cstring>
+--- imagepool/poolinstance.cpp~	2008-04-24 23:56:42.000000000 +0200
++++ imagepool/poolinstance.cpp	2008-04-24 23:56:14.000000000 +0200
+@@ -30,0 +31 @@
++#include <libintl.h>
+--- imagepool/poolservers.cpp~	2006-03-06 10:11:11.000000000 +0100
++++ imagepool/poolservers.cpp	2008-04-24 23:57:14.000000000 +0200
+@@ -30,0 +31 @@
++#include <libintl.h>
+--- src/main.cpp~	2006-03-06 16:05:01.000000000 +0100
++++ src/main.cpp	2008-04-24 23:58:39.000000000 +0200
+@@ -42,0 +43 @@
++#include <libintl.h>
+--- widgets/awindowleveltoolbutton.cpp~	2006-03-07 09:55:47.000000000 +0100
++++ widgets/awindowleveltoolbutton.cpp	2008-04-25 00:00:13.000000000 +0200
+@@ -3,0 +4 @@
++#include <libintl.h>
+--- widgets/seriesview.cpp~	2006-03-07 09:57:44.000000000 +0100
++++ widgets/seriesview.cpp	2008-04-25 00:00:35.000000000 +0200
+@@ -37,0 +38 @@
++#include <libintl.h>
+--- configuration/aconfiguration-gconf.cpp~	2006-03-07 09:57:45.000000000 +0100
++++ configuration/aconfiguration-gconf.cpp	2009-05-23 08:08:33.000000000 +0200
+@@ -28,0 +29 @@
++#include <cstdio>

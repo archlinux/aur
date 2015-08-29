@@ -1,0 +1,26 @@
+pkgbase = aeskulap-dcmtkcompat
+	pkgdesc = Medical image viewer and DICOM client. Compatible with parallel installation of the package 'dcmtk'.
+	pkgver = 0.2.2_beta1
+	pkgrel = 7
+	url = http://www.nongnu.org/aeskulap
+	install = aeskulap.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl-xml-parser
+	makedepends = patch
+	depends = libglademm
+	depends = gconfmm
+	depends = hicolor-icon-theme
+	provides = aeskulap=0.2.2_beta1
+	conflicts = aeskulap
+	options = !libtool
+	source = http://ponce.cc/slackware/sources/repo/aeskulap-0.2.2-beta1.tar.gz
+	source = aeskulap-gcc.patch
+	source = aeskulap.install
+	md5sums = 33a0f8659909426c67bebc10bd61b1d0
+	md5sums = ed39ad48d76bf8238c45a7b6e9c31b2e
+	md5sums = 82b79fa6e730e17d0898fdadf78daf70
+
+pkgname = aeskulap-dcmtkcompat
+
