@@ -1,0 +1,9 @@
+post_install() {
+  echo "Running iscan-registry to register plugins and firmware with iscan"
+  iscan-registry -a interpreter usb 0x04b8 0x0119 /usr/lib/iscan/libesint54 /usr/share/iscan/esfw54.bin
+}
+
+pre_remove() {
+  echo "Unregistering gt-x750 plugins/firmware"
+  iscan-registry -r interpreter usb 0x04b8 0x0119 /usr/lib/iscan/libesint54 /usr/share/iscan/esfw54.bin
+}

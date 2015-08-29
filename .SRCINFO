@@ -1,0 +1,14 @@
+pkgbase = iscan-plugin-gt-x750
+	pkgdesc = iscan plugin for Epson Perfection 4490 / GT-X750
+	pkgver = 2.1.2_1
+	pkgrel = 4
+	url = http://pkgs.fedoraproject.org/repo/pkgs/iscan-firmware/
+	install = gt-x750.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = iscan
+
+pkgname = iscan-plugin-gt-x750
+
