@@ -1,0 +1,16 @@
+pkgbase = fades
+	pkgdesc = FAst DEpendencies for Scripts.
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/PyAr/fades/
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	optdepends = python-xdg: Used to correctly get user folders,
+	optdepends = python-virtualenv: Used to support different Python versions for child execution.
+	source = https://pypi.python.org/packages/source/f/fades/fades-3.tar.gz
+	md5sums = 78bebd9cfa792c3f5a270c80b8c994fc
+
+pkgname = fades
+
