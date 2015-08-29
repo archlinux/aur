@@ -4,9 +4,9 @@ pkgname=libretro-stella-git
 pkgver=113.1d5dac8
 pkgrel=1
 pkgdesc="libretro implementation of Stella. (Atari 2600)"
-arch=('i686' 'x86_64' 'arm' 'armv6h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/stella-libretro"
-license=('GPL')
+license=('GPL3')
 makedepends=('git')
 
 _libname=stella_libretro
