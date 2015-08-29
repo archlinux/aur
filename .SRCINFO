@@ -1,0 +1,13 @@
+pkgbase = android-samples-23
+	pkgdesc = Android SDK Samples, API-23
+	pkgver = 6.0_r02
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	options = !strip
+	source = http://dl.google.com/android/repository/samples-23_r02.zip
+	sha1sums = 94d2857476987cfb7b18c8be61755c21b0a6e599
+
+pkgname = android-samples-23
+
