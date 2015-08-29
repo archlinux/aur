@@ -1,0 +1,13 @@
+pkgbase = vim-phpfolding
+	pkgdesc = PHP folding plugin for vim written by Ray Burgemeestre
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1623
+	arch = any
+	license = GPL
+	depends = vim
+	source = phpfolding.vim::http://www.vim.org/scripts/download_script.php?src_id=21976
+	md5sums = 1ab2e18b3f6fb0ef19a98447044b8557
+
+pkgname = vim-phpfolding
+
