@@ -7,8 +7,9 @@ pkgdesc="Start or join Zoom meetings"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://zoom.us/"
-depends=('lib32-libxml2' 'lib32-libsm' 'lib32-sqlite' 'lib32-libxrender' 'lib32-fontconfig' 'lib32-libxcomposite' 'lib32-libxi' 'lib32-libgl')
+depends=('desktop-file-utils' 'lib32-libxml2' 'lib32-libsm' 'lib32-sqlite' 'lib32-libxrender' 'lib32-fontconfig' 'lib32-libxcomposite' 'lib32-libxi' 'lib32-libgl')
 options=(!strip)
+install=${pkgname}.install
 source=("https://zoom.us/client/latest/ZoomInstaller_i386.deb")
 md5sums=('519689cc7b2b399adf12ffbe41adef46')
 
