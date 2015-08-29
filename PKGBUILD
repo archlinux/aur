@@ -1,7 +1,7 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=vidyodesktop
-pkgver=3.3.0.127
+pkgver=3.5.4.004
 pkgrel=1
 pkgdesc="VidyoDesktop(TM) video conferencing client"
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ depends=('alsa-lib' 'libidn' 'libutil-linux' 'libxv' 'libgl' 'glu'
 optdepends=('flashplugin: Join meetings via web browser')
 
 if [ "$CARCH" == "i686" ]; then
-  source=("https://demo.vidyo.com/upload/VidyoDesktopInstaller-sl5-TAG_VD_3_3_0_127.rpm")
-  md5sums=('844ea251d103ed43245f0a93ffb724f5')
+  source=("https://demo.vidyo.com/upload/VidyoDesktopInstaller-sl5-TAG_VD_3_5_4_004.rpm")
+  md5sums=('634063b2b773d49b3d230ac67fe7aa4e')
 elif [ "$CARCH" == "x86_64" ]; then
-  source=("https://demo.vidyo.com/upload/VidyoDesktopInstaller-sl564-TAG_VD_3_3_0_127.rpm")
-  md5sums=('3580e0889df72482b089c4fa59fb2de4')
+  source=("https://demo.vidyo.com/upload/VidyoDesktopInstaller-sl564-TAG_VD_3_5_4_004.rpm")
+  md5sums=('3f728f54ca6626c3e75802552061e040')
 fi
 
 package() {
