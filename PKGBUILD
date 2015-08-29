@@ -4,9 +4,9 @@
 _webviewprovider=qt5-webkit
 pkgname=tageditor
 pkgver=1.1.5
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
-pkgdesc="Library for reading and editing meta-data of several media formats."
+pkgdesc="A tag editor with Qt GUI and command-line interface supprting MP4 (iTunes), ID3, Vorbis and Matroska."
 license=('GPL')
 depends=('qt5-script' $_webviewprovider 'qtutilities' 'tagparser')
 makedepends=('qt5-tools')
