@@ -16,7 +16,7 @@ provides=($_pkgname=$pkgver)
 prepare() {
   cd "${_srcdirname}"
   sed -i "s/\[python\]/\[python2\]/g" configure.ac
-  ./configure
+  ./configure --prefix=/usr
 }
 build(){
   cd "${_srcdirname}"
