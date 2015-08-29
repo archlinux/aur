@@ -1,6 +1,6 @@
 pkgname=('xmille')
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A X11 mille borne game'
 license=('unknown')
 source=('Xmille.tar.gz::http://sourceforge.net/projects/xmille/files/Xmille.tar.gz/download'
@@ -8,7 +8,7 @@ source=('Xmille.tar.gz::http://sourceforge.net/projects/xmille/files/Xmille.tar.
 md5sums=('ed1c73d02cf99af353833fea7a433d30'
          'f325d30a07542f384514059255543b38')
 arch=('i686' 'x86_64')
-depends=('libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxext')
+depends=('libxext')
 makedepends=('libxext')
 
 package() {
