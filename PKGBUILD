@@ -1,7 +1,7 @@
 pkgname=janusvr
 pkgdesc='JanusVR is a 3D VR internet browser'
 url='http://www.dgp.toronto.edu/~mccrae/projects/firebox/'
-pkgver=46.9
+pkgver=46.10
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -44,7 +44,7 @@ package() {
   #install -m755 "$srcdir/libovr.so" "$pkgdir/opt/janusvr/libOVRRT64_0.so.5.0.1"
 }
 
-md5sums=('f63f5a91b4aee1b0e328ecaa8f8709a8'
+md5sums=('SKIP'
          'c05bb2fbfce12c89db560ed8b8bb036a'
          'caa1d06e46c684365cb8cddcac29ee21'
          'a8a2ce8e4dfa4e4e87a6af811b5627a4')
