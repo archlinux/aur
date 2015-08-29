@@ -2,7 +2,7 @@
 # Developer: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicro
-pkgver=2.18.1
+pkgver=2.18.2
 pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons"
 arch=('i686' 'x86_64')
