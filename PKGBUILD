@@ -23,13 +23,13 @@ _pgo=false
 
 # We're getting this from Debian Experimental
 _debname=iceweasel
-_debver=40.0
+_debver=40.0.3
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=2
+pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -48,7 +48,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 	    'upower: Battery API'
             'iceweasel-extension-archsearch: Iceweasel Arch search engines'
             'iceweasel-extension-archforumsearch-it: Iceweasel search engines for Arch Linux Italian forum')
-url="https://packages.debian.org/experimental/iceweasel"
+url="https://packages.debian.org/source/experimental/iceweasel"
 install=iceweasel.install
 provides=("$_debname"="$_debver")
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.bz2"
@@ -58,8 +58,8 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.bz2"
         'iceweasel-install-dir.patch'
         'vendor.js'
 	'iceweasel-20.0.1-fixed-loading-icon.png')
-md5sums=('6835933419920fbf959c451080c5d2ab'
-         'c75aedd8b0e7cbc312313e5224f6cc60'
+md5sums=('22e21d1ff3bf93f120eb7420cbb69b9e'
+         'a6c1cb3ce7174a13bb30832750d570a0'
          '1040e0c5613128fb54f4134e486b37b7'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
