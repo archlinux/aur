@@ -1,0 +1,18 @@
+pkgname="wpscan"
+
+post_install() {
+	echo
+	echo "==> After installation run this commands:"
+	echo 
+	echo "$ gem install bundle"
+	echo "$ gem install nokogiri"
+	echo "$ gem install typhoeus"
+	echo "$ gem install addressable"
+	echo "$ gem install terminal-table"
+	echo "$ gem install ruby-progressbar"
+	echo "$ gem install webmock"
+	echo "$ gem install simplecov"
+	echo "$ gem install rspec"
+	echo "$ gem install rspec-its"
+	echo 
+}

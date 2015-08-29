@@ -1,0 +1,22 @@
+pkgbase = wpscan
+	pkgdesc = A vulnerability scanner which checks the security of WordPress installations using a black box approach
+	pkgver = 184
+	pkgrel = 1
+	url = http://code.google.com/p/wpscan/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = ruby
+	optdepends = typhoeus
+	optdepends = rspec
+	optdepends = ruby-progressbar
+	optdepends = webmock
+	optdepends = terminal-table
+	optdepends = simplecov
+	options = !strip
+	source = git+https://github.com/wpscanteam/wpscan
+	md5sums = SKIP
+
+pkgname = wpscan
+
