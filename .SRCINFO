@@ -1,0 +1,24 @@
+pkgbase = libao-sndio
+	pkgdesc = Cross-platform audio output library and plugins (with sndio support)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://xiph.org/ao/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libpulse
+	depends = alsa-lib
+	depends = sndio
+	provides = libao
+	provides = libao-pulse
+	conflicts = libao
+	conflicts = libao-pulse
+	replaces = libao-pulse
+	backup = etc/libao.conf
+	source = http://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
+	source = libao.conf
+	md5sums = 9f5dd20d7e95fd0dd72df5353829f097
+	md5sums = 2c170aaec57e5cd9ea84ab1e400786cb
+
+pkgname = libao-sndio
+
