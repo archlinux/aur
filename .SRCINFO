@@ -1,0 +1,16 @@
+pkgbase = android-google-apis-x86-23
+	pkgdesc = Android Google APIs, API-23 (x86 System Image)
+	pkgver = 6.0_r07
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform-23
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/google_apis/sysimg_x86-23_r07.zip
+	source = source.properties
+	sha1sums = 0452e1490eabcb1d7bf88625ec91b3278d88dee8
+	sha1sums = 5a0bc3a49ab73110685ad1d491bcfb460e0e0e0e
+
+pkgname = android-google-apis-x86-23
+
