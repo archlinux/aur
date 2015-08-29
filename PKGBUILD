@@ -1,8 +1,8 @@
 # Contributor: Andreas Baumann <abaumann at yahoo dot com>
 
 pkgname=sqlitexx
-pkgver=0.0.3
-pkgrel=5
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="A C++ API for Sqlite."
 arch=('i686' 'x86_64')
 url='http://wiki.github.com/andreasbaumann/sqlitexx/'
