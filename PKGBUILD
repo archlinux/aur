@@ -4,7 +4,7 @@
 # We're getting this from Debian Experimental
 
 _debname=iceweasel
-_debver=40.0
+_debver=40.0.3
 _debrel=1
 _debrepo=http://ftp.de.debian.org/debian/pool/main/i/
  
@@ -13,7 +13,7 @@ pkgver=${_debver}.deb${_debrel}
 pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox (bin version)"
 arch=('i686' 'x86_64')
-url=("https://packages.debian.org/sid/iceweasel")
+url=("https://packages.debian.org/experimental/iceweasel")
 license=('MPL' 'GPL' 'LGPL')
 conflicts=("$_debname")
 provides=("$_debname"="$_debver")
@@ -33,10 +33,10 @@ install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    sha1sums=('cbc043491139700f0da27bcdc2036fe30ec2033a')
+    sha1sums=('48b2cdf8c3efdb23db72206c4a6f8e3c0d876a19')
 else
     _debarch=i386
-    sha1sums=('3c17ceaeec50913e5bb7a41ef0f7f3c3eea64428')
+    sha1sums=('282a4286aabad03c55a7763b4b74684ccf983698')
  fi
  
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
