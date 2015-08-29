@@ -1,0 +1,16 @@
+pkgbase = kodi-addon-canada-on-demand-git
+	pkgdesc = KODI video plugin for streaming live and pre-recorded content from Canadian websites
+	pkgver = 20130313
+	pkgrel = 4
+	url = http://github.com/marius-muja/plugin.video.canada.on.demand
+	install = install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = kodi
+	provides = kodi-addon-canada-on-demand
+	conflicts = kodi-addon-canada-on-demand
+	replaces = xbmc-addon-canada-on-demand
+
+pkgname = kodi-addon-canada-on-demand-git
+
