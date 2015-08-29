@@ -4,7 +4,7 @@
 pkgname=hpmyroom
 pkgver=10.4.0.0127
 pkgrel=1
-pkgdesc="HP MyRoom"
+pkgdesc="HP MyRoom a collaborative conferencing meetings software"
 url="https://www.myroom.hp.com"
 arch=('i686' 'x86_64')
 license=('unknown')
