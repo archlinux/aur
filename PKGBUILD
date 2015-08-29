@@ -1,7 +1,7 @@
-# Maintainer:  Oliver Jaksch <ojaksch@com-in.de>
+# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-stella-git
-pkgver=110.5d14182
+pkgver=113.1d5dac8
 pkgrel=1
 pkgdesc="libretro implementation of Stella. (Atari 2600)"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
