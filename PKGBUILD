@@ -17,31 +17,29 @@ source=("http://v8.1c.ru/overview/postgresql_patches/9-4-2/postgresql94-9.4.2-1.
 "postgresql.conf" "postgresql.service" "postgresql.install")
 md5sums=('1b673a15fed9df8ca058bb8674dfd88a'
          '7a510b5bcd4a5acb394a5dbf4286bb41'
-         '9baf4f9dd1a5283b1577de5c4970f728'
+         '285c8d5ad993b5ec5c1383251cccf262'
          'febdfca7e698211aa1ecf529e9a3140c')
 install=postgresql.install
 
 prepare() {
-#tar xfj "postgresql-9.4.2.tar.bz2"
-#cd "postgresql-9.4.2"
-#patch -p1 < ../1c_FULL_94-0.23
-#patch -p1 < ../applock-1c-9.4.patch
-#patch -p1 < ../online_analyze-9.4.patch
-#patch -p1 < ../plantuner.patch
-#patch -p1 < ../postgresql-1c-9.4.patch
-#patch -p1 < ../postgresql-logging.patch
-#patch -p1 < ../postgresql-perl-rpath.patch
-#patch -p1 < ../postgresql-prefer-ncurses.patch
-#patch -p1 < ../rpm-pgsql.patch
-echo "ok"
+	tar xfj "postgresql-9.4.2.tar.bz2"
+	cd "postgresql-9.4.2"
+	patch -p1 < ../1c_FULL_94-0.23
+	patch -p1 < ../applock-1c-9.4.patch
+	patch -p1 < ../online_analyze-9.4.patch
+	patch -p1 < ../plantuner.patch
+	patch -p1 < ../postgresql-1c-9.4.patch
+	patch -p1 < ../postgresql-logging.patch
+	patch -p1 < ../postgresql-perl-rpath.patch
+	patch -p1 < ../postgresql-prefer-ncurses.patch
+	patch -p1 < ../rpm-pgsql.patch
 }
 
 build() {
-#cd "postgresql-9.4.2"
-#./configure --disable-rpath --prefix=/usr --libdir=/usr/lib/postgresql/ --with-openssl --with-libxml --with-libxslt --enable-nls
-#make all
-#make -C contrib all
-echo "ok"
+	cd "postgresql-9.4.2"
+	./configure --disable-rpath --prefix=/usr --libdir=/usr/lib/postgresql/ --with-openssl --with-libxml --with-libxslt --enable-nls
+	make all
+	make -C contrib all
 }
 
 package() {

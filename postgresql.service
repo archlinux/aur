@@ -3,7 +3,7 @@ Description=PostgreSQL-1C database server
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 TimeoutSec=120
 User=postgres
 Group=postgres
@@ -12,14 +12,8 @@ Environment=PGROOT=/var/lib/postgres
 
 SyslogIdentifier=postgres
 PIDFile=/var/lib/postgres/postmaster.pid
-
-#ExecStartPre=/usr/bin/bin/postgresql-check-db-dir ${PGROOT}/data
-ExecStart=/usr/bin/pg_ctl -D ${PGROOT}/data start
-ExecReload=/usr/bin/pg_ctl -D ${PGROOT}/data reload
-ExecStop=/usr/bin/pg_ctl -D ${PGROOT}/data stop
-
-# Due to PostgreSQL's use of shared memory, OOM killer is often overzealous in
-# killing Postgres, so adjust it downward
+ExecStart=/usr/bin/postgres -D ${PGROOT}/data
+PrivateTmp=yes
 OOMScoreAdjust=-200
 
 [Install]
