@@ -1,0 +1,30 @@
+pkgbase = ow-zlib
+	pkgdesc = A compression/decompression Library for Open Watcom (cross-)compilation
+	pkgver = 1.2.8
+	pkgrel = 7
+	url = http://www.zlib.net/
+	arch = any
+	license = custom:zlib
+	makedepends = openwatcom-v2
+	depends = openwatcom-v2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = emptydirs
+	source = http://zlib.net/zlib-1.2.8.tar.gz
+	source = pragma.patch
+	md5sums = 44d667c142d7cda120332623eab69f40
+	md5sums = bd548e821655885de7de1099979b6e9d
+
+pkgname = ow-zlib
+
+pkgname = ow-zlib-dos
+
+pkgname = ow-zlib-win16
+
+pkgname = ow-zlib-win32
+
+pkgname = ow-zlib-os2
+
+pkgname = ow-zlib-netware
+
