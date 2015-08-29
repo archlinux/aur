@@ -1,7 +1,7 @@
 # Maintainer: Christoph Bayer <chrbayer@criby.de>
 
 _rev=r03
-_sdkver=6
+_sdkver=6.0
 _sdkint=23
 pkgname=android-armv7a-eabi-system-image-${_sdkint}
 pkgver=${_sdkver}_${_rev}
