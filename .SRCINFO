@@ -1,0 +1,19 @@
+pkgbase = cups-ocr
+	pkgdesc = Print directly to a tiff file which feeds an OCR engine which will output a text file. Modelled after cups-pdf.
+	pkgver = 0.1.2
+	pkgrel = 4
+	url = http://github.com/t0nedef/cups-ocr/
+	install = cups-ocr.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	depends = cups
+	depends = imagemagick
+	depends = tesseract
+	backup = etc/cups/cups-ocr.conf
+	source = https://github.com/t0nedef/cups-ocr/archive/0.1.2.tar.gz
+	md5sums = 1652988a8dc700fc7341573a31ad46cd
+
+pkgname = cups-ocr
+
