@@ -1,7 +1,7 @@
 pkgbase = shim-efi
-	pkgdesc = Simple bootloader for x86_64 UEFI Secure Boot - GIT Version
+	pkgdesc = Simple bootloader for x86_64 UEFI Secure Boot
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhinstaller/shim
 	arch = x86_64
 	license = GPL

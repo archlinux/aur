@@ -6,8 +6,8 @@ __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
 pkgver=0.9
-pkgrel=1
-pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
+pkgrel=2
+pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
 arch=('x86_64')
 license=('GPL')
