@@ -1,0 +1,14 @@
+pkgbase = checkmate-git
+	pkgdesc = GUI application for verifying and generating checksums
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = http://github.com/pazuzu156/checkmate
+	arch = any
+	license = LGPL
+	depends = qt5-base
+	depends = qt5-webkit
+	source = git://github.com/pazuzu156/checkmate.git
+	md5sums = SKIP
+
+pkgname = checkmate-git
+
