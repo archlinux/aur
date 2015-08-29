@@ -4,7 +4,7 @@
 # Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit-git
-pkgver=1.0.41.g716720e
+pkgver=1.1.280
 pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
@@ -15,14 +15,14 @@ makedepends=('git' 'gcc-objc')
 provides=('tikzit')
 conflicts=('tikzit')
 install=tikzit.install
-source=('tikzit::git+http://git.code.sf.net/p/tikzit/code')
+source=('git+https://github.com/tikzit/tikzit.git')
 md5sums=('SKIP')
 _gitname="tikzit"
 options=('!makeflags')
 
 pkgver() {
   cd "$srcdir"/$_gitname
-  git describe --tags | tr -d 'v'|sed s#-#.#g
+    printf "%s.%s" $(git describe --tags | tr -d 'v'|sed s#-#.#g) "$(git rev-list --count HEAD)"
 }
  
 build() {

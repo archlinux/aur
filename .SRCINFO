@@ -1,6 +1,6 @@
 pkgbase = tikzit-git
 	pkgdesc = Creation and modification of TeX diagrams written using the pgf/TikZ macro library
-	pkgver = 1.0.41.g716720e
+	pkgver = 1.1.280
 	pkgrel = 1
 	url = http://sourceforge.net/projects/tikzit/
 	install = tikzit.install
@@ -17,7 +17,7 @@ pkgbase = tikzit-git
 	provides = tikzit
 	conflicts = tikzit
 	options = !makeflags
-	source = tikzit::git+http://git.code.sf.net/p/tikzit/code
+	source = git+https://github.com/tikzit/tikzit.git
 	md5sums = SKIP
 
 pkgname = tikzit-git
