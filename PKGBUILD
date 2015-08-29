@@ -1,8 +1,8 @@
 # Maintainer: Kyle <kyle@gmx.ca>
 pkgname=opus-git
 _gitname=opus
-pkgver=0.0 # automatically determined from git origin
-pkgrel=3
+pkgver=06.36.g56d8504 # automatically determined from git origin
+pkgrel=1
 pkgdesc="codec designed for interactive speech and audio transmission over the Internet (git master)"
 arch=('i686' 'x86_64')
 url="http://www.opus-codec.org/"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd $_gitname
   # Use the tag of the last commit
-  git describe --always | sed -e 's|v||' -e 's|-|.|g'
+  git describe --always | sed -e 's|v||' -e 's|-|.|g' -e 's|draft.ietf.codec.oggopus.||'
 }
 
   build() {
