@@ -3,7 +3,7 @@
 # Maintainer: Glennie Vignarajah <glennie@glennie.fr>
 
 pkgname=tinyca2
-pkgver=0.7.5
+pkgver=0.7.5-2
 pkgrel=2
 pkgdesc="Simple graphical user interface to manage a small CA (Certification Authority)"
 arch=(i686 x86_64)
@@ -12,12 +12,15 @@ license=('GPL') # GPLv2+
 depends=(gtk2-perl perl-locale-gettext openssl)
 optdepends=('zip')
 source=("$pkgname::git://github.com/glennie/tinyca2"
-        fix-tinyca-paths.patch
-        stolen-from-debian.patch)
+        10-fix-tinyca-paths.patch
+        20-stolen-from-debian.patch
+        30-sha2.patch)
 
 md5sums=('SKIP'
          'd0b8fc9e3fc312ed9fbd98bf2dacbfea'
-         'd5ad0010db954820837a3d09c90d018d')
+         'd5ad0010db954820837a3d09c90d018d'
+         '95db1c26243fb9a70faf6dffdeccf20f'
+         )
 
 pkgver() {
   echo $pkgver
@@ -27,6 +30,7 @@ prepare() {
 #{{{
   cd ${srcdir}
   for PATCH in $(ls *.patch); do
+    echo "* patch: $PATCH"
     patch -p0 < ${PATCH} || exit 2
   done
 }

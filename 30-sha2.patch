@@ -1,0 +1,91 @@
+--- tinyca2.orig/lib/CA.pm	2015-08-29 11:26:54.000000000 +0200
++++ tinyca2/lib/CA.pm	2015-08-29 12:21:01.770748099 +0200
+@@ -349,7 +349,7 @@
+       $opts = {};
+       $opts->{'days'} = 3650; # set default to 10 years
+       $opts->{'bits'} = 4096;
+-      $opts->{'digest'} = 'sha1';
++      $opts->{'digest'} = 'sha512';
+ 
+       if(defined($mode) && $mode eq "sub") { # create SubCA, use defaults
+          $opts->{'parentca'} = $main->{'CA'}->{'actca'};
+@@ -453,7 +453,7 @@
+       $opts = {};
+       $opts->{'days'} = 3650; # set default to 10 years
+       $opts->{'bits'} = 4096;
+-      $opts->{'digest'} = 'sha1';
++      $opts->{'digest'} = 'sha512';
+       
+       $main->show_ca_import_dialog($opts);
+       return;
+diff -ur tinyca2/lib/GUI.pm tinyca2/lib/GUI.pm
+--- tinyca2/lib/GUI.pm.orig	2014-11-01 12:51:39.000000000 -0500
++++ tinyca2/lib/GUI.pm	2014-11-01 12:25:31.123392155 -0500
+@@ -37,6 +37,10 @@
+ 		     'ripemd160' => 'RIPEMD-160',
+ #		     'sha' => 'SHA',
+ 		     'sha1' => 'SHA-1',
++		     'sha224' => 'SHA-224',
++		     'sha256' => 'SHA-256',
++		     'sha384' => 'SHA-384',
++		     'sha512' => 'SHA-512',
+ 		     );
+
+ my %bit_lengths = (
+diff -ur tinyca2/lib/REQ.pm tinyca2/lib/REQ.pm
+--- tinyca2/lib/REQ.pm.orig	2006-07-25 15:12:00.000000000 -0500
++++ tinyca2/lib/REQ.pm	2014-11-01 12:30:12.025870028 -0500
+@@ -59,7 +59,7 @@
+          GUI::HELPERS::print_error($t);
+       }
+       $opts->{'bits'}   = 4096;
+-      $opts->{'digest'} = 'sha1';
++      $opts->{'digest'} = 'sha512';
+       $opts->{'algo'}   = 'rsa';
+       if(defined($opts) && $opts eq "sign") {
+          $opts->{'sign'} = 1;
+@@ -426,6 +426,14 @@
+          $opts->{'digest'} = "md5";
+       } elsif ($opts->{'digest'} =~ /^sha1/) {
+          $opts->{'digest'} = "sha1";
++      } elsif ($opts->{'digest'} =~ /^sha224/) {
++         $opts->{'digest'} = "sha224";
++      } elsif ($opts->{'digest'} =~ /^sha256/) {
++         $opts->{'digest'} = "sha256";
++      } elsif ($opts->{'digest'} =~ /^sha384/) {
++         $opts->{'digest'} = "sha384";
++      } elsif ($opts->{'digest'} =~ /^sha512/) {
++         $opts->{'digest'} = "sha512";
+       } elsif ($opts->{'digest'} =~ /^ripemd160/) {
+          $opts->{'digest'} = "ripemd160";
+       } else {
+diff -ur tinyca2/templates/openssl.cnf tinyca2/templates/openssl.cnf
+--- tinyca2/templates/openssl.cnf.orig	2006-07-25 15:12:01.000000000 -0500
++++ tinyca2/templates/openssl.cnf	2014-11-01 12:30:43.238590285 -0500
+@@ -15,7 +15,7 @@
+ x509_extensions = client_cert
+ default_days    = 365
+ default_crl_days= 30
+-default_md      = sha1
++default_md      = sha512
+ preserve        = no
+ policy          = policy_client
+
+@@ -33,7 +33,7 @@
+ x509_extensions = server_cert
+ default_days    = 365
+ default_crl_days= 30
+-default_md      = sha1
++default_md      = sha512
+ preserve        = no
+ policy          = policy_server
+
+@@ -51,7 +51,7 @@
+ x509_extensions = v3_ca
+ default_days    = 365
+ default_crl_days= 30
+-default_md      = sha1
++default_md      = sha512
+ preserve        = no
+ policy          = policy_ca
+
