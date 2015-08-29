@@ -6,11 +6,8 @@ pkgbase = input-utils
 	arch = x86_64
 	arch = i686
 	license = GPLv2
-	makedepends = make
-	makedepends = glibc
-	makedepends = gcc
 	source = http://www.kraxel.org/releases/input/input-1.0.tar.gz
-	md5sums = 3e58772e8647093b1de2f2c90bfb9ee8
+	sha256sums = ab6f550f01bb5fcede492ab88711d82bacee4229cf2f5dc55a349b3bff4e3b13
 
 pkgname = input-utils
 
