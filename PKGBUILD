@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.25.1.59.ga832764
+pkgver=2.19.25.1.60.g555eba6
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ optdepends=('netpbm: building HTML documentation'
 provides=('lilypond')
 conflicts=('lilypond' 'lilypond-devel')
 source=(git://git.sv.gnu.org/lilypond.git)
-md5sums=('SKIP' '7f418a0cf53b70d7f5b68ffe016794b5')
+md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
