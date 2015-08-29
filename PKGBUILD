@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides a recovery behavior for the navigation stac
 url='http://wiki.ros.org/rotate_recovery'
 
 pkgname='ros-indigo-rotate-recovery'
-pkgver='1.11.11'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -55,6 +55,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
@@ -63,4 +64,3 @@ package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}/" install
 }
-
