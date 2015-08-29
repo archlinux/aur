@@ -1,0 +1,22 @@
+pkgbase = otf-hack
+	pkgdesc = Source Foundry Hack is is hand groomed and optically balanced typeface to be your go-to code face based on the Bitstream Vera Mono font.
+	pkgver = 2.010
+	pkgrel = 1
+	url = http://sourcefoundry.org/hack/
+	install = otf-hack.install
+	arch = any
+	license = SIL Open Font License 1.1 and Bitstream Vera License
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://github.com/chrissimpkins/Hack/raw/v2.010/build/otf/Hack-Bold.otf
+	source = https://github.com/chrissimpkins/Hack/raw/v2.010/build/otf/Hack-BoldOblique.otf
+	source = https://github.com/chrissimpkins/Hack/raw/v2.010/build/otf/Hack-Regular.otf
+	source = https://github.com/chrissimpkins/Hack/raw/v2.010/build/otf/Hack-RegularOblique.otf
+	md5sums = 328a5888b0db742f06fc74fdaa127c33
+	md5sums = 4e82325b478b9d2b0c4f60df95e8dfdf
+	md5sums = 61ad16e40a24bd9d0931108af0468b9c
+	md5sums = 59572651d88c4d88cb5a27238927ca9f
+
+pkgname = otf-hack
+
