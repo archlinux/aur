@@ -5,7 +5,7 @@
 
 pkgname=gsoap287
 pkgver=2.8.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Offers an XML language binding to ease the development of SOAP/XML Web services in C and C/C++"
 url="http://www.cs.fsu.edu/~engelen/soap.html"
 arch=('i686' 'x86_64')
@@ -33,5 +33,5 @@ package() {
   mkdir -p $pkgdir/usr/share/gsoap/WS
   cp -R gsoap/import $pkgdir/usr/share/gsoap/
   cp -R gsoap/WS $pkgdir/usr/share/gsoap/
-  install -D ../LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -D ../LICENSE.gsoap $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
