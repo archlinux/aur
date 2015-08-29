@@ -1,0 +1,15 @@
+pkgbase = vimeo-dl-git
+	pkgdesc = A command line script to download vimeo videos
+	pkgver = 20130321
+	pkgrel = 2
+	url = https://github.com/johnteslade/vimeo-downloader
+	arch = any
+	license = custom
+	makedepends = git
+	depends = wget
+	provides = vimeo-dl
+	conflicts = vimeo-dl
+	replaces = vimeo-dl
+
+pkgname = vimeo-dl-git
+
