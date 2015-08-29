@@ -1,0 +1,20 @@
+pkgbase = space-bg
+	pkgdesc = A background image setting program that grabs the daily astronomy image (http://apod.nasa.gov/apod/astropix.html)
+	pkgver = 2.0.7
+	pkgrel = 2
+	url = http://github.com/t0nedef/space-bg
+	arch = any
+	license = GPL
+	depends = hsetroot
+	depends = python-beautifulsoup4
+	depends = libnotify
+	depends = wget
+	depends = youtube-dl
+	depends = mplayer
+	depends = vimeo-dl-git
+	depends = imagemagick
+	source = https://github.com/t0nedef/space-bg/archive/2.0.7.tar.gz
+	md5sums = 0d93963b0d0e1a7ce04eec1a64021bf2
+
+pkgname = space-bg
+
