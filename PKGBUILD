@@ -3,18 +3,16 @@
 pkgname=unity-editor-bin
 pkgver=5.1.0f3+2015082501
 pkgrel=1
-pkgdesc="Editor for the Unity Game Engine"
+pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences"
 arch=('x86_64')
 license=('custom')
 url="https://unity3d.com/"
-depends=('desktop-file-utils' 'qt5-base' 'python' 'python2' 'gconf' 'lib32-libxcursor' 'lib32-libgl'
-         'lib32-libxrandr' 'postgresql-libs' 'lib32-openssl' 'ruby' 'glu' 'nss' 'libxtst')
+depends=('desktop-file-utils' 'xdg-utils' 'gcc-multilib' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'monodevelop')
 optdepends=('ffmpeg: for WebGL exporting'
             'nodejs: for WebGL exporting'
             'java-runtime: for WebGL exporting'
             'gzip: for WebGL exporting'
             'java-environment: for Android and Tizen exporting'
-            'monodevelop: enable unity monodevelop'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote')
 provides=('unity-editor')
