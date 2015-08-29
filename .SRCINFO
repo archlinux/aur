@@ -1,0 +1,16 @@
+pkgbase = input-utils
+	pkgdesc = Equivalent of Ubuntu/Debian's input-utils. Contains lsinput
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.kraxel.org/releases/input/
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = make
+	makedepends = glibc
+	makedepends = gcc
+	source = http://www.kraxel.org/releases/input/input-1.0.tar.gz
+	md5sums = 3e58772e8647093b1de2f2c90bfb9ee8
+
+pkgname = input-utils
+
