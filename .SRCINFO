@@ -1,7 +1,7 @@
 pkgbase = gmusicproxy-stable
 	pkgdesc = Let's stream Google Play Music using any media-player
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/diraimondo/gmusicproxy
 	arch = any
 	license = GPL3

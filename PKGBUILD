@@ -1,7 +1,7 @@
 # Maintainer: A. Richard <dubitae@gmail.com>
 pkgname=gmusicproxy-stable
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Let's stream Google Play Music using any media-player"
 arch=('any')
 url="https://github.com/diraimondo/gmusicproxy"
@@ -39,7 +39,7 @@ md5sums=(
 )
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/gmusicproxy-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
 
     install -Dm644 "${srcdir}"/gmusicproxy.cfg.sample \
