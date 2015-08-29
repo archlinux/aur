@@ -3,28 +3,33 @@
 # Contributor: TimothÃ©e Ravier <tim@siosm.fr>
 
 pkgname='qxmpp'
-pkgver='0.8.3'
+pkgver='0.9.0'
 pkgrel='1'
 pkgdesc='An XMPP client library based on Qt & C++'
 arch=('i686' 'x86_64')
 url='https://github.com/qxmpp-project/qxmpp'
 license=('LGPL2.1')
-depends=('qt4')
-optdepends=('speex: required to enable speex audio codec'
+depends=('qt5-base')
+optdepends=('doxygen: required to build the HTML documentation'
+	    'opus: required to enable opus audio codec'
+	    'speex: required to enable speex audio codec'
             'libvpx: required to enable vpx video codec'
 	    'libtheora: required to enable theora video codec') 
-conflicts=('qxmpp-git' 'qxmpp-leechcraft-git' 'qxmpp-qt5' 'qxmpp-qt5-git')
+conflicts=('qxmpp-qt5')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('63828a91be14b68ec6f091b30a292d47eaf7a3c0')
+sha1sums=('8b73021378523c6d5134febc4db25985d11b0e68')
  
 build() {
 	cd "$srcdir/$pkgname-$pkgver/"
 	[ -d build ] || mkdir build && cd build
-	qmake-qt4 PREFIX=/usr ..
+	
+	#In order to build the HTML documentation,
+	# add QXMPP_USE_DOXYGEN=1 to qmake arguments
 
-	# In order to enable speex audio codec, vpx video codec or theora video codec,
-	# add QXMPP_USE_SPEEX=1, QXMPP_USE_VPX=1 and QXMPP_USE_THEORA=1 to qmake arguments.
+	# In order to enable opus & speex audio codecs, and vpx & theora video codecs,
+	# add QXMPP_USE_OPUS=1, QXMPP_USE_SPEEX=1, QXMPP_USE_VPX=1 and QXMPP_USE_THEORA=1 to qmake arguments
 
+	qmake-qt5 PREFIX=/usr ..
 	make
 }
 

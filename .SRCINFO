@@ -1,21 +1,20 @@
 pkgbase = qxmpp
 	pkgdesc = An XMPP client library based on Qt & C++
-	pkgver = 0.8.3
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/qxmpp-project/qxmpp
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	depends = qt4
+	depends = qt5-base
+	optdepends = doxygen: required to build the HTML documentation
+	optdepends = opus: required to enable opus audio codec
 	optdepends = speex: required to enable speex audio codec
 	optdepends = libvpx: required to enable vpx video codec
 	optdepends = libtheora: required to enable theora video codec
-	conflicts = qxmpp-git
-	conflicts = qxmpp-leechcraft-git
 	conflicts = qxmpp-qt5
-	conflicts = qxmpp-qt5-git
-	source = https://github.com/qxmpp-project/qxmpp/archive/v0.8.3.tar.gz
-	sha1sums = 63828a91be14b68ec6f091b30a292d47eaf7a3c0
+	source = https://github.com/qxmpp-project/qxmpp/archive/v0.9.0.tar.gz
+	sha1sums = 8b73021378523c6d5134febc4db25985d11b0e68
 
 pkgname = qxmpp
 
