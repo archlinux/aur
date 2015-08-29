@@ -1,5 +1,5 @@
 _npmname=svgo
-_npmver=0.5.5
+_npmver=0.5.6
 pkgname=nodejs-svgo # All lowercase
 pkgver=${_npmver}
 pkgrel=1
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(3dff8a0803c4f40c245295816e355204d1da3872)
+sha1sums=(9501c533cf84f74a79be1bb3f3494d912bbed119)
 
 package() {
   cd "$srcdir"
