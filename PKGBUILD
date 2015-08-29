@@ -1,10 +1,10 @@
-# Maintainer: Filippo Squillace <feel dot squally at gmail dot com>
+# Maintainer: Filippo Squillace <feel dot sqoox at gmail dot com>
 # More details on how to change this file:
 # https://wiki.archlinux.org/index.php/PKGBUILD
 # https://wiki.archlinux.org/index.php/Creating_packages
 
 pkgname=junest-git
-pkgver=r193.06879b2
+pkgver=r197.cfa5127
 pkgrel=1
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
