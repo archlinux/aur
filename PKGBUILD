@@ -3,7 +3,7 @@
 # Your system will break if you install this. For breaking purposes only
 
 pkgname=libressl
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="FREE version of the SSL/TLS protocol forked from OpenSSL - HIGHLY EXPRIMENTAL ONLY"
 url="http://www.libressl.org/"
@@ -17,7 +17,7 @@ backup=('etc/ssl/openssl.cnf')
 #conflicts=('openssl')
 source=(http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${pkgname}-${pkgver}.tar.gz{,.asc}
         libressl-dummy-rand-egd.patch)
-sha512sums=('eeff48450b92f46db9bbd851fbf97ffc9fdea16f69d6319de94755541b441bee1adea5d3f08d695e0cab9ce63f8ff0f2f6a5ba186dc071ec062ade53da3f811f'
+sha512sums=('79f0cd57d2f1202e7d1213a9f9e0665bce11d1c1e5a4ba48c98b81f94e09a8c72733a5dfb0a5626b91db146641cfbec79acb9a5cbb437a60924b7f028d224500'
             'SKIP'
             '73ca8a924a23f874287503453d939ecffa40f05760cd539b4773f3f28687ee1f2fa463ca3f2cad4ac5f57a49f3b6a918c015c8829112c61cb3ea7b798c0d110b')
 validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5')
