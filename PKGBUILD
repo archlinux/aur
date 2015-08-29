@@ -4,7 +4,7 @@
 
 pkgname=minetest-git-leveldb
 _pkgname=minetest
-pkgver=20150114.e19dab2
+pkgver=20150829.17b7b7c
 pkgrel=1
 pkgdesc='Infiniminer/Minecraft-inspired building game (with LuaJIT, LevelDB, and Redis support)'
 url='http://www.minetest.net/'
@@ -15,8 +15,8 @@ depends=('bzip2' 'libpng' 'libjpeg' 'mesa' 'sqlite' 'openal' 'libvorbis' 'irrlic
 source=('git://github.com/minetest/'minetest{,_game}.git)
 sha1sums=('SKIP' 'SKIP')
 
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+conflicts=("${_pkgname}"{,-common,-server})
+provides=("${_pkgname}"{,-common,-server})
 install=install
 
 pkgver() {
