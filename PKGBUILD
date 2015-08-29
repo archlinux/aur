@@ -2,9 +2,9 @@
 # Contributor : Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-grsec
-pkgver=352.30
+pkgver=352.41
 _extramodules=extramodules-4.1.6-grsec
-pkgrel=5
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -19,8 +19,8 @@ source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-
         "nvidia-drivers-pax-usercopy.patch"
         "nvidia-drivers-pax-constify.patch"
         "nv-drm.patch")
-md5sums=('7e59d84eafe2482b2f02df692b9168d5'
-         '135dd90db609cecad8e74bde0054cf6f'
+md5sums=('3f9c9fed035fa845e3f6a1ea5f5732f7'
+         'd41d1a358edbade36cfd97cdcc9a80b9'
          '5277c8699971b9bae8d2845cc00e0e5d'
          '29247a931d0d457692ae0bcd278d4d43'
          'ff8a5f979e4428f8c847423fb007042c')
