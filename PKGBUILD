@@ -5,7 +5,7 @@
 pkgname='qxmpp'
 pkgver='0.9.0'
 pkgrel='1'
-pkgdesc='An XMPP client library based on Qt & C++'
+pkgdesc='Cross-platform C++ XMPP client and server library'
 arch=('i686' 'x86_64')
 url='https://github.com/qxmpp-project/qxmpp'
 license=('LGPL2.1')
