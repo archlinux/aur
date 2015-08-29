@@ -2,7 +2,7 @@
 
 pkgname=sqlitexx
 pkgver=0.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A C++ API for Sqlite."
 arch=('i686' 'x86_64')
 url='http://wiki.github.com/andreasbaumann/sqlitexx/'
