@@ -1,7 +1,7 @@
 pkgbase = djohn
 	pkgdesc = Cracks passwords over multiple computers using john
 	pkgver = 0.9.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ktulu.com.ar/blog/software/djohn/
 	arch = i686
 	arch = x86_64
