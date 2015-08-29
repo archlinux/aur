@@ -3,11 +3,11 @@
 pkgname="collada-dom"
 provides=("colladadom")
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An API that provides a C++ object representation of a COLLADA XML instance document."
 url="https://github.com/rdiankov/collada-dom/tree/v2.4.3"
 license=("custom")
-arch=("i686" "x86_64")
+arch=("any")
 depends=("libxml2" "boost-libs" "pcre")
 makedepends=("cmake" "boost")
 source=("https://github.com/rdiankov/${pkgname}/archive/v${pkgver}.zip")
