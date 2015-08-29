@@ -1,0 +1,16 @@
+pkgbase = android-google-apis-armv7-eabi-23
+	pkgdesc = Android Google APIs, API-23 (ARM EABI v7a System Image)
+	pkgver = 6.0_r07
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform-23
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/google_apis/sysimg_arm-23_r07.zip
+	source = source.properties
+	sha1sums = 8fdeb07bcdaff4211b7fd979135541b06b2adaaf
+	sha1sums = 2110dd1b83a50248e6d7dd87d26a175eee9eb177
+
+pkgname = android-google-apis-armv7-eabi-23
+
