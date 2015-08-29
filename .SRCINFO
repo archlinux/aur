@@ -1,7 +1,7 @@
 pkgbase = goproxy-git
 	pkgdesc = a proxy tunnel wirtten in go
 	pkgver = r309.b1e59a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shell909090/goproxy
 	arch = x86_64
 	arch = i686

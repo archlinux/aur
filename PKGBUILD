@@ -2,7 +2,7 @@
 pkgname=goproxy-git
 _pkgname=goproxy
 pkgver=r309.b1e59a4
-pkgrel=1
+pkgrel=2
 pkgdesc="a proxy tunnel wirtten in go"
 url="https://github.com/shell909090/goproxy"
 license=('GPL')
@@ -35,7 +35,6 @@ build() {
 
     cd "$GOPATH/src/github.com/shell909090/goproxy/goproxy"
     go get -v
-    mkdir "$GOPATH/bin"
     go build -o "$srcdir/$_pkgname/bin/$_pkgname"
 }
 
