@@ -2,7 +2,7 @@
 
 pkgname=masterpassword-cli
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI version of Master Password."
 
 arch=('any')
@@ -16,7 +16,6 @@ makedepends=(
   'openssl'
   'gcc'
   'git'
-  'subversion'
 )
 conflicts=(
   'masterpassword-cli-git'
@@ -25,18 +24,14 @@ conflicts=(
 source=("https://ssl.masterpasswordapp.com/$pkgname.tar.gz")
 sha256sums=('6ea76592eb8214329072d04f651af99d73de188a59ef76975d190569c7fa2b90')
 
+prepare() {
+  sed -i '/^svn=/d' ./lib/scrypt/.source
+}
+
 build() {
-	pwd
 	targets="mpw" ./build
 }
 
 package() {
-	pwd
-
-  # run ./install
-  # mkdir -p "$bindir"
-  # echo -e "$bindir\nn" | ./install
-  # rm "$bindir/bashlib"
-
   install -Dm755 "mpw" "$pkgdir/usr/bin/mpw"
 }
