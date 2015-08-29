@@ -14,6 +14,7 @@ depends=('avahi' 'lsb-release' 'protobuf' 'qt4' 'icu' 'zeroc-ice' 'python-zeroc-
 makedepends=('boost')
 backup=("etc/murmur.ini")
 install="murmur.install"
+conflicts=('murmur' 'murmur-git')
 source=(https://github.com/mumble-voip/mumble/releases/download/${pkgver}/mumble-${pkgver}.tar.gz
         "murmur.dbus.conf"
         "murmur.service")
