@@ -1,7 +1,7 @@
 # Maintainer: A. Richard <dubitae@gmail.com>
 pkgname=gmusicproxy-stable
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Let's stream Google Play Music using any media-player"
 arch=('any')
 url="https://github.com/diraimondo/gmusicproxy"
@@ -18,7 +18,7 @@ depends=(
 makedepends=('python2-setuptools')
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(gmusicproxy)
 replaces=()
 backup=()
 options=(!emptydirs)
