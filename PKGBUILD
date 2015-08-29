@@ -3,7 +3,7 @@
 
 pkgbase=python-selection
 pkgname=('python-selection' 'python2-selection')
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1 
 pkgdesc="API to extract content from HTML & XML documents"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://pypi.python.org/pypi/selection"
 license=('MIT')
 makedepends=('python' 'python2')
 source=(https://pypi.python.org/packages/source/s/selection/selection-${pkgver}.tar.gz)
-sha256sums=('efebb9518bb391a819a9d73753487271ac4e23dec70387770d6b2d686bc92c43')
+sha256sums=('3e2f5b21bda0c6a877ca42f23f017cb2e95873155fa10ae3ae44520280a9e819')
 
 build() {
   cd $srcdir
