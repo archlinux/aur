@@ -2,16 +2,16 @@
 
 pkgname=java-masterpassword
 pkgver=0.0
-pkgrel=20150628
+pkgrel=20150829
 pkgdesc="A stateless password management solution."
 url="http://masterpasswordapp.com/"
 license=('GPL')
 arch=('any')
 depends=('java-runtime')
-source=('http://masterpasswordapp.com/masterpassword-gui.jar'
+source=('https://ssl.masterpasswordapp.com/masterpassword-gui.jar'
 	'masterpassword.desktop'
 	'masterpassword.png')
-md5sums=('a749b816ea14f61ea3ae41b3691d7f07'
+md5sums=('ace7a45149345a8bfc1b7f55b3015d0b'
 	 '60b233ffe691953248930e866600dd56'
 	 'a6f72aca863785f8021305fe417675d2')
 noextract=('masterpassword-gui.jar')
