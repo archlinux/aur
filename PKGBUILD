@@ -6,7 +6,7 @@ __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
 arch=('x86_64')
@@ -20,7 +20,8 @@ optdepends=('mactel-boot: For bless command in Apple Mac systems')
 conflicts=("${pkgname}-git" 'shim-efi-x86_64' 'shim-efi-x86_64-git')
 provides=("${pkgname}=${pkgver}" "shim-efi-x86_64=${pkgver}"
 "shim-efi-x86_64-git=${pkgver}")
-
+install="${__pkgname}.install"
+changelog="${__pkgname}.changelog"
 source=("${url}/releases/download/${pkgver}/${__pkgname}-${pkgver}.tar.bz2"
 	${__pkgname}.patch)
 md5sums=('fc8fb830c0e3eb66f73b0a7872a71279'
