@@ -1,14 +1,14 @@
 pkgbase = python2-dpkt
 	pkgdesc = This is a Python library for interacting with and creating packets.
-	pkgver = 1.8
-	pkgrel = 0
-	url = http://code.google.com/p/dpkt/
+	pkgver = 1.8.r98
+	pkgrel = 2
+	url = https://github.com/kbandla/dpkt
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = python2
-	source = http://dpkt.googlecode.com/files/dpkt-1.8.tar.gz
-	md5sums = 0f8e5a4d4b2f5d5faaf7bbfbf3e1e8b7
+	source = https://github.com/kbandla/dpkt/archive/1.8.r98.tar.gz
+	md5sums = 79922d79eaaad5673520d810f242b95e
 
 pkgname = python2-dpkt
 
