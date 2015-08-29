@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-nav-core
 	pkgdesc = ROS - This package provides common interfaces for navigation specific robot actions.
-	pkgver = 1.11.11
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = http://wiki.ros.org/nav_core
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = ros-indigo-nav-core
 	depends = ros-indigo-costmap-2d
 	depends = ros-indigo-tf
 	depends = ros-indigo-geometry-msgs
-	source = nav_core::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/nav_core/1.11.11-0
+	source = nav_core::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/nav_core/1.12.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-nav-core
