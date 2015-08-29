@@ -2,8 +2,8 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=areca
-pkgver=7.4.9
-pkgrel=2
+pkgver=7.5
+pkgrel=1
 pkgdesc="Personal file backup software supporting compression, encryption and incremental backups."
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -49,7 +49,7 @@ package() {
 
 # makepkg --geninteg >> PKGBUILD
 
-md5sums=('7788151e36daa015a4f0ad99b7e9e0c0'
+md5sums=('f058afa2162f1498598ee23ab1b4d34b'
          '024e3fe74c518a9dee889f3ea1ff9f71'
          '662d65e44fe0806cff69850dae55f107'
          '8e0088445454ab80a9f04c84b3363814'
