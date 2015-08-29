@@ -1,0 +1,12 @@
+pkgbase = xcursor-ardoise-opaque
+	pkgdesc = A simple, dark, flat theme. It uses symbols instead of changing the shape of the cursor.
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Ardoise?content=165308
+	arch = any
+	license = CCPL
+	source = http://nicola.link/files/icons/Ardoise_opaque.tar.gz
+	md5sums = cef87c157983d338ea564ce3b93a9352
+
+pkgname = xcursor-ardoise-opaque
+
