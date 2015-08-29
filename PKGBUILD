@@ -1,4 +1,4 @@
-# Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
+# Maintainer: Robin Nehls <aur@manol.is>
 
 pkgname=gr-fosphor-git
 pkgver=3fdfe7c
