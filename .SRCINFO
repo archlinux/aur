@@ -1,0 +1,16 @@
+pkgbase = android-google-apis-23
+	pkgdesc = Android Google APIs, API-23
+	pkgver = 6.0_r01
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform-23
+	options = !strip
+	source = http://dl.google.com/android/repository/google_apis-23_r01.zip
+	source = source.properties
+	sha1sums = 04c5cc1a7c88967250ebba9561d81e24104167db
+	sha1sums = bada334c75c006144f9bb6ccd5b1609d81ed602a
+
+pkgname = android-google-apis-23
+
