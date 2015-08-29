@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-mmm-mode-git
-pkgver=20150810
+pkgver=20150829
 pkgrel=1
 pkgdesc="Minor mode for Emacs that allows Multiple Major Modes to coexist in one buffer"
 arch=('any')
