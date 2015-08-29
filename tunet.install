@@ -1,0 +1,15 @@
+post_install() {
+  xdg-icon-resource forceupdate --theme hicolor
+  update-desktop-database -q
+   cat << EOF
+==> To enable password saving function, please run: chown -hR YOUR_USERNAME /opt/TUNet/
+EOF
+}
+
+post_upgrade() {
+  xdg-icon-resource forceupdate --theme hicolor
+  update-desktop-database -q
+   cat << EOF
+==> To enable password saving function, please run: chown -hR YOUR_USERNAME /opt/TUNet/
+EOF
+}

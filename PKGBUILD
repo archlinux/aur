@@ -1,28 +1,24 @@
 #Maintainer:xgdgsc
 
 pkgname="tunet"
-pkgver="1"
+pkgver="2015"
 pkgrel=1
 pkgdesc="Tsinghua University network authentication client for Linux."
 arch=("i686" "x86_64")
 url="http://net.tsinghua.edu.cn"
 license=('Unknown')
-source=("http://net.tsinghua.edu.cn/files/TUNet_linux.tar.gz" "TUNet.desktop")
-md5sums=("da737c2edd551cc259378eef3dff343b" "55d1a040bc394e096fa4c81f43444458")
-depends=('glib2')
+source=("http://net.tsinghua.edu.cn/files/Tunet2015_linux.rar" "TUNet.desktop" "logo.png")
+md5sums=("c4c286c59a3baf453cc08c3654511ceb" "195dd8feecedd85aaef8e7b4a1c2884a" "e4c03714b61b1d3906865c08672348d9")
+install='tunet.install'
+# makedepends=('unrar')
+# depends=('glib2')
 
 package() {
-  cd "${srcdir}/TUNet_linux/"
+  cd "${srcdir}"
+  tar -xzvf Tunet2015.$CARCH.tgz
   mkdir -p "${pkgdir}/opt/TUNet"
   mkdir -p "${pkgdir}/usr/share/applications/"
-  cp *.png "${pkgdir}/opt/TUNet"
-  cp tunet.ui "${pkgdir}/opt/TUNet"
-  if [[ $CARCH = i686 ]];then
-    cp TUNet "${pkgdir}/opt/TUNet"
-    sed -i 's|Exec=/opt/TUNet/TUNet64|Exec=/opt/TUNet/TUNet|' "${srcdir}/TUNet.desktop"
-    cp "${srcdir}/TUNet.desktop" "${pkgdir}/usr/share/applications/"
-  else
-    cp TUNet64 "${pkgdir}/opt/TUNet"
-    cp "${srcdir}/TUNet.desktop" "${pkgdir}/usr/share/applications/"
-  fi
+  cp logo.png "${pkgdir}/opt/TUNet/"
+  cp bin/Tunet2015* "${pkgdir}/opt/TUNet/"
+  cp "${srcdir}/TUNet.desktop" "${pkgdir}/usr/share/applications/"
 }
