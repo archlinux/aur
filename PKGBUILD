@@ -4,9 +4,9 @@ pkgname=libretro-4do-git
 pkgver=98.97bb060
 pkgrel=1
 pkgdesc="libretro implementation of 4DO/libfreedo (3DO)"
-arch=('i686' 'x86_64' 'arm' 'armv6h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/4do-libretro"
-license=('GPL')
+license=('GPL3')
 depends=('zlib')
 makedepends=('git')
 
