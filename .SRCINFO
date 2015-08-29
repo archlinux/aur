@@ -1,0 +1,15 @@
+pkgbase = python2-validictory
+	pkgdesc = General purpose Python data validator that allows validation of arbitrary Python data structures.
+	pkgver = 0.9.1
+	pkgrel = 3
+	url = https://readthedocs.org/projects/validictory/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://github.com/sunlightlabs/validictory/archive/0.9.1.tar.gz
+	md5sums = aee1a43aae0da08d49c7b949982ec169
+
+pkgname = python2-validictory
+
