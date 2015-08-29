@@ -1,0 +1,30 @@
+pkgbase = minisatip-git
+	pkgdesc = SAT>IP server for linux using local DVB-S2, DVB-S or DVB-T cards
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/catalinii/minisatip
+	install = minisatip.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	makedepends = libdvbcsa
+	depends = libdvbcsa
+	optdepends = oscam: channels descrambling
+	provides = minisatip
+	conflicts = minisatip
+	backup = etc/conf.d/minisatip
+	source = git+https://github.com/catalinii/minisatip
+	source = minisatip.service
+	source = minisatip.sysuser
+	source = minisatip.conf
+	sha256sums = SKIP
+	sha256sums = 0eea34694767681b2b56529b0ad095f33ca3cd2bd29133b57e90ceb2806eba37
+	sha256sums = 423b4d0452907e2caa639cd4da17dd918fccb7a0cf3dc1a71c48b7811df8bc1e
+	sha256sums = c47790245befba5f0c1424e48854a2c06f62edc819c797ff14a15e80128568bc
+
+pkgname = minisatip-git
+

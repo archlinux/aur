@@ -1,0 +1,14 @@
+[Unit]
+Description=Single threaded SAT>IP server
+After=network.target
+
+[Service]
+User=minisatip
+Group=minisatip
+WorkingDirectory=/tmp
+Type=simple
+EnvironmentFile=-/etc/conf.d/minisatip.conf
+ExecStart=/usr/bin/minisatip -f $SERVER_ARGS
+
+[Install]
+WantedBy=multi-user.target

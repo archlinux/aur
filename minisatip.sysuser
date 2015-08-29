@@ -1,0 +1,4 @@
+u minisatip 183 minisatip /tmp
+m minisatip audio
+m minisatip video
+m minisatip uucp
