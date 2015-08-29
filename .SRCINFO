@@ -1,12 +1,11 @@
 pkgbase = flightgear-git
 	pkgdesc = An open-source, multi-platform flight simulator
-	pkgver = 20150613
-	pkgrel = 3
+	pkgver = 20150829
+	pkgrel = 1
 	url = http://flightgear.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	makedepends = boost
 	depends = simgear-git
 	depends = libxmu
@@ -16,6 +15,8 @@ pkgbase = flightgear-git
 	depends = openscenegraph-git
 	provides = flightgear-git
 	conflicts = flightgear
+	source = git://git.code.sf.net/p/flightgear/flightgear
+	md5sums = SKIP
 
 pkgname = flightgear-git
 
