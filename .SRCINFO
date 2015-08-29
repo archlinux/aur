@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-cookie-controller
 	pkgdesc = Buttons for managing cookies, cookie permissions, and site cookie exceptions.
-	pkgver = 4.2
-	pkgrel = 2
+	pkgver = 4.3
+	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/cookie-controller
 	arch = any
 	license = custom:MPLv2
 	depends = firefox
-	noextract = cookie_controller-4.2-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/334572/cookie_controller-4.2-fx.xpi
-	sha256sums = 03c34f18471fd49f43b127901a9be19096f47c77b5038911febc5a485ef8e05b
+	noextract = cookie_controller-4.3-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/334572/cookie_controller-4.3-fx.xpi
+	sha256sums = 81e9b724f434e017712d1a1017cfc99c7638ebfe1cd5db10ee8fc756d7971e3a
 
 pkgname = firefox-extension-cookie-controller
 
