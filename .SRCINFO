@@ -1,0 +1,28 @@
+pkgbase = murmur-ice
+	pkgdesc = The voice chat application server for Mumble
+	pkgver = 1.2.10
+	pkgrel = 1
+	url = http://mumble.sourceforge.net
+	install = murmur.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	depends = avahi
+	depends = lsb-release
+	depends = protobuf
+	depends = qt4
+	depends = icu
+	depends = zeroc-ice
+	depends = python-zeroc-ice
+	depends = python2-zeroc-ice
+	backup = etc/murmur.ini
+	source = https://github.com/mumble-voip/mumble/releases/download/1.2.10/mumble-1.2.10.tar.gz
+	source = murmur.dbus.conf
+	source = murmur.service
+	md5sums = 14ab2e9174b7ca87623e63aa56dd6d5b
+	md5sums = eddea4cdbd0bde4b960a67e16b5d5478
+	md5sums = d27a9adcd7561859e7b033046729bc0e
+
+pkgname = murmur-ice
+
