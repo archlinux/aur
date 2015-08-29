@@ -1,0 +1,36 @@
+diff -upr slim-1.3.6-orig/app.cpp slim-1.3.6/app.cpp
+--- slim-1.3.6-orig/app.cpp	2013-10-01 23:38:05.000000000 +0100
++++ slim-1.3.6/app.cpp	2015-08-19 12:50:24.450834922 +0100
+@@ -979,6 +979,10 @@ int App::StartServer() {
+ 
+ 	delete [] args;
+ 
++	string xserver_ready = cfg->getOption("xserver_ready");
++	if (xserver_ready != "") {
++		system(xserver_ready.c_str());
++		}
+ 	serverStarted = true;
+ 
+ 	return ServerPID;
+diff -upr slim-1.3.6-orig/cfg.cpp slim-1.3.6/cfg.cpp
+--- slim-1.3.6-orig/cfg.cpp	2013-10-01 23:38:05.000000000 +0100
++++ slim-1.3.6/cfg.cpp	2015-08-19 12:49:44.671573403 +0100
+@@ -38,6 +38,7 @@ Cfg::Cfg()
+ 	options.insert(option("login_cmd","exec /bin/bash -login ~/.xinitrc %session"));
+ 	options.insert(option("halt_cmd","/sbin/shutdown -h now"));
+ 	options.insert(option("reboot_cmd","/sbin/shutdown -r now"));
++	options.insert(option("xserver_ready",""));	/*command to execute when xserver is ready*/
+ 	options.insert(option("suspend_cmd",""));
+ 	options.insert(option("sessionstart_cmd",""));
+ 	options.insert(option("sessionstop_cmd",""));
+diff -upr slim-1.3.6-orig/slim.conf slim-1.3.6/slim.conf
+--- slim-1.3.6-orig/slim.conf	2013-10-01 23:38:05.000000000 +0100
++++ slim-1.3.6/slim.conf	2015-08-19 12:48:53.179197022 +0100
+@@ -3,6 +3,7 @@
+ default_path        /bin:/usr/bin:/usr/local/bin
+ default_xserver     /usr/bin/X
+ #xserver_arguments   -dpi 75
++#xserver_ready		#command to execute after xserver start
+ 
+ # Commands for halt, login, etc.
+ halt_cmd            /sbin/shutdown -h now
