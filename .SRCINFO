@@ -1,6 +1,6 @@
 pkgbase = lilypond-git
 	pkgdesc = An automated music engraving system (Git snapshot)
-	pkgver = 2.19.25.1.58.g09fca10
+	pkgver = 2.19.25.1.59.ga832764
 	pkgrel = 1
 	url = http://lilypond.org/
 	arch = i686
@@ -28,7 +28,6 @@ pkgbase = lilypond-git
 	conflicts = lilypond-devel
 	options = !makeflags
 	source = git://git.sv.gnu.org/lilypond.git
-	source = fix_fontforge-versioncheck.patch
 	md5sums = SKIP
 	md5sums = 7f418a0cf53b70d7f5b68ffe016794b5
 
