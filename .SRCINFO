@@ -1,0 +1,19 @@
+pkgbase = klayout
+	pkgdesc = High Performance Layout Viewer And Editor. Support of GDS and OASIS files.
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = http://www.klayout.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	depends = qt4
+	source = http://www.klayout.de/downloads/klayout-0.24.1.tar.gz
+	source = klayoutEditor.desktop
+	source = klayoutViewer.desktop
+	md5sums = c7ea258e2a5435c700daa9ab2c8c9682
+	md5sums = 6f4fffcd97759c57c4c7378634f7bfeb
+	md5sums = 524300704fa165cca800c82a9d6351b0
+
+pkgname = klayout
+
