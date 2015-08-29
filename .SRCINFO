@@ -1,6 +1,6 @@
 pkgbase = pycharm-eap
 	pkgdesc = Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition.
-	pkgver = 4.5.4.141.2498
+	pkgver = 4.5.4.141.2569
 	pkgrel = 1
 	url = http://www.jetbrains.com/pycharm/
 	changelog = CHANGES
@@ -12,8 +12,8 @@ pkgbase = pycharm-eap
 	conflicts = pycharm-professional
 	conflicts = pycharm-pro-eap
 	options = !strip
-	source = http://download.jetbrains.com/python/pycharm-professional-141.2498.tar.gz
-	sha256sums = 71144f6be2af7650017b0a761ffd8c58dd2e62eda64f45e2ee433ac9f3b4cf29
+	source = http://download.jetbrains.com/python/pycharm-professional-141.2569.tar.gz
+	sha256sums = 0d3a0a627901a1519ee77a0f2b34bc9cd7ba9a20c1276862ed5324187d25c6b7
 
 pkgname = pycharm-eap
 
