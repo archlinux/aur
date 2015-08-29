@@ -1,7 +1,7 @@
 # Maintainer:  pandada8 <pandada8@gmail.com>
 # Contributor: Harry Jeffery <harry|@|exec64|.|co|.|uk>
 # Contributor: Alex Jordan <alexander3223098@gmail.com>
-pkgname=zerotier-one-lastest
+pkgname=zerotier-one-latest
 pkgver=1.0.5
 pkgrel=1
 pkgdesc="Creates virtual Ethernet networks of almost unlimited size."

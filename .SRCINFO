@@ -1,4 +1,4 @@
-pkgbase = zerotier-one-lastest
+pkgbase = zerotier-one-latest
 	pkgdesc = Creates virtual Ethernet networks of almost unlimited size.
 	pkgver = 1.0.5
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = zerotier-one-lastest
 	source = https://github.com/zerotier/ZeroTierOne/archive/1.0.5.tar.gz
 	sha1sums = de1dfb3ecc3bcbdea38388f51e91ac5927eba2b6
 
-pkgname = zerotier-one-lastest
+pkgname = zerotier-one-latest
 
