@@ -6,7 +6,7 @@ realname=empy
 pkgver=3.3.2
 pkgrel=2
 pkgdesc="A powerful and robust templating system for Python."
-arch=(i686 x86_64)
+arch=('any')
 url="http://www.alcyone.com/software/empy"
 depends=('python2>=2.4')
 license=('LGPL')
