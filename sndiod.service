@@ -1,0 +1,12 @@
+[Unit]
+Description=Lightweight audio & MIDI server part of the OpenBSD project
+After=network.target sound.target
+
+[Service]
+User=sndiod
+EnvironmentFile=/etc/conf.d/sndiod
+ExecStart=/usr/bin/sndiod -dd $OPTS
+
+[Install]
+WantedBy=default.target
+

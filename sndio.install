@@ -1,0 +1,8 @@
+post_install() {
+	getent passwd sndiod || useradd -r -s /bin/false -d /var/lib/sndiod -G audio sndiod
+}
+
+post_remove() {
+	getent passwd sndiod && userdel sndiod
+}
+
