@@ -1,7 +1,7 @@
 pkgbase = klayout
 	pkgdesc = High Performance Layout Viewer And Editor. Support of GDS and OASIS files.
 	pkgver = 0.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.klayout.de/
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 
 pkgname=klayout
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.de/"
@@ -16,7 +16,7 @@ source=(
 )
 build() {
 	cd "$srcdir/klayout-${pkgver}"
-	build_opt="-qt /usr -qtinc /usr/include/qt4 -qtbin /usr/lib/qt4/bin -bin $pkgdir/usr/bin"
+	build_opt="-qt /usr -qtinc /usr/include/qt4 -qtbin /usr/lib/qt4/bin -bin $pkgdir/usr/bin -rblib /usr/lib/libruby.so"
 
 	case ${CARCH} in
 		i686)
@@ -29,7 +29,7 @@ build() {
 }
 package() {
 	cd "$srcdir"
-	install -D -m 644 klayout-${pkgver}/src/logo.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/klayout.png
+	install -D -m 644 klayout-${pkgver}/src/images/logo.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/klayout.png
 	install -D -m 755 klayout-${pkgver}/klayout ${pkgdir}/usr/bin/klayout
 	install -D -m 644 klayoutEditor.desktop ${pkgdir}/usr/share/applications/klayoutEditor.desktop
 	install -D -m 644 klayoutViewer.desktop ${pkgdir}/usr/share/applications/klayoutViewer.desktop
