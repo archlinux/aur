@@ -1,0 +1,16 @@
+pkgbase = nwipe-git
+	pkgdesc = A fork of the dwipe command that will securely erase disks using a variety of recognised methods (from Git)
+	pkgver = r24.8a9a718
+	pkgrel = 1
+	url = http://www.andybev.com/index.php/Nwipe
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = device-mapper
+	depends = ncurses
+	depends = parted
+	source = git+https://github.com/martijnvanbrummelen/nwipe.git
+	md5sums = SKIP
+
+pkgname = nwipe-git
+
