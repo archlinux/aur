@@ -16,6 +16,7 @@ pkgbase = kdeconnect-git
 	depends = libfakekey
 	depends = hicolor-icon-theme
 	depends = kwayland
+	optdepends = sshfs: remote filesystem browser
 	provides = kdeconnect
 	conflicts = kdeconnect-frameworks
 	conflicts = kdeconnect

@@ -10,6 +10,7 @@ url='https://projects.kde.org/projects/playground/base/kdeconnect-kde'
 license=(GPL2)
 depends=(kio kcmutils qca-qt5 libfakekey hicolor-icon-theme kwayland)
 makedepends=(extra-cmake-modules git python)
+optdepends=('sshfs: remote filesystem browser')
 provides=(kdeconnect)
 conflicts=(kdeconnect-frameworks kdeconnect)
 source=("git://anongit.kde.org/kdeconnect-kde.git")
