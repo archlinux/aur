@@ -2,7 +2,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=areca-bin
-pkgver=7.4.9
+pkgver=7.5
 pkgrel=1
 pkgdesc="Personal file backup software supporting compression, encryption and incremental backups."
 arch=('i686' 'x86_64')
@@ -45,5 +45,5 @@ md5sums=('024e3fe74c518a9dee889f3ea1ff9f71'
          '8e0088445454ab80a9f04c84b3363814'
          '2f1bd15c94600065c43366f440cc0c37'
          '5e978edc20d715cefec098e3e77a3721')
-md5sums_i686=('7f8a154ba23b71ea9bc4d49df7377346')
-md5sums_x86_64=('afe98f7e4547aa404c06f6edadb47750')
+md5sums_i686=('1b526a9284160ab4a5396b509a3efad8')
+md5sums_x86_64=('3ebc02dd7276dea4a928c78e7db581a6')
