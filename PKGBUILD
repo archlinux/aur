@@ -1,7 +1,7 @@
 # Author: Stefan Majewsky <majewsky at-the-server gmx with-the-tld net>
 
 pkgname=asus-kbd-backlight
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Helper for adjusting keyboard backlight brightness in Asus Zenbook UX31A and similar models"
 url="https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A#keyboard_backlight_script"
@@ -75,13 +75,13 @@ build() {
 			 ;;
 		 allowusers)
 			 # Allow members of users group to change brightness
-			 sudo chgrp users ${path}/brightness
-			 sudo chmod g+w ${path}/brightness
+			 chgrp users ${path}/brightness
+			 chmod g+w ${path}/brightness
 		  ;;
 		 disallowusers)
 			 # Allow members of users group to change brightness
-			 sudo chgrp root ${path}/brightness
-			 sudo chmod g-w ${path}/brightness
+			 chgrp root ${path}/brightness
+			 chmod g-w ${path}/brightness
 		  ;;
 		 *)
 			 commit	$1
@@ -96,10 +96,7 @@ build() {
 		After=systemd-udevd.service
 		
 		[Service]
-		Type=oneshot
-		RemainAfterExit=yes
 		ExecStart=/usr/bin/asus-kbd-backlight allowusers
-		ExecStop=/usr/bin/asus-kbd-backlight disallowusers
 		
 		[Install]
 		WantedBy=multi-user.target
