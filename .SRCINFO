@@ -1,0 +1,15 @@
+pkgbase = cloudfuse
+	pkgdesc = Filesystem (fuse) implemented on Mosso's Cloud Files
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://redbo.github.io/cloudfuse/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = fuse
+	depends = libxml2
+	source = https://github.com/redbo/cloudfuse/archive/1.0.tar.gz
+	sha1sums = 22044dcd78ba0643bbcc9189ce58b9a064dd20c3
+
+pkgname = cloudfuse
+
