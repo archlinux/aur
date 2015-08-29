@@ -4,9 +4,10 @@ pkgname=libretro-handy-git
 pkgver=55.9f81904
 pkgrel=1
 pkgdesc="libretro implementation of Handy. (Atari Lynx)"
-arch=('i686' 'x86_64' 'arm' 'armv6h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-handy"
-license=('zlib')
+license=('GPL3')
+depends=('zlib')
 makedepends=('git')
 
 _libname=handy_libretro
