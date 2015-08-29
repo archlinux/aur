@@ -5,12 +5,12 @@
 pkgname=emerald0.9
 _realname=emerald
 pkgver=0.9.5
-pkgrel=15
+pkgrel=16
 pkgdesc="Emerald window decorator (0.9 version)"
 arch=('i686' 'x86_64')
 url="http://www.compiz.org/"
 license=('GPL')
-depends=('compiz' 'libwnck' 'xdg-utils' \
+depends=('compiz>=0.9.5' 'libwnck' 'xdg-utils' \
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('intltool')
 optdepends=(
