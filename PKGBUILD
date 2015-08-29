@@ -2,8 +2,8 @@
 
 pkgname=storcli
 pkgver=1.15.12
-pkgrel=1
-pkgdesc="A successor to lsiutil"
+pkgrel=2
+pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
 arch=('i686' 'x86_64')
 url="https://www.thomas-krenn.com/en/wiki/StorCLI"
 license=('unknown')
