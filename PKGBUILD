@@ -2,8 +2,8 @@
 # Contributor: Anxo Beltrán <anxo.beltran.alvarez@gmail.com>
 # Contributor: David Danier <david.danier@team23.de>
 pkgname=python2-path
-pkgver=7.7.1
-pkgrel=2
+pkgver=8.1
+pkgrel=1
 pkgdesc="path.py provides a class (path) for working with files and directories. Less typing than os.path, more fun, a few new tricks"
 arch=('any')
 url="https://pypi.python.org/pypi/path.py"
@@ -14,7 +14,7 @@ depends=('python2')
 conflicts=('ipython2')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/p/path.py/path.py-${pkgver}.tar.gz)
-sha256sums=('692feac9d1fe3b70239b2f0f07dcdbbdad38e3611846924de33ec6175d87638e')
+sha256sums=('27ea0789c12cbe8e2a29397d2a54581009094a0684ce880844ba9fc4c16ce30c')
 
 build() {
   cd "${srcdir}/path.py-${pkgver}"

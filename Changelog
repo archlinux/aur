@@ -1,4 +1,11 @@
 Changes
+8.1
+	* Restored path.path with a DeprecationWarning
+
+8.0
+	* Removed path.path. Clients must now refer to the canonical name,
+	  path.path as introduced in 6.2
+
 7.7
 	* #88: Added support for resolving certain directories on a system to
 	  platform-friendly locations using the appdirs library. The
