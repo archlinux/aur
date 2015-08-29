@@ -1,0 +1,13 @@
+pkgbase = vim-octave
+	pkgdesc = m file syntax highlighting
+	pkgver = 3.8.3
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=3600
+	arch = any
+	license = GPL
+	depends = vim
+	source = octave.vim::http://www.vim.org/scripts/download_script.php?src_id=22437
+	md5sums = 7c0122efd6ec226ae0fcb45ec92f5321
+
+pkgname = vim-octave
+
