@@ -1,7 +1,7 @@
 pkgbase = sacd-extract
 	pkgdesc = Extract DSD files from an SACD image
-	pkgver = 0.3.7
-	pkgrel = 2
+	pkgver = 0.3.8
+	pkgrel = 1
 	url = https://sourceforge.net/p/sacd-ripper/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sacd-extract
 	makedepends = cmake
 	makedepends = svn
 	depends = glibc
-	source = sacd-ripper::svn+http://svn.code.sf.net/p/sacd-ripper/code/trunk#revision=395
+	source = sacd-ripper::svn+http://svn.code.sf.net/p/sacd-ripper/code/trunk#revision=399
 	sha512sums = SKIP
 
 pkgname = sacd-extract
