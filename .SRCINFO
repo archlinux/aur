@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-base-local-planner
 	pkgdesc = ROS - This package provides implementations of the Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane.
-	pkgver = 1.11.11
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = http://wiki.ros.org/base_local_planner
 	arch = any
@@ -45,7 +45,7 @@ pkgbase = ros-indigo-base-local-planner
 	depends = ros-indigo-nav-msgs
 	depends = ros-indigo-pluginlib
 	depends = eigen3
-	source = base_local_planner::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/base_local_planner/1.11.11-0
+	source = base_local_planner::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/base_local_planner/1.12.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-base-local-planner
