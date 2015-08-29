@@ -6,7 +6,7 @@ __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
 arch=('x86_64')
@@ -54,8 +54,8 @@ package() {
 
 	install -d "${pkgdir}/usr/lib/shim/"
 	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/shim.efi" "${pkgdir}/usr/lib/shim/shimx64.efi"
-	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/MokManager.efi.signed" "${pkgdir}/usr/lib/shim/MokManager.efi.signed"
-	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/fallback.efi.signed" "${pkgdir}/usr/lib/shim/fallback.efi.signed"
+	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/MokManager.efi.signed" "${pkgdir}/usr/lib/shim/MokManager.efi"
+	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/fallback.efi.signed" "${pkgdir}/usr/lib/shim/fallback.efi"
 
 }
 
