@@ -1,0 +1,14 @@
+pkgbase = android-armv7a-eabi-system-image-23
+	pkgdesc = Android ARM EABI v7a System Image, API-23
+	pkgver = 6_r03
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-platform-23
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/android/sysimg_arm-23_r03.zip
+	sha1sums = 7bb8768ec4333500192fd9627d4234f505fa98dc
+
+pkgname = android-armv7a-eabi-system-image-23
+
