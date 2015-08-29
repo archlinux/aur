@@ -1,0 +1,14 @@
+pkgbase = python-ipify
+	pkgdesc = The official client library for ipify: A Simple IP Address API
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rdegges/python-ipify
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = python-ipify-1.0.0.tar.gz::https://github.com/rdegges/python-ipify/archive/1.0.0.tar.gz
+	md5sums = 7b9631a2b984e569613d0fdacbaa7930
+
+pkgname = python-ipify
+
