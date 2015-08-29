@@ -6,7 +6,7 @@ url="https://github.com/bchretien/arch-ros-stacks"
 
 pkgname='ros-build-tools'
 pkgver='0.2.0'
-arch=('i686' 'x86_64')
+arch=('any')
 pkgrel=1
 license=('BSD')
 makedepends=()
