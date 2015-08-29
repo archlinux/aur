@@ -1,6 +1,6 @@
 pkgbase = vim-fzf
 	pkgdesc = Fuzzy finder for Vim, inspired by ctrlp.vim and the likes
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/junegunn/fzf
 	install = vimdoc.install
@@ -9,8 +9,8 @@ pkgbase = vim-fzf
 	license = MIT
 	depends = fzf
 	depends = vim
-	source = vim-fzf-0.10.3.tar.gz::https://codeload.github.com/junegunn/fzf/tar.gz/0.10.3
-	sha256sums = 018883b176da796c8903816a0f9fdb99522dc148d1ce8d1a95233b905fea5c20
+	source = vim-fzf-0.10.4.tar.gz::https://codeload.github.com/junegunn/fzf/tar.gz/0.10.4
+	sha256sums = c4a69a1219bb3030b2097ca76e4db2bf2cc65158140c8651496606bea2aa45a3
 
 pkgname = vim-fzf
 
