@@ -1,0 +1,24 @@
+pkgbase = gsoap287
+	pkgdesc = Offers an XML language binding to ease the development of SOAP/XML Web services in C and C/C++
+	pkgver = 2.8.7
+	pkgrel = 3
+	url = http://www.cs.fsu.edu/~engelen/soap.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = autoconf
+	makedepends = automake
+	depends = openssl
+	depends = zlib
+	depends = gcc-libs
+	provides = gsoap
+	conflicts = gsoap
+	options = staticlibs
+	source = http://prdownloads.sourceforge.net/gsoap2/gsoap_2.8.7.zip
+	source = LICENSE.gsoap
+	md5sums = 48a8dfddffd8f10b3ca82a6a9583e206
+	md5sums = 27aaa3f5166db94d44044c11a7b2c37b
+
+pkgname = gsoap287
+
