@@ -1,7 +1,7 @@
 # Maintainer: A. Richard <dubitae@gmail.com>
 pkgname=python2-gpsoauth
 _pipyname=gpsoauth
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="client library for Google Play Services OAuth"
 arch=('any')
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("https://pypi.python.org/packages/source/g/$_pipyname/$_pipyname-$pkgver.tar.gz")
 noextract=()
-md5sums=('96c8f81024c761ed94de1e2b7efd1cb1')
+md5sums=('3de0f7bb5bd1319172e4fc29ff7a871d')
 
 package() {
     cd "$srcdir/$_pipyname-$pkgver"
