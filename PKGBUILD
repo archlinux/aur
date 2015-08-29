@@ -2,9 +2,9 @@
 # Contributor: Kamil Kolosowski <sameal@openlinux.pl>
 
 pkgname=nvidia-bfs
-pkgver=352.30
+pkgver=352.41
 _extramodules=extramodules-4.1-bfs
-pkgrel=2
+pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-bfs."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ install=nvidia-bfs.install
 options=(!strip)
 source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('7e59d84eafe2482b2f02df692b9168d5')
-md5sums_x86_64=('135dd90db609cecad8e74bde0054cf6f')
+md5sums_i686=('3f9c9fed035fa845e3f6a1ea5f5732f7')
+md5sums_x86_64=('d41d1a358edbade36cfd97cdcc9a80b9')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
