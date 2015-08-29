@@ -1,0 +1,17 @@
+pkgbase = ovirt-engine-sdk-python
+	pkgdesc = oVirt Engine Software Development Kit (Python)
+	pkgver = 4.0.0.0
+	pkgrel = 1
+	url = http://www.ovirt.org/Python-sdk
+	arch = any
+	license = ASL 2.0
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-lxml
+	depends = python2-pycurl
+	source = http://resources.ovirt.org/pub/ovirt-master-snapshot/src/ovirt-engine-sdk-python/ovirt-engine-sdk-python-4.0.0.0.tar.gz
+	sha256sums = f60be15681ea0e51100f3ef0d14294622e971ba6d8ab900228cbd0d6f1982ba2
+
+pkgname = ovirt-engine-sdk-python
+
