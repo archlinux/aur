@@ -1,9 +1,9 @@
 # Maintainer: Martchus <martchus@gmx.net>
 pkgname=tagparser
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
-pkgdesc="Library for reading and editing meta-data of several media formats."
+pkgdesc="C++ library for reading and writing MP4 (iTunes), ID3, Vorbis and Matroska tags."
 license=('GPL')
 depends=('c++utilities')
 makedepends=('qt5-base')
