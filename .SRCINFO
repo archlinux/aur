@@ -1,0 +1,12 @@
+pkgbase = xcursor-ardoise-translucent
+	pkgdesc = A simple, dark, flat and slightly translucent theme. It uses symbols instead of changing the shape of the cursor.
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Ardoise?content=165308
+	arch = any
+	license = CCPL
+	source = http://nicola.link/files/icons/Ardoise_translucent.tar.gz
+	md5sums = 76293b2c033ae15f523fb1f1d5cf67de
+
+pkgname = xcursor-ardoise-translucent
+
