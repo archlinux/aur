@@ -1,6 +1,6 @@
 pkgbase = python2-xray
 	pkgdesc = N-D labeled arrays and datasets in Python
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/xray
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = python2-xray
 	optdepends = python2-bottleneck: Faster NaN operations
 	optdepends = python2-cyordereddict: Speed up most internal operations
 	optdepends = python2-scipy: OPeNDAP support
-	source = https://github.com/xray/xray/archive/v0.5.2.tar.gz
-	md5sums = f8a57e915c8d778c560173df862be5d5
-	sha1sums = a57ee0b5b127000bf46064cb55958b9c63a5282f
-	sha256sums = 0dfaa1092f4881faf38758abfb7b676cfeb6830658794fa2316b064c9bee28be
+	source = https://github.com/xray/xray/archive/v0.6.0.tar.gz
+	md5sums = b9baf91aa9f6f062eb22bc99b4fe2745
+	sha1sums = 3241c32884f4ca78244c1071ab0035e63e8bb557
+	sha256sums = 556e3245ff598e2ec789c8212c622060db54f6ebfe1346dbb5439bf704ae5742
 
 pkgname = python2-xray
 

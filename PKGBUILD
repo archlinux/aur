@@ -1,6 +1,6 @@
 # Maintainer: Rich Li <rich@dranek.com>
 pkgname='python2-xray'
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="N-D labeled arrays and datasets in Python"
 url="https://pypi.python.org/pypi/xray"
@@ -16,9 +16,9 @@ checkdepends=('python2-nose')
 #source=(https://pypi.python.org/packages/source/x/xray/xray-"$pkgver".tar.gz)
 # I'm using the Github source instead of the PyPI source since the Github source includes the data files used for testing
 source=(https://github.com/xray/xray/archive/v"$pkgver".tar.gz)
-md5sums=('f8a57e915c8d778c560173df862be5d5')
-sha1sums=('a57ee0b5b127000bf46064cb55958b9c63a5282f')
-sha256sums=('0dfaa1092f4881faf38758abfb7b676cfeb6830658794fa2316b064c9bee28be')
+md5sums=('b9baf91aa9f6f062eb22bc99b4fe2745')
+sha1sums=('3241c32884f4ca78244c1071ab0035e63e8bb557')
+sha256sums=('556e3245ff598e2ec789c8212c622060db54f6ebfe1346dbb5439bf704ae5742')
  
 build() {
   cd "$srcdir/xray-$pkgver"
