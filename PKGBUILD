@@ -9,11 +9,10 @@ pkgdesc="Traditional sh derived from OpenSolaris code"
 arch=('i686' 'x86_64')
 url="http://heirloom.sourceforge.net/sh.html"
 license=('BSD' 'CDDL')
-conflicts=("$pkgname-cvs")
 source=("http://sourceforge.net/projects/heirloom/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2"
 	'000-config.diff')
-md5sums=('9169d9b3b845cb63c598ea29b8d2dfa0'
-         '991b32bee780ce48685dfd4d39d41443')
+sha256sums=('25fb8409e1eb75bb5da21ca32baf2d5eebcb8b84a1288d66e65763a125809e1d'
+            'f0452b9fb1c58a6f0fba6d49bcd7598f875c94f64ddd8b60bb8ab12bbbaf7c9b')
 
 build() {
 	cd "$pkgname-$pkgver"
