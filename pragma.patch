@@ -1,0 +1,11 @@
+--- bzlib.h.orig	2014-10-10 17:21:06.358034792 +0200
++++ bzlib.h	2014-10-10 17:21:58.925034236 +0200
+@@ -22,6 +22,8 @@
+ #ifndef _BZLIB_H
+ #define _BZLIB_H
+ 
++pragma library ("libbz2.lib")
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif

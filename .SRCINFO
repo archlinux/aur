@@ -1,0 +1,31 @@
+pkgbase = ow-libbz2
+	pkgdesc = A high-quality data compression program (watcom-cross)
+	pkgver = 1.0.6
+	pkgrel = 2
+	url = http://www.bzip.org/
+	arch = any
+	license = custom
+	makedepends = openwatcom-v2
+	depends = openwatcom-v2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+	source = wmake.patch
+	source = pragma.patch
+	sha1sums = 3f89f861209ce81a6bab1fd1998c0ef311712002
+	sha1sums = 1166d733e176f9687328bbb47875bea45f922b38
+	sha1sums = 9a36d53bda3a03c5f27c40f31cca2f100a16ab59
+
+pkgname = ow-libbz2
+
+pkgname = ow-libbz2-dos
+
+pkgname = ow-libbz2-win16
+
+pkgname = ow-libbz2-win32
+
+pkgname = ow-libbz2-os2
+
+pkgname = ow-libbz2-netware
+
