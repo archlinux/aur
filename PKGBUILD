@@ -4,7 +4,7 @@ pkgdesc="ROS - Holds the action description and relevant messages for the move_b
 url='http://wiki.ros.org/move_base_msgs'
 
 pkgname='ros-indigo-move-base-msgs'
-pkgver='1.11.11'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,14 +13,12 @@ license=('BSD')
 ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-actionlib-msgs
-  ros-indigo-roscpp
   ros-indigo-geometry-msgs)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-actionlib-msgs
   ros-indigo-message-runtime
-  ros-indigo-roscpp
   ros-indigo-geometry-msgs)
 depends=(${ros_depends[@]})
 
@@ -49,6 +47,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
