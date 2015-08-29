@@ -1,0 +1,15 @@
+pkgbase = python-flask-script
+	pkgdesc = Flask support for writing external scripts.
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/Flask-Script
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-flask
+	optdepends = python-nose
+	source = https://pypi.python.org/packages/source/F/Flask-Script/Flask-Script-2.0.5.tar.gz
+	md5sums = e5c73d3b7937f5b88942f342f9617029
+
+pkgname = python-flask-script
+
