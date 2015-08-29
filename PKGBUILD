@@ -1,6 +1,6 @@
 #Maintainer: allencch <allencch at hotmail dot com>
 pkgname=selektor
-_minor=38
+_minor=39
 pkgver=3.13.${_minor}
 pkgrel=1
 pkgdesc="Tor launcher and exit node chooser"
@@ -9,7 +9,7 @@ depends=('tor' 'java-environment')
 url="http://www.dazzleships.net/?page_id=71"
 license=('GPL2')
 source=("${pkgname}_${pkgver%.${_minor}}-${_minor}_all.tar.gz::http://www.dazzleships.net/?wpdmact=process&did=My5ob3RsaW5r")
-sha1sums=('5506250426e422bcf25e339ced6c379e18575e06')
+sha1sums=('47b1f3178abca7c786b236cfe96eff21cfc3c3c9')
 
 package() {
   destfolder="${pkgdir}/opt"
@@ -23,5 +23,3 @@ package() {
   cp applications man "${pkgdir}/usr/share" -rf
   cp "${pkgname}" "${pkgdir}/usr/bin" -rf
 }
-
-
