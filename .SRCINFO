@@ -1,6 +1,6 @@
 pkgbase = python-hmmlearn-git
 	pkgdesc = Algorithms for unsupervised learning and inference of Hidden Markov Models for Python.
-	pkgver = 20141124
+	pkgver = 20150828
 	pkgrel = 1
 	url = http://hmmlearn.github.io/hmmlearn/
 	arch = i686
@@ -12,6 +12,14 @@ pkgbase = python-hmmlearn-git
 	md5sums = SKIP
 
 pkgname = python-hmmlearn-git
+	depends = python
+	depends = python-numpy>=1.6
+	depends = python-scipy>=0.11
+	depends = python-scikit-learn>=0.15
 
 pkgname = python2-hmmlearn-git
+	depends = python2
+	depends = python2-numpy>=1.6
+	depends = python2-scipy>=0.11
+	depends = python2-scikit-learn>=0.15
 
