@@ -1,0 +1,17 @@
+--- yakuake.po	2015-07-08 00:58:26.250331036 +0200
++++ yakuake.po.new	2015-07-08 01:03:14.280323421 +0200
+@@ -1385,12 +1385,10 @@
+ msgstr "Console"
+ 
+ #: app/tabbar.cpp:949
+-#, fuzzy, kde-format
+-#| msgctxt "@title:tab"
+-#| msgid "Shell No. <numid>%1</numid>"
++#, kde-format
+ msgctxt "@title:tab"
+ msgid "Shell No. %1"
+-msgstr "Console <numid>%1</numid>"
++msgstr "Console %1"
+ 
+ #: app/terminal.cpp:165
+ msgctxt "@info"

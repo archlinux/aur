@@ -1,0 +1,15 @@
+pkgbase = yakuake-l10n-fr-frameworks-svn
+	pkgdesc = French language pack for yakuake-frameworks
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.kde.org/
+	arch = any
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = imake
+	conflicts = yakuake-l10n-frameworks
+	source = yakuakefr.patch
+	md5sums = e160619ce319455fe90500c7351362f3
+
+pkgname = yakuake-l10n-fr-frameworks-svn
+
