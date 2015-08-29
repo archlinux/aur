@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-navfn
 	pkgdesc = ROS - navfn provides a fast interpolated navigation function that can be used to create plans for a mobile base.
-	pkgver = 1.11.11
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = http://wiki.ros.org/navfn
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = ros-indigo-navfn
 	depends = ros-indigo-tf
 	depends = ros-indigo-nav-msgs
 	depends = ros-indigo-pluginlib
-	source = navfn::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/navfn/1.11.11-0
+	source = navfn::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/navfn/1.12.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-navfn
