@@ -1,0 +1,19 @@
+pkgbase = tmsu
+	pkgdesc = A tool for tagging your files and accessing them through a virtual filesystem.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://tmsu.org/
+	arch = i686
+	arch = x86_64
+	license = GNU GPL v3
+	depends = go
+	depends = fuse
+	depends = sqlite>=3
+	provides = tmsu
+	source_i686 = https://github.com/oniony/TMSU/releases/download/v0.5.2/tmsu-i686-0.5.2.tgz
+	sha256sums_i686 = e09ef8dab30f16cf1cec42610e575cc03362276da614bcf4f904decd79201466
+	source_x86_64 = https://github.com/oniony/TMSU/releases/download/v0.5.2/tmsu-x86_64-0.5.2.tgz
+	sha256sums_x86_64 = 5e994bc3112beeb0fe2a692aae2b313b185b9628f63ad09654b2c61e813104cc
+
+pkgname = tmsu
+
