@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-costmap-2d
-	pkgdesc = ROS - This package provides an implementation of a 2D costmap based on the occupancy grid.
-	pkgver = 1.11.11
-	pkgrel = 2
+	pkgdesc = ROS - This package provides an implementation of a 2D costmap based on the occupancy grid and a user specified inflation radius.
+	pkgver = 1.12.4
+	pkgrel = 1
 	url = http://wiki.ros.org/costmap_2d
 	arch = any
 	license = BSD
@@ -45,8 +45,7 @@ pkgbase = ros-indigo-costmap-2d
 	depends = ros-indigo-dynamic-reconfigure
 	depends = ros-indigo-message-filters
 	depends = ros-indigo-pluginlib
-	depends = jsoncpp
-	source = costmap_2d::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/costmap_2d/1.11.11-0
+	source = costmap_2d::git+https://github.com/ros-gbp/navigation-release.git#tag=release/indigo/costmap_2d/1.12.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-costmap-2d

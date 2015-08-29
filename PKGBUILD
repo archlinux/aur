@@ -1,13 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - This package provides an implementation of a 2D costmap based on the occupancy grid."
+pkgdesc="ROS - This package provides an implementation of a 2D costmap based on the occupancy grid and a user specified inflation radius."
 url='http://wiki.ros.org/costmap_2d'
 
 pkgname='ros-indigo-costmap-2d'
-pkgver='1.11.11'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf
@@ -50,7 +50,7 @@ ros_depends=(ros-indigo-tf
   ros-indigo-dynamic-reconfigure
   ros-indigo-message-filters
   ros-indigo-pluginlib)
-depends=(${ros_depends[@]} jsoncpp)
+depends=(${ros_depends[@]})
 
 _tag=release/indigo/costmap_2d/${pkgver}-${_pkgver_patch}
 _dir=costmap_2d
@@ -77,6 +77,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
@@ -85,4 +86,3 @@ package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}/" install
 }
-
