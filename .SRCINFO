@@ -1,0 +1,16 @@
+pkgbase = montecarlo-font
+	pkgdesc = A monospace font, created by programmers, for programmers
+	pkgver = 1
+	pkgrel = 2
+	url = http://bok.net/MonteCarlo/
+	install = font.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://bok.net/MonteCarlo/downloads/MonteCarlo-PCF.tgz
+	md5sums = 503ecb321266fdd2b2baa0a052d8543c
+
+pkgname = montecarlo-font
+
