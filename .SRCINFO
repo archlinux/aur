@@ -1,20 +1,21 @@
 pkgbase = openscenegraph-git
-	pkgdesc = An Open Source, high performance real-time graphics toolkit - git mirror
-	pkgver = 20150613
+	pkgdesc = An open source, high performance real-time graphics toolkit - git mirror
+	pkgver = 20150829
 	pkgrel = 1
 	url = http://www.openscenegraph.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = giflib
 	depends = jasper
 	depends = librsvg
 	depends = xine-lib
 	depends = curl
 	provides = openscenegraph-git
-	conflicts = openscenegraph,
+	conflicts = openscenegraph
 	conflicts = openscenegraph-svn
+	source = git://github.com/openscenegraph/osg.git
+	md5sums = SKIP
 
 pkgname = openscenegraph-git
 
