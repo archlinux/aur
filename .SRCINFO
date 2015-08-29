@@ -1,0 +1,46 @@
+pkgbase = mpv-sndio
+	pkgdesc = Video player based on MPlayer/mplayer2 (with sndio support)
+	pkgver = 41859.gf1778d1f
+	pkgrel = 1
+	url = http://mpv.io
+	install = mpv.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	makedepends = python-docutils
+	makedepends = ladspa
+	makedepends = hardening-wrapper
+	depends = ffmpeg
+	depends = lcms2
+	depends = libcdio-paranoia
+	depends = libgl
+	depends = enca
+	depends = libxss
+	depends = libxinerama
+	depends = libxv
+	depends = libxkbcommon
+	depends = libva
+	depends = wayland
+	depends = libcaca
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = lua52
+	depends = libdvdnav
+	depends = libguess
+	depends = libxrandr
+	depends = jack
+	depends = smbclient
+	depends = rubberband
+	depends = sndio
+	optdepends = youtube-dl: for video-sharing websites playback
+	provides = mpv
+	conflicts = mpv
+	options = !emptydirs
+	options = !buildflags
+	source = git://github.com/mpv-player/mpv.git#commit=f1778d1f
+	sha256sums = SKIP
+
+pkgname = mpv-sndio
+
