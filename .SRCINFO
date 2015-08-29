@@ -1,0 +1,20 @@
+pkgbase = xmille
+	pkgdesc = A X11 mille borne game
+	pkgver = 2.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = libxext
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = libxext
+	source = Xmille.tar.gz::http://sourceforge.net/projects/xmille/files/Xmille.tar.gz/download
+	source = patch.diff
+	md5sums = ed1c73d02cf99af353833fea7a433d30
+	md5sums = f325d30a07542f384514059255543b38
+
+pkgname = xmille
+

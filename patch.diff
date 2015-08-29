@@ -1,0 +1,21 @@
+diff -r 132b0e92b166 Makefile
+--- a/Makefile	Sat Aug 29 19:32:23 2015 +0200
++++ b/Makefile	Sat Aug 29 19:39:44 2015 +0200
+@@ -164,7 +164,7 @@
+            TWMDIR = $(LIBDIR)/twm
+           MANPATH = $(OPENWINHOME)/man
+     MANSOURCEPATH = $(MANPATH)/man
+-        MANSUFFIX = n
++        MANSUFFIX = 6
+      LIBMANSUFFIX = 3
+            MANDIR = $(MANSOURCEPATH)$(MANSUFFIX)
+         LIBMANDIR = $(MANSOURCEPATH)$(LIBMANSUFFIX)
+@@ -182,7 +182,7 @@
+             FONTC = bdftopcf
+ 
+         MKFONTDIR = mkfontdir
+-        MKDIRHIER = /bin/sh $(BINDIR)/mkdirhier
++        MKDIRHIER = mkdir -p
+ 
+         CONFIGSRC = $(TOP)/config
+        DOCUTILSRC = $(TOP)/doc/util
