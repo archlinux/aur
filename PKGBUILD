@@ -15,8 +15,7 @@ backup=('etc/ssl/openssl.cnf')
 # Uncomment this if you know what you are doing - libressl is not yet a replacement of openssl
 #provides=('openssl')
 #conflicts=('openssl')
-source=(http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${pkgname}-${pkgver}.tar.gz
-        http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${pkgname}-${pkgver}.tar.gz.asc
+source=(http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${pkgname}-${pkgver}.tar.gz{,.asc}
         libressl-dummy-rand-egd.patch)
 sha512sums=('eeff48450b92f46db9bbd851fbf97ffc9fdea16f69d6319de94755541b441bee1adea5d3f08d695e0cab9ce63f8ff0f2f6a5ba186dc071ec062ade53da3f811f'
             'SKIP'
