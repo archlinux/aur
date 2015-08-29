@@ -1,12 +1,12 @@
 # Maintainer: cth451 <cth451@gmail.com>
 pkgname=flatplat-theme
 pkgver=3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-Shell. This theme requires GNOME 3.14, and doesn't work properly with other versions."
 arch=('any')
 url="http://gnome-look.org/content/show.php/Flat-Plat+3.14?content=167704"
 license=('GPL')
-depends=('librsvg' 'gtk-engine-murrine')
+depends=('librsvg' 'gtk-engine-murrine' 'gnome-session>=3.14')
 optdepends=()
 provides=()
 conflicts=()
