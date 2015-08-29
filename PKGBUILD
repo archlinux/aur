@@ -4,7 +4,7 @@
 # for playing Flash DRM content without a full HAL installation and daemon.
 
 pkgname=hal-flash
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A libhal stub library forwarding to UDisks2 for flash to play DRM content"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ license=('GPL2')
 depends=('udisks2' 'dbus')
 provides=('hal=0.5.14')
 conflicts=('hal')
-source=("https://github.com/cshorler/hal-flash/archive/v0.3.1.tar.gz")
-md5sums=('8201d438c56342e5bf95004ca3c4d899')
+source=("https://github.com/cshorler/hal-flash/archive/v${pkgver}.tar.gz")
+md5sums=('3d308d6e0804c28115a643392be3ddae')
 
 prepare() {
 	mv "$srcdir/$pkgname-$pkgver" "$srcdir/$pkgname"
