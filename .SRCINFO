@@ -1,0 +1,13 @@
+pkgbase = openconnect4x
+	pkgdesc = Openconnect 4.x
+	pkgver = 4.08
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vpnc
+	source = ftp://ftp.infradead.org/pub/openconnect/openconnect-4.08.tar.gz
+	sha256sums = 114eef2b5a8087f26c7871db8700a293101e9626fc94fbef54ac6daef6ce1a77
+
+pkgname = openconnect4x
+
