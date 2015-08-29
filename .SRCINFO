@@ -1,14 +1,13 @@
 pkgbase = xrectsel
 	pkgdesc = a small program that tells you the geometry of a rectangular screen region selected with the mouse
-	pkgver = 1.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/lolilolicon/xrectsel
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	depends = libx11
-	source = git://github.com/lolilolicon/xrectsel.git
+	source = https://github.com/lolilolicon/xrectsel/archive/0.3.1.tar.gz
 	md5sums = SKIP
 
 pkgname = xrectsel
