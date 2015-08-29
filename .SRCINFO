@@ -1,0 +1,15 @@
+pkgbase = nagios-plugin-curl
+	pkgdesc = curl-based web monitoring plugin for Nagios
+	pkgver = 0.0.4
+	pkgrel = 2
+	url = https://github.com/andreasbaumann/nagios-plugin-curl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkg-config
+	depends = curl
+	source = https://github.com/andreasbaumann/nagios-plugin-curl/archive/0.0.4.tar.gz
+	md5sums = 2a559bd652d68c91b93fdfe5af01f96c
+
+pkgname = nagios-plugin-curl
+
