@@ -1,0 +1,16 @@
+pkgbase = kodi-addon-repo-installer
+	pkgdesc = Allows installation of unofficial KODI addon repositories (from KODI wiki)
+	pkgver = 1.0.5
+	pkgrel = 5
+	url = http://kodi-passion.fr/index.php
+	install = install
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = kodi
+	replaces = xbmc-addon-repo-installer
+	source = http://passion-xbmc.org/addons/Download.php/plugin.program.repo.installer/plugin.program.repo.installer-1.0.5.zip
+	md5sums = 15e810a733fbf14d77b53301739a9f70
+
+pkgname = kodi-addon-repo-installer
+
