@@ -1,12 +1,12 @@
 pkgbase = hpmyroom
 	pkgdesc = HP MyRoom
-	pkgver = 10.3.0.0108
-	pkgrel = 4
+	pkgver = 10.4.0.0127
+	pkgrel = 1
 	url = https://www.myroom.hp.com
 	arch = i686
 	arch = x86_64
 	license = unknown
-	source_i686 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.3.0.0108_i386.deb
+	source_i686 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.4.0.0127_i386.deb
 	depends_i686 = attr
 	depends_i686 = bzip2
 	depends_i686 = expat
@@ -44,8 +44,8 @@ pkgbase = hpmyroom
 	depends_i686 = util-linux
 	depends_i686 = xz
 	depends_i686 = zlib
-	sha256sums_i686 = c5d119b8843d13e12960bbfaf1c115a8b1186c02f744d918fe0c542dc6572283
-	source_x86_64 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.3.0.0108_amd64.deb
+	md5sums_i686 = 6487b15530c541119e2e3875fcaf33da
+	source_x86_64 = https://www.myroom.hp.com/downloadfiles/hpmyroom_v10.4.0.0127_amd64.deb
 	depends_x86_64 = lib32-attr
 	depends_x86_64 = lib32-bzip2
 	depends_x86_64 = lib32-expat
@@ -85,7 +85,7 @@ pkgbase = hpmyroom
 	depends_x86_64 = lib32-util-linux
 	depends_x86_64 = lib32-xz
 	depends_x86_64 = lib32-zlib
-	sha256sums_x86_64 = c48220b51190644c8a5a6f7fbc6f87c051e5ad5d0ebdf6cd73dee0c25b34a260
+	md5sums_x86_64 = 075b4826513ec95ad828d5960a812678
 
 pkgname = hpmyroom
 

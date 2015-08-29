@@ -2,8 +2,8 @@
 # Old Maintainer: Viliam Pucik <viliam.pucik[at]gmail[dot]com>
 # Old Author: jevv
 pkgname=hpmyroom
-pkgver=10.3.0.0108
-pkgrel=4
+pkgver=10.4.0.0127
+pkgrel=1
 pkgdesc="HP MyRoom"
 url="https://www.myroom.hp.com"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends_x86_64=('lib32-attr' 'lib32-bzip2' 'lib32-expat' 'lib32-flac' 'lib32-fon
 
 source_i686=("https://www.myroom.hp.com/downloadfiles/${pkgname}_v${pkgver}_i386.deb")
 source_x86_64=("https://www.myroom.hp.com/downloadfiles/${pkgname}_v${pkgver}_amd64.deb")
-sha256sums_i686=('c5d119b8843d13e12960bbfaf1c115a8b1186c02f744d918fe0c542dc6572283')
-sha256sums_x86_64=('c48220b51190644c8a5a6f7fbc6f87c051e5ad5d0ebdf6cd73dee0c25b34a260')
+md5sums_i686=('6487b15530c541119e2e3875fcaf33da')
+md5sums_x86_64=('075b4826513ec95ad828d5960a812678')
 
 [[ "$CARCH" = "i686" ]] && _debarch='i386'
 [[ "$CARCH" = "x86_64" ]] && _debarch='amd64'
