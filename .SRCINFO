@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-active-window-control-git
 	pkgdesc = Plasmoid for Plasma 5. Allowes advanced control of active window.
-	pkgver = r30.3a5dc1e
+	pkgver = r31.c4cf8d0
 	pkgrel = 1
 	url = https://github.com/kotelnik/plasma-applet-active-window-control
 	arch = any
