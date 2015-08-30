@@ -10,6 +10,7 @@ pkgbase = midori-granite
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = intltool
+	makedepends = librsvg
 	makedepends = ninja
 	makedepends = vala
 	depends = cairo

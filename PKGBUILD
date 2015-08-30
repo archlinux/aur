@@ -12,7 +12,7 @@ depends=('cairo' 'desktop-file-utils' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gtk3' 'hicolor-icon-theme' 'libsoup' 'libx11' 'libxml2' 'libxss'
          'pango' 'sqlite' 'webkitgtk' 'zeitgeist'
          'libgranite.so')
-makedepends=('cmake' 'intltool' 'ninja' 'vala')
+makedepends=('cmake' 'intltool' 'librsvg' 'ninja' 'vala')
 optdepends=('aria2: Download utility'
             'gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
