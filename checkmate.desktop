@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Checkmate
+Version=1.0
+Type=Application
+Terminal=false
+Icon=/usr/share/icons/checkmate_icon.png
+Exec=checkmate
+Categories=Webkit;Utility;System;
