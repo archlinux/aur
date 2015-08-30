@@ -1,0 +1,5 @@
+pkg/
+src/
+liblo-*.tar.gz
+liblo-ipv6-*.tar.xz
+.AURINFO

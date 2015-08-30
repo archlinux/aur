@@ -1,0 +1,18 @@
+pkgbase = liblo-ipv6
+	pkgdesc = A lightweight OSC (Open Sound Control) implementation (with IPv6 support)
+	pkgver = 0.28
+	pkgrel = 1
+	epoch = 1
+	url = http://liblo.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = liblo
+	provides = liblo=0.28
+	conflicts = liblo
+	source = http://downloads.sourceforge.net/liblo/liblo-0.28.tar.gz
+	md5sums = e2a4391a08b49bb316c03e2034e06fa2
+
+pkgname = liblo-ipv6
+
