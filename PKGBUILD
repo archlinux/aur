@@ -1,8 +1,8 @@
 # Maintainer: Patrick Wozniak <email@patwoz.de>
 
 pkgname=masterpassword-cli-git
-pkgver=2.3.r3.gff12aa6
-pkgrel=1
+pkgver=20150830.r927.8f1d897
+pkgrel=2
 pkgdesc="CLI version of Master Password. (git-version)"
 
 arch=('any')
@@ -16,7 +16,6 @@ makedepends=(
   'openssl'
   'gcc'
   'git'
-  'subversion'
 )
 conflicts=(
   'masterpassword-cli'
@@ -27,12 +26,16 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s.r%s.%s" "$(date +%Y%m%d)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${pkgname%-git}/MasterPassword/C"
+  sed -i '/^svn=/d' ./lib/scrypt/.source
 }
 
 build() {
-  pwd
-  cd "${pkgname%-git}/MasterPassword/C" # change dir to cli version of masterpassword
+  cd "${pkgname%-git}/MasterPassword/C"
   targets="mpw" ./build
 }
 
@@ -40,11 +43,6 @@ package() {
   cd "${pkgname%-git}"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 
-  cd "MasterPassword/C" # change dir to cli version of masterpassword
-  # run ./install
-  # mkdir -p "$bindir"
-  # echo -e "$bindir\nn" | ./install
-  # rm "$bindir/bashlib"
-
+  cd "MasterPassword/C"
   install -Dm755 "mpw" "$pkgdir/usr/bin/mpw"
 }
