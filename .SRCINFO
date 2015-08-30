@@ -1,0 +1,15 @@
+pkgbase = git-number-git
+	pkgdesc = A script to allow a user to perform git commands on files by referencing the files by numbers instead of names
+	pkgver = 1.0.0a.r7.gfc45197
+	pkgrel = 1
+	url = https://github.com/holygeek/git-number
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = perl
+	source = git+https://github.com/holygeek/git-number.git
+	md5sums = SKIP
+
+pkgname = git-number-git
+
