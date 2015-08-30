@@ -1,0 +1,12 @@
+pkgbase = ruby-droplet_ctl-git
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	source = git://github.com/jreinert/droplet_ctl.git
+	md5sums = SKIP
+
+pkgname = ruby-droplet_ctl-git
+
