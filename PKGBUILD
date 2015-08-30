@@ -28,28 +28,4 @@ package() {
 		blackvoxeldatadir="usr/share/${pkgname}/" \
 		icondir2="usr/share/icons/" \
 		desktopdir="usr/share/applications/"
-	
-	# __source_dir="${srcdir}/${pkgname}_source_1_39"
-	# install -d "${pkgdir}/usr/bin"
-	# install -Dm755 "${__source_dir}/blackvoxel" "${pkgdir}/usr/bin"
-
-	# install -d "${pkgdir}/usr/share/${pkgname}"
-	# install -Dm644 "${__source_dir}/gui" "${pkgdir}/usr/bin"
-
-	# # cask executable needs to be one directory deeper than cask-cli.el
-	# __prefix="${pkgdir}/usr/share/${pkgname}"
-	# install -d "${__prefix}"
-	# install -Dm644 *.el "${__prefix}/"
-	# install -d "${__prefix}/bin"
-	# install -Dm755 "bin/cask" "${__prefix}/bin"
-	# install -d "${__prefix}/templates"
-	# install -Dm644 templates/* "${__prefix}/templates/"
-	# touch "${__prefix}/.no-upgrade"  # Stop cask performing self-upgrades.
-
-	# install -d "${pkgdir}/usr/bin"
-	# ln -s "/usr/share/cask/bin/cask" "${pkgdir}/usr/bin/"
-
-	# __site_lisp="${pkgdir}/usr/share/emacs/site-lisp/${pkgname}"
-	# install -d "${__site_lisp}"
-	# ln -s "/usr/share/${pkgname}/"cask{,-bootstrap}.el "${__site_lisp}/"
 }
