@@ -9,7 +9,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 _gemname=droplet_ctl
 pkgname=ruby-${_gemname}-git
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc=""
 arch=(any)
@@ -22,7 +22,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "$srcdir/$_gemname"
-  ruby -r './lib/droplet_ctl' -e 'puts DropletCtl::VERSION'
+  ruby -r './lib/droplet_ctl/version' -e 'puts DropletCtl::VERSION'
 }
 
 package() {
