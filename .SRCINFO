@@ -1,0 +1,13 @@
+pkgbase = urxvt-color-tester-git
+	pkgdesc = Color testing script for urxvt
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/hishamhm/
+	arch = any
+	license = unknown
+	depends = rxvt-unicode
+	source = git+https://gist.github.com/2799a146725f69378dcc.git
+	sha256sums = SKIP
+
+pkgname = urxvt-color-tester-git
+
