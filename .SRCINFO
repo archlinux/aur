@@ -1,0 +1,19 @@
+pkgbase = chicken-regex
+	pkgdesc = Chicken Scheme Egg: Compatibility library for old regular expression API
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/4/regex
+	install = chicken.install
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-regex-1.0.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=regex&version=1.0
+	source = chicken-regex-1.0.html::http://wiki.call-cc.org/eggref/4/regex.html
+	md5sums = dc7dc947136f155ce2ea33b853e7fed9
+	md5sums = c03140b509638cfe23a28907105d1eb6
+
+pkgname = chicken-regex
+
