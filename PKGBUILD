@@ -49,13 +49,13 @@ package_vdev-git() {
 		ETCDIR_VDEV='/etc/vdev' \
 		BINDIR='/usr/bin' \
 		SBINDIR='/usr/bin' \
-		USRSBINDIR='/usr/bin' \
 	install
 
 	# config
 	make -C example \
 		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
+		ETCDIR='/etc' \
 		ETCDIR_VDEV='/etc/vdev' \
 	install
 
