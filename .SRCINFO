@@ -1,0 +1,28 @@
+pkgbase = stuffkeeper-git
+	pkgdesc = A little gtk tool for managing all your stuff
+	pkgver = 650.c3c61ea
+	pkgrel = 1
+	url = http://www.stuffkeeper.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = git
+	makedepends = intltool
+	makedepends = gob2
+	makedepends = pkgconfig
+	makedepends = vala>=0.7
+	depends = sqlite3
+	depends = python
+	depends = gtk2
+	depends = libglade
+	depends = gpgme
+	depends = xdg-utils
+	provides = stuffkeeper
+	options = !libtool
+	source = git+https://github.com/DaveDavenport/stuffkeeper.git
+	md5sums = SKIP
+
+pkgname = stuffkeeper-git
+
