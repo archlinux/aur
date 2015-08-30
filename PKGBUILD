@@ -6,7 +6,7 @@
 # Contributor: Gatekeeper <cool_work@yahoo.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mlterm
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Multi Lingual TERMinal emulator on X"
 url="http://mlterm.sourceforge.net/"
@@ -58,10 +58,10 @@ package() {
   rsvg-convert -w 48 -h 38 -f png -o mlclient.png mlclient.svg
 }
 
-md5sums=('cab773e2be8042f1222112335b890259'
+md5sums=('515293c243bacd0bd7e6f7494d16fa22'
          'd019c571f28c7b765610e219d9e52e35')
-sha1sums=('3660caec5be87a83279146209415324e42e84bf9'
+sha1sums=('03ce3058ae85d3e6e59ba7e9d7fe3a43cf7bf942'
           '6a2c46265b0751ccf016e7521fdf48d1f9ac459f')
-sha256sums=('dedb211c52a8cdaa8891920da0a4f08f4b72f7b3514a5acb038b38419b24e4d3'
+sha256sums=('40eaf06b946a6848559a43ffb625a20f7679c44f19e36b8e155a4820be2990bb'
             'b254755e320a94a05d3d745cd582a5b91f5ed33fd69396feca0511cf5c6b3ce0')
 
