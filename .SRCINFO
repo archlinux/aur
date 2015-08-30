@@ -1,0 +1,20 @@
+pkgbase = kinit-nooom
+	pkgdesc = Process launcher to speed up launching KDE applications (With OOM disabled)
+	pkgver = 5.13.0
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kinit
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = kio
+	provides = kinit
+	source = http://download.kde.org/stable/frameworks/5.13/kinit-5.13.0.tar.xz
+	source = 001-disable-oom-protection.patch
+	md5sums = 72d0496c5d8d94673e875ff216fa4176
+	md5sums = 96dec3370228f0024879bf5cf77c98dd
+
+pkgname = kinit-nooom
+

@@ -1,0 +1,13 @@
+diff --git a/src/kdeinit/kinit.cpp b/src/kdeinit/kinit.cpp
+index 9e775b6..118dc29 100644
+--- a/src/kdeinit/kinit.cpp
++++ b/src/kdeinit/kinit.cpp
+@@ -433,7 +433,7 @@ QByteArray execpath_avoid_loops(const QByteArray &exec, int envc, const char *en
+     return QFile::encodeName(execpath);
+ }
+ 
+-#if KDEINIT_OOM_PROTECT
++#if 0//KDEINIT_OOM_PROTECT
+ static void oom_protect_sighandler(int)
+ {
+ }
