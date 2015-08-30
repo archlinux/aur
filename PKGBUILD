@@ -52,7 +52,7 @@ package_vdev-git() {
 
 	make -C example \
 		DESTDIR="$pkgdir" \
-		PREFIX='/usr'
+		PREFIX='/usr' \
 		ETCDIR_VDEV='/etc/vdev' \
 	install
 
