@@ -1,0 +1,19 @@
+# Maintainer: Maximilian Berger <snowdragon92[at]gmail[dotcom]>
+
+pkgname=keepass-password-counter
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="This plugin provides a button in the entry dialog with the number of entries that use the password of the open entry, too. It is possible to get the complete list of entries that use the reference password."
+arch=("any")
+url="http://keepasspasswordcounter.sourceforge.net/"
+license=("GPLv2")
+depends=("keepass")
+source=("http://kent.dl.sourceforge.net/project/keepasspasswordcounter/v0.0.1/KPPasswordCounter.plgx")
+
+md5sums=('dac8247a92f3837e30e119443c9abf46')
+	
+package() {
+  cd "$srcdir"
+
+  install -Dm664 KPPasswordCounter.plgx "$pkgdir/usr/share/keepass/KPPasswordCounter.plgx"
+}

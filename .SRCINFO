@@ -1,0 +1,13 @@
+pkgbase = keepass-password-counter
+	pkgdesc = This plugin provides a button in the entry dialog with the number of entries that use the password of the open entry, too. It is possible to get the complete list of entries that use the reference password.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://keepasspasswordcounter.sourceforge.net/
+	arch = any
+	license = GPLv2
+	depends = keepass
+	source = http://kent.dl.sourceforge.net/project/keepasspasswordcounter/v0.0.1/KPPasswordCounter.plgx
+	md5sums = dac8247a92f3837e30e119443c9abf46
+
+pkgname = keepass-password-counter
+
