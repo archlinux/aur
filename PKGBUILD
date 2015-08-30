@@ -3,7 +3,7 @@
 pkgname=jflap-beta
 pkgver=7.0
 pkgrel=2
-pkgdesc="Software to learning the basic concepts of Formal Languages and Automata Theory, latest version"
+pkgdesc="Software for learning the basic concepts of Formal Languages and Automata Theory, latest version with custom SVG icon and GTK theming."
 arch=('any')
 url="http://www.jflap.org/"
 license=('CCPL')

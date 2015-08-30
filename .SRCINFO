@@ -1,5 +1,5 @@
 pkgbase = jflap-beta
-	pkgdesc = Software to learning the basic concepts of Formal Languages and Automata Theory, latest version
+	pkgdesc = Software for learning the basic concepts of Formal Languages and Automata Theory, latest version with custom SVG icon and GTK theming.
 	pkgver = 7.0
 	pkgrel = 2
 	url = http://www.jflap.org/
