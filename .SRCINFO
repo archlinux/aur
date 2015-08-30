@@ -12,7 +12,6 @@ pkgbase = papyros-settings-git
 	depends = qt5-declarative
 	depends = qml-material-git
 	depends = papyros-shell-git
-	provides = papyros-settings
 	provides = papyros-settings-git
 	conflicts = papyros-settings
 	source = papyros-settings-git::git+https://github.com/papyros/settings-app.git#branch=develop

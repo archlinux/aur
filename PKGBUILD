@@ -11,7 +11,7 @@ url="https://github.com/papyros/settings-app"
 license=("GPL")
 depends=("qt5-declarative" "qml-material-git" "papyros-shell-git")
 makedepends=("git" "cmake" "extra-cmake-modules")
-provides=("$_pkgname" "$pkgname")
+provides=("$pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/papyros/settings-app.git#branch=develop")
 sha256sums=("SKIP")
