@@ -1,6 +1,6 @@
 pkgbase = qml-material-git
 	pkgdesc = A UI framework for QtQuick implementing Material Design
-	pkgver = 0.1.r23.g3c640c3
+	pkgver = 0.1.r37.g3e7bb44
 	pkgrel = 1
 	url = https://github.com/papyros/qml-material
 	arch = i686
