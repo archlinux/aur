@@ -1,8 +1,7 @@
 # Maintainer: Mikhail Burakov <mikhail.burakov gmail com>
 
 pkgname=vim-nox
-pkgver=7.4.796
-repover=v${pkgver//./-}
+pkgver=git
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
@@ -11,12 +10,12 @@ depends=('gpm')
 makedepends=('python2')
 provides=('vim')
 conflicts=('vim' 'vim-runtime')
-pkgdesc='Vi Improved, console-only build with python2 support.'
-source=("https://vim.googlecode.com/archive/${repover}.tar.gz")
+pkgdesc='Vi Improved, console-only build with python2 support. Latest version from git.'
+source=("git://github.com/vim/vim")
 md5sums=('SKIP')
 
 build() {
-  cd "${srcdir}/vim-${repover}/src"
+  cd "${srcdir}/vim/src"
   autoconf
   ./configure \
     --prefix=/usr \
@@ -39,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/vim-${repover}"
+  cd "${srcdir}/vim"
   make -j1 DESTDIR="${pkgdir}" install
 
   # provided by (n)vi in core
@@ -54,6 +53,6 @@ package() {
   done
 
   # license
-  install -Dm644 "${srcdir}/vim-${repover}/runtime/doc/uganda.txt" \
+  install -Dm644 "${srcdir}/vim/runtime/doc/uganda.txt" \
     "${pkgdir}/usr/share/licenses/vim/license.txt"
 }

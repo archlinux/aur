@@ -1,6 +1,6 @@
 pkgbase = vim-nox
-	pkgdesc = Vi Improved, console-only build with python2 support.
-	pkgver = 7.4.796
+	pkgdesc = Vi Improved, console-only build with python2 support. Latest version from git.
+	pkgver = git
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vim-nox
 	provides = vim
 	conflicts = vim
 	conflicts = vim-runtime
-	source = https://vim.googlecode.com/archive/v7-4-796.tar.gz
+	source = git://github.com/vim/vim
 	md5sums = SKIP
 
 pkgname = vim-nox
