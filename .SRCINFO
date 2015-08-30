@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-be
 	pkgdesc = Belarusian language package for Iceweasel
-	pkgver = 40.0.deb1
+	pkgver = 40.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-be_40.0-1_all.deb
-	sha256sums = d870869e20005b1f04d12f1f2aa6d797219d64809a1c0bf3bd6053799972b56b
+	depends = iceweasel>=40.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-be_40.0.3-1_all.deb
+	md5sums = 00c9289dee560e5a7c0e3c84101217fc
 
 pkgname = iceweasel-i18n-be
 
