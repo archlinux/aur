@@ -1,5 +1,5 @@
 pkgbase = linux-lts-tomoyo
-	pkgver = 3.14.50
+	pkgver = 3.14.51
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = linux-lts-tomoyo
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.50.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.50.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.51.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.14.51.sign
 	source = config
 	source = config.x86_64
 	source = linux-lts-tomoyo.preset
@@ -28,7 +28,7 @@ pkgbase = linux-lts-tomoyo
 	source = gcc5_buildfixes.diff
 	sha256sums = 61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa
 	sha256sums = SKIP
-	sha256sums = 12b938ea1f10aa8f8d34833fd2464abde33a7f9eae5a71dad60a50358e9fcca0
+	sha256sums = 8c6a569868a0df5f895ed4095f4ccf406655358871b51d8d3955fe04a46c80a5
 	sha256sums = SKIP
 	sha256sums = af6a452fcc11cfa6b538f4124b50381f1dc05ca20bf8dc336552fa7cc354bac3
 	sha256sums = b6f0f344773b51768ca53158a05a16e1328ad0def7b77ca0bce43211216e5cb1
@@ -48,20 +48,20 @@ pkgname = linux-lts-tomoyo
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-lts-tomoyo=3.14.50
+	provides = kernel26-lts-tomoyo=3.14.51
 	conflicts = kernel26-lts-tomoyo
 	replaces = kernel26-lts-tomoyo
 	backup = etc/mkinitcpio.d/linux-lts-tomoyo.preset
 
 pkgname = linux-lts-tomoyo-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts-tomoyo kernel
-	provides = kernel26-lts-tomoyo-headers=3.14.50
+	provides = kernel26-lts-tomoyo-headers=3.14.51
 	conflicts = kernel26-lts-tomoyo-headers
 	replaces = kernel26-lts-tomoyo-headers
 
 pkgname = linux-lts-tomoyo-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts-tomoyo kernel
-	provides = kernel26-lts-tomoyo-docs=3.14.50
+	provides = kernel26-lts-tomoyo-docs=3.14.51
 	conflicts = kernel26-lts-tomoyo-docs
 	replaces = kernel26-lts-tomoyo-docs
 

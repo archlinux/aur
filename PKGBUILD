@@ -1,5 +1,5 @@
 # AUR/linux-lts-tomoyo PKGBUILD
-# Maintainer: dysphr <>
+# Maintainer: dysphoria < dysphoria at noreply dot com>
 #
 # arch/linux-lts PKGBUILD
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
@@ -7,7 +7,7 @@
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-3.14
-pkgver=3.14.50
+pkgver=3.14.51
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -31,7 +31,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v3.x/sha256sums.asc
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
-            '12b938ea1f10aa8f8d34833fd2464abde33a7f9eae5a71dad60a50358e9fcca0'
+            '8c6a569868a0df5f895ed4095f4ccf406655358871b51d8d3955fe04a46c80a5'
             'SKIP'
             'af6a452fcc11cfa6b538f4124b50381f1dc05ca20bf8dc336552fa7cc354bac3'
             'b6f0f344773b51768ca53158a05a16e1328ad0def7b77ca0bce43211216e5cb1'
