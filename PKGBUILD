@@ -2,11 +2,11 @@
 
 pkgname='blather-git'
 _pkgname=blather
-pkgver=20150809
+pkgver=20150830
 pkgrel=1
 pkgdesc="Python application for speech recognition using pocketsphinx and gstreamer. - latest git revision"
 arch=('any')
-url="https://gitorious.org/blather"
+url="https://gitlab.com/jezra/blather"
 license=('GPL3')
 depends=('python2' 'pocketsphinx' 'gstreamer' 'gstreamer0.10-python')
 provides=('blather')
@@ -18,7 +18,7 @@ makedepends=('git')
 
 
 
-_gitroot="git://gitorious.org/blather/blather.git"
+_gitroot="https://gitlab.com/jezra/blather.git"
 
 _gitname="blather"
 
