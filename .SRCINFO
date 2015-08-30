@@ -1,13 +1,11 @@
 pkgbase = canon-pixma-mp240-complete
-	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MP240 series
+	pkgdesc = Complete standalone driver set (printing and scanning) for Canon Pixma MP240 series
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MP_series/PIXMA_MP240.aspx
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = deb2targz
-	makedepends = sed
 	source = http://files.canon-europe.com/files/soft31325/Software/MP240_debian_drivers.tar
 	source = canon-pixma-mp240-complete.license
 	source = canon-pixma-mp240-complete-scangear.desktop

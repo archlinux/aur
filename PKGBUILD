@@ -12,17 +12,28 @@ enable_scangear=0
 
 pkgname=canon-pixma-mp240-complete
 pkgver=3.0
-pkgrel=1
-pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MP240 series"
+pkgrel=2
+pkgdesc="Complete standalone driver set (printing and scanning) for Canon Pixma MP240 series"
 url=('http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MP_series/PIXMA_MP240.aspx')
 arch=('i686' 'x86_64')
 license=('custom')
-if [ ${CARCH} = 'x86_64' ]; then
+if [ "${CARCH}" = 'x86_64' ]; then
   depends=('lib32-libcups' 'lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-gtk2')
-elif [ ${CARCH} = 'i686' ]; then
+elif [ "${CARCH}" = 'i686' ]; then
   depends=('libcups' 'popt' 'libpng12' 'libusb-compat' 'libtiff4' 'gtk2')
 fi
-makedepends=('deb2targz' 'sed')
+
+if [ ${enable_scangear} = 1 ]; then
+
+  makedepends=('sed')
+
+  if [ "${CARCH}" = 'x86_64' ]; then
+    depends+=('lib32-gimp')
+  elif [ "${CARCH}" = 'i686' ]; then
+    depends+=('gimp')
+  fi
+fi
+
 source=('http://files.canon-europe.com/files/soft31325/Software/MP240_debian_drivers.tar'
         'canon-pixma-mp240-complete.license'
         'canon-pixma-mp240-complete-scangear.desktop'
@@ -32,6 +43,14 @@ md5sums=('22ab0e74e6917009d2eecf8c229091d7'
          'da88f987611a24e5a7cc55f9aa551a7a'
          'dceb78d5f33dd207bdce53ae8c90e38d'
          'dff9e4454eaa608292732582cb25842f')
+
+
+extract_deb()
+{
+  bsdtar -xf $1 --include data.tar.gz
+  bsdtar -xf data.tar.gz
+  rm data.tar.gz
+}
 
 build()
 {
@@ -50,27 +69,22 @@ build()
 
   cd printer
 
-  deb2targz *.deb
+  extract_deb cnijfilter-common_3.00-1_i386.deb
+  extract_deb cnijfilter-mp240series_3.00-1_i386.deb 
+
   rm *.deb
 
-  tar xzvf cnijfilter-common_3.00-1_i386.tar.gz
-  tar xzvf cnijfilter-mp240series_3.00-1_i386.tar.gz
-  rm *.tar.gz
-
   cd ..
-
 
   # 3- extract the scanner-related stuff from the debian package
   
   if [ ${enable_scangear} = 1 ]; then
     cd scangear
 
-    deb2targz *.deb
-    rm *.deb
+    extract_deb scangearmp-common_1.20-1_i386.deb
+    extract_deb scangearmp-mp240series_1.20-1_i386.deb
 
-    tar xzvf scangearmp-common_1.20-1_i386.tar.gz
-    tar xzvf scangearmp-mp240series_1.20-1_i386.tar.gz
-    rm *.tar.gz
+    rm *.deb
 
     cd ..
   fi
@@ -87,6 +101,7 @@ package()
    # 1- copy recursively both package roots into the pkg dir, merging them nicely
 
    cp -r ${srcdir}/printer/* .
+
    if [ ${enable_scangear} = 1 ]; then
      cp -r ${srcdir}/scangear/* .
    fi
@@ -94,29 +109,39 @@ package()
    rm -rf ${srcdir}/printer
    rm -rf ${srcdir}/scangear
 
-   # 2- move ppd file to where cups expects
+   # 2- move ppd file to where cups expects it to be
 
    install -vDm 644 "${pkgdir}/usr/share/ppd/canonmp240.ppd" "${pkgdir}/usr/share/cups/model/canonmp240.ppd"
 
    rm -vrf ${pkgdir}/usr/share/ppd
 
-   # 3- fix udev rules for the scanner, optional just needed for scangear
+   # 3- symbolic links for all the versioned libs, `printuimp240` needs `libcnbpcnclui341.so` and `libcnbpcmcm341.so` to work
+
+   #mv ${pkgdir}/usr/lib ${pkgdir}/usr/lib32
+   ln -s /usr/lib/libcnbpcmcm341.so.7.03.1      ${pkgdir}/usr/lib/libcnbpcmcm341.so
+   ln -s /usr/lib/libcnbpcnclapi341.so.3.3.2    ${pkgdir}/usr/lib/libcnbpcnclapi341.so
+   ln -s /usr/lib/libcnbpcnclbjcmd341.so.3.3.0  ${pkgdir}/usr/lib/libcnbpcnclbjcmd341.so
+   ln -s /usr/lib/libcnbpcnclui341.so.3.4.0     ${pkgdir}/usr/lib/libcnbpcnclui341.so
+   ln -s /usr/lib/libcnbpess341.so.3.1.1        ${pkgdir}/usr/lib/libcnbpess341.so
+   ln -s /usr/lib/libcnbpo341.so.1.0.3          ${pkgdir}/usr/lib/libcnbpo341.so
+
+   # 4- fix udev rules for the scanner, they're optional, just needed for scangear
 
    if [ ${enable_scangear} = 1 ]; then
      sed -i -e "s/SYSFS/ATTR/g" "${pkgdir}/etc/udev/rules.d/80-canon_mfp.rules"
    fi
 
-   # 4- install custom license file
+   # 5- install custom license file
 
    install -vDm 644 "${srcdir}/${pkgname}.license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-   
-   # 5- install entry in application menu, including icon
+
+   # 6- install entry in application menu, including icon
    if [ ${enable_scangear} = 1 ]; then
-     install -vDm 644 "${srcdir}/${pkgname}-scangear.desktop" "${pkgdir}/usr/share/applications/${pkgname}-scangear.desktop"
+     install -vDm 644 "${srcdir}/${pkgname}-scangear.desktop"  "${pkgdir}/usr/share/applications/${pkgname}-scangear.desktop"
      install -vDm 644 "${srcdir}/${pkgname}-scangear-icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}-scangear-icon.svg"
    fi
 
-   # 6- append this to the ppd to add a grayscale-only option to the printer settings
+   # 7- append this to the ppd to add a grayscale-only option to the printer settings
 
   cat <<'EOF' >> "${pkgdir}/usr/share/cups/model/canonmp240.ppd"
 
