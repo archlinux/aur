@@ -40,6 +40,8 @@ package_vdev-git() {
 	conflicts=( 'vdev' )
 
 	cd "$pkgname"
+
+	# vdevd
 	make -C vdevd \
 		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
@@ -50,21 +52,18 @@ package_vdev-git() {
 		USRSBINDIR='/usr/bin' \
 	install
 
+	# config
 	make -C example \
 		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
 		ETCDIR_VDEV='/etc/vdev' \
 	install
 
+	# hwdb
 	make DESTDIR="${pkgdir}" PREFIX=/usr -C hwdb install
 
-	cd "$pkgdir"
-
-	# There is no way to tell the Makefile not to install these.
-#	rm etc/init.d/vdev
-#	rmdir etc/init.d
-
 	# Config files
+	cd "$pkgdir"
 	backup+=( etc/vdev/actions/*.act )
 	backup+=( etc/vdev/*.conf )
 }
@@ -75,9 +74,6 @@ package_vdevfs-git() {
 	conflicts=( 'vdevfs' )
 
 	cd vdev-git
-
-	make DESTDIR=/tmp/vdev PREFIX='/usr' SBINDIR=/usr/bin -C fs install
-
 	make -C fs \
 		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
