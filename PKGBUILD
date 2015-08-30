@@ -1,8 +1,8 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=firefox-extension-ublock-origin
-pkgver=1.0.0.1
-pkgrel=3
+pkgver=1.1.0.0
+pkgrel=1
 pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
 url=https://github.com/gorhill/uBlock
 arch=('any')
