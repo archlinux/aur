@@ -1,12 +1,17 @@
 pkgbase = fence-virt-git
 	pkgdesc = fencing daemon for a virtualised environment
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ClusterLabs/fence-virt
 	arch = i686
 	arch = x86_64
 	license = GPLv2
-	source = git://github.com/ClusterLabs/fence-virt.git
+	backup = etc/fence_virt.conf
+	source = fence_virtd.service
+	source = fence_virtd@.service
+	source = git://github.com/Thermi/fence-virt.git
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = fence-virt-git
