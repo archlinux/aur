@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgbase=uzbl-next-git
-pkgrel=1
+pkgrel=2
 pkgname=('uzbl-core-next-git' 'uzbl-browser-next-git' 'uzbl-tabbed-next-git')
 pkgver=2012.05.14.1189.g3ea76c2
 arch=('i686' 'x86_64')
@@ -53,8 +53,8 @@ package_uzbl-core-next-git() {
 package_uzbl-browser-next-git() {
   install=uzbl.install
   pkgdesc="A complete browser experience based on uzbl-core"
-  depends=("uzbl-core-next-git=$pkgver" 'desktop-file-utils' \
-					'python' 'python2' 'webkitgtk')
+  depends=("uzbl-core-next-git=$pkgver"
+	   'desktop-file-utils' 'cairo'	'python' 'python2' 'webkitgtk')
   provides=('uzbl-browser')
   conflicts=('uzbl-browser')
   install -d $pkgdir/usr/share/appdata
