@@ -6,7 +6,7 @@ _build_gnome_help="no" # yes|no
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.3.r1575.g7aa6796
+pkgver=easytag.2.4.0.r0.g3e63f54
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
@@ -28,8 +28,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-#  echo $(git rev-list --count master).$(git rev-parse --short master)
-   echo "2.3.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+  #echo "2.4.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
