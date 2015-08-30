@@ -2,7 +2,7 @@
 
 pkgname=libtermkey-bzr
 pkgver=0.17.r12
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for easy processing of keyboard entry from terminal-based programs.'
 arch=('i686' 'x86_64')
 url='http://www.leonerd.org.uk/code/libtermkey'
@@ -13,10 +13,11 @@ conflicts=('libtermkey')
 provides=("libtermkey=${pkgver}")
 source=("${pkgname}::bzr+http://bazaar.leonerd.org.uk/c/libtermkey/")
 sha256sums=('SKIP')
+options=('staticlibs')
 
 pkgver() {
   cd "${pkgname}"
-  bzr tags | sort -n -k3 | awk -v REV="$(bzr revno)" 'END{ printf("%s.r%s\n", $2, REV-$3) }'
+  bzr tags | sort -n -k3 | awk -v REV="$(bzr revno)" 'END { printf("%s.r%s\n", $2, REV-$3) }'
 }
 
 build() {
