@@ -2,13 +2,14 @@
 
 pkgname='profile-sync-daemon-git'
 _pkgname='profile-sync-daemon'
-pkgver=5.68.r3.gd8188fc.unstable
+pkgver=6.00pre.r0.g515a1a5.unstable
 pkgrel=1
 pkgdesc='Syncs browser profiles to tmpfs. Unstable git version!'
 arch=('any')
 url='https://github.com/graysky2/profile-sync-daemon'
 license=('MIT')
-depends=('procps-ng' 'rsync')
+depends=('procps-ng' 'rsync' 'systemd')
+makedepends=('git')
 conflicts=('firefox-sync' 'goanysync' 'go-anysync-git' 'iceweasel-sync'
 'tmpfs-store' 'tmpfs-sync' 'user-profile-sync-daemon' 'profile-sync-daemon')
 provides=('profile-sync-daemon')
@@ -36,10 +37,6 @@ build() {
 
 package() {
 	cd "$_pkgname"
-
-	# note if you want to use openrc rather than systemd, change the below make                                                 
-	# target to 'install-openrc-all' before building and be sure that you read                                                  
-	# the INSTALL document provided in the source tarball!
-	make DESTDIR="$pkgdir" install-systemd-all
+	make DESTDIR="$pkgdir" install
 	install -Dm644 MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
