@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 pkgname='minisatip-git'
 pkgdesc="SAT>IP server for linux using local DVB-S2, DVB-S or DVB-T cards"
-pkgver=0.3
+pkgver=r185.7dc9363
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/catalinii/minisatip"
@@ -18,9 +18,9 @@ source=("git+https://github.com/catalinii/minisatip"
         'minisatip.sysuser'
         'minisatip.conf')
 sha256sums=('SKIP'
-            '0eea34694767681b2b56529b0ad095f33ca3cd2bd29133b57e90ceb2806eba37'
+            '9e1d1c28bcf475547c87d9eb0bf5130a7e7c360ff7edb74ed586a2bf7161fd8f'
             '423b4d0452907e2caa639cd4da17dd918fccb7a0cf3dc1a71c48b7811df8bc1e'
-            'c47790245befba5f0c1424e48854a2c06f62edc819c797ff14a15e80128568bc')
+            '42f3bb7ed053afa338535bd649b4738bf142a9d039010f6bd1a356cf51e80dbc')
 
 pkgver() {
     cd ${srcdir}/minisatip

@@ -7,7 +7,7 @@ User=minisatip
 Group=minisatip
 WorkingDirectory=/tmp
 Type=simple
-EnvironmentFile=-/etc/conf.d/minisatip.conf
+EnvironmentFile=-/etc/conf.d/minisatip
 ExecStart=/usr/bin/minisatip -f $SERVER_ARGS
 
 [Install]
