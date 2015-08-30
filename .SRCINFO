@@ -15,7 +15,6 @@ pkgbase = dolphin-kde4
 	makedepends = make
 	makedepends = gcc
 	makedepends = cmake
-	makedepends = git
 	makedepends = automoc4
 	depends = qt4
 	depends = kdebase-lib
