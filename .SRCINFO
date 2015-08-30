@@ -1,10 +1,15 @@
 pkgbase = blackvoxel
 	pkgdesc = Game of automation and programming in a voxel world
 	pkgver = 1.39
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.blackvoxel.com/
+	install = blackvoxel.install
 	arch = x86_64
 	license = GPL3
+	depends = glew
+	depends = gcc-libs-multilib
+	depends = sdl
+	depends = hicolor-icon-theme
 	source = blackvoxel_source_1_39.tar.bz2::http://www.blackvoxel.com//dm_download.php?file=74
 	sha256sums = 0bf8e6b9729fee481d8f4e5bcc791f005b3a5ff8152cdc602fe2a6197bf17bca
 
