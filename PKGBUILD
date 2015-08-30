@@ -4,14 +4,14 @@
 
 pkgname=omake
 pkgver=0.9.8.6_0.rc1
-pkgrel=4
+pkgrel=5
 pkgdesc="A build system designed for scalability and portability"
 arch=('i686' 'x86_64')
 url="http://omake.metaprl.org/index.html"
 license=('GPL2')
 depends=('readline' 'gamin')
 makedepends=('make' 'ocaml' 'patch')
-source=(http://omake.metaprl.org/downloads/$pkgname-${pkgver/_/-}.tar.gz
+source=(http://pkgs.fedoraproject.org/repo/pkgs/ocaml-omake/omake-0.9.8.6-0.rc1.tar.gz/fe39a476ef4e33b7ba2ca77a6bcaded2/omake-0.9.8.6-0.rc1.tar.gz
         disable-warnings.patch)
 
 prepare() {
@@ -33,4 +33,4 @@ package() {
 }
 
 md5sums=('fe39a476ef4e33b7ba2ca77a6bcaded2'
-         '3f95d63d2ebf88539f36bb85a3685d23')
+         '36633380e0c64235ee0fbfea2386f254')

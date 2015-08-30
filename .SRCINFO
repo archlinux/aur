@@ -1,7 +1,7 @@
 pkgbase = omake
 	pkgdesc = A build system designed for scalability and portability
 	pkgver = 0.9.8.6_0.rc1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://omake.metaprl.org/index.html
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = omake
 	makedepends = patch
 	depends = readline
 	depends = gamin
-	source = http://omake.metaprl.org/downloads/omake-0.9.8.6-0.rc1.tar.gz
+	source = http://pkgs.fedoraproject.org/repo/pkgs/ocaml-omake/omake-0.9.8.6-0.rc1.tar.gz/fe39a476ef4e33b7ba2ca77a6bcaded2/omake-0.9.8.6-0.rc1.tar.gz
 	source = disable-warnings.patch
 	md5sums = fe39a476ef4e33b7ba2ca77a6bcaded2
-	md5sums = 3f95d63d2ebf88539f36bb85a3685d23
+	md5sums = 36633380e0c64235ee0fbfea2386f254
 
 pkgname = omake
 

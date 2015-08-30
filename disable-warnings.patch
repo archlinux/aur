@@ -5,7 +5,7 @@
  # OCaml options
  #
 -OCAMLFLAGS[] += -w Ae$(if $(OCAML_ACCEPTS_Z_WARNING), z)
-+OCAMLFLAGS[] += -w Aer-3-29-32..35-37..39-41-44$(if $(OCAML_ACCEPTS_Z_WARNING), z)
++OCAMLFLAGS[] += -w Aer-3-29-32..35-37..39-41-44-48$(if $(OCAML_ACCEPTS_Z_WARNING), z)
  if $(THREADS_ENABLED)
      OCAMLFLAGS += -thread
      export
