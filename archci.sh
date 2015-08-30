@@ -83,10 +83,8 @@ if [ -f "$SCRIPT" ]; then
 fi
 
 # Remove build dependencies
-if [ -f "$ARCHBUILD" ] || [ -f "$AURBUILD" ]; then
-	if [ ! -z $(pacman -Qtdqr "$BUILDDIR/rootfs") ]; then
-		sudo pacman --noconfirm -r "$BUILDDIR/rootfs" -Rns $(pacman -Qtdqr "$BUILDDIR/rootfs")
-	fi
+if [ ! -z $(pacman -Qtdqr "$BUILDDIR/rootfs") ]; then
+	sudo pacman --noconfirm -r "$BUILDDIR/rootfs" -Rns $(pacman -Qtdqr "$BUILDDIR/rootfs")
 fi
 
 # If we have no version, load it from the first installed package
