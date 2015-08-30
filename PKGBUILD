@@ -45,6 +45,7 @@ build() {
 
 package_handbrake-gtk-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (GUI version)"
+  depends=('hicolor-icon-theme')
   optdepends=('gst-plugins-base: For Preview Window'
               'gst-plugins-bad: For Preview Window'
               'gst-plugins-good: For Preview Window'
@@ -65,7 +66,7 @@ package_handbrake-gtk-git() {
 
 package_handbrake-cli-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (CLI version)"
-  depends=('jansson' 'lame' 'libass' 'libsamplerate' 'libtheora' 'libx264' 'libxml2')
+  depends=('jansson' 'lame' 'libass' 'libsamplerate' 'libtheora' 'libx264' 'bzip2' 'libxml2')
   provides=('handbrake-cli')
   conflicts=('handbrake-cli')
 
