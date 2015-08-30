@@ -1,7 +1,8 @@
-# Maintainer: Linus Karlsson <arch at zozs dot se>
+# Maintainer: Alexander Schnaidt <alex.schnaidt at gmail dot com>
+# Contributor: Linus Karlsson <arch at zozs dot se>
 # Contributor: Peter Hultqvist <endnode dot se>
 pkgname=ykpers
-pkgver=1.15.1
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="A small library for personalization of Yubico's USB key"
 arch=('i686' 'x86_64' 'armv6h')
@@ -9,11 +10,8 @@ url="http://yubico.github.io/yubikey-personalization"
 license=('custom:BSD')
 depends=('libyubikey')
 options=('!libtool')
-source=(
-	http://yubico.github.io/yubikey-personalization/releases/$pkgname-$pkgver.tar.gz
-)
-sha1sums=('dd1478cc106c624318dfe74bb2beda54f18f1fc8')
-sha256sums=('80cd384696007be5d195be7fe646b9bd64bcd65d2fadc29e9c55f6862c87dff5')
+source=(http://yubico.github.io/yubikey-personalization/releases/$pkgname-$pkgver.tar.gz)
+sha256sums=('556baec2bbc94bae01293e64dc3873d68f880119ea5c3772737e4f3dc44f69c4')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = ykpers
 	pkgdesc = A small library for personalization of Yubico's USB key
-	pkgver = 1.15.1
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = http://yubico.github.io/yubikey-personalization
 	arch = i686
@@ -9,9 +9,8 @@ pkgbase = ykpers
 	license = custom:BSD
 	depends = libyubikey
 	options = !libtool
-	source = http://yubico.github.io/yubikey-personalization/releases/ykpers-1.15.1.tar.gz
-	sha1sums = dd1478cc106c624318dfe74bb2beda54f18f1fc8
-	sha256sums = 80cd384696007be5d195be7fe646b9bd64bcd65d2fadc29e9c55f6862c87dff5
+	source = http://yubico.github.io/yubikey-personalization/releases/ykpers-1.17.1.tar.gz
+	sha256sums = 556baec2bbc94bae01293e64dc3873d68f880119ea5c3772737e4f3dc44f69c4
 
 pkgname = ykpers
 
