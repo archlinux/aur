@@ -1,8 +1,8 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=ayr
-pkgver=1.6.6
-pkgrel=2
+pkgver=1.6.7
+pkgrel=1
 pkgdesc="Manages menus of application launchers, either executables or desktop files. Also opens files and URLs with launchers, desktop files, or applications associated by name or mimetype."
 arch=('any')
 url="http://mcfadzean.org.uk/appstogo/linux.html#ayr"
@@ -11,7 +11,7 @@ depends=('bash' 'dmenu' 'libnotify' 'file')
 optdepends=('perl-file-mimeinfo: for better mimetype determination' 'gxmessage: for previewing application file')
 install=$pkgname.install
 source=("http://mcfadzean.org.uk/appstogo/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('bea60f56af5ed227fc0ff35fdfbad390')
+md5sums=('7660c4466fc20eb065a7cefd89a9f7bb')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
