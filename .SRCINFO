@@ -1,7 +1,7 @@
 pkgbase = libyubikey
 	pkgdesc = Yubico C low-level library
-	pkgver = 1.12
-	pkgrel = 2
+	pkgver = 1.13
+	pkgrel = 1
 	url = https://github.com/Yubico/yubico-c
 	install = libyubikey.install
 	arch = i686
@@ -9,8 +9,10 @@ pkgbase = libyubikey
 	license = custom:BSD
 	makedepends = asciidoc
 	depends = libusb
-	source = https://github.com/Yubico/yubico-c/archive/libyubikey-1.12.tar.gz
-	sha256sums = 647fe761d59070ab67b4fc3c0d2e6c7d77ea1bcc28ef443652ac3e26b5cf4e47
+	source = https://developers.yubico.com/yubico-c/Releases/libyubikey-1.13.tar.gz
+	source = https://developers.yubico.com/yubico-c/Releases/libyubikey-1.13.tar.gz.sig
+	sha256sums = 04edd0eb09cb665a05d808c58e1985f25bb7c5254d2849f36a0658ffc51c3401
+	sha256sums = SKIP
 
 pkgname = libyubikey
 
