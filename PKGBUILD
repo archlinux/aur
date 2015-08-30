@@ -10,8 +10,11 @@ url="http://yubico.github.io/yubikey-personalization"
 license=('custom:BSD')
 depends=('libyubikey')
 options=('!libtool')
-source=(http://yubico.github.io/yubikey-personalization/releases/$pkgname-$pkgver.tar.gz)
-sha256sums=('556baec2bbc94bae01293e64dc3873d68f880119ea5c3772737e4f3dc44f69c4')
+source=(https://developers.yubico.com/yubikey-personalization/Releases/$pkgname-$pkgver.tar.gz
+	https://developers.yubico.com/yubikey-personalization/Releases/$pkgname-$pkgver.tar.gz.sig)
+sha256sums=('556baec2bbc94bae01293e64dc3873d68f880119ea5c3772737e4f3dc44f69c4'
+            'SKIP')
+validpgpkeys=(0A3B0262BCA1705307D5FF06BCA00FD4B2168C0A) # Klas Lindfors <klas@yubico.com>
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

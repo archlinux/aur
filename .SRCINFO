@@ -10,7 +10,9 @@ pkgbase = ykpers
 	depends = libyubikey
 	options = !libtool
 	source = http://yubico.github.io/yubikey-personalization/releases/ykpers-1.17.1.tar.gz
+	source = https://developers.yubico.com/yubikey-personalization/Releases/ykpers-1.17.1.tar.gz.sig
 	sha256sums = 556baec2bbc94bae01293e64dc3873d68f880119ea5c3772737e4f3dc44f69c4
+	sha256sums = SKIP
 
 pkgname = ykpers
 
