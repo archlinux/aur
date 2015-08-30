@@ -3,7 +3,7 @@
 # % Trigger: 1440186730 %
 
 pkgname=('vdev-git' 'vdevfs-git' 'vdev-libudev-compat-git')
-pkgver=r597.69ecb6f
+pkgver=r617.3a419cb
 pkgrel=1
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
@@ -41,18 +41,19 @@ package_vdev-git() {
 
 	cd "$pkgname"
 	make -C vdevd \
+		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
-		DESTDIR="${pkgdir}" \
-		SBINDIR="${pkgdir}/usr/bin" \
-		USRSBINDIR="${pkgdir}/usr/bin" \
+		ETCDIR='/etc' \
+		ETCDIR_VDEV='/etc/vdev' \
+		BINDIR='/usr/bin' \
+		SBINDIR='/usr/bin' \
+		USRSBINDIR='/usr/bin' \
 	install
 
 	make -C example \
-		PREFIX='/usr' \
-		CONFDIR='/etc/vdev' \
-		DESTDIR="${pkgdir}" \
-		SBINDIR="${pkgdir}/usr/bin" \
-		USRSBINDIR="${pkgdir}/usr/bin" \
+		DESTDIR="$pkgdir" \
+		PREFIX='/usr'
+		ETCDIR_VDEV='/etc/vdev' \
 	install
 
 	make DESTDIR="${pkgdir}" PREFIX=/usr -C hwdb install
@@ -60,8 +61,8 @@ package_vdev-git() {
 	cd "$pkgdir"
 
 	# There is no way to tell the Makefile not to install these.
-	rm etc/init.d/vdev
-	rmdir etc/init.d
+#	rm etc/init.d/vdev
+#	rmdir etc/init.d
 
 	# Config files
 	backup+=( etc/vdev/actions/*.act )
@@ -74,11 +75,13 @@ package_vdevfs-git() {
 	conflicts=( 'vdevfs' )
 
 	cd vdev-git
+
+	make DESTDIR=/tmp/vdev PREFIX='/usr' SBINDIR=/usr/bin -C fs install
+
 	make -C fs \
+		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
-		DESTDIR="${pkgdir}" \
-		SBINDIR="${pkgdir}/usr/bin" \
-		USRSBINDIR="${pkgdir}/usr/bin" \
+		SBINDIR='/usr/bin' \
 	install
 }
 
@@ -87,7 +90,10 @@ package_vdev-libudev-compat-git() {
 	conflicts=( "libudev" 'libudev.so'	)
 
 	cd vdev-git
-	make LIBDIR="${pkgdir}/usr/lib" INCLUDEDIR="${pkgdir}/usr/include" -C libudev-compat install
+	make -C libudev-compat \
+		DESTDIR=/tmp/vdev \
+		PREFIX=/usr \
+	install
 }
 
 sha1sums=( 'SKIP' )
