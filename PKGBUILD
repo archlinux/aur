@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 url="https://github.com/papyros/papyros-shell"
 license=("GPL")
 depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-graphicaleffects"
-         "greenisland-papyros-git" "qml-material-git" "kdeclarative" "pam"
+         "greenisland" "qml-material-git" "kdeclarative" "pam"
          "libpulse" "libqtxdg" "solid" "kconfig" "plasma-nm")
 optdepends=('pulseaudio: audio support' 'sddm: login screen theme')
 makedepends=("git" "python" "extra-cmake-modules")
