@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-bs
 	pkgdesc = Bosnian language package for Iceweasel
-	pkgver = 40.0.deb1
+	pkgver = 40.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-bs_40.0-1_all.deb
-	sha256sums = 0a7d2cb6dae6bd183059c3004253f8ef09045c8cb65b68c7a2c1a1ddddc33164
+	depends = iceweasel>=40.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-bs_40.0.3-1_all.deb
+	md5sums = 8c3233ad1b849473aae6ef1101af366e
 
 pkgname = iceweasel-i18n-bs
 
