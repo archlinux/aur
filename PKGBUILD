@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-notificationd
 pkgname=$_pkgname-git
-pkgver=0.9.0.14.g41a22ef
+pkgver=0.9.0.40.g3954b60
 pkgrel=1
 pkgdesc="LXQt notification daemon and library."
 arch=("i686" "x86_64")
