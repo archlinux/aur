@@ -1,0 +1,23 @@
+pkgbase = camlimages
+	pkgdesc = Objective Caml image processing library
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = http://gallium.inria.fr/camlimages
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = omake
+	optdepends = libpng
+	optdepends = libtiff
+	optdepends = libxpm
+	optdepends = giflib
+	optdepends = freetype2
+	optdepends = libjpeg
+	options = staticlibs
+	source = https://bitbucket.org/camlspotter/camlimages/get/4.2.0.tar.gz
+	md5sums = 2060b7c7f8f8e1863142f0d67edc9926
+
+pkgname = camlimages
+
