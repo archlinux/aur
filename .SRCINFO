@@ -1,0 +1,22 @@
+pkgbase = mathgl
+	pkgdesc = A library for making high-quality scientific graphics
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://mathgl.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = swig
+	depends = libpng
+	depends = libgl
+	depends = libharu
+	depends = python2
+	depends = hdf5
+	depends = texlive-bin
+	depends = texlive-core
+	source = http://downloads.sourceforge.net/project/mathgl/mathgl/mathgl%202.3.3/mathgl-2.3.3.tar.gz
+	md5sums = c37d6f42d4897675bf89fae635aa6868
+
+pkgname = mathgl
+
