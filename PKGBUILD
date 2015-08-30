@@ -1,15 +1,18 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=midori-granite
-pkgver=0.5.10
+pkgver=0.5.11
 pkgrel=1
 pkgdesc='A lightweight, fast, and free web browser'
 arch=('i686' 'x86_64')
 url='http://midori-browser.org/'
 license=('LGPL2.1')
 groups=('pantheon')
-depends=('gcr' 'granite' 'libnotify' 'libxss' 'libzeitgeist' 'webkitgtk')
-makedepends=('cmake' 'intltool' 'librsvg' 'ninja' 'vala')
+depends=('cairo' 'desktop-file-utils' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc'
+         'gtk3' 'hicolor-icon-theme' 'libsoup' 'libx11' 'libxml2' 'libxss'
+         'pango' 'sqlite' 'webkitgtk' 'zeitgeist'
+         'libgranite.so')
+makedepends=('cmake' 'intltool' 'ninja' 'vala')
 optdepends=('aria2: Download utility'
             'gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
@@ -19,11 +22,19 @@ conflicts=('midori')
 options=('!emptydirs')
 install='midori.install'
 source=("http://midori-browser.org/downloads/midori_${pkgver}_all_.tar.bz2")
-sha256sums=('702344f68d7f034866a46398e35b3c16a5a5f3e431a5d916ea5efc3eaaa3e46f')
+sha256sums=('96191a96be71144ae848a409fae5a1d6d52a00e583f33122081f47ead9c49c3d')
+
+prepare() {
+  cd midori-${pkgver}
+
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
+}
 
 build() {
-  [[ -d build ]] && rm -rf build
-  mkdir build && cd build
+  cd midori-${pkgver}/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
@@ -36,7 +47,7 @@ build() {
 }
 
 package() {
-  cd build
+  cd midori-${pkgver}/build
 
   DESTDIR="${pkgdir}" ninja install
 }
