@@ -3,13 +3,15 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=openbor-svn
-pkgver=3.0.r4107
+pkgver=3.0.r4165
 pkgrel=1
 pkgdesc="An open source fighting video game and moddable game engine (aka Beats of Rage)"
 arch=('i686' 'x86_64')
 url="http://www.chronocrash.com"
 license=('BSD')
-depends=('bash' 'sdl_gfx' 'libvorbis' 'libpng')
+provides=("openbor")
+conflicts=("openbor")
+depends=('bash' 'sdl2_gfx' 'libvorbis' 'libpng' 'libvpx')
 makedepends=('subversion' 'yasm' 'imagemagick' 'glu')
 optdepends=('libgl: OpenGL video mode')
 install=openbor.install
@@ -33,7 +35,7 @@ pkgver() {
 prepare() {
   cd openbor
 
-  # disable abort on error
+  # disable abort on warnings/errors
   sed 's/-Werror//' -i Makefile
   # disable RPATH
   sed 's/-Wl,-rpath,$(LIBRARIES)//' -i Makefile
@@ -43,12 +45,15 @@ prepare() {
   sed 's|en_US.UTF-8|C|g' -i version.sh
   # convert icon
   convert -resize 48x48 resources/OpenBOR_Icon_128x128.png ../openbor.png
+
+  # FIXME: wipe file so it does not redefine max_align_t
+  echo "" > source/webmlib/halloc/align.h
 }
 
 build() {
   cd openbor
 
-  # work around broken build system
+  # work around 'special' build system
   ./version.sh
   make SDKPATH=/usr LNXDEV=/usr/bin BUILD_LINUX=1 GCC_TARGET=$CARCH
 }
