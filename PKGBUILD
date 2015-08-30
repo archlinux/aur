@@ -2,7 +2,7 @@
 # Maintainer: Ruben Kelevra <ruben@freifunk-nrw.de>
 
 pkgname=etherpad-lite
-pkgver=1.5.2
+pkgver=1.5.7
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
@@ -20,7 +20,7 @@ backup=('usr/share/webapps/etherpad-lite/settings.json'
 install='etherpad-lite.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archive/${pkgver}.tar.gz"
         "etherpad-lite.service")
-sha512sums=('4aa331c2faa5f7cc0a2b467547f0c9028ae593be52c584b520147554f81bf88083f5d26925977e341c9450a51fc03fc4a45bff75cfc7b64e4de7993333ce0ed0'
+sha512sums=('688205194347f0e4e6f78deb0b189ceaa4f2255efcbaa503d0b6459de8505dd475aa9151399dd818b6cac232bc0b71e5a0fbd6d43f56cb5ce1f9eafcccb3925b'
             '7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7')
 
 prepare() {
@@ -37,7 +37,7 @@ package() {
     cd "$pkgname-$pkgver"
     echo 'cleaning up unneeded files...'
     rm bin/installOnWindows.bat start.bat bin/buildDebian.sh bin/buildForWindows.sh
-    rm -r var bin/deb-src doc
+    rm -r var bin/deb-src doc tests
     echo 'move files...'
     install -dm 755 "${pkgdir}"/usr/share/webapps/${pkgname}
     cp -a . "${pkgdir}"/usr/share/webapps/${pkgname}
