@@ -2,7 +2,7 @@
 
 pkgname=kadu-qt4
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt-based Jabber/XMPP and Gadu-Gadu client'
 arch=('i686' 'x86_64')
 url='http://www.kadu.im/'
@@ -12,12 +12,14 @@ depends=('libgadu' 'libxss' 'enchant' 'phonon-qt4' 'qca' 'libidn'
          'hicolor-icon-theme' 'qt4')
 makedepends=('cmake' 'libao' 'libsndfile' 'libxtst' 'curl' 'chrpath' 'ninja')
 install=kadu.install
-source=(http://download.kadu.im/stable/$pkgname-$pkgver.tar.bz2 cmake-3.1-fix.patch)
+conflicts=('kadu')
+provides=('kadu')
+source=(http://download.kadu.im/stable/kadu-$pkgver.tar.bz2 cmake-3.1-fix.patch)
 md5sums=('bfc653bc3a5b542877a299209db6adaf' 'dc83b9a9aef5c0a9c6d380c51d866bd3')
 
 prepare() {
-	sed -i 's/unity_integration//g' $pkgname-$pkgver/Plugins.cmake
-	sed -i 's/indicator_docking//g' $pkgname-$pkgver/Plugins.cmake
+	sed -i 's/unity_integration//g' kadu-$pkgver/Plugins.cmake
+	sed -i 's/indicator_docking//g' kadu-$pkgver/Plugins.cmake
 }
 
 build() {
@@ -28,7 +30,7 @@ build() {
 	mkdir -p build
 	cd build
 
-	cmake ../$pkgname-$pkgver \
+	cmake ../kadu-$pkgver \
 		-GNinja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
