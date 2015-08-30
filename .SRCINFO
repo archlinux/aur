@@ -1,6 +1,6 @@
 pkgbase = papyros-shell-git
 	pkgdesc = Wayland and QtQuick based desktop shell for Papyros
-	pkgver = 0.0.5.r108.g430bba7
+	pkgver = 0.0.5.r116.gd0f9aae
 	pkgrel = 1
 	url = https://github.com/papyros/papyros-shell
 	arch = i686
