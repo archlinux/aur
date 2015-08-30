@@ -13,7 +13,7 @@ install="chicken.install"
 source=("${pkgname}-${pkgver}.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=imperative-command-line-a&version=${pkgver}"
         "${pkgname}-${pkgver}.html::http://wiki.call-cc.org/eggref/4/imperative-command-line-a.html")
 md5sums=('7932a503dadd4e6bb56aa8398be6f53e'
-         '10bfa8ae3f7d23df8f600574d4475d83')
+         'f1945d869daef1b1209b616775d1155f')
 
 # template start; name=chicken-module; version=1;
 _name=${pkgname#chicken-}
