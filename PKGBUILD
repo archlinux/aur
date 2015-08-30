@@ -3,7 +3,7 @@
 pkgname=wintoggle-git
 pkgver=2.0
 pkgrel=0
-pkgdesc='A simple xdotool-based window state toggler'
+pkgdesc='A simple window focus toggler'
 arch=('x86_64')
 url='https://github.com/v--/wintoggle'
 license=('BSL-1.0')

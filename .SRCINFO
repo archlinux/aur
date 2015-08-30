@@ -1,5 +1,5 @@
 pkgbase = wintoggle-git
-	pkgdesc = A simple xdotool-based window state toggler
+	pkgdesc = A simple window focus toggler
 	pkgver = 2.0
 	pkgrel = 0
 	url = https://github.com/v--/wintoggle
