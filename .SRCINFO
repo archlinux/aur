@@ -1,6 +1,6 @@
 pkgbase = voxelands-next-git
 	pkgdesc = A fork of Minetest, an Infiniminer/Minecraft inspired game (experimental branch)
-	pkgver = 20150727.e95d4a4
+	pkgver = v1508.01.r0.gfa519de
 	pkgrel = 1
 	url = http://www.voxelands.com
 	arch = i686

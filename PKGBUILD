@@ -2,7 +2,7 @@
 # Contributor: Menche <menche_mt at yahoo dot com>
 
 pkgname=voxelands-next-git
-pkgver=20150727.e95d4a4
+pkgver=v1508.01.r0.gfa519de
 pkgrel=1
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game (experimental branch)"
 url="http://www.voxelands.com"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/voxelands"
-	git log -1 --date=short --format="%cd.%h" | tr -d -
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
