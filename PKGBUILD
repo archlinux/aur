@@ -2,13 +2,13 @@
 # contributer: a304yuanyuan at gmail.com
 
 pkgname=moonplayer
-pkgver=0.39
+pkgver=0.42
 pkgrel=1
 pkgdesc="A qt font-end for mplayer with the abilities of watching and downloading videos from network"
 arch=('i686' 'x86_64')
 url="https://github.com/coslyk/moonplayer"
 license=('GPL')
-depends=('qt4' 'python2' 'mplayer')
+depends=('qt5-base' 'python2' 'mplayer')
 makedepends=('git')
 source=("git+https://github.com/coslyk/moonplayer")
 sha1sums=('SKIP')
@@ -22,7 +22,7 @@ build() {
 
 #	sed -i 's/python/python2/g' moonplayer.pro
 
-	qmake-qt4 moonplayer.pro
+	qmake-qt5 moonplayer.pro
 
 	make
 }

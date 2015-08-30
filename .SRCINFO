@@ -1,6 +1,6 @@
 pkgbase = moonplayer
 	pkgdesc = A qt font-end for mplayer with the abilities of watching and downloading videos from network
-	pkgver = 0.39
+	pkgver = 0.42
 	pkgrel = 1
 	url = https://github.com/coslyk/moonplayer
 	arch = i686
