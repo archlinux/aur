@@ -8,7 +8,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.8.beta7.r0.g6bc31bda
+pkgver=6.9.beta4.r0.g78e0fc5
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -35,7 +35,7 @@ optdepends=('cython2: to compile cython code'
 	'coxeter3: Coxeter groups implementation'
 	'cryptominisat: SAT solver'
 	'arb: floating-point ball arithmetic')
-makedepends=(cython2-devel boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc
+makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc
   mcqd coxeter3 cryptominisat arb modular_decomposition bliss-graphs)
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
@@ -47,13 +47,12 @@ md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
          'f72e544032b1a3f952b7ddafc3a49d63'
-         '843a6cc3b17a1850604593813321418e'
+         '5ebdb6e6ac541f040a39f8d3fd9c8ee1'
          'fd8e3e07f5b7318e6a7200a3c64f5bc2'
          '23e972753be1e5d0f761a7f82a95cebf'
          '5947a420a0b1483f0cbc74c76895789b'
          'a83a3b1bc7fcb7cbf752a83a8311fc42'
          'f333939ea6c41377b66407c81016cee4'
-         '308abbb1a49db9b8f0e088aff69567ff'
          '4eb23a3c7363258bc9ba764d6e5512ba')
 
 pkgver() {
@@ -69,7 +68,7 @@ prepare(){
 # assume all optional packages are installed
   patch -p0 -i "$srcdir"/package.patch
 # find L.h header
-  sed -e 's|libLfunction|Lfunction|' -i src/module_list.py
+  sed -e 's|libLfunction|Lfunction|' -i src/sage/libs/lcalc/lcalc_sage.h
 # don't try to link against libpng 1.2
   sed -e 's|png12|png|' -i src/module_list.py
 # set env variables
