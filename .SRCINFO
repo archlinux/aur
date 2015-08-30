@@ -11,6 +11,7 @@ pkgbase = kinit-nooom
 	makedepends = kdoctools
 	depends = kio
 	provides = kinit
+	conflicts = kinit
 	source = http://download.kde.org/stable/frameworks/5.13/kinit-5.13.0.tar.xz
 	source = 001-disable-oom-protection.patch
 	md5sums = 72d0496c5d8d94673e875ff216fa4176

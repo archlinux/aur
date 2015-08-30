@@ -12,6 +12,7 @@ url='https://projects.kde.org/projects/frameworks/kinit'
 license=('LGPL')
 depends=('kio')
 provides=('kinit')
+conflicts=('kinit')
 makedepends=('extra-cmake-modules' 'kdoctools')
 groups=('kf5')
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kinit-${pkgver}.tar.xz"
