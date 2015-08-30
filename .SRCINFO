@@ -1,5 +1,5 @@
 pkgbase = linux-tomoyo
-	pkgver = 4.1.5
+	pkgver = 4.1.6
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -14,27 +14,19 @@ pkgbase = linux-tomoyo
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.6.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.6.sign
 	source = config
 	source = config.x86_64
 	source = linux-tomoyo.preset
-	source = 0001-block-loop-convert-to-per-device-workqueue.patch
-	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
-	source = 0001-Bluetooth-btbcm-allow-btbcm_read_verbose_config-to-f.patch
-	source = bitmap-enable-booting-for-dm-md-raid1.patch
 	source = change-default-console-loglevel.patch
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
 	sha256sums = SKIP
-	sha256sums = b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc
+	sha256sums = 64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070
 	sha256sums = SKIP
 	sha256sums = f4c6a5c2fc0ee2b792e43f4c1846b995051901a502fb97885d2296af55fa193d
 	sha256sums = 58d49d4a3f6152394d903fd09113116fa3a0939d7d7ee419b2edbbd0c30e1755
 	sha256sums = 4f42b2fb6ff7e21e5b7c2b1031da2fb732016932c59ebc6308c135f9ea9fd6a8
-	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
-	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
-	sha256sums = 08f69d122021e1d13c31e5987c23021916a819846c47247b3f1cee2ef99d7f82
-	sha256sums = 959c4d71b5dc50434eeecf3a8608758f57f111c6e999289c435b13fc8c6be5f0
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-tomoyo
@@ -45,20 +37,20 @@ pkgname = linux-tomoyo
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-tomoyo=4.1.5
+	provides = kernel26-tomoyo=4.1.6
 	conflicts = kernel26-tomoyo
 	replaces = kernel26-tomoyo
 	backup = etc/mkinitcpio.d/linux-tomoyo.preset
 
 pkgname = linux-tomoyo-headers
 	pkgdesc = Header files and scripts for building modules for Linux-tomoyo kernel
-	provides = kernel26-tomoyo-headers=4.1.5
+	provides = kernel26-tomoyo-headers=4.1.6
 	conflicts = kernel26-tomoyo-headers
 	replaces = kernel26-tomoyo-headers
 
 pkgname = linux-tomoyo-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-tomoyo kernel
-	provides = kernel26-tomoyo-docs=4.1.5
+	provides = kernel26-tomoyo-docs=4.1.6
 	conflicts = kernel26-tomoyo-docs
 	replaces = kernel26-tomoyo-docs
 
