@@ -3,7 +3,7 @@
 
 pkgname=chicken-numbers
 _pkgname=numbers
-pkgver=4.3
+pkgver=4.4
 pkgrel=1
 pkgdesc='Full numeric tower support'
 arch=('i686' 'x86_64')
