@@ -1,7 +1,7 @@
 pkgbase = rpimonitor-dev-git
 	pkgdesc = A self monitoring application designed to run on Raspberry Pi. Development branch.
 	pkgver = 2.10.r52.ga5e9f8a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XavierBerger/RPi-Monitor
 	arch = armv6h
 	arch = armv7h

@@ -8,7 +8,7 @@ branch."
 arch=('armv6h' 'armv7h')
 license=('GPL')
 pkgver=2.10.r52.ga5e9f8a
-pkgrel=1
+pkgrel=2
 depends=(rrdtool perl-http-daemon perl-json perl-ipc-sharelite perl-file-which)
 makedepends=('git')
 url=(https://github.com/XavierBerger/RPi-Monitor)
