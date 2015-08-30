@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-cs
 	pkgdesc = Czech language pack for Iceweasel
-	pkgver = 40.0.deb1
+	pkgver = 40.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-cs_40.0-1_all.deb
-	sha256sums = b80dccf414c27a4d8ca625bd90e827ed345ea8eed69f4cfb851c4097733bb163
+	depends = iceweasel>=40.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-cs_40.0.3-1_all.deb
+	md5sums = f8c8846ac57a3e2d379c6cbc1b3ac330
 
 pkgname = iceweasel-i18n-cs
 
