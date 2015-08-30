@@ -28,7 +28,8 @@ depends=('alsa-lib'
 optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
-_gitname=desktop.git
+_commit_hash="4ccb1c0f8fb6f8ed2c0a7974af058786f74bbc69"
+_gitname="desktop-${_pkgver}-${_commit_hash}"
 _nw_ver=0.12.1
 
 _platform=linux64
