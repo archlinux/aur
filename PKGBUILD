@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=kodi-addon-pvr-vdr-vnsi
-pkgver=1.11.3
-_gitver=95cf85325665fdd04ee0d81a4716bb3b1d7701ed
+pkgver=1.11.4
+_gitver=73de793af0eca67170b5a790db42d435c3a07b4d
 pkgrel=1
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -20,13 +20,14 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/pvr.vdr.vnsi/pvr.vdr.vnsi"
-  grep '  version' addon.xml | cut -d'"' -f2
+  grep '  version' addon.xml.in | cut -d'"' -f2
 }
 
 prepare() {
   mkdir -p build-addon build-platform install-platform
   cd "${srcdir}/pvr.vdr.vnsi"
   patch -p1 -R -i "$srcdir/96daf6c2d483b760d5a8a0d80aa6759af1bfdc70.diff"
+  mv pvr.vdr.vnsi/addon.xml.in pvr.vdr.vnsi/addon.xml
 }
 
 build() {
