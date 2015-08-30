@@ -1,85 +1,88 @@
-* commit 6a4c6a8d37844a8263bad8537c4227f991ff2f05
+* commit 31d0c237dffee5aa586fdda49a08e2e75d03a8d2
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sat Jul 18 23:55:06 2015 -0500
+| Date:   Sun Aug 30 14:31:01 2015 -0500
 | 
-|     Updating to version 0.10.1.
+|     Create Natives dir in XDG_CACHE_HOME, not the working dir. (fixes #129)
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 5dac21a5458bb2f3f963926f642a47d69628b72b
+* commit 9fc00fc3c383ec23842dc76869033da4af041fc2
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Thu Jul 16 18:14:46 2015 -0500
+| Date:   Sat Aug 29 09:51:10 2015 -0500
 | 
-|     Cursor trail now considers actual FPS (not target FPS). (fixes #109)
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit 4e2074e41bc399c848850bfebc2af79b5579ed9a
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sat Jul 11 10:51:52 2015 -0500
-| 
-|     Show errors if any directories could not be created. (fixes #97)
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit 05c7ac0a02d1f85927a39a0b7d29fb6ed31e9595
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Thu Jul 9 11:59:53 2015 -0500
-| 
-|     Minor follow-up to #108.
-|     Set minimum OpenGL version for mmsliders to 3.0 (from 3.2) and removed an unused variable.
+|     Follow-up to #128: add XDG info to readme, rename the Maven property.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |    
-*   commit 2be92ecdcaf1edbe9624afb01ae17ce6e3161cc5
-|\  Merge: 26ab619 7941a70
+*   commit 331865c437b72d819455605cbfd381abc7af5755
+|\  Merge: c283975 fad4435
 | | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
-| | Date:   Thu Jul 9 11:54:27 2015 -0500
+| | Date:   Sat Aug 29 09:28:28 2015 -0500
 | | 
-| |     Merge pull request #108 from Bigpet/viewport_fix
+| |     Merge pull request #128 from Lucki/patch-1
 | |     
-| |     Backup and restore the viewport size when rendering sliders
+| |     Make the XDG-option available from command line with Gradle
 | |   
-| * commit 7941a70238ad2a54e5f69359e10e6ff0f7813eb6
-| | Author: Peter Tissen <dravorek@gmail.com>
-| | Date:   Thu Jul 9 18:37:39 2015 +0200
-| | 
-| |     use EXT version of FBOs instead of the ARB version
-| |     
-| |     This doesn't actually make a difference in functionality.
-| |     The issue is that the flashlight mod uses Slicks FBO functions which
-| |     use the EXT version and Intel drivers generate the same FBO IDs twice
-| |     if the EXT and ARB versions are mixed.
-| |   
-| * commit 420f1fb02cbdbad90c28ed5c484f118e499d3fcd
-|/  Author: Peter Tissen <dravorek@gmail.com>
-|   Date:   Wed Jul 8 16:18:41 2015 +0200
+| * commit fad44356e621c3f5d5a3b9b8b1b60a22f4eec7c3
+|/  Author: Lucki <Lucki@users.noreply.github.com>
+|   Date:   Sat Aug 29 13:05:24 2015 +0200
 |   
-|       Backup and restore the viewport size when rendering sliders. Needed because Slick tends to allocate offscreen buffers for itself only with power of two textures, so it will use another viewport when rendering to its own offscreen buffers.
+|       Make the XDG-option available from command line
+|       
+|       I've found no way to access it without this workaround: https://discuss.gradle.org/t/can-i-override-the-group-property-from-the-command-line/5294
+|       It's now possible to build with `gradle jar -PXDG=true`.
 |  
-* commit 26ab61910e051dfb1dac5b8258b70bcf7df7ac8e
+* commit c2839759b3e3bf300f7f3ff9ada017e8a4cb6462
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Tue Jul 7 19:03:54 2015 -0500
+| Date:   Sat Aug 29 00:46:39 2015 -0500
 | 
-|     Added option to disable automatic checking for updates.
+|     Follow-up to 2d83c3a: forgot to include a description of .opsu.log.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 8b9e230fa75c3178f59dfee28ffbf2f127b589c3
+* commit 2d83c3a3485bb6dfdc936d9767076f0c95e40e4f
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Tue Jul 7 18:37:03 2015 -0500
+| Date:   Sat Aug 29 00:32:08 2015 -0500
 | 
-|     Updated dependencies.
-|     - LWJGL is now at the final 2.x release version.
-|     - Slick2D is now at the final (?) release version.
-|     - Added dependency for org.tukaani.xz, since it becomes optional in commons-compress 1.9 and is needed for LZMA compression.
+|     Added "Directory Structure" section to the readme, with other changes.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 47f682352dd65cb322fb02907af219ba5e882472
+* commit 6d284cdd80a8bb1a4b57679e9c1a001527d9fc3f
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sat Jul 4 23:29:46 2015 -0500
+| Date:   Fri Aug 28 21:29:21 2015 -0500
 | 
-|     Updating to version 0.10.0.
+|     Organize imports.
+|     Some of these got re-ordered when I updated Eclipse -- resetting to the original sort order.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit 34c7942f4bd3e70a80890e4b3d1176939ddfbd8f
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Fri Aug 28 21:12:47 2015 -0500
+| 
+|     Fixed "Hidden" mod timing issues. (fixes #121)
+|     This introduces more accurate timing formulas associated with the "Hidden" mod (previously, in #115, these values were hardcoded).  The values seem somewhat close to the values in osu!, but were not extensively tested.
+|     
+|     Also set an upper bound on the fade in time for hit objects proportional to the approach time, or else the timing values in the "Hidden" mod would be too inconsistent.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit c4f54ecc0594cb867d24dde4386d768133b3ff1d
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Fri Aug 28 19:41:02 2015 -0500
+| 
+|     Hitting the "f" key during a replay changes the playback speed.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit f773a8ecf8a2b02c444b9326972047124b07e892
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Fri Aug 28 11:07:03 2015 -0500
+| 
+|     Remove jinput dependency since controllers aren't used.
+|     jinput natives are no longer loaded or packaged in the jar.
+|     
+|     Excluded the lwjgl dependency within the slick2d package since it depends on an older version (2.9.1) of lwjgl.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
