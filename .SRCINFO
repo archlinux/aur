@@ -1,0 +1,35 @@
+pkgbase = kadu-qt4
+	pkgdesc = Qt-based Jabber/XMPP and Gadu-Gadu client
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.kadu.im/
+	install = kadu.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = libao
+	makedepends = libsndfile
+	makedepends = libxtst
+	makedepends = curl
+	makedepends = chrpath
+	makedepends = ninja
+	depends = libgadu
+	depends = libxss
+	depends = enchant
+	depends = phonon-qt4
+	depends = qca
+	depends = libidn
+	depends = libmpdclient
+	depends = libotr
+	depends = libarchive
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = qt4
+	source = http://download.kadu.im/stable/kadu-qt4-1.5.tar.bz2
+	source = cmake-3.1-fix.patch
+	md5sums = bfc653bc3a5b542877a299209db6adaf
+	md5sums = dc83b9a9aef5c0a9c6d380c51d866bd3
+
+pkgname = kadu-qt4
+
