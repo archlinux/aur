@@ -1,0 +1,31 @@
+pkgbase = orbment-vfs-git
+	pkgdesc = A modular wayland compositor based on wlc (using the vfs branch).
+	pkgver = r467.ed0746e
+	pkgrel = 1
+	url = https://github.com/Cloudef/orbment
+	install = orbment-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = libpng
+	depends = wlc-git
+	optdepends = weston: To test weston clients in orbment.
+	optdepends = bemenu: Dynamic menu similar to dmenu for launching programs.
+	optdepends = libpng: PNG screenshot compression.
+	provides = orbment
+	conflicts = orbment
+	options = debug
+	options = !strip
+	source = git://github.com/Cloudef/orbment#branch=feature/vfs
+	source = git://github.com/Cloudef/pi9
+	source = git://github.com/Cloudef/chck
+	source = git://github.com/Cloudef/inihck
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = orbment-vfs-git
+
