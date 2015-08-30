@@ -5,11 +5,11 @@ pkgbase = wintoggle-git
 	url = https://github.com/v--/wintoggle
 	arch = x86_64
 	license = BSL-1.0
-	makedepends = git libx11
 	depends = libx11
 	provides = wintoggle
 	conflicts = wintoggle
 	source = git://github.com/v--/wintoggle.git
+	md5sums = SKIP
 
 pkgname = wintoggle-git
 

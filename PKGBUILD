@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://github.com/v--/wintoggle'
 license=('BSL-1.0')
 depends=('libx11')
-makedepends=('libx11')
 provides=('wintoggle')
 conflicts=('wintoggle')
 source='git://github.com/v--/wintoggle.git'
