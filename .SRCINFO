@@ -1,0 +1,17 @@
+pkgbase = brial
+	pkgdesc = Library for polynomials over boolean rings
+	pkgver = 0.8.4.3
+	pkgrel = 1
+	url = https://github.com/BRiAl/BRiAl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = m4ri
+	conflicts = polybori
+	replaces = polybori
+	source = https://github.com/BRiAl/BRiAl/releases/download/0.8.4.3/brial-0.8.4.3.tar.bz2
+	md5sums = 66275eea0654cb1eb6438a6262140885
+
+pkgname = brial
+
