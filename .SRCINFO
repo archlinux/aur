@@ -1,6 +1,6 @@
 pkgbase = vdev-git
 	pkgdesc = A virtual device manager for *nix
-	pkgver = r597.69ecb6f
+	pkgver = r617.3a419cb
 	pkgrel = 1
 	url = https://github.com/jcnelson/vdev.git
 	arch = x86_64
