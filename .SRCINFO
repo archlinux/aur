@@ -1,0 +1,19 @@
+pkgbase = cvdrone-git
+	pkgdesc = AR Drone 2.0 SDK written in C++ and QT
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://burntbunch.org:1337/burntbunch/cutedrone
+	arch = x86_64
+	groups = devel
+	license = LGPLv2
+	makedepends = git
+	depends = qt5-base
+	depends = opencv
+	provides = cvdrone
+	source = cvdrone.sh
+	source = cvdrone.desktop
+	sha256sums = 1eda5ee428da03335df8dda0a6558cfa1773bb2e1374e9b61a3df969b97ddff7
+	sha256sums = cba54d0a4cd30975321b50397f0a9593156789034136cb634d8e23759796c264
+
+pkgname = cvdrone-git
+

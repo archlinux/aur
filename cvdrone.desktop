@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CvDrone Example
+GenericName=CvDroneEx
+Version=1.0.0
+Comment=Example application for the CvDrone SDK
+Exec=cvdrone
+Terminal=false
+Type=Application
+Categories=Utility;
