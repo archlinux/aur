@@ -1,0 +1,15 @@
+diff -aur musepack_src_r475.old/CMakeLists.txt musepack_src_r475/CMakeLists.txt
+--- musepack_src_r475.old/CMakeLists.txt	2014-02-13 23:13:22.686703835 +1100
++++ musepack_src_r475/CMakeLists.txt	2014-02-13 23:13:34.496841970 +1100
+@@ -7,11 +7,7 @@
+ set(CMAKE_VERBOSE_MAKEFILE false)
+ TEST_BIG_ENDIAN(MPC_ENDIANNESS)
+ 
+-if(WIN32)
+-  option(SHARED "Use shared libmpcdec" OFF)
+-else(WIN32)
+-  option(SHARED "Use shared libmpcdec" ON)
+-endif(WIN32)
++option(SHARED "Use shared libmpcdec" OFF)
+ 
+ add_definitions(-DFAST_MATH -DCVD_FASTLOG)

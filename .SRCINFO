@@ -1,0 +1,20 @@
+pkgbase = musepack-tools
+	pkgdesc = Musepack decoder/encoder
+	pkgver = 475
+	pkgrel = 4
+	url = http://www.musepack.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = libcuefile
+	depends = libreplaygain
+	source = http://files.musepack.net/source/musepack_src_r475.tar.gz
+	source = math.patch
+	source = static.patch
+	md5sums = 754d67be67f713e54baf70fcfdb2817e
+	md5sums = 9de31f07a3492c7b1db1248b055fbdc8
+	md5sums = cf1f60e9fce97687f28a4aa43b80f17d
+
+pkgname = musepack-tools
+
