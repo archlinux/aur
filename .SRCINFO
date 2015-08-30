@@ -1,6 +1,6 @@
 pkgbase = rhythmbox-git
 	pkgdesc = An iTunes-like music player/libary
-	pkgver = 3.2.3.g9a024fa
+	pkgver = 3.2.1.38.g65d3c11
 	pkgrel = 1
 	url = http://www.rhythmbox.org
 	install = rhythmbox.install
