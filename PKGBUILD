@@ -15,7 +15,7 @@ install="chicken.install"
 source=("$pkgname-$pkgver.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=xlib&version=$pkgver"
 		"$pkgname-$pkgver.html::http://wiki.call-cc.org/eggref/4/xlib.html")
 md5sums=('951268d1fa79c41046260f1a0f75aa1e'
-         '687f763efb2880565ab2eb8a4f9914aa')
+         'f5a63f5eb239c13c253e321227d413da')
 
 # template start; name=chicken-module; version=1;
 _name=${pkgname#chicken-}
