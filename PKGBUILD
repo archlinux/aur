@@ -1,16 +1,18 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=midori-granite-bzr
-pkgver=r6997
+pkgver=r7031
 pkgrel=1
 pkgdesc='A lightweight, fast, and free web browser'
 arch=('i686' 'x86_64')
 url='http://midori-browser.org/'
 license=('LGPL2.1')
 groups=('pantheon-unstable')
-depends=('gcr' 'libnotify' 'libxss' 'libzeitgeist' 'webkitgtk' 'zeitgeist'
+depends=('cairo' 'desktop-file-utils' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc'
+         'gtk3' 'hicolor-icon-theme' 'libsoup' 'libx11' 'libxml2' 'libxss'
+         'pango' 'sqlite' 'webkitgtk' 'zeitgeist'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'granite-bzr' 'intltool' 'librsvg' 'ninja' 'vala')
+makedepends=('bzr' 'cmake' 'granite-bzr' 'intltool' 'ninja' 'vala')
 optdepends=('gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
             'gst-libav: HTML5 H264 videos support')
