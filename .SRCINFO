@@ -1,6 +1,6 @@
 pkgbase = trac-mercurial
 	pkgdesc = Mercurial plugin for Trac
-	pkgver = 1.0.0.1
+	pkgver = 1.0.0.4
 	pkgrel = 1
 	url = http://trac.edgewall.org/wiki/TracMercurial
 	arch = any

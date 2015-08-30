@@ -1,7 +1,7 @@
 # Maintainer: Stefan Betz <info@stefan-betz.net>
 # Contributor: Daniele Paolella <dp@hostess-promoter.com>
 pkgname=trac-mercurial
-pkgver=1.0.0.1
+pkgver=1.0.0.4
 pkgrel=1
 pkgdesc="Mercurial plugin for Trac"
 arch=('any')
