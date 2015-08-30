@@ -4,11 +4,17 @@
 # Contributor: David H. Bronke <whitelynx at gmail.com>
 pkgname='fastoggenc'
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A parallelized Python script which converts MP3, M4A, WMA, WAV into OGG Vorbis"
 arch=('any')
 url="http://sourceforge.net/projects/fastoggenc/"
-depends=(mplayer mpg123 lame flac faad2 vorbis-tools wavpack musepack-tools cdparanoia cdrkit mutagen)
+depends=(mplayer mpg123 lame flac faad2 vorbis-tools mutagen)
+optdepends=(
+  'musepack-tools: for decoding Musepack files'
+  'wavepack: for decoding Wavepack files'
+  'cdparanoia: for reading CDs'
+  'cdrkit: for reading CDs'
+)
 license=('GPLv3')
 source=("http://downloads.sourceforge.net/project/fastoggenc/$pkgver/$pkgname-$pkgver.tar.gz")
 
