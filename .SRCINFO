@@ -1,0 +1,25 @@
+pkgbase = rawtherapee-git
+	pkgdesc = RAW photo editor
+	pkgver = 2971.11d382d
+	pkgrel = 1
+	url = http://www.rawtherapee.com/
+	install = rawtherapee.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = fftw
+	depends = gtkmm
+	depends = libcanberra
+	depends = libiptcdata
+	depends = lcms2
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = rawtherapee
+	conflicts = rawtherapee
+	source = rawtherapee::git+https://github.com/Beep6581/RawTherapee.git
+	md5sums = SKIP
+
+pkgname = rawtherapee-git
+
