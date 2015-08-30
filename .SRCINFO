@@ -1,0 +1,15 @@
+pkgbase = megacorp
+	pkgdesc = A console acquire board game
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/acquiregame/
+	arch = i686
+	arch = x86_64
+	license = GPL 2
+	source = http://sourceforge.net/projects/acquiregame/files/acquire/0.5.1/megacorp-0.5.1.zip/download
+	source = patch.diff
+	md5sums = 5df07b58c5aa10d02de292debd070e15
+	md5sums = d632b8d3c46f45ca89444efa7dce51fe
+
+pkgname = megacorp
+

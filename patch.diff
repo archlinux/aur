@@ -1,0 +1,198 @@
+diff -r ebe03b0eb26e Makefile
+--- a/Makefile	Sun Aug 30 13:36:36 2015 +0200
++++ b/Makefile	Sun Aug 30 13:53:48 2015 +0200
+@@ -1,59 +1,75 @@
+-BIN=megacorp
+-CC=g++
+-FLAGS=-W -Wall -pedantic -gstabs+ -O3
+-RELEASEFLAGS=-O3 -s
+-OBJS=slot.o tile.o bag.o player.o company.o board.o game.o ai.o tools.o
+-
+-all: $(BIN)
+-
+-$(BIN): $(OBJS) main.o ui.text.o
+-	$(CC) $(FLAGS) -s $(OBJS) main.o ui.text.o -o $(BIN)
+-
+-train: $(OBJS) chromosome.o train.o ui.silent.o
+-	$(CC) $(FLAGS) $(OBJS) chromosome.o train.o ui.silent.o -o train
+-
+-train.o: train.cpp chromosome.h game.h
+-	$(CC) $(FLAGS) train.cpp -c
+-
+-chromosome.o: chromosome.cpp chromosome.h
+-	$(CC) $(FLAGS) chromosome.cpp -c
+-
+-main.o: main.cpp game.h tools.h globals.h
+-	$(CC) $(FLAGS) main.cpp -c
+-
+-game.o: game.cpp game.h globals.h board.h player.h company.h bag.h
+-	$(CC) $(FLAGS) game.cpp -c
+-	
+-ai.o: ai.cpp game.h globals.h board.h player.h company.h bag.h
+-	$(CC) $(FLAGS) ai.cpp -c
+-
+-company.o: company.cpp company.h globals.h
+-	$(CC) $(FLAGS) company.cpp -c
+-
+-player.o: player.cpp player.h tile.h globals.h
+-	$(CC) $(FLAGS) player.cpp -c
+-
+-board.o: board.cpp board.h slot.h tile.h globals.h player.h company.h
+-	$(CC) $(FLAGS) board.cpp -c
+-
+-bag.o: bag.cpp bag.h tile.h globals.h
+-	$(CC) $(FLAGS) bag.cpp -c
+-
+-tile.o: tile.cpp tile.h
+-	$(CC) $(FLAGS) tile.cpp -c
+-
+-slot.o: slot.cpp slot.h company.h
+-	$(CC) $(FLAGS) slot.cpp -c
+-
+-tools.o: tools.cpp tools.h
+-	$(CC) $(FLAGS) tools.cpp -c
+-	
+-ui.text.o: ui.text.cpp game.h tools.h
+-	$(CC) $(FLAGS) ui.text.cpp -c
+-	
+-ui.silent.o: ui.text.cpp game.h tools.h
+-	$(CC) $(FLAGS) ui.silent.cpp -c
+-
+-clean:
+-	rm *.o
+-	rm *.exe
++BIN=megacorp
++CC=g++
++FLAGS=-W -Wall -pedantic -gstabs+ -O3
++RELEASEFLAGS=-O3 -s
++OBJS=slot.o tile.o bag.o player.o company.o board.o game.o ai.o tools.o
++RM=rm -f
++
++MKDIR=mkdir -p
++CP=cp -p
++
++.PHONY: all clean install install.train
++
++all: $(BIN)
++
++$(BIN): $(OBJS) main.o ui.text.o
++	$(CC) $(FLAGS) -s $(OBJS) main.o ui.text.o -o $(BIN)
++
++train: $(OBJS) chromosome.o train.o ui.silent.o
++	$(CC) $(FLAGS) $(OBJS) chromosome.o train.o ui.silent.o -o train
++
++train.o: train.cpp chromosome.h game.h
++	$(CC) $(FLAGS) train.cpp -c
++
++chromosome.o: chromosome.cpp chromosome.h
++	$(CC) $(FLAGS) chromosome.cpp -c
++
++main.o: main.cpp game.h tools.h globals.h
++	$(CC) $(FLAGS) main.cpp -c
++
++game.o: game.cpp game.h globals.h board.h player.h company.h bag.h
++	$(CC) $(FLAGS) game.cpp -c
++
++ai.o: ai.cpp game.h globals.h board.h player.h company.h bag.h
++	$(CC) $(FLAGS) ai.cpp -c
++
++company.o: company.cpp company.h globals.h
++	$(CC) $(FLAGS) company.cpp -c
++
++player.o: player.cpp player.h tile.h globals.h
++	$(CC) $(FLAGS) player.cpp -c
++
++board.o: board.cpp board.h slot.h tile.h globals.h player.h company.h
++	$(CC) $(FLAGS) board.cpp -c
++
++bag.o: bag.cpp bag.h tile.h globals.h
++	$(CC) $(FLAGS) bag.cpp -c
++
++tile.o: tile.cpp tile.h
++	$(CC) $(FLAGS) tile.cpp -c
++
++slot.o: slot.cpp slot.h company.h
++	$(CC) $(FLAGS) slot.cpp -c
++
++tools.o: tools.cpp tools.h
++	$(CC) $(FLAGS) tools.cpp -c
++
++ui.text.o: ui.text.cpp game.h tools.h
++	$(CC) $(FLAGS) ui.text.cpp -c
++
++ui.silent.o: ui.text.cpp game.h tools.h
++	$(CC) $(FLAGS) ui.silent.cpp -c
++
++clean:
++	$(RM) *.o
++	$(RM) train $(BIN)
++
++install: megacorp INSTRUCTIONS
++	$(MKDIR) $(DESTDIR)/usr/bin
++	$(CP) megacorp $(DESTDIR)/usr/bin/
++	$(MKDIR) $(DESTDIR)/usr/share/megacorp
++	$(CP) INSTRUCTIONS $(DESTDIR)/usr/share/megacorp/
++
++install.train: train
++	$(MKDIR) $(DESTDIR)/usr/bin
++	$(CP) train $(DESTDIR)/usr/bin/
+diff -r ebe03b0eb26e tools.cpp
+--- a/tools.cpp	Sun Aug 30 13:36:36 2015 +0200
++++ b/tools.cpp	Sun Aug 30 13:53:48 2015 +0200
+@@ -18,6 +18,8 @@
+  * Boston, MA  02111-1307  USA                                          *
+  ************************************************************************/
+ 
++#include <stdlib.h>
++
+ #include "tools.h"
+ 
+ using namespace std;
+diff -r ebe03b0eb26e ui.silent.cpp
+--- a/ui.silent.cpp	Sun Aug 30 13:36:36 2015 +0200
++++ b/ui.silent.cpp	Sun Aug 30 13:53:48 2015 +0200
+@@ -23,9 +23,8 @@
+  *   Displays the board, players, and companies.  Optimized for at      *
+  *   least 25 rows and 80 columns.                                      *
+  ************************************************************************/
+-void Game::printInfo( bool showTiles )
++void Game::printInfo( bool )
+ {
+-    showTiles = false;
+ }
+ 
+ /************************************************************************
+@@ -49,9 +48,8 @@
+  *   is true, the tiles that player 'turn' has in his/her hand is also  *
+  *   displayed (if any of those tiles are on the row being printed)     *
+  ************************************************************************/
+-void Board::displayRow( unsigned int row, bool showTiles, Player *turn ) const
++void Board::displayRow( unsigned int, bool, Player * ) const
+ {
+-    row = 0; showTiles = false; turn = NULL;
+ }
+ 
+ void Game::displayMessages( )
+@@ -65,9 +63,8 @@
+     return options[0];
+ }
+ 
+-unsigned int getValidInteger( unsigned int min, unsigned int max, string prompt )
++unsigned int getValidInteger( unsigned int min, unsigned int, string )
+ {
+-	max = 0; prompt = "";
+     return min;
+ }
+ 
+diff -r ebe03b0eb26e ui.text.cpp
+--- a/ui.text.cpp	Sun Aug 30 13:36:36 2015 +0200
++++ b/ui.text.cpp	Sun Aug 30 13:53:48 2015 +0200
+@@ -345,7 +345,7 @@
+ 	ifstream in;
+     char str[80];
+ 
+-    in.open( "./INSTRUCTIONS");
++    in.open( "/usr/share/megacorp/INSTRUCTIONS");
+     if ( !in ) {
+         cout << "Can't find instructions file.\n";
+         cout << "Make sure the file INSTRUCTIONS is in the same"
