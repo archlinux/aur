@@ -9,7 +9,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 _gemname=droplet_ctl
 pkgname=ruby-${_gemname}-git
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc=""
 arch=(any)
@@ -32,6 +32,7 @@ package() {
   local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
 
   gem build ${_gemname}.gemspec
+  mkdir -p "$pkgdir/usr/bin"
   gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" \
     "$_gemname-$pkgver.gem"
 }
