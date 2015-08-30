@@ -1,0 +1,15 @@
+pkgbase = scxvid
+	pkgdesc = Standalone port of the AviSynth SCXvid plugin
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/soyokaze/SCXvid-standalone
+	arch = i686
+	arch = x86_64
+	license = None
+	depends = glibc
+	depends = libxvidcore.so
+	source = https://github.com/soyokaze/SCXvid-standalone/archive/r1.tar.gz
+	sha256sums = e178258cc5208c3bddc03fb881ee1ba8dac019b02f398167de8a20909f58ec14
+
+pkgname = scxvid
+
