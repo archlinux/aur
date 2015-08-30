@@ -8,7 +8,7 @@ pkgdesc="Lightweight crossplatform application for notes managment with simple i
 arch=('i686' 'x86_64')
 url="http://znotes.sourceforge.net"
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-tools')
 source=(https://github.com/proton/zNotes/archive/master.zip)
 md5sums=('SKIP')
 

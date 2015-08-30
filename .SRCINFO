@@ -6,7 +6,7 @@ pkgbase = znotes
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt5-base
+	depends = qt5-tools
 	source = https://github.com/proton/zNotes/archive/master.zip
 	md5sums = 9604bc0f00aa169c6caac8f2ccad98ab
 
