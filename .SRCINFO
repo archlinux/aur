@@ -1,14 +1,14 @@
 pkgbase = wgetpkg
 	pkgdesc = Downloads AUR packages with wget
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/atweiden/wgetpkg
 	arch = any
 	license = UNLICENSE
 	depends = perl
 	depends = wget
-	source = wgetpkg-0.0.1.tar.gz::https://codeload.github.com/atweiden/wgetpkg/tar.gz/0.0.1
-	sha256sums = 69c43a20d879cac724a25d05ac27240702b581c4192307d920d79cb94b117b50
+	source = wgetpkg-0.0.2.tar.gz::https://codeload.github.com/atweiden/wgetpkg/tar.gz/0.0.2
+	sha256sums = 81cb74bc78ea14583179e9639aad6ef707860a5890602b0ce86ca0d521f22c11
 
 pkgname = wgetpkg
 
