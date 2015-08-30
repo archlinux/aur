@@ -1,7 +1,7 @@
 pkgbase = webstuff
 	pkgdesc = Lightweight C Library for web-applications development
 	pkgver = 1.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.lowenware.com/
 	arch = any
 	license = BSD
