@@ -1,17 +1,15 @@
 pkgbase = wintoggle-git
 	pkgdesc = A simple xdotool-based window state toggler
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 0
 	url = https://github.com/v--/wintoggle
-	arch = any
+	arch = x86_64
 	license = BSL-1.0
-	makedepends = git
-	depends = bash
-	depends = xdotool
+	makedepends = git libx11
+	depends = libx11
 	provides = wintoggle
 	conflicts = wintoggle
 	source = git://github.com/v--/wintoggle.git
-	md5sums = SKIP
 
 pkgname = wintoggle-git
 
