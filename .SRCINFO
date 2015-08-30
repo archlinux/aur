@@ -1,5 +1,5 @@
 pkgbase = google-chrome
-	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
+	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel). NOTE: If the md5sums don't match, simply flag the package.
 	pkgver = 44.0.2403.157
 	pkgrel = 1
 	url = https://www.google.com/chrome/index.html
