@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-kk
 	pkgdesc = Kazakh language pack for Iceweasel
-	pkgver = 40.0.deb1
+	pkgver = 40.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-kk_40.0-1_all.deb
-	sha256sums = 4e8a9faeb6a4adf3a31ef79f4e3d9b051bf88ad65c046a3cd853d07362cb2e2a
+	depends = iceweasel>=40.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-kk_40.0.3-1_all.deb
+	md5sums = 07c15436fd56fc0c5d38de095be3d7d5
 
 pkgname = iceweasel-i18n-kk
 
