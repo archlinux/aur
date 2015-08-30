@@ -1,7 +1,7 @@
 # Maintainer: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=cura-engine
-pkgver=15.04
+pkgver=15.06.03
 pkgrel=1
 pkgdesc="A C++ console application for 3D printing GCode generation. It's called by Repetier Host and/or other applications."
 arch=(i686 x86_64 arm)
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/Ultimaker/CuraEngine/archive/${pkgver}.tar.gz"
     )
 sha1sums=(
-    '1a1d2c8f1b3311fbeb5b87fe32b8051508263abe'
+    'aac7db3aa1188967e66a28dd3d33f004d72523d4'
     )
 conflicts=(curaengine curaengine-git cura-engine-git)
 
@@ -52,6 +52,15 @@ build4git() {
 
 build4release() {
     cd "${srcdir}/CuraEngine-${pkgver}"
+    # add version
+    sed -i -e "s|add_definitions[ \t]*([ \t]*-DVERSION=.*||" CMakeLists.txt
+    echo "add_definitions( -DVERSION=\"git-$(pkgver)\" )" >> CMakeLists.txt
+    # patch default folder
+    sed -i -e "s|loadJSON[ \t]*([ \t]*\"fdmprinter.json|loadJSON(\"/usr/share/${pkgname}/fdmprinter.json|" src/main.cpp
+
+    mkdir -p build
+    cd build
+    cmake ..
     make VERSION="\"$pkgver\""
 }
 
@@ -71,6 +80,8 @@ package4release() {
     cd "${srcdir}/CuraEngine-${pkgver}"
     mkdir -p ${pkgdir}/usr/bin/
     cp build/CuraEngine ${pkgdir}/usr/bin/
+    mkdir -p ${pkgdir}/usr/share/${pkgname}/
+    cp fdmprinter.json ${pkgdir}/usr/share/${pkgname}/
 }
 
 package() {
