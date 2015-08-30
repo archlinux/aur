@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-fy-nl
 	pkgdesc = Frisian language package for Iceweasel (Netherlands)
-	pkgver = 40.0.deb1
+	pkgver = 40.0.3.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-fy-nl_40.0-1_all.deb
-	sha256sums = cba52593c321ba8a91afd9f49bb7c8399ca69dab25e10886f3a1a701954b3c74
+	depends = iceweasel>=40.0.3
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-fy-nl_40.0.3-1_all.deb
+	md5sums = d994805bd40f59e4e8781d8495be7ef2
 
 pkgname = iceweasel-i18n-fy-nl
 
