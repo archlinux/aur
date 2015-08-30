@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-globalkeys
 pkgname=$_pkgname-git
-pkgver=0.9.0.8.g444fda5
+pkgver=0.9.0.39.g2110dde
 pkgrel=1
 pkgdesc="LXQt daemon and library for global keyboard shortcuts registration."
 arch=("i686" "x86_64")
