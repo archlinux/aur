@@ -1,7 +1,7 @@
 pkgbase = znotes
 	pkgdesc = Lightweight crossplatform application for notes managment with simple interface
 	pkgver = 0.4.5
-	pkgrel = 6
+	pkgrel = 7
 	url = http://znotes.sourceforge.net
 	arch = i686
 	arch = x86_64

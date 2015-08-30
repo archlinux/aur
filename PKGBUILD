@@ -3,7 +3,7 @@
 
 pkgname=znotes
 pkgver=0.4.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Lightweight crossplatform application for notes managment with simple interface"
 arch=('i686' 'x86_64')
 url="http://znotes.sourceforge.net"
@@ -15,9 +15,8 @@ md5sums=('SKIP')
 
 build() {
    cd $srcdir/zNotes-master
-   echo "QMAKE_CXXFLAGS_RELEASE = $CFLAGS" >> znotes.pro
-   echo "QMAKE_CFLAGS_RELEASE = $CXXFLAGS" >> znotes.pro
-   qmake-qt5 PREFIX=/usr
+   lrelease-qt5 znotes.pro
+   qmake-qt5 QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS" PREFIX=/usr
    make
 }
 
