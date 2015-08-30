@@ -10,9 +10,9 @@ license=('LGPL2.1')
 groups=('pantheon-unstable')
 depends=('cairo' 'desktop-file-utils' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gtk3' 'hicolor-icon-theme' 'libsoup' 'libx11' 'libxml2' 'libxss'
-         'pango' 'sqlite' 'webkitgtk' 'zeitgeist'
+         'pango' 'sqlite' 'webkit2gtk' 'zeitgeist'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'granite-bzr' 'intltool' 'ninja' 'vala')
+makedepends=('bzr' 'cmake' 'granite-bzr' 'intltool' 'librsvg' 'ninja' 'vala')
 optdepends=('gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
             'gst-libav: HTML5 H264 videos support')
@@ -39,6 +39,7 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DHALF_BRO_INCOM_WEBKIT2='TRUE' \
     -DUSE_GRANITE='TRUE' \
     -DUSE_GTK3='TRUE' \
     -G Ninja
