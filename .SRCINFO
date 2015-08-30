@@ -1,6 +1,6 @@
 pkgbase = lighthouse-git
 	pkgdesc = A simple scriptable popup dialog to run on X
-	pkgver = unknown
+	pkgver = r173.a9b41fa
 	pkgrel = 1
 	url = https://github.com/emgram769/lighthouse
 	arch = any

@@ -29,7 +29,8 @@ build() {
 package() {
 	cd "${srcdir}/lighthouse"
 	mkdir -p ${pkgdir}/usr/{bin,share/lighthouse}
-	cp lighthouse "${pkgdir}"
+	cp lighthouse "${pkgdir}/usr/bin"
+	chmod +x "${pkgdir}/usr/bin/lighthouse"
 	cp -ir config/lighthouse/* "${pkgdir}/usr/share/lighthouse"
 	chmod +x ${pkgdir}/usr/share/lighthouse/cmd{,.py}
 }
