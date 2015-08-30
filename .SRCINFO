@@ -1,0 +1,15 @@
+pkgbase = lwt-git
+	pkgdesc = Lightweight terminal emulator based on the VTE and GTK libraries.
+	pkgver = 20150830
+	pkgrel = 1
+	url = https://github.com/mewkiz/lwt
+	arch = x86_64
+	arch = i686
+	license = public domain
+	makedepends = git
+	depends = gtk3
+	depends = vte3
+	conflicts = lwt
+
+pkgname = lwt-git
+
