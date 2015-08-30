@@ -87,7 +87,7 @@ package_vdev-libudev-compat-git() {
 
 	cd vdev-git
 	make -C libudev-compat \
-		DESTDIR=/tmp/vdev \
+		DESTDIR="$pkgdir" \
 		PREFIX=/usr \
 	install
 }
