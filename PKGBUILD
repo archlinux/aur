@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-thermal-monitor-git
 _pkgname=plasma5-applets-thermal-monitor
 _gitpkgname=plasma-applet-thermal-monitor
-pkgver=r19.26dd85c
+pkgver=r21.20820d2
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Monitors temperature of existing sensors including CPU, GPU and HDD."
 arch=('any')
@@ -11,8 +11,6 @@ url="https://github.com/kotelnik/$_gitpkgname"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('git' 'extra-cmake-modules')
-optdepends=('hddtemp: HDD temperature support'
-            'gnu-netcat: querying hddtemp service')
 conflicts=("${_pkgname-*}")
 provides=("${_pkgname-*}")
 source=("git://github.com/kotelnik/$_gitpkgname.git")
