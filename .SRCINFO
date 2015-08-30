@@ -1,6 +1,6 @@
 pkgbase = audacious-imms-git
 	pkgdesc = An intelligent playlist plug-in for XMMS that tracks your listening patterns and dynamically adapts to your taste.
-	pkgver = r249.4a395da
+	pkgver = 3.1.16.4227360
 	pkgrel = 1
 	url = https://sites.google.com/a/luminal.org/imms/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = audacious-imms-git
 	depends = torch
 	conflicts = audacious-imms
 	replaces = imms
-	source = git+https://github.com/jlindgren90/imms.git
+	source = git+https://github.com/martingkelly/imms.git
 	md5sums = SKIP
 
 pkgname = audacious-imms-git
