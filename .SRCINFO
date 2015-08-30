@@ -1,5 +1,5 @@
 pkgbase = unity-editor-bin
-	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences
+	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
 	pkgver = 5.1.0f3+2015082501
 	pkgrel = 2
 	url = https://unity3d.com/
