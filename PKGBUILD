@@ -3,9 +3,9 @@
 pkgname=chicken-xft
 _pkgname=xft
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chicken Egg: Bindings for xft"
-depends=('chicken' 'chicken-foreigners' 'chicken-xtypes')
+depends=('chicken' 'chicken-foreigners' 'chicken-xtypes' 'libxft')
 arch=('x86_64')
 url='http://wiki.call-cc.org/eggref/4/xft'
 license=('BSD')
