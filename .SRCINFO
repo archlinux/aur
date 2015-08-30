@@ -1,0 +1,26 @@
+pkgbase = libmathview-git
+	pkgdesc = A library for rendering MathML documents
+	pkgver = r1278.a007fd2
+	pkgrel = 1
+	url = https://github.com/khaledhosny/libmathview
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = python2-lxml
+	depends = harfbuzz
+	depends = libxml2
+	depends = cairo
+	depends = qt5-base
+	depends = gtk2
+	provides = libmathview
+	conflicts = libmathview
+	source = git://github.com/khaledhosny/libmathview.git#branch=master
+	sha256sums = SKIP
+
+pkgname = libmathview-git
+
