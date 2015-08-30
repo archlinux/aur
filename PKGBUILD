@@ -21,7 +21,7 @@ options=(!strip)
 install=${pkgname}.install
 source=("https://unity3d.com/legal/eula"
         "http://download.unity3d.com/download_unity/unity-editor-${pkgver}_amd64.deb")
-md5sums=('f68446e7a0fd66e63d5506be00e88d43'
+md5sums=('0a8c7805f91c1cd46de5bdfba683eeb4'
          'c1c559bb684d00369ee6710be01c3700')
 
 # Prevent compression of the final package since it would take too long (sereausly!)
