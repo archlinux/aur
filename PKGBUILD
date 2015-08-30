@@ -3,7 +3,7 @@
 
 pkgname=repoctl-git
 pkgver=v0.13.24.g29d0ea6
-pkgrel=1
+pkgrel=2
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/cassava/repoctl"
@@ -48,5 +48,5 @@ package() {
   install -m644 contrib/zsh_completion ${pkgdir}/usr/share/zsh/site-functions/_repoctl
   
   # install LICENSE
-  install -Dm644 LICENSE $pkgdir/usr/share/license/repoctl-git
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/repoctl-git/LICENSE
 }

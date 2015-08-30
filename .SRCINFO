@@ -1,7 +1,7 @@
 pkgbase = repoctl-git
 	pkgdesc = A supplement to repo-add and repo-remove which simplifies managing local repositories
 	pkgver = v0.13.24.g29d0ea6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cassava/repoctl
 	arch = i686
 	arch = x86_64
