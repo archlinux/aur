@@ -1,6 +1,7 @@
 post_install() {
     systemd-sysusers riemann.conf
-    install -d -o riemann -g riemann /var/{lib,log}/riemann
+    install -d -o riemann -g riemann /var/log/riemann
+    install -d -o riemann -g riemann /var/lib/riemann
 }
 
 post_remove() {

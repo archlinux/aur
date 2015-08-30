@@ -18,9 +18,9 @@ source=("https://aphyr.com/riemann/$pkgname-$pkgver.tar.bz2"
 backup=('etc/riemann/riemann.config')
 sha256sums=('f5bb666acb878e144471f8c6d7f622193840d127aea96924fd8575e1fb6c57dc'
             '0e1a10f59cc95f9cef3eb54cc9764366a714eec2ed6c08750ac13c5d456d69c5'
-            '4e7164386c91a3edf746ae0bba3d5e4e7ee24fa2093fe16d1da3d2b049cd2485'
-            '54489dda6703afcfeb2e209f4a5abdbddbad66f3ad78c5bae905706f346aca5d'
-            '58d35d4f6a488bbcf495f77449199dc7a498a67aacf8c789329bea69f532ad21')
+            'd8f7789e9166b5d2472a444dffe8ffb01eb43fac366544b0082ceead2f01f20c'
+            '18e21c05c351a8bcbd55b3a454bceb67b7dcfe1385e7cca6936fe63640c44303'
+            '94181e635ae9774a76bf4169064f253b626fb09806694d34774ed06d54df35b8')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -36,7 +36,8 @@ prepare() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -dm755 "$pkgdir/var/{lib,log}/riemann"
+  install -dm755 "$pkgdir/var/log/riemann"
+  install -dm755 "$pkgdir/var/lib/riemann"
 
   install -Dm644 etc/riemann.config "$pkgdir/etc/riemann/riemann.config"
   install -Dm755 bin/riemann        "$pkgdir/usr/bin/riemann"
