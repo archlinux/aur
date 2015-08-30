@@ -1,8 +1,9 @@
 pkgbase = libadios
 	pkgdesc = ADIOS Adaptable IO system for simulations. The Adaptable IO System (ADIOS) provides a simple, flexible way for scientists to describe the data in their code that may need to be written, read, or processed outside of the running simulation.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.olcf.ornl.gov/center-projects/adios/
+	install = libadios.install
 	arch = i686
 	arch = x86_64
 	license = BSD
