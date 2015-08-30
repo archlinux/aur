@@ -17,7 +17,7 @@ makedepends=(
     'ninja'
 )
 source=("https://github.com/KenjiTakahashi/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('82373ff053b3497ebd82d4b1af55427e')
+md5sums=('be2fb1a365427cf4e7a22e59e12b4c9b')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
