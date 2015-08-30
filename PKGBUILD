@@ -1,10 +1,11 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Contributor: Holzhaus <jan.holthuis@ruhr-uni-bochum.de>
 
 pkgname=reicast-git
-pkgver=r1284.d3c3feb
+pkgver=r1633.1a751e3
 pkgrel=1
 pkgdesc="A multiplatform Sega Dreamcast emulator (development version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://reicast.com/"
 license=('GPL2' 'BSD' 'MIT')
 conflicts=('reicast')
@@ -20,13 +21,9 @@ pkgver() {
 }
 
 build () {
-  make -C reicast/shell/linux
+  make -C reicast/shell/linux PREFIX=/usr
 }
 
 package () {
-  cd reicast
-
-  install -Dm755 shell/linux/reicast.elf "$pkgdir"/usr/bin/reicast
-  # license
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  make -C reicast/shell/linux DESTDIR="$pkgdir/" PREFIX=/usr install
 }
