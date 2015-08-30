@@ -3,13 +3,6 @@ set -euo pipefail
 
 #TODO: Comment and document!
 
-temp_mirrorlist_file="$(mktemp)"
-cleanup()
-{
-	rm "$temp_mirrorlist_file"
-}
-trap cleanup EXIT
-
 #TODO: Proper, GNU style, command line argument handling.
 #Use settings from the configuration file first.
 source '/etc/update-pacman-mirrorlist' || true
@@ -26,22 +19,32 @@ if [ -z "$mirrorlist_file" ]; then
 	mirrorlist_file='/etc/pacman.d/mirrorlist'
 fi
 if [ -z "$mirrorlist_url" ]; then
-	mirrorlist_url='https://www.archlinux.org/mirrorlist/?use_mirror_status=on'
+	mirrorlist_url='https://www.archlinux.org/mirrorlist/?use_mirror_status=on&protocol=https'
 fi
 set -u
 
+temp_mirrorlist_file="$(mktemp)"
+cleanup()
+{
+	rm "$temp_mirrorlist_file"
+}
+trap cleanup EXIT
+
 echo "Downloading new mirrorlist from $mirrorlist_url to $mirrorlist_file."
-#TODO: Retry download in a more intelligent manner as to not overload the server.
 curl -fLC - --retry 3 --retry-delay 3 "$mirrorlist_url" -o "$temp_mirrorlist_file"
 
-#TODO: Better sanity checking.
-if [[ $(diff <(head -n 2 "$temp_mirrorlist_file") <(echo -e '##\n## Arch Linux repository mirrorlist')) ]]; then
-	echo -e 'The downloaded mirrorlist file does not contain the following two lines, so it might be invalid.\n##\n## Arch Linux repository mirrorlist' >&2
+if grep -Eqv '^(#|\s+#|$|Server = )' "$temp_mirrorlist_file"; then
+	echo 'The downloaded mirrorlist file contains an uncommented non-Server directive, so it might be invalid.' >&2
 	exit 1
 fi
 
-#TODO: Only uncomment if necessary.
-sed '/^#\S/ s|#||' -i "$temp_mirrorlist_file"
+if ! grep -q '^Server = ' "$temp_mirrorlist_file"; then
+	if ! grep -q '^#Server = ' "$temp_mirrorlist_file"; then
+		echo 'The downloaded mirrorlist file does not appear to contain any mirrors, so it might be invalid.' >&2
+		exit 1
+	fi
+	sed '/^#Server = / s|#||' -i "$temp_mirrorlist_file"
+fi
 
 #TODO: These last commands are the only ones that need to run as root; privileges should be dropped until now.
 if [ -e "$mirrorlist_file" ]; then

@@ -1,7 +1,7 @@
 post_install()
 {
 	if [ ! -h '/etc/systemd/system/multi-user.target.wants/update-pacman-mirrorlist.timer' ]; then
-		echo 'You most likely want to enable automatic updates by running the following as a privileged user:
+		echo 'You most likely want to enable automatic mirrorlist updates by running the following as a privileged user:
 systemctl enable update-pacman-mirrorlist.timer
 systemctl start update-pacman-mirrorlist.timer'
 	fi
@@ -15,7 +15,7 @@ post_upgrade()
 post_remove()
 {
 	if [ -h '/etc/systemd/system/multi-user.target.wants/update-pacman-mirrorlist.timer' ]; then
-		echo 'You most likely want to disable automatic updates by running the following as a privileged user:
+		echo 'You most likely want to disable automatic mirrorlist updates by running the following as a privileged user:
 systemctl disable update-pacman-mirrorlist.timer
 systemctl stop update-pacman-mirrorlist.timer'
 	fi
