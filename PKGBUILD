@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.chunked::http://chicken.kitten-technologies.co.uk/henr
 		"$pkgname-$pkgver.html::http://wiki.call-cc.org/eggref/4/dbus.html"
         "dbus.patch")
 md5sums=('891f74b8231f0d655297444e140f5e4f'
-         '503a55be746bee8815a95f8ff07bef97'
+         '420b75becf5e6b078d5e477663832372'
          '3abccbef575aa13ac1b3cbaefee12ff1')
 
 build() {
