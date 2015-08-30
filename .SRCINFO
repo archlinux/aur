@@ -12,6 +12,7 @@ pkgbase = rpimonitor-dev-git
 	depends = perl-json
 	depends = perl-ipc-sharelite
 	depends = perl-file-which
+	provides = rpimonitor
 	conflicts = rpimonitor
 	backup = etc/rpimonitor/data.conf
 	backup = etc/rpimonitor/daemon.conf

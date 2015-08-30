@@ -16,6 +16,7 @@ source=($pkgname::git://github.com/XavierBerger/RPi-Monitor.git#branch=devel)
 sha512sums=('SKIP')
 backup=(etc/${_pkgbase}/{data,daemon}.conf)
 conflicts=('rpimonitor')
+provides=('rpimonitor')
 
 pkgver() {
   cd "$pkgname"
