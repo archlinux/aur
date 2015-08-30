@@ -1,14 +1,16 @@
 pkgbase = blobwars-data-old
 	pkgdesc = Platform action game featuring a blob wih lot of weapons - nonfree data files from an older version
 	pkgver = 1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.parallelrealities.co.uk/p/blob-wars-metal-blob-solid.html
 	arch = any
 	license = unknown
 	provides = blobwars-data=1.19
 	conflicts = blobwars-data
-	source = https://distfiles.macports.org/blobwars/blobwars-1.17-1.tar.gz
+	source = https://web.archive.org/web/20150802111409/https://distfiles.macports.org/blobwars/blobwars-1.17-1.tar.gz
 	source = black.png
+	sha1sums = 0541c4f6e4b9ca7222dc66594c054db8219e3e5f
+	sha1sums = 42e2ae5c2cf890164aba3638399e20996d463241
 	sha256sums = dabcab073de8b49a89440046ce28fc776bf73475d9f8ee5a33251d9ba5c42bce
 	sha256sums = 5e95f7b352df0de37b8e5b08a32a15311dc83c15ef3ec6a89fbb7b0afb774b3f
 
