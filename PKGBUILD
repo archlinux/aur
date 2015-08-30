@@ -9,7 +9,7 @@ PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
 pkgver=5.1.0f3+2015082501
-pkgrel=2
+pkgrel=3
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 license=('custom')
@@ -40,10 +40,13 @@ package() {
     chown root:root "${pkgdir}"/opt/Unity/Editor/chrome-sandbox
     chmod 4755 "${pkgdir}"/opt/Unity/Editor/chrome-sandbox
 
-    # Linking executables
+    # Linking executables (symlinking does not work!)
     mkdir -p "${pkgdir}"/usr/bin
-    ln -s /opt/Unity/Editor/Unity "${pkgdir}"/usr/bin/unity-editor
-    ln -s /opt/Unity/MonoDevelop/bin/monodevelop "${pkgdir}"/usr/bin/unity-monodevelop
+    #ln -s /opt/Unity/Editor/Unity "${pkgdir}"/usr/bin/unity-editor
+    #ln -s /opt/Unity/MonoDevelop/bin/monodevelop "${pkgdir}"/usr/bin/unity-monodevelop
+    echo -e "#!/bin/sh\nexec /opt/Unity/Editor/Unity \"$@\"" > "${pkgdir}"/usr/bin/unity-editor
+    echo -e "#!/bin/sh\nexec /opt/Unity/MonoDevelop/bin/monodevelop \"$@\"" > "${pkgdir}"/usr/bin/unity-monodevelop
+    chmod 755 "${pkgdir}"/usr/bin/unity-editor "${pkgdir}"/usr/bin/unity-monodevelop
 
     # Refering to the online license
     mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
