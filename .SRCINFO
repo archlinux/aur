@@ -1,0 +1,16 @@
+pkgbase = renderdoc
+	pkgdesc = RenderDoc is a stand-alone graphics debugging tool.
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://github.com/baldurk/renderdoc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = qt5-x11extras
+	source = https://github.com/baldurk/renderdoc/archive/v0.25.tar.gz
+	source = renderdoc.desktop
+	sha256sums = 179e2b67b32cb37ad3056fef7a0891eaddc046d34013b8be862a6b9ee8f6e8ed
+	sha256sums = eab4941dc17fbbdcb9e34a698c3b304d212be54956daeb0c3b1cf5b7f2b00984
+
+pkgname = renderdoc
+
