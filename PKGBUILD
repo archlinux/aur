@@ -2,7 +2,7 @@
 
 pkgname=fence-virt-git
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="fencing daemon for a virtualised environment"
 url='https://github.com/ClusterLabs/fence-virt'
 license=("GPLv2")
@@ -11,8 +11,10 @@ depends=()
 conflicts=()
 backup=('etc/fence_virt.conf')
 source=("fence_virtd.service"
-	"git://github.com/ClusterLabs/fence-virt.git")
+	"fence_virtd@.service"
+	"git://github.com/Thermi/fence-virt.git")
 md5sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP')
 
@@ -26,6 +28,8 @@ build() {
 package() {
   cd "${srcdir}"
   install -Dm 644 fence_virtd.service "${pkgdir}/usr/lib/systemd/system/fence_virtd.service"
+  install -Dm 644 fence_virtd@.service "${pkgdir}/usr/lib/systemd/system/fence_virtd@.service"
+  mkdir -m644 -p "${pkgdir}/etc/cluster/clusters/"
   cd fence-virt
   make DESTDIR="${pkgdir}" install
 }

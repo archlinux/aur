@@ -1,0 +1,20 @@
+[Unit]
+Description=fencing daemon for libvirt
+Documentation=man:fence_virtd
+After=libvirtd.service
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/usr/bin/fence_virtd -F -f /etc/cluster/%i.conf
+TimeoutStopSec=5
+StandardError=journal
+
+PrivateDevices=true
+PrivateTmp=true
+PrivateNetwork=true
+ProtectSystem=full
+ReadWriteDirectories=/var/run/libvirt/ /etc/cluster/clusters/
+
+[Install]
+WantedBy=multi-user.target
