@@ -1,0 +1,1 @@
+echo 'Configuration files should be copied from /usr/share/lighthouse into ~/.config/lighthouse'

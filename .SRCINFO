@@ -1,0 +1,21 @@
+pkgbase = lighthouse-git
+	pkgdesc = A simple scriptable popup dialog to run on X
+	pkgver = unknown
+	pkgrel = 1
+	url = https://github.com/emgram769/lighthouse
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxcb
+	depends = cairo
+	optdepends = python2: for the included cmd.py
+	provides = lighthouse
+	conflicts = lighthouse
+	source = git://github.com/emgram769/lighthouse.git
+	source = lighthouse-git.install
+	md5sums = SKIP
+	md5sums = a661ca82623dfb7dcda2bf48ed078ebd
+
+pkgname = lighthouse-git
+
