@@ -1,0 +1,24 @@
+pkgbase = cavestory+-hb
+	pkgdesc = A platformer adventure game set in a cave (humble bundle version)
+	pkgver = 1355961600
+	pkgrel = 1
+	url = http://nicalis.com/games.php?game=cavestory
+	arch = x86_64
+	arch = i686
+	license = custom: comercial
+	depends = sdl
+	depends = glu
+	provides = cavestory+
+	conflicts = cavestory+
+	options = !strip
+	source = hib://cave_story_plus-linux-r100.tar.bz2
+	source = cavestory+.sh
+	source = cavestory+.desktop
+	source = cavestory+.png
+	sha256sums = 3eea507acdcf543393e9215d1d66b61a00d37a4e451294ab241a121fd4185bc8
+	sha256sums = 21af1b6df4bb8e599092201b102b5aae52f2c62789bcdd3e41c4d77fc7a8c7a0
+	sha256sums = 5d2d9d0ef17b2a798c89c12dafa4539a4275b7c703d7b3e3f2682af8608fcff7
+	sha256sums = afed0ff2ec41d2b0272b5ce50f7497c7a43b3149a21a9444535d883f8525e816
+
+pkgname = cavestory+-hb
+

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Cave Story+
+Comment=A platform-adventure game set in a cave.
+Icon=cavestory+
+Exec=cavestory+
+Categories=Game;AdventureGame;
