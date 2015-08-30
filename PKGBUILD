@@ -4,7 +4,7 @@ pkgname=urxvt-color-tester-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="Color testing script for urxvt"
-url="https://github.com/hishamhm/${_pkgname}"
+url="http://crunchbang.org/forums/viewtopic.php?pid=295676#p296114"
 license=('unknown')
 arch=('any')
 depends=('rxvt-unicode')
