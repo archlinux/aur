@@ -29,7 +29,7 @@ package() {
   cd "${srcdir}"
   install -Dm 644 fence_virtd.service "${pkgdir}/usr/lib/systemd/system/fence_virtd.service"
   install -Dm 644 fence_virtd@.service "${pkgdir}/usr/lib/systemd/system/fence_virtd@.service"
-  mkdir -m644 -p "${pkgdir}/etc/cluster/clusters/"
+  mkdir -m755 -p "${pkgdir}/etc/cluster/clusters/"
   cd fence-virt
   make DESTDIR="${pkgdir}" install
 }
