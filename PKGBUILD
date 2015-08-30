@@ -1,5 +1,9 @@
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# COntributor: beatgammit
+
 pkgname=servo-git
-pkgver=11959.4d7dd66
+_pkgname=servo
+pkgver=12112.842112c
 pkgrel=1
 pkgdesc="Parallel Browser Project: web browser written in Rust"
 arch=('i686' 'x86_64')
@@ -7,40 +11,49 @@ url="https://github.com/servo/servo"
 license=('MPL')
 depends=('freetype2' 'mesa' 'libxrandr' 'libxi' 'libgl' 'glu' 'fontconfig'
          'ttf-font' 'bzip2' 'libxcursor' 'libxmu')
+install="$pkgname.install"
 makedepends=('git' 'curl' 'python2' 'python2-virtualenv' 'gperf'
              'cmake')
-provides=('servo')
-conflicts=('servo' 'rust')
+provides=("$_pkgname")
+conflicts=("$_pkgname" 'rust')
 source=('git+https://github.com/servo/servo.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/servo
+  cd "$_pkgname"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd $srcdir/servo
-
+  cd "$_pkgname"
+  
   # fixes build error
   # possibly _FORTIFY_SOURCE? https://bugs.archlinux.org/task/34759
   unset CPPFLAGS
 
-  ./mach build -d
+  ./mach build --dev
 }
 
 package() {
   servopath=servo/target/debug
-  install -Dm755 "$srcdir/$servopath/servo" "$pkgdir/usr/bin/servo"
+  install -Dm755 "$servopath/servo" "$pkgdir/opt/servo/servo"
 
   mkdir -p "$pkgdir/usr/lib"
 
-  find $srcdir/$servopath/deps -name "*-*.so" -exec basename {} \; | sort | uniq | while read _f; do
-	  _file=$(find $srcdir/$servopath/deps -name "$_f" -print | head -n 1)
+  find "$servopath/deps" -name "*-*.so" -exec basename {} \; | sort | uniq | while read _f; do
+	  _file=$(find "$servopath/deps" -name "$_f" -print | head -n 1)
 	  if [ -z "$_file" ]; then
 		  echo "Skipping: $_f"
 		  continue
 	  fi
 	  install -Dm644 "$_file" "$pkgdir/usr/lib"
   done
+
+  mkdir -p "$pkgdir/opt/servo/resources"
+  cp -r servo/resources/* "$pkgdir/opt/servo/resources"
+
+  mkdir -p "$pkgdir/etc/profile.d" 
+  echo 'export PATH=$PATH:/opt/servo' > "$pkgdir/etc/profile.d/${_pkgname}.sh"
+  echo 'setenv PATH ${PATH}:/opt/servo' > "$pkgdir/etc/profile.d/${_pkgname}.csh"
+  chmod 755 "$pkgdir/etc/profile.d/${_pkgname}".{csh,sh}
 }
