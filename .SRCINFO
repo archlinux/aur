@@ -1,0 +1,19 @@
+pkgbase = chicken-make
+	pkgdesc = Chicken Scheme Egg: The PLT 'make' macro
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/4/make
+	install = chicken.install
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	options = docs
+	options = !libtool
+	options = !emptydirs
+	source = chicken-make-1.7.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=make&version=1.7
+	source = chicken-make-1.7.html::http://wiki.call-cc.org/eggref/4/make.html
+	md5sums = 5e06090bc5cd46da419d69dfa209bca8
+	md5sums = 92c46322f9110e55f2a9463208c01dc7
+
+pkgname = chicken-make
+
