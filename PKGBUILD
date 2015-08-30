@@ -15,7 +15,7 @@ install="chicken.install"
 source=("$pkgname-$pkgver.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=mailbox&version=$pkgver"
 		"$pkgname-$pkgver.html::http://wiki.call-cc.org/eggref/4/mailbox.html")
 md5sums=('bf9d49709ed80243533ee32d7594b892'
-         '371a0f2ce408110fac5cc9086d1ba7f1')
+         '9d73db4c2447026f038cb9129a54553d')
 
 # template start; name=chicken-module; version=1;
 _name=${pkgname#chicken-}
