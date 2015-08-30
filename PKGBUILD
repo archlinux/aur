@@ -15,7 +15,7 @@ install="chicken.install"
 source=("$pkgname-$pkgver.chunked::http://chicken.kitten-technologies.co.uk/henrietta.cgi?name=foreigners&version=$pkgver"
 		"$pkgname-$pkgver.html::http://wiki.call-cc.org/eggref/4/foreigners.html")
 md5sums=('5e7027cadfdba6af5607ae7e6d966a81'
-         '4df43c333846583c39e63c47f594cad7')
+         '57da7717ed52cf2571b060c3f4e9aff8')
 
 build() {
 	# unchunk the blob that was downloaded from henrietta
