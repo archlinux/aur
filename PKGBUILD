@@ -4,7 +4,7 @@
 pkgname=kodi-addon-pvr-vdr-vnsi
 pkgver=1.11.4
 _gitver=73de793af0eca67170b5a790db42d435c3a07b4d
-pkgrel=1
+pkgrel=2
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 license=('GPL2')
@@ -24,10 +24,14 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build-addon build-platform install-platform
+  mkdir -p build-addon build-platform
   cd "${srcdir}/pvr.vdr.vnsi"
+
   patch -p1 -R -i "$srcdir/96daf6c2d483b760d5a8a0d80aa6759af1bfdc70.diff"
+
   mv pvr.vdr.vnsi/addon.xml.in pvr.vdr.vnsi/addon.xml
+  sed -i 's/@PLATFORM@/linux/g' pvr.vdr.vnsi/addon.xml
+  sed -i 's/@LIBRARY_FILENAME@/pvr.vdr.vnsi.so/g' pvr.vdr.vnsi/addon.xml
 }
 
 build() {
@@ -38,15 +42,11 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         ../kodi-platform
 
-  make
-  make DESTDIR="$srcdir/install-platform" install
-  cd ..
-
-  cd build-addon
+  cd ../build-addon
 
   cmake -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib/kodi \
-        -DCMAKE_PREFIX_PATH="$srcdir/install-platform/usr" \
+        -Dkodiplatform_DIR="$srcdir/build-platform" \
         -DCMAKE_BUILD_TYPE=Release \
         ../pvr.vdr.vnsi
 
@@ -56,4 +56,6 @@ build() {
 package() {
   cd build-addon
   make DESTDIR="${pkgdir}" install
+
+  cp -r "$srcdir"/pvr.vdr.vnsi/pvr.vdr.vnsi/* "$pkgdir/usr/lib/kodi/addons/pvr.vdr.vnsi"
 }
