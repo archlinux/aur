@@ -1,8 +1,9 @@
 # maintainer: hzy068808 at gmail.com
 # contributer: a304yuanyuan at gmail.com
+# contributer: rob.til.freedman@googlemail.com
 
 pkgname=moonplayer
-pkgver=0.42
+pkgver=0.42.b9dec4e
 pkgrel=1
 pkgdesc="A qt font-end for mplayer with the abilities of watching and downloading videos from network"
 arch=('i686' 'x86_64')
@@ -15,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver(){
 	cd $srcdir/$pkgname
-	grep "Latest version" README.md | awk '{ print $3 }' | sed 's/^v//g'
+	echo $(grep "Latest version" README.md | awk '{ print $3 }' | sed 's/^v//g')."$(git describe --always)"
 }
 build() {
 	cd $srcdir/$pkgname/src
