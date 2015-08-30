@@ -82,7 +82,7 @@ if [[ $ver = 9.* ]] || [[ $ver = 5.* ]]; then
     fi
 fi
 
-# Fix VMCI/VSOCK loading for Workstation 10 / Player (Plus) 6 and earlier
+# Fix VMCI/VSOCK loading
 if [[ $ver != 12.* ]] && [[ $ver != 11.* ]] && [[ $ver != 7.* ]]; then
     if grep -q '$vsock_alias' /etc/init.d/vmware; then
         sed -e 's/mod=$(vmwareRealModName $vmci $vmci_alias)/mod=vmci/' \
@@ -131,14 +131,10 @@ for kernel in ${kernels[@]}; do
         exit 1
     fi
 
-#     # Unload conflicting in-kernel modules in less than Workstation 11 / Player (Pro) 7
-#     if [[ $ver != 12.* ]] && [[ $ver != 11.* ]] && [[ $ver != 7.* ]]; then
-#         rmmod "vsock" "vmw_vsock_vmci_transport" "vmw_vmci" 2>/dev/null || true
-#     else
-#         for mod in "vsock" "vmw_vsock_vmci_transport" "vmw_vmci"; do
-#             modprobe $mod 2>/dev/null || true
-#         done
-#     fi
+    # Unload conflicting in-kernel modules in less than Workstation 11 / Player (Pro) 7
+    if [[ $ver != 12.* ]] && [[ $ver != 11.* ]] && [[ $ver != 7.* ]]; then
+        rmmod "vsock" "vmw_vsock_vmci_transport" "vmw_vmci" 2>/dev/null || true
+    fi
 
     # Detect applicable patches (/usr/lib/vmware/modules/patches/[mod]-[ver]-[kernel].patch)
     unset patches

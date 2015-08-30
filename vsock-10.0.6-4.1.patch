@@ -1,0 +1,14 @@
+diff --git vsock-only/linux/af_vsock.c vsock-only/linux/af_vsock.c
+index 4d0c6c3..1c29976 100644
+--- vsock-only/linux/af_vsock.c
++++ vsock-only/linux/af_vsock.c
+@@ -4285,7 +4285,7 @@ VSockVmciDgramSendmsg(struct kiocb *kiocb,          // UNUSED
+       goto out;
+    }
+ 
+-   memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), &msg->msg_iter.iov, len);
++   memcpy_from_msg(VMCI_DG_PAYLOAD(dg), msg, len);
+ 
+    dg->dst = VMCI_MAKE_HANDLE(remoteAddr->svm_cid, remoteAddr->svm_port);
+    dg->src = VMCI_MAKE_HANDLE(vsk->localAddr.svm_cid, vsk->localAddr.svm_port);
+
