@@ -1,0 +1,15 @@
+pkgbase = python2-pycddlib
+	pkgdesc = pycddlib is a Python wrapper for Komei Fukuda's cddlib.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pycddlib
+	arch = any
+	license = GPL
+	makedepends = python2
+	depends = python2
+	depends = gmp
+	source = https://pypi.python.org/packages/source/p/pycddlib/pycddlib-1.0.4.zip
+	md5sums = 2da4347f5d4964b5a8eafddb9dd19d24
+
+pkgname = python2-pycddlib
+
