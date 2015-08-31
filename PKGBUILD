@@ -12,7 +12,7 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("https://copy.com/D1X42Cf78kCl/public/packages/ibm_utl_mptsas_cfggen-${pkgver}_linux_32-64.zip")
+source=("https://repo.dray.be/package-files/ibm_utl_mptsas_cfggen-${pkgver}_linux_32-64.zip")
 #Mirror: source=("ftp://download2.boulder.ibm.com/ecc/sar/CMA/XSA/ibm_utl_mptsas_cfggen-${pkgver}_linux_32-64.zip")
 md5sums=('652d81685e425dd67ebbcbd67c57eec1')
 

@@ -6,7 +6,7 @@ pkgbase = lsi-cfggen
 	arch = x86_64
 	arch = i686
 	license = none
-	source = https://copy.com/D1X42Cf78kCl/public/packages/ibm_utl_mptsas_cfggen-2.10.00_linux_32-64.zip
+	source = https://repo.dray.be/package-files/ibm_utl_mptsas_cfggen-2.10.00_linux_32-64.zip
 	md5sums = 652d81685e425dd67ebbcbd67c57eec1
 
 pkgname = lsi-cfggen
