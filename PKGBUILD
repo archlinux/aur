@@ -2,7 +2,7 @@
 # Contributor: Christian Rebischke
 
 pkgname=clerk-git
-pkgver=453.d21167c
+pkgver=596.d8f6310
 pkgrel=1
 pkgdesc="clerk - mpd client for dmenu/rofi"
 arch=('any')
