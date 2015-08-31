@@ -1,0 +1,26 @@
+pkgbase = kdegraphics-thumbnailers-frameworks-git
+	pkgdesc = Thumbnailers for various graphics file formats. KF5 Frameworks branch. (GIT version)
+	pkgver = v15.08.0.3.gfa9e70c
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdegraphics/kdegraphics-thumbnailers
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = python
+	makedepends = libkdcraw-frameworks-git
+	makedepends = libkexiv2-frameworks-git
+	depends = kio
+	optdepends = libkdcraw-frameworks-git: RAW thumb plugin
+	optdepends = libkexiv2-frameworks-git: EXIV2 thumb plugin
+	provides = kdegraphics-thumbnailers
+	conflicts = kdegraphics-thumbnailers
+	source = git://anongit.kde.org/kdegraphics-thumbnailers#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = kdegraphics-thumbnailers-frameworks-git
+
