@@ -1,16 +1,16 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 pkgname=python2-pyvtk-git
-pkgver=20140723
+pkgver=20150805
 pkgrel=1
 pkgdesc="tools for manipulating VTK files in Python, git version"
 arch=('any')
-url="https://code.google.com/p/pyvtk"
+url="https://github.com/pearu/pyvtk"
 license=('GPL')
 depends=('python2')
 makedepends=('git')
 provides=('pyvtk')
 conflicts=('pyvtk')
-source=('git+https://code.google.com/p/pyvtk')
+source=('git+https://github.com/pearu/pyvtk.git')
 md5sums=('SKIP')
 
 # Git variable.
