@@ -10,7 +10,7 @@ url="https://github.com/SethDusek/define"
 license=('BSD')
 depends=('gstreamer' 'python' 'python-requests')
 makedepends=('git')
-conflicts=('define-git')
+conflicts=('define')
 source=('git://github.com/SethDusek/define.git')
 md5sums=('SKIP')
 
