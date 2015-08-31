@@ -1,0 +1,19 @@
+Description: Fix crash on rendering incremental Malayalam text input
+Author: Caolán McNamara <caolanm@redhat.com>
+Origin: other, https://ssl.icu-project.org/trac/ticket/9948
+Forwarded: https://ssl.icu-project.org/trac/ticket/9948
+Last-Update: 2013-03-13
+
+Index: b/source/layout/IndicClassTables.cpp
+===================================================================
+--- a/source/layout/IndicClassTables.cpp
++++ b/source/layout/IndicClassTables.cpp
+@@ -273,7 +273,7 @@
+ 
+ static const IndicClassTable kndaClassTable = {0x0C80, 0x0CEF, 4, KNDA_SCRIPT_FLAGS, kndaCharClasses, kndaSplitTable};
+ 
+-static const IndicClassTable mlymClassTable = {0x0D00, 0x0D6F, 3, MLYM_SCRIPT_FLAGS, mlymCharClasses, mlymSplitTable};
++static const IndicClassTable mlymClassTable = {0x0D00, 0x0D6F, 4, MLYM_SCRIPT_FLAGS, mlymCharClasses, mlymSplitTable};
+ 
+ static const IndicClassTable sinhClassTable = {0x0D80, 0x0DF4, 4, SINH_SCRIPT_FLAGS, sinhCharClasses, sinhSplitTable};
+ 

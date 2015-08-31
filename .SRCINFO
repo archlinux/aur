@@ -1,0 +1,27 @@
+pkgbase = icu48
+	pkgdesc = International Components for Unicode library, version 4.8
+	pkgver = 4.8.1.1
+	pkgrel = 3
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:"icu"
+	depends = gcc-libs>=4.7.1-5
+	depends = sh
+	source = http://download.icu-project.org/files/icu4c/4.8.1.1/icu4c-4_8_1_1-src.tgz
+	source = malayalam-rendering.patch
+	source = CVE-2011-4599.patch
+	source = indic-ccmp.patch
+	source = mlym-crash.patch
+	source = CVE-2013-0900.patch
+	source = fix-test.diff
+	md5sums = ea93970a0275be6b42f56953cd332c17
+	md5sums = 9581cfaccbf93b6d6f7f7644bebcdafa
+	md5sums = 835c9e3ae0b76aa88a6ce144a42a3bce
+	md5sums = 6602e6d9727376174cbb1b688e5e3325
+	md5sums = a6a9daa1e3655c5058148af8903a443b
+	md5sums = 9528996e1e2099bb79d25fbd799a511e
+	md5sums = 766a677946f50029e0c01f5b8d30afec
+
+pkgname = icu48
+
