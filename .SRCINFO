@@ -1,0 +1,17 @@
+pkgbase = ttf-abibas
+	pkgdesc = Blacklatter abibas knows ελληνικά and русский as well as most European languages.
+	pkgver = 20150814
+	pkgrel = 1
+	url = http://openfontlibrary.org/fr/font/abibas
+	install = ttf-abibas.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://openfontlibrary.org/assets/downloads/abibas/092dc4247e773d0afefd04bf237516cb/abibas.zip
+	source = OFL.txt
+	md5sums = 092dc4247e773d0afefd04bf237516cb
+	md5sums = 6ed93967ff0dc6dd9c8d31c17f817a06
+
+pkgname = ttf-abibas
+
