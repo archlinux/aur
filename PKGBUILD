@@ -2,7 +2,7 @@
 # Contributor: Maurício CA <mauricio.antunes@gmail.com>
 pkgname=xkbset
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Program to help manage many of XKB features of X window."
 arch=(i686 x86_64)
 url="http://www.math.missouri.edu/~stephen/software/#xkbset"
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://www.math.missouri.edu/~stephen/software/xkbset/$pkgname-$pkgver.tar.gz)
+source=(http://faculty.missouri.edu/~stephen/software/xkbset/$pkgname-$pkgver.tar.gz)
 noextract=()
 md5sums=('282c416a76a237fa84a7b513c9d7b2cf')
 
