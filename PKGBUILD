@@ -13,7 +13,7 @@ makedepends=('git' 'qtchooser' 'r' 'gcc-fortran' 'boost')
 provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
 install=('jasp-desktop-git.install')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.1.9" 
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.1.11" 
 	"rbundle.R"
 	"jasp-desktop.svg"
 	"sem.patch")
