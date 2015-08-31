@@ -1,0 +1,77 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    update-desktop-database -q
+    if [ -d /etc/xdg/autostart ]; then
+        ln -sf /usr/share/applications/btsync-gui.desktop /etc/xdg/autostart/btsync-gui.desktop
+    elif [ -d /etc/xdg/openbox/autostart ]; then
+        ln -sf /usr/share/applications/btsync-gui.desktop /etc/xdg/openbox/autostart/btsync-gui.desktop
+    elif [ -d /usr/share/autostart ]; then
+        ln -sf /usr/share/applications/btsync-gui.desktop /usr/share/autostart/btsync-gui.desktop
+    fi
+
+    # Stop and disable any running btsync instances as btsync-gui must have
+    # sole control
+    SERVICES_DETECTED=""
+    for SERVICE in $(ls -1 /etc/systemd/system/multi-user.target.wants/*btsync* 2>/dev/null)
+    do
+        SERVICES_DETECTED="$(basename "${SERVICE}") ${SERVICES_DETECTED}"
+    done
+
+    echo "# [NOTE! ] ###########################################################"
+
+    if [ -n "${SERVICES_DETECTED}" ]; then
+        cat << SERVICES_EOF
+The btsync-gui is an integrated system that manages the btsync process
+and its configuration. This installer detected the following btsync
+services are currently enabled:
+
+  * ${SERVICES_DETECTED}
+
+If you want to use the btsync-gui as your preferred personal btsync
+application, you should perform the following steps:
+
+  1. Stop personal btsync service(s)
+
+     systemctl stop ${SERVICES_DETECTED}
+
+  2. Disable auto starting btsync service(s)
+
+     systemctl disable ${SERVICES_DETECTED}
+
+  3. Migrate the internal database of your btsync service to the
+     where btsync-gui expects to find it, btsync-gui expects it in
+     ~/.btsync
+     You can find the current location of your btsync database in the
+     configuration file of your current btsync service by checking the
+     "storage_path" parameter.
+
+SERVICES_EOF
+    fi
+
+    cat << WEBUI_EOF
+Please take in to account that btsync-gui makes the btsync web UI
+inaccessible (for security reasons) by default and binds the web UI
+interface to 127.0.0.1 using internal random credentials at each
+start. If you do not want this behaviour, please execute this command
+before starting btsync-gui:
+
+btsync-gui —webui —username <yourpreferredname> —password <yourpreferredpwd> —bindui all —savedefaults
+
+This command persistently configures btsync-gui to enable the web UI,
+binding it to all adapters and configured to use the supplied
+credentials for accessing the web UI.
+######################################################################
+WEBUI_EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    update-desktop-database -q
+    rm -f /etc/xdg/autostart/btsync-gui.desktop
+    rm -f /etc/xdg/openbox/autostart/btsync-gui.desktop
+    rm -f /usr/share/autostart/btsync-gui.desktop
+}

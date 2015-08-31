@@ -1,0 +1,26 @@
+pkgbase = btsync-gui
+	pkgdesc = Unofficial Bittorrent Sync GUI for Linux desktops.
+	pkgver = 0.8.5
+	pkgrel = 2
+	url = http://www.yeasoft.com/site/projects:btsync-deb:btsync-gui
+	install = btsync-gui.install
+	arch = any
+	license = GPL2
+	makedepends = gettext
+	depends = hicolor-icon-theme
+	depends = python2-dbus
+	depends = python2-gobject
+	depends = python2-requests
+	depends = python2-qrencode
+	depends = pygtk
+	optdepends = btsync: btsync 2.0
+	optdepends = btsync-1.4: bysync 1.4 (beta)
+	conflicts = btsyncindicator
+	conflicts = btsync-autoconfig
+	source = https://github.com/tuxpoldo/btsync-deb/archive/btsync-gui-0.8.5-1.tar.gz
+	source = btsync-gui.key
+	sha1sums = 4aa45155166e3e0eb68961782872911fa7cb98da
+	sha1sums = 2a0f2cc3004e248b3f3548f325e1b03cb384bc20
+
+pkgname = btsync-gui
+
