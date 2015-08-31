@@ -2,7 +2,7 @@
 
 _pkgname=commacd
 pkgname=${_pkgname}-git
-pkgver=20150714.r35.ac98e66
+pkgver=20150829.r38.dc54c10
 pkgrel=1
 pkgdesc="A faster way to move around Bash"
 url="https://github.com/shyiko/commacd"
