@@ -11,10 +11,36 @@
 # TODO: When will we be able to move to the new rsa?
 # TODO: Do we need split packages for python2 (see python-wheel for example)
 
+# Use mcdiff to watch for changes
+_fn_foobar() {
+local _foobar="
+#requirements.txt
+tox==1.4
+docutils>=0.10
+Sphinx==1.1.3
+# botocore and the awscli packages are typically developed
+# in tandem, so we're requiring the latest develop
+# branch of botocore when working on the awscli.
+-e git://github.com/boto/botocore.git@develop#egg=botocore
+-e git://github.com/boto/jmespath.git@develop#egg=jmespath
+nose==1.3.0
+colorama>=0.2.5,<=0.3.3
+mock==1.0.1
+rsa>=3.1.2,<=3.1.4
+wheel==0.24.0
+
+#setup.py
+requires = ['botocore==1.1.12',
+            'colorama>=0.2.5,<=0.3.3',
+            'docutils>=0.10',
+            'rsa>=3.1.2,<=3.1.4']
+"
+}
+
 set -u
 _pkgname='aws-cli'
 pkgname="${_pkgname}" # Add -git for the git package
-pkgver=1.8.0
+pkgver=1.8.1
 # Change the version and you must also change the version of botocore below
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services.'
@@ -23,7 +49,7 @@ url="https://github.com/aws/${_pkgname}"
 license=('Apache') # Apache License 2.0
 depends=('python' # See setup.py, README.rst, and requirements.txt for version dependencies
   'python-bcdoc<0.15.0'    # AUR
-  'python-botocore>=1.1.11' # AUR == would make upgrades from AUR imposible. See below.
+  'python-botocore>=1.1.12' # AUR == would make upgrades from AUR imposible. See below.
   'python-colorama'{'>=0.2.5','<=0.3.3'}  # COM
   'python-rsa-3.1.2'{'>=3.1.2','<=3.1.4'} # AUR It would be nice to move to the newer version.
   #'python-rsa'{'>=3.1.2','<=3.1.4'}      # COM
@@ -46,7 +72,7 @@ conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
 replaces=(                   'python-aws-cli' 'awscli')
 provides=('awscli')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('77865ab084faec7e10d51a3b024ab1d07acc380c5b45804355ddbd03d120b57f')
+sha256sums=('62cf54c32dc751d9c3bfb6e480349e3ca1227eff76a90e0b2505200f4dcdd232')
 options=('!emptydirs')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
@@ -64,9 +90,7 @@ pkgver() {
 }
 else
   _srcdir="${pkgname}-${pkgver}"
-  _verurl="${url}/releases"
-  _versed="${url#*github.com}/archive/\(.*\)\.tar\.gz" # used with ^...$
-  _veropt='l'
+  _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 fi
 
 build() {
