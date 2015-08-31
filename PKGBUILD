@@ -10,9 +10,7 @@ license=('unlicense')
 optdepends=('xclip: Clipboard support')
 provides=("$pkgname")
 conflicts=("$pkgname")
-md5sums=('109b93bd034fecd5389b68d9bc177547'
-         '4df8c8964b8ba2f00f6c97aece344e94'
-         '0d47d8bdcb9f2da1e5b709a63311b776')
+md5sums=('dfc825534cc7fad4870854324e77d64f')
 
 package()
  {
