@@ -9,7 +9,6 @@ license=('GPL3')
 depends=('qt5-base'
 	 'gst-plugins-base'
 	 'gst-plugins-good'
-	 'gst-plugins-bad'
 	 'libnotify'
 	 'hicolor-icon-theme')
 # taglib not needed as it is already covered by gst-plugins-good dependency
