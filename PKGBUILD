@@ -1,6 +1,6 @@
 # Contributor: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=rsgames
-pkgver=2.0
+pkgver=1.6
 pkgrel=1
 pkgdesc="A collection of board, card, and dice games in audio format played online"
 arch=('any')
