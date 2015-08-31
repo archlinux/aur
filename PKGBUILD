@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gnutls
-pkgver=3.3.12
+pkgver=3.4.4.1
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (mingw-w64)"
 arch=(any)
@@ -9,12 +9,18 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-libtasn1 mingw-w64-readline mingw-w64-zlib mingw-w64-nettle mingw-w64-p11-kit)
 options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
-source=("ftp://ftp.gnutls.org/gcrypt/gnutls/v${pkgver%.*}/gnutls-${pkgver}.tar.xz"{,.sig}
+source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.4/gnutls-${pkgver}.tar.xz{,.sig}
         'gnutls-3.2.7-rpath.patch'
         'gnutls-3.1.11-nosrp.patch'
         'gnutls-3.3.6-default-policy.patch'
         'gnutls-fix-external-libtasn1-detection.patch')
-md5sums=('a37b20b4352a5f542367ded904729c90'
+md5sums=('SKIP'
+         'SKIP'
+         '291612225516234ede7e60f8b367dd8b'
+         'c3a2abfe08f47d9b07f770689b0c1b39'
+         'e0dba6bfe81b965a352f965b1398bcad'
+         'f90a0f01eb0f2a6b7afcc25a836eb67e')
+md5sums=('SKIP'
          'SKIP'
          '291612225516234ede7e60f8b367dd8b'
          'c3a2abfe08f47d9b07f770689b0c1b39'
@@ -29,7 +35,7 @@ prepare() {
   patch -p0 -i ../gnutls-fix-external-libtasn1-detection.patch
   patch -p1 -i ../gnutls-3.2.7-rpath.patch
   patch -p1 -i ../gnutls-3.1.11-nosrp.patch
-  patch -p1 -i ../gnutls-3.3.6-default-policy.patch
+  #patch -p1 -i ../gnutls-3.3.6-default-policy.patch
   sed 's/gnutls_srp.c//g' -i lib/Makefile.in
   sed 's/gnutls_srp.lo//g' -i lib/Makefile.in
   rm -f lib/minitasn1/*.c lib/minitasn1/*.h
