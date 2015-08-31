@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/binnavi"
-  mvn dependency:copy-dependencies
+  mvn dependency:copy-dependencies -Dmaven.repo.local="${srcdir}/$pkgname-$pkgver"
   ant -f src/main/java/com/google/security/zynamics/build.xml \
     build-binnavi-fat-jar
 }
