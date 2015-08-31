@@ -1,0 +1,15 @@
+pkgbase = nodejs-btoa
+	pkgdesc = btoa for Node.JS. it turns binary data to base64-encoded ascii.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://www.npmjs.com/package/btoa
+	arch = any
+	license = Apache
+	depends = nodejs
+	depends = npm
+	noextract = btoa-1.1.2.tgz
+	source = http://registry.npmjs.org/btoa/-/btoa-1.1.2.tgz
+	md5sums = f8c18b7c096634fc05430ef9a2d8d4b9
+
+pkgname = nodejs-btoa
+
