@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20150717.d595f5c
+pkgver=20150830.2c4ae23
 pkgrel=1
 pkgdesc='Divelog program'
 url='http://subsurface-divelog.org/'
