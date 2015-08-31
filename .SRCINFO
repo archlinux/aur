@@ -1,13 +1,15 @@
 pkgbase = toybox
 	pkgdesc = A BSD-licensed alternative to busybox
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://landley.net/toybox/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	source = toybox-0.5.2.tar.gz::http://landley.net/toybox/downloads/toybox-0.5.2.tar.gz
-	md5sums = b5d1242767c411b69dcd717da1c218b2
+	source = toybox-0.6.0.tar.gz::http://landley.net/toybox/downloads/toybox-0.6.0.tar.gz
+	source = 001-gcc_05.patch
+	md5sums = 7f4a6c89e56c48e3350e611f5b36c2cf
+	md5sums = 27584ca79acbd57105c631312c1c6744
 
 pkgname = toybox
 

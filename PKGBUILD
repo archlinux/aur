@@ -1,14 +1,21 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=toybox
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A BSD-licensed alternative to busybox"
 arch=("i686" "x86_64")
 license=("BSD")
 url="http://landley.net/toybox/"
 makedepends=('')
-source=("${pkgname}-${pkgver}.tar.gz::http://landley.net/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::http://landley.net/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz"
+	"001-gcc_05.patch")
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  patch -p1 -i ../001-gcc_05.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -31,5 +38,6 @@ package() {
   install -m755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/"
   cp "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/toybox/"
 }
-# MD5? blame PAcman dev team
-md5sums=('b5d1242767c411b69dcd717da1c218b2')
+# MD5? blame Pacman dev team
+md5sums=('7f4a6c89e56c48e3350e611f5b36c2cf'
+         '27584ca79acbd57105c631312c1c6744')
