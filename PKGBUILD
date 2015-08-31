@@ -29,6 +29,6 @@ package() {
   cd "$srcdir/WebGoat-Legacy-$pkgver"
   install -Dm755 ../webgoat.sh "$pkgdir/usr/bin/webgoat"
   install -d "$pkgdir/opt/$pkgname"
-  cp -r doc $pkgdir/opt/$pkgname/doc
+  cp -r doc "$pkgdir/opt/$pkgname/doc"
   install -Dm644 "target/WebGoat-$pkgver-war-exec.jar" "$pkgdir/opt/$pkgname/webgoat.jar"
 }
