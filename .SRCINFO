@@ -1,0 +1,19 @@
+pkgbase = darksnow
+	pkgdesc = simple GTK2 GUI for darkice
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://darksnow.radiolivre.org/index.en.html
+	install = darksnow.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = darkice
+	depends = gtk2
+	depends = hicolor-icon-theme
+	source = http://darksnow.radiolivre.org/pacotes/darksnow-0.7.1.tar.gz
+	source = darksnow.desktop
+	sha256sums = 7c7c55761f7536cea2e8b6d8037c9ce7ca71f6a044c1b6026ea80e13d35b04fd
+	sha256sums = c35b2679a1d439cc6aff7acadd73a8af3bd0f878bb77e82db32c66f0ef646eb1
+
+pkgname = darksnow
+

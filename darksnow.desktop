@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=darksnow
+Type=Application
+Terminal=false
+Name=Darksnow
+Comment=Live Audio Stream
+Categories=AudioVideo;Audio;
+Icon=darksnow
