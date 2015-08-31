@@ -1,0 +1,14 @@
+pkgbase = python-trueskill
+	pkgdesc = The video game rating system
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://trueskill.org/
+	arch = any
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/t/trueskill/trueskill-0.4.3.tar.gz
+	md5sums = a564b45d9fff6eb2932af80b21ad3cec
+
+pkgname = python-trueskill
+
