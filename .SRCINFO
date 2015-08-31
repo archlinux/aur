@@ -1,0 +1,15 @@
+pkgbase = lpaq
+	pkgdesc = Lite version of PAQ; faster single file compressor but with less compression
+	pkgver = 8
+	pkgrel = 1
+	url = http://www.cs.fit.edu/~mmahoney/compression/#lpaq
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = nasm
+	source = http://www.cs.fit.edu/~mmahoney/compression/lpaq8.zip
+	sha256sums = ea43474526f13338cbb50ce3fbd974a0d088d77a3b73d42010ad11fb89a498b2
+	sha512sums = c93c2c2d4fc98b2d18939f4578b795c7ed019086cdec4ebf87f5840c2ba12c15155881f56481e06dfa96953c17d892bace61d09ac2ac934c3f55220660c14e04
+
+pkgname = lpaq
+
