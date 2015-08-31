@@ -15,7 +15,7 @@ package() {
   mkdir -p $pkgdir/usr/lib/c0
   cp -r $srcdir/cc0/* $pkgdir/usr/lib/c0
   mkdir -p $pkgdir/usr/bin
-  ln -s $pkgdir/usr/lib/c0/bin/cc0.bin $pkgdir/usr/bin/cc0
-  ln -s $pkgdir/usr/lib/c0/bin/coin.bin $pkgdir/usr/bin/coin
+  ln -s $pkgdir/usr/bin/cc0 $pkgdir/usr/lib/c0/bin/cc0.bin
+  ln -s $pkgdir/usr/bin/coin $pkgdir/usr/lib/c0/bin/coin.bin
 
 }
