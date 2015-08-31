@@ -1,15 +1,15 @@
 pkgbase = nodejs-markdown-pdf
 	pkgdesc = Markdown to PDF converter
-	pkgver = 5.1.0
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/alanshaw/markdown-pdf
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = phantomjs
-	noextract = markdown-pdf-5.1.0.tgz
-	source = http://registry.npmjs.org/markdown-pdf/-/markdown-pdf-5.1.0.tgz
-	sha1sums = 540debdc7a4ad2b9b468f7865183015486512261
+	noextract = markdown-pdf-5.3.0.tgz
+	source = http://registry.npmjs.org/markdown-pdf/-/markdown-pdf-5.3.0.tgz
+	sha1sums = 3b1d11ae930f57100abd767dd51c09503d940686
 
 pkgname = nodejs-markdown-pdf
 
