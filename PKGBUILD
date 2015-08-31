@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_svnmod"
   CXX=g++ python2 ./waf --prefix=/usr configure 
-LANG=C  python2 ./waf --prefix=/usr build 
+  python2 ./waf --prefix=/usr build 
 }
 
 package() {
