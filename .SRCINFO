@@ -1,0 +1,26 @@
+pkgbase = stardict-tools
+	pkgdesc = Stardict tools
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://code.google.com/p/stardict-3
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = libmysqlclient
+	depends = gtk2
+	depends = glib2
+	source = https://stardict-3.googlecode.com/files/stardict-tools-3.0.2.tar.bz2
+	source = fix-compilation.patch
+	source = fix-lz-linking.patch
+	source = fix-typo.patch
+	source = fix-zlib.patch
+	md5sums = 177c2c7b963669ed657c46d915e08c02
+	md5sums = dd55902a93e7c8cd4dcddc2efb407c57
+	md5sums = 9d2312c00edb6abbc38a5a7e8fa866db
+	md5sums = cfc5af4ed3cee7df637da641f19fa5f5
+	md5sums = f936a9d742b19a4fd29b94e55f0baf97
+
+pkgname = stardict-tools
+

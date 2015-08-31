@@ -1,0 +1,92 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -27,12 +27,12 @@
+ lingvosound2resdb_SOURCES = lingvosound2resdb.cpp
+ 
+ dir2resdatabase_LDFLAGS = 
+-dir2resdatabase_LDADD = $(STARDICT_LIBS)
++dir2resdatabase_LDADD = $(STARDICT_LIBS) -lz
+ dir2resdatabase_SOURCES = dir2resdatabase.cpp resourcewrap.hpp \
+ 	libcommon.cpp libcommon.h
+ 
+ resdatabase2dir_LDFLAGS = 
+-resdatabase2dir_LDADD = $(STARDICT_LIBS)
++resdatabase2dir_LDADD = $(STARDICT_LIBS) -lz
+ resdatabase2dir_SOURCES = resdatabase2dir.cpp resourcewrap.hpp \
+ 	libcommon.cpp libcommon.h
+ 
+@@ -113,7 +113,7 @@
+ buddhist_SOURCES = buddhist.cpp
+ 
+ tabfile_LDFLAGS =
+-tabfile_LDADD = $(STARDICT_LIBS)
++tabfile_LDADD = $(STARDICT_LIBS) -lz
+ tabfile_SOURCES = tabfile.cpp libtabfile.cpp libtabfile.h libcommon.cpp \
+ 	libcommon.h resourcewrap.hpp
+ 
+@@ -173,17 +173,17 @@
+ tabfile2sql_SOURCES = tabfile2sql.cpp
+ 
+ babylon_LDFLAGS =
+-babylon_LDADD = $(STARDICT_LIBS)
++babylon_LDADD = $(STARDICT_LIBS) -lz
+ babylon_SOURCES = babylon.cpp libbabylonfile.cpp libbabylonfile.h \
+ 	libcommon.cpp libcommon.h resourcewrap.hpp
+ 
+ stardict2txt_LDFLAGS =
+-stardict2txt_LDADD = $(STARDICT_LIBS)
++stardict2txt_LDADD = $(STARDICT_LIBS) -lz
+ stardict2txt_SOURCES = stardict2txt.cpp libstardict2txt.cpp libstardict2txt.h \
+ 	libcommon.cpp libcommon.h resourcewrap.hpp
+ 
+ stardict_dict_update_LDFLAGS = 
+-stardict_dict_update_LDADD = $(STARDICT_LIBS)			
++stardict_dict_update_LDADD = $(STARDICT_LIBS) -lz
+ stardict_dict_update_SOURCES = stardict_dict_update.cpp
+ 
+ fest2dict_LDFLAGS = 
+@@ -244,7 +244,7 @@
+ 
+ bgl2txt_DEPENDENCIES = libbgl2txt.a
+ bgl2txt_LDFLAGS =
+-bgl2txt_LDADD = $(STARDICT_LIBS) -lz libbgl2txt.a
++bgl2txt_LDADD = $(STARDICT_LIBS) libbgl2txt.a -lz
+ bgl2txt_SOURCES = bgl2txt.cpp libcommon.h libcommon.cpp
+ 
+ stardict_index_LDFLAGS =
+@@ -253,7 +253,7 @@
+ 
+ stardict_verify_CPPFLAGS = $(AM_CPPFLAGS) $(LIBXML_CFLAGS)
+ stardict_verify_LDFLAGS =
+-stardict_verify_LDADD = $(STARDICT_LIBS)
++stardict_verify_LDADD = $(STARDICT_LIBS) -lz
+ stardict_verify_SOURCES = stardict_verify.cpp libstardictverify.cpp \
+ 	libstardictverify.h libcommon.cpp libcommon.h resourcewrap.hpp \
+ 	ifo_file.hpp ifo_file.cpp lib_res_store.cpp lib_res_store.h \
+@@ -262,7 +262,7 @@
+ 
+ stardict_bin2text_CPPFLAGS = $(AM_CPPFLAGS) $(LIBXML_CFLAGS)
+ stardict_bin2text_LDFLAGS =
+-stardict_bin2text_LDADD = $(STARDICT_LIBS)
++stardict_bin2text_LDADD = $(STARDICT_LIBS) -lz
+ stardict_bin2text_SOURCES = stardict_bin2text.cpp \
+ 	lib_stardict_bin2text.cpp lib_stardict_bin2text.h \
+ 	lib_binary_dict_parser.cpp lib_binary_dict_parser.h lib_dict_data_block.cpp lib_dict_data_block.h  \
+@@ -272,7 +272,7 @@
+ 
+ stardict_text2bin_CPPFLAGS = $(AM_CPPFLAGS) $(LIBXML_CFLAGS)
+ stardict_text2bin_LDFLAGS =
+-stardict_text2bin_LDADD = $(STARDICT_LIBS) $(LIBXML_LIBS)
++stardict_text2bin_LDADD = $(STARDICT_LIBS) $(LIBXML_LIBS) -lz
+ stardict_text2bin_SOURCES = stardict_text2bin.cpp \
+ 	lib_stardict_text2bin.cpp lib_stardict_text2bin.h resourcewrap.hpp \
+ 	ifo_file.hpp ifo_file.cpp libcommon.cpp libcommon.h \
+@@ -282,7 +282,7 @@
+ stardict_editor_CPPFLAGS = $(AM_CPPFLAGS) $(LIBXML_CFLAGS)
+ stardict_editor_DEPENDENCIES = libbgl2txt.a
+ stardict_editor_LDFLAGS =
+-stardict_editor_LDADD = $(STARDICT_LIBS) $(LIBXML_LIBS) -lz libbgl2txt.a
++stardict_editor_LDADD = $(STARDICT_LIBS) $(LIBXML_LIBS) libbgl2txt.a -lz
+ stardict_editor_SOURCES = stardict-editor.cpp libtabfile.cpp libtabfile.h \
+ 	libcommon.cpp libcommon.h libbabylonfile.cpp libbabylonfile.h \
+ 	libstardict2txt.cpp libstardict2txt.h libstardictverify.cpp \

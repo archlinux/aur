@@ -1,0 +1,11 @@
+--- a/src/stardict-editor.cpp
++++ b/src/stardict-editor.cpp
+@@ -138,7 +138,7 @@
+ 		"b\t4\\\\5\\n6\n"
+ 		"c\t789\n"
+ 		"============\n"
+-		"Each line contains a word - definition pair. The word is splitted from definition with a tab character. "
++		"Each line contains a word - definition pair. The word is split from definition with a tab character. "
+ 		"You may use the following escapes: \\n - new line, \\\\ - \\, \\t - tab character.\n"
+ 		"\n\n"
+ 		"Babylon source file format\n"

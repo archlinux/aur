@@ -1,0 +1,11 @@
+--- a/src/lib_binary_dict_parser.cpp
++++ b/src/lib_binary_dict_parser.cpp
+@@ -33,7 +33,7 @@
+ /* Limit the initially reserved index size.
+  * .ifo file may contain incorrect, unreasonably large value of index size,
+  * so we'd be out of memory if we try to allocate such amount. */
+-const size_t MAX_RESERVED_INDEX_SIZE = 200*1024;
++const guint32 MAX_RESERVED_INDEX_SIZE = 200*1024;
+ 
+ static bool compare_worditem_by_offset(const worditem_t* left, const worditem_t* right)
+ {
