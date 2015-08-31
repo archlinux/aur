@@ -1,7 +1,7 @@
 pkgbase = emerald0.9
 	pkgdesc = Emerald window decorator (0.9 version)
 	pkgver = 0.9.5
-	pkgrel = 17
+	pkgrel = 18
 	url = http://www.compiz.org/
 	install = emerald.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = emerald0.9
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = emerald-themes: extra themes for Emerald
+	optdepends = ttf-droid: required for displaying international characters in the titlebar
 	provides = emerald=0.9.5
 	conflicts = emerald
 	replaces = emerald-git

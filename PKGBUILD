@@ -5,7 +5,7 @@
 pkgname=emerald0.9
 _realname=emerald
 pkgver=0.9.5
-pkgrel=17
+pkgrel=18
 pkgdesc="Emerald window decorator (0.9 version)"
 arch=('i686' 'x86_64')
 url="http://www.compiz.org/"
@@ -15,6 +15,7 @@ depends=('compiz>=0.9.5' 'libwnck' 'xdg-utils' \
 makedepends=('intltool')
 optdepends=(
   'emerald-themes: extra themes for Emerald'
+  'ttf-droid: required for displaying international characters in the titlebar'
 )
 options=(!libtool)
 conflicts=(${_realname})
