@@ -2,7 +2,6 @@
 pkgname=tvnamer
 pkgver=2.3
 pkgrel=2
-epoch=
 pkgdesc='Automatic TV episode file renamer'
 arch=('any')
 url='https://github.com/dbr/tvnamer'
