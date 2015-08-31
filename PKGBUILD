@@ -1,6 +1,6 @@
 pkgname=dnf
-_pkgver=1.1.0
-_rpmrel=2
+_pkgver=1.1.1
+_rpmrel=1
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
@@ -14,7 +14,7 @@ checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('88fd33a9e0cb16365b4cc99780ffbbd2')
+md5sums=('2ce64b9562bca3f48a85978c51c5dcea')
 
 prepare() {
 	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"
