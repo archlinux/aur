@@ -1,11 +1,12 @@
 # $Id: PKGBUILD 233413 2015-03-12 21:33:59Z andyrtr $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Maarten de Boer <maarten@ikfixjewebstek.nl>
 # Contributor: Brice Carpentier <brice@daknet.org>
 
-pkgname=cairo
+pkgname=cairo-infinality
 pkgver=1.14.2
 pkgrel=1
-pkgdesc="Cairo vector graphics library"
+pkgdesc="Cairo vector graphics library patched with infinality patches"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
 url="http://cairographics.org/"
@@ -14,7 +15,9 @@ makedepends=('libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'val
              # for the test suite:
              #'ttf-dejavu' 'gsfonts' 'xorg-server-xvfb' ) # 'libdrm')
 #optdepends=('xcb-util: for XCB backend') # really needed?
-provides=('cairo-xcb')
+provides=(
+	"cairo-xcb=$pkgver"
+	"cairo=$pkgver")
 replaces=('cairo-xcb')
 source=(
 	"http://cairographics.org/releases/cairo-$pkgver.tar.xz"

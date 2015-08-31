@@ -1,5 +1,5 @@
-pkgbase = cairo
-	pkgdesc = Cairo vector graphics library
+pkgbase = cairo-infinality
+	pkgdesc = Cairo vector graphics library patched with infinality patches
 	pkgver = 1.14.2
 	pkgrel = 1
 	url = http://cairographics.org/
@@ -24,7 +24,8 @@ pkgbase = cairo
 	depends = mesa
 	depends = libgl
 	depends = lzo
-	provides = cairo-xcb
+	provides = cairo-xcb=1.14.2
+	provides = cairo=1.14.2
 	replaces = cairo-xcb
 	source = http://cairographics.org/releases/cairo-1.14.2.tar.xz
 	source = cairo-respect-fontconfig_pb.patch
@@ -35,5 +36,5 @@ pkgbase = cairo
 	sha1sums = 72ecf2dda8462e1588512de257ccbe18642d507f
 	sha1sums = 5bff494f52a16114f4cf6d04bfb0b9d7c4e9da23
 
-pkgname = cairo
+pkgname = cairo-infinality
 
