@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=OpenBOR
+Comment=Open Beats of Rage
+Icon=openbor
+Exec=openbor
+Terminal=false
+Categories=Game;

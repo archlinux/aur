@@ -1,0 +1,28 @@
+pkgbase = openbor
+	pkgdesc = An open source fighting video game and moddable game engine (aka Beats of Rage)
+	pkgver = 3.0.r4153
+	pkgrel = 1
+	url = http://www.chronocrash.com
+	install = openbor.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	makedepends = yasm
+	makedepends = imagemagick
+	makedepends = glu
+	depends = bash
+	depends = sdl2_gfx
+	depends = libvorbis
+	depends = libpng
+	depends = libvpx
+	optdepends = libgl: OpenGL video mode
+	source = openbor::svn+http://svn.code.sf.net/p/openbor/engine/engine#revision=4153
+	source = openbor.desktop
+	source = openbor.sh
+	sha256sums = SKIP
+	sha256sums = 92c2c8fa5727ddf76421bdb54589d898679b12f4201931f2861b7fa1b613097b
+	sha256sums = fc584ea761ba1307e4568c2ffb78731b848d27ed231bdc2149ece96304a55d81
+
+pkgname = openbor
+
