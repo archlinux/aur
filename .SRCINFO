@@ -1,13 +1,14 @@
 pkgbase = binnavi
-	pkgdesc = BinNavi is a binary analysis IDE that allows to inspect, navigate, edit and annotate control flow graphs and call graphs of disassembled code
+	pkgdesc = A binary analysis IDE that allows to inspect, navigate, edit and annotate control flow graphs and call graphs of disassembled code
 	pkgver = 6.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/google/binnavi
 	arch = any
 	license = Apache
 	makedepends = maven
 	makedepends = apache-ant
-	depends = java-environment>=7
+	makedepends = java-environment>=7
+	depends = java-runtime>=7
 	depends = postgresql
 	source = https://github.com/google/binnavi/archive/v6.0.0.tar.gz
 	source = binnavi
