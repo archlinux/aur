@@ -1,0 +1,20 @@
+pkgbase = python-fonttools-git
+	pkgdesc = Modify OpenType and TrueType fonts and convert them to and from XML
+	pkgver = 3.0.r1920
+	pkgrel = 1
+	url = https://github.com/behdad/fonttools
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	depends = python
+	source = git+https://github.com/behdad/fonttools.git
+	sha256sums = SKIP
+
+pkgname = python-fonttools-git
+	depends = python-numpy
+
+pkgname = python2-fonttools-git
+	depends = python2-numpy
+
