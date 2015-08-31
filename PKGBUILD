@@ -10,6 +10,8 @@ arch=('any')
 license=('Custom')
 depends=('zsh>=4.3.9')
 makedepends=('git')
+provides=('zsh-syntax-highlighting')
+conflicts=('zsh-syntax-highlighting')
 install="${_name}.install"
 source=("${_name}::${url//https/git}")
 sha256sums=('SKIP')
