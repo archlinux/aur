@@ -18,7 +18,7 @@ optdepends=('openttd-opengfx: free graphics'
 _gitname=OpenTTD-patches
 
 # If you want the latest official release of the patch pack, uncomment this line:
-# _fragment="#tag=jgrpp-0.2.1"
+# _fragment="#tag=jgrpp-0.3.0"
 
 source=("git+https://github.com/JGRennison/$_gitname.git$_fragment"
         "http://finger.openttd.org/tags.txt")
