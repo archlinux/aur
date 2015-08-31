@@ -2,7 +2,7 @@
 
 pkgname=volume_key
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='library for manipulating storage volume encryption keys'
 arch=('x86_64' 'i686')
 depends=('cryptsetup' 'python2')
@@ -21,6 +21,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/"
+
+	sed -i '/#include <config.h>/d' lib/libvolume_key.h
 
 	make DESTDIR="${pkgdir}" install
 }

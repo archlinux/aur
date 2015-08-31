@@ -1,7 +1,7 @@
 pkgbase = volume_key
 	pkgdesc = library for manipulating storage volume encryption keys
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fedorahosted.org/volume_key/
 	arch = x86_64
 	arch = i686
