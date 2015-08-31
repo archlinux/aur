@@ -1,14 +1,14 @@
 pkgbase = python-scrypt
 	pkgdesc = Bindings for the scrypt key derivation function library
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/scrypt/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/s/scrypt/scrypt-0.6.1.tar.gz
-	md5sums = 1af78108db9f3bd189b0d78f7eb4382d
+	source = https://pypi.python.org/packages/source/s/scrypt/scrypt-0.7.1.tar.gz
+	md5sums = 9feb713f183e11caa940e8ec71cf1361
 
 pkgname = python-scrypt
 	depends = python

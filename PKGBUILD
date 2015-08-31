@@ -1,6 +1,6 @@
 # Maintainer: Daniel Micay <danielmicay@gmail.com>
 pkgname=(python-scrypt python2-scrypt)
-pkgver=0.6.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Bindings for the scrypt key derivation function library'
 arch=(i686 x86_64)
@@ -9,12 +9,12 @@ license=('BSD')
 makedepends=()
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/s/scrypt/scrypt-$pkgver.tar.gz")
-md5sums=('1af78108db9f3bd189b0d78f7eb4382d')
+md5sums=('9feb713f183e11caa940e8ec71cf1361')
 
 package_python-scrypt() {
   depends=(python)
   cd "scrypt-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python3 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-scrypt() {
