@@ -1,0 +1,18 @@
+pkgbase = arachni
+	pkgdesc = A feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.arachni-scanner.com
+	install = arachni.install
+	arch = any
+	groups = blackarch
+	groups = blackarch-webapp
+	license = apache
+	makedepends = git
+	depends = ruby
+	depends = ruby-bundler
+	source = git+git://github.com/Arachni/arachni.git
+	md5sums = SKIP
+
+pkgname = arachni
+
