@@ -1,0 +1,13 @@
+pkgbase = objdigger
+	pkgdesc = Automated static analysis tools for binary programs
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://portal.cert.org/web/mc-portal/pharos-static-analysis-tools
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = ObjdiggerTool.7z::https://portal.cert.org/documents/133850/0/Objdigger+Tool/66ab5d1d-f275-4890-adce-d12bc9de0cbf?version=1.1
+	sha512sums = 7595c078e2e877080756b22859fb263107585c6291614ff089a153c31ae8173675b14685fbe14128e4b6bccc87682772749e59db70a30ba9dcf23937e79b470a
+
+pkgname = objdigger
+
