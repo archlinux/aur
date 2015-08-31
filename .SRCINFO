@@ -1,0 +1,12 @@
+pkgbase = wondershaper-git
+	pkgdesc = network adapter bandwidth limiter
+	pkgver = 20130114
+	pkgrel = 1
+	url = https://github.com/magnific0/wondershaper.git
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = iproute
+
+pkgname = wondershaper-git
+
