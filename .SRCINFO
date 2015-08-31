@@ -1,7 +1,7 @@
 pkgbase = otf-alegreya-sans
 	pkgdesc = Alegreya Sans is a humanist sans serif family with a calligraphic feeling that conveys a dynamic and varied rhythm.
 	pkgver = 1.002
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.huertatipografica.com/en/fonts/alegreya-sans-ht
 	install = otf-alegreya-sans.install
 	arch = any

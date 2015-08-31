@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-alegreya-sans
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc='Alegreya Sans is a humanist sans serif family with a calligraphic feeling that conveys a dynamic and varied rhythm.'
 arch=('any')
