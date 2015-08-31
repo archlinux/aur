@@ -10,8 +10,8 @@ pkgbase = ccrtp
 	license = custom
 	depends = ucommon>=6.2.2
 	depends = libgcrypt
-	source = http://dev.gnutelephony.org/dist/tarballs/ccrtp-2.1.2.tar.gz
-	source = http://dev.gnutelephony.org/dist/tarballs/ccrtp-2.1.2.tar.gz.sig
+	source = http://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz
+	source = http://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz.sig
 	md5sums = e6792cbd8b705901c205a509bd7f812f
 	md5sums = SKIP
 

@@ -13,10 +13,10 @@ url="http://www.gnu.org/software/ccrtp/"
 license=('GPL' 'custom')
 depends=('ucommon>=6.2.2' 'libgcrypt')
 install=$pkgname.install
-source=("http://dev.gnutelephony.org/dist/tarballs/$pkgname-$pkgver.tar.gz"{,.sig})
+source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig})
 md5sums=('e6792cbd8b705901c205a509bd7f812f'
          'SKIP')
-validpgpkeys=('3D937C85BF4A787DF6C7247DFC531209EA8888AD')
+validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
 build() {
   cd ${pkgname}-${pkgver}
