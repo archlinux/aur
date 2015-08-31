@@ -8,7 +8,7 @@ url="http://stormdragon.tk/fortunes/confucius"
 license=('WTFPL')
 depends=('fortune-mod')
 source=("$url")
-md5sums=('421f0fe0efb4fd8dd9afa0cc60e00c22')
+md5sums=('cd21d241904c473b00f4c630e0208615')
 
 build()
 {
