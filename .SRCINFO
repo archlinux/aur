@@ -1,8 +1,8 @@
 pkgbase = perl-math-bigint-gmp
 	pkgdesc = Big integer calculations using the GNU Multiple Precision Arithmetic Library.
-	pkgver = 1.38
+	pkgver = 1.40
 	pkgrel = 1
-	url = http://search.cpan.org/~PJACKLAM/Math-BigInt-GMP-1.38/
+	url = http://search.cpan.org/~PJACKLAM/Math-BigInt-GMP-1.40/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = perl-math-bigint-gmp
 	depends = perl>=5.20.0
 	depends = gmp
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-authors/id/P/PJ/PJACKLAM/Math-BigInt-GMP-1.38.tar.gz
-	sha256sums = 1ad0cac911a08f150c5e5a8286aec20de21c863bd27b8f002456cff11e086f15
+	source = http://cpan.perl.org/modules/by-authors/id/P/PJ/PJACKLAM/Math-BigInt-GMP-1.40.tar.gz
+	sha256sums = 3892881cf98e30642336cdb3d394a0105ea74b4f63db5eccee75b84b29822d54
 
 pkgname = perl-math-bigint-gmp
 
