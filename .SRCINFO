@@ -1,0 +1,15 @@
+pkgbase = volume_key
+	pkgdesc = library for manipulating storage volume encryption keys
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://fedorahosted.org/volume_key/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = cryptsetup
+	depends = python2
+	source = https://fedorahosted.org/releases/v/o/volume_key/volume_key-0.3.9.tar.xz
+	sha256sums = 450a54fe9bf56acec6850c1e71371d3e4913c9ca1ef0cdc3a517b4b6910412a6
+
+pkgname = volume_key
+
