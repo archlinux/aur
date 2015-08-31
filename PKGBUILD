@@ -1,5 +1,5 @@
 pkgname=icinga-classic-ui
-pkgver=1.12.0
+pkgver=1.13.3
 pkgrel=1
 pkgdesc="Icinga Classic UI Standalone."
 license=('GPL')
@@ -28,4 +28,4 @@ package() {
 	make DESTDIR="$pkgdir" install-classicui-standalone install-classicui-standalone-conf
 }
 
-md5sums=('0d7919057455a548d43b888dfa7d0cdb')
+md5sums=('9a74a5e7217c0fb9aea3a66cc11d2aa5')
