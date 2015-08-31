@@ -1,0 +1,15 @@
+pkgbase = nodejs-node-forge
+	pkgdesc = JavaScript implementations of network transports, cryptography, ciphers, PKI, message digests, and various utilities
+	pkgver = 0.6.34
+	pkgrel = 1
+	url = https://www.npmjs.com/package/node-forge
+	arch = any
+	license = GPLv2
+	depends = nodejs
+	depends = npm
+	noextract = node-forge-0.6.34.tgz
+	source = http://registry.npmjs.org/node-forge/-/node-forge-0.6.34.tgz
+	md5sums = b651976fdf4f7672b22a358d271c8adc
+
+pkgname = nodejs-node-forge
+
