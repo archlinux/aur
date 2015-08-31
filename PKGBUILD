@@ -1,45 +1,45 @@
-# This is my first PKGBUILD
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Contributor: Andrey Pavlenko <andrey.pavlenko@mail.ru>
 
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+_gitname=rk-tools
+pkgname="${_gitname}-git"
+_gitbranch=master
+_gitauthor=rk3066
+pkgver=r14.a54f31b
+pkgrel=1
+pkgdesc="RockChip tools for RK29xx and RK30xx generations, mainly to modify ROMs."
+url="https://github.com/${_gitauthor}/${_gitname}"
+license=('')
+source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
+sha512sums=('SKIP')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64') # arch=('any')
+depends=('')
+makedepends=('git')
+conflicts=("${_gitname}")
+provides=("${_gitname}")
 
-# Maintainer: Andrey Pavlenko <andrey.pavlenko@mail.ru>
-# Updated 2013-10-17 by ammon message.
-pkgname=rk-tools
-pkgver=1.0
-pkgrel=2
-pkgdesc="RockChip tools for RK29xx and RK30xx generations, mainly to modify ROMs (http://www.cnx-software.com/2012/11/04/rockchip-rk3066-rk30xx-processor-documentation-source-code-and-tools/)."
-arch=(i686 x86_64)
-url="https://github.com/rk3066/rk-tools.git"
-license=('unknown')
-groups=('system')
-depends=()
-makedepends=('gcc' 'make' 'git')
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+build() {
+  cd "${srcdir}/${_gitname}"
+  make
+}
 
 package() {
-	cd $srcdir
-
-	# If directiry alredy exists
-	if [ -d $pkgname ]; then
-		# If .git exists
-		if [ -d "$pkgname/.git" ]; then
-			# Checkout
-			cd $pkgname
-			git checkout
-		else
-			# ==== Remove dir if it has no .git ===
-			rm -R $pkgname || return 1
-		fi
-	else
-		git clone $url
-		cd $pkgname
-	fi
-	make || return 1
-
-	mkdir -p $pkgdir/usr/bin
-	install $srcdir/$pkgname/afptool $pkgdir/usr/bin
-	install $srcdir/$pkgname/img_maker $pkgdir/usr/bin
-	install $srcdir/$pkgname/img_unpack $pkgdir/usr/bin
-	install $srcdir/$pkgname/rkcrc $pkgdir/usr/bin
-	install $srcdir/$pkgname/rkkernel $pkgdir/usr/bin
+  cd "${srcdir}/${_gitname}"
+  mkdir -p "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/${_gitname}/afptool" "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/${_gitname}/img_maker" "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/${_gitname}/img_unpack" "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/${_gitname}/rkcrc" "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/${_gitname}/rkkernel" "${pkgdir}/usr/bin/"
 }
+
+# vim:set et sw=2 sts=2 tw=80:
