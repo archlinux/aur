@@ -1,7 +1,7 @@
 pkgbase = ttf-roboto-slab
 	pkgdesc = Roboto Slab is a slab serif addition to the Roboto type family.
 	pkgver = 1.100263
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://www.google.com/fonts/specimen/Roboto+Slab
 	install = ttf-roboto-slab.install

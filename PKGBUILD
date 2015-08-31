@@ -2,7 +2,7 @@
 # Contributor: Brandon Giesing <brandon@giesing.cf>
 pkgname=ttf-roboto-slab
 pkgver=1.100263
-pkgrel=1
+pkgrel=2
 epoch=3
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc='Roboto Slab is a slab serif addition to the Roboto type family.'
