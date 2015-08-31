@@ -10,6 +10,7 @@ url="https://github.com/SethDusek/define"
 license=('BSD')
 depends=('gstreamer' 'python' 'python-requests')
 makedepends=('git')
+conflicts=('define-git')
 source=('git://github.com/SethDusek/define.git')
 md5sums=('SKIP')
 
@@ -18,10 +19,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-build() {
-  cd "$srcdir/$_pkgname"
-}
 
 package() {
   cd "$srcdir/$_pkgname"
