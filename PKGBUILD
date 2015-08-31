@@ -1,7 +1,7 @@
 #Maintainer: Leonard König <leonard dot r dot koenig at googlemail dot com>
 pkgname=sayonara-player-svn
-pkgver=r1194
-pkgrel=1
+pkgver=r1092
+pkgrel=3
 pkgdesc="Sayonara is a small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend."
 arch=('i686' 'x86_64')
 url="https://sayonara-player.com/"

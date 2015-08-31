@@ -1,7 +1,7 @@
 pkgbase = sayonara-player-svn
 	pkgdesc = Sayonara is a small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend.
-	pkgver = r1194
-	pkgrel = 1
+	pkgver = r1092
+	pkgrel = 3
 	url = https://sayonara-player.com/
 	install = sayonara-player-svn.install
 	arch = i686
