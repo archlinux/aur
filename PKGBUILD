@@ -6,7 +6,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=pure-ftpd
-pkgver=1.0.41
+pkgver=1.0.42
 pkgrel=1
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=("http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-${pkgver}
 	'pure-ftpd.pem'
 	'pure-ftpd-dhparams.pem' )
 
-md5sums=('76c2364591418f153ed815034621d058'
+md5sums=('4022f38939f6a112b18c1a43dee552c1'
 	'SKIP'
 	'SKIP'
 	'SKIP'
