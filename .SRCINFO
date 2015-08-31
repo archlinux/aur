@@ -1,0 +1,16 @@
+pkgbase = csprng
+	pkgdesc = Cryptographically Secure Pseudorandom Number Generator
+	pkgver = 1.1.3
+	pkgrel = 7
+	url = https://code.google.com/p/csrng
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = openssl
+	source = https://csrng.googlecode.com/files/csprng-1.1.3.tar.bz2
+	source = csprngd.service
+	sha256sums = 522882e255a013d24a3c2dd639b69380ecd6b48b549e1ea345dd385e889e051b
+	sha256sums = e8516dc15ec99c154c96eec03f794d2fc7346282913aef587f76b0471f9f11e5
+
+pkgname = csprng
+

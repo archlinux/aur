@@ -1,0 +1,13 @@
+#Official upstream file from program maintainer
+[Unit]
+Description=Entropy Daemon based on the Cryptographically Secure Pseudorandom Number Generator
+Documentation=man:csprngd(8) https://code.google.com/p/csrng
+
+[Service]
+Type=forking
+PIDFile=/run/csprngd.pid
+ExecStart=/usr/bin/csprngd --derivation_function --additional_source=SHA1_RNG -p /run/csprngd.pid 
+
+[Install]
+WantedBy=multi-user.target
+
