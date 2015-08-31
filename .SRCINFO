@@ -1,0 +1,19 @@
+pkgbase = r8168-aufs
+	pkgdesc = A kernel module for Realtek 8168 network cards(aufs_friendly kernel)
+	pkgver = 8.040.00
+	pkgrel = 6
+	url = http://www.realtek.com.tw
+	install = r8168.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-aufs_friendly-headers
+	depends = glibc
+	depends = linux-aufs_friendly
+	source = https://github.com/mtorromeo/r8168/archive/8.040.00/r8168-8.040.00.tar.gz
+	sha256sums = 1f7aad3a066c152837e03e558ba720742e792d281c96c5412cff32d68875415b
+
+pkgname = r8168-aufs
+	depends = linux-aufs_friendly>=
+	depends = linux-aufs_friendly<.1
+
