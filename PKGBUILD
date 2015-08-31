@@ -31,7 +31,7 @@ package() {
     cd "$srcdir/${pkgname}-$pkgver"
     make DESTDIR="$pkgdir" install
 }
-md5sums=('177c2c7b963669ed657c46d915e08c02'
+md5sums=('1d78c5da68080368b854278cdf56b8da'
     'dd55902a93e7c8cd4dcddc2efb407c57'
     '9d2312c00edb6abbc38a5a7e8fa866db'
     'cfc5af4ed3cee7df637da641f19fa5f5'
