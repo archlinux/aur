@@ -1,6 +1,6 @@
 pkgbase = qt5-plugin-sql-oci
 	pkgdesc = QT5 Oracle OCI SQL plugin
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = qt5-plugin-sql-oci
 	groups = qt5
 	license = custom
 	makedepends = oracle-instantclient-sdk>=12.1.0.2.0
-	depends = qt5-base>=5.4.2
+	depends = qt5-base>=5.5.0
 	depends = oracle-instantclient-basic>=12.1.0.2.0
-	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtbase-opensource-src-5.4.2.tar.xz
-	md5sums = 67a95eec79ffc4a14f516ad6f3d24c96
+	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/submodules/qtbase-opensource-src-5.5.0.tar.xz
+	md5sums = 252613b5a180c94d7196d10467a4f08b
 
 pkgname = qt5-plugin-sql-oci
 
