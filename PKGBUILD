@@ -1,4 +1,5 @@
 # Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 pkgname=binnavi-git
 pkgver=v6.0.0.10.a2a3fa4
 pkgrel=2
@@ -6,8 +7,8 @@ pkgdesc="A binary analysis IDE that allows to inspect, navigate, edit and annota
 url="https://github.com/google/binnavi"
 arch=('any')
 license=('Apache')
-depends=('java-runtime>=7' 'postgresql')
 makedepends=('git' 'maven' 'apache-ant' 'java-environment>=7')
+depends=('java-runtime>=7' 'postgresql')
 provides=('binnavi')
 conflicts=('binnavi')
 source=(git+https://github.com/google/binnavi.git 'binnavi.sh')
