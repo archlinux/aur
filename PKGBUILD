@@ -6,9 +6,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-rt-lts
-pkgver=352.30
+pkgver=352.41
 _extramodules=extramodules-3.18-rt-lts
-pkgrel=3
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-rt-lts."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -19,8 +19,8 @@ install="${pkgname}.install"
 options=(!strip)
 source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
         "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('7e59d84eafe2482b2f02df692b9168d5'
-         '135dd90db609cecad8e74bde0054cf6f')
+md5sums=('3f9c9fed035fa845e3f6a1ea5f5732f7'
+         'd41d1a358edbade36cfd97cdcc9a80b9')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
