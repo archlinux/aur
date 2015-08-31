@@ -5,7 +5,7 @@
 pkgname=qmmp-svn
 pkgver=1.0.0.svn.r5415
 pkgrel=1
-pkgdesc="A Qt4 based audio-player. (SVN Version)"
+pkgdesc="A Qt based audio-player. (SVN Version)"
 arch=('i686' 'x86_64')
 url="http://qmmp.ylsoftware.com"
 license=('GPL')

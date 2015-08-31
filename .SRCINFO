@@ -1,5 +1,5 @@
 pkgbase = qmmp-svn
-	pkgdesc = A Qt4 based audio-player. (SVN Version)
+	pkgdesc = A Qt based audio-player. (SVN Version)
 	pkgver = 1.0.0.svn.r5415
 	pkgrel = 1
 	url = http://qmmp.ylsoftware.com
