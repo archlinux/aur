@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-roboto-mono
 pkgver=2.000985
-pkgrel=3
+pkgrel=4
 epoch=1
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc='Roboto Mono is a monospaced addition to the Roboto type family.'

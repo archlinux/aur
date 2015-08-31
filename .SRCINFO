@@ -1,7 +1,7 @@
 pkgbase = ttf-roboto-mono
 	pkgdesc = Roboto Mono is a monospaced addition to the Roboto type family.
 	pkgver = 2.000985
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://www.google.com/fonts/specimen/Roboto+Mono
 	install = ttf-roboto-mono.install
