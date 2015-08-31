@@ -1,6 +1,6 @@
 pkgbase = aws-cli-git
 	pkgdesc = Universal Command Line Interface for Amazon Web Services.
-	pkgver = 1.8.0.r2755.g924e306
+	pkgver = 1.8.1.r2764.gc1508f7
 	pkgrel = 1
 	url = https://github.com/aws/aws-cli
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = aws-cli-git
 	makedepends = git
 	depends = python
 	depends = python-bcdoc<0.15.0
-	depends = python-botocore>=1.1.11
+	depends = python-botocore>=1.1.12
 	depends = python-colorama>=0.2.5
 	depends = python-colorama<=0.3.3
 	depends = python-rsa-3.1.2>=3.1.2
@@ -27,7 +27,7 @@ pkgbase = aws-cli-git
 	depends = python-guzzle-sphinx-theme>=0.7.10
 	depends = python-guzzle-sphinx-theme<0.8
 	provides = awscli
-	provides = aws-cli=1.8.0
+	provides = aws-cli=1.8.1
 	conflicts = python2-aws-cli
 	conflicts = python-aws-cli
 	conflicts = awscli
