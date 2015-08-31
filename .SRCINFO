@@ -1,0 +1,12 @@
+pkgbase = terminus-re33
+	pkgdesc = ttf version of terminus-font
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://deadsoftware.ru/files/terminus-re33.ttf.gz
+	sha256sums = ccf315c5ffeac3efee3fbc9e066595a05e4f79aa0742831598a4ab7c28641d25
+
+pkgname = terminus-re33
+
