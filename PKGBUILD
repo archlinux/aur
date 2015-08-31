@@ -1,6 +1,6 @@
 #Maintainer GI_Jack <iamjacksemail@hackermail.com>
 
-pkgname=libgsecuredelete
+pkgname=libsecuredelete
 pkgver=0.2.1
 pkgrel=3
 pkgdesc="GObject wrapper library for nautilus-wipe"
