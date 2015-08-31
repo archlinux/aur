@@ -22,22 +22,11 @@ build()
 package()
 {
 	install -m755 -d "${pkgdir}/usr/bin"
-	install -D -m644 "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/mandelbulber-opencl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-	install -m755 -d "${pkgdir}/usr/share/${pkgname}"
-	install -m755 -d "${pkgdir}/usr/share/cl"
-	install -m755 -d "${pkgdir}/usr/share/exampleKeyframes"
-	install -m755 -d "${pkgdir}/usr/share/exampleOCLformulas"
-	install -m755 -d "${pkgdir}/usr/share/examples"
-	install -m755 -d "${pkgdir}/usr/share/icons"
-	install -m755 -d "${pkgdir}/usr/share/textures"
-
-	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/cl" "${pkgdir}/usr/share/cl"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/exampleKeyframes" "${pkgdir}/usr/share/exampleKeyframes"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/exampleOCLformulas" "${pkgdir}/usr/share/exampleOCLformulas"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/examples" "${pkgdir}/usr/share/examples"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/icons" "${pkgdir}/usr/share/icons"
-	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/textures" "${pkgdir}/usr/share/textures"
 	install -m755 "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/makefiles/mandelbulber-opencl" "${pkgdir}/usr/bin/"
+	
+	install -m755 -d "${pkgdir}/usr/share/mandelbulber"
+	cp -ua "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig"/usr/share/* "${pkgdir}/usr/share/mandelbulber"
+	
+	install -D -m644 "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/mandelbulber-opencl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
