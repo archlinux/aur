@@ -25,3 +25,5 @@ package() {
   rm -rf .git .gitignore
   cp -dr --no-preserve='ownership' * "${pkgdir}"/usr/share/themes/Numix-OSX/
 }
+
+# vim: ts=2 sw=2 et:
