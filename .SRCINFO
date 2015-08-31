@@ -1,0 +1,18 @@
+pkgbase = rt3562sta-aufs
+	pkgdesc = Ralink RT3562 PCI WLAN adaptors kernel module
+	pkgver = 2.4.1.1_r2
+	pkgrel = 12
+	url = http://www.mediatek.com/en/products/connectivity/wifi/consumer-electronics/pcie/rt3562/
+	install = rt3562sta.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-aufs_friendly-headers
+	depends = linux-aufs_friendly
+	source = rt3562sta-2.4.1.1_r2.tar.gz::https://github.com/mtorromeo/rt3562sta-linux/archive/r2.tar.gz
+	sha256sums = fbb31034fac14d63f9ed16039b79743746d91e0587e3bdd036697f7fd39cef9a
+
+pkgname = rt3562sta-aufs
+	depends = linux-aufs_friendly>=
+	depends = linux-aufs_friendly<.1
+
