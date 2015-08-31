@@ -17,8 +17,8 @@ package() {
 
   mkdir -p $pkgdir/usr/bin
   chmod +x $pkgdir/usr/lib/c0/bin/cc0.bin
-  ln -s $pkgdir/usr/lib/c0/bin/cc0.bin $pkgdir/usr/bin/cc0
+  ln -s /usr/lib/c0/bin/cc0.bin $pkgdir/usr/bin/cc0
   chmod +x $pkgdir/usr/lib/c0/bin/coin.bin
-  ln -s $pkgdir/usr/lib/c0/bin/coin.bin $pkgdir/usr/bin/coin
+  ln -s /usr/lib/c0/bin/coin.bin $pkgdir/usr/bin/coin
 
 }
