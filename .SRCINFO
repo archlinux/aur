@@ -1,11 +1,11 @@
 pkgbase = python2-elixir
 	pkgdesc = Declarative mapper for SQLAlchemy
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://elixir.ematia.de/
 	arch = any
 	license = MIT
-	depends = python2-sqlalchemy
+	depends = python2-sqlalchemy-0.7.9
 	source = http://pypi.python.org/packages/source/E/Elixir/Elixir-0.7.1.tar.gz
 	md5sums = 5615ec9693e3a8e44f69623d58f54116
 
