@@ -1,0 +1,37 @@
+pkgbase = visp
+	pkgdesc = A modular library for visual tracking and visual servoing
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = http://www.irisa.fr/lagadic/visp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:ViSP Professional Edition License
+	makedepends = cmake
+	depends = libdmtx
+	depends = opencv>=2.2.0
+	depends = coin
+	depends = gsl
+	depends = lapack
+	depends = zbar
+	optdepends = xorg-server: used for the image display
+	optdepends = gtk2: used for the image display
+	optdepends = libxml2: parse XML files for camera and model-based tracker parameters
+	optdepends = ogre: for 3D Rendering
+	optdepends = ois: for System Input (keyboard, pad, ...)
+	optdepends = soqt: interfacing coin with qt
+	optdepends = yarp: used for robot commands
+	optdepends = v4l-utils: tools to convert video
+	optdepends = libfreenect: driver for Kinect
+	optdepends = libdc1394: high level programming interface for IEEE1394 digital camera
+	optdepends = libusb: access to usb devices
+	optdepends = ffmpeg: to manipulate video files
+	optdepends = libjpeg-turbo: to convert jpeg files
+	optdepends = libpng: to convert png files
+	optdepends = doxygen: for documentation
+	optdepends = biclops: used for motion control device of Traclabs
+	source = http://gforge.inria.fr/frs/download.php/latestfile/475/ViSP-2.10.0.tar.gz
+	md5sums = 85b5015a192d20fa0db3a70d620bb0d3
+
+pkgname = visp
+
