@@ -1,0 +1,22 @@
+pkgbase = batti
+	pkgdesc = Simple battery monitor for the system tray
+	pkgver = 0.3.8
+	pkgrel = 5
+	url = http://code.google.com/p/batti-gtk/
+	install = batti.install
+	arch = any
+	license = GPL
+	depends = dbus-python
+	depends = pygtk
+	depends = gtk2
+	depends = upower
+	depends = hicolor-icon-theme
+	optdepends = notification-daemon: for power status notifications
+	optdepends = xfce4-notifyd: alternative to notification-daemon
+	source = http://batti-gtk.googlecode.com/files/batti-0.3.8.tar.gz
+	source = upower-0.99.patch
+	md5sums = 4b239ead1643c95a6d89c380bc167781
+	md5sums = 237c98190cfd5725c9f5483c770a7763
+
+pkgname = batti
+
