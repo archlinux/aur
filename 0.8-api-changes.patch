@@ -1,0 +1,135 @@
+X-Git-Url: http://git.freebsoft.org/?p=speechd.git;a=blobdiff_plain;f=src%2Fapi%2Fpython%2Fspeechd%2Fclient.py;h=8d3436334e3d3ca9e5884ae595ec9ba1f21b2375;hp=3d28f4f44e21babce36b17063ddb4f3bb4256a5d;hb=f818b657ab8da32ef2f212eebb453bf054f7afdb;hpb=728f531c50144ed7f46179363c1215a7d0453e16
+
+diff --git a/src/python/speechd/client.py b/src/python/speechd/client.py
+index 3d28f4f..8d34363 100644
+--- a/src/python/speechd/client.py
++++ b/src/python/speechd/client.py
+@@ -494,7 +494,7 @@ class SSIPClient(object):
+     """Default host for server connections."""
+     DEFAULT_PORT = 6560
+     """Default port number for server connections."""
+-    DEFAULT_SOCKET_PATH = "~/.speech-dispatcher/speechd.sock"
++    DEFAULT_SOCKET_PATH = "speech-dispatcher/speechd.sock"
+     """Default name of the communication unix socket"""
+     
+     def __init__(self, name, component='default', user='unknown', address=None,
+@@ -510,7 +510,7 @@ class SSIPClient(object):
+           user -- user identification string (user name).  When multi-user
+             acces is expected, this can be used to identify their connections.
+           address -- server address as specified in Speech Dispatcher
+-            documentation (e.g. "unix:/home/joe/.speech-dispatcher/speechd.sock"
++            documentation (e.g. "unix:/run/user/joe/speech-dispatcher/speechd.sock"
+             or "inet:192.168.0.85:6561")
+           autospawn -- a flag to specify whether the library should
+             try to start the server if it determines its not already
+@@ -520,9 +520,9 @@ class SSIPClient(object):
+           method -- communication method to use, one of the constants defined in class
+             CommunicationMethod
+           socket_path -- for CommunicationMethod.UNIX_SOCKET, socket
+-            path in filesystem. By default, this is ~/.speech-dispatcher/speechd.sock
+-            where `~' is the users home directory as determined from the system
+-            defaults and from the $HOMEDIR environment variable.
++            path in filesystem. By default, this is $XDG_RUNTIME_DIR/speech-dispatcher/speechd.sock
++            where $XDG_RUNTIME_DIR is determined using the XDG Base Directory
++            Specification.
+           host -- for CommunicationMethod.INET_SOCKET, server hostname
+             or IP address as a string.  If None, the default value is
+             taken from SPEECHD_HOST environment variable (if it
+@@ -536,9 +536,12 @@ class SSIPClient(object):
+         Dispatcher documentation.
+         """
+ 
++        _home = os.path.expanduser("~")
++        _runtime_dir = os.environ.get('XDG_RUNTIME_DIR', os.environ.get('XDG_CACHE_HOME', os.path.join(_home, '.cache')))
++        _sock_path = os.path.join(_runtime_dir, self.DEFAULT_SOCKET_PATH)
+         # Resolve connection parameters:
+         connection_args = {'communication_method': CommunicationMethod.UNIX_SOCKET,
+-                           'socket_path': os.path.expanduser(self.DEFAULT_SOCKET_PATH),
++                           'socket_path': _sock_path,
+                            'host': self.DEFAULT_HOST,
+                            'port': self.DEFAULT_PORT,
+                            }
+X-Git-Url: http://git.freebsoft.org/?p=speechd.git;a=blobdiff_plain;f=src%2Fapi%2Fpython%2Fspeechd_config%2Fconfig.py;h=47a37105b94318f59bc7c4b1f7f913deb362d245;hp=7bd8a89100e47adf29bca253be39f2e0303c155b;hb=2223ab2455ea17d2e27cb2896496291f158a156b;hpb=ff994b57a340a8b6229f5576c1a202e339169105
+
+diff --git a/src/python/speechd_config/config.py b/src/python/speechd_config/config.py
+index 7bd8a89..47a3710 100644
+--- a/src/python/speechd_config/config.py
++++ b/src/python/speechd_config/config.py
+@@ -26,6 +26,7 @@ import time
+ import datetime
+ 
+ from optparse import OptionParser
++from xdg import BaseDirectory
+ 
+ # Configuration and sound data paths
+ from . import paths
+@@ -272,17 +273,9 @@ class Tests:
+     def __init__(self):
+         self.festival_socket = None
+ 
+-    def user_speechd_dir(self):
+-        """Return user Speech Dispatcher configuration and logging directory"""
+-        return os.path.expanduser(os.path.join('~', '.speech-dispatcher'))
+-
+-    def user_speechd_dir_exists(self):
+-        """Determine whether user speechd directory exists"""
+-        return os.path.exists(self.user_speechd_dir())
+-
+     def user_conf_dir(self):
+         """Return user configuration directory"""
+-        return os.path.join(self.user_speechd_dir(), "conf")
++        return os.path.join(BaseDirectory.xdg_config_home, "speech-dispatcher")
+ 
+     def system_conf_dir(self):
+         """Determine system configuration directory"""
+@@ -684,32 +677,25 @@ class Configure:
+         """Create user configuration in the standard location"""
+ 
+         # Ask before touching things that we do not have to!
+-        if test.user_speechd_dir_exists():
+-            if test.user_conf_dir_exists():
+-                if test.user_configuration_seems_complete():
+-                    reply = question(
+-                        """User configuration already exists.
+-Do you want to rewrite it with a new one?""", False)
+-                    if reply == False:
+-                        report("Keeping configuration intact and continuing with settings.")
+-                        return
+-                    else:
+-                        self.remove_user_configuration()
++        if test.user_conf_dir_exists():
++            if test.user_configuration_seems_complete():
++                reply = question(
++                    "User configuration already exists."
++                    "Do you want to rewrite it with a new one?", False)
++                if reply == False:
++                    report("Keeping configuration intact and continuing with settings.")
++                    return
+                 else:
+-                    reply = question(
+-                        """User configuration already exists, but it seems to be incomplete.
+-Do you want to keep it?""", False)
+-                    if reply == False:
+-                        self.remove_user_configuration()
+-                    else:
+-                        report("Keeping configuration intact and aborting.")
+-                        return
+-
+-            # TODO: Check for permissions on logfiles and pid
+-        else:
+-            report("Creating " + test.user_speechd_dir())
+-            os.mkdir(test.user_speechd_dir())
+-
++                    self.remove_user_configuration()
++            else:
++                reply = question(
++                    "User configuration already exists, but it seems to be incomplete."
++                    "Do you want to keep it?", False)
++                if reply == False:
++                    self.remove_user_configuration()
++                else:
++                    report("Keeping configuration intact and aborting.")
++                    return
+         # Copy the original intact configuration files
+         # creating a conf/ subdirectory
+         shutil.copytree(paths.SPD_CONF_ORIG_PATH, test.user_conf_dir())

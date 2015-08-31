@@ -1,0 +1,19 @@
+pkgbase = python2-speechd
+	pkgdesc = Python 2.x bindings for speechd
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://www.freebsoft.org/speechd
+	arch = any
+	license = GPL2
+	license = FDL
+	makedepends = intltool
+	makedepends = espeak
+	depends = python2-xdg
+	depends = speech-dispatcher
+	source = http://www.freebsoft.org/pub/projects/speechd/speech-dispatcher-0.7.1.tar.gz
+	source = 0.8-api-changes.patch
+	md5sums = ccfc30ac006673d36b4223eb760ed696
+	md5sums = 5c1072c96ca46ff7f3dbdd354a4e8728
+
+pkgname = python2-speechd
+
