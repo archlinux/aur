@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc='Iosevka is a monospace coding typeface inspired by Pragmata Pro, M+ and PF DIN Mono. It is designed to have a narrow shape to be space efficient and compatible to CJK characters.'
 arch=('any')
