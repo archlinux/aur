@@ -27,9 +27,11 @@ pkgver() {
   python setup.py --version
 }
 
-build(){
-  cd "$srcdir/${_gitname}/doc"
+build() {
+  cd "$srcdir/${_gitname}/"
+  python setup.py build
 
+  cd "$srcdir/${_gitname}/doc"
   PYTHONPATH="$srcdir/khal" make man
 }
 
