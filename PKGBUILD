@@ -1,22 +1,25 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: TheWaffleGuy <gvxq@hotmail.com>
-# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
+# Contributor: Maxime Gauduin <alucryd at archlinux dot org>
+# Contributor: TheWaffleGuy <gvxq at hotmail dot com>
+# Contributor: Andreas Radke <andyrtr at archlinux dot org>
 
 pkgname=lib32-libgcrypt15
-pkgver=1.5.3
-pkgrel=2
-pkgdesc='General purpose cryptographic library based on the code from GnuPG'
+pkgver=1.5.4
+pkgrel=1
+pkgdesc='General purpose cryptographic library based on the code from GnuPG (32-bit)'
 arch=('x86_64')
 url='http://www.gnupg.org'
 license=('LGPL')
 depends=('lib32-libgpg-error')
 makedepends=('gcc-multilib' 'libtool-multilib')
-source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2")
-sha256sums=('bcf5334e7da352c45de6aec5d2084ce9a1d30029ff4a4a5da13f1848874759d1')
+source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"
+		"debian_security_patches.patch")
+sha512sums=('fe7e1d07eb10ee4ea8054bc955c35dc4b2109db645a08a6fa7757bf1e77a612e03c0838f9766086f04270b3621f34ccae0d6333f117cff204ccad9018c8a7908'
+            'a5fe96bc83f830580391f3be92681f92057ca173407435f1800b3f05b8bfb6f87939dd573a0bf1d27afaf78f2e1fb3625b4c45ea5e9b1fddde0286ef4f3c69a6')
 
 prepare() {
   cd libgcrypt-${pkgver}
-
+  patch -Np1 -i "${srcdir}"/debian_security_patches.patch
   sed 's:path="amd64":path="i586 i386":' -i mpi/config.links
 }
 
@@ -42,5 +45,3 @@ package() {
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include,lib32/libgcrypt.so,share}
 }
-
-# vim: ts=2 sw=2 et:
