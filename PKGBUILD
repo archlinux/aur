@@ -9,10 +9,32 @@
 
 # Note: the primary use of this package is with aws-cli
 
+# Use mcdiff to watch for changes
+_fn_foobar() {
+local _foobar="
+#requirements-docs.txt
+Sphinx>=1.1.3,<1.3
+guzzle_sphinx_theme>=0.7.10,<0.8
+
+#requirements.txt
+tox==1.4
+python-dateutil>=2.1,<3.0.0
+nose==1.3.0
+mock==1.0.1
+wheel==0.24.0
+docutils>=0.10
+
+#setup.py
+requires = ['jmespath==0.7.1',
+            'python-dateutil>=2.1,<3.0.0',
+            'docutils>=0.10']
+"
+}
+
 set -u
 _pkgname='botocore'
 pkgname="python-${_pkgname}-git"
-pkgver=1.1.11.r2112.gdc0955c
+pkgver=1.1.12.r2115.g22a3f4a
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -35,7 +57,7 @@ depends=('python' # See setup.py, README.rst, and requirements.txt for version d
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-botocore')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b4e6edc12177dd4f720259aa7027bab00fb9db2029e40e77e67c552ef9f41132')
+sha256sums=('ed125f41b831e67a4829061172b6dd5efe1cf62568ec0c3bfab90af7a72bf0f6')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
@@ -52,9 +74,7 @@ pkgver() {
 }
 else
   _srcdir="${_pkgname}-${pkgver}"
-  _verurl="${url}/releases"
-  _versed="${url#*github.com}/archive/\(.*\)\.tar\.gz" # used with ^...$
-  _veropt='l'
+  _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 fi
 
 build() {
