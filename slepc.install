@@ -13,7 +13,7 @@ cat << EOF
 
 2) Set your environment variable somewhere appropriate:
 
-export SLEPC_DIR=/opt/slepc/arch-linux2-cxx-opt
+export SLEPC_DIR=$SLEPC_DIR
 
 EOF
 }
