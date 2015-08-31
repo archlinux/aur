@@ -1,0 +1,15 @@
+pkgbase = icinga-classic-ui
+	pkgdesc = Icinga Classic UI Standalone.
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = http://www.icinga.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = icinga2
+	depends = fcgiwrap
+	source = https://github.com/Icinga/icinga-core/releases/download/v1.12.0/icinga-1.12.0.tar.gz
+	md5sums = 0d7919057455a548d43b888dfa7d0cdb
+
+pkgname = icinga-classic-ui
+
