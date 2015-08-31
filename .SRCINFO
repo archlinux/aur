@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-useragentswitcher
+	pkgdesc = Firefox extension to switch the User Agent
+	pkgver = 0.7.3
+	pkgrel = 3
+	url = http://chrispederick.com/work/user-agent-switcher/
+	arch = any
+	license = GPLv3
+	depends = firefox>=4
+	source = https://addons.cdn.mozilla.net/storage/public-staging/59/user_agent_switcher-0.7.3-fx+sm.xpi
+	md5sums = d7f1f4b3689bf61c3d583432872a4cc2
+	sha1sums = d51cb250b9be11f21d569a7fdb6b7f23c4c277ce
+
+pkgname = firefox-extension-useragentswitcher
+
