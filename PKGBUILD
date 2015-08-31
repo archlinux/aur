@@ -5,13 +5,13 @@
 pkgname=kamoso
 pkgver=2.98
 _pkgver=3.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to take pictures and videos out of your webcam for KDE"
 url="https://projects.kde.org/projects/extragear/multimedia/kamoso"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(qt5-gstreamer kdeclarative gst-plugins-bad)
-makedepends=(extra-cmake-modules kdoctools purpose)
+depends=(qt5-gstreamer kdeclarative gst-plugins-bad purpose)
+makedepends=(extra-cmake-modules kdoctools)
 source=("http://download.kde.org/unstable/kamoso/kamoso-$_pkgver.tar.xz")
 install=$pkgname.install
 md5sums=('357772498c21eca6ee3d8f9bc09ae0a0')
