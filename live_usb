@@ -1,0 +1,24 @@
+#!/bin/bash
+
+build() {
+    local filter
+    local -A blockdevs
+
+    # usb
+        if add_checked_modules -f '(_cs|sl811_hcd|isp116x_hcd)' '/usb/host'; then
+            blockdevs+=(['usb_storage?']=1 ['sd_mod?']=1 ['sr_mod?']=1)
+            add_checked_modules 'drivers/usb/storage/ums-*'
+        fi
+
+    map add_module "${!blockdevs[@]}"
+}
+
+help() {
+    cat <<HELPEOF
+This hook loads the necessary modules for usb block devices. Detection will take place at runtime. To minimize
+the modules in the image, add the autodetect hook too.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
+

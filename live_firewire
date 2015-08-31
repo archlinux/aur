@@ -1,0 +1,24 @@
+#!/bin/bash
+
+build() {
+    local filter
+    local -A blockdevs
+   blockdevs+=(['usb_storage?']=1 ['sd_mod?']=1 ['sr_mod?']=1)
+            add_checked_modules 'drivers/usb/storage/ums-*'
+        fi
+
+     firewire
+       if add_checked_modules '/drivers/firewire/'; then
+           blockdevs+=(['firewire-sbp2?']=1 ['sd_mod?']=1 ['sr_mod?']=1)
+       fi
+}
+
+help() {
+    cat <<HELPEOF
+This hook loads the necessary modules for most block devices using firewire. Detection will take place at runtime. To minimize
+the modules in the image, add the autodetect hook too.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
+

@@ -1,0 +1,20 @@
+pkgbase = mkinitcpio-liveusb-units
+	pkgdesc = mkinitcpio minimal block hooks for live usb sticks
+	pkgver = 1
+	pkgrel = 2
+	url = http://archlinux.org
+	arch = any
+	license = GPLv3
+	depends = mkinitcpio>=0.12
+	source = live_usb
+	source = live_mmc
+	source = live_firewire
+	md5sums = fe23d065b1232be3e73ae94b3e619acf
+	md5sums = b3bd45266897d51e43e4e747793e54b4
+	md5sums = 47331e58b269d9a6b955fcfbc3855f89
+	sha1sums = 1c925edb76ed9ed0b6c9949e7589757b5bab17c5
+	sha1sums = c28c3a42d34762adf799dcea69aa484f86b2781e
+	sha1sums = 3178105ed08fe5b76b6d93006d5fab7117c48df5
+
+pkgname = mkinitcpio-liveusb-units
+

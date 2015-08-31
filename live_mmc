@@ -1,0 +1,22 @@
+#!/bin/bash
+
+build() {
+    local filter
+    local -A blockdevs
+
+     mmc
+        if add_checked_modules '/mmc'; then
+            blockdevs+=(['tifm_7xx1?']=1 ['mmc_block?']=1)
+        fi
+        map add_module "${!blockdevs[@]}"
+}
+
+help() {
+    cat <<HELPEOF
+This hook loads the necessary modules for most block devices using mmc. Detection will take place at runtime. To minimize
+the modules in the image, add the autodetect hook too.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
+

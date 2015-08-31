@@ -1,0 +1,10 @@
+WHAT - These are mkinitcpio book hooks derived from the "block" hook, which is the new catch all, for all block devices. MMC, USB, and Firewire have been taken out and repacked invidually into their own hooks, meant to be used one at a time, as it was before.
+
+WHY - using "block" as opposed to only using USB increases the boot time, and added some ambiguity over which device got to be /dev/sda. The amount of boot time that was increased by the move was only 3 seconds. Considering previous boot time was around 26 seconds, its more than a %10 increase.
+
+If you need other drivers, just use block. This is specificly for booting live USB sticks faster. If your NOT using a Live USB stick SPECIFICLY(or firewire?), you don't need this package.
+
+It should also be noted that most mmc flash card readers are USB and only need USB drivers.(cell phones, and embedded devices use mmc when booting natively, your computer uses usb when connecting to the cellphone)
+
+HOW - after installing you may use the live_firewire, live_usb and live_mmc HOOKS= in mkinitcpio.conf.
+
