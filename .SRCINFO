@@ -1,0 +1,27 @@
+pkgbase = virtualbox-zen-modules
+	pkgver = 5.0.2
+	pkgrel = 1
+	url = http://virtualbox.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-zen-headers
+	makedepends = virtualbox-host-dkms>=5.0.2
+	makedepends = virtualbox-guest-dkms>=5.0.2
+	makedepends = dkms
+
+pkgname = virtualbox-zen-host-modules
+	pkgdesc = Host kernel modules for VirtualBox running under Linux-zen.
+	install = host.install
+	depends = linux-zen>=4.1
+	depends = linux-zen<4.2
+	provides = virtualbox-host-modules
+
+pkgname = virtualbox-zen-guest-modules
+	pkgdesc = Guest kernel modules for VirtualBox running under Linux-zen.
+	install = guest.install
+	license = GPL
+	depends = linux-zen>=4.1
+	depends = linux-zen<4.2
+	provides = virtualbox-guest-modules
+
