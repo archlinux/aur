@@ -1,0 +1,14 @@
+pkgbase = bed
+	pkgdesc = Collection of scripts to test for buffer overflows, format string vulnerabilities.
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://www.aldeid.com/wiki/Bed
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = http://web.archive.org/web/20101229024258/http://www.remote-exploit.org/wp-content/uploads/2010/01/bed-0.5.tar.gz
+	sha256sums = b829173e444bc896e39d0ec6b579ea15703d873c01ebba52cfb4cb20163cc7a2
+
+pkgname = bed
+
