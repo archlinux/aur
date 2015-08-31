@@ -5,13 +5,13 @@
 _pkgname=uRSSus
 pkgname=urssus
 pkgver=0.2.13
-pkgrel=12
+pkgrel=13
 pkgdesc="Multiplatform PyQt-based RSS news aggregator"
 arch=('any')
 url="http://urssus.googlecode.com/"
 license=('GPL2' 'LGPL2')
-depends=('desktop-file-utils' 'gtk-update-icon-cache' 'python2-sqlalchemy' 
-         'python2-elixir' 'python2-processing' 'python2-pyqt' 'python2-simplejson')
+depends=('desktop-file-utils' 'gtk-update-icon-cache' 'python2-elixir'
+         'python2-processing' 'python2-pyqt' 'python2-simplejson')
 makedepends=('desktop-file-utils' 'python2-setuptools')  # 'python2-paver'
 install=$pkgname.install
 source=(http://pypi.python.org/packages/source/u/$_pkgname/$_pkgname-$pkgver.tar.gz)
