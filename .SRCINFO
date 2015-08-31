@@ -1,0 +1,15 @@
+pkgbase = idutils
+	pkgdesc = A package of language independent tools that indexes program identifiers, literal numbers, or words of human-readable text.
+	pkgver = 4.6
+	pkgrel = 1
+	url = http://www.gnu.org/software/idutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	replaces = id-utils
+	source = ftp://ftp.gnu.org/gnu/idutils/idutils-4.6.tar.xz
+	md5sums = 99b572536377fcddb4d38e86a3c215fd
+
+pkgname = idutils
+
