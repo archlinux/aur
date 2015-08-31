@@ -10,6 +10,8 @@ url="https://github.com/shazow/ssh-chat"
 license=('BSD')
 makedepends=('git')
 depends=('ncurses' 'fftw')
+conflicts=('nausea')
+
 source=(
   'git+git://git.2f30.org/nausea'
 )
