@@ -1,6 +1,6 @@
 pkgbase = openoffice-uglyfix-freetype2
 	pkgdesc = Original Uglyfix, which compiles freetype2 .so files and puts them in the libreoffice directory to fix font ugliness
-	pkgver = 2.5.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = http://freetype.sourceforge.net
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = openoffice-uglyfix-freetype2
 	depends = zlib
 	depends = libreoffice
 	options = !libtool
-	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.5.5.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.6.tar.bz2
 	source = openoffice.patch
-	md5sums = 2a7a314927011d5030903179cf183be0
+	md5sums = 5682890cb0267f6671dd3de6eabd3e69
 	md5sums = 14d44b030ab8de3e865f095930018766
 
 pkgname = openoffice-uglyfix-freetype2
