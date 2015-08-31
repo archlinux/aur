@@ -30,7 +30,7 @@ pkgver() {
 build(){
   cd "$srcdir/${_gitname}/doc"
 
-  PYTHONPATH="$srcdir/khal make man"
+  PYTHONPATH="$srcdir/khal" make man
 }
 
 package() {
