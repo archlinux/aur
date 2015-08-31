@@ -3,8 +3,8 @@
 # Maintainer: Glennie Vignarajah <glennie@glennie.fr>
 
 pkgname=tinyca2
-pkgver=0.7.5-2
-pkgrel=2
+pkgver=0.7.5
+pkgrel=3
 pkgdesc="Simple graphical user interface to manage a small CA (Certification Authority)"
 arch=(i686 x86_64)
 url="http://tinyca.sm-zone.net/"

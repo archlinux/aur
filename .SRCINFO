@@ -1,7 +1,7 @@
 pkgbase = tinyca2
 	pkgdesc = Simple graphical user interface to manage a small CA (Certification Authority)
-	pkgver = 0.7.5-2
-	pkgrel = 2
+	pkgver = 0.7.5
+	pkgrel = 3
 	url = http://tinyca.sm-zone.net/
 	arch = i686
 	arch = x86_64
