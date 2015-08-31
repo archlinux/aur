@@ -1,5 +1,5 @@
 pkgname=stardict-tools
-pkgver=3.0.2
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Stardict tools'
 arch=('i686' 'x86_64')
