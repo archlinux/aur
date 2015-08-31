@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=scalapack
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers."
 url="http://www.netlib.org/scalapack/"
 license='custom'
@@ -49,7 +49,7 @@ package(){
   cd ${srcdir}/build
   make install #DESTDIR=${pkgdir}
 
-  sed -i 's#'"${pkgdir}"'##g' pkg/usr/lib/pkgconfig/scalapack.pc
+  sed -i 's#'"${pkgdir}"'##g' ${pkgdir}/usr/lib/pkgconfig/scalapack.pc
 
   # Install headers
   install -m 755 -d ${pkgdir}/usr/include
