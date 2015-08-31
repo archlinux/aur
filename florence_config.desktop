@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.5.3
+Name=Florence Config
+Type=Application
+Comment=On-Screen Keyboard
+Exec=florence --config
+Icon=/usr/share/pixmaps/florence.svg
+Categories=Accessories;GTK;Utility;Accessibility
+GenericName=Florence Config
+

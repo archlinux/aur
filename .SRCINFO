@@ -1,0 +1,30 @@
+pkgbase = florence05
+	pkgdesc = A configurable on-screen virtual keyboard(GTK2 version)
+	pkgver = 0.5.4
+	pkgrel = 2
+	url = http://sourceforge.net/projects/florence/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool>=0.23
+	makedepends = gstreamer>=0.10
+	depends = gtk2
+	depends = gconf>=2.0
+	depends = libglade>=2.0
+	depends = libxml2
+	depends = librsvg
+	depends = cairo
+	depends = gettext
+	depends = libxtst
+	optdepends = gnome-doc-utils
+	optdepends = libnotify
+	optdepends = libpanelapplet
+	provides = florence
+	conflicts = florence
+	source = http://nchc.dl.sourceforge.net/project/florence/florence/0.5.4-gtk2/florence-0.5.4.tar.bz2
+	source = florence_config.desktop
+	sha256sums = 26d33aa20d5fbf34ceeded4c41cb922d2988b6082e33d9acc46dd7bfe56d31a1
+	sha256sums = 501ae59aa37c0a3bf6f724d34b04a821984afc825e49760eac713e9cc5fd9bc9
+
+pkgname = florence05
+
