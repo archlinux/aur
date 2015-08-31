@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-trackmenot
+	pkgdesc = Firefox extension to protect web habits from tracking and profiling
+	pkgver = 0.8.17
+	pkgrel = 1
+	url = http://cs.nyu.edu/trackmenot/
+	arch = any
+	license = cc-by-nc-sa
+	depends = firefox
+	source = http://cs.nyu.edu/trackmenot/xpi/trackmenot-0.8.17.xpi
+	sha256sums = c31d4279db2fdb83836540fcea8fa9913a69481be02133efcfe72e478e955b3a
+
+pkgname = firefox-extension-trackmenot
+
