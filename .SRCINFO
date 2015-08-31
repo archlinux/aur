@@ -1,0 +1,18 @@
+pkgbase = fancontrol-kcm-git
+	pkgdesc = KCM for the fancontrol script and systemd service
+	pkgver = 0.1.r129.gb0606ae
+	pkgrel = 1
+	url = https://github.com/Maldela/Fancontrol-GUI
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = extra-cmake-modules
+	depends = fancontrol-gui-git
+	provides = fancontrol-kcm
+	conflicts = fancontrol-kcm
+	source = git://github.com/Maldela/fancontrol-gui.git
+	md5sums = SKIP
+
+pkgname = fancontrol-kcm-git
+
