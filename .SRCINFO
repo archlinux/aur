@@ -1,0 +1,30 @@
+pkgbase = john-opencl
+	pkgdesc = John The Ripper - A fast password cracker (jumbo-7 and OpenCL support included)
+	pkgver = 1.7.9
+	pkgrel = 2
+	url = http://www.openwall.com/john/
+	install = john.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom
+	makedepends = opencl-headers
+	depends = openssl
+	depends = libcl
+	optdepends = perl: for executing some of the scripts at /usr/share/john
+	optdepends = ruby: for executing some of the scripts at /usr/share/john
+	optdepends = python: for executing some of the scripts at /usr/share/john
+	provides = john
+	conflicts = john
+	backup = etc/john/john.conf
+	source = http://www.openwall.com/john/g/john-1.7.9.tar.bz2
+	source = http://www.openwall.com/john/g/john-1.7.9-jumbo-7.diff.gz
+	source = ftp://ftp.kfki.hu/pub/packages/security/ssh/ossh/libdes-4.04b.tar.gz
+	source = params.h.patch
+	sha256sums = 1d40083e37a7bc1ba1177651cbb27898dcf2a812b8ccf1430db0c372ac6dc199
+	sha256sums = 9e87e5660965e6e55214176299f67dd1b8a40820805441c62a57af6a6a4a19f5
+	sha256sums = d6b69409fdfc6c8ff092d3d3b65254bc29dd8cd73f8e97320710095909a6e2e9
+	sha256sums = 10c051d7b1948a406c34e8baf07a5c5b9f141b5161a0c2168ca46ca8db336d52
+
+pkgname = john-opencl
+
