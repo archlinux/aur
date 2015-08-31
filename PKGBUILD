@@ -5,7 +5,7 @@
 pkgname=moonplayer
 pkgver=0.42.b9dec4e
 pkgrel=1
-pkgdesc="A qt font-end for mplayer with the abilities of watching and downloading videos from network"
+pkgdesc="A qt font-end for mplayer with the abilities of watching and downloading videos from chinese network"
 arch=('i686' 'x86_64')
 url="https://github.com/coslyk/moonplayer"
 license=('GPL')
