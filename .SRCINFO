@@ -1,0 +1,20 @@
+pkgbase = vim-latex-box-git
+	pkgdesc = Lightweight Toolbox for LaTeX
+	pkgver = 339.617027b
+	pkgrel = 2
+	url = https://github.com/LaTeX-Box-Team/LaTeX-Box
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL3
+	makedepends = git
+	depends = vim
+	optdepends = texlive-core: background compilation support using latexmk
+	provides = vim-latex-box
+	conflicts = vim-latex-box
+	conflicts = vim-latexsuite
+	source = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
+	sha256sums = SKIP
+
+pkgname = vim-latex-box-git
+
