@@ -1,0 +1,18 @@
+pkgbase = crark-opencl
+	pkgdesc = A command-line utility for RAR 2.x-3.x password cracking, uses Password Cracking Library 2.0 that supports special password recovery language. Highly optimized for all modern processors. with OpenCL support
+	pkgver = 3.43
+	pkgrel = 1
+	url = http://www.crark.net/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = unrar
+	depends = libcl
+	provides = crark-opencl
+	noextract = crark34-linux-opencl.rar
+	options = !strip
+	source = http://www.crark.net/download/crark34-linux-opencl.rar
+	md5sums = d96a4d93bf8060879f11ea0f6d318631
+
+pkgname = crark-opencl
+
