@@ -1,0 +1,3 @@
+post_install() {
+    echo 'If you want to use PNGwriter with CMake, you can find the appropriate CMake module at https://raw.githubusercontent.com/ComputationalRadiationPhysics/cmake-modules/dev/FindPNGwriter.cmake'
+}
