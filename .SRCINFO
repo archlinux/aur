@@ -1,7 +1,7 @@
 pkgbase = python2-gmusicapi-git
 	pkgdesc = Allows control of Google Music with Python
-	pkgver = 6.0.0.r36.fea7cb3-1
-	pkgrel = 6
+	pkgver = 6.0.0.r36.fea7cb3
+	pkgrel = 7
 	url = https://github.com/simon-weber/gmusicapi
 	arch = any
 	license = BSD
@@ -22,6 +22,7 @@ pkgbase = python2-gmusicapi-git
 	depends = python2-httplib2>=0.8
 	depends = python2-gflags
 	depends = python2-gpsoauth
+	depends = python-mechanicalsoup
 	provides = python2-gmusicapi
 	conflicts = python2-gmusicapi
 	options = !emptydirs
