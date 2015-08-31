@@ -3,7 +3,7 @@ pkgbase=python-pygal
 pkgname=('python-pygal' 'python2-pygal')
 _pyname=pygal
 epoch=1
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='A Python SVG graph plotting library'
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL3')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('00971223bd234a5cf9686f67c72aed0e')
+md5sums=('719d250b3dea2a9701f111817f6c720f')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
