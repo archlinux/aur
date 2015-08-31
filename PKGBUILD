@@ -14,15 +14,6 @@ depends=('python-urwid' 'python-xdg' 'vdirsyncer' 'python-dateutil'
 makedepends=('python-setuptools' 'python-setuptools_scm'
              'git' 'python-sphinxcontrib-newsfeed')
 optdepends=('python-setproctitle: Display a clearer name in your process list')
-# I keep here python depencies...
-# python2-click, python2-icalendar come with the python2-vdirsyncer dependancy
-# python2-pytz comes with the python2-icalendar dependancy
-#depends=('python2-urwid' 'python2-xdg' 'python2-vdirsyncer'
-#         'python2-dateutil' 'python2-configobj' 'python2-tzlocal'
-#         'python2-icalendar' 'sqlite')
-# Doesn't seems to be useful anymore...
-# python2-requests' 'python2-certifi')
-#makedepends=('python2-setuptools' 'git' 'python2-sphinxcontrib-newsfeed')
 source=("${_gitname}::git+https://github.com/geier/khal.git")
 md5sums=('SKIP')
 install='khal.install'
@@ -38,10 +29,6 @@ pkgver() {
 
 build(){
   cd "$srcdir/${_gitname}/doc"
-  # Fix to use python2
-  #sed -i  's/sphinx-build/sphinx-build2/g' Makefile
-  #sed -i  's/python/python2/' source/generate_config.py
-  #sed -i  's/python/python2/' source/Makefile
 
   make man
 }
