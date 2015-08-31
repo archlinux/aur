@@ -1,0 +1,13 @@
+pkgbase = check_pidfile
+	pkgdesc = check pidfile
+	pkgver = 1
+	pkgrel = 0
+	url = https://github.com/hollow/check_pidfile.git
+	arch = i686
+	arch = x86_64
+	depends = monitoring-plugins
+	source = git+https://github.com/hollow/check_pidfile.git
+	md5sums = SKIP
+
+pkgname = check_pidfile
+
