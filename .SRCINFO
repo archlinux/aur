@@ -16,9 +16,9 @@ pkgbase = python2-vdirsyncer
 	depends = python2-lxml
 	depends = python2-requests-toolbelt
 	depends = python2-atomicwrites
-	source = https://github.com/untitaker/vdirsyncer/archive/0.5.2.zip
+	source = https://pypi.python.org/packages/source/v/vdirsyncer/vdirsyncer-0.5.2.tar.gz
 	source = build.patch
-	md5sums = 69e4cbddf631f57727e8f493122efa89
+	md5sums = c42f52b404ea30ac3f7bd95e639ca6b5
 	md5sums = b0b1e52f38d13d2e856a9699ca84410d
 
 pkgname = python2-vdirsyncer

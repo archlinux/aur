@@ -13,9 +13,9 @@ depends=('python2-click' 'python2-setuptools' 'python2-lxml'
 checkdepends=('python2-pytest' 'python2-wsgi-intercept>=0.6.1'
               'python2-radicale' 'python2-werkzeug-git'
               'python2-pytest-xprocess' 'python2-pytest-localserver')
-source=("https://github.com/untitaker/${_pkgname}/archive/${pkgver}.zip"
+source=("https://pypi.python.org/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "build.patch")
-md5sums=('69e4cbddf631f57727e8f493122efa89'
+md5sums=('c42f52b404ea30ac3f7bd95e639ca6b5'
          'b0b1e52f38d13d2e856a9699ca84410d')
 
 # check() {
