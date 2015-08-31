@@ -2,7 +2,7 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=1.0-652-g40246c8
+pkgver=1.0-819-g925beee
 pkgrel=1
 pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
 url="http://weboob.org"
@@ -27,7 +27,7 @@ depends=(
     python2-yaml
     which
 )
-makedepends=(git python2-distribute setuptools)
+makedepends=(git python2-distribute setuptools make)
 optdepends=('gnupg: check for repository authenticity'
             'python2-routes: contrib backends'
             'python2-webob: contrib backends'
