@@ -1,8 +1,8 @@
-# Maintainer:  Chris Top <mlw att pi dott xelpara dott de>
+# Maintainer:  MindLikeWater <mlw att pi dott xelpara dott de>
 
 pkgname=ttf-geosans-light
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Asian style font, clean and beautiful"
 url=('http://www.dafont.com/geo-sans-light.font')
 arch=('any')
