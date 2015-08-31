@@ -1,0 +1,15 @@
+pkgbase = paq8o
+	pkgdesc = PAQ8 series of archivers, resurrected by new maintainers
+	pkgver = 9
+	pkgrel = 1
+	url = http://cs.fit.edu/~mmahoney/compression
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = yasm
+	source = http://cs.fit.edu/~mmahoney/compression/paq8o9.zip
+	sha256sums = 53eafa4797d72b6d5630cfa9b43e69b3de58f01119bdf8f23b6d3d940a9d2336
+	sha512sums = e63e5ce34094dfd9dac62e3754d79be6a605165526bee953f39270932884dd20eaf5cd3d1e7c6c3b9984ab6f32b92b72ccf066abfbd90e8e747903276f186851
+
+pkgname = paq8o
+
