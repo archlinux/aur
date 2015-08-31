@@ -1,0 +1,5 @@
+*.un~
+pkg/*
+src/*
+sayonara-player-svn/*
+*.pkg*
