@@ -25,7 +25,7 @@ depends=('desktop-file-utils'
          'monodevelop')
 makedepends=('elinks'
              'sed'
-             'xmlint')
+             'libxml2')
 optdepends=('ffmpeg: for WebGL exporting'
             'nodejs: for WebGL exporting'
             'java-runtime: for WebGL exporting'
