@@ -3,7 +3,7 @@
 
 pkgname=khal-git
 _gitname=khal
-pkgver=0.6.1.dev61+ng151a839
+pkgver=0.6.1.dev82+ng8480d23
 pkgrel=1
 pkgdesc="Command line CalDav client"
 license=("MIT")
@@ -33,7 +33,7 @@ options=(!emptydirs)
 
 pkgver() {
   cd "$srcdir/${_gitname}/"
-  python -c 'import setuptools_scm; print(setuptools_scm.get_version())'
+  python setup.py --version
 }
 
 build(){
