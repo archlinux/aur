@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-kobuki-gazebo
+	pkgdesc = ROS - Kobuki simulation for Gazebo.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://ros.org/wiki/kobuki_gazebo
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-yocs-cmd-vel-mux
+	depends = ros-indigo-kobuki-random-walker
+	depends = ros-indigo-kobuki-description
+	depends = ros-indigo-gazebo-ros
+	depends = ros-indigo-robot-state-publisher
+	depends = ros-indigo-gazebo-plugins
+	depends = ros-indigo-kobuki-safety-controller
+	depends = ros-indigo-kobuki-gazebo-plugins
+	source = kobuki_gazebo::git+https://github.com/yujinrobot-release/kobuki_desktop-release.git#tag=release/indigo/kobuki_gazebo/0.4.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kobuki-gazebo
+
