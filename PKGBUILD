@@ -2,7 +2,7 @@
 
 pkgname=cudahashcat
 _pkgname=cudaHashcat
-pkgver=1.36
+pkgver=1.37
 pkgrel=1
 pkgdesc="Worlds fastest password cracker with dictionary mutation engine"
 url=('http://hashcat.net/oclhashcat/')
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 depends=('nvidia-utils>=346')
 source=("http://hashcat.net/files/${_pkgname}-${pkgver}.7z")
-sha512sums=('28ed89d22698978ce3f84120019699cca4afe6a7e5264de06a3d3b12f451e41539a0a93f58ce3279cffcd5c67e6029c27a70b3db9eb80dbc0aed25c4f8372f59')
+sha512sums=('c64eb17104e4f3d476aa4cdd3f4ee25e085e1c5ee0bd88c37dee3ad907f5a6f42cfdd7e4707f75c84e9f81c783ba2614a62deb23843a844cae4d31eb560204f1')
 options=('!strip')
 replaces=('oclhashcat-nvidia')
 conflicts=('oclhashcat-nvidia')
