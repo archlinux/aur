@@ -1,0 +1,15 @@
+pkgbase = libgsecuredelete
+	pkgdesc = GObject wrapper library for nautilus-wipe
+	pkgver = 0.2.1
+	pkgrel = 3
+	url = http://wipetools.tuxfamily.org/libgsecuredelete.html
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = polkit
+	depends = secure-delete
+	source = http://download.tuxfamily.org/wipetools/releases/libgsecuredelete/libgsecuredelete-0.2.1.tar.gz
+	sha256sums = d1d7b2c122668ebc3c76d7f0faf8e2858e8e69a76165782b556f31d6d5a11a7d
+
+pkgname = libgsecuredelete
+
