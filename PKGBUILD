@@ -46,7 +46,6 @@ package_vdev-git() {
 		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
 		ETCDIR='/etc' \
-		ETCDIR_VDEV='/etc/vdev' \
 		BINDIR='/usr/bin' \
 		SBINDIR='/usr/bin' \
 	install
@@ -56,7 +55,6 @@ package_vdev-git() {
 		DESTDIR="$pkgdir" \
 		PREFIX='/usr' \
 		ETCDIR='/etc' \
-		ETCDIR_VDEV='/etc/vdev' \
 	install
 
 	# hwdb
