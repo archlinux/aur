@@ -5,12 +5,12 @@
 
 pkgname=blackvoxel
 pkgver=1.39
-pkgrel=2
+pkgrel=3
 pkgdesc="Game of automation and programming in a voxel world"
 arch=('x86_64')
 url='http://www.blackvoxel.com/'
 license=('GPL3')
-depends=('glew' 'gcc-libs-multilib' 'sdl' 'hicolor-icon-theme')
+depends=('glew' 'hicolor-icon-theme' 'mesa' 'sdl')
 install="${pkgname}.install"
 source=("${pkgname}_source_1_39.tar.bz2::${url}/dm_download.php?file=74")
 sha256sums=('0bf8e6b9729fee481d8f4e5bcc791f005b3a5ff8152cdc602fe2a6197bf17bca')
