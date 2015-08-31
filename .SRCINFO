@@ -1,6 +1,6 @@
 pkgbase = gnuplot-cvs
 	pkgdesc = Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version
-	pkgver = 5.1r20150830
+	pkgver = 5.1r20150831
 	pkgrel = 1
 	url = http://www.gnuplot.info
 	install = gnuplot.install
@@ -14,7 +14,6 @@ pkgbase = gnuplot-cvs
 	makedepends = qtchooser
 	makedepends = qt5-tools
 	depends = gd
-	depends = wxgtk
 	depends = lua
 	depends = qt5-svg
 	provides = gnuplot=5.1

@@ -3,13 +3,13 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-cvs
-pkgver=5.1r20150830
+pkgver=5.1r20150831
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
 url="http://www.gnuplot.info"
 license=('custom')
-depends=('gd' 'wxgtk' 'lua' 'qt5-svg') 
+depends=('gd' 'lua' 'qt5-svg') 
 makedepends=('cvs' 'emacs' 'texlive-core' 'texlive-latexextra' 'qtchooser' 'qt5-tools')
 options=('!makeflags')
 install=gnuplot.install
@@ -60,9 +60,9 @@ build() {
 	 --libexecdir=/usr/bin \
 	 --with-gihdir=/usr/share/gnuplot \
 	 --with-readline=gnu \
-	 --enable-wxwidgets --with-qt=qt5 
+	 --disable-wxwidgets --with-qt=qt5 
 
-  make pkglibexecdir=/usr/bin
+  LANG=C make pkglibexecdir=/usr/bin
   cd docs
   make info
 }
