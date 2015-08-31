@@ -1,7 +1,7 @@
 pkgbase = zoom
-	pkgdesc = Start or join Zoom meetings
+	pkgdesc = Video Conferencing and Web Conferencing Service
 	pkgver = 1.0.22331.0731
-	pkgrel = 3
+	pkgrel = 4
 	url = https://zoom.us/
 	install = zoom.install
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = zoom
 	depends = lib32-libxcomposite
 	depends = lib32-libxi
 	depends = lib32-libgl
+	depends = lib32-openssl
 	options = !strip
 	source = https://zoom.us/client/latest/ZoomInstaller_i386.deb
 	md5sums = 519689cc7b2b399adf12ffbe41adef46
