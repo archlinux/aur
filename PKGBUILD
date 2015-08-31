@@ -1,11 +1,11 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=petsc
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
-_config=arch-linux2-cxx-opt
+_config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
-#"arch-linux2-cxx-debug" for some things, so the _config should be changed too
-#_config=arch-linux2-cxx-debug
+#"linux-c-debug" for some things, so the _config should be changed too
+#_config=linux-c-debug
 pkgdesc="Portable, extensible toolkit for scientific computation"
 arch=('i686' 'x86_64')
 url="http://www.mcs.anl.gov/petsc/petsc-as"
@@ -13,62 +13,85 @@ license=('MIT compatible')
 options=(staticlibs)
 depends=('python2' 'openmpi' 'boost' 'lapack')
 makedepends=('gcc' 'gcc-fortran' 'cmake')
+optdepends=('trilinos: support for trilinos'
+    'ptscotch: support for ptscotch parallel graph partitioning library'
+    'parmetis: support for parmetis parallel graph partitioning library'
+    'metis: support for metis graph partitioning library'
+    'pastix: support for the pastix solver'
+    'superlu: support for the superlu sparse solver'
+    'hdf5: support for the parallel version of hdf5'
+    'mumps: support for the mumps sparse solver'
+    )
 install=petsc.install
-source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz)
-md5sums=('f0dcbf25a8dd7f3069c1f094338c5263')
+source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz test_optdepends.sh)
+md5sums=('28f842697159e16e2978732480571147'
+    '4a82df77c43713f4bc698532db7ae02a')
 
 _install_dir=/opt/petsc/${_config}
+petsc_arch="arch-${_config}"
 
 # to avoid: "make[2]: *** No rule to make target `libptesmumps.a', needed by `main_esmumps'.  Stop."
 export MAKEFLAGS="-j1"
+
+prepare() {
+	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
+
+	# force using python2
+	find ${srcdir} -name "*" -type f -exec \
+	sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
+
+	# install external libraries in _build_dir instead of the prefix
+	sed -i 's/self.publicInstall    = 1/self.publicInstall    = 0/' ${_build_dir}/config/BuildSystem/config/package.py
+}
 
 build() {
 	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
 
 	cd ${_build_dir}
-	#patch -Np1 -i ${startdir}/patch_debug.diff
 
 	unset PETSC_ARCH
 	export PETSC_DIR=${_build_dir}
 
-	find ${srcdir} -name "*" -type f -exec \
-	sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
+	CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3"
 
-	CONFOPTS="--with-shared-libraries=1 --with-clanguage=C++ --COPTFLAGS=-O2 --CXXOPTFLAGS=-O2"
-
-	# External downloads
-	for external_pkg in ptscotch scalapack metis parmetis superlu mumps pastix hypre suitesparse; do
-		CONFOPTS="${CONFOPTS} --download-${external_pkg}=yes"
-	done
-
-	if [ "${TRILINOS_DIR}" ]; then
-		CONFOPTS="${CONFOPTS} --with-ml=1 --with-ml-lib=${TRILINOS_DIR}/lib/libml.so --with-ml-include=${TRILINOS_DIR}/include"
-	fi
-
-	# Arch specific
-	CONFOPTS="${CONFOPTS} --with-boost=1 --with-boost-dir=/usr"
+    # test for the optional dependencies for petsc
+    CONFOPTS="${CONFOPTS} $(sh ${srcdir}/test_optdepends.sh)"
 
 	# to enable use of type()
-	CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
+	#CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
 
-	python2 ./configure --prefix=${_install_dir} ${CONFOPTS}
+    echo ${CONFOPTS}
+	python2 ./configure \
+		--prefix=${_install_dir} \
+		--PETSC_ARCH=${petsc_arch} \
+		${CONFOPTS}
 
-	make
+	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${petsc_arch} all
+}
+
+check() {
+	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
+	cd ${_build_dir}
+
+    make test
 }
 
 package() {
 	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
-	cd ${_build_dir}
-	export PETSC_DIR=${_build_dir}
-	make install DESTDIR=${pkgdir}${_install_dir} # > /dev/null
+	_dest_dir="${pkgdir}${_install_dir}"
 
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/variables"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/petscvariables"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/rules"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/include/petscconf.h"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/include/petscconfiginfo.h"
-	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/petscrules"
+	cd ${_build_dir}
+	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} DESTDIR=${_dest_dir} install"
+	export PETSC_DIR=${_build_dir}
+	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} DESTDIR=${_dest_dir} install   # > /dev/null
+
+	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/pkgconfig/PETSc.pc"
+	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/variables"
+	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/petscvariables"
+	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/rules"
+	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/include/petscconf.h"
+	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/include/petscconfiginfo.h"
+	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/petscrules"
 
 	export PETSC_DIR=${_install_dir}
 	

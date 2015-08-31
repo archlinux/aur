@@ -1,6 +1,6 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = http://www.mcs.anl.gov/petsc/petsc-as
 	install = petsc.install
@@ -14,9 +14,19 @@ pkgbase = petsc
 	depends = openmpi
 	depends = boost
 	depends = lapack
+	optdepends = trilinos: support for trilinos
+	optdepends = ptscotch: support for ptscotch parallel graph partitioning library
+	optdepends = parmetis: support for parmetis parallel graph partitioning library
+	optdepends = metis: support for metis graph partitioning library
+	optdepends = pastix: support for the pastix solver
+	optdepends = superlu: support for the superlu sparse solver
+	optdepends = hdf5: support for the parallel version of hdf5
+	optdepends = mumps: support for the mumps sparse solver
 	options = staticlibs
-	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.6.0.tar.gz
-	md5sums = f0dcbf25a8dd7f3069c1f094338c5263
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.6.1.tar.gz
+	source = test_optdepends.sh
+	md5sums = 28f842697159e16e2978732480571147
+	md5sums = 4a82df77c43713f4bc698532db7ae02a
 
 pkgname = petsc
 
