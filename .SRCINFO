@@ -1,7 +1,7 @@
 pkgbase = emerald0.9
 	pkgdesc = Emerald window decorator (0.9 version)
 	pkgver = 0.9.5
-	pkgrel = 16
+	pkgrel = 17
 	url = http://www.compiz.org/
 	install = emerald.install
 	arch = i686
@@ -19,7 +19,11 @@ pkgbase = emerald0.9
 	replaces = emerald-git
 	options = !libtool
 	source = https://launchpad.net/~nilarimogard/+archive/ubuntu/webupd8/+files/emerald_0.9.5.orig.tar.gz
+	source = fix-desktop-file.patch
+	source = theme-manager-manpage.patch
 	sha256sums = 07088bbe8045b5085df571d9e00cb8956dcf29428e9d61391f0afcadd306ac60
+	sha256sums = 4b856962a3e32cb22fc074d850b39f55d2f8c420c8c1f023863dd41aaaac4fcf
+	sha256sums = ddedc2123676bde67464d795a5dd657d5d1f28949ffd8b374bdfbcfc4c4a0ce1
 
 pkgname = emerald0.9
 

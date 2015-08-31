@@ -1,0 +1,15 @@
+--- original/misc/emerald-theme-manager.desktop	2011-10-16 05:09:08.000000000 +0100
++++ modified/misc/emerald-theme-manager.desktop	2015-08-31 11:11:24.285112011 +0100
+@@ -4,10 +4,10 @@
+ Name[fr]=Gestionnaire de thèmes Emerald
+ Comment=Configure Emerald themes
+ Comment[fr]=Configurerer les options des thèmes Emerald
+-Icon=/usr/share/pixmaps/emerald-theme-manager-icon.png
++Icon=emerald-theme-manager-icon
+ Terminal=false
+ Type=Application
+ Categories=Settings;DesktopSettings;
+-Exec=emerald-theme-manager -i %f
++Exec=emerald-theme-manager %f
+ MimeType=application/x-emerald-theme;
+ 
