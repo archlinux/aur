@@ -2,16 +2,16 @@
 
 pkgname=mandelbulber-opencl
 pkgver=1.21
-pkgrel=2
+pkgrel=1
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems."
 arch=('any')
 url="http://mandelbulber.com/"
 license=('GPL3')
-depends=('libjpeg-turbo' 'ocl-icd' 'gtk2' 'oclp')
+depends=('libjpeg-turbo' 'ocl-icd' 'gtk2')
 provides=('mandelbulber')
 conflicts=('mandlebulber')
 source=("${pkgname}::http://iweb.dl.sourceforge.net/project/mandelbulber/${pkgname}-${pkgver}-${pkgrel}.orig.tar.gz")
-md5sums=('d4dcb855aab3a5afe139dfcafb14ad72')
+md5sums=('5215d76f72a74436f57fe944be538654')
 
 build()
 {
@@ -38,6 +38,6 @@ package()
 	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/examples" "${pkgdir}/usr/share/examples"
 	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/icons" "${pkgdir}/usr/share/icons"
 	cp -ra "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/usr/share/textures" "${pkgdir}/usr/share/textures"
-	install -m755 "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/mandelbulber-opencl" "${pkgdir}/usr/bin/"
+	install -m755 "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.orig/makefiles/mandelbulber-opencl" "${pkgdir}/usr/bin/"
 }
 
