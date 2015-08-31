@@ -1,0 +1,18 @@
+pkgbase = overpass-ttf
+	pkgdesc = An open source font family inpired by Highway Gothic esp. suited for signs, lettering and web sites (true type format).
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://overpassfont.org/
+	install = overpass-ttf.install
+	arch = any
+	license = custom:SIL Open Font License 1.1
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://github.com/andyfitz/overpass/archive/2.0.tar.gz
+	source = LICENSE.md
+	sha256sums = 8b6093e88c179760431a57eae862cc8bfe13b767fe0c8060ec7fd96729274383
+	sha256sums = 3efc4faefa080b65eb3365a4910b67a1697d8e560e1e6f1c30797a6aed4f719b
+
+pkgname = overpass-ttf
+
