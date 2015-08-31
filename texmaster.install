@@ -7,6 +7,22 @@ post_install() {
     chmod g+s $LAUNCHER
 }
 
-post_remove() {
-    rm -Rf "/usr/local/games/Texmaster2009-3"
+pre_remove() {
+    GAMEDIR=/usr/local/games/Texmaster2009-3
+    LAUNCHER=$GAMEDIR/texmaster-launcher
+
+    rm -f $GAMEDIR/Texmaster2009.ubuntu10.04.nv
+    rm -f $GAMEDIR/Texmaster2009.ubuntu10.04.sav
+
+    chmod g-s $LAUNCHER
+    chmod g-w $GAMEDIR
+    chgrp root $GAMEDIR $LAUNCHER
+}
+
+pre_upgrade() {
+    pre_remove
+}
+
+post_upgrade() {
+    post_install
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 char *dir = "/usr/local/games/Texmaster2009-3";
@@ -10,6 +11,8 @@ char *nvfile = "Texmaster2009.ubuntu10.04.nv";
 char *savfile = "Texmaster2009.ubuntu10.04.sav";
 
 char *texexe = "./Texmaster2009.ubuntu10.04.ARCHSUFFIX";
+
+char *launcherexe = "texmaster-launcher";
 
 mode_t mode =
   S_IRUSR | S_IWUSR |
@@ -23,13 +26,28 @@ int fixfile (char *path) {
   return 0;
 }
 
+int getmygid (gid_t *gid) {
+  struct stat buf;
+  if (stat (launcherexe, &buf) != 0) {
+    return -1;
+  }
+  *gid = buf.st_gid;
+  return 0;
+}
+
 int main (void) {
+  gid_t gid;
   if (chdir (dir) != 0) {
     fprintf (stderr, "failed to chdir to Texmaster dir\r\n");
     return 1;
   }
-  if (setgid (50) != 0) {
-    fprintf (stderr, "failed to setgid games\r\n");
+  if (getmygid (&gid) != 0) {
+    fprintf (stderr, "failed to get group owner\r\n");
+    return 1;
+  }
+  fprintf (stderr, "gid is %d\r\n", gid);
+  if (setgid (gid) != 0) {
+    fprintf (stderr, "failed to setgid to group owner\r\n");
     return 1;
   }
   if (fixfile (nvfile) != 0) {
