@@ -1,0 +1,25 @@
+pkgbase = muse
+	pkgdesc = A MIDI/Audio sequencer with recording and editing capabilities
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://muse-sequencer.org/
+	install = muse.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ladspa
+	makedepends = dssi
+	depends = qt4
+	depends = fluidsynth
+	depends = lash
+	depends = liblo
+	optdepends = dssi: DSSI plugins
+	optdepends = ladspa: LADSPA plugins
+	source = https://github.com/muse-sequencer/muse/archive/muse_2_2_1.tar.gz
+	sha256sums = eab3b1051bc46ebc150af913e47ffaf6ce447889236819f44e74336aa5f71d32
+
+pkgname = muse
+
