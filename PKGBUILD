@@ -3,7 +3,7 @@
 # Contributor: TimothÃ©e Ravier <tim@siosm.fr>
 
 pkgname='qxmpp'
-pkgver='0.9.0'
+pkgver='0.9.1'
 pkgrel='1'
 pkgdesc='Cross-platform C++ XMPP client and server library'
 arch=('i686' 'x86_64')
@@ -17,13 +17,13 @@ optdepends=('doxygen: required to build the HTML documentation'
 	    'libtheora: required to enable theora video codec') 
 conflicts=('qxmpp-qt5')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('8b73021378523c6d5134febc4db25985d11b0e68')
+sha1sums=('f3e4cdb4a5e8dfdf35485957d5030be1750cd829')
  
 build() {
 	cd "$srcdir/$pkgname-$pkgver/"
 	[ -d build ] || mkdir build && cd build
 	
-	#In order to build the HTML documentation,
+	# In order to build the HTML documentation,
 	# add QXMPP_USE_DOXYGEN=1 to qmake arguments
 
 	# In order to enable opus & speex audio codecs, and vpx & theora video codecs,
