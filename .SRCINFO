@@ -26,6 +26,7 @@ pkgbase = cairo-infinality
 	depends = lzo
 	provides = cairo-xcb=1.14.2
 	provides = cairo=1.14.2
+	conflicts = cairo
 	replaces = cairo-xcb
 	source = http://cairographics.org/releases/cairo-1.14.2.tar.xz
 	source = cairo-respect-fontconfig_pb.patch

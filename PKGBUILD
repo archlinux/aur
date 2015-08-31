@@ -18,6 +18,7 @@ makedepends=('libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'val
 provides=(
 	"cairo-xcb=$pkgver"
 	"cairo=$pkgver")
+conflicts=("cairo")
 replaces=('cairo-xcb')
 source=(
 	"http://cairographics.org/releases/cairo-$pkgver.tar.xz"
@@ -30,7 +31,7 @@ sha1sums=('c8da68aa66ca0855b5d0ff552766d3e8679e1d24'
           '5bff494f52a16114f4cf6d04bfb0b9d7c4e9da23')
 
 build() {
-	cd $pkgname-$pkgver
+	cd "$srcdir/cairo-$pkgver"
 
 	patch -Np1 -i ../cairo-respect-fontconfig_pb.patch
 	patch -Np1 -i ../cairo-server-side-gradients.patch
@@ -57,11 +58,11 @@ build() {
 }
 
 check() {
-	cd $pkgname-$pkgver
+	cd "$srcdir/cairo-$pkgver"
 	#make -j1 -k test || /bin/true
 }
 
 package() {
-	cd $pkgname-$pkgver
+	cd "$srcdir/cairo-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
