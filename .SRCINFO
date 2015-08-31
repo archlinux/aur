@@ -1,6 +1,6 @@
 pkgbase = nvidia-pae
 	pkgdesc = NVIDIA drivers for linux-pae
-	pkgver = 352.30
+	pkgver = 352.41
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia.install
@@ -11,14 +11,14 @@ pkgbase = nvidia-pae
 	depends = linux-pae>=4.1
 	depends = linux-pae<4.2
 	depends = nvidia-libgl
-	depends = nvidia-utils=352.30
+	depends = nvidia-utils=352.41
 	conflicts = nvidia-96xx
 	conflicts = nvidia-173xx
 	options = !strip
 	source = nv-drm.patch
+	source = ftp://download.nvidia.com/XFree86/Linux-x86/352.41/NVIDIA-Linux-x86-352.41.run
 	md5sums = 2365f1405f0c7bbb8f8cd7ebd5e4e301
-	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/352.30/NVIDIA-Linux-x86-352.30.run
-	md5sums_i686 = 7e59d84eafe2482b2f02df692b9168d5
+	md5sums = 3f9c9fed035fa845e3f6a1ea5f5732f7
 
 pkgname = nvidia-pae
 

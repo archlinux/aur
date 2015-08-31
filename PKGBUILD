@@ -1,8 +1,9 @@
-# Maintainer: Robert Knauer <robert@privatdemail.net>
+# Contributor: Robert Knauer <robert@privatdemail.net>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=nvidia-pae
-pkgver=352.30
+pkgver=352.41
 _extramodules=extramodules-4.1-pae
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-pae"
@@ -15,13 +16,10 @@ license=('custom')
 install=nvidia.install
 options=(!strip)
 
-source=("nv-drm.patch")
-source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301')
-md5sums_i686=('7e59d84eafe2482b2f02df692b9168d5')
-[[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
-[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+source=("nv-drm.patch" "ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
+md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301'
+         '3f9c9fed035fa845e3f6a1ea5f5732f7')
+_pkg="NVIDIA-Linux-x86-${pkgver}"
 
 prepare() {
   sh "${_pkg}.run" --extract-only
