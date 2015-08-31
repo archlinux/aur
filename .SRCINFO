@@ -1,6 +1,6 @@
 pkgbase = openttd-jgrpp-git
 	pkgdesc = OpenTTD with JGR's patch pack
-	pkgver = 1.5.2rc1+r27389+p0.2.1+r15.60ba68c
+	pkgver = 1.5.2rc1+r27389+p0.3.0
 	pkgrel = 1
 	url = http://www.tt-forums.net/viewtopic.php?f=33&t=73469
 	install = openttd-jgrpp.install
