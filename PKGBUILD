@@ -19,10 +19,10 @@ backup=()
 options=()
 if [ "$CARCH" == 'x86_64' ]
 then
-  source=($pkgname-$pkgver.zip::https://www.activecollab.com/downloads/category/9/package/315/release/4janj8etktpspq2tprxhzloyl/download)
+  source=($pkgname-$pkgver.zip::http://a51dev.com/timer/ac-timer-linux-64bit_3.1.2.zip)
   md5sums=(7a426bc8afb62f168893c619ea12aefa)
 else
-  source=($pkgname-$pkgver.zip::https://www.activecollab.com/downloads/category/9/package/314/release/5qyoyqigiw3tmmp0xmec5uk9e/download)
+  source=($pkgname-$pkgver.zip::http://a51dev.com/timer/ac-timer-linux-32bit_3.1.2.zip)
   md5sums=(86aafc496c9fbf904723f4d652f0d23b)
 fi
 
