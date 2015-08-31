@@ -3,13 +3,13 @@
 
 pkgname=bcwipe
 pkgver=1.9
-pkgrel=12
+pkgrel=13
 pkgdesc="Securely erase data from magnetic and solid-state memory"
 arch=('i686' 'x86_64')
-url="http://www.jetico.com/bcwipe_unix.htm"
+url="http://www.jetico.com/download"
 license=('unknown')
 source=(http://www.jetico.com/linux/BCWipe-$pkgver-$pkgrel.tar.gz)
-md5sums=('dc96c8d203c33acb8cb60526aa6cf230')
+md5sums=('090bc261db969ebae7f3cec145238779')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-$pkgrel"
