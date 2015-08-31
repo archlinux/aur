@@ -1,0 +1,17 @@
+pkgbase = putty-freedesktop
+	pkgdesc = Icon and .desktop file for Putty
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~sgtatham/putty/
+	arch = any
+	license = MIT
+	depends = putty
+	source = putty.desktop
+	source = putty.png
+	source = putty.xpm
+	sha256sums = 5b4f98201719d406caeb6f9c73ce723d90681cb00fa747593b24ca255e6ddd6c
+	sha256sums = 42c841aa8c6bcdbc44cc131dc1246f25559d82c426bab0a70133b286b1f3bb21
+	sha256sums = e4d56c40fd0871868c59d0b83530ba9a9dca332f1d798248e739aee20fb5e831
+
+pkgname = putty-freedesktop
+
