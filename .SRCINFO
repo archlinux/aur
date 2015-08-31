@@ -1,6 +1,6 @@
 pkgbase = cppformat-git
 	pkgdesc = Small, safe and fast formatting library for C++
-	pkgver = 1.1.0.r282.g32fbc08
+	pkgver = 1.1.0.r302.gd48047e
 	pkgrel = 1
 	url = http://cppformat.github.io
 	arch = i686

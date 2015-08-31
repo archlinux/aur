@@ -1,7 +1,7 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
 
 pkgname=cppformat-git
-pkgver=1.1.0.r282.g32fbc08
+pkgver=1.1.0.r302.gd48047e
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
@@ -34,6 +34,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=1 \
+		-DFMT_TEST=0 \
 		-Wno-dev \
 		..
 
@@ -44,6 +45,11 @@ build() {
 check() {
 	cd "$pkgname"
 	cd build
+
+	cmake \
+		-DFMT_TEST=1 \
+		-Wno-dev \
+		..
 
 	make test
 }
