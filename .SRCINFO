@@ -1,0 +1,39 @@
+pkgbase = cairo
+	pkgdesc = Cairo vector graphics library
+	pkgver = 1.14.2
+	pkgrel = 1
+	url = http://cairographics.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	makedepends = libgl
+	makedepends = librsvg
+	makedepends = gtk2
+	makedepends = poppler-glib
+	makedepends = libspectre
+	makedepends = gtk-doc
+	makedepends = valgrind
+	makedepends = git
+	depends = libpng
+	depends = libxrender
+	depends = libxext
+	depends = fontconfig
+	depends = pixman>=0.28.0
+	depends = glib2
+	depends = mesa
+	depends = libgl
+	depends = lzo
+	provides = cairo-xcb
+	replaces = cairo-xcb
+	source = http://cairographics.org/releases/cairo-1.14.2.tar.xz
+	source = cairo-respect-fontconfig_pb.patch
+	source = cairo-server-side-gradients.patch
+	source = cairo-webkit-html5-fix.patch
+	sha1sums = c8da68aa66ca0855b5d0ff552766d3e8679e1d24
+	sha1sums = d8ffcb4c4745f7e61671109362a80a872ac989d3
+	sha1sums = 72ecf2dda8462e1588512de257ccbe18642d507f
+	sha1sums = 5bff494f52a16114f4cf6d04bfb0b9d7c4e9da23
+
+pkgname = cairo
+
