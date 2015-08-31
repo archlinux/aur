@@ -2,10 +2,10 @@
 # Contributor: Melancholy_Dream <Melancholy_Dream@write.su>
 pkgname=python2-pyvtk
 pkgver=0.4.85
-pkgrel=1
+pkgrel=2
 pkgdesc="tools for manipulating VTK files in Python"
 arch=('any')
-url="https://code.google.com/p/pyvtk/"
+url="https://github.com/pearu/pyvtk"
 license=('GPL')
 depends=('python2')
 conflicts=('pyvtk')
