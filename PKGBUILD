@@ -5,7 +5,7 @@ pkgver=4276
 pkgrel=1
 pkgdesc='Command-line multiple arcade laserdisc emulator (development version)'
 arch=('i686' 'x86_64')
-url="http://daphne-emulator.com"
+url="http://daphne-emu.com"
 license=('GPL2')
 if [[ "$CARCH" == "x86_64" ]]; then
   depends=('lib32-sdl_image' 'lib32-sdl_ttf' 'lib32-glew' 'lib32-libvorbis' 'lib32-libgl')
@@ -25,6 +25,9 @@ _svnmod=daphne
 
 prepare() {
   cd "$srcdir"
+
+  # prevent svn from trying to access gnome and other keyrings
+  echo -e "[auth]\npassword-stores =" > config
 
   if [ -d $_svnmod/.svn ]; then
     (cd $_svnmod && svn up --username svn --password svn --non-interactive -r $pkgver)
