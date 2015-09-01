@@ -3,8 +3,8 @@
 pkgname=backup-conf
 pkgdesc='This script create a backup of your config files in a tree format on current folder'
 url="https://github.com/LaraCraft93/$pkgname"
-pkgver=5.0
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 license=('GPL')
 arch=('any')
 install='backup-conf.install'
@@ -20,7 +20,7 @@ optdepends=('diffutils: the default diff tool'
 source=("https://github.com/LaraCraft93/$pkgname/archive/v$pkgver.tar.gz"
        "backup-conf.install")
 
-md5sums=('728d69dde7fff0d6616230ca18c46e7a'
+md5sums=('b709d1af2b5e8501e0860c19b5f1802e'
          'b452e0f879c2d25650330a37ed13f110')
 
 build() {
