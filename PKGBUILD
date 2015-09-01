@@ -1,4 +1,4 @@
-# Maintainer: David Manouchehri <d@32t.ca>
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
 # Former Maintainer: Peter-Paul van Gemerden <info@ppvg.nl>
 # Contributor: Karsten Hinz <k.hinz@tu-bs.de>
 
