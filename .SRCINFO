@@ -1,6 +1,6 @@
 pkgbase = maxima-git
 	pkgdesc = a sophisticated computer algebra system - git-version
-	pkgver = 5.37.1.29.g32a6214
+	pkgver = 5.37.1.30.g070c69a
 	pkgrel = 1
 	url = http://maxima.sourceforge.net
 	install = maxima.install
