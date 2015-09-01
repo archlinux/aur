@@ -1,20 +1,15 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=marble-git
-pkgver=v15.03.97.271.g61eb85f
+pkgbase=marble-git
+pkgname=('marble-git'
+         'libastro-git'
+         'marble-data-git')
+pkgver=v15.08.0.159.g30a9448
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
-url="https://www.kde.org/applications/system/marble"
+url='https://www.kde.org/applications/system/marble'
 license=('GPL')
-provides=('marble')
-conflicts=('marble' 'marble-qt' 'kdeedu-marble' )
-depends=('qt5-webkit'
-         'kparts'
-         'knewstuff'
-         'opencv'
-         'hicolor-icon-theme'
-         )
 makedepends=('cmake'
              'git'
              'gpsd'
@@ -27,17 +22,15 @@ makedepends=('cmake'
              'qt5-webkit'
              'krunner'
              'python'
+             'qt5-webkit'
+             'qt5-tools'
+             'kparts'
+             'knewstuff'
+             'opencv'
+             'hicolor-icon-theme'
              )
-optdepends=('gpsd: position information via gpsd'
-            'quazip-qt5: reading and displaying .kmz files'
-            'shapelib: reading and displaying .shp files'
-            'qextserialport-qt5: reading from serial port in APRS plugin'
-            'libwlocate: Position information based on neighboring WLAN networks'
-            'phonon-qt5: That enables the use of audio and video content'
-            'krunner: Krunner plugin for marble')
 source=('git://anongit.kde.org/marble.git')
 sha1sums=('SKIP')
-install=marble-git.install
 
 pkgver() {
   cd marble
@@ -74,6 +67,65 @@ build() {
   make
 }
 
-package() {
+package_libastro-git() {
+  pkgdesc='Marble astronomy library'
+  depends=('gcc-libs')
+  conflicts=('kdeedu-marble<15.07'
+             'marble-qt'
+             'libastro'
+             )
+
+  make -C build/src/lib/astro DESTDIR="${pkgdir}" install
+}
+
+package_marble-git() {
+  depends=('libastro-git'
+           'marble-data-git'
+           'qt5-webkit'
+           'kparts'
+           'knewstuff'
+           'opencv'
+           )
+  optdepends=('gpsd: position information via gpsd'
+              'quazip-qt5: reading and displaying .kmz files'
+              'shapelib: reading and displaying .shp files'
+              'qextserialport-qt5: reading from serial port in APRS plugin'
+              'libwlocate: Position information based on neighboring WLAN networks'
+              'phonon-qt5: That enables the use of audio and video content'
+              'krunner: Krunner plugin for marble'
+              )
+  conflicts=('kdeedu-marble<15.04.3-3'
+             'marble-qt'
+             'marble'
+             )
+  replaces=('kdeedu-marble'
+            'marble-qt<15.07'
+            )
+  groups=('kde-applications'
+          'kdeedu'
+          )
+  install=marble-git.install
+
   make -C build DESTDIR="${pkgdir}" install
+
+  # provided by libastro
+  rm -r "${pkgdir}/usr/include/astro"
+  rm "${pkgdir}/usr/lib/"libastro.*
+
+  # provided by marble-data
+  rm -r "${pkgdir}/usr/share/"{icons,marble/data}
+}
+
+package_marble-data-git() {
+  pkgdesc='Data for Marble'
+  arch=('any')
+  depends=('hicolor-icon-theme')
+  conflicts=('kdeedu-marble<15.07'
+             'marble<15.07.80-3'
+             'marble-qt'
+             'marble-data'
+             )
+  install=marble-git.install
+
+  make -C build/data DESTDIR="${pkgdir}" install
 }
