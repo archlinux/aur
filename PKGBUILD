@@ -8,16 +8,12 @@
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r6637
+pkgver=r6638
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
 url="http://handbrake.fr/"
 license=('GPL')
-depends=('dbus-glib' 'desktop-file-utils' 'gst-plugins-base-libs'
-	 'gtk3' 'jansson' 'lame' 'libass' 'libx264' 'libnotify'
-	 'libsamplerate' 'libtheora')
-makedepends=('cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm')
 options=('!makeflags')
 md5sums=('SKIP')
 makedepends=('git')
@@ -28,7 +24,14 @@ _gitname="HandBrake"
 pkgver() {
   cd "$srcdir"/"$_gitname"
     printf "r%s" "$(git rev-list --count HEAD)"
+}
 
+prepare() {
+  cd "$srcdir/$_gitname"
+
+  # python2 substitutions
+  sed -i -e '1c#! /usr/bin/python2' "gtk/src/makedeps.py"
+  sed -i -e '1c#! /usr/bin/python2' "make/configure.py"
 }
 
 build() {
@@ -45,18 +48,21 @@ build() {
 
 package_handbrake-gtk-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (GUI version)"
-  depends=('hicolor-icon-theme')
-  optdepends=('gst-plugins-base: For Preview Window'
-              'gst-plugins-bad: For Preview Window'
+  depends=('hicolor-icon-theme' 'gtk3' 'libass' 'dbus-glib' 'pango' 'cairo'
+	   'gst-plugins-base-libs' 'desktop-file-utils' 'jansson'
+	   'libnotify' 'libsamplerate' 'libx264' 'lame' 'libtheora')
+  optdepends=('gst-plugins-bad: For Preview Window'
               'gst-plugins-good: For Preview Window'
               'gst-plugins-ugly: For Preview Window'
               'gst-libav: For Preview Window')
+  makedepends=('cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm' 'prelink')
   provides=('handbrake')
   conflicts=('handbrake')
   install=${pkgbase}.install
 
   cd "$srcdir"/"$_gitname"
   make -C "build" DESTDIR="$pkgdir/" install
+  execstack -c "$pkgdir/usr/bin/ghb"
 
   rm -f "$pkgdir/usr/bin/HandBrakeCLI"
 
@@ -66,9 +72,11 @@ package_handbrake-gtk-git() {
 
 package_handbrake-cli-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (CLI version)"
-  depends=('jansson' 'lame' 'libass' 'libsamplerate' 'libtheora' 'libx264' 'bzip2' 'libxml2')
+  depends=('jansson' 'libtheora' 'libass' 'lame' 'libsamplerate' 'libx264' 'bzip2' 'libxml2')
+  makedepends=('cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm' 'prelink')
   provides=('handbrake-cli')
   conflicts=('handbrake-cli')
 
   install -D -m755 "$srcdir/$_gitname/build/HandBrakeCLI" "$pkgdir/usr/bin/HandBrakeCLI"
+  execstack -c "$pkgdir/usr/bin/HandBrakeCLI"
 }
