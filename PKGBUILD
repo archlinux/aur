@@ -1,7 +1,7 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname='vlmcsd-svn'
-pkgver=svn796
-pkgrel=2
+pkgver=svn812
+pkgrel=1
 pkgdesc="KMS activation using vlmcs."
 arch=('any')
 url="http://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-Windows-platforms"
@@ -10,10 +10,10 @@ depends=('glibc')
 makedepends=('clang' 'p7zip')
 replaces=('vlmcsd')
 conflicts=('vlmcsd')
-source=('vlmcsd.7z::http://higgs.rghost.ru/download/8cJHNJQxg/0956b238f0dd06e33ed304d72b3d9952e579e98d/vlmcsd-svn796-2015-07-18-Hotbird64-source-only.7z'
+source=('vlmcsd.7z::http://tau.rghost.ru/download/8y56k6Nml/9e5e75cdda6aa6a6cd758a7872438c31ecc8e696/vlmcsd-svn812-2015-08-30-Hotbird64-source-only.7z'
         'vlmcsd.service')
 install='vlmcsd.install'
-sha256sums=("2d49dc56fdae7093c5ce99619e1920242cfe97da9080be4eee5483874b9ee9b6"
+sha256sums=("4fdc4a3e50e9f6180b4932f8cde16ff481cdd668f6421c0369f321963e77347c"
             "d6e0eafab2223e83a265ac9879217189e5a17a79ccf7323f21c9d8916cc10a82")
 noextract=('vlmcsd.7z')
 
