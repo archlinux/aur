@@ -1,6 +1,6 @@
 pkgbase = idris-git
 	pkgdesc = Functional Programming Language with Dependent Types
-	pkgver = v0.9.18.r472.7642503
+	pkgver = v0.9.19.r7.4932d1c
 	pkgrel = 1
 	url = http://www.idris-lang.org/
 	install = idris-git.install
