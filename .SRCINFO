@@ -1,0 +1,14 @@
+pkgbase = firejail-git
+	pkgdesc = Linux namespaces sandbox program (GIT version)
+	pkgver = r101.38f13e8
+	pkgrel = 1
+	url = https://github.com/netblue30/firejail
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	backup = etc/firejail/login.users
+	source = firejail-git::git+https://github.com/netblue30/firejail.git
+	sha512sums = SKIP
+
+pkgname = firejail-git
+
