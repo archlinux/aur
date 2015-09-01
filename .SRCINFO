@@ -1,0 +1,21 @@
+pkgbase = idris
+	pkgdesc = Functional Programming Language with Dependent Types
+	pkgver = 0.9.19
+	pkgrel = 1
+	url = http://www.idris-lang.org/
+	install = idris.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = gmp
+	depends = libffi
+	depends = zlib
+	depends = gcc
+	provides = idris
+	conflicts = idris-git
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/idris/0.9.19/idris-0.9.19.tar.gz
+	md5sums = 499c76ae4cea217c5befa45f7d68ca15
+
+pkgname = idris
+
