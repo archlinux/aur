@@ -3,8 +3,8 @@
 
 pkgname=bfa-firmware
 pkgver=3.2.21.1
-_pkgver=3.2.21.1-4.fc21
-pkgrel=6
+_pkgver=3.2.21.1-5.fc23
+pkgrel=7
 pkgdesc="Brocade Fibre Channel HBA Firmware"
 arch=('any')
 license=('custom')
@@ -22,4 +22,4 @@ package(){
   install -Dm644 $srcdir/usr/share/doc/$pkgname/LICENSE $pkgdir/usr/share/doc/$pkgname/LICENSE
 }
 
-md5sums=("4a59e2239ccf79b112559d68182ba258")
+md5sums=('47dd2ac49c1ffe749b30ecd19fe009a4')

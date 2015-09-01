@@ -1,12 +1,12 @@
 pkgbase = bfa-firmware
 	pkgdesc = Brocade Fibre Channel HBA Firmware
 	pkgver = 3.2.21.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.brocade.com/services-support/drivers-downloads/CNA/Linux.page
 	arch = any
 	license = custom
-	source = ftp://195.220.108.108/linux/fedora/linux/development/rawhide/i386/os/Packages/b/bfa-firmware-3.2.21.1-4.fc21.noarch.rpm
-	md5sums = 4a59e2239ccf79b112559d68182ba258
+	source = ftp://195.220.108.108/linux/fedora/linux/development/rawhide/i386/os/Packages/b/bfa-firmware-3.2.21.1-5.fc23.noarch.rpm
+	md5sums = 47dd2ac49c1ffe749b30ecd19fe009a4
 
 pkgname = bfa-firmware
 
