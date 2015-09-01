@@ -5,24 +5,31 @@
 
 pkgname=arachnophilia
 _pkgname=Arachnophilia
-pkgver=5.5.2882
+pkgver=5.5.2902
 pkgrel=1
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
 url="http://www.arachnoid.com/arachnophilia/index.php"
 license=('LGPL' 'custom:careware')
 depends=('java-environment' 'bash' 'desktop-file-utils')
+makedepends=('curl')
 install=$pkgname.install
 source=("http://www.arachnoid.com/$pkgname/$_pkgname.jar"
         "http://www.arachnoid.com/lutusp/old_articles/careware.rtf"
+	"http://www.arachnoid.com/arachnophilia/index.php"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('f041b18c5b46f51fc8d9baff03d4313b'
+md5sums=('655fa3322d93900ca2cf7e78e90968af'
          'b2c3dc9852bff89756c89f957089374f'
+         '13091becf6c42c91765f606875754d0e'
          'a41385032fe3a726321d02cd85f9ba55'
          '27010dd0f2b690ca78392dffcc25f210')
 DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 noextract=("$_pkgname.jar")
+
+pkgver() {
+  echo $(awk '/Current/ {print $4 $6}' $srcdir/index.php|tr , .)
+}
 
 package() {
   cd "${srcdir}"
