@@ -4,13 +4,13 @@ Date: Tue, 1 Sep 2015 11:42:54 +0200
 Subject: [PATCH] Fix for Gazebo6 compatibility
 
 ---
- kobuki_gazebo_plugins/src/gazebo_ros_kobuki_updates.cpp | 2 --
+ src/gazebo_ros_kobuki_updates.cpp | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/kobuki_gazebo_plugins/src/gazebo_ros_kobuki_updates.cpp b/kobuki_gazebo_plugins/src/gazebo_ros_kobuki_updates.cpp
+diff --git a/src/gazebo_ros_kobuki_updates.cpp b/src/gazebo_ros_kobuki_updates.cpp
 index 81340fc..2cd5a40 100644
---- a/kobuki_gazebo_plugins/src/gazebo_ros_kobuki_updates.cpp
-+++ b/kobuki_gazebo_plugins/src/gazebo_ros_kobuki_updates.cpp
+--- a/src/gazebo_ros_kobuki_updates.cpp
++++ b/src/gazebo_ros_kobuki_updates.cpp
 @@ -178,8 +178,6 @@ void GazeboRosKobuki::propagateVelocityCommands()
    }
    joints_[LEFT]->SetVelocity(0, wheel_speed_cmd_[LEFT] / (wheel_diam_ / 2.0));
