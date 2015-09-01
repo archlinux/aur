@@ -4,11 +4,11 @@
 _webviewprovider=qt5-webkit
 pkgname=tageditor
 pkgver=1.1.5
-pkgrel=7
+pkgrel=9
 arch=('i686' 'x86_64')
-pkgdesc="A tag editor with Qt GUI and command-line interface supprting MP4 (iTunes), ID3, Vorbis and Matroska."
+pkgdesc="A tag editor with Qt GUI and command-line interface supporting MP4 (iTunes), ID3, Vorbis and Matroska."
 license=('GPL')
-depends=('qt5-script' $_webviewprovider 'qtutilities' 'tagparser')
+depends=('qt5-script' $_webviewprovider 'qtutilities' 'tagparser' 'desktop-file-utils' 'xdg-utils')
 makedepends=('qt5-tools')
 install=${pkgname}.install
 url="https://github.com/Martchus/tageditor"
