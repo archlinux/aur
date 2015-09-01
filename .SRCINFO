@@ -1,0 +1,14 @@
+pkgbase = lib32-libsodium
+	pkgdesc = P(ortable|ackageable) NaCl-based crypto library
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/jedisct1/libsodium
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	depends = lib32-glibc
+	source = http://download.dnscrypt.org/libsodium/releases/libsodium-1.0.3.tar.gz
+	sha512sums = 7d58ddf973bfc456c2d196129d2c3a9ddec6e40b977797251385cd42bdd1234987779566903b7c2251cae02aab7e1c5246967af4c887be8a3451ae3f745c1ae5
+
+pkgname = lib32-libsodium
+
