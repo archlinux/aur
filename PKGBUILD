@@ -9,7 +9,7 @@
 pkgbase=lib32-networkmanager
 pkgname=(lib32-networkmanager lib32-libnm-glib)
 _pkgname=NetworkManager
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Network Management daemon, 32bit libraries"
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc
 checkdepends=(libx11 python-gobject python-dbus)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
         disable_set_hostname.patch)
-sha256sums=('e4099fa2f4f4b8d95d0ad9fdd03ec20960845085fa500bf79aecbf54cee018c9'
+sha256sums=('38ea002403e3b884ffa9aae25aea431d2a8420f81f4919761c83fb92648254bd'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460')
 
 prepare() {
