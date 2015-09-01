@@ -1,0 +1,7 @@
+[Unit]
+Description=Weekly Update of the pia-tools config files
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+

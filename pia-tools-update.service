@@ -1,0 +1,6 @@
+[Unit]
+Description=Update the pia-tools ovpn files
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/pia-tools -uf
