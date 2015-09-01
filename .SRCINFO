@@ -1,0 +1,23 @@
+pkgbase = wxmaxima-git
+	pkgdesc = A document based interface for the computer algebra system Maxima.
+	pkgver = r2756.6798e4c
+	pkgrel = 1
+	url = http://andrejv.github.io/wxmaxima/index.html
+	install = wxmaxima-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = texi2html
+	depends = maxima
+	depends = wxgtk
+	depends = libxml2
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	provides = wxmaxima
+	conflicts = wxmaxima
+	source = git+https://github.com/andrejv/wxmaxima.git
+	sha256sums = SKIP
+
+pkgname = wxmaxima-git
+
