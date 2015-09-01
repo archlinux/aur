@@ -1,12 +1,12 @@
 pkgbase = power-management
 	pkgdesc = systemd-aware pm-powersave replacement
-	pkgver = 26.208dc66
+	pkgver = 27.f8c1474
 	pkgrel = 1
 	url = https://github.com/intelfx/power-management
 	install = power-management.install
 	arch = any
 	license = GPL3
-	source = power-management::git://github.com/intelfx/power-management#commit=208dc66
+	source = power-management::git://github.com/intelfx/power-management#commit=f8c1474
 	md5sums = SKIP
 
 pkgname = power-management
