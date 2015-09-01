@@ -1,4 +1,4 @@
-# Maintainer: Det <nimetonmaili g-mail>d
+# Maintainer: Det <nimetonmaili g-mail>e
 # Based on [extra]'s bigreqsproto: https://projects.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/bigreqsproto
 
 _pkgname=bigreqsproto
