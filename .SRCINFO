@@ -1,0 +1,19 @@
+pkgbase = perl-types-uuid
+	pkgdesc = type constraints for UUIDs
+	pkgver = 0.004
+	pkgrel = 1
+	url = https://metacpan.org/release/Types-UUID
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-type-tiny>=0
+	depends = perl-type-tiny>=1.000000
+	depends = perl-uuid-tiny>=1.02
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Types-UUID-0.004.tar.gz
+	md5sums = 0dfbf735c37b04b3770d385a381eb2c8
+	sha512sums = 1d342e438cc1d2b98a172b67622dbbd04e8ac33db4826dd59362869d18305dffbf27b30be3ced6249e0b2aab2a2bead1b06bb2680c5a6c6dca770adb116c9e3c
+
+pkgname = perl-types-uuid
+
