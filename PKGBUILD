@@ -4,7 +4,7 @@
 _gitname="nightingale-hacking"
 _branch="gstreamer-1.0"
 pkgname="nightingale-git"
-pkgver=8d024f1
+pkgver=1e74b6f
 pkgrel=1
 pkgdesc="Community port of Songbird to be more Linux native, up to date, and open."
 arch=('i686' 'x86_64')
