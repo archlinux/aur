@@ -15,7 +15,7 @@ optdepends=('palemoon-i18n-default: language pack for system active language'
             'gstreamer0.10-ffmpeg: h.264 decoding'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification')
-provides=('palemoon=$pkgver')
+provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 install=palemoon.install
 source=(palemoon.desktop)

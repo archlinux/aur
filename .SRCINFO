@@ -24,7 +24,7 @@ pkgbase = palemoon-bin
 	optdepends = gstreamer0.10-ffmpeg: h.264 decoding
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
-	provides = palemoon=$pkgver
+	provides = palemoon=25.7.0
 	conflicts = palemoon
 	source = palemoon.desktop
 	sha1sums = 83ff22ff7a034efac31f1dd5f27ad0115a778743
