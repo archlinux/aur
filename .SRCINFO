@@ -1,4 +1,4 @@
-pkgbase = bashimget-git
+pkgbase = bashimget
 	pkgdesc = Simple reader bash.im written in Java
 	pkgver = 1.1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = bashimget-git
 	source = git+https://bitbucket.org/kalterfive/bashimget
 	md5sums = SKIP
 
-pkgname = bashimget-git
+pkgname = bashimget
 
