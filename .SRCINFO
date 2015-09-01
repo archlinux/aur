@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-gu-in
 	pkgdesc = Gujarati language pack for Iceweasel (India)
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-gu-in
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-gu-in_40.0.3-1_all.deb
-	md5sums = 2d22fc1f498f84c4dae6dc40a059f04e
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-gu-in_40.0.3-3_all.deb
+	sha256sums = db4b59aab2793b3d20c41c256eb12e7740735bbf57ef1d27dbd26e8ac4d3387c
 
 pkgname = iceweasel-i18n-gu-in
 
