@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=bus
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A simple daemonless system for broadcasting messages locally"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=()
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(dfd49640d16b6c71d0be012dca878d8781b89e6b620071f10ddf459764399a07)
+sha256sums=(e1adc1abcf1c62edf229f46cb32be7e02d074c4ad42a092a533c07936b531df2)
 
 
 build() {
