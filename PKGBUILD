@@ -1,7 +1,8 @@
-# Maintainer: Philipp Schmitt (philipp<at>schmitt<dot>co)
+# Maintainer: Walter Dworak <preparationh67@gmail.com>
+# Contributor: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=kanboard
-pkgver=1.0.8
+pkgver=1.0.18
 pkgrel=1
 pkgdesc='Simple visual task board'
 arch=('any')
@@ -12,7 +13,7 @@ optdepends=('mariadb: For MySQL storage' 'php-sqlite: For sqlite storage' 'php-p
 install="$pkgname.install"
 options=(!strip)
 source=("https://github.com/fguillot/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f89fa950930837ba11bdca0c08f805658cc2e0bdd675a36e8f719ff432ec0054')
+sha256sums=('99bce9e111226433c6845ce67991ee38c030e1f539372c7dc9e9b3d8b3342e44')
 
 package() {
     cd "${pkgdir}"
