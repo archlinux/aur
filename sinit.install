@@ -1,0 +1,7 @@
+post_install() {
+  echo "==> config.h in the PKGBUILD directory should be"
+  echo "    edited to configure sinit."
+  echo "==> To use sinit, add the following kernel parameter"
+  echo "    in your bootloader's configuration file:"
+  echo "        init=/sbin/sinit"
+}

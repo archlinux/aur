@@ -1,0 +1,14 @@
+pkgbase = sinit
+	pkgdesc = A simple init
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://tools.suckless.org/sinit/
+	install = sinit.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = http://dl.suckless.org/sinit/sinit-1.0.tar.gz
+	md5sums = 9a15ec492278e2a2b29f8b25eda10286
+
+pkgname = sinit
+
