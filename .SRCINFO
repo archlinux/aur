@@ -1,7 +1,7 @@
 pkgbase = robomongo
 	pkgdesc = Shell-centric cross-platform MongoDB management tool
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://robomongo.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = robomongo
 	makedepends = cmake
 	makedepends = scons
 	depends = qt5-base
+	depends = libxkbcommon-x11
 	depends = pcre
 	depends = qjson
 	depends = openssl

@@ -2,12 +2,12 @@
 
 pkgname=robomongo
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Shell-centric cross-platform MongoDB management tool'
 arch=('i686' 'x86_64')
 url="http://robomongo.org/"
 license=('GPLv3')
-depends=('qt5-base' 'pcre' 'qjson' 'openssl')
+depends=('qt5-base' 'libxkbcommon-x11' 'pcre' 'qjson' 'openssl')
 makedepends=('cmake' 'scons')
 conflicts=('robomongo-bin')
 source=("https://github.com/paralect/robomongo/archive/v$pkgver.tar.gz")
