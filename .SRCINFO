@@ -1,0 +1,20 @@
+pkgbase = lychee
+	pkgdesc = Lychee is an easy to use and great looking photo-management-system.
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = http://lychee.electerious.com/
+	arch = any
+	license = MIT
+	optdepends = php-apache: to use the Apache web server
+	optdepends = php-sqlite: to use the SQLite database backend
+	optdepends = php-pgsql: to use the PostgreSQL database backend
+	optdepends = mariadb: to use the MySQL database backend
+	options = !strip
+	backup = etc/webapps/lychee/apache.example.conf
+	source = lychee-3.0.5.tar.gz::https://github.com//electerious/Lychee/archive/v3.0.5.tar.gz
+	source = apache.example.conf
+	sha256sums = e0b6065da52fae14852236291e0e4930e5becfa2109aa8c8d56f380dde79ff44
+	sha256sums = fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557
+
+pkgname = lychee
+
