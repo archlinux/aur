@@ -25,7 +25,7 @@ install() {
 	echo "Please, how do you want to use $0 ?"
 	echo -e "\033[1m1\033[0m: From \033[1mLaunch EFI Shell\033[0m (in UEFI Setup), e.g. as shellx64.efi on ESP's root (bit safe)"
 	echo -e "\033[1m2\033[0m: Add a new boot entry (more safe)"
-	echo -e "\033[1m3\033[0m: Add a file for GRUB2 (untested)"
+	echo -e "\033[1m3\033[0m: Add a file for GRUB2"
 	echo -e "\033[1m4: Cancel\033[0m"
 	choice=0; while [[ $choice < 1 ]] || [[ $choice > 4 ]]; do
 		read choice
@@ -57,9 +57,13 @@ install() {
 		cp -v "$MEMTEST86_PATH/"*		"$esp/EFI/memtest86/" # Move files in memtest ESP directory
 		mv -v "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi" # Rename .efi file
 		echo -e "\nAdd a new configuration file for GRUB..."
-		echo "menuentry \"Memtest86\" {
-			search --set=root --no-floppy --fs-uuid $(blkid $partition -s UUID -o value)
-			chainloader /EFI/memtest86/memtest$ARCH.efi" > "/etc/grub.d/86_memtest"
+		echo -e "if [ \"\${grub_platform}\" == \"efi\" ]; then
+			\tmenuentry \"Memtest86\" {
+			\tsearch --set=root --no-floppy --fs-uuid $(blkid $partition -s UUID -o value)
+			\tchainloader /EFI/memtest86/memtest$ARCH.efi
+			\t}
+			fi" > "/etc/grub.d/86_memtest"
+		chmod +x "/etc/grub.d/86_memtest"
 		grub-mkconfig -o "/boot/grub/grub.cfg"
 	elif [[ $choice == 4 ]]; then
 		# Do nothing and quit
