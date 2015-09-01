@@ -4,4 +4,5 @@
 !*.install
 !unity-editor
 !monodevelop-unity
+!update-eula
 !.SRCINFO

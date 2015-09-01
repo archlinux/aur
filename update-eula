@@ -1,0 +1,8 @@
+#!/bin/bash
+# This script is meant to be run manually by the maintainers
+
+curl "https://unity3d.com/legal/eula" \
+  | xmllint --html --xpath "//section[@id='content']" - 2> /dev/null \
+  | elinks -dump \
+  | sed '/Quick jump/,$d' > EULA
+
