@@ -2,14 +2,14 @@ pkgname=bbswitch-e531
 _basename=bbswitch
 groups=('ThinkPad-E531')
 pkgver=0.8
-_extramodules=extramodules-4.1-e531 # Don't forget to update bbswitch-lts.install
-pkgrel=5
+_extramodules=extramodules-4.2-e531 # Don't forget to update bbswitch-lts.install
+pkgrel=6
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('i686' 'x86_64')
 url=("http://github.com/Bumblebee-Project/bbswitch")
 license=('GPL')
-depends=('linux-e531>=4.1' 'linux-e531<4.2')
-makedepends=('linux-e531-headers>=4.1' 'linux-e531-headers<4.2')
+depends=('linux-e531>=4.2' 'linux-e531<4.3')
+makedepends=('linux-e531-headers>=4.2' 'linux-e531-headers<4.3')
 install=${pkgname}.install
 source=("${_basename}-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
 sha256sums=('76cabd3f734fb4fe6ebfe3ec9814138d0d6f47d47238521ecbd6a986b60d1477')

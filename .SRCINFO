@@ -1,17 +1,17 @@
 pkgbase = bbswitch-e531
 	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops
 	pkgver = 0.8
-	pkgrel = 5
+	pkgrel = 6
 	url = http://github.com/Bumblebee-Project/bbswitch
 	install = bbswitch-e531.install
 	arch = i686
 	arch = x86_64
 	groups = ThinkPad-E531
 	license = GPL
-	makedepends = linux-e531-headers>=4.1
-	makedepends = linux-e531-headers<4.2
-	depends = linux-e531>=4.1
-	depends = linux-e531<4.2
+	makedepends = linux-e531-headers>=4.2
+	makedepends = linux-e531-headers<4.3
+	depends = linux-e531>=4.2
+	depends = linux-e531<4.3
 	source = bbswitch-0.8.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
 	sha256sums = 76cabd3f734fb4fe6ebfe3ec9814138d0d6f47d47238521ecbd6a986b60d1477
 
