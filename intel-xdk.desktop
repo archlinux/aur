@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Name=Intel® XDK
+Comment=Comprehensive, cross-platform HTML5 development environment
+Icon=/opt/intel/XDK/xdk/public/images/xdk_icon.png
+Type=Application
+Categories=Development
+Exec=/usr/bin/intel-xdk
+Terminal=false
