@@ -2,7 +2,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=emacs-dash
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc='A modern list API for Emacs'
 arch=('any')
@@ -10,19 +10,14 @@ url="https://github.com/magnars/dash.el"
 license=('GPL')
 makedepends=('emacs')
 depends=('emacs')
-source=("https://github.com/magnars/dash.el/archive/$pkgver.tar.gz"
-        'https://github.com/magnars/dash.el/commit/dab0d1c.patch')
-sha256sums=('cf94c9b8b4ef951aebf068172f139d511d71520569c361db73877808981f05fe'
-            'e5845b5025e7d7b4d6dfd4619ff3d76c8ec01424b90ab86743baf168d93ec239')
-
-prepare() {
-  cd dash.el-"$pkgver"
-  patch -p1 < ../dab0d1c.patch
-}
+install=emacs-dash.install
+source=("https://github.com/magnars/dash.el/archive/$pkgver.tar.gz")
+sha256sums=('d888d34b9b86337c5740250f202e7f2efc3bf059b08a817a978bf54923673cde')
 
 build() {
   cd dash.el-"$pkgver"
   emacs -batch -L . -f batch-byte-compile dash{,-functional}.el
+  sh create-docs.sh
 }
 
 package() {
@@ -30,4 +25,6 @@ package() {
   install -d "$pkgdir"/usr/share/emacs/site-lisp/dash
   install -Dm644 dash{,-functional}.{el,elc} "$pkgdir"/usr/share/emacs/site-lisp/dash
   gzip "$pkgdir"/usr/share/emacs/site-lisp/dash/*.el
+  install -Dm644 dash.info "$pkgdir"/usr/share/info/dash.info
+  gzip "$pkgdir"/usr/share/info/dash.info
 }
