@@ -1,0 +1,15 @@
+pkgbase = bashimget-git
+	pkgdesc = Simple reader bash.im written in Java
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://bitbucket.org/kalterfive/bashimget
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = jdk8-openjdk
+	depends = jdk8-openjdk
+	source = git+https://bitbucket.org/kalterfive/bashimget
+	md5sums = SKIP
+
+pkgname = bashimget-git
+
