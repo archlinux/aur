@@ -23,7 +23,6 @@ depends=('desktop-file-utils'
          'libxtst'
          'monodevelop')
 makedepends=('elinks'
-             'sed'
              'libxml2')
 optdepends=('ffmpeg: for WebGL exporting'
             'nodejs: for WebGL exporting'
