@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-hu
 	pkgdesc = Hungarian language package for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-hu
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-hu_40.0.3-1_all.deb
-	md5sums = 63d1693588c1f4548fb0cb895c850701
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-hu_40.0.3-3_all.deb
+	sha256sums = 37feae54ba0b4800daf38769f7cb09e1710a6555c996fbf8b60277bd4063b60a
 
 pkgname = iceweasel-i18n-hu
 
