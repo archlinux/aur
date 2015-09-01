@@ -1,0 +1,17 @@
+pkgbase = perl-uri-fromhash
+	pkgdesc = Build a URI from a set of named parameters
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/URI-FromHash
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-params-validate>=0
+	depends = perl-uri>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/URI-FromHash-0.04.tar.gz
+	md5sums = 2034041b86ac2a71fb7b488d6f0370f8
+	sha512sums = f97a7001d4812eaea79604d31e8a490287924e6ba3aaef94c4b716f5aecb5444fd1573e7daba3ee3b1d4447e367f13f3f2e38fad3d8df65da581bcace4e1883d
+
+pkgname = perl-uri-fromhash
+
