@@ -24,7 +24,7 @@ source=(https://ftp.mozilla.org/pub/security/nss/releases/NSS_${pkgver//./_}_RTM
 sha256sums=('5e38d4b9837ca338af966b97fc91c07f67ad647fb38dc4af3cfd0d84e477d15c'
             'b9f1428ca2305bf30b109507ff335fa00bce5a7ce0434b50acd26ad7c47dd5bd'
             '12df04bccbf674db1eef7a519a28987927b5e9c107b1dc386686f05e64f49a97'
-            '5e9b6e3d1b35b0c634178d07d1b289a641b397d8199099917fbb240c83f8d5b9')
+            '15c244fc33b8e6647e004b6130fa5c85102e6099b8c5f2b597c817290f0618ab')
 
 prepare() {
   cd "${srcdir}"/${_pkgbasename}-${pkgver}/
