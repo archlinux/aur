@@ -13,8 +13,8 @@ makedepends=("ruby-bundler")
 optdepends=('git')
 conflicts=('ruby-heroku' 'ruby-foreman' 'heroku-client')
 source=('Gemfile' 'Gemfile.lock')
-sha256sums=('bfb90633814fcf850db1fc8edc529437db2b2e9d24868e0948afeea162ef19b6'
-            'd30052507eb98f3ee8389d8cce1b71c9f5eb0cbaa7d077729bfebd0d51ecf543')
+sha256sums=('3bec78d1c2ccc16324e806b8cbb60726911a459f42af1b15821606079dc04e37'
+            '93b2a0eff2d04b84b52346a8407dc31408957f36b2e7185b10d6cc32eda48327')
 
 package() {
   cd "$pkgdir"
