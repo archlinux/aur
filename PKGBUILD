@@ -12,7 +12,7 @@
 
 pkgname=ffmpeg-full
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ depends=(
       'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
       'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
       'libfdk-aac' 'libgme' 'libiec61883' 'libsoxr' 'libutvideo-git'
-      'libxv' 'mesa' 'openal' 'opencl-headers12' 'rtmpdump' 'shine' 'twolame'
+      'libxv' 'mesa' 'openal' 'opencl-headers' 'rtmpdump' 'shine' 'twolame'
       'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'zeromq' 'zvbi' 
       )
 makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
