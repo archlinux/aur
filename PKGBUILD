@@ -19,7 +19,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=3.8.0svn_r244189
+pkgver=3.8.0svn_r246546
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -159,9 +159,15 @@ build() {
         "../${_pkgname}"
 
     # Must run this target independently, or else docs/cmake_install.cmake will fail.
-    #
-    # WARNING: Make sure that there isn't an incompatible llvm-ocaml package installed,
+    # Also, we must check that there isn't an incompatible llvm-ocaml package installed,
     # or else the build will fail with "inconsistent assumptions over interface" errors.
+    [[ $(ocamlfind query -format %v llvm 2>/dev/null | tr - _) =~ (${pkgver}|^$) ]] || {
+        error 'Incompatible LLVM OCaml bindings installed.'
+        plain 'Please either uninstall any currently installed llvm-ocaml* package before building,'
+        plain 'or, __preferably__, build in a clean chroot, as described on the Arch Linux wiki:'
+        plain 'https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_Clean_Chroot'
+        exit 1
+    }
     make ocaml_doc
 
     make
