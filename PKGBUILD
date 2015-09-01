@@ -36,12 +36,12 @@ conflicts=('unity3d')
 replaces=('unity3d')
 install="${pkgname}.install"
 source=("http://download.unity3d.com/download_unity/unity-editor-installer-${pkgver}.sh"
-        "https://unity3d.com/legal/eula"
+        'EULA'
         'unity-editor'
         'monodevelop-unity')
 noextract=("unity-editor-installer-${pkgver}.sh")
 sha256sums=('bf73e7693ae15b271dbbd55010eb33fae3400b964fa4b70289bd5a17d19d5493'
-            'SKIP'
+            '3e0f6faad2cae20ae2784256b0f5525fc69897a889d696aa5d748db2fe8c6a14'
             'a03aaf639c6ba56a0ef03a591f0f629a3e015a3a3c6999ecc0feb6b2284c901b'
             '7309ac206fbb6eb5f1a073bf22e2571e1a574410ab410138a19fb66c3eee21e3')
 options=(!strip)
@@ -68,10 +68,7 @@ package() {
 
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity-editor"
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/monodevelop-unity"
-
-  # EULA
-  xmllint --html --xpath "//section[@id='content']" "${srcdir}/eula" 2> /dev/null | elinks -dump | sed '/Quick jump/,$d' > "${srcdir}/LICENSE"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
 }
 
 # vim:set sw=2 sts=2 et:
