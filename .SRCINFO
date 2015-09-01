@@ -1,6 +1,6 @@
 pkgbase = terminus-font-td1
 	pkgdesc = A superb, monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)
-	pkgver = 4.39
+	pkgver = 4.40
 	pkgrel = 1
 	url = http://sourceforge.net/projects/terminus-font/
 	install = terminus-font-td1.install
@@ -19,8 +19,8 @@ pkgbase = terminus-font-td1
 	conflicts = terminus-font
 	replaces = xserver-terminus-fonts
 	backup = etc/fonts/conf.d/75-yes-terminus.conf
-	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.39/terminus-font-4.39.tar.gz
-	sha256sums = 3108383986b365a4b9cc08c31a4195196f6de974d2735d77f6c6efa9feb1f5bf
+	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.40/terminus-font-4.40.tar.gz
+	sha256sums = 64f52c24d3f1c1e39f21e6c43077a9be3e21d4384f176f5766c00558ba670711
 
 pkgname = terminus-font-td1
 
