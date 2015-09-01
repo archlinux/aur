@@ -1,7 +1,7 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 pkgname=beamer-theme-m-git
-pkgver=20150722
-pkgrel=2
+pkgver=20150824
+pkgrel=1
 pkgdesc="A modern LaTeX Beamer theme"
 url="https://github.com/matze/mtheme"
 arch=("any")
@@ -25,6 +25,6 @@ build() {
 
 package() {
     cd $srcdir/mtheme
-    TEXMFROOT=$(kpsewhich -var-value=TEXMFROOT)
-    make TEXMFHOME=$pkgdir/$TEXMFROOT install
+    TEXMFDIST=$(kpsewhich -var-value=TEXMFDIST)
+    make TEXMFHOME=$pkgdir/$TEXMFDIST install
 }
