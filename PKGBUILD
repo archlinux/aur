@@ -1,28 +1,44 @@
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Maintainer: Jonne Haß <me@mrzyx.de>
-_author="jgoldberg"
-_perlmod="Text-Levenshtein"
-pkgname=perl-text-levenshtein
-pkgver=0.05
-pkgrel=1
-pkgdesc="Text::Levenshtein - An implementation of the Levenshtein edit distance"
+
+set -u
+_perlmod='Text-Levenshtein'
+_modnamespace='Text'
+pkgname="perl-${_perlmod,,}"
+pkgver='0.13'
+pkgrel='1'
+pkgdesc="${_perlmod//-/::} - An implementation of the Levenshtein edit distance"
 arch=('any')
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
+url="http://search.cpan.org/dist/${_perlmod}"
 license=('unknown')
 depends=('perl>=5.10.0')
-options=(!emptydirs)
-source=(http://cpan.perl.org/modules/by-authors/id/J/JG/JGOLDBERG/$_perlmod-$pkgver.tar.gz)
-md5sums=('481bf8c903db6ba7e5c9251140e1b98f')
+options=('!emptydirs')
+_verwatch=("http://www.cpan.org/modules/by-module/${_modnamespace}/" "${_perlmod}-\([0-9\.]*\)\.tar\.gz" 'l')
+source=("${_verwatch[0]}${_perlmod}-${pkgver}.tar.gz")
+sha256sums=('3a7cbf0bb79fca33d92618f6d8c2ae4b5e2ee5b43729142a9b8ad9d8a678d11f')
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  set -u
+  cd "${_perlmod}-${pkgver}"
 
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  # Install module in vendor directories.
+  PERL_MM_USE_DEFAULT=1 perl 'Makefile.PL' INSTALLDIRS='vendor'
   make
+  set +u
+}
+
+check() {
+  set -u
+  cd "${_perlmod}-${pkgver}"
+  make test
+  set +u
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
+  set -u
+  cd "${_perlmod}-${pkgver}"
+  make install DESTDIR="${pkgdir}"
+  set +u
 }
-
+set +u
 # vim:set ts=2 sw=2 et:
