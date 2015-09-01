@@ -1,8 +1,8 @@
 # Maintainer: Kaleb Klein <klein.jae@gmail.com>
 
 pkgname=checkmate-git
-pkgver=2.1.4
-pkgrel=2
+pkgver=2.1.5
+pkgrel=3
 pkgdesc="GUI application for verifying and generating checksums"
 arch=(any)
 license=('LGPL')
@@ -17,10 +17,10 @@ install='checkmate-git.install'
 
 package() {
 	cd "$srcdir/checkmate"
-	make -f Makefile.nix
+	make
 
 	install -D -m755 "${srcdir}/checkmate/src/Checkmate" "${pkgdir}/opt/checkmate/Checkmate"
-	install -D -m755 "${srcdir}/checkmate/updater_src/CheckmateUpdater" "${pkgdir}/opt/checkmate/CheckmateUpdater"
+	# install -D -m755 "${srcdir}/checkmate/updater_src/CheckmateUpdater" "${pkgdir}/opt/checkmate/CheckmateUpdater"
 
 	install -D -m644 "${srcdir}/checkmate.desktop" "${pkgdir}/usr/share/applications/checkmate.desktop"
 	install -D -m644 "${srcdir}/gear.png" "${pkgdir}/usr/share/icons/checkmate_icon.png"
