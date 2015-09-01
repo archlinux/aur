@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-ko
 	pkgdesc = Korean language package for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-ko
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ko_40.0.3-1_all.deb
-	md5sums = 149d6f21f7a7477a08777bbc7c9c693f
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ko_40.0.3-3_all.deb
+	sha256sums = 664eb67249c2efa28f082ac8506b2a851fe1e53bc13c3f70f1535dffdc759c00
 
 pkgname = iceweasel-i18n-ko
 
