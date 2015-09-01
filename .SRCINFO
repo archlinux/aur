@@ -7,8 +7,8 @@ pkgbase = nsnake
 	arch = i686
 	license = GPL3
 	depends = ncurses
-	source = https://github.com/alexdantas/nsnake/archive/v3.0.1.tar.gz
-	md5sums = bb024bdf8f95989b38c4893a99228d34
+	source = nsnake-v3.0.1.tar.gz::https://github.com/alexdantas/nSnake/archive/v3.0.1.tar.gz
+	sha256sums = 7240dafe35e17b01134591d7ae8f09f5a375cded8b01e43ba97ca3610a09ea61
 
 pkgname = nsnake
 
