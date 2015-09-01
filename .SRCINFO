@@ -1,8 +1,9 @@
 pkgbase = update-dnsomatic
-	pkgdesc = A perl based utility that updates OpenDNS via crontab, and is simpler than inyadn
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgdesc = A perl utility that updates OpenDNS DNS-O-Matic, and is simpler than inyadn
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = http://prawnuk.blogspot.com/2008/11/dnsomatic-updater.html
+	install = update-dnsomatic.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,8 +11,10 @@ pkgbase = update-dnsomatic
 	depends = perl-libwww
 	depends = perl-crypt-ssleay
 	depends = perl-lwp-protocol-https
-	source = http://update-dnsomatic.googlecode.com/files/update-dnsomatic-0.2.0.tar.gz
-	md5sums = d6688165372ce1a8cc57b879713903a2
+	optdepends = cron: use cron instead of systemd timers
+	backup = etc/update-dnsomatic/config
+	source = http://update-dnsomatic.googlecode.com/files/update-dnsomatic-0.2.1.tar.gz
+	sha256sums = e4b44ffc8caf1114464ca2ae7a925ca06b632379befa88ac39e36c09253a4715
 
 pkgname = update-dnsomatic
 

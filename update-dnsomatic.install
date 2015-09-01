@@ -1,0 +1,50 @@
+pre_upgrade() {
+  local _myip='/etc/update-dnsomatic/myip'
+  if [ -s "${_myip}" ]; then
+    mv "${_myip}" "${_myip}.pacsave"
+  fi
+}
+
+post_upgrade() {
+  local _myip='/etc/update-dnsomatic/myip'
+  if [ -s "${_myip}.pacsave" ] && [ ! -s "${_myip}" ]; then
+    mv "${_myip}.pacsave" "${_myip}"
+  fi
+  rm -f "${_myip}.pacsave"
+  chmod 664 "${_myip}"
+  systemctl daemon-reload
+  local _config='/etc/update-dnsomatic/config'
+  # It would be safer to create our own user but it's easier just to use nobody
+  chown -R 'root:nobody' "$(dirname "${_config}")" '/usr/bin/update-dnsomatic'
+  chmod 640 "${_config}"
+  echo
+  if [ ! -s "${_config}" ] || grep -q '^user = userid$\|^npass = password$' "${_config}"; then
+    echo "Add your OpenDNS username and password to ${_config}"
+  fi
+  if ! crontab -l 2>/dev/null | grep -q '/usr/bin/update-dnsomatic' && ! systemctl -q is-enabled 'update-dnsomatic.timer'; then
+    echo 'crontab example to update every 10 minutes:'
+    echo '  */10 * * * * /usr/bin/update-dnsomatic > /dev/null 2>&1'
+    echo
+    echo 'systemd timer example:'
+    echo 'If desired, change time in usr/lib/systemd/system/update-dnsomatic.timer'
+    echo "  systemctl enable 'update-dnsomatic.timer'"
+    echo "  systemctl start 'update-dnsomatic.timer'"
+  fi
+  if systemctl -q is-enabled 'update-dnsomatic.timer'; then
+    systemctl start 'update-dnsomatic.timer'
+  fi
+}
+
+post_install() {
+  post_upgrade
+}
+
+pre_remove() {
+  if systemctl -q is-enabled 'update-dnsomatic.timer'; then
+    systemctl stop 'update-dnsomatic.timer'
+  fi
+}
+
+post_remove() {
+  systemctl daemon-reload
+}
