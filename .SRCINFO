@@ -1,5 +1,5 @@
 pkgbase = ots-git
-	pkgdesc = OpenType sanitizer.
+	pkgdesc = OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats.
 	pkgver = 323.3460366
 	pkgrel = 1
 	url = https://github.com/khaledhosny/ots
