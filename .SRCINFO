@@ -1,8 +1,9 @@
 pkgbase = opencryptoki
 	pkgdesc = PKCS11 implementation for Linux
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/opencryptoki
+	install = opencryptoki.install
 	arch = i686
 	arch = x86_64
 	license = CPL
