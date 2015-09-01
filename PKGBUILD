@@ -3,8 +3,9 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Tom K <tomk@runbox.com>
+# Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 
-pkgname=hdf5-fortran-openmpi
+pkgname=hdf5-fortran-mpich
 _pkgname=hdf5
 pkgver=1.8.15
 _patch=patch1
@@ -13,7 +14,7 @@ arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data"
 url="http://www.hdfgroup.org/HDF5/"
 license=('custom')
-depends=('zlib' 'sh' 'gcc-libs' 'openmpi')
+depends=('zlib' 'sh' 'gcc-libs' 'mpich')
 makedepends=('time' 'gcc-fortran')
 conflicts=('hdf5')
 provides=('hdf5')
@@ -25,10 +26,10 @@ build() {
   export CFLAGS="${CFLAGS/O2/O0}"
   export CXXFLAGS="${CFLAGS}"
   ./configure \
-    CC="mpicc" \
-    FC="mpif90" \
-    F9X="mpif90" \
-    RUNPARALLEL="mpirun" \
+    CC="/opt/mpich/bin/mpicc" \
+    FC="/opt/mpich/bin/mpif90" \
+    F9X="/opt/mpich/bin/mpif90" \
+    RUNPARALLEL="/opt/mpich/bin/mpirun" \
     --prefix=/usr \
     --with-pthread=/usr/lib/ \
     --disable-static \

@@ -1,4 +1,4 @@
-pkgbase = hdf5-fortran-openmpi
+pkgbase = hdf5-fortran-mpich
 	pkgdesc = General purpose library and file format for storing scientific data
 	pkgver = 1.8.15
 	pkgrel = 2
@@ -11,11 +11,11 @@ pkgbase = hdf5-fortran-openmpi
 	depends = zlib
 	depends = sh
 	depends = gcc-libs
-	depends = openmpi
+	depends = mpich
 	provides = hdf5
 	conflicts = hdf5
 	source = ftp://ftp.hdfgroup.org/HDF5/current/src/hdf5-1.8.15-patch1.tar.bz2
 	sha1sums = 82ed248e5d0293bc1dba4c13c9b2880a26643ee0
 
-pkgname = hdf5-fortran-openmpi
+pkgname = hdf5-fortran-mpich
 
