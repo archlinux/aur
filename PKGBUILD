@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python2-pyvisa-git
-pkgver=1.7.r7.g22a9228
+pkgver=1.8.r1.g9d6aa78
 pkgrel=1
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 arch=('any')
