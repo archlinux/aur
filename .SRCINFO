@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-az
 	pkgdesc = Azerbaijani language pack for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-az
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-az_40.0.3-1_all.deb
-	md5sums = a3cf0bc4e813d1aa631e5d42dba78787
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-az_40.0.3-3_all.deb
+	sha256sums = b6b9d3f22637cab07189c4cd1d37382917e375c232bafc83bf2869b949b258f7
 
 pkgname = iceweasel-i18n-az
 
