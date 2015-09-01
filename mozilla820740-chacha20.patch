@@ -3527,10 +3527,10 @@ Index: nss-3.17.4/nss/lib/ssl/sslimpl.h
  } ssl3CipherSuiteCfg;
  
  #ifndef NSS_DISABLE_ECC
--#define ssl_V3_SUITES_IMPLEMENTED 61
-+#define ssl_V3_SUITES_IMPLEMENTED 63
+-#define ssl_V3_SUITES_IMPLEMENTED 64
++#define ssl_V3_SUITES_IMPLEMENTED 66
  #else
- #define ssl_V3_SUITES_IMPLEMENTED 37
+ #define ssl_V3_SUITES_IMPLEMENTED 40
  #endif /* NSS_DISABLE_ECC */
 @@ -467,6 +468,7 @@
      cipher_camellia_256,
