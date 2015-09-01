@@ -17,7 +17,7 @@ source=('https://raw.github.com/pschmitt/pia-tools/master/pia-tools'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools.install'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools-update.service'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools-update.timer')
-sha256sums=('25945e042899843ed5d39807bc07e7433321d12918c5e299d0308b13c2397e3b'
+sha256sums=('cbf5002c50e084b847375cb78df0fb1b694e830657711d58b48ef8b0bee09aec'
             '22a34cb38e02ee1ed32e5697bc507df074629cbf5f1f7290a72e2c947cf611eb'
             '118d961db36fb243e059543215a818d1546ec94e8d52b24c75b7de6fe64ba749'
             'b571a8edbd9cb2a9ad63fadf360f64d4f80e291295f6c851b3a716c291ba3f8d'
