@@ -15,11 +15,12 @@
 
 # Previously used version, please uncomment if you're experiencing problems with NPM
 #_npmver=2.5.0
-_npmver=2.13.2
+# Here's the latest version of npm as supported in the Arch repository
+_npmver=2.14.1
 
 pkgname=nodejs10
 pkgver=0.10.36
-pkgrel=2
+pkgrel=3
 pkgdesc='Evented I/O for V8 javascript, frozen in version 0.10.36'
 arch=('any')
 url='http://nodejs.org/'
