@@ -3,7 +3,7 @@
 
 pkgname=fontconfig-infinality
 pkgver=2.11.94
-pkgrel=1
+pkgrel=2
 pkgdesc="Fontconfig is a library for configuring and customizing font access, patched with infinality patches."
 arch=(i686 x86_64)
 license=('GPL')
