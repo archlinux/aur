@@ -1,6 +1,6 @@
 pkgbase = lib32-libteam
 	pkgdesc = Library for controlling team network device
-	pkgver = 1.14
+	pkgver = 1.17
 	pkgrel = 1
 	url = http://libteam.org/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = lib32-libteam
 	depends = lib32-libdaemon
 	depends = lib32-jansson
 	depends = lib32-libdbus
-	source = http://libteam.org//files/libteam-1.14.tar.gz
-	sha256sums = 294cdabd85cddfeac304ecbd4f331ef3f9afbf03f8b8ef7bb3a9c5827ab22d97
+	source = http://libteam.org//files/libteam-1.17.tar.gz
+	sha256sums = 7f83bb6bccecd79b0f5b803f4cd9d8e0029e39d55d11e253647956fcf2404763
 
 pkgname = lib32-libteam
 
