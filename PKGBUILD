@@ -6,7 +6,7 @@
 _pkgname=libpgm
 pkgname=lib32-libpgm
 pkgver=5.2.122
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenPGM: implementation of the Pragmatic General Multicast (PGM, RFC3208)"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/openpgm"
@@ -25,13 +25,18 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver/openpgm/pgm"
-  ./configure --prefix=/usr
+
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+	./configure --prefix=/usr --libdir=/usr/lib32
   make
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver/openpgm/pgm"
-  make prefix="$pkgdir/usr" install
+  make DESTDIR="$pkgdir/usr" install
 
   # lib32 cleanup
   rm -rf "$pkgdir"/usr/{bin,lib,include,share} "$pkgdir/etc"
