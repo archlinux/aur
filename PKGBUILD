@@ -1,7 +1,8 @@
-# Maintainer: (epsilom) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
+# Maintainer: XavierCLL
 # Contributor: Alexander <rodseth@gmail.com>
+
 pkgname=python2-clint
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Module for developing commandline applications"
 arch=('any')
@@ -10,7 +11,7 @@ license=('ISC')
 depends=('python2')
 conflicts=('python2-clint-git')
 source=("http://pypi.python.org/packages/source/c/clint/clint-$pkgver.tar.gz")
-sha256sums=('3a9e7ba7ceaa10276bcfe85110a04633813344406ec6181063cd79210b2804a8')
+sha256sums=('05224c32b1075563d0b16d0015faaf9da43aa214e4a2140e51f08789e7a4c5aa')
 
 package() {
   cd "$srcdir/clint-$pkgver"
