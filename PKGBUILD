@@ -4,7 +4,7 @@
 
 pkgname=pycam
 pkgver=0.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Toolpath generator for 3-axis CNC machining, written in Python."
 arch=('i686' 'x86_64')
 url="http://pycam.sourceforge.net/"
@@ -13,10 +13,9 @@ depends=('python2' 'python2-opengl' 'python2-rsvg' 'python2-gtkglext' 'pstoedit'
 optdepends=('psyco')
 options=()
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
-        memoryfix.patch{,.sig})
+        memoryfix.patch)
 sha512sums=('f880d960f82eb374465a593f3b27e9f72148b3ceb99fde15bee4ccf1078acc8ef44ddfd9ee12f89e5b5e5ee14706b6e5d76eff7d0334c9526866ff263a057994'
-            'fe6720e0afc2018ce16c37bacf6e905c3e4396c74759da600bd0f8268c6dca695d08da904b40816e43c84587e0812d599a1f61eaead02b8f739a6b467c473f09'
-            'SKIP')
+            'fe6720e0afc2018ce16c37bacf6e905c3e4396c74759da600bd0f8268c6dca695d08da904b40816e43c84587e0812d599a1f61eaead02b8f739a6b467c473f09')
 
 build() {
   cd $srcdir/$pkgname-$pkgver/
