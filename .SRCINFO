@@ -1,0 +1,14 @@
+pkgbase = ruby-vpim
+	pkgdesc = This is a pure-ruby library for decoding and encoding vCard and iCalendar data ("personal information").
+	pkgver = 13.11.11
+	pkgrel = 1
+	url = https://github.com/sam-github/vpim
+	arch = any
+	license = Ruby
+	noextract = vpim-13.11.11.gem
+	options = !emptydirs
+	source = http://rubygems.org/downloads/vpim-13.11.11.gem
+	sha256sums = 482067c9bb20c516933764d295a6026ffacbe6098ae88301a768d364cc135efd
+
+pkgname = ruby-vpim
+
