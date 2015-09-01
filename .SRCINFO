@@ -1,7 +1,7 @@
 pkgbase = freetype2-infinality
 	pkgdesc = TrueType font rendering library with infinality patch
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bohoomil/fontconfig-ultimate
 	install = install.sh
 	arch = i686

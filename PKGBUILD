@@ -6,7 +6,7 @@
 
 pkgname=freetype2-infinality
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType font rendering library with infinality patch"
 arch=(i686 x86_64)
 license=('GPL')
@@ -39,7 +39,7 @@ build() {
 	patch -Np1 -i ../02-upstream-2015.08.24.patch
 	patch -Np1 -i ../03-infinality-2.6-2015.08.24.patch
 
-	./configure --prefix=/usr
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc
 	make
 }
 
