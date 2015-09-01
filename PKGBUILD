@@ -15,8 +15,8 @@ md5sums=('SKIP')
 _gitname="gdl"
 
 pkgver() {
- cd $srcdir/$_gitname
- git describe --always | sed 's|[_-]|.|g' |cut -c5-
+  cd $srcdir/$_gitname
+  git describe --tags | sed 's|[_-]|.|g' |cut -c5-
 }
 
 build() {
