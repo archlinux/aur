@@ -1,0 +1,23 @@
+pkgbase = ibus-bogo
+	pkgdesc = Vietnamese input method for IBus with Bogo engine
+	pkgver = 0.4
+	pkgrel = 0
+	url = https://github.com/BoGoEngine/ibus-bogo-python
+	arch = any
+	license = GPL v3
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = pyqt4-common
+	depends = ibus
+	depends = python
+	depends = python-gobject
+	depends = libwnck3
+	depends = python-pyqt4
+	depends = libnotify
+	depends = qt4
+	source = https://github.com/BoGoEngine/ibus-bogo-python/releases/download/v0.4.0/ibus-bogo_0.4.0.tar.gz
+	sha1sums = 7aea0cf634c29b50a3229fac0f6aec402be863be
+
+pkgname = ibus-bogo
+
