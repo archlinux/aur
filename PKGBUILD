@@ -44,7 +44,7 @@ build() {
 	ln -s ../conf.d.infinality
 
 	autoreconf
-	./configure --prefix=/usr
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 
