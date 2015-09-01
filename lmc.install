@@ -1,0 +1,4 @@
+post_install() {
+	update-desktop-database -q
+	xdg-icon-resource install /usr/share/pixmaps/lmc.xpm --size 32 --novendor
+}
