@@ -7,7 +7,7 @@ pkgname='ros-indigo-kobuki-gazebo-plugins'
 pkgver='0.4.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -38,8 +38,10 @@ depends=(${ros_depends[@]}
 
 _tag=release/indigo/kobuki_gazebo_plugins/${pkgver}-${_pkgver_patch}
 _dir=kobuki_gazebo_plugins
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_desktop-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_desktop-release.git"#tag=${_tag}
+        "gazebo6.patch")
+md5sums=('SKIP'
+         'd9c9ba6063412f8566afe27362f58e0c')
 
 build() {
   # Use ROS environment variables
@@ -49,6 +51,9 @@ build() {
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
+
+  # Apply patch
+  git -C ${srcdir}/${_dir} apply ${srcdir}/gazebo6.patch
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}

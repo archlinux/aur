@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-kobuki-gazebo-plugins
 	pkgdesc = ROS - Kobuki-specific ROS plugins for Gazebo.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/kobuki_gazebo_plugins
 	arch = any
 	license = BSD
@@ -30,7 +30,9 @@ pkgbase = ros-indigo-kobuki-gazebo-plugins
 	depends = ros-indigo-nav-msgs
 	depends = boost
 	source = kobuki_gazebo_plugins::git+https://github.com/yujinrobot-release/kobuki_desktop-release.git#tag=release/indigo/kobuki_gazebo_plugins/0.4.2-0
+	source = gazebo6.patch
 	md5sums = SKIP
+	md5sums = d9c9ba6063412f8566afe27362f58e0c
 
 pkgname = ros-indigo-kobuki-gazebo-plugins
 
