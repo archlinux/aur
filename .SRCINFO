@@ -1,6 +1,6 @@
 pkgbase = trainsported-git
 	pkgdesc = A game about writing train AIs.
-	pkgver = r560.f604786
+	pkgver = r571.246d9bc
 	pkgrel = 1
 	url = http://trainsportedgame.no-ip.org/
 	arch = any
