@@ -1,0 +1,25 @@
+pkgbase = python2-gertty-git
+	pkgdesc = console-based interface to the Gerrit Code Review system
+	pkgver = 1.0.3.24.g8c6a110
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/gertty
+	arch = any
+	license = Apache2
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2-gitpython
+	depends = python2-sqlalchemy
+	depends = python2-urwid
+	depends = python2-dateutil
+	depends = python2-requests
+	depends = python2-ordereddict
+	depends = python2-alembic
+	depends = python2-yaml
+	depends = python2-ply
+	depends = python2-voluptuous
+	depends = python2-pbr
+	source = gertty::git://git.openstack.org/stackforge/gertty
+	sha256sums = SKIP
+
+pkgname = python2-gertty-git
+
