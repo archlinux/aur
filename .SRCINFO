@@ -1,6 +1,6 @@
 pkgbase = kanboard
 	pkgdesc = Simple visual task board
-	pkgver = 1.0.8
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = http://kanboard.net/
 	install = kanboard.install
@@ -11,8 +11,8 @@ pkgbase = kanboard
 	optdepends = php-sqlite: For sqlite storage
 	optdepends = php-pgsql: For postgres storage
 	options = !strip
-	source = https://github.com/fguillot/kanboard/archive/v1.0.8.tar.gz
-	sha256sums = f89fa950930837ba11bdca0c08f805658cc2e0bdd675a36e8f719ff432ec0054
+	source = https://github.com/fguillot/kanboard/archive/v1.0.18.tar.gz
+	sha256sums = 99bce9e111226433c6845ce67991ee38c030e1f539372c7dc9e9b3d8b3342e44
 
 pkgname = kanboard
 
