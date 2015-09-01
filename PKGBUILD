@@ -22,7 +22,7 @@ package_python-husl() {
   depends=('python' 'python-setuptools')
   cd "${srcdir}/${_pyname}-${pkgver}"
   python3 setup.py install --root="${pkgdir}/" --optimize=1
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
 
 package_python2-husl() {
