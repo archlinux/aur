@@ -7,7 +7,6 @@ pkgbase = prisonarchitect-hib
 	arch = i686
 	arch = x86_64
 	license = custom:commercial
-	depends = libgl
 	depends = glu
 	provides = prisonarchitect
 	conflicts = prisonarchitect
