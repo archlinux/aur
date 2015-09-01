@@ -10,6 +10,7 @@ url="https://github.com/netblue30/firejail"
 backup=(etc/firejail/login.users)
 source=("${pkgname}::git+https://github.com/netblue30/firejail.git")
 sha512sums=('SKIP')
+conflicts=firejail
 
 pkgver() {
   	cd "${srcdir}/${pkgname}"
