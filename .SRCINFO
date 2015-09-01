@@ -1,0 +1,23 @@
+pkgbase = python-husl
+	pkgdesc = Human-friendly HSL
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = http://husl-colors.org/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/h/husl/husl-4.0.2.tar.gz
+	md5sums = 1d121924a4142d124e4c19bb19ee36ef
+
+pkgname = python-husl
+	depends = python
+	depends = python-setuptools
+
+pkgname = python2-husl
+	depends = python2
+	depends = python2-setuptools
+
