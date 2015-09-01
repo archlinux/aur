@@ -1,6 +1,6 @@
 pkgbase = obquit
 	pkgdesc = Simple logout script for Openbox
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/dglava/obquit
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = obquit
 	depends = python-gobject
 	depends = python-cairo
 	depends = gtk3
-	source = https://github.com/dglava/obquit/archive/0.2.1.tar.gz
-	md5sums = dd916c98d9f9b4f9849d64a518a6f7de
+	source = https://github.com/dglava/obquit/archive/0.2.2.tar.gz
+	md5sums = b9617de5d9232fd39de9ecda18effac7
 
 pkgname = obquit
 
