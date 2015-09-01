@@ -2,7 +2,7 @@
 # Contributor: Duncan K. <duncank@fastmail.fm>
 
 pkgname=prisonarchitect-hib
-pkgver=rc620151001
+pkgver=update5b
 pkgrel=1
 pkgdesc='Prison construction and management simulation (Humble Bundle version)'
 url='http://www.introversion.co.uk/prisonarchitect/'
@@ -17,7 +17,7 @@ install=desktop.install
 source=("hib://prisonarchitect-${pkgver}-linux.tar.gz"
         "prisonarchitect.png::http://www.introversion.co.uk/prisonarchitect/images/tier/tier_icon250.png"
         "prisonarchitect.desktop")
-md5sums=('63a33408b99183d646892c90049f787f'
+md5sums=('cf8c3efde8188021e64363127451b8de'
          'd8df107c67e1474fabf56cbd90b174ed'
          '9e6cf081869d3e0949fe803a01907d50')
 
