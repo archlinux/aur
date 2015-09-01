@@ -1,8 +1,8 @@
 pkgbase = stalin-git
 	pkgdesc = brutally optimizing Scheme compiler, with Debianization patches from github
 	pkgver = 0.11.5.51.gb9abcf0
-	pkgrel = 2
-	url = https://github.com/barak/stalin
+	pkgrel = 3
+	url = https://github.com/supergrade/stalin
 	arch = i686
 	arch = x86_64
 	license = GPL

@@ -1,10 +1,10 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=stalin-git
 pkgver=0.11.5.51.gb9abcf0
-pkgrel=2
+pkgrel=3
 pkgdesc="brutally optimizing Scheme compiler, with Debianization patches from github"
 arch=('i686' 'x86_64')
-url="https://github.com/barak/stalin"
+url="https://github.com/supergrade/stalin"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/"$_gitname"
-  ./build
+  ./build || true
 }
 
 package() {
