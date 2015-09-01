@@ -32,7 +32,7 @@ pkgbase = ros-indigo-kobuki-gazebo-plugins
 	source = kobuki_gazebo_plugins::git+https://github.com/yujinrobot-release/kobuki_desktop-release.git#tag=release/indigo/kobuki_gazebo_plugins/0.4.2-0
 	source = gazebo6.patch
 	md5sums = SKIP
-	md5sums = d9c9ba6063412f8566afe27362f58e0c
+	md5sums = 85bd435cc6549c68e923c7aa06d16592
 
 pkgname = ros-indigo-kobuki-gazebo-plugins
 

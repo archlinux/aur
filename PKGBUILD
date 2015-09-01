@@ -41,7 +41,7 @@ _dir=kobuki_gazebo_plugins
 source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_desktop-release.git"#tag=${_tag}
         "gazebo6.patch")
 md5sums=('SKIP'
-         'd9c9ba6063412f8566afe27362f58e0c')
+         '85bd435cc6549c68e923c7aa06d16592')
 
 build() {
   # Use ROS environment variables
