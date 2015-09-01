@@ -1,0 +1,22 @@
+pkgbase = perl-types-uri
+	pkgdesc = type constraints and coercions for URIs
+	pkgver = 0.006
+	pkgrel = 1
+	url = https://metacpan.org/release/Types-URI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires>=0
+	depends = perl-type-tiny>=0
+	depends = perl-types-path-tiny>=0
+	depends = perl-types-uuid>=0
+	depends = perl-uri>=0
+	depends = perl-uri-fromhash>=0
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Types-URI-0.006.tar.gz
+	md5sums = ad33c2cdb8f8a9bf23974c48dafaeb6c
+	sha512sums = 554e9a8297cc2d613713e3bba73498c0c837d1eaddfe7a1137bb72913e8d31e3945875ce6249ad4b2b003f3488592db54211f5fcf2f006d17334bd26a0012f15
+
+pkgname = perl-types-uri
+
