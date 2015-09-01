@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libgpg-error
-pkgver=1.19
-pkgrel=2
+pkgver=1.20
+pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
 url="http://www.gnupg.org"
@@ -12,7 +12,7 @@ source=("ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"
 "02-fix-symbollist-on.mingw.patch"
 "05-w32-gen.all.patch"
 "07-windows-build.patch")
-sha1sums=('4997951ab058788de48b989013668eb3df1e6939'
+sha1sums=('89c961f63469739fe816a56dcdd86c2e1897cace'
           'SKIP'
           'a7bbc4637aba322cd43aa7c5a6d99faa8f801133'
           '07f1c34b3861bc2658d1cad4fafe895f654815df'
@@ -25,7 +25,6 @@ prepare() {
 	patch -p1 -i ${srcdir}/02-fix-symbollist-on.mingw.patch
 	patch -p1 -i ${srcdir}/05-w32-gen.all.patch
   patch -p1 -i ${srcdir}/07-windows-build.patch
-  
   autoreconf -fi
 }
 
