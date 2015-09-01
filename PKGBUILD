@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname=nodejs-pageres
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 epoch=2
 pkgdesc="Get screenshots of websites in different resolutions"
@@ -16,7 +16,7 @@ source=(
 )
 noextract=("${pkgname/nodejs-/}-cli-${pkgver}.tgz")
 sha256sums=(
-  '81ba07b7ef470b251f35a1c8c2423a7f20595909247c50c0aa674b0a054de34f'
+  'c8a83189e099dd0e19f5055d133f8c452fa19f4ec62b2db4b75e5e99e10200c6'
   '2bc4beb49d4852de32aecc72c9db954596cfcfcdc980fd7693adc89d5aa5d31f'
 )
 
