@@ -1,14 +1,14 @@
 pkgbase = iceweasel-i18n-it
 	pkgdesc = Italian language pack for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = https://packages.debian.org/experimental/iceweasel-l10n-it
 	arch = any
 	license = MPL
 	license = GPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i//iceweasel/iceweasel-l10n-it_40.0.3-1_all.deb
-	sha1sums = 1cb1403bb07e113f25ebfd13d26ba24eb466c1b8
+	source = http://ftp.debian.org/debian/pool/main/i//iceweasel/iceweasel-l10n-it_40.0.3-3_all.deb
+	sha1sums = ef1a5196a31cba37183e04791b49dad99c9a5c76
 
 pkgname = iceweasel-i18n-it
 
