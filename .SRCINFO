@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-ja
 	pkgdesc = Japanese language package for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-ja
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ja_40.0.3-1_all.deb
-	md5sums = a4a7914319c9753e34d42444be1038b7
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ja_40.0.3-3_all.deb
+	sha256sums = 83bd12050cab6367c86a0d4f81212b4b937daf32ddac11aa496ac1f87f28c826
 
 pkgname = iceweasel-i18n-ja
 
