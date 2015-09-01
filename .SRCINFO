@@ -1,6 +1,6 @@
 pkgbase = gromacs-mpi
 	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
-	pkgver = 5.0.6
+	pkgver = 5.1
 	pkgrel = 1
 	url = http://www.gromacs.org/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = gromacs-mpi
 	optdepends = lesstif: needed for gmx view
 	optdepends = vmd: visualization
 	options = !libtool
-	source = https://kth.box.com/shared/static/7uwctwj33h4uo2f8d1tmdyj9afaj3hzy.gz
-	md5sums = b0bb547227143e15b3715c0115a2f4af
+	source = ftp://ftp.gromacs.org/pub/gromacs/gromacs-5.1.tar.gz
+	md5sums = e5ba00d47c4c6dec107951a7d4605f31
 
 pkgname = gromacs-mpi
 
