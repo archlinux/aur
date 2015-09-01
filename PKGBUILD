@@ -1,9 +1,9 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=2ebf0e5956d20c06435245307d5617e4afec5e82
+_git=d5b1405f29ee2acae2d6021749b666735d9e4434
 _repo=papirus-pack-kde
 pkgname=papirus-plasma-theme
-pkgver=20150825
+pkgver=20150901
 pkgrel=1
 pkgdesc="Modified and adaptive Paper plasma theme for KDE"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('4ea1ef367cfd0ddd91fd16a043808ae36bb7000f0174b8ab9337b2b0a61f7795')
+sha256sums=('1b5bb6ce3b9a101928a0db12e1befc861a2634442208e2180f2aaca9466a84ea')
 
 package() {
     install -d ${pkgdir}/usr/share/plasma/desktoptheme
