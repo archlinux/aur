@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-pyvisa
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
 )
 
 source=("pyvisa-$pkgver.tar.gz::https://github.com/hgrecco/pyvisa/archive/$pkgver.tar.gz")
-md5sums=('a55449a61536c59174b8ad207f321201')
+md5sums=('278ffd67d06026fbe00c62ffe08da094')
 
 build() {
   cd "$srcdir/pyvisa-$pkgver"
