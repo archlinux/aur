@@ -4,7 +4,7 @@ pkgbase=python-nikola-git
 _pyname=nikola
 _gitname=nikola
 pkgname=('python-nikola-git' 'python2-nikola-git' 'python-nikola-doc-git')
-pkgver=7.6.4.r0.g88338d5
+pkgver=7.6.4.r98.g9ba5c01
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -15,11 +15,13 @@ makedepends=('git'
              'python' 'python-doit' 'python-pygments' 'python-pillow'
              'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
              'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
-             'python-blinker' 'python-natsort' 'python-setuptools' 'python-requests'
+             'python-blinker' 'python-natsort' 'python-setuptools'
+             'python-requests' 'python-husl'
              'python2' 'python2-doit' 'python2-pygments' 'python2-pillow'
              'python2-docutils' 'python2-mako' 'python2-unidecode' 'python2-lxml'
              'python2-yapsy>=1.11.223' 'python2-pyrss2gen' 'python2-dateutil' 'python2-logbook'
-             'python2-blinker' 'python2-natsort' 'python2-setuptools' 'python2-requests')
+             'python2-blinker' 'python2-natsort' 'python2-setuptools'
+             'python2-requests' 'python2-husl')
 source=("git+https://github.com/getnikola/${_gitname}.git")
 md5sums=('SKIP')
 
@@ -37,7 +39,8 @@ package_python-nikola-git() {
   depends=('python' 'python-doit' 'python-pygments' 'python-pillow'
            'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
            'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
-           'python-blinker' 'python-natsort' 'python-setuptools' 'python-requests')
+           'python-blinker' 'python-natsort' 'python-setuptools'
+           'python-requests' 'python-husl')
   optdepends=('python-markdown: for Markdown support'
               'python-jinja: for Jinja2 themes'
               'python-pyphen>=0.9.1: for hyphenation'
@@ -62,7 +65,8 @@ package_python2-nikola-git() {
   depends=('python2' 'python2-doit' 'python2-pygments' 'python2-pillow'
            'python2-docutils' 'python2-mako' 'python2-unidecode' 'python2-lxml'
            'python2-yapsy>=1.11.223' 'python2-pyrss2gen' 'python2-dateutil' 'python2-logbook'
-           'python2-blinker' 'python2-natsort' 'python2-setuptools' 'python2-requests')
+           'python2-blinker' 'python2-natsort' 'python2-setuptools'
+           'python2-requests' 'python2-husl')
   optdepends=('python2-markdown: for Markdown support'
               'python2-jinja: for Jinja2 themes'
               'python2-pyphen>=0.9.1: for hyphenation'
