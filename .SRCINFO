@@ -1,7 +1,7 @@
 pkgbase = libqglviewer
 	pkgdesc = C++ library based on Qt that eases the creation of OpenGL 3D viewers
-	pkgver = 2.6.2
-	pkgrel = 3
+	pkgver = 2.6.3
+	pkgrel = 1
 	url = http://www.libqglviewer.com/
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = libqglviewer
 	depends = qt5-tools
 	conflicts = libqglviewer-qt4
 	options = !makeflags
-	source = http://www.libqglviewer.com/src/libQGLViewer-2.6.2.tar.gz
+	source = http://www.libqglviewer.com/src/libQGLViewer-2.6.3.tar.gz
 	source = qglviewer.patch
-	md5sums = e43959c53a9e0fe5d7bb831326732cd3
-	md5sums = b6e52f6510fbee258e9e30118721e393
+	md5sums = a1c964983a20d73dcfb311890cdba364
+	md5sums = 6f6d57309360581c9470fc1d21653d01
 
 pkgname = libqglviewer
 
