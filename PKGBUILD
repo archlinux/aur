@@ -3,7 +3,7 @@ pkgname=${_gitname}-git
 pkgver=323.3460366
 pkgver() { cd $_gitname && echo $(git rev-list --count master).$(git rev-parse --short master); }
 pkgrel=1
-pkgdesc="OpenType sanitizer."
+pkgdesc="OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats."
 arch=('i686' 'x86_64')
 url="https://github.com/khaledhosny/ots"
 license=('Chromium')
