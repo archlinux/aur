@@ -1,0 +1,36 @@
+pkgbase = rygel024
+	pkgdesc = UPnP AV MediaServer and MediaRenderer that allows you to easily share audio, video and pictures, and control of media player on your home network
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = http://live.gnome.org/Rygel
+	install = rygel.install
+	arch = i686
+	arch = x86_64
+	groups = gnome-extra
+	license = LGPL
+	makedepends = vala
+	makedepends = intltool
+	makedepends = python2
+	makedepends = gobject-introspection
+	depends = gupnp-av
+	depends = gupnp-dlna
+	depends = libgee
+	depends = gtk3
+	depends = libunistring
+	depends = libtracker-sparql
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = libmediaart1
+	optdepends = gst-plugins-base: Extra media codecs
+	optdepends = gst-plugins-good: Extra media codecs
+	optdepends = gst-plugins-bad: Extra media codecs
+	optdepends = gst-plugins-ugly: Extra media codecs
+	optdepends = gst-libav: Extra media codecs
+	optdepends = tracker: Share indexed media files
+	conflicts = rygel>=0.24.0
+	backup = etc/rygel.conf
+	source = http://ftp.gnome.org/pub/GNOME/sources/rygel/0.24/rygel-0.24.0.tar.xz
+	sha256sums = 98d63c8ee0532abb8f603e18fca3a9d8101a0674e2fc3e0fd88f280a4217f1b0
+
+pkgname = rygel024
+
