@@ -1,6 +1,6 @@
 # Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=soletta
-pkgver=1_beta2
+pkgver=1_beta3
 pkgrel=1
 pkgdesc="Soletta Project is a framework for making IoT devices"
 arch=('any')
@@ -12,10 +12,11 @@ checkdepends=()
 optdepends=('gtk3' 'icu' 'curl' 'systemd')
 conflicts=('soletta-git')
 source=("https://github.com/solettaproject/soletta/archive/v$pkgver.tar.gz")
-md5sums=('21464bf457b0907855f5773d6db9fd2a')
+md5sums=('3af8d4d522ce5b013187cb7e7e587d74')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
+    git submodule init && git submodule update
 }
 
 build() {
