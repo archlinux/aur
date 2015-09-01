@@ -1,7 +1,8 @@
 pkgname=seaweedfs-git
+__gitroot=github.com/chrislusf/seaweedfs
 pkgver=912.7d1e9a6
 pkgver() {
-  cd $srcdir/src/github.com/chrislusf/seaweedfs && \
+  cd $srcdir/src/$__gitroot && \
     echo $(git rev-list --count master).$(git rev-parse --short master) || \
     echo "null"
 }
@@ -14,14 +15,10 @@ depends=( )
 makedepends=('git' 'go' 'mercurial')
 provides=('seaweedfs')
 conflicts=('seaweedfs')
-_gourl=github.com/chrislusf/seaweedfs/go/weed
+_gourl=$__gitroot/go/weed
 
 build() {
   GOPATH="$srcdir" go get -fix -v -x ${_gourl}
-}
-
-check() {
-  GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}/...
 }
 
 package() {
