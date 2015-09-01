@@ -1,8 +1,8 @@
 # Maintainer: David Bailey <david.bailey@archlinux.net>
 
 pkgname=obquit-git
-pkgver=0.1.0.r2.g39861b4
-pkgrel=2
+pkgver=0.2.2.r0.g473c679
+pkgrel=1
 pkgdesc="Simple logout script for Openbox"
 arch=('any')
 url="https://github.com/dglava/obquit"
