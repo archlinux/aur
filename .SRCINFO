@@ -1,0 +1,16 @@
+pkgbase = lib32-libpgm
+	pkgdesc = OpenPGM: implementation of the Pragmatic General Multicast (PGM, RFC3208)
+	pkgver = 5.2.122
+	pkgrel = 1
+	url = http://code.google.com/p/openpgm
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = python2
+	depends = lib32-glibc
+	options = !strip
+	source = http://openpgm.googlecode.com/files/libpgm-5.2.122.tar.gz
+	sha256sums = 6b895f550b95284dcde7189b01e04a9a1c1f94579af31b1eebd32c2207a1ba2c
+
+pkgname = lib32-libpgm
+
