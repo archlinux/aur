@@ -1,0 +1,18 @@
+pkgbase = perl-types-path-tiny
+	pkgdesc = Path::Tiny types and coercions for Moose and Moo
+	pkgver = 0.005
+	pkgrel = 1
+	url = https://metacpan.org/release/Types-Path-Tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-pushd>=0
+	depends = perl-path-tiny>=0
+	depends = perl-type-tiny>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.005.tar.gz
+	md5sums = 94945f7f1a3be576c78bce82bfc89fa0
+	sha512sums = 2e9f4694950bc9426d7b72e33234e594f4c2d4cc434526e3096b7a193cebdb2b4c4890b01637a1684e1d3ca67e355879bce5b79dcc69d14ff23f591ff193623e
+
+pkgname = perl-types-path-tiny
+
