@@ -1,0 +1,28 @@
+pkgbase = xmonad-extras-darcs
+	pkgdesc = Third party extensions for xmonad with wacky dependencies
+	pkgver = 20110814
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/xmonad-extras
+	install = xmonad-extras-darcs.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = darcs
+	depends = haskell-x11>=1.4.3
+	depends = haskell-containers
+	depends = haskell-directory
+	depends = haskell-mtl
+	depends = haskell-old-locale
+	depends = haskell-old-time
+	depends = haskell-process
+	depends = haskell-random
+	depends = haskell-unix
+	depends = haskell-xmonad-contrib
+	depends = haskell-parsec
+	depends = haskell-split
+	provides = xmonad-extras
+	conflicts = xmonad-extras
+	options = staticlibs
+
+pkgname = xmonad-extras-darcs
+
