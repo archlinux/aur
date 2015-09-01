@@ -1,0 +1,561 @@
+          Unity Pro and Unity Personal Software License Agreement 5.x
+
+   Last updated: March 2, 2015
+
+Summary of Important Use Restrictions
+
+   Please Read the Entire Agreement and Definitions Below
+
+  Scope of License
+
+   This Software License Agreement governs your use of the Software.
+   Depending upon your requirements and circumstances, you will be permitted
+   to use either Unity Pro or Unity Personal (formerly known as Unity Free).
+   This Software License Agreement governs use of both Unity Pro and Unity
+   Personal.
+
+  Primary Differences Between Unity Pro and Unity Personal
+
+   Although Unity Personal has most of the features and functionality that
+   Unity Pro has, Unity Personal: (a) includes certain features that cannot
+   be disabled when your application is launched, including a Unity branded
+   startup screen and certain analytics data collection; (b) does not provide
+   team collaboration functionality; and (c) users will be required to
+   complete a user survey to activate the Software. Unity Pro users who are
+   not eligible to use Unity Personal may not develop and publish Licensee
+   Content for the iOS and Android platforms without purchasing the
+   applicable Unity Pro Add-On Product license. Unity may monitor your
+   compliance with and enforce these restrictions and requirements including
+   but not limited to monitoring the number of downloads of your Licensee
+   Content and any available revenue estimate data.
+
+  Which Version You Can Use - Unity Personal Revenue Restrictions
+
+   Unity Personal (including the iOS and Android platform deployment options)
+   may not be used by:
+
+    1. a Commercial Entity that has either: (a) reached annual gross revenues
+       in excess of US$100,000, or (b) raised funds (including but not
+       limited to crowdfunding) in excess of US$100,000, in each case during
+       the most recently completed fiscal year;
+    2. a Non-Commercial Entity with a total annual budget in excess of
+       US$100,000 (for the entire Non-Commercial Entity (not just a
+       department)) for the most recently completed fiscal year; or
+    3. an individual (not acting on behalf of a Legal Entity) or a Sole
+       Proprietor that has reached annual gross revenues in excess of
+       US$100,000 from its use of the Software during the most recently
+       completed fiscal year, which does not include any income earned by
+       that individual which is unrelated to its use of the Software.
+
+  You May Not Use Unity Personal with Unity Pro or any Unity Pro Add-On Products
+
+   You may not combine or integrate Licensee Content that you develop with
+   Unity Personal simultaneously with any Licensee Content that you develop
+   with Unity Pro or any Unity Pro Add-On Products. Licensee Content
+   developed with Unity Personal will be tagged with an identifier that is
+   used to enforce this restriction.
+
+  One User Per License
+
+   A specific license key is required for each individual using any version
+   of the Software. Unity Pro users may install the Software on both a
+   primary and a secondary computer for use only by the same user. You may
+   not use both installations simultaneously. If you purchase a standard,
+   single license key educational license, you must purchase a license for
+   each computer on which the Software is to be used.
+
+  Unity Console Add-on Developer Requirements
+
+   Use of the Software with certain console platforms is subject to the Unity
+   Console Add-on Developer Requirements as set forth on the Unity website.
+   The license keys to enable certain Unity Console Add-ons may be
+   distributed by the console manufacturer.
+
+  Streaming and Cloud Gaming Restrictions
+
+   You may not directly or indirectly distribute interactive Licensee Content
+   by means of streaming or broadcasting where Licensee Content is primarily
+   executed on a server and transmitted as a video stream or via low level
+   graphics render commands over the open Internet to end user devices
+   without a separate license from Unity. This restriction does not prevent
+   end users from remotely accessing Licensee Content from an end user device
+   that is running on another end user device.
+
+  Embedded Software Restriction
+
+   You may not directly or indirectly distribute Licensee Content installed
+   on more than 1,000 electronic devices or systems if such Licensee Content
+   provides the user interface or primary functionality of such electronic
+   device or system without a separate license from Unity. This restriction
+   does not prevent you from distributing Licensee Content pre-installed on
+   personal computers and consumer electronic devices such as mobile phones,
+   tablets, televisions or set top boxes as long as such Licensee Content
+   does not provide the user interface or primary functionality of such
+   device.
+
+  Gambling Restrictions
+
+   You may not distribute or publish any Licensee Content in connection with
+   any Gambling Activities without a separate license from Unity.
+
+UNITY SOFTWARE LICENSE AGREEMENT 5.x
+
+  Acceptance and Legal Entity Representations
+
+   PLEASE READ THE FOLLOWING TERMS AND CONDITIONS CAREFULLY BEFORE
+   DOWNLOADING, INSTALLING OR USING THE SOFTWARE. THE TERMS AND CONDITIONS OF
+   THIS SOFTWARE LICENSE AGREEMENT (“AGREEMENT”) GOVERN USE OF THE SOFTWARE
+   UNLESS YOU AND UNITY TECHNOLOGIES APS (“UNITY”) HAVE EXECUTED A SEPARATE
+   AGREEMENT GOVERNING USE OF THE SOFTWARE.
+
+   Unity is willing to license the Software to you only upon the condition
+   that you accept all the terms contained in this Agreement. By checking the
+   box with links to this Agreement, clicking “accept” or by downloading,
+   installing or using the Software, you are agreeing that you understand
+   this Agreement and accept all of its terms. If you are accepting the terms
+   of this Agreement on behalf of a Legal Entity, you represent and warrant
+   that you have the authority to bind that Legal Entity to the terms of this
+   Agreement, and, in such event, “you” and “your” will refer to that Legal
+   Entity. If you do not accept all the terms of this Agreement, then Unity
+   is unwilling to license the Software to you, and you must destroy all
+   copies of the Software in your possession or control.
+
+   If you are accepting the terms of this Agreement for use of Unity
+   Personal, you represent and warrant that:
+
+    1. if you are accepting the terms on behalf of a Legal Entity which is a
+       Commercial Entity, both (a) its annual gross revenues do not exceed
+       US$100,000, or (b) raised funds (including but not limited to
+       crowdfunding) do not exceed US$100,000, in each case during the most
+       recently completed fiscal year and in any equivalent currency;
+    2. if you are accepting the terms on behalf of a Legal Entity which is a
+       Non-Commercial Entity, the total annual budget does not exceed
+       US$100,000 (for the entire Non-Commercial Entity (not just a
+       department)) for the most recently completed fiscal year (including in
+       any equivalent currency); and
+    3. if you are an individual (not acting within a role in a Legal Entity)
+       or if you are accepting the term on behalf of a Legal Entity as a Sole
+       Proprietor, the annual gross revenues from your or its use of the
+       Software do not exceed of US$100,000 during the most recently
+       completed fiscal year (including in any equivalent currency), which
+       does not include any income made which is not related to its use of
+       the Software.
+
+   During the term of this Agreement, you expressly acknowledge and agree
+   that if you are a Unity Personal user and the above thresholds are
+   exceeded, then you may no longer use Unity Personal, and you must either
+   purchase Unity Pro or destroy all copies of Unity Personal in your
+   possession or control and cease distribution of any Licensee Content
+   created with the Software. Unity will monitor your compliance with and
+   enforce these restrictions and requirements including but not limited to
+   monitoring the number of downloads of your Licensee Content and any
+   available revenue estimate data.
+
+   Unity Personal users will be required to complete a user survey in order
+   to activate the Software.
+
+   If you are using Unity Pro, are not eligible to use Unity Personal and
+   want to develop and publish content for the iOS and Android platforms, you
+   must purchase the applicable Unity Pro Add-On Products to undertake the
+   same.
+
+  1. Grant of License.
+
+    1. Use Rights. Conditioned upon your compliance with the terms and
+       conditions of this Agreement and payment of all applicable fees, Unity
+       grants you a non-exclusive, non-transferable license: (a) to install
+       and execute the executable form of the Software, solely for internal
+       use by a single person to develop Licensee Content during the
+       applicable license term; and (b) if you have licensed a version of the
+       Software other than a trial or educational version, to distribute the
+       runtime portion of the Software, on a royalty-free basis, solely as
+       embedded or incorporated into Licensee Content and solely to third
+       parties to whom you license or sell Licensee Content pursuant to an
+       agreement that is no less protective of Unity and its licensors as
+       this Agreement. You may not sublicense the rights granted under clause
+       1(1)(a), but you may sublicense the rights granted under 1(1)(b)
+       solely to third parties to whom you license or sell Licensee Content
+       to act as distributors thereof pursuant to an agreement no less
+       protective of Unity and its licensors as this Agreement.
+    2. Copies of Unity Products. Unity Pro users may install the Software on
+       both a primary computer and a secondary computer, solely for your
+       convenience, but only for use by a single person. You may make a
+       single copy of the Software solely for backup or archival purposes.
+       For the sake of clarity, you may only use one installation at any
+       given time. We may in our sole discretion authorize you to install the
+       Software on an additional computer or computers upon deactivation of
+       the Software installed on existing computers.
+    3. Educational Product Restrictions. If you are using an educational
+       version of the Software, your license to use the Software and
+       distribute the runtime portion of the Software in your Licensee
+       Content is limited to educational, non-commercial purposes.
+    4. Trial Product Restrictions. If you are using a trial version of the
+       Software, you may install the Software on a single computer only and
+       you may not publish or distribute any Licensee Content.
+    5. Unity Console Add-on Developer Requirements. Use of the Software with
+       certain console platforms is subject to the Unity Console Add-on
+       Developer Requirements as set forth on the Unity website. The license
+       keys to enable certain Unity Console Add-ons may be distributed by the
+       console manufacturer.
+
+  2. Restrictions.
+
+    1. Unity Personal Restrictions. You acknowledge and agree that as an
+       express condition to the license rights granted under Section 1, you
+       are not permitted to combine or integrate in any manner any Licensee
+       Content developed with Unity Personal with any Licensee Content
+       developed simultaneously with Unity Pro. For the avoidance of doubt:
+       (a) if you are a permitted user of Unity Personal, you may commence a
+       project using only Unity Personal and subsequently upgrade all (but
+       not less than all) of your licenses to Unity Pro and the applicable
+       Unity Pro Add-On Products, and (b) any user of the Software may use
+       content licensed from third parties regardless of the version of the
+       Software that was used to develop such third party content. You
+       acknowledge and agree that Unity may tag Licensee Content created with
+       Unity Personal with an identifier to prevent such a prohibited
+       combination of Licensee Content.
+    2. Embedded Software Restriction. You may not directly or indirectly
+       distribute Licensee Content installed on more than 1,000 electronic
+       devices or systems if such Licensee Content provides the user
+       interface or primary functionality of such electronic device or system
+       without a separate license from Unity. This restriction does not
+       prevent you from distributing Licensee Content pre-installed on
+       personal computers and consumer electronic devices such as mobile
+       phones, tablets, televisions or set top boxes as long as such Licensee
+       Content does not provide the user interface or primary functionality
+       of such device.
+    3. Streaming and Cloud Gaming Restriction. You may not directly or
+       indirectly distribute interactive Licensee Content by means of
+       streaming or broadcasting such Licensee Content that is primarily
+       executed on a server and transmitted over the Internet or other
+       network to end user devices without a separate license from Unity.
+       This restriction does not prevent end users from remotely accessing
+       Licensee Content from an end user device that is running on another
+       end user device.
+    4. Gambling Restriction. You may not distribute or publish any Licensee
+       Content in connection with any Gambling Activities without a separate
+       license agreement from Unity.
+    5. General Restrictions. Except as expressly specified in this Agreement,
+       you may not: (a) copy (except in the course of loading or installing)
+       or modify or create derivative works of the Software; (b) distribute,
+       transfer, sublicense, lease, lend, rent or otherwise provide access to
+       the Software to any third party; (c) make the functionality of the
+       Software available to multiple users or third parties through any
+       means, including but not limited to by uploading the Software to a
+       network or file-sharing service or through any hosting, application
+       services provider, service bureau, software-as-a-service (SaaS) or any
+       other type of services; (d) use the Software to develop a competing
+       product; or (e) do anything that could cause or result in the Software
+       (including the runtime portion thereof) being subject to any open
+       source license (or similar license) that requires as a condition of
+       use, modification or distribution that the Software (including the
+       runtime portion thereof) or other software combined or distributed
+       with the Software be: (i) disclosed or distributed in source code
+       form; (ii) licensed for the purpose of making derivative works; or
+       (iii) redistributable at no charge. You acknowledge and agree that
+       portions of the Software, including but not limited to the source code
+       and the specific design and structure of individual modules or
+       programs, are confidential and constitute or contain trade secrets of
+       Unity and its licensors. Accordingly, you agree not to disassemble,
+       decompile or reverse engineer the Software, in whole or in part, or
+       permit or authorize a third party to do so, except to the extent such
+       activities are expressly permitted by law notwithstanding this
+       prohibition.
+
+  3. Ownership.
+
+   The Software is licensed, not sold. Unity and/or its licensors retain
+   ownership of the Software including all intellectual property rights
+   therein. The Software is protected by copyright law and international
+   treaties. Unity reserves all rights in the Software not expressly granted
+   to you in this Agreement. You will not delete or in any manner alter any
+   Unity or third-party copyright, trademark or other proprietary rights
+   notices or markings appearing on or in the Software (including the runtime
+   portion thereof).
+
+  4. Fees and Taxes.
+
+   You agree to pay all amounts due for the Software as set forth in the
+   applicable Unity online store cart, quote and/or invoice. All license
+   purchases are subject to the purchases, billing information and other
+   terms set forth in the [1]Unity Terms of Use. If you purchase a
+   subscription license, you also agree to the [2]subscription terms set
+   forth on the Unity online store. Unity may offer other services in
+   conjunction with Software and such services shall be subject to the
+   applicable terms of service and fees. All fees payable under this
+   Agreement are net amounts and are payable in full, without deduction for
+   taxes or duties of any kind. You will be responsible for, and will
+   promptly pay, all taxes and duties of any kind (including but not limited
+   to sales, use and withholding taxes) associated with this Agreement or
+   your receipt or use of the Software, except for taxes based on Unity’s net
+   income. In the event that Unity is required to collect any tax for which
+   you are responsible, you will pay such tax directly to Unity. If you pay
+   any withholding taxes that are required to be paid under applicable law,
+   you will promptly furnish Unity with written documentation of all such tax
+   payments, including receipts.
+
+  5. Consent to Data Collection, Privacy Policy Obligations and Verification.
+
+    1. You acknowledge and accept [3]Unity's privacy policy. You agree that
+       the Software (including the Unity runtime in your Licensee Content)
+       may send data to Unity to: (a) check for Software updates; (b) provide
+       aggregated usage statistics of your use of the Software and the use of
+       your Licensee Content by end users; (c) provide analytics and
+       advertising services; and (d) validate license keys in order to
+       prevent unauthorized use. You acknowledge and agree that Unity may
+       deliver messages and contact you about the Software and other Unity
+       product and service offerings.
+    2. You agree to distribute Licensee Content with a privacy policy
+       explaining the data you collect through the Licensee Content and how
+       you collect, use, share, and protect it; and to include a disclosure
+       that Unity is your service provider and collects certain data from
+       your Licensee Content, along with a link to [4]Unity's privacy policy,
+       which may be updated from time to time.
+    3. To ensure compliance with this Agreement, you agree that within thirty
+       (30) days from the date of Unity or its authorized representative’s
+       request, you shall provide all pertinent records and information
+       requested in order to verify that your installation and use of any and
+       all Software is in compliance with this Agreement along with a signed
+       verification that all such information is complete and correct.
+       Furthermore, if you are a Legal Entity, Unity or its authorized
+       representatives may upon reasonable prior notice access and inspect
+       your facilities and computer systems to review and verify your
+       compliance with this Agreement. Any such inspection shall be conducted
+       during regular business hours at your facilities or electronically via
+       remote access. In the event you have impermissibly used Unity Personal
+       (or other products) or have not paid the applicable fees for all
+       Software you have deployed or used, you agree to promptly pay for such
+       Software and the reasonable inspection costs.
+
+  6. Support.
+
+   You may access the online forums and the Unity Answers knowledge base on
+   the Unity web site. You may also email support@unity3d.com for assistance
+   with license keys. Technical support may be offered by Unity at its sole
+   discretion as described on the Unity website. You acknowledge and agree
+   that Unity has no obligation under this Agreement to provide patches,
+   updates, new releases or new versions of the Software.
+
+  7. Term.
+
+   If you have licensed a trial version of the Software, the license granted
+   under this Agreement will remain in effect for a period of 30 days, unless
+   earlier terminated in accordance with this Agreement. For paid in full,
+   perpetual licenses, the license granted under this Agreement will remain
+   in effect unless earlier terminated in accordance with this Agreement. For
+   subscription based licenses, the license granted under this Agreement is
+   for the initial subscription period, and thereafter such license will
+   automatically renew on a month to month basis unless you renew the
+   subscription for a new subscription term or terminate and cancel the
+   license as described on the Unity web site at the time of license
+   purchase. Unity may cease offering perpetual licenses and/or updates and
+   new versions for such perpetual licenses and may modify or terminate
+   subscription or other Software license or service offerings at any time.
+   The license granted under this Agreement will automatically terminate,
+   with or without notice from Unity, if you breach any term of this
+   Agreement or fail to pay all fees due for the license. Upon termination,
+   you must at Unity’s option either promptly delete and destroy or return to
+   Unity all copies of the Software in your possession or control. Unity may
+   also disable the Software you have licensed upon expiration of a
+   subscription term license or in the event you breach this Agreement.
+
+  8. No Warranty.
+
+   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND. UNITY AND
+   ITS LICENSORS DISCLAIM ALL WARRANTIES AND CONDITIONS, EXPRESS OR IMPLIED,
+   INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES AND CONDITIONS OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT, AND
+   ANY WARRANTIES AND CONDITIONS ARISING OUT OF COURSE OF DEALING OR USAGE OF
+   TRADE. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM
+   UNITY OR ELSEWHERE WILL CREATE ANY WARRANTY OR CONDITION NOT EXPRESSLY
+   STATED IN THIS AGREEMENT.
+
+  9. Indemnity.
+
+   To the maximum extent permitted by law, you agree to indemnify, defend and
+   hold harmless Unity and its affiliates against any and all claims,
+   actions, suits or proceedings, as well as any and all losses, liabilities,
+   damages, costs and expenses, including, without limitation, reasonable
+   legal fees, arising out of or accruing from your Licensee Content or your
+   violation of this Agreement.
+
+  10. Limitation of Liability.
+
+   UNITY AND ITS LICENSORS’ TOTAL LIABILITY TO YOU FROM ALL CAUSES OF ACTION
+   AND UNDER ALL THEORIES OF LIABILITY WILL BE LIMITED TO THE GREATER OF THE
+   AMOUNTS PAID BY YOU FOR THE SOFTWARE OR ONE HUNDRED U.S. DOLLARS (US$100).
+   IN NO EVENT WILL UNITY OR ITS LICENSORS BE LIABLE TO YOU FOR ANY SPECIAL,
+   INCIDENTAL, EXEMPLARY, PUNITIVE OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS
+   OF DATA, BUSINESS, PROFITS OR ABILITY TO EXECUTE) OR FOR THE COST OF
+   PROCURING SUBSTITUTE PRODUCTS ARISING OUT OF OR IN CONNECTION WITH THIS
+   AGREEMENT OR THE EXECUTION OR PERFORMANCE OF THE SOFTWARE, WHETHER SUCH
+   LIABILITY ARISES FROM ANY CLAIM BASED UPON CONTRACT, WARRANTY, TORT
+   (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, AND WHETHER OR NOT
+   UNITY OR ITS LICENSORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH LOSS
+   OR DAMAGE. THE FOREGOING LIMITATIONS WILL SURVIVE AND APPLY EVEN IF ANY
+   LIMITED REMEDY SPECIFIED IN THIS AGREEMENT IS FOUND TO HAVE FAILED OF ITS
+   ESSENTIAL PURPOSE. SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR
+   EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE
+   ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU.
+
+  11. U.S. Government Rights.
+
+   The Software and computer software documentation (“Documentation”) are
+   “commercial items” as that term is defined in the Federal Acquisition
+   Regulation (“FAR”) 2.101, consisting of “commercial computer software” and
+   “commercial computer software documentation,” respectively, as such terms
+   are used in FAR 12.212 and DFARS 227.7202.If acquired by or on behalf of a
+   civilian agency, the U.S. Government acquires or will acquire the Software
+   and/or Documentation and other technical data subject to the terms of this
+   Agreement as required in 48 C.F.R. 12.212 (Computer Software) and 12.211
+   (Technical Data) of the FAR and its successors. If acquired by or on
+   behalf of any agency within the Department of Defense (“DOD”), the U.S.
+   Government acquires or will acquire the Software and/or Documentation
+   subject to the terms of this Agreement as specified in 48 C.F.R.
+   227.7202-3 of the DOD FAR Supplement (“DFARS”) and its successors. This
+   U.S. Government Rights clause is in lieu of, and supersedes, any other
+   FAR, DFARS, or other clause or provision that addresses Government rights
+   in computer software or technical data.
+
+  12. Export Law.
+
+   You agree to comply fully with all export laws and regulations to ensure
+   that neither the Software nor any technical data related thereto nor any
+   direct product thereof are exported or re-exported directly or indirectly
+   in violation of, or used for any purposes prohibited by, such laws and
+   regulations.
+
+  13. Choice of Law and Dispute Resolution.
+
+    1. Choice of Law. This Agreement will be governed by and construed in
+       accordance with the laws of Denmark, without regard to or application
+       of conflict of laws rules or principles. The United Nations Convention
+       on Contracts for the International Sale of Goods will not apply.
+    2. Arbitration of Disputes. Except as set forth below in Section 13(5),
+       any dispute arising out of or in connection with this Agreement,
+       including any disputes regarding the existence, validity or
+       termination thereof, shall be settled by arbitration.
+    3. Arbitration Rules. The parties agree to arbitrate all disputes by
+       simplified arbitration arranged by The Danish Institute of Arbitration
+       in accordance with the rules of simplified arbitration procedure
+       adopted by The Danish Institute of Arbitration and in force at the
+       time when such proceedings are commenced.
+    4. Class Action Waiver. The parties further agree that any arbitration
+       shall be conducted in their individual capacities only and not as a
+       class action or other representative action, and the parties expressly
+       waive their right to file a class action or seek relief on a class
+       basis. YOU AND UNITY AGREE THAT EACH MAY BRING CLAIMS AGAINST THE
+       OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF
+       OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.
+       If any court or arbitrator determines that the class action waiver set
+       forth in this paragraph is void or unenforceable for any reason or
+       that an arbitration can proceed on a class basis, then the arbitration
+       provision set forth above shall be deemed null and void in its
+       entirety and the parties shall be deemed to have not agreed to
+       arbitrate disputes.
+    5. Arbitration Exceptions. Notwithstanding the parties’ agreement to
+       resolve all disputes through arbitration, either party may bring an
+       action in court: (a) to seek injunctive relief or to enforce its
+       intellectual property rights (“intellectual property rights” means
+       patents, copyrights, moral rights, trademarks, and trade secrets, but
+       not privacy or publicity rights), including without limitation to seek
+       injunctive relief; or (b) in cases that do not involve intellectual
+       property rights, to seek temporary, preliminary or other expedited or
+       provisional injunctive relief (but not money damages). If you reside
+       (or your principal place of business is) within the United States and
+       the parties have an intellectual property rights dispute, you and
+       Unity agree to submit to the personal and exclusive jurisdiction of
+       and venue the state and federal courts located in San Francisco
+       County, California. If you reside (or your principal place of business
+       is) outside of the United States and the parties have an intellectual
+       property rights dispute, you and Unity agree to submit to the personal
+       and exclusive jurisdiction of and venue the courts located in
+       Copenhagen, Denmark. The parties agree to accept service of process by
+       mail, and hereby waive any and all jurisdictional and venue defenses
+       otherwise available.
+
+  14. General.
+
+   This Agreement is the complete and exclusive understanding and agreement
+   between the parties regarding its subject matter, and supersedes all
+   proposals, understandings or communications between the parties, oral or
+   written, regarding its subject matter, unless you and Unity have executed
+   a separate agreement governing use of the Software. The English language
+   version of this Agreement is legally binding in case of any
+   inconsistencies between the English version and any translations. Any
+   terms or conditions contained in your purchase order or other ordering
+   document that are inconsistent with or in addition to the terms and
+   conditions of this Agreement are hereby rejected by Unity and will be
+   deemed null. You may not assign or transfer this Agreement or any rights
+   granted hereunder, by operation of law or otherwise, without Unity’s prior
+   written consent, and any attempt by you to do so, without such consent,
+   will be void. Without limiting the generality of the foregoing, if you are
+   an employee of a Legal Entity, you may not assign or transfer this
+   Agreement or any rights granted hereunder to your employer without Unity’s
+   prior written consent, and any attempt by you to do so, without such
+   consent, will be void. Except as expressly set forth in this Agreement,
+   the exercise by either party of any of its remedies under this Agreement
+   will be without prejudice to its other remedies under this Agreement or
+   otherwise. All notices or approvals required or permitted under this
+   Agreement will be in writing and delivered by confirmed facsimile
+   transmission, by overnight delivery service, or by certified mail, and in
+   each instance will be deemed given upon receipt. All notices or approvals
+   will be sent to the addresses set forth in the applicable ordering
+   document or invoice or to such other address as may be specified by either
+   party to the other in accordance with this section. The failure by either
+   party to enforce any provision of this Agreement will not constitute a
+   waiver of future enforcement of that or any other provision. Any waiver,
+   modification or amendment of any provision of this Agreement will be
+   effective only if in writing and signed by authorized representatives of
+   both parties. If any provision of this Agreement is held to be
+   unenforceable or invalid that provision will be enforced to the maximum
+   extent possible and the other provisions will remain in full force and
+   effect.
+
+  15. Definitions.
+
+   “Commercial Entity” means any company, corporation, limited liability
+   company, general partnership, limited partnership, limited liability
+   partnership, proprietorship, joint venture or other form of business
+   organization, excluding any government, non-profit, educational or
+   academic institution.
+
+   “Gambling Activities” means any gambling product or service offered in any
+   market or application that is regulated by any local, state or national
+   authority and requires a gambling license.
+
+   “Legal Entity” means any Commercial Entity, Non-Commercial Entity or Sole
+   Proprietor.
+
+   “Licensee Content” means games, applications, software or other content
+   that you develop with the Software.
+
+   “Non-Commercial Entity” means any government, non-profit, educational or
+   academic institution, including but not limited to any primary or
+   secondary school, vocational school, college or university.
+
+   “Software” means all 5.x versions and updates of all the Unity software
+   products identified on Unity’s website.
+
+   “Sole Proprietor” means any Commercial Entity that is owned or controlled
+   by a single individual, with no other partners or employees.
+
+   “Unity Personal” means the version of the Software that is available for
+   free to Sole Proprietors, Commercial Entities with annual gross revenues
+   (based on prior fiscal year) of less than US$100,000, and Non-Commercial
+   Entities with a total annual budget (based on prior fiscal year) for the
+   legal entire entity (not department) of less than US$100,000.
+
+   “Unity Console Add-on Developer Requirements” means the applicable
+   registration process and terms a developer must follow and accept to
+   become a registered developer with the applicable console platform as set
+   forth or linked on the Unity website.
+
+   “Unity Pro” means the premium version of the Software available to
+   commercial entities not eligible to use Unity Personal.
+
+   “Unity Pro Add-On Products” means the versions of the add-on Software
+   products identified on Unity’s website that are licensed for an additional
+   license fee such as those for the iOS and Android platforms available to
+   entities not eligible to use Unity Personal.
+
