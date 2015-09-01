@@ -1,7 +1,7 @@
 pkgbase = git-annex-bin
 	pkgdesc = Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.
 	pkgver = 5.20150825
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git-annex.branchable.com/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = git-annex-bin
 	depends = dnsutils
 	depends = aria2
 	provides = git-annex
-	conflicts = git-annex,
+	conflicts = git-annex
 	conflicts = git-annex-git
 	replaces = git-annex-standalone
 	source = git-annex
