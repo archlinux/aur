@@ -1,20 +1,20 @@
 pkgbase = nvidia-e531
 	pkgdesc = NVIDIA drivers for linux-E531
-	pkgver = 352.30
-	pkgrel = 4
+	pkgver = 352.41
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-e531.install
 	arch = x86_64
 	groups = ThinkPad-E531
 	license = custom
-	makedepends = linux-e531-headers>=4.1
-	depends = linux-e531>=4.1
-	depends = nvidia-utils=352.30
+	makedepends = linux-e531-headers>=4.2
+	depends = linux-e531>=4.2
+	depends = nvidia-utils=352.41
 	depends = libgl
 	provides = nvidia
 	options = !strip
-	source = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.30/NVIDIA-Linux-x86_64-352.30-no-compat32.run
-	sha256sums = 0f7acc89b2392c71cc8713b0291606052e0cd8971ee951901dde37387d85efc0
+	source = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.41/NVIDIA-Linux-x86_64-352.41-no-compat32.run
+	sha256sums = a67cca72f7de2b5a8d822001b5a78012373989a97388fe9eff56a75e6cad30cd
 
 pkgname = nvidia-e531
 
