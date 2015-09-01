@@ -1,14 +1,14 @@
 pkgbase = lib32-libndp
 	pkgdesc = Library for Neighbor Discovery Protocol
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = http://libndp.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	depends = glibc
-	source = http://libndp.org//files/libndp-1.4.tar.gz
-	sha256sums = 3a0be247ec024bd72fe5b40ea9491519c4023c7faf078311196fab817b2fd55f
+	source = http://libndp.org//files/libndp-1.5.tar.gz
+	sha256sums = faf116ab70ce9514ec4e8573556025debea08f606e7f38b616de1f26e120c795
 
 pkgname = lib32-libndp
 
