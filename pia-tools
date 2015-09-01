@@ -243,11 +243,16 @@ update_config() {
     echo -n 'Updating configuration... '
     local ovpn ovpn_spaceless overwrite=$([[ -n "$FORCE" ]] && echo '-o')
 
+    # Fetch server config files
+    curl -sL -o "$PIA_CONFIG_DIR/openvpn.zip" "$PIA_CONFIG_URL" || {
+        echo 'Could not download openvpn config files'
+        exit 4
+    }
+
     # Clean up
     rm -f "$PIA_CONFIG_DIR/ca.crt" "$PIA_CONFIG_DIR"/*.ovpn
 
-    # Fetch server config files
-    curl -sL -o "$PIA_CONFIG_DIR/openvpn.zip" "$PIA_CONFIG_URL"
+    # Extract config files
     unzip "$overwrite" -d "$PIA_CONFIG_DIR" -q "$PIA_CONFIG_DIR/openvpn.zip"
 
     # Replace space by underscore in filenames
