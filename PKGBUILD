@@ -2,9 +2,9 @@
 
 pkgname=python2-ddg-git
 epoch=1
-pkgver=0.113.e144a01
+pkgver=0.80.3bb0830
 pkgrel=1
-pkgdesc="Duckduckgo commandline tool"
+pkgdesc="Duckduckgo zero-click api for your command-line"
 arch=('i686' 'x86_64')
 url="https://github.com/justinls/ddg"
 license=('MIT')
