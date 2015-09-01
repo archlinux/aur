@@ -8,7 +8,7 @@ _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-pl
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Polish language package for Iceweasel"
 arch=('any')
 url="http://www.mozilla.com/"
@@ -22,3 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
+sha256sums=('5ee13525a0c8cb9ea98b5c950cd747187e5f7fa3d4a53898363e910bd9462b87')
