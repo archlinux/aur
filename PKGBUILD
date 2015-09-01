@@ -2,8 +2,8 @@
 
 _realname=FrozenWay
 pkgname=frozenway
-pkgver=1.6.5
-pkgrel=6
+pkgver=1.6.6
+pkgrel=1
 pkgdesc="A project that gives those involved the ability to pass through any firewall or proxy"
 arch=('i686' 'x86_64')
 url="http://www.frozendo.com/frozenway"
@@ -17,8 +17,8 @@ source_i686=("$pkgname-$pkgver-i686.tar.gz::http://www.frozendo.com/frozenway/do
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::http://www.frozendo.com/frozenway/download/linux-x86_64/$pkgver")
 md5sums=('2f5fafd15a76516f2b7335f9a104f7be'
          '739255c8a65943dfc4059d809697c3ac')
-md5sums_i686=('465f3d26dac16f9f416359d924ae8fb3')
-md5sums_x86_64=('85d117de94ca702287f6b1cb48c6cc3d')
+md5sums_i686=('0f3f920fa7b54c999f875d39a07010ea')
+md5sums_x86_64=('214fa336ef70b42bfffc8e597af14495')
 
 prepare() {
 	mv -v "$srcdir/$_realname $pkgver" "$srcdir/$pkgname-$pkgver"
