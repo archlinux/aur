@@ -3,7 +3,7 @@
 
 pkgname=ruby-vpim
 pkgver=13.11.11
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a pure-ruby library for decoding and encoding vCard and iCalendar data ("personal information").'
 arch=('any')
 url='https://github.com/sam-github/vpim'
@@ -20,8 +20,5 @@ package() {
 
   gem install --ignore-dependencies --no-user-install -N -i "${pkgdir}"/${_gemdir} ${pkgname#*-}-${pkgver}.gem
   find "${pkgdir}" -type f -name *.gem -delete
-
-  install -dm 755 "${pkgdir}"/usr/share/licenses/${pkgname}
-  ln -s ${_gemdir}/gems/${pkgname#*-}-${pkgver}/MIT-LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
 
