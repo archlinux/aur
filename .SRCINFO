@@ -1,7 +1,7 @@
 pkgbase = backup-conf
 	pkgdesc = This script create a backup of your config files in a tree format on current folder
 	pkgver = 5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LaraCraft93/backup-conf
 	install = backup-conf.install
 	arch = any
