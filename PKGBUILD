@@ -1,7 +1,8 @@
 pkgname=jsonpp-git
-pkgver=null
+_gourl=github.com/jmhodges/jsonpp
+pkgver=40.508c54e
 pkgver() {
-  cd $srcdir/src/github.com/chrislusf/seaweedfs && \
+  cd $srcdir/src/$_gourl && \
     echo $(git rev-list --count master).$(git rev-parse --short master) || \
     echo "null"
 }
@@ -14,7 +15,6 @@ depends=( )
 makedepends=('git' 'go')
 provides=('jsonpp')
 conflicts=('jsonpp')
-_gourl=github.com/jmhodges/jsonpp
 
 build() {
   GOPATH="$srcdir" go get -fix -v -x ${_gourl}
