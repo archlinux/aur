@@ -1,8 +1,9 @@
 pkgbase = virt-viewer
 	pkgdesc = Lightweight interface for interacting with the graphical display of virtualized guest OS
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://virt-manager.org/
+	install = virt-viewer.install
 	arch = any
 	license = GPL
 	makedepends = libtool

@@ -1,0 +1,6 @@
+post_install() {
+  /usr/bin/update-mime-database /usr/share/mime
+}
+post_remove() {
+  /usr/bin/update-mime-database /usr/share/mime
+}
