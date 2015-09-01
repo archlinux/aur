@@ -1,0 +1,17 @@
+pkgbase = libmediaart1
+	pkgdesc = Library tasked with managing, extracting and handling media art caches
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/curlybeast/libmediaart
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = gdk-pixbuf2
+	conflicts = libmediaart>=0.7.0
+	source = http://ftp.gnome.org/pub/gnome/sources/libmediaart/0.7/libmediaart-0.7.0.tar.xz
+	sha256sums = 3a9dffcad862aed7c0921579b93080d694b8a66f3676bfee8037867f653a1cd3
+
+pkgname = libmediaart1
+
