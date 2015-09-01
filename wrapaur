@@ -559,7 +559,7 @@ aur_git_install()
 	#check if package exists in AUR
 	exists=$(curl -s "https://${aururl}/rpc.php?type=info&arg=$1" | awk -F : '{print $4}' | awk -F , '{print $1}')
 	if [[ $exists != 0 ]]; then
-		echo -e "${color1}:: ${color2}Packages found...${color3}"
+		echo -e "${color1}:: ${color2}Downloading...${color3}"
 		echo -e $1
 		#clone git package to wrapaur folder or update if exists
 		if [[ ! -d $HOME/.wrapaur/$1 ]]; then
