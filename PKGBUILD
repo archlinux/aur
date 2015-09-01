@@ -2,8 +2,8 @@
 # Created: 2013-03-17
 # QT4 version
 pkgname=zulucrypt
-pkgver=4.7.6
-pkgrel=4
+pkgver=4.7.7
+pkgrel=1
 _altpkgname=zuluCrypt
 pkgdesc="a cli and gui frontend to cryptsetup."
 url="http://mhogomchungu.github.io/zuluCrypt/"
@@ -15,7 +15,7 @@ conflicts=('zulucrypt-git')
 makedepends=('cmake')
 options=('!buildflags')
 source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/${pkgver}/${_altpkgname}-${pkgver}.tar.bz2")
-md5sums=('0870b0228a6e7d6cdc529d6e1047b0fd')
+md5sums=('7d166491967f8ee67876fcdf07d0f52e')
 changelog=${pkgname}.changelog
 install=${pkgname}.install
 
