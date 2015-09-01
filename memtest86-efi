@@ -57,12 +57,14 @@ install() {
 		cp -v "$MEMTEST86_PATH/"*		"$esp/EFI/memtest86/" # Move files in memtest ESP directory
 		mv -v "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi" # Rename .efi file
 		echo -e "\nAdd a new configuration file for GRUB..."
-		echo -e "if [ \"\${grub_platform}\" == \"efi\" ]; then
-			\tmenuentry \"Memtest86\" {
-			\tsearch --set=root --no-floppy --fs-uuid $(blkid $partition -s UUID -o value)
-			\tchainloader /EFI/memtest86/memtest$ARCH.efi
-			\t}
-			fi" > "/etc/grub.d/86_memtest"
+		echo -e "cat <<-EOF
+			if [ \"x\\\${grub_platform}\" == \"xefi\" ]; then
+			  menuentry \"Memtest86\" {
+			    search --set=root --no-floppy --fs-uuid $(blkid $partition -s UUID -o value)
+			    chainloader /EFI/memtest86/memtest$ARCH.efi
+			  }
+			fi
+			EOF" > "/etc/grub.d/86_memtest"
 		chmod +x "/etc/grub.d/86_memtest"
 		grub-mkconfig -o "/boot/grub/grub.cfg"
 	elif [[ $choice == 4 ]]; then

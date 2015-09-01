@@ -1,7 +1,7 @@
 pkgbase = memtest86-efi
 	pkgdesc = A free, thorough, stand alone memory test as an EFI application
 	pkgver = 6.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.memtest86.com
 	install = memtest86-efi.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = memtest86-efi
 	source = memtest86-efi
 	source = memtest86-efi.conf
 	md5sums = b81b2090c1172cdb238fc3af415522af
-	md5sums = c3b9f65f5ba6f25e3c234cabadd3378c
+	md5sums = 02895d3a425bcd78be84d7f06abe4c03
 	md5sums = 6c096df3f55baf3e27c3bd605a418aa2
 
 pkgname = memtest86-efi
