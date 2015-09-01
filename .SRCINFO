@@ -1,7 +1,7 @@
 pkgbase = cargo
 	pkgdesc = Rust package manager
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://crates.io/
 	arch = x86_64
 	arch = i686
@@ -9,10 +9,12 @@ pkgbase = cargo
 	arch = armv6h
 	arch = armv7h
 	license = custom
+	makedepends = cmake
 	makedepends = git
 	depends = curl
+	depends = rust
 	options = !emptydirs
-	source = git://github.com/rust-lang/cargo.git#tag=0.4.0
+	source = git+https://github.com/rust-lang/cargo.git#tag=0.4.0
 	md5sums = SKIP
 
 pkgname = cargo
