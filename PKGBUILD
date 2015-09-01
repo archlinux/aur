@@ -1,45 +1,59 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Aurélien Chabot <contact@aurelienchabot.fr>
 # Contributor: Étienne Deparis <etienne@depar.is>
 
-pkgname=progress-git
-pkgdesc="Shows running coreutils basic commands and displays stats"
-pkgver=20150731
+set -u
+_pkgname='progress'
+pkgname="${_pkgname}-git"
+pkgver=0.9.r0.g9fe09eb
 pkgrel=1
+_srcdir="${_pkgname}"
+pkgdesc='Shows running coreutils basic commands and displays stats'
 arch=('i686' 'x86_64')
-depends=('ncurses')
-makedepends=('gcc' 'git' 'make')
-url="https://github.com/Xfennec/progress"
+url="https://github.com/Xfennec/${_pkgname}"
 license=('GPL3')
-source=(git+https://github.com/Xfennec/progress)
-sha256sums=('SKIP')
+depends=('ncurses')
+makedepends=('gcc' 'make')
+makedepends+=('git')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
 replaces=('cv')
-provides=('progress')
-conflicts=('progress')
+#_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
+source=("${_srcdir}::${url//https:/git:}")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  set -u
+  cd "${_srcdir}"
+  git describe --long --tags | sed -e 's:^v::g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  set +u
 }
 
 build() {
-  cd ${pkgname%-git}
+  set -u
+  cd "${_srcdir}"
 
-  msg2 'Building...'
-  make
+  set +u; msg2 'Building...'; set -u
+  make -s # -j "$(nproc)"
+  set +u
 }
 
 package() {
-  cd ${pkgname%-git}
+  set -u
+  cd "${_srcdir}"
 
-  msg2 'Installing license...'
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+  set +u; msg2 'Installing license...'; set -u
+  install -Dpm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
-  msg2 'Installing documentation...'
-  for _doc in capture.png README.md; do
-    install -Dm 644 "$_doc" "$pkgdir/usr/share/doc/${pkgname%-git}/$_doc"
+  set +u; msg2 'Installing documentation...'; set -u
+  local _doc
+  for _doc in 'capture.png' 'README.md'; do
+    install -Dpm644 "${_doc}" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
   done
 
-  msg2 'Installing...'
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  set +u; msg2 'Installing...'; set -u
+  make DESTDIR="${pkgdir}" PREFIX='/usr' install
+  set +u
 }
+set +u
