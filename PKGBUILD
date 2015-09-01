@@ -1,4 +1,3 @@
-# Maintainer: Jeremy Ruten <jeremy.ruten@gmail.com>
 pkgname=openvpn-update-resolv-conf
 pkgver=r11.dd96841
 pkgrel=1
