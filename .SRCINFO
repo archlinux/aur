@@ -1,18 +1,19 @@
 pkgbase = lynx-current
-	pkgdesc = A text browser for the World Wide Web (development version)
+	pkgdesc = A text browser for the World Wide Web (current development version)
 	pkgver = 2.8.9dev.6
 	pkgrel = 1
 	url = http://lynx.isc.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = ncurses
 	depends = openssl
-	provides = lynx
+	depends = ncurses
+	depends = libidn
+	provides = lynx=2.8.9
 	conflicts = lynx
 	backup = etc/lynx.cfg
-	source = http://lynx.isc.org/current/lynx2.8.9dev.6.tar.gz
-	md5sums = 52bcab0224ae22b8d425413a143f5e23
+	source = http://lynx.isc.org/current/lynx2.8.9dev.6.tar.bz2
+	sha256sums = 3e1f3e8c0df19de9b3d26d6f221b6789dab3ee1302c9cf7a888efcc186f373b5
 
 pkgname = lynx-current
 
