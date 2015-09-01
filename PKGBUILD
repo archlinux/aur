@@ -60,6 +60,10 @@ package() {
   # Remove bundled libresolv.so.2 for the time being (workarounds network problems)
   rm "${pkgdir}/opt/Unity/Editor/Data/Tools/libresolv.so.2"
 
+  # Use the launch scripts in the .desktop files
+  sed -i "/^Exec=/c\Exec=/usr/bin/unity-editor" "${extraction_dir}/unity-editor.desktop"
+  sed -i "/^Exec=/c\Exec=/usr/bin/monodevelop-unity" "${extraction_dir}/unity-monodevelop.desktop"
+
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${extraction_dir}/unity-editor.desktop" \
                                                        "${extraction_dir}/unity-monodevelop.desktop"
 
