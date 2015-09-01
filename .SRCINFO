@@ -1,0 +1,24 @@
+pkgbase = lplayer
+	pkgdesc = A free and open source, cross-platform, mplayer based multimedia player. Qt5 build.
+	pkgver = 2.9.r0.gb5c217d
+	pkgrel = 1
+	url = http://ldeteam.tk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = python2
+	depends = python
+	depends = qt5-xmlpatterns
+	provides = lplayer=2.9.r0.gb5c217d
+	conflicts = lplayer
+	replaces = lplayer
+	source = lplayer::git+https://github.com/xuzhuoyi/lplayer.git
+	sha512sums = SKIP
+
+pkgname = lplayer
+
