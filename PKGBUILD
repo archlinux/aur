@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=muddy-mutt
-pkgver=1.5.23
+pkgver=1.5.24
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client, muddied with potentially useful patches."
 url='http://www.mutt.org/'
@@ -26,10 +26,10 @@ source=(https://bitbucket.org/mutt/mutt/downloads/mutt-${pkgver}.tar.gz
         sidebar-utf8.patch
         collapse-flagged.patch)
 
-sha256sums=('3af0701e57b9e1880ed3a0dee34498a228939e854a16cdccd24e5e502626fd37'
-            'e943acf9697c290a6281994c246789b11a734549cc150ac3b2cb94a869499934'
+sha256sums=('a292ca765ed7b19db4ac495938a3ef808a16193b7d623d65562bb8feb2b42200'
+            '911299be0946de717a39a0712bb555c5a4666497bb5d8490c79bb50d8c8b14ee'
             '70dcc2870607838afc968e9b69e3c4f97a5770a8f2742ecb0316b877b88e6f5b'
-            'e5012c018956c0848355453c308ff9e3efe7ea90a3519fadb59bd19db1f29673'
+            '36899ed9442f9988f2ae3438a3c561cd3e6944ad0115296de24e968e6fd245ef'
             '608423900a7ce6fc39a1da73d35825e9c456adfe535cb586926a53e314958942'
             '88f44f9bf90e28c3b08791bdcc63ec000439724726914e01b288b3a1bd19c22a'
             'da2c9e54a5426019b84837faef18cc51e174108f07dc7ec15968ca732880cb14'

@@ -82,9 +82,9 @@ diff -uNp -r mutt-1.5.22.orig/buffy.c mutt-1.5.22/buffy.c
  }
  
 @@ -340,6 +384,68 @@ static int buffy_maildir_hasnew (BUFFY* mailbox)
-   return rc;
- }
  
+   return 0;
+ }
 +/* update message counts for the sidebar */
 +void buffy_maildir_update (BUFFY* mailbox)
 +{
@@ -213,6 +213,7 @@ diff -uNp -r mutt-1.5.22.orig/color.c mutt-1.5.22/color.c
    { "bold",		MT_COLOR_BOLD },
    { "underline",	MT_COLOR_UNDERLINE },
    { "index",		MT_COLOR_INDEX },
+   { "prompt",		MT_COLOR_PROMPT },
 +  { "sidebar_new",	MT_COLOR_NEW },
 +  { "sidebar_flagged",	MT_COLOR_FLAGGED },
    { NULL,		0 }
@@ -766,6 +767,7 @@ diff -uNp -r mutt-1.5.22.orig/mutt_curses.h mutt-1.5.22/mutt_curses.h
    MT_COLOR_BOLD,
    MT_COLOR_UNDERLINE,
    MT_COLOR_INDEX,
+   MT_COLOR_PROMPT,
 +  MT_COLOR_NEW,
 +  MT_COLOR_FLAGGED,
    MT_COLOR_MAX
