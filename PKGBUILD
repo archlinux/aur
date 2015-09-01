@@ -15,7 +15,7 @@ source=('https://raw.github.com/pschmitt/pia-tools/master/pia-tools'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-up'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-down'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools.install')
-sha256sums=('ca54f20f6aaa60ae919a6e41c0b67a6d4a2f0f33c4fec04f827b9d5d77ea2643'
+sha256sums=('90aad9e167b6dbc3ba6e728ea69973cff48a8af91754a8df1c0d2a0a573a5aad'
             '22a34cb38e02ee1ed32e5697bc507df074629cbf5f1f7290a72e2c947cf611eb'
             '118d961db36fb243e059543215a818d1546ec94e8d52b24c75b7de6fe64ba749'
             'b571a8edbd9cb2a9ad63fadf360f64d4f80e291295f6c851b3a716c291ba3f8d'
