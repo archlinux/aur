@@ -5,7 +5,7 @@
 
 _debname=iceweasel
 _debver=40.0.3
-_debrel=1
+_debrel=3
 _debrepo=http://ftp.de.debian.org/debian/pool/main/i/
  
 pkgname=iceweasel-bin
@@ -33,10 +33,10 @@ install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    sha1sums=('48b2cdf8c3efdb23db72206c4a6f8e3c0d876a19')
+    sha1sums=('2a5600fed0470d1513220937687dca153426f868')
 else
     _debarch=i386
-    sha1sums=('282a4286aabad03c55a7763b4b74684ccf983698')
+    sha1sums=('7aeed60db98c7c77612839b7e96e2650ef9f14f2')
  fi
  
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
