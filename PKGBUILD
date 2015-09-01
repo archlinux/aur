@@ -1,7 +1,7 @@
 pkgname=broadcom-wl-e531
 groups=('ThinkPad-E531')
 pkgver=6.30.223.248
-pkgrel=12
+pkgrel=13
 pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver'
 url='http://www.broadcom.com/support/802.11/linux_sta.php'
 arch=('i686' 'x86_64')
@@ -13,12 +13,14 @@ source=("http://www.broadcom.com/docs/linux_sta/hybrid-v35${_arch}-nodebug-pcoem
         'modprobe.d'
         'license.patch'
         'linux-recent.patch'
-        'gcc.patch')
-sha256sums=('b196543a429c22b2b8d75d0c1d9e6e7ff212c3d3e1f42cc6fd9e4858f01da1ad'
+        'gcc.patch'
+        'fix-linux4.2.patch')
+sha256sums=('3d994cc6c05198f4b6f07a213ac1e9e45a45159899e6c4a7feca5e6c395c3022'
             'b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32'
             '2f70be509aac743bec2cc3a19377be311a60a1c0e4a70ddd63ea89fae5df08ac'
             '922a5b183643db256d03b147f051fbf2032be8104412a661296efe4f781f2e59'
-            'b07ce80f2e079cce08c8ec006dda091f6f73f158c8a62df5bac2fbabb6989849')
+            'b07ce80f2e079cce08c8ec006dda091f6f73f158c8a62df5bac2fbabb6989849'
+            '0e82973d37d12f678618413d21dd772e619a85a9e6827550c41ea458a94362d6')
 [[ $CARCH = x86_64 ]] && sha256sums[0]='3d994cc6c05198f4b6f07a213ac1e9e45a45159899e6c4a7feca5e6c395c3022'
 
 install=install
@@ -33,7 +35,7 @@ prepare() {
   patch -p1 -i linux-recent.patch
   patch -p1 -i license.patch
   patch -p1 -i gcc.patch
-
+  patch -p1 -i fix-linux4.2.patch
   sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" \
       -i src/wl/sys/wl_linux.c
 }
