@@ -1,0 +1,14 @@
+pkgbase = vim-autocomplpop
+	pkgdesc = With this plugin, your vim comes to automatically opens popup menu for completions when you enter characters or move the cursor in Insert mode. It won't prevent you continuing entering characters.
+	pkgver = 2.14.1
+	pkgrel = 1
+	url = https://bitbucket.org/ns9tks
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim>=7.0
+	source = vim-autocomplpop-2.14.1.tar.gz::https://bitbucket.org/ns9tks/vim-autocomplpop/get/2.14.1.tar.gz
+	md5sums = 20a05e67c12cc39a57ada1496dcf8417
+
+pkgname = vim-autocomplpop
+
