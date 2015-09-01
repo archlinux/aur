@@ -1,4 +1,4 @@
-# Maintainer: David Manouchehri <david@davidmanouchehri.com>
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Romanos Skiadas <rom.skiad@gmail.com>
 # Contributor: Melik Ludwig Manukyan <melik@archlinux.us>
