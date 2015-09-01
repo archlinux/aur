@@ -1,14 +1,14 @@
 pkgbase = batman-alfred
 	pkgdesc = Almighty Lightweight Fact Remote Exchange Daemon
-	pkgver = 2015.0
+	pkgver = 2015.1
 	pkgrel = 1
 	url = http://www.open-mesh.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gpsd
-	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2015.0/alfred-2015.0.tar.gz
-	sha256sums = c66a20e5814b4afefa7b07370e20cc9a01b5f31ef9c554d132778f89e5ba736c
+	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2015.1/alfred-2015.1.tar.gz
+	sha256sums = e2464175174beeb582564a3487346d6cf5d4de28a23ac04c2ff249099ba2b487
 
 pkgname = batman-alfred
 
