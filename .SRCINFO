@@ -1,0 +1,17 @@
+pkgbase = virt-viewer
+	pkgdesc = Lightweight interface for interacting with the graphical display of virtualized guest OS
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://virt-manager.org/
+	arch = any
+	license = GPL
+	makedepends = libtool
+	depends = spice
+	depends = libvirt
+	depends = libxml2
+	depends = spice-gtk3
+	source = https://fedorahosted.org/released/virt-viewer/virt-viewer-2.0.tar.gz
+	sha256sums = e9c583bcb5acdabac6a8a13eff6ce4e093a3050645771628f832e15ce685d437
+
+pkgname = virt-viewer
+
