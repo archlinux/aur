@@ -3,9 +3,9 @@
 # Contributor: EvanA <evan@thelinuxman.us>
 
 pkgname=spotify-beta
-pkgver=1.0.11.131
-_anotherpkgver=.gf4d47cb0
-pkgrel=2
+pkgver=1.0.13.111
+_anotherpkgver=g6bd0deca
+pkgrel=1
 pkgdesc="A proprietary peer-to-peer music streaming service"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -14,11 +14,11 @@ changelog='spotify.changelog'
 options=('!strip')
 conflicts=('spotify')
 
-source=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}_amd64.deb"
+source=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}_amd64.deb"
 'spotify.protocol'
 )
-md5sums=('af4bd4604c29d5d0ed2dde6e84453537'
-'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4')
+sha1sums=('b407b8ffd7b53da4caaffc7c029bdd63a9d53f92'
+'85c44fcda773793a75392b9ac25d7a346c0355ed')
 
 depends=("alsa-lib>=1.0.14" "glibc>=2.6" "openssl" "gconf" "nss" "systemd" "gtk2" "libxtst" "libx11" "libcurl-compat" "libxss")
 optdepends=('desktop-file-utils: Adds URI support to compatible desktop environments'
