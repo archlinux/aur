@@ -1,7 +1,7 @@
 # Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=soletta-git
-pkgver=20150812
-pkgrel=4
+pkgver=20150901
+pkgrel=1
 pkgdesc="Soletta Project is a framework for making IoT devices"
 arch=('any')
 url="http://github.com/solettaproject/soletta"
@@ -23,6 +23,7 @@ build() {
     msg "The local files are updated."
   else
     git clone "$_gitroot" "$_gitname"
+    git submodule init
   fi
 
   msg "GIT checkout done or server timeout"
@@ -32,6 +33,7 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
+  git submodule update
   make alldefconfig
   make
 }
