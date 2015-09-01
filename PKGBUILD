@@ -1,11 +1,11 @@
 # Maintainer: Martchus <martchus@gmx.net>
 pkgname=passwordmanager
 pkgver=2.0.7
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc="A simple password store using AES-256-CBC encryption via OpenSSL."
 license=('GPL')
-depends=('qt5-base' 'qtutilities' 'passwordfile' 'openssl' 'libxkbcommon-x11')
+depends=('qt5-base' 'qtutilities' 'passwordfile' 'openssl' 'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
 makedepends=('qt5-tools')
 install=${pkgname}.install
 url="https://github.com/Martchus/passwordmanager"

@@ -1,7 +1,7 @@
 pkgbase = passwordmanager
 	pkgdesc = A simple password store using AES-256-CBC encryption via OpenSSL.
 	pkgver = 2.0.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Martchus/passwordmanager
 	install = passwordmanager.install
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = passwordmanager
 	depends = passwordfile
 	depends = openssl
 	depends = libxkbcommon-x11
+	depends = desktop-file-utils
+	depends = xdg-utils
 	source = passwordmanager-2.0.7.tar.gz::https://github.com/Martchus/passwordmanager/archive/v2.0.7.tar.gz
 	sha256sums = f63ce7de24299a95fa3d78ade870865d556f3dbebae1fb39209b652adc3f7071
 
