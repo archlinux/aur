@@ -1,7 +1,7 @@
 pkgbase = pbuilder-ubuntu
 	pkgdesc = personal package builder for Debian packages
 	pkgver = 0.215ubuntu10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ubuntu/+source/pbuilder
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = pbuilder-ubuntu
 	optdepends = debian-keyring: checking release signatures of debian distributions (alternative package)
 	provides = pbuilder
 	conflicts = pbuilder
-	backup = etc/pbuilder/pbuilderrc
+	backup = etc/pbuilderrc
 	source = http://archive.ubuntu.com/ubuntu/pool/main/p/pbuilder/pbuilder_0.215ubuntu10_all.deb
 	md5sums = ac77b10c47d73bf374e9efaf61aa9d4e
 

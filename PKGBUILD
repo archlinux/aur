@@ -3,7 +3,7 @@
 
 pkgname=pbuilder-ubuntu
 pkgver=0.215ubuntu10
-pkgrel=1
+pkgrel=2
 pkgdesc="personal package builder for Debian packages"
 arch=(any)
 url="https://launchpad.net/ubuntu/+source/pbuilder"
@@ -15,14 +15,14 @@ optdepends=('ubuntu-keyring: checking release signatures of ubuntu distributions
 provides=('pbuilder')
 conflicts=('pbuilder')
 source=(http://archive.ubuntu.com/ubuntu/pool/main/p/pbuilder/pbuilder_${pkgver}_all.deb)
-backup=('etc/pbuilder/pbuilderrc')
+backup=('etc/pbuilderrc')
 md5sums=('ac77b10c47d73bf374e9efaf61aa9d4e')
 
 package() {
   ar x pbuilder_${pkgver}_all.deb
   tar xJf data.tar.xz -C "$pkgdir"
 
-  cp "$pkgdir/usr/share/pbuilder/pbuilderrc" "$pkgdir/etc/pbuilder/pbuilderrc"
+  cp "$pkgdir/usr/share/pbuilder/pbuilderrc" "$pkgdir/etc/pbuilderrc"
 
   # move the executables to /usr/bin
   mkdir -p /usr/bin
