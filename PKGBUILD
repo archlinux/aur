@@ -1,3 +1,4 @@
+# Maintainer: Alexander Keller <git@nycroth.com>
 pkgname=sinit
 pkgver=1.0
 pkgrel=1
