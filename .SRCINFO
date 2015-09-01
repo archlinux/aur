@@ -6,6 +6,8 @@ pkgbase = ni-visa
 	arch = x86_64
 	license = custom
 	makedepends = rpmextract
+	optdepends = python2-pyvisa: python 2 frontend
+	optdepends = python-pyvisa: python 3 frontend
 	source = http://download.ni.com/support/softlib/visa/NI-VISA/15.0/Linux/NI-VISA-15.0.0.iso
 	md5sums = c1dbdfd1f32d3d995b2a75e35e3a81ac
 

@@ -9,7 +9,8 @@ url="http://www.ni.com/download/ni-visa-5.4.1/4629/en/"
 arch=('x86_64')
 license=('custom')
 makedepends=('rpmextract')
-depends=('')
+optdepends=('python2-pyvisa: python 2 frontend'
+'python-pyvisa: python 3 frontend')
 
 source=("http://download.ni.com/support/softlib/visa/NI-VISA/15.0/Linux/NI-VISA-${pkgver}.iso")
 md5sums=('c1dbdfd1f32d3d995b2a75e35e3a81ac')

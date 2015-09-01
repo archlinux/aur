@@ -1,4 +1,4 @@
-.tar.xz
-.iso
+*.tar.xz
+*.iso
 src/
 pkg/
