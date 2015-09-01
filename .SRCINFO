@@ -1,0 +1,16 @@
+pkgbase = ots-git
+	pkgdesc = OpenType sanitizer.
+	pkgver = 323.3460366
+	pkgrel = 1
+	url = https://github.com/khaledhosny/ots
+	arch = i686
+	arch = x86_64
+	license = Chromium
+	makedepends = git
+	provides = ots
+	conflicts = ots
+	source = git://github.com/khaledhosny/ots.git
+	md5sums = SKIP
+
+pkgname = ots-git
+
