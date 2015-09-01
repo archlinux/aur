@@ -3,11 +3,11 @@
 
 pkgname=pachist-git
 _gitname=pachist
-pkgver=0
+pkgver=r47.5bb8683
 pkgrel=1
 pkgdesc="A small bash program to show the installed package history in Arch Linux."
 arch=('any')
-url="https://github.com/Almehdi/pachist"
+url="https://github.com/shellkr/pachist"
 license=('GPL3')
 makedepends=('git')
 provides=('pachist')
