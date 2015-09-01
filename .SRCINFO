@@ -1,5 +1,5 @@
 pkgbase = linux-e531
-	pkgver = 4.1.6
+	pkgver = 4.2
 	pkgrel = 2
 	url = http://www.hurrdurr.org/
 	arch = x86_64
@@ -12,15 +12,17 @@ pkgbase = linux-e531
 	makedepends = bc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.6.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.xz
 	source = config.x86_64
 	source = linux.preset
 	source = change-default-console-loglevel.patch
+	source = fix-schedule_work()-license.patch
 	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
-	sha256sums = 64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070
-	sha256sums = f860713235ca30ab35ff29f28bde4e7f645772c1b13d0a5291892dcc805eac00
+	sha256sums = 058cbb4f53d94fbf18153e77138e71b53d38de82697e74a049640e9d496c7d4e
+	sha256sums = 3abf9da75ddd67751253f0d2eecc5c3c9bcf32e0a78a6ea8db969bc294dd8c42
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 097e6bfe4a6b28ac03b67b0ea9b9b5c82d7aac9b8e7dc5a1708ab6e076edcd50
 
 pkgname = linux-e531
 	pkgdesc = The Linux kernel and modules for ThinkPad E531(i5-3230m GT740M ver)
@@ -30,20 +32,20 @@ pkgname = linux-e531
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-e531=4.1.6
+	provides = kernel26-e531=4.2
 	conflicts = kernel26-e531
 	replaces = kernel26-e531
 	backup = etc/mkinitcpio.d/linux-e531.preset
 
 pkgname = linux-e531-headers
 	pkgdesc = Header files and scripts for building modules for Linux-e531 kernel
-	provides = kernel26-e531-headers=4.1.6
+	provides = kernel26-e531-headers=4.2
 	conflicts = kernel26-e531-headers
 	replaces = kernel26-e531-headers
 
 pkgname = linux-e531-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-e531 kernel
-	provides = kernel26-e531-docs=4.1.6
+	provides = kernel26-e531-docs=4.2
 	conflicts = kernel26-e531-docs
 	replaces = kernel26-e531-docs
 
