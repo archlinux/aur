@@ -1,7 +1,7 @@
 pkgbase = ovirt-engine-cli
 	pkgdesc = oVirt Engine Command Line Interface
 	pkgver = 4.0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ovirt.org/CLI
 	arch = any
 	license = ASL 2.0
@@ -14,6 +14,7 @@ pkgbase = ovirt-engine-cli
 	depends = python2-ply
 	depends = python2-kitchen
 	depends = ovirt-engine-sdk-python
+	optdepends = virt-viewer: SPICE and VNC remote console support
 	source = http://resources.ovirt.org/pub/ovirt-master-snapshot/src/ovirt-engine-cli/ovirt-engine-cli-4.0.0.0.tar.gz
 	sha256sums = 7702351f8a38413fa2e25fc583e6aeb2b5ce331bc4632633b6a757ccffd8ffa5
 

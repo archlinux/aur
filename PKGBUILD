@@ -2,11 +2,12 @@
 
 pkgname='ovirt-engine-cli'
 pkgver='4.0.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='oVirt Engine Command Line Interface'
 arch=('any')
 url='http://www.ovirt.org/CLI'
 depends=('python2' 'python2-setuptools' 'python2-ply' 'python2-kitchen' 'ovirt-engine-sdk-python')
+optdepends=('virt-viewer: SPICE and VNC remote console support')
 makedepends=('python2' 'python2-setuptools' 'python2-ply' 'python2-kitchen')
 license=('ASL 2.0')
 source=("http://resources.ovirt.org/pub/ovirt-master-snapshot/src/${pkgname}/${pkgname}-${pkgver}.tar.gz")
