@@ -1,6 +1,6 @@
 pkgbase = unicodemoticon
 	pkgdesc = Like a Color Picker but for Unicode Emoticons. Trayicon with Unicode Emoticons using Python3 Qt5.
-	pkgver = 1.0.6
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/juancarlospaco/unicodemoticon
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = unicodemoticon
 	depends = python
 	depends = python-pyqt5
 	optdepends = ttf-symbola: Font with emoji
-	source = https://pypi.python.org/packages/source/u/unicodemoticon/unicodemoticon-1.0.6.zip
-	md5sums = 781f8af6d1b07e8a97c29aaacb8514ce
+	source = https://pypi.python.org/packages/source/u/unicodemoticon/unicodemoticon-1.2.2.zip
+	md5sums = 5c211182bc74d3a06a3ab281a5041d36
 
 pkgname = unicodemoticon
 
