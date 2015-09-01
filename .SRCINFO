@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-uz
 	pkgdesc = Uzbek language pack for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-uz
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-uz_40.0.3-1_all.deb
-	md5sums = ebc5c6d8b541227cfeb68a5f2b0095f1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-uz_40.0.3-3_all.deb
+	sha256sums = cecd846baac8aa7ee47caed58e5f0a4c356ce61fadfc7cf7e49b429345fc11ea
 
 pkgname = iceweasel-i18n-uz
 
