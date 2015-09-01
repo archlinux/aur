@@ -2,7 +2,7 @@
 
 pkgname=dump1090-mutability-git
 _pkgbase=dump1090-mutability
-pkgver=1.14.r69.ge438e1e
+pkgver=1.14.r103.g4f24e00
 pkgrel=1
 pkgdesc="ADS-B / Mode S Ground Station System for simple RTL-SDR decoding/translating. Mutability Fork"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -44,6 +44,7 @@ package() {
 
   install -Dm644 -t "${pkgdir}/usr/share/${_pkgbase}/html/" ./public_html/*.{js,html,gif,css}
   install -Dm644 -t "${pkgdir}/usr/share/${_pkgbase}/html/coolclock/" ./public_html/coolclock/*.js
+  install -Dm644 -t "${pkgdir}/usr/share/${_pkgbase}/html/flags-tiny" ./public_html/flags-tiny/*.{png,txt}
   install -Dm644 ./debian/lighttpd/89-dump1090.conf "${pkgdir}/usr/share/${_pkgbase}/dump1090-lighttpd.conf"
 
   install -Dm644 ./debian/copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
