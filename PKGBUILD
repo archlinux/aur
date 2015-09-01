@@ -1,8 +1,7 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-beta
-pkgver=25.6.0_goanna_beta1
-_betatag="Goanna-publicbeta-1"
+pkgver=25.6.0_goanna_beta2
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -18,7 +17,7 @@ conflicts=('palemoon' 'palemoon-bin')
 install=palemoon.install
 # non-standard naming for goanna beta
 #source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver"
-source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$_betatag"
+source=(git+"https://github.com/MoonchildProductions/Pale-Moon#commit=f1f67110c90e3477725f7b9e8bf3c3aa52be7061"
         palemoon.desktop
         mozconfig.in)
 md5sums=('SKIP'

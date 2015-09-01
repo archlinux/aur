@@ -1,6 +1,6 @@
 pkgbase = palemoon-beta
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 25.6.0_goanna_beta1
+	pkgver = 25.6.0_goanna_beta2
 	pkgrel = 1
 	url = http://www.palemoon.org/
 	install = palemoon.install
@@ -30,7 +30,7 @@ pkgbase = palemoon-beta
 	optdepends = hyphen: library for hyphenation and justification
 	conflicts = palemoon
 	conflicts = palemoon-bin
-	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=Goanna-publicbeta-1
+	source = git+https://github.com/MoonchildProductions/Pale-Moon#commit=f1f67110c90e3477725f7b9e8bf3c3aa52be7061
 	source = palemoon.desktop
 	source = mozconfig.in
 	md5sums = SKIP
