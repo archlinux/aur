@@ -1,0 +1,18 @@
+pkgbase = gcolor3
+	pkgdesc = A simple color selection dialog in GTK3
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://unia.github.io/gcolor3/
+	install = gcolor3.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gtk3
+	depends = hicolor-icon-theme
+	conflicts = gcolor3-git
+	source = https://github.com/Unia/gcolor3/archive/v1.2.1.tar.gz
+	md5sums = d3b9d037d994f4efd36e58d3b81aa96d
+
+pkgname = gcolor3
+
