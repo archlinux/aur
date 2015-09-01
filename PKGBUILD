@@ -1,7 +1,7 @@
 pkgname=python2-pysolar
 pkgver=0.6
-pkgrel=2
-pkgdesc="Pysolar is a collection of Python libraries for simulating the irradiation of any point on earth by the sun. It includes code for extremely precise ephemeris calculations."
+pkgrel=3
+pkgdesc="Collection of Python libraries for simulating the irradiation of any point on earth by the sun. It includes code for extremely precise ephemeris calculations."
 arch=('x86_64')
 depends=('python2'
 		 'python2-numpy'
