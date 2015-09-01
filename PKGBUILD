@@ -7,7 +7,7 @@
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
 pkgname=calibre-git
-pkgver=2.36.0.r5.g1654895
+pkgver=2.36.0.r20.g94f3ba6
 pkgrel=1
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
@@ -17,9 +17,10 @@ depends=('python2-dateutil' 'python2-cssutils' 'python2-mechanize' 'mtdev'
          'podofo' 'poppler' 'libwmf' 'imagemagick' 'chmlib' 'python2-lxml'
          'libusbx' 'python2-pillow' 'shared-mime-info' 'python2-dnspython'
          'python2-pyqt5' 'python2-psutil' 'icu' 'libmtp' 'python2-dbus'
-         'python2-netifaces' 'python2-cssselect' 'python2-apsw' 'xdg-utils'
-         'qt5-webkit' 'desktop-file-utils' 'qt5-svg' 'python2-pygments')
-makedepends=('git' 'qt5-x11extras')
+         'python2-netifaces' 'python2-cssselect' 'python2-apsw'
+         'qt5-webkit' 'desktop-file-utils' 'qt5-svg' 'python2-pygments'
+         'desktop-file-utils' 'gtk-update-icon-cache')
+makedepends=('git' 'qt5-x11extras' 'xdg-utils')
 optdepends=('ipython2: to use calibre-debug'
             'udisks: required for mounting certain devices')
 provides=("${pkgname%-git}")
@@ -43,13 +44,10 @@ prepare(){
 
   # Desktop integration (e.g. enforce arch defaults)
   # Use uppercase naming scheme, don't create uninstaller.
-  # xdg *cannot* be kludged into installing mime or desktop files properly.
+  # xdg *cannot* be kludged into installing mime files properly.
   sed -e "/self.create_uninstaller()/,/os.rmdir(config_dir)/d" \
-      -e "/f = open/ s/\('calibre-.*\.desktop'\)/os.path.join(dir, \1)/g" \
-      -e "/dir, 'calibre-lrfviewer.desktop'/i \
-\                dir = os.path.join(self.opts.staging_sharedir,'../applications')\n\
-\                os.mkdir(dir)" \
-      -e "s/xdg-\(desktop-menu\|mime\)/true/g" \
+      -e "/cc(\['xdg-desktop-menu', 'forceupdate'\])/d" \
+      -e "/cc(\['xdg-mime', 'install', MIME\])/d" \
       -e "s/^Name=calibre/Name=Calibre/g" \
       -i  src/calibre/linux.py
 }
@@ -73,9 +71,9 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
 
 
-  # If these directories don't exist, zsh completion and icons won't install.
+  # If these directories don't exist, zsh completion, icons, and desktop files won't install.
   install -d "${pkgdir}/usr/share/zsh/site-functions" \
-      "${pkgdir}"/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/{mimetypes,apps}
+      "${pkgdir}"/usr/share/{applications,desktop-directories,icons/hicolor}
 
   XDG_DATA_DIRS="${pkgdir}/usr/share" LANG='en_US.UTF-8' python2 setup.py install \
     --staging-root="${pkgdir}/usr" --prefix=/usr
