@@ -7,14 +7,14 @@ _gitname=archey
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=Manouchehri # djmelik
-pkgver=r145.bb8d4a3
+pkgver=r146.b74e40b
 pkgrel=1
 pkgdesc="A script that displays the arch logo and some basic information, written in Python."
 url="https://github.com/${_gitauthor}/${_gitname}"
 license=('GPL')
 source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
 sha512sums=('SKIP')
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('any')
 depends=('python')
 makedepends=('git')
 optdepends=('scrot: for taking screenshots of the output' 'lsb-release')
