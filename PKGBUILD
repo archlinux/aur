@@ -3,7 +3,7 @@
 
 pkgname=ruby-icalendar
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Internet calendaring, Ruby style'
 arch=('any')
 url='https://github.com/icalendar/icalendar'
@@ -20,8 +20,5 @@ package() {
 
   gem install --ignore-dependencies --no-user-install -N -i "${pkgdir}"/${_gemdir} ${pkgname#*-}-${pkgver}.gem
   find "${pkgdir}" -type f -name *.gem -delete
-
-  install -dm 755 "${pkgdir}"/usr/share/licenses/${pkgname}
-  ln -s ${_gemdir}/gems/${pkgname#*-}-${pkgver}/MIT-LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
 
