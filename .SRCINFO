@@ -1,0 +1,18 @@
+pkgbase = baloo4-widgets
+	pkgdesc = Widgets for Baloo
+	pkgver = 4.14.3
+	pkgrel = 2
+	url = https://projects.kde.org/projects/kde/kdelibs/baloo-widgets
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = libbaloo4
+	conflicts = baloo-widgets
+	replaces = baloo-widgets
+	source = http://download.kde.org/stable/4.14.3/src/baloo-widgets-4.14.3.tar.xz
+	sha1sums = f710e430879cbee44bda393f0feca53ec1b4ab3a
+
+pkgname = baloo4-widgets
+
