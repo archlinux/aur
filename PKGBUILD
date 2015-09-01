@@ -1,6 +1,3 @@
-# $Id: PKGBUILD 231649 2015-02-17 09:16:00Z jgc $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-
 _pkgbasename=nss
 pkgname=${_pkgbasename}-chacha20
 pkgver=3.20
