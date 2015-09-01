@@ -7,7 +7,7 @@
 _pkgname=libsodium
 pkgname=lib32-libsodium
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="P(ortable|ackageable) NaCl-based crypto library"
 arch=('i686' 'x86_64')
 url="https://github.com/jedisct1/libsodium"
@@ -19,7 +19,11 @@ sha512sums=('7d58ddf973bfc456c2d196129d2c3a9ddec6e40b977797251385cd42bdd12349877
 build() {
   cd "$_pkgname-$pkgver"
 
-  ./configure --prefix=/usr
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+  ./configure --prefix=/usr --libdir=/usr/lib32
   make
 }
 
