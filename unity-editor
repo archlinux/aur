@@ -1,2 +1,6 @@
 #!/bin/sh
+
+# This prevents the editor from crashing when opening projects in some systems
+unset GTK_IM_MODULE
+
 exec /opt/Unity/Editor/Unity "$@"
