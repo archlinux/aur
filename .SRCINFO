@@ -1,6 +1,6 @@
 pkgbase = haskell-annotated-wl-pprint
 	pkgdesc = The Wadler/Leijen Pretty Printer, with annotation support
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/annotated-wl-pprint
 	install = haskell-annotated-wl-pprint.install
@@ -9,8 +9,8 @@ pkgbase = haskell-annotated-wl-pprint
 	license = custom:BSD3
 	depends = ghc
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/annotated-wl-pprint/0.6.0/annotated-wl-pprint-0.6.0.tar.gz
-	md5sums = 31b9273fab9e5573fc5473d3c9d43740
+	source = http://hackage.haskell.org/packages/archive/annotated-wl-pprint/0.7.0/annotated-wl-pprint-0.7.0.tar.gz
+	md5sums = 8e0a78eb2f89858e237f260ca4aeaf41
 
 pkgname = haskell-annotated-wl-pprint
 

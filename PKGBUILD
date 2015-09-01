@@ -1,7 +1,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 _hkgname=annotated-wl-pprint
 pkgname=haskell-annotated-wl-pprint
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="The Wadler/Leijen Pretty Printer, with annotation support"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -11,7 +11,7 @@ depends=('ghc')
 options=('staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
-md5sums=('31b9273fab9e5573fc5473d3c9d43740')
+md5sums=('8e0a78eb2f89858e237f260ca4aeaf41')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
