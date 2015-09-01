@@ -1,25 +1,21 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon
-pkgver=25.6.0
+pkgver=25.7.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
-makedepends=('zip' 'unzip' 'freetype2' 'fontconfig' 'pkg-config' 'iw' 'libidl2' 'python2' 
-             'curl' 'libnotify' 'mesa' 'autoconf2.13' 'yasm' 'gstreamer0.10' 'git'
-             'gstreamer0.10-base-plugins'
-             'gstreamer0.10-good-plugins'
-             'gstreamer0.10-bad-plugins'
-             'gstreamer0.10-ugly-plugins'
-             'gstreamer0.10-ffmpeg'
-)
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer0.10' 'gstreamer0.10-base-plugins')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
-            'hyphen: library for hyphenation and justification')
+            'hyphen: library for hyphenation and justification'
+            'gstreamer0.10-bad-plugins'
+            'gstreamer0.10-good-plugins'
+            'gstreamer0.10-ugly-plugins')
 install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
         palemoon.desktop
