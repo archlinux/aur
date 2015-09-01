@@ -3,7 +3,7 @@
 
 _lang=bn-bd
 _debver=40.0.3
-_debrel=1
+_debrel=3
 _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-bn-bd
@@ -22,4 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
-md5sums=('ec923298bf97297567bbdd90b29ecdcb')
+sha256sums=('c05f00ffc1b0989fa0aa3884a572cd8bc9851a77f5cb2c6d4f1170c7beb7096e')
