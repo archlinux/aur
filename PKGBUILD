@@ -24,24 +24,26 @@ md5sums=('SKIP'
          '32231f6e6a532021fd04c6d7b32f4270'
          '9ff0a5a4cfa930148cb96612bed4fe09')
 
-build() {
-	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-	export MOZCONFIG="$srcdir/mozconfig"
-	echo  MOZBUILD_STATE_PATH=$MOZBUILD_STATE_PATH
-	echo  MOZCONFIG=$MOZCONFIG
-	sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
-	
-	cd "$srcdir/Pale-Moon"
-	chmod -R +x build/autoconf/* python/*
-	find . -name '*.sh' -exec chmod +x {} \;
+prepare() {
+  sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
+  cd Pale-Moon
 
-	CPPFLAGS="$CPPFLAGS -O2"
-	python2 mach build || echo "Next =>"
-	python2 mach build
+  chmod -R +x build/autoconf/* python/*
+  find . -name '*.sh' -exec chmod +x {} \;
+}
+  
+build() {
+  cd Pale-Moon
+
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MOZCONFIG="$srcdir/mozconfig"
+  export CPPFLAGS="$CPPFLAGS -O2"
+  python2 mach build || echo "Next =>"
+  python2 mach build
 }
 
 package() {
-  cd "$srcdir/pmbuild"
+  cd pmbuild
   make package
   cd dist
   install -d "$pkgdir"/usr/{bin,lib}
