@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-is
 	pkgdesc = Icelandic language pack for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-is
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-is_40.0.3-1_all.deb
-	md5sums = 553ca7e6d4ac407523847a93804fb93f
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-is_40.0.3-3_all.deb
+	sha256sums = b34e63a1e250e92d444b6be4106683a824530e165987a4f0b3c56d9be90f3570
 
 pkgname = iceweasel-i18n-is
 
