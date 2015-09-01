@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-eo
 	pkgdesc = Esperanto language pack for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-eo
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-eo_40.0.3-1_all.deb
-	md5sums = c9b3fc8c92fac4b69753314c06145cc4
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-eo_40.0.3-3_all.deb
+	sha256sums = a46a45b193157e5a0d68a6bf3c26dc70c36e65e02e984f065142fe0329ad9ead
 
 pkgname = iceweasel-i18n-eo
 
