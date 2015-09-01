@@ -2,7 +2,7 @@
 
 pkgname=ats2-postiats
 _pkgname=ATS2-Postiats
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Statically typed programming language"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'gmp')
 optdepends=('gmp')
 options=('staticlibs' '!emptydirs')
 source=("http://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
-sha256sums=('0a0d3a7e762a7a7ae77e5d3e27ccdc43766d19316579bfa2015a9f7977e86f7b')
+sha256sums=('3a32aa65928d79cd17328475bd85c24dc83fb7c429826eb857beb73dad446525')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -35,5 +35,5 @@ package() {
 }
 
 # Local Variables:
-# compile-command: "makepkg -sm"
+# compile-command: "makepkg -sm && mksrcinfo"
 # End:
