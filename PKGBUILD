@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='http://ldeteam.tk'
 license=('GPL')
 
-depends=('qt5-base' 'qt5-webkit' 'python2' 'python' 'qt5-xmlpatterns')
+depends=('qt5-base' 'qt5-webkit' 'python2' 'python' 'qt5-xmlpatterns' 'mplayer')
 
 makedepends=('git' 'pkg-config' 'cmake')
 provides=("${pkgname}=${pkgver}")
