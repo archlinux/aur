@@ -24,11 +24,13 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
-  ./configure --prefix=/usr --with-texmf-dir=$(dirname $(kpsewhich texmf.cnf))
+  ./configure --prefix=/usr --localstatedir=/var \
+	      --with-texmf-dir=$(dirname $(kpsewhich texmf.cnf))
   make
 }
 
 package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir" install
+  rm $pkgdir/var/auctex/.nosearch
 }
