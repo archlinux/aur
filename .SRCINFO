@@ -1,6 +1,6 @@
 pkgbase = pycharm-community
 	pkgdesc = Powerful Python and Django IDE. Community edition.
-	pkgver = 4.5.3
+	pkgver = 4.5.4
 	pkgrel = 1
 	url = http://www.jetbrains.com/pycharm/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = pycharm-community
 	conflicts = pycharm
 	conflicts = pycharm-professional
 	options = !strip
-	source = http://download.jetbrains.com/python/pycharm-community-4.5.3.tar.gz
+	source = http://download.jetbrains.com/python/pycharm-community-4.5.4.tar.gz
 	source = pycharm-community.desktop
-	sha256sums = 205247b94965d9499e55d13ec701364475ff823d9353d967744750f6ceadc38d
+	sha256sums = 6bdd344eb88ee50cf29e98278c87faad0d1a23a7ec84c1794b956d2633024228
 	sha256sums = 5ce44b5bee632258749ee7d0df0fd08af446d43715f9ef50cb6889b88232de41
 
 pkgname = pycharm-community
