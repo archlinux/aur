@@ -1,0 +1,15 @@
+pkgbase = jj
+	pkgdesc = A simple FIFO and filesystem based Jabber/XMPP client
+	pkgver = 2
+	pkgrel = 1
+	url = http://23.fi/jj/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = loudmouth
+	depends = glib2
+	source = http://23.fi/jj/jj-2.tar.gz
+	md5sums = ea5d307194277415187e3210db744b53
+
+pkgname = jj
+
