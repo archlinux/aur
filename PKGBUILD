@@ -1,6 +1,6 @@
 # Maintainer: kalter@deadsoftware.ru
 
-pkgname=bashimget-git
+pkgname=bashimget
 pkgver=1.1
 pkgrel=1
 pkgdesc="Simple reader bash.im written in Java"
