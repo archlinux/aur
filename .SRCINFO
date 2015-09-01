@@ -1,7 +1,7 @@
 pkgbase = fontconfig-infinality
 	pkgdesc = Fontconfig is a library for configuring and customizing font access, patched with infinality patches.
 	pkgver = 2.11.94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bohoomil/fontconfig-ultimate
 	install = install.sh
 	arch = i686
