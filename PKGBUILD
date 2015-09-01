@@ -3,8 +3,8 @@
 # Contributor: Andrea Scarpino <andrea at archlinux dot org>
 pkgname=arch-palemoon-search
 pkgver=0.1
-pkgrel=1
-pkgdesc="Palemoon Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)"
+pkgrel=2
+pkgdesc="Pale Moon Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)"
 arch=('any')
 url="http://archlinux.org/"
 license=('GPL')
@@ -26,9 +26,11 @@ md5sums=('df18835df1ea78bc3fc0e05f934b1e46'
 
 package() {
   cd "${srcdir}"
-  local _prefix="${pkgdir}"/usr/lib/palemoon/browser/searchplugins
+  local _prefix="${pkgdir}"/usr/lib/palemoon/distribution/searchplugins/common
 
   for i in ${source[@]}; do
     install -D -m 0644 "${srcdir}"/$i ${_prefix}/$i
   done
 }
+
+# vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = arch-palemoon-search
-	pkgdesc = Palemoon Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)
+	pkgdesc = Pale Moon Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://archlinux.org/
 	arch = any
 	license = GPL
