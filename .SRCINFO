@@ -1,0 +1,16 @@
+pkgbase = perl-module-spy
+	pkgdesc = Spy for Perl5
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Module-Spy
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.5
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Module-Spy-0.05.tar.gz
+	md5sums = 06a1c12a620bf486c60ec2f6bde2bfc1
+	sha512sums = 7d6a773832a9e29ea75add27930b12109b2c1c73e280c7fae8b12b0c0068efee5d1979d779b415d68e28b8b4110cad8a57eb1bffa888733695e83fe20f7d2888
+
+pkgname = perl-module-spy
+
