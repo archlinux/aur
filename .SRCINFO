@@ -1,6 +1,6 @@
 pkgbase = iceweasel-i18n-ach
 	pkgdesc = Acholi language pack for Iceweasel
-	pkgver = 40.0.3.deb1
+	pkgver = 40.0.3.deb3
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iceweasel-i18n-ach
 	license = GPL
 	license = LGPL
 	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ach_40.0.3-1_all.deb
-	md5sums = 47e1a93e316c6721ee49264297ab1543
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ach_40.0.3-3_all.deb
+	sha256sums = b73a0376c3d6db3deea5485ba19c66ac3c5072ad62d358a92a8ac4d9784ed572
 
 pkgname = iceweasel-i18n-ach
 
