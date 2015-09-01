@@ -2,28 +2,28 @@
 # Contributor: sumt <sumt at sci dot fi>
 
 pkgname=palemoon-atom-bin
-pkgver=25.6.0
+pkgver=25.7.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency - i686 Intel Atom optimised version"
 arch=('i686')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
-optdepends=('gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
+optdepends=('palemoon-i18n-default: language pack for system active language'
+            'gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
             'gstreamer0.10-good-plugins: webm and mp4 demuxing'
             'gstreamer0.10-bad-plugins: aac, vp8 and opus decoding'
             'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
-            'gstreamer0.10-ffmpeg: more decoders'
-            'libpulse: PulseAudio audio driver'
+            'gstreamer0.10-ffmpeg: h.264 decoding'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification')
-provides=('palemoon')
+provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 install=palemoon.install
 options=('!strip')
 source=("http://linux.palemoon.org/files/atom/$pkgver/palemoon-$pkgver-atom.en-US.linux-$CARCH.tar.bz2"
         "palemoon.desktop")
-sha1sums=('52604de85b2a79928e3fb8d39e4e5b3b7a67ed22'
+sha1sums=('2f277ef350f534b9996e690a0e22d9c3274d82e3'
           '83ff22ff7a034efac31f1dd5f27ad0115a778743')
 
 package() {
