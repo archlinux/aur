@@ -24,17 +24,16 @@ ac_add_options --disable-windows-mobile-components
 ac_add_options --disable-metro
 ac_add_options --disable-maintenance-service
 
-
 ac_add_options --disable-tests
 ac_add_options --disable-mochitests
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 
 ac_add_options --enable-strip
-ac_add_options --disable-jemalloc
+ac_add_options --disable-jemalloc # see https://github.com/MoonchildProductions/Pale-Moon/issues/39
 mk_add_options MOZ_MAKE_FLAGS="-j4"
 mk_add_options _FORTIFY_SOURCE=0
-#ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse"
+ac_add_options --enable-optimize="-O2"
 
 ac_add_options --enable-safe-browsing
 ac_add_options --enable-url-classifier
