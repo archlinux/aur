@@ -1,5 +1,6 @@
 post_install() {
   echo -n "Updating font cache... "
+  fc-cache -s
   xset fp+ /usr/share/fonts/mplus
   xset fp rehash
   echo "done."
@@ -10,6 +11,7 @@ post_upgrade() {
 }
 
 post_remove() {
+  fc-cache -s
   xset fp- /usr/share/fonts/mplus
   xset fp rehash 
 }
