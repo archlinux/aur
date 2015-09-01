@@ -23,6 +23,9 @@ depends=('desktop-file-utils'
          'libpng12'
          'libxtst'
          'monodevelop')
+makedepends=('elinks'
+             'sed'
+             'libxml2')
 optdepends=('ffmpeg: for WebGL exporting'
             'nodejs: for WebGL exporting'
             'java-runtime: for WebGL exporting'
@@ -67,7 +70,9 @@ package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity-editor"
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/monodevelop-unity"
 
-  install -Dm644 "${srcdir}/eula" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # EULA
+  xmllint --html --xpath "//section[@id='content']" "${srcdir}/eula" 2> /dev/null | elinks -dump | sed '/Quick jump/,$d' > "${srcdir}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set sw=2 sts=2 et:
