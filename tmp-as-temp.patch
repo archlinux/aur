@@ -1,0 +1,79 @@
+diff --git a/src/file-utils.c b/src/file-utils.c
+index 62a240e..35f23d9 100644
+--- a/src/file-utils.c
++++ b/src/file-utils.c
+@@ -52,26 +52,6 @@
+ /* path */
+ 
+ 
+-static const char *try_folder[] = { "cache", "~", "tmp", NULL };
+-
+-
+-static const char *
+-get_nth_temp_folder_to_try (int n)
+-{
+-        const char *folder;
+-
+-        folder = try_folder[n];
+-        if (strcmp (folder, "cache") == 0)
+-                folder = g_get_user_cache_dir ();
+-        else if (strcmp (folder, "~") == 0)
+-                folder = g_get_home_dir ();
+-        else if (strcmp (folder, "tmp") == 0)
+-                folder = g_get_tmp_dir ();
+-
+-        return folder;
+-}
+-
+-
+ char *
+ _g_path_get_temp_work_dir (const char *parent_folder)
+ {
+@@ -82,24 +62,7 @@ _g_path_get_temp_work_dir (const char *parent_folder)
+         char    *result = NULL;
+ 
+         if (parent_folder == NULL) {
+-                /* find the folder with more free space. */
+-
+-                for (i = 0; try_folder[i] != NULL; i++) {
+-                        const char *folder;
+-                        GFile      *file;
+-                        guint64     size;
+-
+-                        folder = get_nth_temp_folder_to_try (i);
+-                        file = g_file_new_for_path (folder);
+-                        size = _g_file_get_free_space (file);
+-                        g_object_unref (file);
+-
+-                        if (max_size < size) {
+-                                max_size = size;
+-                                g_free (best_folder);
+-                                best_folder = g_strdup (folder);
+-                        }
+-                }
++                best_folder = g_strdup (g_get_tmp_dir ());
+         }
+         else
+                 best_folder = g_strdup (parent_folder);
+@@ -576,15 +539,13 @@ _g_file_is_temp_work_dir (GFile *file)
+ 	if (path[0] != '/')
+ 		return FALSE;
+ 
+-	for (i = 0; try_folder[i] != NULL; i++) {
+-		const char *folder;
+ 
+-		folder = get_nth_temp_folder_to_try (i);
+-		if (strncmp (path, folder, strlen (folder)) == 0) {
+-			if (strncmp (path + strlen (folder), "/.fr-", 5) == 0) {
+-				result = TRUE;
+-				break;
+-			}
++	const char *folder;
++
++	folder = g_strdup (g_get_tmp_dir ());
++	if (strncmp (path, folder, strlen (folder)) == 0) {
++		if (strncmp (path + strlen (folder), "/.fr-", 5) == 0) {
++			result = TRUE;
+ 		}
+ 	}
+ 
