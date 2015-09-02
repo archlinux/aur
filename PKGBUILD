@@ -41,7 +41,7 @@ source=("http://download.unity3d.com/download_unity/unity-editor-installer-${pkg
 noextract=("unity-editor-installer-${pkgver}.sh")
 sha256sums=('bf73e7693ae15b271dbbd55010eb33fae3400b964fa4b70289bd5a17d19d5493'
             '3e0f6faad2cae20ae2784256b0f5525fc69897a889d696aa5d748db2fe8c6a14'
-            'a03aaf639c6ba56a0ef03a591f0f629a3e015a3a3c6999ecc0feb6b2284c901b'
+            '9d46d016ab4fe09a325c6d75bfdf770596ec6679e3d5e1a31934c8bc97106c32'
             '7309ac206fbb6eb5f1a073bf22e2571e1a574410ab410138a19fb66c3eee21e3')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
