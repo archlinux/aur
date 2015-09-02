@@ -1,0 +1,20 @@
+pkgbase = irccd
+	pkgdesc = IRC client daemon
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = http://projects.malikania.fr/irccd/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = libircclient
+	depends = libxdg-basedir
+	depends = libircclient
+	backup = etc/irccd.conf
+	backup = etc/irccdctl.conf
+	source = http://releases.malikania.fr/irccd/irccd-1.1.6-source.tar.gz
+	md5sums = aae1c36c453a69add58ff5c31de997e6
+
+pkgname = irccd
+
