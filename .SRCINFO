@@ -1,6 +1,6 @@
 pkgbase = liblinear
 	pkgdesc = A Library for Large Linear Classification
-	pkgver = 1.96
+	pkgver = 2.01
 	pkgrel = 1
 	url = http://www.csie.ntu.edu.tw/~cjlin/liblinear/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = liblinear
 	optdepends = python2: bindings for python 2
 	optdepends = gcc-libs
 	source = http://www.csie.ntu.edu.tw/~cjlin/cgi-bin/liblinear.cgi?+http://www.csie.ntu.edu.tw/~cjlin/liblinear+tar.gz
-	md5sums = e689ab6a01644a3aa615d2613c55c539
+	md5sums = ea615ef0ea3c05ded206ca0e994100c7
 
 pkgname = liblinear
 
