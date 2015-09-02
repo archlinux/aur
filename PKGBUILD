@@ -8,7 +8,7 @@ _version=5.1.0
 _build=f3
 _buildtag=2015082501
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=5
+pkgrel=6
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -53,26 +53,27 @@ prepare() {
 
 build() {
   yes | fakeroot sh "unity-editor-installer-${pkgver}.sh"
+  rm "unity-editor-installer-${pkgver}.sh"
 }
 
 package() {
   local extraction_dir="${srcdir}/unity-editor-${_version}${_build}"
 
-  mkdir -p "${pkgdir}/opt/Unity"
-  cp -a "${extraction_dir}/." "${pkgdir}/opt/Unity"
+  mkdir -p "${pkgdir}/opt/"
+  mv ${extraction_dir} ${pkgdir}/opt/Unity
 
   # Remove bundled libresolv.so.2 for the time being (workarounds network problems)
   rm "${pkgdir}/opt/Unity/Editor/Data/Tools/libresolv.so.2"
 
   # Use the launch scripts in the .desktop files
-  sed -i "/^Exec=/c\Exec=/usr/bin/unity-editor" "${extraction_dir}/unity-editor.desktop"
-  sed -i "/^Exec=/c\Exec=/usr/bin/monodevelop-unity" "${extraction_dir}/unity-monodevelop.desktop"
+  sed -i "/^Exec=/c\Exec=/usr/bin/unity-editor" "${pkgdir}/opt/Unity/unity-editor.desktop"
+  sed -i "/^Exec=/c\Exec=/usr/bin/monodevelop-unity" "${pkgdir}/opt/Unity/unity-monodevelop.desktop"
 
-  install -Dm644 -t "${pkgdir}/usr/share/applications" "${extraction_dir}/unity-editor.desktop" \
-                                                       "${extraction_dir}/unity-monodevelop.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgdir}/opt/Unity/unity-editor.desktop" \
+                                                       "${pkgdir}/opt/Unity/unity-monodevelop.desktop"
 
-  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${extraction_dir}/unity-editor-icon.png"
-  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps" "${extraction_dir}/unity-monodevelop.png"
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${pkdir}/opt/Unity/unity-editor-icon.png"
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps" "${pkgdir}/opt/Unity/unity-monodevelop.png"
 
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity-editor"
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/monodevelop-unity"
