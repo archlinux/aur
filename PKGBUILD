@@ -1,24 +1,25 @@
 # Maintainer: Jiehong Ma <email@majiehong.com>
 
 pkgname=ihaskell-git
-pkgver=0.7.0
+pkgver=0.7.0.3
 pkgrel=1
 pkgdesc="A Haskell kernel for IPython, built in a sandbox."
 arch=('i686' 'x86_64')
 url="https://github.com/gibiansky/IHaskell"
 license=('MIT')
-depends=('ipython>=4' 'python-pyzmq' 'jupyter')
-makedepends=('git' 'ghc<7.11' 'happy' 'gtk2hs-buildtools' 'haskell-stack')
+depends=('ipython>=4' 'python-pyzmq' 'jupyter' 'ghc<7.11')
+makedepends=('git' '
+                   happy' 'gtk2hs-buildtools' 'haskell-stack')
 provides=('ihaskell')
 conflicts=()
-source=("git+https://github.com/gibiansky/IHaskell" 'stack.patch')
+source=("git+https://github.com/gibiansky/IHaskell" 'stack.yaml.patch')
 sha512sums=('SKIP'
-            '04f6797a49deda3300fb058501a5cc500549f1e436d91e4cd8416ff4bbbf4f1033984cd9ca5304fddbd5aca7a3bf4bc66473fbad5f7f55187359ecd0d9353f8c')
+            'cb9a18e7d1798e223a6278d84bd41fc23647c43bfac52036bb360739f97901830e60c6de9bce632f2faa8ae4045a9f98bff2af25af78da5eff0a2f2f81706552')
 
 prepare()
 {
   cd "$srcdir/IHaskell"
-  patch stack.yaml ../../stack.patch
+  patch stack.yaml ../../stack.yaml.patch
 }
 
 build() {

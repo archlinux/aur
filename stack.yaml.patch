@@ -1,10 +1,10 @@
 diff --git a/stack.yaml b/stack.yaml
-index 35f4b98..06742e0 100644
+index 73a425e..905897b 100644
 --- a/stack.yaml
 +++ b/stack.yaml
-@@ -37,4 +37,4 @@ extra-deps:
- - system-argv0-0.1.1
- - vinyl-0.5.1
+@@ -39,4 +39,4 @@ extra-deps:
  - xformat-0.1.2.1
+ - ratio-int-0.1.2
+ - friday-0.2.2.0
 -resolver: nightly-2015-08-15
 +resolver: nightly-2015-08-03

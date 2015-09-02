@@ -7,18 +7,18 @@ pkgbase = ihaskell-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = ghc<7.11
 	makedepends = happy
 	makedepends = gtk2hs-buildtools
 	makedepends = haskell-stack
 	depends = ipython>=4
 	depends = python-pyzmq
 	depends = jupyter
+	depends = ghc<7.11
 	provides = ihaskell
 	source = git+https://github.com/gibiansky/IHaskell
-	source = stack.patch
+	source = stack.yaml.patch
 	sha512sums = SKIP
-	sha512sums = 04f6797a49deda3300fb058501a5cc500549f1e436d91e4cd8416ff4bbbf4f1033984cd9ca5304fddbd5aca7a3bf4bc66473fbad5f7f55187359ecd0d9353f8c
+	sha512sums = cb9a18e7d1798e223a6278d84bd41fc23647c43bfac52036bb360739f97901830e60c6de9bce632f2faa8ae4045a9f98bff2af25af78da5eff0a2f2f81706552
 
 pkgname = ihaskell-git
 
