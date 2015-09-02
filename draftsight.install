@@ -2,6 +2,9 @@ post_install()
 {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
   update-desktop-database -q
+  update-mime-database usr/share/mime
+
+  echo
   echo "ATTENTION Nvidia/Nouveau driver users:"
   echo "======================================"
   echo
@@ -11,12 +14,16 @@ post_install()
   echo
   echo "Please refer to the comment section of this package in AUR: https://aur.archlinux.org/packages/draftsight/"
   echo "Or for additional reading, refer to manual pages nv(4), nouveau(4), xorg.conf(5); and the Wiki pages for Nvidia, Nouveau, and Xorg."
+  echo
 }
 
 post_update()
 {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
   update-desktop-database -q
+  update-mime-database usr/share/mime
+
+  echo
   echo "ATTENTION Nvidia/Nouveau driver users:"
   echo "======================================"
   echo
@@ -26,11 +33,13 @@ post_update()
   echo
   echo "Please refer to the comment section of this package in AUR: https://aur.archlinux.org/packages/draftsight/"
   echo "Or for additional reading, refer to manual pages nv(4), nouveau(4), xorg.conf(5); and the Wiki pages for Nvidia, Nouveau, and Xorg."
+  echo
 }
 
 post_remove()
 {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
   update-desktop-database -q
+  update-mime-database usr/share/mime
 }
 
