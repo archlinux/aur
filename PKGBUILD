@@ -3,7 +3,7 @@
 _name=sabermod-prebuilts
 pkgname=$_name
 pkgver=2015.05.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Prebuilt libraries for the SaberMod toolchain.'
 arch=('any')
 url='http://sabermod.net/'
