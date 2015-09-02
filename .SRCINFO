@@ -1,7 +1,7 @@
 pkgbase = perl-net-packet
 	pkgdesc = Net::Packet - unified framework to send a receive packets
-	pkgver = 3.27
-	pkgrel = 2
+	pkgver = 3.28
+	pkgrel = 1
 	url = https://metacpan.org/release/Net-Packet
 	arch = any
 	license = GPL
@@ -17,8 +17,8 @@ pkgbase = perl-net-packet
 	depends = perl-class-gomor>=1.00
 	depends = perl-net-ipv6addr
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/G/GO/GOMOR/Net-Packet-3.27.tar.gz
-	md5sums = 1f1d0b19b043d47dd30d21d5cf02e1e7
+	source = http://cpan.metacpan.org/authors/id/G/GO/GOMOR/Net-Packet-3.28.tar.gz
+	md5sums = b21e17c707131e82cc3d0d044906b16e
 
 pkgname = perl-net-packet
 

@@ -4,8 +4,8 @@
 pkgname=perl-net-packet
 _cpanname=Net-Packet
 _module=Net::Packet
-pkgver=3.27
-pkgrel=2
+pkgver=3.28
+pkgrel=1
 pkgdesc="$_module - unified framework to send a receive packets"
 arch=('any')
 url="https://metacpan.org/release/${_cpanname}"
@@ -15,7 +15,7 @@ makedepends=('perl-extutils-makemaker')
 checkdepends=('perl-net-pcap')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/G/GO/GOMOR/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('1f1d0b19b043d47dd30d21d5cf02e1e7')
+md5sums=('b21e17c707131e82cc3d0d044906b16e')
 
 build() {
   cd "$srcdir/$_cpanname-$pkgver"
