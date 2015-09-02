@@ -9,7 +9,7 @@ _build_voip=false
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git-no-sqlcipher
-pkgver=v0.6.0.RC2.r126.g6e1a8fa
+pkgver=v0.6.0.RC2.r187.ga022019
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
