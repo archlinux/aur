@@ -1,0 +1,16 @@
+pkgbase = protoc-gen-lisp
+	pkgdesc = A protobuf-compiler plugin for Common Lisp
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/brown/protobuf
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	depends = protobuf
+	provides = protoc-gen-lisp
+	source = git://github.com/brown/protobuf.git
+	md5sums = SKIP
+
+pkgname = protoc-gen-lisp
+
