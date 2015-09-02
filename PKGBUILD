@@ -1,5 +1,5 @@
 # Maintainer: Anthony Vitacco <anthony@littlegno.me>
-# Contributor: Unia <hjdskes@gmail.com> 
+# Contributor: Jente Hidskes <hjdskes@gmail.com> 
 
 pkgname=gcolor3
 pkgver=1.2.1
