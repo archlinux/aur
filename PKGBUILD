@@ -1,6 +1,6 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=jamomacore-git
-pkgver=0.6a47
+pkgver=1.0b1
 pkgrel=1
 pkgdesc="The Jamoma Frameworks"
 arch=('x86_64')
@@ -21,6 +21,7 @@ noextract=()
 
 _gitroot=https://github.com/Jamoma/Jamoma
 _gitname=Jamoma
+_gitbranch=master
 
 build() {
   cd "$srcdir"
@@ -36,7 +37,7 @@ build() {
     git clone "$_gitroot" "$_gitname"
     (
 		cd "$_gitname"
-		git checkout dev
+		git checkout "$_gitbranch"
 		git submodule update --init -- Core
     )
   fi
