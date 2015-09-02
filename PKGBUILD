@@ -3,7 +3,7 @@
 
 pkgname=pachist-git
 _gitname=pachist
-pkgver=r47.5bb8683
+pkgver=r51.3f5521b
 pkgrel=1
 pkgdesc="A small bash program to show the installed package history in Arch Linux."
 arch=('any')
@@ -25,6 +25,7 @@ package() {
 
   install -D -m755 pachist -t "${pkgdir}/usr/bin"
   install -D -m644 zsh_pachist "${pkgdir}/usr/share/zsh/site-functions/_pachist"
+  install -D -m644 bash_pachist "${pkgdir}/usr/share/bash-completion/completions/pachist"
   install -D -m644 pachist.8 -t "${pkgdir}/usr/share/man/man8"
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README"
 }
