@@ -8,7 +8,7 @@
 _pkgbasename=libpng
 pkgname=lib32-libpng12
 pkgver=1.2.53
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of routines used to create PNG format graphics files (32-bit, 1.2 branch)"
 arch=('x86_64')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -16,10 +16,8 @@ license=('custom')
 depends=('lib32-zlib' 'libpng12')
 makedepends=('gcc-multilib') 
 options=('!libtool')
-source=("http://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"
+source=("http://sourceforge.net/projects/libpng/files/libpng12/${pkgver}/libpng-${pkgver}.tar.xz"
         "http://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-${pkgver}-apng.patch.gz")
-md5sums=('7d18a74e6fd2029aee76ccd00e00a9e6'
-         'dc9f72ed91fee9c93f84c4e8d14e206d')
 
 prepare(){
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
@@ -55,3 +53,5 @@ package() {
   mkdir -p "${pkgdir}/usr/share/licenses"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+sha256sums=('b45e49f689e7451bd576569e6a344f7e0d11c02ecbb797f4da0e431526765c0a'
+            '64745f978fd9419a533942181316ddd1cafce63e899bc572f37d6614831c8ed3')
