@@ -1,14 +1,14 @@
 pkgbase = opsu
 	pkgdesc = An open source osu!-client written in Java.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://itdelatrisu.github.io/opsu/
 	changelog = .CHANGELOG
 	arch = any
 	license = GPL3
 	makedepends = java-environment
 	makedepends = java-web-start
-	makedepends = maven
+	makedepends = gradle
 	makedepends = gendesk
 	makedepends = git
 	depends = java-runtime
