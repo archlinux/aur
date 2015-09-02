@@ -2,13 +2,13 @@
 
 pkgbase=qmc2-svn
 pkgname=('qmc2-common-svn' 'qmc2-sdlmame-svn' 'qmc2-arcade-svn')
-pkgver=0.54.6820
+pkgver=0.56.6904
 pkgrel=1
 pkgdesc="Qt based UNIX MAME frontend supporting SDLMAME. (SVN version)"
 url="http://qmc2.arcadehits.net/wordpress/"
 license=('GPL')
 arch=('i686' 'x86_64')
-makedepends=('subversion' 'rsync' 'mesa' 'qtwebkit' 'phonon' 'qt5-declarative' 'qt5-webkit' 'qt5-multimedia' 'qt5-script' 'sdl' 'java-environment')
+makedepends=('subversion' 'rsync' 'mesa' 'qt5-declarative' 'qt5-webkit' 'qt5-multimedia' 'qt5-script' 'sdl' 'java-environment')
 source=("qmc2::svn://svn.code.sf.net/p/qmc2/code/trunk")
 sha1sums=('SKIP')
 
