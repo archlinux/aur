@@ -1,0 +1,143 @@
+--- configure.ac.orig	2012-11-21 22:34:12.148598606 +0100
++++ configure.ac	2012-11-21 22:35:17.036673433 +0100
+@@ -112,6 +112,13 @@
+ AM_CONDITIONAL([COMPAT_OPT], [test "$want_compat" = yes])
+ AM_CONDITIONAL([ENABLE_EXPORT], [test "$want_export" = yes])
+ 
++if test x$host_os = xmingw32
++then
++  AM_CONDITIONAL(WIN32, true)
++else
++  AM_CONDITIONAL(WIN32, false)
++fi
++
+ # Initialize the test suite.
+ AC_CONFIG_TESTDIR(tests)
+ AC_CONFIG_FILES([tests/Makefile tests/atlocal po/Makefile.in])
+--- src/Makefile.am.orig	2012-11-21 22:27:53.410325014 +0100
++++ src/Makefile.am	2012-11-21 22:33:13.957634294 +0100
+@@ -60,7 +60,10 @@
+  update.c\
+  version.c
+ 
+-libgdbm_la_LDFLAGS = -version-info $(VI_CURRENT):$(VI_REVISION):$(VI_AGE)
++libgdbm_la_LDFLAGS = -version-info $(VI_CURRENT):$(VI_REVISION):$(VI_AGE) -no-undefined
++if WIN32
++libgdbm_la_LDFLAGS += -lws2_32
++endif
+ 
+ # Programs
+ bin_PROGRAMS = testgdbm 
+--- src/update.c.orig	2012-11-21 22:25:32.667991693 +0100
++++ src/update.c	2012-11-21 22:27:07.567564969 +0100
+@@ -39,8 +39,10 @@
+     _gdbm_fatal (dbf, gdbm_strerror (rc));
+ 
+   /* Sync the file if fast_write is FALSE. */
++#ifdef HAVE_FSYNC
+   if (dbf->fast_write == FALSE)
+     __fsync (dbf);
++#endif
+ }
+ 
+ 
+@@ -84,8 +86,10 @@
+       if (rc)
+ 	_gdbm_fatal (dbf, gdbm_strerror (rc));
+       dbf->directory_changed = FALSE;
++#ifdef HAVE_FSYNC
+       if (!dbf->header_changed && dbf->fast_write == FALSE)
+ 	__fsync (dbf);
++#endif
+     }
+ 
+   /* Final write of the header. */
+--- src/gdbmsync.c.orig	2012-11-21 22:30:53.253304003 +0100
++++ src/gdbmsync.c	2012-11-21 22:31:02.123450829 +0100
+@@ -31,7 +31,8 @@
+   /* Initialize the gdbm_errno variable. */
+   gdbm_errno = GDBM_NO_ERROR;
+ 
++#ifdef HAVE_FSYNC
+   /* Do the sync on the file. */
+   __fsync (dbf);
+-
++#endif
+ }
+--- src/gdbmopen.c.orig	2012-11-21 22:29:23.495815449 +0100
++++ src/gdbmopen.c	2012-11-21 22:29:37.659050171 +0100
+@@ -316,8 +316,10 @@
+ 	  return NULL;
+ 	}
+ 
++#ifdef HAVE_FSYNC
+       /* Wait for initial configuration to be written to disk. */
+       __fsync (dbf);
++#endif
+ 
+       free (dbf->bucket);
+     }
+--- src/gdbmclose.c.orig	2012-11-21 22:30:04.928503285 +0100
++++ src/gdbmclose.c	2012-11-21 22:30:14.862667066 +0100
+@@ -31,9 +31,11 @@
+ {
+   int index;	/* For freeing the bucket cache. */
+ 
++#ifdef HAVE_FSYNC
+   /* Make sure the database is all on disk. */
+   if (dbf->read_write != GDBM_READER)
+     __fsync (dbf);
++#endif
+ 
+   /* Close the file and free all malloced memory. */
+ #if HAVE_MMAP
+--- src/flatfile.c.orig	2012-11-21 22:24:10.761635975 +0100
++++ src/flatfile.c	2012-11-21 22:25:17.785745935 +0100
+@@ -20,7 +20,12 @@
+ 
+ /* Include system configuration before all else. */
+ # include "autoconf.h"
++
++#ifdef WIN32
++# include <winsock2.h>
++#else
+ # include <arpa/inet.h>
++#endif
+ 
+ # include "gdbmdefs.h"
+ # include "gdbm.h"
+--- src/gdbmreorg.c.orig	2012-11-21 22:30:26.776863411 +0100
++++ src/gdbmreorg.c	2012-11-21 22:30:37.976049148 +0100
+@@ -207,8 +207,10 @@
+   free (new_dbf);
+   free (new_name);
+ 
++#ifdef HAVE_FSYNC
+   /* Make sure the new database is all on disk. */
+   __fsync (dbf);
++#endif
+ 
+   /* Force the right stuff for a correct bucket cache. */
+   dbf->cache_entry    = &dbf->bucket_cache[0];
+--- src/testgdbm.c.orig	2012-11-21 22:26:25.044859194 +0100
++++ src/testgdbm.c	2012-11-21 22:27:24.536844574 +0100
+@@ -27,7 +27,9 @@
+ #include <errno.h>
+ #include <ctype.h>
+ #include <signal.h>
++#ifndef WIN32
+ #include <sys/ioctl.h>
++#endif
+ #ifdef HAVE_SYS_TERMIOS_H
+ # include <sys/termios.h>
+ #endif
+@@ -1126,7 +1128,9 @@
+       -1)
+     error (2, _("gdbm_setopt failed: %s"), gdbm_strerror (gdbm_errno));
+ 
++#ifndef WIN32
+   signal (SIGPIPE, SIG_IGN);
++#endif
+ 
+   /* Welcome message. */
+   if (interactive)

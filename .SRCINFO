@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-gdbm
+	pkgdesc = GNU database library (mingw-w64)
+	pkgver = 1.10
+	pkgrel = 2
+	url = http://www.gnu.org/software/gdbm/gdbm.html
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-gettext
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://ftp.gnu.org/gnu/gdbm/gdbm-1.10.tar.gz
+	source = gdbm-1.10-zeroheaders.patch
+	source = gdbm-win32-support.patch
+	md5sums = 88770493c2559dc80b561293e39d3570
+	md5sums = ac255b10452005237836cd2d3a470733
+	md5sums = 231f5c2a491af140e916ec1bd4825480
+
+pkgname = mingw-w64-gdbm
+
