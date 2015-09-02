@@ -2,7 +2,8 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 
 pkgbase=icedtea-web
-pkgname=('icedtea-web' 'icedtea-web-doc')
+pkgname=('icedtea-web-jre32' 'icedtea-web-doc')
+conflicts=('icedtea-web')
 pkgver=1.6
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -44,7 +45,7 @@ build() {
 #}
 
 
-package_icedtea-web() {
+package_icedtea-web-jre32() {
 
   pkgdesc='Free web browser plugin to run applets written in Java and an implementation of Java Web Start'
   depends=('java-runtime-openjdk' 'desktop-file-utils')

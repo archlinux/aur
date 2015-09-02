@@ -16,13 +16,14 @@ pkgbase = icedtea-web
 	makedepends = epiphany
 	depends = bin32-jre
 	optdepends = rhino: for using proxy auto config files
+	conflicts = icedtea-web
 	noextract = icedtea-web-1.6.tar.gz
 	source = http://icedtea.classpath.org/download/source/icedtea-web-1.6.tar.gz
 	sha256sums = 169386ad8d43c51b0c23ef128f9ba99040d23d9ceec24d7429514576778e117d
 
-pkgname = icedtea-web
+pkgname = icedtea-web-jre32
 	pkgdesc = Free web browser plugin to run applets written in Java and an implementation of Java Web Start
-	install = install_icedtea-web.sh
+	install = install_icedtea-web-jre32.sh
 	depends = java-runtime-openjdk
 	depends = desktop-file-utils
 	provides = java-web-start
