@@ -9,7 +9,7 @@ User=influxdb
 Group=influxdb
 LimitNOFILE=65536
 EnvironmentFile=-/etc/default/influxdb
-ExecStart=/bin/influxd -config /etc/influxdb.conf $INFLUXD_OPTS
+ExecStart=/usr/bin/influxd -config /etc/influxdb.conf $INFLUXD_OPTS
 Restart=on-failure
 
 [Install]
