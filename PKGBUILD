@@ -1,8 +1,8 @@
 # Maintainer: Jiehong Ma <email@majiehong.com>
 
 pkgname=ihaskell-git
-pkgver=0.7.0.3
-pkgrel=1
+pkgver=0.7.0
+pkgrel=3
 pkgdesc="A Haskell kernel for IPython, built in a sandbox."
 arch=('i686' 'x86_64')
 url="https://github.com/gibiansky/IHaskell"
