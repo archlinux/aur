@@ -1,5 +1,5 @@
 # Maintainer: Anthony Vitacco <anthony@littlegno.me>
-# Contributor: Unia <jthidskes@outlook.com> 
+# Contributor: Unia <hjdskes@gmail.com> 
 
 pkgname=gcolor3-git
 _gitname=gcolor3
