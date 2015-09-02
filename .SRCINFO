@@ -26,7 +26,7 @@ pkgbase = emacs-xwidget-git
 	options = docs
 	options = !emptydirs
 	options = !makeflags
-	source = git://git.sv.gnu.org/emacs.git#branch=xwidget_mvp
+	source = git://git.savannah.gnu.org/emacs.git#branch=xwidget_mvp
 	md5sums = SKIP
 
 pkgname = emacs-xwidget-git
