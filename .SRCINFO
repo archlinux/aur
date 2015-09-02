@@ -1,0 +1,19 @@
+pkgbase = kzipmix
+	pkgdesc = Ken Silverman's ZIP compressor
+	pkgver = 20150319
+	pkgrel = 1
+	url = http://www.jonof.id.au/kenutils
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://static.jonof.id.au/dl/kenutils/kzipmix-20150319-linux.tar.gz
+	source = kzip.completion
+	source = zipmix.completion
+	source = LICENSE
+	md5sums = 90568d3b6a901f6eedab9e9bd23f23d7
+	md5sums = 570e381fa45eead43054c287790cc07d
+	md5sums = 0b9327bd4b9186e09590b5bc478c9bab
+	md5sums = 6aca04829b82718d2cb26c9b45f9a570
+
+pkgname = kzipmix
+
