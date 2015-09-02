@@ -72,7 +72,7 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgdir}/opt/Unity/unity-editor.desktop" \
                                                        "${pkgdir}/opt/Unity/unity-monodevelop.desktop"
 
-  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${pkdir}/opt/Unity/unity-editor-icon.png"
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${pkgdir}/opt/Unity/unity-editor-icon.png"
   install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps" "${pkgdir}/opt/Unity/unity-monodevelop.png"
 
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity-editor"
