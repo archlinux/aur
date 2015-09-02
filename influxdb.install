@@ -6,10 +6,11 @@ post_install() {
 post_upgrade() {
   # create user/group that the daemon will run as by default, do not delete this on uninstall, as it will own files
   getent group influxdb >/dev/null || groupadd influxdb
-  getent passwd influxdb >/dev/null || useradd -c 'InfluxDB' -g influxdb -d '/var/lib/influxdb' -m -s /bin/bash influxdb
+  getent passwd influxdb >/dev/null || useradd -c 'InfluxDB' -g influxdb -d '/var/lib/influxdb' -m -s /bin/false influxdb
   mkdir -p /var/lib/influxdb/data
-  mkdir -p /var/lib/influxdb/raft
-  mkdir -p /var/lib/influxdb/state
+  mkdir -p /var/lib/influxdb/wal
+  mkdir -p /var/lib/influxdb/meta
+  mkdir -p /var/lib/influxdb/hh
   chown influxdb:influxdb -R /var/lib/influxdb
 
   mkdir -p /var/log/influxdb
