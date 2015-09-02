@@ -1,8 +1,8 @@
 pkgbase = wmfs2-git
 	pkgdesc = A lightweight and highly configurable tiling window manager for X
 	pkgver = r442.3c701a9
-	pkgrel = 1
-	url = http://www.wmfs.info/
+	pkgrel = 2
+	url = https://github.com/xorg62/wmfs
 	arch = i686
 	arch = x86_64
 	license = BSD

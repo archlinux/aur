@@ -3,10 +3,10 @@
 
 pkgname=wmfs2-git
 pkgver=r442.3c701a9
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and highly configurable tiling window manager for X"
 arch=('i686' 'x86_64')
-url="http://www.wmfs.info/"
+url="https://github.com/xorg62/wmfs"
 license=('BSD')
 depends=('libxft' 'imlib2' 'libxinerama' 'libxrandr')
 makedepends=('git')
