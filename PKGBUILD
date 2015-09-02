@@ -36,7 +36,7 @@ prepare()
   export GOPATH="${srcdir}"
   export GOBIN="$GOPATH/bin"
   if [ -d $GOBIN ]; then
-    rm "$GOBIN/*";
+    rm $GOBIN/*;
   fi;
 
   echo "Downloading influxdb ..."
