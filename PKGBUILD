@@ -5,7 +5,8 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='0.9.2.1'
+pkgver='0.9.3'
+commit='5d42b212fca8facfe9db0c83822f09b88be643ec'
 pkgrel='1'
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
@@ -32,62 +33,44 @@ md5sums=('SKIP'
 
 prepare()
 { 
-  export GOPATH=${srcdir}
-  gitsrc=${srcdir}/src/github.com/influxdb
-
-  if [ ! -d "${gitsrc}" ]; then 
-    # clone influxdb git repo
-    mkdir -p ${gitsrc};
-    cd ${gitsrc};
-    echo "Cloning influxdb git repo ..."
-    git clone -q https://github.com/influxdb/influxdb;
-
-  else 
-    echo "Git repository already cloned, skipping"
+  export GOPATH="${srcdir}"
+  export GOBIN="$GOPATH/bin"
+  if [ -d $GOBIN ]; then
+    rm "$GOBIN/*";
   fi;
 
-  # checkout wanted version
-  cd ${gitsrc};
-  echo "Switching to ${pkgver} branch ..."
-  cd ${gitsrc}/influxdb
-  git checkout -q "v${pkgver}"
-  commit=`git rev-parse HEAD`
+  echo "Downloading influxdb ..."
+  go get github.com/influxdb/influxdb
+
+  echo "Downloading dependencies ..."
+  cd "$GOPATH/src/github.com/influxdb"
+  go get ./...
 }
 build() 
 {
-  if [ -d ${srcdir}/bin ]; then
-    rm ${srcdir}/bin/*;
-  fi;
-
-  echo "Building deps ..."
-  cd ${gitsrc}
-  go get ./... 
-  go build ./...
+  export GOPATH="${srcdir}"
+  export GOBIN="$GOPATH/bin"
 
   echo "Building influxdb ${pkgver} (commit ${commit}) ..."
-  cd ${gitsrc}
-  go install -a -ldflags="-X main.version $pkgver -X main.commit $commit" ./...
-
+  cd "$GOPATH/src/github.com/influxdb"
+  go install -ldflags="-X main.version=$pkgver -X main.commit=$commit" ./...
 }
 package()
 {
-  gitsrc=${srcdir}/src/github.com/influxdb
+  export GOPATH="${srcdir}"
+  export GOBIN="$GOPATH/bin"
 
   # systemctl service file
-  cd ${srcdir}
-  install -D -m644  'influxdb.service' "$pkgdir/usr/lib/systemd/system/influxdb.service"
+  install -D -m644  "$srcdir/influxdb.service" "$pkgdir/usr/lib/systemd/system/influxdb.service"
 
   # binaries
-  cd ${srcdir}/bin
-  install -D -m755 influxd "$pkgdir/usr/bin/influxd"
-  install -D -m755 influx "$pkgdir/usr/bin/influx"
+  install -D -m755 "$GOBIN/influxd" "$pkgdir/usr/bin/influxd"
+  install -D -m755 "$GOBIN/influx" "$pkgdir/usr/bin/influx"
 
   # configuration file
-  cd ${gitsrc}/influxdb
-  install -D -m644 etc/config.sample.toml "${pkgdir}/etc/influxdb.conf"
-  sed -i 's;/var/opt/;/var/lib/;g' ${pkgdir}/etc/influxdb.conf
+  install -D -m644 "$GOPATH/src/github.com/influxdb/influxdb/etc/config.sample.toml" "${pkgdir}/etc/influxdb.conf"
+  sed -i 's;/var/opt/;/var/lib/;g' "${pkgdir}/etc/influxdb.conf"
 
   # license
-  cd ${gitsrc}/influxdb
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/influxdb/LICENSE"
+  install -Dm644 "$GOPATH/src/github.com/influxdb/influxdb/LICENSE" "${pkgdir}/usr/share/licenses/influxdb/LICENSE"
 }
