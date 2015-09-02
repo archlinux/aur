@@ -1,0 +1,23 @@
+pkgbase = subtitlecomposer
+	pkgdesc = A KDE subtitle editor
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/maxrd2/subtitlecomposer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	depends = kdelibs
+	depends = gettext
+	optdepends = mplayer: for MPlayer backend
+	optdepends = mplayer2: for MPlayer backend
+	optdepends = gstreamer: for GStreamer backend
+	optdepends = xine-lib: for Xine backend
+	conflicts = subtitlecomposer-git
+	source = https://github.com/maxrd2/subtitlecomposer/archive/v0.5.7.tar.gz
+	md5sums = 9e1fef4dca5a15e5c0435f1b099d4ab4
+
+pkgname = subtitlecomposer
+
