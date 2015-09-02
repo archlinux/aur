@@ -1,7 +1,7 @@
 # Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=speedcrunch-git
-pkgver=20141119
+pkgver=20150901
 pkgrel=1
 pkgdesc="Simple, high precision and powerful calculator."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base' 'libxkbcommon-x11')
 makedepends=('git')
 conflicts=('speedcrunch')
 provides=('speedcrunch')
-source=('speedcrunch::git+https://github.com/speedcrunch/SpeedCrunch.git')
+source=('speedcrunch::git+https://bitbucket.org/heldercorreia/speedcrunch.git')
 md5sums=('SKIP')
 
 pkgver() {
