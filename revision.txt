@@ -5,6 +5,30 @@
                               http://www.fmod.org
 ===============================================================================
 
+01/09/15 1.06.09 - Studio API patch release (build 67431)
+----------------------------------------------------
+
+Features:
+* Studio API   - Additional logging when banks have been exported with out of
+                 date plugin effects.
+
+Fixes:
+* LowLevel API - Fix automatic device changing support if a user called 
+                 System::update from their own thread.
+* LowLevel API - Fix crash when a channel group cannot be attached to port.
+* LowLevel API - Fixed incorrect loop length being set for ADPCM files.
+* LowLevel API - Win64 - Enable automatic device changing support.
+* LowLevel API - iOS - Fixed error creating the file thread on iOS 9.0. 
+* LowLevel API - Fix distance filtering not resetting its parameters properly 
+                 for channels.
+* LowLevel API - MIDI support - Fix note keyoff when evelope is in decay phase
+                 causing note to finish early.
+* Studio API   - Fix crash that could occur when auditioning an event in 
+                 Studio while changing the path to waveforms.
+
+Notes:
+* UE4          - Updated oculus rift plugin to version 0.11
+
 12/08/15 1.06.08 - Studio API patch release (build 66772)
 ----------------------------------------------------
 
