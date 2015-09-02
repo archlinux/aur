@@ -1,0 +1,34 @@
+pkgbase = referencer-bzr
+	pkgdesc = a Gnome application to organise documents or references, and ultimately generate a BibTeX bibliography file
+	pkgver = 938
+	pkgrel = 1
+	url = https://launchpad.net/referencer/
+	install = referencer.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = bzr
+	makedepends = pkgconfig
+	makedepends = glib2
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	makedepends = gnome-icon-theme
+	depends = poppler-glib
+	depends = libgnomeuimm
+	depends = yelp
+	depends = boost
+	depends = python2>=2.5
+	provides = referencer
+	conflicts = referencer
+	conflicts = referencer-svn
+	conflicts = referencer-hg
+	replaces = referencer-svn
+	replaces = referencer-hg
+	source = referencer::bzr+https://code.launchpad.net/~referencer-devs/referencer/trunk
+	md5sums = SKIP
+
+pkgname = referencer-bzr
+
