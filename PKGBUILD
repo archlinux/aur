@@ -3,8 +3,8 @@
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
 pkgver=20150901_080117
-pkgrel=1
-pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
+pkgrel=2
+pkgdesc="The Free On-line Dictionary of Computing for dict"
 arch=('any')
 url="http://foldoc.org/"
 license=('GPL')
@@ -21,6 +21,12 @@ pkgver()
 	_datestr=$(curl -sI foldoc.org/Dictionary.txt | grep "Last-Modified" \
 		| cut -c 21-)
 	date --utc --date="$_datestr" +%Y%m%d_%H%M%S
+}
+
+prepare()
+{
+	# correct some misspellings; to be extended
+	sed -i 's/ cheifly/ chiefly/;s/amd the need/and the need/' Dictionary.txt
 }
 
 build()
