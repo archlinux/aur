@@ -1,6 +1,6 @@
 pkgbase = ccache-git
 	pkgdesc = A compiler cache
-	pkgver = v3.2.3_16_gb9b0303
+	pkgver = v3.2.3_23_g25da80c
 	pkgrel = 1
 	url = http://ccache.samba.org/
 	arch = i686
