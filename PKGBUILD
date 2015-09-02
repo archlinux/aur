@@ -42,6 +42,6 @@ package() {
   find ${pkgdir}/usr/share/webapps/${pkgname} -type f -exec chmod 0644 {} \;
   find ${pkgdir}/usr/share/webapps/${pkgname} -type d -exec chmod 0755 {} \;
 
-  chmod 777 ${pkgdir}/usr/share/webapps/${pkgname}/data
-  chmod 777 ${pkgdir}/usr/share/webapps/${pkgname}/uploads
+  chmod -R 777 ${pkgdir}/usr/share/webapps/${pkgname}/data
+  chmod -R 777 ${pkgdir}/usr/share/webapps/${pkgname}/uploads
 }
