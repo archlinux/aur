@@ -1,0 +1,49 @@
+# chosen at random
+CMSUSER_GID=26950
+CMSUSER_UID=$CMSUSER_GID
+
+post_install() {
+  # Not sure if this is really needed
+  mkdir /var/run/cms
+
+  # Copy configuration files, if they don't already exist
+  cp --archive --no-clobber /usr/lib/cms/cms{,.ranking}.conf /etc/
+
+  echo
+  if ! getent group cmsuser >/dev/null; then
+    groupadd -g$CMSUSER_GID cmsuser
+  fi
+  if ! getent passwd cmsuser >/dev/null; then
+    useradd -u$CMSUSER_UID -g$CMSUSER_GID cmsuser -c 'CMS default user' -M -r -s /bin/false
+  fi
+
+  echo ">>> !! WARNING !!"
+  echo ">>> For now, it is required that you add yourself to the cmsuser group,"
+  echo ">>> for example by issuing this command:"
+  echo ">>>   # usermod -a -G cmsuser <your user>"
+  echo ">>> Logout to make the change effective. Also, remember to customize"
+  echo ">>> the configuration files /etc/cms.conf and /etc/cms.ranking.conf."
+  echo
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo
+  echo ">>> !! WARNING !!"
+  echo ">>> We won't delete the cmsuser user (nor the group), in case you should"
+  echo ">>> need them for some reason. If you really don't need CMS anymore, then"
+  echo ">>> you can issue:"
+  echo ">>>   # userdel -r cmsuser"
+  echo ">>> (ignore the error 'group not removed because it has other members')"
+  echo ">>> And then run:"
+  echo ">>>   # groupdel cmsuser"
+  echo ">>> in order to delete the group (and remove every user from it)"
+  echo ">>>"
+  echo ">>> Also, if you want to delete the configuration files, then you can"
+  echo ">>> issue this command:"
+  echo ">>>   # rm /etc/cms{,.ranking}.conf"
+  echo
+}
