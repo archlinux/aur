@@ -1,6 +1,6 @@
 pkgbase = python2-gertty
 	pkgdesc = console-based interface to the Gerrit Code Review system
-	pkgver = 1.0.3
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/gertty
 	arch = any
@@ -18,8 +18,9 @@ pkgbase = python2-gertty
 	depends = python2-ply
 	depends = python2-voluptuous
 	depends = python2-pbr
-	source = https://pypi.python.org/packages/source/g/gertty/gertty-1.0.3.tar.gz
-	md5sums = 6109bf33ea454d9f148ce47dc12bb654
+	depends = python2-six
+	source = https://pypi.python.org/packages/source/g/gertty/gertty-1.2.1.tar.gz
+	md5sums = f20192d6423fa9014b91b8f36ccbc101
 
 pkgname = python2-gertty
 
