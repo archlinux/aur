@@ -11,7 +11,7 @@ optdepends=(
 	"rxvt-unicode: default terminal emulator"
 	"dmenu: default for launching applications"
 )
-arch=("i386" "x86_64")
+arch=("i686" "x86_64")
 url='https://github.com/SirCmpwn/sway'
 source=("${pkgname%-*}::git+https://github.com/SirCmpwn/sway.git")
 sha1sums=('SKIP')
