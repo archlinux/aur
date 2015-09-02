@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 240220 2015-06-02 17:35:45Z foutrelis $
+# $Id: PKGBUILD 241722 2015-07-03 00:28:23Z foutrelis $
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-ubuntu
-pkgver=38.0.5
+pkgver=40.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with global menu integration"
 arch=('i686' 'x86_64')
@@ -19,26 +19,40 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'gst-plugins-good: h.264 video'
             'gst-libav: h.264 video'
             'upower: Battery API')
+replaces=("firefox")
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
 install=firefox.install
 options=('!emptydirs' '!makeflags')
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.bz2
-        mozconfig firefox.desktop firefox-install-dir.patch vendor.js
-        firefox-fixed-loading-icon.png unity-menubar.patch)
-sha256sums=('4f53506d1e8a724a165ee509d9448fa7c9b7203183f53ae313063eb144a403b6'
-            'ffcb2a0ba2ed08f74931a11043717391ef380234cadccc6f0c13f1186ad80e8b'
+        mozconfig
+        firefox.desktop
+        firefox-install-dir.patch
+        vendor.js
+        firefox-fixed-loading-icon.png
+        unity-menubar.patch)
+sha256sums=('057dd75d6fb4fd264cd175788518d458cb7792fd905a6fa450968526305121fd'
+            '4704798b46be00712a87443be8ed6184dfb5d337e8cc74dbe029c0a25a47add6'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
-            '5fd329439480d861eb37edcca47fb3e05801f5a48b4d6c2afa17fb4c71c65fa1')
+            '7c1028460b0ebc15b9dc54af6d7ec8d33b72b9bf095e4117558de5a525a29fc2')
 #validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
 # more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+_google_default_client_id=413772536636.apps.googleusercontent.com
+_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
+
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
 
 prepare() {
   cd mozilla-release
@@ -51,11 +65,16 @@ prepare() {
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
 
+  echo -n "$_google_default_client_id $_google_default_client_secret" >google-oauth-api-key
+  echo "ac_add_options --with-google-oauth-api-keyfile=\"$PWD/google-oauth-api-key\"" >>.mozconfig
+
+  echo -n "$_mozilla_api_key" >mozilla-api-key
+  echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
+
   mkdir "$srcdir/path"
 
   # WebRTC build tries to execute "python" and expects Python 2
   ln -s /usr/bin/python2 "$srcdir/path/python"
-
 
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
