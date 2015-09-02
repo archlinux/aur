@@ -1,6 +1,6 @@
 pkgbase = iojs-bin
 	pkgdesc = Evented I/O for V8 JavaScript - Node.js fork
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://iojs.org/
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = iojs-bin
 	conflicts = nodejs
 	conflicts = npm
 	options = !emptydirs
-	source = https://iojs.org/dist/v3.2.0/iojs-v3.2.0-linux-x64.tar.xz
-	sha256sums = b81755e73929edc1b00871bee4062ca39346186bc6608a287c4cd9a2a09225a4
+	source = https://iojs.org/dist/v3.3.0/iojs-v3.3.0-linux-x64.tar.xz
+	sha256sums = add2cd394886d7d3a92bc84e9af6e4a0d509060f0b63bf4b11de6471046043e8
 
 pkgname = iojs-bin
 
