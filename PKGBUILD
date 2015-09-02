@@ -27,7 +27,7 @@ source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google
 md5sums=('00541a2eaedf40c2217f17f9345aaa5c'
          'b7e752f549b215ac77f284b6486794b6')
 md5sums_i686=('f732602aa7427da97ef1bf3ad4d673ed')
-md5sums_x86_64=('2fc404c0fdd90c45acb5ed4d2cf38877')
+md5sums_x86_64=('d1abecdb85ea5f37236684f75a51fd96')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
 #source_x86_64=('http://mirror.pcbeta.com/google/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_46.0.2490.6-1_amd64.deb')
