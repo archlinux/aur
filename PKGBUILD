@@ -1,7 +1,7 @@
 # vim:ts=4:sw=4:expandtab
 # xedgewarp -- window manager agnostic pointer warping between outputs
 pkgname=xedgewarp-git
-pkgver=r136.c338387
+pkgver=r148.47c1035
 pkgrel=1
 pkgdesc='xedgewarp is a window manager agnostic tool for pointer warping between outputs'
 arch=('i686' 'x86_64')
