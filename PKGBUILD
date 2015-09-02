@@ -1,7 +1,7 @@
 # Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 
 pkgname=snd-gtk-jack-cvs
-pkgver=15.6
+pkgver=15.8
 pkgrel=1
 pkgdesc="A sound editor with JACK enabled and GTK GUI. CVS version"
 arch=('i686' 'x86_64')
