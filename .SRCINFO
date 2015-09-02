@@ -26,7 +26,7 @@ pkgbase = emacs-lucid-git
 	options = docs
 	options = !emptydirs
 	options = !makeflags
-	source = git://git.sv.gnu.org/emacs.git
+	source = git://git.savannah.gnu.org/emacs.git
 	md5sums = SKIP
 
 pkgname = emacs-lucid-git
