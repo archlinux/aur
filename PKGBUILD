@@ -1,5 +1,5 @@
 # Maintainer: Anthony Vitacco <anthony@littlegno.me>
-# Contributor: Unia <jthidskes@outlook.com> 
+# Contributor: Unia <hjdskes@gmail.com> 
 
 pkgname=gcolor3
 pkgver=1.2.1
@@ -25,5 +25,4 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-md5sums=('d3b9d037d994f4efd36e58d3b81aa96d')
 
