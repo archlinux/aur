@@ -58,7 +58,7 @@ build() {
 	LANG=C ./version_detail.sh
 	cd ../..
 
-	qmake-qt4 DEFINES+=NO_SQLCIPHER CONFIG=release PREFIX='/usr' LIB_DIR='/usr/lib' RetroShare.pro
+	qmake-qt4 CONFIG=release DEFINES+=NO_SQLCIPHER CONFIG+=NO_SQLCIPHER PREFIX='/usr' LIB_DIR='/usr/lib' RetroShare.pro
 	make
 }
 
