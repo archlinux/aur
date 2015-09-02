@@ -1,6 +1,6 @@
 pkgbase = mkcl-git
 	pkgdesc = ManKai Common Lisp -- git-version
-	pkgver = 1.1.9.97.ge4fe40c
+	pkgver = 1.1.9.99.g8ca4595
 	pkgrel = 1
 	url = http://common-lisp.net/project/mkcl/
 	arch = i686
