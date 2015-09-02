@@ -1,0 +1,6 @@
+pkg/*
+relx*
+src/*
+django-lint/*
+*.xz
+*.gz
