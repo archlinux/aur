@@ -1,7 +1,7 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=bunsen-openbox-pipemenus-git
 pkgver=r189.7885b20
-pkgrel=2
+pkgrel=4
 pkgdesc="Collection of Openbox pipemenus from BunsenLabs Linux"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-pipemenus"
