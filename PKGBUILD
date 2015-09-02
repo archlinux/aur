@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r4189.2a9698c
+pkgver=r4403.f16b740
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('any')
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 # Enable Twitch support. This pulls in lots of mingw-w64-* packages from the AUR
 # which takes a while to build. If you don't need Twitch support, it's probably
 # desirable to set this to 0 before building.
-_enable_twitch=1
+_enable_twitch=0
 
 _dlls=(SDL2.dll libwinpthread-1.dll SDL2_ttf.dll libfreetype-6.dll libbz2-1.dll)
 
