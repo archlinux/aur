@@ -6,7 +6,7 @@
 
 pkgname=draftsight
 pkgver=V1R6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Dassault Systemes' freeware CAD software for your DWG files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
@@ -16,7 +16,7 @@ depends=(
   'fontconfig'
   'gcc-libs'
   'glib2'
-  'gstreamer'
+  'gstreamer0.10-base'
   'gtk2'
   'libcups'
   'libgl'
@@ -26,7 +26,7 @@ depends=(
   'libx11'
   'libxext'
   'libxrender'
-  'postgresql'
+  'postgresql-libs'
   'mesa'
   'util-linux'
   'zlib'
