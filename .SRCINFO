@@ -1,6 +1,6 @@
 pkgbase = spotifile
 	pkgdesc = FUSE file system for Spotify
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/catharsis/spotifile
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = spotifile
 	depends = fuse
 	depends = libspotify
 	depends = python
-	source = https://github.com/catharsis/spotifile/archive/v0.1.2.tar.gz
-	md5sums = 28e91b2809d1822a19c5bcb7fedba6d9
+	source = https://github.com/catharsis/spotifile/archive/v0.1.3.tar.gz
+	md5sums = 438a3db23fda7a9e742adba2209c278c
 
 pkgname = spotifile
 
