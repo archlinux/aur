@@ -5,8 +5,8 @@
 # Contributor: Nikos Skalkotos <skalkoto (at) Gmail.com>
 # Maintainer: Paweł Mosakowski <pawel_at_mosakowski.net>
 
-pkgbase=libguestfs
-pkgname=${pkgbase}-python3
+_pkgname=libguestfs
+pkgname=libguestfs-python3
 pkgver=1.30.0
 _pkgver_short=${pkgver%.*}
 pkgrel=1
@@ -14,9 +14,8 @@ pkgdesc="Python 3 compatible bindings for libguestfs"
 arch=("i686" "x86_64")
 url="http://libguestfs.org"
 license=("GPL2" "LGPL2.1")
-_pythonver=3
 depends=("libguestfs=${pkgver}" 
-         "python${_pythonver}"
+         "python3"
          )
 makedepends=("qemu"
              "pcre"
@@ -25,7 +24,7 @@ makedepends=("qemu"
              "libconfig"
              "libxml2"
              "gperf"
-             "python${_pythonver}"
+#             "python${_pythonver}"
 #             "perl"
 #             "perl-string-shellquote"
 #             "perl-libintl-perl"
@@ -51,7 +50,7 @@ optdepends=(
 #            "perl-sys-virt: Sys-Virt tools"
 #            "ocaml: Ocaml libs"
             )
-source=("http://libguestfs.org/download/${_pkgver_short}-stable/${pkgbase}-${pkgver}.tar.gz")
+source=("http://libguestfs.org/download/${_pkgver_short}-stable/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('b3a68cb5de208f359d2b9aa5d26fe0248575ee03975a6cf60e1a3509cf34c3c55116ba24db7d4dbeee2ed79bc9e2bdd5056a9de82d9263c41cb657eb702ae45e')
 
 check() {
@@ -62,7 +61,7 @@ check() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
 # Currently OCaml lua, erlang, php, haskel, ruby, ghc, GObject and java bindings
 # are disabled. If you want to create any of the aforementioned language
@@ -94,11 +93,11 @@ build() {
   make
 }
 
-package_libguestfs-python3() {
-  _distdir="${srcdir}/${pkgbase}-${pkgver}-dist"
+package() {
+  _distdir="${srcdir}/${_pkgname}-${pkgver}-dist"
   mkdir -p "$_distdir"
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="$_distdir" install
 
   mkdir -p "${pkgdir}/usr/lib/"

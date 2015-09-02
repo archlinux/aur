@@ -1,4 +1,4 @@
-pkgbase = libguestfs
+pkgbase = libguestfs-python3
 	pkgdesc = Python 3 compatible bindings for libguestfs
 	pkgver = 1.30.0
 	pkgrel = 1
@@ -14,7 +14,6 @@ pkgbase = libguestfs
 	makedepends = libconfig
 	makedepends = libxml2
 	makedepends = gperf
-	makedepends = python3
 	depends = libguestfs=1.30.0
 	depends = python3
 	source = http://libguestfs.org/download/1.30-stable/libguestfs-1.30.0.tar.gz
