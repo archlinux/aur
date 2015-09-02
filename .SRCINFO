@@ -21,7 +21,7 @@ pkgbase = bunsen-openbox-pipemenus-git
 	depends = lua-penlight
 	depends = lua-posix-git
 	depends = lua-socket
-	depends = bunsen-utilities
+	depends = bunsen-utilities-git
 	provides = bunsen-openbox-pipemenus
 	conflicts = bunsen-openbox-pipemenus
 	source = bunsen-openbox-pipemenus-git::git+https://github.com/BunsenLabs/bunsen-pipemenus.git#branch=master
