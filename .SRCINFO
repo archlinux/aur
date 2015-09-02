@@ -1,0 +1,13 @@
+pkgbase = kerl
+	pkgdesc = Easy building and installing of Erlang/OTP instances
+	pkgver = 1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = kerl
+	source = git://github.com/spawngrid/kerl.git
+	md5sums = SKIP
+
+pkgname = kerl
+
