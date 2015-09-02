@@ -1,0 +1,22 @@
+# chosen at random
+ISOLATE_GID=29267
+
+post_install() {
+  if ! getent group isolate >/dev/null; then
+    groupadd -g $ISOLATE_GID isolate
+
+    echo
+    echo ">>> If you want to run the isolate command without sudo, you should add"
+    echo ">>> yourself to the isolate group, like this:"
+    echo ">>>   # sudo usermod -a -G isolate <your user>"
+    echo ">>> However, keep in mind that:"
+    echo ">>>   1. You will need to logout, in order to make the change effective"
+    echo ">>>   2. No untrusted user should ever be allowed in the isolate group,"
+    echo ">>>      as they may exploit the isolate command to gain root access"
+    echo
+  fi
+}
+
+post_remove() {
+  groupdel isolate
+}

@@ -1,8 +1,11 @@
 # Maintainer: William Di Luigi <williamdiluigi@gmail.com>
 
+# chosen at random
+ISOLATE_GID=29267
+
 pkgname=isolate
 pkgver=r58.e8894c4
-pkgrel=1
+pkgrel=2
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('any')
 url="https://github.com/ioi/isolate"
@@ -16,6 +19,7 @@ makedepends=(
   'asciidoc'
 )
 provides=('isolate')
+install=$pkgname.install
 
 source=(
   'git://github.com/ioi/isolate.git'
@@ -36,5 +40,5 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/bin
-  cp $pkgname/isolate $pkgdir/usr/bin/isolate
+  install -D -m4750 -g$ISOLATE_GID $pkgname/isolate $pkgdir/usr/bin/isolate
 }
