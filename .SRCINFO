@@ -7,7 +7,7 @@ pkgbase = sabermod-prebuilts
 	license = GPL-3
 	provides = sabermod-prebuilts
 	conflicts = sabermod-prebuilts
-	source = http://oceighty.co/sm/sabermod-prebuilts-2015.09.01.zip
+	source = http://oceighty.co/sabermod/sabermod-prebuilts-2015.09.01.zip
 	sha256sums = SKIP
 
 pkgname = sabermod-prebuilts
