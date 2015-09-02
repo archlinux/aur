@@ -9,7 +9,7 @@
 
 pkgname=gcc48
 _pkgver_minor=4.8
-pkgver=${_pkgver_minor}.4
+pkgver=${_pkgver_minor}.5
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (4.8.x)"
 arch=('i686' 'x86_64')
@@ -19,10 +19,8 @@ depends=('binutils>=2.24' 'libmpc' 'cloog')
 makedepends=('binutils>=2.24' 'libmpc' 'cloog' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs' 'staticlibs' '!libtool')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-        gcc-4.8-filename-output.patch)
-md5sums=('5a84a30839b2aca22a2d723de2a626ec'
-         '40cb437805e2f7a006aa0d0c3098ab0f')
+source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2)
+md5sums=('80d2c2982a3392bb0b89673ff136e223')
 
 _basedir=gcc-${pkgver}
 
@@ -43,9 +41,6 @@ build() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=57653
-  patch -p0 -i ${srcdir}/gcc-4.8-filename-output.patch
-  
   # installing libiberty headers is broken
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=56780#c6
   sed -i 's#@target_header_dir@#libiberty#' libiberty/Makefile.in
@@ -115,7 +110,7 @@ package()
 
   # create symlinks
   cd ${pkgdir}/usr/bin
-  for ii in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gfortran; do
+  for ii in c++ g++ gcc gcc-ar gcc-nm gcc-ranlib gfortran; do
     ln -s ${ii}-${pkgver} ${ii}-${_pkgver_minor}
     ln -s ${CHOST}-${ii}-${pkgver} ${CHOST}-${ii}-${_pkgver_minor}
   done
