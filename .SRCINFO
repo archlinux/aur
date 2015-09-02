@@ -1,0 +1,25 @@
+pkgbase = stumpwm-git
+	pkgdesc = A tiling, keyboard-driven window manager written in common lisp
+	pkgver = 20110924
+	pkgrel = 1
+	url = http://www.nongnu.org/stumpwm/
+	install = stumpwm.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = texinfo
+	makedepends = autoconf
+	depends = sbcl
+	depends = clx
+	depends = cl-ppcre
+	optdepends = emacs: Edit and eval stumpwm code with M-x stumpwm-mode
+	optdepends = alsa-utils: Use contrib/amixer.lisp to control audio volume
+	optdepends = aumix: Use contrib/aumix.lisp to control audio volume
+	optdepends = mpd: Use contrib/mpd.lisp to control the mpd
+	optdepends = surfraw: Use contrib/surfraw.lisp to surf the Internet
+	provides = stumpwm
+	options = !strip
+
+pkgname = stumpwm-git
+

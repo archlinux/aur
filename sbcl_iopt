@@ -1,0 +1,6 @@
+sbcl_INFOOPTS=--eval "(require 'asdf)" \
+    --eval "(pushnew #p\"/usr/share/common-lisp/systems/\" asdf:*central-registry* :test #'equal)" \
+    --eval "(asdf:operate 'asdf:load-op 'clx)" \
+    --eval "(require 'stumpwm)" \
+    --load ./manual.lisp \
+    --eval "(progn (stumpwm::generate-manual) (sb-ext:quit))""
