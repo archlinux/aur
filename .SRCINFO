@@ -1,0 +1,16 @@
+pkgbase = zsh-autosuggestions-git
+	pkgdesc = Fish shell like fast/unobtrusive autosuggestions for zsh
+	pkgver = 0.2.1.86.cbaf7ce
+	pkgrel = 1
+	url = https://github.com/tarruda/zsh-autosuggestions
+	install = zsh-autosuggestions.install
+	arch = any
+	license = Custom:MIT
+	makedepends = git
+	depends = zsh
+	provides = zsh-autosuggestions
+	source = zsh-autosuggestions::git://github.com/tarruda/zsh-autosuggestions
+	sha256sums = SKIP
+
+pkgname = zsh-autosuggestions-git
+
