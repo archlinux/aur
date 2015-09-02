@@ -1,6 +1,6 @@
 pkgbase = terragear-git
 	pkgdesc = TerraGear is a collection of open-source tools and rendering libraries which can transform publically available GIS data in 3D representations (i.e. 3D models or 3D maps) of the earth for use in real time rendering projects.
-	pkgver = 20150407
+	pkgver = 20150716
 	pkgrel = 1
 	url = http://wiki.flightgear.org/TerraGear
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = terragear-git
 	makedepends = boost
 	depends = cgal
 	depends = simgear
-	depends = gdal
+	depends = gdal>=2.0.0
 	source = git://git.code.sf.net/p/flightgear/terragear
 	md5sums = SKIP
 
