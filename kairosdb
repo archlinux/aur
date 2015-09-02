@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+/opt/kairosdb/bin/kairosdb.sh run
