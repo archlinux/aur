@@ -13,7 +13,7 @@ pkgbase = tgt
 	source = https://github.com/ksovi/tgt/archive/v1.0.61.tar.gz
 	source = tgtd.service
 	md5sums = cf704fb7fb51968bb22a6b239b6d127d
-	md5sums = 455fe16e3f3d0ad6677035b9b392bbe2
+	md5sums = cd210f0588f5e7b877d1d7e172ccfd31
 
 pkgname = tgt
 
