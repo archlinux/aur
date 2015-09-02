@@ -1,5 +1,5 @@
 [Unit]
-Description=iSCSI target framework daemon
+Description=iSCSI server for Arch Linux
 Documentation=man: tgtd(8)
 After=network.target
 

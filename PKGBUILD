@@ -1,8 +1,8 @@
-# Contributor: Ovi Chis ovi@ovios.org
+#Maintainer: Ovi Chis ovi@ovios.org
 pkgname=tgt
-pkgver=1.0.60
+pkgver=1.0.61
 pkgrel=1
-pkgdesc="iSCSI TGT Daemon and userspace tools"
+pkgdesc="iSCSI Target STGT for Arch Linux"
 arch=('x86_64' 'i686')
 url="http://stgt.sourceforge.net/"
 license=('GPL')
@@ -23,5 +23,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('605d3d2d45f780f2d2010004c513d68e'
+md5sums=('cf704fb7fb51968bb22a6b239b6d127d'
          'b69ec0100191627d415a1f0a5a2ffbc8')
