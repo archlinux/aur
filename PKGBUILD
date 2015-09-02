@@ -24,7 +24,7 @@ package() {
   cd "${srcdir}/${_gitname}"
 
   install -D -m755 pachist -t "${pkgdir}/usr/bin"
-  install -D -m755 zsh_pachist "${pkgdir}/usr/share/zsh/site-functions/_pachist"
+  install -D -m644 zsh_pachist "${pkgdir}/usr/share/zsh/site-functions/_pachist"
   install -D -m644 pachist.8 -t "${pkgdir}/usr/share/man/man8"
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README"
 }
