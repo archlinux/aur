@@ -1,30 +1,34 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 pkgname=sickrage
-pkgver=4.0.54
+pkgver=4.0.55
 pkgrel=1
-pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage and torrents support."
+pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
 license=('GPL3')
 depends=('python2-mako' 'python2-cheetah')
 optdepends=('sabnzbd: NZB downloader'
-            'python2-notify: desktop notifications'
-	    'unrar: automatic decompression'
-	    'git: pull new versions from git')
+			'transmission-cli: supported torrent client'
+			'deluge: supported torrent client'
+			'rtorrent: supported torrent client'
+			'qbittorrent: supported torrent client'
+			'python2-notify: desktop notifications (libnotify)'
+			'unrar: rar extraction support'
+			'git: pull new versions from git')
 provides=('sickbeard-tvrage-git')
 conflicts=('sickbeard' 'sickbeard-piratebay-git' 'sickbeard-tvrage-git' 'sickrage-git')
 replaces=('sickbeard-tvrage-git')
 options=('!strip')
 install='sickrage.install'
 source=("https://github.com/SiCKRAGETV/SickRage/archive/v${pkgver}.tar.gz"
-        'sickrage-system.service'
-        'sickrage-user.service'
-				'sickrage.tmpfile')
-sha256sums=('dd8847f42e63c4c454ff6bc4ebd2ff31fef96a3b8f7211951a7dd600bd1f950f'
-            '468b04a3d143980c51bc5705237caff7fdd180c772081e4289ee69dd3aeb14f9'
-						'c78db64732dc5f725868aea3e84f5ecc0fefef8fe7b5cbd419811929d0602714'
-						'7fbf425e4ef14345e9a91c098c6f1a9cb6ddaed2617b04160a47d35747083565')
+		'sickrage-system.service'
+		'sickrage-user.service'
+		'sickrage.tmpfile')
+sha256sums=('71c13f1371e944ea17f3fef74c20190a823aa7fd74264c6fdde6e090dfdec53e'
+			'1c972f6b27b7095d241580f1992682cd08d640f5692c201f2bd57823635da9dd'
+			'98f3df9ef1c85fb110286c3a1a7d8c9fb20ef587b11d739428b75626d4e03000'
+			'7fbf425e4ef14345e9a91c098c6f1a9cb6ddaed2617b04160a47d35747083565')
 
 package() {
 	mkdir -p "$pkgdir/opt/sickrage"

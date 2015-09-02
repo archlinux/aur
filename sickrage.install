@@ -1,7 +1,7 @@
 SB_USER=sickrage
 
 post_install() {
-	getent passwd ${SB_USER} > /dev/null || useradd -d /opt/sickrage -s /bin/false -r ${SB_USER} > /dev/null
+	getent passwd ${SB_USER} > /dev/null || useradd -g ${SB_USER} -d /opt/sickrage -s /bin/false -r ${SB_USER} > /dev/null
 
 	if grep -qr 'tvrage' /opt/sickbeard 2>/dev/null
 	then
@@ -37,4 +37,5 @@ post_upgrade() {
 post_remove() {
 	echo "Some files have not been removed because they are created by sickrage itself, e.g. the show database."
 	userdel -f ${SB_USER}
+	groupdel -f ${SB_USER}
 }

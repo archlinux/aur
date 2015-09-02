@@ -1,6 +1,8 @@
 [Unit]
 Description=SickRage Daemon
 After=network.target
+## If you want to ensure a torrent client (or usenet client) is running)
+#Requires=deluged.service
 
 [Service]
 User=sickrage
