@@ -9,6 +9,7 @@ pkgbase = idris-git
 	license = custom:BSD3
 	depends = gmp
 	depends = libffi
+	depends = zlib
 	depends = gcc
 	provides = idris
 	conflicts = idris
