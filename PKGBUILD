@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-sequel
-pkgver=4.25.0
+pkgver=4.26.0
 pkgrel=1
 pkgdesc="The Database Toolkit for Ruby"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://sequel.jeremyevans.net"
 license=('MIT')
 depends=('ruby')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('64ea5eccdcaacaf25bf7f7d7fb8d67e12971f50cd33d7f59de935a3e0a4c2999')
+sha256sums=('5c51e86898700976e19888a7a94b5ea4ee80331d8a31c6b761a9f90bcf9455c0')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('sequel' 'ruby-sequel')
 conflicts=('sequel')
@@ -17,7 +17,7 @@ conflicts=('sequel')
 package() {
   cd "$srcdir"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   gem install \
     --no-user-install \
     --ignore-dependencies \
