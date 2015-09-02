@@ -1,0 +1,18 @@
+pkgbase = searchmonkey
+	pkgdesc = A powerful GUI search utility for matching regex patterns
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = http://searchmonkey.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	source = http://downloads.sourceforge.net/searchmonkey/searchmonkey_v2.0.0.zip
+	source = searchmonkey-2.0.0-gcc47.diff
+	source = searchmonkey.desktop
+	md5sums = 239a8171d54c10810da6b131ba5fbd64
+	md5sums = 86841c3796e149cd12e5b3a27cdfc170
+	md5sums = 5535ab5a696309d44cc68c8d15f59693
+
+pkgname = searchmonkey
+

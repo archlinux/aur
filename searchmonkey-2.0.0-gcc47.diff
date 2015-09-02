@@ -1,0 +1,33 @@
+diff -Naur *0~/Utility.h searchmonkey_v2.0.0/Utility.h
+--- *0~/Utility.h	2012-12-27 23:14:46.059215379 -0600
++++ searchmonkey_v2.0.0/Utility.h	2012-12-27 23:14:56.242394809 -0600
+@@ -98,17 +98,11 @@
+     for_each(container.begin(), container.end(), bind1st(mem_fun(op), caller));
+ }
+ template <typename T>
+-bool IsValueInRange(T value, T lowerBound, T upperBound)
+-{
+-    return LowerBoundFit(value, lowerBound) && UpperBoundFit(value, upperBound);
+-}
+-template <typename T>
+ bool BoundSpecified(T boundValue)
+ {
+     return false;
+ }
+-template <typename T>
+-bool LowerBoundFit(T value, T lowerBound)
++template <typename T> bool LowerBoundFit(T value, T lowerBound)
+ {
+     if (BoundSpecified(lowerBound) == false)
+         return true;
+@@ -129,5 +123,10 @@
+ 
+     return false;
+ }
++template <typename T>
++bool IsValueInRange(T value, T lowerBound, T upperBound)
++{
++    return LowerBoundFit(value, lowerBound) && UpperBoundFit(value, upperBound);
++}
+ 
+ #endif

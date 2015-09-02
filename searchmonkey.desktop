@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Searchmonkey
+Comment=Find text files quickly using regular expressions
+Exec=searchmonkey
+Icon=searchmonkey
+Categories=System;
