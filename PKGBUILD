@@ -9,8 +9,7 @@ license=('GPL')
 depends=('perl-config-general' 'libxslt')
 optdepends=('sg3_utils')
 backup=('etc/tgt/targets.conf')
-source=(https://github.com/ksovi/tgt/archive/v$pkgver.tar.gz
-tgtd.service)
+source=(https://github.com/ksovi/tgt/archive/v$pkgver.tar.gz)
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   make ISCSI=1 PREFIX="$pkgdir" || return 1
@@ -19,10 +18,9 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -Dm644  "$srcdir/tgtd.service" "$pkgdir/usr/lib/systemd/system/tgtd.service"
+  install -Dm644  "$srcdir/$pkgname-$pkgver/tgtd.service" "$pkgdir/usr/lib/systemd/system/tgtd.service"
 }
 
 # vim:set ts=2 sw=2 et:
 
-md5sums=('cf704fb7fb51968bb22a6b239b6d127d'
-         'c76daae609203346eab78a1040e3430f')
+md5sums=('c03d0695818e5b249e297340d26e749c')
