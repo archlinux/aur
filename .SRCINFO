@@ -1,6 +1,6 @@
 pkgbase = snd-gtk-alsa-cvs
 	pkgdesc = A sound editor with Alsa and GTK GUI. CVS version
-	pkgver = 15.7
+	pkgver = 15.8
 	pkgrel = 1
 	url = http://ccrma.stanford.edu/software/snd/
 	arch = i686
