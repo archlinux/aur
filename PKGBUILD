@@ -3,7 +3,7 @@
 pkgname=java-berkeleydb
 pkgver=5.3.28
 _pkg_major=5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Java bindings for the Berkeley DB embedded database system"
 arch=(i686 x86_64)
 license=('custom')
