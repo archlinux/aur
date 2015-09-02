@@ -6,14 +6,13 @@
 
 _pkgname=sane
 pkgname=$_pkgname-git
-pkgver=1.0.24_334_g4a6e6c1
+pkgver=1.0.24_352_gf45e166
 pkgrel=1
 pkgdesc="Scanner Access Now Easy"
 url="http://www.sane-project.org/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libtiff>=4.0.0' 'libgphoto2' 'libjpeg>=8' 'libusbx' 'libcups' 'libieee1284' 'v4l-utils' 'avahi' 'bash' 'net-snmp')
-makedepends=('texlive-latexextra')
 backup=(etc/sane.d/{abaton.conf,agfafocus.conf,apple.conf,artec.conf,artec_eplus48u.conf,avision.conf,bh.conf,canon.conf,canon630u.conf,canon_dr.conf,canon_pp.conf,cardscan.conf,coolscan2.conf,coolscan3.conf,coolscan.conf,dc25.conf,dc210.conf,dc240.conf,dell1600n_net.conf,dll.conf,dmc.conf,epjitsu.conf,epson.conf,epson2.conf,fujitsu.conf,genesys.conf,gphoto2.conf,gt68xx.conf,hp.conf,hp3900.conf,hp4200.conf,hp5400.conf,hpsj5s.conf,hs2p.conf,ibm.conf,kodak.conf,kodakaio.conf,leo.conf,lexmark.conf,ma1509.conf,magicolor.conf,matsushita.conf,microtek.conf,microtek2.conf,mustek.conf,mustek_pp.conf,mustek_usb.conf,nec.conf,net.conf,p5.conf,pie.conf,pixma.conf,plustek.conf,plustek_pp.conf,qcam.conf,ricoh.conf,rts8891.conf,s9036.conf,saned.conf,sceptre.conf,sharp.conf,sm3840.conf,snapscan.conf,sp15c.conf,st400.conf,stv680.conf,tamarack.conf,teco1.conf,teco2.conf,teco3.conf,test.conf,u12.conf,umax.conf,umax1220u.conf,umax_pp.conf,xerox_mfp.conf,v4l.conf} etc/xinetd.d/sane)
 conflicts=('sane')
 provides=('sane')
