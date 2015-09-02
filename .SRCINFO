@@ -1,0 +1,19 @@
+pkgbase = bar-aint-recursive-xft-git
+	pkgdesc = A lightweight xcb based bar with ported xft support.
+	pkgver = 217.020a3e1
+	pkgrel = 1
+	url = https://github.com/krypt-n/bar
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxcb
+	depends = libxft
+	depends = libx11
+	provides = bar-aint-recursive
+	conflicts = bar-aint-recursive
+	source = bar::git+https://github.com/krypt-n/bar.git#branch=xft-port
+	sha256sums = SKIP
+
+pkgname = bar-aint-recursive-xft-git
+
