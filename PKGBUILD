@@ -1,7 +1,7 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=bunsen-openbox-pipemenus-git
 pkgver=r189.7885b20
-pkgrel=4
+pkgrel=5
 pkgdesc="Collection of Openbox pipemenus from BunsenLabs Linux"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-pipemenus"
@@ -14,12 +14,12 @@ source=("${pkgname}::git+https://github.com/BunsenLabs/bunsen-pipemenus.git#bran
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname}"
   install -d "${pkgdir}/usr/bin"
   install -t "${pkgdir}/usr/bin" bl-*
 }
