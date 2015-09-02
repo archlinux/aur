@@ -89,10 +89,6 @@ build() {
       --program-suffix=-${pkgver} --enable-version-specific-runtime-libs \
       --enable-checking=release
 
-  #    --disable-libssp \
-  #    --disable-cloog-version-check \
-  #    --with-linker-hash-style=gnu \
-
   make
   
   # make documentation
