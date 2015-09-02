@@ -5,7 +5,7 @@ ISOLATE_GID=29267
 
 pkgname=isolate
 pkgver=r58.e8894c4
-pkgrel=2
+pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('any')
 url="https://github.com/ioi/isolate"
@@ -39,6 +39,5 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin
   install -D -m4750 -g$ISOLATE_GID $pkgname/isolate $pkgdir/usr/bin/isolate
 }

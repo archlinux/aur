@@ -17,6 +17,10 @@ post_install() {
   fi
 }
 
+post_upgrade() {
+  post_install $1
+}
+
 post_remove() {
   groupdel isolate
 }
