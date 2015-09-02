@@ -1,0 +1,18 @@
+pkgbase = honpurple-git
+	pkgdesc = libpurple plugin for the Heroes of Newerth chat server
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/theli-ua/honpurple
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libpurple
+	depends = glib2
+	conflicts = honpurple
+	conflicts = honpurple-svn
+	source = repo::git+https://github.com/theli-ua/honpurple.git
+	md5sums = SKIP
+
+pkgname = honpurple-git
+
