@@ -3,7 +3,7 @@
 
 pkgname=mrrescue
 pkgver=1.02c
-pkgrel=1
+pkgrel=2
 pkgdesc="An arcade styled 2d action game centered around evacuating civilians from burning buildings."
 arch=('any')
 url="http://tangramgames.dk/games/mrrescue/"
@@ -19,7 +19,7 @@ build() {
 	gendesk -n
 
 	# Generate run script
-	echo "love /usr/share/mrrescue/mrrescue-${pkgver}.love" > "${pkgname}.sh"
+	echo -e "#!/bin/sh\nlove /usr/share/mrrescue/mrrescue-${pkgver}.love" > "${pkgname}.sh"
 }
 
 package() {
