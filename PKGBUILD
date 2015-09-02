@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=glc-player
 pkgver=2.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source 3D model viewer"
 arch=('i686' 'x86_64')
 url="http://www.glc-player.net/"
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('glc-lib')
 makedepends=('imagemagick')
 install="${pkgname}.install"
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/GLC_Player_${pkgver}/GLC_Player_src_${pkgver}.zip"
+source=("http://downloads.sourceforge.net/${pkgname}/GLC_Player_src_${pkgver}.zip"
         "glc-lib-2.5.patch"
         "glc_player.desktop"
         "glc_player.png")

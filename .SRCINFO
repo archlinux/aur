@@ -1,7 +1,7 @@
 pkgbase = glc-player
 	pkgdesc = Open source 3D model viewer
 	pkgver = 2.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.glc-player.net/
 	install = glc-player.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = glc-player
 	license = GPL2
 	makedepends = imagemagick
 	depends = glc-lib
-	source = http://downloads.sourceforge.net/project/glc-player/glc-player/GLC_Player_2.3.0/GLC_Player_src_2.3.0.zip
+	source = http://downloads.sourceforge.net/glc-player/GLC_Player_src_2.3.0.zip
 	source = glc-lib-2.5.patch
 	source = glc_player.desktop
 	source = glc_player.png
