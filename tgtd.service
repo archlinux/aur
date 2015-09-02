@@ -29,5 +29,4 @@ ExecStop=/usr/sbin/tgtadm  --op delete --mode system
 
 [Install]
 WantedBy=multi-user.target
-md5sums=('cf704fb7fb51968bb22a6b239b6d127d'
-         '78a4d5d4c6ee8cc7af66bd040fd44e3e')
+
