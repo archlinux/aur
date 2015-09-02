@@ -1,0 +1,14 @@
+# If you modify this, please also make sure to edit init.sh
+
+[Unit]
+Description=Server-level metric gathering agent for InfluxDB
+After=network.target
+
+[Service]
+User=telegraf
+Group=telegraf
+ExecStart=/usr/bin/telegraf -config /etc/telegraf.conf
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
