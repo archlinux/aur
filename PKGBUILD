@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 # Contributer: N30N <archlinux@alunamation.com>
 pkgname=djv
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Movie playback and image processing software for the film and computer animation industries"
 url="http://djv.sourceforge.net/"
@@ -11,19 +11,13 @@ depends=("desktop-file-utils" "ffmpeg" "glew" "libjpeg" "libpng" "libquicktime" 
 makedepends=("cmake" "portaudio" "qt5-tools")
 options=("!docs")
 install="${pkgname}.install"
-source=("git://git.code.sf.net/p/djv/git#tag=${pkgver}"
-        "libjpeg-boolean.patch"
-        "openexr.patch"
+source=("git://git.code.sf.net/p/djv/git#commit=44a063755e627c70498d948478e29ffc1d3f105d"
         "${pkgname}_view.desktop")
 md5sums=('SKIP'
-         '1bd8936a1bdedfe102f62b4da0937ea3'
-         '462c837569fe361ec795762208753930'
          '2668ad2635036f33ba615b5dc538b1cf')
 
 prepare() {
     cd git
-    patch -Np1 -i "${srcdir}/libjpeg-boolean.patch"
-    patch -Np1 -i "${srcdir}/openexr.patch"
     sed -i '/enable_testing()/d' CMakeLists.txt
     sed -i '/add_subdirectory(tests)/d' CMakeLists.txt
     sed -i 's/set(djvPackageThirdParty true)/set(djvPackageThirdParty false)/' CMakeLists.txt
