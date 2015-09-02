@@ -1,0 +1,14 @@
+pkgbase = ruby-rbeautify
+	pkgdesc = prettifier/beautifier for Ruby code [from http://www.arachnoid.com/ruby/]
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = http://github.com/rogerdpack/rbeautify
+	arch = any
+	depends = ruby
+	noextract = rbeautify-0.0.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rbeautify-0.0.7.gem
+	sha1sums = f0880b7580e9d4e03376cf0cf84593d70812d0ef
+
+pkgname = ruby-rbeautify
+
