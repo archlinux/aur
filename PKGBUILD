@@ -18,7 +18,7 @@ source=("$pkgname"::'git://github.com/IntelOrca/OpenRCT2.git#branch=develop'
         'openrct2'
         'openrct2.desktop')
 sha256sums=('SKIP'
-            '8892b09fe99b601d72e54cc3f56894bad3b11f28df9d52adecd982a2e393efa8'
+            '3755e5dfa10e1f7b923915f271258622269017da25af8fb2d807fe3ea5409474'
             '27db282994fe8e7ae04582704c949d9dab1959409c2905e55573418d409c2646'
             'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
 

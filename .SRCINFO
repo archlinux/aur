@@ -22,7 +22,7 @@ pkgbase = openrct2-git
 	source = openrct2
 	source = openrct2.desktop
 	sha256sums = SKIP
-	sha256sums = 8892b09fe99b601d72e54cc3f56894bad3b11f28df9d52adecd982a2e393efa8
+	sha256sums = 3755e5dfa10e1f7b923915f271258622269017da25af8fb2d807fe3ea5409474
 	sha256sums = 27db282994fe8e7ae04582704c949d9dab1959409c2905e55573418d409c2646
 	sha256sums = b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d
 
