@@ -3,7 +3,7 @@
 
 pkgname=dump1090-fa-git
 _gitname=dump1090
-pkgver=1.14.r65.g8d815b7
+pkgver=1.14.r103.g4f24e00
 pkgrel=1
 pkgdesc="FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  make all faup1090 PREFIX=/usr/
+  make all faup1090 EXTRACFLAGS=-DHTMLPATH=\\\"/usr/share/dump1090/html\\\"
 }
  
 package() {
@@ -38,8 +38,8 @@ package() {
   install -D -m755 "${srcdir}/${_gitname}/dump1090" "${pkgdir}/usr/bin/dump1090"
   install -D -m755 "${srcdir}/${_gitname}/view1090" "${pkgdir}/usr/bin/view1090"
   install -D -m755 "${srcdir}/${_gitname}/faup1090" "${pkgdir}/usr/lib/piaware/helpers/faup1090"
-  install -d -m755 "${pkgdir}/usr/share/dump1090/"
+  install -d -m755 "${pkgdir}/usr/share/dump1090/html"
   install -D -m775 dump1090.service "${pkgdir}/usr/lib/systemd/system/dump1090.service"
   chmod -x "${pkgdir}/usr/lib/systemd/system/dump1090.service"
-  cp -r "${srcdir}"/"${_gitname}"/public_html/* "${pkgdir}/usr/share/dump1090/"
+  cp -r "${srcdir}"/"${_gitname}"/public_html/* "${pkgdir}/usr/share/dump1090/html"
 }
