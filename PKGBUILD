@@ -1,9 +1,9 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=general-preprocessor
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
-pkgdesc="Bash based preprocessor for anything"
+pkgdesc="Bash-based preprocessor for anything"
 url="https://github.com/maandree/gpp"
 arch=(any)
 license=(GPL3)
@@ -11,7 +11,7 @@ depends=(python bash)
 makedepends=(make coreutils python texinfo)
 install=general-preprocessor.install
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(c49c0680be2e3238e5ccf01d39c444bd2bec481bfc759a1d467bc4c01ca5b5b0)
+sha256sums=(8d3bc8585b6330a3302c9e02ec1abd691938d70529683e12e6c1aca7eabd04c9)
 
 _prefix=/usr
 _command=gpp ## change this if you have a package conflicting package

@@ -1,6 +1,6 @@
 pkgbase = general-preprocessor
-	pkgdesc = Bash based preprocessor for anything
-	pkgver = 1.3
+	pkgdesc = Bash-based preprocessor for anything
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/maandree/gpp
 	install = general-preprocessor.install
@@ -12,8 +12,8 @@ pkgbase = general-preprocessor
 	makedepends = texinfo
 	depends = python
 	depends = bash
-	source = https://github.com/maandree/gpp/archive/1.3.tar.gz
-	sha256sums = c49c0680be2e3238e5ccf01d39c444bd2bec481bfc759a1d467bc4c01ca5b5b0
+	source = https://github.com/maandree/gpp/archive/1.4.tar.gz
+	sha256sums = 8d3bc8585b6330a3302c9e02ec1abd691938d70529683e12e6c1aca7eabd04c9
 
 pkgname = general-preprocessor
 
