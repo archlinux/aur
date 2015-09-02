@@ -1,6 +1,6 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=fmod
-pkgver=1.06.08
+pkgver=1.06.09
 pkgrel=1
 pkgdesc="Interface for programmers to load FMOD Studio projects and play them back in realtime"
 arch=('i686' 'x86_64' 'arm' 'armhf')
@@ -8,7 +8,7 @@ url="http://www.fmod.org/download/"
 license=('custom')
 changelog='revision.txt'
 source=("http://www.fmod.org/download/fmodstudio/api/Linux/fmodstudioapi${pkgver//[.]/}linux.tar.gz")
-sha256sums=('20c84678854688f776ca7ae06399700ec7f6b582e0c170d41e779e575c6ab395')
+sha256sums=('e2e274d96abb150fd2180b8412f8dea81937cf60f349877fab59d9310ff4532b')
 
 package() {
   _carch=''
