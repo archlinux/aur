@@ -1,0 +1,15 @@
+pkgbase = buildapp
+	pkgdesc = A nice easy way to build Common Lisp images
+	pkgver = 1.5.5
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = sbcl
+	depends = sbcl
+	provides = buildapp
+	source = https://github.com/xach/buildapp/archive/release-1.5.5.tar.gz
+	md5sums = a60d1f7c349075f358a1bf0bf9d1ba9c
+
+pkgname = buildapp
+
