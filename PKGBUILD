@@ -51,7 +51,7 @@ _haskell_core=1
 _haskell_web=0
 
 pkgname=git-annex
-pkgver=5.20141024
+pkgver=5.20150825
 pkgrel=0
 pkgdesc='manage files with git, without checking their contents into git'
 arch=('i686' 'x86_64')
