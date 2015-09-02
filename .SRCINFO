@@ -1,0 +1,17 @@
+pkgbase = entop
+	pkgdesc = A top-like tool for monitoring an Erlang node
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mazenharake/entop.git
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = erlang
+	depends = erlang
+	provides = entop
+	source = git://github.com/mazenharake/entop.git
+	md5sums = SKIP
+
+pkgname = entop
+
