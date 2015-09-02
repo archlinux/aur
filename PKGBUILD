@@ -9,7 +9,7 @@ _build_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.0.RC2.r126.g6e1a8fa
+pkgver=v0.6.0.RC2.r187.ga022019
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -58,7 +58,7 @@ build() {
 	LANG=C ./version_detail.sh
 	cd ../..
 
-	qmake-qt4 CONFIG=release PREFIX='/usr' LIB_DIR='/usr/lib' RetroShare.pro
+	qmake-qt4 -r "CONFIG-=debug" "CONFIG+=release" RetroShare.pro
 	make
 }
 
