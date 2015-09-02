@@ -1,7 +1,7 @@
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgname=plex-trakt-scrobbler-git
-pkgver=v0.9.1.26.r1.g6d46cdd
+pkgver=v0.9.1.29.r1.gcd88f4f
 pkgrel=1
 pkgdesc="Add what you are watching on Plex to trakt.tv"
 arch=('any')

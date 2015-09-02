@@ -1,6 +1,6 @@
 pkgbase = plex-trakt-scrobbler-git
 	pkgdesc = Add what you are watching on Plex to trakt.tv
-	pkgver = v0.9.1.26.r1.g6d46cdd
+	pkgver = v0.9.1.29.r1.gcd88f4f
 	pkgrel = 1
 	url = https://github.com/trakt/Plex-Trakt-Scrobbler
 	arch = any
