@@ -1,12 +1,13 @@
 pkgbase = ots-git
 	pkgdesc = OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats.
-	pkgver = 323.3460366
+	pkgver = 324.b444494
 	pkgrel = 1
 	url = https://github.com/khaledhosny/ots
 	arch = i686
 	arch = x86_64
-	license = Chromium
+	license = custom
 	makedepends = git
+	depends = zlib
 	provides = ots
 	conflicts = ots
 	source = git://github.com/khaledhosny/ots.git
