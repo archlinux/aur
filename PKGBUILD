@@ -8,7 +8,8 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url='http://icedtea.classpath.org/wiki/IcedTea-Web'
 license=('GPL2')
-makedepends=('java-environment-openjdk' 'zip' 'libxtst' 'npapi-sdk' 'rhino' 'junit'
+depends=('bin32-jre')
+makedepends=('java-environment-openjdk' 'zip' 'libxtst' 'npapi-sdk' 'rhino' 'junit' 'bin32-jdk'
              'firefox' 'epiphany')
 optdepends=('rhino: for using proxy auto config files')
 # Due to broken path names in the tarball that fails with LANG=C in our chroot
@@ -26,9 +27,9 @@ build() {
   ./configure \
       --prefix=/usr/share/${pkgbase} \
       --datarootdir=/usr/share \
-      --with-jdk-home=/usr/lib/jvm/default \
-      --with-jre-home=/usr/lib/jvm/default-runtime \
-      --with-java=/usr/bin/java \
+      --with-jdk-home=/usr/lib32/jvm/default \
+      --with-jre-home=/usr/lib32/jvm/default-runtime \
+      --with-java=/usr/bin/java32 \
       --with-browser-tests \
       --with-firefox=/usr/bin/firefox \
       --with-epiphany=/usr/bin/epiphany
