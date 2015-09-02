@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=25.0.50.r122479
+pkgver=25.0.50.r122571
 pkgrel=1
 pkgdesc="GNU Emacs. Official git trunk."
 arch=('i686' 'x86_64')
@@ -19,14 +19,14 @@ source=("git://git.savannah.gnu.org/emacs.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/emacs"
   printf "%s.r%s" \
     "$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')" \
     "$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/emacs"
   ./autogen.sh                                                            
   ac_cv_lib_gif_EGifPutExtensionLast=yes \
     ./configure \
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/emacs"
   make DESTDIR="$pkgdir/" install
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
