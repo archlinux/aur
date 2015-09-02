@@ -25,4 +25,4 @@ package() {
 # vim:set ts=2 sw=2 et:
 
 md5sums=('cf704fb7fb51968bb22a6b239b6d127d'
-         'cd210f0588f5e7b877d1d7e172ccfd31')
+         'c76daae609203346eab78a1040e3430f')
