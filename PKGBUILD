@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('git')
 provides=('pachist')
 conflicts=('pachist')
-source=('git://github.com/Almehdi/pachist.git#branch=master')
+source=('git://github.com/shellkr/pachist.git#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
