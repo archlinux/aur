@@ -6,7 +6,7 @@ arch=('any')
 url='https://pypi.python.org/pypi/gertty'
 license=('Apache2')
 source=("https://pypi.python.org/packages/source/g/gertty/gertty-$pkgver.tar.gz")
-md5sums=('6109bf33ea454d9f148ce47dc12bb654')
+md5sums=('f20192d6423fa9014b91b8f36ccbc101')
 makedepends=('python2' 'python2-setuptools')
 depends=('python2-gitpython' 'python2-sqlalchemy' 'python2-urwid' 'python2-dateutil' 'python2-requests' 'python2-ordereddict' 'python2-alembic' 'python2-yaml' 'python2-ply' 'python2-voluptuous' 'python2-pbr' 'python2-six')
 
