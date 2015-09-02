@@ -1,6 +1,6 @@
 pkgbase = reposurgeon
 	pkgdesc = Performs surgery on version control repositories.
-	pkgver = 3.28
+	pkgver = 3.29
 	pkgrel = 1
 	url = http://www.catb.org/esr/reposurgeon/
 	arch = any
@@ -17,8 +17,10 @@ pkgbase = reposurgeon
 	optdepends = mercurial
 	optdepends = src
 	optdepends = subversion
-	source = http://www.catb.org/esr/reposurgeon/reposurgeon-3.28.tar.gz
-	sha256sums = 3225b44109b8630310a0ea6fe63a3485d27aa46deaf80e8d07820e01a6f62626
+	source = http://www.catb.org/esr/reposurgeon/reposurgeon-3.29.tar.xz
+	source = 0001-missing-reporting-bugs.patch
+	sha256sums = 6105a99f0e6c01d4a499a32b7bcc5d55c37ca1d3386101c20b7c1738fc086aa2
+	sha256sums = 0b4c9fba16b0d5afe734f4a09dac510c04644961444dedcd3603a1c3c093d7ef
 
 pkgname = cyreposurgeon
 	arch = i686

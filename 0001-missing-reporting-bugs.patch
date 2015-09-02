@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index e670c9c..6c371df 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,7 +32,7 @@ SOURCES += Makefile control reposturgeon.png reposurgeon-git-aliases
+ 
+ all: reposurgeon.1 repotool.1 repodiffer.1 repomapper.1 \
+      reposurgeon.html repotool.html repodiffer.html repomapper.html \
+-     dvcs-migration-guide.html features.html reporting-bugs.html
++     dvcs-migration-guide.html features.html
+ 
+ %.1: %.xml
+ 	$(XMLTO) man $<

@@ -2,7 +2,7 @@
 
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
-pkgver=3.28
+pkgver=3.29
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
@@ -18,8 +18,22 @@ optdepends=('bzr'
             'mercurial'
             'src'
             'subversion')
-source=("$url$pkgbase-$pkgver.tar.gz")
-sha256sums=('3225b44109b8630310a0ea6fe63a3485d27aa46deaf80e8d07820e01a6f62626')
+source=("$url$pkgbase-$pkgver.tar.xz"
+        0001-missing-reporting-bugs.patch)
+sha256sums=('6105a99f0e6c01d4a499a32b7bcc5d55c37ca1d3386101c20b7c1738fc086aa2'
+            '0b4c9fba16b0d5afe734f4a09dac510c04644961444dedcd3603a1c3c093d7ef')
+
+prepare() {
+  cd "$srcdir/$pkgbase-$pkgver"
+
+  for patch in ../*.patch; do
+    if [ ! -f "$patch" ]; then
+      break;
+    else
+      patch -p1 -i "$patch"
+    fi
+  done
+}
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
