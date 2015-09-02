@@ -1,6 +1,6 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
-	pkgver = 4.1.5
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
 	arch = i686
@@ -11,14 +11,12 @@ pkgbase = linux-usermode
 	makedepends = vde2-static
 	makedepends = vde2
 	depends = coreutils
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.5.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
 	source = config-i686
 	source = config-x86_64
-	md5sums = fe9dc0f6729f36400ea81aa41d614c37
-	md5sums = 79d9a168b73d91544c15b3b77221528a
-	md5sums = 3f269b45d681772081d1ef7f5a5b2701
-	md5sums = 87db1e4450352d472798b98996501e1a
+	md5sums = 3d5ea06d767e2f35c999eeadafc76523
+	md5sums = 80abbe6afc9d3444381968eea4d6dd74
+	md5sums = 3cc1ee484f8a619447d1f9e238e3392f
 
 pkgname = linux-usermode
 
