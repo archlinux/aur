@@ -1,0 +1,15 @@
+pkgbase = lxc-wrapper
+	pkgdesc = An opinionated LXC wrapper
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Ralt/lxc-wrapper.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = sbcl
+	provides = lxc-wrapper
+	source = git://github.com/Ralt/lxc-wrapper.git
+	md5sums = SKIP
+
+pkgname = lxc-wrapper
+

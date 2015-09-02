@@ -1,0 +1,5 @@
+/lxc-wrapper/
+/pkg/
+/src/
+*.gz
+*.xz
