@@ -1,6 +1,4 @@
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
-# Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
-# Contributor: gueek <cyttam[at]gmail[dot]com>
+# Maintainer: Mangix <rosenp@gmail.com>
 
 pkgname=kzipmix
 pkgver=20150319
