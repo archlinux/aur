@@ -4,7 +4,7 @@ CMSUSER_UID=$CMSUSER_GID
 
 post_install() {
   # Not sure if this is really needed
-  mkdir /var/run/cms
+  install -d -m770 -g$CMSUSER_GID /var/run/cms
 
   # Copy configuration files, if they don't already exist
   cp --archive --no-clobber /usr/lib/cms/cms{,.ranking}.conf /etc/
