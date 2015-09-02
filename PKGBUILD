@@ -2,14 +2,13 @@
 
 pkgname=ihaskell-git
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Haskell kernel for IPython, built in a sandbox."
 arch=('i686' 'x86_64')
 url="https://github.com/gibiansky/IHaskell"
 license=('MIT')
 depends=('ipython>=4' 'python-pyzmq' 'jupyter' 'ghc<7.11')
-makedepends=('git' '
-                   happy' 'gtk2hs-buildtools' 'haskell-stack')
+makedepends=('git' 'happy' 'gtk2hs-buildtools' 'haskell-stack')
 provides=('ihaskell')
 conflicts=()
 source=("git+https://github.com/gibiansky/IHaskell" 'stack.yaml.patch')
@@ -24,6 +23,7 @@ prepare()
 
 build() {
   cd "$srcdir/IHaskell"
+  stack init
   stack install ghc-parser --no-copy-bins
   stack install ipython-kernel --no-copy-bins
   stack install system-argv0 --no-copy-bins
@@ -34,6 +34,7 @@ package() {
   cd "$srcdir/IHaskell/.stack-work/install/x86_64-linux/nightly-2015-08-03/7.10.1/bin"
   mkdir -p "$pkgdir/usr/bin/"
   cp ihaskell "$pkgdir/usr/bin/ihaskell"
-  printf '\n%s\n' "Now, install ihaskell with `ihaskell install`, and enjoy it in ipython notebook or console!"
-  printf '%s\n' 'Also make sure to set resolver to `resolver: nightly-2015-08-03` in your ~/.stack/global/stack.yaml file.'
+  printf '\n%s\n' 'Now, install ihaskell with `ihaskell install`, and enjoy it in ipython notebook or console!'
+  printf '%s\n\n' 'Also make sure to set resolver to `resolver: nightly-2015-08-03` in your ~/.stack/global/stack.yaml file.'
+  printf '%s\n' 'If you run in any issue, make sure to check that you initialiazed stack with `stack init`' 'But change the resolver as mentionned'
 }
