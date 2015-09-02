@@ -1,88 +1,92 @@
-* commit 31d0c237dffee5aa586fdda49a08e2e75d03a8d2
+* commit d360b73bf5ab9ac13576cbff9c36d6b95cc500db
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Aug 30 14:31:01 2015 -0500
+| Date:   Wed Sep 2 01:47:15 2015 -0500
 | 
-|     Create Natives dir in XDG_CACHE_HOME, not the working dir. (fixes #129)
+|     Specify whether Curve uses scaled or unscaled coordinates.
+|     Unscaled coordinates will be used in a future commit (hopefully).
+|     
+|     Added a normalize() method to Vec2f.
+|     
+|     Throw RuntimeExceptions for any Curve initialization errors; the game would crash anyway, and this way the objects can be substituted for DummyObjects for a graceful failure.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 9fc00fc3c383ec23842dc76869033da4af041fc2
+* commit 6c956e927f8fa2b704914c70bae858f103542f97
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sat Aug 29 09:51:10 2015 -0500
+| Date:   Wed Sep 2 01:41:47 2015 -0500
 | 
-|     Follow-up to #128: add XDG info to readme, rename the Maven property.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|    
-*   commit 331865c437b72d819455605cbfd381abc7af5755
-|\  Merge: c283975 fad4435
-| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
-| | Date:   Sat Aug 29 09:28:28 2015 -0500
-| | 
-| |     Merge pull request #128 from Lucki/patch-1
-| |     
-| |     Make the XDG-option available from command line with Gradle
-| |   
-| * commit fad44356e621c3f5d5a3b9b8b1b60a22f4eec7c3
-|/  Author: Lucki <Lucki@users.noreply.github.com>
-|   Date:   Sat Aug 29 13:05:24 2015 +0200
-|   
-|       Make the XDG-option available from command line
-|       
-|       I've found no way to access it without this workaround: https://discuss.gradle.org/t/can-i-override-the-group-property-from-the-command-line/5294
-|       It's now possible to build with `gradle jar -PXDG=true`.
-|  
-* commit c2839759b3e3bf300f7f3ff9ada017e8a4cb6462
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sat Aug 29 00:46:39 2015 -0500
-| 
-|     Follow-up to 2d83c3a: forgot to include a description of .opsu.log.
+|     Beatmap parser fixes.
+|     - Fixed hit object 'addition' field parsing. (Still not sure what the fields do, but the types should be correct now...)
+|     - Fixed a careless error causing a potential null pointer exception. (blame: 0b33fed)
+|     - Show an error if parseHitObjects() parses a different amount of objects than expected.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 2d83c3a3485bb6dfdc936d9767076f0c95e40e4f
+* commit fdd70a81c4ce50a8ebeb1edc4ef2d7f64d457ea8
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sat Aug 29 00:32:08 2015 -0500
+| Date:   Tue Sep 1 21:57:37 2015 -0500
 | 
-|     Added "Directory Structure" section to the readme, with other changes.
+|     Removed leftover/unused 'color' parameter in Curve constructor.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 6d284cdd80a8bb1a4b57679e9c1a001527d9fc3f
+* commit e3d8a11c39a91d926f9a4e13b1f5c150555d5480
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Fri Aug 28 21:29:21 2015 -0500
+| Date:   Tue Sep 1 16:12:41 2015 -0500
 | 
-|     Organize imports.
-|     Some of these got re-ordered when I updated Eclipse -- resetting to the original sort order.
+|     Updating to 0.11.0.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 34c7942f4bd3e70a80890e4b3d1176939ddfbd8f
+* commit df3e662865532b6607713cfc83cc9a2a428e6da9
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Fri Aug 28 21:12:47 2015 -0500
+| Date:   Mon Aug 31 22:54:35 2015 -0500
 | 
-|     Fixed "Hidden" mod timing issues. (fixes #121)
-|     This introduces more accurate timing formulas associated with the "Hidden" mod (previously, in #115, these values were hardcoded).  The values seem somewhat close to the values in osu!, but were not extensively tested.
-|     
-|     Also set an upper bound on the fade in time for hit objects proportional to the approach time, or else the timing values in the "Hidden" mod would be too inconsistent.
+|     Marked a couple more members as 'final'. (continuation of 441bb95)
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit c4f54ecc0594cb867d24dde4386d768133b3ff1d
+* commit 769ad963e7aa636875c9ad673cb14c222a6ffb54
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Fri Aug 28 19:41:02 2015 -0500
+| Date:   Mon Aug 31 22:25:28 2015 -0500
 | 
-|     Hitting the "f" key during a replay changes the playback speed.
+|     Moved OszUnpacker into package 'opsu.beatmap'.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit f773a8ecf8a2b02c444b9326972047124b07e892
+* commit c70fcb296f4524211df0bba58d60f7960be09c4d
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Fri Aug 28 11:07:03 2015 -0500
+| Date:   Mon Aug 31 17:54:32 2015 -0500
 | 
-|     Remove jinput dependency since controllers aren't used.
-|     jinput natives are no longer loaded or packaged in the jar.
+|     Add git hash (from refs/remotes/origin/master) to error reports.
 |     
-|     Excluded the lwjgl dependency within the slick2d package since it depends on an older version (2.9.1) of lwjgl.
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit e535a8884081a780ff704aa5ae0d90f5392c3421
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Sun Aug 30 23:21:58 2015 -0500
+| 
+|     Stop firing BeatmapWatchService events for intended file modifications.
+|     Specifically, during OSZ unpacking and for file deletion through the song menu.  Triggering the beatmap reload event in these scenarios would be redundant.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit aed5163a832c6bdd237f65009e560d5c3dbff16d
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Sun Aug 30 23:18:46 2015 -0500
+| 
+|     Check completed download size against Content-Length header.
+|     If the number of bytes received is less than the reported content length (e.g. a network timeout), mark the download with the "error" status instead of "complete".  Content-Length should be reliable if reported at all, so this should be a valid approach.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit bd8e35cb81e5fefaabf586d4193c386de9648e6e
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Sun Aug 30 22:20:52 2015 -0500
+| 
+|     Added MengSky download server.
+|     URL: http://osu.mengsky.net/
+|     
+|     Also parsing raw HTML for this one because there's no API.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
