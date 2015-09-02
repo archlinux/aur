@@ -1,0 +1,8 @@
+--- bl-kb	2015-09-02 12:19:29.403767220 +0200
++++ bl-kb-p	2015-09-02 12:39:19.630902915 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ # This script reads the keybinds configuration file ("$HOME/.config/openbox/rc.xml")

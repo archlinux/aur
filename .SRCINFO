@@ -1,0 +1,31 @@
+pkgbase = bunsen-utilities-git
+	pkgdesc = Collection of utility scripts
+	pkgver = r72.22e76e4
+	pkgrel = 1
+	url = https://github.com/BunsenLabs/bunsen-utilities
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = pygtk
+	depends = python-xlib
+	depends = python-lxml
+	optdepends = upower: Required for bl-exit
+	optdepends = zenity: Required bl-conkyzen and bl-tint2edit
+	provides = bunsen-utilities
+	conflicts = bunsen-utilities
+	source = bunsen-utilities::git+https://github.com/BunsenLabs/bunsen-utilities.git#branch=master
+	source = https://raw.githubusercontent.com/Unia/bunsen-utilities/master/bl-aerosnap
+	source = https://raw.githubusercontent.com/Unia/bunsen-utilities/rewrite-hotcorners/bl-hotcorners
+	source = bl-kb-python2-path.patch
+	source = bl-exit-python2-path.patch
+	source = bl-hotcorners-syntax.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = af06407c74e40698d716acd5ddee6966
+	md5sums = 967a191ca673aec93546640002c794ab
+	md5sums = 2cb280313bd01a391437e4b960142d80
+
+pkgname = bunsen-utilities-git
+
