@@ -1,5 +1,5 @@
 pkgname=telegram-desktop
-pkgver=0.8.52
+pkgver=0.8.55
 pkgrel=1
 _qtver=5.5.0
 pkgdesc='Official desktop version of Telegram messaging app.'
@@ -10,13 +10,13 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 makedepends=('git' 'patch' 'libunity' 'libappindicator-gtk2' 'xorg-server-xvfb')
 source=("http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.gz"
 	"disable-custom-scheme-linux.patch"
-	"disable-updater.patch"
 	"telegramdesktop.desktop"
-	"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=5a1079e3676d2bf91d3f2e73f3abec01b0c6bf7a")
+	"tg.protocol"
+	"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=42d297f1927bd9840928e2c32e97b6a24db9d6c2")
 sha256sums=('bf3cfc54696fe7d77f2cf33ade46c2cc28841389e22a72f77bae606622998e82'
 	    '6cadef3ddabd2543493e71beee86ca6ac43cc258faaa724d7b8952e9ed6bf9e9'
-	    '1bf0a54664708f9823378ae6ebc5a2513f62c5514fedc4101de4eee6c42f0f4d'
-	    'fb466e51758ba409cd0b9da8147c6854430e8e7f485476d5107b3bf572a82777'
+	    '1191625a6b0683eceef7d59158d16fbe580bbbdc011be435068cf5c833049e5b'
+	    'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
 	    'SKIP')
 install="$pkgname.install"
 
@@ -25,7 +25,6 @@ install="$pkgname.install"
 prepare() {
 	cd "$srcdir/tdesktop"
 	patch -p1 -i "$srcdir/disable-custom-scheme-linux.patch"
-	patch -p1 -i "$srcdir/disable-updater.patch"
 	
 	if ! [ -d "$srcdir/Libraries" ]; then
 		mkdir "$srcdir/Libraries"
@@ -88,6 +87,9 @@ package() {
 	
 	install -d "$pkgdir/usr/share/applications"
 	install -m644 "$srcdir/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
+	
+	install -d "$pkgdir/usr/share/kde4/services"
+	install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kde4/services/tg.protocol"
 	
 	local icon_size icon_dir
 	for icon_size in 16 32 48 64 128 256 512; do
