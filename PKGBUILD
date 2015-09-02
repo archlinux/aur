@@ -5,7 +5,7 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=355.06
+pkgver=355.11
 pkgrel=1
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 makedepends=('pacman>=4.2.0')
@@ -27,9 +27,9 @@ source_armv7h=("http://download.nvidia.com/XFree86/Linux-32bit-ARM/${pkgver}/NVI
 # http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run.md5
 # http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run.md5
 # http://download.nvidia.com/XFree86/Linux-32bit-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run.md5
-md5sums_i686=('c4d2ae0dd6338874e5e8358fe630ba8f')
-md5sums_x86_64=('8bdf64adc94bd9e170e4a7412ca9e5ba')
-md5sums_armv7h=('a06c6d3d0d1294bd788e49ae797fecda')
+md5sums_i686=('16d143ccafe99328a2ca8e5a396fd4bc')
+md5sums_x86_64=('30133d89690f4683c4e289ec6c0247dc')
+md5sums_armv7h=('1a411939003e964d133d28ee746abace')
 
 install=${pkgname}.install
 

@@ -1,6 +1,6 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA kernel module sources (DKMS) - BETA version
-	pkgver = 355.06
+	pkgver = 355.11
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-beta-dkms.install
@@ -12,16 +12,16 @@ pkgbase = nvidia-beta-dkms
 	depends = dkms
 	depends = linux>=3.7
 	depends = linux<4.2
-	depends = nvidia-utils-beta>=355.06
-	provides = nvidia=355.06
+	depends = nvidia-utils-beta>=355.11
+	provides = nvidia=355.11
 	provides = nvidia-dkms
 	conflicts = nvidia-beta
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/355.06/NVIDIA-Linux-x86-355.06.run
-	md5sums_i686 = c4d2ae0dd6338874e5e8358fe630ba8f
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/355.06/NVIDIA-Linux-x86_64-355.06-no-compat32.run
-	md5sums_x86_64 = 8bdf64adc94bd9e170e4a7412ca9e5ba
-	source_armv7h = http://download.nvidia.com/XFree86/Linux-32bit-ARM/355.06/NVIDIA-Linux-armv7l-gnueabihf-355.06.run
-	md5sums_armv7h = a06c6d3d0d1294bd788e49ae797fecda
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
+	md5sums_i686 = 16d143ccafe99328a2ca8e5a396fd4bc
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run
+	md5sums_x86_64 = 30133d89690f4683c4e289ec6c0247dc
+	source_armv7h = http://download.nvidia.com/XFree86/Linux-32bit-ARM/355.11/NVIDIA-Linux-armv7l-gnueabihf-355.11.run
+	md5sums_armv7h = 1a411939003e964d133d28ee746abace
 
 pkgname = nvidia-beta-dkms
 
