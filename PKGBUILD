@@ -5,15 +5,15 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="0.19.0"
-pkgrel="2"
+pkgver="1.0.0"
+pkgrel="1"
 pkgdesc="OpenStack Image API Client Library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
-makedepends=("python-pbr>=0.11" "python2-pbr>=0.11")
+makedepends=("python-pbr>=1.3" "python2-pbr>=1.3")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('45115023cadfdbc24a10b10ca5d003f8f04fd5642b7c8fb565efa566bac4bf51')
+sha256sums=('46cf0c1bad4ec29c8b56c0a16a2c54f4add89fd33e8756285367cfcdd23595b4')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -24,10 +24,9 @@ package_python-glanceclient() {
     depends=("python-babel>=1.3"
              "python-keystoneclient>=1.6.0"
              "python-oslo-i18n>=1.5.0"
-             "python-oslo-utils>=1.4.0"
-             "python-pbr>=0.11"
+             "python-oslo-utils>=1.9.0"
+             "python-pbr>=1.4"
              "python-prettytable>=0.7"
-             "python-pyopenssl>=0.11"
              "python-requests>=2.5.2"
              "python-six>=1.9.0"
              "python-warlock>=1.0.1")
@@ -40,10 +39,9 @@ package_python2-glanceclient() {
     depends=("python2-babel>=1.3"
              "python2-keystoneclient>=1.6.0"
              "python2-oslo-i18n>=1.5.0"
-             "python2-oslo-utils>=1.4.0"
-             "python2-pbr>=0.11"
+             "python2-oslo-utils>=1.9.0"
+             "python2-pbr>=1.4"
              "python2-prettytable>=0.7"
-             "python2-pyopenssl>=0.11"
              "python2-requests>=2.5.2"
              "python2-six>=1.9.0"
              "python2-warlock>=1.0.1")
