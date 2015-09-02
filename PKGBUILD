@@ -2,7 +2,7 @@
 
 pkgname=nudoku-git
 _gitname=nudoku
-pkgver=0.2.4
+pkgver=0.2.4.r1.g633d5d2
 pkgrel=1
 pkgdesc="Sudoku for the terminal"
 arch=('i686' 'x86_64')
@@ -17,10 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_gitname"
-	local version=$(git describe --tags)
-	local version=${version/v/}
-	local version=${version//-/.}
-	echo $version
+	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
