@@ -1,6 +1,6 @@
 # Maintainer: Peter Gottesman <peter@petergottesman.com>
 pkgname=openmpi-1.10
-pkgver=1.10.0rc3
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A High Performance Message Passing Library"
 arch=(any)
@@ -9,7 +9,7 @@ license=(custom)
 depends=(libtool hwloc)
 makedepends=(gcc-fortran inetutils valgrind)
 source=(http://www.open-mpi.org/software/ompi/v1.10/downloads/openmpi-$pkgver.tar.gz)
-md5sums=('84d322eaeb1d23ea6b0ab8fdb5830375')
+md5sums=('10e097bfaca8ed625781af0314797b90')
 
 build() {
     cd $pkgname-$pkgver
