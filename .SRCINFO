@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-network-monitor-git
 	pkgdesc = Plasmoid for Plasma 5. Shows network speed of currently active connections.
-	pkgver = r21.82e0807
-	pkgrel = 2
+	pkgver = r22.5d66fc8
+	pkgrel = 1
 	url = https://github.com/kotelnik/plasma-applet-network-monitor
 	arch = any
 	license = GPL
