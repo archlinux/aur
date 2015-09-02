@@ -1,8 +1,3 @@
-pre_install() {
-	echo -n "If you are using an AUR-Helper or building on a small partition (like /tmp),"
-	echo -n "you might want to change the build-/cache-directory as this package is rather big"
-}
-
 post_install() {
   echo -n "Updating desktop MIME database..."
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor

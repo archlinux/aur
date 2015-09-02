@@ -46,6 +46,11 @@ sha256sums=('bf73e7693ae15b271dbbd55010eb33fae3400b964fa4b70289bd5a17d19d5493'
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
+prepare() {
+  warning "If you are using an AUR-Helper or building on a small partition (like /tmp),"
+  warning "you might want to change the build-/cache-directory as this package is rather big"
+}
+
 build() {
   yes | fakeroot sh "unity-editor-installer-${pkgver}.sh"
 }
