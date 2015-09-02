@@ -1,7 +1,7 @@
 # Maintainer:  <aaron.l.france@gmail.com>
 pkgname=buildapp
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A nice easy way to build Common Lisp images"
 arch=('i686' 'x86_64')
