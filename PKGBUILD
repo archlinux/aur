@@ -1,7 +1,7 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=virtualsmartcard
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Virtual Smart Card emulates a smart card and makes it accessible through PC/SC"
 url="http://sourceforge.net/projects/vsmartcard/"
@@ -10,7 +10,7 @@ license=( "GPLv3" )
 depends=( "pcsclite" )
 makedepends=( "help2man" )
 source=( "http://downloads.sourceforge.net/project/vsmartcard/$pkgname/$pkgname-$pkgver.tar.gz" )
-sha1sums=('ca8916354089443fb141ae8e6644c1b42a964c71')
+sha1sums=('cc608b91682d13b42604fae6238f57cd0da0135c')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
