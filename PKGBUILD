@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL')
 depends=('cinnamon')
 url='http://linuxmint.com'
-source=("http://packages.linuxmint.com/pool/main/m/${pkgbase}/${pkgbase}_${pkgver}.tar.gz"
+source=("https://ftp.fau.de/mint/packages/pool/main/m/${pkgbase}/${pkgbase}_${pkgver}.tar.gz"
 	"${pkgname}.gschema.override")
 sha256sums=('4523f3043977f352309043350bfafc33d07dd3ac9e794e75c481e3733ac7a28c'
 	'ca9d9d22c2ca9b0e257f93bd624fc27a53cab258797e009438a82e9b6902100e')
@@ -27,5 +27,5 @@ package_cinnamon-sound-effects() {
 		install -Dm644 "${file}" "${pkgdir}/usr/share/${pkgbase}/sounds/"
 	done
 
-	install -Dm644 "${startdir}/${pkgname}.gschema.override" "${pkgdir}/usr/share/glib-2.0/schemas/${pkgname}.gschema.override"
+	install -Dm644 "../${pkgname}.gschema.override" "${pkgdir}/usr/share/glib-2.0/schemas/${pkgname}.gschema.override"
 }
