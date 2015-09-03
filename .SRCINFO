@@ -1,0 +1,15 @@
+pkgbase = vche
+	pkgdesc = A hex editor which lets you view/edit hard drives, CDROMs, RAM, and everything that can be read.
+	pkgver = 1.7.2
+	pkgrel = 2
+	url = http://www.grigna.com/diego/linux/vche/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = ncurses
+	source = http://www.grigna.com/diego/linux/vche//vche-1.7.2.tar.gz
+	sha256sums = 3142dd3ed8b7c75febfe1dab2fb3437e2a41948a4726da0657fb4057450ffd00
+
+pkgname = vche
+
