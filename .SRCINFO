@@ -1,0 +1,22 @@
+pkgbase = keebuntu-git
+	pkgdesc = App indicator icon for keepass (for unity, cinnamon & gnome)
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/dlech/Keebuntu
+	install = keebuntu-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = libappindicator-sharp
+	depends = keepass
+	depends = libappindicator-gtk2
+	depends = libappindicator-sharp
+	depends = libdbusmenu-gtk2
+	depends = libindicator-gtk2
+	depends = dbus-sharp-glib
+	depends = gtk-sharp-2
+	source = repo::git+https://github.com/dlech/Keebuntu.git
+	md5sums = SKIP
+
+pkgname = keebuntu-git
+
