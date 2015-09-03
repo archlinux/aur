@@ -1,25 +1,34 @@
-# Maintainer: Gil Forsyth <gilforsyth@gmail.com> 
+# Maintainer: lolilolicon <lolilolicon@gmail.com>
 
+_name=xrectsel
+_ver=0.3.1
 pkgname=xrectsel
-pkgver=0.3.1
+pkgver=${_ver//-/}
 pkgrel=1
-pkgdesc="a small program that tells you the geometry of a rectangular screen region selected with the mouse"
-license=('GPL3')
-arch=('i686' 'x86_64')
+pkgdesc="print the geometry of a rectangular screen region"
+arch=(i686 x86_64)
 url="https://github.com/lolilolicon/xrectsel"
-source=("https://github.com/lolilolicon/xrectsel/archive/$pkgver.tar.gz")
-md5sums=('SKIP')
-depends=('libx11')
+license=(GPL3)
+conflicts=('ffcast<1:2.2.0')  # ffcast used to ship /usr/bin/xrectsel
+depends=(libx11)
+makedepends=(autoconf automake)
+source=("https://github.com/lolilolicon/$_name/archive/$_ver.tar.gz")
+md5sums=('e62966f6ddbd82780a2ab2d2d94bfebb')
+
+prepare() {
+  cd "$_name-$_ver"
+  ./bootstrap
+}
 
 build() {
-    tar xzf "${pkgver}.tar.gz"
-    cd "${pkgname}-${pkgver}"
-    ./bootstrap
-    ./configure --prefix /usr
-    make
-}
-package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm 755 xrectsel "${pkgdir}"/usr/bin/xrectsel
+  cd "$_name-$_ver"
+  ./configure --prefix /usr
+  make
 }
 
+package() {
+  cd "$_name-$_ver"
+  make DESTDIR="$pkgdir" install
+}
+
+# vim:st=2:sw=2:et:
