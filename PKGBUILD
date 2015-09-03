@@ -4,13 +4,12 @@ _gitbranch="develop"
 
 # NB: Only for pull requests in origin
 _git_patches=""
-_git_patches+="210:compile-linux "
-_git_patches+="211:mono-processname "
+_git_patches+="783:mono-process-name "
 
 pkgname="sonarr-git"
-pkgver=2.0.0.r6121
+pkgver=2.0.0.r6485
 pkgrel=1
-pkgdesc="Automated TV series manager and downloader (PVR) - git branch ${_gitbranch}"
+pkgdesc="Automated TV series manager and downloader - git branch ${_gitbranch}"
 arch=(any)
 url="https://sonarr.tv"
 license=('GPL3')
@@ -19,7 +18,6 @@ depends=('mono'
          'libmediainfo'
          'sqlite')
 makedepends=('git'
-             'nuget-cert'
              'npm'
              'nodejs')
 optdepends=()
@@ -64,6 +62,11 @@ prepare() {
       git fetch origin pull/${id}/head:${name} --force
       git rebase ${name} --force-rebase --ignore-whitespace --quiet
   done
+
+  git submodule update --init
+
+  # FIXME Replacement for 'nuget-cert'
+  # sudo cert-sync --quiet /etc/ssl/certs/ca-certificates.crt
 }
 
 build() {
