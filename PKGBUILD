@@ -6,12 +6,12 @@
 
 pkgname=yuicompressor
 pkgver=2.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="CSS and Javascript compressor"
 arch=("any")
 url="http://developer.yahoo.com/yui/compressor/"
 license=("BSD")
-depends=("java-runtime")
+depends=("java-runtime-headless")
 source=("https://github.com/yui/yuicompressor/releases/download/v${pkgver}/yuicompressor-${pkgver}.zip"
         "yuicompressor.sh"
 	'https://raw.github.com/yui/yuicompressor/master/LICENSE.TXT')
