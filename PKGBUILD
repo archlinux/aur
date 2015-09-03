@@ -3,13 +3,13 @@
 # QT4 version
 pkgname=zulucrypt
 pkgver=4.7.7
-pkgrel=2
+pkgrel=3
 _altpkgname=zuluCrypt
 pkgdesc="a cli and gui frontend to cryptsetup."
 url="http://mhogomchungu.github.io/zuluCrypt/"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'qt5-xmlpatterns' )
+depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'libxkbcommon-x11' )
 optdepends=('kdeutils-kwalletmanager: retrieve volume keys from kde kwallet')
 conflicts=('zulucrypt-git')
 makedepends=('cmake')
