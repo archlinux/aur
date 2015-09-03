@@ -1,7 +1,7 @@
 # Maintainer: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 # Colaborator: Chun Yang <x@cyang.info>
 pkgname=ghost
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Free, open, simple blogging platform"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ install=ghost.install
 source=(http://ghost.org/zip/$pkgname-$pkgver.zip
         ghost.service)
 noextract=($pkgname-$pkgver.zip)
-sha256sums=('5bfd95804f39b986fffc4ac266b8e9d800333dfaa034b20a4fec62a7346003e0'
+sha256sums=('237c64cd18c97cf685afc7db55b9bc94e48a71ab9cf4bcabeb8286cb031eb551'
             'f6ddfd93a839cadcc34b8b5971948aebad2ab3989210ac04c66b8d681e11d3ee')
 
 # Note: You may need to log into ghost.org and download the zip file manually

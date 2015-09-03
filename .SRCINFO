@@ -1,6 +1,6 @@
 pkgbase = ghost
 	pkgdesc = Free, open, simple blogging platform
-	pkgver = 0.6.4
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = http://ghost.org
 	install = ghost.install
@@ -9,13 +9,13 @@ pkgbase = ghost
 	license = MIT
 	makedepends = unzip
 	depends = nodejs>=0.12
-	noextract = ghost-0.6.4.zip
+	noextract = ghost-0.7.0.zip
 	backup = srv/ghost/Gruntfile.js
 	backup = srv/ghost/index.js
 	backup = srv/ghost/package.json
-	source = http://ghost.org/zip/ghost-0.6.4.zip
+	source = http://ghost.org/zip/ghost-0.7.0.zip
 	source = ghost.service
-	sha256sums = 5bfd95804f39b986fffc4ac266b8e9d800333dfaa034b20a4fec62a7346003e0
+	sha256sums = 237c64cd18c97cf685afc7db55b9bc94e48a71ab9cf4bcabeb8286cb031eb551
 	sha256sums = f6ddfd93a839cadcc34b8b5971948aebad2ab3989210ac04c66b8d681e11d3ee
 
 pkgname = ghost
