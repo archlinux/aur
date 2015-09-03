@@ -6254,8 +6254,8 @@ CONFIG_IIO_ST_ACCEL_SPI_3AXIS=m
 CONFIG_KXCJK1013=m
 # CONFIG_MMA9551 is not set
 # CONFIG_MMA9553 is not set
-CONFIG_STK8312=m
-CONFIG_STK8BA50=m
+# CONFIG_STK8312 is not set
+# CONFIG_STK8BA50 is not set
 
 #
 # Analog to digital converters
