@@ -7,6 +7,7 @@ pkgdesc='Bridge IOU to UDP, TAP and Ethernet. GNS3 tool.'
 arch=('i686' 'x86_64')
 url='https://github.com/GNS3/iouyap'
 license=('GPL3')
+groups=('gns3')
 makedepends=('iniparser')
 depends=()
 optdepends=()

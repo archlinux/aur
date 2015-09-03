@@ -5,6 +5,7 @@ pkgbase = iouyap
 	url = https://github.com/GNS3/iouyap
 	arch = i686
 	arch = x86_64
+	groups = gns3
 	license = GPL3
 	makedepends = iniparser
 	source = iouyap-0.95.tar.gz::https://github.com/GNS3/iouyap/archive/0.95.tar.gz
