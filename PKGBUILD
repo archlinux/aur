@@ -16,9 +16,12 @@ package() {
   cp -r $srcdir/cc0/* $pkgdir/usr/lib/c0
 
   mkdir -p $pkgdir/usr/bin
-  chmod +x $pkgdir/usr/lib/c0/bin/cc0.bin
-  ln -s /usr/lib/c0/bin/cc0.bin $pkgdir/usr/bin/cc0
-  chmod +x $pkgdir/usr/lib/c0/bin/coin.bin
-  ln -s /usr/lib/c0/bin/coin.bin $pkgdir/usr/bin/coin
 
+  chmod +x $pkgdir/usr/lib/c0/bin/cc0.bin
+  echo -e '#!/bin/sh\n/usr/lib/c0/bin/cc0.bin $@' >> $pkgdir/usr/bin/cc0
+  chmod +x $pkgdir/usr/bin/cc0
+
+  chmod +x $pkgdir/usr/lib/c0/bin/coin.bin
+  echo -e '#!/bin/sh\n/usr/lib/c0/bin/coin.bin $@' >> $pkgdir/usr/bin/coin
+  chmod +x $pkgdir/usr/bin/coin
 }
