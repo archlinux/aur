@@ -19,7 +19,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=3.8.0svn_r246546
+pkgver=3.8.0svn_r246806
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -57,9 +57,52 @@ sha256sums=(
     'f176e58b1f07aa3859f9d4b67e17eac88ad4de2f5d501ef968549d0419e76f65'
 )
 
+#
+# BEGIN INTERNAL VARIABLES AND FUNCTIONS
+#
+
+# Python site-packages dir (relative to ${pkgdir})
+_py_sitepkg_dir="/usr/lib/python2.7/site-packages"
+
+# Determine the installed OCaml package version
+# Arguments: NONE
 _ocamlver() {
     pacman -Q ocaml | awk '{ print $2 }' | cut -d - -f 1 | cut -d . -f 1,2,3
 }
+
+# Fix the Python interpreter path in .py files to point to python2
+# Arguments: py_file_to_patch [py_file_to_patch ...]
+_fix_python_exec_path() {
+    sed -i \
+        -e 's|^#!/usr/bin/python$|&2|' \
+        -e 's|^#!/usr/bin/env python$|&2|' \
+        ${@}
+}
+
+# Compile the Python files in a directory
+# Arguments: directory_to_operate_on
+_compile_python_files() {
+    python2 -m compileall "${1}"
+    python2 -O -m compileall "${1}"
+}
+
+# Install the Python bindings of a package
+# Arguments: source_directory_to_install_from
+_install_python_bindings() {
+    install -m 0755 -d "${pkgdir}${_py_sitepkg_dir}"
+    cp -r "${1}" "${pkgdir}${_py_sitepkg_dir}/"
+    _compile_python_files "${pkgdir}${_py_sitepkg_dir}/${1##*/}"
+}
+
+# Install the license file for a package
+# Arguments: NONE
+_install_license() {
+    install -D -m 0644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+#
+# END INTERNAL VARIABLES AND FUNCTIONS
+#
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -211,17 +254,12 @@ package_llvm-svn() {
         cp "${srcdir}/llvm-Config-llvm-config.h" "${pkgdir}/usr/include/llvm/Config/llvm-config.h"
     fi
 
-    # Install Python bindings
-    _py_sitepkg_loc="${pkgdir}/usr/lib/python2.7/site-packages"
-    install -m755 -d "${_py_sitepkg_loc}"
-    cp -r "${srcdir}/llvm/bindings/python/llvm" "${_py_sitepkg_loc}/"
-    python2 -m compileall "${_py_sitepkg_loc}/llvm"
-    python2 -O -m compileall "${_py_sitepkg_loc}/llvm"
-
     # Clean up documentation
     rm -rf "${pkgdir}/usr/share/doc/llvm/html/_sources"
 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _install_python_bindings "${srcdir}/llvm/bindings/python/llvm"
+
+    _install_license
 }
 
 package_llvm-libs-svn() {
@@ -256,7 +294,7 @@ package_llvm-libs-svn() {
             "${pkgdir}/usr/lib/${_shlib}-$(echo ${pkgver} | tr _ -).so"
     done
 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _install_license
 }
 
 package_llvm-ocaml-svn() {
@@ -277,7 +315,7 @@ package_llvm-ocaml-svn() {
     cp -a "${srcdir}/ocaml.lib" "${pkgdir}/usr/lib/ocaml"
     cp -a "${srcdir}/ocaml.doc" "${pkgdir}/usr/share/doc/ocaml"
 
-   install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _install_license
 }
 
 package_clang-svn() {
@@ -302,24 +340,16 @@ package_clang-svn() {
 
     make DESTDIR="${pkgdir}" install
 
-    # These require python2
-    sed -i \
-        -e 's|^#!/usr/bin/python$|&2|' \
-        -e 's|^#!/usr/bin/env python$|&2|' \
-        "${pkgdir}/usr/bin/git-clang-format" \
-        "${pkgdir}/usr/share/clang/clang-format-diff.py"
-
-    # Install Python bindings
-    _py_sitepkg_loc="${pkgdir}/usr/lib/python2.7/site-packages"
-    install -m755 -d "${_py_sitepkg_loc}"
-    cp -r "${srcdir}/llvm/tools/clang/bindings/python/clang" "${_py_sitepkg_loc}/"
-    python2 -m compileall "${_py_sitepkg_loc}/clang"
-    python2 -O -m compileall "${_py_sitepkg_loc}/clang"
-
     # Clean up documentation
     rm -r "${pkgdir}/usr/share/doc/clang/html/_sources"
 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _fix_python_exec_path \
+        "${pkgdir}/usr/bin/git-clang-format" \
+        "${pkgdir}/usr/share/clang/clang-format-diff.py"
+
+    _install_python_bindings "${srcdir}/llvm/tools/clang/bindings/python/clang"
+
+    _install_license
 }
 
 package_clang-analyzer-svn() {
@@ -348,18 +378,13 @@ package_clang-analyzer-svn() {
     install -m755 -d "${pkgdir}/usr/share/man/man1"
     mv "${pkgdir}/usr/lib/clang-analyzer/scan-build/scan-build.1" "${pkgdir}/usr/share/man/man1/"
 
-    # These require python2
-    sed -i \
-        -e 's|^#!/usr/bin/python$|&2|' \
-        -e 's|^#!/usr/bin/env python$|&2|' \
+    _fix_python_exec_path \
         "${pkgdir}/usr/lib/clang-analyzer/scan-view/scan-view" \
         "${pkgdir}/usr/lib/clang-analyzer/scan-build/set-xcode-analyzer"
 
-    # Compile Python scripts
-    python2 -m compileall "${pkgdir}/usr/lib/clang-analyzer"
-    python2 -O -m compileall "${pkgdir}/usr/lib/clang-analyzer"
+    _compile_python_files "${pkgdir}/usr/lib/clang-analyzer"
 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _install_license
 }
 
 package_clang-tools-extra-svn() {
@@ -376,7 +401,7 @@ package_clang-tools-extra-svn() {
 
     make DESTDIR="${pkgdir}" install
 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _install_license
 }
 
 # vim:set ts=4 sts=4 sw=4 et:
