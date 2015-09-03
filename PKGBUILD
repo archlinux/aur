@@ -1,7 +1,7 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 # Contributor: firstvirus92 <dev[at]firstvirus92[dot]de>
 pkgname=openra-bleed
-pkgver=r17766.9dabf90
+pkgver=r18036.2f759ab
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/mono and OpenGL (git version)"
 arch=("any")

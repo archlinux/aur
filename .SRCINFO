@@ -1,6 +1,6 @@
 pkgbase = openra-bleed
 	pkgdesc = An open-source implementation of the Red Alert engine using .NET/mono and OpenGL (git version)
-	pkgver = r17766.9dabf90
+	pkgver = r18036.2f759ab
 	pkgrel = 1
 	url = http://openra.net
 	install = openra-bleed.install
