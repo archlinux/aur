@@ -1,4 +1,4 @@
-pkgbase = liri-git
+pkgbase = liri-browser-git
 	pkgdesc = A UI framework for QtQuick implementing Material Design
 	pkgver = 0.2.r28.g8867da7
 	pkgrel = 1
@@ -10,15 +10,15 @@ pkgbase = liri-git
 	depends = qt5-base
 	depends = qt5-webengine
 	depends = qml-material-git
-	provides = liri
-	provides = liri-git
-	conflicts = liri
-	source = liri-git::git+https://github.com/liri-browser/liri-browser.git
+	provides = liri-browser
+	provides = liri-browser-git
+	conflicts = liri-browser
+	source = liri-browser-git::git+https://github.com/liri-browser/liri-browser.git
 	source = liri-browser
 	source = liri-browser.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = liri-git
+pkgname = liri-browser-git
 
