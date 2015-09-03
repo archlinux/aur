@@ -2,7 +2,7 @@
 
 pkgname=dump1090-mutability-git
 _pkgbase=dump1090-mutability
-pkgver=1.14.r103.g4f24e00
+pkgver=1.14.r107.gef34c4c
 pkgrel=1
 pkgdesc="ADS-B / Mode S Ground Station System for simple RTL-SDR decoding/translating. Mutability Fork"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  make all faup1090 PREFIX=/usr
+  make all faup1090 "EXTRACFLAGS=-DHTMLPATH=\\\"/usr/share/dump1090-mutability/html\\\" -DMODES_DUMP1090_VARIANT=\\\"dump1090-mutability\\\""
 }
 
 package() {
