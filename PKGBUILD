@@ -38,7 +38,7 @@ build() {
   CONFIGURE="./configure F77=gfortran --prefix=/usr \
                  --enable-shared --enable-threads \
 		 --enable-openmp
-                 MPILIBS=-lmpi LDFLAGS=-L/opt/mpich/libs CPPFLAGS=-I/opt/mpich/include"
+                 --enable-mpi MPICC=/opt/mpich/bin/mpicc"
 
   # build double precision
   cd ${srcdir}/${_pkgname}-${pkgver}-double
