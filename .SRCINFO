@@ -1,0 +1,17 @@
+pkgbase = hless-bin
+	pkgdesc = less with syntax highlighting
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jreinert/hless
+	arch = x86_64
+	license = MIT
+	depends = python2-pygments
+	provides = hless
+	conflicts = hless-git
+	source = https://github.com/jreinert/hless/releases/download/v0.1.0/hless
+	source = https://github.com/jreinert/hless/releases/download/v0.1.0/hless.sig
+	md5sums = 644fad8a09c3b9abffb7d39052a2598c
+	md5sums = SKIP
+
+pkgname = hless-bin
+
