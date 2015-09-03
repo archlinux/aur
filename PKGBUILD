@@ -10,7 +10,7 @@ _debrepo=http://security.debian.org/debian-security/pool/updates/main/i/
  
 pkgname=iceweasel-stable-bin
 pkgver=${_debver}.deb${_debrel}
-pkgrel=3
+pkgrel=4
 pkgdesc="Debian Stable (Jessie) Browser based on Mozilla Firefox (bin version)"
 arch=('i686' 'x86_64')
 url=("https://packages.debian.org/jessie/iceweasel")
@@ -33,10 +33,10 @@ install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    SHA256sums=('4c0763c1b6091aa4100b3b24b5a241243ca7979321700df53caa832120d965f4')
+    sha1sums=('77e276d3fd6ecfa2f292c15632db6e84c01aec0c')
 else
     _debarch=i386
-    SHA256sums=('1c95a572d8631840de6e400a8f912ea9c8ef5130ff63852b796b7b63f888eb3e')
+    sha1sums=('e4c34d2fb7f9b35ff326cb06cbcb9a53e551c500')
  fi
  
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
