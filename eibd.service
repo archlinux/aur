@@ -3,7 +3,7 @@ Description=EIB Daemon
 After=network.target
 
 [Service]
-User=daemon
+User=eibd
 EnvironmentFile=/etc/conf.d/eibd.conf
 ExecStart=/usr/bin/eibd $EIBD_OPTS
 Restart=always
