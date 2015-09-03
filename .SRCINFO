@@ -1,0 +1,16 @@
+pkgbase = netctl-eduroam-uu
+	pkgdesc = Example netctl profile for eduroam at the University of Utrecht
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.uu.nl/university/utrecht/NL/praktischezaken/ICT/Paginas/Eduroam.aspx
+	install = install
+	arch = any
+	license = MIT
+	depends = ca-certificates
+	depends = netctl
+	depends = ppp
+	source = eduroam-uu
+	md5sums = 0008f47b858ad98a511b10694a1a534e
+
+pkgname = netctl-eduroam-uu
+
