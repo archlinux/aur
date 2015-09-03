@@ -28,7 +28,7 @@ source=("${pkgname}"::'git://github.com/mumble-voip/mumble.git'
         'revert-tray.patch')
 sha256sums=('SKIP'
             'ae56abc2d9b5725e7ff768b8ca29a569dc9051ef192d792372ef10f0e6c3f53d'
-            'b4bac794f25a3748baa7ccfd174c60d6fef20694ccbad72612c0679e2445c769')
+            '16d84ee1326dab29944951a4274ad2e9b53d118f9203911dba25b6b3c07ba6c5')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
