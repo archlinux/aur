@@ -1,0 +1,21 @@
+pkgbase = cppcheck-git
+	pkgdesc = A tool for static C/C++ code analysis.
+	pkgver = 1.69.673.gea11e28
+	pkgrel = 1
+	url = http://cppcheck.wiki.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = docbook-xsl
+	makedepends = python-pygments
+	depends = gcc-libs
+	depends = pcre
+	depends = python
+	provides = cppcheck
+	conflicts = cppcheck
+	source = cppcheck::git://github.com/danmar/cppcheck.git
+	sha1sums = SKIP
+
+pkgname = cppcheck-git
+
