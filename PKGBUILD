@@ -15,7 +15,7 @@ arch=("i686" "x86_64")
 url="http://libguestfs.org"
 license=("GPL2" "LGPL2.1")
 depends=("libguestfs=${pkgver}" 
-         "python3"
+         "python"
          )
 makedepends=("qemu"
              "pcre"
