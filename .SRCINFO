@@ -1,0 +1,17 @@
+pkgbase = shorty-git
+	pkgdesc = A QML code-screenshot utility.
+	pkgver = r2.d9e288a
+	pkgrel = 1
+	url = https://github.com/qmlbook/shorty.git
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	provides = shorty
+	provides = shorty-git
+	source = shorty-git::git+https://github.com/qmlbook/shorty
+	sha256sums = SKIP
+
+pkgname = shorty-git
+
