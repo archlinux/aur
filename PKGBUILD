@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=ttf-lato
-pkgver=2.010
+pkgver=2.015
 pkgrel=1
 pkgdesc='a sanserif type­face family'
 url="http://www.latofonts.com/lato-free-fonts/"
@@ -23,5 +23,5 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
-sha256sums=('367c730f64f4d1731e4d3ef7da2dd27635999e4a2f7cab24cfdcaf42488644a4'
+sha256sums=('42b54e96c07e299d967fc3227c7bd63a20d6cfb1dc8fd6dae83628091e20a5b8'
             'c98e5a09e552c01b479c22aafa101ea3e3237d3727fcad4629730762bdf4afa1')
