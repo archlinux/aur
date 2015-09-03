@@ -22,6 +22,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm755 google "${pkgdir}/usr/bin/google"
-  install -Dm644 google.1 "${pkgdir}/usr/share/man/man1/google.1"
+  install -Dm755 googler "${pkgdir}/usr/bin/googler"
+  install -Dm644 googler.1 "${pkgdir}/usr/share/man/man1/googler.1"
 }
