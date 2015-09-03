@@ -1,0 +1,13 @@
+pkgbase = qt-color-widgets-common
+	pkgdesc = Common files used by qt4- and qt5-color-widgets packages
+	pkgver = 0.r171.24d47d5
+	pkgrel = 1
+	url = https://github.com/mbasaglia/Qt-Color-Widgets
+	arch = any
+	license = LGPL3
+	makedepends = git
+	source = qt-color-widgets-common::git+git://github.com/mbasaglia/Qt-Color-Widgets.git
+	sha256sums = SKIP
+
+pkgname = qt-color-widgets-common
+
