@@ -153,9 +153,7 @@ _opt_Optimal=0 # Default 0
 set -u
 _pkgbase='ttf-win7-fonts'
 pkgbase="${_pkgbase}"
-pkgname=("${pkgbase}"       "${pkgbase}-arabic" "${pkgbase}-hebrew"
-         "${pkgbase}-sea"   "${pkgbase}-indic"  "${pkgbase}-japanese" "${pkgbase}-korean"
-         "${pkgbase}-zh_cn" "${pkgbase}-zh_tw"  "${pkgbase}-thai"     "${pkgbase}-other")
+pkgname=("${pkgbase}"{,-arabic,-hebrew,-sea,-indic,-japanese,-korean,-zh_cn,-zh_tw,-thai,-other})
 pkgver='7.1'
 pkgrel='9'
 _pkgdesc='Microsoft Windows 7 % TrueType fonts'
@@ -175,11 +173,16 @@ optdepends=('ttf-office-2007-fonts')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
 conflicts=('ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-win8' 'ttf-win7-fonts-autodownload')
 install="${pkgbase}.install"
+<<<<<<< HEAD
+=======
 source=('license.rtf' 'FONTVER.pl' "20-${_pkgbase}-"{latin,japanese,korean,zh_cn,zh_tw}'.conf')
+>>>>>>> 81dd7bfbd1fac3f6157019e9206db4466b690771
 _sfpath="http://downloads.sourceforge.net/corefonts"
+source=('license.rtf' 'FONTVER.pl' "20-${_pkgbase}-"{latin,japanese,korean,zh_cn,zh_tw}'.conf')
 source+=("${_sfpath}/andale32.exe") # "${_sfpath}/arialb32.exe")
+unset _sfpath
 _fnts_latinsf=('AndaleMo.TTF') # 'AriBlk.TTF') # Windows Arial Black seems to work now.
-# Andale is not in Windows 7 without which we can't be a replacement for ttf-ms-fonts.
+# Andale is an IE font, not a Windows font. Without it we can't be a replacement for ttf-ms-fonts.
 sha256sums=('096cdd18e26b2b3d8cf0b3ec6a1ffb5b0eaae0fcc2105e3c145f19037a42d467'
             '32d534a6f469c8fc5613fcc5cc0934670da470036a94aa21c6f73c2a0f1ab19e'
             '4c46d930ac139018dff8d00695950251fb5b4306f38a625f0d3ac20b9f3c08e4'
@@ -234,6 +237,7 @@ _fonts=(
 
 _fonts=("${_fonts[@],,}")
 _fnts_latin=("${_fonts[@]}" "${_fnts_latinsf[@]}")
+unset _fnts_latinsf
 
 # Some fonts we don't want.
 # '511db37f04906eb2e77a91949edb04a61ce9838e9523011621dff4971a8d5867' #     marlett.ttf   en-US Version 5.00 Marlett
@@ -759,6 +763,7 @@ _fn_intlfontarrays() {
 }
 _fn_intlfontarrays
 unset -f _fn_intlfontarrays
+unset _tt_lang _tt_deli
 
 if [ "${_opt_Build}" -ne 0 ]; then
   _fonts+=("${_lang_fonts[@]}")
@@ -967,23 +972,33 @@ REM REM out or remove the previous 5 lines to enable this BAT file.
 REM We did the hard part by picking all the files. You do the easy part by
 REM editing the following to match to your environment.
 
+REM Somtimes this must be run as admin because some fonts don't have the right permissions.
+
 REM You can use this to copy fonts from a running Windows to a Samba share
-SET MYSHARE=\\\\192.168.1.10\\_INCO\\TTFONTS
+SET MYSHARE=\\\\192.168.1.10\\_INCO\\TTFONTS-${pkgname}
 REM How about a folder on your desktop
-REM SET MYSHARE=%USERPROFILE%\\Desktop\\TTFONTS
+REM SET MYSHARE=%USERPROFILE%\\Desktop\\TTFONTS-${pkgname}
 REM How about to your flash drive
-REM SET MYSHARE=G:\\TTFONTS
+REM SET MYSHARE=G:\\TTFONTS-${pkgname}
 MKDIR "%MYSHARE%"
 EOF
+    local _fontno=0
+    local _fontodo=0
     local _fnt
     for _fnt in "${_fonts[@]}"; do
       local _fntl="${_fnt,,}"
-      if [[ ! "${_fntl}" =~ .tt[fc]$ ]]; then
+      if [[ ! "${_fntl}" == *.tt[fc] ]]; then
         echo "Fonts array not a font ${_fnt}"
         rm -f '_COPY.BAT'
         set +u
         false
       fi
+      _fontno=$((${_fontno}+1))
+      if [ "${_fontodo}" -le 0 ]; then
+        _fontodo=24
+        echo "ECHO ${_fontno}" >> "_COPY.BAT"
+      fi
+      _fontodo=$((${_fontodo}-1))
       [ -s "${_fnt,,}" ] && echo -n "REM " >> "_COPY.BAT"
       echo 'COPY "%WINDIR%\FONTS\'"${_fnt}"'" "%MYSHARE%\'"${_fnt,,}"'"' >> '_COPY.BAT'
     done
@@ -1040,13 +1055,13 @@ EOF
       _fnt="${_fnt,,}"
       local _vers
       local _fail=1
-      if [ "${_opt_GetFontName}" -ne 0 ] && [[ "${_fnt}" =~ .tt[fc]$ ]]; then
+      if [ "${_opt_GetFontName}" -ne 0 ] && [[ "${_fnt}" == *.tt[fc] ]]; then
         _fail=0
         _vers="$(./FONTVER.pl "${_fnt}")" || _fail=$?
       fi
       if [ "${_fail}" -ne 0 ]; then
         _vers="$(sed -ne 's:^.*\(Version [0-9\.]\+\).*$:\1:p' "${_fnt}" | head -n1)"
-        #if [[ "${_fnt}" =~ .tt[fc]$ ]]; then
+        #if [[ "${_fnt}" == *.tt[fc] ]]; then
         #  _vers="${_vers} ${_ttc_names[${_fnt}]:-}"
         #fi
       fi
@@ -1216,7 +1231,11 @@ build() {
 }
 
 # This package function is only used by font packages that do not have a pkgbase like ttf-office-2007.
+<<<<<<< HEAD
+# It is not used in packages with splits ttf-win7-fonts or ttf-ms-win8.
+=======
 # It is not used by split packages ttf-win7-fonts or ttf-ms-win8.
+>>>>>>> 81dd7bfbd1fac3f6157019e9206db4466b690771
 package() {
   set -u
   cd "${srcdir}"
@@ -1228,7 +1247,7 @@ package() {
     local _fntno
     for _fntno in "${!_fonts[@]}"; do
       _fnt="${_fonts[${_fntno}]}"
-      if [[ "${_fnt}" =~ .ttc$ ]]; then
+      if [[ "${_fnt}" == *.ttc ]]; then
         _ttcs_to_extract+=("${_fnt}")
         _fonts[${_fntno}]=''
       fi
@@ -1299,7 +1318,7 @@ function _package {
     local _fntno
     for _fntno in "${!_fontsout[@]}"; do
       _fnt="${_fontsout[${_fntno}]}"
-      if [[ "${_fnt}" =~ .ttc$ ]]; then
+      if [[ "${_fnt}" == *.ttc ]]; then
         _ttcs_to_extract+=("${_fnt}")
         _fontsout[${_fntno}]=''
       fi
