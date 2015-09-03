@@ -1,0 +1,18 @@
+pkgbase = ttf-monaco
+	pkgdesc = A monospaced sans-serif typeface by Apple Inc.
+	pkgver = 6.1
+	pkgrel = 2
+	url = http://www.apple.com/
+	install = ttf-monaco.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	conflicts = monaco_linux
+	conflicts = monaco-linux-font
+	replaces = monaco_linux
+	replaces = monaco-linux-font
+	source = https://github.com/cstrap/monaco-font/raw/master/Monaco_Linux.ttf
+	sha1sums = 9dffe0d0a187238b324182bf7fa86a077c9450c4
+
+pkgname = ttf-monaco
+
