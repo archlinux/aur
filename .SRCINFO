@@ -1,12 +1,12 @@
 pkgbase = gitfs
 	pkgdesc = Version controlled file system
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.presslabs.com/gitfs/
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
-	depends = python2
+	depends = python2-atomiclong
 	depends = python2-fusepy
 	depends = python-pygit2
 	source = gitfs-0.3.3.tar.gz::https://github.com/PressLabs/gitfs/archive/0.3.3.tar.gz
