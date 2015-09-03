@@ -1,0 +1,24 @@
+pkgbase = cnijfilter-mg5200
+	pkgdesc = Canon IJ Printer Driver (mg5200 series)
+	pkgver = 3.40
+	pkgrel = 11
+	url = http://support-au.canon.com.au/contents/AU/EN/0100302002.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	depends = gtk2
+	depends = cups
+	source = http://gdlp01.c-wss.com/gds/0/0100003020/01/cnijfilter-source-3.40-1.tar.gz
+	source = fix_cups.patch
+	source = fix_png.patch
+	source = fix_ppd_mg5200.patch
+	source = fix_configures.patch
+	md5sums = 609975a05d6050fcca88f312d3f35c6a
+	md5sums = 1355804664f5901c68a446de36d933de
+	md5sums = 5f665042df2175da3629667aaf258782
+	md5sums = 6d87bce9cd0ab8c1b35685e2341b089e
+	md5sums = 607b0e194f74bf7663ef13641f62a31a
+
+pkgname = cnijfilter-mg5200
+

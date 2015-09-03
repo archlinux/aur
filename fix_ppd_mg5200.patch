@@ -1,0 +1,70 @@
+diff -Naur a/ppd/canonmg5200.ppd b/ppd/canonmg5200.ppd
+--- a/ppd/canonmg5200.ppd	2010-03-15 09:48:58.000000000 +0100
++++ b/ppd/canonmg5200.ppd	2012-04-09 20:27:01.978690140 +0200
+@@ -58,16 +58,48 @@
+ *ParamCustomPageSize Orientation: 5 int 1 1
+ *CustomPageSize True: "pop pop pop <</PageSize [5 -2 roll] /ImagingBBox null>>setpagedevice"
+ 
+-*OpenUI *Resolution/Output Resolution: PickOne
+-*DefaultResolution: 600dpi
+-*Resolution 600dpi/600 dpi: "<</HWResolution[600 600]>>setpagedevice"
++*OpenUI *Resolution/Resolution: PickOne
++*DefaultResolution: 601x600dpi
++*Resolution 601x600dpi/Automatic:       "<</HWResolution[600 600]>>setpagedevice"
++*Resolution 600dpi/600x600 DPI HIGH:    "<</HWResolution[600 600]/cupsCompression 1>>setpagedevice"
++*Resolution 602x600dpi/600x600 DPI:     "<</HWResolution[600 600]/cupsCompression 2>>setpagedevice"
++*Resolution 603x600dpi/600x600 DPI DRAFT:       "<</HWResolution[600 600]/cupsCompression 3>>setpagedevice"
++*Resolution 300dpi/300x300 DPI: "<</HWResolution[300 300]/cupsCompression 4>>setpagedevice"
++*Resolution 301x300dpi/300x300 DPI DRAFT:       "<</HWResolution[300 300]/cupsCompression 5>>setpagedevice"
++*Resolution 604x600dpi/600x600 DPI PHOTO HIGH 3:        "<</HWResolution[600 600]/cupsCompression 6>>setpagedevice"
++*Resolution 605x600dpi/600x600 DPI PHOTO 3:     "<</HWResolution[600 600]/cupsCompression 7>>setpagedevice"
++*Resolution 606x600dpi/600x600 DPI PHOTO DRAFT 3:       "<</HWResolution[600 600]/cupsCompression 8>>setpagedevice"
+ *CloseUI: *Resolution
+ 
+ *OpenUI *ColorModel/Color Model: PickOne
+-*DefaultColorModel: rgb
+-*ColorModel rgb/RGB: "<</cupsColorOrder 0/cupsColorSpace 1/cupsCompression 0/cupsBitsPerColor 8>>setpagedevice"
++*DefaultColorModel: RGB
++*ColorModel Gray/Grayscale:     "<</cupsColorSpace 0/cupsColorOrder 0>>setpagedevice"
++*ColorModel Black/Inverted Grayscale:   "<</cupsColorSpace 3/cupsColorOrder 0>>setpagedevice"
++*ColorModel RGB/RGB Color:      "<</cupsColorSpace 1/cupsColorOrder 0>>setpagedevice"
++*ColorModel CMY/CMY Color:      "<</cupsColorSpace 4/cupsColorOrder 0>>setpagedevice"
++*ColorModel CMYK/CMYK:  "<</cupsColorSpace 6/cupsColorOrder 0>>setpagedevice"
++*ColorModel KCMY/KCMY:  "<</cupsColorSpace 8/cupsColorOrder 0>>setpagedevice"
+ *CloseUI: *ColorModel
+ 
++*OpenUI *StpColorPrecision/Color Precision: PickOne
++*DefaultStpColorPrecision: Normal
++*StpColorPrecision Normal/Normal:       "<</cupsBitsPerColor 8>>setpagedevice"
++*StpColorPrecision Best/Best:   "<</cupsBitsPerColor 8/cupsPreferredBitsPerColor 16>>setpagedevice"
++*CloseUI: *StpColorPrecision
++
++*OpenUI *CNQuality/Quality: PickOne
++*DefaultCNQuality: 3
++*CNQuality 2/High: "2"
++*CNQuality 3/Normal: "3"
++*CNQuality 4/Economy: "4"
++*CloseUI: *CNQuality
++
++*OpenUI *CNGrayscale/Grayscale: Boolean
++*DefaultCNGrayscale: False
++*CNGrayscale True/Yes: True
++*CNGrayscale False/No: False
++*CloseUI: *CNGrayscale
++
+ *OpenUI *PageSize/Page Size: PickOne
+ *DefaultPageSize: A4
+ *PageSize Letter/Letter 8.5"x11" 215.9x279.4mm: "<</CNPageSizeName(Letter)/PageSize[612 792]/ImagingBBox null>>setpagedevice"
+@@ -246,9 +278,9 @@
+ 
+ *OpenUI *Duplex/Automatic Duplex Printing: PickOne
+ *DefaultDuplex: None
+-*Duplex None/OFF: "<</Duplex false>>setpagedevice"
+-*Duplex DuplexNoTumble/ON (Long Side Stapling): "<</Duplex true/Tumble false>>setpagedevice"
+-*Duplex DuplexTumble/ON (Short Side Stapling): "<</Duplex true/Tumble true>>setpagedevice"
++*Duplex None/Off: "<</Duplex false>>setpagedevice"
++*Duplex DuplexNoTumble/Long Edge (Standard): "<</Duplex true/Tumble false>>setpagedevice"
++*Duplex DuplexTumble/Short Edge (Flip): "<</Duplex true/Tumble true>>setpagedevice"
+ *CloseUI: *Duplex
+ 
+ *UIConstraints: *InputSlot cassette *PageSize Legal
