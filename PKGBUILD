@@ -2,27 +2,27 @@
 # Contributor: rayte <rabyte__gmail>
 # Contributor: aldeano <aldea.diaguita at gmail.com>
 
-pkgname=python-cerealizer
+pkgname=(python-cerealizer python2-cerealizer)
 pkgver=0.8.1
-pkgrel=1
-pkgdesc="A Python module for saving objects in a file [Python 3]"
+pkgrel=2
+pkgdesc="A Python module for saving objects in a file"
 arch=('any')
 url="http://home.gna.org/oomadness/en/cerealizer/"
 license=('PSF')
-changelog=Changelog
-depends=('python')
-source=(http://download.gna.org/soya/Cerealizer-$pkgver.tar.bz2)
-md5sums=('0dc2e9aadac7dbf2e54d0bbbba2db9bf')
+source=(https://pypi.python.org/packages/source/C/Cerealizer/Cerealizer-${pkgver}.tar.bz2)
+md5sums=('a77b6215f77c539035ae46a73bfa819e')
 
-build() {
+package_python-cerealizer() {
   cd "$srcdir/Cerealizer-$pkgver"
+  depends=('python')
   
   python setup.py install --root="$pkgdir"
 }
 
-# The tests don't work.
-#check() {
-#  cd "$srcdir/Cerealizer-$pkgver"
-#  echo "from . import test1, regtest" > test/__init__.py
-#  python -m unittest test
-#}
+package_python2-cerealizer() {
+  cd "$srcdir/Cerealizer-$pkgver"
+  depends=('python2')
+  
+  python2 setup.py install --root="$pkgdir"
+}
+
