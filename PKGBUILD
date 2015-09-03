@@ -1,7 +1,7 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack
 _pkgname=stack
-pkgver='0.1.3.1'
+pkgver='0.1.4.0'
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('haskell-stack')
 conflicts=('haskell-stack-git')
 if [ "${CARCH}" = 'x86_64' ]; then
     _arch='x86_64'
-    sha1sums=('7a10f4a79110b3420aba21babcbd386ca43da4ab')
+    sha1sums=('2e31e1991782a505845d514b6c2e1ef5bfd24def')
 elif [ "${CARCH}" = 'i686' ]; then
     _arch='i686'
     sha1sums=('1a0270381c7dcd2e866dd04f74520fb234392511')
