@@ -1,8 +1,8 @@
 pkgbase = oclhashcat
-	pkgdesc = Worlds fastest password cracker with dictionary mutation engine
+	pkgdesc = Worlds fastest password cracker with dictionary mutation engine (for AMD)
 	pkgver = 1.37
-	pkgrel = 1
-	url = http://hashcat.net/oclhashcat/
+	pkgrel = 2
+	url = https://hashcat.net/oclhashcat
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = oclhashcat
 	conflicts = oclhashcat-amd
 	replaces = oclhashcat-amd
 	options = !strip
-	source = http://hashcat.net/files/oclHashcat-1.37.7z
+	source = https://hashcat.net/files/oclHashcat-1.37.7z
 	sha512sums = 74d5ef5be20357e706bfbff496a60e8c2d90b33e93981bca398d04099645bef0ec8df9b77f179bb770312966f788a2fe7a486abdf9a3e7bee7b0204d2d900902
 
 pkgname = oclhashcat
