@@ -1,7 +1,7 @@
 pkgbase = arnold
 	pkgdesc = An Amstrad CPC emulator using SDL with a GTK+ interface
 	pkgver = 2009.05.31
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.yasara.org/cpc/
 	arch = i686
 	arch = x86_64

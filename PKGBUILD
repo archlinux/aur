@@ -1,10 +1,11 @@
-# Maintainer: megadriver <megadriver at gmx dot com>
+# Maintainer : Frederic Bezies < fredbezies at gmail dot com>
+# Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: milko
 
 pkgname=arnold
 pkgver=2009.05.31
-pkgrel=3
+pkgrel=4
 pkgdesc="An Amstrad CPC emulator using SDL with a GTK+ interface"
 arch=('i686' 'x86_64')
 url="http://www.yasara.org/cpc/"
