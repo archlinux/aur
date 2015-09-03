@@ -1,0 +1,37 @@
+pkgbase = vde2-svn
+	pkgdesc = Virtual Distributed Ethernet for emulators like qemu
+	pkgver = 2.3.2.r587
+	pkgrel = 1
+	url = http://sourceforge.net/projects/vde/
+	install = vde2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = CUSTOM
+	makedepends = python
+	makedepends = subversion
+	depends = bash
+	depends = libpcap
+	depends = openssl
+	provides = vde2=2.3.2
+	conflicts = vde2
+	options = !makeflags
+	backup = etc/conf.d/vde
+	source = VDE2-SVN::svn://svn.code.sf.net/p/vde/svn/trunk
+	source = vde.conf
+	source = vde.rc
+	source = dhcpd.conf.sample::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/dhcpd.conf.sample?h=packages/vde2
+	source = iptables.rules.sample::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/iptables.rules.sample?h=packages/vde2
+	source = vde-config.sample::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/vde-config.sample?h=packages/vde2
+	source = vde-connection.sample::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/vde-connection.sample?h=packages/vde2
+	sha256sums = SKIP
+	sha256sums = 0b8c1c98f108601a8bd62b21a0575159a5237907dc301769909a7aeebd06a9fd
+	sha256sums = 860fc7eb299da175fa0521a7d751ee15cd3b7febfbc4af60f55604564c705f91
+	sha256sums = da0e2766dc63069da929c28126831ad5fdddcc4a04105a21217d78832c7ca1bc
+	sha256sums = 99076d7466cd99673dbe91ef83865187e7868177959b38e125df63eea957f83e
+	sha256sums = 5727c215646333c37b26388146cd3e6b3814b88d60d54051d7da99e00c0aef87
+	sha256sums = 5139110ed6d5d1174bf12971512dac5196d9d07df46dd393d7b1cd083118fe9b
+
+pkgname = vde2-svn
+

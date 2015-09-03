@@ -1,0 +1,9 @@
+post_install() {
+  echo "vde config files should be placed in /etc/vde, sample files are provided."
+  echo "iptables and dhcpd sample files have been installed to '/usr/share/vde2'."
+  echo "Merge those examples, if needed to the according config files."
+}
+
+post_upgrade() {
+  post_install $1
+}
