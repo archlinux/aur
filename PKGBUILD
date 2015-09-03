@@ -7,6 +7,7 @@ pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
+groups=('gns3')
 makedepends=('python-setuptools')
 depends=('python-jsonschema' 'python-aiohttp' 'python-jinja' 'python-raven')
 optdepends=('dynamips: Cisco router emulator.'
