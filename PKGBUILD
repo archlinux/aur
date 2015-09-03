@@ -1,6 +1,6 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=drmips
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Graphical MIPS simulator to support computer architecture teaching and learning"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('drmips-doc: user manuals')
 install="$pkgname.install"
 changelog="ChangeLog"
 source=("https://bitbucket.org/brunonova/$pkgname/downloads/DrMIPS_v$pkgver.tar.xz")
-md5sums=('78378319a6dcb29c51435e8c0b051fac')
+md5sums=('b119bbaf57cbd038f207756163aecf42')
 
 build() {
 	cd "$srcdir"
