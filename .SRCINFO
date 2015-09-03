@@ -5,6 +5,7 @@ pkgbase = dynamips
 	url = https://github.com/GNS3/dynamips
 	arch = i686
 	arch = x86_64
+	groups = gns3
 	license = GPL2
 	makedepends = cmake
 	depends = libpcap

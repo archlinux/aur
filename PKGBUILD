@@ -7,6 +7,7 @@ pkgdesc='Cisco router emulator.'
 arch=('i686' 'x86_64')
 url='https://github.com/GNS3/dynamips'
 license=('GPL2')
+groups=('gns3')
 depends=('libpcap' 'elfutils')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz")
