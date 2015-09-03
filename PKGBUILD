@@ -1,54 +1,44 @@
-# Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
-# https://github.com/zizzfizzix/pkgbuilds
-
-##############################################################
-#### The section below can be adjusted to suit your needs ####
-##############################################################
-
-# What type of build do you want?
-# See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
-
-_buildtype='Release'
-
-##############################################################
-
+# Maintainer: Alad Wenter
+# Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 pkgname=tomahawk
 pkgver=0.8.4
 pkgrel=1
+
 pkgdesc='A Music Player App written in C++/Qt'
 arch=('i686' 'x86_64')
 url='http://tomahawk-player.org/'
 license=('GPL3')
-depends=('phonon-qt4' 'taglib' 'lucene++' 'libechonest' 'jreen' 'quazip' 'attica' 'qtwebkit' 'liblastfm' 'qtkeychain' 'qca-ossl')
-makedepends=('cmake' 'automoc4' 'sparsehash' 'boost' 'websocketpp')
-optdepends=('kdelibs: integration with Plasma Desktop' 'telepathy-qt4: integration with Telepathy')
-provides=('tomahawk')
-conflicts=('tomahawk-git')
-source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('04832abe1786edcc55805875b5882445')
+
+# NOTE: The phonon VLC backend supposedly supports networking better than the gstreamer backend.
+depends=('qtwebkit' 'phonon-qt4' 'quazip-qt4' 'qtkeychain-qt4' 'attica-qt4'
+	 'liblastfm' 'libechonest' 'sqlite' 'taglib' 'lucene++'
+	 'qjson' 'qca')
+makedepends=('cmake' 'sparsehash' 'boost' 'websocketpp' 'gnutls')
+optdepends=('kdelibs: integration with Plasma Desktop'
+	    'telepathy-qt4: integration with Telepathy'
+	    'jreen: Jabber support (required at build time)'
+	    'snorenotify: Notification support (required at build time)')
+
+source=("http://download.tomahawk-player.org/$pkgname-$pkgver.tar.bz2")
+sha256sums=('0fb04bc6b7009e17186b3d384057939727c6f289d22f7f9a5ed2c9c9cd800449')
 install=tomahawk.install
 
-if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
-  options=('debug')
-fi
-
-prepare() {
-  if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
-  mkdir ${srcdir}/${pkgname}-${pkgver}-build
-}
+prepare() { mkdir -p build-qt4; }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}-build
+  cd build-qt4
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  # See https://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes
+  cmake ../$pkgname-$pkgver \
+        -DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_LIBEXECDIR=lib/${pkgname} \
-        -DCMAKE_BUILD_TYPE=${_buildtype} \
-        ../${pkgname}-${pkgver}
+        -DCMAKE_INSTALL_LIBEXECDIR=lib/$pkgname
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}-build
-  make DESTDIR=${pkgdir} install
+  cd build-qt4
+  
+  make DESTDIR="$pkgdir" install
 }
