@@ -1,6 +1,6 @@
 pkgname=nbopen
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Opens an IPython notebook in the best available server'
 url="https://github.com/takluyver/$pkgname"
 arch=('any')
@@ -23,6 +23,6 @@ package() {
 	install -Dm755 {,"$pkgdir/usr/share/mime/packages/"}application-x-ipynb+json.xml
 	
 	for s in 16 24 32 48 64 128 256 512; do
-		install -Dm644 "icons/ipynb_icon_${s}x${s}.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/application-x-ipynb+json.png"
+		install -Dm644 "icons/ipynb_icon_${s}x${s}.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/mimetypes/application-x-ipynb+json.png"
 	done
 }
