@@ -1,6 +1,6 @@
 pkgbase = sword-svn
 	pkgdesc = Libraries for Bible programs - svn -version
-	pkgver = 3385
+	pkgver = 3388
 	pkgrel = 1
 	url = http://www.crosswire.org/sword/
 	arch = i686
