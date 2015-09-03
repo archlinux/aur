@@ -1,0 +1,13 @@
+pkgbase = vi-vim-symlink
+	pkgdesc = Replace vi with vim
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.vim.org
+	arch = any
+	license = CDDL
+	depends = vim
+	provides = vi
+	conflicts = vi
+
+pkgname = vi-vim-symlink
+
