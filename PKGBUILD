@@ -6,7 +6,7 @@ pkgrel=1
 epoch=1
 pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
-url="http://wwwcip.cs.fau.de/~re06huxa/$_pkgname"
+url="http://herbstluftwm.org"
 license=('BSD')
 depends=( 'glib2>=2.24' 'libx11' 'libxinerama')
 optdepends=(
@@ -19,7 +19,7 @@ optdepends=(
 makedepends=('git' 'asciidoc')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$pkgname::git://git.informatik.uni-erlangen.de/re06huxa/$_pkgname")
+source=("$pkgname::git://github.com/herbstluftwm/$_pkgname")
 md5sums=( SKIP )
 
 pkgver() {
