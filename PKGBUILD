@@ -2,7 +2,7 @@
 
 pkgname=jackett
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='User any tracker with Sonarr'
 arch=('any')
 license=('GPL')
@@ -16,7 +16,7 @@ install=$pkgname.install
 package() {
     cd "$srcdir"
 
-    install -d -m755 "${pkgdir}/opt/Jackett"
+    install -d -m755 "${pkgdir}/opt/"
     cp -dpr --no-preserve=ownership "${srcdir}/"* "${pkgdir}/opt/Jackett"
     install -D -m644 "${srcdir}/jackett.service" "${pkgdir}/usr/lib/systemd/system/jackett.service"
     install -d -m755 "${pkgdir}/usr/share/Jackett"
