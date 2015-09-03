@@ -1,0 +1,18 @@
+pkgbase = python-atomiclong
+	pkgdesc = Python thread-safe counter using CFFI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/atomiclong
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/a/atomiclong/atomiclong-0.1.1.tar.gz
+	sha256sums = cb1378c4cd676d6f243641c50e277504abf45f70f1ea76e446efcdbb69624bbe
+
+pkgname = python-atomiclong
+	depends = python
+
+pkgname = python2-atomiclong
+	depends = python2
+
