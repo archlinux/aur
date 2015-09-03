@@ -1,11 +1,12 @@
-# Maintainer: Anton Bazhenov <anton.bazhenov at gmail>
+# Maintainer : Frederic Bezies < fredbezies at gmail dot com>
+# Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 # Contributor: arjan <arjan@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=penguin-command
 pkgver=1.6.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A clone of the classic Missile Command game with improved graphics and sound"
 arch=('i686' 'x86_64')
 url="http://www.linux-games.com/penguin-command/"
