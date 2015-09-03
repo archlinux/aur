@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Xword
+Comment=Do crossword puzzles in Across Lite format
+Exec=xword
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=text-editor.png
+Categories=GTK;Application;Game
