@@ -1,0 +1,12 @@
+pkgbase = esbtl
+	pkgdesc = A C++ header-only library for easy structural biology computations and geometric constructions
+	pkgver = 1.0_beta01
+	pkgrel = 1
+	url = http://esbtl.sourceforge.net/
+	arch = any
+	license = GPL
+	source = http://downloads.sourceforge.net/project/esbtl/ESBTL-1.0-beta01.tar.bz2
+	md5sums = ba2868d3613b6e242f779e2dfd343193
+
+pkgname = esbtl
+
