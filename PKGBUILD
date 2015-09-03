@@ -1,19 +1,19 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=gitfs
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Version controlled file system"
 arch=('any')
 url="http://www.presslabs.com/gitfs/"
 license=('Apache')
-depends=('python' 'fuse')
-makedepends=('python-setuptools')
-source=(http://github.com/PressLabs/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('e826c39969f6ba424210d7506b3d63b3cbebfba52caba7beeaaa468cd62ffcd5')
+depends=('python2' 'python2-fusepy' 'python-pygit2')
+makedepends=('python2-setuptools')
+source=($pkgname-$pkgver.tar.gz::https://github.com/PressLabs/$pkgname/archive/$pkgver.tar.gz)
+sha256sums=('58ee180f8b3e09dfd74d29c50a5d64234b0ce07794e013638de46cf4084ae2a8')
 
 package() {
   cd $pkgname-$pkgver
 
-  python setup.py install --root="${pkgdir}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
