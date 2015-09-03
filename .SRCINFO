@@ -1,0 +1,20 @@
+pkgbase = glyr-git
+	pkgdesc = A music metadata searchengine utility and library written in C
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/sahib/glyr
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = glib2
+	depends = curl
+	depends = sqlite3
+	provides = glyr
+	conflicts = glyr
+	source = git+https://github.com/sahib/glyr.git#branch=master
+	md5sums = SKIP
+
+pkgname = glyr-git
+
