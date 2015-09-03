@@ -3,8 +3,8 @@
 # Contributor: Techlive Zheng <techlivezheng@gmail.com>
 
 pkgname=google-musicmanager
-pkgver=1.0.196.8837_r0
-pkgrel=3
+pkgver=1.0.221.5230_r0
+pkgrel=1
 pkgdesc="A simple application for adding the music files on your computer to your Google Music library"
 arch=('i686' 'x86_64')
 url="http://music.google.com"
@@ -21,18 +21,16 @@ optdepends=('log4cxx')
 options=(!strip)
 install=${pkgname}.install
 source_i686=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_i386.deb")
+md5sums_i686=('54648a52a04b0113145f14e69d254ee8')
+md5sums_x86_64=('e8305efe6035e12b06ea02620896a67e')
 source_x86_64=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_amd64.deb")
-md5sums_i686=('663ff763de2f01de02218f6fb330ec9d')
-md5sums_x86_64=('03987c7a6b53dee9d75fe15dd9aed0f9')
 
 build() {
   tar -xvf data.tar.lzma
   tar -xvf control.tar.gz
 
   #Debian package source files cleaning.
-  rm -r $srcdir/etc
-  rm -r $srcdir/usr
-  rm -f $srcdir/opt/google/musicmanager/product_logo_32.xpm
+  rm -r {etc,usr,opt/google/musicmanager/product_logo_32.xpm}
 }
 
 package() {
@@ -40,7 +38,7 @@ package() {
   install -d $pkgdir/{opt,usr/{bin,share/applications}}
 
   #Install files.
-  cd $srcdir/opt/google/musicmanager
+  cd opt/google/musicmanager
   find . -type d -exec install -d {,${pkgdir}/opt/google/musicmanager/}{} \;
   find . -type f -exec install -D -m 644 {,${pkgdir}/opt/google/musicmanager/}{} \;
 
