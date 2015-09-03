@@ -74,4 +74,4 @@ package() {
     install -D -m644 quartus.desktop "${pkgdir}/usr/share/applications/quartus.desktop"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set et sw=2 sts=2 tw=80:
