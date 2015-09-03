@@ -1,13 +1,15 @@
 pkgbase = echo-icon-theme-git
-	pkgdesc = A new generation of icon set to replace the legacy Bluecurve icon set.
+	pkgdesc = The Echo icon theme from the Fedora project (development version).
 	pkgver = r389.4007669
-	pkgrel = 7
+	pkgrel = 8
 	url = https://fedorahosted.org/echo-icon-theme/
 	arch = any
 	license = CCPL
 	makedepends = git
 	depends = icon-naming-utils
 	optdepends = mist-icon-theme: for inheriting missing icons
+	provides = echo-icon-theme
+	conflicts = echo-icon-theme
 	source = git://git.fedorahosted.org/echo-icon-theme
 	sha256sums = SKIP
 

@@ -4,8 +4,8 @@
 pkgname=echo-icon-theme-git
 _gitname=echo-icon-theme
 pkgver=r389.4007669
-pkgrel=7
-pkgdesc="A new generation of icon set to replace the legacy Bluecurve icon set."
+pkgrel=8
+pkgdesc="The Echo icon theme from the Fedora project (development version)."
 url="https://fedorahosted.org/echo-icon-theme/"
 arch=('any')
 license=('CCPL')
@@ -14,24 +14,26 @@ makedepends=('git')
 optdepends=(
   'mist-icon-theme: for inheriting missing icons'
 )
+conflicts=('echo-icon-theme')
+provides=('echo-icon-theme')
 source=('git://git.fedorahosted.org/echo-icon-theme')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "${srcdir}/${_gitname}"
   # Use number of revisions as the version itself is too long.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_gitname/base"
-  aclocal && automake --add-missing && autoconf
+  cd "${srcdir}/${_gitname}/base"
+  autoreconf -vfi
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname/base"
-  make prefix="$pkgdir"/usr install
+  cd "${srcdir}/${_gitname}/base"
+  make prefix="${pkgdir}"/usr install
 }
 
