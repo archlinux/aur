@@ -1,19 +1,17 @@
 pkgbase = ruby-paint
-	pkgdesc = Terminal painter!
-	pkgver = 0.8.6
+	pkgdesc = Ruby paint manages terminal colors and effects
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/janlelis/paint
 	arch = any
 	license = MIT
-	makedepends = rubygems
-	depends = ruby
 	depends = ruby-rspec
 	depends = ruby-rspec-core
 	depends = ruby-rainbow
 	depends = ruby-term-ansicolor
-	noextract = paint-0.8.6.gem
-	source = http://gems.rubyforge.org/gems/paint-0.8.6.gem
-	sha256sums = 8444e3656254df5361daa627d9b18aec0edeedfcc135e27e5e92c43f739652d8
+	noextract = paint-1.0.0.gem
+	source = https://gems.rubyforge.org/gems/paint-1.0.0.gem
+	sha512sums = a412d7d80daec622d3eb69eed5b2badae69e1d0002e849cf173453391c4ade679b368c64deb3c50520aa6bcb5635994d919642680001df598e0b74d826ec6d7f
 
 pkgname = ruby-paint
 
