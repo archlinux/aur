@@ -9,12 +9,10 @@ pkgver=6.2
 pkgrel=2
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=( 'i686' 'x86_64' )
+depends_x86_64=('lib32-openssl' 'lib32-qt4' 'lib32-libpng') && makedepends=('gcc-multilib')
+depends_i686=('qtwebkit' 'libpng')
 url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
-
-# Untested
-[ "$CARCH" = "x86_64" ] && depends=('lib32-openssl' 'lib32-qt4' 'lib32-libpng') && makedepends=('gcc-multilib')
-[ "$CARCH" = "i686" ] && depends=('qtwebkit' 'libpng')
 
 # Requires Netacad Username/Password to download
 source=( 'http://Cisco Packet Tracer 6.2 for Linux - Ubuntu installation - Student version.tar.gz' 'packettracer' 'linguist' )
