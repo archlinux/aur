@@ -1,0 +1,17 @@
+pkgbase = wendy-git
+	pkgdesc = Watch a directory and execute a command on file creation/deletion/modification
+	pkgver = 0.7.r0.g914fb4a
+	pkgrel = 1
+	url = http://git.z3bra.org/cgit.cgi/wendy
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	depends = glibc
+	provides = wendy=0.7
+	conflicts = wendy
+	source = git://phobos.z3bra.org/wendy
+	sha256sums = SKIP
+
+pkgname = wendy-git
+
