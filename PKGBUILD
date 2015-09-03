@@ -4,8 +4,8 @@
 
 _pkgbasename=hunspell
 pkgname=lib32-$_pkgbasename
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="Spell checker and morphological analyzer library and program"
 arch=('x86_64')
 url="http://hunspell.sourceforge.net/"
@@ -15,7 +15,7 @@ makedepends=(gcc-multilib)
 optdepends=('perl: for ispellaff2myspell')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/hunspell/hunspell-$pkgver.tar.gz)
-md5sums=('3121aaf3e13e5d88dfff13fb4a5f1ab8')
+md5sums=('4967da60b23413604c9e563beacc63b4')
 
 build() {
   export CC="gcc -m32"
