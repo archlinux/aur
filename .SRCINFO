@@ -1,6 +1,6 @@
 pkgbase = smartgit
-	pkgdesc = Git/Hg GUI client written in Java.
-	pkgver = 6.5.9
+	pkgdesc = Git client with Hg and SVN support.
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = http://www.syntevo.com/smartgit
 	install = smartgit.install
@@ -13,9 +13,9 @@ pkgbase = smartgit
 	depends = gtk2
 	optdepends = mercurial: hg repositories support
 	replaces = smartgithg
-	source = https://www.syntevo.com/downloads/smartgit/smartgit-generic-6_5_9.tar.gz
+	source = https://www.syntevo.com/downloads/smartgit/smartgit-generic-7_0_0.tar.gz
 	source = smartgit.desktop
-	md5sums = a54a45a4124028be6b77c5a573adf5fc
+	md5sums = 5decaf47b4e2782021e3d1950d444a99
 	md5sums = c372fb0864ce6010c92f75910acbe8d0
 
 pkgname = smartgit
