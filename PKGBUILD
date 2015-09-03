@@ -1,19 +1,17 @@
 pkgname=cgal-ipelets
 pkgver=4.6
-pkgrel=1
-ipever=7.1.7           # too bad no way to determine this automatically
+pkgrel=2
+ipever=7.1.8           # too bad no way to determine this automatically
 _pkgid=34705
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
 url="http://www.cgal.org"
 source=(http://gforge.inria.fr/frs/download.php/$_pkgid/CGAL-$pkgver.tar.xz)
 depends=('cgal' 'ipe')
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'cgal' 'ipe')
 license=('GPL' 'QPL')
 
 build() {
-  cd "$srcdir/CGAL-$pkgver"
-  cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   cd "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets"
   cmake . -DWITH_IPE_7=ON
   make
