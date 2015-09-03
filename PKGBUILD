@@ -7,6 +7,7 @@ pkgdesc='VirtualBox wrapper for python 2.7. GNS3 tool.'
 arch=('any')
 url='https://github.com/GNS3/vboxwrapper'
 license=('GPL2')
+groups=('gns3')
 makedepends=('python2-setuptools')
 depends=('virtualbox' 'virtualbox-sdk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/${pkgver}.tar.gz")

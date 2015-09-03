@@ -4,6 +4,7 @@ pkgbase = vboxwrapper
 	pkgrel = 1
 	url = https://github.com/GNS3/vboxwrapper
 	arch = any
+	groups = gns3
 	license = GPL2
 	makedepends = python2-setuptools
 	depends = virtualbox
