@@ -1,0 +1,23 @@
+# arg 1:  the new package version
+post_install() {
+  if ! grep -F $'ScriptAlias /viewvc\nScriptAlias /query' '/usr/share/viewvc/viewvc.conf'; then
+    cat << EOF
+--> 1) Edit /usr/share/viewvc/viewvc.conf
+--> 2) Add these lines in /etc/httpd/conf/httpd.conf in the ScriptAlias section
+	ScriptAlias /viewvc "/srv/httpd/cgi-bin/viewvc.cgi"
+	ScriptAlias /query "/srv/httpd/cgi-bin/query.cgi"
+--> 3) restart apache
+EOF
+  fi
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  post_install $1
+}
+
+# WTF is this? Are we trying to mangle makepkg?
+#op=$1
+#shift
+#$op $*
