@@ -39,7 +39,7 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Launcher
-  install -m755 google-chrome-unstable "$pkgdir"/usr/bin/
+  install -m755 google-chrome-$_channel "$pkgdir"/usr/bin/
 
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
