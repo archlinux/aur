@@ -1,5 +1,5 @@
 pkgbase = liri-browser-git
-	pkgdesc = A UI framework for QtQuick implementing Material Design
+	pkgdesc = A Web Browser using the QML Material framework from the Papyros Project
 	pkgver = git
 	pkgrel = 1
 	url = https://github.com/liri-browser/liri-browser
