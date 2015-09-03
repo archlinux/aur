@@ -12,7 +12,7 @@ md5sums=('9a15ec492278e2a2b29f8b25eda10286')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cp "$srcdir/config.h" "config.h"
+  cp "$srcdir/../config.h" "config.h"
   make
 }
 
