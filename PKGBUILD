@@ -3,7 +3,7 @@
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
 pkgver=3.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgbase/"
@@ -18,10 +18,8 @@ optdepends=('bzr'
             'mercurial'
             'src'
             'subversion')
-source=("$url$pkgbase-$pkgver.tar.xz"
-        0001-missing-reporting-bugs.patch)
-sha256sums=('6105a99f0e6c01d4a499a32b7bcc5d55c37ca1d3386101c20b7c1738fc086aa2'
-            '0b4c9fba16b0d5afe734f4a09dac510c04644961444dedcd3603a1c3c093d7ef')
+source=("$url$pkgbase-$pkgver.tar.xz")
+sha256sums=('51105e18a2f350146e23c01ea559a07400c3b715f8ec338206f19c19197b0a0f')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -52,6 +50,7 @@ build_cyreposurgeon() {
 package_reposurgeon() {
   cd "$srcdir/$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" prefix=/usr install
+  install -m755 repomapper "$pkgdir/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/emacs/site-lisp"
   install -Dm644 reposurgeon-mode.el "$pkgdir/usr/share/emacs/site-lisp"
