@@ -2,14 +2,14 @@
 
 pkgbase=ffindex
 pkgdesc="simple index/database for huge amounts of small files"
-pkgver=0.9.9.5
+pkgver=0.9.9.6
 pkgrel=1
 url=http://www.splashground.de/~andy/programs/FFindex
 arch=i686
 arch=x86_64
 license=('CCPL:cc-by-sa-3.0')
 source=http://www.splashground.de/~andy/programs/FFindex/ffindex-${pkgver}.tar.gz
-sha256sums=53f8f981916da76abc33f9e5af7734e668481965dc52355a0ee360315d09e3f6
+sha256sums=5d49575dda35f33c0f9226e2ecf84aa4838dfd3df27e448c50683123450f846c
 pkgname=ffindex
 
 
