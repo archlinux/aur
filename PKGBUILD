@@ -4,8 +4,8 @@
 # Contributor: nous <nous at archlinux.us>
 # Contributor: pressh
 
-pkgname=kdenlive-applications15.04-git
-pkgver=15.04.0.r5746.e116517
+pkgname=kdenlive-applications15.08-git
+pkgver=15.08.0.r6255.4a8b014
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version, Applications/15.04 branch)"
 arch=('i686' 'x86_64')
@@ -22,13 +22,13 @@ optdepends=('ffmpeg: for FFmpeg plugin'
             'xine-ui: for DVD preview')
 provides=('kdenlive')
 conflicts=('kdenlive')
-source=('git://anongit.kde.org/kdenlive#branch=Applications/15.04') 
+source=('git://anongit.kde.org/kdenlive#branch=Applications/15.08') 
 sha1sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
   cd kdenlive
-  _ver="$(cat CMakeLists.txt | grep KDENLIVE_VERSION | head -n1 | cut -d ' ' -f2 | tr -d ')')"
+  _ver="$(cat CMakeLists.txt | grep KDE_APPLICATIONS_VERSION | head -3 | cut -d "\"" -f2 | tr "\n" "." | cut -d "." -f1-3)"
   echo "$(echo ${_ver}).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 

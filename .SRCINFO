@@ -1,9 +1,9 @@
-pkgbase = kdenlive-applications15.04-git
+pkgbase = kdenlive-applications15.08-git
 	pkgdesc = A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version, Applications/15.04 branch)
 	pkgver = 15.04.0.r5746.e116517
 	pkgrel = 1
 	url = http://http://www.kdenlive.org/
-	install = kdenlive-applications15.04-git.install
+	install = kdenlive-applications15.08-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -29,5 +29,5 @@ pkgbase = kdenlive-applications15.04-git
 	source = git://anongit.kde.org/kdenlive#branch=Applications/15.04
 	sha1sums = SKIP
 
-pkgname = kdenlive-applications15.04-git
+pkgname = kdenlive-applications15.08-git
 
