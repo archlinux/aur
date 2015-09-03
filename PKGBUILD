@@ -4,19 +4,18 @@
 
 # Version control of PKGBUILD: https://github.com/azrdev/peervpn-archlinux/
 pkgname=peervpn
-pkgver=0.042
+pkgver=0.043
 _pkgver=${pkgver//./-}
-pkgrel=5
+pkgrel=1
 pkgdesc="An open source peer-to-peer VPN"
 url="http://www.peervpn.net"
-# please report if you find an architecture this does *not* build and run on
-arch=('any')
+arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv7h')
 license=('GPL3')
 depends=('openssl')
 backup=('etc/peervpn/peervpn.conf')
 source=("http://www.peervpn.net/files/peervpn-${_pkgver}.tar.gz"
         'peervpn@.service')
-sha1sums=('3901ac75caecdf915847b87e259d9f81dad1acba'
+sha1sums=('feaae41f929935c6db1a5fdc08d3eb82259761dd'
           '6fbbebb760d510b11fd8142712c4d6985cb0d6ca')
 
 build() {
