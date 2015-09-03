@@ -175,18 +175,14 @@ optdepends=('ttf-office-2007-fonts')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
 conflicts=('ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-win8' 'ttf-win7-fonts-autodownload')
 install="${pkgbase}.install"
-source=('license.rtf' 'FONTVER.pl'
-'20-ttf-win7-fonts-japanese.conf'
-'20-ttf-win7-fonts-korean.conf'
-'20-ttf-win7-fonts-zh_cn.conf'
-'20-ttf-win7-fonts-zh_tw.conf'
-)
+source=('license.rtf' 'FONTVER.pl' "20-${_pkgbase}-"{latin,japanese,korean,zh_cn,zh_tw}'.conf')
 _sfpath="http://downloads.sourceforge.net/corefonts"
 source+=("${_sfpath}/andale32.exe") # "${_sfpath}/arialb32.exe")
 _fnts_latinsf=('AndaleMo.TTF') # 'AriBlk.TTF') # Windows Arial Black seems to work now.
 # Andale is not in Windows 7 without which we can't be a replacement for ttf-ms-fonts.
 sha256sums=('096cdd18e26b2b3d8cf0b3ec6a1ffb5b0eaae0fcc2105e3c145f19037a42d467'
             '32d534a6f469c8fc5613fcc5cc0934670da470036a94aa21c6f73c2a0f1ab19e'
+            '4c46d930ac139018dff8d00695950251fb5b4306f38a625f0d3ac20b9f3c08e4'
             'd35adbff8bbc8829cd84478b0fe16c78b9930f56c0c4b007f68fb27ada6fa700'
             '3953ca5d604a1f3f6dd5d0ab0b13fa06c19d1de48b0c9e871e89e6c4b20cebcf'
             '700aad3b80067389ba6921bd16c9ebcda152e685330e113c38f1e06a84000619'
@@ -1219,7 +1215,8 @@ build() {
   set +u
 }
 
-# This is the package function for Latin only or Latin+Intl in one package
+# This package function is only used by font packages that do not have a pkgbase like ttf-office-2007.
+# It is not used by split packages ttf-win7-fonts or ttf-ms-win8.
 package() {
   set -u
   cd "${srcdir}"
@@ -1313,27 +1310,30 @@ function _package {
     fi
   fi
 
-  # Prepare destination directory
-  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
-
   # Install fonts
   for _fnt in "${_fontsout[@]}"; do
     if [ ! -z "${_fnt}" ]; then
-      install -pm644 "${_fnt}" "${pkgdir}/usr/share/fonts/TTF/${_fnt,,}" || :
+      install -Dpm644 "${_fnt}" "${pkgdir}/usr/share/fonts/TTF/${_fnt,,}" || :
     fi
   done
 
+  # according to /etc/fonts/conf.d/README these are numbered 20 to come before 30 through 39 family substitution
   if [ "$1" = 'all' ]; then
     local _conf
-    for _conf in 20-${_pkgbase}-*.conf; do
+    for _conf in "20-${_pkgbase}"-*.conf; do
       backup+=("etc/fonts/conf.avail/${_conf}")
       install -Dpm644 -t "${pkgdir}/etc/fonts/conf.avail" "${_conf}"
+      install -d "${pkgdir}/etc/fonts/conf.d"
+      ln -sf "/etc/fonts/conf.avail/${_conf}" "${pkgdir}/etc/fonts/conf.d/${_conf}"
     done
   else
     # Install available fontconfig fix.
-    if [ -e "20-${_pkgbase}-$1.conf" ]; then
-      backup=("etc/fonts/conf.avail/20-${_pkgbase}-$1.conf")
-      install -Dpm644 -t "${pkgdir}/etc/fonts/conf.avail" "20-${_pkgbase}-$1.conf"
+    local _conf="20-${_pkgbase}-$1.conf"
+    if [ -e "${_conf}" ]; then
+      backup=("etc/fonts/conf.avail/${_conf}")
+      install -Dpm644 -t "${pkgdir}/etc/fonts/conf.avail" "${_conf}"
+      install -d "${pkgdir}/etc/fonts/conf.d"
+      ln -sf "/etc/fonts/conf.avail/${_conf}" "${pkgdir}/etc/fonts/conf.d/${_conf}"
     fi
   fi
 
