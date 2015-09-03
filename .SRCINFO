@@ -1,0 +1,14 @@
+pkgbase = thiy
+	pkgdesc = A templating engine that uses YAML templates to produce HTML files.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source_i686 = thiy-i686::https://github.com/stilvoid/thiy/releases/download/v0.1/thiy-linux-i386
+	md5sums_i686 = 880dfe5b27a3af2b9789d49130a2c47a
+	source_x86_64 = thiy-x86_64::https://github.com/stilvoid/thiy/releases/download/v0.1/thiy-linux-amd64
+	md5sums_x86_64 = 3340557cb17e0473b39473672faee73d
+
+pkgname = thiy
+
