@@ -3,8 +3,8 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=3.05
-pkgrel=4
+pkgver=3.10
+pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url=http://www.microchip.com/mplabx
@@ -31,7 +31,7 @@ source=(http://ww1.microchip.com/downloads/en/DeviceDoc/$installer_tar
         LICENSE)
 source_x86_64+=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
 
-md5sums=('cd9f5108ef6f4fdfbfabd89007748012'
+md5sums=('7746910503fd9a01152d43b649cca211'
          'a34a85b2600a26f1c558bcd14c2444bd')
 md5sums_x86_64+=('92b9a1dc8fa0534048790731a7bf2fc5')
 
@@ -83,7 +83,7 @@ package() {
 
   ln -s $instdir/v$pkgver/mplab_ide/bin/mplab_ide $pkgdir/usr/bin/mplab_ide
   ln -s $instdir/v$pkgver/mplab_ipe/mplab_ipe $pkgdir/usr/bin/mplab_ipe
-  ln -s $instdir/../mplabcomm/v$pkgver/lib/libmchpusb-1.0.so.0.0.0 $pkgdir/usr/local/lib/libmchpusb-1.0.so
+  ln -s $instdir/../mplabcomm/v$pkgver/lib/libmchpusb-1.0.so.0.0.0 $pkgdir/usr/lib/libmchpusb-1.0.so
   ln -s $instdir/../mplabcomm/v$pkgver/lib/mchplinusbdevice $pkgdir/etc/.mplab_ide
   ln -s $instdir/../mplabcomm/v$pkgver/lib/libUSBAccessLink.so $pkgdir/usr/lib/libUSBAccessLink.so
   ln -s $instdir/../mplabcomm/v$pkgver/lib/libSerialAccessLink.so $pkgdir/usr/lib/libSerialAccessLink.so
