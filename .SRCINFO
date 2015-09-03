@@ -1,7 +1,7 @@
 pkgbase = msr-tools
-	pkgdesc = Console application binaries from the Value of the Model-Specific Register (MSR) Tools Projectt
+	pkgdesc = Console application binaries from the Value of the Model-Specific Register (MSR) Tools Project
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/msr-tools
 	arch = i686
 	arch = x86_64

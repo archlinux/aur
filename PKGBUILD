@@ -1,8 +1,8 @@
 # Maintainer: Josh Taillon <jat255@gmail.com>
 pkgname=msr-tools
 pkgver=1.3
-pkgrel=1
-pkgdesc="Console application binaries from the Value of the Model-Specific Register (MSR) Tools Projectt"
+pkgrel=2
+pkgdesc="Console application binaries from the Value of the Model-Specific Register (MSR) Tools Project"
 arch=('i686' 'x86_64')
 url="https://01.org/msr-tools"
 license=('GPL')
