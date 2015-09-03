@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=v0.2.r139.g9c91243
+pkgver=v0.2.r662.ga1d17e5
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -54,10 +54,11 @@ build() {
 package() {
   cd "$srcdir/osvr-core-build"
   make DESTDIR="$pkgdir/" install
-  #install -d "$pkgdir/usr/bin"
-  #install -m755 Release/panoptic "$pkgdir/usr/bin/panoptic"
   mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
   rm -f "$pkgdir/usr/lib/libfunctionality.so.0.1" #????
+
+   install -d "$pkgdir/usr/share/osvr"
+   mv "$pkgdir/usr/bin/"*"/" "$pkgdir/usr/share/osvr"
 }
 
 
