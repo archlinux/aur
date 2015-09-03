@@ -5,13 +5,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=vim-noruby
-# list of tags can be found at https://code.google.com/p/vim/source/list
-_topver=7.4
-_patchlevel=778
-_tag=v${_topver/./-}-${_patchlevel}
-_versiondir="vim${_topver//./}"
-pkgver=${_topver}.${_patchlevel}
-pkgrel=2
+pkgver=7.4.854
+_versiondir=74
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
@@ -19,24 +15,16 @@ pkgdesc="Like 'vim' package, but -ruby"
 depends=("vim-runtime=${pkgver}-1" 'gpm' 'lua' 'python2' 'acl')
 conflicts=('vim-minimal' 'vim-python3' 'gvim' 'gvim-python3' 'vim')
 provides=("vim" "xxd")
-makedepends=('gpm' 'python2' 'python' 'libxt' 'desktop-file-utils' 'gtk2' 'lua' 'mercurial')
-# It would be great to use downloadable archives https://vim.googlecode.com/archive/$tag.tar.gz
-# unfortunately its content changes each time you download one (files modification date is different)
-source=("${pkgname}-repo::hg+https://vim.googlecode.com/hg#tag=${_tag}"
+makedepends=('gpm' 'python2' 'python' 'libxt' 'desktop-file-utils' 'gtk2' 'lua')
+source=("vim-${pkgver}.tar.gz::https://github.com/vim/vim/archive/v${pkgver}.tar.gz"
         'vimrc'
         'archlinux.vim')
-sha1sums=('SKIP'
+sha1sums=('f3b1ca74cf0731e90e6f1560ad90930cd1c3cf2d'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
 prepare() {
-  cd ${pkgname}-repo
-
-  _latesttag=$(hg parents --template '{latesttag}' -r default)
-  if (( $_tag != $_latesttag )); then
-    printf 'You are not building the latest revision!\n'
-    printf "Consider updating to tag $_latesttag.\n"
-  fi
+  cd vim-${pkgver}
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' \
@@ -46,8 +34,8 @@ prepare() {
 
   (cd src && autoconf)
 
-  cd ..
-  cp -a ${pkgname}-repo ${pkgname}-build
+  cd ${srcdir}
+  cp -a vim-${pkgver} ${pkg}-build
 }
 
 build() {
