@@ -1,0 +1,19 @@
+pkgbase = gimp-plugin-normalmap
+	pkgdesc = A Gimp plugin for converting images into RGB normal maps
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://code.google.com/p/gimp-normalmap/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gimp
+	depends = gtkglext
+	depends = glew
+	conflicts = gimp-normalmap
+	replaces = gimp-normalmap
+	options = !strip
+	source = http://gimp-normalmap.googlecode.com/files/gimp-normalmap-1.2.3.tar.bz2
+	sha1sums = a7b07bae2c8c62892f8a8490d73e89367930f85e
+
+pkgname = gimp-plugin-normalmap
+
