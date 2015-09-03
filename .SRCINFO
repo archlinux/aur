@@ -1,0 +1,14 @@
+pkgbase = v7_sh
+	pkgdesc = A port of original Steve Bourne shell from 1978
+	pkgver = 0
+	pkgrel = 1
+	url = http://riemann.fmi.uni-sofia.bg/sh/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = dietlibc
+	source = http://riemann.fmi.uni-sofia.bg/sh/v7_sh.tar.gz
+	sha256sums = e096dacd4bab4b6b4eecc63f0016ff72f83739258ff0376f54775b68db728b72
+
+pkgname = v7_sh
+
