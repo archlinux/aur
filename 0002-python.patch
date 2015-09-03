@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 4443114..163ffd2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,7 +62,7 @@ AC_SUBST([PYTHON3_EXEC_PREFIX], ['${exec_prefix}'])
+ PYTHON3_EXECDIR=`$PYTHON3 -c "import distutils.sysconfig; \
+                           print(distutils.sysconfig.get_python_lib(1,0,prefix='$PYTHON3_EXEC_PREFIX'))"`
+ AC_SUBST(py3execdir, $PYTHON3_EXECDIR)
+-AM_CONDITIONAL(USE_PYTHON3, test ${use_python3} = "yes")
++AM_CONDITIONAL(USE_PYTHON3, test "${use_python3}" = "yes")
+ 
+ 
+ 
