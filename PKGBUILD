@@ -173,10 +173,6 @@ optdepends=('ttf-office-2007-fonts')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
 conflicts=('ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-win8' 'ttf-win7-fonts-autodownload')
 install="${pkgbase}.install"
-<<<<<<< HEAD
-=======
-source=('license.rtf' 'FONTVER.pl' "20-${_pkgbase}-"{latin,japanese,korean,zh_cn,zh_tw}'.conf')
->>>>>>> 81dd7bfbd1fac3f6157019e9206db4466b690771
 _sfpath="http://downloads.sourceforge.net/corefonts"
 source=('license.rtf' 'FONTVER.pl' "20-${_pkgbase}-"{latin,japanese,korean,zh_cn,zh_tw}'.conf')
 source+=("${_sfpath}/andale32.exe") # "${_sfpath}/arialb32.exe")
@@ -1231,11 +1227,7 @@ build() {
 }
 
 # This package function is only used by font packages that do not have a pkgbase like ttf-office-2007.
-<<<<<<< HEAD
 # It is not used in packages with splits ttf-win7-fonts or ttf-ms-win8.
-=======
-# It is not used by split packages ttf-win7-fonts or ttf-ms-win8.
->>>>>>> 81dd7bfbd1fac3f6157019e9206db4466b690771
 package() {
   set -u
   cd "${srcdir}"
