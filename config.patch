@@ -9,21 +9,3 @@
  #
  ZLIB_CFLAGS   ?=
  ZLIB_LIBS     ?= -lz
-@@ -62,7 +62,7 @@
- # If you have different Qt versions installed, you may have to change
- # this to "moc-qt4"
- #
--MOC	      ?= moc
-+MOC	      ?= moc-qt4
- #
- else
- #
-@@ -89,7 +89,7 @@
- QT_LIBS    ?= -F/Library/Frameworks -L/Library/Frameworks \
- 	      -framework QtCore -framework ApplicationServices \
- 	      -framework QtGui -framework AppKit -framework Cocoa -lz -lm
--MOC	   ?= moc
-+MOC	   ?= moc-qt4
- endif
- #
- # --------------------------------------------------------------------

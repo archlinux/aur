@@ -1,7 +1,7 @@
 pkgbase = ipe
 	pkgdesc = The extensible drawing editor
-	pkgver = 7.1.7
-	pkgrel = 4
+	pkgver = 7.1.8
+	pkgrel = 1
 	url = http://tclab.kaist.ac.kr/ipe/
 	arch = i686
 	arch = x86_64
@@ -13,14 +13,14 @@ pkgbase = ipe
 	depends = poppler
 	depends = python2
 	conflicts = ipe
-	source = https://github.com/otfried/ipe/blob/master/releases/7.1/ipe-7.1.7-src.tar.gz?raw=true
+	source = https://github.com/otfried/ipe/blob/master/releases/7.1/ipe-7.1.8-src.tar.gz?raw=true
 	source = http://hg.mrzv.org/IpePresenter/archive/d0b0ea368ce9.tar.gz
 	source = ipe.bash-completion
 	source = config.patch
-	md5sums = 8c31313ec839fb7958b4a627634c907e
+	md5sums = 02a87999208cf25b03c358ad17f33d6e
 	md5sums = 3bc8dc576ee3acced2ff3c6ea6a01319
 	md5sums = 694f0d5402655901be385647e5d8d6e3
-	md5sums = c163912a81062e0d9b7ffcfbdfdce7e0
+	md5sums = 56c6de89f3def116fac7828f78834d37
 
 pkgname = ipe
 
