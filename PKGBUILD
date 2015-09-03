@@ -1,6 +1,6 @@
 # Maintainer: Riley Trautman <asonix.dev@gmail.com>
 
-_pkgname=liri
+_pkgname=liri-browser
 pkgname=$_pkgname-git
 pkgver=0.2.r28.g8867da7
 pkgrel=1
