@@ -1,0 +1,20 @@
+pkgbase = lyvi-git
+	pkgdesc = Command-line lyrics, guitar tabs, and artist information viewer
+	pkgver = v2.0.0.20.g7cc7a3f.g7cc7a3f
+	pkgrel = 1
+	url = http://ok100.github.io/lyvi/
+	arch = any
+	license = WTFPLv2
+	makedepends = git
+	makedepends = python-pip
+	depends = python-glyr-git
+	depends = python-psutil
+	depends = python-urwid
+	optdepends = python-pillow: background support
+	optdepends = python-dbus: mpris support
+	optdepends = python-gobject: mpris support
+	source = git+git://github.com/ok100/lyvi.git
+	md5sums = SKIP
+
+pkgname = lyvi-git
+
