@@ -2,8 +2,8 @@
 
 _pkgname=otter-browser
 pkgname=$_pkgname-qtwebengine-git
-pkgver=0.9.07.dev81.1.g1528984
-pkgrel=2
+pkgver=0.9.07.2.g2b632ed
+pkgrel=1
 pkgdesc="Project aiming to recreate aspects of Opera 12.x UI using Qt5.
          Built against QtWebEngine (experimental)."
 arch=("i686" "x86_64")
@@ -13,6 +13,7 @@ makedepends=("git" "cmake")
 depends=("qt5-webengine" "qt5-webkit" "qt5-multimedia" "qt5-script")
 provides=("$_pkgname" "$_pkgname-git")
 conflicts=("$_pkgname" "$_pkgname-git")
+install=$pkgname.install
 source=("git+https://github.com/OtterBrowser/otter-browser.git")
 sha256sums=("SKIP")
 

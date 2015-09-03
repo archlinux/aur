@@ -1,0 +1,13 @@
+post_install() {
+  echo ''
+  echo 'NOTE'
+  echo 'In order to use QtWebEngine open "about:config" and set "Backends - Web"'
+  echo 'to "qtwebengine"'
+  echo ''
+}
+
+post_upgrade() {
+  if (( $(vercmp $2 0.9.07.2.g2b632ed) < 0 )); then
+    post_install
+  fi
+}
