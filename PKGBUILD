@@ -18,7 +18,7 @@ source=("https://aphyr.com/riemann/$pkgname-$pkgver.tar.bz2"
 backup=('etc/riemann/riemann.config')
 sha256sums=('f5bb666acb878e144471f8c6d7f622193840d127aea96924fd8575e1fb6c57dc'
             '0e1a10f59cc95f9cef3eb54cc9764366a714eec2ed6c08750ac13c5d456d69c5'
-            'd8f7789e9166b5d2472a444dffe8ffb01eb43fac366544b0082ceead2f01f20c'
+            'c62dfdd9c723e0717d5da33dc85def9a9a8f623f671aafa9505df3790bb4d2ae'
             '18e21c05c351a8bcbd55b3a454bceb67b7dcfe1385e7cca6936fe63640c44303'
             '94181e635ae9774a76bf4169064f253b626fb09806694d34774ed06d54df35b8')
 
@@ -37,7 +37,6 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -dm755 "$pkgdir/var/log/riemann"
-  install -dm755 "$pkgdir/var/lib/riemann"
 
   install -Dm644 etc/riemann.config "$pkgdir/etc/riemann/riemann.config"
   install -Dm755 bin/riemann        "$pkgdir/usr/bin/riemann"
