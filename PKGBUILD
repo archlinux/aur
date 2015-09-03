@@ -7,7 +7,7 @@
 pkgname=kdenlive-applications15.08-git
 pkgver=15.08.0.r6255.4a8b014
 pkgrel=1
-pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version, Applications/15.04 branch)"
+pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version, Applications/15.08 branch)"
 arch=('i686' 'x86_64')
 url="http://http://www.kdenlive.org/"
 license=('GPL')
