@@ -10,8 +10,10 @@ pkgbase = mit-scheme
 	depends = ncurses
 	depends = zlib
 	optdepends = openssl: support for openssl
-	source = http://ftp.gnu.org/gnu/mit-scheme/stable.pkg/9.2/mit-scheme-9.2-x86-64.tar.gz
-	md5sums = 9fcc6c156e53efeb0560996551fa0a57
+	source_i686 = http://ftp.gnu.org/gnu/mit-scheme/stable.pkg/9.2/mit-scheme-9.2-i386.tar.gz
+	md5sums_i686 = b80458f85b9521bdfb0620edc89e3e61
+	source_x86_64 = http://ftp.gnu.org/gnu/mit-scheme/stable.pkg/9.2/mit-scheme-9.2-x86-64.tar.gz
+	md5sums_x86_64 = 9fcc6c156e53efeb0560996551fa0a57
 
 pkgname = mit-scheme
 

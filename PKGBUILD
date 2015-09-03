@@ -11,14 +11,10 @@ url='http://www.gnu.org/software/mit-scheme/'
 depends=('glibc' 'ncurses' 'zlib')
 optdepends=('openssl: support for openssl')
 
-if [[ $CARCH == i686 ]]; then
-  _arch=i386
-  md5sums=('b80458f85b9521bdfb0620edc89e3e61')
-else
-  _arch=x86-64
-  md5sums=('9fcc6c156e53efeb0560996551fa0a57')
-fi
-source=(http://ftp.gnu.org/gnu/$pkgname/stable.pkg/$pkgver/$pkgname-$pkgver-$_arch.tar.gz)
+source_i686=(http://ftp.gnu.org/gnu/$pkgname/stable.pkg/$pkgver/$pkgname-$pkgver-i386.tar.gz)
+source_x86_64=(http://ftp.gnu.org/gnu/$pkgname/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz)
+md5sums_i686=('b80458f85b9521bdfb0620edc89e3e61')
+md5sums_x86_64=('9fcc6c156e53efeb0560996551fa0a57')
 
 build() {
   cd $pkgname-$pkgver/src
