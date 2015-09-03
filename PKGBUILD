@@ -2,7 +2,7 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r113.3a6be83
+pkgver=r117.6dcbba2
 pkgrel=1
 pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
 url='http://treesheets.com/'
@@ -16,7 +16,7 @@ source=("git://github.com/aardappel/$_pkgname.git#branch=master"
         "myframe.patch")
 sha512sums=('SKIP'
             'e423f46c1ea08d7429a3ffe027911dba52ded81228c6110f695ff19d56090ed93a6081bbc98329aa509f9888b042f995bfa3ce87cbcb34db9aab352f929b5bc2'
-            '6c4db7d55a4df02b4b71674fc4ae2f303886d62bef2b0673fa6f5d05257021d771eb18075e96087f365fe0c91b989cc82c171ff8cea8f5cce9b85e4b4df97410')
+            '50ea4008f10d0e0248b77295fe664ca341a6225f4d3edb040d3bd0bba90943bcfe5372224cc92ea4047f1e7c4515ab32508752ba32c183faa195bcb239240e4b')
 
 pkgver() {
   cd $_pkgname
