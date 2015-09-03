@@ -1,4 +1,4 @@
-pkgbase = cnijfilter-mg5200
+pkgbase = cnijfilter-5200
 	pkgdesc = Canon IJ Printer Driver (mg5200 series)
 	pkgver = 3.40
 	pkgrel = 11
