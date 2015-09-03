@@ -12,7 +12,7 @@ options=(!strip)  # Don't strip libs because there aren't any; this wastes time
 DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
-pkgver=171
+pkgver=172
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -26,17 +26,17 @@ makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus')
-source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=a61df3303cf69a613fbfe43bf4ba78d172a1c676"
+source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=91b77e664811f2f4e5a8325db240445ffa1a8226"
         paths-in-opt.patch
         running-the-server.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            '9575e8a46d04ad8a2f6d53612bf4c4e2905fe1f2d80a10aaeff5ef4cfbb249ce'
-            '1c2c154d044f56fb50a1f24b940f6127ef78640a723422af5e5853838deee03b'
+            '7bba0d627ef885c589da9cbdef2ebd98a6e69ce95a863dc2edcfae826880b1f4'
+            'f7ba3a9232ebf7b73d9a4713761a09a14c2e4fe61eb37239c1b650bcc4a2ed75'
             'b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678'
-            'ac7254e3cdb359ebae302655b72b9f74b85d9e817c326fa28173791b3fb4f114'
+            '5fd3eb69bb5f9a0b88d7c1b25abdee42aa2b2fc5e1690635f60ed1f47848c46b'
             '9ba3942ac1a37f6b39c98ae6592573402bf08d8376f64554d0696c0fed6fd0e2')
 install=hydrus.install
 
@@ -69,7 +69,7 @@ package() {
 
   # Create /opt/hydrus and copy hydrus sources to there
   install -m755 -d "${pkgdir}/opt/hydrus"
-  cp -r help include static client.pyw server.pyw "${pkgdir}/opt/hydrus/"
+  cp -r help include static client.pyw server.py "${pkgdir}/opt/hydrus/"
 
   # Remove .py files
   $remove_py && find "${pkgdir}/opt/hydrus" -name '*.py' -delete

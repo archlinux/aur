@@ -1,5 +1,5 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index df287e2..af0afba 100755
+index 1d4024f..d7e1afd 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
 @@ -136,7 +136,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
@@ -11,7 +11,7 @@ index df287e2..af0afba 100755
          
          aboutinfo.SetLicense( license )
          
-@@ -1987,7 +1987,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
+@@ -2014,7 +2014,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
                  
              elif command == '8chan_board': webbrowser.open( 'http://8ch.net/hydrus/index.html' )
              elif command == 'file_integrity': self._CheckFileIntegrity()
@@ -62,7 +62,7 @@ index 4d8c363..b5119b6 100644
 \ No newline at end of file
 +    
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index e3fea73..5c87f83 100755
+index 0a834c4..fa0aa39 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,9 +3,9 @@ import sys

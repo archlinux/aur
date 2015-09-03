@@ -1,22 +1,31 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index af0afba..c885196 100755
+index a4be697..1319e86 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -244,18 +244,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -242,27 +242,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
                      
-                     my_scriptname = sys.argv[0]
+                     HydrusData.ShowText( u'Starting server\u2026' )
                      
--                    if my_scriptname.endswith( 'pyw' ):
+-                    if HC.PLATFORM_WINDOWS:
+-                        
+-                        my_exe = HC.BASE_DIR + os.path.sep + 'client.exe'
+-                        
+-                    else:
+-                        
+-                        my_exe = HC.BASE_DIR + os.path.sep + 'client'
+-                        
+-                    
+-                    if sys.executable == my_exe:
+-                    
+-                        if HC.PLATFORM_WINDOWS: subprocess.Popen( [ HC.BASE_DIR + os.path.sep + 'server.exe' ] )
+-                        else: subprocess.Popen( [ '.' + HC.BASE_DIR + os.path.sep + 'server' ] )
+-                        
+-                    else:
 -                        
 -                        if HC.PLATFORM_WINDOWS or HC.PLATFORM_OSX: python_bin = 'pythonw'
 -                        else: python_bin = 'python'
 -                        
--                        subprocess.Popen( [ python_bin, HC.BASE_DIR + os.path.sep + 'server.pyw' ] )
--                        
--                    else:
--                        
--                        if HC.PLATFORM_WINDOWS: subprocess.Popen( [ HC.BASE_DIR + os.path.sep + 'server.exe' ] )
--                        else: subprocess.Popen( [ './' + HC.BASE_DIR + os.path.sep + 'server' ] )
+-                        subprocess.Popen( [ python_bin, HC.BASE_DIR + os.path.sep + 'server.py' ] )
 -                        
 +                    subprocess.Popen( ["hydrus-server"] )
                      
