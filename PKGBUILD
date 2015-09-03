@@ -7,16 +7,17 @@
 #       PKGBUILD will install the full Altera suite now. Be aware that the space requirement
 #       is around 15GB now.
 #
-pkgname=quartus-free130
+_basename=quartus-free
+pkgname="${_basename}-130"
 pkgver=13.0.1.232
 pkgrel=2
 pkgdesc="Quartus II 13.0 Web Edition, the last version to support Cyclone II and earlier FPGAs."
 arch=('i686' 'x86_64')
 url="http://www.altera.com/products/software/quartus-ii/web-edition"
 license=('custom')
-provides=('quartus-free')
-replaces=('quartus-free')
-conflicts=('quartus-free')
+provides=("${_basename}")
+replaces=("${_basename}")
+conflicts=("${_basename}")
 
 _alteradir="/opt/altera"
 
