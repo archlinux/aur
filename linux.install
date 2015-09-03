@@ -4,12 +4,26 @@
 KERNEL_NAME=
 KERNEL_VERSION=
 
+announce() {
+  cat <<EOF
+Due to continued copyright and trademark abuses by the embedded industry, the
+stable patches of grsecurity will no longer be available to the general public.
+This package will be removed after the first private update of the stable
+patch. The linux-libre-grsec-knock package will be unaffected as it uses the test patch.
+
+See the official announcement for more details:
+
+https://grsecurity.net/announce.php
+EOF
+}
+
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   mkinitcpio -p linux-libre${KERNEL_NAME}
+  announce
 }
 
 post_upgrade() {
@@ -22,6 +36,7 @@ post_upgrade() {
   depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   mkinitcpio -p linux-libre${KERNEL_NAME}
+  announce
 
   if [ $(vercmp $2 3.13) -lt 0 ]; then
     echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
