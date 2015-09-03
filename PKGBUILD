@@ -5,20 +5,16 @@
 
 pkgname=listen
 pkgver=0.6.5
-pkgrel=14
+pkgrel=15
 pkgdesc="Music player and management for GNOME"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/listen"
 license=('GPL2')
-depends=('python2-egg' 'python2-libgnome' 'mutagen' 'desktop-file-utils'
-         'gnome-icon-theme' 'gstreamer0.10-python' 'pyxdg'
-         'pywebkitgtk' 'python2-pyinotify' 'gstreamer0.10-good-plugins' 'dbus-python')
+depends=('mutagen' 'desktop-file-utils' 'gstreamer0.10-python' 'python2-xdg' 'pywebkitgtk' 'python2-pyinotify' 'gstreamer0.10-good-plugins' 'gstreamer0.10-bad-plugins' 'python2-dbus')
 makedepends=('intltool' 'docbook2x' 'docbook-xml')
-optdepends=('python2-musicbrainz2: musicbrainz & cd support'
-            'libgpod: iPod support'
-            'python-daap: DAAP support'
-            'tunepimp: tagging support')
-install=listen.install
+optdepends=('python2-musicbrainz2: MusicBrainz & CD support'
+            'libgpod: iPod support')
+install=${pkgname}.install
 source=("https://launchpad.net/listen/0.6/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('23a4d33ef3251c529ac9a78d992557a2498fa05b825e76c9ab4bad431ed6c61a')
 
@@ -42,8 +38,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
-
-# vim:set ts=2 sw=2 et:
