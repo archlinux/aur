@@ -1,0 +1,4 @@
+post_install() {
+  echo "Firefox Add-on https://addons.mozilla.org/en-us/firefox/addon/rescuetime-for-firefox/"
+  echo "Chrome Extension https://chrome.google.com/webstore/detail/bdakmnplckeopfghnlpocafcepegjeap"
+}
