@@ -8,8 +8,8 @@ url="https://github.com/catalinii/minisatip"
 license=('GPL2')
 provides=('minisatip')
 conflicts=('minisatip')
-makedepends=('git' 'libdvbcsa')
-depends=('libdvbcsa')
+makedepends=('git')
+depends=('libdvbcsa' 'linuxtv-dvb-apps')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
     cd ${srcdir}/minisatip
-    make
+    make DVBCA=yes
 }
 
 package() {
