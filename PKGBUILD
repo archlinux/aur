@@ -6,7 +6,7 @@
 pkgname=burpsuite
 pkgver=1.6.25
 pkgrel=1
-pkgdesc="Burp Suite is an integrated platform for attacking web applications (free edition)."
+pkgdesc="An integrated platform for performing security testing of web applications (free edition)."
 url="https://portswigger.net/burp/"
 depends=('java-runtime')
 arch=('any')
