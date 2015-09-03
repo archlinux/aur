@@ -1,14 +1,14 @@
 # Maintainer: Kars Wang <jaklsy g-mail>
 
 pkgname=lantern-headless
-pkgver=2.0.1
+pkgver=2.0.2
+pkgrel=1
 _pkgname=lantern
-_git_revision=ba2e4d2b
+_git_revision=365c62b
 # git show -s --format=%ci "${_git_revision}"
-_git_revision_date='2015-08-21 13:28:01 -0700'
+_git_revision_date='2015-09-01 23:11:32 -0700'
 _build_date="$(date -u '+%Y%m%d.%H%M%S')"
 _logger_token='469973d5-6eaf-445a-be71-cf27141316a1'
-pkgrel=1
 pkgdesc='Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Headless Version)'
 arch=('i686' 'x86_64')
 url='https://getlantern.org'
@@ -16,10 +16,10 @@ license=('Apache')
 depends=('bzip2' 'dbus' 'glib2' 'mesa' 'xcb-util' 'xdg-utils' 'zlib')
 makedepends=('go>=1.4')
 provides=('lantern')
-options=('!emptydirs' '!strip' '!docs')
+options=('!emptydirs' '!strip')
 source=("https://github.com/getlantern/lantern/archive/${pkgver}.tar.gz"
         'lantern.service')
-sha1sums=('d7897cd685046c76a0169f85fa3c926461f8ea51'
+sha1sums=('bd2a791c188f2f7a9fb2455eb8b888dcff93f490'
           '822a905e8fe1d221a7ac5b7f0417d4ab82bed45a')
 
 if [ "$CARCH" = 'i686' ]; then
@@ -32,11 +32,12 @@ build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     source ./setenv.bash
     local build_tags='prod headless'
-    local ldflags="-w -X main.version \"${_git_revision}\" -X main.revisionDate \"${_git_revision_date}\" -X main.buildDate \"${_build_date}\" -X github.com/getlantern/flashlight/logging.logglyToken \"${_logger_token}\""
+    local _logger_token="$(sed -n 's/^LOGGLY_TOKEN[[:space:]]*:=[[:space:]]\(.*\)$/\1/p' ./Makefile)"
+    local ldflags="-w -X \"main.version=${_git_revision}\" -X \"main.revisionDate=${_git_revision_date}\" -X \"main.buildDate=${_build_date}\" -X \"github.com/getlantern/flashlight/logging.logglyToken=${_logger_token}\""
 
-    sed "s/packageVersion.*/packageVersion = \"${pkgver}\"/" src/github.com/getlantern/flashlight/autoupdate.go | sed 's/!prod/prod/' > src/github.com/getlantern/flashlight/autoupdate-prod.go
+    sed "s/packageVersion.*/packageVersion = \"${pkgver}\"/" ./src/github.com/getlantern/flashlight/autoupdate.go | sed 's/!prod/prod/' > ./src/github.com/getlantern/flashlight/autoupdate-prod.go
 
-    CGO_ENABLED=1 GOOS=linux GOARCH="$_arch" go build -o "lantern_linux_${_arch}" -tags="$build_tags" -ldflags="${ldflags} -linkmode internal -extldflags \"-static\"" github.com/getlantern/flashlight
+    CGO_ENABLED=1 GOOS=linux GOARCH="$_arch" go build -o "lantern_linux_${_arch}" -tags="$build_tags" -ldflags="${ldflags} -linkmode internal -extldflags \"-static\"" ./src/github.com/getlantern/flashlight
 }
 
 package() {
