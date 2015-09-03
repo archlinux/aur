@@ -5,22 +5,22 @@
 
 pkgname=kraft
 pkgver=0.58
-pkgrel=2
+pkgrel=3
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
 depends=('kdepimlibs' 'ctemplate' 'python2-reportlab' 'python2-pypdf')
 makedepends=('cmake' 'automoc4' 'boost')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.xz")
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+        'allow-duplicate-cmake-targets.patch')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   sed -i 's/raise ValueError, "Not enough space"/raise ValueError("Not enough space")/' tools/erml2pdf.py
 
-  echo 'Warning! Locales are not built due to a workaround in the CMake configuration'
-  find po -name CMakeLists.txt -delete
+  patch < "${srcdir}/allow-duplicate-cmake-targets.patch"
 
   rm -rf build
   mkdir -p build
@@ -40,4 +40,5 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('12c92dbdae05d01a491111ed42dfa6f487ec477f60e536e5a80efa6592997524')
+sha256sums=('12c92dbdae05d01a491111ed42dfa6f487ec477f60e536e5a80efa6592997524'
+            '2a98be3f535be36161c16ee1f49baba72eab410f222cfc32697c490cfd412370')
