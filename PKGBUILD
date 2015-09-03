@@ -4,7 +4,7 @@
 
 pkgname=steam-native
 pkgver=1.0.0.50
-pkgrel=14
+pkgrel=15
 pkgdesc="Sets a native runtime environment for Steam by default, adds a Steam runtime launcher for compatibility."
 arch=('i686' 'x86_64')
 url='http://steampowered.com/'
@@ -30,24 +30,23 @@ optdepends=('mono: game dependency' 'mono-addins: game dependency')
 optdepends_i686=('libappindicator-gtk2: needed if tray icon not working (Gnome)' 'libappindicator-gtk3: needed if tray icon not working (Gnome)' 'sdl: game dependency' 'sdl_image: game dependency' 'sdl_mixer: game dependency' 'sdl2: game dependency' 'sdl2_image: game dependency' 'tcp_wrappers-libs: game dependency' 'speex: game dependency' 'gperftools: game dependency' 'libcurl-gnutls: game dependency')
 optdepends_x86_64=('lib32-libappindicator-gtk2: needed if tray icon not working (Gnome)' 'lib32-libappindicator-gtk3: needed if tray icon not working (Gnome)' 'lib32-sdl: game dependency' 'lib32-sdl_image: game dependency' 'lib32-sdl_mixer: game dependency' 'lib32-sdl2: game dependency' 'lib32-sdl2_image: game dependency' 'lib32-tcp_wrappers-libs: game dependency' 'lib32-speex: game dependency' 'lib32-gperftools: game dependency' 'lib32-libcurl-gnutls: game dependency')
 
-provides_i686=('libudev.so.0')
+provides=('libudev.so.0')
 provides_x86_64=('lib32-libudev.so.0' 'lib32-networkmanager=0.9.8.10' 'lib32-libnm-glib=0.9.8.10')
 
-conflicts_i686=('libudev.so.0')
+conflicts=('libudev.so.0')
 conflicts_x86_64=('lib32-libudev.so.0' 'lib32-networkmanager' 'lib32-libnm-glib46')
 
 package() {
 	case "${CARCH}" in
-		'i686')
-			mkdir -p "${pkgdir}/usr/lib"
-			ln -s '/usr/lib/libudev.so' "${pkgdir}/usr/lib/libudev.so.0"
-			;;
 		'x86_64')
 			mkdir -p "${pkgdir}/usr/lib32"
 			ln -s '/usr/lib32/libudev.so' "${pkgdir}/usr/lib32/libudev.so.0"
 			bsdtar -xJf 'lib32-nm09810.tar.xz' -C "${pkgdir}" --no-same-owner
 			;;
 	esac
+
+	mkdir -p "${pkgdir}/usr/lib"
+	ln -s '/usr/lib/libudev.so' "${pkgdir}/usr/lib/libudev.so.0"
 
 	install -Dm644 'steam-runtime.desktop' "${pkgdir}/usr/share/applications/steam-runtime.desktop"
 	install -Dm644 '51-steam.rules' "${pkgdir}/etc/polkit-1/rules.d/51-steam.rules"
