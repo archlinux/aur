@@ -1,6 +1,6 @@
 pkgbase = python-nikola
 	pkgdesc = A modular, fast, simple, static website generator.
-	pkgver = 7.6.4
+	pkgver = 7.7.0
 	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = python-nikola
 	makedepends = python-natsort
 	makedepends = python-setuptools
 	makedepends = python-requests
+	makedepends = python-husl
 	makedepends = python2
 	makedepends = python2-doit
 	makedepends = python2-pygments
@@ -37,9 +38,10 @@ pkgbase = python-nikola
 	makedepends = python2-natsort
 	makedepends = python2-setuptools
 	makedepends = python2-requests
+	makedepends = python2-husl
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/N/Nikola/nikola-7.6.4.tar.gz
-	md5sums = a407fa1da458f87c1234d446bbc0fd3d
+	source = https://pypi.python.org/packages/source/N/Nikola/nikola-7.7.0.tar.gz
+	md5sums = f418dd7eecf2e10d099bd25eac8666e3
 
 pkgname = python-nikola
 	depends = python
@@ -58,6 +60,7 @@ pkgname = python-nikola
 	depends = python-natsort
 	depends = python-setuptools
 	depends = python-requests
+	depends = python-husl
 	optdepends = python-markdown: for Markdown support
 	optdepends = python-jinja: for Jinja2 themes
 	optdepends = python-pyphen>=0.9.1: for hyphenation
@@ -90,6 +93,7 @@ pkgname = python2-nikola
 	depends = python2-natsort
 	depends = python2-setuptools
 	depends = python2-requests
+	depends = python2-husl
 	optdepends = python2-markdown: for Markdown support
 	optdepends = python2-jinja: for Jinja2 themes
 	optdepends = python2-pyphen>=0.9.1: for hyphenation
