@@ -4,8 +4,8 @@
 # Contributor: kageurufu
 
 pkgname=burpsuite
-pkgver=1.6.01
-pkgrel=2
+pkgver=1.6.25
+pkgrel=1
 pkgdesc="Burp Suite is an integrated platform for attacking web applications (free edition)."
 url="https://portswigger.net/burp/"
 depends=('java-runtime')
@@ -17,7 +17,7 @@ source=("${pkgname}.jar::https://portswigger.net/DownloadUpdate.ashx?Product=Fre
         burpsuite.desktop
         icon64.png)
 
-md5sums=('6aa35f21ff8fc0094a7bb5b5f06e09ea'
+md5sums=('7d2b2060e3aa52568b7cd6b19efebcd0'
          'f463acff8a409ef66136a30b404ff361'
          '81feb47df93ef9b65e5194cf9ff6c023'
          'c3678a3dcb77765beb6708a7cead6341')
