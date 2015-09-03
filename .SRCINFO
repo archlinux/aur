@@ -1,7 +1,7 @@
 pkgbase = protobuf3
 	pkgdesc = Protocol Buffers - Google's data interchange format
 	pkgver = 3.0.0_beta_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/protocol-buffers/
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgname = protobuf3
 pkgname = python2-protobuf3
 	pkgdesc = Python 2 bindings for Google Protocol Buffers
 	depends = python2
+	depends = python2-six
 	depends = protobuf3=3.0.0_beta_1
 	provides = python2-protobuf
 	conflicts = python2-protobuf
@@ -31,6 +32,7 @@ pkgname = python2-protobuf3
 pkgname = python-protobuf3
 	pkgdesc = Python 3 bindings for Google Protocol Buffers
 	depends = python
+	depends = python-six
 	depends = protobuf3=3.0.0_beta_1
 	provides = python-protobuf
 	conflicts = python-protobuf

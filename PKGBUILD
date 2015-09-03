@@ -9,7 +9,7 @@ _pkgbase="protobuf"
 pkgname=('protobuf3' 'python2-protobuf3' 'python-protobuf3')
 pkgver=3.0.0_beta_1
 _pkgver=$(echo $pkgver | tr _ -)
-pkgrel=1
+pkgrel=2
 pkgdesc="Protocol Buffers - Google's data interchange format"
 arch=('i686' 'x86_64')
 url='https://developers.google.com/protocol-buffers/'
@@ -45,7 +45,7 @@ package_protobuf3() {
 
 package_python2-protobuf3() {
   pkgdesc='Python 2 bindings for Google Protocol Buffers'
-  depends=('python2' "protobuf3=${pkgver}")
+  depends=('python2' 'python2-six' "protobuf3=${pkgver}")
   conflicts=('python2-protobuf')
   provides=('python2-protobuf')
 
@@ -58,7 +58,7 @@ package_python2-protobuf3() {
 
 package_python-protobuf3() {
   pkgdesc='Python 3 bindings for Google Protocol Buffers'
-  depends=('python' "protobuf3=${pkgver}")
+  depends=('python' 'python-six' "protobuf3=${pkgver}")
   conflicts=('python-protobuf')
   provides=('python-protobuf')
 
