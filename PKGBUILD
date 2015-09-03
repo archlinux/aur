@@ -7,7 +7,7 @@ _plugin_version=20130816
 
 pkgname=firefox-extension-$_plugin_name
 pkgdesc="HTML5 implementation of flash for Firefox"
-pkgver=0.11.422
+pkgver=0.11.517
 pkgrel=1
 arch=('any')
 url="https://mozilla.github.io/shumway/"
