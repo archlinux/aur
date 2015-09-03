@@ -24,7 +24,8 @@ depends=(python2 wxpython opencv python2-beautifulsoup4 python2-yaml
          python2-psutil python2-send2trash)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
-            'miniupnpc: automatic port forwarding')
+            'miniupnpc: automatic port forwarding'
+            'desktop-file-utils: to add Hydrus to your desktop environment menus')
 source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=a61df3303cf69a613fbfe43bf4ba78d172a1c676"
         paths-in-opt.patch
         running-the-server.patch

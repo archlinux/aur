@@ -26,6 +26,7 @@ pkgbase = hydrus
 	depends = python2-send2trash
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
+	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
 	options = !strip
 	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=a61df3303cf69a613fbfe43bf4ba78d172a1c676
 	source = paths-in-opt.patch

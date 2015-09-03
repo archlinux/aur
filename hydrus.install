@@ -1,5 +1,6 @@
 post_install() {
-  update-desktop-database -q
+  # Ignore failures because it's only an opt dep
+  update-desktop-database -q 2>/dev/null || :
 }
 
 post_upgrade() {
