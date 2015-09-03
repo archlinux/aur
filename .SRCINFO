@@ -1,0 +1,16 @@
+pkgbase = git-issues-git
+	pkgdesc = A distributed issue tracking system based on Git repositories, written in Python.
+	pkgver = r107.389658d
+	pkgrel = 1
+	url = https://github.com/duplys/git-issues
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	depends = python2
+	provides = git-issues
+	conflicts = git-issues
+	source = git+https://github.com/duplys/git-issues
+	md5sums = SKIP
+
+pkgname = git-issues-git
+
