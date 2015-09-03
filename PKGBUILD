@@ -3,18 +3,23 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=drawpile
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.1.1
+pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('x86_64' 'i686')
 url='http://drawpile.net/'
 license=('GPL2')
 depends=('karchive' 'qt5-multimedia' 'desktop-file-utils')
-optdepends=('kdnssd: automatic service discovery (such as printers)' 'qt5-color-picker: alternative color wheel' 'giflib: GIF support' 'miniupnpc: UPnP support' 'libmicrohttpd: web-admin feature (server dependency)' 'libsystemd: systemd and logging support (server dependency)')
+optdepends=('kdnssd: automatic service discovery (such as printers)'
+	'giflib: GIF support'
+	'miniupnpc: UPnP support'
+	'qt5-color-widgets: alternative color wheel'
+	'libmicrohttpd: web-admin feature (server dependency)'
+	'libsystemd: systemd and logging support (server dependency)')
 makedepends=('qt5-tools' 'qt5-svg' 'ninja' 'cmake')
 install="${pkgname}.install"
 source=("http://drawpile.net/files/src/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('93d265ca48af01b845907857080400eeb02ed0b732f105bb52b1e2990eb941d5')
+sha256sums=('3342de06008a01b1fc4330d3790a786029c75607882a20ae1c3b6b441dfe6c7a')
 
 	## SET TO 'SERVER' OR 'CLIENT' FOR BUILDING SERVER OR CLIENT ONLY ##
 	BUILD='BOTH'

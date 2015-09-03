@@ -1,7 +1,7 @@
 pkgbase = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.0.1.1
+	pkgrel = 1
 	url = http://drawpile.net/
 	install = drawpile.install
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = drawpile
 	depends = qt5-multimedia
 	depends = desktop-file-utils
 	optdepends = kdnssd: automatic service discovery (such as printers)
-	optdepends = qt5-color-picker: alternative color wheel
 	optdepends = giflib: GIF support
 	optdepends = miniupnpc: UPnP support
+	optdepends = qt5-color-widgets: alternative color wheel
 	optdepends = libmicrohttpd: web-admin feature (server dependency)
 	optdepends = libsystemd: systemd and logging support (server dependency)
-	source = http://drawpile.net/files/src/drawpile-1.0.1.tar.gz
-	sha256sums = 93d265ca48af01b845907857080400eeb02ed0b732f105bb52b1e2990eb941d5
+	source = http://drawpile.net/files/src/drawpile-1.0.1.1.tar.gz
+	sha256sums = 3342de06008a01b1fc4330d3790a786029c75607882a20ae1c3b6b441dfe6c7a
 
 pkgname = drawpile
 
