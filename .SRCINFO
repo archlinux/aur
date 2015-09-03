@@ -1,6 +1,6 @@
 pkgbase = linux-libre-lts-grsec
 	pkgver = 3.14.51_gnu.201508181951
-	pkgrel = 1
+	pkgrel = 2
 	url = https://grsecurity.net/
 	arch = i686
 	arch = x86_64
