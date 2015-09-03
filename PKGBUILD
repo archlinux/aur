@@ -16,6 +16,7 @@ pkgname=(
     'llvm-libs-svn'
     'llvm-ocaml-svn'
     'lld-svn'
+    'lldb-svn'
     'clang-svn'
     'clang-analyzer-svn'
     'clang-compiler-rt-svn'
@@ -50,10 +51,12 @@ source=(
     'clang-tools-extra::svn+https://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
     'compiler-rt::svn+https://llvm.org/svn/llvm-project/compiler-rt/trunk'
     'lld::svn+https://llvm.org/svn/llvm-project/lld/trunk'
+    'lldb::svn+https://llvm.org/svn/llvm-project/lldb/trunk'
     'llvm-Config-llvm-config.h'
 )
 
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -112,6 +115,7 @@ _install_licenses() {
         \( \
             -path "${srcdir}/${_pkgname}/tools/lld" -o \
             -path "${srcdir}/${_pkgname}/tools/clang" -o \
+            -path "${srcdir}/${_pkgname}/tools/lldb" -o \
             -path "${srcdir}/${_pkgname}/projects/compiler-rt" \
         \) -prune -o \
         \( \
@@ -151,6 +155,7 @@ prepare() {
     svn export --force "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
     svn export --force "${srcdir}/lld" tools/lld
+    svn export --force "${srcdir}/lldb" tools/lldb
 
     mkdir -p "${srcdir}/build"
 }
@@ -323,6 +328,31 @@ package_lld-svn() {
     rm -rf "${pkgdir}/usr/share/doc/lld/html/_sources"
 
     _install_licenses "${srcdir}/lld"
+}
+
+package_lldb-svn() {
+    pkgdesc='Next generation, high-performance debugger'
+    url='https://lldb.llvm.org/'
+    depends=(
+        "llvm-libs-svn=${pkgver}-${pkgrel}"
+        'libedit'
+        'libxml2'
+        'python2'
+    )
+    groups=('llvm-toolchain-svn')
+    provides=('lldb')
+    conflicts=('lldb')
+
+    cd "${srcdir}/build/tools/lldb"
+
+    make DESTDIR="${pkgdir}" install
+
+    _fix_python_exec_path \
+        "${pkgdir}${_py_sitepkg_dir}/lldb/utils/symbolication.py"
+
+    _compile_python_files "${pkgdir}${_py_sitepkg_dir}/lldb"
+
+    _install_licenses "${srcdir}/lldb"
 }
 
 package_clang-svn() {
