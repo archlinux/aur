@@ -1,0 +1,17 @@
+pkgbase = pit-git
+	pkgdesc = A command-line project manager that integrates with Git.
+	pkgver = 0.1.0.r9.g4d20557
+	pkgrel = 1
+	url = https://github.com/michaeldv/pit
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = glibc
+	provides = pit
+	conflicts = pit
+	source = git+https://github.com/michaeldv/pit
+	md5sums = SKIP
+
+pkgname = pit-git
+
