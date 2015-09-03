@@ -7,6 +7,7 @@ pkgdesc='GNS3 topology converter.'
 arch=('any')
 url='https://github.com/dlintott/gns3-converter'
 license=('GPL3')
+groups=('gns3')
 makedepends=('python-setuptools')
 depends=('python-configobj' 'python-cx_freeze')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dlintott/${pkgname}/archive/v${pkgver}.tar.gz")
