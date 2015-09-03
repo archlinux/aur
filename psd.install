@@ -5,8 +5,10 @@ post_install() {
 	echo ' SPECIAL UPGRADE INSTRUCTIONS YOU MUST FOLLOW:'
 	echo
 	echo '1) If you are running psd version 5.x YOU MUST STOP IT BEFORE CONTINUING.'
+	echo '   Pacman should have done this for you.'
 	echo
 	echo '2) If any browsers are running, exit them now.'
+	echo '   Pacman should have done this for you.'
 	echo
 	echo '3) The new psd.conf resides in $HOME/.psd/psd.conf'
 	echo '   and it will be created for you on first use.'
