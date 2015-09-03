@@ -5,7 +5,7 @@ pkgver=46.0.2486.0
 _opver=31
 _opbver=32
 _opdver=33
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
@@ -30,6 +30,7 @@ prepare() {
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
   # There are still a lot of relative calls which need a workaround
+  [[ -d "$srcdir/python2-path" ]] && rm -rf "$srcdir/python2-path"
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
 
