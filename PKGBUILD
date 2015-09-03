@@ -1,5 +1,5 @@
-# Maintainer: David Manouchehri <david@davidmanouchehri.com>
-# Contributor (former maintainer): Simon Hollingshead <me at [firstnamelastname] dot com>
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Contributor: Simon Hollingshead <me at [firstnamelastname] dot com>
 # Contributor: Matthias Blaicher <matthias at blaicher dot com>
 #
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
