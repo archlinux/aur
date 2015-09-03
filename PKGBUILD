@@ -11,7 +11,7 @@ pkgbase=linux-libre-grsec
 _pkgbasever=4.1-gnu
 _pkgver=4.1.6-gnu
 _grsecver=3.1
-_timestamp=201508181953
+_timestamp=201508230818
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -48,7 +48,7 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34'
             'SKIP'
-            'a7898f8f6852998f76cdf0dd2a7cb6941c64be868f41745722eec363b6a1b35e'
+            '5efe1dee218de9012fa9c93058816894f2e3a14854e3cc70d220e67ca2cd109f'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
