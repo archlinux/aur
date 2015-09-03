@@ -1,0 +1,13 @@
+pkgbase = shr
+	pkgdesc = Shared memory with n-fold bufferings zero-copy data streaming
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/maandree/shr
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/maandree/shr/archive/1.0.tar.gz
+	sha256sums = e35dcbcb12942e93d022b3baaf591278c3b6aa7e8ea349429fd6e45c9db71647
+
+pkgname = shr
+
