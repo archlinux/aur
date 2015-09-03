@@ -19,3 +19,24 @@ post_install() {
 	echo '5) Users wanting to use overlayfs mode MUST have sudo access to'
 	echo '   both mount and umount or psd will exit informing you of this.'
 }
+
+pre_upgrade() {
+	## arg 1:  the new package version
+	## arg 2:  the old package version
+	oldpkgver=${2%-*}
+
+	if [[ $oldpkgver < 5.99 ]]; then
+		if [ -e /run/psd ]; then
+			if ! systemd-notify --booted; then # not using systemd  
+				echo '--> Pacman must stop psd before it can upgrade.'
+				echo '--> Please start it manually once the upgrade is complete.'
+				/etc/rc.d/psd stop
+			else
+				echo '--> Pacman must stop psd before it can upgrade.'
+				echo '--> Please start it manually once the upgrade is complete.'
+				/usr/bin/systemctl stop psd
+			fi
+		fi
+	fi
+}
+
