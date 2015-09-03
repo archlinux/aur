@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-bitcoin
-pkgver=1.1.35
+pkgver=1.1.36
 pkgrel=1
 pkgdesc="Python Bitcoin Tools"
 arch=('any')
@@ -11,18 +11,18 @@ url="https://github.com/vbuterin/pybitcointools"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/b/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('573a3300599f5caa8ec25b5fc9f54b96')
-sha256sums=('cbb0648085f7273075d8aef12ee97d539253b879c5128aa0572f68cbfdaa4a37')
+md5sums=('c8b78413b9c75b498c791c7126144ea5')
+sha256sums=('1b45b5bad49b11392ad7fcc3c0dfb9c7596775fba5bfc4af8219f059186609af')
 provides=('pybitcointools2' 'pybtctool2' 'python2-bitcoin' 'python2-pybitcointools')
 conflicts=('pybitcointools2' 'pybtctool2' 'python2-pybitcointools' 'python2-python-bitcoinlib')
 
 prepare(){
   cd "$srcdir/${pkgname#python2-}-$pkgver"
 
-  msg 'Fixing setup.py...'
+  msg2 'Fixing setup.py...'
   sed -i '/data_files.*/d' setup.py
 
-  msg 'Fixing Python version...'
+  msg2 'Fixing Python version...'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
 }
@@ -30,16 +30,16 @@ prepare(){
 build() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   python2 setup.py build
 }
 
 package() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   python2 setup.py install --root="$pkgdir" --optimize=1
 
-  msg 'Renaming pybtctool to pybtctool2...'
+  msg2 'Renaming pybtctool to pybtctool2...'
   mv "$pkgdir/usr/bin/pybtctool" "$pkgdir/usr/bin/pybtctool2"
 }
