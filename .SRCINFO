@@ -1,0 +1,18 @@
+pkgbase = qt4-color-widgets
+	pkgdesc = A user-friendly color dialog and several color-related widgets for Qt
+	pkgver = 0.r171.24d47d5
+	pkgrel = 1
+	url = https://github.com/mbasaglia/Qt-Color-Widgets
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = qt4
+	depends = qt-color-widgets-common
+	provides = qt4-color-picker
+	conflicts = qt4-color-picker
+	source = qt4-color-widgets::git+git://github.com/mbasaglia/Qt-Color-Widgets.git
+	sha256sums = SKIP
+
+pkgname = qt4-color-widgets
+
