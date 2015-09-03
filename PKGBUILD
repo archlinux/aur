@@ -1,7 +1,7 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 _npmname=uglify-js
-_npmver=2.4.23
+_npmver=2.4.24
 pkgname=nodejs-uglify-js # All lowercase
 pkgver=$_npmver
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('be05aa6b22f1a83b21b2a49ce60fb5dffda00515')
+sha1sums=('fad5755c1e1577658bb06ff9ab6e548c95bebd6e')
 
 package() {
   cd $srcdir
