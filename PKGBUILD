@@ -1,13 +1,13 @@
 pkgname=osvr-oculus-rift-git
-pkgver=v0.1.r22.ga9bedc6
+pkgver=v0.1.r25.gecd7c11
 pkgrel=1
 pkgdesc="A plugin for OSVR that provides access to Oculus Rift trackers from OSVR applications."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Oculus-Rift"
 #license=('GPL')
-makedepends=('git' 'cmake' 'vrpn-oculus-git')
+makedepends=('git' 'cmake') # 'vrpn-oculus-git')
 #depends=('osvr-core-git') #TODO: add more deps
-source=("osvr-oculus-rift::git+https://github.com/OSVR/OSVR-Oculus-Rift.git"
+source=("osvr-oculus-rift::git+https://github.com/OSVR/OSVR-Oculus-Rift.git#branch=no-vrpn-required"
     "Findjsoncpp.cmake")
 
 pkgver() {
@@ -36,8 +36,10 @@ build() {
 package() {
   cd osvr-oculus-rift-build
   make DESTDIR="$pkgdir/" install
-  #install -d "$pkgdir/usr/bin"
-  #install -m755 Release/panoptic "$pkgdir/usr/bin/panoptic"
+  
+  install -d "$pkgdir/usr/share/osvr/sample-configs/"
+  #mv "$pkgdir/usr/bin/"*"/" "$pkgdir/usr/share/osvr"
+  install "$srcdir/osvr-oculus-rift/com_osvr_OculusRift.json" "$pkgdir/usr/share/osvr/sample-configs/"
 }
 
 # vim:set ts=2 sw=2 et:
