@@ -2,7 +2,7 @@
 
 _pkgname=liri-browser
 pkgname=$_pkgname-git
-pkgver=0.2.r28.g8867da7
+pkgver=git
 pkgrel=1
 pkgdesc="A UI framework for QtQuick implementing Material Design"
 arch=("i686" "x86_64")

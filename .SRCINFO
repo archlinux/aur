@@ -1,6 +1,6 @@
 pkgbase = liri-browser-git
 	pkgdesc = A UI framework for QtQuick implementing Material Design
-	pkgver = 0.2.r28.g8867da7
+	pkgver = git
 	pkgrel = 1
 	url = https://github.com/liri-browser/liri-browser
 	arch = i686
