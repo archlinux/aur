@@ -1,6 +1,6 @@
 pkgbase = libcouchbase
 	pkgdesc = The C library provides fast access to documents in the latest Couchbase Server
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/couchbase/libcouchbase
 	install = libcouchbase.install
@@ -11,9 +11,9 @@ pkgbase = libcouchbase
 	depends = libevent
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/couchbase/libcouchbase/archive/2.5.1.tar.gz
+	source = https://github.com/couchbase/libcouchbase/archive/2.5.2.tar.gz
 	source = fix_cbc_name_clash.patch
-	sha1sums = 916176f61ce31f0f1d6c2abd35f8098dfe40fcf8
+	sha1sums = c71890e72f10183261798165a5cfc4374d8d063e
 	sha1sums = abee74d11d177a10ee3b3075d50b0e587def2ccb
 
 pkgname = libcouchbase
