@@ -1,0 +1,16 @@
+pkgbase = mpathconf
+	pkgdesc = mpathconf - A tool for configuring device-mapper-multipath
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://pkgs.fedoraproject.org/cgit/device-mapper-multipath.git/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = multipath-tools
+	source = mpathconf
+	source = mpathconf.8
+	sha256sums = d8a511cf8f75fc09f5e8cfb81d643e840823362356f5e5aee3c62d3a2356905c
+	sha256sums = e7dc54b1fc1be1ce8cb67947cf5876ec8a2dc79783b10d0c48165931ffa01778
+
+pkgname = mpathconf
+

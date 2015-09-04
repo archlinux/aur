@@ -1,0 +1,312 @@
+#!/bin/sh
+#
+# Copyright (C) 2010 Red Hat, Inc. All rights reserved.
+#
+# This file is part of the device-mapper-multipath package.
+#
+# This copyrighted material is made available to anyone wishing to use,
+# modify, copy, or redistribute it subject to the terms and conditions
+# of the GNU General Public License v.2.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+#
+# Simple editting of /etc/multipath.conf
+# This program was largely ripped off from lvmconf
+#
+
+unset ENABLE FIND FRIENDLY MODULE MULTIPATHD HAVE_DISABLE HAVE_FIND HAVE_BLACKLIST HAVE_DEFAULTS HAVE_FRIENDLY HAVE_MULTIPATHD HAVE_MODULE SHOW_STATUS CHANGED_CONFIG
+
+DEFAULT_CONFIGFILE="/usr/share/doc/device-mapper-multipath-0.4.9/multipath.conf"
+CONFIGFILE="/etc/multipath.conf"
+MULTIPATHDIR="/etc/multipath"
+TMPFILE=/etc/multipath/.multipath.conf.tmp
+
+function usage
+{
+	echo "usage: $0 <command>"
+	echo ""
+	echo "Commands:"
+	echo "Enable: --enable "
+	echo "Disable: --disable"
+	echo "Set user_friendly_names (Default n): --user_friendly_names <y|n>"
+	echo "Set find_multipaths (Default n): --find_multipaths <y|n>"
+	echo "Load the dm-multipath modules on enable (Default y): --with_module <y|n>"
+	echo "start/stop/reload multipathd (Default n): --with_multipathd <y|n>"
+	echo ""
+}
+
+function parse_args
+{
+	while [ -n "$1" ]; do
+		case $1 in
+			--enable)
+				ENABLE=1
+				shift
+				;;
+			--disable)
+				ENABLE=0
+				shift
+				;;
+			--user_friendly_names)
+				if [ -n "$2" ]; then
+					FRIENDLY=$2
+					shift 2
+				else
+					usage
+					exit 1
+				fi
+				;;
+			--find_multipaths)
+				if [ -n "$2" ]; then
+					FIND=$2
+					shift 2
+				else
+					usage
+					exit 1
+				fi
+				;;
+			--with_module)
+				if [ -n "$2" ]; then
+					MODULE=$2
+					shift 2
+				else
+					usage
+					exit 1
+				fi
+				;;
+			--with_multipathd)
+				if [ -n "$2" ]; then
+					MULTIPATHD=$2
+					shift 2
+				else
+					usage
+					exit 1
+				fi
+				;;
+			*)
+				usage
+				exit
+		esac
+	done
+}
+
+function validate_args
+{
+	if [ "$ENABLE" = "0" ] && [ -n "$FRIENDLY" -o -n "$FIND" -o -n "$MODULE" ]; then
+		echo "ignoring extra parameters on disable"
+		FRIENDLY=""
+		FIND=""
+		MODULE=""
+	fi
+	if [ -n "$FRIENDLY" ] && [ "$FRIENDLY" != "y" -a "$FRIENDLY" != "n" ]; then
+		echo "--user_friendly_names must be either 'y' or 'n'"
+		exit 1
+	fi
+	if [ -n "$FIND" ] && [ "$FIND" != "y" -a "$FIND" != "n" ]; then
+		echo "--find_multipaths must be either 'y' or 'n'"
+		exit 1
+	fi
+	if [ -z "$ENABLE" -a -z "$FIND" -a -z "$FRIENDLY" ]; then
+		SHOW_STATUS=1
+	fi
+	if [ -n "$MODULE" ] && [ "$MODULE" != "y" -a "$MODULE" != "n" ]; then
+		echo "--with_module must be either 'y' or 'n'"
+		exit 1
+	fi
+	if [ -n "$MULTIPATHD" ] && [ "$MULTIPATHD" != "y" -a "$MULTIPATHD" != "n" ]; then
+		echo "--with_multipathd must be either 'y' or 'n'"
+		exit 1
+	fi
+}
+
+umask 0077
+
+parse_args "$@"
+
+validate_args
+
+if [ ! -d "$MULTIPATHDIR" ]; then
+	echo "/etc/multipath/ does not exist. failing"
+	exit 1
+fi
+
+rm $TMPFILE 2> /dev/null
+if [ -f "$CONFIGFILE" ]; then
+	cp $CONFIGFILE $TMPFILE
+elif [ -f "$DEFAULT_CONFIGFILE" ]; then
+	cp $DEFAULT_CONFIGFILE $TMPFILE
+else
+	touch $TMPFILE
+fi
+
+if grep -q "^blacklist[[:space:]]*{" $TMPFILE ; then
+	HAVE_BLACKLIST=1
+fi
+
+if grep -q "^defaults[[:space:]]*{" $TMPFILE ; then
+	HAVE_DEFAULTS=1
+fi
+
+if [ -z "$MODULE" -o "$MODULE" = "y" ]; then
+	if lsmod | grep -q "dm_multipath" ; then
+		HAVE_MODULE=1
+	else
+		HAVE_MODULE=0
+	fi
+fi
+
+if [ "$MULTIPATHD" = "y" ]; then
+	if service multipathd status > /dev/null ; then
+		HAVE_MULTIPATHD=1
+	else
+		HAVE_MULTIPATHD=0
+	fi
+fi
+
+if [ "$HAVE_BLACKLIST" = "1" ]; then
+	if sed -n '/^blacklist[[:space:]]*{/,/^}/ p' $TMPFILE | grep -q "^[[:space:]]*devnode \"\.\?\*\"" ; then
+		HAVE_DISABLE=1
+	elif sed -n '/^blacklist[[:space:]]*{/,/^}/ p' $TMPFILE | grep -q "^[[:space:]]*#[#[:space:]]*devnode \"\.\?\*\"" ; then
+		HAVE_DISABLE=0
+	fi
+fi
+
+if [ "$HAVE_DEFAULTS" = "1" ]; then
+	if sed -n '/^defaults[[:space:]]*{/,/^}/ p' $TMPFILE | grep -q "^[[:space:]]*find_multipaths[[:space:]]*\(yes\|1\)" ; then
+		HAVE_FIND=1
+	elif sed -n '/^defaults[[:space:]]*{/,/^}/ p' $TMPFILE | grep -q "^[[:space:]]*find_multipaths[[:space:]]*\(no\|0\)" ; then
+		HAVE_FIND=0
+	fi
+	if sed -n '/^defaults[[:space:]]*{/,/^}/ p' $TMPFILE | grep -q "^[[:space:]]*user_friendly_names[[:space:]]*\(yes\|1\)" ; then
+		HAVE_FRIENDLY=1
+	elif sed -n '/^defaults[[:space:]]*{/,/^}/ p' $TMPFILE | grep -q "^[[:space:]]*user_friendly_names[[:space:]]*\(no\|0\)" ; then
+		HAVE_FRIENDLY=0
+	fi
+fi
+
+if [ -n "$SHOW_STATUS" ]; then
+	if [ -z "$HAVE_DISABLE" -o "$HAVE_DISABLE" = 0 ]; then
+		echo "multipath is enabled"
+	else
+		echo "multipath is disabled"
+	fi
+	if [ -z "$HAVE_FIND"  -o "$HAVE_FIND" = 0 ]; then
+		echo "find_multipaths is disabled"
+	else
+		echo "find_multipaths is enabled"
+	fi
+	if [ -z "$HAVE_FRIENDLY" -o "$HAVE_FRIENDLY" = 0 ]; then
+		echo "user_friendly_names is disabled"
+	else
+		echo "user_friendly_names is enabled"
+	fi
+	if [ -n "$HAVE_MODULE" ]; then
+		if [ "$HAVE_MODULE" = 1 ]; then
+			echo "dm_multipath module is loaded"
+		else
+			echo "dm_multipath module is not loaded"
+		fi
+	fi
+	if [ -n "$HAVE_MULTIPATHD" ]; then
+		service multipathd status
+	fi
+	exit 0
+fi
+
+if [ -z "$HAVE_BLACKLIST" ]; then
+	cat >> $TMPFILE <<- _EOF_
+
+blacklist {
+}
+_EOF_
+fi
+
+if [ -z "$HAVE_DEFAULTS" ]; then
+	cat >> $TMPFILE <<- _EOF_
+
+defaults {
+}
+_EOF_
+fi
+
+if [ "$ENABLE" = 1 ]; then
+	if [ "$HAVE_DISABLE" = 1 ]; then
+		sed -i '/^blacklist[[:space:]]*{/,/^}/ s/^[[:space:]]*devnode \"\.\?\*\"/#	devnode ".*"/' $TMPFILE
+	fi
+elif [ "$ENABLE" = 0 ]; then
+	if [ -z "$HAVE_DISABLE" ]; then
+		sed -i '/^blacklist[[:space:]]*{/ a\
+	devnode "*"
+' $TMPFILE
+	elif [ "$HAVE_DISABLE" = 0 ]; then
+		sed -i '/^blacklist[[:space:]]*{/,/^}/ s/^[[:space:]]*#[#[:space:]]*devnode \"\.\?\*\"/	devnode ".*"/' $TMPFILE
+	fi
+fi
+
+if [ "$FIND" = "n" ]; then
+	if [ "$HAVE_FIND" = 1 ]; then
+		sed -i '/^defaults[[:space:]]*{/,/^}/ s/^[[:space:]]*find_multipaths[[:space:]]*\(yes\|1\)/	find_multipaths no/' $TMPFILE
+		CHANGED_CONFIG=1
+	fi
+elif [ "$FIND" = "y" ]; then
+	if [ -z "$HAVE_FIND" ]; then
+		sed -i '/^defaults[[:space:]]*{/ a\
+	find_multipaths yes
+' $TMPFILE
+		CHANGED_CONFIG=1
+	elif [ "$HAVE_FIND" = 0 ]; then
+		sed -i '/^defaults[[:space:]]*{/,/^}/ s/^[[:space:]]*find_multipaths[[:space:]]*\(no\|0\)/	find_multipaths yes/' $TMPFILE
+		CHANGED_CONFIG=1
+	fi
+fi
+
+if [ "$FRIENDLY" = "n" ]; then
+	if [ "$HAVE_FRIENDLY" = 1 ]; then
+		sed -i '/^defaults[[:space:]]*{/,/^}/ s/^[[:space:]]*user_friendly_names[[:space:]]*\(yes\|1\)/	user_friendly_names no/' $TMPFILE
+		CHANGED_CONFIG=1
+	fi
+elif [ "$FRIENDLY" = "y" ]; then
+	if [ -z "$HAVE_FRIENDLY" ]; then
+		sed -i '/^defaults[[:space:]]*{/ a\
+	user_friendly_names yes
+' $TMPFILE
+		CHANGED_CONFIG=1
+	elif [ "$HAVE_FRIENDLY" = 0 ]; then
+		sed -i '/^defaults[[:space:]]*{/,/^}/ s/^[[:space:]]*user_friendly_names[[:space:]]*\(no\|0\)/	user_friendly_names yes/' $TMPFILE
+		CHANGED_CONFIG=1
+	fi
+fi
+
+if [ -f "$CONFIGFILE" ]; then
+	cp $CONFIGFILE $CONFIGFILE.old
+	if [ $? != 0 ]; then
+		echo "failed to backup old config file, $CONFIGFILE not updated"
+		exit 1
+	fi
+fi
+
+cp $TMPFILE $CONFIGFILE
+if [ $? != 0 ]; then
+	echo "failed to copy new config file into place, check $CONFIGFILE is still OK"
+	exit 1
+fi
+
+rm -f $TMPFILE
+
+if [ "$ENABLE" = 1 ]; then
+	if [ "$HAVE_MODULE" = 0 ]; then
+		modprobe dm_multipath
+	fi
+	if [ "$HAVE_MULTIPATHD" = 0 ]; then
+		service multipathd start
+	fi
+elif [ "$ENABLE" = 0 ]; then
+	if [ "$HAVE_MULTIPATHD" = 1 ]; then
+		service multipathd stop
+	fi
+elif [ -n "$CHANGED_CONFIG" -a "$HAVE_MULTIPATHD" = 1 ]; then
+	service multipathd reload
+fi

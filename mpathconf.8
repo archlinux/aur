@@ -1,0 +1,103 @@
+.TH MPATHCONF 8 "June 2010" "" "Linux Administrator's Manual"
+.SH NAME
+mpathconf - A tool for configuring device-mapper-multipath
+.SH SYNOPSIS
+.B mpathconf
+.RB [\| commands \|]
+.RB [\| options \|]
+.SH DESCRIPTION
+.B mpathconf
+is a utility that creates or modifies
+.B /etc/multipath.conf.
+It can enable or disable multipathing and configure some common options.
+.B mpathconf
+can also load the
+.B dm_multipath
+module, start and stop the
+.B multipathd
+daemon, and configure the
+.B multipathd
+service to start automatically or not. If
+.B mpathconf
+is called with no commands, it will display the current configuration.
+
+The default options for mpathconf are
+.B --with_module
+The
+.B --with_multipathd
+option is not set by default.  Enabling multipathing will load the
+.B dm_multipath
+module but it will not immediately start it. This is so
+that users can manually edit their config file if necessary, before starting
+.B multipathd.
+
+If
+.B /etc/multipath.conf
+already exists, mpathconf will edit it. If it does not exist, mpathconf will
+use
+.B /usr/share/doc/device-mapper-multipath-0.4.9/multipath.conf
+as the starting file. This file has
+.B user_friendly_names
+set. If this file does not exist, mpathconf will create
+.B /etc/multipath.conf
+from scratch.  For most users, this means that
+.B user_friendly_names
+will be set by default, unless they use the
+.B --user_friendly_names n
+command.
+.SH COMMANDS
+.TP
+.B --enable
+Removes any line that blacklists all device nodes from the
+.B /etc/multipath.conf
+blacklist section.
+.TP
+.B --disable
+Adds a line that blacklists all device nodes to the
+.B /etc/multipath.conf
+blacklist section. If no blacklist section exists, it will create one.
+.TP
+.B --user_friendly_name \fP { \fBy\fP | \fBn\fP }
+If set to \fBy\fP, this adds the line
+.B user_friendly_names yes
+to the
+.B /etc/multipath.conf
+defaults section. If set to \fBn\fP, this removes the line, if present. This
+command can be used along with any other command.
+.TP
+.B --find_multipaths\fP { \fBy\fP | \fBn\fP }
+If set to \fBy\fP, this adds the line
+.B find_multipaths yes
+to the
+.B /etc/multipath.conf
+defaults section. If set to \fBn\fP, this removes the line, if present. This
+command can be used aldong with any other command.
+.SH OPTIONS
+.TP
+.B --with_module\fP { \fBy\fP | \fBn\fP }
+If set to \fBy\fP, this runs
+.B modprobe dm_multipath
+to install the multipath modules. This option only works with the
+.B --enable
+command. This option is set to \fBy\fP by default.
+.TP
+.B --with_multipathd { \fBy\fP | \fBn\fP }
+If set to \fBy\fP, this runs
+.B service multipathd start
+to start the multipathd daemon on \fB--enable\fP,
+.B service multipathd stop
+to start the multipathd daemon on \fB--disable\fP, and
+.B service multipathd reload
+to reconfigure multipathd on \fB--user_frindly_names\fP and
+\fB--find_multipaths\fP.
+This option is set to \fBn\fP by default.
+.SH FILES
+.BR /etc/multipath.conf
+.SH "SEE ALSO"
+.BR multipath.conf (5),
+.BR modprobe (8),
+.BR multipath (8),
+.BR multipathd (8),
+.BR service (8),
+.SH AUTHOR
+Benjamin Marzinski <bmarzins@redhat.com>
