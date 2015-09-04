@@ -1,5 +1,6 @@
 # Maintainer: Lukas Sabota <lukas@lwsabota.com>
-pkgname=g13-git
+pkgbase=g13
+pkgname=$pkgbase-git
 pkgver=20150903
 pkgrel=2
 pkgdesc="Userspace driver for the Logitech G13 Keyboard"
@@ -19,11 +20,10 @@ source=()
 noextract=()
 
 _gitroot="https://github.com/ecraven/g13"
-_gitname="g13"
 
 
 pkgver() {
-  cd $_gitname
+  cd $pkgbase
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -31,19 +31,19 @@ build() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
 
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
+  if [ -d $pkgbase ] ; then
+    cd $pkgbase && git pull origin
     msg "The local files are updated."
   else
-    git clone $_gitroot $_gitname
+    git clone $_gitroot $pkgbase
   fi
 
   msg "GIT checkout done or server timeout"
   msg "Starting make..."
 
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  rm -rf "$srcdir/$pkgbase-build"
+  git clone "$srcdir/$pkgbase" "$srcdir/$pkgbase-build"
+  cd "$srcdir/$pkgbase-build"
 
   #
   # BUILD HERE
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$pkgbase-build"
   mkdir -p ${pkgdir}/usr/bin
   cp g13d ${pkgdir}/usr/bin
 } 

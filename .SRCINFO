@@ -1,4 +1,4 @@
-pkgbase = g13-git
+pkgbase = g13
 	pkgdesc = Userspace driver for the Logitech G13 Keyboard
 	pkgver = 20150903
 	pkgrel = 2
