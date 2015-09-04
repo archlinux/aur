@@ -1,16 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=vboxhost-hook
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc='mkinitcpio hook to compile the virtualbox host modules'
 url='https://github.com/alucryd/mkinitcpio-hooks'
 arch=('any')
 license=('GPL3')
 depends=('virtualbox-host-dkms')
-install="${pkgname}.install"
+install='vboxhost-hook.install'
 source=('https://raw.github.com/alucryd/mkinitcpio-hooks/master/vboxhost')
-sha256sums=('6c5e321b6dac90ca6b7c7e45c842081762d140679bf186dcb948d65eb702bd15')
+sha256sums=('e0ce8da015927011ea050f935c77b3d44a0406e6bc34a147f0d6ac7be1da5901')
 
 package() {
   sed "s|_arch|$CARCH|" -i vboxhost
