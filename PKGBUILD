@@ -7,7 +7,7 @@
 # https://store.uberent.com/download/pa
 
 pkgname=planetary-annihilation
-pkgver=82834
+pkgver=86765
 pkgrel=1
 pkgdesc="RTS gameplay in a way that's never been seen before."
 group=("games")
@@ -23,7 +23,7 @@ source=(PA_Linux_${pkgver}.tar.bz2::https://manual-download-required
         PA.sh)
 noextract=(PA_Linux_${pkgver}.tar.bz2)
 PKGEXT=".pkg.tar"
-md5sums=('259e654c7b51cb9d13165ae1539d27a1'
+md5sums=('3dbad53028e91bd69ef7063178963f77'
          '16b2acc35fe4cd6fa06aff57b4a6fdc4'
          '463f4e99f44ff6ce9c09e383767a6b1d'
          '2f62773702cc5fcee03b160296738b29')
