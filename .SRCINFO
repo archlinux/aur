@@ -1,0 +1,15 @@
+pkgbase = elfio
+	pkgdesc = ELFIO is a small, header-only C++ library that provides a simple interface for reading and generating files in ELF binary format
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://elfio.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT License
+	depends = glibc
+	options = strip
+	source = http://sourceforge.net/projects/elfio/files/ELFIO-sources/ELFIO-3.1/elfio-3.1.tar.gz
+	md5sums = 938b62673b23bb858ecfd388a328f52c
+
+pkgname = elfio
+
