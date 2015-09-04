@@ -1,0 +1,13 @@
+pkgbase = stripe
+	pkgdesc = A software tool which converts a polygonal model into triangle strips
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www3.cs.stonybrook.edu/~stripe/
+	arch = any
+	license = custom:stripe
+	source = http://www3.cs.stonybrook.edu/~stripe/stripe.tar.gz
+	md5sums = 1315c175d95b56f1a9b6a25e942775d5
+	sha256sums = 96af9841e3d22f3e1b5238d0c21fe3db3b28d2e030c6eeffd19e4a595fd8ac1f
+
+pkgname = stripe
+
