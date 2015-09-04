@@ -12,7 +12,7 @@ url='http://www.bitlbee.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('gnutls' 'glib2')
-makedepends=('git' 'libotr')
+makedepends=('git' 'libotr' 'python')
 optdepends=('skype4py: to use skyped'
             'libotr: for OTR encryption support')
 source=('bitlbee::git+https://github.com/bitlbee/bitlbee'
