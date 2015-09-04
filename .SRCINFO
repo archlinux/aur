@@ -22,16 +22,15 @@ pkgbase = jasp-desktop-git
 	depends = qt5-svg
 	depends = tk
 	depends = curl
+	depends = jasp-rbundle
 	provides = jasp
 	provides = jasp-desktop
 	conflicts = jasp
 	conflicts = jasp-desktop
-	source = jasp-desktop::git+https://github.com/jasp-stats/jasp-desktop.git#tag=v0.7.1.12
-	source = rbundle.R
+	source = jasp-desktop::git+https://github.com/jasp-stats/jasp-desktop.git
 	source = jasp-desktop.svg
 	source = sem.patch
 	md5sums = SKIP
-	md5sums = 85087ac1d6e0ffa885f4887c40985982
 	md5sums = bcaf403001283553bb63b72c268d0290
 	md5sums = 9e04c417faac1e36f7ddb9f8350620ab
 
