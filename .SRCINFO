@@ -1,0 +1,21 @@
+pkgbase = python-pid
+	pkgdesc = Python pid - pidfile featuring stale detection and file-locking
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pid
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/pid/pid-2.0.1.tar.gz
+	sha256sums = 054cde9c64b8ac979ec27f714e71ebb97ecf8388ea5fe29f6b93db222e92d433
+
+pkgname = python-pid
+	pkgdesc = Python pid - pidfile featuring stale detection and file-locking - python 3.x pkg
+	depends = python
+
+pkgname = python2-pid
+	pkgdesc = Python pid - pidfile featuring stale detection and file-locking - python 2.x pkg
+	depends = python2
+
