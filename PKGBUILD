@@ -5,7 +5,7 @@ pkgname=('vmware-horizon-client' 'vmware-horizon-pcoip' 'vmware-horizon-rtav' 'v
 pkgver=3.5.0
 _build=2999900
 _cart='CART15Q3'
-pkgrel=1
+pkgrel=2
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('i686' 'x86_64')
 url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/3_0'
@@ -17,8 +17,8 @@ source=('http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-b
 	'vmware-horizon-usb.service'
 	'vmware-horizon-usb-tmpfiles.conf'
 	'vmware-horizon-virtual-printing.service')
-source_x86_64=("https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x64.bundle")
-source_i686=("https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x86.bundle")
+source_x86_64=("${pkgbase}-${pkgver}-${_build}-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x64.bundle")
+source_i686=("${pkgbase}-${pkgver}-${_build}-i686.bundle::https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x86.bundle")
 sha256sums=('d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
             '21927f16cfb92ac07777297787106982b301b5d42ca068e052a01dc3f2cbb208'
             '7c78953823f7307814104881b322dcf66c36ca02e44e559239ac51abcf1e7a37'
@@ -42,17 +42,8 @@ prepare() {
 
 	source "${srcdir}/vmware-bundle.eclass"
 
-	case "${CARCH}" in
-		x86_64)
-			bundlefile="$(basename "${source_x86_64[0]}")"
-			;;
-		i686)
-			bundlefile="$(basename "${source_i686[0]}")"
-			;;
-	esac
-
 	for bundle in ${pkgname[@]}; do
-	        vmware-bundle_extract-bundle-component "${srcdir}/${bundlefile}" "${bundle}" "${srcdir}/extract/${bundle}"
+	        vmware-bundle_extract-bundle-component "${srcdir}/${pkgbase}-${pkgver}-${_build}-${CARCH}.bundle" "${bundle}" "${srcdir}/extract/${bundle}"
 	done
 
 	# This is a dirty hack, but it works.
@@ -60,7 +51,9 @@ prepare() {
 	# Make sure the length is not changed!
 	#	libudev.so.0 -> libudev.so.1
 	#	libssl.so.1.0.1 -> libssl.so.1.0.0
+	#	libssl.so.1.0.2 -> libssl.so.1.0.0
 	#	libcrypto.so.1.0.1 -> libcrypto.so.1.0.0
+	#	libcrypto.so.1.0.2 -> libcrypto.so.1.0.0
 	for FILE in $(find "${srcdir}/extract/" -type f); do
 		# executables and libraries only
 		file --mime "${FILE}" | egrep -q "(application/x-(executable|sharedlib)|text/x-shellscript)" || continue
@@ -71,15 +64,17 @@ prepare() {
 		# link against libudev.so.1
 		sed -i -e 's/libudev.so.0/libudev.so.1/' "${FILE}"
 
-		# even openssl 1.0.1.x has library file names ending in .so.1.0.0
+		# even openssl 1.0.[12].x has library file names ending in .so.1.0.0
 		sed -i -e 's/libssl.so.1.0.1/libssl.so.1.0.0/' \
+			-e 's/libssl.so.1.0.2/libssl.so.1.0.0/' \
 			-e 's/libcrypto.so.1.0.1/libcrypto.so.1.0.0/' \
+			-e 's/libcrypto.so.1.0.2/libcrypto.so.1.0.0/' \
 			"${FILE}"
 	done
 
 	# now that we fixed dynamic linking let's remove binary libs
 	# we create symlinks in package() function
-	rm -f "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.1
+	rm -f "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.[12]
 }
 
 package_vmware-horizon-client() {
