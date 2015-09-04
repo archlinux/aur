@@ -39,7 +39,6 @@ pkgbase = mpv-build-git
 	depends = sdl2
 	depends = lcms2
 	depends = lame
-	depends = lcms2
 	depends = libva
 	depends = rubberband
 	depends = uchardet
