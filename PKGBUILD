@@ -1,7 +1,9 @@
 # Maintainer: Rich Li <rich at dranek com>
 # Contributor: Samed Beyribey <ras0ir AT eventualis DOT org>
 pkgname=python-pyspf
-pkgver=2.0.11
+pkgver=2.0.12
+# This version is a patched release that is only reflected in the filename; this will likely be removed in the next upstream release?
+_fix_pkgver=2.0.12t
 pkgrel=1
 pkgdesc="Python implementation of the Sender Policy Framework (SPF) protocol"
 arch=('any')
@@ -10,15 +12,9 @@ license=('PSF')
 depends=('python-pydns')
 makedepends=('python-setuptools')
 optdepends=('python-authres: Return RFC 5451 Authentication Results headers')
-source=(http://pypi.python.org/packages/source/p/pyspf/pyspf-$pkgver.tar.gz)
-md5sums=('83add3a0d8732bcc28841ceb5da440ba')
+source=(http://pypi.python.org/packages/source/p/pyspf/pyspf-$_fix_pkgver.tar.gz)
+md5sums=('c83143ad79074bf8c80235748a8a698f')
 
-# NOTE from the maintainer: 2.0.12 is available, but as of 2015-08-10 is
-# completely broken due to using tab-indentation for a few lines. The script
-# will not run in Python 3. The indentation is ambiguous, so that I cannot
-# correct it myself. I sent an email to pyspf@openspf.org on 2015-08-10 to
-# notify them of the issue.
- 
 build() {
   cd "$srcdir/pyspf-$pkgver"
   python setup.py build
