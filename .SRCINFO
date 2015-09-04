@@ -1,0 +1,12 @@
+pkgbase = tremulous-data
+	pkgdesc = Shared data files for Tremulous
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://tremulous.net/
+	arch = any
+	license = GPL
+	source = http://downloads.sourceforge.net/tremulous/tremulous-1.1.0.zip
+	md5sums = 3df5f7565571fb9524656308347bce1b
+
+pkgname = tremulous-data
+
