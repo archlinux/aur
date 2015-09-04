@@ -20,7 +20,17 @@ source=(http://home.earthlink.net/~k_sheff/sw/e2tools/$pkgname-$pkgver.tar.gz
         e2rm.1
         e2tail.1
         e2tools.7)
-md5sums=('skip')
+md5sums=('skip'
+         'skip'
+         'skip'
+         'skip'
+         'skip'
+         'skip'
+         'skip'
+         'skip'
+         'skip'
+         'skip'
+         'skip')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

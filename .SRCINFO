@@ -20,6 +20,16 @@ pkgbase = e2tools
 	source = e2tail.1
 	source = e2tools.7
 	md5sums = skip
+	md5sums = skip
+	md5sums = skip
+	md5sums = skip
+	md5sums = skip
+	md5sums = skip
+	md5sums = skip
+	md5sums = skip
+	md5sums = skip
+	md5sums = skip
+	md5sums = skip
 
 pkgname = e2tools
 
