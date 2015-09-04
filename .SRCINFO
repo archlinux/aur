@@ -1,0 +1,15 @@
+pkgbase = tano
+	pkgdesc = An open-source cross-platform IP TV player based on Qt and libvlc
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = http://projects.tano.si/en/player
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=2.8.6
+	depends = libvlc-qt>=0.8.0
+	source = http://sourceforge.net/projects/tano/files/Tano%20Player/1.2.1/tano_1.2.1_src.tar.gz
+	md5sums = 2d62faa5b8624b13ea9e1df66d64c05c
+
+pkgname = tano
+
