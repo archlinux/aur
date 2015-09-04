@@ -3,7 +3,8 @@ pkgbase = perl-url-encode-xs
 	pkgver = 0.03
 	pkgrel = 1
 	url = https://metacpan.org/release/URL-Encode-XS
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = PerlArtistic
 	makedepends = perl-extutils-makemaker>=6.59
 	makedepends = perl-test-simple>=0.88

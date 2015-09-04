@@ -5,7 +5,7 @@ pkgver=0.03
 pkgrel=1
 pkgdesc='XS implementation of URL::Encode'
 _dist='URL-Encode-XS'
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
 depends=('perl>=5.8.1' 'perl-xsloader>=0' 'perl-url-encode>=0.03' 'perl-carp>=0' 'perl-exporter>=0')
