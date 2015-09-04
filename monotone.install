@@ -1,0 +1,29 @@
+infodir=usr/share/info
+filelist=(monotone.info.gz)
+
+post_install() {
+    [ -x usr/bin/install-info ] || return 0
+    for file in ${filelist[@]}; do
+        install-info $infodir/$file $infodir/dir 2> /dev/null
+    done
+}
+
+post_upgrade() {
+    post_install $1
+
+    # arg 1:  the new package version
+    # arg 2:  the old package version
+    if [[ "$(vercmp $2 0.45)" -lt 0 ]]; then
+        echo ">>> Your monotone databases will need updating for an internal format"
+        echo ">>> change. Please run the following command on each of your databases"
+        echo ">>> (after remembering to take a backup copy):"
+        echo ">>>    $ mtn -d dbname.mtn db migrate"
+    fi
+}
+
+pre_remove() {
+    [[ -x usr/bin/install-info ]] || return 0
+    for file in ${filelist[@]}; do
+        install-info --delete $infodir/$file $infodir/dir 2> /dev/null
+    done
+}

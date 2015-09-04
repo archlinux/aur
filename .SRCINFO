@@ -1,0 +1,24 @@
+pkgbase = monotone
+	pkgdesc = A free distributed version control system
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://code.monotone.ca/p/monotone
+	install = monotone.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = pcre
+	depends = lua
+	depends = botan-stable
+	depends = sqlite3
+	depends = libidn
+	depends = zlib
+	provides = monotone
+	conflicts = monotone
+	conflicts = monotone-snapshot
+	source = http://www.monotone.ca/downloads/1.1/monotone-1.1.tar.bz2
+	sha1sums = 2b97559b252decaee3a374b81bf714cf33441ba3
+
+pkgname = monotone
+
