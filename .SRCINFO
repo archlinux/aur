@@ -1,12 +1,13 @@
 pkgbase = algobox
 	pkgdesc = Algorithmic learning for high school students
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xm1math.net/algobox/index.html
 	arch = x86_64
 	arch = i686
 	license = GPLv2
 	depends = qt5-base
+	depends = qt5-webkit
 	source = http://www.xm1math.net/algobox/algobox-0.9.tar.bz2
 	md5sums = b8d57286e6838c5ec4ef2aa416bd2cb1
 

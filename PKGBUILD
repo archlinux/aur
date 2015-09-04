@@ -1,12 +1,12 @@
 # Maintainer: Marc Cousin <cousinmarc@gmail.com>
 pkgname=algobox
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Algorithmic learning for high school students"
 url="http://www.xm1math.net/algobox/index.html"
 arch=('x86_64' 'i686')
 license=('GPLv2')
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-webkit')
 optdepends=()
 makedepends=()
 source=("http://www.xm1math.net/algobox/${pkgname}-${pkgver}.tar.bz2"
