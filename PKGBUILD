@@ -1,7 +1,7 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=python-reparser
 _pkgname=reparser
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Simple regex-based lexer/parser for inline markup"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=(https://github.com/xmikos/reparser/archive/v$pkgver.tar.gz)
-md5sums=('3111dfbd55a05bff29140a6e6563f876')
+md5sums=('06f6321a8c6f0bd247d85db2eeb644ea')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
@@ -19,7 +19,6 @@ build() {
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
-  sed -i 's/^.*enum34.*$//' setup.py
   python setup.py install --root="$pkgdir"
 }
 
