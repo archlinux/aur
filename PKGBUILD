@@ -1,10 +1,11 @@
+# Maintainer: haagch
 # Maintainer: Tinxy <arch at tinx dot eu>
 # Contributor: onny <onny at project-insanity dot org>
 
 
 pkgname=pidgin-opensteamworks-git
 pkgver=1.6.1.r8.g5c881d5
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin to connect to Steam Friends/Steam IM (purple plugin). "
 url=('https://github.com/EionRobb/pidgin-opensteamworks')
 arch=('i686' 'x86_64')
@@ -16,6 +17,7 @@ source=('pidgin-opensteamworks::git+https://github.com/EionRobb/pidgin-opensteam
 sha512sums=('SKIP'
             '34bfdf6f92cd00f9a7812d6c297d552bb05679d619ed41d4416f45043e07554d83d6fb8dcdf9361a311349e776dede2aa48b75dd208f69faf9e5638860ceab61')
 replaces=("pidgin-opensteamworks-svn") #google code repo will not be updated
+conflicts=("pidgin-opensteamworks")
 
 pkgver() {
   cd "$srcdir/pidgin-opensteamworks/steam-mobile"
