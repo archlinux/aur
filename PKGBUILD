@@ -34,6 +34,7 @@ md5sums=('1829b2b261e0e0d07566066769b5b28b'
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  chmod 777 . -R
   patch -p1 < "${srcdir}/e2tools-fedora-fixes.patch"
   patch -p1 < "${srcdir}/e2tools-printf-lld-64bit.patch"
 }
