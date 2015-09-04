@@ -8,7 +8,7 @@ _dist='Crypt-XTEA'
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
-depends=('perl>=5.10.1' 'perl-scalar-util-numeric>=0.40' 'perl-scalar-list-utils>=1.38' 'perl-carp>=1.3301')
+depends=('perl>=5.10.1' 'perl-scalar-util-numeric>=0.40' 'perl-scalar-list-utils>=1.38' 'perl-carp')
 checkdepends=('perl>=5.10.1')
 makedepends=()
 provides=()
