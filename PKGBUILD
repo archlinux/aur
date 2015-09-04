@@ -2,7 +2,7 @@
 #   thanks, speps!
 pkgname=pumpa-git
 pkgver=git
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple pump.io client written in C++ and Qt, git version"
 arch=('i686' 'x86_64')
 url="https://pumpa.branchable.com/"
@@ -55,7 +55,7 @@ build() {
 }
 
 package() {
-  cd ${_gitRepo}
+  cd ${_appname}
   #_statusfile=${srcdir}/status.txt
   #_status=$(grep Already ${_statusfile} &> /dev/null ; echo $?)
 
