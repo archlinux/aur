@@ -1,4 +1,5 @@
-# Maintainer: TheWaffleGuy <gvxq@hotmail.com>
+# Maintainer: Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
+# Ex-Maintainer: TheWaffleGuy <gvxq@hotmail.com>
 # Contributor: Nicolas Floquet <nicolasfloquet AT gmail DOT com>
 pkgname=e2tools
 pkgver=0.0.16
