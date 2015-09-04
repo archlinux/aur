@@ -20,7 +20,7 @@
   STRIP           = strip
   AWK             = @AWK@
   PERL            = perl
-! PYTHON          = python2
+! PYTHON          = python
   INSTALL         = @INSTALL@
   INSTALL_PROGRAM = @INSTALL_PROGRAM@
   INSTALL_DATA    = @INSTALL_DATA@

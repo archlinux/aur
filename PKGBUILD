@@ -49,7 +49,18 @@ build()
   find -name '*.gpr'    -print -exec sed -i.bak 's/-fdump-xref//g' {} \;
   find -name '*.gpr.in' -print -exec sed -i.bak 's/-fdump-xref//g' {} \;
 
-  AWK=/usr/bin/nawk  PYTHON=/usr/bin/python2  ./configure --prefix=/usr
+
+  ## Force use of python2.
+  #
+  rm -fr $srcdir/temp_bin
+  mkdir  $srcdir/temp_bin
+  ln -s /usr/bin/python2         $srcdir/temp_bin/python
+  ln -s /usr/bin/python2-config  $srcdir/temp_bin/python-config
+  export PATH=$srcdir/temp_bin:$PATH
+
+
+#  AWK=/usr/bin/nawk  PYTHON=/usr/bin/python2  ./configure --prefix=/usr  --with-python-exec=/usr/bin/python2
+  AWK=/usr/bin/nawk  ./configure  --prefix=/usr
 
   ADA_PROJECT_PATH=/usr/lib/gnat make
 }
@@ -60,14 +71,5 @@ package()
 {
   cd $srcdir/gps-$pkgver-src
 
-
-  ## Force use of python2.
-  #
-#  rm -fr $srcdir/temp_bin
-#  mkdir  $srcdir/temp_bin
-#  ln -s /usr/bin/python2 $srcdir/temp_bin/python
-#  export PATH=$srcdir/temp_bin:$PATH
-
-
-  PYTHON=/usr/bin/python2  DESTDIR=$pkgdir  make install 
+  DESTDIR=$pkgdir  make install 
 }
