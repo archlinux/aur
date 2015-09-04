@@ -2,7 +2,7 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=v0.7.1.12.r0.g942ebf7
+pkgver=r1859.547e22b
 pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
@@ -13,8 +13,9 @@ makedepends=('git' 'qtchooser' 'r' 'gcc-fortran' 'boost')
 provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
 install=('jasp-desktop-git.install')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git" 
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#branch=development" 
 	"jasp-desktop.svg"
+	"include.patch"
 	"sem.patch")
 
 pkgver() {
@@ -27,7 +28,12 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$_pkgname
+  #Patch the R include path
+  patch -p1 < $srcdir/include.patch
+  #Patch simplesem back into the linux version
   patch -p1 < $srcdir/sem.patch
+
+  #Create separate build dir
   mkdir -p $srcdir/$_buildname
   cd $srcdir/$_buildname
   
@@ -44,7 +50,7 @@ package() {
   #Install files
   cd $srcdir/$_buildname
   mkdir -p $pkgdir/usr/share/$_pkgname
-  cp -r ./Help ./JASP ./JASPEngine ./Resources $pkgdir/usr/share/$_pkgname/
+  cp -r JASP JASPR ./JASPEngine ./Resources $pkgdir/usr/share/$_pkgname/
 
   #Install icon
   mkdir -p $pkgdir/usr/share/pixmaps/
@@ -65,4 +71,5 @@ EOF
 }
 md5sums=('SKIP'
          'bcaf403001283553bb63b72c268d0290'
+         'b8e84d0193dd415158df137870148817'
          '9e04c417faac1e36f7ddb9f8350620ab')

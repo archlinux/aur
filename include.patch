@@ -1,0 +1,13 @@
+diff --git a/JASP-Engine/JASP-Engine.pro b/JASP-Engine/JASP-Engine.pro
+index a030e79..5bdcdad 100644
+--- a/JASP-Engine/JASP-Engine.pro
++++ b/JASP-Engine/JASP-Engine.pro
+@@ -60,7 +60,7 @@ QMAKE_CXXFLAGS += -Wno-c++11-extra-semi
+ win32:QMAKE_CXXFLAGS += -DBOOST_USE_WINDOWS_H
+ 
+ INCLUDEPATH += \
+-    $$R_HOME/include \
++	/usr/include/R \
+     $$R_HOME/library/RInside/include \
+     $$R_HOME/library/Rcpp/include
+ 
