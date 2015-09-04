@@ -2,8 +2,8 @@
 # Contributor: Matthew Bauer <mjbauer95@gmail.com>
 
 pkgname=libirecovery-git
-epoch=1
-pkgver=0.1.117.g14a268c
+epoch=2
+pkgver=0.1.1.r84.ge4349e5
 pkgrel=1
 pkgdesc="Library and utility to talk to iBoot/iBSS via USB"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd libirecovery
 
-	git describe --long | sed -r -e 's|-|.|g'
+	git describe --long --tags | sed -r -e 's/-/.r/;s/-/./'
 }
 
 build() {

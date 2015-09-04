@@ -1,8 +1,8 @@
 pkgbase = libirecovery-git
 	pkgdesc = Library and utility to talk to iBoot/iBSS via USB
-	pkgver = 0.1.117.g14a268c
+	pkgver = 0.1.1.r84.ge4349e5
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = http://www.libimobiledevice.org/
 	arch = i686
 	arch = x86_64
