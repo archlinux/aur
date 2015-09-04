@@ -2,28 +2,31 @@
 
 pkgbase=vmware-horizon-client
 pkgname=('vmware-horizon-client' 'vmware-horizon-pcoip' 'vmware-horizon-rtav' 'vmware-horizon-smartcard' 'vmware-horizon-usb' 'vmware-horizon-virtual-printing')
-pkgver=3.4.0
-_build=2769709
-pkgrel=2
+pkgver=3.5.0
+_build=2999900
+_cart='CART15Q3'
+pkgrel=1
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('i686' 'x86_64')
 url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/3_0'
 license=('custom')
 makedepends=('libxslt')
-source=("https://download3.vmware.com/software/view/viewclients/CART15Q1/VMware-Horizon-Client-${pkgver}-${_build}.x86.bundle"
-	'http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-bundle.eclass'
+source=('http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-bundle.eclass'
 	'vmware-horizon-client.desktop'
 	'vmware-horizon-usb'
 	'vmware-horizon-usb.service'
 	'vmware-horizon-usb-tmpfiles.conf'
 	'vmware-horizon-virtual-printing.service')
-sha256sums=('50901cae7a3c62b31b68e946a7b1e380f6c2c158aa8532dda536890a602e1d1b'
-            'd8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
+source_x86_64=("https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x64.bundle")
+source_i686=("https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x86.bundle")
+sha256sums=('d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
             '21927f16cfb92ac07777297787106982b301b5d42ca068e052a01dc3f2cbb208'
             '7c78953823f7307814104881b322dcf66c36ca02e44e559239ac51abcf1e7a37'
             '5e737d69e49ea7e039bc94f358b45c8e6d9071b7c041a53800555d3dc21c8dac'
             'ec763930dd50d6e77a31c40c939909752cfb124cafb0a4ca4f76860375a14d75'
             'e47e770a1e19ed321de7c2765b2d682f59ac466aef92b2e4ea5e65cacf56de36')
+sha256sums_x86_64=('7088096fb001695784f65606b145522f37bae7630b7b77bb7ee1a8a0b5eff120')
+sha256sums_i686=('9a92d844305a6a38f9fa09df170e9780112211e4d43f0a8bca30595f61fa8caf')
 
 # We need these functions for the Gentoo eclass...
 ebegin() {
@@ -39,8 +42,17 @@ prepare() {
 
 	source "${srcdir}/vmware-bundle.eclass"
 
+	case "${CARCH}" in
+		x86_64)
+			bundlefile="$(basename "${source_x86_64[0]}")"
+			;;
+		i686)
+			bundlefile="$(basename "${source_i686[0]}")"
+			;;
+	esac
+
 	for bundle in ${pkgname[@]}; do
-	        vmware-bundle_extract-bundle-component "${srcdir}/VMware-Horizon-Client-${pkgver}-${_build}.x86.bundle" "${bundle}" "${srcdir}/extract/${bundle}"
+	        vmware-bundle_extract-bundle-component "${srcdir}/${bundlefile}" "${bundle}" "${srcdir}/extract/${bundle}"
 	done
 
 	# This is a dirty hack, but it works.
@@ -72,7 +84,7 @@ prepare() {
 
 package_vmware-horizon-client() {
 	conflicts=('vmware-view-open-client' 'vmware-view-open-client-beta' 'vmware-view-client')
-	depends=('gnome-icon-theme')
+	depends=('gnome-icon-theme' 'openssl' 'libpng12' 'gtk2' 'libxml2' 'libxss')
 	optdepends=('freerdp: RDP remote desktop connections'
 		'rdesktop: RDP remote desktop connections'
 		'vmware-horizon-pcoip: PCoIP remote desktop connections'
@@ -80,8 +92,6 @@ package_vmware-horizon-client() {
 		'vmware-horizon-smartcard: Authenticate via Samrtcard'
 		'vmware-horizon-usb: Redirect USB devices'
 		'vmware-horizon-virtual-printing: Redirect local printers')
-	depends_x86_64=('lib32-openssl' 'lib32-libpng12' 'lib32-gtk2' 'lib32-libxml2' 'lib32-libxss')
-	depends_i686=('openssl' 'libpng12' 'gtk2' 'libxml2' 'libxss')
 	install=vmware-horizon-client.install
 
 	cd "${srcdir}/extract/vmware-horizon-client/"
@@ -100,12 +110,8 @@ package_vmware-horizon-client() {
 
 package_vmware-horizon-pcoip() {
 	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - PCoIP connection'
-	depends=('vmware-horizon-client')
-	depends_x86_64=('lib32-libxtst')
-	optdepends_x86_64=('lib32-alsa-lib: audio support via alsa'
-		'lib32-libpulse: audio support via pulse sound server')
-	depends_i686=('libxtst')
-	optdepends_i686=('alsa-lib: audio support via alsa'
+	depends=('vmware-horizon-client' 'libxtst')
+	optdepends=('alsa-lib: audio support via alsa'
 		'libpulse: audio support via pulse sound server')
 
 	cd "${srcdir}/extract/vmware-horizon-pcoip/"
@@ -114,17 +120,8 @@ package_vmware-horizon-pcoip() {
 	cp -a pcoip/lib/ "${pkgdir}/usr/lib"
 	cp -a pcoip/bin/ "${pkgdir}/usr/bin"
 
-	case ${CARCH} in
-		x86_64)
-			_libdir="lib32"
-			;;
-		i686)
-			_libdir="lib"
-			;;
-	esac
-
-	ln -sf ../../${_libdir}/libcrypto.so.1.0.0 "${pkgdir}/usr/lib/vmware/libcrypto.so.1.0.0"
-	ln -sf ../../${_libdir}/libssl.so.1.0.0 "${pkgdir}/usr/lib/vmware/libssl.so.1.0.0"
+	ln -sf ../../lib/libcrypto.so.1.0.0 "${pkgdir}/usr/lib/vmware/libcrypto.so.1.0.0"
+	ln -sf ../../lib/libssl.so.1.0.0 "${pkgdir}/usr/lib/vmware/libssl.so.1.0.0"
 }
 
 package_vmware-horizon-rtav() {
@@ -138,9 +135,7 @@ package_vmware-horizon-rtav() {
 
 package_vmware-horizon-smartcard() {
 	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - smartcard authentication'
-	depends=('vmware-horizon-client')
-	depends_x86_64=('lib32-pcsclite')
-	depends_i686=('pcsclite')
+	depends=('vmware-horizon-client' 'pcsclite')
 
 	cd "${srcdir}/extract/vmware-horizon-smartcard/"
 
@@ -161,15 +156,6 @@ package_vmware-horizon-usb() {
 	install -D -m0755 "${srcdir}/vmware-horizon-usb" "${pkgdir}/usr/lib/systemd/scripts/vmware-horizon-usb"
 	install -D -m0644 "${srcdir}/vmware-horizon-usb.service" "${pkgdir}/usr/lib/systemd/system/vmware-horizon-usb.service"
 	install -D -m0644 "${srcdir}/vmware-horizon-usb-tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/vmware-horizon-usb.conf"
-
-	case ${CARCH} in
-		x86_64)
-			_libdir="lib32"
-			;;
-		i686)
-			_libdir="lib"
-			;;
-	esac
 }
 
 package_vmware-horizon-virtual-printing() {
