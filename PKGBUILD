@@ -11,6 +11,7 @@ pkgdesc='Qt Build Suite: Build tool that helps simplify the build process for de
 arch=('x86_64' 'i686')
 url='https://code.qt.io/qt-labs/qbs.git'
 license=('LGPL')
+conflicts=('qtcreator')
 depends=('qt5-base' 'qt5-script')
 makedepends=('gcc')
 source=("https://download.qt.io/official_releases/qbs/${pkgver}/qbs-src-${pkgver}.tar.gz")
