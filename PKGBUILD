@@ -1,7 +1,7 @@
-# Maintainer: Melvin Vermeeren <melvinvermeeren@gmail.com>
+# Maintainer: Melvin Vermeeren <mail@melvinvermeeren.com>
 pkgname=openzwave-git
 _gitname="open-zwave"
-pkgver=r1042.ae78bcf
+pkgver=r1159.fd7d67f
 pkgrel=1
 pkgdesc="Opensource Z-Wave control"
 url="http://www.openzwave.com"
