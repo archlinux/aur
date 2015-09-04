@@ -1,0 +1,19 @@
+pkgbase = acts-git
+	pkgdesc = Another Calendar-based Tarsnap Script: master branch
+	pkgver = r52.1b732df
+	pkgrel = 1
+	url = https://github.com/alexjurkiewicz/acts
+	install = acts-git.install
+	arch = any
+	license = Public Domain
+	makedepends = git
+	depends = tarsnap
+	depends = coreutils
+	depends = util-linux
+	conflicts = acts
+	backup = etc/acts.conf
+	source = acts-git::git+https://github.com/alexjurkiewicz/acts.git
+	md5sums = SKIP
+
+pkgname = acts-git
+

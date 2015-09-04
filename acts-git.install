@@ -1,0 +1,3 @@
+post_install() {
+	printf "! NOTE: The default backuptargets in /etc/acts.conf are \"var etc home root\"\n"
+}
