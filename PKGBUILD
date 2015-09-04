@@ -35,7 +35,7 @@ prepare() {
   (cd src && autoconf)
 
   cd ${srcdir}
-  cp -a vim-${pkgver} ${pkg}-build
+  cp -a vim-${pkgver} ${pkgname}-build
 }
 
 build() {
