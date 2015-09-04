@@ -24,7 +24,7 @@ source=('google-chrome-unstable'
         'eula_text.html')
 source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_i386.deb")
 source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
-md5sums=('00541a2eaedf40c2217f17f9345aaa5c'
+md5sums=('11b55a3fec7279db32b63e3a0b97dc01'
          'b7e752f549b215ac77f284b6486794b6')
 md5sums_i686=('f732602aa7427da97ef1bf3ad4d673ed')
 md5sums_x86_64=('d1abecdb85ea5f37236684f75a51fd96')
