@@ -19,7 +19,7 @@ pkgrel=1
 _upstream_pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
-url="http://www.vim.org"
+url='http://www.vim.org'
 makedepends=('gpm' 'python2' 'ruby' 'libxt' 'desktop-file-utils' 'lua' 'mercurial')
 # It would be great to use downloadable archives https://vim.googlecode.com/archive/$tag.tar.gz
 # unfortunately its content changes each time you download one (files modification date is different)
