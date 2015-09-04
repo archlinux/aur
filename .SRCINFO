@@ -1,0 +1,15 @@
+pkgbase = probuild-git
+	pkgdesc = An amelioration of GCC compiler which allow to compile a program without links in the command !
+	pkgver = r119.dd9d243
+	pkgrel = 1
+	url = https://gitlab.com/MaximilienLIX/probuild
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = gcc
+	depends = bash
+	source = git+https://gitlab.com/MaximilienLIX/probuild.git
+	md5sums = SKIP
+
+pkgname = probuild-git
+
