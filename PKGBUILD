@@ -16,7 +16,7 @@ source=("http://www.eu.apache.org/dist//flume/${pkgver}/apache-flume-${pkgver}-b
 	"flume-ng.service")
 
 md5sums=('defd21ad8d2b6f28cc0a16b96f652099'
-         '26366e3056284d35cc57ea3876c738f1'
+         '4ee8391d354fb58817efb8ed1058405c'
          '9d1e8ab323df2d8dd747f27c51841c1a'
          '06ec3866251641e056534657b3d236e3')
 
@@ -38,7 +38,7 @@ package() {
   install -Dm644 ${srcdir}/flume-ng.service ${pkgdir}/usr/lib/systemd/system/
 
   mkdir -p $pkgdir/usr/bin
-  echo -e '#!/bin/sh\n\nfor f in /etc/profile.d/*.sh\ndo\n. $f\ndone\n/usr/lib/flume-ng/bin/flume-ng "$@"' > $pkgdir/usr/bin/flume-ng
+  echo -e '#!/bin/sh\n\nfor f in /etc/profile.d/*.sh\ndo\n. $f\ndone\n/usr/lib/apache-flume-ng/bin/flume-ng "$@"' > $pkgdir/usr/bin/flume-ng
   chmod 755 $pkgdir/usr/bin/flume-ng
 
   cd $_usr_lib
