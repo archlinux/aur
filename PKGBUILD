@@ -5,7 +5,7 @@ pkgver=1.004
 pkgrel=1
 pkgdesc='C implementation of the ISAAC PRNG algorithm'
 _dist='Math-Random-ISAAC-XS'
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
 depends=('perl>=5.6')
