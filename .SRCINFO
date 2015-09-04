@@ -1,0 +1,21 @@
+pkgbase = debmake
+	pkgdesc = Program to make the Debian source package
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://packages.debian.org/sid/debmake
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	depends = devscripts
+	depends = dpkg
+	depends = python
+	depends = rsync
+	optdepends = strace
+	optdepends = wget
+	optdepends = curl
+	source = debmake::git+https://anonscm.debian.org/git/collab-maint/debmake.git
+	md5sums = SKIP
+
+pkgname = debmake
+
