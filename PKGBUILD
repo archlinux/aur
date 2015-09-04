@@ -14,7 +14,7 @@ pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mat
 arch=(i686 x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 ppl glpk mpfi palp polybori singular libcliquer maxima-ecl gfan sympow tachyon python2-rpy2
+depends=(ipython2 ppl glpk mpfi palp brial singular libcliquer maxima-ecl gfan sympow tachyon python2-rpy2
   python2-cvxopt python2-matplotlib python2-scipy python2-sympy python2-networkx libgap gap flintqs lcalc lrcalc
   eclib gmp-ecm zn_poly gd pynac linbox gsl rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
@@ -42,7 +42,7 @@ provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
 "http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2" 'anal.h'
 'package.patch' 'env.patch' 'paths.patch' 'clean.patch' 'skip-check.patch' 
-'pexpect-env.patch' 'pexpect-del.patch' 'disable-fes.patch')
+'pexpect-env.patch' 'pexpect-del.patch' 'disable-fes.patch' 'ipython-4.patch')
 md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
@@ -86,16 +86,16 @@ prepare(){
 # fix Cremona database detection
   sed -e "s|is_package_installed('database_cremona_ellcurve')|os.path.exists('/usr/share/sage/cremona/cremona.db')|" \
    -i src/sage/databases/cremona.py
-# fix IPython kernel path
-  sed -e "s|os.path.join(SAGE_ROOT, 'sage')|'/usr/bin/sage'|" -i src/sage/repl/ipython_kernel/install.py
 # find bliss headers
   sed -e 's|graph.hh|bliss/graph.hh|' -i src/sage/graphs/bliss.pyx
-# Rename class to fix conflicts with NTL
-  sed -e 's|WrappedPtr|SageWrappedPtr|' -i src/sage/libs/polybori/decl.pxd -i src/sage/libs/polybori/pb_wrap.h  
-# Disable fes module, broken upstream
-  patch -p0 -i "$srcdir"/disable-fes.patch
+# fix IPython 4 compatibility
+  patch -p0 -i ../ipython-4.patch
 
 # Upstream patches  
+# fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
+#  patch -p0 -i "$srcdir"/fes02.patch
+# disable fes module, fails to compile
+  patch -p0 -i ../disable-fes.patch 
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
@@ -168,4 +168,14 @@ package() {
   python2 setup.py install --root="$pkgdir" --optimize=1
   mkdir -p "$pkgdir"/usr/lib/sage/site-packages/
   mv "$pkgdir"/usr/lib/python2.7/site-packages/pexpect* "$pkgdir"/usr/lib/sage/site-packages/
+
+# Install Jupyter kernel
+  install -Dm644 "$srcdir"/kernel.json "$pkgdir"/usr/share/jupyter/kernels/sagemath/kernel.json
+  cd "$pkgdir"/usr/share/jupyter/kernels/sagemath
+  ln -s /usr/share/doc/sage/output/html/en doc
+  ln -s /usr/share/sage/ext/notebook-ipython/logo.svg .
+  ln -s /usr/share/sage/ext/notebook-ipython/logo-64x64.png .
+
+  mkdir "$pkgdir"/usr/share/jupyter/nbextensions
+  ln -s /usr/share/{jsmol,mathjax} "$pkgdir"/usr/share/jupyter/nbextensions
 }

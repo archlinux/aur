@@ -1,0 +1,1 @@
+{"display_name": "SageMath", "argv": ["/usr/bin/sage", "-python", "-m", "sage.repl.ipython_kernel", "-f", "{connection_file}"]}
