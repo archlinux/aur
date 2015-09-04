@@ -29,6 +29,7 @@ pkgbase = mpv-build-git
 	depends = libbluray
 	depends = libpulse
 	depends = libx264
+	depends = libbs2b
 	depends = mesa
 	depends = libxinerama
 	depends = libxrandr

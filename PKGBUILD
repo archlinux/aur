@@ -23,6 +23,7 @@ depends=('desktop-file-utils'
          'libbluray'
          'libpulse'
          'libx264'
+         'libbs2b'
          'mesa'
          'libxinerama'
          'libxrandr'
@@ -77,7 +78,7 @@ prepare() {
   ln -s ../fribidi
 
   # Set ffmpeg/libass/fribidi/mpv flags
-  echo "--disable-programs --enable-libx264 --enable-libmp3lame --enable-libfdk-aac --enable-libssh --enable-nonfree" > ffmpeg_options
+  echo "--disable-programs --enable-libx264 --enable-libmp3lame --enable-libfdk-aac --enable-libssh --enable-nonfree --enable-ladspa --enable-libbs2b" > ffmpeg_options
   echo "--prefix=/usr --confdir=/etc/mpv --enable-openal --enable-sdl2 --enable-libmpv-shared --enable-zsh-comp --lua=52arch --enable-egl-x11 --enable-libarchive" > mpv_options
 
   cd mpv
