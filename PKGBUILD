@@ -2,7 +2,7 @@
 #   thanks, speps!
 pkgname=pumpa-git
 pkgver=git
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple pump.io client written in C++ and Qt, git version"
 arch=('i686' 'x86_64')
 url="https://pumpa.branchable.com/"
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("$pkgname.desktop")
 md5sums=('SKIP')
 _appname=pumpa
-_gitRepo=${_appname}.branchable.com
+_gitRepo="$_appname.branchable.com"
 
 prepare() {
   cd ${srcdir}
@@ -23,11 +23,12 @@ prepare() {
   #check if the clone directory already exists:
   if [ ! -d ./${_gitRepo} ]; then
     msg "repo doesn't exist-- cloning..."
-    git clone git://${_gitRepo}
+    msg ${_gitRepo}
+    git clone git://${_gitRepo}/ ./${_appname}
     echo "clone" > ${_statusfile}
   else
     msg "git pull-ing..."
-    cd ${_gitRepo}
+    cd ${_appname}
     git pull origin master > ${_statusfile}
   fi
   
@@ -43,7 +44,7 @@ build() {
   #  msg "already up-to-date"
   #else  
     msg "Starting make..."
-	cd ${_gitRepo}
+	cd ${_appname}
 	
     # icon path fix
     sed -i 's|/.*/||' ${_appname}.desktop
