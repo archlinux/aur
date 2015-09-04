@@ -1,7 +1,7 @@
 pkgbase = swatch
 	pkgdesc = The active log file monitoring tool
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://swatch.sourceforge.net/
 	arch = any
 	license = GPL

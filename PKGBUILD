@@ -4,7 +4,7 @@
 
 pkgname=swatch
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The active log file monitoring tool"
 arch=('any')
 license=('GPL')
@@ -28,3 +28,11 @@ package() {
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
+}
+
+# vim:set ts=2 sw=2 et:
