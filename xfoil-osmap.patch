@@ -1,0 +1,11 @@
+--- Xfoil/orrs/src/osmap.f	2011-05-05 04:49:00.000000000 +0200
++++ Xfoil.patched/orrs/src/osmap.f	2014-03-18 01:03:33.873592773 +0100
+@@ -98,7 +98,7 @@
+ C
+ C---- set OSFILE to match the absolute OS database filename
+       CHARACTER*128 OSFILE
+-      DATA OSFILE / '/home/codes/orrs/osmapDP.dat' /
++      DATA OSFILE / '/usr/share/xfoil/orrs/osmap.dat' /
+ ccc      DATA OSFILE / '/home/codes/orrs/osmap.dat' /
+ c
+ c      DATA OSFILE

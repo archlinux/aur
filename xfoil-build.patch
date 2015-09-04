@@ -1,0 +1,178 @@
+diff -aur Xfoil/bin/Makefile_gfortran Xfoil.patched/bin/Makefile_gfortran
+--- Xfoil/bin/Makefile_gfortran	2012-03-07 06:33:23.000000000 +0100
++++ Xfoil.patched/bin/Makefile_gfortran	2014-03-23 00:42:38.124566013 +0100
+@@ -39,7 +39,7 @@
+ #PLTOBJ = -lPlt 
+ 
+ # The extra location arg here is for Linux which places X libs in /usr/X11R6
+-PLTLIB = -L/usr/X11R6/lib -lX11
++PLTLIB = -L/usr/lib -lX11
+ 
+ ###================================================
+ ###  Default compilers and flags
+@@ -49,8 +49,8 @@
+ FFLOPT  = -O
+ INSTALLCMD = install -s
+ 
+-CC = cc
+-CFLAGS = -O -DUNDERSCORE
++CC = gcc
++CFLAGS = -O2 -DUNDERSCORE
+ 
+ ##--------------------------
+ 
+@@ -119,11 +119,11 @@
+ CHK = 
+ #CHK = -fbounds-check -finit-real=inf -ffpe-trap=invalid,zero,denormal
+ DBL = -fdefault-real-8
+-FFLAGS = -O $(CHK) $(DBL)
+-FFLOPT = -O $(CHK) $(DBL)
++FFLAGS = -O2 $(CHK) $(DBL)
++FFLOPT = -O2 $(CHK) $(DBL)
+ FTNLIB =
+ 
+-PLTOBJ = ../plotlib/libPlt_gDP.a 
++PLTOBJ = ../plotlib/libPlt.a 
+ 
+ 
+ 
+@@ -133,23 +133,23 @@
+ 	$(INSTALLCMD) $(PROGS) $(BINDIR)
+ 
+ clean:
+-	-/bin/rm $(PROGS)
+-	-/bin/rm $(XFOILOBJ) $(XUTILOBJ) $(OSOBJ) $(PPLOTOBJ) $(PXPLOTOBJ)
++	-/bin/rm -f $(PROGS)
++	-/bin/rm -f $(XFOILOBJ) $(XUTILOBJ) $(OSOBJ) $(PPLOTOBJ) $(PXPLOTOBJ)
+ #	-/bin/rm *.o
+ 
+ 
+ 
+ xfoil: $(XFOILOBJ) $(XUTILOBJ) $(OSOBJ)
+ 	$(FC) -o xfoil $(XFOILOBJ) $(XUTILOBJ) $(OSOBJ) $(PLTOBJ) $(PLTLIB) $(FTNLIB)
+-	$(INSTALLCMD) xfoil $(BINDIR)
++#	$(INSTALLCMD) xfoil $(BINDIR)
+ 
+ pxplot:	$(PXPLOTOBJ) $(XUTILOBJ)
+ 	$(FC) -o pxplot $(PXPLOTOBJ) $(XUTILOBJ) $(PLTOBJ) $(PLTLIB) $(FTNLIB)
+-	$(INSTALLCMD) pxplot $(BINDIR)
++#	$(INSTALLCMD) pxplot $(BINDIR)
+ 
+ pplot:	$(PPLOTOBJ) $(XUTILOBJ)
+ 	$(FC) -o pplot $(PPLOTOBJ) $(XUTILOBJ)  $(PLTOBJ) $(PLTLIB) $(FTNLIB)
+-	$(INSTALLCMD) pplot $(BINDIR)
++#	$(INSTALLCMD) pplot $(BINDIR)
+ 
+ blu: blu.o profil.o
+ 	$(FC) -o blu blu.o profil.o
+diff -aur Xfoil/orrs/bin/Makefile_DP Xfoil.patched/orrs/bin/Makefile_DP
+--- Xfoil/orrs/bin/Makefile_DP	2007-04-05 23:29:35.000000000 +0200
++++ Xfoil.patched/orrs/bin/Makefile_DP	2014-03-23 00:57:11.408901597 +0100
+@@ -4,23 +4,26 @@
+ 
+ #========================================
+ #  Default compiler flags
+-FC = f77
+-FLG = -O -r8
++FC = gfortran
++FLG = -O2 -fdefault-real-8
+ PLTLIB = -lX11
+ FTNLIB =
+ 
+ #========================================
+ #  Uncomment for Intel Fortran Compiler
+-FC = ifort
+-FLG = -O -r8
+-PLTLIB = -L/usr/X11R6/lib -lX11
+-FTNLIB =
++#FC = ifort
++#FLG = -O -r8
++#PLTLIB = -L/usr/X11R6/lib -lX11
++#FTNLIB =
+ 
+ #========================================
+ 
+ 
+ OS: osgen osmap.o
+ 
++clean:
++	/bin/rm -f *.o osgen
++
+ 
+ osgen: osgen.o io.o spline.o getarg0.o
+ 	$(FC) -o osgen osgen.o io.o spline.o getarg0.o $(FTNLIB)
+diff -aur Xfoil/plotlib/config.make.gfortranDP Xfoil.patched/plotlib/config.make.gfortranDP
+--- Xfoil/plotlib/config.make.gfortranDP	2013-07-02 17:19:37.000000000 +0200
++++ Xfoil.patched/plotlib/config.make.gfortranDP	2014-03-23 00:34:26.911190434 +0100
+@@ -7,7 +7,7 @@
+ 
+ 
+ # Set library name 
+-PLTLIB = libPlt_gDP.a
++PLTLIB = libPlt.a
+ 
+ # Some fortrans need trailing underscores in C interface symbols (see Xwin.c)
+ # This should work for most of the "unix" fortran compilers
+@@ -17,9 +17,9 @@
+ CC  = gcc
+ DP = -fdefault-real-8
+ 
+-FFLAGS  = -m64 -O2 $(DP)
+-CFLAGS  = -m64 -O2 $(DEFINE) -I/usr/X11/include
++FFLAGS  = -O2 -fno-range-check $(DP)
++CFLAGS  = -O2 $(DEFINE)
+ AR = ar r
+ RANLIB = ranlib 
+-LINKLIB = -L/usr/X11R6/lib -lX11 
++LINKLIB = -L/usr/lib -lX11 
+ 
+diff -aur Xfoil/plotlib/examples/Makefile Xfoil.patched/plotlib/examples/Makefile
+--- Xfoil/plotlib/examples/Makefile	2012-12-18 22:39:58.000000000 +0100
++++ Xfoil.patched/plotlib/examples/Makefile	2014-03-23 00:36:10.099992850 +0100
+@@ -30,7 +30,7 @@
+ ### This line includes your compiler/make options
+ ### with definitions for compiler and flags
+ 
+-include ../config.make
++include ../config.make.gfortranDP
+ 
+ ###================================================
+ 
+@@ -52,9 +52,9 @@
+ test:  $(PROGS)
+ 
+ clean:
+-	-/bin/rm *.o
+-	-/bin/rm $(PROGS)
+-	-/bin/rm plot*.ps
++	-/bin/rm -f *.o
++	-/bin/rm -f $(PROGS)
++	-/bin/rm -f plot*.ps
+ 
+ 
+ 
+diff -aur Xfoil/plotlib/Makefile Xfoil.patched/plotlib/Makefile
+--- Xfoil/plotlib/Makefile	2012-12-17 05:10:15.000000000 +0100
++++ Xfoil.patched/plotlib/Makefile	2014-03-23 00:34:45.561576536 +0100
+@@ -68,7 +68,7 @@
+ 
+ ###-------------------------------------------------------------------------
+ ### Set compiler, compiler flags, name of output object library
+-include ./config.make
++include ./config.make.gfortranDP
+ 
+ 
+ ###-------------------------------------------------------------------------
+@@ -90,9 +90,9 @@
+ 	$(RANLIB)   $(INSTALLDIR)/$(PLTLIB)
+ 
+ clean:
+-	-/bin/rm $(OBJ) $(OBJOLD) $(OBJ3D) $(OBJMISC)
+-	-/bin/rm $(PLTLIB)
+-	-/bin/rm plot*.ps
++	-/bin/rm -f $(OBJ) $(OBJOLD) $(OBJ3D) $(OBJMISC)
++	-/bin/rm -f $(PLTLIB)
++	-/bin/rm -f plot*.ps
+ 	(cd examples; make clean)
+ 
+ 

@@ -1,0 +1,22 @@
+pkgbase = xfoil
+	pkgdesc = Program for design and analysis of subsonic airfoils.
+	pkgver = 6.99
+	pkgrel = 1
+	url = http://web.mit.edu/drela/Public/web/xfoil/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran
+	depends = gcc-libs
+	depends = libx11
+	source = http://web.mit.edu/drela/Public/web/xfoil/xfoil6.99.tgz
+	source = xfoil-overflow.patch
+	source = xfoil-osmap.patch
+	source = xfoil-build.patch
+	md5sums = 8d6270fc4341d299a426b3ad41be9cc4
+	md5sums = f5f7d8cb268bf44546464636635109bc
+	md5sums = a4ad193f796e9de52596057d03e5b703
+	md5sums = 3f5445c409c7bca00ef22adedcaa61cf
+
+pkgname = xfoil
+
