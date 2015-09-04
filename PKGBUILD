@@ -9,21 +9,15 @@
 
 _pkgbase=vim
 pkgname=vim-x11
-# list of tags can be found at https://code.google.com/p/vim/source/list
-_topver=7.4
-_patchlevel=778
-_tag=v${_topver/./-}-${_patchlevel}
-_versiondir="vim${_topver//./}"
-pkgver=${_topver}.${_patchlevel}
+pkgver=7.4.854
+_versiondir=74
 pkgrel=1
 _upstream_pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url='http://www.vim.org'
 makedepends=('gpm' 'python2' 'ruby' 'libxt' 'desktop-file-utils' 'lua' 'mercurial')
-# It would be great to use downloadable archives https://vim.googlecode.com/archive/$tag.tar.gz
-# unfortunately its content changes each time you download one (files modification date is different)
-source=("${_pkgbase}-repo::hg+https://vim.googlecode.com/hg#tag=${_tag}"
+source=("vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz"
         'vimrc'
         'archlinux.vim')
 sha1sums=('SKIP'
@@ -36,13 +30,7 @@ conflicts=('vim-minimal' 'vim' 'vim-python3' 'gvim' 'gvim-python3')
 provides=("vim=${pkgver}-${_upstream_pkgrel}" 'xxd')
 
 prepare() {
-  cd ${_pkgbase}-repo
-
-  _latesttag=$(hg parents --template '{latesttag}' -r default)
-  if (( $_tag != $_latesttag )); then
-    printf 'You are not building the latest revision!\n'
-    printf "Consider updating to tag $_latesttag.\n"
-  fi
+  cd vim-$pkgver
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' \
@@ -52,10 +40,10 @@ prepare() {
 
   (cd src && autoconf)
 
-  cd ..
+  cd "$srcdir"
   for pkg in ${pkgname[@]}
   do
-    cp -a ${_pkgbase}-repo ${pkg}-build
+    cp -a vim-$pkgver ${pkg}-build
   done
 }
 
