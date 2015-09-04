@@ -1,3 +1,6 @@
+# -*- sh -*-
+# vim: ft=shell
+
 # Maintainer: Allen Li <darkfeline@felesatra.moe>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
@@ -103,5 +106,3 @@ package() {
   install -Dm644 runtime/doc/uganda.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
 }
-
-# vim:set sw=2 sts=2 et:
