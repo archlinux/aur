@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 0.10.0.rc1.r1.g1bd1a43
+	pkgver = 0.10.0.r0.gefeeff2
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -28,7 +28,7 @@ pkgbase = matrix-synapse-git
 	provides = matrix-synapse
 	conflicts = matrix-synapse
 	backup = etc/synapse/log_config.yaml
-	source = git://github.com/matrix-org/synapse.git#branch=release-v0.10.0
+	source = git://github.com/matrix-org/synapse.git
 	source = sysusers-synapse.conf
 	md5sums = SKIP
 	md5sums = dfbffdd307c5559357a2ff51a1906700

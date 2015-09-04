@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.10.0.rc1.r1.g1bd1a43
+pkgver=0.10.0.r0.gefeeff2
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -14,7 +14,7 @@ depends=('python2-syutil-git' 'python2-twisted>=15.1.0' 'python2-service-identit
 		 'python2-pysaml2'
 		 'python2-matrix-angular-sdk-git')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
-source=("git://github.com/matrix-org/synapse.git#branch=release-v0.10.0"
+source=("git://github.com/matrix-org/synapse.git"
 		'sysusers-synapse.conf')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700')
