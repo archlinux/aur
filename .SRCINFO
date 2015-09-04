@@ -1,0 +1,27 @@
+pkgbase = textadept
+	pkgdesc = A fast, minimalist and remarkably extensible text editor
+	pkgver = 8.2
+	pkgrel = 1
+	url = http://foicica.com/textadept
+	install = textadept.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = lua
+	depends = desktop-file-utils
+	optdepends = gtk2: for GUI version
+	optdepends = python: for reStructuredText language module
+	conflicts = textadept-beta
+	conflicts = textadept-git
+	conflicts = textadept-latest-stable
+	conflicts = textadept-modules
+	conflicts = textadept-modules-beta
+	source = http://foicica.com/textadept/download/textadept_8.2.x86_64.tgz
+	source = http://foicica.com/textadept/download/textadept_8.2.modules.zip
+	source = textadept.install
+	sha256sums = 1845b63c1c75e6d21b8811493bad2bb9c7c0d2d675d1013608560dfa932d4b19
+	sha256sums = 02a60fba2889dd68d26258f4763fc68d23a30e504fd25d5f1c1992f3d9732a09
+	sha256sums = b2971d4c6743033b16b172c2b208942a4a6082c7bcfb593ae25bff3fbad45b4b
+
+pkgname = textadept
+
