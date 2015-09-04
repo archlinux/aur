@@ -1,13 +1,14 @@
 pkgbase = ghost
 	pkgdesc = Free, open, simple blogging platform
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ghost.org
 	install = ghost.install
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = unzip
+	makedepends = npm
 	depends = nodejs>=0.12
 	noextract = ghost-0.7.0.zip
 	backup = srv/ghost/Gruntfile.js

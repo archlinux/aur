@@ -2,12 +2,12 @@
 # Colaborator: Chun Yang <x@cyang.info>
 pkgname=ghost
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open, simple blogging platform"
 arch=('i686' 'x86_64')
 url="http://ghost.org"
 license=('MIT')
-makedepends=('unzip')
+makedepends=('unzip' 'npm')
 depends=('nodejs>=0.12')
 backup=('srv/ghost/Gruntfile.js' 'srv/ghost/index.js' 'srv/ghost/package.json')
 install=ghost.install
