@@ -16,6 +16,9 @@ pkgbase = gnuplot-cvs
 	depends = gd
 	depends = lua
 	depends = qt5-svg
+	depends = glib2
+	depends = pango
+	depends = cairo
 	provides = gnuplot=5.1
 	conflicts = gnuplot
 	options = !makeflags
