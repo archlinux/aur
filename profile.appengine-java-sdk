@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PATH=$PATH:/opt/google-appengine-java/bin
+
