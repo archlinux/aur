@@ -24,7 +24,7 @@ source=('google-chrome-beta'
         'eula_text.html')
 source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_i386.deb")
 source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
-md5sums=('aa5660e4808cd290ff7b50670a5ad380'
+md5sums=('ca16d5162eed85b1ba4e6b9fc37f9e35'
          'b7e752f549b215ac77f284b6486794b6')
 md5sums_i686=('2bbaa53750bd6174af9e9a3fc6ace238')
 md5sums_x86_64=('37f75ae7b618a6cf1f48d20e8e1ddde1')

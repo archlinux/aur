@@ -6,4 +6,4 @@ if [[ -f ~/.config/chrome-beta-flags.conf ]]; then
 fi
 
 # Launch
-exec /opt/google/chrome-beta/google-chrome-beta $CHROME_USER_FLAGS $@
+exec /opt/google/chrome-beta/google-chrome-beta $CHROME_USER_FLAGS "$@"
