@@ -1,10 +1,11 @@
 # Maintainer: Thomas Glamsch <thomas.glamsch@gmail.com>
 # Contributor: Alexander Kratzsch <alexander-kratzsch at web dot de>
+# Contributor: Peter Hoeg <first name at last name dot com>
 
 _revision=2150
 pkgname=koma-script
-pkgver=3.16.${_revision}
-pkgrel=3
+pkgver=3.18.${_revision}
+pkgrel=0
 pkgdesc="A versatile bundle of LaTeX2e document classes and packages"
 arch=("any")
 url="http://www.komascript.de/"

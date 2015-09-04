@@ -1,7 +1,7 @@
 pkgbase = koma-script
 	pkgdesc = A versatile bundle of LaTeX2e document classes and packages
-	pkgver = 3.16.2150
-	pkgrel = 3
+	pkgver = 3.18.2150
+	pkgrel = 0
 	url = http://www.komascript.de/
 	install = koma-script.install
 	arch = any
