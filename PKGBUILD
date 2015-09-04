@@ -3,6 +3,7 @@
 pkgbase=python-piexif
 _pyname=piexif
 pkgname=('python-piexif' 'python2-piexif')
+makedepends=('python', 'python2')
 pkgver=1.0.1
 pkgrel=2
 pkgdesc="Python library to read and write EXIF data from TIFF and JPG files"
@@ -24,7 +25,7 @@ package_python-piexif() {
 package_python2-piexif() {
   depends=('python2')
   cd "$srcdir/$_pyname-$pkgver"
-  python setup.py install -O1 --root=$pkgdir
+  python2 setup.py install -O1 --root=$pkgdir
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
 

@@ -5,6 +5,8 @@ pkgbase = python-piexif
 	url = https://pypi.python.org/pypi/piexif#downloads
 	arch = any
 	license = BSD
+	makedepends = python,
+	makedepends = python2
 	source = https://pypi.python.org/packages/source/p/piexif/piexif-1.0.1.zip
 	sha512sums = 6d55795c2aca3aa5ceb484e6549d1b64476abb018410821db8e74bb14a7993d57f8cf5008bfdabedab357ebac3bde682f8a533dfc8a047545423f26764c27eb9
 
