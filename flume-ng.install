@@ -1,0 +1,16 @@
+post_install() {
+  getent group flume &>/dev/null || groupadd -r flume >/dev/null
+  getent passwd flume &>/dev/null || useradd -r -g flume -d /etc/flume flume >/dev/null
+  chown -R flume:flume /etc/flume-ng
+  true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  getent passwd flume &>/dev/null && userdel flume >/dev/null
+  getent group flume &>/dev/null && groupdel flume >/dev/null
+  true
+}

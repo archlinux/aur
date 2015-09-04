@@ -1,0 +1,11 @@
+[Unit]
+Description=Flume NG
+
+[Service]
+EnvironmentFile=/etc/conf.d/flume-ng
+ExecStart=/usr/bin/flume-ng agent -c /etc/flume-ng -n agent -f /etc/flume-ng/flume.conf
+User=flume
+Group=flume
+
+[Install]
+WantedBy=multi-user.target
