@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20150822.0e2024e
+pkgver=20150904.215afe7
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -20,7 +20,6 @@ depends=('desktop-file-utils'
          'libxss'
          'libdvdnav'
          'jack2'
-         'libbs2b'
          'libbluray'
          'libpulse'
          'libx264'

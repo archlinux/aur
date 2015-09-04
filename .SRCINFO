@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = 20150822.0e2024e
+	pkgver = 20150904.215afe7
 	pkgrel = 1
 	url = http://mpv.io/
 	install = mpv-build-git.install
@@ -26,7 +26,6 @@ pkgbase = mpv-build-git
 	depends = libxss
 	depends = libdvdnav
 	depends = jack2
-	depends = libbs2b
 	depends = libbluray
 	depends = libpulse
 	depends = libx264
