@@ -5,7 +5,7 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=reiser4progs
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Reiser4 filesystem programs"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL2')
 depends=('e2fsprogs' 'libaal')
 options=('!libtool')
 source=("http://sourceforge.net/projects/reiser4/files/reiser4-utils/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('1fe5dce409277d8209ea28f32c6b199f')
+md5sums=('4abfda040a0ef152bc2f42152e247a5e')
 
 build() {
 	cd "${pkgname}-${pkgver}"

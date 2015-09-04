@@ -1,6 +1,6 @@
 pkgbase = reiser4progs
 	pkgdesc = Reiser4 filesystem programs
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/reiser4/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = reiser4progs
 	depends = e2fsprogs
 	depends = libaal
 	options = !libtool
-	source = http://sourceforge.net/projects/reiser4/files/reiser4-utils/reiser4progs/reiser4progs-1.0.9.tar.gz
-	md5sums = 1fe5dce409277d8209ea28f32c6b199f
+	source = http://sourceforge.net/projects/reiser4/files/reiser4-utils/reiser4progs/reiser4progs-1.1.0.tar.gz
+	md5sums = 4abfda040a0ef152bc2f42152e247a5e
 
 pkgname = reiser4progs
 
