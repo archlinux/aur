@@ -1,7 +1,7 @@
 pkgbase = python2-txzmq
 	pkgdesc = ZeroMQ bindings for Twisted.
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smira/txZMQ
 	arch = any
 	license = GPL2

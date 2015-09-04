@@ -1,7 +1,7 @@
 # Maintainer: crito <crito@cryptodrunks.net>
 pkgname=python2-txzmq
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="ZeroMQ bindings for Twisted."
 arch=('any')
 url="https://github.com/smira/txZMQ"
