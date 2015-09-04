@@ -1,0 +1,3 @@
+post_install() {
+	echo $'You must run the following command to allow ds4drv access to uinput:\nudevadm control --reload-rules; rmmod uinput; modprobe uinput\nAlso, on some systems it may be necessary for you to force the uinput module to load at boot, as follows:\necho \"uinput\" > /etc/modules-load.d/uinput.conf'
+}
