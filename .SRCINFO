@@ -3,7 +3,8 @@ pkgbase = perl-crypt-xtea
 	pkgver = 0.0106
 	pkgrel = 1
 	url = https://metacpan.org/release/Crypt-XTEA
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = PerlArtistic
 	checkdepends = perl>=5.10.1
 	depends = perl>=5.10.1
