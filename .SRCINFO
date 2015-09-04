@@ -1,0 +1,18 @@
+pkgbase = swatch
+	pkgdesc = The active log file monitoring tool
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = http://swatch.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = perl-date-calc
+	depends = perl-date-manip
+	depends = perl-file-tail
+	depends = perl-timedate
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/sourceforge/swatch/swatch-3.2.3.tar.gz
+	md5sums = 1162f1024cf07fc750ed4960d61ac4e8
+
+pkgname = swatch
+
