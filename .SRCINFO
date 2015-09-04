@@ -1,0 +1,13 @@
+pkgbase = nodejs-gitbook
+	pkgdesc = Library and cmd utility to generate GitBooks
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://www.gitbook.io/
+	arch = any
+	depends = nodejs
+	noextract = gitbook-2.3.0.tgz
+	source = http://registry.npmjs.org/gitbook/-/gitbook-2.3.0.tgz
+	sha1sums = e714e438465ad2340a88d9dfbb91d2fffffa0894
+
+pkgname = nodejs-gitbook
+
