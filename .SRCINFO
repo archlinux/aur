@@ -1,7 +1,7 @@
 pkgbase = audenc
 	pkgdesc = a batch shell script for encoding audio files in directories from one format to another.
-	pkgver = 3.3.3
-	pkgrel = 3
+	pkgver = 3.3.4
+	pkgrel = 1
 	url = http://sourceforge.net/projects/audenc/
 	arch = any
 	license = GPL2
@@ -21,8 +21,8 @@ pkgbase = audenc
 	optdepends = amrenc: AMR encoder
 	optdepends = aften: A/52 encoder
 	optdepends = dcaenc: DTS encoder
-	source = http://downloads.sourceforge.net/audenc/audenc-3.3.3.tar.gz
-	md5sums = b302a6f1198e08a6ba3dd5b674c8fc29
+	source = http://downloads.sourceforge.net/audenc/audenc-3.3.4.tar.gz
+	md5sums = 3512fec9a70eb20a9bc8fdcd229a0eba
 
 pkgname = audenc
 

@@ -1,8 +1,8 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=audenc
-pkgver=3.3.3
-pkgrel=3
+pkgver=3.3.4
+pkgrel=1
 pkgdesc='a batch shell script for encoding audio files in directories from one format to another.'
 arch=(any)
 url='http://sourceforge.net/projects/audenc/'
@@ -38,4 +38,4 @@ package()
     ./install
     rm "$pkgdir/usr/share/doc/audenc/uninstall"
 }
-md5sums=('b302a6f1198e08a6ba3dd5b674c8fc29')
+md5sums=('3512fec9a70eb20a9bc8fdcd229a0eba')
