@@ -1,7 +1,7 @@
 pkgbase = jasp-desktop-git
 	pkgdesc = JASP, a low fat alternative to SPSS, a delicious alternative to R.
-	pkgver = v0.7.1.9.r0.gd9525bb
-	pkgrel = 2
+	pkgver = v0.7.1.11.r0.g30dc9fa
+	pkgrel = 1
 	url = http://jasp-stats.org
 	install = jasp-desktop-git.install
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = jasp-desktop-git
 	provides = jasp-desktop
 	conflicts = jasp
 	conflicts = jasp-desktop
-	source = jasp-desktop::git+https://github.com/jasp-stats/jasp-desktop.git#tag=v0.7.1.11
+	source = jasp-desktop::git+https://github.com/jasp-stats/jasp-desktop.git#tag=v0.7.1.12
 	source = rbundle.R
 	source = jasp-desktop.svg
 	source = sem.patch
