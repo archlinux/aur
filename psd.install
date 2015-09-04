@@ -1,25 +1,25 @@
 post_install() {
+	RUNNING=$(systemctl is-active psd.service &>/dev/null)
+
 	echo '--> WARNING! DEVELOPMENT VERSION!'
 	echo '--> ALWAYS backup your profile data before using utils like psd!'
 	echo
 	echo ' SPECIAL UPGRADE INSTRUCTIONS YOU MUST FOLLOW:'
 	echo
-	echo '1) If you are running psd version 5.x YOU MUST STOP IT BEFORE CONTINUING.'
-	echo '   Pacman should have done this for you.'
-	echo
-	echo '2) If any browsers are running, exit them now.'
-	echo '   Pacman should have done this for you.'
-	echo
-	echo '3) The new psd.conf resides in $HOME/.psd/psd.conf'
-	echo '   and it will be created for you on first use.'
-	echo
-	echo '4) Starting with version 6 of psd, there will be no /etc/psd.conf'
-	echo '   nor will you use systemd in system mode to call the service.'
-	echo '   Each user shall run his/her own USER psd.service to use'
-	echo '   like this: systemctl --user start psd.service'
-	echo
-	echo '5) Users wanting to use overlayfs mode MUST have sudo access to'
-	echo '   both mount and umount or psd will exit informing you of this.'
+	[[ "$RUNNING" = "active" ]] &&
+		echo '--> If you are running psd version 5.x YOU MUST STOP IT BEFORE CONTINUING.'
+	echo '--> If any browsers are running, exit them now.'
+	echo '--> The new psd.conf resides in $HOME/.psd/psd.conf'
+	echo '    and it will be created for you on first use.'
+	echo '--> Starting with version 6 of psd, there will be no /etc/psd.conf'
+	echo '    nor will you use systemd in system mode to call the service.'
+	echo '    Each user shall run his/her own USER psd.service to use'
+	echo '    like this:  systemctl --user start psd.service'
+	echo '--> Users wanting to use overlayfs mode MUST have sudo access to'
+	echo '    both mount and umount or psd will exit informing you of this.'
+	echo '    See the man page of psd for an example configuration if needed.'
+	[[ -s /etc/systemd/system/multi-user.target.wants/psd.service ]] &&
+		echo '--> Please remove the now outdated system-level service file: /etc/systemd/system/multi-user.target.wants/psd.service'
 }
 
 pre_upgrade() {
