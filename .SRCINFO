@@ -1,6 +1,6 @@
 pkgbase = ruby-sass-rails
 	pkgdesc = Sass adapter for the Rails asset pipeline.
-	pkgver = 5.0.3
+	pkgver = 5.0.4
 	pkgrel = 1
 	url = https://github.com/rails/sass-rails
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ruby-sass-rails
 	depends = ruby-sass-3.2
 	depends = ruby-sprockets-rails
 	depends = ruby-sprockets
-	noextract = sass-rails-5.0.3.gem
+	noextract = sass-rails-5.0.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sass-rails-5.0.3.gem
-	sha1sums = 07e85144d7271c52ba118d1f02223f5f1b65b39e
+	source = https://rubygems.org/downloads/sass-rails-5.0.4.gem
+	sha1sums = a13a5c32bcde3a0db987099d523a6e026578b3ff
 
 pkgname = ruby-sass-rails
 
