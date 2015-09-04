@@ -1,0 +1,18 @@
+pkgbase = php-pdo-cassandra
+	pkgdesc = PDO driver for Cassandra CQL
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://github.com/Orange-OpenSource/YACassandraPDO
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = thrift
+	depends = php
+	depends = thrift
+	depends = boost
+	conflicts = php-cassandra-pdo-git
+	source = https://github.com/Orange-OpenSource/YACassandraPDO/archive/0.6.0.tar.gz
+	md5sums = 06fd78e96670bc7ea9cfdbf36e5fea91
+
+pkgname = php-pdo-cassandra
+
