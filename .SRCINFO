@@ -1,18 +1,18 @@
 pkgbase = qosmic
 	pkgdesc = An application for creating, editing, and rendering flam3 fractal images
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://code.google.com/p/qosmic/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt4
-	depends = lua
+	depends = lua52
 	depends = flam3
 	source = http://qosmic.googlecode.com/files/qosmic-1.5.0.tar.bz2
 	source = lua52.patch
 	md5sums = 806d6ffc00a073d47d47fc70ca0de868
-	md5sums = a9ec55681aa4af1d5ea7489072095cc9
+	md5sums = fb9fd4d91eff5c263a2d792383aac399
 
 pkgname = qosmic
 

@@ -1,18 +1,18 @@
-diff -ur qosmic-1.5.0/src/lua/lunar.h qosmic-1.5.0_globalpatch/src/lua/lunar.h
 --- qosmic-1.5.0/src/lua/lunar.h	2011-10-22 01:58:08.000000000 +0200
-+++ qosmic-1.5.0_globalpatch/src/lua/lunar.h	2013-03-04 09:18:47.665761092 +0100
-@@ -37,7 +37,7 @@
- 			// store method table in globals so that
- 			// scripts can add functions written in Lua.
- 			lua_pushvalue(L, methods);
--			set(L, LUA_GLOBALSINDEX, T::className);
-+			lua_setglobal(L, T::className);
++++ qosmic-1.5.0-new/src/lua/lunar.h	2015-09-04 18:36:01.547010872 +0200
+@@ -9,15 +9,22 @@
  
- 			// hide metatable from Lua getmetatable()
- 			lua_pushvalue(L, methods);
---- qosmic-1.5.0/src/lua/lunar.h	2013-03-04 09:18:47.665761092 +0100
-+++ qosmic-1.5.0_typerrorpatch/src/lua/lunar.h	2013-03-04 09:47:26.265659858 +0100
-@@ -18,6 +18,13 @@
+ extern "C"
+ {
+-#include "lua.h"
+-#include "lualib.h"
+-#include "lauxlib.h"
++#include "lua5.2/lua.h"
++#include "lua5.2/lualib.h"
++#include "lua5.2/lauxlib.h"
+ }
+ 
+ #include "logger.h"
  
  namespace Lua
  {
@@ -26,3 +26,32 @@ diff -ur qosmic-1.5.0/src/lua/lunar.h qosmic-1.5.0_globalpatch/src/lua/lunar.h
  template <typename T> class Lunar
  {
  		typedef struct { T* pT; } userdataType;
+@@ -37,7 +44,7 @@
+ 			// store method table in globals so that
+ 			// scripts can add functions written in Lua.
+ 			lua_pushvalue(L, methods);
+-			set(L, LUA_GLOBALSINDEX, T::className);
++			lua_setglobal(L, T::className);
+ 
+ 			// hide metatable from Lua getmetatable()
+ 			lua_pushvalue(L, methods);
+--- qosmic-1.5.0/qosmic.pro	2011-10-25 03:14:24.000000000 +0200
++++ qosmic-1.5.0-new/qosmic.pro	2015-09-04 18:54:42.077293629 +0200
+@@ -49,7 +49,7 @@
+ 
+ link_pkgconfig {
+ 	message("Config using pkg-config version "$$system(pkg-config --version))
+-	PKGCONFIG = flam3 lua
++	PKGCONFIG = flam3 lua52
+ 
+ 	## The directory that contains flam3-palettes.xml must be set here.  If
+ 	## your system has pkg-config, this should find the flam3 palettes.
+@@ -62,7 +62,7 @@
+ 	## flam3-palettes.xml file installed by the flam3 package.
+ 	PALETTESDIR = /usr/share/flam3
+ 	INCLUDEPATH += /usr/include/libxml2
+-	LIBS += -L/usr/lib/libxml2 -lflam3 -lm -ljpeg -lxml2 -llua
++	LIBS += -L/usr/lib/libxml2 -lflam3 -lm -ljpeg -lxml2 -llua5.2
+ }
+ 
+ 
