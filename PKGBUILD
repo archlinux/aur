@@ -1,9 +1,10 @@
-# Maintainer: James Tappin <jtappinatgmaildotcom>
+# Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
+# Contributor: James Tappin <jtappinatgmaildotcom>
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 # Contributor: Eric Belanger <eric@archlinux.org>
 pkgname=plplot510
 pkgver=5.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform software package for creating scientific plots"
 arch=('i686' 'x86_64')
 url="http://plplot.sourceforge.net/"
