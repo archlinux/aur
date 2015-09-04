@@ -1,7 +1,7 @@
 pkgbase = python-meh
 	pkgdesc = Python module for handling exceptions
 	pkgver = 0.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhinstaller/python-meh/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,12 @@ pkgbase = python-meh
 pkgname = python-meh
 	pkgdesc = Python module for handling exceptions - python 3.x pkg
 	depends = python
+	depends = python-dbus
+	depends = libreport
 
 pkgname = python2-meh
 	pkgdesc = Python module for handling exceptions - python 2.x pkg
 	depends = python2
+	depends = python2-dbus
+	depends = libreport
 
