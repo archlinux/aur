@@ -5,27 +5,22 @@
 # Maintainer: Kaleb Elwert (belak) <belak@coded.io>
 
 pkgname=bitlbee-git
-pkgver=3.4.r9.ga9b1e0e
+pkgver=3.4.1.r25.gf5bbaba
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('gnutls' 'glib2')
-makedepends=('git' 'asciidoc' 'libotr' 'xmlto' 'lynx')
-checkdepends=('check')
+makedepends=('git' 'libotr')
 optdepends=('skype4py: to use skyped'
-            'libotr: for OTR encryption support'
-            'xinetd: to run bitlbee through xinetd')
+            'libotr: for OTR encryption support')
 source=('bitlbee::git+https://github.com/bitlbee/bitlbee'
-        'xinetd'
         'bitlbee.tmpfiles')
 sha1sums=('SKIP'
-          '5e0af27ba9cc4fe455e3381c75fc49a9326e2f17'
           '3695ed2fe22436c4d0fc3ead829f7d1f89bc491c')
 backup=('etc/bitlbee/bitlbee.conf'
-        'etc/bitlbee/motd.txt'
-        'etc/xinetd.d/bitlbee')
+        'etc/bitlbee/motd.txt')
 install=bitlbee.install
 provides=('bitlbee')
 conflicts=('bitlbee', 'bitlbee-bzr')
@@ -53,18 +48,10 @@ build() {
   make
 }
 
-#check() {
-#  cd "$srcdir/bitlbee"
-#  make check
-#}
-
 package() {
   cd "$srcdir/bitlbee"
   make DESTDIR="$pkgdir" install{,-etc,-dev,-systemd}
 
   install -o65 -g65 -dm770 "$pkgdir/var/lib/bitlbee"
-  install -Dm644 "$srcdir/xinetd" "$pkgdir/etc/xinetd.d/bitlbee"
   install -Dm644 "$srcdir/bitlbee.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/bitlbee.conf"
 }
-
-# vim:set ts=2 sw=2 et:
