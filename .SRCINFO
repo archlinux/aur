@@ -1,0 +1,15 @@
+pkgbase = python-broadcast-logging-git
+	pkgdesc = A Python logging system handler which broadcasts log messages and a matching receiver executable.
+	pkgver = r1.fcc54bb
+	pkgrel = 1
+	url = https://github.com/languitar/broadcast-logging
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python3
+	source = python-broadcast-logging-git::git://github.com/languitar/broadcast-logging.git
+	md5sums = SKIP
+
+pkgname = python-broadcast-logging-git
+
