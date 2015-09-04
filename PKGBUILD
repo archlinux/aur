@@ -2,7 +2,7 @@
 
 _pkgname=coreutils
 pkgname=coreutils-progress-git
-pkgver=8.24.11.g97678ab
+pkgver=8.24.21.ga4b6405
 pkgrel=1
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system. Patched for an added progress bar for cp'
 arch=('i686' 'x86_64')

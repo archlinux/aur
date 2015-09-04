@@ -1,6 +1,6 @@
 pkgbase = coreutils-progress-git
 	pkgdesc = The basic file, shell and text manipulation utilities of the GNU operating system. Patched for an added progress bar for cp
-	pkgver = 8.24.11.g97678ab
+	pkgver = 8.24.21.ga4b6405
 	pkgrel = 1
 	url = http://www.gnu.org/software/coreutils
 	install = coreutils-progress-git.install
