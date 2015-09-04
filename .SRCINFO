@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse
 	pkgdesc = Matrix reference homeserver
-	pkgver = 0.10.0.rc5
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -26,7 +26,7 @@ pkgbase = matrix-synapse
 	depends = python2-pysaml2
 	depends = python2-matrix-angular-sdk
 	backup = etc/synapse/log_config.yaml
-	source = git://github.com/matrix-org/synapse#tag=v0.10.0-rc5
+	source = git://github.com/matrix-org/synapse#tag=v0.10.0
 	source = sysusers-synapse.conf
 	md5sums = SKIP
 	md5sums = dfbffdd307c5559357a2ff51a1906700
