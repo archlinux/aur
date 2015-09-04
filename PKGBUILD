@@ -53,7 +53,8 @@ md5sums=('SKIP'
          '5947a420a0b1483f0cbc74c76895789b'
          'a83a3b1bc7fcb7cbf752a83a8311fc42'
          'f333939ea6c41377b66407c81016cee4'
-         '4eb23a3c7363258bc9ba764d6e5512ba')
+         '4eb23a3c7363258bc9ba764d6e5512ba'
+         'b21a2b0e4cb805bf61a5060c3ed97cb3')
 
 pkgver() {
   cd sage
