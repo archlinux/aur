@@ -3,14 +3,15 @@
 
 pkgname=epsxe-plugin-gpu-xgl2
 pkgver=2.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux port of the OpenGL2 plugin"
 url="http://www.pbernert.com"
-depends=('epsxe')
+depends=('epsxe' 'glib' 'gtk')
 depends_i686+=('mesa')
 depends_x86_64+=('lib32-mesa')
 source=(http://www.pbernert.com/gpupetexgl209.tar.gz http://www.pbernert.com/gpupetexgl208.tar.gz)
-md5sums=('61bdad38a3a616bc000664de23d00c6e' '088c5cdc21a0807e9227d7ec4672b51d')
+md5sums=('61bdad38a3a616bc000664de23d00c6e'
+         '088c5cdc21a0807e9227d7ec4672b51d')
 license=('custom')
 arch=('i686' 'x86_64')
 
