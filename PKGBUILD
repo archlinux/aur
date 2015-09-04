@@ -3,7 +3,7 @@
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 # Maintainer: N. Izumi
 pkgname=dar
-pkgver=2.4.17
+pkgver=2.4.18
 pkgrel=1
 pkgdesc='A full featured command-line backup tool, short for Disk ARchive'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('doxygen')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 backup=('etc/darrc')
 options=('!libtool')
-sha1sums=('b0a5b87ead362baf21190899d34766aa65d76bba')
+sha1sums=('77fc52d1b7d7e082d177216bfdf16a0dd60c9583')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
