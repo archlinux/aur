@@ -1,0 +1,15 @@
+post_install() {
+	getent group bitlbee &>/dev/null || groupadd -r -g 65 bitlbee >/dev/null
+	getent passwd bitlbee &>/dev/null || useradd -r -u 65 -g bitlbee -d /var/lib/bitlbee -s /bin/false -c bitlbee bitlbee >/dev/null
+	systemd-tmpfiles --create bitlbee.conf
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	getent passwd bitlbee &>/dev/null && userdel bitlbee >/dev/null
+	getent group bitlbee &>/dev/null && groupdel bitlbee >/dev/null
+	true
+}
