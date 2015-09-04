@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Toontown Rewritten
+Comment=Play Toontown Rewritten
+Keywords=Game;entertainment;
+GenericName=Web Browser
+Exec=toontown-rewritten
+Icon=toontown
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Game;Entertainment;

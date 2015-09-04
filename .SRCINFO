@@ -1,0 +1,20 @@
+pkgbase = toontown-rewritten
+	pkgdesc = An MMO originally by Disney, rewritten. An account is needed to play.
+	pkgver = 1.2.0
+	pkgrel = 1
+	arch = x86_64
+	makedepends = git
+	depends = qt5-base
+	provides = toontown-rewritten
+	options = !strip
+	source = https://download.toontownrewritten.com/launcher/linux/TTRLinux-v1.2.0.tar.gz
+	source = qt.conf
+	source = toontown-rewritten.sh
+	source = toontown-rewritten.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = toontown-rewritten
+
