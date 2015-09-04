@@ -4,9 +4,9 @@
 # Contributor: Dmitry Shilov <stormblast@land.ru>
 
 pkgname=doomsday
-pkgver=1.15.0
-pkgrel=2
-_buildnum=1616
+pkgver=1.15.3
+pkgrel=1
+_buildnum=1704
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('doom1-wad: Doom shareware',
             'heretic1-wad: Heretic shareware', 
             'hexen1-wad: Hexen shareware')
 source=("http://code.iki.fi/builds/build${_buildnum}/doomsday-stable-${pkgver}.tar.gz")
-md5sums=('027e76fd6ac778c37a96d64ab9c11dfa')
+md5sums=('d8e9356fd5fb510f99bf0b233165139a')
 
 build() {
     # Fix annoying messages from libpng (thanks to jwm-art)

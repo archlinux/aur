@@ -1,13 +1,14 @@
 pkgbase = doomsday
 	pkgdesc = An advanced Doom engine that supports DOOM, Heretic and Hexen.
-	pkgver = 1.15.0
-	pkgrel = 2
+	pkgver = 1.15.3
+	pkgrel = 1
 	url = http://dengine.net/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = imagemagick
 	depends = qt5-base
+	depends = qt5-x11extras
 	depends = sdl2_net
 	depends = sdl2_mixer
 	depends = fmodex
@@ -16,8 +17,8 @@ pkgbase = doomsday
 	optdepends = doom1-wad: Doom shareware,
 	optdepends = heretic1-wad: Heretic shareware,
 	optdepends = hexen1-wad: Hexen shareware
-	source = http://code.iki.fi/builds/build1616/doomsday-stable-1.15.0.tar.gz
-	md5sums = 027e76fd6ac778c37a96d64ab9c11dfa
+	source = http://code.iki.fi/builds/build1704/doomsday-stable-1.15.3.tar.gz
+	md5sums = d8e9356fd5fb510f99bf0b233165139a
 
 pkgname = doomsday
 
