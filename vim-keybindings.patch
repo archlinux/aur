@@ -86,7 +86,7 @@ index 2e91a3c..7a8b2bd 100644
           super->needsRedraw = true;
           return HANDLED;
 diff --git a/Panel.c b/Panel.c
-index f421a0d..1b40bb1 100644
+index 6540970..d213855 100644
 --- a/Panel.c
 +++ b/Panel.c
 @@ -86,6 +86,8 @@ struct Panel_ {
@@ -98,7 +98,7 @@ index f421a0d..1b40bb1 100644
  
  PanelClass Panel_class = {
     .super = {
-@@ -369,14 +371,16 @@ void Panel_draw(Panel* this, bool focus) {
+@@ -372,14 +374,16 @@ void Panel_draw(Panel* this, bool focus) {
  
  bool Panel_onKey(Panel* this, int key) {
     assert (this != NULL);
@@ -116,7 +116,7 @@ index f421a0d..1b40bb1 100644
     case KEY_CTRLP:
        this->selected--;
        break;
-@@ -391,23 +395,33 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -394,23 +398,33 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     #endif
     case KEY_LEFT:
@@ -152,7 +152,7 @@ index f421a0d..1b40bb1 100644
        this->selected += (this->h - 1);
        this->scrollV += (this->h - 1);
        this->needsRedraw = true;
-@@ -428,9 +442,11 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -431,9 +445,11 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     }
     case KEY_HOME:
@@ -178,12 +178,12 @@ index 6789770..22a0f3f 100644
  extern PanelClass Panel_class;
  
 diff --git a/README b/README
-index f713e1c..48c164b 100644
+index 3bc17a4..877cf20 100644
 --- a/README
 +++ b/README
-@@ -28,6 +28,44 @@ This software has evolved considerably during the last years,
- and is reasonably complete, but there is still room for
- improvement. Read the TODO file to see what's known to be missing.
+@@ -16,6 +16,44 @@ but we also have code for running under FreeBSD and Mac OS X
+ This software has evolved considerably over the years,
+ and is reasonably complete, but there is always room for improvement.
  
 +Vim keybindings
 +----------------
@@ -223,8 +223,8 @@ index f713e1c..48c164b 100644
 +* 'l' can no longer be used to list open files, being replaced with 'L'
 +
 +
- Comparison between 'htop' and 'top'
- -----------------------------------
+ Comparison between 'htop' and classic 'top'
+ -------------------------------------------
  
 diff --git a/ScreenManager.c b/ScreenManager.c
 index df7431f..68d3953 100644
