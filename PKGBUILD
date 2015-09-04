@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.2
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,8 +23,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-make_flush_workqueue_non_gpl.patch')
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            'dbac1b59a0a1861fe2ae64348512f0994594ccbe959f50aa94b91d8464e44c97'
-            '90fa14aca07b560334ddb14ffe4f04c3ed149851e45952a5e4a2d0732ce29fb4'
+            'b46d8a8166487cf0dcdbcc0c0a5111aba950c49749a4761e1dce78f220704079'
+            'e54800217ad6c61efa80d6ab223364cb0c2d6030061bc48d3f83fd971ae675f9'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d')
