@@ -10,8 +10,6 @@ license=('GPL')
 depends=('e2fsprogs')
 options=(!buildflags)
 source=(http://home.earthlink.net/~k_sheff/sw/e2tools/$pkgname-$pkgver.tar.gz
-        e2tools-fedora-fixes.patch
-        e2tools-printf-lld-64bit.patch
         e2cp.1
         e2ln.1
         e2ls.1
@@ -21,8 +19,6 @@ source=(http://home.earthlink.net/~k_sheff/sw/e2tools/$pkgname-$pkgver.tar.gz
         e2tail.1
         e2tools.7)
 md5sums=('1829b2b261e0e0d07566066769b5b28b'
-         '90f46c43743bafa695abcdb4806ac61b'
-         '324dde8c3f6cc4a08592613327c5391c'
          '69bfba66bd8946866e2600d663df2c00'
          '004f1f59409a3cdfd4b945cc293ec2ee'
          'c729ef984582381c4d5072ae02960b63'
@@ -32,12 +28,12 @@ md5sums=('1829b2b261e0e0d07566066769b5b28b'
          '3e3c03eb4a72987a7f62c2fd23968248'
          '1ca78ad79fc4f4953f3a5388ec6a59fa')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  chmod 777 . -R
-  patch -p1 < "${srcdir}/e2tools-fedora-fixes.patch"
-  patch -p1 < "${srcdir}/e2tools-printf-lld-64bit.patch"
-}
+#prepare() {
+#  cd "${srcdir}/${pkgname}-${pkgver}"
+#  chmod 777 . -R
+#  patch -p1 < "${srcdir}/e2tools-fedora-fixes.patch"
+#  patch -p1 < "${srcdir}/e2tools-printf-lld-64bit.patch"
+#}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
