@@ -23,7 +23,7 @@ backup=('etc/bitlbee/bitlbee.conf'
         'etc/bitlbee/motd.txt')
 install=bitlbee.install
 provides=('bitlbee')
-conflicts=('bitlbee', 'bitlbee-bzr')
+conflicts=('bitlbee' 'bitlbee-bzr')
 
 pkgver() {
   cd "$srcdir/bitlbee"
