@@ -1,6 +1,6 @@
 pkgbase = clion
 	pkgdesc = C/C++ IDE. Free 30-day trial.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = clion
 	optdepends = gcc: GNU compiler
 	optdepends = clang: LLVM compiler
 	optdepends = biicode: C/C++ dependency manager
-	noextract = clion-1.1.tar.gz
+	noextract = clion-1.1.1.tar.gz
 	options = !strip
-	source = https://download.jetbrains.com/cpp/clion-1.1.tar.gz
-	sha256sums = 81b657da4906f3ccb573e6e8ddee6f14006274016d391a38c25f9c07b612954d
+	source = https://download.jetbrains.com/cpp/clion-1.1.1.tar.gz
+	sha256sums = 3a8d3dc2859460d24c7caf941a9acab18fcf0a05bb7fe1b73f8ba70393c6a3ea
 
 pkgname = clion
 

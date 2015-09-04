@@ -5,8 +5,8 @@
 #PKGEXT=.pkg.tar
 
 pkgname=clion
-pkgver=1.1.0
-_pkgver=1.1
+pkgver=1.1.1
+_pkgver=1.1.1
 pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   'biicode: C/C++ dependency manager'
 )
 source=("https://download.jetbrains.com/cpp/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('81b657da4906f3ccb573e6e8ddee6f14006274016d391a38c25f9c07b612954d')
+sha256sums=('3a8d3dc2859460d24c7caf941a9acab18fcf0a05bb7fe1b73f8ba70393c6a3ea')
 noextract=("${pkgname}-${_pkgver}.tar.gz")
 
 package() {
