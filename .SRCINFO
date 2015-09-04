@@ -1,5 +1,5 @@
 pkgbase = google-chrome-dev
-	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Dev Channel)
+	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Dev Channel). NOTE: If the md5sums don't match, don't post the makepkg output. Simply flag the package.
 	pkgver = 47.0.2498.0
 	pkgrel = 1
 	url = https://www.google.com/chrome/index.html
