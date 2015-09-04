@@ -10,7 +10,7 @@ pkgbase = ruby-paint
 	depends = ruby-rainbow
 	depends = ruby-term-ansicolor
 	noextract = paint-1.0.0.gem
-	source = https://rubygems.global.ssl.fastly.net/gems/paint-1.0.0.gem
+	source = https://rubygems.org/downloads/paint-1.0.0.gem
 	sha512sums = a412d7d80daec622d3eb69eed5b2badae69e1d0002e849cf173453391c4ade679b368c64deb3c50520aa6bcb5635994d919642680001df598e0b74d826ec6d7f
 
 pkgname = ruby-paint
