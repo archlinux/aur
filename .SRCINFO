@@ -1,0 +1,17 @@
+pkgbase = tab-git
+	pkgdesc = A modern text processing language similar to awk in spirit. (But not similar in design philosophy, implementation or syntax.)
+	pkgver = 20150731.r138.1c27b59
+	pkgrel = 1
+	url = https://bitbucket.org/tkatchev/tab
+	arch = x86_64
+	arch = i686
+	license = BSL
+	makedepends = git
+	makedepends = gcc
+	provides = tab
+	conflicts = tab
+	source = TAB-GIT::git+https://bitbucket.org/tkatchev/tab.git
+	sha256sums = SKIP
+
+pkgname = tab-git
+
