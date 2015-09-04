@@ -10,7 +10,7 @@ pkgbase = perl-crypt-xtea
 	depends = perl>=5.10.1
 	depends = perl-scalar-util-numeric>=0.40
 	depends = perl-scalar-list-utils>=1.38
-	depends = perl-carp
+	depends = perl-carp>=0
 	options = !emptydirs
 	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAHIY/Crypt-XTEA-0.0106.tar.gz
