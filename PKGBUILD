@@ -4,9 +4,9 @@
 
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.1
-_zenpatch=c4b5b1647820109d67dde4abba0da75d738abb98
-pkgver=4.1.6
+_srcname=linux-4.2
+_zenpatch=d5cf213ff3e9c46556190fb35254ff33d1aba68e
+pkgver=4.2
 pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -15,22 +15,20 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         "zen-${_zenpatch}.patch::$url/commit/${_zenpatch}.patch"
         'change-default-console-loglevel.patch')
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            '64e4deb16a279e233b0c91463b131bd0f3de6aabdb49efded8314bcf5dbfe070'
-            'SKIP'
-            '4dd48b9d43feafb4b9e26738373f2f53c4068ee10d5d09ed2a68795311cec864'
-            'f97af386c80444a12a27c3c2234b110aa90998d2b8e6c617234a8a51f5f07b5f'
+            '758bc61d7309078a8e31e52ba7ebd1c6c5f673ca8d8f502d462aca5c6f4f4892'
+            '7966d12f8abb7014905dce1c187fd7905a71008db669e5f288685dbc3ed9c127'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'c755a53b962f4c5059a959babff97702bb042d4cff1edb58eb4f653921b65299'
+            '86441426452ee7224c4da1d63e9b862e4d7fb6a7b1a5c5fcc4f39785ce0e1ea5'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -43,7 +41,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -99,9 +97,6 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("kernel26${_kernelname}=${pkgver}")
-  conflicts=("kernel26${_kernelname}")
-  replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
@@ -158,9 +153,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-headers=${pkgver}")
-  conflicts=("kernel26${_kernelname}-headers")
-  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -278,9 +270,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-docs=${pkgver}")
-  conflicts=("kernel26${_kernelname}-docs")
-  replaces=("kernel26${_kernelname}-docs")
 
   cd "${srcdir}/${_srcname}"
 
