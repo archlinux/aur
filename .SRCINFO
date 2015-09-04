@@ -8,7 +8,7 @@ pkgbase = perl-crypt-tea_pp
 	checkdepends = perl>=5.10
 	depends = perl>=5.10
 	depends = perl-scalar-list-utils>=1.38
-	depends = perl-carp>=1.3301
+	depends = perl-carp>=0
 	depends = perl-scalar-util-numeric>=0.40
 	options = !emptydirs
 	options = purge
