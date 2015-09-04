@@ -7,14 +7,14 @@
 
 _pkgname=libguestfs
 pkgname=libguestfs-python3
-pkgver=1.30.0
+pkgver=1.30.1
 _pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Python 3 compatible bindings for libguestfs"
 arch=("i686" "x86_64")
 url="http://libguestfs.org"
 license=("GPL2" "LGPL2.1")
-depends=("libguestfs=${pkgver}" 
+depends=("libguestfs"
          "python"
          )
 makedepends=("qemu"
@@ -51,7 +51,7 @@ optdepends=(
 #            "ocaml: Ocaml libs"
             )
 source=("http://libguestfs.org/download/${_pkgver_short}-stable/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('b3a68cb5de208f359d2b9aa5d26fe0248575ee03975a6cf60e1a3509cf34c3c55116ba24db7d4dbeee2ed79bc9e2bdd5056a9de82d9263c41cb657eb702ae45e')
+sha512sums=('50c4fa46cb0409e329c408986949d3ac27b4b9f7b661fa20b33419baf41410778b9fe6f8228db169fc714161360e21d4a654bda2cfdf0f4552c50487741148b8')
 
 check() {
     # test-lock fails, perhaps related to:
