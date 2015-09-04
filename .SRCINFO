@@ -1,6 +1,6 @@
 pkgbase = python-cheat
 	pkgdesc = Cheat allows you to create and view interactive cheatsheets on the command-line.
-	pkgver = 2.1.13
+	pkgver = 2.1.14
 	pkgrel = 1
 	url = https://github.com/chrisallenlane/cheat
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-cheat
 	depends = python
 	depends = python-docopt
 	optdepends = python-pygments
-	source = https://pypi.python.org/packages/source/c/cheat/cheat-2.1.13.tar.gz
-	sha256sums = 50cd157b4e63f44bcc4707df76b8ec87290446422fa19e645f54f4fbd0f80225
+	source = https://pypi.python.org/packages/source/c/cheat/cheat-2.1.14.tar.gz
+	sha256sums = 8e4b87a9826cee96902867de739acedc8265ec58e39727dbca8daa54110a38d6
 
 pkgname = python-cheat
 
