@@ -3,7 +3,7 @@
 pkgbase=python-piexif
 _pyname=piexif
 pkgname=('python-piexif' 'python2-piexif')
-makedepends=('python', 'python2')
+makedepends=('python' 'python2')
 pkgver=1.0.1
 pkgrel=2
 pkgdesc="Python library to read and write EXIF data from TIFF and JPG files"
