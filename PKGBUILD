@@ -24,18 +24,25 @@ nose==1.3.0
 mock==1.0.1
 wheel==0.24.0
 docutils>=0.10
+-e git://github.com/boto/jmespath.git@develop#egg=jmespath
 
 #setup.py
+from setuptools import setup, find_packages
+
+
 requires = ['jmespath==0.7.1',
             'python-dateutil>=2.1,<3.0.0',
             'docutils>=0.10']
+
+
+if sys.version_info[:2] == (2, 6):
 "
 }
 
 set -u
 _pkgname='botocore'
 pkgname="python-${_pkgname}"
-pkgver=1.1.12
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -58,7 +65,7 @@ depends=('python' # See setup.py, README.rst, and requirements.txt for version d
 makedepends=('python-distribute') # same as python-setuptools
 conflicts=('python2-botocore')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ed125f41b831e67a4829061172b6dd5efe1cf62568ec0c3bfab90af7a72bf0f6')
+sha256sums=('7c5d263434969ba6d517653879cbe5e1a60533890e9c29bd020a1f79312e0c1d')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
