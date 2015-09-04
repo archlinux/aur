@@ -1,0 +1,13 @@
+pkgbase = undbx
+	pkgdesc = Tool to extract, recover and undelete e-mail messages from Outlook Express .dbx files
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://sourceforge.net/projects/undbx/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = http://iweb.dl.sourceforge.net/project/undbx/undbx-0.21.tar.gz
+	sha256sums = d29b0b9890eed965f8b84ce139579a87b960dc8de22a7fbba236d90c7f0b9a59
+
+pkgname = undbx
+
