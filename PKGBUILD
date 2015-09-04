@@ -20,17 +20,7 @@ source=(http://home.earthlink.net/~k_sheff/sw/e2tools/$pkgname-$pkgver.tar.gz
         e2rm.1
         e2tail.1
         e2tools.7)
-md5sums=('1829b2b261e0e0d07566066769b5b28b'
-         'f20787751299be37a51191448073f1da'
-         '070ddb22fc2054d701dd96dbd9912228'
-         '69bfba66bd8946866e2600d663df2c00'
-         '004f1f59409a3cdfd4b945cc293ec2ee'
-         'c729ef984582381c4d5072ae02960b63'
-         '2fdfc8573af1b11f81e4ea2e8d34dcfc'
-         '560225ac097abf53389ec364803cd731'
-         'd9e2374e94758125ed4ac6aa98f0de16'
-         '3e3c03eb4a72987a7f62c2fd23968248'
-         '1ca78ad79fc4f4953f3a5388ec6a59fa')
+md5sums=('skip')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
