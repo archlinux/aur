@@ -1,0 +1,17 @@
+pkgbase = uncrustify-git
+	pkgdesc = A source code beautifier
+	pkgver = 0.61.r95.gfc5228e
+	pkgrel = 1
+	url = http://uncrustify.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	provides = uncrustify=0.61
+	conflicts = uncrustify
+	source = UNCRUSTIFY-GIT::git://github.com/bengardner/uncrustify.git
+	sha256sums = SKIP
+
+pkgname = uncrustify-git
+
