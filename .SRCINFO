@@ -1,6 +1,6 @@
 pkgbase = getdns
 	pkgdesc = A modern asynchronous DNS API
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = http://getdnsapi.net/
 	install = install
@@ -12,9 +12,9 @@ pkgbase = getdns
 	depends = libidn
 	depends = libuv
 	depends = unbound
-	source = https://getdnsapi.net/dist/getdns-0.3.1.tar.gz
-	source = https://getdnsapi.net/dist/getdns-0.3.1.tar.gz.asc
-	sha256sums = 58fd791187d5fd158ba7db1b5f29d4b0274583447f405577c758c7c7751e8883
+	source = https://getdnsapi.net/dist/getdns-0.3.2.tar.gz
+	source = https://getdnsapi.net/dist/getdns-0.3.2.tar.gz.asc
+	sha256sums = 6944b0d9fd3fd33ee2fcd8e2dc123a3097ac95255092b4a3b8ee36400f85dba7
 	sha256sums = SKIP
 
 pkgname = getdns
