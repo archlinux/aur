@@ -1,0 +1,22 @@
+pkgbase = spotcommander
+	pkgdesc = A remote control for Spotify for Linux, optimized for mobile devices.
+	pkgver = 12.4
+	pkgrel = 1
+	url = http://www.olejon.net/code/spotcommander
+	install = spotcommander.install
+	arch = any
+	license = GPL3
+	depends = apache
+	depends = php
+	depends = php-apache
+	depends = php-sqlite
+	depends = qt4
+	depends = inotify-tools
+	depends = xdotool
+	optdepends = spotify: The application to remote control
+	conflicts = spotcommander-xampp
+	source = http://www.olejon.net/code/spotcommander/files/spotcommander-12.4.tar.bz2
+	md5sums = 7dea4e8a0113e75ba1ebade5bd90e4c8
+
+pkgname = spotcommander
+
