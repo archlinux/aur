@@ -1,0 +1,13 @@
+pkgbase = python2-dirspec
+	pkgdesc = Handling of directories as described in the XDG Directory specifications.
+	pkgver = 13.10
+	pkgrel = 1
+	url = https://launchpad.net/dirspec
+	arch = any
+	license = LGPL3
+	depends = python2>=2.7
+	source = https://launchpad.net/dirspec/stable-13-10/13.10/+download/dirspec-13.10.tar.gz
+	md5sums = 941d59e0f10ade1b992a90899f248358
+
+pkgname = python2-dirspec
+
