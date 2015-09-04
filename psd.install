@@ -18,8 +18,8 @@ post_install() {
 	echo '--> Users wanting to use overlayfs mode MUST have sudo access to'
 	echo '    both mount and umount or psd will exit informing you of this.'
 	echo '    See the man page of psd for an example configuration if needed.'
-	[[ -s /etc/systemd/system/multi-user.target.wants/psd.service ]] &&
-		echo '--> Please remove the now outdated system-level service file: /etc/systemd/system/multi-user.target.wants/psd.service'
+	[[ -h /etc/systemd/system/multi-user.target.wants/psd.service ]] &&
+		echo '--> Please remove the now outdated system-level service file: /etc/systemd/system/multi-user.target.wants/psd.service' || return 0
 }
 
 pre_upgrade() {
