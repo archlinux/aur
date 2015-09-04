@@ -1,6 +1,6 @@
 pkgbase = fotoxx
 	pkgdesc = A program for improving image files made with a digital camera
-	pkgver = 15.09
+	pkgver = 15.09.1
 	pkgrel = 1
 	url = http://www.kornelix.com/fotoxx
 	install = fotoxx.install
@@ -14,8 +14,8 @@ pkgbase = fotoxx
 	depends = perl-image-exiftool>=0.8.6
 	optdepends = mashup: for composing pages to print from within fotoxx
 	optdepends = brasero: for burning
-	source = http://www.kornelix.com/uploads/1/3/0/3/13035936/fotoxx-15.09.tar.gz
-	md5sums = 44f51c03f496ee9f306287775f44311a
+	source = http://www.kornelix.com/uploads/1/3/0/3/13035936/fotoxx-15.09.1.tar.gz
+	md5sums = 72254a7bcdba0f2d0e299c4b9263f3f6
 
 pkgname = fotoxx
 
