@@ -2,7 +2,7 @@
 
 pkgname=intel-xdk
 pkgver=2366
-pkgrel=2
+pkgrel=3
 _rpmver=2.0-0
 pkgdesc='Comprehensive, cross-platform HTML5 development environment'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libudev0')
 makedepends=('rpmextract')
 
 source=('intel-xdk' 'intel-xdk.desktop')
-md5sums=('f7438a93f7691901ac17ea39b3fbb6a8' '9776d6cda6ab84d4df2d10b02f24ccab')
+md5sums=('f7438a93f7691901ac17ea39b3fbb6a8' '34d9c2b87221acf10812ab1150357dc9')
 
 if [ "${CARCH}" == 'i686' ]; then
   _arch='32'
