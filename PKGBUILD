@@ -2,7 +2,7 @@
 
 _pkgname=google-cli
 pkgname=google-cli
-pkgver=1.2
+pkgver=1.5
 pkgrel=1
 pkgdesc="Google Search from command line"
 arch=('any')
@@ -11,10 +11,10 @@ license=('GPL3')
 depends=('python')
 conflicts=('google-cli-git')
 source=("https://github.com/jarun/google-cli/archive/v$pkgver.tar.gz")
-md5sums=('f3a6ea17e81ad8741a6614276dc9a22d')
+md5sums=('be93abec3cd31a9e7cf6b6637b79bf40')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  install -Dm755 google "${pkgdir}/usr/bin/google"
-  install -Dm644 google.1 "${pkgdir}/usr/share/man/man1/google.1"
+  install -Dm755 googler "${pkgdir}/usr/bin/googler"
+  install -Dm644 googler.1 "${pkgdir}/usr/share/man/man1/googler.1"
 }
