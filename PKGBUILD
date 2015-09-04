@@ -5,7 +5,7 @@ pkgver=0.40
 pkgrel=1
 pkgdesc='numeric tests for perl scalars'
 _dist='Scalar-Util-Numeric'
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
 depends=('perl>=5.8')
