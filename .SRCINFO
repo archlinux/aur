@@ -1,0 +1,21 @@
+pkgbase = pidgin-opensteamworks-git
+	pkgdesc = A plugin to connect to Steam Friends/Steam IM (purple plugin).
+	pkgver = 1.6.1.r8.g5c881d5
+	pkgrel = 1
+	url = https://code.google.com/p/pidgin-opensteamworks
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	makedepends = nss
+	makedepends = libgnome-keyring
+	depends = libpurple
+	depends = json-glib
+	replaces = pidgin-opensteamworks-svn
+	source = pidgin-opensteamworks::git+https://github.com/EionRobb/pidgin-opensteamworks.git
+	source = steam.svg
+	sha512sums = SKIP
+	sha512sums = 34bfdf6f92cd00f9a7812d6c297d552bb05679d619ed41d4416f45043e07554d83d6fb8dcdf9361a311349e776dede2aa48b75dd208f69faf9e5638860ceab61
+
+pkgname = pidgin-opensteamworks-git
+
