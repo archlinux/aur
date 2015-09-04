@@ -9,7 +9,7 @@ url='http://luajit.org/'
 license=('MIT')
 depends=('gcc-libs') 
 makedepends=('git')
-conflicts=()
+conflicts=('luajit')
 provides=('luajit')
 source=(git+http://luajit.org/git/luajit-2.0.git#tag=v2.1.0-beta1)
 sha256sums=('SKIP')
