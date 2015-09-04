@@ -1,6 +1,6 @@
 pkgbase = calligra
 	pkgdesc = Digital painting and illustration suite (stand-alone).
-	pkgver = 2.9.6
+	pkgver = 2.9.7
 	pkgrel = 1
 	url = http://www.krita.org/
 	install = krita.install
@@ -29,8 +29,8 @@ pkgbase = calligra
 	conflicts = calligra-libs
 	conflicts = calligra-extras
 	conflicts = calligra-filters
-	source = http://download.kde.org/stable/calligra-2.9.6/calligra-2.9.6.tar.xz
-	sha256sums = 78564137133e2f45065085df66ce2ab31478517c10163a06ba690a2d3a98a184
+	source = http://download.kde.org/stable/calligra-2.9.7/calligra-2.9.7.tar.xz
+	sha256sums = 7a641a1669739ff55809fd6f2c22d673843ac41f64e82f5ca6cb3e60c7c82781
 
 pkgname = krita
 
