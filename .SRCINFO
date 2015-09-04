@@ -1,6 +1,6 @@
 pkgbase = aws-cli
 	pkgdesc = Universal Command Line Interface for Amazon Web Services.
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/aws/aws-cli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = aws-cli
 	makedepends = python-distribute
 	depends = python
 	depends = python-bcdoc<0.15.0
-	depends = python-botocore>=1.1.12
+	depends = python-botocore>=1.2.0
 	depends = python-colorama>=0.2.5
 	depends = python-colorama<=0.3.3
 	depends = python-rsa-3.1.2>=3.1.2
@@ -32,8 +32,8 @@ pkgbase = aws-cli
 	replaces = python-aws-cli
 	replaces = awscli
 	options = !emptydirs
-	source = aws-cli-1.8.1.tar.gz::https://github.com/aws/aws-cli/archive/1.8.1.tar.gz
-	sha256sums = 62cf54c32dc751d9c3bfb6e480349e3ca1227eff76a90e0b2505200f4dcdd232
+	source = aws-cli-1.8.2.tar.gz::https://github.com/aws/aws-cli/archive/1.8.2.tar.gz
+	sha256sums = 4545cc633214f8e54cbc35237dbb60e620e852754dc332002d700c9caa6bcdf0
 
 pkgname = aws-cli
 
