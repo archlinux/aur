@@ -9,14 +9,14 @@ Gbp-Pq: Topic features-old
 ---
  globals.h |  2 ++
  init.h    | 12 ++++++++++++
- pgp.c     |  2 ++
- 3 files changed, 16 insertions(+)
+ pgp.c     |  3 ++-
+ 3 files changed, 16 insertions(+), 1 deletion(-)
 
 diff --git a/globals.h b/globals.h
-index a7e2304..5b6e56a 100644
+index 6a1b8da..282fde3 100644
 --- a/globals.h
 +++ b/globals.h
-@@ -244,6 +244,8 @@ WHERE char *PgpVerifyKeyCommand;
+@@ -247,6 +247,8 @@ WHERE char *PgpVerifyKeyCommand;
  WHERE char *PgpListSecringCommand;
  WHERE char *PgpListPubringCommand;
  WHERE char *PgpGetkeysCommand;
@@ -26,10 +26,10 @@ index a7e2304..5b6e56a 100644
  /*-- formerly in smime.h --*/
  WHERE char *SmimeDefaultKey;
 diff --git a/init.h b/init.h
-index d4a882b..a64992a 100644
+index 1fba2f2..e3bcc89 100644
 --- a/init.h
 +++ b/init.h
-@@ -2590,6 +2590,18 @@ struct option_t MuttVars[] = {
+@@ -2657,6 +2657,18 @@ struct option_t MuttVars[] = {
    ** a line quoted text if it also matches $$smileys. This mostly
    ** happens at the beginning of a line.
    */
@@ -49,13 +49,14 @@ index d4a882b..a64992a 100644
  
  
 diff --git a/pgp.c b/pgp.c
-index 506a078..92dee8c 100644
+index 9c03db7..497ff06 100644
 --- a/pgp.c
 +++ b/pgp.c
-@@ -1127,6 +1127,8 @@ BODY *pgp_sign_message (BODY *a)
+@@ -1213,7 +1213,8 @@ BODY *pgp_sign_message (BODY *a)
    t->disposition = DISPNONE;
    t->encoding = ENC7BIT;
    t->unlink = 1; /* ok to remove this file after sending. */
+-  mutt_set_parameter ("name", "signature.asc", &t->parameter);
 +  mutt_set_parameter ("name", PgpMimeSignatureFilename, &t->parameter);
 +  t->description = safe_strdup (PgpMimeSignatureDescription);
  

@@ -11,7 +11,7 @@ Gbp-Pq: Topic debian-specific
  1 file changed, 22 insertions(+)
 
 diff --git a/init.h b/init.h
-index dc69e2c..7d319ad 100644
+index fd133dc..5e9244d 100644
 --- a/init.h
 +++ b/init.h
 @@ -312,6 +312,9 @@ struct option_t MuttVars[] = {
@@ -24,7 +24,7 @@ index dc69e2c..7d319ad 100644
    */
    { "braille_friendly", DT_BOOL, R_NONE, OPTBRAILLEFRIENDLY, 0 },
    /*
-@@ -1044,6 +1047,9 @@ struct option_t MuttVars[] = {
+@@ -1073,6 +1076,9 @@ struct option_t MuttVars[] = {
    ** one is not used.
    ** .pp
    ** Also see $$use_domain and $$hidden_host.
@@ -34,7 +34,7 @@ index dc69e2c..7d319ad 100644
    */
    { "ignore_linear_white_space",    DT_BOOL, R_NONE, OPTIGNORELWS, 0 },
    /*
-@@ -1577,6 +1583,9 @@ struct option_t MuttVars[] = {
+@@ -1616,6 +1622,9 @@ struct option_t MuttVars[] = {
    ** system.  It is used with various sets of parameters to gather the
    ** list of known remailers, and to finally send a message through the
    ** mixmaster chain.
@@ -44,7 +44,7 @@ index dc69e2c..7d319ad 100644
    */
  #endif
    { "move",		DT_QUAD, R_NONE, OPT_MOVE, M_NO },
-@@ -2619,6 +2628,10 @@ struct option_t MuttVars[] = {
+@@ -2686,6 +2695,10 @@ struct option_t MuttVars[] = {
    ** This variable contains the name of either a directory, or a file which
    ** contains trusted certificates for use with OpenSSL.
    ** (S/MIME only)
@@ -55,7 +55,7 @@ index dc69e2c..7d319ad 100644
    */
    { "smime_certificates",	DT_PATH, R_NONE, UL &SmimeCertificates, 0 },
    /*
-@@ -2825,6 +2838,9 @@ struct option_t MuttVars[] = {
+@@ -2891,6 +2904,9 @@ struct option_t MuttVars[] = {
    ** .ts
    ** set smtp_authenticators="digest-md5:cram-md5"
    ** .te
@@ -65,7 +65,7 @@ index dc69e2c..7d319ad 100644
    */
  # endif /* USE_SASL */
    { "smtp_pass", 	DT_STR,  R_NONE, UL &SmtpPass, UL 0 },
-@@ -2872,6 +2888,9 @@ struct option_t MuttVars[] = {
+@@ -2938,6 +2954,9 @@ struct option_t MuttVars[] = {
    ** .pp
    ** You may optionally use the ``reverse-'' prefix to specify reverse sorting
    ** order (example: ``\fCset sort=reverse-date-sent\fP'').
@@ -75,7 +75,7 @@ index dc69e2c..7d319ad 100644
    */
    { "sort_alias",	DT_SORT|DT_SORT_ALIAS,	R_NONE,	UL &SortAlias, SORT_ALIAS },
    /*
-@@ -3423,6 +3442,9 @@ struct option_t MuttVars[] = {
+@@ -3522,6 +3541,9 @@ struct option_t MuttVars[] = {
    ** is set to deliver directly via SMTP (see $$smtp_url), this
    ** option does nothing: mutt will never write out the ``Bcc:'' header
    ** in this case.

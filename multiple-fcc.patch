@@ -16,10 +16,10 @@ Gbp-Pq: Topic mutt-patched
  3 files changed, 32 insertions(+), 1 deletion(-)
 
 diff --git a/protos.h b/protos.h
-index 38c8c01..551b142 100644
+index 799ac9b..5d2fafb 100644
 --- a/protos.h
 +++ b/protos.h
-@@ -362,6 +362,7 @@ int mutt_user_is_recipient (HEADER *);
+@@ -364,6 +364,7 @@ int mutt_user_is_recipient (HEADER *);
  void mutt_update_num_postponed (void);
  int mutt_wait_filter (pid_t);
  int mutt_which_case (const char *);
@@ -28,10 +28,10 @@ index 38c8c01..551b142 100644
  int mutt_write_mime_body (BODY *, FILE *);
  int mutt_write_mime_header (BODY *, FILE *);
 diff --git a/send.c b/send.c
-index 18b9390..893c859 100644
+index 6dd26c0..0b45171 100644
 --- a/send.c
 +++ b/send.c
-@@ -1747,7 +1747,7 @@ full_fcc:
+@@ -1810,7 +1810,7 @@ full_fcc:
         * message was first postponed.
         */
        msg->received = time (NULL);
@@ -41,10 +41,10 @@ index 18b9390..893c859 100644
  	/*
  	 * Error writing FCC, we should abort sending.
 diff --git a/sendlib.c b/sendlib.c
-index 0f05298..9d83401 100644
+index 689a112..2144156 100644
 --- a/sendlib.c
 +++ b/sendlib.c
-@@ -2680,6 +2680,36 @@ static void set_noconv_flags (BODY *b, short flag)
+@@ -2687,6 +2687,36 @@ static void set_noconv_flags (BODY *b, short flag)
    }
  }
  

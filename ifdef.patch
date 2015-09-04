@@ -36,10 +36,10 @@ Gbp-Pq: Topic features
  3 files changed, 83 insertions(+)
 
 diff --git a/doc/manual.xml.head b/doc/manual.xml.head
-index 0093685..18ae918 100644
+index baeddac..8948459 100644
 --- a/doc/manual.xml.head
 +++ b/doc/manual.xml.head
-@@ -4378,6 +4378,28 @@ from which to read input (e.g.  <literal><command>source</command>
+@@ -4411,6 +4411,28 @@ from which to read input (e.g.  <literal><command>source</command>
  
  </sect1>
  
@@ -69,7 +69,7 @@ index 0093685..18ae918 100644
  <title>Removing Hooks</title>
  
 diff --git a/init.c b/init.c
-index 4897b9e..cc3cf4b 100644
+index 118f06f..d95c9bc 100644
 --- a/init.c
 +++ b/init.c
 @@ -601,6 +601,65 @@ static void remove_from_list (LIST **l, const char *str)
@@ -139,10 +139,10 @@ index 4897b9e..cc3cf4b 100644
  {
    do
 diff --git a/init.h b/init.h
-index 395cd3f..80d05ce 100644
+index 569f91e..6b49341 100644
 --- a/init.h
 +++ b/init.h
-@@ -3487,6 +3487,7 @@ static int parse_lists (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+@@ -3596,6 +3596,7 @@ static int parse_lists (BUFFER *, BUFFER *, unsigned long, BUFFER *);
  static int parse_unlists (BUFFER *, BUFFER *, unsigned long, BUFFER *);
  static int parse_alias (BUFFER *, BUFFER *, unsigned long, BUFFER *);
  static int parse_unalias (BUFFER *, BUFFER *, unsigned long, BUFFER *);
@@ -150,7 +150,7 @@ index 395cd3f..80d05ce 100644
  static int parse_ignore (BUFFER *, BUFFER *, unsigned long, BUFFER *);
  static int parse_unignore (BUFFER *, BUFFER *, unsigned long, BUFFER *);
  static int parse_source (BUFFER *, BUFFER *, unsigned long, BUFFER *);
-@@ -3537,6 +3538,7 @@ const struct command_t Commands[] = {
+@@ -3646,6 +3647,7 @@ const struct command_t Commands[] = {
    { "group",		parse_group,		M_GROUP },
    { "ungroup",		parse_group,		M_UNGROUP },
    { "hdr_order",	parse_list,		UL &HeaderOrderList },

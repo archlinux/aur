@@ -13,10 +13,10 @@ Gbp-Pq: Topic features
  3 files changed, 65 insertions(+)
 
 diff --git a/imap/imap.c b/imap/imap.c
-index 93dc06a..393d4ec 100644
+index ad15f5e..f476873 100644
 --- a/imap/imap.c
 +++ b/imap/imap.c
-@@ -886,6 +886,12 @@ static int imap_make_msg_set (IMAP_DATA* idata, BUFFER* buf, int flag,
+@@ -885,6 +885,12 @@ static int imap_make_msg_set (IMAP_DATA* idata, BUFFER* buf, int flag,
            if (hdrs[n]->deleted != HEADER_DATA(hdrs[n])->deleted)
              match = invert ^ hdrs[n]->deleted;
  	  break;
@@ -29,7 +29,7 @@ index 93dc06a..393d4ec 100644
          case M_FLAG:
            if (hdrs[n]->flagged != HEADER_DATA(hdrs[n])->flagged)
              match = invert ^ hdrs[n]->flagged;
-@@ -2017,3 +2023,54 @@ int imap_complete(char* dest, size_t dlen, char* path) {
+@@ -2026,3 +2032,54 @@ int imap_complete(char* dest, size_t dlen, char* path) {
  
    return -1;
  }
@@ -97,7 +97,7 @@ index 74d7e13..99cd454 100644
 +
  #endif
 diff --git a/mx.c b/mx.c
-index 89b9431..cc60517 100644
+index 15c0a6b..fcb781f 100644
 --- a/mx.c
 +++ b/mx.c
 @@ -802,6 +802,11 @@ static int trash_append (CONTEXT *ctx)

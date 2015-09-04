@@ -13,10 +13,10 @@ Gbp-Pq: Topic debian-specific
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/init.c b/init.c
-index 1401664..e0a0757 100644
+index 767d43c..b08439e 100644
 --- a/init.c
 +++ b/init.c
-@@ -3129,7 +3129,7 @@ void mutt_init (int skip_sys_rc, LIST *commands)
+@@ -3107,7 +3107,7 @@ void mutt_init (int skip_sys_rc, LIST *commands)
    {
      p = getenv ("EDITOR");
      if (!p)
@@ -26,10 +26,10 @@ index 1401664..e0a0757 100644
    Editor = safe_strdup (p);
    Visual = safe_strdup (p);
 diff --git a/init.h b/init.h
-index 0e4f47f..7768683 100644
+index a1c4180..27bc371 100644
 --- a/init.h
 +++ b/init.h
-@@ -686,7 +686,7 @@ struct option_t MuttVars[] = {
+@@ -715,7 +715,7 @@ struct option_t MuttVars[] = {
    ** .pp
    ** This variable specifies which editor is used by mutt.
    ** It defaults to the value of the \fC$$$VISUAL\fP, or \fC$$$EDITOR\fP, environment

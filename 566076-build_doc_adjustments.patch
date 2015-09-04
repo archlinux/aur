@@ -10,10 +10,10 @@ Gbp-Pq: Topic debian-specific
  1 file changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/doc/Makefile.am b/doc/Makefile.am
-index f4e21bc..3676245 100644
+index bc8f856..979f31d 100644
 --- a/doc/Makefile.am
 +++ b/doc/Makefile.am
-@@ -106,9 +106,7 @@ uninstall-local:
+@@ -109,9 +109,7 @@ uninstall-local:
  
  check:
  manual.txt: manual.html
@@ -24,7 +24,7 @@ index f4e21bc..3676245 100644
  
  Muttrc: stamp-doc-rc
  
-@@ -120,10 +118,10 @@ stamp-doc-rc: $(top_srcdir)/init.h makedoc$(EXEEXT) $(srcdir)/Muttrc.head
+@@ -123,10 +121,10 @@ stamp-doc-rc: $(top_srcdir)/init.h makedoc$(EXEEXT) $(srcdir)/Muttrc.head
  	touch stamp-doc-rc
  
  manual.html: $(srcdir)/html.xsl $(srcdir)/mutt.xsl stamp-doc-xml $(srcdir)/mutt.css

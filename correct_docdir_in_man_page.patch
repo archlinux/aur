@@ -11,10 +11,10 @@ Gbp-Pq: Topic debian-specific
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/doc/mutt.man b/doc/mutt.man
-index 181ef62..718f87a 100644
+index b764c74..753953e 100644
 --- a/doc/mutt.man
 +++ b/doc/mutt.man
-@@ -185,7 +185,7 @@ User's personal mapping between MIME types and file extensions.
+@@ -188,7 +188,7 @@ User's personal mapping between MIME types and file extensions.
  System mapping between MIME types and file extensions.
  .IP "@bindir@/mutt_dotlock"
  The privileged dotlocking program.

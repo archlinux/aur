@@ -2,7 +2,7 @@ From: Antonio Radici <antonio@debian.org>
 Date: Thu, 27 Feb 2014 17:36:31 +0100
 Subject: 611410-no-implicit_autoview-for-text-html
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 This patch blacklist text/html from the list of documents that will be
@@ -22,10 +22,10 @@ Gbp-Pq: Topic upstream
  2 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/init.h b/init.h
-index 42b79d6..08e004c 100644
+index e370b3a..35224c1 100644
 --- a/init.h
 +++ b/init.h
-@@ -1222,7 +1222,9 @@ struct option_t MuttVars[] = {
+@@ -1251,7 +1251,9 @@ struct option_t MuttVars[] = {
    ** ``\fCcopiousoutput\fP'' flag set for \fIevery\fP MIME attachment it doesn't have
    ** an internal viewer defined for.  If such an entry is found, mutt will
    ** use the viewer defined in that entry to convert the body part to text
@@ -37,10 +37,10 @@ index 42b79d6..08e004c 100644
    { "include",		DT_QUAD, R_NONE, OPT_INCLUDE, M_ASKYES },
    /*
 diff --git a/muttlib.c b/muttlib.c
-index 0425d45..c0d2026 100644
+index 0fd9766..c1d565f 100644
 --- a/muttlib.c
 +++ b/muttlib.c
-@@ -658,6 +658,9 @@ int mutt_needs_mailcap (BODY *m)
+@@ -650,6 +650,9 @@ int mutt_needs_mailcap (BODY *m)
    switch (m->type)
    {
      case TYPETEXT:

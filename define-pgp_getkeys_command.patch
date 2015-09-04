@@ -10,10 +10,10 @@ Gbp-Pq: Topic misc
  1 file changed, 2 insertions(+)
 
 diff --git a/contrib/gpg.rc b/contrib/gpg.rc
-index d6c9def..7511f3c 100644
+index c713b6d..5b83cd5 100644
 --- a/contrib/gpg.rc
 +++ b/contrib/gpg.rc
-@@ -72,6 +72,8 @@ set pgp_list_secring_command="gpg --no-verbose --batch --quiet --with-colons --l
+@@ -72,6 +72,8 @@ set pgp_list_secring_command="gpg --no-verbose --batch --quiet --with-colons --w
  
  # fetch keys
  # set pgp_getkeys_command="pkspxycwrap %r"

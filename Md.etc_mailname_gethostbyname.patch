@@ -11,7 +11,7 @@ Gbp-Pq: Topic debian-specific
  1 file changed, 41 insertions(+)
 
 diff --git a/init.c b/init.c
-index 81bb9e7..1401664 100644
+index d95c9bc..767d43c 100644
 --- a/init.c
 +++ b/init.c
 @@ -48,6 +48,7 @@
@@ -22,7 +22,7 @@ index 81bb9e7..1401664 100644
  #include <errno.h>
  #include <sys/wait.h>
  #include <sys/time.h>
-@@ -2965,6 +2966,31 @@ static void mutt_srandom (void)
+@@ -2943,6 +2944,31 @@ static void mutt_srandom (void)
    srandom(seed);
  }
  
@@ -54,7 +54,7 @@ index 81bb9e7..1401664 100644
  void mutt_init (int skip_sys_rc, LIST *commands)
  {
    struct passwd *pw;
-@@ -3041,10 +3067,25 @@ void mutt_init (int skip_sys_rc, LIST *commands)
+@@ -3019,10 +3045,25 @@ void mutt_init (int skip_sys_rc, LIST *commands)
      Hostname = mutt_substrdup (utsname.nodename, p);
      p++;
      strfcpy (buffer, p, sizeof (buffer)); /* save the domain for below */

@@ -42,7 +42,7 @@ Gbp-Pq: Topic mutt-patched
 ---
  Makefile.am    |   1 +
  OPS            |   5 +
- buffy.c        | 123 +++++++++++++++++++++
+ buffy.c        | 124 +++++++++++++++++++++
  buffy.h        |   4 +
  color.c        |   2 +
  compose.c      |  26 ++---
@@ -65,15 +65,15 @@ Gbp-Pq: Topic mutt-patched
  pager.c        |  30 ++++--
  sidebar.c      | 333 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  sidebar.h      |  36 +++++++
- 25 files changed, 719 insertions(+), 34 deletions(-)
+ 25 files changed, 720 insertions(+), 34 deletions(-)
  create mode 100644 sidebar.c
  create mode 100644 sidebar.h
 
 diff --git a/Makefile.am b/Makefile.am
-index 09dd64b..2fc6b1d 100644
+index 5dfeff6..cf1ac98 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -32,6 +32,7 @@ mutt_SOURCES = \
+@@ -33,6 +33,7 @@ mutt_SOURCES = \
  	rfc822.c rfc1524.c rfc2047.c rfc2231.c rfc3676.c \
  	score.c send.c sendlib.c signal.c sort.c \
  	status.c system.c thread.c charset.c history.c lib.c \
@@ -95,7 +95,7 @@ index 02cea8e..b036db9 100644
 +OP_SIDEBAR_PREV "go to previous mailbox"
 +OP_SIDEBAR_OPEN "open hilighted mailbox"
 diff --git a/buffy.c b/buffy.c
-index e5a0f79..225104d 100644
+index 12a16d1..90ca6db 100644
 --- a/buffy.c
 +++ b/buffy.c
 @@ -161,6 +161,49 @@ void mutt_buffy_cleanup (const char *buf, struct stat *st)
@@ -156,10 +156,11 @@ index e5a0f79..225104d 100644
    return 0;
  }
  
-@@ -340,6 +384,68 @@ static int buffy_maildir_hasnew (BUFFY* mailbox)
-   return rc;
- }
+@@ -357,6 +401,69 @@ static int buffy_maildir_hasnew (BUFFY* mailbox)
  
+   return 0;
+ }
++
 +/* update message counts for the sidebar */
 +void buffy_maildir_update (BUFFY* mailbox)
 +{
@@ -225,7 +226,7 @@ index e5a0f79..225104d 100644
  /* returns 1 if mailbox has new mail */ 
  static int buffy_mbox_hasnew (BUFFY* mailbox, struct stat *sb)
  {
-@@ -371,6 +477,20 @@ static int buffy_mbox_hasnew (BUFFY* mailbox, struct stat *sb)
+@@ -388,6 +495,20 @@ static int buffy_mbox_hasnew (BUFFY* mailbox, struct stat *sb)
    return rc;
  }
  
@@ -246,7 +247,7 @@ index e5a0f79..225104d 100644
  int mutt_buffy_check (int force)
  {
    BUFFY *tmp;
-@@ -444,16 +564,19 @@ int mutt_buffy_check (int force)
+@@ -461,16 +582,19 @@ int mutt_buffy_check (int force)
        {
        case M_MBOX:
        case M_MMDF:
@@ -283,20 +284,20 @@ index f9fc55a..672d178 100644
    short magic;			/* mailbox type */
    short newly_created;		/* mbox or mmdf just popped into existence */
 diff --git a/color.c b/color.c
-index ef97ca9..2112132 100644
+index 64a46dc..d6f9198 100644
 --- a/color.c
 +++ b/color.c
-@@ -93,6 +93,8 @@ static const struct mapping_t Fields[] =
-   { "bold",		MT_COLOR_BOLD },
+@@ -94,6 +94,8 @@ static const struct mapping_t Fields[] =
    { "underline",	MT_COLOR_UNDERLINE },
    { "index",		MT_COLOR_INDEX },
+   { "prompt",		MT_COLOR_PROMPT },
 +  { "sidebar_new",	MT_COLOR_NEW },
 +  { "sidebar_flagged",	MT_COLOR_FLAGGED },
    { NULL,		0 }
  };
  
 diff --git a/compose.c b/compose.c
-index 9cfa2d4..5a14d70 100644
+index 9d87060..b63695f 100644
 --- a/compose.c
 +++ b/compose.c
 @@ -72,7 +72,7 @@ enum
@@ -317,8 +318,8 @@ index 9cfa2d4..5a14d70 100644
  
    if ((WithCrypto & (APPLICATION_PGP | APPLICATION_SMIME)) == 0)
    {
-@@ -142,7 +142,7 @@ static void redraw_crypt_lines (HEADER *msg)
-   }
+@@ -145,7 +145,7 @@ static void redraw_crypt_lines (HEADER *msg)
+       addstr (_(" (OppEnc mode)"));
  
    clrtoeol ();
 -  move (HDR_CRYPTINFO, 0);
@@ -326,7 +327,7 @@ index 9cfa2d4..5a14d70 100644
    clrtoeol ();
  
    if ((WithCrypto & APPLICATION_PGP)
-@@ -159,7 +159,7 @@ static void redraw_crypt_lines (HEADER *msg)
+@@ -162,7 +162,7 @@ static void redraw_crypt_lines (HEADER *msg)
        && (msg->security & ENCRYPT)
        && SmimeCryptAlg
        && *SmimeCryptAlg) {
@@ -335,7 +336,7 @@ index 9cfa2d4..5a14d70 100644
  		NONULL(SmimeCryptAlg));
    }
  }
-@@ -172,7 +172,7 @@ static void redraw_mix_line (LIST *chain)
+@@ -175,7 +175,7 @@ static void redraw_mix_line (LIST *chain)
    int c;
    char *t;
  
@@ -344,7 +345,7 @@ index 9cfa2d4..5a14d70 100644
  
    if (!chain)
    {
-@@ -187,7 +187,7 @@ static void redraw_mix_line (LIST *chain)
+@@ -190,7 +190,7 @@ static void redraw_mix_line (LIST *chain)
      if (t && t[0] == '0' && t[1] == '\0')
        t = "<random>";
      
@@ -353,7 +354,7 @@ index 9cfa2d4..5a14d70 100644
        break;
  
      addstr (NONULL(t));
-@@ -239,7 +239,7 @@ static void draw_envelope_addr (int line, ADDRESS *addr)
+@@ -242,7 +242,7 @@ static void draw_envelope_addr (int line, ADDRESS *addr)
  
    buf[0] = 0;
    rfc822_write_address (buf, sizeof (buf), addr, 1);
@@ -362,7 +363,7 @@ index 9cfa2d4..5a14d70 100644
    mutt_paddstr (W, buf);
  }
  
-@@ -249,10 +249,10 @@ static void draw_envelope (HEADER *msg, char *fcc)
+@@ -252,10 +252,10 @@ static void draw_envelope (HEADER *msg, char *fcc)
    draw_envelope_addr (HDR_TO, msg->env->to);
    draw_envelope_addr (HDR_CC, msg->env->cc);
    draw_envelope_addr (HDR_BCC, msg->env->bcc);
@@ -375,7 +376,7 @@ index 9cfa2d4..5a14d70 100644
    mutt_paddstr (W, fcc);
  
    if (WithCrypto)
-@@ -263,7 +263,7 @@ static void draw_envelope (HEADER *msg, char *fcc)
+@@ -266,7 +266,7 @@ static void draw_envelope (HEADER *msg, char *fcc)
  #endif
  
    SETCOLOR (MT_COLOR_STATUS);
@@ -384,7 +385,7 @@ index 9cfa2d4..5a14d70 100644
    clrtoeol ();
  
    NORMAL_COLOR;
-@@ -299,7 +299,7 @@ static int edit_address_list (int line, ADDRESS **addr)
+@@ -302,7 +302,7 @@ static int edit_address_list (int line, ADDRESS **addr)
    /* redraw the expanded list so the user can see the result */
    buf[0] = 0;
    rfc822_write_address (buf, sizeof (buf), *addr, 1);
@@ -393,7 +394,7 @@ index 9cfa2d4..5a14d70 100644
    mutt_paddstr (W, buf);
    
    return 0;
-@@ -544,7 +544,7 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -562,7 +562,7 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
  	if (mutt_get_field ("Subject: ", buf, sizeof (buf), 0) == 0)
  	{
  	  mutt_str_replace (&msg->env->subject, buf);
@@ -402,7 +403,7 @@ index 9cfa2d4..5a14d70 100644
  	  if (msg->env->subject)
  	    mutt_paddstr (W, msg->env->subject);
  	  else
-@@ -562,7 +562,7 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -580,7 +580,7 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
  	{
  	  strfcpy (fcc, buf, fcclen);
  	  mutt_pretty_mailbox (fcc, fcclen);
@@ -412,7 +413,7 @@ index 9cfa2d4..5a14d70 100644
  	  fccSet = 1;
  	}
 diff --git a/curs_main.c b/curs_main.c
-index e7f11bd..7b81798 100644
+index 9d718ee..ea530a6 100644
 --- a/curs_main.c
 +++ b/curs_main.c
 @@ -26,7 +26,9 @@
@@ -425,7 +426,7 @@ index e7f11bd..7b81798 100644
  
  #ifdef USE_POP
  #include "pop.h"
-@@ -532,8 +534,12 @@ int mutt_index_menu (void)
+@@ -596,8 +598,12 @@ int mutt_index_menu (void)
         menu->redraw |= REDRAW_STATUS;
       if (do_buffy_notify)
       {
@@ -440,7 +441,7 @@ index e7f11bd..7b81798 100644
       }
       else
         do_buffy_notify = 1;
-@@ -545,6 +551,7 @@ int mutt_index_menu (void)
+@@ -609,6 +615,7 @@ int mutt_index_menu (void)
      if (menu->redraw & REDRAW_FULL)
      {
        menu_redraw_full (menu);
@@ -448,7 +449,7 @@ index e7f11bd..7b81798 100644
        mutt_show_error ();
      }
  
-@@ -567,9 +574,12 @@ int mutt_index_menu (void)
+@@ -631,9 +638,12 @@ int mutt_index_menu (void)
  
        if (menu->redraw & REDRAW_STATUS)
        {
@@ -461,7 +462,7 @@ index e7f11bd..7b81798 100644
  	mutt_paddstr (COLS, buf);
  	NORMAL_COLOR;
  	menu->redraw &= ~REDRAW_STATUS;
-@@ -589,7 +599,7 @@ int mutt_index_menu (void)
+@@ -653,7 +663,7 @@ int mutt_index_menu (void)
  	menu->oldcurrent = -1;
  
        if (option (OPTARROWCURSOR))
@@ -470,7 +471,7 @@ index e7f11bd..7b81798 100644
        else if (option (OPTBRAILLEFRIENDLY))
  	move (menu->current - menu->top + menu->offset, 0);
        else
-@@ -1090,6 +1100,7 @@ int mutt_index_menu (void)
+@@ -1154,6 +1164,7 @@ int mutt_index_menu (void)
  	  menu->redraw = REDRAW_FULL;
  	break;
  
@@ -478,7 +479,7 @@ index e7f11bd..7b81798 100644
        case OP_MAIN_CHANGE_FOLDER:
        case OP_MAIN_NEXT_UNREAD_MAILBOX:
  
-@@ -1121,7 +1132,11 @@ int mutt_index_menu (void)
+@@ -1185,7 +1196,11 @@ int mutt_index_menu (void)
  	{
  	  mutt_buffy (buf, sizeof (buf));
  
@@ -491,7 +492,7 @@ index e7f11bd..7b81798 100644
  	  {
  	    if (menu->menu == MENU_PAGER)
  	    {
-@@ -1139,6 +1154,7 @@ int mutt_index_menu (void)
+@@ -1203,6 +1218,7 @@ int mutt_index_menu (void)
  	}
  
  	mutt_expand_path (buf, sizeof (buf));
@@ -499,7 +500,7 @@ index e7f11bd..7b81798 100644
  	if (mx_get_magic (buf) <= 0)
  	{
  	  mutt_error (_("%s is not a mailbox."), buf);
-@@ -2242,6 +2258,12 @@ int mutt_index_menu (void)
+@@ -2306,6 +2322,12 @@ int mutt_index_menu (void)
  	mutt_what_key();
  	break;
  
@@ -564,10 +565,10 @@ index 26171a0..ef8937a 100644
  };
  
 diff --git a/globals.h b/globals.h
-index 5b6e56a..3f83328 100644
+index 282fde3..004c795 100644
 --- a/globals.h
 +++ b/globals.h
-@@ -117,6 +117,7 @@ WHERE short SearchContext;
+@@ -118,6 +118,7 @@ WHERE short SearchContext;
  WHERE char *SendCharset;
  WHERE char *Sendmail;
  WHERE char *Shell;
@@ -575,7 +576,7 @@ index 5b6e56a..3f83328 100644
  WHERE char *Signature;
  WHERE char *SimpleSearch;
  #if USE_SMTP
-@@ -211,6 +212,9 @@ WHERE short ScoreThresholdDelete;
+@@ -214,6 +215,9 @@ WHERE short ScoreThresholdDelete;
  WHERE short ScoreThresholdRead;
  WHERE short ScoreThresholdFlag;
  
@@ -604,10 +605,10 @@ index 32f8417..d68e3ab 100644
          return;
        }
 diff --git a/imap/imap.c b/imap/imap.c
-index 393d4ec..4b1ec86 100644
+index f476873..af3ac3d 100644
 --- a/imap/imap.c
 +++ b/imap/imap.c
-@@ -1520,7 +1520,7 @@ int imap_buffy_check (int force)
+@@ -1529,7 +1529,7 @@ int imap_buffy_check (int force)
  
      imap_munge_mbox_name (munged, sizeof (munged), name);
      snprintf (command, sizeof (command),
@@ -617,10 +618,10 @@ index 393d4ec..4b1ec86 100644
      if (imap_exec (idata, command, IMAP_CMD_QUEUE) < 0)
      {
 diff --git a/init.h b/init.h
-index 08e004c..502f570 100644
+index 35224c1..c664e5f 100644
 --- a/init.h
 +++ b/init.h
-@@ -1980,6 +1980,27 @@ struct option_t MuttVars[] = {
+@@ -2030,6 +2030,27 @@ struct option_t MuttVars[] = {
    ** not used.
    ** (PGP only)
    */
@@ -649,7 +650,7 @@ index 08e004c..502f570 100644
    /*
    ** .pp
 diff --git a/mailbox.h b/mailbox.h
-index 91e5dc7..b652628 100644
+index 2b2c9a1..000503d 100644
 --- a/mailbox.h
 +++ b/mailbox.h
 @@ -27,6 +27,7 @@
@@ -659,7 +660,7 @@ index 91e5dc7..b652628 100644
 +#define M_PEEK		(1<<5) /* revert atime back after taking a look (if applicable) */
  
  /* mx_open_new_message() */
- #define M_ADD_FROM	1	/* add a From_ line */
+ #define M_ADD_FROM	(1<<0)	/* add a From_ line */
 diff --git a/mbox.c b/mbox.c
 index 6d3b6bd..fa82eb3 100644
 --- a/mbox.c
@@ -780,7 +781,7 @@ index 27b5f8e..bc3a02f 100644
        move (menu->current - menu->top + menu->offset, 0);
      else
 diff --git a/mh.c b/mh.c
-index 21e6491..48a16fb 100644
+index 63e12d2..4a84a99 100644
 --- a/mh.c
 +++ b/mh.c
 @@ -295,6 +295,28 @@ void mh_buffy(BUFFY *b)
@@ -813,10 +814,10 @@ index 21e6491..48a16fb 100644
  {
    int fd;
 diff --git a/mutt.h b/mutt.h
-index 4db92a6..61a9612 100644
+index 01d47de..5f25406 100644
 --- a/mutt.h
 +++ b/mutt.h
-@@ -433,6 +433,8 @@ enum
+@@ -435,6 +435,8 @@ enum
    OPTSAVEEMPTY,
    OPTSAVENAME,
    OPTSCORE,
@@ -825,7 +826,7 @@ index 4db92a6..61a9612 100644
    OPTSIGDASHES,
    OPTSIGONTOP,
    OPTSORTRE,
-@@ -876,6 +878,7 @@ typedef struct _context
+@@ -880,6 +882,7 @@ typedef struct _context
  {
    char *path;
    FILE *fp;
@@ -833,7 +834,7 @@ index 4db92a6..61a9612 100644
    time_t mtime;
    off_t size;
    off_t vsize;
-@@ -916,6 +919,7 @@ typedef struct _context
+@@ -920,6 +923,7 @@ typedef struct _context
    unsigned int quiet : 1;	/* inhibit status messages? */
    unsigned int collapsed : 1;   /* are all threads collapsed? */
    unsigned int closing : 1;	/* mailbox is being closed */
@@ -842,7 +843,7 @@ index 4db92a6..61a9612 100644
    /* driver hooks */
    void *data;			/* driver specific data */
 diff --git a/mutt_curses.h b/mutt_curses.h
-index f8d6f88..aee797e 100644
+index f8bc47c..ef9884e 100644
 --- a/mutt_curses.h
 +++ b/mutt_curses.h
 @@ -64,6 +64,7 @@
@@ -853,20 +854,20 @@ index f8d6f88..aee797e 100644
  #define CLEARLINE(x) move(x,0), clrtoeol()
  #define CENTERLINE(x,y) move(y, (COLS-strlen(x))/2), addstr(x)
  #define BEEP() do { if (option (OPTBEEP)) beep(); } while (0)
-@@ -120,6 +121,8 @@ enum
-   MT_COLOR_BOLD,
+@@ -121,6 +122,8 @@ enum
    MT_COLOR_UNDERLINE,
    MT_COLOR_INDEX,
+   MT_COLOR_PROMPT,
 +  MT_COLOR_NEW,
 +  MT_COLOR_FLAGGED,
    MT_COLOR_MAX
  };
  
 diff --git a/muttlib.c b/muttlib.c
-index c0d2026..9086f07 100644
+index c1d565f..039e7c3 100644
 --- a/muttlib.c
 +++ b/muttlib.c
-@@ -1284,6 +1284,8 @@ void mutt_FormatString (char *dest,		/* output buffer */
+@@ -1279,6 +1279,8 @@ void mutt_FormatString (char *dest,		/* output buffer */
  	  pl = pw = 1;
  
  	/* see if there's room to add content, else ignore */
@@ -875,7 +876,7 @@ index c0d2026..9086f07 100644
  	if ((col < COLS && wlen < destlen) || soft)
  	{
  	  int pad;
-@@ -1327,6 +1329,52 @@ void mutt_FormatString (char *dest,		/* output buffer */
+@@ -1322,6 +1324,52 @@ void mutt_FormatString (char *dest,		/* output buffer */
  	  col += wid;
  	  src += pl;
  	}
@@ -929,7 +930,7 @@ index c0d2026..9086f07 100644
        }
        else if (ch == '|')
 diff --git a/mx.c b/mx.c
-index 07dba0c..cbee47d 100644
+index 0a1a80e..e80b8ff 100644
 --- a/mx.c
 +++ b/mx.c
 @@ -595,6 +595,7 @@ static int mx_open_mailbox_append (CONTEXT *ctx, int flags)
@@ -984,7 +985,7 @@ index 2ef4ec7..4aabadf 100644
  
  int maildir_read_dir (CONTEXT *);
 diff --git a/pager.c b/pager.c
-index 7b61266..469efe4 100644
+index c99f1e4..5cfcb75 100644
 --- a/pager.c
 +++ b/pager.c
 @@ -29,6 +29,7 @@
@@ -1054,7 +1055,7 @@ index 7b61266..469efe4 100644
 +	mutt_paddstr (COLS-SidebarWidth, bn);
        }
        NORMAL_COLOR;
-       if (option(OPTXTERMSETTITLES))
+       if (option(OPTTSENABLED) && TSSupported)
 @@ -1826,16 +1830,21 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
        /* redraw the pager_index indicator, because the
         * flags for this message might have changed. */

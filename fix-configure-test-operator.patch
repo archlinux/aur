@@ -8,14 +8,14 @@ Gbp-Pq: Topic misc
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index e7ebe01..2d57b76 100644
+index 5eed08f..1d260aa 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1187,7 +1187,7 @@ if test "x$with_idn" != "xno"; then
-     ])
+@@ -1213,7 +1213,7 @@ if test "x$with_idn" != "xno"; then
+     LIBS="$mutt_save_LIBS"
  
      if test "$with_idn" != auto; then
--      if test $have_stringprep_h = no || test $have_idna_h = no || test $ac_cv_search_STRINGPREP_CHECK_VERSION = no; then
+-      if test $have_stringprep_h = no || test $have_idna_h = no || test $ac_cv_search_stringprep_check_version = no; then
 +      if test "$have_stringprep_h" = no || test "$have_idna_h" = no || test "$ac_cv_search_STRINGPREP_CHECK_VERSION" = no; then
  	AC_MSG_ERROR([IDN was requested, but libidn was not usable on this system])
        fi

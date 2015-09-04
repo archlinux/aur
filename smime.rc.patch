@@ -11,7 +11,7 @@ Gbp-Pq: Topic misc
  1 file changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/contrib/smime.rc b/contrib/smime.rc
-index 5376089..efb0b6e 100644
+index 0f85421..f0fae0f 100644
 --- a/contrib/smime.rc
 +++ b/contrib/smime.rc
 @@ -4,33 +4,34 @@
@@ -21,7 +21,7 @@ index 5376089..efb0b6e 100644
 -set smime_is_default
 +#set smime_is_default
  
- # Uncoment this if you don't want to set labels for certificates you add.
+ # Uncomment this if you don't want to set labels for certificates you add.
  # unset smime_ask_cert_label
  
  # Passphrase expiration
@@ -47,7 +47,7 @@ index 5376089..efb0b6e 100644
 -set smime_default_key="12345678.0"
 +#set smime_default_key="12345678.0"
  
- # Uncommen to make mutt ask what key to use when trying to decrypt a message.
+ # Uncomment to make mutt ask what key to use when trying to decrypt a message.
  # It will use the default key above (if that was set) else.
  # unset smime_decrypt_use_default_key
  

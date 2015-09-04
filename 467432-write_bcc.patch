@@ -2,7 +2,7 @@ From: Antonio Radici <antonio@debian.org>
 Date: Thu, 27 Feb 2014 16:22:51 +0100
 Subject: 467432-write_bcc
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 The purpose of this patch is to alter the behavior of the write_bcc option
@@ -43,10 +43,10 @@ index 578b33d..f701c8e 100644
  
    /* now copy the body of the message. */
 diff --git a/init.h b/init.h
-index 875cad8..42b79d6 100644
+index ec88f92..e370b3a 100644
 --- a/init.h
 +++ b/init.h
-@@ -3440,14 +3440,9 @@ struct option_t MuttVars[] = {
+@@ -3539,14 +3539,9 @@ struct option_t MuttVars[] = {
    { "write_bcc",	DT_BOOL, R_NONE, OPTWRITEBCC, 1},
    /*
    ** .pp
@@ -65,10 +65,10 @@ index 875cad8..42b79d6 100644
    { "write_inc",	DT_NUM,	 R_NONE, UL &WriteInc, 10 },
    /*
 diff --git a/protos.h b/protos.h
-index 8542f91..38c8c01 100644
+index 2ba4d1d..799ac9b 100644
 --- a/protos.h
 +++ b/protos.h
-@@ -366,7 +366,7 @@ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int, char
+@@ -368,7 +368,7 @@ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int, char
  int mutt_write_mime_body (BODY *, FILE *);
  int mutt_write_mime_header (BODY *, FILE *);
  int mutt_write_one_header (FILE *fp, const char *tag, const char *value, const char *pfx, int wraplen, int flags);
@@ -78,7 +78,7 @@ index 8542f91..38c8c01 100644
  int mutt_yesorno (const char *, int);
  void mutt_set_header_color(CONTEXT *, HEADER *);
 diff --git a/send.c b/send.c
-index fce003c..18b9390 100644
+index d4e2a79..6dd26c0 100644
 --- a/send.c
 +++ b/send.c
 @@ -994,10 +994,10 @@ static int send_message (HEADER *msg)
@@ -95,10 +95,10 @@ index fce003c..18b9390 100644
  #ifdef USE_SMTP
    if (old_write_bcc)
 diff --git a/sendlib.c b/sendlib.c
-index cede853..0f05298 100644
+index a74874d..689a112 100644
 --- a/sendlib.c
 +++ b/sendlib.c
-@@ -1929,7 +1929,7 @@ out:
+@@ -1936,7 +1936,7 @@ out:
  
  
  int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
@@ -107,7 +107,7 @@ index cede853..0f05298 100644
  {
    char buffer[LONG_STRING];
    char *p, *q;
-@@ -1972,7 +1972,7 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
+@@ -1979,7 +1979,7 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
    else if (mode > 0)
      fputs ("Cc: \n", fp);
  
@@ -116,7 +116,7 @@ index cede853..0f05298 100644
    {
      if(mode != 0 || option(OPTWRITEBCC))
      {
-@@ -2727,7 +2727,7 @@ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int post,
+@@ -2738,7 +2738,7 @@ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int post,
    /* post == 1 => postpone message. Set mode = -1 in mutt_write_rfc822_header()
     * post == 0 => Normal mode. Set mode = 0 in mutt_write_rfc822_header()
     * */

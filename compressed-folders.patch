@@ -40,18 +40,18 @@ Gbp-Pq: Topic features
  mx.c                |  42 ++++-
  mx.h                |   3 +
  po/POTFILES.in      |   1 +
- po/de.po            |  30 ++++
+ po/de.po            |  29 +++
  status.c            |   8 +
- 17 files changed, 883 insertions(+), 3 deletions(-)
+ 17 files changed, 882 insertions(+), 3 deletions(-)
  create mode 100644 compress.c
  create mode 100644 compress.h
 
 diff --git a/Makefile.am b/Makefile.am
-index 8166b1b..09dd64b 100644
+index baff538..5dfeff6 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -22,7 +22,7 @@ BUILT_SOURCES = keymap_defs.h patchlist.c reldate.h conststrings.c $(HCVERSION)
- bin_PROGRAMS = mutt @DOTLOCK_TARGET@ @PGPAUX_TARGET@
+@@ -23,7 +23,7 @@ BUILT_SOURCES = keymap_defs.h patchlist.c reldate.h conststrings.c $(HCVERSION)
+ bin_PROGRAMS = mutt $(DOTLOCK_TARGET) $(PGPAUX_TARGET)
  mutt_SOURCES = \
  	addrbook.c alias.c attach.c base64.c browser.c buffy.c color.c \
 -	crypt.c cryptglue.c \
@@ -59,7 +59,7 @@ index 8166b1b..09dd64b 100644
  	commands.c complete.c compose.c copy.c curs_lib.c curs_main.c date.c \
  	edit.c enter.c flags.c init.c filter.c from.c \
  	getdomain.c group.c \
-@@ -61,7 +61,7 @@ EXTRA_mutt_SOURCES = account.c bcache.c crypt-gpgme.c crypt-mod-pgp-classic.c \
+@@ -60,7 +60,7 @@ EXTRA_mutt_SOURCES = account.c bcache.c crypt-gpgme.c crypt-mod-pgp-classic.c \
  	bcache.h browser.h hcache.h mbyte.h mutt_idna.h remailer.h url.h
  
  EXTRA_DIST = COPYRIGHT GPL OPS OPS.PGP OPS.CRYPT OPS.SMIME TODO UPDATING \
@@ -607,10 +607,10 @@ index 0000000..9dbf027
 +int mutt_check_mailbox_compressed (CONTEXT *);
 +void mutt_fast_close_compressed (CONTEXT *);
 diff --git a/configure.ac b/configure.ac
-index 3d5f11b..e7ebe01 100644
+index 6a1344e..5eed08f 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -812,6 +812,11 @@ AC_ARG_ENABLE(locales-fix, AS_HELP_STRING([--enable-locales-fix],[The result of
+@@ -830,6 +830,11 @@ AC_ARG_ENABLE(locales-fix, AS_HELP_STRING([--enable-locales-fix],[The result of
                  AC_DEFINE(LOCALES_HACK,1,[ Define if the result of isprint() is unreliable. ])
          fi])
  
@@ -623,10 +623,10 @@ index 3d5f11b..e7ebe01 100644
          [if test $withval != yes; then
                  AC_DEFINE_UNQUOTED(EXECSHELL, "$withval",
 diff --git a/curs_main.c b/curs_main.c
-index d266708..e7f11bd 100644
+index 1de79f3..9d718ee 100644
 --- a/curs_main.c
 +++ b/curs_main.c
-@@ -1154,6 +1154,11 @@ int mutt_index_menu (void)
+@@ -1218,6 +1218,11 @@ int mutt_index_menu (void)
          {
  	  int check;
  
@@ -639,10 +639,10 @@ index d266708..e7f11bd 100644
  	  oldcount = Context ? Context->msgcount : 0;
  
 diff --git a/doc/manual.xml.head b/doc/manual.xml.head
-index 18ae918..4366758 100644
+index 8948459..f7a9387 100644
 --- a/doc/manual.xml.head
 +++ b/doc/manual.xml.head
-@@ -6121,6 +6121,205 @@ selection. Highest priority has the mailbox given with the
+@@ -6197,6 +6197,205 @@ selection. Highest priority has the mailbox given with the
  
  </chapter>
  
@@ -849,13 +849,13 @@ index 18ae918..4366758 100644
  <title>Mutt's MIME Support</title>
  
 diff --git a/doc/muttrc.man.head b/doc/muttrc.man.head
-index 30b96a2..b0ed18c 100644
+index 0b5658c..b9bc647 100644
 --- a/doc/muttrc.man.head
 +++ b/doc/muttrc.man.head
-@@ -354,6 +354,24 @@ specify the ID of the public key to be used when encrypting messages
- to a certain recipient.  The meaning of "key ID" is to be taken
- broadly: This can be a different e-mail address, a numerical key ID,
- or even just an arbitrary search string.
+@@ -359,6 +359,24 @@ You may use multiple
+ \fBcrypt-hook\fPs result in the use of multiple \fIkey-id\fPs for
+ a recipient.
+ 
 +.PP
 +.nf
 +\fBopen-hook\fP \fIregexp\fP "\fIcommand\fP"
@@ -878,7 +878,7 @@ index 30b96a2..b0ed18c 100644
  \fBpush\fP \fIstring\fP
  This command adds the named \fIstring\fP to the keyboard buffer.
 diff --git a/hook.c b/hook.c
-index 34f3106..2a27419 100644
+index a89b615..06f7c8e 100644
 --- a/hook.c
 +++ b/hook.c
 @@ -24,6 +24,10 @@
@@ -892,7 +892,7 @@ index 34f3106..2a27419 100644
  #include <limits.h>
  #include <string.h>
  #include <stdlib.h>
-@@ -92,6 +96,16 @@ int mutt_parse_hook (BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
+@@ -109,6 +113,16 @@ int mutt_parse_hook (BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
      memset (&pattern, 0, sizeof (pattern));
      pattern.data = safe_strdup (path);
    }
@@ -910,10 +910,10 @@ index 34f3106..2a27419 100644
             && (!WithCrypto || !(data & M_CRYPTHOOK))
        )
 diff --git a/init.h b/init.h
-index a64992a..0e4f47f 100644
+index e3bcc89..a1c4180 100644
 --- a/init.h
 +++ b/init.h
-@@ -3578,6 +3578,11 @@ const struct command_t Commands[] = {
+@@ -3665,6 +3665,11 @@ const struct command_t Commands[] = {
    { "fcc-hook",		mutt_parse_hook,	M_FCCHOOK },
    { "fcc-save-hook",	mutt_parse_hook,	M_FCCHOOK | M_SAVEHOOK },
    { "folder-hook",	mutt_parse_hook,	M_FOLDERHOOK },
@@ -926,7 +926,7 @@ index a64992a..0e4f47f 100644
    { "ungroup",		parse_group,		M_UNGROUP },
    { "hdr_order",	parse_list,		UL &HeaderOrderList },
 diff --git a/main.c b/main.c
-index 0ce245b..5ab1868 100644
+index 17e8bf4..e71bc9b 100644
 --- a/main.c
 +++ b/main.c
 @@ -431,6 +431,12 @@ static void show_version (void)
@@ -971,7 +971,7 @@ index 253061a..6d3b6bd 100644
    mx_fastclose_mailbox (ctx);
    return 0;
 diff --git a/mutt.h b/mutt.h
-index 8cee3d2..b71f071 100644
+index ef41afd..1ae000b 100644
 --- a/mutt.h
 +++ b/mutt.h
 @@ -144,6 +144,11 @@ typedef enum
@@ -986,7 +986,7 @@ index 8cee3d2..b71f071 100644
  
  /* tree characters for linearize_tree and print_enriched_string */
  #define M_TREE_LLCORNER		1
-@@ -889,6 +894,11 @@ typedef struct _context
+@@ -893,6 +898,11 @@ typedef struct _context
    int flagged;			/* how many flagged messages */
    int msgnotreadyet;		/* which msg "new" in pager, -1 if none */
  
@@ -999,7 +999,7 @@ index 8cee3d2..b71f071 100644
  
    unsigned char rights[(RIGHTSMAX + 7)/8];	/* ACL bits */
 diff --git a/mx.c b/mx.c
-index cc60517..07dba0c 100644
+index fcb781f..0a1a80e 100644
 --- a/mx.c
 +++ b/mx.c
 @@ -30,6 +30,10 @@
@@ -1088,7 +1088,7 @@ index cc60517..07dba0c 100644
    mx_fastclose_mailbox (ctx);
  
    return 0;
-@@ -1361,6 +1396,11 @@ int mx_check_mailbox (CONTEXT *ctx, int *index_hint, int lock)
+@@ -1362,6 +1397,11 @@ int mx_check_mailbox (CONTEXT *ctx, int *index_hint, int lock)
  {
    int rc;
  
@@ -1127,14 +1127,13 @@ index 2d01add..3654ad1 100644
  crypt.c
  cryptglue.c
 diff --git a/po/de.po b/po/de.po
-index dd2dda5..75d56f3 100644
+index 19d5ec5..3f658dc 100644
 --- a/po/de.po
 +++ b/po/de.po
-@@ -5178,6 +5178,36 @@ msgstr "Extrahiere unterst
+@@ -5273,6 +5273,35 @@ msgstr "Extrahiere unterst
  msgid "show S/MIME options"
  msgstr "Zeige S/MIME Optionen"
  
-+
 +#: compress.c:228 compress.c:253
 +#, c-format
 +msgid "Decompressing %s...\n"
@@ -1164,8 +1163,8 @@ index dd2dda5..75d56f3 100644
 +msgid " %s: Error compressing mailbox!  Uncompressed one kept!\n"
 +msgstr " %s: Fehler beim packen der Mailbox! Entpackte Mailbox gespeichert!\n"
 +
- #~ msgid "Clear"
- #~ msgstr "Klartext"
+ #~ msgid "Warning: message has no From: header"
+ #~ msgstr "Warnung: Nachricht hat keine From: Kopfzeile"
  
 diff --git a/status.c b/status.c
 index 6051e3a..e8693c8 100644

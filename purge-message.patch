@@ -53,10 +53,10 @@ index 8414a8b..02cea8e 100644
  OP_QUERY_APPEND "append new query results to current results"
  OP_QUIT "save changes to mailbox and quit"
 diff --git a/curs_main.c b/curs_main.c
-index 16ddbc9..d266708 100644
+index 8553102..1de79f3 100644
 --- a/curs_main.c
 +++ b/curs_main.c
-@@ -1844,6 +1844,7 @@ int mutt_index_menu (void)
+@@ -1908,6 +1908,7 @@ int mutt_index_menu (void)
  	MAYBE_REDRAW (menu->redraw);
  	break;
  
@@ -64,7 +64,7 @@ index 16ddbc9..d266708 100644
        case OP_DELETE:
  
  	CHECK_MSGCOUNT;
-@@ -1854,6 +1855,7 @@ int mutt_index_menu (void)
+@@ -1918,6 +1919,7 @@ int mutt_index_menu (void)
  	if (tag)
  	{
  	  mutt_tag_set_flag (M_DELETE, 1);
@@ -72,7 +72,7 @@ index 16ddbc9..d266708 100644
  	  if (option (OPTDELETEUNTAG))
  	    mutt_tag_set_flag (M_TAG, 0);
  	  menu->redraw = REDRAW_INDEX;
-@@ -1861,6 +1863,8 @@ int mutt_index_menu (void)
+@@ -1925,6 +1927,8 @@ int mutt_index_menu (void)
  	else
  	{
  	  mutt_set_flag (Context, CURHDR, M_DELETE, 1);
@@ -81,7 +81,7 @@ index 16ddbc9..d266708 100644
  	  if (option (OPTDELETEUNTAG))
  	    mutt_set_flag (Context, CURHDR, M_TAG, 0);
  	  if (option (OPTRESOLVE))
-@@ -2162,11 +2166,13 @@ int mutt_index_menu (void)
+@@ -2226,11 +2230,13 @@ int mutt_index_menu (void)
  	if (tag)
  	{
  	  mutt_tag_set_flag (M_DELETE, 0);
@@ -95,7 +95,7 @@ index 16ddbc9..d266708 100644
  	  if (option (OPTRESOLVE) && menu->current < Context->vcount - 1)
  	  {
  	    menu->current++;
-@@ -2187,9 +2193,11 @@ int mutt_index_menu (void)
+@@ -2251,9 +2257,11 @@ int mutt_index_menu (void)
  	CHECK_ACL(M_ACL_DELETE, _("undelete message(s)"));
  
  	rc = mutt_thread_set_flag (CURHDR, M_DELETE, 0,
@@ -151,7 +151,7 @@ index 7a1c5a9..a29388c 100644
    { "exit",		OP_EXIT,			"q" },
    { "reply",		OP_REPLY,			"r" },
 diff --git a/mutt.h b/mutt.h
-index 0b879b9..8cee3d2 100644
+index 29bb6c2..ef41afd 100644
 --- a/mutt.h
 +++ b/mutt.h
 @@ -186,6 +186,7 @@ enum
@@ -162,7 +162,7 @@ index 0b879b9..8cee3d2 100644
    M_FLAG,
    M_TAG,
    M_UNTAG,
-@@ -711,6 +712,7 @@ typedef struct header
+@@ -715,6 +716,7 @@ typedef struct header
    unsigned int flagged : 1; 		/* marked important? */
    unsigned int tagged : 1;
    unsigned int appended : 1;		/* has been saved */
@@ -171,7 +171,7 @@ index 0b879b9..8cee3d2 100644
    unsigned int changed : 1;
    unsigned int attach_del : 1; 		/* has an attachment marked for deletion */
 diff --git a/mx.c b/mx.c
-index f7fd01f..89b9431 100644
+index c0a6d30..15c0a6b 100644
 --- a/mx.c
 +++ b/mx.c
 @@ -806,6 +806,7 @@ static int trash_append (CONTEXT *ctx)
@@ -183,7 +183,7 @@ index f7fd01f..89b9431 100644
  	  {
  	    mx_close_mailbox (ctx_trash, NULL);
 diff --git a/pager.c b/pager.c
-index 23eb8ca..b17afb4 100644
+index 4f7e7be..0994274 100644
 --- a/pager.c
 +++ b/pager.c
 @@ -2350,12 +2350,15 @@ search_next:

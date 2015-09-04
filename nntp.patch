@@ -469,10 +469,10 @@ index 0000000..70d1126
 +* Fri Jan 28 2000 Vsevolod Volkov <vvv@mutt.kiev.ua>
 +- update to 1.1.2
 diff --git a/Makefile.am b/Makefile.am
-index 2fc6b1d..6d56156 100644
+index cf1ac98..20b4fad 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -58,6 +58,7 @@ EXTRA_mutt_SOURCES = account.c bcache.c crypt-gpgme.c crypt-mod-pgp-classic.c \
+@@ -57,6 +57,7 @@ EXTRA_mutt_SOURCES = account.c bcache.c crypt-gpgme.c crypt-mod-pgp-classic.c \
  	mutt_idna.c mutt_sasl.c mutt_socket.c mutt_ssl.c mutt_ssl_gnutls.c \
  	mutt_tunnel.c pgp.c pgpinvoke.c pgpkey.c pgplib.c pgpmicalg.c \
  	pgppacket.c pop.c pop_auth.c pop_lib.c remailer.c resize.c sha1.c \
@@ -480,7 +480,7 @@ index 2fc6b1d..6d56156 100644
  	smime.c smtp.c utf8.c wcwidth.c \
  	bcache.h browser.h hcache.h mbyte.h mutt_idna.h remailer.h url.h
  
-@@ -69,6 +70,7 @@ EXTRA_DIST = COPYRIGHT GPL OPS OPS.PGP OPS.CRYPT OPS.SMIME TODO UPDATING \
+@@ -68,6 +69,7 @@ EXTRA_DIST = COPYRIGHT GPL OPS OPS.PGP OPS.CRYPT OPS.SMIME TODO UPDATING \
  	mutt_regex.h mutt_sasl.h mutt_socket.h mutt_ssl.h mutt_tunnel.h \
  	mx.h pager.h pgp.h pop.h protos.h rfc1524.h rfc2047.h \
  	rfc2231.h rfc822.h rfc3676.h sha1.h sort.h mime.types VERSION prepare \
@@ -489,7 +489,7 @@ index 2fc6b1d..6d56156 100644
  	mbyte.h lib.h extlib.c pgpewrap.c smime_keys.pl pgplib.h \
  	README.SSL smime.h group.h \
 diff --git a/OPS b/OPS
-index 1ed9c96..b900373 100644
+index 3ffb82a..62db4b4 100644
 --- a/OPS
 +++ b/OPS
 @@ -8,14 +8,16 @@ OP_BOUNCE_MESSAGE "remail a message to another user"
@@ -1329,10 +1329,10 @@ index 515d69f..ad89ab2 100644
  };
  
 diff --git a/buffy.c b/buffy.c
-index 225104d..b1abfa9 100644
+index 90ca6db..bd026df 100644
 --- a/buffy.c
 +++ b/buffy.c
-@@ -525,6 +525,9 @@ int mutt_buffy_check (int force)
+@@ -543,6 +543,9 @@ int mutt_buffy_check (int force)
  
    /* check device ID and serial number instead of comparing paths */
    if (!Context || Context->magic == M_IMAP || Context->magic == M_POP
@@ -1342,7 +1342,7 @@ index 225104d..b1abfa9 100644
        || stat (Context->path, &contex_sb) != 0)
    {
      contex_sb.st_dev=0;
-@@ -541,6 +544,11 @@ int mutt_buffy_check (int force)
+@@ -559,6 +562,11 @@ int mutt_buffy_check (int force)
  	tmp->magic = M_POP;
        else
  #endif
@@ -1354,7 +1354,7 @@ index 225104d..b1abfa9 100644
        if (stat (tmp->path, &sb) != 0 || (S_ISREG(sb.st_mode) && sb.st_size == 0) ||
  	  (!tmp->magic && (tmp->magic = mx_get_magic (tmp->path)) <= 0))
        {
-@@ -556,7 +564,11 @@ int mutt_buffy_check (int force)
+@@ -574,7 +582,11 @@ int mutt_buffy_check (int force)
      /* check to see if the folder is the currently selected folder
       * before polling */
      if (!Context || !Context->path ||
@@ -1452,7 +1452,7 @@ index d0ee4af..8dc48cd 100644
    if (*s == '=' || *s == '+' || *s == '!')
    {
 diff --git a/compose.c b/compose.c
-index 16576f2..9e23dfd 100644
+index 0fa6df2..901ffc0 100644
 --- a/compose.c
 +++ b/compose.c
 @@ -33,11 +33,16 @@
@@ -1538,7 +1538,7 @@ index 16576f2..9e23dfd 100644
  
    if ((WithCrypto & (APPLICATION_PGP | APPLICATION_SMIME)) == 0)
    {
-@@ -149,10 +183,11 @@ static void redraw_crypt_lines (HEADER *msg)
+@@ -152,10 +186,11 @@ static void redraw_crypt_lines (HEADER *msg)
    if ((WithCrypto & APPLICATION_PGP)
        && (msg->security & APPLICATION_PGP) && (msg->security & SIGN))
      printw ("%s%s", _(" sign as: "), PgpSignAs ? PgpSignAs : _("<default>"));
@@ -1551,7 +1551,7 @@ index 16576f2..9e23dfd 100644
    }
  
    if ((WithCrypto & APPLICATION_SMIME)
-@@ -173,7 +208,7 @@ static void redraw_mix_line (LIST *chain)
+@@ -176,7 +211,7 @@ static void redraw_mix_line (LIST *chain)
    int c;
    char *t;
  
@@ -1560,7 +1560,7 @@ index 16576f2..9e23dfd 100644
  
    if (!chain)
    {
-@@ -248,9 +283,28 @@ static void draw_envelope (HEADER *msg, char *fcc)
+@@ -251,9 +286,28 @@ static void draw_envelope (HEADER *msg, char *fcc)
  {
    draw_sidebar (MENU_COMPOSE);
    draw_envelope_addr (HDR_FROM, msg->env->from);
@@ -1589,7 +1589,7 @@ index 16576f2..9e23dfd 100644
    mvprintw (HDR_SUBJECT, SidebarWidth, TITLE_FMT, Prompts[HDR_SUBJECT - 1]);
    mutt_paddstr (W, NONULL (msg->env->subject));
    draw_envelope_addr (HDR_REPLYTO, msg->env->reply_to);
-@@ -501,6 +555,12 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -504,6 +558,12 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
    /* Sort, SortAux could be changed in mutt_index_menu() */
    int oldSort, oldSortAux;
    struct stat st;
@@ -1602,7 +1602,7 @@ index 16576f2..9e23dfd 100644
  
    mutt_attach_init (msg->content);
    idx = mutt_gen_attach_list (msg->content, -1, idx, &idxlen, &idxmax, 0, 1);
-@@ -511,10 +571,18 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -514,10 +574,18 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
    menu->make_entry = snd_entry;
    menu->tag = mutt_tag_attach;
    menu->data = idx;
@@ -1621,7 +1621,7 @@ index 16576f2..9e23dfd 100644
      switch (op = mutt_menuLoop (menu))
      {
        case OP_REDRAW:
-@@ -527,17 +595,90 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -530,6 +598,10 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
          mutt_message_hook (NULL, msg, M_SEND2HOOK);
  	break;
        case OP_COMPOSE_EDIT_TO:
@@ -1630,6 +1630,9 @@ index 16576f2..9e23dfd 100644
 +	  break;
 +#endif
  	menu->redraw = edit_address_list (HDR_TO, &msg->env->to);
+ 	if (option (OPTCRYPTOPPORTUNISTICENCRYPT))
+ 	{
+@@ -539,6 +611,10 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
          mutt_message_hook (NULL, msg, M_SEND2HOOK);
          break;
        case OP_COMPOSE_EDIT_BCC:
@@ -1638,6 +1641,9 @@ index 16576f2..9e23dfd 100644
 +	  break;
 +#endif
  	menu->redraw = edit_address_list (HDR_BCC, &msg->env->bcc);
+ 	if (option (OPTCRYPTOPPORTUNISTICENCRYPT))
+ 	{
+@@ -548,6 +624,10 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
          mutt_message_hook (NULL, msg, M_SEND2HOOK);
  	break;
        case OP_COMPOSE_EDIT_CC:
@@ -1646,6 +1652,10 @@ index 16576f2..9e23dfd 100644
 +	  break;
 +#endif
  	menu->redraw = edit_address_list (HDR_CC, &msg->env->cc);
+ 	if (option (OPTCRYPTOPPORTUNISTICENCRYPT))
+ 	{
+@@ -556,6 +636,67 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+ 	}
          mutt_message_hook (NULL, msg, M_SEND2HOOK);	
          break;
 +#ifdef USE_NNTP
@@ -1712,7 +1722,7 @@ index 16576f2..9e23dfd 100644
        case OP_COMPOSE_EDIT_SUBJECT:
  	if (msg->env->subject)
  	  strfcpy (buf, msg->env->subject, sizeof (buf));
-@@ -701,6 +842,9 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -721,6 +862,9 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
          break;
  
        case OP_COMPOSE_ATTACH_MESSAGE:
@@ -1722,7 +1732,7 @@ index 16576f2..9e23dfd 100644
  	{
  	  char *prompt;
  	  HEADER *h;
-@@ -708,7 +852,22 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -728,7 +872,22 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
  	  fname[0] = 0;
  	  prompt = _("Open mailbox to attach message from");
  
@@ -1745,7 +1755,7 @@ index 16576f2..9e23dfd 100644
  	  {
  	    strfcpy (fname, NONULL (Context->path), sizeof (fname));
  	    mutt_pretty_mailbox (fname, sizeof (fname));
-@@ -717,6 +876,11 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -737,6 +896,11 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
  	  if (mutt_enter_fname (prompt, fname, sizeof (fname), &menu->redraw, 1) == -1 || !fname[0])
  	    break;
  
@@ -1757,7 +1767,7 @@ index 16576f2..9e23dfd 100644
  	  mutt_expand_path (fname, sizeof (fname));
  #ifdef USE_IMAP
            if (!mx_is_imap (fname))
-@@ -724,6 +888,9 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -744,6 +908,9 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
  #ifdef USE_POP
            if (!mx_is_pop (fname))
  #endif
@@ -1768,10 +1778,10 @@ index 16576f2..9e23dfd 100644
  	  if (access (fname, R_OK) == -1)
  	  {
 diff --git a/configure.ac b/configure.ac
-index 2d57b76..86bd542 100644
+index 1d260aa..d17abaa 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -592,6 +592,15 @@ AC_ARG_ENABLE(imap, AS_HELP_STRING([--enable-imap],[Enable IMAP support]),
+@@ -600,6 +600,15 @@ AC_ARG_ENABLE(imap, AS_HELP_STRING([--enable-imap],[Enable IMAP support]),
  ])
  AM_CONDITIONAL(BUILD_IMAP, test x$need_imap = xyes)
  
@@ -1787,7 +1797,7 @@ index 2d57b76..86bd542 100644
  AC_ARG_ENABLE(smtp, AS_HELP_STRING([--enable-smtp],[include internal SMTP relay support]),
  	[if test $enableval = yes; then
  		AC_DEFINE(USE_SMTP, 1, [Include internal SMTP relay support])
-@@ -599,7 +608,7 @@ AC_ARG_ENABLE(smtp, AS_HELP_STRING([--enable-smtp],[include internal SMTP relay
+@@ -607,7 +616,7 @@ AC_ARG_ENABLE(smtp, AS_HELP_STRING([--enable-smtp],[include internal SMTP relay
  		need_socket="yes"
  	fi])
  
@@ -1797,7 +1807,7 @@ index 2d57b76..86bd542 100644
  fi
  
 diff --git a/curs_main.c b/curs_main.c
-index 5c58f1c..8cec507 100644
+index 2e35f90..d052c38 100644
 --- a/curs_main.c
 +++ b/curs_main.c
 @@ -22,6 +22,7 @@
@@ -1819,7 +1829,7 @@ index 5c58f1c..8cec507 100644
  
  #include <ctype.h>
  #include <stdlib.h>
-@@ -428,12 +433,27 @@ static const struct mapping_t IndexHelp[] = {
+@@ -492,12 +497,27 @@ static const struct mapping_t IndexHelp[] = {
    { NULL,	 0 }
  };
  
@@ -1847,7 +1857,7 @@ index 5c58f1c..8cec507 100644
    int op = OP_NULL;
    int done = 0;                /* controls when to exit the "event" loop */
    int i = 0, j;
-@@ -454,7 +474,11 @@ int mutt_index_menu (void)
+@@ -518,7 +538,11 @@ int mutt_index_menu (void)
    menu->make_entry = index_make_entry;
    menu->color = index_color;
    menu->current = ci_first_message ();
@@ -1860,7 +1870,7 @@ index 5c58f1c..8cec507 100644
  
    if (!attach_msg)
      mutt_buffy_check(1); /* force the buffy check after we enter the folder */
-@@ -710,6 +734,9 @@ int mutt_index_menu (void)
+@@ -774,6 +798,9 @@ int mutt_index_menu (void)
        mutt_curs_set (1);	/* fallback from the pager */
      }
  
@@ -1870,7 +1880,7 @@ index 5c58f1c..8cec507 100644
      switch (op)
      {
  
-@@ -760,6 +787,161 @@ int mutt_index_menu (void)
+@@ -824,6 +851,161 @@ int mutt_index_menu (void)
  	menu_current_bottom (menu);
  	break;
  
@@ -2032,7 +2042,7 @@ index 5c58f1c..8cec507 100644
        case OP_JUMP:
  
  	CHECK_MSGCOUNT;
-@@ -856,11 +1038,33 @@ int mutt_index_menu (void)
+@@ -920,11 +1102,33 @@ int mutt_index_menu (void)
          break;
  
        case OP_MAIN_LIMIT:
@@ -2067,7 +2077,7 @@ index 5c58f1c..8cec507 100644
  	{
  	  if (menu->oldcurrent >= 0)
  	  {
-@@ -1103,15 +1307,22 @@ int mutt_index_menu (void)
+@@ -1167,15 +1371,22 @@ int mutt_index_menu (void)
        case OP_SIDEBAR_OPEN:
        case OP_MAIN_CHANGE_FOLDER:
        case OP_MAIN_NEXT_UNREAD_MAILBOX:
@@ -2097,7 +2107,7 @@ index 5c58f1c..8cec507 100644
            cp = _("Open mailbox in read-only mode");
          else
            cp = _("Open mailbox");
-@@ -1130,6 +1341,22 @@ int mutt_index_menu (void)
+@@ -1194,6 +1405,22 @@ int mutt_index_menu (void)
  	}
  	else
  	{
@@ -2120,7 +2130,7 @@ index 5c58f1c..8cec507 100644
  	  mutt_buffy (buf, sizeof (buf));
  
            if ( op == OP_SIDEBAR_OPEN ) {
-@@ -1153,6 +1380,14 @@ int mutt_index_menu (void)
+@@ -1217,6 +1444,14 @@ int mutt_index_menu (void)
  	  }
  	}
  
@@ -2135,7 +2145,7 @@ index 5c58f1c..8cec507 100644
  	mutt_expand_path (buf, sizeof (buf));
          set_curbuffy(buf);
  	if (mx_get_magic (buf) <= 0)
-@@ -1200,15 +1435,18 @@ int mutt_index_menu (void)
+@@ -1264,15 +1499,18 @@ int mutt_index_menu (void)
  	CurrentMenu = MENU_MAIN;
  	mutt_folder_hook (buf);
  
@@ -2157,7 +2167,7 @@ index 5c58f1c..8cec507 100644
  	mutt_clear_error ();
  	mutt_buffy_check(1); /* force the buffy check after we have changed
  			      the folder */
-@@ -1277,6 +1515,7 @@ int mutt_index_menu (void)
+@@ -1341,6 +1579,7 @@ int mutt_index_menu (void)
  	CHECK_MSGCOUNT;
          CHECK_VISIBLE;
  	CHECK_READONLY;
@@ -2165,7 +2175,7 @@ index 5c58f1c..8cec507 100644
  
          if ((Sort & SORT_MASK) != SORT_THREADS)
  	  mutt_error _("Threading is not enabled.");
-@@ -1311,7 +1550,7 @@ int mutt_index_menu (void)
+@@ -1375,7 +1614,7 @@ int mutt_index_menu (void)
  	CHECK_MSGCOUNT;
          CHECK_VISIBLE;
  	CHECK_READONLY;
@@ -2174,7 +2184,7 @@ index 5c58f1c..8cec507 100644
  
          if ((Sort & SORT_MASK) != SORT_THREADS)
  	  mutt_error _("Threading is not enabled.");
-@@ -1932,6 +2171,20 @@ int mutt_index_menu (void)
+@@ -1996,6 +2235,20 @@ int mutt_index_menu (void)
  	}
  	break;
  
@@ -2195,7 +2205,7 @@ index 5c58f1c..8cec507 100644
        case OP_DISPLAY_ADDRESS:
  
  	CHECK_MSGCOUNT;
-@@ -2136,6 +2389,39 @@ int mutt_index_menu (void)
+@@ -2200,6 +2453,39 @@ int mutt_index_menu (void)
          menu->redraw = REDRAW_FULL;
          break;
  
@@ -2236,7 +2246,7 @@ index 5c58f1c..8cec507 100644
  
  	CHECK_ATTACH;
 diff --git a/doc/Muttrc b/doc/Muttrc
-index bf0e6d0..e03da88 100644
+index d1a96a2..7fdc12f 100644
 --- a/doc/Muttrc
 +++ b/doc/Muttrc
 @@ -240,6 +240,28 @@ attachments   -I message/external-body
@@ -2286,7 +2296,7 @@ index bf0e6d0..e03da88 100644
  # set certificate_file="~/.mutt_certificates"
  #
  # Name: certificate_file
-@@ -1131,6 +1164,19 @@ attachments   -I message/external-body
+@@ -1170,6 +1203,19 @@ attachments   -I message/external-body
  # of the same email for you.
  # 
  # 
@@ -2306,7 +2316,7 @@ index bf0e6d0..e03da88 100644
  # set force_name=no
  #
  # Name: force_name
-@@ -1241,6 +1287,27 @@ attachments   -I message/external-body
+@@ -1280,6 +1326,27 @@ attachments   -I message/external-body
  # ``Franklin'' to ``Franklin, Steve''.
  # 
  # 
@@ -2334,7 +2344,7 @@ index bf0e6d0..e03da88 100644
  # set hdrs=yes
  #
  # Name: hdrs
-@@ -1789,6 +1856,7 @@ attachments   -I message/external-body
+@@ -1828,6 +1895,7 @@ attachments   -I message/external-body
  # %E      number of messages in current thread
  # %f      sender (address + real name), either From: or Return-Path:
  # %F      author name, or recipient name if the message is from you
@@ -2342,7 +2352,7 @@ index bf0e6d0..e03da88 100644
  # %H      spam attribute(s) of this message
  # %i      message-id of the current message
  # %l      number of lines in the message (does not work with maildir,
-@@ -1804,12 +1872,14 @@ attachments   -I message/external-body
+@@ -1843,12 +1911,14 @@ attachments   -I message/external-body
  #         stashed the message: list name or recipient name
  #         if not sent to a list
  # %P      progress indicator for the built-in pager (how much of the file has been displayed)
@@ -2357,7 +2367,7 @@ index bf0e6d0..e03da88 100644
  # %X      number of attachments
  #         (please see the ``attachments'' section for possible speed effects)
  # %y      ``X-Label:'' field, if present
-@@ -1845,6 +1915,27 @@ attachments   -I message/external-body
+@@ -1884,6 +1954,27 @@ attachments   -I message/external-body
  # ``save-hook'', ``fcc-hook'' and ``fcc-save-hook'', too.
  # 
  # 
@@ -2385,7 +2395,7 @@ index bf0e6d0..e03da88 100644
  # set ispell="ispell"
  #
  # Name: ispell
-@@ -2214,6 +2305,18 @@ attachments   -I message/external-body
+@@ -2268,6 +2359,18 @@ attachments   -I message/external-body
  # be attached to the newly composed message if this option is set.
  # 
  # 
@@ -2404,7 +2414,7 @@ index bf0e6d0..e03da88 100644
  # set mix_entry_format="%4n %c %-16s %a"
  #
  # Name: mix_entry_format
-@@ -2280,6 +2383,144 @@ attachments   -I message/external-body
+@@ -2334,6 +2437,144 @@ attachments   -I message/external-body
  # See also $read_inc, $write_inc and $net_inc.
  # 
  # 
@@ -2549,7 +2559,7 @@ index bf0e6d0..e03da88 100644
  # set pager="builtin"
  #
  # Name: pager
-@@ -2997,6 +3238,19 @@ attachments   -I message/external-body
+@@ -3064,6 +3305,19 @@ attachments   -I message/external-body
  # string after the inclusion of a message which is being replied to.
  # 
  # 
@@ -2569,7 +2579,7 @@ index bf0e6d0..e03da88 100644
  # set postpone=ask-yes
  #
  # Name: postpone
-@@ -3605,6 +3859,41 @@ attachments   -I message/external-body
+@@ -3697,6 +3951,41 @@ attachments   -I message/external-body
  # shell from /etc/passwd is used.
  # 
  # 
@@ -2611,7 +2621,7 @@ index bf0e6d0..e03da88 100644
  # set sig_dashes=yes
  #
  # Name: sig_dashes
-@@ -4851,3 +5140,14 @@ attachments   -I message/external-body
+@@ -4995,3 +5284,14 @@ attachments   -I message/external-body
  # ``tuning'' section of the manual for performance considerations.
  # 
  # 
@@ -2627,10 +2637,10 @@ index bf0e6d0..e03da88 100644
 +# 
 +# 
 diff --git a/doc/manual.xml.head b/doc/manual.xml.head
-index 4366758..5b523ce 100644
+index f7a9387..aeefa5c 100644
 --- a/doc/manual.xml.head
 +++ b/doc/manual.xml.head
-@@ -1694,6 +1694,26 @@ See also the <link linkend="postpone">$postpone</link> quad-option.
+@@ -1696,6 +1696,26 @@ See also the <link linkend="postpone">$postpone</link> quad-option.
  
  </sect1>
  
@@ -2658,7 +2668,7 @@ index 4366758..5b523ce 100644
  
  <chapter id="configuration">
 diff --git a/doc/mutt.man b/doc/mutt.man
-index 718f87a..c4f44d1 100644
+index 753953e..0e61ae2 100644
 --- a/doc/mutt.man
 +++ b/doc/mutt.man
 @@ -23,8 +23,8 @@ mutt \- The Mutt Mail User Agent
@@ -2684,7 +2694,7 @@ index 718f87a..c4f44d1 100644
  Display help.
  .IP "-H \fIdraft\fP"
 diff --git a/functions.h b/functions.h
-index 363b4d5..66f3345 100644
+index 1485080..8ca5411 100644
 --- a/functions.h
 +++ b/functions.h
 @@ -88,6 +88,10 @@ const struct binding_t OpMain[] = { /* map: index */
@@ -2745,7 +2755,7 @@ index 363b4d5..66f3345 100644
  
  
    { "extract-keys",		OP_EXTRACT_KEYS,		"\013" },
-@@ -186,6 +205,10 @@ const struct binding_t OpPager[] = { /* map: pager */
+@@ -187,6 +206,10 @@ const struct binding_t OpPager[] = { /* map: pager */
    { "bounce-message",	OP_BOUNCE_MESSAGE,		"b" },
    { "change-folder",	OP_MAIN_CHANGE_FOLDER,		"c" },
    { "change-folder-readonly",	OP_MAIN_CHANGE_FOLDER_READONLY,	"\033c" },
@@ -2756,7 +2766,7 @@ index 363b4d5..66f3345 100644
    { "next-unread-mailbox",	OP_MAIN_NEXT_UNREAD_MAILBOX, NULL },
    { "copy-message",	OP_COPY_MESSAGE,		"C" },
    { "decode-copy",	OP_DECODE_COPY,			"\033C" },
-@@ -196,8 +219,12 @@ const struct binding_t OpPager[] = { /* map: pager */
+@@ -197,8 +220,12 @@ const struct binding_t OpPager[] = { /* map: pager */
    { "clear-flag",       OP_MAIN_CLEAR_FLAG,		"W" },
    { "edit",		OP_EDIT_MESSAGE,		"e" },
    { "edit-type",	OP_EDIT_TYPE,			"\005" },
@@ -2770,7 +2780,7 @@ index 363b4d5..66f3345 100644
    { "group-reply",	OP_GROUP_REPLY,			"g" },
  #ifdef USE_IMAP
    { "imap-fetch-mail",  OP_MAIN_IMAP_FETCH,		NULL },
-@@ -219,6 +246,9 @@ const struct binding_t OpPager[] = { /* map: pager */
+@@ -220,6 +247,9 @@ const struct binding_t OpPager[] = { /* map: pager */
    { "sort-mailbox",	OP_SORT,			"o" },
    { "sort-reverse",	OP_SORT_REVERSE,		"O" },
    { "print-message",	OP_PRINT,			"p" },
@@ -2780,7 +2790,7 @@ index 363b4d5..66f3345 100644
    { "previous-thread",	OP_MAIN_PREV_THREAD,		"\020" },
    { "previous-subthread",OP_MAIN_PREV_SUBTHREAD,	"\033p" },
    { "purge-message",	OP_PURGE_MESSAGE,		NULL },
-@@ -267,7 +297,7 @@ const struct binding_t OpPager[] = { /* map: pager */
+@@ -268,7 +298,7 @@ const struct binding_t OpPager[] = { /* map: pager */
    { "half-down",	OP_HALF_DOWN,			NULL },
    { "previous-line",	OP_PREV_LINE,			NULL },
    { "bottom",		OP_PAGER_BOTTOM,		NULL },
@@ -2789,7 +2799,7 @@ index 363b4d5..66f3345 100644
  
  
  
-@@ -295,6 +325,10 @@ const struct binding_t OpAttach[] = { /* map: attachment */
+@@ -297,6 +327,10 @@ const struct binding_t OpAttach[] = { /* map: attachment */
    { "bounce-message",	OP_BOUNCE_MESSAGE,		"b" },
    { "display-toggle-weed",	OP_DISPLAY_HEADERS,	"h" },
    { "edit-type",	OP_EDIT_TYPE,			"\005" },
@@ -2800,7 +2810,7 @@ index 363b4d5..66f3345 100644
    { "print-entry",	OP_PRINT,			"p" },
    { "save-entry",	OP_SAVE,			"s" },
    { "pipe-entry",	OP_PIPE,			"|" },
-@@ -320,6 +354,7 @@ const struct binding_t OpAttach[] = { /* map: attachment */
+@@ -322,6 +356,7 @@ const struct binding_t OpAttach[] = { /* map: attachment */
  const struct binding_t OpCompose[] = { /* map: compose */
    { "attach-file",	OP_COMPOSE_ATTACH_FILE,		"a" },
    { "attach-message",	OP_COMPOSE_ATTACH_MESSAGE,	"A" },
@@ -2808,7 +2818,7 @@ index 363b4d5..66f3345 100644
    { "edit-bcc",		OP_COMPOSE_EDIT_BCC,		"b" },
    { "edit-cc",		OP_COMPOSE_EDIT_CC,		"c" },
    { "copy-file",	OP_SAVE,			"C" },
-@@ -339,6 +374,11 @@ const struct binding_t OpCompose[] = { /* map: compose */
+@@ -341,6 +376,11 @@ const struct binding_t OpCompose[] = { /* map: compose */
    { "print-entry",	OP_PRINT,			"l" },
    { "edit-mime",	OP_COMPOSE_EDIT_MIME,		"m" },
    { "new-mime",		OP_COMPOSE_NEW_MIME,		"n" },
@@ -2820,7 +2830,7 @@ index 363b4d5..66f3345 100644
    { "postpone-message",	OP_COMPOSE_POSTPONE_MESSAGE,	"P" },
    { "edit-reply-to",	OP_COMPOSE_EDIT_REPLY_TO,	"r" },
    { "rename-file",	OP_COMPOSE_RENAME_FILE,		"R" },
-@@ -390,14 +430,25 @@ const struct binding_t OpBrowser[] = { /* map: browser */
+@@ -392,14 +432,25 @@ const struct binding_t OpBrowser[] = { /* map: browser */
    { "select-new",	OP_BROWSER_NEW_FILE,	"N" },
    { "check-new",	OP_CHECK_NEW,		NULL },
    { "toggle-mailboxes", OP_TOGGLE_MAILBOXES, 	"\t" },
@@ -2847,7 +2857,7 @@ index 363b4d5..66f3345 100644
  #endif
    { NULL,		0,			NULL }
 diff --git a/globals.h b/globals.h
-index 61765a4..0529f94 100644
+index 602f932..814eb05 100644
 --- a/globals.h
 +++ b/globals.h
 @@ -95,6 +95,17 @@ WHERE char *MixEntryFormat;
@@ -2868,7 +2878,7 @@ index 61765a4..0529f94 100644
  WHERE char *Outbox;
  WHERE char *Pager;
  WHERE char *PagerFmt;
-@@ -193,6 +204,11 @@ extern unsigned char QuadOptions[];
+@@ -196,6 +207,11 @@ extern unsigned char QuadOptions[];
  
  WHERE unsigned short Counter INITVAL (0);
  
@@ -2968,7 +2978,7 @@ index fb77d0c..9e7df82 100644
  void hash_delete_hash (HASH * table, int hash, const char *key, const void *data,
  		       void (*destroy) (void *));
 diff --git a/hcache.c b/hcache.c
-index af17932..555e1d1 100644
+index 561dce3..d4f33b5 100644
 --- a/hcache.c
 +++ b/hcache.c
 @@ -447,6 +447,12 @@ dump_envelope(ENVELOPE * e, unsigned char *d, int *off, int convert)
@@ -3082,10 +3092,10 @@ index f701c8e..e817dad 100644
        (!n->in_reply_to || mutt_strcmp (n->in_reply_to->data,
  				       msg->env->in_reply_to->data) != 0))
 diff --git a/init.c b/init.c
-index 20a66bd..6ab1020 100644
+index d82772c..3de1f1f 100644
 --- a/init.c
 +++ b/init.c
-@@ -3104,6 +3104,28 @@ void mutt_init (int skip_sys_rc, LIST *commands)
+@@ -3082,6 +3082,28 @@ void mutt_init (int skip_sys_rc, LIST *commands)
    else
      Fqdn = safe_strdup(NONULL(Hostname));
  
@@ -3115,7 +3125,7 @@ index 20a66bd..6ab1020 100644
      Spoolfile = safe_strdup (p);
    else if ((p = getenv ("MAILDIR")))
 diff --git a/init.h b/init.h
-index e20a24e..6efadb2 100644
+index a5d4238..b9cd406 100644
 --- a/init.h
 +++ b/init.h
 @@ -176,6 +176,20 @@ struct option_t MuttVars[] = {
@@ -3154,7 +3164,7 @@ index e20a24e..6efadb2 100644
  #if defined(USE_SSL)
    { "certificate_file",	DT_PATH, R_NONE, UL &SslCertFile, UL "~/.mutt_certificates" },
    /*
-@@ -815,6 +837,16 @@ struct option_t MuttVars[] = {
+@@ -844,6 +866,16 @@ struct option_t MuttVars[] = {
    ** sent to both the list and your address, resulting in two copies
    ** of the same email for you.
    */
@@ -3171,7 +3181,7 @@ index e20a24e..6efadb2 100644
    { "force_name",	DT_BOOL, R_NONE, OPTFORCENAME, 0 },
    /*
    ** .pp
-@@ -897,6 +929,26 @@ struct option_t MuttVars[] = {
+@@ -926,6 +958,26 @@ struct option_t MuttVars[] = {
    ** a regular expression that will match the whole name so mutt will expand
    ** ``Franklin'' to ``Franklin, Steve''.
    */
@@ -3198,7 +3208,7 @@ index e20a24e..6efadb2 100644
    { "hdr_format",	DT_SYN,  R_NONE, UL "index_format", 0 },
    /*
    */
-@@ -1278,6 +1330,7 @@ struct option_t MuttVars[] = {
+@@ -1307,6 +1359,7 @@ struct option_t MuttVars[] = {
    ** .dt %E .dd number of messages in current thread
    ** .dt %f .dd sender (address + real name), either From: or Return-Path:
    ** .dt %F .dd author name, or recipient name if the message is from you
@@ -3206,7 +3216,7 @@ index e20a24e..6efadb2 100644
    ** .dt %H .dd spam attribute(s) of this message
    ** .dt %i .dd message-id of the current message
    ** .dt %l .dd number of lines in the message (does not work with maildir,
-@@ -1293,12 +1346,14 @@ struct option_t MuttVars[] = {
+@@ -1322,12 +1375,14 @@ struct option_t MuttVars[] = {
    **            stashed the message: list name or recipient name
    **            if not sent to a list
    ** .dt %P .dd progress indicator for the built-in pager (how much of the file has been displayed)
@@ -3221,7 +3231,7 @@ index e20a24e..6efadb2 100644
    ** .dt %X .dd number of attachments
    **            (please see the ``$attachments'' section for possible speed effects)
    ** .dt %y .dd ``X-Label:'' field, if present
-@@ -1333,6 +1388,25 @@ struct option_t MuttVars[] = {
+@@ -1362,6 +1417,25 @@ struct option_t MuttVars[] = {
    ** Note that these expandos are supported in
    ** ``$save-hook'', ``$fcc-hook'' and ``$fcc-save-hook'', too.
    */
@@ -3247,7 +3257,7 @@ index e20a24e..6efadb2 100644
    { "ispell",		DT_PATH, R_NONE, UL &Ispell, UL ISPELL },
    /*
    ** .pp
-@@ -1567,6 +1641,15 @@ struct option_t MuttVars[] = {
+@@ -1606,6 +1680,15 @@ struct option_t MuttVars[] = {
    ** menu, attachments which cannot be decoded in a reasonable manner will
    ** be attached to the newly composed message if this option is \fIset\fP.
    */
@@ -3263,7 +3273,7 @@ index e20a24e..6efadb2 100644
  #ifdef MIXMASTER
    { "mix_entry_format", DT_STR,  R_NONE, UL &MixEntryFormat, UL "%4n %c %-16s %a" },
    /*
-@@ -1617,6 +1700,100 @@ struct option_t MuttVars[] = {
+@@ -1656,6 +1739,100 @@ struct option_t MuttVars[] = {
     ** See also $$read_inc, $$write_inc and $$net_inc.
     */
  #endif
@@ -3364,7 +3374,7 @@ index e20a24e..6efadb2 100644
    { "pager",		DT_PATH, R_NONE, UL &Pager, UL "builtin" },
    /*
    ** .pp
-@@ -2152,6 +2329,16 @@ struct option_t MuttVars[] = {
+@@ -2204,6 +2381,16 @@ struct option_t MuttVars[] = {
    { "post_indent_str",  DT_SYN,  R_NONE, UL "post_indent_string", 0 },
    /*
    */
@@ -3381,7 +3391,7 @@ index e20a24e..6efadb2 100644
    { "postpone",		DT_QUAD, R_NONE, OPT_POSTPONE, M_ASKYES },
    /*
    ** .pp
-@@ -2576,6 +2763,28 @@ struct option_t MuttVars[] = {
+@@ -2643,6 +2830,28 @@ struct option_t MuttVars[] = {
    ** Command to use when spawning a subshell.  By default, the user's login
    ** shell from \fC/etc/passwd\fP is used.
    */
@@ -3410,9 +3420,9 @@ index e20a24e..6efadb2 100644
    { "sig_dashes",	DT_BOOL, R_NONE, OPTSIGDASHES, 1 },
    /*
    ** .pp
-@@ -3511,6 +3720,14 @@ struct option_t MuttVars[] = {
-   ** xterm_set_titles has been set. This string is identical in formatting
-   ** to the one used by ``$$status_format''.
+@@ -3598,6 +3807,14 @@ struct option_t MuttVars[] = {
+   {"xterm_set_titles",	DT_SYN,  R_NONE, UL "ts_enabled", 0 },
+   /*
    */
 +#ifdef USE_NNTP
 +  { "x_comment_to",	DT_BOOL, R_NONE, OPTXCOMMENTTO, 0 },
@@ -3426,10 +3436,10 @@ index e20a24e..6efadb2 100644
    { NULL, 0, 0, 0, 0 }
  };
 diff --git a/keymap.c b/keymap.c
-index 9dc87f0..5cdef30 100644
+index 1710b17..9d90807 100644
 --- a/keymap.c
 +++ b/keymap.c
-@@ -784,7 +784,6 @@ void km_init (void)
+@@ -786,7 +786,6 @@ void km_init (void)
    km_bindkey ("<enter>", MENU_MAIN, OP_DISPLAY_MESSAGE);
  
    km_bindkey ("x", MENU_PAGER, OP_EXIT);
@@ -3438,10 +3448,10 @@ index 9dc87f0..5cdef30 100644
    km_bindkey ("<pagedown>", MENU_PAGER, OP_NEXT_PAGE);
    km_bindkey ("<pageup>", MENU_PAGER, OP_PREV_PAGE);
 diff --git a/mailbox.h b/mailbox.h
-index b652628..ed7954c 100644
+index 000503d..9052e46 100644
 --- a/mailbox.h
 +++ b/mailbox.h
-@@ -75,6 +75,9 @@ int mx_is_imap (const char *);
+@@ -77,6 +77,9 @@ int mx_is_imap (const char *);
  #ifdef USE_POP
  int mx_is_pop (const char *);
  #endif
@@ -3452,7 +3462,7 @@ index b652628..ed7954c 100644
  int mx_access (const char*, int);
  int mx_check_empty (const char *);
 diff --git a/main.c b/main.c
-index 5ab1868..a291397 100644
+index e71bc9b..01a8121 100644
 --- a/main.c
 +++ b/main.c
 @@ -62,6 +62,10 @@
@@ -3531,7 +3541,7 @@ index 5ab1868..a291397 100644
        case 'z':
  	flags |= M_IGNORE;
  	break;
-@@ -1014,6 +1047,18 @@ int main (int argc, char **argv)
+@@ -1025,6 +1058,18 @@ int main (int argc, char **argv)
      }
      else if (flags & M_SELECT)
      {
@@ -3550,7 +3560,7 @@ index 5ab1868..a291397 100644
        if (!Incoming) {
  	mutt_endwin _("No incoming mailboxes defined.");
  	exit (1);
-@@ -1029,6 +1074,15 @@ int main (int argc, char **argv)
+@@ -1040,6 +1085,15 @@ int main (int argc, char **argv)
  
      if (!folder[0])
        strfcpy (folder, NONULL(Spoolfile), sizeof (folder));
@@ -3567,7 +3577,7 @@ index 5ab1868..a291397 100644
  
      mutt_str_replace (&CurrentFolder, folder);
 diff --git a/mutt.h b/mutt.h
-index 932ef10..a95b249 100644
+index d73e514..1ee1583 100644
 --- a/mutt.h
 +++ b/mutt.h
 @@ -239,6 +239,9 @@ enum
@@ -3609,7 +3619,7 @@ index 932ef10..a95b249 100644
    OPTATTACHSPLIT,
    OPTAUTOEDIT,
    OPTAUTOTAG,
-@@ -410,6 +421,9 @@ enum
+@@ -411,6 +422,9 @@ enum
    OPTMETOO,
    OPTMHPURGE,
    OPTMIMEFORWDECODE,
@@ -3619,7 +3629,7 @@ index 932ef10..a95b249 100644
    OPTNARROWTREE,
    OPTPAGERSTOP,
    OPTPIPEDECODE,
-@@ -495,6 +509,16 @@ enum
+@@ -499,6 +513,16 @@ enum
    OPTPGPAUTOINLINE,
    OPTPGPREPLYINLINE,
  
@@ -3636,7 +3646,7 @@ index 932ef10..a95b249 100644
    /* pseudo options */
  
    OPTAUXSORT,		/* (pseudo) using auxiliary sort function */
-@@ -515,6 +539,7 @@ enum
+@@ -519,6 +543,7 @@ enum
    OPTSORTSUBTHREADS,	/* (pseudo) used when $sort_aux changes */
    OPTNEEDRESCORE,	/* (pseudo) set when the `score' command is used */
    OPTATTACHMSG,		/* (pseudo) used by attach-message */
@@ -3644,7 +3654,7 @@ index 932ef10..a95b249 100644
    OPTKEEPQUIET,		/* (pseudo) shut up the message and refresh
  			 * 	    functions while we are executing an
  			 * 	    external program.
-@@ -527,6 +552,11 @@ enum
+@@ -531,6 +556,11 @@ enum
  
    OPTSIDEBARNEWMAILONLY,
  
@@ -3656,7 +3666,7 @@ index 932ef10..a95b249 100644
    OPTMAX
  };
  
-@@ -606,6 +636,13 @@ typedef struct envelope
+@@ -610,6 +640,13 @@ typedef struct envelope
    char *supersedes;
    char *date;
    char *x_label;
@@ -3670,7 +3680,7 @@ index 932ef10..a95b249 100644
    BUFFER *spam;
    LIST *references;		/* message references (in reverse order) */
    LIST *in_reply_to;		/* in-reply-to header content */
-@@ -792,7 +829,7 @@ typedef struct header
+@@ -796,7 +833,7 @@ typedef struct header
    int refno;			/* message number on server */
  #endif
  
@@ -3680,10 +3690,10 @@ index 932ef10..a95b249 100644
  #endif
    
 diff --git a/mutt_sasl.c b/mutt_sasl.c
-index 896825e..21da012 100644
+index 7d7388c..0ba4f4e 100644
 --- a/mutt_sasl.c
 +++ b/mutt_sasl.c
-@@ -188,6 +188,11 @@ int mutt_sasl_client_new (CONNECTION* conn, sasl_conn_t** saslconn)
+@@ -190,6 +190,11 @@ int mutt_sasl_client_new (CONNECTION* conn, sasl_conn_t** saslconn)
      case M_ACCT_TYPE_SMTP:
        service = "smtp";
        break;
@@ -3696,10 +3706,10 @@ index 896825e..21da012 100644
        mutt_error (_("Unknown SASL profile"));
        return -1;
 diff --git a/muttlib.c b/muttlib.c
-index 9086f07..49389fc 100644
+index 039e7c3..cc3a681 100644
 --- a/muttlib.c
 +++ b/muttlib.c
-@@ -337,7 +337,7 @@ void mutt_free_header (HEADER **h)
+@@ -329,7 +329,7 @@ void mutt_free_header (HEADER **h)
  #ifdef MIXMASTER
    mutt_free_list (&(*h)->chain);
  #endif
@@ -3708,7 +3718,7 @@ index 9086f07..49389fc 100644
    FREE (&(*h)->data);
  #endif
    FREE (h);		/* __FREE_CHECKED__ */
-@@ -725,6 +725,13 @@ void mutt_free_envelope (ENVELOPE **p)
+@@ -717,6 +717,13 @@ void mutt_free_envelope (ENVELOPE **p)
    FREE (&(*p)->supersedes);
    FREE (&(*p)->date);
    FREE (&(*p)->x_label);
@@ -3722,7 +3732,7 @@ index 9086f07..49389fc 100644
  
    mutt_buffer_free (&(*p)->spam);
  
-@@ -1573,6 +1580,14 @@ int mutt_save_confirm (const char *s, struct stat *st)
+@@ -1568,6 +1575,14 @@ int mutt_save_confirm (const char *s, struct stat *st)
      }
    }
  
@@ -3738,7 +3748,7 @@ index 9086f07..49389fc 100644
    {
      if (magic == -1)
 diff --git a/mx.c b/mx.c
-index cbee47d..5bbbf2a 100644
+index e80b8ff..b2ac0b7 100644
 --- a/mx.c
 +++ b/mx.c
 @@ -347,6 +347,22 @@ int mx_is_pop (const char *p)
@@ -3841,7 +3851,7 @@ index cbee47d..5bbbf2a 100644
    if (read_msgs && quadoption (OPT_MOVE) != M_NO)
    {
      char *p;
-@@ -1464,6 +1522,11 @@ int mx_check_mailbox (CONTEXT *ctx, int *index_hint, int lock)
+@@ -1465,6 +1523,11 @@ int mx_check_mailbox (CONTEXT *ctx, int *index_hint, int lock)
        case M_POP:
  	return (pop_check_mailbox (ctx, index_hint));
  #endif /* USE_POP */
@@ -3853,7 +3863,7 @@ index cbee47d..5bbbf2a 100644
      }
    }
  
-@@ -1524,6 +1587,15 @@ MESSAGE *mx_open_message (CONTEXT *ctx, int msgno)
+@@ -1525,6 +1588,15 @@ MESSAGE *mx_open_message (CONTEXT *ctx, int msgno)
      }
  #endif /* USE_POP */
  
@@ -3869,7 +3879,7 @@ index cbee47d..5bbbf2a 100644
      default:
        dprint (1, (debugfile, "mx_open_message(): function not implemented for mailbox type %d.\n", ctx->magic));
        FREE (&msg);
-@@ -1599,6 +1671,9 @@ int mx_close_message (MESSAGE **msg)
+@@ -1600,6 +1672,9 @@ int mx_close_message (MESSAGE **msg)
    int r = 0;
  
    if ((*msg)->magic == M_MH || (*msg)->magic == M_MAILDIR
@@ -7743,7 +7753,7 @@ index 0000000..c937034
 +
 +#endif /* _NNTP_H_ */
 diff --git a/pager.c b/pager.c
-index d372fc0..e888452 100644
+index 696e55c..8e38e38 100644
 --- a/pager.c
 +++ b/pager.c
 @@ -1085,6 +1085,11 @@ fill_buffer (FILE *f, LOFF_T *last_pos, LOFF_T offset, unsigned char **buf,
@@ -7996,7 +8006,7 @@ index 3654ad1..1e499ec 100644
  parse.c
  pattern.c
 diff --git a/postpone.c b/postpone.c
-index 21e96e6..5144be9 100644
+index 7a4cbb1..569edb6 100644
 --- a/postpone.c
 +++ b/postpone.c
 @@ -125,15 +125,26 @@ int mutt_num_postponed (int force)
@@ -8027,7 +8037,7 @@ index 21e96e6..5144be9 100644
  
    return (PostCount);
 diff --git a/protos.h b/protos.h
-index 551b142..bb44d34 100644
+index 5d2fafb..81d09db 100644
 --- a/protos.h
 +++ b/protos.h
 @@ -111,6 +111,7 @@ HASH *mutt_make_id_hash (CONTEXT *);
@@ -8039,10 +8049,10 @@ index 551b142..bb44d34 100644
  char *mutt_read_rfc822_line (FILE *, char *, size_t *);
  ENVELOPE *mutt_read_rfc822_header (FILE *, HEADER *, short, short);
 diff --git a/recvattach.c b/recvattach.c
-index 31dfcad..05a1cde 100644
+index fddbc2f..b76a4ea 100644
 --- a/recvattach.c
 +++ b/recvattach.c
-@@ -1119,6 +1119,15 @@ void mutt_view_attachments (HEADER *hdr)
+@@ -1120,6 +1120,15 @@ void mutt_view_attachments (HEADER *hdr)
  	}
  #endif
  
@@ -8055,10 +8065,10 @@ index 31dfcad..05a1cde 100644
 +	}
 +#endif
 +
-         if (WithCrypto && hdr->security & ~PGP_TRADITIONAL_CHECKED)
+         if (WithCrypto && (hdr->security & ENCRYPT))
          {
- 	  mutt_message _(
-@@ -1210,10 +1219,33 @@ void mutt_view_attachments (HEADER *hdr)
+           mutt_message _(
+@@ -1214,10 +1223,33 @@ void mutt_view_attachments (HEADER *hdr)
        case OP_FORWARD_MESSAGE:
          CHECK_ATTACH;
          mutt_attach_forward (fp, hdr, idx, idxlen,
@@ -8222,7 +8232,7 @@ index a6a3a91..e633119 100644
    {
      nattach = count_tagged (idx, idxlen);
 diff --git a/send.c b/send.c
-index 893c859..13358b9 100644
+index 0b45171..f4a3611 100644
 --- a/send.c
 +++ b/send.c
 @@ -44,6 +44,11 @@
@@ -8397,7 +8407,7 @@ index 893c859..13358b9 100644
    if (SmtpUrl)
        return mutt_smtp_send (msg->env->from, msg->env->to, msg->env->cc,
                               msg->env->bcc, tempfile,
-@@ -1137,6 +1226,13 @@ ci_send_message (int flags,		/* send mode */
+@@ -1159,6 +1248,13 @@ ci_send_message (int flags,		/* send mode */
  
    int rv = -1;
    
@@ -8411,7 +8421,7 @@ index 893c859..13358b9 100644
    if (!flags && !msg && quadoption (OPT_RECALL) != M_NO &&
        mutt_num_postponed (1))
    {
-@@ -1167,6 +1263,22 @@ ci_send_message (int flags,		/* send mode */
+@@ -1194,6 +1290,22 @@ ci_send_message (int flags,		/* send mode */
      {
        if ((flags = mutt_get_postponed (ctx, msg, &cur, fcc, sizeof (fcc))) < 0)
  	goto cleanup;
@@ -8434,7 +8444,7 @@ index 893c859..13358b9 100644
      }
  
      if (flags & (SENDPOSTPONED|SENDRESEND))
-@@ -1259,11 +1371,16 @@ ci_send_message (int flags,		/* send mode */
+@@ -1286,11 +1398,16 @@ ci_send_message (int flags,		/* send mode */
      if (flags & SENDREPLY)
        mutt_fix_reply_recipients (msg->env);
  
@@ -8452,7 +8462,7 @@ index 893c859..13358b9 100644
  	goto cleanup;
      }
  
-@@ -1546,6 +1663,11 @@ main_loop:
+@@ -1587,6 +1704,11 @@ main_loop:
      if (i == -1)
      {
        /* abort */
@@ -8464,7 +8474,7 @@ index 893c859..13358b9 100644
        mutt_message _("Mail not sent.");
        goto cleanup;
      }
-@@ -1578,6 +1700,9 @@ main_loop:
+@@ -1641,6 +1763,9 @@ main_loop:
      }
    }
  
@@ -8474,7 +8484,7 @@ index 893c859..13358b9 100644
    if (!has_recips (msg->env->to) && !has_recips (msg->env->cc) &&
        !has_recips (msg->env->bcc))
    {
-@@ -1611,6 +1736,19 @@ main_loop:
+@@ -1674,6 +1799,19 @@ main_loop:
        mutt_error _("No subject specified.");
      goto main_loop;
    }
@@ -8494,7 +8504,7 @@ index 893c859..13358b9 100644
  
    if (msg->content->next)
      msg->content = mutt_make_multipart (msg->content);
-@@ -1817,7 +1955,12 @@ full_fcc:
+@@ -1880,7 +2018,12 @@ full_fcc:
      }
    }
    else if (!option (OPTNOCURSES) && ! (flags & SENDMAILX))
@@ -8509,7 +8519,7 @@ index 893c859..13358b9 100644
    if (WithCrypto && (msg->security & ENCRYPT))
      FREE (&pgpkeylist);
 diff --git a/sendlib.c b/sendlib.c
-index 9d83401..46fc511 100644
+index 2144156..cddbe32 100644
 --- a/sendlib.c
 +++ b/sendlib.c
 @@ -46,6 +46,10 @@
@@ -8552,7 +8562,7 @@ index 9d83401..46fc511 100644
        fputc ('\n', f);
    }
  
-@@ -1962,6 +1976,9 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
+@@ -1969,6 +1983,9 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
      mutt_write_address_list (env->to, fp, 4, 0);
    }
    else if (mode > 0)
@@ -8562,7 +8572,7 @@ index 9d83401..46fc511 100644
      fputs ("To: \n", fp);
  
    if (env->cc)
-@@ -1970,6 +1987,9 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
+@@ -1977,6 +1994,9 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
      mutt_write_address_list (env->cc, fp, 4, 0);
    }
    else if (mode > 0)
@@ -8572,7 +8582,7 @@ index 9d83401..46fc511 100644
      fputs ("Cc: \n", fp);
  
    if (env->bcc && should_write_bcc)
-@@ -1981,8 +2001,28 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
+@@ -1988,8 +2008,28 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
      }
    }
    else if (mode > 0)
@@ -8601,7 +8611,7 @@ index 9d83401..46fc511 100644
    if (env->subject)
      mutt_write_one_header (fp, "Subject", env->subject, NULL, 0, 0);
    else if (mode == 1)
-@@ -2001,6 +2041,9 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
+@@ -2008,6 +2048,9 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
      fputs ("Reply-To: \n", fp);
  
    if (env->mail_followup_to)
@@ -8611,7 +8621,7 @@ index 9d83401..46fc511 100644
    {
      fputs ("Mail-Followup-To: ", fp);
      mutt_write_address_list (env->mail_followup_to, fp, 18, 0);
-@@ -2344,6 +2387,23 @@ mutt_invoke_sendmail (ADDRESS *from,	/* the sender */
+@@ -2351,6 +2394,23 @@ mutt_invoke_sendmail (ADDRESS *from,	/* the sender */
    size_t argslen = 0, argsmax = 0;
    int i;
  
@@ -8635,7 +8645,7 @@ index 9d83401..46fc511 100644
    /* ensure that $sendmail is set to avoid a crash. http://dev.mutt.org/trac/ticket/3548 */
    if (!s)
    {
-@@ -2374,6 +2434,10 @@ mutt_invoke_sendmail (ADDRESS *from,	/* the sender */
+@@ -2381,6 +2441,10 @@ mutt_invoke_sendmail (ADDRESS *from,	/* the sender */
      i++;
    }
  
@@ -8646,7 +8656,7 @@ index 9d83401..46fc511 100644
    if (eightbit && option (OPTUSE8BITMIME))
      args = add_option (args, &argslen, &argsmax, "-B8BITMIME");
  
-@@ -2405,6 +2469,9 @@ mutt_invoke_sendmail (ADDRESS *from,	/* the sender */
+@@ -2412,6 +2476,9 @@ mutt_invoke_sendmail (ADDRESS *from,	/* the sender */
    args = add_args (args, &argslen, &argsmax, to);
    args = add_args (args, &argslen, &argsmax, cc);
    args = add_args (args, &argslen, &argsmax, bcc);
@@ -8656,7 +8666,7 @@ index 9d83401..46fc511 100644
  
    if (argslen == argsmax)
      safe_realloc (&args, sizeof (char *) * (++argsmax));
-@@ -2485,6 +2552,9 @@ void mutt_prepare_envelope (ENVELOPE *env, int final)
+@@ -2492,6 +2559,9 @@ void mutt_prepare_envelope (ENVELOPE *env, int final)
    rfc2047_encode_string (&env->x_label);
  
    if (env->subject)
@@ -8666,7 +8676,7 @@ index 9d83401..46fc511 100644
    {
      rfc2047_encode_string (&env->subject);
    }
-@@ -2605,6 +2675,10 @@ int mutt_bounce_message (FILE *fp, HEADER *h, ADDRESS *to)
+@@ -2612,6 +2682,10 @@ int mutt_bounce_message (FILE *fp, HEADER *h, ADDRESS *to)
    }
    rfc822_write_address (resent_from, sizeof (resent_from), from, 0);
  

@@ -17,10 +17,10 @@ Gbp-Pq: Topic mutt-patched
  3 files changed, 33 insertions(+), 7 deletions(-)
 
 diff --git a/globals.h b/globals.h
-index 3f83328..61765a4 100644
+index 004c795..602f932 100644
 --- a/globals.h
 +++ b/globals.h
-@@ -118,6 +118,7 @@ WHERE char *SendCharset;
+@@ -119,6 +119,7 @@ WHERE char *SendCharset;
  WHERE char *Sendmail;
  WHERE char *Shell;
  WHERE char *SidebarDelim;
@@ -29,10 +29,10 @@ index 3f83328..61765a4 100644
  WHERE char *SimpleSearch;
  #if USE_SMTP
 diff --git a/init.h b/init.h
-index 502f570..b0784d8 100644
+index c664e5f..166671b 100644
 --- a/init.h
 +++ b/init.h
-@@ -2001,6 +2001,14 @@ struct option_t MuttVars[] = {
+@@ -2051,6 +2051,14 @@ struct option_t MuttVars[] = {
    ** .pp
    ** The width of the sidebar.
    */

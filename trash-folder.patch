@@ -62,7 +62,7 @@ Gbp-Pq: Topic features
  9 files changed, 103 insertions(+), 2 deletions(-)
 
 diff --git a/commands.c b/commands.c
-index 6b23e39..300d95c 100644
+index 5dbd100..7fd014b 100644
 --- a/commands.c
 +++ b/commands.c
 @@ -720,6 +720,7 @@ int _mutt_save_message (HEADER *h, CONTEXT *ctx, int delete, int decode, int dec
@@ -111,22 +111,22 @@ index f0f3d81..dfa6a50 100644
  
        if (!mutt_bit_isset(ctx->rights,M_ACL_SEEN))
 diff --git a/globals.h b/globals.h
-index 584cd0c..a7e2304 100644
+index e77030c..6a1b8da 100644
 --- a/globals.h
 +++ b/globals.h
-@@ -139,6 +139,7 @@ WHERE char *StChars;
- WHERE char *Status;
- WHERE char *Tempdir;
- WHERE char *Tochars;
+@@ -144,6 +144,7 @@ WHERE char *Tochars;
+ WHERE char *TSStatusFormat;
+ WHERE char *TSIconFormat;
+ WHERE short TSSupported;
 +WHERE char *TrashPath;
  WHERE char *Username;
  WHERE char *Visual;
- WHERE char *XtermTitle;
+ 
 diff --git a/imap/message.c b/imap/message.c
-index 38da127..3c9822f 100644
+index 3877381..039fda6 100644
 --- a/imap/message.c
 +++ b/imap/message.c
-@@ -876,6 +876,7 @@ int imap_copy_messages (CONTEXT* ctx, HEADER* h, char* dest, int delete)
+@@ -884,6 +884,7 @@ int imap_copy_messages (CONTEXT* ctx, HEADER* h, char* dest, int delete)
          if (ctx->hdrs[n]->tagged)
          {
            mutt_set_flag (ctx, ctx->hdrs[n], M_DELETE, 1);
@@ -134,7 +134,7 @@ index 38da127..3c9822f 100644
            if (option (OPTDELETEUNTAG))
              mutt_set_flag (ctx, ctx->hdrs[n], M_TAG, 0);
          }
-@@ -883,6 +884,7 @@ int imap_copy_messages (CONTEXT* ctx, HEADER* h, char* dest, int delete)
+@@ -891,6 +892,7 @@ int imap_copy_messages (CONTEXT* ctx, HEADER* h, char* dest, int delete)
      else
      {
        mutt_set_flag (ctx, h, M_DELETE, 1);
@@ -143,12 +143,12 @@ index 38da127..3c9822f 100644
          mutt_set_flag (ctx, h, M_TAG, 0);
      }
 diff --git a/init.h b/init.h
-index cf8e75a..d4a882b 100644
+index 6b49341..d3206f9 100644
 --- a/init.h
 +++ b/init.h
-@@ -3241,6 +3241,16 @@ struct option_t MuttVars[] = {
-   ** by \fIyou\fP.  The sixth character is used to indicate when a mail
-   ** was sent to a mailing-list you subscribe to.
+@@ -3341,6 +3341,16 @@ struct option_t MuttVars[] = {
+   ** provided that ``$$ts_enabled'' has been set. This string is identical in
+   ** formatting to the one used by ``$$status_format''.
    */
 +  { "trash",		DT_PATH, R_NONE, UL &TrashPath, 0 },
 +  /*
@@ -164,7 +164,7 @@ index cf8e75a..d4a882b 100644
    { "tunnel",            DT_STR, R_NONE, UL &Tunnel, UL 0 },
    /*
 diff --git a/mutt.h b/mutt.h
-index 1d7e177..0b879b9 100644
+index f8565fa..29bb6c2 100644
 --- a/mutt.h
 +++ b/mutt.h
 @@ -185,6 +185,7 @@ enum
@@ -175,7 +175,7 @@ index 1d7e177..0b879b9 100644
    M_FLAG,
    M_TAG,
    M_UNTAG,
-@@ -709,6 +710,7 @@ typedef struct header
+@@ -713,6 +714,7 @@ typedef struct header
    unsigned int mime : 1;    		/* has a MIME-Version header? */
    unsigned int flagged : 1; 		/* marked important? */
    unsigned int tagged : 1;
@@ -183,7 +183,7 @@ index 1d7e177..0b879b9 100644
    unsigned int deleted : 1;
    unsigned int changed : 1;
    unsigned int attach_del : 1; 		/* has an attachment marked for deletion */
-@@ -881,6 +883,7 @@ typedef struct _context
+@@ -885,6 +887,7 @@ typedef struct _context
    int new;			/* how many new messages? */
    int unread;			/* how many unread messages? */
    int deleted;			/* how many deleted messages */
@@ -192,10 +192,10 @@ index 1d7e177..0b879b9 100644
    int msgnotreadyet;		/* which msg "new" in pager, -1 if none */
  
 diff --git a/muttlib.c b/muttlib.c
-index 8005e9c..0425d45 100644
+index 02067cc..0fd9766 100644
 --- a/muttlib.c
 +++ b/muttlib.c
-@@ -1510,7 +1510,9 @@ int mutt_save_confirm (const char *s, struct stat *st)
+@@ -1505,7 +1505,9 @@ int mutt_save_confirm (const char *s, struct stat *st)
  
    if (magic > 0 && !mx_access (s, W_OK))
    {
@@ -207,7 +207,7 @@ index 8005e9c..0425d45 100644
        snprintf (tmp, sizeof (tmp), _("Append messages to %s?"), s);
        if ((rc = mutt_yesorno (tmp, M_YES)) == M_NO)
 diff --git a/mx.c b/mx.c
-index f599f6c..f7fd01f 100644
+index 4c5cb07..c0a6d30 100644
 --- a/mx.c
 +++ b/mx.c
 @@ -776,6 +776,53 @@ static int sync_mailbox (CONTEXT *ctx, int *index_hint)
@@ -301,7 +301,7 @@ index f599f6c..f7fd01f 100644
    if (ctx->magic == M_IMAP)
      rc = imap_sync_mailbox (ctx, purge, index_hint);
 diff --git a/postpone.c b/postpone.c
-index 801ef10..21e96e6 100644
+index a703161..7a4cbb1 100644
 --- a/postpone.c
 +++ b/postpone.c
 @@ -277,6 +277,9 @@ int mutt_get_postponed (CONTEXT *ctx, HEADER *hdr, HEADER **cur, char *fcc, size

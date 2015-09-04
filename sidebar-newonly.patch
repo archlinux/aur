@@ -28,10 +28,10 @@ index b036db9..1ed9c96 100644
 +OP_SIDEBAR_NEXT_NEW "go down to next mailbox with new mail"
 +OP_SIDEBAR_PREV_NEW "go to previous mailbox with new mail"
 diff --git a/curs_main.c b/curs_main.c
-index 7b81798..5c58f1c 100644
+index ea530a6..acb106d 100644
 --- a/curs_main.c
 +++ b/curs_main.c
-@@ -2262,6 +2262,8 @@ int mutt_index_menu (void)
+@@ -2326,6 +2326,8 @@ int mutt_index_menu (void)
        case OP_SIDEBAR_SCROLL_DOWN:
        case OP_SIDEBAR_NEXT:
        case OP_SIDEBAR_PREV:
@@ -63,10 +63,10 @@ index ef8937a..363b4d5 100644
    { NULL,		0,				NULL }
  };
 diff --git a/init.h b/init.h
-index b0784d8..e20a24e 100644
+index 166671b..a5d4238 100644
 --- a/init.h
 +++ b/init.h
-@@ -2009,6 +2009,11 @@ struct option_t MuttVars[] = {
+@@ -2059,6 +2059,11 @@ struct option_t MuttVars[] = {
    ** you're not using IMAP folders, you probably prefer setting this to "/"
    ** alone.
    */
@@ -79,10 +79,10 @@ index b0784d8..e20a24e 100644
    /*
    ** .pp
 diff --git a/mutt.h b/mutt.h
-index 61a9612..932ef10 100644
+index 5f25406..d73e514 100644
 --- a/mutt.h
 +++ b/mutt.h
-@@ -525,6 +525,8 @@ enum
+@@ -529,6 +529,8 @@ enum
    OPTDONTHANDLEPGPKEYS,	/* (pseudo) used to extract PGP keys */
    OPTUNBUFFEREDINPUT,   /* (pseudo) don't use key buffer */
  
@@ -92,7 +92,7 @@ index 61a9612..932ef10 100644
  };
  
 diff --git a/pager.c b/pager.c
-index 469efe4..d372fc0 100644
+index 5cfcb75..8d64fe1 100644
 --- a/pager.c
 +++ b/pager.c
 @@ -2789,6 +2789,8 @@ search_next:
