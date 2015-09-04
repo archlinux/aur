@@ -4,7 +4,7 @@
 
 pkgname=mutt-patched
 pkgver=1.5.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Small but very powerful text-based mail client (plus a huge pile of patches mostly from debian)'
 url='http://www.mutt.org/'
 license=('GPL')
@@ -18,7 +18,6 @@ conflicts=('mutt')
 provides=('mutt')
 source=(
   "https://bitbucket.org/mutt/mutt/downloads/mutt-${pkgver}.tar.gz"
-  'backport-gnutls-fix.patch'
   'am-maintainer-mode.patch'
   'ifdef.patch'
   'trash-folder.patch'
@@ -43,7 +42,6 @@ source=(
   'fix-configure-test-operator.patch'
   '531430-imapuser.patch'
   '543467-thread-segfault.patch'
-  '542817-smimekeys-tmpdir.patch'
   '548577-gpgme-1.2.patch'
   '553321-ansi-escape-segfault.patch'
   '528233-readonly-open.patch'
@@ -63,7 +61,6 @@ source=(
   'nntp.patch'
 )
 sha1sums=('38a2da5eb01ff83a90a2caee28fa2e95dbfe6898'
-          '018575fea153952423d4d512ca2fdfc2e49d669f'
           '1ad77bdf742ff584b5695f1908dde83044195c0e'
           '92fe7a726545424db6fc0f8b0612eeeeabb0fef4'
           'cce6c3484941a461c0852fccc6da4c89cfabd3d3'
@@ -88,7 +85,6 @@ sha1sums=('38a2da5eb01ff83a90a2caee28fa2e95dbfe6898'
           '81d33556b66c721f2f25cd1f5485536999a7cb72'
           'f1ee08450995fe21e0dc3807563e7120d2e3d04a'
           'f2b98a258d5ee18f731aab975f5b0dd17945f228'
-          '98d958231c05fa1ddf5f1a0ab67a2dc6cefa8418'
           'a247d69731c0df74a7e0f19d9206c3abeacb160a'
           '6ec4a7614dc78d230a9ebe8ec645393a98be41a4'
           '03a42b8914c9ef1f684275cba355046de14b1c03'
