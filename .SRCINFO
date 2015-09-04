@@ -1,6 +1,6 @@
 pkgbase = libguestfs
 	pkgdesc = Access and modify virtual machine disk image
-	pkgver = 1.30.0
+	pkgver = 1.30.1
 	pkgrel = 1
 	url = http://libguestfs.org
 	install = appliance.install
@@ -36,14 +36,14 @@ pkgbase = libguestfs
 	optdepends = perl: Perl Bindings
 	optdepends = perl-sys-virt: Sys-Virt tools
 	optdepends = ocaml: Ocaml libs
-	provides = guestfish=1.30.0
+	provides = guestfish=1.30.1
 	backup = etc/libguestfs-tools.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.gpg
-	source = http://libguestfs.org/download/1.30-stable/libguestfs-1.30.0.tar.gz
+	source = http://libguestfs.org/download/1.30-stable/libguestfs-1.30.1.tar.gz
 	source = update-libguestfs-appliance
-	sha512sums = b3a68cb5de208f359d2b9aa5d26fe0248575ee03975a6cf60e1a3509cf34c3c55116ba24db7d4dbeee2ed79bc9e2bdd5056a9de82d9263c41cb657eb702ae45e
-	sha512sums = 5ea0649eb3c4fda98e15a01842149ce041d427eb585b33874aea2a6dc06155a61e8e0821984e13742a639b1d295f892b7946904a79d3bb3a9059c26436cfe4ca
+	sha512sums = 50c4fa46cb0409e329c408986949d3ac27b4b9f7b661fa20b33419baf41410778b9fe6f8228db169fc714161360e21d4a654bda2cfdf0f4552c50487741148b8
+	sha512sums = 3529d8ffb430bf83f6ef345afe1c6fde9234721482fbf8453085d2c13b9d44bad7de77b84a1e4415d7dddf0831ff04129fdb437688f6661b43469886eda69260
 
 pkgname = libguestfs
 
