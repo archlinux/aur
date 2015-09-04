@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-kguiaddons
+	pkgdesc = Addons to QtGui (mingw-w64)
+	pkgver = 5.13.0
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kguiaddons
+	arch = any
+	groups = mingw-w64-kf5
+	license = LGPL
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-extra-cmake-modules
+	depends = mingw-w64-qt5-base
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://download.kde.org/stable/frameworks/5.13/kguiaddons-5.13.0.tar.xz
+	md5sums = 62ab7a6b1829b31b1d3be9f611e051ee
+
+pkgname = mingw-w64-kguiaddons
+
