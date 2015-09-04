@@ -2,7 +2,7 @@
 
 _pkgname=sass
 pkgname=ruby-$_pkgname
-pkgver=3.4.15
+pkgver=3.4.17
 pkgrel=1
 pkgdesc="Tools and Ruby libraries for the CSS3 extension languages: Sass and SCSS."
 arch=("any")
@@ -12,7 +12,7 @@ depends=("ruby-yard" "ruby-maruku")
 makedepends=("rubygems")
 source=("http://gems.rubyforge.org/gems/$_pkgname-$pkgver.gem")
 noextract=("$_pkgname-$pkgver.gem")
-sha256sums=("6b461a469d29ec80b52b1401b5e5d58c48762a8f3e00f3b0b2d37b6791a87a59")
+sha256sums=("2d0fda87240e0133e04f2fd30d0184c0cb13f9b5235fbf3fc4efc038f1b3da58")
 
 
 package() {
