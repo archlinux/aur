@@ -1,13 +1,13 @@
 # Maintainer: Raphael Dümig <duemig@in.tum.de>
 
 pkgname=osm2pgsql-git
-pkgver=0.88.0.r140.g8179cdb
 pkgrel=2
 pkgdesc="tool for loading OpenStreetMap data into a PostgreSQL / PostGIS database"
 arch=('i686' 'x86_64')
 url="https://github.com/openstreetmap/osm2pgsql"
 license=('GPL')
 depends=('expat' 'geos' 'proj' 'postgresql-libs' 'boost-libs')
+makedepends=('boost')
 optdepends=('lua: used for Lua tag transforms'
 	'postgresql: for creating a PostgreSQL database'
 	'postgis: for creating a PostGIS database')
