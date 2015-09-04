@@ -23,8 +23,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-make_flush_workqueue_non_gpl.patch')
 sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
-            'b46d8a8166487cf0dcdbcc0c0a5111aba950c49749a4761e1dce78f220704079'
-            'e54800217ad6c61efa80d6ab223364cb0c2d6030061bc48d3f83fd971ae675f9'
+            'e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2'
+            'a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d')
