@@ -17,7 +17,7 @@ _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=46.0.2471.2
+pkgver=47.0.2498.0
 _launcher_ver=2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -41,7 +41,7 @@ depends=('desktop-file-utils'
          'speech-dispatcher'
          'speex'
          'xdg-utils'
-         #'opus' 
+         #'opus'
          #'protobuf'
          #'libevent'
          #'libvpx'
@@ -57,6 +57,7 @@ makedepends=('libexif'
              'subversion'
              'yasm'
              'git'
+             # https://bugs.archlinux.org/task/45625
              #'python2-ply'
              )
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
@@ -66,7 +67,7 @@ optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
             'kdialog-frameworks-git: Needed for file dialogs in KF5'
             'kwalletmanager-git: Needed for storing passwords in KWallet in KF5'
             'libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)'
-            'llibexif: Need for read EXIF metadata'
+            'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography')
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
@@ -193,6 +194,15 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/brotli'
            'third_party/boringssl'
            'third_party/cacheinvalidation'
+           'third_party/catapult'
+           'third_party/catapult/tracing/third_party/components/polymer'
+           'third_party/catapult/tracing/third_party/d3'
+           'third_party/catapult/tracing/third_party/gl-matrix'
+           'third_party/catapult/tracing/third_party/jszip'
+           'third_party/catapult/tracing/third_party/tvcm'
+           'third_party/catapult/tracing/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py'
+           'third_party/catapult/tracing/third_party/tvcm/third_party/rcssmin'
+           'third_party/catapult/tracing/third_party/tvcm/third_party/rjsmin'
            'third_party/cld_2'
            'third_party/cros_system_api'
            'third_party/cython/python_flags.py'
@@ -255,15 +265,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/smhasher'
            'third_party/sqlite'
            'third_party/tcmalloc'
-           'third_party/trace-viewer'
-           'third_party/trace-viewer/tracing/third_party/components/polymer'
-           'third_party/trace-viewer/tracing/third_party/d3'
-           'third_party/trace-viewer/tracing/third_party/gl-matrix'
-           'third_party/trace-viewer/tracing/third_party/jszip'
-           'third_party/trace-viewer/tracing/third_party/tvcm'
-           'third_party/trace-viewer/tracing/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py'
-           'third_party/trace-viewer/tracing/third_party/tvcm/third_party/rcssmin'
-           'third_party/trace-viewer/tracing/third_party/tvcm/third_party/rjsmin'
            'third_party/usrsctp'
            'third_party/web-animations-js'
            'third_party/webdriver'
@@ -312,6 +313,7 @@ _flags=("-Dclang=${_use_clang}"
         '-Dlogging_like_official_build=1'
         '-Dno_strict_aliasing=1'
         '-Dproprietary_codecs=1'
+        '-Dpython_ver=2.7'
         '-Dremove_webcore_debug_symbols=1'
         "-Dtarget_arch=${_target_arch}"
         '-Dusb_ids_path=/usr/share/hwdata/usb.ids'
@@ -442,8 +444,8 @@ prepare() {
   msg2 "Make sure use Python2"
   find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
   find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
-  
-  sed '11d' -i chrome/test/data/webui_test_resources.grd
+
+  touch chrome/test/data/webui/i18n_process_css_test.html
 }
 
 build() {
