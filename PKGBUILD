@@ -21,7 +21,7 @@ source=(http://mirrors.cdn.adacore.com/art/eabc020e818b1c6b8a6dc5ea3f665a479a49b
 
 md5sums=('c690ecf9dc58384cf52ed8ce81e9cb5a'
          'bc70aaf2e21a488a00f87fdec112454a'
-         'a1784ff68b633c019666d7e176f9b2ef'
+         '66aca5731fc6fb0f22245b000735b719'
          'b47f71e78c77885bd05f031a36932bbd')
 
 
