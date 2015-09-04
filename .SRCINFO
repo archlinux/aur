@@ -1,0 +1,17 @@
+pkgbase = uncsv-git
+	pkgdesc = Convert to or from a CSV stream
+	pkgver = 0.9.1.r32.gdce99a6
+	pkgrel = 1
+	url = https://tamentis.com/projects/uncsv/
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = glibc
+	provides = uncsv=0.9.1
+	conflicts = uncsv
+	source = UNCSV-GIT::git://github.com/tamentis/uncsv.git
+	sha256sums = SKIP
+
+pkgname = uncsv-git
+
