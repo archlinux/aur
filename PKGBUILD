@@ -22,7 +22,5 @@ package() {
   # Build the docs as well - Fails now because two doctests fail
   cd "${srcdir}/txZMQ-${pkgver}/docs"
   make SPHINXBUILD=/usr/bin/sphinx-build2 html
-  install -Ddm755 _build/html "${pkgdir}/usr/share/doc/${pkgname}/html"
+  cp -a _build/html "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
