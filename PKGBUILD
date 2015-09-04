@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=vhba-hook
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='mkinitcpio hook to compile the vhba module'
 url='https://github.com/alucryd/mkinitcpio-hooks'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('vhba-dkms')
 install='vhba-hook.install'
 source=('https://raw.github.com/alucryd/mkinitcpio-hooks/master/vhba')
-sha256sums=('2e264e0d6e3b54b0a6a91e4880116a96ced4246420db793df2da86cfd02e54fa')
+sha256sums=('443546ae1d98dbc506f2e8578547c60537cc0643f76ae41206290ce81bec596d')
 
 package() {
   sed "s|_arch|$CARCH|" -i vhba
