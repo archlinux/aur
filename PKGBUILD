@@ -4,7 +4,7 @@
 set -u
 _pkgname='libgxps'
 pkgname='libgxps-git'
-pkgver=0.2.3.1.r0.gb62ce7e
+pkgver=0.2.3.2.r0.gce9a91f
 pkgrel=1
 pkgdesc='An XPS Documents library'
 arch=('i686' 'x86_64')
@@ -14,9 +14,7 @@ depends=('cairo' 'libarchive' 'libtiff')
 makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
-_verurl="${url}"
-_versed="/browse/${_pkgname}/snapshot/${_pkgname}-\([0-9\.]\+\)\.tar\.xz"
-_veropt='l'
+_verwatch=("${url}" "/browse/${_pkgname}/snapshot/${_pkgname}-\([0-9\.]\+\)\.tar\.xz" 'l')
 source=("git://git.gnome.org/${_pkgname}")
 sha256sums=('SKIP')
 
