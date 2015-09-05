@@ -1,0 +1,24 @@
+pkgbase = pharo-vm-latest
+	pkgdesc = Up to date Pharo-VM from Continuous integration server. Pharo is a clean, innovative, open-source Smalltalk-inspired environment
+	pkgver = 4.0
+	pkgrel = 2
+	url = http://www.pharo-project.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = libvorbis
+	depends = pango
+	depends = mesa
+	depends = dbus-core
+	depends = libxml2
+	depends = wget
+	depends = unzip
+	conflicts = pharo
+	source = http://files.pharo.org/sources/PharoV30.sources.zip
+	source = http://files.pharo.org/sources/PharoV40.sources.zip
+	md5sums = bb0a66b8968ef7d0da97ec86331f68c8
+	md5sums = f748553d42c7dda963d56286e3be3f08
+
+pkgname = pharo-vm-latest
+
