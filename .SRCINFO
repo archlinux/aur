@@ -1,0 +1,15 @@
+pkgbase = xsv
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://github.com/BurntSushi/xsv
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = https://github.com/BurntSushi/xsv/archive/0.9.8.tar.gz
+	md5sums = 528ebe539ce099efec6b06d420f8deba
+
+pkgname = xsv
+
