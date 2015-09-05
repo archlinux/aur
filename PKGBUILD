@@ -2,7 +2,7 @@
 _name=opencubicplayer
 pkgname=opencubicplayer-git
 pkgver=0.1.21.r59.b2f2f33
-pkgrel=1
+pkgrel=2
 pkgdesc="A music file player for Linux, Unix, DOS and Windows 95-ME, XP."
 arch=('i686' 'x86_64')
 url="http://stian.cubic.org/project-ocp.php"
