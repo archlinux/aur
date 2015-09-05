@@ -1,0 +1,22 @@
+infodir=usr/share/info
+
+post_install() {
+    [ -x usr/bin/install-info ] || return 0
+    install-info $infodir/ocp.info.gz $infodir/dir 2> /dev/null
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    update-desktop-database -q
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    install-info --delete $infodir/ocp.info.gz $infodir/dir 2> /dev/null
+}
+
+post_remove() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+

@@ -1,0 +1,25 @@
+pkgbase = opencubicplayer-git
+	pkgdesc = A music file player for Linux, Unix, DOS and Windows 95-ME, XP.
+	pkgver = 0.1.21.r56.63e5fc1
+	pkgrel = 1
+	url = http://stian.cubic.org/project-ocp.php
+	install = opencubicplayer-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = libxpm
+	depends = libxxf86vm
+	optdepends = adplug: for OPL formats support
+	optdepends = alsa-lib: for ALSA output
+	optdepends = flac: for FLAC audio support
+	optdepends = libmad: for MPEG audio support
+	optdepends = libsidplay: for SID music support
+	optdepends = libvorbis: for Vorbis audio support
+	optdepends = sdl: for SDL user interface support
+	source = opencubicplayer::git://git.code.sf.net/p/opencubicplayer/code
+	md5sums = SKIP
+
+pkgname = opencubicplayer-git
+
