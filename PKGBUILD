@@ -1,35 +1,34 @@
 # Maintainer: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=teeworlds-hclient
-pkgver=3.2
+pkgver=4.0
 pkgrel=1
 pkgdesc="A customized client by CytraL for this 2D shooting game"
 arch=('i686' 'x86_64')
-url="https://www.teeworlds.com/forum/viewtopic.php?id=9011"
-     # and  http://hclient.wordpress.com/
+url="https://hclient.wordpress.com/"
+     # and https://www.teeworlds.com/forum/viewtopic.php?id=9011
 license=('custom')
 depends=('alsa-lib' 'glu' 'sdl' 'freetype2')
 makedepends=('python' 'bam' 'mesa' 'gendesk' 'imagemagick')
 provides=('teeworlds')
 conflicts=('teeworlds')
-_hash=0956db684ee61fcd3ff6e4861ebaa42c03d4bc12
-source=("HClient-$pkgver.zip::https://github.com/CytraL/HClient/archive/$_hash.zip")
-md5sums=('e7f237b51d24aa5f05d1311a430a3548')
+source=("HClient-$pkgver.zip::https://github.com/CytraL/HClient/archive/v$pkgver.tar.gz")
+md5sums=('ebb1bb0a1a269d637457df0473f10848')
 
 prepare() {
-  convert "HClient-$_hash/other/icons/Teeworlds.ico" "$srcdir/$pkgname.png"
+  convert "HClient-$pkgver/other/icons/Teeworlds.ico" "$srcdir/$pkgname.png"
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
     --name 'Teeworlds' --categories 'Game;ArcadeGame'
 }
 
 build() {
 	# Build teeworlds
-	cd HClient-$_hash
+	cd HClient-$pkgver
 	bam client_release server_release
 }
 
 package() {
-	cd HClient-$_hash
+	cd HClient-$pkgver
 
 	# Install data files
 	mkdir -p "$pkgdir"/usr/share/teeworlds/data
@@ -45,6 +44,6 @@ package() {
 
 	install -Dm644 license.txt \
 		"$pkgdir"/usr/share/licenses/$pkgname/license.txt
-	install -Dm644 readme.txt \
-		"$pkgdir"/usr/share/licenses/$pkgname/readme.txt
+	install -Dm644 readme.md \
+		"$pkgdir"/usr/share/doc/$pkgname/readme.md
 }
