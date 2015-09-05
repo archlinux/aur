@@ -1,0 +1,16 @@
+pkgbase = cdck-bin
+	pkgdesc = Command-line tool for verifying the quality of a written CD or DVD
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://swaj.net/unix/index.html#cdck
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	depends = gcc-libs
+	optdepends = gnuplot
+	source = http://ftp.debian.org/debian/pool/main/c/cdck/cdck_0.7.0+dfsg-1_i386.deb
+	md5sums = 21c8eacaf17f5994e6567225f4e570ea
+
+pkgname = cdck-bin
+
