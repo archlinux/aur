@@ -1,7 +1,7 @@
 # Maintainer: Megameneer (Dennis Holierhoek) <dennis.hh@hotmail.com>
 pkgname=stripe
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software tool which converts a polygonal model into triangle strips"
 arch=('any')
 url=http://www3.cs.stonybrook.edu/~stripe/
@@ -21,6 +21,7 @@ package() {
 	cd "$srcdir"/..
 	gzip stripe.1
 	install -Dm644 stripe.1.gz "$pkgdir"/usr/share/man/man1/stripe.1.gz
+	install -Dm644 stripelicense.html "$pkgdir"/usr/share/licenses/stripe/stripelicense.html
 	cd "$srcdir"/Stripe
-	install -Dm644 stripe "$pkgdir"/usr/bin/stripe
+	install -Dm755 stripe "$pkgdir"/usr/bin/stripe
 }
