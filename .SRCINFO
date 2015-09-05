@@ -1,6 +1,6 @@
 pkgbase = wickr-bin
 	pkgdesc = Wickr messenger
-	pkgver = 2.3.4
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://wickr.com
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = wickr-bin
 	depends = libx264
 	options = !strip
 	source = https://mywickr.info/download.php?p=364
-	sha256sums = f29cfbe136fb66d57186bebd474ad07d3186edcf97964694f03eec4531e091f1
+	sha256sums = 0f5e4ffc1082f735681ecada99e150020850400d7a9107e4d1a10e80a799bf81
 
 pkgname = wickr-bin
 
