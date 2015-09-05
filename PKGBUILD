@@ -4,7 +4,7 @@
 
 pkgname='vi-vim-symlink'
 pkgver='1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Replace vi with vim'
 arch=('any')
 url='http://www.vim.org'
@@ -16,8 +16,12 @@ conflicts=('vi')
 package() {
   set -u
   install -d "${pkgdir}/usr/bin"
-  ln -sf 'vim' "${pkgdir}/usr/bin/vi"
-  ln -sf 'vim' "${pkgdir}/usr/bin/view"
+  install -d "${pkgdir}/usr/share/man/man1"
+  local _file
+  for _file in 'edit' 'ex' 'vedit' 'vi' 'view'; do
+    ln -sf 'vim' "${pkgdir}/usr/bin/${_file}"
+    ln -sf 'vim.1.gz' "${pkgdir}/usr/share/man/man1/${_file}.1.gz"
+  done
   set +u
 }
 
