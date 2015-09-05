@@ -11,7 +11,7 @@ depends=('alsa-lib' 'glu' 'sdl' 'freetype2' 'openssl098')
 optdepends=('teeworlds-ddnet-skins: extra skins')
 makedepends=('gendesk' 'unzip')
 provides=('teeworlds' 'teeworlds-ddnet-skins')
-conflicts=('teeworlds')
+conflicts=('teeworlds' 'teeworlds-ddnet-skins')
          # PNG converted from DDNet.ico from https://github.com/def-/ddnet
 source=(teeworlds-ddnet.png)
 source_i686=("$url/downloads/DDNet-$pkgver-linux_x86.tar.gz")
