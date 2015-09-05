@@ -1,0 +1,18 @@
+pkgbase = ags
+	pkgdesc = A development tool that is primarily used to create graphical adventure games
+	pkgver = 3.3.4.1
+	pkgrel = 1
+	url = https://github.com/adventuregamestudio/ags
+	install = ags.install
+	arch = i686
+	arch = x86_64
+	license = Artistic2.0
+	makedepends = wxgtk
+	depends = dumb
+	depends = libtheora
+	optdepends = wine: for installing and configuring the game
+	source = https://github.com/adventuregamestudio/ags/archive/v.3.3.4.1.tar.gz
+	sha256sums = ac4ea69bacf3c3f071e97a8489d5cd02921b2868eb9d4c49af138935e8c9b4ea
+
+pkgname = ags
+
