@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=WSJT
+Name[en_US]=WSJT
+Comment=Weak Signal Communication by K1JT
+Comment[en_US]=Weak Signal Communication by K1JT
+Encoding=UTF-8
+Exec=wsjt
+Icon=wsjt-svn.png
+MimeType=text
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

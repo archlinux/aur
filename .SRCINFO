@@ -1,0 +1,39 @@
+pkgbase = wsjt-svn
+	pkgdesc = Weak Signal Amateur Hamradio Communication by K1JT
+	pkgver = 10.0.r5770
+	pkgrel = 1
+	url = http://physics.princeton.edu/pulsar/K1JT/wsjt.html
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = subversion
+	makedepends = gcc-fortran
+	makedepends = lsb-release
+	makedepends = python-setuptools
+	makedepends = asciidoc
+	depends = python-imaging
+	depends = tk
+	depends = libsamplerate
+	depends = portaudio
+	depends = fftw
+	depends = python-pmw
+	depends = python-pillow
+	depends = portaudio
+	depends = python>=3.4.3
+	depends = python-numpy>=1.9.2-2
+	provides = wsjt=10.0
+	conflicts = wsjt
+	source = WSJT-SVN::svn://svn.code.sf.net/p/wsjt/wsjt/trunk
+	source = http://iweb.dl.sourceforge.net/project/jtsdk/linux/2.0.0/jtsdk-nix-2.0.14.tar.gz
+	source = wsjt-svn.png
+	source = wsjt-svn.desktop
+	sha256sums = SKIP
+	sha256sums = bdcefbe6f73a81eb0b77e20cc3b5f36fc44c39ed5c1088dd4ad1c1d2bea0a475
+	sha256sums = 20391217d7eb7170c218e5dd04cea744c5f110c03865267c140f2a7c68a0fb3e
+	sha256sums = 94dc4953cf922cd48799b568b58704b6aca68cd15bd5b4921e9654f62be62a73
+
+pkgname = wsjt-svn
+
