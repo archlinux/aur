@@ -1,6 +1,6 @@
 pkgbase = gnupg-large-rsa
 	pkgdesc = Complete and free implementation of the OpenPGP standard - with fixes to make large RSA keys really work (and even bigger keys)
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = http://www.gnupg.org/
 	install = install
@@ -21,20 +21,20 @@ pkgbase = gnupg-large-rsa
 	optdepends = libldap: gpg2keys_ldap
 	optdepends = libusb-compat: scdaemon
 	provides = dirmngr
-	provides = gnupg2=2.1.6
-	provides = gnupg=2.1.6
+	provides = gnupg2=2.1.7
+	provides = gnupg=2.1.7
 	conflicts = dirmngr
 	conflicts = gnupg2
 	conflicts = gnupg
 	replaces = dirmngr
 	replaces = gnupg2
 	replaces = gnupg
-	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.6.tar.bz2
-	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.6.tar.bz2.sig
-	source = gnupg-large-rsa-2.1.6.patch
-	sha1sums = 9e8157b3386da04760657ce3117fc4dc570c57c5
+	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.7.tar.bz2
+	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.7.tar.bz2.sig
+	source = gnupg-large-rsa-2.1.7.patch
+	sha1sums = 1a345804f34a2acd05c1555e40ddfa297f38438b
 	sha1sums = SKIP
-	sha1sums = fd2d0c175842b9f38b595801e09fce3b584a0f2e
+	sha1sums = 4132fdf829d34f9fb81b00945bdde89b6198452d
 
 pkgname = gnupg-large-rsa
 

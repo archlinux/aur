@@ -34,7 +34,7 @@ diff -ru gnupg-2.1.5/configure.ac gnupg-2.1.5-patched/configure.ac
 diff -ru gnupg-2.1.5/g10/keygen.c gnupg-2.1.5-patched/g10/keygen.c
 --- gnupg-2.1.5/g10/keygen.c	2015-06-02 17:47:50.000000000 +0200
 +++ gnupg-2.1.5-patched/g10/keygen.c	2015-06-27 02:34:10.326765711 +0200
-@@ -1553,7 +1553,7 @@
+@@ -1560,7 +1560,7 @@
    int err;
    char *keyparms;
    char nbitsstr[35];
@@ -43,7 +43,7 @@ diff -ru gnupg-2.1.5/g10/keygen.c gnupg-2.1.5-patched/g10/keygen.c
  
    assert (is_RSA(algo));
  
-@@ -2047,6 +2047,7 @@
+@@ -2054,6 +2054,7 @@
  
      case PUBKEY_ALGO_RSA:
        min=1024;
