@@ -2,7 +2,7 @@
 # Contributor : Det <nimetonmaili @ gmail.com>
 # Contributor: coderoar <coderoar @ gmail.com>
 # Contributor: kang <kang @ mozilla.com>
-# Fixed for Ukrainian users by Ivan Petruk <localizator@ukr.net>
+# Contributor: Ivan Petruk <localizator@ukr.net>
 
 pkgname=firefox-nightly-uk
 pkgdesc='Web browser from mozilla.org, nightly build, Ukrainian l10n'
