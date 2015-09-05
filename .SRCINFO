@@ -1,0 +1,42 @@
+pkgbase = tremulous
+	pkgdesc = Free team based FPS/RTS hybrid built on the ioq3 engine. Includes community updates
+	pkgver = 1.1.0
+	pkgrel = 12
+	url = http://tremulous.net
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = mesa
+	depends = sdl
+	depends = openal
+	depends = libgl
+	depends = tremulous-data=1.1.0
+	depends = freetype2
+	depends = glu
+	provides = tremulous-updated=1.1.0-12
+	conflicts = tremulous-updated
+	replaces = trem-backport
+	replaces = tremulous-updated
+	backup = etc/tremdedrc
+	source = git://github.com/jkent/tremulous-mgclient.git
+	source = git://github.com/jkent/tremulous-mgtremded.git
+	source = https://github.com/aur-archive/tremulous/raw/master/game.qvm
+	source = lakitu7_qvm.txt
+	source = tremdedrc
+	source = tremulous.desktop
+	source = tremded.sh
+	source = tremulous.sh
+	source = tremulous.xpm
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 90343619d140557d0c481a61ffa5756c
+	md5sums = a0b8970b33a27798c125f9152049013c
+	md5sums = f0056120d0192a0d4d591d1114439c52
+	md5sums = aef37632a2edcf74a53503a49530bad2
+	md5sums = c6db2ed86ce31380b233d88e26280643
+	md5sums = 8fba8bee98f51fe2ebdd076b83e00bc3
+	md5sums = 7e3a881608f1c7c0ccece1e07fcf92d8
+
+pkgname = tremulous
+

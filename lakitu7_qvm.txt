@@ -1,0 +1,639 @@
+Lakitu7's Tremulous 1.1 Game.qvm
+
+Current Version: 5.5
+
+Download Links 
+http://projects.mercenariesguild.net/projects/lakitu7-qvm 
+Intro 
+While playing on and administrating Tremulous servers, I found a distinct lack of a server package that a) Contains all of the features that I want b) Doesn't have any stupid crap that ruins the game as it was meant to be played. 
+
+Thus, like many server owners, I began the task of making my own. While I originally intended to just put something together from existing patches, I quickly found that patches for many things that I wanted either didn't exist or weren't available. 
+
+By the time I'd finished tracking down, separating, and creating my own patches, I'd done enough work to feel that I should distribute this QVM. Thanks to the encouragement of my friends asking for it, I eventually finished getting it to a releasable state. 
+
+Nowadays, it's very difficult to find an American server that isn't running my QVM or one of the very many that have forked from it (mostly to add said stupid crap, but oh well...). Thus, I guess I'm doing something right. I continue to develop this package, leading the way in creating and incorporating all the code worth having, but none of the rest. 
+
+Upgrade Install 
+Upgrade install: Just drop the new game.qvm in place of the old one. Set new admin flags and cvars where applicable. 
+
+Install 
+Easy way 
+Install a tremded binary appropriate for your OS (I recommend the MG Tremded, which I also work on: http://releases.mercenariesguild.net/tremded/) 
+Install my compiled game.qvm to the appropriate location: 
+.tremulous/base/vm/game.qvm in linux 
+documents and settings/you/application data/tremulous/base/vm/game.qvm in windows 
+
+Harder way 
+First, get your tremded set up, as above. Then, 
+Download SVN revision 966 (svn co -r966 svn://svn.icculus.org/tremulous/trunk directoryname) 
+Apply my .patch 
+make 
+place in the correct location (see above) 
+
+If you're using linux, you should already know how to compile things. 
+
+If you're using Windows, use either of the excellent build guides at http://tremulous.net/phpBB2/viewtopic.php?t=3408 or http://tremulous.net/phpBB2/viewtopic.php?t=2672. 
+
+Tremded Note 
+Although this package was originally intended for it, a few rather nasty bugs are now widely known in TJW's tremded, so I can't really recommend using it anymore. Since my source includes a tremded backport patch and thus will generate a compatible teremded, feel free to compile one for your target machine that way. However, the better option for newer code and more features is the MG Tremded, which I also work on, available at http://releases.mercenariesguild.net/tremded/. 
+
+Development 
+Development is now (relatively) public. You are free to use the latest SVN version and test out things I've added before they get released. I guarantee that I at least test each thing once by myself before committing. After that, it goes in and begins testing on Puretrem and other servers. If you'd like to test as well, go for it. Just please report issues if you find them. 
+Bug tracker: http://projects.mercenariesguild.net/projects/lakitu7-qvm/issues SVN: svn://source.mercenariesguild.net/lakitu7-qvm/ You can also view the revision log here, so you know what's changed: http://source.mercenariesguild.net/lakitu7-qvm/ 
+
+Contact Information 
+Forums: The Lakitu7's 1.1 QVM thread, tremulous.net forums, mods subforum 
+IRC: Lakitu7 on Freenode, Dorksnet, or Synirc 
+In-Game: }MG{Lakitu7, probably on Puretrem 
+
+FAQ 
+I want a QVM with features x and y, but not z. Will you compile one for me? 
+Unless you're a good friend of mine and you have a darn good reason why you can't do it yourself, no. If you're running Linux, I'm sure you know how to compile your own anyway. If you're running Windows, see either of the excellent build guides linked in ``harder way.'' If you ask nicely and put forth the effort to learn to do things yourself, I may help you, but I won't do it for you. 
+
+I don't want your QVM, but I do want patch X from it 
+I've made EVERY patch that I have used available here: http://projects.mercenariesguild.net/projects/lakitu7-qvm/files 
+
+I found a bug 
+Well damn, tell me. Use the contact information above or report it at the bug tracker: http://projects.mercenariesguild.net/projects/lakitu7-qvm/issues. If it's part of a patch that I didn't make, then I'll still fix it, or I'll whine at whoever did to to fix it instead. 
+
+I have a suggestion for a new feature. 
+Maybe. If I don't see myself using something, I won't code it for you. But if the idea is good and I'd like to have it, perhaps. BUT, I have no interest in doing any fullscale mods that make sweeping gameplay changes. I do not have any interest in making any ``balance'' changes. If your suggestion is nice and can be implemented with a reasonable degree of effort, I'll think about it. You can make submissions either directly or via the bug tracker link above. 
+
+You should add the Protoss/Predator/MDriver Turret/M4A1 Abrams Tank/BFG9000 
+Hay man that's so cool how about you make it yourself and then post it on the forums. 
+
+Update this for newer SVN revisions 
+No, the code size has grown so large that it's basically impossible now. As of 5.3, I have begun directly incorporating the SVN revisions that fix bugs in game.qvm. In fact, I have finished doing so for those patches in SVN up until time of writing. However, I will not be merging EVERYTHING (ie refactors and style changes) for no tangible benefit. That'd just entirely burn me out of doing this very quickly, which wouldn't be very good for anyone. 
+
+Patch/Feature List 
+I have mirrored every patch that I've used here: http://projects.mercenariesguild.net/projects/lakitu7-qvm/files. 
+You may use any patches that I have made for whatever you wish, but as with all GPLed code, follow the license: you must keep it open source. Other patches are available from their given sources. Patches that have multiple things are together because they don't apply together in their separate forms. I have linked their original separated versions where applicable. Merges from Tremulous SVN trunk are not listed or credited here, but they are in the changelog). 
+
+Engine 
+
+svn_950_to_tjw_s_tremded.patch 
+Description: Backports SVN code to be compatible with 1.1 clients. QVMs generated are to be used with TJW's Tremded 
+Author: vcxzet 
+Source: http://www.mercenariesguild.net/patches/?do=details&task_id=2 
+
+backport-tremded-up-to-1011.patch 
+Description: Backports tremded (svn 1011 or less) to be compatible with 1.1 game.qvms. This has now been included so that you can use it to build a compatible tremded yourself. If you'd prefer to use your own, that's fine, but I wouldn't keep using TJW's anymore, since there's some bugs in that which are pretty nasty. 
+Author: Me, with much help from Kevlarman 
+
+Gameplay 
+
+tjw-poison-system.patch tjw-no_chomp_during_pounce.patch 
+
+Description: Balance changes from TJW's 1.1 QVM. You're likely used to all of them 
+Author: TJW 
+Source: http://tjw.org/tremulous/ (separated out by me) Info here: http://tjw.org/tremulous/FEATURES.txt 
+
+dretchPunt+no_pounce_trample_ff.patch 
+
+Dretchpunt: everyone knows what this is already 
+Author: TJW 
+Source: http://tjw.org/tremulous/ (separated out by me) 
+
+No Pounce and Trample FF: turn frindly fire on pounce/trample on and off by g_friendlyFireMovementAttacks. Irrelevant if g_friendlyFire is off. 
+Idea: Norfenstein/TJW. Rewritten for 1.1 by me 
+Source: trem.tjw.org server autodownload 
+
+mnp-share+risujin-donate.patch 
+Authors: Martin Doucha, Risujin 
+Source: http://tremulous.net/phpBB2/viewtopic.php?t=3014 , https://bugzilla.icculus.org/show_bug.cgi?id=2896 
+Please turn these off. They ruin the game. g_allowShare 0 will turn off BOTH of them. I just have them because they're so damn popular that I can't not do it anymore. 
+
+risujin-retribution.patch 
+Teamkillers pay their victims for the price of their equipement. 
+Author: Risujin 
+Source: http://tremulous.net/phpBB2/viewtopic.php?t=3014 Separated out by me 
+
+benmachine-antiblock940-5.patch 
+Forcibly bumps players out of the way when they are blocking the spawn. This patch is disabled by default, for now. Set g_antiSpawnBlock 150 to try it out. 
+Author: benmachine 
+Source: http://www.mercenariesguild.net/patches/?do=details&task_id=70 
+
+lakitu7-g_deconDead.patch 
+Adds g_deconDead, which controls the ability to decon structures that have 0 health and are about to explode, causing damage. This was possible before g_markdeconstruct (r880), but was regardless of g_markdeconstruct's setting. g_deconDead defaults to 0 (svn behavior, cannot decon dead structures). g_deconDead reverts to the pre-880 behavior. 
+Author: Me 
+
+r1ch-team_imbalance_warnings.patch 
+Sends a notice every g_teamImbalanceWarnings when the playercount between teams differs by at least 3. It also allows people to switch teams without losing their credits/kills during this circumstance. 
+Author: R1CH (ported by me) 
+Source: svn.quakedev.net 
+
+das-iro.no-shove-for-placing-builder.patch 
+Prevents shoving the builder when he is trying to place a building. No effect when g_shove is off. 
+Author: Das-Iro 
+Source: http://das-iro.de/tremulous/ 
+
+Lakitu7+tjw-teamkill_messages_with_dmg_done+logging.patch 
+Teamkill messages now have the amount of damage done by the killer to the killed. This is a sum over multiple hits, if applicable, and can be larger than the player's max health if it was done throughout healings/regen. This is so that admins and players alike can differentiate between ``grazed your foot with a rifle'' teamkills and ``hit you in the head repeatedly with a luci'' teamkills. 
+Author: tjw (original tk messages patch), Me 
+
+Lakitu7-ff_percentage.patch 
+Friendly Fire cvars (g_friendlyfire, g_friendlybuildablefire, g_friendlyfiremovementattacks, g_friendlyfirehumans, g_friendlyfirealiens) are all now floating points. 0 is still off. 1 is still on, so you do not have to change anything to upgrade. However, values between 0 and 1 will multiply the damage by that amount, allowing friendly fire to be, for instance, on but half damage. 
+Author: me 
+
+Lakitu7+kevlarman-g_forceautoselect.patch 
+When g_forceautoselect=1, players can only use autoselect to join a team. This is for use with servers where all players tend to go to one side or the other. 
+Author: Kevlarman + me 
+Idea: Khalsa 
+
+googles+rezyn+lakitu7-builder_(requires_buildlog).patch 
+Adds the /builder command. Players (and admins) can look at a building and use /builder to find out who built it. Admins with access to use !buildlog will also see the buildlog number of the item. This is useful for the !revert #number functionality, particularly in removing glitched buildings outside the map. It can also be used in free spec. The use of this command does not require any flag, unlike previous implementations. 
+Author: Googles, Improved by Rezyn, then further improved by me 
+
+kevlarman-cg_unlagged.patch 
+Adds cg_unlagged, by which a player can turn off the benefits of unlagged hit-compensation, but only for himself. As with all cgame cvars added exclusively server-side, players must use /setu for this to do anything whatsoever. Players who wish to disable unlagged for their own hittests (does not affect how other players hit them) may use '/setu cg_unlagged 0' to do so. Everyone else who isn't a luddite can continue to use unlagged regardless. This cvar does absolutely nothing if g_unlagged is 0 on the server. Remember, only dirty foreigner commies don't use unlagged, but they're a part of the community too so I guess we can let them have their way =) 
+Author: Kevlarman 
+
+Admin System 
+Lakitu7-listadmins_minlevel_parameter.patch 
+Listadmins takes a second number parameter allowing you to filter results by admin level 
+Author: me Requested by: many people 
+Examples: 
+!listadmins 0 2 
+Lists all admins of level 2 and up, skipping none 
+!listadmins 21 2 
+Lists all admins of level 2 and up, starting at number 21. 
+!listadmins lak 3 
+Lists all admins with containing ``lak,'' level 3 and up. 
+
+Lakitu7-register.patch 
+Adds the !register command with admin flag R. When given to L0s, it allows them to become level 1 with !register. If they don't have a GUID, it tells them where to get one. When given to level1 and up, it allows them to update their "admin name" to their current one by !setlevel-ing them to their current admin level. 
+Author: me 
+
+Lakitu7-sees-full-listplayers-flag.patch 
+Adds an admin flag $. People with this flag see the regular information in !listplayers. Those without only see ID, Team, mute/denybuild/etc., and Name. Makes it more difficult for random players to tell if there are admins present, removing the need for servers that have either removed !listplayers from l0s (bad idea) or given all admins the hide flag (which has the side effect of making them invisible to each other too) 
+Author: me 
+
+gate-!warn.patch 
+!warn user reason 
+Author: Gate Displays a big ol' message to your target that tells them that an admin is warning them for reason: reason and they should stop whatever they are doing and comply. I feel this is a much less abusable alternative to !slap 
+
+benmachine-info-12.patch 
+Adds !info [IMAGE png]topic[IMAGE png] admin command, usable by those with flag H. It Returns the text of a file from /info/info-topic.txt. See source and docs for more info. 
+Docs: http://www.bandstand.org.uk/~benm/coding/done.php#buildlog-revert 
+Author: benmachine 
+Source: http://www.mercenariesguild.net/patches/?do=details&task_id=43 
+
+Lakitu7-admin-true-name-in-banlog.patch 
+Save admin's ``true'' name in the ban logs. ``True'' name is the one that shows up in !listplayers when they are using something else 
+Author: Me 
+
+lakitu7-l1command.patch 
+Adds command !L1, usable by admin levels with flag S. !L1 user sets a level 0 user to level 1. Made to be used with g_minLevelToJoinTeam. 
+Author: Me 
+
+L0 command 
+Adds command !L0, which sets a level-1 player back to level-0. This is designed to eliminate the frequent problem of people using !register on their name and then losing their GUID having to wait around for a high-level admin who can use !setlevel to help them out. 
+Source: p-g-QVM 
+Idea: Frequently requested by many 
+
+avenger-mute_enhancements.patch 
+Muted people can't change names, vote, or send PMs (or get around that with /tell) 
+Author: Avenger (consolidated by me) 
+Source: https://bugzilla.icculus.org/show_bug.cgi?id=2931 
+
+avenger-adjustban-r948.patch and tjw-tremulous-svn939-ban.patch 
+Fix the SVN 910 ban bug. !Adjustban command is now needed to change ban lengths on existing bans 
+Author: Avenger, TJW 
+Source: https://bugzilla.icculus.org/show_bug.cgi?id=3096 
+
+Lakitu7-admfforceteamchange_overrides_locked_teams.patch 
+Admin flag 5 can override locked teams 
+Author: me 
+
+Lakitu7-denybuild-denies-grangerclasses.patch 
+Patches !denybuild so that it denies targets from using the granger/advgranger class as a whole so that it can be used against battle grangers. (As of 5.1, this actually works) 
+Author: me 
+
+Lakitu7-g_adminSayFilter.patch 
+When g_adminSayFilter 1, filters display of !commands that were typed into the chat. 
+Author: me. Idea: CU|Dyin 
+
+kevlarman-specme999.patch 
+!specme 
+Author: Kevlarman I modified this to !specme instead because that seems to be what most people expect it to be called. Personally, I don't see why people can't just use /team spectate, but it's requested a lot, so here it is. 
+
+Lakitu7+benmachine-pause.patch 
+Adds the !pause command that allows you to pause and unpause the game in progress. People can only chat and use admin commands, while the game is paused. This is mostly useful in conjunction with buildlog/revert. 
+Author: Benmachine, Me Idea: Benmachine 
+
+benmachine - buildlog-17.patch 
+Benmachine's masterwork, !buildlog and !revert: both improved for functionality and usability and included here officially for the first time. I suggest using these while the game is !paused, while you get the hang of them. See Ben's docs here: http://www.bandstand.org.uk/~benm/coding/done.php#buildlog-revert 
+Author: benmachine 
+
+rezyn-listmaps+maplog.patch 
+Creates two new commands !listmaps and !maplog. 
+!listmaps 
+lists the maps on the server so that players can know which ones can be used for /callvote map. It can also take a parameter of some text to search for, eg. !listmaps atcs. 
+!maplog 
+shows the results of the last 5 maps. This is nice for folks that go take a break and come back to be like ``Who won last map?'' or to see whether folks have been stacking a particular teams for the last hour. 
+Author: Rezyn 
+Source: p-g-QVM 
+
+critux-rotation.patch 
+Adds the !rotation command, which lists the current map rotation and shows where in it the server currently is. Sounds reasonable enough to me. Flag is ``j'', same as !listmaps. I'd have called it !listrotation (and I think he would have too, from the look of the code) but that's too long for the !help listing. :( 
+Author: Critux 
+Source: Tremwars qvm 
+
+rezyn-showbans_search.patch 
+Allows !showbans to be given a parameter to search the list by name or IP. eg: !showbans unnamedplayer or !showbans 64.129. 
+Author: Rezyn 
+Source: p-g-QVM 
+
+googles-banNotice.patch 
+Appends the text of g_banNotice to the text of every ban reason as it is sent to the player (meaning that the banned players will see it, but you won't see it when viewing reasons in !showbans or admin.dat). Default is blank (off). The suggested use for this setting is to include a link to your forums etc. where people may appeal the ban. 
+
+rezyn-g_adminMaxBan.patch 
+Admins without flag 8 (can_perm_ban) can ban for a maximum of the time set by g_adminMaxBan. Bans by these admins for longer durations are shortened to this time. By my own addition, admins without the flag who do not specify any duration for bans will ban for this duration (instead of receiving an error message). Previously, these admins could still ban for something like 52 years, making the flag kind of useless. Default: 2w (2 weeks). 
+Author: Rezyn 
+Source: p-g-QVM 
+
+Lakitu7+Amanieu-admin_stealth.patch 
+Creates the new admin flag &. For admins with this flag, the announcement of their admin actions will use their registered admin name instead of whatever name they are currently playing as. This both gives accountability to the admin (so that players know which admin to complain about, instead of some alias) and allows the admin to hide the alias he may be using. There's no ``toggle'' for this because it is assumed that a player will use his admin name under most circumstances and use !register to keep that up-to-date. 
+Author: Amanieu and I came up with this idea independently. He made it first, but I didn't like his implementation, so I remade it from scratch. 
+
+Troy-Subnetbans.patch 
+Admin Flag E allows use of !subnetban. Admin Flag W can be given to an admin to give them a by-GUID exception to any ip bans against them. 
+Syntax: !subnetban [ban#] [CIDR mask] 
+Example: '!subnetban 10 16' changes ban #10 to be a ban on XXX.XXX.*.* 
+Example: '!subnetban 10 24' changes ban #10 to be a ban on XXX.XXX.XXX.* 
+Example: '!subnetban 10 32' changes ban #10 to be a regular (non-subnet) ban 
+You can use !showbans -subnet to show subnet bans 
+Use of this command may make your admin.dat incompatible with other qvms that do not use the same patch. Use with caution! 
+Author: ==Troy== 
+
+New Text Modes 
+Lakitu7-sayadmins3.patch 
+I can't think of how many times I've wanted this feature, so I went ahead and made it. Admins frequently want to talk amongst themselves to make a decision without the whole server hearing it. Adds commands: /say_admins, /a It also works in chat and in server console/rcon Use of the command and receipt of its messages is governed by the cflag ?, given to levels 3, 4, and 5 (via *) by default. Server owners can choose whether or not regular players can use the command to send messages to active admins. This is set by g_publicSayadmins 
+Author: me 
+
+Lakitu7+Amanieu-admin_messages.patch 
+Sends admins (those with the say_admins flag) a notice informing them when someone attempts to callvote against an admin, or tries to use an admin command they lack access to. When a teamvote kick or denybuild is called, admins not on that team also receieve notice of it via this system. 
+Author: Amanieu, Me Idea: Collected 
+
+rezyn-ban_check_fixes.patch 
+(Re)adds a notice via the admin_messages system when a banned player tries to connect, now with flood protection to stop admins from getting spammed by this. 
+Author: Rezyn 
+
+avenger-say_area.patch 
+Adds /say_area to send text only to teammates that are nearby. Use it for binds that aren't relevant to people not near you (nade!, retreating to base! etc.) 
+Author: Avenger 
+Source: none? 
+
+benmachine-me-action939-4.patch 
+Adds IRC-like /me command. It's useless, but fun. g_allowActions disables it. g_actionPrefix changes the text that appears before an action to denote that it is an action. 
+Author: benmachine 
+Source: http://www.mercenariesguild.net/patches/?do=details&task_id=5 
+
+Lakitu7+googles+rezyn+benmachine-admin_cp+cp_to_team+newlines+wordwrap.patch 
+This patch combines a bunch of functionality and patches related to CP (center-print): 
+benmachine-cp1003M-1.patch 
+Makes CP parse [IMAGE png] into [IMAGE png] and [IMAGE png]n into a newline. Author: Benmachine 
+googles-admin_cp 
+Creates a !cp command (flag Z) that admins can use to send CP (center print) messages. Author: Googles, with a few improvements by Rezyn. 
+Lakitu7-cp_to_team 
+!cp (and the console CP command) now takes an optional argument to specify team(s) to send the text to. Author: me 
+Examples: 
+!cp -h Did you guys just get deconned? 
+!cp -s The server is full. Specs need to make room or leave 
+!cp -as Only aliens and spectators can see this text 
+Lakitu7-cp_wordwrap 
+Makes cp (and the console CP command) automatically add newlines to word-wrap text instead of cutting it off. Word-wrapping is done intelligently at spaces between words whenever possible. Newlines inserted manually with [IMAGE png]n are still respected. Author: me 
+
+Callvote-Related 
+
+Lakitu7-tjw-avenger-martindoucha_sdmodes+sdvotes+poll+designate959.patch 
+Description: g_suddenDeath, Sudden Death Modes, Poll (formerly custom), !Designate, vote designate. Denybuild and vote mute are now in SVN and thus are also included here. 
+
+SDModes 
+Adds different methods of sudden death. Author: TJW 
+Source: http://tjw.org/tremulous/ (separated out by me) Info here: http://tjw.org/tremulous/FEATURES.txt 
+
+SD Votes 
+Allows /callvote sudden_death Author: Avenger 
+Source: https://bugzilla.icculus.org/show_bug.cgi?id=2920 (modified heavily by me) 
+
+g_suddenDeathVotePercent 
+Author: me More than g_suddenDeathVotePercent must vote yes for Sudden Death votes to pass. This is in an effort to balance them. Set to 0 if you want to DISABLE them entirely. Defaults to 74. 
+
+g_SuddenDeathVoteDelay 
+Author: me Enter time in # of seconds (default 180) to begin sudden death after a SD vote passes. The idea here is that if SD votes become ``begin SD in 3 minutes'' instead of ``begin SD now,'' they are even less abusable. Change it to 0 for the old behavior. (Idea: }MG{Paper Cut) 
+Note: As of 5.4, the g_suddenDeath cvar no longer has any known issues and will work when changed from the console, although you shouldn't really do it anyway for gameplay reasons. 
+
+g_mapVotesPercent 
+Author: me More than g_mapVotesPercent must to vote yes for map, draw, and map_restart votes to pass. 
+
+Poll Votes: /callvote poll String goes here 
+Allows the calling poll votes. Before r858, people would use /callvote map ``Is unnamedPlayer an idiot?'' Since that's diabled now by a check to verify that ``is unnamed player an idiot.bsp'' exists before calling the vote, I replaced it with poll. They DO nothing, but can be useful for an admin to ask a question of users on their server. Also has /callteamvote poll String goes here for things like /callteamvote poll Move to window room? Idea for teamvote version thanks to Benmachine. Quotes no longer need to be places around the text. 
+Author: Me 
+As of 5.1 you no longer automatically vote yes to poll votes 
+
+Designate: 
+Creates designated builders. Structures built by designed builders (or /protect -ed by them) cannot be deconned except by then or by another designated builder. Admins with flag # are perma-designated. Designate votes for players are enabled with g_designateVotes 1. 
+Author: Martin Doucha (ported by me) 
+Source: https://bugzilla.icculus.org/show_bug.cgi?id=2857 
+
+Lakitu7-callvote-multiple-name-matches.patch 
+Makes /callvote return a list of partial name matches when there are multiple matches for a string 
+Author: me 
+
+Lakitu7-teamvote_majority_wins.patch 
+Teamvotes as they are in svn / as they were required a majority of people ON THE TEAM to pass. This patch makes them pass if the majority of voters voted yes, instead of having votes fail 4 yes - 1 no because the majority of the team didn't vote. At least 2 yes votes are still required to prevent a vote from passing 1-0. 
+Author: me 
+
+Lakitu7-vote2teamvote.patch 
+When a player uses /vote and there is a teamvote occurring, but no global vote, forward their vote as a /teamvote. I hate making and including this patch, but it's a necessary evil because most players terribly fail at using anything that's not bound to a key by default. This won't be necessary anymore in 1.2, but for now, it's so that teamvotes actually have a prayer of passing, especially when combined with the above. 
+Author: Me 
+
+Rociante-vote_times3.patch 
+Players cannot call a vote until they have been connected for g_voteMinTime seconds 
+Players cannot call for a map change after g_mapvoteMaxTime seconds 
+For both, setting the cvar to 0 disables. The restrictions are ignored for admins with no_vote_limit and when the player is the only one on the server. This patch is to cut down on the number of idiots that join a game just to spam a vote for atcs. 
+Author: Rocinante 
+
+Lakitu7-VoteReasons.patch 
+It's back again, but now with less brokenness from people having spaces in their names. The syntax is: 
+/callvote (whatever) -r reason. Spaces/multiple words are allowed in both the player name and the reason without issue. The reason may optionally be added to ANY type of vote. If g_requireVoteReasons=1, then reasons will be required for /callvote kick and /callteamvote kick. 
+Examples: 
+/callvote kick unnamed player -r this guy is deconning the base 
+/callvote draw -r this map sucks 
+/callteamvote denybuild newbie builder -r deconning turrets for teslas 
+Author: me 
+Idea: Risujin 
+
+Critux-g_nextmap.patch 
+At the end of a map, the contents of cvar g_nextmap will be loaded (if it exists) instead of advancing the map rotation. It will then be cleared to resume the rotation as normal unless overridden again. /callvote nextmap mapname will call a vote to set g_nextmap to mapname I extend my thanks and props to Critux for beating us all to making this patch that's been on many people's wanted lists for quite a long time. 
+Author: Critux 
+Source: Tremwars qvm 
+
+Clan Scrim/Match/Practice Features 
+lakitu7-restart_keepteams_switchteams+lock.patch 
+Adds !restart keepteams, !restart switchteams, !restart keepteamslock, !restart switchteamslock 
+Author: Me Useful for clan matches when you want to set things up, then !restart the round while keeping people on the teams they've just joined. Put "lock" afterward to auto-lock teams after the restart 
+
+lakitu7-devmapNoGod+devmapNoStructDmg.patch 
+g_devmapNoGod: Disables use of /god, /noclip, and /give health during /devmap. Useful during practices g_devmapNoStructDmg: Prevents damaging structures during /devmap. Useful during practices 
+Author: Me 
+
+lakitu7-g_minLevelToSpecMM1.patch 
+Spectators with admin level < g_minLevelToSpecMM1 can only speak to other spectators. (/say_team, but not /say) Combine with g_privateMessages 0 to be uninterrupted by spectators during clan matches 
+Author: Me 
+
+lakitu7-g_minLevelToJoinTeam.patch 
+Only users with admin level > g_minLevelToJoinTeam can join a team. Otherwise, they are forced to spectate. This can be used to quickly create a private server. 
+Author: Me 
+
+benmachine-notarget948-1.patch 
+Makes the /notarget cheat work during devmap by having you be ignored by turrets and such when it's on. 
+Author: benmachine 
+Source: https://bugzilla.icculus.org/show_bug.cgi?id=3243 
+
+Lakitu7-devmapKillerHP.patch 
+When you die, tells you your killer's HP... but only in cheat mode (devmap) because I don't believe this should be given in real games. set g_devmapKillerHP 1 to enable. 
+Author: me 
+
+Misc. 
+
+tjw+mkp+lakitu7+r1ch-follow-teammates-when-dead+stickyspec.patch 
+When they are dead (and while in the spawn queue), players can spectator-follow their teammates. To activate, press button3 (by default, return or mouse3). This patch also includes sticky spectator functionality (which I had to mostly rewrite to work with dead-spec). As an aside, this patch is really really huge and was a giant pain in the ass, so please enjoy it. Idea: tjw, R1CH 
+Author: tjw, Undeference, R1CH, Me 
+
+wireddd+Amanieu_countdown+warmupmodes.patch 
+Adds some minor enhancements to warmup time. A countdown is displayed in CP during warmup indicating how long until the the game begins (3 2 1 GO!). Also adds g_warmupmode. In mode 1 (default), players cannot join a team during warmup. That's how it's always been. In mode 2, players can join a team during warmup, but will not spawn until the game begins. 
+Author: Wireddd, cleaned up by Amanieu 
+Source: http://www.mercenariesguild.net/patches/index.php?do=details&task_id=164&project=2 
+
+Wraths' patches 
+002.tjw.www_download.patch 
+009.peoro.building_messages.patch 
+Lakitu7+peoro-change_team_messages.patch (peoro's patch, now with logging to games.log) 
+014.peoro.namelog_shows_prohibition.patch 
+017.npa.privmsg_to_console.patch 
+022.kristall.nojoin_warmup_time.patch 
+027.napkin.more_info_to_flag4.patch 
+034.risujin.ckit_recovers_with_blaster.patch 
+031.napkin.log_to_file_only.patch 
+032.wolfwings.tremstats_log_team_class.patch 
+035.pierre.realtime_stamp_at_mapstart.patch 
+
+All of these are from http://wraths.dyndns.org/games/tremulous/patches/svn901 and their authors/functions are obvious from the filenames. Several notes: 
+
+Black Names Fix: 
+Fixes the bug with white ând black names. Black names are disallowed by this fix, as was intended by the original code. 
+
+Lakitu7-disable-difficult-names2.patch 
+Disallows names that are prolematic: those that begin with numbers or contain // or /* As of version 5.2, this also disallows names that contain characters which cannot be typed in-game, including control characters, extended ascii, `, and ~. Furthermore, it also disables names that begin with -, or contain a space followed by a -. That is, ``some-idiot'' is fine, but ``some -idiot'' is not. This change is allow the use of unix style command arguments that use - without confusion with player names. 
+Author: me 
+
+Lakitu7-mystats.patch 
+Adds the /mystats command. Players can use it once per minute and during intermission Shows a variety of useful personal statistics that are tracked per-game such as builds, building kills, damage dealt, feeds, etc. 
+Author: me 
+
+foobar-NewbieNaming-0.90-899.patch 
+Auto-renaming of unnamedPlayers to your choice + numbers 
+Author: Foobar http://tremulous.net/phpBB2/viewtopic.php?t=3738 
+
+rezyn-newbiename_noregister.patch 
+Prevents names used by NewbieNaming from being !registered 
+Author: Rezyn 
+Source: p-g-QVM 
+
+r1ch-unnamedplayer_join_warning.patch 
+Prevents unnamedplayers from joining a team, instead telling them how to set a name. This does not affect players who have been renamed by newbienaming, as it is an alternative to newbienaming 
+Author: R1CH (ported by me) 
+Source: svn.quakedev.net 
+
+risujin-svn929-admin_layout.patch 
+Adds !devmap and !savelayout back to g_admin. Works with the existing implementation of !layout in SVN 
+Author: Risujin 
+Source: http://v1.risujin.org/pub/tremulous/admin_layout-svn929.patch.tar.gz 
+
+avenger-g_maxGameClients.patch 
+Do not allow more than g_maxGameClients to join a team. Connected clients beyond this amount can only spectate, creating spectator slots, R1Admin style. 
+Author: Avenger 
+Source: https://bugzilla.icculus.org/show_bug.cgi?id=2969 
+
+philbordelon-floodprotection+lakitu7-enhancements.patch 
+Prevents flooding of chat commands. Controled by g_floodMinTime. 0=off. Default: 2000. Admins with admin permission #2 (immune to flood protection & censorship) are immune. This permission was already in the admin system, but didn't do anything because it wasn't implemented yet. All forms of /say are protected by flood protection, along with PMs and admin commands. g_floodMaxDemerits lets you fine tune the harshness of the protection somewhat. See the source link for details. I defaulted it to 5000. 
+Author: Phil Bordelon (Updated and given a few more features by me) 
+Source (Original): https://bugzilla.icculus.org/show_bug.cgi?id=2811 
+
+Lakitu7-g_clientUpgradeNotice.patch 
+When g_clientUpgradeNotice 1, it informs players without a GUID that they should upgrade their client to receive faster map downloads and obtain a GUID, along with a link to where to get it (tjw's site). Notice is sent at connect and once per map change. 
+
+trem-servers-prefixes for flag4.patch 
+Adds [H][A][S] prefixes to team chat visible to admins with flag 4 
+Author: www.trem-servers.com 
+Source: ?? 
+
+Lakitu7-remove-boost-warning-messages.patch 
+Removes ``must be on humans / must be alive to use this command'' messages for BOOST 
+Author: me 
+
+Logging 
+
+Lakitu7+benmachine-g_decolourLogfiles.patch 
+Strips colors from games.log and admin.log to make them more human readable, machine searchable and take up less space. Controled via g_decolourLogfiles. 0 = off. 1 = on, but adds an extra parameter to clientconnect and clientrename messages that contains the names still in color. I hope that stats script can be updated to use this to allow them to continue to have colored names. 2 = on, without the modification to those lines by 1. This is ``compatability mode.'' Use it if your existing stats script breaks (but you don't mind it being decoloured, if applicable). Regardless of which option you use, this patch fixes color bleeding in console messages when using ttycon_ansicolor 
+Author: Benmachine, Me 
+
+Logging Patches 
+Lakitu7-log_callvotes.patch 
+Lakitu7-log_stageups.patch 
+Lakitu7-mirror_adminlog_to_gameslog.patch 
+Logs stage inreases, vote (and teamvote) calling, and vote (and teamvote) final results to games.log. Individual players' votes are NOT logged. Use of admin commands are also shown in games.log 
+Author: me 
+
+Bugfixes 
+
+Lakitu7-luci-exploit-fix.patch 
+My hacky, but working fix for Bug 3302 
+Author: me 
+
+Lakitu7-console-ignores-@-in-listplayers.patch 
+Console/rcon doing !listplayers is not affected by admins with flag @ 
+Author: me 
+
+rezyn-sayargsoverrunfix.patch 
+Fixes a buffer overrun bug that causes buffer text to be repeated/sent to the wrong players under certain circumstances I don't need to mention here. Rezyn fixed this before anyone even knew there was still a way to trigger it, then one was found, so it suddenly became useful. 
+Author: Rezyn 
+
+Amanieu-maprestart.patch 
+If the next map in maprotation is the same as the one you're currently playing, do !restart instead of making everyone reload the same thing for no reason. 
+Author: Amanieu 
+
+Appendix A: COMPLETE list of admin commands and flags 1	cannot be vote kicked, vote muted
+2	cannot be censored or flood protected TODO
+3	never loses credits for changing teams
+4	can see team chat as a spectator
+5	can switch teams any time, regardless of balance
+6	does not need to specify a reason for a kick/ban
+7	can call a vote at any time (regardless of a vote being disabled or voting limitations)
+8	does not need to specify a duration for a ban
+9	can run commands from team chat
+0	inactivity rules do not apply to them
+!	admin commands cannot be used on them
+@	does not show up as an admin in !listplayers
+$	sees all information in !listplayers
+#	permanent designated builder
+&	uses admin stealth
+?	sees and can use adminchat
+B	!showbans display a (partial) list of active bans
+C	!time show the current local server time
+D	!listadmins display a list of all server admins and their levels
+E	!subnetban adjust or change a subnet mask on a ban
+G	!readconfig reloads the admin config file and refreshes permission flags
+H	!info read the servers information files
+K	!lock lock a team to prevent anyone from joining it
+K	!unlock unlock a locked team
+L	!devmap load a map with cheats (and optionally force layout)
+L	!layoutsave save a map layout
+L	!listlayouts display a list of all available layouts for a map
+M	!map load a map (and optionally force layout)
+N	!rename rename a player
+P	!spec999 move 999 pingers to the spectator team
+R	!register Registers your name to protect it from being used by others or updates your admin name to your current name.
+S	!pause Pause (or unpause) the game.
+U	!buildlog display a list of recent builds and deconstructs
+V	!passvote pass a vote currently taking place
+W	admin is exempt from bans against them (intended to exempt someone from a subnet ban)
+a	!admintest display your current admin level
+b	!ban ban a player by IP and GUID with an optional expiration time and reason.
+b	!adjustban change the length or reason of a ban. time is specified as numbers followed by units w (weeks) d (days) h (hours) or m (minutes) or seconds if no units are specified
+b	!unban unbans a player specified by the slot as seen in showbans
+c	!cancelvote cancel a vote taking place
+d	!allowbuild restore a players ability to build
+d	!denybuild take away a players ability to build
+e	!namelog display a list of names used by recently connected players
+g	!designate give the player designated builder privileges
+g	!undesignate revoke designated builder privileges
+h	!help display commands available to you or help on a specific command
+h	!specme moves you to the spectators
+i	!listplayers display a list of players their client numbers and their levels
+j	!listmaps Lists the maps on the server that are available for map votes
+j	!rotation Lists the current map rotation and the current position in it
+k	!kick kick a player with an optional reason
+l	!L0 Sets a level 1 to level 0
+l	!L1 Sets a level 0 to level 1
+m	!unmute unmute a muted player
+m	!mute mute a player
+n	!nextmap go to the next map in the cycle
+o	!maplog List the last several maps and their outcomes
+p	!putteam move a player to a specified team
+r	!restart restart the current map (optionally using named layout or keeping/switching teams)
+s	!setlevel sets the admin level of a player
+v	!revert revert one or more buildlog events
+y	!allready makes everyone ready in intermission
+w	!warn Warn a player to cease or face admin intervention
+Z	!cp display a CP message to users, optionally specifying team(s) to send to
+
+
+Default admin flags (if you do not create an admin.dat) 
+5: * (everything) 
+4: iahCpPkmBbewd?$ 
+3: iahCpPkmwd?$ 
+2: iahCpPwd 
+1: iahC 
+0: iahC 
+
+Appendix B: New Cvars that were added g_lockTeamsAtStart	Used by !restart lock options. Don't mess with it yourself. I don't even think you can anyway
+g_designateVotes	Default 0. 1 to enable /teamvote designate and /teamvote undesignate
+g_clientUpgradeNotice	Default 1. 1 to enable, 0 to disable the notice
+g_teamImbalanceWarnings	Default 30 (every 30 seconds)
+g_adminSayFilter	Default 0 (off)
+g_myStats	Enables /mystats. Default 1 (on)
+g_publicSayadmins	Lets non-admins use say_admins to message active admins. Default 1 (on)
+g_devmapKillerHP	Default 0 (off)
+g_newbieNumbering	Default 0 (off)
+g_newbieNamePrefix	Default ``Newbie#''
+g_suddenDeath	Used by SD votes. As of 5.4 there are no longer any known issues with modifying it manually, but you still shouldn't for gameplay reasons.
+g_suddenDeathMode	Default 0 (off / default 1.1 behavior) Note: 1 is the default SVN/1.2 behavior
+g_friendlyFireMovementAttacks	Default 1 for compatability, Recommended 0 (turns off pounce/trample damage)
+g_retribution	Default 0 (off)
+g_suddenDeathVotePercent	Default 74. (> 3/4ths must vote yes to pass) Set to 0 to disable SD votes entirely.
+g_SuddenDeathVoteDelay	Default 180. Time (in seconds) to wait before a successful SD vote is executed.
+g_mapVotesPercent	Default 50. (> 1/2 must vote yes to pass)
+g_allowShare	Default 0. Also controls /donate. Please leave this off, it ruins the game :(
+g_minLevelToJoinTeam	Default 0
+g_minLevelToSpecMM1	Default 0
+g_dretchPunt	Default 1
+g_devmapNoGod	Default 0
+g_devmapNoStructDmg	Default 0
+g_maxGameClients	Default 0 (no limit)
+g_actionPrefix	Default ``* ''. Set to blank to disable actions.
+g_antiSpawnBlock	Default 0 (disabled). Set to 150 to turn on.
+g_deconDead	Default 0 (disallow deconning dead structures)
+g_floodMinTime	Default 2000. Set to 0 to turn off flood protection
+g_floodMaxDemerits	Default 5000. Fine tuning of flood protection. See docs for more info.
+g_decolourLogfiles	Default 0 (off). Settings: 1 (on) 2(on, stats script compatibility mode). See docs for more info.
+g_voteMinTime	Players cannot call a vote until they have been connected to the server for at least this many seconds. 0 to disable.
+g_mapvoteMaxTime	Players cannot call a map vote after this many seconds of play. 0 to disable.
+g_warmupMode	1 (default): Players cannot join until end of warmup 2: Players can join a team, but cannot spawn until end of warmup
+g_requireVoteReasons	0 (default): off 1: Require players to specify a reason when calling kickvotes
+g_forceautoselect	0 (default): off 1: Players may only select a team using autoselect
+g_buildLogMaxLength	Controls the max length of the buildlog. Default 50.
+g_banNotice	Appends this text to the end of every ban message as it's sent to the player. Default: (blank)
+g_adminMaxBan	Admins without flag 8 can ban for a maximum of this length. Default: 2w
+g_nextMap	Specifies a map that will be played after the current one, overriding the rotation. This is set automatically by /callvote nextmap, but can be changed manually via rcon as well.
+cg_unlagged	Client-side userinfo cvar that turns off unlagged hit detection for that player. (This is not a server setting).
+
+
+Appendix C: New Commands that were added 
+/me /me_team 
+/share 
+/donate 
+/say_area 
+/say_admins /a (same thing) 
+/protect /resign (designated builder stuff) 
+/mystats 
+
+Changelog 
+The full changelog is no longer included here. Please see the accompanying changelog.txt. You may also wish to view http://source.mercenariesguild.net/lakitu7-qvm?view=rev for the SVN logs (which begin during version 5.2 development). 
+
+Credits 
+The following people contributed code, created included code, or provided help to make this possible: kevlarman, vcxzet, Napkin, Avenger, Risujin, r1ch, peoro, tjw, pierre, Khalsa, foobar, gate, Martin Doucha, Wolfwings, benmachine, Phil Bordelon, trem-servers.com, tuple, Das-Iro, Mexel, Techhead, Rocinante, Amanieu, Rezyn, Googles, Critux, Wireddd, ==Troy==, Thorn 
+
+Also all of the MG/AA/Puretremulous servers and communities, who put up with my constant updating and testing and breaking of things :) 

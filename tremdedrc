@@ -1,0 +1,1 @@
+TREM_ARGS="+set dedicated 1 +exec server.cfg"
