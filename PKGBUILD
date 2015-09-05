@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/eteran/qgmailnotifier'
 license=('GPL')
 depends=('qt5-base')
-makedepends=('subversion')
+makedepends=('git')
 conflicts=('qgmailnotifier')
 provides=("qgmailnotifier")
 source=("$pkgname::git+https://github.com/eteran/qgmailnotifier.git#branch=master")
