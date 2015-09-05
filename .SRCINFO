@@ -1,8 +1,8 @@
 pkgbase = plasma-sdk-tools-git
-	pkgdesc = KDE Plasma tools that were in kde-workspace 4.9
-	pkgver = r1384.73c78cf
+	pkgdesc = Applications useful for Plasma Development (except Plasmate)
+	pkgver = r1505.38373cf
 	pkgrel = 1
-	url = https://projects.kde.org/projects/extragear/sdk/plasma-sdk
+	url = https://projects.kde.org/projects/plasma-sdk
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -17,7 +17,7 @@ pkgbase = plasma-sdk-tools-git
 	conflicts = kdebase-workspace<=4.9.80
 	replaces = plasmate-tools-frameworks-git
 	replaces = plasmate-tools-git
-	source = git://anongit.kde.org/plasma-sdk
+	source = git://anongit.kde.org/plasma-sdk.git
 	md5sums = SKIP
 
 pkgname = plasma-sdk-tools-git

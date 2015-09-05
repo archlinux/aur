@@ -1,17 +1,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-sdk-tools-git
-pkgver=r1384.73c78cf
+pkgver=r1505.38373cf
 pkgrel=1
-pkgdesc='KDE Plasma tools that were in kde-workspace 4.9'
+pkgdesc='Applications useful for Plasma Development (except Plasmate)'
 arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/extragear/sdk/plasma-sdk'
+url='https://projects.kde.org/projects/plasma-sdk'
 license=('LGPL')
 depends=('plasma-framework' 'ktexteditor')
 makedepends=('extra-cmake-modules' 'git')
 conflicts=('plasmate-tools' 'plasmate' 'plasma-sdk' 'plasma-sdk-tools' 'kdebase-workspace<=4.9.80')
 replaces=('plasmate-tools-frameworks-git' 'plasmate-tools-git')
-source=('git://anongit.kde.org/plasma-sdk')
+source=('git://anongit.kde.org/plasma-sdk.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -31,19 +31,9 @@ build() {
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DPLASMATE_BUILD_WITH_KDEVPLATFORM=OFF
-
-  for i in cuttlefish engineexplorer plasmoidviewer; do
-    cd $i
-    make
-    cd ../
-  done
 }
 
 package() {
   cd build
-  for i in cuttlefish engineexplorer plasmoidviewer; do
-    cd $i
-    make DESTDIR="${pkgdir}" install
-    cd ..
-  done
+  make DESTDIR="${pkgdir}" install
 }
