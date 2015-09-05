@@ -1,10 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Paycoin
-Comment=Paycoin Wallet
+Comment=Paycoin
 Exec=/usr/bin/paycoin-qt %u
 Terminal=false
 Type=Application
-Icon=paycoin
+Icon=paycoin-qt
 MimeType=x-scheme-handler/paycoin;
 Categories=Office;Internet;
