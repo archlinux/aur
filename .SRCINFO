@@ -1,14 +1,14 @@
 pkgbase = atlassian-plugin-sdk
 	pkgdesc = Atlassian plugin software developer kit
-	pkgver = 5.1.1
+	pkgver = 5.1.2
 	pkgrel = 1
-	url = http://confluence.atlassian.com/x/rwWzDQ
+	url = https://marketplace.atlassian.com/plugins/atlassian-plugin-sdk-tgz
 	arch = i686
 	arch = x86_64
 	license = Apache License 2.0
 	depends = jdk
-	source = https://maven.atlassian.com/public/com/atlassian/amps/atlassian-plugin-sdk/5.1.1/atlassian-plugin-sdk-5.1.1.tar.gz
-	sha256sums = a92ec51c7d6afaea148907acbe7f0adf1207abc48e1f9fb50c6ced105e0c80d1
+	source = https://maven.atlassian.com/public/com/atlassian/amps/atlassian-plugin-sdk/5.1.2/atlassian-plugin-sdk-5.1.2.tar.gz
+	sha256sums = 4ad79005f16d78af9d5a3deb3ac90654aa86bda5a0d1514099146ed0a6c56d08
 
 pkgname = atlassian-plugin-sdk
 

@@ -2,14 +2,14 @@
 # Contributor: Leo von Klenze <leo.vonklenze@tngtech.com>
 
 pkgname=atlassian-plugin-sdk
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Atlassian plugin software developer kit"
 arch=('i686' 'x86_64')
-url="http://confluence.atlassian.com/x/rwWzDQ"
+url="https://marketplace.atlassian.com/plugins/atlassian-plugin-sdk-tgz"
 license=('Apache License 2.0')
-source=("https://maven.atlassian.com/public/com/atlassian/amps/atlassian-plugin-sdk/$pkgver/atlassian-plugin-sdk-$pkgver.tar.gz")
-sha256sums=('a92ec51c7d6afaea148907acbe7f0adf1207abc48e1f9fb50c6ced105e0c80d1')
+source=("https://maven.atlassian.com/public/com/atlassian/amps/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('4ad79005f16d78af9d5a3deb3ac90654aa86bda5a0d1514099146ed0a6c56d08')
 depends=('jdk')
 
 package() {
@@ -24,12 +24,9 @@ package() {
   # add executable flag for every user
   chmod -R +X opt/atlassian/plugin-sdk
 
-  # add sun java path settings to atlas files
-  #find opt/atlassian/plugin-sdk -type f -executable -exec sed -ie 's/# Execute Maven #/# Execute Maven #\nsource \/opt\/java7\/etc\/profile.d\/jdk.sh/g' {} \;
-
   # update PATH
   mkdir -p etc/profile.d
-  echo 'export PATH=$PATH:/opt/atlassian/plugin-sdk/bin' > etc/profile.d/atlassian-plugin-sdk.sh
-  echo 'setenv PATH ${PATH}:/opt/atlassian/plugin-sdk/bin' > etc/profile.d/atlassian-plugin-sdk.csh
+  echo 'export PATH=$PATH:/opt/atlassian/plugin-sdk/bin' > etc/profile.d/$pkgname.sh
+  echo 'setenv PATH ${PATH}:/opt/atlassian/plugin-sdk/bin' > etc/profile.d/$pkgname.csh
   chmod +x etc/profile.d/*
 }
