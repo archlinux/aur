@@ -1,5 +1,5 @@
 pkgname=babelmap
-pkgver=8.0.0.1
+pkgver=8.0.0.2
 pkgrel=1
 pkgdesc="A Unicode character map for Windows."
 arch=('any')
@@ -11,7 +11,7 @@ source=('http://www.babelstone.co.uk/Software/BabelMap.zip'
         'babelmap'
         'babelmap.desktop'
         'LICENSE')
-sha256sums=('4d2e2725cad9eb5e7f44ef260848439541ac1c4918b772eda07333c2ac352068'
+sha256sums=('c4bd84f0df00d292cdc5f7402b58632acec91b1ffec2b7119e64b446a302221b'
             '5d62cd3c9bf31ca196e98da3d2eff27c6642c05f8ad9893cd1e73cdf08eb1573'
             '332804bcab37fdf223a9b55cead76c1c12e4c0e7f3df1691c93c9ad98e537274'
             '90544b87643dad089f816791171a909827bbdce12df7113543d005ffbfb53d64')
