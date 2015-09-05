@@ -1,0 +1,47 @@
+pkgbase = chessx-svn
+	pkgdesc = A free chess database
+	pkgver = 1.3.4.2124
+	pkgrel = 1
+	url = http://chessx.sourceforge.net
+	install = chessx-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	makedepends = qt5-3d
+	makedepends = qt5-base
+	makedepends = qt5-canvas3d
+	makedepends = qt5-connectivity
+	makedepends = qt5-declarative
+	makedepends = qt5-enginio
+	makedepends = qt5-graphicaleffects
+	makedepends = qt5-imageformats
+	makedepends = qt5-location
+	makedepends = qt5-multimedia
+	makedepends = qt5-quick1
+	makedepends = qt5-quickcontrols
+	makedepends = qt5-script
+	makedepends = qt5-sensors
+	makedepends = qt5-serialport
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	makedepends = qt5-translations
+	makedepends = qt5-wayland
+	makedepends = qt5-webchannel
+	makedepends = qt5-webengine
+	makedepends = qt5-webkit
+	makedepends = qt5-websockets
+	makedepends = qt5-x11extras
+	makedepends = qt5-xmlpatterns
+	depends = qt5-svg
+	depends = desktop-file-utils
+	depends = qt5-multimedia
+	provides = chessx=1.3.4.2124
+	conflicts = chessx
+	options = !emptydirs
+	source = chessx-svn::svn+http://svn.code.sf.net/p/chessx/code/trunk
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = chessx-svn
+
