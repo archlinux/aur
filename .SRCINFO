@@ -1,0 +1,17 @@
+pkgbase = pharo-launcher
+	pkgdesc = Pharo Launcher helps you manage your Pharo images
+	pkgver = 4.0
+	pkgrel = 2
+	url = http://www.pharo-project.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = pharo-vm-latest
+	source = http://files.pharo.org/media/logo/icon-lighthouse-128x128.png
+	source = https://ci.inria.fr/pharo/view/Launcher/job/Launcher/PHARO=40,VERSION=stable,VM=vm,label=linux/49/artifact/PharoLauncher-user-stable-2015.04.20.zip
+	md5sums = dec67d08d24433696375a319de029f34
+	md5sums = b1c4b91c000c6fe6aa5fa43c00288e58
+
+pkgname = pharo-launcher
+
