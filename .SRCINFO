@@ -1,14 +1,17 @@
 pkgbase = nodejs-bower
-	pkgdesc = The browser package manager
+	pkgdesc = A package manager for the web
 	pkgver = 1.5.2
-	pkgrel = 1
-	url = https://github.com/twitter/bower
+	pkgrel = 2
+	url = http://bower.io/
 	arch = any
 	license = MIT
-	depends = npm
+	makedepends = npm
+	depends = nodejs
 	noextract = bower-1.5.2.tgz
 	source = http://registry.npmjs.org/bower/-/bower-1.5.2.tgz
+	source = LICENSE
 	md5sums = 218d35f4106d00d27c8f4930fdd64547
+	md5sums = 135697567327f92e904ef0be2082da5e
 
 pkgname = nodejs-bower
 
