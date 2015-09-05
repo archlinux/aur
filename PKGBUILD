@@ -1,5 +1,5 @@
 pkgname="paycoin-qt-git"
-pkgver=0.3.0.2.r0.g63dbad1
+pkgver=0.3.0.2.r109.g26f7058
 pkgrel=1
 pkgdesc='Paycoin is a Paycoin network-compatible, community-developed wallet client.'
 arch=('any')
