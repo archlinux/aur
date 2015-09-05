@@ -1,0 +1,16 @@
+Fix errors in Makefile.in
+Actually I cannot understand why this could happen.
+
+--- nvi-1.79.old/build/Makefile.in  1996-10-23 22:43:38.000000000 +0900
++++ nvi-1.79.new/build/Makefile.in      2015-09-05 23:55:22.340436768 +0900
+@@ -139,8 +139,8 @@
+            cd $(datadir)/vi/catalog && $(chmod) $(fmode) *)
+ 	@echo "Installing Perl scripts: $(datadir)/vi/perl ..."
+ 	$(mkdir) $(datadir)/vi/perl && $(chmod) $(dmode) $(datadir)/vi/perl
+-	[ -f VI.pm ] && $(cp) VI.pm $(datadir)/vi/perl && \
+-	    cd $(datadir)/vi/perl && $(chmod) $(fmode) VI.pm)
++	-[ -f VI.pm ] && $(cp) VI.pm $(datadir)/vi/perl && \
++	    cd $(datadir)/vi/perl && $(chmod) $(fmode) VI.pm
+ 	(cd $(srcdir)/perl_scripts && $(cp) *.pl $(datadir)/vi/perl && \
+ 	    cd $(datadir)/vi/perl && $(chmod) $(fmode) *.pl)
+ 	@echo "Installing Tcl scripts: $(datadir)/vi/tcl ..."

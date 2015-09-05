@@ -1,0 +1,17 @@
+pkgbase = nvi
+	pkgdesc = The Berkeley Vi Editor
+	pkgver = 1.79
+	pkgrel = 1
+	url = https://sites.google.com/a/bostic.com/keithbostic/vi
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libtool
+	depends = ncurses
+	source = https://sites.google.com/a/bostic.com/keithbostic/files/nvi-1.79.tar.gz
+	source = fixerrors.patch
+	md5sums = 765e2153f5fc4f21793f2edc2647305a
+	md5sums = c57d0dfb738d292d95a547029b6f6c86
+
+pkgname = nvi
+
