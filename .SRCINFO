@@ -1,5 +1,5 @@
 pkgbase = file-roller-tmp
-	pkgdesc = The file-roller with an additional patch to put temporary files in /tmp instead of ~/.cache (and thus to reduce the amount of writes to SSDs.)
+	pkgdesc = The file-roller with an additional patch to put temporary files in /tmp instead of ~/.cache (and thus to reduce the amount of writes to SSDs).
 	pkgver = 3.16.3
 	pkgrel = 2
 	url = http://www.gnome.org
