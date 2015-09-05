@@ -1,4 +1,4 @@
-# Maintainer: Ian D, Scott <ian@perebruin.com>
+# Maintainer: Ian D. Scott <ian@perebruin.com>
 pkgname=whitakers-words
 pkgver=1.97FC
 pkgrel=1
