@@ -1,0 +1,47 @@
+From 81d05d6fb3b79e572064f57e1f8185d3b16149dc Mon Sep 17 00:00:00 2001
+From: Marc Dionne <marc.dionne@your-file-system.com>
+Date: Wed, 29 Jul 2015 09:03:14 -0300
+Subject: [PATCH 6/6] Linux: Only use automount for volume roots
+
+As long as we avoid using directory aliases when crossing
+a mount point (at the volume root), we should always get
+to a given non root directory with the same dentry.
+The mechanism added by commit de381aa0 ("Linux: Make dir
+dentry aliases act like symlinks") is therefore only really
+necessary for a volume root.
+
+With kernel 4.2 it is not possible to tweak the "total link
+count", resulting in ELOOP errors when looking up a path
+with 40 or more directories that are being looked up for
+the first time.  With this change, only mountpoints will
+count against the limit.
+
+Reviewed-on: http://gerrit.openafs.org/11945
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Daria Brashear <shadow@your-file-system.com>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+(cherry picked from commit 05f64de7d723a8d5430d9b5928c2025838a6fa52)
+
+Change-Id: I16e855c8322174604288b7d440b342951dd3a015
+---
+ src/afs/LINUX/osi_vnodeops.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 3c0cb33..ae0513c 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -1555,7 +1555,9 @@ afs_linux_lookup(struct inode *dip, struct dentry *dp)
+ 	d_prune_aliases(ip);
+ 
+ #ifdef STRUCT_DENTRY_OPERATIONS_HAS_D_AUTOMOUNT
+-	ip->i_flags |= S_AUTOMOUNT;
++	/* Only needed if this is a volume root */
++	if (vcp->mvstat == 2)
++	    ip->i_flags |= S_AUTOMOUNT;
+ #endif
+     }
+     /*
+-- 
+2.5.1
+
