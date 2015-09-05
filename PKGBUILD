@@ -21,7 +21,7 @@ install=
 changelog=
 source=(ynab4 "Setup.exe::http://www.youneedabudget.com/CDNOrigin/download/$pkgname/liveCaptive/Win/YNAB%204_${pkgver}_Setup.exe")
 noextract=("Setup.exe")
-md5sums=("c981e554bb249a3ce4d374e868f4f765"
+md5sums=("764cd9a8cec68ebcad04427110045267"
 	 "0a5df8a115193fe68c4fb5e1cae55326")
 
 package() {
