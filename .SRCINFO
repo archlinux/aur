@@ -1,0 +1,17 @@
+pkgbase = acme-sac-git
+	pkgdesc = Programmer's editor and shell, running over Inferno
+	pkgver = 1
+	pkgrel = 1
+	url = http://code.google.com/p/acme-sac/
+	arch = x86_64
+	license = GPL
+	depends = lib32-libx11
+	depends = lib32-libxext
+	depends = gcc-multilib
+	provides = acme
+	conflicts = acme
+	source = acme-sac-git::git+https://github.com/mehlon/acme-sac
+	md5sums = SKIP
+
+pkgname = acme-sac-git
+
