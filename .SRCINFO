@@ -10,7 +10,7 @@ pkgbase = simgear-git
 	depends = glut
 	depends = freealut
 	depends = plib
-	depends = openscenegraph-git
+	depends = openscenegraph
 	depends = boost>=1.49
 	provides = simgear-git
 	conflicts = simgear

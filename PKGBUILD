@@ -9,7 +9,7 @@ pkgdesc="A set of open-source libraries designed to be used as building blocks f
 arch=('i686' 'x86_64')
 url="http://simgear.sourceforge.net/"
 license=('GPL')
-depends=('glut' 'freealut' 'plib' 'openscenegraph-git' 'boost>=1.49')
+depends=('glut' 'freealut' 'plib' 'openscenegraph' 'boost>=1.49')
 optdepends=()
 makedepends=('git')
 provides=('simgear-git')
