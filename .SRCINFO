@@ -1,14 +1,14 @@
 pkgbase = android-support-repository
 	pkgdesc = Android Support Repository Package
-	pkgver = r17
+	pkgver = r19
 	pkgrel = 1
 	url = https://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
 	depends = android-sdk
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/android_m2repository_r17.zip
-	sha1sums = 2be1ea1d2dd7aca689d4291dd565deee9b21791e
+	source = http://dl-ssl.google.com/android/repository/android_m2repository_r19.zip
+	sha1sums = c033560828571d751e069f4cb0e447289dc795cc
 
 pkgname = android-support-repository
 
