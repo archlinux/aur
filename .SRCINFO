@@ -1,0 +1,15 @@
+pkgbase = repo-scripts
+	pkgdesc = A set of scripts to work with your repository
+	pkgver = 1.5.3
+	pkgrel = 2
+	url = https://github.com/arcan1s/repo-scripts
+	arch = any
+	license = GPLv3
+	depends = yaourt
+	depends = devtools
+	backup = etc/repo-scripts.conf
+	source = https://github.com/arcan1s/repo-scripts/releases/download/V.1.5.3/repo-scripts-1.5.3-src.tar.xz
+	md5sums = 124365b35311d209cbd2d8e7458ab1da
+
+pkgname = repo-scripts
+
