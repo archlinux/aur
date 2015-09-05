@@ -1,0 +1,13 @@
+pkgbase = astrill
+	pkgdesc = VPN configuration tool for Astrill's servers
+	pkgver = 2.9.3
+	pkgrel = 0
+	url = http://astrill.com/
+	arch = x86_64
+	arch = i686
+	license = custom
+	source = https://www.astrill.com/downloads/astrill-setup-linux.rpm
+	md5sums = ee21d58a2f61985c26d801cdc8b32309
+
+pkgname = astrill
+
