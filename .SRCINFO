@@ -1,7 +1,7 @@
 pkgbase = libsemanage
 	pkgdesc = SELinux binary policy manipulation library
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://userspace.selinuxproject.org
 	install = libsemanage.install
 	arch = i686
@@ -9,18 +9,31 @@ pkgbase = libsemanage
 	groups = selinux
 	license = GPL
 	makedepends = flex
+	makedepends = python2
+	makedepends = python
+	makedepends = swig
 	depends = ustr
 	depends = libselinux>=2.4
 	depends = audit
 	optdepends = python2: python2 bindings
 	optdepends = python: python bindings
-	provides = selinux-usr-libsemanage=2.4-1
+	provides = selinux-usr-libsemanage=2.4-2
 	conflicts = selinux-usr-libsemanage
 	options = !emptydirs
 	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/libsemanage-2.4.tar.gz
 	source = semanage.conf
+	source = 0001-libsemanage-do-not-copy-contexts-in-semanage_migrate.patch
+	source = 0002-libsemanage-Add-policy-binary-and-file_contexts.loca.patch
+	source = 0003-libsemanage-Add-file_contexts-and-seusers-to-the-sto.patch
+	source = 0004-libsemanage-save-homedir_template-in-the-policy-stor.patch
+	source = 0005-libsemanage-store-users_extra-in-the-policy-store.patch
 	sha256sums = 1a4cace4ef16786531ec075c0e7b2f961e2fee5dc86c5f983a689058899a6484
 	sha256sums = 5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0
+	sha256sums = 61a768144b740104fb2c17b6c15f10a207c0fa42d5faa611237f1df6b0a9c835
+	sha256sums = 3ac9a961efde8cbc091688ca3e42058baf37919b572abd96d0a8f8167f4f283c
+	sha256sums = 0324cfc186b09b748c74a64c74f9990dc7ee5497b8d450d4146f8fc73d6a710c
+	sha256sums = bb83007a0cee3e2f3193c4935b2956e9c1894d08146c36a72505248e22c158cf
+	sha256sums = 3497602b0b5095c08711fd922160b9bdefdb74dff39910b2cddf8480795580bb
 
 pkgname = libsemanage
 
