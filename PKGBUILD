@@ -1,10 +1,10 @@
 # Maintainer: Ainola
 # Contributor: Ner0
-# Contributor: quantax -- contact via Arch Linux forum or AUR
+# Contributor: quantax
 
 pkgname=ags-git
 pkgver=3.3.4.1.7.geeb96c4
-pkgrel=1
+pkgrel=2
 pkgdesc="Adventure Game Studio, a development tool that is primarily used to create graphical adventure games"
 arch=('i686' 'x86_64')
 url="https://github.com/adventuregamestudio/ags"
@@ -12,6 +12,7 @@ license=('Artistic2.0')
 depends=('allegro4' 'dumb' 'freetype2' 'libogg' 'libtheora' 'libvorbis')
 makedepends=('git' 'wxgtk')
 optdepends=('wine: for installing and configuring the game')
+conflicts=('ags')
 install=ags.install
 source=('git://github.com/adventuregamestudio/ags.git')
 md5sums=('SKIP')
