@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-tr
 	pkgdesc = Turkish language pack for SeaMonkey
-	pkgver = 2.33.1
+	pkgver = 2.35
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.33.1
-	noextract = seamonkey-2.33.1.tr.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.33.1/langpack/seamonkey-2.33.1.tr.langpack.xpi
-	sha256sums = db1d8392f2d8c298d8b8a9a0da835cfcf14679a52dd96a8fad2c8dc7b29ea5dd
+	depends = seamonkey>=2.35
+	noextract = seamonkey-2.35.tr.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.35/langpack/seamonkey-2.35.tr.langpack.xpi
+	sha256sums = 598b5399fb18ef6fcee8e48682f5a70ae9de95b6735601086e1c661bdc72e993
 
 pkgname = seamonkey-i18n-tr
 
