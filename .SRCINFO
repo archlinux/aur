@@ -1,0 +1,16 @@
+pkgbase = qgmailnotifier-git
+	pkgdesc = A portable Qt-based Gmail notifier
+	pkgver = 0.0.r7.84b71b5
+	pkgrel = 1
+	url = https://github.com/eteran/qgmailnotifier
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = qt5-base
+	provides = qgmailnotifier
+	conflicts = qgmailnotifier
+	source = qgmailnotifier-git::git+https://github.com/eteran/qgmailnotifier.git#branch=master
+	md5sums = SKIP
+
+pkgname = qgmailnotifier-git
+
