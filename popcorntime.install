@@ -1,4 +1,5 @@
 post_install() {
+  update-desktop-database -q
   echo
   echo "WARNING: Popcorn Time streams movies from Torrents"
   echo "Downloading copyrighted material may be illegal in your country!"

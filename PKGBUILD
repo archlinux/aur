@@ -7,9 +7,9 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.3.8.3
-_pkgver=v0.3.8-3
-pkgrel=2
+pkgver=0.3.8.4
+_pkgver=v0.3.8-4
+pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.io/"
@@ -28,9 +28,9 @@ depends=('alsa-lib'
 optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
-_commit_hash="4ccb1c0f8fb6f8ed2c0a7974af058786f74bbc69"
+_commit_hash="ae59a0481c9c4f2127aaa376ff99c19039d90963"
 _gitname="desktop-${_pkgver}-${_commit_hash}"
-_nw_ver=0.12.1
+_nw_ver=0.12.2
 
 _platform=linux64
 if [ "$CARCH" = 'i686' ]; then
@@ -39,8 +39,8 @@ fi
 
 source=("desktop-${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=${_pkgver}"
         "popcorntime.desktop")
-sha256sums=('b95a43430facba7ebcdea6dfc80b2d6b92153618cdede6d5f257b6fa0b5b65d8'
-            'f89595aeaf1c09ad2b0a869be1ad14922b4747f901cec0f1b65c4c72719dcdec')
+sha256sums=('286a96debcd3b337e1bed39891cf5f339de015f4aed95d4ed9f3264dc0ba9f9a'
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 prepare() {
   cd "${_gitname}"
