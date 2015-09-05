@@ -1,0 +1,16 @@
+pkgbase = simward-git
+	pkgdesc = Command line program for easy TCP / UDP port forwarding
+	pkgver = 0.5.r2.gf2a9254
+	pkgrel = 1
+	url = https://github.com/Abazigal/simward
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = simward=0.5
+	conflicts = simward
+	source = SIMWARD::git://github.com/Abazigal/simward.git
+	sha256sums = SKIP
+
+pkgname = simward-git
+
