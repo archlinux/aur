@@ -12,6 +12,7 @@ pkgbase = openscenegraph-git
 	depends = xine-lib
 	depends = curl
 	provides = openscenegraph-git
+	provides = openscenegraph
 	conflicts = openscenegraph
 	conflicts = openscenegraph-svn
 	source = git://github.com/openscenegraph/osg.git

@@ -7,25 +7,24 @@ pkgdesc="An open source, high performance real-time graphics toolkit - git mirro
 arch=('i686' 'x86_64')
 url="http://www.openscenegraph.org/"
 license=('GPL')
-groups=()
 depends=('giflib' 'jasper' 'librsvg' 'xine-lib' 'curl')
 makedepends=()
-provides=('openscenegraph-git')
+provides=('openscenegraph-git' 'openscenegraph')
 conflicts=('openscenegraph' 'openscenegraph-svn')
 source=(git://github.com/openscenegraph/osg.git)
 md5sums=('SKIP')
 
 build() {
-	mkdir ${srcdir}/${_gitname}-build/
+  mkdir ${srcdir}/${_gitname}-build/
   cd "${srcdir}/${_gitname}-build/"
   cmake ../${_gitname} -DCMAKE_INSTALL_PREFIX=/usr -DLIBRARY_OUTPUT_PATH=/usr/lib -DCMAKE_BUILD_TYPE=Release
   make || return 1
 }
 
 package(){
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${_gitname}-build"
   make DESTDIR="${pkgdir}/" install
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${srcdir}/${_gitname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
 }
 
