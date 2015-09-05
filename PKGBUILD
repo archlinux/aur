@@ -3,13 +3,13 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Next-generation open source cloud storage with advanced features on privacy protection and teamwork. (Server components, without seahub)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/haiwen/seafile/"
 license=('GPL3')
-depends=('seafile-shared>=4.3.0' 'python2-mako' 'python2-dateutil' 'python2-webpy' 'python2-pip' 'python2-virtualenv' 'python2-flup' 'python2-six' 'libevhtp-seafile<=1.2.9' 'fuse')
+depends=('seafile-shared>=4.3.3' 'python2-mako' 'python2-dateutil' 'python2-webpy' 'python2-pip' 'python2-virtualenv' 'python2-flup' 'python2-six' 'libevhtp-seafile<=1.2.9' 'fuse')
 makedepends=('vala' 'intltool')
 optdepends=()
 provides=()
@@ -74,7 +74,7 @@ package ()
 	# Install seahub preupgrade script
 	install -D -m755 "${srcdir}/seahub-preupgrade" "${pkgdir}/usr/bin/seahub-preupgrade"
 }
-sha256sums=('02f56cef6d1bd371937da05bc184a8d8c04a49a2ceb070aa2a1ae9eabf94f0cd'
+sha256sums=('f9d7c79363ddc6818d715d8b61aaee41c7fea2e0d726f4431eec14884b6eb8fd'
             '4127284c1d8a4d071925cbcc870ca460fd736e2d53e8ab5806ccf3dd03d5e537'
             'abe1a55d528994e044f6bba71fac0d97313adecd9aa007fa338efdca244882db'
             '943ed1bb7d4908b452ce8b7abff26e56f3f24582f6a2cf6e0dc4bf2bffd0a6d8'
