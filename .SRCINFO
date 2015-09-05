@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM (release version)
 	pkgver = 0.9.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/compiz
 	install = compiz.install
 	arch = i686
@@ -35,11 +35,9 @@ pkgbase = compiz
 	conflicts = compiz-core
 	replaces = compiz-core-devel
 	source = https://launchpad.net/compiz/0.9.12/0.9.12.2/+download/compiz-0.9.12.2.tar.bz2
-	source = set-gwd-default.patch
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch
 	sha256sums = 8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80
-	sha256sums = 3aa6cb70f357b3d34d51735f4b5bcb0479086d7c7336de4bd8157569d6c52c08
 	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
 	sha256sums = 16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9
 

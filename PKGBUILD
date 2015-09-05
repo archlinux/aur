@@ -7,7 +7,7 @@
 pkgname=compiz
 pkgver=0.9.12.2
 _pkgseries=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (release version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -20,24 +20,23 @@ optdepends=(
 conflicts=('compiz-core')
 replaces=('compiz-core-devel')
 source=("https://launchpad.net/compiz/${_pkgseries}/${pkgver}/+download/compiz-${pkgver}.tar.bz2"
-        "set-gwd-default.patch"
         "focus-prevention-disable.patch"
         "gtk-extents.patch")
 sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
-            '3aa6cb70f357b3d34d51735f4b5bcb0479086d7c7336de4bd8157569d6c52c08'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9')
 install='compiz.install'
 
 prepare() {
-  cd "compiz-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-  # Set gtk-window-decorator as default in the Window Decoration plugin
-  patch -Np1 -i "${srcdir}/set-gwd-default.patch"
+  # Fix decorator start command
+  sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/\/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
 
   # Set focus prevention level to off which means that new windows will always get focus
   patch -Np1 -i "${srcdir}/focus-prevention-disable.patch"
 
+  # Use Python 2
   find -type f \( -name 'CMakeLists.txt' -or -name '*.cmake' \) -exec sed -e 's/COMMAND python/COMMAND python2/g' -i {} \;
   find compizconfig/ccsm -type f -exec sed -e 's|^#!.*python|#!/usr/bin/env python2|g' -i {} \;
 
@@ -49,7 +48,7 @@ prepare() {
 }
 
 build() {
-  cd "compiz-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   export PYTHON="/usr/bin/python2"
 
@@ -78,7 +77,7 @@ build() {
 }
 
 package() {
-  cd "compiz-${pkgver}/build"
+  cd "${pkgname}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
 
   # findcompiz_install needs COMPIZ_DESTDIR and install needs DESTDIR
