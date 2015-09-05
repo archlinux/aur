@@ -1,0 +1,31 @@
+pkgbase = firefox-nightly-uk
+	pkgdesc = Web browser from mozilla.org, nightly build, Ukrainian l10n
+	pkgver = 43.0a1
+	pkgrel = 1
+	url = http://nightly.mozilla.org/
+	install = firefox-nightly-uk.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = curl
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = gtk2
+	depends = libnotify
+	depends = libxt
+	depends = mime-types
+	depends = nss
+	depends = sqlite
+	conflicts = firefox-nightly
+	conflicts = firefox-nightly-ru
+	source = firefox-nightly.desktop
+	source = firefox-nightly-safe.desktop
+	source = vendor.js
+	md5sums = 54739f07b7f9879cd8e92f9da344e84c
+	md5sums = 6c626bc78e03c795c5892e5c61011054
+	md5sums = 32618013911bf84445afce815e3875b1
+
+pkgname = firefox-nightly-uk
+

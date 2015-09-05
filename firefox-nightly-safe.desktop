@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Firefox Nightly - Safe Mode
+Name[uk]=Firefox Nightly - Безпечний режим
+GenericName=Web Browser - Safe Mode
+GenericName[uk]=Навігатор Тенет - Безпечний режим
+Icon=firefox-nightly-icon
+Type=Application
+Categories=Application;Network;
+MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;
+Encoding=UTF-8
+Exec=firefox-nightly -safe-mode %u
+Terminal=false
+MultipleArgs=false
+StartupNotify=false

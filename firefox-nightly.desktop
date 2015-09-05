@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Firefox Nightly
+GenericName=Web Browser
+GenericName[uk]=Навігатор Тенет
+Comment=Browse the World Wide Web
+Comment[uk]=Перегляд сторінок Інтернету
+Icon=firefox-nightly-icon
+Type=Application
+Categories=Application;Network;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+Encoding=UTF-8
+Exec=firefox-nightly %u
+Terminal=false
+MultipleArgs=false
+StartupNotify=false
