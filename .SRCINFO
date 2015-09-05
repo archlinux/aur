@@ -6,11 +6,10 @@ pkgbase = codec2
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = subversion
 	makedepends = cmake
 	depends = glibc
-	source = codec2::svn+https://freetel.svn.sourceforge.net/svnroot/freetel/codec2/tags/0.4
-	md5sums = SKIP
+	source = https://files.freedv.org/codec2/codec2-0.4.tar.gz
+	sha1sums = 783af547827c62ae491976958ddf44f5d1555481
 
 pkgname = codec2
 

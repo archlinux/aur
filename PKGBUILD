@@ -3,19 +3,19 @@
 
 pkgname=codec2
 pkgver="0.4"
-pkgrel=1
+pkgrel=2
 pkgdesc="an open source codec designed for communications quality speech below 5000 bit/s"
 arch=("i686" "x86_64")
 license=("LGPL")
 url="http://codec2.org/"
 depends=("glibc")
-makedepends=("subversion" "cmake")
-source=("codec2::svn+https://freetel.svn.sourceforge.net/svnroot/freetel/codec2/tags/$pkgver")
-md5sums=("SKIP")
+makedepends=("cmake")
+source=("https://files.freedv.org/codec2/codec2-$pkgver.tar.gz")
+sha1sums=("783af547827c62ae491976958ddf44f5d1555481")
 
 
 build() {
-  cd "codec2"
+  cd "codec2-$pkgver"
   mkdir -p build_dir
   cd build_dir
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "codec2"
+  cd "codec2-$pkgver"
   install -m644 -D COPYING "$pkgdir/usr/share/licenses/codec2/COPYING"
   install -m644 -D README "$pkgdir/usr/share/doc/codec2/README"
   install -m644 -D README_fdmdv.txt "$pkgdir/usr/share/doc/codec2/README_fdmdv"
