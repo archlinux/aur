@@ -1,7 +1,7 @@
 # Maintainer: marazmista <marazmista@gmail.com>
 
 pkgname=radeon-profile-daemon-git
-pkgver=20150315
+pkgver=20150905
 pkgrel=1
 pkgdesc="System daemon for radeon-profile"
 url="http://github.com/marazmista/radeon-profile-daemon"
