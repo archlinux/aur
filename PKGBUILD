@@ -1,7 +1,7 @@
 # Maintainer: Ian D. Scott <ian@perebruin.com>
 pkgname=whitakers-words
 pkgver=1.97FC
-pkgrel=1
+pkgrel=2
 pkgdesc="Latin-English dictionary program."
 arch=('i686' 'x86_64')
 url="http://archives.nd.edu/whitaker/words.htm"
@@ -34,7 +34,7 @@ package() {
   cat > "$pkgdir/usr/bin/words" << EOF
 #!/bin/bash
 cd /opt/whitakers-words
-./words $@
+./words \$@
 EOF
   chmod +x "$pkgdir/usr/bin/words"
 }

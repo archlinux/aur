@@ -1,7 +1,7 @@
 pkgbase = whitakers-words
 	pkgdesc = Latin-English dictionary program.
 	pkgver = 1.97FC
-	pkgrel = 1
+	pkgrel = 2
 	url = http://archives.nd.edu/whitaker/words.htm
 	arch = i686
 	arch = x86_64
