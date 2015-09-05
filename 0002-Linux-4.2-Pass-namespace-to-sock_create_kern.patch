@@ -1,0 +1,61 @@
+From 35259d83d7e2e445c20ddc2f603c2fc74cf5164c Mon Sep 17 00:00:00 2001
+From: Marc Dionne <marc.dionne@your-file-system.com>
+Date: Wed, 8 Jul 2015 14:32:31 -0300
+Subject: [PATCH 2/6] Linux 4.2: Pass namespace to sock_create_kern
+
+sock_create_kern gains an additional network namespace
+argument.
+
+Pass in the default system namesapce.
+
+Reviewed-on: http://gerrit.openafs.org/11925
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Perry Ruiter <pruiter@sinenomine.net>
+Reviewed-by: Chas Williams <3chas3@gmail.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Jeffrey Altman <jaltman@your-file-system.com>
+(cherry picked from commit e597b879677d023165298adadfb88db031883ff4)
+
+Change-Id: I8e4341a6b4c33c5226b9307827932f577e08d5b2
+Reviewed-on: http://gerrit.openafs.org/11948
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+(cherry picked from commit 8d1e5a497635bf453c73525b9df2bcf9c13a5faf)
+---
+ acinclude.m4           | 3 +++
+ src/rx/LINUX/rx_knet.c | 4 +++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index dda9798..a99592a 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -997,6 +997,9 @@ case $AFS_SYSNAME in *_linux* | *_umlinux*)
+ 		 AC_CHECK_LINUX_FUNC([sock_create_kern],
+ 				     [#include <linux/net.h>],
+ 				     [sock_create_kern(0, 0, 0, NULL);])
++		 AC_CHECK_LINUX_FUNC([sock_create_kern_ns],
++				     [#include <linux/net.h>],
++				     [sock_create_kern(NULL, 0, 0, 0, NULL);])
+ 		 AC_CHECK_LINUX_FUNC([splice_direct_to_actor],
+ 				     [#include <linux/splice.h>],
+ 				     [splice_direct_to_actor(NULL,NULL,NULL);])
+diff --git a/src/rx/LINUX/rx_knet.c b/src/rx/LINUX/rx_knet.c
+index 3f7f2bc..1a5cfde 100644
+--- a/src/rx/LINUX/rx_knet.c
++++ b/src/rx/LINUX/rx_knet.c
+@@ -42,7 +42,9 @@ rxk_NewSocketHost(afs_uint32 ahost, short aport)
+     int pmtu = IP_PMTUDISC_DONT;
+ #endif
+ 
+-#ifdef HAVE_LINUX_SOCK_CREATE_KERN
++#ifdef HAVE_LINUX_SOCK_CREATE_KERN_NS
++    code = sock_create_kern(&init_net, AF_INET, SOCK_DGRAM, IPPROTO_UDP, &sockp);
++#elif defined(HAVE_LINUX_SOCK_CREATE_KERN)
+     code = sock_create_kern(AF_INET, SOCK_DGRAM, IPPROTO_UDP, &sockp);
+ #elif defined(LINUX_KERNEL_SOCK_CREATE_V)
+     code = sock_create(AF_INET, SOCK_DGRAM, IPPROTO_UDP, &sockp, 0);
+-- 
+2.5.1
+

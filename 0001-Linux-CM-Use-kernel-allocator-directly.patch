@@ -1,0 +1,104 @@
+From d10f010ab51f54e2e3d1dcf7b0b56e20a2354b72 Mon Sep 17 00:00:00 2001
+From: Simon Wilkinson <sxw@your-file-system.com>
+Date: Sun, 17 Apr 2011 23:43:51 +0100
+Subject: [PATCH 1/6] Linux CM: Use kernel allocator directly
+
+In another few locations within the Linux portion of the cache
+manager, directly use the kernel allocator. We can do so here
+because we can guarantee that the amount of memory being allocated
+is less than the page size, and there is a kfree() in all of the
+exit paths, so we don't need the magic freeing behaviour, either.
+
+Reviewed-on: http://gerrit.openafs.org/4752
+Reviewed-by: Derrick Brashear <shadow@dementia.org>
+Reviewed-by: Marc Dionne <marc.c.dionne@gmail.com>
+Tested-by: Derrick Brashear <shadow@dementia.org>
+(cherry picked from commit 7a70c2907b0435653098a611a140fea1ac0b2fac)
+
+Change-Id: I72fd6a2109022af5e14d90ce147705da7ccec587
+Reviewed-on: http://gerrit.openafs.org/11933
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Chas Williams <3chas3@gmail.com>
+Reviewed-by: Perry Ruiter <pruiter@sinenomine.net>
+Reviewed-by: Jeffrey Altman <jaltman@your-file-system.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+(cherry picked from commit 602130f1de65eefeb4e31e114070d544eb9edd40)
+---
+ src/afs/LINUX/osi_vfsops.c   |  4 ++--
+ src/afs/LINUX/osi_vnodeops.c | 16 ++++++++--------
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vfsops.c b/src/afs/LINUX/osi_vfsops.c
+index d6504ae..934478d 100644
+--- a/src/afs/LINUX/osi_vfsops.c
++++ b/src/afs/LINUX/osi_vfsops.c
+@@ -112,7 +112,7 @@ afs_fill_super(struct super_block *sb, void *data, int silent)
+ #endif
+ 
+     /* used for inodes backing_dev_info field, also */
+-    afs_backing_dev_info = osi_Alloc(sizeof(struct backing_dev_info));
++    afs_backing_dev_info = kmalloc(sizeof(struct backing_dev_info), GFP_NOFS);
+     memset(afs_backing_dev_info, 0, sizeof(struct backing_dev_info));
+ #if defined(HAVE_LINUX_BDI_INIT)
+     bdi_init(afs_backing_dev_info);
+@@ -338,7 +338,7 @@ afs_put_super(struct super_block *sbp)
+ #if defined(HAVE_LINUX_BDI_INIT)
+     bdi_destroy(afs_backing_dev_info);
+ #endif
+-    osi_Free(afs_backing_dev_info, sizeof(struct backing_dev_info));
++    kfree(afs_backing_dev_info);
+     AFS_GUNLOCK();
+ 
+     sbp->s_dev = 0;
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 91c09ed..a8f0074 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -1893,7 +1893,7 @@ static int afs_linux_follow_link(struct dentry *dentry, struct nameidata *nd)
+     int code;
+     char *name;
+ 
+-    name = osi_Alloc(PATH_MAX);
++    name = kmalloc(PATH_MAX, GFP_NOFS);
+     if (!name) {
+ 	return -EIO;
+     }
+@@ -1915,9 +1915,9 @@ static void
+ afs_linux_put_link(struct dentry *dentry, struct nameidata *nd)
+ {
+     char *name = nd_get_link(nd);
+-    if (name && !IS_ERR(name)) {
+-	osi_Free(name, PATH_MAX);
+-    }
++
++    if (name && !IS_ERR(name))
++	kfree(name);
+ }
+ 
+ #endif /* USABLE_KERNEL_PAGE_SYMLINK_CACHE */
+@@ -2174,8 +2174,8 @@ afs_linux_fillpage(struct file *fp, struct page *pp)
+     address = kmap(pp);
+     ClearPageError(pp);
+ 
+-    auio = osi_Alloc(sizeof(struct uio));
+-    iovecp = osi_Alloc(sizeof(struct iovec));
++    auio = kmalloc(sizeof(struct uio), GFP_NOFS);
++    iovecp = kmalloc(sizeof(struct iovec), GFP_NOFS);
+ 
+     setup_uio(auio, iovecp, (char *)address, offset, PAGE_SIZE, UIO_READ,
+               AFS_UIOSYS);
+@@ -2206,8 +2206,8 @@ afs_linux_fillpage(struct file *fp, struct page *pp)
+ 
+     kunmap(pp);
+ 
+-    osi_Free(auio, sizeof(struct uio));
+-    osi_Free(iovecp, sizeof(struct iovec));
++    kfree(auio);
++    kfree(iovecp);
+ 
+     crfree(credp);
+     return afs_convert_code(code);
+-- 
+2.5.1
+

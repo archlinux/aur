@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
 	pkgver = 1.6.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	install = openafs-modules-dkms.install
 	arch = i686
@@ -17,8 +17,20 @@ pkgbase = openafs-modules-dkms
 	options = !emptydirs
 	source = http://openafs.org/dl/1.6.14/openafs-1.6.14-src.tar.bz2
 	source = dkms.conf
+	source = 0001-Linux-CM-Use-kernel-allocator-directly.patch
+	source = 0002-Linux-4.2-Pass-namespace-to-sock_create_kern.patch
+	source = 0003-Linux-4.2-total_link_count-is-no-longer-accessible.patch
+	source = 0004-Linux-Add-AC_CHECK_LINUX_OPERATION-configure-macro.patch
+	source = 0005-Linux-4.2-Changes-in-link-operation-APIs.patch
+	source = 0006-Linux-Only-use-automount-for-volume-roots.patch
 	sha256sums = 3e62c798a7f982c4f88d85d32e46bee6a47848d207b1e318fe661ce44ae4e01f
 	sha256sums = ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf
+	sha256sums = 53e62ac6cd815324321bbc847e6cc12f364746146e4d1423390035b2a3b05b22
+	sha256sums = 05aef6f9311bde0e5a007c625b45d84600803617ef467e47888fe39dc837ea1b
+	sha256sums = 3fafbaa20b3e74775be934c2243398209803f17693e3a4f6fcb9bdf8d7750f10
+	sha256sums = a4f6fd9eb5a3b2b3e37ef218b5c4c2acce1e35d9ccf56e1b79edb224b7261cb7
+	sha256sums = 0c8ccfd93a5ac3457372ad2bcad7e0bc04610ec5a0ba529527135bda6a048c3a
+	sha256sums = 32179aaaffebd82887d8421938c64fbe6b1be8034d1e2ba24457f7ed0cfd38df
 
 pkgname = openafs-modules-dkms
 
