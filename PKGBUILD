@@ -19,7 +19,8 @@ source=(
 
 md5sums=(
 	'dec67d08d24433696375a319de029f34'
-	'b1c4b91c000c6fe6aa5fa43c00288e58')
+	'9af00eda06a18241c42136b76bf1dfa5'
+)
 
 prepare() {
 	gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc"
