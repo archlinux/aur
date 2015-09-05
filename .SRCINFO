@@ -1,0 +1,19 @@
+pkgbase = gnome-manual-duplex
+	pkgdesc = Utility allowing manual duplex printing
+	pkgver = 0.64
+	pkgrel = 1
+	url = http://sourceforge.net/projects/g-manual-duplex/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-pycups
+	depends = python2-gobject
+	depends = file
+	depends = transfig
+	depends = netpbm
+	depends = psutils
+	source = http://downloads.sourceforge.net/project/g-manual-duplex/gnome-manual-duplex-0.64.tar.gz
+	md5sums = dd78ac7175e80fe9139992194f729ceb
+
+pkgname = gnome-manual-duplex
+
