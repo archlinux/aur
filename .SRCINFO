@@ -1,0 +1,23 @@
+pkgbase = pharo-vm
+	pkgdesc = Stable Pharo-VM. Pharo is a clean, innovative, open-source Smalltalk-inspired environment
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://www.pharo-project.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = libvorbis
+	depends = pango
+	depends = mesa
+	depends = nas
+	depends = dbus-core
+	depends = libxml2
+	depends = wget
+	depends = unzip
+	conflicts = pharo
+	source = http://files.pharo.org/sources/PharoV40.sources.zip
+	md5sums = f748553d42c7dda963d56286e3be3f08
+
+pkgname = pharo-vm
+
