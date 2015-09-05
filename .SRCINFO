@@ -1,13 +1,13 @@
 pkgbase = sc-im
 	pkgdesc = A spreadsheet program based on SC
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/andmarti1424/scim
 	arch = i686
 	arch = x86_64
-	license = custom
-	source = https://github.com/andmarti1424/sc-im/archive/v0.1.8.tar.gz
-	sha256sums = 427f05b3555efe47aebc3fd4ea8e9da75c5eb88a62f15fd7f5b9ad0fc3ea5162
+	license = BSD
+	source = https://github.com/andmarti1424/sc-im/archive/v0.1.9.tar.gz
+	sha256sums = 5fa93d9a6dd1c60eaf103f6588d3a2895a8dbe4c3c7474765f803345c8f83203
 
 pkgname = sc-im
 
