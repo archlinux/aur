@@ -4,7 +4,7 @@
 pkgname=file-roller-tmp
 pkgver=3.16.3
 pkgrel=2
-pkgdesc="This version of file-roller puts temporary files in /tmp instead of ~/.cache and therefore reduces the amount of writes to SSDs."
+pkgdesc="The file-roller with an additional patch to put temporary files in /tmp instead of ~/.cache (and thus to reduce the amount of writes to SSDs.)"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'dconf' 'libarchive' 'file' 'json-glib' 'libnotify' 'p7zip'
