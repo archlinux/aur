@@ -10,7 +10,7 @@ pkgver=1.2.2
 _seafilever=3.0-latest
 
 #The release number for the arch package, as fixes are added to the PKGBUILD, the release number will increase
-pkgrel=8
+pkgrel=9
 
 # The description of the package, should be about 80 characters long (one line)
 pkgdesc="A simple and easy-to-use C language RPC framework (including both server side & client side) based on GObject System."
@@ -25,7 +25,7 @@ url="https://github.com/haiwen/libsearpc/"
 license=('GPLv3')
 
 # Packages that your software needs to run. If the dependancy requires a minimum version number use the >= operator
-depends=('glib2>=2.16.0' 'pacman>=4.1' 'jansson>=2.2.1' 'libtool>=1.4')
+depends=('glib2>=2.16.0' 'pacman>=4.1' 'jansson>=2.2.1' 'libtool>=1.4' 'python2')
 
 # Packages that must be installed to build the software, but at not necessary to run it
 makedepends=()
