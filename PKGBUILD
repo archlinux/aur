@@ -29,7 +29,7 @@ _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -60,7 +60,7 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.bz2"
 	'iceweasel-20.0.1-fixed-loading-icon.png')
 md5sums=('22e21d1ff3bf93f120eb7420cbb69b9e'
          '0a7dd6fe5e61a182dc0fb122c3e69c3f'
-         '1040e0c5613128fb54f4134e486b37b7'
+         '6027291b9963817e46f816d28b64681d'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
          'ced8f3b950fb819e784415e61ec91bb1'
@@ -79,8 +79,8 @@ prepare() {
   # We wont save user profile in .mozilla/iceweasel
   sed -i 's/MOZ_APP_PROFILE=mozilla\/firefox/MOZ_APP_PROFILE=mozilla\/iceweasel/g' "debian/branding/configure.sh"
   
-  # Doesn't apply and seems unimportant
-  rm -v debian/patches/l10n/Place-google-and-gmail-before-yandex.patch || true
+  # Doesn't apply and seems unimportant, but it seems it isn't included anymore
+  # rm -v debian/patches/l10n/Place-google-and-gmail-before-yandex.patch || true
 
   quilt push -av
 
@@ -89,6 +89,10 @@ prepare() {
 
   # Load our build config
   cp "$srcdir/mozconfig" .mozconfig
+  
+  # Building optimization suggestions by Cyberpunk
+  #echo 'ac_add_options --enable-optimize' >> .mozconfig
+  #echo 'mk_add_options MOZ_MAKE_FLAGS="-j2"' >> .mozconfig
 
   mkdir "$srcdir/python2-path"
 
@@ -103,6 +107,7 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
   cp "$srcdir/iceweasel-20.0.1-fixed-loading-icon.png" \
     browser/themes/linux/tabbrowser/loading.png
+
 }
 
 build() {

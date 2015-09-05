@@ -2,6 +2,7 @@
 
 ac_add_options --prefix=/usr
 ac_add_options --libdir=/usr/lib
+ac_add_options --enable-pie
 
 # Iceweasel
 ac_add_options --disable-official-branding
