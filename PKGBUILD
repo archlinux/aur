@@ -4,17 +4,15 @@
 
 pkgname=cnijfilter-mp630
 pkgver=3.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon drivers for the MP630 printer/scanner"
 arch=('i686' 'x86_64')
 url="http://support-asia.canon-asia.com"
 license=('custom')
-if [ "${CARCH}" = 'x86_64' ]; then
-	depends=('lib32-libcups' 'cups' 'lib32-popt' 'ghostscript' 'lib32-libtiff' 'lib32-libpng')
-	makedepends=('gcc-multilib')
-else
-	depends=('cups' 'popt' 'ghostscript')
-fi
+depends=('cups' 'ghostscript')
+depends_i686=('popt')
+depends_x86_64=('lib32-libcups' 'lib32-popt')
+makedepends_x86_64=('gcc-multilib')
 conflicts=('ppd-mp620-630' 'cnijfilter-common' 'cnijfilter-mp620')
 optdepends=("cups-bjnp: network printing support")
 source=(http://gdlp01.c-wss.com/gds/6/0100001606/01/cnijfilter-common-$pkgver-1.tar.gz \

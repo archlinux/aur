@@ -1,13 +1,12 @@
 pkgbase = cnijfilter-mp630
 	pkgdesc = Canon drivers for the MP630 printer/scanner
 	pkgver = 3.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support-asia.canon-asia.com
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = cups
-	depends = popt
 	depends = ghostscript
 	optdepends = cups-bjnp: network printing support
 	conflicts = ppd-mp620-630
@@ -23,6 +22,10 @@ pkgbase = cnijfilter-mp630
 	sha256sums = 03ca791dd57d6b64c7e79d0c98b45616ce9f0de4a432481728e1c52dbc96fd94
 	sha256sums = eeac4dcd17849be75bcc30c879bab365091835c328c209218fa3749b6ab94461
 	sha256sums = d7e2dd6116e63a0ba3e0b55d3fb920161ec59df3b5e944b0a0b9206221d7841a
+	depends_i686 = popt
+	depends_x86_64 = lib32-libcups
+	depends_x86_64 = lib32-popt
+	makedepends_x86_64 = gcc-multilib
 
 pkgname = cnijfilter-mp630
 
