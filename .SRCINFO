@@ -1,6 +1,6 @@
 pkgbase = crystal-git
 	pkgdesc = The Crystal Programming Language
-	pkgver = 0.7.6.r184.gef58475
+	pkgver = 0.7.7.r1.g42f3be0
 	pkgrel = 1
 	url = http://crystal-lang.org
 	arch = i686
@@ -25,10 +25,10 @@ pkgbase = crystal-git
 	conflicts = crystal
 	source = git://github.com/manastech/crystal.git
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/manastech/crystal/releases/download/0.7.6/crystal-0.7.6-1-linux-i686.tar.gz
-	source_x86_64 = https://github.com/manastech/crystal/releases/download/0.7.6/crystal-0.7.6-1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6f9d8d7bb3795c590c49fc7da33110ca9977323ff1bd61fbace589ddb44f57b0
-	sha256sums_x86_64 = 5fd6781ecf7243d2a71ec9c1aa93ad6a1fadef0d231c329280720c271183c1ff
+	source_x86_64 = https://github.com/manastech/crystal/releases/download/0.7.7/crystal-0.7.7-1-linux-i686.tar.gz
+	source_x86_64 = https://github.com/manastech/crystal/releases/download/0.7.7/crystal-0.7.7-1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7a1ccdce29c1437da1cbaafa3fefd5ebc3c4b84b885964a6d4eaf8bfc5922831
+	sha256sums_x86_64 = 433acbe8e88fe0c3df67ad64bd436349a6bcfc146284f0a690283ebefb93b5e6
 
 pkgname = crystal-git
 

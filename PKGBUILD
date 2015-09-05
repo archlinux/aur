@@ -2,8 +2,8 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.7.6.r184.gef58475
-_last_release="0.7.6-1"
+pkgver=0.7.7.r1.g42f3be0
+_last_release="0.7.7-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -68,5 +68,5 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('6f9d8d7bb3795c590c49fc7da33110ca9977323ff1bd61fbace589ddb44f57b0'
-                   '5fd6781ecf7243d2a71ec9c1aa93ad6a1fadef0d231c329280720c271183c1ff')
+sha256sums_x86_64=('7a1ccdce29c1437da1cbaafa3fefd5ebc3c4b84b885964a6d4eaf8bfc5922831'
+                   '433acbe8e88fe0c3df67ad64bd436349a6bcfc146284f0a690283ebefb93b5e6')
