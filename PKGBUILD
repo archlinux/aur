@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libkcompactdisc-frameworks-git
-pkgver=v15.08.0.5.gf8374a1
+pkgver=5.0.0.r313.f8374a1
 pkgrel=1
 pkgdesc="library for interfacing with CDs. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd libkcompactdisc
-  echo "$(git describe --long --tags | tr - .)"
+  _ver="$(cat CMakeLists.txt | grep -m1 ecm_setup_version | cut -d '"' -f2)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
