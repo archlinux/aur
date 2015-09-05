@@ -33,5 +33,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # not libraries (and provided by kicad)
-  rm -rf "$pkgdir/usr/share/kicad/template"
+  #rm -rf "$pkgdir/usr/share/kicad/template"
 }
