@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-theme-super-flat-remix
 _pkgname=Super-Flat-Remix-GNOME-theme
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Super Flat remix GNOME theme is a pretty simple shell theme, derived from Paper theme."
 arch=('any')
