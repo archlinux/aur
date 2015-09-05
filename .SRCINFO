@@ -1,0 +1,16 @@
+pkgbase = xsv-git
+	pkgver = 0.9.8.r1.411a3bb
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = UNLICENSE
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = xsv
+	conflicts = xsv
+	source = git://github.com/BurntSushi/xsv.git
+	md5sums = SKIP
+
+pkgname = xsv-git
+
