@@ -1,15 +1,20 @@
 pkgbase = python-transaction
-	pkgdesc = Transaction management for Python [Python 3]
-	pkgver = 1.4.3
+	pkgdesc = Transaction management for Python
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/transaction
 	arch = any
 	license = ZPL
 	makedepends = python-setuptools
-	depends = python
-	depends = python-zope-interface
-	source = http://pypi.python.org/packages/source/t/transaction/transaction-1.4.3.tar.gz
-	md5sums = b4ca5983c9e3a0808ff5ff7648092c76
+	makedepends = python2-setuptools
+	source = http://pypi.python.org/packages/source/t/transaction/transaction-1.4.4.tar.gz
+	md5sums = a6d6d6fa18e44d1644518bb7d61eac92
 
 pkgname = python-transaction
+	depends = python
+	depends = python-zope-interface
+
+pkgname = python2-transaction
+	depends = python2
+	depends = python2-zope-interface
 

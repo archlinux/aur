@@ -1,26 +1,27 @@
 # Maintainer: Aaron DeVore <aaron.devore@gmail.com>
 # Contributor: Daniel Strandberg <esodax!nospam!@gmail.com>
 
-pkgname=python-transaction
-pkgver=1.4.3
+pkgname=(python-transaction python2-transaction)
+pkgver=1.4.4
 pkgrel=1
-pkgdesc='Transaction management for Python [Python 3]'
+pkgdesc='Transaction management for Python'
 arch=('any')
 url='http://pypi.python.org/pypi/transaction'
 license=('ZPL')
-depends=('python' 'python-zope-interface')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=(http://pypi.python.org/packages/source/t/transaction/transaction-$pkgver.tar.gz)
-md5sums=('b4ca5983c9e3a0808ff5ff7648092c76')
+md5sums=('a6d6d6fa18e44d1644518bb7d61eac92')
 
-build() {
-  cd "$srcdir/transaction-$pkgver"
-  python setup.py build
-}
-
-package() {
+package_python-transaction() {
+  depends=('python' 'python-zope-interface')
   cd "$srcdir/transaction-$pkgver"
   python setup.py install --root="$pkgdir"
+}
+
+package_python2-transaction() {
+  depends=('python2' 'python2-zope-interface')
+  cd "$srcdir/transaction-$pkgver"
+  python2 setup.py install --root="$pkgdir"
 }
 
 # vim:ts=2:sw=2:et:
