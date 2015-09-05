@@ -1,7 +1,7 @@
 # $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=libreswan
-pkgver=3.14
+pkgver=3.15
 pkgrel=1
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
