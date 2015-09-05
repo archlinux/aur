@@ -5,7 +5,7 @@
 
 pkgname=car
 pkgver=2015.08.10
-pkgrel=1
+pkgrel=2
 url="http://car.rene-grothmann.de/"
 pkgdesc="Circle and Ruler is a dynamic geometry program"
 arch=('any')
@@ -25,7 +25,7 @@ package() {
 	install -d "${pkgdir}/usr/share/pixmaps"
 	install -Dm644 "${srcdir}/car/doc_en/images/ZuL-Logo.png" \
 	  "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}-draw"
+	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "${srcdir}/${pkgname}.desktop" \
 	  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -d "$pkgdir"/usr/share/doc/${pkgname}/
