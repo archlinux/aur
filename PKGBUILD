@@ -3,7 +3,7 @@
 
 pkgname=gnome-settings-daemon-120dpi
 pkgver=3.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNOME Settings daemon with an additional patch to change GNOME dpi settings from 96 to 120 dpi"
 arch=(i686 x86_64)
 license=(GPL)
