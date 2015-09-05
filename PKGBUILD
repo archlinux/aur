@@ -41,7 +41,7 @@ prepare() {
   mkdir -p build
 
   # fix installation designer plugins path
-  sed 's|LIB_SUFFIX}/plugins|LIB_SUFFIX}/qt/plugins|g' -i marble/CMakeLists.txt
+  sed 's|${CMAKE_INSTALL_LIBDIR}/plugins|${CMAKE_INSTALL_LIBDIR}/qt/plugins|g' -i marble/CMakeLists.txt
 
   # only build the KDE app
   sed -e '/mobile/d' \
