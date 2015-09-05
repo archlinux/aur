@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=opencubicplayer
 pkgname=opencubicplayer-git
-pkgver=0.1.21.r56.63e5fc1
+pkgver=0.1.21.r59.b2f2f33
 pkgrel=1
 pkgdesc="A music file player for Linux, Unix, DOS and Windows 95-ME, XP."
 arch=('i686' 'x86_64')
@@ -31,10 +31,6 @@ pkgver() {
 build() {
     cd "${srcdir}/${_name}"
     ./configure --prefix=/usr
-
-    # Compiling LZH first to avoid linking error
-    cd "${srcdir}/${_name}/playym/lzh"
-    make
 
     cd "${srcdir}/${_name}"
     make
