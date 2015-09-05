@@ -8,6 +8,7 @@ pkgbase = slic3r-git
 	license = GPL
 	makedepends = git
 	makedepends = perl-module-build-withxspp
+	makedepends = perl-module-build
 	depends = perl
 	depends = perl-moo
 	depends = perl-math-clipper
