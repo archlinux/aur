@@ -8,7 +8,7 @@ _srcname=linux-4.2
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
@@ -27,9 +27,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-#	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.1.patch"
-#	"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.1.patch"
-#	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch"
+	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.1.patch"
+	"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.1.patch"
+	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         '0001-make_flush_workqueue_non_gpl.patch'
         '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
@@ -45,6 +45,9 @@ sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
+            'c5c2c48638c2a8180948bd118ffcc33c8b7ff5f9f1e4b04c8e2cafeca2bde87b'
+            '4f30f76adbdf49aec8d41ac27ad212734500c272f3cba594f134a7bc263820d9'
             '40c76861b95b8fc69daf48d69dbd5abb8c0be23c9c2ac1e208c4303e6f03f016'
             '4e776734e2c2185910a6fbb6f333d967b04f4a72b3196310af286c6a779bd97d'
             '0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b'
@@ -93,10 +96,10 @@ prepare() {
   msg2 "Patch source to enable more gcc CPU optimizatons via the make nconfig"
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
-#  msg "Patching source with BFQ patches"
-#  for p in $(ls ${srcdir}/000{1,2,3}-block*BFQ*.patch); do
-#      patch -Np1 -i "$p"
-#  done
+  msg "Patching source with BFQ patches"
+  for p in $(ls ${srcdir}/000{1,2,3}-block*BFQ*.patch); do
+      patch -Np1 -i "$p"
+  done
 
   msg2 "Patches from Archlinux"
   # fix work_queue symbol to non GPL for nvidia module building
