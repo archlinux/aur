@@ -1,13 +1,13 @@
 # Maintainer: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=velocity-xbox360-git
-pkgver=0.1.0.0.r1249.6e968cb
+pkgver=0.1.0.0.r1256.2c15bb6
 pkgrel=1
 pkgdesc="A cross-platform application built using the Qt framework which allows you to browse and edit Xbox 360 files."
 arch=('i686' 'x86_64')
 url="https://github.com/hetelek/Velocity.git"
 license=('GPL3')
-depends=('qt4' 'botan')
+depends=('qt4' 'botan>=1.10' 'botan<1.11')
 makedepends=('git')
 options=('!makeflags')
 source=("$pkgname"::'git://github.com/hetelek/Velocity.git'
