@@ -8,7 +8,7 @@ pkgdesc="btrbk is a backup tool for btrfs subvolumes, taking advantage of btrfs 
 url="http://digint.ch/btrbk"
 arch=('any')
 license=('GPL3')
-depends=('perl' 'perl-date-calc' 'btrfs-progs')
+depends=('perl' 'perl-date-calc' 'btrfs-progs' 'pv')
 optdepends=('openssh: remote backup support')
 source=("http://digint.ch/download/btrbk/releases/${pkgname}-${pkgver}.tar.bz2")
 
