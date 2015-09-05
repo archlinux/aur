@@ -1,5 +1,5 @@
 pkgbase = gnome-settings-daemon-120dpi
-	pkgdesc = The GNOME Settings daemon with an additional patch to change GNOME dpi settings from 96 to 120 dpi
+	pkgdesc = The GNOME Settings daemon with an additional patch to change GNOME dpi settings from 96 to 120 dpi.
 	pkgver = 3.16.3
 	pkgrel = 1
 	url = http://www.gnome.org
