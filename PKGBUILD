@@ -5,20 +5,19 @@
 
 pkgname=rtorrent-color
 _pkgname="rtorrent"
-pkgver=0.9.5
-pkgrel=4
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent with color patch."
 url="http://rakshasa.github.io/rtorrent/"
 arch=("i686" "x86_64")
 license=("GPL")
-depends=("curl" "libtorrent=0.13.5" "xmlrpc-c" "libsigc++")
+depends=("curl" "libtorrent>=0.13.6" "xmlrpc-c" "libsigc++")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install="${pkgname}.install"
-#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/${_pkgname}/archive/${pkgver}.tar.gz"
-source=("${pkgname}-${pkgver}.tar.gz::http://pkgbuild.com/~bisson/rtorrent-0.9.5.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/${_pkgname}/archive/${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}_color.patch")
-sha1sums=('ae2e2c6444bb29278406118527db19429c8095cf'
+sha1sums=('27505081254618077c291eb1ee36bfb41f974834'
           '78429b5cf5976270dc1a55d8dc0ef4644675512b')
 
 build() {
