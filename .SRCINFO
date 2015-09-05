@@ -1,0 +1,14 @@
+pkgbase = shp2text
+	pkgdesc = This utility dumps shapefiles and associated data into various formats
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://legacy.obviously.com/gis/shp2text/
+	arch = any
+	license = MIT
+	source = https://github.com/Byclosure/shp2text/archive/master.zip
+	source = shapefil.h
+	sha256sums = 3d21deaebee8db4284d4ff1e76bd66689299481eeacbde7d8122565d208ca33a
+	sha256sums = 013e174d4644636ae308f91d34b4ca86a08eab738f86b7540a56dc3c74d54f8c
+
+pkgname = shp2text
+
