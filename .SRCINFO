@@ -1,6 +1,6 @@
 pkgbase = vcsi
 	pkgdesc = Create video contact sheets, thumbnails
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/amietn/vcsi
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = vcsi
 	depends = python-pillow
 	depends = python-jinja
 	options = !emptydirs
-	source = vcsi::git+https://github.com/amietn/vcsi.git#tag=v3
+	source = vcsi::git+https://github.com/amietn/vcsi.git#tag=v4
 	md5sums = SKIP
 
 pkgname = vcsi
