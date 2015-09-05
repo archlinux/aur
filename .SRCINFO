@@ -1,0 +1,17 @@
+pkgbase = insync-thunar
+	pkgdesc = Thunar integration for insync
+	pkgver = 1.2.8.35136
+	pkgrel = 1
+	url = https://www.insynchq.com/downloads
+	arch = any
+	license = custom:insync
+	depends = insync
+	depends = thunar
+	depends = thunarx-python
+	noextract = insync-thunar-1.2.8.35136.deb
+	options = !strip
+	source = insync-thunar-1.2.8.35136.deb::http://s.insynchq.com/builds/insync-thunar_1.2.8.35136-precise_all.deb
+	sha256sums = e030e547844738b830a5c4edcfb326901ef0719ac60ca172b9d76bf312625edf
+
+pkgname = insync-thunar
+
