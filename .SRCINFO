@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-ja
 	pkgdesc = Japanese language pack for SeaMonkey
-	pkgver = 2.33.1
+	pkgver = 2.35
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.33.1
-	noextract = seamonkey-2.33.1.ja.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.33.1/langpack/seamonkey-2.33.1.ja.langpack.xpi
-	sha256sums = e14120fbdece134b8716b47c28d7e7c823b3424cc238bd65980d91cc00ee9695
+	depends = seamonkey>=2.35
+	noextract = seamonkey-2.35.ja.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.35/langpack/seamonkey-2.35.ja.langpack.xpi
+	sha256sums = 7bc044f438b5fa27af711590999dce35ca747a6aadd093bbd5ed41664519929c
 
 pkgname = seamonkey-i18n-ja
 
