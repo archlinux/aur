@@ -1,7 +1,7 @@
 # Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
 
 pkgname=game_music_emu-kode54-git
-pkgver=r185.54e3a42
+pkgver=r190.fb78c3b
 pkgrel=1
 pkgdesc="Multi-purpose console music emulator and player library (a.k.a. libgme) (kode54's fork)"
 arch=(i686 x86_64)
@@ -42,6 +42,7 @@ prepare() {
 headers.path = /usr/include/gme
 headers.files += ../../gme/gme.h
 INSTALLS += headers
+QMAKE_LFLAGS += -Wl,--allow-multiple-definition
 EOF
 }
 

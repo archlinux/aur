@@ -1,6 +1,6 @@
 pkgbase = game_music_emu-kode54-git
 	pkgdesc = Multi-purpose console music emulator and player library (a.k.a. libgme) (kode54's fork)
-	pkgver = r185.54e3a42
+	pkgver = r190.fb78c3b
 	pkgrel = 1
 	url = https://github.com/kode54/game_music_emu
 	arch = i686
