@@ -1,13 +1,14 @@
 # Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 pkgname=cargo
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Rust package manager"
 url="http://crates.io/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('custom')
 depends=('curl' 'rust')
 makedepends=('cmake' 'git')
+conflicts=('cargo-bin')
 source=("git+https://github.com/rust-lang/cargo.git#tag=$pkgver")
 options=('!emptydirs')
 md5sums=('SKIP')
