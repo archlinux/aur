@@ -2,7 +2,7 @@
 
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
-pkgver=3.7
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("${url}${_appname}-${pkgver}.zip"
 	"$_appname.sh"
 	"$_appname.csh"
 )
-sha1sums=('d493f8738a584812f60ab21a84cd069a1ca208d1'
+sha1sums=('733571706cef78c81f50fd3209f15937697827d0'
 	'1f9b4f74223b5ac1ec235c553e9eca2a2c927eca'
 	'353bdefe07bdb6eb7f53aff20d20e83b488c1c05'
 	'49b7919fc38803c1dd2f5b1d47fb0c75fde1fec6'
