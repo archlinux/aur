@@ -1,4 +1,5 @@
 # Maintainer: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
+# Contributor: Ivan Petruk <localizator@ukr.net>
 pkgname=super-flat-remix-icon-theme
 _pkgname=Super-Flat-Remix
 pkgver=1.08
