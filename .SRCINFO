@@ -1,13 +1,13 @@
 pkgbase = libgmxcpp
 	pkgdesc = A library for use in analyzing GROMACS simulation output files
-	pkgver = 3.2
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/wesbarnett/libgmxcpp
 	arch = any
 	license = GPL,LGPL
 	makedepends = cmake
-	source = https://github.com/wesbarnett/libgmxcpp/archive/v3.2.tar.gz
-	md5sums = a482632b75164730debbd5b1799acc22
+	source = https://github.com/wesbarnett/libgmxcpp/archive/v3.3.1.tar.gz
+	md5sums = bfd94ae47211c460abf2d893471531f0
 
 pkgname = libgmxcpp
 
