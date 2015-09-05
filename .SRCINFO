@@ -1,0 +1,16 @@
+pkgbase = lib32-libxxf86dga
+	pkgdesc = X11 Direct Graphics Access extension library (32 bit)
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = gcc-multilib
+	depends = lib32-libxext
+	depends = libxxf86dga
+	source = http://xorg.freedesktop.org/releases/individual/lib/libXxf86dga-1.1.4.tar.bz2
+	sha256sums = 8eecd4b6c1df9a3704c04733c2f4fa93ef469b55028af5510b25818e2456c77e
+
+pkgname = lib32-libxxf86dga
+
