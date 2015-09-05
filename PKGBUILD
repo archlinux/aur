@@ -10,7 +10,6 @@ url="http://blog.eqoe.cn/posts/danmaku2ass_native.html"
 license=('WTFPL')
 groups=()
 depends=('')
-depends_x86_64=('gcc-libs-multilib')
 makedepends=('git' 'cmake')
 checkdepends=()
 optdepends=()
