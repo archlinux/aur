@@ -8,8 +8,7 @@ pkgdesc="An amelioration of GCC compiler which allow to compile a program withou
 arch=('any')
 url="https://gitlab.com/MaximilienLIX/probuild"
 license=('LGPL3')
-depends=('gcc' 'bash')
-
+depends=('gcc')
 makedepends=('git')
 source=("git+https://gitlab.com/MaximilienLIX/probuild.git")
 md5sums=('SKIP')
