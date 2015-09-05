@@ -3,7 +3,7 @@
 pkgname=ginkgocadx-bin
 pkgver=3.7.1.1573.46
 pkgrel=2
-pkgdesc="Complete DICOM viewer solution"
+pkgdesc="Complete DICOM viewer solution."
 arch=('i686' 'x86_64')
 url="http://ginkgo-cadx.com/"
 license=('LGPL3')

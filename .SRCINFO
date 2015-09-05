@@ -1,5 +1,5 @@
 pkgbase = ginkgocadx-bin
-	pkgdesc = Complete DICOM viewer solution
+	pkgdesc = Complete DICOM viewer solution.
 	pkgver = 3.7.1.1573.46
 	pkgrel = 2
 	url = http://ginkgo-cadx.com/
