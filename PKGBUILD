@@ -1,13 +1,13 @@
 pkgname=highly-experimental-git
-pkgver=r29.9674a08
+pkgver=r30.002db85
 pkgrel=1
 pkgdesc="Highly Experimental PS1/PS2 (PSF) emulator library"
 arch=(i686 x86_64)
-url='https://bitbucket.org/kode54/highly-experimental'
+url='https://gitlab.kode54.net/kode54/Highly_Experimental'
 license=(GPL3)
 depends=(glibc)
 makedepends=('git' 'qtchooser')
-source=("${pkgname}::git+https://bitbucket.org/kode54/highly-experimental.git")
+source=("${pkgname}::git+https://gitlab.kode54.net/kode54/Highly_Experimental.git")
 sha256sums=('SKIP')
 
 pkgver() {
