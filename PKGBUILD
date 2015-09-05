@@ -1,5 +1,5 @@
-# Maintainer: Mark Weiman <mark dot weiman at markzz dot com>
-# Contributor: Zhengyu Xu <xzy3186@gmail.com>
+# Maintainer: Yochai Gal <yochai gal at gmail dot com>
+# Based on package insync nautilus by Mark Weiman
 
 pkgname=insync-thunar
 pkgver=1.2.8.35136
