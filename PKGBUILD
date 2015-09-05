@@ -1,7 +1,7 @@
 # Maintainer: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
 pkgname=super-flat-remix-icon-theme
 _pkgname=Super-Flat-Remix
-pkgver=1.06
+pkgver=1.08
 pkgrel=1
 pkgdesc='a pretty simple icon theme, derived from Ultra-Flat-Icons, Paper and Flattr'
 arch=('any')
@@ -14,7 +14,7 @@ source=(
     "https://github.com/daniruiz/$_pkgname/archive/master.zip"
 	"${pkgname}.install"
 )
-sha512sums=('56c01ca3ce38b88fb9980f4c94bebee0704e66a831e050de4dffa920d14d90c13ff9532e10b9fd530b9510a5b388b958b9463f8ddae4b8c149e81692240e9a8a'
+sha512sums=('c24e6c4af53690f69bf52d2d21eddd971a9aba13756190a3f107429a5a157656aabcb5a9eb52313f1c623fba41e1fe78bb7bca1fe3b3a1e90519652b8ff44aaa'
             '2e4eb809c4c58093f0d888d1cf632241128f6c8b19bed1c6b3e579e1cbfce66f5f179b6195c39fee49baa5824583f81ec97035d8db2daa91f98d220c06e44041')
 package() {
     cd "${srcdir}/$_pkgname-master/"
