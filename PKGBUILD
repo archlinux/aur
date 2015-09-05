@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdk-pixbuf2
-pkgver=2.31.6
+pkgver=2.31.7
 pkgrel=1
 pkgdesc='An image loading library (mingw-w64)'
 arch=(any)
@@ -18,13 +18,16 @@ depends=(
   'mingw-w64-libtiff')
 options=(!strip !buildflags staticlibs)
 source=(
-  "https://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz")
-sha256sums=('111203d6f295d69d36e7190204248331cd37285130ac483becdedcd3f0135d18')
+  "https://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz"
+  'gdk-pixbuf2-bug-754154-fix-non-glibc-build.patch')
+sha256sums=('4736e009168857ce8bb19291f0887c1dc6551cbc3c46d5ffcd034e133e4fd610'
+            'a8b752b97c40f47473f1aa2b17063aded232c1921bbe797c8d44a6d644cdaa16')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/gdk-pixbuf-${pkgver}"
+  patch -p1 < "${srcdir}/${source[1]}"
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
