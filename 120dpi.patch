@@ -1,0 +1,13 @@
+diff --git a/plugins/xsettings/gsd-xsettings-manager.c b/plugins/xsettings/gsd-xsettings-manager.c
+index 5b3a866..e57d168 100644
+--- a/plugins/xsettings/gsd-xsettings-manager.c
++++ b/plugins/xsettings/gsd-xsettings-manager.c
+@@ -228,7 +228,7 @@
+  * - ajax
+  * 
+  */
+-#define DPI_FALLBACK 96
++#define DPI_FALLBACK 120
+ 
+ /* The minimum resolution at which we turn on a window-scale of 2 */
+ #define HIDPI_LIMIT (DPI_FALLBACK * 2)
