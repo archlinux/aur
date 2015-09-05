@@ -2,7 +2,7 @@
 # Contributor: Gilles CHAUVIN <gcnweb at gmail dot com>
 
 pkgname=('python-netaddr' 'python2-netaddr')
-pkgver=0.7.15
+pkgver=0.7.18
 _realname=netaddr
 pkgrel=1
 pkgdesc="A pure Python network address representation and manipulation library"
@@ -10,7 +10,7 @@ arch=('any')
 license=('BSD')
 url="http://github.com/drkjam/netaddr/"
 source=("https://pypi.python.org/packages/source/n/netaddr/netaddr-${pkgver}.tar.gz")
-md5sums=('bd024c8f82f71fd1d90553da64735f14')
+md5sums=('c65bb34f8bedfbbca0b316c490cd13a0')
 
 prepare() {
   cp -a "${srcdir}/${_realname}-${pkgver}"{,-python2}

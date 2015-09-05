@@ -1,12 +1,12 @@
 pkgbase = python-netaddr
 	pkgdesc = A pure Python network address representation and manipulation library
-	pkgver = 0.7.15
+	pkgver = 0.7.18
 	pkgrel = 1
 	url = http://github.com/drkjam/netaddr/
 	arch = any
 	license = BSD
-	source = https://pypi.python.org/packages/source/n/netaddr/netaddr-0.7.15.tar.gz
-	md5sums = bd024c8f82f71fd1d90553da64735f14
+	source = https://pypi.python.org/packages/source/n/netaddr/netaddr-0.7.18.tar.gz
+	md5sums = c65bb34f8bedfbbca0b316c490cd13a0
 
 pkgname = python-netaddr
 	depends = python
