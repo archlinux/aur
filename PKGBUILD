@@ -4,7 +4,7 @@
 
 pkgname=ags
 pkgver=3.3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A development tool that is primarily used to create graphical adventure games"
 arch=('i686' 'x86_64')
 url="https://github.com/adventuregamestudio/ags"
@@ -19,7 +19,6 @@ sha256sums=('ac4ea69bacf3c3f071e97a8489d5cd02921b2868eb9d4c49af138935e8c9b4ea')
 prepare() {
   cd "$srcdir/ags-v.${pkgver}"
   sed -i 's/-Wfatal-errors\ //' Engine/Makefile-defs.linux
-  git submodule update --init
 }
 
 build() {

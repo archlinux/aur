@@ -1,7 +1,7 @@
 pkgbase = ags
 	pkgdesc = A development tool that is primarily used to create graphical adventure games
 	pkgver = 3.3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adventuregamestudio/ags
 	install = ags.install
 	arch = i686
