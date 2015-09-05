@@ -4,7 +4,7 @@
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
 
 pkgname=whatpulse
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ optdepends=(
     'libpcap: for capturing network statistics'
 )
 source=('whatpulse.desktop')
+source_i686=("http://static.whatpulse.org/files/whatpulse-linux-32bit-$pkgver.tar.gz")
+source_x86_64=("http://static.whatpulse.org/files/whatpulse-linux-64bit-$pkgver.tar.gz")
 sha256sums=('9ad42960f0a8b538f1d98fea1ced9b2a97ef59aadca50d0382efdb71434572b7')
-source_i686=("http://www.whatpulse.org/files/whatpulse-linux-32bit-$pkgver.tar.gz")
-sha256sums_i686=('249975a06e9dee515df0415d35bbaa02dcc6481ec11ad2d91fbabcbb213c8602')
-source_x86_64=("http://www.whatpulse.org/files/whatpulse-linux-64bit-$pkgver.tar.gz")
-sha256sums_x86_64=('d84cf61827c41929980147ea7e3ecfa799bf3aae904bc3b930c843c02ef58773')
+sha256sums_i686=('cb21df5785686530c8c029af90e9fc2c81a776424f51d4a8ee8be2cc4c2f6fde')
+sha256sums_x86_64=('1268bb51e697f2f76938401953f421c50fb295cb5de77116d4ccbe84e099f047')
 
 package() {
     cd $srcdir/
