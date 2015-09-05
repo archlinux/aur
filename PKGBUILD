@@ -21,7 +21,7 @@ install=
 changelog=
 source=(https://download.libreswan.org/${pkgname}-${pkgver}.tar.gz
         tmpfiles.conf)
-md5sums=('da7a410afcfc2673f14f33f69fefca1f'
+md5sums=('719f41125bed347a38298dac232ec477'
          '77399a739ee99f8bc54837684d7c39d5')
 
 prepare() {
