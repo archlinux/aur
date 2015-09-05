@@ -1,6 +1,7 @@
 pkgbase = xsv
+	pkgdesc = A fast CSV toolkit written in Rust
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BurntSushi/xsv
 	arch = i686
 	arch = x86_64
