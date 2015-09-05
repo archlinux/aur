@@ -1,0 +1,24 @@
+pkgbase = libkcompactdisc-frameworks-git
+	pkgdesc = library for interfacing with CDs. KF5 Frameworks branch. (GIT version)
+	pkgver = v15.08.0.5.gf8374a1
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdemultimedia/libkcompactdisc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = python
+	depends = phonon-qt5
+	depends = kcoreaddons
+	depends = ki18n
+	depends = solid
+	conflicts = libkcompactdisc
+	source = git://anongit.kde.org/libkcompactdisc.git#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = libkcompactdisc-frameworks-git
+
