@@ -49,6 +49,20 @@ sha256sums=(
     'f176e58b1f07aa3859f9d4b67e17eac88ad4de2f5d501ef968549d0419e76f65'
 )
 
+#
+# BEGIN INTERNAL VARIABLES AND FUNCTIONS
+#
+
+# Install the license file for a package
+# Arguments: NONE
+_install_license() {
+    install -D -m 0644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+#
+# END INTERNAL VARIABLES AND FUNCTIONS
+#
+
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
@@ -197,7 +211,7 @@ package_lib32-llvm-svn() {
     mv "${pkgdir}"/usr/bin/llvm-config{,32}
     mv "${pkgdir}"/usr/include/llvm/Config/llvm-config{,-32}.h
 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _install_license
 }
 
 package_lib32-llvm-libs-svn() {
@@ -234,7 +248,7 @@ package_lib32-llvm-libs-svn() {
             "${pkgdir}/usr/lib32/${_shlib}-$(echo ${pkgver} | tr _ -).so"
     done
 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _install_license
 }
 
 package_lib32-clang-svn() {
@@ -255,7 +269,7 @@ package_lib32-clang-svn() {
     # Remove all bits that we don't need in multilib
     rm -rf "${pkgdir}"/usr/{bin,include,share/clang}
 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _install_license
 }
 
 # vim:set ts=4 sts=4 sw=4 et:
