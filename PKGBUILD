@@ -4,7 +4,7 @@ pkgname=rpw
 
 pkgver=4.3.0
 FNAME="RPW-4-3-0.jar"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Minecraft resource pack editor by MightyPork"
 arch=('any')
@@ -17,7 +17,8 @@ source=("https://dl.dropboxusercontent.com/u/64454818/RPW/$FNAME"
         'https://raw.githubusercontent.com/MightyPork/rpw/master/LICENSE.txt')
 
 optdepends=('gimp: Editing textures'
-            'audacity: Editing sound files')
+            'audacity: Editing sound files'
+            'minecraft: Source of vanilla asset files (.minecraft folder)')
 
 provides=('rpw')
 
