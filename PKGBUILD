@@ -6,7 +6,6 @@
 _gitroot="https://github.com/Diaoul/subliminal"
 _gitname="subliminal"
 pkgname=python-subliminal-git
-pkgver=1.0.0
 pkgrel=1
 epoch=1
 pkgdesc="Search and download subtitles."
