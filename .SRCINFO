@@ -1,7 +1,7 @@
 pkgbase = laszip
 	pkgdesc = Quickly turns bulky LAS files into compact LAZ files without information loss.
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.laszip.org/
 	arch = i686
 	arch = x86_64
