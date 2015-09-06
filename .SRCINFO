@@ -1,13 +1,15 @@
 pkgbase = numix-folders-git
 	pkgdesc = Alternate folders for use with the Numix base icon theme.
-	pkgver = r346.1033a15
+	pkgver = r347.a6cd8f4
 	pkgrel = 1
 	url = https://github.com/numixproject/numix-folders
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = numix-icon-theme-git
 	depends = python-gobject
 	depends = gksu
+	options = !strip
 	source = numix-folders::git+https://github.com/numixproject/numix-folders
 	md5sums = SKIP
 
