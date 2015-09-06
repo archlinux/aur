@@ -1,0 +1,21 @@
+pkgbase = ruby-guard
+	pkgdesc = command line tool to easily handle events on file system modifications
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = http://guardgem.org/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-formatador>=0.2.4
+	depends = ruby-listen>=2.7
+	depends = ruby-lumberjack>=1.0
+	depends = ruby-pry>=0.9.12
+	depends = ruby-thor>=0.18.1
+	noextract = guard-2.6.1.gem
+	source = http://rubygems.org/downloads/guard-2.6.1.gem
+	md5sums = 82162fdc54f9fd135042815449c84531
+	sha1sums = 57d50382d10d12c8dac66d786c42eb88856b0d0a
+
+pkgname = ruby-guard
+
