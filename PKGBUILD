@@ -16,6 +16,6 @@ package() {
 	mkdir -p "$pkgdir/usr/share"
 	mkdir -p "$pkgdir/usr/bin"
 	
-	cp "$srcdir/$pkgname/acme-sac" "$pkgdir/usr/bin/acme-sac"
+	cp "$srcdir/$pkgname/acme.sh" "$pkgdir/usr/bin/acme-sac"
 	cp -r "$srcdir/$pkgname/" "$pkgdir/usr/share/acme-sac"
 }
