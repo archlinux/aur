@@ -1,10 +1,12 @@
 pkgbase = rpw
 	pkgdesc = Minecraft resource pack editor by MightyPork
 	pkgver = 4.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rpw.ondrovo.com/
 	arch = any
 	license = RPW license
+	makedepends = unzip
+	makedepends = gendesk
 	depends = java-runtime
 	optdepends = gimp: Editing textures
 	optdepends = audacity: Editing sound files
