@@ -1,0 +1,18 @@
+pkgbase = djgpp-binutils
+	pkgdesc = Cross binutils for the djgpp cross-compiler
+	pkgver = 2.25.1
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils
+	arch = i686
+	arch = x86_64
+	groups = djgpp-toolchain
+	groups = djgpp
+	license = GPL
+	depends = zlib
+	options = !libtool
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.25.1.tar.gz
+	sha512sums = af9fced0813551ea9196f1be3a9b4f7f70fc02aa369e042fa1077878c42bb3a8bc17defc4db5d75dac42c81fb53b5015db9d89d92ef6dc9363798a3c94323aba
+
+pkgname = djgpp-binutils
+
