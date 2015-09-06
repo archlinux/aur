@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
-pkgver=6597
+pkgver=6600
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir"/"${_svnmod}"
+ cd "$srcdir"/"${_svnmod}"
   
   [[ -f build-aux/ltmain.sh ]] && rm build-aux/ltmain.sh
   ln -s /usr/share/libtool/build-aux/ltmain.sh build-aux/ltmain.sh
