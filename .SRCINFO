@@ -1,7 +1,7 @@
 pkgbase = android-sdk-build-tools-20
 	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
 	pkgver = r20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.android.com/sdk/index.html
 	arch = i686
 	arch = x86_64
