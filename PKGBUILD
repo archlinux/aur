@@ -1,26 +1,30 @@
-# Submitter: oozyslug <oozyslug at gmail dot com>
-# Maintainer: Oozyslug <oozyslug at gmail dot com>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Mario Rodas
+# Contributor: Oozyslug <oozyslug at gmail dot com>
 # Contributor: koral <koral at mailoo dot org>
 
 pkgname=nix
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="A purely functional package manager"
-url="http://nixos.org/"
 arch=('i686' 'x86_64')
+url="https://nixos.org/nix"
 license=('LGPL')
-depends=('perl-www-curl' 'perl-dbd-sqlite' 'perl-dbi')
+depends=('perl-www-curl' 'perl-dbd-sqlite' 'gc' 'libsodium')
 makedepends=('bzip2' 'gc' 'openssl')
-source=(http://nixos.org/releases/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('8a47cd7c35dfa628a4acfaef387e7451013c61d250bbcf1f38067a7c73f9f3e1')
+source=("http://nixos.org/releases/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('5612ca7a549dd1ee20b208123e041aaa95a414a0e8f650ea88c672dc023d10f6')
 
-build() {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr --libexecdir=/usr/lib/${pkgname} --sysconfdir=/etc --enable-gc
-    make
+build () {
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr \
+              --libexecdir="/usr/lib/$pkgname" \
+              --sysconfdir=/etc \
+              --enable-gc
+  make
 }
 
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    make DESTDIR=${pkgdir} install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
