@@ -1,7 +1,7 @@
 pkgbase = prosody-mod-mam
 	pkgdesc = XEP-0313: Message Archive Management
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hg.prosody.im/prosody-modules/file/tip/mod_mam/
 	arch = any
 	license = MIT
