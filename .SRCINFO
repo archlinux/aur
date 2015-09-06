@@ -16,7 +16,7 @@ pkgbase = gtox-git
 	depends = gtk-update-icon-cache
 	depends = gstreamermm
 	depends = flatbuffers
-	depends = tox-git
+	depends = toxcore
 	conflicts = gtox
 	source = gtox::git+https://github.com/KoKuToru/gTox.git#branch=AUR
 	md5sums = SKIP

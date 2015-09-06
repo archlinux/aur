@@ -7,7 +7,7 @@ pkgdesc="a GTK-based tox-client"
 url="https://github.com/KoKuToru/gTox.git"
 license='GPL3'
 arch=('i686' 'x86_64')
-depends=('gtkmm3' 'gettext' 'desktop-file-utils' 'gtk-update-icon-cache' 'gstreamermm' 'flatbuffers' 'tox-git')
+depends=('gtkmm3' 'gettext' 'desktop-file-utils' 'gtk-update-icon-cache' 'gstreamermm' 'flatbuffers' 'toxcore')
 makedepends=('git' 'cmake' 'librsvg')
 source=("${pkgname%-git}::git+https://github.com/KoKuToru/gTox.git#branch=AUR")
 conflicts=('gtox')
