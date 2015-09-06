@@ -1,14 +1,16 @@
 # Maintainer: Ainola
 
 pkgname=gog-freedom-planet
-pkgver=1.0.0.3
-pkgrel=2
-pkgdesc="Freedom Planet is a combat-based platform adventure that pits a spunky dragon girl and her friends against an alien attack force."
+pkgver=2.1.0.5
+pkgrel=1
+pkgdesc="A combat-based platform adventure that pits a spunky dragon girl and her friends against an alien attack force."
 url="http://freedomplanet.galaxytrail.com/"
 license=('custom')
 arch=('i686' 'x86_64')
-source=("gog://gog_freedom_planet_${pkgver}.tar.gz")
-sha256sums=('6e1aa64edc14abd2594afe1acd160d6e0f3e3e910304ce254b33fe71634b963e')
+source=("gog://gog_freedom_planet_${pkgver}.sh"
+        "${pkgname}.desktop")
+sha256sums=('8a63a6b18ffbb43e9154b2fa17666bf937de0f48563480de574950f140683012'
+            'a6545600bb9af6aa24fe25b85366690930d8725477638aebb0c0220c836fe53f')
 install=("${pkgname}.install")
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
@@ -18,35 +20,31 @@ DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to downl
 PKGEXT='.pkg.tar'
 
 prepare(){
-    cd "${srcdir}/Freedom Planet"
+    cd "$srcdir/data/noarch"
     [ $CARCH == "x86" ]    && rm -r "game/bin64"
     [ $CARCH == "x86_64" ] && rm -r "game/bin32"
-
-    sed -r -i \
-        's/(declare -r CURRENT_DIR="\$\( cd "\$\( dirname )'`
-          `'"\$\{BASH_SOURCE\[0\]\}"(.*$)'`
-          `'/\1$( readlink -nf "${BASH_SOURCE[0]}" )\2/' \
-        "start.sh"
+    # The launcher expects the user to be in the game dir
+    echo -e "#!/bin/bash\ncd /opt/${pkgname}\n./start.sh" > "${srcdir}/${pkgname}"
 }
 
 package(){
-    cd "${srcdir}/Freedom Planet"
+    cd "$srcdir"
     # Install game
     install -d "${pkgdir}/opt/${pkgname}/"
     install -d "${pkgdir}/opt/${pkgname}/support"
     install -d "${pkgdir}/usr/bin/"
-    cp -r "game/" "${pkgdir}/opt/${pkgname}/"
-    install -Dm755 "start.sh" \
+    cp -r "data/noarch/game/" "${pkgdir}/opt/${pkgname}/"
+    install -Dm755 "data/noarch/start.sh" \
         "${pkgdir}/opt/${pkgname}/"
-    install -Dm755 support/*.{sh,shlib} -t \
+    install -Dm755 data/noarch/support/*.{sh,shlib} -t \
         "${pkgdir}/opt/${pkgname}/support"
 
     # Desktop integration
-    install -Dm 644 "support/${pkgname}.png" \
+    install -Dm 644 "data/noarch/support/icon.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "docs/End User License Agreement.txt" \
+    install -Dm644 "data/noarch/docs/End User License Agreement.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "support/${pkgname}-primary.desktop" \
+    install -Dm 644 "${srcdir}/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    ln -s "/opt/${pkgname}/start.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm 755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }

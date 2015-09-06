@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Freedom Planet
+Comment=A combat-based platform adventure that pits a spunky dragon girl and her friends against an alien attack force.
+Exec=gog-freedom-planet
+Icon=gog-freedom-planet
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
