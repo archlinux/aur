@@ -3,8 +3,9 @@
 # Contributor: Samed Beyribey <ras0ir AT eventualis DOT org>
 pkgname=python2-pyspf
 _pkgname=pyspf
-pkgver=2.0.11
-pkgrel=2
+pkgver=2.0.12
+_pkgver=${pkgver}t
+pkgrel=1
 pkgdesc="Python 2 implementation of Sender Policy Framework (SPF)"
 arch=('any')
 url="http://bmsi.com/python/milter.html"
@@ -14,10 +15,10 @@ checkdepends=('python2-yaml' 'python2-authres')
 optdepends=('python2-authres: support Authentication-Results headers')
 #conflicts=('python-pyspf')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('83add3a0d8732bcc28841ceb5da440ba')
-sha1sums=('20935e09aba723c2c1423b34db27fb37485cf421')
-sha256sums=('693e80df3d61d69daaa2590e0f2bc8167d5fa36ce373d43987984cb00ae23928')
+source=(https://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$_pkgver.tar.gz)
+md5sums=('c83143ad79074bf8c80235748a8a698f')
+sha1sums=('6e2ec0d13d25a6825761314adab2dab414b865f8')
+sha256sums=('8aa21ba0e3aff8a4e8ad8f586c500a5d1f9c4c902c3f11bcc107465857cd41a2')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
