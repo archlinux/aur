@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-theme-adwaita
 pkgver=31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adwaita theme for Thunderbird (Matches the default Gnome Shell theme)"
 url="https://addons.mozilla.org/en-US/thunderbird/addon/adwaita-thunderbird"
 arch=('any')
@@ -12,7 +12,7 @@ depends=("thunderbird")
 makedepends=('unzip')
 _git_commit="0284aedcc3c6ca908e1083647ab4589c2bbd84be"
 source=("${pkgname}-${pkgver}.zip"::"https://github.com/gnome-integration-team/thunderbird-gnome/archive/${_git_commit}.zip")
-sha256sums=('b0bf6b5ebb6942af16d09696684d95d924e69b0980b15ae4de76e54b8704cb01')
+sha256sums=('a9ccbd1e07cbfff094db1eee2fa93522aada77048323fa2082c0e25c6a7f94ca')
 
 package() {
   cd "${srcdir}/thunderbird-gnome-${_git_commit}/theme"
