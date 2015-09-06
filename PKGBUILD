@@ -1,5 +1,7 @@
 # Maintainer: Simon Zack <simonzack@gmail.com>
 # Submitter: Simon Zack <simonzack@gmail.com>
+# Contributor: Nikola Milinković <nikmil@gmail.com>
+# Contributor: Quentin Stievenart <quentin.stievenart@gmail.com>
 
 _gitroot="https://github.com/Diaoul/subliminal"
 _gitname="subliminal"
