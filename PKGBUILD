@@ -20,7 +20,8 @@ pkgver() {
 
 build() {
    cd "$_pkgname_simple/LINUX"
-   make 
+   cmake -DCMAKE_INSTALL_PREFIX=/usr
+   make
 }
 
 package() {
