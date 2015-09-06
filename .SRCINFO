@@ -1,0 +1,14 @@
+pkgbase = sandfox
+	pkgdesc = Runs Firefox and other apps in a sandbox with limited access to the filesystem
+	pkgver = 20131104
+	pkgrel = 1
+	url = http://igurublog.wordpress.com/downloads/script-sandfox/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = inotify-tools
+	source = git://github.com/IgnorantGuru/sandfox.git
+	md5sums = SKIP
+
+pkgname = sandfox
+
