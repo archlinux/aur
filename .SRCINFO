@@ -1,0 +1,13 @@
+pkgbase = perl-ritx
+	pkgdesc = discovers domains hosted on the same server as a given IP or domain
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.aldeid.com/wiki/RitX
+	arch = any
+	license = GPL2
+	depends = perl
+	source = https://ritx.googlecode.com/files/RitX-Reverse-Ip-Tool-v1.6.zip
+	sha256sums = 01495ea9c5e18dc0eec31c90ef2321e73bf2b58408f44e08077c7136e8216010
+
+pkgname = perl-ritx
+
