@@ -13,6 +13,6 @@ source=("https://github.com/SethDusek/define/archive/v$pkgver.tar.gz")
 md5sums=('89e72665dbb515e374c3c743b472706e')
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
