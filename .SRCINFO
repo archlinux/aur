@@ -1,6 +1,6 @@
 pkgbase = cppcheck-nox
 	pkgdesc = A tool for static C/C++ code analysis without the GUI
-	pkgver = 1.69
+	pkgver = 1.70
 	pkgrel = 1
 	url = http://cppcheck.wiki.sourceforge.net/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = cppcheck-nox
 	makedepends = python
 	depends = python-pygments
 	optdepends = pcre: searching regex with cppcheck
-	source = https://github.com/danmar/cppcheck/archive/1.69.tar.gz
-	md5sums = 9bc7532d9371f506bc4547a05a1fdebf
+	source = https://github.com/danmar/cppcheck/archive/1.70.tar.gz
+	sha256sums = 4095de598b5cce9a06e90458a90f46e0307baeaab8a947dae73f287eda3c171f
 
 pkgname = cppcheck-nox
 
