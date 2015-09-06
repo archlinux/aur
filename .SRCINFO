@@ -1,7 +1,7 @@
 pkgbase = check-pacman-mtree
 	pkgdesc = pacman db mtree check size/md5/sha256/symlink
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://luajit.org/luajit.html
 	arch = any
 	license = GPL2

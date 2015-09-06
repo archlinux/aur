@@ -3,7 +3,7 @@
 
 pkgname=check-pacman-mtree
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='pacman db mtree check size/md5/sha256/symlink'
 license=('GPL2')
 arch=('any')
