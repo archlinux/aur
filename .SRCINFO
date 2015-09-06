@@ -1,7 +1,7 @@
 pkgbase = prosody-mod-mam-adhoc
 	pkgdesc = Ad-hoc interface to Message Archive Management Settings
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hg.prosody.im/prosody-modules/file/tip/mod_mam_adhoc/
 	arch = any
 	license = MIT
