@@ -1,0 +1,19 @@
+pkgbase = prosody-mod-mam
+	pkgdesc = XEP-0313: Message Archive Management
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://hg.prosody.im/prosody-modules/file/tip/mod_mam/
+	arch = any
+	license = MIT
+	depends = prosody
+	source = https://hg.prosody.im/prosody-modules/raw-file/tip/mod_mam/mod_mam.lua
+	source = https://hg.prosody.im/prosody-modules/raw-file/tip/mod_mam/rsm.lib.lua
+	source = https://hg.prosody.im/prosody-modules/raw-file/tip/mod_mam/mamprefsxml.lib.lua
+	source = https://hg.prosody.im/prosody-modules/raw-file/tip/mod_mam/mamprefs.lib.lua
+	sha1sums = f1d30a244168997896364dac475c9d92a4ab7e29
+	sha1sums = 688f40d17cbd923e87961dd17a179faf4784680d
+	sha1sums = a44af61f52d73759855463d018065dd14e226181
+	sha1sums = 1e540fcf598385ec30b32a98d0a0e310dc85df0d
+
+pkgname = prosody-mod-mam
+
