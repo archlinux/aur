@@ -2,8 +2,8 @@
 # Contributor: Jan Keith Darunday <jkcdarunday@gmail.com>
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
-pkgver=20150901_080117
-pkgrel=2
+pkgver=20150905_181327
+pkgrel=1
 pkgdesc="The Free On-line Dictionary of Computing for dict"
 arch=('any')
 url="http://foldoc.org/"
