@@ -1,5 +1,5 @@
 pkgbase = llvm-svn
-	pkgver = 3.8.0svn_r246806
+	pkgver = 3.8.0svn_r246942
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = i686
@@ -25,11 +25,11 @@ pkgbase = llvm-svn
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
-	sha256sums = f176e58b1f07aa3859f9d4b67e17eac88ad4de2f5d501ef968549d0419e76f65
+	sha256sums = a1c9f36b97c639666ab6a1bd647a08a027e93e3d3cfd6f5af9c36e757599ce81
 
 pkgname = llvm-svn
 	pkgdesc = The LLVM Compiler Infrastructure
-	depends = llvm-libs-svn=3.8.0svn_r246806-1
+	depends = llvm-libs-svn=3.8.0svn_r246942-1
 	provides = llvm
 	conflicts = llvm
 	replaces = llvm
@@ -44,7 +44,7 @@ pkgname = llvm-libs-svn
 
 pkgname = llvm-ocaml-svn
 	pkgdesc = OCaml bindings for LLVM
-	depends = llvm-svn=3.8.0svn_r246806-1
+	depends = llvm-svn=3.8.0svn_r246942-1
 	depends = ocaml=4.02.3
 	depends = ocaml-ctypes
 	provides = llvm-ocaml
@@ -54,7 +54,7 @@ pkgname = llvm-ocaml-svn
 pkgname = clang-svn
 	pkgdesc = C language family frontend for LLVM
 	url = http://clang.llvm.org/
-	depends = llvm-svn=3.8.0svn_r246806-1
+	depends = llvm-svn=3.8.0svn_r246942-1
 	optdepends = python2: git-clang-format and clang-format-diff.py support
 	provides = clang
 	conflicts = clang
@@ -63,7 +63,7 @@ pkgname = clang-svn
 pkgname = clang-analyzer-svn
 	pkgdesc = Source code analysis tool for Clang, supporting C, C++, and Objective-C
 	url = http://clang-analyzer.llvm.org/
-	depends = clang-svn=3.8.0svn_r246806-1
+	depends = clang-svn=3.8.0svn_r246942-1
 	depends = python2
 	provides = clang-analyzer
 	conflicts = clang-analyzer
@@ -72,7 +72,7 @@ pkgname = clang-analyzer-svn
 pkgname = clang-tools-extra-svn
 	pkgdesc = Standalone tools for Clang: syntax checking, formatting, refactoring, etc.
 	url = http://clang.llvm.org/docs/ClangTools.html
-	depends = clang-svn=3.8.0svn_r246806-1
+	depends = clang-svn=3.8.0svn_r246942-1
 	provides = clang-tools-extra
 	conflicts = clang-tools-extra
 	replaces = clang-tools-extra
