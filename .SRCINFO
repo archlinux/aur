@@ -1,0 +1,16 @@
+pkgbase = mingetty
+	pkgdesc = A minimal getty which allows automatic logins.
+	pkgver = 1.08
+	pkgrel = 4
+	url = http://sourceforge.net/projects/mingetty
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/sourceforge/mingetty/mingetty-1.08.tar.gz
+	source = mingetty-utf8.patch
+	sha256sums = 0f55c90ba4faa913d91ef99cbf5cb2eb4dbe2780314c3bb17953f849c8cddd17
+	sha256sums = 0a97f54bb071771101ba6187cfabd2a572d3a344165279b858419b97c38057a6
+
+pkgname = mingetty
+
