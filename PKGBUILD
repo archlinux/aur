@@ -8,7 +8,8 @@ arch=('any')
 license=('GPL3')
 conflicts=('btrbk')
 depends=('perl' 'perl-date-calc' 'btrfs-progs')
-optdepends=('openssh: remote backup support')
+optdepends=('openssh: remote backup support',
+	    'pv: --progress support')
 source=("git+https://github.com/digint/btrbk.git")
 sha256sums=('SKIP')
 package() {
