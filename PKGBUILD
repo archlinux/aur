@@ -24,7 +24,7 @@ source=(
   'loadcat.service'
 )
 md5sums=(
-  '645e9911f3b091de995ef6139982597d'
+  '9a79f2a4e255324e661151d4fc50cb1e'
   'a155844c315229ac22b125d31af82f23'
 )
 
