@@ -1,7 +1,8 @@
 # Contributor: Philipp Schwarz <fidschi_aur@temporaryforwarding.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 # Contributor: moostik <mooostik_at_gmail.com>
+# Maintainer: Michael Kogan <michael.kogan at gmx.net>
 
 pkgname=car
 pkgver=2015.08.10
