@@ -17,7 +17,7 @@ md5sums=('SKIP'
 prepare(){
   cd ${srcdir}/libsoundio
 
-    #  reverts to a known build of libsoundio, remove if you wnat the newest
+    #  reverts to a known build of libsoundio, remove if you want the newest
   git revert 'e2e483a4d523acab5a580b1e58a6ebc218da8f5e' --no-edit
 
     #  jack1 compatibilty for this library is currently broken, and 
