@@ -1,0 +1,21 @@
+pkgbase = check-sieve-git
+	pkgdesc = Syntax checker for mail sieves.
+	pkgver = 20150905.682d967
+	pkgrel = 1
+	url = https://github.com/dburkart/check-sieve
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = bison
+	makedepends = flex
+	provides = check-sieve
+	conflicts = check-sieve
+	replaces = check-sieve
+	source = check-sieve::git+https://github.com/dburkart/check-sieve.git
+	md5sums = SKIP
+
+pkgname = check-sieve-git
+
