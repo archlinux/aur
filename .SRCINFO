@@ -1,0 +1,16 @@
+pkgbase = iptux
+	pkgdesc = A software for sharing in LAN
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/iptux-src/iptux/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = make
+	depends = autoconf
+	depends = libtool
+	depends = automake
+	source = https://codeload.github.com/iptux-src/iptux/tar.gz/v0.6.2
+	sha256sums = d567096d97b3b168dde1510f0ca00a13c6f8bb596131c234482377d7d8fb211b
+
+pkgname = iptux
