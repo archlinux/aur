@@ -16,7 +16,7 @@ depends=("android-platform-${_apilevel}")
 optdepends=('qemu' 'libvirt')
 provides=("${pkgname/x86-/x86_}-${_apilevel}")
 conflicts=("${pkgname/x86-/x86_}-${_apilevel}")
-options=('!strip')
+options=('!strip' '!upx')
 PKGEXT='.pkg.tar'
 source=("http://dl.google.com/android/repository/sys-img/android/sysimg_${_arch}-${_apilevel}_${_rev}.zip"
         "source.properties")
