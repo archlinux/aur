@@ -2,12 +2,13 @@
 
 pkgname=winusb
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple tool to create a usb stick installer for Windows (Vista and above)'
 arch=('i686' 'x86_64')
 url="http://en.congelli.eu/prog_info_winusb.html"
 license=('GPL3')
 depends=('wxgtk' 'grub' 'ntfs-3g' 'gksu' 'parted')
+makedepends=('diffutils')
 source=("http://www6.frugalware.org/mirrors/linux/frugalware/frugalware-current/source/xapps-extra/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'findFile.patch')
 md5sums=('08a5de928f510d383b7bca0a31adb2d6'
