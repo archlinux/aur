@@ -1,6 +1,6 @@
 pkgbase = etlegacy
 	pkgver = 2.74
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.etlegacy.com/
 	arch = x86_64
 	license = GPL3
