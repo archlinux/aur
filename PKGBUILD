@@ -4,11 +4,12 @@
 pkgname=('python-netaddr' 'python2-netaddr')
 pkgver=0.7.18
 _realname=netaddr
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python network address representation and manipulation library"
 arch=('any')
 license=('BSD')
 url="http://github.com/drkjam/netaddr/"
+makedepends=('python' 'python2')
 source=("https://pypi.python.org/packages/source/n/netaddr/netaddr-${pkgver}.tar.gz")
 md5sums=('c65bb34f8bedfbbca0b316c490cd13a0')
 
@@ -18,7 +19,6 @@ prepare() {
 
 package_python-netaddr() {
   depends=("python")
-  makedepends=("python-setuptools")
   optdepends=('ipython: used to work with the netaddr interractive command')
 
   cd "$srcdir/$_realname-$pkgver"
@@ -27,7 +27,6 @@ package_python-netaddr() {
 
 package_python2-netaddr() {
   depends=("python2")
-  makedepends=("python2-setuptools")
   optdepends=('ipython2: used to work with the netaddr interractive command')
 
   cd "$srcdir/$_realname-$pkgver-python2"
