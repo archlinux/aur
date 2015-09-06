@@ -3,8 +3,8 @@
 # Contributor: Federico Cinelli <cinelli.federico@gmail.com>
 
 pkgname=velox-git
-pkgver=0.0.2.r244.g4e549c6
-pkgrel=2
+pkgver=0.0.2.r255.gbde08e0
+pkgrel=1
 pkgdesc="A simple xcb window manager inspired by awesome, xmonad, and dwm."
 arch=('i686' 'x86_64')
 url="http://www.ohloh.net/p/velox-wm"
