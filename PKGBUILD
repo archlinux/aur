@@ -35,7 +35,7 @@ conflicts=('cpdf-bin') # temporary
 _srcdir="${_pkgname}-source-${pkgver}"
 _srcdirmast="${_pkgname}-binaries-master"
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
-source=("${_pkgname}-source-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+source=("${_pkgname}-source-v${pkgver}.tar.gz::https://github.com/johnwhitington/${_pkgname}-source/archive/v${pkgver}.tar.gz"
         "${_srcdirmast}.zip::https://github.com/coherentgraphics/cpdf-binaries/archive/master.zip")
 sha256sums=('00a3c8b6f1ff60feff7d0b72c095befb576c08edc35ffee28a4d3a24ad599956'
             'd76999dc379f5bc74c20f3938d0a6bb41c4e4c6ca8042c29ac8bb3c1df9a0e2b')
