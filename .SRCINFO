@@ -1,7 +1,7 @@
 pkgbase = 4kvideodownloader
 	pkgdesc = Quickly download videos from YouTube in high-quality.
 	pkgver = 3.6.1.1770
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.4kdownload.com/products/product-videodownloader
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = 4kvideodownloader
 	depends = portaudio
 	depends = ffmpeg-compat
 	depends = ffmpeg-compat-55
+	depends = libxkbcommon-x11
 	source = 4kvideodownloader.desktop
 	source = 4kvideodownloader.png
 	sha256sums = 6ab39088bde330267b43f87878f6bd47a215c732e17d417a99fc23ac4c568952
