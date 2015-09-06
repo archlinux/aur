@@ -1,0 +1,13 @@
+pkgbase = liblas
+	pkgdesc = libLAS is a C/C++ library for reading and writing the very common LAS LiDAR format.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://www.liblas.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://download.osgeo.org/liblas/libLAS-1.8.0.tar.bz2
+	md5sums = 599881281d45db4ce9adb2d75458391e
+
+pkgname = liblas
+
