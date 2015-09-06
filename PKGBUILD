@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-ptpython
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="Interactive Python prompt with syntax highlighting and code completion"
 arch=('any')
@@ -15,8 +15,8 @@ url="https://github.com/jonathanslenders/ptpython"
 license=('BSD')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/p/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('d47bd868a3474b4f74413dcab19f7b4c')
-sha256sums=('37aad517cf9d55e567697fe001bc2d07e7013753218537f78425c2bac1181a0b')
+md5sums=('ea116fdcc0b9caebf3264e5c5c24c220')
+sha256sums=('b5f23bbf59e134f222c3eef0c60163fe0c212628d23f3756b7923ebb57603536')
 provides=('ptpython2' 'python2-ptpython')
 conflicts=('ptpython2')
 
