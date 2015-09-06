@@ -8,8 +8,8 @@ pkgbase = btrbk
 	depends = perl
 	depends = perl-date-calc
 	depends = btrfs-progs
-	depends = pv
-	optdepends = openssh: remote backup support
+	optdepends = openssh: remote backup support,
+	optdepends = pv: --progress support
 	source = http://digint.ch/download/btrbk/releases/btrbk-0.20.0.tar.bz2
 	sha256sums = 03f499bbefdfd3a206f9d0f47072c2bdd484c4b7c55b80a7652cd5d51ba31122
 
