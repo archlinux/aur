@@ -1,0 +1,24 @@
+pkgbase = raider
+	pkgdesc = Converts a single linux system disk in to a software raid 1, 4, 5, 6 or 10
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = http://raider.sourceforge.net/
+	install = raider.install
+	changelog = ChangeLog
+	arch = any
+	license = GPL2
+	depends = mdadm>=2.6
+	depends = parted>=2.0
+	depends = bash>=3.0
+	depends = coreutils
+	depends = util-linux
+	depends = hdparm
+	depends = rsync
+	depends = inetutils
+	depends = bc
+	depends = wget
+	source = http://downloads.sourceforge.net/project/raider/raider-0.13.2.tar.gz
+	sha256sums = b5a726c44be96e3834c42f8b6df4031f23720f0f39693be45c47f4f15d3244dd
+
+pkgname = raider
+

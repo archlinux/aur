@@ -1,0 +1,99 @@
+2012-06-30	M.Carreira <raider@carreira.com.pt>
+	* version 0.13.2
+	* Added more tested distros to the database (Bodhi Linux, Sabayon-9, ROSA-2012.0)
+	* Now, if there is a "resume=" kernel option, --swapraider is always on
+	* Automatic checking new raider versions
+	* Improvement in the way database distros work
+	* Bugfix: some minor bugfixes
+	
+2012-06-02	M.Carreira <raider@carreira.com.pt>
+	* version 0.13.1
+	* Added more tested distros to the database 
+	  (Mageia 2, Linux Mint 13, Fedora 17, Vector Linux 7, 
+	  Ultimate Edition-3.3, Lubuntu, Xubuntu, Kubuntu)
+	* Bugfix: "resume=" kernel option was fixed in LILO
+	* Bugfix: "resume=" kernel option in Grub legacy is now fixed during reconfiguration
+	* Improved distro detection
+	* Bugfix: some minor bugfixes.
+
+
+2012-05-12	M.Carreira <raider@carreira.com.pt>
+	* version 0.13.0
+	* Pear Linux-OS4 tested successfull and added to the database
+	* Add new lograider command to create lograider.tgz, a compressed file with all logfiles.
+	* Changed raider path from /usr/sbin to /usr/bin
+	* Bugfix: UEFI system detection now stops with an error message.
+	* Bugfix: "-d" option sometimes was not listing lvm partitions in a raid array.
+	* Bugfix: fixed swap error messages while booting in RaidSync phase (step 2).
+	* Other minor bugfixes
+
+2012-05-01	M.Carreira <raider@carreira.com.pt>
+	* version 0.12.0
+	* Added Gentoo and Sabayon support
+	* Genkernel is now detected as a valid initramfs generator
+	* Improved Slackware support
+	* Raider now only runs if a initramfs generator was detected.
+	* Improved distro detection
+	* Add checking mounted devices in step 3
+	* Improved detection of harddisk model name and serial number.
+	* Introduced some text color (experimental)
+	* Check if disks larger then 2TB. Raid metadata 0.90 don't work with such disks.
+	* Bugfix: fixed a bug when dealing with LVM Volume Groups with an hyphen in the name.
+	* Some minor bugfixes and improvements
+
+2012-03-26	M.Carreira <raider@carreira.com.pt>
+	* version 0.11.0
+	* Improved distro detection name.
+	* Improved device detection
+	* Created a partition format progress bar
+	* Bugfix: fixed a bug in the creation of a separated boot partition.
+	* Bugfix: fixed a boot crash in systems with grub legacy and with a lvm device as rootfs.
+	* Speeding up RaidSync is only set if running step 3 in runlevel 1.
+	* Changed some screen output messages
+	* Created a checked distro database.
+	* Improved speed transfer, using rsync instead of cpio.
+	* Make a inaccurate pre-calculation of how long it takes BuilRaid phase to be performed.
+	* Several bugfixes and other small improvements
+
+2012-03-15	M.Carreira <raider@carreira.com.pt>
+	* version 0.10.2
+	* Bugfix: fix typo in a function call in devices module
+	
+2012-03-13	M.Carreira <raider@carreira.com.pt>
+	* version 0.10.1
+	* Bugfix: some distros were not listing lvm partitions using "-d" option.
+	* Bugfix: LABEL partitions were not consistently detected
+	* Bugfix: Improved module devices. Devices detection is more accurate now.
+	
+2012-03-05	M.Carreira <raider@carreira.com.pt>
+	* version 0.10.0
+	* Conversion to RAID 4, RAID 5, RAID 6 and RAID 10 are also supported now.
+	* Automatic creation of a separate raid 1 /boot partition, in a raid 4/5/6/10 conversion,
+	  if the bootloader is Grub legacy or Lilo.
+	* Bugfix: fixed -e option bugs
+	* Bugfix: fixed long option bugs.
+	* Help (-h) option improved.
+	* New options created  (-R4, -R5, -R6, -R10, -b)
+	* Several improvements and minor bugs fixed.
+
+2012-01-18	M.Carreira <raider@carreira.com.pt>
+	* version 0.9.2
+	* Bugfix: fixed swap partition device names in /etc/fstab
+	* Bugfix: include "flag" field to all DISK_DB records
+	* A new /etc/mtab file is created only, if the file is not a softlink to /proc/mounts
+	* Raider creates one OUTPUT logfile for each command executed (a suffix is added to distinguish them).
+
+2012-01-08	M.Carreira <raider@carreira.com.pt>
+	* version 0.9.1
+	* Added support to xfs, reiserfs and jfs filesystems
+	* Raider "-d" option output improved (in raid arrays and lvm partitions)
+	* LVM partitions owned by raid devices are now listed in option "-d"
+	* Added option "-l" or "--lvm-suffix". With this option we can change the default "__raider"
+	  suffix added to LVM Volume Group.
+	* Improved information in "--help" option.
+	* Fixed some minor bugs
+	
+2011-12-31	M.Carreira <raider@carreira.com.pt>
+	* raider 0.9.0 - published
+
+

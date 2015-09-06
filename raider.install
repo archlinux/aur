@@ -1,0 +1,5 @@
+pre_remove() {
+  "rm" -fR /var/lib/raider/*
+}
+
+# vim:set ts=2 sw=2 et:
