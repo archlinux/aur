@@ -1,0 +1,14 @@
+pkgbase = django-bootstrap-form-git
+	pkgdesc = A simple Django template tag to work with Bootstrap
+	pkgver = 1.4.r121.g629d82d
+	pkgrel = 1
+	url = https://github.com/tzangms/django-bootstrap-form
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python-django
+	source = django-bootstrap-form-git::git+https://github.com/tzangms/django-bootstrap-form.git
+	sha256sums = SKIP
+
+pkgname = django-bootstrap-form-git
+
