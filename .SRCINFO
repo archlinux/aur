@@ -1,14 +1,13 @@
 pkgbase = gitlab-ci-multi-runner
 	pkgdesc = The official GitLab CI runner written in Go
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
 	install = gitlab-runner.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPLv3
 	makedepends = git
-	makedepends = go
+	makedepends = go<2:1.5
 	makedepends = godep
 	makedepends = make
 	makedepends = mercurial
