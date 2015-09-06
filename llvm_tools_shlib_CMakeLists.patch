@@ -1,6 +1,6 @@
---- src/llvm/tools/llvm-shlib/CMakeLists.txt.orig	2015-08-01 20:44:00.656453569 +0300
-+++ src/llvm/tools/llvm-shlib/CMakeLists.txt	2015-08-04 21:51:43.609790978 +0300
-@@ -77,7 +77,7 @@
+--- src/llvm/tools/llvm-shlib/CMakeLists.txt.orig	2015-09-06 12:31:21.765250429 +0300
++++ src/llvm/tools/llvm-shlib/CMakeLists.txt	2015-09-06 13:17:10.820174432 +0300
+@@ -64,7 +64,7 @@
  
    if (LLVM_DYLIB_EXPORT_ALL)
      add_custom_command(OUTPUT ${LLVM_EXPORTED_SYMBOL_FILE}

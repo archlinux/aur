@@ -16,7 +16,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=3.8.0svn_r244234
+pkgver=3.8.0svn_r246942
 pkgrel=1
 
 arch=('x86_64')
@@ -46,7 +46,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'f176e58b1f07aa3859f9d4b67e17eac88ad4de2f5d501ef968549d0419e76f65'
+    'a1c9f36b97c639666ab6a1bd647a08a027e93e3d3cfd6f5af9c36e757599ce81'
 )
 
 #
@@ -92,48 +92,9 @@ build() {
     _ffi_include_flags=$(pkg-config --cflags-only-I libffi)
     _ffi_libs_flags=$(pkg-config --libs-only-L libffi)
 
-    # libLLVM.so doesn't include by default all components that we want to have.
-    # Therefore, we use the LLVM_DYLIB_COMPONENTS cmake variable futher below to
-    # add the desired ones (e.g. Option), but in order to be flexible we need to
-    # determine the default list of components from tools/llvm-shlib/CMakeLists.txt.
-    # We use some awk-ward magic to extract the values and format them appropriately.
-    _dylib_awk_cmds="\
-        /^[[:blank:]]*set\\(LLVM_DYLIB_COMPONENTS$/,/^[[:blank:]]*\\)$/ { \
-            if ( \
-                substr(\$1,1,4) != \"set(\" \
-                && substr(\$1,1,1) != \")\" \
-                && substr(\$1,1,2) != \"\${\" \
-            ) \
-            components=components\$1\";\" \
-        } END { print components }"
-
-    _dylib_def_comp=$(
-        awk "${_dylib_awk_cmds}" "../${_pkgname}/tools/llvm-shlib/CMakeLists.txt"
-    )
-
-    # Find the targets in the default category 'all' (since we don't set them
-    # explicitly with LLVM_TARGETS_TO_BUILD, this is what gets built). We'll
-    # then have to list them manually in LLVM_DYLIB_COMPONENTS, otherwise
-    # (somewhat surprisingly) they don't get exported from libLLVM.so.
-    _tgts_awk_cmds="\
-        /^[[:blank:]]*set\\(LLVM_ALL_TARGETS$/,/^[[:blank:]]*\\)$/ { \
-            if ( \
-                substr(\$1,1,4) != \"set(\" \
-                && substr(\$1,1,1) != \")\" \
-                && substr(\$1,1,2) != \"\${\" \
-            ) \
-            targets=targets\$1\";\" \
-        } END { print targets }"
-
-    _avail_tgts=$(
-        awk "${_tgts_awk_cmds}" "../${_pkgname}/CMakeLists.txt"
-    )
-
-    # Finally, here we set the additional components to export from libLLVM.so
-    _dylib_add_comp='Option;ProfileData;'
-
     # LLVM_BUILD_LLVM_DYLIB: Build the dynamic runtime libraries (e.g. libLLVM.so).
     # LLVM_DYLIB_EXPORT_ALL: Export all symbols in the dynamic libs, not just the C API.
+    # LLVM_LINK_LLVM_DYLIB:  Link our own tools against the libLLVM dynamic library, too.
     # LLVM_BINUTILS_INCDIR:  Set to binutils' plugin-api.h location in order to build LLVMgold.
     # LLVM_TARGET_ARCH:      Theoretically, LLVM_BUILD_32_BITS should be used instead, which
     #                        would also make CMAKE_C{,XX}_FLAGS redundant, but that option
@@ -151,8 +112,8 @@ build() {
         -DFFI_INCLUDE_DIR:PATH="${_ffi_include_flags#-I}" \
         -DFFI_LIBRARY_DIR:PATH="${_ffi_libs_flags#-L}" \
         -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
-        -DLLVM_DYLIB_COMPONENTS:STRING="${_dylib_def_comp}${_dylib_add_comp}${_avail_tgts}" \
         -DLLVM_DYLIB_EXPORT_ALL:BOOL=ON \
+        -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
         "../${_pkgname}"
  
