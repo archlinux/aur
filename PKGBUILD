@@ -2,7 +2,7 @@
 # Contributor: Djax <https://launchpad.net/~parnold-x>
 
 pkgname=nasc-bzr
-pkgver=r35
+pkgver=r75
 pkgrel=1
 pkgdesc='Do maths like a normal person.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://parnold-x.github.io/nasc/'
 license=('GPL3')
 depends=('gtk3' 'libqalculate' 'granite' 'glib2' 'libgee' 'gtksourceview3' 'libsoup')
 optdepends=()
-makedepends=('vala' 'bzr')
+makedepends=('vala' 'bzr' 'cmake')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
 install="${pkgname%-*}.install"

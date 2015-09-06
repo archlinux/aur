@@ -1,6 +1,6 @@
 pkgbase = nasc-bzr
 	pkgdesc = Do maths like a normal person.
-	pkgver = r35
+	pkgver = r75
 	pkgrel = 1
 	url = http://parnold-x.github.io/nasc/
 	install = nasc.install
@@ -9,6 +9,7 @@ pkgbase = nasc-bzr
 	license = GPL3
 	makedepends = vala
 	makedepends = bzr
+	makedepends = cmake
 	depends = gtk3
 	depends = libqalculate
 	depends = granite
