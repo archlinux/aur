@@ -2,11 +2,12 @@
 # Contributor: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 
+_sdkver=5.1
 _apilevel='22'
 _rev='r01'
 _arch='x86_64'
 pkgname="android-${_arch/x86_/x86-}-system-image-${_apilevel}"
-pkgver="${_apilevel}_${_rev}"
+pkgver="${_sdkver}_${_rev}"
 pkgrel=1
 pkgdesc="Android ${_arch} System Image, API-${_apilevel}"
 arch=('any')

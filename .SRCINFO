@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-system-image-22
 	pkgdesc = Android x86_64 System Image, API-22
-	pkgver = 22_r01
+	pkgver = 5.1_r01
 	pkgrel = 1
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = android-x86-64-system-image-22
 	provides = android-x86_64-system-image-22-22
 	conflicts = android-x86_64-system-image-22-22
 	options = !strip
+	options = !upx
 	source = http://dl.google.com/android/repository/sys-img/android/sysimg_x86_64-22_r01.zip
 	source = source.properties
 	sha1sums = 05752813603f9fa03a58dcf7f8f5e779be722aae
