@@ -1,0 +1,14 @@
+pkgbase = rdate
+	pkgdesc = Retrieves the date and time from other machines
+	pkgver = 1.5
+	pkgrel = 3
+	url = http://www.aelius.com/njh/rdate
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.aelius.com/njh/rdate/rdate-1.5.tar.gz
+	sha256sums = 6e800053eaac2b21ff4486ec42f0aca7214941c7e5fceedd593fa0be99b9227d
+
+pkgname = rdate
+
