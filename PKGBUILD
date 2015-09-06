@@ -6,7 +6,7 @@
 
 pkgbase=lib32-bluez
 pkgname=(${pkgbase}{,-libs,-cups,-plugins})
-pkgver=5.33
+pkgver=5.34
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-dbus' 'lib32-libical' 'li
 source=("http://www.kernel.org/pub/linux/bluetooth/${pkgbase#lib32-}-${pkgver}.tar."{xz,sign}
         "0001-Allow-using-obexd-without-systemd-in-the-user-session.patch")
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('1801807a13506678cbfeb15c6a4b89ecb5739efe1067eb464da6641d731436d3'
+sha256sums=('e461ec2927f5491a202de4a180b2b42377f596b0ce372430d8204ae042d3b19c'
             'SKIP'
             '896a1403d9b7258c4fb0d41f3a6f70fd51eaa1115ab3f4259f3dbbe02b55766b')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
