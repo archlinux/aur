@@ -1,0 +1,15 @@
+pkgbase = check-pacman-mtree
+	pkgdesc = pacman db mtree check size/md5/sha256/symlink
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://luajit.org/luajit.html
+	arch = any
+	license = GPL2
+	depends = luajit
+	depends = openssl
+	depends = zlib
+	source = check-pacman-mtree-0.7.lua
+	sha1sums = 0610fed2efe80a86bb558f9e8a416541f146d604
+
+pkgname = check-pacman-mtree
+
