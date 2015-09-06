@@ -111,7 +111,8 @@ package_etlegacy32-mod() {
 
     # mod
     mkdir -p $pkgdir/usr/lib/$_pkgbase/legacy
-    install -m 644 $srcdir/etlegacy-v$pkgver-x86_64/legacy/{etl_bin,pak3}_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
+    install -m 644 $srcdir/etlegacy-v$pkgver-i386/legacy/{etl_bin,pak3}_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
+    install -m 644 $srcdir/etlegacy-v$pkgver-i386/legacy/qagame.mp.i386.so $pkgdir/usr/lib/$_pkgbase/legacy
 
     # geoip
     ln -s /usr/share/GeoIP/GeoIP.dat $pkgdir/usr/lib/$_pkgbase/legacy
