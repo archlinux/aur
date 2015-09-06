@@ -1,0 +1,4 @@
+30c30
+< option(ENABLE_JACK "Enable JACK backend" ON)
+---
+> option(ENABLE_JACK "Enable JACK backend" OFF)
