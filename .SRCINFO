@@ -1,0 +1,14 @@
+pkgbase = aibizhi
+	pkgdesc = 爱壁纸
+	pkgver = r1
+	pkgrel = 1
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python-pyside
+	depends = python2-pyside
+	source = git+https://gitcafe.com/LoveWallpaper/LoveWallpaperHD-Linux.git
+	md5sums = SKIP
+
+pkgname = aibizhi
+
