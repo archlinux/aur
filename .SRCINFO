@@ -1,10 +1,14 @@
 pkgbase = python-cov-core
 	pkgdesc = plugin core for use by pytest-cov, nose-cov and nose2-cov
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/schlamar/cov-core
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python
+	makedepends = python2
 	source = http://pypi.python.org/packages/source/c/cov-core/cov-core-1.15.0.tar.gz
 	md5sums = f519d4cb4c4e52856afb14af52919fe6
 
