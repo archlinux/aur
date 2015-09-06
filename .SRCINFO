@@ -1,0 +1,13 @@
+pkgbase = picoc-git
+	pkgdesc = A very small C interpreter for scripting.
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/zsaleeba/picoc
+	arch = x86_64
+	license = GPL
+	options = !buildflags
+	source = git://github.com/zsaleeba/picoc
+	md5sums = SKIP
+
+pkgname = picoc-git
+
