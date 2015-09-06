@@ -1,0 +1,17 @@
+pkgbase = rds-cli
+	pkgdesc = The Command Line Toolkit for the Amazon Relational Database Service API
+	pkgver = 1.19.004
+	pkgrel = 1
+	url = http://aws.amazon.com/developertools/2928
+	install = rds-cli.install
+	arch = any
+	license = custom
+	makedepends = findutils
+	depends = java-runtime-headless
+	source = http://s3.amazonaws.com/rds-downloads/RDSCli.zip
+	source = rds-cli.profile
+	sha256sums = 298c15ccd04bd91f1be457645d233455364992e7dd27e09c48230fbc20b5950c
+	sha256sums = d249bc8111f325c0fb2e6475dca7e79d53470d6d831bdeda3c9fad386a3a69d0
+
+pkgname = rds-cli
+

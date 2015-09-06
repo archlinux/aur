@@ -1,0 +1,13 @@
+post_install() {
+  echo "For each user,"
+  echo "create a file ~/.rds.conf with
+        AWSAccessKeyId=<Write your AWS access ID>
+        AWSSecretKey=<Write your AWS secret key>"
+  echo "Example: cp -p '/usr/share/doc/rds-cli/credential-file-path.template' ~/.rds.conf"
+  echo
+  echo "For instructions: less /usr/share/doc/rds-cli/README.TXT"
+}
+
+post_upgrade() {
+  post_install
+}
