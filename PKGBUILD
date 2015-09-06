@@ -25,10 +25,16 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "$srcdir/$_gitname"
   autoreconf --install
-  ./configure --prefix=/usr
+
+  # Default compiler = clang, which can be a problem if using hardening-wrapper
+  CC=gcc ./configure --prefix=/usr
+}
+
+build() {
+  cd "$srcdir/$_gitname"
   make
 }
 
