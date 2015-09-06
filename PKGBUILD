@@ -5,16 +5,16 @@
 
 pkgname=car
 pkgver=2015.08.10
-pkgrel=2
+pkgrel=3
 url="http://car.rene-grothmann.de/"
 pkgdesc="Circle and Ruler is a dynamic geometry program"
 arch=('any')
 license=('GPL')
 depends=('java-runtime' 'xdg-utils')
-source=("http://car.rene-grothmann.de/download/zirkel.zip"
+source=("http://car.rene-grothmann.de/download/car.zip"
         "${pkgname}.desktop"
 	"${pkgname}.sh")
-md5sums=('a15c1a69e325374af71e94b4302e74d2'
+md5sums=('93c0894d88357f704558b94726281f2f'
          '9bf9a70cf538378bde46f3da2c252a4c'
          '2539542867d5f23e823b7a7704f17443')
 
