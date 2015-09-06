@@ -1,8 +1,9 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Justin Davis <jrcd83@gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.19
 
 pkgname='perl-moosex-role-parameterized'
-pkgver='1.02'
+pkgver='1.08'
 pkgrel='1'
 pkgdesc="roles with composition parameters"
 arch=('any')
@@ -11,9 +12,9 @@ options=('!emptydirs')
 depends=('perl>=5.8.1')
 makedepends=('perl-moose' 'perl-test-fatal')
 url='http://search.cpan.org/dist/MooseX-Role-Parameterized'
-source=('http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/MooseX-Role-Parameterized-1.02.tar.gz')
-md5sums=('97a45b34081c3b5f611409aec49d77f4')
-sha512sums=('be500c7ac002346f25694d548212e6be59bfd6d783b82fe86babe377f821b809888a7003ccda31a345d4961eac3b83619a56a08f4f612e8b22209b76d2bb8fc3')
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Role-Parameterized-1.08.tar.gz')
+md5sums=('e89538edd84513c090914c7c1fa7e321')
+sha512sums=('2ee0a9c98090a2e82f360eb1276114bca243ec7676899830d06416cb378745d38ede5021eeb788b6c3499ba12969138dffadbbce34fe391778469ef3c5f4afdd')
 _distdir="MooseX-Role-Parameterized-${pkgver}"
 
 build() {
