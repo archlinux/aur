@@ -1,0 +1,8 @@
+# /etc/cron.d/tuptime: crontab entrie for tuptime update. 
+
+# Execute tuptime each hour for avoid loss time if system don't shutdown correctly.
+# NOTE: Decrease the execution time for increase the accuracity.
+
+MAILTO=root
+
+*/5 *    * * *   root    if [ -x /usr/bin/tuptime ]; then /usr/bin/tuptime -x > /dev/null; fi

@@ -1,0 +1,18 @@
+pkgbase = tuptime
+	pkgdesc = Report the historical and statistical running time of system
+	pkgver = 2.1.00
+	pkgrel = 1
+	url = https://github.com/rfrail3/tuptime
+	arch = any
+	license = GPL
+	depends = python2
+	depends = cron
+	source = tuptime-2.1.00.tar.gz::https://github.com/rfrail3/tuptime/archive/v2.1.00.tar.gz
+	source = tuptime.service
+	source = tuptime.cron
+	sha256sums = 67b53feb2b7d4751045e6dff1b6fb7d3d3c8725b821c4b5eeb7b6b849f70c22c
+	sha256sums = f7e106eb400fb3aa7ea5d0f8f5388d53cf38b054a9dae7e77268489c21e3a2f2
+	sha256sums = 54675450a0c0f8d300a380b8ab61ca7845da7da0f7985694d086eda1eb77b81a
+
+pkgname = tuptime
+

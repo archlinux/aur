@@ -1,0 +1,13 @@
+[Unit]
+Description=Tuptime service
+After=local-fs.target
+Requires=local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/bin/tuptime -x
+ExecStop=/usr/bin/tuptime -xg
+
+[Install]
+WantedBy=local-fs.target
