@@ -1,8 +1,8 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=nethack4
-pkgver=4.3.0.beta1
-_pkgver=4.3.0-beta1
+pkgver=4.3.0.beta2
+_pkgver=4.3-beta2
 pkgrel=1
 pkgdesc="A modern fork of Nethack"
 arch=('i686' 'x86_64')
@@ -13,25 +13,31 @@ makedepends=('sdl2' 'libpng' 'chrpath')
 optdepends=('sdl2: tiles'
             'libpng: tiles')
 #source=('git+https://gitorious.org/nitrohack/ais523.git#branch=nicehack')
-source=("http://nethack4.org/media/releases/nethack4-$_pkgver-source.tar.gz")
-md5sums=('4b382dfca5553fce173291cc9840c2e5')
+source=("http://nethack4.org/media/releases/nethack4-$_pkgver.tar.gz")
+md5sums=('737403ba07a18fe3030a153471ba223d')
 
 # postgresql-libs: multiuser server
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname-$_pkgver"
+
   # allow aimake to run as "root"  (fakeroot confuses it)
   sed -i "s/\$^O ne 'MSWin32'/0/" aimake
+  # disable check for modified files (refuses to build)
+  sed -i "s/\$objtype eq 'path'/0/" aimake
+
   mkdir -p build
   mkdir -p opt
   cd build
+  msg "Building console version"
   ../aimake --without=jansson --without=gui --without=server -i ../opt/
   mv ../opt/nethack4 ../opt/nethack4-con
+  msg "Building SDL version"
   ../aimake --without=jansson --with=gui --without=server -i ../opt/
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname-$_pkgver"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # manually install
@@ -41,7 +47,7 @@ package() {
   install -Dm755 nethack4-con "$pkgdir/usr/bin/nethack4"
   install -Dm755 nethack4-sdl "$pkgdir/usr/bin/nethack4-sdl"
 
-  chrpath -r "/usr/lib" lib/libnethack.so lib/libnethack_client.so
+  #chrpath -r "/usr/lib" lib/libnethack.so lib/libnethack_client.so
   install -Dm755 lib/libnethack.so  "$pkgdir/usr/lib/libnethack.so"
   install -Dm755 lib/libnethack_client.so  "$pkgdir/usr/lib/libnethack_client.so"
   install -Dm755 lib/libuncursed_sdl.so "$pkgdir/usr/lib/libuncursed_sdl.so"
