@@ -1,0 +1,7 @@
+src/
+pkg/
+p4a-build-*.tar.gz
+python-p4a-build-*.tar.xz
+python2-p4a-build-*.tar.xz
+python-p4a-build-*.src.tar.gz
+.AURINFO
