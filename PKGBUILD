@@ -4,7 +4,7 @@ pkgdesc="ROS - Xacro (XML Macros) Xacro is an XML macro language."
 url='http://ros.org/wiki/xacro'
 
 pkgname='ros-jade-xacro'
-pkgver='1.10.5'
+pkgver='1.10.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

@@ -1,6 +1,6 @@
 pkgbase = ros-jade-xacro
 	pkgdesc = ROS - Xacro (XML Macros) Xacro is an XML macro language.
-	pkgver = 1.10.5
+	pkgver = 1.10.6
 	pkgrel = 1
 	url = http://ros.org/wiki/xacro
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-jade-xacro
 	makedepends = ros-jade-catkin
 	makedepends = ros-jade-roslint
 	depends = ros-jade-roslaunch
-	source = xacro::git+https://github.com/ros-gbp/xacro-release.git#tag=release/jade/xacro/1.10.5-0
+	source = xacro::git+https://github.com/ros-gbp/xacro-release.git#tag=release/jade/xacro/1.10.6-0
 	md5sums = SKIP
 
 pkgname = ros-jade-xacro
