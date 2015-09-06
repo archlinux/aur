@@ -1,16 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.39.r3368.c4d8233716ea
+pkgver=3.39.r3376.358816cdd019
 _pkgver=3.39
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
-depends=('arpack' 'fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl')
+depends=('blas' 'lapack' 'arpack' 'fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi')
 makedepends=('mercurial' 'gcc-fortran' 'texlive-core')
-provides=('freefem++=3.39')
+provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
 source=('hg+http://www.freefem.org/ff++/ff++')
@@ -22,17 +22,25 @@ pkgver() {
   printf "${_pkgver}.r%s.%s" $(hg identify -n) $(hg identify -i)
 }
 
+prepare() {
+  cd ff++/download/PETSc
+  sed 's/--download-ml//' Makefile > Makefile
+  
+}
+
 build() {
   cd 'ff++'
   autoreconf -i
-  ./configure \
+  ./configure CC=mpicc CXX=mpic++ FC=mpifort \
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-download \
     --with-umfpack="-lumfpack -lsuitesparseconfig -lcholmod -lcolamd" \
-      --with-mpi=openmpi
+    --with-mpi=openmpi \
+    --with-petsc=$srcdir/download/PETSc/petsc-3.5.2/arch-linux2-c-debug \
+    --disable-schwarz 
   perl download/getall -a
-  make CXX=mpic++ PREFIX=/usr 
+  make PREFIX=/usr 
 }
 
 package() {
@@ -45,7 +53,4 @@ package() {
   rm -f $pkgdir/usr/share/freefem++/${_pkgver}/README_*
   rm -f $pkgdir/usr/share/freefem++/${_pkgver}/mode-mi-edp.zip
   rm -rf $pkgdir/usr/share/freefem++/${_pkgver}/download
-  install -Dm644 $pkgdir/usr/share/freefem++/freefem++doc.pdf \
-	  $pkgdir/usr/share/doc/freefem++/freefem++doc.pdf
-  rm $pkgdir/usr/share/freefem++/freefem++doc.pdf
 }
