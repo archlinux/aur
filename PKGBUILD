@@ -17,7 +17,7 @@ optdepends=('i3-wm: use as a window switcher')
 source=("https://github.com/DaveDavenport/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('63979c59f76bf405113531e76036696797883682a935e67771769ef00b7ef00a')
 
-build() {
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Fix automake version mismatch
@@ -25,6 +25,11 @@ build() {
 
   # Default compiler = clang, which can be a problem if using hardening-wrapper
   CC=gcc ./configure --prefix=/usr
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
   make
 }
 
