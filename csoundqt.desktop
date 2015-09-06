@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=CsoundQt
-Comment=Csound Qt signal processing environment/editor
+Comment=A frontend for Csound with interactive widgets and integrated help.
 Exec=csoundqt
 Icon=csoundqt
 Terminal=false

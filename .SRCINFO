@@ -1,23 +1,21 @@
 pkgbase = csoundqt
-	pkgdesc = CsoundQt (formerly qutecsound) is a frontend for Csound featuring a highlighting editor with autocomplete, interactive widgets and integrated help
+	pkgdesc = A frontend for Csound featuring a highlighting editor with autocomplete, interactive widgets and integrated help
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qutecsound.sourceforge.net/
 	install = csoundqt.install
 	arch = i686
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	depends = csound
 	depends = qt4
-	optdepends = csound-doc: html online manual, opcode lookups and more
-	provides = qutecsound
-	conflicts = qutecsound
+	depends = csound-doc
 	source = http://sourceforge.net/projects/qutecsound/files/CsoundQt/0.9.0/csoundqt-0.9.0-src.tar.gz
 	source = csoundqt.desktop
 	source = http://www.music.mcgill.ca/~gary/rtmidi/release/rtmidi-2.1.0.tar.gz
-	md5sums = 1c3001e44c95d325720641f5eb7f9d3a
-	md5sums = a352bbc3e071bfc1e4c5d17ffa4827a2
-	md5sums = ea4acc28724bc21fb08b6ad5efbc5c36
+	sha256sums = 873c699091e28064bc25f45a1081d583b42c4927061174f76cd8231ef1394feb
+	sha256sums = 4cc7e3d77ce4daf558568f2633645658f565f71c5e6c9f441fd2ade5dd61b138
+	sha256sums = a0a59226614b878e7c32890cb7c38a6fe48a97082baf4913297d4c3958a9b3ac
 
 pkgname = csoundqt
 
