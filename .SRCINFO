@@ -1,7 +1,7 @@
 pkgbase = gog-freedom-planet
 	pkgdesc = A combat-based platform adventure that pits a spunky dragon girl and her friends against an alien attack force.
 	pkgver = 2.1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freedomplanet.galaxytrail.com/
 	install = gog-freedom-planet.install
 	arch = i686

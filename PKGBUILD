@@ -2,7 +2,7 @@
 
 pkgname=gog-freedom-planet
 pkgver=2.1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A combat-based platform adventure that pits a spunky dragon girl and her friends against an alien attack force."
 url="http://freedomplanet.galaxytrail.com/"
 license=('custom')
@@ -24,7 +24,7 @@ prepare(){
     [ $CARCH == "x86" ]    && rm -r "game/bin64"
     [ $CARCH == "x86_64" ] && rm -r "game/bin32"
     # The launcher expects the user to be in the game dir
-    echo -e "#!/bin/bash\ncd /opt/${pkgname}\n./start.sh" > "${srcdir}/${pkgname}"
+    echo -e "#!/bin/sh\ncd /opt/${pkgname}\n./start.sh" > "${srcdir}/${pkgname}"
 }
 
 package(){
