@@ -1,0 +1,16 @@
+pkgbase = ar-sdk3-git
+	pkgdesc = The Parrot's AR SDK for Linux !
+	pkgver = ARSDK3_version_3_5.r135.gd4abf11
+	pkgrel = 1
+	url = https://github.com/Parrot-Developers/ARSDKBuildUtils.git
+	arch = any
+	groups = games
+	license = GPL
+	makedepends = git yasm jdk8-openjdk python-virtualenv
+	depends = boost-libs
+	depends = gcc-libs
+	source = git+https://github.com/Parrot-Developers/ARSDKBuildUtils.git
+	sha256sums = SKIP
+
+pkgname = ar-sdk3-git
+
