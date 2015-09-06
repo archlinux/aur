@@ -2,7 +2,7 @@
 
 pkgname=lightsd
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Daemon to control your LIFX smart bulbs via a JSON-RPC API"
 arch=("i686" "x86_64")
@@ -21,7 +21,7 @@ build() {
         -DCMAKE_BUILD_TYPE=RELEASE  \
         -DCMAKE_INSTALL_PREFIX=/usr \
         .
-    
+
     make
 }
 
