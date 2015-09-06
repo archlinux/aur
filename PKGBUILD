@@ -1,19 +1,14 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
-pkgname='grass'
-pkgver='7.0.1'
-pkgrel='1'
-pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization."
+pkgname=grass
+pkgver=7.0.1
+pkgrel=2
+pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
 url='http://grass.osgeo.org/'
 license=('GPL')
-depends=('zlib' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu' 'libjpeg'
-         'libpng' 'libtiff' 'libxmu' 'mesa' 'postgresql' 'proj'
-         'wxpython2.8' 'wxgtk2.8' 'xorg-server' 'cairo' 'unixodbc' 'python2'
-         'python2-numpy' 'python2-matplotlib' 'python2-pillow')
-makedepends=('doxygen')
-optdepends=('r: R language interface; see http://grasswiki.osgeo.org/wiki/R_statistics')
+depends=('fftw' 'gdal' 'glu' 'xorg-server' 'wxpython' 'python2-matplotlib' 'python2-pillow')
 source=("http://grass.osgeo.org/grass70/source/$pkgname-$pkgver.tar.gz")
 sha256sums=('0987dd1618fde24b05785a502c7db8c09401a522a7a3ee50543068fab4eb405f')
 
@@ -32,6 +27,7 @@ build() {
 
   CPPFLAGS="" ./configure \
     --prefix=/opt \
+    --with-wxwidgets=/usr/bin/wx-config \
     --with-freetype-includes=/usr/include/freetype2
 
   make
