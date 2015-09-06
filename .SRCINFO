@@ -17,6 +17,7 @@ pkgbase = caja-dropbox
 	depends = pygtk
 	depends = xdg-utils
 	optdepends = dropbox: Dropbox support
+	conflicts = caja-dropbox-gtk3
 	options = !emptydirs
 	source = http://pub.mate-desktop.org/releases/1.10/caja-dropbox-1.10.0.tar.xz
 	sha1sums = 4ecb08c7671a12bc8aee3f6df2e2cb70988e95b8

@@ -17,18 +17,19 @@ depends=('caja'
          'xdg-utils')
 makedepends=('mate-common' 'python2-docutils')
 optdepends=('dropbox: Dropbox support')
+conflicts=('caja-dropbox-gtk3')
 options=('!emptydirs')
 source=("http://pub.mate-desktop.org/releases/1.10/${pkgname}-${pkgver}.tar.xz")
 sha1sums=('4ecb08c7671a12bc8aee3f6df2e2cb70988e95b8')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   autoreconf -fi
   sed -i "s/python/python2/" configure.ac configure caja-dropbox.in Makefile.am Makefile.in rst2man.py
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
     --disable-static
