@@ -7,7 +7,7 @@ pkgdesc="Alternate folders for use with the Numix base icon theme."
 arch=('any')
 url="https://github.com/numixproject/numix-folders"
 license=('GPL3')
-depends=('numix-themes-git' 'python-gobject' 'gksu')
+depends=('numix-icon-theme-git' 'python-gobject' 'gksu')
 source=("numix-folders::git+https://github.com/numixproject/numix-folders")
 md5sums=('SKIP')
 
