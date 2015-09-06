@@ -2,12 +2,15 @@ whisper() {
  echo "Before using read the license placed here:"
  echo "/usr/share/licenses/amdapp-sdk/APPSDK-EULA-linux.txt"
  echo ""
- echo "amdapp-sdk package was split into 5 packages:"
+ echo "amdapp-sdk package is split into 4 packages:"
  echo "amdapp-sdk :: main package"
- echo "amdapp-sdk-aparapi :: AparapiUtil and aparapi samples"
  echo "amdapp-sdk-opencv  :: OpenCVUtils and opencv samples"
  echo "amdapp-sdk-docs    :: documentation"
  echo "amdapp-sdk-nocatalyst  :: libs and icd for non-catalyst users"
+ echo ""
+ echo -e "\e[0;36mAMD removed aparapi samples\e[0m"
+ echo "amdapp-sdk-aparapi is no longer included"
+ echo "it will NOT be automatically removed, thought"
  echo ""
 }
 
