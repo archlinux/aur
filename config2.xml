@@ -1,0 +1,19 @@
+<config>
+ <devices>
+  <device>
+   <name>Large device</name>
+   <filename>microemu-device-large.jar</filename>
+   <descriptor>org/microemu/device/large/device.xml</descriptor>
+  </device>
+  <device>
+   <name>Minimum device</name>
+   <filename>microemu-device-minimum.jar</filename>
+   <descriptor>org/microemu/device/minimum/device.xml</descriptor>
+  </device>
+  <device>
+   <name>Resizable device</name>
+   <filename>microemu-device-resizable.jar</filename>
+   <descriptor>org/microemu/device/resizable/device.xml</descriptor>
+  </device>
+ </devices>
+</config>

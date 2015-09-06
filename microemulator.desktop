@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=microemulator
+GenericName=J2ME Emulator
+Comment=A J2ME Emulator
+Icon=java
+TryExec=/usr/bin/microemulator
+Exec=microemulator
+MimeType=text/vnd.sun.j2me.app-descriptor ;
+Categories=Emulator;Emulation;Java;Development;
+StartupNotify=false
