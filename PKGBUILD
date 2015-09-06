@@ -2,7 +2,7 @@
 # Maintainer: Ivailo Monev <xakepa10@gmail.com>
 
 pkgname=boost-bcp
-pkgver=1.58.0
+pkgver=1.59.0
 pkgdesc="The bcp utility is a tool for extracting subsets of Boost"
 _boostver=${pkgver//./_}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('custom')
 depends=('icu')
 makedepends=('boost')
 source=("https://downloads.sourceforge.net/project/boost/boost/${pkgver}/boost_${_boostver}.tar.bz2")
-sha1sums=('2fc96c1651ac6fe9859b678b165bd78dc211e881')
+sha1sums=('b94de47108b2cdb0f931833a7a9834c2dd3ca46e')
 
 build() {
     cd "${srcdir}/boost_${_boostver}/tools/bcp"
