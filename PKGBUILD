@@ -132,7 +132,7 @@ package_lib32-llvm-svn() {
     pkgdesc='The LLVM Compiler Infrastructure (32-bit)'
     depends=(
         "lib32-llvm-libs-svn=${pkgver}-${pkgrel}"
-        'llvm'
+        'llvm-svn'
     )
     provides=('lib32-llvm')
     replaces=('lib32-llvm')
