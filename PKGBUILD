@@ -1,13 +1,14 @@
-# Maintainier: FadeMind <fademind@gmail.com>
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: bitwave <aur@oomlu.de>
-# Contributor: willemw <willemw12@gmail.com>
-# Contributor: Balló György <ballogyor+arch@gmail.com>
+# Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
+# Contributor: FadeMind <fademind at gmail dot com>
+# Contributor: Maxime Gauduin <alucryd at archlinux dot org>
+# Contributor: bitwave <aur at oomlu dot de>
+# Contributor: willemw <willemw12 at gmail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgbase=libappindicator
 pkgname=('libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
 pkgver=12.10.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Allow applications to export a menu into the Unity Menu bar'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libappindicator'
@@ -17,7 +18,7 @@ makedepends=('dbus-glib' 'gobject-introspection' 'gtk-sharp-2'
              'libindicator-gtk3' 'mono' 'perl-xml-libxml' 'pygtk' 'vala')
 options=('!emptydirs')
 source=("http://launchpad.net/libappindicator/${pkgver%.*}/${pkgver}/+download/libappindicator-${pkgver}.tar.gz")
-sha256sums=('d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f')
+sha512sums=('317a22a23c8ed84e74207b64b2e9683992d1fb7208176637a051dfe925974f966d1cfa31e650b45eaf839ab61641dee8fbebc8a07882a09b0dd766d88b8d5b9a')
 
 prepare() {
     cd libappindicator-${pkgver}
@@ -78,5 +79,3 @@ package_libappindicator-sharp() {
 
     make -j1 -C bindings/mono DESTDIR="${pkgdir}" install
 }
-
-# vim: ts=2 sw=2 et:

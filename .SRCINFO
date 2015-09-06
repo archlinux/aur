@@ -1,7 +1,7 @@
 pkgbase = libappindicator
 	pkgdesc = Allow applications to export a menu into the Unity Menu bar
 	pkgver = 12.10.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://launchpad.net/libappindicator
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = libappindicator
 	makedepends = vala
 	options = !emptydirs
 	source = http://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz
-	sha256sums = d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f
+	sha512sums = 317a22a23c8ed84e74207b64b2e9683992d1fb7208176637a051dfe925974f966d1cfa31e650b45eaf839ab61641dee8fbebc8a07882a09b0dd766d88b8d5b9a
 
 pkgname = libappindicator-gtk2
 	depends = libdbusmenu-gtk2
