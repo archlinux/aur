@@ -1,0 +1,18 @@
+pkgbase = archivemount
+	pkgdesc = FUSE filesystem using libarchive
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = http://www.cybernoia.de/software/archivemount/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = automake
+	makedepends = autoconf
+	depends = fuse
+	depends = libarchive
+	conflicts = archivemount-git
+	source = http://www.cybernoia.de/software/archivemount/archivemount-0.8.5.tar.gz
+	sha256sums = 3c919fc46077a0f458cb52454d72c34f1cefda4e2a4e6c987a5156458f144f79
+
+pkgname = archivemount
+
