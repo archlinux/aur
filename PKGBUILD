@@ -2,8 +2,8 @@
 
 pkgbase='python-pytaglib'
 pkgname=('python-pytaglib' 'python2-pytaglib')
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Python bindigs for the TagLib audio metadata library"
 arch=('i686' 'x86_64')
 url="http://pypi.python.org/pypi/pytaglib"
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools' 'taglib')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/p/pytaglib/pytaglib-$pkgver.tar.gz")
-md5sums=('6761a43e051b15ab499cc48d5d21f231')
+md5sums=('1f822375d21a16f80dbd0058acc77559')
 
 build_python-pytaglib() {
   cd "$srcdir/pytaglib-$pkgver"
