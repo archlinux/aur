@@ -1,0 +1,13 @@
+pkgbase = prosody-mod-carbons-adhoc
+	pkgdesc = Ad-hoc interface to mod_carbons
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = http://hg.prosody.im/prosody-modules/file/tip/mod_carbons_adhoc
+	arch = any
+	license = MIT
+	depends = prosody
+	source = http://hg.prosody.im/prosody-modules/raw-file/tip/mod_carbons_adhoc/mod_carbons_adhoc.lua
+	sha1sums = 27fad1448b82d8de2e581bf107295ccf7a7d0131
+
+pkgname = prosody-mod-carbons-adhoc
+
