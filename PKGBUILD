@@ -3,8 +3,8 @@
 
 pkgname=gcolor3-git
 _gitname=gcolor3
-pkgver=2013.06.11
-pkgrel=2
+pkgver=2015.09.06
+pkgrel=3
 pkgdesc="A simple color selection dialog in GTK3. Git version."
 arch=('i686' 'x86_64')
 url="http://unia.github.io/gcolor3/"
