@@ -1,6 +1,6 @@
 pkgbase = subuser
 	pkgdesc = Run programs in linux with selectively restricted permissions
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = http://subuser.org
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = subuser
 	makedepends = python
 	depends = python
 	depends = docker
-	source = https://github.com/subuser-security/subuser/archive/0.3.tar.gz
-	sha256sums = c811e5c7161eb4b35bfb57c5f79b3487e9ee92b75775012101fd7c36bef8a27d
+	source = https://github.com/subuser-security/subuser/archive/0.4.tar.gz
+	sha256sums = 2b53a0be7f01dacc5a09d9e3f592578a38922e3a2f103142077fd05fa09cbafd
 
 pkgname = subuser
 
