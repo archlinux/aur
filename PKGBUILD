@@ -2,8 +2,8 @@
 
 pkgname=rpw
 
-pkgver=4.2.0
-FNAME="RPW-4-2-0.jar"
+pkgver=4.3.0
+FNAME="RPW-4-3-0.jar"
 pkgrel=1
 
 pkgdesc="Minecraft resource pack editor by MightyPork"
@@ -21,7 +21,7 @@ optdepends=('gimp: Editing textures'
 
 provides=('rpw')
 
-md5sums=('adfad7ec9146015ccd2f729e3b41e3b2'
+md5sums=('314d5fe7db04ca774d59982d95f23024'
          '34ccc931e00e0e1354d2409159824290')
 
 
