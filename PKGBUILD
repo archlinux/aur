@@ -2,12 +2,12 @@
 
 pkgname=4kvideodownloader
 pkgver=3.6.1.1770
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly download videos from YouTube in high-quality."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-videodownloader"
 license=('custom:eula')
-depends=('qt5-script' 'portaudio' 'ffmpeg-compat' 'ffmpeg-compat-55')
+depends=('qt5-script' 'portaudio' 'ffmpeg-compat' 'ffmpeg-compat-55' 'libxkbcommon-x11')
 source=("${pkgname}.desktop"
         "${pkgname}.png")
 source_i686=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_i386.tar.bz2")
