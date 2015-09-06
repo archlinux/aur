@@ -1,8 +1,8 @@
 # Maintainer: OS Hazard <oshazard+aur@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=apacman
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="AUR wrapper forked from packer"
 url="http://github.com/oshazard/apacman"
 license="GPL"
@@ -14,7 +14,7 @@ optdepends=('apacman-deps: Required AUR build depends'
             'rsync: Built-in ABS support')
 provides=('packer')
 source=("https://github.com/oshazard/apacman/archive/master.tar.gz")
-md5sums=('65a75e3a28f28b235f177965f403f70e')
+md5sums=('92602f2f35c3b2be448bf8669dd9107e')
 backup=('etc/apacman.conf')
 install=$pkgname.install
 
