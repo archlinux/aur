@@ -12,6 +12,10 @@ pkgbase = digilent.adept.runtime
 	backup = etc/digilent-adept.conf
 	backup = etc/ld.so.conf.d/digilent-adept-libraries.conf
 	backup = etc/udev/rules.d/52-digilent-usb.rules
+	source_i686 = http://www.digilentinc.com/Data/Products/ADEPT2/digilent.adept.runtime_2.16.1_i386.deb
+	sha256sums_i686 = da3f3e41c66120c2799768a10c3c9cc956e0d7068ddbe104a09f78b299e856f3
+	source_x86_64 = http://www.digilentinc.com/Data/Products/ADEPT2/digilent.adept.runtime_2.16.1_amd64.deb
+	sha256sums_x86_64 = 45f66f9803cad62fa6c4468903e12556c66ee95dd433f1c6e91cadca44e50679
 
 pkgname = digilent.adept.runtime
 
