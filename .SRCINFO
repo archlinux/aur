@@ -1,6 +1,6 @@
 pkgbase = lantern-headless-git
 	pkgdesc = Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Headless + Git Version)
-	pkgver = 2.0.2.91e37be
+	pkgver = r4078.ce6b7a2
 	pkgrel = 1
 	url = https://getlantern.org
 	arch = i686

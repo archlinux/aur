@@ -1,7 +1,7 @@
 # Maintainer: Kars Wang <jaklsy g-mail>
 
 pkgname=lantern-headless-git
-pkgver=2.0.2.91e37be
+pkgver=r4078.ce6b7a2
 pkgrel=1
 _pkgname=lantern
 pkgdesc='Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Headless + Git Version)'
@@ -25,18 +25,19 @@ fi
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long | awk 'BEGIN{ FS="-"; OFS="."; }{ print $1, substr($3, 2); }'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
     source ./setenv.bash
     local build_tags='prod headless'
-    local _git_revision="$(git rev-parse --short HEAD)"
-    local _git_revision_date="$(git show -s --format=%ci HEAD)"
-    local _build_date="$(date -u '+%Y%m%d.%H%M%S')"
-    local _logger_token="$(sed -n 's/^LOGGLY_TOKEN[[:space:]]*:=[[:space:]]\(.*\)$/\1/p' ./Makefile)"
-    local ldflags="-w -X \"main.version=${_git_revision}\" -X \"main.revisionDate=${_git_revision_date}\" -X \"main.buildDate=${_build_date}\" -X \"github.com/getlantern/flashlight/logging.logglyToken=${_logger_token}\""
+    local git_revision="$(git rev-parse --short HEAD)"
+    local git_revision_date="$(git show -s --format=%ci HEAD)"
+    local revision_date="$(date -u -d "$git_revision_date" '+%Y%m%d.%H%M%S')"
+    local build_date="$(date -u '+%Y%m%d.%H%M%S')"
+    local logger_token="$(sed -n 's/^LOGGLY_TOKEN[[:space:]]*:=[[:space:]]\(.*\)$/\1/p' ./Makefile)"
+    local ldflags="-w -X \"main.version=${git_revision}\" -X \"main.revisionDate=${revision_date}\" -X \"main.buildDate=${build_date}\" -X \"github.com/getlantern/flashlight/logging.logglyToken=${logger_token}\""
 
     sed "s/packageVersion.*/packageVersion = \"${pkgver}\"/" ./src/github.com/getlantern/flashlight/autoupdate.go | sed 's/!prod/prod/' > ./src/github.com/getlantern/flashlight/autoupdate-prod.go
 
