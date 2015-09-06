@@ -32,6 +32,9 @@ build() {
     virtualenv python2 --python=python2
     source python2/bin/activate
 
+    # This is needed because of the FORTIFY_SOURCE=2 of makepkg.
+    unset CPPFLAGS
+
     cd "$_gitname"
 
     # CheckEnv.py
@@ -45,12 +48,14 @@ build() {
         #return 1
     fi
 
-    # Compiling
+    # Download the sources
+    ./SDK3Build.py -t Unix --none
 
-    # This is needed because of the FORTIFY_SOURCE=2 of makepkg.
-    unset CPPFLAGS
+    # Replace json/json.h with json-c/json.h
+    sed -i 's#json/json.h#json-c/json.h#g' `find .. -name "*.c" -o -name "*.h"`
 
-    ./SDK3Build.py -t Unix
+    # Build the sources
+    ./SDK3Build.py -t Unix --nogit
 
     # Use Python2 instead of Python
     deactivate
