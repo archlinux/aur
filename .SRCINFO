@@ -1,0 +1,20 @@
+pkgbase = python-gevent-git
+	pkgdesc = Coroutine-based concurrency library for Python
+	pkgver = 20150904
+	pkgrel = 1
+	url = https://github.com/surfly/gevent
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-greenlet
+	provides = python-gevent
+	conflicts = python-gevent
+	source = python-gevent::git+https://github.com/surfly/gevent
+	sha256sums = SKIP
+
+pkgname = python-gevent-git
+
