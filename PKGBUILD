@@ -3,7 +3,7 @@
 
 pkgname=foxitreader
 pkgver=1.1.0.20090810
-pkgrel=1
+pkgrel=2
 pkgdesc="A small, fast PDF viewer"
 arch=('i686' 'x86_64')
 url="http://www.foxitsoftware.com/Secure_PDF_Reader/"
@@ -14,13 +14,13 @@ depends_x86_64=('lib32-gtk2')
 install="${pkgname}.install"
 source=("http://cdn04.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/${pkgver%.*.*}/enu/FoxitReader-${pkgver%.*}.tar.bz2"
         "http://cdn04.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/${pkgver%.*.*}/enu/FoxitReader_${pkgver%.*}_i386.deb"
-        "http://www.foxitsoftware.com/Secure_PDF_Reader/eula.html"
+        "https://www.foxitsoftware.com/products/pdf-reader/eula.html"
         "${pkgname}-i686.sh"
         "${pkgname}-x86_64.sh"
         "desktop-file.patch")
 sha256sums=('02f1ad5ad2fd516754254f349c94b8e81b57b9eb2a0315f30debdc5d7fb8dbf4'
             '248eab45cbb8816989d46dc3c3f150273720c69645fbbbc3c06b93983ac50653'
-            '380830bb6ef504348000f264df80d7f6380d5b8ddd3c2151fe592d2cb582d1dd'
+            'a5be3dc1cf27536de2c0fb5a0d640db349be32f48547b3cc56dcb5791fb278be'
             'cd70582074710360cb667d91dd677b4f074f308bc13517a879d2735a08266d96'
             '13856414068d9e374eed86a5a99c665b8450f7d07dd27fd9106b73d20fdd5e87'
             '39a709be8a1c708850834a1b215fadb11331d86404d5422e19c49248afcc6a33')
