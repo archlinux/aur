@@ -1,16 +1,16 @@
 pkgbase = hexcurse
 	pkgdesc = Versatile ncurses-based hex editor.
-	pkgver = 1.55
-	pkgrel = 3
-	url = http://directory.fsf.org/project/HexCurse/
+	pkgver = 1.58
+	pkgrel = 1
+	url = https://github.com/LonnyGomes/hexcurse
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ncurses>=5.6-7
 	options = !makeflags
-	source = http://gd.tuwien.ac.at/opsys/linux/gentoo/distfiles/hexcurse-1.55.tar.gz
+	source = https://github.com/LonnyGomes/hexcurse/archive/hexcurse-1.58.tar.gz
 	source = hexcurse-alloca.patch
-	md5sums = c9f9485490300b5111aa429eabfef789
+	md5sums = 26c3ccf56850ff030d5097ee4bbc2b0b
 	md5sums = fb7723bff0411392fe410839f6105e4f
 
 pkgname = hexcurse
