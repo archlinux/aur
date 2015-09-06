@@ -24,7 +24,7 @@ pkgbase = lib32-llvm-svn
 pkgname = lib32-llvm-svn
 	pkgdesc = The LLVM Compiler Infrastructure (32-bit)
 	depends = lib32-llvm-libs-svn=3.8.0svn_r246942-1
-	depends = llvm
+	depends = llvm-svn
 	provides = lib32-llvm
 	conflicts = lib32-llvm
 	replaces = lib32-llvm
