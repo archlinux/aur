@@ -1,0 +1,30 @@
+pkgbase = relax-and-recover-git
+	pkgdesc = Relax-and-Recover bootable Linux disaster recovery, formerly rear
+	pkgver = 1.17.2.r1689.g7a24cfb
+	pkgrel = 1
+	url = http://relax-and-recover.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = lsb-release
+	depends = iproute2
+	depends = parted
+	depends = util-linux
+	depends = cpio
+	depends = mingetty
+	depends = gawk
+	depends = grep
+	optdepends = nfs-utils: to save images to NFS shares
+	optdepends = cdrkit: to create ISO images
+	optdepends = syslinux: to create bootable media
+	provides = relax-and-recover=1.17.2
+	conflicts = relax-and-recover
+	replaces = rear
+	backup = etc/rear/local.conf
+	source = RELAX-AND-RECOVER::git://github.com/rear/rear.git
+	sha256sums = SKIP
+
+pkgname = relax-and-recover-git
+
