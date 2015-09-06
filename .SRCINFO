@@ -1,0 +1,13 @@
+pkgbase = redir
+	pkgdesc = Redirect TCP connections
+	pkgver = 2.2.1
+	pkgrel = 5
+	url = http://sammy.net/~sammy/hacks/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://sammy.net/~sammy/hacks/redir-2.2.1.tar.gz
+	sha256sums = 7ea504f835338e448f674ca8637512f511bf74538418ad43ab39039017090e6c
+
+pkgname = redir
+
