@@ -1,0 +1,19 @@
+pkgbase = djgpp-djcrx
+	pkgdesc = Headers and utilities for the djgpp cross-compiler
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://www.delorie.com/djgpp/
+	arch = i686
+	arch = x86_64
+	groups = djgpp-toolchain
+	groups = djgpp
+	license = GPL
+	license = LGPL
+	license = custom
+	depends = glibc
+	options = !strip
+	source = http://www.delorie.com/pub/djgpp/current/v2/djcrx203.zip
+	sha512sums = e6e932b85fc0656df078f75854f8458c18f0cc1c0995e51fa49be3dea1834ed449cb282cb97bb905c6753828a15c82063e9eabcdc7032c96e678616a938ac6e6
+
+pkgname = djgpp-djcrx
+
