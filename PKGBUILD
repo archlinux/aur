@@ -31,6 +31,9 @@ md5sums=(
 build() {
   mkdir -p "$srcdir"/src/github.com/hjr265
   git clone https://github.com/hjr265/loadcat.git "$srcdir"/src/github.com/hjr265/loadcat
+  pushd "$srcdir"/src/github.com/hjr265/loadcat
+  git checkout "tags/v${pkgver/_/-}"
+  popd
   GOPATH="$srcdir" go get -v github.com/hjr265/loadcat/...
 }
 
