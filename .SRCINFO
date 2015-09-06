@@ -5,6 +5,8 @@ pkgbase = python-sleekxmpp
 	url = http://github.com/fritzy/SleekXMPP
 	arch = any
 	license = MIT
+	makedepends = python2
+	makedepends = python
 	source = https://pypi.python.org/packages/source/s/sleekxmpp/sleekxmpp-1.3.1.tar.gz
 	md5sums = ff7c1154fb238efa83ea64ef91a1bff4
 
