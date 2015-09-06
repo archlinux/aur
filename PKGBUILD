@@ -1,5 +1,5 @@
 # !!! NOTE !!!
-# Please download AMD-APP-SDK-v3.0-0.113.50-Beta-linux<your_bits_here>.tar.bz2 from
+# Please download AMD-APP-SDKInstaller-v3.0.124.132-GA-linux<your_bits_here>.tar.bz2 from
 # http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/
 # and paste it next to this PKGBUILD
 
@@ -13,35 +13,37 @@
 
 
 pkgbase=amdapp-sdk
-pkgname=('amdapp-sdk' 'amdapp-sdk-aparapi' 'amdapp-sdk-opencv' 'amdapp-sdk-nocatalyst' 'amdapp-sdk-docs')
+pkgname=('amdapp-sdk' 'amdapp-sdk-opencv' 'amdapp-sdk-nocatalyst' 'amdapp-sdk-docs')
 pkgver=3.0
-pkgrel=1
+pkgrel=10
 arch=('i686' 'x86_64')
 url="http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/"
 license=("custom")
 options=('staticlibs' 'libtool' '!strip' '!upx')
 groups=('amdapp')
-makedepends=('perl' 'llvm' 'amdapp-aparapi' 'apache-ant')
+makedepends=('perl' 'llvm'  'apache-ant')
+_dirname='AMD-APP-SDKInstaller-v3.0.124.132-GA-linux'
+_scriptname='AMD-APP-SDK-v3.0.124.132-GA-linux'
 
 #Architecture resolution
     if [ "$CARCH" = 'i686' ]; then
       _bits=32
       _arch=x86
 #       _tarbits=x86
-      _tarbits=32-1
+#       _tarbits=32-1
 	else _bits=64
 	     _arch=x86_64
 # 	     _tarbits=x64
-	     _tarbits=64
+# 	     _tarbits=64
      fi
 
-[ "$CARCH" = 'i686' ] && _hash='0520a2fac0e945195419ec560e7d340cbcb2da3a3412cb2f38584263a7198d35' \
-                        || _hash='0d806087e5fef7fdfb9372388afe2ff7b382041ba5a23160d58143166005f2d4'
+[ "$CARCH" = 'i686' ] && _hash='55b8fa734d84808b12a52c71f69dab42faeb7f011f333e51918c20c52ab13578' \
+                        || _hash='d1900229cda86fe15ae01195bddbb4fe332bf5713b6d907b2522f10eb7587656'
 
 #Sources
 source=(
 # 	"http://developer.amd.com/wordpress/media/files/AMD-APP-SDK-linux-v2.9-1.599.381-GA-${_tarbits}.tar.bz2"
-	"http://developer.amd.com/wordpress/media/files/AMD-APP-SDK-v3.0-0.113.50-Beta-linux${_tarbits}.tar.bz2"
+	"http://developer.amd.com/wordpress/media/files/${_dirname}${_bits}.tar.bz2"
 	'amd.icd'
 	'amdapp-sdk.sh'
 	'amdapp-sdk.conf')
@@ -52,8 +54,7 @@ sha256sums=($_hash
 'dffe3d16ae07fafe6571c37f97f73e694891a7ea7888fc7f0a5d0e42b997e50f'
 'c871a5044dd19e710b9ff058faa4e40f9b825b27d3928d535bc452116dba3b95')
 
-
-_subdir="AMD-APP-SDK-v3.0-0.113.50-Beta-linux${_bits}"
+_subdir="${_dirname}${_bits}"
 
 #Install path
 _ipath='opt/AMDAPP/SDK'
@@ -65,7 +66,7 @@ prepare() {
 #   cd ${_subdir}
 #   patch -p0 < ../../01-implicit-linking.patch
 #   patch -p0 < ${srcdir}/02-readlink-include.patch
-  . /etc/profile.d/aparapi.sh
+#   . /etc/profile.d/aparapi.sh
 }
 
 
@@ -76,12 +77,12 @@ build() {
 #  make -j1
 #----------- >8 --------------
 #   bash AMD-APP-SDK-v2.9-1.599.381-GA-linux${_bits}.sh --noexec --target ${srcdir}/${_subdir}
-  bash AMD-APP-SDK-v3.0-0.113.50-Beta-linux${_bits}.sh --noexec --target ${srcdir}/${_subdir}
+  bash ${_scriptname}${_bits}.sh --noexec --target ${srcdir}/${_subdir}
 }
 
 
 package_amdapp-sdk() {
-pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 beta with OpenCL 2.0 support."
+pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 with OpenCL 2.0 support."
 install=amdapp-sdk.install
 provides=('opencl' 'amdstream')
 depends=('libcl' 'libgl' 'llvm' 'gcc-libs' 'mesa' 'glut' 'glew' 'glu')
@@ -139,7 +140,7 @@ optdepends=(
 
 
 package_amdapp-sdk-nocatalyst() {
-pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 beta with OpenCL 2.0 support. Libs and ICD for non-catalyst users."
+pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 with OpenCL 2.0 support. Libs and ICD for non-catalyst users."
 install=amdapp-sdk-nocatalyst.install
 depends=('amdapp-sdk')
 conflicts=('catalyst-utils')
@@ -167,24 +168,8 @@ conflicts=('catalyst-utils')
 }
 
 
-package_amdapp-sdk-aparapi() {
-pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 beta with OpenCL 2.0 support. AparapiUtil and aparapi samples"
-depends=('libcl' 'libgl' 'llvm' 'gcc-libs' 'mesa' 'glut' 'glew' 'amdapp-aparapi' 'apache-ant')
-install=amdapp-sdk-aparapi.install
-
-  cd ${srcdir}/${_subdir}
-  install -m755 -d ${pkgdir}/${_ipath}/samples/aparapi
-  cp -r ./samples/aparapi/* ${pkgdir}/${_ipath}/samples/aparapi
-  find ${pkgdir}/${_ipath}/samples/aparapi -name \*.sh -exec chmod 755 {} \;
-  
-  #License
-  install -m755 -d ${pkgdir}/usr/share/licenses
-  ln -s amdapp-sdk ${pkgdir}/usr/share/licenses/${pkgname}
-}
-
-
 package_amdapp-sdk-opencv() {
-pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 beta with OpenCL 2.0 support. OpenCVUtils and opencv samples"
+pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 with OpenCL 2.0 support. OpenCVUtils and opencv samples"
 depends=('libcl' 'libgl' 'llvm' 'gcc-libs' 'mesa' 'glut' 'glew' 'opencv')
 install=amdapp-sdk-opencv.install
 
@@ -201,7 +186,7 @@ install=amdapp-sdk-opencv.install
 
 
 package_amdapp-sdk-docs() {
-pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 beta with OpenCL 2.0 support. Documentation"
+pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 with OpenCL 2.0 support. Documentation"
 install=amdapp-sdk-docs.install
 
   cd ${srcdir}/${_subdir}
