@@ -25,7 +25,6 @@ pkgver() {
 prepare() {
   cd ff++/download/PETSc
   sed 's/--download-ml//' Makefile > Makefile
-  
 }
 
 build() {
@@ -41,6 +40,11 @@ build() {
     --disable-schwarz 
   perl download/getall -a
   make PREFIX=/usr 
+}
+
+check() {
+  cd ff++
+  make check
 }
 
 package() {
