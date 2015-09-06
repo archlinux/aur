@@ -5,4 +5,5 @@ Exec=csoundqt
 Icon=csoundqt
 Terminal=false
 Type=Application
+MimeType=application/x-csoundqt
 Categories=Application;AudioVideo;Audio;

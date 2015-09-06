@@ -9,14 +9,19 @@ arch=('i686' 'x86_64')
 url="http://qutecsound.sourceforge.net/"
 license=('GPL3') # or, at your option, LGPL2
 depends=('csound' 'qt4' 'csound-doc')
+makedepends=('shared-mime-info')
 install="csoundqt.install"
 _rtmidi=rtmidi-2.1.0
 source=("http://sourceforge.net/projects/qutecsound/files/CsoundQt/${pkgver}/csoundqt-${pkgver}-src.tar.gz" 
         "csoundqt.desktop"
-        "http://www.music.mcgill.ca/~gary/rtmidi/release/${_rtmidi}.tar.gz")
+        "http://www.music.mcgill.ca/~gary/rtmidi/release/${_rtmidi}.tar.gz"
+        "csoundqt-mime.xml"
+        "csoundqt-icons.tar.gz")
 sha256sums=('873c699091e28064bc25f45a1081d583b42c4927061174f76cd8231ef1394feb'
-            '4cc7e3d77ce4daf558568f2633645658f565f71c5e6c9f441fd2ade5dd61b138'
-            'a0a59226614b878e7c32890cb7c38a6fe48a97082baf4913297d4c3958a9b3ac')
+            '6d08233ee50eec15bbcb59f1edcee56626264fb37590603bc88af4764e8dda9d'
+            'a0a59226614b878e7c32890cb7c38a6fe48a97082baf4913297d4c3958a9b3ac'
+            '2d78945761ff6f673ac93f7d879a691eb77466e73a40ef77e4a8f3c3c374d599'
+            'd2a7319315e77cd5f694a0d861772ea09d0a10cdcbaa9e0c6751b3b72fca5982')
 
 prepare() {
 # tarball doesn't have a root dir, extracting to $srcdir
@@ -39,10 +44,12 @@ package() {
   install -d "$pkgdir"/usr/{bin,share/{applications,csoundqt,doc/csoundqt}}
 
   install -Dm755 bin/CsoundQt-d-cs6 "$pkgdir"/usr/bin/csoundqt
-# desktop file and icon
+# desktop file and icons
   install -Dm644 "$srcdir"/csoundqt.desktop "$pkgdir"/usr/share/applications
-  install -Dm644 images/qtcs.png "$pkgdir"/usr/share/pixmaps/csoundqt.png
-  install -Dm644 images/* -t "$pkgdir"/usr/share/csoundqt/images
+  for size in 22 24 32 48 64 128 256 512; do
+    install -Dm644 "${srcdir}/${size}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/csoundqt.png"
+  done
 # docs
   install -Dm644 doc/*.pdf  -t "$pkgdir"/usr/share/doc/csoundqt  
   find examples -type f -print0 | xargs -0 -n1 -i{} install -Dm644 '{}' "$pkgdir"/usr/share/doc/csoundqt/'{}'
@@ -50,6 +57,7 @@ package() {
   find Examples -type f -print0 | xargs -0 -n1 -i{} install -Dm644 '{}' "$pkgdir"/usr/share/csoundqt/'{}'
 # pythonqt scripts: Install these if you want added python functionality
   #find Scripts -type f -print0 | xargs -0 -n1 -i{} install -Dm644 '{}' "$pkgdir"/usr/share/csoundqt/'{}'
+  install -Dm644 "$srcdir"/csoundqt-mime.xml "$pkgdir"/usr/share/mime/packages/csoundqt.xml
 }
 
 # vim: set tabstop=2 shiftwidth=2 expandtab
