@@ -1,7 +1,7 @@
 pkgbase = eclipse-jee
 	pkgdesc = Eclipse IDE for Java EE Developers
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eclipse.org
 	install = eclipse-jee.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = eclipse-jee
 	depends = webkitgtk2
 	provides = eclipse=4.5.0
 	conflicts = eclipse
+	conflicts = eclipse-common
 	source = eclipse.sh
 	source = eclipse.desktop
 	source = eclipse.ini.patch

@@ -6,14 +6,14 @@ _eclipse_name=mars
 _eclipse_release=R
 pkgname=eclipse-jee
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse IDE for Java EE Developers"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org"
 license=('EPL')
 depends=('java-environment>=6' 'gtk2' 'webkitgtk2')
 provides=("eclipse=${pkgver}")
-conflicts=('eclipse')
+conflicts=('eclipse' 'eclipse-common')
 install="${pkgname}.install"
 source=("eclipse.sh"
         "eclipse.desktop"
