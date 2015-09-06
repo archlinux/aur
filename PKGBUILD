@@ -4,7 +4,7 @@ pkgdesc="ROS - EusLisp ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-jade-geneus'
-pkgver='2.2.1'
+pkgver='2.2.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,8 +16,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-genmsg)
-depends=(${ros_depends[@]}
-  python2-rospkg)
+depends=(${ros_depends[@]})
 
 _tag=release/jade/geneus/${pkgver}-${_pkgver_patch}
 _dir=geneus
