@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.0
-Name=urxvt (client)
-Comment=An unicode capable rxvt clone client for urxvtd
-Exec=urxvtc
+Name=urxvt (tabbed)
+Comment=An unicode capable and tabbed rxvt clone
+Exec=urxvt-tabbed
 Icon=utilities-terminal
 Terminal=false
 Type=Application
