@@ -1,6 +1,6 @@
 pkgname=laszip
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Quickly turns bulky LAS files into compact LAZ files without information loss."
 arch=('i686' 'x86_64')
 url="http://www.laszip.org/"
@@ -17,5 +17,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-src-$pkgver"
   make DESTDIR="$pkgdir/" install
-  ln -s /usr/include/ laszip 
+  ln -s /usr/include/ $pkgdir/usr/include/laszip 
 }
