@@ -1,0 +1,31 @@
+pkgbase = nmap-svn
+	pkgdesc = A network exploration tool and security/port scanner
+	pkgver = r35224
+	pkgrel = 1
+	url = httpss://nmap.org
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	license = custom:nmap
+	makedepends = python2
+	makedepends = subversion
+	depends = pcre
+	depends = openssl
+	depends = libpcap>=1.0.0
+	depends = lua52
+	depends = libnl
+	optdepends = pygtk: zenmap
+	optdepends = sudo: privilege escalation for zenmap
+	optdepends = xterm: privilege escalation for zenmap
+	optdepends = kdebase-runtime: privilege escalation for zenmap
+	optdepends = gksu: privilege escalation for zenmap
+	provides = nmap
+	conflicts = nmap
+	options = !makeflags
+	source = svn+https://svn.nmap.org/nmap/
+	sha512sums = SKIP
+
+pkgname = nmap-svn
+
