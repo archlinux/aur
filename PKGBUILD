@@ -12,7 +12,7 @@ makedepends=('ocaml' 'ocaml-findlib' 'libmysqlclient')
 depends=(camlp4)
 options=('!strip' 'staticlibs')
 #install=
-source=(https://forge.ocamlcore.org/frs/download.php/1472/ocaml-mysql-$pkgver.tar.gz)
+source=(https://forge.ocamlcore.org/frs/download.php/1500/ocaml-mysql-$pkgver.tar.gz)
 md5sums=('81d3bf217e4ed1829b9ea19f037dce65')
 
 build() {
