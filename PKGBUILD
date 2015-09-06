@@ -3,7 +3,7 @@
 _pkgname="sdscp"
 pkgname="sdscp-git"
 
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 
 pkgdesc="External preprocessor and pre-compiler for SDS-C (by AN-D.cz)"
