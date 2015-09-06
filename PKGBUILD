@@ -23,7 +23,8 @@ build() {
   # Fix automake version mismatch
   autoreconf -i
 
-  ./configure --prefix=/usr
+  # Default compiler = clang, which can be a problem if using hardening-wrapper
+  CC=gcc ./configure --prefix=/usr
   make
 }
 
