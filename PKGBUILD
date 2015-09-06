@@ -20,7 +20,7 @@ depends=('python2'
          'python2-sqlalchemy'
          'python2-yaml'
          'python2-beautifulsoup4'
-         'python2-guessit'
+         'python2-guessit<0.10.4'
          'python2-html5lib'
          'python2-pyrss2gen' #AUR#
          'python2-progressbar'
