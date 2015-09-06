@@ -1,0 +1,13 @@
+pkgbase = prosody-mod-blocking
+	pkgdesc = XEP-0191: Simple Communications Blocking support
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://hg.prosody.im/prosody-modules/file/tip/mod_blocking
+	arch = any
+	license = MIT
+	depends = prosody
+	source = http://hg.prosody.im/prosody-modules/raw-file/tip/mod_blocking/mod_blocking.lua
+	sha1sums = febbf82f5b1735e87abf57c2eceefe0242aa27e5
+
+pkgname = prosody-mod-blocking
+
