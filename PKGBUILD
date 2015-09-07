@@ -12,11 +12,11 @@ makedepends=('go' 'godep' 'ruby' 'npm' 'python2')
 backup=('etc/webapps/mattermost/config.json')
 optdepends=('mariadb: SQL server storage'
             'percona-server: SQL server storage'
-						'postgresql: SQL server storage')
+            'postgresql: SQL server storage')
 install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$pkgver/$pkgname-$pkgver.tar.gz
         mattermost.service
-				mattermost-user.conf)
+        mattermost-user.conf)
 sha256sums=('935e842a7143959c6ad90e4c1d8286d0848e329c04ff13d020ddb7fa8700b8b2'
             'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
