@@ -1,15 +1,15 @@
 # Maintainer: Mikael Tillenius <mti at tillenius dot com>
 pkgname=libps2000
-pkgver=2.1.4_3r26
+pkgver=2.1.5_3r06
 pkgrel=1
 pkgdesc="library for picotech oscilloscope 2000 series"
 arch=('i686' 'x86_64')
 if [ "$CARCH" == "i686" ]; then
   _arch="i386"
-  _md5sum='4c5bc4091b2c73cd9cada069ee3fe6c5'
+  _md5sum='26a56f79063b646b961dc5d6bcfb6883'
 else
   _arch="amd64"
-  _md5sum='e09eee95639eb802cbad7eb371b01b77'
+  _md5sum='02cdd8ac1dfc709705226493ea5634df'
 fi
 url="http://www.picotech.com/linux.html"
 license=('custom')
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  dpkg --extract ${pkgname}_${pkgver//_/-}_${_arch}.deb $startdir/pkg/$pkgname
-  chmod -R go-w $startdir/pkg/$pkgname
-  chown -R root:root $startdir/pkg/$pkgname
+  dpkg --extract ${pkgname}_${pkgver//_/-}_${_arch}.deb $pkgdir
+  chmod -R go-w $pkgdir
+  chown -R root:root $pkgdir
 }
