@@ -3,14 +3,16 @@
 
 pkgname=grass
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 _shortver=${pkgver%.*}
 _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
 url='http://grass.osgeo.org/'
 license=('GPL')
-depends=('fftw' 'gdal' 'glu' 'xorg-server' 'wxpython' 'python2-matplotlib' 'python2-pillow')
+depends=('fftw' 'gdal' 'glu' 'wxpython' 'python2-pillow')
+makedepends=('libxt')
+optdepends=('postgresql: PostgreSQL database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
 sha256sums=('0987dd1618fde24b05785a502c7db8c09401a522a7a3ee50543068fab4eb405f')
 
@@ -30,8 +32,11 @@ build() {
 
   CPPFLAGS="" ./configure \
     --prefix=/opt/$pkgname \
-    --with-wxwidgets=/usr/bin/wx-config \
-    --with-freetype-includes=/usr/include/freetype2
+    --with-freetype-includes=/usr/include/freetype2 \
+    --with-wxwidgets \
+    --with-readline \
+    --with-geos \
+    --with-postgres
 
   make
 }
@@ -44,6 +49,6 @@ package() {
   sed -i "s|$pkgdir||g" "$pkgdir/opt/grass/demolocation/.grassrc$_shortver" "$pkgdir/usr/bin/grass$_shortver"
   sed -i "s|$srcdir||g" "$pkgdir/opt/grass/docs/html/t.connect.html"
 
-  install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/icons/grass.png"
+  install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/pixmaps/grass.png"
   install -Dm644 gui/icons/grass.desktop "$pkgdir/usr/share/applications/grass.desktop"
 }

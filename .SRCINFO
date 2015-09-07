@@ -1,18 +1,18 @@
 pkgbase = grass
 	pkgdesc = Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization
 	pkgver = 7.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://grass.osgeo.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = libxt
 	depends = fftw
 	depends = gdal
 	depends = glu
-	depends = xorg-server
 	depends = wxpython
-	depends = python2-matplotlib
 	depends = python2-pillow
+	optdepends = postgresql: PostgreSQL database interface
 	source = http://grass.osgeo.org/grass70/source/grass-7.0.1.tar.gz
 	sha256sums = 0987dd1618fde24b05785a502c7db8c09401a522a7a3ee50543068fab4eb405f
 
