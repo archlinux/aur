@@ -28,9 +28,13 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  export PATH="$srcdir/$pkgname-$pkgver:$PATH"
 
-  CPPFLAGS="" ./configure \
+  export PATH="$srcdir/$pkgname-$pkgver:$PATH"
+  export CFLAGS="$CPPFLAGS $CFLAGS"
+  export CXXFLAGS="$CPPFLAGS $CXXFLAGS"
+  unset CPPFLAGS
+
+  ./configure \
     --prefix=/opt/$pkgname \
     --with-freetype-includes=/usr/include/freetype2 \
     --with-wxwidgets \
