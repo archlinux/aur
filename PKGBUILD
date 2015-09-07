@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-pypdf2
-pkgver=1.24
+pkgver=1.25.1
 pkgrel=1
 pkgdesc="PDF toolkit"
 arch=('any')
@@ -24,4 +24,4 @@ package(){
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('87cbb41c24bd98e6f70a37bb4a97446c')
+md5sums=('ee5e5b01d00b120805e5049e56c6fd7c')
