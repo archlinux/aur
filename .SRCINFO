@@ -1,0 +1,19 @@
+pkgbase = libwbxml
+	pkgdesc = Library and Tools to parse, encode and handle WBXML documents
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = http://libwbxml.opensync.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = check
+	depends = expat
+	provides = wbxml2
+	conflicts = wbxml2
+	replaces = wbxml2
+	source = http://downloads.sourceforge.net/libwbxml/libwbxml-0.11.3.tar.bz2
+	sha256sums = ceeb6ffd71b636dfdb7bddce9f5eddc2907823cb5f1ba2918a66833e225b5d02
+
+pkgname = libwbxml
+
