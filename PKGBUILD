@@ -1,57 +1,46 @@
+# Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
+# Contributor: hagabaka
+
 pkgname='peazip-qt-build'
-pkgver='5.5.3'
-pkgrel=2
+pkgver=5.7.2
+pkgrel=1
 pkgdesc='Free cross-platform file archiver (compiles from source)'
 license='GPL3'
 url='http://peazip.org'
-
 arch=('i686' 'x86_64')
 depends=('qt4pas')
 makedepends=('lazarus-qt' 'icoutils')
-provides=('peazip-qt')
-conflicts=('peazip-qt')
-
-source=("http://sourceforge.net/projects/peazip/files/${pkgver}/peazip-${pkgver}.src.zip"
-        'peazip.desktop'
-        'altconf.txt')
-md5sums=('58c518ebc8c4020d0e3ec1778faa6fd7'
-         '6fef20588a593e13c218cc9863a4fd5c'
-         'd9ba7d703137b28770d1aa64d8ea6a28')
-_extractdir="peazip-${pkgver}.src"
+provides=('peazip')
+conflicts=('peazip''peazip-gtk2' 'peazip-qt')
+install=peazip.install
+source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip"
+        "https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.Qt.tar.gz")
+sha256sums=('a1eb6088291994d3646fc63e8470a46dc7e5d08803c9133a766babab1f3c33c2'
+            '49ccd1f3c3cb996fee6d7f16bbe9a07911d59fbbdaa612e7079485ea3d87bb48')
 
 build() {
-  cd "$srcdir/$_extractdir"
-  lazbuild --widgetset=qt project_pea.lpi   && [ -f pea ]
-  lazbuild --widgetset=qt project_gwrap.lpi && [ -f pealauncher ]
-  lazbuild --widgetset=qt project_peach.lpi && [ -f peazip ]
-
-  mkdir -p icons
-  icotool --extract --output='icons' 'res/icons/PeaZip.ico'
-  for icon in icons/*.png; do
-    _size="$(basename "$icon" | grep -o '[0-9]\+x[0-9]\+')"
-    mv "$icon" "$(_dir icons/$_size/apps)/peazip.png"
-  done
-}
-
-# Create directory if non-existent, and print the directory name
-_dir() {
-  mkdir -p "$1"
-  echo "$1"
+  cp -Rf "$srcdir/peazip_portable-$pkgver.LINUX.Qt/res" "$srcdir/peazip-$pkgver.src"
+  cd "$srcdir/peazip-$pkgver.src"
+  sudo lazbuild --widgetset=qt  project_pea.lpi   && [ -f pea ]
+  sudo lazbuild --widgetset=qt  project_gwrap.lpi && [ -f pealauncher ]
+  sudo lazbuild --widgetset=qt  project_peach.lpi && [ -f peazip ]
+  icotool -x -w 256 "./res/icons/PeaZip.ico" -o "$srcdir/peazip-$pkgver.src/peazip.png"
 }
 
 package() {
-  _installdir="opt/peazip"
-
-  cd "$srcdir/$_extractdir"
-  install -Dm755 peazip "$pkgdir/$_installdir/peazip"
-
-  mv res "$pkgdir/$_installdir"
-  install -Dm755 pea "$pkgdir/$_installdir/res/pea"
-  install -Dm755 pealauncher "$pkgdir/$_installdir/res/pealauncher"
-  install -Dm644 "$srcdir/altconf.txt" "$pkgdir/$_installdir/res/altconf.txt"
-
-  ln -s "/$_installdir/peazip" "$(_dir "$pkgdir/usr/bin")/peazip"
-  mv icons/* "$(_dir "$pkgdir/usr/share/icons/hicolor/")"
-  install -Dm644 "$srcdir/peazip.desktop" "$pkgdir/usr/share/applications/peazip.desktop"
+  _resdir="$pkgdir/opt/peazip/res"
+  cd "$srcdir/peazip-$pkgver.src/res"
+  install -Dm755 "../peazip" "$pkgdir/opt/peazip/peazip"
+  install -Dm755 "../pea" "$_resdir/pea"
+  install -Dm755 "../pealauncher" "$_resdir/pealauncher"
+  install -Dm644 "../peazip.png" "$pkgdir/usr/share/pixmaps/peazip.png"
+  # Install res directory
+  for i in rnd arc/{arc,*.sfx}; do install -Dm755 $i "$_resdir"/$i; done
+  for i in *.txt lang/* themes/{{nographic,seven}-embedded/*,*.7z} arc/arc.{ini,groups}
+    do install -Dm644 $i "$_resdir"/$i; done
+  for i in 7z/{7z{,.so,Con.sfx,.sfx},Codecs/Rar29.so}; do install -Dm755 $i "$_resdir"/$i; done
+  for i in quad/bcm upx/upx lpaq/lpaq8 paq/paq8o zpaq/zpaq; do install -Dm755 $i "$_resdir"/$i; done
+  #
+  desktop-file-install --dir="$pkgdir/usr/share/applications/" --set-icon="peazip"\
+  --remove-key="Name[en_US]" "$srcdir/peazip-$pkgver.src/FreeDesktop_integration/peazip.desktop"
 }
-
