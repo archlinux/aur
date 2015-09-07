@@ -1,7 +1,7 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
 
 pkgname=glbinding-git
-pkgver=v1.1.0.r33.gfa8559d
+pkgver=v1.1.0.r34.gf7d082c
 pkgrel=1
 pkgdesc="A generated C++ binding for the OpenGL API, generated using the gl.xml specification. (git version)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,8 @@ url="https://github.com/hpicgs/glbinding"
 license=('MIT')
 
 depends=('libgl')
-makedepends=('cmake' 'git' 'gmock' 'gtest')
+makedepends=('cmake' 'git')
+checkdepends=('gmock' 'gtest')
 conflicts=('glbinding')
 
 source=("$pkgname"::'git+https://github.com/hpicgs/glbinding.git')
