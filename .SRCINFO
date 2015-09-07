@@ -1,0 +1,15 @@
+pkgbase = prosody-mod-vjud
+	pkgdesc = XEP-0055: Jabber Search
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = http://hg.prosody.im/prosody-modules/file/tip/mod_vjud
+	arch = any
+	license = MIT
+	depends = prosody
+	source = http://hg.prosody.im/prosody-modules/raw-file/tip/mod_vjud/mod_vjud.lua
+	source = http://hg.prosody.im/prosody-modules/raw-file/tip/mod_vjud/vcard.lib.lua
+	sha1sums = fafe8fe8f5b83b6b3af04ed55935be2b3923c681
+	sha1sums = ca404b878624253f2b38a0841e03064be399dd50
+
+pkgname = prosody-mod-vjud
+
