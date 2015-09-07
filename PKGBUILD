@@ -9,7 +9,7 @@ _build_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.0.RC2.r187.ga022019
+pkgver=v0.6.0.RC2.r242.gb8e3a43
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
             '44ea7d8b0208e8954391184dcbb8ff94b2efc246580057a1d2b2e73ad262aad2')
 
 # Add missing dependencies if needed
-[[ $_build_voip == true ]] && depends=(${depends[@]} 'speex' 'opencv')
+[[ $_build_voip == true ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ $_build_feedreader == true ]] && depends=(${depends[@]} 'curl' 'libxslt')
 
 pkgver() {
