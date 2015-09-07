@@ -9,7 +9,7 @@ arch=('any')
 url="https://launchpad.net/murrine-themes"
 depends=('gtk-engine-murrine')
 source=(https://launchpad.net/ubuntu/+archive/primary/+files/murrine-themes_0.98.6ubuntu1.tar.gz)
-sha1sums=('0f6d64a0bb3eb8aa7e5c85eab92cd1d3')
+md5sums=('0f6d64a0bb3eb8aa7e5c85eab92cd1d3')
 
 package() {
   mkdir -p "$pkgdir/usr/share/themes"
