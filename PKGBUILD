@@ -11,6 +11,7 @@ makedepends=('git' 'texinfo' 'perl')
 provides=('auctex')
 conflicts=('auctex')
 install=auctex.install
+backup=(var/auctex/.nosearch)
 options=('!makeflags')
 source=('git://git.sv.gnu.org/auctex.git')
 md5sums=('SKIP')
@@ -32,5 +33,4 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir" install
-  rm $pkgdir/var/auctex/.nosearch
 }
