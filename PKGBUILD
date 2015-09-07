@@ -1,7 +1,7 @@
 # First Linux Arch packager: Serge Victor <arch@random.re>
 
 _pipname=Flask-APScheduler
-pkgbase=python-flask-bootstrap
+pkgbase=python-flask-apscheduler
 pkgname=('python2-flask-apscheduler' 'python-flask-apscheduler')
 pkgver=1.0.0
 pkgrel=1
@@ -19,14 +19,14 @@ prepare() {
 }
 
 package_python2-flask-apscheduler() {
-depends=('python2-flask' 'python2-visitor' 'python2-dominate')
+depends=('python2-flask' 'python-apscheduler')
 
     cd python2-$_pipname-$pkgver
     python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python-flask-apscheduler() {
-depends=('python-flask' 'python-visitor' 'python-dominate')
+depends=('python-flask' 'python-apscheduler')
 
     cd $_pipname-$pkgver 
     python setup.py install --root="$pkgdir/" --optimize=1
