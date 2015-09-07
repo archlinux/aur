@@ -1,0 +1,14 @@
+pkgbase = modman
+	pkgdesc = Magento Module Manager
+	pkgver = 1.12
+	pkgrel = 2
+	url = https://github.com/colinmollenhour/modman
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = bash
+	source = https://github.com/colinmollenhour/modman/archive/1.12.zip
+	sha1sums = fdfaa44335214744b91e74fdbe31204dea92d9dc
+
+pkgname = modman
+
