@@ -1,0 +1,15 @@
+pkgbase = gba-pkm-save-edit-git
+	pkgdesc = A commandline application to edit save files of Pokémon-games for the GBA
+	pkgver = 0.r168.5ba5342
+	pkgrel = 1
+	url = https://github.com/phijor/gba-pkm-save-edit
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	source = gba-pkm-save-edit-git::git+https://github.com/phijor/gba-pkm-save-edit.git
+	md5sums = SKIP
+
+pkgname = gba-pkm-save-edit-git
+
