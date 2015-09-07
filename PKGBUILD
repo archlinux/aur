@@ -2,7 +2,7 @@
 
 _gitname=gba-pkm-save-edit
 pkgname=${_gitname}-git
-pkgver=0.r168.5ba5342
+pkgver=0.r182.6d57a66
 pkgrel=1
 pkgdesc="A commandline application to edit save files of Pokémon-games for the GBA"
 arch=('x86_64')
