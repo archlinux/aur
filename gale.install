@@ -1,0 +1,19 @@
+# -*- shell-script -*-
+post_install() {
+  if ! getent passwd gale &> /dev/null; then
+    useradd -r -g daemon -d /var/lib/gale -m -s /sbin/nologin gale
+  fi
+  chown -R gale:daemon /etc/gale
+}
+
+post_remove() {
+  # don't try to remove a non-local account
+  if getent -s files passwd gale 2> /dev/null; then
+    userdel gale
+  fi
+}
+
+# Local Variables:
+# sh-basic-offset: 2
+# sh-indentation: 2
+# End:

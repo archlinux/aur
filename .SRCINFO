@@ -1,8 +1,10 @@
 pkgbase = gale-git
-	pkgdesc = Gale is instant messaging software
-	pkgver = 20130622
+	pkgdesc = A distributed, real-time instant messaging system
+	pkgver = 1.1.r17.ge012127
 	pkgrel = 1
-	url = http://www.gale.org
+	epoch = 1
+	url = http://gale.org
+	install = gale.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -11,6 +13,8 @@ pkgbase = gale-git
 	depends = gc
 	depends = openssl
 	depends = adns
+	source = gale::git+https://github.com/grawity/gale.git
+	sha1sums = SKIP
 
 pkgname = gale-git
 

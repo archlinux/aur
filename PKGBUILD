@@ -1,40 +1,48 @@
-# Maintainer: nandub <dev@nandub.info>
+# Maintainer: Fernando Ortiz <nandub+arch [at] nandub.info>
+# Contributor: Mark Laws <mdl [at] 60hz.org>
+
+_pkgname=gale
 pkgname=gale-git
-pkgver=20130622
+epoch=1
+pkgver=1.1.r17.ge012127
 pkgrel=1
-pkgdesc="Gale is instant messaging software"
+pkgdesc="A distributed, real-time instant messaging system"
 arch=('i686' 'x86_64')
-url="http://www.gale.org"
+url="http://gale.org"
 license=('GPL2')
 depends=('bash' 'gc' 'openssl' 'adns')
 makedepends=('git')
+install="${_pkgname}.install"
+source=("${_pkgname}::git+https://github.com/grawity/${_pkgname}.git")
+sha1sums=('SKIP')
 
-_gitroot=https://github.com/grawity/gale.git
-_gitname=gale
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --tags | sed 's/^v//; s/-/.r/; s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+
+  if [[ ! -f configure ]]; then
+    ./bootstrap
+  fi
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$srcdir/$_pkgname"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone --depth=1 "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  cd "$srcdir/$_gitname"
-
-  ./bootstrap && ./configure --prefix=/usr || exit 1
-  make 
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make -j1 # parallel builds seem to be broken
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_pkgname"
+
   make DESTDIR="$pkgdir" install
+  # install fails if sbindir = bindir
+  mv -f "$pkgdir/usr/sbin/gksign" "$pkgdir/usr/bin/"
+  rmdir "$pkgdir/usr/sbin"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: set ts=2 sw=2 et:
