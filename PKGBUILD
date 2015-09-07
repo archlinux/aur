@@ -3,7 +3,7 @@
 # Contributor: csslayer <wengxt [AT] gmail.com>
 # Contributor: Felix Yan <felixonmars [AT] gmail.com>
 pkgbase=sogou
-pkgname=fcitx-sogoupinyin
+pkgname=sogou
 pkgver=1.2.0.0056
 pkgrel=1
 pkgdesc="Sogou Pinyin for Linux"
