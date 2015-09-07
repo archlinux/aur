@@ -1,0 +1,4 @@
+post_install() {
+  echo 'Please read and agree to the EULA at'
+  echo 'less /usr/share/pixeluvo/PixeluvoEULA.txt'
+}
