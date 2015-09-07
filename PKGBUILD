@@ -2,7 +2,7 @@
 
 pkgname='profile-sync-daemon-git'
 _pkgname='profile-sync-daemon'
-pkgver=6.00pre.r15.g3be12b2.unstable
+pkgver=6.02.r2.g5ebb90a.unstable
 pkgrel=1
 pkgdesc='Syncs browser profiles to tmpfs. Unstable git version!'
 arch=('any')
@@ -13,15 +13,15 @@ makedepends=('git')
 conflicts=('firefox-sync' 'goanysync' 'go-anysync-git' 'iceweasel-sync'
 'tmpfs-store' 'tmpfs-sync' 'user-profile-sync-daemon' 'profile-sync-daemon')
 provides=('profile-sync-daemon')
-source=("git://github.com/graysky2/profile-sync-daemon#branch=unstable")
+_branch='unstable'
+source=("git://github.com/graysky2/profile-sync-daemon#branch=$_branch")
 backup=('etc/psd.conf')
 install=psd.install
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	echo $(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g').unstable
-	#echo $(git rev-parse --short unstable)
+	echo $(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g').$_branch
 }
 
 prepare() {
