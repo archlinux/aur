@@ -2,8 +2,8 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python2-pypdf2
-pkgver=1.24
-pkgrel=2
+pkgver=1.25.1
+pkgrel=1
 pkgdesc="PDF toolkit"
 arch=('any')
 url="http://mstamy2.github.com/PyPDF2"
@@ -19,4 +19,4 @@ package(){
 }
 
 # vim:ts=2:sw=2:et:
-sha256sums=('aca40d5155524120fceaf2eb4ae054480b8a2b6ffcfa0a2e77e3e45666428c64')
+sha256sums=('43d324f70f8994c25a08e6edc02ec2d5c1e84c9231d3537f785b3f97641182eb')
