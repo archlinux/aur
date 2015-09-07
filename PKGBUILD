@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=opencubicplayer
 pkgname=opencubicplayer-git
-pkgver=0.1.22.r60.2393631
+pkgver=0.1.22.r62.3a44284
 pkgrel=1
 pkgdesc="A music file player for Linux, Unix, DOS and Windows 95-ME, XP."
 arch=('i686' 'x86_64')
