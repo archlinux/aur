@@ -5,8 +5,8 @@
 
 pkgname=mpv-vapoursynth
 _pkgname=mpv
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -23,7 +23,7 @@ conflicts=($_pkgname)
 options=('!emptydirs' '!buildflags')
 install=mpv.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('ed1384e703f7032e531731842e4da4f7')
+sha256sums=('f9eaec3e4f6094c4d889ab04f86c479a089c389616e1a5522c92fedb2fe7044c')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -46,6 +46,7 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
+  
   ./waf install --destdir="$pkgdir"
 
   install -d "$pkgdir"/usr/share/doc/mpv/examples
