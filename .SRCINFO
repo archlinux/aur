@@ -1,0 +1,13 @@
+pkgbase = prosody-mod-pubsub-feeds
+	pkgdesc = Subscribe to Atom and RSS feeds over pubsub
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = http://hg.prosody.im/prosody-modules/file/tip/mod_pubsub_feeds
+	arch = any
+	license = MIT
+	depends = prosody
+	source = http://hg.prosody.im/prosody-modules/raw-file/tip/mod_pubsub_feeds/mod_pubsub_feeds.lua
+	sha1sums = 4daa02600074059c9c06221a7591894a59a8a4c3
+
+pkgname = prosody-mod-pubsub-feeds
+
