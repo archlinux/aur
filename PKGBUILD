@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=opencubicplayer
 pkgname=opencubicplayer-git
-pkgver=0.1.21.r60.2393631
+pkgver=0.1.22.r60.2393631
 pkgrel=1
 pkgdesc="A music file player for Linux, Unix, DOS and Windows 95-ME, XP."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_name}"
-    printf "%s.r%s.%s" "$(grep VERSION Changelog|tail -n 1|sed 's/.* //g')" \
+    printf "%s.r%s.%s" "$(grep \^AC_INIT configure.ac|cut -d, -f2|xargs)" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

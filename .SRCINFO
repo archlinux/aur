@@ -1,6 +1,6 @@
 pkgbase = opencubicplayer-git
 	pkgdesc = A music file player for Linux, Unix, DOS and Windows 95-ME, XP.
-	pkgver = 0.1.21.r60.2393631
+	pkgver = 0.1.22.r60.2393631
 	pkgrel = 1
 	url = http://stian.cubic.org/project-ocp.php
 	install = opencubicplayer-git.install
