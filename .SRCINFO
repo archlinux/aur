@@ -1,0 +1,25 @@
+pkgbase = sogou
+	pkgdesc = Sogou Pinyin for Linux
+	pkgver = 1.2.0.0056
+	pkgrel = 1
+	url = http://pinyin.sogou.com/linux/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = fcitx
+	depends = opencc
+	depends = libidn
+	depends = fcitx-qt4
+	depends = lsb-release
+	depends = xorg-xprop
+	source = http://download.ime.sogou.com/1432523940/sogoupinyin_1.2.0.0056_amd64.deb
+	source = http://7xizf7.com1.z0.glb.clouddn.com/sogou-autostart
+	source = http://7xizf7.com1.z0.glb.clouddn.com/fcitx-qimpanel.real
+	source = http://7xizf7.com1.z0.glb.clouddn.com/fcitx-qimpanel
+	md5sums = 47cd879b6b340391705f9a4e389045d9
+	md5sums = 60b1dcd637c932cf4f3bfaed797f5401
+	md5sums = b55df1dffa61fb1af40199a8e1b2244b
+	md5sums = 62b2b974c475bab9f6cf6d5ee83b984a
+
+pkgname = fcitx-sogoupinyin
+
