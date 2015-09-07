@@ -77,7 +77,7 @@ package() {
 
 	sed -e 's@"StorageDirectory": ".*"@"StorageDirectory": "/var/lib/mattermost/"@g' \
 	    -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
-			"$srcdir"/platform-$pkgver/config/config.json > "$pkgdir"/etc/webapps/mattermost/config.json
+	    "$srcdir"/platform-$pkgver/config/config.json > "$pkgdir"/etc/webapps/mattermost/config.json
 
 	ln -s /etc/webapps/mattermost/config.json config/config.json
 
