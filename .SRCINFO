@@ -1,0 +1,36 @@
+pkgbase = pom-ng-git
+	pkgdesc = Packet-o-Matic real time network packet capture forensic tool
+	pkgver = 0.0.18.r53.g497861c
+	pkgrel = 1
+	url = http://www.packet-o-matic.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = binutils
+	makedepends = make
+	makedepends = libtool
+	makedepends = pkg-config
+	depends = libxml2
+	depends = libmicrohttpd
+	depends = xmlrpc-c
+	depends = lua51
+	depends = uthash
+	depends = file
+	depends = libpcap
+	depends = zlib
+	depends = libexif
+	depends = sqlite
+	optdepends = libjpeg: analyze jpeg images
+	optdepends = libexif: parse exif data from jpeg images
+	optdepends = pom-ng-webui: view and manage from a browser
+	optdepends = pom-ng-console: view and manage from a console
+	optdepends = pom-ng-addons
+	provides = pom-ng=0.0.18
+	conflicts = pom-ng
+	source = POM-NG-GIT::git://github.com/gmsoft-tuxicoman/pom-ng.git
+	sha256sums = SKIP
+
+pkgname = pom-ng-git
+
