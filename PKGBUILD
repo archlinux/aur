@@ -20,4 +20,5 @@ package() {
   npm config set strict-ssl false
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
   npm config set strict-ssl true
+  rmdir "${pkgdir}/usr/etc"
 }
