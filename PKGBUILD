@@ -19,7 +19,7 @@ pkgver() {
 }
 
 package() {
-  cd "$SRCDEST"
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}"/usr/bin/
   install -Dm755 jsawk "${pkgdir}"/usr/bin/jsawk
 
