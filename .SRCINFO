@@ -1,14 +1,19 @@
 pkgbase = pypy-virtualenv
-	pkgdesc = Virtual Python Environment builder
-	pkgver = 13.0.3
+	pkgdesc = Virtual Python Environment builder for pypy
+	pkgver = 13.1.2
 	pkgrel = 1
-	url = http://www.virtualenv.org/
+	url = https://virtualenv.pypa.io/
 	arch = any
 	license = MIT
-	depends = pypy
-	depends = pypy3
-	source = http://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.0.3.tar.gz
-	md5sums = cd2043ea72448d65dcc54d33744c2214
+	makedepends = pypy
+	makedepends = pypy3
+	source = http://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.1.2.tar.gz
+	md5sums = b989598f068d64b32dead530eb25589a
+	sha256sums = aabc8ef18cddbd8a2a9c7f92bc43e2fea54b1147330d65db920ef3ce9812e3dc
 
 pkgname = pypy-virtualenv
+	depends = pypy
+
+pkgname = pypy3-virtualenv
+	depends = pypy3
 
