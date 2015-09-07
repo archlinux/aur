@@ -4,10 +4,10 @@
 pkgname=python2-gphoto2
 _pkgname=python-gphoto2
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="python interface to libgphoto2"
 arch=('any')
-url="https://bibtexparser.readthedocs.org/"
+url="https://pypi.python.org/pypi/gphoto2/"
 license=('GPL3')
 depends=('python2' 'libgphoto2' 'swig')
 makedepends=('python2-setuptools')
