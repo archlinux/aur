@@ -1,0 +1,16 @@
+pkgbase = vkeybd
+	pkgdesc = A virtual MIDI keyboard for X
+	pkgver = 0.1.18d
+	pkgrel = 2
+	url = http://www.alsa-project.org/~tiwai/alsa.html#vkeybd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = tk
+	source = ftp://ftp.suse.com/pub/people/tiwai/vkeybd/vkeybd-0.1.18d.tar.bz2
+	md5sums = 5c7bd16e2903866f949879b885953a2b
+	sha256sums = aa683ed57592489e05fdd898368abe3ee245a4d5829385cfe5edb81764590704
+
+pkgname = vkeybd
+
