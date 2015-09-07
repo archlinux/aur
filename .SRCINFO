@@ -9,6 +9,7 @@ pkgbase = minetest-git-leveldb
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = clang
 	depends = bzip2
 	depends = libpng
 	depends = libjpeg
