@@ -1,0 +1,21 @@
+pkgbase = ploticus
+	pkgdesc = produce plots and graphs in GIF, PNG, PostScript, SVG from CSV like data
+	pkgver = 2.41
+	pkgrel = 1
+	url = http://ploticus.sourceforge.net/doc/welcome.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gd
+	depends = libpng
+	depends = libjpeg
+	depends = freetype2
+	depends = zlib
+	depends = libx11
+	source = http://prdownloads.sourceforge.net/sourceforge/ploticus/pl241src.tar.gz
+	source = Makefile.patch
+	sha256sums = ecccb6afcf0008d5b31da2e9e74c448564101eb7b9bbde758a3dca1f2dc8c580
+	sha256sums = f0b1acc10a35b1d3c4268ee67c2520af36044991e289d538c1cb5b7bc406d4e4
+
+pkgname = ploticus
+

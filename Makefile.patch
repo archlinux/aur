@@ -1,0 +1,81 @@
+--- pl241src/src/Makefile.backup	2010-08-25 17:23:27.678303158 -0400
++++ pl241src/src/Makefile	2010-08-25 17:23:35.078302786 -0400
+@@ -25,21 +25,21 @@
+ 
+ 
+ ############ Option 1: build the pl executable (unix), no X11 ....
+-NOX11 = -DNOX11
++#NOX11 = -DNOX11
+ 
+ 
+ 
+ ############ Option 2: build the pl executable (unix), with X11 enabled .... 
+-# NOX11 = 
+-# XOBJ = x11.o interact.o
++NOX11 = 
++XOBJ = x11.o interact.o
+ 
+ ############ ...AND... activate the lines below for your platform... (X11 libs & header files)
+ #### linux
+ # XLIBS = -L/usr/X11R6/lib -lX11
+ # XINCLUDEDIR = -I/usr/X11R6/include
+ #### alt linux
+-# XLIBS = -lX11
+-# XINCLUDEDIR = -I/usr/include/X11
++XLIBS = -lX11
++XINCLUDEDIR = -I/usr/include/X11
+ #### 64bit linux
+ # XLIBS = -L/usr/X11R6/lib64 -lX11
+ #### solaris
+@@ -89,10 +89,10 @@
+ 
+ 
+ ########### Option 1: use bundled GD16 (PNG only).  Requires libpng and zlib.
+-exetarget: plpng 
+-GD16LIBS = -lpng -lz
+-GD16H = 
+-ZFLAG = -DWZ
++#exetarget: plpng 
++#GD16LIBS = -lpng -lz
++#GD16H = 
++#ZFLAG = -DWZ
+ 
+ ########### Option 2: use bundled GD13 (pseudoGIF only). No additional lib dependencies.
+ # exetarget: pl 
+@@ -106,11 +106,11 @@
+ 
+ ########### Option 4: use your own GD resource with FreeType2 fonts enabled.  
+ ###########           Requires GD 1.84+, libpng, zlib, libjpeg and libfreetype
+-# exetarget: plgd18 
+-# GD18LIBS = -lgd -lpng -lz -ljpeg -lfreetype
+-# GD18H = 
+-# GDFREETYPE = -DGDFREETYPE
+-# ZFLAG = -DWZ
++exetarget: plgd18 
++GD18LIBS = -lgd -lpng -lz -ljpeg -lfreetype
++GD18H = 
++GDFREETYPE = -DGDFREETYPE
++ZFLAG = -DWZ
+ 
+ ########### Option 5: don't use GD at all.
+ # exetarget: plnogd 
+@@ -133,7 +133,7 @@
+ #### To set a hard-coded directory for prefabs files, uncomment & edit the following..
+ #### If done, users won't be required to have PLOTICUS_PREFABS environment variable defined.
+ #### This option not available for win32
+-# PREFABS_DIR = "/usr/lib/ploticus/prefabs"
++PREFABS_DIR = "/usr/share/ploticus"
+ 
+ 
+ #### If you do a "make install", where do you want the executable(s) to be moved to?
+@@ -141,8 +141,8 @@
+ 
+ 
+ #### For LOCALE support (non-roman alphabets & collation), uncomment the following..
+-# LOCALEOBJ = localef.o
+-# LOCALE_FLAG = -DLOCALE
++LOCALEOBJ = localef.o
++LOCALE_FLAG = -DLOCALE
+ 
+ #### SVG output is always available by default.
+ #### If you want compressed SVG (.svgz), and you selected GD13 or no GD above, 
