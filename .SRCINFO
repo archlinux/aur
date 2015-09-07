@@ -1,6 +1,6 @@
 pkgbase = obozrenie-git
 	pkgdesc = Simple and easy to use game server browser
-	pkgver = r56.ea4fe18
+	pkgver = r65.d0ac6de
 	pkgrel = 1
 	url = http://github.com/obozrenie
 	install = obozrenie.install
