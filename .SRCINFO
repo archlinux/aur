@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-murrine-collection
+	pkgdesc = A collection of Murrine GTK2 themes
+	pkgver = 0.98.6
+	pkgrel = 1
+	url = https://launchpad.net/murrine-themes
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/murrine-themes_0.98.6ubuntu1.tar.gz
+	sha1sums = 0f6d64a0bb3eb8aa7e5c85eab92cd1d3
+
+pkgname = gtk-theme-murrine-collection
+
