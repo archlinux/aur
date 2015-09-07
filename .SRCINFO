@@ -1,7 +1,7 @@
 pkgbase = mininet
 	pkgdesc = Process-based network emulator (stable branch)
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mininet/mininet/
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = mininet
 	depends = iperf
 	optdepends = openvswitch
 	optdepends = xorg-xhost
-	source = git://github.com/mininet/mininet.git
-	md5sums = SKIP
+	source = https://github.com/mininet/mininet/archive/2.2.1.tar.gz
+	sha256sums = e4c20a6ab4ddfe4d5cad06ba25742507967df67a845dbe2e90d627af7cd21705
 
 pkgname = mininet
 
