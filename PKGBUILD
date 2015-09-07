@@ -4,7 +4,7 @@
  
 pkgname=audio-recorder
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free audio-recorder for Linux"
 arch=('i686' 'x86_64')
 url='https://launchpad.net/~audio-recorder'
