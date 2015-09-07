@@ -1,68 +1,101 @@
-Added support for IKEv2 make-before-break reauthentication. By using a global
-CHILD_SA reqid allocation mechanism, charon supports overlapping CHILD_SAs.
-This allows the use of make-before-break instead of the previously supported
-break-before-make reauthentication, avoiding connectivity gaps during that
-procedure. As the new mechanism may fail with peers not supporting it (such
-as any previous strongSwan release) it must be explicitly enabled using
-the charon.make_before_break strongswan.conf option.
+Added support for the ChaCha20/Poly1305 AEAD cipher specified in RFC 7539 and
+RFC 7634 using the chacha20poly1305 ike/esp proposal keyword.
 
-Support for Signature Authentication in IKEv2 (RFC 7427) has been added.
-This allows the use of stronger hash algorithms for public key authentication.
+The new chapoly plugin implements the cipher, if possible SSE-accelerated on x86/x64
+architectures. It is usable both in IKEv2 and the strongSwan libipsec ESP backend.
+On Linux 4.2 or newer the kernel-netlink plugin can configure the cipher for ESP SAs.
+The vici/swanctl interface now supports the configuration of auxiliary certification
+authority information as CRL and OCSP URIs.
 
-By default, signature schemes are chosen based on the strength of the
-signature key, but specific hash algorithms may be configured in leftauth.
-Key types and hash algorithms specified in rightauth are now also checked
-against IKEv2 signature schemes. If such constraints are used for certificate
-chain validation in existing configurations, in particular with peers that
-don't support RFC 7427, it may be necessary to disable this feature with the
-charon.signature_authentication_constraints setting, because the signature
-scheme used in classic IKEv2 public key authentication may not be strong
-enough.
+In the bliss plugin the c_indices derivation using a SHA-512 based random oracle
+has been fixed, generalized and standardized by employing the MGF1 mask generation
+function with SHA-512. As a consequence BLISS signatures unsing the improved oracle
+are not compatible with the earlier implementation.
 
-The new connmark plugin allows a host to bind conntrack flows to a specific
-CHILD_SA by applying and restoring the SA mark to conntrack entries. This
-allows a peer to handle multiple transport mode connections coming over the
-same NAT device for client-initiated flows (a common use case is to protect
-L2TP/IPsec). See ikev2/host2host-transport-connmark for an example.
+Support for auto=route with right=%any for transport mode connections has been
+added (refer to #196-6 for details and some examples).
 
-The forecast plugin can forward broadcast and multicast messages between
-connected clients and a LAN. For CHILD_SA using unique marks, it sets up
-the required Netfilter rules and uses a multicast/broadcast listener that
-forwards such messages to all connected clients. This plugin is designed for
-Windows 7 IKEv2 clients, which announce their services over the tunnel if the
-negotiated IPsec policy allows it. See ikev2/forecast for an example.
+The starter daemon does not flush IPsec policies and SAs anymore when it is stopped.
+Already existing duplicate policies are now overwritten by the IKE daemon when it
+installs its policies (695112d7b8, dc2fa791e4). Usually, there shouldn't be any
+leftovers after the IKE daemon has been properly terminated, but if it crashes the kernel
+state won't be cleaned up. Because earlier releases couldn't handle already existing
+duplicate policies in the kernel, the starter daemon flushed them during shutdown so
+the daemon would find a clean slate when was restarted. Since existing policies are not
+a problem anymore this is no longer necessary. And in situations where installpolicies=no
+is used policies shouldn't be flushed blindly anyway.
 
-For the vici plugin a Python Egg has been added to allow Python applications
-to control or monitor the IKE daemon using the VICI interface, similar to the
-existing ruby gem. The Python library has been contributed by Björn Schuberg.
+Init limits can now optionally be enforced when initiating SAs via VICI. For this IKE_SAs
+initiated by the daemon are now also counted as half-open SAs, which, as a side-effect,
+fixes the status output while connecting (e.g. in ipsec status).
 
-EAP server methods now can fulfill public key constraints, such as rightcert
-or rightca. Additionally, public key and signature constraints can be
-specified for EAP methods in the rightauth keyword. Currently the EAP-TLS and
-EAP-TTLS methods provide verification details to constraints checking.
+Symmetric configuration of EAP methods in left|rightauth is now possible when mutual
+EAP-only authentication is used (previously, the client had to configure rightauth=eap
+or rightauth=any, which prevented it from using this same config as responder).
 
-Upgrade of the BLISS post-quantum signature algorithm to the improved BLISS-B
-variant. Can be used in conjunction with the SHA256, SHA384 and SHA512 hash
-algorithms with SHA512 being the default.
+The initiator flag in the IKEv2 header is compared again (wasn't the case since 5.0.0) and
+packets that have the flag set incorrectly are again ignored (47a340e1f7, 5fee79d854).
 
-The IF-IMV 1.4 interface now makes the IP address of the TNC access requestor
-as seen by the TNC server available to all IMVs. This information can be
-forwarded to policy enforcement points (e.g. firewalls or routers).
+Implemented a demo Hardcopy Device IMC/IMV pair based on the "Hardcopy Device Health
+Assessment Trusted Network Connect Binding" (HCD-TNC) document drafted by the IEEE
+Printer Working Group (PWG), see HCD-IMC and HCD-IMV.
 
-The new mutual tnccs-20 plugin parameter activates mutual TNC measurements
-in PB-TNC half-duplex mode between two endpoints over either a PT-EAP or
-PT-TLS transport medium.
+Fixed IF-M segmentation which failed in the presence of multiple small attributes in front
+of a huge attribute to be segmented (10f25a3dd9).
 
-SPIs in IKEv1 DELETE payloads are now compared to those of the current IKE SA.
-This is required for interoperability with OpenBSD's isakmpd, which always uses the
-latest IKE SA to delete other expired SAs.
+Refcounting for allocated reqids has been fixed for situations where make-before-break
+reauthentication is used and CHILD_SAs have already been rekeyed (3665adef19).
 
-The files plugin provides a simple fetcher for file:// URIs (1735d80f38).
+Fixed a crash when retrying CHILD_SA rekeying due to a DH group mismatch (1729df9275).
 
-Fixed CRL verification for PKIs that don't use SHA-1 hashes of the public key
-as subjectKeyIdentifier or authorityKeyIdentifier (6133770db4).
+If multiple CA certificates are set in swanctl.conf (connections.<conn>.remote<suffix>.cacerts)
+it is now enough if the certificate chain contains at least one of them, not all (774c8c3847).
 
-Route priorities are now considered when doing manual route lookups (6b57790270).
+Referring to a CA certificate in ipsec.d/cacerts in a ca section does not cause duplicate
+certificate requests anymore (was the case since 5.3.0, #842-10). CA certificates are
+now atomically reloaded by ipsec rereadcacerts so unchanged certificates are always
+available. The command now also reloads certificates referenced in CA sections.
 
-Policies are now removed from the kernel before IPsec SAs, to avoid acquires
-for untrapped policies (46188b0eb0).
+Inbound IKEv1 messages are now handled with different job priorities (a5c07be058).
+
+When strongSwan creates ASN.1 DN identities from strings, it now uses UTF8String
+instead of T61String to encode RDNs that contain characters outside the character set
+of PrintableString.
+
+The new pki --dn command extracts subject DistinguishedNames from certificates,
+which is useful if the automatic identity parsing is unable to produce the correct
+binary ASN.1 encoding of the DN from its string representation.
+
+To implement IPv6 NDP proxying via updown script (e.g. via ip -6 neigh add proxy)
+the virtual IPs assigned to a client are now passed to the script (#1008).
+
+RADIUS Accounting Start messages are now correctly triggered for IKEv1 SAs when clients
+don't do any Mode Config or XAuth exchanges during reauthentication (#937).
+
+Support for the Framed-IPv6-Address and DNS-Server-IPv6-Address RADIUS attributes has
+been added. Virtual IPv6 addresses are now sent in Framed-IPv6-Address attributes in
+RADIUS Accounting messages (#1001).
+
+Some fixes went into the HA plugin and related code: The jhash() function was updated
+for Linux 4.1+ (93caf23e1b), NAT keepalives (edaba56ec7) and CHILD_SA rekeying
+(e095d87bb6) are now disabled for passive SAs, and the remote address is synced
+when an SA is first added (3434709460). Also, the use of AEAD algorithms in CHILD_SAs
+has been fixed (#1051) and the control FIFO is recreated if it is no FIFO (fffee7c759).
+
+The buffer size for the Netlink receive buffer has been changed, the default is now the same
+as in the kernel (a6896b6149, 197de6e66b).
+
+In particular for hosts with lots of routes an alternative faster source address lookup may be
+used by setting charon.plugins.kernel-netlink.fwmark=!<mark> (6bd1216e7a).
+
+The kernel-pfkey plugin now can configure AES-GCM, which is supported on FreeBSD 11.
+
+Fixed some potential race conditions during shutdown of the daemon (#1014).
+
+Address resolution has been improved: If a local address is configured we use the same
+address family when resolving the remote address (#993). If the remote address resolves
+to %any during reauthentication or when reestablishing an SA we keep the current
+address (#1027).
+
+A new option allows disabling the side-swapping based on the addresses/hostnames in
+left|right, when the stroke plugin loads a config from ipsec.conf.

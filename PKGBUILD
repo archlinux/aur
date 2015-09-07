@@ -9,8 +9,8 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot com>
 
 pkgname=strongswan
-pkgver=5.3.2
-pkgrel=2
+pkgver=5.3.3
+pkgrel=1
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -36,7 +36,7 @@ source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2")
 
 # md5 is broken. We use sha256 now. Alternatively, we could check the signature of the file, but that
 # doesn't yield any more security and just increases the work users initially have to invest.
-sha256sums=('a4a9bc8c4e42bdc4366a87a05a02bf9f425169a7ab0c6f4482d347e44acbf225')
+sha256sums=('39d2e8f572a57a77dda8dd8bdaf2ee47ad3cefeb86bbb840d594aa75f00f33e2')
 
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
 # would case processing to be handled in user space. Also, the plugin is experimental. If you need it,
