@@ -2,15 +2,13 @@ pkgbase = germinal
 	pkgdesc = Minimalist terminal emulator based on vte and tmux
 	pkgver = 11
 	pkgrel = 1
-	url = https://github.com/Keruspe/GPaste
+	url = https://github.com/Keruspe/Germinal
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = intltool
 	depends = glib2
 	depends = vte3
 	depends = pango
-	depends = tmux
 	source = http://www.imagination-land.org/files/germinal/germinal-11.tar.xz
 	md5sums = ad1ee404474be863dfd122a748138c3d
 

@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Minimalist terminal emulator based on vte and tmux"
 
 license=('GPL3')
-url="https://github.com/Keruspe/GPaste"
+url="https://github.com/Keruspe/Germinal"
 source=("http://www.imagination-land.org/files/$pkgname/$pkgname-$pkgver.tar.xz")
 
 depends=('glib2' 'vte3' 'pango')
