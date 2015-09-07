@@ -2,7 +2,7 @@
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
-pkgver=13.2
+pkgver=13.2.1
 pkgrel=1
 pkgdesc="Citrix Receiver for Linux (ICAClient)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 
-source_url="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-131.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
+source_url="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-1321.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
 source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh' $pkgname-$pkgver.tar.gz::$source_url)
 makedepends=('wget')
 md5sums=('71aca6257f259996ac59729604f32978'
@@ -43,7 +43,7 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276'
-         'afa8d0ba96e38f92709c483b54698e12')
+         'd8f21201fae4a22605104f01ab9cf2da')
 
 
 install=citrix-client.install
