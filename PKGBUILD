@@ -2,7 +2,7 @@
 
 pkgbase=python-control
 pkgname=('python2-control' 'python-control')
-pkgver=0.6d
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Implements basic operations for analysis and design of feedback control systems in Python"
 arch=('any')
@@ -13,13 +13,13 @@ depends=('python-scipy'
 makedepends=('python-setuptools' 'python2-setuptools' 'gcc-fortran')
 checkdepends=('python-nose' 'python2-nose')
 options=('staticlibs')
-source=("http://downloads.sourceforge.net/python-control/control-${pkgver}.tar.gz"
+source=("https://github.com/python-control/python-control/archive/${pkgver}.tar.gz"
         "LICENSE")
-md5sums=('4c5203ac7d742382a4572f6ac7445bc7'
+md5sums=('9ae5f99eb8e8ec242b108bbbcea0c990'
          '5e21e2b8826c3345f50711d5634bc975')
 
 prepare() {
-  cp -a control-$pkgver control-py2-$pkgver
+  cp -a python-control-$pkgver control-py2-$pkgver
   cd control-py2-$pkgver
 
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
@@ -36,7 +36,7 @@ build() {
   python2 setup.py build
 
   echo "Building Python3"
-  cd ../control-$pkgver
+  cd ../python-control-$pkgver
   python setup.py build
 }
 
@@ -60,7 +60,7 @@ package_python-control() {
 
   export LDFLAGS="$LDFLAGS -shared"
 
-  cd control-$pkgver
+  cd python-control-$pkgver
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python-control"
