@@ -9,7 +9,7 @@ url="http://angularjs.org"
 license=('MIT')
 depends=('jquery')
 source=("https://ajax.googleapis.com/ajax/libs/${pkgname}/${pkgver}/angular.js" "https://ajax.googleapis.com/ajax/libs/${pkgname}/${pkgver}/angular.min.js")
-md5sums=('725456ab8e9230e0d62b612e6a7b00f2' 'ca1a58818682c3e858a585f283ab9beb')
+md5sums=('d4820f67157e827a405b3609bf12aab3' 'feeb76d0de3487eb412c1928625e8fca')
 
 package() {
   cd "${srcdir}"
