@@ -1,0 +1,13 @@
+pkgbase = cusp
+	pkgdesc = A C++ Templated Sparse Matrix Library
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://cusplibrary.github.io
+	arch = any
+	license = Apache
+	depends = cuda
+	source = https://github.com/cusplibrary/cusplibrary/archive/v0.4.0.tar.gz
+	sha256sums = 8bfcef7fd281bffd53865d74b53cdc69747390c47901a0402bac76cd6442ecda
+
+pkgname = cusp
+
