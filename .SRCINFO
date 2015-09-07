@@ -1,0 +1,14 @@
+pkgbase = python-praw-oauth2util
+	pkgdesc = OAuth2 utility for PRAW.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/SmBe19/praw-OAuth2Util
+	arch = any
+	license = MIT
+	depends = python>=3.3
+	depends = python-praw>=3.1
+	source = https://pypi.python.org/packages/source/p/praw-oauth2util/praw-oauth2util-0.3.1.zip
+	md5sums = 87b3f1c1b90687c50590feb9c3356873
+
+pkgname = python-praw-oauth2util
+
