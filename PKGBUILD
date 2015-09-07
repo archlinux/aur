@@ -2,7 +2,7 @@
 
 pkgname=xfoil
 pkgver=6.99
-pkgrel=1
+pkgrel=2
 pkgdesc="Program for design and analysis of subsonic airfoils."
 arch=('i686' 'x86_64')
 url="http://web.mit.edu/drela/Public/web/xfoil/"
@@ -19,13 +19,14 @@ md5sums=('8d6270fc4341d299a426b3ad41be9cc4'
          'a4ad193f796e9de52596057d03e5b703'
          '3f5445c409c7bca00ef22adedcaa61cf')
 
-build() {
+prepare() {
   cd "$srcdir/Xfoil"
-
   patch -Np1 -i ../xfoil-overflow.patch
   patch -Np1 -i ../xfoil-osmap.patch
   patch -Np1 -i ../xfoil-build.patch
+}
 
+build() {
   cd "$srcdir/Xfoil/orrs/bin"
   make -f Makefile_DP FTNLIB="${LDFLAGS}" OS
   cd "$srcdir/Xfoil/orrs"
