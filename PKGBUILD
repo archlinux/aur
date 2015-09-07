@@ -19,8 +19,8 @@ package_pypy-virtualenv() {
 
   cd "$srcdir/virtualenv-$pkgver"
 
-  pypy setup.py build
-  pypy setup.py install --root="$pkgdir"
+  /usr/bin/pypy setup.py build
+  /usr/bin/pypy setup.py install --root="$pkgdir"
 
   mkdir -p "${pkgdir}"/usr/bin
 
@@ -37,8 +37,8 @@ package_pypy3-virtualenv() {
 
   cd "$srcdir/virtualenv-$pkgver"
 
-  pypy3 setup.py build
-  pypy3 setup.py install --root="$pkgdir"
+  /usr/bin/pypy3 setup.py build
+  /usr/bin/pypy3 setup.py install --root="$pkgdir"
 
   mkdir -p "${pkgdir}"/usr/bin
 
