@@ -4,7 +4,7 @@
 # Contributor: Jonathan Friedman <jonf@gojon.com>
 # Contributor: Aaron France <aaron.l.france@gmail.com>
 pkgname=cl-ppcre
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="Perl-compatible, portable regexp library for Common Lisp"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ license=('BSD')
 depends=('common-lisp' 'cl-asdf')
 
 install=cl-ppcre.install
-source=('http://weitz.de/files/cl-ppcre.tar.gz' 'LICENSE')
+source=('$pkgname-$pkgver.tar.gz::http://weitz.de/files/cl-ppcre.tar.gz' 'LICENSE')
 
-md5sums=('b91858e367c5c9e4f89bb281a64a26d8'
+md5sums=('6d5250467c05eb661a76d395186a1da0'
          'c6aa01dce26b45aa916329701a448d11')
 
 package() {
