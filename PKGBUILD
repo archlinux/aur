@@ -3,7 +3,7 @@
 
 pkgname='peazip-qt-build'
 pkgver=5.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Free cross-platform file archiver (compiles from source)'
 license='GPL3'
 url='http://peazip.org'
