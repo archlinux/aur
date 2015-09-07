@@ -2,7 +2,7 @@
 # orig Contributor: Denis Wernert <denis@wernert.info>
 pkgname=ocaml-csv
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml CSV parsing library"
 arch=('i686' 'x86_64')
 url="https://github.com/Chris00/ocaml-csv"
