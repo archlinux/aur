@@ -9,7 +9,7 @@ url="http://handlebarsjs.com"
 license=('MIT')
 depends=('nodejs')
 optdepends=('nodejs-optimist')
-source=("http://builds.handlebarsjs.com.s3.amazonaws.com/${pckname}-${pkgver}.js" "http://builds.handlebarsjs.com.s3.amazonaws.com/${pckname}.runtime-${pkgver}.js")
+source=("http://builds.handlebarsjs.com.s3.amazonaws.com/${pkgname}-${pkgver}.js" "http://builds.handlebarsjs.com.s3.amazonaws.com/${pckname}.runtime-${pkgver}.js")
 md5sums=('5afd2f949524fbf9a543fe7259e605e7' '7328b11edac98c70ef2f93990183b068')
 
 package() {
