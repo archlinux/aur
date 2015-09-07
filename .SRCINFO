@@ -1,0 +1,25 @@
+pkgbase = jokosher
+	pkgdesc = A simple and easy-to-use Open Source multi-track editor
+	pkgver = 0.11.5
+	pkgrel = 3
+	url = http://jokosher.org
+	install = jokosher.install
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = gstreamer0.10-python
+	depends = gnonlin
+	depends = dbus-python
+	depends = libcanberra
+	depends = gstreamer0.10-base-plugins
+	depends = gstreamer0.10-base>=0.10.12
+	depends = pygtk
+	depends = gstreamer0.10-good
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = pyxdg
+	source = http://launchpad.net/jokosher/trunk/0.11.5/+download/jokosher-0.11.5.tar.gz
+	md5sums = 941b1fac0a93e2963afc192545caf320
+
+pkgname = jokosher
+
