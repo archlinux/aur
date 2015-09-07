@@ -1,5 +1,5 @@
 src
 pkg
-latest.zip
+*.zip
 *.tar.xz
 *.src.tar.gz
