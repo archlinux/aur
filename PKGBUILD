@@ -10,7 +10,7 @@
 
 pkgname=strongswan
 pkgver=5.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -29,7 +29,7 @@ eap-sim.conf,eap-simaka-pseudonym.conf,eap-simaka-reauth.conf,eap-tls.conf,ext-a
 fips-prf.conf,forecast.conf,gmp.conf,ha.conf,hmac.conf,kernel-netlink.conf,md5.conf,nonce.conf,openssl.conf,\
 pem.conf,pgp.conf,pkcs1.conf,pkcs12.conf,pkcs7.conf,pkcs8.conf,pubkey.conf,random.conf,rc2.conf,resolve.conf,\
 revocation.conf,sha1.conf,sha2.conf,socket-default.conf,sql.conf,sqlite.conf,sshkey.conf,stroke.conf,updown.conf,\
-vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf}
+vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,chapoly.conf}
 )
 
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2")
@@ -61,7 +61,7 @@ build() {
         --enable-ha --enable-vici --enable-swanctl --enable-systemd --enable-ext-auth \
         --disable-mysql --disable-ldap -enable-cmd --enable-forecast --enable-connmark \
 	--enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
-	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls
+	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly
 #	--enable-ruby-gems --enable-python-eggs
   make
 }
