@@ -1,15 +1,15 @@
 pkgbase = angularjs
 	pkgdesc = An open-source JavaScript framework, whose goal is to augment browser-based applications with model–view–controller (MVC) capability, in an effort to make both development and testing easier.
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = http://angularjs.org
 	arch = any
 	license = MIT
 	depends = jquery
-	source = https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js
-	source = https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js
-	md5sums = d4820f67157e827a405b3609bf12aab3
-	md5sums = feeb76d0de3487eb412c1928625e8fca
+	source = https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js
+	source = https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js
+	md5sums = a5807498c5d4494aff13723982ab8e7b
+	md5sums = 26680517e1024ca2c4f9ed4e0aa1619e
 
 pkgname = angularjs
 
