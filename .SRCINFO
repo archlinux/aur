@@ -1,0 +1,16 @@
+pkgbase = pysnmp
+	pkgdesc = A cross-platform, pure-Python SNMP engine implementation
+	pkgver = 4.2.5
+	pkgrel = 1
+	url = http://pysnmp.sourceforge.net/
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-pyasn1
+	optdepends = pycrypto: SNMPv3 support
+	provides = python-pysnmp
+	source = http://downloads.sourceforge.net/project/pysnmp/pysnmp/4.2.5/pysnmp-4.2.5.tar.gz
+	md5sums = 1f75d3e392a050e84348904fc1be3212
+
+pkgname = pysnmp
+
