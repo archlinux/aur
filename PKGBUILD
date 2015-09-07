@@ -3,7 +3,7 @@
 _pkgname=phallus-fonts
 pkgname=${_pkgname}-git
 pkgver=141.3e8bf64
-pkgrel=1
+pkgrel=2
 pkgdesc="Lemon and Uushi fonts by phallus"
 arch=('any')
 url="https://github.com/phallus/fonts"
