@@ -1,7 +1,7 @@
 pkgbase = ircii-current
 	pkgdesc = IRC and ICB client that runs under most UNIX platforms.
-	pkgver = 20141122
-	pkgrel = 2
+	pkgver = 20150907
+	pkgrel = 1
 	url = http://www.eterna.com.au/ircii/
 	arch = i686
 	arch = x86_64

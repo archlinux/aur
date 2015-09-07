@@ -1,7 +1,7 @@
 #Maintainer: aksr <aksr at t-com dot me>
 pkgname=ircii-current
-pkgver=20141122
-pkgrel=2
+pkgver=`date +%Y%m%d` 
+pkgrel=1
 pkgdesc="IRC and ICB client that runs under most UNIX platforms."
 arch=('i686' 'x86_64')
 url="http://www.eterna.com.au/ircii/"
@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd "$srcdir/ircii"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" mandir="$pkgdir/usr/share/man/man1" install
   install -Dm644 doc/Copyright $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
 }
 
