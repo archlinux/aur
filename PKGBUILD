@@ -1,6 +1,6 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=lmao
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Low-level Malbolge Assembler, Ooh! is a tool that builds Malbolge programs from HeLL"
 url="http://www.matthias-ernst.eu/malbolgeassembler.html"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('bison' 'flex' 'make' 'gcc' 'doxygen')
 source=("http://www.matthias-ernst.eu/malbolge/lmao.tar.gz")
-md5sums=('62a495a91e75ecef333d7a7e3e814f29')
+md5sums=('c4160c2eb7a24e9a783b2c1876ea33b1')
  
 build() {
     cd "${srcdir}/${pkgname}"
