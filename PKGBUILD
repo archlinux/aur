@@ -1,4 +1,4 @@
-# Maintainer: damir <egan.mccomb@gmail.com>
+# Maintainer: Egan McComb <egan.mccomb@gmail.com>
 
 pkgname=diction
 pkgver=1.11
