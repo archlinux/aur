@@ -1,0 +1,13 @@
+
+post_install() {
+  if (! pacman -Qqs '^aquaria-data' >/dev/null); then
+    echo "Note:"
+    echo " | This package only provides the game engine. You will also"
+    echo " | need to install the proprietary game data, using one of the"
+    echo " | aquaria-data-* packages."
+  fi
+}
+
+post_upgrade() {
+  post_install "$@"
+}
