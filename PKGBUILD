@@ -9,8 +9,8 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot com>
 
 pkgname=strongswan
-pkgver=5.4.0
-pkgrel=1
+pkgver=5.3.3
+pkgrel=2
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
