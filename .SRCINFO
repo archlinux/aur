@@ -1,0 +1,13 @@
+pkgbase = uni2ascii
+	pkgdesc = Provides conversion in both directions between UTF-8 and many 7-bit ASCII equivalents
+	pkgver = 4.18
+	pkgrel = 1
+	url = http://billposer.org/Software/uni2ascii.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://billposer.org/Software/Downloads/uni2ascii-4.18.tar.bz2
+	md5sums = a1b1df74cccd1fa997bad79c8c4ced68
+
+pkgname = uni2ascii
+
