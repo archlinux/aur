@@ -1,0 +1,18 @@
+pkgbase = cadabra
+	pkgdesc = Cadabra is a computer algebra system (CAS)
+	pkgver = 1.33
+	pkgrel = 3
+	url = http://cadabra.phi-sci.com/
+	install = cadabra.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = conlie
+	depends = modglue
+	depends = gmp
+	depends = pcre
+	source = http://cadabra.phi-sci.com/cadabra-1.33.tar.gz
+	md5sums = cee8ae23c169958aba09b64e4ea479ce
+
+pkgname = cadabra
+
