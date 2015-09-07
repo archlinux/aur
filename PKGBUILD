@@ -19,8 +19,9 @@ prepare() {
 
   ln -sf "$(which python2)" python
 
-  sed -i 's/env python$/&2/' $(find . -name "*.py")
-  sed -i "s/grass7$/grass$_shortver/" gui/icons/grass.desktop
+  sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -name "*.py")
+  sed -i '/os\.environ.*GRASS_PYTHON/ s/"python"/"python2"/' lib/init/grass.py
+  sed -i "/^Exec/ s/=.*/=grass$_shortver/" gui/icons/grass.desktop
 }
 
 build() {
@@ -42,7 +43,6 @@ package() {
 
   sed -i "s|$pkgdir||g" "$pkgdir/opt/grass/demolocation/.grassrc$_shortver" "$pkgdir/usr/bin/grass$_shortver"
   sed -i "s|$srcdir||g" "$pkgdir/opt/grass/docs/html/t.connect.html"
-  sed -i 's/"python"/"python2"/' "$pkgdir/usr/bin/grass$_shortver"
 
   install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/icons/grass.png"
   install -Dm644 gui/icons/grass.desktop "$pkgdir/usr/share/applications/grass.desktop"
