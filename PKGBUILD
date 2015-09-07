@@ -4,7 +4,7 @@
 pkgname='spark-rc'
 pkgdesc='A simple rc script'
 license=( 'BSD' )
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 arch=( 'any' )
 url='https://github.com/fbt/spark-rc'
@@ -26,4 +26,4 @@ package() {
 	make USR=/usr DESTDIR="$pkgdir" install
 }
 
-sha1sums=('7e43506d4e94cc4664d1ff22f7f37614fa8949c3')
+sha1sums=('436ee3ceb8af163765086e151f9220a6de8eb265')
