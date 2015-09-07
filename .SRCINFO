@@ -1,6 +1,6 @@
 pkgbase = vim-gnome
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (with Gnome GUI)
-	pkgver = 7.4.712
+	pkgver = 7.4.854
 	pkgrel = 1
 	url = http://www.vim.org
 	install = gvim.install
@@ -10,19 +10,18 @@ pkgbase = vim-gnome
 	makedepends = gpm
 	makedepends = libxt
 	makedepends = desktop-file-utils
-	makedepends = mercurial
 	depends = vim-runtime
 	depends = gpm
 	depends = libxt
 	depends = desktop-file-utils
 	depends = acl
-	provides = vim=7.4.712-1
+	provides = vim=7.4.854-1
 	conflicts = vim-minimal
 	conflicts = vim
 	conflicts = vim-python3
 	conflicts = gvim-python3
 	conflicts = gvim
-	source = hg+https://vim.googlecode.com/hg#tag=v7-4-712
+	source = vim-7.4.854.tar.gz::http://github.com/vim/vim/archive/v7.4.854.tar.gz
 	source = gvim.desktop
 	sha1sums = SKIP
 	sha1sums = 4a579cf66590d711f49c5dfb4a25e5df116ff7ba

@@ -2,19 +2,15 @@
 # Contributor: kaptoxic <kaptoxic [at] yahoo [dot] com>
 
 pkgname=vim-gnome
-_topver=7.4
-_patchlevel=712
-_tag=v${_topver/./-}-${_patchlevel}
-_versiondir="vim${_topver//./}"
-pkgver=${_topver}.${_patchlevel}
+pkgver=7.4.854
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with Gnome GUI)'
 arch=(i686 x86_64)
 license=('custom:vim')
 url="http://www.vim.org"
 depends=("vim-runtime" 'gpm' 'libxt' 'desktop-file-utils' 'acl')
-makedepends=('gpm' 'libxt' 'desktop-file-utils' 'mercurial')
-source=("hg+https://vim.googlecode.com/hg#tag=${_tag}"
+makedepends=('gpm' 'libxt' 'desktop-file-utils')
+source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         'gvim.desktop')
 sha1sums=('SKIP'
           '4a579cf66590d711f49c5dfb4a25e5df116ff7ba')
@@ -26,7 +22,7 @@ install=gvim.install
 #'mzscheme' 'ruby' 'desktop-file-utils' 'lua' 'python2' 'python'
 
 build() {
-  cd ${srcdir}/hg
+  cd vim-$pkgver
   
   # some possible options (others should be taken care of in vim-runtime)
   #--with-features=big
@@ -60,7 +56,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/hg
+  cd vim-$pkgver
   make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
   
   # provided by (n)vi in core
