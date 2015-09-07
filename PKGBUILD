@@ -26,7 +26,8 @@ fi
 source=("http://download.ime.sogou.com/${_time}/sogoupinyin_${pkgver}_${_ARCH}.deb"
         "http://7xizf7.com1.z0.glb.clouddn.com/sogou-autostart"
         "http://7xizf7.com1.z0.glb.clouddn.com/fcitx-qimpanel.real"
-	    "http://7xizf7.com1.z0.glb.clouddn.com/fcitx-qimpanel")
+	    "http://7xizf7.com1.z0.glb.clouddn.com/fcitx-qimpanel"
+			"http://7xizf7.com1.z0.glb.clouddn.com/libcurl.so.4")
 md5sums=('47cd879b6b340391705f9a4e389045d9'
          '60b1dcd637c932cf4f3bfaed797f5401'
          'b55df1dffa61fb1af40199a8e1b2244b'
@@ -45,7 +46,7 @@ package(){
 	 install -m755 fcitx-qimpanel.real "$pkgdir"/usr/bin
 	install -m755 fcitx-qimpanel "$pkgdir"/usr/bin
     install -m755 sogou-autostart "$pkgdir"/usr/bin
-
+	install -m755 libcurl.so.4 "$pkgdir"/usr/lib/
     rm "$pkgdir"/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop
     cp "$pkgdir"/usr/share/applications/fcitx-ui-sogou-qimpanel.desktop "$pkgdir"/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop
     sed -i 's/sogou-qimpanel\ %U/sogou-autostart/g' "$pkgdir"/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop

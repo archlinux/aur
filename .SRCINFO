@@ -16,6 +16,7 @@ pkgbase = sogou
 	source = http://7xizf7.com1.z0.glb.clouddn.com/sogou-autostart
 	source = http://7xizf7.com1.z0.glb.clouddn.com/fcitx-qimpanel.real
 	source = http://7xizf7.com1.z0.glb.clouddn.com/fcitx-qimpanel
+	source = http://7xizf7.com1.z0.glb.clouddn.com/libcurl.so.4
 	md5sums = 47cd879b6b340391705f9a4e389045d9
 	md5sums = 60b1dcd637c932cf4f3bfaed797f5401
 	md5sums = b55df1dffa61fb1af40199a8e1b2244b
