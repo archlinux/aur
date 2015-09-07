@@ -3,13 +3,13 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-qt
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc="QT archiver utility"
 arch=(i686 x86_64)
 url=http://www.peazip.org/peazip-linux.html
 license=(LGPL3)
-depends=(balz desktop-file-utils lib32-{curl,gmp4,libx11,ncurses,qt4pas} p7zip upx lrzip)
+depends=(balz desktop-file-utils lib32-{curl,gmp4,libx11,ncurses,qt4pas} p7zip upx zpaq)
 [[ $CARCH == "i686" ]] && depends=(${depends[@]/lib32-/})
 optdepends=(quad unace)
 provides=(${pkgname%-*})
@@ -18,9 +18,9 @@ install=${pkgname%-*}.install
 source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/${pkgname%-*}-$pkgver.LINUX.Qt.tgz"
         "${pkgname%-*}.desktop")
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('29950ac1ea5e756de229a8e5518e94d25200019611bce727856927fb754d6ec5'
+sha256sums=('a57bfd3e72c94ebbd1a7af4815c7e6520483087b4a643370787fca95e5f4bde1'
             '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
-sha512sums=('1587d0a3e66b51385e4591dc2995c223ff1cdb6a6ba462e2236c0d0f0c5519bab6a764e53b2bb77bd270dc984a75483161296ecaffe20c07f16ff75c66cb8657'
+sha512sums=('94d021cc45f2201a638f4c148916a7b6215a995c56882873230d72f5703f0e3a88520cef81f5b77cf038e85cece84d3b3f3fc819f21a924196c97df0df51e093'
             'bc86d42b33285c2709081ddca7c06fe789cc2d42c69c4cbed595c077a776d91e5526eb799dcdc404375a3bfb212927165a02d3d79301f53adb8a89039bf7bb5f')
 
 package() {
@@ -57,5 +57,5 @@ package() {
     done
 
     install -Dm644 "$srcdir"/$pkgname/usr/local/share/icons/${pkgname%-*}.png "$pkgdir"/usr/share/pixmaps/${pkgname%-*}.png
-    desktop-file-install "$srcdir"/${pkgname%-*}.desktop --dir "$pkgdir"/usr/share/applications/
+    desktop-file-install --dir "$pkgdir/usr/share/applications/" "$srcdir/peazip-qt/opt/kde3/share/applications/kde/peazip.desktop"
 }
