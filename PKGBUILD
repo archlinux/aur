@@ -30,7 +30,7 @@ install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.zip")
 noextract=("v$pkgver.zip")
-md5sums=('fb2e4a7683b41318ff649d98e0506c6f')
+md5sums=('61bf2f42f4c5e69272be35048991e70c')
 validpgpkeys=()
 
 prepare() {
