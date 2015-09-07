@@ -10,8 +10,8 @@ depends=('zlib' 'gcc-libs')
 install='piet.install'
 source=("http://www.matthias-ernst.eu/pietc/PietCompiler0.6a3.tar.gz"
         'piet.install')
-md5sums=('faadc1b70cd497b95b5bef41bb1977e9'
-          '686f9c0926e41b49cf0434b0291e4c6d')
+md5sums=('54c4e106ddafd390f2641d00bb014997'
+         '686f9c0926e41b49cf0434b0291e4c6d')
  
 build() {
     cd "${srcdir}/PietCompiler"
