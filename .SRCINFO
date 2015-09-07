@@ -1,6 +1,6 @@
 pkgbase = bazel-git
 	pkgdesc = Correct, reproducible, and fast builds for everyone
-	pkgver = r858.18629fb
+	pkgver = r2293.ab4abc4
 	pkgrel = 1
 	url = http://bazel.io/
 	install = bazel.install
@@ -11,10 +11,11 @@ pkgbase = bazel-git
 	makedepends = protobuf
 	depends = java-environment=8
 	depends = libarchive
-	depends = gcc-libs-multilib
 	depends = zip
 	depends = unzip
 	options = !strip
+	source = bazel-git::git+https://github.com/google/bazel.git
+	md5sums = SKIP
 
 pkgname = bazel-git
 
