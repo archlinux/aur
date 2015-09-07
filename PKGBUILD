@@ -6,12 +6,12 @@
 
 pkgname=pdftk-bin
 pkgver=2.02_3
-pkgrel=1
+pkgrel=2
 pkgdesc="Swiss army knife for PDFs. Built from binary executables available in Debian repositories."
 url=http://www.pdfhacks.com/pdftk
 arch=(i686 x86_64)
 license=(GPL)
-depends=(libgcj gcc-libs)
+depends=(libgcj15-bin gcc-libs)
 provides=(pdftk)
 conflicts=(pdftk pdfchain-all-inclusive)
 
