@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 
 pkgname=cusp
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A C++ Templated Sparse Matrix Library"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('cuda')
 
 _dir="cusplibrary-${pkgver}"
 source=("https://github.com/cusplibrary/cusplibrary/archive/v${pkgver}.tar.gz")
-sha256sums=('8bfcef7fd281bffd53865d74b53cdc69747390c47901a0402bac76cd6442ecda')
+sha256sums=('ea283132caae7a62c96dedb40d0fcff25d3067191411987db9c2d780286a2108')
 
 package() {
   cd "${srcdir}/${_dir}"
