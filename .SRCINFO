@@ -1,0 +1,18 @@
+pkgbase = pom-ng-console-git
+	pkgdesc = Packet-o-Matic real time network packet capture forensic tool console interface
+	pkgver = 0.0.5.r0.g6ca6980
+	pkgrel = 1
+	url = http://www.packet-o-matic.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python3
+	depends = pom-ng>=0.0.16
+	provides = pom-ng-console=0.0.5
+	conflicts = pom-ng-console
+	source = POM-NG-CONSOLE-GIT::git://github.com/gmsoft-tuxicoman/pom-ng-console.git
+	sha256sums = SKIP
+
+pkgname = pom-ng-console-git
+
