@@ -1,7 +1,7 @@
 _pkgname=urho3d
 pkgname=${_pkgname}-git
-pkgver=1.4.r455.ga3e0072-1
-pkgrel=1
+pkgver=1.4.r455.ga3e0072
+pkgrel=2
 pkgdesc="Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++ and released under the MIT license. This is git version of this package."
 arch=('i686' 'x86_64')
 url="http://urho3d.github.io"
@@ -15,8 +15,8 @@ md5sums=('SKIP')
 install=urho3d-git.install
 
 pkgver() {
-	cd "./${_pkgname}"
-	git describe --long | sed -r "s/^${pkgname%-git}-//;s/([^-]*-g)/r\\1/;s/-/./g"
+	cd "./Urho3D"
+	git describe --long | sed -r "s/^${_pkgname%-git}-//;s/([^-]*-g)/r\\1/;s/-/./g"
 }
 
 provides=("$_pkgname=$pkgver")
