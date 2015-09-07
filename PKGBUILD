@@ -4,7 +4,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname='python-yowsup-git'
-pkgver=v2.4.r0.gead1923
+pkgver=2.4.r0.gead1923
 pkgrel=1
 pkgdesc="The open source cross platform Whatsapp library powering Wazapp"
 url="https://github.com/tgalal/yowsup"
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "yowsup"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
