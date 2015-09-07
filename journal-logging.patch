@@ -1,7 +1,7 @@
 diff --git a/couchpotato/runner.py b/couchpotato/runner.py
 index 95bc48c..87c9dc3 100644
---- a/CouchPotatoServer-build-3.0.0/couchpotato/runner.py
-+++ b/CouchPotatoServer-build-3.0.0/couchpotato/runner.py
+--- a/couchpotato/runner.py
++++ b/couchpotato/runner.py
 @@ -198,12 +198,6 @@ def runCouchPotato(options, base_path, args, data_dir = None, log_dir = None, En
      logger.setLevel(level)
      logging.addLevelName(19, 'INFO')

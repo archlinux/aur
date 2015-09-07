@@ -1,24 +1,24 @@
 pkgbase = couchpotato
 	pkgdesc = Automatic Movie Downloading via NZBs & Torrent
-	pkgver = 3.0.0
-	pkgrel = 3
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = http://couchpota.to/
 	install = couchpotato.install
 	arch = any
 	license = GPL3
 	depends = python2
-	source = https://github.com/RuudBurger/CouchPotatoServer/archive/build/3.0.0.tar.gz
+	source = https://github.com/RuudBurger/CouchPotatoServer/archive/build/3.0.1.tar.gz
 	source = couchpotato.service
 	source = couchpotato-confd.conf
 	source = couchpotato.sh
 	source = couchpotato-tmpfiles.conf
 	source = journal-logging.patch
-	md5sums = 1c1b47c8b4882fba8a94167ea7243e60
+	md5sums = 6168004bc99a604b09e0752f9bd2e419
 	md5sums = 8fc7c9021900d0fa1fed20465232e322
 	md5sums = 42ec6846a96efdf6524d7905b3f03393
 	md5sums = 48126ad1674d4679c2a645dfb9d5a2c2
 	md5sums = 95ebd431433b87d88c7a48cf0a32be7d
-	md5sums = 0ae6398c412aed1c8983b42098831acb
+	md5sums = 4cf459a79a8148cb1a3aeb0802c02d87
 
 pkgname = couchpotato
 

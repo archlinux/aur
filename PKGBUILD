@@ -3,9 +3,9 @@
 
 pkgname=couchpotato
 _pkgname=CouchPotato
-pkgver=3.0.0
+pkgver=3.0.1
 _fullname=CouchPotatoServer-build-${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc="Automatic Movie Downloading via NZBs & Torrent"
 arch=('any')
 url="http://couchpota.to/"
@@ -18,15 +18,16 @@ source=("https://github.com/RuudBurger/CouchPotatoServer/archive/build/${pkgver}
 	"${pkgname}.sh"
 	"${pkgname}-tmpfiles.conf"
 	'journal-logging.patch')
-md5sums=('1c1b47c8b4882fba8a94167ea7243e60'
+md5sums=('6168004bc99a604b09e0752f9bd2e419'
          '8fc7c9021900d0fa1fed20465232e322'
          '42ec6846a96efdf6524d7905b3f03393'
          '48126ad1674d4679c2a645dfb9d5a2c2'
          '95ebd431433b87d88c7a48cf0a32be7d'
-         '0ae6398c412aed1c8983b42098831acb')
+         '4cf459a79a8148cb1a3aeb0802c02d87')
 
 build() {
-	patch -Np1 -i journal-logging.patch
+	cd "${srcdir}/${_fullname}"
+	patch -Np1 -i "$srcdir/journal-logging.patch"
 }
 
 package() {
