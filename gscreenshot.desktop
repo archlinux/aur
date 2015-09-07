@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=gscreenshot
-Comment=A pygtk wrapper for the 'scrot' utility
-TryExec=/usr/bin/gscreenshot
-Exec=gscreenshot
-Icon=gscreenshot
-Categories=Graphics;
