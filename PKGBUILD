@@ -9,6 +9,7 @@ arch=('any')
 license=('custom:OFL')
 url='http://www.marksimonson.com/fonts/view/anonymous-pro'
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils' 'xorg-mkfontdir' 'xorg-mkfontscale')
+conflicts=('ttf-anonymous-pro')
 install=ttf-anonymous-pro-minus.install
 source=("http://www.marksimonson.com/assets/content/fonts/AnonymousProMinus-${pkgver}.zip")
 md5sums=('16468f49e2a56f8e2ad39f09728391bd')
