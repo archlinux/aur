@@ -1,5 +1,5 @@
 pkgname=ammonite
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Ammonite is a cleanroom re-implementation of the Scala REPL from first principles. "
 arch=('any')
@@ -8,7 +8,7 @@ license=('Unkown')
 _scalaver=2.11.7
 depends=("scala>=${_scalaver}")
 source=("https://github.com/lihaoyi/Ammonite/releases/download/${pkgver}/ammonite-repl-${pkgver}-${_scalaver}")
-sha256sums=('7ec1e7f27e0a804f6c97bf7cc0c74b0685814f4246b3212eb660c37714b89880')
+sha256sums=('ac8ed0a7317eefb7088ace73be954552b03a649a561834d39f43710b9c3dc0d2')
 install="${pkgname}.install"
 
 package() {
