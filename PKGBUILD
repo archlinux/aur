@@ -1,7 +1,7 @@
 # Maintainer: Gavin Costello <gavcos at gmail dot com>
 # Contributor:
 pkgname=handlebars
-pkgver=v3.0.3
+pkgver=v4.0.2
 pkgrel=1
 pkgdesc="Handlebars.js is an extension to the Mustache templating language created by Chris Wanstrath. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be."
 arch=(any)
@@ -9,9 +9,9 @@ url="http://handlebarsjs.com"
 license=('MIT')
 depends=('nodejs')
 optdepends=('nodejs-optimist')
-source=("http://builds.handlebarsjs.com.s3.amazonaws.com/${pckname}-${pkgver}.js", "http://builds.handlebarsjs.com.s3.amazonaws.com/${pckname}.runtime-${pkgver}.js"
-md5sums=('26161aef7f4d10f0c21adc7c183c0c1b'
-  '7ae2ab0c40c56dca97c1add08d32561e')
+source=("http://builds.handlebarsjs.com.s3.amazonaws.com/${pckname}-${pkgver}.js", "http://builds.handlebarsjs.com.s3.amazonaws.com/${pckname}.runtime-${pkgver}.js")
+md5sums=('5afd2f949524fbf9a543fe7259e605e7'
+  '7328b11edac98c70ef2f93990183b068')
 
 package() {
   cd "${srcdir}"
