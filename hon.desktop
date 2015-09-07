@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Heroes of Newerth
+GenericName=Heroes of Newerth
+Comment=
+Exec=/usr/bin/hon
+Icon=/opt/hon/honicon_128x128.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game

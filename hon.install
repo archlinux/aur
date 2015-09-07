@@ -1,0 +1,18 @@
+
+post_install() {
+    echo ">>> You must read and agree to the terms in the EULAs found"
+    echo ">>> in /usr/share/licenses/hon/ before using this software!"
+    echo ">>>"
+    echo ">>> In order to play Heroes of Newerth, add your user to the 'games' group."
+    echo ">>> # gpasswd -a USERNAME games"
+    echo ">>> Remember to logout and log back in for the changes to take effect."
+    echo ">>> Nvidia user might need to do the following."
+    echo -e ">>> Append the following 3 lines to \"~/.Heroes of Newerth/game/startup.cfg\""
+    echo -e "SetSave \"vid_bpp\" \"32\""
+    echo -e "SetSave \"vid_refreshRate\" \"60\""
+    echo -e "SetSave \"vid_resolution\" \"1280,1024\""
+}
+
+post_upgrade() {
+    post_install $1
+}
