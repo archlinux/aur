@@ -524,9 +524,9 @@ check_all_depends()
 	mdepends=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^makedepends=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
 	arch=$(uname -m)
 	if [[ $arch == "x86_64" ]]; then
-		dependsx64=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_x86_64=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
+		dependsx64=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_x86_64=/,/\)$/' | sed -e "s/[a-zA-Z0-9_]*=(//g" -e "s/'//g" -e "s/)//g")
 	else
-		dependsi686=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_i686=/,/\)$/' | sed -e "s/[a-z]*=(//g" -e "s/'//g" -e "s/)//g")
+		dependsi686=$(curl -s "https://${aururl}/cgit/aur.git/plain/PKGBUILD?h=$1" | awk '/^depends_i686=/,/\)$/' | sed -e "s/[a-zA-Z0-9_]*=(//g" -e "s/'//g" -e "s/)//g")
 	fi
 	#if no dependencies echo and leave loop
 	if [[ $depends == "" ]]; then
