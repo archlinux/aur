@@ -1,6 +1,6 @@
 pkgbase = crtwo2fits
 	pkgdesc = A ready-to-use tool and a python module for converting CR2 raw files into FITS images
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mauritiusdadd/crtwo2fits
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = crtwo2fits
 	optdepends = dcraw: for faster image decoding
 	provides = crtwo2fits
 	conflicts = crtwo2fits
-	source = https://github.com/mauritiusdadd/crtwo2fits/releases/download/0.1.0/crtwo2fits-0.1.0.tar.gz
-	sha256sums = 820061c7288360a73dea2ebd92d03c796902af24ca80f68971e50279bd3d00c5
+	source = https://github.com/mauritiusdadd/crtwo2fits/releases/download/0.1.1/crtwo2fits-0.1.1.tar.gz
+	sha256sums = 39e2a342a7c13af41f1a922ea45ea8004720e229e6a8d9dc6d88c4f2abcd1108
 
 pkgname = crtwo2fits
 
