@@ -1,4 +1,4 @@
-pkgbase = python-flask-bootstrap
+pkgbase = python-flask-apscheduler
 	pkgdesc = Adds APScheduler support to Flask
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -12,11 +12,9 @@ pkgbase = python-flask-bootstrap
 
 pkgname = python2-flask-apscheduler
 	depends = python2-flask
-	depends = python2-visitor
-	depends = python2-dominate
+	depends = python-apscheduler
 
 pkgname = python-flask-apscheduler
 	depends = python-flask
-	depends = python-visitor
-	depends = python-dominate
+	depends = python-apscheduler
 
