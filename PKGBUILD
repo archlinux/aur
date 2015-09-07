@@ -5,13 +5,13 @@
 pkgname=webstorm-eap
 _pkgname=WebStorm
 pkgver=142.4148
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript IDE and HTML editor."
 arch=('i686' 'x86_64')
 options=('!strip')
 url="http://www.jetbrains.com/webstorm"
 license=('custom')
-depends=('java-runtime')
+depends=('java-environment')
 source=(http://download.jetbrains.com/webstorm/${_pkgname}-EAP-${pkgver}.tar.gz
         jetbrains-webstorm-eap
         jetbrains-webstorm-eap.desktop
@@ -19,7 +19,7 @@ source=(http://download.jetbrains.com/webstorm/${_pkgname}-EAP-${pkgver}.tar.gz
 sha256sums=('da1fe63105f9d37658250be9267e8c8b8a757fb60c7a6277dd75a10116cb827a'
             '3712fc9477a8b5a54d970103166b05bf872fa2512c5bee7e63f62a5738e40419'
             '931de5f12ab12e62eccaa3648d0cedf5e2c3845cc1e1a37030137fdbc24f54f3'
-	    '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
+      	    '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
 
 package() {
   cd "${srcdir}"

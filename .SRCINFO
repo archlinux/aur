@@ -1,12 +1,12 @@
 pkgbase = webstorm-eap
 	pkgdesc = JavaScript IDE and HTML editor.
 	pkgver = 142.4148
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/webstorm
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = java-runtime
+	depends = java-environment
 	options = !strip
 	source = http://download.jetbrains.com/webstorm/WebStorm-EAP-142.4148.tar.gz
 	source = jetbrains-webstorm-eap
