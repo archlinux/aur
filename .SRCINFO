@@ -1,7 +1,7 @@
 pkgbase = vidyodesktop
 	pkgdesc = VidyoDesktop(TM) video conferencing client
 	pkgver = 3.5.4.004
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.vidyo.com
 	install = vidyodesktop.install
 	arch = i686
@@ -29,6 +29,7 @@ pkgbase = vidyodesktop
 	depends = gcc-libs
 	depends = zlib
 	depends = libpng
+	depends = qtwebkit
 	depends = zenity
 	optdepends = flashplugin: Join meetings via web browser
 	conflicts = vidyo
