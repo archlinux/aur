@@ -1,0 +1,17 @@
+pkgbase = pom-ng-webui-git
+	pkgdesc = Packet-o-Matic real time network packet capture forensic tool web interface
+	pkgver = 0.0.2.r3.g07b9869
+	pkgrel = 1
+	url = http://www.packet-o-matic.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pom-ng
+	provides = pom-ng-webui=0.0.2
+	conflicts = pom-ng-webui
+	source = POM-NG-WEBUI-GIT::git://github.com/gmsoft-tuxicoman/pom-ng-webui.git
+	sha256sums = SKIP
+
+pkgname = pom-ng-webui-git
+
