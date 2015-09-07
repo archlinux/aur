@@ -2,7 +2,7 @@
 # Contributor: Roberto Catini <roberto.catini@gmail.com>
 
 pkgname=python-twython
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Pure Python wrapper for the Twitter API"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-requests' 'python-requests-oauthlib')
 options=(!emptydirs)
 
 source=(https://pypi.python.org/packages/source/t/twython/twython-${pkgver}.tar.gz)
-sha1sums=('1743ab480c1096d073ae4e9ff5a0e81f071fcfb9')
+sha1sums=('cdf3717034ba3af1dbf999137f4648790c421132')
 
 package() {
 	cd "twython-${pkgver}"
