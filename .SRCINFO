@@ -1,0 +1,13 @@
+pkgbase = pmr
+	pkgdesc = Command line filter that displays or limits the data bandwidth and total number of bytes passing through a pipe
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://zakalwe.fi/~shd/foss/pmr/
+	arch = i686
+	arch = x86_64
+	license = public domain
+	source = http://zakalwe.fi/~shd/foss/pmr//pmr-1.01.tar.gz
+	sha256sums = c7e5b2eee2f0411a55afcb3a78a9e17ef545a764901277b3be0802396449af24
+
+pkgname = pmr
+
