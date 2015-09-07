@@ -1,0 +1,13 @@
+pkgbase = polyglotman
+	pkgdesc = Reverse compile man pages from formatted form to a number of source formats, formerly rman
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/polyglotman
+	arch = i686
+	arch = x86_64
+	license = Artistic License
+	source = http://downloads.sourceforge.net/polyglotman/rman-3.2.tar.gz
+	sha256sums = 68a130696b251966db10a4774e2bc8083a0147b83f64c11e9bb4cd654da32d5f
+
+pkgname = polyglotman
+
