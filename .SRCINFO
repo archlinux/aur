@@ -1,15 +1,18 @@
 pkgbase = python-timelib
-	pkgdesc = A library to parse english textual date descriptions [Python 3]
+	pkgdesc = A library to parse english textual date descriptions
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/timelib
 	arch = i686
 	arch = x86_64
 	license = PHP
 	license = custom
-	depends = python
 	source = http://pypi.python.org/packages/source/t/timelib/timelib-0.2.4.zip
 	md5sums = 400e316f81001ec0842fa9b2cef5ade9
 
 pkgname = python-timelib
+	depends = python
+
+pkgname = python2-timelib
+	depends = python2
 
