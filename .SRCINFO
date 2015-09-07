@@ -1,0 +1,13 @@
+pkgbase = diction
+	pkgdesc = Diction identifies wordy and commonly misused phrases.
+	pkgver = 1.11
+	pkgrel = 2
+	url = http://www.gnu.org/software/diction/diction.html
+	arch = i686
+	arch = x86_64
+	license = gpl
+	source = http://ftp.gnu.org/gnu/diction/diction-1.11.tar.gz
+	md5sums = 4cbdb115c976d7141f54b223df28012e
+
+pkgname = diction
+
