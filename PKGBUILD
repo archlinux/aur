@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=bluefish-svn
-pkgver=8547
+pkgver=8580
 pkgrel=1
 pkgdesc="SVN version of the programmer's HTML editor written using GTK"
 arch=('i686' 'x86_64')
@@ -31,9 +31,8 @@ build() {
     --localstatedir=/var \
     --with-freedesktop_org-menu=/usr/share/applications \
     --with-freedesktop_org-mime=/usr/share/mime \
-    --without-gnome2_4-mime \
-    --without-gnome2_4-appreg \
     --with-icon-path=/usr/share/pixmaps \
+	--enable-spell-check \
     --disable-update-databases \
     --disable-xml-catalog-update
   make
