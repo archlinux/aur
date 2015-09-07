@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('qt4pas')
 makedepends=('lazarus-qt' 'icoutils')
 provides=('peazip')
-conflicts=('peazip''peazip-gtk2' 'peazip-qt')
+conflicts=('peazip' 'peazip-gtk2' 'peazip-qt')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip"
         "https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.Qt.tar.gz")
