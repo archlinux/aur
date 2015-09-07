@@ -10,9 +10,6 @@ url="http://libwbxml.opensync.org/"
 license=('LGPL')
 depends=('expat')
 makedepends=('cmake' 'check')
-replaces=('wbxml2')
-conflicts=('wbxml2')
-provides=('wbxml2')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
 sha256sums=('ceeb6ffd71b636dfdb7bddce9f5eddc2907823cb5f1ba2918a66833e225b5d02')
 
