@@ -1,0 +1,5 @@
+post_install () {
+	cat <<-EOF
+	Don't forget to start/enable docker service for dmakepkg to work.
+	EOF
+}
