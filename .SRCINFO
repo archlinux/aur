@@ -1,0 +1,17 @@
+pkgbase = jsawk-git
+	pkgdesc = like awk, but for JSON
+	pkgver = 1.4.13.g5a14c4a
+	pkgrel = 1
+	url = http://github.com/micha/jsawk
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = js
+	provides = jsawk
+	conflicts = jsawk
+	source = jsawk-git::git+https://github.com/micha/jsawk.git#branch=master
+	md5sums = SKIP
+
+pkgname = jsawk-git
+
