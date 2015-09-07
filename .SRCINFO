@@ -1,0 +1,17 @@
+pkgbase = pom-ng-addons-git
+	pkgdesc = Packet-o-Matic real time network packet capture forensic tool web interface addons
+	pkgver = 0.0.2.r3.g07b9869
+	pkgrel = 1
+	url = http://www.packet-o-matic.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pom-ng
+	provides = pom-ng-addons=0.0.2
+	conflicts = pom-ng-addons
+	source = POM-NG-ADDONS-GIT::git://github.com/gmsoft-tuxicoman/pom-ng-addons.git
+	sha256sums = SKIP
+
+pkgname = pom-ng-addons-git
+
