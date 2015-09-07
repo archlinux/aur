@@ -2,12 +2,12 @@
 
 pkgname=libreoffice-uglyfix-freetype2
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs freetype2 .so files in the LibreOffice directory to fix font ugliness"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://freetype.sourceforge.net"
-depends=('zlib' 'bzip2' 'sh' 'libpng' 'libreoffice-common')
+depends=('zlib' 'bzip2' 'sh' 'libpng' 'libreoffice')
 options=(!docs)
 source=(
   "http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2"
