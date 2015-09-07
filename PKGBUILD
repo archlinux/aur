@@ -47,7 +47,7 @@ package(){
 	 install -m755 fcitx-qimpanel.real "$pkgdir"/usr/bin
 	install -m755 fcitx-qimpanel "$pkgdir"/usr/bin
     install -m755 sogou-autostart "$pkgdir"/usr/bin
-	install -m755 libcurl.so.4 "$pkgdir"/usr/lib/
+	install -Dm644 libcurl.so.4 "$pkgdir/usr/share/fcitx-sogoupinyin/"
     rm "$pkgdir"/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop
     cp "$pkgdir"/usr/share/applications/fcitx-ui-sogou-qimpanel.desktop "$pkgdir"/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop
     sed -i 's/sogou-qimpanel\ %U/sogou-autostart/g' "$pkgdir"/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop
