@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 _subver=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
