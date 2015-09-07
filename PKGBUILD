@@ -2,7 +2,7 @@
 
 pkgname=lightfirefox
 pkgver=40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A light Firefox edition"
 url="http://sourceforge.net/projects/lightfirefox"
 license=('MPL')
@@ -11,7 +11,7 @@ depends=('gtk2' 'desktop-file-utils' 'nss' 'libxt' 'dbus-glib' 'alsa-lib')
 optdepends=('gtk3: GTK+3 support')
 install=${pkgname}.install
 arch=('i686' 'x86_64')
-source=("http://cznic.dl.sourceforge.net/project/${pkgname}/${pkgver/.0}/${pkgname/firefox}-${pkgver}.en-US.linux-${CARCH}.rpm")
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgver/.0}/${pkgname/firefox}-${pkgver}.en-US.linux-${CARCH}.rpm")
 if [[ "${CARCH}" == "x86_64" ]]; then
   md5sums=('927e53b46000a8ff0742a818f1a33e04')
 elif [[ "${CARCH}" == "i686" ]]; then
