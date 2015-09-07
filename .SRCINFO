@@ -1,8 +1,8 @@
 pkgbase = audio-recorder
-	pkgdesc = Audio recorder for GNOME and Unity Desktops
-	pkgver = 1.6.3
+	pkgdesc = Free audio-recorder for Linux
+	pkgver = 1.7.2
 	pkgrel = 1
-	url = https://launchpad.net/audio-recorder
+	url = https://launchpad.net/~audio-recorder
 	install = audio-recorder.install
 	arch = i686
 	arch = x86_64
@@ -15,13 +15,8 @@ pkgbase = audio-recorder
 	optdepends = gst-plugins-good: for WAV and Flac encoding
 	optdepends = gst-plugins-bad: for AAC encoding
 	optdepends = gst-plugins-ugly: for MP3 encoding
-	provides = audio-recorder
-	conflicts = audio-recorder-bzr
-	conflicts = audio-recorder-from-deb
-	source = https://launchpad.net/~osmoma/+archive/ubuntu/audio-recorder/+files/audio-recorder_1.6-3%7Evivid.tar.gz
-	source = fix_gtk3.16_build.patch
-	md5sums = bf01da5442b03ac39d950a238b556f93
-	md5sums = 84edc83c85c82903070401274b22803c
+	source = https://launchpad.net/~audio-recorder/+archive/ubuntu/ppa/+files/audio-recorder_1.7-2%7Ewily.tar.gz
+	md5sums = 31e6ab19c1985790e712e51a5b8b03f9
 
 pkgname = audio-recorder
 
