@@ -1,19 +1,41 @@
-pre_upgrade() {
-	if [ $(vercmp $2 6.00) -lt 0 ]; then
-			echo 'ATTENTION: MAJOR CHANGES TO PSD WITH VERSION 6.00+'
-			echo '-> 1. A global /etc/psd.conf is no longer used. $HOME/.psd/psd.conf will be'
-			echo '->    created when psd is invoked the first time.'
-			echo '-> 2. A system service is no longer used. A user service is provided and can be'
-			echo '->    used like this:  systemctl --user start psd.service'
-			echo '-> 3. Users wanting to use overlayfs mode MUST have sudo access to both mount'
-			echo '->    and umount. See the man page for an example configured with visudo.'
+## arg 1:  the new package version
+## arg 2:  the old package version
 
+pre_upgrade() {
+	# version 6.00 is a major rebuild
+	# yes, I realize that pacman should not stop services byt in this case it
+	# is required or else browser profiles (user data) can get renamed and confuse
+	# people if it does not happen
+	if [ $(vercmp $2 6.00) -lt 0 ]; then
+		echo 'ATTENTION: MAJOR CHANGES TO PSD WITH VERSION 6.00+'
+		echo '-> 1. A global /etc/psd.conf is no longer used. $HOME/.psd/psd.conf will be'
+		echo '->    created when psd is invoked the first time.'
+		echo '-> 2. A system service is no longer used. A user service is provided and can be'
+		echo '->    used like this:  systemctl --user start psd.service'
+		echo '-> 3. Users wanting to use overlayfs mode MUST have sudo access to both mount'
+		echo '->    and umount. See the man page for an example configured with visudo.'
+		echo
+		echo '-> Internal changes to psd require it to be stopped now before updating.'
+
+		# stop system service now since it will be removed upon updating
 		systemctl is-active psd.service &>/dev/null
 		if [ $? -eq 0 ]; then
 			systemctl stop psd.service &>/dev/null
 		fi
 	fi
 
+	# version 6.01 redefines the location of tmpfs for the software so it is
+	# required that pacman stop the user service here if running
+	if [ $(vercmp $2 6.01) -lt 0 ]; then
+		for i in $(users); do
+			running="$(su $i -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
+			if [[ "$running" = "active" ]]; then
+				su $i -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
+				echo '-> Internal changes to psd require it to be stopped now before updating.'
+				echo '-> Recommend that you diff /usr/share/doc/psd/psd.conf against ~/.psd/psd.conf'
+			fi
+		done
+	fi
 }
 
 pre_remove() {
