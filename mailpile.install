@@ -18,6 +18,8 @@ post_upgrade() {
 
   if ! getent passwd mailpile >/dev/null; then 
     useradd --system -c 'mailpile daemon user' -g mailpile -b /var/lib -m -s /bin/bash mailpile >/dev/null 2>&1
+  elif ! test -d /var/lib/mailpile; then
+    mkhomedir_helper mailpile
   fi
 
   if test $2 && test "`vercmp $2 0.4.1-1`" -lt 0; then
