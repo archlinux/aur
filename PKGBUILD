@@ -5,7 +5,7 @@
 
 pkgname='python-yowsup-git'
 pkgver=2.4.r0.gead1923
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source cross platform Whatsapp library powering Wazapp"
 url="https://github.com/tgalal/yowsup"
 arch=('any')
@@ -13,16 +13,16 @@ license=('GPL')
 depends=('python' 'python-dateutil' 'python-argparse' 'python-axolotl-git' 'python-pillow')
 makedepends=('python-setuptools')
 conflicts=('yowsup-client-git')
-source=('git+https://github.com/tgalal/yowsup')
+source=("${pkgname}::git+https://github.com/tgalal/yowsup")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "yowsup"
+  cd "${srcdir}/${pkgname}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "yowsup"
+  cd "${srcdir}/${pkgname}"
   python setup.py install --root="$pkgdir/"
 }
 
