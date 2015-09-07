@@ -10,8 +10,8 @@
 PKGEXT=.pkg.tar
 
 pkgname=hon
-pkgver=3.7.8.1
-pkgrel=1
+pkgver=3.6.4.1
+pkgrel=2
 pkgdesc="Heroes of Newerth is a Real Time Strategy game heavily influcenced by DotA"
 arch=('i686' 'x86_64')
 url="http://www.heroesofnewerth.com/"
