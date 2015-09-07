@@ -7,7 +7,12 @@ arch=('any')
 license=('GPL')
 groups=('games')
 depends=()
-makedepends=('git' 'yasm' 'jdk8-openjdk' 'python-virtualenv' 'boost-libs' 'gcc-libs')
+makedepends=('git'
+             'yasm'
+             'jdk8-openjdk'
+             'python-virtualenv'
+             'gcc-libs'
+             'uthash')
 install=
 
 _gitname=ARSDKBuildUtils
