@@ -31,7 +31,8 @@ source=("http://download.ime.sogou.com/${_time}/sogoupinyin_${pkgver}_${_ARCH}.d
 md5sums=('47cd879b6b340391705f9a4e389045d9'
          '60b1dcd637c932cf4f3bfaed797f5401'
          'b55df1dffa61fb1af40199a8e1b2244b'
-         '62b2b974c475bab9f6cf6d5ee83b984a')
+         '62b2b974c475bab9f6cf6d5ee83b984a'
+         '9a88e363ea255a66be7791952e73542b')
 package(){
     cd ${srcdir}
 
