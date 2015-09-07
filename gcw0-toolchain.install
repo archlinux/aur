@@ -1,0 +1,16 @@
+
+post_install() {
+  echo "To use the toolchain for traditional Makefiles and autotools based projects, you"
+  echo "may have to setup your \$PATH to include the directory containing the tools."
+  echo "Note, that this currently can not be done automatically, as it overwrites"
+  echo "essential commands. A safe workflow might be as follows:"
+  echo "  export PATHBEFORE=\$PATH ; export PATH=/opt/gcw0-toolchain/usr/bin:\$PATH"
+  echo "  make (or any command to do the actual build)"
+  echo "  export PATH=\$PATHBEFORE ; unset PATHBEFORE"
+  echo "For cmake-based projects, you can add the following to your initial command:"
+  echo "  -DCMAKE_TOOLCHAIN_FILE=/opt/gcw0-toolchain/usr/share/buildroot/toolchainfile.cmake"
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,19 @@
+pkgbase = gcw0-toolchain
+	pkgdesc = Build environment for the Open Source handheld console GCW Zero
+	pkgver = 2014.08.20
+	pkgrel = 1
+	url = http://www.gcw-zero.com/develop
+	install = gcw0-toolchain.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gmp
+	noextract = opendingux-gcw0-toolchain.2014-08-20.tar.bz2
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = http://www.gcw-zero.com/files/opendingux-gcw0-toolchain.2014-08-20.tar.bz2
+	sha256sums = 3632c85f48879108d4349570ded60d87d7a324850b81d683d031e4ee112baaa0
+
+pkgname = gcw0-toolchain
+
