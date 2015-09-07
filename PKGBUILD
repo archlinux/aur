@@ -53,6 +53,7 @@ build() {
 
     # Replace json/json.h with json-c/json.h
     sed -i 's#json/json.h#json-c/json.h#g' `find .. -name "*.c" -o -name "*.h"`
+    sed -i 's#uthash/uthash.h#uthash.h#g' `find .. -name "*.c" -o -name "*.h"`
 
     # Build the sources
     ./SDK3Build.py -t Unix --nogit
