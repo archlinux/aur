@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/arc'
 license=('GPL')
 source=("http://download.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('902ce24b23422880d474df6f1d9eba5e')
+sha1sums=('e68e358b86a67c68e8a1cb95a840f380bfda3684')
+
 
 build() {
   make -C "${pkgname}-${pkgver}"
