@@ -2,7 +2,7 @@
 
 pkgname='profile-sync-daemon'
 pkgver=6.02
-pkgrel=1
+pkgrel=2
 pkgdesc='Syncs browser profiles to tmpfs reducing SSD/HDD calls and speeding-up browsers.'
 arch=('any')
 url='https://github.com/graysky2/profile-sync-daemon'

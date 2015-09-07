@@ -28,9 +28,9 @@ pre_upgrade() {
 	# required that pacman stop the user service here if running
 	if [ $(vercmp $2 6.01) -lt 0 ]; then
 		for i in $(users); do
-			running="$(su $i -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
+			running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 			if [[ "$running" = "active" ]]; then
-				su $i -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
+				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
 				echo '-> Internal changes to psd require it to be stopped now before updating.'
 				echo '-> Recommend that you diff /usr/share/doc/psd/psd.conf against ~/.psd/psd.conf'
 			fi
@@ -40,11 +40,11 @@ pre_upgrade() {
 
 pre_remove() {
 	for i in $(users); do
-		running="$(su $i -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
+		running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 		if [[ "$running" = "active" ]]; then
 			echo "--> In order to preserve your profiles, pacman will now stop your psd service."
 			echo "--> Any running and managed browsers will be exited."
-			su $i -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
+			su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
 		fi
 	done
 }
