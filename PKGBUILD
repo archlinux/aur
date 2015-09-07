@@ -4,12 +4,14 @@
 pkgname=grass
 pkgver=7.0.1
 pkgrel=2
+_shortver=${pkgver%.*}
+_shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
 url='http://grass.osgeo.org/'
 license=('GPL')
 depends=('fftw' 'gdal' 'glu' 'xorg-server' 'wxpython' 'python2-matplotlib' 'python2-pillow')
-source=("http://grass.osgeo.org/grass70/source/$pkgname-$pkgver.tar.gz")
+source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
 sha256sums=('0987dd1618fde24b05785a502c7db8c09401a522a7a3ee50543068fab4eb405f')
 
 prepare() {
@@ -17,8 +19,8 @@ prepare() {
 
   ln -sf "$(which python2)" python
 
-  sed -i "s/env python$/&2/" $(find . -name "*.py")
-  sed -i 's/grass7$/grass70/' gui/icons/grass.desktop
+  sed -i 's/env python$/&2/' $(find . -name "*.py")
+  sed -i "s/grass7$/grass$_shortver/" gui/icons/grass.desktop
 }
 
 build() {
@@ -26,7 +28,7 @@ build() {
   export PATH="$srcdir/$pkgname-$pkgver:$PATH"
 
   CPPFLAGS="" ./configure \
-    --prefix=/opt \
+    --prefix=/opt/$pkgname \
     --with-wxwidgets=/usr/bin/wx-config \
     --with-freetype-includes=/usr/include/freetype2
 
@@ -38,9 +40,9 @@ package() {
 
   make exec_prefix="$pkgdir/usr" INST_DIR="$pkgdir/opt/$pkgname" install
 
-  sed -i "s|$pkgdir||g" "$pkgdir/opt/grass/demolocation/.grassrc70" "$pkgdir/usr/bin/grass70"
+  sed -i "s|$pkgdir||g" "$pkgdir/opt/grass/demolocation/.grassrc$_shortver" "$pkgdir/usr/bin/grass$_shortver"
   sed -i "s|$srcdir||g" "$pkgdir/opt/grass/docs/html/t.connect.html"
-  sed -i 's/"python"/"python2"/' "$pkgdir/usr/bin/grass70"
+  sed -i 's/"python"/"python2"/' "$pkgdir/usr/bin/grass$_shortver"
 
   install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/icons/grass.png"
   install -Dm644 gui/icons/grass.desktop "$pkgdir/usr/share/applications/grass.desktop"
