@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Planet M.U.L.E.
+Comment=A free remake and tribute of the original M.U.L.E.
+Exec=planetmule
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=GNOME;Game
+Icon=/opt/mule/data/icon.gif

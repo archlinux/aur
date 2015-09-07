@@ -1,0 +1,17 @@
+pkgbase = planetmule
+	pkgdesc = A free remake of, and tribute to, the 26 year old original role-playing game M.U.L.E.
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = http://planetmule.com
+	arch = any
+	license = Freeware
+	depends = jre7-openjdk
+	source = http://mule-downloads.s3.amazonaws.com/mule_linux_1.3.6.tar.gz
+	source = planetmule
+	source = planetmule.desktop
+	sha256sums = 52cbdafd680b02465538df7a6e64c8f258ea27ac62fa8ee91a6706ce0d87d8fc
+	sha256sums = 4239af5a9993fd7831b01317ed8229ce9ead27bea12f7a037de1698228d15f23
+	sha256sums = 293d79ff10950f90a0ecbd6e37bdd0e0db4c66b0c4d42405e45e176d26407b52
+
+pkgname = planetmule
+
