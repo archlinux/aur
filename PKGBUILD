@@ -1,7 +1,7 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
 
 pkgname=glbinding-git
-pkgver=v1.1.0.r34.gf7d082c
+pkgver=1.1.0.r34.gf7d082c
 pkgrel=1
 pkgdesc="A generated C++ binding for the OpenGL API, generated using the gl.xml specification"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
