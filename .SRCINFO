@@ -1,7 +1,7 @@
 pkgbase = perl-net-google-authsub
 	pkgdesc = Perl/CPAN module Net::Google::AuthSub
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/~simonw/Net-Google-AuthSub/
 	arch = any
 	license = GPL
