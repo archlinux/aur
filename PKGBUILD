@@ -2,13 +2,13 @@
 # Submitter: Jon Eyolfson <jon@eyolfson.com>
 pkgname=prosody-mod-smacks
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="XEP-0198: Reliability and fast reconnects for Prosody"
 arch=('any')
-url="http://code.google.com/p/prosody-modules/wiki/mod_smacks"
+url="http://modules.prosody.im/mod_smacks.html"
 license=('MIT')
 depends=('prosody')
-source=("http://prosody-modules.googlecode.com/hg/mod_smacks/mod_smacks.lua")
+source=("http://hg.prosody.im/prosody-modules/raw-file/tip/mod_smacks/mod_smacks.lua")
 sha1sums=('1cfbc48dba44b5d2147b6f800d09c34b80d54500')
 
 package() {
