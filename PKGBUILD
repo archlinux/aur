@@ -4,12 +4,12 @@
 
 pkgname=mailpile
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
 arch=('any')
 url="http://www.mailpile.is"
 license=('AGPL3')
-depends=('gnupg' 'python2-jinja>=2.6' 'python2-lxml>=2.3.2' 'python2-markupsafe' 'python2-pgpdump' 'python2-pillow' 'python2-pydns' 'spambayes>=1.1a6')
+depends=('gnupg1' 'python2-jinja>=2.6' 'python2-lxml>=2.3.2' 'python2-markupsafe' 'python2-pgpdump' 'python2-pillow' 'python2-pydns' 'spambayes>=1.1a6')
 install=${pkgname}.install
 source=("https://github.com/pagekite/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
@@ -23,6 +23,10 @@ prepare() {
   sed -i "s^('static/^('/usr/share/mailpile/static/^g" mailpile/config.py
   sed -i '/os.path.dirname(              # scripts/d' mp
   sed -i 's^__file__))^"/usr/share/mailpile/mailpile")^g' mp
+
+  # Use gnupg 1.4
+  sed -i "s/gpg'/gpg1'/g" mailpile/crypto/gpgi.py
+  sed -i "s/gpg /gpg1 /g" mailpile/plugins/crypto_gnupg.py
 }
 
 build() {

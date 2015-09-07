@@ -1,12 +1,12 @@
 pkgbase = mailpile
 	pkgdesc = A modern, fast web-mail client with user-friendly encryption and privacy features.
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.mailpile.is
 	install = mailpile.install
 	arch = any
 	license = AGPL3
-	depends = gnupg
+	depends = gnupg1
 	depends = python2-jinja>=2.6
 	depends = python2-lxml>=2.3.2
 	depends = python2-markupsafe
