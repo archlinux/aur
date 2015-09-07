@@ -7,7 +7,7 @@ url="http://crates.io/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('custom')
 depends=('curl' 'rust')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'python')
 conflicts=('cargo-bin')
 source=("git+https://github.com/rust-lang/cargo.git#tag=$pkgver")
 options=('!emptydirs')
