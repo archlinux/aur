@@ -1,8 +1,8 @@
 pkgbase = glbinding-git
-	pkgdesc = A generated C++ binding for the OpenGL API, generated using the gl.xml specification. (git version)
+	pkgdesc = A generated C++ binding for the OpenGL API, generated using the gl.xml specification
 	pkgver = v1.1.0.r34.gf7d082c
 	pkgrel = 1
-	url = https://github.com/hpicgs/glbinding
+	url = http://www.glbinding.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = glbinding-git
 	makedepends = git
 	depends = libgl
 	conflicts = glbinding
-	source = glbinding-git::git+https://github.com/hpicgs/glbinding.git
+	source = glbinding-git::git+https://github.com/cginternals/glbinding.git
 	sha256sums = SKIP
 
 pkgname = glbinding-git

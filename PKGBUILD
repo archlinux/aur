@@ -3,9 +3,9 @@
 pkgname=glbinding-git
 pkgver=v1.1.0.r34.gf7d082c
 pkgrel=1
-pkgdesc="A generated C++ binding for the OpenGL API, generated using the gl.xml specification. (git version)"
+pkgdesc="A generated C++ binding for the OpenGL API, generated using the gl.xml specification"
 arch=('i686' 'x86_64')
-url="https://github.com/hpicgs/glbinding"
+url="http://www.glbinding.org/"
 license=('MIT')
 
 depends=('libgl')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'git')
 checkdepends=('gmock' 'gtest')
 conflicts=('glbinding')
 
-source=("$pkgname"::'git+https://github.com/hpicgs/glbinding.git')
+source=("$pkgname"::'git+https://github.com/cginternals/glbinding.git')
 sha256sums=('SKIP')
 
 pkgver() {
