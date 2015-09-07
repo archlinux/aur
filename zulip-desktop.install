@@ -1,0 +1,19 @@
+post_install() {
+	[ -e '/bin/gtk-update-icon-cache' ] && gtk-update-icon-cache /usr/share/icons/hicolor
+	xdg-icon-resource install --novendor --size 16 /usr/share/icons/hicolor/16x16/apps/zulip.png 
+	xdg-icon-resource install --novendor --size 32 /usr/share/icons/hicolor/32x32/apps/zulip.png
+	xdg-icon-resource install --novendor --size 64 /usr/share/icons/hicolor/64x64/apps/zulip.png
+	xdg-icon-resource install --novendor --size 128 /usr/share/icons/hicolor/128x128/apps/zulip.png
+	xdg-icon-resource install --novendor --size 256 /usr/share/icons/hicolor/256x256/apps/zulip.png
+	xdg-icon-resource install --novendor --size 512 /usr/share/icons/hicolor/512x512/apps/zulip.png
+}
+
+post_remove() {
+	[ -e '/bin/gtk-update-icon-cache' ] && gtk-update-icon-cache /usr/share/icons/hicolor
+	xdg-icon-resource uninstall --size 16 zulip
+	xdg-icon-resource uninstall --size 32 zulip
+	xdg-icon-resource uninstall --size 64 zulip
+	xdg-icon-resource uninstall --size 128 zulip
+	xdg-icon-resource uninstall --size 256 zulip
+	xdg-icon-resource uninstall --size 512 zulip
+}
