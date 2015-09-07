@@ -1,7 +1,7 @@
 # Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=revolution-r-open-blas-systemblas
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Alternative math library symlinks (to the system blas e.g. OpenBLAS) for Revolution R Open"
 arch=('x86_64')
