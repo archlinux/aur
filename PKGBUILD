@@ -1,13 +1,13 @@
-# thanks for update: Mikael Tillenius (mti) <mti at tillenius dot com>
-# Maintainer: aAXEe <axel at brasshack dot de>
-# Submitter: Alexandre Bique (abique) <>
+# Maintainer: Mikael Tillenius <mti at tillenius dot com>
+# Thanks to aAXEe <axel at brasshack dot de> and Alexandre Bique (abique)
+# for earlier work.
 pkgname=picoscope
-pkgver=6.10.1_4r36
+pkgver=6.11.6_4r33
 pkgrel=1
 pkgdesc="gui for picotech oscilloscope"
 arch=('i686' 'x86_64')
 url="http://www.picotech.com/linux.html"
-license=('GPL')
+license=('custom')
 groups=()
 depends=(mono mono-tools libpicoipp desktop-file-utils)
 makedepends=(dpkg)
@@ -25,7 +25,7 @@ source=(
   "http://labs.picotech.com/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver//_/-}_all.deb"
   "picoscope.install"
   "95-pico.rules")
-md5sums=('961072e9080fb0b41cf25dc25caeb6c0'
+md5sums=('f5aaa5ec4163cd29d2e4e706eff0163c'
          '503df69f2e6001e3e9269970a552af13'
          'afedfca88c003ead013c18f26f789fd4')
 
