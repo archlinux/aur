@@ -1,6 +1,6 @@
 # Maintainer: felix (fstirlitz, m.p.isaev)
 pkgname=lua-gumbo-git
-pkgver=0.3+10+g6a861dc
+pkgver=0.3+15+gbbac7eb
 pkgrel=1
 pkgdesc="Lua bindings for gumbo, Google's pure-C HTML5 parser"
 arch=(i686 x86_64)
@@ -22,10 +22,6 @@ md5sums=(SKIP)
 pkgver() {
   cd "$srcdir/lua-gumbo"
   git describe | tr - +
-}
-
-prepare() {
-  sed -i -e 's/^LUA_NAMES = .*/LUA_NAMES = lua/' "$srcdir/lua-gumbo/lualib.mk"
 }
 
 check() {
