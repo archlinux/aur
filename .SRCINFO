@@ -1,5 +1,5 @@
 pkgbase = pixeluvo
-	pkgdesc = sophisticated photo editor
+	pkgdesc = photo editor with crop, vignette, text, captions, resize, color correction, raw file, filter, warp, layers, mask, and more.
 	pkgver = 1.5.2
 	pkgrel = 3
 	url = http://www.pixeluvo.com
