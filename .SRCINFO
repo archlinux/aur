@@ -1,6 +1,6 @@
 pkgbase = nodejs-yeoman
 	pkgdesc = Command line interface for creating, building, maintaining, and shipping Yeoman projects.
-	pkgver = 1.4.7
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = http://yeoman.io
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = nodejs-yeoman
 	depends = nodejs-bower
 	depends = nodejs-grunt-cli
 	optdepends = phantomjs: browser-run test suite
-	noextract = yo-1.4.7.tgz
-	source = http://registry.npmjs.org/yo/-/yo-1.4.7.tgz
-	sha256sums = 3c07f8b4220f09840330071cde3948c5c05f06b8f4b6de40dfe6da4b32ff9f77
+	noextract = yo-1.4.8.tgz
+	source = http://registry.npmjs.org/yo/-/yo-1.4.8.tgz
+	sha256sums = 75a114ffacc427bc98e50b51bb1648fcdeac6db7dead67018f0a088d3d9c349e
 
 pkgname = nodejs-yeoman
 
