@@ -1,15 +1,13 @@
-# Maintainer: Patryk Kowalczyk < patryk at kowalczyk dot ws>
-
 pkgname=ocaml-extlib
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Extends the OCaml standard library"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/ocaml-extlib/"
+url="https://github.com/ygrek/ocaml-extlib"
 license=('LGPL')
 depends=('ocaml')
 makedepends=('ocaml-findlib' 'camlp4')
-source=(http://ocaml-extlib.googlecode.com/files/extlib-${pkgver}.tar.gz)
+source=(https://github.com/ygrek/ocaml-extlib/archive/${pkgver}.tar.gz)
 options=('staticlibs')
 
 build() {
@@ -39,4 +37,4 @@ package () {
   mkdir -p $_DOCDIR
   cp -r doc/* $_DOCDIR/
 }
-md5sums=('5643237a6410dc915347956cff97df86')
+md5sums=('b50b02d9e40d35cc20c82d9c881a1bf6')
