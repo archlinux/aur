@@ -1,6 +1,6 @@
 _pkgname=obozrenie
 pkgname=$_pkgname-git
-pkgver=r72.9780193
+pkgver=r72.5e627f9
 pkgrel=1
 pkgdesc='Simple and easy to use game server browser'
 arch=('any')
