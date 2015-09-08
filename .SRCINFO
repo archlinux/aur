@@ -1,0 +1,14 @@
+pkgbase = python2-sql
+	pkgdesc = Library to write SQL queries
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://hg.tryton.org/python-sql
+	arch = any
+	license = GPL3
+	makedepends = python2
+	depends = python2
+	source = https://pypi.python.org/packages/source/p/python-sql/python-sql-0.7.tar.gz
+	md5sums = d00674dbcf4e971cc3a64f2373f7255f
+
+pkgname = python2-sql
+
