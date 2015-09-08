@@ -14,7 +14,7 @@ pkgbase = opengrok
 	source = https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.tar.gz
 	source = deploy.sh
 	sha1sums = 96a6a5d1888b802cdba15915b283db84439b83fd
-	sha1sums = 79ac952c7b3c57232d21aa5e9b90f22f61098389
+	sha1sums = 118514d7474006c9b98151403d3d7952b8a9cea6
 
 pkgname = opengrok
 

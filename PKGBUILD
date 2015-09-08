@@ -14,7 +14,7 @@ source=(
     'deploy.sh')
 sha1sums=(
     '96a6a5d1888b802cdba15915b283db84439b83fd'
-    '79ac952c7b3c57232d21aa5e9b90f22f61098389')
+    '118514d7474006c9b98151403d3d7952b8a9cea6')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

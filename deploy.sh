@@ -137,7 +137,7 @@ EXTRA_CONFIG_EOF
 (
 	$EXEC cd /opt/opengrok/bin
 	$EXEC export OPENGROK_VERBOSE=true
-	$EXEC export OPENGROK_EXTRA_PARAMS="-w $URL"
+	$EXEC export OPENGROK_WEBAPP_CONTEXT="$URL"
 	$EXEC export OPENGROK_INSTANCE_BASE="${ROOTDIR}"
 	$EXEC ./OpenGrok index "$SRCDIR"
 ) || exit "$?"
@@ -158,7 +158,7 @@ EXTRA_CONFIG_EOF
 	echo "cd /opt/opengrok/bin"
 	echo "export OPENGROK_VERBOSE=true"
 	echo "export OPENGROK_INSTANCE_BASE='${ROOTDIR}'"
-	echo "export OPENGROK_EXTRA_PARAMS='-w $URL'"
+	echo "export OPENGROK_WEBAPP_CONTEXT='$URL'"
 	echo "./OpenGrok index '$SRCDIR'"
 	echo
 ) >"$ROOTDIR/update.sh"
