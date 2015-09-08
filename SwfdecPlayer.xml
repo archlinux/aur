@@ -1,0 +1,1879 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="SwfdecPlayer">
+<refmeta>
+<refentrytitle role="top_of_page" id="SwfdecPlayer.top_of_page">SwfdecPlayer</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>SWFDEC Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>SwfdecPlayer</refname>
+<refpurpose>main playback object</refpurpose>
+</refnamediv>
+
+<refsect1 id="SwfdecPlayer.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-init">swfdec_init</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="SwfdecPlayer"><returnvalue>SwfdecPlayer</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-player-new">swfdec_player_new</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-is-initialized">swfdec_player_is_initialized</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="SwfdecURL"><returnvalue>SwfdecURL</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-player-get-url">swfdec_player_get_url</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-url">swfdec_player_set_url</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="SwfdecURL"><returnvalue>SwfdecURL</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-player-get-base-url">swfdec_player_get_base_url</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-base-url">swfdec_player_set_base_url</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-player-get-variables">swfdec_player_get_variables</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-variables">swfdec_player_set_variables</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="double"><returnvalue>double</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-rate">swfdec_player_get_rate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-default-size">swfdec_player_get_default_size</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-size">swfdec_player_get_size</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-size">swfdec_player_set_size</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="glong"><returnvalue>glong</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-next-event">swfdec_player_get_next_event</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="guint"><returnvalue>guint</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-background-color">swfdec_player_get_background_color</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="SwfdecScaleMode"><returnvalue>SwfdecScaleMode</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-scale-mode">swfdec_player_get_scale_mode</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-scale-mode">swfdec_player_set_scale_mode</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="SwfdecAlignment"><returnvalue>SwfdecAlignment</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-alignment">swfdec_player_get_alignment</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-alignment">swfdec_player_set_alignment</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="SwfdecPlayerScripting"><returnvalue>SwfdecPlayerScripting</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-player-get-scripting">swfdec_player_get_scripting</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-scripting">swfdec_player_set_scripting</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-allow-fullscreen">swfdec_player_get_allow_fullscreen</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-allow-fullscreen">swfdec_player_set_allow_fullscreen</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-fullscreen">swfdec_player_get_fullscreen</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="SwfdecRenderer"><returnvalue>SwfdecRenderer</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-player-get-renderer">swfdec_player_get_renderer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-renderer">swfdec_player_set_renderer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-render">swfdec_player_render</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-render-with-renderer">swfdec_player_render_with_renderer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gulong"><returnvalue>gulong</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-advance">swfdec_player_advance</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-mouse-move">swfdec_player_mouse_move</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-mouse-press">swfdec_player_mouse_press</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-mouse-release">swfdec_player_mouse_release</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-key-press">swfdec_player_key_press</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-key-release">swfdec_player_key_release</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-focus">swfdec_player_get_focus</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-focus">swfdec_player_set_focus</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-player-get-selection">swfdec_player_get_selection</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="GList"><returnvalue>GList</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-player-get-audio">swfdec_player_get_audio</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gulong"><returnvalue>gulong</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-get-maximum-runtime">swfdec_player_get_maximum_runtime</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-player-set-maximum-runtime">swfdec_player_set_maximum_runtime</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="SwfdecPlayer.properties" role="properties">
+<title role="properties.title">Properties</title>
+<informaltable frame="none">
+<tgroup cols="3">
+<colspec colname="properties_type" colwidth="150px"/>
+<colspec colname="properties_name" colwidth="300px"/>
+<colspec colname="properties_flags" colwidth="200px"/>
+<tbody>
+<row><entry role="property_type"><link linkend="SwfdecAlignment"><type>SwfdecAlignment</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--alignment">alignment</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="gboolean"><type>gboolean</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--allow-fullscreen">allow-fullscreen</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="guint"><type>guint</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--background-color">background-color</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="SwfdecURL"><type>SwfdecURL</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--base-url">base-url</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="gulong"><type>gulong</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--cache-size">cache-size</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="guint"><type>guint</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--default-height">default-height</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="guint"><type>guint</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--default-width">default-width</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="gboolean"><type>gboolean</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--focus">focus</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="gboolean"><type>gboolean</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--fullscreen">fullscreen</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="gint"><type>gint</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--height">height</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="gboolean"><type>gboolean</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--initialized">initialized</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="GType"><type>GType</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--loader-type">loader-type</link></entry><entry role="property_flags">Read / Write / Construct Only</entry></row>
+<row><entry role="property_type"><link linkend="gulong"><type>gulong</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--max-runtime">max-runtime</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="SwfdecMouseCursor"><type>SwfdecMouseCursor</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--mouse-cursor">mouse-cursor</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="glong"><type>glong</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--next-event">next-event</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="gdouble"><type>gdouble</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--rate">rate</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="SwfdecRenderer"><type>SwfdecRenderer</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--renderer">renderer</link></entry><entry role="property_flags">Read / Write / Construct</entry></row>
+<row><entry role="property_type"><link linkend="SwfdecScaleMode"><type>SwfdecScaleMode</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--scale-mode">scale-mode</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="SwfdecPlayerScripting"><type>SwfdecPlayerScripting</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--scripting">scripting</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="gchar"><type>gchar</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--selection">selection</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="GType"><type>GType</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--socket-type">socket-type</link></entry><entry role="property_flags">Read / Write / Construct Only</entry></row>
+<row><entry role="property_type"><link linkend="SwfdecTimeVal"><type>SwfdecTimeVal</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--start-time">start-time</link></entry><entry role="property_flags">Write / Construct Only</entry></row>
+<row><entry role="property_type"><link linkend="SwfdecSystem"><type>SwfdecSystem</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--system">system</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="SwfdecURL"><type>SwfdecURL</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--url">url</link></entry><entry role="property_flags">Read</entry></row>
+<row><entry role="property_type"><link linkend="gchar"><type>gchar</type></link>&#160;*</entry><entry role="property_name"><link linkend="SwfdecPlayer--variables">variables</link></entry><entry role="property_flags">Read / Write</entry></row>
+<row><entry role="property_type"><link linkend="gint"><type>gint</type></link></entry><entry role="property_name"><link linkend="SwfdecPlayer--width">width</link></entry><entry role="property_flags">Read / Write</entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="SwfdecPlayer.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<informaltable frame="none">
+<tgroup cols="3">
+<colspec colname="signals_return" colwidth="150px"/>
+<colspec colname="signals_name" colwidth="300px"/>
+<colspec colname="signals_flags" colwidth="200px"/>
+<tbody>
+<row><entry role="signal_type"><link linkend="void"><returnvalue>void</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-advance">advance</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="void"><returnvalue>void</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-audio-added">audio-added</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="void"><returnvalue>void</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-audio-removed">audio-removed</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="void"><returnvalue>void</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-fscommand">fscommand</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-handle-key">handle-key</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-handle-mouse">handle-mouse</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="void"><returnvalue>void</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-invalidate">invalidate</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="void"><returnvalue>void</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-launch">launch</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="void"><returnvalue>void</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-missing-plugins">missing-plugins</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+<row><entry role="signal_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link></entry><entry role="signal_name"><link linkend="SwfdecPlayer-query-size">query-size</link></entry><entry role="signal_flags"><link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="SwfdecPlayer.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="SwfdecPlayer-struct">SwfdecPlayer</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="SwfdecPlayer.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<screen>    <link linkend="GObject">GObject</link>
+    <phrase role="lineart">&#9584;&#9472;&#9472;</phrase> <link linkend="SwfdecAsContext">SwfdecAsContext</link>
+        <phrase role="lineart">&#9584;&#9472;&#9472;</phrase> SwfdecPlayer
+            <phrase role="lineart">&#9584;&#9472;&#9472;</phrase> <link linkend="SwfdecGtkPlayer">SwfdecGtkPlayer</link>
+</screen>
+</refsect1>
+
+<refsect1 id="SwfdecPlayer.includes"><title>Includes</title><synopsis>#include &lt;swfdec/swfdec.h&gt;
+</synopsis></refsect1>
+
+<refsect1 id="SwfdecPlayer.description" role="desc">
+<title role="desc.title">Description</title>
+<para>A <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> is the main object used for playing back Flash files through
+Swfdec.</para>
+<para>A player interacts with the outside world in a multitude of ways. The most 
+important ones are described below.</para>
+<para>Input is handled via the </para>
+<link linkend="swfdec-SwfdecLoader">SwfdecLoader</link> class. A 
+<para><link linkend="SwfdecLoader"><type>SwfdecLoader</type></link> is set on a new player using <link linkend="swfdec-player-set-loader"><function>swfdec_player_set_loader()</function></link>.</para>
+<para>When the loader has provided enough data, you can start playing the file.
+This is done in steps by calling <link linkend="swfdec-player-advance"><function>swfdec_player_advance()</function></link> - preferrably as 
+often as <link linkend="swfdec-player-get-next-event"><function>swfdec_player_get_next_event()</function></link> indicates. Or you can provide user input
+to the player by calling for example <link linkend="swfdec-player-handle-mouse"><function>swfdec_player_handle_mouse()</function></link>.</para>
+<para>You can use <link linkend="swfdec-player-render"><function>swfdec_player_render()</function></link> to draw the current state of the player.
+After that, connect to the SwfdecPlayer:invalidate signal to be notified of
+changes.</para>
+<para>Audio output is handled via the </para>
+<link linkend="swfdec-SwfdecAudio">SwfdecAudio</link> class. One 
+<para><link linkend="SwfdecAudio"><type>SwfdecAudio</type></link> object is created for every output using the 
+SwfdecPlayer::audio-added signal.</para>
+
+</refsect1>
+<refsect1 id="SwfdecPlayer.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="swfdec-init" role="function">
+<title>swfdec_init&#160;()</title>
+<indexterm zone="swfdec-init"><primary>swfdec_init</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_init (<parameter><type>void</type></parameter>);</programlisting>
+<para>Initializes the Swfdec library.</para>
+</refsect2>
+<refsect2 id="swfdec-player-new" role="function">
+<title>swfdec_player_new&#160;()</title>
+<indexterm zone="swfdec-player-new"><primary>swfdec_player_new</primary></indexterm>
+<programlisting language="C"><link linkend="SwfdecPlayer"><returnvalue>SwfdecPlayer</returnvalue></link>&#160;*
+swfdec_player_new (<parameter><link linkend="SwfdecAsDebugger"><type>SwfdecAsDebugger</type></link> *debugger</parameter>);</programlisting>
+<para>Creates a new player. This function is supposed to be used for testing.
+Because of this, the created player will behave as predictable as possible.
+For example, it will generate the same random number sequence every time.
+The function calls <link linkend="swfdec-init"><function>swfdec_init()</function></link> for you if it wasn't called before.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>debugger</para></entry>
+<entry role="parameter_description"><para><link linkend="NULL:CAPS"><literal>NULL</literal></link> or a <link linkend="SwfdecAsDebugger"><type>SwfdecAsDebugger</type></link> to use for debugging this player.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> The new player</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-is-initialized" role="function">
+<title>swfdec_player_is_initialized&#160;()</title>
+<indexterm zone="swfdec-player-is-initialized"><primary>swfdec_player_is_initialized</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_is_initialized (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Determines if the <parameter>player</parameter>
+ is initalized yet. An initialized player is able
+to provide basic values like width, height or rate. A player may not be 
+initialized if the loader it was started with does not reference a Flash
+resources or it did not provide enough data yet. If a player is initialized,
+it will never be uninitialized again.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> TRUE if the basic values are known.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-url" role="function">
+<title>swfdec_player_get_url&#160;()</title>
+<indexterm zone="swfdec-player-get-url"><primary>swfdec_player_get_url</primary></indexterm>
+<programlisting language="C">const <link linkend="SwfdecURL"><returnvalue>SwfdecURL</returnvalue></link>&#160;*
+swfdec_player_get_url (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Gets the URL of the resource that is currently played back. If no URL has 
+been set on the <parameter>player</parameter>
+ yet, <link linkend="NULL:CAPS"><literal>NULL</literal></link> is returned.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the <link linkend="SwfdecURL"><type>SwfdecURL</type></link> currently played back or <link linkend="NULL:CAPS"><literal>NULL</literal></link></para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-url" role="function">
+<title>swfdec_player_set_url&#160;()</title>
+<indexterm zone="swfdec-player-set-url"><primary>swfdec_player_set_url</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_url (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                       <parameter>const <link linkend="SwfdecURL"><type>SwfdecURL</type></link> *url</parameter>);</programlisting>
+<para>Sets the <parameter>url</parameter>
+ for the main data. This function may only be called once.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>url</para></entry>
+<entry role="parameter_description"><para>the url for the initial reference in this player</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-base-url" role="function">
+<title>swfdec_player_get_base_url&#160;()</title>
+<indexterm zone="swfdec-player-get-base-url"><primary>swfdec_player_get_base_url</primary></indexterm>
+<programlisting language="C">const <link linkend="SwfdecURL"><returnvalue>SwfdecURL</returnvalue></link>&#160;*
+swfdec_player_get_base_url (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Gets the base URL that this player uses when resolving a relative URL. It is
+automatically set to the parent directory of the currently played back 
+resource, but can be changed using <link linkend="swfdec-player-set-base-url"><function>swfdec_player_set_base_url()</function></link>. When no
+resource has been set on the <parameter>player</parameter>
+ yet, <link linkend="NULL:CAPS"><literal>NULL</literal></link> is returned.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the base <link linkend="SwfdecURL"><type>SwfdecURL</type></link> for resolving relative links or <link linkend="NULL:CAPS"><literal>NULL</literal></link></para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-base-url" role="function">
+<title>swfdec_player_set_base_url&#160;()</title>
+<indexterm zone="swfdec-player-set-base-url"><primary>swfdec_player_set_base_url</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_base_url (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                            <parameter>const <link linkend="SwfdecURL"><type>SwfdecURL</type></link> *url</parameter>);</programlisting>
+<para>Sets the URL that will be used for resolving realtive links inside the 
+<parameter>player</parameter>
+.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>url</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecURL"><type>SwfdecURL</type></link> or <link linkend="NULL:CAPS"><literal>NULL</literal></link> to reset to defaults</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-variables" role="function">
+<title>swfdec_player_get_variables&#160;()</title>
+<indexterm zone="swfdec-player-get-variables"><primary>swfdec_player_get_variables</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+swfdec_player_get_variables (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Gets the initial variables for this player. See <link linkend="swfdec-player-set-variables"><function>swfdec_player_set_variables()</function></link>
+for details about variables.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> a string represetation of the current variables or <link linkend="NULL:CAPS"><literal>NULL</literal></link> if none are
+set on the <parameter>player</parameter>
+.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-variables" role="function">
+<title>swfdec_player_set_variables&#160;()</title>
+<indexterm zone="swfdec-player-set-variables"><primary>swfdec_player_set_variables</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_variables (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                             <parameter>const <link linkend="char"><type>char</type></link> *variables</parameter>);</programlisting>
+<para>Sets the loader for the main data. This function may only be called if 
+<link linkend="swfdec-player-set-url"><function>swfdec_player_set_url()</function></link> has not been called yet.
+If the <parameter>variables</parameter>
+ are set and validate, they will be set as properties on the 
+root movie.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>variables</para></entry>
+<entry role="parameter_description"><para>a string that is checked to be in 'application/x-www-form-urlencoded'
+syntax describing the arguments to set on the new player or NULL for
+none.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-rate" role="function">
+<title>swfdec_player_get_rate&#160;()</title>
+<indexterm zone="swfdec-player-get-rate"><primary>swfdec_player_get_rate</primary></indexterm>
+<programlisting language="C"><link linkend="double"><returnvalue>double</returnvalue></link>
+swfdec_player_get_rate (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Queries the framerate of this movie. This number specifies the number
+of frames that are supposed to pass per second. It is a multiple of 1/256.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> The framerate of this movie or 0 if it isn't known yet or the
+movie doesn't have a framerate.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-default-size" role="function">
+<title>swfdec_player_get_default_size&#160;()</title>
+<indexterm zone="swfdec-player-get-default-size"><primary>swfdec_player_get_default_size</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_get_default_size (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                                <parameter><link linkend="guint"><type>guint</type></link> *width</parameter>,
+                                <parameter><link linkend="guint"><type>guint</type></link> *height</parameter>);</programlisting>
+<para>If the default size of the movie is initialized, fills in <parameter>width</parameter>
+ and <parameter>height</parameter>
+ 
+with the size. Otherwise <parameter>width</parameter>
+ and <parameter>height</parameter>
+ are set to 0.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>width</para></entry>
+<entry role="parameter_description"><para>integer to store the width in or <link linkend="NULL:CAPS"><literal>NULL</literal></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>height</para></entry>
+<entry role="parameter_description"><para>integer to store the height in or <link linkend="NULL:CAPS"><literal>NULL</literal></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-size" role="function">
+<title>swfdec_player_get_size&#160;()</title>
+<indexterm zone="swfdec-player-get-size"><primary>swfdec_player_get_size</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_get_size (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                        <parameter><link linkend="int"><type>int</type></link> *width</parameter>,
+                        <parameter><link linkend="int"><type>int</type></link> *height</parameter>);</programlisting>
+<para>Gets the currently set image size. If the default width or height should be 
+used, the width or height respectively is set to -1.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>width</para></entry>
+<entry role="parameter_description"><para>integer to store the width in or <link linkend="NULL:CAPS"><literal>NULL</literal></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>height</para></entry>
+<entry role="parameter_description"><para>integer to store the height in or <link linkend="NULL:CAPS"><literal>NULL</literal></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-size" role="function">
+<title>swfdec_player_set_size&#160;()</title>
+<indexterm zone="swfdec-player-set-size"><primary>swfdec_player_set_size</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_size (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                        <parameter><link linkend="int"><type>int</type></link> width</parameter>,
+                        <parameter><link linkend="int"><type>int</type></link> height</parameter>);</programlisting>
+<para>Sets the image size to the given values. The image size is what the area that
+the <parameter>player</parameter>
+ will render and advocate with scripts.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>width</para></entry>
+<entry role="parameter_description"><para>desired width of the movie or -1 for default</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>height</para></entry>
+<entry role="parameter_description"><para>desired height of the movie or -1 for default</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-next-event" role="function">
+<title>swfdec_player_get_next_event&#160;()</title>
+<indexterm zone="swfdec-player-get-next-event"><primary>swfdec_player_get_next_event</primary></indexterm>
+<programlisting language="C"><link linkend="glong"><returnvalue>glong</returnvalue></link>
+swfdec_player_get_next_event (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Queries how long to the next event. This is the next time when you should 
+call <link linkend="swfdec-player-advance"><function>swfdec_player_advance()</function></link> to forward to.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>ia <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> number of milliseconds until next event or -1 if no outstanding event</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-background-color" role="function">
+<title>swfdec_player_get_background_color&#160;()</title>
+<indexterm zone="swfdec-player-get-background-color"><primary>swfdec_player_get_background_color</primary></indexterm>
+<programlisting language="C"><link linkend="guint"><returnvalue>guint</returnvalue></link>
+swfdec_player_get_background_color (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Gets the current suggested background color. The color will be an ARGB-color, 
+with the MSB being the alpha value. Note that Swfdec will not render the 
+background color itself, so if you want the background to not be translucent
+it is your job to clear the background using this color.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the background color as an ARGB value</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-scale-mode" role="function">
+<title>swfdec_player_get_scale_mode&#160;()</title>
+<indexterm zone="swfdec-player-get-scale-mode"><primary>swfdec_player_get_scale_mode</primary></indexterm>
+<programlisting language="C"><link linkend="SwfdecScaleMode"><returnvalue>SwfdecScaleMode</returnvalue></link>
+swfdec_player_get_scale_mode (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Gets the currrent mode used for scaling the movie. See <link linkend="SwfdecScaleMode"><type>SwfdecScaleMode</type></link> for 
+the different modes.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the current scale mode</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-scale-mode" role="function">
+<title>swfdec_player_set_scale_mode&#160;()</title>
+<indexterm zone="swfdec-player-set-scale-mode"><primary>swfdec_player_set_scale_mode</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_scale_mode (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                              <parameter><link linkend="SwfdecScaleMode"><type>SwfdecScaleMode</type></link> mode</parameter>);</programlisting>
+<para>Sets the currrent mode used for scaling the movie. See <link linkend="SwfdecScaleMode"><type>SwfdecScaleMode</type></link> for 
+the different modes.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mode</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecScaleMode"><type>SwfdecScaleMode</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-alignment" role="function">
+<title>swfdec_player_get_alignment&#160;()</title>
+<indexterm zone="swfdec-player-get-alignment"><primary>swfdec_player_get_alignment</primary></indexterm>
+<programlisting language="C"><link linkend="SwfdecAlignment"><returnvalue>SwfdecAlignment</returnvalue></link>
+swfdec_player_get_alignment (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Gets the alignment of the player. The alignment describes what point is used
+as the anchor for drawing the contents. See <link linkend="SwfdecAlignment"><type>SwfdecAlignment</type></link> for possible 
+values.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the current alignment</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-alignment" role="function">
+<title>swfdec_player_set_alignment&#160;()</title>
+<indexterm zone="swfdec-player-set-alignment"><primary>swfdec_player_set_alignment</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_alignment (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                             <parameter><link linkend="SwfdecAlignment"><type>SwfdecAlignment</type></link> align</parameter>);</programlisting>
+<para>Sets the alignment to <parameter>align</parameter>
+. For details about alignment, see 
+<link linkend="swfdec-player-get-alignment"><function>swfdec_player_get_alignment()</function></link> and <link linkend="SwfdecAlignment"><type>SwfdecAlignment</type></link>.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>align</para></entry>
+<entry role="parameter_description"><para><link linkend="SwfdecAlignment"><type>SwfdecAlignment</type></link> to set</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-scripting" role="function">
+<title>swfdec_player_get_scripting&#160;()</title>
+<indexterm zone="swfdec-player-get-scripting"><primary>swfdec_player_get_scripting</primary></indexterm>
+<programlisting language="C"><link linkend="SwfdecPlayerScripting"><returnvalue>SwfdecPlayerScripting</returnvalue></link>&#160;*
+swfdec_player_get_scripting (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Gets the current scripting implementation in use. If no implementation is in 
+use (the default), <link linkend="NULL:CAPS"><literal>NULL</literal></link> is returned.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the current scripting implementation used or <link linkend="NULL:CAPS"><literal>NULL</literal></link> if none</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-scripting" role="function">
+<title>swfdec_player_set_scripting&#160;()</title>
+<indexterm zone="swfdec-player-set-scripting"><primary>swfdec_player_set_scripting</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_scripting (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                             <parameter><link linkend="SwfdecPlayerScripting"><type>SwfdecPlayerScripting</type></link> *scripting</parameter>);</programlisting>
+<para>Sets the implementation to use for external scripting in the given <parameter>player</parameter>
+.
+Note that this is different from the internal script engine. See the 
+<link linkend="SwfdecPlayerScripting"><type>SwfdecPlayerScripting</type></link> paragraph for details about external scripting.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>scripting</para></entry>
+<entry role="parameter_description"><para>the scripting implementation to use or <link linkend="NULL:CAPS"><literal>NULL</literal></link> to disable scripting</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-allow-fullscreen" role="function">
+<title>swfdec_player_get_allow_fullscreen&#160;()</title>
+<indexterm zone="swfdec-player-get-allow-fullscreen"><primary>swfdec_player_get_allow_fullscreen</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_get_allow_fullscreen (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Checks if the player is allowed to go fullscreen. See 
+<link linkend="swfdec-player-set-allow-fullscreen"><function>swfdec_player_set_allow_fullscreen()</function></link> for details.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the player</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the player is allowed to go fullscreen</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-allow-fullscreen" role="function">
+<title>swfdec_player_set_allow_fullscreen&#160;()</title>
+<indexterm zone="swfdec-player-set-allow-fullscreen"><primary>swfdec_player_set_allow_fullscreen</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_allow_fullscreen (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                                    <parameter><link linkend="gboolean"><type>gboolean</type></link> allow</parameter>);</programlisting>
+<para>Sets if the player is allowed to go fullscreen. If a player is allowed to go
+fullscreen, it may set the SwfdecPlayer::fullscreen property to <link linkend="TRUE:CAPS"><literal>TRUE</literal></link>. 
+Players are not allowed to go fullscreen by default. Usually applications 
+only want to allow going fullscreen in response to mouse or keyboard events.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the player</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>allow</para></entry>
+<entry role="parameter_description"><para>if the player should be allowed to go fullscreen</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-fullscreen" role="function">
+<title>swfdec_player_get_fullscreen&#160;()</title>
+<indexterm zone="swfdec-player-get-fullscreen"><primary>swfdec_player_get_fullscreen</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_get_fullscreen (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>CHecks if the player is in fullscreen mode currently. If the player is
+in fullscreen mode, it assumes it occupies the whole screen. A player will
+only ever go into fullscreen, if you have allowed it by calling 
+<link linkend="swfdec-player-set-allow-fullscreen"><function>swfdec_player_set_allow_fullscreen()</function></link>.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the player</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the player is in fullscreen mode currently</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-renderer" role="function">
+<title>swfdec_player_get_renderer&#160;()</title>
+<indexterm zone="swfdec-player-get-renderer"><primary>swfdec_player_get_renderer</primary></indexterm>
+<programlisting language="C"><link linkend="SwfdecRenderer"><returnvalue>SwfdecRenderer</returnvalue></link>&#160;*
+swfdec_player_get_renderer (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Gets the current renderer in use. See <link linkend="swfdec-player-set-renderer"><function>swfdec_player_set_renderer()</function></link> for 
+details.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a player</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the current <link linkend="SwfdecRenderer"><type>SwfdecRenderer</type></link> in use.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-renderer" role="function">
+<title>swfdec_player_set_renderer&#160;()</title>
+<indexterm zone="swfdec-player-set-renderer"><primary>swfdec_player_set_renderer</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_renderer (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                            <parameter><link linkend="SwfdecRenderer"><type>SwfdecRenderer</type></link> *renderer</parameter>);</programlisting>
+<para>Sets the renderer to be used by the <parameter>player</parameter>
+. Setting the correct renderer is 
+mostly relevant for TextField flash objects with native fonts, as the 
+renderer provides those. It can also be very relevant for performance 
+reasons. See the <link linkend="SwfdecRenderer"><type>SwfdecRenderer</type></link> documentation for details.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a player</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>renderer</para></entry>
+<entry role="parameter_description"><para>the renderer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-render" role="function">
+<title>swfdec_player_render&#160;()</title>
+<indexterm zone="swfdec-player-render"><primary>swfdec_player_render</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_render (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                      <parameter><link linkend="cairo-t"><type>cairo_t</type></link> *cr</parameter>);</programlisting>
+<para>Renders the given area of the current frame to <parameter>cr</parameter>
+. This function just calls 
+<link linkend="swfdec-player-render-with-renderer"><function>swfdec_player_render_with_renderer()</function></link> using the <parameter>player</parameter>
+'s renderer.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>cr</para></entry>
+<entry role="parameter_description"><para><link linkend="cairo-t"><type>cairo_t</type></link> to render to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-render-with-renderer" role="function">
+<title>swfdec_player_render_with_renderer&#160;()</title>
+<indexterm zone="swfdec-player-render-with-renderer"><primary>swfdec_player_render_with_renderer</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_render_with_renderer (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                                    <parameter><link linkend="cairo-t"><type>cairo_t</type></link> *cr</parameter>,
+                                    <parameter><link linkend="SwfdecRenderer"><type>SwfdecRenderer</type></link> *renderer</parameter>);</programlisting>
+<para>Renders the given area of the current frame to <parameter>cr</parameter>
+. If you only want to 
+redraw parts of the player, like when responding to a 
+SwfdecPlayer:invalidate signal, set a clip on <parameter>cr</parameter>
+ using <link linkend="cairo-clip"><function>cairo_clip()</function></link>:</para>
+<informalexample><programlisting>
+cairo_rectangle (cr, x, y, width, height);
+cairo_clip (cr);
+swfdec_player_render_with_renderer (player, cr, renderer);
+</programlisting></informalexample>
+<para>Only redrawing parts of the player improves performance considerably.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>cr</para></entry>
+<entry role="parameter_description"><para><link linkend="cairo-t"><type>cairo_t</type></link> to render to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>renderer</para></entry>
+<entry role="parameter_description"><para>Renderer to use for rendering</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-advance" role="function">
+<title>swfdec_player_advance&#160;()</title>
+<indexterm zone="swfdec-player-advance"><primary>swfdec_player_advance</primary></indexterm>
+<programlisting language="C"><link linkend="gulong"><returnvalue>gulong</returnvalue></link>
+swfdec_player_advance (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                       <parameter><link linkend="gulong"><type>gulong</type></link> msecs</parameter>);</programlisting>
+<para>Advances <parameter>player</parameter>
+ by <parameter>msecs</parameter>
+ or at most one event, whatever happens first in
+the player's timeline. You should make sure to call this function as often 
+as <link linkend="swfdec-player-get-next-event"><function>swfdec_player_get_next_event()</function></link> indicates or your player will not appear 
+smooth.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> to advance</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>msecs</para></entry>
+<entry role="parameter_description"><para>number of milliseconds to advance at maximum</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> actual number of milliseconds advanced.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-mouse-move" role="function">
+<title>swfdec_player_mouse_move&#160;()</title>
+<indexterm zone="swfdec-player-mouse-move"><primary>swfdec_player_mouse_move</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_mouse_move (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                          <parameter><link linkend="double"><type>double</type></link> x</parameter>,
+                          <parameter><link linkend="double"><type>double</type></link> y</parameter>);</programlisting>
+<para>Updates the current mouse position. If the mouse has left the area of <parameter>player</parameter>
+,
+you should pass values outside the movie size for <parameter>x</parameter>
+ and <parameter>y</parameter>
+. You will 
+probably want to call <link linkend="swfdec-player-advance"><function>swfdec_player_advance()</function></link> before to update the player to
+the correct time when calling this function.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>x</para></entry>
+<entry role="parameter_description"><para>x coordinate of mouse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>y</para></entry>
+<entry role="parameter_description"><para>y coordinate of mouse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the mouse event was handled. <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> if the event should be
+propagated further. A mouse event may not be handled if the user
+clicked on a translucent area.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-mouse-press" role="function">
+<title>swfdec_player_mouse_press&#160;()</title>
+<indexterm zone="swfdec-player-mouse-press"><primary>swfdec_player_mouse_press</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_mouse_press (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                           <parameter><link linkend="double"><type>double</type></link> x</parameter>,
+                           <parameter><link linkend="double"><type>double</type></link> y</parameter>,
+                           <parameter><link linkend="guint"><type>guint</type></link> button</parameter>);</programlisting>
+<para>Tells the <parameter>player</parameter>
+ that the mouse button <parameter>button</parameter>
+ was pressed at the given
+coordinate.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>x</para></entry>
+<entry role="parameter_description"><para>x coordinate of mouse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>y</para></entry>
+<entry role="parameter_description"><para>y coordinate of mouse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>button</para></entry>
+<entry role="parameter_description"><para>number of the button that was pressed. Swfdec supports up to 32
+buttons.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the mouse event was handled. <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> if the event should be
+propagated further. A mouse event may not be handled if the user
+clicked on a translucent area.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-mouse-release" role="function">
+<title>swfdec_player_mouse_release&#160;()</title>
+<indexterm zone="swfdec-player-mouse-release"><primary>swfdec_player_mouse_release</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_mouse_release (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                             <parameter><link linkend="double"><type>double</type></link> x</parameter>,
+                             <parameter><link linkend="double"><type>double</type></link> y</parameter>,
+                             <parameter><link linkend="guint"><type>guint</type></link> button</parameter>);</programlisting>
+<para>Tells the <parameter>player</parameter>
+ that the mouse button <parameter>button</parameter>
+ was released at the given
+coordinate.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>x</para></entry>
+<entry role="parameter_description"><para>x coordinate of mouse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>y</para></entry>
+<entry role="parameter_description"><para>y coordinate of mouse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>button</para></entry>
+<entry role="parameter_description"><para>number of the button that was released. Swfdec supports up to 32
+buttons.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the mouse event was handled. <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> if the event should be
+propagated further. A mouse event may not be handled if the user
+clicked on a translucent area.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-key-press" role="function">
+<title>swfdec_player_key_press&#160;()</title>
+<indexterm zone="swfdec-player-key-press"><primary>swfdec_player_key_press</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_key_press (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                         <parameter><link linkend="guint"><type>guint</type></link> keycode</parameter>,
+                         <parameter><link linkend="guint"><type>guint</type></link> character</parameter>);</programlisting>
+<para>Call this function to make the <parameter>player</parameter>
+ react to a key press. A list of 
+defined key codes is defined by <link linkend="SwfdecKey"><type>SwfdecKey</type></link>. You will likely need to 
+translate from your keyboard API to the Flash key codes.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>keycode</para></entry>
+<entry role="parameter_description"><para>the key that was pressed, must be smaller than 256.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>character</para></entry>
+<entry role="parameter_description"><para>UCS4 of the character that was inserted or 0 if none</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the key press was handled by the <parameter>player</parameter>
+, <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> if it
+should be propagated further</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-key-release" role="function">
+<title>swfdec_player_key_release&#160;()</title>
+<indexterm zone="swfdec-player-key-release"><primary>swfdec_player_key_release</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_key_release (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                           <parameter><link linkend="guint"><type>guint</type></link> keycode</parameter>,
+                           <parameter><link linkend="guint"><type>guint</type></link> character</parameter>);</programlisting>
+<para>Call this function to make the <parameter>player</parameter>
+ react to a key being released. See
+<link linkend="swfdec-player-key-press"><function>swfdec_player_key_press()</function></link> for details.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>keycode</para></entry>
+<entry role="parameter_description"><para>the key that was released</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>character</para></entry>
+<entry role="parameter_description"><para>UCS4 of the character that was inserted or 0 if none</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the key press was handled by the <parameter>player</parameter>
+, <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> if it
+should be propagated further</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-focus" role="function">
+<title>swfdec_player_get_focus&#160;()</title>
+<indexterm zone="swfdec-player-get-focus"><primary>swfdec_player_get_focus</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_player_get_focus (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Checks if the <parameter>player</parameter>
+ has keyboard focus. See <link linkend="swfdec-player-set-focus"><function>swfdec_player_set_focus()</function></link> for
+details.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the player has keyboard focus.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-focus" role="function">
+<title>swfdec_player_set_focus&#160;()</title>
+<indexterm zone="swfdec-player-set-focus"><primary>swfdec_player_set_focus</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_focus (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                         <parameter><link linkend="gboolean"><type>gboolean</type></link> focus</parameter>);</programlisting>
+<para>Tells the <parameter>player</parameter>
+ whether keyboard focus is inside it. The player will use 
+this information to draw focus indicators around objects. Note that this
+update will not happen immediately, but only the next time you call 
+<link linkend="swfdec-player-advance"><function>swfdec_player_advance()</function></link>. The player is focussed by default. So if you 
+integrate it into a widget system such, you likely want to unset this upon 
+creation of the player.</para>
+<note><para>The player must be focussed to receive keyboard events.</para>
+</note>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the player</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>focus</para></entry>
+<entry role="parameter_description"><para>if the player is focussed</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-selection" role="function">
+<title>swfdec_player_get_selection&#160;()</title>
+<indexterm zone="swfdec-player-get-selection"><primary>swfdec_player_get_selection</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+swfdec_player_get_selection (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Retrieves the currently selected text of the player. If no text is currently
+selected, <link linkend="NULL:CAPS"><literal>NULL</literal></link> is returned.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the player</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the currently selected text or <link linkend="NULL:CAPS"><literal>NULL</literal></link></para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-audio" role="function">
+<title>swfdec_player_get_audio&#160;()</title>
+<indexterm zone="swfdec-player-get-audio"><primary>swfdec_player_get_audio</primary></indexterm>
+<programlisting language="C">const <link linkend="GList"><returnvalue>GList</returnvalue></link>&#160;*
+swfdec_player_get_audio (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Returns a list of all currently active audio streams in <parameter>player</parameter>
+.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> A <link linkend="GList"><type>GList</type></link> of <link linkend="SwfdecAudio"><type>SwfdecAudio</type></link>. You must not modify or free this list.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-get-maximum-runtime" role="function">
+<title>swfdec_player_get_maximum_runtime&#160;()</title>
+<indexterm zone="swfdec-player-get-maximum-runtime"><primary>swfdec_player_get_maximum_runtime</primary></indexterm>
+<programlisting language="C"><link linkend="gulong"><returnvalue>gulong</returnvalue></link>
+swfdec_player_get_maximum_runtime (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>);</programlisting>
+<para>Queries the given <parameter>player</parameter>
+ for how long scripts may run. see 
+<link linkend="swfdec-player-set-maximum-runtime"><function>swfdec_player_set_maximum_runtime()</function></link> for a longer discussion of this value.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> the maximum time in milliseconds that scripts are allowed to run or
+0 for infinite.</para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-player-set-maximum-runtime" role="function">
+<title>swfdec_player_set_maximum_runtime&#160;()</title>
+<indexterm zone="swfdec-player-set-maximum-runtime"><primary>swfdec_player_set_maximum_runtime</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_player_set_maximum_runtime (<parameter><link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player</parameter>,
+                                   <parameter><link linkend="gulong"><type>gulong</type></link> msecs</parameter>);</programlisting>
+<para>Sets the time that the player may use to let internal scripts run. If the 
+Flash file that is currently played back does not manage to complete its 
+scripts in the given time, it is aborted. You cannot continue the scripts at
+a later point in time. However, your application may become unresponsive and
+your users annoyed if they cannot interact with it for too long. To give a 
+reference point, the Adobe Flash player usually sets this value to 10 
+seconds. Note that this time determines the maximum time calling 
+<link linkend="swfdec-player-advance"><function>swfdec_player_advance()</function></link> may take, even if it is called with a large value.
+Also note that this setting is ignored when running inside a debugger.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>msecs</para></entry>
+<entry role="parameter_description"><para>time in milliseconds that scripts are allowed to run or 0 for
+infinite</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="SwfdecPlayer.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="SwfdecPlayer-struct" role="struct">
+<title>struct SwfdecPlayer</title>
+<indexterm zone="SwfdecPlayer-struct"><primary>SwfdecPlayer</primary></indexterm>
+<programlisting language="C">struct SwfdecPlayer;</programlisting>
+<para>This is the base object used for playing Flash files.</para>
+</refsect2>
+
+</refsect1>
+<refsect1 id="SwfdecPlayer.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="SwfdecPlayer--alignment" role="property"><title>The <literal>“alignment”</literal> property</title>
+<indexterm zone="SwfdecPlayer--alignment"><primary>SwfdecPlayer:alignment</primary></indexterm>
+<programlisting>  “alignment”                <link linkend="SwfdecAlignment"><type>SwfdecAlignment</type></link></programlisting>
+<para>point of the screen to align the output to.</para><para>Flags: Read / Write</para>
+<para>Default value: SWFDEC_ALIGNMENT_CENTER</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--allow-fullscreen" role="property"><title>The <literal>“allow-fullscreen”</literal> property</title>
+<indexterm zone="SwfdecPlayer--allow-fullscreen"><primary>SwfdecPlayer:allow-fullscreen</primary></indexterm>
+<programlisting>  “allow-fullscreen”         <link linkend="gboolean"><type>gboolean</type></link></programlisting>
+<para>if the player is allowed to change into fullscreen mode.</para><para>Flags: Read / Write</para>
+<para>Default value: FALSE</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--background-color" role="property"><title>The <literal>“background-color”</literal> property</title>
+<indexterm zone="SwfdecPlayer--background-color"><primary>SwfdecPlayer:background-color</primary></indexterm>
+<programlisting>  “background-color”         <link linkend="guint"><type>guint</type></link></programlisting>
+<para>ARGB color used to draw the background.</para><para>Flags: Read</para>
+<para>Default value: 4294967295</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--base-url" role="property"><title>The <literal>“base-url”</literal> property</title>
+<indexterm zone="SwfdecPlayer--base-url"><primary>SwfdecPlayer:base-url</primary></indexterm>
+<programlisting>  “base-url”                 <link linkend="SwfdecURL"><type>SwfdecURL</type></link>&#160;*</programlisting>
+<para>base URL for creating new resource or NULL if not set yet.</para><para>Flags: Read / Write</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--cache-size" role="property"><title>The <literal>“cache-size”</literal> property</title>
+<indexterm zone="SwfdecPlayer--cache-size"><primary>SwfdecPlayer:cache-size</primary></indexterm>
+<programlisting>  “cache-size”               <link linkend="gulong"><type>gulong</type></link></programlisting>
+<para>maximum cache size in bytes.</para><para>Flags: Read / Write</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--default-height" role="property"><title>The <literal>“default-height”</literal> property</title>
+<indexterm zone="SwfdecPlayer--default-height"><primary>SwfdecPlayer:default-height</primary></indexterm>
+<programlisting>  “default-height”           <link linkend="guint"><type>guint</type></link></programlisting>
+<para>default height of the movie.</para><para>Flags: Read</para>
+<para>Default value: 0</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--default-width" role="property"><title>The <literal>“default-width”</literal> property</title>
+<indexterm zone="SwfdecPlayer--default-width"><primary>SwfdecPlayer:default-width</primary></indexterm>
+<programlisting>  “default-width”            <link linkend="guint"><type>guint</type></link></programlisting>
+<para>default width of the movie.</para><para>Flags: Read</para>
+<para>Default value: 0</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--focus" role="property"><title>The <literal>“focus”</literal> property</title>
+<indexterm zone="SwfdecPlayer--focus"><primary>SwfdecPlayer:focus</primary></indexterm>
+<programlisting>  “focus”                    <link linkend="gboolean"><type>gboolean</type></link></programlisting>
+<para>TRUE if the player has keyboard focus.</para><para>Flags: Read / Write</para>
+<para>Default value: TRUE</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--fullscreen" role="property"><title>The <literal>“fullscreen”</literal> property</title>
+<indexterm zone="SwfdecPlayer--fullscreen"><primary>SwfdecPlayer:fullscreen</primary></indexterm>
+<programlisting>  “fullscreen”               <link linkend="gboolean"><type>gboolean</type></link></programlisting>
+<para>if the player is in fullscreen mode.</para><para>Flags: Read</para>
+<para>Default value: FALSE</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--height" role="property"><title>The <literal>“height”</literal> property</title>
+<indexterm zone="SwfdecPlayer--height"><primary>SwfdecPlayer:height</primary></indexterm>
+<programlisting>  “height”                   <link linkend="gint"><type>gint</type></link></programlisting>
+<para>current height of the movie.</para><para>Flags: Read / Write</para>
+<para>Allowed values: &gt;= -1</para>
+<para>Default value: -1</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--initialized" role="property"><title>The <literal>“initialized”</literal> property</title>
+<indexterm zone="SwfdecPlayer--initialized"><primary>SwfdecPlayer:initialized</primary></indexterm>
+<programlisting>  “initialized”              <link linkend="gboolean"><type>gboolean</type></link></programlisting>
+<para>TRUE when the player has initialized its basic values.</para><para>Flags: Read</para>
+<para>Default value: FALSE</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--loader-type" role="property"><title>The <literal>“loader-type”</literal> property</title>
+<indexterm zone="SwfdecPlayer--loader-type"><primary>SwfdecPlayer:loader-type</primary></indexterm>
+<programlisting>  “loader-type”              <link linkend="GType"><type>GType</type></link>&#160;*</programlisting>
+<para>type to use for creating loaders.</para><para>Flags: Read / Write / Construct Only</para>
+<para>Allowed values: SwfdecLoader</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--max-runtime" role="property"><title>The <literal>“max-runtime”</literal> property</title>
+<indexterm zone="SwfdecPlayer--max-runtime"><primary>SwfdecPlayer:max-runtime</primary></indexterm>
+<programlisting>  “max-runtime”              <link linkend="gulong"><type>gulong</type></link></programlisting>
+<para>maximum time in msecs scripts may run in the player before aborting.</para><para>Flags: Read / Write</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--mouse-cursor" role="property"><title>The <literal>“mouse-cursor”</literal> property</title>
+<indexterm zone="SwfdecPlayer--mouse-cursor"><primary>SwfdecPlayer:mouse-cursor</primary></indexterm>
+<programlisting>  “mouse-cursor”             <link linkend="SwfdecMouseCursor"><type>SwfdecMouseCursor</type></link></programlisting>
+<para>how the mouse pointer should be presented.</para><para>Flags: Read</para>
+<para>Default value: SWFDEC_MOUSE_CURSOR_NONE</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--next-event" role="property"><title>The <literal>“next-event”</literal> property</title>
+<indexterm zone="SwfdecPlayer--next-event"><primary>SwfdecPlayer:next-event</primary></indexterm>
+<programlisting>  “next-event”               <link linkend="glong"><type>glong</type></link></programlisting>
+<para>how many milliseconds until the next event or -1 when no event pending.</para><para>Flags: Read</para>
+<para>Allowed values: &gt;= -1</para>
+<para>Default value: -1</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--rate" role="property"><title>The <literal>“rate”</literal> property</title>
+<indexterm zone="SwfdecPlayer--rate"><primary>SwfdecPlayer:rate</primary></indexterm>
+<programlisting>  “rate”                     <link linkend="gdouble"><type>gdouble</type></link></programlisting>
+<para>rate in frames per second.</para><para>Flags: Read</para>
+<para>Allowed values: [0,256]</para>
+<para>Default value: 0</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--renderer" role="property"><title>The <literal>“renderer”</literal> property</title>
+<indexterm zone="SwfdecPlayer--renderer"><primary>SwfdecPlayer:renderer</primary></indexterm>
+<programlisting>  “renderer”                 <link linkend="SwfdecRenderer"><type>SwfdecRenderer</type></link>&#160;*</programlisting>
+<para>the renderer used by this player.</para><para>Flags: Read / Write / Construct</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--scale-mode" role="property"><title>The <literal>“scale-mode”</literal> property</title>
+<indexterm zone="SwfdecPlayer--scale-mode"><primary>SwfdecPlayer:scale-mode</primary></indexterm>
+<programlisting>  “scale-mode”               <link linkend="SwfdecScaleMode"><type>SwfdecScaleMode</type></link></programlisting>
+<para>method used to scale the movie.</para><para>Flags: Read / Write</para>
+<para>Default value: SWFDEC_SCALE_SHOW_ALL</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--scripting" role="property"><title>The <literal>“scripting”</literal> property</title>
+<indexterm zone="SwfdecPlayer--scripting"><primary>SwfdecPlayer:scripting</primary></indexterm>
+<programlisting>  “scripting”                <link linkend="SwfdecPlayerScripting"><type>SwfdecPlayerScripting</type></link>&#160;*</programlisting>
+<para>external scripting implementation.</para><para>Flags: Read / Write</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--selection" role="property"><title>The <literal>“selection”</literal> property</title>
+<indexterm zone="SwfdecPlayer--selection"><primary>SwfdecPlayer:selection</primary></indexterm>
+<programlisting>  “selection”                <link linkend="gchar"><type>gchar</type></link>&#160;*</programlisting>
+<para>currently selected text.</para><para>Flags: Read</para>
+<para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--socket-type" role="property"><title>The <literal>“socket-type”</literal> property</title>
+<indexterm zone="SwfdecPlayer--socket-type"><primary>SwfdecPlayer:socket-type</primary></indexterm>
+<programlisting>  “socket-type”              <link linkend="GType"><type>GType</type></link>&#160;*</programlisting>
+<para>type to use for creating sockets.</para><para>Flags: Read / Write / Construct Only</para>
+<para>Allowed values: SwfdecSocket</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--start-time" role="property"><title>The <literal>“start-time”</literal> property</title>
+<indexterm zone="SwfdecPlayer--start-time"><primary>SwfdecPlayer:start-time</primary></indexterm>
+<programlisting>  “start-time”               <link linkend="SwfdecTimeVal"><type>SwfdecTimeVal</type></link>&#160;*</programlisting>
+<para>time to use as the beginning time for this player.</para><para>Flags: Write / Construct Only</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--system" role="property"><title>The <literal>“system”</literal> property</title>
+<indexterm zone="SwfdecPlayer--system"><primary>SwfdecPlayer:system</primary></indexterm>
+<programlisting>  “system”                   <link linkend="SwfdecSystem"><type>SwfdecSystem</type></link>&#160;*</programlisting>
+<para>object holding system information.</para><para>Flags: Read / Write</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--url" role="property"><title>The <literal>“url”</literal> property</title>
+<indexterm zone="SwfdecPlayer--url"><primary>SwfdecPlayer:url</primary></indexterm>
+<programlisting>  “url”                      <link linkend="SwfdecURL"><type>SwfdecURL</type></link>&#160;*</programlisting>
+<para>URL of resource currently played back or NULL if not set.</para><para>Flags: Read</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--variables" role="property"><title>The <literal>“variables”</literal> property</title>
+<indexterm zone="SwfdecPlayer--variables"><primary>SwfdecPlayer:variables</primary></indexterm>
+<programlisting>  “variables”                <link linkend="gchar"><type>gchar</type></link>&#160;*</programlisting>
+<para>variables to use when setting the URL.</para><para>Flags: Read / Write</para>
+<para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="SwfdecPlayer--width" role="property"><title>The <literal>“width”</literal> property</title>
+<indexterm zone="SwfdecPlayer--width"><primary>SwfdecPlayer:width</primary></indexterm>
+<programlisting>  “width”                    <link linkend="gint"><type>gint</type></link></programlisting>
+<para>current width of the movie.</para><para>Flags: Read / Write</para>
+<para>Allowed values: &gt;= -1</para>
+<para>Default value: -1</para>
+</refsect2>
+
+</refsect1>
+<refsect1 id="SwfdecPlayer.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="SwfdecPlayer-advance" role="signal"><title>The <literal>“advance”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-advance"><primary>SwfdecPlayer::advance</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="gulong"><type>gulong</type></link>        msecs,
+               <link linkend="guint"><type>guint</type></link>         audio_samples,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>Emitted whenever the player advances.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> affected</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>msecs</para></entry>
+<entry role="parameter_description"><para>the amount of milliseconds the player will advance</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>audio_samples</para></entry>
+<entry role="parameter_description"><para>number of frames the audio is advanced (in 44100Hz steps)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-audio-added" role="signal"><title>The <literal>“audio-added”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-audio-added"><primary>SwfdecPlayer::audio-added</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="SwfdecAudio"><type>SwfdecAudio</type></link>  *audio,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>Emitted whenever a new audio stream was added to <parameter>player</parameter>
+.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> affected</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>audio</para></entry>
+<entry role="parameter_description"><para>the audio stream that was added</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-audio-removed" role="signal"><title>The <literal>“audio-removed”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-audio-removed"><primary>SwfdecPlayer::audio-removed</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="SwfdecAudio"><type>SwfdecAudio</type></link>  *audio,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>Emitted whenever an audio stream was removed from <parameter>player</parameter>
+. The stream will
+
+have been added with the SwfdecPlayer::audio-added signal previously.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> affected</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>audio</para></entry>
+<entry role="parameter_description"><para>the audio stream that was removed</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-fscommand" role="signal"><title>The <literal>“fscommand”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-fscommand"><primary>SwfdecPlayer::fscommand</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="gchar"><type>gchar</type></link>        *command,
+               <link linkend="gchar"><type>gchar</type></link>        *parameter,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+This signal is emited whenever a Flash script command (also known as
+
+fscommand) is encountered. This method is ued by the Flash file to
+communicate with the hosting environment. In web browsers it is used to
+
+call Javascript functions. Standalone Flash players understand a limited
+
+set of functions. They vary from player to player, but the most common are
+
+listed here:<itemizedlist>
+<listitem><para>"quit": quits the player.</para></listitem>
+<listitem><para>"fullscreen": A boolean setting (parameter is "true" or
+
+"false") that sets the player into fullscreen mode.</para></listitem>
+<listitem><para>"allowscale": A boolean setting that tells the player to
+not scale the Flash application.</para></listitem>
+<listitem><para>"showmenu": A boolean setting that tells the Flash player
+to not show its own entries in the right-click menu.</para></listitem>
+<listitem><para>"exec": Run an external executable. The parameter
+
+specifies the path.</para></listitem>
+<listitem><para>"trapallkeys": A boolean setting that tells the Flash
+
+player to pass all key events to the Flash application instead of using it
+for keyboard shortcuts or similar.</para></listitem>
+</itemizedlist>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> affected</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>command</para></entry>
+<entry role="parameter_description"><para>the command to execute. This is a lower case string.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>parameter</para></entry>
+<entry role="parameter_description"><para>parameter to pass to the command. The parameter depends on the
+function.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-handle-key" role="signal"><title>The <literal>“handle-key”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-handle-key"><primary>SwfdecPlayer::handle-key</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="guint"><type>guint</type></link>         key,
+               <link linkend="guint"><type>guint</type></link>         pressed,
+               <link linkend="gboolean"><type>gboolean</type></link>      Returns,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>This signal is emitted whenever <parameter>player</parameter>
+ should respond to a key event. If
+any of the handlers returns TRUE, <link linkend="swfdec-player-key-press"><function>swfdec_player_key_press()</function></link> or
+
+<link linkend="swfdec-player-key-release"><function>swfdec_player_key_release()</function></link> will return TRUE. Note that unlike many event
+
+handlers in gtk, returning TRUE will not stop further event handlers from
+
+being invoked. Use <link linkend="g-signal-stop-emission"><function>g_signal_stop_emission()</function></link> in that case.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> affected</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>key</para></entry>
+<entry role="parameter_description"><para><link linkend="SwfdecKey"><type>SwfdecKey</type></link> that was pressed or released</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>pressed</para></entry>
+<entry role="parameter_description"><para><link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the <parameter>key</parameter>
+was pressed or <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> if it was released</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> TRUE if this handler handles the event. </para>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-handle-mouse" role="signal"><title>The <literal>“handle-mouse”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-handle-mouse"><primary>SwfdecPlayer::handle-mouse</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="gdouble"><type>gdouble</type></link>       x,
+               <link linkend="gdouble"><type>gdouble</type></link>       y,
+               <link linkend="gint"><type>gint</type></link>          button,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>This signal is emitted whenever <parameter>player</parameter>
+ should respond to a mouse event. If
+any of the handlers returns TRUE, <link linkend="swfdec-player-handle-mouse"><function>swfdec_player_handle_mouse()</function></link> will return
+
+TRUE. Note that unlike many event handlers in gtk, returning TRUE will not
+
+stop further event handlers from being invoked. Use <link linkend="g-signal-stop-emission"><function>g_signal_stop_emission()</function></link>
+in that case.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> affected</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>x</para></entry>
+<entry role="parameter_description"><para>new x coordinate of the mouse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>y</para></entry>
+<entry role="parameter_description"><para>new y coordinate of the mouse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>button</para></entry>
+<entry role="parameter_description"><para>0 for a mouse move, a positive number if a button was pressed,
+a negative number if a button was released</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> TRUE if this handler handles the event. </para>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-invalidate" role="signal"><title>The <literal>“invalidate”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-invalidate"><primary>SwfdecPlayer::invalidate</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="gpointer"><type>gpointer</type></link>      rectangles,
+               <link linkend="guint"><type>guint</type></link>         n_rectangles,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>This signal is emitted whenever graphical elements inside the player have
+
+changed. It provides two ways to look at the changes: By looking at the
+<parameter>extents</parameter>
+ parameter, it provides a simple way to get a single rectangle that
+encloses all changes. By looking at the <parameter>rectangles</parameter>
+ array, you can get
+finer control over changes which is very useful if your rendering system
+
+provides a way to handle regions.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> affected</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>rectangles</para></entry>
+<entry role="parameter_description"><para>a number of smaller rectangles for fine-grained control over
+changes</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>n_rectangles</para></entry>
+<entry role="parameter_description"><para>number of rectangles in <parameter>rectangles</parameter>
+</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-launch" role="signal"><title>The <literal>“launch”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-launch"><primary>SwfdecPlayer::launch</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="gchar"><type>gchar</type></link>        *url,
+               <link linkend="gchar"><type>gchar</type></link>        *target,
+               <link linkend="SwfdecBuffer"><type>SwfdecBuffer</type></link> *data,
+               <link linkend="guint"><type>guint</type></link>         header_count,
+               <link linkend="GStrv"><type>GStrv</type></link>         header_names,
+               <link linkend="GStrv"><type>GStrv</type></link>         header_values,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>Emitted whenever the <parameter>player</parameter>
+ encounters an URL that should be loaded into
+
+a target the Flash player does not recognize. In most cases this happens
+
+when the user clicks a link in an embedded Flash movie that should open a
+new web page.
+The effect of calling any swfdec functions on the emitting <parameter>player</parameter>
+ is undefined.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> affected</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>url</para></entry>
+<entry role="parameter_description"><para>URL to open</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>target</para></entry>
+<entry role="parameter_description"><para>target to load the URL into</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>data</para></entry>
+<entry role="parameter_description"><para>optional data to pass on with the request. Can be <link linkend="NULL:CAPS"><literal>NULL</literal></link> indicating
+no data should be passed.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>header_count</para></entry>
+<entry role="parameter_description"><para>number of custom HTTP headers to be sent</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>header_names</para></entry>
+<entry role="parameter_description"><para>names of the custom HTTP headers. <link linkend="NULL:CAPS"><literal>NULL</literal></link> terminated</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>header_values</para></entry>
+<entry role="parameter_description"><para>values of the custom HTTP headers. <link linkend="NULL:CAPS"><literal>NULL</literal></link> terminated</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-missing-plugins" role="signal"><title>The <literal>“missing-plugins”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-missing-plugins"><primary>SwfdecPlayer::missing-plugins</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="GStrv"><type>GStrv</type></link>         details,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>Emitted whenever a plugin is detected that GStreamer cannot currently
+
+handle because it is missing plugins to do so. You should use
+
+<link linkend="gst-install-plugins-async"><function>gst_install_plugins_async()</function></link> to install those plugins.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> missing plugins</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>details</para></entry>
+<entry role="parameter_description"><para>the details strings for all missing plugins</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2><refsect2 id="SwfdecPlayer-query-size" role="signal"><title>The <literal>“query-size”</literal> signal</title>
+<indexterm zone="SwfdecPlayer-query-size"><primary>SwfdecPlayer::query-size</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+user_function (<link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> *player,
+               <link linkend="gboolean"><type>gboolean</type></link>      fullscreen,
+               <link linkend="gpointer"><type>gpointer</type></link>      width,
+               <link linkend="gpointer"><type>gpointer</type></link>      height,
+               <link linkend="gpointer"><type>gpointer</type></link>      user_data)</programlisting>
+<para>This signals is emitted whenever the player is (un)fullscreened. In this
+
+case it requests the new size the Flash file will be displayed in
+
+immediately. If you want to provide values, connect to this signal. The
+values don't have to be exact, you can still call <link linkend="swfdec-player-set-size"><function>swfdec_player_set_size()</function></link>
+later on. However, it will look visually nicer if your values here are
+
+correct. By default, the screen resolution values will be used for
+
+fullscreen and the default size will be used otherwise.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>player</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecPlayer"><type>SwfdecPlayer</type></link> that resizes</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fullscreen</para></entry>
+<entry role="parameter_description"><para><link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the player queries the fullscreen size, <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> for
+the default size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>width</para></entry>
+<entry role="parameter_description"><para>pointer to an integer that takes the width to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>height</para></entry>
+<entry role="parameter_description"><para>pointer to an integer that takes the height to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><simpara>user_data</simpara></entry>
+<entry role="parameter_description"><simpara>user data set when the signal handler was connected.</simpara></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> TRUE if this handler properly sets <parameter>width</parameter>
+and <parameter>height</parameter>
+and no
+other handlers should be invoked.</para>
+</refsect3><para>Flags: <link linkend="G-SIGNAL-RUN-LAST:CAPS">Run Last</link></para>
+</refsect2>
+</refsect1>
+
+</refentry>

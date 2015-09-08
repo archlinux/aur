@@ -15,7 +15,11 @@ pkgbase = swfdec
 	optdepends = gstreamer0.10-ffmpeg: most common audio/video format for internet flash
 	options = !libtool
 	source = http://swfdec.freedesktop.org/download/swfdec/0.8/swfdec-0.8.4.tar.gz
+	source = SwfdecPlayer.xml
+	source = SwfdecAsFunction.xml
 	md5sums = aece501d0e73f3e564200a44ec03c385
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = swfdec
 

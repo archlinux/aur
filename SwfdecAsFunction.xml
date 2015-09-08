@@ -1,0 +1,466 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="SwfdecAsFunction">
+<refmeta>
+<refentrytitle role="top_of_page" id="SwfdecAsFunction.top_of_page">SwfdecAsFunction</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>SWFDEC Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>SwfdecAsFunction</refname>
+<refpurpose>script objects that can be executed</refpurpose>
+</refnamediv>
+
+<refsect1 id="SwfdecAsFunction.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="SwfdecAsNative">*SwfdecAsNative</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="swfdec-as-function-call">swfdec_as_function_call</link><phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-as-function-call-full">swfdec_as_function_call_full</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="SwfdecAsFunction"><returnvalue>SwfdecAsFunction</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="swfdec-as-native-function-new">swfdec_as_native_function_new</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-as-native-function-set-construct-type">swfdec_as_native_function_set_construct_type</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-as-native-function-check">swfdec_as_native_function_check</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+</entry><entry role="function_name"><link linkend="swfdec-as-native-function-checkv">swfdec_as_native_function_checkv</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="SWFDEC-AS-CHECK:CAPS">SWFDEC_AS_CHECK</link><phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<anchor id="SwfdecAsNativeFunction"/><refsect1 id="SwfdecAsFunction.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="SwfdecAsFunction-struct">SwfdecAsFunction</link></entry></row>
+<row><entry role="datatype_keyword">struct</entry><entry role="function_name"><link linkend="SwfdecAsNativeFunction-struct">SwfdecAsNativeFunction</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="SwfdecAsFunction.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<screen>    <link linkend="GObject">GObject</link>
+    <phrase role="lineart">&#9584;&#9472;&#9472;</phrase> <link linkend="SwfdecGcObject">SwfdecGcObject</link>
+        <phrase role="lineart">&#9584;&#9472;&#9472;</phrase> <link linkend="SwfdecAsObject">SwfdecAsObject</link>
+            <phrase role="lineart">&#9584;&#9472;&#9472;</phrase> SwfdecAsFunction
+                <phrase role="lineart">&#9584;&#9472;&#9472;</phrase> SwfdecAsNativeFunction
+</screen>
+</refsect1>
+
+<refsect1 id="SwfdecAsFunction.includes"><title>Includes</title><synopsis>#include &lt;swfdec/swfdec.h&gt;
+</synopsis></refsect1>
+
+<refsect1 id="SwfdecAsFunction.description" role="desc">
+<title role="desc.title">Description</title>
+<para>Functions is the basic object for executing code in the Swfdec script engine.
+There is multiple different variants of functions, such as script-created 
+ones and native functions.</para>
+<para>If you want to create your own functions, you should create native functions.
+The easiest way to do this is with <link linkend="swfdec-as-object-add-function"><function>swfdec_as_object_add_function()</function></link> or
+<link linkend="swfdec-as-native-function-new"><function>swfdec_as_native_function_new()</function></link>.</para>
+<para>In Actionscript, every function can be used as a constructor. If you want to
+make a native function be used as a constructor for your own <link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link>
+subclass, have a look at <link linkend="swfdec-as-native-function-set-construct-type"><function>swfdec_as_native_function_set_construct_type()</function></link>.</para>
+
+</refsect1>
+<refsect1 id="SwfdecAsFunction.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="SwfdecAsNative" role="function">
+<title>SwfdecAsNative&#160;()</title>
+<indexterm zone="SwfdecAsNative"><primary>SwfdecAsNative</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*SwfdecAsNative<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="SwfdecAsContext"><type>SwfdecAsContext</type></link> *context</parameter>,
+                   <parameter><link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link> *thisp</parameter>,
+                   <parameter><link linkend="guint"><type>guint</type></link> argc</parameter>,
+                   <parameter><link linkend="SwfdecAsValue"><type>SwfdecAsValue</type></link> *argv</parameter>,
+                   <parameter><link linkend="SwfdecAsValue"><type>SwfdecAsValue</type></link> *retval</parameter>);</programlisting>
+<para>This is the prototype for all native functions.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="SwfdecAsContext"><type>SwfdecAsContext</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>thisp</para></entry>
+<entry role="parameter_description"><para>the this object. <warning>Can be <link linkend="NULL:CAPS"><literal>NULL</literal></link>.</warning></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>argc</para></entry>
+<entry role="parameter_description"><para>number of arguments passed to this function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>argv</para></entry>
+<entry role="parameter_description"><para>the <parameter>argc</parameter>
+arguments passed to this function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>retval</para></entry>
+<entry role="parameter_description"><para>set to the return value. Initialized to undefined by default</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-as-function-call" role="macro">
+<title>swfdec_as_function_call()</title>
+<indexterm zone="swfdec-as-function-call"><primary>swfdec_as_function_call</primary></indexterm>
+<programlisting language="C">#define             swfdec_as_function_call(function, thisp, n_args, args, return_value)</programlisting>
+<para>Calls the given function. This is a macro that resolves to 
+<link linkend="swfdec-as-function-call-full"><function>swfdec_as_function_call_full()</function></link>.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>function</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecAsFunction"><type>SwfdecAsFunction</type></link> to call</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>thisp</para></entry>
+<entry role="parameter_description"><para>this argument to use for the call or <link linkend="NULL:CAPS"><literal>NULL</literal></link> for none</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>n_args</para></entry>
+<entry role="parameter_description"><para>number of arguments to pass to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>args</para></entry>
+<entry role="parameter_description"><para>the arguments to pass or <link linkend="NULL:CAPS"><literal>NULL</literal></link> to read the last <parameter>n_args</parameter>
+stack elements.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>return_value</para></entry>
+<entry role="parameter_description"><para>pointer for return value or <link linkend="NULL:CAPS"><literal>NULL</literal></link> to push the return value to
+the stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-as-function-call-full" role="function">
+<title>swfdec_as_function_call_full&#160;()</title>
+<indexterm zone="swfdec-as-function-call-full"><primary>swfdec_as_function_call_full</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_as_function_call_full (<parameter><link linkend="SwfdecAsFunction"><type>SwfdecAsFunction</type></link> *function</parameter>,
+                              <parameter><link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link> *thisp</parameter>,
+                              <parameter><link linkend="gboolean"><type>gboolean</type></link> construct</parameter>,
+                              <parameter><link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link> *super_reference</parameter>,
+                              <parameter><link linkend="guint"><type>guint</type></link> n_args</parameter>,
+                              <parameter>const <link linkend="SwfdecAsValue"><type>SwfdecAsValue</type></link> *args</parameter>,
+                              <parameter><link linkend="SwfdecAsValue"><type>SwfdecAsValue</type></link> *return_value</parameter>);</programlisting>
+<para>Calls the given function.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>function</para></entry>
+<entry role="parameter_description"><para>the <link linkend="SwfdecAsFunction"><type>SwfdecAsFunction</type></link> to call</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>thisp</para></entry>
+<entry role="parameter_description"><para>this argument to use for the call or <link linkend="NULL:CAPS"><literal>NULL</literal></link> for none</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>construct</para></entry>
+<entry role="parameter_description"><para>call this function as a constructor. This is only relevant for
+native functions.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>super_reference</para></entry>
+<entry role="parameter_description"><para>The object to be referenced by the super object in this
+function call or <link linkend="NULL:CAPS"><literal>NULL</literal></link> to use the default.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>n_args</para></entry>
+<entry role="parameter_description"><para>number of arguments to pass to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>args</para></entry>
+<entry role="parameter_description"><para>the arguments to pass or <link linkend="NULL:CAPS"><literal>NULL</literal></link> to read the last <parameter>n_args</parameter>
+stack elements.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>return_value</para></entry>
+<entry role="parameter_description"><para>pointer for return value or <link linkend="NULL:CAPS"><literal>NULL</literal></link> to push the return value to
+the stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-as-native-function-new" role="function">
+<title>swfdec_as_native_function_new&#160;()</title>
+<indexterm zone="swfdec-as-native-function-new"><primary>swfdec_as_native_function_new</primary></indexterm>
+<programlisting language="C"><link linkend="SwfdecAsFunction"><returnvalue>SwfdecAsFunction</returnvalue></link>&#160;*
+swfdec_as_native_function_new (<parameter><link linkend="SwfdecAsContext"><type>SwfdecAsContext</type></link> *context</parameter>,
+                               <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                               <parameter><link linkend="SwfdecAsNative"><type>SwfdecAsNative</type></link> native</parameter>,
+                               <parameter><link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link> *prototype</parameter>);</programlisting>
+<para>Creates a new native function, that will execute <parameter>native</parameter>
+ when called. You 
+might want to use <link linkend="swfdec-as-object-add-function"><function>swfdec_as_object_add_function()</function></link> instead of this function.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecAsContext"><type>SwfdecAsContext</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>name of the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>native</para></entry>
+<entry role="parameter_description"><para>function to call when executed</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prototype</para></entry>
+<entry role="parameter_description"><para>The object to be used as "prototype" property for the created
+function or <link linkend="NULL:CAPS"><literal>NULL</literal></link> for none.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> a new <link linkend="SwfdecAsFunction"><type>SwfdecAsFunction</type></link></para>
+</refsect3></refsect2>
+<refsect2 id="swfdec-as-native-function-set-construct-type" role="function">
+<title>swfdec_as_native_function_set_construct_type&#160;()</title>
+<indexterm zone="swfdec-as-native-function-set-construct-type"><primary>swfdec_as_native_function_set_construct_type</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+swfdec_as_native_function_set_construct_type
+                               (<parameter><link linkend="SwfdecAsNativeFunction"><type>SwfdecAsNativeFunction</type></link> *function</parameter>,
+                                <parameter><link linkend="GType"><type>GType</type></link> type</parameter>);</programlisting>
+<para>Sets the <parameter>type</parameter>
+ to be used when using <parameter>function</parameter>
+ as a constructor. If this is
+not set, using <parameter>function</parameter>
+ as a constructor will create a <link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link>.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>function</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecAsNativeFunction"><type>SwfdecAsNativeFunction</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>type</para></entry>
+<entry role="parameter_description"><para><link linkend="GType"><type>GType</type></link> used when constructing an object with <parameter>function</parameter>
+</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="swfdec-as-native-function-check" role="function">
+<title>swfdec_as_native_function_check&#160;()</title>
+<indexterm zone="swfdec-as-native-function-check"><primary>swfdec_as_native_function_check</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_as_native_function_check (<parameter><link linkend="SwfdecAsContext"><type>SwfdecAsContext</type></link> *cx</parameter>,
+                                 <parameter><link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link> *object</parameter>,
+                                 <parameter><link linkend="GType"><type>GType</type></link> type</parameter>,
+                                 <parameter><link linkend="gpointer"><type>gpointer</type></link> *result</parameter>,
+                                 <parameter><link linkend="guint"><type>guint</type></link> argc</parameter>,
+                                 <parameter><link linkend="SwfdecAsValue"><type>SwfdecAsValue</type></link> *argv</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *args</parameter>,
+                                 <parameter>...</parameter>);</programlisting>
+This function is a convenience function to validate and convert arguments to 
+a native function while avoiding common pitfalls. You typically want to call
+it at the beginning of every native function you write. Or you can use the 
+<link linkend="SWFDEC-AS-CHECK:CAPS"><function>SWFDEC_AS_CHECK()</function></link> macro instead which calls this function.
+The <parameter>cx</parameter>
+, <parameter>object</parameter>
+, <parameter>argc</parameter>
+ and <parameter>argv</parameter>
+ paramters should be passed verbatim from 
+the function call to your native function. If <parameter>type</parameter>
+ is not 0, <parameter>object</parameter>
+ is then
+checked to be of that type and cast to <parameter>result</parameter>
+. After that the <parameter>args</parameter>
+ string 
+is used to convert the arguments. Every character in <parameter>args</parameter>
+ describes the 
+conversion of one argument. For that argument, you have to pass a pointer 
+that takes the value. For the conversion, the default conversion functions 
+like <link linkend="swfdec-as-value-to-string"><function>swfdec_as_value_to_string()</function></link> are used. If not enough arguments are 
+available, the function stops converting and returns <link linkend="NULL:CAPS"><literal>NULL</literal></link>. The following 
+conversion characters are allowed:<itemizedlist>
+<listitem><para>"b": convert to boolean. Requires a <link linkend="gboolean"><literal>gboolean</literal></link> pointer
+                </para></listitem>
+<listitem><para>"i": convert to integer. Requires an <link linkend="integer"><literal>integer</literal></link> pointer
+                </para></listitem>
+<listitem><para>"n": convert to number. Requires a <link linkend="double"><literal>double</literal></link> pointer
+                </para></listitem>
+<listitem><para>"o": convert to object. Requires a <link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link> pointer.
+                If the conversion fails, this function immediately returns
+                <link linkend="FALSE:CAPS"><literal>FALSE</literal></link>.</para></listitem>
+<listitem><para>"O": convert to object or <link linkend="NULL:CAPS"><literal>NULL</literal></link>. Requires a <link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link>
+                pointer.</para></listitem>
+<listitem><para>"s": convert to garbage-collected string. Requires a const 
+                <link linkend="char"><literal>char</literal></link> pointer</para></listitem>
+<listitem><para>"v": copy the value. The given argument must be a pointer 
+                to a <link linkend="SwfdecAsValue"><type>SwfdecAsValue</type></link></para></listitem>
+<listitem><para>"|": optional arguments follow. Optional arguments will be
+	   initialized to the empty value for their type. This 
+	   conversion character is only allowed once in the conversion 
+	   string.</para></listitem>
+</itemizedlist>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>cx</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecAsContext"><type>SwfdecAsContext</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>object</para></entry>
+<entry role="parameter_description"><para>this object passed to the native function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>type</para></entry>
+<entry role="parameter_description"><para>expected type of <parameter>object</parameter>
+or 0 for any</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>result</para></entry>
+<entry role="parameter_description"><para>pointer to variable taking cast result of <parameter>object</parameter>
+</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>argc</para></entry>
+<entry role="parameter_description"><para>count of arguments passed to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>argv</para></entry>
+<entry role="parameter_description"><para>arguments passed to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>args</para></entry>
+<entry role="parameter_description"><para>argument conversion string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>...</para></entry>
+<entry role="parameter_description"><para>pointers to variables taking converted arguments</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the conversion succeeded, <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> otherwise</para>
+</refsect3>
+<refsect2 id="swfdec-as-native-function-checkv" role="function">
+</refsect2>
+<title>swfdec_as_native_function_checkv&#160;()</title>
+<indexterm zone="swfdec-as-native-function-checkv"><primary>swfdec_as_native_function_checkv</primary></indexterm>
+<programlisting language="C"><link linkend="gboolean"><returnvalue>gboolean</returnvalue></link>
+swfdec_as_native_function_checkv (<parameter><link linkend="SwfdecAsContext"><type>SwfdecAsContext</type></link> *cx</parameter>,
+                                  <parameter><link linkend="SwfdecAsObject"><type>SwfdecAsObject</type></link> *object</parameter>,
+                                  <parameter><link linkend="GType"><type>GType</type></link> type</parameter>,
+                                  <parameter><link linkend="gpointer"><type>gpointer</type></link> *result</parameter>,
+                                  <parameter><link linkend="guint"><type>guint</type></link> argc</parameter>,
+                                  <parameter><link linkend="SwfdecAsValue"><type>SwfdecAsValue</type></link> *argv</parameter>,
+                                  <parameter>const <link linkend="char"><type>char</type></link> *args</parameter>,
+                                  <parameter><link linkend="va-list"><type>va_list</type></link> varargs</parameter>);</programlisting>
+<para>This is the valist version of <link linkend="swfdec-as-native-function-check"><function>swfdec_as_native_function_check()</function></link>. See that
+function for details.</para>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>cx</para></entry>
+<entry role="parameter_description"><para>a <link linkend="SwfdecAsContext"><type>SwfdecAsContext</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>object</para></entry>
+<entry role="parameter_description"><para>this object passed to the native function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>type</para></entry>
+<entry role="parameter_description"><para>expected type of <parameter>object</parameter>
+</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>result</para></entry>
+<entry role="parameter_description"><para>pointer to variable taking cast result of <parameter>object</parameter>
+</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>argc</para></entry>
+<entry role="parameter_description"><para>count of arguments passed to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>argv</para></entry>
+<entry role="parameter_description"><para>arguments passed to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>args</para></entry>
+<entry role="parameter_description"><para>argument conversion string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>varargs</para></entry>
+<entry role="parameter_description"><para>pointers to variables taking converted arguments</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 role="returns">
+<title>Returns</title>
+<para> <link linkend="TRUE:CAPS"><literal>TRUE</literal></link> if the conversion succeeded, <link linkend="FALSE:CAPS"><literal>FALSE</literal></link> otherwise</para>
+</refsect3>
+<refsect2 id="SWFDEC-AS-CHECK:CAPS" role="macro">
+</refsect2>
+<title>SWFDEC_AS_CHECK()</title>
+<indexterm zone="SWFDEC-AS-CHECK:CAPS"><primary>SWFDEC_AS_CHECK</primary></indexterm>
+<programlisting language="C">#define             SWFDEC_AS_CHECK(type,result,...)</programlisting>
+<para>This is a shortcut macro for calling <link linkend="swfdec-as-native-function-check"><function>swfdec_as_native_function_check()</function></link> at
+the beginning of a native function. See that function for details.
+It requires the native function parameters to have the default name. So your
+function must be declared like this:</para>
+<informalexample><programlisting><![CDATA[
+my_function (SwfdecAsContext *cx, SwfdecAsObject *object,
+    guint argc, SwfdecAsValue *argv, SwfdecAsValue *rval);]|
+]]></programlisting></informalexample>
+<refsect3 role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>type</para></entry>
+<entry role="parameter_description"><para>required type of this object or 0 for ignoring</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>result</para></entry>
+<entry role="parameter_description"><para>converted this object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>...</para></entry>
+<entry role="parameter_description"><para>conversion string and pointers taking converted values</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3>
+
+
+<refsect1 id="SwfdecAsFunction.other_details" role="details">
+</refsect1>
+<title role="details.title">Types and Values</title>
+<refsect2 id="SwfdecAsFunction-struct" role="struct">
+</refsect2>
+<title>SwfdecAsFunction</title>
+<indexterm zone="SwfdecAsFunction-struct"><primary>SwfdecAsFunction</primary></indexterm>
+<programlisting language="C">typedef struct _SwfdecAsFunction SwfdecAsFunction;</programlisting>
+<para>This is the base executable object in Swfdec. It is an abstract object. If 
+you want to create functions yourself, use <link linkend="SwfdecAsNativeFunction"><type>SwfdecAsNativeFunction</type></link>.</para>
+<refsect2 id="SwfdecAsNativeFunction-struct" role="struct">
+</refsect2>
+<title>struct SwfdecAsNativeFunction</title>
+<indexterm zone="SwfdecAsNativeFunction-struct"><primary>SwfdecAsNativeFunction</primary></indexterm>
+<programlisting language="C">struct SwfdecAsNativeFunction;</programlisting>
+<para>This is the object type for native functions.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>
