@@ -8,7 +8,7 @@ install=${pkgname}.install
 license=('GPL')
 url='http://www.invalid.invalid'
 
-source=('javascript-common.conf::http://git.fusiondirectory.org/gitweb/?p=packaging/archlinux.git;a=blob_plain;f=scripts/javascript-common/javascript-common.conf;hb=refs/heads/master')
+source=('javascript-common.conf')
 md5sums=('f9b66751e66c39bb23269d0251a76242')
 
 package() {
