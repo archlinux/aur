@@ -1,4 +1,4 @@
-
+# Maintainer: Colin Duquesnoy <colin.duquesnoy@gmail.com>
 pkgname=mellowplayer-kde
 pkgver=1.5.0
 _commit=84af1a0
@@ -7,7 +7,7 @@ pkgdesc="Open source and cross-platform desktop application that runs web-based 
          services in its own window and provides integration with your desktop. Packaged specifically for KDE Sc/Plasma 5."
 url='https://github.com/ColinDuquesnoy/MellowPlayer'
 license=('GPL')
-arch=('x86_64')
+arch=('i686' 'x86_64')
 depends=('kglobalaccel' 'knotifications')
 makedepends=('qt5-tools')
 optdepends=('flashplugin: needed for Deezer, MixCloud, SoundCloud Music Service')
