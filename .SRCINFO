@@ -1,0 +1,15 @@
+pkgbase = python2-cement
+	pkgdesc = CLI Application Framework for Python
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = http://builtoncement.com/
+	arch = any
+	license = Apache2
+	makedepends = python2
+	makedepends = python2-distribute
+	source = http://pypi.python.org/packages/source/c/cement/cement-2.6.2.tar.gz
+	sha256sums = ba547b342c2e327f2509f9424971f7ae9dd61ec884cb62c80f45d88bdf4bd27b
+
+pkgname = python2-cement
+	depends = python2
+
