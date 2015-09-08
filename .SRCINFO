@@ -1,16 +1,18 @@
 pkgbase = python-rsa-3.1.2
-	pkgdesc = Pure-Python RSA implementation.
+	pkgdesc = Pure-Python RSA implementation. Old version for aws & botocore.
 	pkgver = 3.1.2
 	pkgrel = 1
 	url = http://stuvel.eu/rsa
 	arch = any
 	license = BSD
-	depends = python
-	provides = python-rsa=3.1.2
-	conflicts = python-rsa
-	replaces = python-rsa
-	source = http://pypi.python.org/packages/source/r/rsa/rsa-3.1.2.tar.gz
+	makedepends = python
+	makedepends = python-distribute
+	source = https://pypi.python.org/packages/source/r/rsa/rsa-3.1.2.tar.gz
 	sha256sums = 66eb8752a1de9b92d7679ea0e1556cf2e4a155161d0024e97e06999041e35f58
 
 pkgname = python-rsa-3.1.2
+	depends = python
+	provides = python-rsa=3.1.2
+	conflicts = python-rsa
+	conflicts = python2-rsa
 

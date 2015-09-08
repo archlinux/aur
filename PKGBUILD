@@ -3,36 +3,49 @@
 # Package Source: https://github.com/flaccid/archlinux-packages/blob/master/python-rsa-3.1.2/PKGBUILD
 
 set -u
-_pkgname='python-rsa'
-_libname='rsa'
-pkgver=3.1.2
-pkgname="${_pkgname}-${pkgver}"
-pkgrel=1
-pkgdesc='Pure-Python RSA implementation.'
+_pyver="python"
+_pyverother='python python2 '
+_pyverother="${_pyverother//${_pyver} /}"
+_pyverother="${_pyverother// /}"
+_pybase='rsa'
+_pkgname="${_pyver}-${_pybase}"
+pkgname="${_pkgname}-3.1.2"
+pkgver='3.1.2'
+pkgrel='1'
+pkgdesc='Pure-Python RSA implementation. Old version for aws & botocore.'
 arch=('any')
+#url="https://pypi.python.org/pypi/${_pybase}/"
 url='http://stuvel.eu/rsa'
 license=('BSD')
-depends=('python')
-source=("http://pypi.python.org/packages/source/r/${_libname}/${_libname}-${pkgver}.tar.gz")
-#source=("https://bitbucket.org/sybren/${pkgname}/get/version-${pkgver}.tar.bz2")
+makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
+_srcdir="${_pybase}-${pkgver}"
+_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
+source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
 sha256sums=('66eb8752a1de9b92d7679ea0e1556cf2e4a155161d0024e97e06999041e35f58')
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
-replaces=("${_pkgname}")
 
 build() {
   set -u
-  cd "${srcdir}/${_libname}-${pkgver}"
+  cd "${_srcdir}"
+  ${_pyver} setup.py build
+  set +u
+}
 
-  python setup.py build
+check() {
+  set -u
+  cd "${_srcdir}"
+  # If pip is installed, some package tests download missing packages. We can't allow that.
+  #${_pyver} setup.py test --verbose
   set +u
 }
 
 package() {
   set -u
-  cd "${srcdir}/${_libname}-${pkgver}"
-
-  python setup.py install --root="${pkgdir}" --optimize=1
+  provides=("${_pkgname}=${pkgver}")
+  conflicts=("${_pkgname}" "${_pyverother}-${_pybase}")
+  depends=("${_pyver}") # "${_pydepends[@]}")
+  cd "${_srcdir}"
+  ${_pyver} setup.py install --root="${pkgdir}" --optimize=1
+  install -Dpm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   set +u
 }
 set +u
