@@ -1,0 +1,6 @@
+post_install() {
+echo "###########################################################################"
+echo "This is just a wrapper script for the Juniper network connect client."
+echo "For instructions go here: http://www.scc.kit.edu/scc/net/juniper-vpn/linux/"
+echo "###########################################################################"
+}

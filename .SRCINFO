@@ -1,0 +1,17 @@
+pkgbase = jnc
+	pkgdesc = A wrapper for the Juniper network connect client (ncsvc)
+	pkgver = 0.19
+	pkgrel = 1
+	url = http://www.scc.kit.edu/scc/net/juniper-vpn/linux/
+	install = jnc.install
+	arch = any
+	license = GPL
+	depends = perl
+	depends = openssl
+	depends = net-tools
+	optdepends = java: for Network Connect Java GUI, with x86_64 the Network Connect Java GUI will not work
+	source = http://www.scc.kit.edu/scc/net/juniper-vpn/linux/jnc
+	sha256sums = 5eb2f187a32c009ca4e19042ee46e6a1b99a0ec0714b0b93f207b11440ff4fb7
+
+pkgname = jnc
+
