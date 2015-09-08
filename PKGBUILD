@@ -11,7 +11,7 @@ source=(https://github.com/ygrek/ocaml-extlib/archive/${pkgver}.tar.gz)
 options=('staticlibs')
 
 build() {
-  cd ${srcdir}/extlib-${pkgver}
+  cd ${srcdir}/${pkgver}
 
   make all
   make opt
@@ -27,7 +27,7 @@ build() {
 package () {
   _DOCDIR="${pkgdir}/usr/share/doc/ocaml-extlib"
 
-  cd ${srcdir}/extlib-${pkgver}
+  cd ${srcdir}/${pkgver}
 
   export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
   mkdir -p "${OCAMLFIND_DESTDIR}"
