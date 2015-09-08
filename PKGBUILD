@@ -9,8 +9,8 @@ url="https://algorithmia.com/"
 license=('MIT')
 depends=('')
 conflicts=('algorithmia-bin')
-source=("https://github.com/algorithmiaio/algorithmia-cli/releases/download/v${pkgver//_/-}/algo-linux.tar.gz")
-md5sums=('6d75ff02fe21d3151944fb6907431c8b')
+source=("https://github.com/algorithmiaio/algorithmia-cli/releases/download/v${pkgver//_/-}/algorithmia_linux64.tar.gz")
+md5sums=('75421e5814f8b1c17a20c760d653a9be')
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"

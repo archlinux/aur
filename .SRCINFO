@@ -6,8 +6,8 @@ pkgbase = algorithmia-bin
 	arch = x86_64
 	license = MIT
 	conflicts = algorithmia-bin
-	source = https://github.com/algorithmiaio/algorithmia-cli/releases/download/v1.0.0-beta.1/algo-linux.tar.gz
-	md5sums = 6d75ff02fe21d3151944fb6907431c8b
+	source = https://github.com/algorithmiaio/algorithmia-cli/releases/download/v1.0.0-beta.1/algorithmia_linux64.tar.gz
+	md5sums = 75421e5814f8b1c17a20c760d653a9be
 
 pkgname = algorithmia-bin
 
