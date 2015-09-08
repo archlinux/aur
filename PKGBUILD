@@ -8,6 +8,11 @@
 
 # TODO: Do we need split packages for python2 (see python-wheel for example)
 
+# To build:
+#   makepkg -scCfi --pkg python-botocore
+# or
+#   makepkg -scCfi --pkg python2-botocore
+
 # Note: the primary use of this package is with aws-cli
 
 # Use mcdiff to watch for changes
@@ -40,35 +45,35 @@ if sys.version_info[:2] == (2, 6):
 }
 
 set -u
-_pkgname='botocore'
-pkgname="python-${_pkgname}"
+_pyver="python"
+_pybase='botocore'
+pkgname="${_pyver}-${_pybase}"
 pkgver=1.2.0
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
-url="https://github.com/boto/${_pkgname}"
+url="https://github.com/boto/${_pybase}"
 license=('Apache') # Apache License 2.0
-depends=('python' # See setup.py, README.rst, and requirements.txt for version dependencies
-  'python-bcdoc<0.15.0'    # AUR
-  'python-wheel>=0.24.0'   # AUR ==
-  'python-jmespath>=0.7.1' # AUR == is possible for repositories. Makes upgrades impossible in AUR.
-  'python-tox>=1.4'        # COM == is possible because this is from a repository. Unfortunatley Arch isn't the primary dev environment for botocore/aws so our packages are likely to be newer.
-  'python-dateutil'{'>=2.1','<3.0.0'} # COM
-  'python-nose>=1.3.0'     # COM ==
-  'python-mock>=1.0.1'     # COM ==
-  'python-docutils>=0.10'  # COM
-  'python-six>=1.1.0'      # COM This is in the sources but I'm not sure where the version comes from.
+_pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
+  "${_pyver}-bcdoc<0.15.0"    # AUR
+  "${_pyver}-wheel>=0.24.0"   # AUR ==
+  "${_pyver}-jmespath>=0.7.1" # AUR == is possible for repositories. Makes upgrades impossible in AUR.
+  "${_pyver}-tox>=1.4"        # COM == is possible because this is from a repository. Unfortunatley Arch isn"t the primary dev environment for botocore/aws so our packages are likely to be newer.
+  "${_pyver}-dateutil"{">=2.1","<3.0.0"} # COM
+  "${_pyver}-nose>=1.3.0"     # COM ==
+  "${_pyver}-mock>=1.0.1"     # COM ==
+  "${_pyver}-docutils>=0.10"  # COM
+  "${_pyver}-six>=1.1.0"      # COM This is in the sources but I"m not sure where the version comes from.
   # requirements-docs.txt
-  'python-sphinx>=1.1.3' #'python-sphinx'{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
-  'python-guzzle-sphinx-theme'{'>=0.7.10','<0.8'}
+  "${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
+  "${_pyver}-guzzle-sphinx-theme"{">=0.7.10","<0.8"}
 )
-makedepends=('python-distribute') # same as python-setuptools
-conflicts=('python2-botocore')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
+source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('7c5d263434969ba6d517653879cbe5e1a60533890e9c29bd020a1f79312e0c1d')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
-  _srcdir="${_pkgname}"
+  _srcdir="${_pybase}"
   makedepends+=('git')
   provides+=("${pkgname%-git}=${pkgver%%.r*}")
   conflicts+=("${pkgname%-git}")
@@ -81,39 +86,33 @@ pkgver() {
   set +u
 }
 else
-  _srcdir="${_pkgname}-${pkgver}"
+  _srcdir="${_pybase}-${pkgver}"
   _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 fi
 
 build() {
   set -u
   cd "${_srcdir}"
-  python setup.py build
+  ${_pyver} setup.py build
   set +u
 }
 
 check() {
   set -u
   cd "${_srcdir}"
-  python setup.py test --verbose
+  # If pip is installed, some package tests download missing packages. We can't allow that.
+  #${_pyver} setup.py test --verbose
   set +u
 }
 
 package() {
-  # set -u # not compatible with msg and makepkg --nocolor
+  set -u
+  depends=("${_pyver}" "${_pydepends[@]}")
   cd "${_srcdir}"
-
-  python setup.py install --root="${pkgdir}" --optimize=1
-
-  msg 'Install Documentation'
+  ${_pyver} setup.py install --root="${pkgdir}" --optimize=1
   install -Dpm644 'README.rst' 'requirements.txt' -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
-
-  msg 'Install LICENSE.'
   install -Dpm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-
-  # Do not include the tests/ generated from the install
-  # rm -Rfv "${pkgdir}"/usr/lib/python*/site-packages/tests
-  # set +u # not compatible with msg and makepkg --nocolor
+  set +u
 }
 set +u
 
