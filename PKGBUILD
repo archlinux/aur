@@ -5,7 +5,7 @@ pkgdesc="Management plugin for certificates"
 arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
-depends=('fusiondirectory>=1.0.8.8')
+depends=('fusiondirectory>=1.0.8.9')
 
 install=fusiondirectory-plugin-certificates.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
