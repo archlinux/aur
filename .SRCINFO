@@ -1,0 +1,17 @@
+pkgbase = chibi-scheme-git
+	pkgdesc = minimal R7RS scheme implementation for use as an extension language
+	pkgver = 0.7.3.r82.gda84503
+	pkgrel = 1
+	url = https://github.com/ashinn/chibi-scheme
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = chibi-scheme
+	conflicts = chibi-scheme
+	source = git+https://github.com/ashinn/chibi-scheme
+	md5sums = SKIP
+
+pkgname = chibi-scheme-git
+
