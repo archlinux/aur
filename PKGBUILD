@@ -1,6 +1,6 @@
 pkgname=fusiondirectory-plugin-kolab-schema
-pkgver=1.0.8.8
-pkgver=1.0.8.8
+pkgver=1.0.8.9
+pkgver=1.0.8.9
 pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory kolab plugin"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('' 'fusiondirectory-plugin-systems' 'fusiondirectory-plugin-mail' 'fusi
 install=fusiondirectory-plugin-kolab.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('7ea8890ffbdf05ef4f6478ab1c49afea'
+md5sums=('03d3831e2c50248e3cc9e7cefe223234'
 'e169b4ca7ac809a6b939ed06d81c0f2a')
 
 package() {
