@@ -1,6 +1,6 @@
 pkgbase = otf-hack
 	pkgdesc = Source Foundry Hack is is hand groomed and optically balanced typeface to be your go-to code face based on the Bitstream Vera Mono font.
-	pkgver = 2.010
+	pkgver = 2.013
 	pkgrel = 1
 	url = http://sourcefoundry.org/hack/
 	install = otf-hack.install
@@ -9,14 +9,14 @@ pkgbase = otf-hack
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = https://github.com/chrissimpkins/Hack/raw/v2.010/build/otf/Hack-Bold.otf
-	source = https://github.com/chrissimpkins/Hack/raw/v2.010/build/otf/Hack-BoldOblique.otf
-	source = https://github.com/chrissimpkins/Hack/raw/v2.010/build/otf/Hack-Regular.otf
-	source = https://github.com/chrissimpkins/Hack/raw/v2.010/build/otf/Hack-RegularOblique.otf
-	md5sums = 328a5888b0db742f06fc74fdaa127c33
-	md5sums = 4e82325b478b9d2b0c4f60df95e8dfdf
-	md5sums = 61ad16e40a24bd9d0931108af0468b9c
-	md5sums = 59572651d88c4d88cb5a27238927ca9f
+	source = https://github.com/chrissimpkins/Hack/raw/v2.013/build/otf/Hack-Bold.otf
+	source = https://github.com/chrissimpkins/Hack/raw/v2.013/build/otf/Hack-BoldItalic.otf
+	source = https://github.com/chrissimpkins/Hack/raw/v2.013/build/otf/Hack-Italic.otf
+	source = https://github.com/chrissimpkins/Hack/raw/v2.013/build/otf/Hack-Regular.otf
+	md5sums = 71cd5be3cd70bccb91f0b9e637e0b9d6
+	md5sums = 6542f8afee6e5f7de217421de03124ef
+	md5sums = 7a195a69352e01ff254db41df174942b
+	md5sums = 9c2f58004d9d31b6f41e9482033f61bb
 
 pkgname = otf-hack
 
