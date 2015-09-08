@@ -64,9 +64,6 @@ prepare() {
   done
 
   git submodule update --init
-
-  # FIXME Replacement for 'nuget-cert'
-  # sudo cert-sync --quiet /etc/ssl/certs/ca-certificates.crt
 }
 
 build() {
