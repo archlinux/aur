@@ -1,4 +1,5 @@
-# Maintainer: <qqqqqqqqq9 at web dot de>
+# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: <qqqqqqqqq9 at web dot de>
 # Contributor: yannsen <ynnsen at gmail dot com>
 pkgname=jnc
 pkgver=0.19
