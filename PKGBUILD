@@ -6,7 +6,7 @@
 # Maintainer: Joakim Reinert <mail@jreinert.com>
 pkgname=hless-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="less with syntax highlighting"
 arch=('x86_64')
