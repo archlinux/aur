@@ -1,14 +1,14 @@
 pkgbase = invoke
 	pkgdesc = Task execution tool & library
-	pkgver = 0.10.1
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = http://pyinvoke.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = http://pypi.python.org/packages/source/i/invoke/invoke-0.10.1.tar.gz
-	sha256sums = a6f292d5ed75b9cb29ae8e6d5ccb6f74f372cd01d2c49f159f178057f3fd16ef
+	source = http://pypi.python.org/packages/source/i/invoke/invoke-0.11.1.tar.gz
+	sha256sums = 11c0f24253932839307c26c196312238627479e07d4561f773261a445dd650b9
 
 pkgname = invoke
 	depends = python
