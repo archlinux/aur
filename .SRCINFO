@@ -1,0 +1,14 @@
+pkgbase = systemd-docker
+	pkgdesc = Wrapper for "docker run" to handle systemd quirks
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = https://github.com/ibuildthecloud/systemd-docker
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	source = https://github.com/ibuildthecloud/systemd-docker/archive/v0.2.0.tar.gz
+	sha256sums = 50ec1876113ae349d38130297dd7e8de4c8d832ea2ac0e6089f3106a331c7e41
+
+pkgname = systemd-docker
+
