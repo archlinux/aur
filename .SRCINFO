@@ -1,7 +1,7 @@
 pkgbase = alpine
 	pkgdesc = Apache licensed PINE mail user agent
 	pkgver = 2.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://patches.freeiz.com/alpine/
 	arch = i686
 	arch = x86_64
