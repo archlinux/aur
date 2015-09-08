@@ -1,6 +1,6 @@
 pkgbase = fittotcx-git
 	pkgdesc = This program takes a FIT file and converts it into an TCX file and output the result to the standard output
-	pkgver = r13.22348b0
+	pkgver = r19.310452e
 	pkgrel = 1
 	url = https://github.com/Tigge/FIT-to-TCX
 	arch = i686

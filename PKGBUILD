@@ -1,7 +1,7 @@
 # Maintainer: André <andre-arch@delorus.de>
 pkgname=fittotcx-git
 _gitname=FIT-to-TCX
-pkgver=r13.22348b0
+pkgver=r19.310452e
 pkgrel=1
 pkgdesc="This program takes a FIT file and converts it into an TCX file and output the result to the standard output"
 arch=('i686' 'x86_64')
@@ -19,10 +19,9 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
 
-  install -Dm755 unitconvert.py ${pkgdir}/usr/lib/python2.7/site-packages/unitconvert.py
+  sed -i-e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" fittotcx/program.py
 
-  sed -i-e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" fittotcx.py
-  install -Dm755 fittotcx.py ${pkgdir}/usr/bin/fittotcx
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 
   install -Dm644 LICENCE ${pkgdir}/usr/share/licenses/fittotcx/LICENSE
 }
