@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "${srcdir}/${pkgname}"
   install -Dm 0755 ${_gitname} "${pkgdir}/usr/bin/${_gitname}"
 }
 
