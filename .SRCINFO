@@ -1,0 +1,16 @@
+pkgbase = gtksourceview-highlight-toml
+	pkgdesc = TOML syntax highlighting for gtksourceview
+	pkgver = r8.8f3dd72
+	pkgrel = 1
+	url = https://github.com/liv-dumea/toml.lang
+	arch = any
+	license = GPL
+	source = git+https://github.com/liv-dumea/toml.lang.git
+	sha512sums = SKIP
+
+pkgname = gtksourceview2-highlight-toml
+	depends = gtksourceview2
+
+pkgname = gtksourceview3-highlight-toml
+	depends = gtksourceview3
+
