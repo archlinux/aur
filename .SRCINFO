@@ -1,0 +1,17 @@
+pkgbase = mellowplayer
+	pkgdesc = Open source and cross-platform desktop application that runs web-based music streaming services in its own window and provides integration with your desktop.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/ColinDuquesnoy/MellowPlayer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = libnotify
+	optdepends = flashplugin: needed for Deezer, MixCloud, SoundCloud Music Service
+	conflicts = mellowplayer
+	source = https://github.com/ColinDuquesnoy/MellowPlayer/tarball/master/MellowPlayer-1.5.0.tar.gz
+	md5sums = 423620354f5534de16fcc0e3f3b4794a
+
+pkgname = mellowplayer
+
