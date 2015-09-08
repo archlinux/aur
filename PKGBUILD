@@ -4,7 +4,7 @@
 
 _gitname='libsigrokdecode'
 pkgname="${_gitname}-git"
-pkgver=libsigrokdecode.0.2.0.r506.ge4bafb8
+pkgver=0.2.0.r506.ge4bafb8
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, protocol decoders library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
   cd "${srcdir}/${_gitname}"
   (
     set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/${_gitname}.//" ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
