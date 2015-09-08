@@ -2,7 +2,7 @@
 # Contributor: Marti Raudsepp <marti@juffo.org>
 
 pkgname=pg_repack
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Reorganize tables in PostgreSQL databases with minimal locks (fork of pg_reorg)"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=('postgresql')
 source=("https://github.com/reorg/pg_repack/archive/ver_${pkgver}.tar.gz")
 	
 
-md5sums=('4ffdb060bbb5183bc64c59daa40ff52f')
+md5sums=('c4e7b4ba84d309e391d97c8785d28c4f')
 
 prepare() {
   cd "$srcdir/$pkgname-ver_$pkgver"
