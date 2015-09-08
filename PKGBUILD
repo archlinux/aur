@@ -4,28 +4,41 @@
 # Package Source: https://github.com/flaccid/archlinux-packages/blob/master/python-bcdoc/PKGBUILD
 
 set -u
-pkgname='python-bcdoc'
-_pkgname='bcdoc'
-pkgver='0.12.2'
+_pybase='bcdoc'
+_pyver="python"
+pkgname="${_pyver}-${_pybase}"
+pkgver='0.14.0'
 pkgrel='1'
 pkgdesc='Tools to help document botocore-based projects.'
 arch=('any')
-url='https://github.com/boto/bcdoc'
-license=('Apache 2.0')
-depends=('python')
-makedepends=('python-setuptools')
-source=("https://github.com/boto/bcdoc/archive/${pkgver}.tar.gz")
-sha256sums=('f1dc05496a5caa32a1e2ce8c7e02c39862ae2786552be5c2e10f9e5aa49e7d37')
+url="https://github.com/boto/${_pybase}"
+license=('Apache') # Apache License 2.0
+makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
+_srcdir="${_pybase}-${pkgver}"
+_verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
+source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('f39a87c8667a059503d2dde24d7bfe181b8d863cb7e2aa993f2561ff15683aa4')
+
+build() {
+  set -u
+  cd "${_srcdir}"
+  ${_pyver} setup.py build
+  set +u
+}
+
+check() {
+  set -u
+  cd "${_srcdir}"
+  # If pip is installed, some package tests download missing packages. We can't allow that.
+  #${_pyver} setup.py test --verbose
+  set +u
+}
 
 package() {
   set -u
-  cd "${_pkgname}-${pkgver}"
-
-  python setup.py install --root="${pkgdir}/" --optimize=1
-
-  # do not include the tests/ generated from the install
-  #msg 'Removing tests.'
-  #rm -Rfv "${pkgdir}/usr/lib/python*/site-packages/tests"
+  depends=("${_pyver}") #"${_pydepends[@]}")
+  cd "${_srcdir}"
+  ${_pyver} setup.py install --root="${pkgdir}" --optimize=1
   set +u
 }
 set +u
