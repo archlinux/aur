@@ -4,7 +4,7 @@
 
 pkgname=feedreader
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple feedreader client for web services like Tiny Tiny RSS and in the future others.'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/feedreader'
@@ -27,7 +27,7 @@ build() {
   if [[ -d "${srcdir}/FeedReader-${pkgver}/build" ]]; then
     rm -rf "${srcdir}/FeedReader-${pkgver}/build"
   fi
-  mkdir "${srcdir}/${pkgname}-${pkgver}/build" && cd "${srcdir}/FeedReader-${pkgver}/build"
+  mkdir "${srcdir}/FeedReader-${pkgver}/build" && cd "${srcdir}/FeedReader-${pkgver}/build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_WEBKIT_4=ON -DWITH_LIBUNITY=OFF ..
   make
 }
