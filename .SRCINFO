@@ -1,7 +1,7 @@
 pkgbase = opengrok
 	pkgdesc = A wicked fast source browser.
 	pkgver = 0.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://opengrok.github.io/OpenGrok/
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = opengrok
 	depends = tomcat8
 	depends = ctags
 	depends = sh
-	source = https://github.com/OpenGrok/OpenGrok/archive/0.12.1.tar.gz
+	depends = unzip
+	source = https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.tar.gz
 	source = deploy.sh
-	sha1sums = 68a959ba5c5c23188e02f14ff023265111c86b36
-	sha1sums = 69f98ff5aced0b06b8d2c4fb6cd48c9e82aaaea3
+	sha1sums = 96a6a5d1888b802cdba15915b283db84439b83fd
+	sha1sums = 79ac952c7b3c57232d21aa5e9b90f22f61098389
 
 pkgname = opengrok
 

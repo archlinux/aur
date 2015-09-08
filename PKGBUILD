@@ -7,7 +7,7 @@ url="http://opengrok.github.io/OpenGrok/"
 arch=('i686' 'x86_64')
 license=('CDDL')
 # Requirements: ... like GlassFish or Tomcat (6.x, 7.x or later) ... 
-depends=('tomcat8' 'ctags' 'sh')
+depends=('tomcat8' 'ctags' 'sh' 'unzip')
 makedepends=('sed')
 source=(
     "https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.tar.gz"
