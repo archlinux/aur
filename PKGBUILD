@@ -41,48 +41,52 @@ requires = ['botocore==1.2.0',
 }
 
 set -u
-_pkgname='aws-cli'
-pkgname="${_pkgname}" # Add -git for the git package
+_pyver="python"
+_pybase='aws-cli'
+if [ "${_pyver}" = 'python' ]; then
+pkgname="${_pybase}"
+_pyverother='python2'
+else
+pkgname="${_pyver}-${_pybase}"
+_pyverother='python'
+fi
 pkgver=1.8.2
-# Change the version and you must also change the version of botocore below
+# Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services.'
 arch=('any')
-url="https://github.com/aws/${_pkgname}"
+url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
-depends=('python' # See setup.py, README.rst, and requirements.txt for version dependencies
-  'python-bcdoc<0.15.0'    # AUR
-  'python-botocore>=1.2.0' # AUR == would make upgrades from AUR imposible. See below.
-  'python-colorama'{'>=0.2.5','<=0.3.3'}  # COM
-  'python-rsa-3.1.2'{'>=3.1.2','<=3.1.4'} # AUR It would be nice to move to the newer version.
-  #'python-rsa'{'>=3.1.2','<=3.1.4'}      # COM
+_pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
+  "${_pyver}-bcdoc<0.15.0"    # AUR
+  "${_pyver}-botocore>=1.2.0" # AUR == would make upgrades from AUR imposible. See below.
+  "${_pyver}-colorama"{">=0.2.5","<=0.3.3"}  # COM
+  "${_pyver}-rsa-3.1.2"{">=3.1.2","<=3.1.4"} # AUR It would be nice to move to the newer version.
+  #"${_pyver}-rsa"{">=3.1.2","<=3.1.4"}      # COM
 
   ### These are from python-botocore
-  'python-wheel>=0.24.0'   # AUR ==
-  'python-jmespath>=0.7.1' # AUR == is possible for repositories. Makes upgrades impossible in AUR.
-  'python-tox>=1.4'        # COM == is possible because this is from a repository. Unfortunatley Arch isn't the primary dev environment for botocore/aws so our packages are likely to be newer.
-  'python-dateutil'{'>=2.1','<3.0.0'} # COM
-  'python-nose>=1.3.0'     # COM ==
-  'python-mock>=1.0.1'     # COM ==
-  'python-docutils>=0.10'  # COM
-  'python-six>=1.1.0'      # COM This is in the sources but I'm not sure where the version comes from.
+  "${_pyver}-wheel>=0.24.0"   # AUR ==
+  "${_pyver}-jmespath>=0.7.1" # AUR == is possible for repositories. Makes upgrades impossible in AUR.
+  "${_pyver}-tox>=1.4"        # COM == is possible because this is from a repository. Unfortunatley Arch isn"t the primary dev environment for botocore/aws so our packages are likely to be newer.
+  "${_pyver}-dateutil"{">=2.1","<3.0.0"} # COM
+  "${_pyver}-nose>=1.3.0"     # COM ==
+  "${_pyver}-mock>=1.0.1"     # COM ==
+  "${_pyver}-docutils>=0.10"  # COM
+  "${_pyver}-six>=1.1.0"      # COM This is in the sources but I'm not sure where the version comes from.
   # requirements-docs.txt
-  'python-sphinx>=1.1.3' #'python-sphinx'{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
-  'python-guzzle-sphinx-theme'{'>=0.7.10','<0.8'}
+  "${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
+  "${_pyver}-guzzle-sphinx-theme"{">=0.7.10","<0.8"}
 )
-makedepends=('python-distribute') # same as python-setuptools
-conflicts=('python2-aws-cli' 'python-aws-cli' 'awscli')
-replaces=(                   'python-aws-cli' 'awscli')
-provides=('awscli')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
+source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('4545cc633214f8e54cbc35237dbb60e620e852754dc332002d700c9caa6bcdf0')
 options=('!emptydirs')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
-  _srcdir="${_pkgname}"
+  _srcdir="${_pybase}"
   makedepends+=('git')
-  provides+=("${pkgname%-git}=${pkgver%%.r*}")
-  conflicts+=("${pkgname%-git}")
+  _vcsprovides=("${pkgname%-git}=${pkgver%%.r*}")
+  _vcsconflicts=("${pkgname%-git}")
   source=("${_srcdir}::${url//https:/git:}.git")
   :;sha256sums=('SKIP')
 pkgver() {
@@ -92,34 +96,39 @@ pkgver() {
   set +u
 }
 else
-  _srcdir="${pkgname}-${pkgver}"
+  _srcdir="${_pybase}-${pkgver}"
   _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
+  _vcsprovides=()
+  _vcsconflicts=()
 fi
 
 build() {
   set -u
   cd "${_srcdir}"
-  python setup.py build
+  ${_pyver} setup.py build
   set +u
 }
 
 check() {
   set -u
   cd "${_srcdir}"
-  python setup.py test --verbose
+  # If pip is installed, some package tests download missing packages. We can't allow that.
+  #${_pyver} setup.py test --verbose
   set +u
 }
 
 package() {
-  # set -u # not compatible with msg and makepkg --nocolor
+  set +u
+  provides=("${_pybase//-/}=${pkgver%%.r*}" "${_vcsprovides[@]}")
+  conflicts=("${_pyverother}-aws-cli" "${_pyver}-aws-cli" "${_pybase//-/}" "${_vcsconflicts[@]}")
+  set -u
+  depends=("${_pyver}" "${_pydepends[@]}")
+  #replaces=("${_pyver}-aws-cli" "${_pybase//-/}")
+
   cd "${_srcdir}"
-
-  python setup.py install --root="${pkgdir}" --optimize=1
-
-  msg 'Install zsh completion script.'
+  ${_pyver} setup.py install --root="${pkgdir}" --optimize=1
   install -Dpm644 'bin/aws_zsh_completer.sh' "${pkgdir}/etc/zsh/aws_complete.zsh" # someone dropped an s. I don't know if I can change it safely.
 
-  msg 'Install bash completion script.'
   install -Dpm644 <(cat << EOF
 # ${pkgname} ${pkgver} bash completion script
 # http://aur.archlinux.org/
@@ -127,16 +136,9 @@ complete -C aws_completer aws
 EOF
 ) "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
 
-  msg 'Install Documentation'
   install -Dpm644 'README.rst' 'requirements.txt' -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
-
-  msg 'Install LICENSE.'
   install -Dpm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-
-  # Do not include the tests/ generated from the install
-  # rm -Rfv "${pkgdir}"/usr/lib/python*/site-packages/tests
-  # set +u # not compatible with msg and makepkg --nocolor
+  set +u
 }
 set +u
-
 # vim:set ts=2 sw=2 et:
