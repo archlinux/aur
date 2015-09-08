@@ -39,6 +39,8 @@ package() {
   cd "${srcdir}/${_gitname}"
 
   make DESTDIR="${pkgdir}" PREFIX=/usr install
+
+  install -Dm 644 'contrib/z60_libsigrok.rules' "${pkgdir}/usr/lib/udev/rules.d/60-libsigrok.rules"
 }
 
 # vim:set et sw=2 sts=2 tw=80:
