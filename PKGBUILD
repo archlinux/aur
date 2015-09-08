@@ -13,7 +13,7 @@ _EOF_
 
 pkgname=rstudio-desktop-bin
 pkgver=0.99.483
-pkgrel=2
+pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
