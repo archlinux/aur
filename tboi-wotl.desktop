@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=The Binding of Isaac - Wrath of the Lamb
+GenericName=The Binding of Isaac - Wrath of the Lamb
+Comment=Legend of Zelda-inspired dungeon crawler
+Type=Application
+Categories=Game
+Encoding=UTF-8
+Value=1.0
+Exec=/usr/bin/tboi-wotl
+Icon=/usr/share/tboi-wotl/tboi-wotl.png
+Path=/usr/share/tboi-wotl

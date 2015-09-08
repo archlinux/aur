@@ -1,0 +1,19 @@
+pkgbase = tboi-wotl
+	pkgdesc = The Binding of Isaac + Wrath of the Lamb expansion - Humble Indie Bundle version
+	pkgver = 1.48
+	pkgrel = 2
+	url = http://store.steampowered.com/app/113200/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	makedepends = unzip
+	depends = flashplugin
+	source = tboi-wotl.png
+	source = tboi-wotl.desktop
+	source = tboi-wotl.sh
+	md5sums = bdde316318e2f5cb54afc1db3558369e
+	md5sums = e477182dc27d04fadc85f4cd6396feff
+	md5sums = bcdb2db3ac964bed801b6121101db5d1
+
+pkgname = tboi-wotl
+
