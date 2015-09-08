@@ -36,6 +36,11 @@ pre_upgrade() {
 			fi
 		done
 	fi
+
+	if [ $(vercmp $2 6.03) -lt 0 ]; then
+		echo '-> The use of $HOME/.psd is deprecated.'
+		echo '-> Psd will move it for you upon next invocation to $XDG_CONFIG_HOME/psd'
+	fi
 }
 
 pre_remove() {
