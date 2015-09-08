@@ -7,7 +7,7 @@ set -u
 _pybase='bcdoc'
 _pyver="python2"
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.12.2'
+pkgver='0.14.0'
 pkgrel='1'
 pkgdesc='Tools to help document botocore-based projects.'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f1dc05496a5caa32a1e2ce8c7e02c39862ae2786552be5c2e10f9e5aa49e7d37')
+sha256sums=('f39a87c8667a059503d2dde24d7bfe181b8d863cb7e2aa993f2561ff15683aa4')
 
 build() {
   set -u
