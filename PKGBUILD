@@ -31,6 +31,6 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  python2 setup.py install --root=$pkgdir
+  python2 setup.py install --root=$pkgdir --optimize=1
   install -D -m755 $startdir/trytond.service $pkgdir/usr/lib/systemd/system/trytond.service
 }
