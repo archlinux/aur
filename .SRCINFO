@@ -1,0 +1,15 @@
+pkgbase = blank-html-server
+	pkgdesc = Serves blank HTML pages using Node.js
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gist.github.com/flannelhead/e1d9b5b10669e702b92a
+	arch = any
+	license = GPL3
+	depends = nodejs
+	source = blank-html-server
+	source = blank-html-server.service
+	md5sums = 8d78b5b0866b2fa886b14f6bc96ed19d
+	md5sums = 68c2b3a104aaee59907163b3527c6a58
+
+pkgname = blank-html-server
+

@@ -1,0 +1,8 @@
+[Unit]
+Description=Serve blank html pages using node.js
+
+[Service]
+ExecStart=/usr/bin/blank-html-server
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+require('http').createServer(function(request, response) {
+    var body = '<html></html>';
+    response.writeHead(200, {
+        'Content-Type': 'text/html',
+        'Content-Length': body.length
+    });
+    response.end(body);
+}).listen(80);
+
