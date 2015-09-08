@@ -1,7 +1,7 @@
 # Maintainer: OS Hazard <oshazard+aur@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=apacman
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="AUR wrapper forked from packer"
 url="http://github.com/oshazard/apacman"
@@ -11,15 +11,16 @@ depends=('bash' 'binutils' 'ca-certificates' 'curl' 'fakeroot' 'file' 'grep' 'js
 optdepends=('apacman-deps: Required AUR build depends' 
             'apacman-utils: Useful AUR tools'
             'customizepkg: Tool to auto-patch AUR PKGBUILDs'
+            'man: Debug network errors'
             'rsync: Built-in ABS support')
 provides=('packer')
-source=("https://github.com/oshazard/apacman/archive/master.tar.gz")
-md5sums=('92602f2f35c3b2be448bf8669dd9107e')
+source=("https://github.com/oshazard/apacman/archive/v${pkgver}.tar.gz")
+md5sums=('8ee23cd2000b9734b0d47d1ecd31dd89')
 backup=('etc/apacman.conf')
 install=$pkgname.install
 
 package() {
-  cd "${srcdir}/apacman-master"
+  cd "${srcdir}/apacman-${pkgver}"
 
   # Install script
   mkdir -p "$pkgdir/usr/bin"
