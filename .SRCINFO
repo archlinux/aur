@@ -11,7 +11,7 @@ pkgbase = urho3d
 	depends = libx11
 	depends = libgl
 	depends = libxrandr
-	provides = urho3d
+	provides = urho3d=1.4
 	conflicts = urho3d-git
 	replaces = urho3d-git
 	source = https://github.com/urho3d/Urho3D/archive/1.4.tar.gz
