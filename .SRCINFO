@@ -1,0 +1,15 @@
+pkgbase = idump
+	pkgdesc = tiny image viewer for framebuffer
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/uobikiemukot/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libpng
+	depends = libjpeg-turbo
+	source = https://github.com/uobikiemukot//idump/archive/v0.2.0.tar.gz
+	md5sums = 9c2a1c000eb9ec57df41006f4c52d319
+
+pkgname = idump
+
