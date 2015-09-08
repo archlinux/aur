@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-duplicates
-pkgver=0.0.6
+pkgver=0.1.0
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="displays the status of all available dvb devices"
@@ -13,7 +13,7 @@ depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("http://tolleri.net/vdr/plugins/$pkgname-$pkgver.tgz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('76ba45b756712881bfd52b669fafb887')
+md5sums=('a7bf122811c080f0a928dc7b9f9cd842')
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
