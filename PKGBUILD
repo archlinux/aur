@@ -10,7 +10,7 @@ url="https://github.com/phijor/gba-pkm-save-edit"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'make')
-source=("${pkgname}::git+https://github.com/phijor/gba-pkm-save-edit.git")
+source=("${pkgname}::git+https://github.com/phijor/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
