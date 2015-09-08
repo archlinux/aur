@@ -5,7 +5,7 @@ pkgdesc="Management of alias list of sympa"
 arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
-depends=('fusiondirectory>=1.0.8.8' 'fusiondirectory-plugin-systems' 'fusiondirectory-plugin-mail' 'fusiondirectory-plugin-alias')
+depends=('fusiondirectory>=1.0.8.9')
 
 install=fusiondirectory-plugin-sympa.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
