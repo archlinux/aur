@@ -1,0 +1,27 @@
+pkgbase = feedreader
+	pkgdesc = A simple feedreader client for web services like Tiny Tiny RSS and in the future others.
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://launchpad.net/feedreader
+	install = feedreader.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = cmake
+	depends = sqlite3
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libnotify
+	depends = html2text-with-utf8
+	depends = libsoup
+	depends = json-glib
+	depends = libsecret
+	provides = feedreader
+	conflicts = feedreader
+	source = https://launchpad.net/feedreader/1.2/1.2.1/+download/FeedReader-1.2.1.tar.gz
+	sha256sums = cb24d6dcef46080f2aa61fdc1b0187a8c52aedf913e6f63325ee46c631e5c87a
+
+pkgname = feedreader
+
