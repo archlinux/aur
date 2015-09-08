@@ -1,8 +1,10 @@
 pkgbase = libsigrokdecode-git
 	pkgdesc = Client software that supports various hardware logic analyzers, protocol decoders library (git version)
-	pkgver = 1023.e4bafb8
+	pkgver = libsigrokdecode.0.2.0.r506.ge4bafb8
 	pkgrel = 1
 	url = http://www.sigrok.org/wiki/Libsigrokdecode
+	arch = armv6h
+	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -12,7 +14,7 @@ pkgbase = libsigrokdecode-git
 	provides = libsigrokdecode
 	conflicts = libsigrokdecode
 	source = git://sigrok.org/libsigrokdecode
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = libsigrokdecode-git
 

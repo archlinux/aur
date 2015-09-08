@@ -1,29 +1,33 @@
-# Maintainer: Thomas Krug <t.krug@elektronenpumpe.de>
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 # Contributor: veox <veox at wemakethings dot net>
 
-pkgname=libsigrokdecode-git
-_pkgname=libsigrokdecode
-pkgver=1023.e4bafb8
+_gitname='libsigrokdecode'
+pkgname="${_gitname}-git"
+pkgver=libsigrokdecode.0.2.0.r506.ge4bafb8
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, protocol decoders library (git version)"
-arch=('i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://www.sigrok.org/wiki/Libsigrokdecode"
 license=('GPL3')
 depends=('python' 'glib2')
 makedepends=('git')
-provides=('libsigrokdecode')
-conflicts=('libsigrokdecode')
-source=("git://sigrok.org/$_pkgname")
-md5sums=('SKIP')
+conflicts=("${_gitname}")
+provides=("${_gitname}")
+source=("git://sigrok.org/${_gitname}")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "${srcdir}/${_gitname}"
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_gitname}"
 
   ./autogen.sh
   ./configure --prefix=/usr
@@ -32,9 +36,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_gitname}"
 
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set et sw=2 sts=2 tw=80:
