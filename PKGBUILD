@@ -9,7 +9,7 @@ license=('CDDL')
 # Requirements: ... like GlassFish or Tomcat (6.x, 7.x or later) ... 
 depends=('tomcat8' 'ctags' 'sh')
 makedepends=('sed')
-source=("http://java.net/projects/${pkgname}/downloads/download/${pkgname}-${pkgver}.tar.gz" 'deploy.sh')
+source=("https://github.com/OpenGrok/OpenGrok/archive/${pkgver}.tar.gz" 'deploy.sh')
 md5sums=('afc4560c9c9a27454c6d74024aa73ede' 'f87f6ebdd505ba1ce5a7de501a521938')
 
 package() {
