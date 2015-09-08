@@ -1,0 +1,21 @@
+pkgbase = cdm-git
+	pkgdesc = The Console Display Manager
+	pkgver = 2014.08.04
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/ghost1227/cdm
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = dialog
+	depends = xorg-xinit
+	depends = xorg-xdpyinfo
+	depends = kbd
+	provides = cdm
+	conflicts = cdm
+	backup = etc/cdmrc
+	source = git://github.com/ghost1227/cdm.git
+	md5sums = SKIP
+
+pkgname = cdm-git
+
