@@ -3,7 +3,7 @@
 pkgname=trelby-git
 _pkgname=trelby
 pkgver=0.r806.a29e8bb
-pkgrel=1
+pkgrel=3
 pkgdesc="Free screenwriting application"
 url=http://www.trelby.org
 arch=('any')
@@ -11,6 +11,7 @@ license=(GPL3)
 provides=("$_pkgname")
 depends=(
     'python2'
+    'python2-setuptools'
     'python2-lxml'
     'wxpython2.8'
 )
@@ -25,6 +26,10 @@ package()
 {
   cd ${srcdir}/${_pkgname}
   # Force package data inclusion
+  gzip -c names.txt > names.txt.gz
+  gzip -c dict_en.dat > dict_en.dat.gz
+  python2 setup.py sdist
+
   python2 setup.py install --root="${pkgdir}"
   mkdir ${pkgdir}/usr/share/applications -p
   install -Dm 644 trelby.desktop ${pkgdir}/usr/share/applications/trelby.desktop
