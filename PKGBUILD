@@ -5,7 +5,7 @@ pkgdesc="Kolab2 management"
 arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
-depends=('fusiondirectory>=1.0.8.8' 'fusiondirectory-plugin-systems' 'fusiondirectory-plugin-mail' 'fusiondirectory-plugin-cyrus')
+depends=('fusiondirectory>=1.0.8.9')
 
 install=fusiondirectory-plugin-kolab.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
