@@ -1,0 +1,5 @@
+1) Mount your LabVIEW-2010 for linux/mac CD or ISO. 
+   Note that for some weird reason this may be formatted as hfs+ rather than ISO9660.
+2) Copy all rpm files, LICENSE.txt and PATENTS.txt from Linux/labview to your build directory
+3) Make sure you agree to the terms of the license
+4) makepkg
