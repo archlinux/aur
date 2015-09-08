@@ -1,0 +1,22 @@
+pkgbase = libsigrok-git
+	pkgdesc = Client software that supports various hardware logic analyzers, core library (git version)
+	pkgver = 3386.1e76596
+	pkgrel = 1
+	url = http://www.sigrok.org/wiki/Libsigrok
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = libzip
+	depends = libftdi-compat
+	depends = alsa-lib
+	depends = libserialport-git
+	depends = glibmm
+	provides = libsigrok
+	conflicts = libsigrok
+	source = git://sigrok.org/libsigrok
+	md5sums = SKIP
+
+pkgname = libsigrok-git
+
