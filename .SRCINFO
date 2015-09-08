@@ -1,0 +1,16 @@
+pkgbase = mellowplayer-kde
+	pkgdesc = Open source and cross-platform desktop application that runs web-based music streaming services in its own window and provides integration with your desktop. Packaged specifically for KDE Sc/Plasma 5.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/ColinDuquesnoy/MellowPlayer
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = kglobalaccel
+	depends = knotifications
+	optdepends = flashplugin: needed for Deezer, MixCloud, SoundCloud Music Service
+	source = https://github.com/ColinDuquesnoy/MellowPlayer/tarball/master/MellowPlayer-1.5.0.tar.gz
+	md5sums = 423620354f5534de16fcc0e3f3b4794a
+
+pkgname = mellowplayer-kde
+
