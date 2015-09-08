@@ -1,7 +1,7 @@
 pkgbase = hless-git
 	pkgdesc = less with syntax highlighting
 	pkgver = 0.1.0.2.g3eb19fa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jreinert/hless
 	arch = any
 	makedepends = crystal-git

@@ -2,7 +2,7 @@
 
 pkgname=hless-git
 pkgver=0.1.0.2.g3eb19fa
-pkgrel=1
+pkgrel=2
 pkgdesc='less with syntax highlighting'
 arch=(any)
 url='https://github.com/jreinert/hless'
