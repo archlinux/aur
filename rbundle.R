@@ -9,7 +9,7 @@ print(path)
 
 #List of R packages to be installed
 libs <- c('BayesFactor','lme4','Rcpp','RInside','afex','base64','car','effects','qgraph','hypergeo','lavaan',
-	  'logspline','lsmeans','plotrix','RJSONIO','semTools','vcd','vcdExtra','gnm')
+	  'logspline','lsmeans','plotrix','rjson','semTools','vcd','vcdExtra','gnm')
 
 #They modified gnm
 

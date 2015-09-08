@@ -102,7 +102,6 @@ pkgbase = jasp-rbundle
 	provides = r-cran-logspline
 	provides = r-cran-lsmeans
 	provides = r-cran-plotrix
-	provides = r-cran-rjsonio
 	provides = r-cran-semtools
 	provides = r-cran-vcd
 	provides = r-cran-vcdextra
@@ -202,13 +201,12 @@ pkgbase = jasp-rbundle
 	conflicts = r-cran-logspline
 	conflicts = r-cran-lsmeans
 	conflicts = r-cran-plotrix
-	conflicts = r-cran-rjsonio
 	conflicts = r-cran-semtools
 	conflicts = r-cran-vcd
 	conflicts = r-cran-vcdextra
 	conflicts = r-cran-gnm
 	source = rbundle.R
-	md5sums = 85087ac1d6e0ffa885f4887c40985982
+	md5sums = d6e6072fc775909ce44462b2dd18a355
 
 pkgname = jasp-rbundle
 
