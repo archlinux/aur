@@ -1,0 +1,13 @@
+pkgbase = dtc-git-patched
+	pkgdesc = Device Tree Compiler with Dynamic Symbols and Fixup Support Patch
+	pkgver = 20130410
+	pkgrel = 1
+	url = http://jdl.com/software/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+
+pkgname = dtc-git-patched
+
