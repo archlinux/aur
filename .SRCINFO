@@ -1,6 +1,6 @@
 pkgbase = utext
 	pkgdesc = An application to work with markdown files.
-	pkgver = 0.3.5
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = http://www.atareao.es/tag/utext/
 	install = utext.install
@@ -17,8 +17,8 @@ pkgbase = utext
 	depends = python-requests
 	depends = wkhtmltopdf
 	provides = utext
-	source = https://launchpad.net/~atareao/+archive/ubuntu/utext/+files/utext_0.3.5-0extras15.04.6.tar.xz
-	sha256sums = 92e6cedbef020e64d01b4d896b07e53a5da4441350f7844afe8f61e93ccc46e1
+	source = https://launchpad.net/~atareao/+archive/ubuntu/utext/+files/utext_0.3.7-0extras15.04.2.tar.xz
+	sha256sums = ffe4ca87a676925768605d47b51559d09eec8eb92a4374d5afebd165aa6036f1
 
 pkgname = utext
 
