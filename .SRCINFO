@@ -1,6 +1,6 @@
 pkgbase = fusiondirectory-plugin-asterisk
 	pkgdesc = Phone backend management with report functionality
-	pkgver = 1.0.8.8
+	pkgver = 1.0.8.9
 	pkgrel = 1
 	url = http://fusiondirectory.org/
 	install = fusiondirectory-plugin-asterisk.install
@@ -11,9 +11,9 @@ pkgbase = fusiondirectory-plugin-asterisk
 	depends = asterisk
 	depends = fusiondirectory-plugin-systems
 	depends = fusiondirectory-plugin-database-connector
-	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-1.0.8.8.tar.gz
-	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-1.0.8.8.tar.gz
-	md5sums = 7ea8890ffbdf05ef4f6478ab1c49afea
+	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-1.0.8.9.tar.gz
+	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-1.0.8.9.tar.gz
+	md5sums = 03d3831e2c50248e3cc9e7cefe223234
 	md5sums = e169b4ca7ac809a6b939ed06d81c0f2a
 
 pkgname = fusiondirectory-plugin-asterisk
