@@ -9,20 +9,26 @@
 # To build these, download the packages from the AUR or ABS and change the version.
 
 set -u
+_pyver="python"
 _pybase='aws-eb-cli'
-pkgbase="${_pybase}"
-pkgname=("${_pybase}" "python2-${_pybase}")
+if [ "${_pyver}" = 'python' ]; then
+pkgname="${_pybase}"
+_pyverother='python2'
+else
+pkgname="${_pyver}-${_pybase}"
+_pyverother='python'
+fi
 _pybase="${_pybase//-/}"
 pkgver='3.5.2'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
 url='http://aws.amazon.com/code/6752709412171743'
+license=('Apache') # Apache License 2.0
+makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-makedepends=('python' 'python2')
-license=( 'APACHE' )
 sha256sums=('a753dbff9a9888b50ba13b221e6e8126e4697a1d61ba871e37c4ac782686da5f')
 
 # Convert python requires to PKGBUILD depends
@@ -31,7 +37,7 @@ sha256sums=('a753dbff9a9888b50ba13b221e6e8126e4697a1d61ba871e37c4ac782686da5f')
 #   (because our packages are often too new)
 # $3: what to convert == to: '>=' or '='
 # returns array _pydepends=()
-_pyrequires() {
+_fn_pydepends() {
   # Paste in from setup.py. This function does NOT work in zsh.
 local _requires="
 requires = ['pyyaml>=3.11',
@@ -75,15 +81,15 @@ requires = ['pyyaml>=3.11',
     _pydepends+=("${_pyst2[@]}")
   done
 }
-_pyrequires 'python-' '' '='
+_fn_pydepends "${_pyver}-" '' '='
 # vercmp doesn't consider 2.4 and 2.4.0 equal
-_pydepends=("${_pydepends[@]//python-cement=2.4/python-cement=2.4.0}")
-unset -f _pyrequires
+_pydepends=("${_pydepends[@]//-cement=2.4/-cement=2.4.0}")
+unset -f _fn_pydepends
 
 build() {
   set -u
   cd "${_srcdir}"
-  python setup.py build
+  ${_pyver} setup.py build
   # Fix the location of the dev tools
   #sed -i 's/LinuxClimbUpDepth\s=.*$/LinuxClimbUpDepth = 0/g' \
   #  ${srcdir}/AWS-ElasticBeanstalk-CLI-${pkgver}/eb/linux/python3/scli/constants.py
@@ -95,17 +101,18 @@ build() {
 check() {
   set -u
   cd "${_srcdir}"
-  python setup.py test --verbose
+  # If pip is installed, some package tests download missing packages. We can't allow that.
+  #${_pyver} setup.py test --verbose
   set +u
 }
 
-package_aws-eb-cli() {
+package() {
   set -u
-  depends=('python' "${_pydepends[@]}")
-  conflicts=("python2-${pkgbase}")
+  depends=("${_pyver}" "${_pydepends[@]}")
+  conflicts=("${_pyverother}-${pkgbase}")
   cd "${_srcdir}"
-  python 'setup.py' install --root "${pkgdir}"
-  install -Dm644 'LICENSE.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  ${_pyver} 'setup.py' install --root "${pkgdir}"
+  install -Dpm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 
   # Install the files into /opt since they depend on a non-standard directory
   # structure.
@@ -118,17 +125,5 @@ package_aws-eb-cli() {
   #ln -s ../../opt/aws-eb-cli/eb ${pkgdir}/usr/bin
   set +u
 }
-
-package_python2-aws-eb-cli() {
-  set -u
-  depends=('python2' "${_pydepends[@]//python-/python2-}")
-  conflicts=("${pkgbase}")
-  cd "${_srcdir}"
-  python2 setup.py install --root="${pkgdir}"
-  install -Dm644 'LICENSE.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  set +u
-}
 set +u
-
-
-set +u
+# vim:set ts=2 sw=2 et:
