@@ -1,15 +1,14 @@
-# Maintainer: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
-# Contributor: Que Quotion <quequotion@mailinator.com>
+# Maintainer: Que Quotion <quequotion@mailinator.com>
 # Contributor: Xiao-Long Chen <chenxiaolongcxl.epac.to>
 
 pkgname=indicator-powersave
 pkgver=r97
-pkgrel=4
+pkgrel=3
 pkgdesc="User discretion power managment utility forked from CPU frequency indicator (bzr version)"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"
 license=('GPL')
-depends=('cpupower' 'libappindicator-gtk3' 'python-dbus' 'python-gobject' 'pygtk' 'polkit-gnome' 'gtk-update-icon-cache')
+depends=('cpupower' 'libappindicator3' 'python2' 'python2-dbus' 'python2-gobject' 'pygtk' 'polkit-gnome')
 makedepends=('python2-distutils-extra')
 provides=('indicator-cpufreq' 'indicator-cpufreq-bzr')
 conflicts=('indicator-cpufreq' 'indicator-cpufreq-bzr')
@@ -28,6 +27,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd indicator-cpufreq
+
   printf "r%s" "$(bzr revno)"
 }
 
@@ -40,9 +40,9 @@ prepare() {
 
 package() {
   cd "${srcdir}/indicator-cpufreq"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 
-  install -dm700 -o polkitd:root "${pkgdir}/usr/share/polkit-1/rules.d/"
+  install -dm700 -o polkitd "${pkgdir}/usr/share/polkit-1/rules.d/"
   install -m644 "${srcdir}/indicator-cpufreq.rules" \
     "${pkgdir}/usr/share/polkit-1/rules.d/"
 
@@ -51,16 +51,4 @@ package() {
     install -Dm755 "${srcdir}/throttle" "${pkgdir}/usr/bin/throttle"
   fi
   install -Dm644 "${srcdir}/throttle-cut.service" "${pkgdir}/etc/systemd/system/throttle-cut.service"
-}
-
-post_install() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-}
-
-post_upgrade() {
-	post_install $1
-}
-
-post_remove() {
-	post_install $1
 }

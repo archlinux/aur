@@ -8,7 +8,7 @@
 polkit.addRule(function(action, subject) {
   if ((action.id == "com.ubuntu.indicatorcpufreqselector.setthrottle")
     && subject.local
-    && subject.active {
+    && subject.active) {
     return polkit.Result.YES;
   }
 });
@@ -16,7 +16,7 @@ polkit.addRule(function(action, subject) {
 polkit.addRule(function(action, subject) {
   if ((action.id == "com.ubuntu.indicatorcpufreqselector.setfrequencyscaling")
     && subject.local
-    && subject.active {
+    && subject.active) {
     return polkit.Result.YES;
   }
 });
@@ -24,7 +24,7 @@ polkit.addRule(function(action, subject) {
 polkit.addRule(function(action, subject) {
   if ((action.id == "com.ubuntu.indicatorcpufreqselector.setpsturbo")
     && subject.local
-    && subject.active {
+    && subject.active) {
     return polkit.Result.YES;
   }
 });
@@ -32,7 +32,7 @@ polkit.addRule(function(action, subject) {
 polkit.addRule(function(action, subject) {
   if ((action.id == "com.ubuntu.indicatorcpufreqselector.sethyperthreads")
     && subject.local
-    && subject.active {
+    && subject.active) {
     return polkit.Result.YES;
   }
 });
@@ -40,7 +40,7 @@ polkit.addRule(function(action, subject) {
 polkit.addRule(function(action, subject) {
   if ((action.id == "com.ubuntu.indicatorcpufreqselector.setgputhrottle")
     && subject.local
-    && subject.active {
+    && subject.active) {
     return polkit.Result.YES;
   }
 });
