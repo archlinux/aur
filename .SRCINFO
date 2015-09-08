@@ -6,6 +6,7 @@ pkgbase = hless-bin
 	arch = x86_64
 	license = MIT
 	depends = python2-pygments
+	depends = libpcl
 	provides = hless
 	conflicts = hless-git
 	source = https://github.com/jreinert/hless/releases/download/v0.1.0/hless
