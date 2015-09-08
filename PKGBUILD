@@ -3,7 +3,7 @@
 
 _pkgname=papyros-shell
 pkgname=$_pkgname-git
-pkgver=0.0.5.r116.gd0f9aae
+pkgver=0.0.5.r124.gc6ce8cf
 pkgrel=1
 pkgdesc="Wayland and QtQuick based desktop shell for Papyros"
 arch=("i686" "x86_64")
