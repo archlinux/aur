@@ -1,0 +1,14 @@
+pkgbase = weatherboy
+	pkgdesc = Lightweight weather GTK tray application.
+	pkgver = 20141027
+	pkgrel = 4
+	url = https://github.com/decayofmind/weatherboy
+	arch = any
+	license = GPL
+	depends = python2
+	depends = gtk2
+	source = https://raw.githubusercontent.com/decayofmind/weatherboy/r-20141027/weatherboy.py
+	md5sums = SKIP
+
+pkgname = weatherboy
+
