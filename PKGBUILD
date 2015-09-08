@@ -1,6 +1,6 @@
 pkgname=ocaml-extlib
 pkgver=1.7.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Extends the OCaml standard library"
 arch=('i686' 'x86_64')
 url="https://github.com/ygrek/ocaml-extlib"
@@ -11,7 +11,7 @@ source=(https://github.com/ygrek/ocaml-extlib/archive/${pkgver}.tar.gz)
 options=('staticlibs')
 
 build() {
-  cd ${srcdir}/${pkgver}
+  cd ${srcdir}/ocaml-extlib-${pkgver}
 
   make all
   make opt
@@ -27,7 +27,7 @@ build() {
 package () {
   _DOCDIR="${pkgdir}/usr/share/doc/ocaml-extlib"
 
-  cd ${srcdir}/${pkgver}
+  cd ${srcdir}/ocaml-extlib-${pkgver}
 
   export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
   mkdir -p "${OCAMLFIND_DESTDIR}"
