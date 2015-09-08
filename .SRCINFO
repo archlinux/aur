@@ -1,0 +1,27 @@
+pkgbase = python2-androguard-git
+	pkgdesc = Python framework for Android application analysis.
+	pkgver = 714.e4ccf50
+	pkgrel = 1
+	url = https://code.google.com/p/androguard/
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	optdepends = ipython2: interactive analysis support
+	optdepends = python2-pygments: color support
+	optdepends = pydot: CFG support
+	optdepends = python2-magic: file identification support
+	optdepends = sparsehash: elsim support
+	optdepends = muparser: elsim support
+	optdepends = snappy: elsim support
+	optdepends = bzip2: elsim support
+	optdepends = zlib: elsim support
+	optdepends = psyco2-svn: acceleration support
+	optdepends = python2-pyside: GUI
+	options = !emptydirs
+	source = androguard::git://github.com/androguard/androguard.git
+	sha1sums = SKIP
+
+pkgname = python2-androguard-git
+
