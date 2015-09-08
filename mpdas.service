@@ -1,0 +1,9 @@
+[Unit]
+Description=AudoScrobbler client for MPD
+After=mpd.service
+
+[Service]
+ExecStart=/usr/bin/mpdas
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+pkgbase = mpdas
+	pkgdesc = An AudioScrobbler client for MPD written in C++.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://50hz.ws
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libmpdclient
+	depends = curl
+	backup = etc/mpdasrc
+	source = https://github.com/hrkfdn/mpdas/archive/0.4.0.tar.gz
+	source = mpdas.service
+	md5sums = 72df49bdf5094e8964619c11ae65a916
+	md5sums = 472cb88288e6e8eea828143e841c1d2d
+
+pkgname = mpdas
+
