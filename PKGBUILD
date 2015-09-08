@@ -5,9 +5,10 @@
 
 pkgname=cargo-bin
 pkgrel=1
-pkgver=20150825
+pkgver=20150908
 pkgdesc="Cargo downloads your Rust project's dependencies and compiles your project."
 url="http://crates.io/"
+conflicts=('cargo')
 provides=('cargo')
 arch=('x86_64' 'i686')
 license=('APACHE' 'MIT')
