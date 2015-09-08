@@ -1,6 +1,6 @@
 pkgbase = valum-git
 	pkgdesc = Web micro-framework written in Vala
-	pkgver = r445.ea78943
+	pkgver = r519.cea929a
 	pkgrel = 1
 	url = https://github.com/valum-framework/valum
 	arch = i686

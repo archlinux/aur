@@ -1,6 +1,6 @@
 # Maintainer: Philipp Trommler <ph.trommler@gmail.com>
 pkgname=valum-git
-pkgver=r445.ea78943
+pkgver=r519.cea929a
 pkgrel=1
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
@@ -44,5 +44,5 @@ package() {
 	cd "valum"
 	DESTDIR="$pkgdir" ./waf install
 	install -Dm644 vapi/ctpl.vapi vapi/fcgi.vapi "$pkgdir/usr/share/vala/vapi/"
-	install -Dm644 LGPL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
