@@ -1,0 +1,16 @@
+pkgbase = tidb-git
+	pkgdesc = Distributed SQL database inspired by the desing of Google F1
+	pkgver = 8920a55
+	pkgrel = 1
+	url = https://github.com/pingcap/tidb
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	makedepends = godep
+	depends = glibc
+	source = git+https://github.com/pingcap/tidb.git
+	sha256sums = SKIP
+
+pkgname = tidb-git
+
