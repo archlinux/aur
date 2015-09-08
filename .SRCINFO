@@ -1,6 +1,6 @@
 pkgbase = libsigrok-git
 	pkgdesc = Client software that supports various hardware logic analyzers, core library (git version)
-	pkgver = libsigrok.0.2.1.r1681.g1e76596
+	pkgver = 0.2.1.r1681.g1e76596
 	pkgrel = 1
 	url = http://www.sigrok.org/wiki/Libsigrok
 	arch = armv6h

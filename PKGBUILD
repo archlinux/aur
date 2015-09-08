@@ -4,7 +4,7 @@
 
 _gitname='libsigrok'
 pkgname="${_gitname}-git"
-pkgver=libsigrok.0.2.1.r1681.g1e76596
+pkgver=0.2.1.r1681.g1e76596
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
   cd "${srcdir}/${_gitname}"
   (
     set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/${_gitname}.//" ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
