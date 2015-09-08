@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A shell script static analysis tool: Stable Release"
 arch=(i686 x86_64)
 url=http://www.shellcheck.net/
-license=('AGPL3')
+license=('GPL')
 depends=('gmp')
 makedepends=('ghc'
              'haskell-json'
