@@ -2,11 +2,11 @@
 
 pkgname='virt-viewer'
 pkgver='2.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Lightweight interface for interacting with the graphical display of virtualized guest OS'
 arch=('any')
 url='http://virt-manager.org/'
-depends=('spice' 'libvirt' 'libxml2' 'spice-gtk3' 'spice-protocol')
+depends=('spice' 'libvirt' 'libxml2' 'spice-gtk3' 'spice-protocol' 'gtk-vnc')
 makedepends=('libtool' 'intltool')
 license=('GPL')
 source=("https://fedorahosted.org/released/${pkgname}/${pkgname}-${pkgver}.tar.gz")
