@@ -6,6 +6,7 @@ pkgbase = hless-git
 	arch = any
 	makedepends = crystal-git
 	depends = python2-pygments
+	depends = libpcl
 	provides = hless
 	conflicts = hless-bin
 	source = hless-git::git+https://github.com/jreinert/hless.git

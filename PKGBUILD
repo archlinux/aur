@@ -7,7 +7,7 @@ pkgdesc='less with syntax highlighting'
 arch=(any)
 url='https://github.com/jreinert/hless'
 licence=('MIT')
-depends=(python2-pygments)
+depends=(python2-pygments libpcl)
 makedepends=(crystal-git)
 
 source=("${pkgname}::git+https://github.com/jreinert/hless.git")
