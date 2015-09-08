@@ -1,6 +1,6 @@
 pkgbase = tarantool-git
 	pkgdesc = an in-memory database designed to store the most volatile and highly accessible web content
-	pkgver = 1.6.5.r253.g48317c8
+	pkgver = 1.6.6.r175.gf4f4e6d
 	pkgrel = 1
 	url = http://www.tarantool.org
 	install = tarantool.install
@@ -9,19 +9,19 @@ pkgbase = tarantool-git
 	license = BSD
 	checkdepends = python2-daemon
 	checkdepends = python2-yaml
+	checkdepends = python2-msgpack
+	checkdepends = python2-tarantool
 	makedepends = git
 	makedepends = cmake
 	depends = readline
 	depends = ncurses
 	source = git://github.com/tarantool/tarantool.git
 	source = git://github.com/tarantool/luajit.git
-	source = git://github.com/tarantool/tarantool-python.git
-	source = git://github.com/msgpack/msgpack-python.git
 	source = git://github.com/tarantool/msgpuck.git
 	source = git://github.com/rtsisyk/luafun.git
-	source = git://github.com/tarantool/sophia.git#branch=dev
+	source = git://github.com/tarantool/sophia.git#branch=current
+	source = git://github.com/tarantool/test-run.git
 	source = tarantool.systemd
-	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP

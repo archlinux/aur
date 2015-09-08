@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool-git
-pkgver=1.6.5.r253.g48317c8
+pkgver=1.6.6.r175.gf4f4e6d
 pkgrel=1
 pkgdesc='an in-memory database designed to store the most volatile and highly accessible web content'
 arch=(i686 x86_64)
@@ -11,17 +11,15 @@ license=(BSD)
 install=tarantool.install
 depends=(readline ncurses)
 makedepends=(git cmake)
-checkdepends=(python2-daemon python2-yaml)
+checkdepends=(python2-daemon python2-yaml python2-msgpack python2-tarantool)
 source=(git://github.com/tarantool/tarantool.git
         git://github.com/tarantool/luajit.git
-        git://github.com/tarantool/tarantool-python.git
-        git://github.com/msgpack/msgpack-python.git
         git://github.com/tarantool/msgpuck.git
         git://github.com/rtsisyk/luafun.git
-        git://github.com/tarantool/sophia.git#branch=dev
+        git://github.com/tarantool/sophia.git#branch=current
+        git://github.com/tarantool/test-run.git
         tarantool.systemd)
 sha1sums=('SKIP'
-          'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -34,24 +32,16 @@ pkgver() {
   git describe | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
-prepare() {
-  cd tarantool
-  find . -type f -exec sed \
-      -e 's_^#!/usr/bin/env python$_&2_' \
-      -i {} \;
-}
-
 build() {
   cd tarantool
 
   # tarantool uses git submodule, handle this
   git submodule init
   git config -f .gitmodules 'submodule.third_party/luajit.url' "$srcdir/luajit"
-  git config -f .gitmodules 'submodule.test/lib/tarantool-python.url' "$srcdir/tarantool-python"
-  git config -f .gitmodules 'submodule.test/lib/msgpack-python.url' "$srcdir/msgpack-python"
   git config -f .gitmodules 'submodule.src/lib/msgpuck.url' "$srcdir/msgpuck"
-  git config -f .gitmodules 'submodule.sophia.url' "$srcdir/sophia"
   git config -f .gitmodules 'submodule.third_party/luafun.url' "$srcdir/luafun"
+  git config -f .gitmodules 'submodule.sophia.url' "$srcdir/sophia"
+  git config -f .gitmodules 'submodule.test-run.url' "$srcdir/test-run"
   git submodule sync
   git submodule update
 
