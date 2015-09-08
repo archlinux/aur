@@ -1,5 +1,5 @@
 pkgbase = aws-eb-cli
-	pkgdesc = The API and CLI tools that provide access to Amazon Elastic Beanstalk
+	pkgdesc = The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli
 	pkgver = 3.5.2
 	pkgrel = 1
 	url = http://aws.amazon.com/code/6752709412171743
