@@ -1,0 +1,37 @@
+pkgbase = cgminer-gpu
+	pkgdesc = Multi-threaded multi-pool GPU, FPGA and ASIC miner for bitcoin and derivative coins. 3.7.2 was the last GPU version.
+	pkgver = 3.7.2
+	pkgrel = 7
+	url = http://forum.bitcoin.org/index.php?topic=28402.0
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = opencl-headers
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconfig
+	makedepends = libtool
+	makedepends = yasm
+	depends = curl
+	depends = libcl
+	depends = libusbx
+	depends = jansson
+	depends = libusb-compat
+	optdepends = ncurses: For ncurses formatted screen output
+	optdepends = opencl-nvidia: OpenCL implementation for NVIDIA
+	optdepends = opencl-catalyst: OpenCL implementation for AMD
+	provides = cgminer
+	conflicts = cgminer-git
+	conflicts = cgminer
+	conflicts = cgminer-git-adl
+	source = https://github.com/ckolivas/cgminer/archive/v3.7.2.tar.gz
+	source = cgminer.service
+	source = cgminer.conf.d
+	source = system-jansson-libusb.patch
+	sha512sums = aacee4ca47c5da18ae15f9bc245640d44a6b39264abc357729e2cb5d7ca049710cc635457f2a76a2c97f6bbebfec81bbe6675dacf366bf870a14b5a0b12d9963
+	sha512sums = 3317b60c6b1f14c47d8ee636113ef40a4023ab14054129de80a37947b381fd2b647a7053f4e1bb639efa225a514e862fa531908714c34040dda2d6221dde7f5f
+	sha512sums = 99c38bc395848f9712ce172343d31f5c60f5d8ac1cfe2f48df8f3ec6c488fc275763a79c5ef36b99f32faa465b5a65284b38e8a63ef9b144075ee13971313b41
+	sha512sums = 9083fd18b64f5d1260d2be1d564e8bf9435b2753a621ffc87b56c40fb30030477619d3a17e29c241a2c951c1ee7e4bf3091135fd0be0b1963e19f79c01d33006
+
+pkgname = cgminer-gpu
+
