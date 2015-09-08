@@ -1,0 +1,22 @@
+pkgbase = sgminer
+	pkgdesc = A multi-threaded multi-pool GPU miner for scrypt-based coins.
+	pkgver = 5.1.1
+	pkgrel = 2
+	url = https://github.com/veox/sgminer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = opencl-headers
+	depends = curl
+	depends = libcl
+	depends = libtool
+	depends = pkg-config
+	optdepends = ncurses: For ncurses formatted screen output
+	optdepends = opencl-nvidia: OpenCL implementation for NVIDIA
+	optdepends = opencl-catalyst: OpenCL implementation for AMD
+	provides = sgminer
+	source = https://github.com/sgminer-dev/sgminer/archive/5.1.1.tar.gz
+	md5sums = 43ff41d5443ee0591d8f59e49c6621e2
+
+pkgname = sgminer
+
