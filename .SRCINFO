@@ -6,6 +6,7 @@ pkgbase = python2-pywebdav
 	arch = any
 	license = GPL3
 	depends = python2
+	depends = python2-setuptools
 	provides = PyWebDAV
 	conflicts = zsi
 	replaces = zsi
