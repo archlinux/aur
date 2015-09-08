@@ -1,29 +1,33 @@
-# Maintainer: Thomas Krug <t.krug@elektronenpumpe.de>
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 # Contributor: veox <veox at wemakethings dot net>
 
-pkgname=libsigrok-git
-_pkgname=libsigrok
-pkgver=3386.1e76596
+_gitname='libsigrok'
+pkgname="${_gitname}-git"
+pkgver=libsigrok.0.2.1.r1681.g1e76596
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library (git version)"
-arch=('i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://www.sigrok.org/wiki/Libsigrok"
 license=('GPL3')
 depends=('libzip' 'libftdi-compat' 'alsa-lib' 'libserialport-git' 'glibmm')
 makedepends=('git' 'autoconf-archive')
-provides=('libsigrok')
-conflicts=('libsigrok')
-source=("git://sigrok.org/$_pkgname")
-md5sums=('SKIP')
+conflicts=("${_gitname}")
+provides=("${_gitname}")
+source=("git://sigrok.org/${_gitname}")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "${srcdir}/${_gitname}"
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_gitname}"
 
   ./autogen.sh
   ./configure --prefix=/usr --disable-java --disable-python
@@ -32,9 +36,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_gitname}"
 
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set et sw=2 sts=2 tw=80:
