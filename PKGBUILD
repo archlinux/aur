@@ -1,7 +1,8 @@
-# Maintainer: Vincent Demeester <vincent@sbr.io>
+# Maintainer: Peter Hoeg <first name at last name dot com>
+# Contributer: Vincent Demeester <vincent@sbr.io>
 # Contributer: Alex Ogier <alex.ogier@gmail.com>
 pkgname=ruby-build
-pkgver=20150519
+pkgver=20150818
 pkgrel=1
 pkgdesc="Compile and install Ruby"
 arch=('any')
@@ -9,7 +10,7 @@ url="http://github.com/sstephenson/ruby-build"
 license=('MIT')
 optdepends=('git: install ruby from git')
 source=($url/tarball/v$pkgver)
-md5sums=('fc4bd4ef358235ab6f2befb23251f399')
+sha1sums=('60a7a218d81c11f8d3753bc3ebe2f0ebdd4f95e8')
 
 build() {
     cd $srcdir
