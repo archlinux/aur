@@ -1,15 +1,17 @@
-# Maintainer: Max Meyer <dev@fedux.org>
+# Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
+# Contributor: Max Meyer <dev@fedux.org>
+
 pkgname=systemd-docker
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Wrapper for \"docker run\" to handle systemd quirks "
 arch=("x86_64" "i686")
-url="https://github.com/ibuildthecloud/systemd-docker"
+url="https://github.com/kageurufu/systemd-docker"
 license=('Apache')
 makedepends=(go)
 changelog=
-source=("https://github.com/ibuildthecloud/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('50ec1876113ae349d38130297dd7e8de4c8d832ea2ac0e6089f3106a331c7e41')
+source=("https://github.com/kageurufu/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('76aa533ed8575c77dc1acd12adf1ad874b41edc51ca802f392f6f3e687942da5')
 
 build() {
     cd "$pkgname-$pkgver"
