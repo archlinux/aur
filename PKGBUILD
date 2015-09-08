@@ -23,7 +23,7 @@ source=(http://patches.freeiz.com/${pkgname}/release/src/${pkgname}-${pkgver}.ta
         topal-1.patch
         topal-2.patch)
 md5sums=("043b67666af73b26f9627ad97e2aaf92"
-         "d2c2576b58f65566ccf1a9d5add0f14a"
+         "9e9de69f9334decb1d75991ec67e22f9"
          "ce47b232339b251c74dc56de73513101"
          "e53177e123ec68fc77d55f60cd9eba9f")
 
