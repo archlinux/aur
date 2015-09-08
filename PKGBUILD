@@ -1,6 +1,6 @@
 # Maintainer: K1412 <jonathan@opensides.be>
 pkgname=fusiondirectory-plugin-database-connector
-pkgver=1.0.8.7
+pkgver=1.0.8.9
 pkgrel=1
 pkgdesc="Plugin that add database-connector for FusionDirectory."
 arch=('any')
