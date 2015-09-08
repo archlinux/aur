@@ -11,8 +11,8 @@
 
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
-pkgver=11.0.0_devel.71858.a97f1b6
-pkgrel=3
+pkgver=11.1.0_devel.72615.458e55d
+pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
@@ -76,7 +76,7 @@ build () {
 
 package_opencl-mesa-git () {
   pkgdesc="OpenCL support for AMD/ATI Radeon Mesa drivers"
-  depends=('expat' 'libdrm' 'elfutils' 'libxfixes' 'libxext' 'ocl-icd' 'libclc' 'clang-svn' 'llvm-libs-svn' 'nettle' "mesa-git=${pkgver}")
+  depends=('libxfixes' 'libxext' 'ocl-icd' 'libclc' 'nettle' "mesa-git=${pkgver}")
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=("opencl-mesa=$(_mesaver)")
   replaces=('opencl-mesa')
@@ -95,7 +95,7 @@ package_opencl-mesa-git () {
 
 package_libva-mesa-driver-git() {
   pkgdesc="VA-API implementation for gallium"
-  depends=('libdrm' 'libx11' 'llvm-libs-svn' 'expat' 'elfutils' 'nettle' "mesa-git=${pkgver}")
+  depends=('nettle' "mesa-git=${pkgver}")
   provides=("libva-mesa-driver=$(_mesaver)")
   conflicts=('libva-mesa-driver')
 
@@ -109,7 +109,7 @@ package_libva-mesa-driver-git() {
 
 package_mesa-vdpau-git() {
   pkgdesc="Mesa VDPAU drivers"
-  depends=('libdrm' 'libx11' 'llvm-libs-svn' 'expat' 'elfutils' 'nettle' "mesa-git=${pkgver}")
+  depends=('nettle' "mesa-git=${pkgver}")
   provides=("mesa-vdpau=$(_mesaver)")
   replaces=('mesa-vdpau')
   conflicts=('mesa-vdpau')
@@ -124,8 +124,9 @@ package_mesa-vdpau-git() {
 package_mesa-git () {
   pkgdesc="an open-source implementation of the OpenGL specification"
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'systemd' 'elfutils'
-           'libomxil-bellagio' 'expat' 'libtxc_dxtn' 'llvm-libs-svn')
-  optdepends=('opengl-man-pages: for the OpenGL API man pages'
+           'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn')
+  optdepends=('nettle: for GLX-TLS support'
+              'opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-git: for accelerated video playback'
               'libva-mesa-driver-git: for accelerated video playback')
   provides=("mesa=$(_mesaver)" 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
