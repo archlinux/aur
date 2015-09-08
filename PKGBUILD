@@ -3,14 +3,12 @@
 pkgname=python2-pywebdav
 _pkgname=PyWebDAV
 pkgver=0.9.8
-pkgrel=4
+pkgrel=5
 pkgdesc="WebDAV library including a standalone server for python"
 url=http://code.google.com/p/pywebdav/
 arch=('any')
 license=(GPL3)
 provides=("$_pkgname")
-replaces=('zsi')
-conflicts=('zsi')
 depends=(
     'python2'
     'python2-setuptools'
