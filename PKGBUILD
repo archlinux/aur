@@ -40,8 +40,7 @@ optdepends=('python2: for Opensubtitles.org integration' 'ladspa: more audio plu
 
 source=(https://github.com/kokoko3k/xt7-player-mpv/archive/$pkgver.tar.gz 'license.txt')
 
-
-md5sums=('094ef3808ebfc05a95b0a6e858d54e7a'
+md5sums=('4351762984d4a72873de85279ed61851'
          'b6f1380e33b47d0ed95c7ba1b3f4ec73')
 
 build() {
