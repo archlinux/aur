@@ -53,7 +53,7 @@ fi
 pkgver=1.8.2
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
-pkgdesc='Universal Command Line Interface for Amazon Web Services.'
+pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
 arch=('any')
 url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
