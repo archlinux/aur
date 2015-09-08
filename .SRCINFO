@@ -1,6 +1,6 @@
 pkgbase = shellcheck
 	pkgdesc = A shell script static analysis tool: Stable Release
-	pkgver = 0.3.8
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://www.shellcheck.net/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = shellcheck
 	makedepends = haskell-quickcheck
 	makedepends = haskell-regex-tdfa
 	depends = gmp
-	source = https://github.com/koalaman/shellcheck/archive/v0.3.8.tar.gz
-	md5sums = 2eda0ca7060edb890bcf760a78fa4eff
+	source = https://github.com/koalaman/shellcheck/archive/v0.4.1.tar.gz
+	md5sums = 0b7bc5cd93314941d29cc205b702d700
 
 pkgname = shellcheck
 

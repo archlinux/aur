@@ -3,7 +3,7 @@
 # Contributor: Earnestly <zibeon@gmail.com>
 
 pkgname=shellcheck
-pkgver=0.3.8
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A shell script static analysis tool: Stable Release"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ makedepends=('ghc'
 	     'haskell-quickcheck'
 	     'haskell-regex-tdfa')
 source=("https://github.com/koalaman/shellcheck/archive/v$pkgver.tar.gz")
-md5sums=('2eda0ca7060edb890bcf760a78fa4eff')
+md5sums=('0b7bc5cd93314941d29cc205b702d700')
 
 prepare() {
 	cd "$pkgname-$pkgver"
