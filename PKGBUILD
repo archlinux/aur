@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts             # Build kernel with a different name
 _srcname=linux-3.18
-_pkgver=3.18.20
-_rtpatchver=rt18
+_pkgver=3.18.21
+_rtpatchver=rt19
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -30,9 +30,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar."{xz,sign}
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            '00bbeee2ead1c67d5603b86b688e37e328d471bc15415e8c4e806fc1b246aacf'
+            'fef6b8507c4a88b5b579016773faf1f4b1c78b2cc627e31101f244eeb1cf1895'
             'SKIP'
-            '48d3e21810dea8be43d79d384495afc058645478ce8fdf3266b4802bb8275627'
+            'aafffdad825384f43163b92cad321e24d95eeb8ce60fac0746ebdf8e79c0a19d'
             'SKIP'
             '3c876bd83489e56e62629fc09ce85391bef5ef94cb2feab7751841c221c000c6'
             '49202f4733bd9de254083a85d0a17390f78e68fc6e4bea9e91bfce7e8167349e'
