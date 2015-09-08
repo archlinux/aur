@@ -1,13 +1,14 @@
 pkgbase = nodejs-grunt-cli
 	pkgdesc = The grunt command line interface.
 	pkgver = 0.1.13
-	pkgrel = 6
+	pkgrel = 7
 	url = http://gruntjs.com/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
 	noextract = grunt-cli-0.1.13.tgz
+	options = !emptydirs
 	source = https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz
 	sha256sums = e639404d7b66ae2821edabc681104a1f035910ff20a2e21d67329c2a7674a443
 

@@ -5,7 +5,7 @@
 _npmname=grunt-cli
 pkgname=nodejs-$_npmname
 pkgver=0.1.13
-pkgrel=6
+pkgrel=7
 pkgdesc="The grunt command line interface."
 arch=('any')
 url="http://gruntjs.com/"
@@ -14,13 +14,14 @@ depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
 sha256sums=('e639404d7b66ae2821edabc681104a1f035910ff20a2e21d67329c2a7674a443')
+options=('!emptydirs')
 
 package() {
-  cd "$srcdir"
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 
-  rmdir "$pkgdir"/usr/etc
+  # It is not possible to package this inside a clean offline chroot due to
+  # NPM bug #2568.
+  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
