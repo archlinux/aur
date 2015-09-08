@@ -2,7 +2,7 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=r1859.547e22b
+pkgver=r1868.f1369d8
 pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
@@ -50,7 +50,7 @@ package() {
   #Install files
   cd $srcdir/$_buildname
   mkdir -p $pkgdir/usr/share/$_pkgname
-  cp -r JASP JASPR ./JASPEngine ./Resources $pkgdir/usr/share/$_pkgname/
+  cp -r JASP R-library JASPEngine Resources $pkgdir/usr/share/$_pkgname/
 
   #Install icon
   mkdir -p $pkgdir/usr/share/pixmaps/
