@@ -1,7 +1,7 @@
 # Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
 pkgname=opengrok
 pkgver=0.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A wicked fast source browser."
 url="http://opengrok.github.io/OpenGrok/"
 arch=('i686' 'x86_64')
@@ -10,18 +10,18 @@ license=('CDDL')
 depends=('tomcat8' 'ctags' 'sh')
 makedepends=('sed')
 source=(
-    "https://github.com/OpenGrok/OpenGrok/archive/${pkgver}.tar.gz"
+    "https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.tar.gz"
     'deploy.sh')
 sha1sums=(
-    '68a959ba5c5c23188e02f14ff023265111c86b36'
-    '69f98ff5aced0b06b8d2c4fb6cd48c9e82aaaea3')
+    '96a6a5d1888b802cdba15915b283db84439b83fd'
+    '79ac952c7b3c57232d21aa5e9b90f22f61098389')
 
 package() {
-	cd "${srcdir}/OpenGrok-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	
 	# OpenGrok script in /usr/bin
 	mkdir -p "${pkgdir}/usr/bin" || return 1
-	ln -s /opt/opengrok/OpenGrok "${pkgdir}/usr/bin/OpenGrok"
+	ln -s /opt/opengrok/bin/OpenGrok "${pkgdir}/usr/bin/OpenGrok"
 	
 	# copy everything
 	mkdir -p "${pkgdir}/opt/opengrok" || return 1
@@ -35,8 +35,8 @@ package() {
 		-e 's#SCRIPT_DIRECTORY=.*dirname.*#SCRIPT_DIRECTORY="/opt/opengrok/bin"#' \
 		-e '/Linux/s:commandName="ctags-exuberant":commandName="ctags":' \
 		-e '/DetermineWarDirectoryTomcat[(]/,/^[ \t]*}[ \t]*$/s#.*OPENGROK_TOMCAT_BASE.*#\t/opt/tomcat \\\n&#' \
-		-i "${pkgdir}/opt/opengrok/OpenGrok"
+		-i "${pkgdir}/opt/opengrok/bin/OpenGrok"
 	
-	install -m0755 "${srcdir}/deploy.sh" "${pkgdir}/opt/opengrok/tomcat-deploy-helper"
+	install -m0755 "${srcdir}/deploy.sh" "${pkgdir}/opt/opengrok/bin/tomcat-deploy-helper"
 }
 

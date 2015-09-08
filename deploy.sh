@@ -135,7 +135,7 @@ EXTRA_CONFIG_EOF
 ) || exit "$?"
 
 (
-	$EXEC cd /opt/opengrok
+	$EXEC cd /opt/opengrok/bin
 	$EXEC export OPENGROK_VERBOSE=true
 	$EXEC export OPENGROK_EXTRA_PARAMS="-w $URL"
 	$EXEC export OPENGROK_INSTANCE_BASE="${ROOTDIR}"
@@ -155,7 +155,7 @@ EXTRA_CONFIG_EOF
 			;;
 	esac
 	echo
-	echo "cd /opt/opengrok"
+	echo "cd /opt/opengrok/bin"
 	echo "export OPENGROK_VERBOSE=true"
 	echo "export OPENGROK_INSTANCE_BASE='${ROOTDIR}'"
 	echo "export OPENGROK_EXTRA_PARAMS='-w $URL'"
