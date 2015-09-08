@@ -3,14 +3,15 @@
 pkgbase=python-control
 pkgname=('python2-control' 'python-control')
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Implements basic operations for analysis and design of feedback control systems in Python"
 arch=('any')
 license=('BSD')
-url="http://sourceforge.net/projects/python-control"
+url="https://github.com/python-control/python-control"
 depends=('python-scipy'
          'python-matplotlib')
-makedepends=('python-setuptools' 'python2-setuptools' 'gcc-fortran')
+optdepends=('python-slycot-git: matrix equation support, model simplification tools, and state feedback')
+makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-nose' 'python2-nose')
 options=('staticlibs')
 source=("https://github.com/python-control/python-control/archive/${pkgver}.tar.gz"
@@ -38,6 +39,11 @@ build() {
   echo "Building Python3"
   cd ../python-control-$pkgver
   python setup.py build
+}
+
+check() {
+  cd python-control-$pkgver
+  python setup.py test
 }
 
 package_python2-control() {
