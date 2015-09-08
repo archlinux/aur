@@ -1,6 +1,6 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
-	pkgver = 20364
+	pkgver = 20365
 	pkgrel = 1
 	url = http://www.scribus.net
 	install = scribus-svn.install
