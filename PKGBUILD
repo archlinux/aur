@@ -1,45 +1,40 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=infamousplugins-git
-pkgver=262.87434ec
+pkgver=0.1
 pkgrel=1
 pkgdesc="A collection of open-source LV2 plugins"
 arch=('i686' 'x86_64')
 url="http://infamousplugins.sourceforge.net"
 license=('GPL2')
 groups=('lv2-plugins')
-depends=('glibc' 'fftw')
-makedepends=('git' 'qt4' 'lv2')
+depends=('fftw' 'ntk' 'zita-resampler')
+makedepends=('git' 'cmake' 'lv2')
 provides=('infamousplugins')
 conflicts=('infamousplugins')
-source=("${pkgname%-*}-code"::'git://github.com/ssj71/infamousPlugins.git')
+source=("${pkgname%-*}"::'git://github.com/ssj71/infamousPlugins.git')
 md5sums=('SKIP')
-_plugins="CellularAutomatonSynth EnvelopeFollower Hip2B Stuck PowerCut PowerUp EWham"
 
 pkgver() {
-    cd "$srcdir/${pkgname%-*}-code"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "$srcdir/${pkgname%-*}"
+    git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/${pkgname%-*}-code"
-    for plugin in $_plugins
-    do
-      qmake-qt4 -o src/$plugin/Makefile src/$plugin/$plugin.pro
-      make -C src/$plugin
-    done
-    gcc src/rule.c -o src/infamous-rule
-    make -C src/cheap_distortion
+    cd "$srcdir/${pkgname%-*}"
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+	make
+	cd ..
+	gcc src/rule.c -o src/infamous-rule
 }
 
 package() {
-    cd "$srcdir/${pkgname%-*}-code"
-    for plugin in $_plugins
-    do
-      make INSTALL_ROOT="$pkgdir" -C src/$plugin install
-    done
-    install -Dm755 src/infamous-rule "$pkgdir/usr/bin/infamous-rule"
-    make INSTALL_DIR="$pkgdir/usr/lib/lv2" -C src/cheap_distortion install
+    cd "$srcdir/${pkgname%-*}/build"
+	make DESTDIR="$pkgdir/" install
+	cd ..
+	install -Dm755 src/infamous-rule "$pkgdir/usr/bin/infamous-rule"
     install -Dm644 CHANGELOG "$pkgdir/usr/share/doc/${pkgname%-*}/CHANGELOG"
     install -Dm644 COPYING "$pkgdir/usr/share/doc/${pkgname%-*}/COPYING"
     install -Dm644 README  "$pkgdir/usr/share/doc/${pkgname%-*}/README"

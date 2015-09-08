@@ -1,6 +1,6 @@
 pkgbase = infamousplugins-git
 	pkgdesc = A collection of open-source LV2 plugins
-	pkgver = 262.87434ec
+	pkgver = 0.1
 	pkgrel = 1
 	url = http://infamousplugins.sourceforge.net
 	arch = i686
@@ -8,13 +8,14 @@ pkgbase = infamousplugins-git
 	groups = lv2-plugins
 	license = GPL2
 	makedepends = git
-	makedepends = qt4
+	makedepends = cmake
 	makedepends = lv2
-	depends = glibc
 	depends = fftw
+	depends = ntk
+	depends = zita-resampler
 	provides = infamousplugins
 	conflicts = infamousplugins
-	source = infamousplugins-code::git://github.com/ssj71/infamousPlugins.git
+	source = infamousplugins::git://github.com/ssj71/infamousPlugins.git
 	md5sums = SKIP
 
 pkgname = infamousplugins-git
