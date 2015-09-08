@@ -5,7 +5,7 @@ pkgdesc="Fax management backend with report functionality"
 arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
-depends=('fusiondirectory>=1.0.8.8' 'fusiondirectory-plugin-systems' 'mysql-server' 'mysql-client')
+depends=('fusiondirectory>=1.0.8.9')
 
 install=fusiondirectory-plugin-fax.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
