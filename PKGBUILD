@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sddm
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
 url='http://github.com/sddm/sddm'
@@ -13,17 +13,11 @@ makedepends=('cmake' 'python-docutils' 'qt5-tools')
 install="${pkgname}.install"
 backup=('usr/share/sddm/scripts/Xsetup')
 provides=('display-manager')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
-        kubuntu_dbus-config-rename.patch)
-md5sums=('e110a7683867400dc9484d4744fd41dd'
-         '7c2934003e61c46d1d82d3d9a93ed35b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('e3261ac93a50c71c973cc79b85387765')
 
 prepare() {
   mkdir -p build
-
-  cd $pkgname-$pkgver
-  # FS#42445
-  patch -p1 -i ../kubuntu_dbus-config-rename.patch
 }
 
 build() {
@@ -32,6 +26,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
+        -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=ON
   make
 }
