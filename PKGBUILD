@@ -2,7 +2,7 @@
 # Contributor: Gordin <9ordin @t gmail d@t com>
 
 pkgname=screenkey
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python2' 'pygtk' 'libx11')
 makedepends=('python2-distutils-extra' 'python2-setuptools')
 source=("https://github.com/wavexx/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('d0b69ef75b1c220bc299552f7918b884927a3ef7d10bf5e848ae7dd76a82f973')
+sha256sums=('c832cadb5ef9179dab6f031435c6279819d1a1982c5eead28cecbeb69ad5c2fe')
 
 build() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
