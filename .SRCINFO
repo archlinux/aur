@@ -1,0 +1,21 @@
+pkgbase = swfdec
+	pkgdesc = Free library for decoding and rendering Flash animations
+	pkgver = 0.8.4
+	pkgrel = 3
+	url = http://swfdec.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gtk-doc>=1.6
+	depends = gtk2>=2.14.6
+	depends = libsoup>=2.24.2.1
+	depends = alsa-lib>=1.0.18
+	depends = liboil>=0.3.15
+	depends = gstreamer0.10-base-plugins>=0.10.15
+	optdepends = gstreamer0.10-ffmpeg: most common audio/video format for internet flash
+	options = !libtool
+	source = http://swfdec.freedesktop.org/download/swfdec/0.8/swfdec-0.8.4.tar.gz
+	md5sums = aece501d0e73f3e564200a44ec03c385
+
+pkgname = swfdec
+
