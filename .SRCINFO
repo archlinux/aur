@@ -1,6 +1,6 @@
 pkgbase = auctex-git
 	pkgdesc = TeX/LaTeX writing environment for Emacs - git checkout
-	pkgver = 11.88.180.g0377238
+	pkgver = 11.88.182.g69004bc
 	pkgrel = 1
 	url = http://savannah.gnu.org/projects/auctex
 	install = auctex.install
