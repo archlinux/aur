@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 depends=('kglobalaccel' 'knotifications')
 makedepends=('qt5-tools')
 optdepends=('flashplugin: needed for Deezer, MixCloud, SoundCloud Music Service')
+conflicts=('mellowplayer')
 source=("https://github.com/ColinDuquesnoy/MellowPlayer/tarball/master/MellowPlayer-${pkgver}.tar.gz")
 md5sums=('423620354f5534de16fcc0e3f3b4794a')
 
