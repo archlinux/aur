@@ -1,12 +1,13 @@
 pkgbase = tzupdate
 	pkgdesc = Set the system timezone based on IP geolocation
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/cdown/tzupdate
 	arch = any
 	license = ISC
 	makedepends = python-setuptools
 	depends = python
+	depends = python-requests
 	source = https://github.com/cdown/tzupdate/archive/0.4.0.zip
 	md5sums = c2944582e3a4829db64330bd9d3dbca1
 
