@@ -12,9 +12,9 @@ makedepends=('sed')
 source=(
     "https://github.com/OpenGrok/OpenGrok/archive/${pkgver}.tar.gz"
     'deploy.sh')
-md5sums=(
-    'a7d6795aea449e7f0e546ca79eb83b06'
-    'f87f6ebdd505ba1ce5a7de501a521938')
+sha1sums=(
+    '68a959ba5c5c23188e02f14ff023265111c86b36'
+    '69f98ff5aced0b06b8d2c4fb6cd48c9e82aaaea3')
 
 package() {
 	cd "${srcdir}/OpenGrok-${pkgver}"
