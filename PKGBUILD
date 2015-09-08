@@ -23,6 +23,6 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  python2 setup.py install --root=$pkgdir
+  python2 setup.py install --root=$pkgdir --optimize=1
   install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
