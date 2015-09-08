@@ -4,30 +4,43 @@
 # Package Source: https://github.com/flaccid/archlinux-packages/blob/master/python-jmespath/PKGBUILD
 
 set -u
-pkgname='python-jmespath'
-_pkgname='jmespath.py'
+_pyver="python"
+_pybase='jmespath'
+pkgname="${_pyver}-${_pybase}"
 pkgver='0.7.1'
 pkgrel='1'
-pkgdesc='JMESPath allows you to declaratively specify how to extract elements from a JSON document.'
+pkgdesc='allows you to declaratively specify how to extract elements from a JSON document.'
 arch=('any')
-url='https://github.com/boto/jmespath'
-license=('custom')
-depends=(
-  'python'
-)
-makedepends=('python-setuptools')
-source=("https://github.com/boto/jmespath/archive/${pkgver}.tar.gz")
+#url="https://pypi.python.org/pypi/${_pybase}/"
+url="https://github.com/boto/${_pybase}"
+license=('Apache') # Apache License 2.0
+makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
+_srcdir="${_pybase}.py-${pkgver}"
+_verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
+source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('7d158a87b3629e216f6169409380801d7b1f7d2313485dcc20069882314ce9f9')
+
+build() {
+  set -u
+  cd "${_srcdir}"
+  ${_pyver} setup.py build
+  set +u
+}
+
+check() {
+  set -u
+  cd "${_srcdir}"
+  # If pip is installed, some package tests download missing packages. We can't allow that.
+  #${_pyver} setup.py test --verbose
+  set +u
+}
 
 package() {
   set -u
-  cd "${_pkgname}-${pkgver}"
-
-  python setup.py install --root="${pkgdir}"
-
-  # do not include the tests/ generated from the install
-  # There aren't any test and this line wouldn't work if there were
-  # rm -Rfv "${pkgdir}/usr/lib/python*/site-packages/tests"
+  depends=("${_pyver}") # "${_pydepends[@]}")
+  cd "${_srcdir}"
+  ${_pyver} setup.py install --root="${pkgdir}"
+  install -Dpm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   set +u
 }
 set +u
