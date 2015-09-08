@@ -4,13 +4,14 @@
 _pkgname=libmodplug
 pkgname=lib32-${_pkgname}
 pkgver=0.8.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A MOD playing library (32 bit)"
 arch=('x86_64')
 url="http://modplug-xmms.sourceforge.net/"
 license=('custom')
 depends=('lib32-gcc-libs' "${_pkgname}")
-source=("http://downloads.sourceforge.net/modplug-xmms/${_pkgname}-${pkgver}.tar.gz")
+source=("http://downloads.sourceforge.net/project/modplug-xmms/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+#source=("http://downloads.sourceforge.net/modplug-xmms/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('5f30241db109d647781b784e62ddfaa1')
 
 
