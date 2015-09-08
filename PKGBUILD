@@ -2,8 +2,8 @@
 
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-gcc
-pkgver=4.9.1
-pkgrel=3
+pkgver=4.9.3
+pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
