@@ -2,7 +2,7 @@
 
 pkgname=python-parsedatetime
 _pkgname=parsedatetime
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Parse human-readable date/time strings."
 arch=('any')
@@ -22,4 +22,4 @@ package() {
   cd "${_pkgname}-$pkgver"
   python setup.py install --root="$pkgdir"
 }
-md5sums=('3aca729761be5259a508ed184df73c68')
+md5sums=('e72720f9cd638bb9bbb3b616bc2508d4')
