@@ -1,0 +1,19 @@
+pkgbase = jekyll-helper-git
+	pkgdesc = A GUI for the static website generator Jekyll.
+	pkgver = 0
+	pkgrel = 1
+	url = https://excaliburzero.github.io/jekyll-helper/
+	install = jekyll-helper.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-distutils-extra
+	depends = python2
+	depends = dconf
+	provides = jekyll-helper
+	conflicts = jekyll-helper
+	source = git://github.com/ExcaliburZero/jekyll-helper.git
+	md5sums = SKIP
+
+pkgname = jekyll-helper-git
+
