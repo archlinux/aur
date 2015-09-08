@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=owncloud-app-news
-pkgver=6.0.1
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="An RSS/Atom feed reader"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('owncloud')
 makedepends=()
 options=('!strip')
 source=("https://github.com/owncloud/news/archive/${pkgver}.tar.gz")
-sha512sums=("1648caa2144b6e1a12b03da79f5971a53a68b244c9a530b10399e821612f2b47f78d390fa2ade11e7f97c85ae5fa49508edbf79edc30a00883f5ef6a7eeb846b")
+sha512sums=("c328175994f2d9cfaffc6d43ee8e25b1e5fb86f04b2f1b20251e1a369cb650df79dec059c57a8cc6c2dc9305aef4f64c5b273f5685b42cab18d15c7b62c2ae81")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/owncloud/apps"
