@@ -1,15 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-datetime-bzr
-pkgver=r56
+pkgver=r79
 pkgrel=1
 pkgdesc='Date & Time plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-datetime'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('switchboard-bzr')
-makedepends=('bzr' 'cmake' 'vala')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
+         'libgranite.so' 'libswitchboard-2.0.so')
+makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
 provides=('switchboard-plug-datetime')
 conflicts=('switchboard-plug-datetime')
 source=('bzr+lp:switchboard-plug-datetime')
