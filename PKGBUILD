@@ -1,7 +1,7 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=pycrc
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator"
 arch=(any)
@@ -9,8 +9,8 @@ url="http://www.tty1.net/pycrc/"
 license=('MIT')
 depends=('python')
 options=(!emptydirs)
-source=("http://sourceforge.net/projects/pycrc/files/pycrc/pycrc-${pkgver}/pycrc-${pkgver}.tar.gz")
-sha256sums=('3bc8b65d3451b393daae7c50b86a5e4fb5a0ee0a49321847fcbc4aa734b9d667')
+source=("https://pycrc.org/download/pycrc-${pkgver}.tar.gz")
+sha256sums=('f06da6d049713c5cd6d292aebd09a0325d0832f59e6cf521e4ad4b54de16359c')
 
 _sitedir=`python -c "import site; print(site.getsitepackages()[0])"`
 
@@ -28,5 +28,5 @@ package() {
   install -m644 doc/pycrc.1 "${pkgdir}/usr/share/man/man1/"
 
   mkdir -p "${pkgdir}/usr/share/licenses/pycrc/"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/pycrc/"
+  install -m644 AUTHORS COPYING "${pkgdir}/usr/share/licenses/pycrc/"
 }
