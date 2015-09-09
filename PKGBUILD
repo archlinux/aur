@@ -9,7 +9,7 @@ url="https://github.com/shaggytwodope/clockr"
 license=('MIT')
 depends=('python' 'ncurses')
 source=("https://github.com/shaggytwodope/clockr/archive/v$pkgver.tar.gz")
-md5sums=('01e83df419e6a18c95d06dd73c8ef811')
+md5sums=('0d864b8a441f6952dbd0fec907209379')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
