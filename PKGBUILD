@@ -3,14 +3,15 @@
 # Contributor: Stefan Kirrmann <stefan.kirrmann at gmail dot com>
 
 pkgname=open-iscsi-git
-pkgver=2.0.873.r135.g254ad46
+pkgver=2.0.873.r146.g4c9d6f9
 pkgrel=1
 pkgdesc='iSCSI userland tools - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.open-iscsi.org/'
 license=('GPL')
 install=open-iscsi.install
-makedepends=('git')
+depends=('libutil-linux')
+makedepends=('git' 'open-isns')
 provides=('open-iscsi')
 conflicts=('open-iscsi')
 backup=('etc/iscsi/iscsid.conf'
@@ -23,9 +24,14 @@ pkgver() {
 	cd "${srcdir}/open-iscsi/"
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
 }
 
