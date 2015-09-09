@@ -1,0 +1,13 @@
+pkgbase = mtnm
+	pkgdesc = Moves window to next monitor / screen
+	pkgver = 2012.05.23
+	pkgrel = 1
+	url = http://icyrock.com/blog/2012/05/xubuntu-moving-windows-between-monitors/
+	arch = any
+	license = unknown
+	depends = xdotool wmctrl
+	source = mtnm
+	md5sums = dc2fb22fb51cf83634474c7740dbfcf2
+
+pkgname = mtnm
+
