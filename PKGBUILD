@@ -1,7 +1,7 @@
 # Maintainer: Kevin Guan <KevinGuan.gm@gmail.com>
 
 pkgname='silver'
-pkgver=1.3
+pkgver=2.0
 pkgrel=1
 pkgdesc="A simple, lightweight AUR package downloader"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/K-Guan/silver"
 depends=('python3')
 optdepends=('git: for download package use git')
 source=(https://codeload.github.com/K-Guan/${pkgname}/tar.gz/${pkgver})
-sha256sums=('f9584d539e02efd26e6727b82c70e7831f13852d49f18d66a1afa4653b06ffa7')
+sha256sums=('01904c97c99abaabf36afce28bef511b2e029f4ecc51cc762f4704ce41db6b03')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
