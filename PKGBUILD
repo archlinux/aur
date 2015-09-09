@@ -3,7 +3,7 @@
 
 pkgname=openttd-jgrpp-git
 _installname=openttd
-pkgver=1.5.2rc1+r27394+p0.4.1+r1.ec08a32
+pkgver=1.5.2rc1+r27394+p0.4.1+r6.af85ccb
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('openttd-opengfx: free graphics'
 _gitname=OpenTTD-patches
 
 # If you want the latest official release of the patch pack, uncomment this line:
-# _fragment="#tag=jgrpp-0.3.0"
+# _fragment="#tag=jgrpp-0.4.1"
 
 source=("git+https://github.com/JGRennison/$_gitname.git$_fragment"
         "http://finger.openttd.org/tags.txt")
@@ -57,9 +57,9 @@ build() {
 
 package() {
     cd $_gitname
+    mkdir -p "$pkgdir"/usr/share/$_installname/{data,game}
 
     make install
 
-    cp -rT bin/data "$pkgdir"/usr/share/$_installname/data
     cp -rT bin/game "$pkgdir"/usr/share/$_installname/game
 }
