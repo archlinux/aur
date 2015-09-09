@@ -3,12 +3,12 @@
 
 pre_upgrade() {
 	# version 6.00 is a major rebuild
-	# yes, I realize that pacman should not stop services byt in this case it
+	# yes, I realize that pacman should not stop services but in this case it
 	# is required or else browser profiles (user data) can get renamed and confuse
 	# people if it does not happen
 	if [ $(vercmp $2 6.00) -lt 0 ]; then
 		echo 'ATTENTION: MAJOR CHANGES TO PSD WITH VERSION 6.00+'
-		echo '-> 1. A global /etc/psd.conf is no longer used. $HOME/.psd/psd.conf will be'
+		echo '-> 1. A global /etc/psd.conf is no longer used. $HOME/.config/psd/psd.conf will be'
 		echo '->    created when psd is invoked the first time.'
 		echo '-> 2. A system service is no longer used. A user service is provided and can be'
 		echo '->    used like this:  systemctl --user start psd.service'
@@ -32,7 +32,7 @@ pre_upgrade() {
 			if [[ "$running" = "active" ]]; then
 				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
 				echo '-> Internal changes to psd require it to be stopped now before updating.'
-				echo '-> Recommend that you diff /usr/share/doc/psd/psd.conf against ~/.psd/psd.conf'
+				echo '-> Recommend that you diff /usr/share/doc/psd/psd.conf against ~/.config/psd/psd.conf'
 			fi
 		done
 	fi
