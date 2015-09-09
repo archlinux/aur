@@ -1,16 +1,18 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-online-accounts-bzr
-pkgver=r192
+pkgver=r205
 pkgrel=1
 pkgdesc='Online Accounts plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-onlineaccounts'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('gsignond-extension-pantheon-bzr' 'gsignond-plugin-oauth-git'
-         'gsignond-plugin-sasl-git' 'libaccounts-glib' 'switchboard-bzr'
-         'webkit2gtk')
+depends=('glib2' 'glibc' 'gsignond-extension-pantheon-bzr'
+         'gsignond-plugin-oauth-git' 'gsignond-plugin-sasl-git' 'gtk3'
+         'json-glib' 'libaccounts-glib' 'libgee' 'libgsignon-glib' 'rest'
+         'webkit2gtk'
+         'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-online-accounts')
 conflicts=('switchboard-plug-online-accounts')
