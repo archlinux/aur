@@ -3,14 +3,15 @@
 # Contributor: dserban <dserban01@yahoo.com>
 
 pkgname=switchboard-bzr
-pkgver=r554
+pkgver=r566
 pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('clutter-gtk' 'granite-bzr')
+depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
+         'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
 optdepends=('switchboard-plug-about-bzr: About plug'
             'switchboard-plug-default-applications-bzr: Default applications plug'
