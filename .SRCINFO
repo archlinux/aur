@@ -1,8 +1,8 @@
 pkgbase = mpv-bash-completion-git
 	pkgdesc = Bash completion for the mpv video player
-	pkgver = 41906.g37544e5
+	pkgver = 0.10.0
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/2ion/mpv-bash-completion
 	arch = any
 	license = GPL
