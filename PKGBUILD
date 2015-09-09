@@ -3,7 +3,7 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=xfce-theme-greybird-git
-pkgver=1.6.1.r622
+pkgver=1.6.2.r624
 pkgrel=1
 pkgdesc="Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity"
 arch=('any')
@@ -35,13 +35,14 @@ package() {
   tar zxf Greybird.emerald -C "$pkgdir/usr/share/emerald/themes/Greybird/"
 
   # create theme dirs
-  install -d -m 755 "$pkgdir"/usr/share/themes/Greybird{,-compact/xfwm4}
+  install -d -m 755 "$pkgdir"/usr/share/themes/Greybird{,-compact/xfwm4,-a11y/xfwm4}
 
   # install compact theme
-  install -m 644 xfwm4_compact/* "$pkgdir/usr/share/themes/Greybird-compact/xfwm4/"
+  install -m 644 "$srcdir/Greybird/xfwm4-compact/"* "$pkgdir/usr/share/themes/Greybird-compact/xfwm4/"
+  install -m 644 "$srcdir/Greybird/xfwm4-a11y/"* "$pkgdir/usr/share/themes/Greybird-a11y/xfwm4/"
 
   # clean up
-  rm -rf {.git,.gitignore,Greybird.emerald,LICENSE.{CC,GPL},README,xfwm4_compact}
+  rm -rf {.git,.gitignore,Greybird.emerald,LICENSE.{CC,GPL},README,xfwm4_compact,xfce4_ally}
 
   # install theme
   cp -r . "$pkgdir/usr/share/themes/Greybird/"
