@@ -1,0 +1,16 @@
+pkgbase = python2-pcapy
+	pkgdesc = interfaces with the libpcap packet capture library
+	pkgver = 0.10.9
+	pkgrel = 1
+	url = https://github.com/CoreSecurity/pcapy
+	arch = any
+	license = Apache
+	makedepends = python2
+	makedepends = python2-distribute
+	source = pcapy-0.10.9.tar.gz::https://github.com/CoreSecurity/pcapy/archive/0.10.9.tar.gz
+	sha256sums = 4c2294361327d0d95ba8212dac067682f7703f1a7543730c44853cb10b76dbb6
+
+pkgname = python2-pcapy
+	depends = python2
+	conflicts = python-pcapy
+
