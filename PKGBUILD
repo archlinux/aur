@@ -37,4 +37,6 @@ package() {
 	-e "s/@PKGVER@/${pkgver}/" \
 	-i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
     
+    mkdir -p $pkgdir/usr/share/licenses/$pkgname
+    cp $srcdir/$_pkgbase-linux-src-v$pkgver/README $pkgdir/usr/share/licenses/$pkgname/
 }
