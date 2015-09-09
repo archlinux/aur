@@ -1,0 +1,18 @@
+pkgbase = x264-ymod-git
+	pkgdesc = H.264 video encoder and library, with custom patchset.
+	pkgver = 148.r2610.09bc200
+	pkgrel = 2
+	url = https://github.com/YamashitaRen/x264_YMod
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = yasm
+	depends = glibc
+	provides = x264
+	conflicts = x264
+	source = git://github.com/YamashitaRen/x264_YMod.git
+	md5sums = SKIP
+
+pkgname = x264-ymod-git
+
