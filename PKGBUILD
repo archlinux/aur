@@ -1,14 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-sound-bzr
-pkgver=r8
+pkgver=r33
 pkgrel=1
 pkgdesc='Sound indicator for Wingpanel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-sound'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('wingpanel-rewrite-x11-bzr')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee'
+         'libnotify' 'libpulse' 'wingpanel-rewrite-x11-bzr'
+         'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-sound')
 conflicts=('wingpanel-indicator-sound')
