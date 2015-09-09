@@ -1,0 +1,22 @@
+pkgbase = rr62x-dkms
+	pkgdesc = Kernel modules for Highpoint RocketRAID 62x SATA/6Gbps Card. (DKMS Version)
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.highpoint-tech.com/USA_new/series_rr600-download.htm
+	install = rr62x-dkms.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = linux-headers
+	depends = linux>=4.0
+	conflicts = rr62x
+	conflicts = rr62x-lts
+	source = http://www.highpoint-tech.com/BIOS_Driver/rr62x/linux/rr62x-linux-src-v1.2-120601-1355.tar.gz
+	source = linux_4.patch
+	source = dkms.conf
+	md5sums = b308bcba65d065cddf05d9b7dea8f3d6
+	md5sums = d4fbdc757b8e061410396f0c829958f9
+	md5sums = 5a5b4137c86a3da4005bcfbe98b49660
+
+pkgname = rr62x-dkms
+
