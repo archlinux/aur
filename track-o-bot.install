@@ -1,0 +1,38 @@
+#!/bin/sh
+
+hsnote() {
+	echo ""
+	echo "FURTHER CONFIGURATION IS NEEDED!"
+	echo "Create folder named .Hearthstone in your home directory."
+	echo "Create symlinks of the Hearthstone's output_log and log.config"
+	echo "in the newly created folder."
+	echo ""
+	echo "You may also need to manually enable Hearthstone logging."
+	echo "More information here:"
+	echo "https://www.reddit.com/r/hearthstone/comments/268fkk/simple_hearthstone_logging_see_your_complete_play"
+	echo ""
+	echo "Don't forget to make sure that the logging actually works"
+	echo "before proceeding."
+	echo ""
+}
+
+upd() {
+	gtk-update-icon-cache
+	update-desktop-database -q
+	update-mime-database usr/share/mime
+}
+
+post_install() {
+	upd
+	hsnote
+}
+
+post_upgrade() {
+	upd
+}
+
+post_remove () {
+	upd
+}
+
+
