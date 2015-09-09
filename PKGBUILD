@@ -5,12 +5,12 @@ pkgname=couchpotato
 _pkgname=CouchPotato
 pkgver=3.0.1
 _fullname=CouchPotatoServer-build-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Movie Downloading via NZBs & Torrent"
 arch=('any')
 url="http://couchpota.to/"
 license=('GPL3')
-depends=('python2')
+depends=('python2' 'python2-lxml')
 install='couchpotato.install'
 source=("https://github.com/RuudBurger/CouchPotatoServer/archive/build/${pkgver}.tar.gz"
         "${pkgname}.service"
