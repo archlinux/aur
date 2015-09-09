@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
+makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-datetime')
 conflicts=('switchboard-plug-datetime')
 source=('bzr+lp:switchboard-plug-datetime')
