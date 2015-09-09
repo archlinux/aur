@@ -1,8 +1,8 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 _pkgname=elementary-xfce
 pkgname=${_pkgname}-icons-git
-pkgver=0.5_3_g045a5a3
-pkgrel=3
+pkgver=0.7_5_gb16a2c5
+pkgrel=1
 pkgdesc='Elementary icon-theme with improved Xfce support'
 arch=('any')
 url="https://github.com/shimmerproject/${_pkgname}"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  echo "$(git describe --always |sed 's#-#_#g;s#v##')"
+  echo "$(git describe --always --tags |sed 's#-#_#g;s#v##')"
 }
 
 package() {
