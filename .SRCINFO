@@ -1,7 +1,7 @@
 pkgbase = storm-beta
 	pkgdesc = Distributed and fault-tolerant realtime computation system
 	pkgver = 0.10.0beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://storm.apache.org/
 	install = install_storm.sh
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = storm-beta
 	backup = etc/storm/storm.yaml
 	backup = etc/zookeeper/zookeeper-storm/zoo.cfg
 	backup = etc/zookeeper/zookeeper-storm/log4j.properties
-	source = http://apache.mivzakim.net///storm/apache-storm-0.10.0-beta1/apache-storm-0.10.0-beta1.tar.gz
+	source = http://apache.spd.co.il///storm/apache-storm-0.10.0-beta1/apache-storm-0.10.0-beta1.tar.gz
 	source = zookeeper_zoo.cfg
 	source = zookeeper_log4j.properties
 	source = systemd_storm-nimbus.service

@@ -13,7 +13,7 @@ _version=0.10.0
 _snapshot=beta1
 _pkgver=${_version}-${_snapshot}
 pkgver=${_version}${_snapshot}
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed and fault-tolerant realtime computation system'
 arch=('any')
 url='https://storm.apache.org/'
@@ -55,6 +55,9 @@ package() {
 
   install -d "${pkgdir}"{${_app_home}/bin,/etc,/usr/bin,/usr/share/java/storm}
   install -d "${pkgdir}"/etc/zookeeper/zookeeper-storm
+
+  mkdir "${pkgdir}${_app_home}/extlib"
+  mkdir "${pkgdir}${_app_home}/extlib-daemon"
 
   cp -r conf "${pkgdir}/etc/storm/"
   ln -s /etc/storm "${pkgdir}${_app_home}/conf"
