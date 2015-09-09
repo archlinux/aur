@@ -15,7 +15,7 @@
 
 pkgname=xfce-theme-greybird
 _pkgname=Greybird
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A grey and blue Xfce theme, used by default in Xubuntu 12.04"
 arch=(any)
@@ -31,7 +31,7 @@ optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
     'lib32-gtk-engine-murrine: required for multilib')
 conflicts=($pkgname-git)
 source=($pkgname-$pkgver.tar.gz::https://github.com/shimmerproject/$_pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('aa24688505567f31f62f830afd9fbcd2418571fd5a90e61dc71b6f3416352d3f549e2c5054ec8ecd20e83596b255ef262eccfcfc04761ac9dfab6323e3f6a383')
+sha512sums=('eddd6b89880dbc034ee32cc17751b6ee1b18b55eef31d745c64f865b96d0fbf36fe6ab59dbe89dbdd032b3ed01395850f9597bdc1897e276b0433e93353d893f')
 
 
 
