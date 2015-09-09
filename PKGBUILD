@@ -1,6 +1,7 @@
 # Maintainer: Jens John <dev@2ion.de>
 pkgname=mpv-bash-completion-git
-pkgver=0.9.2.r81.b2b3207
+pkgver=41906.g37544e5
+epoch=1
 pkgrel=1
 pkgdesc="Bash completion for the mpv video player"
 arch=('any')
@@ -14,10 +15,18 @@ source=('git+https://github.com/2ion/mpv-bash-completion.git#branch=master')
 md5sums=('SKIP')
 _completioncommand=mpv
 
+_mpv_package_version() {
+  local _mpv=$(type -fp mpv)
+  (( $? == 0 )) || return 1
+  local _mpvpkg=$(pacman -qQo "$_mpv")
+  (( $? == 0)) || return 1
+  pacman -Q "$_mpvpkg" | cut -d' ' -f2
+}
+
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  local _mpv_pkg_ver=$(pacman -Q mpv | cut -d' ' -f2 | cut -d- -f1)
-  printf "%s.r%s.%s" "${_mpv_pkg_ver%-*}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local _mpv_pkg_ver=$(_mpv_package_version)
+  printf "%s" "${_mpv_pkg_ver%-*}"
 }
 
 build() {
