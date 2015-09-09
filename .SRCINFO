@@ -1,0 +1,58 @@
+pkgbase = nwn-gog
+	pkgdesc = Neverwinter Nights is an RPG from Bioware. This requires the GOG version.
+	pkgver = 2.0.0.15
+	pkgrel = 4
+	url = http://nwn.bioware.com/
+	install = nwn.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = icoutils
+	makedepends = innoextract
+	makedepends = p7zip
+	makedepends = perl
+	makedepends = unzip
+	depends = binkplayer
+	depends = elfutils
+	depends = libgl
+	depends = glu
+	depends = libstdc++5
+	depends = libxcursor
+	depends = perl
+	depends = sdl_mixer
+	optdepends = xdg-utils: xdg .desktop file support
+	provides = nwn
+	conflicts = nwn
+	noextract = nwclientgold.tar.gz
+	noextract = nwclienthotu.tar.gz
+	noextract = nwmovies-latest.tar.gz
+	source = gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_2.0.0.15.exe
+	source = gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_2.0.0.15-1.bin
+	source = gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_2.0.0.15-2.bin
+	source = gog://neverwinter_nights_diamond_edition/extras/nvn_KingmakerSetup.zip
+	source = http://nwdownloads.bioware.com/neverwinternights/linux/gold/nwclientgold.tar.gz
+	source = http://nwdownloads.bioware.com/neverwinternights/linux/161/nwclienthotu.tar.gz
+	source = http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp2.tar.gz
+	source = nwn.launcher
+	source = nwn.desktop
+	source = git+https://github.com/nwnlinux/nwmouse.git#commit=6df8b96f
+	source = git+https://github.com/nwnlinux/nwuser.git#commit=3fbbf546
+	source = git+https://github.com/nwnlinux/nwlogger.git#commit=3bfa7aa5
+	source = git+https://github.com/nwnlinux/nwmovies.git#commit=61fb3645
+	md5sums = e7d063a2c892519dc431fc84c3611a65
+	md5sums = 2b6bec0df8d2f1755876407069f6ae43
+	md5sums = db2c1e75b087e43fa5895bcc70fca8b9
+	md5sums = 57be8c593db88db6b6ee78ba9201ec53
+	md5sums = 0a059d55225fc32f905e86191d88a11f
+	md5sums = 376cdece07106ea058d42b531f3146bb
+	md5sums = b021f0da3b3e00848521926716fdf487
+	md5sums = 7fd0497f55856edf50480b5acd3136d3
+	md5sums = 26c5f221589ba84af13039c805ac1210
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = nwn-gog
+
