@@ -1,7 +1,7 @@
 pkgbase = orbital-git
 	pkgdesc = A Wayland shell client
-	pkgver = 0.1.763
-	pkgrel = 2
+	pkgver = 0.1.836
+	pkgrel = 1
 	url = https://github.com/giucam/orbital
 	arch = i686
 	arch = x86_64
