@@ -25,5 +25,5 @@ build() {
 
 package() {
   cd "$srcdir/qbs-src-$pkgver"
-  make DESTDIR="$pkgdir" install
+  INSTALL_ROOT="$pkgdir" make install
 }
