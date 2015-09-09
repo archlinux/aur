@@ -1,0 +1,20 @@
+pkgbase = vifm-git
+	pkgdesc = Ncurses based file manager with vi like keybindings
+	pkgver = 0.8.r272.g12c7c4f
+	pkgrel = 1
+	url = http://vifm.info/
+	install = vifm-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = desktop-file-utils
+	depends = file
+	optdepends = perl: vifm-convert-dircolors
+	provides = vifm
+	conflicts = vifm
+	source = git+https://github.com/vifm/vifm.git
+	sha256sums = SKIP
+
+pkgname = vifm-git
+
