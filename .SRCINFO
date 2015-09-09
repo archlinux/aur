@@ -1,6 +1,6 @@
 pkgbase = kwallet-git
 	pkgdesc = KWallet Framework
-	pkgver = r623.d14b2da
+	pkgver = r689.47cd5f8
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kwallet
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = kwallet-git
 	makedepends = git
 	makedepends = python
 	depends = knotifications-git
+	depends = kiconthemes-git
+	depends = kservice-git
 	depends = gpgmepp-git
 	provides = kwallet
 	conflicts = kwallet
