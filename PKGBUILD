@@ -3,8 +3,8 @@
 
 pkgname=gogs
 _pkgname=${pkgname}
-pkgver=0.6.5
-pkgrel=5
+pkgver=0.6.9
+pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -69,8 +69,8 @@ prepare() {
   msg2 "Check and download dependencies from .gopmfile"
   get_gopm "$GOPATH/src/${_gourl}/.gopmfile" "$GOPATH/src"
 
-  msg2 "Download missing dependencies"
-  go_get github.com/shurcooL/sanitized_anchor_name "$GOPATH/src/github.com/shurcooL/sanitized_anchor_name"
+#  msg2 "Download missing dependencies"
+#  go_get github.com/shurcooL/sanitized_anchor_name "$GOPATH/src/github.com/shurcooL/sanitized_anchor_name"
 
 #  msg2 "Workaround dependencies"
 #  cd "$GOPATH/src/github.com/gogits/go-gogs-client/"

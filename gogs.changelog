@@ -1,3 +1,23 @@
+2015-09-05
+
+    * V0.6.9
+	Bug fix: File name with double quotation mark makes the repository inaccessible #966
+	Bug fix: Time zone trouble #1500
+	Bug fix: Removing deploy key does not remove key #1535
+	Improvement: Add webhook last delivery status, recent deliveries and new events
+	Improvement: Auto-remember visibility of last created repository #965
+	Improvement: Support BindDN and TLS in LDAP #1145
+	Improvement: Significantly enhanced LDAP support #1476
+	Improvement: Support ‘AUTH LOGIN’ in mailer #1517
+	Improvement: Add [markdown] ENABLE_HARD_LINE_BREAK to enable Markdown hard line break extension
+	Features: Add dashboard issues page for organization
+	Features: Allow editing of past comments #1280
+	Features: Support README template #1487
+	Others: Add official Docker images
+	Others: Change minimum password length to 1
+	Others: Change minimum size of RSA to 1024 #1519
+	Others: Change maximum size of e-mail to 254 #1579
+
 2015-08-16
 
 	* V0.6.5
