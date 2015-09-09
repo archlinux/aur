@@ -1,0 +1,15 @@
+pkgbase = pdfreflow
+	pkgdesc = operates on the output of pdftohtml and reflows the texts into paragraphs.
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = http://pdfreflow.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc
+	optdepends = pdftohtml: for converting PDF files into HTML and XML formats
+	source = http://downloads.sourceforge.net/project/pdfreflow/pdfreflow-0.8.6.tgz
+	sha256sums = b7bb103b7a3fd01db6c2220d13def2e833f5184ccecdcb187e67ae0c0914b7f7
+
+pkgname = pdfreflow
+
