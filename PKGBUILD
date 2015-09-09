@@ -16,7 +16,7 @@
 pkgname=xfce-theme-greybird
 _pkgname=Greybird
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A grey and blue Xfce theme, used by default in Xubuntu 12.04"
 arch=(any)
 url=http://shimmerproject.org/projects/greybird/
@@ -38,9 +38,10 @@ sha512sums=('eddd6b89880dbc034ee32cc17751b6ee1b18b55eef31d745c64f865b96d0fbf36fe
 
 package() {
     local _themedir="$pkgdir/usr/share/themes"
-    install -d "$_themedir/$_pkgname "{Classic,Compact}
+    install -d "$_themedir/$_pkgname "{Classic,Compact,a11y}
 
     cp -rf $_pkgname-$pkgver/ "$_themedir"/$_pkgname/
     rm "$_themedir"/$_pkgname/.gitignore
-    ln -s /usr/share/themes/$_pkgname/xfwm4_compact "$_themedir/$_pkgname Compact/xfwm4"
+    ln -s /usr/share/themes/$_pkgname/xfwm4-compact "$_themedir/$_pkgname Compact/xfwm4"
+    ln -s /usr/share/themes/$_pkgname/xfwm4-a11y "$_themedir/$_pkgname a11y/xfwm4"
 }
