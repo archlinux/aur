@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
+makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-applications')
 conflicts=('switchboard-plug-applications')
 replaces=('switchboard-plug-default-applications-bzr'
