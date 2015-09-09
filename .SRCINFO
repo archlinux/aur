@@ -6,8 +6,8 @@ pkgbase = probuild-git
 	arch = any
 	license = LGPL3
 	makedepends = git
+	makedepends = cmake
 	depends = gcc
-	depends = cmake
 	source = git+https://gitlab.com/MaximilienLIX/probuild.git
 	md5sums = SKIP
 
