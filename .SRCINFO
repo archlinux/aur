@@ -1,6 +1,6 @@
 pkgbase = ttf-sawarabi-mincho
 	pkgdesc = A mincho font for Japanese
-	pkgver = 20150715
+	pkgver = 20150815
 	pkgrel = 1
 	url = http://sawarabi-fonts.osdn.jp/
 	install = ttf.install
@@ -8,8 +8,8 @@ pkgbase = ttf-sawarabi-mincho
 	license = Creative Commons Attribution 3.0
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://jaist.dl.osdn.jp/sawarabi-fonts/63561/sawarabi-mincho-20150715.tar.xz
-	md5sums = 43c8ac27f1a1891bcc865b530c1e2f73
+	source = http://jaist.dl.osdn.jp/sawarabi-fonts/63693/sawarabi-mincho-20150815.tar.xz
+	md5sums = 29cd24841845c8cd22236db08d9f57c8
 
 pkgname = ttf-sawarabi-mincho
 
