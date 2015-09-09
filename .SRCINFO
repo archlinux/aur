@@ -1,0 +1,15 @@
+pkgbase = qpm
+	pkgdesc = Qt Package Manager
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://qpm.io
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = git
+	depends = go
+	source = git://github.com/Cutehacks/qpm#branch=master
+	sha256sums = SKIP
+
+pkgname = qpm
+
