@@ -1,21 +1,20 @@
 # Maintainer: veluria <veluria ät anche.no>
-# Based on the wine package in the community repository
-# and various existing wine AUR packages
+# Based on the wine package in the community repository and various other packages
 
 pkgname=wine-visual-novel-reader
 _pkgname=wine
-pkgver=1.7.50
+pkgver=1.7.51
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
 source=("http://prdownloads.sourceforge.net/wine/$_pkgname-$pkgver.tar.bz2"
         "livino-wine-1.6.2.patch")
-sha256sums=('7c5410fab820281f337d478c18305027363c9012f30f742339ef1eb0f9dd711e'
+sha256sums=('397fc95b463d6ae1b65ab0477d9fe5d0871e8e2a3322bc9d984e438f2c4d0f52'
             'c0c589ef61781fca51bfb4513c772622af2ab261f3ee17b59f941ae0f143bd31')
 
 pkgdesc="Patched wine with custom prefix for text extraction from visual novels"
-url="http://www.winehq.com"
+url="https://github.com/acourreges/livino-reader"
 arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
