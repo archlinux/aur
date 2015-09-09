@@ -19,6 +19,7 @@ pkgbase = chromium-dev
 	makedepends = subversion
 	makedepends = yasm
 	makedepends = git
+	makedepends = clang
 	makedepends = cmake
 	makedepends = ocaml
 	makedepends = libffi
