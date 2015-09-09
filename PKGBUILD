@@ -1,15 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-network-bzr
-pkgver=r21
+pkgver=r86
 pkgrel=1
 pkgdesc='Network indicator for Wingpanel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-network'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('wingpanel-rewrite-x11-bzr')
-makedepends=('bzr' 'cmake' 'libnm-gtk' 'vala')
+depends=('glib2' 'glibc' 'gtk3' 'libnm-glib' 'wingpanel-rewrite-x11-bzr'
+         'libgranite.so')
+makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-network')
 conflicts=('wingpanel-indicator-network')
 install='wingpanel-indicator-network.install'
