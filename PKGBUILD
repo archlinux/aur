@@ -1,14 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-power-bzr
-pkgver=r234
+pkgver=r255
 pkgrel=1
 pkgdesc='Power plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-power'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('switchboard-bzr')
+depends=('glib2' 'glibc' 'gtk3' 'libgee'
+         'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-power')
 conflicts=('switchboard-plug-power')
