@@ -7,7 +7,7 @@
 
 pkgname=multipath-tools
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Multipath tools for Linux (including kpartx)'
 arch=('i686' 'x86_64')
 url="http://christophe.varoqui.free.fr/"
@@ -52,5 +52,5 @@ package() {
   install -Dm644 "multipath.conf.synthetic" "${pkgdir}/usr/share/multipath/examples/multipath.conf.synthetic"
   install -Dm644 "multipath.conf.defaults" "${pkgdir}/etc/multipath.conf"
   rm "${pkgdir}/usr/lib/libmpathpersist.so"
-  ln -s "${pkgdir}/usr/lib/libmpathpersist.so.0" "libmpathpersist.so"
+  ln -s "/usr/lib/libmpathpersist.so.0" "${pkgdir}/usr/lib/libmpathpersist.so"
 }

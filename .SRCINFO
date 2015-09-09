@@ -1,7 +1,7 @@
 pkgbase = multipath-tools
 	pkgdesc = Multipath tools for Linux (including kpartx)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://christophe.varoqui.free.fr/
 	install = multipath-tools.install
 	arch = i686
