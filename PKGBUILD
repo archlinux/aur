@@ -1,15 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-applications-bzr
-pkgver=r78
+pkgver=r93
 pkgrel=1
 pkgdesc='Applications plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-applications'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('switchboard-bzr')
-makedepends=('bzr' 'cmake' 'vala')
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
+         'libswitchboard-2.0.so')
+makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
 provides=('switchboard-plug-applications')
 conflicts=('switchboard-plug-applications')
 replaces=('switchboard-plug-default-applications-bzr'
