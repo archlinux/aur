@@ -1,5 +1,5 @@
 pkgname=youtube-dl-git
-pkgver=2015.09.03.r74.g47004d9
+pkgver=2015.09.03.r84.gcc1ac11
 pkgrel=1
 
 pkgdesc='A small command-line program to download videos from YouTube.com and a few more sites'
@@ -27,6 +27,7 @@ pkgver() {
 prepare() {
 	cd youtube-dl
 	sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
+        sed -i ':etc/fish/completions:d' setup.py
 }
 
 package() {
