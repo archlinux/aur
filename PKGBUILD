@@ -3,32 +3,38 @@
 # Contributor: dserban <dserban01@yahoo.com>
 
 pkgname=switchboard
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard'
 license=('GPL3')
 groups=('pantheon')
-depends=('clutter-gtk' 'granite-bzr')
-makedepends=('bzr' 'cmake' 'vala')
+depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
+         'libgranite.so' 'libswitchboard-2.0.so')
+makedepends=('cmake' 'vala')
 optdepends=('switchboard-plug-about: About plug'
-            'switchboard-plug-default-applications-bzr: Default applications plug'
-            'switchboard-plug-elementary-tweaks-bzr: Elementary tweaks plug'
-            'switchboard-plug-keyboard-bzr: Keyboard plug'
-            'switchboard-plug-pantheon-shell-bzr: Pantheon Shell plug'
-            'switchboard-plug-power-bzr: Power plug')
+            'switchboard-plug-applications: Applications plug'
+            'switchboard-plug-desktop: Desktop plug'
+            'switchboard-plug-elementary-tweaks: Elementary Tweaks plug'
+            'switchboard-plug-keyboard: Keyboard plug'
+            'switchboard-plug-power: Power plug')
+provides=('libswitchboard-2.0.so')
 install='switchboard.install'
-source=("https://launchpad.net/switchboard/${pkgver%%.*}.x/${pkgver%.*}/+download/switchboard-${pkgver}.tgz")
-sha256sums=('4439af2019cda29e6267df2c0dabdaeba129808b0da14b632dcda8713dabb12e')
+source=("https://launchpad.net/switchboard/${pkgver%.*.*}.x/${pkgver}/+download/switchboard-${pkgver}.tgz")
+sha256sums=('a67ca60e002459e8e3d65b6c57440e86ebd0eb33a863561808b748901d46b4e8')
 
-build() {
+prepare() {
   cd switchboard-${pkgver}
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd switchboard-${pkgver}/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
