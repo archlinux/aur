@@ -3,7 +3,7 @@
 pkgname=cflow
 pkgver=1.4
 pkgrel=1
-pkgdesc="The GNU cflow - for diagramming C program flow from sources"
+pkgdesc="GNU cflow - for diagramming C program flow from sources"
 arch=('i686' 'x86_64')
 url="http://ftp.gnu.org/gnu/cflow/cflow-1.4.tar.xz"
 license=('GPL')
