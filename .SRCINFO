@@ -1,0 +1,14 @@
+pkgbase = mbox-git
+	pkgdesc = A sandbox for non-root users (git version)
+	pkgver = 0.0.274.a131424
+	pkgrel = 1
+	url = http://pdos.csail.mit.edu/mbox
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openssl
+	source = mbox-git::git+https://github.com/tsgates/mbox
+	md5sums = SKIP
+
+pkgname = mbox-git
+
