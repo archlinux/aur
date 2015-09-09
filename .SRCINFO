@@ -1,13 +1,13 @@
 pkgbase = bluejeans
 	pkgdesc = BlueJeans browser plugin
-	pkgver = 2.100.102.8
+	pkgver = 2.105.232.5
 	pkgrel = 1
 	url = http://www.bluejeans.com/
 	arch = x86_64
 	license = Proprietary
 	conflicts = bjnplugin
-	source = https://swdl.bluejeans.com/skinny/rbjnplugin_2.100.102.8-1_amd64.deb
-	sha1sums = e5eeaf5cfa61c3a3d5255dca646c5d3d274eb224
+	source = https://swdl.bluejeans.com/skinny/rbjnplugin_2.105.232.5-1_amd64.deb
+	sha1sums = d959da8849bd5177f8907f9339a9dd97026c32aa
 
 pkgname = bluejeans
 
