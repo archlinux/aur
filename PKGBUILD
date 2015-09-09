@@ -1,7 +1,7 @@
 # Maintainer: Peter Babič <babicpet at gmail dot com>
 pkgname=mtnm
-pkgver=0.1.1
-pkgrel=1
+pkgver=2012.05.23
+pkgrel=6
 pkgdesc="Moves window to next monitor / screen"
 arch=(any)
 url="http://icyrock.com/blog/2012/05/xubuntu-moving-windows-between-monitors/"
