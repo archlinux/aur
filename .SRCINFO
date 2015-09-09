@@ -1,6 +1,6 @@
 pkgbase = abcl-svn
 	pkgdesc = Full implementation of the Common Lisp language in the JVM
-	pkgver = r14796
+	pkgver = r14799
 	pkgrel = 1
 	url = http://common-lisp.net/project/armedbear/
 	arch = any
@@ -14,8 +14,10 @@ pkgbase = abcl-svn
 	conflicts = abcl
 	source = svn+http://abcl.org/svn/trunk/abcl/
 	source = abcl.sh
+	source = build.patch
 	md5sums = SKIP
 	md5sums = d51ffd115b32f9a47f849fc7630ced4f
+	md5sums = ddb6f0126f12f71b62517d89fb30e75a
 
 pkgname = abcl-svn
 

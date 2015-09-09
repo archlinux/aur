@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=abcl-svn
-pkgver=r14796
+pkgver=r14799
 pkgrel=1
 pkgdesc="Full implementation of the Common Lisp language in the JVM"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('java-environment' 'bash')
 makedepends=('apache-ant' 'net-tools' 'subversion')
 provides=('abcl')
 conflicts=('abcl')
-source=("svn+http://abcl.org/svn/trunk/abcl/" abcl.sh)
-md5sums=('SKIP' 'd51ffd115b32f9a47f849fc7630ced4f')
+source=("svn+http://abcl.org/svn/trunk/abcl/" abcl.sh build.patch)
+md5sums=('SKIP' 'd51ffd115b32f9a47f849fc7630ced4f' 'ddb6f0126f12f71b62517d89fb30e75a')
 _svnmod="abcl"
 
 pkgver() {
@@ -20,7 +20,13 @@ pkgver() {
   printf r%s "${ver//[[:alpha:]]}"
 }
 
+prepare() {
+  cd "$srcdir"/"${_svnmod}"
+  patch -Np3 < $srcdir/build.patch
+}
+
 build() {
+  LANG=C
   cd "$srcdir"/"${_svnmod}"
   ant
 }
