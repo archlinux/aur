@@ -1,0 +1,114 @@
+diff -aur rr62x-linux-src-v1.2.orig/inc/linux/Makefile.def rr62x-linux-src-v1.2/inc/linux/Makefile.def
+--- rr62x-linux-src-v1.2.orig/inc/linux/Makefile.def	2012-05-28 12:13:49.000000000 +0300
++++ rr62x-linux-src-v1.2/inc/linux/Makefile.def	2015-05-17 16:07:11.076666668 +0300
+@@ -74,18 +74,26 @@
+ KERNELDIR := /lib/modules/$(shell uname -r)/build
+ endif
+ 
+-MAJOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 65536 % 65536)
+-MINOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 256 % 256)
+-KERNEL_VER := $(MAJOR).$(MINOR)
++ifneq (,$(wildcard $(KERNELDIR)/include/linux/version.h))
++  MAJOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 65536 % 65536)
++  MINOR := $(shell expr `grep LINUX_VERSION_CODE $(KERNELDIR)/include/linux/version.h | cut -d\  -f3` / 256 % 256)
++  KERNEL_VER := $(MAJOR).$(MINOR)
++else
++  KERNEL_VER := $(shell cd $(KERNELDIR) ; make kernelversion | cut -d. -f1,2)
++  MAJOR := $(firstword $(subst ., ,$(KERNEL_VER)))
++  MINOR := $(word 2,$(subst ., ,$(KERNEL_VER)))
++endif
+ 
+ ifeq ($(KERNEL_VER),)
+ $(error Cannot find kernel version. Check $(KERNELDIR)/include/linux/version.h.)
+ endif
+ 
++ifneq ($(MAJOR), 4)
+ ifneq ($(MAJOR), 3)
+ ifneq ($(KERNEL_VER), 2.6)
+ ifneq ($(KERNEL_VER), 2.4)
+-$(error Only kernel 2.4/2.6/3.x is supported but you use $(KERNEL_VER))
++$(error Only kernel 2.4/2.6/3.x/4.x is supported but you use $(KERNEL_VER))
++endif
+ endif
+ endif
+ endif
+diff -aur rr62x-linux-src-v1.2.orig/osm/linux/osm_linux.c rr62x-linux-src-v1.2/osm/linux/osm_linux.c
+--- rr62x-linux-src-v1.2.orig/osm/linux/osm_linux.c	2012-06-01 08:55:36.000000000 +0300
++++ rr62x-linux-src-v1.2/osm/linux/osm_linux.c	2015-05-17 17:46:14.696666665 +0300
+@@ -449,7 +449,11 @@
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,23)
+ 	struct scatterlist *sg;
+ 	sg = scsi_sglist(cmd);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,37)
++	*pbuf = kmap_atomic(HPT_SG_PAGE(sg)) + sg->offset;
++#else 
+ 	*pbuf = kmap_atomic(HPT_SG_PAGE(sg), HPT_KMAP_TYPE) + sg->offset;
++#endif
+ 	buflen = sg->length;
+ #else 
+ 
+@@ -479,7 +483,11 @@
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,23)
+ 	struct scatterlist *sg;
+ 	sg = scsi_sglist(cmd);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,37)
++	kunmap_atomic((char *)buf - sg->offset);
++#else 
+ 	kunmap_atomic((char *)buf - sg->offset, HPT_KMAP_TYPE);
++#endif
+ #else 
+ 
+ 	if (cmd->use_sg) {
+@@ -1706,6 +1714,7 @@
+ 	}
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ static int hpt_proc_set_info(struct Scsi_Host *host, char *buffer, int length)
+ {
+ 	IOCTL_ARG ioctl_args;
+@@ -1808,6 +1817,7 @@
+ 	else
+ 		return hpt_proc_get_info(host, buffer, start, offset, length);
+ }
++#endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
+ static int hpt_proc_info24(char *buffer,char **start, off_t offset,
+@@ -2108,7 +2118,9 @@
+ 	#endif
+ #else /* 2.6.x */
+ 	proc_name:               driver_name,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ 	proc_info:               hpt_proc_info26,
++#endif
+ 	max_sectors:             128,
+ #endif
+ 	this_id:                 -1
+diff -aur rr62x-linux-src-v1.2.orig/osm/linux/osm_linux.h rr62x-linux-src-v1.2/osm/linux/osm_linux.h
+--- rr62x-linux-src-v1.2.orig/osm/linux/osm_linux.h	2012-06-01 08:55:36.000000000 +0300
++++ rr62x-linux-src-v1.2/osm/linux/osm_linux.h	2015-05-17 17:00:33.123333336 +0300
+@@ -176,7 +176,9 @@
+ #endif
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,37)
+ #define HPT_KMAP_TYPE KM_BIO_SRC_IRQ
++#endif
+ #define HPT_FIND_PCI_DEVICE pci_get_device
+ #else 
+ #define HPT_KMAP_TYPE KM_BH_IRQ
+Only in rr62x-linux-src-v1.2/product/rr62x/linux: .build
+diff -aur rr62x-linux-src-v1.2.orig/product/rr62x/linux/config.c rr62x-linux-src-v1.2/product/rr62x/linux/config.c
+--- rr62x-linux-src-v1.2.orig/product/rr62x/linux/config.c	2012-06-01 08:55:35.000000000 +0300
++++ rr62x-linux-src-v1.2/product/rr62x/linux/config.c	2015-05-17 17:43:47.623333322 +0300
+@@ -23,7 +23,7 @@
+ 
+ char driver_name[] = "rr62x";
+ char driver_name_long[] = "RocketRAID 62x SATA controller driver";
+-char driver_ver[] = "v1.2 (" __DATE__ " " __TIME__ ")";
++char driver_ver[] = "v1.2 (Jul 1 2012)";
+ int  osm_max_targets = 32;
+ 
+ int os_max_cache_size = 0x800000;
+Only in rr62x-linux-src-v1.2/product/rr62x/linux: rr62x.ko
