@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.4.0.dev.5710.gaf6f214
+pkgver=0.5.0.dev.g7cd05db
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('gcc-fortran' 'arpack' 'fftw' 'git' 'gmp' 'libgit2' 'libunwind' 'll
 # Needed if building the documentation
 #makedepends+=('python2-sphinx' 'python2-sphinx_rtd_theme' 'python-pip' 'texlive-langcjk' 'texlive-latexextra')
 options=('!emptydirs')
-source=('git://github.com/JuliaLang/julia.git')
+source=(git://github.com/JuliaLang/julia.git#branch=master)
 md5sums=('SKIP')
 
 
@@ -23,9 +23,9 @@ pkgver() {
   cd $_pkgbase
 
   # use the version from VERSION file
-  ver=`git show master:VERSION | sed 's/-/./g'`
+  ver=`git show makepkg:VERSION | sed 's/-/./g'`
   # strip the last tag name from the HEAD description
-  rev=`git describe --tags | sed 's/^.\+-\([0-9]\+-g[0-9a-f]\+\)$/\1/;s/-/./g'`
+  rev=`git describe --tags | sed 's/^.\+-\(g[0-9a-f]\+\)$/\1/;s/-/./g'`
   echo $ver.$rev
 }
 
