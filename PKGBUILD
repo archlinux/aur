@@ -10,8 +10,8 @@
 _pkgname=pyparted
 pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=3.10.3
-pkgrel=2
+pkgver=3.10.7
+pkgrel=1
 pkgdesc="Python module for GNU parted"
 url="https://github.com/rhinstaller/pyparted"
 arch=('i686' 'x86_64')
@@ -19,14 +19,14 @@ license=('GPL2')
 makedepends=('pkg-config' 'python' 'python2' 'parted>=3.0')
 conflicts=('pyparted-git')
 replaces=('pyparted')
-source=("https://github.com/rhinstaller/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('238da222bb76e6838861f4fdff63f52823d0c7ace068fd4f40d5ccf5de5b7c26fadf52add689ec143755d568c52788b79262ba1090639560c3b54daa67e6507f')
+source=("https://github.com/rhinstaller/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('c57fed2a8d04511b12891fd59b6dd6840439aada7e5ebeab14a56e6e4f201c249046ee87d9d25af1b3f02960994efb0a2973f25928a9df85d48bbd1bc196ab07')
 
 package_python-pyparted() {
   pkgdesc="Python module for GNU parted - python 3.x pkg"
   depends=('python' 'parted>=3.0')
 
-  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python3 setup.py build
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
@@ -35,7 +35,7 @@ package_python2-pyparted() {
   pkgdesc="Python module for GNU parted - python 2.x pkg"
   depends=('python2' 'parted>=3.0')
 
-  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py build
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
