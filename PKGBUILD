@@ -1,13 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-locale-bzr
-pkgver=r105
+pkgver=r155
 pkgrel=1
 pkgdesc='Locale plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-locale'
 license=('GPL3')
-depends=('accountsservice' 'gnome-desktop' 'ibus' 'switchboard-bzr')
+depends=('accountsservice' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'ibus'
+         'libgee' 'polkit'
+         'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-locale')
 conflicts=('switchboard-plug-locale')
