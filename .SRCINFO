@@ -1,0 +1,13 @@
+pkgbase = caledonia-kde-meta
+	pkgdesc = Caledonia theme: meta package of backgrounds and plasma
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://caledonia.sourceforge.net
+	arch = any
+	license = GPL
+	depends = caledonia-plasma-theme
+	depends = caledonia-wallpapers
+	optdepends = caledonia-kdm-theme: if you are still using KDM instead of SDDM
+
+pkgname = caledonia-kde-meta
+
