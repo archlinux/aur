@@ -1,14 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-datetime-bzr
-pkgver=r31
+pkgver=r78
 pkgrel=1
 pkgdesc='Date & Time indicator for Wingpanel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-datetime'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('wingpanel-rewrite-x11-bzr')
+depends=('glib2' 'glibc' 'gtk3' 'wingpanel-rewrite-x11-bzr'
+         'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-datetime')
 conflicts=('wingpanel-indicator-datetime')
