@@ -8,10 +8,12 @@ arch=('any')
 url="http://choreonoid.org"
 license=('LGPL2')
 depends=('boost' 'bullet' 'eigen3' 'glew' 'glibc' 'libgl' 'libpng' 'libjpeg-turbo'
-         'libyaml' 'libx11' 'openscenegraph' 'python2' 'qt4' 'zlib')
+         'libyaml' 'libx11' 'openscenegraph' 'python2' 'qt4' 'zlib' 'openrtm-aist'
+         'openrtm-aist-python' 'hrpsys-base')
 makedepends=('cmake')
 conflicts=($_name)
 replaces=($_name)
+provides=($_name)
 
 source=("git+https://github.com/s-nakaoka/$_name")
 md5sums=('SKIP')
@@ -37,13 +39,18 @@ build() {
   # TODO: re-enable Bullet plugin when fixed upstream
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DINSTALL_SDK:BOOL=TRUE \
-           -DINSTALL_RUNTIME_DEPENDENCIES:BOOL=TRUE \
-           -DCNOID_ENABLE_GETTEXT:BOOL=TRUE \
-           -DUSE_EXTERNAL_YAML:BOOL=TRUE \
-           -DUSE_EXTERNAL_GLEW:BOOL=TRUE \
            -DBUILD_BULLET_PLUGIN:BOOL=FALSE \
+           -DBUILD_CORBA_PLUGIN:BOOL=TRUE \
+           -DBUILD_HRPSYS31_PLUGIN:BOOL=TRUE \
+           -DBUILD_OPENRTM_PLUGIN:BOOL=TRUE \
+           -DBUILD_ROBOT_ACCESS_PLUGIN:BOOL=TRUE \
+           -DCNOID_ENABLE_GETTEXT:BOOL=TRUE \
+           -DENABLE_CORBA:BOOL=TRUE \
            -DENABLE_PYTHON:BOOL=TRUE \
+           -DINSTALL_RUNTIME_DEPENDENCIES:BOOL=TRUE \
+           -DINSTALL_SDK:BOOL=TRUE \
+           -DUSE_EXTERNAL_GLEW:BOOL=TRUE \
+           -DUSE_EXTERNAL_YAML:BOOL=TRUE \
            -DPYTHON_EXECUTABLE=/usr/bin/python2 \
            -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
            -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so
