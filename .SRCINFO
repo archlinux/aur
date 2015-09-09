@@ -1,0 +1,13 @@
+pkgbase = fastdb
+	pkgdesc = Main Memory Relational Database Management System
+	pkgver = 3.76
+	pkgrel = 1
+	url = http://www.garret.ru/fastdb.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = http://www.garret.ru/fastdb-3.76.tar.gz
+	sha256sums = 5382ff0c17692118c4147999f300d50cf972f7096164896529ef61501b166841
+
+pkgname = fastdb
+
