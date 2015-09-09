@@ -15,7 +15,7 @@ _electron_version=0.30.2
 _platform=ia32
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
 
-source=("yakyak::git+https://github.com/yakyak/yakyak#branch=master"
+source=("${pkgname%-git}::git+https://github.com/yakyak/yakyak#branch=master"
         "yakyak.desktop")
 source_i686=("https://github.com/atom/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-ia32.zip")
 source_x86_64=("https://github.com/atom/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-x64.zip")
