@@ -1,4 +1,5 @@
 # Maintainer: Erik Beran <eberan AT_gmail_DOT com>
+# Contributor: Thor K. H. <thor at roht dot no>
 # Contributor: Babken Vardanyan <483ken 4tgma1l
 # Contributor: mikezackles
 # Contributor: z33ky
@@ -12,7 +13,7 @@
 # Contributor: archdria
 
 pkgname=vim-youcompleteme-git
-pkgver=1393.4436d51
+pkgver=1517.a2808ee
 pkgver() {
   cd "YouCompleteMe"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -97,7 +98,7 @@ package() {
     "$pkgdir/usr/share/vim/vimfiles"
   cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests,requests-futures,retries} \
     "$pkgdir/usr/share/vim/vimfiles/third_party"
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_client_support.so,ycm_core.so,check_core_version.py,EXPECTED_CORE_VERSION} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_client_support.so,ycm_core.so,check_core_version.py,CORE_VERSION} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
   cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,jedi,waitress} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
