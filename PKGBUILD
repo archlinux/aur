@@ -1,7 +1,5 @@
-# Maintainer: Spyhawk
-
 pkgname=pacaur
-pkgver=4.2.27
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A fast workflow AUR helper using cower as backend"
 arch=('any')
@@ -11,7 +9,7 @@ depends=('cower' 'expac' 'sudo' 'pacman')
 makedepends=('perl')
 backup=('etc/xdg/pacaur/config')
 source=("https://github.com/rmarquis/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('195f404dac8b23de85e6acc8730da4eb')
+md5sums=('2fd0a4bb93da04c7f5bdd789875ee656')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -34,11 +32,12 @@ package() {
         $pkgdir/usr/share/zsh/site-functions/_pacaur
     mkdir -p $pkgdir/usr/share/man/man8
     install -D -m644 ./pacaur.8 $pkgdir/usr/share/man/man8/pacaur.8
-    mkdir -p $pkgdir/usr/share/locale/{ca,de,es,fr,it,ja,pl,pt,ru,tr}/LC_MESSAGES/
+    mkdir -p $pkgdir/usr/share/locale/{ca,de,es,fr,hu,it,ja,pl,pt,ru,tr}/LC_MESSAGES/
     msgfmt ./po/ca.po -o $pkgdir/usr/share/locale/ca/LC_MESSAGES/pacaur.mo
     msgfmt ./po/de.po -o $pkgdir/usr/share/locale/de/LC_MESSAGES/pacaur.mo
     msgfmt ./po/es.po -o $pkgdir/usr/share/locale/es/LC_MESSAGES/pacaur.mo
     msgfmt ./po/fr.po -o $pkgdir/usr/share/locale/fr/LC_MESSAGES/pacaur.mo
+    msgfmt ./po/hu.po -o $pkgdir/usr/share/locale/hu/LC_MESSAGES/pacaur.mo
     msgfmt ./po/it.po -o $pkgdir/usr/share/locale/it/LC_MESSAGES/pacaur.mo
     msgfmt ./po/ja.po -o $pkgdir/usr/share/locale/ja/LC_MESSAGES/pacaur.mo
     msgfmt ./po/pl.po -o $pkgdir/usr/share/locale/pl/LC_MESSAGES/pacaur.mo
