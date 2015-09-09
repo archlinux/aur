@@ -8,7 +8,7 @@
 ## -- Build options -- ##
 #########################
 
-_use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
+_use_clang=0           # Use clang compiler (system). Results in faster build and smaller chromium.
 _use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , _use_clang need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
@@ -17,7 +17,7 @@ _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=47.0.2498.0
+pkgver=47.0.2503.0
 _launcher_ver=2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -26,7 +26,7 @@ url='http://www.chromium.org'
 license=('BSD')
 depends=('desktop-file-utils'
          'gtk2'
-         'icu'
+         #'icu'
          'jsoncpp'
          #'libsrtp'
          'libwebp'
@@ -51,7 +51,8 @@ makedepends=('libexif'
              'gperf'
              'ninja'
              'perl-json'
-             'python2-beautifulsoup3'
+             'python2-beautifulsoup4'
+             'python2-html5lib'
              'python2-simplejson'
              'python2-jinja'
              'subversion'
@@ -200,7 +201,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/catapult/tracing/third_party/gl-matrix'
            'third_party/catapult/tracing/third_party/jszip'
            'third_party/catapult/tracing/third_party/tvcm'
-           'third_party/catapult/tracing/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py'
            'third_party/catapult/tracing/third_party/tvcm/third_party/rcssmin'
            'third_party/catapult/tracing/third_party/tvcm/third_party/rjsmin'
            'third_party/cld_2'
@@ -217,6 +217,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
            'third_party/hunspell'
            'third_party/iccjpeg'
+           'third_party/icu'
            'third_party/jstemplate'
            'third_party/khronos'
            'third_party/leveldatabase'
@@ -364,7 +365,7 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_flac=1'
              '-Duse_system_fontconfig=1'
              '-Duse_system_harfbuzz=1'
-             '-Duse_system_icu=1'
+             '-Duse_system_icu=0'
              '-Duse_system_jsoncpp=1'
              '-Duse_system_libevent=0'
              '-Duse_system_libexif=1'
@@ -563,7 +564,7 @@ package() {
   install -Dm644 snapshot_blob.bin "${pkgdir}/usr/lib/chromium-dev/snapshot_blob.bin"
 
   # Install Resources
-  for i in content_resources keyboard_resources resources chrome_100_percent chrome_200_percent; do
+  for i in content_resources keyboard_resources resources chrome_100_percent chrome_200_percent chrome_material_100_percent chrome_material_200_percent; do
     install -Dm644 "${i}.pak" "${pkgdir}/usr/lib/chromium-dev/${i}.pak"
   done
 
