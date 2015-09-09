@@ -1,7 +1,7 @@
 pkgbase = apacman
 	pkgdesc = AUR wrapper forked from packer
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/oshazard/apacman
 	install = apacman.install
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = apacman
 	optdepends = rsync: Built-in ABS support
 	provides = packer
 	backup = etc/apacman.conf
-	source = https://github.com/oshazard/apacman/archive/v2.2.tar.gz
+	source = https://github.com/oshazard/apacman/releases/download/v2.2/apacman-2.2.tar.gz
 	md5sums = 8ee23cd2000b9734b0d47d1ecd31dd89
 
 pkgname = apacman
