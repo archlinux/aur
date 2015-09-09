@@ -1,14 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-elementary-tweaks-bzr
-pkgver=r239
+pkgver=r251
 pkgrel=1
 pkgdesc='Elementary Tweaks plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/elementary-tweaks'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('gconf' 'switchboard-bzr')
+depends=('gconf' 'glib2' 'glibc' 'gtk3' 'libgee'
+         'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-elementary-tweaks')
 conflicts=('switchboard-plug-elementary-tweaks')
