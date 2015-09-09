@@ -53,7 +53,7 @@ package() {
   mv "${pkgdir}/tmp" "${pkgdir}/usr/share/${pkgname}"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${pkgname}/yakyak" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/usr/share/${pkgname}/yakyak" "${pkgdir}/usr/bin/${pkgname%-git}"
 
   install -Dm644 "${srcdir}/yakyak.desktop" "${pkgdir}/usr/share/applications/yakyak.desktop"
   install -Dm644 "${srcdir}/yakyak/src/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/yakyak.png"
