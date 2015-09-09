@@ -6,14 +6,14 @@ _build_gnome_help="no" # yes|no
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.4.0.r0.g3e63f54
-pkgrel=2
+pkgver=2.4.0.r5.g7c44059
+pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://projects.gnome.org/easytag/'
 depends=('id3lib' 'taglib' 'libid3tag' 'gtk3' 'libvorbis' 'flac' 'speex' 'opusfile' 'wavpack' 'desktop-file-utils')
-makedepends=('git' 'intltool' 'appdata-tools')
+makedepends=('git' 'intltool' 'appdata-tools' 'autoconf-archive')
 ## depends on building gnome help files
 if [ "$_build_gnome_help" = 'yes' ]; then
   echo -e "\n>>>\n>>> Build with GNOME help files\n>>>\n"
