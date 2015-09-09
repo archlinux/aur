@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=44.0.2403.130
+pkgver=45.0.2454.85
 pkgrel=1
 _launcher_ver=2
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -15,8 +15,7 @@ license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
-         'hicolor-icon-theme')
+         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'python2-ply' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -27,40 +26,38 @@ install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         inox.desktop
-        0001-NSS-reject-DH-groups-smaller-than-1024-bits.patch
-        0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
         chromium-widevine.patch
-        disable-autofill-download-manager.patch
-        disable-google-url-tracker.patch
-        disable-default-extensions.patch
-        modify-default-prefs.patch
-        disable-notification-promo-fetch.patch
-        disable-instant-extended-api.patch
-        disable-google-ipv6-probes.patch
-        disable-gcm-status-check.patch
-        add-duckduckgo-search-engine.patch
-        branding.patch
-        launcher-branding.patch
-        disable-missing-key-warning.patch)
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-autofill-download-manager.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-google-url-tracker.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-default-extensions.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/modify-default-prefs.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-notification-promo-fetch.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/restore-classic-ntp.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-google-ipv6-probes.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-gcm-status-check.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/add-duckduckgo-search-engine.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/branding.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/launcher-branding.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-missing-key-warning.patch
+        0001-Demand-for-newer-POSIX-macro.patch)
         
-sha256sums=('37779b2f4844e1a6ac75d69897031955541ad97f3dd1d4ad641c371c1d63b414'
+sha256sums=('3e8c03a5a6ea4cc35017404a58687ca18207eed70781bad7f2d7d70610934c91'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
-            '46daf921ed7eaab175f5a86b09357c69c33a10ffe1d4e7c24476af510c1b28d0'
-            '8fb428244be7b50268a2848a34405c5551232e5c77f9e553cfdd3103979748d2'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
-            '68aae00fe82ab9e039b2c6481761c6ac5a7f0685eaf3366cbee00b9ac9dd5483'
+            'f36d0212121a4a0751e52bdfbc27c5535b925983b90d342a2d067f4fa7c13711'
             'f28a6d92f2f2ee3a69694468019a59718a8328c28be22c0db23671f376f786f2'
-            'ef498690b92a9140cb22facccf595640dfd378353c30e6efd05a4c92e64599de'
-            'b6fd027dfcaab88cbe36c952d5eb1ec0e4331f6c1f8fc9f1a0454b3f75502235'
+            '6bb46b2f938b1e6fc8a76e768e05b876862b2713be6f8e4594654f14eda23bac'
+            '4dd2deedf405e64f3ddc078271928ae7974d5327b6ceb366122d608fa3e495d7'
             '9ace9483fc37bbf9ab59b4e58a05c18e66078c29e9e40044e36fc9117bd55bfd'
-            'e9e86f7c9146e19c18ba7a10737ec94a655b737f96ce37b25798a5bd11f61c65'
+            '2aec3f9a8a3f9f64caf1fdaae797a617199739c8b0ead1e176aba1bcfffcc389'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
             'fc6b8f673cabfa3ce1cba535b6c872cdd41e815fc0c9a6468ac5fa7b5fbe3ce3'
             '3c5122db362c25f92ae78745ea5f3b5052068bdf5104623b375d328c449ae3f2'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
-            '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385')
+            '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
+            'd908939b10161efe658f0f82d2c132bf28dff54e08f02c6fed93815c3656f328')
 
 # We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
 # instructions on how to build the toolchain from source don't work that well
@@ -74,11 +71,8 @@ fi
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
-  # https://code.google.com/p/chromium/issues/detail?id=490240
-  patch -Np1 -i ../0001-NSS-reject-DH-groups-smaller-than-1024-bits.patch
-
-  # https://code.google.com/p/chromium/issues/detail?id=490260
-  patch -Np1 -i ../0001-Use-the-correct-URL-for-ERR_SSL_WEAK_SERVER_EPHEMERA.patch
+   # Fix BoringSSL build with glibc 2.22 (FS#45965)
+   patch -Np1 -d third_party/boringssl/src < ../0001-Demand-for-newer-POSIX-macro.patch
   
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
@@ -94,7 +88,7 @@ prepare() {
   patch -p1 < ../disable-default-extensions.patch
   patch -p1 < ../modify-default-prefs.patch
   patch -p1 < ../disable-notification-promo-fetch.patch
-  patch -p1 < ../disable-instant-extended-api.patch
+  patch -p1 < ../restore-classic-ntp.patch
   patch -p1 < ../disable-google-ipv6-probes.patch
   patch -p1 < ../disable-gcm-status-check.patch
   patch -p1 < ../add-duckduckgo-search-engine.patch
@@ -159,7 +153,7 @@ build() {
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
-    -Duse_system_libvpx=1
+    -Duse_system_libvpx=0
     -Duse_system_libxml=0
     -Duse_system_snappy=1
     -Duse_system_xdg_utils=1
