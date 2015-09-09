@@ -1,14 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-security-privacy-bzr
-pkgver=r172
+pkgver=r185
 pkgrel=1
 pkgdesc='Security & Privacy plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-security-privacy'
 license=('GPL3')
-depends=('elementary-dpms-helper-bzr' 'light-locker' 'switchboard-bzr' 'ufw'
-         'zeitgeist')
+depends=('elementary-dpms-helper-bzr' 'glib2' 'glibc' 'gtk3' 'libgee'
+         'light-locker' 'polkit' 'ufw' 'zeitgeist'
+         'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-security-privacy')
 conflicts=('switchboard-plug-security-privacy')
