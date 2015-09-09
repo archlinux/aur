@@ -1,7 +1,7 @@
 pkgbase = megatools
 	pkgdesc = Command line client application for Mega.co.nz
 	pkgver = 1.9.95
-	pkgrel = 2
+	pkgrel = 3
 	url = http://megatools.megous.com
 	arch = i686
 	arch = x86_64

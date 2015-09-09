@@ -2,7 +2,7 @@
 
 pkgname=megatools
 pkgver=1.9.95
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line client application for Mega.co.nz"
 arch=('i686' 'x86_64')
 url="http://megatools.megous.com"
@@ -27,6 +27,7 @@ prepare() {
 build() {
   cd "megatools-${pkgver}"
 
+  autoreconf -fi
   ./configure --prefix=/usr
 
   make
