@@ -9,12 +9,12 @@ PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
 pkgver=5.1.0f3+2015090301
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 license=('custom')
 url="https://unity3d.com/"
-depends=('desktop-file-utils' 'xdg-utils' 'gcc-multilib' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'monodevelop')
+depends=('desktop-file-utils' 'xdg-utils' 'gcc-multilib' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'libpqxx' 'monodevelop')
 optdepends=('ffmpeg: for WebGL exporting'
             'nodejs: for WebGL exporting'
             'java-runtime: for WebGL exporting'
@@ -45,7 +45,7 @@ package() {
     #ln -s /opt/Unity/Editor/Unity "${pkgdir}"/usr/bin/unity-editor
     #ln -s /opt/Unity/MonoDevelop/bin/monodevelop "${pkgdir}"/usr/bin/unity-monodevelop
     echo -e "#!/bin/sh\nexec /opt/Unity/Editor/Unity \"$@\"" > "${pkgdir}"/usr/bin/unity-editor
-    echo -e "#!/bin/sh\nexec /opt/Unity/MonoDevelop/bin/monodevelop \"$@\"" > "${pkgdir}"/usr/bin/unity-monodevelop
+    echo -e "#!/bin/sh\n\n# This prevents the editor from crashing when opening projects on some systems\nunset GTK_IM_MODULE\n\nexec /opt/Unity/MonoDevelop/bin/monodevelop \"$@\"" > "${pkgdir}"/usr/bin/unity-monodevelop
     chmod 755 "${pkgdir}"/usr/bin/unity-editor "${pkgdir}"/usr/bin/unity-monodevelop
 
     # Refering to the online license
