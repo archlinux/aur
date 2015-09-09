@@ -1,0 +1,68 @@
+diff -rupN noise-0.3.1.orig/data/CMakeLists.txt noise-0.3.1/data/CMakeLists.txt
+--- noise-0.3.1.orig/data/CMakeLists.txt	2015-08-30 13:02:13.782481101 +0200
++++ noise-0.3.1/data/CMakeLists.txt	2015-08-30 13:04:05.279065874 +0200
+@@ -1 +1 @@
+-install (FILES noise.desktop DESTINATION share/applications)
++install (FILES noise-player.desktop DESTINATION share/applications)
+diff -rupN noise-0.3.1.orig/data/noise.desktop noise-0.3.1/data/noise.desktop
+--- noise-0.3.1.orig/data/noise.desktop	2015-08-30 13:02:13.782481101 +0200
++++ noise-0.3.1/data/noise.desktop	1970-01-01 01:00:00.000000000 +0100
+@@ -1,21 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=Noise
+-GenericName=Music Player
+-Comment=Listen to music
+-Exec=noise %U
+-Icon=multimedia-audio-player
+-Terminal=false
+-Categories=Audio;Music;Player;AudioVideo;GNOME;GTK;
+-MimeType=x-content/audio-player;x-content/audio-cdda;application/ogg;application/x-extension-m4a;application/x-extension-mp4;application/x-flac;application/x-ogg;audio/3gpp;audio/aac;audio/ac3;audio/AMR;audio/AMR-WB;audio/basic;audio/flac;audio/midi;audio/mp2;audio/mp4;audio/mpeg;audio/ogg;audio/vnd.rn-realaudio;audio/x-aiff;audio/x-ape;audio/x-flac;audio/x-gsm;audio/x-it;audio/x-m4a;audio/x-matroska;audio/x-mod;audio/x-mp3;audio/x-mpeg;audio/x-mpegurl;audio/x-ms-asf;audio/x-ms-asx;audio/x-ms-wax;audio/x-ms-wma;audio/x-musepack;audio/x-pn-aiff;audio/x-pn-au;audio/x-pn-realaudio;audio/x-pn-realaudio-plugin;audio/x-pn-wav;audio/x-pn-windows-acm;audio/x-realaudio;audio/x-real-audio;audio/x-sbc;audio/x-scpls;audio/x-speex;audio/x-tta;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-wav;audio/x-wavpack;audio/x-xm;
+-StartupNotify=true
+-X-GNOME-Gettext-Domain=noise
+-X-GNOME-Keywords=Noise;Audio;Player;MP3;iPod;Play;Playlist;Media;CD;Phone;Songs;
+-X-GNOME-UsesNotifications=true
+-X-AppInstall-Keywords=Noise;Audio;Player;MP3;iPod;Play;Playlist;Media;CD;Phone;Songs;
+-X-PulseAudio-Properties=media.role=music
+-Actions=AboutDialog;
+-
+-[Desktop Action AboutDialog]
+-Exec=noise --about
+-Name=About Noise
+diff -rupN noise-0.3.1.orig/data/noise-player.desktop noise-0.3.1/data/noise-player.desktop
+--- noise-0.3.1.orig/data/noise-player.desktop	1970-01-01 01:00:00.000000000 +0100
++++ noise-0.3.1/data/noise-player.desktop	2015-08-30 13:03:47.112955459 +0200
+@@ -0,0 +1,21 @@
++[Desktop Entry]
++Type=Application
++Name=Noise
++GenericName=Music Player
++Comment=Listen to music
++Exec=noise-player %U
++Icon=multimedia-audio-player
++Terminal=false
++Categories=Audio;Music;Player;AudioVideo;GNOME;GTK;
++MimeType=x-content/audio-player;x-content/audio-cdda;application/ogg;application/x-extension-m4a;application/x-extension-mp4;application/x-flac;application/x-ogg;audio/3gpp;audio/aac;audio/ac3;audio/AMR;audio/AMR-WB;audio/basic;audio/flac;audio/midi;audio/mp2;audio/mp4;audio/mpeg;audio/ogg;audio/vnd.rn-realaudio;audio/x-aiff;audio/x-ape;audio/x-flac;audio/x-gsm;audio/x-it;audio/x-m4a;audio/x-matroska;audio/x-mod;audio/x-mp3;audio/x-mpeg;audio/x-mpegurl;audio/x-ms-asf;audio/x-ms-asx;audio/x-ms-wax;audio/x-ms-wma;audio/x-musepack;audio/x-pn-aiff;audio/x-pn-au;audio/x-pn-realaudio;audio/x-pn-realaudio-plugin;audio/x-pn-wav;audio/x-pn-windows-acm;audio/x-realaudio;audio/x-real-audio;audio/x-sbc;audio/x-scpls;audio/x-speex;audio/x-tta;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-wav;audio/x-wavpack;audio/x-xm;
++StartupNotify=true
++X-GNOME-Gettext-Domain=noise
++X-GNOME-Keywords=Noise;Audio;Player;MP3;iPod;Play;Playlist;Media;CD;Phone;Songs;
++X-GNOME-UsesNotifications=true
++X-AppInstall-Keywords=Noise;Audio;Player;MP3;iPod;Play;Playlist;Media;CD;Phone;Songs;
++X-PulseAudio-Properties=media.role=music
++Actions=AboutDialog;
++
++[Desktop Action AboutDialog]
++Exec=noise-player --about
++Name=About Noise
+diff -rupN noise-0.3.1.orig/src/CMakeLists.txt noise-0.3.1/src/CMakeLists.txt
+--- noise-0.3.1.orig/src/CMakeLists.txt	2015-08-30 13:02:13.789147563 +0200
++++ noise-0.3.1/src/CMakeLists.txt	2015-08-30 13:03:12.900669914 +0200
+@@ -93,7 +93,7 @@ vala_precompile (CLIENT_VALA_C ${SRC_TAR
+   ${CLIENT_VAPI}
+ )
+ 
+-set (EXEC_NAME ${SRC_TARGET})
++set (EXEC_NAME ${SRC_TARGET}-player)
+ 
+ add_definitions (${DEPS_CFLAGS})
+ link_directories (${DEPS_LIBRARY_DIRS})

@@ -1,0 +1,6 @@
+pkgname=('noise-bzr')
+builddeps=('granite-bzr' 'libindicate-gtk3')
+
+check_bzr $packagedir/$pkgname/${pkgname%-*}
+
+# vim: ts=2 sw=2 et:
