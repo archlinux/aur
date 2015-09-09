@@ -1,14 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-notifications-bzr
-pkgver=r106
+pkgver=r120
 pkgrel=1
 pkgdesc='Notifications plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-applications'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('switchboard-bzr')
+depends=('glib2' 'glibc' 'gtk3' 'libgee'
+         'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-notifications')
 conflicts=('switchboard-plug-notifications')
