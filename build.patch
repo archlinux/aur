@@ -1,0 +1,11 @@
++++ a/trunk/abcl/build.xml
++++ b/trunk/abcl/build.xml
+@@ -877,5 +877,5 @@
+ ${basedir}/../ansi-tests.
+ 
+-[1]: <git+https://gitlab.common-lisp.net/ansi-test/ansi-test.git>
++[1]: git+https://gitlab.common-lisp.net/ansi-test/ansi-test.git
+ 
+ The CL-BENCH tests require that [cl-bench][2] be manually installed in
+
+ 
