@@ -2,7 +2,7 @@ post_install() {
 
     # create group
     groupadd --force g2gis
-    
+
     # set permitions
     chown root:g2gis /usr/bin/2gis
     chmod g+s /usr/bin/2gis
@@ -21,7 +21,7 @@ post_install() {
     then
         /usr/bin/gtk-update-icon-cache -tq /usr/share/icons/hicolor
     fi
-    
+
     /usr/bin/update-mime-database /usr/share/mime
     /usr/bin/update-desktop-database -q
 }

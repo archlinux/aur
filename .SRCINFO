@@ -26,10 +26,13 @@ pkgbase = 2gis-beta
 	depends = zlib>=1.2.0
 	depends = icu52
 	depends = xcb-util-renderutil
+	options = !strip
 	source_i686 = http://deb.2gis.ru/pool/non-free/2/2gis/2gis_4.15.2-0trusty1+shv243+r4_i386.deb
-	md5sums_i686 = 4868b53129c23ead423fbc15587b99b1
+	sha256sums_i686 = db6ce1cb07918d9bdc50e13b6e434f8a16f6891f5d43f36fddf67e769ec08c70
+	sha512sums_i686 = 51daddffff55e5146eb816e28c53ab873ec20ecff9adfec471f33753e1e710cf74a63a90a020152406498ca5221ba4ca1951095a82e64ce0e300028efbc7d6de
 	source_x86_64 = http://deb.2gis.ru/pool/non-free/2/2gis/2gis_4.15.2-0trusty1+shv243+r296_amd64.deb
-	md5sums_x86_64 = ae4b82fa97fd459d1074bca0e9617be4
+	sha256sums_x86_64 = c7072ad720de218afb5f18922738d6dd5fb67580616dd12b7231529bfd56f652
+	sha512sums_x86_64 = 1fa65ba6c57ca23098c67e8c216bb41c6e916f658f46f5d80323100f68841c03ae7d0856df7ca30bf303761a97debe70db1a1ec45ab8f683ae43db3a10d34246
 
 pkgname = 2gis-beta
 
