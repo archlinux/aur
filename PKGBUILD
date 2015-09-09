@@ -1,25 +1,17 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
-_pkgname=clockr
-pkgname=clockr-git
-pkgver=r2.8348d57
+pkgname=clockr
+pkgver=0.1
 pkgrel=1
-pkgdesc="simple curses clock written in python"
+pkgdesc="simple curses clock wirtten in python"
 arch=('any')
-url="https://github.com/shaggytwodope/clockr"
+url="https://github.com/jarun/google-cli"
 license=('MIT')
 depends=('python')
-makedepends=('git')
-conflicts=('clockr')
-source=('git://github.com/shaggytwodope/clockr.git')
-md5sums=('SKIP')
-
-pkgver() {
-  cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/shaggytwodope/clockr/archive/v$pkgver.tar.gz")
+md5sums=('01e83df419e6a18c95d06dd73c8ef811')
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 clockr "${pkgdir}/usr/bin/clockr"
 }
