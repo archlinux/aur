@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-ng-git
 	pkgdesc = An improved, enhanced systemd hook for mkinitcpio
-	pkgver = v0.2.r0.g1680383
+	pkgver = v0.4.r0.g0110fac
 	pkgrel = 1
 	url = https://github.com/ackalker/mkinitcpio-systemd-ng
 	arch = any

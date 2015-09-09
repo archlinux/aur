@@ -1,7 +1,7 @@
 # Maintainer: Alain Kalker <a.c.kalker@gmail.com>
 _gitname=mkinitcpio-systemd-ng
 pkgname=$_gitname-git
-pkgver=v0.2.r0.g1680383
+pkgver=v0.4.r0.g0110fac
 pkgrel=1
 pkgdesc="An improved, enhanced systemd hook for mkinitcpio"
 arch=('any')
