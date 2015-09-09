@@ -1,0 +1,21 @@
+pkgbase = fftw2
+	pkgdesc = A library for computing the discrete Fourier transform (DFT), major version 2, with OpenMPI
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = http://www.fftw.org/
+	install = fftw2.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran
+	makedepends = openmpi
+	depends = glibc
+	provides = fftw2
+	conflicts = fftw2
+	options = libtool
+	options = staticlibs
+	source = http://www.fftw.org/fftw-2.1.5.tar.gz
+	sha1sums = 12020b58edc1b0490a83db4aa912fac5dfdfb26b
+
+pkgname = fftw2
+
