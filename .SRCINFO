@@ -26,6 +26,7 @@ pkgbase = switchboard-bzr
 	optdepends = switchboard-plug-pantheon-shell-bzr: Pantheon Shell plug
 	optdepends = switchboard-plug-power-bzr: Power plug
 	provides = switchboard
+	provides = libswitchboard-2.0.so
 	conflicts = switchboard
 	source = bzr+lp:switchboard
 	sha256sums = SKIP

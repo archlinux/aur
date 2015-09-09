@@ -19,7 +19,7 @@ optdepends=('switchboard-plug-about-bzr: About plug'
             'switchboard-plug-keyboard-bzr: Keyboard plug'
             'switchboard-plug-pantheon-shell-bzr: Pantheon Shell plug'
             'switchboard-plug-power-bzr: Power plug')
-provides=('switchboard')
+provides=('switchboard' 'libswitchboard-2.0.so')
 conflicts=('switchboard')
 install='switchboard.install'
 source=('bzr+lp:switchboard')
