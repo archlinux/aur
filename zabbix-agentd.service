@@ -1,0 +1,13 @@
+[Unit]
+Description=Zabbix agent daemon
+After=network.target
+
+[Service]
+Type=forking
+User=root
+ExecStart=/usr/bin/zabbix_agentd
+PIDFile=/run/zabbix/zabbix_agentd.pid
+
+[Install]
+WantedBy=multi-user.target
+
