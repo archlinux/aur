@@ -1,0 +1,4 @@
+electron-*.zip
+src/
+*.tar.xz
+yakyak/
