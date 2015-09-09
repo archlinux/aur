@@ -2,7 +2,7 @@
 
 pkgname=httraqt
 name=HTTraQt
-pkgver=1.4.4
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Is the clone from WinHTTrack tool. GUI is based on Qt4 libriaries."
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ source=("http://freefr.dl.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.
 #options=('!strip')
 license=('GPL')
 install=${pkgname}.install
-md5sums=('194c099768499c12c432b6db0132f488')
 
 build() {
   cd "${srcdir}/$pkgname"
@@ -38,3 +37,4 @@ package() {
   install -m 0755 ${srcdir}/${pkgname}/build/$pkgname $pkgdir/usr/bin/
   #mv $pkgdir/usr/share/httraqt/help $pkgdir/usr/share/doc/
 }
+md5sums=('3404d89e0d2d662210d766cd59f0c9fe')
