@@ -9,7 +9,7 @@ pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('i686' 'x86_64')
 url="http://www.rainlendar.net/"
 license=('custom')
-depends=('curl' 'gtk2' 'glibc' 'expat' 'libsm' 'libstdc++5' 'libpng12' 'libjpeg-turbo' 'sdl' 'rtmpdump' 'libidn')
+depends=('curl' 'gtk2' 'glibc' 'expat' 'libsm' 'libstdc++5' 'libpng12' 'libjpeg6-turbo' 'sdl' 'rtmpdump' 'libidn')
 provides=('rainlendar2')
 conflicts=('rainlendar-pro')
 
