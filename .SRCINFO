@@ -1,0 +1,22 @@
+pkgbase = pilas-engine
+	pkgdesc = Un motor para hacer videojuegos de manera sencilla en Python. An engine to make games in an easy way with Python.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.pilas-engine.com.ar
+	arch = any
+	license = LGPL
+	makedepends = mercurial
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-pyqt4
+	depends = box2d
+	depends = python2-pybox2d
+	depends = python2-pygame
+	conflicts = pilas-hg
+	conflicts = pilas-git,
+	conflicts = pilas-engine-git
+	source = https://github.com/hugoruscitti/pilas-engine/archive/1.1.0.zip
+	md5sums = 7803101a29aadaa28ebc18d22a6a4823
+
+pkgname = pilas-engine
+
