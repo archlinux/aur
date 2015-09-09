@@ -2,8 +2,8 @@
 _name=ocp
 pkgname=ocp-git
 pkgver=0.1.22.r62.3a44284
-pkgrel=1
-pkgdesc="A music file player for Linux, Unix, DOS and Windows 95-ME, XP."
+pkgrel=2
+pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://stian.cubic.org/project-ocp.php"
 license=('GPL')
