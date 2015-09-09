@@ -1,0 +1,20 @@
+pkgbase = libdecodeqr-git
+	pkgdesc = A C/C++ library for decoding QR code 2D barcodes
+	pkgver = 0.9.4.rbbba977
+	pkgrel = 1
+	url = https://github.com/josephholsten/libdecodeqr
+	install = libdecodeqr.install
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	makedepends = git
+	depends = opencv
+	provides = libdecodeqr
+	conflicts = libdecodeqr
+	source = git+https://github.com/josephholsten/libdecodeqr.git
+	source = automake.patch
+	sha256sums = SKIP
+	sha256sums = a087f21fe3cf7bccf9773afc54537a27b0cb94eda3fb81836b368bfb81120019
+
+pkgname = libdecodeqr-git
+

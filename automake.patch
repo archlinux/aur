@@ -1,0 +1,20 @@
+From 88185ad69da409b21d83651f33a7a2200e93dc5a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Benjamin=20Chr=C3=A9tien?= <chretien@lirmm.fr>
+Date: Wed, 9 Sep 2015 13:11:30 +0900
+Subject: Fix for automake >= 1.11.2
+
+
+diff --git a/configure.ac b/configure.ac
+index dd7ac45..920483b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,6 +7,9 @@ AC_CONFIG_AUX_DIR([build-aux])
+ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+ AC_CONFIG_SRCDIR([libdecodeqr/bitstream.cpp])
+ 
++# Fix for recent changes in automake
++m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
++
+ # Checks for programs.
+ AC_LANG([C++])
+ AC_PROG_CXX

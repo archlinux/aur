@@ -1,0 +1,11 @@
+post_install() {
+    libtool --mode=finish /usr/lib
+}
+
+post_upgrade() {
+    libtool --mode=finish /usr/lib
+}
+
+post_remove() {
+    libtool --mode=finish /usr/lib
+}
