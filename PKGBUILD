@@ -1,14 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-power-bzr
-pkgver=r34
+pkgver=r74
 pkgrel=1
 pkgdesc='Power indicator for Wingpanel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-power'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('wingpanel-rewrite-x11-bzr')
+depends=('bamf' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgtop'
+         'wingpanel-rewrite-x11-bzr'
+         'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-power')
 conflicts=('wingpanel-indicator-power')
