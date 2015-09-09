@@ -5,7 +5,7 @@
 
 _pkgname=weston
 pkgname=$_pkgname-orbital-git
-pkgver=1.7.90.4484.1b06292
+pkgver=1.7.93.4678.a0fd45c
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor modified for use with orbital'
 arch=(i686 x86_64)

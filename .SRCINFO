@@ -1,6 +1,6 @@
 pkgbase = weston-orbital-git
 	pkgdesc = Reference implementation of a Wayland compositor modified for use with orbital
-	pkgver = 1.7.90.4484.1b06292
+	pkgver = 1.7.93.4678.a0fd45c
 	pkgrel = 1
 	url = https://github.com/giucam/weston/tree/libweston
 	arch = i686
