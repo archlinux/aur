@@ -3,7 +3,7 @@
 
 _pkgname=pylzma
 pkgname=python2-$_pkgname
-pkgver=0.4.6
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Platform independent python bindings for the LZMA compression library"
 url="http://www.joachim-bauch.de/projects/python/pylzma"
@@ -14,7 +14,7 @@ provides=("pylzma=$pkgver")
 replaces=('pylzma')
 conflicts=('pylzma')
 source=(http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('140038c8c187770eecfe7041b34ec9b9')
+md5sums=('7040c489c7bbd0e1a4331484e1579261')
 
 package() {
 	cd $srcdir/$_pkgname-$pkgver
