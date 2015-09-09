@@ -1,0 +1,19 @@
+pkgbase = bsd-mailx-git
+	pkgdesc = bsd-mailx from Debain
+	pkgver = 147.g2a15543
+	pkgrel = 1
+	url = http://anonscm.debian.org/gitweb/?p=users/robert/bsd-mailx.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = libbsd
+	depends = liblockfile
+	provides = bsd-mailx
+	conflicts = bsd-mailx
+	backup = etc/bsd-mailx.rc
+	source = git://anonscm.debian.org/users/robert/bsd-mailx.git
+	sha256sums = SKIP
+
+pkgname = bsd-mailx-git
+
