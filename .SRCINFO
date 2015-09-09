@@ -1,12 +1,12 @@
 pkgbase = gpcp-jvm
 	pkgdesc = Gardens Point Component Pascal
 	pkgver = 1.3.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpcp.codeplex.com
 	arch = any
 	license = BSD
 	depends = java-runtime
-	source = http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=gpcp&DownloadId=603357&FileTime=130028569339630000&Build=21028
+	source = http://deadsoftware.ru/files/gpcp/gpcp-JVM-v1.3.16.zip
 	source = cpint
 	source = cprun
 	source = j2cps

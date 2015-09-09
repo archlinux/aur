@@ -1,14 +1,13 @@
 # Maintainer: DeaDDooMER <deaddoomer@deadsoftware.ru>
 pkgname=gpcp-jvm
 pkgver=1.3.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Gardens Point Component Pascal"
 url="https://gpcp.codeplex.com"
 arch=('any')
 license=('BSD')
 depends=('java-runtime')
-source=("http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=gpcp&DownloadId=603357&FileTime=130028569339630000&Build=21028"
-		"cpint" "cprun" "j2cps")
+source=("http://deadsoftware.ru/files/gpcp/gpcp-JVM-v1.3.16.zip" "cpint" "cprun" "j2cps")
 md5sums=('103bc7fe7e1811e5e5dd024c21e584bd'
 			'd2c81dd1fb8316f5bd1580b9f907d485'
 			'b9272c464b32e495176782a9ee42186f'
