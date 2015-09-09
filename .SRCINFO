@@ -1,6 +1,6 @@
 pkgbase = focuswriter-git
 	pkgdesc = A simple fullscreen word processor
-	pkgver = 1.5.0.84.g3f27350
+	pkgver = 1.5.0.89.g4933ecf
 	pkgrel = 1
 	url = http://gottcode.org/focuswriter/
 	install = focuswriter-git.install
