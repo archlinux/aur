@@ -1,0 +1,13 @@
+pkgbase = regionset
+	pkgdesc = read/sets the region code of DVD drives
+	pkgver = 0.2
+	pkgrel = 4
+	url = http://linvdr.org/projects/regionset/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://linvdr.org/download/regionset/regionset-0.2.tar.gz
+	md5sums = a908ba16ca948512df22250f3d500073
+
+pkgname = regionset
+
