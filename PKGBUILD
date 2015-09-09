@@ -4,7 +4,7 @@ set -u
 _pyver="python"
 _pybase='guzzle-sphinx-theme'
 pkgname="${_pyver}-${_pybase}"
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc='Sphinx theme used by Guzzle'
 arch=('any')
@@ -15,7 +15,7 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
 )
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7be7a9d5b3f4235074f449e5f7e9f8f8432fb8e9e3896ee3f40d9b9165189943')
+sha256sums=('be264736cfb0b19c00289e2ea4e5487a01df28ef8bf47df5dacd273d9d43412c')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
