@@ -11,8 +11,8 @@
 # needs too.
 
 pkgname=ffmpeg-full
-pkgver=2.7.2
-pkgrel=2
+pkgver=2.8
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ provides=(
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
         UNREDISTRIBUTABLE.txt)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('7ceb7550ad628c526fa6c9ff23fdfb687a62f54d90c4a730998d8c2b417b9ef2'
+sha256sums=('9565236404d3515aab754283c687c0a001019003148bf7f708e643608c0690b8'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
