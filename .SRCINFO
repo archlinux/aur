@@ -1,0 +1,14 @@
+pkgbase = silver
+	pkgdesc = A simple, lightweight AUR package downloader
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/K-Guan/silver
+	arch = any
+	license = GPL2
+	depends = python3
+	optdepends = git: for download package use git
+	source = https://codeload.github.com/K-Guan/silver/tar.gz/1.2
+	sha256sums = 4c8b6c16b9f5d770462f807cb73ecdf29cc2d49882a656bf8a48ef5a93a4753e
+
+pkgname = silver
+
