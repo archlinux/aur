@@ -1,0 +1,20 @@
+pkgbase = leslie-git
+	pkgdesc = A leslie audio effect with jack, OSC control, and (optionally) an opengl GUI.
+	pkgver = d2617a6
+	pkgrel = 1
+	url = https://github.com/dack/leslie
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = boost
+	depends = liblo
+	depends = libgl
+	depends = glut
+	depends = ftgl
+	depends = boost-libs
+	depends = jack
+	source = leslie::git+https://github.com/dack/leslie.git
+	sha1sums = SKIP
+
+pkgname = leslie-git
+
