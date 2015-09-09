@@ -1,13 +1,14 @@
 pkgbase = fwupd
 	pkgdesc = A simple daemon to allow session software to update firmware
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hughsie/fwupd
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = docbook2x
 	makedepends = intltool
+	makedepends = perl-xml-sax-expat
 	depends = appstream-glib>=0.3.5
 	depends = fwupdate
 	source = fwupd-0.1.5.tar.gz::https://github.com/hughsie/fwupd/archive/0.1.5.tar.gz
