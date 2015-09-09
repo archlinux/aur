@@ -1,14 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-display-bzr
-pkgver=r91
+pkgver=r107
 pkgrel=1
 pkgdesc='Display plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-display'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('gnome-desktop' 'switchboard-bzr')
+depends=('cairo' 'clutter' 'clutter-gtk' 'glib2' 'glibc' 'gnome-desktop' 'gtk3'
+         'libgee'
+         'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-display')
 conflicts=('switchboard-plug-display')
