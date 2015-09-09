@@ -6,7 +6,7 @@
 _pkgname=gnuplot
 pkgname=${_pkgname}-notk
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/qt."
 arch=('i686' 'x86_64')
 url="http://www.gnuplot.info"
@@ -17,8 +17,10 @@ options=('!makeflags')
 provides=('gnuplot')
 conflicts=('gnuplot' 'gnuplot-nox')
 install=gnuplot.install
-source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha1sums=('ca5163e3cb466b4aeb878f1173b0fe624367f08a')
+source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
+	"lua53_compat.patch")
+sha1sums=('ca5163e3cb466b4aeb878f1173b0fe624367f08a'
+	'9005fa9e4da91ceedb8ccd1d761866e7b064f8b1')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
@@ -29,6 +31,8 @@ prepare() {
 	sed -i -e 's|/usr/X11R6/lib/X11/fonts/Type1|/usr/share/fonts/Type1|' \
 		-e 's|$(X11ROOT)/X11R6/lib/X11/fonts/Type1|$(X11ROOT)/usr/share/fonts/Type1|' \
 		src/variable.c
+
+	patch -p1 < "$srcdir"/lua53_compat.patch
 }
 
 build() {
