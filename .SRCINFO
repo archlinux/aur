@@ -1,0 +1,14 @@
+pkgbase = nopoll
+	pkgdesc = Websocket library written in C
+	pkgver = 0.3.2.b232
+	pkgrel = 1
+	url = http://www.aspl.es/nopoll/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = openssl
+	source = http://www.aspl.es/nopoll/downloads/nopoll-0.3.2.b232.tar.gz
+	sha256sums = a1a25dcfe8406fcd355568ab0331f24eeec011a7b272df7b34a16db4a283b834
+
+pkgname = nopoll
+
