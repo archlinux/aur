@@ -4,15 +4,15 @@
 
 _pkgname=freeminer
 pkgname=${_pkgname}-git
-pkgver=0.4.13.7.r0.gc58c7a1
-pkgrel=1
+pkgver=0.4.13.7.r12.g2771f5c
+pkgrel=2
 pkgdesc='An open source sandbox game inspired by Minecraft. Development version.'
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
 license=('GPL3' 'CCPL:cc-by-sa-3.0')
 
 depends=('leveldb' 'curl' 'hiredis' 'sqlite' 'luajit' 'xdg-utils' 'irrlicht' 'openal' 'enet' 'jsoncpp' 'libvorbis' 'hicolor-icon-theme')
-makedepends=('cmake' 'git' 'msgpack-c')
+makedepends=('cmake' 'git' 'msgpack-c' 'clang')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
@@ -71,10 +71,12 @@ build() {
 	# Building package
 	cd ${srcdir}/build
 	cmake ../${_pkgname} \
+		-DCMAKE_C_COMPILER=clang \
+		-DCMAKE_CXX_COMPILER=clang++ \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DRUN_IN_PLACE=0 \
-		-DENABLE_SYSTEM_MSGPACK=1 \
-		-DENABLE_SYSTEM_JSONCPP=1
+		-DENABLE_SYSTEM_JSONCPP=1 \
+		-DENABLE_SYSTEM_MSGPACK=1
 	make -j${njobs}
 }
 
