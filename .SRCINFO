@@ -1,0 +1,26 @@
+pkgbase = kpackage-git
+	pkgdesc = Framework that lets applications manage user installable packages of non-binary assets
+	pkgver = r198.09e0ac7
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kpackage
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = python
+	makedepends = kdoctools
+	depends = qt5-base
+	depends = karchive-git
+	depends = ki18n-git
+	depends = kcoreaddons-git
+	depends = kconfig-git
+	provides = kpackage
+	conflicts = kpackage
+	source = git://anongit.kde.org/kpackage.git
+	md5sums = SKIP
+
+pkgname = kpackage-git
+
