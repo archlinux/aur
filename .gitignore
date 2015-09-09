@@ -1,4 +1,6 @@
 electron-*.zip
 src/
+pkg/
 *.tar.xz
+*.tar.gz
 yakyak/
