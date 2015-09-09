@@ -1,7 +1,7 @@
 # Maintainer: Kevin Guan <KevinGuan.gm@gmail.com>
 
 pkgname='silver'
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A simple, lightweight AUR package downloader"
 arch=('any')
