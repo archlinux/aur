@@ -1,0 +1,13 @@
+pkgbase = open-isns
+	pkgdesc = iSNS server and client for Linux
+	pkgver = 0.94
+	pkgrel = 1
+	url = https://github.com/gonzoleeman/open-isns
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = open-isns-0.94.tar.gz::https://github.com/gonzoleeman/open-isns/archive/0.94.tar.gz
+	sha256sums = ac2c6f248ad824d4b9c083b5b3ff0342187edd9a8bed52b950a906817b3618b7
+
+pkgname = open-isns
+
