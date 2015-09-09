@@ -1,0 +1,12 @@
+pkgbase = caledonia-kdm-theme
+	pkgdesc = Caledonia theme: KDM theme (deprecated)
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://caledonia.sourceforge.net/
+	arch = any
+	license = CCPL:by-sa
+	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20KDM/Caledonia-KDM-2.0.tar.gz
+	md5sums = 0ff7009da2716d3e282533533d17ec68
+
+pkgname = caledonia-kdm-theme
+
