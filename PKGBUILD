@@ -15,11 +15,12 @@ pkgname=(
     'llvm-ocaml-svn'
     'clang-svn'
     'clang-analyzer-svn'
+    'clang-compiler-rt-svn'
     'clang-tools-extra-svn'
 )
 _pkgname='llvm'
 
-pkgver=3.8.0svn_r246942
+pkgver=3.8.0svn_r247138
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -286,6 +287,9 @@ package_clang-svn() {
         "llvm-svn=${pkgver}-${pkgrel}"
     )
     optdepends=(
+        'clang-analyzer-svn: source code analysis for Clang, supporting C, C++, and Objective-C'
+        'clang-compiler-rt-svn: sanitizer runtimes, builtins, profile library and BlocksRuntime'
+        'clang-tools-extra-svn: standalone tools: syntax checking, formatting, refactoring, etc.'
         'python2: git-clang-format and clang-format-diff.py support'
     )
     provides=('clang')
@@ -344,6 +348,23 @@ package_clang-analyzer-svn() {
         "${pkgdir}/usr/lib/clang-analyzer/scan-build/set-xcode-analyzer"
 
     _compile_python_files "${pkgdir}/usr/lib/clang-analyzer"
+
+    _install_license
+}
+
+package_clang-compiler-rt-svn() {
+    pkgdesc='The "compiler-rt" set of runtime libraries for Clang and LLVM'
+    url='http://compiler-rt.llvm.org/'
+    depends=(
+        "clang-svn=${pkgver}-${pkgrel}"
+    )
+    provides=('clang-compiler-rt')
+    replaces=('clang-compiler-rt')
+    conflicts=('clang-compiler-rt')
+
+    cd "${srcdir}/build/projects/compiler-rt"
+
+    make DESTDIR="${pkgdir}" install
 
     _install_license
 }
