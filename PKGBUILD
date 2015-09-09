@@ -4,7 +4,7 @@
 
 pkgname=asterisk
 pkgver=13.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64')
 backup=('etc/asterisk/acl.conf'
