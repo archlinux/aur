@@ -1,14 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session-bzr
-pkgver=r18
-pkgrel=3
+pkgver=r31
+pkgrel=1
 pkgdesc='Session indicator for Wingpanel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-session'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('accountsservice' 'wingpanel-rewrite-x11-bzr')
+depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
+         'wingpanel-rewrite-x11-bzr'
+         'libgranite.so')
 makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
