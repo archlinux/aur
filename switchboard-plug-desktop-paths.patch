@@ -1,0 +1,12 @@
+diff -rupN switchboard-plug-pantheon-shell.orig/src/Wallpaper.vala switchboard-plug-pantheon-shell/src/Wallpaper.vala
+--- switchboard-plug-pantheon-shell.orig/src/Wallpaper.vala	2014-08-08 00:39:34.755816630 +0200
++++ switchboard-plug-pantheon-shell/src/Wallpaper.vala	2014-08-08 00:42:00.421123901 +0200
+@@ -226,7 +226,7 @@ class Wallpaper : EventBox {
+         } else if (folder_combo.get_active () == 1) {
+             clean_wallpapers ();
+ 
+-            var system_uri = "file:///usr/share/backgrounds";
++            var system_uri = "file:///usr/share/backgrounds/pantheon";
+             var user_uri = GLib.File.new_for_path (GLib.Environment.get_user_data_dir () + "/backgrounds").get_uri ();
+ 
+             load_wallpapers (system_uri, cancellable);

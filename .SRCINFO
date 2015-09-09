@@ -1,0 +1,34 @@
+pkgbase = switchboard-plug-desktop-bzr
+	pkgdesc = Desktop plug for Switchboard
+	pkgver = r369
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-pantheon-shell
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gnome-desktop
+	depends = gtk3
+	depends = libgee
+	depends = plank
+	depends = libgranite.so
+	depends = libswitchboard-2.0.so
+	provides = switchboard-plug-desktop
+	provides = switchboard-plug-pantheon-shell
+	conflicts = switchboard-plug-desktop
+	conflicts = switchboard-plug-pantheon-shell
+	replaces = switchboard-plug-pantheon-shell-bzr
+	source = switchboard-plug-desktop::bzr+lp:switchboard-plug-pantheon-shell
+	source = switchboard-plug-desktop-paths.patch
+	sha256sums = SKIP
+	sha256sums = 085777b30998596e521c83e0676687b6ca3e73f04d0f1a62c673f4a78b29c933
+
+pkgname = switchboard-plug-desktop-bzr
+
