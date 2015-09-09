@@ -1,15 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-about-bzr
-pkgver=r308
+pkgver=r321
 pkgrel=1
 pkgdesc='About plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-about'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('switchboard-bzr')
-makedepends=('bzr' 'cmake' 'vala')
+depends=('glib2' 'glibc' 'gtk3' 'libgee'
+         'libswitchboard-2.0.so')
+makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
 provides=('switchboard-plug-about')
 conflicts=('switchboard-plug-about')
 source=('bzr+lp:switchboard-plug-about'
