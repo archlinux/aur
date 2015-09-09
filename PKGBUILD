@@ -38,12 +38,12 @@ build() {
 }
  
 package() {
-    cd rr62x-linux-src-v$pkgver/product/rr62x/linux/
+    cd $srcdir/rr62x-linux-src-v$pkgver/product/rr62x/linux/
 
     # Install the kernel module
     #mkdir -p "${pkgdir}/usr/lib/modules/${_extramodules}/"
-    install -m 644 -D rr62x.ko "${pkgdir}/usr/lib/modules/${_extramodules}/drivers/scsi/rr62x/rr62x.ko"
-    gzip "${pkgdir}/usr/lib/modules/${_extramodules}/rr62x.ko"
+    install -m 644 -D rr62x.ko "${pkgdir}/usr/lib/modules/${_kernver}/drivers/scsi/rr62x/rr62x.ko"
+    gzip "${pkgdir}/usr/lib/modules/${_kernver}/drivers/scsi/rr62x/rr62x.ko"
 
     mkdir -p $pkgdir/usr/share/licenses/$pkgname
     cp $srcdir/rr62x-linux-src-v$pkgver/README $pkgdir/usr/share/licenses/$pkgname/
