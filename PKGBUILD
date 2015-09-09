@@ -183,6 +183,7 @@ package_llvm-svn() {
     depends=(
         "llvm-libs-svn=${pkgver}-${pkgrel}"
     )
+    groups=('llvm-toolchain-svn')
     provides=('llvm')
     replaces=('llvm')
     conflicts=('llvm')
@@ -230,6 +231,7 @@ package_llvm-libs-svn() {
         'libffi'
         'zlib'
     )
+    groups=('llvm-toolchain-svn')
     provides=('llvm-libs')
     replaces=('llvm-libs')
     conflicts=('llvm-libs')
@@ -292,6 +294,7 @@ package_clang-svn() {
         'clang-tools-extra-svn: standalone tools: syntax checking, formatting, refactoring, etc.'
         'python2: git-clang-format and clang-format-diff.py support'
     )
+    groups=('llvm-toolchain-svn')
     provides=('clang')
     replaces=('clang')
     conflicts=('clang')
@@ -324,6 +327,7 @@ package_clang-analyzer-svn() {
         "clang-svn=${pkgver}-${pkgrel}"
         'python2'
     )
+    groups=('llvm-toolchain-svn')
     provides=('clang-analyzer')
     replaces=('clang-analyzer')
     conflicts=('clang-analyzer')
@@ -358,6 +362,7 @@ package_clang-compiler-rt-svn() {
     depends=(
         "clang-svn=${pkgver}-${pkgrel}"
     )
+    groups=('llvm-toolchain-svn')
     provides=('clang-compiler-rt')
     replaces=('clang-compiler-rt')
     conflicts=('clang-compiler-rt')
@@ -375,6 +380,7 @@ package_clang-tools-extra-svn() {
     depends=(
         "clang-svn=${pkgver}-${pkgrel}"
     )
+    groups=('llvm-toolchain-svn')
     provides=('clang-tools-extra')
     replaces=('clang-tools-extra')
     conflicts=('clang-tools-extra')
