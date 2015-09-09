@@ -1,7 +1,7 @@
 # Mantainer: Bruno Galeotti <bgaleotti@gmail.com>
 
 pkgname=php-twig
-pkgver=1.19.0
+pkgver=1.21.2
 pkgrel=1
 pkgdesc='PHP Twig extension.'
 url='http://github.com/twigphp/Twig'
@@ -11,11 +11,12 @@ depends=('php')
 makedepends=('php')
 source=("https://github.com/twigphp/Twig/tarball/v${pkgver}")
 backup=('etc/php/conf.d/twig.ini')
-sha256sums=('c4c3b80d18c23c221063e51abcd3fae8560e5ebce6ca943a0555037e6de4d157')
+sha256sums=('03f7018fc4f41d953d2cbbf56e1fe101fa646dbc833bfdd753b69b6172d22bef')
+_git_commit='df56fa1'
 
 build() {
   msg "Starting build"
-  workdir=$srcdir/twigphp-Twig*
+  workdir=$srcdir/twigphp-Twig-${_git_commit}
   cd $workdir/ext/twig
 
   msg "Running phpize"
@@ -29,7 +30,7 @@ package() {
 
   echo "extension=twig.so" > "twig.ini"
 
-  workdir=$srcdir/twigphp-Twig*
+  workdir=$srcdir/twigphp-Twig-${_git_commit}
   install -D -m755 ${workdir}/ext/twig/modules/twig.so ${pkgdir}/usr/lib/php/modules/twig.so
   install -D -m644 twig.ini ${pkgdir}/etc/php/conf.d/twig.ini
   install -D -m644 ${workdir}/LICENSE ${pkgdir}/usr/share/licenses/twig/LICENSE

@@ -1,6 +1,6 @@
 pkgbase = php-twig
 	pkgdesc = PHP Twig extension.
-	pkgver = 1.19.0
+	pkgver = 1.21.2
 	pkgrel = 1
 	url = http://github.com/twigphp/Twig
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = php-twig
 	makedepends = php
 	depends = php
 	backup = etc/php/conf.d/twig.ini
-	source = https://github.com/twigphp/Twig/tarball/v1.19.0
-	sha256sums = c4c3b80d18c23c221063e51abcd3fae8560e5ebce6ca943a0555037e6de4d157
+	source = https://github.com/twigphp/Twig/tarball/v1.21.2
+	sha256sums = 03f7018fc4f41d953d2cbbf56e1fe101fa646dbc833bfdd753b69b6172d22bef
 
 pkgname = php-twig
 
