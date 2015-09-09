@@ -1,11 +1,11 @@
-# Maintainer: dysphr <>
+# Maintainer: dysphoria <>
 # Contributor: Mitsu <archlinux AT suumitsu DOT eu>
 # Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: Ray Powell <ray_al@xphoniexx.net>
 
 pkgname=mcomix-git
 _gitname=mcomix
-pkgver=20150627
+pkgver=20150907
 pkgrel=1
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
