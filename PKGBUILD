@@ -5,8 +5,9 @@ pkgname=nginx-http2
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 _pkgname=nginx
-pkgver=1.9.3
-pkgrel=2
+pkgver=1.9.4
+pkgrel=1
+patchver=5
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with early alpha HTTP/2 support'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -24,21 +25,21 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install=nginx.install
-source=($url/download/nginx-$pkgver.tar.gz
-        $url/patches/http2/patch.http2-v2_1.9.3.txt
+source=(${url}/download/nginx-${pkgver}.tar.gz
+        ${url}/patches/http2/patch.http2-v${patchver}_${pkgver}.txt
         service
         logrotate)
-md5sums=('125282e2a7321265e7dfd7d05e4e2a3d'
-         '7cf13d2b21aa0cd3e1453c898b99bed8'
+md5sums=('27322fbb4b265c0e0cc548f5e6b7f201'
+         '64a9fcb6cce70e1093a887454a8a0223'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '19a26a61c8afe78defb8b4544f79a9a0')
-sha256sums=('4298c5341b2a262fdb8dbc0a1389756181af8f098c7720abfb30bd3060f673eb'
-            '8fe4d8ca0301370902123136b401e8bd7112ed6c36e92a8fd8a0d9277dc870cb'
+sha256sums=('479b0c03747ee6b2d4a21046f89b06d178a2881ea80cfef160451325788f2ba8'
+            '2b8eb36bf48bf375850fff23ee15d34bd0327b6240274ae26dcee702e0b907ac'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '2613986dd5faab09ca962264f16841c8c55c3a0bc7a5bb737eabd83143090878')
 
 build() {
-  cd "${srcdir}/$_pkgname-$pkgver"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/etc/nginx \
@@ -80,7 +81,7 @@ build() {
 
 prepare() {
   cd "${srcdir}/$_pkgname-$pkgver"
-  patch -p1 < ../patch.http2-v2_1.9.3.txt
+  patch -p1 < ../patch.http2-v${patchver}_${pkgver}.txt
 }
 
 package() {
@@ -90,22 +91,22 @@ package() {
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
     -e '44s|html|/usr/share/nginx/html|' \
     -e '54s|html|/usr/share/nginx/html|' \
-    -i "$pkgdir"/etc/nginx/nginx.conf
+    -i "${pkgdir}/etc/nginx/nginx.conf"
 
   rm "$pkgdir"/etc/nginx/*.default
 
-  install -d "$pkgdir"/var/lib/nginx
-  install -dm700 "$pkgdir"/var/lib/nginx/proxy
+  install -d "${pkgdir}/var/lib/nginx"
+  install -dm700 "${pkgdir}/var/lib/nginx/proxy"
 
-  chmod 750 "$pkgdir"/var/log/nginx
-  chown http:log "$pkgdir"/var/log/nginx
+  chmod 750 "${pkgdir}/var/log/nginx"
+  chown http:log "${pkgdir}/var/log/nginx"
 
-  install -d "$pkgdir"/usr/share/nginx
-  mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
+  install -d "${pkgdir}/usr/share/nginx"
+  mv "${pkgdir}/etc/nginx/html/" "${pkgdir}/usr/share/nginx"
 
-  install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
-  install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  install -Dm644 ../logrotate "${pkgdir}/etc/logrotate.d/nginx"
+  install -Dm644 ../service "${pkgdir}/usr/lib/systemd/system/nginx.service"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-  rmdir "$pkgdir"/run
+  rmdir "${pkgdir}/run"
 }
