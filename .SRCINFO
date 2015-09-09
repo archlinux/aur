@@ -1,0 +1,16 @@
+pkgbase = nethub
+	pkgdesc = multiple connection line based single domain or TCP socket network repeater, can work with socat or netcat
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/fmang/nethub
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = http://mg0.fr/pub/c/nethub-1.1.tar.gz
+	sha256sums = f9d30c20cf57e0dfb57bb8d5216b70c516933fcb5d25a559374bc40995a70108
+
+pkgname = nethub
+
