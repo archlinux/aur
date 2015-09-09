@@ -6,6 +6,7 @@ pkgdesc="C++ library encapsulating Petri net-related functions"
 arch=('i686' 'x86_64')
 url="http://service-technology.org/pnapi/"
 license=('AGPL3')
+checkdepends=('graphviz')
 depends=('petrify')
 checkdepends=()
 optdepends=('graphviz: for svg output with petri'
