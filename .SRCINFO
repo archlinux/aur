@@ -1,9 +1,8 @@
 pkgbase = nikto-git
 	pkgdesc = A web server scanner which performs comprehensive tests against web servers for multiple items
-	pkgver = 2.1.6
+	pkgver = 2.1.6.601.7ac0457
 	pkgrel = 1
 	url = https://github.com/sullo/nikto
-	install = nikto.install
 	arch = any
 	license = GPL
 	makedepends = git
@@ -11,10 +10,12 @@ pkgbase = nikto-git
 	depends = openssl
 	depends = perl-net-ssleay
 	depends = perl-json
+	provides = nikto
+	conflicts = nikto
 	backup = etc/nikto.conf
-	source = nikto-git::git+https://github.com/sullo/nikto-git
+	source = nikto-git::git+https://github.com/sullo/nikto
 	source = nikto.sh
-	sha512sums = 13632018ef6862de7dc53c674d7266fcfb7e164bcf3070327c103cbf8737720ffb710ccc8949acc920a6e0a85da1bb7575d073ee245bc2ba3a8a292ad1695e69
+	sha512sums = SKIP
 	sha512sums = 75b9be1f1cacbca09a5e72f8125aadc24938a3ac36b2337bf68916231af52e2af846a0dedb36782f45716d2c6d590a3606cb5879339528e7a744f1d2d880120d
 
 pkgname = nikto-git
