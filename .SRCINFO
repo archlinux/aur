@@ -1,0 +1,27 @@
+pkgbase = conky-colors-git
+	pkgdesc = An easier way to configure Conky
+	pkgver = 20150806.r148.3980575
+	pkgrel = 1
+	url = https://github.com/helmuthdu/conky_colors
+	install = conky-colors-git.install
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = conky
+	depends = pystatgrab
+	depends = python2-keyring
+	depends = ttf-ubuntu-font-family
+	depends = hddtemp
+	depends = curl
+	depends = lm_sensors
+	provides = conky-colors
+	conflicts = conky-colors
+	source = git+https://github.com/helmuthdu/conky_colors.git
+	sha512sums = SKIP
+
+pkgname = conky-colors-git
+

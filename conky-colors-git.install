@@ -1,0 +1,6 @@
+post_install() {
+  printf '%s\n  %s\n  %s\n' \
+    'To prepare your system to use conky-colors-git, run the following as root:' \
+    '$ chmod u+s /usr/bin/hddtemp' \
+    '$ sensors-detect # answer yes to all questions'
+}
