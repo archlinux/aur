@@ -9,8 +9,8 @@ url='https://launchpad.net/wingpanel-indicator-sound'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee'
-         'libnotify' 'libpulse' 'wingpanel-rewrite-x11-bzr'
-         'libgranite.so')
+         'libnotify' 'libpulse'
+         'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-sound')
 conflicts=('wingpanel-indicator-sound')
@@ -23,15 +23,20 @@ pkgver() {
   echo "r$(bzr revno)"
 }
 
-build() {
+prepare() {
   cd wingpanel-indicator-sound
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd wingpanel-indicator-sound/build
 
   cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib'
   make
