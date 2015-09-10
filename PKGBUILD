@@ -3,53 +3,63 @@
 pkgname=freefem++-hg
 pkgver=3.39.r3376.358816cdd019
 _pkgver=3.39
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
 depends=('blas' 'lapack' 'arpack' 'fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi')
-makedepends=('mercurial' 'gcc-fortran' 'texlive-core')
+makedepends=('mercurial' 'gcc-fortran' 'texlive-latexextra')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
-source=('hg+http://www.freefem.org/ff++/ff++')
+source=('hg+http://www.freefem.org/ff++/ff++/')
 sha256sums=('SKIP')
-options=('!buildflags')
+options=('!makeflags')
 
 pkgver() {
-  cd 'ff++'
-  printf "${_pkgver}.r%s.%s" $(hg identify -n) $(hg identify -i)
-}
-
-prepare() {
-  cd ff++/download/PETSc
-  sed 's/--download-ml//' Makefile > Makefile
+  cd "$srcdir/ff++"
+  printf "${_pkgver}.r%s.%s" $(hg identify -n|sed 's/+//') $(hg identify -i|sed 's/+//')
 }
 
 build() {
-  cd 'ff++'
-  autoreconf -i
+  cd "$srcdir/ff++"
+  autoreconf -i 
+  perl download/getall -a
+  ./configure CC=mpicc CXX=mpic++ FC=mpifort \
+	      --enable-download --enable-m64 --sysconfdir=/etc \
+	      --with-mpi --disable-schwarz --prefix=/usr 
+  cd "$srcdir/ff++"/download/PETSc
+  cp Makefile Makefile.old
+  sed -e 's/--download-ml/--with-shared-libraries/' \
+      -e 's/all-local:/#all-local:/' \
+      -e 's/(CC)/(MPICC)/' Makefile.old > Makefile
+  make
+  cd -
+  cp configure configure.old
+  sed 's/\/petsc\/conf\/petscvariables/\/conf\/petscvariables/' \
+      configure.old > configure
+  cd "$srcdir/ff++"
+  
   ./configure CC=mpicc CXX=mpic++ FC=mpifort \
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-download \
     --with-umfpack="-lumfpack -lsuitesparseconfig -lcholmod -lcolamd" \
-    --with-mpi=openmpi \
+    --with-mpi \
     --with-petsc=$srcdir/download/PETSc/petsc-3.5.2/arch-linux2-c-debug \
     --disable-schwarz 
-  perl download/getall -a
   make PREFIX=/usr 
 }
 
 check() {
-  cd ff++
+  cd "$srcdir/ff++"
   make check
 }
 
 package() {
-  cd 'ff++'
-  make -d  DESTDIR="$pkgdir" install
+  cd "$srcdir/ff++"
+  make -d DESTDIR="$pkgdir" install
   install -Dm644 examples++/freefem++.pref $pkgdir/etc/freefem++.pref
   find $pkgdir/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
   # remove unneeded stuff
