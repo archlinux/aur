@@ -1,0 +1,16 @@
+pkgbase = mutt-ics
+	pkgdesc = A tool to show calendar event details in mutt
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/dmedvinsky/mutt-ics
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = python
+	depends = python-icalendar
+	provides = mutt-ics
+	source = git://github.com/dmedvinsky/mutt-ics#commit=401e6d6
+	md5sums = SKIP
+
+pkgname = mutt-ics
+
