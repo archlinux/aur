@@ -1,0 +1,17 @@
+pkgbase = clawspeek-git
+	pkgdesc = Decode obfuscated claws-mail passwords (see ~/.clawsmail/accountrc)
+	pkgver = 8.881c15a
+	pkgrel = 1
+	url = https://github.com/mones/clawspeek
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	provides = clawspeek
+	conflicts = clawspeek
+	source = git://github.com/mones/clawspeek.git
+	md5sums = SKIP
+
+pkgname = clawspeek-git
+
