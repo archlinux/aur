@@ -1,0 +1,14 @@
+pkgbase = touchpad-state-git
+	pkgdesc = Set touchpad state; includes udev on-mouse rule.
+	pkgver = 0.89.1
+	pkgrel = 1
+	url = https://github.com/Gen2ly/touchpad-state/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = xf86-input-synaptics
+	source = git://github.com/Gen2ly/touchpad-state
+	md5sums = SKIP
+
+pkgname = touchpad-state-git
+
