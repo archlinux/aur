@@ -2,7 +2,7 @@
 # Contributor: kaptoxic <kaptoxic _at_ yahoo _dot_ com >
 
 pkgname=gnome-shell-tracker-search-provider-git
-pkgver=r26.da08e64
+pkgver=r30.e2469c1
 pkgrel=1
 pkgdesc="Gnome-shell extension for displaying tracker search results in the shell overview"
 arch=('any')
