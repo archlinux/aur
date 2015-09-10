@@ -3,7 +3,7 @@
 # Contributor: Peng Zhang <pczhang@gmail.com>
 
 pkgname=alglib
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="A cross-platform numerical analysis and data processing library (third version). Free Version"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 #depends=('gmp' 'mpfr')
 options=('!staticlibs')
 source=("http://www.alglib.net/translator/re/alglib-${pkgver}.cpp.gpl.zip")
-md5sums=('376310094f0f5ab35962920b6f4a0bf3')
+md5sums=('45a88476d927bd7435178410f62d7a85')
 
 build() {
   cd ${srcdir}/cpp/src
