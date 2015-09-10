@@ -13,7 +13,7 @@ depends=('gtkmm' 'gconfmm' 'libxml++' 'libunique' 'vlc' 'gstreamer0.10-base')
 optdepends=('linuxtv-dvb-apps: dvb tools'
 'w_scan: generation of channels.conf')
 makedepends=('intltool' 'gnome-common' 'bzr')
-provides=('me-tv')
+provides=('me-tv-bzr')
 conflicts=('me-tv')
 install='me-tv.install'
 options=('!emptydirs')

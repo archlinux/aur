@@ -1,4 +1,4 @@
-pkgbase = me-tv
+pkgbase = me-tv-bzr
 	pkgdesc = A digital television (DVB) viewer for GNOME.
 	pkgver = 1.4.0
 	pkgrel = 58
