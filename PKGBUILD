@@ -9,8 +9,7 @@ url='https://launchpad.net/wingpanel-indicator-session'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
-         'wingpanel-rewrite-x11-bzr'
-         'libgranite.so')
+         'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
@@ -23,15 +22,20 @@ pkgver() {
   echo "r$(bzr revno)"
 }
 
-build() {
+prepare() {
   cd wingpanel-indicator-session
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd wingpanel-indicator-session/build
 
   cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib'
   make

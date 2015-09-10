@@ -1,5 +1,5 @@
 pkgname=('wingpanel-indicator-session-bzr')
-builddeps=('granite-bzr' 'gala-bzr' 'wingpanel-rewrite-x11-bzr')
+builddeps=('granite-bzr' 'gala-bzr' 'wingpanel-bzr')
 
 check_bzr $packagedir/$pkgname/${pkgname%-*}
 
