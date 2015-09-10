@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=XWinClone
+Comment=Used to translate another window's content in its own window
+Comment[ru_RU]=Транслирует содержимое другого окна в свое окно
+Exec=xwinclone -d
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Utility;
+GenericName=

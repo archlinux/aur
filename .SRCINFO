@@ -1,0 +1,25 @@
+pkgbase = xwinclone
+	pkgdesc = Used to translate another window's content in its own window
+	pkgver = 0.1p
+	pkgrel = 2
+	url = https://github.com/awpe/xwinclone
+	install = xwinclone.install
+	arch = any
+	license = BSD 3-Clause
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = xorg-server-common
+	depends = libxmu
+	depends = libxcomposite
+	depends = imlib2
+	depends = libjpeg-turbo
+	source = xwinclone::git+https://github.com/awpe/xwinclone
+	source = xwinclone.desktop
+	source = xwinclone-auto.desktop
+	sha256sums = SKIP
+	sha256sums = ff78212c263df89f0eeecc3de20878f5896a2263fbd192a2cef26b68770de9dd
+	sha256sums = 6ff7aa0e4f9e59371a8136780bda2acd7faac05e543dc6e4425ae259da638b2e
+
+pkgname = xwinclone
+

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=XWinClone
+Comment=XWinClone autostart
+Exec=xwinclone -d
+Terminal=false
+Type=Application
+NotShowIn=GNOME;KDE;XFCE;LXDE;
