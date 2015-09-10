@@ -2,22 +2,20 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=php-suhosin
-pkgver=0.9.37.1
+pkgver=0.9.38
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='An advanced protection system for PHP installations'
 url='http://suhosin.org/'
 license=('PHP')
 source=("http://download.suhosin.org/suhosin-${pkgver}.tar.gz"
-#         "http://download.suhosin.org/suhosin-${pkgver}.tar.gz.sig"
-        )
+        "http://download.suhosin.org/suhosin-${pkgver}.tar.gz.sig")
 depends=('php')
 checkdepends=('php-cgi')
 backup=('etc/php/conf.d/suhosin.ini')
-sha1sums=('9de7a89ef7d336501a41f452fd3936ae66f63a6e'
-#          'SKIP'
-)
-# validpgpkeys=('E027452AFAB2A52F18AB6363B12D0447319F1ADB')
+sha1sums=('20af6379c0ff9879c5ed69452a6c38b7b3e76748'
+          'SKIP')
+validpgpkeys=('E027452AFAB2A52F18AB6363B12D0447319F1ADB')
 
 build() {
 	cd ${srcdir}/suhosin-${pkgver}
@@ -29,8 +27,8 @@ build() {
 check() {
 	cd ${srcdir}/suhosin-${pkgver}
 	export NO_INTERACTION=1
+	export REPORT_EXIT_STATUS=1
 	make test
-	echo
 }
 
 package() {
