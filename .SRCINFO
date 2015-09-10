@@ -1,6 +1,6 @@
 pkgbase = keepassx2
 	pkgdesc = Crossplatform port of Windows' application ''KeePass Password Safe''
-	pkgver = beta1
+	pkgver = 2.0beta2
 	pkgrel = 1
 	url = https://www.keepassx.org/dev/
 	install = keepassx2.install
@@ -16,8 +16,8 @@ pkgbase = keepassx2
 	conflicts = keepassx
 	conflicts = keepassx2-git
 	options = !emptydirs
-	source = https://www.keepassx.org/dev/attachments/download/100/keepassx-2.0-beta1.tar.gz
-	sha256sums = bce1933c48fd33ef8043dd526d769fd9c454d1b63464c82a35e1f7a8689acbf2
+	source = https://www.keepassx.org/dev/attachments/download/115/keepassx-2.0-beta2.tar.gz
+	sha256sums = 5828261226c441856bd12e2f4f73af1a5fc3b1981b2cff40fbc2403e344f4e52
 
 pkgname = keepassx2
 
