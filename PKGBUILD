@@ -38,7 +38,7 @@ prepare() {
   popd
 
   pushd tapcfg
-  ./buildall.sh linuxonly > /dev/null
+  ./buildall.sh linuxonly || true > /dev/null
   popd
   set +e
   echo ======================== prepare completed ========================
