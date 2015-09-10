@@ -1,11 +1,15 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-bitmerchant-git
-pkgver=20150804
+pkgver=20150909
 pkgrel=1
 pkgdesc="Bitcoin/altcoin merchant tools"
 arch=('any')
-depends=('python2' 'python2-base58' 'python2-ecdsa' 'python2-six')
+depends=('python2'
+         'python2-base58'
+         'python2-cachetools'
+         'python2-ecdsa'
+         'python2-six')
 makedepends=('git' 'python2-setuptools')
 url="https://github.com/sbuss/bitmerchant"
 license=('MIT')
@@ -17,14 +21,6 @@ conflicts=('python2-bitmerchant')
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
-}
-
-prepare() {
-  cd ${pkgname%-git}
-
-  msg2 'Fixing Python version...'
-  find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
-  find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
 }
 
 build() {
