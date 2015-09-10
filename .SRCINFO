@@ -1,0 +1,25 @@
+pkgbase = wingpanel-indicator-bluetooth-bzr
+	pkgdesc = Bluetooth indicator for Wingpanel
+	pkgver = r5
+	pkgrel = 1
+	url = https://launchpad.net/wingpanel-indicator-bluetooth
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = bluez
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgranite.so
+	depends = libwingpanel-2.0.so
+	provides = wingpanel-indicator-bluetooth
+	conflicts = wingpanel-indicator-bluetooth
+	source = bzr+lp:wingpanel-indicator-bluetooth
+	sha256sums = SKIP
+
+pkgname = wingpanel-indicator-bluetooth-bzr
+

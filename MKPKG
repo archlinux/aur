@@ -1,0 +1,6 @@
+pkgname=('wingpanel-indicator-bluetooth-bzr')
+builddeps=('granite-bzr' 'gala-bzr' 'wingpanel-bzr')
+
+check_bzr $packagedir/$pkgname/${pkgname%-*}
+
+# vim: ts=2 sw=2 et:
