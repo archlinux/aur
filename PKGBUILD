@@ -9,7 +9,7 @@
 pkgname='ruby-jemalloc'
 pkgdesc='An object-oriented language for quick and easy programming'
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url='http://www.ruby-lang.org/en/'
 license=(BSD custom)
