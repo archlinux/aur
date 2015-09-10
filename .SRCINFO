@@ -1,6 +1,6 @@
 pkgbase = gnumeric-pure-hg
 	pkgdesc = Gnumeric plugin for the Pure programming language
-	pkgver = 5445.6b7c8b14cb4b
+	pkgver = 5600.09b1f67c2d96
 	pkgrel = 1
 	url = http://purelang.bitbucket.org/
 	arch = i686
