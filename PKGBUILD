@@ -6,7 +6,7 @@
 
 pkgname=draftsight
 pkgver=V1R6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Dassault Systemes' freeware CAD software for your DWG files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
@@ -33,7 +33,7 @@ depends=(
 )
 install='draftsight.install'
 source=("http://www.draftsight.com/download-linux-fedora")
-md5sums=('2f3b2ab5e0df9390d8bd7f4aad5f64e9')
+md5sums=('09b495cc90951625100a22c7f1f0960f')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
 

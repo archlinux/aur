@@ -1,7 +1,7 @@
 pkgbase = draftsight
 	pkgdesc = Dassault Systemes' freeware CAD software for your DWG files.
 	pkgver = V1R6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.3ds.com/products/draftsight/
 	install = draftsight.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = draftsight
 	depends = util-linux
 	depends = zlib
 	source = http://www.draftsight.com/download-linux-fedora
-	md5sums = 2f3b2ab5e0df9390d8bd7f4aad5f64e9
+	md5sums = 09b495cc90951625100a22c7f1f0960f
 
 pkgname = draftsight
 
