@@ -1,11 +1,12 @@
 pkgbase = anydesk
 	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support
 	pkgver = 2.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://anydesk.de/
 	arch = i686
 	arch = x86_64
 	license = custom:Freeware
+	depends = gtkglext
 	source_i686 = http://download.anydesk.com/anydesk-2.0.1-i686.tar.gz
 	sha256sums_i686 = 2084ee36c1d8e10d828ad6343c0065fb22a21a576f7998c45053d90d061c4360
 	source_x86_64 = http://download.anydesk.com/anydesk-2.0.1-amd64.tar.gz
