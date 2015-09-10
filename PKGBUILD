@@ -6,15 +6,15 @@
 
 pkgname=xf86-video-ati-git
 _realpkgname=xf86-video-ati
-pkgver=7.5.0.r75.gafab783
+pkgver=7.5.0.r96.g0288a4b
 pkgrel=1
 pkgdesc="X.org ati video driver. Git version"
 arch=('i686' 'x86_64')
 url="http://xorg.freedesktop.org/"
 provides=("${_realpkgname}")
 depends=('libdrm>=2.4.41' 'systemd' 'mesa')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=19'  )
-conflicts=('xorg-server<1.16.0' 'xf86-video-ati' 'X-ABI-VIDEODRV_VERSION<19' 'X-ABI-VIDEODRV_VERSION>=20')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20.0'  )
+conflicts=('xorg-server<1.16.0' 'xf86-video-ati' 'X-ABI-VIDEODRV_VERSION<20.0' 'X-ABI-VIDEODRV_VERSION>=21.0')
 license=('custom')
 install=xf86-video-ati-git.install
 
