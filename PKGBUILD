@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=go-ethereum
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Ethereum Go Client (CLI)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/ethereum/go-ethereum"
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ethereum/$pkgname/tar.gz/v$pkgver
         git+https://github.com/ethereum/go-ethereum.wiki)
-sha256sums=('d24583b6ff96ed0573b9f5250dc17f5ab3e846eb1bf7078304d9c05a9c3e701a'
+sha256sums=('03d51b81b5ddbfa254c138d7fa8a5da73e84d3757ca2372c7b8afe8f5c35c5c3'
             'SKIP')
 options=('!strip' '!emptydirs')
 
