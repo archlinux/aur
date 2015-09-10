@@ -1,6 +1,6 @@
 pkgbase = sunxi-tools-git
 	pkgdesc = Tools to help hacking Allwinner based devices. (A10, A20, sun4i, sun7i)
-	pkgver = v1.1.r201.gb80e7ce
+	pkgver = v1.1.r216.g82b9c65
 	pkgrel = 1
 	url = https://github.com/linux-sunxi/sunxi-tools
 	arch = i686
