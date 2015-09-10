@@ -1,0 +1,11 @@
+[Unit]
+Description=Goiardi server
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/goiardi --conf-root /etc/goiardi
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
