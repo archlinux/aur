@@ -1,25 +1,29 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor : xav <xav at ethertricks dot net>
 
+# TODO: Replace rc.d with systemd services
+
 set -u
 pkgname='pmacct'
-pkgver='1.5.1'
+pkgver='1.5.2'
 pkgrel='1'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
 url='http://www.pmacct.net/'
 license=('GPL2')
 depends=('libpcap' 'libmysqlclient' 'postgresql-libs' 'sqlite3')
+_verwatch=("${url}" "${url}${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
 source=("http://www.pmacct.net/${pkgname}-${pkgver}.tar.gz"
         'pmacctd.rc.d' \
         'nfacctd.rc.d' \
         'sfacctd.rc.d' \
         'uacctd.rc.d')
-sha256sums=('96134549a10947f3f6d610b670a26f1a54e01af4be0eff09bf48c19246d33584'
+sha256sums=('c12e3897e2f9aa89333968da46eb46855f357750ac1e06e36e72f374e2b54df9'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
             'dbfd2210e9e96d672483916c3c2dd38a58c1725920823a7221a2a2cd3f43c48a')
+
 prepare() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -30,7 +34,7 @@ prepare() {
 build() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make -s -j $(nproc) # not big enough for multi processors
+  make -s -j "$(nproc)"
   set +u
 }
 
@@ -64,10 +68,17 @@ package() {
   cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'QUICKSTART' 'FAQS' 'KNOWN-BUGS' 'README' 'TODO' 'TOOLS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
   # EXAMPLES changed to QUICKSTART
 
-  # Ensure there are no forbidden paths (git-aurcheck)
-  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
-  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
-
+  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
+  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
+  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
+  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
+  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
+  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
+  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
+  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
+  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
+  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
+  #! pcre2grep -Ilr "(?<!usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
   set +u
 }
 
