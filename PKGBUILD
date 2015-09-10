@@ -1,6 +1,6 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=python-twitter
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='An API and command-line toolset for Twitter (twitter.com)'
 arch=('any')
@@ -12,7 +12,7 @@ replaces=('python-twitter-tools')
 makedepends=('python-setuptools')
 conflicts=('python-twitter-tools' 'python-twitter-tools-git' 'python-twitter-git')
 source=("http://pypi.python.org/packages/source/t/twitter/twitter-${pkgver}.tar.gz")
-sha256sums=('85396c4c33b9b213f3d2d805caaf6b386b9e277af9117eb51e5a782f77257376')
+sha256sums=('9e998dce881615d5c62579462ad7ed9751ddaed88072f268edf9c0e58f6d700b')
 
 package() {
   cd "$srcdir/twitter-$pkgver"
