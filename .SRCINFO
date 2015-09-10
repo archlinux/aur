@@ -8,6 +8,7 @@ pkgbase = clawspeek-git
 	license = GPL3
 	makedepends = git
 	makedepends = make
+	makedepends = gcc
 	provides = clawspeek
 	conflicts = clawspeek
 	source = git://github.com/mones/clawspeek.git
