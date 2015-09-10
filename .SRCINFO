@@ -1,0 +1,14 @@
+pkgbase = ix
+	pkgdesc = A command line pastebin - shell
+	pkgver = 1.0
+	pkgrel = 1
+	url = ix.io/client
+	arch = any
+	license = unknown
+	depends = bash
+	source = ix::git://github.com/PedroSFreitas/ix-client.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ix
+
