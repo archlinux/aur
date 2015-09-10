@@ -1,7 +1,8 @@
 # Maintainer: Justin Dray <justin@dray.be>
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
+
 pkgname=grafana
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
@@ -14,7 +15,7 @@ backup=("etc/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "config.patch"
         "grafana.service")
-md5sums=('e5c45f82df77d2204fc7e13b4ce713c0'
+md5sums=('4c0a403137d0257a513e7db005666aa8'
          'f676cfe7bdd2463e2600ff8fce75a2d6'
          '05508c9c21f4c93ad86944a52d37e925')
 
