@@ -20,7 +20,7 @@ optdepends=('python2-pyqt: Gui'
             'python2-flup: for additional webservers'
             'python2-notify: Notifications for GUI'
             'js: ClickNLoad')
-source=("http://get.pyload.org/get/src/${pkgver}"
+source=("https://github.com/pyload/pyload/releases/download/v${pkgver}/pyload-src-v${pkgver}.zip"
         'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/applications/pyload-gui.desktop'
         'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/applications/pyload.desktop'
         'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/pixmaps/pyload-gui.png'
