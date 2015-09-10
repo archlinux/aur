@@ -1,5 +1,5 @@
 post_install() {
-        dkms install corefreq/${1%%-*}
+        dkms install corefreq-git/${1%%-*}
         echo 'modprobe or insmod the kernel module intelfreq.ko prior to start corefreqd.service and'
         echo 'use systemd to start corefreqd.service prior to running corefreq-cli'
 }
@@ -13,5 +13,5 @@ post_upgrade() {
 }
 
 pre_remove() {
-        dkms remove corefreq/${1%%-*} --all
+        dkms remove corefreq-git/${1%%-*} --all
 }

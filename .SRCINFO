@@ -1,4 +1,4 @@
-pkgbase = corefreq
+pkgbase = corefreq-git
 	pkgdesc = Processor Core Monitoring
 	pkgver = 1.0.0
 	pkgrel = 1

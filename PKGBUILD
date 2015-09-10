@@ -1,6 +1,6 @@
 # Maintainer: CyrIng <labs[at]cyring[dot]fr>
 # Contributor: CyrIng <labs[at]cyring[dot]fr>
-pkgbase=corefreq
+pkgbase=corefreq-git
 pkgname=corefreq-git
 pkgver=1.0.0
 pkgrel=1
@@ -30,6 +30,6 @@ package() {
 	install -m755 corefreq-cli "${pkgdir}/usr/bin/corefreq-cli"
 	mkdir "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
 	install -Dm644 dkms.conf "${pkgdir}/usr/src/${pkgbase}-${pkgver}/dkms.conf"
-	cp --no-preserve=ownership Makefile *.h *.c dkms.conf *.install \
+	cp --no-preserve=ownership Makefile *.h *.c dkms.conf \
 		"${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
 }
