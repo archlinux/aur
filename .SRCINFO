@@ -1,0 +1,14 @@
+pkgbase = ffiler-git
+	pkgdesc = Sort files into structured directory tree
+	pkgver = r22.3768798
+	pkgrel = 1
+	url = https://github.com/fukawi2/ffiler
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/fukawi2/ffiler.git
+	md5sums = SKIP
+
+pkgname = ffiler-git
+
