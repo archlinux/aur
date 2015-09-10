@@ -2,7 +2,7 @@
 
 pkgname=anydesk
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support"
 arch=('i686' 'x86_64')
 url="http://anydesk.de/"
@@ -18,6 +18,7 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     ls -alh
     mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/pixmaps/anydesk ${pkgdir}/usr/share/doc/anydesk
+    chmod +x anydesk
     mv anydesk ${pkgdir}/usr/bin
     mv icons/* ${pkgdir}/usr/share/pixmaps/anydesk
     rm -rf icons
