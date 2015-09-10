@@ -10,7 +10,6 @@ conflits=('virtualbox-ext-oracle')
 optdepends=('rdesktop: client to connect vm via RDP')
 license=('custom:PUEL')
 options=('!strip')
-install=virtualbox-bin-ext-oracle.install
 source=("http://download.virtualbox.org/virtualbox/$pkgver/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
 noextract=("Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
 md5sums=('8acd6033201f1c59effc66b177192f4f')

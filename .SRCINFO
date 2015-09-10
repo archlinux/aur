@@ -3,7 +3,6 @@ pkgbase = virtualbox-bin-ext-oracle
 	pkgver = 5.0.4
 	pkgrel = 1
 	url = http://www.virtualbox.org/
-	install = virtualbox-bin-ext-oracle.install
 	arch = any
 	license = custom:PUEL
 	depends = virtualbox-bin

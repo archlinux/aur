@@ -1,9 +1,0 @@
-pre_upgrade() {
-  post_remove "$@"
-}
-
-post_remove() {
-  VBoxManage extpack uninstall 'Oracle VM VirtualBox Extension Pack' >/dev/null
-}
-
-# vim:set ts=2 sw=2 ft=sh et:
