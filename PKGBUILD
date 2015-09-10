@@ -2,7 +2,7 @@
 
 pkgname=prefixsuffix-git
 _gitname=prefixsuffix
-pkgver=0.6.4.r0.gd50397a
+pkgver=0.6.6.r0.g9247914
 pkgrel=1
 pkgdesc='A GUI application that renames batches of files by changing the beginning or end of their names.'
 arch=('i686' 'x86_64')
