@@ -15,7 +15,7 @@ conflicts=('cutemarked')
 source=( "git://github.com/cloose/CuteMarkEd.git"
          "$pkgname.install")
 md5sums=('SKIP'
-         'c864bddb8fb532fe2ac27cd20de55b10')
+         '262fc1597fb332894d1367f510a7f39b')
 install=$pkgname.install
 
 pkgver() {

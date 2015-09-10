@@ -19,7 +19,7 @@ pkgbase = cutemarked-git
 	source = git://github.com/cloose/CuteMarkEd.git
 	source = cutemarked-git.install
 	md5sums = SKIP
-	md5sums = c864bddb8fb532fe2ac27cd20de55b10
+	md5sums = 262fc1597fb332894d1367f510a7f39b
 
 pkgname = cutemarked-git
 
