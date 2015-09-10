@@ -6,13 +6,6 @@
 #  aws-cli & aws-cli-git
 #  python-botocore & python-botocore-git
 
-# TODO: Do we need split packages for python2 (see python-wheel for example)
-
-# To build:
-#   makepkg -scCfi --pkg python-botocore
-# or
-#   makepkg -scCfi --pkg python2-botocore
-
 # Note: the primary use of this package is with aws-cli
 
 # Use mcdiff to watch for changes
@@ -48,7 +41,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -70,7 +63,7 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
 )
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7c5d263434969ba6d517653879cbe5e1a60533890e9c29bd020a1f79312e0c1d')
+sha256sums=('84edb9125b8f9e5b66daff8ae583959975718869bb66378d58e5b60c0725bd33')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
