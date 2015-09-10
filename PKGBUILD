@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 pkgdesc='An advanced protection system for PHP installations'
 url='http://suhosin.org/'
 license=('PHP')
-source=("http://download.suhosin.org/suhosin-${pkgver}.tar.gz"
-        "http://download.suhosin.org/suhosin-${pkgver}.tar.gz.sig")
+source=("https://download.suhosin.org/suhosin-${pkgver}.tar.gz"
+        "https://download.suhosin.org/suhosin-${pkgver}.tar.gz.sig")
 depends=('php')
 checkdepends=('php-cgi')
 backup=('etc/php/conf.d/suhosin.ini')

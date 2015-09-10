@@ -9,8 +9,8 @@ pkgbase = php-suhosin
 	checkdepends = php-cgi
 	depends = php
 	backup = etc/php/conf.d/suhosin.ini
-	source = http://download.suhosin.org/suhosin-0.9.38.tar.gz
-	source = http://download.suhosin.org/suhosin-0.9.38.tar.gz.sig
+	source = https://download.suhosin.org/suhosin-0.9.38.tar.gz
+	source = https://download.suhosin.org/suhosin-0.9.38.tar.gz.sig
 	sha1sums = 20af6379c0ff9879c5ed69452a6c38b7b3e76748
 	sha1sums = SKIP
 
