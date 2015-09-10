@@ -118,8 +118,8 @@
 +
 +
  </policyconfig>
---- indicator-cpufreq/indicator_cpufreq/indicator.py	2014-12-27 02:48:58.330816000 +0900
-+++ indicator-cpufreq/indicator_cpufreq/indicator.py	2014-12-27 02:47:58.102868291 +0900
+--- indicator-cpufreq/indicator_cpufreq/indicator.py.orig	2015-09-10 14:46:45.814511000 +0900
++++ indicator-cpufreq/indicator_cpufreq/indicator.py	2015-09-10 14:46:45.989929097 +0900
 @@ -29,6 +29,10 @@
  from gettext import gettext as _
  #gettext.textdomain('indicator-cpufreq')
@@ -147,8 +147,7 @@
  class MyIndicator(object):
      def __init__(self, show_frequency=False):
          self.show_frequency = show_frequency
-@@ -70,29 +83,91 @@
-         while cpufreq.cpu_exists(maxcpu) == 0:
+@@ -71,28 +84,90 @@
              maxcpu += 1
          self.cpus = range(maxcpu)
          
@@ -180,10 +179,10 @@
 +            freqmenu.append(menu_item)
              menu_item.connect("activate", self.select_activated, 'frequency', freq)
              self.select_items[freq] = menu_item
+-
+-        menu.append(Gtk.SeparatorMenuItem())
 +        menu.append(freqm)
  
--        menu.append(Gtk.SeparatorMenuItem())
--
          # governor menu items
          governors = cpufreq.get_available_governors(self.cpus[0])
 +        govmenu = Gtk.Menu()
@@ -243,7 +242,7 @@
  
          menu.show_all()        
          self.ind.set_menu(menu)
-@@ -134,9 +210,21 @@
+@@ -134,9 +209,21 @@
              bus = dbus.SystemBus()
              proxy = bus.get_object("com.ubuntu.IndicatorCpufreqSelector", "/Selector", introspect=False)
              cpus = [dbus.UInt32(cpu) for cpu in self.cpus]
