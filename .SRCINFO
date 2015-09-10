@@ -1,6 +1,6 @@
 pkgbase = hyperion
 	pkgdesc = Opensource 'AmbiLight' implementation
-	pkgver = r666.e93bd2f
+	pkgver = r680.c8a2fe8
 	pkgrel = 1
 	url = http://code.google.com/p/boblight/
 	arch = x86_64
@@ -15,7 +15,8 @@ pkgbase = hyperion
 	depends = libusbx
 	depends = python
 	depends = qt4
-	source = git://github.com/tvdzwan/hyperion.git#commit=e93bd2fb303be6b91e0c241efb30dc0a1bf04b2f
+	backup = etc/hyperion.config.json
+	source = git://github.com/tvdzwan/hyperion.git#commit=c8a2fe8b6b1becaf518c861e75fa78af40f810cd
 	source = hyperiond.service
 	md5sums = SKIP
 	md5sums = 3c81238f5018ae1ed5a19d2058ccbe7f

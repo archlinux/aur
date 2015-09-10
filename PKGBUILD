@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=hyperion
-_gitrev=e93bd2fb303be6b91e0c241efb30dc0a1bf04b2f
-pkgver=r666.e93bd2f
+_gitrev=c8a2fe8b6b1becaf518c861e75fa78af40f810cd
+pkgver=r680.c8a2fe8
 pkgrel=1
 pkgdesc="Opensource 'AmbiLight' implementation"
 url="http://code.google.com/p/boblight/"
@@ -13,6 +13,7 @@ depends=('libusbx' 'python' 'qt4')
 makedepends=('cmake' 'doxygen' 'git')
 source=("git://github.com/tvdzwan/hyperion.git#commit=$_gitrev"
         "${pkgname}d.service")
+backup=('etc/hyperion.config.json')
 md5sums=('SKIP'
          '3c81238f5018ae1ed5a19d2058ccbe7f')
 
