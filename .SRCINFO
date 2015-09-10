@@ -1,0 +1,19 @@
+pkgbase = corefreq
+	pkgdesc = Processor Core Monitoring
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/cyring/CoreFreq
+	install = corefreq-git.install
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = linux-headers
+	source = git+https://github.com/cyring/CoreFreq.git
+	md5sums = SKIP
+
+pkgname = corefreq-git
+	pkgdesc = IntelFreq kernel module sources
+	depends = dkms
+	depends = gcc
+	depends = make
+
