@@ -1,0 +1,26 @@
+diff --git data/gsettings/org.gnome.Germinal.gschema.xml data/gsettings/org.gnome.Germinal.gschema.xml
+index a1528c3..85c5cf0 100644
+--- data/gsettings/org.gnome.Germinal.gschema.xml
++++ data/gsettings/org.gnome.Germinal.gschema.xml
+@@ -67,7 +67,7 @@
+     </key>
+ 
+     <key name="startup-command" type="s">
+-      <default>'tmux -u2 a'</default>
++      <default>'tmux -u2 new -As0'</default>
+       <summary>Command to launch at startup</summary>
+       <description>
+         If none is specified, tmux will be used
+diff --git src/germinal/germinal.c src/germinal/germinal.c
+index 0adb691..eb6e902 100644
+--- src/germinal/germinal.c
++++ src/germinal/germinal.c
+@@ -34,7 +34,7 @@ on_child_exited (VteTerminal *vteterminal,
+                  gpointer     user_data)
+ {
+     if (status)
+-        g_critical ("child exited with code %d. Did you add 'new-session' to your '~/.tmux.conf'?", status);
++        g_critical ("child exited with code %d", status);
+     germinal_exit (GTK_WIDGET (vteterminal), user_data);
+ }
+ 
