@@ -18,9 +18,8 @@ pkgbase = me-tv-bzr
 	depends = gstreamer0.10-base
 	optdepends = linuxtv-dvb-apps: dvb tools
 	optdepends = w_scan: generation of channels.conf
-	provides = me-tv
+	provides = me-tv-bzr
 	conflicts = me-tv
 	options = !emptydirs
 
-pkgname = me-tv
-
+pkgname = me-tv-bzr
