@@ -1,0 +1,14 @@
+pkgbase = genext2fs
+	pkgdesc = ext2 filesystem generator for embedded systems
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://genext2fs.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://downloads.sourceforge.net/sourceforge/genext2fs/genext2fs-1.4.1.tar.gz
+	md5sums = b7b6361bcce2cedff1ae437fadafe53b
+
+pkgname = genext2fs
+
