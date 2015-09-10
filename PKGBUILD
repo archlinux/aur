@@ -1,6 +1,5 @@
 # Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
-# Source: https://github.com/nicoulaj/archlinux-packages
 pkgname=python2-enzyme
 pkgver=0.4.1
 pkgrel=1
