@@ -1,7 +1,7 @@
 pkgbase = ruby-jemalloc
 	pkgdesc = An object-oriented language for quick and easy programming
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ruby-lang.org/en/
 	install = ruby.install
 	arch = i686
