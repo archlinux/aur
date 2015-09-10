@@ -1,0 +1,15 @@
+pkgbase = libqpsd-git
+	pkgdesc = PSD & PSB Plugin for Qt/C++ (Qt4/Qt5)
+	pkgver = 20140927
+	pkgrel = 1
+	url = https://github.com/Code-ReaQtor/libqpsd
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	source = git://github.com/Code-ReaQtor/libqpsd
+	sha256sums = SKIP
+
+pkgname = libqpsd-git
+
