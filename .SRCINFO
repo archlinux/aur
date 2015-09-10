@@ -1,0 +1,17 @@
+pkgbase = octave-io
+	pkgdesc = Input/Output in external formats.
+	pkgver = 2.2.9
+	pkgrel = 1
+	url = http://octave.sourceforge.net/io/
+	install = octave-io.install
+	arch = any
+	groups = octave-forge
+	license = custom
+	depends = octave>=3.8.0
+	depends = octave<4.2.0
+	noextract = io-2.2.9.tar.gz
+	source = http://downloads.sourceforge.net/octave/io-2.2.9.tar.gz
+	md5sums = ef9aa00aaca3fc0fa12fc2f9e4847772
+
+pkgname = octave-io
+
