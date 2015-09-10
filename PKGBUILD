@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-network'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' 'libnm-glib' 'wingpanel-rewrite-x11-bzr'
-         'libgranite.so')
+depends=('glib2' 'glibc' 'gtk3' 'libnm-glib'
+         'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-network')
 conflicts=('wingpanel-indicator-network')
@@ -23,15 +23,20 @@ pkgver() {
   echo "r$(bzr revno)"
 }
 
-build() {
+prepare() {
   cd wingpanel-indicator-network
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd wingpanel-indicator-network/build
 
   cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
     -DGSETTINGS_COMPILE='FALSE'
