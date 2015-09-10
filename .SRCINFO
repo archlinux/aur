@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-tracker-search-provider-git
+	pkgdesc = Gnome-shell extension for displaying tracker search results in the shell overview
+	pkgver = r26.da08e64
+	pkgrel = 1
+	url = https://github.com/hamiller/tracker-search-provider
+	install = gschemas.install
+	arch = any
+	license = GPL2
+	depends = gnome-shell
+	depends = tracker
+	depends = gobject-introspection
+	source = gnome-shell-tracker-search-provider-git::git+https://github.com/hamiller/tracker-search-provider.git#branch=gnome_16
+	md5sums = SKIP
+
+pkgname = gnome-shell-tracker-search-provider-git
+
