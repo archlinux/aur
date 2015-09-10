@@ -1,0 +1,16 @@
+pkgbase = fusion-qt4-hg
+	pkgdesc = This is new Fusion GUI style, ported from Qt 5 to Qt 4.
+	pkgver = 13.4531c2274371
+	pkgrel = 1
+	url = https://code.google.com/p/fusion-qt4/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = mercurial
+	makedepends = qt4-private-headers-dev
+	depends = qt4
+	source = hg+https://code.google.com/p/fusion-qt4/
+	md5sums = SKIP
+
+pkgname = fusion-qt4-hg
+
