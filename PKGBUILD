@@ -3,13 +3,13 @@
 pkgname=freefem++-hg
 pkgver=3.39.r3376.358816cdd019
 _pkgver=3.39
-pkgrel=2
+pkgrel=3
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
 depends=('blas' 'lapack' 'arpack' 'fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi')
-makedepends=('mercurial' 'gcc-fortran' 'texlive-latexextra')
+makedepends=('mercurial' 'gcc-fortran' 'texlive-core')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
@@ -45,11 +45,10 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-download \
-    --with-umfpack="-lumfpack -lsuitesparseconfig -lcholmod -lcolamd" \
     --with-mpi \
     --with-petsc=$srcdir/download/PETSc/petsc-3.5.2/arch-linux2-c-debug \
     --disable-schwarz 
-  make PREFIX=/usr 
+  make 
 }
 
 check() {
