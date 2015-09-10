@@ -1,12 +1,12 @@
 pkgbase = gmt-dcw
 	pkgdesc = The Digital Chart of the World Polygon data for the Generic Mapping Tools.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = http://gmt.soest.hawaii.edu/
 	arch = any
 	license = LGPL
-	source = ftp://ftp.soest.hawaii.edu/gmt/dcw-gmt-1.1.1.tar.gz
-	md5sums = f37787b207006708d7385722066817c7
+	source = ftp://ftp.soest.hawaii.edu/gmt/dcw-gmt-1.1.2.tar.gz
+	md5sums = 45c99d30026742dbc0b1644ea64f496d
 
 pkgname = gmt-dcw
 
