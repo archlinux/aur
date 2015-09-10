@@ -46,6 +46,8 @@ package() {
 
   cd "${_srcdir}"
   ${_pyver} setup.py install --root="${pkgdir}"
+  ln -sf 'pdf2txt.py' "${pkgdir}/usr/bin/pdf2txt"
+  ln -sf 'dumppdf.py' "${pkgdir}/usr/bin/dumppdf"
   #install -Dpm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   set +u
 }
