@@ -1,7 +1,7 @@
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
 # Contributor: deadsurgeon42 <deadsurgeon42 at gmail dot com>
 pkgname=vibrancy-colors
-pkgver=2.5a
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="A flat icon theme composed from many open source icon projects"
 arch=('any')
