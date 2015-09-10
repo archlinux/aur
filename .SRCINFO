@@ -1,0 +1,16 @@
+pkgbase = networkmanager-strongswan
+	pkgdesc = Strongswan NetworkManager plugin
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = networkmanager
+	depends = strongswan
+	depends = libgnomeui
+	source = http://download.strongswan.org/NetworkManager/NetworkManager-strongswan-1.3.1.tar.gz
+	sha256sums = 8f67bf0e7281ee8dfb1c7fe28ef8d06774744e2135682f4ddae4342fd103d46a
+
+pkgname = networkmanager-strongswan
+
