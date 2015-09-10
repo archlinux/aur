@@ -9,10 +9,10 @@ license=('GPL')
 depends=('expac' 'python-feedparser' 'python-xdg')
 options=(!emptydirs)
 source=("https://github.com/gnullbyte/$pkgname/tarball/$pkgver")
-md5sums=("6bd888192ac5ed67b760df46af4b9f35")
+md5sums=("85b907112033d08151d021788df62484")
 
 package() {
-	cd "$srcdir/gnullByte-$pkgname-eaf6caa"
+	cd "$srcdir/gnullByte-$pkgname-e782eff"
 	python setup.py install --prefix=/usr --root=$pkgdir --optimize=1
 }
 

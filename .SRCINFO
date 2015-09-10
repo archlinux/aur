@@ -10,7 +10,7 @@ pkgbase = packy
 	depends = python-xdg
 	options = !emptydirs
 	source = https://github.com/gnullbyte/packy/tarball/0.1.2
-	md5sums = 6bd888192ac5ed67b760df46af4b9f35
+	md5sums = 85b907112033d08151d021788df62484
 
 pkgname = packy
 
