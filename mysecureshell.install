@@ -1,0 +1,53 @@
+pre_install() {
+  :
+}
+
+post_upgrade() {
+  local _shell='mysecureshell'
+  grep -qlxF -e "/usr/bin/${_shell}" '/etc/shells' || echo "/usr/bin/${_shell}" >> '/etc/shells'
+}
+
+post_install() {
+  post_upgrade
+  cat << _EOF
+=> To use MySecureShell:
+=> - replace the shell of SFTP user accounts on /etc/passwd.
+=> Warning: This program restrict the user account to SFTP use.
+=>          Do not replace the shell of root or regular user.
+=> Info: Config file is on /etc/ssh/sftp_config.
+_EOF
+  #mandb -q
+}
+
+pre_upgrade() {
+  :
+}
+
+pre_remove() {
+  # This is only necessary on alternate shells. sh and bash 
+  # are at the base of Arch and cannot be removed.
+  # To test this you should have a spare root shell already open.
+  # Otherwise, if this doesn't work, you will need to learn how to bypass
+  # the default shell on login.
+  # http://stackoverflow.com/questions/11059067/what-is-the-nix-command-to-view-a-users-default-login-shell
+  local _shell='mysecureshell'
+  if getent passwd root | cut -d: -f7 | grep -qlxF -e "/usr/bin/${_shell}"; then
+   echo '**********************************************'
+   echo "*** Warning: ROOT HAS ${_shell} as the login shell."
+   echo '*** Shell changed to sh to prevent loss of root access.'
+   echo '**********************************************'
+   # sh is more likely to guarantee a login than bash because sh is typically
+   # unmodified. Crappy, but guaranteed.
+   chsh -s '/bi''n/sh'
+  fi
+  sed -i -e "/^\/usr\/b""in\/${_shell}"'$/d' '/etc/shells'
+}
+
+post_remove() {
+  #mandb -q
+  local _shell='mysecureshell'
+  if getent passwd | cut -d: -f7 | grep -qlxF -e "/usr/bin/${_shell}"; then
+   echo "*** Warning: Some users have ${_shell} as their login shell."
+   echo '*** Fix promptly to restore access.'
+  fi
+}

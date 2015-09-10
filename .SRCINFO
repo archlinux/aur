@@ -1,0 +1,17 @@
+pkgbase = mysecureshell
+	pkgdesc = A shell that adds advanced SFTP features to the OpenSSH server including ACLs, connection limits, and bandwidth control
+	pkgver = 2.00
+	pkgrel = 2
+	url = https://mysecureshell.readthedocs.org/
+	install = mysecureshell.install
+	arch = arm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssh
+	backup = etc/ssh/sftp_config
+	source = mysecureshell-2.00.tar.gz::https://github.com/mysecureshell/mysecureshell/archive/v2.00.tar.gz
+	sha256sums = 05fbcc407a61a06f980581320e7df46bbb7cf2d2ae253cae79f716bda0940890
+
+pkgname = mysecureshell
+
