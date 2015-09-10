@@ -1,11 +1,15 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-bitmerchant-git
-pkgver=20150804
+pkgver=20150909
 pkgrel=1
 pkgdesc="Bitcoin/altcoin merchant tools"
 arch=('any')
-depends=('python' 'python-base58' 'python-ecdsa' 'python-six')
+depends=('python'
+         'python-base58'
+         'python-cachetools'
+         'python-ecdsa'
+         'python-six')
 makedepends=('git' 'python-setuptools')
 url="https://github.com/sbuss/bitmerchant"
 license=('MIT')
