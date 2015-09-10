@@ -4,8 +4,8 @@
 
 _name=headphones
 pkgname=${_name}
-pkgver=0.5.8
-pkgrel=3
+pkgver=0.5.9
+pkgrel=1
 pkgdesc="Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole."
 arch=('any')
 url="https://github.com/rembo10/${_name}"
@@ -23,7 +23,7 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         "${_name}-system.service"
         "${_name}-user.service"
 				"${_name}.tmpfile")
-sha256sums=('3c3c1da57417d0d370498598c5d1c7ccf994d77c99d802127cdad73e1fea28b5'
+sha256sums=('c1811985ac93a7a24fc0668bb4a726a663e815b7f1a90eb52bf5af60f035c953'
             '14f00904135940e00a6af5742116d950be07248a578c2562373413155f768d01'
             '22d2a8da5cc8da149ddac086e52c0e30b51671644e039d435f853cf383f15317'
             'b8f7030f570e7707eb9c0f41c382e37d54244e7885c795a9f31788efdd45914e')
