@@ -19,6 +19,7 @@ depends=(
 	'python-lxml'
 	'python-xdg'
 	'python-webob'
+	'qt5-webkit'
 )
 source_i686=('http://codown.youdao.com/cidian/linux/youdao-dict_1.0.2~binary_i386.tar.gz')
 source_x86_64=('http://codown.youdao.com/cidian/linux/youdao-dict_1.0.2~binary_amd64.tar.gz')
