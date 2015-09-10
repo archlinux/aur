@@ -1,0 +1,16 @@
+pkgbase = python-cachetools
+	pkgdesc = Extensible memoizing collections and decorators
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/tkem/cachetools
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/c/cachetools/cachetools-1.1.1.tar.gz
+	md5sums = c8c005a588610cdfa4ad2c2115266d7c
+	sha256sums = f8eaf3530395d073e45dc031d5f51dad2863880a6a8318a7f01f8d7b30f7fd2e
+
+pkgname = python-cachetools
+
