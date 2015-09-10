@@ -1,6 +1,6 @@
 pkgbase = gmt-cpt-city
 	pkgdesc = GMT color palettes (*.cpt) from the cpt-city collection
-	pkgver = 2.15
+	pkgver = 2.17
 	pkgrel = 1
 	url = http://soliton.vm.bytemark.co.uk/pub/cpt-city
 	install = gmt-cpt-city.install
@@ -11,8 +11,8 @@ pkgbase = gmt-cpt-city
 	license = custom
 	optdepends = gmt: the Generic Mapping Tools
 	options = !strip
-	source = http://soliton.vm.bytemark.co.uk/pub/cpt-city/pkg/cpt-city_2.15-1.tar.gz
-	md5sums = 778640246fe15dd68bc801f59c1f354b
+	source = http://soliton.vm.bytemark.co.uk/pub/cpt-city/pkg/cpt-city_2.17-1.tar.gz
+	md5sums = c9b308d41d63bd5a35d08cd310dbb40a
 
 pkgname = gmt-cpt-city
 

@@ -2,7 +2,7 @@
 # vim: ts=4 et sw=4 sts=4
 
 pkgname=gmt-cpt-city
-pkgver=2.15
+pkgver=2.17
 _pkgsubver=1
 pkgrel=1
 pkgdesc="GMT color palettes (*.cpt) from the cpt-city collection"
@@ -13,7 +13,7 @@ optdepends=('gmt: the Generic Mapping Tools')
 source=(http://soliton.vm.bytemark.co.uk/pub/cpt-city/pkg/cpt-city_${pkgver}-${_pkgsubver}.tar.gz)
 install=$pkgname.install
 options=('!strip')   #nothing to strip, takes ages trying
-md5sums=('778640246fe15dd68bc801f59c1f354b')
+md5sums=('c9b308d41d63bd5a35d08cd310dbb40a')
 
 build() {
   cd "$srcdir"/cpt-city-${pkgver}
