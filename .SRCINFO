@@ -1,0 +1,22 @@
+pkgbase = openav-artyfx-git
+	pkgdesc = OpenAV ArtyFX LV2 plugin suite
+	pkgver = release.1.2.36.g3a8cb9a
+	pkgrel = 1
+	url = http://openavproductions.com/artyfx/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = cairo
+	depends = cairomm
+	depends = libsndfile
+	depends = lv2
+	depends = ntk-git
+	optdepends = jalv
+	provides = openav-artyfx
+	source = git://github.com/harryhaaren/openAV-ArtyFX.git
+	sha256sums = SKIP
+
+pkgname = openav-artyfx-git
+
