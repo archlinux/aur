@@ -5,7 +5,7 @@
 # Submitter: vbPadre <vbpadre [at] gmail.com>
 
 pkgname=ajenti
-pkgver=1.2.22.16
+pkgver=1.2.22.24
 pkgrel=1
 pkgdesc='An easy server administration frontend.'
 arch=(any)
@@ -18,16 +18,13 @@ makedepends=(python2-setuptools)
 optdepends=('python2-dbus: services plugin dependency' 'python2-ldap: LDAP and Active Directory user synchronization support')
 install=ajenti.install
 source=(https://pypi.python.org/packages/source/a/${pkgname}/${pkgname}-${pkgver}.tar.gz
-        ajenti.service
-        revert_f6167e92d1be92901c97567f7f53a59b12418eb1)
-md5sums=(bd84c1ecc0511b94e6e86ad182904b36
-         74e13666013eea439b08e6fcbeef3a6d
-         82057a64704a208d059573188ca71d8f)
+        ajenti.service)
+md5sums=(5fa0a56b5a1251cba7625abb682e2d78
+         74e13666013eea439b08e6fcbeef3a6d)
 backup=(etc/ajenti/config.json)
 
 prepare() {
   cd ${srcdir}
-  patch -p0 < revert_f6167e92d1be92901c97567f7f53a59b12418eb1
   cd ${srcdir}/${pkgname}-${pkgver}
   
   msg2 'Replacing python shebang by python2 shebang...'
