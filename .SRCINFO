@@ -1,7 +1,7 @@
 pkgbase = experiment
 	pkgdesc = A tool for running concurrent multi-configuration experiments
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 0.7.2
+	pkgrel = 3
 	url = https://github.com/jonhoo/experiment
 	arch = any
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = experiment
 	depends = ruby
 	depends = ruby-colorize
 	depends = ruby-commander
-	depends = ruby-progressbar
+	depends = ruby-ruby-progressbar
 	depends = ruby-rugged
-	source = experiment-0.7.1.tar.gz::https://codeload.github.com/jonhoo/experiment/tar.gz/v0.7.1
-	sha256sums = cada825ca2026f3e9a65966f6db7b828787b06fb2813aff246ade938494a180e
+	source = experiment-0.7.2.tar.gz::https://codeload.github.com/jonhoo/experiment/tar.gz/v0.7.2
+	sha256sums = 403e3c2875574664764e02a429d21f6736ae7701e705c016fd77e488cbcda064
 
 pkgname = experiment
 

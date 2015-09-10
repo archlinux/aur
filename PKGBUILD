@@ -3,7 +3,7 @@
 _gemname=experiment
 pkgname=$_gemname
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for running concurrent multi-configuration experiments"
 arch=('any')
 url="https://github.com/jonhoo/experiment"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby'
          'ruby-colorize'
          'ruby-commander'
-         'ruby-progressbar'
+         'ruby-ruby-progressbar'
          'ruby-rugged')
 makedepends=('rubygems')
 source=(${_gemname}-${pkgver}.tar.gz::https://codeload.github.com/jonhoo/${_gemname}/tar.gz/v${pkgver})
