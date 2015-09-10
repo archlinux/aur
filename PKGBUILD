@@ -2,7 +2,7 @@
 
 pkgname=vscode-bin
 pkgdesc='Visual Studio Code for Linux'
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -13,8 +13,8 @@ depends=('gtk2' 'gconf')
 _src_base="https://az764295.vo.msecnd.net/public/${pkgver}"
 source_i686=("${_src_base}/VSCode-linux-ia32.zip")
 source_x86_64=("${_src_base}/VSCode-linux-x64.zip")
-sha1sums_i686=('b6f26d8d8837be2c8d6d16f084588c2ba67fb35e')
-sha1sums_x86_64=('864ef607d831702cf4c91decc9da661d09f05351')
+sha1sums_i686=('134a5b2879c366155d9ba36434b5a289cc2ef5c6')
+sha1sums_x86_64=('a5dd8fcdac9205a27661fea9a1beaa5e058c547c')
 
 package() {
     _dirname=INVALID
@@ -32,6 +32,6 @@ package() {
     ln -s /opt/VSCode/Code "${pkgdir}/usr/bin/vscode"
 
     # Install license file
-    install -D -m644 "${srcdir}/${_dirname}/license.txt" \
+    install -D -m644 "${srcdir}/${_dirname}/resources/app/license.txt" \
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
