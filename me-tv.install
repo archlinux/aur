@@ -1,4 +1,4 @@
-pkgname=me-tv
+pkgname=me-tv-bzr
 
 post_install() {
 	update-desktop-database -q
