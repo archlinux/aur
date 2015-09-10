@@ -1,0 +1,12 @@
+[Unit]
+Description=Corosync Cluster Engine
+ConditionKernelCommandLine=!nocluster
+Requires=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/corosync -f
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

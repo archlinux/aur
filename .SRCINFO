@@ -1,0 +1,25 @@
+pkgbase = corosync
+	pkgdesc = Cluster engine for nodal communication systems with additional features for implementing high availability within applications.
+	pkgver = 2.3.5
+	pkgrel = 1
+	url = http://www.corosync.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = nss
+	makedepends = libstatgrab
+	makedepends = net-snmp
+	makedepends = libqb
+	depends = nss
+	depends = libstatgrab
+	depends = net-snmp
+	depends = libqb
+	provides = corosync=2.1.0
+	conflicts = corosync1
+	source = http://corosync.org/download/corosync-2.3.5.tar.gz
+	source = corosync.service
+	md5sums = 8894f00d499e0755467b381e6346f9ff
+	md5sums = 9ce64dfbc32cdcf7ad2c33385aab1401
+
+pkgname = corosync
+
