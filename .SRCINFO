@@ -7,7 +7,7 @@ pkgbase = downgrade
 	license = GPL
 	optdepends = sudo: for installation via sudo
 	source = https://github.com/pbrisbin/downgrade/archive/v5.1.4.tar.gz
-	md5sums = 37e82c18f56e8f0343b57edf7bf4e687
+	md5sums = 4767451ae68b48b300c45ba811e3c268
 
 pkgname = downgrade
 
