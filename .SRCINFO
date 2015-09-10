@@ -1,6 +1,6 @@
 pkgbase = kdeconnect-git
 	pkgdesc = Adds communication between KDE and your smartphone
-	pkgver = r914.2b34d28
+	pkgver = r970.e4cbf22
 	pkgrel = 1
 	url = https://projects.kde.org/projects/playground/base/kdeconnect-kde
 	install = kdeconnect-git.install
@@ -16,6 +16,7 @@ pkgbase = kdeconnect-git
 	depends = libfakekey
 	depends = hicolor-icon-theme
 	depends = kwayland
+	depends = telepathy-qt5
 	optdepends = sshfs: remote filesystem browser
 	provides = kdeconnect
 	conflicts = kdeconnect-frameworks
