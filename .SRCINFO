@@ -1,12 +1,13 @@
 pkgbase = cgicc
 	pkgdesc = C++ library that simplifies the creation of CGI applications
 	pkgver = 3.2.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/cgicc/
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = doxygen
+	options = staticlibs
 	source = https://ftp.gnu.org/gnu/cgicc/cgicc-3.2.16.tar.gz
 	sha256sums = 9dceb36d2da52791ee11f2fb5bb6435c22e69ef50f38073c4329386b883d5aaa
 
