@@ -9,9 +9,9 @@ pkgrel=2
 depends=('nmap')
 pkgdesc="A Python library which helps in using the nmap port scanner. required nmap software"
 arch=("any")
-url="http://xael.org/norman/python/python-nmap"
+url="http://xael.org/pages/python-nmap.html"
 license=('GPL3')
-source="http://xael.org/norman/python/python-nmap/$pkgname-$pkgver.tar.gz"
+source="http://xael.org/pages/$pkgname-$pkgver.tar.gz"
 md5sums=('b466e4b2ef30a0b9c0cb80aac215fb79')
 makedepends=("python" "python2")
 
