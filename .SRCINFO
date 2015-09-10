@@ -1,0 +1,17 @@
+pkgbase = libqb
+	pkgdesc = Library with the primary purpose of providing high performance client server reusable features
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/asalkeld/libqb/wiki
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = LGPL2.1
+	makedepends = doxygen
+	makedepends = splint
+	options = !libtool
+	source = https://github.com/asalkeld/libqb/archive/v0.17.1.tar.gz
+	sha512sums = e5dcc70cd4dc7b20ef7972f1e791299e837ba07c0e24060182a503ab434d52d85f3f2224a2c20fe6a25d31311b7cc5848b50ff84ff3a3aa6e9200eec55e15bf3
+
+pkgname = libqb
+
