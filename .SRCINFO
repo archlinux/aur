@@ -1,6 +1,6 @@
 pkgbase = prefixsuffix
 	pkgdesc = A GUI application that renames batches of files by changing the beginning or end of their names.
-	pkgver = 0.6.4
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/murraycu/prefixsuffix
 	install = prefixsuffix.install
@@ -10,10 +10,10 @@ pkgbase = prefixsuffix
 	makedepends = gnome-common
 	makedepends = mm-common
 	depends = gtkmm3
-	provides = prefixsuffix=0.6.4
+	provides = prefixsuffix=0.6.6
 	options = !emptydirs
-	source = https://github.com/murraycu/prefixsuffix/archive/0.6.4.tar.gz
-	md5sums = dfcc9e1e7fdb5f0320366ac4e27812eb
+	source = https://github.com/murraycu/prefixsuffix/archive/0.6.6.tar.gz
+	md5sums = 35dd19f9642a910f9599293a459bbed3
 
 pkgname = prefixsuffix
 
