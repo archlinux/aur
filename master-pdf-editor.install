@@ -1,0 +1,15 @@
+post_update() {
+  gtk-update-icon-cache /usr/share/icons/hicolor/
+}
+
+post_install() {
+  post_update
+  echo 'The Master PDF Editor is free for non commercial use.'
+  echo 'For commercial use see https://code-industry.net/free-pdf-editor/'
+  echo 'Please view the license agreement at'
+  echo "  less '/opt/master-pdf-editor-3/license.txt'"
+}
+
+post_remove() {
+  post_update
+}

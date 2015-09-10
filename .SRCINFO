@@ -1,0 +1,43 @@
+pkgbase = master-pdf-editor
+	pkgdesc = a complete solution for creation and editing PDF and XPS files (free for NC use)
+	pkgver = 3.4.03
+	pkgrel = 1
+	url = http://code-industry.net/pdfeditor.php
+	install = master-pdf-editor.install
+	arch = i686
+	arch = x86_64
+	license = commercial
+	depends = qt4>=4.6
+	depends = bzip2
+	depends = expat
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = graphite
+	depends = harfbuzz
+	depends = libffi
+	depends = libice
+	depends = libpng
+	depends = libsm
+	depends = libutil-linux
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = libxext
+	depends = libxrender
+	depends = openssl
+	depends = pcre
+	depends = zlib
+	options = !strip
+	source = master-pdf-editor.desktop
+	sha256sums = 28ce9b6647a8343e7b89626c9d2aa0c28da8a879077231e4eb9c16a6c5a604a0
+	source_i686 = http://get.code-industry.net/public/master-pdf-editor3-3.4.03-1.i386.rpm
+	sha256sums_i686 = bbce2fe393d80e863f6b6535cfd39547e35a489bd41ae15e7742731f2f86d28a
+	source_x86_64 = http://get.code-industry.net/public/master-pdf-editor3-3.4.03-1.x86_64.rpm
+	sha256sums_x86_64 = 3f41869f9c18c5ec14b7d8d52842c3b19d9675bd510359cf1b8101594658a7c7
+
+pkgname = master-pdf-editor
+
