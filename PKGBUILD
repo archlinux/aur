@@ -2,7 +2,7 @@
 # Contributor: Bjoern Lindig bjoern _dot_ lindig _at_ googlemail _dot_ com
 
 pkgname=pure-octave
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="embed an Octave interpreter into Pure."
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ depends=('pure' 'octave')
 makedepends=()
 groups=(pure-complete pure-math)
 source=("https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz")
-sha1sums=('24e92f43b1315263a570f3a3be1c77866b5c395a')
+sha1sums=('0af1c4dc5731f336c33d999560bd34b3eeb6cbf5')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
