@@ -9,8 +9,7 @@ url='https://launchpad.net/wingpanel-indicator-power'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('bamf' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgtop'
-         'wingpanel-rewrite-x11-bzr'
-         'libgranite.so')
+         'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-power')
 conflicts=('wingpanel-indicator-power')
@@ -24,15 +23,20 @@ pkgver() {
   echo "r$(bzr revno)"
 }
 
-build() {
+prepare() {
   cd wingpanel-indicator-power
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd wingpanel-indicator-power/build
 
   cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
     -DGSETTINGS_COMPILE='FALSE'
