@@ -1,7 +1,7 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-luppp-git
 pkgver=release.1.0.1.8.g43aecd2
-pkgrel=1
+pkgrel=2
 pkgdesc="Luppp is a live performance tool, created by OpenAV productions"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/luppp/"
@@ -27,4 +27,6 @@ build(){
 package() {
   cd ${_gitname}
   make DESTDIR=${pkgdir} install
+  install -Dm644 "resources/metadata/luppp.desktop" "${pkgdir}/usr/share/applications/luppp.desktop"
+  install -Dm644 "resources/icons/luppp.png" "${pkgdir}/usr/share/luppp/luppp.png"
 }
