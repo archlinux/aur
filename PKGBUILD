@@ -2,7 +2,7 @@
 pkgname=mpv-bash-completion-git
 pkgver=0.10.0
 epoch=2
-pkgrel=1
+pkgrel=3
 pkgdesc="Bash completion for the mpv video player"
 arch=('any')
 url="https://github.com/2ion/mpv-bash-completion"
@@ -20,7 +20,9 @@ _mpv_package_version() {
   (( $? == 0 )) || return 1
   local _mpvpkg=$(pacman -qQo "$_mpv")
   (( $? == 0)) || return 1
-  pacman -Q "$_mpvpkg" | cut -d' ' -f2
+  local _ret=$(pacman -Q "$_mpvpkg" | cut -d' ' -f2)
+  _ret=${_ret#*:}
+  echo "$_ret"
 }
 
 pkgver() {
