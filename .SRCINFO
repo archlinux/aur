@@ -1,0 +1,19 @@
+pkgbase = egypt
+	pkgdesc = A simple tool for creating call graphs of C programs
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://www.gson.org/egypt/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	depends = gcc
+	depends = graphviz
+	optdepends = gcc: for generating an intermediate representation of C code (RTL files)
+	optdepends = graphviz: for visualising the resulting graph
+	source = http://www.gson.org/egypt/download/egypt-1.10.tar.gz
+	md5sums = 591dce680bef60e73edccd0220957846
+
+pkgname = egypt
+
