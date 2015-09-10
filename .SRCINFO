@@ -1,6 +1,6 @@
 pkgbase = packy
 	pkgdesc = pacman updates for conky via rss
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/gnullbyte/packy
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = packy
 	depends = python-feedparser
 	depends = python-xdg
 	options = !emptydirs
-	source = https://github.com/gnullbyte/packy/tarball/0.1.1
-	md5sums = 82c2e1fbab21101465d7162e4a52255c
+	source = https://github.com/gnullbyte/packy/tarball/0.1.2
+	md5sums = 6bd888192ac5ed67b760df46af4b9f35
 
 pkgname = packy
 

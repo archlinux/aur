@@ -1,7 +1,7 @@
 # Maintainer: Chase Franklin <jakhead at gmail dot com>
 pkgname=packy
 pkgver=0.1.2
-pkgrel=2
+pkgrel=1
 pkgdesc="pacman updates for conky via rss"
 arch=('any')
 url="https://github.com/gnullbyte/packy"
