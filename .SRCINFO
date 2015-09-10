@@ -1,10 +1,10 @@
 pkgbase = gpp
 	pkgdesc = A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks
 	pkgver = 2.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://en.nothingisreal.com/wiki/GPP
 	arch = any
-	license = GPL
+	license = LGPL2.1
 	makedepends = devel-tools
 	provides = gpp
 	source = http://files.nothingisreal.com/software/gpp/gpp-2.24.tar.bz2

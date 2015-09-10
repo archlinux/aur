@@ -1,11 +1,11 @@
 # Maintainer: Jonas Weber <contact@jonasw.de>
 pkgname=gpp
 pkgver=2.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks"
 arch=('any')
 url="http://en.nothingisreal.com/wiki/GPP"
-license=('GPL')
+license=('LGPL2.1')
 makedepends=('devel-tools')
 provides=('gpp')
 source=(
