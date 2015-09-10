@@ -1,23 +1,30 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
-pkgname=python-bna
-pkgver=3.2
-pkgrel=3
+_pkgname=bna
+pkgname=python-$_pkgname
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Command-line Battle.net authenticator and Python library"
 arch=("any")
 license=("MIT")
 url="https://github.com/jleclanche/python-bna"
 depends=("python")
-source=("https://pypi.python.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("5bd90a9bcfc3f4aa766e20460456afcd4a8a8760a0f0f264c480ffcc38ed5c03")
+source=(
+	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
+	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz.asc"
+)
+sha256sums=(
+	"92404ac5856242a75df8dff69c0d122f6cb5c59cd7e545fba1a58e44fbd4831e"
+	"SKIP"
+)
 
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$pkgver"
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 }
