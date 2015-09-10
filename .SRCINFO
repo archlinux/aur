@@ -1,5 +1,5 @@
 pkgbase = pdfminer
-	pkgdesc = python2 utils to extract, analyze text data of PDF files, including pdf2txt and dumppdf
+	pkgdesc = python2 utils to extract, analyze text data of PDF files. Includes pdf2txt, dumppdf, and latin2ascii
 	pkgver = 20140328
 	pkgrel = 2
 	url = http://www.unixuser.org/~euske/python/pdfminer/

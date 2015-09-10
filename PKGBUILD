@@ -11,7 +11,7 @@ _pkgname="${_pyver}-${_pybase}"
 pkgname="${_pybase}"
 pkgver='20140328'
 pkgrel='2'
-pkgdesc='python2 utils to extract, analyze text data of PDF files, including pdf2txt and dumppdf'
+pkgdesc='python2 utils to extract, analyze text data of PDF files. Includes pdf2txt, dumppdf, and latin2ascii'
 arch=('any')
 #url="https://pypi.python.org/pypi/${_pybase}/"
 #url="https://github.com/euske/${_pybase}/"
@@ -46,8 +46,10 @@ package() {
 
   cd "${_srcdir}"
   ${_pyver} setup.py install --root="${pkgdir}"
-  ln -sf 'pdf2txt.py' "${pkgdir}/usr/bin/pdf2txt"
-  ln -sf 'dumppdf.py' "${pkgdir}/usr/bin/dumppdf"
+  local _bin
+  for _bin in 'latin2ascii' 'pdf2txt' 'dumppdf'; do
+    ln -sf "${_bin}.py" "${pkgdir}/usr/bin/${_bin}"
+  done
   #install -Dpm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   set +u
 }
