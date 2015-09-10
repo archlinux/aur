@@ -6,7 +6,7 @@ After=libvirtd.service
 [Service]
 Type=simple
 Restart=on-failure
-ExecStart=/usr/bin/fence_virtd
+ExecStart=/usr/bin/fence_virtd -F
 
 [Install]
 WantedBy=multi-user.target

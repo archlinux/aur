@@ -2,7 +2,7 @@
 
 pkgname=fence-virt-git
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="fencing daemon for a virtualised environment"
 url='https://github.com/ClusterLabs/fence-virt'
 license=("GPLv2")
@@ -12,7 +12,7 @@ conflicts=()
 backup=('etc/fence_virt.conf')
 source=("fence_virtd.service"
 	"fence_virtd@.service"
-	"git://github.com/Thermi/fence-virt.git")
+	"git+https://github.com/Thermi/fence-virt.git")
 md5sums=(
 	'SKIP'
 	'SKIP'
