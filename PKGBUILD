@@ -4,13 +4,13 @@ pkgname=keyfinder-cli-git
 pkgdesc="A DJ friendly tool for estimating the musical key of an audio file"
 license=('GPL3')
 url="https://github.com/EvanPurkhiser/keyfinder-cli"
-pkgver=39.e8a20e7
+pkgver=40.91ec8bb
 pkgrel=1
 
 source=("$pkgname::git://github.com/EvanPurkhiser/keyfinder-cli")
 md5sums=('SKIP')
 depends=('libkeyfinder-git' 'ffmpeg')
-makedepends=('git' 'boost')
+makedepends=('git')
 arch=('i686' 'x86_64')
 
 pkgver() {
