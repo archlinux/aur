@@ -1,6 +1,6 @@
 pkgbase = mupen64plus-qt
 	pkgdesc = A basic launcher for Mupen64Plus
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/dh4/mupen64plus-qt
 	install = mupen64plus-qt.install
@@ -8,10 +8,10 @@ pkgbase = mupen64plus-qt
 	arch = x86_64
 	license = BSD
 	depends = qt5-base
-	depends = quazip
+	depends = quazip-qt5
 	depends = mupen64plus
-	source = https://github.com/dh4/mupen64plus-qt/archive/1.7.tar.gz
-	sha256sums = dee1118584a0a5f0c1cf2951a491cfc3527f0cf9149f446b99037a51504138af
+	source = https://github.com/dh4/mupen64plus-qt/archive/1.8.tar.gz
+	sha256sums = d68b80a03c7ee5622d8e94066b338805500614b9424961020487454fd14b89ef
 
 pkgname = mupen64plus-qt
 
