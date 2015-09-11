@@ -1,8 +1,8 @@
 # Maintainer: Mikhail Burakov <mikhail.burakov gmail com>
 
 pkgname=vim-nox
-pkgver=git
-pkgrel=1
+pkgver=master
+pkgrel=0
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url='http://www.vim.org'

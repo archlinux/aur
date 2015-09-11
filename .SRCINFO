@@ -1,7 +1,7 @@
 pkgbase = vim-nox
 	pkgdesc = Vi Improved, console-only build with python2 support. Latest version from git.
-	pkgver = git
-	pkgrel = 1
+	pkgver = master
+	pkgrel = 0
 	url = http://www.vim.org
 	arch = i686
 	arch = x86_64
