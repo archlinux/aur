@@ -1,7 +1,8 @@
 pkgbase = saldl-git
 	pkgdesc = A CLI downloader optimized for speed and early preview, based on libcurl.
-	pkgver = 44_490a555_v12+0
+	pkgver = v12.0.g490a555
 	pkgrel = 1
+	url = https://saldl.github.io
 	arch = i686
 	arch = x86_64
 	license = AGPL

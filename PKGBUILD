@@ -1,7 +1,8 @@
 pkgbase=saldl-git
 pkgname=("$pkgbase")
-pkgver=44_490a555_v12+0
+pkgver=v12.0.g490a555
 pkgrel=1
+url="https://saldl.github.io"
 pkgdesc="A CLI downloader optimized for speed and early preview, based on libcurl."
 arch=('i686' 'x86_64')
 license=('AGPL')
@@ -12,12 +13,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgbase"
-  last_tag="$(git describe --tags --abbrev=0 HEAD || echo '')"
-  if [[ -n $last_tag  ]]; then
-	  echo "$(git rev-list --count HEAD)_$(git rev-parse --short HEAD)_${last_tag//-/.}+$(git rev-list --skip=`git rev-list --count ${last_tag}` --count HEAD)"
-  else
-	  echo "$(git rev-list --count HEAD)_$(git rev-parse --short HEAD)"
-  fi
+  saldl_ver="$(git describe --long --dirty)"
+  echo ${saldl_ver//-/.}
 }
 
 build() {
