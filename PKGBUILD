@@ -1,7 +1,8 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=xt7-player-mpv
-pkgver=0.10.0381-hotfix
+pkgver=0.10.0381
+hotfix=hotfix
 pkgrel=1
 _realname=xt7-player-mpv
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
@@ -38,9 +39,9 @@ depends=('gambas3-gb-image>=3.6.2'
 makedepends=('gambas3-devel')
 optdepends=('python2: for Opensubtitles.org integration' 'ladspa: more audio plugins' 'linuxtv-dvb-apps: for DVB support' 'dvbsnoop: DVBT EPG' 'xdg-utils: for desktop integration' 'xbindkeys: for global hotkeys support' 'aria2: for youtube segmented downloads')
 
-source=(https://github.com/kokoko3k/xt7-player-mpv/archive/$pkgver.tar.gz 'license.txt')
+source=(https://github.com/kokoko3k/xt7-player-mpv/archive/$pkgver-$hotfix.tar.gz 'license.txt')
 
-md5sums=('4351762984d4a72873de85279ed61851'
+md5sums=('a1e943796e53cf63ec9246b7163b67fd'
          'b6f1380e33b47d0ed95c7ba1b3f4ec73')
 
 build() {
