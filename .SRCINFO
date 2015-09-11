@@ -1,0 +1,17 @@
+pkgbase = perl-hash-merge-simple
+	pkgdesc = Recursively merge two or more hashes, simply
+	pkgver = 0.051
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Hash-Merge-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-most>=0
+	depends = perl-clone>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RO/ROKR/Hash-Merge-Simple-0.051.tar.gz
+	md5sums = f47b9b99794b1f958bcfa3e816ff4660
+	sha512sums = 8db850144593632ce8ac8a560dac6670814a9ce3d1091d6aa42ab0eadca4b350671103b1de906d562aeaa0934fd58bd4e557821c5bcd730a10849f8505f65c4c
+
+pkgname = perl-hash-merge-simple
+
