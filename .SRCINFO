@@ -1,6 +1,6 @@
 pkgbase = git-town
 	pkgdesc = A git extension for generic high-level git workflow support
-	pkgver = 0.7.1
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/Originate/git-town
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = git-town
 	depends = bash
 	depends = git
 	depends = dialog
-	source = git-town::git://github.com/Originate/git-town#tag=v0.7.1
+	source = git-town::git://github.com/Originate/git-town#tag=v0.7.3
 	md5sums = SKIP
 
 pkgname = git-town
