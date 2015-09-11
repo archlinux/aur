@@ -1,0 +1,20 @@
+pkgbase = awoken-icons
+	pkgdesc = Simple and quite complete icon set, Token-style.
+	pkgver = 2.5.2
+	pkgrel = 2
+	url = http://deviantart.com/view/163570862
+	install = awoken-icons.install
+	arch = any
+	license = CCPL:by-sa
+	depends = librsvg
+	optdepends = imagemagick: To color the iconset.
+	optdepends = zenity: To have a GUI for the configuration script.
+	optdepends = xdg-utils: To be able to launch programs from the configuration script.
+	options = !strip
+	source = awoken-icons.install
+	source = https://dl.dropboxusercontent.com/u/8029324/AwOken-2.5.zip
+	sha256sums = 846c254776cb4763afc9db13387ff306f77be3537730d76a26f005ab3f77b611
+	sha256sums = d122ee0457079aaa30a664ae582fbc6208414e8728f497dce399ed9f33f9b36e
+
+pkgname = awoken-icons
+

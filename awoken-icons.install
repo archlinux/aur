@@ -1,0 +1,37 @@
+post_install () {
+	echo "---- awoken-icons ---------------------------------------------------"
+	echo "  This icon theme comes with a customization script to tune some"
+	echo "  aspects of it such as folder or start here icons for example."
+	echo ""
+	echo "  The customizations are performed for the user running the script,"
+	echo "  so they wont afect other users."
+	echo ""
+	echo "  To launch it simply run 'awoken-icon-theme-customization' from any"
+	echo "  terminal and go through it."
+	echo "---------------------------------------------------------------------"
+}
+
+post_upgrade() {
+	echo "---- awoken-icons ---------------------------------------------------"
+	echo "  If you ran the customization script previously you need to run it"
+	echo "  again (and choose your preferences) in order to use the new version"
+	echo "  of the icon set. If you wish to do a clean customization, remove"
+	echo "  first your previous one by deleting:"
+	echo ""
+	echo "      ~/.icons/{AwOken,AwOkenDark,AwOkenWhite}"
+	echo "  and ~/{.AwOkenrc,.AwOkenrcDark,.AwOkenrcWhite}"
+	echo ""
+	echo "  To customize it run 'awoken-icon-theme-customization'."
+	echo "---------------------------------------------------------------------"
+}
+
+post_remove() {
+	echo "---- awoken-icons ---------------------------------------------------"
+	echo "  If you or any other user used the customization script that comes"
+	echo "  with the icon set, to remove it completely there're 2 things that"
+	echo "  need to be deleted manually in the home directory of those users:"
+	echo ""
+	echo "  Configuration files:     ~/{.AwOkenrc,.AwOkenrcDark,.AwOkenrcWhite}"
+	echo "  And a copy of the icons: ~/.icons/{AwOken,AwOkenDark,AwOkenWhite}"
+	echo "---------------------------------------------------------------------"
+}
