@@ -3,7 +3,7 @@
 pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
 _pkgname=${pkgname[0]/-git/}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=2.2.0.r77.1821d8b
+pkgver=2.2.0.r92.5d6ac0a
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
@@ -50,7 +50,8 @@ package_chocolate-common-git() {
   cd "${pkgdir}"/usr/share
   rm -rf doc man/man5
   rm -rf applications/chocolate-{doom,heretic,hexen,strife}.desktop \
-    applications/screensavers
+     applications/screensavers
+  rm -rf appdata
   cd man/man6
   rm -f chocolate-{doom,heretic,hexen,strife}{,-setup}.6
 }
@@ -59,8 +60,8 @@ package_chocolate-doom-git() {
   pkgdesc="Doom port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'chocolate-common-git')
   optdepends=('freedm: Free deathmatch game'
-    'freedoom1: Free Ultimate Doom-compatible game (not vanilla compatible, but useful for mods)'
-    'freedoom2: Free Doom II/Final Doom-compatible game (not vanilla compatible, but useful for mods)')
+              'freedoom1: Free Ultimate Doom-compatible game (not vanilla compatible, but useful for mods)'
+              'freedoom2: Free Doom II/Final Doom-compatible game (not vanilla compatible, but useful for mods)')
   conflicts=(chocolate-doom)
 
   cd "${_pkgname}"
@@ -73,8 +74,9 @@ package_chocolate-doom-git() {
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{heretic,hexen,strife}
   rm -rf applications/chocolate-{setup,heretic,hexen,strife}.desktop icons
+  rm -f appdata/chocolate-{heretic,hexen,strife}.appdata.xml
   rm -f man/man?/chocolate-{heretic,hexen,strife,setup,server}* \
-    man/man5/{heretic,hexen,strife}.cfg*
+     man/man5/{heretic,hexen,strife}.cfg*
 }
 
 package_chocolate-heretic-git() {
@@ -93,9 +95,10 @@ package_chocolate-heretic-git() {
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{doom,hexen,strife}
   rm -rf applications/chocolate-{setup,doom,hexen,strife}.desktop \
-    applications/screensavers icons
+     applications/screensavers icons
+  rm -f appdata/chocolate-{doom,hexen,strife}.appdata.xml
   rm -f man/man?/chocolate-{doom,hexen,strife,setup,server}* \
-    man/man5/{default,hexen,strife}.cfg*
+     man/man5/{default,hexen,strife}.cfg*
 }
 
 package_chocolate-hexen-git() {
@@ -113,9 +116,10 @@ package_chocolate-hexen-git() {
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{doom,heretic,strife}
   rm -rf applications/chocolate-{setup,doom,heretic,strife}.desktop \
-    applications/screensavers icons
+     applications/screensavers icons
+  rm -f appdata/chocolate-{doom,heretic,strife}.appdata.xml
   rm -f man/man?/chocolate-{doom,heretic,strife,setup,server}* \
-    man/man5/{default,heretic,strife}.cfg*
+     man/man5/{default,heretic,strife}.cfg*
 }
 
 package_chocolate-strife-git() {
@@ -133,7 +137,8 @@ package_chocolate-strife-git() {
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{doom,heretic,hexen}
   rm -rf applications/chocolate-{setup,doom,heretic,hexen}.desktop \
-    applications/screensavers icons
+     applications/screensavers icons
+  rm -f appdata/chocolate-{doom,heretic,hexen}.appdata.xml
   rm -f man/man?/chocolate-{doom,heretic,hexen,setup,server}* \
-    man/man5/{default,heretic,hexen}.cfg*
+     man/man5/{default,heretic,hexen}.cfg*
 }
