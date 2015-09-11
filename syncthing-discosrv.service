@@ -5,11 +5,10 @@ After=network.target
 [Service]
 User=syncthing
 Group=syncthing
-ExecStart=/usr/bin/syncthing-discosrv
+ExecStart=/bin/sh -c "/usr/bin/syncthing-discosrv -db-dsn='file:///var/discosrv/discosrv.db'"
 Restart=on-failure
 SuccessExitStatus=2
 
-PrivateTmp=true
 PrivateDevices=true
 ProtectSystem=full
 ProtectHome=true
