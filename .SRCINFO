@@ -1,4 +1,4 @@
-pkgbase = nautilus
+pkgbase = nautilus-typeahead
 	pkgdesc = GNOME file manager - Patched to bring back the 'typeahead find' feature
 	pkgver = 3.16.2
 	pkgrel = 1
