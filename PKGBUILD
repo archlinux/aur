@@ -1,6 +1,6 @@
 pkgname=sshttp-git
 pkgver=e145de8
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH/HTTP(S) multiplexer"
 arch=('any')
 url="https://github.com/stealth/sshttp"
@@ -32,7 +32,7 @@ build() {
 
 package() {
     install -Dm755 sshttpd.config  $pkgdir/etc/conf.d/sshttpd
-    install -Dm755 sshttpd.service $pkgdir/usr/lib/systemd/system/sshttpd.service
+    install -Dm644 sshttpd.service $pkgdir/usr/lib/systemd/system/sshttpd.service
     install -dm755                 $pkgdir/var/sshttp
     install -Dm755 nf-cleanup      $pkgdir/usr/bin/nf-cleanup
 

@@ -1,7 +1,7 @@
 pkgbase = sshttp-git
 	pkgdesc = SSH/HTTP(S) multiplexer
 	pkgver = e145de8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stealth/sshttp
 	arch = any
 	license = BSD
