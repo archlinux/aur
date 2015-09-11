@@ -1,0 +1,4 @@
+post_install() {
+  echo '>>> To start a new project, type:'
+  echo '>>> $ cp -R /opt/bazel/base_workspace my_new_workspace'
+}
