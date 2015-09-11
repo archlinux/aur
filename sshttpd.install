@@ -1,0 +1,4 @@
+post_install() {
+#  useradd  -r sshttp -d /var/run/sshttp -U -m -s /bin/false
+#  chown sshttp: /var/run/sshttp
+}

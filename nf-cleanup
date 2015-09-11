@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# sshttp netfilter rules
+#
+
+# If you mux SSH/SMTP (rather than HTTP), then HTTP_PORT is your
+# alternate SMTP port. e.g. 2525 and sshttp needs to be started with
+# '-L 25 -H 2525'
+
+DEV=eth0
+SSH_PORT=22
+HTTP_PORT=8080
+
+#if it clashes with complex NATing rules, try this
+#iptables -t mangle -F
+#iptables -t nat -F
+#iptables -t raw -F
+
+# block HTTP/SSH direct access
+iptables -D INPUT -i $DEV -p tcp --dport $SSH_PORT -j DROP
+iptables -D INPUT -i $DEV -p tcp --dport $HTTP_PORT -j DROP
+
+iptables -t mangle -D DIVERT -j MARK --set-mark 1
+iptables -t mangle -D DIVERT -j ACCEPT
+
+iptables -t mangle -X DIVERT || true
+iptables -t mangle -D OUTPUT -p tcp -o $DEV --sport $SSH_PORT -j DIVERT
+iptables -t mangle -D OUTPUT -p tcp -o $DEV --sport $HTTP_PORT -j DIVERT
+iptables -t mangle -D PREROUTING -p tcp -m socket -j DIVERT
+
+ip rule del fwmark 1 lookup 123 || true
+ip route del local 0.0.0.0/0 dev lo table 123
+

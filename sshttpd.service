@@ -1,0 +1,16 @@
+[Unit]
+Description=SSH/HTTP(S) multiplexer
+After=network.target
+ 
+[Service]
+Type=oneshot
+User=root
+Group=root
+EnvironmentFile=/etc/conf.d/sshttpd
+ExecStart=/usr/bin/nf-setup ; \
+          /usr/bin/sshttpd -S $SSH_PORT -H $HTTP_PORT -L $LISTEN_PORT -l $LISTEN_ADDRESS -U $USER -R $CHROOT_DIR
+ExecStop=/usr/bin/nf-cleanup ; \
+         /usr/bin/killall sshttpd
+
+[Install]
+WantedBy=multi-user.target

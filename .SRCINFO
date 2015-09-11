@@ -1,0 +1,24 @@
+pkgbase = sshttp-git
+	pkgdesc = SSH/HTTP(S) multiplexer
+	pkgver = e145de8
+	pkgrel = 1
+	url = https://github.com/stealth/sshttp
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = gcc
+	depends = libcap
+	provides = sshttp
+	conflicts = sshttp
+	backup = etc/conf.d/sshttpd
+	source = git://github.com/stealth/sshttp
+	source = nf-cleanup
+	source = sshttpd.config
+	source = sshttpd.service
+	md5sums = SKIP
+	md5sums = 7c75787f5b74ad1922fdf6722b1c7405
+	md5sums = 6d35b4409cac3ebd6e75f4736805f102
+	md5sums = cff8825c1428b87836218af0ed8a0066
+
+pkgname = sshttp-git
+

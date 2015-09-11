@@ -1,0 +1,6 @@
+*.swp
+*.swo
+*.pkg.tar.xz
+pkg
+src
+sshttp
