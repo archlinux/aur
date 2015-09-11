@@ -15,8 +15,8 @@ depends_x86_64=('lib32-glibc')
 
 source=(brother-hl2040.patch
         brother-hl2040.install
-        http://download.brother.com/welcome/dlf005842/cupswrapperHL2040-$pkgver-1.i386.rpm
-        http://download.brother.com/welcome/dlf005840/brhl2040lpr-$pkgver-1.i386.rpm)
+        http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2040-$pkgver-1.i386.rpm
+        http://www.brother.com/pub/bsc/linux/dlf/brhl2040lpr-$pkgver-1.i386.rpm)
 md5sums=('c162975d1764145bf3a73befdb4f5df3'
          '5400480b3988184f2a675a8a29e82baf'
          '82f57a91f1d4f2d51d37758a0c6a2673'
