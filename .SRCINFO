@@ -1,0 +1,15 @@
+pkgbase = saldl-git
+	pkgver = 44_490a555_v12+0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = python
+	makedepends = git
+	depends = curl
+	depends = libevent
+	source = saldl-git::git://github.com/saldl/saldl.git
+	md5sums = SKIP
+
+pkgname = saldl-git
+
