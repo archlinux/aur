@@ -1,13 +1,15 @@
 pkgbase = python-bna
 	pkgdesc = Command-line Battle.net authenticator and Python library
-	pkgver = 3.2
-	pkgrel = 3
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = https://github.com/jleclanche/python-bna
 	arch = any
 	license = MIT
 	depends = python
-	source = https://pypi.python.org/packages/source/p/python-bna/python-bna-3.2.tar.gz
-	sha256sums = 5bd90a9bcfc3f4aa766e20460456afcd4a8a8760a0f0f264c480ffcc38ed5c03
+	source = https://pypi.python.org/packages/source/b/bna/bna-4.0.1.tar.gz
+	source = https://pypi.python.org/packages/source/b/bna/bna-4.0.1.tar.gz.asc
+	sha256sums = 92404ac5856242a75df8dff69c0d122f6cb5c59cd7e545fba1a58e44fbd4831e
+	sha256sums = SKIP
 
 pkgname = python-bna
 
