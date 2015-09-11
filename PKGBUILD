@@ -2,13 +2,13 @@
 
 pkgname=plasma-desktop-git
 pkgver=r2502.a029fb5
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Plasma Desktop'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
 depends=(libxkbfile libcanberra systemsettings-git ksysguard-git 
-powerdevil-git kmenuedit-git kinfocenter-git polkit-kde-agent-git kpeople-git)
+powerdevil-git kmenuedit-git kinfocenter-git polkit-kde-agent-git kpeople-git qt5-graphicaleffects)
 makedepends=(xorg-server-devel xf86-input-synaptics extra-cmake-modules git kdoctools)
 optdepends=('plasma-nm-git: Network manager applet')
 conflicts=(plasma-desktop kdebase-workspace kdebase-kdepasswd kcm-touchpad-frameworks)
