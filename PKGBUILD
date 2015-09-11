@@ -3,7 +3,7 @@
 pkgname=packetbeat
 pkgver=1.0.0_beta3
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
 arch=('i686' 'x86_64')
 url="https://www.elastic.co/products/beats/$pkgname"
