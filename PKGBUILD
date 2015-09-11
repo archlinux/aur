@@ -8,7 +8,8 @@ pkgname=python2-$_libname
 pkgver=1.4.0
 pkgrel=2
 pkgdesc="Python client for Docker."
-depends=('python2-setuptools' 'python2-requests' 'python2-six' 'python2-websocket-client>=0.32.0')
+depends=('python2-requests' 'python2-six' 'python2-websocket-client>=0.32.0')
+makedepends=('python2-setuptools')
 arch=('any')
 source=(https://pypi.python.org/packages/source/d/docker-py/docker-py-$pkgver.tar.gz)
 md5sums=('3b9fbbd6f973499713932e074a2de879')
