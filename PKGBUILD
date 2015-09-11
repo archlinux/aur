@@ -4,21 +4,27 @@
 
 pkgname=switchboard
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pantheon Control Center'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard'
 license=('GPL3')
 groups=('pantheon')
 depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
-         'libgranite.so' 'libswitchboard-2.0.so')
+         'libgranite.so')
 makedepends=('cmake' 'vala')
 optdepends=('switchboard-plug-about: About plug'
             'switchboard-plug-applications: Applications plug'
+            'switchboard-plug-datetime: Date & Time plug'
             'switchboard-plug-desktop: Desktop plug'
+            'switchboard-plug-display: Display plug'
             'switchboard-plug-elementary-tweaks: Elementary Tweaks plug'
             'switchboard-plug-keyboard: Keyboard plug'
-            'switchboard-plug-power: Power plug')
+            'switchboard-plug-locale: Locale plug'
+            'switchboard-plug-network: Network plug'
+            'switchboard-plug-notifications: Notifications plug'
+            'switchboard-plug-power: Power plug'
+            'switchboard-plug-security-privacy: Security & Privacy plug')
 provides=('libswitchboard-2.0.so')
 install='switchboard.install'
 source=("https://launchpad.net/switchboard/${pkgver%.*.*}.x/${pkgver}/+download/switchboard-${pkgver}.tgz")

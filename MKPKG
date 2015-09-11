@@ -1,4 +1,3 @@
 pkgname=('switchboard')
-builddeps=('granite-bzr')
 
 # vim: ts=2 sw=2 et:
