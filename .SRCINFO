@@ -1,12 +1,12 @@
 pkgbase = kfilemetadata-git
 	pkgdesc = A library for extracting file metadata
-	pkgver = r239.b95e10c
+	pkgver = r255.c2f7249
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdelibs/kfilemetadata
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = extra-cmake-modules
+	makedepends = extra-cmake-modules-git
 	makedepends = git
 	depends = ki18n-git
 	depends = karchive-git
