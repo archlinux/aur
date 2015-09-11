@@ -1,6 +1,6 @@
 pkgbase = wlc-git
 	pkgdesc = Wayland compositor library.
-	pkgver = r742.28157d6
+	pkgver = r780.6d0aebe
 	pkgrel = 1
 	url = https://github.com/Cloudef/wlc
 	arch = i686
