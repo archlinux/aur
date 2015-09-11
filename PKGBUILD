@@ -6,7 +6,7 @@
 #
 pkgname=unadf
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="unzip like tool for Commodore Amiga filesystem .ADF images"
 arch=('i686' 'x86_64')

@@ -1,9 +1,9 @@
 pkgbase = unadf
 	pkgdesc = unzip like tool for Commodore Amiga filesystem .ADF images
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = http://lclevy.free.fr/adflib/unadf.html
-	arch = i686,
+	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
