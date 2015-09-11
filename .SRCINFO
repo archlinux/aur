@@ -1,0 +1,23 @@
+pkgbase = rainlendar-pro
+	pkgdesc = A desktop Calendar, ToDo list and Event list
+	pkgver = 2.12.2
+	pkgrel = 1
+	url = http://www.rainlendar.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cairo
+	depends = libsm
+	depends = expat>=1.95.8
+	depends = libstdc++5
+	depends = libpng12
+	depends = openssl098
+	provides = rainlendar2
+	conflicts = rainlendar-beta
+	conflicts = rainlendar-beta-unstable
+	conflicts = rainlendar-lite
+	source = http://www.rainlendar.net/download/Rainlendar-Pro-2.12.2-i386.tar.bz2
+	md5sums = dfc0d813b97015c4fb188e6c73aedbf9
+
+pkgname = rainlendar-pro
+
