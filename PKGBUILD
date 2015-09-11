@@ -1,12 +1,12 @@
 # Maintainer: Chase Franklin <jakhead at gmail dot com>
 pkgname=packy
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="pacman updates for conky via rss"
 arch=('any')
 url="https://github.com/gnullbyte/packy"
 license=('GPL')
-depends=('expac' 'python-feedparser' 'python-xdg')
+depends=('expac' 'python-setuptools' 'python-feedparser' 'python-xdg')
 options=(!emptydirs)
 source=("https://github.com/gnullbyte/$pkgname/tarball/$pkgver")
 md5sums=("85b907112033d08151d021788df62484")

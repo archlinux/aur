@@ -1,11 +1,12 @@
 pkgbase = packy
 	pkgdesc = pacman updates for conky via rss
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gnullbyte/packy
 	arch = any
 	license = GPL
 	depends = expac
+	depends = python-setuptools
 	depends = python-feedparser
 	depends = python-xdg
 	options = !emptydirs
