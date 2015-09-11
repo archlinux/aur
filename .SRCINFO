@@ -1,0 +1,18 @@
+pkgbase = dukto-qt5-git
+	pkgdesc = A simple, fast and multi-platform file transfer tool for LAN users - Qt 5.x
+	pkgver = v6.r2.gb26ddab
+	pkgrel = 1
+	url = https://github.com/arthurzam/dukto-qt5
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	conflicts = dukto
+	conflicts = dukto-svn
+	replaces = dukto
+	replaces = dukto-svn
+	source = dukto-qt5::git+git://github.com/arthurzam/dukto-qt5.git
+	sha1sums = SKIP
+
+pkgname = dukto-qt5-git
+
