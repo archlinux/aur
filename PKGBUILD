@@ -1,11 +1,11 @@
 pkgname=cen64-qt-git
-pkgver=20150126
+pkgver=20150910
 pkgrel=1
 pkgdesc="A basic frontend for CEN64"
 arch=('i686' 'x86_64')
 url="https://github.com/dh4/cen64-qt"
 license=('BSD')
-depends=('qt5-base' 'quazip' 'cen64-git')
+depends=('qt5-base' 'quazip-qt5' 'cen64-git')
 install=cen64-qt-git.install
 
 _gitroot='https://github.com/dh4/cen64-qt.git'
