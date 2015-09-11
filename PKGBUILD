@@ -16,8 +16,6 @@ url="http://www.gnome.org"
 options=('!emptydirs')
 source=(http://download.gnome.org/sources/$pkgbase/${pkgver:0:4}/$pkgbase-$pkgver.tar.xz nautilus-restore-typeahead.patch)
 sha256sums=('3e7ecdda3a47b6ad03098270940aa506782866fa3602d91e711d99f96741478f' '42baee0cd2a93bf8433da3c611a8acd30df39f15d89179dbbdbe65d08d0b3515')
-conflicts=$pkgbase
-provides=$pkgbase
 
 prepare() {
   cd $pkgbase-$pkgver
@@ -37,8 +35,9 @@ build() {
 
 package_nautilus-typeahead() {
   depends+=(libnautilus-extension)
-  groups=(gnome)
   install=nautilus.install
+  conflicts=$pkgbase
+  provides=$pkgbase
 
   cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
