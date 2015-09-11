@@ -1,0 +1,4 @@
+post_install() {
+	echo 'load the kernel module msr prior to start xfreq-intel.service and'
+	echo 'use systemd to start xfreq-intel.service prior to running either xfreq-cli or xfreq-gui'
+}
