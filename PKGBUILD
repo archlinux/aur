@@ -11,6 +11,7 @@ depends=(ki18n-git karchive-git exiv2 poppler-qt5 taglib ffmpeg ebook-tools)
 makedepends=(extra-cmake-modules-git git)
 provides=(kfilemetadata)
 conflicts=(kfilemetadata)
+groups=(kf5)
 source=('git://anongit.kde.org/kfilemetadata.git')
 md5sums=('SKIP')
 

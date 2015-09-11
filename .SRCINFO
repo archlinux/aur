@@ -5,6 +5,7 @@ pkgbase = kfilemetadata-git
 	url = https://projects.kde.org/projects/kde/kdelibs/kfilemetadata
 	arch = i686
 	arch = x86_64
+	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
