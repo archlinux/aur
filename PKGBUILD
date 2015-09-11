@@ -9,6 +9,7 @@ license=('GPL3')
 conflicts=('pydio-sync-git' 'pydio-sync-ui-git')
 provides=('pydio-sync')
 options=(!strip)
+depends=('qt5-webkit' 'libsm' 'gstreamer0.10-base')
 source=("https://pyd.io/resources/pydio6/data/public/pydiosync-linux-1-0-2-targz?dl=true&file=/1e481dfadf/PydioSync-Linux-v$pkgver.tar.gz"
         "pydio.desktop")
 md5sums=('501bc58a8b08345e9e2acf5bc5474680'
@@ -17,12 +18,14 @@ md5sums=('501bc58a8b08345e9e2acf5bc5474680'
 
 package() {
 	cd "$srcdir"
-	mkdir -p $pkgdir/opt/$pkgname
+	mkdir -p $pkgdir/opt/$pkgname/{pydio-agent,pydio-ui}
 
-	cp -R $srcdir/pydio-* $pkgdir/opt/$pkgname
+	cp $srcdir/pydio-agent/pydio-agent $pkgdir/opt/$pkgname/pydio-agent/
+	cp $srcdir/pydio-ui/pydio-ui $pkgdir/opt/$pkgname/pydio-ui/
+
 	
 	mkdir -p $pkgdir/usr/share/applications
-        install -Dm644 $startdir/pydio.desktop $pkgdir/usr/share/applications/
+        install -Dm644 pydio.desktop $pkgdir/usr/share/applications/
         mkdir -p $pkgdir/usr/bin
 	ln -s /opt/$pkgname/pydio-ui/pydio-ui $pkgdir/usr/bin/pydio-sync
 }
