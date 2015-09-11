@@ -6,14 +6,14 @@
 # Modifications to revert commit 743970d
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGBUILD as closely as possible matches core's systemd 224-1
+#    * This PKGBUILD as closely as possible matches core's systemd 225-1
 #    * splash-arch.bmp is omitted, because it is over AUR4's 250k file size limit
 #    * All namcap warnings and errors are identical
 
 pkgbase=systemd-kill-fix
 pkgname=('systemd-kill-fix' 'libsystemd-kill-fix' 'systemd-sysvcompat-kill-fix')
 _pkgname=systemd
-pkgver=224
+pkgver=225
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -37,10 +37,6 @@ md5sums=('SKIP'
 
 prepare() {
   cd "$_pkgname"
-
-  # networkd: fix networkd crash
-  # https://github.com/systemd/systemd/commit/49f6e11e89b4
-  git cherry-pick -n 49f6e11e89b4
 
   # revert commit that under certain circumstances sends processes a
   # kill -9 during system shutdown.  most common data loss from this is
