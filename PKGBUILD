@@ -1,39 +1,44 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-about
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='About plug for Switchboard'
 arch=('i686' 'x86_64')
-url="https://launchpad.net/${pkgname}"
+url='https://launchpad.net/switchboard-plug-about'
 license=('GPL3')
-depends=('libpantheon' 'switchboard')
+groups=('pantheon')
+depends=('glib2' 'glibc' 'gtk3' 'libgee'
+         'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
-source=("${url}/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tgz"
+source=("https://launchpad.net/switchboard-plug-about/freya/${pkgver}/+download/switchboard-plug-about-${pkgver}.tgz"
         'about-archlinux.patch')
-sha256sums=('1ced8c11b285ac6210121f7edd115958f07a49ef4de365793f2517aade408a04'
-            '2c68f1307b939a19a1cccebf75af387c32dfe68cf95f97ed6174fc29c56a2462')
+sha256sums=('18ee479055392bfe72d7891a7f8b21b71acda64acfc2f7c4b0377200e0fb4e2e'
+            '792efaed1c32a03f058581887fe8fb48e53a9edadc66a0addd5ffbc7c288ad65')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd switchboard-plug-about-${pkgver}
 
-  patch -Np1 -i ../about-archlinux.patch
-}
-
-build() {
-  cd ${pkgname}-${pkgver}
+  #patch -Np1 -i ../about-archlinux.patch
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
 
-  cmake .. -DCMAKE_INSTALL_PREFIX='/usr'
+build() {
+  cd switchboard-plug-about-${pkgver}/build
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}/build
+  cd switchboard-plug-about-${pkgver}/build
 
   make DESTDIR="${pkgdir}" install
 }

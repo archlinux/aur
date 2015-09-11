@@ -1,52 +1,56 @@
---- a/src/about-plug.vala	2013-09-11 16:12:55.546339000 +0200
-+++ b/src/about-plug.vala	2013-09-11 16:11:14.152057283 +0200
-@@ -21,20 +21,11 @@ public class AboutPlug : Pantheon.Switch
+diff -rupN switchboard-plug-about.orig/src/Plug.vala switchboard-plug-about/src/Plug.vala
+--- switchboard-plug-about.orig/src/Plug.vala	2015-05-28 11:30:40.451605900 +0200
++++ switchboard-plug-about/src/Plug.vala	2015-05-28 11:31:21.864015570 +0200
+@@ -20,19 +20,12 @@ public class About.Plug : Switchboard.Pl
      private string os;
      private string website_url;
      private string bugtracker_url;
 -    private string codename;
 -    private string version;
--    private string arch;
-+    private string kernel;
+     private string arch;
      private string processor;
      private string memory;
      private string graphics;
      private string hdd;
--    private string ubuntu_base;
--    private Gtk.Label based_off;
--    
--    
+     private Gtk.Label based_off;
+-
+-
 -    private string is_ubuntu;
 -    private string ubuntu_version;
 -    private string ubuntu_codename;
+     private Gtk.EventBox main_grid;
  
-     public AboutPlug () {
-         setup_info ();
-@@ -73,45 +64,16 @@ public class AboutPlug : Pantheon.Switch
-             string line;
-             // Read lines until end of file (null) is reached
-             while ((line = dis.read_line (null)) != null) {
+     public Plug () {
+@@ -93,75 +86,11 @@ public class About.Plug : Switchboard.Pl
+     private void setup_info () {
+ 
+         // Operating System
+-
+-        File file = File.new_for_path("/etc/lsb-release");
+-        try {
+-            var dis = new DataInputStream (file.read ());
+-            string line;
+-            // Read lines until end of file (null) is reached
+-            while ((line = dis.read_line (null)) != null) {
 -                if ("DISTRIB_ID=" in line) {
 -                    os = line.replace ("DISTRIB_ID=", "");
-+                if ("DISTRIB_DESCRIPTION=" in line) {
-+                    os = line.replace ("DISTRIB_DESCRIPTION=", "");
-                     if ("\"" in os) {
-                         os = os.replace ("\"", "");
-                     }
+-                    if ("\"" in os) {
+-                        os = os.replace ("\"", "");
+-                    }
 -                } else if ("DISTRIB_RELEASE=" in line) {
 -                    version = line.replace ("DISTRIB_RELEASE=", "");
 -                } else if ("DISTRIB_CODENAME=" in line) {
 -                    codename = line.replace ("DISTRIB_CODENAME=", "");
 -                    codename = capitalize (codename);
-                 }
-             }
-         } catch (Error e) {
--            warning("Couldn't read lsb-release file, assuming elementary OS 0.2");
+-                }
+-            }
+-        } catch (Error e) {
+-            warning("Couldn't read lsb-release file, assuming elementary OS 0.3");
 -            os = "elementary OS";
--            version = "0.2";
--            codename = "Luna";
+-            version = "0.3";
+-            codename = "Freya";
 -        }
--        
+-
 -        file = File.new_for_path("/etc/upstream-release/lsb-release");
 -        try {
 -            var dis = new DataInputStream (file.read ());
@@ -67,76 +71,204 @@
 -            is_ubuntu = null;
 -            ubuntu_version = null;
 -            ubuntu_codename = null;
-+            warning("Couldn't read lsb-release file, assuming Arch Linux");
-+            os = "Arch Linux";
-         }
+-        }
++        os = "Arch Linux";
  
          //Bugtracker and website
-@@ -129,21 +91,17 @@ public class AboutPlug : Pantheon.Switch
-             }
-         } catch (Error e) {
-             warning(e.message);
+-        file = File.new_for_path("/etc/dpkg/origins/"+os);
+-        bugtracker_url = "";
+-        website_url = "";
+-        try {
+-            var dis = new DataInputStream (file.read ());
+-            string line;
+-            // Read lines until end of file (null) is reached
+-            while ((line = dis.read_line (null)) != null) {
+-                if (line.has_prefix("Bugs:")) {
+-                    bugtracker_url = line.replace ("Bugs: ", "");
+-                }
+-            }
+-        } catch (Error e) {
+-            warning(e.message);
 -            warning("Couldn't find bugtracker/website, using elementary OS defaults");
-+            warning("Couldn't find bugtracker/website, using Arch Linux defaults");
-             if (website_url == "")
--                website_url = "http://elementaryos.org";
-+                website_url = "https://www.archlinux.org";
-             if (bugtracker_url == "")
--                bugtracker_url = "https://bugs.launchpad.net/elementary/+filebug";
-+                bugtracker_url = "https://bugs.archlinux.org";
-         }
+-            if (website_url == "")
+-                website_url = "http://elementary.io";
+-            if (bugtracker_url == "")
+-                bugtracker_url = "https://bugs.launchpad.net/elementaryos/+filebug";
+-        }
++        bugtracker_url = "https://bugs.archlinux.org/";
++        website_url = "https://www.archlinux.org/";
  
--        // Architecture
--        Process.spawn_command_line_sync ("uname -m", out arch);
--        if (arch == "x86_64\n") {
--            arch = "64-bit";
--        } else if ("arm" in arch) {
--            arch = "ARM";
--        } else {
--            arch = "32-bit";
-+        // Kernel
-+        Process.spawn_command_line_sync ("uname -srm", out kernel);
-+        if ("\n" in kernel) {
-+            kernel = kernel.replace ("\n", "");
-         }
+         // Architecture
+         try {
+@@ -272,18 +201,12 @@ public class About.Plug : Switchboard.Pl
+         var logo = new Gtk.Image.from_icon_name ("distributor-logo", Gtk.icon_size_register ("LOGO", 128, 128));
  
-         // Processor
-@@ -156,6 +114,8 @@ public class AboutPlug : Pantheon.Switch
-         }
-         if ("\n" in processor) {
-             processor = processor.split ("\n")[0];
-+        } while ("  " in processor) {
-+            processor = processor.replace ("  ", " ");
-         } if ("(R)" in processor) {
-             processor = processor.replace ("(R)", "®");
-         } if ("(TM)" in processor) {
-@@ -233,24 +193,17 @@ public class AboutPlug : Pantheon.Switch
-         Granite.Widgets.Utils.apply_text_style_to_label (Granite.TextStyle.TITLE, title);
+         var title = new Gtk.Label (null);
+-        title.set_markup (("%s %s %s <sup><small>(%s)</small></sup>").printf (os, version, codename, arch));
++        title.set_markup (("%s <sup><small>(%s)</small></sup>").printf (os, arch));
+         title.get_style_context ().add_class ("h2");
          title.set_alignment (0, 0);
+         title.set_selectable (true);
  
--        var version = new Gtk.Label (_("Version") + ": " + version + " \"" + codename + "\" ( " + arch + " )");
--        version.set_alignment (0, 0);
--        version.set_selectable (true);
--        
 -        if (is_ubuntu != null) {
--            based_off = new Gtk.Label (_("Built on") + ": " + is_ubuntu + " " + ubuntu_version + " ( \"" + ubuntu_codename + "\" )");
+-            based_off = new Gtk.Label (_("Built on %s %s").printf (is_ubuntu, ubuntu_version));
 -            based_off.set_alignment (0, 0);
 -            based_off.set_selectable (true);
 -        }
-+        var kernel = new Gtk.Label (kernel);
-+        kernel.set_alignment (0, 0);
-+        kernel.set_selectable (true);
- 
-         var website_label = new Gtk.Label (null);
--        website_label.set_markup ("<a href=\"http://elementaryos.org/\">http://elementaryos.org</a>");
-+        website_label.set_markup ("<a href=\"https://www.archlinux.org/\">https://www.archlinux.org</a>");
+-
+-        var website_label = new Gtk.LinkButton.with_label ("http://elementary.io", _("Website"));
++        var website_label = new Gtk.LinkButton.with_label ("https://www.archlinux.org", _("Website"));
          website_label.set_alignment (0, 0);
  
          var details = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
-         details.pack_start (title, false, false, 0);
--        details.pack_start (version, false, false, 0);
--        details.pack_start (based_off, false, false, 0);
-+        details.pack_start (kernel, false, false, 0);
-         details.pack_start (website_label, false, false, 0);
+@@ -352,34 +275,28 @@ public class About.Plug : Switchboard.Pl
+         hardware_grid.attach (graphics_info, 100, 120, 100, 25);
+         hardware_grid.attach (hdd_info, 100, 160, 100, 25);
  
-         var elementary_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
+-        var help_button = new Gtk.Button.with_label ("?");
+-        help_button.get_style_context ().add_class ("help_button");
+-        help_button.halign = Gtk.Align.CENTER;
+-
+-        help_button.clicked.connect (() => {
++        // Forums button
++        var bbs_button = new Gtk.Button.with_label (_("Forums"));
++        bbs_button.clicked.connect (() => {
+             try {
+-                AppInfo.launch_default_for_uri ("http://elementary.io/support", null);
++                AppInfo.launch_default_for_uri ("https://bbs.archlinux.org", null);
+             } catch (Error e) {
+                 warning (e.message);
+             }
+         });
+ 
+-        help_button.size_allocate.connect ( (alloc) => {
+-            help_button.set_size_request (alloc.height, -1);
+-        });
+-
+-        // Translate button
+-        var translate_button = new Gtk.Button.with_label (_("Suggest Translations"));
+-        translate_button.clicked.connect (() => {
++        // Wiki button
++        var wiki_button = new Gtk.Button.with_label (_("Wiki"));
++        wiki_button.clicked.connect (() => {
+             try {
+-                AppInfo.launch_default_for_uri ("https://translations.launchpad.net/elementary", null);
++                AppInfo.launch_default_for_uri ("https://wiki.archlinux.org", null);
+             } catch (Error e) {
+                 warning (e.message);
+             }
+         });
+ 
+         // Bug button
+-        var bug_button = new Gtk.Button.with_label (_("Report a Problem"));
++        var bug_button = new Gtk.Button.with_label (_("Bugs"));
+         bug_button.clicked.connect (() => {
+             try {
+                 AppInfo.launch_default_for_uri (bugtracker_url, null);
+@@ -388,29 +305,23 @@ public class About.Plug : Switchboard.Pl
+             }
+         });
+ 
+-        // Update button
+-        var update_button = new Gtk.Button.with_label (_("Check for Updates"));
+-        update_button.clicked.connect (() => {
++        // Packages button
++        var pkg_button = new Gtk.Button.with_label (_("Packages"));
++        pkg_button.clicked.connect (() => {
+             try {
+-                Process.spawn_command_line_async("update-manager");
++                AppInfo.launch_default_for_uri ("https://archlinux.org/packages/", null);
+             } catch (Error e) {
+                 warning (e.message);
+             }
+         });
+ 
+-        // Restore settings button
+-        var settings_restore_button = new Gtk.Button.with_label (_("Restore Default Settings"));
+-        settings_restore_button.clicked.connect (settings_restore_clicked);
+-
+         // Create a box for the buttons
+         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
+         button_box.spacing = 6;
+-        button_box.pack_start (help_button, false, false, 0);
+-        button_box.set_child_non_homogeneous (help_button, true);
+-        button_box.pack_end (settings_restore_button, false, false, 0);
+-        button_box.pack_end (translate_button, false, false, 0);
++        button_box.pack_start (bbs_button, false, false, 0);
++        button_box.pack_end (wiki_button, false, false, 0);
+         button_box.pack_end (bug_button, false, false, 0);
+-        button_box.pack_end (update_button, false, false, 0);
++        button_box.pack_end (pkg_button, false, false, 0);
+ 
+         // Fit everything in a box
+         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
+@@ -450,50 +361,6 @@ private uint64 get_mem_info_for(string n
+     return result;
+ }
+ 
+-private void reset_all_keys (GLib.Settings settings) {
+-    var keys = settings.list_keys ();
+-    foreach (var key in keys) {
+-        settings.reset (key);
+-    }
+-}
+-
+-private string[] get_pantheon_schemas () {
+-    string[] schemas = {};
+-    string[] pantheon_schemas = {};
+-    string[] prefixes = { "org.pantheon.desktop", "org.gnome.desktop" };
+-
+-    var sss = SettingsSchemaSource.get_default ();
+-
+-    sss.list_schemas (true, out schemas, null);
+-
+-    foreach (var schema in schemas) {
+-        foreach (var prefix in prefixes) {
+-            if (schema.has_prefix (prefix)) {
+-                pantheon_schemas += schema;
+-            }
+-        }
+-    }
+-    return pantheon_schemas;
+-}
+-
+-private void reset_recursively (string schema) {
+-    var settings = new GLib.Settings (schema);
+-    // change into delay mode
+-	// so changes take place when apply () is called
+-    settings.delay ();
+-
+-    reset_all_keys (settings);
+-
+-    var children = settings.list_children ();
+-    foreach (var child in children) {
+-        var child_settings = settings.get_child (child);
+-
+-        reset_all_keys (child_settings);
+-    }
+-    settings.apply ();
+-    GLib.Settings.sync ();
+-}
+-
+ /**
+  * returns true to continue, false to cancel
+  */
+@@ -549,18 +416,6 @@ private bool confirm_restore_action () {
+     }
+ }
+ 
+-private void settings_restore_clicked () {
+-    var should_display = confirm_restore_action ();
+-
+-    if (should_display) {
+-        var all_schemas = get_pantheon_schemas ();
+-
+-        foreach (var schema in all_schemas) {
+-            reset_recursively (schema);
+-        }
+-    }
+-}
+-
+ public Switchboard.Plug get_plug (Module module) {
+     debug ("Activating About plug");
+     var plug = new About.Plug ();

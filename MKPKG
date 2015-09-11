@@ -1,4 +1,4 @@
 pkgname=('switchboard-plug-about')
-builddeps=('dee' 'libpantheon-bzr' 'libunity' 'switchboard')
+builddeps=('switchboard')
 
 # vim: ts=2 sw=2 et:
