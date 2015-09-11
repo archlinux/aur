@@ -1,7 +1,7 @@
 # Maintainer: casa <sympho08@yandex.ru>
 
 pkgname=mednaffe 
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="front-end (GUI) for mednafen emulator"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 install=mednaffe.install
 depends=('mednafen' 'gtk3')
 source=(https://sites.google.com/site/amatcoder/mednaffe/downloads/$pkgname-$pkgver.tar.gz)
-md5sums=('56ac6c4d89638f9384920f6ea6b72e3c')
+md5sums=('ab7c524d70170b8bba8819e71fc136e0')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
