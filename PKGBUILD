@@ -14,7 +14,7 @@ source=("http://downloads.sourceforge.net/ganglia/$pkgname-$pkgver.tar.gz"
         'ganglia-web.install'
         'configuration.patch')
 sha256sums=('5368dc424fadc0fe1cc47730a628f514f710d59f7f6a4c53848f1a8f1116932a'
-            '5d750ce804626eb657758875dc006fe467d92c20d79e3b4a05d099360887ec5b'
+            'b2d01098ffc3998143cbd4cc996f3ce572604b6c29f5c97e917f6de8986131da'
             '99991e9a17975b97c1049e7f8d6c92afb8dab75f987b2a13cb8cdf1faf1b1918')
 
 prepare() {
