@@ -1,14 +1,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kfilemetadata-git
-pkgver=r239.b95e10c
+pkgver=r255.c2f7249
 pkgrel=1
 pkgdesc="A library for extracting file metadata"
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kdelibs/kfilemetadata'
 license=(LGPL)
 depends=(ki18n-git karchive-git exiv2 poppler-qt5 taglib ffmpeg ebook-tools)
-makedepends=(extra-cmake-modules git)
+makedepends=(extra-cmake-modules-git git)
 provides=(kfilemetadata)
 conflicts=(kfilemetadata)
 source=('git://anongit.kde.org/kfilemetadata.git')
