@@ -5,9 +5,9 @@
 pkgname=spotify-beta
 pkgver=1.0.13.112
 _anotherpkgver=g539ef41b
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary peer-to-peer music streaming service"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
 url="http://www.spotify.com"
 changelog='spotify.changelog'
@@ -17,13 +17,20 @@ conflicts=('spotify')
 source=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}_amd64.deb"
 'spotify.protocol'
 )
-sha1sums=('60a1a3251fec8691df57e6aafba912d0b7e831d6'
-'85c44fcda773793a75392b9ac25d7a346c0355ed')
+sha256sums=('1f79cae705ae2e92fe51d4e59ada1011be53820f8186c857b98519a4247b845b'
+'af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3')
 
 depends=("alsa-lib>=1.0.14" "glibc>=2.6" "openssl" "gconf" "nss" "systemd" "gtk2" "libxtst" "libx11" "libcurl-compat" "libxss")
 optdepends=('desktop-file-utils: Adds URI support to compatible desktop environments'
 'ffmpeg-compat: Adds support for playback of local files'
 'libnotify: Adds desktop notifications')
+
+if [ "$CARCH" = "i686" ]; then
+	source=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.13.111.g6bd0deca_i386.deb" 
+		"spotify.protocol")
+	sha256sums=('f8e5fef534c9fe47194574cf322ce758a39bb49915bf46cc55d7024e6f9eadde'
+		'af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3')
+fi
 
 package() {
     cd "${srcdir}"

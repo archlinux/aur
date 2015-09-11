@@ -1,10 +1,11 @@
 pkgbase = spotify-beta
 	pkgdesc = A proprietary peer-to-peer music streaming service
 	pkgver = 1.0.13.112
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spotify.com
 	changelog = spotify.changelog
 	arch = x86_64
+	arch = i686
 	license = custom:"Copyright (c) 2006-2010 Spotify Ltd"
 	depends = alsa-lib>=1.0.14
 	depends = glibc>=2.6
@@ -24,8 +25,8 @@ pkgbase = spotify-beta
 	options = !strip
 	source = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.13.112.g539ef41b_amd64.deb
 	source = spotify.protocol
-	sha1sums = 60a1a3251fec8691df57e6aafba912d0b7e831d6
-	sha1sums = 85c44fcda773793a75392b9ac25d7a346c0355ed
+	sha256sums = 1f79cae705ae2e92fe51d4e59ada1011be53820f8186c857b98519a4247b845b
+	sha256sums = af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3
 
 pkgname = spotify-beta
 
