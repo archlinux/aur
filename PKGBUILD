@@ -10,6 +10,7 @@ url="http://www.brother.com"
 license=('GPL')
 install="brother-hl2040.install"
 arch=('i686' 'x86_64')
+depends=('cups') 
 depends_x86_64=('lib32-glibc') 
 
 source=(brother-hl2040.patch
