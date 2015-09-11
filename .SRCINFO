@@ -6,6 +6,7 @@ pkgbase = adwaita-qt
 	arch = any
 	arch = i686
 	arch = x86_64
+	groups = adwaita-qt
 	license = GPL
 	license = LGPL
 	makedepends = cmake

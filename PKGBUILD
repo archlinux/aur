@@ -8,6 +8,7 @@ pkgdesc='The stylesheet to bend Qt applications to look like they belong into GN
 arch=('any' 'i686' 'x86_64')
 url='https://github.com/MartinBriza/adwaita-qt'
 license=('GPL' 'LGPL')
+groups=('adwaita-qt')
 makedepends=('cmake' 'qt4' 'qt5-base')
 # Use master until Arch specific fix lands into stable.
 source=("https://github.com/MartinBriza/adwaita-qt/archive/master.zip")
