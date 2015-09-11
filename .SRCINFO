@@ -1,0 +1,15 @@
+pkgbase = libmxp
+	pkgdesc = Mud eXtension Protocol library
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/games/kmuddy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	provides = libmxp
+	source = http://gloomtown.nboughton.uk/files/libmxp-0.2.4.tar.gz
+	md5sums = b28b280342492511bd5335b95ab3c59f
+
+pkgname = libmxp
+
