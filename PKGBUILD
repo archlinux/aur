@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-pkgbuild-mode-git
-pkgver=0.13.1.1.gdda90e2
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A major mode for creating packages with emacs"
 arch=('any')
@@ -19,7 +19,7 @@ _gitname="pkgbuild-mode"
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always | sed s+-+.+g
+  git describe --tags | sed s+-+.+g
 }
 
 build() {
