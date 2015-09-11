@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=xt7-player-mpv
-pkgver=0.10.0381
+pkgver=0.10.0381-hotfix
 pkgrel=1
 _realname=xt7-player-mpv
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
@@ -30,9 +30,9 @@ depends=('gambas3-gb-image>=3.6.2'
 	'gambas3-gb-signal>=3.6.2'
 	'gambas3-gb-desktop-x11>=3.6.2'
 	'gambas3-gb-args>=3.6.2'
-	'mpv>=0.9.0'
+	'mpv>=1:0.10.0'
 	'taglib'
-	'youtube-dl>=2014.03.21'
+	'youtube-dl>=2015.08.28'
 	'wget')
 
 makedepends=('gambas3-devel')
