@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=cerberus
-pkgver=1428445301
+pkgver=1441943433
 pkgrel=1
 pkgdesc="A compile-time configurable minimal login program that uses libpassphrase"
 url="https://github.com/GNU-Pony/cerberus"
@@ -11,7 +11,7 @@ depends=(glibc 'libpassphrase>=1400850322' linux)
 makedepends=(make coreutils gcc texinfo) # pam
 install=cerberus.install
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(d091f96e3ef95a0501a8ab4370f322b8fa8d1307097855ca5530757923cb0937)
+sha256sums=(4bb4578ed94f46bb518feaa9c221bf3d503a99e944ef97d9ed2890adb6f5cc12)
 
 # The dependency on `linux` can be removed if both `OWN_VCS` and `OWN_VCSA` is removed.
 # The dependency on `pam` can removed if `auth` is change to not be `pam`.
@@ -19,9 +19,9 @@ sha256sums=(d091f96e3ef95a0501a8ab4370f322b8fa8d1307097855ca5530757923cb0937)
 # Works on armv6h (tested on Raspberry Pi) unless `auth=pam`.
 
 
-_conf=()
-
-prepare() {
+build() {
+	cd "${srcdir}/cerberus-${pkgver}"
+	
 	auth=crypt # can also be set to `crypt` or `none` # pam
 	cpp_defs=(OWN_VCS OWN_VCSA USE_TTY_GROUP)
 	path_user=/usr/local/bin:/usr/bin
@@ -33,20 +33,28 @@ prepare() {
 	done
 	cpp_flags="EXTRA_CPP_FLAGS=${cpp_flags[*]}"
 	
-	_conf+=( AUTH="${auth}" PATH="${path_user}" PATH_ROOT="${path_root}" "${cpp_flags}" )
-}
-
-build() {
-	cd "${srcdir}/cerberus-${pkgver}"
+	_conf=( AUTH="${auth}" PATH="${path_user}" PATH_ROOT="${path_root}" "${cpp_flags}" )
 	
+	make clean
 	make PKGNAME="${pkgname}" INSTALL_BIN=/bin "${_conf[@]}"
 }
 
 package() {
 	cd "${srcdir}/cerberus-${pkgver}"
 	
-	_conf=()
-	prepare
+	auth=crypt # can also be set to `crypt` or `none` # pam
+	cpp_defs=(OWN_VCS OWN_VCSA USE_TTY_GROUP)
+	path_user=/usr/local/bin:/usr/bin
+	path_root=/usr/local/sbin:/usr/local/bin:/usr/bin
+	
+	cpp_flags=()
+	for def in "${cpp_defs[@]}"; do
+	    cpp_flags+=( -D"${def}" )
+	done
+	cpp_flags="EXTRA_CPP_FLAGS=${cpp_flags[*]}"
+	
+	_conf=( AUTH="${auth}" PATH="${path_user}" PATH_ROOT="${path_root}" "${cpp_flags}" )
+	
 	make PKGNAME="${pkgname}" INSTALL_BIN=/bin DESTDIR="${pkgdir}" "${_conf[@]}" install
 	
 	_dir="${pkgdir}/usr/share/licenses/${pkgname}"

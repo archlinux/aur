@@ -1,6 +1,6 @@
 pkgbase = cerberus
 	pkgdesc = A compile-time configurable minimal login program that uses libpassphrase
-	pkgver = 1428445301
+	pkgver = 1441943433
 	pkgrel = 1
 	url = https://github.com/GNU-Pony/cerberus
 	install = cerberus.install
@@ -14,8 +14,8 @@ pkgbase = cerberus
 	depends = glibc
 	depends = libpassphrase>=1400850322
 	depends = linux
-	source = https://github.com/GNU-Pony/cerberus/archive/1428445301.tar.gz
-	sha256sums = d091f96e3ef95a0501a8ab4370f322b8fa8d1307097855ca5530757923cb0937
+	source = https://github.com/GNU-Pony/cerberus/archive/1441943433.tar.gz
+	sha256sums = 4bb4578ed94f46bb518feaa9c221bf3d503a99e944ef97d9ed2890adb6f5cc12
 
 pkgname = cerberus
 
