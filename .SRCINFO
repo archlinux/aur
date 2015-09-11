@@ -1,14 +1,14 @@
 pkgbase = komodo-edit
 	pkgdesc = Free & Open-Source counterpart of ActiveState Komodo IDE - XUL based
 	pkgver = 9.2.1_15998
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.activestate.com/komodo-edit
 	arch = i686
 	arch = x86_64
 	license = MPL
 	depends = dbus-glib
 	depends = glibc>=2.4
-	depends = libjpeg>=6.2
+	depends = libjpeg-turbo
 	depends = gcc-libs
 	depends = gtk2
 	optdepends = xterm: can be used by komodo-toolbox

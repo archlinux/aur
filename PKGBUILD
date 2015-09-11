@@ -13,12 +13,12 @@ _minor=15998
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
 pkgver="${_major}_${_minor}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Free & Open-Source counterpart of ActiveState Komodo IDE - XUL based"
 arch=(i686 x86_64)
 url="http://www.activestate.com/komodo-edit"
 license=('MPL')
-depends=('dbus-glib' 'glibc>=2.4' 'libjpeg>=6.2' 'gcc-libs' 'gtk2')
+depends=('dbus-glib' 'glibc>=2.4' 'libjpeg-turbo' 'gcc-libs' 'gtk2')
 optdepends=('xterm: can be used by komodo-toolbox')
 conflicts=('komodoedit')
 options=('!strip')
