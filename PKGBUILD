@@ -2,13 +2,13 @@
 
 pkgname=xdg-app
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='An application deployment framework for desktop apps'
 arch=('i686' 'x86_64')
 url='http://www.freedesktop.org/software/xdg-app'
 license=('GPL2')
 depends=('ostree' 'libseccomp')
-makedepends=('git' 'libxslt' 'docbook-xml' 'docbook-xsl')
+makedepends=('git' 'docbook-xsl')
 _libglnxrev='d59a63e'
 install='xdg-app.install'
 source=("$url/releases/$pkgname-$pkgver.tar.xz")

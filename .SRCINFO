@@ -1,15 +1,13 @@
 pkgbase = xdg-app
 	pkgdesc = An application deployment framework for desktop apps
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/software/xdg-app
 	install = xdg-app.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = libxslt
-	makedepends = docbook-xml
 	makedepends = docbook-xsl
 	depends = ostree
 	depends = libseccomp
