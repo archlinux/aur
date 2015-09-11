@@ -1,19 +1,18 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=satellitereign-hib
-pkgver=101
+pkgver=104
 pkgrel=1
 pkgdesc="Spiritual successor to the Syndicate games"
 arch=("i686" "x86_64")
 url="https://www.humblebundle.com/store/p/satellitereign_storefront"
 license=("custom:commercial")
-depends_x86_64=("gcc-libs" "glibc" "libx11" "libxau" "libxcb" "libxcursor" "libxdmcp" "libxext" "libxfixes" "libxrandr" "libxrender" "libgl")
-depends_i686=("gcc-libs" "glibc" "libx11" "libxau" "libxcb" "libxcursor" "libxdmcp" "libxext" "libxfixes" "libxrandr" "libxrender" "libgl")
+depends=("gcc-libs" "glibc" "libx11" "libxau" "libxcb" "libxcursor" "libxdmcp" "libxext" "libxfixes" "libxrandr" "libxrender" "libgl")
 options=("!emptydirs" "!strip")
 source=("${pkgname}.desktop"
         "SatelliteReignLinux${pkgver}.zip::hib://SatelliteReignLinux${pkgver}.zip")
 sha256sums=("87cc04b37e83a2871d4eb2aa694ea13eae2670fa364d4f06b823cf1c4323da33"
-            "d7113b5d9a164f9e34273dd13b39bec281c87fe5b1c8f9d904bb09602c5cbf3d")
+            "e6f5111f2c8b82ea2b6e4ea98e1dba7d751bfbe06c6319563413791c9262a8df")
 
 # Disable compression of the package
 PKGEXT=".pkg.tar"
