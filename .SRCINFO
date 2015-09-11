@@ -1,0 +1,14 @@
+pkgbase = cmdfs
+	pkgdesc = A FUSE virtual file system that allows processing files with arbitrary commands.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://cmdfs.sourceforge.net/
+	arch = x86
+	arch = x86_64
+	license = GPL3
+	depends = fuse
+	source = http://downloads.sourceforge.net/project/cmdfs/cmdfs-0.5.tar.gz
+	md5sums = f72be0959a39a5e32909482839fd4ef8
+
+pkgname = cmdfs
+
