@@ -1,7 +1,7 @@
 # Maintainer: Thiago Kenji Okada <thiago DOT mast3r AT gmail DOT com>
 
 pkgname='burgaur'
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='A delicious AUR helper. Made from cower.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('cower' 'pacman' 'python' 'python-termcolor' 'sudo')
 optdepends=('mc: review packages before installing')
 source=("${url}/archive/${pkgver}.tar.gz")
 install='burgaur.install'
-sha256sums=('486a0769eec6e2b57787f75cc7a91b9bff744b6755eeacd4ee66c1ee1b4f38f6')
+sha256sums=('0f2d2e1ca8eafa9733c3c35d96760dd034e1c8d11f906cbf896b89895cf5e6be')
 conflicts=('burgaur-git')
 
 package() {
