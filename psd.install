@@ -39,22 +39,27 @@ pre_upgrade() {
 	fi
 
 	if [ $(vercmp $2 6.03) -lt 0 ]; then
-		echo '-> The use of $HOME/.psd is deprecated.'
-		echo '-> Psd will move it for you upon next invocation to $XDG_CONFIG_HOME/psd'
-	fi
-	
-	# version 6.05 impliments changes to both the service and the way overlayfs is mounted/umount
-	# so it is required that pacman stop the user service here if running
-	if [ $(vercmp $2 6.05) -lt 0 ]; then
 		for i in $(users); do
-			running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
-			if [[ "$running" = "active" ]]; then
-				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
-				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
-				echo '-> Internal changes to psd require it to be stopped now before updating.'
-				echo '-> Users of overlayfs: you must run the following before starting the service: psd p'
+			HOMEDIR="$(getent passwd $i | cut -d: -f6)"
+			if [[ -d "$HOMEDIR"/.psd ]]; then
+				echo '-> The use of $HOME/.psd is deprecated.'
+				echo '-> Psd will move it for you upon next invocation to $XDG_CONFIG_HOME/psd'
 			fi
 		done
+
+		# version 6.05 impliments changes to both the service and the way overlayfs is mounted/umount
+		# so it is required that pacman stop the user service here if running
+		if [ $(vercmp $2 6.05) -lt 0 ]; then
+			for i in $(users); do
+				running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
+				if [[ "$running" = "active" ]]; then
+					su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
+					su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
+					echo '-> Internal changes to psd require it to be stopped now before updating.'
+					echo '-> Users of overlayfs: you must run the following before starting the service: psd p'
+				fi
+			done
+		fi
 	fi
 }
 
