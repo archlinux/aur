@@ -1,7 +1,7 @@
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
 
 pkgname=sigasi
-pkgver=2.30
+pkgver=2.30.1
 pkgrel=1
 pkgdesc='IDE for VHDL editing and browsing'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ source_i686=("http://download.sigasi.com/updates/sigasi-hdt2/com.sigasi.hdt.prod
 source=('sigasi.desktop')
 depends=('glib2')
 sha256sums=('a8084b3146904c2accd5946e2aa493e133c56e4f8f0d7f582a0edcb080a7958c')
-sha256sums_i686=('17e62b840dbc8adb9e8fa361fa931541915fe20aa5085ff79f62fb63b142c3b1')
-sha256sums_x86_64=('faa72d84c3678ad931315b473a61405bc4fa46029ad5930d0ed83f82a32594dd')
+sha256sums_i686=('a087031a5f526018e9414bb997a14fb711d79a2ee3cdf71156023554b8b970c6')
+sha256sums_x86_64=('3f13fe8d69c2966368672a056894c04e95366ddc972ec2c7a3a9936b35e3fe7c')
 
 package() {
 	cd "${srcdir}/"
