@@ -1,4 +1,5 @@
 pkgbase = saldl-git
+	pkgdesc = A CLI downloader optimized for speed and early preview, based on libcurl.
 	pkgver = 44_490a555_v12+0
 	pkgrel = 1
 	arch = i686
