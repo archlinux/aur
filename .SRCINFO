@@ -1,6 +1,6 @@
 pkgbase = terminator-trunk-mod
 	pkgdesc = Terminal emulator that supports tabs and grids (bzr trunk, maintainer mods
-	pkgver = 0.97.r1589
+	pkgver = 0.98.r1645
 	pkgrel = 1
 	url = http://gnometerminator.blogspot.fr/p/introduction.html
 	install = terminator.install
@@ -12,6 +12,7 @@ pkgbase = terminator-trunk-mod
 	makedepends = bzr
 	depends = vte
 	depends = pygtk
+	depends = dbus-glib
 	depends = xdg-utils
 	depends = python2-notify
 	depends = python2-keybinder2

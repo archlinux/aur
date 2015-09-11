@@ -9,7 +9,7 @@
 # Modifications to Use Bzr Trunk Source, and Maintainer Modifications
 # ===================================================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This .PKGFILE as closely as possible matches community's terminator 0.97-2
+#    * This .PKGFILE as closely as possible matches community's terminator 0.98-1
 
 
 
@@ -25,7 +25,7 @@ _install_middle_mouse_patch=1
 
 pkgname=terminator-trunk-mod
 _pkgname=terminator
-pkgver=0.97.r1589
+pkgver=0.98.r1645
 pkgrel=1
 pkgdesc='Terminal emulator that supports tabs and grids (bzr trunk, maintainer mods'
 arch=('any')
@@ -33,7 +33,7 @@ url='http://gnometerminator.blogspot.fr/p/introduction.html'
 license=('GPL2')
 # Note: the package named 'vte3' is actually vte for GTK 3
 # and terminator seems to require vte for GTK 2
-depends=('vte' 'pygtk' 'xdg-utils' 'python2-notify' 'python2-keybinder2')
+depends=('vte' 'pygtk' 'dbus-glib' 'xdg-utils' 'python2-notify' 'python2-keybinder2')
 makedepends=('desktop-file-utils' 'gettext' 'intltool' 'bzr')
 provides=('terminator')
 conflicts=('terminator' 'terminator-trunk')
