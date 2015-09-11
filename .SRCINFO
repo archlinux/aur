@@ -1,0 +1,27 @@
+pkgbase = glade-dev
+	pkgdesc = User interface builder for GTK+ and GNOME.
+	pkgver = 3.19.0
+	pkgrel = 2
+	url = http://glade.gnome.org/
+	install = glade.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = python2-gobject
+	makedepends = itstool
+	makedepends = docbook-xsl
+	depends = gtk3
+	depends = libxml2
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	optdepends = python2: Python widgets support
+	optdepends = devhelp: help browser
+	source = http://ftp.gnome.org/pub/GNOME/sources/glade/3.19/glade-3.19.0.tar.xz
+	sha256sums = a7a3f6d32fbfcc9b754b48a3410bf025e462bc7898e124f0ad8f64c3d7ad6fa2
+
+pkgname = glade-dev
+
