@@ -1,20 +1,19 @@
 pkgbase = packetbeat
 	pkgdesc = An open source network packet analyzer that ships data to Elasticsearch.
-	pkgver = 1.0.0_beta2
+	pkgver = 1.0.0_beta3
 	pkgrel = 1
 	url = https://www.elastic.co/products/beats/packetbeat
 	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = go
-	makedepends = bzr
 	depends = libpcap
 	optdepends = elasticsearch: for running standalone installation
 	options = !strip
 	backup = etc/packetbeat/packetbeat.yml
-	source = https://github.com/elastic/packetbeat/archive/v1.0.0-beta2.tar.gz
+	source = https://github.com/elastic/packetbeat/archive/v1.0.0-beta3.tar.gz
 	source = packetbeat.service
-	sha256sums = 6308ae8d8afd048fbb1b57ada299b7b3df13bef432d13163affdc315c57a243b
+	sha256sums = 67558cd85626fc15b6a80f4c104c652e091f26fd3b63f21b659f2f9aee3a8011
 	sha256sums = 09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64
 
 pkgname = packetbeat
