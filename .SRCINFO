@@ -1,0 +1,22 @@
+pkgbase = packetbeat-bin
+	pkgdesc = An open source network packet analyzer that ships data to Elasticsearch (precompiled)
+	pkgver = 1.0.0_beta3
+	pkgrel = 1
+	url = https://www.elastic.co/products/beats/packetbeat
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	optdepends = elasticsearch: for running standalone installation
+	provides = packetbeat
+	conflicts = packetbeat
+	options = !strip
+	backup = etc/packetbeat/packetbeat.yml
+	source = packetbeat.service
+	sha256sums = 09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64
+	source_i686 = https://download.elastic.co/beats/packetbeat/packetbeat-1.0.0-beta3-i686.tar.gz
+	sha256sums_i686 = 6505bd0e7a103398ca512ca4292667dd89f44237ba8b9095a6e2b8592b0e4906
+	source_x86_64 = https://download.elastic.co/beats/packetbeat/packetbeat-1.0.0-beta3-x86_64.tar.gz
+	sha256sums_x86_64 = 11ec87cd0164c6bf4061fc2a1b28cd3e0c8a9a02009882f71fb0cde8e3d525b2
+
+pkgname = packetbeat-bin
+

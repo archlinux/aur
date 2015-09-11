@@ -1,0 +1,9 @@
+[Unit]
+Description=Open Source Real-Time Packet Analyzer
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/packetbeat -c /etc/packetbeat/packetbeat.yml
+
+[Install]
+WantedBy=multi-user.target
