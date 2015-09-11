@@ -1,0 +1,24 @@
+pkgbase = switchboard-plug-datetime
+	pkgdesc = Date & Time plug for Switchboard
+	pkgver = 0.1.0.1
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-datetime
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgee
+	depends = libgranite.so
+	depends = libswitchboard-2.0.so
+	source = https://launchpad.net/switchboard-plug-datetime/freya/0.1.0.1/+download/switchboard-plug-datetime-0.1.0.1.tar.xz
+	sha256sums = 82b2d9ce9898049261e23f024debde8ecb516a572639f723206ed57415dec46d
+
+pkgname = switchboard-plug-datetime
+
