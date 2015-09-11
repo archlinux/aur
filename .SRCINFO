@@ -3,6 +3,7 @@ pkgbase = packy
 	pkgver = 0.1.2
 	pkgrel = 2
 	url = https://github.com/gnullbyte/packy
+	install = packy.install
 	arch = any
 	license = GPL
 	depends = expac

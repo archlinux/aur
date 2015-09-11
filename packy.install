@@ -1,0 +1,19 @@
+post_install() {
+        echo ''
+        echo 'Example conkyrc at /usr/share/packy/conkyrc'
+        echo 'Copy example somewhere appropriate and add:'
+        echo ''
+        echo '     conky -c /path/to/.conkyrc &'
+        echo ''
+        echo 'to ~/.xinitrc or similar'
+}
+
+post_upgrade() {
+        echo ''
+        echo 'Example conkyrc at /usr/share/packy/conkyrc'
+        echo 'Copy example somewhere appropriate and add:'
+        echo ''
+        echo '     conky -c /path/to/.conkyrc &'
+        echo ''
+        echo 'to ~/.xinitrc or similar'
+}
