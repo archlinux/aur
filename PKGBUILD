@@ -13,6 +13,8 @@ depends=('libpcap')
 makedepends=('go')
 optdepends=('elasticsearch: for running standalone installation')
 options=('!strip')
+provides=('packetbeat')
+conflicts=('packetbeat-bin')
 source=("https://github.com/elastic/$pkgname/archive/v$_pkgver.tar.gz"
         "$pkgname.service")
 sha256sums=('67558cd85626fc15b6a80f4c104c652e091f26fd3b63f21b659f2f9aee3a8011'
