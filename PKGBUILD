@@ -1,13 +1,13 @@
 pkgname=mingw-w64-libjpeg-turbo
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
 license=("custom" "GPL")
 depends=(mingw-w64-crt)
 makedepends=(nasm mingw-w64-cmake)
 provides=(mingw-w64-libjpeg)
-conflicts=(mingw-w64-libjpeg)
+conflicts=(mingw-w64-libjpeg mingw-w64-libjpeg6-turbo)
 options=(staticlibs !strip !buildflags)
 url="http://libjpeg-turbo.virtualgl.org"
 source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz"
@@ -32,6 +32,7 @@ build() {
     mkdir "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
+      -DWITH_JPEG8=ON \
       ..
     make
     popd
