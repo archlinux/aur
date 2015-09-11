@@ -1,0 +1,5 @@
+pkg/
+src/
+lampe/
+*.tar.xz
+*.tar.gz
