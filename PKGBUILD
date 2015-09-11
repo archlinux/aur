@@ -1,14 +1,15 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgbase=python-olefile
-_pyname=olefile
 pkgname=('python-olefile' 'python2-olefile')
+_pyname=olefile
 pkgver=0.42.1
 pkgrel=1
 pkgdesc="Python library to parse, read and write Microsoft OLE2 files (formerly OleFileIO_PL)"
 url="http://www.decalage.info/olefile"
 arch=('any')
 license=('BSD')
+makedepends=('python' 'python2')
 source=(https://bitbucket.org/decalage/olefileio_pl/downloads/${_pyname}-${pkgver}.zip)
 sha512sums=('85daac386783cec4d7d725193c9f29a8ed384b2725a755c25f13ff11a36720094faa1c77769fdf93789e73dc50a4a4fd7cdd123cd3ed39f66038a77d6069deb9')
 
