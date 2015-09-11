@@ -1,6 +1,6 @@
 pkgbase = elektra-git
 	pkgdesc = A universal hierarchical configuration store. (GIT version)
-	pkgver = 0.8.11.29.g4a03560
+	pkgver = 0.8.12.150.g86b3797
 	pkgrel = 1
 	url = https://github.com/ElektraInitiative/libelektra
 	arch = i686
@@ -13,14 +13,21 @@ pkgbase = elektra-git
 	makedepends = texlive-latexextra
 	makedepends = texlive-fontsextra
 	makedepends = tcl
+	makedepends = python2-cheetah
+	makedepends = lua52
+	makedepends = python
+	makedepends = python2
+	depends = qt5-declarative
 	depends = yajl
-	depends = libdbus
 	depends = augeas
-	depends = libsystemd
+	depends = discount
+	optdepends = lua52: Lua bindings
+	optdepends = python: Python 3 bindings
+	optdepends = python2: Python 2 bindings
 	provides = elektra
 	conflicts = elektra
 	source = elektra::git+https://github.com/ElektraInitiative/libelektra.git
-	md5sums = SKIP
+	sha1sums = SKIP
 
 pkgname = elektra-git
 
