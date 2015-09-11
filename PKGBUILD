@@ -1,13 +1,14 @@
-# Maintainer: Lockheed <qwrules@gmail.com>
+# Contributor: Lockheed <qwrules@gmail.com>
+# Contributor: kaptoxic
 
 pkgname=rainlendar-pro
 pkgver=2.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('i686' 'x86_64')
 url="http://www.rainlendar.net/"
 license=('custom')
-depends=('cairo' 'libsm' 'expat>=1.95.8' 'libstdc++5' 'libpng12' 'openssl098')
+depends=('cairo' 'libsm' 'expat>=1.95.8' 'libstdc++5' 'libpng12' 'openssl098' 'librtmp0')
 provides=('rainlendar2')
 conflicts=('rainlendar-beta' 'rainlendar-beta-unstable' 'rainlendar-lite')
 
