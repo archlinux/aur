@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libgcrypt
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
@@ -9,18 +9,15 @@ depends=(mingw-w64-libgpg-error)
 makedepends=(mingw-w64-configure transfig ghostscript)
 options=(staticlibs !buildflags !strip)
 source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"
-"libgcrypt-mingw64-use-correct-datatype-for-GetProcessWorkingSet.patch"
 "libgcrypt-use-correct-def-file.patch"
 "libgcrypt-use-correct-asm-code-for-win64.patch")
-md5sums=('4262c3aadf837500756c2051a5c4ae5e'
-         '7bb247584a66a83677c618aec812ca9b'
+md5sums=('4c13c5fa43147866f993d73ee62af176'
          '531e089caca74b5daf130b7173c2a5c5'
          'ccdd21fdd8b28690ed7e736a77606735')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libgcrypt-${pkgver}"
-  patch -p0 -i "$srcdir"/libgcrypt-mingw64-use-correct-datatype-for-GetProcessWorkingSet.patch
   patch -p0 -i "$srcdir"/libgcrypt-use-correct-def-file.patch
   patch -p1 -i "$srcdir"/libgcrypt-use-correct-asm-code-for-win64.patch
   autoreconf -vfi
@@ -38,7 +35,8 @@ build() {
     fi
     ${_arch}-configure \
       --enable-pubkey-ciphers='dsa elgamal rsa ecc' \
-      --with-gpg-error-prefix=/usr/${_arch} $configure_args
+      --with-gpg-error-prefix=/usr/${_arch} \
+      --disable-padlock-support $configure_args
     make
     popd
   done
