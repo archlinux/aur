@@ -1,11 +1,13 @@
 pkgbase = python2-dockerpty
 	pkgdesc = Python library to use the pseudo-tty of a docker container
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d11wtq/dockerpty
 	arch = any
 	license = Apache2
+	makedepends = python2-setuptools
 	depends = python2-docker-py
+	depends = python2-six
 	source = https://pypi.python.org/packages/source/d/dockerpty/dockerpty-0.3.4.tar.gz
 	md5sums = 92fb66d28aa19bf5268e7e3935670e5d
 

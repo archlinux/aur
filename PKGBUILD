@@ -6,10 +6,11 @@ python=python2
 _libname=dockerpty
 pkgname=python2-$_libname
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to use the pseudo-tty of a docker container"
 arch=('any')
-depends=('python2-docker-py')
+depends=('python2-docker-py' 'python2-six')
+makedepends=('python2-setuptools')
 
 url="https://github.com/d11wtq/dockerpty"
 license=('Apache2')
