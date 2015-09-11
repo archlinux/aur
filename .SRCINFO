@@ -1,0 +1,25 @@
+pkgbase = switchboard-plug-display
+	pkgdesc = Display plug for Switchboard
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-display
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = cairo
+	depends = clutter
+	depends = clutter-gtk
+	depends = glib2
+	depends = glibc
+	depends = gnome-desktop
+	depends = gtk3
+	depends = libgee
+	depends = libswitchboard-2.0.so
+	source = https://launchpad.net/switchboard-plug-display/0.x/0.1.1/+download/switchboard-plug-display-0.1.1.tar.xz
+	sha256sums = eca745a851b83bed5547700d8e1edf5a637b93b1047615647236723464cade56
+
+pkgname = switchboard-plug-display
+
