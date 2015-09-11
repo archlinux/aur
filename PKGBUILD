@@ -12,7 +12,7 @@ arch=("any")
 depends=("php>=5.3.3")
 install="${pkgname}.install"
 source=(
-  "https://github.com/kherge-archive/Box/releases/download/${pkgver}/box-${pkgver}.phar"
+  "https://github.com/box-project/box2/releases/download/${pkgver}/box-${pkgver}.phar"
   "https://raw.github.com/box-project/box2/${pkgver}/LICENSE"
 )
 sha256sums=(
