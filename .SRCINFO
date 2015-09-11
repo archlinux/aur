@@ -1,0 +1,18 @@
+pkgbase = librtmp0
+	pkgdesc = Tool to download rtmp streams. This is the old version for compatibility reasons.
+	pkgver = 20121230
+	pkgrel = 1
+	url = http://rtmpdump.mplayerhq.hu/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	depends = openssl
+	options = !makeflags
+	options = !docs
+	options = !libtool
+	source = ftp://ftp.archlinux.org/other/packages/rtmpdump/rtmpdump-git-20121230.tar.xz
+	sha256sums = 2612ccbc041281c90d1fa59d20aec783fa3ef29de952323d8d89699fc3d5c4d2
+
+pkgname = librtmp0
+
