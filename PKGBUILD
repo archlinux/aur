@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3'
          'libgranite.so')
-makedepends=('cmake' 'vala')
+makedepends=('bzr' 'cmake' 'vala')
 install='pantheon-calculator.install'
 #source=("https://launchpad.net/pantheon-calculator/freya/${pkgver}/+download/pantheon-calculator-${pkgver}.tgz")
 #sha256sums=('510235d87284eaa211089970601c71d1cc4aa2aadaa6304a163a2db8d9e1fcd0')
