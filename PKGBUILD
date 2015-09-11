@@ -1,14 +1,14 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=bluez-qt-git
-pkgver=r296.840aecb
+pkgver=r374.7b59f83
 pkgrel=1
 pkgdesc='Qt wrapper for Bluez 5 DBus API'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/playground/libs/libbluedevil'
 license=(GPL2)
 depends=(qt5-declarative bluez)
-makedepends=(extra-cmake-modules git)
+makedepends=(extra-cmake-modules-git git)
 provides=(bluez-qt)
 conflicts=(libbluedevil-frameworks bluez-qt)
 source=("git://anongit.kde.org/bluez-qt.git")
