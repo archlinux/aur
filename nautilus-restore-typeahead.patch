@@ -1,0 +1,12 @@
+diff -aur nautilus-3.16.2/src/nautilus-list-view.c nautilus-3.16.2.new/src/nautilus-list-view.c
+--- nautilus-3.16.2/src/nautilus-list-view.c	2015-05-13 12:24:43.000000000 -0500
++++ nautilus-3.16.2.new/src/nautilus-list-view.c	2015-09-10 18:54:11.942923502 -0500
+@@ -1923,7 +1923,7 @@
+ 							g_str_equal,
+ 							(GDestroyNotify) g_free,
+ 							NULL);
+-	gtk_tree_view_set_enable_search (view->details->tree_view, FALSE);
++	gtk_tree_view_set_enable_search (view->details->tree_view, TRUE);
+ 
+ 	view->details->drag_dest = 
+ 		nautilus_tree_view_drag_dest_new (view->details->tree_view);
