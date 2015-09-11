@@ -1,10 +1,11 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 # Contributer: Ionut Biru <ibiru@archlinux.org>
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
+
 pkgbase=(virtualbox-zen-modules)
 pkgname=(virtualbox-zen-host-modules virtualbox-zen-guest-modules)
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
