@@ -1,3 +1,11 @@
+# Maintainer: Pierre Franco <pierre dot franco at ensimag dot grenoble dash inp dot fr>
+# Based on wine-staging-d3dadapter PKGBUILD
+
+#Additional patches:
+# -Mip-Map fix (see https://bugs.winehq.org/show_bug.cgi?id=34480 )
+# -Keybind patch reversion
+
+
 pkgname=wine-gaming-nine
 pkgver=1.7.51
 pkgrel=1
@@ -20,7 +28,7 @@ sha1sums=('f75d41bcc6511c7641d6633ffeb23a23aeb720ef'
           'aea61469fd107ad3daa3c1811faf758eb7683bf8'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb')
 
-pkgdesc="Based off wine-staging with a few more hacks"
+pkgdesc="Based off wine-staging-d3dadapter with a few more hacks"
 url="http://www.winehq.com"
 arch=(i686 x86_64)
 options=(staticlibs)
