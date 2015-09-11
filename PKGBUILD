@@ -2,7 +2,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=15.10.2
+pkgver=15.10.4
 pkgrel=1
 _uver=wily
 pkgdesc="Xubuntu themes and artwork"
@@ -61,5 +61,5 @@ package() {
 }
 
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
-md5sums=('45c6f0d32677da44baa9e88e1fc305f0'
+md5sums=('0e1bf19add2d77190c744d8828e789e5'
          'c9a1b1997abf7d43dda91bf7991ed42c')
