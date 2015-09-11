@@ -4,7 +4,7 @@
 
 pkgname=brother-hl2040
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother HL-2040 CUPS driver"
 url="http://www.brother.com"
 license=('GPL')

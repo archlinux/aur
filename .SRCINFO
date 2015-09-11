@@ -1,7 +1,7 @@
 pkgbase = brother-hl2040
 	pkgdesc = Brother HL-2040 CUPS driver
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.brother.com
 	install = brother-hl2040.install
 	arch = i686
