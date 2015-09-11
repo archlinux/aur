@@ -1,0 +1,22 @@
+pkgbase = switchboard-plug-keyboard
+	pkgdesc = Keyboard plug for Switchboard
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-keyboard
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgee
+	depends = libgranite.so
+	depends = libswitchboard-2.0.so
+	source = https://launchpad.net/switchboard-plug-keyboard/freya/0.2.1/+download/switchboard-plug-keyboard-0.2.1.tgz
+	sha256sums = 65c757b773d68008bc1229f7698064f91752ad591d37bcfbd44aa65fc8910553
+
+pkgname = switchboard-plug-keyboard
+
