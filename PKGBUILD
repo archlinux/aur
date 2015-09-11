@@ -1,11 +1,12 @@
 pkgname=sshttp-git
 pkgver=e145de8
-pkgrel=3
+pkgrel=4
 pkgdesc="SSH/HTTP(S) multiplexer"
 arch=('any')
 url="https://github.com/stealth/sshttp"
 license=('BSD')
-depends=('libcap')
+depends=('libcap'
+         'libnetfilter_conntrack')
 provides=('sshttp')
 conflicts=('sshttp')
 backup=('etc/conf.d/sshttpd')

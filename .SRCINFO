@@ -1,13 +1,14 @@
 pkgbase = sshttp-git
 	pkgdesc = SSH/HTTP(S) multiplexer
 	pkgver = e145de8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stealth/sshttp
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = gcc
 	depends = libcap
+	depends = libnetfilter_conntrack
 	provides = sshttp
 	conflicts = sshttp
 	backup = etc/conf.d/sshttpd
