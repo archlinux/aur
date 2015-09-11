@@ -1,18 +1,17 @@
 pkgbase = kdevelop-pg-qt-git
-	pkgdesc = KDevelop Parser Generator as used in e.g. the PHP language plugin and others
-	pkgver = v1.0.0.r24.g83be916
+	pkgdesc = KDevelop Parser Generator, a LL(1) parser generator used by KDevelop language plugins. (GIT version)
+	pkgver = r593.ce66006
 	pkgrel = 1
-	url = http://www.kdevelop.org/
+	url = http://www.kdevelop.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = git
-	depends = kdevelop-git
-	provides = kdevelop-pg-qt
-	conflicts = kdevelop-pg-qt
-	source = git://anongit.kde.org/kdevelop-pg-qt
-	md5sums = SKIP
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	source = git://anongit.kde.org/kdevelop-pg-qt.git
+	sha1sums = SKIP
 
 pkgname = kdevelop-pg-qt-git
 
