@@ -1,0 +1,26 @@
+pkgbase = perl-app-cmd
+	pkgdesc = write command line apps with less suffering
+	pkgver = 0.327
+	pkgrel = 1
+	url = http://search.cpan.org/dist/App-Cmd
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	depends = perl-capture-tiny>=0.13
+	depends = perl-class-load>=0.06
+	depends = perl-data-optlist>=0
+	depends = perl-getopt-long-descriptive>=0.084
+	depends = perl-io-tiecombine>=0
+	depends = perl-module-pluggable>=0
+	depends = perl-string-rewriteprefix>=0
+	depends = perl-sub-exporter>=0
+	depends = perl-sub-install>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-0.327.tar.gz
+	md5sums = 9f68d78db859888d569188f6f3db065d
+	sha512sums = 8aba847824aaf5c4f03981c7c1d773cddab6dfd13a0af8baa2c16f2fd00da0961fd2957aa4011e92ff5d04dd94f1b00be1f2acd51886d3d3b9ec26b1d7b03e8d
+
+pkgname = perl-app-cmd
+
