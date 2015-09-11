@@ -13,7 +13,7 @@
 pkgbase=virt-manager-git
 _pkgbase=virt-manager
 pkgname=(virt-install-git virt-manager-git)
-pkgver=1.2.1.r4564.466bf92
+pkgver=1.2.1.r4631.360fe11
 pkgrel=1
 pkgdesc="Console user interface for managing virtual machines"
 arch=('any')
@@ -27,7 +27,7 @@ makedepends=('intltool>=0.35.0'
 	     'python2-ipy' 'newt-syrup' 'openbsd-netcat' 'x11-ssh-askpass'
 	     'graphite' 'spice-gtk3'
 	     'libvirt-glib' 'vte3' 'git')
-source=("git+https://git.fedorahosted.org/git/${_pkgbase}.git")
+source=("git+https://github.com/${_pkgbase}/${_pkgbase}")
 md5sums=('SKIP')
 
 pkgver() {

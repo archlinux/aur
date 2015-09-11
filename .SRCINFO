@@ -1,6 +1,6 @@
 pkgbase = virt-manager-git
 	pkgdesc = Console user interface for managing virtual machines
-	pkgver = 1.2.1.r4564.466bf92
+	pkgver = 1.2.1.r4631.360fe11
 	pkgrel = 1
 	url = http://virt-manager.org/
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = virt-manager-git
 	depends = libosinfo
 	depends = python2-ipaddr
 	depends = python2-gobject
-	source = git+https://git.fedorahosted.org/git/virt-manager.git
+	source = git+https://github.com/virt-manager/virt-manager
 	md5sums = SKIP
 
 pkgname = virt-install-git
