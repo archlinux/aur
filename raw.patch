@@ -1,0 +1,22 @@
+--- a/dlls/winex11.drv/mouse.c
++++ b/dlls/winex11.drv/mouse.c
+@@ -362,9 +362,6 @@
+     Window clip_window;
+     HWND msg_hwnd = 0;
+ 
+-    if (GetWindowThreadProcessId( GetDesktopWindow(), NULL ) == GetCurrentThreadId())
+-        return TRUE;  /* don't clip in the desktop process */
+-
+     if (!data) return FALSE;
+     if (!(clip_window = init_clip_window())) return TRUE;
+ 
+@@ -1381,6 +1378,9 @@
+ {
+     if (!clip) clip = &virtual_screen_rect;
+ 
++    if (GetWindowThreadProcessId( GetDesktopWindow(), NULL ) == GetCurrentThreadId())
++        return TRUE;  /* don't clip in the desktop process */
++
+     if (grab_pointer)
+     {
+         HWND foreground = GetForegroundWindow(); 
