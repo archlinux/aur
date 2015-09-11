@@ -1,0 +1,333 @@
+--- ./get_index.c.orig	1996-07-16 00:39:40.000000000 +0200
++++ ./get_index.c	2010-07-15 11:22:14.000000000 +0200
+@@ -1,4 +1,5 @@
+ /* Copyright (c) 1994 Burra Gopal, Udi Manber.  All Rights Reserved. */
++#include <errno.h>
+ #include "glimpse.h"
+ #include "defs.h"
+ 
+@@ -14,7 +15,6 @@
+ extern	unsigned int *dest_index_set;
+ extern	unsigned char *dest_index_buf;
+ extern	int	mask_int[32];
+-extern	int	errno;
+ extern	int	ByteLevelIndex;
+ extern	int	NOBYTELEVEL;
+ extern	int	OPTIMIZEBYTELEVEL;
+--- ./agrep/checksg.c.orig	1996-07-16 00:39:29.000000000 +0200
++++ ./agrep/checksg.c	2010-07-15 11:22:14.000000000 +0200
+@@ -1,8 +1,8 @@
+ /* Copyright (c) 1994 Sun Wu, Udi Manber, Burra Gopal.  All Rights Reserved. */
++#include <errno.h>
+ #include "agrep.h"
+ #include "checkfile.h"
+ 
+-extern int errno;
+ extern CHAR Progname[MAXNAME]; 
+ extern int SGREP, PAT_FILE, PAT_BUFFER, EXITONERROR, SIMPLEPATTERN,
+ 	CONSTANT, D, NOUPPER, JUMP, I, LINENUM, INVERSE, WORDBOUND, WHOLELINE,
+--- ./agrep/bitap.c.orig	1996-07-16 00:39:28.000000000 +0200
++++ ./agrep/bitap.c	2010-07-15 11:22:14.000000000 +0200
+@@ -33,7 +33,6 @@
+ extern int agrep_outlen;
+ extern int agrep_outpointer;
+ extern FILE *agrep_finalfp;
+-extern int errno;
+ 
+ extern int NEW_FILE, POST_FILTER;
+ 
+--- ./agrep/agrep.c.orig	1996-07-16 00:39:29.000000000 +0200
++++ ./agrep/agrep.c	2010-07-15 11:24:19.000000000 +0200
+@@ -4,6 +4,7 @@
+  * selectively modified many routines to work with our text-compression algo.
+  */
+ #include <sys/stat.h>
++#include <time.h>
+ #include "agrep.h"
+ #include "checkfile.h"
+ #include <errno.h>
+@@ -11,7 +12,6 @@
+ #define PRINT(s)
+ 
+ extern char **environ;
+-extern int errno;
+ int pattern_index;	/* index in argv where the pattern is */
+ 
+ int glimpse_isserver=0;	/* so that there is no user interaction */
+--- ./agrep/newmgrep.c.orig	1996-07-16 00:39:29.000000000 +0200
++++ ./agrep/newmgrep.c	2010-07-15 11:22:14.000000000 +0200
+@@ -62,7 +62,6 @@
+ extern int agrep_outpointer;
+ extern int agrep_outlen;
+ extern CHAR * agrep_outbuffer;
+-extern int errno;
+ extern int NEW_FILE, POST_FILTER;
+ 
+ extern int tuncompressible();
+--- ./agrep/parse.c.orig	1996-07-16 00:39:28.000000000 +0200
++++ ./agrep/parse.c	2010-07-15 11:25:33.000000000 +0200
+@@ -4,6 +4,8 @@
+    tree for that regular expression.				*/
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "re.h"
+ 
+ #define FALSE	0
+--- ./agrep/preprocess.c.orig	1996-07-16 00:39:28.000000000 +0200
++++ ./agrep/preprocess.c	2010-07-15 11:22:14.000000000 +0200
+@@ -13,6 +13,7 @@
+ /* upon return, Pattern contains the pattern to be processed by maskgen  */
+ /* D_pattern contains transformed D_pattern                              */
+ 
++#include <errno.h>
+ #include "agrep.h"
+ 
+ extern int PAT_FILE, PAT_BUFFER;
+@@ -25,7 +26,6 @@
+ extern int table[WORD][WORD];
+ extern int agrep_initialfd;
+ extern int EXITONERROR;
+-extern int errno;
+ 
+ extern int  multifd;
+ extern char *multibuf;
+--- ./agrep/checkfile.c.orig	1996-07-16 00:39:28.000000000 +0200
++++ ./agrep/checkfile.c	2010-07-15 11:22:14.000000000 +0200
+@@ -24,7 +24,6 @@
+ #define MAXLINE 512
+ 
+ extern char Progname[];
+-extern int errno;
+ 
+ unsigned char ibuf[MAXLINE];
+ 
+--- ./agrep/maskgen.c.orig	1996-07-16 00:39:28.000000000 +0200
++++ ./agrep/maskgen.c	2010-07-15 11:22:14.000000000 +0200
+@@ -1,4 +1,5 @@
+ /* Copyright (c) 1994 Sun Wu, Udi Manber, Burra Gopal.  All Rights Reserved. */
++#include <errno.h>
+ #include "agrep.h"
+ 
+ extern unsigned D_endpos, endposition, Init1, wildmask;
+@@ -7,7 +8,6 @@
+ extern unsigned char Progname[];
+ extern int agrep_initialfd;
+ extern int EXITONERROR;
+-extern int errno;
+ 
+ int
+ maskgen(Pattern, D)
+--- ./agrep/sgrep.c.orig	1996-07-16 00:39:29.000000000 +0200
++++ ./agrep/sgrep.c	2010-07-15 11:22:14.000000000 +0200
+@@ -65,7 +65,6 @@
+ extern int NEW_FILE, POST_FILTER;
+ 
+ extern int EXITONERROR;
+-extern int errno;
+ extern int TCOMPRESSED;
+ extern int EASYSEARCH;
+ extern char FREQ_FILE[MAX_LINE_LEN], HASH_FILE[MAX_LINE_LEN], STRING_FILE[MAX_LINE_LEN];
+--- ./agrep/asearch.c.orig	1996-07-16 00:39:28.000000000 +0200
++++ ./agrep/asearch.c	2010-07-15 11:22:14.000000000 +0200
+@@ -9,7 +9,6 @@
+ extern int I, num_of_matched, prev_num_of_matched, TRUNCATE;
+ 
+ extern int CurrentByteOffset;
+-extern int errno;
+ extern CHAR *agrep_inbuffer;
+ extern int  agrep_inlen;
+ extern int  agrep_initialfd;
+--- ./agrep/compat.c.orig	1996-07-16 00:39:28.000000000 +0200
++++ ./agrep/compat.c	2010-07-15 11:22:14.000000000 +0200
+@@ -1,6 +1,7 @@
+ /* Copyright (c) 1994 Sun Wu, Udi Manber, Burra Gopal.  All Rights Reserved. */
+ /* test the conflicts between options */
+ #include <stdio.h>
++#include <errno.h>
+ #include "agrep.h"
+ 
+ extern int D;
+@@ -15,7 +16,6 @@
+ extern char Progname[32];
+ extern int agrep_initialfd;
+ extern int EXITONERROR;
+-extern int errno;
+ 
+ int
+ compat()
+--- ./index/glimpse.c.orig	1996-07-18 03:58:47.000000000 +0200
++++ ./index/glimpse.c	2010-07-15 11:22:14.000000000 +0200
+@@ -1,6 +1,7 @@
+ /* Copyright (c) 1994 Sun Wu, Udi Manber, Burra Gopal.  All Rights Reserved. */
+ /* ./glimpse/index/glimpse.c */
+ #include "glimpse.h"
++#include <errno.h>
+ #include <stdlib.h>
+ #include <sys/time.h>
+ #if	ISO_CHAR_SET
+@@ -8,7 +9,6 @@
+ #endif
+ 
+ extern char **environ;
+-extern int errno;
+ extern FILE *TIMEFILE;	/* file descriptor for sorting .glimpse_filenames by time */
+ #if	BG_DEBUG
+ extern FILE  *LOGFILE; 	/* file descriptor for LOG output */
+--- ./index/partition.c.orig	1996-07-16 00:39:42.000000000 +0200
++++ ./index/partition.c	2010-07-15 11:22:14.000000000 +0200
+@@ -1,6 +1,7 @@
+ /* Copyright (c) 1994 Sun Wu, Udi Manber, Burra Gopal.  All Rights Reserved. */
+ /* ./glimpse/index/partition.c */
+ #include "glimpse.h"
++#include <errno.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ 
+@@ -26,7 +27,6 @@
+ int  files_per_partition;
+ int  files_in_partition;
+ int  ATLEASTONEFILE = 0;
+-extern int errno;
+ 
+ char patbuf[MAX_PAT];
+ extern unsigned char *src_index_buf;
+--- ./index/region.c.orig	1996-07-16 00:39:42.000000000 +0200
++++ ./index/region.c	2010-07-15 11:27:00.000000000 +0200
+@@ -1,6 +1,8 @@
+ /* Copyright (c) 1994 Sun Wu, Udi Manber, Burra Gopal.  All Rights Reserved. */
+ /* From mail received from Bill Camargo and Darren Hardy in June 1994 */
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "region.h"
+ 
+ /*
+@@ -464,7 +466,7 @@
+ 	while (rl != NULL) {
+ 		trl = rl;
+ 		rl = rl->next;
+-		free(trl, sizeof(region_t));
++		free(trl);
+ 	}
+ 	current_regions = nextpos = NULL;
+ 	return 0;
+--- ./index/build_in.c.orig	1996-07-16 00:39:41.000000000 +0200
++++ ./index/build_in.c	2010-07-15 11:22:14.000000000 +0200
+@@ -23,6 +23,7 @@
+            this 12 19 \n is 9 17 12 18 19 \n an 7 12 \n example 16 \n
+ -----------------------------------------------------------------------*/
+ 
++#include <errno.h>
+ #include "glimpse.h"
+ 
+ #define debugt
+@@ -394,7 +395,6 @@
+     int ret;
+     char s[MAX_LINE_LEN], es1[MAX_LINE_LEN], es2[MAX_LINE_LEN], es3[MAX_LINE_LEN];
+     char s1[MAX_LINE_LEN];
+-    extern int errno;
+     static int maxsortlinelen = 0;
+     int	i;
+ 
+--- ./main.c.orig	1996-07-16 05:03:12.000000000 +0200
++++ ./main.c	2010-07-15 11:22:14.000000000 +0200
+@@ -26,7 +26,6 @@
+ 
+ /* Borrowed from C-Lib */
+ extern char **environ;
+-extern int errno;
+ 
+ #if	CLIENTSERVER
+ #include "communicate.c"
+--- ./libtemplate/util/log.c.orig	1996-07-16 00:39:50.000000000 +0200
++++ ./libtemplate/util/log.c	2010-07-15 11:22:14.000000000 +0200
+@@ -55,7 +55,7 @@
+ #include <errno.h>
+ #include <time.h>
+ #include <sys/file.h>
+-#if defined(__STRICT_ANSI__)
++#if defined(__STRICT_ANSI__) || (defined(__GNUC__) && __GNUC__ >= 3)
+ #include <stdarg.h>
+ #else
+ #include <varargs.h>
+@@ -119,7 +119,7 @@
+ /*
+  *  log() - used like printf(3).  Prints message to stdout.
+  */
+-#if defined(__STRICT_ANSI__)
++#if defined(__STRICT_ANSI__) || (defined(__GNUC__) && __GNUC__ >= 3)
+ void log(char *fmt,...)
+ {
+ 	va_list ap;
+@@ -155,7 +155,7 @@
+ /*
+  *  errorlog() - used like printf(3).  Prints error message to stderr.
+  */
+-#if defined(__STRICT_ANSI__)
++#if defined(__STRICT_ANSI__) || (defined(__GNUC__) && __GNUC__ >= 3)
+ void errorlog(char *fmt,...)
+ {
+ 	va_list ap;
+@@ -193,7 +193,7 @@
+ /*
+  *  fatal() - used like printf(3).  Prints error message to stderr and exits
+  */
+-#if defined(__STRICT_ANSI__)
++#if defined(__STRICT_ANSI__) || (defined(__GNUC__) && __GNUC__ >= 3)
+ void fatal(char *fmt,...)
+ {
+ 	va_list ap;
+--- ./libtemplate/util/Makefile.in.orig	1996-07-16 00:39:50.000000000 +0200
++++ ./libtemplate/util/Makefile.in	2010-07-15 11:22:14.000000000 +0200
+@@ -27,7 +27,7 @@
+ 
+ LIBDIR		= ../lib
+ LIBFILE		= libutil.a
+-OBJS		= buffer.o host.o log.o strdup.o system.o strerror.o \
++OBJS		= buffer.o host.o log.o system.o \
+ 		string.o xmalloc.o
+ 
+ all:  $(LIBFILE)
+--- ./libtemplate/include/util.h.orig	1996-07-16 00:39:47.000000000 +0200
++++ ./libtemplate/include/util.h	2010-07-15 11:22:14.000000000 +0200
+@@ -93,9 +93,14 @@
+ void init_log3 _PARAMS((char *,FILE *,FILE *));	/* Initialize log routines */
+ void log_errno _PARAMS((char *));		/* Same as perror(3) */
+ void fatal_errno _PARAMS((char *));		/* Same as perror(3) & exit */
+-#ifdef __STRICT_ANSI__
++#if defined(__STRICT_ANSI__) || (defined(__GNUC__) && __GNUC__ >= 3)
+ #include <stdarg.h>
++# if defined(__GNUC__)
++#define log xlog
++void xlog _PARAMS((char *, ...));		/* Log a message */
++# else
+ void log _PARAMS((char *, ...));		/* Log a message */
++#endif
+ void errorlog _PARAMS((char *, ...));		/* Log an error message */
+ void fatal _PARAMS((char *, ...));		/* Log error msg and exit */
+ #else
+@@ -104,11 +109,6 @@
+ void fatal _PARAMS(());
+ #endif
+ 
+-#ifdef NO_STRDUP
+-/* from strdup.c */
+-char *strdup _PARAMS((char *));			/* Duplicate a string */
+-#endif
+-
+ /* from string.c */
+ void parse_argv _PARAMS((char **, char *));	/* Parse a command string */
+ 
+--- ./Makefile.in.orig	1996-07-16 00:39:27.000000000 +0200
++++ ./Makefile.in	2010-07-15 11:22:14.000000000 +0200
+@@ -34,7 +34,7 @@
+ 
+ CFLAGS		= @CFLAGS@ -O -DSTRUCTURED_QUERIES=1
+ ALL_CFLAGS      = $(CFLAGS) $(DEFS) -I$(INDEXSRC) -I$(AGREPSRC) -I$(TEMPLATESRC)/include
+-LINKFLAGS	= @LINKFLAGS@ -I$(INDEXSRC) -I$(AGREPSRC) -I$(TEMPLATESRC)/include
++LINKFLAGS	= -I$(INDEXSRC) -I$(AGREPSRC) -I$(TEMPLATESRC)/include
+ 
+ .c.o:
+ 		$(CC) -c $(ALL_CFLAGS) $<

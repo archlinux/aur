@@ -1,0 +1,16 @@
+pkgbase = glimpse
+	pkgdesc = Fast full text search and indexing with approximate matching
+	pkgver = 3.6
+	pkgrel = 2
+	url = http://webglimpse.org
+	arch = i686
+	arch = x86_64
+	license = BSD style
+	depends = glibc
+	source = ftp://ftp.cs.tu-berlin.de/pub/linux/Mirrors/sunsite.unc.edu/utils/text/glimpse-3.6.src.tgz
+	source = compile.patch
+	sha256sums = 77a5836c15b08ee9665f6cb936506223aa52c20896251994507e7b3970568fde
+	sha256sums = 27e995d061d9434e4e8309d1dc9574ecef8cd6737ae76f12125107d1499bb607
+
+pkgname = glimpse
+
