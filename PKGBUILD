@@ -8,6 +8,7 @@ url="https://pyd.io"
 license=('GPL3')
 conflicts=('pydio-sync-git' 'pydio-sync-ui-git')
 provides=('pydio-sync')
+options=(!strip)
 source=("https://pyd.io/resources/pydio6/data/public/pydiosync-linux-1-0-2-targz?dl=true&file=/1e481dfadf/PydioSync-Linux-v$pkgver.tar.gz"
         "pydio.desktop")
 md5sums=('501bc58a8b08345e9e2acf5bc5474680'
