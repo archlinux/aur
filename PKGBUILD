@@ -2,9 +2,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Ian Hernández <ihernandezs@openmailbox.org>
 
-_pkgbase=nautilus
+pkgbase=nautilus
 pkgname=nautilus-typeahead
-pkgbase=$pkgname
 pkgver=3.16.2
 pkgrel=1
 pkgdesc="GNOME file manager - Patched to bring back the 'typeahead find' feature"
@@ -15,17 +14,17 @@ depends=(libexif gnome-desktop exempi gvfs desktop-file-utils dconf
 makedepends=(intltool gobject-introspection python python2 packagekit)
 url="http://www.gnome.org"
 options=('!emptydirs')
-source=(http://download.gnome.org/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz nautilus-restore-typeahead.patch)
+source=(http://download.gnome.org/sources/$pkgbase/${pkgver:0:4}/$pkgbase-$pkgver.tar.xz nautilus-restore-typeahead.patch)
 sha256sums=('3e7ecdda3a47b6ad03098270940aa506782866fa3602d91e711d99f96741478f' '42baee0cd2a93bf8433da3c611a8acd30df39f15d89179dbbdbe65d08d0b3515')
 
 prepare() {
-  cd $_pkgbase-$pkgver
+  cd $pkgbase-$pkgver
   patch -p1 -i ../nautilus-restore-typeahead.patch
   autoreconf -f -i
 }
 
 build() {
-  cd $_pkgbase-$pkgver
+  cd $pkgbase-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static \
       --libexecdir=/usr/lib/nautilus \
@@ -37,10 +36,10 @@ build() {
 package_nautilus-typeahead() {
   depends+=(libnautilus-extension)
   install=nautilus.install
-  conflicts=$_pkgbase
-  provides=$_pkgbase
+  conflicts=$pkgbase
+  provides=$pkgbase
 
-  cd $_pkgbase-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
 ### Split libnautilus-extension

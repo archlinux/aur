@@ -1,5 +1,5 @@
 pkgbase = nautilus
-	pkgdesc = GNOME file manager
+	pkgdesc = GNOME file manager - Patched to bring back the 'typeahead find' feature
 	pkgver = 3.16.2
 	pkgrel = 1
 	url = http://www.gnome.org
@@ -20,8 +20,6 @@ pkgbase = nautilus
 	depends = libtracker-sparql
 	depends = libnotify
 	depends = nautilus-sendto
-	provides = nautilus
-	conflicts = nautilus
 	options = !emptydirs
 	source = http://download.gnome.org/sources/nautilus/3.16/nautilus-3.16.2.tar.xz
 	source = nautilus-restore-typeahead.patch
@@ -30,7 +28,6 @@ pkgbase = nautilus
 
 pkgname = nautilus-typeahead
 	install = nautilus.install
-	groups = gnome
 	depends = libexif
 	depends = gnome-desktop
 	depends = exempi
