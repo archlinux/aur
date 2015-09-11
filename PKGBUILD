@@ -4,13 +4,13 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=0
+_minor=1
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=6
+_pfrel=4
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -83,7 +83,7 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	'change-default-console-loglevel.patch'
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
-        "git+$_aufs3#branch=aufs4.0"
+        "git+$_aufs3#branch=aufs4.1"
        )
 prepare() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -689,10 +689,10 @@ package_linux-pf-headers() {
 pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3"
 
 # makepkg -g >>PKGBUILD
-sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
-            'd42f4bcc6b952ce677b1ad34f85119c6c9ccaa5582a16c8be1a197ae6057184c'
-            'cc16e46d5b85175aa67cb31f7922f74d6036633f0fa425b8bcd340de84d5d198'
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+            '30e86da2fd10b5750371563546b92c6a0017c8ae78bbb3c067d3125deef1f048'
+            'fe834ce67939cf6d08e76a0f5fa58cf98d0cfffffabed47142c69bcca0cc9219'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'e45747d19034cab60928fe5c90c570ef0d6a8a95b34b2026d9fcf94efafccd25'
+            '247c7e2001e4fe28e8cabd0f861240ac13487a942bcb2dbd92ea50302d799414'
             'SKIP')
