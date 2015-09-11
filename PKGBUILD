@@ -11,6 +11,7 @@ depends=(qt5-declarative bluez)
 makedepends=(extra-cmake-modules-git git)
 provides=(bluez-qt)
 conflicts=(libbluedevil-frameworks bluez-qt)
+groups=(kf5)
 source=("git://anongit.kde.org/bluez-qt.git")
 sha256sums=('SKIP')
 
