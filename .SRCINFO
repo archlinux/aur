@@ -1,0 +1,26 @@
+pkgbase = switchboard-plug-desktop
+	pkgdesc = Pantheon Shell plug for Switchboard
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-desktop
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gnome-desktop
+	depends = gtk3
+	depends = libgee
+	depends = plank
+	depends = libgranite.so
+	depends = libswitchboard-2.0.so
+	source = https://launchpad.net/switchboard-plug-pantheon-shell/freya/0.2.1/+download/switchboard-plug-pantheon-shell-0.2.1.tar.xz
+	sha256sums = aaddca17e71865b32daf7a14ede766fadbc53dffb27d7df55585dbd117d81bbf
+
+pkgname = switchboard-plug-desktop
+
