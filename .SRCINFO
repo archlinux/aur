@@ -1,0 +1,26 @@
+pkgbase = switchboard-plug-security-privacy
+	pkgdesc = Security & Privacy plug for Switchboard
+	pkgver = 0.1.0.1
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-security-privacy
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = elementary-dpms-helper-bzr
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgee
+	depends = light-locker
+	depends = polkit
+	depends = ufw
+	depends = zeitgeist
+	depends = libgranite.so
+	depends = libswitchboard-2.0.so
+	source = https://launchpad.net/switchboard-plug-security-privacy/freya/0.1.0.1/+download/switchboard-plug-security-privacy-0.1.0.1.tgz
+	sha256sums = 9163630a27ec4fc724e288cbe091e156fd92939326c9f4a3f48264e19c38e5c7
+
+pkgname = switchboard-plug-security-privacy
+
