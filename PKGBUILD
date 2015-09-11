@@ -4,7 +4,7 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=4.90.90.r20748.2293e4e
+pkgver=4.90.90.r22137.f31f5dd
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -21,8 +21,9 @@ optdepends=('krunner: For enabling the KDevelop runner'
             'gdb: GNU Debugger support'
             'qt4-doc: qt4 documentation integration'
             'qt5-doc: qt5 documentation integration'
-            'cmake: build system')
-makedepends=('extra-cmake-modules' 'git' 'okteta' 'krunner' 'plasma-framework')
+            'cmake: build system'
+            'kdevelop-pg-qt-git: Parser Generator')
+makedepends=('extra-cmake-modules' 'git' 'okteta' 'krunner' 'plasma-framework' 'kdevelop-pg-qt-git')
 conflicts=('kdevelop')
 source=('git://anongit.kde.org/kdevelop.git')
 sha1sums=('SKIP')
