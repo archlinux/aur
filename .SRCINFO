@@ -1,7 +1,7 @@
 pkgbase = xmonad-utils
 	pkgdesc = A small collection of X utilities
 	pkgver = 0.1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/xmonad-utils
 	arch = i686
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = xmonad-utils
 	makedepends = haskell-x11>=1.3
 	makedepends = haskell-random
 	makedepends = haskell-unix
-	makedepends = glibc
 	depends = gmp
-	depends = glibc
-	options = strip
-	source = http://hackage.haskell.org/packages/archive/xmonad-utils/0.1.3.3/xmonad-utils-0.1.3.3.tar.gz
-	md5sums = d0ef4c556313f87c8311afd56a6e4ff9
+	depends = libffi
+	depends = libxrandr
+	options = !emptydirs
+	source = xmonad-utils-0.1.3.3.tar.gz::https://hackage.haskell.org/packages/archive/xmonad-utils/0.1.3.3/xmonad-utils-0.1.3.3.tar.gz
+	sha512sums = f969a0b75107266ec5f74edc06075a1ede72857311d8e0494bf5b567d18e0a9d6e5b046dbb2a34783c2eafc18be9576b86aa78415306974718031a7dd652418c
 
 pkgname = xmonad-utils
 
