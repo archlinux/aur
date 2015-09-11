@@ -2,14 +2,15 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=baloo-git
-pkgver=r1801.f29db0c
+pkgver=r2021.db8b416
 pkgrel=1
 pkgdesc="A framework for searching and managing metadata"
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kdelibs/baloo'
 license=(LGPL)
-depends=(liblmdb kfilemetadata-git kidletime-git kdelibs4support-git)
-makedepends=(extra-cmake-modules git kdoctools python)
+depends=(lmdb kfilemetadata-git kidletime-git kio-git)
+makedepends=(extra-cmake-modules-git git kdoctools python)
+groups=(kf5)
 provides=(baloo)
 conflicts=(baloo)
 install=$pkgname.install
