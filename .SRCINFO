@@ -1,0 +1,21 @@
+pkgbase = brother-hl2040
+	pkgdesc = Brother HL-2040 CUPS driver
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://www.brother.com
+	install = brother-hl2040.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = brother-hl2040.patch
+	source = brother-hl2040.install
+	source = http://download.brother.com/welcome/dlf005842/cupswrapperHL2040-2.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf005840/brhl2040lpr-2.0.1-1.i386.rpm
+	md5sums = c162975d1764145bf3a73befdb4f5df3
+	md5sums = 5400480b3988184f2a675a8a29e82baf
+	md5sums = 82f57a91f1d4f2d51d37758a0c6a2673
+	md5sums = 72930935ddb2ed7ba49fe1f5b4479e16
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hl2040
+
