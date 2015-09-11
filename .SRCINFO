@@ -1,6 +1,6 @@
 pkgbase = gegl-git
 	pkgdesc = Graph based image processing framework
-	pkgver = GEGL_0_3_0.34.gd0bfae0
+	pkgver = GEGL_0_3_0.51.g5975480
 	pkgrel = 1
 	url = http://www.gegl.org
 	arch = i686
@@ -22,6 +22,8 @@ pkgbase = gegl-git
 	optdepends = librsvg: for using the svg plugin
 	optdepends = jasper: for using the jasper plugin
 	optdepends = libopenraw: for using the openraw plugin
+	provides = gegl=0.3.0
+	conflicts = gegl>=0.3.0
 	options = !libtool
 	source = git://git.gnome.org/gegl
 	md5sums = SKIP

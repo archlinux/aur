@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=gegl-git
-pkgver=GEGL_0_3_0.34.gd0bfae0
+pkgver=GEGL_0_3_0.51.g5975480
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -17,15 +17,15 @@ optdepends=('openexr: for using the openexr plugin' \
             'librsvg: for using the svg plugin' \
             'jasper: for using the jasper plugin' \
             'libopenraw: for using the openraw plugin' )
-provides=()
-conflicts=()
+provides=('gegl=0.3.0')
+conflicts=('gegl>=0.3.0')
 replaces=()
 backup=()
 options=(!libtool)
 install=
 source=(git://git.gnome.org/gegl)
+md5sums=('SKIP')
 noextract=()
-md5sums=('SKIP') #generate with 'makepkg -g'
 
 _gitroot=GITURL
 _gitname=gegl
