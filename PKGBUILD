@@ -61,7 +61,7 @@ package() {
   make -d DESTDIR="$pkgdir" install
   install -Dm644 examples++/freefem++.pref $pkgdir/etc/freefem++.pref
   find $pkgdir/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
-  # remove unneeded stuff
+  # remove unneeded files
   rm -f $pkgdir/usr/share/freefem++/${_pkgver}/INSTALL*
   rm -f $pkgdir/usr/share/freefem++/${_pkgver}/README_*
   rm -f $pkgdir/usr/share/freefem++/${_pkgver}/mode-mi-edp.zip
