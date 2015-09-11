@@ -1,0 +1,21 @@
+pkgbase = switchboard-plug-power
+	pkgdesc = Power plug for Switchboard
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-power
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgee
+	depends = libswitchboard-2.0.so
+	source = https://launchpad.net/switchboard-plug-power/freya/0.2.1/+download/switchboard-plug-power-0.2.1.tar.xz
+	sha256sums = df325419fea1d0814a457196cad4cc41be0c551513c5eba71eaa2e5825e88b3d
+
+pkgname = switchboard-plug-power
+
