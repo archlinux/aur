@@ -1,30 +1,22 @@
 # Maintainer: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=xdg-app
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='An application deployment framework for desktop apps'
 arch=('i686' 'x86_64')
-url='https://github.com/alexlarsson/xdg-app'
+url='http://www.freedesktop.org/software/xdg-app'
 license=('GPL2')
 depends=('ostree' 'libseccomp')
-makedepends=('git')
+makedepends=('git' 'libxslt' 'docbook-xml' 'docbook-xsl')
 _libglnxrev='d59a63e'
 install='xdg-app.install'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alexlarsson/xdg-app/archive/${pkgver}.tar.gz"
-        "git://github.com/GNOME/libglnx.git#commit=${_libglnxrev}")
-sha256sums=('3809082acf355de3cbaaa21265b0650a90df1509d6be6e0d0f0047faa3f52327'
-            'SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  cp -r ../libglnx/* libglnx/
-}
+source=("$url/releases/$pkgname-$pkgver.tar.xz")
+sha256sums=('eba2eb707b76c1c1dec50c7e7f0427b7413f7037a22ae9a8b991a5cd01f4c021')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./autogen.sh --prefix=/usr --libexecdir=/usr/lib --sysconfdir=/etc
+  ./configure --prefix=/usr --libexecdir=/usr/lib --sysconfdir=/etc
   make
 }
 
