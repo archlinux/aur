@@ -1,0 +1,17 @@
+PREFIX="/usr"
+
+post_install() {
+    /usr/bin/groupadd --system autosshfs # 2>/dev/null
+    /usr/bin/chgrp autosshfs ${PREFIX}/bin/autosshfs-map
+    /usr/bin/chgrp autosshfs ${PREFIX}/bin/autosshfs-ssh
+}
+
+post_upgrade() {
+    /usr/bin/chgrp autosshfs ${PREFIX}/bin/autosshfs-map
+    /usr/bin/chgrp autosshfs ${PREFIX}/bin/autosshfs-ssh
+}
+
+post_remove() {
+    /usr/bin/rm -rf $PREFIX/bin/autosshfs-* $PREFIX/bin/autosshfs-as-* $PREFIX/bin/keychain-ring $PREFIX/share/doc/autosshfs
+    /usr/bin/groupdel autosshfs
+}

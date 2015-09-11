@@ -1,0 +1,18 @@
+pkgbase = autosshfs-git
+	pkgdesc = Per user SSHFS automount using user's SSH configuration
+	pkgver = c9dc8cd
+	pkgrel = 1
+	url = https://github.com/hellekin/autosshfs
+	install = autosshfs.install
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = autofs
+	depends = keychain
+	depends = sshfs
+	depends = x11-ssh-askpass
+	source = autosshfs-git::git://github.com/hellekin/autosshfs.git
+	md5sums = SKIP
+
+pkgname = autosshfs-git
+
