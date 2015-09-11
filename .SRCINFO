@@ -1,0 +1,26 @@
+pkgbase = switchboard-plug-locale
+	pkgdesc = Locale plug for Switchboard
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-locale
+	install = switchboard-plug-locale.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = accountsservice
+	depends = glib2
+	depends = glibc
+	depends = gnome-desktop
+	depends = gtk3
+	depends = ibus
+	depends = libgee
+	depends = polkit
+	depends = libgranite.so
+	depends = libswitchboard-2.0.so
+	source = https://launchpad.net/switchboard-plug-locale/freya/0.2/+download/switchboard-plug-locale-0.2.tar.xz
+	sha256sums = d009f33b9fe3afe6c0821fd98ad2be510b40fd7cc398a3a0ed786dd4491cc6da
+
+pkgname = switchboard-plug-locale
+
