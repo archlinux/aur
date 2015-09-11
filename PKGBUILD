@@ -6,10 +6,10 @@
 #
 pkgname=unadf
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="unzip like tool for Commodore Amiga filesystem .ADF images"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 _pkgname=ADFlib
 _pkgver=0.7.12
 url="http://lclevy.free.fr/adflib/unadf.html"
