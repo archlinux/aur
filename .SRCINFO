@@ -7,6 +7,7 @@ pkgbase = saldl-git
 	license = AGPL
 	makedepends = python
 	makedepends = git
+	makedepends = asciidoc
 	depends = curl
 	depends = libevent
 	source = saldl-git::git://github.com/saldl/saldl.git

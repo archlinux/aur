@@ -6,7 +6,7 @@ pkgdesc="A CLI downloader optimized for speed and early preview, based on libcur
 arch=('i686' 'x86_64')
 license=('AGPL')
 depends=('curl' 'libevent')
-makedepends=('python' 'git')
+makedepends=('python' 'git' 'asciidoc')
 source=($pkgbase::git://github.com/saldl/saldl.git)
 md5sums=('SKIP')
 
