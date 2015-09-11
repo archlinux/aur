@@ -1,0 +1,14 @@
+pkgbase = roundcube-rcmcarddav-git
+	pkgdesc = This plugin allows users to export their contacts via CardDAV
+	pkgver = 20150903
+	pkgrel = 1
+	url = http://www.benjamin-schieder.de/carddav.html
+	arch = any
+	license = GPL
+	depends = roundcubemail>=0.9.0
+	conflicts = roundcube-carddav
+	source = roundcube-rcmcarddav-git::git+https://github.com/blind-coder/rcmcarddav.git
+	md5sums = SKIP
+
+pkgname = roundcube-rcmcarddav-git
+
