@@ -20,13 +20,13 @@ HTTP_PORT=8080
 iptables -D INPUT -i $DEV -p tcp --dport $SSH_PORT -j DROP
 iptables -D INPUT -i $DEV -p tcp --dport $HTTP_PORT -j DROP
 
-iptables -t mangle -D DIVERT -j MARK --set-mark 1
-iptables -t mangle -D DIVERT -j ACCEPT
-
-iptables -t mangle -X DIVERT || true
 iptables -t mangle -D OUTPUT -p tcp -o $DEV --sport $SSH_PORT -j DIVERT
 iptables -t mangle -D OUTPUT -p tcp -o $DEV --sport $HTTP_PORT -j DIVERT
 iptables -t mangle -D PREROUTING -p tcp -m socket -j DIVERT
+
+iptables -t mangle -D DIVERT -j MARK --set-mark 1
+iptables -t mangle -D DIVERT -j ACCEPT
+iptables -t mangle -X DIVERT || true
 
 ip rule del fwmark 1 lookup 123 || true
 ip route del local 0.0.0.0/0 dev lo table 123

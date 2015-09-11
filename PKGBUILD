@@ -1,6 +1,6 @@
 pkgname=sshttp-git
 pkgver=e145de8
-pkgrel=2
+pkgrel=3
 pkgdesc="SSH/HTTP(S) multiplexer"
 arch=('any')
 url="https://github.com/stealth/sshttp"
@@ -16,7 +16,7 @@ source=('git://github.com/stealth/sshttp'
         'sshttpd.config'
         'sshttpd.service')
 md5sums=('SKIP'
-         '7c75787f5b74ad1922fdf6722b1c7405'
+         '22d5c47059ba77d09812106800939d57'
          '6d35b4409cac3ebd6e75f4736805f102'
          'cff8825c1428b87836218af0ed8a0066')
 
