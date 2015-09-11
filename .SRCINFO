@@ -1,5 +1,5 @@
 pkgbase = wine-gaming-nine
-	pkgdesc = Based off wine-staging with a few more hacks
+	pkgdesc = Based off wine-staging-d3dadapter with a few more hacks
 	pkgver = 1.7.51
 	pkgrel = 1
 	url = http://www.winehq.com
