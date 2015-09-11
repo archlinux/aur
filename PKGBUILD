@@ -12,17 +12,17 @@ url='http://mackyle.github.io/xar/'
 license=('custom:BSD')
 depends=('libxml2' 'openssl' 'bzip2')
 options=('!libtool')
-source=("http://github.com/mackyle/xar/archive/xar-${pkgver}.tar.gz")
-md5sums=('2fa5e3d2c1c2beaf58ef684552d2dbff')
+source=("https://github.com/downloads/mackyle/xar/xar-1.6.1.tar.gz")
+md5sums=('a624535d6a1e8fdf420b36a6b334047b')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgname}-${pkgver}/${pkgname}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     ./autogen.sh --prefix=/usr --mandir=/usr/share/man
     make
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgname}-${pkgver}/${pkgname}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" install
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

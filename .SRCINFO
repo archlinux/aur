@@ -10,8 +10,8 @@ pkgbase = xar
 	depends = openssl
 	depends = bzip2
 	options = !libtool
-	source = http://github.com/mackyle/xar/archive/xar-1.6.1.tar.gz
-	md5sums = 2fa5e3d2c1c2beaf58ef684552d2dbff
+	source = https://github.com/downloads/mackyle/xar/xar-1.6.1.tar.gz
+	md5sums = a624535d6a1e8fdf420b36a6b334047b
 
 pkgname = xar
 
