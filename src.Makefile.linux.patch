@@ -1,0 +1,20 @@
+--- old/src/Makefile.linux	2014-03-13 03:57:03.000000000 +0800
++++ new/src/Makefile.linux	2014-04-01 16:16:46.722625986 +0800
+@@ -5,7 +5,7 @@
+ #	binutils 2.5.2, and
+ #	libelf (0.6.4 onwards)
+ #
+-WARNINGS =	-Wall -Werror -Wshadow -Wpointer-arith -Wcast-qual \
++WARNINGS =	-Wall -Wshadow -Wpointer-arith -Wcast-qual \
+ 		-Wcast-align -Wwrite-strings -Wconversion \
+ 		-Wstrict-prototypes -Wredundant-decls -Winline \
+ 		-Wcomments -Wtrigraphs -Wimport -Wundef
+@@ -18,7 +18,7 @@
+ #
+ # or you may need something like:
+ XINCLUDES	= -I/usr/include/tcl8.5
+-XLIBS		= -ltcl8.5 -ltk8.5 -lX11
++XLIBS		= -ltcl -ltk -lX11
+ #
+ C99		= gcc -std=c99 -Wall -Werror -pedantic
+ CFLAGS		= -O3 -fPIC $(INCLUDES) $(XINCLUDES)

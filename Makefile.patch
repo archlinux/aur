@@ -1,0 +1,11 @@
+--- Makefile	2014-03-13 03:56:50.000000000 +0800
++++ Makefilefix	2014-04-01 16:51:24.552554292 +0800
+@@ -6,7 +6,7 @@
+ # Comment/uncomment the following 4 constants to suit your system:
+ #
+ # PREFIX defines the directory below which cnet will be installed.
+-PREFIX		= /usr/local
++
+ #PREFIX		= $(HOME)
+ #
+ # BINDIR defines the directory where the cnet binary will be installed.

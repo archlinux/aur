@@ -1,0 +1,8 @@
+post_install() {
+    echo -e "\e[7m### PLEASE NOTE ###\e[0m"
+    echo "If this is your first time installing cnet, you must either relogin"
+    echo "or alternatively run the command"
+    echo "source /etc/profile.d/cnet.sh"
+    echo "in each terminal window where you require cnet."
+    echo -e "\e[7m###################\e[0m"
+}

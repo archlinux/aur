@@ -1,0 +1,10 @@
+--- old/support/Makefile.common	2014-03-13 03:57:05.000000000 +0800
++++ new/support/Makefile.common	2014-04-01 16:17:04.375958789 +0800
+@@ -1,6 +1,6 @@
+ #
+ CC		= gcc
+-CFLAGS		= -std=c99 -pedantic -Wall -Werror -O3 -fPIC
++CFLAGS		= -std=c99 -pedantic -Wall -O3 -fPIC
+ 
+ DOTH		= cnetsupport.h
+ OBJ		= hashtable.o haversine.o lexical.o md5.o queue.o vector.o
