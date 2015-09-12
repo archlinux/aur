@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/zopefoundation/zope.schema"
 license=('ZPL')
 options=(!emptydirs)
-install=
 source=("https://github.com/zopefoundation/zope.schema/archive/${pkgver}.tar.gz")
 sha256sums=('ced2d3469306cb590a5d334ae4153a9723eb9da25d61d55252c99cb4d5588258')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-zope-schema() {
   depends=('python')
