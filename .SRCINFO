@@ -1,6 +1,6 @@
 pkgbase = clamtk
-	pkgdesc = GUI front-end for ClamAV using Perl and Gtk libraries. It is designed to be an easy-to-use, on-demand scanner for Linux systems.
-	pkgver = 5.19
+	pkgdesc = GUI front-end for ClamAV using Perl and Gtk libraries. It is designed to be an easy-to-use, on-demand scanner for Linux systems
+	pkgver = 5.20
 	pkgrel = 1
 	url = http://code.google.com/p/clamtk/
 	install = clamtk.install
@@ -17,8 +17,10 @@ pkgbase = clamtk
 	depends = perl-json
 	depends = python
 	depends = zenity
-	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.19.tar.gz
-	sha512sums = 2e060e63857468e98e7c80d96dde952ecd51288e14047dba425cdb8116a12866fddd34f057cbde54d35f0a2ca949553388a847416bbf2cf50869d4439454292d
+	depends = desktop-file-utils
+	depends = gnome-icon-theme
+	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.20.tar.gz
+	sha512sums = fb6a09c16c622f3161bcc9384f4cc9fa7bdf0609c44e19afcbec980d5636670a7e1adb232bac980100d9ed50e2b668aa71633a035a6faa5b113157d09c4f11bb
 
 pkgname = clamtk
 
