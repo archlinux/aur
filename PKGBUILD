@@ -1,15 +1,15 @@
 ##
-# Maintainer: pyamsoft <pyam.soft@gmail.com>
+# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 ##
 
 pkgname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver"
 pkgver=1.2.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 depends=('coreutils')
-makedepends=()
-optdepends=('x86_energy_perf_policy')
+makedepends=('gawk')
+optdepends=('x86_energy_perf_policy: For x86_energy_perf_policy-sleep.service')
 provides=('pstate-frequency')
 conflicts=('pstate-frequency')
 license=('GPLv2')
