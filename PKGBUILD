@@ -2,7 +2,7 @@
 pkgname=virtualbox-bin-ext-oracle
 pkgver=5.0.4
 pkgrel=1
-pkgdesc='Oracle VM VirtualBox Extension Pack'
+pkgdesc='Oracle VirtualBox Extension Pack for the virtualbox-bin package'
 arch=('any')
 url='http://www.virtualbox.org/'
 depends=('virtualbox-bin')

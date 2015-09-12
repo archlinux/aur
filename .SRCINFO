@@ -1,5 +1,5 @@
 pkgbase = virtualbox-bin-ext-oracle
-	pkgdesc = Oracle VM VirtualBox Extension Pack
+	pkgdesc = Oracle VirtualBox Extension Pack for the virtualbox-bin package
 	pkgver = 5.0.4
 	pkgrel = 1
 	url = http://www.virtualbox.org/
