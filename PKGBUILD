@@ -9,6 +9,7 @@ arch=(any)
 url="https://github.com/necaris/python3-openid"
 license=('APACHE')
 options=(!emptydirs)
+makedepends=('python-setuptools')
 depends=('python-defusedxml')
 source=("https://github.com/necaris/python3-openid/archive/v${pkgver}.tar.gz")
 sha256sums=('758e67fe097b021ced3148c1b790cfe8437db89c6cc8ade471aaadfcb9d205ab')

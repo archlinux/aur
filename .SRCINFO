@@ -5,6 +5,7 @@ pkgbase = python-openid
 	url = https://github.com/necaris/python3-openid
 	arch = any
 	license = APACHE
+	makedepends = python-setuptools
 	depends = python-defusedxml
 	options = !emptydirs
 	source = https://github.com/necaris/python3-openid/archive/v3.0.6.tar.gz
