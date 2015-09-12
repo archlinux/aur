@@ -1,6 +1,8 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: <fedor@yu.wildpark.net>
 
+# TODO: Find a good tux icon
+
 # systemctl enable lld2d@enp2s4.service
 # systemctl start lld2d@enp2s4.service
 
@@ -24,10 +26,15 @@ sha256sums=('84173762f89312013c03a155db47bfbb545c14c08e8f4fc675413753a3268293'
 prepare() {
   set -u
   ln -sf 'Rally-LLTD-PortingKit.exe' 'Rally-LLTD-PortingKit.zip'
-  unzip -o 'Rally-LLTD-PortingKit.zip'
+  unzip -oaq 'Rally-LLTD-PortingKit.zip'
+  find -type f -exec chmod 644 '{}' ';'
   cd "${_srcdir}"
-  sed -i -e 's:\r::g' -e 's:^#include "packetio.h"$:&\n#include <limits.h>:g' '../src/state.c' # state.c.patch
-  sed -i -e 's:/etc/icon.ico:/usr/share/lld2d/icon.ico:g' '../src'/{ctmain,main}.c
+  sed -i -e 's:^#include "packetio.h"$:&\n#include <limits.h>:g' '../src/state.c' # state.c.patch
+  sed -i -e 's:path = xmalloc(strlen(val)+6);:&memset(path,0,strlen(val)+6);:g' '../src'/{main.c,ctmain.c} # correct buffer overflow use of strncpy
+  sed -i -e 's:strncpy(ifname, g_interface, 14);:memset(ifname,0,16);&:g' '../src/qospktio.c' # Another buffer overflow use of strncpy
+  #sed -i -e 's:^CFLAGS = .*$:& -D__DEBUG__:g' 'Makefile' # Easily enable DEBUG
+  sed -i -e 's:^CFLAGS = .*$:& -Wno-attributes -Wno-format -Wno-unused-result -Wno-pointer-to-int-cast:g' 'Makefile'
+  sed -i -e 's:/etc/icon.ico:/usr/share/lld2d/icon.ico:g' '../src'/{ctmain,main}.c # Fix an unused default
   set +u
 }
 
@@ -44,8 +51,7 @@ package() {
   install -Dpm755 'lld2d' 'lld2test' -t "${pkgdir}/usr/bin/"
   cd '../src'
   install -Dpm644 'lld2d.conf' -t "${pkgdir}/etc/"
-  sed -i -e 's:\r::g' \
-         -e 's:icon = /etc:icon = /usr/share/lld2d:g' \
+  sed -i -e 's:icon = /etc:icon = /usr/share/lld2d:g' \
          -e 's:icon = .*$:icon = /usr/share/lld2d/tux.ico:g' \
     "${pkgdir}/etc/lld2d.conf"
   #mkdir -p ${pkgdir}/usr/share/lld2d/
@@ -67,11 +73,12 @@ WantedBy=multi-user.target
 EOF
   ) "${pkgdir}/usr/lib/systemd/system/lld2d@.service"
 
-  install -Dpm644 <(cat << EOF
-IF="eth0"
-OPTION=""
-EOF
-  ) "${pkgdir}/etc/conf.d/lld2d"
+  # This file isn't used anywhere
+#  install -Dpm644 <(cat << EOF
+#IF="eth0"
+#OPTION=""
+#EOF
+#  ) "${pkgdir}/etc/conf.d/lld2d"
 
   set +u
 }
