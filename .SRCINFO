@@ -1,0 +1,17 @@
+pkgbase = connman-gtk
+	pkgdesc = GTK GUI for ConnMan
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jgke/connman-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = intltool
+	depends = glib2
+	depends = gtk3
+	source = git+https://github.com/jgke/connman-gtk.git#tag=v1.0
+	sha256sums = SKIP
+
+pkgname = connman-gtk
+
