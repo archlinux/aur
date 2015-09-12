@@ -1,0 +1,28 @@
+pkgbase = xmonad-git
+	pkgdesc = Lightweight X11 tiled window manager written in Haskell
+	pkgver = v0.11.r44.g577d5ae
+	pkgrel = 1
+	url = http://xmonad.org/
+	install = xmonad.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gendesk
+	depends = ghc=7.10.1
+	depends = gmp
+	depends = haskell-x11=1.6.1.2
+	depends = sh
+	depends = haskell-mtl=2.2.1
+	depends = haskell-utf8-string=1
+	depends = haskell-extensible-exceptions=0.1.1.4
+	optdepends = xorg-xmessage: for displaying visual error messages
+	provides = xmonad
+	conflicts = xmonad
+	options = staticlibs
+	source = git://github.com/xmonad/xmonad.git
+	source = xmonad.svg
+	md5sums = SKIP
+	md5sums = 72bfa5e62e4e44fe7fa59b6a7593d993
+
+pkgname = xmonad-git
+
