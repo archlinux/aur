@@ -1,6 +1,6 @@
 pkgbase = gtk3-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.17.4.r185.g3fb1d18
+	pkgver = 3.17.8.r154.g51a1bc2
 	pkgrel = 1
 	url = http://www.gtk.org/
 	install = gtk3-git.install
@@ -23,12 +23,12 @@ pkgbase = gtk3-git
 	depends = libxinerama
 	depends = libxkbcommon
 	depends = libxrandr
-	depends = pango
+	depends = pango-git
 	depends = shared-mime-info
 	depends = wayland-git
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
-	provides = gtk3=3.17.4.r185.g3fb1d18
+	provides = gtk3=3.17.8.r154.g51a1bc2
 	provides = gtk-update-icon-cache
 	conflicts = gtk3
 	conflicts = gtk-update-icon-cache
