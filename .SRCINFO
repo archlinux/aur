@@ -1,0 +1,22 @@
+pkgbase = mailman-suite-git
+	pkgdesc = Provides a complete Mailman3 installation
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/thelinuxguy/mailman-django
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = mailman-core
+	depends = python-mailman-hyperkitty-plugin
+	depends = mailman-django-git
+	depends = python2-whoosh
+	depends = python2-django-postorius-git
+	depends = python2-django-hyperkitty-git
+	provides = mailman-suite
+	conflicts = mailman-suite
+	options = !emptydirs
+	source = git+https://gitlab.com/thelinuxguy/mailman-django.git
+	sha256sums = SKIP
+
+pkgname = mailman-suite-git
+
