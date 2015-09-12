@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=owncloud-app-tasks
-pkgver=0.7.1
+pkgver=0.8
 pkgrel=1
 pkgdesc="Enhanced task app for ownCloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('owncloud')
 makedepends=()
 options=('!strip')
 source=("tasks-${pkgver}.tar.gz::https://github.com/owncloud/tasks/archive/v${pkgver}.tar.gz")
-sha512sums=("c9c9772e9209412850261b6f468d797263a9f0df44661d96f2d36e91f5529b9c38cd1ef4381f170213f3937f4552105d2c71eac3365bc830e93d58eeb1d9f7b5")
+sha512sums=("f69f9ac50ae7aa10036a35cf20ac3aa89a5c41617f811d04e6026438c0f8ceeda764621ccf5bbe2f086ce29c12260b65ee1db208ff8d74c183d55970d4c9af4a")
 
 build() {
   cd "${srcdir}/tasks-${pkgver}"
