@@ -1,7 +1,7 @@
 # Maintainer: Robin Nehls <aur@manol.is>
 
 pkgname=gr-dect2-git
-pkgver=1f5d71f
+pkgver=a2a8f9d
 pkgrel=1
 pkgdesc="This project was developed to demonstrate the possibility of real-time DECT voice channel decoding by Gnuradio."
 arch=('any')

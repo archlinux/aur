@@ -1,6 +1,6 @@
 pkgbase = gr-dect2-git
 	pkgdesc = This project was developed to demonstrate the possibility of real-time DECT voice channel decoding by Gnuradio.
-	pkgver = 3fdfe7c
+	pkgver = a2a8f9d
 	pkgrel = 1
 	url = https://github.com/pavelyazev/gr-dect2
 	arch = any
