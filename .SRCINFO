@@ -1,0 +1,12 @@
+pkgbase = lsm
+	pkgdesc = a Link Status Monitor which can be used to monitor for example a Linux router/firewall connectivity
+	pkgver = 0.189
+	pkgrel = 1
+	url = http://lsm.foobar.fi/
+	arch = x86_64
+	license = GPL2
+	source = http://lsm.foobar.fi//download/lsm-0.189.tar.gz
+	sha256sums = 623fa92f4c87dbb762899ccbcd96a46a25e0e78c4cdb6b0d7ffb6867bd9b1ff8
+
+pkgname = lsm
+
