@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/jezdez-archive/django-appconf"
 license=('BSD')
 options=(!emptydirs)
-install=
 source=("https://github.com/jezdez-archive/django-appconf/archive/v${pkgver}.tar.gz")
 sha256sums=('1574e5cbdc402d5e8e7b078513c1083a168c746282e50c06fbe10c98f97aee89')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-appconf() {
   depends=('python-django' 'python-six')
