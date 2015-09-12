@@ -15,7 +15,7 @@ depends=('python'
 		 'avrdude'
 		 'avr-gcc'
 		 )
-optdepends=('brewpi-www-git: Web interface for BrewPi')
+optdepends=('brewpi-www: Web interface for BrewPi')
 
 groups=('brewpi-git')
 
