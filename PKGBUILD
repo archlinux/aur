@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 243157 2015-08-11 14:15:07Z bisson $
+# $Id: PKGBUILD 244461 2015-08-21 07:49:53Z bisson $
 # Maintainer (Arch): Gaetan Bisson <bisson@archlinux.org>
 # Contributor (Arch): Aaron Griffin <aaron@archlinux.org>
 # Contributor (Arch): judd <jvinet@zeroflux.org>
@@ -7,7 +7,7 @@
 
 _pkgname=openssh
 pkgname=openssh-knock
-pkgver=7.0p1
+pkgver=7.1p1
 pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools, with support for stealth TCP sockets'
 url='http://www.openssh.org/portable.html'
@@ -23,14 +23,14 @@ validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30'
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456')
 source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver}.tar.gz"{,.asc}
         #"http://gnunet.org/sites/default/files/${_pkgname}-linux-knock-patch_0.diff"
-        "https://repo.parabola.nu/other/knock/patches/openssh/${_pkgname}-${pkgver}-linux-knock-patch.diff"{,.sig}
+        "https://repo.parabola.nu/other/knock/patches/openssh/${_pkgname}-7.0p1-linux-knock-patch.diff"{,.sig}
         'sshdgenkeys.service'
         'sshd@.service'
         'sshd.service'
         'sshd.socket'
         'sshd.conf'
         'sshd.pam')
-sha1sums=('d8337c9eab91d360d104f6dd805f8b32089c063c' 'SKIP'
+sha1sums=('ed22af19f962262c493fcc6ed8c8826b2761d9b6' 'SKIP'
           '36fc52e849ef5baf20f48b3d8bd0568849d45dd6' 'SKIP'
           'cc1ceec606c98c7407e7ac21ade23aed81e31405'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
@@ -45,7 +45,7 @@ install=install
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	patch -Np1 -i "${srcdir}"/${_pkgname}-${pkgver}-linux-knock-patch.diff
+	patch -Np1 -i "${srcdir}"/${_pkgname}-7.0p1-linux-knock-patch.diff
 }
 
 build() {
