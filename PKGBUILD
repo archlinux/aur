@@ -9,9 +9,9 @@ arch=(any)
 url="https://launchpad.net/lazr.config"
 license=('LGPL')
 options=(!emptydirs)
-install=
 source=("https://pypi.python.org/packages/source/l/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
 sha256sums=('5f380f5defd1f2e0db7483f5b55072e458dcba1d38ea8b2c7867de8127970689')
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-lazr-config() {
   depends=('python' 'python-lazr-delegates')
