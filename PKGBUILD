@@ -15,7 +15,7 @@ depends=('apache'
 
 groups=('brewpi-git')
 
-optdepends=('brewpi-scriptt: BrewPi script')
+optdepends=('brewpi-script: BrewPi script')
 
 source=(
 		"httpd-brewpi.conf"
