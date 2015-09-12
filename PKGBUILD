@@ -9,9 +9,9 @@ arch=(any)
 url="https://launchpad.net/flufl.i18n"
 license=('LGPL')
 options=(!emptydirs)
-install=
 source=("https://pypi.python.org/packages/source/f/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
 sha256sums=('bb743c1101936138edf6f6b0dd9f77f157ca6b5f38c608f440fd16b59c4c5130')
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-flufl-i18n() {
   depends=('python2')
