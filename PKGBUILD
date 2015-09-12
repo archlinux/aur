@@ -10,7 +10,7 @@ depends=('fftw' 'openmpi')
 makedepends=()
 source=(http://lammps.sandia.gov/tars/lammps-stable.tar.gz
   fftw3.patch)
-md5sums=('8029c9ad293e06db1bb293c03ea325fb'
+md5sums=('64ef91b09dfd0e11ddcecaf33c80683b'
          '995c3d49f0df9c28f287fca0a3ea0752')
 build() {
   cd $srcdir/$pkgname-$pkgver/src
