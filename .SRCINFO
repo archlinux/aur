@@ -1,0 +1,22 @@
+pkgbase = brewpi-www
+	pkgdesc = BrewPi web interface
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://www.brewpi.com/
+	arch = any
+	groups = brewpi-git
+	license = GPL
+	depends = apache
+	depends = php-apache
+	depends = php
+	depends = php-cgi
+	optdepends = brewpi-scriptt: BrewPi script
+	provides = brewpi-www
+	backup = srv/brewpi/config.php
+	source = httpd-brewpi.conf
+	source = brewpi-www-0.3.2::https://github.com/BrewPi/brewpi-www/archive/0.3.2.tar.gz
+	sha256sums = c5489c9f1e6b3d0d8cb046d22842c99848a3e3c916c21b53f64ad983f90247f9
+	sha256sums = c284243b882a35ef2dab3e5b47cbaf118abc3e5e441a244a64458a22d7e49ff4
+
+pkgname = brewpi-www
+
