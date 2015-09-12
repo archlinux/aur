@@ -1,5 +1,5 @@
 pkgbase = xenonauts-hib
-	pkgdesc = Computer side of the AirStream software for Android streaming
+	pkgdesc = Space invasion strategy game in the X-COM genre
 	pkgver = 1.59
 	pkgrel = 1
 	url = http://www.xenonauts.com/

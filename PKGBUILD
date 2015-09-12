@@ -3,7 +3,7 @@
 pkgname=xenonauts-hib
 pkgver=1.59
 pkgrel=1
-pkgdesc="Computer side of the AirStream software for Android streaming"
+pkgdesc="Space invasion strategy game in the X-COM genre"
 arch=('i686' 'x86_64')
 url="http://www.xenonauts.com/"
 license=('Commercial')
