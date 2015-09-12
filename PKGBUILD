@@ -1,7 +1,7 @@
 # Maintainer: Black_Codec <orso.f.regna@gmail.com>
  
 pkgname=guacamole-client
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
@@ -10,14 +10,14 @@ license=('GPL3')
  
 replaces=('guacamole')
  
-depends=('java-runtime' 'tomcat8' 'guacamole-server')
+depends=('java-runtime' 'tomcat7' 'guacamole-server')
  
 makedepends=('maven')
  
-source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver.tar.gz")
-md5sums=('6d2355ac5a52df62e8eee5bbbe3d49e6')
+source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver.tar.gz" "guacamole.properties")
+md5sums=('9bac0aff464c1024532de4d1e0503680' '1f3ec0a32cc3c6b4f7aeb8a3b2e7531b')
  
-backup=('etc/guacamole/guacamole.properties' 'etc/guacamole/user-mapping.xml')
+backup=('usr/share/tomcat7/.guacamole/guacamole.properties' 'usr/share/tomcat7/.guacamole/user-mapping.xml')
  
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
@@ -26,13 +26,10 @@ build() {
  
 package() {
 	cd "$srcdir"/$pkgname-$pkgver
-	mkdir -m 775 -p "$pkgdir"/var/lib/tomcat8/
-	mkdir -m 775 -p "$pkgdir"/var/lib/tomcat8/webapps/
-	mkdir -p "$pkgdir"/usr/share/tomcat8/.${pkgname%-*}/
-	mkdir -p "$pkgdir"/etc/${pkgname%-*}/
-	install -D ${pkgname%-*}/target/${pkgname%-*}-$pkgver.war "$pkgdir"/var/lib/tomcat8/webapps/${pkgname%-*}.war
-	#install -D ${pkgname%-*}/doc/guacamole-example/${pkgname%-*}.properties "$pkgdir"/etc/${pkgname%-*}/
-	install -D ${pkgname%-*}/doc/example/user-mapping.xml "$pkgdir"/etc/${pkgname%-*}/
-	#ln -s /etc/${pkgname%-*}/${pkgname%-*}.properties "$pkgdir"/usr/share/tomcat8/.${pkgname%-*}/
-	#sed -i 's|/path/to/|/etc/guacamole/|g' "$pkgdir"/etc/${pkgname%-*}/${pkgname%-*}.properties
+	mkdir -m 775 -p "$pkgdir"/var/lib/tomcat7/
+	mkdir -m 775 -p "$pkgdir"/var/lib/tomcat7/webapps/
+	mkdir -p "$pkgdir"/usr/share/tomcat7/.${pkgname%-*}/
+	install -D ${pkgname%-*}/target/${pkgname%-*}-$pkgver.war "$pkgdir"/var/lib/tomcat7/webapps/guacamole.war
+	install -D ${pkgname%-*}/doc/example/user-mapping.xml "$pkgdir"/usr/share/tomcat7/.guacamole/
+	install -D "$srcdir"/guacamole.properties "$pkgdir"/usr/share/tomcat7/.guacamole/
 }
