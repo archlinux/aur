@@ -1,16 +1,16 @@
 ##
-# Maintainer: pyamsoft <pyam.soft@gmail.com>
+# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 ##
 
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=1.3.0.git
+pkgver=1.3.0.r371.a679eb5
 pkgrel=1
 arch=('i686' 'x86_64')
-makedepends=('git')
-depends=('coreutils')
-optdepends=('x86_energy_perf_policy')
+makedepends=('git' 'gawk')
+depends=('coreutils' 'grep')
+optdepends=('x86_energy_perf_policy: For the x86_energy_perf_policy-sleep.service')
 provides=('pstate-frequency')
 conflicts=('pstate-frequency')
 license=('GPLv2')
@@ -63,7 +63,8 @@ _AUTO_POWER_PLAN_BAT="powersave"
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	echo "$(awk -F '=' '{if (/^VERSION:=/) {print $2}}' 'config.mk').git"
+	printf "%s.r%s.%s" "$(awk -F '=' '{if (/^VERSION:=/) {print $2}}' 'config.mk')" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
