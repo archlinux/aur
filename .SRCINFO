@@ -23,6 +23,7 @@ pkgbase = mailman-core
 	depends = python-mock
 	depends = python-sqlalchemy
 	depends = postfix
+	optdepends = python-mailman-hyperkitty-plugin: Plugin to send emails to Hyperkitty for archival
 	conflicts = mailman
 	options = !emptydirs
 	backup = var/lib/mailman/var/etc/mailman.cfg

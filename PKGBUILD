@@ -13,6 +13,7 @@ depends=('python-zope-interface' 'python-zope-event' 'python-zope-configuration'
          'python-flufl-lock' 'python-flufl-i18n' 'python-flufl-bounce' 'python-falcon'
          'python-alembic' 'python-lazr-config' 'python-lazr-smtptest' 'python-mock'
          'python-sqlalchemy' 'postfix')
+optdepends=('python-mailman-hyperkitty-plugin: Plugin to send emails to Hyperkitty for archival')
 url="https://gitlab.com/mailman/mailman"
 license=('LGPL')
 options=(!emptydirs)
