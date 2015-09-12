@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/twaddington/django-gravatar"
 license=('MIT')
 options=(!emptydirs)
-install=
 source=("https://github.com/twaddington/django-gravatar/archive/${pkgver}.tar.gz")
 sha256sums=('b557e25748585647df3774727f2183117691bde1236f3054117e35f66c66f88c')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-gravatar() {
   depends=('python-django')
