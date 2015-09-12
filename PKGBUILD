@@ -5,7 +5,7 @@
 pkgname=update-hosts-git
 _gitname=update-hosts
 pkgdesc="Generate a hosts file based on multiple sources (git)"
-pkgver=r47.8aaa35e
+pkgver=r49.078ed7a
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -36,5 +36,6 @@ pkgver() {
 package() {
 	cd "$srcdir/$_gitname"
 	install -Dm 755 "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
 }
 
