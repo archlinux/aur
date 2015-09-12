@@ -1,6 +1,6 @@
 pkgbase = ocaml-pcre
 	pkgdesc = Perl compatible regular expressions for OCaml
-	pkgver = 7.1.5
+	pkgver = 7.1.6
 	pkgrel = 1
 	url = http://mmottl.github.io/pcre-ocaml
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = ocaml-pcre
 	replaces = pcre-ocaml
 	options = !strip
 	options = staticlibs
-	source = https://github.com/mmottl/pcre-ocaml/releases/download/v7.1.5/pcre-ocaml-7.1.5.tar.gz
-	md5sums = 28e40ad63fe2d568aa47ff460d3f9d3a
+	source = https://github.com/mmottl/pcre-ocaml/releases/download/v7.1.6/pcre-ocaml-7.1.6.tar.gz
+	md5sums = d5c2230bc8123ed382d018737f26a0d5
 
 pkgname = ocaml-pcre
 
