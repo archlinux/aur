@@ -1,0 +1,16 @@
+pkgbase = lsat
+	pkgdesc = A post install security auditor for Linux/Unix
+	pkgver = 0.9.8.2
+	pkgrel = 1
+	url = http://usat.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = popt
+	optdepends = nmap
+	optdepends = lsof
+	source = http://usat.sourceforge.net/code/lsat-0.9.8.2.tgz
+	sha256sums = 872af268cb0f91f26c286beada4d356bb04ad637c81ff043f5ea0a2d13f17bac
+
+pkgname = lsat
+
