@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Xenonauts
+GenericName=Xenonauts
+Comment=A game in the X-COM style
+Icon=xenoicon2
+Exec=xenonauts
+Terminal=false
+Categories=Application;Game;

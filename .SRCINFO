@@ -1,0 +1,17 @@
+pkgbase = xenonauts-hib
+	pkgdesc = Computer side of the AirStream software for Android streaming
+	pkgver = 1.59
+	pkgrel = 1
+	url = http://www.xenonauts.com/
+	arch = i686
+	arch = x86_64
+	license = Commercial
+	makedepends = hib-dlagent
+	depends = wine
+	source = xenonauts.desktop
+	source = hib://xenonauts_v1.59_linux.deb
+	md5sums = e213048a9eda9d1e2ed0f3b1cc0ed49f
+	md5sums = fc7d3f36fdb5f7f39f273d2574799f53
+
+pkgname = xenonauts-hib
+
