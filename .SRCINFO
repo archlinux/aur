@@ -5,6 +5,7 @@ pkgbase = python-mailman-hyperkitty-plugin
 	url = https://gitlab.com/mailman/mailman-hyperkitty
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = mailman-core
 	depends = python-setuptools
 	depends = python-requests

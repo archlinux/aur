@@ -7,6 +7,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Hyperkitty archive plugin for mailman"
 arch=(any)
+makedepends=('python-setuptools')
 depends=('mailman-core' 'python-setuptools' 'python-requests')
 url="https://gitlab.com/mailman/mailman-hyperkitty"
 license=('GPL')
