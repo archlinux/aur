@@ -9,6 +9,7 @@ url="https://github.com/whoozle/android-file-transfer-linux"
 license=('GPL2')
 depends=('qt5-base' 'fuse' 'libxkbcommon-x11')
 makedepends=('cmake')
+conflicts=('android-file-transfer-linux-git')
 source=("https://github.com/whoozle/android-file-transfer-linux/archive/v${pkgver}.tar.gz")
 md5sums=('42cb2ff57ec6525cd2040f8e1989e504')
 
