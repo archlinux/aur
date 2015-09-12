@@ -1,7 +1,7 @@
 pkgbase = python2-pythonmagick
 	pkgdesc = Object-oriented Python2 bindings for the ImageMagick library
-	pkgver = 0.9.11
-	pkgrel = 2
+	pkgver = 0.9.12
+	pkgrel = 1
 	url = http://www.imagemagick.org/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = python2-pythonmagick
 	depends = python2
 	depends = imagemagick
 	options = !libtool
-	source = http://www.imagemagick.org/download/python/PythonMagick-0.9.11.tar.gz
-	md5sums = 8af559d540a8e976d830ede9c79c683e
+	source = http://www.imagemagick.org/download/python/PythonMagick-0.9.12.tar.gz
+	md5sums = 4e4c8a535752f5ca4111b4a4b74c49a0
 
 pkgname = python2-pythonmagick
 
