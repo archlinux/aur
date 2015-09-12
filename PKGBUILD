@@ -1,7 +1,8 @@
-# Maintainer: whity <andregoncalo.bras@gmail.com>
+# Maintainer: Simon Tunnat <simon+aur@tunn.at>
+# Previous maintainer: whity <andregoncalo.bras@gmail.com>
 pkgname=sql-workbench
-pkgver=117
-pkgrel=3
+pkgver=118
+pkgrel=1
 epoch=
 pkgdesc="SQL Workbench/J is a free, DBMS-independent, cross-platform SQL query tool."
 arch=('any')
@@ -23,7 +24,7 @@ install=
 changelog=
 source=("http://www.sql-workbench.net/Workbench-Build${pkgver}.zip")
 noextract=("Workbench-Build${pkgver}.zip")
-md5sums=('ebfedd457c49474d2a16a80187680134')
+md5sums=('54e19d52c820f2fb0a89ef43555bd2b5')
 
 build() {
   unzip "Workbench-Build${pkgver}".zip
@@ -42,7 +43,7 @@ package() {
   # need to keep manual and history in same dir as jar
   install -m 644 -D -t $pkgdir/opt/SQLWorkbench \
     sqlworkbench.jar \
-    log4j.xml \
+    log4j-sample.xml \
     SQLWorkbench-Manual.pdf \
     history.html
   install -m 755 -D -t $pkgdir/opt/SQLWorkbench \
