@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="A tool for listening & downloading the music from social network VK.COM"
 arch=('i686' 'x86_64')
 url="http://vkaudiosaver.ru/"
-license=('GPL3')
+license=('custom')
 groups=("network")
 
 if [ "$CARCH" = "i686" ]; then
