@@ -1,0 +1,22 @@
+pkgbase = update-hosts-git
+	pkgdesc = Generate a hosts file based on multiple sources (git)
+	pkgver = 1.0.0.git
+	pkgrel = 1
+	url = https://github.com/pyamsoft/update-hosts.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = coreutils
+	depends = gawk
+	depends = sed
+	depends = grep
+	optdepends = curl: Default download client
+	optdepends = wget: Optional download client
+	provides = update-hosts
+	conflicts = update-hosts
+	source = update-hosts::git+https://github.com/pyamsoft/update-hosts.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = update-hosts-git
+
