@@ -1,0 +1,17 @@
+pkgbase = python-zope-schema
+	pkgdesc = python-zope-interface extension for defining data schemas
+	pkgver = 4.4.2
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.schema
+	arch = any
+	license = ZPL
+	options = !emptydirs
+	source = https://github.com/zopefoundation/zope.schema/archive/4.4.2.tar.gz
+	sha256sums = ced2d3469306cb590a5d334ae4153a9723eb9da25d61d55252c99cb4d5588258
+
+pkgname = python-zope-schema
+	depends = python
+
+pkgname = python2-zope-schema
+	depends = python2
+
