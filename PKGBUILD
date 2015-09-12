@@ -2,11 +2,12 @@
 
 pkgname=infinit
 pkgver=0.9.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Send files and folders of any size or format."
 arch=('x86_64')
 url="https://infinit.io/"
 license=('custom:infinit')
+depends=('qt4' 'qtwebkit')
 options=(!strip)
 source=("${pkgname}.desktop"
 		"terms-and-conditions.html::https://infinit.io/legal"
@@ -35,4 +36,9 @@ package() {
 	install -Dm644 "${pkgname}.png" \
 		"${pkgdir}/usr/share/pixmaps/infinit.png"
 
+	# Qt libs are already installed as deps, removing them from the source package...
+	rm "${pkgdir}/opt/infinit/lib/libQtCore.so"
+	rm "${pkgdir}/opt/infinit/lib/libQtGui.so"
+	rm "${pkgdir}/opt/infinit/lib/libQtNetwork.so"
+	rm "${pkgdir}/opt/infinit/lib/libQtWebKit.so"
 }
