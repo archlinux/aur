@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/tomchristie/django-rest-framework"
 license=('MIT')
 options=(!emptydirs)
-install=
 source=("https://github.com/tomchristie/django-rest-framework/archive/${pkgver}.tar.gz")
 sha256sums=('a1a277803b916106c18150ac58e71e9c3fedf62613e5de67d28fc7130d2d5902')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-rest-framework() {
   depends=('python-django')
