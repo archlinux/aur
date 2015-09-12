@@ -1,0 +1,30 @@
+pkgbase = mailman3
+	pkgdesc = A mailing list management system
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://gitlab.com/mailman/mailman
+	arch = any
+	license = LGPL
+	depends = python
+	depends = python-zope-interface
+	depends = python-zope-event
+	depends = python-zope-configuration
+	depends = python-zope-component
+	depends = python-passlib
+	depends = python-nose2
+	depends = python-httplib2
+	depends = python-flufl-lock
+	depends = python-flufl-i18n
+	depends = python-flufl-bounce
+	depends = python-falcon
+	depends = python-alembic
+	depends = python-lazr-config
+	depends = python-lazr-smtptest
+	depends = python-mock
+	depends = python-sqlalchemy
+	options = !emptydirs
+	source = mailman-3.0.0.tar.gz::https://gitlab.com/mailman/mailman/repository/archive.tar.gz?ref=3.0.0
+	sha256sums = 0cc28e99bbe5a8e0638f9437d1fa8490fb69634cdef30324c7a5e63719581fc2
+
+pkgname = mailman3
+
