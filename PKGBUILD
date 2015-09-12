@@ -1,7 +1,7 @@
 # Maintainer: Vincent <ippytraxx@installgentoo.com>
 
 pkgname=gnome-twitch-git
-pkgver=r20.832f159
+pkgver=r1.f15aedc
 pkgrel=1
 pkgdesc="Enjoy Twitch on your GNOME desktop"
 arch=('i686' 'x86_64')
