@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
-	pkgver = 2.7.2
-	pkgrel = 2
+	pkgver = 2.8
+	pkgrel = 1
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = any
@@ -38,9 +38,9 @@ pkgbase = mingw-w64-ffmpeg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ffmpeg.org/releases/ffmpeg-2.7.2.tar.bz2
-	source = http://ffmpeg.org/releases/ffmpeg-2.7.2.tar.bz2.asc
-	md5sums = 7eb2140bab9f0a8669b65b50c8e4cfb5
+	source = http://ffmpeg.org/releases/ffmpeg-2.8.tar.bz2
+	source = http://ffmpeg.org/releases/ffmpeg-2.8.tar.bz2.asc
+	md5sums = 5eb3839e23c9ca396fabd0ebbe293ea2
 	md5sums = SKIP
 
 pkgname = mingw-w64-ffmpeg
