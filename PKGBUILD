@@ -2,7 +2,7 @@
 
 _pkgname=glportal
 pkgname=${_pkgname}-git
-pkgver=32cc39f
+pkgver=1f4e107
 pkgrel=1
 epoch=1
 pkgdesc="OpenGL puzzle game inspired by portal."
