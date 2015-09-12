@@ -3,40 +3,35 @@
 pkgname=steam-wrapper-git
 _gitname=steam-wrapper
 pkgdesc="Steam wrapper for common operations (git version)"
-pkgver=0.1.8.git
-pkgrel=2
+pkgver=0.1.8.r59.758146d
+pkgrel=1
 arch=('i686' 'x86_64')
 optdepends=('steam-native: Native runtime library support' 'steam-libs: Native steam libraries support')
-depends=('steam' 'bash' 'coreutils')
+depends=('steam' 'bash' 'coreutils' 'findutils')
 makedepends=('git')
 provides=('steam-wrapper')
 conflicts=('steam-wrapper')
-license=('custom')
+license=('GPLv2')
 url="https://github.com/pyamsoft/steam-wrapper.git"
 source=("${_gitname}::git+${url}#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	echo "$(awk -F '=' '{if (/^VERSION=/) {print $2}}' 'steam-wrapper').git"
+	printf "%s.r%s.%s" "$(awk -F '=' '{if (/^VERSION=/) {print $2}}' 'steam-wrapper')" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd "$srcdir/$_gitname"
 
 	# Install the script
-	mkdir -p "$pkgdir"/usr/bin/
-	cp "${_gitname}" "$pkgdir"/usr/bin/
-	chmod 755 "$pkgdir"/usr/bin/${_gitname}
+	install -Dm 755 "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
 
 	# Install the desktop file
-	mkdir -p "$pkgdir"/usr/share/applications/
-	cp ${_gitname}.desktop "$pkgdir"/usr/share/applications/
-	chmod 644 "$pkgdir"/usr/share/applications/${_gitname}.desktop
+	install -Dm644 "${_gitname}.desktop" "${pkgdir}/usr/share/applications/${_gitname}.desktop"
 
 	# Install the default configuration
-	mkdir -p "$pkgdir"/etc/steam-wrapper/
-	cp ${_gitname}.conf "$pkgdir"/etc/${_gitname}/${_gitname}.conf
-	chmod 644 "$pkgdir"/etc/${_gitname}/${_gitname}.conf
+	install -Dm 644 "${_gitname}.conf" "${pkgdir}/etc/${_gitname}/${_gitname}.conf"
 }
 
