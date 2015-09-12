@@ -1,6 +1,6 @@
 pkgbase = lammps
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator.
-	pkgver = 15May15
+	pkgver = 10Aug15
 	pkgrel = 1
 	url = http://lammps.sandia.gov/
 	arch = i686

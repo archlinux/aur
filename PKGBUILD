@@ -1,6 +1,6 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=lammps  
-pkgver=15May15
+pkgver=10Aug15
 pkgrel=1 
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator."
 url="http://lammps.sandia.gov/"
