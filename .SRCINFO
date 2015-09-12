@@ -1,7 +1,7 @@
 pkgbase = guacamole-server
 	pkgdesc = Guacamole proxy daemon
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://guacamole.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = guacamole-server
 	makedepends = pango
 	makedepends = libtelnet
 	makedepends = freerdp
-	makedepends = uuid
 	depends = pango
 	depends = openssl
 	depends = libvorbis
