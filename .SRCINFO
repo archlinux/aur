@@ -1,7 +1,7 @@
 pkgbase = rednotebook
 	pkgdesc = A simple desktop diary
-	pkgver = 1.10.1
-	pkgrel = 1
+	pkgver = 1.10.2
+	pkgrel = 2
 	url = http://rednotebook.sourceforge.net
 	install = rednotebook.install
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = rednotebook
 	depends = hicolor-icon-theme
 	depends = librsvg
 	optdepends = python-chardet: Python3 module for character encoding auto-detection
-	source = rednotebook-1.10.1.tar.gz::http://downloads.sourceforge.net/project/rednotebook/rednotebook-1.10.1.tar.gz
-	sha256sums = c03bf07d78c4d27ce8d2794af156c7fba1d6b3a7ae4c87b71be0216c3512e6fe
+	source = rednotebook-1.10.2.tar.gz::http://downloads.sourceforge.net/project/rednotebook/rednotebook-1.10.2.tar.gz
+	sha256sums = d3b5addc57a8490af11040ca2749d0ab775537fdddd477784c1674933c3cdc19
 
 pkgname = rednotebook
 

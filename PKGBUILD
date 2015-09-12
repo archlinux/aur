@@ -6,7 +6,7 @@
 # Contributor: cameel <cameel2/gmail/com>
 pkgname=rednotebook
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple desktop diary"
 arch=('i686' 'x86_64')
 url="http://rednotebook.sourceforge.net"
