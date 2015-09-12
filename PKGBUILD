@@ -9,9 +9,9 @@ arch=(any)
 url="https://github.com/mozilla/django-browserid"
 license=('MPL')
 options=(!emptydirs)
-install=
 source=("https://github.com/mozilla/django-browserid/archive/v${pkgver}.tar.gz")
 sha256sums=('2c83c1ba86987ec2986a02eda50941ddae7bbb92217e33bb9ed8ba5c94da527e')
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-browserid() {
   depends=('python-django')
