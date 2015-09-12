@@ -2,7 +2,7 @@
 # Previous maintainer: whity <andregoncalo.bras@gmail.com>
 pkgname=sql-workbench
 pkgver=118
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SQL Workbench/J is a free, DBMS-independent, cross-platform SQL query tool."
 arch=('any')
