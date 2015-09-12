@@ -1,9 +1,9 @@
 # Maintainer: Jeff Henson <jeff at henson dot io>
 pkgname=virtualbox-bin-ext-oracle
 pkgver=5.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VirtualBox Extension Pack for the virtualbox-bin package'
-arch=('any')
+arch=('i686' 'x86_64')
 url='http://www.virtualbox.org/'
 depends=('virtualbox-bin')
 conflits=('virtualbox-ext-oracle')
