@@ -1,5 +1,5 @@
 pkgbase = brother-mfc-j470dw
-	pkgdesc = LPR and CUPS driver for the Brother MFC-J450DW
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J470DW
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/
