@@ -1,8 +1,8 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=nghttp2
-pkgver=1.3.0
-_pkgver=v1.3.0
+pkgver=1.3.1
+_pkgver=v1.3.1
 pkgrel=1
 pkgdesc="HTTP/2 C Library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('openssl' 'libev' 'zlib' 'spdylay' 'libxml2' 'jansson' 'jemalloc')
 source=("https://github.com/tatsuhiro-t/nghttp2/releases/download/${_pkgver}/nghttp2-${pkgver}.tar.gz")
 backup=('etc/nghttpx/nghttpx.conf'
         'etc/logrotate.d/nghttpx')
-sha256sums=('ad435eb5d7fdf8d78930d81a98a6849c8b94393a6f1b800bfee6511c3a571684')
+sha256sums=('0e79920d4fa9706ed0fd46386664b4170bae34b5c9c74ee2eddb99cdf980d852')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
