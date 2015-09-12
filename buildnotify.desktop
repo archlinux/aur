@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Development;
+Comment[en_US]=System tray cruisecontrol build notification application
+Comment=System tray cruisecontrol build notification application
+Exec=/usr/bin/buildnotifyapplet.py
+GenericName[en_US]=BuildNotify
+GenericName=BuildNotify
+Icon=/usr/share/pixmaps/buildnotify.svg
+Name[en_US]=BuildNotify
+Name=BuildNotify
+StartupNotify=false
+Terminal=false
+Type=Application

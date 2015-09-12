@@ -1,0 +1,19 @@
+pkgbase = buildnotify-hg
+	pkgdesc = Cruise Control build monitor for Windows/Linux/Mac
+	pkgver = 0.3.5.r120.56282fc2b49f
+	pkgrel = 1
+	url = http://bitbucket.org/Anay/buildnotify/
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	depends = python2
+	depends = python2-pyqt4
+	depends = python2-pytz
+	depends = python2-dateutil
+	source = hg+https://bitbucket.org/Anay/buildnotify
+	source = buildnotify.desktop
+	md5sums = SKIP
+	md5sums = 2f25214b688c6eb571ad2bb52c13beec
+
+pkgname = buildnotify-hg
+
