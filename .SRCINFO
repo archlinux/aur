@@ -1,0 +1,17 @@
+pkgbase = unpacknbm
+	pkgdesc = Bash script to unpack Netbeans module
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/blackleg/unpacknbm
+	arch = any
+	license = GPLv3
+	depends = bash
+	depends = findutils
+	depends = coreutils
+	depends = unzip
+	depends = java-runtime-common
+	source = https://github.com/blackleg/unpacknbm/archive/1.0.tar.gz
+	md5sums = ec9a7820894a5db79521bc2a7cb0d85c
+
+pkgname = unpacknbm
+
