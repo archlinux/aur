@@ -8,14 +8,14 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-utils-git"
-pkgver=0.6.4.2_r0_g04974ca_4.1.6_1
+pkgver=0.6.5_r0_gf17d005_4.1.6_1
 pkgrel=1
 license=('GPL')
 pkgdesc="Solaris Porting Layer kernel module support files."
 makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=04974ca1"
+source=("git+https://github.com/zfsonlinux/spl.git#commit=f17d005b"
         "spl-utils.hostid")
 groups=("archzfs-git")
 md5sums=('SKIP'
