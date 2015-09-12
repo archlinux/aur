@@ -16,7 +16,7 @@ pkgbase = binnavi-git
 	source = git+https://github.com/google/binnavi.git
 	source = binnavi.sh
 	sha512sums = SKIP
-	sha512sums = bb274ca29a994ef8b98aa77e0be745e297bd2f7e65dd394594169ffec3910b4dd4982e353202c6b201472632a3f7b16bd7d905b7006e21d76b7299b78fc7f390
+	sha512sums = 1a569f0db2acc9501e0ee644483b908f833649a48059df3879d209d57ccb8e66d2d21fc32b2a9750868a8d47321f13e706807a325908aca0b7feeacd2d5013e8
 
 pkgname = binnavi-git
 
