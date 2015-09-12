@@ -1,6 +1,6 @@
 pkgbase = etmtk
 	pkgdesc = Manage events and tasks using simple text files.
-	pkgver = 3.2.15
+	pkgver = 3.2.16
 	pkgrel = 1
 	url = http://people.duke.edu/~dgraham/etmtk/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = etmtk
 	depends = python-dateutil
 	depends = python-yaml
 	optdepends = python-icalendar: iCalendar support
-	source = http://people.duke.edu/~dgraham/etmtk/etmtk-3.2.15.tar.gz
-	md5sums = 5401a6c8fea21768c02ecff6b230246f
+	source = http://people.duke.edu/~dgraham/etmtk/etmtk-3.2.16.tar.gz
+	md5sums = 90d258a3d85472ae5375e92ebbf687c1
 
 pkgname = etmtk
 

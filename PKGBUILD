@@ -1,7 +1,7 @@
 # Maintainer:  trashstar <trash@ps3zone.org>
 
 pkgname=etmtk
-pkgver=3.2.15
+pkgver=3.2.16
 pkgrel=1
 pkgdesc="Manage events and tasks using simple text files."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('tk' 'python-dateutil' 'python-yaml')
 optdepends=('python-icalendar: iCalendar support')
 makedepends=('python-setuptools')
 source=("http://people.duke.edu/~dgraham/etmtk/etmtk-$pkgver.tar.gz")
-md5sums=(5401a6c8fea21768c02ecff6b230246f)
+md5sums=(90d258a3d85472ae5375e92ebbf687c1)
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
