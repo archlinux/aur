@@ -1,0 +1,19 @@
+pkgbase = resolve-trivial-conflicts-git
+	pkgdesc = Resolve trivial conflicts automatically when merging branches in git repositories.
+	pkgver = r52.48ae21a
+	pkgrel = 1
+	url = https://github.com/ElastiLotem/resolve-trivial-conflicts
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cabal-install
+	makedepends = chrpath
+	depends = gmp
+	provides = resolve-trivial-conflicts
+	conflicts = resolve-trivial-conflicts
+	source = git+https://github.com/ElastiLotem/resolve-trivial-conflicts
+	md5sums = SKIP
+
+pkgname = resolve-trivial-conflicts-git
+
