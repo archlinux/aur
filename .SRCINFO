@@ -1,0 +1,17 @@
+pkgbase = python-zope-i18nmessageid
+	pkgdesc = Message Identifiers for internationalization
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.i18nmessageid
+	arch = any
+	license = ZPL
+	options = !emptydirs
+	source = https://github.com/zopefoundation/zope.i18nmessageid/archive/4.0.3.tar.gz
+	sha256sums = 5a273d5c10bebefc50784cd8715309e45b12c96494f74d57c23f17f514d4a8a3
+
+pkgname = python-zope-i18nmessageid
+	depends = python
+
+pkgname = python2-zope-i18nmessageid
+	depends = python2
+
