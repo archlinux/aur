@@ -1,8 +1,8 @@
 # Maintainer: skydrome <skydrome@i2pmail.org>
 # Contributor: Artyom Olshevskiy <siasia@siasia>
 
-pkgname=java-service-wrapper
-pkgver=3.5.26
+pkgname='java-service-wrapper'
+pkgver=3.5.27
 pkgrel=1
 pkgdesc="Enables a Java Application to be run as a Windows Service or Unix Daemon"
 url="http://wrapper.tanukisoftware.com"
@@ -12,7 +12,7 @@ conflicts=('java-service-wrapper-bin')
 makedepends=('apache-ant' 'java-environment>=7')
 [[ "$CARCH" = "x86_64" ]] && makedepends+=('classpath' 'cunit')
 source=("http://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz")
-sha256sums=('d891b94149ecd11ba0dc807762873b7b0ee0cbbf997d4f7203ac22b57de82b08')
+sha256sums=('0a4eeb97227c7bceba301a66eabf18512bcc6f303590cabd8a47aac8023a9cec')
 
 prepare() {
     sed -i "${srcdir}/wrapper_${pkgver}_src/build.xml" \
@@ -20,8 +20,8 @@ prepare() {
 
     # Prevent building the testsuite on the x64, this requires the cunit pkg
     # from the AUR, its a pain and useless to keep it a build-dep
-    #sed -i "${srcdir}/wrapper_${pkgver}_src/src/c/Makefile-linux-x86"*.make \
-    #    -e "s|all: .*|all: init wrapper libwrapper.so|"
+    sed -i "${srcdir}/wrapper_${pkgver}_src/src/c/Makefile-linux-x86"*.make \
+        -e "s|all: .*|all: init wrapper libwrapper.so|"
 }
 
 build() {
