@@ -1,0 +1,17 @@
+pkgbase = python-zope-event
+	pkgdesc = Provides a simple event system
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.event
+	arch = any
+	license = ZPL
+	options = !emptydirs
+	source = https://github.com/zopefoundation/zope.event/archive/4.0.3.tar.gz
+	sha256sums = 3dfa2ef09c891f378e05404521529f8e1333c75cdf9567a3454e3538ef7f3f02
+
+pkgname = python-zope-event
+	depends = python
+
+pkgname = python2-zope-event
+	depends = python2
+
