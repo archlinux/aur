@@ -10,8 +10,18 @@ pkgbase = python-social-auth
 	sha256sums = 4c53208313d856ae30eb8554c66cab9d2c520405cfafeec93cea39f1a2ea8b97
 
 pkgname = python-social-auth
-	depends = python-django
+	depends = python-openid
+	depends = python-requests
+	depends = python-oauthlib
+	depends = python-requests-oauthlib
+	depends = python-six
+	depends = python-jwt
 
 pkgname = python2-social-auth
-	depends = python2-django
+	depends = python2-openid
+	depends = python2-requests
+	depends = python2-oauthlib
+	depends = python2-requests-oauthlib
+	depends = python2-six
+	depends = python2-jwt
 
