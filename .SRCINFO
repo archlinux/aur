@@ -5,6 +5,7 @@ pkgbase = python2-django-hyperkitty
 	url = https://gitlab.com/mailman/hyperkitty
 	arch = any
 	license = GPL
+	makedepends = python2-setuptools
 	depends = python2-django-crispy-forms
 	depends = python2-django-rest-framework
 	depends = python2-django-extensions
