@@ -1,5 +1,5 @@
 pkgname=wp-cli
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
@@ -7,23 +7,36 @@ arch=('any')
 license=('MIT')
 depends=('php')
 optdepends=()
-makedepends=()
+makedepends=('php-composer')
 conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/wp-cli/wp-cli/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/utils/wp-completion.bash")
-md5sums=('a1f59e3264a19e656d0e7c8223dadcce'
-         '696410d404d8c0ad2e10a223302effe6')
+md5sums=('ed540f7929b5480ab3e533bd1a91f57a'
+         'f8acb424f1460428796451679631be86')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  curl -sS https://getcomposer.org/installer | php
+  if [[ -n $(php -r '$phar = new Phar("test.phar", 0,"wp-cli.phar");' 2>&1 | grep "Class 'Phar' not found") ]]; then
+    echo "Error: Phar extension not found! Enable the phar extension in your php.ini"
+    echo "Also be sure to disable the readonly setting for the phar extension: phar.readonly = Off"
+    return 1
+  fi
+
+  if [[ -n $(php -r '$phar = new Phar("test.phar", 0,"wp-cli.phar");' 2>&1 | grep "phar.readonly") ]]; then
+    echo "Error: Phar readonly setting is enabled!"
+    echo "Disable the readonly setting for the phar extension in your php.ini: phar.readonly = Off"
+    return 1
+  fi
+
+  if [[ -n $(php -r 'echo ini_get("open_basedir");') ]]; then
+    echo "Warning: open_basedir is enabled and likely to cause errors with wp-cli"
+  fi
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  php ./composer.phar install --no-interaction --prefer-dist
+  composer install --no-interaction --prefer-dist
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet
 }
 
