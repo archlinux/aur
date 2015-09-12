@@ -3,6 +3,7 @@ pkgbase = lsm
 	pkgver = 0.189
 	pkgrel = 1
 	url = http://lsm.foobar.fi/
+	arch = i686
 	arch = x86_64
 	license = GPL2
 	source = http://lsm.foobar.fi//download/lsm-0.189.tar.gz

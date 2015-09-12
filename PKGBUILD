@@ -6,9 +6,10 @@ pkgname='lsm'
 pkgver='0.189'
 pkgrel='1'
 pkgdesc='a Link Status Monitor which can be used to monitor for example a Linux router/firewall connectivity'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='http://lsm.foobar.fi/'
 license=('GPL2')
+_verwatch=("${url}/download/" "${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
 source=("${url}/download/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('623fa92f4c87dbb762899ccbcd96a46a25e0e78c4cdb6b0d7ffb6867bd9b1ff8')
 
