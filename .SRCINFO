@@ -1,0 +1,17 @@
+pkgbase = python-django-rest-framework
+	pkgdesc = Awesome web-browsable Web APIs
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://github.com/tomchristie/django-rest-framework
+	arch = any
+	license = MIT
+	options = !emptydirs
+	source = https://github.com/tomchristie/django-rest-framework/archive/3.2.3.tar.gz
+	sha256sums = a1a277803b916106c18150ac58e71e9c3fedf62613e5de67d28fc7130d2d5902
+
+pkgname = python-django-rest-framework
+	depends = python-django
+
+pkgname = python2-django-rest-framework
+	depends = python2-django
+
