@@ -6,7 +6,7 @@ pkgbase = vkaudiosaver
 	arch = i686
 	arch = x86_64
 	groups = network
-	license = GPL3
+	license = custom
 
 pkgname = vkaudiosaver
 
