@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/jpadilla/pyjwt"
 license=('MIT')
 options=(!emptydirs)
-install=
 source=("https://github.com/jpadilla/pyjwt/archive/${pkgver}.tar.gz")
 sha256sums=('821c2ed6cb8b6fd1c817832551ff459626ab58edb2642db0fd6f43bd320cf9be')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-jwt() {
   depends=('python')
@@ -22,8 +21,7 @@ package_python-jwt() {
 }
 
 package_python2-jwt() {
-depends=('python2')
-           
+  depends=('python2')
   cd "$srcdir/$_pkgbase-$pkgver"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python2 setup.py install --root="$pkgdir/" --optimize=1
