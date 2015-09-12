@@ -1,0 +1,17 @@
+pkgbase = lld2d
+	pkgdesc = Microsoft LLTD Link Layer Topology Discovery Daemon
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.microsoft.com/whdc/DevTools/WDK/WDKpkg.mspx
+	install = lld2d.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	source = http://download.microsoft.com/download/b/8/e/b8eee444-f8d5-4b8b-aa3d-2f19bf19ac72/Rally-LLTD-PortingKit.exe
+	source = lld2d
+	sha256sums = 84173762f89312013c03a155db47bfbb545c14c08e8f4fc675413753a3268293
+	sha256sums = 690a8c328e17a8010c42d13a0125827cf70b2c868b914ca6e847ca57d0c8858a
+
+pkgname = lld2d
+

@@ -1,0 +1,30 @@
+_doall() {
+  local _svc
+  for _svc in '/etc/systemd/system/multi-user.target.wants'/lld2d@*.service; do
+    if [ -f "${_svc}" ]; then
+      echo systemctl "$1" "$(basename "${_svc}")"
+      systemctl "$1" "$(basename "${_svc}")"
+    fi
+  done
+}
+
+pre_upgrade() {
+  _doall 'stop'
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  _doall 'start'
+}
+
+post_install() {
+  post_upgrade
+}
+
+pre_remove() {
+  _doall 'stop'
+}
+
+post_remove() {
+  systemctl daemon-reload
+}
