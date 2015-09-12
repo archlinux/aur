@@ -4,11 +4,12 @@ _pkgname=glportal
 pkgname=${_pkgname}-git
 pkgver=32cc39f
 pkgrel=1
+epoch=1
 pkgdesc="OpenGL puzzle game inspired by portal."
 arch=('i686' 'x86_64')
 url="http://glportal.de/"
 license=('custom')
-depends=('glew' 'assimp' 'sdl2' 'sdl2_mixer' 'tinyxml')
+depends=('assimp' 'sdl2_mixer' 'tinyxml2' 'libepoxy')
 makedepends=('git' 'cmake' 'unittestpp')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
