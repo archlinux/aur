@@ -1,0 +1,21 @@
+pkgbase = python-zope-configuration
+	pkgdesc = Provides an extensible system for supporting various kinds of configurations
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.configuration
+	arch = any
+	license = ZPL
+	options = !emptydirs
+	source = https://github.com/zopefoundation/zope.configuration/archive/4.0.3.tar.gz
+	sha256sums = 291d17d4c3f04fd8a431c14af27bd7448f60056fccd99a1b4b7c5c48363eb2b8
+
+pkgname = python-zope-configuration
+	depends = python
+	depends = python-zope-i18nmessageid
+	depends = python-zope-schema
+
+pkgname = python2-zope-configuration
+	depends = python2
+	depends = python2-zope-i18nmessageid
+	depends = python2-zope-schema
+
