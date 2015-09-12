@@ -1,9 +1,9 @@
 # Maintainer: skydrome <skydrome@i2pmail.org>
 # Contributor: skydrome <skydrome@i2pmail.org>
 
-pkgname=('rutorrent-git')
-pkgver=r1526.74f207a
-pkgrel=2
+pkgname='rutorrent-git'
+pkgver=r1569.1285473
+pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
 license=('GPL')
@@ -12,7 +12,7 @@ arch=('any')
 install=rutorrent.install
 options=(!strip)
 
-depends=('php' 'curl' 'mktorrent')
+#depends=('php' 'curl' 'mktorrent')
 makedepends=('git')
 optdepends=('php-geoip: enable geoip plugin'
             'geoip: enable geoip plugin'
