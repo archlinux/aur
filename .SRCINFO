@@ -5,12 +5,14 @@ pkgbase = python-nose2
 	url = https://github.com/nose-devs/nose2
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://github.com/nose-devs/nose2/archive/0.5.0.tar.gz
 	sha256sums = b81afc72e91c0f2bf26ec2418caac3cabc9e1379451c255cd733d686bc627db5
 
 pkgname = python-nose2
-	depends = python2
+	depends = python
 
 pkgname = python2-nose2
 	depends = python2
