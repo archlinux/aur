@@ -2,7 +2,7 @@
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc-sim
-pkgver=20150701
+pkgver=20150910
 pkgrel=1
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
@@ -24,6 +24,7 @@ pkgver() {
 }
 
 build () {
+  find . -iname fixpaths.py -o -iname checkglade|xargs perl -p -i -e "s/python/python2/"
   cd $srcdir/$_gitname/src
   patch -p1 <../../boost.patch
 #  #This Makefile line fixes a seg fault due to changed CFLAGS
@@ -34,7 +35,6 @@ build () {
 #  cd $srcdir/$pkgname-$pkgver
 #  patch -Np1 < $srcdir/jepler-modsilent.patch
 #  cd $srcdir/$pkgname-$pkgver/src
-  find . -iname fixpaths.py|xargs perl -p -i -e "s/python/python2/"
   ./autogen.sh
   ./configure --enable-simulator --without-libmodbus --prefix=/usr --with-python=/usr/bin/python2.7 || return 1
   make || return 1
