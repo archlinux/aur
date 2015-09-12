@@ -1,7 +1,7 @@
 # Maintainer: Austin Adams <aur@austinjadams.com>
 _pkgname=nsdo
 pkgname=$_pkgname-git
-pkgver=1
+pkgver=6
 pkgrel=1
 pkgdesc="run a command under a network namespace"
 arch=('x86_64' 'i686')
@@ -25,7 +25,12 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make PREFIX="$pkgdir/usr" install
+  make \
+       PREFIX=/usr \
+       BASH_COMPLETION_DIR=/usr/share/bash-completion/completions \
+       DESTDIR="$pkgdir" \
+       install
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
