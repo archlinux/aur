@@ -1,7 +1,7 @@
 # Maintainer: yuki-san <yuki.from.akita _at_ gmail.com>
 
 pkgname=emacs-twittering-mode-git
-pkgver=v3.0.0.29.gb04a3af
+pkgver=v3.0.0.35.g97197cd
 pkgrel=1
 pkgdesc="An Emacs major mode for Twitter (git version)"
 arch=('any')

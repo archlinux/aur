@@ -1,6 +1,6 @@
 pkgbase = emacs-twittering-mode-git
 	pkgdesc = An Emacs major mode for Twitter (git version)
-	pkgver = v3.0.0.29.gb04a3af
+	pkgver = v3.0.0.35.g97197cd
 	pkgrel = 1
 	url = http://twmode.sourceforge.net/index.html
 	install = emacs-twittering-mode-git.install
