@@ -1,6 +1,6 @@
 _pkgname=obozrenie
 pkgname=$_pkgname-git
-pkgver=r101.28d2a11
+pkgver=r121.145759e
 pkgrel=1
 pkgdesc='Simple and easy to use game server browser'
 arch=('any')
@@ -27,5 +27,12 @@ package() {
   cd $_pkgname
 
   python setup.py install --root="${pkgdir}" --optimize='1'
+  python setup.py compile_catalog -D io.obozrenie -d locale
+
+  SRCPO=$(find | grep io.obozrenie.po)
+  rm $SRCPO
+  chmod -R 755 locale
+
   install -Dm755 obozrenie-gtk ${pkgdir}/usr/bin/obozrenie-gtk
+  cp -r locale ${pkgdir}/usr/share/locale/
 }
