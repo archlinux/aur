@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/gsiegman/django-paintstore"
 license=('MIT')
 options=(!emptydirs)
-install=
 source=("https://github.com/gsiegman/django-paintstore/archive/${pkgver}.tar.gz")
 sha256sums=('d5f37d174ec5f25cde7602f42eb86bd607108b13130b7a44257548452a9a5c85')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-paintstore() {
   depends=('python-django')
