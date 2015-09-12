@@ -5,7 +5,7 @@
 pkgname=pandoc-static
 _pkgname=pandoc
 pkgver=1.15.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between markup formats (no Haskell libraries)'
 url='http://johnmacfarlane.net/pandoc/'
 license=('GPL')
@@ -15,10 +15,10 @@ provides=('pandoc')
 
 arch=('i686' 'x86_64')
 depends=('icu>=55' 'icu<56' 'gmp' 'libffi' 'zlib')
-makedepends=('ghc' 'sh' 'cabal-install' 'alex' 'happy')
+makedepends=('ghc' 'sh' 'cabal-install' 'alex' 'happy' 'chrpath')
 optdepends=('texlive-most: for PDF creation')
 options=(strip !makeflags !distcc !emptydirs)
-source=(https://repo.parabola.nu/other/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.xz{,.sig})
+source=(https://repo.parabola.nu/other/${pkgname}/${pkgname}-${pkgver}-1.tar.xz{,.sig})
 validpgpkeys=('49F707A1CB366C580E625B3C456032D717A4CD9C')
 
 declare -gA _flags
@@ -114,6 +114,8 @@ package() {
 
   msg2 "Installing extra executables..."
   cp -av "${srcdir}"/build/usr/bin/* "${pkgdir}"/usr/bin/
+  # Remove RPATH
+  chrpath --delete "${pkgdir}"/usr/bin/*
 
   msg2 "Removing library files..."
   rm -rfv "$pkgdir"/usr/lib
