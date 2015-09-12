@@ -8,12 +8,12 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-utils-lts"
-pkgver=0.6.4.2_3.14.51_1
+pkgver=0.6.5_3.14.51_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.4.2.tar.gz"
+source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.tar.gz"
         "spl-utils.hostid")
 groups=("archzfs-lts")
 license=("GPL")
@@ -21,7 +21,7 @@ provides=("spl-utils")
 conflicts=("spl-utils" "spl-utils-git")
 
 build() {
-    cd "${srcdir}/spl-0.6.4.2"
+    cd "${srcdir}/spl-0.6.5"
     ./autogen.sh
 
     _at_enable=""
@@ -37,10 +37,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/spl-0.6.4.2"
+    cd "${srcdir}/spl-0.6.5"
     make DESTDIR="${pkgdir}" install
 
     install -D -m644 "${srcdir}"/spl-utils.hostid "${pkgdir}"/etc/hostid
 }
-sha256sums=('a5ff33fbfc8dfa5b0a7508a511d1affde7bc69185515e7f09af45ed5ab0648ad'
+sha256sums=('fcdf332cdec76b50476b5a8a1ccdae22c22844c6e625fc80f499c2c0d7bc955d'
             'ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e')
