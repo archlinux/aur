@@ -1,0 +1,31 @@
+pkgbase = python2-django-hyperkitty-git
+	pkgdesc = A Django app that provides a web user interface to access GNU Mailman archives
+	pkgver = 1f6d7d8
+	pkgrel = 1
+	url = https://gitlab.com/mailman/hyperkitty
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-django-crispy-forms
+	depends = python2-django-rest-framework
+	depends = python2-django-extensions
+	depends = python2-social-auth
+	depends = python2-django-gravatar
+	depends = python2-django-paintstore
+	depends = python2-django-compressor
+	depends = python2-django-browserid
+	depends = python2-django-haystack
+	depends = python2-pytz
+	depends = python2-dateutil
+	depends = python2-enum34
+	depends = python2-networkx
+	depends = lessc
+	depends = python2-robot-detection
+	provides = python2-django-hyperkitty
+	conflicts = python2-django-hyperkitty
+	options = !emptydirs
+	source = git+https://gitlab.com/mailman/hyperkitty.git
+	sha256sums = SKIP
+
+pkgname = python2-django-hyperkitty-git
+
