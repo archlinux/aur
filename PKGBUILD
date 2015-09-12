@@ -5,7 +5,7 @@
 
 pkgname=listen
 pkgver=0.6.5
-pkgrel=15
+pkgrel=16
 pkgdesc="Music player and management for GNOME"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/listen"
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=("https://launchpad.net/listen/0.6/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('23a4d33ef3251c529ac9a78d992557a2498fa05b825e76c9ab4bad431ed6c61a')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   chmod +x mmkeys/setup.py
@@ -32,7 +32,10 @@ build() {
     Makefile
   sed -i 's/env python$/env python2/' mmkeys/setup.py
   sed -i 's|/usr/bin/python|/usr/bin/python2|' src/listen
+}
 
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make CHECK_DEPENDS=0 PREFIX=/usr
 }
 
