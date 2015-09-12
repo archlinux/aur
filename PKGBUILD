@@ -9,9 +9,9 @@ arch=(any)
 url="https://pypi.python.org/pypi/robot-detection"
 license=('GPL')
 options=(!emptydirs)
-install=
 source=("https://pypi.python.org/packages/source/r/robot-detection/robot-detection-${pkgver}.tar.gz")
 sha256sums=('a5baf71cf69d95a167b6bd93e026bddd010d40adfc35bde02a61b651f61e6f47')
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-robot-detection() {
   depends=('python')
