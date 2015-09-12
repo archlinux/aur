@@ -1,7 +1,7 @@
 pkgbase = light-locker-consolekit
-	pkgdesc = A simple session locker, with upower and consolekit support
+	pkgdesc = A simple session locker, with consolekit support
 	pkgver = 1.6.0
-	pkgrel = 1.2
+	pkgrel = 1.3
 	url = https://github.com/the-cavalry/light-locker
 	install = light-locker.install
 	arch = i686
@@ -14,7 +14,6 @@ pkgbase = light-locker-consolekit
 	depends = libxxf86misc
 	depends = lightdm
 	depends = libxss
-	depends = upower=0.9.23
 	depends = consolekit
 	provides = light-locker
 	conflicts = light-locker
