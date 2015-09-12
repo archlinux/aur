@@ -11,7 +11,7 @@ license=('BSD')
 options=(!emptydirs)
 source=("https://github.com/omab/python-social-auth/archive/v${pkgver}.tar.gz")
 sha256sums=('4c53208313d856ae30eb8554c66cab9d2c520405cfafeec93cea39f1a2ea8b97')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-social-auth() {
   depends=('python-openid' 'python-requests' 'python-oauthlib' 'python-requests-oauthlib' 'python-six' 'python-jwt')
