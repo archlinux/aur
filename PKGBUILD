@@ -1,6 +1,6 @@
 pkgbase=saldl-git
 pkgname=("$pkgbase")
-pkgver=v12.0.g490a555
+pkgver=v12.1.g06caf16
 pkgrel=1
 url="https://saldl.github.io"
 pkgdesc="A CLI downloader optimized for speed and early preview, based on libcurl."
@@ -25,5 +25,5 @@ build() {
 
 package_saldl-git() {
   cd "$srcdir/$pkgname"
-  ./waf install --destdir="$pkgdir" install
+  ./waf install --destdir="$pkgdir"
 }
