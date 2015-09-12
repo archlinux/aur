@@ -9,15 +9,15 @@
  {
      QString ret = project->first("QMAKE_PKGCONFIG_FILE").toQString();
      if (ret.isEmpty()) {
-@@ -3130,7 +3130,11 @@
+@@ -3134,7 +3134,11 @@
      if(fixify) {
          if(QDir::isRelativePath(ret) && !project->isEmpty("DESTDIR"))
              ret.prepend(project->first("DESTDIR").toQString());
--        ret = Option::fixPathToLocalOS(fileFixify(ret, qmake_getpwd(), Option::output_dir));
+-        ret = fileFixify(ret, FileFixifyBackwards);
 +        if (onlyPrependDestdir) {
 +            ret = Option::fixPathToLocalOS(ret);
 +        } else {
-+            ret = Option::fixPathToLocalOS(fileFixify(ret, qmake_getpwd(), Option::output_dir));
++            ret = fileFixify(ret, FileFixifyBackwards);
 +        }
      }
      return ret;
@@ -35,7 +35,7 @@
  
 --- qmake/generators/win32/winmakefile.cpp.orig	2013-03-26 19:05:13.398183953 +0100
 +++ qmake/generators/win32/winmakefile.cpp	2013-03-26 19:15:02.800490466 +0100
-@@ -851,7 +851,7 @@
+@@ -822,7 +822,7 @@
                  }
                  if(!ret.isEmpty())
                      ret += "\n\t";
@@ -43,4 +43,4 @@
 +                ret += installMetaFile(ProKey("QMAKE_PKGCONFIG_INSTALL_REPLACE"), pkgConfigFileName(true, true), dst_pc);
                  if(!uninst.isEmpty())
                      uninst.append("\n\t");
-                 uninst.append("-$(DEL_FILE) \"" + dst_pc + "\"");
+                 uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
