@@ -1,6 +1,6 @@
 pkgbase = tal-plugins
 	pkgdesc = Togu Audio Line VST plugins - NoiseMaker, Dub III, Filter, Filter II, Reverb, Reverb II, Reverb III, Vocoder II - ported and compiled for Linux
-	pkgver = 20111210
+	pkgver = 20140826
 	pkgrel = 1
 	url = http://distrho.sourceforge.net
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = tal-plugins
 	depends = freetype2
 	depends = libxext
 	depends = gcc-libs
-	source = http://sourceforge.net/projects/distrho/files/Ports/TAL-Plugins/TAL-Plugins_LinuxVST-32bit_20111210.7z
-	md5sums = 9ff2c6e0003a3bf5f656d60574d570d5
-	sha256sums = 43e7446edd8cbcc914ee77a308ff6323de0182603f512f91689774642c961841
+	source = http://sourceforge.net/projects/distrho/files/2014-08-26/tal-plugins-linux32bit.tar.xz
+	md5sums = 298a31d4c80b81be0cd3cc5b3dc093dc
+	sha256sums = 736c04186d0ae9f318d45542a365f6007b71a2505aea4a4600a054d22f3fa968
 
 pkgname = tal-plugins
 
