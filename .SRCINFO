@@ -1,0 +1,19 @@
+pkgbase = openoffice-de-bin
+	pkgdesc = German language pack for OpenOffice.org - Repackaged from upstream
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = http://www.openoffice.org/
+	install = openoffice-i18n-bin.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = rpmextract
+	depends = openoffice>=4.1.1
+	options = !strip
+	options = docs
+	source = http://apache.org/dist/openoffice/4.1.1/binaries/de/
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openoffice-de-bin
+
