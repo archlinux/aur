@@ -1,0 +1,14 @@
+pkgbase = ttf-press-start-2p
+	pkgdesc = Press Start 2P Font
+	pkgver = 1.0
+	pkgrel = 1
+	install = ttf-press-start-2p.install
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = press_start_2p.zip::http://dl.dafont.com/dl/?f=press_start_2p
+	sha256sums = 3658b093da5f6d7f3c44ff482b9fd1404e906793434e68ddc4299b7b08f6361d
+
+pkgname = ttf-press-start-2p
+
