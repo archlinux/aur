@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/zopefoundation/zope.configuration"
 license=('ZPL')
 options=(!emptydirs)
-install=
 source=("https://github.com/zopefoundation/zope.configuration/archive/${pkgver}.tar.gz")
 sha256sums=('291d17d4c3f04fd8a431c14af27bd7448f60056fccd99a1b4b7c5c48363eb2b8')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-zope-configuration() {
   depends=('python' 'python-zope-i18nmessageid' 'python-zope-schema')
