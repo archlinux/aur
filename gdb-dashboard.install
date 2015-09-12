@@ -1,0 +1,12 @@
+post_install() {
+  echo "
+    >>> enable gdb-dashboard per user via:
+    >>> echo 'source /usr/share/gdb-dashboard/.gdbinit' > ~/.gdbinit
+  "
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:

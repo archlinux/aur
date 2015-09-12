@@ -1,0 +1,18 @@
+pkgbase = gdb-dashboard-git
+	pkgdesc = Modular visual interface for GDB in Python
+	pkgver = 0.0.101.700c9b9
+	pkgrel = 1
+	url = https://github.com/cyrus-and/gdb-dashboard
+	install = gdb-dashboard.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gdb
+	depends = binutils
+	provides = gdb-dashboard
+	conflicts = gdb-dashboard
+	source = gdb-dashboard-git::git+https://github.com/cyrus-and/gdb-dashboard
+	sha512sums = SKIP
+
+pkgname = gdb-dashboard-git
+
