@@ -1,8 +1,10 @@
-# Previous Packager: AUR Perl <aurperl@juster.info>
-# Current Packager: Kent Fredric <kentnl@cpan.org>
+# Previous Packager: AUR Perl <aurperl at juster dot info>
+# Previous Packager: Kent Fredric <kentnl at cpan dot org>
+# Maintainer: Cyril Bur
+
 pkgname=perl-io-tiecombine
-pkgver=1.002
-pkgrel=2
+pkgver=1.004
+pkgrel=1
 pkgdesc="produce tied (and other) separate but combined variables"
 arch=(any)
 license=(PerlArtistic GPL)
@@ -10,8 +12,8 @@ options=(!emptydirs)
 depends=('perl')
 url=https://metacpan.org/release/IO-TieCombine
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/IO-TieCombine-${pkgver}.tar.gz")
-md5sums=('3f0508284dafe9f674237e99868ba3d2')
-sha512sums=('66c779258177490d999d68b3fc7832a9121329760ae4879958edc49b28292c9d91c2599a531a39a0824e213264ed8d10a2de91545c67ee72c11e9c7cb8f56856')
+md5sums=('c36ad78c5787e064f94d8a3018193432')
+sha512sums=('ffa69d2c7f0b72c56814dc5f1a54ac2b2d5827ff8646d248775a90c86f0c6b46d18dc3b95ca86d55dd48ead8b73d9caf6963ba66f75a2cb0eca3db30e5fee0e6')
 _pkg_dir="IO-TieCombine"
 
 build() {
