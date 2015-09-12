@@ -1,0 +1,17 @@
+pkgbase = python-zope-component
+	pkgdesc = Represents the core of the Zope Component Architecture
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.component
+	arch = any
+	license = ZPL
+	options = !emptydirs
+	source = https://github.com/zopefoundation/zope.component/archive/4.2.2.tar.gz
+	sha256sums = a1b0667b6167ad0ef667fcd201aacd5de84d7ae4baa2a1516080041c459a63a2
+
+pkgname = python-zope-component
+	depends = python
+
+pkgname = python2-zope-component
+	depends = python2
+
