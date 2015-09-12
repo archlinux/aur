@@ -5,16 +5,15 @@ pkgbase = python2-hyperkitty
 	url = https://gitlab.com/mailman/hyperkitty
 	arch = any
 	license = GPL
-	depends = python2 python2-django
 	depends = python2-django-crispy-forms
 	depends = python2-django-rest-framework
+	depends = python2-django-extensions
 	depends = python2-social-auth
 	depends = python2-django-gravatar
 	depends = python2-django-paintstore
 	depends = python2-django-compressor
 	depends = python2-django-browserid
 	depends = python2-django-haystack
-	depends = python2-django-extensions
 	options = !emptydirs
 	source = hyperkitty-1.0.1.tar.gz::https://gitlab.com/mailman/hyperkitty/repository/archive.tar.gz?ref=v1.0.1
 	sha256sums = c1615b0c98a2611f64e1f1f18f0b57a1d8ef3aaf8d7b14f2f563ae93244c04a3
