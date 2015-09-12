@@ -4,27 +4,24 @@
 # Contributor: Gabriel Peixoto <gabrielrcp@gmail.com>
 
 pkgname=fehlstart-git
-pkgver=0.99.82c8a3f
+pkgver=r143.4dc440a
 pkgrel=1
-
-# new version numbering with pacman 4.1
-epoch=1
-
 pkgdesc="A simple application launcher written in C and using GTK"
 arch=('i686' 'x86_64')
-url="https://gitorious.org/fehlstart/pages/Home"
+url="https://gitlab.com/fehlstart/fehlstart"
 license=('GPL3')
 depends=('libkeybinder2')
 makedepends=('git')
 provides=('fehlstart')
 conflicts=('fehlstart')
 
-source=('git+https://git.gitorious.org/fehlstart/fehlstart.git')
+source=('git+https://gitlab.com/fehlstart/fehlstart.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/fehlstart"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+  cd "fehlstart"
+  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

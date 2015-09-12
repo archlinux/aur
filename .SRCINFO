@@ -1,9 +1,8 @@
 pkgbase = fehlstart-git
 	pkgdesc = A simple application launcher written in C and using GTK
-	pkgver = 0.99.82c8a3f
+	pkgver = r143.4dc440a
 	pkgrel = 1
-	epoch = 1
-	url = https://gitorious.org/fehlstart/pages/Home
+	url = https://gitlab.com/fehlstart/fehlstart
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,7 +10,7 @@ pkgbase = fehlstart-git
 	depends = libkeybinder2
 	provides = fehlstart
 	conflicts = fehlstart
-	source = git+https://git.gitorious.org/fehlstart/fehlstart.git
+	source = git+https://gitlab.com/fehlstart/fehlstart.git
 	md5sums = SKIP
 
 pkgname = fehlstart-git
