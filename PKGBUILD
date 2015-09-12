@@ -10,9 +10,9 @@ arch=(any)
 url="https://gitlab.com/mailman/mailmanclient"
 license=('LGPL')
 options=(!emptydirs)
-install=
 source=("${_pkgbase}-${pkgver}.tar.gz::https://gitlab.com/mailman/mailmanclient/repository/archive.tar.gz?ref=${pkgver}")
 sha256sums=('d02b6477c4a7fa5f5a378a696ed51f4122eb9196b9384dca0ee52d612a4d77b7')
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-mailmanclient() {
   depends=('python')
