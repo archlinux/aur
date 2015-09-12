@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/zopefoundation/zope.i18nmessageid"
 license=('ZPL')
 options=(!emptydirs)
-install=
 source=("https://github.com/zopefoundation/zope.i18nmessageid/archive/${pkgver}.tar.gz")
 sha256sums=('5a273d5c10bebefc50784cd8715309e45b12c96494f74d57c23f17f514d4a8a3')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-zope-i18nmessageid() {
   depends=('python')
