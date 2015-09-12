@@ -2,8 +2,8 @@
 
 pkgname=retroarch-git
 _gitname=RetroArch
-epoch=1
-pkgver=1.2.2.111.g89d8b24
+epoch=2
+pkgver=1.2.2.r836.80b3bc6
 pkgrel=1
 pkgdesc="Simple frontend for the Libretro API"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
@@ -20,10 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  local version=$(git describe --tags)
-  local version=${version/v/}
-  local version=${version//-/.}
-  echo $version
+  printf "%s\n" "$(git describe --long --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
