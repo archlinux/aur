@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ $(id -u) -eq 0 ]; then
+	su brewpi -s /bin/bash -c "/usr/bin/python /usr/lib/brewpi/brewpi.py 1>>/usr/lib/brewpi/logs/stdout.txt 2>>/usr/lib/brewpi/logs/stderr.txt"
+fi
+if [ `id -u -n` != "brewpi" ]; then
+	echo 'This script should be run as the brewpi user. Please run sudo -u brewpi brewpi.'
+	exit 1
+fi
+/usr/bin/python /usr/lib/brewpi/brewpi.py 1>>/usr/lib/brewpi/logs/stdout.txt 2>>/usr/lib/brewpi/logs/stderr.txt
+

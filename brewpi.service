@@ -1,0 +1,11 @@
+[Unit]
+Description=BrewPi Script service
+
+[Service]
+User=brewpi
+ExecStart=/usr/bin/brewpi
+RestartSec=1m
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

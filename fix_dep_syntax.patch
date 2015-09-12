@@ -1,0 +1,1585 @@
+diff -rc ./BrewPiProcess.py /opt/brewpi/BrewPiProcess.py
+*** ./BrewPiProcess.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/BrewPiProcess.py	Sat Sep 12 00:42:40 2015
+***************
+*** 24,39 ****
+  try:
+      import psutil
+      if LooseVersion(psutil.__version__) < LooseVersion("2.0"):
+!         print >> sys.stderr, "Your version of pstuil is %s \n" \
+          "BrewPi requires psutil 2.0 or higher, please upgrade your version of psutil.\n" \
+          "This can best be done via pip, please run:\n" \
+          "  sudo apt-get install build-essential python-dev python-pip\n" \
+!         "  sudo pip install psutil --upgrade\n" % psutil.__version__
+          sys.exit(1)
+  
+  
+  except ImportError:
+!     print "BrewPi requires psutil to run, please install it via pip: 'sudo pip install psutil --upgrade"
+      sys.exit(1)
+  
+  import BrewPiSocket
+--- 24,39 ----
+  try:
+      import psutil
+      if LooseVersion(psutil.__version__) < LooseVersion("2.0"):
+!         print (sys.stderr, "Your version of pstuil is %s \n" \
+          "BrewPi requires psutil 2.0 or higher, please upgrade your version of psutil.\n" \
+          "This can best be done via pip, please run:\n" \
+          "  sudo apt-get install build-essential python-dev python-pip\n" \
+!         "  sudo pip install psutil --upgrade\n" % psutil.__version__, file=sys.stderr)
+          sys.exit(1)
+  
+  
+  except ImportError:
+!     print ("BrewPi requires psutil to run, please install it via pip: 'sudo pip install psutil --upgrade")
+      sys.exit(1)
+  
+  import BrewPiSocket
+***************
+*** 67,78 ****
+              if conn:
+                  conn.send('quit')
+                  conn.close()  # do not shutdown the socket, other processes are still connected to it.
+!                 print "Quit message sent to BrewPi instance with pid %s!" % self.pid
+                  return True
+              else:
+!                 print "Could not connect to socket of BrewPi process, maybe it just started and is not listening yet."
+!                 print "Could not send quit message to BrewPi instance with pid %d!" % self.pid
+!                 print "Killing it instead!"
+                  self.kill()
+                  return False
+  
+--- 67,78 ----
+              if conn:
+                  conn.send('quit')
+                  conn.close()  # do not shutdown the socket, other processes are still connected to it.
+!                 print ("Quit message sent to BrewPi instance with pid %s!" % self.pid)
+                  return True
+              else:
+!                 print ("Could not connect to socket of BrewPi process, maybe it just started and is not listening yet.")
+!                 print ("Could not send quit message to BrewPi instance with pid %d!" % self.pid)
+!                 print ("Killing it instead!")
+                  self.kill()
+                  return False
+  
+***************
+*** 83,105 ****
+          process = psutil.Process(self.pid)  # get psutil process my pid
+          try:
+              process.kill()
+!             print "SIGKILL sent to BrewPi instance with pid %d!" % self.pid
+          except psutil.AccessDenied:
+!             print >> sys.stderr, "Cannot kill process %d, you need root permission to do that." % self.pid
+!             print >> sys.stderr, "Is the process running under the same user?"
+  
+      def conflict(self, otherProcess):
+          if self.pid == otherProcess.pid:
+              return 0  # this is me! I don't have a conflict with myself
+          if otherProcess.cfg == self.cfg:
+!             print "Conflict: same config file as another BrewPi instance already running."
+              return 1
+          if otherProcess.port == self.port:
+!             print "Conflict: same serial port as another BrewPi instance already running."
+              return 1
+          if [otherProcess.sock.type, otherProcess.sock.file, otherProcess.sock.host, otherProcess.sock.port] == \
+                  [self.sock.type, self.sock.file, self.sock.host, self.sock.port]:
+!             print "Conflict: same socket as another BrewPi instance already running."
+              return 1
+          return 0
+  
+--- 83,105 ----
+          process = psutil.Process(self.pid)  # get psutil process my pid
+          try:
+              process.kill()
+!             print ("SIGKILL sent to BrewPi instance with pid %d!" % self.pid)
+          except psutil.AccessDenied:
+!             print ("Cannot kill process %d, you need root permission to do that." % self.pid, file=sys.stderr)
+!             print ("Is the process running under the same user?", file=sys.stderr)
+  
+      def conflict(self, otherProcess):
+          if self.pid == otherProcess.pid:
+              return 0  # this is me! I don't have a conflict with myself
+          if otherProcess.cfg == self.cfg:
+!             print ("Conflict: same config file as another BrewPi instance already running.")
+              return 1
+          if otherProcess.port == self.port:
+!             print ("Conflict: same serial port as another BrewPi instance already running.")
+              return 1
+          if [otherProcess.sock.type, otherProcess.sock.file, otherProcess.sock.host, otherProcess.sock.port] == \
+                  [self.sock.type, self.sock.file, self.sock.host, self.sock.port]:
+!             print ("Conflict: same socket as another BrewPi instance already running.")
+              return 1
+          return 0
+  
+diff -rc ./BrewPiSocket.py /opt/brewpi/BrewPiSocket.py
+*** ./BrewPiSocket.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/BrewPiSocket.py	Sat Sep 12 00:42:40 2015
+***************
+*** 70,76 ****
+  			self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+  			self.sock.bind(self.file)  # Bind BEERSOCKET
+  			# set all permissions for socket
+! 			os.chmod(self.file, 0777)
+  
+  	def connect(self):
+  		"""	Connect to the socket represented by BrewPiSocket. Returns a new connected socket object.
+--- 70,76 ----
+  			self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+  			self.sock.bind(self.file)  # Bind BEERSOCKET
+  			# set all permissions for socket
+! 			os.chmod(self.file, 0o777)
+  
+  	def connect(self):
+  		"""	Connect to the socket represented by BrewPiSocket. Returns a new connected socket object.
+***************
+*** 88,94 ****
+  				sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+  				sock.connect(self.file)
+  		except socket.error as e:
+! 			print e
+  			sock = False
+  		finally:
+  			return sock
+--- 88,94 ----
+  				sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+  				sock.connect(self.file)
+  		except socket.error as e:
+! 			print (e)
+  			sock = False
+  		finally:
+  			return sock
+diff -rc ./BrewPiUtil.py /opt/brewpi/BrewPiUtil.py
+*** ./BrewPiUtil.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/BrewPiUtil.py	Sat Sep 12 11:44:40 2015
+***************
+*** 23,29 ****
+  try:
+      import configobj
+  except ImportError:
+!     print "BrewPi requires ConfigObj to run, please install it with 'sudo apt-get install python-configobj"
+      sys.exit(1)
+  
+  
+--- 23,29 ----
+  try:
+      import configobj
+  except ImportError:
+!     print ("BrewPi requires ConfigObj to run, please install it with 'sudo apt-get install python-configobj")
+      sys.exit(1)
+  
+  
+***************
+*** 84,90 ****
+      """
+      Prints a timestamped message to stderr
+      """
+!     print >> sys.stderr, time.strftime("%b %d %Y %H:%M:%S   ") + message
+  
+  
+  def scriptPath():
+--- 84,90 ----
+      """
+      Prints a timestamped message to stderr
+      """
+!     print (time.strftime("%b %d %Y %H:%M:%S   ") + message, file=sys.stderr)
+  
+  
+  def scriptPath():
+***************
+*** 99,107 ****
+      if os.path.isfile(path):
+          os.remove(path)
+          if not sys.platform.startswith('win'):  # cron not available
+!             print "BrewPi script will restart automatically."
+      else:
+!         print "File do_not_run_brewpi does not exist at " + path
+  
+  
+  def setupSerial(config, baud_rate=57600, time_out=0.1):
+--- 99,107 ----
+      if os.path.isfile(path):
+          os.remove(path)
+          if not sys.platform.startswith('win'):  # cron not available
+!             print ("BrewPi script will restart automatically.")
+      else:
+!         print ("File do_not_run_brewpi does not exist at " + path)
+  
+  
+  def setupSerial(config, baud_rate=57600, time_out=0.1):
+***************
+*** 166,170 ****
+  
+  # remove extended ascii characters from string, because they can raise UnicodeDecodeError later
+  def asciiToUnicode(s):
+!     s = s.replace(chr(0xB0), '&deg')
+!     return unicode(s, 'ascii', 'ignore')
+\ No newline at end of file
+--- 166,171 ----
+  
+  # remove extended ascii characters from string, because they can raise UnicodeDecodeError later
+  def asciiToUnicode(s):
+!     s = s.replace(chr(0xB0).encode(), '&deg'.encode())
+!     s = s.decode('ascii', 'ignore')
+!     return s
+diff -rc ./autoSerial.py /opt/brewpi/autoSerial.py
+*** ./autoSerial.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/autoSerial.py	Sat Sep 12 00:42:40 2015
+***************
+*** 56,62 ****
+      """
+      ports = detect_all_ports()
+      if len(ports) > 1:
+!         print "Warning: detected multiple compatible serial ports, using the first."
+      if ports:
+          return ports[0]
+      return (None, None)
+--- 56,62 ----
+      """
+      ports = detect_all_ports()
+      if len(ports) > 1:
+!         print ("Warning: detected multiple compatible serial ports, using the first.")
+      if ports:
+          return ports[0]
+      return (None, None)
+***************
+*** 81,86 ****
+  
+  
+  if __name__ == '__main__':
+!     print "All ports: ",  serial_port_info()
+!     print "Compatible ports: ", detect_all_ports()
+!     print "Selected port: ", detect_port()
+--- 81,86 ----
+  
+  
+  if __name__ == '__main__':
+!     print ("All ports: ",  serial_port_info())
+!     print ("Compatible ports: ", detect_all_ports())
+!     print ("Selected port: ", detect_port())
+diff -rc ./brewpi.py /opt/brewpi/brewpi.py
+*** ./brewpi.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/brewpi.py	Sat Sep 12 12:24:36 2015
+***************
+*** 37,42 ****
+--- 37,43 ----
+  import urllib
+  from distutils.version import LooseVersion
+  from serial import SerialException
++ from urllib.parse import unquote
+  
+  # load non standard packages, exit when they are not installed
+  try:
+***************
+*** 230,236 ****
+  
+      wwwSettings[settingName] = str(value)
+      wwwSettingsFile.seek(0)
+!     wwwSettingsFile.write(json.dumps(wwwSettings))
+      wwwSettingsFile.truncate()
+      wwwSettingsFile.close()
+  
+--- 231,237 ----
+  
+      wwwSettings[settingName] = str(value)
+      wwwSettingsFile.seek(0)
+!     wwwSettingsFile.write(json.dumps(wwwSettings).encode())
+      wwwSettingsFile.truncate()
+      wwwSettingsFile.close()
+  
+***************
+*** 250,259 ****
+  
+      if not os.path.exists(dataPath):
+          os.makedirs(dataPath)
+!         os.chmod(dataPath, 0775)  # give group all permissions
+      if not os.path.exists(wwwDataPath):
+          os.makedirs(wwwDataPath)
+!         os.chmod(wwwDataPath, 0775)  # give group all permissions
+  
+      # Keep track of day and make new data file for each day
+      day = time.strftime("%Y-%m-%d")
+--- 251,260 ----
+  
+      if not os.path.exists(dataPath):
+          os.makedirs(dataPath)
+!         os.chmod(dataPath, 0o775)  # give group all permissions
+      if not os.path.exists(wwwDataPath):
+          os.makedirs(wwwDataPath)
+!         os.chmod(wwwDataPath, 0o775)  # give group all permissions
+  
+      # Keep track of day and make new data file for each day
+      day = time.strftime("%Y-%m-%d")
+***************
+*** 295,305 ****
+          config = util.configSet(configFile, 'dataLogging', 'active')
+          startBeer(newName)
+          logMessage("Notification: Restarted logging for beer '%s'." % newName)
+!         return {'status': 0, 'statusMessage': "Successfully switched to new brew '%s'. " % urllib.unquote(newName) +
+                                                "Please reload the page."}
+      else:
+          return {'status': 1, 'statusMessage': "Invalid new brew name '%s', "
+!                                               "please enter a name with at least 2 characters" % urllib.unquote(newName)}
+  
+  
+  def stopLogging():
+--- 296,306 ----
+          config = util.configSet(configFile, 'dataLogging', 'active')
+          startBeer(newName)
+          logMessage("Notification: Restarted logging for beer '%s'." % newName)
+!         return {'status': 0, 'statusMessage': "Successfully switched to new brew '%s'. " % unquote(newName) +
+                                                "Please reload the page."}
+      else:
+          return {'status': 1, 'statusMessage': "Invalid new brew name '%s', "
+!                                               "please enter a name with at least 2 characters" % unquote(newName)}
+  
+  
+  def stopLogging():
+***************
+*** 347,353 ****
+      try:
+          inWaiting = ser.inWaiting()
+          if inWaiting > 0:
+!             newData = ser.read(inWaiting)
+      except (IOError, OSError, SerialException) as e:
+          logMessage('Serial Error: {0})'.format(str(e)))
+          return
+--- 348,354 ----
+      try:
+          inWaiting = ser.inWaiting()
+          if inWaiting > 0:
+!             newData = util.asciiToUnicode(ser.read(inWaiting))
+      except (IOError, OSError, SerialException) as e:
+          logMessage('Serial Error: {0})'.format(str(e)))
+          return
+***************
+*** 362,371 ****
+          else:
+              # complete line received, [0] is complete line [1] is separator [2] is the rest
+              serialBuffer = lines[2]
+!             return util.asciiToUnicode(lines[0])
+  
+  
+! logMessage("Notification: Script started for beer '" + urllib.unquote(config['beerName']) + "'")
+  # wait for 10 seconds to allow an Uno to reboot (in case an Uno is being used)
+  time.sleep(float(config.get('startupDelay', 10)))
+  
+--- 363,372 ----
+          else:
+              # complete line received, [0] is complete line [1] is separator [2] is the rest
+              serialBuffer = lines[2]
+!             return lines[0]
+  
+  
+! logMessage("Notification: Script started for beer '" + unquote(config['beerName']) + "'")
+  # wait for 10 seconds to allow an Uno to reboot (in case an Uno is being used)
+  time.sleep(float(config.get('startupDelay', 10)))
+  
+***************
+*** 394,401 ****
+  if hwVersion is not None:
+      ser.flush()
+      # request settings from controller, processed later when reply is received
+!     ser.write('s')  # request control settings cs
+!     ser.write('c')  # request control constants cc
+      # answer from controller is received asynchronously later.
+  
+  # create a listening socket to communicate with PHP
+--- 395,402 ----
+  if hwVersion is not None:
+      ser.flush()
+      # request settings from controller, processed later when reply is received
+!     ser.write('s'.encode())  # request control settings cs
+!     ser.write('c'.encode())  # request control constants cc
+      # answer from controller is received asynchronously later.
+  
+  # create a listening socket to communicate with PHP
+***************
+*** 416,422 ****
+      s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+      s.bind(socketFile)  # Bind BEERSOCKET
+      # set all permissions for socket
+!     os.chmod(socketFile, 0777)
+  
+  serialCheckInterval = 0.5
+  s.setblocking(1)  # set socket functions to be blocking
+--- 417,423 ----
+      s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+      s.bind(socketFile)  # Bind BEERSOCKET
+      # set all permissions for socket
+!     os.chmod(socketFile, 0o777)
+  
+  serialCheckInterval = 0.5
+  s.setblocking(1)  # set socket functions to be blocking
+***************
+*** 475,481 ****
+          conn, addr = s.accept()
+          conn.setblocking(1)
+          # blocking receive, times out in serialCheckInterval
+!         message = conn.recv(4096)
+          if "=" in message:
+              messageType, value = message.split("=", 1)
+          else:
+--- 476,482 ----
+          conn, addr = s.accept()
+          conn.setblocking(1)
+          # blocking receive, times out in serialCheckInterval
+!         message = conn.recv(4096).decode()
+          if "=" in message:
+              messageType, value = message.split("=", 1)
+          else:
+***************
+*** 484,521 ****
+          if messageType == "ack":  # acknowledge request
+              conn.send('ack')
+          elif messageType == "lcd":  # lcd contents requested
+!             conn.send(json.dumps(lcdText))
+          elif messageType == "getMode":  # echo cs['mode'] setting
+!             conn.send(cs['mode'])
+          elif messageType == "getFridge":  # echo fridge temperature setting
+!             conn.send(json.dumps(cs['fridgeSet']))
+          elif messageType == "getBeer":  # echo fridge temperature setting
+!             conn.send(json.dumps(cs['beerSet']))
+          elif messageType == "getControlConstants":
+!             conn.send(json.dumps(cc))
+          elif messageType == "getControlSettings":
+              if cs['mode'] == "p":
+                  profileFile = util.addSlash(util.scriptPath()) + 'settings/tempProfile.csv'
+                  with file(profileFile, 'r') as prof:
+                      cs['profile'] = prof.readline().split(",")[-1].rstrip("\n")
+              cs['dataLogging'] = config['dataLogging']
+!             conn.send(json.dumps(cs))
+          elif messageType == "getControlVariables":
+!             conn.send(json.dumps(cv))
+          elif messageType == "refreshControlConstants":
+!             ser.write("c")
+              raise socket.timeout
+          elif messageType == "refreshControlSettings":
+!             ser.write("s")
+              raise socket.timeout
+          elif messageType == "refreshControlVariables":
+!             ser.write("v")
+              raise socket.timeout
+          elif messageType == "loadDefaultControlSettings":
+!             ser.write("S")
+              raise socket.timeout
+          elif messageType == "loadDefaultControlConstants":
+!             ser.write("C")
+              raise socket.timeout
+          elif messageType == "setBeer":  # new constant beer temperature received
+              try:
+--- 485,522 ----
+          if messageType == "ack":  # acknowledge request
+              conn.send('ack')
+          elif messageType == "lcd":  # lcd contents requested
+!             conn.send(json.dumps(lcdText).encode())
+          elif messageType == "getMode":  # echo cs['mode'] setting
+!             conn.send(cs['mode'].encode())
+          elif messageType == "getFridge":  # echo fridge temperature setting
+!             conn.send(json.dumps(cs['fridgeSet']).encode())
+          elif messageType == "getBeer":  # echo fridge temperature setting
+!             conn.send(json.dumps(cs['beerSet']).encode())
+          elif messageType == "getControlConstants":
+!             conn.send(json.dumps(cc).encode())
+          elif messageType == "getControlSettings":
+              if cs['mode'] == "p":
+                  profileFile = util.addSlash(util.scriptPath()) + 'settings/tempProfile.csv'
+                  with file(profileFile, 'r') as prof:
+                      cs['profile'] = prof.readline().split(",")[-1].rstrip("\n")
+              cs['dataLogging'] = config['dataLogging']
+!             conn.send(json.dumps(cs).encode())
+          elif messageType == "getControlVariables":
+!             conn.send(json.dumps(cv).encode())
+          elif messageType == "refreshControlConstants":
+!             ser.write("c".encode())
+              raise socket.timeout
+          elif messageType == "refreshControlSettings":
+!             ser.write("s".encode())
+              raise socket.timeout
+          elif messageType == "refreshControlVariables":
+!             ser.write("v".encode())
+              raise socket.timeout
+          elif messageType == "loadDefaultControlSettings":
+!             ser.write("S".encode())
+              raise socket.timeout
+          elif messageType == "loadDefaultControlConstants":
+!             ser.write("C".encode())
+              raise socket.timeout
+          elif messageType == "setBeer":  # new constant beer temperature received
+              try:
+***************
+*** 527,533 ****
+                  cs['mode'] = 'b'
+                  # round to 2 dec, python will otherwise produce 6.999999999
+                  cs['beerSet'] = round(newTemp, 2)
+!                 ser.write("j{mode:b, beerSet:" + json.dumps(cs['beerSet']) + "}")
+                  logMessage("Notification: Beer temperature set to " +
+                             str(cs['beerSet']) +
+                             " degrees in web interface")
+--- 528,534 ----
+                  cs['mode'] = 'b'
+                  # round to 2 dec, python will otherwise produce 6.999999999
+                  cs['beerSet'] = round(newTemp, 2)
+!                 ser.write(("j{mode:b, beerSet:" + json.dumps(cs['beerSet']) + "}").encode())
+                  logMessage("Notification: Beer temperature set to " +
+                             str(cs['beerSet']) +
+                             " degrees in web interface")
+***************
+*** 547,553 ****
+              if cc['tempSetMin'] <= newTemp <= cc['tempSetMax']:
+                  cs['mode'] = 'f'
+                  cs['fridgeSet'] = round(newTemp, 2)
+!                 ser.write("j{mode:f, fridgeSet:" + json.dumps(cs['fridgeSet']) + "}")
+                  logMessage("Notification: Fridge temperature set to " +
+                             str(cs['fridgeSet']) +
+                             " degrees in web interface")
+--- 548,554 ----
+              if cc['tempSetMin'] <= newTemp <= cc['tempSetMax']:
+                  cs['mode'] = 'f'
+                  cs['fridgeSet'] = round(newTemp, 2)
+!                 ser.write(("j{mode:f, fridgeSet:" + json.dumps(cs['fridgeSet']) + "}").encode())
+                  logMessage("Notification: Fridge temperature set to " +
+                             str(cs['fridgeSet']) +
+                             " degrees in web interface")
+***************
+*** 559,572 ****
+                             ". These limits can be changed in advanced settings.")
+          elif messageType == "setOff":  # cs['mode'] set to OFF
+              cs['mode'] = 'o'
+!             ser.write("j{mode:o}")
+              logMessage("Notification: Temperature control disabled")
+              raise socket.timeout
+          elif messageType == "setParameters":
+              # receive JSON key:value pairs to set parameters on the controller
+              try:
+                  decoded = json.loads(value)
+!                 ser.write("j" + json.dumps(decoded))
+                  if 'tempFormat' in decoded:
+                      changeWwwSetting('tempFormat', decoded['tempFormat'])  # change in web interface settings too.
+              except json.JSONDecodeError:
+--- 560,573 ----
+                             ". These limits can be changed in advanced settings.")
+          elif messageType == "setOff":  # cs['mode'] set to OFF
+              cs['mode'] = 'o'
+!             ser.write("j{mode:o}".encode())
+              logMessage("Notification: Temperature control disabled")
+              raise socket.timeout
+          elif messageType == "setParameters":
+              # receive JSON key:value pairs to set parameters on the controller
+              try:
+                  decoded = json.loads(value)
+!                 ser.write(("j" + json.dumps(decoded)).encode())
+                  if 'tempFormat' in decoded:
+                      changeWwwSetting('tempFormat', decoded['tempFormat'])  # change in web interface settings too.
+              except json.JSONDecodeError:
+***************
+*** 579,585 ****
+                         "Stopping script and writing dontrunfile to prevent automatic restart")
+              run = 0
+              dontrunfile = open(dontRunFilePath, "w")
+!             dontrunfile.write("1")
+              dontrunfile.close()
+              continue
+          elif messageType == "quit":  # quit instruction received. Probably sent by another brewpi script instance
+--- 580,586 ----
+                         "Stopping script and writing dontrunfile to prevent automatic restart")
+              run = 0
+              dontrunfile = open(dontRunFilePath, "w")
+!             dontrunfile.write("1".encode())
+              dontrunfile.close()
+              continue
+          elif messageType == "quit":  # quit instruction received. Probably sent by another brewpi script instance
+***************
+*** 607,622 ****
+          elif messageType == "startNewBrew":  # new beer name
+              newName = value
+              result = startNewBrew(newName)
+!             conn.send(json.dumps(result))
+          elif messageType == "pauseLogging":
+              result = pauseLogging()
+!             conn.send(json.dumps(result))
+          elif messageType == "stopLogging":
+              result = stopLogging()
+!             conn.send(json.dumps(result))
+          elif messageType == "resumeLogging":
+              result = resumeLogging()
+!             conn.send(json.dumps(result))
+          elif messageType == "dateTimeFormatDisplay":
+              config = util.configSet(configFile, 'dateTimeFormatDisplay', value)
+              changeWwwSetting('dateTimeFormatDisplay', value)
+--- 608,623 ----
+          elif messageType == "startNewBrew":  # new beer name
+              newName = value
+              result = startNewBrew(newName)
+!             conn.send(json.dumps(result).encode())
+          elif messageType == "pauseLogging":
+              result = pauseLogging()
+!             conn.send(json.dumps(result).encode())
+          elif messageType == "stopLogging":
+              result = stopLogging()
+!             conn.send(json.dumps(result).encode())
+          elif messageType == "resumeLogging":
+              result = resumeLogging()
+!             conn.send(json.dumps(result).encode())
+          elif messageType == "dateTimeFormatDisplay":
+              config = util.configSet(configFile, 'dateTimeFormatDisplay', value)
+              changeWwwSetting('dateTimeFormatDisplay', value)
+***************
+*** 640,655 ****
+                      line1 = original.readline().rstrip("\n")
+                      rest = original.read()
+                  with file(profileDestFile, 'w') as modified:
+!                     modified.write(line1 + "," + value + "\n" + rest)
+              except IOError as e:  # catch all exceptions and report back an error
+                  error = "I/O Error(%d) updating profile: %s " % (e.errno, e.strerror)
+!                 conn.send(error)
+                  printStdErr(error)
+              else:
+                  conn.send("Profile successfully updated")
+                  if cs['mode'] is not 'p':
+                      cs['mode'] = 'p'
+!                     ser.write("j{mode:p}")
+                      logMessage("Notification: Profile mode enabled")
+                      raise socket.timeout  # go to serial communication to update controller
+          elif messageType == "programController" or messageType == "programArduino":
+--- 641,656 ----
+                      line1 = original.readline().rstrip("\n")
+                      rest = original.read()
+                  with file(profileDestFile, 'w') as modified:
+!                     modified.write((line1 + "," + value + "\n" + rest).encode())
+              except IOError as e:  # catch all exceptions and report back an error
+                  error = "I/O Error(%d) updating profile: %s " % (e.errno, e.strerror)
+!                 conn.send(error.encode())
+                  printStdErr(error)
+              else:
+                  conn.send("Profile successfully updated")
+                  if cs['mode'] is not 'p':
+                      cs['mode'] = 'p'
+!                     ser.write("j{mode:p}".encode())
+                      logMessage("Notification: Profile mode enabled")
+                      raise socket.timeout  # go to serial communication to update controller
+          elif messageType == "programController" or messageType == "programArduino":
+***************
+*** 675,701 ****
+          elif messageType == "refreshDeviceList":
+              deviceList['listState'] = ""  # invalidate local copy
+              if value.find("readValues") != -1:
+!                 ser.write("d{r:1}")  # request installed devices
+!                 ser.write("h{u:-1,v:1}")  # request available, but not installed devices
+              else:
+!                 ser.write("d{}")  # request installed devices
+!                 ser.write("h{u:-1}")  # request available, but not installed devices
+          elif messageType == "getDeviceList":
+              if deviceList['listState'] in ["dh", "hd"]:
+                  response = dict(board=hwVersion.board,
+                                  shield=hwVersion.shield,
+                                  deviceList=deviceList,
+                                  pinList=pinList.getPinList(hwVersion.board, hwVersion.shield))
+!                 conn.send(json.dumps(response))
+              else:
+!                 conn.send("device-list-not-up-to-date")
+          elif messageType == "applyDevice":
+              try:
+                  configStringJson = json.loads(value)  # load as JSON to check syntax
+              except json.JSONDecodeError:
+                  logMessage("Error: invalid JSON parameter string received: " + value)
+                  continue
+!             ser.write("U" + json.dumps(configStringJson))
+              deviceList['listState'] = ""  # invalidate local copy
+          elif messageType == "getVersion":
+              if hwVersion:
+--- 676,702 ----
+          elif messageType == "refreshDeviceList":
+              deviceList['listState'] = ""  # invalidate local copy
+              if value.find("readValues") != -1:
+!                 ser.write("d{r:1}".encode())  # request installed devices
+!                 ser.write("h{u:-1,v:1}".encode())  # request available, but not installed devices
+              else:
+!                 ser.write("d{}".encode())  # request installed devices
+!                 ser.write("h{u:-1}".encode())  # request available, but not installed devices
+          elif messageType == "getDeviceList":
+              if deviceList['listState'] in ["dh", "hd"]:
+                  response = dict(board=hwVersion.board,
+                                  shield=hwVersion.shield,
+                                  deviceList=deviceList,
+                                  pinList=pinList.getPinList(hwVersion.board, hwVersion.shield))
+!                 conn.send(json.dumps(response).encode())
+              else:
+!                 conn.send("device-list-not-up-to-date".encode())
+          elif messageType == "applyDevice":
+              try:
+                  configStringJson = json.loads(value)  # load as JSON to check syntax
+              except json.JSONDecodeError:
+                  logMessage("Error: invalid JSON parameter string received: " + value)
+                  continue
+!             ser.write(("U" + json.dumps(configStringJson)).encode())
+              deviceList['listState'] = ""  # invalidate local copy
+          elif messageType == "getVersion":
+              if hwVersion:
+***************
+*** 705,711 ****
+              else:
+                  response = {}
+              response_str = json.dumps(response)
+!             conn.send(response_str)
+          else:
+              logMessage("Error: Received invalid message on socket: " + message)
+  
+--- 706,712 ----
+              else:
+                  response = {}
+              response_str = json.dumps(response)
+!             conn.send(response_str.encode())
+          else:
+              logMessage("Error: Received invalid message on socket: " + message)
+  
+***************
+*** 725,741 ****
+          if(time.time() - prevLcdUpdate) > 5:
+              # request new LCD text
+              prevLcdUpdate += 5 # give the controller some time to respond
+!             ser.write('l')
+  
+          if(time.time() - prevSettingsUpdate) > 60:
+              # Request Settings from controller to stay up to date
+              # Controller should send updates on changes, this is a periodical update to ensure it is up to date
+              prevSettingsUpdate += 5 # give the controller some time to respond
+!             ser.write('s')
+  
+          # if no new data has been received for serialRequestInteval seconds
+          if (time.time() - prevDataTime) >= float(config['interval']):
+!             ser.write("t")  # request new from controller
+              prevDataTime += 5 # give the controller some time to respond to prevent requesting twice
+  
+          elif (time.time() - prevDataTime) > float(config['interval']) + 2 * float(config['interval']):
+--- 726,742 ----
+          if(time.time() - prevLcdUpdate) > 5:
+              # request new LCD text
+              prevLcdUpdate += 5 # give the controller some time to respond
+!             ser.write('l'.encode())
+  
+          if(time.time() - prevSettingsUpdate) > 60:
+              # Request Settings from controller to stay up to date
+              # Controller should send updates on changes, this is a periodical update to ensure it is up to date
+              prevSettingsUpdate += 5 # give the controller some time to respond
+!             ser.write('s'.encode())
+  
+          # if no new data has been received for serialRequestInteval seconds
+          if (time.time() - prevDataTime) >= float(config['interval']):
+!             ser.write("t".encode())  # request new from controller
+              prevDataTime += 5 # give the controller some time to respond to prevent requesting twice
+  
+          elif (time.time() - prevDataTime) > float(config['interval']) + 2 * float(config['interval']):
+***************
+*** 784,790 ****
+                                         json.dumps(newRow['State']) + ';' +
+                                         json.dumps(newRow['RoomTemp']) + '\n')
+                          csvFile.write(lineToWrite)
+!                     except KeyError, e:
+                          logMessage("KeyError in line from controller: %s" % str(e))
+  
+                      csvFile.close()
+--- 785,791 ----
+                                         json.dumps(newRow['State']) + ';' +
+                                         json.dumps(newRow['RoomTemp']) + '\n')
+                          csvFile.write(lineToWrite)
+!                     except KeyError as e:
+                          logMessage("KeyError in line from controller: %s" % str(e))
+  
+                      csvFile.close()
+***************
+*** 795,801 ****
+                      try:
+                          expandedMessage = expandLogMessage.expandLogMessage(line[2:])
+                          logMessage("controller debug message: " + expandedMessage)
+!                     except Exception, e:  # catch all exceptions, because out of date file could cause errors
+                          logMessage("Error while expanding log message '" + line[2:] + "'" + str(e))
+  
+                  elif line[0] == 'L':
+--- 796,802 ----
+                      try:
+                          expandedMessage = expandLogMessage.expandLogMessage(line[2:])
+                          logMessage("controller debug message: " + expandedMessage)
+!                     except Exception as e:  # catch all exceptions, because out of date file could cause errors
+                          logMessage("Error while expanding log message '" + line[2:] + "'" + str(e))
+  
+                  elif line[0] == 'L':
+***************
+*** 824,836 ****
+                      deviceList['installed'] = json.loads(line[2:])
+                      oldListState = deviceList['listState']
+                      deviceList['listState'] = oldListState.strip('d') + "d"
+!                     logMessage("Installed devices received: " + json.dumps(deviceList['installed']).encode('utf-8'))
+                  elif line[0] == 'U':
+                      logMessage("Device updated to: " + line[2:])
+                  else:
+                      logMessage("Cannot process line from controller: " + line)
+                  # end or processing a line
+!             except json.decoder.JSONDecodeError, e:
+                  logMessage("JSON decode error: %s" % str(e))
+                  logMessage("Line received was: " + line)
+  
+--- 825,837 ----
+                      deviceList['installed'] = json.loads(line[2:])
+                      oldListState = deviceList['listState']
+                      deviceList['listState'] = oldListState.strip('d') + "d"
+!                     logMessage("Installed devices received: " + json.dumps(deviceList['installed']))
+                  elif line[0] == 'U':
+                      logMessage("Device updated to: " + line[2:])
+                  else:
+                      logMessage("Cannot process line from controller: " + line)
+                  # end or processing a line
+!             except json.decoder.JSONDecodeError as e:
+                  logMessage("JSON decode error: %s" % str(e))
+                  logMessage("Line received was: " + line)
+  
+diff -rc ./brewpiJson.py /opt/brewpi/brewpiJson.py
+*** ./brewpiJson.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/brewpiJson.py	Sat Sep 12 19:57:39 2015
+***************
+*** 18,23 ****
+--- 18,24 ----
+  import time
+  import os
+  import re
++ import sys
+  
+  jsonCols = ("\"cols\":[" +
+              "{\"type\":\"datetime\",\"id\":\"Time\",\"label\":\"Time\"}," +
+***************
+*** 33,107 ****
+  
+  
+  def fixJson(j):
+  	j = re.sub(r"'{\s*?(|\w)", r'{"\1', j)
+  	j = re.sub(r"',\s*?(|\w)", r',"\1', j)
+  	j = re.sub(r"'(|\w)?\s*:", r'\1":', j)
+  	j = re.sub(r"':\s*(|\w*)\s*(|[,}])", r':"\1"\2', j)
+  	return j
+  
+  
+  def addRow(jsonFileName, row):
+! 	jsonFile = open(jsonFileName, "r+")
+  	jsonFile.seek(-3, 2)  # Go insert point to add the last row
+! 	ch = jsonFile.read(1)
+  	jsonFile.seek(0, os.SEEK_CUR)
+  	# when alternating between reads and writes, the file contents should be flushed, see
+  	# http://bugs.python.org/issue3207. This prevents IOError, Errno 0
+  	if ch != '[':
+  		# not the first item
+! 		jsonFile.write(',')
+  	newRow = {}
+  	newRow['Time'] = datetime.today()
+  
+  	# insert something like this into the file:
+  	# {"c":[{"v":"Date(2012,8,26,0,1,0)"},{"v":18.96},{"v":19.0},null,{"v":19.94},{"v":19.6},null]},
+! 	jsonFile.write(os.linesep)
+! 	jsonFile.write("{\"c\":[")
+  	now = datetime.now()
+! 	jsonFile.write("{{\"v\":\"Date({y},{M},{d},{h},{m},{s})\"}},".format(
+! 		y=now.year, M=(now.month - 1), d=now.day, h=now.hour, m=now.minute, s=now.second))
+  	if row['BeerTemp'] is None:
+! 		jsonFile.write("null,")
+  	else:
+! 		jsonFile.write("{\"v\":" + str(row['BeerTemp']) + "},")
+  
+  	if row['BeerSet'] is None:
+! 		jsonFile.write("null,")
+  	else:
+! 		jsonFile.write("{\"v\":" + str(row['BeerSet']) + "},")
+  
+  	if row['BeerAnn'] is None:
+! 		jsonFile.write("null,")
+  	else:
+! 		jsonFile.write("{\"v\":\"" + str(row['BeerAnn']) + "\"},")
+  
+  	if row['FridgeTemp'] is None:
+! 		jsonFile.write("null,")
+  	else:
+! 		jsonFile.write("{\"v\":" + str(row['FridgeTemp']) + "},")
+  
+  	if row['FridgeSet'] is None:
+! 		jsonFile.write("null,")
+  	else:
+! 		jsonFile.write("{\"v\":" + str(row['FridgeSet']) + "},")
+  
+  	if row['FridgeAnn'] is None:
+! 		jsonFile.write("null,")
+  	else:
+! 		jsonFile.write("{\"v\":\"" + str(row['FridgeAnn']) + "\"},")
+  
+  	if row['RoomTemp'] is None:
+! 		jsonFile.write("null,")
+  	else:
+! 		jsonFile.write("{\"v\":" + str(row['RoomTemp']) + "},")
+  
+  	if row['State'] is None:
+! 		jsonFile.write("null")
+  	else:
+! 		jsonFile.write("{\"v\":" + str(row['State']) + "}")
+  
+  	# rewrite end of json file
+! 	jsonFile.write("]}]}")
+  	jsonFile.close()
+  
+  
+--- 34,109 ----
+  
+  
+  def fixJson(j):
++ 	print ("Old JSON: " + j, file=sys.stderr)
+  	j = re.sub(r"'{\s*?(|\w)", r'{"\1', j)
+  	j = re.sub(r"',\s*?(|\w)", r',"\1', j)
+  	j = re.sub(r"'(|\w)?\s*:", r'\1":', j)
+  	j = re.sub(r"':\s*(|\w*)\s*(|[,}])", r':"\1"\2', j)
++ 	print ("New JSON: " + j, file=sys.stderr)
+  	return j
+  
+  
+  def addRow(jsonFileName, row):
+! 	jsonFile = open(jsonFileName, "rb+")
+  	jsonFile.seek(-3, 2)  # Go insert point to add the last row
+! 	ch = jsonFile.read(1).decode()
+  	jsonFile.seek(0, os.SEEK_CUR)
+  	# when alternating between reads and writes, the file contents should be flushed, see
+  	# http://bugs.python.org/issue3207. This prevents IOError, Errno 0
+  	if ch != '[':
+  		# not the first item
+! 		jsonFile.write(','.encode())
+  	newRow = {}
+  	newRow['Time'] = datetime.today()
+  
+  	# insert something like this into the file:
+  	# {"c":[{"v":"Date(2012,8,26,0,1,0)"},{"v":18.96},{"v":19.0},null,{"v":19.94},{"v":19.6},null]},
+! 	jsonFile.write(os.linesep.encode())
+! 	jsonFile.write("{\"c\":[".encode())
+  	now = datetime.now()
+! 	jsonFile.write("{{\"v\":\"Date({y},{M},{d},{h},{m},{s})\"}},".format(y=now.year, M=(now.month - 1), d=now.day, h=now.hour, m=now.minute, s=now.second).encode())
+  	if row['BeerTemp'] is None:
+! 		jsonFile.write("null,".encode())
+  	else:
+! 		jsonFile.write(("{\"v\":" + str(row['BeerTemp']) + "},").encode())
+  
+  	if row['BeerSet'] is None:
+! 		jsonFile.write("null,".encode())
+  	else:
+! 		jsonFile.write(("{\"v\":" + str(row['BeerSet']) + "},").encode())
+  
+  	if row['BeerAnn'] is None:
+! 		jsonFile.write("null,".encode())
+  	else:
+! 		jsonFile.write(("{\"v\":\"" + str(row['BeerAnn']) + "\"},").encode())
+  
+  	if row['FridgeTemp'] is None:
+! 		jsonFile.write("null,".encode())
+  	else:
+! 		jsonFile.write(("{\"v\":" + str(row['FridgeTemp']) + "},").encode())
+  
+  	if row['FridgeSet'] is None:
+! 		jsonFile.write("null,".encode())
+  	else:
+! 		jsonFile.write(("{\"v\":" + str(row['FridgeSet']) + "},").encode())
+  
+  	if row['FridgeAnn'] is None:
+! 		jsonFile.write("null,".encode())
+  	else:
+! 		jsonFile.write(("{\"v\":\"" + str(row['FridgeAnn']) + "\"},").encode())
+  
+  	if row['RoomTemp'] is None:
+! 		jsonFile.write("null,".encode())
+  	else:
+! 		jsonFile.write(("{\"v\":" + str(row['RoomTemp']) + "},").encode())
+  
+  	if row['State'] is None:
+! 		jsonFile.write("null".encode())
+  	else:
+! 		jsonFile.write(("{\"v\":" + str(row['State']) + "}").encode())
+  
+  	# rewrite end of json file
+! 	jsonFile.write("]}]}".encode())
+  	jsonFile.close()
+  
+  
+diff -rc ./brewpiVersion.py /opt/brewpi/brewpiVersion.py
+*** ./brewpiVersion.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/brewpiVersion.py	Sat Sep 12 11:00:55 2015
+***************
+*** 27,33 ****
+      oldTimeOut = ser.timeout
+      startTime = time.time()
+      ser.setTimeout(1)
+!     ser.write('n')  # request version info
+      while retries < 10:
+          retry = True
+          while 1: # read all lines from serial
+--- 27,33 ----
+      oldTimeOut = ser.timeout
+      startTime = time.time()
+      ser.setTimeout(1)
+!     ser.write('n'.encode())  # request version info
+      while retries < 10:
+          retry = True
+          while 1: # read all lines from serial
+***************
+*** 52,58 ****
+                  break
+  
+          if retry:
+!             ser.write('n')  # request version info
+              # time.sleep(1) delay not needed because of blocking (timeout) readline
+              retries += 1
+          else:
+--- 52,58 ----
+                  break
+  
+          if retry:
+!             ser.write('n'.encode())  # request version info
+              # time.sleep(1) delay not needed because of blocking (timeout) readline
+              retries += 1
+          else:
+***************
+*** 125,139 ****
+          j = None
+          try:
+              j = json.loads(s)
+!         except json.decoder.JSONDecodeError, e:
+!             print >> sys.stderr, "JSON decode error: %s" % str(e)
+!             print >> sys.stderr, "Could not parse version number: " + s
+!         except UnicodeDecodeError, e:
+!             print >> sys.stderr, "Unicode decode error: %s" % str(e)
+!             print >> sys.stderr, "Could not parse version number: " + s
+!         except TypeError, e:
+!             print >> sys.stderr, "TypeError: %s" % str(e)
+!             print >> sys.stderr, "Could not parse version number: " + s
+  
+          self.family = None
+          self.board_name = None
+--- 125,139 ----
+          j = None
+          try:
+              j = json.loads(s)
+!         except json.decoder.JSONDecodeError as e:
+!             print ("JSON decode error: %s" % str(e), file=sys.stderr)
+!             print ("Could not parse version number: " + s, file=sys.stderr)
+!         except UnicodeDecodeError as e:
+!             print ("Unicode decode error: %s" % str(e), file=sys.stderr)
+!             print ("Could not parse version number: " + s, file=sys.stderr)
+!         except TypeError as e:
+!             print ("TypeError: %s" % str(e), file=sys.stderr)
+!             print ("Could not parse version number: " + s, file=sys.stderr)
+  
+          self.family = None
+          self.board_name = None
+diff -rc ./expandLogMessage.py /opt/brewpi/expandLogMessage.py
+*** ./expandLogMessage.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/expandLogMessage.py	Sat Sep 12 00:42:40 2015
+***************
+*** 54,60 ****
+  		if 'BREWPI_LOG_MESSAGES_VERSION ' in line:
+  			splitLine = line.split('BREWPI_LOG_MESSAGES_VERSION')
+  			return int(splitLine[1]) # return version number
+! 	print "ERROR: could not find version number in log messages header file"
+  	return 0
+  
+  
+--- 54,60 ----
+  		if 'BREWPI_LOG_MESSAGES_VERSION ' in line:
+  			splitLine = line.split('BREWPI_LOG_MESSAGES_VERSION')
+  			return int(splitLine[1]) # return version number
+! 	print ("ERROR: could not find version number in log messages header file")
+  	return 0
+  
+  
+diff -rc ./pinList.py /opt/brewpi/pinList.py
+*** ./pinList.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/pinList.py	Sat Sep 12 00:42:40 2015
+***************
+*** 131,137 ****
+                     {'val': 10, 'text': 'Output 3 (A0)', 'type': 'act'},
+                     {'val': 0, 'text': 'OneWire', 'type': 'onewire'}]
+      else:
+!         print 'Unknown controller or board type'
+          pinList = {}
+      return pinList
+  
+--- 131,137 ----
+                     {'val': 10, 'text': 'Output 3 (A0)', 'type': 'act'},
+                     {'val': 0, 'text': 'OneWire', 'type': 'onewire'}]
+      else:
+!         print ('Unknown controller or board type')
+          pinList = {}
+      return pinList
+  
+***************
+*** 141,158 ****
+          pinList = getPinList(boardType, shieldType)
+          return json.dumps(pinList)
+      except json.JSONDecodeError:
+!         print "Cannot process pin list JSON"
+          return 0
+  
+  def pinListTest():
+!     print getPinListJson("leonardo", "revC")
+!     print getPinListJson("uno", "revC")
+!     print getPinListJson("leonardo", "revA")
+!     print getPinListJson("uno", "revA")
+!     print getPinListJson("core", "V1")
+!     print getPinListJson("core", "V2")
+!     print getPinListJson("photon", "V1")
+!     print getPinListJson("photon", "V2")
+  
+  if __name__ == "__main__":
+      pinListTest()
+--- 141,158 ----
+          pinList = getPinList(boardType, shieldType)
+          return json.dumps(pinList)
+      except json.JSONDecodeError:
+!         print ("Cannot process pin list JSON")
+          return 0
+  
+  def pinListTest():
+!     print (getPinListJson("leonardo", "revC"))
+!     print (getPinListJson("uno", "revC"))
+!     print (getPinListJson("leonardo", "revA"))
+!     print (getPinListJson("uno", "revA"))
+!     print (getPinListJson("core", "V1"))
+!     print (getPinListJson("core", "V2"))
+!     print (getPinListJson("photon", "V1"))
+!     print (getPinListJson("photon", "V2"))
+  
+  if __name__ == "__main__":
+      pinListTest()
+diff -rc ./programArduinoFirstTime.py /opt/brewpi/programArduinoFirstTime.py
+*** ./programArduinoFirstTime.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/programArduinoFirstTime.py	Sat Sep 12 00:42:40 2015
+***************
+*** 33,41 ****
+  # global variables, will be initialized by startBeer()
+  util.readCfgWithDefaults(configFile)
+  
+! hexFile = config['wwwPath'] + 'uploads/brewpi-uno-revC.hex'
+  boardType = config['boardType']
+  
+  result = programmer.programController(config, boardType, hexFile, {'settings': True, 'devices': True})
+  
+! print result
+--- 33,41 ----
+  # global variables, will be initialized by startBeer()
+  util.readCfgWithDefaults(configFile)
+  
+! hexFile = config['wwwPath'] + 'uploads/brewpi-arduino-uno-revC-0_2_10.hex'
+  boardType = config['boardType']
+  
+  result = programmer.programController(config, boardType, hexFile, {'settings': True, 'devices': True})
+  
+! print (result)
+diff -rc ./programController.py /opt/brewpi/programController.py
+*** ./programController.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/programController.py	Sat Sep 12 12:21:54 2015
+***************
+*** 24,29 ****
+--- 24,30 ----
+  from MigrateSettings import MigrateSettings
+  from sys import stderr
+  import BrewPiUtil as util
++ from collections import OrderedDict
+  
+  # print everything in this file to stderr so it ends up in the correct log file for the web UI
+  def printStdErr(*objs):
+***************
+*** 139,157 ****
+  def fetchBoardSettings(boardsFile, boardType):
+      boardSettings = {}
+      for line in boardsFile:
+          if line.startswith(boardType):
+!             setting = line.replace(boardType + '.', '', 1).strip()  # strip board name, period and \n
+              [key, sign, val] = setting.rpartition('=')
+              boardSettings[key] = val
+      return boardSettings
+  
+  
+! def loadBoardsFile(arduinohome):
+      boardsFileContent = None
+      try:
+!         boardsFileContent = open(arduinohome + 'hardware/arduino/boards.txt', 'rb').readlines()
+      except IOError:
+!         printStdErr("Could not read boards.txt from Arduino, probably because Arduino has not been installed")
+          printStdErr("Please install it with: sudo apt-get install arduino-core")
+      return boardsFileContent
+  
+--- 140,159 ----
+  def fetchBoardSettings(boardsFile, boardType):
+      boardSettings = {}
+      for line in boardsFile:
++         line = line.decode()
+          if line.startswith(boardType):
+!             setting = line.replace((boardType + '.'), '', 1).strip()  # strip board name, period and \n
+              [key, sign, val] = setting.rpartition('=')
+              boardSettings[key] = val
+      return boardSettings
+  
+  
+! def loadBoardsFile(boardsfile):
+      boardsFileContent = None
+      try:
+!         boardsFileContent = open(boardsfile, 'rb').readlines()
+      except IOError:
+!         printStdErr("Could not read " + boardsfile + " from Arduino, probably because Arduino has not been installed")
+          printStdErr("Please install it with: sudo apt-get install arduino-core")
+      return boardsFileContent
+  
+***************
+*** 163,169 ****
+  def json_decode_response(line):
+      try:
+          return json.loads(line[2:])
+!     except json.decoder.JSONDecodeError, e:
+          printStdErr("JSON decode error: " + str(e))
+          printStdErr("Line received was: " + line)
+  
+--- 165,171 ----
+  def json_decode_response(line):
+      try:
+          return json.loads(line[2:])
+!     except json.decoder.JSONDecodeError as e:
+          printStdErr("JSON decode error: " + str(e))
+          printStdErr("Line received was: " + line)
+  
+***************
+*** 318,327 ****
+          expected_responses = 2
+          if not self.versionOld.isNewer("0.2.0"):  # versions older than 2.0.0 did not have a device manager
+              expected_responses += 1
+!             ser.write("d{}")  # installed devices
+              time.sleep(1)
+!         ser.write("c")  # control constants
+!         ser.write("s")  # control settings
+          time.sleep(2)
+  
+          while expected_responses:
+--- 320,329 ----
+          expected_responses = 2
+          if not self.versionOld.isNewer("0.2.0"):  # versions older than 2.0.0 did not have a device manager
+              expected_responses += 1
+!             ser.write("d{}".encode())  # installed devices
+              time.sleep(1)
+!         ser.write("c".encode())  # control constants
+!         ser.write("s".encode())  # control settings
+          time.sleep(2)
+  
+          while expected_responses:
+***************
+*** 343,356 ****
+          oldSettingsFileName = 'settings-' + time.strftime("%b-%d-%Y-%H-%M-%S") + '.json'
+          settingsBackupDir = util.scriptPath() + '/settings/controller-backup/'
+          if not os.path.exists(settingsBackupDir):
+!             os.makedirs(settingsBackupDir, 0777)
+  
+          oldSettingsFilePath = os.path.join(settingsBackupDir, oldSettingsFileName)
+          oldSettingsFile = open(oldSettingsFilePath, 'wb')
+!         oldSettingsFile.write(json.dumps(self.oldSettings))
+          oldSettingsFile.truncate()
+          oldSettingsFile.close()
+!         os.chmod(oldSettingsFilePath, 0777) # make sure file can be accessed by all in case the script ran as root
+          printStdErr("Saved old settings to file " + oldSettingsFileName)
+  
+      def delay(self, countDown):
+--- 345,358 ----
+          oldSettingsFileName = 'settings-' + time.strftime("%b-%d-%Y-%H-%M-%S") + '.json'
+          settingsBackupDir = util.scriptPath() + '/settings/controller-backup/'
+          if not os.path.exists(settingsBackupDir):
+!             os.makedirs(settingsBackupDir, 0o777)
+  
+          oldSettingsFilePath = os.path.join(settingsBackupDir, oldSettingsFileName)
+          oldSettingsFile = open(oldSettingsFilePath, 'wb')
+!         oldSettingsFile.write(json.dumps(self.oldSettings).encode())
+          oldSettingsFile.truncate()
+          oldSettingsFile.close()
+!         os.chmod(oldSettingsFilePath, 0o777) # make sure file can be accessed by all in case the script ran as root
+          printStdErr("Saved old settings to file " + oldSettingsFileName)
+  
+      def delay(self, countDown):
+***************
+*** 364,377 ****
+  
+      def reset_settings(self, setTestMode = False):
+          printStdErr("Resetting EEPROM to default settings")
+!         self.ser.write('E\n')
+          if setTestMode:
+!             self.ser.write('j{mode:t}')
+          time.sleep(5)  # resetting EEPROM takes a while, wait 5 seconds
+          # read log messages from arduino
+          while 1:  # read all lines on serial interface
+              line = self.ser.readline()
+              if line:  # line available?
+                  if line[0] == 'D':
+                      self.print_debug_log(line)
+              else:
+--- 366,380 ----
+  
+      def reset_settings(self, setTestMode = False):
+          printStdErr("Resetting EEPROM to default settings")
+!         self.ser.write('E\n'.encode())
+          if setTestMode:
+!             self.ser.write('j{mode:t}'.encode())
+          time.sleep(5)  # resetting EEPROM takes a while, wait 5 seconds
+          # read log messages from arduino
+          while 1:  # read all lines on serial interface
+              line = self.ser.readline()
+              if line:  # line available?
++                 line = util.asciiToUnicode(line)
+                  if line[0] == 'D':
+                      self.print_debug_log(line)
+              else:
+***************
+*** 381,387 ****
+          try:  # debug message received
+              expandedMessage = expandLogMessage.expandLogMessage(line[2:])
+              printStdErr(expandedMessage)
+!         except Exception, e:  # catch all exceptions, because out of date file could cause errors
+              printStdErr("Error while expanding log message: " + str(e))
+              printStdErr(("%(a)s debug message: " % msg_map) + line[2:])
+  
+--- 384,390 ----
+          try:  # debug message received
+              expandedMessage = expandLogMessage.expandLogMessage(line[2:])
+              printStdErr(expandedMessage)
+!         except Exception as e:  # catch all exceptions, because out of date file could cause errors
+              printStdErr("Error while expanding log message: " + str(e))
+              printStdErr(("%(a)s debug message: " % msg_map) + line[2:])
+  
+***************
+*** 391,399 ****
+          restored, omitted = ms.getKeyValuePairs(oldSettingsDict,
+                                                  self.versionOld.toString(),
+                                                  self.versionNew.toString())
+! 
+!         printStdErr("Migrating these settings: " + json.dumps(restored.items()))
+!         printStdErr("Omitting these settings: " + json.dumps(omitted.items()))
+  
+          self.send_restored_settings(restored)
+  
+--- 394,401 ----
+          restored, omitted = ms.getKeyValuePairs(oldSettingsDict,
+                                                  self.versionOld.toString(),
+                                                  self.versionNew.toString())
+!         printStdErr("Migrating these settings: " + json.dumps(restored))
+!         printStdErr("Omitting these settings: " + json.dumps(omitted))
+  
+          self.send_restored_settings(restored)
+  
+***************
+*** 407,413 ****
+          for key in restoredSettings:
+              setting =  restoredSettings[key]
+              command = "j{" + json.dumps(key) + ":" + json.dumps(setting) + "}\n"
+!             self.ser.write(command)
+              # make readline blocking for max 5 seconds to give the controller time to respond after every setting
+              oldTimeout = self.ser.timeout
+              self.ser.setTimeout(5)
+--- 409,415 ----
+          for key in restoredSettings:
+              setting =  restoredSettings[key]
+              command = "j{" + json.dumps(key) + ":" + json.dumps(setting) + "}\n"
+!             self.ser.write(command.encode())
+              # make readline blocking for max 5 seconds to give the controller time to respond after every setting
+              oldTimeout = self.ser.timeout
+              self.ser.setTimeout(5)
+***************
+*** 415,420 ****
+--- 417,423 ----
+              while 1:
+                  line = self.ser.readline()
+                  if line:  # line available?
++                     line = util.asciiToUnicode(line)
+                      if line[0] == 'D':
+                          self.print_debug_log(line)
+                  if self.ser.inWaiting() == 0:
+***************
+*** 440,449 ****
+                                  "but this is no longer supported. " +
+                                  "We'll attempt to automatically find the address and add the sensor based on its address")
+                      if detectedDevices is None:
+!                         ser.write("h{}")  # installed devices
+                          time.sleep(1)
+                          # get list of detected devices
+                          for line in ser:
+                              if line[0] == 'h':
+                                  detectedDevices = json_decode_response(line)
+  
+--- 443,453 ----
+                                  "but this is no longer supported. " +
+                                  "We'll attempt to automatically find the address and add the sensor based on its address")
+                      if detectedDevices is None:
+!                         ser.write("h{}".encode())  # installed devices
+                          time.sleep(1)
+                          # get list of detected devices
+                          for line in ser:
++                             line = util.asciiToUnicode(line)
+                              if line[0] == 'h':
+                                  detectedDevices = json_decode_response(line)
+  
+***************
+*** 451,463 ****
+                          if device['p'] == detectedDevice['p']:
+                              device['a'] = detectedDevice['a'] # get address from sensor that was first on bus
+  
+!             ser.write("U" + json.dumps(device))
+  
+              requestTime = time.time()
+              # read log messages from arduino
+              while 1:  # read all lines on serial interface
+                  line = ser.readline()
+                  if line:  # line available?
+                      if line[0] == 'D':
+                          self.print_debug_log(line)
+                      elif line[0] == 'U':
+--- 455,468 ----
+                          if device['p'] == detectedDevice['p']:
+                              device['a'] = detectedDevice['a'] # get address from sensor that was first on bus
+  
+!             ser.write(("U" + json.dumps(device)).encode())
+  
+              requestTime = time.time()
+              # read log messages from arduino
+              while 1:  # read all lines on serial interface
+                  line = ser.readline()
+                  if line:  # line available?
++                     line = util.asciiToUnicode(line)
+                      if line[0] == 'D':
+                          self.print_debug_log(line)
+                      elif line[0] == 'U':
+***************
+*** 473,481 ****
+          SerialProgrammer.__init__(self, config)
+  
+      def flash_file(self, hexFile):
+!         self.ser.write('F')
+          line = self.ser.readline()
+!         printStdErr(line)
+          time.sleep(0.2)
+  
+          file = open(hexFile, 'rb')
+--- 478,486 ----
+          SerialProgrammer.__init__(self, config)
+  
+      def flash_file(self, hexFile):
+!         self.ser.write('F'.encode())
+          line = self.ser.readline()
+!         printStdErr(line.decode())
+          time.sleep(0.2)
+  
+          file = open(hexFile, 'rb')
+***************
+*** 512,532 ****
+          config, boardType = self.config, self.boardType
+          printStdErr("Loading programming settings from board.txt")
+          arduinohome = config.get('arduinoHome', '/usr/share/arduino/')  # location of Arduino sdk
+          avrdudehome = config.get('avrdudeHome', arduinohome + 'hardware/tools/')  # location of avr tools
+          avrsizehome = config.get('avrsizeHome', '')  # default to empty string because avrsize is on path
+          avrconf = config.get('avrConf', avrdudehome + 'avrdude.conf')  # location of global avr conf
+  
+!         boardsFile = loadBoardsFile(arduinohome)
+          if not boardsFile:
+              return False
+          boardSettings = fetchBoardSettings(boardsFile, boardType)
+  
+          # parse the Arduino board file to get the right program settings
+          for line in boardsFile:
+!             if line.startswith(boardType):
+                  # strip board name, period and \n
+!                 setting = line.replace(boardType + '.', '', 1).strip()
+!                 [key, sign, val] = setting.rpartition('=')
+                  boardSettings[key] = val
+  
+          printStdErr("Checking hex file size with avr-size...")
+--- 517,538 ----
+          config, boardType = self.config, self.boardType
+          printStdErr("Loading programming settings from board.txt")
+          arduinohome = config.get('arduinoHome', '/usr/share/arduino/')  # location of Arduino sdk
++         boardsfile = config.get('boardsFile', arduinohome + 'hardware/arduino/boards.txt')  #location of boards.txt file
+          avrdudehome = config.get('avrdudeHome', arduinohome + 'hardware/tools/')  # location of avr tools
+          avrsizehome = config.get('avrsizeHome', '')  # default to empty string because avrsize is on path
+          avrconf = config.get('avrConf', avrdudehome + 'avrdude.conf')  # location of global avr conf
+  
+!         boardsFile = loadBoardsFile(boardsfile)
+          if not boardsFile:
+              return False
+          boardSettings = fetchBoardSettings(boardsFile, boardType)
+  
+          # parse the Arduino board file to get the right program settings
+          for line in boardsFile:
+!             if line.startswith(boardType.encode()):
+                  # strip board name, period and \n
+!                 setting = line.replace((boardType + '.').encode(), ''.encode(), 1).strip()
+!                 [key, sign, val] = setting.rpartition('='.encode())
+                  boardSettings[key] = val
+  
+          printStdErr("Checking hex file size with avr-size...")
+***************
+*** 537,549 ****
+          # check program size against maximum size
+          p = sub.Popen(avrsizeCommand, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+          output, errors = p.communicate()
+          if errors != "":
+              printStdErr('avr-size error: ' + errors)
+              return False
+  
+!         programSize = output.split()[7]
+          printStdErr(('Program size: ' + programSize +
+!                      ' bytes out of max ' + boardSettings['upload.maximum_size']))
+  
+          # Another check just to be sure!
+          if int(programSize) > int(boardSettings['upload.maximum_size']):
+--- 543,556 ----
+          # check program size against maximum size
+          p = sub.Popen(avrsizeCommand, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+          output, errors = p.communicate()
++         errors = errors.decode()
+          if errors != "":
+              printStdErr('avr-size error: ' + errors)
+              return False
+  
+!         programSize = output.split()[7].decode()
+          printStdErr(('Program size: ' + programSize +
+!                     ' bytes out of max ' + boardSettings['upload.maximum_size']))
+  
+          # Another check just to be sure!
+          if int(programSize) > int(boardSettings['upload.maximum_size']):
+***************
+*** 580,586 ****
+  
+          p = sub.Popen(programCommand, stdout=sub.PIPE, stderr=sub.PIPE, shell=True, cwd=hexFileDir)
+          output, errors = p.communicate()
+! 
+          # avrdude only uses stderr, append its output to the returnString
+          printStdErr("Result of invoking avrdude:\n" + errors)
+  
+--- 587,593 ----
+  
+          p = sub.Popen(programCommand, stdout=sub.PIPE, stderr=sub.PIPE, shell=True, cwd=hexFileDir)
+          output, errors = p.communicate()
+!         errors = errors.decode()
+          # avrdude only uses stderr, append its output to the returnString
+          printStdErr("Result of invoking avrdude:\n" + errors)
+  
+diff -rc ./temperatureProfile.py /opt/brewpi/temperatureProfile.py
+*** ./temperatureProfile.py	Wed Aug  5 21:15:44 2015
+--- /opt/brewpi/temperatureProfile.py	Sat Sep 12 00:42:40 2015
+***************
+*** 22,28 ****
+  
+  # also defined in brewpi.py. TODO: move to shared import
+  def logMessage(message):
+!     print >> sys.stderr, time.strftime("%b %d %Y %H:%M:%S   ") + message
+  
+  
+  def getNewTemp(scriptPath):
+--- 22,28 ----
+  
+  # also defined in brewpi.py. TODO: move to shared import
+  def logMessage(message):
+!     print (time.strftime("%b %d %Y %H:%M:%S   ") + message, file=sys.stderr)
+  
+  
+  def getNewTemp(scriptPath):

@@ -1,0 +1,9 @@
+post_install(){
+	groupadd -g 400 brewpi >/dev/null 2>&1
+	useradd -u 400 -s /usr/bin/nologin -g brewpi -G uucp,lock brewpi >/dev/null 2>&1
+}
+
+post_upgrade(){
+	getent group brewpi >/dev/null 2>&1 || groupadd -g 400 brewpi >/dev/null 2>&1
+	getent passwd brewpi >/dev/null 2>&1 || useradd -u 400 -s /usr/bin/nologin -g brewpi -G uucp,lock brewpi >/dev/null 2>&1
+}

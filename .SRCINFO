@@ -1,0 +1,37 @@
+pkgbase = brewpi-script
+	pkgdesc = The BrewPi Python script logs the data, monitors the temperature profile and communicates with the BrewPi slave and the web server
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = http://www.brewpi.com/
+	install = brewpi-script.install
+	arch = any
+	groups = brewpi-git
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-pyserial
+	depends = python-psutil
+	depends = python-simplejson
+	depends = python-configobj
+	depends = avrdude
+	depends = avr-gcc
+	optdepends = brewpi-www-git: Web interface for BrewPi
+	provides = brewpi-script
+	backup = usr/lib/brewpi/settings/config.cfg
+	source = https://github.com/BrewPi/brewpi-script/archive/0.3.8.tar.gz
+	source = https://www.arduino.cc/en/uploads/Main/boards.txt
+	source = brewpi.service
+	source = brewpi-script.install
+	source = config.cfg
+	source = fix_dep_syntax.patch
+	source = brewpi
+	sha256sums = cf539d29b2354e90e90f7f0ec9ab20a3d0e9828f900a15d2d213db12190833e6
+	sha256sums = 4558674f15fcd3dc3bd3b5f07a921a9344f8d890df9c088a62cb912e61ec3a3a
+	sha256sums = fdc675b89fbea15b9f66a70d3cb3fdf73f7419047029a55e415dd9875424c1ca
+	sha256sums = 53540750e3ef7e41328f4362b0ebba1f81a310797f6aefdb7f17108ba1d092b4
+	sha256sums = 29e9ec7169272f2f0324791793b121b9b68ab327791717ac5718e16e352146e3
+	sha256sums = cbbfff08299d923e001125400f97cbe2737575e6103b819da9848ff73e081b19
+	sha256sums = de04e81bc5cc5d999a130ad3140af876f1ad8d2813a34ca68521d4cf14b1b9f4
+
+pkgname = brewpi-script
+
