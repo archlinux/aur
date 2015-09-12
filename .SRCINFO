@@ -1,6 +1,6 @@
 pkgbase = zfs-git
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	pkgver = 0.6.4.2_r0_g44b5ec8_4.1.6_1
+	pkgver = 0.6.5_r0_g7a27ad0_4.1.6_1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = zfs.install
@@ -17,7 +17,7 @@ pkgbase = zfs-git
 	conflicts = zfs
 	conflicts = zfs-lts
 	replaces = zfs
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=44b5ec8f
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=7a27ad00
 	md5sums = SKIP
 
 pkgname = zfs-git
