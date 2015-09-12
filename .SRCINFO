@@ -1,0 +1,19 @@
+pkgbase = mailman-django-git
+	pkgdesc = Django project skeleton for serving postorius and hyperkitty
+	pkgver = c9a0fe0
+	pkgrel = 1
+	url = https://gitlab.com/thelinuxguy/mailman-django
+	arch = any
+	license = LGPL
+	makedepends = git
+	optdepends = python2-whoosh: Whoosh backend for hyperkitty
+	optdepends = python2-django-postorius-git: Postorius app
+	optdepends = python2-django-hyperkitty-git: Hyperkitty app
+	provides = mailman-django
+	conflicts = mailman-django
+	options = !emptydirs
+	source = git+https://gitlab.com/thelinuxguy/mailman-django.git
+	sha256sums = SKIP
+
+pkgname = mailman-django-git
+
