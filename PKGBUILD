@@ -1,5 +1,6 @@
 # Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+_pkgname=binnavi
 pkgname=binnavi-git
 pkgver=v6.0.0.10.a2a3fa4
 pkgrel=2
@@ -23,13 +24,12 @@ pkgver() {
 build() {
   cd "${srcdir}/binnavi"
   mvn dependency:copy-dependencies -Dmaven.repo.local="${srcdir}/$pkgname-$pkgver"
-  ant -f src/main/java/com/google/security/zynamics/build.xml \
-    build-binnavi-fat-jar
+  ant build-binnavi-fat-jar
 }
 
 package() {
   mkdir -p "${pkgdir}/usr/share/java/binnavi"
-  cd "${srcdir}/$pkgname/target/"
+  cd "${srcdir}/$_pkgname/target/"
   mv binnavi-all.jar "${pkgdir}/usr/share/java/binnavi/"
   install -D -m755 "${srcdir}/binnavi.sh" "${pkgdir}/usr/bin/binnavi"
 }
