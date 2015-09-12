@@ -9,9 +9,9 @@ arch=(any)
 url="https://launchpad.net/flufl.bounce"
 license=('LGPL')
 options=(!emptydirs)
-install=
 source=("https://pypi.python.org/packages/source/f/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
 sha256sums=('6a2b7265af291eac41cb1022442ee65ff1c1f5af307bf8820a3f38cc86d29f99')
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-flufl-bounce() {
   depends=('python2')
