@@ -2,14 +2,15 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/mozilla-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname=firefox-extension-the-fox-only-better-git
-pkgver=1.2.3
+pkgname=firefox-extension-beyond-australis-git
+pkgver=1.3
 pkgrel=1
 pkgdesc='A Firefox add-on to improve the feeling of using the new Australis theme.'
 url='https://github.com/Quicksaver/The-Fox--Only-Better'
 arch=('any')
 license=('MPLv2')
 depends=('firefox')
+replaces=('firefox-extension-the-fox-only-better')
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
