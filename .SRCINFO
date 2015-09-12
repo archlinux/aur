@@ -1,0 +1,14 @@
+pkgbase = speedometer
+	pkgdesc = Measure and display the rate of data across a network connection or data being stored in a file.
+	pkgver = 2.8
+	pkgrel = 2
+	url = http://excess.org/speedometer/
+	arch = any
+	license = GPL
+	depends = python2-urwid
+	source = http://excess.org/speedometer/speedometer-2.8.tar.gz
+	md5sums = aa52b9253117523202d6ec8c110344ef
+	sha1sums = 70546d98486a42a0eaee0393025e0cea2cb6fe5f
+
+pkgname = speedometer
+
