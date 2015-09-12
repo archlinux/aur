@@ -1,0 +1,17 @@
+pkgbase = python-django-gravatar
+	pkgdesc = Includes helper methods for interacting with gravatars outside of template code
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/twaddington/django-gravatar
+	arch = any
+	license = MIT
+	options = !emptydirs
+	source = https://github.com/twaddington/django-gravatar/archive/1.3.0.tar.gz
+	sha256sums = b557e25748585647df3774727f2183117691bde1236f3054117e35f66c66f88c
+
+pkgname = python-django-gravatar
+	depends = python-django
+
+pkgname = python2-django-gravatar
+	depends = python2-django
+
