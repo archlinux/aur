@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/zopefoundation/zope.event"
 license=('ZPL')
 options=(!emptydirs)
-install=
 source=("https://github.com/zopefoundation/zope.event/archive/${pkgver}.tar.gz")
 sha256sums=('3dfa2ef09c891f378e05404521529f8e1333c75cdf9567a3454e3538ef7f3f02')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-zope-event() {
   depends=('python')
