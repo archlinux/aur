@@ -9,9 +9,9 @@ arch=(any)
 url="https://launchpad.net/flufl.lock"
 license=('LGPL')
 options=(!emptydirs)
-install=
 source=("https://pypi.python.org/packages/source/f/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
 sha256sums=('a693064d05fd92035989a6addbe92cbeb3291c11f5725ec3d381b2acb37c9079')
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-flufl-lock() {
   depends=('python')
