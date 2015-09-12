@@ -1,0 +1,19 @@
+pkgbase = lrun
+	pkgdesc = Run command on Linux with resources limited.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/quark-zju/lrun
+	install = lrun.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc>=4.4
+	makedepends = pkg-config
+	makedepends = ruby
+	depends = linux>=2.6.26
+	optdepends = libseccomp>=2.0
+	source = lrun-1.1.4.tar.gz::https://github.com/quark-zju/lrun/archive/v1.1.4.tar.gz
+	sha256sums = 5365af8fffa0eba0155ef0b6e9467a8c8aa26c5e1737b47d959396eb8b96deb8
+
+pkgname = lrun
+

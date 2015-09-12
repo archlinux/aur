@@ -1,0 +1,14 @@
+post_upgrade() {
+  /usr/bin/getent group 'lrun' >/dev/null 2>&1 ||  usr/bin/groupadd -g '593' 'lrun' &>/dev/null
+}
+
+post_install() {
+  post_upgrade
+  echo 'NOTE: To run lrun as normal user you have to add yourself into lrun group'
+}
+
+post_remove() {
+  if /usr/bin/getent group 'lrun' >/dev/null 2>&1; then
+    /usr/bin/groupdel 'lrun'
+  fi
+}
