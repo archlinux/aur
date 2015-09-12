@@ -1,6 +1,6 @@
 pkgbase = zmap-git
 	pkgdesc = Fast network scanner designed for Internet-wide network surveys
-	pkgver = 2.1.0.753.6144eb9
+	pkgver = 2.1.1.809.3d3ced4
 	pkgrel = 1
 	url = https://zmap.io/
 	arch = i686

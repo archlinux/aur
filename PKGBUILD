@@ -2,7 +2,7 @@
 # Contributor: Jens Adam <jra@byte.cx>
 
 pkgname=zmap-git
-pkgver=2.1.0.753.6144eb9
+pkgver=2.1.1.809.3d3ced4
 pkgrel=1
 pkgdesc='Fast network scanner designed for Internet-wide network surveys'
 url='https://zmap.io/'
@@ -35,7 +35,7 @@ package() {
   install -Dm 755 src/zmap "${pkgdir}/usr/bin/zmap"
   install -Dm 644 src/zmap.1 "${pkgdir}/usr/share/man/man1/zmap.1"
   install -Dm 644 conf/* -t "${pkgdir}/etc/zmap"
-  for F in AUTHORS CHANGELOG INSTALL README.md; do
+  for F in AUTHORS CHANGELOG.md INSTALL.md README.md; do
     install -Dm 644 "${F}" "${pkgdir}/usr/share/doc/zmap/${F}"
   done
   cp -a examples "${pkgdir}/usr/share/doc/zmap"
