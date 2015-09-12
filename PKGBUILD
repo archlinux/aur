@@ -1,25 +1,25 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=mongoclock
-pkgver=1.1
-pkgrel=2
+pkgver=2
+pkgrel=1
 pkgdesc='Just a humongous clock for the terminal'
 arch=(any)
 url='https://github.com/maandree/mongoclock'
 license=('custom: GNUAllPermissive')
-depends=(sh python3 coreutils)
-makedepends=(sed texinfo gzip)
+depends=(glibc linux general-preprocessor)
+makedepends=(linux-api-headers)
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(5b0b98729626d6fdfcdae94539385b80f12d4d14a6963a019831a79c94528947)
+sha256sums=(7182798bf59686360bebdd939f252929755c54d0de52946aaa5a7b6329b469e4)
 
 
 build() {
     cd "$srcdir/mongoclock-$pkgver"
-    make LIBEXEC=/lib/mongoclock
+    make
 }
 
 package() {
     cd "$srcdir/mongoclock-$pkgver"
-    make LIBEXEC=/lib/mongoclock DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 }
 
