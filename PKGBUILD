@@ -8,14 +8,13 @@ pkgdesc="Provides a complete Mailman3 installation"
 arch=(any)
 conflicts=('mailman-suite')
 provides=('mailman-suite')
-makedepends=('git')
 depends=('mailman-core' 'python-mailman-hyperkitty-plugin' 'mailman-django-git' 'python2-whoosh'
          'python2-django-postorius-git' 'python2-django-hyperkitty-git')
-url="https://gitlab.com/thelinuxguy/mailman-django"
-license=('LGPL')
+url=""
+license=()
 options=(!emptydirs)
-source=("git+https://gitlab.com/thelinuxguy/mailman-django.git")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
 
 package() {
   :
