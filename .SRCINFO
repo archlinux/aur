@@ -1,0 +1,25 @@
+pkgbase = gnome-twitch-git
+	pkgdesc = Enjoy Twitch on your GNOME desktop
+	pkgver = r20.832f159
+	pkgrel = 1
+	url = https://github.com/Ippytraxx/gnome-twitch
+	install = gnome-twitch-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = libsoup
+	depends = json-glib
+	depends = gstreamer
+	depends = gst-libav
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	source = gnome-twitch-git::git+https://github.com/ippytraxx/gnome-twitch.git
+	md5sums = SKIP
+
+pkgname = gnome-twitch-git
+
