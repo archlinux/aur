@@ -10,6 +10,7 @@ pkgbase = android-file-transfer
 	depends = qt5-base
 	depends = fuse
 	depends = libxkbcommon-x11
+	conflicts = android-file-transfer-linux-git
 	source = https://github.com/whoozle/android-file-transfer-linux/archive/v2.3.tar.gz
 	md5sums = 42cb2ff57ec6525cd2040f8e1989e504
 
