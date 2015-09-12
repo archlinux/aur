@@ -2,8 +2,8 @@
 
 pkgname=khard-git
 _gitname=khard
-pkgver=0.4.1.r1.g8a206ce
-pkgrel=3
+pkgver=0.5.0.r0.g077b5e6
+pkgrel=1
 pkgdesc="Console carddav client"
 license=("GPL3")
 url="https://github.com/scheibler/khard/"
