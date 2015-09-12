@@ -5,6 +5,7 @@ pkgbase = python2-django-postorius
 	url = https://gitlab.com/mailman/postorius
 	arch = any
 	license = LGPL
+	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-django
 	depends = python2-django-browserid
