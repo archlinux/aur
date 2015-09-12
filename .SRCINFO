@@ -1,12 +1,15 @@
 pkgbase = polyglot-winboard-git
 	pkgdesc = UCI/USI/UCCI to XBoard adapter (WinBoard fork)
 	pkgver = 1ed8a49
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hgm.nubati.net/cgi-bin/gitweb.cgi?p=polyglot.git;a=summary
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
+	provides = polyglot
+	conflicts = polyglot
+	replaces = polyglot
 	source = polyglot.tar.gz::http://hgm.nubati.net/cgi-bin/gitweb.cgi?p=polyglot.git;a=snapshot;h=refs/heads/learn;sf=tgz
 	md5sums = SKIP
 

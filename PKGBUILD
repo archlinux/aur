@@ -2,12 +2,15 @@
 
 pkgname=polyglot-winboard-git
 pkgver=1ed8a49
-pkgrel=2
+pkgrel=3
 pkgdesc="UCI/USI/UCCI to XBoard adapter (WinBoard fork)"
 arch=('i686' 'x86_64')
 url="http://hgm.nubati.net/cgi-bin/gitweb.cgi?p=polyglot.git;a=summary"
 license=('GPL2')
 depends=('glibc')
+provides=('polyglot')
+conflicts=('polyglot')
+replaces=('polyglot')
 # If anyone knows the URL of the actual repository, please tell me!
 source=("polyglot.tar.gz::http://hgm.nubati.net/cgi-bin/gitweb.cgi?p=polyglot.git;a=snapshot;h=refs/heads/learn;sf=tgz")
 md5sums=('SKIP')
