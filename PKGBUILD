@@ -9,10 +9,9 @@ arch=(any)
 url="https://github.com/maraujop/django-crispy-forms"
 license=('MIT')
 options=(!emptydirs)
-install=
 source=("https://github.com/maraujop/django-crispy-forms/archive/${pkgver}.tar.gz")
 sha256sums=('a790f85b917c93f3895cda6c36716e6ae749104ea9b44871400d94b82f879e0e')
-
+makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-crispy-forms() {
   depends=('python-django')
