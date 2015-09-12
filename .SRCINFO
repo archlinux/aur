@@ -8,7 +8,7 @@ pkgbase = binnavi-git
 	makedepends = git
 	makedepends = maven
 	makedepends = apache-ant
-	makedepends = java-environment>=7
+	makedepends = java-environment>=8
 	depends = java-runtime>=8
 	depends = postgresql
 	provides = binnavi

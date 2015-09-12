@@ -8,7 +8,7 @@ pkgdesc="A binary analysis IDE that allows to inspect, navigate, edit and annota
 url="https://github.com/google/binnavi"
 arch=('any')
 license=('Apache')
-makedepends=('git' 'maven' 'apache-ant' 'java-environment>=7')
+makedepends=('git' 'maven' 'apache-ant' 'java-environment>=8')
 depends=('java-runtime>=8' 'postgresql')
 provides=('binnavi')
 conflicts=('binnavi')
