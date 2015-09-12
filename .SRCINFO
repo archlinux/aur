@@ -1,0 +1,22 @@
+pkgbase = compiz-fusion-plugins-unsupported
+	pkgdesc = Compiz Fusion Unsupported plugins,provide effects like snow and fish
+	pkgver = 0.8.10
+	pkgrel = 2
+	url = http://www.northfield.ws/projects/compiz/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = gettext
+	depends = compiz-core>=0.8.10
+	depends = compiz-bcop>=0.8.10
+	depends = compiz-fusion-plugins-main>=0.8.10
+	depends = libnotify
+	depends = mesa
+	options = !libtool
+	source = http://www.northfield.ws/projects/compiz/releases/0.8.10/plugins-unsupported.tar.gz
+	sha256sums = 9ba0c1cfd06a19733f711302d5daf1e76d9e2d17b799a5f4a6f6eb13b99fac32
+
+pkgname = compiz-fusion-plugins-unsupported
+
