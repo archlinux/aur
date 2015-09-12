@@ -1,0 +1,18 @@
+pkgbase = lltdscan-git
+	pkgdesc = Scan for LLTD-enabled hosts on your network
+	pkgver = 20130204.r7.g258dbb1
+	pkgrel = 1
+	url = https://github.com/zed-0xff/lltdscan
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libpcap
+	depends = libnet
+	provides = lltdscan
+	conflicts = lltdscan
+	source = git://github.com/zed-0xff/lltdscan.git
+	sha256sums = SKIP
+
+pkgname = lltdscan-git
+
