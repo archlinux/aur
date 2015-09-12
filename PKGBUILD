@@ -6,7 +6,7 @@
 _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
-pkgver=224
+pkgver=225
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -23,7 +23,8 @@ source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         'initcpio-install-systemd'
         'initcpio-install-udev'
         'parabola.conf'
-        'loader.conf')
+        'loader.conf'
+        'gnu+linux.patch')
 md5sums=('SKIP'
          '936208db8995db77efbb388735f950af'
          'db7c5e4aaa501c1af4301e011f4f5966'
@@ -31,16 +32,22 @@ md5sums=('SKIP'
          '976c5511b6493715e381f43f16cdb151'
          '1b3aa3a0551b08af9305d33f85b5c2fc'
          '36ee74767ac8734dede1cbd0f4f275d7'
-         '9b9f4a58e4c4009bf5290c5b297600c3')
+         '9b9f4a58e4c4009bf5290c5b297600c3'
+         '5d7e15f4bd660cba06a7323b53c1e777')
 
 prepare() {
   cd "$_pkgbase"
 
-  patch -Np1 <../0001-adds-TCP-Stealth-support-to-systemd-221.patch
+  # Rename "Linux" -> "GNU/Linux"
+  patch -Np1 -i "$srcdir/gnu+linux.patch"
+  sed -i '\|os_name| s|Linux|GNU/Linux|' src/journal-remote/journal-gatewayd.c
+  sed -i '\|pretty_name| s|Linux|GNU/Linux|' src/analyze/analyze.c src/core/main.c src/firstboot/firstboot.c
+  sed -i '\|PRETTY_NAME| s|Linux|GNU/Linux|' src/kernel-install/90-loaderentry.install
 
-  # networkd: fix networkd crash
-  # https://github.com/systemd/systemd/commit/49f6e11e89b4
-  git cherry-pick -n 49f6e11e89b4
+  # Rename "Linux Boot Manager" -> "Systemd Boot Manager"
+  sed -i 's|Linux Boot Manager|Systemd Boot Manager|' src/boot/bootctl.c
+
+  patch -Np1 <../0001-adds-TCP-Stealth-support-to-systemd-221.patch
 
   ./autogen.sh
 }
@@ -114,7 +121,7 @@ package_systemd-knock() {
   rm -r "$pkgdir/usr/lib/rpm"
 
   # add back tmpfiles.d/legacy.conf
-  install -m644 "systemd/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
+  install -m644 "$_pkgbase/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
 
   # Replace dialout/tape/cdrom group in rules with uucp/storage/optical group
   sed -i 's#GROUP="dialout"#GROUP="uucp"#g;

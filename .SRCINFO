@@ -1,5 +1,5 @@
 pkgbase = systemd-knock
-	pkgver = 224
+	pkgver = 225
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = systemd-knock
 	makedepends = git
 	options = strip
 	options = debug
-	source = git://github.com/systemd/systemd.git#tag=v224
+	source = git://github.com/systemd/systemd.git#tag=v225
 	source = https://repo.parabola.nu/other/knock/patches/systemd/0001-adds-TCP-Stealth-support-to-systemd-221.patch
 	source = https://repo.parabola.nu/other/systemd-knock/splash-parabola.bmp
 	source = initcpio-hook-udev
@@ -36,6 +36,7 @@ pkgbase = systemd-knock
 	source = initcpio-install-udev
 	source = parabola.conf
 	source = loader.conf
+	source = gnu+linux.patch
 	md5sums = SKIP
 	md5sums = 936208db8995db77efbb388735f950af
 	md5sums = db7c5e4aaa501c1af4301e011f4f5966
@@ -44,6 +45,7 @@ pkgbase = systemd-knock
 	md5sums = 1b3aa3a0551b08af9305d33f85b5c2fc
 	md5sums = 36ee74767ac8734dede1cbd0f4f275d7
 	md5sums = 9b9f4a58e4c4009bf5290c5b297600c3
+	md5sums = 5d7e15f4bd660cba06a7323b53c1e777
 
 pkgname = systemd-knock
 	pkgdesc = system and service manager with support for stealth TCP sockets (Parabola rebranded)
@@ -72,9 +74,9 @@ pkgname = systemd-knock
 	optdepends = systemd-knock-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=224
-	provides = udev=224
-	provides = systemd=224
+	provides = systemd-tools=225
+	provides = udev=225
+	provides = systemd=225
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -116,14 +118,14 @@ pkgname = libsystemd-knock
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=224
+	provides = libsystemd=225
 	conflicts = libsystemd
 
 pkgname = systemd-knock-sysvcompat
 	pkgdesc = sysvinit compat for systemd-knock
 	license = GPL2
 	depends = systemd-knock
-	provides = systemd-sysvcompat=224
+	provides = systemd-sysvcompat=225
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
