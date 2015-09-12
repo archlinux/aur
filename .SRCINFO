@@ -1,0 +1,29 @@
+pkgbase = python-babel-git
+	pkgdesc = A collection of tools for internationalizing Python applications
+	pkgver = r.
+	pkgrel = 1
+	url = http://babel.pocoo.org/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-pytz
+	makedepends = python2-pytz
+	source = git+https://github.com/mitsuhiko/babel.git
+	sha512sums = SKIP
+
+pkgname = python-babel-git
+	depends = python
+	depends = python-pytz
+	provides = python-babel
+	conflicts = python-babel
+
+pkgname = python2-babel-git
+	depends = python2
+	depends = python2-pytz
+	provides = python2-babel
+	conflicts = python2-babel
+
