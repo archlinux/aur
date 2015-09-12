@@ -1,0 +1,16 @@
+pkgbase = python-mailman-hyperkitty-plugin
+	pkgdesc = Hyperkitty archive plugin for mailman
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/mailman/mailman-hyperkitty
+	arch = any
+	license = GPL
+	depends = mailman-core
+	depends = python-setuptools
+	depends = python-requests
+	options = !emptydirs
+	source = mailman-hyperkitty-1.0.0.tar.gz::https://gitlab.com/mailman/mailman-hyperkitty/repository/archive.tar.gz?ref=v1.0.0
+	sha256sums = b52fcbf6c4ecbde47569fd147ac4251dc76f6c66a28f4d4045864211d5f6b26b
+
+pkgname = python-mailman-hyperkitty-plugin
+
