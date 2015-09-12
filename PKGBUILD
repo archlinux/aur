@@ -1,6 +1,7 @@
+_reponame=babel
 pkgbase=python-babel-git
 pkgname=(python-babel-git python2-babel-git)
-pkgver=r.
+pkgver=r878.ada7140
 pkgrel=1
 pkgdesc="A collection of tools for internationalizing Python applications"
 url="http://babel.pocoo.org/"
@@ -13,7 +14,7 @@ source=('git+https://github.com/mitsuhiko/babel.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$_reponame"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

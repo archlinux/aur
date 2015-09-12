@@ -1,6 +1,6 @@
 pkgbase = python-babel-git
 	pkgdesc = A collection of tools for internationalizing Python applications
-	pkgver = r.
+	pkgver = r878.ada7140
 	pkgrel = 1
 	url = http://babel.pocoo.org/
 	arch = any
