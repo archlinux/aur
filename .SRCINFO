@@ -1,0 +1,15 @@
+pkgbase = netbeans-python
+	pkgdesc = NetBeans Python plugin
+	pkgver = 8.0.2
+	pkgrel = 1
+	url = http://http://nbpython.org/
+	arch = any
+	license = GNU LGPL V2.1
+	license = CDDL v1.0
+	makedepends = unpacknbm
+	depends = netbeans=8.0.2
+	source = http://plugins.netbeans.org/download/plugin/3380
+	md5sums = 96739d59a1b8e200cb448de38945b1a8
+
+pkgname = netbeans-python
+
