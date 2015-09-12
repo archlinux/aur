@@ -2,13 +2,13 @@
 
 pkgname=buildnotify-hg
 pkgver=0.3.5.r120.56282fc2b49f
-pkgrel=2
+pkgrel=3
 pkgdesc="Cruise Control build monitor for Windows/Linux/Mac"
 arch=('any')
 url="http://bitbucket.org/Anay/buildnotify/"
 license=('GPL3')
 depends=('python2' 'python2-pyqt4' 'python2-pytz' 'python2-dateutil')
-makedepends=('mercurial python2-setuptools')
+makedepends=('mercurial' 'python2-setuptools')
 source=("hg+https://bitbucket.org/Anay/buildnotify"
         "buildnotify.desktop")
 md5sums=('SKIP'
