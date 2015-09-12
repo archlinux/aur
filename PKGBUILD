@@ -1,7 +1,8 @@
-# Maintainer: anekos <anekos@snca.net>
+# Maintainer: Simon Tunnat <simon+aur@tunn.at>
+# Previous maintainer: anekos <anekos@snca.net>
 pkgname=growl-for-linux
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Growl for Linux"
 url="http://mattn.github.com/growl-for-linux/"
 arch=('i686' 'x86_64')
