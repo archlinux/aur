@@ -1,0 +1,24 @@
+#!/bin/bash
+
+build() {
+    add_module fuse
+    add_module loop
+    add_binary ntfs-3g
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+Support for mounting Arch root from a file image.
+Make sure to add the filesystem kernel modules
+for your image type when building the initramfs
+as it won't be auto-detected.
+
+Syntax: root=<rootdev>@/<imagepath>
+        partfstype=<fstype>
+        offset=<int>
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

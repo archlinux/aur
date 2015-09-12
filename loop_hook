@@ -1,0 +1,23 @@
+run_hook() {
+    case $root in
+    *@*)
+        rootpart=${root%%@*}
+        rootimg=${root#*@}
+
+        mkdir /new_rootpart
+        if [ "$partfstype" = ntfs ]; then
+            # see http://www.freedesktop.org/wiki/Software/systemd/RootStorageDaemons/
+            ln -s ntfs-3g /usr/bin/@ntfs-3g
+            @ntfs-3g "$rootpart" /new_rootpart -o dmask=022,fmask=133
+        else
+            mount ${partfstype:+-t $partfstype} "$rootpart" /new_rootpart
+        fi
+        modprobe loop
+        root=`losetup -f`
+        if ! losetup ${offset:+-o $offset} "$root" /new_rootpart/"$rootimg"; then
+             err "Unable to set up root '$root' as loop of '/new_rootpart/$rootimg'"
+             launch_interactive_shell
+        fi
+        ;;
+    esac
+}

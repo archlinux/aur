@@ -1,0 +1,17 @@
+post_install() {
+  echo "Example usage of this hook:"
+  echo "For booting an Arch Linux system pacstrap'd to /ARCH"
+  echo "on a Wubi (https://wiki.ubuntu.com/WubiGuide) install:"
+  echo "add the loop amd subdir hooks to your initramefs, then"
+  echo "set up the kernel to boot with the following command line:"
+  echo
+  echo "root=/dev/sda2@/ubuntu/disks/root.disk partfstype=ntfs rootdir=ARCH rw"
+  echo
+  echo "If you want to access the underlying Windows and Ubuntu systems"
+  echo "from Arch, also add the auxmount hook, create /mnt/rootpart and "
+  echo "/mnt/rootimg and add 'auxmnt=mnt' to the kernel command line."
+}
+
+post_upgrade() {
+  post_install
+}

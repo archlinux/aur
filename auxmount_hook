@@ -1,0 +1,16 @@
+run_latehook() {
+    local _postfix _d
+
+    if [ ! -z "$auxmnt" ]; then
+        for _d in /*; do
+            case $_d in
+                /new_root*)
+                _postfix=${_d#/new_root}
+                if [ ! -z "$_postfix" ] && [ -d /new_root/"$auxmnt"/root$_postfix ]; then
+                    mount --bind $_d /new_root/"$auxmnt"/root$_postfix
+                fi
+                ;;
+            esac
+        done
+    fi
+}

@@ -1,0 +1,16 @@
+run_hook() {
+    if [ ! -z "$rootdir" ]; then
+        mv /new_root /new_rootimg
+        ln -s new_rootimg /new_root
+    fi
+}
+
+run_latehook() {
+    local _rootpath _postfix _d
+    if [ ! -z "$rootdir" -a -L /new_root ]; then
+        _rootpath=/`readlink /new_root`
+        rm /new_root
+        mkdir /new_root
+        mount --bind $_rootpath/"$rootdir" /new_root
+    fi
+}

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+build() {
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+Preserve auxiliary mounts of the early userspace.
+
+If in initramfs an auxiliary mount was created
+on /new_rootfoo, and $auxmnt/rootfoo exists,
+the initramfs' /new_rootfoo mount will be
+made available at $auxmnt/rootfoo.
+
+Syntax: auxmnt=/<dir>
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

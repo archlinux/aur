@@ -1,0 +1,25 @@
+pkgbase = mkinitcpio-loop-subdir
+	pkgdesc = mkinitcpio hooks that allow booting from Arch installed in a file image or subdir
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/csabahenk/mkinitcpio
+	install = mkinitcpio-loop-subdir.install
+	arch = any
+	license = GPL
+	depends = mkinitcpio>=0.9.0
+	depends = ntfs-3g
+	source = loop_hook
+	source = loop_install
+	source = subdir_hook
+	source = subdir_install
+	source = auxmount_hook
+	source = auxmount_install
+	md5sums = dd6f84a6d13caa0b5167915d2217c1a2
+	md5sums = 2cfd0525999e452b0362d1091bf99157
+	md5sums = 59b2424f231bfa3e577f55240dd92fdf
+	md5sums = 634c1bccc59f34972642eb86c615a336
+	md5sums = 6ca46ac8d394a4048c3330baddd0eccb
+	md5sums = 9c0cdb5f0600ae446ece556d5d648170
+
+pkgname = mkinitcpio-loop-subdir
+
