@@ -1,5 +1,5 @@
 pkgname=quicktile-git
-pkgver=20140626
+pkgver=20150913
 pkgrel=1
 url="https://github.com/ssokolow/quicktile"
 pkgdesc="Lightweight standalone alternative to Compiz Grid plugin"
