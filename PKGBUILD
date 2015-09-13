@@ -6,10 +6,10 @@ pkgdesc="Notify and Log 'Now Playing' and 'Watched' content from a Plex Media Se
 arch=('any')
 url="https://github.com/ljunkie/plexWatch"
 license=('unknown')
-depends=('plex-media-server' 'perl-libwww' 'perl-xml-simple' 'perl-dbi' 'perl-time-duration' 'perl-time-modules' 'perl-json')
+depends=('plex-media-server' 'perl-libwww' 'perl-xml-simple' 'perl-dbi' 'perl-time-duration' 'perl-time-modules' 'perl-json' 'perl-dbd-sqlite')
 optdepends=('perl-net-twitter: Required ONLY if you use twitter'
-            'perl-growl-gntp: Required ONLY if you use GNTP'
             'perl-net-oauth: Required ONLY if you use twitter'
+            'perl-growl-gntp: Required ONLY if you use GNTP'
             'perl-net-smtp-ssl: Required ONLY if you use Email'
             'perl-file-readbackwards: Required ONLY if Client IP Logging is enabled')
 source=("plexWatch.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -19,8 +19,6 @@ package() {
   cd "${srcdir}/plexWatch-${pkgver}"
   install -Dm 777 plexWatch.pl "${pkgdir}/opt/plexWatch/plexWatch.pl"
   install -Dm 755 config.pl-dist "${pkgdir}/opt/plexWatch/config.pl"
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s /opt/plexWatch/plexWatch.pl "${pkgdir}/usr/bin/plexwatch"
 }
 
 
