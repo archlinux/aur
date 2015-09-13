@@ -7,7 +7,7 @@
 
 pkgname=courier-mta
 pkgver=0.75.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -40,16 +40,16 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	courier-courierfilter.service
 	courier-imapd.conf)
 sha1sums=('6e6f279530bcca09090cd9f6a47003a7421ba3ef'
-	    '5e7f4bc751663069c773ec39bb2761c6bd506a95'
-	    'f68f7c96abd83a78405227fa6dee20cefc8f6119'
-	    '6a4617b334661ff6e1c83f5d2f83f467d59718d0'
-	    'b7e0b0acb7ddb5f2874d33635497d33609eed40a'
-	    'b9029eb07cb18768d66d6741d7bdf1a59878ef9c'
-	    'af64a07a0ce852277556829129dcc3b3f7a6dfbe'
-	    'd5918e95df3009091684597e38fbffd19a5786fe'
-	    'd306d91b0e5f85d455683ce073282257fd89542f'
-	    '262aea3a0436db6aff6a2b2c89fb7bb6a0b91f4b'
-	    '997d34d07af2446f6283b183517cf3e2543c5f4a'
+	    '160f270d8214ac39adc0d1618bc981c59f080adf'
+	    '71d07d57d3c211abf267be140ffb074ac2492448'
+	    '6b06348e019e8883bcac314169e920f156ed1fa4'
+	    '3c6e285fb83aaecab274ea313619cc7a6bf09e05'
+	    '74462efddede8262ec047eb21edada596d38732d'
+	    'e06cdb4014cb4c953dcedf6319eb31cc72a0c867'
+	    '315a26f6c74a9a1bbf9fdc1329095a15db0b5fc6'
+	    'd768b9759a2bca407cf225771c49a83428db2a2c'
+	    '94703b7bb090754e78710df42f658407a5c0a798'
+	    '2c9a51fac9adb1bfb71a9d2b00e417dba4a0c249'
 	    '72b81e3d330486e2e53ba11b498332a7bc7ea37e')
 
 build() {
@@ -131,7 +131,7 @@ package() {
    chown -R courier:courier ${pkgdir}/usr/lib/courier/modules
    rm -r ${pkgdir}/var/run
    #chown -R courier:courier ${pkgdir}/var/run/courier
-   chown root:root ${pkgdir}/usr/{.,bin,lib,share}
+   chown -R root:root ${pkgdir}/usr/{.,bin,lib,share}
 
   # Recent fixes concerning imapd-binary, see https://aur.archlinux.org/packages/courier-mta/
   install -m 755 "${srcdir}/courier-${pkgver}/courier/imapd" "${pkgdir}/usr/lib/courier/courierimapd"

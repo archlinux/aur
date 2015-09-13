@@ -3,7 +3,7 @@ Description=Courier filter Daemon
 
 [Service]
 Type=forking
-ExecStartPre=[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier
+ExecStartPre=/usr/bin/sh -c "[ -d /var/run/courier ] || mkdir -p /var/run/courier && chown courier:courier /var/run/courier"
 ExecStart=/usr/sbin/courierfilter start
 ExecStop=/usr/sbin/courierfilter stop
 PIDFile=/var/run/courier/courierfilter.pid
