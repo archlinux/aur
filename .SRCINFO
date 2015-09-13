@@ -1,0 +1,19 @@
+pkgbase = pidgin-mrim-prpl-git
+	pkgdesc = Mail.Ru Agent protocol plugin for Pidgin (libpurple)
+	pkgver = 20150913
+	pkgrel = 1
+	url = https://bitbucket.org/mrim-prpl-team/mrim-prpl
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = libpurple
+	provides = mrim-prpl
+	conflicts = pidgin-mrim-prpl
+	source = git+https://bitbucket.org/mrim-prpl-team/mrim-prpl.git
+	md5sums = SKIP
+
+pkgname = pidgin-mrim-prpl-git
+
