@@ -1,0 +1,174 @@
+--- konversation-1.5/data/scripts/sayclip~	2014-04-24 14:41:03.332179998 +0000
++++ konversation-1.5/data/scripts/sayclip	2014-04-24 14:41:24.752057066 +0000
+@@ -35,7 +35,7 @@
+     sys.exit("This script is intended to be run from within Konversation.")
+ 
+ try:
+-    clipboard = subprocess.check_output(('qdbus', 'org.kde.klipper', '/klipper', 'getClipboardContents'))
++    clipboard = subprocess.check_output(('qdbus-qt4', 'org.kde.klipper', '/klipper', 'getClipboardContents'))
+ except subprocess.CalledProcessError:
+     konversation.dbus.error(i18n("Unable to retrieve clipboard contents from Klipper."), exit=True)
+ 
+--- konversation-1.5/data/scripts/uptime~	2014-04-24 14:41:33.182008693 +0000
++++ konversation-1.5/data/scripts/uptime	2014-04-24 14:42:06.111819793 +0000
+@@ -19,7 +19,7 @@
+ } else {
+ 	$UPTIME = `cat /proc/uptime`;
+ 	if (not $UPTIME) {
+-		exec 'qdbus', 'org.kde.konversation', '/irc', 'info', 'Could not read uptime. Check that /proc/uptime exists.';
++		exec 'qdbus-qt4', 'org.kde.konversation', '/irc', 'info', 'Could not read uptime. Check that /proc/uptime exists.';
+ 	}
+ 	@uparray = split(/\./, $UPTIME);
+     $seconds = $uparray[0];
+@@ -40,15 +40,15 @@
+ 	$minutes = int($seconds/60);
+ }
+ if( $days && $hours ) {
+-	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days, $hours hours and $minutes minutes";
++	exec 'qdbus-qt4', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days, $hours hours and $minutes minutes";
+ }
+ elsif( !$days && $hours ) {
+-	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $hours hours and $minutes minutes";
++	exec 'qdbus-qt4', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $hours hours and $minutes minutes";
+ }
+ elsif( $days && !$hours ) {
+-	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days and $minutes minutes";
++	exec 'qdbus-qt4', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days and $minutes minutes";
+ }
+ elsif( !$days && !$hours ) {
+-	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $minutes minutes";
++	exec 'qdbus-qt4', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $minutes minutes";
+ }
+ 
+--- konversation-1.5/data/scripts/mail~	2014-04-24 14:42:12.458450062 +0000
++++ konversation-1.5/data/scripts/mail	2014-04-24 14:43:15.954752752 +0000
+@@ -18,18 +18,18 @@
+ getmails()
+ {
+ 
+-  qdbus org.kde.kmail > /dev/null || {
+-    qdbus org.kde.konversation /irc info "Sorry kmail is not running"
++  qdbus-qt4 org.kde.kmail > /dev/null || {
++    qdbus-qt4 org.kde.konversation /irc info "Sorry kmail is not running"
+     exit
+   }
+   
+-  for f in $(qdbus org.kde.kmail /KMail folderList) ; do
+-   qdbus org.kde.kmail /KMail getFolder $f > /dev/null
+-   MAILFOLDER=$(qdbus org.kde.kmail /Folder "displayPath" | grep -i $FOLDER)
++  for f in $(qdbus-qt4 org.kde.kmail /KMail folderList) ; do
++   qdbus-qt4 org.kde.kmail /KMail getFolder $f > /dev/null
++   MAILFOLDER=$(qdbus-qt4 org.kde.kmail /Folder "displayPath" | grep -i $FOLDER)
+    if [ "$MAILFOLDER" != "" ] ; then
+      FOUNDFOLDER=1
+-     MAILCOUNT=$(qdbus org.kde.kmail /Folder unreadMessages )
+-     MAILTOTALCOUNT=$(qdbus org.kde.kmail /Folder messages )
++     MAILCOUNT=$(qdbus-qt4 org.kde.kmail /Folder unreadMessages )
++     MAILTOTALCOUNT=$(qdbus-qt4 org.kde.kmail /Folder messages )
+      MAILTOTALCOUNT=$(($MAILCOUNT + $MAILTOTALCOUNT))
+      if [[ -z "$MAILCOUNT" ]] ; then MAILCOUNT = "0" ; fi
+      if [ "$MAILCOUNT" != 0 ] ;  then
+@@ -41,7 +41,7 @@
+ 
+   if [[ -z "$FOUNDEMAIL" ]] ; then
+     if [[ -z "$FOUNDFOLDER" ]] ; then
+-      qdbus org.kde.konversation /irc info "No email folders were found that had a name containing '$FOLDER'"
++      qdbus-qt4 org.kde.konversation /irc info "No email folders were found that had a name containing '$FOLDER'"
+       exit
+     else
+       echo "No new emails in any folders matching '$FOLDER'"
+@@ -66,5 +66,5 @@
+ #  exit
+ #fi
+ 
+-getmails | head -n 3 | while read line; do qdbus org.kde.konversation /irc say $SERVER "$TARGET" "$line"; done
++getmails | head -n 3 | while read line; do qdbus-qt4 org.kde.konversation /irc say $SERVER "$TARGET" "$line"; done
+ 
+--- konversation-1.5/data/scripts/media~	2014-04-24 14:43:22.754713792 +0000
++++ konversation-1.5/data/scripts/media	2014-04-24 14:43:30.764667903 +0000
+@@ -76,7 +76,7 @@
+ # 'qdbus' command installed by Qt. If you need to you can change this here,
+ # but beware that the output format of the alternate command has to match that
+ # of 'qdbus'.
+-dbus_command = 'qdbus'
++dbus_command = 'qdbus-qt4'
+ 
+ # If one of the title, album or artist metadata fields contains a character
+ # listed in FIXUP_CHARS, or if a string matching the regular expression given
+--- konversation-1.5/data/scripts/fortune~	2014-04-24 14:43:37.497962666 +0000
++++ konversation-1.5/data/scripts/fortune	2014-04-24 14:43:45.934581009 +0000
+@@ -49,4 +49,4 @@
+     }
+ }
+ close(FORTUNES);
+-exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, $MESSAGE;
++exec 'qdbus-qt4', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, $MESSAGE;
+--- konversation-1.5/data/scripts/tinyurl~	2014-04-24 14:43:50.867886087 +0000
++++ konversation-1.5/data/scripts/tinyurl	2014-04-24 14:44:22.844369658 +0000
+@@ -15,16 +15,16 @@
+   else
+     TINYURL="$(wget -T10 -t2 -qO- http://tinyurl.com/api-create.php?url=$URL|tail -1)"
+   fi
+-else qdbus org.kde.konversation /irc error "No url given: usage is \"/tinyurl URL [NickName]\""
++else qdbus-qt4 org.kde.konversation /irc error "No url given: usage is \"/tinyurl URL [NickName]\""
+     exit 1
+ fi
+ 
+ if test -z $TINYURL; then
+-    qdbus org.kde.konversation /irc error "Unable run tinyurl script, please make sure you have curl or wget installed"
++    qdbus-qt4 org.kde.konversation /irc error "Unable run tinyurl script, please make sure you have curl or wget installed"
+ else
+     if test ! -z $NICK; then
+-        qdbus org.kde.konversation /irc say $SERVER "$TARGET" "${NICK}: $TINYURL"
++        qdbus-qt4 org.kde.konversation /irc say $SERVER "$TARGET" "${NICK}: $TINYURL"
+     else
+-        qdbus org.kde.konversation /irc say $SERVER "$TARGET" "$TINYURL"
++        qdbus-qt4 org.kde.konversation /irc say $SERVER "$TARGET" "$TINYURL"
+     fi
+ fi
+--- konversation-1.5/data/scripts/gauge~	2014-04-24 14:44:32.460981276 +0000
++++ konversation-1.5/data/scripts/gauge	2014-04-24 14:45:00.634153375 +0000
+@@ -10,23 +10,23 @@
+ 
+ if [ ! $TARGET ]
+ then
+-  qdbus org.kde.konversation /irc error "Can't write into status view."
++  qdbus-qt4 org.kde.konversation /irc error "Can't write into status view."
+ else
+   if [ ! $PERCENTAGE ]
+   then
+-    qdbus org.kde.konversation /irc error "USAGE: $0 <percentage>"
++    qdbus-qt4 org.kde.konversation /irc error "USAGE: $0 <percentage>"
+   else
+     PERCENTAGE=`echo $PERCENTAGE | sed 's/^0\+//'`
+     LEFT=$(($PERCENTAGE/5))
+     RIGHT=$((20-$LEFT))
+ 
+     if [[ $PERCENTAGE -lt 0 ]]; then
+-      qdbus org.kde.konversation /irc error "Percentage has to be bigger than 0"
++      qdbus-qt4 org.kde.konversation /irc error "Percentage has to be bigger than 0"
+       exit
+     fi
+     
+     if [[ $PERCENTAGE -gt 100 ]]; then
+-      qdbus org.kde.konversation /irc error "Percentage has to be smaller than 100"
++      qdbus-qt4 org.kde.konversation /irc error "Percentage has to be smaller than 100"
+       exit
+     fi
+ 
+@@ -64,6 +64,6 @@
+ 	OUTPUT="$OUTPUT *ding*"
+     fi
+ 
+-    qdbus org.kde.konversation /irc say $SERVER "$TARGET" "Beer load $OUTPUT"
++    qdbus-qt4 org.kde.konversation /irc say $SERVER "$TARGET" "Beer load $OUTPUT"
+   fi
+ fi
+--- konversation-1.5/data/scripting_support/python/konversation/dbus.py~	2014-04-24 14:48:10.343069193 +0000
++++ konversation-1.5/data/scripting_support/python/konversation/dbus.py	2014-04-24 14:45:29.863986156 +0000
+@@ -98,4 +98,4 @@
+ 
+ default_message_prefix = ''
+ 
+-_dbus_command = ('qdbus', 'org.kde.konversation', '/irc')
++_dbus_command = ('qdbus-qt4', 'org.kde.konversation', '/irc')
