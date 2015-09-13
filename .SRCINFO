@@ -1,19 +1,18 @@
 pkgbase = yara-git
 	pkgdesc = Tool aimed at helping malware researchers to identify and classify malware samples
-	pkgver = 3.4.0
+	pkgver = 3.4.0.1113.f502bdf
 	pkgrel = 1
 	url = https://plusvic.github.io/yara/
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = yara-git::git+https://github.com/plusvic/yara-git
+	makedepends = git
+	makedepends = openssl
+	depends = openssl
+	provides = yara
+	conflicts = yara
+	source = yara-git::git+https://github.com/plusvic/yara
 	sha512sums = SKIP
 
 pkgname = yara-git
-
-pkgname = python-yara-git
-
-pkgname = python2-yara-git
 
