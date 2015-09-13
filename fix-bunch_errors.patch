@@ -1,0 +1,107 @@
+--- cmake/FindGDAL.cmake
++++ cmake/FindGDAL.cmake
+@@ -83,7 +83,7 @@
+         # check for gdal version
+         # version 1.2.5 is known NOT to be supported (missing CPL_STDCALL macro)
+         # According to INSTALL, 1.4.0+ is required
+-        IF (GDAL_VERSION_MAJOR LESS 1 OR GDAL_VERSION_MINOR LESS 4)
++        IF (GDAL_VERSION_MAJOR LESS 1)
+           MESSAGE (FATAL_ERROR "GDAL version is too old (${GDAL_VERSION}). Use 1.4.0 or higher.")
+         ENDIF (GDAL_VERSION_MAJOR LESS 1 OR GDAL_VERSION_MINOR LESS 4)
+ 
+--- cmake/FindQWT.cmake
++++ cmake/FindQWT.cmake
+@@ -18,10 +18,10 @@
+   /usr/local/include
+   "$ENV{LIB_DIR}/include" 
+   "$ENV{INCLUDE}" 
+-  PATH_SUFFIXES qwt-qt4 qwt
++  PATH_SUFFIXES qwt5 qwt-qt4 qwt
+   )
+ 
+-FIND_LIBRARY(QWT_LIBRARY NAMES qwt qwt5 qwt-qt4 qwt5-qt4 PATHS 
++FIND_LIBRARY(QWT_LIBRARY NAMES qwt5 qwt qwt-qt4 qwt5-qt4 PATHS 
+   /usr/lib
+   /usr/local/lib
+   "$ENV{LIB_DIR}/lib" 
+--- cmake/SIPMacros.cmake
++++ cmake/SIPMacros.cmake
+@@ -85,11 +85,27 @@
+         ENDIF( ${CONCAT_NUM} LESS ${SIP_CONCAT_PARTS} )
+     ENDFOREACH(CONCAT_NUM RANGE 0 ${SIP_CONCAT_PARTS} )
+ 
++    # Suppress warnings
++    IF(PEDANTIC)
++      IF(MSVC)
++        # 4996 deprecation warnings (bindings re-export deprecated methods)
++        # 4701 potentially uninitialized variable used (sip generated code)
++        # 4702 unreachable code (sip generated code)
++        ADD_DEFINITIONS( /wd4996 /wd4701 /wd4702 )
++      ELSE(MSVC)
++        # disable all warnings
++        ADD_DEFINITIONS( -w )
++        IF(NOT APPLE)
++          ADD_DEFINITIONS( -fpermissive )
++        ENDIF(NOT APPLE)
++      ENDIF(MSVC)
++    ENDIF(PEDANTIC)
++    
+     ADD_CUSTOM_COMMAND(
+         OUTPUT ${_sip_output_files} 
+         COMMAND ${CMAKE_COMMAND} -E echo ${message}
+         COMMAND ${CMAKE_COMMAND} -E touch ${_sip_output_files} 
+-        COMMAND ${SIP_BINARY_PATH} ${_sip_tags} ${_sip_x} ${SIP_EXTRA_OPTIONS} -j ${SIP_CONCAT_PARTS} -c ${CMAKE_CURRENT_BINARY_DIR}/${_module_path} ${_sip_includes} ${_abs_module_sip}
++        COMMAND ${SIP_BINARY_PATH} ${_sip_tags} -e ${_sip_x} ${SIP_EXTRA_OPTIONS} -j ${SIP_CONCAT_PARTS} -c ${CMAKE_CURRENT_BINARY_DIR}/${_module_path} ${_sip_includes} ${_abs_module_sip}
+         DEPENDS ${_abs_module_sip} ${SIP_EXTRA_FILES_DEPEND}
+     )
+     # not sure if type MODULE could be uses anywhere, limit to cygwin for now
+--- src/core/qgsmaplayerregistry.h
++++ src/core/qgsmaplayerregistry.h
+@@ -121,16 +121,18 @@
+ //! protected constructor
+     QgsMapLayerRegistry( QObject * parent = 0 );
+ 
++    /** debugging member
++        invoked when a connect() is made to this object
++    */
++    void connectNotify( const char * signal );
++    
+   private:
+ 
+     static QgsMapLayerRegistry* mInstance;
+ 
+     QMap<QString, QgsMapLayer*> mMapLayers;
+ 
+-    /** debugging member
+-        invoked when a connect() is made to this object
+-    */
+-    void connectNotify( const char * signal );
++
+ 
+ 
+ }; // class QgsMapLayerRegistry
+--- src/gui/qgsmapcanvas.h
++++ src/gui/qgsmapcanvas.h
+@@ -380,6 +380,11 @@
+     /// Handle pattern for implementation object
+     std::auto_ptr<CanvasProperties> mCanvasProperties;
+ 
++    /**debugging member
++       invoked when a connect() is made to this object
++    */
++    void connectNotify( const char * signal );
++
+   private:
+     /// this class is non-copyable
+     /**
+@@ -424,10 +429,6 @@
+        the last entry in case a lot of resize events arrive in short time*/
+     QList< QPair<int, int> > mResizeQueue;
+ 
+-    /**debugging member
+-       invoked when a connect() is made to this object
+-    */
+-    void connectNotify( const char * signal );
+ 
+     //! current layer in legend
+     QgsMapLayer* mCurrentLayer;
