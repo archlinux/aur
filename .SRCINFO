@@ -23,10 +23,12 @@ pkgbase = spotify-beta
 	optdepends = libnotify: Adds desktop notifications
 	conflicts = spotify
 	options = !strip
-	source = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.13.112.g539ef41b_amd64.deb
 	source = spotify.protocol
-	sha256sums = 1f79cae705ae2e92fe51d4e59ada1011be53820f8186c857b98519a4247b845b
 	sha256sums = af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3
+	source_x86_64 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.13.112.g539ef41b_amd64.deb
+	sha256sums_x86_64 = 1f79cae705ae2e92fe51d4e59ada1011be53820f8186c857b98519a4247b845b
+	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.13.111.g6bd0deca_i386.deb
+	sha256sums_i686 = f8e5fef534c9fe47194574cf322ce758a39bb49915bf46cc55d7024e6f9eadde
 
 pkgname = spotify-beta
 
