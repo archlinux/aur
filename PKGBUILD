@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-git-meta
-pkgver=20150821
+pkgver=20150913
 pkgrel=1
 pkgdesc='Meta package for KDE Plasma 5'
 arch=(any)
@@ -35,7 +35,7 @@ depends=(kde-gtk-config-git
     ksshaskpass-git
     kscreen-git
     bluedevil-git
-    kgamma-git
+    kgamma5-git
     plasma-pa-git
     plasma-mediacenter-git
     kwallet-pam-git)
