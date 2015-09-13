@@ -1,0 +1,11 @@
+[Unit]
+Description=Webmin
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/etc/webmin/start
+ExecStop=/etc/webmin/stop
+
+[Install]
+WantedBy=multi-user.target
