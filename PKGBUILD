@@ -10,7 +10,7 @@ pkgdesc="Tool aimed at helping malware researchers to identify and classify malw
 url="https://plusvic.github.io/yara/"
 arch=('i686' 'x86_64')
 license=('Apache')
-depends=('openssl')
+depends=('openssl' 'file')
 makedepends=('git' 'openssl')
 provides=('yara')
 conflicts=('yara')
@@ -31,7 +31,7 @@ prepare() {
 build() {
   cd ${pkgbase}
   autoreconf --force --install
-  ./configure --prefix=/usr --with-crypto
+  ./configure --prefix=/usr --with-crypto --enable-magic
   make
 }
 

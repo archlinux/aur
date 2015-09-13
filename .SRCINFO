@@ -9,6 +9,7 @@ pkgbase = yara-git
 	makedepends = git
 	makedepends = openssl
 	depends = openssl
+	depends = file
 	provides = yara
 	conflicts = yara
 	source = yara-git::git+https://github.com/plusvic/yara
