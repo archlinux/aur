@@ -1,0 +1,19 @@
+pkgbase = perl-dancer2-plugin-database
+	pkgdesc = easy database connections for Dancer2 applications
+	pkgver = 2.13
+	pkgrel = 1
+	url = https://metacpan.org/release/Dancer2-Plugin-Database
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dancer-plugin-database-core>=0.12
+	depends = perl-dancer2>=0.151000
+	depends = perl-http-message>=0
+	depends = perl-plack>=1.0032
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AM/AMBS/Dancer2-Plugin-Database-2.13.tar.gz
+	md5sums = ed99ba150f5f2d68c5fffe78cb89e076
+	sha512sums = b0c61280e01a311b784afac95f1fd83d62a1fba0368450ad88efc6ea5f75fe04f97fd0a516468f56f34690a142a41d9a9d0aa86bba238019e37651f3408de9de
+
+pkgname = perl-dancer2-plugin-database
+
