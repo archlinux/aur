@@ -4,7 +4,7 @@
 # Contributor: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
 pkgname=openblas-lapack-git
 _pkgname=OpenBLAS
-pkgver=0.2.9.rc1.r679.ga96a4cb-1
+pkgver=0.2.9.rc1.r679.ga96a4cb
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack and cblas)"
 arch=('i686' 'x86_64')
