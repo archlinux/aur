@@ -1,7 +1,7 @@
 # Contributor: Daenyth <Daenyth+arch [AT] gmail [dot] com>
 pkgname=tremulous
 pkgver=1.1.0
-pkgrel=12
+pkgrel=13
 pkgdesc='Free team based FPS/RTS hybrid built on the ioq3 engine. Includes community updates'
 url='http://tremulous.net'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ conflicts=('tremulous-updated')
 replaces=('trem-backport' 'tremulous-updated')
 source=(git://github.com/jkent/tremulous-mgclient.git
         git://github.com/jkent/tremulous-mgtremded.git
-        https://github.com/aur-archive/tremulous/raw/master/game.qvm
+        game.qvm.bz2
         lakitu7_qvm.txt
         tremdedrc
         tremulous.desktop
@@ -21,11 +21,10 @@ source=(git://github.com/jkent/tremulous-mgclient.git
         tremulous.sh
         tremulous.xpm)
 backup=('etc/tremdedrc')
-# noextract=(mg_tremded_source_1.01.tar.gz)
 
 md5sums=('SKIP'
          'SKIP'
-         '90343619d140557d0c481a61ffa5756c'
+         'bbb59bd459fced70ab7e152c84c6fe1c'
          'a0b8970b33a27798c125f9152049013c'
          'f0056120d0192a0d4d591d1114439c52'
          'aef37632a2edcf74a53503a49530bad2'
@@ -65,7 +64,7 @@ package() {
 
   cd "${srcdir}/tremulous-mgclient"
   install -Dm755 "build/release-linux-${_arch}/tremulous.${_arch}"  "${pkgdir}/opt/tremulous/tremulous.${_arch}"
-  install -D -m755 "${srcdir}/tremulous.sh"                  	      "${pkgdir}/usr/bin/tremulous"
+  install -D -m755 "${srcdir}/tremulous.sh"               	        "${pkgdir}/usr/bin/tremulous"
 
   # Install the documentation
   install -Dm644 "${srcdir}/tremulous-mgclient/docs/mg-client-manual.txt" "$pkgdir/usr/share/tremulous/mg-client-manual.txt"
