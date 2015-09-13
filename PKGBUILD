@@ -2,7 +2,7 @@
 
 PKGEXT=.pkg.tar
 pkgname=shotcut-bin
-pkgver=150810
+pkgver=150911
 pkgrel=1
 pkgdesc="A free, open source, cross-platform video editor."
 arch=(i686 x86_64)
