@@ -11,6 +11,7 @@ pkgbase = hyperion-rpi-git
 	depends = python2
 	conflicts = hyperion-git
 	conflicts = hyperion-rpi-bin
+	backup = etc/conf.d/hyperion.config.json
 	source = hyperion::git+https://github.com/tvdzwan/hyperion.git#branch=master
 	source = hyperiond.service
 	source = LICENSE

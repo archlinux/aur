@@ -26,6 +26,10 @@ conflicts=(
   'hyperion-rpi-bin'
 )
 
+backup=(
+  'etc/conf.d/hyperion.config.json'
+)
+
 source=(
   "${pkgname%-rpi-git}::git+https://github.com/tvdzwan/hyperion.git#branch=master"
   "hyperiond.service"
