@@ -1,0 +1,15 @@
+pkgbase = smu
+	pkgdesc = A simplified markdown dialect and interpreter
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/Gottox/smu
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	options = zipman
+	source = https://github.com/Gottox/smu/archive/v1.4.tar.gz
+	md5sums = 576a45ba54a7e43bedbb2ae3ae691f3a
+
+pkgname = smu
+
