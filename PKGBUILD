@@ -3,22 +3,23 @@
 
 _pkgname=libdvdnav
 pkgname=lib32-${_pkgname}
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="The library for xine-dvdnav plugin (32 bit)"
 arch=('x86_64')
 license=('GPL')
 url="http://dvdnav.mplayerhq.hu/"
-depends=('lib32-libdvdread' "${_pkgname}")
+depends=('lib32-libdvdread>=5.0.2' "${_pkgname}")
 makedepends=('git')
 source=(git://git.videolan.org/libdvdnav.git#tag=$pkgver
-		Fix-reading-DVD-label.patch)
+	fix-crash-describe_title.patch)
+		
 md5sums=('SKIP'
-         'a92e0638a7cbe5f0e11458a05cf5fb8a')
+         'a23f89f9175a36f04b5e202bd4e35baa')
 
 prepare() {
 cd "${_pkgname}"
-patch -Np1 -i ../Fix-reading-DVD-label.patch
+patch -Np1 -i ../fix-crash-describe_title.patch
 autoreconf -fi
 }
 
