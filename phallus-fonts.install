@@ -6,6 +6,7 @@ update_font_cache() {
     xset -q | grep /usr/share/fonts/misc || xset +fp /usr/share/fonts/misc
     xset fp rehash
     fc-cache -fv
+}
 
 post_install() {
     update_font_cache
