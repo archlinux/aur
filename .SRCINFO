@@ -1,7 +1,7 @@
 pkgbase = gnaural
 	pkgdesc = An opensource binaural-beat generator
 	pkgver = 1.0.20110606
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gnaural.sourceforge.net/
 	install = gnaural.install
 	arch = i686
@@ -9,9 +9,6 @@ pkgbase = gnaural
 	license = GPL
 	depends = libglade
 	depends = portaudio
-	conflicts = gnaural2
-	conflicts = gnaural-cvs
-	conflicts = gnaural-bbgen
 	source = http://downloads.sourceforge.net/project/gnaural/Gnaural/gnaural-1.0.20110606.tar.gz
 	md5sums = 8eea03a78ba02ee5d13c55fc6c0c9a00
 
