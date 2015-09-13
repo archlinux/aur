@@ -74,6 +74,10 @@ package() {
     cmsContestImporter cmsAddContest cmsComputeComplexity cmsRemoveUser \
     cmsDumpImporter cmsReplayContest
   do
+    # Fix the shebang
+    sed -i "s|$pkgdir/usr/lib/cms/venv|/usr/lib/cms/venv|" $pkgdir/usr/lib/cms/venv/bin/$cmd
+
+    # Create link
     ln -s /usr/lib/cms/venv/bin/$cmd $pkgdir/usr/bin/$cmd
   done
 
