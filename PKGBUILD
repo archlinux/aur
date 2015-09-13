@@ -12,6 +12,7 @@ depends=("qt5-base" "qt5-webengine" "qml-material-git")
 makedepends=("git")
 provides=("$_pkgname" "$pkgname")
 conflicts=("$_pkgname")
+install=$pkgname.install
 source=("$pkgname::git+https://github.com/liri-browser/liri-browser.git"
         "liri-browser.sh" "liri-browser.desktop" "$pkgname.install")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
