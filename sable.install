@@ -1,0 +1,11 @@
+
+
+post_install() {
+echo ""
+echo ">>> Chromium.crx, Qt4, and Firefox themes are located within the theme folder at /usr/share/themes/Sable*"
+}
+
+post_upgrade() {
+echo ""
+echo ">>> Chromium.crx, Qt4, and Firefox themes are located within the theme folder at /usr/share/themes/Sable*"
+}
