@@ -7,6 +7,7 @@ pkgbase = python2-django-hyperkitty-git
 	license = GPL
 	makedepends = git
 	makedepends = python2-setuptools
+	depends = python2-mailmanclient
 	depends = python2-django-crispy-forms
 	depends = python2-django-rest-framework
 	depends = python2-django-extensions

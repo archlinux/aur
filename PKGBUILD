@@ -9,11 +9,11 @@ arch=(any)
 makedepends=('git' 'python2-setuptools')
 provides=('python2-django-hyperkitty')
 conflicts=('python2-django-hyperkitty')
-depends=('python2-django-crispy-forms' 'python2-django-rest-framework' 'python2-django-extensions'
-         'python2-social-auth' 'python2-django-gravatar' 'python2-django-paintstore'
-         'python2-django-compressor' 'python2-django-browserid' 'python2-django-haystack'
-         'python2-pytz' 'python2-dateutil' 'python2-enum34' 'python2-networkx' 'lessc'
-         'python2-robot-detection')
+depends=('python2-mailmanclient' 'python2-django-crispy-forms' 'python2-django-rest-framework'
+         'python2-django-extensions' 'python2-social-auth' 'python2-django-gravatar'
+         'python2-django-paintstore' 'python2-django-compressor' 'python2-django-browserid'
+         'python2-django-haystack' 'python2-pytz' 'python2-dateutil'
+         'python2-enum34' 'python2-networkx' 'lessc' 'python2-robot-detection')
 url="https://gitlab.com/mailman/hyperkitty"
 license=('GPL')
 options=(!emptydirs)
