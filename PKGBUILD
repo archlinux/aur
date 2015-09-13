@@ -3,7 +3,7 @@
 
 _pkgname=libdvdread
 pkgname=lib32-${_pkgname}
-pkgver=5.0.1
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="Provides a simple foundation for reading DVD video disks (32 bit)"
 arch=('x86_64')
@@ -12,7 +12,8 @@ license=('GPL')
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('lib32-libdvdcss' 'git')
 options=('!libtool')
-source=(git://git.videolan.org/libdvdread.git#tag=$pkgver)
+_gitver=511ac9c8199d7b604d6a65193fd2777b74fad776
+source=(git://git.videolan.org/libdvdread.git#commit=$_gitver)
 md5sums=('SKIP')
 
 prepare() {
