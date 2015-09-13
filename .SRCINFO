@@ -1,6 +1,6 @@
 pkgbase = hexchat-git
 	pkgdesc = A GTK+ based IRC client
-	pkgver = 2.11.0.9b2c560
+	pkgver = 2.11.0.r1186.g73636a0
 	pkgrel = 1
 	url = https://hexchat.github.io
 	install = hexchat.install
