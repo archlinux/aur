@@ -8,11 +8,11 @@ pkgrel=1
 pkgdesc="A Django app that provides a web user interface to access GNU Mailman archives"
 arch=(any)
 makedepends=('python2-setuptools')
-depends=('python2-django-crispy-forms' 'python2-django-rest-framework' 'python2-django-extensions'
+depends=('python2-mailmanclient' 'python2-django-crispy-forms' 'python2-django-rest-framework'
          'python2-social-auth' 'python2-django-gravatar' 'python2-django-paintstore'
          'python2-django-compressor' 'python2-django-browserid' 'python2-django-haystack'
          'python2-pytz' 'python2-dateutil' 'python2-enum34' 'python2-networkx' 'lessc'
-         'python2-robot-detection')
+         'python2-robot-detection' 'python2-django-extensions')
 url="https://gitlab.com/mailman/hyperkitty"
 license=('GPL')
 options=(!emptydirs)
