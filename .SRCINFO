@@ -1,0 +1,18 @@
+pkgbase = littler
+	pkgdesc = A hash-bang and simple command line pipe front end for GNU R
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://dirk.eddelbuettel.com/code/littler.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = r
+	makedepends = sh
+	source = http://dirk.eddelbuettel.com/code/littler/littler-0.2.3.tar.gz
+	sha256sums = a67abbac4c67b4d8c7dc493f21638da9f7f7ca813811cc36c8c8478b75088655
+
+pkgname = littler
+	depends = r
+	depends = sh
+
