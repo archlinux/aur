@@ -1,6 +1,6 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname=plexreport-git
-pkgver=r127.8f2d346
+pkgver=r130.7dba8ca
 pkgrel=1
 pkgdesc='Scripts to generate a weekly email of new additions to Plex.'
 arch=('any')
