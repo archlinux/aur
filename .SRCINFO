@@ -12,7 +12,7 @@ pkgbase = openblas-lapack-git
 	depends = gcc-libs
 	provides = openblas
 	provides = blas=3.5.0
-	provides = lapack-3.5.0
+	provides = lapack=3.5.0
 	provides = cblas
 	conflicts = blas
 	conflicts = openblas
