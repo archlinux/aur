@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-qt5
 	pkgdesc = A fast, reliable and cross-platform GUI fronted for Shadowsocks.
 	pkgver = 2.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/librehat/shadowsocks-qt5
 	install = shadowsocks-qt5.install
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = shadowsocks-qt5
 	makedepends = git
 	makedepends = make
 	depends = qt5-base>=5.2
-	depends = botan-1.10
+	depends = botan-1.10=1.10.10
 	depends = qrencode
-	depends = libqtshadowsocks>=1.4.2
+	depends = libqtshadowsocks>=1.6.1
 	depends = zbar
 	provides = shadowsocks-qt5
 	conflicts = shadowsocks-qt5
