@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-battery-status-git
+	pkgdesc = A configurable lightweight battery charge indicator and autohider. Includes a few quirky display modes.
+	pkgver = 6.r3.g6de2e4b
+	pkgrel = 1
+	url = https://github.com/milliburn/gnome-shell-extension-battery_status
+	install = gschemas.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gnome-shell
+	source = gnome-shell-extension-battery-status-git::git+https://github.com/milliburn/gnome-shell-extension-battery_status.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-battery-status-git
+
