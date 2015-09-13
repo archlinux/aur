@@ -18,7 +18,7 @@ optdepends=('openttd-opengfx: free graphics'
 _gitname=OpenTTD-patches
 
 # If you want the latest official release of the patch pack, uncomment this line:
-# _fragment="#tag=jgrpp-0.4.1"
+# _fragment="#tag=jgrpp-0.5.0"
 
 source=("git+https://github.com/JGRennison/$_gitname.git$_fragment"
         "http://finger.openttd.org/tags.txt")
@@ -50,7 +50,8 @@ build() {
         --install-dir=$pkgdir \
         --doc-dir=share/doc/$_installname \
         --menu-name="OpenTTD" \
-        --personal-dir=.$_installname
+        --personal-dir=.$_installname \
+        --without-libbfd
 
     make
 }
