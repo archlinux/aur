@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=clockr
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="simple curses clock wirtten in python"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/shaggytwodope/clockr"
 license=('MIT')
 depends=('python' 'ncurses')
 source=("https://github.com/shaggytwodope/clockr/archive/v$pkgver.tar.gz")
-md5sums=('e257cadc8935acc4ae56b99b5b8eaba6')
+md5sums=('572968183b93372d0dfbd3400ed45baa')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
