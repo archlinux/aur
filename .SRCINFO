@@ -1,0 +1,16 @@
+pkgbase = nodejs-lambda
+	pkgdesc = An effort to create the perfect programming language.
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://github.com/71104/lambda
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = lambda-0.8.5.tgz
+	options = !emptydirs
+	source = https://registry.npmjs.org/lambda/-/lambda-0.8.5.tgz
+	sha256sums = e92a80874b80dfac66bc54f4b0ce62e559f0d7f7ca2ea50bce5f1775b55dad2b
+
+pkgname = nodejs-lambda
+
