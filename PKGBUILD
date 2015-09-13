@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
 pkgname=roswell
 pkgver="0.0.3.46"
 pkgrel=1
