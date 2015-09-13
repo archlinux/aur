@@ -3,12 +3,15 @@
 
 pkgname=hyperion-rpi-bin
 pkgver=20150306.205657
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource 'AmbiLight' implementation (build for raspberry pi) (binary)"
 
 arch=('any')
 url="https://github.com/tvdzwan/hyperion"
 license=('MIT')
+
+depends=( 'python2' )
+makedepends=( 'qt4' )
 
 conflicts=(
   'hyperion-git'
