@@ -1,14 +1,14 @@
 pkgbase = volatility
 	pkgdesc = Advanced memory forensics framework
 	pkgver = 2.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/volatilityfoundation/volatility/wiki
 	arch = any
 	license = GPL2
 	makedepends = python2-setuptools
 	depends = python2-crypto
 	depends = distorm
-	optdepends = yara: classify malware support
+	optdepends = python2-yara: classify malware support
 	optdepends = python2-pillow: screenshots plugin support
 	optdepends = python2-openpyxl: excel file support
 	optdepends = python2-pytz: timezone conversion support

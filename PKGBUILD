@@ -1,17 +1,17 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Wes Brown <wesbrown18@gmail.com>
 
 pkgname=volatility
 pkgver=2.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Advanced memory forensics framework"
 url="https://github.com/volatilityfoundation/volatility/wiki"
 arch=('any')
 license=('GPL2')
 depends=('python2-crypto' 'distorm')
 optdepends=(
-  'yara: classify malware support'
+  'python2-yara: classify malware support'
   'python2-pillow: screenshots plugin support'
   'python2-openpyxl: excel file support'
   'python2-pytz: timezone conversion support'
