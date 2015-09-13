@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-starscope
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A tool like the venerable cscope, but for ruby, golang and other languages"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby'
          'ruby-parser'
          'ruby-ruby-progressbar')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('197c3793112fd5b617aa8f74b398dd76b2b55d427656cd97458836a9d2af785d')
+sha256sums=('c7db7166da3a0d5fac9900322c053ee4af7e0b65fbb743956be78d7805320842')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('ruby-starscope' 'starscope')
 conflicts=('starscope')
@@ -21,7 +21,7 @@ conflicts=('starscope')
 package() {
   cd "$srcdir"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   gem install \
     --no-user-install \
     --ignore-dependencies \
