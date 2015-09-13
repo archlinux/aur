@@ -1,0 +1,16 @@
+pkgbase = swar-red
+	pkgdesc = A dark red gtk theme.
+	pkgver = 1
+	pkgrel = 0
+	url = http://NoobsLab.com
+	arch = any
+	license = GPL
+	makedepends = perl
+	depends = gtk-engine-murrine
+	depends = gnome-themes-standard
+	depends = gtk-engines
+	source = http://ppa.launchpad.net/noobslab/swar-themes/ubuntu/pool/main/s/swar-red/swar-red_1-0~precise.tar.gz
+	md5sums = 5ba2e7cf2868bd6083c50c7827a6c273
+
+pkgname = swar-red
+
