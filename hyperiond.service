@@ -1,0 +1,10 @@
+[Unit]
+Description=An opensource 'AmbiLight' implementation
+Wants=graphical.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hyperiond /etc/conf.d/hyperion.config.json > /dev/null 2>&1
+
+[Install]
+WantedBy=multi-user.target

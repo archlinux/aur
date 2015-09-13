@@ -1,0 +1,24 @@
+pkgbase = hyperion-git
+	pkgdesc = An opensource 'AmbiLight' implementation
+	pkgver = r680.c8a2fe8
+	pkgrel = 1
+	url = https://github.com/tvdzwan/hyperion
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = protobuf
+	depends = libusb
+	depends = qt4
+	optdepends = xorg-server: X11 grabbing
+	provides = hyperion
+	conflicts = hyperion
+	backup = etc/conf.d/hyperion.config.json
+	source = hyperion::git+https://github.com/tvdzwan/hyperion#branch=master
+	source = hyperiond.service
+	sha256sums = SKIP
+	sha256sums = aab12fb3d901ea4c8694bd713b1a2187beae6a6ed40f3355d12fc7ad50aaf3fe
+
+pkgname = hyperion-git
+
