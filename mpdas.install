@@ -1,0 +1,6 @@
+# arg 1:  the new package version
+post_install() {
+    echo ">>> In order to use the scrobbler, you have to modify /etc/mpdasrc, refer to"
+    echo ">>> https://wiki.archlinux.org/index.php/Music_Player_Daemon/Tips_and_tricks#mpdas"
+    echo ">>> for more information."
+}
