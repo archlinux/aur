@@ -1,7 +1,7 @@
 pkgbase = autopass-git
 	pkgdesc = a rofi frontend for pass
 	pkgver = 0.r2.0ac233a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jreinert/autopass
 	arch = any
 	makedepends = git
@@ -12,6 +12,7 @@ pkgbase = autopass-git
 	depends = xorg-xwininfo
 	depends = libnotify
 	depends = xclip
+	optdepends = passed-git: batch editing of pass entries with sed
 	provides = autopass
 	conflicts = autopass
 	source = autopass-git::git+https://github.com/jreinert/autopass.git

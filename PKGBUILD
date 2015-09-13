@@ -2,7 +2,7 @@
 
 pkgname=autopass-git
 pkgver=0.r2.0ac233a
-pkgrel=3
+pkgrel=4
 pkgdesc='a rofi frontend for pass'
 arch=(any)
 url='https://github.com/jreinert/autopass'
@@ -14,6 +14,7 @@ source=("${pkgname}::git+https://github.com/jreinert/autopass.git")
 sha512sums=(SKIP)
 provides=('autopass')
 conflicts=('autopass')
+optdepends=('passed-git: batch editing of pass entries with sed')
 
 pkgver() {
   cd "${pkgname}"
