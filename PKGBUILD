@@ -3,7 +3,7 @@
 PKGEXT=.pkg.tar
 pkgname=shotcut-bin
 pkgver=150911
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source, cross-platform video editor."
 arch=(i686 x86_64)
 url="http://www.mltframework.org/bin/view/Shotcut/WebHome"
@@ -15,7 +15,7 @@ source=("https://github.com/mltframework/shotcut/releases/download/v${pkgver::2}
        "shotcut.png")
 if [[ $CARCH = 'x86_64' ]]
 then
-    md5sums=('d0a8dcbaedca699c0a4c419527a9ff4a' '457bc6ae5a299dee017521ec058e833b')
+    md5sums=('d815cb0f72e0b1b6494c64b62d2fceda' '457bc6ae5a299dee017521ec058e833b')
 else
     md5sums=('cfb589fbcbaed452b15cba659465c147' '457bc6ae5a299dee017521ec058e833b')
 fi
