@@ -4,7 +4,7 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libmediawiki')
-pkgver=4.12.0
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('kdepimlibs4' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('f7ce2c72946e21b669cfa35c4ce8652337f9c68a')
+sha1sums=('d696ac88dcb3bcbd3a5da83b0fbe5e7315a43f92')
 
 build() {
   mkdir build
