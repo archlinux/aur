@@ -3,7 +3,7 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
 arch=('i686' 'x86_64')
@@ -13,10 +13,12 @@ makedepends=('cpio')
 optdepents=('java-runtime - For Crashplan GUI')
 install=crashplan.install
 source=("http://download.crashplan.com/installs/linux/install/CrashPlan/CrashPlan_${pkgver}_Linux.tgz"
-        'crashplan.service'
+	'https://raw.githubusercontent.com/pdemonaco/init/master/crashplan/crashplan'
+	'crashplan.service'
 	'install.vars'
 	'sysctl-crashplan.conf')
 sha256sums=('4fbb23ccd47db8aef7029c923520a22a7dfe6e5585d27ff29ef395752934b0d3'
+            '259d38afa8fc34246ac0ecfeefc701d47501c552eb0ffcd1bd4b8e9a2751c3c8'
             'e5600d9d102fa8668183895fbe208d00cc353706f5b4a78302eca00f70b60800'
             'c6dc626a180671d6b01f46f22158857c3fa86cd3eec79e3388284a2ab2682617'
             '2ec3d9cea180e92f1410ff89ece85c01f79d454cfc2e814f583c0e2b3ff8ce30')
@@ -58,6 +60,8 @@ package() {
 
 	install -dm 755 "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgname/bin/CrashPlanDesktop" "$pkgdir/usr/bin/CrashPlanDesktop"
+	install -dm 755 "$pkgdir/etc/init.d"
+	install -Dm 644 "$srcdir/crashplan" "$pkgdir/etc/init.d/crashplan"
 	install -Dm 644 "$srcdir/sysctl-crashplan.conf" "$pkgdir/etc/sysctl.d/99-crashplan.conf"
 	install -Dm 644 "$srcdir/crashplan.service" "$pkgdir/usr/lib/systemd/system/crashplan.service"
 	install -Dm 644 "$srcdir/install.vars" "$pkgdir/opt/$pkgname/install.vars"
