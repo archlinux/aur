@@ -6,6 +6,7 @@ pkgbase = plexwatchweb
 	arch = any
 	license = unknown
 	optdepends = php-apache: to use the Apache web server
+	optdepends = plexwatch: plexwatchweb backend
 	options = !strip
 	backup = etc/webapps/plexWatchWeb/apache.example.conf
 	source = plexwatchweb.tar.gz::https://github.com/ecleese/plexWatchWeb/archive/v1.5.4.2.tar.gz
