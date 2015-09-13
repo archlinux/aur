@@ -9,7 +9,7 @@ pkgbase = flashbench-git
 	provides = flashbench
 	conflicts = flashbench
 	replaces = flashbench
-	source = git+http://git.linaro.org/git-ro/people/arnd.bergmann/flashbench.git
+	source = git+https://git.linaro.org/people/arnd.bergmann/flashbench.git
 	md5sums = SKIP
 
 pkgname = flashbench-git

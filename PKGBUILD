@@ -12,7 +12,7 @@ url="https://lwn.net/SubscriberLink/428584/354d16fe00c90072/"
 replaces=('flashbench')
 provides=('flashbench')
 conflicts=('flashbench')
-source=('git+http://git.linaro.org/git-ro/people/arnd.bergmann/flashbench.git')
+source=('git+https://git.linaro.org/people/arnd.bergmann/flashbench.git')
 md5sums=('SKIP')
 
 pkgver() {
