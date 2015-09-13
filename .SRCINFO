@@ -1,0 +1,27 @@
+pkgbase = python-yara-git
+	pkgdesc = Tool aimed at helping malware researchers to identify and classify malware samples
+	pkgver = 3.4.0.5.88a5a5a
+	pkgrel = 1
+	url = https://plusvic.github.io/yara/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = yara
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-yara-git::git+https://github.com/plusvic/yara-python
+	sha512sums = SKIP
+
+pkgname = python-yara-git
+	depends = python
+	depends = yara
+	provides = python-yara
+	conflicts = python-yara
+
+pkgname = python2-yara-git
+	depends = python2
+	depends = yara
+	provides = python2-yara
+	conflicts = python2-yara
+
