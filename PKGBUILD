@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-player-git
-pkgver=0.3.r0.gec95975
+pkgver=0.3.1.r0.g9e6a28c
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver%.r*}")
 makedepends=('boost' 'git')
-depends=('liblcf-git' 'sdl2_mixer' 'pixman')
+depends=('liblcf-git' 'sdl2_mixer' 'pixman' 'freetype2')
 optdepends=('wine: for installing the run time packages (RTP)')
 install=$pkgname.install
 source=(${pkgname%-*}::"git+https://github.com/EasyRPG/Player.git")
