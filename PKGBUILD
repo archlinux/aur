@@ -15,7 +15,7 @@ provides=('passed')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --tags | sed 's/^v//'
+  git describe --tags | sed 's/^v//;s/-/./g'
 }
 
 package() {
