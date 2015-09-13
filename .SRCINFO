@@ -1,7 +1,7 @@
 pkgbase = sugar-toolkit-gtk3
 	pkgdesc = Set of widgets for Sugar applications
 	pkgver = 0.106.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sugarlabs.org/
 	arch = any
 	groups = sugar-desktop
@@ -14,7 +14,6 @@ pkgbase = sugar-toolkit-gtk3
 	depends = python2
 	depends = sugar-datastore
 	depends = sugar-presence-service
-	depends = hippo-canvas
 	depends = alsa-lib
 	depends = python2-gconf
 	depends = python2-rsvg
