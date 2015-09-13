@@ -1,6 +1,6 @@
 pkgbase = hexchat-javascript-git
 	pkgdesc = HexChat plugin for Javascript scripts
-	pkgver = 0.3.2.2.gb93950a
+	pkgver = 0.3.2.r2.gb93950a
 	pkgrel = 1
 	url = https://github.com/TingPing/hexchat-javascript
 	arch = i686

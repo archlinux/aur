@@ -1,7 +1,7 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=hexchat-javascript-git
-pkgver=0.3.2.2.gb93950a
+pkgver=0.3.2.r2.gb93950a
 pkgrel=1
 pkgdesc='HexChat plugin for Javascript scripts'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ _gitname='hexchat-javascript'
 
 pkgver() {
   cd "$_gitname"
-  echo `git describe --tags --long | sed 's/-/./g'`
+  git describe --tags | sed 's/-/.r/; s/-/./'
 }
 
 build() {
