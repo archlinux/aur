@@ -11,8 +11,8 @@ depends=("qt5-base" "qt5-webengine" "qml-material-git")
 makedepends=("git")
 provides=("$pkgname")
 source=("$pkgname::git+https://github.com/liri-browser/liri-browser.git"
-        "liri-browser.sh" "liri-browser.desktop")
-sha256sums=("SKIP" "SKIP" "SKIP")
+        "liri-browser.sh" "liri-browser.desktop" "liri-browser.install")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 prepare() {
   cd "$srcdir/$pkgname"
