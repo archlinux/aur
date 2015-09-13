@@ -5,10 +5,11 @@ pkgbase = libreoffice-still-en-us-help
 	url = http://www.documentfoundation.org
 	arch = any
 	license = LGPL
-	makedepends = rpmextract
+	makedepends = binutils
+	makedepends = tar
 	conflicts = libreoffice-en-us-help
-	source = http://download.documentfoundation.org/libreoffice/stable/4.4.5/rpm/x86/LibreOffice_4.4.5_Linux_x86_rpm_helppack_en-US.tar.gz
-	md5sums = 6493312bcc30c764e13251515a16d49c
+	source = http://download.documentfoundation.org/libreoffice/stable/4.4.5/deb/x86/LibreOffice_4.4.5_Linux_x86_deb_helppack_en-US.tar.gz
+	md5sums = e55f363217fd552d4e8b4829a0595d03
 
 pkgname = libreoffice-still-en-us-help
 
