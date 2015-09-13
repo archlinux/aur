@@ -10,8 +10,9 @@ url='https://projects.kde.org/kgamma5'
 license=(LGPL)
 depends=(kdelibs4support)
 makedepends=(extra-cmake-modules git kdoctools)
-conflicts=(kgamma5 kdegraphics-kgamma)
+conflicts=(kgamma5 kdegraphics-kgamma kgamma-git)
 provides=(kgamma5)
+replaces=(kgamma-git)
 source=("git://anongit.kde.org/$_gitname.git")
 md5sums=('SKIP')
 
