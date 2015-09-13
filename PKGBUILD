@@ -16,7 +16,7 @@ source=("plexWatch.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('15cb0eb9f7376ae2f409e9dbb6fa5c5bb5d3549c69fe1e36e48ac016a81c38d4')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/plexWatch-${pkgver}"
   install -Dm 777 plexWatch.pl "${pkgdir}/opt/plexWatch/plexWatch.pl"
   install -Dm 755 config.pl-dist "${pkgdir}/opt/plexWatch/config.pl"
   mkdir -p "${pkgdir}/usr/bin"
