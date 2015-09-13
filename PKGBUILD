@@ -10,6 +10,7 @@ license=("GPLv3")
 depends=("qt5-base" "qt5-webengine" "qml-material-git")
 makedepends=("git")
 provides=("$pkgname")
+install=$pkgname.install
 source=("$pkgname::git+https://github.com/liri-browser/liri-browser.git"
         "liri-browser.sh" "liri-browser.desktop" "liri-browser.install")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")

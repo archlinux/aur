@@ -3,6 +3,7 @@ pkgbase = liri-browser
 	pkgver = 0.3
 	pkgrel = 3
 	url = https://github.com/liri-browser/liri-browser
+	install = liri-browser.install
 	arch = i686
 	arch = x86_64
 	license = GPLv3
