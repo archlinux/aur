@@ -21,7 +21,8 @@ pkgver() {
     # cutting off 'foo-' prefix that presents in the git tag
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-prepare() {
+
+build() {
 	mkdir -p build
 	cd build
 	qmake "$srcdir/$pkgname"
@@ -31,10 +32,18 @@ prepare() {
 package() {
 	cd build
 	make INSTALL_ROOT="$pkgdir" install
+
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/applications
-  install -m755 ../liri-browser "$pkgdir"/usr/bin/liri-browser
-  install -m755 ../liri-browser.desktop "$pkgdir"/usr/share/applications/liri-browser.desktop
+
+  for i in 16x16 22x22 32x32 48x48 64x64 128x128 256x256; do
+    install -Dm644 "$srcdir"/"$pkgname"/icons/liri-browser.png \
+                   "$pkgdir"/usr/share/icons/hicolor/$i/liri-browser.png
+  done
+  install -m755 ../liri-browser \
+                "$pkgdir"/usr/bin/liri-browser
+  install -m755 ../liri-browser.desktop \
+                "$pkgdir"/usr/share/applications/liri-browser.desktop
 }
 
 # Additional functions to generate a changelog
