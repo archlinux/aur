@@ -7,7 +7,7 @@
 
 pkgname=courier-mta
 pkgver=0.75.0
-pkgrel=2
+pkgrel=3
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -131,7 +131,7 @@ package() {
    chown -R courier:courier ${pkgdir}/usr/lib/courier/modules
    rm -r ${pkgdir}/var/run
    #chown -R courier:courier ${pkgdir}/var/run/courier
-   chown -R root:root ${pkgdir}/usr/{.,bin,lib,share}
+   chown  root:root ${pkgdir}/usr/{.,bin,lib,share}
 
   # Recent fixes concerning imapd-binary, see https://aur.archlinux.org/packages/courier-mta/
   install -m 755 "${srcdir}/courier-${pkgver}/courier/imapd" "${pkgdir}/usr/lib/courier/courierimapd"
