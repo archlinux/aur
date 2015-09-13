@@ -1,5 +1,5 @@
 pkgname=orbment-git
-pkgver=r468.8a3c9f0
+pkgver=r469.6e28e9c
 pkgrel=1
 
 pkgdesc='A modular wayland compositor based on wlc.'
