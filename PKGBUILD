@@ -2,7 +2,7 @@
 
 pkgname=liri-browser
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Web Browser using the QML Material framework from the Papyros Project"
 arch=("i686" "x86_64")
 url="https://github.com/liri-browser/liri-browser"
