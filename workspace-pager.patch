@@ -1,0 +1,68 @@
+--- xfce4-panel-4.11.0.orig/plugins/pager/pager.c	2014-02-16 03:38:19.000000000 +0100
++++ xfce4-panel-4.11.0/plugins/pager/pager.c	2014-04-19 19:29:18.736189725 +0200
+@@ -88,7 +88,6 @@
+   guint          scrolling : 1;
+   guint          miniature_view : 1;
+   gint           rows;
+-  gfloat         ratio;
+ };
+ 
+ enum
+@@ -160,7 +159,6 @@
+   plugin->scrolling = TRUE;
+   plugin->miniature_view = TRUE;
+   plugin->rows = 1;
+-  plugin->ratio = 1.0;
+   plugin->pager = NULL;
+ }
+ 
+@@ -309,7 +307,6 @@
+         g_message ("Setting the pager rows returned false. Maybe the setting is not applied.");
+ 
+       wnck_pager_set_orientation (WNCK_PAGER (plugin->pager), orientation);
+-      plugin->ratio = (gfloat) gdk_screen_width () / (gfloat) gdk_screen_height ();
+     }
+   else
+     {
+@@ -560,26 +557,38 @@
+   PagerPlugin         *plugin = XFCE_PAGER_PLUGIN (widget);
+   XfcePanelPluginMode  mode;
+   gint                 n_workspaces, n_cols;
++  gfloat               ratio;
++  WnckWorkspace       *active_ws;
+ 
+   if (plugin->miniature_view)
+     {
+       mode   = xfce_panel_plugin_get_mode (XFCE_PANEL_PLUGIN (plugin));
+       n_workspaces = wnck_screen_get_workspace_count (plugin->wnck_screen);
+       n_cols = MAX (1, (n_workspaces + plugin->rows - 1) / plugin->rows);
++      active_ws = wnck_screen_get_active_workspace (plugin->wnck_screen);
++      if (wnck_workspace_is_virtual (active_ws))
++        {
++           ratio = (gfloat) wnck_workspace_get_width (active_ws) / (gfloat) wnck_workspace_get_height (active_ws);
++        }
++      else
++        {
++           ratio = (gfloat) gdk_screen_width () / (gfloat) gdk_screen_height ();
++        }
++
+       if (mode == XFCE_PANEL_PLUGIN_MODE_HORIZONTAL)
+         {
+           requisition->height = xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin));
+-          requisition->width = (gint) (requisition->height / plugin->rows * plugin->ratio * n_cols);
++          requisition->width = (gint) (requisition->height / plugin->rows * ratio * n_cols);
+         }
+       else if (mode == XFCE_PANEL_PLUGIN_MODE_VERTICAL)
+         {
+           requisition->width = xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin));
+-          requisition->height = (gint) (requisition->width / plugin->rows / plugin->ratio * n_cols);
++          requisition->height = (gint) (requisition->width / plugin->rows / ratio * n_cols);
+         }
+       else /* (mode == XFCE_PANEL_PLUGIN_MODE_DESKBAR) */
+         {
+           requisition->width = xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin));
+-          requisition->height = (gint) (requisition->width / n_cols / plugin->ratio * plugin->rows);
++          requisition->height = (gint) (requisition->width / n_cols / ratio * plugin->rows);
+         }
+     }
+   else if (plugin->pager)

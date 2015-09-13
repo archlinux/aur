@@ -1,0 +1,15 @@
+diff -Nur original/plugins/tasklist/tasklist-widget.c modified/plugins/tasklist/tasklist-widget.c
+--- original/plugins/tasklist/tasklist-widget.c	2015-02-28 16:37:36.000000000 +0000
++++ modified/plugins/tasklist/tasklist-widget.c	2015-09-05 16:16:03.799548200 +0100
+@@ -2633,6 +2633,11 @@
+       else
+         gtk_widget_hide (child->button);
+     }
++  /* initiate viewport switch on geometry change - fixes buttons not 
++   * getting updated when using compiz */
++  active_ws = wnck_screen_get_active_workspace (child->tasklist->screen);
++  if (wnck_workspace_is_virtual (active_ws))
++    xfce_tasklist_viewports_changed (child->tasklist->screen, child->tasklist);
+ }
+ 
+ 
