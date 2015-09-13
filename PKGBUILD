@@ -1,8 +1,8 @@
 # Maintainer: Joakim Reinert <mail+aur@jreinert.com>
 
-pkgname=hless-git
-pkgver=0.1
-pkgrel=2
+pkgname=passed-git
+pkgver=0.0.1
+pkgrel=1
 pkgdesc='A simple script to modify password store entries with sed commands'
 arch=(any)
 url='https://github.com/jreinert/passed'
