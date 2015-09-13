@@ -13,8 +13,8 @@ makedepends=("git")
 provides=("$_pkgname" "$pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/liri-browser/liri-browser.git"
-        "liri-browser" "liri-browser.desktop")
-sha256sums=("SKIP" "SKIP" "SKIP")
+        "liri-browser" "liri-browser.desktop" "$pkgname.install")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
     cd "$pkgname"
@@ -38,7 +38,7 @@ package() {
 
   for i in 16x16 22x22 32x32 48x48 64x64 128x128 256x256; do
     install -Dm644 "$srcdir"/"$pkgname"/icons/liri-browser.png \
-                   "$pkgdir"/usr/share/icons/hicolor/$i/liri-browser.png
+                   "$pkgdir"/usr/share/icons/hicolor/$i/apps/liri-browser.png
   done
   install -m755 ../liri-browser \
                 "$pkgdir"/usr/bin/liri-browser
