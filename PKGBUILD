@@ -2,7 +2,7 @@
 
 _gitname=libsexy3
 pkgname=libsexy3-git
-pkgver=v1.0.0.r14.g7c5eab2
+pkgver=1.1.0.r0.g2cdd4c6
 pkgrel=1
 pkgdesc='Custom Gtk3 widgets'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
 build() {

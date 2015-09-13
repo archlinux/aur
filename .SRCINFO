@@ -1,6 +1,6 @@
 pkgbase = libsexy3-git
 	pkgdesc = Custom Gtk3 widgets
-	pkgver = v1.0.0.r14.g7c5eab2
+	pkgver = 1.1.0.r0.g2cdd4c6
 	pkgrel = 1
 	url = https://tingping.github.io/libsexy3
 	arch = i686
