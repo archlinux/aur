@@ -1,10 +1,10 @@
 # Maintainer: nrio <nrio@mailbox.org>
 pkgname=tcharmap-git
-pkgver=0.0.1
+pkgver=r13.bcd74e2
 pkgrel=1
 pkgdesc="Overview of unicode characters and their LaTeX counterpart"
 arch=('any')
-url="https://github.com/nrio0/tcharmap.git"
+url="https://github.com/nrio0/tcharmap"
 license=('MIT')
 options=(!emptydirs)
 depends=('python' 'python-yaml' 'python-pyqt5')
@@ -14,6 +14,10 @@ source=('git+https://github.com/nrio0/tcharmap.git'
 sha256sums=('SKIP'
             '5b72ad0b095beb7c8becb647b2f2cc054e0bb4f476bce66cf2d33af907dec4e5')
 
+pkgver() {
+  cd "$srcdir/${pkgname%-VCS}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   install -Dm755 "$srcdir/tcharmap_start" "$pkgdir/usr/bin/tcharmap"
