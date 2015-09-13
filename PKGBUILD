@@ -7,7 +7,7 @@
 ###########################################################
 
 pkgname=i2p-bin
-pkgver=0.9.21
+pkgver=0.9.22
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="http://www.i2p2.de"
@@ -21,21 +21,21 @@ backup=('opt/i2p/wrapper.config')
 install='i2p.install'
 noextract=("i2pinstall_${pkgver}.jar")
 
+#_url="https://download.i2p2.de/releases/${pkgver}"
 #_url="https://googledrive.com/host/0B4jHEq5G7_EPWV9UeERwdGplZXc/${pkgver}"
 _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
-source=("${_url}/i2pinstall_${pkgver}.jar"
-        "${_url}/i2pinstall_${pkgver}.jar.sig"
+source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
 [[ $_i2p_fetch ]] && {
     export http_proxy=127.0.0.1:4444
-    source=("http://echelon.i2p/${pkgver}/i2pinstall_${pkgver}.jar"
-            "http://echelon.i2p/${pkgver}/i2pinstall_${pkgver}.jar.sig"
+    source=("http://echelon.i2p/${pkgver}/i2pinstall_${pkgver}.jar"{,.sig}
+            #"http://whnxvjwjhzsske5yevyokhskllvtisv5ueokw6yvh6t7zqrpra2q.b32.i2p/releases/${pkgver}/i2pinstall_${pkgver}.jar"{,.sig}
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
 
-sha256sums=('0238ffc6ea44099ef4fe6c20913cb4eec675c2760aea07dfe7d499addcc89cf2'
+sha256sums=('ee5297b2746e324c9ca33b19513ff09b50724ae3b9f588e4ccc31fc389ce50aa'
             'SKIP'
             '842b529ae23bc82fd78e986dd7cc683bd7b671e93421de57f279dc3f4d5d0fd2'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
