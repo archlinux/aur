@@ -1,16 +1,16 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=purpose-git
-pkgver=r197.0fc079e
+pkgver=r206.afd8519
 pkgrel=1
 pkgdesc="Framework for providing abstractions to get the developer's purposes fulfilled"
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/playground/libs/purpose'
 license=(LGPL)
 depends=(kio-git kdeclarative-git kaccounts-integration-git)
-makedepends=(extra-cmake-modules-git git python)
+makedepends=(extra-cmake-modules-git git python intltool)
 provides=(purpose)
-conflicts=(purpose-git)
+conflicts=(purpose)
 source=("git://anongit.kde.org/purpose.git")
 sha256sums=('SKIP')
 
