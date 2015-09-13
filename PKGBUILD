@@ -1,9 +1,7 @@
-# Maintainer : Marc W <Marrc666 @ live . de>
-
 pkgname=rocrail-git 
 pkgver=git
 pkgrel=2015
-pkgdesc="Rocrail - Model Railroad Control System"
+pkgdesc="This Package is not updated because Rocrail is not Open Source anymore. Please remove."
 arch=('i686' 'x86_64')
 url=('http://wiki.rocrail.net/')
 license=('GPL3')
