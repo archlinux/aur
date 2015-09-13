@@ -1,6 +1,6 @@
 pkgbase = pacupg
 	pkgdesc = Script that wraps package and AUR upgrades in btrfs snapshots and provides an easy way to roll them back
-	pkgver = r259.a2c2258
+	pkgver = r260.13a65d0
 	pkgrel = 1
 	url = https://github.com/crossroads1112/bin/tree/master/pacupg
 	install = pacupg.install
@@ -9,7 +9,6 @@ pkgbase = pacupg
 	depends = pacman
 	depends = bash
 	depends = package-query
-	depends = rsync
 	depends = snapper
 	depends = btrfs-progs
 	depends = coreutils
