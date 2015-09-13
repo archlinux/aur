@@ -4,7 +4,7 @@
 
 pkgname=glade-git
 _gitname=glade
-pkgver=3.18.0.55f8a6d
+pkgver=3.19.0.r23.g7524d14
 pkgrel=1
 pkgdesc="User interface builder for GTK+ and GNOME."
 provides=('glade')
@@ -23,8 +23,8 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd "$_gitname"
-  rev=`git rev-parse --short HEAD`
-  echo "3.18.0.$rev"
+
+  git describe | sed 's/^GLADE_//; s/_/./g; s/-/.r/; s/-/./'
 }
 
 build() {
