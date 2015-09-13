@@ -1,0 +1,14 @@
+pkgbase = min12xxw
+	pkgdesc = Minolta PagePro 1[234]xxW printers driver
+	pkgver = VERSION
+	pkgrel = 0.0.9
+	url = http://www.hinterbergen.de/mala/min12xxw/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = foomatic-db
+	source = http://www.hinterbergen.de/mala/min12xxw/min12xxw-0.0.9.tar.gz
+	md5sums = 3582da7bd8d2d612b1fbcbfdb8b3239a
+
+pkgname = min12xxw
+
