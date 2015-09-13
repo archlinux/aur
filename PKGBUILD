@@ -2,7 +2,7 @@
 
 pkgname=plexwatchweb
 pkgver=1.5.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A web front-end for plexWatch."
 arch=('any')
 url="https://github.com/ecleese/plexWatchWeb"
@@ -15,7 +15,7 @@ backup=('etc/webapps/plexWatchWeb/apache.example.conf')
 source=("$pkgname.tar.gz::${url}/archive/v$pkgver.tar.gz"
         "apache.example.conf")
 sha256sums=("53670b80bd7d52f8c5dbad3a45de3260d4c981706bea1a686e734139117d257d"
-            "3464a757b5e27e3c982220faac1cbd4d1a83650680f3f7b5d99074096dbe05e5")
+            "ccad38b944e825047d2032541e4df4f2de69a3efcf6d0d0cdd432d00a2915e56")
 
 prepare() {
   cd "${srcdir}/plexWatchWeb-${pkgver}"
