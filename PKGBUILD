@@ -15,13 +15,11 @@ source=("$pkgname::git+https://github.com/liri-browser/liri-browser.git"
 sha256sums=("SKIP" "SKIP" "SKIP")
 
 prepare() {
-  pwd
   cd "$srcdir/$pkgname"
   git checkout v$pkgver
 }
 
 build() {
-  pwd
 	mkdir -p build
 	cd build
 	qmake "$srcdir/$pkgname"
@@ -29,7 +27,6 @@ build() {
 }
 
 package() {
-  pwd
 	cd build
 	make INSTALL_ROOT="$pkgdir" install
 
@@ -38,7 +35,7 @@ package() {
 
   for i in 16x16 22x22 32x32 48x48 64x64 128x128 256x256; do
     install -Dm644 "$srcdir"/"$pkgname"/icons/liri-browser.png \
-                   "$pkgdir"/usr/share/icons/hicolor/$i/liri-browser.png
+                   "$pkgdir"/usr/share/icons/hicolor/$i/apps/liri-browser.png
   done
   install -m755 ../liri-browser.sh \
                 "$pkgdir"/usr/bin/liri-browser
