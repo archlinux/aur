@@ -1,4 +1,4 @@
-# Maintainer: Cyphix <cyphix cyphix org>
+# Maintainer: cyphix <cyphix cyphix org>
 # Original PKGBUILD Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 # Category: system
 
