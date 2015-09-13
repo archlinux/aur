@@ -1,7 +1,7 @@
 # Maintainer: h_asdf <aur@hasdf.de>
 pkgname=min12xxw
-pkgver=VERSION
-pkgrel=0.0.9
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="Minolta PagePro 1[234]xxW printers driver"
 arch=('i686' 'x86_64')
 license=('GPL')
