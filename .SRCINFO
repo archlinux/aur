@@ -1,0 +1,29 @@
+pkgbase = lightzone-free
+	pkgdesc = The last free version of LightZone, a professional photo browser and editor, like Aperture or Lightroom
+	pkgver = 2.4
+	pkgrel = 3
+	url = http://www.berthon.eu/2007/lightzone-24-for-linux-is-released/
+	arch = i686
+	arch = x86_64
+	license = custom
+	provides = lightzone
+	conflicts = lightzone
+	conflicts = lightzone3
+	options = !strip
+	source = http://alunamation.com/archlinux/builds/lightzone/LightZone-rev.8224.tar.gz
+	source = lightzone.desktop
+	sha256sums = 7da5610afe0cf431863eacaccd07c2f96655d86ddc68f3258a7a7cbc0aa8971d
+	sha256sums = 00b16af755c4927ccc549ce98b23644fe94b59e1d20132d763756326e1c782e5
+	depends_i686 = gcc-libs
+	depends_i686 = libstdc++5
+	depends_i686 = libx11
+	depends_i686 = libxtst
+	depends_i686 = java-runtime
+	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-libstdc++5
+	depends_x86_64 = lib32-libx11
+	depends_x86_64 = lib32-libxcb
+	depends_x86_64 = lib32-libxtst
+
+pkgname = lightzone-free
+

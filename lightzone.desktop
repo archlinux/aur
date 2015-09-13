@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LightZone
+GenericName=
+Comment=
+Exec=lightzone %F
+Icon=/opt/lightzone/LightZone_32.png
+Type=Application
+MimeType=image/jpeg;image/png;image/tiff;image/x-raw;
+Categories=Graphics;2DGraphics;RasterGraphics;
