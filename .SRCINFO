@@ -1,7 +1,7 @@
 pkgbase = ocp-git
 	pkgdesc = Open Cubic Player (GIT Version)
 	pkgver = 0.1.22.r62.3a44284
-	pkgrel = 2
+	pkgrel = 3
 	url = http://stian.cubic.org/project-ocp.php
 	install = ocp-git.install
 	arch = i686
@@ -20,7 +20,6 @@ pkgbase = ocp-git
 	optdepends = sdl: for SDL user interface support
 	provides = ocp=0.1.22.r62.3a44284
 	conflicts = ocp
-	replaces = opencubicplayer-git
 	source = ocp::git://git.code.sf.net/p/opencubicplayer/code
 	md5sums = SKIP
 

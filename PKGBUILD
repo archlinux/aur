@@ -2,7 +2,7 @@
 _name=ocp
 pkgname=ocp-git
 pkgver=0.1.22.r62.3a44284
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://stian.cubic.org/project-ocp.php"
@@ -20,7 +20,6 @@ optdepends=('adplug: for OPL formats support'
 makedepends=('git')
 provides=("${_name}=${pkgver}")
 conflicts=("${_name}")
-replaces=('opencubicplayer-git')
 install=$pkgname.install
 source=("${_name}::git://git.code.sf.net/p/opencubicplayer/code")
 md5sums=('SKIP')
@@ -33,7 +32,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_name}"
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --sysconfdir=/etc
 
     cd "${srcdir}/${_name}"
     make

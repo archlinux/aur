@@ -6,7 +6,7 @@ post_install() {
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
     update-desktop-database -q
     echo 
-    echo Please note that you need to rebuild this package after installing any of the optional dependencies.
+    echo Please note that you need to rebuild ocp-git after installing any of the optional dependencies for it.
     echo
 }
 
