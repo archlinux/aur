@@ -10,6 +10,7 @@ pkgbase = openblas-lapack-git
 	makedepends = gcc-fortran
 	makedepends = git
 	depends = gcc-libs
+	provides = openblas-lapack
 	provides = openblas
 	provides = blas=3.5.0
 	provides = lapack=3.5.0
