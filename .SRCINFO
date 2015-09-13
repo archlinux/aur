@@ -1,0 +1,33 @@
+pkgbase = znc-git
+	pkgdesc = An IRC bouncer with modules & scripts support
+	pkgver = 1.6.1.r397.g2c0dfbb
+	pkgrel = 1
+	url = http://znc.in/
+	install = znc-git.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = swig
+	makedepends = tcl
+	makedepends = python
+	makedepends = perl
+	makedepends = git
+	depends = libsasl
+	depends = icu
+	optdepends = tcl: modtcl module
+	optdepends = python: modpython module
+	optdepends = perl: modperl module
+	optdepends = cyrus-sasl: saslauth module
+	provides = znc
+	conflicts = znc
+	source = git+https://github.com/znc/znc.git
+	source = git+https://github.com/jimloco/Csocket.git
+	source = git+https://github.com/google/googletest.git
+	source = znc.sysusers
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 919705dccc42d3bff1549d3b3680e55a
+
+pkgname = znc-git
+
