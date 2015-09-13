@@ -1,7 +1,7 @@
 # Maintainer: Riley Trautman <asonix.dev@gmail.com>
 
 pkgname=liri-browser
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A Web Browser using the QML Material framework from the Papyros Project"
 arch=("i686" "x86_64")
