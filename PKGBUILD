@@ -2,14 +2,14 @@
 
 pkgname=plexwatchweb
 pkgver=1.5.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A web front-end for plexWatch."
 arch=('any')
 url="https://github.com/ecleese/plexWatchWeb"
 license=('unknown')
+depends=('php-sqlite')
 optdepends=('php-apache: to use the Apache web server'
             'plexwatch: plexwatchweb backend')
-makedepends=()
 options=('!strip')
 backup=('etc/webapps/plexWatchWeb/apache.example.conf')
 source=("$pkgname.tar.gz::${url}/archive/v$pkgver.tar.gz"

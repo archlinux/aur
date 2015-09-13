@@ -1,10 +1,11 @@
 pkgbase = plexwatchweb
 	pkgdesc = A web front-end for plexWatch.
 	pkgver = 1.5.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ecleese/plexWatchWeb
 	arch = any
 	license = unknown
+	depends = php-sqlite
 	optdepends = php-apache: to use the Apache web server
 	optdepends = plexwatch: plexwatchweb backend
 	options = !strip
