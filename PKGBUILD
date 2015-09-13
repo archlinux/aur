@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=5.5.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
@@ -16,10 +16,14 @@ optdepends=('python-feedparser: nws and rss modules'
             'python-pygeoip: geoip module')
 makedepends=('git' 'python-sphinx')
 checkdepends=('python-pytest' 'python-feedparser' 'python-pytz' 'python-lxml'
-              'python-pyenchant' 'python-praw' 'python-pygeoip')
-backup=('etc/willie.cfg')
+              'python-pyenchant' 'python-praw' 'python-pygeoip' 'ipython')
+backup=('etc/sopel.cfg')
 source=("git+https://github.com/sopel-irc/sopel.git#tag=$pkgver")
 md5sums=('SKIP')
+
+prepare() {
+  sed -e 's|willie|sopel|g' -e 's|Willie|Sopel|g' -i sopel/contrib/willie{.cfg,.service,.conf}
+}
 
 build() {
   cd "$srcdir/sopel"
@@ -37,8 +41,8 @@ package() {
   python setup.py install --root="${pkgdir}" --optimize=1
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 contrib/willie.cfg "$pkgdir/etc/willie.cfg"
-  install -Dm644 contrib/willie.service "$pkgdir/usr/lib/systemd/system/willie.service"
-  install -Dm644 contrib/willie.conf "$pkgdir/usr/lib/tmpfiles.d/willie.conf"
-  install -Dm644 docs/build/man/willie.1 "$pkgdir/usr/share/man/man1/willie.1"
+  install -Dm644 contrib/willie.cfg "$pkgdir/etc/sopel.cfg"
+  install -Dm644 contrib/willie.service "$pkgdir/usr/lib/systemd/system/sopel.service"
+  install -Dm644 contrib/willie.conf "$pkgdir/usr/lib/tmpfiles.d/sopel.conf"
+  install -Dm644 docs/build/man/sopel.1 "$pkgdir/usr/share/man/man1/sopel.1"
 }
