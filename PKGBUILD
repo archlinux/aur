@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 optdepends=()
 source=("https://github.com/snmsts/roswell/archive/v$pkgver.tar.gz")
-md5sums=('9878b4774351edbcd8f7ffeea55888c1')
+md5sums=('bceec3ccb2a5de12fb35d6faf9978f37')
 validpgpkeys=()
 
 build() {
