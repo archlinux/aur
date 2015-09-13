@@ -1,8 +1,7 @@
-# $Id$
-# Maintainer: Marek Petrik <marekpetrik@gmail.com>
+# Maintainer: dustball <sebastiansonne at hush dot com>
 
 pkgname=pypy3-pip
-pkgver=6.0.8
+pkgver=7.1.2
 pkgrel=1
 pkgdesc="An easy_install replacement for installing pypi python packages"
 url="http://www.pip-installer.org/"
@@ -27,5 +26,5 @@ package_pypy3-pip() {
 	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('2332e6f97e75ded3bddde0ced01dbda3')
-sha256sums=('0d58487a1b7f5be2e5e965c11afbea1dc44ecec8069de03491a4d0d6c85f4551')
+md5sums=('3823d2343d9f3aaab21cf9c917710196')
+sha256sums=('ca047986f0528cfa975a14fb9f7f106271d4e0c3fe1ddced6c1db2e7ae57a477')
