@@ -1,0 +1,12 @@
+pkgbase = saturnus
+	pkgdesc = A dark red scalable icon theme.
+	pkgver = 1
+	pkgrel = 0
+	url = http://linux.softpedia.com/get/Desktop-Environment/Icons/Saturnus-55030.shtml
+	arch = any
+	license = GPLv3
+	source = http://www.gnome-look.org/CONTENT/content-files/120145-saturnus.tar.bz2
+	md5sums = 395d773f72ea23e9fddad25e0f6a2e2c
+
+pkgname = saturnus
+
