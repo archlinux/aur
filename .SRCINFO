@@ -12,6 +12,7 @@ pkgbase = rofi-pass-git
 	depends = pass
 	depends = xdotool
 	depends = xclip
+	optdepends = passed-git: change fieldnames in password files
 	source = git+http://git.53280.de/rofi-pass
 	md5sums = SKIP
 
