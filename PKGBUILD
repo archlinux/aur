@@ -3,7 +3,7 @@
 
 _pkgname=resynthesizer
 pkgname=gimp-plugin-$_pkgname-git
-pkgver=2.0.r13.g251eedc
+pkgver=2.0.r15.g462b0b7
 pkgrel=2
 pkgdesc="Suite of gimp plugins for texture synthesis (like heal-selection). Git-Version"
 arch=('i686' 'x86_64')
@@ -24,7 +24,6 @@ pkgver() {
 
 prepare() {
     cd $_pkgname
-    sed -i 's|/usr/bin/env python|/usr/bin/env python2|' PluginScripts/*.py
     sed -i 's/--enable-maintainer-mode//g' autogen.sh
 }
 
