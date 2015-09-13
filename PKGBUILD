@@ -5,8 +5,8 @@
 
 pkgbase=python-future
 pkgname=(python-future python2-future)
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.15.1
+pkgrel=1
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="http://python-future.org/"
 arch=('any')
@@ -14,8 +14,8 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=('!emptydirs')
 source=("https://pypi.python.org/packages/source/f/future/future-$pkgver.tar.gz")
-md5sums=('cf1ee211567cc0b1021de5839064fe7b')
-sha256sums=('7f8ad46e287ac32e3dae78be41098c83d690b364142e0a5f11958c2b549420b0')
+md5sums=('e7f0acf03544be4a11452da9e337469a')
+sha256sums=('d61405f32beb357eeef6e32bbfe4c0e463cac658f59601a5ddeabf87bb8c46c1')
 
 prepare() {
   cp -a future-$pkgver{,-py2}
