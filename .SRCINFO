@@ -1,0 +1,24 @@
+pkgbase = perl-growl-gntp
+	pkgdesc = Perl implementation of GNTP Protocol (Client Part)
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://search.cpan.org/~mattn/Growl-GNTP-0.20/lib/Growl/GNTP.pm
+	arch = any
+	license = GPL
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-warn
+	makedepends = perl-libwww
+	depends = perl-extutils-makemaker
+	depends = perl-data-uuid
+	depends = perl-crypt-cbc
+	depends = perl-digest-sha
+	depends = perl-module-build
+	depends = perl>=5.8.1
+	conflicts = perl-net-http=6.04
+	conflicts = perl-net-http=6.05
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MATTN/Growl-GNTP-0.20.tar.gz
+	sha256sums = b1c9795b72c750ca6bb69cfa7e50e78e429a8e1972d7cb9ed7ee1ec769311d94
+
+pkgname = perl-growl-gntp
+
