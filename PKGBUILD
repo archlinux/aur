@@ -1,27 +1,30 @@
 # Maintainer: Skunnyk <skunnyk@archlinux.fr>
 pkgname=php-cassandra-driver
-_pkgname=php-driver
-pkgver=1.0.0.rc
-_pkgver=1.0.0-rc
-pkgrel=2
+_pkgname=cassandra
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="DataStax PHP Driver for Apache Cassandra"
 arch=(i686 x86_64)
 url="https://github.com/datastax/php-driver"
 license=('Apache')
 depends=('php' 'cassandra-cpp-driver>=2.0.0') 
-source=("https://codeload.github.com/datastax/${_pkgname}/tar.gz/v$_pkgver")
+backup=('etc/php/conf.d/cassandra.ini')
+
+source=(
+    http://pecl.php.net/get/${_pkgname}-${pkgver}.tgz
+)
 
 build() {
-	cd "$_pkgname-$_pkgver/ext"
+	cd "$_pkgname-$pkgver"
     phpize
     ./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$_pkgname-$_pkgver/ext"
+	cd "$_pkgname-$pkgver"
 	echo ';extension=cassandra.so' > cassandra.ini 
 	install -Dm644 cassandra.ini "$pkgdir/etc/php/conf.d/cassandra.ini"
 	make INSTALL_ROOT="$pkgdir/" install
 }
-md5sums=('2f283ea7a1fe63dab1eda3d3bfbff960')
+sha256sums=('1c41281e014a0766b388c4e027856fa41a4d84254bc1950f0aa85511f90221dc')
