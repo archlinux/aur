@@ -2,15 +2,15 @@
 
 pkgname=ayr
 pkgver=1.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Manages menus of application launchers, either executables or desktop files. Also opens files and URLs with launchers, desktop files, or applications associated by name or mimetype."
 arch=('any')
-url="http://mcfadzean.org.uk/appstogo/linux.html#ayr"
+url="http://appstogo.mcfadzean.org.uk/linux.html#ayr"
 license=('custom:MPL2')
 depends=('bash' 'dmenu' 'libnotify' 'file')
 optdepends=('perl-file-mimeinfo: for better mimetype determination' 'gxmessage: for previewing application file')
 install=$pkgname.install
-source=("http://mcfadzean.org.uk/appstogo/dl/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("http://appstogo.mcfadzean.org.uk/dl/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('7660c4466fc20eb065a7cefd89a9f7bb')
 
 package() {
