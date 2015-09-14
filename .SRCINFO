@@ -1,0 +1,27 @@
+pkgbase = tremulous-gpp
+	pkgdesc = Tremulous 1.2 beta - Gameplay Preview (gpp)
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://tremulous.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:CC
+	makedepends = git
+	makedepends = mesa
+	depends = tremulous-data=1.1.0
+	depends = sdl2
+	depends = openal
+	optdepends = lyx: WYSIWYM manual viewer
+	options = !strip
+	source = tremulous-gpp::git+https://github.com/darklegion/tremulous#branch=gpp
+	source = tremulous.sh
+	source = tremded.sh
+	source = tremulous.desktop
+	md5sums = SKIP
+	md5sums = c5a9317f5bb2a07cc12dd75d69dceb03
+	md5sums = 47303d8033f7528883d22a2610decb1b
+	md5sums = 262d1689646cdb605783aaf87e78ee85
+
+pkgname = tremulous-gpp
+

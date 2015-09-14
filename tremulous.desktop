@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Tremulous-GPP
+GenericName=Tremulous-GPP
+Comment=Free online team-based FPS/RTS hybrid, built on the ioq3 engine.
+Exec=tremulous-gpp
+Icon=tremulous-gpp.xpm
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
