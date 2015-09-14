@@ -1,0 +1,16 @@
+pkgbase = lhasa
+	pkgdesc = Free Software LHA implementation
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://fragglet.github.com/lhasa/
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	conflicts = lha
+	options = !libtool
+	source = https://github.com/fragglet/lhasa/releases/download/v0.3.0/lhasa-0.3.0.tar.gz
+	sha256sums = b5c3666032330eb03ace733407500b02c31623166570da1ecff7c912c89941c3
+
+pkgname = lhasa
+	depends = glibc
+
