@@ -1,7 +1,7 @@
 pkgbase = compiz-bzr
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)
 	pkgver = 3971
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/compiz
 	install = compiz-bzr.install
 	arch = i686
@@ -36,7 +36,6 @@ pkgbase = compiz-bzr
 	provides = compiz=0.9.12
 	conflicts = compiz-core
 	conflicts = compiz
-	replaces = compiz-core-bzr
 	source = compiz::bzr+http://bazaar.launchpad.net/~compiz-team/compiz/0.9.12/
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch

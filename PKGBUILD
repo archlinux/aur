@@ -4,7 +4,7 @@
 
 pkgname=compiz-bzr
 pkgver=3971
-pkgrel=2
+pkgrel=3
 _bzrname=compiz
 _bzrbranch=0.9.12
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
@@ -18,7 +18,6 @@ optdepends=(
 )
 conflicts=('compiz-core' 'compiz')
 provides=("compiz=$_bzrbranch")
-replaces=('compiz-core-bzr')
 source=("$_bzrname::bzr+http://bazaar.launchpad.net/~compiz-team/$_bzrname/$_bzrbranch/"
         "focus-prevention-disable.patch"
         "gtk-extents.patch")
@@ -36,7 +35,7 @@ prepare() {
   cd "${_bzrname}"
 
   # Fix decorator start command
-  sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/\/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
+  sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/exec \/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
 
   # Set focus prevention level to off which means that new windows will always get focus
   patch -Np1 -i "${srcdir}/focus-prevention-disable.patch"
@@ -62,9 +61,6 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
-    -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
     -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=On \
     -DCOMPIZ_BUILD_WITH_RPATH=Off \
     -DCOMPIZ_PACKAGING_ENABLED=On \
