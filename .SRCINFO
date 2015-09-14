@@ -1,0 +1,14 @@
+pkgbase = whiley
+	pkgdesc = Whiley Development Kit. A programming language particularly suited to safety-critical systems
+	pkgver = 0.3.36
+	pkgrel = 0
+	url = http://whiley.org/
+	arch = any
+	license = custom
+	depends = java-environment-jdk
+	provides = whiley
+	source = http://whiley.org/download/wdk/wdk-src-v0.3.36.tgz
+	sha256sums = 743b749527492c6427a690becaa65b2b633e25b06243a09c522c1d673b177593
+
+pkgname = whiley
+
