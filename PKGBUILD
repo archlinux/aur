@@ -5,7 +5,7 @@
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
 pkgver=4.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
@@ -27,8 +27,10 @@ sha256sums=('30920fc2e2fc26279a82b5261a155c2cc15ab2aa1ced2275684a6ff8261b97b0'
 prepare() {
   cd "$srcdir/$_realname-$pkgver"
 
-  # Compiz fixes
+  # See https://bugzilla.xfce.org/show_bug.cgi?id=11697
   patch -Np1 -i "$srcdir/workspace-pager.patch"
+
+  # See https://bugzilla.xfce.org/show_bug.cgi?id=10908
   patch -Np1 -i "$srcdir/button-visibility.patch"
 }
 
