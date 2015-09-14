@@ -5,13 +5,13 @@
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 
 pkgname=gitlab
-pkgver=7.14.1
+pkgver=7.14.3
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="http://gitlab.org/gitlab-ce"
 license=('MIT')
-depends=('ruby>=2.0' 'git>=1.7.10' 'ruby-bundler>=1.5.2' 'gitlab-shell=2.6.4' 'openssh' 'redis>=2.0' 'libxslt' 'icu' 'nodejs')
+depends=('ruby>=2.0' 'git>=1.7.10' 'ruby-bundler>=1.5.2' 'gitlab-shell=2.6.5' 'openssh' 'redis>=2.0' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake')
 optdepends=(
 	'mariadb: database backend'
@@ -44,7 +44,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('09912a4da7d64f0a6f26935e4ef73108908822ff0239fabbe36631f27389a02153ec4b116c0624336460971d5bd3f1e1c33214068e4513a86bd39cd29422ff70'
+sha512sums=('f2088c151b424cbca0fbc65073c1198ea9c3619570ca3543cf5f0ddd193a6105941608df418eeb506bde83f2c0bbd34cea267caaed70092afcca54219e84004d'
 	'a16e762b0ff807e6e32ebf45562cf78b6b9b64babbfe4e42856a13f6e190c09553b74eb4d353d6213121c415cc08cc6cc82ffce56916208ebfd67b08cf012680'
 	'88132c32fddd067862b8d6973d3bfbb4fbd66aefc317ef8e030983709c939442a74de0d2ef80e55123837806531667ff5664e4b8d764d6bc1bc3a78a3fede249'
 	'a38c9c55ad77d857b521769442db95706d9aaf238682f9aa17150f1b5f682ac68eaabfb116e49841e7fce628dd3589685b654d770ac067dac718b5f9e0ee6124'
