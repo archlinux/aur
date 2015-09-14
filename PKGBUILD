@@ -37,18 +37,18 @@ package() {
 
   # Program
   echo "${pkgdir}/opt/${pkgname}/"
-  install -Dm755 "${srcdir}/streamstudio"	"${pkgdir}/opt/${pkgname}/"
+  install -Dm755 "${srcdir}/streamstudio" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/nw.pak" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/libffmpegsumo.so"	"${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/libffmpegsumo.so" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/ffmpeg" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/icudtl.dat"		"${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/package.json"	"${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/config.html"	"${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/icudtl.dat"  "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/package.json" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/config.html" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/index.html"  "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/playlist.html"  "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/selectdir.html"  "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/update.html"  "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/warning.html"  "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/playlist.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/selectdir.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/update.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/warning.html" "${pkgdir}/opt/${pkgname}/"
 
   # Directories
   cp -a "${srcdir}/css" "${pkgdir}/opt/${pkgname}/"
