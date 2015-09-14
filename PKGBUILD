@@ -1,5 +1,5 @@
 pkgname=fortune-mod-southpark
-pkgver=1504091544
+pkgver=1508060627
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from South Park"
