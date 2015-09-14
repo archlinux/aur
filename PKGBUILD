@@ -1,5 +1,5 @@
 pkgname=fortune-mod-twoandahalfmen
-pkgver=1506091729
+pkgver=1509131300
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Two and a Half Men"
