@@ -16,8 +16,7 @@ build() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./configure --sysconfdir=/etc --prefix=/usr \
     --libexecdir=/usr/lib/networkmanager \
-    --with-charon=/usr/lib/strongswan/charon-nm \
-    CFLAGS="$CFLAGS -Wno-error=unused-local-typedefs"
+    --with-charon=/usr/lib/strongswan/charon-nm
   make
 }
 
