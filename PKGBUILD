@@ -2,8 +2,8 @@
 
 pkgname=raid-check
 _pkgname=mdadm
-pkgver=3.3
-_pkgver=3.3-6
+pkgver=3.3.2
+_pkgver=3.3.2-5
 pkgrel=1
 pkgdesc="raid-check script, config and cronjob for data scrubbing to be used with mdadm."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ depends=('mdadm')
 makedepends=('rpmextract')
 install="raid-check.install"
 source=(http://mirror.centos.org/centos/6/os/x86_64/Packages/${_pkgname}-${_pkgver}.el6.x86_64.rpm)
-md5sums=('487e6671a8b1e023a3ebe55ee246cef2')
+md5sums=('524a0586dad326943e3b5c8339c053ac')
 backup=(etc/cron.d/raid-check
         etc/conf.d/raid-check)
 
