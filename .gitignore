@@ -1,5 +1,5 @@
-/qt-everywhere-opensource-*.tar.gz
-/telegram-desktop-*.pkg.tar.xz
+/*.tar.gz
+/*.pkg.tar.xz
 /tdesktop
 /pkg
 /src

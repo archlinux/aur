@@ -1,13 +1,12 @@
 pkgbase = telegram-desktop
 	pkgdesc = Official desktop version of Telegram messaging app.
 	pkgver = 0.8.57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	install = telegram-desktop.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = patch
 	makedepends = libunity
 	makedepends = libappindicator-gtk2
@@ -19,20 +18,22 @@ pkgbase = telegram-desktop
 	depends = libmng
 	depends = libwebp
 	depends = libxkbcommon-x11
+	depends = libinput
+	depends = libproxy
 	depends = mtdev
 	depends = openal
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
+	source = https://github.com/telegramdesktop/tdesktop/archive/v0.8.57.tar.gz
 	source = http://download.qt-project.org/official_releases/qt/5.5/5.5.0/single/qt-everywhere-opensource-src-5.5.0.tar.gz
 	source = disable-custom-scheme-linux.patch
 	source = telegramdesktop.desktop
 	source = tg.protocol
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=73cade9fd9b8e6a05f5155c7458d08d1d4462468
+	sha256sums = 8c46f9d6ba79cb267600509b0bc853a3c57b1d19603458b438a11c1be26a3f45
 	sha256sums = bf3cfc54696fe7d77f2cf33ade46c2cc28841389e22a72f77bae606622998e82
 	sha256sums = 6cadef3ddabd2543493e71beee86ca6ac43cc258faaa724d7b8952e9ed6bf9e9
 	sha256sums = 1191625a6b0683eceef7d59158d16fbe580bbbdc011be435068cf5c833049e5b
 	sha256sums = d4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb
-	sha256sums = SKIP
 
 pkgname = telegram-desktop
 
