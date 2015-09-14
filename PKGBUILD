@@ -1,8 +1,8 @@
 # Maintainer: 4javier <4javiereg4 _ at _ gmail _ dot _com>
 
 pkgname=brackets
-pkgver=1.3
-pkgrel=3
+pkgver=1.4
+pkgrel=1
 pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS. Stable git Tags."
 arch=('i686' 'x86_64')
 url="http://brackets.io"
