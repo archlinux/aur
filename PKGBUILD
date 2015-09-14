@@ -2,14 +2,14 @@
 # Contributor: Alessandro Sagratini <ale_sagra at hotmail dot com>
 pkgname=rr62x
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for Highpoint RocketRAID 62x SATA/6Gbps Card."
 arch=('i686' 'x86_64')
 url="http://www.highpoint-tech.com/USA_new/series_rr600-download.htm"
 license=('custom')
 groups=()
 
-depends=('linux>=4.0')
+depends=('linux')
 makedepends=('linux-headers')
 
 provides=()

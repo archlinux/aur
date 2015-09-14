@@ -1,7 +1,7 @@
 pkgbase = rr62x
 	pkgdesc = Kernel modules for Highpoint RocketRAID 62x SATA/6Gbps Card.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.highpoint-tech.com/USA_new/series_rr600-download.htm
 	install = rr62x.install
 	arch = i686
