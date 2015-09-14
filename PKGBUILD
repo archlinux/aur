@@ -3,8 +3,8 @@
 # Contributor: Iven Hsu <ivenvd AT gmail>
 
 pkgname=compiz-bzr
-pkgver=3971
-pkgrel=3
+pkgver=3977
+pkgrel=1
 _bzrname=compiz
 _bzrbranch=0.9.12
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
@@ -20,10 +20,12 @@ conflicts=('compiz-core' 'compiz')
 provides=("compiz=$_bzrbranch")
 source=("$_bzrname::bzr+http://bazaar.launchpad.net/~compiz-team/$_bzrname/$_bzrbranch/"
         "focus-prevention-disable.patch"
-        "gtk-extents.patch")
+        "gtk-extents.patch"
+        "xfce4-notifyd-nofade.patch")
 sha256sums=('SKIP'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
-            '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9')
+            '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
+            '273aa79cb0887922e3a73fbbe97596495cee19ca6f4bd716c6c7057f323d8198')
 install='compiz-bzr.install'
 
 pkgver() {
@@ -49,6 +51,9 @@ prepare() {
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
   patch -Np1 -i "${srcdir}/gtk-extents.patch"
+
+  # Ensure xfce4 notifications are not 'double faded'
+  patch -Np1 -i "${srcdir}/xfce4-notifyd-nofade.patch"
 }
 
 build() {
