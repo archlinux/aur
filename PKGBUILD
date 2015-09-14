@@ -14,13 +14,7 @@ source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.4/gnutls-${pkgver}.tar.xz{,.sig}
         'gnutls-3.1.11-nosrp.patch'
         'gnutls-3.3.6-default-policy.patch'
         'gnutls-fix-external-libtasn1-detection.patch')
-md5sums=('SKIP'
-         'SKIP'
-         '291612225516234ede7e60f8b367dd8b'
-         'c3a2abfe08f47d9b07f770689b0c1b39'
-         'e0dba6bfe81b965a352f965b1398bcad'
-         'f90a0f01eb0f2a6b7afcc25a836eb67e')
-md5sums=('SKIP'
+md5sums=('474efaba6fd6c6c6c0ebac2a3f431946'
          'SKIP'
          '291612225516234ede7e60f8b367dd8b'
          'c3a2abfe08f47d9b07f770689b0c1b39'
