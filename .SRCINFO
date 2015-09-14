@@ -1,6 +1,6 @@
 pkgbase = obnam
 	pkgdesc = Easy, secure backup program
-	pkgver = 1.14
+	pkgver = 1.17
 	pkgrel = 1
 	url = http://obnam.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = obnam
 	depends = python2-cliapp
 	depends = python2-yaml
 	optdepends = python2-fuse: support for mounting backups
-	source = http://code.liw.fi/debian/pool/main/o/obnam/obnam_1.14.orig.tar.xz
-	sha256sums = 78203274010ab378ace8c8fd57782ab8bfa1b0482b95604873bd9e45c22b0799
+	source = http://code.liw.fi/debian/pool/main/o/obnam/obnam_1.17.orig.tar.xz
+	sha256sums = 7bcc543828e8615d0ff0e85f31334eac5d11b3fe38e885d52f3ba97c80a20106
 
 pkgname = obnam
 

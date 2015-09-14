@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=obnam
-pkgver=1.14
+pkgver=1.17
 pkgrel=1
 pkgdesc="Easy, secure backup program"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python2-paramiko' 'python2-tracing' 'python2-larch'
          'python2-ttystatus' 'python2-cliapp' 'python2-yaml')
 optdepends=('python2-fuse: support for mounting backups')
 source=("http://code.liw.fi/debian/pool/main/o/obnam/obnam_$pkgver.orig.tar.xz")
-sha256sums=('78203274010ab378ace8c8fd57782ab8bfa1b0482b95604873bd9e45c22b0799')
+sha256sums=('7bcc543828e8615d0ff0e85f31334eac5d11b3fe38e885d52f3ba97c80a20106')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
