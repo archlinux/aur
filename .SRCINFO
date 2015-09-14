@@ -1,0 +1,23 @@
+pkgbase = eiffelstudio-bin
+	pkgdesc = IDE for the Eiffel programming language (opensource edition)
+	pkgver = 15.08.97862
+	pkgrel = 1
+	url = https://www.eiffel.com/eiffelstudio/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libxtst
+	depends = gcc
+	provides = eiffelstudio
+	conflicts = eiffelstudio
+	options = staticlibs
+	source = estudio.profile
+	md5sums = babf4e2957285cad811ae51e03e5cbd9
+	source_i686 = http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%2015.08/Build_97862/Eiffel_15.08_gpl_97862-linux-x86.tar.bz2
+	md5sums_i686 = 7e1971ca94f312886880d2f8aa24066d
+	source_x86_64 = http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%2015.08/Build_97862/Eiffel_15.08_gpl_97862-linux-x86-64.tar.bz2
+	md5sums_x86_64 = aa943dd8836d55826efe4ff4729e0c88
+
+pkgname = eiffelstudio-bin
+
