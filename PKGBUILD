@@ -2,7 +2,7 @@
 
 _plugin_name=keefox
 pkgname=firefox-extension-$_plugin_name
-pkgver=1.4.8.1_signed
+pkgver=1.5.3_signed
 pkgrel=1
 pkgdesc="Adds free, secure and easy to use password management features to Firefox"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://keefox.org"
 license=('GPL2')
 depends=('firefox' 'keepass-plugin-rpc')
 source=("https://addons.mozilla.org/firefox/downloads/latest/306880/platform:2/addon-306880-latest.xpi")
-sha256sums=('f5e058bc45a6e6fb419d24eb09a58b571bb8d1b33504707fa467d2ffeb695235')
+sha256sums=('8bf77c9fb877823c1ded745c022fa74e413d6a10d2d6dcbabfa55b88d4acc1e5')
 
 package() {
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
