@@ -1,5 +1,5 @@
 pkgname=('wingpanel-bzr')
-builddeps=('granite-bzr' 'ido' 'libindicator-gtk3')
+builddeps=('granite-bzr')
 
 check_bzr $packagedir/$pkgname/${pkgname%-*}
 
