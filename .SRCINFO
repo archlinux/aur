@@ -1,7 +1,7 @@
 pkgbase = haroopad
 	pkgdesc = A markdown enabled document processor
 	pkgver = 0.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pad.haroopress.com/
 	install = haroopad.install
 	changelog = changelog
@@ -11,7 +11,6 @@ pkgbase = haroopad
 	depends = xdg-utils
 	depends = desktop-file-utils
 	depends = gconf
-	depends = nodejs
 	depends = python
 	depends = alsa-lib
 	depends = gtk2

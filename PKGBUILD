@@ -4,7 +4,7 @@
 
 pkgname=haroopad
 pkgver=0.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown enabled document processor"
 arch=('i686' 'x86_64')
 url="http://pad.haroopress.com/"
@@ -13,7 +13,6 @@ license=('custom')
 depends=('xdg-utils'
          'desktop-file-utils'
          'gconf'
-         'nodejs'
          'python'
          'alsa-lib'
          'gtk2'
