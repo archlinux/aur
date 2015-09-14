@@ -1,0 +1,15 @@
+pkgbase = le
+	pkgdesc = A text editor in memorial to Norton Editor with block and binary operations
+	pkgver = 1.14.9
+	pkgrel = 1
+	url = https://directory.fsf.org/wiki/Le_editor
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://lav.yar.ru/download/le/le-1.14.9.tar.gz
+	sha256sums = db5baabc1b80c42504d64484a83d48388ecbb3b216a7de9c67fea8b19f1c95bd
+
+pkgname = le
+	depends = gcc-libs
+	depends = ncurses
+
