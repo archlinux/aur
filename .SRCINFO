@@ -10,6 +10,7 @@ pkgbase = wingpanel-indicator-network-bzr
 	license = GPL3
 	makedepends = bzr
 	makedepends = cmake
+	makedepends = nm-connection-editor
 	makedepends = vala
 	depends = glib2
 	depends = glibc

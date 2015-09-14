@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libnm-glib'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'nm-connection-editor' 'vala')
 provides=('wingpanel-indicator-network')
 conflicts=('wingpanel-indicator-network')
 install='wingpanel-indicator-network.install'
