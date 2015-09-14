@@ -1,7 +1,8 @@
 # Maintainer: Jose Riha <jose 1711 gmail com>
+# Contributor: Angel_Caido
 
 pkgname=dualsub-git
-pkgver=20140617
+pkgver=v1.0.0.r13.g1a76881
 pkgrel=1
 pkgdesc="tool for merging and translating subtitles"
 url="https://github.com/bonigarcia/dualsub"
@@ -15,6 +16,10 @@ md5sums=('SKIP'
 
 source=("${pkgname}"::'git://github.com/bonigarcia/dualsub' dualsub.png dualsub.desktop)
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd ${srcdir}/${pkgname}
@@ -23,11 +28,11 @@ build() {
 
 package() {
   cd ${srcdir}/${pkgname}
-  install -Dm755 ./target/dualsub-1.0.1-jar-with-dependencies.jar ${pkgdir}/usr/share/java/dualsub/dualsub.jar
+  install -Dm755 ./target/dualsub-1.1.0-SNAPSHOT-jar-with-dependencies.jar ${pkgdir}/usr/share/java/dualsub/dualsub.jar
   install -D -m644 $srcdir/dualsub.png $pkgdir/usr/share/pixmaps/dualsub.png
   install -D -m644 $srcdir/dualsub.desktop $pkgdir/usr/share/applications/dualsub.desktop
   mkdir -p -m755 ${pkgdir}/usr/bin
   echo -e "#!/bin/sh
-java -jar /usr/share/java/dualsub/dualsub.jar" > $pkgdir/usr/bin/dualsub
+  java -jar /usr/share/java/dualsub/dualsub.jar" > $pkgdir/usr/bin/dualsub
   chmod 755 ${pkgdir}/usr/bin/dualsub
 }
