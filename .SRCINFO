@@ -1,0 +1,30 @@
+pkgbase = arm-linux-gnueabihf-gcc-stage2
+	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building (arm-linux-gnueabihf)
+	pkgver = 5.2.0
+	pkgrel = 2
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = arm-linux-gnueabihf-binutils>=2.25
+	depends = arm-linux-gnueabihf-glibc-headers
+	depends = libmpc
+	depends = zlib
+	provides = arm-linux-gnueabihf-gcc-stage1
+	conflicts = arm-linux-gnueabihf-gcc-stage1
+	replaces = arm-linux-gnueabihf-gcc-stage1
+	options = !emptydirs
+	options = !distcc
+	options = !strip
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.2.0/gcc-5.2.0.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.14.1.tar.bz2
+	source = pr66035.patch
+	md5sums = a51bcfeb3da7dd4c623e27207ed43467
+	md5sums = 118d1a379abf7606a3334c98a8411c79
+	md5sums = 5b980076cd5fcbc3aff6014f306282dd
+
+pkgname = arm-linux-gnueabihf-gcc-stage2
+
