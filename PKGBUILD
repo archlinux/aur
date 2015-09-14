@@ -2,7 +2,7 @@
 
 _pkgname=urxvt-font-size
 pkgname=${_pkgname}-git
-pkgver=8
+pkgver=21
 pkgrel=1
 pkgdesc='On-the-fly URxvt font size adjustments'
 arch=('any')
