@@ -67,6 +67,7 @@ build() {
       --program-prefix=${_target}- \
       --with-local-prefix=/usr/${_target} \
       --with-sysroot=/usr/${_target} \
+      --with-build-sysroot=/usr/${_target} \
       --with-as=/usr/bin/${_target}-as \
       --with-ld=/usr/bin/${_target}-ld \
       --libdir=/usr/lib --libexecdir=/usr/lib \
@@ -84,8 +85,6 @@ build() {
       --disable-multilib --disable-werror \
       --enable-checking=release \
       --with-default-libstdcxx-abi=gcc4-compatible
-
-  #--enable-languages=c,c++,fortran,go,lto,objc,obj-c++ \
 
   make
 }
