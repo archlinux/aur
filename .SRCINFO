@@ -1,14 +1,14 @@
 pkgbase = asciisec
 	pkgdesc = SDL roguelike with a 'Wing Commander: Privateer' theme
 	pkgver = 0.7.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asciisector.net
 	install = asciisec.install
 	arch = i686
 	arch = x86_64
 	license = custom:freeware_with_limitations
 	depends = sdl_mixer
-	source = music.zip::http://www.asciisector.net/cgi-bin/download.cgi?music
+	source = music.zip::http://www.laserbrainstudios.com/download.php?name=asciisecmusic
 	source = asciisec.desktop
 	source = asciisec.png
 	md5sums = f061f51a41d98561447b750de8a45400

@@ -3,20 +3,20 @@
 
 pkgname=asciisec
 pkgver=0.7.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SDL roguelike with a 'Wing Commander: Privateer' theme"
 arch=('i686' 'x86_64')
 url="http://www.asciisector.net"
 license=("custom:freeware_with_limitations")
 install="asciisec.install"
 depends=('sdl_mixer')
-source=("music.zip::$url/cgi-bin/download.cgi?music" "asciisec.desktop" "asciisec.png")
+source=("music.zip::http://www.laserbrainstudios.com/download.php?name=asciisecmusic" "asciisec.desktop" "asciisec.png")
 md5sums=('f061f51a41d98561447b750de8a45400'
          'd14120b34114c0f8414e8e8fa4594d72'
          '9c994608913a1e62fb27276b0109f7bf')
 
-[ "$CARCH" = "i686"   ] && source+=("$pkgname$pkgver-linux.tar.gz::$url/cgi-bin/download.cgi?linux")
-[ "$CARCH" = "x86_64" ] && source+=("$pkgname$pkgver-linux64.tar.gz::$url/cgi-bin/download.cgi?linux64")
+[ "$CARCH" = "i686"   ] && source+=("$pkgname$pkgver-linux.tar.gz::http://www.laserbrainstudios.com/download.php?name=asciiseclinux32")
+[ "$CARCH" = "x86_64" ] && source+=("$pkgname$pkgver-linux64.tar.gz::http://www.laserbrainstudios.com/download.php?name=asciiseclinux64")
 [ "$CARCH" = "i686"   ] && md5sums+=('e1b659556662503f71ff3611004265a8')
 [ "$CARCH" = "x86_64" ] && md5sums+=('6d7049fc1dfb392a7ebd6cd27f7539d2')
 
