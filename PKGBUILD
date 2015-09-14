@@ -2,9 +2,9 @@
 
 pkgname=duperemove
 pkgver=0.09.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Btrfs extent deduplication utility"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://github.com/markfasheh/duperemove"
 license=('GPL')
 depends=('glib2' 'sqlite')
