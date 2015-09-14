@@ -32,5 +32,6 @@ package() {
 	_username="$(id | sed -e 's/[^(]*(\([^)]*\)).*/\1/')"
 	python setup.py install --root="$pkgdir/" --optimize=1
 	install -Dm644 -o $_username "data/conf.${pname}" "$pkgdir/etc/${pname}/conf.${pname}"
+	install -Dm644 -o $_username "data/${pname}.conf" "$pkgdir/usr/lib/tmpfiles.d/${pname}.conf"	
 	install -Dm644 -o $_username "data/${pname}.1" "$pkgdir/usr/share/man/man1/${pname}.1"
 }
