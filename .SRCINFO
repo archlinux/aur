@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-fullhouse
 	pkgdesc = Fortune quotes from Full House
-	pkgver = 1506271033
+	pkgver = 1509060105
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Full_House
 	arch = any
