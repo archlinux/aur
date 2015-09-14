@@ -2,10 +2,10 @@
 pkgname=storj-dataserv-client
 _pkgname=${pkgname/storj-/}
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Storj Client for storing and auditing data"
 url="https://github.com/Storj/dataserv-client"
-depends=('python' 'python-pip' 'python-future' 'python-randomio' 'python-partialhash' 'python-btctxstore' 'python-psutil')
+depends=('python' 'python-pip' 'python-future' 'python-randomio' 'python-partialhash' 'python-btctxstore' 'python-psutil' 'python-storjcore')
 optdepends=()
 license=('MIT')
 arch=('any')
