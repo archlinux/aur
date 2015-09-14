@@ -1,0 +1,20 @@
+pkgbase = arm-linux-gnueabihf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files (arm-linux-gnueabihf)
+	pkgver = 2.25.1
+	pkgrel = 3
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc>=2.22
+	depends = zlib
+	options = staticlibs
+	options = !distcc
+	options = !ccache
+	source = git://sourceware.org/git/binutils-gdb.git#commit=2bd25930
+	source = binutils-e9c1bdad.patch
+	md5sums = SKIP
+	md5sums = eb3aceaab8ed26e06d505f82beb30f8f
+
+pkgname = arm-linux-gnueabihf-binutils
+
