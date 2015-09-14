@@ -1,0 +1,10 @@
+diff -r 2fa2cb1fde04 src/fflib/ffapi.hpp
+--- a/src/fflib/ffapi.hpp	Sun Sep 13 23:48:28 2015 +0200
++++ b/src/fflib/ffapi.hpp	Mon Sep 14 06:42:13 2015 +0200
+@@ -32,6 +32,7 @@
+ #include <iostream>
+ #include <sstream>
+ #include <cstdio>
++#include <cstring>
+ using namespace std;
+ #endif //FFAPI_HPP
