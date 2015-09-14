@@ -1,0 +1,22 @@
+post_install() {
+    getent group lightsd >/dev/null || groupadd -r lightsd
+    getent passwd lightsd >/dev/null || useradd -r -d / -g lightsd lightsd
+
+    cat << 'EOF'
+
+lightsd runs under the `lightsd' user and group by default; add yourself to
+this group to be able to open lightsd's socket and pipe under /run/lightsd:
+
+  gpasswd -a $USER lightsd
+
+Re-open your current desktop or ssh session for the change to take effect.
+Then use systemctl to start lightsd; you can start playing with lightsd with:
+
+  `lightsd --prefix`/share/doc/lightsd/examples/lightsc.py
+
+EOF
+}
+
+post_remove() {
+    getent passwd lightsd >/dev/null && userdel lightsd
+}
