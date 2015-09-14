@@ -1,0 +1,16 @@
+pkgbase = git-bz-git
+	pkgdesc = Bugzilla subcommand for Git
+	pkgver = r169.e17bbae
+	pkgrel = 1
+	url = http://blog.fishsoup.net/2008/11/16/git-bz-bugzilla-subcommand-for-git/
+	arch = any
+	license = GPL2
+	makedepends = xmlto
+	makedepends = asciidoc
+	depends = git
+	depends = python2
+	source = git://git.fishsoup.net/git-bz
+	md5sums = SKIP
+
+pkgname = git-bz-git
+
