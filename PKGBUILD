@@ -1,4 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+#
+# Inspiration for this PKGBUILD:
+#     https://gist.github.com/mohamed/4fa7eb75807463d4dfa3
+#
 pkgname='gn-git'
 pkgdesc='Meta-build system which generates Ninja build files'
 pkgver=r694.feb0c39
