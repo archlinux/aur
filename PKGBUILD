@@ -1,14 +1,22 @@
 # Maintainer: Hugo Castilho <hugo.p.castilho@telecom.pt>
 pkgname=meocloud-gui
 pkgver=0.2.29beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud storage service and file synchronization service"
 arch=('x86_64')
 url="https://meocloud.pt"
 license=('custom')
 options=('!strip' '!upx')
 
-
+depends=(
+    'gobject-introspection-runtime'
+    'libnautilus-extension'
+    'libnotify'
+    'python2-dbus'
+    'python2-gobject'
+    'python2-nautilus'
+    'python2-setproctitle'
+    )
 source=("https://meocloud.pt/binaries/linux/${arch}/${pkgname}-${pkgver}_${arch}.tar.gz"
         "TOS.txt")
 sha256sums=('3cf1619a65b1b3e2ca4bce39b9a3ae504c4b53c105c4423e5a9419eba657a9d7'
