@@ -1,0 +1,18 @@
+pkgbase = japa
+	pkgdesc = JACK and ALSA Perceptual Analyser is a 'perceptual' or 'psychoacoustic' audio spectrum analyser.
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = http://kokkinizita.linuxaudio.org/linuxaudio/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = clxclient
+	depends = zita-alsa-pcmi
+	depends = clthreads
+	depends = fftw
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/japa-0.8.4.tar.bz2
+	md5sums = 966a8774e5b232bf055922dfdcc1b730
+
+pkgname = japa
+
