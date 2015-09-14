@@ -1,23 +1,31 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Tianjiao Yin <ytj000+aur@gmail.com>
 
-_plugin_name=default-fullzoom-level
-pkgname=firefox-extension-$_plugin_name
-pkgver=7.5
-pkgrel=1
-pkgdesc="Set Default FullZoom Level, Toolbar buttons for Page zoom and Text zoom."
+set -u
+_plugin_name='default-fullzoom-level'
+pkgname="firefox-extension-${_plugin_name}"
+_filever='7.5'
+pkgver='7.5.1'
+pkgrel='1'
+pkgdesc='Set Default FullZoom level, toolbar buttons for page zoom and text zoom.'
 arch=('any')
-url="https://addons.mozilla.org/firefox/addon/default-fullzoom-level"
+url='https://addons.mozilla.org/firefox/addon/default-fullzoom-level'
 license=('MPL')
-depends=("firefox")
-source=("https://addons.cdn.mozilla.net/user-media/addons/6965/default_fullzoom_level-7.5-fx.xpi")
-sha256sums=('5e6af09ba1a8e9dcca14b57b77f3326ff717be6d55d99d933e73891538a23208')
+depends=('firefox')
+_verwatch=("https://addons.mozilla.org/en-us/firefox/addon/${_plugin_name}/versions/" '\s\+Version \([0-9\.]\+\)-signed</a>' 'f')
+source=("https://addons.cdn.mozilla.net/user-media/addons/6965/${_plugin_name//-/_}-${_filever}-fx.xpi")
+sha256sums=('dc6798d7d79401760ef4b1e06d29e432685d59f717c5ffa49619b15598b419f8')
 
 package() {
-  local emid={D9A7CBEC-DE1A-444f-A092-844461596C4D}
-  local dstdir=$pkgdir/usr/lib/firefox/extensions/${emid}
-  install -d $dstdir
-  rm *.xpi
-  cp -dpr --no-preserve=ownership * $dstdir
+  set -u
+  local emid
+  emid="$(grep -F 'urn:mozilla:install-manifest' 'install.rdf' | sed -n -e 's/^.*em:id="\([^"]\+\)".*$/\1/p')" # '
+  if [[ ! "${emid}" =~ ^'{'[0-9A-Fa-f-]+'}'$ ]]; then set +u; false; fi
+  local dstdir="${pkgdir}/usr/lib/firefox/browser/extensions/${emid}"
+  install -d "${dstdir}"
+  find . -maxdepth 1 '!' -type l -exec mv '{}' "${dstdir}" ';'
+  set +u
 }
+set +u
