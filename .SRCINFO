@@ -1,0 +1,25 @@
+pkgbase = switchboard-plug-mouse-touchpad-bzr
+	pkgdesc = Mouse & Touchpad plug for Switchboard
+	pkgver = r25
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-mouse-touchpad
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgee
+	depends = libgranite.so
+	depends = libswitchboard-2.0.so
+	provides = switchboard-plug-mouse-touchpad
+	conflicts = switchboard-plug-mouse-touchpad
+	source = bzr+lp:switchboard-plug-mouse-touchpad
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-mouse-touchpad-bzr
+

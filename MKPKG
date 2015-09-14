@@ -1,0 +1,6 @@
+pkgname=('switchboard-plug-mouse-touchpad-bzr')
+builddeps=('granite-bzr' 'switchboard-bzr')
+
+check_bzr $packagedir/$pkgname/${pkgname%-*}
+
+# vim: ts=2 sw=2 et:
