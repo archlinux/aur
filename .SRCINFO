@@ -1,0 +1,15 @@
+pkgbase = pactray
+	pkgdesc = Pacman tray notifier.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Thermionix/pactray
+	arch = any
+	license = GPL
+	depends = pacman
+	depends = python-gobject
+	optdepends = cower: check aur packages
+	source = pactray::git+https://github.com/Thermionix/pactray.git
+	md5sums = SKIP
+
+pkgname = pactray
+
