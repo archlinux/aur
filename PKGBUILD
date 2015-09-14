@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
@@ -17,26 +17,35 @@ install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$pkgver/$pkgname-$pkgver.tar.gz
         mattermost.service
         mattermost-user.conf)
-sha256sums=('935e842a7143959c6ad90e4c1d8286d0848e329c04ff13d020ddb7fa8700b8b2'
+sha256sums=('c4fb7885001f174173f636b4c18d540bab768a5c512f6cb8b004164decc97588'
             'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
 
+prepare() {
+	mkdir -p src/github.com/mattermost
+	cd src/github.com/mattermost
+	rm -f platform
+	ln -s "$srcdir"/platform-$pkgver platform
+
+	cd platform
+	sed -r 's|code.google.com/p/freetype-go/freetype|github.com/golang/freetype|g' -i \
+	  Godeps/Godeps.json \
+	  api/user.go
+
+	sed -r 's|github.com/throttled/throttled|gopkg.in/throttled/throttled.v2|g' -i \
+	  Godeps/Godeps.json \
+	  api/server.go
+}
+
 build() {
-	cd "$srcdir"/platform-$pkgver
-
-	export GEM_HOME="$srcdir"/gem
-	export GOPATH="$PWD:$PWD/Godeps/_workspace"
-	export GOBIN="$PWD/bin"
-
-	GO_PLATFORM_DIR="$PWD"/Godeps/_workspace/src/github.com/mattermost/platform
-
-	rm -rf "$GO_PLATFORM_DIR"
-	mkdir -p "$GO_PLATFORM_DIR"
-	mkdir -p src bin pkg
-
-	mv api manualtesting model store utils web "$GO_PLATFORM_DIR"
+	export GOPATH="$srcdir"
+	export GOBIN="$GOPATH/bin"
+	export PATH="$PATH:$GOBIN"
+	GO_PLATFORM_DIR="$srcdir"/src/github.com/mattermost/platform
+	cd "$GO_PLATFORM_DIR"
 
 	go clean
+	godep get
 
 	msg2 "Building react application"
 	pushd "$GO_PLATFORM_DIR"/web/react
@@ -51,14 +60,17 @@ build() {
 	popd
 
 	msg2 "Building go libraries"
-	go build
+	godep go build
 
 	msg2 "Building mattermost"
-	go install mattermost.go
+	godep go install mattermost.go
 }
 
 package() {
-	GO_PLATFORM_DIR="$srcdir"/platform-$pkgver/Godeps/_workspace/src/github.com/mattermost/platform
+	export GOPATH="$srcdir"
+	export PATH="$PATH:$GOPATH/bin"
+	GO_PLATFORM_DIR="$srcdir"/src/github.com/mattermost/platform
+	cd "$GO_PLATFORM_DIR"
 
 	DISTDIR="$pkgdir"/usr/share/webapps/$pkgname
 	install -dm755 "$DISTDIR"/{config,web,api} "$pkgdir"/var/log/$pkgname "$pkgdir"/etc/webapps/mattermost
@@ -82,7 +94,7 @@ package() {
 	ln -s /etc/webapps/mattermost/config.json config/config.json
 
 	cd "$srcdir"
-	install -Dm755 platform-$pkgver/bin/mattermost "$pkgdir"/usr/bin/mattermost
+	install -Dm755 bin/mattermost "$pkgdir"/usr/bin/mattermost
 	install -Dm644 mattermost.service "$pkgdir"/usr/lib/systemd/system/mattermost.service
 	install -Dm644 mattermost-user.conf "$pkgdir"/usr/lib/sysusers.d/mattermost.conf
 }
