@@ -12,7 +12,7 @@ license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('kdepimlibs4' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
-             'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
+             'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt4-gstreamer' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('d696ac88dcb3bcbd3a5da83b0fbe5e7315a43f92')
@@ -70,7 +70,7 @@ package_kipi-plugins() {
               'libgpod: iPodExport plugin'
               'opencv: Remove Red Eyes plugin'
               'imagemagick: Video SlideShow plugin'
-              'qt-gstreamer: Video SlideShow plugin'
+              'qt4-gstreamer: Video SlideShow plugin'
 	      'hugin: panorama tools')
   options=('staticlibs')
   install=kipi-plugins.install
