@@ -20,11 +20,6 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$_gitname"
-
-	sed -i 's/python$/python2/' git-bz
-}
 build() {
 	cd "$_gitname"
 
