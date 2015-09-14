@@ -1,6 +1,6 @@
 pkgbase = lilypond-git
 	pkgdesc = An automated music engraving system (Git snapshot)
-	pkgver = 2.19.27.1.9.g8819d7c
+	pkgver = 2.19.27.1.11.g27fee9a
 	pkgrel = 1
 	url = http://lilypond.org/
 	arch = i686
