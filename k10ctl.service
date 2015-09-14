@@ -1,0 +1,10 @@
+[Unit]
+Description=Change voltage and frequency settings of AMD K10 CPUs
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/k10ctl.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

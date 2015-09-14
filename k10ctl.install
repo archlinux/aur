@@ -1,0 +1,10 @@
+post_install() {
+	cat << _EOF
+
+	USE THIS PROGRAM AT YOU OWN RISK. IT MAY DAMAGE YOUR HARDWARE.
+
+	It is VERY important that you adapt the values in /etc/conf.d/k10ctl
+	to your system. For usage see: http://www.ztex.de/misc/k10ctl.e.html
+
+_EOF
+}
