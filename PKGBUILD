@@ -1,5 +1,5 @@
 pkgname=fortune-mod-mlpfim
-pkgver=1507062202
+pkgver=1508260424
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from My Little Pony: Friendship is Magic"
