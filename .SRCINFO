@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-chappelle
 	pkgdesc = Fortune quotes from Chappelle's Show
-	pkgver = 1506211826
+	pkgver = 1508231353
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Chappelle's_Show
 	arch = any

@@ -1,5 +1,5 @@
 pkgname=fortune-mod-chappelle
-pkgver=1506211826
+pkgver=1508231353
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Chappelle's Show"
