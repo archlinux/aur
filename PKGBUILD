@@ -10,7 +10,7 @@ license=('GPL')
 depends=('bash' 'pkgbuild-introspection' 'git' 'pcre2')
 source=("${pkgname}.sh")
 source_i686='xyzzy'
-sha256sums=('2be511ec4012b56c65a9ef3aef0f2b75b75eda7fccf06f656a9ba8ed88b22e12')
+sha256sums=('2deb579232779dc6ee5e8c52f95d31339b808d421795db9b87c6380144649570')
 
 #install='installfoo'; source+=("${install}") # generate errors for us to detect
 #changelog='changefoo'; source+=("${changelog}")

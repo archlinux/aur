@@ -1230,7 +1230,7 @@ if [ "${_opt_ALL}" -ne 0 ]; then
       # git ls-remote --get-url
       # git remote set-url origin "https://aur.archlinux.org/$(basename "$(pwd)").git/"
       # git remote show origin -n
-      if [ -s "${builddir}/.git/config" ] && ! _fn_find_in_EXCLUDES "${builddir}" && grep -ql 'url = ssh://' "${builddir}/.git/config" && pushd "${builddir}" >/dev/null; then
+      if [ -s "${builddir}/.git/config" ] && ! _fn_find_in_EXCLUDES "${builddir}" && grep -qlF $'url = ssh://\nurl = ssh+git://' "${builddir}/.git/config" && pushd "${builddir}" >/dev/null; then
         echo "Checking ${builddir}"
         _fn_aurcheck
         popd >/dev/null
