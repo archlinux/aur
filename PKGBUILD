@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.27.1.3.gd412d0b
+pkgver=2.19.27.1.9.g8819d7c
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -58,7 +58,7 @@ build() {
   cd lilypond/
   export PYTHON="python2"
   export PYTHON_CONFIG="python2-config"
-
+  [ -f config.hh ] && rm config.hh
   ./autogen.sh \
           --prefix=/usr \
           --disable-documentation \
