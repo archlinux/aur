@@ -29,6 +29,22 @@ for file in $(cat filelist); do
         _fail $file
       fi
       ;;
+    GEODATA.DAT)
+      if ! find $_xcompath -path "*MISSDAT/$file" -exec cp "{}" ./"missdat-$file" \; &>/dev/null; then
+        _fail $file
+      fi
+      if ! find $_xcompath -path "*MAPS/$file" -exec cp "{}" ./"maps-$file" \; &>/dev/null; then
+        _fail $file
+      fi
+      ;;
+    SOUND.CFG)
+      if ! find $_xcompath -path "*XCOM/$file" -exec cp "{}" ./"xcom-$file" \; &>/dev/null; then
+        _fail $file
+      fi
+      if ! find $_xcompath -path "*SOUND/$file" -exec cp "{}" ./"sound-$file" \; &>/dev/null; then
+        _fail $file
+      fi
+      ;;
     *)
       if ! find $_xcompath -name "$file" -exec cp "{}" . \; &>/dev/null; then
         _fail $file
