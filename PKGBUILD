@@ -1,4 +1,5 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Contributor: Jorge Araya Navarro <elcorreo@deshackra.com>
 # Contributor: kaptoxic <kaptoxic _at_ yahoo _dot_ com >
 # Contributor: Louis des Landes <aur@psykar.com>
 # Contributor: dlech
@@ -8,12 +9,11 @@ pkgname=keebuntu
 pkgver=0.5.7
 pkgrel=1
 pkgdesc="App indicator icon for keepass (for unity, cinnamon & gnome)"
-arch=(any)
+arch=('any')
 url="https://github.com/dlech/Keebuntu"
 license=('GPL2')
-depends=('keepass' 'libappindicator-gtk2' 'libappindicator-sharp' 'libdbusmenu-gtk2'
+depends=('keepass' 'libappindicator-gtk2' 'libappindicator-sharp'
          'libindicator-gtk2' 'dbus-sharp-glib' 'gtk-sharp-2')
-makedepends=('git' 'libappindicator-sharp')
 source=("https://github.com/dlech/Keebuntu/archive/debian/${pkgver}.tar.gz")
 install=$pkgname.install
 sha256sums=('70bb5fc404f42240322021bf39ac7af9123ccb9aff7af2a3b5ec61d6dac552b3')
