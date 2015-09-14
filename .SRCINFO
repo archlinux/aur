@@ -21,6 +21,7 @@ pkgbase = sxemacs-git
 	depends = libxaw
 	depends = postgresql-libs
 	depends = libpng
+	depends = sox
 	provides = sxemacs
 	conflicts = sxemacs
 	conflicts = xemacs
