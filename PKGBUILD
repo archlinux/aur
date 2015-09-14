@@ -1,8 +1,8 @@
 # Maintainer: Myles English <myles at rockhead.biz>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=12.0.1
-pkgrel=3
+pkgver=12.2.1
+pkgrel=1
 pkgdesc="An effort to develop algorithms and enabling technologies within an object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems."
 arch=('i686' 'x86_64')
 url="http://trilinos.org"
@@ -11,7 +11,7 @@ depends=('lapack' 'openmpi' 'python2' 'boost')
 source=(http://trilinos.org/oldsite/download/files/${pkgname}-${pkgver}-Source.tar.bz2)
 makedepends=('python2' 'python2-numpy' 'swig' 'gcc' 'gcc-fortran' 'openmpi' 'perl' 'blas' 'lapack' 'cmake')
 # gcc-fortran gcc-fortran-multilib
-md5sums=('19efcadf25c80b834f7c910ccfcca290')
+md5sums=('760f14cbce482b4b9a41d1c18297b531')
 
 build() {
   #export CFLAGS="$CFLAGS -g -O1"
@@ -33,6 +33,7 @@ build() {
       -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
       -DTrilinos_ENABLE_FEI=OFF \
       -DTrilinos_ENABLE_STKClassic=OFF \
+      -DTrilinos_ENABLE_SEACAS=OFF     \
       -DTrilinos_ENABLE_Sundance=OFF \
       -DTrilinos_ENABLE_TESTS=OFF \
       -DTrilinos_ENABLE_OpenMP:BOOL=ON \
