@@ -15,6 +15,7 @@ md5sums=('4fa76d39ddb5830bca9b0e5142b6ffe0')
 
 build() {
   cd "$pkgname-$pkgver"
+  sed -i '25 s/BUILDDIR ?=/BUILDDIR =/' fil4.lv2/Makefile
   FONTFILE=/usr/share/fonts/TTF/FreeSansBold.ttf make
 }
 
