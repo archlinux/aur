@@ -1,0 +1,26 @@
+pkgbase = tupi-git
+	pkgdesc = A 2D animation tool for 8-100 years old kids.
+	pkgver = 156.11cadda
+	pkgrel = 1
+	url = http://www.maefloresta.com/
+	install = tupi.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = ruby
+	makedepends = zlib
+	makedepends = libgl
+	depends = qt5-tools
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = quazip-qt5
+	depends = libtheora
+	depends = ffmpeg
+	depends = aspell
+	depends = shared-mime-info
+	source = git://anongit.kde.org/tupi
+	md5sums = SKIP
+
+pkgname = tupi-git
+
