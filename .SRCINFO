@@ -1,6 +1,6 @@
 pkgbase = glibc-static
 	pkgdesc = GNU C Library
-	pkgver = 2.21
+	pkgver = 2.22
 	pkgrel = 1
 	url = http://www.gnu.org/software/libc
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = glibc-static
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/libc/glibc-2.21.tar.xz
-	source = http://ftp.gnu.org/gnu/libc/glibc-2.21.tar.xz.sig
-	md5sums = 9cb398828e8f84f57d1f7d5588cf40cd
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.22.tar.xz
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.22.tar.xz.sig
+	md5sums = e51e02bf552a0a1fbbdc948fb2f5e83c
 	md5sums = SKIP
 
 pkgname = glibc-static

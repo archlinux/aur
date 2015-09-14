@@ -7,7 +7,7 @@
 # NOTE: adjust version in install script when locale files are updated
 
 pkgname=glibc-static
-pkgver=2.21
+pkgver=2.22
 pkgrel=1
 pkgdesc="GNU C Library"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('gcc>=4.9')
 options=('!strip' 'staticlibs' '!emptydirs')
 validpgpkeys=('F37CDAB708E65EA183FD1AF625EF0A436C2A4AFF')  # Carlos O'Donell
 source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig})
-md5sums=('9cb398828e8f84f57d1f7d5588cf40cd'
+md5sums=('e51e02bf552a0a1fbbdc948fb2f5e83c'
          'SKIP')
 
 build() {
