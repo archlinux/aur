@@ -1,7 +1,7 @@
 # Maintainer: Vincent <ippytraxx@installgentoo.com>
 
 pkgname=gnome-twitch-git
-pkgver=r1.f15aedc
+pkgver=r35.9eb52c6
 pkgrel=1
 pkgdesc="Enjoy Twitch on your GNOME desktop"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ md5sums=('SKIP')
 
 pkgver()
 {
+    cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
