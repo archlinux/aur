@@ -1,5 +1,11 @@
 Madsonic 5.1 Changelog
 
+Server 5.1.5260 - 2015-08-31
+--------------------------------------------
+- Fix: Revert supported REST API to 1.10.5
+- Fix: Update default mediafolder group to music
+- Fix: Last.FM API integration
+
 Server 5.1.5250 - 2015-08-13
 --------------------------------------------
 + New:	Fixed taglib build error
