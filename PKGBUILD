@@ -3,7 +3,7 @@
 pkgbase=adwaita-qt
 pkgname=('adwaita-qt5' 'adwaita-qt4' 'adwaita-qt-common')
 pkgver=0.3.1
-pkgrel=6
+pkgrel=7
 pkgdesc='The stylesheet to bend Qt applications to look like they belong into GNOME Shell'
 arch=('any' 'i686' 'x86_64')
 url='https://github.com/MartinBriza/adwaita-qt'
@@ -12,7 +12,7 @@ groups=('adwaita-qt')
 makedepends=('cmake' 'qt4' 'qt5-base')
 # Use master until Arch specific fix lands into stable.
 source=("https://github.com/MartinBriza/adwaita-qt/archive/master.zip")
-md5sums=('9f44301af62f90db589e4c75e21d77c9')
+md5sums=('aa7b20f2b33db56fef125e8f84568f20')
 
 prepare() {
   mkdir -p build{-qt5,-qt4,-common}
