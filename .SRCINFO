@@ -1,0 +1,22 @@
+pkgbase = arm-linux-gnueabihf-glibc-headers
+	pkgdesc = GNU C Library headers (arm-linux-gnueabihf)
+	pkgver = 2.22
+	pkgrel = 3
+	url = http://www.gnu.org/software/libc/
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = arm-linux-gnueabihf-gcc-stage1
+	depends = arm-linux-gnueabihf-linux-api-headers
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.22.tar.xz
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.22.tar.xz.sig
+	source = glibc-2.22-roundup.patch
+	md5sums = e51e02bf552a0a1fbbdc948fb2f5e83c
+	md5sums = SKIP
+	md5sums = b6b7a0e8d6e6520e40e3164ae773631d
+
+pkgname = arm-linux-gnueabihf-glibc-headers
+
