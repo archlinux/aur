@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-eureka
 	pkgdesc = Fortune quotes from Eureka
-	pkgver = 1505102215
+	pkgver = 1507252356
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Eureka
 	arch = any
