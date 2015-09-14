@@ -1,0 +1,11 @@
+--- kcollectd-0.9.orig/CMakeLists.txt	2010-01-31 21:40:10.000000000 +0300
++++ kcollectd-0.9/CMakeLists.txt	2015-01-04 22:32:53.122980550 +0300
+@@ -7,7 +7,7 @@
+ find_package(KDE4 REQUIRED)
+ include (KDE4Defaults)
+ 
+-add_definitions(-Wall -g)
++add_definitions(-Wall -g -D_DEFAULT_SOURCE)
+ 
+ # Basedir for collectd
+ if(NOT RRD_BASEDIR)
