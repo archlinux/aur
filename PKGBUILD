@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libssh2
-pkgver=1.4.3
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A library implementing the SSH2 protocol as defined by Internet Drafts (mingw-w64)"
 arch=(any)
 url="http://www.libssh2.org"
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-openssl)
 options=(staticlibs !strip !buildflags)
 source=("$url/download/${pkgname#mingw-w64-}-$pkgver.tar.gz")
-md5sums=('071004c60c5d6f90354ad1b701013a0b')
+md5sums=('00aabd6e714a5f42a4fb82ace20db1dd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -17,7 +17,7 @@ build() {
   cd "${srcdir}/libssh2-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
+    ${_arch}-configure ..
     make
     popd
   done
