@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=2.5.2
+Name=StreamStudio
+Comment=Watch French Movies and TV Shows instantly
+Exec=streamstudio
+Icon=streamstudio
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=AudioVideo;Video;Network;Player;P2P;
+Name[fr_FR]=StreamStudio
