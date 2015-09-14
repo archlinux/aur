@@ -1,13 +1,15 @@
 pkgbase = le
 	pkgdesc = A text editor in memorial to Norton Editor with block and binary operations
-	pkgver = 1.14.9
+	pkgver = 1.15.1
 	pkgrel = 1
-	url = https://directory.fsf.org/wiki/Le_editor
+	url = https://github.com/lavv17/le
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = http://lav.yar.ru/download/le/le-1.14.9.tar.gz
-	sha256sums = db5baabc1b80c42504d64484a83d48388ecbb3b216a7de9c67fea8b19f1c95bd
+	source = git://git.sv.gnu.org/gnulib
+	source = le-1.15.1.tar.gz::https://github.com/lavv17/le/archive/v1.15.1.tar.gz
+	sha256sums = SKIP
+	sha256sums = 497c2bc0176ee91033dd87c57c90f1d2bf9acc29b32585cfb4c1d32e6ce34834
 
 pkgname = le
 	depends = gcc-libs

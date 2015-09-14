@@ -4,31 +4,37 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 set -u
+_gitauth='lavv17'
 _pkgname='le'
 pkgname="${_pkgname}"
-pkgver=1.14.9
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='A text editor in memorial to Norton Editor with block and binary operations'
 arch=('i686' 'x86_64')
-url='https://directory.fsf.org/wiki/Le_editor'
+#url='https://directory.fsf.org/wiki/Le_editor'
+url="https://github.com/${_gitauth}/${_pkgname}"
 license=('GPL3')
+_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 _srcdir="${_pkgname}-${pkgver}"
 #source=("http://fossies.org/linux/misc/${_pkgname}-${pkgver}.tar.xz")
-source=("http://lav.yar.ru/download/le/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('db5baabc1b80c42504d64484a83d48388ecbb3b216a7de9c67fea8b19f1c95bd')
+#source=("http://lav.yar.ru/download/le/${_pkgname}-${pkgver}.tar.gz")
+source=('git://git.sv.gnu.org/gnulib' "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_gitauth}/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP'
+            '497c2bc0176ee91033dd87c57c90f1d2bf9acc29b32585cfb4c1d32e6ce34834')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
+  unset _verwatch
   makedepends=('git')
   provides=("${_pkgname}=${pkgver%%.r*}")
   conflicts=("${_pkgname}")
   _srcdir="${_pkgname}"
-  source=('git://git.sv.gnu.org/gnulib' 'git://github.com/lavv17/le.git')
+  source=('git://git.sv.gnu.org/gnulib' "${url//https:/git:}.git")
   :;sha256sums=('SKIP' 'SKIP')
 pkgver() {
   set -u
   cd "${_srcdir}"
   #printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's|-|.|g'
-  git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  git describe --long | sed -e 's:^v::g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
   set +u
 }
 fi
@@ -38,11 +44,12 @@ prepare() {
   cd "${_srcdir}"
   if [ -z "${SKIP_PREPARE:-}" ]; then
     if [ -s 'autogen.sh' ]; then
-      chmod 770 "${srcdir}/gnulib/gnulib-tool"
-      PATH="$PATH:${srcdir}/gnulib"
-      ./autogen.sh
+      #chmod 770 "${srcdir}/gnulib/gnulib-tool"
+      PATH="$PATH:${srcdir}/gnulib" \
+      ./autogen.sh --prefix='/usr'
+    else
+      ./configure --prefix='/usr'
     fi
-    ./configure --prefix='/usr'
   fi
   set +u
 }
