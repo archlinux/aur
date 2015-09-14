@@ -1,0 +1,17 @@
+pkgbase = foxitreader-bin
+	pkgdesc = A small, fast PDF viewer builded from rpm
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.foxitsoftware.com/pdf/desklinux/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = sqlite3
+	source = http://cdn04.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.1/enu/FoxitReader-1.1-0.fc9.i386.rpm
+	md5sums = bc1857288c10cc7a2989b3e82119cac1
+
+pkgname = foxitreader-bin
+
