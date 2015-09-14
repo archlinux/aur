@@ -1,0 +1,18 @@
+pkgbase = brainfpv
+	pkgdesc = Ground control station and firmware for BrainFPV flight controller
+	pkgver = 20150720
+	pkgrel = 1
+	url = https://github.com/BrainFPV/TauLabs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = CCPL:sa
+	source = https://github.com/BrainFPV/TauLabs/releases/download/Brain-20150720/Brain-20150720_linux_x86.tar.gz
+	source = brainfpv.desktop
+	source = brainfpv.png
+	md5sums = 17b45c95dac3403572730b3e3b928514
+	md5sums = e1ef1df6a257211fe11c06c7c3dd2e87
+	md5sums = 21b01c08ddde3f0d9f056b9eca4ab67a
+
+pkgname = brainfpv
+

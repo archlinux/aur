@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BrainFPV GCS
+Comment=Ground control station for BrainFPV flight controller
+Exec=/opt/brainfpv/gcs/bin/taulabsgcs
+Icon=/usr/share/brainfpv/brainfpv.png
+Terminal=False
+Categories=Utilities
