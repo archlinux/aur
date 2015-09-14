@@ -1,18 +1,18 @@
 # $Id$
-# Maintainer: Kaiting Chen <kaitocracy@gmail.com>
+# Maintainer: spiff <alspore@gmail.com>
 # Contributor: tocer <tocer.deng@gmail.com>
 
-pkgname=v8-3.14
-pkgver=3.14.5
+pkgname=v8-3.15
+pkgver=3.15.11
 pkgrel=1
-pkgdesc='A fast and modern javascript engine (old 3.14 version required for plv8)'
+pkgdesc='A fast and modern javascript engine (old 3.15 version required for ethereum)'
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/v8'
 license=('BSD')
 depends=('gcc-libs' 'readline')
 makedepends=('subversion' 'python2')
 source=(http://commondatastorage.googleapis.com/chromium-browser-official/v8-$pkgver.tar.bz2)
-sha256sums=('361ad3b63dc7c9d0943b72b1be592a8135e4ddb0e416b9bcf02b4d2df514fca7')
+sha256sums=('77aa2b2e1d506a73f7ae6b14ba90d807d0b1a90f31125284826151e9af9596f9')
 provides=('v8')
 conflicts=('v8')
 
