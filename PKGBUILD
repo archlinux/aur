@@ -1,5 +1,5 @@
 pkgname=fortune-mod-dexterslab
-pkgver=1506180800
+pkgver=1508302156
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Dexter's Laboratory"

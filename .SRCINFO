@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-dexterslab
 	pkgdesc = Fortune quotes from Dexter's Laboratory
-	pkgver = 1506180800
+	pkgver = 1508302156
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Dexter's_Laboratory
 	arch = any
