@@ -1,0 +1,13 @@
+pkgbase = willekeur-git
+	pkgdesc = On call will change the background to a Google Earth image
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/stroobantstom/willekeur
+	arch = any
+	license = MIT
+	depends = curl
+	source = willekeur-git::git+https://github.com/stroobantstom/willekeur.git
+	md5sums = SKIP
+
+pkgname = willekeur-git
+
