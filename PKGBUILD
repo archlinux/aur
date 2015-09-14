@@ -6,7 +6,7 @@ extended dynamic range.'
 arch=('i686' 'x86_64')
 url='http://jcelaya.github.io/hdrmerge/'
 license='GPL3'
-makedepends=('git')
+makedepends=('git' 'cmake')
 depends=('libraw' 'exiv2' 'zlib' 'alglib' 'boost-libs')
 provides=('hdrmerge')
 
