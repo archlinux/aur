@@ -1,0 +1,17 @@
+# Author: Michael Hauspie
+
+post_install()
+{
+    cat <<EOF
+The HxC Floppy emulator directly uses the USB driver to operate.
+However, the kernel first loads the ftdi_sio module which prevents
+the hxc software to detect the usb emulator. To prevent this, you
+can use the udev rules file provided in the /usr/share/doc/hxcfloppyemulator
+and put it in /etc/udev/rules.d.
+
+run   'cp /usr/share/doc/hxcfloppyemulator-svn/udev-rules.conf.example /etc/udev/rules.d/85-hxc.conf' as root
+
+Warning though, this will also prevent any other FTDI devices with same vendorId
+to work correctly.
+EOF
+}
