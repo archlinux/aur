@@ -1,7 +1,7 @@
 # Maintainer: ajs124 < aur AT ajs124 DOT de > 
 
 pkgname=firejail
-pkgver=0.9.28
+pkgver=0.9.30
 pkgrel=1
 pkgdesc="Linux namespaces sandbox program"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=(GPL2)
 url=https://l3net.wordpress.com/projects/firejail/
 backup=(etc/firejail/login.users)
 source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha512sums=('a0c6715cbaf1043f2ea92b33da5884b6ed0993b3e5d03a3edd181b6663a696a2a60a44e0ad39fc9fcfd50d79eb5acb2f0f33452467bf50912f558ec23ebfc125')
+sha512sums=('a7b4940da63d0001673a11e351a7ba7640e9eea2d8475789125ae96d881d7e11a98f437b44b08347a8ec5208c38f471e2d4cf84ed5d2314b763c1207ceceb56e')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
