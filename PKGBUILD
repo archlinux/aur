@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-sound-bzr
-pkgver=r33
+pkgver=r36
 pkgrel=1
 pkgdesc='Sound indicator for Wingpanel'
 arch=('i686' 'x86_64')
@@ -11,9 +11,10 @@ groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee'
          'libnotify' 'libpulse'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'gobject-introspection' 'gtk2' 'vala')
 provides=('wingpanel-indicator-sound')
 conflicts=('wingpanel-indicator-sound')
+install='wingpanel-indicator-sound.install'
 source=('bzr+lp:wingpanel-indicator-sound')
 sha256sums=('SKIP')
 
@@ -38,7 +39,8 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DGSETTINGS_COMPILE='FALSE'
   make
 }
 
