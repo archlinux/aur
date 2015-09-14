@@ -1,11 +1,11 @@
---- src/upak/Makefile	2012-01-25 23:23:11.000000000 -0500
-+++ nsrc/upak/Makefile	2012-07-24 12:16:23.815817171 -0500
-@@ -32,22 +32,22 @@
+--- src/upak/Makefile	2014-08-24 00:02:31.000000000 +0200
++++ Makefile.x86_64	2015-09-14 13:48:33.382449685 +0200
+@@ -32,22 +32,22 @@ export FENDIAN = -DLITTLEENDIAN
  #
  #--Gfortran - must be gcc >=4.2  (gcc42 and gcc42-shlibs on Mac Fink)
  # MacOS version 
--export F77= gfortran
--export CC=/sw/bin/gcc-4
+-export F77= /sw/bin/gfortran-fsf-4.9
+-export CC=/sw/bin/gcc-fsf-4.9
 -export OPT= -O
 -export FARGS= $(FENDIAN) -DGFORTRAN -fno-automatic -fsecond-underscore -fno-range-check
 -export CARGS= $(FENDIAN)
@@ -14,9 +14,10 @@
 -#
 -#--Gfortran - must be gcc >=4.2  
 -# LINUX version
- #export F77= gfortran
+-#export F77= gfortran
 -#export CC=gcc
-+#export CC=/sw/bin/gcc-4
++#export F77= /sw/bin/gfortran-fsf-4.9
++#export CC=/sw/bin/gcc-fsf-4.9
  #export OPT= -O
  #export FARGS= $(FENDIAN) -DGFORTRAN -fno-automatic -fsecond-underscore -fno-range-check
  #export CARGS= $(FENDIAN)
