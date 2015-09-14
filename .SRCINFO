@@ -1,6 +1,6 @@
 pkgbase = brickv
 	pkgdesc = brick viewer is a testing/flashing tool for tinkerforge brick(let)s
-	pkgver = 2.2.5
+	pkgver = 2.2.7
 	pkgrel = 1
 	url = http://www.tinkerforge.com/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = brickv
 	depends = python-pyqt4
 	depends = python2-setuptools
 	optdepends = brickd
-	source = https://github.com/Tinkerforge/brickv/archive/v2.2.5.zip
-	md5sums = d972923d6d68643ac5a111deee38b8b9
+	source = https://github.com/Tinkerforge/brickv/archive/v2.2.7.zip
+	md5sums = ee41b3612f6c97cfc047c2b02bfd8449
 
 pkgname = brickv
 
