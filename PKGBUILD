@@ -11,7 +11,7 @@ depends=('python' 'python-setuptools' 'python-pafy-git')
 optdepends=('mpv: Alternative to mplayer for playback'
             'mplayer: Alternative to mpv for playback'
             'ffmpeg: for transcoding downloaded content'
-            'xclip: for copying content to the clipboard')
+            'python-pyperclip: for copying content to the clipboard')
 
 provides=('mps-youtube')
 conflicts=('mps-youtube')
