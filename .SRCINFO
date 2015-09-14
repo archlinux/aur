@@ -1,11 +1,10 @@
 pkgbase = colobot-gold-music
 	pkgdesc = Music pack for Colobot GOLD real-time strategy game.
 	pkgver = 0.1.6_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = http://colobot.info
 	arch = any
 	license = GPL3
-	makedepends = cmake
 	source = http://colobot.info/files/music/colobot-music_ogg_0.1.6-alpha.tar.gz
 	md5sums = 9e3c06544674aa01da331795ce69e4ca
 	sha1sums = c477a40f97532e9b470a9bf7eb822c43ef61ddd4
