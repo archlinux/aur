@@ -1,6 +1,6 @@
 pkgbase = urxvt-font-size-git
 	pkgdesc = On-the-fly URxvt font size adjustments
-	pkgver = 8
+	pkgver = 21
 	pkgrel = 1
 	url = https://github.com/majutsushi/urxvt-font-size
 	install = urxvt-font-size.install
