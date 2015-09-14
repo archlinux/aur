@@ -9,7 +9,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.7.51
-pkgrel=1
+pkgrel=2
 
 _basename=wine
 

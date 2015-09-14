@@ -1,7 +1,7 @@
 pkgbase = wine-gaming-nine
 	pkgdesc = Based off wine-staging-d3dadapter with a few more hacks
 	pkgver = 1.7.51
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.winehq.com
 	install = wine.install
 	arch = i686
