@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SSDGuru
+Comment=A GUI based tool for managing OCZ’s SSD’s including firmware and BIOS updates.
+Keywords=disk;drive;ssd;S.M.A.R.T.;smart;firmware;
+Exec=SSDGuru_polkit
+Icon=oczssdguru
+Terminal=false
+Type=Application
+Categories=Utility;HardwareSettings;

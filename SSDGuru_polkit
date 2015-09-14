@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ $(which pkexec) ]; then
+        pkexec --disable-internal-agent "/usr/bin/SSDGuru" "$@"
+else
+        /usr/bin/SSDGuru "$@"
+fi
+
