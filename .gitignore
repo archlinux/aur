@@ -1,0 +1,4 @@
+deluge/
+pkg/
+src/
+*.pkg.tar

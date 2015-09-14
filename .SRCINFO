@@ -1,6 +1,6 @@
 pkgbase = deluge-git
 	pkgdesc = A bittorrent client written with python and pygtk - Git Version
-	pkgver = 2.0.0.dev381
+	pkgver = 2.0.0.dev451
 	pkgrel = 1
 	url = http://deluge-torrent.org
 	install = deluge.install
@@ -21,6 +21,7 @@ pkgbase = deluge-git
 	depends = python2-xdg
 	depends = python2-twisted
 	depends = xdg-utils
+	optdepends = python2-pillow
 	optdepends = librsvg: needed for gtk ui
 	optdepends = pygtk: needed for gtk ui
 	optdepends = python2-mako: needed for web ui

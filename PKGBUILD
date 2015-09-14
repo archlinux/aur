@@ -4,7 +4,7 @@
 # PKGBUILD based on extra\deluge's PKGBUILD, adapted for -git version by Berseker
 
 pkgname=deluge-git
-pkgver=2.0.0.dev381
+pkgver=2.0.0.dev451
 pkgrel=1
 pkgdesc="A bittorrent client written with python and pygtk - Git Version"
 arch=('any')
@@ -14,12 +14,25 @@ conflicts=('deluge' 'deluge-stable-git')
 provides=('deluge')
 install='deluge.install'
 
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'libtorrent-rasterbar' 'python2-service-identity'
-         'python2-chardet' 'python2-pyopenssl' 'python2-xdg' 'python2-twisted' 'xdg-utils')
+depends=('desktop-file-utils'
+         'hicolor-icon-theme'
+         'libtorrent-rasterbar'
+         'python2-service-identity'
+         'python2-chardet'
+         'python2-pyopenssl'
+         'python2-xdg'
+         'python2-twisted'
+         'xdg-utils')
 
-makedepends=('intltool' 'librsvg' 'pygtk' 'python2-mako' 'python2-setuptools' 'git' )
+makedepends=('intltool'
+             'librsvg'
+             'pygtk'
+             'python2-mako'
+             'python2-setuptools'
+             'git' )
 
-optdepends=('librsvg: needed for gtk ui'
+optdepends=('python2-pillow'
+            'librsvg: needed for gtk ui'
             'pygtk: needed for gtk ui'
             'python2-mako: needed for web ui'
             'python2-notify: libnotify notifications'
@@ -39,6 +52,11 @@ pkgver() {
     python2 version.py
 }
 
+prepare() {
+    cd "$srcdir/deluge/deluge/ui/data/icons"
+    ln -s hicolor/scalable scalable
+}
+
 build() {
     cd "$srcdir/deluge"
     python2 setup.py build
@@ -48,8 +66,8 @@ package() {
     cd "$srcdir/deluge"
     python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-    install -d "$pkgdir/srv"
-    install -d -m 664 "$pkgdir/srv/deluge"
+    install -d     "$pkgdir/srv"
+    install -dm664 "$pkgdir/srv/deluge"
     install -Dm644 "deluge/ui/data/pixmaps/deluge.svg" "$pkgdir/usr/share/pixmaps/deluge.svg"
     install -Dm644 "$srcdir/deluged.service"           "$pkgdir/usr/lib/systemd/system/deluged.service"
     install -Dm644 "$srcdir/deluge-web.service"        "$pkgdir/usr/lib/systemd/system/deluge-web.service"
