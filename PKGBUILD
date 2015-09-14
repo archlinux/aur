@@ -4,6 +4,7 @@
 #Additional patches:
 # -Mip-Map fix (see https://bugs.winehq.org/show_bug.cgi?id=34480 )
 # -Keybind patch reversion
+# -Heap allocation perfomance improvement patch
 
 
 pkgname=wine-gaming-nine
@@ -17,7 +18,8 @@ source=(https://github.com/wine-mirror/wine/archive/wine-$pkgver.tar.gz
         keybindings.patch
         raw.patch
         mipmap.patch
-        nine-1.7.50.patch
+        nine-1.7.51.patch
+        heap_perf.patch
         30-win32-aliases.conf)
 
 sha1sums=('f75d41bcc6511c7641d6633ffeb23a23aeb720ef'
@@ -25,7 +27,8 @@ sha1sums=('f75d41bcc6511c7641d6633ffeb23a23aeb720ef'
           'f3febb8836f38320742a546c667106608d4c4395'
           '57aa524e4e760c907c2acef287f5569e78ea85b0'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
-          'aea61469fd107ad3daa3c1811faf758eb7683bf8'
+          'ca80253e74ee6d5cb5d1b54b6445f228d376aab4'
+          '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb')
 
 pkgdesc="Based off wine-staging-d3dadapter with a few more hacks"
@@ -117,16 +120,15 @@ fi
 prepare()
 {
     #Patch source tree
-    cd "$srcdir/wine-wine-$pkgver"
-    patch -p1 -R < ../keybindings.patch
-    patch -p1 < ../mipmap.patch
-
     cd "$srcdir/wine-staging-$pkgver/patches"
 
     ./patchinstall.sh DESTDIR="$srcdir/wine-wine-$pkgver" --all
 
     cd "$srcdir/wine-wine-$pkgver"
-    patch -p1 < ../nine-1.7.50.patch
+    patch -p1 < ../nine-1.7.51.patch
+    patch -p1 -R < ../keybindings.patch
+    patch -p1 < ../mipmap.patch
+    patch -p1 < ../heap_perf.patch
 
     #OpenCL fix
     cp configure configure_old

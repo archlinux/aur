@@ -1,5 +1,5 @@
 diff --git a/configure.ac b/configure.ac
-index 2b0b405..ea7619e 100644
+index aec53f6..c30342f 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -65,6 +65,8 @@ AC_ARG_WITH(openal,    AS_HELP_STRING([--without-openal],[do not use OpenAL]),
@@ -1234,7 +1234,7 @@ index 0000000..fbf2cd0
 +    return ret;
 +}
 diff --git a/dlls/gdi32/dibdrv/dc.c b/dlls/gdi32/dibdrv/dc.c
-index 5ee1bd5..0a9e732 100644
+index 7203a8d..70bbb23 100644
 --- a/dlls/gdi32/dibdrv/dc.c
 +++ b/dlls/gdi32/dibdrv/dc.c
 @@ -523,6 +523,7 @@ const struct gdi_dc_funcs dib_driver =
@@ -1253,7 +1253,7 @@ index 5ee1bd5..0a9e732 100644
      GDI_PRIORITY_DIB_DRV + 10           /* priority */
  };
 diff --git a/dlls/gdi32/driver.c b/dlls/gdi32/driver.c
-index ab39e41..f602955 100644
+index a6b138c..3c88600 100644
 --- a/dlls/gdi32/driver.c
 +++ b/dlls/gdi32/driver.c
 @@ -633,6 +633,11 @@ static struct opengl_funcs *nulldrv_wine_get_wgl_driver( PHYSDEV dev, UINT versi
@@ -1277,7 +1277,7 @@ index ab39e41..f602955 100644
      GDI_PRIORITY_NULL_DRV               /* priority */
  };
 diff --git a/dlls/gdi32/enhmfdrv/init.c b/dlls/gdi32/enhmfdrv/init.c
-index 682f412..6e467cc 100644
+index 34b3de6..90982b3 100644
 --- a/dlls/gdi32/enhmfdrv/init.c
 +++ b/dlls/gdi32/enhmfdrv/init.c
 @@ -163,6 +163,7 @@ static const struct gdi_dc_funcs EMFDRV_Funcs =
@@ -1289,10 +1289,10 @@ index 682f412..6e467cc 100644
  };
  
 diff --git a/dlls/gdi32/freetype.c b/dlls/gdi32/freetype.c
-index c67465a..404b575 100644
+index 60ffc45..95d8fce 100644
 --- a/dlls/gdi32/freetype.c
 +++ b/dlls/gdi32/freetype.c
-@@ -8539,6 +8539,7 @@ static const struct gdi_dc_funcs freetype_funcs =
+@@ -8545,6 +8545,7 @@ static const struct gdi_dc_funcs freetype_funcs =
      NULL,                               /* pUnrealizePalette */
      NULL,                               /* pWidenPath */
      NULL,                               /* wine_get_wgl_driver */
@@ -1301,10 +1301,10 @@ index c67465a..404b575 100644
  };
  
 diff --git a/dlls/gdi32/gdi32.spec b/dlls/gdi32/gdi32.spec
-index 4ad1802..3b3c697 100644
+index 8bba686..c248d5b 100644
 --- a/dlls/gdi32/gdi32.spec
 +++ b/dlls/gdi32/gdi32.spec
-@@ -520,3 +520,6 @@
+@@ -521,3 +521,6 @@
  
  # OpenGL
  @ cdecl __wine_get_wgl_driver(long long)
@@ -1312,7 +1312,7 @@ index 4ad1802..3b3c697 100644
 +# Native Direct3D
 +@ cdecl __wine_get_d3dadapter_driver(long long)
 diff --git a/dlls/gdi32/mfdrv/init.c b/dlls/gdi32/mfdrv/init.c
-index 7b53244..574773c 100644
+index 50f8ba3..e35d7d8 100644
 --- a/dlls/gdi32/mfdrv/init.c
 +++ b/dlls/gdi32/mfdrv/init.c
 @@ -226,6 +226,7 @@ static const struct gdi_dc_funcs MFDRV_Funcs =
@@ -1324,7 +1324,7 @@ index 7b53244..574773c 100644
  };
  
 diff --git a/dlls/gdi32/path.c b/dlls/gdi32/path.c
-index 2c54e94..839e508 100644
+index e09cd0b..6dc322c 100644
 --- a/dlls/gdi32/path.c
 +++ b/dlls/gdi32/path.c
 @@ -2345,5 +2345,6 @@ const struct gdi_dc_funcs path_driver =
@@ -1335,7 +1335,7 @@ index 2c54e94..839e508 100644
      GDI_PRIORITY_PATH_DRV               /* priority */
  };
 diff --git a/dlls/winemac.drv/gdi.c b/dlls/winemac.drv/gdi.c
-index 951b569..f38da8c 100644
+index 9f18ac4..669a7ba 100644
 --- a/dlls/winemac.drv/gdi.c
 +++ b/dlls/winemac.drv/gdi.c
 @@ -538,6 +538,7 @@ static const struct gdi_dc_funcs macdrv_funcs =
@@ -1347,7 +1347,7 @@ index 951b569..f38da8c 100644
  };
  
 diff --git a/dlls/wineps.drv/init.c b/dlls/wineps.drv/init.c
-index fde65c2..22b7994 100644
+index 2cdb071..6e2cf0f 100644
 --- a/dlls/wineps.drv/init.c
 +++ b/dlls/wineps.drv/init.c
 @@ -950,6 +950,7 @@ static const struct gdi_dc_funcs psdrv_funcs =
@@ -4036,7 +4036,7 @@ index 0000000..220e1b9
 +
 +#endif /* __WINE_DRI3_H */
 diff --git a/dlls/winex11.drv/init.c b/dlls/winex11.drv/init.c
-index 5a7d316..17b1776 100644
+index 6bc4fb3..ddb6c15 100644
 --- a/dlls/winex11.drv/init.c
 +++ b/dlls/winex11.drv/init.c
 @@ -365,6 +365,7 @@ static INT X11DRV_ExtEscape( PHYSDEV dev, INT escape, INT in_count, LPCVOID in_d
@@ -4078,10 +4078,10 @@ index 5a7d316..17b1776 100644
  };
  
 diff --git a/dlls/winex11.drv/window.c b/dlls/winex11.drv/window.c
-index 7651590..34868f6 100644
+index b7ec06e..353412e 100644
 --- a/dlls/winex11.drv/window.c
 +++ b/dlls/winex11.drv/window.c
-@@ -1657,6 +1657,7 @@ void CDECL X11DRV_DestroyWindow( HWND hwnd )
+@@ -1658,6 +1658,7 @@ void CDECL X11DRV_DestroyWindow( HWND hwnd )
      struct x11drv_win_data *data;
  
      destroy_gl_drawable( hwnd );
@@ -4257,7 +4257,7 @@ index 0000000..cc7e287
 +#endif /* defined(SONAME_LIBXFIXES) */
 +#endif /* __WINE_XFIXES_H */
 diff --git a/dlls/winex11.drv/xrender.c b/dlls/winex11.drv/xrender.c
-index d2a1c45..e630b82 100644
+index bc2ee40..01ed6e8 100644
 --- a/dlls/winex11.drv/xrender.c
 +++ b/dlls/winex11.drv/xrender.c
 @@ -2275,6 +2275,7 @@ static const struct gdi_dc_funcs xrender_funcs =
@@ -4317,7 +4317,7 @@ index 0000000..6f90338
 +
 +#endif /* __WINE_D3DADAPTER_H */
 diff --git a/include/wine/gdi_driver.h b/include/wine/gdi_driver.h
-index 06e4caa..d5ed856 100644
+index 6f67653..d8706d8 100644
 --- a/include/wine/gdi_driver.h
 +++ b/include/wine/gdi_driver.h
 @@ -25,6 +25,7 @@

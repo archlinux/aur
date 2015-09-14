@@ -1,0 +1,56 @@
+diff --git a/dlls/ntdll/heap.c b/dlls/ntdll/heap.c
+index 95c3554..7b6f35f 100644
+--- a/dlls/ntdll/heap.c
++++ b/dlls/ntdll/heap.c
+@@ -116,9 +116,8 @@ C_ASSERT( sizeof(ARENA_LARGE) % LARGE_ALIGNMENT == 0 );
+ /* Max size of the blocks on the free lists */
+ static const SIZE_T HEAP_freeListSizes[] =
+ {
+-    0x10, 0x18, 0x20, 0x28, 0x30, 0x38, 0x40, 0x48, 0x50, 0x58, 0x60, 0x68,
+-    0x70, 0x78, 0x80, 0x88, 0x90, 0x98, 0xA0, 0xA8, 0xB0, 0xB8, 0xC0, 0xC8,
+-    0xD0, 0xD8, 0xE0, 0xE8, 0xF0, 0xF8, 0x100, 0x200, 0x400, 0x1000, ~0UL
++    0x8, 0x10, 0x20, 0x30, 0x40, 0x60, 0x80, 0x100, 0x200, 0x400, 0x1000,
++    0x10000, 0x100000, 0x1000000, 0x10000000, ~0UL
+ };
+ #define HEAP_NB_FREE_LISTS  (sizeof(HEAP_freeListSizes)/sizeof(HEAP_freeListSizes[0]))
+ 
+@@ -309,6 +308,20 @@ static inline unsigned int get_freelist_index( SIZE_T size )
+     return i;
+ }
+ 
++/* compute the smallest index whose elements are at least as big as size */
++/* size is the size of the whole block including the arena header */
++static inline unsigned int get_freelist_index_at_least( SIZE_T size )
++{
++    return get_freelist_index(size);
++}
++
++/* compute the smallest index whose elements are at most as big as size */
++/* size is the size of the whole block including the arena header */
++static inline unsigned int get_freelist_index_at_most( SIZE_T size )
++{
++    return get_freelist_index(size + 1) - 1;
++}
++
+ /* get the memory protection type to use for a given heap */
+ static inline ULONG get_protection_type( DWORD flags )
+ {
+@@ -468,7 +481,8 @@ static HEAP *HEAP_GetPtr(
+  */
+ static inline void HEAP_InsertFreeBlock( HEAP *heap, ARENA_FREE *pArena, BOOL last )
+ {
+-    FREE_LIST_ENTRY *pEntry = heap->freeList + get_freelist_index( pArena->size + sizeof(*pArena) );
++    FREE_LIST_ENTRY *pEntry = heap->freeList + get_freelist_index_at_most( pArena->size + sizeof(*pArena) );
++
+     if (last)
+     {
+         /* insert at end of free list, i.e. before the next free list entry */
+@@ -994,7 +1008,7 @@ static ARENA_FREE *HEAP_FindFreeBlock( HEAP *heap, SIZE_T size,
+     SUBHEAP *subheap;
+     struct list *ptr;
+     SIZE_T total_size;
+-    FREE_LIST_ENTRY *pEntry = heap->freeList + get_freelist_index( size + sizeof(ARENA_INUSE) );
++    FREE_LIST_ENTRY *pEntry = heap->freeList + get_freelist_index_at_least( size + sizeof(ARENA_INUSE) );
+ 
+     /* Find a suitable free list, and in it find a block large enough */
+ 
