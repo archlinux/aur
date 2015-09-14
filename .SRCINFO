@@ -12,6 +12,7 @@ pkgbase = switchboard-plug-power-bzr
 	makedepends = vala
 	depends = glib2
 	depends = glibc
+	depends = gnome-settings-daemon
 	depends = gtk3
 	depends = libgee
 	depends = libswitchboard-2.0.so

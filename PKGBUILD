@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-power'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' 'libgee'
+depends=('glib2' 'glibc' 'gnome-settings-daemon' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-power')
