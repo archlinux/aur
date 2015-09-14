@@ -1,0 +1,13 @@
+pkgbase = lastpkgs
+	pkgdesc = Lists or removes packages from the last N reboots. Good for cleaning up after experimenting with new programs.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/fabianorosas/lastpkgs
+	arch = any
+	license = GPL
+	source = lastpkgs-0.9.4.tar.gz::https://github.com/fabianorosas/lastpkgs/archive/0.9.4.tar.gz
+	sha256sums = 1be404d7180342b7e61d7eae5fe6520941ea6a9900a3a1511a35e10c9ab71950
+
+pkgname = lastpkgs
+	depends = bash
+
