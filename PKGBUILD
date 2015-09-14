@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Shalygin (k0ste@opentech.ru)
 
 pkgname='yandex-tank'
-pkgver='1.7.13'
+pkgver='1.7.14'
 pkgrel='0'
 pkgdesc='Performance measurement tool'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/yandex/yandex-tank'
 license=('GPL')
 depends=('python2' 'python2-psutil' 'python2-ipaddr' 'python2-progressbar' 'phantom-engine-git')
 source=("http://ppa.launchpad.net/yandex-load/main/ubuntu/pool/main/y/yandextank/yandextank_${pkgver}.tar.gz")
-sha256sums=("62e2063a16fc94e8f880f89065b1c938df1d05949ab449c4915a9a58a005d35a")
+sha256sums=('48c4814663ead38843b7589cfc0bd3fed537b05609a36f009ba7ce1663b5c998')
 
 build() {
   cd "$srcdir/$pkgname"
