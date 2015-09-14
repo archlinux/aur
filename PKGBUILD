@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for building and debugging modern web and cloud applications"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
@@ -35,7 +35,8 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/icons" 
   
-  install -m644 "${srcdir}/${_pkg}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Temporarily disable this since it's missing from upstream
+  #install -m644 "${srcdir}/${_pkg}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
   install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   
