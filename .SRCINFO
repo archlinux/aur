@@ -1,6 +1,6 @@
 pkgbase = storj-dataserv-client
 	pkgdesc = Storj Client for storing and auditing data
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/Storj/dataserv-client
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = storj-dataserv-client
 	depends = python-partialhash
 	depends = python-btctxstore
 	depends = python-psutil
-	source = https://github.com/Storj/dataserv-client/archive/v2.1.3.tar.gz
-	sha256sums = 6dbe26dbe321c67a7ba0df72234bb8180c7ff3c37a122240428e43ad88bcc58b
+	source = https://github.com/Storj/dataserv-client/archive/v2.1.4.tar.gz
+	sha256sums = d28dba786e3c18c2bcf3448b79f316ba51103029d9bf3927a342bb777f561691
 
 pkgname = storj-dataserv-client
 
