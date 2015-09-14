@@ -1,0 +1,16 @@
+pkgbase = lfhex
+	pkgdesc = A hex editor with support for large files
+	pkgver = 0.42
+	pkgrel = 2
+	url = http://stoopidsimple.com/lfhex
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bison
+	makedepends = flex
+	depends = qt4
+	source = http://stoopidsimple.com/files/lfhex-0.42.tar.gz
+	sha256sums = 4e8f8b99eb271242937037a3af2fe07369b653f7f7d8becbd84554118bf8baba
+
+pkgname = lfhex
+
