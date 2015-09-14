@@ -2,9 +2,9 @@
 # Contributor: Jan Keith Darunday <jkcdarunday@gmail.com>
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
-pkgver=20150906_190301
+pkgver=20150914_073425
 pkgrel=1
-pkgdesc="The Free On-line Dictionary of Computing for dict"
+pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
 arch=('any')
 url="http://foldoc.org/"
 license=('GPL')
@@ -13,8 +13,10 @@ makedepends=('dictd')
 provides=('dictd-foldoc')
 conflicts=('dictd-foldoc')
 install=$pkgname.install
-source=("http://foldoc.org/Dictionary.txt")
-md5sums=('SKIP')
+source=("http://foldoc.org/Dictionary.txt"
+        'sedfile')
+md5sums=('SKIP'
+         '679901ef6cf0e32fb15031713933d6f3')
 
 pkgver()
 {
@@ -25,8 +27,8 @@ pkgver()
 
 prepare()
 {
-	# correct some misspellings; to be extended
-	sed -i 's/ cheifly/ chiefly/;s/amd the need/and the need/' Dictionary.txt
+	# correct some misspellings
+	sed -i -f sedfile Dictionary.txt
 }
 
 build()
