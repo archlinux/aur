@@ -9,6 +9,7 @@ pkgbase = git-bz-git
 	makedepends = asciidoc
 	depends = git
 	depends = python2
+	optdepends = python2-crypto: Support for Chrom[e|ium] cookies
 	source = git://git.fishsoup.net/git-bz
 	md5sums = SKIP
 
