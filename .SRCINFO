@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-torchwood
 	pkgdesc = Fortune quotes from Torchwood
-	pkgver = 1504091817
+	pkgver = 1507292312
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Torchwood
 	arch = any

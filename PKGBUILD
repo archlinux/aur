@@ -1,5 +1,5 @@
 pkgname=fortune-mod-torchwood
-pkgver=1504091817
+pkgver=1507292312
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Torchwood"
