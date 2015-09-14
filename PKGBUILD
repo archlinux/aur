@@ -1,5 +1,5 @@
 pkgname=fortune-mod-lost
-pkgver=1504030049
+pkgver=1509072039
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Lost"

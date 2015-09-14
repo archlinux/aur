@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-lost
 	pkgdesc = Fortune quotes from Lost
-	pkgver = 1504030049
+	pkgver = 1509072039
 	pkgrel = 1
 	url = http://en.wikiquote.org/wiki/Lost
 	arch = any
