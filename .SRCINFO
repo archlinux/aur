@@ -1,6 +1,6 @@
 pkgbase = dcpomatic
 	pkgdesc = A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images
-	pkgver = 1.81.0
+	pkgver = 1.83.0
 	pkgrel = 1
 	url = http://dcpomatic.com/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = dcpomatic
 	makedepends = python2
 	makedepends = boost>=1.45
 	depends = libcxml>=0.12.0
-	depends = libdcp>=0.103.0
+	depends = libdcp=0.103.0
 	depends = ffmpeg
 	depends = glib2
 	depends = imagemagick
@@ -21,8 +21,8 @@ pkgbase = dcpomatic
 	depends = libzip
 	depends = xz
 	depends = libsndfile
-	source = http://dcpomatic.com/downloads/1.81.0/dcpomatic-1.81.0.tar.bz2
-	sha256sums = f456fa5f1f15ae855983df4c3572280b46715a3194346539b5ef463dda0319e5
+	source = http://dcpomatic.com/downloads/1.83.0/dcpomatic-1.83.0.tar.bz2
+	sha256sums = 2eb2d2b53953607f57da9e1429ab50a79ae5ed1649e8a6dcb3e75c6539c66e88
 
 pkgname = dcpomatic
 
