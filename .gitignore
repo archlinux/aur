@@ -1,0 +1,6 @@
+*.un~
+*.swp
+*.rpm
+*.pkg.tar.xz
+pkg
+src
