@@ -7,7 +7,7 @@ url="http://np1.github.io/pafy"
 arch=('any')
 license=('GPL3')
 
-depends=('python')
+depends=('python' 'youtube-dl')
 
 provides=('python-pafy')
 conflicts=('python-pafy')
