@@ -1,3 +1,5 @@
+# Contributor: Ninez <triplesquarednine AT gmail DOT com>
+# Contributor: N30N <archlinux@alunamation.com>
 # Maintainer: SanskritFritz (gmail)
 
 pkgname="tupi-git"
