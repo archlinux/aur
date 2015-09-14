@@ -1,0 +1,15 @@
+pkgbase = python-pyfirmata
+	pkgdesc = Python interface for the Firmata
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/tino/pyFirmata
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	depends = python-pyserial
+	options = !emptydirs
+	source = https://github.com/tino/pyFirmata/archive/1.0.3.tar.gz
+	md5sums = d391cf2975c6a48590d4727a3ce85eae
+
+pkgname = python-pyfirmata
+
