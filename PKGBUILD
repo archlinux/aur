@@ -10,8 +10,8 @@
 
 pkgname=vagrant
 pkgver=1.7.4
-pkgrel=2
-_subver=2
+pkgrel=3
+_subver=3
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -19,11 +19,14 @@ license=('MIT')
 options=('!emptydirs')
 depends=('lzo' 'libidn' 'rtmpdump')
 source=($pkgname-$pkgver.tar.gz::http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz)
-source_i686+=(http://pkgbuild.com/~jsteel/$pkgname/substrate_archlinux_i686-$_subver.zip)
-source_x86_64+=(http://pkgbuild.com/~jsteel/$pkgname/substrate_archlinux_x86_64-$_subver.zip)
+source_i686+=(http://pkgbuild.com/~jsteel/$pkgname/substrate_archlinux_i686-$_subver.zip{,.sig})
+source_x86_64+=(http://pkgbuild.com/~jsteel/$pkgname/substrate_archlinux_x86_64-$_subver.zip{,.sig})
 md5sums=('556b5e5594a327d46b63c4d8024db187')
-md5sums_i686=('a72932fa4f1a936d633a8efcde8981c1')
-md5sums_x86_64=('98d92dedfb660045ba779c4761deac58')
+md5sums_i686=('0c4f162b61b51331fc5d7ac63c02a1e5'
+              'SKIP')
+md5sums_x86_64=('f975756fe6e8473692a339160320fe9a'
+                'SKIP')
+validpgpkeys=('86CFFCA918CF3AF47147588051E8B148A9999C34')
 
 build() {
   cd $pkgname-$pkgver
