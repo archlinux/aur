@@ -10,6 +10,7 @@ arch=('any')
 url='http://blog.fishsoup.net/2008/11/16/git-bz-bugzilla-subcommand-for-git/'
 license=('GPL2')
 depends=('git' 'python2')
+optdepends=('python2-crypto: Support for Chrom[e|ium] cookies')
 makedepends=('xmlto'  'asciidoc')
 source=('git://git.fishsoup.net/git-bz')
 md5sums=('SKIP')
