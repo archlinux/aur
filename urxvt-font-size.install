@@ -1,0 +1,8 @@
+post_install () {
+  echo "==> For information on enabling the scripts,"
+  echo "==> see /usr/share/doc/urxvt-font-size-git/README.markdown"
+}
+
+post_upgrade () {
+  post_install $1
+}
