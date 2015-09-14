@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.39.r3389.4a80607c82a0
+pkgver=3.39.r3395.c16b507eade5
 _pkgver=3.39
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
@@ -13,17 +13,13 @@ makedepends=('mercurial' 'gcc-fortran' 'texlive-core')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
-source=('hg+http://www.freefem.org/ff++/ff++/' 'ffapi.patch')
-sha256sums=('SKIP' '21fb3a1e866998684d7d5fbb14584cafc4a1caa15f1b0015c3060bab32d2875d')
+source=('hg+http://www.freefem.org/ff++/ff++/')
+sha256sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
   cd "$srcdir/ff++"
   printf "${_pkgver}.r%s.%s" $(hg identify -n|sed 's/+//') $(hg identify -i|sed 's/+//')
-}
-prepare() {
-  cd "$srcdir/ff++"
-  patch -Np1 < $srcdir/ffapi.patch
 }
 
 build() {
