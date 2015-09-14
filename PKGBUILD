@@ -1,7 +1,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-curl
-pkgver=7.40.0
+pkgver=7.44.0
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("$url/download/curl-$pkgver.tar.bz2")
-md5sums=('SKIP')
+md5sums=('6b952ca00e5473b16a11f05f06aa8dae')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,12 +26,12 @@ build() {
     configure_args="--with-ssl --enable-ipv6 --with-libidn --with-libssh2 --without-ca-bundle --without-random"
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-configure $configure_args \
-      --enable-static --disable-shared
+      --enable-static --disable-shared ..
     make
     popd
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure $configure_args \
-      --disable-static --enable-shared
+      --disable-static --enable-shared ..
     make
     popd
   done
