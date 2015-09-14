@@ -24,8 +24,8 @@ build() {
 	cd tupi
 	./configure \
 		--prefix="${pkgdir}/usr" \
-#		--libdir="${pkgdir}/usr/lib" \
-		--sharedir="${pkgdir}/usr/share/tupi"
+		--libdir="${pkgdir}/usr/lib" \
+#		--sharedir="${pkgdir}/usr/share/tupi"
 		# --with-debug \
 	make
 }
