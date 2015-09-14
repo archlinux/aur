@@ -1,0 +1,18 @@
+pkgbase = arm-linux-gnueabihf-linux-api-headers
+	pkgdesc = Kernel headers sanitized for use in userspace (arm-linux-gnueabihf)
+	pkgver = 4.1.4
+	pkgrel = 1
+	url = http://www.gnu.org/software/libc
+	arch = any
+	license = GPL2
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.4.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.4.sign
+	md5sums = fe9dc0f6729f36400ea81aa41d614c37
+	md5sums = SKIP
+	md5sums = d7e306b17b0b5d49120adeee1a6bf4a8
+	md5sums = SKIP
+
+pkgname = arm-linux-gnueabihf-linux-api-headers
+
