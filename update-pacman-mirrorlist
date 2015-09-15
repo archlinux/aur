@@ -51,10 +51,3 @@ if [ -e "$mirrorlist_file" ]; then
 	cat "$mirrorlist_file" > "$mirrorlist_file.backup"
 fi
 cat "$temp_mirrorlist_file" > "$mirrorlist_file"
-
-while [ -e /var/lib/pacman/db.lck ]; do
-	set +e
-	inotifywait -e delete_self /var/lib/pacman/db.lck
-	set -e
-done
-pacman -Syy
