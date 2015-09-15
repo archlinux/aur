@@ -4,7 +4,7 @@
 
 pkgname=compiz-bzr
 pkgver=3977
-pkgrel=1
+pkgrel=2
 _bzrname=compiz
 _bzrbranch=0.9.12
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
@@ -16,9 +16,9 @@ makedepends=('cmake' 'bzr' 'intltool')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
-conflicts=('compiz-core' 'compiz')
-provides=("compiz=$_bzrbranch")
-source=("$_bzrname::bzr+http://bazaar.launchpad.net/~compiz-team/$_bzrname/$_bzrbranch/"
+conflicts=("compiz-core" "${_bzrname}")
+provides=("${_bzrname}=${_bzrbranch}")
+source=("${_bzrname}::bzr+http://bazaar.launchpad.net/~compiz-team/${_bzrname}/${_bzrbranch}/"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "xfce4-notifyd-nofade.patch")
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '273aa79cb0887922e3a73fbbe97596495cee19ca6f4bd716c6c7057f323d8198')
-install='compiz-bzr.install'
+install=${pkgname}.install
 
 pkgver() {
   cd "${_bzrname}"
@@ -76,7 +76,8 @@ build() {
     -DUSE_GSETTINGS=On \
     -DCOMPIZ_BUILD_TESTING=Off \
     -DCOMPIZ_WERROR=Off \
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,ccp"
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,ccp" \
+    -DCOMPIZ_DISABLE_PLUGIN_DBUS=On
 
   make
 }

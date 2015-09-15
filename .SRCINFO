@@ -1,7 +1,7 @@
 pkgbase = compiz-bzr
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)
 	pkgver = 3977
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/compiz
 	install = compiz-bzr.install
 	arch = i686
