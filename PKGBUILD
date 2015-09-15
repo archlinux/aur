@@ -4,7 +4,7 @@ pkgver=VERSION
 pkgrel=1
 pkgdesc=""
 arch=()
-url=""
+# Maintainer: Thor77 <thor77 at thor77 dot org>
 pkgname=goatattack
 pkgver=0.3.8
 pkgdesc="Goatattack is a fast-paced multiplayer pixel art shooter game."
