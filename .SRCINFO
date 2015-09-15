@@ -1,7 +1,7 @@
 pkgbase = cum
 	pkgdesc = Comic Updater, Mangafied
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hamuko/cum
 	arch = any
 	license = Apache
@@ -13,7 +13,9 @@ pkgbase = cum
 	depends = python-natsort
 	options = !emptydirs
 	source = https://github.com/Hamuko/cum/archive/v0.1.tar.gz
+	source = 0001-ds-scanlators.patch
 	md5sums = d782fb9c1e6334e39ecd798e2b97302f
+	md5sums = ca2e2b1f82a0b3c2261f03aa0454849f
 
 pkgname = cum
 
