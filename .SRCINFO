@@ -1,0 +1,19 @@
+pkgbase = sift-bin
+	pkgdesc = A fast and powerful open source alternative to grep - Static binaries
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://sift-tool.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	conflicts = sift
+	replaces = sift
+	options = !strip
+	options = !emptydirs
+	source_i686 = http://sift-tool.org/downloads/sift/sift_0.3.2_linux_386.tar.gz
+	md5sums_i686 = dd4072ab5ec382965185610cccf323d3
+	source_x86_64 = http://sift-tool.org/downloads/sift/sift_0.3.2_linux_amd64.tar.gz
+	md5sums_x86_64 = a618ba446ac00d5b3d17aef8207ba1a1
+
+pkgname = sift-bin
+
