@@ -1,16 +1,21 @@
 pkgbase = python2-django-compressor
 	pkgdesc = Compresses linked and inline JavaScript or CSS into single cached files
 	pkgver = 1.5
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/django_compressor
-	arch = i686
-	arch = x86_64
+	pkgrel = 2
+	url = https://github.com/django-compressor/django-compressor
+	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	depends = python2
-	depends = python2-lxml
-	source = https://pypi.python.org/packages/source/d/django_compressor/django_compressor-1.5.tar.gz
-	md5sums = 274dd82a45ddd13e111852dd101a5924
+	options = !emptydirs
+	source = https://github.com/django-compressor/django-compressor/archive/1.5.tar.gz
+	sha256sums = 2f094de9c061f38b741db9fc88d359abc424f077b324fe33f5e93ecf91f8f2eb
 
 pkgname = python2-django-compressor
+	depends = python2-lxml
+	depends = python2-django-appconf
+
+pkgname = python-django-compressor
+	depends = python-lxml
+	depends = python-django-appconf
 
