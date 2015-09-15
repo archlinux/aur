@@ -70,4 +70,10 @@ package() {
 
   # Icon
   install -Dm644 "${srcdir}/images/logo.png" "${pkgdir}/usr/share/pixmaps/streamstudio.png"
+
+  # Force youtube-dl write attribute (for auto-updating)
+  chmod 777 "${pkgdir}/opt/${pkgname}/node_modules/youtube-dl/bin/youtube-dl"
+
+  # Force ffmpeg execute attribute
+  chmod +x "${pkgdir}/opt/${pkgname}/ffmpeg"
 }
