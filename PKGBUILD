@@ -3,7 +3,7 @@
 pkgname=streamstudio-bin
 pkgver=2.5.2
 pkgrel=1
-pkgdesc="Stream movies from French torrents. Provide a popcorntime clone for T411, Cpasbien, Songza, Twitch, Piratebay, Youtube and Dailymotion"
+pkgdesc="Provide a popcorntime clone for streaming movies directly from T411, Cpasbien, Songza, Twitch, Piratebay, Youtube and Dailymotion"
 arch=('x86_64' 'i686')
 url="https://www.streamstudio.me/"
 license=('GPL3')
