@@ -6,8 +6,8 @@
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 
 pkgname=paraview
-pkgver=4.3.1
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -19,22 +19,13 @@ optdepends=('python2-matplotlib: Needed to support equation rendering using Math
 	        'python2-numpy: Needed for using some filters such as "Python Calculator"')
 source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz"
 	    'paraview.png'
-	    'paraview.desktop'
-        '0001-gcc49.patch'
-        '0002-int.patch')
-sha1sums=('9c0666ea13ebde3fe9a92cf24255c42a6a20cf79'
+	    'paraview.desktop')
+sha1sums=('276fc91f2a7aec72b7740c5312b560cc76157370'
           'a2dff014e1235dfaa93cd523286f9c97601d3bbc'
-          '1f94c8ff79bb2bd2c02d6b403ea1f4599616531b'
-          '69e1f8c0b90ceee46feaf11c3fae7a22bf68e0dd'
-          '07963d6f7de78f154f2f6a2aaea6380a9e26bab6')
+          '1f94c8ff79bb2bd2c02d6b403ea1f4599616531b')
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-source"
-
-  # Patch for mpi4py, see
-  # http://www.paraview.org/pipermail/paraview/2014-February/030517.html
-  patch -p1 < "${srcdir}/0001-gcc49.patch"
-  patch -p1 < "${srcdir}/0002-int.patch"
   
   rm -rf "${srcdir}/build"
   mkdir "${srcdir}/build"
