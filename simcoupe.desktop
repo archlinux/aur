@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SimCoupe
+GenericName=SimCoupe
+Comment=The SAM Coupé Emulator
+Exec=/usr/bin/simcoupe
+Icon=simcoupe
+Terminal=false
+Type=Application
+Categories=Game;Emulator
+StartupNotify=false
