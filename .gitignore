@@ -1,0 +1,6 @@
+pkg
+src
+*.tar.gz
+*.zip
+*.tar.xz
+*.wiki
