@@ -1,0 +1,15 @@
+pkgbase = papageorge-git
+	pkgdesc = A simple client for the Free Internet Chess Server
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/drestebon/papageorge
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-gobject
+	depends = python-urwid
+	source = git://github.com/drestebon/papageorge.git
+	md5sums = SKIP
+
+pkgname = papageorge-git
+
