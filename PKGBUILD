@@ -1,7 +1,7 @@
 # Maintainer: Ivan <hideaki02@gmail.com>
 pkgname=displaylink
 pkgver=1.0.138
-pkgrel=1
+pkgrel=2
 pkgdesc="DisplayLink DL-5xxx, DL-41xx and DL-3x00 Driver for Linux"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
@@ -9,16 +9,18 @@ license=('custom' 'GPL2' 'LGPL2.1')
 depends=('dkms')
 install=${pkgname}.install
 changelog="DisplayLink_Ubuntu_1.0.138_release-note.txt"
-source=(http://downloads.displaylink.com/publicsoftware/DisplayLink-Ubuntu-$pkgver.zip 99-displaylink.rules displaylink.service)
+source=(http://downloads.displaylink.com/publicsoftware/DisplayLink-Ubuntu-$pkgver.zip 99-displaylink.rules displaylink.service displaylink-sleep.sh)
 md5sums=('177a0905e20f01cb52db991b61f23494'
          'd41c68cfd521336218b549cdf48779c0'
-         'c141a15e973481c7d961f8e135627ca4')
+         'c141a15e973481c7d961f8e135627ca4'
+         '4185b016cd64c6069302239515afadff')
 
 build() {
   chmod +x displaylink-driver-$pkgver.run
   ./displaylink-driver-$pkgver.run --target $pkgname-$pkgver --noexec
   cp 99-displaylink.rules $pkgname-$pkgver
   cp displaylink.service $pkgname-$pkgver
+  cp displaylink-sleep.sh $pkgname-$pkgver
 }
 
 package() {
@@ -59,5 +61,6 @@ package() {
 
   echo "Installing DLM systemd service"
   install -D -m644 displaylink.service "$pkgdir/usr/lib/systemd/system/displaylink.service"
+  install -D -m755 displaylink-sleep.sh "$pkgdir/usr/lib/systemd/system-sleep/displaylink.sh"
 }
 
