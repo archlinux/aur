@@ -1,0 +1,58 @@
+post_install() {
+    # Add group bitdefender
+    groupadd bitdefender
+    useradd -r -g bitdefender -d /opt/BitDefender-scanner bitdefender -s /bin/bash
+    chown -R bitdefender:bitdefender /opt/BitDefender-scanner /etc/BitDefender-scanner
+    chmod a+r -R /opt/BitDefender-scanner/var/skins
+    chmod +s /opt/BitDefender-scanner/bin/ultool
+
+    # initialise license data
+    bdscan --help >/dev/null 2>&1
+
+    # change update server for existing installation
+    for d in /home/*/ ; do
+        if [ -f "$d/.config/BitDefender-scanner/bdscan.conf" ]; then
+	    sed -i "s|UpdateHttpLocation.*|UpdateHttpLocation \= http:\/\/upgrade\.bitdefender\.com/av64bit|g" 
+"$d/.config/BitDefender-scanner/bdscan.conf"
+        fi 
+    done
+
+    # update the desktop-database
+    update-desktop-database -q
+        
+    echo "==> You must be in the 'bitdefender' group to use BitDefender Antivirus Scanner."
+    echo "==>"
+    echo "==>  # gpasswd -a USERNAME bitdefender"
+    echo "==>"
+    echo "==> WARNING! The antivirus engine has been removed from this package to prevent"
+    echo "==>          segementation faults. You will need to update the anti virus engine"    
+    echo "==>          via the 'bdgui' or shell before you can scan."        
+    echo "==>"
+    echo "==>  # bdscan --update"         
+    echo "==>" 
+    echo "==> Register at the URL below to receive your license key and insert it"
+    echo "==> in '/opt/BitDefender-scanner/etc/bdscan.conf'"    
+    echo "==>"
+    echo "==>    http://www.bitdefender.com/site/Products/ScannerLicense"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # remove the bitdefender user and group
+    userdel bitdefender
+    groupdel bitdefender
+
+    # update the desktop-database
+    update-desktop-database -q
+    rm -R /opt/BitDefender-scanner
+
+    # remove any custom config files
+    for d in /home/*/ ; do
+        if [ -d "$d/.config/BitDefender-scanner" ]; then
+            sudo rm -rf $d/.config/BitDefender-scanner
+        fi 
+    done
+}
