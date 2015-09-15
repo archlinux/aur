@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}/binnavi"
   mvn dependency:copy-dependencies -Dmaven.repo.local="${srcdir}/$pkgname-$pkgver"
-  ant build-binnavi-fat-jar
+  ant -Dant.build.javac.target=1.8 -Dant.build.javac.source=1.8 build-binnavi-fat-jar
 }
 
 package() {
