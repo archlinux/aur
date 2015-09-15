@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Jumpman
+Comment=An addictive retro style game
+Exec=jumpman
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=GNOME;Game
+#Icon=

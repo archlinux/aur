@@ -1,0 +1,32 @@
+pkgbase = jumpman
+	pkgdesc = An addictve retro-style game
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://runhello.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://cat.runhello.com/Jumpman_lin.tar.gz
+	source = jumpman.sh
+	source = jumpman.desktop
+	sha256sums = f803df52902999b76b551b338ff61f7048787cdbada863ff4a8bf80ce212348c
+	sha256sums = 00453d83415cbebe45bd600b6be28bbe065a76721e179adb93c4824ba9689c6a
+	sha256sums = 934636c213556ab597d546a502b5a9c3c39998ed188b9c4efd583cf72af4217a
+	depends_i686 = freetype2
+	depends_i686 = glu
+	depends_i686 = libgl
+	depends_i686 = mesa
+	depends_i686 = pcre
+	depends_i686 = sdl
+	depends_i686 = libpulse
+	depends_x86_64 = lib32-freetype2
+	depends_x86_64 = lib32-glu
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-mesa
+	depends_x86_64 = lib32-pcre
+	depends_x86_64 = lib32-sdl
+	depends_x86_64 = lib32-libpulse
+	depends_x86_64 = lib32-alsa-plugins
+
+pkgname = jumpman
+
