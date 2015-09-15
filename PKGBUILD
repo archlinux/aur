@@ -2,7 +2,7 @@
 # Contributor: kozec
 
 pkgname=minecraft-technic-launcher
-pkgver=4.317
+pkgver=4.319
 pkgrel=1
 pkgdesc=("Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.")
 arch=('any')
