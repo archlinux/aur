@@ -1,0 +1,18 @@
+pkgbase = keepass-plugin-ioprotocolext
+	pkgdesc = This plugin adds support for loading/saving files from/to servers using the SCP (Secure CoPy) protocol, SFTP (SSH File Transfer Protocol) and FTPS (FTP over SSH).
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://keepass.info/plugins.html#ioprotocolext
+	arch = any
+	license = GPL
+	makedepends = keepass
+	makedepends = unzip
+	makedepends = xorg-server
+	depends = keepass
+	provides = keepass-plugin-ioprotocolext
+	noextract = IOProtocolExt-1.10-Source.zip
+	source = IOProtocolExt-1.10-Source.zip
+	sha256sums = a3a3202462daac07a047e1142efab86d7b048ef4dd7b299c98509b045d1c17c7
+
+pkgname = keepass-plugin-ioprotocolext
+
