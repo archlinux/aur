@@ -19,7 +19,7 @@ pkgdesc='Compiler and tools for the Go programming language from Google (Windows
 arch=('x86_64' 'i686')
 url='http://golang.org/doc/install/source#environment'
 license=('BSD')
-makedepends=('inetutils' 'git' 'mercurial' 'go>=1.4')
+makedepends=('inetutils' 'git' 'go>=1.4')
 options=('!strip' 'staticlibs')
 optdepends=('mercurial: for fetching sources from mercurial repositories'
             'git: for fetching sources from git repositories'
@@ -139,44 +139,29 @@ package() {
   cp -a pkg "$pkgdir/usr/lib/go"
   cp -a "$GOROOT/src" "$pkgdir/usr/lib/go/"
   cp -a "$GOROOT/src/cmd" "$pkgdir/usr/lib/go/src/cmd"
-  #cp -a "$GOROOT/src/lib9" "$pkgdir/usr/lib/go/src/"
   cp -a "$GOROOT/lib" "$pkgdir/usr/lib/go/"
-  #cp -a "$GOROOT/include" "$pkgdir/usr/lib/go/"
 
-  install -Dm644 src/Make.* "$pkgdir/usr/lib/go/src"
 
-  # Remove object files from target src dir
-  find "$pkgdir/usr/lib/go/src/" -type f -name '*.[ao]' -delete
-
-  # Fix for FS#32813
-  find "$pkgdir" -type f -name sql.go -exec chmod -x {} \;
-  
-  # Remove all executable source files
-  find "$pkgdir/usr/lib/go/src" -type f -executable -delete
-
-  ## Headers for C modules
-  #install -Dm644 src/runtime/runtime.h \
-  #  "$pkgdir/usr/lib/go/src/runtime/runtime.h"
-  #install -Dm644 src/runtime/cgocall.h \
-  #  "$pkgdir/usr/lib/go/src/runtime/cgocall.h"
 
   # This is to make go get code.google.com/p/go-tour/gotour and
   # then running the gotour executable work out of the box.
   ln -sf /usr/bin "$pkgdir/usr/lib/go/bin"
 
-  # For FS#42660 / FS#42661 / gox
-  install -Dm755 src/make.bash "$pkgdir/usr/lib/go/src/make.bash"
-  install -Dm755 src/run.bash "$pkgdir/usr/lib/go/src/run.bash"
   cp -r misc/ "$pkgdir/usr/lib/go/"
 
   # For godoc
   install -Dm644 favicon.ico "$pkgdir/usr/lib/go/favicon.ico"
 
-  rm -f "$pkgdir/usr/share/go/doc/articles/wiki/get.bin"
 
   install -Dm644 VERSION "$pkgdir/usr/lib/go/VERSION"
+  if [[ $CARCH == x86_64 ]]; then
+      for i in "$pkgdir/usr/bin/"* \
+               "$pkgdir/usr/lib/go/pkg/bootstrap/bin/"* \
+               "$pkgdir/usr/lib/go/pkg/tool/linux_amd64/"*; do
+        strip -s "$i"
+    done
+  fi
 
-  find "$pkgdir/usr/"{lib/go/pkg,bin} -type f -exec touch '{}' +
 }
 
 # vim:set ts=2 sw=2 et:
