@@ -2,7 +2,7 @@
 
 pkgname=dump1090-mutability-git
 _pkgbase=dump1090-mutability
-pkgver=1.14.r107.gef34c4c
+pkgver=1.14.r121.g3b4c872
 pkgrel=1
 pkgdesc="ADS-B / Mode S Ground Station System for simple RTL-SDR decoding/translating. Mutability Fork"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
