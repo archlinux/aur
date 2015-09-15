@@ -2,7 +2,7 @@
 
 _name=img2pdf
 pkgname=img2pdf-git
-pkgver=0.1.6-git
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Losslessly convert images to PDF without unnecessarily re-encoding JPEG and JPEG2000 files. Image quality is retained without unnecessarily increasing file size."
 arch=('any')
