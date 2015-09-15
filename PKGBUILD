@@ -1,13 +1,13 @@
 pkgname=osvr-oculus-rift-git
-pkgver=v0.1.r25.gecd7c11
+pkgver=v0.1.r22.ga9bedc6
 pkgrel=1
 pkgdesc="A plugin for OSVR that provides access to Oculus Rift trackers from OSVR applications."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Oculus-Rift"
 #license=('GPL')
-makedepends=('git' 'cmake') # 'vrpn-oculus-git')
+makedepends=('git' 'cmake' 'vrpn-oculus-git')
 #depends=('osvr-core-git') #TODO: add more deps
-source=("osvr-oculus-rift::git+https://github.com/OSVR/OSVR-Oculus-Rift.git#branch=no-vrpn-required"
+source=("osvr-oculus-rift::git+https://github.com/OSVR/OSVR-Oculus-Rift.git"
     "Findjsoncpp.cmake")
 
 pkgver() {
