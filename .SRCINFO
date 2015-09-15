@@ -1,7 +1,7 @@
 pkgbase = flite-fpic
 	pkgdesc = A lighweight version of festival speech synthesis compiled with -fPIC
 	pkgver = 1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.speech.cs.cmu.edu/flite/
 	arch = i686
 	arch = x86_64
