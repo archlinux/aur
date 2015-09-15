@@ -1,6 +1,6 @@
 # Maintainer: Sean Baggaley <coffeescripter@gmail.com>
 pkgname=doomseeker-hg
-pkgver=1.1
+pkgver=1.1-150913-1620
 pkgrel=1
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
