@@ -1,0 +1,38 @@
+pkgname=doomseeker
+pkgver=1.0
+pkgrel=1
+pkgdesc="A cross-platform Doom server browser"
+arch=(i686 x86_64)
+url="http://doomseeker.drdteam.org/"
+license=("GPL2")
+depends=('qt4' 'zlib' 'bzip2')
+makedepends=('gcc' 'cmake' 'mercurial' 'make')
+source=("https://bitbucket.org/Blzut3/doomseeker/get/1.0.tar.gz"
+        "doomseeker.desktop")
+sha256sums=('96c6b5b4832eae8caf0ab16b9f3fb5d04513f5a637098069b753e627c6f9df05'
+            '799f4e9a2a9c538c0f4e342d4d947d2a31af99461675a55e52eefc0641388a4a')
+
+_bbdir=Blzut3-doomseeker-b1cb0d67f9b9
+
+build() {
+    cd $srcdir/$_bbdir
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release .. && \
+    make
+}
+
+package() {
+    mkdir -p $pkgdir/usr/games/doomseeker/engines/
+    cd $srcdir/$_bbdir/build
+    install -Dm755 doomseeker "$pkgdir/usr/games/doomseeker"
+    install -Dm755 libwadseeker.so "$pkgdir/usr/games/doomseeker"
+    cd engines
+    for f in *.so; do
+        install -Dm755 $f "$pkgdir/usr/games/doomseeker/engines/$f"
+    done
+    cd ../../
+    install -Dm644 media/icon.png "$pkgdir/usr/share/pixmaps/doomseeker.png"
+    install -Dm755 $srcdir/../doomseeker-launch-script.sh "$pkgdir/usr/bin/doomseeker"
+    install -Dm644 "$srcdir/../doomseeker.desktop" "$pkgdir/usr/share/applications/doomseeker.desktop"
+}

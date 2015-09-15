@@ -1,0 +1,22 @@
+pkgbase = doomseeker
+	pkgdesc = A cross-platform Doom server browser
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://doomseeker.drdteam.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = mercurial
+	makedepends = make
+	depends = qt4
+	depends = zlib
+	depends = bzip2
+	source = https://bitbucket.org/Blzut3/doomseeker/get/1.0.tar.gz
+	source = doomseeker.desktop
+	sha256sums = 96c6b5b4832eae8caf0ab16b9f3fb5d04513f5a637098069b753e627c6f9df05
+	sha256sums = 799f4e9a2a9c538c0f4e342d4d947d2a31af99461675a55e52eefc0641388a4a
+
+pkgname = doomseeker
+
