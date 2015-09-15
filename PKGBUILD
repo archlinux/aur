@@ -6,7 +6,7 @@ pkgdesc="A fast-paced multiplayer pixel art shooter game."
 arch=("any")
 url="http://www.goatattack.net/"
 license=('GPL')
-depends=("sdl2_mixer")
+depends=("sdl2" "libpng" "sdl2_mixer")
 source=("http://www.goatattack.net/installers/$pkgname-$pkgver.tar.gz")
 md5sums=('7f4aea68560ded26e147d0cd7eb49e6b')
 
@@ -22,6 +22,5 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-
 	make DESTDIR="$pkgdir/" install
 }
