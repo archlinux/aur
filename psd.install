@@ -12,10 +12,8 @@ pre_upgrade() {
 		echo '->    created when psd is invoked the first time.'
 		echo '-> 2. A system service is no longer used. A user service is provided and can be'
 		echo '->    used like this:  systemctl --user start psd.service'
-		echo '-> 3. Users wanting to use overlayfs mode MUST have sudo access to both mount'
-		echo '->    and umount. See the man page for an example configured with visudo.'
-		echo
-		echo '-> Internal changes to psd require it to be stopped now before updating.'
+		echo '-> 3. Users wanting to use overlayfs mode MUST have sudo access with nopasswd to'
+		echo '->    /usr/bin/psd-overlay-helper. See the man page for an example configured with visudo.'
 
 		# stop system service now since it will be removed upon updating
 		systemctl is-active psd.service &>/dev/null
