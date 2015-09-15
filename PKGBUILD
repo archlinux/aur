@@ -3,7 +3,7 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
 pkgver=4.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
 arch=('i686' 'x86_64')
@@ -11,6 +11,9 @@ license=('custom')
 depends=('bash' 'java-runtime-headless') 
 makedepends=('cpio')
 optdepents=('java-runtime - For Crashplan GUI')
+backup=('opt/crashplan/bin/run.conf'
+	'opt/crashplan/conf/my.service.xml'
+	'opt/crashplan/conf/service.model')
 install=crashplan.install
 source=("http://download.crashplan.com/installs/linux/install/CrashPlan/CrashPlan_${pkgver}_Linux.tgz"
 	'https://raw.githubusercontent.com/pdemonaco/init/master/crashplan/crashplan'
