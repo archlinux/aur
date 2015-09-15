@@ -1,10 +1,12 @@
 pkgbase = python-watchdog
-	pkgdesc = This decorator will turn your normal python functions into proper shell commands
+	pkgdesc = Python API and shell utilities to monitor file system events.
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/watchdog
 	arch = any
 	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pathtools
 	source = https://pypi.python.org/packages/source/w/watchdog/watchdog-0.8.3.tar.gz

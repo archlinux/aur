@@ -3,8 +3,8 @@
 
 pkgname=python-watchdog
 pkgver=0.8.3
-pkgrel=2
-pkgdesc="This decorator will turn your normal python functions into proper shell commands"
+pkgrel=3
+pkgdesc="Python API and shell utilities to monitor file system events."
 arch=('any')
 url="https://pypi.python.org/pypi/watchdog"
 license=('Apache')
