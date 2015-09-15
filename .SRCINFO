@@ -1,0 +1,16 @@
+pkgbase = hazama
+	pkgdesc = Diary application
+	pkgver = 0.40
+	pkgrel = 1
+	url = https://krrr.github.io/hazama
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-pyside-tools
+	depends = python
+	depends = python-pyside
+	source = https://github.com/krrr/Hazama/archive/v0.40.tar.gz
+	md5sums = a8f5d70f69d4d863f22d70419f770072
+
+pkgname = hazama
+
