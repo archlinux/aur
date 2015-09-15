@@ -1,6 +1,6 @@
 pkgbase = vte3-notification
 	pkgdesc = Virtual Terminal Emulator widget for use with GTK3
-	pkgver = 0.40.2
+	pkgver = 0.41.90
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = i686
@@ -11,23 +11,23 @@ pkgbase = vte3-notification
 	makedepends = gtk3
 	makedepends = vala
 	makedepends = gperf
-	options = !emptydirs
-	source = http://download.gnome.org/sources/vte/0.40/vte-0.40.2.tar.xz
-	source = vte291-command-notify.patch
+	source = https://download.gnome.org/sources/vte/0.41/vte-0.41.90.tar.xz
 	source = add-zsh-notfication-support.patch
-	sha256sums = 9b68fbc16b27f2d79e6271f2b0708808594ac5acf979d0fccea118608199fd2d
-	sha256sums = c1d6be7fab5997a6908aac9f5864335293c4c1052847fdf10f406b54aacdc650
+	source = vte-command-notify.patch
+	sha256sums = f1ee9d27962c97414e09dfeb886efe437006f557b068f39330e0ff3a2c301516
 	sha256sums = 150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a
+	sha256sums = d88e870c6f2232e5a06ae4b45d6308aae5fa564f5b82dca460a743c71781eba4
 
 pkgname = vte3-notification
 	depends = gtk3
 	depends = vte-notification-common
-	provides = vte3=0.40.2
+	provides = vte3=0.41.90
 	conflicts = vte3
+	options = !emptydirs
 
 pkgname = vte-notification-common
 	pkgdesc = Common files used by vte and vte3
 	depends = glibc
-	provides = vte-common=0.40.2
+	provides = vte-common=0.41.90
 	conflicts = vte-common
 

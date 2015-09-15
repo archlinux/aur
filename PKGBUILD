@@ -4,55 +4,54 @@
 
 pkgbase=vte3-notification
 pkgname=(vte3-notification vte-notification-common)
-pkgver=0.40.2
+pkgver=0.41.90
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget for use with GTK3"
 arch=('i686' 'x86_64')
 license=('LGPL')
-options=('!emptydirs')
 makedepends=('intltool' 'gobject-introspection' 'gtk3' 'vala' 'gperf')
 url="http://www.gnome.org"
-source=(http://download.gnome.org/sources/vte/${pkgver::4}/vte-$pkgver.tar.xz
-        vte291-command-notify.patch
-	add-zsh-notfication-support.patch)
-sha256sums=('9b68fbc16b27f2d79e6271f2b0708808594ac5acf979d0fccea118608199fd2d'
-            'c1d6be7fab5997a6908aac9f5864335293c4c1052847fdf10f406b54aacdc650'
-            '150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a')
+source=("https://download.gnome.org/sources/vte/${pkgver::4}/vte-${pkgver}.tar.xz"
+	'add-zsh-notfication-support.patch'
+	'vte-command-notify.patch')
+sha256sums=('f1ee9d27962c97414e09dfeb886efe437006f557b068f39330e0ff3a2c301516'
+	'150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
+	'd88e870c6f2232e5a06ae4b45d6308aae5fa564f5b82dca460a743c71781eba4')
 
 prepare () {
-  cd vte-$pkgver
+	cd "vte-${pkgver}"
 
-  patch -p1 -i ../vte291-command-notify.patch
-  patch -p1 -i ../add-zsh-notfication-support.patch
+	patch -p1 -i ../vte-command-notify.patch
+	patch -p1 -i ../add-zsh-notfication-support.patch
 }
 
 build() {
-  cd "vte-$pkgver"
-  ./configure --prefix=/usr --sysconfdir=/etc \
-      --libexecdir=/usr/lib/vte \
-      --localstatedir=/var --disable-static \
-      --enable-introspection --enable-gnome-pty-helper
-  make
+	cd "vte-${pkgver}"
+	./configure --prefix=/usr --sysconfdir=/etc \
+		--libexecdir=/usr/lib/vte \
+		--localstatedir=/var --disable-static \
+		--enable-introspection --enable-gnome-pty-helper
+	make
 }
 
 package_vte3-notification(){
-  depends=('gtk3' 'vte-notification-common')
-  provides=(vte3=$pkgver)
-  conflicts=(vte3)
-  cd "vte-$pkgver"
-  make DESTDIR="$pkgdir" install
+	depends=('gtk3' 'vte-notification-common')
+	provides=("vte3=${pkgver}")
+	conflicts=('vte3')
+	options=('!emptydirs')
 
-  rm "$pkgdir"/usr/lib/vte/gnome-pty-helper
-  rm "$pkgdir"/etc/profile.d/vte.sh
+	cd "vte-${pkgver}"
+	make DESTDIR="${pkgdir}" install
+	rm "${pkgdir}/etc/profile.d/vte.sh"
 }
 
 package_vte-notification-common() {
-  pkgdesc="Common files used by vte and vte3"
-  depends=('glibc')
-  provides=(vte-common=$pkgver)
-  conflicts=(vte-common)
-  cd "vte-$pkgver"
+	pkgdesc="Common files used by vte and vte3"
+	depends=('glibc')
+	provides=("vte-common=${pkgver}")
+	conflicts=('vte-common')
 
-  make -C gnome-pty-helper DESTDIR="$pkgdir" install
-  install -Dm644 src/vte.sh "$pkgdir"/etc/profile.d/vte.sh
+	cd "vte-${pkgver}"
+	install -d "${pkgdir}/usr/lib/vte/gnome-pty-helper"
+	install -Dm644 src/vte.sh "${pkgdir}/etc/profile.d/vte.sh"
 }
