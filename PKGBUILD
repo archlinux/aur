@@ -1,16 +1,16 @@
 # Maintainer: Ivan <hideaki02@gmail.com>
 pkgname=displaylink
-pkgver=1.0.68
-pkgrel=2
+pkgver=1.0.138
+pkgrel=1
 pkgdesc="DisplayLink DL-5xxx, DL-41xx and DL-3x00 Driver for Linux"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
 license=('custom' 'GPL2' 'LGPL2.1')
 depends=('dkms')
 install=${pkgname}.install
-changelog="DisplayLink_Ubuntu_1.0.68_release-note.txt"
+changelog="DisplayLink_Ubuntu_1.0.138_release-note.txt"
 source=(http://downloads.displaylink.com/publicsoftware/DisplayLink-Ubuntu-$pkgver.zip 99-displaylink.rules displaylink.service)
-md5sums=('3589332fd5ad70b3d24d9bc512d78b48'
+md5sums=('177a0905e20f01cb52db991b61f23494'
          'd41c68cfd521336218b549cdf48779c0'
          'c141a15e973481c7d961f8e135627ca4')
 
