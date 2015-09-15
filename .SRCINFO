@@ -1,0 +1,15 @@
+pkgbase = tkpng
+	pkgdesc = An open source binary package that adds PNG photo image support to Tcl/Tk.
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://www.muonics.com/FreeStuff/TkPNG/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = tk
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/tkpng/tkpng/0.9/tkpng0.9.tgz
+	md5sums = 43347d3d805a5bf3ff428ed812834230
+
+pkgname = tkpng
+
