@@ -2,13 +2,14 @@
 
 pkgname=latexdraw
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Create svg graphics and/or pstricks code usable in latex documents.'
 arch=('any')
 url="http://latexdraw.sourceforge.net"
 license=('GPL2')
 depends=('java-runtime>=7' 'desktop-file-utils')
-optdepends=('texlive-pstricks: use generated code in latex documents')
+optdepends=('texlive-pstricks: use generated code in LaTeX documents'
+ 'texlive-latexextra: support for LaTeX text in preview')
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/LaTeXDraw-${pkgver}-bin.zip
         latexdraw.sh)
 install=latexdraw.install
