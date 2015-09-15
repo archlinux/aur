@@ -1,5 +1,5 @@
 pkgbase = zopfli-git
-	pkgver = 1.0.0.r31.g6ff3ba2
+	pkgver = 1.0.0.r40.g89cf773
 	pkgrel = 1
 	url = https://github.com/google/zopfli
 	arch = i686
@@ -7,7 +7,7 @@ pkgbase = zopfli-git
 	arch = ARM
 	license = Apache
 	makedepends = git
-	depends = gcc-libs
+	depends = glibc
 	provides = zopflipng
 	provides = zopfli
 	provides = libzopfli
@@ -23,7 +23,9 @@ pkgname = libzopfli-git
 
 pkgname = zopflipng-git
 	pkgdesc = PNG optimisation tool using Google's zopfli library, git version.
+	depends = gcc-libs
 
 pkgname = libzopflipng-git
 	pkgdesc = PNG optimisation library using Google's zopfli library, git version.
+	depends = gcc-libs
 

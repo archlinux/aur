@@ -1,12 +1,12 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=("zopfli-git" "libzopfli-git" "zopflipng-git" "libzopflipng-git")
-pkgver=1.0.0.r31.g6ff3ba2
+pkgver=1.0.0.r40.g89cf773
 pkgrel=1
 arch=('i686' 'x86_64' 'ARM')
 url="https://github.com/google/zopfli"
 license=('Apache')
 makedepends=('git')
-depends=('gcc-libs')
+depends=('glibc')
 provides=('zopflipng' 'zopfli' 'libzopfli' 'libzopflipng')
 source=('git+https://github.com/google/zopfli.git')
 md5sums=('SKIP')
@@ -18,6 +18,9 @@ pkgver() {
 
 build() {
     cd "$srcdir/zopfli"
+    # These need to be separate due to the Makefile not liking parallel
+    # builds with all targets in one go.
+    # For more information, see <https://github.com/google/zopfli/issues/68>.
     make zopfli 
     make libzopfli 
     make zopflipng 
@@ -26,24 +29,30 @@ build() {
 
 package_zopflipng-git() {
     pkgdesc="PNG optimisation tool using Google's zopfli library, git version."
+    depends=('gcc-libs')
     cd "$srcdir/zopfli"
     install -Dm755 zopflipng "${pkgdir}/usr/bin/zopflipng"
 }
 
 package_libzopflipng-git() {
     pkgdesc="PNG optimisation library using Google's zopfli library, git version."
+    depends=('gcc-libs')
     cd "$srcdir/zopfli"
-    _libname=$(find . -name "libzopflipng.so.*" -print)
+    _libname=$(find * -type f -name "libzopflipng.so.*" -print)
     install -D $_libname "${pkgdir}/usr/lib/$_libname"
-    ln -s "${pkgdir}/usr/lib/$_libname" "${pkgdir}/usr/lib/libzopflipng.so"
+    ln -s "/usr/lib/$_libname" "${pkgdir}/usr/lib/libzopflipng.so"
+    install -Dm644 src/zopflipng/zopflipng_lib.h \
+            "${pkgdir}/usr/include/zopflipng_lib.h" # FYI, this is a dumb name.
 }
 
 package_libzopfli-git() {
     pkgdesc="Compression library by Google, git version."
     cd "$srcdir/zopfli"
-    _libname=$(find . -name "libzopfli.so.*" -print)
+    _libname=$(find * -type f -name "libzopfli.so.*" -print)
     install -D $_libname "${pkgdir}/usr/lib/$_libname"
-    ln -s "${pkgdir}/usr/lib/$_libname" "${pkgdir}/usr/lib/libzopfli.so"
+    ln -s "/usr/lib/$_libname" "${pkgdir}/usr/lib/libzopfli.so"
+    install -Dm644 src/zopfli/zopfli.h \
+            "${pkgdir}/usr/include/zopfli.h"
 }
 
 package_zopfli-git() {
