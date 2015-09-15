@@ -28,7 +28,7 @@ _bldtype=Release
 #*************************************************************
 
 _zipcoderel=201508
-_mozcrev=321e0656b0f2e233ab1c164bd86c58568c9e92f2
+_mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
 
 _gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
 _jsc=11086dd6a7eba04289944367ca82cea71299ed70
@@ -38,7 +38,7 @@ _jpusd=10
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
-pkgver=2.17.2095.102
+pkgver=2.17.2111.102
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
