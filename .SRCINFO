@@ -1,6 +1,6 @@
 pkgbase = gb-git
 	pkgdesc = The project based build tool for Go
-	pkgver = c0ed038
+	pkgver = v0.1.1
 	pkgrel = 1
 	url = https://github.com/constabulary/gb
 	arch = i686
