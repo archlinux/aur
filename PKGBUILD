@@ -1,13 +1,13 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=keepass-plugin-ioprotocolext
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin adds support for loading/saving files from/to servers using the SCP (Secure CoPy) protocol, SFTP (SSH File Transfer Protocol) and FTPS (FTP over SSH)."
 arch=('any')
 url="http://keepass.info/plugins.html#ioprotocolext"
 license=('GPL')
 depends=('keepass')
-makedepends=('keepass' 'unzip' 'xorg-server')
+makedepends=('unzip' 'xorg-server')
 provides=('keepass-plugin-ioprotocolext')
 _required_keepass_version=2.27
 _sourcefile="IOProtocolExt-$pkgver-Source.zip"
