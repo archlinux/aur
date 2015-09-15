@@ -4,7 +4,7 @@
 
 pkgname="tupi-git"
 pkgver=156.11cadda
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D animation tool for 8-100 years old kids."
 url="http://www.maefloresta.com/"
 license=("GPL3")
@@ -23,16 +23,16 @@ pkgver() {
 build() {
 	cd tupi
 	./configure \
-		--prefix="${pkgdir}/usr" \
-		--libdir="${pkgdir}/usr/lib" \
-#		--sharedir="${pkgdir}/usr/share/tupi"
+		--prefix="/usr" \
+		--libdir="/usr/lib" \
+		# --sharedir="/usr/share/tupi"
 		# --with-debug \
 	make
 }
 
 package() {
 	cd tupi
-	make install
+	make DESTDIR="$pkgdir" install
 
-	sed "s|${pkgdir}||" -i "${pkgdir}/usr/bin/tupi"
+	sed "s|$pkgdir||" -i "$pkgdir/usr/bin/tupi"
 }
