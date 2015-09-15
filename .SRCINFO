@@ -1,6 +1,6 @@
 pkgbase = zeroc-ice
 	pkgdesc = An object-oriented middleware that provides object-oriented Remote Procedure Call functionality
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://zeroc.com
 	install = ice.install
@@ -14,10 +14,10 @@ pkgbase = zeroc-ice
 	makedepends = java-environment
 	makedepends = java-berkeleydb>=5.3
 	depends = mcpp>=2.7.2
-	source = ice-3.6.0.tar.gz::https://github.com/zeroc-ice/ice/archive/v3.6.0.tar.gz
-	source = ice-packaging-3.6.0.tar.gz::https://github.com/zeroc-ice/ice-packaging/archive/v3.6.0.tar.gz
-	sha256sums = 77933580cdc7fade0ebfce517935819e9eef5fc6b9e3f4143b07404daf54e25e
-	sha256sums = f995dbd8ec64d301c3abcf8697b243e1b8b051c799d17acc82a4a2c681834a34
+	source = ice-3.6.1.tar.gz::https://github.com/zeroc-ice/ice/archive/v3.6.1.tar.gz
+	source = ice-packaging-3.6.1.tar.gz::https://github.com/zeroc-ice/ice-packaging/archive/v3.6.1.tar.gz
+	sha256sums = 454d81cb72986c1f04e297a81bca7563e3449a216ad63de8630122d34545ae78
+	sha256sums = 91e340c404047ebf05a787ab992ed175b086ce306070da1768b5817e38385748
 
 pkgname = zeroc-ice
 	backup = etc/glacier2router.conf

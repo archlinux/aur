@@ -9,7 +9,7 @@ pkgname=(
 )
 
 pkgbase=("zeroc-ice")
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="An object-oriented middleware that provides object-oriented Remote Procedure Call functionality"
 arch=("i686" "x86_64")
@@ -31,8 +31,8 @@ source=(
     "ice-packaging-${pkgver}.tar.gz::https://github.com/zeroc-ice/ice-packaging/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('77933580cdc7fade0ebfce517935819e9eef5fc6b9e3f4143b07404daf54e25e'
-            'f995dbd8ec64d301c3abcf8697b243e1b8b051c799d17acc82a4a2c681834a34')
+sha256sums=('454d81cb72986c1f04e297a81bca7563e3449a216ad63de8630122d34545ae78'
+            '91e340c404047ebf05a787ab992ed175b086ce306070da1768b5817e38385748')
 install=ice.install
 
 _make_args="OPTIMIZE=yes embedded_runpath=prefix='' prefix=/usr"
@@ -79,15 +79,15 @@ package_zeroc-ice() {
     fi
 
     msg2 "Installing systemd services..."
-    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/rpm/glacier2router.conf ${pkgdir}/etc/glacier2router.conf
-    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/rpm/icegridnode.conf ${pkgdir}/etc/icegridnode.conf
-    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/rpm/icegridregistry.conf ${pkgdir}/etc/icegridregistry.conf
+    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/ice/rpm/glacier2router.conf ${pkgdir}/etc/glacier2router.conf
+    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/ice/rpm/icegridnode.conf ${pkgdir}/etc/icegridnode.conf
+    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/ice/rpm/icegridregistry.conf ${pkgdir}/etc/icegridregistry.conf
 
-    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/rpm/glacier2router.service \
+    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/ice/common/systemd/glacier2router.service \
                    ${pkgdir}/usr/lib/systemd/system/glacier2router.service
-    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/rpm/icegridnode.service \
+    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/ice/common/systemd/icegridnode.service \
                    ${pkgdir}/usr/lib/systemd/system/icegridnode.service
-    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/rpm/icegridregistry.service \
+    install -Dm644 ${srcdir}/ice-packaging-${pkgver}/ice/common/systemd/icegridregistry.service \
                    ${pkgdir}/usr/lib/systemd/system/icegridregistry.service
 
     rm -f ${pkgdir}/usr/share/Ice-${pkgver}/LICENSE
