@@ -1,3 +1,5 @@
+#Maintainer: Wayne Hartmann (DH4) <wayne@bitstorm.pw>
+
 pkgname=ttf-wps-fonts
 pkgver=1.0
 pkgrel=1
