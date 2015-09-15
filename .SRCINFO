@@ -1,0 +1,14 @@
+pkgbase = libsndobj-cvs
+	pkgdesc = The Sound Object Library is an object-oriented audio processing library.
+	pkgver = 20100712
+	pkgrel = 1
+	url = http://sndobj.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = lib
+	license = GPL
+	makedepends = cvs
+	makedepends = scons
+
+pkgname = libsndobj-cvs
+
