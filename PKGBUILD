@@ -2,7 +2,7 @@
 # Contributor: Mattia Basaglia <mattia.basaglia@gmail.com>
 
 pkgname=qt5-color-widgets
-pkgver=0.r171.24d47d5
+pkgver=0.r175.98e5308
 pkgrel=1
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('i686' 'x86_64')
