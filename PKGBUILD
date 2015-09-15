@@ -2,7 +2,7 @@
 _pkgbasename=pipman
 pkgname=$_pkgbasename-git
 pkgrel=1
-pkgver=0.6.2.r0.g441a9c0
+pkgver=0.7.1.r0.g1de56ee
 pkgdesc="Generate PKGBUILD from pip packages"
 arch=('any')
 url="http://github.com/sollidsnake/pipman"
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgbasename"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
