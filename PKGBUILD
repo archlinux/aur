@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-cpanel-publicapi'
-pkgver='1.002'
+pkgver='1.3'
 pkgrel='1'
 pkgdesc="A perl interface for interacting with cPanel"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-io-socket-ssl>=1.33' 'perl-json-xs>=2' 'perl-uri')
+depends=('perl-io-socket-ssl>=1.33' 'perl-json-xs' 'perl-uri')
 makedepends=()
-url='http://search.cpan.org/dist/cPanel-PublicAPI'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MATTDEES/cPanel-PublicAPI-1.002.tar.gz')
-md5sums=('4028cfd9df5ae77a292ebda1317e7e66')
-sha512sums=('bff4f88e2087f55cbfd3e8eead3bcd87f4a46db23c3bdcb326f5573cd74056dca40c7051c1a92daf844c6d5ed99b55cf34975c2d5d4b783c2f375d6ec1cc3829')
-_distdir="cPanel-PublicAPI-1.002"
+url='https://metacpan.org/release/cPanel-PublicAPI'
+source=('http://search.cpan.org/CPAN/authors/id/C/CP/CPANEL/cPanel-PublicAPI-1.3.tar.gz')
+md5sums=('362efb85a6dc3e93ac55d375dd523a4b')
+sha512sums=('80efc1c960f6b44bc4e9a04ac008b482a99112ebb65def52baac85724592ca8fb38a673cec9c7bba8a5f9463c5b32a6369ff43ddac0024efafcbabf9238f2ec3')
+_distdir="cPanel-PublicAPI-1.3"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
