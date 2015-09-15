@@ -1,7 +1,7 @@
 # Maintainer: Sean Baggaley <coffeescripter@gmail.com>
 pkgname=doomseeker
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -9,9 +9,11 @@ license=("GPL2")
 depends=('qt4' 'zlib' 'bzip2')
 makedepends=('gcc' 'cmake' 'mercurial' 'make')
 source=("https://bitbucket.org/Blzut3/doomseeker/get/1.0.tar.gz"
-        "doomseeker.desktop")
+        "doomseeker.desktop"
+        "doomseeker-launch-script.sh")
 sha256sums=('96c6b5b4832eae8caf0ab16b9f3fb5d04513f5a637098069b753e627c6f9df05'
-            '799f4e9a2a9c538c0f4e342d4d947d2a31af99461675a55e52eefc0641388a4a')
+            '799f4e9a2a9c538c0f4e342d4d947d2a31af99461675a55e52eefc0641388a4a'
+            '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
 
 _bbdir=Blzut3-doomseeker-b1cb0d67f9b9
 
