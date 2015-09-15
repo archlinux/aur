@@ -4,7 +4,7 @@
 _name=kupfer
 pkgname=${_name}-adds-git
 _gitname=$_name-adds
-pkgver=2014.10.13
+pkgver=2015.09.14
 pkgrel=1
 epoch=1
 pkgdesc="An interface for quick and convenient access to applications and their documents. Forked by Karol Bedkowski."

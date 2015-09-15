@@ -1,6 +1,6 @@
 pkgbase = kupfer-adds-git
 	pkgdesc = An interface for quick and convenient access to applications and their documents. Forked by Karol Bedkowski.
-	pkgver = 2014.10.13
+	pkgver = 2015.09.14
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/KarolBedkowski/kupfer-adds
