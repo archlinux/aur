@@ -1,0 +1,16 @@
+pkgbase = java-p7zip-binding
+	pkgdesc = Java wrapper for 7-Zip C++ library.
+	pkgver = 4.65_1.06rc
+	pkgrel = 1
+	url = http://sevenzipjbind.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = unzip
+	makedepends = java-environment
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/sevenzipjbind/7-Zip-JBinding/4.65-1.06rc-extr-only/sevenzipjbinding-4.65-1.06-rc-extr-only-AllLinux.zip
+	md5sums = 45e6c9859f507321216192ba6207ad25
+
+pkgname = java-p7zip-binding
+
