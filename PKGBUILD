@@ -2,7 +2,7 @@
 
 pkgname=libsaasound
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Philips SAA1099 sound generator chip emulator"
 arch=('i686' 'x86_64')
 url="http://www.simcoupe.org/"
@@ -13,7 +13,7 @@ source=("http://www.simcoupe.org/files/SAASound-${pkgver}.tar.gz")
 
 build() {
   cd "$srcdir/SAASound-${pkgver}"
-  ./configure --prefix=$pkgdir/usr/lib
+  ./configure --prefix=$pkgdir/usr
   make
 }
 

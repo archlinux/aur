@@ -1,7 +1,7 @@
 pkgbase = libsaasound
 	pkgdesc = Philips SAA1099 sound generator chip emulator
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.simcoupe.org/
 	arch = i686
 	arch = x86_64
