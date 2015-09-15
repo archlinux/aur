@@ -1,0 +1,7 @@
+--- a/opt/manager-accounting/manager-accounting
++++ b/opt/manager-accounting/manager-accounting
+@@ -1,3 +1,3 @@
+ #!/bin/sh
+ 
+-exec /usr/bin/cli /opt/manager-accounting/ManagerDesktop.exe "$@"
++exec /usr/bin/mono /usr/lib/manager-accounting/ManagerDesktop.exe "$@"
