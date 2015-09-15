@@ -1,7 +1,7 @@
 #Maintainer: Nick Boughton <nicholasboughton@gmail.com>
 pkgname=gnome-mud
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GnomeMud is an advanced MUD client for GNOME"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/GnomeMud"
@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver}"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
 
