@@ -6,20 +6,24 @@ pkgdesc="A fast and powerful open source alternative to grep"
 arch=('i686' 'x86_64')
 url="http://sift-tool.org/"
 license=('GPL3')
+makedepends=('go')
 options=('!strip' '!emptydirs')
-source_i686=("http://sift-tool.org/downloads/sift/${pkgname}_${pkgver}_linux_386.tar.gz")
-source_x86_64=("http://sift-tool.org/downloads/sift/${pkgname}_${pkgver}_linux_amd64.tar.gz")
-md5sums_i686=('dd4072ab5ec382965185610cccf323d3')
-md5sums_x86_64=('a618ba446ac00d5b3d17aef8207ba1a1')
+conflicts=('sift-bin')
+replaces=('sift-bin')
+source=("https://github.com/svent/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('c14025e993f47a947ed9d1b444e3b3f334090428eb25736eae5779b19a764308')
 
-[[ "$CARCH" = "i686" ]] && _debarch='386'
-[[ "$CARCH" = "x86_64" ]] && _debarch='amd64'
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  go build
+}
 
 package() {
-  cd "${pkgname}_${pkgver}_linux_${_debarch}"
+  cd "${pkgname}-${pkgver}"
 
-  install -Dm 775 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 775 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
