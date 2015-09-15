@@ -1,7 +1,7 @@
 pkgbase = webcamstudio-git
 	pkgdesc = Webcam desktop recording suite for producing professional looking broadcasts
 	pkgver = 20150307
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WebcamStudio/webcamstudio
 	install = webcamstudio.install
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = webcamstudio-git
 	depends = java-runtime
 	depends = libnice
 	depends = ttf-ubuntu-font-family
-	depends = v4l2loopback
+	depends = v4l2loopback-dkms
 	depends = wmctrl
 	provides = webcamstudio
 	conflicts = webcamstudio

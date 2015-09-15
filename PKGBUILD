@@ -3,7 +3,7 @@
 
 pkgname=webcamstudio-git
 pkgver=20150307
-pkgrel=1
+pkgrel=2
 pkgdesc="Webcam desktop recording suite for producing professional looking broadcasts"
 arch=('i686' 'x86_64')
 depends=('clutter-gst'
@@ -35,7 +35,7 @@ depends=('clutter-gst'
          'java-runtime'
          'libnice'
          'ttf-ubuntu-font-family'
-         'v4l2loopback'
+         'v4l2loopback-dkms'
          'wmctrl')
          #'gstreamer0.10-espeak' (doesn't compile)
 makedepends=('apache-ant' 'git')
