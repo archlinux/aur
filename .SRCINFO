@@ -1,0 +1,19 @@
+pkgbase = gnocky
+	pkgdesc = GTK written GUI frontend for gnokii
+	pkgver = 0.0.7
+	pkgrel = 2
+	url = http://www.gnokii.org/
+	install = gnocky.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	depends = libglade
+	depends = gnokii>=0.6.26
+	depends = libical
+	source = http://www.gnokii.org/download/gnocky/gnocky-0.0.7.tar.gz
+	md5sums = 607b25ee3bbfc0cee5664018c302d8e0
+
+pkgname = gnocky
+

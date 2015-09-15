@@ -1,0 +1,12 @@
+post_install() {
+	ln -s /usr/share/gnocky/bin/gnocky /usr/bin/gnocky
+}
+
+pre_remove() {
+	rm /usr/bin/gnocky
+}
+
+op=$1
+shift
+
+$op "$@"
