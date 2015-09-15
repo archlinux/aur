@@ -9,6 +9,7 @@ pkgbase = nvidia-full-beta-all
 	makedepends = pacman>=4.2.0
 	options = !strip
 	source = 20-nvidia.conf
+	source = nvidia-linux-4.3.patch
 	md5sums = 2640eac092c220073f0668a7aaff61f7
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
 	md5sums_i686 = 16d143ccafe99328a2ca8e5a396fd4bc
