@@ -19,7 +19,7 @@ optdepends=('openssh: SSH client'
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         appindicator.patch)
 md5sums=('3c1329702914f8b1c213c0bb00d078cf'
-         '7bbe98eadfe199c5664fd69a4531fb3d')
+         '480c69cab53fa79a015d0f2b7e1df9c4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
