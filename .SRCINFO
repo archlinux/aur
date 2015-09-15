@@ -1,6 +1,6 @@
-pkgbase = sensei-raw-ctl-git
+pkgbase = sensei-raw-ctl
 	pkgdesc = SteelSeries Sensei Raw configuration tool
-	pkgver = d034b7b
+	pkgver = 2f70930
 	pkgrel = 1
 	url = https://github.com/pjanouch/sensei-raw-ctl
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = sensei-raw-ctl-git
 	makedepends = cmake
 	makedepends = help2man
 	provides = sensei-raw-ctl
-	source = git://github.com/pjanouch/sensei-raw-ctl.git
+	source = git://github.com/pjanouch/sensei-raw-ctl.git#commit=2f70930
 	md5sums = SKIP
 
-pkgname = sensei-raw-ctl-git
+pkgname = sensei-raw-ctl
 
