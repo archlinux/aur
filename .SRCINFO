@@ -1,0 +1,21 @@
+pkgbase = gnome-rdp
+	pkgdesc = Remote desktop client for the GNOME Desktop with RDP/VNC/SSH capabilities, written in C Sharp
+	pkgver = 0.3.1.0
+	pkgrel = 3
+	url = http://sourceforge.net/projects/gnome-rdp/
+	arch = any
+	license = GPL
+	license = LGPL
+	depends = gtk-sharp-2
+	depends = gnome-keyring-sharp
+	optdepends = openssh: SSH client
+	optdepends = gnome-terminal: required for the SSH client
+	optdepends = rdesktop: RDP client
+	optdepends = tightvnc: VNC client
+	source = http://downloads.sourceforge.net/gnome-rdp/gnome-rdp-0.3.1.0.tar.gz
+	source = appindicator.patch
+	md5sums = 3c1329702914f8b1c213c0bb00d078cf
+	md5sums = 7bbe98eadfe199c5664fd69a4531fb3d
+
+pkgname = gnome-rdp
+

@@ -1,0 +1,249 @@
+Index: /trunk/gnome-rdp/configure.ac
+===================================================================
+--- /trunk/gnome-rdp/configure.ac (revision 263)
++++ /trunk/gnome-rdp/configure.ac (revision 264)
+@@ -50,6 +50,7 @@
+ PKG_CHECK_MODULES([GLIB_SHARP_20], [glib-sharp-2.0])
+ PKG_CHECK_MODULES([GLADE_SHARP_20], [glade-sharp-2.0])
+ PKG_CHECK_MODULES([GNOME_KEYRING_SHARP_10], [gnome-keyring-sharp-1.0])
++PKG_CHECK_MODULES([APPINDICATOR_SHARP_01], [appindicator-sharp-0.1])
+ 
+ dnl package checks, per config
+ 
+Index: /trunk/gnome-rdp/MainWindow.cs
+===================================================================
+--- /trunk/gnome-rdp/MainWindow.cs (revision 257)
++++ /trunk/gnome-rdp/MainWindow.cs (revision 264)
+@@ -31,14 +31,18 @@
+ using GnomeRDP.Vnc;
+ 
++using AppIndicator;
++
+ namespace GnomeRDP
+ {
+ 	public partial class MainWindow: Gtk.Window
+ 	{			
+-		private StatusIcon statusIcon;
++		private ApplicationIndicator applicationIndicator;
+ 		private Gtk.Action actionQuit;
++		private Gtk.Action actionToggleVisible;
++		private bool hideOnDelete = false;
+ 				
+ 		private const string sessionKey = "Session";
+ 		
+-		public MainWindow(): base (Gtk.WindowType.Toplevel)
++		public MainWindow (): base (Gtk.WindowType.Toplevel)
+ 		{
+ 			Build ();
+@@ -46,72 +50,80 @@
+ 			this.DeleteEvent += (s, e) =>
+ 			{
+-				Visible = false;
+-				e.RetVal = true;
++				if (hideOnDelete) 
++				{
++					Visible = false;
++					e.RetVal = true;
++				}
+ 			};
+ 			
+-			this.actionQuit = new Gtk.Action("QuitAction", "Quit");
+-			this.actionQuit.Activated+= (s, e) => Application.Quit();
++			this.actionQuit = new Gtk.Action ("QuitAction", "Quit");
++			this.actionQuit.Activated += (s, e) => Application.Quit ();
++		
++			this.actionToggleVisible = new Gtk.Action("ToggleVisibleAction", "Show/Hide");
++			this.actionToggleVisible.Activated += (s, e) => { this.Visible = !this.Visible; };
++
++			this.applicationIndicator = new ApplicationIndicator ("gnome-rdp", "gnome-rdp", Category.ApplicationStatus);
++			this.applicationIndicator.ConnectionChanged += (s, e) => { hideOnDelete = this.applicationIndicator.Connected; };
+ 			
+-			this.statusIcon = new StatusIcon(ResourceLoader.Find(ResourceLoader.Icons.gnomeRdp));
+-			this.statusIcon.Visible = true;
+-			this.statusIcon.Tooltip = "GnomeRDP";
+-			this.statusIcon.Activate += OnStatusIcon_Activate;
+-			this.statusIcon.PopupMenu += OnStatusIcon_PopupMenu;	
+-
++			this.applicationIndicator.Menu = CreateMenu();
++			this.applicationIndicator.Status = Status.Active;
++						
+ 			this.Icon = ResourceLoader.Find(ResourceLoader.Icons.gnomeRdp);
+ 		}
+-		
+-		private void OnStatusIcon_Activate(object sender, EventArgs e)
++
++		public void UpdateMenu()
+ 		{
+-			Visible = !Visible;
++			Menu oldMenu = this.applicationIndicator.Menu;
++			
++			this.applicationIndicator.Menu = CreateMenu();
++			
++			oldMenu.Dispose();
+ 		}
+-		
+-		private void OnStatusIcon_PopupMenu(object sender, PopupMenuArgs e)
++										
++		private Menu CreateMenu()
+ 		{
+-			try
+-			{
+-				Menu topMenu = new Menu();
+-				topMenu.Popup();
++			Menu topMenu = new Menu();
++			
++			topMenu.Append(actionToggleVisible.CreateMenuItem());
++			topMenu.Append(new SeparatorMenuItem());
+ 				
+-				foreach (var group in Program.SessionCollection.Groups) 
+-				{	
+-					MenuItem groupMenu = new MenuItem(group);
+-					topMenu.Append(groupMenu);
+-					
+-					Menu subMenu = new Menu();
+-					foreach(var session in Program.SessionCollection.Items.Where(s => s.Group == group).OrderBy(s => s.Server))
+-					{
+-						MenuItem menuItem = new MenuItem(session.MenuFormat);
+-						menuItem.TooltipText = session.Tooltip;
+-						menuItem.Activated += PopupMenuItem_Activated;
+-						menuItem.Data[sessionKey] = session;
+-											
+-						subMenu.Append(menuItem);
+-					}
+-					groupMenu.Submenu = subMenu;
+-				}
+-
+-				topMenu.Append(new SeparatorMenuItem());
+-
+-				foreach (var session in Program.SessionCollection.Items.Where(s => string.IsNullOrEmpty(s.Group)).OrderBy(s => s.Server)) 
++			foreach (var group in Program.SessionCollection.Groups) 
++			{	
++				MenuItem groupMenu = new MenuItem(group);
++				
++				Menu subMenu = new Menu();
++				foreach(var session in Program.SessionCollection.Items.Where(s => s.Group == group).OrderBy(s => s.Server))
+ 				{
+ 					MenuItem menuItem = new MenuItem(session.MenuFormat);
+ 					menuItem.TooltipText = session.Tooltip;
+ 					menuItem.Activated += PopupMenuItem_Activated;
+-					menuItem.Data[sessionKey] = session;					
+-					
+-					topMenu.Append(menuItem);
++					menuItem.Data[sessionKey] = session;
++										
++					subMenu.Append(menuItem);
+ 				}
++				groupMenu.Submenu = subMenu;
++
++				topMenu.Append(groupMenu);
++			}
++
++			topMenu.Append(new SeparatorMenuItem());
++
++			foreach (var session in Program.SessionCollection.Items.Where(s => string.IsNullOrEmpty(s.Group)).OrderBy(s => s.Server)) 
++			{
++				MenuItem menuItem = new MenuItem(session.MenuFormat);
++				menuItem.TooltipText = session.Tooltip;
++				menuItem.Activated += PopupMenuItem_Activated;
++				menuItem.Data[sessionKey] = session;					
+ 				
+-				topMenu.Append(new SeparatorMenuItem());
+-				topMenu.Append(actionQuit.CreateMenuItem());
+-				topMenu.ShowAll();
+-//				topMenu.Popup();
++				topMenu.Append(menuItem);
+ 			}
+-			catch
+-			{
+-			}
+-		}	
+-		
++			
++			topMenu.Append(new SeparatorMenuItem());
++			topMenu.Append(actionQuit.CreateMenuItem());
++			
++			topMenu.ShowAll();
++			return topMenu;
++		}
++				
+ 		private void PopupMenuItem_Activated(object sender, EventArgs e)
+ 		{
+@@ -126,20 +138,4 @@
+ 			}
+ 		}
+-		
+-		protected virtual void OnNewRdpActionActivated (object sender, System.EventArgs e)
+-		{
+-		}
+-		
+-		protected virtual void OnNewVncActionActivated (object sender, System.EventArgs e)
+-		{
+-		}
+-		
+-		protected virtual void OnNewSshActionActivated (object sender, System.EventArgs e)
+-		{
+-		}
+-		
+-		
+-		
+-		
+ 	}
+ }
+Index: /trunk/gnome-rdp/ChangeLog
+===================================================================
+--- /trunk/gnome-rdp/ChangeLog (revision 262)
++++ /trunk/gnome-rdp/ChangeLog (revision 264)
+@@ -1,2 +1,11 @@
++2011-11-02  James P Michels III  <jmichels@bluefintrading.com>
++
++	* Program.cs:
++	* gnome-rdp.sln:
++	* MainWindow.cs:
++	* gnome-rdp.csproj:
++	* gui.stetic:
++	* SessionsWidget.cs: Changes to support AppIndicator
++
+ 2011-05-22  James P Michels III  <james.p.michels@gmail.com>
+ 
+Index: /trunk/gnome-rdp/Sessions/SessionsWidget.cs
+===================================================================
+--- /trunk/gnome-rdp/Sessions/SessionsWidget.cs (revision 257)
++++ /trunk/gnome-rdp/Sessions/SessionsWidget.cs (revision 264)
+@@ -205,4 +205,5 @@
+ 				}
+ 				
++				Program.UpdateMainWindowMenu();
+ 			}
+ 			catch (Exception ex)
+Index: /trunk/gnome-rdp/gtk-gui/gui.stetic
+===================================================================
+--- /trunk/gnome-rdp/gtk-gui/gui.stetic (revision 261)
++++ /trunk/gnome-rdp/gtk-gui/gui.stetic (revision 264)
+@@ -7,5 +7,6 @@
+   <import>
+     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+-    <widget-library name="../bin/Debug/gnome-rdp.exe" internal="true" />
++    <widget-library name="appindicator-sharp, Version=0.2.0.0, Culture=neutral, PublicKeyToken=bcae265d1c7ab4c2" />
++    <widget-library name="../bin/Release/gnome-rdp.exe" internal="true" />
+   </import>
+   <widget class="Gtk.Window" id="GnomeRDP.MainWindow" design-size="798 565">
+Index: /trunk/gnome-rdp/Program.cs
+===================================================================
+--- /trunk/gnome-rdp/Program.cs (revision 261)
++++ /trunk/gnome-rdp/Program.cs (revision 264)
+@@ -196,5 +196,14 @@
+ 			});
+ 		}
+-				
++		
++		public static void UpdateMainWindowMenu()
++		{
++			GLib.Timeout.Add(0, () =>
++			{
++				mainWindow.UpdateMenu();
++				return false;
++			});
++		}		
++		
+ 		public static void SetMainWindowVisible(bool visible)
+ 		{
