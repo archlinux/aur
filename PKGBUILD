@@ -7,7 +7,7 @@
 # versions is installed.
 
 pkgname=pd-l2ork
-pkgver=1514.c3f88f3
+pkgver=1571.38e474c
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
