@@ -1,0 +1,1124 @@
+--- cutecom-0.22.0/cutecom.desktop
++++ cutecom-0.22.0/cutecom.desktop
+@@ -1,13 +1,9 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-BinaryPattern=
+ Name=CuteCom
+-MimeType=
+ GenericName=Serial Terminal
+ Exec=cutecom
+-Icon=openterm
+-TerminalOptions=
+-Path=
++Icon=emblem-mounted
+ Type=Application
+-Terminal=0
+-X-KDE-StartupNotify=false
++Terminal=false
++Categories=Network;
++StartupNotify=true
+--- cutecom-0.22.0/cutecommdlg.ui
++++ cutecom-0.22.0/cutecommdlg.ui
+@@ -1,7 +1,8 @@
+-<ui version="4.0" >
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
+  <class>CuteCommDlg</class>
+- <widget class="QWidget" name="CuteCommDlg" >
+-  <property name="geometry" >
++ <widget class="QWidget" name="CuteCommDlg">
++  <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+@@ -9,203 +10,218 @@
+     <height>648</height>
+    </rect>
+   </property>
+-  <property name="windowTitle" >
++  <property name="windowTitle">
+    <string>CuteCom</string>
+   </property>
+-  <layout class="QVBoxLayout" >
++  <layout class="QVBoxLayout">
++   <property name="topMargin">
++    <number>0</number>
++   </property>
++   <property name="bottomMargin">
++    <number>0</number>
++   </property>
+    <item>
+-    <layout class="QGridLayout" >
+-     <item row="3" column="1" >
+-      <widget class="QLabel" name="textLabel5" >
+-       <property name="text" >
++    <layout class="QGridLayout">
++     <property name="sizeConstraint">
++      <enum>QLayout::SetDefaultConstraint</enum>
++     </property>
++     <property name="verticalSpacing">
++      <number>0</number>
++     </property>
++     <item row="3" column="1">
++      <widget class="QLabel" name="textLabel5">
++       <property name="text">
+         <string>Stop bits:</string>
+        </property>
+-       <property name="wordWrap" >
++       <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+-       <property name="buddy" >
++       <property name="buddy">
+         <cstring>m_stopCb</cstring>
+        </property>
+       </widget>
+      </item>
+-     <item row="3" column="0" >
+-      <widget class="QPushButton" name="m_quitPb" >
+-       <property name="text" >
++     <item row="3" column="0">
++      <widget class="QPushButton" name="m_quitPb">
++       <property name="text">
+         <string>&amp;Quit</string>
+        </property>
+-       <property name="shortcut" >
++       <property name="shortcut">
+         <string>Alt+Q</string>
+        </property>
+       </widget>
+      </item>
+-     <item row="2" column="1" >
+-      <widget class="QLabel" name="textLabel3" >
+-       <property name="text" >
++     <item row="2" column="1">
++      <widget class="QLabel" name="textLabel3">
++       <property name="text">
+         <string>Data bits:</string>
+        </property>
+-       <property name="wordWrap" >
++       <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+-       <property name="buddy" >
++       <property name="buddy">
+         <cstring>m_dataBitsCb</cstring>
+        </property>
+       </widget>
+      </item>
+-     <item row="2" column="0" >
+-      <widget class="QPushButton" name="m_aboutPb" >
+-       <property name="text" >
++     <item row="2" column="0">
++      <widget class="QPushButton" name="m_aboutPb">
++       <property name="text">
+         <string>&amp;About</string>
+        </property>
+-       <property name="shortcut" >
++       <property name="shortcut">
+         <string>Alt+A</string>
+        </property>
+       </widget>
+      </item>
+-     <item row="2" column="2" >
+-      <widget class="QComboBox" name="m_dataBitsCb" >
+-       <property name="currentIndex" >
++     <item row="2" column="2">
++      <widget class="QComboBox" name="m_dataBitsCb">
++       <property name="currentIndex">
+         <number>3</number>
+        </property>
+        <item>
+-        <property name="text" >
++        <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+-        <property name="text" >
++        <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+-        <property name="text" >
++        <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+-        <property name="text" >
++        <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+-     <item row="0" column="1" >
+-      <widget class="QLabel" name="textLabel1" >
+-       <property name="text" >
++     <item row="0" column="1">
++      <widget class="QLabel" name="textLabel1">
++       <property name="text">
+         <string>Device:</string>
+        </property>
+-       <property name="wordWrap" >
++       <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+-       <property name="buddy" >
++       <property name="buddy">
+         <cstring>m_deviceCb</cstring>
+        </property>
+       </widget>
+      </item>
+-     <item row="0" column="0" >
+-      <widget class="QPushButton" name="m_connectPb" >
+-       <property name="toolTip" >
++     <item row="0" column="0">
++      <widget class="QPushButton" name="m_connectPb">
++       <property name="toolTip">
+         <string/>
+        </property>
+-       <property name="text" >
++       <property name="text">
+         <string>&amp;Open device</string>
+        </property>
+-       <property name="shortcut" >
++       <property name="shortcut">
+         <string>Alt+O</string>
+        </property>
+       </widget>
+      </item>
+-     <item row="1" column="0" >
+-      <widget class="QPushButton" name="m_closePb" >
+-       <property name="text" >
++     <item row="1" column="0">
++      <widget class="QPushButton" name="m_closePb">
++       <property name="text">
+         <string>Cl&amp;ose device</string>
+        </property>
+-       <property name="shortcut" >
++       <property name="shortcut">
+         <string>Alt+O</string>
+        </property>
+       </widget>
+      </item>
+-     <item row="3" column="2" >
+-      <widget class="QComboBox" name="m_stopCb" >
++     <item row="3" column="2">
++      <widget class="QComboBox" name="m_stopCb">
+        <item>
+-        <property name="text" >
++        <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+-        <property name="text" >
++        <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+-     <item row="1" column="1" >
+-      <widget class="QLabel" name="textLabel2" >
+-       <property name="text" >
++     <item row="1" column="1">
++      <widget class="QLabel" name="textLabel2">
++       <property name="text">
+         <string>Baud rate:</string>
+        </property>
+-       <property name="wordWrap" >
++       <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+-       <property name="buddy" >
++       <property name="buddy">
+         <cstring>m_baudCb</cstring>
+        </property>
+       </widget>
+      </item>
+-     <item row="0" column="2" >
+-      <widget class="QComboBox" name="m_deviceCb" >
+-       <property name="editable" >
++     <item row="0" column="2">
++      <widget class="QComboBox" name="m_deviceCb">
++       <property name="editable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+-     <item row="1" column="2" >
+-      <widget class="QComboBox" name="m_baudCb" >
+-       <property name="currentIndex" >
+-        <number>7</number>
++     <item row="1" column="2">
++      <widget class="QComboBox" name="m_baudCb">
++       <property name="currentIndex">
++        <number>-1</number>
+        </property>
+       </widget>
+      </item>
+-     <item rowspan="4" row="0" column="3" >
+-      <layout class="QVBoxLayout" >
++     <item row="0" column="3" rowspan="4">
++      <layout class="QVBoxLayout">
++       <property name="bottomMargin">
++        <number>0</number>
++       </property>
+        <item>
+-        <layout class="QHBoxLayout" >
++        <layout class="QHBoxLayout">
+          <item>
+-          <widget class="QLabel" name="textLabel4" >
+-           <property name="text" >
++          <widget class="QLabel" name="textLabel4">
++           <property name="text">
+             <string>Parity:</string>
+            </property>
+-           <property name="wordWrap" >
++           <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+-           <property name="buddy" >
++           <property name="buddy">
+             <cstring>m_parityCb</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QComboBox" name="m_parityCb" >
++          <widget class="QComboBox" name="m_parityCb">
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>None</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Odd</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Even</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Mark</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Space</string>
+             </property>
+            </item>
+@@ -214,63 +230,63 @@
+         </layout>
+        </item>
+        <item>
+-        <layout class="QGridLayout" >
+-         <item row="0" column="2" >
+-          <widget class="QCheckBox" name="m_hardwareCb" >
+-           <property name="toolTip" >
++        <layout class="QGridLayout">
++         <item row="0" column="2">
++          <widget class="QCheckBox" name="m_hardwareCb">
++           <property name="toolTip">
+             <string>Enable Hardware Handshake</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string>Hardware</string>
+            </property>
+           </widget>
+          </item>
+-         <item row="0" column="1" >
+-          <widget class="QCheckBox" name="m_softwareCb" >
+-           <property name="toolTip" >
++         <item row="0" column="1">
++          <widget class="QCheckBox" name="m_softwareCb">
++           <property name="toolTip">
+             <string>Enable Software Handshake (XON/XOFF)</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string>Software</string>
+            </property>
+           </widget>
+          </item>
+-         <item row="1" column="2" >
+-          <widget class="QCheckBox" name="m_writeCb" >
+-           <property name="toolTip" >
++         <item row="1" column="2">
++          <widget class="QCheckBox" name="m_writeCb">
++           <property name="toolTip">
+             <string>Usually you want to use read and write</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string>Writing</string>
+            </property>
+           </widget>
+          </item>
+-         <item row="1" column="1" >
+-          <widget class="QCheckBox" name="m_readCb" >
+-           <property name="toolTip" >
++         <item row="1" column="1">
++          <widget class="QCheckBox" name="m_readCb">
++           <property name="toolTip">
+             <string>Usually you want to use read and write</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string>Reading</string>
+            </property>
+           </widget>
+          </item>
+-         <item row="1" column="0" >
+-          <widget class="QLabel" name="textLabel1_3" >
+-           <property name="text" >
++         <item row="1" column="0">
++          <widget class="QLabel" name="textLabel1_3">
++           <property name="text">
+             <string>Open for:</string>
+            </property>
+-           <property name="wordWrap" >
++           <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+-         <item row="0" column="0" >
+-          <widget class="QLabel" name="textLabel2_2" >
+-           <property name="text" >
++         <item row="0" column="0">
++          <widget class="QLabel" name="textLabel2_2">
++           <property name="text">
+             <string>Handshake:</string>
+            </property>
+-           <property name="wordWrap" >
++           <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+@@ -278,8 +294,8 @@
+         </layout>
+        </item>
+        <item>
+-        <widget class="QCheckBox" name="m_applyCb" >
+-         <property name="text" >
++        <widget class="QCheckBox" name="m_applyCb">
++         <property name="text">
+           <string>Apply settings when opening</string>
+          </property>
+         </widget>
+@@ -289,113 +305,131 @@
+     </layout>
+    </item>
+    <item>
+-    <widget class="QSplitter" name="splitter2" >
+-     <property name="orientation" >
++    <widget class="QSplitter" name="splitter2">
++     <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+-     <widget class="QFrame" name="frame3" >
+-      <property name="sizePolicy" >
+-       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
++     <property name="handleWidth">
++      <number>5</number>
++     </property>
++     <widget class="QFrame" name="frame3">
++      <property name="sizePolicy">
++       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>2</verstretch>
+        </sizepolicy>
+       </property>
+-      <property name="frameShape" >
++      <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+-      <property name="frameShadow" >
++      <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+-      <layout class="QVBoxLayout" >
++      <layout class="QVBoxLayout">
++       <property name="spacing">
++        <number>0</number>
++       </property>
++       <property name="topMargin">
++        <number>0</number>
++       </property>
++       <property name="bottomMargin">
++        <number>0</number>
++       </property>
+        <item>
+-        <widget class="QTextBrowser" name="m_outputView" >
+-         <property name="font" >
++        <widget class="QTextBrowser" name="m_outputView">
++         <property name="font">
+           <font>
+-           <family>Courier</family>
++           <family>Monospace</family>
+           </font>
+          </property>
++         <property name="frameShape">
++          <enum>QFrame::StyledPanel</enum>
++         </property>
++         <property name="frameShadow">
++          <enum>QFrame::Sunken</enum>
++         </property>
+         </widget>
+        </item>
+        <item>
+-        <layout class="QHBoxLayout" >
++        <layout class="QHBoxLayout">
+          <item>
+-          <widget class="QPushButton" name="m_clearOutputPb" >
+-           <property name="toolTip" >
++          <widget class="QPushButton" name="m_clearOutputPb">
++           <property name="toolTip">
+             <string>Clear the output window</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string>&amp;Clear</string>
+            </property>
+-           <property name="shortcut" >
++           <property name="shortcut">
+             <string>Alt+C</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QCheckBox" name="m_hexOutputCb" >
+-           <property name="sizePolicy" >
+-            <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
++          <widget class="QCheckBox" name="m_hexOutputCb">
++           <property name="sizePolicy">
++            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+-           <property name="toolTip" >
++           <property name="toolTip">
+             <string>Show the output in hexadecimal format</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string>&amp;Hex output</string>
+            </property>
+-           <property name="shortcut" >
++           <property name="shortcut">
+             <string>Alt+H</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QCheckBox" name="m_enableLoggingCb" >
+-           <property name="toolTip" >
+-            <string>Enable logging the data to a file. Chose "Append to" to append instead overwrite to an existing file.</string>
++          <widget class="QCheckBox" name="m_enableLoggingCb">
++           <property name="toolTip">
++            <string>Enable logging the data to a file. Chose &quot;Append to&quot; to append instead overwrite to an existing file.</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QComboBox" name="m_logAppendCb" >
+-           <property name="toolTip" >
+-            <string>Enable logging the data to a file. Chose "Append to" to append instead overwrite to an existing file.</string>
++          <widget class="QComboBox" name="m_logAppendCb">
++           <property name="toolTip">
++            <string>Enable logging the data to a file. Chose &quot;Append to&quot; to append instead overwrite to an existing file.</string>
+            </property>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Log to:</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Append to:</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QLineEdit" name="m_logFileLe" >
+-           <property name="sizePolicy" >
+-            <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
++          <widget class="QLineEdit" name="m_logFileLe">
++           <property name="sizePolicy">
++            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>2</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+-           <property name="toolTip" >
++           <property name="toolTip">
+             <string>The logfile</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QPushButton" name="m_logFileFileDialog" >
+-           <property name="toolTip" >
++          <widget class="QPushButton" name="m_logFileFileDialog">
++           <property name="toolTip">
+             <string>Open file dialog</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+@@ -404,41 +438,60 @@
+        </item>
+       </layout>
+      </widget>
+-     <widget class="QFrame" name="frame4" >
+-      <property name="sizePolicy" >
+-       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
++     <widget class="QFrame" name="frame4">
++      <property name="sizePolicy">
++       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
+       </property>
+-      <property name="frameShape" >
++      <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+-      <property name="frameShadow" >
++      <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+-      <layout class="QVBoxLayout" >
++      <layout class="QVBoxLayout">
++       <property name="spacing">
++        <number>0</number>
++       </property>
++       <property name="topMargin">
++        <number>0</number>
++       </property>
++       <property name="bottomMargin">
++        <number>0</number>
++       </property>
+        <item>
+-        <widget class="QListWidget" name="m_oldCmdsLb" />
++        <widget class="QListWidget" name="m_oldCmdsLb">
++         <property name="frameShape">
++          <enum>QFrame::StyledPanel</enum>
++         </property>
++         <property name="frameShadow">
++          <enum>QFrame::Sunken</enum>
++         </property>
++         <property name="lineWidth">
++          <number>1</number>
++         </property>
++        </widget>
+        </item>
+        <item>
+-        <layout class="QHBoxLayout" >
++        <layout class="QHBoxLayout">
+          <item>
+-          <widget class="QLabel" name="textLabel1_2" >
+-           <property name="text" >
++          <widget class="QLabel" name="textLabel1_2">
++           <property name="text">
+             <string>&amp;Input:</string>
+            </property>
+-           <property name="wordWrap" >
++           <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+-           <property name="buddy" >
++           <property name="buddy">
+             <cstring>m_cmdLe</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QLineEdit" name="m_cmdLe" >
+-           <property name="toolTip" >
++          <widget class="QLineEdit" name="m_cmdLe">
++           <property name="toolTip">
+             <string>Enter commands here, Ctrl+C, Ctrl+S, Ctrl+Q also work</string>
+            </property>
+           </widget>
+@@ -446,66 +499,76 @@
+         </layout>
+        </item>
+        <item>
+-        <layout class="QHBoxLayout" >
++        <layout class="QHBoxLayout">
++         <property name="spacing">
++          <number>-1</number>
++         </property>
+          <item>
+-          <widget class="QPushButton" name="m_sendPb" >
+-           <property name="toolTip" >
++          <widget class="QPushButton" name="m_sendPb">
++           <property name="toolTip">
+             <string>Select a file to be sent using the specified protocol</string>
+            </property>
+-           <property name="text" >
++           <property name="text">
+             <string>Send file...</string>
+            </property>
+-           <property name="autoDefault" >
++           <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QComboBox" name="m_protoPb" >
+-           <property name="toolTip" >
++          <widget class="QComboBox" name="m_protoPb">
++           <property name="toolTip">
+             <string>Select the transfer protocol</string>
+            </property>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Plain</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>XModem</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>ZModem</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>YModem</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>1kXModem</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Script</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
++          <widget class="QPushButton" name="m_sendBreakPb">
++           <property name="text">
++            <string>Set BREAK</string>
++           </property>
++          </widget>
++         </item>
++         <item>
+           <spacer>
+-           <property name="orientation" >
++           <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+-           <property name="sizeType" >
++           <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+-           <property name="sizeHint" >
++           <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+@@ -514,59 +577,59 @@
+           </spacer>
+          </item>
+          <item>
+-          <widget class="QComboBox" name="m_inputModeCb" >
+-           <property name="toolTip" >
++          <widget class="QComboBox" name="m_inputModeCb">
++           <property name="toolTip">
+             <string>Select the line end termination</string>
+            </property>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>LF line end</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>CR line end</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>CR,LF line end</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>No line end</string>
+             </property>
+            </item>
+            <item>
+-            <property name="text" >
++            <property name="text">
+              <string>Hex input</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QLabel" name="textLabel1_4" >
+-           <property name="text" >
++          <widget class="QLabel" name="textLabel1_4">
++           <property name="text">
+             <string>Char delay:</string>
+            </property>
+-           <property name="wordWrap" >
++           <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+-          <widget class="QSpinBox" name="m_charDelaySb" >
+-           <property name="toolTip" >
++          <widget class="QSpinBox" name="m_charDelaySb">
++           <property name="toolTip">
+             <string>Delay between single characters</string>
+            </property>
+-           <property name="suffix" >
++           <property name="suffix">
+             <string> ms</string>
+            </property>
+-           <property name="maximum" >
++           <property name="maximum">
+             <number>250</number>
+            </property>
+-           <property name="value" >
++           <property name="value">
+             <number>1</number>
+            </property>
+           </widget>
+@@ -579,7 +642,7 @@
+    </item>
+   </layout>
+  </widget>
+- <layoutdefault spacing="6" margin="11" />
++ <layoutdefault spacing="6" margin="11"/>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+   <tabstop>m_connectPb</tabstop>
+--- cutecom-0.22.0/qcppdialogimpl.cpp
++++ cutecom-0.22.0/qcppdialogimpl.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include "qcppdialogimpl.h"
+ 
++#include <qscrollbar.h>
+ #include <qcombobox.h>
+ #include <qpushbutton.h>
+ #include <qcheckbox.h>
+@@ -99,6 +100,7 @@
+    connect(m_cmdLe, SIGNAL(returnPressed()), this, SLOT(execCmd()));
+ 
+    connect(m_sendPb, SIGNAL(clicked()), this, SLOT(sendFile()));
++   connect(m_sendBreakPb, SIGNAL(clicked()), this, SLOT(sendBreak()));
+    connect(m_aboutPb, SIGNAL(clicked()), this, SLOT(showAboutMsg()));
+    connect(m_quitPb, SIGNAL(clicked()), this, SLOT(close()));
+ 
+@@ -121,7 +123,7 @@
+    connect(m_applyCb, SIGNAL(clicked()), this, SLOT(saveSettings()));
+    connect(m_hexOutputCb, SIGNAL(clicked()), this, SLOT(saveSettings()));
+    connect(m_inputModeCb, SIGNAL(activated(int)), this, SLOT(saveSettings()));
+-   connect(m_charDelaySb, SIGNAL(valueChanged(int)), this, SLOT(saveSettings()));
++   connect(m_charDelaySb, SIGNAL(editingFinished(int)), this, SLOT(saveSettings()));
+    connect(m_logAppendCb, SIGNAL(activated(int)), this, SLOT(saveSettings()));
+ 
+    connect(m_applyCb, SIGNAL(toggled(bool)), this, SLOT(enableSettingWidgets(bool)));
+@@ -134,7 +136,7 @@
+ //   connect(m_enableLoggingCb, SIGNAL(toggled(bool)), this, SLOT(enableLogging(bool)));
+ 
+    m_outputView->setWordWrapMode(QTextOption::WrapAnywhere); 
+-   m_outputView->document()->setMaximumBlockCount(500);
++   m_outputView->document()->setMaximumBlockCount(10500);
+ //  TODO ? m_outputView->setWordWrap(Q3TextEdit::WidgetWidth);
+ 
+ /*   QAccel* accel=new QAccel(this);
+@@ -277,24 +279,6 @@
+ 
+    QString currentDevice=m_deviceCb->currentText();
+    settings.setValue("/cutecom/CurrentDevice", currentDevice);
+-   bool currentDeviceIsInList=false;
+-   QStringList devices;
+-   for (int i=0; i<m_deviceCb->count(); i++)
+-   {
+-      QString s=m_deviceCb->itemText(i);
+-      devices<<s;
+-      if (s==currentDevice)
+-      {
+-         currentDeviceIsInList=true;
+-      }
+-   }
+-
+-   if (!currentDeviceIsInList)
+-   {
+-      devices<<currentDevice;
+-   }
+-
+-   settings.setValue("/cutecom/AllDevices", devices);
+ 
+    int historyCount=m_oldCmdsLb->count();
+    if (historyCount>50)
+@@ -346,12 +330,36 @@
+    {
+       resize(x,y);
+    }
++   /* scan for modem devices */
+ 
+-   bool entryFound = settings.contains("/cutecom/AllDevices");
+-   QStringList devices=settings.value("/cutecom/AllDevices").toStringList();
+-   if (!entryFound)
+-   {
+-      devices<<"/dev/ttyS0"<<"/dev/ttyS1"<<"/dev/ttyS2"<<"/dev/ttyS3";
++   int n;
++
++   QDir dir("/dev");
++
++   QStringList filters;
++
++   /*
++    * Device filters for:
++    *
++    * FreeBSD: cuaU0, cuad0 [0..99]
++    * Linux: ttyS0 [0..99]
++    * Apple: cu.*
++    */
++
++   filters
++     << "ttyS[0123456789]"
++     << "ttyUSB[0123456789]";
++
++   dir.setFilter(QDir::Files | QDir::System);
++   dir.setNameFilters(filters);
++   dir.setSorting(QDir::Name);
++
++   QFileInfoList list = dir.entryInfoList();
++   QStringList devices;
++
++   for (n = 0; n != list.size(); n++) {
++	QFileInfo fileInfo = list.at(n);
++	devices << (QString("/dev/") + fileInfo.fileName());
+    }
+ 
+    m_deviceCb->insertItems(0, devices);
+@@ -381,6 +389,13 @@
+ 
+ void QCPPDialogImpl::sendFile()
+ {
++   unsigned int charDelay = 0;
++
++   if (m_sendFileActive != 0)
++	return;
++
++   m_sendFileActive++;
++
+    if (m_fileDlg==0)
+    {
+       m_fileDlg=new QFileDialog();
+@@ -401,17 +416,17 @@
+    }
+    else
+    {
+-      return;
++      goto done;
+    }
+ 
+-   unsigned int charDelay=m_charDelaySb->value();
++   charDelay=m_charDelaySb->value();
+    if (m_protoPb->currentText()=="Script")
+    {
+       QFile file(filename);
+       if (!file.open(QIODevice::ReadOnly))
+       {
+          QMessageBox::information(this, tr("Opening file failed"), tr("Could not open file %1").arg(filename));
+-         return;
++         goto done;
+       }
+ 
+       QTextStream stream(&file);
+@@ -427,7 +442,7 @@
+          if (!sendString(nextLine))
+          {
+             QMessageBox::information(this, tr("Comm error"), tr("Sending failed"));
+-            return;
++            goto done;
+          }
+          millisleep(charDelay*3);
+       }
+@@ -438,7 +453,7 @@
+       if (!file.open(QIODevice::ReadOnly))
+       {
+          QMessageBox::information(this, tr("Opening file failed"), tr("Could not open file %1").arg(filename));
+-         return;
++         goto done;
+       }
+       QByteArray data=file.readAll();
+       delete m_progress;
+@@ -523,7 +538,7 @@
+          delete m_sz;
+          m_sz=0;
+          connectTTY();
+-         return;
++         goto done;
+       }
+       m_progress=new QProgressDialog(tr("Sending file via xmodem..."), tr("Cancel"), 0, 100, this);
+       connect(m_progress, SIGNAL(cancelled()), this, SLOT(killSz()));
+@@ -553,6 +568,29 @@
+    {
+       QMessageBox::information(this, tr("Opening file failed"), tr("Protocol %1 not supported yet").arg(m_protoPb->currentText()));
+    }
++ done:
++   m_sendFileActive--;
++}
++
++void QCPPDialogImpl::sendBreak()
++{
++    if (m_break == 0) {
++	if (m_fd < 0)
++		return;
++
++	ioctl(m_fd, TIOCSBRK, 0);
++
++	m_sendBreakPb->setText(QString("Clr BREAK"));
++
++	m_break = 1;
++    } else {
++	if (m_fd > -1)
++		ioctl(m_fd, TIOCCBRK, 0);
++
++	m_sendBreakPb->setText(QString("Set BREAK"));
++
++	m_break = 0;
++    }
+ }
+ 
+ void QCPPDialogImpl::killSz()
+@@ -965,6 +1003,7 @@
+    m_sendPb->setEnabled(true);
+    m_protoPb->setEnabled(true);
+    m_closePb->setEnabled(true);
++   m_sendBreakPb->setEnabled(true);
+ 
+    m_cmdLe->setFocus();
+ 
+@@ -1019,12 +1058,15 @@
+    m_sendPb->setEnabled(false);
+    m_protoPb->setEnabled(false);
+    m_closePb->setEnabled(false);
++   m_sendBreakPb->setEnabled(false);
+ 
+    m_connectPb->setFocus();
+ 
+    m_isConnected=false;
+    delete m_notifier;
+    m_notifier=0;
++   if (m_break != 0)
++	sendBreak();
+ }
+ 
+ 
+@@ -1250,6 +1292,9 @@
+ 
+    if (bytesRead<0)
+    {
++      // check for device gone, for example USB
++      if (errno != EINTR && errno != EWOULDBLOCK)
++		disconnectTTY();
+       std::cerr<<"read result: "<<bytesRead<<std::endl;
+       perror("read: \n");
+       return;
+@@ -1362,13 +1407,23 @@
+ 
+ void QCPPDialogImpl::doOutput()
+ {
+-   if (m_outputBuffer.isEmpty())
+-   {
+-      return;
+-   }
++  QScrollBar* vScrollBar;
++  bool scrollWithText;
+ 
+-   m_outputView->append(m_outputBuffer); 
+-   m_outputBuffer.clear();
++  if (m_outputBuffer.isEmpty())
++    return;
++  
++  vScrollBar = m_outputView->verticalScrollBar();
++  scrollWithText = (vScrollBar->value() == vScrollBar->maximum());
++  
++  QTextCursor cursor(m_outputView->document());
++  cursor.movePosition(QTextCursor::End);
++  cursor.insertText(m_outputBuffer);
++
++  if ((scrollWithText))
++    vScrollBar->setValue(vScrollBar->maximum());
++
++  m_outputBuffer.clear();
+ }
+ 
+ void QCPPDialogImpl::hexOutputClicked(bool /* on */)
+--- cutecom-0.22.0/qcppdialogimpl.h
++++ cutecom-0.22.0/qcppdialogimpl.h
+@@ -50,6 +50,7 @@
+       void execCmd();
+       void readData(int fd);
+       void sendFile();
++      void sendBreak();
+       void showAboutMsg();
+ 
+       void oldCmdClicked(QListWidgetItem* item);
+@@ -81,6 +82,8 @@
+ 
+       bool m_isConnected;
+       int m_fd;
++      int m_break;
++      int m_sendFileActive;
+       struct termios m_oldtio;
+       unsigned int m_cmdBufIndex;
+       QSocketNotifier *m_notifier;
