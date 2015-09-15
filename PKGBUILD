@@ -1,7 +1,7 @@
 # Maintainer: Anatolii Sakhnik <sakhnik@gmail.com>
 pkgname=gpwsafe
 pkgver=0.20.3
-pkgrel=1
+pkgrel=2
 _revision=v${pkgver}
 pkgdesc="A commandline program for managing encrypted password databases"
 arch=('i686' 'x86_64' 'armv7h')
