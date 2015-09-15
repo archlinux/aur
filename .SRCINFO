@@ -1,7 +1,7 @@
 pkgbase = autotrace
 	pkgdesc = An utility to trace bitmaps: convert bitmaps to vector graphics
 	pkgver = 0.31.1
-	pkgrel = 13
+	pkgrel = 14
 	url = http://autotrace.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,15 +9,14 @@ pkgbase = autotrace
 	license = LGPL
 	makedepends = pkg-config
 	makedepends = autoconf
-	depends = pstoedit
 	depends = imagemagick>=6.5.3.10
 	options = !libtool
 	source = http://downloads.sourceforge.net/autotrace/autotrace-0.31.1.tar.gz
-	source = build-fixes.patch
-	source = libpng-1.5.patch
+	source = complete.patch
 	md5sums = 54eabbb38d2076ded6d271e1ee4d0783
-	md5sums = 7ff7b76e3a2c722863e00e1ee4a55386
-	md5sums = 55881b817aeae6b3bd6dfca9b2320ca3
+	md5sums = 60cdd0d29d7ab79b71b9b6e579a82b6a
+	sha512sums = 7d0ec86a41617b3d4336eed72f2974c10f569ff53d450a4c91b4611bb6fdb8c4ff81d04d91e9d20f1b4df592f82c8421e7656af7fa2bdc786ffb4618e9eadd24
+	sha512sums = 92c984a6d7bea6b58ce3fc8419d89af9c52d2029e91b0fe3e29f05f10b18d75742abff828cec551a4e8da44a22c563e321fcd91ceb3a186c040cf465fef77b97
 
 pkgname = autotrace
 
