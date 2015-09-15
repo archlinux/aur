@@ -1,7 +1,7 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=xonsh
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="http://xonsh.org"
@@ -10,7 +10,7 @@ license=('FreeBSD')
 depends=('python' 'python-ply')
 source=("https://github.com/scopatz/xonsh/archive/$pkgver.zip")
 install=xonsh.install
-md5sums=('883093007aa31183f66ec26692aceb1a')
+sha256sums=('3ddb954db2738fd7e765eeba554a80f8895f543e71b0eec64aefa816db2f86e1')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
