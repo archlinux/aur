@@ -3,8 +3,8 @@
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root
-pkgver=6.04.02
-pkgrel=2
+pkgver=6.05.02
+pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -36,7 +36,7 @@ source=("ftp://root.cern.ch/root/root_v${pkgver}.source.tar.gz"
 'root.xml'
 'python3.diff'
 'param.diff')
-md5sums=('00c242fc9833677310858346fd768938'
+md5sums=('9ef8056f7873903b9084747e1b31b528'
          '0e883ad44f99da9bc7c23bc102800b62'
          'efd06bfa230cc2194b38e0c8939e72af'
          'e2cf69b204192b5889ceb5b4dedc66f7'
@@ -47,8 +47,8 @@ prepare(){
 	## https://sft.its.cern.ch/jira/browse/ROOT-6924
 	cd ${pkgname}-${pkgver}
 
-	patch -p1 < ${srcdir}/python3.diff
-	patch -p1 < ${srcdir}/param.diff
+	#patch -p1 < ${srcdir}/python3.diff
+	#patch -p1 < ${srcdir}/param.diff
 	2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
 
 	#msg 'python2 switch'
