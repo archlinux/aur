@@ -3,7 +3,7 @@
 
 pkgname=slingshot-launcher-bzr
 pkgver=r572
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pantheon Application Launcher'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/slingshot'
@@ -25,13 +25,17 @@ pkgver() {
   echo "r$(bzr revno)"
 }
 
-build() {
+prepare() {
   cd slingshot-launcher
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd slingshot-launcher/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
