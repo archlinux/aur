@@ -1,0 +1,15 @@
+pkgbase = sorl-thumbnail
+	pkgdesc = Thumbnails for Django
+	pkgver = 11.12
+	pkgrel = 3
+	url = http://pypi.python.org/pypi/sorl-thumbnail/
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-django
+	source = http://pypi.python.org/packages/source/s/sorl-thumbnail/sorl-thumbnail-11.12.tar.gz
+	sha1sums = abc32461924edf3a1060d059f86dc7de44b2d268
+
+pkgname = sorl-thumbnail
+
