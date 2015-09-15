@@ -1,4 +1,4 @@
-# Maintainer: Wayne Hartmann <teodh4@gmail.com>
+# Maintainer: Wayne Hartmann (DH4) <wayne@bitstorm.pw>
 # Contributor: György Balló <ballogy@freestart.hu>
 # Contributor: Hyperair <hyperair@gmail.com>
 # Contributor: kumico <norrian@gmail.com>
