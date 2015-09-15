@@ -1,0 +1,17 @@
+pkgbase = xapian-tcl-bindings
+	pkgdesc = Bindings allowing Xapian to be used from Tcl
+	pkgver = 1.2.21
+	pkgrel = 1
+	url = http://xapian.org/docs/bindings/tcl/
+	arch = i686
+	arch = x86_64
+	groups = xapian
+	license = GPL
+	makedepends = gcc
+	depends = tcl
+	depends = xapian-core
+	source = http://oligarchy.co.uk/xapian/1.2.21/xapian-bindings-1.2.21.tar.xz
+	md5sums = 33c598a26fcf92ab15af6c65475ab8de
+
+pkgname = xapian-tcl-bindings
+
