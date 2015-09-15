@@ -1,5 +1,5 @@
 # Maintainer: Jack Frost <fbt@fleshless.org>
-# % Trigger: 1442308979 %
+# % Trigger: 1442309177 %
 
 pkgname='watchman-sm-services-git'
 pkgdesc='Service scripts for watchman'
