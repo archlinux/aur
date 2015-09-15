@@ -5,7 +5,7 @@ _pkgname='bigloo'
 pkgname="${_pkgname}-devel"
 epoch=10
 _pkgver='4.2a'
-_pkgsuffix='beta09Sep15'
+_pkgsuffix='beta15Sep15'
 pkgver="${_pkgver}_${_pkgsuffix}"
 pkgrel=1
 pkgdesc="Fast scheme compiler"
@@ -15,14 +15,13 @@ license=('GPL' 'LGPL')
 depends=('openssl' 'sqlite3' 'avahi' 'libunistring' 'gmp' 'gstreamer0.10-base' 'mpg123' 'flac' 'libuv')
 makedepends=('zip' 'emacs')
 optdepends=('emacs: for bee'
-'java-environment: for compiling into jvm')
+	    'java-environment: for compiling into jvm')
 provides=('bigloo=$pkgver')
 conflicts=('bigloo')
 options=('!makeflags' 'staticlibs' '!strip')
 install=bigloo.install
-source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" 'satisfy-ldconfig.sh')
-md5sums=('52776486fbb1ba57fb124ca2e3f0bb49'
-         'c253eb5651c81204f6c16b89c3c2cb6a')
+source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
+md5sums=('b5d9a125e574caae17c2b1a9df5cd4ae' 'c253eb5651c81204f6c16b89c3c2cb6a')
 
 prepare() {
   cd "${srcdir}/${_pkgname}${_pkgver}"
