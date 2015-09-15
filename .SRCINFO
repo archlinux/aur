@@ -1,6 +1,6 @@
 pkgbase = phc-intel
 	pkgdesc = frequency driver for Intel CPUs with undervolting feature
-	pkgver = 0.3.2.12.17
+	pkgver = 0.3.2.12.18
 	pkgrel = 1
 	url = http://www.linux-phc.org
 	install = phc-intel.install
@@ -8,7 +8,7 @@ pkgbase = phc-intel
 	license = GPL
 	provides = linux-phc
 	backup = etc/default/phc-intel
-	source = phc-intel-pack-rev17.tar.bz2::http://www.linux-phc.org/forum/download/file.php?id=166
+	source = phc-intel-pack-rev17.tar.bz2::http://www.linux-phc.org/forum/download/file.php?id=167
 	source = phc-intel.default
 	source = phc-intel.sh
 	source = phc-intel.sleep
