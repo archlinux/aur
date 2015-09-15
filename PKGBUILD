@@ -15,16 +15,17 @@ depends=("sdl2_mixer")
 source=("http://www.goatattack.net/installers/$pkgname-$pkgver.tar.gz")
 md5sums=('7f4aea68560ded26e147d0cd7eb49e6b')
 
+prepare() {
+	./configure --prefix=/usr
+}
+
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-
-	./configure --prefix=/usr
 	make
-	echo "Finished make"
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	sudo make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install
 }
