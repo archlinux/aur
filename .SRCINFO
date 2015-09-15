@@ -1,0 +1,17 @@
+pkgbase = kat5200
+	pkgdesc = an emulator for the Atari 5200 console and Atari 8-bit computers
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://kat5200.jillybunch.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	depends = sdl
+	depends = sdl_image
+	depends = guichan
+	source = http://kat5200.googlecode.com/files/kat5200-0.6.2.tar.gz
+	sha256sums = c35b14654df2930a23092687a51cf7355aac8921869e13646866437ef9143469
+
+pkgname = kat5200
+
