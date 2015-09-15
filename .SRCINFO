@@ -1,7 +1,7 @@
 pkgbase = dvdstyler
 	pkgdesc = Cross-platform DVD authoring application
-	pkgver = 2.9.2
-	pkgrel = 2
+	pkgver = 2.9.3
+	pkgrel = 1
 	url = http://www.dvdstyler.de/
 	arch = i686
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = dvdstyler
 	optdepends = vlc: DVD preview player
 	optdepends = smplayer: DVD preview player
 	options = !makeflags
-	source = http://downloads.sourceforge.net/dvdstyler/2.9.2/DVDStyler-2.9.2.tar.bz2
-	sha1sums = b4cf2296ecadec23931f2b8879f8256f7a35d168
+	source = http://downloads.sourceforge.net/dvdstyler/2.9.3/DVDStyler-2.9.3.tar.bz2
+	sha1sums = c0da64b3a5f5ca71b1f0c627fd6e7c8e5b7c6efe
 
 pkgname = dvdstyler
 
