@@ -2,7 +2,7 @@
 # Contributor: flamelab <panosfilip@gmail.com>
 
 pkgname=slingshot-launcher-bzr
-pkgver=r569
+pkgver=r572
 pkgrel=1
 pkgdesc='The Pantheon Application Launcher'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('GPL3')
 groups=('pantheon')
 depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus' 'gtk3' 'json-glib'
          'libgee' 'libsoup' 'plank' 'zeitgeist'
-         'libgranite.so')
-makedepends=('bzr' 'cmake' 'granite-bzr' 'vala')
+         'libgranite.so' 'libswitchboard-2.0.so')
+makedepends=('bzr' 'cmake' 'vala')
 provides=('slingshot-launcher')
 conflicts=('slingshot-launcher')
 install='slingshot-launcher.install'
