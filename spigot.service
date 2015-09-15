@@ -3,8 +3,8 @@ Description=Spigot
 After=local-fs.target network.target
 
 [Service]
-ExecStart=/srv/craftbukkit/spigot.sh start
-ExecStop=/srv/craftbukkit/spigot.sh stop
+ExecStart=/usr/bin/spigot start
+ExecStop=/usr/bin/spigot stop
 Type=forking
 
 [Install]

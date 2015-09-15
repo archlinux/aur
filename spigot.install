@@ -1,18 +1,45 @@
+USER="craftbukkit"
+SERVER_ROOT="/srv/spigot"
+
+_update() {
+	getent group "${USER}" &>/dev/null
+    if [ $? -ne 0 ]; then
+    	echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system group... \e[0m"
+		groupadd -r ${USER} 1>/dev/null
+	fi
+
+	getent passwd "${USER}" &>/dev/null
+	if [ $? -ne 0 ]; then
+    	echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system user... \e[0m"
+		useradd -r -g ${USER} -d "${SERVER_ROOT}" ${USER} 1>/dev/null
+	fi
+
+    chown -R ${USER}:${USER} "${SERVER_ROOT}"
+
+	echo -e "\e[34;1m==>\e[39;1m NOTE: The world data is stored under ${SERVER_ROOT} and the server runs \e[0m"
+    echo -e "\e[34;1m==>\e[39;1m as ${USER} user to increase security. \e[0m"
+    echo -e "\e[34;1m==>\e[39;1m NOTE: Use the spigot script under /usr/bin/spigot to start, stop or backup the server. \e[0m"
+}
+
 post_install() {
-  getent group craftbukkit >/dev/null 2>&1 || groupadd craftbukkit
-  getent passwd craftbukkit >/dev/null 2>&1 || useradd -g craftbukkit -d /srv/craftbukkit -s /bin/bash craftbukkit
-  chown -R craftbukkit:craftbukkit /srv/craftbukkit/
+    _update
 }
 
 post_upgrade() {
-  post_install $1
+    _update
 }
 
 post_remove() {
-  if getent passwd craftbukkit >/dev/null 2>&1; then
-    userdel craftbukkit
-  fi
-  if getent group craftbukkit >/dev/null 2>&1; then
-    groupdel craftbukkit
-  fi
+	systemctl stop spigot.service
+	systemctl disable spigot.service
+
+	if getent passwd ${USER} >/dev/null 2>&1; then
+		userdel ${USER}
+	fi
+	if getent group ${USER} >/dev/null 2>&1; then
+		groupdel ${USER}
+	fi
+
+	# Notifying the user of kept dirs
+    [ -d ${SERVER_ROOT} ] && chown root:root ${SERVER_ROOT} && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${SERVER_ROOT} were kept on your system.\e[0m"
 }

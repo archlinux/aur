@@ -1,7 +1,7 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
 	pkgver = 1.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spigotmc.org/
 	install = spigot.install
 	arch = any
@@ -9,21 +9,28 @@ pkgbase = spigot
 	makedepends = java-environment
 	makedepends = git
 	depends = java-runtime-headless
-	depends = tmux
+	depends = screen
 	depends = sudo
 	depends = fontconfig
+	depends = bash
+	optdepends = tar: needed in order to create world backups
 	provides = bukkit
 	provides = craftbukkit=1.8.8
+	provides = minecraft-server
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = spigot-patcher
 	noextract = BuildTools.jar
 	source = https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+	source = spigot-backup.service
+	source = spigot-backup.timer
 	source = spigot.service
 	source = spigot.sh
 	md5sums = SKIP
-	md5sums = 55eb03d443e1aa1a013aa01798e056d4
-	md5sums = 8933d1710304dfdf99632f53551672ef
+	md5sums = fd17202ba0bb7796439f0b2f6bc53be4
+	md5sums = 774cd44ed90f6be51d368533cf74d7c2
+	md5sums = 580c470c92d88ae2362250d59bd33b10
+	md5sums = 17fede1d02736e0ee87d0b667cdf1525
 
 pkgname = spigot
 
