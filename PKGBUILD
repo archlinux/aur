@@ -17,28 +17,20 @@ options=(!strip) # makepkg will mistakenly try to use ELF binutils on COFF archi
 _target_alias='i686-pc-msdosdjgpp'
 
 prepare() {
-  # This fixes programs crashing when compiled with -O2; more such kludges may be needed.
-  # I wonder, though, why the linker won't just use $PREFIX/lib/ldscripts/i386go32.*?
-  # It seems good enough, and more up-to-date.
-  sed -i -e 's/\*(\.text)/*(.text) *(.text.*)/' "$srcdir/lib/djgpp.djl"
+  sed -ie 's/\*(\.text)/*(.text) *(.text.*)/' "$srcdir/lib/djgpp.djl"
+  sed -ie 's/gets(response);/fgets(response, sizeof(response), stdin);/' "$srcdir/src/stub/stubedit.c"
+  sed -ie 's/-m486//' "$srcdir/cross/makefile"
 }
 
 build() {
   cd "$srcdir"
 
-  # This only compiles the stubify and stubedit utilities. The standard library is
-  # provided in this package only as headers+binaries. If you wish to compile them
-  # yourself, look at the djlsr package. And good luck, because that code looks like
-  # it hasn't been updated since gcc 2 came out.
-  #
-  # Some programs may also require exe2coff, but you can replace it by objcopy. It's
-  # in the djgpp-binutils package.
   make -f cross/makefile stub CFLAGS="$CFLAGS"
 }
 
 package() {
-  install -Dm755 "$srcdir/src/stub/stubify"  "$pkgdir/usr/$_target_alias/bin/stubify"
-  install -Dm755 "$srcdir/src/stub/stubedit" "$pkgdir/usr/$_target_alias/bin/stubedit"
+  install -Dm755 "$srcdir/stubify"  "$pkgdir/usr/$_target_alias/bin/stubify"
+  install -Dm755 "$srcdir/stubedit" "$pkgdir/usr/$_target_alias/bin/stubedit"
   mkdir -p "$pkgdir/usr/bin"
   ln -s "../$_target_alias/bin/stubify"  "$pkgdir/usr/bin/$_target_alias-stubify"
   ln -s "../$_target_alias/bin/stubedit" "$pkgdir/usr/bin/$_target_alias-stubedit"
