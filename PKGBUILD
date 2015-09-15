@@ -3,7 +3,7 @@
 
 pkgbase=python-grab
 pkgname=('python-grab' 'python2-grab')
-pkgver=0.6.23
+pkgver=0.6.24
 pkgrel=1 
 pkgdesc="Web Scraping Framework"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://pypi.python.org/pypi/grab"
 license=('MIT')
 makedepends=('python' 'python2')
 source=(https://pypi.python.org/packages/source/g/grab/grab-${pkgver}.tar.gz)
-sha256sums=('6721721d5091509950ada0b22ae261d45aad780d0e260a2dfe230db195b5d945')
+sha256sums=('54eb877e5576c05622ed6c70c91197501c220c2468703bad55807056549bd5ed')
 
 build() {
   cd $srcdir
