@@ -1,7 +1,7 @@
 pkgbase = grig
 	pkgdesc = Rig control (cat) program
 	pkgver = 0.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://groundstation.sourceforge.net/grig/
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = grig
 	license = GPL
 	depends = hamlib
 	depends = gtk2
+	depends = intltool
 	source = http://downloads.sourceforge.net/groundstation/grig-0.8.0.tar.gz
 	source = grig.desktop
 	source = g_thread.patch

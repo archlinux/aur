@@ -2,12 +2,12 @@
 
 pkgname=grig
 pkgver=0.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Rig control (cat) program"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://groundstation.sourceforge.net/grig/"
 license=('GPL')
-depends=('hamlib' 'gtk2')
+depends=('hamlib' 'gtk2' 'intltool')
 source=("http://downloads.sourceforge.net/groundstation/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.desktop"
 	"g_thread.patch")
