@@ -11,7 +11,7 @@
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
@@ -38,16 +38,19 @@ source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname
         NetworkManager.conf 
         disable_set_hostname.patch 
         networkmanager.rc
+        0001-Add-Requires.private-glib-2.0.patch
         )
 sha256sums=('38ea002403e3b884ffa9aae25aea431d2a8420f81f4919761c83fb92648254bd'
             '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
+            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
+            '96fa0ecd0dabf7ba48b0af4220165d5777ac41f2e4cafd9d5c7a8d072ce0c9d7')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   patch -Np1 -i ../disable_set_hostname.patch
+  patch -Np1 -i ../0001-Add-Requires.private-glib-2.0.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
