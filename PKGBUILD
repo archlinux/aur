@@ -2,11 +2,12 @@
 
 pkgname=f-engrave
 pkgver=1.51
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 url="https://github.com/Ultimaker/libArcus"
 arch=('i686' 'x86_64')
 license=('GPLv3')
+makedepends=('dos2unix')
 depends=('python' 'ttf2cxf')
 source=(http://www.scorchworks.com/Fengrave/F-Engrave-${pkgver}_src.zip arch.patch)
 md5sums=('e17d5345f703b05618b9c1eae6b81ce2'
@@ -20,6 +21,7 @@ prepare() {
 package() {
   cd F-Engrave-${pkgver}_src
   install -Dm755 f-engrave-151.py "$pkgdir/usr/bin/f-engrave"
+  dos2unix "$pkgdir/usr/bin/f-engrave"
 }
 
 # vim:set ts=2 sw=2 et:

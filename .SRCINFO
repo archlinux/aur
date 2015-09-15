@@ -1,10 +1,11 @@
 pkgbase = f-engrave
 	pkgver = 1.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ultimaker/libArcus
 	arch = i686
 	arch = x86_64
 	license = GPLv3
+	makedepends = dos2unix
 	depends = python
 	depends = ttf2cxf
 	source = http://www.scorchworks.com/Fengrave/F-Engrave-1.51_src.zip
