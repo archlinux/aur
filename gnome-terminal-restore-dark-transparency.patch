@@ -1,7 +1,7 @@
-From 181dca2c0b50af1326a84e1ec0134afab88ff5b2 Mon Sep 17 00:00:00 2001
+From a63d59c288545a8199334e78f1ed1e99d9c58d57 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
-Subject: [PATCH 1/3] Restore transparency
+Subject: [PATCH 1/5] Restore transparency
 
 The transparency settings were removed as a side effect of
 2bff4b63ed3ceef6055e35563e9b0b33ad57349d
@@ -23,10 +23,10 @@ restore the translations of the string.
  6 files changed, 144 insertions(+), 1 deletion(-)
 
 diff --git a/src/org.gnome.Terminal.gschema.xml b/src/org.gnome.Terminal.gschema.xml
-index 0f8433f..104e662 100644
+index 6e24f564c91a..0a646370dd65 100644
 --- a/src/org.gnome.Terminal.gschema.xml
 +++ b/src/org.gnome.Terminal.gschema.xml
-@@ -333,6 +333,16 @@
+@@ -334,6 +334,16 @@
        <default>'narrow'</default>
        <summary>Whether ambiguous-width characters are narrow or wide when using UTF-8 encoding</summary>
      </key>
@@ -44,10 +44,10 @@ index 0f8433f..104e662 100644
  
    <!-- Keybinding settings -->
 diff --git a/src/profile-editor.c b/src/profile-editor.c
-index 3e8ccaf..f09b6bc 100644
+index c5019fd469ad..7ca953ef9ff4 100644
 --- a/src/profile-editor.c
 +++ b/src/profile-editor.c
-@@ -1106,7 +1106,18 @@ terminal_profile_edit (GSettings  *profile,
+@@ -1097,7 +1097,18 @@ terminal_profile_edit (GSettings  *profile,
                     "active-id",
                     G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
  
@@ -67,7 +67,7 @@ index 3e8ccaf..f09b6bc 100644
  
    terminal_util_dialog_focus_widget (editor, widget_name);
 diff --git a/src/profile-preferences.ui b/src/profile-preferences.ui
-index eb2fa26..7f8a471 100644
+index 579c28ff344f..edb264ba5d72 100644
 --- a/src/profile-preferences.ui
 +++ b/src/profile-preferences.ui
 @@ -23,6 +23,11 @@
@@ -82,7 +82,7 @@ index eb2fa26..7f8a471 100644
    <object class="GtkListStore" id="model1">
      <columns>
        <!-- column-name gchararray -->
-@@ -1045,6 +1050,93 @@
+@@ -991,6 +996,93 @@
                                  <property name="position">1</property>
                                </packing>
                              </child>
@@ -177,10 +177,10 @@ index eb2fa26..7f8a471 100644
                          </child>
                        </object>
 diff --git a/src/terminal-schemas.h b/src/terminal-schemas.h
-index 17ffdb2..0fcbf52 100644
+index a8a0d908beea..e35990d728dc 100644
 --- a/src/terminal-schemas.h
 +++ b/src/terminal-schemas.h
-@@ -64,6 +64,9 @@ G_BEGIN_DECLS
+@@ -63,6 +63,9 @@ G_BEGIN_DECLS
  #define TERMINAL_PROFILE_VISIBLE_NAME_KEY               "visible-name"
  #define TERMINAL_PROFILE_WORD_CHAR_EXCEPTIONS_KEY       "word-char-exceptions"
  
@@ -191,10 +191,10 @@ index 17ffdb2..0fcbf52 100644
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
  #define TERMINAL_SETTING_ENABLE_MENU_BAR_ACCEL_KEY      "menu-accelerator-enabled"
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index df3fdde..48174c2 100644
+index a48de105e953..f5a70cdbcf81 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
-@@ -750,7 +750,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -765,7 +765,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
        prop_name == I_(TERMINAL_PROFILE_BACKGROUND_COLOR_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_BOLD_COLOR_SAME_AS_FG_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_BOLD_COLOR_KEY) ||
@@ -205,7 +205,7 @@ index df3fdde..48174c2 100644
      update_color_scheme (screen);
  
    if (!prop_name || prop_name == I_(TERMINAL_PROFILE_AUDIBLE_BELL_KEY))
-@@ -816,6 +818,8 @@ update_color_scheme (TerminalScreen *screen)
+@@ -831,6 +833,8 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA fg, bg, bold, theme_fg, theme_bg;
    GdkRGBA *boldp;
    GtkStyleContext *context;
@@ -213,8 +213,8 @@ index df3fdde..48174c2 100644
 +  gboolean transparent;
  
    context = gtk_widget_get_style_context (widget);
-   gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &theme_fg);
-@@ -836,9 +840,25 @@ update_color_scheme (TerminalScreen *screen)
+   gtk_style_context_get_color (context, gtk_style_context_get_state (context), &theme_fg);
+@@ -851,9 +855,25 @@ update_color_scheme (TerminalScreen *screen)
      boldp = NULL;
  
    colors = terminal_g_settings_get_rgba_palette (priv->profile, TERMINAL_PROFILE_PALETTE_KEY, &n_colors);
@@ -241,10 +241,10 @@ index df3fdde..48174c2 100644
  
  static void
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 12cae4f..366e4f8 100644
+index e065ac1de49d..a146a62fb098 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2549,6 +2549,8 @@ terminal_window_init (TerminalWindow *window)
+@@ -2586,6 +2586,8 @@ terminal_window_init (TerminalWindow *window)
    TerminalWindowPrivate *priv;
    TerminalApp *app;
    TerminalSettingsList *profiles_list;
@@ -253,7 +253,7 @@ index 12cae4f..366e4f8 100644
    GtkActionGroup *action_group;
    GtkAction *action;
    GtkUIManager *manager;
-@@ -2564,6 +2566,11 @@ terminal_window_init (TerminalWindow *window)
+@@ -2601,6 +2603,11 @@ terminal_window_init (TerminalWindow *window)
  
    gtk_widget_init_template (GTK_WIDGET (window));
  
@@ -269,10 +269,10 @@ index 12cae4f..366e4f8 100644
 2.1.0
 
 
-From de7d64698ac700f63898221a5815af939001ba18 Mon Sep 17 00:00:00 2001
+From 3343f7710e0cdbb6c5b8fbed5316e176becb09e8 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
-Subject: [PATCH 2/3] window: Make the drawing robust across all themes
+Subject: [PATCH 2/5] window: Make the drawing robust across all themes
 
 There are lots of themes out there in the wild that do not specify a
 background-color for all widgets and the default is transparent. This
@@ -289,10 +289,10 @@ https://bugzilla.gnome.org/show_bug.cgi?id=730016
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 366e4f8..2458656 100644
+index a146a62fb098..5117c06653c0 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2189,6 +2189,26 @@ terminal_window_realize (GtkWidget *widget)
+@@ -2225,6 +2225,26 @@ terminal_window_realize (GtkWidget *widget)
  }
  
  static gboolean
@@ -319,7 +319,7 @@ index 366e4f8..2458656 100644
  terminal_window_state_event (GtkWidget            *widget,
                               GdkEventWindowState  *event)
  {
-@@ -2753,6 +2773,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+@@ -2787,6 +2807,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
  
    widget_class->show = terminal_window_show;
    widget_class->realize = terminal_window_realize;
@@ -331,103 +331,302 @@ index 366e4f8..2458656 100644
 2.1.0
 
 
-From dfc31fb0803d546cc21ef8bcd33e54c30e14dc1c Mon Sep 17 00:00:00 2001
+From 7e4d713503e5105a4bb8149c5e73a444b5726303 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Tue, 17 Feb 2015 13:22:11 +0100
+Subject: [PATCH 3/5] Revert "prefs: Remove dark theme pref"
+
+This reverts commit 5f6c514a8840a5d1b87a8c399defee3b5052ec18.
+---
+ src/org.gnome.Terminal.gschema.xml |  5 +++++
+ src/preferences.ui                 | 16 ++++++++++++++++
+ src/terminal-app.c                 |  4 ++++
+ src/terminal-prefs.c               |  9 ++++++++-
+ src/terminal-schemas.h             |  1 +
+ 5 files changed, 34 insertions(+), 1 deletion(-)
+
+diff --git a/src/org.gnome.Terminal.gschema.xml b/src/org.gnome.Terminal.gschema.xml
+index 0a646370dd65..719a5f06ee33 100644
+--- a/src/org.gnome.Terminal.gschema.xml
++++ b/src/org.gnome.Terminal.gschema.xml
+@@ -658,6 +658,11 @@
+       <summary>Whether to show the menubar in new windows</summary>
+     </key>
+ 
++    <key name="dark-theme" type="b">
++      <default>false</default>
++      <summary>Whether to use a dark theme variant</summary>
++    </key>
++
+     <key name="new-terminal-mode" enum="org.gnome.Terminal.NewTerminalMode">
+       <default>'window'</default>
+       <summary>Whether to open new terminals as windows or tabs</summary>
+diff --git a/src/preferences.ui b/src/preferences.ui
+index bdb643d992cb..a918b1b9f565 100644
+--- a/src/preferences.ui
++++ b/src/preferences.ui
+@@ -99,6 +99,22 @@
+                   </packing>
+                 </child>
+                 <child>
++                  <object class="GtkCheckButton" id="dark-theme-checkbutton">
++                    <property name="label" translatable="yes">Use _dark theme variant</property>
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="receives_default">False</property>
++                    <property name="use_underline">True</property>
++                    <property name="xalign">0</property>
++                    <property name="draw_indicator">True</property>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">3</property>
++                  </packing>
++                </child>
++                <child>
+                   <object class="GtkBox" id="hbox140">
+                     <property name="visible">True</property>
+                     <property name="can_focus">False</property>
+diff --git a/src/terminal-app.c b/src/terminal-app.c
+index 0d2a0e61786e..96341e96cfad 100644
+--- a/src/terminal-app.c
++++ b/src/terminal-app.c
+@@ -409,6 +409,10 @@ terminal_app_init (TerminalApp *app)
+ 
+   /* Terminal global settings */
+   app->global_settings = g_settings_new (TERMINAL_SETTING_SCHEMA);
++  g_settings_bind (app->global_settings, TERMINAL_SETTING_DARK_THEME_KEY,
++                   gtk_settings_get_default (),
++                   "gtk-application-prefer-dark-theme",
++                   G_SETTINGS_BIND_GET);
+ 
+   /* Check if we need to migrate from gconf to dconf */
+   maybe_migrate_settings (app);
+diff --git a/src/terminal-prefs.c b/src/terminal-prefs.c
+index 230b0aec46f8..f2ce723771fe 100644
+--- a/src/terminal-prefs.c
++++ b/src/terminal-prefs.c
+@@ -560,7 +560,7 @@ terminal_prefs_show_preferences (GtkWindow *transient_parent,
+   GtkWidget *show_menubar_button, *disable_mnemonics_button, *disable_menu_accel_button;
+   GtkWidget *disable_shortcuts_button;
+   GtkWidget *tree_view_container, *new_button, *edit_button, *clone_button, *remove_button;
+-  GtkWidget *new_terminal_mode_combo;
++  GtkWidget *dark_theme_button, *new_terminal_mode_combo;
+   GtkWidget *default_hbox, *default_label;
+   GtkWidget *close_button, *help_button;
+   GtkTreeSelection *selection;
+@@ -584,6 +584,7 @@ terminal_prefs_show_preferences (GtkWindow *transient_parent,
+                                        "close-button", &close_button,
+                                        "help-button", &help_button,
+                                        "default-show-menubar-checkbutton", &show_menubar_button,
++                                       "dark-theme-checkbutton", &dark_theme_button,
+                                        "new-terminal-mode-combobox", &new_terminal_mode_combo,
+                                        "disable-mnemonics-checkbutton", &disable_mnemonics_button,
+                                        "disable-shortcuts-checkbutton", &disable_shortcuts_button,
+@@ -614,6 +615,12 @@ terminal_prefs_show_preferences (GtkWindow *transient_parent,
+                    G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+ 
+   g_settings_bind (settings,
++                   TERMINAL_SETTING_DARK_THEME_KEY,
++                   dark_theme_button,
++                   "active",
++                   G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
++
++  g_settings_bind (settings,
+                    TERMINAL_SETTING_NEW_TERMINAL_MODE_KEY,
+                    new_terminal_mode_combo,
+                    "active-id",
+diff --git a/src/terminal-schemas.h b/src/terminal-schemas.h
+index e35990d728dc..d4f44d2f538e 100644
+--- a/src/terminal-schemas.h
++++ b/src/terminal-schemas.h
+@@ -68,6 +68,7 @@ G_BEGIN_DECLS
+ 
+ #define TERMINAL_SETTING_CONFIRM_CLOSE_KEY              "confirm-close"
+ #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
++#define TERMINAL_SETTING_DARK_THEME_KEY                 "dark-theme"
+ #define TERMINAL_SETTING_ENABLE_MENU_BAR_ACCEL_KEY      "menu-accelerator-enabled"
+ #define TERMINAL_SETTING_ENABLE_MNEMONICS_KEY           "mnemonics-enabled"
+ #define TERMINAL_SETTING_ENABLE_SHORTCUTS_KEY           "shortcuts-enabled"
+-- 
+2.1.0
+
+
+From b68a180427249e040ec1ced6461b5ce5dfab5d04 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Tue, 17 Feb 2015 13:22:21 +0100
+Subject: [PATCH 4/5] Revert "help: Remove dark theme pref"
+
+This reverts commit baaca6a4cc5ca78d7b0e02cfaee6c159bad7ce4b.
+---
+ help/C/pref-theme.page | 41 +++++++++++++++++++++++++++++++++++++++++
+ help/Makefile.am       |  1 +
+ 2 files changed, 42 insertions(+)
+ create mode 100644 help/C/pref-theme.page
+
+diff --git a/help/C/pref-theme.page b/help/C/pref-theme.page
+new file mode 100644
+index 000000000000..a997d14c0dfd
+--- /dev/null
++++ b/help/C/pref-theme.page
+@@ -0,0 +1,41 @@
++<page xmlns="http://projectmallard.org/1.0/"
++      xmlns:its="http://www.w3.org/2005/11/its"
++      type="guide"
++      id="pref-theme">
++
++  <info>
++    <link type="guide" xref="index#appearance"/>
++    <revision pkgversion="3.12" date="2014-02-26" status="review"/>
++
++    <credit type="author copyright">
++      <name>Ekaterina Gerasimova</name>
++      <email its:translate="no">kittykat3756@gmail.com</email>
++      <years>2014</years>
++    </credit>
++    <!--<credit type="copyright editor">
++      <name></name>
++      <email its:translate="no"></email>
++      <years></years>
++    </credit>-->
++
++    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
++
++    <desc>Use either the light or dark theme for <app>Terminal</app>.</desc>
++  </info>
++
++  <title>Chose the window theme</title>
++
++  <p>You can chose to use either the dark theme or the light theme for the
++  terminal window.</p>
++
++  <steps>
++    <item>
++      <p>Select
++      <guiseq><gui style="menu">Edit</gui><gui style="menuitem">Preferences</gui><gui style="tab">General</gui></guiseq>.</p>
++    </item>
++    <item>
++      <p>To use the dark theme, select <gui>Use dark theme variant</gui>.</p>
++    </item>
++  </steps>
++
++</page>
+diff --git a/help/Makefile.am b/help/Makefile.am
+index e3ca62732cf6..4bacc91265de 100644
+--- a/help/Makefile.am
++++ b/help/Makefile.am
+@@ -35,6 +35,7 @@ HELP_FILES = \
+ 	pref-profile-encoding.page \
+ 	pref-scrolling.page \
+ 	pref-tab-window.page \
++	pref-theme.page \
+ 	pref-user-input.page \
+ 	profile.page \
+ 	prob-reset.page \
+-- 
+2.1.0
+
+
+From 46fee8a5c659a36867cd97c80de9d4a257ed5c6b Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
-Subject: [PATCH 3/3] Restore translations for transparency
+Subject: [PATCH 5/5] Restore translations for dark terminals and transparency
 
 ---
- po/am.po          | 4 ++--
- po/ar.po          | 4 ++--
- po/as.po          | 4 ++--
- po/ast.po         | 4 ++--
- po/az.po          | 4 ++--
- po/be.po          | 3 +++
- po/be@latin.po    | 4 ++--
- po/bg.po          | 3 +++
- po/bn_IN.po       | 3 +++
- po/bs.po          | 4 ++++
- po/ca.po          | 3 +++
- po/ca@valencia.po | 3 +++
- po/cs.po          | 3 +++
- po/cy.po          | 4 ++--
- po/da.po          | 4 ++--
- po/de.po          | 4 ++--
- po/dz.po          | 4 ++--
- po/el.po          | 3 +++
- po/en@shaw.po     | 4 ++--
- po/en_CA.po       | 4 ++--
- po/en_GB.po       | 4 ++--
- po/es.po          | 4 ++--
- po/et.po          | 3 +++
- po/eu.po          | 4 ++--
- po/fa.po          | 3 +++
- po/fi.po          | 5 ++++-
- po/fr.po          | 3 +++
- po/fur.po         | 4 ++--
- po/ga.po          | 3 +++
- po/gl.po          | 4 ++--
- po/gu.po          | 4 ++--
- po/he.po          | 4 ++--
- po/hi.po          | 4 ++--
- po/hr.po          | 4 ++--
- po/hu.po          | 3 +++
- po/hy.po          | 4 ++--
- po/id.po          | 3 +++
- po/it.po          | 3 +++
- po/ja.po          | 3 +++
- po/ka.po          | 2 +-
- po/kk.po          | 3 +++
- po/kn.po          | 3 +++
- po/ko.po          | 3 +++
- po/ku.po          | 4 ++--
- po/lt.po          | 3 +++
- po/lv.po          | 4 ++--
- po/mai.po         | 4 ++--
- po/mg.po          | 4 ++--
- po/mk.po          | 4 ++--
- po/ml.po          | 4 ++--
- po/mn.po          | 4 ++--
- po/mr.po          | 4 ++--
- po/ms.po          | 4 ++--
- po/nb.po          | 3 +++
- po/nds.po         | 4 ++--
- po/ne.po          | 4 ++--
- po/nl.po          | 3 +++
- po/nn.po          | 4 ++--
- po/oc.po          | 4 ++--
- po/or.po          | 4 ++--
- po/pa.po          | 4 ++--
- po/pl.po          | 3 +++
- po/ps.po          | 4 ++--
- po/pt.po          | 4 ++--
- po/pt_BR.po       | 3 +++
- po/ro.po          | 4 ++--
- po/ru.po          | 3 +++
- po/rw.po          | 2 +-
- po/si.po          | 4 ++--
- po/sk.po          | 3 +++
- po/sl.po          | 3 +++
- po/sq.po          | 4 ++--
- po/sr.po          | 3 +++
- po/sr@latin.po    | 3 +++
- po/sv.po          | 3 +++
- po/ta.po          | 4 ++--
- po/te.po          | 4 ++--
- po/th.po          | 4 ++--
- po/tr.po          | 3 +++
- po/ug.po          | 4 ++--
- po/uk.po          | 4 ++--
- po/vi.po          | 3 +++
- po/wa.po          | 4 ++--
- po/xh.po          | 4 ++--
- po/zh_CN.po       | 3 +++
- po/zh_HK.po       | 3 +++
- po/zh_TW.po       | 3 +++
- 87 files changed, 210 insertions(+), 101 deletions(-)
+ po/am.po          |  4 ++--
+ po/ar.po          | 13 ++++++-------
+ po/as.po          |  4 ++--
+ po/ast.po         |  4 ++--
+ po/az.po          |  4 ++--
+ po/be.po          |  3 +++
+ po/be@latin.po    |  4 ++--
+ po/bg.po          |  3 +++
+ po/bn_IN.po       |  3 +++
+ po/bs.po          |  4 ++++
+ po/ca.po          | 11 +++++++----
+ po/ca@valencia.po |  3 +++
+ po/cs.po          |  3 +++
+ po/cy.po          |  4 ++--
+ po/da.po          | 12 ++++++------
+ po/de.po          | 12 ++++++------
+ po/dz.po          |  4 ++--
+ po/el.po          | 11 +++++++----
+ po/en@shaw.po     |  4 ++--
+ po/en_CA.po       |  4 ++--
+ po/en_GB.po       |  4 ++--
+ po/es.po          | 12 ++++++------
+ po/et.po          |  3 +++
+ po/eu.po          | 12 ++++++------
+ po/fa.po          |  3 +++
+ po/fi.po          | 11 +++++++----
+ po/fr.po          | 11 +++++++----
+ po/fur.po         |  4 ++++
+ po/ga.po          |  3 +++
+ po/gd.po          |  9 ++++-----
+ po/gl.po          | 12 ++++++------
+ po/gu.po          |  4 ++--
+ po/he.po          | 12 ++++++------
+ po/hi.po          |  4 ++--
+ po/hr.po          |  4 ++--
+ po/hu.po          | 11 +++++++----
+ po/hy.po          |  4 ++--
+ po/id.po          |  3 +++
+ po/it.po          |  3 +++
+ po/ja.po          |  3 +++
+ po/ka.po          |  2 +-
+ po/kk.po          | 11 +++++++----
+ po/kn.po          |  3 +++
+ po/ko.po          | 11 +++++++----
+ po/ku.po          |  4 ++--
+ po/lt.po          | 11 +++++++----
+ po/lv.po          |  4 ++--
+ po/mai.po         |  4 ++--
+ po/mg.po          |  4 ++--
+ po/mk.po          |  4 ++--
+ po/ml.po          |  4 ++--
+ po/mn.po          |  4 ++--
+ po/mr.po          |  4 ++--
+ po/ms.po          |  4 ++--
+ po/nb.po          |  3 +++
+ po/nds.po         |  4 ++--
+ po/ne.po          |  4 ++--
+ po/nl.po          |  3 +++
+ po/nn.po          |  4 ++--
+ po/oc.po          | 12 ++++++------
+ po/or.po          |  4 ++--
+ po/pa.po          |  4 ++--
+ po/pl.po          |  3 +++
+ po/ps.po          |  4 ++--
+ po/pt.po          | 12 ++++++------
+ po/pt_BR.po       | 11 +++++++----
+ po/ro.po          |  4 ++--
+ po/ru.po          |  3 +++
+ po/rw.po          |  2 +-
+ po/si.po          |  4 ++--
+ po/sk.po          | 11 +++++++----
+ po/sl.po          | 11 +++++++----
+ po/sq.po          |  4 ++--
+ po/sr.po          | 11 +++++++----
+ po/sr@latin.po    | 11 +++++++----
+ po/sv.po          |  3 +++
+ po/ta.po          |  4 ++--
+ po/te.po          |  4 ++--
+ po/tg.po          |  8 ++++----
+ po/th.po          | 12 ++++++------
+ po/tr.po          |  3 +++
+ po/ug.po          |  4 ++--
+ po/uk.po          | 12 ++++++------
+ po/vi.po          | 11 +++++++----
+ po/wa.po          |  4 ++--
+ po/xh.po          |  4 ++--
+ po/zh_CN.po       | 11 +++++++----
+ po/zh_HK.po       |  3 +++
+ po/zh_TW.po       | 11 +++++++----
+ 89 files changed, 327 insertions(+), 216 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
-index 27a7e96..04a8ad9 100644
+index 27a7e9640668..04a8ad9f36a3 100644
 --- a/po/am.po
 +++ b/po/am.po
 @@ -613,8 +613,8 @@ msgid "_Text color:"
@@ -442,10 +641,27 @@ index 27a7e96..04a8ad9 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/ar.po b/po/ar.po
-index c27cd9c..f541938 100644
+index c27cd9cfc2b6..b882143bdd77 100644
 --- a/po/ar.po
 +++ b/po/ar.po
-@@ -2914,8 +2914,8 @@ msgstr "أغ_لق النافذة"
+@@ -2056,12 +2056,11 @@ msgstr "أغ_لق النافذة"
+ #~ msgid "Missing command"
+ #~ msgstr "خطأ أثناء تحليل الأمر: %s"
+ 
+-#, fuzzy
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "فيما إذا سيستعمل خط النظام ثابت العرض"
++msgid "Whether to use a dark theme variant"
++msgstr "فيما إذا سيستعمل خط النظام ثابت العرض"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "استخدم سمة _داكنة"
++msgid "Use _dark theme variant"
++msgstr "استخدم سمة _داكنة"
+ 
+ #~ msgid "COMMAND"
+ #~ msgstr "الأمر"
+@@ -2914,8 +2913,8 @@ msgstr "أغ_لق النافذة"
  #~ msgid "Background image _scrolls"
  #~ msgstr "صورة الخلفية ت_لتف"
  
@@ -457,7 +673,7 @@ index c27cd9c..f541938 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "_ظلل شفافية أو صورة الخلفية:"
 diff --git a/po/as.po b/po/as.po
-index 0bd699d..63fca01 100644
+index 0bd699d5e021..63fca0132a93 100644
 --- a/po/as.po
 +++ b/po/as.po
 @@ -2979,8 +2979,8 @@ msgstr "উইন্ডো বন্ধ কৰক (_l)"
@@ -472,7 +688,7 @@ index 0bd699d..63fca01 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "স্বচ্ছ বা ছবিৰ সৈতে পটভূমি ছায়া আচ্ছন্ন কৰক (_h):"
 diff --git a/po/ast.po b/po/ast.po
-index d1c6e7b..4210820 100644
+index d1c6e7b8174a..4210820a1429 100644
 --- a/po/ast.po
 +++ b/po/ast.po
 @@ -1598,8 +1598,8 @@ msgid "_Text color:"
@@ -487,7 +703,7 @@ index d1c6e7b..4210820 100644
  #: ../src/profile-preferences.glade.h:78
  msgid "_Underline color:"
 diff --git a/po/az.po b/po/az.po
-index b0f2e3e..877f114 100644
+index b0f2e3eac8b8..877f114954e0 100644
 --- a/po/az.po
 +++ b/po/az.po
 @@ -619,8 +619,8 @@ msgid "_Text color:"
@@ -502,7 +718,7 @@ index b0f2e3e..877f114 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/be.po b/po/be.po
-index fca0ae4..74ff329 100644
+index fca0ae4617d4..74ff3291321a 100644
 --- a/po/be.po
 +++ b/po/be.po
 @@ -2015,3 +2015,6 @@ msgstr ""
@@ -513,7 +729,7 @@ index fca0ae4..74ff329 100644
 +msgstr "Празрысты фон"
 +
 diff --git a/po/be@latin.po b/po/be@latin.po
-index 1e057c7..1d22a58 100644
+index 1e057c74b152..1d22a58915af 100644
 --- a/po/be@latin.po
 +++ b/po/be@latin.po
 @@ -1425,8 +1425,8 @@ msgid "_Text color:"
@@ -528,7 +744,7 @@ index 1e057c7..1d22a58 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/bg.po b/po/bg.po
-index 7e9c9be..241ef52 100644
+index 7e9c9be32700..241ef52bf50f 100644
 --- a/po/bg.po
 +++ b/po/bg.po
 @@ -2100,3 +2100,6 @@ msgstr ""
@@ -539,7 +755,7 @@ index 7e9c9be..241ef52 100644
 +msgid "Transparent background"
 +msgstr "Прозрачен фон"
 diff --git a/po/bn_IN.po b/po/bn_IN.po
-index c74246a..d65b322 100644
+index c74246a5a26d..d65b322ba88c 100644
 --- a/po/bn_IN.po
 +++ b/po/bn_IN.po
 @@ -2358,3 +2358,6 @@ msgstr "উইন্ডো বন্ধ করুন (_l)"
@@ -550,7 +766,7 @@ index c74246a..d65b322 100644
 +msgid "Transparent background"
 +msgstr "স্বচ্চ পটভূমি "
 diff --git a/po/bs.po b/po/bs.po
-index 49e7108..fccfa86 100644
+index 49e710859ac9..fccfa86de311 100644
 --- a/po/bs.po
 +++ b/po/bs.po
 @@ -680,6 +680,10 @@ msgstr "Kratica tastature za povećavanje fonta"
@@ -565,18 +781,27 @@ index 49e7108..fccfa86 100644
  msgid "Keyboard shortcut to make font normal-size"
  msgstr "Kratica tastature za postavljanje fonta na normalnu veličinu"
 diff --git a/po/ca.po b/po/ca.po
-index 567b344..156eed1 100644
+index 567b3445927f..68ec312dcb5c 100644
 --- a/po/ca.po
 +++ b/po/ca.po
-@@ -2111,3 +2111,6 @@ msgstr "Tanca la _finestra"
+@@ -2106,8 +2106,11 @@ msgstr "Tanca la _finestra"
+ #~ msgid "Missing command"
+ #~ msgstr "Manca l'ordre"
  
- #~ msgid "Use _dark theme variant"
- #~ msgstr "Utilitza la variant de tema _fosc"
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Si s'ha d'utilitzar la variant de tema fosc"
++msgid "Whether to use a dark theme variant"
++msgstr "Si s'ha d'utilitzar la variant de tema fosc"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Utilitza la variant de tema _fosc"
++msgid "Use _dark theme variant"
++msgstr "Utilitza la variant de tema _fosc"
 +
 +msgid "Transparent background"
 +msgstr "Fons transparent"
 diff --git a/po/ca@valencia.po b/po/ca@valencia.po
-index 1c279a0..4073f71 100644
+index 1c279a0bf09c..4073f719906a 100644
 --- a/po/ca@valencia.po
 +++ b/po/ca@valencia.po
 @@ -2092,3 +2092,6 @@ msgstr ""
@@ -587,18 +812,18 @@ index 1c279a0..4073f71 100644
 +msgid "Transparent background"
 +msgstr "Fons transparent"
 diff --git a/po/cs.po b/po/cs.po
-index f1e8c44..912b4df 100644
+index 8737182b80bf..542f8135590e 100644
 --- a/po/cs.po
 +++ b/po/cs.po
-@@ -2063,3 +2063,6 @@ msgstr ""
- #: ../src/terminal-window.c:3652
+@@ -2056,3 +2056,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3694
  msgid "C_lose Window"
  msgstr "_Zavřít okno"
 +
 +msgid "Transparent background"
 +msgstr "Průsvitné pozadí"
 diff --git a/po/cy.po b/po/cy.po
-index 06d0e3c..2491bd1 100644
+index 0739e201f83b..8b1ff006857a 100644
 --- a/po/cy.po
 +++ b/po/cy.po
 @@ -1447,8 +1447,8 @@ msgid "_Text color:"
@@ -613,9 +838,25 @@ index 06d0e3c..2491bd1 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/da.po b/po/da.po
-index 74b7d0b..af69a6b 100644
+index 74b7d0beee7d..ec1b391c2a7a 100644
 --- a/po/da.po
 +++ b/po/da.po
+@@ -2083,11 +2083,11 @@ msgstr "_Luk vindue"
+ #~ msgid "Missing command"
+ #~ msgstr "Manglende kommando"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Om der skal bruges en mørk temavariant"
++msgid "Whether to use a dark theme variant"
++msgstr "Om der skal bruges en mørk temavariant"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Brug _mørk temavariant"
++msgid "Use _dark theme variant"
++msgstr "Brug _mørk temavariant"
+ 
+ #~ msgid "COMMAND"
+ #~ msgstr "KOMMANDO"
 @@ -2987,8 +2987,8 @@ msgstr "_Luk vindue"
  #~ msgid "_Solid color"
  #~ msgstr "_Ensfarvet"
@@ -628,10 +869,26 @@ index 74b7d0b..af69a6b 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/de.po b/po/de.po
-index 6b2bb19..2b814c0 100644
+index 0d46e223c669..4101ba2c6eef 100644
 --- a/po/de.po
 +++ b/po/de.po
-@@ -3060,8 +3060,8 @@ msgstr "Fenster _schließen"
+@@ -2125,11 +2125,11 @@ msgstr "Fenster _schließen"
+ #~ msgid "Missing command"
+ #~ msgstr "Fehlender Befehl"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Legt fest, ob eine dunkle Themenvariante verwendet wird"
++msgid "Whether to use a dark theme variant"
++msgstr "Legt fest, ob eine dunkle Themenvariante verwendet wird"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Die _dunkle Themenvariante verwenden"
++msgid "Use _dark theme variant"
++msgstr "Die _dunkle Themenvariante verwenden"
+ 
+ #~ msgid "Set the terminal title"
+ #~ msgstr "Den Titel des Terminals festlegen"
+@@ -3057,8 +3057,8 @@ msgstr "Fenster _schließen"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Hintergrundbild _folgt Bildlauf"
  
@@ -643,7 +900,7 @@ index 6b2bb19..2b814c0 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "Transparenz und Bildhintergründe _abdunkeln:"
 diff --git a/po/dz.po b/po/dz.po
-index ecb8fd5..290934a 100644
+index ecb8fd59329c..290934ad3e0f 100644
 --- a/po/dz.po
 +++ b/po/dz.po
 @@ -1551,8 +1551,8 @@ msgid "_Text color:"
@@ -658,9 +915,25 @@ index ecb8fd5..290934a 100644
  #: ../src/profile-preferences.glade.h:78
  #, fuzzy
 diff --git a/po/el.po b/po/el.po
-index b81802c..a32ae26 100644
+index b81802c913a5..573a99bb52ef 100644
 --- a/po/el.po
 +++ b/po/el.po
+@@ -2121,11 +2121,11 @@ msgstr "Κ_λείσιμο παραθύρου"
+ #~ msgid "Missing command"
+ #~ msgstr "Λείπει εντολή"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Εάν θα χρησιμοποιεί παραλλαγή σκοτεινού θέματος"
++msgid "Whether to use a dark theme variant"
++msgstr "Εάν θα χρησιμοποιεί παραλλαγή σκοτεινού θέματος"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Χρήση παραλλαγής _σκοτεινού θέματος"
++msgid "Use _dark theme variant"
++msgstr "Χρήση παραλλαγής _σκοτεινού θέματος"
+ 
+ #~ msgid "_Use the system fixed width font"
+ #~ msgstr "_Χρήση της γραμματοσειράς σταθερού πλάτους του συστήματος"
 @@ -2289,3 +2289,6 @@ msgstr "Κ_λείσιμο παραθύρου"
  
  #~ msgid "_Input Methods"
@@ -669,7 +942,7 @@ index b81802c..a32ae26 100644
 +msgid "Transparent background"
 +msgstr "Διάφανο παρασκήνιο"
 diff --git a/po/en@shaw.po b/po/en@shaw.po
-index 65f3d41..05dc99d 100644
+index 65f3d415e476..05dc99df5980 100644
 --- a/po/en@shaw.po
 +++ b/po/en@shaw.po
 @@ -1467,8 +1467,8 @@ msgid "_Text color:"
@@ -684,7 +957,7 @@ index 65f3d41..05dc99d 100644
  #: ../src/profile-preferences.glade.h:79
  msgid "_Underline color:"
 diff --git a/po/en_CA.po b/po/en_CA.po
-index c79cbf5..b8b14d2 100644
+index c79cbf5aa245..b8b14d2030e1 100644
 --- a/po/en_CA.po
 +++ b/po/en_CA.po
 @@ -556,8 +556,8 @@ msgid "_Text color:"
@@ -699,7 +972,7 @@ index c79cbf5..b8b14d2 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/en_GB.po b/po/en_GB.po
-index 4d38486..69e7113 100644
+index 4d38486679fe..69e71135d75c 100644
 --- a/po/en_GB.po
 +++ b/po/en_GB.po
 @@ -2732,8 +2732,8 @@ msgstr "_Title:"
@@ -714,10 +987,26 @@ index 4d38486..69e7113 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "S_hade transparent or image background:"
 diff --git a/po/es.po b/po/es.po
-index c8b47fe..4d33066 100644
+index 39b3d7e5f1cb..b7c0cab8dae8 100644
 --- a/po/es.po
 +++ b/po/es.po
-@@ -3095,8 +3095,8 @@ msgstr "_Cerrar ventana"
+@@ -2120,11 +2120,11 @@ msgstr "_Cerrar ventana"
+ #~ msgid "Missing command"
+ #~ msgstr "Falta el comando"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Indica si se debe usar la variante oscura del tema"
++msgid "Whether to use a dark theme variant"
++msgstr "Indica si se debe usar la variante oscura del tema"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Usar la variante _oscura del tema"
++msgid "Use _dark theme variant"
++msgstr "Usar la variante _oscura del tema"
+ 
+ #~ msgid "Set the terminal title"
+ #~ msgstr "Establece el título de la terminal"
+@@ -3103,8 +3103,8 @@ msgstr "_Cerrar ventana"
  #~ msgid "_Solid color"
  #~ msgstr "Color _sólido"
  
@@ -729,7 +1018,7 @@ index c8b47fe..4d33066 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "No existe el perfil «%s», usando el perfil predeterminado\n"
 diff --git a/po/et.po b/po/et.po
-index 4b1c2a7..7707611 100644
+index 4b1c2a7c67e4..770761168806 100644
 --- a/po/et.po
 +++ b/po/et.po
 @@ -1747,3 +1747,6 @@ msgstr "Su_lge aken"
@@ -740,9 +1029,25 @@ index 4b1c2a7..7707611 100644
 +msgid "Transparent background"
 +msgstr "Läbipaistev taust"
 diff --git a/po/eu.po b/po/eu.po
-index 97bb976..b53f33c 100644
+index 97bb9762528f..9e32fb740c57 100644
 --- a/po/eu.po
 +++ b/po/eu.po
+@@ -2071,11 +2071,11 @@ msgstr "It_xi leihoa"
+ #~ msgid "Missing command"
+ #~ msgstr "Komandoa falta da"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Gai ilunaren aldaera erabili edo ez"
++msgid "Whether to use a dark theme variant"
++msgstr "Gai ilunaren aldaera erabili edo ez"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Erabili gai _ilunaren aldaera"
++msgid "Use _dark theme variant"
++msgstr "Erabili gai _ilunaren aldaera"
+ 
+ #~ msgid "COMMAND"
+ #~ msgstr "KOMANDOA"
 @@ -2972,8 +2972,8 @@ msgstr "It_xi leihoa"
  #~ msgid "_Solid color"
  #~ msgstr "_Kolore solidoa"
@@ -755,7 +1060,7 @@ index 97bb976..b53f33c 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/fa.po b/po/fa.po
-index 2090863..b9a05af 100644
+index 2090863eddaf..b9a05af5c969 100644
 --- a/po/fa.po
 +++ b/po/fa.po
 @@ -2027,3 +2027,6 @@ msgstr "ذخیره به نام..."
@@ -766,7 +1071,7 @@ index 2090863..b9a05af 100644
 +msgid "Transparent background"
 +msgstr "پس‌زمینه‌ی شفاف"
 diff --git a/po/fi.po b/po/fi.po
-index f80a962..dacd609 100644
+index f80a962e458a..ba11a5795b1c 100644
 --- a/po/fi.po
 +++ b/po/fi.po
 @@ -2069,6 +2069,9 @@ msgstr ""
@@ -779,41 +1084,57 @@ index f80a962..dacd609 100644
  #~ msgid "Set the terminal title"
  #~ msgstr "Aseta päätteen otsikko"
  
-@@ -2083,4 +2086,4 @@ msgstr "_Sulje ikkuna"
- #~ msgstr "Käytetäänkö teeman tummaan muunnelmaa"
+@@ -2079,8 +2082,8 @@ msgstr "_Sulje ikkuna"
+ #~ msgid "Missing command"
+ #~ msgstr "Puuttuva komento"
  
- #~ msgid "Use _dark theme variant"
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Käytetäänkö teeman tummaan muunnelmaa"
++msgid "Whether to use a dark theme variant"
++msgstr "Käytetäänkö teeman tummaan muunnelmaa"
+ 
+-#~ msgid "Use _dark theme variant"
 -#~ msgstr "Käytä _teeman tummaa muunnelmaa"
-+#~ msgstr "Käytä _teeman tummaa muunnelmaa"
++msgid "Use _dark theme variant"
++msgstr "Käytä _teeman tummaa muunnelmaa"
 \ No newline at end of file
 diff --git a/po/fr.po b/po/fr.po
-index fd28f38..babd28d 100644
+index 15c8ecc86124..506f0fcb5c49 100644
 --- a/po/fr.po
 +++ b/po/fr.po
-@@ -2135,3 +2135,6 @@ msgstr "Fermer _la fenêtre"
+@@ -2136,8 +2136,11 @@ msgstr "Fermer _la fenêtre"
+ #~ msgid "Missing command"
+ #~ msgstr "Commande manquante"
  
- #~ msgid "Use _dark theme variant"
- #~ msgstr "Utiliser une variante de thème _foncée"
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Indique s'il faut utiliser une variante de thème foncée"
++msgid "Whether to use a dark theme variant"
++msgstr "Indique s'il faut utiliser une variante de thème foncée"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Utiliser une variante de thème _foncée"
++msgid "Use _dark theme variant"
++msgstr "Utiliser une variante de thème _foncée"
 +
 +msgid "Transparent background"
 +msgstr "Arrière-plan transparent"
 diff --git a/po/fur.po b/po/fur.po
-index 5a20170..8c3daaf 100644
+index 300ed8fbce71..4b5bfbc150f0 100644
 --- a/po/fur.po
 +++ b/po/fur.po
-@@ -580,8 +580,8 @@ msgid "_Text color:"
- msgstr "Colôr dal _test:"
+@@ -562,6 +562,10 @@ msgstr ""
+ "Indiche se tornâ a adatâ in automatic i contignûts dal terminâl al modificâ "
+ "de dimension dal barcon"
  
- #: ../src/gnome-terminal.glade2.h:86
--msgid "_Transparent background"
--msgstr "Fondâl _trasparent"
++#: ../src/gnome-terminal.glade2.h:86
 +msgid "Transparent background"
 +msgstr "Fondâl trasparent"
- 
- #: ../src/gnome-terminal.glade2.h:87
- msgid "_Update login records when command is launched"
++
+ #: ../src/org.gnome.Terminal.gschema.xml.h:50
+ msgid "Which encoding to use"
+ msgstr "Codifiche di doprâ"
 diff --git a/po/ga.po b/po/ga.po
-index 93d5fa9..feb87dc 100644
+index 93d5fa9d1481..feb87dce3d6b 100644
 --- a/po/ga.po
 +++ b/po/ga.po
 @@ -1925,3 +1925,6 @@ msgstr "_Dún Fuinneog"
@@ -823,10 +1144,44 @@ index 93d5fa9..feb87dc 100644
 +
 +msgid "Transparent background"
 +msgstr "Cúlra trédhearcach"
+diff --git a/po/gd.po b/po/gd.po
+index 04a76e1de96a..4af1d80ececc 100644
+--- a/po/gd.po
++++ b/po/gd.po
+@@ -2071,9 +2071,8 @@ msgstr "_Dùin an uinneag"
+ #~ msgid "Missing command"
+ #~ msgstr "Tha àithne a dhìth"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr ""
+-#~ "Co-dhiù an tèid tionndadh dorcha dhen ùrlar a chleachdadh gus nach tèid"
++msgid "Whether to use a dark theme variant"
++msgstr "Co-dhiù an tèid tionndadh dorcha dhen ùrlar a chleachdadh gus nach tèid"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Cleachd tionndadh _dorcha dhen ùrlar"
++msgid "Use _dark theme variant"
++msgstr "Cleachd tionndadh _dorcha dhen ùrlar"
 diff --git a/po/gl.po b/po/gl.po
-index 1429c66..6820190 100644
+index 1429c66bcaa5..584072278739 100644
 --- a/po/gl.po
 +++ b/po/gl.po
+@@ -2101,11 +2101,11 @@ msgstr "P_echar a xanela"
+ #~ msgid "Missing command"
+ #~ msgstr "Falta a orde"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Indica se se usa a variante de tema escura"
++msgid "Whether to use a dark theme variant"
++msgstr "Indica se se usa a variante de tema escura"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Usar variante do tema _escuro"
++msgid "Use _dark theme variant"
++msgstr "Usar variante do tema _escuro"
+ 
+ #~ msgid "_Use the system fixed width font"
+ #~ msgstr "_Usar o tipo de letra de largura fixa do sistema"
 @@ -3055,8 +3055,8 @@ msgstr "P_echar a xanela"
  #~ msgid "Background image _scrolls"
  #~ msgstr "A imaxe de fondo _desprázase"
@@ -839,7 +1194,7 @@ index 1429c66..6820190 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "_Sombra transparente ou imaxe de fondo:"
 diff --git a/po/gu.po b/po/gu.po
-index 0bcb195..f72a807 100644
+index 0bcb1954f634..f72a807d6e2b 100644
 --- a/po/gu.po
 +++ b/po/gu.po
 @@ -2944,8 +2944,8 @@ msgstr "વિન્ડો બંધ કરો (_l)"
@@ -854,10 +1209,26 @@ index 0bcb195..f72a807 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "\"%s\" જેવી કોઈ રૂપરેખા નથી, મૂળભૂત રૂપરેખા વાપરી રહ્યા છે\n"
 diff --git a/po/he.po b/po/he.po
-index 0d9dfe0..ff4cc33 100644
+index f3b83b93f20f..68008ceda2d5 100644
 --- a/po/he.po
 +++ b/po/he.po
-@@ -3007,8 +3007,8 @@ msgstr "סגירת ה_חלון"
+@@ -2054,11 +2054,11 @@ msgstr "סגירת ה_חלון"
+ #~ msgid "Missing command"
+ #~ msgstr "Missing command"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Whether to use a dark theme variant"
++msgid "Whether to use a dark theme variant"
++msgstr "Whether to use a dark theme variant"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "שימוש בערכת עיצוב בהגוון _כהה"
++msgid "Use _dark theme variant"
++msgstr "שימוש בערכת עיצוב בהגוון _כהה"
+ 
+ #~ msgid "Set the terminal title"
+ #~ msgstr "Set the terminal title"
+@@ -3013,8 +3013,8 @@ msgstr "סגירת ה_חלון"
  #~ msgid "_Solid color"
  #~ msgstr "צבע _אחיד"
  
@@ -869,7 +1240,7 @@ index 0d9dfe0..ff4cc33 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "No such profile \"%s\", using default profile\n"
 diff --git a/po/hi.po b/po/hi.po
-index 2d7dc5b..adf8d35 100644
+index 2d7dc5b14008..adf8d35e8d3f 100644
 --- a/po/hi.po
 +++ b/po/hi.po
 @@ -2979,8 +2979,8 @@ msgstr "विंडो बंद करें (_l)"
@@ -884,7 +1255,7 @@ index 2d7dc5b..adf8d35 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "एस/कुंजी चैलेंज प्रतिक्रिया"
 diff --git a/po/hr.po b/po/hr.po
-index cb48c52..747cf48 100644
+index cb48c52f708c..747cf488e7b4 100644
 --- a/po/hr.po
 +++ b/po/hr.po
 @@ -1362,8 +1362,8 @@ msgid "_Text color:"
@@ -899,10 +1270,26 @@ index cb48c52..747cf48 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/hu.po b/po/hu.po
-index ad585ef..b9a481b 100644
+index 62f6b48de0b5..16fd9439489b 100644
 --- a/po/hu.po
 +++ b/po/hu.po
-@@ -2509,3 +2509,6 @@ msgstr "_Ablak bezárása"
+@@ -2090,11 +2090,11 @@ msgstr "_Ablak bezárása"
+ #~ msgid "Missing command"
+ #~ msgstr "Hiányzó parancs"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Használja-e a sötét témaváltozatot"
++msgid "Whether to use a dark theme variant"
++msgstr "Használja-e a sötét témaváltozatot"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "_Sötét témaváltozat használata"
++msgid "Use _dark theme variant"
++msgstr "_Sötét témaváltozat használata"
+ 
+ #~ msgid "Set the terminal title"
+ #~ msgstr "A terminál címének beállítása"
+@@ -2513,3 +2513,6 @@ msgstr "_Ablak bezárása"
  
  #~ msgid "Background type"
  #~ msgstr "Háttér típusa"
@@ -910,7 +1297,7 @@ index ad585ef..b9a481b 100644
 +msgid "Transparent background"
 +msgstr "Áttetsző háttér"
 diff --git a/po/hy.po b/po/hy.po
-index 5584901..caadbba 100644
+index 558490157ada..caadbba37c5d 100644
 --- a/po/hy.po
 +++ b/po/hy.po
 @@ -1011,8 +1011,8 @@ msgid "_Text color:"
@@ -925,7 +1312,7 @@ index 5584901..caadbba 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/id.po b/po/id.po
-index 346b5d8..2448444 100644
+index 346b5d815552..244844430503 100644
 --- a/po/id.po
 +++ b/po/id.po
 @@ -2068,3 +2068,6 @@ msgstr ""
@@ -936,7 +1323,7 @@ index 346b5d8..2448444 100644
 +msgid "Transparent background"
 +msgstr "Latar belakang transparan"
 diff --git a/po/it.po b/po/it.po
-index 5a1847f..2eb1d62 100644
+index 5a1847f3a108..2eb1d621e662 100644
 --- a/po/it.po
 +++ b/po/it.po
 @@ -2093,3 +2093,6 @@ msgstr ""
@@ -947,7 +1334,7 @@ index 5a1847f..2eb1d62 100644
 +msgid "Transparent background"
 +msgstr "Sfondo trasparente"
 diff --git a/po/ja.po b/po/ja.po
-index 4f8f4de..ce2ec95 100644
+index 4f8f4dec0bb0..ce2ec952ca76 100644
 --- a/po/ja.po
 +++ b/po/ja.po
 @@ -1902,3 +1902,6 @@ msgstr "この端末には未だ実行中のプロセスが存在しています
@@ -958,7 +1345,7 @@ index 4f8f4de..ce2ec95 100644
 +msgid "Transparent background"
 +msgstr "透過な画像にする"
 diff --git a/po/ka.po b/po/ka.po
-index 8415e88..3717b7e 100644
+index 8415e88f94ff..3717b7e75dcd 100644
 --- a/po/ka.po
 +++ b/po/ka.po
 @@ -568,7 +568,7 @@ msgstr "_ტექსტის ფერი:"
@@ -971,10 +1358,25 @@ index 8415e88..3717b7e 100644
  
  #: ../src/gnome-terminal.glade2.h:87
 diff --git a/po/kk.po b/po/kk.po
-index dba7503..f7ac993 100644
+index dba7503c4286..2961b87f3b2a 100644
 --- a/po/kk.po
 +++ b/po/kk.po
-@@ -2030,3 +2030,6 @@ msgstr "Терезені жа_бу"
+@@ -2019,14 +2019,17 @@ msgstr "Терезені жа_бу"
+ #~ msgid "Missing command"
+ #~ msgstr "Команда жоқ болып тұр"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Қараңғылау тема нұсқасын қолдану керек пе"
++msgid "Whether to use a dark theme variant"
++msgstr "Қараңғылау тема нұсқасын қолдану керек пе"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Теманың қ_араңғы нұсқасын қолдану"
++msgid "Use _dark theme variant"
++msgstr "Теманың қ_араңғы нұсқасын қолдану"
+ 
+ #~ msgid "COMMAND"
+ #~ msgstr "КОМАНДА"
  
  #~ msgid "Be quiet"
  #~ msgstr "Тыныш болу"
@@ -982,7 +1384,7 @@ index dba7503..f7ac993 100644
 +msgid "Transparent background"
 +msgstr "Мөлдір фон"
 diff --git a/po/kn.po b/po/kn.po
-index c887f88..e899ef3 100644
+index c887f88a2c87..e899ef3ca8c1 100644
 --- a/po/kn.po
 +++ b/po/kn.po
 @@ -2344,3 +2344,6 @@ msgstr "ಕಿಟಕಿಯನ್ನು ಮುಚ್ಚು  (_l)"
@@ -993,18 +1395,27 @@ index c887f88..e899ef3 100644
 +msgid "Transparent background"
 +msgstr "ಪಾರದರ್ಶಕ ಹಿನ್ನಲೆ"
 diff --git a/po/ko.po b/po/ko.po
-index 0700e25..912e940 100644
+index 0700e25f9ec8..32914679e998 100644
 --- a/po/ko.po
 +++ b/po/ko.po
-@@ -2078,3 +2078,6 @@ msgstr "창 닫기(_L)"
+@@ -2073,8 +2073,11 @@ msgstr "창 닫기(_L)"
+ #~ msgid "Missing command"
+ #~ msgstr "명령어 없음"
  
- #~ msgid "Use _dark theme variant"
- #~ msgstr "어두운 테마 사용(_D)"
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "어두운 테마를 사용할 지 여부"
++msgid "Whether to use a dark theme variant"
++msgstr "어두운 테마를 사용할 지 여부"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "어두운 테마 사용(_D)"
++msgid "Use _dark theme variant"
++msgstr "어두운 테마 사용(_D)"
 +
 +msgid "Transparent background"
 +msgstr "투명한 배경"
 diff --git a/po/ku.po b/po/ku.po
-index 221825b..96e3581 100644
+index 221825b29cd9..96e35811337b 100644
 --- a/po/ku.po
 +++ b/po/ku.po
 @@ -557,8 +557,8 @@ msgid "_Text color:"
@@ -1019,18 +1430,27 @@ index 221825b..96e3581 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/lt.po b/po/lt.po
-index 294482b..c0ec0cf 100644
+index c906132e1a9e..dbe03e9abc8d 100644
 --- a/po/lt.po
 +++ b/po/lt.po
-@@ -2082,3 +2082,6 @@ msgstr "_Užverti langą"
+@@ -2078,8 +2078,11 @@ msgstr "_Užverti langą"
+ #~ msgid "Missing command"
+ #~ msgstr "Trūksta komandos"
  
- #~ msgid "Use _dark theme variant"
- #~ msgstr "Nau_doti tamsų temos variantą"
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Ar naudoti tamsų temos variantą"
++msgid "Whether to use a dark theme variant"
++msgstr "Ar naudoti tamsų temos variantą"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Nau_doti tamsų temos variantą"
++msgid "Use _dark theme variant"
++msgstr "Nau_doti tamsų temos variantą"
 +
 +msgid "Transparent background"
 +msgstr "Permatomas fonas"
 diff --git a/po/lv.po b/po/lv.po
-index a50f529..b29541f 100644
+index a50f529c31b8..b29541fceb45 100644
 --- a/po/lv.po
 +++ b/po/lv.po
 @@ -3016,8 +3016,8 @@ msgstr "Aizvērt _logu"
@@ -1045,7 +1465,7 @@ index a50f529..b29541f 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "_Aizēnot caurspīdīgo vai attēla fonu:"
 diff --git a/po/mai.po b/po/mai.po
-index 9b984a0..a3c0e17 100644
+index 9b984a068fda..a3c0e178ae67 100644
 --- a/po/mai.po
 +++ b/po/mai.po
 @@ -1290,8 +1290,8 @@ msgid "_Text color:"
@@ -1060,7 +1480,7 @@ index 9b984a0..a3c0e17 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/mg.po b/po/mg.po
-index 1c1895c..a805417 100644
+index 1c1895c98ba9..a805417893ed 100644
 --- a/po/mg.po
 +++ b/po/mg.po
 @@ -566,8 +566,8 @@ msgid "_Text color:"
@@ -1075,7 +1495,7 @@ index 1c1895c..a805417 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/mk.po b/po/mk.po
-index e31378a..d2b74d4 100644
+index e31378a5726b..d2b74d4438d1 100644
 --- a/po/mk.po
 +++ b/po/mk.po
 @@ -1166,8 +1166,8 @@ msgid "_Text color:"
@@ -1090,7 +1510,7 @@ index e31378a..d2b74d4 100644
  #: ../src/profile-preferences.glade.h:78
  #| msgid "_Text color:"
 diff --git a/po/ml.po b/po/ml.po
-index cc1928d..62abd21 100644
+index cc1928dcda63..62abd2131499 100644
 --- a/po/ml.po
 +++ b/po/ml.po
 @@ -2751,8 +2751,8 @@ msgstr "ടെര്‍മിനല്‍ അ_ടയ്ക്കുക"
@@ -1105,7 +1525,7 @@ index cc1928d..62abd21 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "S/Key ചാലഞ്ച് മറുപടി"
 diff --git a/po/mn.po b/po/mn.po
-index 4922041..9696b7f 100644
+index 4922041e09f9..9696b7f981f1 100644
 --- a/po/mn.po
 +++ b/po/mn.po
 @@ -617,8 +617,8 @@ msgid "_Text color:"
@@ -1120,7 +1540,7 @@ index 4922041..9696b7f 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/mr.po b/po/mr.po
-index 61997da..50451d7 100644
+index 61997dafbd03..50451d7b8e60 100644
 --- a/po/mr.po
 +++ b/po/mr.po
 @@ -3015,8 +3015,8 @@ msgstr "चौकट बंद करा (_l)"
@@ -1135,7 +1555,7 @@ index 61997da..50451d7 100644
  #~ msgid "Disabled"
  #~ msgstr "अकार्यान्वीतित"
 diff --git a/po/ms.po b/po/ms.po
-index 5b663aa..38a2afe 100644
+index 5b663aae2639..38a2afeecd2f 100644
 --- a/po/ms.po
 +++ b/po/ms.po
 @@ -630,8 +630,8 @@ msgid "_Text color:"
@@ -1150,18 +1570,18 @@ index 5b663aa..38a2afe 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/nb.po b/po/nb.po
-index c14ae58..f5a590e 100644
+index eda809fab581..7ceaf06ca263 100644
 --- a/po/nb.po
 +++ b/po/nb.po
-@@ -2054,3 +2054,6 @@ msgstr ""
- #: ../src/terminal-window.c:3652
+@@ -2046,3 +2046,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3694
  msgid "C_lose Window"
  msgstr "_Lukk vindu"
 +
 +msgid "Transparent background"
 +msgstr "Gjennomsiktig bakgrunn"
 diff --git a/po/nds.po b/po/nds.po
-index 98a1287..94fd757 100644
+index 98a12875e382..94fd757d3e5c 100644
 --- a/po/nds.po
 +++ b/po/nds.po
 @@ -995,8 +995,8 @@ msgid "_Text color:"
@@ -1176,7 +1596,7 @@ index 98a1287..94fd757 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/ne.po b/po/ne.po
-index 4fe16cc..d9a90ad 100644
+index 4fe16cc88a9a..d9a90adbf693 100644
 --- a/po/ne.po
 +++ b/po/ne.po
 @@ -2398,8 +2398,8 @@ msgstr "सञ्झ्याल बन्द गर्नुहोस्"
@@ -1191,7 +1611,7 @@ index 4fe16cc..d9a90ad 100644
  #~ msgid "_Use the system fixed width font"
  #~ msgstr "प्रणाली निश्चित गरिएको फन्ट चौडाइ प्रयोग गर्नुहोस्"
 diff --git a/po/nl.po b/po/nl.po
-index a51720b..111b032 100644
+index a51720be1610..111b032c89fa 100644
 --- a/po/nl.po
 +++ b/po/nl.po
 @@ -2352,3 +2352,6 @@ msgstr "Venster sl_uiten"
@@ -1202,7 +1622,7 @@ index a51720b..111b032 100644
 +msgid "Transparent background"
 +msgstr "Transparante achtergrond"
 diff --git a/po/nn.po b/po/nn.po
-index 91cd6ab..9284459 100644
+index 91cd6ab918c9..92844590fcbe 100644
 --- a/po/nn.po
 +++ b/po/nn.po
 @@ -1428,8 +1428,8 @@ msgid "_Text color:"
@@ -1217,22 +1637,38 @@ index 91cd6ab..9284459 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/oc.po b/po/oc.po
-index 5e7ca58..3bd9991 100644
+index 194f13593def..04419c1e5ff9 100644
 --- a/po/oc.po
 +++ b/po/oc.po
-@@ -1285,8 +1285,8 @@ msgid "_Text color:"
- msgstr "Color del _tèxt :"
+@@ -2106,11 +2106,11 @@ msgstr "Tampar _la fenèstra"
+ #~ msgid "Missing command"
+ #~ msgstr "Comanda mancanta"
  
- #: ../src/profile-preferences.glade.h:78
--msgid "_Transparent background"
--msgstr "Fons _transparent"
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Indica se cal utilizar una variante de tèma foncée"
++msgid "Whether to use a dark theme variant"
++msgstr "Indica se cal utilizar una variante de tèma foncée"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Utilizar una variante de tèma _foncée"
++msgid "Use _dark theme variant"
++msgstr "Utilizar una variante de tèma _foncée"
+ 
+ #~ msgid "Palette for terminal applications"
+ #~ msgstr "Paleta per las aplicacions tèxte"
+@@ -3195,8 +3195,8 @@ msgstr "Tampar _la fenèstra"
+ #~ msgid "Run;"
+ #~ msgstr "Executar;Consòla;Shell;"
+ 
+-#~ msgid "_Transparent background"
+-#~ msgstr "Rèire plan _transparent"
 +msgid "Transparent background"
-+msgstr "Fons transparent"
++msgstr "Rèire plan transparent"
  
- #: ../src/profile-preferences.glade.h:79
- msgid "_Underline color:"
+ #~ msgid ""
+ #~ "A subset of possible encodings are presented in the Encoding submenu. "
 diff --git a/po/or.po b/po/or.po
-index ec1e6bf..218acd7 100644
+index ec1e6bfb9a28..218acd712df6 100644
 --- a/po/or.po
 +++ b/po/or.po
 @@ -2705,8 +2705,8 @@ msgstr "ଶୀର୍ଷକ (_T):"
@@ -1247,7 +1683,7 @@ index ec1e6bf..218acd7 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "ଛାୟା ସ୍ବଚ୍ଛ କିମ୍ବା ଚିତ୍ର ପୃଷ୍ଠଭୂମି (_h):"
 diff --git a/po/pa.po b/po/pa.po
-index 9c95b66..5e5b8ba 100644
+index 9c95b66e7185..5e5b8ba4f104 100644
 --- a/po/pa.po
 +++ b/po/pa.po
 @@ -3008,8 +3008,8 @@ msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ(_l)"
@@ -1262,7 +1698,7 @@ index 9c95b66..5e5b8ba 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "S/ਸਵਿੱਚ ਚੈਲੰਜ਼ ਜਵਾਬ"
 diff --git a/po/pl.po b/po/pl.po
-index deb91b7..f772171 100644
+index deb91b7d10bc..f7721713a0ca 100644
 --- a/po/pl.po
 +++ b/po/pl.po
 @@ -2116,3 +2116,6 @@ msgid ""
@@ -1273,7 +1709,7 @@ index deb91b7..f772171 100644
 +msgid "Transparent background"
 +msgstr "Przezroczyste tło"
 diff --git a/po/ps.po b/po/ps.po
-index b1de52c..a16ac49 100644
+index b1de52c2ff34..a16ac4937d1a 100644
 --- a/po/ps.po
 +++ b/po/ps.po
 @@ -1052,8 +1052,8 @@ msgid "_Text color:"
@@ -1288,10 +1724,26 @@ index b1de52c..a16ac49 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/pt.po b/po/pt.po
-index 68bb2dd..9078dcb 100644
+index 2b37c0df18fa..ffd18b2d187b 100644
 --- a/po/pt.po
 +++ b/po/pt.po
-@@ -2948,8 +2948,8 @@ msgstr "_Fechar janela"
+@@ -2077,11 +2077,11 @@ msgstr "Fechar jane_La"
+ #~ "Se verdadeiro, os registos de sistema de início de sessão utmp e wtmp "
+ #~ "serão atualizados ao iniciar um comando dentro do terminal."
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Se utilizar ou não uma variante escura do tema"
++msgid "Whether to use a dark theme variant"
++msgstr "Se utilizar ou não uma variante escura do tema"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Utilizar variante _escura de tema"
++msgid "Use _dark theme variant"
++msgstr "Utilizar variante _escura de tema"
+ 
+ #~ msgid "_Update login records when command is launched"
+ #~ msgstr "_Atualizar os registos de início de sessão ao executar um comando"
+@@ -2975,8 +2975,8 @@ msgstr "Fechar jane_La"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Imagem de fundo _rola"
  
@@ -1303,18 +1755,34 @@ index 68bb2dd..9078dcb 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "Transparente som_breado ou imagem de fundo:"
 diff --git a/po/pt_BR.po b/po/pt_BR.po
-index 8fac135..b79275c 100644
+index dee5c31593cd..3c0a7d09e1a2 100644
 --- a/po/pt_BR.po
 +++ b/po/pt_BR.po
-@@ -2865,3 +2865,6 @@ msgstr "_Fechar janela"
- #~ "poderão usar. Essa é a paleta, na forma de uma lista de nomes de cores "
- #~ "separada por dois pontos. Os nomes de cores devem estar no formato "
+@@ -2116,11 +2116,11 @@ msgstr "_Fechar janela"
+ #~ msgid "TITLE"
+ #~ msgstr "TÍTULO"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Se deve ou não usar uma variante de tema escuro"
++msgid "Whether to use a dark theme variant"
++msgstr "Se deve ou não usar uma variante de tema escuro"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Usar variante de tema es_curo"
++msgid "Use _dark theme variant"
++msgstr "Usar variante de tema es_curo"
+ 
+ #~ msgid "COMMAND"
+ #~ msgstr "COMANDO"
+@@ -2878,3 +2878,6 @@ msgstr "_Fechar janela"
+ #~ "terminal poderão usar. Essa é a paleta, na forma de uma lista de nomes de "
+ #~ "cores separada por dois pontos. Os nomes de cores devem estar no formato "
  #~ "hexadecimal. Exemplo: \"#FF00FF\""
 +
 +msgid "Transparent background"
 +msgstr "Fundo transparente"
 diff --git a/po/ro.po b/po/ro.po
-index 179dd77..f7fc7ae 100644
+index 179dd77fd166..f7fc7ae070cf 100644
 --- a/po/ro.po
 +++ b/po/ro.po
 @@ -1576,8 +1576,8 @@ msgid "_Text color:"
@@ -1329,18 +1797,18 @@ index 179dd77..f7fc7ae 100644
  #: ../src/profile-preferences.glade.h:78
  msgid "_Underline color:"
 diff --git a/po/ru.po b/po/ru.po
-index 01d1683..672ab01 100644
+index cf87d021e781..7db31b8af3f1 100644
 --- a/po/ru.po
 +++ b/po/ru.po
-@@ -2073,3 +2073,6 @@ msgstr ""
- #: ../src/terminal-window.c:3652
+@@ -2056,3 +2056,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3656
  msgid "C_lose Window"
  msgstr "_Закрыть окно"
 +
 +msgid "Transparent background"
 +msgstr "Прозрачный фон"
 diff --git a/po/rw.po b/po/rw.po
-index 3f02231..b7fff4c 100644
+index 3f0223162995..b7fff4cb3ce4 100644
 --- a/po/rw.po
 +++ b/po/rw.po
 @@ -748,7 +748,7 @@ msgstr "Ibara ry'Inyandiko..."
@@ -1353,7 +1821,7 @@ index 3f02231..b7fff4c 100644
  
  #: ../src/gnome-terminal.glade2.h:103
 diff --git a/po/si.po b/po/si.po
-index 81dbf65..5cb0e5a 100644
+index 81dbf6589f89..5cb0e5ad52cc 100644
 --- a/po/si.po
 +++ b/po/si.po
 @@ -537,8 +537,8 @@ msgid "_Text color:"
@@ -1368,21 +1836,53 @@ index 81dbf65..5cb0e5a 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/sk.po b/po/sk.po
-index 9bef0bf..52e4af2 100644
+index 3a8ede3b61f4..b9744bc7c14c 100644
 --- a/po/sk.po
 +++ b/po/sk.po
-@@ -2354,3 +2354,6 @@ msgstr "_Zavrieť okno"
+@@ -2165,11 +2165,11 @@ msgstr "_Zavrieť okno"
+ #~ msgstr "TITULOK"
+ 
+ # gsetting summary
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Či použiť tmavú verziu témy"
++msgid "Whether to use a dark theme variant"
++msgstr "Či použiť tmavú verziu témy"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Použiť _tmavú verziu témy"
++msgid "Use _dark theme variant"
++msgstr "Použiť _tmavú verziu témy"
+ 
+ #~ msgid "COMMAND"
+ #~ msgstr "PRÍKAZ"
+@@ -2188,3 +2188,6 @@ msgstr "_Zavrieť okno"
+ #~ "  shell   Spustí použivateľský shell v novom termináli\n"
  #~ "\n"
- #~ "Viac informácii o jednotlivých príkazoch získate pomocou „%s PRÍKAZ --"
- #~ "help“.\n"
+ #~ "Viac informácii o jednotlivých príkazoch získate pomocou „%s PRÍKAZ --help“.\n"
 +
 +msgid "Transparent background"
 +msgstr "Priehľadné pozadie"
 diff --git a/po/sl.po b/po/sl.po
-index 3a7ee4a..4f6ce0d 100644
+index 782fd76c3563..247b87b021e4 100644
 --- a/po/sl.po
 +++ b/po/sl.po
-@@ -2316,3 +2316,6 @@ msgstr "_Zapri okno"
+@@ -2058,11 +2058,11 @@ msgstr "_Zapri okno"
+ #~ msgid "Missing command"
+ #~ msgstr "Manjka ukaz"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Ali naj se uporabi temna tema okna"
++msgid "Whether to use a dark theme variant"
++msgstr "Ali naj se uporabi temna tema okna"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Uporabi _temno temo"
++msgid "Use _dark theme variant"
++msgstr "Uporabi _temno temo"
+ 
+ #~ msgid "Set the terminal title"
+ #~ msgstr "Nastavi naziv terminala"
+@@ -2314,3 +2314,6 @@ msgstr "_Zapri okno"
  
  #~ msgid "_Profile Preferences…"
  #~ msgstr "Možnosti _profila ..."
@@ -1390,7 +1890,7 @@ index 3a7ee4a..4f6ce0d 100644
 +msgid "Transparent background"
 +msgstr "Prosojno ozadje"
 diff --git a/po/sq.po b/po/sq.po
-index e59c0b6..6fb4090 100644
+index e59c0b69d8f8..6fb409043319 100644
 --- a/po/sq.po
 +++ b/po/sq.po
 @@ -567,8 +567,8 @@ msgstr "Ngjyra e _tekstit:"
@@ -1405,9 +1905,25 @@ index e59c0b6..6fb4090 100644
  #: ../src/gnome-terminal.glade2.h:86
  msgid "_Update login records when command is launched"
 diff --git a/po/sr.po b/po/sr.po
-index fce0f63..22f129a 100644
+index fce0f63524ce..89111b19d08d 100644
 --- a/po/sr.po
 +++ b/po/sr.po
+@@ -2174,11 +2174,11 @@ msgstr "_Затвори прозор"
+ #~ msgid "Keyboard shortcut to set the terminal title"
+ #~ msgstr "Пречица за постављање наслова терминала"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Да ли ће бити коришћена варијанта тамне теме"
++msgid "Whether to use a dark theme variant"
++msgstr "Да ли ће бити коришћена варијанта тамне теме"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Користи варијанту _тамне теме"
++msgid "Use _dark theme variant"
++msgstr "Користи варијанту _тамне теме"
+ 
+ #~ msgid "_Use the system fixed width font"
+ #~ msgstr "_Користи системски словни лик сталне ширине"
 @@ -2230,3 +2230,6 @@ msgstr "_Затвори прозор"
  
  #~ msgid "Close Window"
@@ -1416,9 +1932,25 @@ index fce0f63..22f129a 100644
 +msgid "Transparent background"
 +msgstr "Провидна позадина"
 diff --git a/po/sr@latin.po b/po/sr@latin.po
-index c82646c..55f6a0e 100644
+index c82646ca4451..4ba3d9588643 100644
 --- a/po/sr@latin.po
 +++ b/po/sr@latin.po
+@@ -2174,11 +2174,11 @@ msgstr "_Zatvori prozor"
+ #~ msgid "Keyboard shortcut to set the terminal title"
+ #~ msgstr "Prečica za postavljanje naslova terminala"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Da li će biti korišćena varijanta tamne teme"
++msgid "Whether to use a dark theme variant"
++msgstr "Da li će biti korišćena varijanta tamne teme"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Koristi varijantu _tamne teme"
++msgid "Use _dark theme variant"
++msgstr "Koristi varijantu _tamne teme"
+ 
+ #~ msgid "_Use the system fixed width font"
+ #~ msgstr "_Koristi sistemski slovni lik stalne širine"
 @@ -2230,3 +2230,6 @@ msgstr "_Zatvori prozor"
  
  #~ msgid "Close Window"
@@ -1427,10 +1959,10 @@ index c82646c..55f6a0e 100644
 +msgid "Transparent background"
 +msgstr "Providna pozadina"
 diff --git a/po/sv.po b/po/sv.po
-index 8f64ba2..b0d6fcb 100644
+index ae8410940fce..eaae659d9ef3 100644
 --- a/po/sv.po
 +++ b/po/sv.po
-@@ -2080,5 +2080,8 @@ msgstr "Stän_g fönster"
+@@ -2073,5 +2073,8 @@ msgstr "Stän_g fönster"
  #~ msgid "Unknown completion request for \"%s\""
  #~ msgstr "Okänd kompletteringsbegäran för \"%s\""
  
@@ -1440,7 +1972,7 @@ index 8f64ba2..b0d6fcb 100644
  #~ msgid "Missing command"
  #~ msgstr "Kommando saknas"
 diff --git a/po/ta.po b/po/ta.po
-index 80aa2f6..61185b4 100644
+index 80aa2f684eec..61185b47f911 100644
 --- a/po/ta.po
 +++ b/po/ta.po
 @@ -3028,8 +3028,8 @@ msgstr "_l சாளரத்தை மூடவும்"
@@ -1455,7 +1987,7 @@ index 80aa2f6..61185b4 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "\"%s\" என்ற வரியுரு கிடையாது, முன்னிருப்பு வரியுரு பயன்படுத்தப்படும்\n"
 diff --git a/po/te.po b/po/te.po
-index 000cda3..6dcf793 100644
+index 000cda30f86c..6dcf79399604 100644
 --- a/po/te.po
 +++ b/po/te.po
 @@ -2898,8 +2898,8 @@ msgstr "కిటికీని మూసివేయి (_l)"
@@ -1469,11 +2001,47 @@ index 000cda3..6dcf793 100644
  
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "పారదర్శకంగా మారు లేదా చిత్రము బ్యాక్‌గ్రౌండ్ కు మారు(_h):"
+diff --git a/po/tg.po b/po/tg.po
+index e3feef658e1e..a772744f269a 100644
+--- a/po/tg.po
++++ b/po/tg.po
+@@ -2096,11 +2096,11 @@ msgstr "П_ӯшонидани равзана"
+ #~ msgid "Show server options"
+ #~ msgstr "Намоиши имконоти сервер"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Оё варианти мавзӯи торик истифода шавад"
++msgid "Whether to use a dark theme variant"
++msgstr "Оё варианти мавзӯи торик истифода шавад"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Истифодаи _варианти мавзӯи торик"
++msgid "Use _dark theme variant"
++msgstr "Истифодаи _варианти мавзӯи торик"
+ 
+ #~ msgid "_Use the system fixed width font"
+ #~ msgstr "_Истифодаи шрифти бараш бо система таъиншуда"
 diff --git a/po/th.po b/po/th.po
-index be9b0cb..482907f 100644
+index f7a8d674657e..b0cc3a6014c2 100644
 --- a/po/th.po
 +++ b/po/th.po
-@@ -2616,8 +2616,8 @@ msgstr "ปิ_ดหน้าต่าง"
+@@ -2040,11 +2040,11 @@ msgstr "ปิ_ดหน้าต่าง"
+ #~ msgid "Missing command"
+ #~ msgstr "ขาดคำสั่ง"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "ใช้ชุดตกแต่งแบบสีเข้มหรือไม่"
++msgid "Whether to use a dark theme variant"
++msgstr "ใช้ชุดตกแต่งแบบสีเข้มหรือไม่"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "ใช้ชุดตกแต่งแบบสีเ_ข้ม"
++msgid "Use _dark theme variant"
++msgstr "ใช้ชุดตกแต่งแบบสีเ_ข้ม"
+ 
+ #~ msgid "_Use the system fixed width font"
+ #~ msgstr "ใ_ช้แบบอักษรความกว้างคงที่ของระบบ"
+@@ -2622,8 +2622,8 @@ msgstr "ปิ_ดหน้าต่าง"
  #~ msgid "_Solid color"
  #~ msgstr "สี_ทึบ"
  
@@ -1485,7 +2053,7 @@ index be9b0cb..482907f 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/tr.po b/po/tr.po
-index 02a704a..78f26ba 100644
+index 02a704a93d49..78f26ba59dd7 100644
 --- a/po/tr.po
 +++ b/po/tr.po
 @@ -1968,3 +1968,6 @@ msgstr "Hala bir süreç bu uçbirimde çalışıyor. Uçbirimi kapatmak onu son
@@ -1496,7 +2064,7 @@ index 02a704a..78f26ba 100644
 +msgid "Transparent background"
 +msgstr "Şeffaf arkaplan"
 diff --git a/po/ug.po b/po/ug.po
-index 1673bb3..e21e61e 100644
+index 1673bb32d9db..e21e61e829d7 100644
 --- a/po/ug.po
 +++ b/po/ug.po
 @@ -2616,8 +2616,8 @@ msgstr "ماۋزۇ (_T):"
@@ -1511,9 +2079,25 @@ index 1673bb3..e21e61e 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/uk.po b/po/uk.po
-index a8db018..414c413 100644
+index a8db018e0a9d..4b90b5c5ad9b 100644
 --- a/po/uk.po
 +++ b/po/uk.po
+@@ -2075,11 +2075,11 @@ msgstr "Закр_ити вікно"
+ #~ msgid "Missing command"
+ #~ msgstr "Бракує команди"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Чи використовувати темний варіант теми"
++msgid "Whether to use a dark theme variant"
++msgstr "Чи використовувати темний варіант теми"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Використовувати _темний варіант теми"
++msgid "Use _dark theme variant"
++msgstr "Використовувати _темний варіант теми"
+ 
+ #~ msgid "COMMAND"
+ #~ msgstr "КОМАНДА"
 @@ -2946,8 +2946,8 @@ msgstr "Закр_ити вікно"
  #~ msgid "_Solid color"
  #~ msgstr "_Суцільний колір"
@@ -1526,9 +2110,25 @@ index a8db018..414c413 100644
  #~ msgid "Switch to Tab 2"
  #~ msgstr "До вкладки 2"
 diff --git a/po/vi.po b/po/vi.po
-index e943917..87846ac 100644
+index e9439179d514..e22040ac3233 100644
 --- a/po/vi.po
 +++ b/po/vi.po
+@@ -2059,11 +2059,11 @@ msgstr "Đón_g cửa sổ"
+ #~ msgid "Missing command"
+ #~ msgstr "Thiếu lệnh"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "Có nên dùng biến thể chủ đề tối hay không"
++msgid "Whether to use a dark theme variant"
++msgstr "Có nên dùng biến thể chủ đề tối hay không"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "Dùng biến thể chủ đề tố_i"
++msgid "Use _dark theme variant"
++msgstr "Dùng biến thể chủ đề tố_i"
+ 
+ #~ msgid "Set the terminal title"
+ #~ msgstr "Đặt tựa đề thiết bị cuối"
 @@ -2671,3 +2671,6 @@ msgstr "Đón_g cửa sổ"
  #~ "Phím tắt để đặt lại thiết bị cuối. Dùng dạng chuỗi có cùng một khuôn dạng "
  #~ "với tập tin tài nguyên GTK+. Nếu bạn đặt tùy chọn là chuỗi “disabled” (bị "
@@ -1537,7 +2137,7 @@ index e943917..87846ac 100644
 +msgid "Transparent background"
 +msgstr "Nền trong suốt"
 diff --git a/po/wa.po b/po/wa.po
-index 2856571..f068531 100644
+index 285657194713..f068531c2928 100644
 --- a/po/wa.po
 +++ b/po/wa.po
 @@ -563,8 +563,8 @@ msgid "_Text color:"
@@ -1552,7 +2152,7 @@ index 2856571..f068531 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/xh.po b/po/xh.po
-index e5981c6..7f9f804 100644
+index e5981c6ec5bf..7f9f8049c3df 100644
 --- a/po/xh.po
 +++ b/po/xh.po
 @@ -620,8 +620,8 @@ msgid "_Text color:"
@@ -1567,9 +2167,25 @@ index e5981c6..7f9f804 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index b18a9e7..287db04 100644
+index b18a9e78cf05..c861d33895f5 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
+@@ -2037,11 +2037,11 @@ msgstr "关闭窗口(_L)"
+ #~ msgid "Missing command"
+ #~ msgstr "遗漏命令"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "是否使用暗色主题"
++msgid "Whether to use a dark theme variant"
++msgstr "是否使用暗色主题"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "使用暗色主题(_D)"
++msgid "Use _dark theme variant"
++msgstr "使用暗色主题(_D)"
+ 
+ #~ msgid "COMMAND"
+ #~ msgstr "命令"
 @@ -2280,3 +2280,6 @@ msgstr "关闭窗口(_L)"
  
  #~ msgid "_Find..."
@@ -1578,7 +2194,7 @@ index b18a9e7..287db04 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 diff --git a/po/zh_HK.po b/po/zh_HK.po
-index eb0ede7..aceb184 100644
+index eb0ede77e889..aceb184b2440 100644
 --- a/po/zh_HK.po
 +++ b/po/zh_HK.po
 @@ -2376,3 +2376,6 @@ msgstr "關閉視窗(_L)"
@@ -1589,9 +2205,25 @@ index eb0ede7..aceb184 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 diff --git a/po/zh_TW.po b/po/zh_TW.po
-index a32a539..f0674dc 100644
+index a32a53906a99..5d0ffa77f19f 100644
 --- a/po/zh_TW.po
 +++ b/po/zh_TW.po
+@@ -2029,11 +2029,11 @@ msgstr "關閉視窗(_L)"
+ #~ msgid "Missing command"
+ #~ msgstr "遺失指令"
+ 
+-#~ msgid "Whether to use a dark theme variant"
+-#~ msgstr "是否使用暗色系布景主題變體"
++msgid "Whether to use a dark theme variant"
++msgstr "是否使用暗色系布景主題變體"
+ 
+-#~ msgid "Use _dark theme variant"
+-#~ msgstr "使用暗色系布景主題變體(_D)"
++msgid "Use _dark theme variant"
++msgstr "使用暗色系布景主題變體(_D)"
+ 
+ #~ msgid "_Use the system fixed width font"
+ #~ msgstr "使用系統的固定寬度字型(_U)"
 @@ -2379,3 +2379,6 @@ msgstr "關閉視窗(_L)"
  
  #~ msgid "Show session management options"

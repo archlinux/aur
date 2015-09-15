@@ -4,7 +4,7 @@
 
 pkgname=gnome-terminal-fedora
 _pkgname=gnome-terminal
-pkgver=3.16.2
+pkgver=3.17.91
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with Fedora patches"
 arch=(i686 x86_64)
@@ -17,42 +17,43 @@ options=('!emptydirs')
 url="http://www.gnome.org"
 conflicts=('gnome-terminal')
 install=gnome-terminal-fedora.install
-source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
-	0001-build-Don-t-treat-warnings-as-errors.patch
-	gnome-terminal-restore-transparency.patch
-	gnome-terminal-restore-dark.patch
-	gnome-terminal-command-notify.patch)
-sha256sums=('9df7bab7bfd15ca9a3c60612e425baaf5c8b32ba181619f740b7129a0768f4e0'
-			'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-            '14f50bc4a531adc830742968de49c9cf8364e44ed635e7f4e787132da563cd6e'
-            '5ef48574b93ec5530ce2747012fc0838a5e1ffa265803069a8da79b1be5e1eff'
-            '9c7a4f631dce079892dad72cd9ee1a143fb637d1d9fc961bbde36defca89e7c3')
+source=("https://download.gnome.org/sources/$_pkgname/${pkgver::4}/$_pkgname-$pkgver.tar.xz"
+	'0001-build-Don-t-treat-warnings-as-errors.patch'
+	'gnome-terminal-restore-dark-transparency.patch'
+	'gnome-terminal-command-notify.patch'
+	'org.gnome.Terminal.gschema.override')
+sha256sums=('7f4e190f64fcbfd425727801500cd7516376c229de50b654ecbe5410fadf6771'
+	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
+	'173e9aada1dfa2c2b29bc82fe539b9bcf6c9ca6f9710e526367eb8cd0eb0925e'
+	'99f693b7d176cc11b66eb26e561b9c2dd8e105d8e3e6462365eed57543734499'
+	'e2797c0591e45b7cf4e7e8d3b926803bcff129d88dfe3b54f63dc61e0c8377de')
 
 prepare () {
-  cd $_pkgname-$pkgver
+	cd "${_pkgname}-${pkgver}"
 
-  patch -p1 -i ../0001-build-Don-t-treat-warnings-as-errors.patch
-  patch -p1 -i ../gnome-terminal-restore-transparency.patch
-  patch -p1 -i ../gnome-terminal-restore-dark.patch
-  patch -p1 -i ../gnome-terminal-command-notify.patch
+	patch -p1 -i ../0001-build-Don-t-treat-warnings-as-errors.patch
+	patch -p1 -i ../gnome-terminal-restore-dark-transparency.patch
+	patch -p1 -i ../gnome-terminal-command-notify.patch
 
-  autoreconf -f -i
+	autoreconf -f -i
 }
 
 build() {
-  cd $_pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib/$_pkgname --disable-static --with-nautilus-extension \
-    --enable-debug
-  make
+	cd "${_pkgname}-${pkgver}"
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+		--libexecdir=/usr/lib/${_pkgname} --disable-static --with-nautilus-extension \
+		--enable-debug
+	make
 }
 
 check() {
-  cd $_pkgname-$pkgver
-  make check
+	cd "${_pkgname}-${pkgver}"
+	make check
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+	cd "${_pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}" install
+
+	install -Dm644 '../org.gnome.Terminal.gschema.override' "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.override"
 }

@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
-	pkgver = 3.16.2
+	pkgver = 3.17.91
 	pkgrel = 1
 	url = http://www.gnome.org
 	install = gnome-terminal-fedora.install
@@ -24,16 +24,16 @@ pkgbase = gnome-terminal-fedora
 	optdepends = gconf: settings migration when upgrading from older version
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.16/gnome-terminal-3.16.2.tar.xz
+	source = https://download.gnome.org/sources/gnome-terminal/3.17/gnome-terminal-3.17.91.tar.xz
 	source = 0001-build-Don-t-treat-warnings-as-errors.patch
-	source = gnome-terminal-restore-transparency.patch
-	source = gnome-terminal-restore-dark.patch
+	source = gnome-terminal-restore-dark-transparency.patch
 	source = gnome-terminal-command-notify.patch
-	sha256sums = 9df7bab7bfd15ca9a3c60612e425baaf5c8b32ba181619f740b7129a0768f4e0
+	source = org.gnome.Terminal.gschema.override
+	sha256sums = 7f4e190f64fcbfd425727801500cd7516376c229de50b654ecbe5410fadf6771
 	sha256sums = 83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7
-	sha256sums = 14f50bc4a531adc830742968de49c9cf8364e44ed635e7f4e787132da563cd6e
-	sha256sums = 5ef48574b93ec5530ce2747012fc0838a5e1ffa265803069a8da79b1be5e1eff
-	sha256sums = 9c7a4f631dce079892dad72cd9ee1a143fb637d1d9fc961bbde36defca89e7c3
+	sha256sums = 173e9aada1dfa2c2b29bc82fe539b9bcf6c9ca6f9710e526367eb8cd0eb0925e
+	sha256sums = 99f693b7d176cc11b66eb26e561b9c2dd8e105d8e3e6462365eed57543734499
+	sha256sums = e2797c0591e45b7cf4e7e8d3b926803bcff129d88dfe3b54f63dc61e0c8377de
 
 pkgname = gnome-terminal-fedora
 
