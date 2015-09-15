@@ -1,6 +1,6 @@
 pkgbase = mozc-ut
 	pkgdesc = Mozc the Japanese Input Method with Mozc UT Dictionary (additional dictionary) and uim-mozc (optional)
-	pkgver = 2.17.2095.102.20150715
+	pkgver = 2.17.2111.102.20150822
 	pkgrel = 1
 	url = http://www.geocities.jp/ep3797/mozc_01.html
 	arch = i686
@@ -16,33 +16,30 @@ pkgbase = mozc-ut
 	makedepends = ninja
 	makedepends = clang
 	makedepends = ibus>=1.4.1
-	makedepends = uim
 	depends = qt4
 	depends = zinnia
-	source = mozc::git+https://github.com/google/mozc.git#commit=321e0656b0f2e233ab1c164bd86c58568c9e92f2
+	source = mozc::git+https://github.com/google/mozc.git#commit=d7b6196aeac52dd908ca051ba65e97b389f4503a
 	source = jsoncpp::git+https://github.com/open-source-parsers/jsoncpp.git#commit=11086dd6a7eba04289944367ca82cea71299ed70
 	source = gyp::git+https://chromium.googlesource.com/external/gyp#commit=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
 	source = protobuf::git+https://github.com/google/protobuf.git#commit=172019c40bf548908ab09bfd276074c929d48415
 	source = japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=10
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-20150715.tar.bz2
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-20150715.gz
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-20150822.tar.bz2
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-20150822.gz
 	source = EDICT_license.html
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201506.zip
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201506.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201508.zip
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201508.zip
 	source = mod-generate-mozc-ut.sh
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-316.2b3eff9.tar.xz
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = fb7cf7efcbdfeae3dd26095e4c1dc6602679b629
-	sha1sums = 6604c7b616af8287dc0c3d6975a39130fe1ebdd0
+	sha1sums = b039b6f2a418200355e32c58c080c8f4850947a0
+	sha1sums = f2cdb222fa119c75bd45931a55b45213acef7da5
 	sha1sums = e0ba18e67c1be8e3cfb8ecb30760597b215da255
-	sha1sums = b174652a1689df61049f4a3fcebfc3f5edb7dcdc
-	sha1sums = c4f56e0063f5c1c932609aa1d8afe62e56e19c3d
+	sha1sums = 97627c9e27a273dddf6408d0451855dd5f830eee
+	sha1sums = 927901d45051ec9bfb944e2623c4589456462f03
 	sha1sums = 6ac2f10ad9160b25d2d6e41a3f9fd112126ab1f7
-	sha1sums = 8b17dcfdb43ac86e223c71c17676bd5f6aa8c40d
 
 pkgname = mozc-ut
 	pkgdesc = Mozc the Japanese Input Method with Mozc UT Dictionary
@@ -69,28 +66,4 @@ pkgname = ibus-mozc-ut
 	depends = ibus>=1.4.1
 	provides = ibus-mozc
 	conflicts = ibus-mozc
-
-pkgname = uim-mozc-ut
-	pkgdesc = uim plugin module for Mozc
-	install = uim-mozc.install
-	arch = i686
-	arch = x86_64
-	groups = mozc-im
-	depends = mozc=
-	depends = uim
-	provides = uim-mozc
-	conflicts = uim-mozc
-
-pkgname = emacs-mozc-ut
-	pkgdesc = Mozc for Emacs
-	install = emacs-mozc.install
-	arch = i686
-	arch = x86_64
-	groups = mozc-im
-	depends = mozc=
-	depends = emacs
-	provides = emacs-mozc
-	conflicts = emacs-mozc
-	conflicts = emacs-mozc-bin
-	replaces = emacs-mozc-bin
 

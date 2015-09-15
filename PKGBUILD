@@ -69,10 +69,10 @@ _kill_kill_line="yes"
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=321e0656b0f2e233ab1c164bd86c58568c9e92f2
-_utdicver=20150715
+_mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
+_utdicver=20150822
 _zipcoderel=201508
-_uimmozcrev=316.2b3eff9
+_uimmozcrev=318.0562676
 
 _gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
 _jsc=11086dd6a7eba04289944367ca82cea71299ed70
@@ -82,7 +82,7 @@ _jpusd=10
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2095.102.20150715
+pkgver=2.17.2111.102.20150822
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -106,8 +106,8 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'fb7cf7efcbdfeae3dd26095e4c1dc6602679b629'
-          '6604c7b616af8287dc0c3d6975a39130fe1ebdd0'
+          'b039b6f2a418200355e32c58c080c8f4850947a0'
+          'f2cdb222fa119c75bd45931a55b45213acef7da5'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '97627c9e27a273dddf6408d0451855dd5f830eee'
           '927901d45051ec9bfb944e2623c4589456462f03'
@@ -122,7 +122,8 @@ if [[ "$_uim_mozc" == "yes" ]]; then
   true && pkgname+=('uim-mozc-ut')
   makedepends+=('uim')
   source+=(http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz)
-  sha1sums+=('8b17dcfdb43ac86e223c71c17676bd5f6aa8c40d')
+  sha1sums+=('5cd298aaac5afd7ff8882453e3e8fa698c2c5aa1')
+
 fi
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
