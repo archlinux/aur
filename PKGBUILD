@@ -1,5 +1,5 @@
 pkgname=osvr-tracker-viewer-git
-pkgver=r26.2115743
+pkgver=r45.e7e893e
 pkgrel=1
 pkgdesc="Utility for viewing tracker (pose, position, orientation) data from the OSVR framework."
 arch=(i686 x86_64)

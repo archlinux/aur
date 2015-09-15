@@ -1,6 +1,6 @@
 pkgbase = osvr-tracker-viewer-git
 	pkgdesc = Utility for viewing tracker (pose, position, orientation) data from the OSVR framework.
-	pkgver = r26.2115743
+	pkgver = r45.e7e893e
 	pkgrel = 1
 	url = https://github.com/OSVR/OSVR-Tracker-Viewer
 	arch = i686
