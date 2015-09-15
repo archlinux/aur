@@ -1,0 +1,16 @@
+pkgbase = python2-tinyarray
+	pkgdesc = Similar to NumPy arrays, but optimized for small sizes
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://git.kwant-project.org/tinyarray/about/
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	depends = python2
+	source = http://downloads.kwant-project.org/tinyarray/tinyarray-1.0.5.tar.gz
+	source = http://downloads.kwant-project.org/tinyarray/tinyarray-1.0.5.tar.gz.asc
+	md5sums = 0ef161e8b5ae711fe3e1babb8702105e
+	md5sums = SKIP
+
+pkgname = python2-tinyarray
+
