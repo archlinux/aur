@@ -1,40 +1,25 @@
-# Maintainer: Arnau Sanchez <pyarnau {at} gmail {dot} com>
-# Contributor: ArchAssault <team {at} archassault {dot} org>
-pkgname=js-beautify
-pkgver=1.5.4
+# Maintainer: Arnau Sanchez <pyarnau@gmail.com>
+_npmname=js-beautify
+_npmver=1.5.10
+pkgname=js-beautify # All lowercase
+pkgver=1.5.10
 pkgrel=1
-groups=('archassault' 'archassault-reversing')
-pkgdesc="Beautify, unpack or deobfuscate JavaScript and HTML, make JSON/JSONP readable"
-arch=('any')
-url="https://github.com/beautify-web/js-beautify"
+pkgdesc="jsbeautifier.org for node"
+arch=(any)
 license=('MIT')
-depends=('rhino' 'coffee-script')
-makedepends=('npm')
-source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('9b747a85e0a313845f11d5567a85d7e87e8fcc9a8042c7840bffe293af26fd1ee6a9b96d9cb183ef640ebffff14104672976a4c852a3864f095d063e8ea16ea9')
-
-prepare() {
-  cd $pkgname-$pkgver
-  npm install
-}
+url="http://jsbeautifier.org/"
+depends=('nodejs' 'npm' )
+optdepends=()
+source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+noextract=($_npmname-$_npmver.tgz)
+sha1sums=(4d95371702699344a516ca26bf59f0a27bb75719)
 
 package() {
-  # Install python directory to /usr/share/$pkgname
-  cd $pkgname-$pkgver
-  install -Dm644 package.json "$pkgdir/usr/share/$pkgname/package.json"
-  cp -r --no-preserve=ownership node_modules "$pkgdir/usr/share/$pkgname/"
-  cp -r --no-preserve=ownership js "$pkgdir/usr/share/$pkgname/"
-  rm -rf "$pkgdir/usr/share/$pkgname/js/test"
-
-  # Create a symlinks to the executables in /usr/bin
-  install -dm755 "$pkgdir/usr/bin/"
-  ln -s "/usr/share/$pkgname/js/bin/$pkgname.js" "$pkgdir/usr/bin/$pkgname"
-  ln -s "/usr/share/$pkgname/js/bin/css-beautify.js" "$pkgdir/usr/bin/css-beautify"
-  ln -s "/usr/share/$pkgname/js/bin/html-beautify.js" "$pkgdir/usr/bin/html-beautify"
-
-  # Install the README.md to /usr/share/doc/$pkgname
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-
-  # Install the LICENSE to /usr/share/licenses/$pkgname
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $srcdir
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  mkdir -p $_npmdir
+  cd $_npmdir
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 }
+
+# vim:set ts=2 sw=2 et:
