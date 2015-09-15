@@ -1,11 +1,19 @@
 post_install() {
-	chown -R http:http /var/lib/dolibarr
-	chown http:http /etc/webapps/dolibarr/conf.php
+	chown -R http:http var/lib/dolibarr
+	chown http:http etc/webapps/dolibarr/conf.php
 	echo 'Please configure your webserver. Example files are provided in /etc/webapps/dolibarr'
 	echo 'It could be necessary to add /var/lib/dolibarr/ to open_basedir in php.ini'
 	echo 'Finish installation by pointing your webbrowser to http://dolibarr.localdomain/install'
 }
 
 post_upgrade() {
-	rm /var/lib/dolibarr/install.lock
+	old=`expr $2 : '\([0-9]*\.[0-9]*\.\)'`"0"
+	new=`expr $1 : '\([0-9]*\.[0-9]*\.\)'`"0"
+	rm var/lib/dolibarr/install.lock
+	cd usr/share/webapps/dolibarr/htdocs/install
+	php upgrade.php $old $new
+	php upgrade2.php $old $new
+	cd /
+	touch var/lib/dolibarr/install.lock
+	chmod 444 var/lib/dolibarr/install.lock
 }
