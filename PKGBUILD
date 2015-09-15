@@ -7,11 +7,11 @@
      
 pkgname=med
 pkgver=3.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
-depends=('hdf5')
+depends=('hdf5' 'openmpi')
 makedepends=('gcc-fortran' 'coreutils')
 optdepends=('tk' 'python2')
 provides=()
@@ -27,20 +27,23 @@ build() {
     export FFLAGS="-fopenmp -fPIC -fdefault-double-8 -fdefault-integer-8 -fdefault-real-8 -ffixed-line-length-0 ${CFLAGS}"
     export FCFLAGS="-fopenmp -fPIC -fdefault-double-8 -fdefault-integer-8 -fdefault-real-8 -ffixed-line-length-0 ${CFLAGS}"
     export CPPFLAGS="-DHAVE_F77INT64 ${CPPFLAGS}"
-    export F77=gfortran
-    export FC=gfortran
+    export F77=mpif90
+    export FC=mpif90
   else # i686
     export FFLAGS="-fopenmp -fPIC -ffixed-line-length-0 ${CFLAGS}"
     export FCFLAGS="-fopenmp -fPIC -ffixed-line-length-0 ${CFLAGS}"
-    export F77=gfortran
-    export FC=gfortran
+    export F77=mpif90
+    export FC=mpif90
   fi
   
-  export PYTHON="python2"
+  export PYTHON="$(which python2)"
 
   cd ${srcdir}/${pkgname}-${pkgver} || return 1
  
-  ./configure --with-f90=gfortran --prefix=/usr --datadir=/usr/share/med || return 1
+  # patch H5public_extract.h.in
+  sed -i -e '/^#typedef/ s/#/\/\//' ./include/H5public_extract.h.in
+ 
+  ./configure --with-f90=mpif90 --prefix=/usr --datadir=/usr/share/med --with-swig=yes || return 1
   make || return 1
 }
  
