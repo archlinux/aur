@@ -6,8 +6,8 @@
 _bldtype=Release
 #_bldtype=Debug
 
-_uimmozcrev=316.2b3eff9
-_mozcrev=321e0656b0f2e233ab1c164bd86c58568c9e92f2
+_uimmozcrev=318.0562676
+_mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
 _gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
 _jsc=11086dd6a7eba04289944367ca82cea71299ed70
 _prtbf=172019c40bf548908ab09bfd276074c929d48415
@@ -15,7 +15,7 @@ _jpusd=10
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=2.17.2095.102
+pkgver=2.17.2111.102
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ source=(
 sha1sums=('SKIP'
           'SKIP'
           'SKIP'
-          '8b17dcfdb43ac86e223c71c17676bd5f6aa8c40d')
+          '5cd298aaac5afd7ff8882453e3e8fa698c2c5aa1')
 
 
 pkgver() {

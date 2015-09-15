@@ -1,6 +1,6 @@
 pkgbase = uim-mozc
 	pkgdesc = uim plugin module for Mozc
-	pkgver = 2.17.2095.102
+	pkgver = 2.17.2111.102
 	pkgrel = 1
 	url = http://code.google.com/p/macuim/
 	install = uim-mozc.install
@@ -16,14 +16,14 @@ pkgbase = uim-mozc
 	makedepends = clang
 	depends = mozc
 	depends = uim
-	source = mozc::git+https://github.com/google/mozc.git#commit=321e0656b0f2e233ab1c164bd86c58568c9e92f2
+	source = mozc::git+https://github.com/google/mozc.git#commit=d7b6196aeac52dd908ca051ba65e97b389f4503a
 	source = gyp::git+https://chromium.googlesource.com/external/gyp#commit=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
 	source = protobuf::git+https://github.com/google/protobuf.git#commit=172019c40bf548908ab09bfd276074c929d48415
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-316.2b3eff9.tar.xz
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-318.0562676.tar.xz
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = 8b17dcfdb43ac86e223c71c17676bd5f6aa8c40d
+	sha1sums = 5cd298aaac5afd7ff8882453e3e8fa698c2c5aa1
 
 pkgname = uim-mozc
 
