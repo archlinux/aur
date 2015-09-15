@@ -1,0 +1,17 @@
+pkgbase = yumi-bin
+	pkgdesc = YUMI (Your Universal Multiboot Integrator), is the successor to our MultibootISOs. It can be used to create a Multiboot USB Flash Drive containing multiple operating systems, antivirus utilities, disc cloning, diagnostic tools, and more.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://www.pendrivelinux.com/yumi-multiboot-usb-creator/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gambas3-runtime
+	depends = gambas3-gb-image
+	depends = gambas3-gb-gtk
+	depends = gambas3-gb-form
+	source = http://www.pendrivelinux.com/downloads/YUMI/ubuntu/yumi_0.0.1-1_all.deb
+	md5sums = 9b50f2c3d72c978beaa0c1707a3d8d24
+
+pkgname = yumi-bin
+
