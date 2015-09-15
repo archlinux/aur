@@ -1,6 +1,6 @@
 pkgbase = zstd
 	pkgdesc = A fast and efficient compression algorithm.
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Cyan4973/zstd
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = zstd
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	source = https://github.com/Cyan4973/zstd/archive/v0.1.0.tar.gz
-	sha1sums = ba01d0390b752a758a79d2949820b5ed32b3cc31
+	source = https://github.com/Cyan4973/zstd/archive/zstd-0.1.2.tar.gz
+	sha1sums = b730d6c35af1674aa5d5ae6550a4f8912cb33615
 
 pkgname = zstd
 
