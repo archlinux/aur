@@ -1,0 +1,13 @@
+pkgbase = dvorakng
+	pkgdesc = A Dvorak typing tutor. It's heavily based on Dvorak7min, but adds many improvements.
+	pkgver = 0.6.0rc1
+	pkgrel = 3
+	url = http://freshmeat.net/projects/dvorakng/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.free.of.pl/n/nopik/dvorakng-0.6.0rc1.tar.bz2
+	md5sums = 677b38d63103d405b47751ead03c5e63
+
+pkgname = dvorakng
+
