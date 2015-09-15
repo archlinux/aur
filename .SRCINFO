@@ -1,0 +1,25 @@
+pkgbase = doomseeker-hg
+	pkgdesc = A cross-platform Doom server browser
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://doomseeker.drdteam.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	makedepends = mercurial
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = zlib
+	depends = bzip2
+	source = doomseeker::hg+https://bitbucket.org/Blzut3/doomseeker
+	source = doomseeker.desktop
+	source = doomseeker-launch-script.sh
+	sha256sums = SKIP
+	sha256sums = 799f4e9a2a9c538c0f4e342d4d947d2a31af99461675a55e52eefc0641388a4a
+	sha256sums = 96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4
+
+pkgname = doomseeker-hg
+

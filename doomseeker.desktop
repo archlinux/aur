@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Doomseeker
+GenericName=Enhanced Doom Engine
+Icon=doomseeker
+Exec=doomseeker %F
+Terminal=false
+Categories=Utility;Game
