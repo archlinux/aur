@@ -1,13 +1,13 @@
-# Maintainer: Ainola <opp310@alh.rqh> (ROT13 this)
+# Maintainer: Ainola
 
 pkgname=gog-the-cat-lady
 pkgver=2.2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="The Cat Lady is a psychological horror graphic adventure game developed by Remigiusz Michalski."
 url="http://www.thecatlady.co.uk/"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('ags-git')
+depends=('ags')
 makedepends=('icoutils' 'innoextract')
 optdepends=('xdg-utils: xdg .desktop file support')
 source=("gog://setup_the_cat_lady_${pkgver}.exe" \
@@ -22,6 +22,9 @@ sha256sums=('0d8cb4aee4b416b5d27c7510bb7caaba11a6dbee105eb979ef87da098b41dd44'
 # containing gog.com downloads:
 # DLAGENTS=('gog::/usr/bin/find /path/to/downloads -name $(echo %u | cut -c 7-) -exec ln -s \{\} %o \; -quit')
 DLAGENTS+=('gog::/usr/bin/echo "Could not find \"$(echo %u | cut -c 7-)\". Manually download it to \"$(pwd)\", or set up a gog:// DLAGENT."; exit 1')
+
+# Prevent compressing final package
+PKGEXT='.pkg.tar'
 
 package(){
     #extract game files from gog installer
@@ -38,7 +41,7 @@ package(){
 
     #install icons for system to use
     for size in 16 32 48 256; do
-        install -D -m 644 "${srcdir}/icons/*${size}x${size}x32.png" \
+        install -D -m 644 "${srcdir}/icons/"*"${size}x${size}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/gog-the-cat-lady.png"
     done
 

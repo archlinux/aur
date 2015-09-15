@@ -1,7 +1,7 @@
 pkgbase = gog-the-cat-lady
 	pkgdesc = The Cat Lady is a psychological horror graphic adventure game developed by Remigiusz Michalski.
 	pkgver = 2.2.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.thecatlady.co.uk/
 	install = gog-the-cat-lady.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = gog-the-cat-lady
 	license = custom
 	makedepends = icoutils
 	makedepends = innoextract
-	depends = ags-git
+	depends = ags
 	optdepends = xdg-utils: xdg .desktop file support
 	source = gog://setup_the_cat_lady_2.2.0.6.exe
 	source = gog-the-cat-lady.desktop
