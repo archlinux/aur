@@ -1,5 +1,5 @@
 pkgname=cen64-qt-git
-pkgver=20150910
+pkgver=20150915
 pkgrel=1
 pkgdesc="A basic frontend for CEN64"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ build() {
     git clone "$_gitroot"
     cd "$_gitname"
     
+    ./build-scripts/revision.sh
     qmake-qt5
     make
 }
