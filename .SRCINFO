@@ -1,13 +1,14 @@
 pkgbase = tmuxp
 	pkgdesc = Manage tmux workspaces from JSON and YAML, pythonic API, shell completion.
 	pkgver = 0.9.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/tony/tmuxp
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-argcomplete
 	depends = python-kaptan
+	depends = python-colorama
 	options = !emptydirs
 	source = https://github.com/tony/tmuxp/archive/v0.9.1.tar.gz
 	md5sums = d103d9d49a2282059c21f95d4d3ef11d
