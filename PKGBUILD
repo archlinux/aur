@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=v0.2.r662.ga1d17e5
+pkgver=v0.2.r720.ge9bf4b5
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -38,6 +38,9 @@ prepare() {
   mkdir -p "$srcdir/osvr-core-build/cmake"
    cp "$srcdir/FindJsonCpp.cmake" "$srcdir/osvr-core/cmake/Findjsoncpp.cmake"
    sed -i '1 i\list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")' "$srcdir/osvr-core/CMakeLists.txt" #TODO CMAKE_MODULE_PATH
+
+  # https://github.com/OSVR/OSVR-Core/issues/202 *sigh*
+  sed -i '1 i\#include <boost/type_traits/remove_cv.hpp>' src/osvr/Common/NormalizeDeviceDescriptor.cpp
 }
 
 build() {
