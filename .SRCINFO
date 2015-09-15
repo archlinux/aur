@@ -1,7 +1,7 @@
 pkgbase = gnome-mud
 	pkgdesc = GnomeMud is an advanced MUD client for GNOME
 	pkgver = 0.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/GnomeMud
 	arch = i686
 	arch = x86_64
