@@ -7,10 +7,11 @@ Type=oneshot
 User=root
 Group=root
 EnvironmentFile=/etc/conf.d/sshttpd
-ExecStart=/usr/bin/nf-setup ; \
-          /usr/bin/sshttpd -S $SSH_PORT -H $HTTP_PORT -L $LISTEN_PORT -l $LISTEN_ADDRESS -U $USER -R $CHROOT_DIR
-ExecStop=/usr/bin/nf-cleanup ; \
-         /usr/bin/killall sshttpd
+ExecStartPre=/usr/bin/nf-setup
+ExecStart=/usr/bin/sshttpd -S $SSH_PORT -H $HTTP_PORT -L $LISTEN_PORT -l $LISTEN_ADDRESS -U $USER -R $CHROOT_DIR
+ExecStop=/usr/bin/nf-cleanup
+ExecStopPost=/usr/bin/killall sshttpd
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target

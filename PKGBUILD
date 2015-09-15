@@ -1,6 +1,6 @@
 pkgname=sshttp-git
 pkgver=e145de8
-pkgrel=4
+pkgrel=5
 pkgdesc="SSH/HTTP(S) multiplexer"
 arch=('any')
 url="https://github.com/stealth/sshttp"
@@ -19,7 +19,7 @@ source=('git://github.com/stealth/sshttp'
 md5sums=('SKIP'
          '22d5c47059ba77d09812106800939d57'
          '6d35b4409cac3ebd6e75f4736805f102'
-         'cff8825c1428b87836218af0ed8a0066')
+         '5f81b44894a53c19b3ce47108902d703')
 
 pkgver() {
     cd $srcdir/${pkgname%-git}
