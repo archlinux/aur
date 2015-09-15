@@ -35,10 +35,11 @@ post_install () {
     echo
     echo "If /etc/nix/nix.conf does not exist, you should create it with root ownership."
     echo
-    echo "Once you have done that, you are ready to start the nix daemon. You can do with the following commands:"
+    echo "Once you have done that, you are ready to start the nix daemon. You can do this"
+    echo "with one of the following commands:"
     echo
-    echo "    systemctl enable nix-daemon  # Sets the daemon to start on next boot"
-    echo "    systemctl start nix-daemon   # Starts the daemon for the current boot only"
+    echo "    systemctl enable nix-daemon.socket       # Sets the daemon to start on next boot"
+    echo "    systemctl enable --now nix-daemon.socket # Starts now and on next boot too"
     echo
     echo "Finally, you need to start a new login shell, or otherwise source /etc/profile.d/nix-multiuser.sh"
     echo
@@ -63,5 +64,5 @@ post_remove () {
     echo "If you are still using Nix, but without multiuser mode, you will need to do some clean-up:"
     echo
     echo " - remove the 'build-users-group = nixbld' from /etc/nix/nix.conf"
-    echo " - Stop/disable the nix-daemon systemd service" 
+    echo " - Stop/disable the nix-daemon.socket systemd unit"
 }
