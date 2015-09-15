@@ -16,6 +16,7 @@ source=("http://www.goatattack.net/installers/$pkgname-$pkgver.tar.gz")
 md5sums=('7f4aea68560ded26e147d0cd7eb49e6b')
 
 prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
 	./configure --prefix=/usr
 }
 
