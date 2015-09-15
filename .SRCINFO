@@ -1,0 +1,17 @@
+pkgbase = gnome-mud-git
+	pkgdesc = GnomeMud is an advanced MUD client for GNOME
+	pkgver = 0_11_2.r131.gc719dc8
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/GnomeMud
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = gnet
+	depends = gnome-common
+	provides = gnome-mud
+	conflicts = gnome-mud
+
+pkgname = gnome-mud-git
+
