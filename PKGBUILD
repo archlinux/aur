@@ -41,6 +41,7 @@ package() {
   #mv "$pkgdir/usr/bin/"*"/" "$pkgdir/usr/share/osvr"
   install "$srcdir/osvr-oculus-rift/com_osvr_OculusRift.json" "$pkgdir/usr/share/osvr/sample-configs/"
   mv "$pkgdir/usr/osvr_server_config.oculusrift.sample.json" "$pkgdir/usr/share/osvr/sample-configs/"
+  mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
 }
 
 # vim:set ts=2 sw=2 et:
