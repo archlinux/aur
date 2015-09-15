@@ -1,27 +1,32 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=slingshot-launcher
-pkgver=0.7.6.1
+pkgver=0.8.1.1
 pkgrel=1
 pkgdesc='The Pantheon Application Launcher'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/slingshot'
 license=('GPL3')
 groups=('pantheon')
-depends=('gnome-menus2' 'granite' 'libgee06' 'libunity' 'libwnck3'
-         'libzeitgeist')
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus' 'gtk3' 'json-glib'
+         'libgee' 'libsoup' 'plank' 'zeitgeist'
+         'libgranite.so')
 makedepends=('cmake' 'vala')
 install='slingshot-launcher.install'
-source=("https://launchpad.net/slingshot/0.x/${pkgver}/+download/slingshot-launcher-${pkgver}.tgz")
-sha256sums=('fa7766281b323e0f86db64afc24d0fd9e8765773da54eb703aaa507cddc0ebcb')
+source=("https://launchpad.net/slingshot/freya/${pkgver}/+download/slingshot-launcher-${pkgver}.tar.xz")
+sha256sums=('bc72aa2ba427d7d24a5baa6ea932ba34afe7ecdcda16b9a64be788bef1f11e6e')
 
-build() {
+prepare() {
   cd slingshot-launcher-${pkgver}
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd slingshot-launcher-${pkgver}/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \

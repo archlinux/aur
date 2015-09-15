@@ -1,6 +1,6 @@
 pkgbase = slingshot-launcher
 	pkgdesc = The Pantheon Application Launcher
-	pkgver = 0.7.6.1
+	pkgver = 0.8.1.1
 	pkgrel = 1
 	url = https://launchpad.net/slingshot
 	install = slingshot-launcher.install
@@ -10,14 +10,19 @@ pkgbase = slingshot-launcher
 	license = GPL3
 	makedepends = cmake
 	makedepends = vala
-	depends = gnome-menus2
-	depends = granite
-	depends = libgee06
-	depends = libunity
-	depends = libwnck3
-	depends = libzeitgeist
-	source = https://launchpad.net/slingshot/0.x/0.7.6.1/+download/slingshot-launcher-0.7.6.1.tgz
-	sha256sums = fa7766281b323e0f86db64afc24d0fd9e8765773da54eb703aaa507cddc0ebcb
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gnome-menus
+	depends = gtk3
+	depends = json-glib
+	depends = libgee
+	depends = libsoup
+	depends = plank
+	depends = zeitgeist
+	depends = libgranite.so
+	source = https://launchpad.net/slingshot/freya/0.8.1.1/+download/slingshot-launcher-0.8.1.1.tar.xz
+	sha256sums = bc72aa2ba427d7d24a5baa6ea932ba34afe7ecdcda16b9a64be788bef1f11e6e
 
 pkgname = slingshot-launcher
 
