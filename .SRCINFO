@@ -1,0 +1,16 @@
+pkgbase = jwasm
+	pkgdesc = a free MASM-compatible assembler
+	pkgver = 212s_140105
+	pkgrel = 1
+	url = http://www.japheth.de/JWasm.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = glibc
+	noextract = JWasm212s_140105.zip
+	source = http://sourceforge.net/projects/jwasm/files/JWasm%20Source%20Code/JWasm212s_140105.zip
+	sha256sums = 2bef67d89c3d40d228ac2e24e3e41a60cd954cf0f1b7389680f7f03658b78f1c
+
+pkgname = jwasm
+
