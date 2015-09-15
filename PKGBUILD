@@ -9,9 +9,9 @@
 
 pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.1-gnu
-_pkgver=4.1.6-gnu
+_pkgver=4.1.7-gnu
 _grsecver=3.1
-_timestamp=201508230818
+_timestamp=201509131604
 _knockpatchver=4.1_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -51,9 +51,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34'
+            '4ae674b88d75f2cc95c352de476ebd4c1d8726f2e0e91536d26db1bdc54b523d'
             'SKIP'
-            '5efe1dee218de9012fa9c93058816894f2e3a14854e3cc70d220e67ca2cd109f'
+            'e8941ef8989cd851ee2b3ac33d78e466b544ab6beccda3076923e593d3bedca5'
             'SKIP'
             'da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc'
             'SKIP'
@@ -92,7 +92,7 @@ prepare() {
     patch -p1 -i "${srcdir}/patch-${_pkgbasever}-${_pkgver}"
   fi
 
-  # add grsecurity patches (without nonfree bnx2 firmware patching)
+  # add grsecurity patches (bnx2 firmware deblobbed)
   patch -Np1 -i "${srcdir}/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch"
   rm localversion-grsec
 
