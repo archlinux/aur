@@ -1,7 +1,7 @@
 # Maintainer: Sean Baggaley <coffeescripter@gmail.com>
 pkgname=doomseeker-hg
 pkgver=1.1.1509131620
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -12,7 +12,7 @@ source=("doomseeker::hg+https://bitbucket.org/Blzut3/doomseeker"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
 sha256sums=('SKIP'
-            '799f4e9a2a9c538c0f4e342d4d947d2a31af99461675a55e52eefc0641388a4a'
+            'a66e2ecca5cd32a0480776f6adfd8420d18fa56de1ca574aae61bbea95bd3c2c'
             '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
 
 _bbdir=doomseeker
