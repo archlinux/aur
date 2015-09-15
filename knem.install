@@ -1,0 +1,16 @@
+post_install() {
+  /opt/knem/sbin/knem_local_install
+}
+
+pre_remove() {
+  rmmod 'knem'
+  /opt/knem/sbin/knem_local_install --uninstall
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+post_upgrade() {
+  post_install
+}

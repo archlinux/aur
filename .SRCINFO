@@ -1,0 +1,15 @@
+pkgbase = knem
+	pkgdesc = High-Performance Intra-Node MPI Communication
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://knem.gforge.inria.fr
+	install = knem.install
+	arch = any
+	license = bsd
+	makedepends = make
+	depends = hwloc
+	source = http://gforge.inria.fr/frs/download.php/34521/knem-1.1.2.tar.gz
+	sha256sums = 4523ec59b15bd69db7956372d31e5cb8054627673a41154530310e9c4b8ea13e
+
+pkgname = knem
+
