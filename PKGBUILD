@@ -3,7 +3,7 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=drawpile
-pkgver=1.0.1.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ optdepends=('kdnssd: automatic service discovery (such as printers)'
 makedepends=('qt5-tools' 'qt5-svg' 'ninja' 'cmake')
 install="${pkgname}.install"
 source=("http://drawpile.net/files/src/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3342de06008a01b1fc4330d3790a786029c75607882a20ae1c3b6b441dfe6c7a')
+sha256sums=('012a470316ccca51a28700948cd3f866c9b7fcc8fa9bfa21f27f28e9dc53f019')
 
 	## SET TO 'SERVER' OR 'CLIENT' FOR BUILDING SERVER OR CLIENT ONLY ##
 	BUILD='BOTH'
