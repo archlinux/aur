@@ -1,5 +1,5 @@
 pkgbase = djgpp-djcrx-beta
-	pkgdesc = Headers and utilities for the djgpp cross-compiler
+	pkgdesc = Headers and utilities for the djgpp cross-compiler (beta version)
 	pkgver = 2.0.5
 	pkgrel = 1
 	url = http://www.delorie.com/djgpp/

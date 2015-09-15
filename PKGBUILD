@@ -3,7 +3,7 @@
 pkgname=djgpp-djcrx-beta
 pkgver=2.0.5
 pkgrel=1
-pkgdesc="Headers and utilities for the djgpp cross-compiler"
+pkgdesc="Headers and utilities for the djgpp cross-compiler (beta version)"
 arch=(i686 x86_64)
 url="http://www.delorie.com/djgpp/"
 depends=('glibc')
