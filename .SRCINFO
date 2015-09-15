@@ -1,15 +1,13 @@
-pkgbase = stdman-git
+pkgbase = stdman
 	pkgdesc = Formatted C++11/14 stdlib man pages (cppreference)
-	pkgver = v0.2.r3.15f2ae8
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/jeaye/stdman
 	arch = any
 	license = MIT
 	makedepends = git
-	provides = stdman
-	conflicts = stdman
-	source = stdman::git+https://github.com/jeaye/stdman.git
-	md5sums = SKIP
+	source = https://github.com/jeaye/stdman/archive/v0.2.tar.gz
+	md5sums = 5fd4c8c2b760e1c8374ac2709cbfc64f
 
-pkgname = stdman-git
+pkgname = stdman
 
