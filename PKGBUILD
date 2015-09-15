@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
 license=("GPL2")
 depends=('qt4' 'zlib' 'bzip2')
-makedepends=('gcc' 'cmake' 'mercurial' 'make')
+makedepends=('gcc' 'cmake' 'make')
 source=("https://bitbucket.org/Blzut3/doomseeker/get/1.0.tar.gz"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
