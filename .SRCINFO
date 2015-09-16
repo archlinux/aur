@@ -1,0 +1,17 @@
+pkgbase = haskell-setlocale
+	pkgdesc = Haskell bindings to setlocale
+	pkgver = 1.0.0.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/setlocale
+	install = haskell-setlocale.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/setlocale/1.0.0.3/setlocale-1.0.0.3.tar.gz
+	md5sums = 348690842f5233f0e42e16bd615f777e
+
+pkgname = haskell-setlocale
+
