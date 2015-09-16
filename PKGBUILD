@@ -31,7 +31,7 @@ build() {
   cd "${srcdir}/${_gitname}"
 
   ./autogen.sh
-  PYTHON=python2 ./configure --prefix=/usr --disable-java --disable-python
+  PYTHON=python2 ./configure --prefix=/usr --disable-java
 
   make
 }
