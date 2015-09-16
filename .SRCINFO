@@ -1,0 +1,18 @@
+pkgbase = vim-csv-git
+	pkgdesc = Vim filetype plugin for CSV files
+	pkgver = 20150115
+	pkgrel = 1
+	url = https://github.com/vim-scripts/csv.vim
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-csv
+	conflicts = vim-csv
+	source = vim-csv::git+https://github.com/vim-scripts/csv.vim
+	sha256sums = SKIP
+
+pkgname = vim-csv-git
+
