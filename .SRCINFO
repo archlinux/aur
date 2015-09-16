@@ -1,0 +1,22 @@
+pkgbase = perl-jira-rest
+	pkgdesc = Thin wrapper around JIRA's REST API
+	pkgver = 0.011
+	pkgrel = 1
+	url = https://metacpan.org/release/JIRA-REST
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-data-util
+	depends = perl-html-tree
+	depends = perl-http-message
+	depends = perl-json
+	depends = perl-rest-client
+	depends = perl-uri
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GN/GNUSTAVO/JIRA-REST-0.011.tar.gz
+	md5sums = c9a94f75003a8dc0c98887b5bad52d84
+	sha512sums = 6853b8738d678ae2c5f3f4db03247f2737aa97494e7ba03e19d43228f2180deb14ed35caf90a11db22b61acdd2f78b906141fdb297fb63d3e99a5bf8d98b25be
+
+pkgname = perl-jira-rest
+
