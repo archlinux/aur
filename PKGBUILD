@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.350
+pkgver=1.2.351
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -48,19 +48,23 @@ makedepends=('python2-paver'
 source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}.tar.gz"
         'flexget.service'
         "http://download.flexget.com/ChangeLog"
+        "fix_beautifulsoup_4_4_0.patch"
         )
 
 changelog=ChangeLog
 
-sha256sums=('1580c8e2a33c6967de48c823b0565cf03a10b20afcc19cea46d78fa58f377fbf'
+sha256sums=('652c46f835eeee6caf1a33596777e6baa1553b184150930e53f1d745ae0cf962'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
+            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6'
+            '7d65e71ea411f12fd6fb7ed4aa859ab21c83882d68abc78c8a0e8dbd4a96b7b4')
 
 prepare() {
   cd "${_pkgname}"-"${pkgver}"
 
   msg "Patching shebangs to point to python2"
   sed -i 's/\(python\)/\12/' flexget{,/ui}/__init__.py
+
+  patch < "${srcdir}"/fix_beautifulsoup_4_4_0.patch
 }
 
 package() {
