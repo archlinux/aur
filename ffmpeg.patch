@@ -1,0 +1,626 @@
+diff -ur k9copy-2.3.8-Source.orig/CMakeLists.txt k9copy-2.3.8-Source/CMakeLists.txt
+--- k9copy-2.3.8-Source.orig/CMakeLists.txt	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/CMakeLists.txt	2012-11-28 20:04:31.498836399 -0300
+@@ -16,10 +16,12 @@
+ INCLUDE(CheckIncludeFiles)
+ INCLUDE(FindLibMpeg2)
+ INCLUDE(FindXine)
+-INCLUDE(FindAvcodec)
+-INCLUDE(FindAvformat)
+ INCLUDE(FindFFmpegScale)
+-#INCLUDE(FindLibDvdread)
++INCLUDE(FindLibDvdread)
++
++#use pkg-config to find various modes
++INCLUDE(FindPkgConfig OPTIONAL)
++pkg_check_modules(LIBAV REQUIRED libavformat libavcodec libavutil libswscale)
+ 
+ set (VERSION 2.3.8)
+ 
+@@ -63,14 +65,10 @@
+   FIND_LIBRARY(LIBDL_LIBRARY NAMES "c" PATHS )
+   MESSAGE(STATUS "Found library libc: ${LIBDL_LIBRARY}")
+ ENDIF (LIBDL_LIBRARY)
+-#FINDLIBDVDREAD("dvdread/ifo_types.h" "dvdread")
+-
++FINDLIBDVDREAD("dvdread/ifo_types.h" "dvdread")
+ 
+-FINDAVFORMAT("avformat")
+-FINDAVCODEC("avcodec")
+ 
+ add_definitions( -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS)
+-add_subdirectory( src/dvdnav)
+ add_subdirectory( src/core )
+ add_subdirectory( src/mpeg2)
+ add_subdirectory(src/vamps)
+@@ -85,7 +83,6 @@
+ add_subdirectory(doc)
+ 
+ include_directories(
+- ${CMAKE_CURRENT_SOURCE_DIR}/src/dvdnav
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/devices
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/vamps
+@@ -97,10 +94,10 @@
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/import
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/player
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/subtitles
+- ${CMAKE_CURRENT_SOURCE_DIR}/src/dvdread
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/batch
+ ${KDE4_INCLUDES} ${QT_INCLUDES}
+-#${LIBDVDREAD_INCLUDE_DIR}/dvdread
++${LIBDVDREAD_INCLUDE_DIR}/dvdread
++${LIBDVDREAD_INCLUDE_DIR}/dvdnav
+  ${AVCODEC_INCLUDE_DIR}
+  ${AVFORMAT_INCLUDE_DIR}
+  ${FFMPEGSCALE_INCLUDE_DIR}
+@@ -116,34 +113,12 @@
+    src/subtitles/k9subtitle2pgm.cpp
+ )
+ 
+-set (libdvdnav_SRCS
+-   src/dvdnav/decoder.c
+-   src/dvdnav/dvdnav.c
+-   src/dvdnav/highlight.c
+-   src/dvdnav/navigation.c
+-   src/dvdnav/read_cache.c
+-   src/dvdnav/remap.c
+-   src/dvdnav/searching.c
+-   src/dvdnav/settings.c
+-   src/dvdnav/vm.c
+-   src/dvdnav/vmcmd.c
+-)
+-
+ set (vamps_SRCS
+   src/vamps/k9fifo.cpp
+   src/vamps/k9requant.cpp
+   src/vamps/k9vamps.cpp
+ )
+ 
+-set (dvdread_SRCS
+-   src/dvdread/dvd_input.c
+-   src/dvdread/dvd_reader.c
+-   src/dvdread/dvd_udf.c
+-   src/dvdread/ifo_read.c
+-   src/dvdread/md5.c
+-   src/dvdread/nav_read.c
+-)
+-
+ 
+ set (core_SRCS
+   src/core/k9dvd.cpp
+@@ -309,12 +284,10 @@
+ )
+ 
+ set (k9copylib_SRCS
+-   ${libdvdnav_SRCS}
+    ${core_SRCS}
+    ${vamps_SRCS}
+    ${mpeg2_SRCS}
+    ${subtitles_SRCS}
+-   ${dvdread_SRCS}
+    ${backup_SRCS}
+ )
+ 
+@@ -341,7 +314,7 @@
+ 
+ 
+ kde4_add_library(k9copylib STATIC ${k9copylib_SRCS})
+-target_link_libraries(k9copylib ${KDE4_KDEUI_LIBS} ${KDE4_KDESU_LIBS} ${KDE4_KIO_LIBS} ${LIBMPEG2_LIBRARY} ${LIBMPEG2CONVERT_LIBRARY} ${LIBDL_LIBRARY})
++target_link_libraries(k9copylib ${KDE4_KDEUI_LIBS} ${KDE4_KDESU_LIBS} ${KDE4_KIO_LIBS} ${LIBMPEG2_LIBRARY} ${LIBMPEG2CONVERT_LIBRARY} ${LIBDL_LIBRARY} ${LIBDVDREAD_LIBRARY} dvdnav)
+ 
+ kde4_add_ui_files(k9copy_SRCS )
+ 
+@@ -351,7 +324,7 @@
+ 
+  MESSAGE(STATUS "Found library solid: ${KDE4_SOLID_LIBS}")
+ 
+-target_link_libraries(k9copy k9copylib ${KDE4_KDEUI_LIBS} ${PHONON_LIBRARY} ${KDE4_SOLID_LIBS})
++target_link_libraries(k9copy k9copylib ${KDE4_KDEUI_LIBS} ${PHONON_LIBRARY} ${KDE4_SOLID_LIBS} ${LIBAV_LIBRARIES})
+ target_link_libraries(k9play k9copylib ${KDE4_KDEUI_LIBS}  )
+ target_link_libraries(k9xineplayer ${KDE4_KDEUI_LIBS} ${XINE_LIBRARY} ${X11_X11_LIB} )
+ 
+diff -ur k9copy-2.3.8-Source.orig/config.h k9copy-2.3.8-Source/config.h
+--- k9copy-2.3.8-Source.orig/config.h	2011-12-09 18:08:42.000000000 -0300
++++ k9copy-2.3.8-Source/config.h	2012-11-28 20:04:40.871313313 -0300
+@@ -72,7 +72,7 @@
+ /* #undef ADM_CPU_X86_64 */
+ 
+ /* ffmpeg with swscale support */
+-/* #undef HAVE_SWSCALE */
++#define HAVE_SWSCALE
+ 
+ /* opengl extensions available */
+ /* #undef HAVE_OPENGL */
+diff -ur k9copy-2.3.8-Source.orig/main.cpp k9copy-2.3.8-Source/main.cpp
+--- k9copy-2.3.8-Source.orig/main.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/main.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -18,7 +18,10 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include "src/dvdnav/common.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include "k9copy.h"
+ #include "k9common.h"
+ #include <kapplication.h>
+diff -ur k9copy-2.3.8-Source.orig/src/assistant/k9assistant.cpp k9copy-2.3.8-Source/src/assistant/k9assistant.cpp
+--- k9copy-2.3.8-Source.orig/src/assistant/k9assistant.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/assistant/k9assistant.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -23,7 +23,10 @@
+ #include "k9dvd.h"
+ #include "k9cddrive.h"
+ #include "k9execcopy.h"
+-#include "dvdread.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include "k9settings.h"
+ #include "k9dvdtitle.h"
+ k9Assistant *k9Assistant::createAssistant() {
+diff -ur k9copy-2.3.8-Source.orig/src/backup/k9dvdbackup.cpp k9copy-2.3.8-Source/src/backup/k9dvdbackup.cpp
+--- k9copy-2.3.8-Source.orig/src/backup/k9dvdbackup.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/backup/k9dvdbackup.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -40,7 +40,10 @@
+ #endif
+ 
+ #include "k9backupdlg.h"
+-#include "dvdread.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include "k9script.h"
+ #include "k9tools.h"
+ 
+diff -ur k9copy-2.3.8-Source.orig/src/backup/k9script.cpp k9copy-2.3.8-Source/src/backup/k9script.cpp
+--- k9copy-2.3.8-Source.orig/src/backup/k9script.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/backup/k9script.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -13,7 +13,10 @@
+ #include "k9dvd.h"
+ #include "k9dvdtitle.h"
+ #include "bswap.h"
+-#include "dvdread.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include <stdlib.h>
+ 
+ k9Script::k9Script(ifo_handle_t *_ifo, k9DVD *_dvd ) {
+diff -ur k9copy-2.3.8-Source.orig/src/core/bswap.h k9copy-2.3.8-Source/src/core/bswap.h
+--- k9copy-2.3.8-Source.orig/src/core/bswap.h	2011-12-09 18:08:42.000000000 -0300
++++ k9copy-2.3.8-Source/src/core/bswap.h	2012-11-28 20:04:14.997012551 -0300
+@@ -35,7 +35,7 @@
+ #include <sys/param.h>
+ #endif
+ 
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+ #include <byteswap.h>
+ #define B2N_16(x) x = bswap_16(x)
+ #define B2N_32(x) x = bswap_32(x)
+diff -ur k9copy-2.3.8-Source.orig/src/core/k9dvdread.cpp k9copy-2.3.8-Source/src/core/k9dvdread.cpp
+--- k9copy-2.3.8-Source.orig/src/core/k9dvdread.cpp	2011-12-09 18:08:42.000000000 -0300
++++ k9copy-2.3.8-Source/src/core/k9dvdread.cpp	2012-11-28 20:04:31.498836399 -0300
+@@ -10,7 +10,10 @@
+ //
+ //
+ #include "k9dvdread.h"
+-#include "dvdread.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include "k9ifo2.h"
+ 
+ k9DVDRead::k9DVDRead(){
+diff -ur k9copy-2.3.8-Source.orig/src/core/k9ifo2.cpp k9copy-2.3.8-Source/src/core/k9ifo2.cpp
+--- k9copy-2.3.8-Source.orig/src/core/k9ifo2.cpp	2011-12-09 18:08:42.000000000 -0300
++++ k9copy-2.3.8-Source/src/core/k9ifo2.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -19,7 +19,10 @@
+  ***************************************************************************/
+ #include "k9ifo2.h"
+ #include "bswap.h"
+-#include "dvdread.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include <QDebug>
+ 
+ k9Ifo2::k9Ifo2(k9DVDRead *_dvdread) {
+diff -ur k9copy-2.3.8-Source.orig/src/import/k9avidecode.cpp k9copy-2.3.8-Source/src/import/k9avidecode.cpp
+--- k9copy-2.3.8-Source.orig/src/import/k9avidecode.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/import/k9avidecode.cpp	2012-11-28 21:29:14.463244903 -0300
+@@ -10,15 +10,12 @@
+ //
+ //
+ #include "k9avidecode.h"
+-#include <avcodec.h>
+ #include <qimage.h>
+ #include <dlfcn.h>
+ #include "k9common.h"
+ 
+ #ifdef HAVE_SWSCALE
+ 
+-#include "swscale.h"
+-
+ static int sws_flags = SWS_BICUBIC;
+ 
+ #endif
+@@ -35,67 +32,8 @@
+ 
+ k9AviDecode::k9AviDecode(QObject *parent, const char *)
+         : QObject(parent) {
+-    CodecHandle=0;
+-    FormatHandle=0;
+-    SwscaleHandle=0;
+-    glibref=0;
+-    if (glibref==0) {
+-        CodecHandle=dlopen("libavcodec.so",RTLD_LAZY ); //| RTLD_GLOBAL
+-        FormatHandle=dlopen("libavformat.so",RTLD_LAZY);
+-#ifdef HAVE_SWSCALE
+-        SwscaleHandle=dlopen("libswscale.so",RTLD_LAZY);
+-        if (SwscaleHandle==0)
+-            SwscaleHandle=dlopen("libswscale.so.2",RTLD_LAZY);
+-#endif
+-    }
+     m_error="";
+     QStringList errs;
+-    if (!CodecHandle) {
+-        errs << i18n("Cannot open the library %1").arg("libavcodec");
+-    }
+-    if (!FormatHandle ) {
+-        errs << i18n("Cannot open the library %1").arg("libavformat");
+-    }
+-#ifdef HAVE_SWSCALE
+-    if (!SwscaleHandle) {
+-        errs << i18n("Cannot open the library %1").arg("libswscale");
+-    }
+-#endif
+-
+-    av_register_all = (av_register_all_t)dlsym(FormatHandle,"av_register_all");
+-    av_open_input_file = (av_open_input_file_t)dlsym(FormatHandle,"av_open_input_file");
+-    av_find_stream_info = (av_find_stream_info_t)dlsym(FormatHandle,"av_find_stream_info");
+-    avcodec_find_decoder =(avcodec_find_decoder_t) dlsym(CodecHandle,"avcodec_find_decoder");
+-    avcodec_open = (avcodec_open_t)dlsym(CodecHandle,"avcodec_open");
+-    avcodec_alloc_frame = (avcodec_alloc_frame_t)dlsym(CodecHandle,"avcodec_alloc_frame");
+-    avpicture_get_size = (avpicture_get_size_t)dlsym(CodecHandle,"avpicture_get_size");
+-    av_malloc = (av_malloc_t)dlsym(CodecHandle,"av_malloc");
+-    avpicture_fill = (avpicture_fill_t)dlsym(CodecHandle,"avpicture_fill");
+-    av_read_frame = (av_read_frame_t)dlsym(FormatHandle,"av_read_frame");
+-    avcodec_decode_video = (avcodec_decode_video_t)dlsym(CodecHandle,"avcodec_decode_video");
+-    if (avcodec_decode_video==0) avcodec_decode_video=(avcodec_decode_video_t)dlsym(CodecHandle,"avcodec_decode_video2");
+-#ifndef HAVE_SWSCALE
+-    img_convert = (img_convert_t)dlsym(CodecHandle,"img_convert");
+-//if img_convert is null (deprecated in ffmpeg), we need libswscale
+-    if (!img_convert)
+-      errs << i18n("Cannot open the library %1").arg("libswscale");
+-#endif
+-    av_free = (av_free_t)dlsym(CodecHandle,"av_free");
+-    av_free_packet = (av_free_packet_t)dlsym(CodecHandle,"av_free_packet");
+-    if (av_free_packet==0)
+-         av_free_packet=av_free_packet_internal;
+-    avcodec_close = (avcodec_close_t)dlsym(FormatHandle,"avcodec_close");
+-    av_close_input_file = (av_close_input_file_t)dlsym(FormatHandle,"av_close_input_file");
+-    av_seek_frame=(av_seek_frame_t)dlsym(FormatHandle,"av_seek_frame");
+-    av_rescale_q=(av_rescale_q_t)dlsym(FormatHandle,"av_rescale_q");
+-    avcodec_flush_buffers=(avcodec_flush_buffers_t)dlsym(CodecHandle,"avcodec_flush_buffers");
+-#ifdef HAVE_SWSCALE
+-    sws_freeContext= (sws_freeContext_t)dlsym(SwscaleHandle,"sws_freeContext");
+-    sws_getContext=(sws_getContext_t)dlsym(SwscaleHandle,"sws_getContext");
+-    sws_scale= (sws_scale_t)dlsym(SwscaleHandle,"sws_scale");
+-#endif
+-    av_gettime=(av_gettime_t)dlsym(FormatHandle,"av_gettime");
+-    
+     if (errs.count() >0) {
+         m_error=errs.join("\n");
+         k9Dialogs::error(m_error,"k9copy",QStringList());
+@@ -104,28 +42,12 @@
+     
+     av_register_all();
+     m_opened=false;
+-
+-    glibref++;
+ }
+ 
+ 
+ k9AviDecode::~k9AviDecode() {
+     if (m_opened)
+         close();
+-    glibref--;
+-    if (glibref==0) {
+-	if (FormatHandle)
+-        	dlclose(FormatHandle);
+-	if (CodecHandle)
+-        	dlclose(CodecHandle);
+-#ifdef HAVE_SWSCALE
+-	if (SwscaleHandle)
+-        	dlclose(CodecHandle);
+-#endif
+-	FormatHandle=0;
+-	CodecHandle=0;
+-    }
+-
+ }
+ 
+ bool k9AviDecode::open(const QString & _fileName) {
+@@ -134,12 +56,12 @@
+         close();
+ 
+     // Open video file
+-    if (av_open_input_file(&m_FormatCtx, _fileName.toUtf8(), NULL, 0, NULL)!=0) {
++    if (avformat_open_input(&m_FormatCtx, _fileName.toUtf8(), NULL, NULL)!=0) {
+         m_error=i18n("Couldn't open the file %1").arg(_fileName);
+         return false; // Couldn't open file}
+     }
+ // Retrieve stream information
+-    if (av_find_stream_info(m_FormatCtx)<0) {
++    if (avformat_find_stream_info(m_FormatCtx, NULL)<0) {
+         m_error =i18n("Couldn't find stream information");
+         return false; // Couldn't find stream information
+     }
+@@ -168,7 +90,7 @@
+         return false; // Codec not found
+     }
+ // Open codec
+-    if (avcodec_open(m_CodecCtx, m_Codec)<0) {
++    if (avcodec_open2(m_CodecCtx, m_Codec, NULL)<0) {
+         m_error =i18n("Could'nt open the codec");
+         return false; // Could not open codec
+     }
+@@ -245,15 +167,14 @@
+         // Is this a packet from the video stream?
+         if (packet.stream_index==m_videoStream) {
+             // Decode video frame
+-            avcodec_decode_video(m_CodecCtx, m_Frame, &frameFinished,
+-                                 packet.data, packet.size);
++            avcodec_decode_video2(m_CodecCtx, m_Frame, &frameFinished,
++                                 &packet);
+ 
+             // Did we get a video frame?
+             if (frameFinished) {
+ //            if (m_Frame->pts >=fspos)
+ 		int64_t cur_dts=fspos;
+-		if (m_FormatCtx->cur_st)
+-		    cur_dts=	m_FormatCtx->cur_st->cur_dts;
++		cur_dts=packet.dts;
+                 if (cur_dts >=fspos) {
+                     bFound=true;
+ #ifndef HAVE_SWSCALE
+@@ -309,7 +230,7 @@
+         avcodec_close(m_CodecCtx);
+ 
+         // Close the video file
+-        av_close_input_file(m_FormatCtx);
++        avformat_close_input(&m_FormatCtx);
+         m_opened=false;
+     }
+ }
+diff -ur k9copy-2.3.8-Source.orig/src/import/k9avidecode.h k9copy-2.3.8-Source/src/import/k9avidecode.h
+--- k9copy-2.3.8-Source.orig/src/import/k9avidecode.h	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/import/k9avidecode.h	2012-11-28 20:04:24.502809435 -0300
+@@ -14,49 +14,26 @@
+ 
+ #include "k9common.h"
+ #include <qobject.h>
+-#include <avformat.h>
++
++extern "C" {
++#include <libavformat/avformat.h>
++}
++
+ #include <qimage.h>
+ #include <cstdlib>
+ #include <QObject>
+ #ifdef HAVE_SWSCALE
+-#include <swscale.h>
++
++extern "C" {
++#include <libswscale/swscale.h>
++#include <libavutil/mathematics.h>
++}
++
+ #endif
+ /**
+ 	@author Jean-Michel PETIT <k9copy@free.fr>
+ */
+ 
+-
+-//typedef dvd_file_t * (*DVDOpenFile_t) ( dvd_reader_t *, int, dvd_read_domain_t );
+-typedef void (*av_register_all_t) (void);
+-typedef int64_t (*av_gettime_t) (void);
+-typedef int (*av_open_input_file_t)(AVFormatContext **, const char *,AVInputFormat *,int, AVFormatParameters *);
+-typedef int (*av_find_stream_info_t)(AVFormatContext *);
+-typedef AVCodec* (*avcodec_find_decoder_t)(enum CodecID);
+-typedef int (*avcodec_open_t)(AVCodecContext *, AVCodec *);
+-typedef AVFrame * (*avcodec_alloc_frame_t)(void);
+-
+-typedef int (*avpicture_get_size_t)(int , int , int );
+-typedef void * (*av_malloc_t)(unsigned int );
+-typedef int (*avpicture_fill_t)(AVPicture *, uint8_t *,int , int , int);
+-typedef int (*av_read_frame_t)(AVFormatContext *, AVPacket *);
+-
+-typedef int (*avcodec_decode_video_t)(AVCodecContext *, AVFrame *,int *, uint8_t *, int );
+-typedef int (*img_convert_t)(AVPicture *, int , const AVPicture *, int ,int, int);
+-typedef void (*av_free_t)(void *);
+-typedef int (*avcodec_close_t)(AVCodecContext *);
+-typedef void (*av_close_input_file_t)(AVFormatContext *);
+-typedef int (*av_seek_frame_t)(AVFormatContext *,int,int64_t timestamp,int flags); 		typedef int64_t (*av_rescale_q_t)(int64_t , AVRational , AVRational )	;
+-typedef void (*avcodec_flush_buffers_t)(AVCodecContext *);
+-typedef void (*av_free_packet_t)(AVPacket *);
+-
+-#ifdef HAVE_SWSCALE
+-typedef void (*sws_freeContext_t)(struct SwsContext *swsContext);
+-typedef struct SwsContext* (*sws_getContext_t)(int srcW, int srcH, int srcFormat, int dstW, int dstH, int dstFormat, int flags,
+-                                  SwsFilter *srcFilter, SwsFilter *dstFilter, double *param);
+-typedef int (*sws_scale_t)(struct SwsContext *context, uint8_t* src[], int srcStride[], int srcSliceY,int srcSliceH, uint8_t* dst[], int dstStride[]);
+-#endif
+-
+-
+ class k9AviDecode : public QObject
+ {
+ Q_OBJECT
+@@ -76,36 +53,6 @@
+ 	QString getError() const;
+ 	
+ private:
+-    av_register_all_t av_register_all;
+-    av_open_input_file_t av_open_input_file;
+-    av_find_stream_info_t av_find_stream_info;
+-    avcodec_find_decoder_t avcodec_find_decoder;
+-    avcodec_open_t avcodec_open;
+-    avcodec_alloc_frame_t avcodec_alloc_frame;
+-    av_seek_frame_t av_seek_frame;
+-    avpicture_get_size_t avpicture_get_size;
+-    av_malloc_t av_malloc;
+-    avpicture_fill_t avpicture_fill;
+-    av_read_frame_t av_read_frame;
+-    avcodec_decode_video_t avcodec_decode_video;
+-    img_convert_t img_convert;
+-    av_free_t av_free;
+-    avcodec_close_t avcodec_close;
+-    av_close_input_file_t av_close_input_file;
+-    av_rescale_q_t av_rescale_q;
+-    av_gettime_t av_gettime;
+-    avcodec_flush_buffers_t avcodec_flush_buffers;
+-    av_free_packet_t av_free_packet;
+-#ifdef HAVE_SWSCALE
+-    sws_freeContext_t sws_freeContext;
+-    sws_getContext_t sws_getContext;
+-    sws_scale_t sws_scale;
+-#endif
+-    void *CodecHandle;
+-    void *FormatHandle;
+-    void *SwscaleHandle;
+-    int glibref;
+-
+     AVFormatContext *m_FormatCtx;
+     AVCodecContext *m_CodecCtx;
+     AVCodec *m_Codec;
+diff -ur k9copy-2.3.8-Source.orig/src/import/k9importfiles.cpp k9copy-2.3.8-Source/src/import/k9importfiles.cpp
+--- k9copy-2.3.8-Source.orig/src/import/k9importfiles.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/import/k9importfiles.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -17,7 +17,10 @@
+ #include "k9tools.h"
+ #include <QDockWidget>
+ #include "images.h"
+-#include "dvdread.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include <QMenu>
+ #include <QCloseEvent>
+ #ifndef BACKLITE
+diff -ur k9copy-2.3.8-Source.orig/src/import/k9newdvd.cpp k9copy-2.3.8-Source/src/import/k9newdvd.cpp
+--- k9copy-2.3.8-Source.orig/src/import/k9newdvd.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/import/k9newdvd.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -24,9 +24,10 @@
+ #include <qfileinfo.h>
+ #include "k9cell.h"
+ #include "k9ifo2.h"
+-#include "nav_types.h"
+-#include "ifo_types.h"
+-#include "dvdread.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include <QDir>
+ #ifndef BACKLITE
+ #include <kstandarddirs.h>
+diff -ur k9copy-2.3.8-Source.orig/src/main/k9copy.cpp k9copy-2.3.8-Source/src/main/k9copy.cpp
+--- k9copy-2.3.8-Source.orig/src/main/k9copy.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/main/k9copy.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -40,7 +40,10 @@
+ #include "k9tools.h"
+ #include <QDockWidget>
+ #include "images.h"
+-#include "dvdread.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include <QMenu>
+ #include "k9dialogs.h"
+ #include "k9assistant.h"
+diff -ur k9copy-2.3.8-Source.orig/src/mpeg2/k9plaympeg2.cpp k9copy-2.3.8-Source/src/mpeg2/k9plaympeg2.cpp
+--- k9copy-2.3.8-Source.orig/src/mpeg2/k9plaympeg2.cpp	2011-12-09 18:08:41.000000000 -0300
++++ k9copy-2.3.8-Source/src/mpeg2/k9plaympeg2.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -11,8 +11,9 @@
+ //
+ #include "k9plaympeg2.h"
+ #include "kdecmpeg2.h"
+-#include "dvdnav.h"
+-
++#define this _this
++#include <dvdnav.h>
++#undef this
+ #include <qapplication.h>
+ 
+ k9PlayMPEG2::k9PlayMPEG2()
+@@ -50,7 +51,7 @@
+ 
+ 
+     /* open dvdnav handle */
+-    if (dvdnav_open(&dvdnav, m_device.toUtf8(),m_dvd) != DVDNAV_STATUS_OK) {
++    if (dvdnav_open(&dvdnav, m_device.toUtf8()) != DVDNAV_STATUS_OK) {
+         setError("ERR:Error on dvdnav_open\n");
+         return ;
+     }
+diff -ur k9copy-2.3.8-Source.orig/src/player/k9play.cpp k9copy-2.3.8-Source/src/player/k9play.cpp
+--- k9copy-2.3.8-Source.orig/src/player/k9play.cpp	2011-12-09 18:08:42.000000000 -0300
++++ k9copy-2.3.8-Source/src/player/k9play.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -14,15 +14,19 @@
+ #include "k9cell.h"
+ #include "k9vamps.h"
+ 
+-#include "dvdnav.h"
+-#include "dvdread.h"
++#define this _this
++#include <dvdnav.h>
++#undef this
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <inttypes.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+-#include "dvdread.h"
+ 
+ 
+ #ifdef BACKLITE
+@@ -351,7 +355,7 @@
+     }
+ 
+     /* open dvdnav handle */
+-    if (dvdnav_open(&dvdnav, m_device.toUtf8(),NULL) != DVDNAV_STATUS_OK) {
++    if (dvdnav_open(&dvdnav, m_device.toUtf8()) != DVDNAV_STATUS_OK) {
+         writeOutput("ERR:Error on dvdnav_open\n");
+         emit sigError(i18n("Error opening the DVD"));
+         end();
+diff -ur k9copy-2.3.8-Source.orig/src/player/main.cpp k9copy-2.3.8-Source/src/player/main.cpp
+--- k9copy-2.3.8-Source.orig/src/player/main.cpp	2011-12-09 18:08:42.000000000 -0300
++++ k9copy-2.3.8-Source/src/player/main.cpp	2012-11-28 20:04:31.502169428 -0300
+@@ -18,7 +18,10 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include "src/dvdnav/common.h"
++#include <ifo_types.h>
++#include <ifo_read.h>
++#include <nav_read.h>
++#include <nav_types.h>
+ #include "k9copy.h"
+ #include "k9play.h"
+ #include <kapplication.h>

@@ -1,0 +1,13 @@
+post_install() {
+    xdg-desktop-menu  forceupdate --mode system
+    xdg-icon-resource forceupdate --mode system --theme hicolor
+    update-desktop-database -q
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    post_install
+}
