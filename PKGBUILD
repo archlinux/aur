@@ -10,10 +10,8 @@ license=('MIT')
 conflicts=('python2-tweepy')
 depends=('python2-requests' 'python2-requests-oauthlib' 'python2-six')
 makedepends=(
-  'python-setuptools' 'python-pip' 'python2-setuptools' 'python2-pip'
-  'python-requests' 'python-requests-oauthlib' 'python-six'
+  'python2-setuptools' 'python2-pip' 'git'
   'python2-requests' 'python2-requests-oauthlib' 'python2-six'
-  'git'
 )
 source=("${pkgname%}::git+https://github.com/tweepy/tweepy")
 sha256sums=('SKIP')
