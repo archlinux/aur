@@ -1,22 +1,32 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
 pkgbase=('pip2pkgbuild')
-pkgname=('pip2pkgbuild')
+pkgname=('pip2pkgbuild' 'python2-pip2pkgbuild')
 _module='pip2pkgbuild'
-pkgver='0.1.1'
+pkgver='0.1.3'
 pkgrel=1
 pkgdesc="Generate PKGBUILD file for a Python module from PyPi"
 url="https://github.com/wenLiangcan/pip2pkgbuild"
-depends=('python' 'python-setuptools')
-makedepends=('python-setuptools')
+depends=()
+makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/p/pip2pkgbuild/pip2pkgbuild-${pkgver}.tar.gz")
-md5sums=('bc0ffd2fbb789a8952ab6db41030f082')
+md5sums=('25193aabbd7c91bf6574eef66584214e')
 
-package() {
-    depends+=()
+prepare() {
+    cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
+}
+
+package_pip2pkgbuild() {
+    depends+=('python' 'python-setuptools')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
+}
+
+package_python2-pip2pkgbuild() {
+    depends+=('python2' 'python2-setuptools')
+    cd "${srcdir}/${_module}-${pkgver}-python2"
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
