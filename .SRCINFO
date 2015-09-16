@@ -1,6 +1,6 @@
 pkgbase = esteidfirefoxplugin
 	pkgdesc = Firefox ID card signing plugin.
-	pkgver = 3.8.0.1115
+	pkgver = 3.8.1.1116
 	pkgrel = 1
 	url = http://www.id.ee/
 	arch = x86_64
@@ -11,10 +11,8 @@ pkgbase = esteidfirefoxplugin
 	depends = esteidpkcs11loader
 	conflicts = esteid-browser-plugin-svn
 	conflicts = sk-esteidfirefoxplugin-svn
-	source = https://installer.id.ee/media/sources/esteidfirefoxplugin-3.8.0.1115.tar.gz
-	source = https://installer.id.ee/media/sources/esteidfirefoxplugin-3.8.0.1115.tar.gz.asc
-	sha256sums = 2783d275f08e3addc1e07990656220568477261367b56aa4737a89e14517afef
-	sha256sums = SKIP
+	source = https://installer.id.ee/media/ubuntu/pool/main/e/esteidfirefoxplugin/esteidfirefoxplugin_3.8.1.1116-ubuntu-13-10.tar.gz
+	sha256sums = b8c87404ad736d2172be31dc113d5d8bcc796ce76187997f4a4b76613f881f0f
 
 pkgname = esteidfirefoxplugin
 
