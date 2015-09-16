@@ -13,11 +13,11 @@ source=("https://pypi.python.org/packages/source/t/tabulate/tabulate-${pkgver}.t
 sha256sums=('9071aacbd97a9a915096c1aaf0dc684ac2672904cd876db5904085d6dac9810e')
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/tabulate-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/tabulate-$pkgver"
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 }
