@@ -13,8 +13,8 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=perl-config-inifiles
-pkgver=2.83
-pkgrel=2
+pkgver=2.88
+pkgrel=1
 pkgdesc="A Perl module for reading .ini-style configuration files"
 arch=('any')
 url="http://search.cpan.org/dist/Config-IniFiles/"
@@ -23,7 +23,7 @@ depends=('perl' 'perl-list-moreutils')
 makedepends=('perl-module-build')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Config-IniFiles-$pkgver.tar.gz")
-md5sums=('c34156374d3842289e537aaafa7b937f')
+md5sums=('c322dde13d7d48b1f9d0f30f661002cf')
 
 build() {
   cd "$srcdir"/Config-IniFiles-$pkgver
