@@ -1,17 +1,16 @@
 pkgbase = ocrpdf
 	pkgdesc = OCR a PDF file and make it browsable
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://www.crivatec.de
 	install = ocrpdf.install
 	arch = any
 	license = GPL
-	depends = python-pypdf2
 	depends = pythonmagick
 	depends = python-pillow
 	depends = python-tesserwrap
-	source = http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/ocrpdf-0.5.0.tar.xz
-	md5sums = f9247ba346dbd428564a9a06bd338ae0
+	source = http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/ocrpdf-0.6.0.tar.xz
+	md5sums = f7c297e12ffbec21f68d82aafc9ea13d
 
 pkgname = ocrpdf
 
