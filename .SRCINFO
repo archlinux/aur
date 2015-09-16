@@ -1,0 +1,15 @@
+pkgbase = garchdeps-git
+	pkgdesc = Tool that shows dependencies of Arch Linux packages in a graphical format
+	pkgver = 2013.09.21
+	pkgrel = 1
+	url = http://bruno.adele.im/projets/garchdeps
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	optdepends = graphviz
+	source = git://github.com/badele/garchdeps.git
+	sha256sums = SKIP
+
+pkgname = garchdeps-git
+
