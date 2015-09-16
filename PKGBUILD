@@ -1,10 +1,11 @@
 # Maintainer: David Manouchehri <manouchehri@riseup.net>
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 # Contributor: veox <veox at wemakethings dot net>
+# Contributor: Vuokko <vuokko@msn.com>
 
 _gitname='libsigrok'
 pkgname="${_gitname}-git"
-pkgver=0.2.1.r1681.g1e76596
+pkgver=0.2.1.r1719.geb2373f
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -30,7 +31,7 @@ build() {
   cd "${srcdir}/${_gitname}"
 
   ./autogen.sh
-  ./configure --prefix=/usr --disable-java --disable-python
+  PYTHON=python2 ./configure --prefix=/usr --disable-java --disable-python
 
   make
 }
