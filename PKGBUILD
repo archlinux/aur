@@ -13,13 +13,13 @@ _pyver="python2"
 _pybase='aws-eb-cli'
 if [ "${_pyver}" = 'python' ]; then
 pkgname="${_pybase}"
-_pyverother='python2'
+_pyverother='python2-'
 else
 pkgname="${_pyver}-${_pybase}"
-_pyverother='python'
+_pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.5.2'
+pkgver='3.5.3'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -29,7 +29,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('a753dbff9a9888b50ba13b221e6e8126e4697a1d61ba871e37c4ac782686da5f')
+sha256sums=('3b384526730714268dad4e897193a58819ace42eeed1abd16e4cd7c4a2c2c078')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
@@ -109,7 +109,7 @@ check() {
 package() {
   set -u
   depends=("${_pyver}" "${_pydepends[@]}")
-  conflicts=("${_pyverother}-${pkgbase}")
+  conflicts=("${_pyverother}${_pybase}")
   cd "${_srcdir}"
   ${_pyver} 'setup.py' install --root "${pkgdir}"
   install -Dpm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
