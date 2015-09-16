@@ -1,0 +1,4 @@
+nodejs-jscs-*
+pkg/
+src/
+v*.tar.gz
