@@ -7,7 +7,7 @@ pkgdesc="A Python library for accessing the entire Twitter API"
 arch=('any')
 url="https://github.com/tweepy/tweepy"
 license=('MIT')
-conflicts=('python-tweepy' 'python2-tweepy')
+conflicts=('python2-tweepy')
 depends=('python2-requests' 'python2-requests-oauthlib' 'python2-six')
 makedepends=(
   'python-setuptools' 'python-pip' 'python2-setuptools' 'python2-pip'
