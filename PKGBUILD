@@ -9,7 +9,7 @@ url="http://www.delorie.com/djgpp/"
 depends=('glibc')
 provides=('djgpp-djcrx')
 conflicts=('djgpp-djcrx')
-license=("GPL")
+license=(GPL LGPL custom:djgpp)
 source=(
 	"http://www.delorie.com/pub/djgpp/beta/v2/djcrx${pkgver//./}.zip"
 	"http://www.delorie.com/pub/djgpp/beta/v2/djlsr${pkgver//./}.zip"
@@ -61,4 +61,6 @@ package() {
 		install -Dm 0755 "$file" "$pkgdir/usr/$_target_alias/bin/${file%.exe}"
 		ln -s "../$_target_alias/bin/${file%.exe}" "$pkgdir/usr/bin/$_target_alias-${file%.exe}"
 	done
+
+	install -Dm644 "$srcdir/copying.dj" "$pkgdir/usr/share/licenses/$pkgname/copying.dj"
 }
