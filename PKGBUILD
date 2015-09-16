@@ -13,7 +13,7 @@
 
 pkgname=ssldump
 pkgver=0.9b3
-pkgrel=13
+pkgrel=14
 pkgdesc="SSLv3/TLS network protocol analyzer (from 2002)"
 url="http://ssldump.sourceforge.net/"
 license=('custom')
@@ -43,6 +43,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make prefix=$pkgdir/usr install
-  install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  make prefix="$pkgdir/usr" install
+  install -D -m644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
