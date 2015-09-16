@@ -1,7 +1,7 @@
 # Maintainer: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=15.5.40
+pkgver=15.5.41
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=('!makeflags')
 source=("http://download.manager.io/$pkgname.zip"
         "fix-path.patch"
         "manager-accounting.desktop")
-sha256sums=('deda396788005b1bc2437cf348041ed1180a2b2a8b52fb1290782a1b8964fe9d'
+sha256sums=('9968175d3f0b5beab7a2417f26b97be1b86fd2e866763847cebbf74b2e3084ff'
             '845be6d1c2f90597cac8ec7a35f4661030f067fb91fc7163c98456ffb1776adf'
             'a90354b1af982e8bda3adbcfbfb5ac5f83c6e80da402ecf4a54a0200ed9a6195')
 
