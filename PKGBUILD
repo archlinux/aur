@@ -2,7 +2,7 @@
 
 pkgname="knime-sdk"
 _upstream_name="eclipse_knime"
-pkgver="2.11.3"
+pkgver="2.12.0"
 pkgrel="1"
 pkgdesc="Software Development Kit for Knime"
 url="http://www.knime.org/"
@@ -20,11 +20,11 @@ source=("http://www.knime.org/knime_downloads/linux/${_upstream_name}_${pkgver}.
         'knime.sh'
         'knime-sdk.desktop'
         'LICENSE')
-md5sums=('adce712518c2e1cf889fe23bf08b1fbb'
+md5sums=('c601305c5f99992d60dd467210739159'
          'db5bad392dda08e0694bc3b4b72734db'
          'e51afecee76a22937b5d5500056eeabd'
          '9e93e4def16f04f7808bddb48da3c009')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='72511f7ff1eec09334c46a2361e693a7'
+[ "${CARCH}" = 'x86_64' ] && md5sums[0]='7d8cd890988dbab2134edb54048cd757'
 
 package() {
     installpath="/usr/share/java"
