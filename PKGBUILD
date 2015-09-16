@@ -36,7 +36,6 @@ prepare() {
 #}
 
 package_python-i3-git() {
-  _pkgname=python-i3
   provides=($_pkgname)
   conflicts=($_pkgname)
   depends=('python' 'i3-wm')
@@ -53,12 +52,11 @@ package_python-i3-git() {
 }
 
 package_python2-i3-git() {
-  _pkgname=python2-i3
-  provides=($_pkgname)
-  conflicts=($_pkgname)
+  provides=($_pkgname2)
+  conflicts=($_pkgname2)
   depends=('python2' 'i3-wm')
 
-  cd $_pkgname
+  cd $_pkgname2
   python2 setup.py install --root="$pkgdir/" --optimize=1
 
   # Install some of the useful examples
