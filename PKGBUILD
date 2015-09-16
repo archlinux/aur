@@ -1,4 +1,4 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
 # http://github.com/fukawi2/aur-packages
 # Contributor: Paolo Stivanin aka Polslinux <admin AT polslinux DOT it>
 # pkgrel3 patcher: Ivan de Jesús Pompa García <ivan.pompa@gmx.com>
