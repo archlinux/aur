@@ -1,0 +1,16 @@
+pkgbase = jnxlibc
+	pkgdesc = General purpose C library with many useful components
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/AlexsJones/jnxlibc
+	arch = any
+	groups = base-devel
+	license = GPL
+	makedepends = doxygen
+	makedepends = cmake
+	depends = glibc
+	source = jnxlibc-1.8.tar.gz::https://github.com/AlexsJones/jnxlibc/archive/v1.8.tar.gz
+	sha256sums = 5c2a719ffc97215178fe66085030c9284331526bb3c042b143782b9efc6017bc
+
+pkgname = jnxlibc
+
