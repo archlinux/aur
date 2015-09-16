@@ -1,0 +1,17 @@
+pkgbase = python-peewee
+	pkgdesc = a little orm
+	pkgver = 2.6.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/peewee/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-psycopg2: for PostgreSQL database support
+	optdepends = mysql-python: for MySQL database support
+	optdepends = python-pymysql: for MySQL database support
+	source = http://pypi.python.org/packages/source/p/peewee/peewee-2.6.3.tar.gz
+	sha256sums = 2918d416f75665ba222810fe99ec571d7d0c9c21b37d02101bdf2ddaf13c42a2
+
+pkgname = python-peewee
+
