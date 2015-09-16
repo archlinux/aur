@@ -1,7 +1,7 @@
 pkgbase = python-ldif3
 	pkgdesc = generate and parse LDIF data
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xi/ldif3
 	arch = any
 	license = BSD
