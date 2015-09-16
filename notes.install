@@ -1,0 +1,17 @@
+post_upgrade() {
+      usr/lib/vlc/vlc-cache-gen -f /usr/lib/vlc/plugins
+}
+
+post_remove() {
+  post_upgrade
+}
+
+post_install() {
+  post_upgrade
+  printf "\e[37;1m\e[44;1m%s\e[0m\n" "\
+ Please install a soundfont in order fluidsynth plugin to
+ be able to play your midi files. Then, open vlc and select
+ your soundfont in Tools > Preferences > Show settings/All
+ (Advanced Preferences) > Input / Codecs > Audio codecs
+ > FluidSynth"
+}
