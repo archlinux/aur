@@ -1,0 +1,16 @@
+pkgbase = xxhash
+	pkgdesc = Extremely fast non-cryptographic hash algorithm
+	pkgver = r42
+	pkgrel = 1
+	url = https://github.com/Cyan4973/xxHash
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = lib32-glibc
+	depends = glibc
+	source = https://github.com/Cyan4973/xxHash/archive/r42.tar.gz
+	sha1sums = 196ecb63d818bda9fc5e3041bd517267fd58a7e3
+
+pkgname = xxhash
+
