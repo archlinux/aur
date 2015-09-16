@@ -1,4 +1,4 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
 # Contributor: Valere Monseur <valere.monseur@NO-SPAM.ymail.com>
 # http://github.com/fukawi2/aur-packages
 
