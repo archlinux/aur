@@ -19,15 +19,15 @@
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: Cold (current_euid patch)
-# Contributor: kolasa (4.0 & 4.1 kernel patch)
+# Contributor: ubuntu (4.1 kernel patch)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-test
-pkgver=15.7
+pkgver=15.9
 pkgrel=1
 # _betano=1.0
-_amdver=15.20.1046
+_amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
@@ -65,7 +65,8 @@ source=(
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-x86.x86_64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
-    http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
+#     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
+    http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
     catalyst_build_module
     lib32-catalyst.sh
     catalyst.sh
@@ -88,10 +89,12 @@ source=(
     cold-fglrx-3.14-current_euid.patch
     fglrx_gpl_symbol.patch
     fglrx_3.17rc6-no_hotplug.patch
-    kolasa_4.0-cr4-strn.patch
-    kolasa_4.1_remove-IRQF_DISABLED-15.7.patch)
+    ubuntu_buildfix_kernel_4.0.patch
+    ubuntu_buildfix_kernel_4.1.patch
+    ubuntu_buildfix_kernel_4.2.patch
+    4.2-fglrx-has_fpu.patch)
 
-md5sums=('65bb3ac5ec0201ba7940ae0db151bf3d'
+md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '601d9c756571dd79d26944e54827631e'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
@@ -114,14 +117,17 @@ md5sums=('65bb3ac5ec0201ba7940ae0db151bf3d'
 	 'ba33b6ef10896d3e1b5e4cd96390b771'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '67a22f624bae95a76638ce269392cb01'
-	 'dee3df1c5d3ed87363f4304da917fc00'
-	 '8776efc373bcfec81355f5ac56c84d90')
+	 '880d5e59554cda382f74206c202942be'
+	 '982451bcc1fa1ee3da53ffa481d65581'
+	 '88832af8d6769aa51fa9b266a74394e0'
+	 'ed7748a593d6b894269f8c7856b7ae50')
+	 
 
 
 
 build() {
   ## Unpack archive
-     /bin/sh ./amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
+     /bin/sh ./AMD-Catalyst-${pkgver}-Linux-installer-${_amdver}-x86.x86_64.run --extract archive_files
 # mkdir common
 # mv etc lib usr common
 # mkdir archive_files
@@ -300,8 +306,10 @@ package() {
 #      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
 #	since 3.19 not only i686 needs gpl symbol - V
       patch -Np1 -i ../fglrx_gpl_symbol.patch
-      patch -Np1 -i ../kolasa_4.0-cr4-strn.patch
-      patch -Np1 -i ../kolasa_4.1_remove-IRQF_DISABLED-15.7.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.0.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.1.patch
+#       patch -Np1 -i ../ubuntu_buildfix_kernel_4.2.patch        #two 4.2 patches left for testing purposes, use both simultaneously - V
+#       patch -Np1 -i ../4.2-fglrx-has_fpu.patch
 
     # Prepare modules source files
       _archdir=x86_64
