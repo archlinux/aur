@@ -1,4 +1,4 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
 # Maintainer: Guillaume DUMOULIN <guillaume.dumoulin@gmail.com>
 # Contributor: elsixdiab
 
