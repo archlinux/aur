@@ -2,7 +2,7 @@ pkgbase = xfce4-dockbarx-plugin
 	pkgdesc = Embed DockbarX in the xfce4-panel
 	pkgver = 0.4.1
 	pkgrel = 1
-	url = http://xfce-look.org/content/show.php?content=157865
+	url = https://github.com/TiZ-EX1/xfce4-dockbarx-plugin
 	arch = i686
 	arch = x86_64
 	license = X11
