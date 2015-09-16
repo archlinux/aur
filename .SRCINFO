@@ -6,7 +6,7 @@ pkgbase = backupchecker
 	arch = any
 	license = GPLv3
 	depends = python>=3.4
-	source = https://github.com/backupchecker/backupchecker/archive/1.8.tar.gz
+	source = backupchecker-1.8.tar.gz::https://github.com/backupchecker/backupchecker/archive/1.8.tar.gz
 	md5sums = 3b316ca50b329906719432892db2433f
 
 pkgname = backupchecker

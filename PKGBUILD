@@ -19,7 +19,7 @@ arch=(any)
 url="https://github.com/backupchecker/backupchecker"
 license=('GPLv3')
 depends=('python>=3.4')
-source=("https://github.com/backupchecker/backupchecker/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/backupchecker/backupchecker/archive/${pkgver}.tar.gz")
 md5sums=('3b316ca50b329906719432892db2433f')
 
 package() {
