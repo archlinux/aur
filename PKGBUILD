@@ -1,7 +1,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 _hkgname=trifecta
 pkgname=haskell-trifecta
-pkgver=1.5.1.3
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A modern parser combinator library with convenient diagnostics"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -9,16 +9,9 @@ license=('custom:BSD3')
 arch=('i686' 'x86_64')
 depends=('ghc' 'haskell-ansi-terminal<0.7' 'haskell-ansi-wl-pprint<0.7' 'haskell-array' 'haskell-blaze-builder<0.5' 'haskell-blaze-html<0.9' 'haskell-blaze-markup<0.8' 'haskell-bytestring' 'haskell-charset<1' 'haskell-comonad<5' 'haskell-containers' 'haskell-deepseq' 'haskell-fingertree<0.2' 'haskell-hashable<1.3' 'haskell-lens<5' 'haskell-mtl' 'haskell-parsers<1' 'haskell-reducers<4' 'haskell-semigroups<1' 'haskell-transformers' 'haskell-unordered-containers<0.3' 'haskell-utf8-string<1.1')
 options=('staticlibs')
-source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz
-        '0001-Version-bumps.patch')
-md5sums=('e50446834273ea993e729fffd76a66db'
-         '91354d611dcb9378369b39cb17d5a8ab')
+source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
+md5sums=('31dd06cfa608e2a24863a8c0dfd046bb')
 install=${pkgname}.install
-prepare() {
-    cd ${srcdir}/${_hkgname}-${pkgver}
-    # Will be in next release: https://github.com/ekmett/trifecta/pull/44
-    patch -p1 < ${srcdir}/0001-Version-bumps.patch
-}
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \

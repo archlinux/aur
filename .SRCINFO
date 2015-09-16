@@ -1,6 +1,6 @@
 pkgbase = haskell-trifecta
 	pkgdesc = A modern parser combinator library with convenient diagnostics
-	pkgver = 1.5.1.3
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/trifecta
 	install = haskell-trifecta.install
@@ -30,10 +30,8 @@ pkgbase = haskell-trifecta
 	depends = haskell-unordered-containers<0.3
 	depends = haskell-utf8-string<1.1
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/trifecta/1.5.1.3/trifecta-1.5.1.3.tar.gz
-	source = 0001-Version-bumps.patch
-	md5sums = e50446834273ea993e729fffd76a66db
-	md5sums = 91354d611dcb9378369b39cb17d5a8ab
+	source = http://hackage.haskell.org/packages/archive/trifecta/1.5.2/trifecta-1.5.2.tar.gz
+	md5sums = 31dd06cfa608e2a24863a8c0dfd046bb
 
 pkgname = haskell-trifecta
 
