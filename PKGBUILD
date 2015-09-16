@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-io-prompt'
-pkgver='0.997002'
+pkgver='0.997003'
 pkgrel='1'
 pkgdesc="Interactively prompt for user input"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-term-readkey' 'perl-want')
 makedepends=()
-url='http://search.cpan.org/dist/IO-Prompt'
-source=('http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/IO-Prompt-0.997002.tar.gz')
-md5sums=('292048668ee6c489c61da6665bdc1c1f')
-sha512sums=('468afe08cb5d960070b0895108932f47cc8e151b868ac57d6ae9237c520878d72765fe7f6c34dcf1e72f2453fe608d9fb38cbd13b283e415a038356cf006d27b')
-_distdir="IO-Prompt-0.997002"
+url='https://metacpan.org/release/IO-Prompt'
+source=('http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/IO-Prompt-0.997003.tar.gz')
+md5sums=('7607ed49d4f88bdca43e4411af8745df')
+sha512sums=('77bb0aee716322879b36cd3d393b58426fe50fb72d415fab16b2546b99f4f5c6b3e3f1da06be9d066baa6c549e2469b4b7c3807373c7b6233a689b6a4357664d')
+_distdir="IO-Prompt-0.997003"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
