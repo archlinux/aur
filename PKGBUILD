@@ -1,13 +1,13 @@
 # Contributor: MutantMonkey <mutantmonkey@gmail.com>
 pkgname=qgis-1.6
 pkgver=15265
-pkgrel=7
+pkgrel=8
 pkgdesc="Quantum GIS, Geographic Information System; old 1.6 stable version"
 arch=('i686' 'x86_64')
 url="http://qgis.org/"
 license=('GPL')
 depends=('libmysqlclient' 'postgresql-libs' 'sqlite3' 'jasper' 'curl' 'qt4' 'python2' 'python2-pyqt' 'giflib' 'xerces-c' 'cfitsio' 'qwt5' 'gdal')
-makedepends=('subversion' 'grass64' 'gsl' 'postgis' 'netcdf' 'cmake' 'fcgi' 'python2-sip' 'pyqt')
+makedepends=('subversion' 'gsl' 'postgis' 'netcdf' 'cmake' 'fcgi' 'python2-sip' 'pyqt')
 optdepends=('postgis: postgis support and SPIT plugin'
             'fcgi: qgis mapserver'
             'python2-sip: python-support'
