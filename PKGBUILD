@@ -3,8 +3,8 @@
 
 pkgname=exif-py
 pkgver=2.1.2
-pkgrel=1
-pkgdesc="Python module to extract Exif metadata from tiff and jpeg files."
+pkgrel=2
+pkgdesc="Easy to use Python module to extract Exif metadata from tiff and jpeg files."
 arch=('i686' 'x86_64')
 url="https://github.com/ianare/exif-py"
 license=('custom:BSD')
@@ -12,27 +12,20 @@ depends=('python2')
 source=("https://github.com/ianare/exif-py/archive/$pkgver.tar.gz")
 md5sums=('931117de55f9ba02b412f131108aff0f')
 
-prepare() {
-  sed -i '1s/python/&2/' "$srcdir/$pkgname-$pkgver/EXIF.py"
-}
-
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # lib
   install -Dm755 EXIF.py "$pkgdir/usr/lib/python2.7/site-packages/EXIF.py"
 
-  # bin
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/python2.7/site-packages/EXIF.py "$pkgdir/usr/bin/exif-py"
 
-  # docs
   install -d "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 README.rst ChangeLog.rst "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 README.rst "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 ChangeLog.rst "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
 
-  # license
   install -d "$pkgdir/usr/share/licenses/$pkgname"
-  sed -n '51,80p' EXIF.py > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
