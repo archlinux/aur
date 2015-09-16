@@ -19,19 +19,14 @@ post_install() {
 
     # update the desktop-database
     update-desktop-database -q
+    
         
     echo "==> You must be in the 'bitdefender' group to use BitDefender Antivirus Scanner."
     echo "==>"
     echo "==>  # gpasswd -a USERNAME bitdefender"
-    echo "==>"
-    echo "==> WARNING! The antivirus engine has been removed from this package to prevent"
-    echo "==>          segementation faults. You will need to update the anti virus engine"    
-    echo "==>          via the 'bdgui' or shell before you can scan."        
-    echo "==>"
-    echo "==>  # bdscan --update"         
     echo "==>" 
     echo "==> Register at the URL below to receive your license key and insert it"
-    echo "==> in '/opt/BitDefender-scanner/etc/bdscan.conf'"    
+    echo "==> in '/opt/BitDefender-scanner/etc/bdscan.conf', or use the GUI."    
     echo "==>"
     echo "==>    http://www.bitdefender.com/site/Products/ScannerLicense"
 }
