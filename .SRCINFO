@@ -1,0 +1,14 @@
+pkgbase = judge
+	pkgdesc = Evaluate the quality of jpeg images (e.g. to guess which was saved with higher quality).
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://oldhome.schmorp.de/marc/judge.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libjpeg
+	source = http://oldhome.schmorp.de/marc/data/judge-0.0.2.tar.gz
+	sha256sums = e43d15db51a5bf6f1460df0cdf6e0ea183942a17a83b0e0313102129ba0d4725
+
+pkgname = judge
+
