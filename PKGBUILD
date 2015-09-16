@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=pgloader
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A data loading tool for PostgreSQL, using the COPY command.'
 arch=('x86_64')
 url="http://pgloader.io/"
@@ -15,6 +15,7 @@ prepare() {
     cd "$pkgname-$pkgver"
 
     cp "$srcdir/../LICENSE" .
+    patch -p1 < ${srcdir}/../0001-Adapt-to-the-new-cl-ixf-API.patch
 }
 
 build() {
