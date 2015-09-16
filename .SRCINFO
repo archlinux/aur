@@ -1,6 +1,6 @@
 pkgbase = python-keras
 	pkgdesc = Theano-based Deep Learning library (convnets, recurrent neural networks, and more)
-	pkgver = 0.1.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/fchollet/keras
 	changelog = ChangeLog
@@ -17,8 +17,8 @@ pkgbase = python-keras
 	makedepends = python2-numpy
 	makedepends = python2-scipy
 	makedepends = python2-h5py
-	source = keras.tar.gz::https://github.com/fchollet/keras/archive/0.1.1.tar.gz
-	sha256sums = 5203c19b811d88873fe6fc520c7890c6c6a772692d79a3c164be251fe4941897
+	source = keras.tar.gz::https://github.com/fchollet/keras/archive/0.1.3.tar.gz
+	sha256sums = 0d2a1ce1d25abebdf7480a415f56b5c87e6f999bea3a02f6fe5571f025297037
 
 pkgname = python-keras
 	depends = python
