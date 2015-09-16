@@ -4,7 +4,7 @@
 # Contributor: Andrea 'dedalus' Turconi <andy.dedalus@gmail.com>
 
 pkgname=freefem++
-pkgver=3.36
+pkgver=3.40
 pkgrel=1
 pkgdesc="A PDE oriented language using the finite element method"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('gcc-fortran' 'ed' 'wget')
 options=('!makeflags')
 source=("http://www.freefem.org/ff++/ftp/$pkgname-${pkgver//+/-}.tar.gz"
         'disable-doc.patch')
-sha256sums=('e3aebb8bd79e679ff222e46912e873228fdcf978ceb557d5b3abb520cbdbb9de'
+sha256sums=('464cd13dce778b3f84c6d22c1dc20c8c9416b5239dbb9d083b4a66768c7f6328'
             '4df7aaecfc53f1721415cd38fd1b3ab066fc07cb118a13d32353c2338ba2e13d')
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
   patch -p1 < ../disable-doc.patch
 
   ## fix mumps Makefile includes
-  ed -v download/mumps/Makefile-mumps-5.0.0.inc <<< $',s/^INCS = /& -I. -I\\/usr\\/include /g\nw'
+  ed -v download/mumps/Makefile-mumps-5.0.1.inc <<< $',s/^INCS = /& -I. -I\\/usr\\/include /g\nw'
 
   ## include downloaded headers in ff-c++ jobs
   # ed -v examples++-load/Makefile.in <<< $',s/^	 .\\/ff-c++/& -I..\\/download\\/include /g\nw'
