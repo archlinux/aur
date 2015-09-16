@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=routino
 pkgver=3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Router for OpenStreetMap Data'
 arch=('x86_64')
 url='http://www.routino.org/'
@@ -27,4 +27,5 @@ package() {
     cd "$pkgname-$pkgver"
 
     make DESTDIR="${pkgdir}" install
+    mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
