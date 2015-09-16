@@ -1,7 +1,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 _hkgname=parsers
 pkgname=haskell-parsers
-pkgver=0.12.2.1
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Parsing combinators"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('ghc' 'haskell-attoparsec<0.14' 'haskell-charset<1' 'haskell-containers' 'haskell-parsec' 'haskell-scientific<0.4' 'haskell-text' 'haskell-transformers' 'haskell-unordered-containers<0.3')
 options=('staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('74ccf6c2b9569a0fe7ab88d2142da344')
+md5sums=('e436e09f8a81010e02e8bd235f50230a')
 install=${pkgname}.install
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
