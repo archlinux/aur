@@ -3,7 +3,7 @@
 
 pkgname=glipper
 pkgver=2.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Clipboard manager for GNOME"
 arch=('any')
 url="https://launchpad.net/glipper"
@@ -15,6 +15,7 @@ md5sums=('a01b832771da95435ae9e1a1218dd334')
 
 package() {
   cd $pkgname-$pkgver
+  sed -i 's!<property name="upper">100<!<property name="upper">1000<!' data/preferences-window.ui
   python2 ./setup.py install --root="$pkgdir/"
 }
 # vim:set ts=2 sw=2 et:
