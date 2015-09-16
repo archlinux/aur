@@ -1,0 +1,14 @@
+pkgbase = vim-yankring
+	pkgdesc = Maintains a history of previous yanks, changes and deletes.
+	pkgver = 19.0
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1234
+	install = vim-yankring.install
+	arch = any
+	license = GPL
+	depends = vim
+	source = vim-yankring-19.0.zip::http://www.vim.org/scripts/download_script.php?src_id=23487
+	sha1sums = 6f4a6f89a70e5f22aba56aa70eb77ddb21396f33
+
+pkgname = vim-yankring
+
