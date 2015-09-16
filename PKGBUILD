@@ -3,7 +3,7 @@
 
 pkgname=exif-py
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy to use Python module to extract Exif metadata from tiff and jpeg files."
 arch=('i686' 'x86_64')
 url="https://github.com/ianare/exif-py"
