@@ -1,0 +1,12 @@
+pkgbase = python2-randomdotorg
+	pkgdesc = Implements python's random number interface by fetching data from random.org
+	pkgver = 0.1.3a3
+	pkgrel = 1
+	url = http://code.google.com/p/randomdotorg/
+	arch = any
+	license = GPL
+	source = https://pypi.python.org/packages/source/r/randomdotorg/randomdotorg-0.1.3a3.tar.gz
+	sha256sums = 63545d0c2f4895815b98c0e0df66d703da61f7079b3409a3056af4f7c959ede6
+
+pkgname = python2-randomdotorg
+
