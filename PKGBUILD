@@ -2,7 +2,7 @@
 
 _pkgname=ranwhen
 pkgname=${_pkgname}-git
-pkgver=20140917
+pkgver=20150917
 pkgrel=1
 pkgdesc="Visualize when your system was running"
 url="https://github.com/p-e-w/ranwhen"
