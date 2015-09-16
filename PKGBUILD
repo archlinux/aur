@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc
-pkgver=3.11.0.1416
+pkgver=3.11.1.1426
 pkgrel=1
 pkgdesc="Qt based UI application for verifying and signing digital signatures"
 arch=('x86_64' 'i686')
@@ -10,16 +10,9 @@ depends=('libdigidocpp' 'qt5-base' 'libldap' 'shared-mime-info' 'esteidcerts' 'c
 makedepends=('cmake' 'opensc' 'qt5-tools' 'qt5-translations')
 conflicts=('qdigidoc-svn' 'sk-qdigidoc-svn')
 install=qdigidoc.install
-source=("https://installer.id.ee/media/ubuntu/pool/main/q/$pkgname/${pkgname}_$pkgver.orig.tar.xz" 
-        "qt55.patch")
-sha256sums=('db9f8e4b99e6b3a9448408d9c25f39698830c7ea9b11c29740c8ff91c3635e4a'
-            '41c19de0ec48b231b24e0bfacae6c0ee9f1f21d0e87c10b3ae6c2c679b793701')
+source=("https://installer.id.ee/media/ubuntu/pool/main/q/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
+sha256sums=('651668ceb655786b131edc714ff87ef9612f763d26b3bccf81836adb7fecb4d5')
 validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
-
-prepare(){
- cd "$srcdir/"
- patch -Np1 -i "$srcdir/qt55.patch"
-}
 
 build() {
   cd "$srcdir/"
