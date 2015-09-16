@@ -29,11 +29,9 @@ pkgbase = mirrorbrain
 	provides = mod_mirrorbrain
 	backup = etc/mirrorbrain.conf
 	source = http://mirrorbrain.org/files/releases/mirrorbrain-2.18.1.tar.gz
-	source = http://mirrorbrain.org/files/releases/mirrorbrain-2.18.1.tar.gz.asc
 	source = mirrorbrain.conf
 	source = logrotate.mb
 	md5sums = a3440d971dcc1b56ee2a9df0bf99b2af
-	md5sums = SKIP
 	md5sums = 82cfccc53e67f589091ab4c2c9720e2a
 	md5sums = 9198922d52ebe83610ddc14db52aea05
 
