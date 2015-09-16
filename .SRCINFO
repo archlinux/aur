@@ -1,6 +1,6 @@
 pkgbase = wget-git
 	pkgdesc = A network utility to retrieve files from the Web
-	pkgver = 1.16.3.r116.gb06fca6
+	pkgver = 1.16.3.r123.gf8901af
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	install = wget.install
