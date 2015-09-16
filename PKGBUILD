@@ -5,12 +5,14 @@
 
 pkgname=xmonad-git
 pkgver=v0.11.r44.g577d5ae
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight X11 tiled window manager written in Haskell"
 arch=('i686' 'x86_64')
 url="http://xmonad.org/"
 license=('BSD')
-depends=('ghc=7.10.1' 'gmp' 'haskell-x11=1.6.1.2' 'sh' 'haskell-mtl=2.2.1' 'haskell-utf8-string=1' 'haskell-extensible-exceptions=0.1.1.4')
+depends=('ghc=7.10.1' 'gmp' 'haskell-x11=1.6.1.2' 'sh' 'haskell-mtl=2.2.1'
+         'haskell-utf8-string=1' 'haskell-extensible-exceptions=0.1.1.4'
+         'haskell-setlocale')
 makedepends=('gendesk')
 optdepends=('xorg-xmessage: for displaying visual error messages')
 conflicts=('xmonad')
