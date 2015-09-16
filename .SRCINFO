@@ -1,0 +1,15 @@
+pkgbase = cwdiff
+	pkgdesc = A colorized version of wdiff
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://code.google.com/p/cj-overlay/
+	arch = any
+	license = GPL
+	depends = wdiff
+	depends = bash
+	optdepends = a2ps: Produce PostScript output
+	source = https://cj-overlay.googlecode.com/files/cwdiff-0.2.4.tar.gz
+	sha256sums = 85f9e64e832ef5d0593389111f3931e2f36ceb1bb8c71a76bfa8f9eb66f847a1
+
+pkgname = cwdiff
+
