@@ -8,6 +8,7 @@ pkgbase = k9copy-frameworks
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = kdesu
 	depends = hicolor-icon-theme
 	depends = kio
