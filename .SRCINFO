@@ -1,6 +1,6 @@
 pkgbase = linux-mptcp
 	pkgdesc = Linux kernel, modules, headers and docs with MultiPath TCP support
-	pkgver = 0.90.485855.ee70e6c
+	pkgver = 0.90.486957.5e606ce
 	pkgrel = 1
 	url = http://www.multipath-tcp.org/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = linux-mptcp
 	source = linux.preset
 	source = change-default-console-loglevel.patch
 	md5sums = SKIP
-	md5sums = ed1d392d9feb77674e7a71c3eda060e6
-	md5sums = 554fb1479cf95995c9291ae56041d900
+	md5sums = 9833eaf0d4c476454d3981b62a21506b
+	md5sums = bd42ba55663f7ae8e6aba34e52139ca6
 	md5sums = eb14dcfd80c00852ef81ded6e826826a
 	md5sums = 92562f0a5d8cc0e5972ab58523dbe0a4
 
