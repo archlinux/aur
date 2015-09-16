@@ -1,0 +1,26 @@
+pkgbase = wingpanel-indicator-ayatana-bzr
+	pkgdesc = Ayatana indicator for Wingpanel
+	pkgver = r12
+	pkgrel = 1
+	url = https://launchpad.net/wingpanel-indicator-ayatana
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgee
+	depends = libindicator-gtk3
+	depends = libwingpanel-2.0.so
+	provides = wingpanel-indicator-ayatana
+	conflicts = wingpanel-indicator-ayatana
+	source = bzr+lp:wingpanel-indicator-ayatana
+	sha256sums = SKIP
+
+pkgname = wingpanel-indicator-ayatana-bzr
+
