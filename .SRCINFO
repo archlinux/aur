@@ -1,0 +1,14 @@
+pkgbase = python2-setuptools_bzr
+	pkgdesc = setuptools plugin for bzr
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://launchpad.net/setuptoolsbzr
+	arch = any
+	license = LGPLv3
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/source/s/setuptools_bzr/setuptools_bzr-2.2.zip
+	md5sums = 87b3062df00c5b4de32daa326bbca5c9
+
+pkgname = python2-setuptools_bzr
+
