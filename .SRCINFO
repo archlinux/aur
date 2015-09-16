@@ -1,7 +1,7 @@
 pkgbase = openssh-hpn-git
 	pkgdesc = A Secure SHell server/client with High Performance patch
-	pkgver = 6.8.P1.r14.g8f3991a
-	pkgrel = 2
+	pkgver = 7.1.P1.r0.g3d385de
+	pkgrel = 1
 	url = http://www.psc.edu/networking/projects/hpn-ssh/
 	arch = i686
 	arch = x86_64

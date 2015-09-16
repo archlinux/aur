@@ -13,8 +13,8 @@
 # https://aur.archlinux.org/packages/op/openssh-hpn/PKGBUILD
 
 pkgname=openssh-hpn-git
-pkgver=6.8.P1.r14.g8f3991a
-pkgrel=2
+pkgver=7.1.P1.r0.g3d385de
+pkgrel=1
 pkgdesc='A Secure SHell server/client with High Performance patch'
 url='http://www.psc.edu/networking/projects/hpn-ssh/'
 license=('custom:BSD')
