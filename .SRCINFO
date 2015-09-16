@@ -1,7 +1,7 @@
 pkgbase = rar2fs
 	pkgdesc = Fuse file system for reading Rar archives
-	pkgver = 1.20.0
-	pkgrel = 5
+	pkgver = 1.21.0
+	pkgrel = 1
 	url = https://hasse69.github.io/rar2fs/
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = rar2fs
 	makedepends = libunrar
 	depends = fuse
 	depends = libunrar
-	source = https://github.com/hasse69/rar2fs/releases/download/v1.20.0/rar2fs-1.20.0.tar.gz
-	source = http://www.rarlab.com/rar/unrarsrc-5.2.7.tar.gz
-	sha256sums = 2b14cc5acefa12a07f5d0b1a4241713707e60e32f7a82cd86879ec1bd9cbae2d
-	sha256sums = ef14757e943787b439fedf2c564c1f38d0db315528a928e0de170860717e2fac
+	source = https://github.com/hasse69/rar2fs/releases/download/v1.21.0/rar2fs-1.21.0.tar.gz
+	source = http://www.rarlab.com/rar/unrarsrc-5.3.4.tar.gz
+	sha256sums = 5913d362c10d02d44714c78ee93a0d093fe5b16c1026700f7f3cf276c93594ec
+	sha256sums = ce4767b8532f0866c609ec99a0b4d21a2f6cb8a786b15092ddf608ec4904b874
 
 pkgname = rar2fs
 
