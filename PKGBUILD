@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  rm -rf build
   mkdir -p build
 }
 
