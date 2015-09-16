@@ -1,4 +1,4 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
 # http://github.com/fukawi2/aur-packages
 # Contributor: Manolis Tzanidakis <manolis@archlinux.org>
 # Contributer: Hussam Al-Tayeb <ht990332@gmail.com>
