@@ -7,9 +7,7 @@
 #  aws-cli & aws-cli-git
 #  python-botocore & python-botocore-git
 
-# TODO: Can we move to bcdoc 0.16. Is the bug fixed in 0.15?
 # TODO: When will we be able to move to the new rsa?
-# TODO: Do we need split packages for python2 (see python-wheel for example)
 
 # Use mcdiff to watch for changes
 _fn_foobar() {
@@ -33,7 +31,7 @@ wheel==0.24.0
 import awscli
 
 
-requires = ['botocore==1.2.1',
+requires = ['botocore==1.2.2',
             'colorama>=0.2.5,<=0.3.3',
             'docutils>=0.10',
             'rsa>=3.1.2,<=3.1.4']
@@ -50,7 +48,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.8.3
+pkgver=1.8.4.r2793.g6c4cb6c
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -58,8 +56,8 @@ arch=('any')
 url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
-  "${_pyver}-bcdoc<0.15.0"    # AUR
-  "${_pyver}-botocore>=1.2.1" # AUR == would make upgrades from AUR imposible. See below.
+  "${_pyver}-bcdoc"           # AUR
+  "${_pyver}-botocore>=1.2.2" # AUR == would make upgrades from AUR imposible. See below.
   "${_pyver}-colorama"{">=0.2.5","<=0.3.3"}  # COM
   "${_pyver}-rsa-3.1.2"{">=3.1.2","<=3.1.4"} # AUR It would be nice to move to the newer version.
   #"${_pyver}-rsa"{">=3.1.2","<=3.1.4"}      # COM
@@ -78,9 +76,9 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-guzzle-sphinx-theme"{">=0.7.10","<0.8"}
 )
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
-source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('8f1d9229741add90caca0dae8c4666178aeb098c68df87d4f90ad62e9a4bccfb')
 options=('!emptydirs')
+source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('702a2a3f2a098eba6531939ebab82b2729f77ab4fd8a181a111e87833a2f80a1')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
@@ -101,6 +99,11 @@ else
   _vcsprovides=()
   _vcsconflicts=()
 fi
+
+prepare() {
+  msg "Dont run this"
+}
+
 
 build() {
   set -u
