@@ -12,7 +12,7 @@ pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
 _pkgver=2.8
 pkgver=2.8.3
-pkgrel=4
+pkgrel=5
 pkgdesc='QGIS (long-term release) is a Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
@@ -59,7 +59,7 @@ source=("${_pkgname}::git://github.com/qgis/QGIS.git#branch=release-${_pkgver//.
         "https://raw.githubusercontent.com/Ariki/QGIS/support-configure-ng/python/console/console.py")
 md5sums=('SKIP'
          '738cc27475119c899c1ce7bf495459ff'
-         '5bac82b00870c491056cd8705be482f0'
+         '3ebaf185073badd96e9c1b484b986d54'
          '57efd9c869ed2d0a50fb7cf35048d99d')
 
 
