@@ -14,8 +14,8 @@ conflicts=("${pkgname}-git")
 provides=("${pkgname}=${pkgver}")
 install="notes.install"
 
-source_i686=("${pkgname}.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}_i386.deb")
-source_x86_64=("${pkgname}.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
+source_i686=("http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}_i386.deb")
+source_x86_64=("http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
 source=("notes.install")
 
 md5sums_i686=('221cc6cca2507ee5f5584b2f757f040c')
