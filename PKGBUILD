@@ -1,4 +1,5 @@
-#Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
+#Maintainer: q9 <qqqqqqqqq9 at gmeyer dot df-kunde dot de>
+#Contributor: Giorgio Gilestro <giorgio@gilest.ro>
 
 pkgname=bashtrash
 pkgver=20101105
