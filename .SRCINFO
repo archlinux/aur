@@ -1,0 +1,21 @@
+pkgbase = jm
+	pkgdesc = H.264/AVC reference software
+	pkgver = 19.0
+	pkgrel = 1
+	url = http://iphome.hhi.de/suehring/tml/
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = gcc
+	makedepends = unzip
+	makedepends = sed
+	depends = gcc-libs
+	source = http://iphome.hhi.de/suehring/tml/download/jm19.0.zip
+	source = http://iphome.hhi.de/suehring/tml/download/COPYRIGHT_ITU.txt
+	source = http://iphome.hhi.de/suehring/tml/download/COPYRIGHT_ISO_IEC.txt
+	sha256sums = 5a87ec1b112423748897fb771f249ac6b7cc8a50c3b56350275857346eed9e1f
+	sha256sums = 0c1a2d8d08247b183d80bb16d4db45a3b74c3421acacd68ff4e1c3163e6cf761
+	sha256sums = f021ad7806bcaa9f12145384688e88fdb8e74003052fa29e5d52509bd2c1794d
+
+pkgname = jm
+
