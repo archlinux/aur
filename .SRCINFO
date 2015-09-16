@@ -1,6 +1,6 @@
 pkgbase = liferea-git
 	pkgdesc = A news aggregator for GTK, git version.
-	pkgver = 1.11.r5332.g1940ca8
+	pkgver = 1.11.r5336.g2f3d1aa
 	pkgrel = 1
 	url = http://liferea.sourceforge.net
 	install = liferea.install
