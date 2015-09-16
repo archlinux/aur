@@ -1,7 +1,7 @@
 pkgbase = ricochet
 	pkgdesc = Anonymous peer-to-peer instant messaging.
-	pkgver = 1.1.0
-	pkgrel = 4
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://ricochet.im/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = ricochet
 	depends = qt5-declarative
 	depends = openssl
 	depends = protobuf
-	source = https://github.com/ricochet-im/ricochet/archive/v1.1.0.tar.gz
-	sha256sums = ab372c46a274825aa51ecc416966bee44fd69088fbc4b9f68fff46967a1becd9
+	source = https://github.com/ricochet-im/ricochet/archive/v1.1.1.tar.gz
+	sha256sums = baa67151ca1ed4ce1fea0367b260c7761f3d69eb9efd801200b627fafe8be978
 
 pkgname = ricochet
 
