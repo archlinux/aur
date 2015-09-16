@@ -1,4 +1,4 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
 # Contributor:  TDY <tdy@gmx.com>
 # Contributor: Max Nemeth <max.nemeth@gmail.com>
 
