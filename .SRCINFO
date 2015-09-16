@@ -1,11 +1,12 @@
 pkgbase = fontconfig-good-defaults
-	pkgdesc = Enhanced default settings for Fontconfig.
+	pkgdesc = Enhanced default settings for Fontconfig and FreeType.
 	pkgver = 20150909
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/fontconfig-good-defaults/
 	arch = any
 	license = custom:Public Domain
 	depends = fontconfig
+	depends = freetype2
 	source = 10-good-defaults.conf
 	source = fontconfig-good-defaults.sh
 	source = LICENSE

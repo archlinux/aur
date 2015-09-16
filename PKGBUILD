@@ -1,12 +1,12 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=fontconfig-good-defaults
 pkgver=20150909
-pkgrel=1
-pkgdesc='Enhanced default settings for Fontconfig.'
+pkgrel=2
+pkgdesc='Enhanced default settings for Fontconfig and FreeType.'
 arch=('any')
 url='https://aur.archlinux.org/packages/fontconfig-good-defaults/'
 license=('custom:Public Domain')
-depends=('fontconfig')
+depends=('fontconfig' 'freetype2')
 source=(10-good-defaults.conf fontconfig-good-defaults.sh LICENSE)
 sha512sums=('93de817788d243f3ca278bbf19b56a431ca9ee622933c715fd73e32d8401c4d2d195b21b5615f8796bb95c985ddb415821cc0973c18cd31c5e0c445d94b89dc6'
             '3adb17e2448be560dac7be226cc1f5783d1dd383e35858549cc351341be86829ea8b79c3c933620be841157c38dfc44a84ec272ce9b1be734cdcaace1f1eac68'
