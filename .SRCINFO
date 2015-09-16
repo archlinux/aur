@@ -1,0 +1,15 @@
+pkgbase = tespeed-git
+	pkgdesc = Terminal network speed test that uses servers from Speedtest.net. It uses nearest test server but can also use one manually specified by the user.
+	pkgver = 20150916.54.02a430e
+	pkgrel = 1
+	url = https://github.com/Janhouse/tespeed
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-lxml
+	source = tespeed::git+http://github.com/Janhouse/tespeed.git
+	md5sums = SKIP
+
+pkgname = tespeed-git
+
