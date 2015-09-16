@@ -1,0 +1,10 @@
+[Unit]
+Description=Amazon DynamoDB Local Daemon
+After=network.target
+
+[Service]
+User=dynamodb
+ExecStart=/usr/bin/dynamodb
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+pkgbase = dynamodb
+	pkgdesc = Amazon DynamoDB Local instance. Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html
+	install = dynamodb.install
+	arch = any
+	license = custom:DynamoDB Local License Agreement
+	depends = java-runtime
+	source = config.cfg
+	source = dynamodb
+	source = dynamodb.service
+	source = http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_2015-07-16_1.0.tar.gz
+	sha256sums = 6a2d271d62de9e4e48bd4bd866a72283dec6bacc097c2f6262ab19fc0feb34d9
+	sha256sums = 9a8c0b87b9a3529cb07c6362d586c12e304d2958da71961d51dfc557a258b848
+	sha256sums = 4024db91c14087290fbce707cadead1ea013dc845216e9758a485b7d2f67c3ca
+	sha256sums = 5868fd4b9f624001cda88059af7a54f412a4794dea0d3497e7c57470bfb272fa
+
+pkgname = dynamodb
+

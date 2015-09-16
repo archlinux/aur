@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ -a ./config.cfg ]; then
+  source /etc/dynamodb/config.cfg
+else
+  shared=true
+  dbPath=/var/lib/dynamodb
+  port=8000
+fi
+
+
+librarypath=/usr/share/dynamodb/DynamoDBLocal_lib
+jar=/usr/share/dynamodb/DynamoDBLocal.jar
+args=("-Djava.library.path=$librarypath" "-jar $jar" "-port $port")
+
+if [ $shared ]; then
+  args+=('-sharedDb')
+fi
+
+if [ $inMemory ]; then
+  args+=('-inMemory')
+else
+  args+=("-dbPath $dbPath")
+fi
+
+args+=$additionalArgs
+
+command=java
+
+echo ${args[*]}
+
+$command ${args[*]}

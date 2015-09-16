@@ -1,0 +1,19 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  getent group "dynamodb" &>/dev/null || groupadd -r dynamodb 1>/dev/null
+  getent passwd "dynamodb" &>/dev/null && usermod -s "/usr/bin/nologin" dynamodb &>/dev/null || useradd -r -g dynamodb -d "/var/lib/dynamodb" -s "/usr/bin/nologin" dynamodb 1>/dev/null
+  chown -R dynamodb:dynamodb "/var/lib/dynamodb"
+  # Removes old data from previous version
+}
+
+post_remove() {
+  if getent passwd "dynamodb" >/dev/null; then
+    userdel dynamodb >/dev/null
+  fi
+  if getent group "dynamodb" >/dev/null; then
+    groupdel dynamodb >/dev/null
+  fi
+}
