@@ -4,14 +4,14 @@
 
 pkgname=microchip-mplabc18-bin
 pkgver=3.40
-pkgrel=1
+pkgrel=2
 pkgdesc="C compiler for PIC18 MCUs"
 arch=(i686 x86_64)
 url=http://www.microchip.com/c18
 license=(custom)
 [[ $CARCH = x86_64 ]] && depends=(lib32-gcc-libs)
-provides=(mplabc18)
-conflicts=(mplabc18)
+provides=('mplabc18' 'microchip-mplabc18_bin')
+conflicts=('mplabc18' 'microchip-mplabc18_bin')
 options=(!strip docs libtool emptydirs !zipman)
 install=$pkgname.install
 instdir=/opt/microchip/mplabc18/v$pkgver

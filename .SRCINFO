@@ -1,14 +1,16 @@
 pkgbase = microchip-mplabc18-bin
 	pkgdesc = C compiler for PIC18 MCUs
 	pkgver = 3.40
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microchip.com/c18
 	install = microchip-mplabc18-bin.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	provides = mplabc18
+	provides = microchip-mplabc18_bin
 	conflicts = mplabc18
+	conflicts = microchip-mplabc18_bin
 	options = !strip
 	options = docs
 	options = libtool
