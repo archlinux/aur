@@ -2,7 +2,7 @@
 
 pkgname="knime-desktop"
 _upstream_name="knime"
-pkgver="2.11.3"
+pkgver="2.12.0"
 pkgrel="1"
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process"
 url="http://www.knime.org/"
@@ -20,11 +20,11 @@ source=("http://www.knime.org/knime_downloads/linux/${_upstream_name}_${pkgver}.
         'knime.sh'
         'knime-desktop.desktop'
         'LICENSE')
-md5sums=('142d974f5a8cbe50cda43b0d09c78767'
+md5sums=('8215c987dc6f5dfd02afcb2a5036c83a'
          '597314dbe6d4aae1d8381388d83d4b81'
          '4de9d5ea5f332ce712dc80b52f0e8501'
          '9e93e4def16f04f7808bddb48da3c009')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='381f3e9f5176eadcedb97201e6d32417'
+[ "${CARCH}" = 'x86_64' ] && md5sums[0]='2f2acafdf0d75b63e82e9f921783477a'
 
 package() {
     installpath="/usr/share/java"
