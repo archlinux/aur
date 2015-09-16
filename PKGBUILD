@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Magno <gabrielmagno1@gmail.com>
 
 _pkgname=wordcloud
-pkgname=python-word_cloud
+pkgname=python-wordcloud
 pkgver=1.1.3
 pkgrel=1
 pkgdesc="A little word cloud generator in Python"

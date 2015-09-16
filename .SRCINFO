@@ -1,4 +1,4 @@
-pkgbase = python-word_cloud
+pkgbase = python-wordcloud
 	pkgdesc = A little word cloud generator in Python
 	pkgver = 1.1.3
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = python-word_cloud
 	source = https://pypi.python.org/packages/source/w/wordcloud/wordcloud-1.1.3.tar.gz
 	sha256sums = 9926d6497035ef297b30c81ec45eb3babb40b46ba09834fe23c9a1e720ede4f1
 
-pkgname = python-word_cloud
+pkgname = python-wordcloud
 
