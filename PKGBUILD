@@ -2,8 +2,8 @@
 
 _pkgname='wfdb'
 pkgname="lib32-${_pkgname}"
-pkgver="10.5.23"
-pkgrel="2"
+pkgver="10.5.24"
+pkgrel="1"
 pkgdesc="Software from PhysioNet for viewing, analyzing, and creating recordings of physiologic signals"
 url="http://www.physionet.org/physiotools/wfdb.shtml"
 license=('GPL')
@@ -16,7 +16,7 @@ makedepends=('gcc-multilib' 'chrpath')
 install="${_pkgname}.install"
 changelog="ChangeLog"
 source=("http://www.physionet.org/physiotools/${_pkgname}.tar.gz")
-md5sums=('0c4dd0bc86408709fe2364f6703c5c66')
+md5sums=('b0542fadcdcaf131f9b447ec87828be3')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -55,9 +55,6 @@ package() {
     cp -R "build/include" "${pkgdir}/usr/"
     cp -R "build/lib" "${pkgdir}/usr/lib32"
     cp -R "build/share" "${pkgdir}/usr/"
-
-    # Why? Why 64???
-    cp -R build/lib64/* "${pkgdir}/usr/lib32"
 }
 
 # vim:set ts=4 sw=4 et:
