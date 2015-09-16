@@ -2,7 +2,7 @@
 
 _pkgbase_=oxygen
 pkgname=${_pkgbase_}-cursors-extra
-pkgver=5.3.2
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="KDE's Oxygen mouse cursor theme - the extra flavours"
 arch=("any")
@@ -44,4 +44,4 @@ package() {
 	done
 }
 
-sha1sums=('86cd76b3eafaf3fd5664f2dadac43b76a54c6e29')
+sha1sums=('87390597d7e08ed7d2ca1032a994e82b7f278178')
