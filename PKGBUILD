@@ -1,24 +1,15 @@
 pkgname=pywu
-pkgver=20141003
+pkgver=1.0
 pkgrel=1
 pkgdesc="A simple python script for fetching data from Weather Underground's API"
 arch=('any')
 url="https://github.com/dh4/pywu"
 license=('BSD')
-depends=('python')
-
-_gitroot='https://github.com/dh4/pywu.git'
-_gitname='pywu'
-
-build() {
-    cd "$srcdir"
-    git clone "$_gitroot"
-}
+depends=('python' 'python-setuptools')
+source=(https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('c044191f8d82fe351097f9ef5a1efa5d83de52d3082e23ab1f93ed94f3814c69')
 
 package() {
-    cd "$srcdir/$_gitname"
-    install -Dm755 "pywu"                       "$pkgdir/usr/bin/pywu"
-    install -Dm644 "LICENSE"                    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "pywu.py"                    "$pkgdir/usr/share/pywu/pywu.py"
-    install -Dm644 "examples/conkyrc.example"   "$pkgdir/usr/share/pywu/examples/conkyrc.example"
+    cd "$srcdir/$pkgname-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1
 }
