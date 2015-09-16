@@ -12,24 +12,21 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=amanda
-pkgver=3.3.5
+pkgver=3.3.7p1
 pkgrel=1
 pkgdesc="Advanced Maryland Automatic Network Disk Archiver"
+url="http://www.amanda.org"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('perl>=5.6.0' 'glib2>=2.2.0' 'gawk' 'gnuplot' 'tar>=1.12' 'xinetd')
-optdepends=('dump: for creating backups in dump format' 'samba: for backing up Windows hosts')
+optdepends=(
+  'dump: for creating backups in dump format'
+  'samba: for backing up Windows hosts'
+  )
 install="$pkgname.install"
-url="http://www.amanda.org"
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz" "xinetd.${pkgname}")
-md5sums=('fd545874dff334c424337ca9d7683ff6'
+md5sums=('621d39b5a328f465fece4653c170cf7f'
          '910c9823073148c576b14d4a71bc6458')
-
-# yes, this pkgbuild is very non-standard and quite a hack, but the upstream
-# devs insist that we need to have an amanda user/group BEFORE the package is
-# built for some annoying reasons. this is why we have to makepkg as root if
-# the 'amanda' user and group don't already exist. if anyone has any better
-# ideas how to do this, I'm happy to accept patches (via github pull request)
 
 # if you want to run amanda as a different user and/or group, change these
 # variables before running makepkg
@@ -44,19 +41,25 @@ _amandadates='var/amanda/amandates'
 _amandadumpdates='var/amanda/dumpdates'
 _amandagnutarlists='var/amanda/gnutar-lists'
 
-build() {
-  # the amanda user and group are required to build
-  if [ -z "$(getent passwd $_amandauser)" ] ; then
-    msg "Adding user/group (temporarily)"
-    groupadd -g $_amandagid $_amandagroup
-    useradd -u $_amandauid -g $_amandagroup -G storage,disk -m -d /var/amanda -s /bin/bash -c "Amanda Backup Daemon" $_amandauser
-    _cleanup=1
-  else
-    _cleanup=0
+_testAmandaUserGroup() {
+  if ! getent group $_amandagroup > /dev/null ; then
+    error "The amanda group must exist prior to building."
+    error "Suggested command: groupadd -g $_amandagid $_amandagroup"
+    return 1
   fi
-  
-  cd $srcdir/$pkgname-$pkgver
-  
+  if ! getent passwd $_amandauser > /dev/null ; then
+    error "The amanda user must exist prior to building."
+    error "Suggested command: useradd --system -u $_amandauid -g $_amandagroup -G storage,disk -m -d /var/amanda -s /bin/bash -c 'Amanda Backup Daemon' $_amandauser"
+    return 2
+  fi
+}
+
+build() {
+  # upstream sources require amanda user and group exist at build time
+  _testAmandaUserGroup
+
+  cd "$srcdir"/$pkgname-$pkgver
+
 	./configure --prefix=/usr \
     --with-configdir=/etc/amanda \
     --with-gnutar-listdir=/var/amanda/gnutar-lists \
@@ -64,78 +67,49 @@ build() {
 		--with-user=$_amandauser \
     --with-group=$_amandagroup \
     --with-ipv6 \
-    --with-ssh-security \
-    --htmldir=/srv/http/docs/$pkgname
+    --with-ssh-security
 
 	make
-	
-  if [ $_cleanup -eq 1 ]; then
-    msg "Removing temporary user/group"
-    userdel -r $_amandauser
-  fi
 }
 
 package() {
-  # the amanda user and group are required to package
-  if [ -z `getent passwd amanda` ]; then
-    msg "Adding user/group amanda (temporarily)"
-    groupadd -g $_amandagid $_amandagroup
-    useradd -u $_amandauid -g $_amandagroup -G storage,disk -m -d /var/amanda -s /bin/bash -c "Amanda Backup Daemon" $_amandauser
-    _cleanup=1
-  else
-    _cleanup=0
-  fi
+  # upstream sources require amanda user and group exist at build time
+  _testAmandaUserGroup
   
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
   
   # Install the compiled output
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
   
-  # Install configuration examples
-  install -dm755 $pkgdir/etc/$pkgname/
-  cp -r example $pkgdir/etc/$pkgname/
+  # symlink example directory
+  install -d -o root -g root -m 0750 "$pkgdir"/etc/$pkgname/
+  ln -sf /usr/share/amanda/example/ "$pkgdir"/etc/$pkgname/example
   
   # Install xinetd configuration
-  install -dm755 $pkgdir/etc/xinetd.d/
-  cp $srcdir/xinetd.$pkgname $pkgdir/etc/xinetd.d/$pkgname
+  install -D -o root -g root -m 0755 "$srcdir"/xinetd.$pkgname "$pkgdir"/etc/xinetd.d/$pkgname
   
   # Create some files
-  install -dm755 $pkgdir/var/$pkgname/
-  chmod 700 $pkgdir/var/$pkgname/
-  chown -R $_amandauser:$_devgroup $pkgdir/var/$pkgname
+  install -d -o $_amandauser -g $_devgroup -m 0700 "$pkgdir"/var/$pkgname/
 
-  touch $pkgdir/$_amandahosts
-  chown $_amandauser:$_devgroup $pkgdir/$_amandahosts
-  chmod 600 $pkgdir/$_amandahosts
-  cat > $pkgdir/var/$pkgname/.amandahosts << EOT
+  install -D -o $_amandauser -g $_devgroup -m 0600 /dev/null "$pkgdir"/$_amandahosts
+  cat > "$pkgdir"/var/$pkgname/.amandahosts << EOT
 # This is where amanda works out what remote connections to allow in the format
 # of <host> <username> <command>
 #
 # server1.example.com   amanda  amdump
 EOT
-  
-  touch $pkgdir/$_amandadates
-  chown $_amandauser:$_devgroup $pkgdir/$_amandadates
-  
-  touch $pkgdir/$_amandadumpdates
-  chown $_amandauser:$_devgroup $pkgdir/$_amandadumpdates
-  chmod 664 $pkgdir/$_amandadumpdates
 
-  install -dm755 $pkgdir/$_amandagnutarlists
-  chown -R $_amandauser:$_devgroup $pkgdir/$_amandagnutarlists
+  # create some of the runtime files amanda requires so they are created with
+  # the correct ownership and permissions.
+  install -D -o $_amandauser -g $_devgroup -m 0664 /dev/null "$pkgdir"/$_amandadates
+  install -D -o $_amandauser -g $_devgroup -m 0664 /dev/null "$pkgdir"/$_amandadumpdates
+  install -d -o $_amandauser -g $_devgroup -m755 "$pkgdir"/$_amandagnutarlists
 
   # Fix permissions
-  chown -R $_amandauser:$_devgroup $pkgdir/etc/$pkgname/
+  chown -R $_amandauser:$_devgroup "$pkgdir"/etc/$pkgname/
   
   # Install the licence
-  install -Dm444 COPYRIGHT $pkgdir/usr/share/licences/$pkgname/COPYRIGHT
-
-  # Cleanup
-  rm -Rf $pkgdir/usr/share/amanda/example/
-  if [ $_cleanup -eq 1 ]; then
-    msg "Removing temporary user/group"
-    userdel -r $_amandauser
-  fi
+  install -Dm444 COPYRIGHT "$pkgdir"/usr/share/licences/$pkgname/COPYRIGHT
 }
 
 # vim:set ts=2 sw=2 et:
