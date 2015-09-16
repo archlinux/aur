@@ -7,10 +7,10 @@ arch=('any')
 url="http://www.crivatec.de"
 license=('GPL')
 groups=()
-depends=('python-pypdf2' 'pythonmagick' 'python-pillow' 'python-tesserwrap')
+depends=('pythonmagick' 'python-pillow' 'python-tesserwrap')
 source=("http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/$pkgname-$pkgver.tar.xz")
 install='ocrpdf.install'
-md5sums=("f9247ba346dbd428564a9a06bd338ae0")
+md5sums=("f7c297e12ffbec21f68d82aafc9ea13d")
 
 package() {
  cd "${srcdir}/"
