@@ -1,1 +1,3 @@
-/csvkit-git-*.tar.gz
+/csvkit-*.tar.[gx]z
+/src
+/pkg
