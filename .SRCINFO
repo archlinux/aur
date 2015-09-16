@@ -1,0 +1,16 @@
+pkgbase = redo-git
+	pkgdesc = Smaller, easier, more powerful, and more reliable than make. An implementation of djb's redo.
+	pkgver = redo.0.11.r0.g33dadbf
+	pkgrel = 1
+	url = https://github.com/apenwarr/redo
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	provides = redo
+	conflicts = redo
+	source = git+https://github.com/apenwarr/redo.git
+	md5sums = SKIP
+
+pkgname = redo-git
+
