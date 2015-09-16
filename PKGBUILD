@@ -1,4 +1,4 @@
-# Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Contributor: Phillip Smith <pkgbuild@phs.id.au>
 
 ### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
 ### Please ask support questions about this software in one of:
