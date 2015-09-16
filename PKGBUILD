@@ -1,4 +1,4 @@
-# Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Contributor: Phillip Smith <pkgbuild@phs.id.au>
 # http://github.com/fukawi2/aur-packages
 
 ### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
