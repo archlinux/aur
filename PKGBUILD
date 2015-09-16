@@ -3,7 +3,7 @@
 # Contributor: haagch <haagch@studi.informatik.uni-stuttgart.de>
 
 pkgname=ut4
-pkgver=2634754
+pkgver=2681776
 pkgrel=1
 pkgdesc="PRE-ALPHA of the new Unreal Tournament based on Unreal Engine 4."
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=("https://s3.amazonaws.com/unrealtournament/UnrealTournament-Client-XAN-$
         "UnrealTournament"
         "UnrealTournament4.desktop")
 noextract=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip")
-md5sums=('c171ba3d9ea8cfdaecf0fcc063c2c610'
+md5sums=('3fe144f82b5bbb466dc1c73ebbe0253f'
          'c75648bafa54d1ed3c166a87a114deb7'
          '126d209e58c0dd01bc3151b175651105')
 
