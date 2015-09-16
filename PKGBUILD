@@ -1,9 +1,9 @@
 # Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname=percol
-pkgver=0.1.0
-pkgrel=2
+pkgname="percol"
+pkgver="0.2.1"
+pkgrel="1"
 pkgdesc="Adds flavor of interactive filtering to the traditional pipe concept of UNIX shell"
 arch=('any')
 depends=('python2')
@@ -13,7 +13,7 @@ url="https://github.com/mooz/percol"
 license=('MIT')
 options=(!emptydirs)
 source=(https://github.com/mooz/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('bc47dceef46d3e8443a166e30a0c5c6f36992bb6c2775e07110fc01a82d7699d')
+sha256sums=('75056ba1fe190ae4c728e68df963c0e7d19bfe5a85649e51ae4193d4011042f9')
 conflicts=('percol-git')
 changelog="ChangeLog"
 
