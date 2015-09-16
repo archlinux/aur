@@ -4,7 +4,7 @@ pkgbase=('pip2pkgbuild')
 pkgname=('pip2pkgbuild' 'python2-pip2pkgbuild')
 _module='pip2pkgbuild'
 pkgver='0.1.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate PKGBUILD file for a Python module from PyPi"
 url="https://github.com/wenLiangcan/pip2pkgbuild"
 depends=()
@@ -28,5 +28,6 @@ package_python2-pip2pkgbuild() {
     depends+=('python2' 'python2-setuptools')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1
+    mv "${pkgdir}/usr/bin/pip2pkgbuild"{,2}
 }
 
