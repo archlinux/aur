@@ -1,0 +1,18 @@
+pkgbase = joomscan
+	pkgdesc = Detects file inclusion, sql injection, command execution vulnerabilities of a target Joomla! web site.
+	pkgver = 2012_03_10
+	pkgrel = 1
+	url = http://joomscan.sourceforge.net/
+	arch = any
+	license = LGPL3
+	makedepends = unzip
+	depends = perl-switch
+	depends = perl-www-mechanize
+	noextract = joomscan-latest.zip
+	source = joomscan.sh
+	source = http://sourceforge.net/projects/joomscan/files/joomscan/2012-03-10/joomscan-latest.zip
+	sha256sums = 67de695ba7db7ef5864bd0c888dc9578de6a7139d4286ed4bc6ba42a486cda32
+	sha256sums = 7edbcf069fe60b032cd273d06de1f8c40459c65ae8e604602e8f60150f08ec6e
+
+pkgname = joomscan
+
