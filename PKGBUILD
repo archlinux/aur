@@ -3,24 +3,24 @@
 # Contributor: HLHF
 
 pkgname=h2o
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.5.0.beta2
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
-depends=('libuv' 'libyaml' 'wslay')
-makedepends=('cmake' 'make')
+depends=('libuv' 'libyaml' 'wslay' 'zlib')
+makedepends=('autotools' 'cmake' 'libtool' 'make' 'pkg-config')
 url="https://github.com/h2o/h2o"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v$pkgver
+source=($pkgname-1.5.0-beta2.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v1.5.0-beta2
         h2o.service)
-sha256sums=('0297ca73dba460653c6edb14dab17095f60616baf7c51e45ac9f8a6d54b9ba55'
+sha256sums=('b07a6051206288ebca20a9ce8085264906f5ce585408a1311e1dfa999ee48758'
             '63cd9134cdf47ca2b69bb0bf2a4ccd8b4fd3fd5c79e2a791bdec9a8d1691679b')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
 conflicts=('libh2o')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-1.5.0-beta2"
 
   msg2 'Building...'
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DWITH_BUNDLED_SSL=on .
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-1.5.0-beta2"
 
   msg2 'Installing license...'
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
