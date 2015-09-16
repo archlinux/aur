@@ -1,16 +1,20 @@
-# Maintainer: Charles Goyard <cg@fsck.fr>
+# Maintainer: Albert Graef <aggraef@cmail.com>
+# Contributor: Charles Goyard <cg@fsck.fr>
 
 pkgname=xapian-tcl-bindings
 _realname=xapian-bindings
 pkgver=1.2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Bindings allowing Xapian to be used from Tcl"
 arch=(i686 x86_64)
 url="http://xapian.org/docs/bindings/tcl/"
 license=('GPL')
 groups=(xapian)
-depends=('tcl' 'xapian-core')
-makedepends=('gcc')
+# FIXME: tcllib isn't actually needed, but we pull it in to have the Tcl
+# library path set up as needed. By installing into /usr/lib/tcllib, the
+# package will hopefully work with whatever Tcl version happens to be
+# installed.
+depends=('tcl' 'tcllib' 'xapian-core')
 source=(http://oligarchy.co.uk/xapian/${pkgver}/${_realname}-$pkgver.tar.xz)
 md5sums=('33c598a26fcf92ab15af6c65475ab8de')
 
