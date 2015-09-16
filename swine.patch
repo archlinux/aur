@@ -1,0 +1,52 @@
+diff --git Makefile Makefile
+index 9137c84..890456b 100644
+--- Makefile
++++ Makefile
+@@ -86,6 +86,8 @@ install: compile
+ 	mkdir -p $(DESTDIR)/usr/share/applications
+ 	cp resources/swine.desktop $(DESTDIR)/usr/share/applications/swine.desktop
+ 	cp resources/swine-extensions.desktop $(DESTDIR)/usr/share/applications/swine-extensions.desktop
++	mkdir -p $(DESTDIR)/usr/bin
++	rm -f $(DESTDIR)/usr/bin/swine $(DESTDIR)/usr/bin/swinecli $(DESTDIR)/usr/bin/swinerun
+ 	ln -s ../lib/swine/swine.py $(DESTDIR)/usr/bin/swine
+ 	ln -s ../lib/swine/swinecli.py $(DESTDIR)/usr/bin/swinecli
+ 	ln -s ../lib/swine/swinerun.py $(DESTDIR)/usr/bin/swinerun
+diff --git swine.py swine.py
+index f92e2bd..cef53ac 100755
+--- swine.py
++++ swine.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ ############################################################################
+@@ -446,7 +446,7 @@ class SwineMainWindow(QMainWindow, Ui_MainWindow):
+     if not version:
+       if QMessageBox.question(self, self.tr("Winetricks"), self.tr("Winetricks not found. Do you want to download Winetricks now?"), QMessageBox.Yes|QMessageBox.No) == QMessageBox.Yes:
+         self.downloadWinetricks()
+-    elif time.mktime(time.strptime(version, "%Y%m%d")) < time.time() - 3*30*24*60*60:
++    elif time.mktime(time.strptime(version[0:8], "%Y%m%d")) < time.time() - 4*30*24*60*60:
+       if QMessageBox.question(self, self.tr("Winetricks"), self.tr("Winetricks is quite old, version %s. Do you want to update Winetricks now?") % version, QMessageBox.Yes|QMessageBox.No) == QMessageBox.Yes:
+         self.downloadWinetricks()
+   def menuExitAction_activated(self):
+diff --git swinecli.py swinecli.py
+index 5befcac..59e8c11 100755
+--- swinecli.py
++++ swinecli.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ #    Copyright (C) 2007-2012 by Dennis Schwerdel, Thomas Schmidt           #
+diff --git swinerun.py swinerun.py
+index fefcee6..f805642 100755
+--- swinerun.py
++++ swinerun.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ #    Copyright (C) 2007-2012 by Dennis Schwerdel, Thomas Schmidt           #

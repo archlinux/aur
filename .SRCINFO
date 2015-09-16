@@ -1,0 +1,18 @@
+pkgbase = swine
+	pkgdesc = Graphical wine frontend
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.swine-tool.de/
+	arch = any
+	license = GPL
+	makedepends = make
+	depends = python2
+	depends = wine
+	depends = winetricks
+	source = https://github.com/slackner/Swine/archive/1.0.4.tar.gz
+	source = swine.patch
+	md5sums = e737d69672e3b887e8924c13189eae42
+	md5sums = b03034fa25b98aefcc098465911f6d50
+
+pkgname = swine
+
