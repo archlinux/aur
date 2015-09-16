@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r1979.g657dd5f
+pkgver=1.0.0.r2056.g3f8da98
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -38,6 +38,9 @@ pkgver() {
 
 prepare() {
 	cd ipxe/src/
+
+	# fix build
+	git revert -n 40a9a0f0
 
 	# git version
 	patch -Np2 < "${srcdir}/0001-git-version.patch"
@@ -78,11 +81,8 @@ prepare() {
 build() {
 	cd ipxe/src/
 
-	# default targets (ipxe.{lkrn,dsk,iso,usb})
+	# default targets (ipxe.{lkrn,dsk,iso,usb}, undionly.kpxe)
 	make all
-
-	# UNDI-only - this is without drivers
-	make bin/undionly.kpxe
 
 	# this includes drivers, but is bigger
 	# build targets with embedded scripts first and rename
