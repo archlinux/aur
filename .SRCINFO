@@ -1,0 +1,22 @@
+pkgbase = nutty-bzr
+	pkgdesc = Network utility providing essential information on network related aspects
+	pkgver = r46
+	pkgrel = 1
+	url = https://launchpad.net/nutty
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	depends = granite
+	depends = gtk3
+	depends = libgee
+	depends = net-tools
+	depends = nmap
+	depends = traceroute
+	provides = nutty
+	conflicts = nutty
+	source = nutty-bzr::bzr+https://code.launchpad.net/nutty/trunk
+	md5sums = SKIP
+
+pkgname = nutty-bzr
+
