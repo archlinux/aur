@@ -1,0 +1,15 @@
+pkgbase = python-todoist-python-git
+	pkgdesc = todoist-python - The official Todoist Python API library
+	pkgver = 0.82.a8ac365
+	pkgrel = 1
+	url = https://github.com/Doist/todoist-python.git
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = git
+	source = python-todoist-python-git::git+https://github.com/Doist/todoist-python
+	sha256sums = SKIP
+
+pkgname = python-todoist-python-git
+
