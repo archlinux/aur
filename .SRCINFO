@@ -1,0 +1,20 @@
+pkgbase = perl-data-util
+	pkgdesc = A selection of utilities for data and data types
+	pkgver = 0.63
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-Util
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0.27
+	makedepends = perl-hash-util-fieldhash-compat
+	makedepends = perl-scope-guard
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Data-Util-0.63.tar.gz
+	md5sums = 7d4fa4df6f94156b7f25b64397a68636
+	sha512sums = bc2b10a7881e475e27f51aeed567f57dec7d428eec19349672ec363ba0acb617f72f633ec99b491930b0c9f143a457598d0faebf6ef092fc79cfb88d9081a998
+
+pkgname = perl-data-util
+
