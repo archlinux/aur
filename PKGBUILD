@@ -1,6 +1,6 @@
 # Maintainer: Chrys <mail@chrys.de>
 pkgname=ocrpdf
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="OCR a PDF file and make it browsable"
 arch=('any')
