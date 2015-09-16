@@ -1,0 +1,13 @@
+pkgbase = fygar-git
+	pkgdesc = Wrapper for pacman and packer.
+	pkgver = 20150916
+	pkgrel = 1
+	url = https://github.com/aoibhinnditori/fygar
+	arch = any
+	license = GPL3
+	depends = packer
+	source = git+https://github.com/aoibhinnditori/fygar.git
+	md5sums = SKIP
+
+pkgname = fygar-git
+
