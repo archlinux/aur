@@ -1,5 +1,5 @@
 pkgbase = spyder-git
-	pkgver = 3.0.0b1.r134.g2e7699b
+	pkgver = 3.0.0b1.r145.gb1d9780
 	pkgrel = 1
 	url = https://github.com/spyder-ide/spyder
 	install = spyder-git.install
@@ -32,8 +32,8 @@ pkgname = spyder-git
 	optdepends = python2-matplotlib: interactive 2D/3D data plotting
 	optdepends = pep8-python2: real-time code style analysis
 	optdepends = python2-sympy: symbolic mathematics for the IPython console
-	provides = 
-	conflicts = 
+	provides = spyder
+	conflicts = spyder
 
 pkgname = spyder3-git
 	pkgdesc = Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)
@@ -54,6 +54,6 @@ pkgname = spyder3-git
 	optdepends = python-matplotlib: interactive 2D/3D data plotting
 	optdepends = pep8: real-time code style analysis
 	optdepends = python-sympy: symbolic mathematics for the IPython console
-	provides = 
-	conflicts = 
+	provides = spyder3
+	conflicts = spyder3
 

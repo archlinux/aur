@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b1.r134.g2e7699b
+pkgver=3.0.0b1.r145.gb1d9780
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -54,15 +54,14 @@ package_spyder-git() {
               'python2-matplotlib: interactive 2D/3D data plotting'
               'pep8-python2: real-time code style analysis'
               'python2-sympy: symbolic mathematics for the IPython console')
-  _pkgname='spyder'
-  provides=($_pkgname)
-  conflicts=($_pkgname)
+  provides=($_pkgname2)
+  conflicts=($_pkgname2)
 
-  cd $_pkgname
+  cd $_pkgname2
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   # Install a scalable icon for the spyder.desktop file
   install -Dm644 spyderlib/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder.svg"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname2/LICENSE"
   rm "$pkgdir/usr/bin/spyder_win_post_install.py"
 }
 
@@ -82,15 +81,14 @@ package_spyder3-git() {
               'python-matplotlib: interactive 2D/3D data plotting'
               'pep8: real-time code style analysis'
               'python-sympy: symbolic mathematics for the IPython console')
-  _pkgname='spyder3'
-  provides=($_pkgname)
-  conflicts=($_pkgname)
+  provides=($_pkgname3)
+  conflicts=($_pkgname3)
 
-  cd $_pkgname
+  cd $_pkgname3
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   # Install a scalable icon for the spyder3.desktop file
   install -Dm644 spyderlib/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder3.svg"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname3/LICENSE"
   rm "$pkgdir/usr/bin/spyder_win_post_install.py"
 }
 
