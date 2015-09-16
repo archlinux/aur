@@ -1,19 +1,17 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=esteidcerts
-pkgver=3.8.0.9128
+pkgver=3.8.2.9210
 pkgrel=1
 pkgdesc="Estonian ID card root, intermediate and OCSP certificates"
 arch=('any')
 url="http://www.id.ee/"
 license=('LGPL')
-source=("https://installer.id.ee/media/sources/$pkgname-$pkgver.tar.gz"
-        "https://installer.id.ee/media/sources/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('1c3b685b46350a409d209acb93b8966ef2e3ab48526bc5945183d167357b96de'
-            'SKIP')
+source=("https://installer.id.ee/media/ubuntu/pool/main/e/$pkgname/${pkgname}_$pkgver-ubuntu-13-10.tar.gz")
+sha256sums=('8036df93116994e8d57b005b1a6e867c8258ddd7a6803a350c0c72e2a3439043')
 validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver/usr/share/esteid/certs"
   mkdir -p "$pkgdir/usr/share/esteid/certs"
   cp -R *.crt "$pkgdir/usr/share/esteid/certs"
   rm $pkgdir/usr/share/esteid/certs/TEST*
