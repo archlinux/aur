@@ -1,4 +1,4 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
 
 pkgname=perl-iptables-rule
 pkgver=0.01
