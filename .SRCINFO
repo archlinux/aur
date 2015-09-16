@@ -1,0 +1,15 @@
+pkgbase = python2-leveldb-svn
+	pkgdesc = A python wrapper for leveldb
+	pkgver = 15
+	pkgrel = 2
+	url = http://code.google.com/p/py-leveldb/
+	arch = any
+	license = BSD
+	makedepends = subversion
+	makedepends = python2
+	depends = snappy
+	depends = leveldb
+	depends = gperftools
+
+pkgname = python2-leveldb-svn
+
