@@ -1,23 +1,22 @@
-# Maintainer: 2ion <dev at 2ion dot de>
+# Maintainer: 2ion
 pkgname=bash-ctypes-git
-pkgver=r12.7cded42
+pkgver=r56.b0800b2
 pkgrel=1
 pkgdesc="Foreign Function Interface for Bash"
 arch=('x86_64' 'i686')
 url="https://github.com/taviso/ctypes.sh"
 license=('MIT')
 depends=('bash' 'libffi')
-makedepends=('git' 'libffi' 'pkg-config')
+makedepends=('git' 'libffi' 'autoconf' 'automake' 'libtool')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(\
-  'bash-ctypes::git+https://github.com/taviso/ctypes.sh#branch=master'\
-  'archlinux-pkgconfig.patch'\
+  'bash-ctypes::git+https://github.com/taviso/ctypes.sh#branch=master' \
   'ctypes_bash_profile.sh')
 md5sums=(\
-  'SKIP'\
-  'd62e880683bab33be4d845602d77f237'\
+  'SKIP' \
   '8f94ef9e242b89d5ea860527e2595f2c')
+install=${pkgname}.install
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -26,7 +25,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  patch -p1 -i "$srcdir/archlinux-pkgconfig.patch"
+  autoreconf -vifs
+  ./configure --prefix=/usr
 }
 
 build() {
@@ -36,7 +36,6 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -Dm755 ctypes.sh "${pkgdir}/usr/bin/ctypes.sh"
-  install -Dm755 ctypes.so "${pkgdir}/usr/lib/ctypes.so"
+  make install DESTDIR="$pkgdir"
   install -Dm755 "${srcdir}/ctypes_bash_profile.sh" "${pkgdir}/etc/profile.d/ctypes.sh"
 }

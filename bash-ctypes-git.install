@@ -1,0 +1,9 @@
+post_install()
+{
+  libtool --finish /usr/lib 1>/dev/null 2>/dev/null
+}
+
+post_upgrade()
+{
+  post_install
+}
