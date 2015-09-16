@@ -9,7 +9,7 @@ pkgbase = goatattack
 	depends = libpng
 	depends = sdl2_mixer
 	source = http://www.goatattack.net/installers/goatattack-0.3.8.1.tar.gz
-	md5sums = 7f4aea68560ded26e147d0cd7eb49e6b
+	md5sums = e5a16f2d1509d9994d68e6e83a8cc204
 
 pkgname = goatattack
 

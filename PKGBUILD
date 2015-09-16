@@ -8,7 +8,7 @@ url="http://www.goatattack.net/"
 license=('GPL')
 depends=("sdl2" "libpng" "sdl2_mixer")
 source=("http://www.goatattack.net/installers/$pkgname-$pkgver.tar.gz")
-md5sums=('7f4aea68560ded26e147d0cd7eb49e6b')
+md5sums=('e5a16f2d1509d9994d68e6e83a8cc204')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
