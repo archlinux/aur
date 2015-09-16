@@ -1,0 +1,19 @@
+pkgbase = python2-goose
+	pkgdesc = HTML content and article extractor for Python, based on the Java/Scala version
+	pkgver = 1.0.25
+	pkgrel = 1
+	url = https://github.com/grangier/python-goose
+	arch = any
+	license = Apache
+	depends = python2
+	depends = python2-pillow
+	depends = python2-lxml
+	depends = python2-cssselect
+	depends = python2-jieba
+	depends = python2-beautifulsoup4
+	depends = python2-nltk
+	source = https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.25.tar.gz
+	sha512sums = f74eed90366993560063feccc8626592a83c06adf096b720aa4cf36a3e1bdaa2521d4156857cafcae31fa04fa97a937510f29dc3e0a8b427ad783af0122c86f5
+
+pkgname = python2-goose
+
