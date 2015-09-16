@@ -1,0 +1,117 @@
+--- bashtrash/trash	2015-09-16 12:21:08.127829933 +0200
++++ bashtrash/trash	2015-09-16 12:19:58.623599106 +0200
+@@ -40,7 +40,7 @@
+   exit 1
+ }
+ 
+-# sed script to encode filenames
++#%fold sed script to encode filenames
+ 
+ sedscript='s/ /%20/g
+ s/!/%21/g
+@@ -70,13 +70,14 @@
+ s/|/%7c/g
+ s/}/%7d/g
+ s/~/%7e/g
+-s/	/%09/g'
++s/	/%09/g' #%endfold
+ 
+ function url_encode {
+   echo $1 |sed -e "$sedscript"
+ }
+ 
+ function get_trashdir {
++  if [ "x$trashhome" = "x" ]  ; then
+   mounts=`awk '{ print $2 }' /proc/mounts`
+   base=/
+ 
+@@ -106,6 +107,7 @@
+       base=$HOME
+     fi
+   fi
++  else base="$HOME"; fi
+ 
+   if [ "$base" == "$HOME" ]; then
+     base=$XDG_DATA_HOME
+@@ -121,7 +123,8 @@
+ function can_trash {
+   filename="$1"
+ 
+-  if [ ! -e "$filename" ]; then
++
++  if [ ! -e "$filename" ] && [ ! -L "$filename" ] ; then
+     if [ "$interactive" != "force" ]; then
+       echo "${progname}: cannot move \`$filename' to trash: No such file or directory" 1>&2
+     fi
+@@ -129,7 +132,7 @@
+   else
+ 
+     type="file"
+-    if [ -d "$filename" ]; then
++    if [ -d "$filename" ]  && [ ! -L "$filename" ] ; then
+       type="directory"
+     fi
+ 
+@@ -173,20 +176,21 @@
+   init_trashdir "$trashdir"
+ 
+   trashname="${filename##*/}"
+-  origname="${trashname%%.*}"
+-  if [ -z "${origname}" ]; then
+-      origname="dotfile"
+-  fi
+-  ext=".${trashname##*.}"
+-  if [ "$ext" == ".$trashname" ]; then
+-    ext=""
+-  fi
++#%fold guido   origname="${trashname%%.*}"
++#   if [ -z "${origname}" ]; then
++#       origname="dotfile"
++#   fi
++#  ext=".${trashname##*.}"
++#  if [ "$ext" == ".$trashname" ]; then
++#    ext=""
++#%endfold  fi
+ 
+   # Use -u (unsafe) option because we cannot mv a directory into a
+   # file.  This is technically "unsafe" but mv will ask for
+   # confirmation when overwriting.
+ 
+-  deletedfile=$(mktemp -u "${trashdir}/files/${origname}_XXXXXXXX" )$ext
++  # deletedfile=$(mktemp -u "${trashdir}/files/${origname}_XXXXXXXX" )$ext
++  deletedfile=$(mktemp -u "${trashdir}/files/`date +"%y-%m-%d-%H:%M:%S"`-${trashname}_XXXXXXXX")
+   deletedbase=$( basename "${deletedfile}" )
+   deletedinfo="$trashdir/info/${deletedbase}.trashinfo"
+ 
+@@ -233,7 +237,7 @@
+ interactive=never
+ filename=
+ 
+-while getopts hvirRf arg; do
++while getopts hvirRft arg; do
+     case $arg in
+ 	h) show_usage;
+ 	    exit 1
+@@ -246,6 +250,8 @@
+ 	    ;;
+ 	f) interactive=force
+ 	    ;;
++	t) trashhome=yes
++	    ;;
+ 	[?]) try_help
+ 	    exit 1
+ 	    ;;
+@@ -258,7 +264,13 @@
+ 
+   # get full pathname of file
+ 
++  link=$(echo ${f} |sed -e "s/\/$//g")
++  if [ -L "${link}" ] ; 
++  then 
++    filename="$PWD/${link}" 
++  else 
+   filename="$(readlink -f "${f}")"
++  fi
+ 
+   yes=`can_trash "$filename"`
+   if [ "$yes" != "0" ]; then

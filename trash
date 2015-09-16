@@ -1,0 +1,287 @@
+#!/bin/bash
+
+# bashtrash - a bash script implementation of the FreeDesktop.org Trash
+# Specification.
+
+# Copyright (c) 2009-2011, Robert Rothenberg <robrwo@gmail.com>
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+version="0.4.0"
+
+progname=`basename $0`
+
+function show_usage {
+  cat << EOU
+Usage: ${progname} [OPTION]... FILE...
+
+Move files into the trash.
+
+Options:
+  --version	show program's version number and exit
+  -h		show this help message and exit
+  -v		explain what is being done
+  -i		prompt before moving every file
+  -r, -R	ignored (for compatability with rm)
+  -f		ignore non-existent files, never prompt
+EOU
+}
+
+function try_help {
+  echo "Try \`${progname} -h' for more information." 1>&2
+  exit 1
+}
+
+#%fold sed script to encode filenames
+
+sedscript='s/ /%20/g
+s/!/%21/g
+s/"/%22/g
+s/\#/%23/g
+s/\$/%24/g
+s/\&/%26/g
+s/'\''/%27/g
+s/(/%28/g
+s/)/%29/g
+s/\*/%2a/g
+s/+/%2b/g
+s/,/%2c/g
+s/-/%2d/g
+s/:/%3a/g
+s/;/%3b/g
+s//%3e/g
+s/?/%3f/g
+s/@/%40/g
+s/\[/%5b/g
+s/\\/%5c/g
+s/\]/%5d/g
+s/\^/%5e/g
+s/_/%5f/g
+s/`/%60/g
+s/{/%7b/g
+s/|/%7c/g
+s/}/%7d/g
+s/~/%7e/g
+s/	/%09/g' #%endfold
+
+function url_encode {
+  echo $1 |sed -e "$sedscript"
+}
+
+function get_trashdir {
+  if [ "x$trashhome" = "x" ]  ; then
+  mounts=`awk '{ print $2 }' /proc/mounts`
+  base=/
+
+  if [ "$EUID" != "0" ]; then
+    mounts="$HOME $mounts"
+  fi
+
+  for i in $mounts
+  do
+    if [[ $1 =~ ^$i ]]
+    then
+      if [[ $i =~ ^$base ]]
+      then
+        base=$i
+      fi
+    fi
+  done
+
+  if [ "$base" != "$HOME" ]; then
+    trashdir="$base/.Trash/$UID"
+    if [ ! -d "$trashdir" ]; then
+      trashdir="$base/.Trash-$UID"
+    fi
+
+    mkdir -p "$trashdir"
+    if [ "$?" != "0" ]; then
+      base=$HOME
+    fi
+  fi
+  else base="$HOME"; fi
+
+  if [ "$base" == "$HOME" ]; then
+    base=$XDG_DATA_HOME
+    if [ -z "$base" ]; then
+      base="$HOME/.local/share/"
+    fi
+    trashdir="$base/Trash"
+  fi
+
+  echo $trashdir
+}
+
+function can_trash {
+  filename="$1"
+
+
+  if [ ! -e "$filename" ] && [ ! -L "$filename" ] ; then
+    if [ "$interactive" != "force" ]; then
+      echo "${progname}: cannot move \`$filename' to trash: No such file or directory" 1>&2
+    fi
+    echo 0
+  else
+
+    type="file"
+    if [ -d "$filename" ]  && [ ! -L "$filename" ] ; then
+      type="directory"
+    fi
+
+    case $interactive in
+      never|force) echo 1 ;;
+      always)
+        read -p "${progname}: move ${type} '${filename}' to trash?" yn
+        if [[ "$yn" =~ ^[yY]$ ]]; then
+          echo 1
+        else
+          echo 0
+        fi
+        ;;
+      *) echo "${progname}: unsupported value interactive=${interactive}" 1>&2 ; echo 0; exit 1 ;;
+    esac
+  fi
+}
+
+function init_trashdir {
+  trashdir=$1
+
+  mkdir -p "$trashdir/files"
+  if [ "$?" != "0" ]; then
+    echo "${progname}: unable to write to $trashdir" 1>&2
+    exit 2
+  fi
+
+  mkdir -p "$trashdir/info"
+  if [ "$?" != "0" ]; then
+    echo "${progname}: unable to write to $trashdir" 1>&2
+    exit 2
+  fi
+}
+
+function trash_file {
+  filename=$1
+
+  dir=${filename%/*}
+
+  trashdir=`get_trashdir "$dir"`
+  init_trashdir "$trashdir"
+
+  trashname="${filename##*/}"
+#%fold guido   origname="${trashname%%.*}"
+#   if [ -z "${origname}" ]; then
+#       origname="dotfile"
+#   fi
+#  ext=".${trashname##*.}"
+#  if [ "$ext" == ".$trashname" ]; then
+#    ext=""
+#%endfold  fi
+
+  # Use -u (unsafe) option because we cannot mv a directory into a
+  # file.  This is technically "unsafe" but mv will ask for
+  # confirmation when overwriting.
+
+  # deletedfile=$(mktemp -u "${trashdir}/files/${origname}_XXXXXXXX" )$ext
+  deletedfile=$(mktemp -u "${trashdir}/files/`date +"%y-%m-%d-%H:%M:%S"`-${trashname}_XXXXXXXX")
+  deletedbase=$( basename "${deletedfile}" )
+  deletedinfo="$trashdir/info/${deletedbase}.trashinfo"
+
+  canon=`url_encode "$filename"`
+
+  cat > "$deletedinfo" <<END
+[Trash Info]
+Path=$canon
+DeletionDate=`date +"%FT%H:%M:%S"`
+END
+
+  if [ $verbose != 0 ]; then
+      mv_opts="-v"
+  else
+      mv_opts=
+  fi
+
+  # Note that the trashinfo file will have the ownership and
+  # permissions of the person who deleted the file, and not
+  # necessarily of the original file.
+
+  mv $mv_opts "${filename}" "${deletedfile}"
+  if [ "$?" != "0" ]; then
+    echo "${progname}: unable to move ${filename} to ${deletedfile}" 1>&2
+    rm "$deletedinfo"
+    exit 2
+  fi
+}
+
+# Option handling
+
+function strip_quotes {
+  x="$1"
+  x="${x#\'}"
+  x="${x%\'}"
+  echo "${x}"
+}
+
+if [ $# -eq 0 ]; then
+  try_help
+fi
+
+verbose=0
+interactive=never
+filename=
+
+while getopts hvirRft arg; do
+    case $arg in
+	h) show_usage;
+	    exit 1
+	    ;;
+	i) interactive=always
+	    ;;
+	v) verbose=1
+	    ;;
+	r|R)
+	    ;;
+	f) interactive=force
+	    ;;
+	t) trashhome=yes
+	    ;;
+	[?]) try_help
+	    exit 1
+	    ;;
+    esac
+done
+
+shift $(( OPTIND - 1))
+
+for f in "$@"; do
+
+  # get full pathname of file
+
+  link=$(echo ${f} |sed -e "s/\/$//g")
+  if [ -L "${link}" ] ; 
+  then 
+    filename="$PWD/${link}" 
+  else 
+  filename="$(readlink -f "${f}")"
+  fi
+
+  yes=`can_trash "$filename"`
+  if [ "$yes" != "0" ]; then
+    trash_file "$filename"
+  fi
+
+done
+
+exit 0
+
+
+
+
+

@@ -1,0 +1,18 @@
+pkgbase = bashtrash
+	pkgdesc = Freedesktop-complient trashcan implemented in bash script
+	pkgver = 20101105
+	pkgrel = 1
+	url = https://github.com/robrwo/bashtrash/blob/master/trash
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/robrwo/bashtrash.git
+	source = link.patch
+	source = trash
+	md5sums = SKIP
+	md5sums = b648a35e9ad747fcb096a084dbe3a786
+	md5sums = b812b8a04c31b14383f48fd1bdd1f1d0
+
+pkgname = bashtrash
+
