@@ -1,0 +1,30 @@
+post_install() {
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE \
+        --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+    echo "done."
+    printf "$pacmanlog\n"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE \
+        --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+    echo "done."
+}
+
+read -d '' pacmanlog <<'EOF'
+# vim-pacmanlog
+
+Highlight the time, different actions, warnings and errors in Pacman
+log files.
+EOF
+
+op=$1
+shift
+
+$op $*

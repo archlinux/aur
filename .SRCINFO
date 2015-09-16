@@ -1,0 +1,17 @@
+pkgbase = vim-pacmanlog
+	pkgdesc = Vim syntax highlighting for Pacman log files
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/vim-scripts/pacmanlog.vim
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	conflicts = vim-pacmanlog-git
+	source = https://github.com/vim-scripts/pacmanlog.vim/archive/1.2.tar.gz
+	sha256sums = b0fac7971e3b0ceac765ec69ba2b47cefc18fdbb8c04fc7856955dc71b22532e
+
+pkgname = vim-pacmanlog
+
