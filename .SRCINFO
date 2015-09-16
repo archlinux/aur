@@ -1,6 +1,6 @@
 pkgbase = jed-git
 	pkgdesc = A freely available text editor for Unix and others OS - Latest development version
-	pkgver = 0.99.20.109
+	pkgver = 0.99.20.110
 	pkgrel = 1
 	url = http://www.jedsoft.org/snapshots/
 	install = jed-git.install
@@ -15,9 +15,9 @@ pkgbase = jed-git
 	provides = jed
 	conflicts = jed
 	options = !makeflags
-	source = http://www.jedsoft.org/snapshots/jed-pre0.99.20-109.tar.gz
+	source = http://www.jedsoft.org/snapshots/jed-pre0.99.20-110.tar.gz
 	source = jed-git.install
-	md5sums = 7d0f5fbfc3fb1806e9908ab695cada96
+	md5sums = 3dd546ef10cceb7daa23b8198e65bd40
 	md5sums = dd95161e54793bc082fa881d67886e21
 
 pkgname = jed-git
