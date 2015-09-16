@@ -1,6 +1,6 @@
 pkgbase = esteidpkcs11loader
-	pkgdesc = Loads PKCS11 module for web authentication with smart cards
-	pkgver = 3.8.0.1052
+	pkgdesc = Firefox PKCS#11 module loader
+	pkgver = 3.11.0.1061
 	pkgrel = 1
 	url = http://www.id.ee/
 	arch = any
@@ -9,14 +9,12 @@ pkgbase = esteidpkcs11loader
 	makedepends = unzip
 	makedepends = zip
 	depends = opensc
-	depends = esteidcerts
+	depends = pcsclite
 	depends = ccid
 	conflicts = esteid-browser-plugin-svn
 	conflicts = sk-esteidpkcs11loader-svn
-	source = https://installer.id.ee/media/sources/esteidpkcs11loader-3.8.0.1052.tar.gz
-	source = https://installer.id.ee/media/sources/esteidpkcs11loader-3.8.0.1052.tar.gz.asc
-	sha256sums = 331d7fb59554a4cf7c3cce8a263e5248476d994e3124f0b5adc06ba3cad1b091
-	sha256sums = SKIP
+	source = https://installer.id.ee/media/ubuntu/pool/main/e/esteidpkcs11loader/esteidpkcs11loader_3.11.0.1061.orig.tar.xz
+	sha256sums = c06c36f090d4afdf84135792065ca3201d58e6d73732711cc64b4dabc351e168
 
 pkgname = esteidpkcs11loader
 
