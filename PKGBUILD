@@ -12,7 +12,7 @@ depends=('glibc')
 source=(http://people.redhat.com/~dhowells/fscache/${pkgname}-${pkgver}.tar.bz2
         cachefilesd.service)
 sha256sums=('125ea4f6aef4bf8e936a7cc747b59e074537a8aed74cd1bab3f05d7fbc47287f'
-            '0a76a82184d465cf6a663642557219ea9e2fc18bbe24af2bad55ca61db559c5d')
+            'aa889fcbc2ca59aed2be4ef586c3039ceadc6bc5969398a175a77c63ccbe11e0')
 backup=(etc/cachefilesd.conf)
 
 build() {
