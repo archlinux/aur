@@ -1,0 +1,20 @@
+pkgbase = qputty-qt5-git
+	pkgdesc = A Qt 5 port for putty, the free telnet/ssh client
+	pkgver = 500
+	pkgrel = 1
+	url = https://github.com/dsmorozov/qputty-qt5
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = libgssglue
+	conflicts = qputty
+	source = git+https://github.com/dsmorozov/qputty-qt5.git
+	md5sums = SKIP
+
+pkgname = qputty-qt5-git
+
