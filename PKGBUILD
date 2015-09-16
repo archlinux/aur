@@ -9,6 +9,8 @@ url="https://github.com/TiZ-EX1/xfce4-dockbarx-plugin"
 license=('X11')
 depends=('vala' 'dockbarx>=0.91' 'xfce4-panel')
 makedepends=('python2')
+conflicts=("$pkgname"-git)
+
 source=( ${pkgname}-${pkgver}.tar.gz::https://github.com/TiZ-EX1/${pkgname}/archive/v${pkgver}.tar.gz )
 sha256sums=('c55e5231ae8b69ab10c22ab5150e47f5392b2398572e753cbcb1a147362e0ba5')
 
