@@ -11,7 +11,7 @@ pkgdesc="Remote desktop client for the GNOME Desktop with RDP/VNC/SSH capabiliti
 arch=('any')
 url="http://sourceforge.net/projects/gnome-rdp/"
 license=('GPL' 'LGPL')
-depends=('gtk-sharp-2' 'gnome-keyring-sharp')
+depends=('gtk-sharp-2' 'gnome-keyring-sharp' 'mono')
 optdepends=('openssh: SSH client'
             'gnome-terminal: required for the SSH client'
             'rdesktop: RDP client'
@@ -29,6 +29,10 @@ build() {
   sed -i 's|@expanded_libdir@|@prefix@/@libdir@|' gnome-rdp.in
 
   autoreconf -fi
+  sed -i 's|GMCS|DMCS|g' configure
+  sed -i 's|gmcs|dmcs|g' configure
+  sed -i 's|GMCS|DMCS|g' Makefile.in
+  sed -i 's|gmcs|dmcs|g' Makefile.in
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
