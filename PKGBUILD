@@ -1,7 +1,7 @@
 # Maintainer: Thor77 <thor77 at thor77 dot org>
 pkgname=goatattack
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.8.1
+pkgrel=3
 pkgdesc="A fast-paced multiplayer pixel art shooter game."
 arch=("any")
 url="http://www.goatattack.net/"
