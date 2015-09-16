@@ -1,0 +1,16 @@
+pkgbase = ttf-d2coding
+	pkgdesc = D2Coding Fixed Width TrueType fonts
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://dev.naver.com/projects/d2coding
+	install = ttf.install
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-font
+	source = http://dev.naver.com/frs/download.php/11300/D2Coding-Ver1.0-TTC-20150911.zip
+	md5sums = 5fc42a9b9396395c6bd312ca818f038c
+
+pkgname = ttf-d2coding
+
