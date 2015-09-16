@@ -1,7 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor : Fernando "Firef0x" G.P. da Silva <firefgx { aT ) gmail [ d0t } com>
 
+_pkgname=ydcv
 pkgname=ydcv-git
-pkgver=20120920
+epoch=1
+pkgver=0.4
 pkgrel=1
 pkgdesc="YouDao Console Version - Simple wrapper for Youdao online translate (Chinese <-> English) service API, as an alternative to the StarDict Console Version(sdcv) - Git version"
 arch=("any")
@@ -9,24 +12,25 @@ conflicts=("ydcv")
 provides=("ydcv")
 url="https://github.com/felixonmars/ydcv"
 license=("GPL")
-depends=('python2')
+depends=('python')
+makedepends=('git')
+source=("git+https://github.com/felixonmars/${_pkgname}.git")
+md5sums=('SKIP')
 
-_gitroot=git@github.com:felixonmars/ydcv.git
-_gitname=ydcv
-
-build() {
-  cd "$srcdir"
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-  msg "GIT checkout done or server timeout"
+pkgver() {
+  cd "${_pkgname}"
+  # Use un-annotated tags to derive a version number
+  git describe --always --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-  install -Dm755 "${srcdir}/$_gitname/$_gitname.py" "${pkgdir}/usr/bin/$_gitname"
+  cd "${_pkgname}"
+
+  # Install bin file
+  install -Dm755 ${_pkgname}.py "${pkgdir}/usr/bin/${_pkgname}"
+
+  # Install Z Shell completion script
+  install -Dm644 contrib/zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set sts=2 sw=2 ts=2 et:
