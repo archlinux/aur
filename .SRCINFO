@@ -7,6 +7,7 @@ pkgbase = exif-py
 	arch = x86_64
 	license = custom:BSD
 	depends = python2
+	depends = exifread
 	source = https://github.com/ianare/exif-py/archive/2.1.2.tar.gz
 	md5sums = 931117de55f9ba02b412f131108aff0f
 

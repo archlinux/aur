@@ -8,7 +8,7 @@ pkgdesc="Easy to use Python module to extract Exif metadata from tiff and jpeg f
 arch=('i686' 'x86_64')
 url="https://github.com/ianare/exif-py"
 license=('custom:BSD')
-depends=('python2')
+depends=('python2' 'exifread')
 source=("https://github.com/ianare/exif-py/archive/$pkgver.tar.gz")
 md5sums=('931117de55f9ba02b412f131108aff0f')
 
