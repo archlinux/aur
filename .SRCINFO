@@ -1,6 +1,6 @@
 pkgbase = snap-photobooth-bzr
-	pkgdesc = The Pantheon Camera Application
-	pkgver = r331
+	pkgdesc = The Pantheon Photo Booth
+	pkgver = r336
 	pkgrel = 1
 	url = https://launchpad.net/snap-elementary
 	install = snap-photobooth.install
@@ -12,8 +12,15 @@ pkgbase = snap-photobooth-bzr
 	makedepends = cmake
 	makedepends = vala
 	makedepends = zeitgeist
-	depends = granite-bzr
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
 	depends = gst-plugins-base-libs
+	depends = gstreamer
+	depends = gtk3
+	depends = libgee
+	depends = libgranite.so
 	source = snap-photobooth::bzr+lp:snap-elementary
 	sha256sums = SKIP
 
