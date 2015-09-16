@@ -1,0 +1,14 @@
+pkgbase = linux-firewire-utils
+	pkgdesc = list and change the configuration of connected FireWire devices. Formerly jujuutils
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/cladisch/linux-firewire-utils
+	arch = i686
+	arch = x86_64
+	license = GPL
+	replaces = jujuutils
+	source = linux-firewire-utils-0.4.tar.gz::https://github.com/cladisch/linux-firewire-utils/archive/v0.4.tar.gz
+	sha256sums = 5e80636dbbb90569700fc2fa6740f08e82c48237d340ea8cec4fda1e46997ef7
+
+pkgname = linux-firewire-utils
+
