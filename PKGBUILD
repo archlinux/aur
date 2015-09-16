@@ -1,6 +1,6 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
 pkgname=libpsl
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A Publix Suffic List library"
 arch=('i686' 'x86_64')
@@ -30,4 +30,4 @@ package() {
 }
 
 # vim: ts=2:sw=2:et
-md5sums=('ce0ea62066ab8182273148a62a697ba1')
+md5sums=('c8d5f25fb089f5a9da7a9c1571f7c41f')
