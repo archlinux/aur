@@ -1,4 +1,4 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
 # http://github.com/fukawi2/aur-packages
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: erkaN kaplaN <erkan@linux-sevenler.org>
