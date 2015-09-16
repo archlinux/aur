@@ -1,0 +1,15 @@
+pkgbase = ranwhen-git
+	pkgdesc = Visualize when your system was running
+	pkgver = 20140917
+	pkgrel = 1
+	url = https://github.com/p-e-w/ranwhen
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	provides = ranwhen
+	source = git+https://github.com/p-e-w/ranwhen.git
+	md5sums = SKIP
+
+pkgname = ranwhen-git
+
