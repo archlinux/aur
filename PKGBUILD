@@ -3,7 +3,7 @@
 
 pkgname=cachefilesd
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace daemon acting as a backend for FS-Cache"
 arch=('i686' 'x86_64')
 url="http://people.redhat.com/~dhowells/fscache/"
@@ -15,6 +15,11 @@ sha256sums=('125ea4f6aef4bf8e936a7cc747b59e074537a8aed74cd1bab3f05d7fbc47287f'
             'aa889fcbc2ca59aed2be4ef586c3039ceadc6bc5969398a175a77c63ccbe11e0')
 backup=(etc/cachefilesd.conf)
 
+prepare() {
+  cd "$pkgname-$pkgver"
+  sed -i "s#/sbin/#/usr/bin/#g" cachefilesd.{c,service}
+}
+
 build() {
   cd "$pkgname-$pkgver"
   make CFLAGS="$CFLAGS"
@@ -22,7 +27,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" SBINDIR=/usr/bin install
   install -D -m 644 "$srcdir/cachefilesd.service" "$pkgdir/usr/lib/systemd/system/cachefilesd.service"
 }
 
