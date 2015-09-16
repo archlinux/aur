@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-theme-elegance-colors-git
+pkgbase = gnome-shell-theme-elegance-colors
 	pkgdesc = A chameleon theme for Gnome Shell which can change colors according to the current GTK theme, current wallpaper (uses imagemagick to get color) or a user defined color.
 	pkgver = 238.ca44e2f
 	pkgrel = 3
@@ -17,5 +17,5 @@ pkgbase = gnome-shell-theme-elegance-colors-git
 	source = elegance-colors::git+https://github.com/satya164/elegance-colors.git
 	sha256sums = SKIP
 
-pkgname = gnome-shell-theme-elegance-colors-git
+pkgname = gnome-shell-theme-elegance-colors
 
