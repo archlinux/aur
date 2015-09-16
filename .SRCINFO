@@ -1,7 +1,7 @@
 pkgbase = tabula
 	pkgdesc = tool for liberating data tables trapped inside PDF files
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tabula.technology/
 	arch = any
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = tabula
 	source = run.sh
 	md5sums = bfe483ead916ef1ddc00c6194822e5ad
 	md5sums = SKIP
-	md5sums = e8ac81e308cf729eacef453fc476e55c
+	md5sums = 57939db56d85e62f4212e6bad1030fb6
 
 pkgname = tabula
 
