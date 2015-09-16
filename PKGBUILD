@@ -1,4 +1,4 @@
-# Maintainer: OmeGa <omega at mailoo dot org>
+# Maintainer: q9 <qqqqqqqqq9 at gmeyer dot df-kunde dot org>
 # Contributor: OmeGa <omega at mailoo dot org>
 # Contributor: vti <viacheslav.t at gmail dot com>
 # Contributor: Danny Navarro <j@dannynavarro.net>
