@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=facron
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Advanced filesystem cron based on fanotify"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ makedepends=('autoconf' 'gcc' 'make' 'pkg-config')
 url="https://github.com/Keruspe/facron"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/Keruspe/$pkgname/tar.gz/v$pkgver)
-sha256sums=('fedbeec7fc98fe3e21b20b028a9073788d74a508a66fd93b7a42ac7c87e03f16')
+sha256sums=('5392ae774386d57ded16548fcffb6fff0f1b3d4c747ba1b5fe4f497a6bfa3c39')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
