@@ -1,0 +1,16 @@
+pkgbase = python-doc8
+	pkgdesc = Style checker for Sphinx (or other) RST documentation
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/doc8
+	arch = any
+	license = Apache 2.0
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/d/doc8/doc8-0.6.0.tar.gz
+	sha256sums = 42ccb69e9240546afec6cdae00b134592942b8b135d7017a748fd5af41e2d590
+
+pkgname = python-doc8
+
+pkgname = python2-doc8
+
