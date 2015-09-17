@@ -1,7 +1,7 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
 
 pkgname=pysolo
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="A software for sleep analysis in Drosophila"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.pysolo.net"
 license=('GPL')
 
 source=(http://ppa.pysolo.net/pool/main/${pkgname}_${pkgver}.orig.tar.gz ${pkgname}.desktop)
-md5sums=('c91c4b747aa858df527b3b2639201eb9' '91592bd8ead236254da26d336ebd9ee3')
+md5sums=('6ce4992415fe015ed432db857d65ce36' 'afc264d5b12f73a4238c5a9c4e1cfddf')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -22,7 +22,10 @@ package() {
   install -d $pkgdir/usr/share/applications
   install -d $pkgdir/opt/pysolo
   
-  cp -r * $pkgdir/opt/pysolo/
+  cd $srcdir/$pkgname-$pkgver
+  #cp -r * $pkgdir/opt/pysolo/
+  cp -dr --preserve=mode,timestamp * $pkgdir/opt/pysolo/
+
   cp $srcdir/*.desktop $pkgdir/usr/share/applications/
 }
 
