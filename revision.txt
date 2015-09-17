@@ -5,6 +5,25 @@
                               http://www.fmod.org
 ===============================================================================
 
+15/09/15 1.06.10 - Studio API patch release (build 67958)
+----------------------------------------------------
+
+Features:
+* LowLevel API - Add Sound::seekData support to HTTP streams.
+* UE4          - Added blueprint functions for loading and unloading sample data.
+
+Fixes:
+* LowLevel API - Fix small reverb pop on sounds that had Channel::setPosition 
+                 called on then and were muted via a parent channelgroup.
+* LowLevel API - Fix https netstream redirects not working.
+* LowLevel API - Fix user DSP read callback firing with no data if 
+                 Channel::setPaused(false) is used after a System::playSound.
+* Studio API   - Fixed Trigger Delay not being applied to sounds on parameters
+                 that trigger immediately when an event starts.
+
+Notes:
+* Xbox One - Now built with August 2015 XDK.
+
 01/09/15 1.06.09 - Studio API patch release (build 67431)
 ----------------------------------------------------
 
@@ -85,8 +104,8 @@ Fixes:
                  still active. Introduced in 1.06.04.
 
 Notes:
-* Incremented bank version, requires runtime 1.06.06 or later.
-* Runtime supports loading old bank versions from 1.03.00.
+* Studio API   - Incremented bank version, requires runtime 1.06.06 or later.
+* Studio API   - Latest runtime supports loading old bank versions from 1.03.00.
 * LowLevel API - XboxOne - Thread affinity can now be set as a mask of allowed cores.
 
 08/07/15 1.06.06 - Studio API patch release (build 65638)
@@ -173,6 +192,8 @@ Fixes:
                  FMOD_DEBUG pre-processor commands simultaneously.
 
 Notes:
+* Studio API   - Incremented bank version, requires runtime 1.06.00 or later.
+* Studio API   - Latest runtime supports loading old bank versions from 1.03.00.
 * Studio API   - Added a warning for events that haven't finished because they
                  are waiting for a DSP effect to go idle.
 * Lowlevel API - WiiU - To comply with LotCheck requirements only the logging version
