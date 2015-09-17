@@ -3,9 +3,9 @@
 
 pkgname=veracrypt
 _pkgname=VeraCrypt
-pkgver=1.13
+pkgver=1.14
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="Disk encryption with strong security based on TrueCrypt"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://veracrypt.codeplex.com/"
@@ -17,7 +17,7 @@ source=("https://github.com/${pkgname}/${_pkgname}/archive/${_pkgname}_${pkgver}
 	"no_makeself.patch"
         "veracrypt.desktop"
         "veracrypt.install")
-sha1sums=('866351e8a9a32709d0a4e39d37ef41d9545ac78a'
+sha1sums=('92019843093875790c4f2911cc9aafa8affb9abd'
           '0cbe9f7875ab52be125cc575533f76fab60314a5'
           'ebdd450e719fe3cff5e459f027856cbaf03db13a'
           '14dceabf658a7e3505c855c2862aa86e343fcda5')
