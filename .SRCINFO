@@ -22,6 +22,7 @@ pkgbase = papyros-shell-git
 	depends = solid
 	depends = kconfig
 	depends = plasma-nm
+	depends = qt5-tools
 	optdepends = pulseaudio: audio support
 	optdepends = sddm: login screen theme
 	provides = papyros-shell-git
