@@ -1,7 +1,7 @@
 pkgbase = nginx-http2
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with early alpha HTTP/2 support
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nginx.org
 	install = nginx.install
 	arch = i686
