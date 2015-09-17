@@ -1,6 +1,6 @@
 # Maintainer: Ole Ernst <olebowle[at]gmx[dot]com>
 pkgname=jcatgui-9kw
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc='An application written to solve jobs or rather to earn credits on 9kw.eu in more comfortable way than in a browser.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('unknown')
 depends=('bash' 'java-runtime')
 makedepends=('gendesk')
 source=("https://sites.google.com/site/jcatgui9kw/jCatGUI_9kw.zip")
-sha256sums=('00a0ed509feba9c093d30b1df670a931b4640c5bf5135004d5799f978346a8a5')
+sha256sums=('77e5362d5a01981d2cf060793ec9555ff0f0220d890060f9bf688fca5df1b295')
 
 prepare() {
   bsdtar -xf jCatGUI_9kw.jar
