@@ -23,5 +23,5 @@ package() {
 	cd Linux-Icon-Pack/
 
 	install -dm 755 "$pkgdir"/usr/share/icons
-	cp -dr --no-preserve='ownership' Materialos "$pkgdir"/usr/share/icons/
+	cp -dr --no-preserve='ownership' MaterialOS "$pkgdir"/usr/share/icons/
 }
