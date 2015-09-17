@@ -3,7 +3,7 @@
 
 pkgname=qt-color-widgets-common
 _pkgname=QtColorWidgets
-pkgver=0.r175.98e5308
+pkgver=0.r178.7028e5c
 pkgrel=2
 pkgdesc='Common files used by qt4- and qt5-color-widgets packages'
 arch=('any')
@@ -11,11 +11,11 @@ url='https://github.com/mbasaglia/Qt-Color-Widgets'
 license=('LGPL3')
 makedepends=('git')
 source=("${pkgname}::git+git://github.com/mbasaglia/Qt-Color-Widgets.git"
-	"ColorDialog"
-	"ColorPreview"
-	"ColorWheel"
-	"GradientSlider"
-	"HueSlider")
+	'ColorDialog'
+	'ColorPreview'
+	'ColorWheel'
+	'GradientSlider'
+	'HueSlider')
 sha256sums=('SKIP'
 	'04dc1ca12e261b3a357a58d85cf95f0b8371bb8a6c5487a3048cdfffc434dfc1'
 	'f2122b1a9d359c1545bf207684c7fb4d126c864c60df15cf19257ca83773f954'
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd $pkgname
-	printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf '0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
