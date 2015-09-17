@@ -1,7 +1,7 @@
 # Maintainer: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=potool-renamed
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to help editing po files, without poedit name clash"
 arch=('i686' 'x86_64')
 url="http://marcin.owsiany.pl/potool-page"
