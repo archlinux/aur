@@ -1,16 +1,16 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=nautilus-hide
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Extension for Nautilus to hide files without renaming them"
 arch=('any')
-url="https://bitbucket.org/brunonova/nautilus-hide"
+url="https://github.com/brunonova/$pkgname"
 license=('GPL3')
 depends=('nautilus' 'python-nautilus')
 makedepends=('cmake>=2.6' 'gettext')
 install="$pkgname.install"
-source=("https://bitbucket.org/brunonova/$pkgname/downloads/${pkgname}_$pkgver.tar.xz")
-md5sums=('d5e435e1f37f7122002010d6f6080208')
+source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/${pkgname}_$pkgver.tar.xz")
+md5sums=('e4b0f6450c35a3b43d2652e4679e9468')
 
 build() {
 	cd "$srcdir"
@@ -21,5 +21,7 @@ build() {
 package() {
 	cd "$srcdir"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 "README.mkd" "$pkgdir/usr/share/doc/$pkgname/README.mkd"
+	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 "NEWS" "$pkgdir/usr/share/doc/$pkgname/NEWS"
+	install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
 }
