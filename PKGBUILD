@@ -1,17 +1,17 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=drmips
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Graphical MIPS simulator to support computer architecture teaching and learning"
 arch=('any')
-url="https://bitbucket.org/brunonova/drmips"
+url="http://brunonova.github.io/$pkgname/"
 license=('GPL3')
 depends=('java-runtime>=6' 'desktop-file-utils' 'hicolor-icon-theme' 'ttf-font')
 makedepends=('java-environment>=6' 'cmake>=2.8')
 optdepends=('drmips-doc: user manuals')
 install="$pkgname.install"
-source=("https://bitbucket.org/brunonova/$pkgname/downloads/DrMIPS_v$pkgver.tar.xz")
-md5sums=('b119bbaf57cbd038f207756163aecf42')
+source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/DrMIPS_v$pkgver.tar.xz")
+md5sums=('4d9de6b78ed07f278839f0f2d7f90d28')
 
 build() {
 	cd "$srcdir"
@@ -28,5 +28,7 @@ package() {
 	install -Dm644 "misc/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -Dm644 "misc/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 	install -Dm644 "misc/$pkgname.pt.1" "$pkgdir/usr/share/man/pt/man1/$pkgname.1"
-	install -Dm644 "changelog" "$pkgdir/usr/share/doc/drmips/changelog"
+	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 "NEWS" "$pkgdir/usr/share/doc/$pkgname/NEWS"
+	install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
 }
