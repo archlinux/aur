@@ -1,0 +1,16 @@
+pkgbase = python-restructuredtext_lint
+	pkgdesc = reStructuredText linter
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/restructuredtext_lint
+	arch = any
+	license = Public Domain
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/r/restructuredtext_lint/restructuredtext_lint-0.12.2.tar.gz
+	sha256sums = d265d774d8295f9e47d35a16bafe2940faccaff19565a596c420603fb75ffab3
+
+pkgname = python-restructuredtext_lint
+
+pkgname = python2-restructuredtext_lint
+
