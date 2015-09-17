@@ -4,11 +4,11 @@
 
 pkgname=h2o
 pkgver=1.5.0.beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 depends=('libuv' 'libyaml' 'wslay' 'zlib')
-makedepends=('autotools' 'cmake' 'libtool' 'make' 'pkg-config')
+makedepends=('cmake' 'libtool' 'make' 'pkg-config')
 url="https://github.com/h2o/h2o"
 license=('MIT')
 source=($pkgname-1.5.0-beta2.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v1.5.0-beta2
