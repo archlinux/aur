@@ -4,12 +4,12 @@
 pkgname=oclhashcat
 _pkgname=oclHashcat
 pkgver=1.37
-pkgrel=2
+pkgrel=3
 pkgdesc="Worlds fastest password cracker with dictionary mutation engine (for AMD)"
 url=('https://hashcat.net/oclhashcat')
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('catalyst-utils=14.9' 'opencl-catalyst=14.9')
+depends=('catalyst-utils>=14.9' 'opencl-catalyst>=14.9')
 replaces=('oclhashcat-amd')
 conflicts=('oclhashcat-amd')
 options=('!strip')
