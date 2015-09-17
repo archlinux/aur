@@ -13,9 +13,8 @@ license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python2' 'hicolor-icon-theme' 'farstream-0.1'
              'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
-source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2{,.asc})
-sha256sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007'
-            'SKIP')
+source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2)
+sha256sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007')
 validpgpkeys=('93FF2C7F884CB4AC4E4463DA4E8D870E4C292FCC')
 
 prepare() {
