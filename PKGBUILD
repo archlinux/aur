@@ -1,7 +1,7 @@
 # Maintainer: lightning1141 <lightning1141@gmail.com>
 pkgname=pocsuite-git
 pkgdesc="Pocsuite is A remote vulnerability test framework developed by Knownsec Security Team. http://sebug.net"
-pkgver=1b9ec54.20150917
+pkgver=770a178.20150917
 pkgrel=1
 arch=('any')
 url="https://github.com/knownsec/Pocsuite"

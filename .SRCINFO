@@ -1,6 +1,6 @@
 pkgbase = pocsuite-git
 	pkgdesc = Pocsuite is A remote vulnerability test framework developed by Knownsec Security Team. http://sebug.net
-	pkgver = 1b9ec54.20150917
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/knownsec/Pocsuite
 	arch = any
