@@ -9,7 +9,7 @@ pkgdesc='Open Virtual Machine Tools kernel modules (DKMS)'
 arch=('i686' 'x86_64')
 url='http://open-vm-tools.sourceforge.net/'
 license=('GPL2')
-conflicts=('open-vm-tools-modules', 'vmware-modules-dkms')
+conflicts=('open-vm-tools-modules' 'vmware-modules-dkms')
 
 depends=('dkms')
 options=('!strip')
