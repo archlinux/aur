@@ -2,7 +2,7 @@ pkgbase=python-doc8
 pkgname=(python-doc8 python2-doc8)
 _pyname=doc8
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Style checker for Sphinx (or other) RST documentation"
 url='https://pypi.python.org/pypi/doc8'
@@ -22,7 +22,7 @@ build() {
 }
 
 package_python-doc8() {
-  depends=('python-stevedore' 'python-chardet' 'python-docutils' 'python-argparse' 'python-six')
+  depends=('python-stevedore' 'python-chardet' 'python-docutils' 'python-argparse' 'python-six' 'python-restructuredtext_lint')
   cd $_pyname-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
 
@@ -30,7 +30,7 @@ package_python-doc8() {
 }
 
 package_python2-doc8() {
-  depends=('python2-stevedore' 'python2-chardet' 'python2-docutils' 'python2-argparse' 'python2-six')
+  depends=('python2-stevedore' 'python2-chardet' 'python2-docutils' 'python2-argparse' 'python2-six' 'python2-restructuredtext_lint')
   cd $_pyname-${pkgver}-py2 
   python2 setup.py install --root="$pkgdir" --optimize=1
 
