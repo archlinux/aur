@@ -2,13 +2,13 @@
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 pkgname=gnome-shell-pomodoro
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/codito/gnome-shell-pomodoro/'
 license=('GPL3')
-depends=('gnome-desktop' 'libcanberra' 'upower' 'gstreamer' 'gobject-introspection')
-makedepends=('intltool' 'vala' 'gnome-common')
+depends=('gnome-desktop' 'libcanberra' 'upower' 'gstreamer' 'gobject-introspection' 'perl-xml-sax-expat')
+makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x')
 conflicts=('gnome-shell-pomodoro-git')
 install='gschemas.install'
 changelog='NEWS'
