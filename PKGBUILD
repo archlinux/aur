@@ -17,7 +17,8 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+#     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
