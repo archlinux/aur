@@ -1,13 +1,13 @@
 pkgbase = winexe-git
 	pkgdesc = Remotely execute commands on Windows NT/2000/XP/2003 systems
-	pkgver = r234.b787d2a
+	pkgver = 1.1.r234.b787d2a
 	pkgrel = 1
 	url = http://sourceforge.net/projects/winexe/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = mingw-w64-gcc
 	makedepends = python2
-	depends = mingw-w64-gcc
 	depends = smbclient
 	provides = winexe
 	conflicts = winexe

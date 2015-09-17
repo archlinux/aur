@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=winexe-git
 _gitname=winexe-waf
-pkgver=r234.b787d2a
-pkgrel=2
+pkgver=1.1.r234.b787d2a
+pkgrel=1
 pkgdesc="Remotely execute commands on Windows NT/2000/XP/2003 systems"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/winexe/"
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
