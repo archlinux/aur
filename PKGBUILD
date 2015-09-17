@@ -3,7 +3,7 @@
 pkgname=('polylib' 'polylib-gmp')
 pkgbase='polylib'
 pkgver='5.22.5'
-pkgrel=4
+pkgrel=5
 pkgdesc='A library of polyhedral functions'
 arch=('i686' 'x86_64')
 url='http://icps.u-strasbg.fr/polylib/'
@@ -50,6 +50,8 @@ package_polylib() {
 }
 
 package_polylib-gmp() {
+    depends=("polylib>=$pkgver")
+
     cd "$srcdir/$pkgbase-$pkgver/polylibgmp"
     make DESTDIR="$pkgdir" install-exec
    

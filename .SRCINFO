@@ -1,7 +1,7 @@
 pkgbase = polylib
 	pkgdesc = A library of polyhedral functions
 	pkgver = 5.22.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://icps.u-strasbg.fr/polylib/
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,5 @@ pkgbase = polylib
 pkgname = polylib
 
 pkgname = polylib-gmp
+	depends = polylib>=5.22.5
 
