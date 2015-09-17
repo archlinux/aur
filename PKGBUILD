@@ -2,7 +2,7 @@
 
 pkgname=guile-git
 _gitname=guile
-pkgver=v2.1.0.452.g00884bb
+pkgver=2.1.0.454.gd701e8a
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -20,8 +20,7 @@ install=$pkgname.install
 
 pkgver() {
   cd $_gitname
-  #echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-  git describe --tags |sed 's+-+.+g'
+  git describe --tags |sed 's+-+.+g'|sed 's+^v++'
 }
 
 build() {
