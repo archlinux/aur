@@ -1,13 +1,12 @@
 pkgbase = kyocera-cups
 	pkgdesc = PPD drivers for Kyocera and UTAX TaskAlfa (TA) printers
 	pkgver = 8.1404
-	pkgrel = 2
+	pkgrel = 3
 	url = http://usa.kyoceradocumentsolutions.com/americas/jsp/Kyocera/resource_details.jsp?pid=25595&rid=27560
 	install = kyocera-cups.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = unzip
 	depends = cups
 	conflicts = kyocera-fs-c2x26mfp
 	conflicts = kyocera-fs1128mfp

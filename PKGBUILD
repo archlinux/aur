@@ -1,14 +1,14 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 pkgname=kyocera-cups
 pkgver=8.1404
-pkgrel=2
+pkgrel=3
 pkgdesc='PPD drivers for Kyocera and UTAX TaskAlfa (TA) printers'
 arch=('i686' 'x86_64')
 url='http://usa.kyoceradocumentsolutions.com/americas/jsp/Kyocera/resource_details.jsp?pid=25595&rid=27560'
 license=('custom')
 groups=()
 depends=('cups')
-makedepends=('unzip')
+makedepends=()
 optdepends=()
 provides=()
 conflicts=('kyocera-fs-c2x26mfp' 'kyocera-fs1128mfp' 'kyocera-fs1370dn' 'kyocera-ta266ci-cups')
@@ -18,7 +18,7 @@ options=()
 install=kyocera-cups.install
 changelog=
 source=('http://usa.kyoceradocumentsolutions.com/americas/jsp/upload/resource/27560/0/Kyocera%20Linux%20PPD%20Ver%208.1404.tar.gz')
-noextract=
+noextract=()
 sha1sums=('bb6a30802f3b945e023a3f1fcdf69e1b6f5fd92d')
 
 prepare() {
