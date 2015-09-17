@@ -2,7 +2,7 @@
 
 _plugin_name=keefox
 pkgname=firefox-extension-$_plugin_name
-pkgver=1.5.3_signed
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Adds free, secure and easy to use password management features to Firefox"
 arch=('any')

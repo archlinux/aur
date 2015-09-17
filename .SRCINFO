@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-keefox
 	pkgdesc = Adds free, secure and easy to use password management features to Firefox
-	pkgver = 1.5.3_signed
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = http://keefox.org
 	arch = any
