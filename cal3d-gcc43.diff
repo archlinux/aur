@@ -1,0 +1,53 @@
+--- src/cal3d/hardwaremodel.cpp
++++ src/cal3d/hardwaremodel.cpp
+@@ -24,6 +24,7 @@
+ #include "cal3d/coreskeleton.h"
+ #include "cal3d/skeleton.h"
+ 
++#include <string.h>
+ 
+  /*****************************************************************************/
+ /** Constructs the hardware model instance.
+--- src/cal3d/platform.cpp
++++ src/cal3d/platform.cpp
+@@ -18,6 +18,8 @@
+ 
+ #include "cal3d/platform.h"
+ 
++#include <string.h>
++
+  /*****************************************************************************/
+ /** Constructs the platform instance.
+   *
+--- src/cal3d/renderer.cpp
++++ src/cal3d/renderer.cpp
+@@ -29,6 +29,8 @@
+ #include "cal3d/coresubmesh.h"
+ #include "cal3d/physique.h"
+ 
++#include <string.h>
++
+  /*****************************************************************************/
+ /** Constructs the renderer instance.
+   *
+--- src/cal3d/submesh.cpp
++++ src/cal3d/submesh.cpp
+@@ -16,6 +16,7 @@
+ #include "cal3d/error.h"
+ #include "cal3d/coresubmesh.h"
+ 
++#include <string.h>
+ 
+ CalSubmesh::CalSubmesh(CalCoreSubmesh* coreSubmesh)
+ {
+--- src/cal3d_converter.cpp
++++ src/cal3d_converter.cpp
+@@ -11,6 +11,8 @@
+ 
+ #include "cal3d/cal3d.h"
+ 
++#include <strings.h>
++
+ #define SKELETON 0
+ #define MESH 1
+ #define ANIMATION 2
