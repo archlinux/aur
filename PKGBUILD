@@ -2,7 +2,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="http://dcpomatic.com/"
@@ -18,9 +18,10 @@ sha256sums=('d41eed56c15f17263c5f0a358544e30e15e539e3e864819ff01df46cfa467ca1')
 
 
 build() {
+  CXXFLAGS="$CXXFLAGS -I/usr/include/openjpeg-1.5/ "
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 waf configure --prefix=/usr
-  python2 waf build
+  python2 waf build 
 }
 
 package() {
