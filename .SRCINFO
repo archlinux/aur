@@ -1,0 +1,22 @@
+pkgbase = gpicsync
+	pkgdesc = Inserts location in your pictures metadata from a GPS tracklog
+	pkgver = 1.33
+	pkgrel = 1
+	url = https://github.com/metadirective/GPicSync
+	install = gpicsync.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = python2-pillow
+	depends = python2-unidecode
+	depends = wxpython
+	source = git://github.com/metadirective/GPicSync.git
+	source = gpicsync
+	source = gpicsync.desktop
+	md5sums = SKIP
+	md5sums = 7bb84135e4b289628d9dd65b8c05d897
+	md5sums = a5d4ffa8df81587674d2f4d2b178086f
+
+pkgname = gpicsync
+
