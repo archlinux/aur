@@ -3,12 +3,12 @@
 pkgname=gnome-shell-pomodoro-git
 pkgver=r676.1fd4e2e
 pkgrel=1
-pkgdesc="A time management utility for GNOME based on the pomodoro technique"
+pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
-url="https://github.com/codito/gnome-shell-pomodoro/"
+url='https://github.com/codito/gnome-shell-pomodoro/'
 license=('GPL3')
-depends=('gnome-desktop' 'libcanberra' 'upower' 'gstreamer' 'gom' 'gobject-introspection')
-makedepends=('intltool' 'vala' 'gnome-common')
+depends=('gnome-desktop' 'libcanberra' 'upower' 'gstreamer' 'gobject-introspection' 'perl-xml-sax-expat')
+makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x')
 conflicts=('gnome-shell-pomodoro')
 provides=('gnome-shell-pomodoro')
 source=("$pkgname"::'git+https://github.com/codito/gnome-shell-pomodoro.git')
@@ -23,12 +23,15 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+  # Fixes some build issues when 'docbook2x' package is installed
+  # Big thanks to user maus25 for the fix
   sed -i "s/docbook2man \$?/docbook2man --sgml \$?/g" man/Makefile.am
+
+  ./autogen.sh --prefix=/usr --datadir=/usr/share
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  ./autogen.sh --prefix=/usr --datadir=/usr/share
   make
 }
 
