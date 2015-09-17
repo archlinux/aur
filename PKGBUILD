@@ -2,15 +2,15 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.7.7.r1.g42f3be0
+pkgver=0.7.7.r175.g41b36ea
 _last_release="0.7.7-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
 license=('Apache')
-depends=('libunwind' 'gc' 'llvm' 'libatomic_ops' 'pcre' 'libpcl' 'libevent')
-makedepends=('libxml2')
+depends=('libunwind' 'gc' 'libatomic_ops' 'pcre' 'libpcl' 'libevent' 'shards')
+makedepends=('libxml2' 'llvm')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git')
 optdepends=('libyaml: For YAML support'
             'gmp: For BigInt support'
@@ -65,6 +65,8 @@ package() {
   cp -av samples "$pkgdir/usr/share/doc/crystal/"
 
   install -Dm644 etc/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_crystal"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha256sums=('SKIP')
