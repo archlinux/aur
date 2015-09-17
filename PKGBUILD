@@ -1,6 +1,6 @@
 # Maintainer: SnowyClaw <bowser5543@gmail.com>
 pkgname=blws-important-git
-pkgver=0.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Provides the license and readme files."
 arch=('any')
