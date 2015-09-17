@@ -3,7 +3,7 @@
 _git=4a2012a4ddc7f34e4d9c84364035458980bdd617
 _repo=papirus-pack-kde
 pkgname=bomi-skin-papirus
-pkgver=20150821
+pkgver=20150916
 pkgrel=1
 pkgdesc="Papirus theme for Bomi"
 arch=('any')
