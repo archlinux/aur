@@ -3,7 +3,7 @@
 
 pkgname=octave-hg
 pkgver=r20468.2f94652de9ff
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -27,12 +27,6 @@ _hgrepo=octave
 
 pkgver() {
   cd "$srcdir/${_hgrepo}"
-  printf "r%s.%s" "$(hg log | head -1|awk -F: '{print $2}'| cut -c9-13)" "$(hg identify -i)" 
-}
-
-build() {
-  cd $srcdir
-  
   if [ -d ${_hgrepo} ]; then
       cd ${startdir}/src/${_hgrepo}
       hg pull -u
@@ -41,15 +35,16 @@ build() {
   fi
  
   msg "Mercurial clone done or server timeout"
-  msg "Starting make..."
- 
+  printf "r%s.%s" "$(hg log | head -1|awk -F: '{print $2}'| cut -c9-13)" "$(hg identify -i)" 
+}
+
+build() {
+  cd $srcdir
   [[ -d $srcdir/${_hgrepo}-build ]] && rm -rf $srcdir/${_hgrepo}-build
   cp -rf $srcdir/${_hgrepo} $srcdir/${_hgrepo}-build
  
-  cd $srcdir/${_hgrepo}-build
- 
-  ./bootstrap --bootstrap-sync 
-
+  cd ${_hgrepo}-build
+   ./bootstrap --bootstrap-sync 
   [[ $CARCH == "x86_64" ]] && _arch=amd64
   [[ $CARCH == "i686" ]] && _arch=i386
   export LD_PRELOAD=/usr/lib/libGL.so
