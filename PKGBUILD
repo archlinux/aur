@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -84,7 +84,10 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
 	'change-default-console-loglevel.patch'
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
         "git+$_aufs3#branch=aufs4.1"
+        'bfs_gc_remove_resched_closest_idle.patch'
        )
+
+
 prepare() {
   cd "${srcdir}/linux-${_basekernel}"
   msg "Applying pf-kernel patch"
@@ -139,6 +142,10 @@ prepare() {
 
   # added gcc 4.7.1 support for Kconfig and menuconfig
   # now inclued in pf patchset
+
+  # fix bfs issue
+  patch -Np1 -i "${srcdir}/bfs_gc_remove_resched_closest_idle.patch"
+  
   if [ "$CARCH" = "x86_64" ]; then
 	cat "${startdir}/config.x86_64" >| .config
   else
@@ -695,4 +702,5 @@ sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '247c7e2001e4fe28e8cabd0f861240ac13487a942bcb2dbd92ea50302d799414'
-            'SKIP')
+            'SKIP'
+            '64330f2b455c1b5be9f595e00a111ed6edfe9eec010453ccb6e4d7dfe3cdad3f')
