@@ -14,7 +14,7 @@ epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
-license=('GPL3' 'custom')
+license=('GPL3' 'custom:libfdk-aac')
 depends=(
       'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
       'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
@@ -84,10 +84,16 @@ build() {
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play,server}.1
+
+  cp /usr/share/licenses/libfdk-aac/NOTICE .
 }
 
 package() {
   cd $_name-$pkgver
   make DESTDIR="$pkgdir" install install-man
   install -Dm755 tools/qt-faststart "$pkgdir"/usr/bin/qt-faststart
+
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m 0644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
 }
