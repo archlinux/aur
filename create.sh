@@ -21,3 +21,4 @@ chmod -v 644 PKGBUILD
 echo mkaurball -f
 mkaurball -f
 makepkg
+mksrcinfo
