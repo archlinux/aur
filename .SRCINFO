@@ -1,0 +1,17 @@
+pkgbase = raknet-git
+	pkgdesc = Cross platform C++ network library
+	pkgver = r18.1a16989
+	pkgrel = 1
+	url = http://www.jenkinssoftware.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = gcc-libs
+	provides = raknet
+	conflicts = raknet
+	source = git+https://github.com/OculusVR/RakNet.git
+	md5sums = SKIP
+
+pkgname = raknet-git
+
