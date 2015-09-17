@@ -7,7 +7,7 @@ conflicts=('nginx' 'nginx-mainline')
 _pkgname=nginx
 pkgver=1.9.4
 pkgrel=1
-patchver=5
+patchver=6
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with early alpha HTTP/2 support'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -30,11 +30,11 @@ source=(${url}/download/nginx-${pkgver}.tar.gz
         service
         logrotate)
 md5sums=('27322fbb4b265c0e0cc548f5e6b7f201'
-         '64a9fcb6cce70e1093a887454a8a0223'
+         '8dec8107350c8fa48c536cf88c2df95e'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '19a26a61c8afe78defb8b4544f79a9a0')
 sha256sums=('479b0c03747ee6b2d4a21046f89b06d178a2881ea80cfef160451325788f2ba8'
-            '2b8eb36bf48bf375850fff23ee15d34bd0327b6240274ae26dcee702e0b907ac'
+            'e7068d5af7eb6b493bb3945cd35fc8f9f90643337ec69a3fbff14ba922eceb44'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '2613986dd5faab09ca962264f16841c8c55c3a0bc7a5bb737eabd83143090878')
 
