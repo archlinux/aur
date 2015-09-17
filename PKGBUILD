@@ -9,7 +9,7 @@ arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-lwp-protocol-https' 'perl-uri' 'perl-libwww' 'perl>=5.8.0')
-makedepends=()
+makedepends=('perl-cgi')
 url='https://metacpan.org/release/REST-Client'
 source=('http://search.cpan.org/CPAN/authors/id/K/KK/KKANE/REST-Client-273.tar.gz')
 md5sums=('776f74d063253b9e5d74b01adf97f060')

@@ -6,6 +6,7 @@ pkgbase = perl-rest-client
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-cgi
 	depends = perl-lwp-protocol-https
 	depends = perl-uri
 	depends = perl-libwww
