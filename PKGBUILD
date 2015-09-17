@@ -13,7 +13,7 @@ url='http://doublecmd.sourceforge.net'
 # https://launchpad.net/~alexx2000/+archive/doublecmd-svn
 depends=('gtk2')
 optdepends=('lua: scripting' 'p7zip: support for 7zip archives' 'libunrar: support for rar archives'
-            'pmount: mount removable devices' 'imagemagick: speed up thumbnail view')
+            'pmount: mount removable devices' 'imagemagick: speed up thumbnail view' 'ffmpegthumbnailer: video thumbnails')
 install="doublecmd.install"
 provides=('doublecmd')
 replaces=('doublecmd-gtk2-bin-nightly')

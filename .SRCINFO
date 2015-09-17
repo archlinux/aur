@@ -13,6 +13,7 @@ pkgbase = doublecmd-gtk2-alpha-bin
 	optdepends = libunrar: support for rar archives
 	optdepends = pmount: mount removable devices
 	optdepends = imagemagick: speed up thumbnail view
+	optdepends = ffmpegthumbnailer: video thumbnails
 	provides = doublecmd
 	conflicts = doublecmd-gtk2
 	conflicts = doublecmd-svn
