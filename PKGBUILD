@@ -4,7 +4,7 @@ _pkgver_minor=
 _python2_ver_major=$(pacman -Qi python2|gawk '$1~/Version/{split($3,v,".");print v[1] "." v[2]}')
 pkgname=mesos
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cluster manager that simplifies the complexity of running applications on a shared pool of servers"
 arch=('i686' 'x86_64')
 url=http://mesos.apache.org/
@@ -12,7 +12,7 @@ license=('Apache')
 groups=('science')
 install=$pkgname.install
 depends=('python2' 'curl' 'leveldb' 'java-environment' 'libunwind' 'google-glog'
-         'libnl' 'apr' 'subversion' 'protobuf' 'python2-protobuf' 'python2-boto')
+         'libnl>=3.2.26' 'apr' 'subversion' 'protobuf' 'python2-protobuf' 'python2-boto')
 makedepends=('java-environment' 'maven' 'http-parser' 'python2-http-parser' 'google-glog'
              'gperftools' 'apr' 'subversion' 'protobuf'
 'python2-protobuf' 'python2-boto')
