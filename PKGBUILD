@@ -1,9 +1,9 @@
-# Maintainer: Evan Anderson <evananderson@thelinuxman.us>
+# ex-Maintainer: Evan Anderson <evananderson@thelinuxman.us>
 # Maintainer = Anty <anty_fab at hotmail dot fr>
 
 _gitname=grub-btrfs
 pkgname=$_gitname-git
-pkgver=v0.6.1.r0.gfda6eb8
+pkgver= v1.6.r6.g252a637-1
 pkgrel=1
 pkgdesc="grub-btrfs, add support for btrfs snapshots into grub menu"
 arch=('any')
@@ -14,6 +14,8 @@ makedepends=('git')
 conflicts=('grub-btrfs')
 backup=('etc/grub.d/41_snapshots-btrfs')
 source=('git+https://github.com/Antynea/grub-btrfs.git')
+#source=('git+https://github.com/Antynea/grub-btrfs.git#branch=v1.xx')
+#source=('git+https://github.com/Antynea/grub-btrfs.git#branch=v0.xx')
 md5sums=('SKIP')
 
 pkgver() {
