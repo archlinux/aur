@@ -8,8 +8,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=2.7.2
-pkgrel=4
+pkgver=2.8
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('i686' 'x86_64')
@@ -23,7 +23,8 @@ depends=(
       'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
       'libfdk-aac'
       )
-makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
+makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
+optdepends=('ladspa: LADSPA filters')
 provides=(
       "ffmpeg=$pkgver"
       'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -33,7 +34,7 @@ provides=(
 conflicts=("$_name")
 source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-md5sums=('7eb2140bab9f0a8669b65b50c8e4cfb5'
+md5sums=('5eb3839e23c9ca396fabd0ebbe293ea2'
          'SKIP')
 
 build() {
@@ -49,6 +50,7 @@ build() {
     --enable-fontconfig \
     --enable-gnutls \
     --enable-gpl \
+    --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
     --enable-libfreetype \
