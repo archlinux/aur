@@ -1,7 +1,7 @@
 pkgbase = clementine-lxqt
 	pkgdesc = Qt5 version of Clementine, a modern music player and library organiser.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.clementine-player.org/
 	install = clementine.install
 	arch = i686
@@ -36,7 +36,6 @@ pkgbase = clementine-lxqt
 	provides = clementine
 	conflicts = clementine
 	conflicts = clementine-qt5-git
-	replaces = clementine
 	source = http://esclapion.free.fr/AUR/Clementine-1.2.3.tar.gz
 	sha256sums = d5f4208c788b6ebe85921b95969e5692ebd81a23d31c3942d11d0a22c2f5f28c
 
