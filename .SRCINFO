@@ -1,0 +1,20 @@
+pkgbase = mp3fs-git
+	pkgdesc = A read-only FUSE filesystem which transcodes audio formats (currently FLAC) to MP3 on the fly when opened and read.
+	pkgver = 20150913
+	pkgrel = 1
+	url = http://khenriks.github.com/mp3fs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = asciidoc
+	depends = fuse
+	depends = flac
+	depends = lame
+	depends = libid3tag
+	conflicts = mp3fs
+	source = git://github.com/khenriks/mp3fs.git
+	sha256sums = SKIP
+
+pkgname = mp3fs-git
+
