@@ -7,7 +7,7 @@ pkgdesc="Thunderbird frontend for SOGo"
 arch=('i686' 'x86_64')
 groups=('office')
 url="http://www.sogo.nu/downloads/frontends.html"
-license=('MPL' 'GPL' 'LGPL')
+license=('GPL' 'LGPL')
 depends=('thunderbird>=38' 'thunderbird-lightning-bin')
 makedepends=()
 options=(!strip)

@@ -6,7 +6,6 @@ pkgbase = thunderbird-sogo-connector-bin
 	arch = i686
 	arch = x86_64
 	groups = office
-	license = MPL
 	license = GPL
 	license = LGPL
 	depends = thunderbird>=38
