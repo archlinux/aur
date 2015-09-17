@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Icon=/opt/pysolo/img/pysolo.png
+Name=pySolo
+Comment=A software for sleep analysis in Drosophila
+Exec=/usr/bin/pysolo
+Terminal=false
+Type=Application
+Categories=Biology;Science;Education;
+StartupNotify=false
