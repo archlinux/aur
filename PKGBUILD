@@ -10,16 +10,16 @@ groups=()
 depends=()
 makedepends=()
 optdepends=(postfix dovecot nginx)
-provides=()
+provides=("portal")
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=#($pkgname-$pkgver.tar.gz)
+source=("$portal::git+https://github.com/orbifx/portal.git")
 noextract=()
-md5sums=() #autofill using updpkgsums
+sha512sums=(skip) #autofill using updpkgsums
 
 build() {
   cd "$pkgname-$pkgver"

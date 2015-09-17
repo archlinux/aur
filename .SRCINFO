@@ -8,6 +8,9 @@ pkgbase = portal
 	optdepends = postfix
 	optdepends = dovecot
 	optdepends = nginx
+	provides = portal
+	source = ::git+https://github.com/orbifx/portal.git
+	sha512sums = skip
 
 pkgname = portal
 
