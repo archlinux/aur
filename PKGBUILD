@@ -1,7 +1,7 @@
 # Maintainer: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=potool
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to help editing gettext po files"
 arch=('i686' 'x86_64')
 url="http://marcin.owsiany.pl/potool-page"
