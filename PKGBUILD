@@ -4,12 +4,12 @@
 
 pkgname=ricochet
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Anonymous peer-to-peer instant messaging."
 arch=('i686' 'x86_64')
 url="https://ricochet.im/"
 license=('custom')
-depends=('tor' 'qt5-quick1' 'qt5-quickcontrols' 'qt5-declarative' 'openssl' 'protobuf')
+depends=('tor' 'qt5-quick1' 'qt5-quickcontrols' 'qt5-declarative' 'openssl' 'protobuf' 'qt5-multimedia')
 makedepends=('qt5-tools' 'pkg-config')
 source=(https://ricochet.im/releases/$pkgver/$pkgname-$pkgver-src.tar.bz2{,.asc})
 sha256sums=('1aae4c1d1b836a576dde707d3af8898eb068ba5f95c0eda98b108208f17cfba0'
