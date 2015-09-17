@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta
 	pkgdesc = Standalone Mail/News reader - Bleeding edge version with optional PGO
-	pkgver = 41.0b1
+	pkgver = 41.0b2
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-beta.install
@@ -38,16 +38,16 @@ pkgbase = thunderbird-beta
 	depends = sqlite
 	depends = startup-notification
 	optdepends = libcanberra: for sound support
-	provides = thunderbird=41.0b1
+	provides = thunderbird=41.0b2
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/41.0b1/source/thunderbird-41.0b1.source.tar.bz2
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/41.0b2/source/thunderbird-41.0b2.source.tar.bz2
 	source = mozconfig
 	source = mozconfig-pgo
 	source = thunderbird-beta.desktop
 	source = thunderbird-beta-safe.desktop
 	source = vendor.js
-	md5sums = c85968938539c8c75405d4855623d2f0
+	md5sums = e80188bff2c45ba0d15726406f034eba
 	md5sums = 0c5dbb39b27bb72f837921b88a9e48c8
 	md5sums = 7b0cf4656fa25e75187aac4a44376ab9
 	md5sums = fe18423c55d549722870573695b3bd60
