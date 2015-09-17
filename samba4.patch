@@ -1,0 +1,12 @@
+diff -Nur winexe-waf.orig/source/wscript winexe-waf/source/wscript
+--- winexe-waf.orig/source/wscript	2015-09-17 12:01:54.235640992 +1000
++++ winexe-waf/source/wscript	2015-09-17 12:02:18.188976190 +1000
+@@ -78,7 +78,7 @@
+                 ''' % (h in 'smb_cli.h smb_cliraw.h smb_composite.h util/debug.h'.split(), h))
+ 
+             libs = []
+-            for l in 'cli-ldap dcerpc dcerpc-samba errors popt talloc ndr-standard samba-hostconfig samba-credentials smbclient-raw'.split():
++            for l in 'cli-ldap-samba4 dcerpc-samba4 dcerpc-samba-samba4 errors-samba4 samba-debug-samba4 popt talloc ndr-standard samba-hostconfig samba-credentials smbclient-raw'.split():
+                 if ctx.check(lib=l, libpath=ctx.env.SAMBA_LIBS, mandatory=False):
+                     libs.append(l)
+                 else:
