@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=352.30
+pkgver=352.41
 pkgrel=1
-_goodkver=4.0
-_badkver=4.1
+_goodkver=4.1
+_badkver=4.2
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -26,15 +26,15 @@ if [[ ${_cpu} ]]; then
 fi
 conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
   'nvidia-pf-atom' 'nvidia-pf-psc' 'nvidia-pf-p4' 'nvidia-pf-p3'
-  'nvidia-pf-pm' 'nvidia-pf-k7')
+ 'nvidia-pf-pm' 'nvidia-pf-k7')
 license=('custom')
 install=nvidia.install
 options=(!strip)
 
 source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('7e59d84eafe2482b2f02df692b9168d5')
-md5sums_x86_64=('135dd90db609cecad8e74bde0054cf6f')
+md5sums_i686=('3f9c9fed035fa845e3f6a1ea5f5732f7')
+md5sums_x86_64=('d41d1a358edbade36cfd97cdcc9a80b9')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
      
