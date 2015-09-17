@@ -1,7 +1,7 @@
 # Maintainer: SnowyClaw <bowser5543@gmail.com>
 pkgname=blws-configuration-full-git
-pkgver=0.0.1
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Provides configuration, and themes."
 arch=('any')
 license=('unknown')
