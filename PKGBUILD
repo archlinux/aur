@@ -2,7 +2,7 @@
 # Contributor: Mattia Basaglia <mattia.basaglia@gmail.com>
 
 pkgname=qt5-color-widgets
-pkgver=0.r175.98e5308
+pkgver=0.r178.7028e5c
 pkgrel=1
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd $pkgname
-	printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf '0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
