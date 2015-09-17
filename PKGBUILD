@@ -2,13 +2,13 @@
 pkgname=winexe-git
 _gitname=winexe-waf
 pkgver=r234.b787d2a
-pkgrel=1
+pkgrel=2
 pkgdesc="Remotely execute commands on Windows NT/2000/XP/2003 systems"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/winexe/"
 license=('GPL3')
-depends=('mingw-w64-gcc' 'smbclient')
-makedepends=('python2')
+depends=('smbclient')
+makedepends=('mingw-w64-gcc' 'python2')
 provides=('winexe')
 conflicts=('winexe')
 options=('!buildflags')
