@@ -1,0 +1,13 @@
+pkgbase = python-graphics
+	pkgdesc = Simple python graphics library.
+	pkgver = 4.3
+	pkgrel = 1
+	url = http://mcsp.wartburg.edu/zelle/python/
+	arch = any
+	license = GPL
+	depends = python
+	source = http://mcsp.wartburg.edu/zelle/python/graphics.py
+	md5sums = 68dcab955c000313558067476e3a859d
+
+pkgname = python-graphics
+
