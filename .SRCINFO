@@ -7,7 +7,7 @@ pkgbase = keepass-plugin-rpc
 	arch = any
 	license = GPL
 	depends = keepass
-	source = keefox.zip::https://addons.mozilla.org/firefox/downloads/file/350852/keefox-1.5.3-tb+fx-linux.xpi?src=api
+	source = https://addons.mozilla.org/firefox/downloads/file/350852/keefox-1.5.3-tb+fx-linux.xpi?src=api
 	md5sums = ae694ee51911f0a25f4435f3bd2d699e
 	sha384sums = 4a010e987f29ba8f6a4a48eafa7c3392675689724f45ed205fea16d13b31deaf7832ee28ba3c7b31e257b87a1f24d98d
 
