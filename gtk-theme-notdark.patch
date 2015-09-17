@@ -1,0 +1,20 @@
+diff -crB gnome-mplayer-1.0.9/src/main.c gnome-mplayer-1.0.9-2/src/main.c
+*** src/main.c	2014-04-24 04:38:08.000000000 +0100
+--- src/main.c	2014-12-23 01:14:31.950237766 +0000
+***************
+*** 1132,1138 ****
+  #ifdef GTK3_ENABLED
+      if (embed_window <= 0) {
+          gtk_settings = gtk_settings_get_default();
+!         g_object_set(G_OBJECT(gtk_settings), "gtk-application-prefer-dark-theme", TRUE, NULL);
+      }
+  #endif
+  
+--- 1132,1138 ----
+  #ifdef GTK3_ENABLED
+      if (embed_window <= 0) {
+          gtk_settings = gtk_settings_get_default();
+!         // g_object_set(G_OBJECT(gtk_settings), "gtk-application-prefer-dark-theme", TRUE, NULL);
+      }
+  #endif
+  

@@ -1,0 +1,26 @@
+pkgbase = gnome-mplayer-light-theme
+	pkgdesc = A simple MPlayer GUI.
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = http://gnome-mplayer.googlecode.com/
+	install = gnome-mplayer-light-theme.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nautilus
+	makedepends = gconf
+	depends = mplayer
+	depends = dbus-glib
+	depends = libnotify
+	depends = hicolor-icon-theme
+	depends = dconf
+	depends = gmtk
+	provides = gnome-mplayer=1.0.9
+	conflicts = gnome-mplayer
+	source = https://gnome-mplayer-light-theme.googlecode.com/svn/packages/gnome-mplayer-1.0.9.tar.gz
+	source = gtk-theme-notdark.patch
+	md5sums = 26c3ab335b6fcdda220b05c977f5b0f1
+	md5sums = 4d7cd9c319a7a33709eed1882f1708b8
+
+pkgname = gnome-mplayer-light-theme
+
