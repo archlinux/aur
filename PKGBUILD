@@ -42,7 +42,7 @@ build() {
   export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
   cd ${srcdir}/${_pkgname}/latexdraw-core/net.sf.latexdraw.installer
-  mvn clean package
+  mvn clean package install
 
   # Fix: java.lang.NullPointerException: Location is required.
   # Place fxml in a corresponding resource directory.
@@ -55,7 +55,7 @@ build() {
   patch -p1 < ${srcdir}/assembly.patch
   cd ${srcdir}/${_pkgname}/latexdraw-core/net.sf.latexdraw
   cp -f ${srcdir}/assemblyBin.xml src/assembly/assemblyBin.xml
-  mvn clean package
+  mvn clean package install
 
   # Get project version
   projver=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -Ev '(^\[|Download\w+:)')
