@@ -20,11 +20,12 @@ prepare() {
   # Fixes some build issues when 'docbook2x' package is installed
   # Big thanks to user maus25 for the fix
   sed -i "s/docbook2man \$?/docbook2man --sgml \$?/g" man/Makefile.am
+
+  ./autogen.sh --prefix=/usr --datadir=/usr/share
 }
 
 build() {
   cd "$srcdir/gnome-pomodoro-$pkgver"
-  ./autogen.sh --prefix=/usr --datadir=/usr/share
   make
 }
 
