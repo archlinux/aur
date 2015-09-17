@@ -1,7 +1,7 @@
 # Maintainer: Scott Moak <scott-dot-moak-at-gmail-dot-com>
 
 pkgname=android-support-repository
-pkgver=r19
+pkgver=r20
 pkgrel=1
 pkgdesc='Android Support Repository Package'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('android-sdk')
 options=('!strip')
 source=("http://dl-ssl.google.com/android/repository/android_m2repository_${pkgver}.zip")
-sha1sums=('c033560828571d751e069f4cb0e447289dc795cc')
+sha1sums=('bc377621f487fe37a4a6f7b12cf6da0ed216702e')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/extras/android/"
