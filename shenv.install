@@ -1,0 +1,14 @@
+post_install() {
+    echo "Initializing shenv ..."
+    echo "Checking if a previous installation of shenv exists ..."
+    if [ -d "$HOME/.shenv" ]; then
+        echo "There already exists a previous installation at $HOME/.shenv"
+        echo "Skipping ..."
+    else
+        echo "Creating $HOME/.shenv ..."
+        mkdir $HOME/.shenv
+    fi
+
+    echo "NOTE: You need include /usr/share/shenv/bash/shenvrc in your .bashrc" 
+    echo "Thanks for installation. For queries, contact mail[at]sathyamvellal[dot]in"
+}

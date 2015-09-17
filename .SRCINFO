@@ -1,0 +1,14 @@
+pkgbase = shenv
+	pkgdesc = A set of scripts to create custom shell environments for different activities
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://sathyamvellal.in/shenv
+	install = shenv.install
+	arch = any
+	license = MIT
+	optdepends = zsh
+	source = https://github.com/sathyamvellal/shenv/archive/shenv-1.2.tar.gz
+	md5sums = 0486b9f9a213fd0dd2af725a4dec5856
+
+pkgname = shenv
+
