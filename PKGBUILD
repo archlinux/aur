@@ -1,7 +1,7 @@
 # Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 pkgname=cargo
-pkgver=0.4.0
-pkgrel=4
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Rust package manager"
 url="http://crates.io/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
