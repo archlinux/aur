@@ -16,7 +16,7 @@ makedepends=()
 optdepends=("soundfont-fluid: FluidR3_GM soundfont"
             "soundfont-toh: Don Allen's Timbres of Heaven soundfont")
 conflicts=("${pkgname}-git")
-
+provides=("${pkgname}=${pkgver}")
 replaces=("${pkgname}-git")
 install="notes.install"
 source=("notes.install")
@@ -38,14 +38,10 @@ pkgver() {
 	if [ "${_compile}" -ne 0 ]; then
 		cd "${srcdir}/${pkgname%%-*}-${pkgver:0:3}"
 		msg "Checking current version..."
-#		git_ver=`git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'`
 		conf_ver=`sed -n 's/)$//g;s/^AC_INIT(vlc, //p' configure.ac`
-#		echo "${git_ver/#"${git_ver:0:5}"/"${conf_ver:0:5}"}"
 		echo "${conf_ver:0:5}"
 	fi
 }
-
-provides=("${pkgname}=${pkgver}")
 
 prepare() {
 	if [ "${_compile}" -eq 0 ]; then
@@ -94,7 +90,7 @@ build() {
 		make libcompat.la
 
 		cd "${srcdir}/${pkgname%%-*}-${pkgver:0:3}/src/"
-		make libvlccore.la # ../include/vlc_about.h fourcc_tables.h
+		make libvlccore.la
 
 		cd "${srcdir}/${pkgname%%-*}-${pkgver:0:3}/modules/"
 		make top_builddir="${srcdir}/${pkgname%%-*}-${pkgver:0:3}" codec/libfluidsynth_plugin_la-fluidsynth.lo libfluidsynth_plugin.la
