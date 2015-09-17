@@ -4,3 +4,5 @@
 *.last
 *.install.pkg
 *.gz
+src
+pkg
