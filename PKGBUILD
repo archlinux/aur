@@ -1,7 +1,7 @@
 # Maintainer: SnowyClaw <bowser5543@gmail.com>
 pkgname=blws-binaries-git
-pkgver=0.0.1
-pkgrel=7
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Provides binaries."
 arch=('any')
 license=('unknown')
