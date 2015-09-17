@@ -1,0 +1,11 @@
+--- tests/test	2012-09-15 12:30:10.000000000 +0200
++++ tests/test.new	2015-09-16 21:36:19.438936203 +0200
+@@ -38,7 +38,7 @@
+ 
+ 	echo TESTING $dir with "$desc"
+ 	cp $dir/in.po $dir/work.po
+-	PATH="$(pwd)/../scripts:$(pwd)/../:$PATH" EDITOR=: poedit $opts $dir/work.po
++	PATH="$(pwd)/../scripts:$(pwd)/../:$PATH" EDITOR=: potooledit $opts $dir/work.po
+ 	diff -u $dir/in.po $dir/work.po
+ 	rm -f $dir/work.po
+ }

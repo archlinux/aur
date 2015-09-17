@@ -1,0 +1,11 @@
+--- Makefile	2012-09-15 12:30:10.000000000 +0200
++++ Makefile.new	2015-09-16 17:52:28.970326115 +0200
+@@ -38,7 +38,7 @@
+ install: potool
+ 	$(INSTALL) -d $(BINDIR)
+ 	$(BININSTALL) potool $(BINDIR)
+-	$(INSTALL) scripts/poedit $(BINDIR)
++	$(INSTALL) scripts/potooledit $(BINDIR)
+ 	$(INSTALL) scripts/postats $(BINDIR)
+ 	$(INSTALL) scripts/poupdate $(BINDIR)
+ 	$(INSTALL) change-po-charset $(BINDIR)
