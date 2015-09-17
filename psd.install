@@ -73,7 +73,6 @@ pre_upgrade() {
 				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
 				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
 				echo '-> Internal changes to psd require it to be stopped now before updating.'
-				echo '-> Users of overlayfs: you must run the following before starting the service: psd p'
 			fi
 		done
 	fi
