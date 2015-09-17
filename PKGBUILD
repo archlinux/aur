@@ -3,7 +3,7 @@
 pkgname=keepass-plugin-rpc
 pkgrel=1
 pkgdesc="RPC plugin for Keepass (used by the KeeFox addon for Firefox)"
-arch=(i686 x86_64)
+arch=(any)
 url="http://keefox.org/"
 license=('GPL')
 depends=(keepass)
