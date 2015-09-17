@@ -1,6 +1,6 @@
 pkgbase = carddavmate
 	pkgdesc = A CardDav web client
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = http://www.inf-it.com/open-source/clients/carddavmate/
 	install = carddavmate.install
@@ -10,9 +10,9 @@ pkgbase = carddavmate
 	optdepends = apache: Webserver to run CardDavMATE
 	backup = etc/webapps/carddavmate/config.js
 	backup = etc/webapps/carddavmate/apache.example.conf
-	source = http://www.inf-it.com/CardDavMATE_0.12.1.zip
+	source = http://www.inf-it.com/CardDavMATE_0.13.0.zip
 	source = apache.example.conf
-	md5sums = 2a0589269650a7b0eab927904b92cf72
+	md5sums = f83518544ff41884ffc6b1d9f8d688da
 	md5sums = 16fedd024cede2aa359076d7a988072d
 
 pkgname = carddavmate
