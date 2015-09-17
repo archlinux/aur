@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=($pkgname-$pkgver.tar.gz)
+source=#($pkgname-$pkgver.tar.gz)
 noextract=()
 md5sums=() #autofill using updpkgsums
 
