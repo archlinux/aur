@@ -7,25 +7,16 @@ arch=(any)
 url="http://keefox.org/"
 license=('GPL')
 depends=(keepass)
-makedepends=(unzip)
 install="${pkgname}.install"
-noextract=(keefox.zip)
-
-prepare() {
-    cd "$srcdir"
-
-    unzip -qd keefox keefox.zip
-}
 
 package() {
-    cd "$srcdir/keefox/deps"
+    cd "$srcdir/deps"
 
     install -m 644 -D KeePassRPC.plgx "${pkgdir}/usr/share/keepass/plugins/KeePassRPC.plgx"
 }
 
 _amo_id=306880
 _amo_os=Linux
-_amo_url_prefix="keefox.zip::"
 #@
 #@ --------------------------------------------
 #@ Lines below automatically added by update_pkgbuild.sh.
