@@ -3,4 +3,7 @@
 # This prevents the editor from crashing when opening projects in some systems
 unset GTK_IM_MODULE
 
+# HACK: fixes WebGL builds by adding a symlink (python -> python2) to the PATH
+export PATH=/opt/Unity/Editor:$PATH
+
 exec /opt/Unity/Editor/Unity "$@"
