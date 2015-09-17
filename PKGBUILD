@@ -2,7 +2,7 @@
 
 _gitname=gli
 pkgname=gli-git
-pkgver=r629.3b2bfd5
+pkgver=0.7.0.0.r36.g3b2bfd5
 pkgrel=1
 pkgdesc="OpenGL Image (GLI) is a header only C++ image library for graphics software"
 arch=('any')
@@ -18,7 +18,8 @@ sha512sums=('SKIP')
 pkgver() {
     cd "$srcdir/$_gitname"
 #     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
