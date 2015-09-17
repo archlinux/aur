@@ -1,17 +1,17 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=nautilus-admin
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
-url="https://bitbucket.org/brunonova/nautilus-admin"
+url="https://github.com/brunonova/$pkgname"
 license=('GPL3')
 depends=('nautilus' 'python-nautilus' 'polkit' 'gconf')
 makedepends=('cmake>=2.6' 'gettext')
 optdepends=('gedit: to use the "Edit as Administrator" action')
 install="$pkgname.install"
-source=("https://bitbucket.org/brunonova/$pkgname/downloads/${pkgname}_$pkgver.tar.xz")
-md5sums=('49432e939f9454dcea18a66f2dfe2421')
+source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/${pkgname}_$pkgver.tar.xz")
+md5sums=('48c672e0fb4246307652ba348a37301c')
 
 build() {
 	cd "$srcdir"
@@ -22,5 +22,7 @@ build() {
 package() {
 	cd "$srcdir"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 "README.mkd" "$pkgdir/usr/share/doc/$pkgname/README.mkd"
+	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 "NEWS" "$pkgdir/usr/share/doc/$pkgname/NEWS"
+	install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
 }
