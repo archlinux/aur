@@ -6,7 +6,7 @@ _fred=#tag=build01470
 #_fred=#tag=testing-build-1471-pre1
 #_fred=#branch=next
 
-_wot=#commit=854fbce # v0.4.3 build0017
+_wot=#commit=a752009 # v0.4.4 build0018
 #_wot=#branch=next
 
 _plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')

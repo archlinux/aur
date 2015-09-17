@@ -30,7 +30,7 @@ pkgbase = freenet
 	source = git+https://github.com/freenet/plugin-JSTUN.git
 	source = git+https://github.com/freenet/plugin-UPnP.git
 	source = git+https://github.com/freenet/plugin-KeyUtils.git
-	source = git+https://github.com/freenet/plugin-WebOfTrust.git#commit=854fbce
+	source = git+https://github.com/freenet/plugin-WebOfTrust.git#commit=a752009
 	source = https://downloads.freenetproject.org/alpha/opennet/seednodes.fref
 	source = https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar
 	source = https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c
