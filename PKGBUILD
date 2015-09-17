@@ -18,8 +18,10 @@ md5sums=('SKIP'
          '09379f3349f9ebefe2d11b90222110ad')
 
 pkgver() {
-  cd "${_gitname}"
-  printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_gitname}/source"
+  VERSION_MAJOR="$(sed -ne 's/^#define VERSION_MAJOR \([0-9]*\)$/\1/p' winexesvc.h)"
+  VERSION_MINOR="$(sed -ne 's/^#define VERSION_MINOR \([0-9]*\)$/\1/p' winexesvc.h)"
+  printf "${VERSION_MAJOR}.${VERSION_MINOR}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
