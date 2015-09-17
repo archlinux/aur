@@ -3,7 +3,7 @@
 
 pkgname=clementine-lxqt
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -27,7 +27,6 @@ sha256sums=('d5f4208c788b6ebe85921b95969e5692ebd81a23d31c3942d11d0a22c2f5f28c')
 
 provides=('clementine')
 conflicts=('clementine' 'clementine-qt5-git')
-replaces=('clementine')
 
 build() {
   mkdir -p build
