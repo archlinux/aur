@@ -1,6 +1,6 @@
 pkgbase = pysolo
 	pkgdesc = A software for sleep analysis in Drosophila
-	pkgver = 1.0.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.pysolo.net
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = pysolo
 	depends = python2-scipy
 	depends = python2-numpy
 	depends = python2-matplotlib
-	source = http://ppa.pysolo.net/pool/main/pysolo_1.0.1.orig.tar.gz
+	source = http://ppa.pysolo.net/pool/main/pysolo_1.1.orig.tar.gz
 	source = pysolo.desktop
-	md5sums = c91c4b747aa858df527b3b2639201eb9
-	md5sums = 91592bd8ead236254da26d336ebd9ee3
+	md5sums = 6ce4992415fe015ed432db857d65ce36
+	md5sums = afc264d5b12f73a4238c5a9c4e1cfddf
 
 pkgname = pysolo
 
