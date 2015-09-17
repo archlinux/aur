@@ -1,0 +1,31 @@
+post_install() {
+  getent group emby > /dev/null 2>&1 || groupadd -g 422 emby
+  getent passwd emby > /dev/null 2>&1 || useradd -c 'Emby Media Server' -u 422 -g emby -d /var/lib/emby -s /usr/bin/nologin emby
+  passwd -l emby > /dev/null
+
+  if [[ -d '/var/lib/emby-server' ]]; then
+
+cat <<EOF
+
+New installations store the emby database inside '/var/lib/emby' (previously
+'/var/lib/emby-server'). Existing installations are left untouched.
+
+You can play safe and keep your existing setup, or you can adopt the new home
+and move your database using the emby-migrate-database script. Make sure to run
+pacdiff afterwards to merge the configuration changes.
+
+  sudo emby-migrate-database /var/lib/emby-server /var/lib/emby
+
+The script can also be used for more advanced database migration.
+Try "emby-migrate-database --help" for additional information.
+
+EOF
+
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:
