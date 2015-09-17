@@ -2,7 +2,7 @@
 
 _gitname=gli
 pkgname=gli-git
-pkgver=0
+pkgver=r629.3b2bfd5
 pkgrel=1
 pkgdesc="OpenGL Image (GLI) is a header only C++ image library for graphics software"
 arch=('any')
