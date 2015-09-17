@@ -1,7 +1,7 @@
 pkgbase = gitso
 	pkgdesc = GUI frontend to reverse VNC connections
 	pkgver = 0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://code.google.com/p/gitso/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gitso
 	depends = iproute2
 	depends = wxpython
 	depends = x11vnc
-	depends = tightvnc
+	depends = tigervnc
 	source = http://gitso.googlecode.com/files/gitso_0.6_linux_all.tar.gz
 	md5sums = 095a89fa93a5af1fca4f02e6dda52631
 
