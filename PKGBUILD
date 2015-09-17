@@ -8,7 +8,7 @@
 
 pkgname=db2exc
 pkgver=10.5
-pkgrel=3
+pkgrel=4
 pkgdesc="DB2 Express-C"
 arch=('x86_64')
 url="http://www.ibm.com/software/data/db2/express-c"
@@ -21,7 +21,7 @@ source=(http://download/file/from/ibm/v10.5_linuxx64_expc.tar.gz
         db2exc.service
         db2exc.sh
         license.html)
-md5sums=('b307321bf1f51c20640addfb1afad05d'
+md5sums=('43520d12a0b2407b3e20c58e4d2836b1'
          '6bc57e81ed02f74eb2f5f3148b13fa03'
          '7f984d8fde09cf16b234dd83e42cc5d3'
          '3eedcb459005dbb718ba7b359339b26e'
