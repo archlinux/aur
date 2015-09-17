@@ -11,14 +11,13 @@ pkgbase = nuclide-server
 	depends = nodejs
 	depends = python2
 	depends = watchman
-	noextract = nuclide-server-0.0.32.tgz
 	source = http://registry.npmjs.org/nuclide-server/-/nuclide-server-0.0.32.tgz
 	source = LICENSE-0.0.32::https://github.com/facebook/nuclide/raw/v0.0.32/LICENSE
 	source = homecache-0.0.32.diff::https://github.com/mtorromeo/nuclide/compare/v0.0.32...homecache.diff
 	source = cafix-0.0.32.diff::https://github.com/mtorromeo/nuclide/compare/v0.0.32...cafix.diff
 	sha256sums = e06861f6102280d5abaed2caf12fa9f5147a80905d8b4d33c045e2d720f0c75d
 	sha256sums = 5c048a02821e17560bd70882074b3301c98ed3c03793ef1d030ebf1a50ac3355
-	sha256sums = bd05ed2d4989772b3fd39e83408709961c998852930a6882c4862aea40f969a3
+	sha256sums = 4dcd1e434f4fa3510e03033c32da623fb04c489cdcd9fd6977bb67f849ca3b3e
 	sha256sums = c7e7339c32129d735a1713511e1f522a1cf822d105f4b7fee20c91380a9ae193
 
 pkgname = nuclide-server
