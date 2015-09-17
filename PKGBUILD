@@ -10,7 +10,7 @@ url="https://github.com/papyros/qml-material"
 license=("LGPL")
 depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-svg"
 "qt5-graphicaleffects")
-makedepends=("git")
+makedepends=("git" "qtchooser")
 provides=("$pkgname")
 conflicts=("qml-extras" "qml-extras-git")
 source=("$pkgname::git+https://github.com/papyros/qml-material.git#branch=develop")
