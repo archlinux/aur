@@ -2,8 +2,8 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=r20468.2f94652de9ff
-pkgrel=2
+pkgver=4.1.0.20490.ff904ae0285b
+pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -20,30 +20,29 @@ optdepends=('texinfo: for help-support in octave'
 conflicts=('octave')
 install=octave.install
 options=('!emptydirs' '!makeflags')
-_appver="4.1.0+"
+_appver="4.1.0"
 provides=("octave=$_appver")
-_hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
+_hgroot=http://hg.savannah.gnu.org/hgweb/
 
 pkgver() {
-  cd "$srcdir/${_hgrepo}"
-  if [ -d ${_hgrepo} ]; then
-      cd ${startdir}/src/${_hgrepo}
-      hg pull -u
-  else
-    hg clone ${_hgroot}${_hgrepo}
-  fi
- 
-  msg "Mercurial clone done or server timeout"
-  printf "r%s.%s" "$(hg log | head -1|awk -F: '{print $2}'| cut -c9-13)" "$(hg identify -i)" 
+  cd "$srcdir/$_hgrepo"
+  echo ${_appver}.$(hg identify -n).$(hg identify -i)
 }
 
 build() {
   cd $srcdir
+  if [ -d ${_hgrepo} ]; then
+      cd ${_hgrepo}
+      hg pull -u
+  else
+    hg clone ${_hgroot}${_hgrepo}
+  fi
+    
   [[ -d $srcdir/${_hgrepo}-build ]] && rm -rf $srcdir/${_hgrepo}-build
   cp -rf $srcdir/${_hgrepo} $srcdir/${_hgrepo}-build
  
-  cd ${_hgrepo}-build
+  cd $srcdir/${_hgrepo}-build
    ./bootstrap --bootstrap-sync 
   [[ $CARCH == "x86_64" ]] && _arch=amd64
   [[ $CARCH == "i686" ]] && _arch=i386
