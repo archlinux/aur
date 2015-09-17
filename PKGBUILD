@@ -3,8 +3,8 @@
 
 _gitname=grub-btrfs
 pkgname=$_gitname-git
-pkgver= v1.6.r6.g252a637-1
-pkgrel=1
+pkgver=v1.6.r6.g252a637-1
+pkgrel=2
 pkgdesc="grub-btrfs, add support for btrfs snapshots into grub menu"
 arch=('any')
 url="https://github.com/Antynea/grub-btrfs"
