@@ -2,7 +2,7 @@
 # Contributor: Reihar <reihar at necronomicon dot fr> 
 
 pkgname=plowshare-git
-pkgver=2.1.1.r5.g53bc5b0
+pkgver=2.1.2.r1.gba40e46
 pkgrel=1
 pkgdesc="Command-line downloader and uploader for Rapidshare, Mediafire and other file sharing websites."
 arch=('any')
