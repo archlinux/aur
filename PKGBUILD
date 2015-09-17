@@ -9,7 +9,7 @@ _build_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.0.RC2.r242.gb8e3a43
+pkgver=v0.6.0.RC2.r297.g1d54630
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -17,6 +17,8 @@ url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 
 depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
+optdepends=('tor: tor hidden node support'
+            'i2p: i2p hidden node support')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -24,7 +26,7 @@ conflicts=("${_pkgname}")
 install='retroshare.install'
 
 source=("${_pkgname}::git+https://github.com/RetroShare/RetroShare.git"
-		'retroshare.install')
+        'retroshare.install')
 
 sha256sums=('SKIP'
             '44ea7d8b0208e8954391184dcbb8ff94b2efc246580057a1d2b2e73ad262aad2')
@@ -42,10 +44,10 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 
 	# remove unwanted plugins
-	if [[ "$_build_voip" != "true" ]] ; then
+	if [[ "$_build_voip" != 'true' ]] ; then
 		sed -i '/VOIP \\/d' plugins/plugins.pro
 	fi
-	if [[ "$_build_feedreader" != "true" ]] ; then
+	if [[ "$_build_feedreader" != 'true' ]] ; then
 		sed -i '/FeedReader/d' plugins/plugins.pro
 	fi
 
