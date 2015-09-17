@@ -36,5 +36,23 @@ package() {
 cd /opt/pocsuite
 python2 pocsuite.py "\$@"
 EOF
+  cat > "$pkgdir/usr/bin/pcs-console" << EOF
+#!/bin/bash
+cd /opt/pocsuite
+python2 pcs-console.py "\$@"
+EOF
+  cat > "$pkgdir/usr/bin/pcs-attack" << EOF
+#!/bin/bash
+cd /opt/pocsuite
+python2 pcs-attack.py "\$@"
+EOF
+  cat > "$pkgdir/usr/bin/pcs-verify" << EOF
+#!/bin/bash
+cd /opt/pocsuite
+python2 pcs-verify.py "\$@"
+EOF
   chmod 755 "$pkgdir/usr/bin/pocsuite"
+  chmod 755 "$pkgdir/usr/bin/pcs-console"
+  chmod 755 "$pkgdir/usr/bin/pcs-attack"
+  chmod 755 "$pkgdir/usr/bin/pcs-verify"
 }
