@@ -1,7 +1,7 @@
 pkgbase = librepo
 	pkgdesc = Repodata downloading library
 	pkgver = 1.7.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tojaj/librepo
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,9 @@ pkgbase = librepo
 	depends = gpgme
 	optdepends = python: for python bindings
 	source = librepo-1.7.16.tar.gz::https://github.com/Tojaj/librepo/archive/d9bed0d9f96b505fb86a1adc50b3d6f8275fab93.tar.gz
+	source = xattr-skiptest.patch::https://github.com/rholy/librepo/commit/96457dc6a76418af0ea4f8c3405471710fd06b9d.patch
 	md5sums = 3df89269456df9dce6d1205b8a717f53
+	md5sums = 60b12b69a8d5e16f32d79a4f5bf02fa4
 
 pkgname = librepo
 
