@@ -4,12 +4,12 @@
 
 pkgname=gitso
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI frontend to reverse VNC connections"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/gitso/"
 license=('GPLv3')
-depends=('iproute2' 'wxpython' 'x11vnc' 'tightvnc')
+depends=('iproute2' 'wxpython' 'x11vnc' 'tigervnc')
 source=("http://gitso.googlecode.com/files/gitso_${pkgver}_linux_all.tar.gz")
 md5sums=('095a89fa93a5af1fca4f02e6dda52631')
 
