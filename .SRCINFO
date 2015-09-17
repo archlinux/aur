@@ -1,0 +1,14 @@
+pkgbase = libgaiagraphics
+	pkgdesc = libgaiagraphics is an open source library supporting common-utility raster handling methods.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://www.gaia-gis.it/fossil/libgaiagraphics/home
+	arch = x86_64
+	arch = i686
+	license = LGPLv3
+	depends = libgeotiff
+	source = http://www.gaia-gis.it/gaia-sins/libgaiagraphics-0.5.tar.gz
+	md5sums = 2fdc2f155718e9f20dcdf10e474fc225
+
+pkgname = libgaiagraphics
+
