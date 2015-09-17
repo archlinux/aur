@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=fc03e5f960e8b0d942e4c339b11b931e89c52356
+_git=4a2012a4ddc7f34e4d9c84364035458980bdd617
 _repo=dolphin-plugin-colorfolder
 pkgname=kde-servicemenus-colorfolder
 pkgver=20150825
@@ -12,7 +12,7 @@ license=('GPL')
 options=('!strip')
 depends=('dolphin')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('89a4c33445c01a87947167e86b23bfa83b0814b91f49b35478891893e3b9d50f')
+sha256sums=('6ae56de2019c285c79bdb8bfdfc4ddf0ef478614caa04fcdb5f2958472405fc3')
 
 package() {
     install -d ${pkgdir}/usr/share/kservices5/ServiceMenus
