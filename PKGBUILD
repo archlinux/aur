@@ -1,7 +1,7 @@
 # Maintainer: Louis Opter <kalessin@kalessin.fr>
 
 pkgname=lightsd
-pkgver=0.9.4
+pkgver=1.0.0
 pkgrel=1
 epoch=1
 pkgdesc="Daemon to control your LIFX smart bulbs via a JSON-RPC API"
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=("cmake>=2.8.11")
 source=("https://github.com/lopter/lightsd/archive/${pkgver}.tar.gz")
-sha256sums=("c48459a4ae5ef1184dd79a9152f573117870bc75b8ec72335bee0504309dd6c1")
+sha256sums=("b529175887e1916db5eb1922ab16f7865f518b6dc0a681d0ce28db6de3a62909")
 #source=("src/${pkgname}-${pkgver}::hg+file:///home/kal/projs/lightsd")
 #sha256sums="SKIP"
 install=lightsd.install

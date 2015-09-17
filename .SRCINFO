@@ -13,7 +13,7 @@ pkgbase = lightsd
 	optdepends = python: to run the interactive lightsc.py example client
 	optdepends = ipython: makes lightsc.py more user-friendly
 	source = https://github.com/lopter/lightsd/archive/0.9.4.tar.gz
-	sha256sums = c48459a4ae5ef1184dd79a9152f573117870bc75b8ec72335bee0504309dd6c1
+	sha256sums = b529175887e1916db5eb1922ab16f7865f518b6dc0a681d0ce28db6de3a62909
 
 pkgname = lightsd
 
