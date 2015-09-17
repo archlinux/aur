@@ -64,6 +64,20 @@ pre_upgrade() {
 	if [ $(vercmp $2 6.07) -lt 0 ]; then
 		echo '-> Recommend that you diff /usr/share/psd/psd.conf against ~/.config/psd/psd.conf'
 	fi
+
+	# version 6.10 relocates pid file
+	if [ $(vercmp $2 6.10) -lt 0 ]; then
+		for i in $(users); do
+			running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
+			if [[ "$running" = "active" ]]; then
+				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
+				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
+				echo '-> Internal changes to psd require it to be stopped now before updating.'
+				echo '-> Users of overlayfs: you must run the following before starting the service: psd p'
+			fi
+		done
+	fi
+
 }
 
 pre_remove() {
