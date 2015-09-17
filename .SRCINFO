@@ -11,6 +11,16 @@ pkgbase = python-doc8
 	sha256sums = 42ccb69e9240546afec6cdae00b134592942b8b135d7017a748fd5af41e2d590
 
 pkgname = python-doc8
+	depends = python-stevedore
+	depends = python-chardet
+	depends = python-docutils
+	depends = python-argparse
+	depends = python-six
 
 pkgname = python2-doc8
+	depends = python2-stevedore
+	depends = python2-chardet
+	depends = python2-docutils
+	depends = python2-argparse
+	depends = python2-six
 

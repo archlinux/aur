@@ -13,7 +13,7 @@ sha256sums=('42ccb69e9240546afec6cdae00b134592942b8b135d7017a748fd5af41e2d590')
 
 build() {
   cp -r $_pyname-$pkgver $_pyname-$pkgver-py2
-  
+
   cd $_pyname-$pkgver
   python setup.py build
 
@@ -22,6 +22,7 @@ build() {
 }
 
 package_python-doc8() {
+  depends=('python-stevedore' 'python-chardet' 'python-docutils' 'python-argparse' 'python-six')
   cd $_pyname-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
 
@@ -29,6 +30,7 @@ package_python-doc8() {
 }
 
 package_python2-doc8() {
+  depends=('python2-stevedore' 'python2-chardet' 'python2-docutils' 'python2-argparse' 'python2-six')
   cd $_pyname-${pkgver}-py2 
   python2 setup.py install --root="$pkgdir" --optimize=1
 
