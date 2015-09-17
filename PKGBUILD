@@ -2,7 +2,7 @@
 
 pkgname=pysolo
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A software for sleep analysis in Drosophila"
 arch=('i686' 'x86_64')
 depends=('python2' 'wxpython' 'python2-scipy' 'python2-numpy' 'python2-matplotlib')
@@ -10,7 +10,7 @@ url="http://www.pysolo.net"
 license=('GPL')
 
 source=(http://ppa.pysolo.net/pool/main/${pkgname}_${pkgver}.orig.tar.gz ${pkgname}.desktop)
-md5sums=('6ce4992415fe015ed432db857d65ce36' 'afc264d5b12f73a4238c5a9c4e1cfddf')
+md5sums=('0e31d9962d2e255a4c15467aee0d1cc1' 'afc264d5b12f73a4238c5a9c4e1cfddf')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
