@@ -1,7 +1,7 @@
 # Maintainer: SnowyClaw <bowser5543@gmail.com>
 pkgname=blws-configuration-optimised-git
-pkgver=0.0.1
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Provides optimised configuration."
 arch=('any')
 license=('unknown')
