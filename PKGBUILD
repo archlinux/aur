@@ -1,7 +1,7 @@
 # Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 # Submitter:  Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=bash-fuzzy-clock
-pkgver=20150916
+pkgver=20150917
 pkgrel=1
 pkgdesc="Script to display the time in natural language. English, French, German, Italian and Spanish"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('bash')
 provides=("bash-fuzzy-clock")
 source=(https://downloads.sourceforge.net/project/bashfuzzyclock/$pkgname.tar.gz)
-md5sums=('faa87b6ed05fd4d8da4c264890a7bd93')
+md5sums=('54cd41fdf509ee8d3332bac753dacbe3')
 build() {
   cd "$srcdir"
   msgfmt fr.po -o fr.mo
