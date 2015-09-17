@@ -1,10 +1,10 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 pkgname=kyocera-cups
 pkgver=8.1404
-pkgrel=1
+pkgrel=2
 pkgdesc='PPD drivers for Kyocera and UTAX TaskAlfa (TA) printers'
 arch=('i686' 'x86_64')
-url='http://usa.kyoceradocumentsolutions.com/americas/jsp/Kyocera/resource_details.jsp?pid=26128&rid=27560'
+url='http://usa.kyoceradocumentsolutions.com/americas/jsp/Kyocera/resource_details.jsp?pid=25595&rid=27560'
 license=('custom')
 groups=()
 depends=('cups')
@@ -17,15 +17,14 @@ backup=()
 options=()
 install=kyocera-cups.install
 changelog=
-source=('http://usa.kyoceradocumentsolutions.com/americas/jsp/upload/resource/27560/0/Kyocera%20Linux%20PPD%20Ver%208.1404.exe')
-noextract=('Kyocera%20Linux%20PPD%20Ver%208.1404.exe')
-sha1sums=('4ed4db0e25daf989e36360351a8ba26e303b8483')
+source=('http://usa.kyoceradocumentsolutions.com/americas/jsp/upload/resource/27560/0/Kyocera%20Linux%20PPD%20Ver%208.1404.tar.gz')
+noextract=
+sha1sums=('bb6a30802f3b945e023a3f1fcdf69e1b6f5fd92d')
 
 prepare() {
-    cd ${srcdir}
-    unzip Kyocera%20Linux%20PPD%20Ver%208.1404.exe
-    tar -xzf KyoceraLinuxPackages-20141229.tar.gz
-    tar -xzf TALinuxPackages-20141229.tar.gz
+    cd "${srcdir}/Kyocera Linux PPD Ver 8.1404"
+    tar -xzf KyoceraLinuxPackages-20141229.tar.gz -C ..
+    tar -xzf TALinuxPackages-20141229.tar.gz -C ..
 }
 
 package() {
