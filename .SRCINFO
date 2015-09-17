@@ -1,6 +1,6 @@
 pkgbase = caldavzap
 	pkgdesc = A CalDav web client
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = http://www.inf-it.com/open-source/clients/caldavzap
 	install = caldavzap.install
@@ -10,9 +10,9 @@ pkgbase = caldavzap
 	optdepends = apache: Webserver to run CalDavZAP
 	backup = etc/webapps/caldavzap/config.js
 	backup = etc/webapps/caldavzap/apache.example.conf
-	source = http://www.inf-it.com/CalDavZAP_0.12.1.zip
+	source = http://www.inf-it.com/CalDavZAP_0.13.0.zip
 	source = apache.example.conf
-	sha256sums = 6d8e451cc89d9547dd8317ae3892e1ec4031c733799ab91082a2f9d86d631214
+	sha256sums = b22d4207e63b2d2eb6d795456b151e27575b05482a0bc0ff60e3dc13327d8d78
 	sha256sums = b3d469c43c48f74185d11ea896c807230247ab7dc3694fbe5d61ab16a81e11a3
 
 pkgname = caldavzap

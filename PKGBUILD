@@ -3,7 +3,7 @@
 # Contributor: Derek Leach <mail@derek.name>
 
 pkgname=caldavzap
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A CalDav web client"
 arch=('any')
@@ -16,7 +16,7 @@ backup=('etc/webapps/caldavzap/config.js'
 install=${pkgname}.install
 source=("http://www.inf-it.com/CalDavZAP_${pkgver}.zip"
         'apache.example.conf')
-sha256sums=('6d8e451cc89d9547dd8317ae3892e1ec4031c733799ab91082a2f9d86d631214'
+sha256sums=('b22d4207e63b2d2eb6d795456b151e27575b05482a0bc0ff60e3dc13327d8d78'
             'b3d469c43c48f74185d11ea896c807230247ab7dc3694fbe5d61ab16a81e11a3')
 
 package() {
