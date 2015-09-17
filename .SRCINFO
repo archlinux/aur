@@ -1,0 +1,31 @@
+pkgbase = conky-git
+	pkgdesc = Lightweight system monitor for X
+	pkgver = 1.999.r481.g3414955
+	pkgrel = 1
+	url = http://conky.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = cmake
+	makedepends = docbook2x
+	makedepends = docbook-xml
+	makedepends = man-db
+	makedepends = git
+	depends = glib2
+	depends = curl
+	depends = lua
+	depends = wireless_tools
+	depends = libxml2
+	depends = libxft
+	depends = libxdamage
+	depends = imlib2
+	provides = conky
+	conflicts = conky
+	options = !strip
+	options = debug
+	source = conky::git+https://github.com/brndnmtthws/conky.git
+	sha1sums = SKIP
+
+pkgname = conky-git
+
