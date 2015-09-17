@@ -1,13 +1,13 @@
 pkgbase = kde-servicemenus-colorfolder
 	pkgdesc = Kde servicemenu colorfolder
-	pkgver = 20150825
+	pkgver = 20150916
 	pkgrel = 1
 	url = https://github.com/horosgrisa/dolphin-plugin-colorfolder
 	arch = any
 	license = GPL
 	depends = dolphin
 	options = !strip
-	source = dolphin-plugin-colorfolder-20150825.tar.gz::https://github.com/horosgrisa/dolphin-plugin-colorfolder/archive/4a2012a4ddc7f34e4d9c84364035458980bdd617.tar.gz
+	source = dolphin-plugin-colorfolder-20150916.tar.gz::https://github.com/horosgrisa/dolphin-plugin-colorfolder/archive/4a2012a4ddc7f34e4d9c84364035458980bdd617.tar.gz
 	sha256sums = 6ae56de2019c285c79bdb8bfdfc4ddf0ef478614caa04fcdb5f2958472405fc3
 
 pkgname = kde-servicemenus-colorfolder

@@ -3,7 +3,7 @@
 _git=4a2012a4ddc7f34e4d9c84364035458980bdd617
 _repo=dolphin-plugin-colorfolder
 pkgname=kde-servicemenus-colorfolder
-pkgver=20150825
+pkgver=20150916
 pkgrel=1
 pkgdesc="Kde servicemenu colorfolder "
 arch=('any')
