@@ -29,9 +29,9 @@ _amo_url_prefix="keefox.zip::"
 #@
 #@ --------------------------------------------
 #@ Lines below automatically added by update_pkgbuild.sh.
-pkgver='1.4.8.1_signed'
-source=('keefox.zip::https://addons.mozilla.org/firefox/downloads/file/318702/keefox-1.4.8-tb+fx-linux.xpi?src=api')
+pkgver='1.5.3'
+source=('keefox.zip::https://addons.mozilla.org/firefox/downloads/file/350852/keefox-1.5.3-tb+fx-linux.xpi?src=api')
 #@ --------------------------------------------
 #@
-md5sums=('d5f6670c9bb3179b1ad87fd7cb170669')
-sha384sums=('4111b1346b90b4533a95df3bad0846f1948c5c8985c3304461b5172eb6da9a8a6a1c634dc46cbbd470b05e5f9c6fe517')
+md5sums=('ae694ee51911f0a25f4435f3bd2d699e')
+sha384sums=('4a010e987f29ba8f6a4a48eafa7c3392675689724f45ed205fea16d13b31deaf7832ee28ba3c7b31e257b87a1f24d98d')
