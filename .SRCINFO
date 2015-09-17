@@ -7,6 +7,7 @@ pkgbase = qml-material-git
 	arch = x86_64
 	license = LGPL
 	makedepends = git
+	makedepends = qtchooser
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
