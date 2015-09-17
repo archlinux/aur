@@ -1,0 +1,16 @@
+[Unit]
+Description=Eventlircd Daemon
+After=systemd-udevd.service
+
+[Service]
+Type=forking
+ExecStartPre=/bin/mkdir -p /run/lirc
+ExecStartPre=/bin/rm -f /dev/lircd
+ExecStartPre=/bin/rm -f /run/lirc/lircd
+ExecStartPre=/bin/ln -s /run/lirc/lircd /dev/lircd
+ExecStart=/usr/sbin/eventlircd --evmap=/etc/eventlircd.d --socket=/run/lirc/lircd
+ExecStopPost=/bin/rm -f /dev/lircd
+ExecStopPost=/bin/rm -fR /run/lirc
+
+[Install]
+WantedBy=multi-user.target

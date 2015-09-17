@@ -1,0 +1,13 @@
+post_install() {
+
+echo
+echo "Some event maps are installed into /etc/eventlircd.d."
+echo
+echo "/lib/udev/rules.d/98-eventlircd.rules.disabled is an example udev"
+echo "rules file for eventlircd, /lib/udev/rules.d/98-lircd.rules.disabled"
+echo "is an example udev rules file for using lircd in conjunction with"
+echo "eventlircd. Remove the suffix .disabled from one of these files"
+echo "and edit it to your needs."
+echo
+
+}

@@ -1,0 +1,20 @@
+pkgbase = eventlircd
+	pkgdesc = A GNU/Linux daemon for simplifying udev based hotplugging of remote control devices.
+	pkgver = r43.8245391
+	pkgrel = 1
+	url = https://github.com/OpenELEC/eventlircd
+	install = eventlircd.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libsystemd
+	conflicts = eventlircd-svn
+	replaces = eventlircd-svn
+	source = git://github.com/OpenELEC/eventlircd.git#commit=8245391b53d03865049074d4227f2904b3984f4c
+	source = eventlircd.service
+	sha256sums = SKIP
+	sha256sums = 1629db4d968e283e36b40bf2ba753bcc4bc8088bd9a16f753b2bce534f885fb1
+
+pkgname = eventlircd
+
