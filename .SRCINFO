@@ -1,15 +1,15 @@
 pkgbase = nodejs-webpack
 	pkgdesc = Packs CommonJs/AMD modules for the browser
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = http://github.com/webpack/webpack
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = webpack-1.12.1.tgz
-	source = http://registry.npmjs.org/webpack/-/webpack-1.12.1.tgz
-	sha1sums = 532f8cb8d9ac9694f030581531c84dec349bd6c0
+	noextract = webpack-1.12.2.tgz
+	source = http://registry.npmjs.org/webpack/-/webpack-1.12.2.tgz
+	sha1sums = ef40ed5d7c54716f5fae1598a451669316434e51
 
 pkgname = nodejs-webpack
 
