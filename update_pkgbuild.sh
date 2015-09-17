@@ -67,4 +67,6 @@ sed -i '/^[[:space:]]*\(#@\|pkgver=\|source=\|[[:alnum:]]*sums=\)/d' "${pkgbuild
     echo "#@"
 } >> "${pkgbuild_path}"
 
-echo "I: PKGBUILD updated." >&2
+echo "I: PKGBUILD updated, generating checksums." >&2
+cd "$(dirname "$pkgbuild_path")" && \
+    makepkg -g -p "$(basename "$pkgbuild_path")" >> "$pkgbuild_path"
