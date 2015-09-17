@@ -1,8 +1,8 @@
 # Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
 _npmname=typescript
-_npmver=1.5.3
+_npmver=1.6.2
 pkgname=nodejs-typescript
-pkgver=1.5.3
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="TypeScript is a language for application scale JavaScript development."
 arch=('any')
@@ -19,5 +19,5 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
-sha1sums=('ce35e55f75b7a8d0ed571b503bd0a57157e523f7')
+sha256sums=('d553c416b02772452a8b3e0a6dd9db735c5d40154e99f1b1d6b730a2f0d6cbd2')
 # vim:set ts=2 sw=2 et:
