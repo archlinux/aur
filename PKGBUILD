@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-pkgname=mmixware
+pkgname=(mmixware{,-docs})
 pkgver=20131017
-pkgrel=3
+pkgrel=4
 pkgdesc="MMIX assembler and simulator"
 arch=('i686' 'x86_64')
 url="http://mmix.cs.hm.edu/"
@@ -29,16 +29,24 @@ build() {
   make all
 }
 
-package() {
+package_mmixware() {
   cd "$pkgname-$pkgver"
+
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install abstime mmix mmixal mmmix mmotype "$pkgdir/usr/bin"
+  install -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_mmixware-docs() {
+  pkgdesc="MMIX documentation and sources"
+  arch=('any')
+
+  cd "$pkgbase-$pkgver"
 
   install -d "$pkgdir/usr/src/$pkgname"
   bsdtar --no-same-owner -C "$pkgdir/usr/src/$pkgname" -xf "../mmix-$pkgver.tgz"
 
-  install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/doc/$pkgname"
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  install abstime mmix mmixal mmmix mmotype "$pkgdir/usr/bin"
   install -m644 *.pdf "$pkgdir/usr/share/doc/$pkgname"
-  install -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }
