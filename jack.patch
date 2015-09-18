@@ -1,0 +1,13 @@
+--- makefile.jack	2004-10-25 09:17:30.000000000 +0100
++++ makefile.p.jack	2015-09-18 11:19:55.465024992 +0100
+@@ -4,8 +4,8 @@
+ CC=gcc
+ CPP=g++
+ INCLUDES=
+-CFLAGS=-D__LINUX_JACK__ $(INCLUDES) -O3 -c
+-LIBS=-ljack -lasound -L/usr/X11R6/lib -lGL -lGLU -lglut -lX11 -lXi -lXext -lXmu -lm
++CFLAGS=-D__LINUX_JACK__ -D__UNIX_JACK__ $(INCLUDES) -O3 -c
++LIBS=-ljack -lasound -L/usr/X11R6/lib -lGL -lGLU -lglut -lX11 -lXi -lXext -lXmu -lm -lpthread
+ 
+ rt_lpc: $(OBJS)
+ 	$(CPP) -o $@ $(OBJS) $(LIBS)

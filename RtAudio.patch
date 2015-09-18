@@ -1,0 +1,13 @@
+--- RtAudio.cpp	2004-10-25 09:17:30.000000000 +0100
++++ RtAudio.p.cpp	2015-09-18 11:13:14.934032319 +0100
+@@ -38,7 +38,9 @@
+ /************************************************************************/
+ 
+ // RtAudio: Version 3.0.1, 22 March 2004
+-
++#include <cstdio>
++#include <cstring>
++#include <cstdlib>
+ #include "RtAudio.h"
+ #include <iostream>
+ 

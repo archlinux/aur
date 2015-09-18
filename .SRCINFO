@@ -1,0 +1,23 @@
+pkgbase = rt_lpc-jack
+	pkgdesc = real-time LPC analysis + synthesis + visualization: JACK version
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://soundlab.cs.princeton.edu/software/rt_lpc/
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = GPL
+	depends = jack
+	depends = glu
+	depends = freeglut
+	depends = libxmu
+	provides = rt_lpc-alsa
+	source = http://soundlab.cs.princeton.edu/software/rt_lpc/files/rt_lpc-1.0.tgz
+	source = RtAudio.patch
+	source = jack.patch
+	md5sums = 468aa24999dd02d8c8abd84c04e37274
+	md5sums = 1d3031ebb04627f013e569b8e4cf019a
+	md5sums = f2a25f46220c7349fad03940da3694dd
+
+pkgname = rt_lpc-jack
+
