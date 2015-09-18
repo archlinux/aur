@@ -1,15 +1,15 @@
-# Maintainer: 2ion <dev at 2ion dot de>
+# Maintainer: 2ion
 pkgname=advancecomp
-pkgver=1.19
-pkgrel=5
+pkgver=1.20
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Recompression utilities for .zip .png .mng and .gz files using the 7-zip agorithm"
-url="http://advancemame.sourceforge.net/comp-readme.html"
+url='http://advancemame.sourceforge.net/comp-readme.html'
 license=('GPL')
 depends=('zlib' 'gcc-libs')
 makedepends=()
-source=("http://downloads.sourceforge.net/project/advancemame/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('894c2db01c9fff40257f929496621bdcea77748b')
+source=("https://github.com/amadvance/advancecomp/releases/download/v${pkgver}/advancecomp-${pkgver}.tar.gz")
+sha256sums=('590a447cfc7ab3a37ec707e13967a0046a81a888c561ebaff5415b1e946da67b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
