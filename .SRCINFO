@@ -1,7 +1,7 @@
 pkgbase = kxstitch
 	pkgdesc = The program that lets you create cross stitch patterns and charts.
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://kxstitch.sourceforge.net/
 	install = kxstitch.install
 	arch = i686

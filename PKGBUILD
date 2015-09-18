@@ -1,7 +1,7 @@
 # Maintainer: zoe <chp321@gmail.com>
 pkgname=kxstitch
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The program that lets you create cross stitch patterns and charts."
 arch=('i686' 'x86_64')
 depends=('kdebase-runtime' 'imagemagick')
@@ -15,6 +15,8 @@ install=kxstitch.install
 build() {
     cd "$srcdir/kxstitch-${pkgver}"
     sed -i 's/-DMAGICKCORE_HDRI_ENABLE=0/-DMAGICKCORE_HDRI_ENABLE=1/' CMakeLists.txt
+    sed -i '1i\
+    > cmake_policy(SET CMP0002 OLD)' po/CMakeLists.txt
     rm -rf build
     mkdir build
     cd build
