@@ -23,6 +23,7 @@ build() {
     msg "The local files are updated."
   else
     git clone "$_gitroot" "$_gitname"
+    cd $_gitname
     git checkout $pkgver
   fi
 
