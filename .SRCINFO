@@ -1,0 +1,17 @@
+pkgbase = koditools
+	pkgdesc = Set of tools to interface with Kodi/XBMC
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://github.com/grimpy/
+	arch = any
+	license = GPL2
+	makedepends = python2-distribute
+	makedepends = git
+	depends = python2
+	optdepends = nginx: For sending media to kodi
+	provides = koditools
+	source = https://github.com/grimpy/koditools/archive/1.2.tar.gz
+	md5sums = 0e9ea981b7be017c4e5ef87250725f2c
+
+pkgname = koditools
+
