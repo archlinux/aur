@@ -3,7 +3,7 @@
 
 pkgname=sonerezh-git
 _pkgname=sonerezh
-pkgver=6.0.2.r3.gd57e367
+pkgver=0.0.1
 pkgrel=1
 pkgdesc='A self-hosted, web-based application for stream your music, everywhere'
 arch=('any')
@@ -12,18 +12,17 @@ license=('GPL3')
 depends=('php' 'php-gd')
 optdepends=('mariadb: Database backend')
 options=('!strip')
-install="${_pkgname}.install"
 
 source=("git+https://github.com/Sonerezh/sonerezh.git"
-        "${_pkgname}.install")
+        "example_nginx_vhost.conf")
 
 sha512sums=('SKIP'
-	    'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
+	    '806f9aca27da55cd33b814b283bf3e33c32687858258755a43eb2d4b18f62b4ccf81e82dbc8e78c0923e5b48281adb2b33ec7db9850b79fb1ba63b611bbe9ee0')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd "$_pkgname"
+#  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 package() {
   cd "${srcdir}/${_pkgname}"
@@ -34,5 +33,5 @@ package() {
   install -d "${pkgdir}/etc/webapps/sonerezh"
 
   install -d "${pkgdir}/usr/share/doc/sonerezh"
-  #install -Dm644 "${srcdir}/example_nginx_vhost.conf" "${pkgdir}/usr/share/doc/pydio/"
+  install -Dm644 "${srcdir}/example_nginx_vhost.conf" "${pkgdir}/usr/share/doc/sonerezh/"
 }
