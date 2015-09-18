@@ -1,0 +1,27 @@
+pkgbase = perl-sereal-decoder
+	pkgdesc = Fast, compact, powerful binary deserialization
+	pkgver = 3.005
+	pkgrel = 1
+	url = https://metacpan.org/release/Sereal-Decoder
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	checkdepends = perl-pathtools>=0
+	checkdepends = perl-scalar-list-utils>=0
+	checkdepends = perl-test-warn>=0
+	checkdepends = perl-test-longstring>=0
+	checkdepends = perl-test-simple>=0.88
+	checkdepends = perl-data-dumper>=0
+	makedepends = perl-file-path>=0
+	makedepends = perl-xsloader>=0
+	makedepends = perl-extutils-parsexs>=2.21
+	depends = perl>=5.8
+	depends = perl-xsloader>=0
+	provides = perl-sereal-performance=3.005
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/Y/YV/YVES/Sereal-Decoder-3.005.tar.gz
+	sha256sums = 9de58131c6bf12f22366cf50b09c58ac3d2771489c202255a24fffab0bde0930
+
+pkgname = perl-sereal-decoder
+
