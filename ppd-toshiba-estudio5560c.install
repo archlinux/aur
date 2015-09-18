@@ -1,0 +1,18 @@
+#arg1: new package version
+
+post_install() {
+  echo "Please note that once installed, the PPD appears in CUPS with the name "
+  echo "\"TOSHIBA ColorMFP\". Choose this one.                                 "
+  echo ""
+  echo "You should also have to enter your own 5-digit key to be able to send  "
+  echo "tasks to print. If you don't they will be retained on the print until  "
+  echo "you go there and type in you key.                                      "
+  echo ""
+  echo "You should also fill in which printer modules are installed (stitching "
+  echo "module for instance).                                                  "
+  echo ""
+  echo "Most of the options have been tested and work.                         "
+  echo ""
+  echo "This package (version $1) also installs an authenticating and mandatory"
+  echo "script so that the printer accepts your tasks.                         "
+}

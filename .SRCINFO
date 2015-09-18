@@ -1,0 +1,16 @@
+pkgbase = ppd-toshiba-estudio5560c
+	pkgdesc = Printer only driver for the Toshiba e-STUDIO 5560c (and probably others)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.eid.toshiba.com.au/n_driver_ebx_colour.asp
+	install = ppd-toshiba-estudio5560c.install
+	arch = i686
+	arch = x86_64
+	license = Propietary
+	depends = cups
+	provides = ppd-toshiba-estudio5560c
+	source = http://www.eid.toshiba.com.au/drivers/eBX/eBX_CUPS_Colour_V7.22.zip
+	md5sums = 2e450664cf34c8c4aed92fb76bf82d2d
+
+pkgname = ppd-toshiba-estudio5560c
+
