@@ -1,6 +1,6 @@
 pkgbase = lua-posix-git
 	pkgdesc = POSIX library for Lua
-	pkgver = 33.0.0.18.ge7dee4d
+	pkgver = 33.2.1.73.g5536f10
 	pkgrel = 1
 	url = https://github.com/luaposix/luaposix
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lua-posix-git
 	provides = lua-posix
 	conflicts = lua-posix
 	options = !makeflags
-	source = git://github.com/luaposix/luaposix.git
+	source = lua-posix::git://github.com/luaposix/luaposix.git
 	md5sums = SKIP
 
 pkgname = lua-posix-git
