@@ -14,7 +14,7 @@ license=('GPL')
 groups=('multimedia')
 depends=('alsa-lib' 'glu' 'freeglut' 'libxmu')
 provides=('rt_pvc')
-source=("http://soundlab.cs.princeton.edu/software/$pkgname/files/$pkgname-$pkgver.tgz" "RtAudio.patch" "alsa.patch" "pvc.patch")
+source=("http://soundlab.cs.princeton.edu/software/$pkgname/$pkgname-$pkgver.tgz" "RtAudio.patch" "alsa.patch" "pvc.patch")
 md5sums=('0a99b4f17038dd76c172735dbf7f2d15'
          '8cdab915ec05f8fe8b256305f8803b78'
          '1880c9f919b92ee95d7a8ea3e2e2b905'
