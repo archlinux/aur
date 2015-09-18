@@ -1,0 +1,14 @@
+pkgbase = sndtools-alsa-meta
+	pkgdesc = Meta package for sndtools, ALSA version
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sndtools.cs.princeton.edu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sndpeek-alsa
+	depends = rt_lpc-alsa
+	depends = rt_pvc
+
+pkgname = sndtools-alsa-meta
+
