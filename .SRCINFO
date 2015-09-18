@@ -1,0 +1,18 @@
+pkgbase = python2-scruffy
+	pkgdesc = Handles the loading and management of configuration files, plugins, and other filesystem resources such as temporary files and directories, log files, etc.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/snare/scruffy
+	arch = any
+	license = Beerware
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pyyaml
+	depends = python2-six
+	depends = python2-sqlalchemy
+	options = !emptydirs
+	source = python2-scruffy-0.3.1.tar.gz::https://codeload.github.com/snare/scruffy/tar.gz/v0.3.1
+	sha256sums = fe01da3267d16b7e416697072ac25f73c36be4d32813cf1ce92a5cc845fcecf3
+
+pkgname = python2-scruffy
+
