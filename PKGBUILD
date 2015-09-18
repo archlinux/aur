@@ -1,6 +1,6 @@
 # Maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
@@ -23,26 +23,28 @@ backup=('etc/rspamd/logging.inc'
         'etc/rspamd/metrics.conf')
 install=rspamd.install
 
-source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz")
+source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz"
+        "rspamd.service")
 
-sha256sums=('bb4e6d7f69376f8d9fcd4b5a84cc9973a3551eb3e430e7c10b1bd9094db7c211')
+sha256sums=('5ff557610cc5b7000abe2df727d6b9bfec7e3fe019ce3fdcc386d16262b45652'
+            '3ccbc157c2e73367e7cbab2b19d0847ef58cecb47194c3bdc5f1b118405d3d26')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   cmake \
-    -DWANT_SYSTEMD_UNITS=ON \
     -DNO_SHARED=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCONFDIR=/etc/rspamd \
+	-DRUNDIR=/run/rspamd \
+	-DLOGDIR=/var/log/rspamd \
     -DRSPAMD_USER='_rspamd' \
-    -DRSPAMD_GROUP='_rspamd' \
     -DDBDIR=/var/lib/rspamd \
     -DENABLE_LUAJIT=OFF \
     -DENABLE_HIREDIS=OFF \
     .
 
-  make
+  make -j$(nproc)
 }
 
 package() {
@@ -51,5 +53,6 @@ package() {
   make DESTDIR="${pkgdir}/" install
 
   install -Dm0644 'LICENSE' "${pkgdir}/usr/share/${pkgname}/LICENSE"
+  install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
 }
