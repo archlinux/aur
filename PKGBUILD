@@ -3,7 +3,7 @@
 
 pkgname=lv
 pkgver=4.51
-pkgrel=3
+pkgrel=4
 pkgdesc="a Powerful Multilingual File Viewer / Grep"
 depends=('ncurses')
 makedepends=('autoconf')

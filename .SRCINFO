@@ -1,7 +1,7 @@
 pkgbase = lv
 	pkgdesc = a Powerful Multilingual File Viewer / Grep
 	pkgver = 4.51
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.ff.iij4u.or.jp/~nrt/lv/index.html
 	arch = i686
 	arch = x86_64
