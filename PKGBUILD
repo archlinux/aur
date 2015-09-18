@@ -25,14 +25,14 @@ prepare() {
   done
 }
 
-check() {
-  cd ${pkgname}-${pkgver}
-  gradle --gradle-user-home=. test
-}
-
 build() {
   cd ${pkgname}-${pkgver}
   gradle --gradle-user-home=. build
+}
+
+check() {
+  cd ${pkgname}-${pkgver}
+  gradle --gradle-user-home=. test
 }
 
 package() {
