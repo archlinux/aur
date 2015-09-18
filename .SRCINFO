@@ -1,0 +1,16 @@
+pkgbase = python2-csv2odf
+	pkgdesc = convert CSV to formatted spreadsheets and documents
+	pkgver = 2.04
+	pkgrel = 1
+	url = http://sourceforge.net/projects/csv2odf
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-distribute
+	source = http://sourceforge.net/projects/csv2odf/files/csv2odf-2.04/csv2odf-2.04.tar.gz
+	sha256sums = 6f2df076686cfbe8599da79b47b58c86e7148842ae0e1ff065689a515ead04ee
+
+pkgname = python2-csv2odf
+	depends = python2
+	conflicts = python-csv2odf
+
