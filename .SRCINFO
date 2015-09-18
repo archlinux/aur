@@ -1,0 +1,18 @@
+pkgbase = python-sfml-git
+	pkgdesc = The unofficial Python binding for SFML
+	pkgver = 20150820
+	pkgrel = 1
+	url = http://python-sfml.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cython
+	makedepends = git
+	depends = sfml
+	depends = python
+	provides = python-sfml
+	conflicts = python-sfml2-git
+	conflicts = python-sfml
+
+pkgname = python-sfml-git
+
