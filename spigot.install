@@ -18,7 +18,8 @@ _update() {
 
 	echo -e "\e[34;1m==>\e[39;1m NOTE: The world data is stored under ${SERVER_ROOT} and the server runs \e[0m"
     echo -e "\e[34;1m==>\e[39;1m as ${USER} user to increase security. \e[0m"
-    echo -e "\e[34;1m==>\e[39;1m NOTE: Use the spigot script under /usr/bin/spigot to start, stop or backup the server. \e[0m"
+    echo -e "\e[34;1m==>\e[39;1m NOTE: Use the spigot script under /usr/bin/spigot to start, stop or backup the server \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m and the configuration file under /etc/conf.d/spigot to adjust it to your liking. \e[0m"
 }
 
 post_install() {
@@ -29,12 +30,18 @@ post_upgrade() {
     _update
 }
 
-post_remove() {
+pre_remove() {
+	echo -e "\e[34;1m==>\e[39;1m Stopping and disabling spigot daemon... \e[0m"
 	systemctl stop spigot.service
-	systemctl disable spigot.service
+    systemctl disable spigot.service
 
+	/usr/bin/spigot stop > /dev/null
+}
+
+post_remove() {
+	echo -e "\e[34;1m==>\e[39;1m Removing ${USER} system user and group... \e[0m"
 	if getent passwd ${USER} >/dev/null 2>&1; then
-		userdel ${USER}
+		userdel ${USER} 2>/dev/null
 	fi
 	if getent group ${USER} >/dev/null 2>&1; then
 		groupdel ${USER}
@@ -42,4 +49,5 @@ post_remove() {
 
 	# Notifying the user of kept dirs
     [ -d ${SERVER_ROOT} ] && chown root:root ${SERVER_ROOT} && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${SERVER_ROOT} were kept on your system.\e[0m"
+    [ -d /etc/conf.d/spigot ] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/spigot was kept on your system.\e[0m"
 }

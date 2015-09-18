@@ -1,19 +1,21 @@
 #!/bin/bash
 
-# You may use this script for any minecraft server of your choice, just alter those variables
-SERVER_ROOT="/srv/spigot"
-BACKUPPATH="/srv/spigot/backup"
-LOGPATH="/srv/spigot/logs"
-WORLDPATHS="/srv/spigot/world /srv/spigot/world_nether /srv/spigot/world_the_end"
-KEEP_BACKUPS="10"
-MC_USER="craftbukkit"
-MAIN_JAR="spigot.jar"
-SESSION_NAME="spigot"
+source /etc/conf.d/spigot || echo "Could not source /etc/conf.d/spigot"
+
+# You may use this script for any minecraft server of your choice, just alter the config file
+SERVER_ROOT="${SERVER_ROOT:-/srv/spigot}"
+BACKUPPATH="${BACKUPPATH:-/srv/spigot/backup}"
+LOGPATH="${LOGPATH:-/srv/spigot/logs}"
+WORLDPATHS="${WORLDPATHS:-/srv/spigot/world /srv/spigot/world_nether /srv/spigot/world_the_end}"
+KEEP_BACKUPS="${KEEP_BACKUPS:-10}"
+MC_USER="${MC_USER:-craftbukkit}"
+MAIN_JAR="${MAIN_JAR:-spigot.jar}"
+SESSION_NAME="${SESSION_NAME:-spigot}"
 
 # Specify system parameters for the minecraft server
-MINHEAP="512M"
-MAXHEAP="1024M"
-THREADS="1"
+MINHEAP="${MINHEAP:-512M}"
+MAXHEAP="${MAXHEAP:-1024M}"
+THREADS="${THREADS:-1}"
 
 # Check for sudo rigths
 if [ $(sudo whoami) != "root" ]; then
