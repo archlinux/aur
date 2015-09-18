@@ -1,0 +1,19 @@
+pkgbase = python2-rl
+	pkgdesc = Alternative Python bindings for GNU Readline
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/stefanholek/rl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PSFL
+	makedepends = python2-setuptools
+	depends = python2
+	depends = readline
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/r/rl/rl-2.4.zip
+	md5sums = 206512834d837e9cdde81e6cf7e8fca4
+	sha256sums = 3acc0fd8cc5ba7ece7af5543035fb3c3f6f424db01c2d6cd420ef964a736b6f4
+
+pkgname = python2-rl
+
