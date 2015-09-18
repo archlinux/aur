@@ -1,0 +1,31 @@
+pkgbase = cvmfs-git
+	pkgdesc = CERN VM Filesystem
+	pkgver = 0.7289.c158f99
+	pkgrel = 1
+	url = http://cernvm.cern.ch/portal/filesystem
+	install = cvmfs.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = fuse
+	depends = sqlite3
+	depends = curl
+	depends = pacparser
+	depends = zlib
+	depends = sparsehash
+	depends = leveldb
+	depends = gtest
+	depends = geoip
+	depends = python-geoip
+	depends = intel-tbb
+	depends = c-ares
+	provides = cvmfs
+	conflicts = cvmfs
+	backup = etc/cvmfs/default.local
+	source = git://github.com/reneme/cvmfs
+	md5sums = SKIP
+
+pkgname = cvmfs-git
+
