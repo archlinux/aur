@@ -1,0 +1,19 @@
+pkgbase = sonerezh-git
+	pkgdesc = A self-hosted, web-based application for stream your music, everywhere
+	pkgver = 6.0.2.r3.gd57e367
+	pkgrel = 1
+	url = https://www.sonerezh.bzh
+	install = sonerezh.install
+	arch = any
+	license = GPL3
+	depends = php
+	depends = php-gd
+	optdepends = mariadb: Database backend
+	options = !strip
+	source = git+https://github.com/Sonerezh/sonerezh.git
+	source = sonerezh.install
+	sha512sums = SKIP
+	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+
+pkgname = sonerezh-git
+
