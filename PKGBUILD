@@ -5,13 +5,13 @@
 
 pkgname=darcs
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Elegant and powerful distributed revision control system'
 arch=('i686' 'x86_64')
 url='http://darcs.net/'
 license=('GPL')
 depends=('curl' 'libffi')
-makedepends=('ghc' 'cabal-install')
+makedepends=('cabal-install' 'chrpath' 'ghc' 'inotify-tools')
 options=('strip')
 source=("http://darcs.net/releases/${pkgname}-${pkgver}.tar.gz")
 
@@ -29,7 +29,17 @@ build() {
    cabal sandbox init
    cabal install --only-dependencies
    cabal configure -O --prefix=/usr
+
+   binPath=${srcdir}/${pkgname}-${pkgver}/dist/build/${pkgname}/${pkgname}
+
    cabal build
+
+   # This build often weirdly keeps the file open even after the
+   # process returns, && doesn't work. So, wait for it:
+   inotifywait -e close $binPath
+
+   # Remove bogus rpath data that points to temp build dir
+   chrpath -d $binPath
 }
 
 package() {

@@ -1,13 +1,15 @@
 pkgbase = darcs
 	pkgdesc = Elegant and powerful distributed revision control system
 	pkgver = 2.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://darcs.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = ghc
 	makedepends = cabal-install
+	makedepends = chrpath
+	makedepends = ghc
+	makedepends = inotify-tools
 	depends = curl
 	depends = libffi
 	options = strip
