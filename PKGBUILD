@@ -1,8 +1,8 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=pcp
-pkgver=3.10.6
-pkgrel=2
+pkgver=3.10.7
+pkgrel=1
 pkgdesc="System performance and analysis framework"
 arch=('i686' 'x86_64')
 url="http://pcp.io"
@@ -13,10 +13,10 @@ optdepends=('libmicrohttpd: support for pmwebd'
             'cairo: support for pmwebd'
             'qt4: support for PCP-GUI and pmchart')
 install="pcp.install"
-source=("ftp://ftp.pcp.io/projects/pcp/download/pcp-$pkgver.src.tar.gz"
+source=("https://bintray.com/artifact/download/pcp/source/pcp-$pkgver.src.tar.gz"
         "pcp.install"
         "pcp.tmpfiles")
-sha256sums=('1d359f647e770285593541d82d770051f6d23a4de5182bde1babd831e43fb466'
+sha256sums=('2c47ce3fd51502579968f3e7f5c42e3b9236b6ee09561e71064fb9cee7dd8ba3'
             '590d816edc87dd03e3700d7637f57ca81d24d63802f32f772709e0c33a4ca0b5'
             '48ce114e95ab640bfe6c6c9608c96c22a75b65ccb38dfa89bfa2b12621845f20')
 
