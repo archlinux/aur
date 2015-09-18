@@ -23,6 +23,6 @@ build() {
 }
 
 package() {
-	cd uberwriter
+	cd uberwriter_bugfixes
 	python2 setup.py install --root=${pkgdir}
 }
