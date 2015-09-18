@@ -1,0 +1,13 @@
+[Unit]
+Description=XMMS2 daemon
+Documentation=man:xmms2-launcher(1) man:xmms2d(1)
+After=network.target sound.target
+
+[Service]
+Type=forking
+PIDFile=%t/xmms2d.pid
+ExecStart=/usr/bin/xmms2-launcher -P %t/xmms2d.pid
+ExecStop=/usr/bin/xmms2 server shutdown
+
+[Install]
+WantedBy=default.target

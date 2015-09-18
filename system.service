@@ -1,0 +1,17 @@
+[Unit]
+Description=XMMS2 daemon
+Documentation=man:xmms2-launcher(1) man:xmms2d(1)
+Wants=fluidsynth.service
+After=fluidsynth.service network.target sound.target
+
+[Service]
+Type=forking
+User=xmms2
+# Trick xmms2d into correctly using /var/lib/xmms2 for its configuration
+Environment=XDG_CONFIG_HOME=/var/lib
+PIDFile=%t/xmms2/xmms2d.pid
+ExecStart=/usr/bin/xmms2-launcher -l /var/log/xmms2d.log -P %t/xmms2/xmms2d.pid
+ExecStop=/usr/bin/xmms2 server shutdown
+
+[Install]
+WantedBy=multi-user.target
