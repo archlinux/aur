@@ -2,7 +2,7 @@
 
 pkgname=pixz-git
 
-pkgver=r172.2ea45c3
+pkgver=r206.8d318b9
 pkgrel=1
 pkgdesc="parallel, indexed xz compressor"
 arch=('i686' 'x86_64')
@@ -35,6 +35,12 @@ build() {
   ./configure --prefix=/usr
 
   make
+}
+
+check() {
+  cd $srcdir/$pkgname
+
+  make check
 }
 
 package() {

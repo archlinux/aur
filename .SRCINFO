@@ -1,6 +1,6 @@
 pkgbase = pixz-git
 	pkgdesc = parallel, indexed xz compressor
-	pkgver = r172.2ea45c3
+	pkgver = r206.8d318b9
 	pkgrel = 1
 	url = https://github.com/vasi/pixz
 	arch = i686
