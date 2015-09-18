@@ -10,12 +10,12 @@ pkgver=1.4
 pkgrel=1
 pkgdesc="a real-time audio visualization tool (animated, 3D): JACK version"
 arch=('i686' 'x86_64')
-url="http://www.gewang.com/software/sndpeek/"
+url="http://soundlab.cs.princeton.edu/software/sndpeek/"
 license=('GPL')
 groups=('multimedia')
 depends=('libsndfile' 'jack' 'glu' 'freeglut' 'libxmu')
-provides=('sndpeek')
-source=("http://soundlab.cs.princeton.edu/software/sndpeek/files/$_pkgname-$pkgver.tgz" "LPC.patch" "makefile.jack.patch")
+provides=('sndpeek-jack')
+source=("http://soundlab.cs.princeton.edu/software/$_pkgname/files/$_pkgname-$pkgver.tgz" "LPC.patch" "makefile.jack.patch")
 md5sums=('91df9f339230fd6c01f85ebd4cca51cb' 'b73a667384ffa9237ded847483c796da' '11e10b877c866f5d6f2b7dcee061176b')
 
 prepare() {
