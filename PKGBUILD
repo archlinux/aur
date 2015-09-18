@@ -1,7 +1,7 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=epub-tools
-pkgver=2.6
+pkgver=2.8
 pkgrel=1
 pkgdesc='Command line utilities for working with epub files'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('ghc' 'cabal-install')
 options=('strip')
 source=("http://hackage.haskell.org/package/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('dbe89d574d3e7add1f623b959e97f785c2e0d1d62caf3a4e535b162f4e559e59')
+sha256sums=('16a5004b4a408919a48e09f65f8ab1007132ddc2d9d0ffb2c5c1609f09395434')
 
 
 # PKGBUILD functions
