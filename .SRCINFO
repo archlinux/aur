@@ -1,6 +1,6 @@
 pkgbase = minetest-git-leveldb
 	pkgdesc = Infiniminer/Minecraft-inspired building game (with LuaJIT, LevelDB, and Redis support)
-	pkgver = 20150907.4967e48
+	pkgver = 20150918.691eb2d
 	pkgrel = 1
 	url = http://www.minetest.net/
 	install = install
@@ -24,6 +24,7 @@ pkgbase = minetest-git-leveldb
 	depends = leveldb
 	depends = gettext
 	depends = hiredis
+	depends = libspatialindex-git
 	provides = minetest
 	provides = minetest-common
 	provides = minetest-server
