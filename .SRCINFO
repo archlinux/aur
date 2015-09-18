@@ -10,7 +10,7 @@ pkgbase = littler
 	makedepends = r
 	makedepends = sh
 	source = http://dirk.eddelbuettel.com/code/littler/littler-0.2.3.tar.gz
-	sha256sums = a67abbac4c67b4d8c7dc493f21638da9f7f7ca813811cc36c8c8478b75088655
+	sha256sums = 98cd741c68a5c8f65b06c96d2f56d3b44979b3990335e7869b002c005ef80ba7
 
 pkgname = littler
 	depends = r
