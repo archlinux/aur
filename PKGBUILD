@@ -5,7 +5,7 @@
 pkgname=openchange
 _codename=VULCAN
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A portable, open source implementation of Microsoft Exchange server \
 and Exchange protocols."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,9 @@ depends=('samba>=4.2.2' 'libical' 'sqlite3' 'file' 'boost' 'python2'
          'libmariadbclient' 'nanomsg>=0.5' 'libmemcached>=1.0.18')
 makedepends=('ccache' 'docbook-xsl' 'libxslt' 'python2-setuptools'
              'python2-pylons')
-optdepends=('python2-pylons: Needed for OCSManager')
+optdepends=('python2-pylons: Needed for OCSManager'
+            'python2-waitress: Needed for OCSManager'
+            'sogo-openchange: Groupware backend for OpenChange')
 options=(!makeflags)
 # Releases are mirrored at http://tracker.openchange.org/projects/openchange/files
 source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-${_codename}.tar.gz"

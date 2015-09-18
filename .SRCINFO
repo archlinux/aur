@@ -1,7 +1,7 @@
 pkgbase = openchange
 	pkgdesc = A portable, open source implementation of Microsoft Exchange server and Exchange protocols.
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openchange.org
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,8 @@ pkgbase = openchange
 	depends = nanomsg>=0.5
 	depends = libmemcached>=1.0.18
 	optdepends = python2-pylons: Needed for OCSManager
+	optdepends = python2-waitress: Needed for OCSManager
+	optdepends = sogo-openchange: Groupware backend for OpenChange
 	options = !makeflags
 	source = https://github.com/openchange/openchange/archive/openchange-2.3-VULCAN.tar.gz
 	source = ocsmanager.service
