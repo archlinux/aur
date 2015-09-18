@@ -1,6 +1,6 @@
 pkgbase = pacmanhealth-git
 	pkgdesc = Pacman health monitoring system
-	pkgver = 1.0.0.4gdf7aeae
+	pkgver = 1.0.0.6g9a2ad15
 	pkgrel = 1
 	url = https://redmine.yapbreak.fr/projects/pacman-health
 	arch = any
