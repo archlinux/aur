@@ -2,7 +2,7 @@
 
 pkgbase=mpv
 pkgname=mpv-light
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
@@ -18,17 +18,17 @@ makedepends=('mesa' 'python-docutils' 'ladspa' 'hardening-wrapper')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
 install=mpv.install
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/mpv-player/$pkgbase/archive/v$pkgver.tar.gz")
-md5sums=('ed1384e703f7032e531731842e4da4f7')
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
+sha256sums=('f9eaec3e4f6094c4d889ab04f86c479a089c389616e1a5522c92fedb2fe7044c')
 
 prepare() {
-  cd $pkgbase-$pkgver
+  cd ${pkgbase}-${pkgver}
 
   ./bootstrap.py
 }
 
 build() {
-  cd $pkgbase-$pkgver
+  cd ${pkgbase}-${pkgver}
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
@@ -52,12 +52,12 @@ build() {
 }
 
 package_mpv-light() {
-  cd $pkgbase-$pkgver
-  ./waf install --destdir="$pkgdir"
+  cd ${pkgbase}-${pkgver}
+  ./waf install --destdir="${pkgdir}"
 
-  install -d "$pkgdir"/usr/share/doc/mpv/examples
+  install -d "${pkgdir}"/usr/share/doc/mpv/examples
   install -m644 etc/{input,example}.conf \
-    "$pkgdir"/usr/share/doc/mpv/examples
+    "${pkgdir}"/usr/share/doc/mpv/examples
   install -m644 DOCS/{encoding.rst,tech-overview.txt} \
-    "$pkgdir"/usr/share/doc/mpv
+    "${pkgdir}"/usr/share/doc/mpv
 }
