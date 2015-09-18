@@ -1,0 +1,22 @@
+pkgbase = plexwatchweb-git
+	pkgdesc = A web front-end for plexWatch.
+	pkgver = r278.16923cc
+	pkgrel = 1
+	url = https://github.com/ecleese/plexWatchWeb
+	arch = any
+	license = unknown
+	depends = php-sqlite
+	optdepends = php-apache: to use the Apache web server
+	optdepends = plexwatch: plexwatchweb backend
+	provides = plexwatchweb
+	conflicts = plexwatchweb
+	replaces = plexwatchweb
+	options = !strip
+	backup = etc/webapps/plexWatchWeb/apache.example.conf
+	source = plexwatchweb-git::git+https://github.com/ecleese/plexWatchWeb.git#branch=dev
+	source = apache.example.conf
+	sha256sums = SKIP
+	sha256sums = ccad38b944e825047d2032541e4df4f2de69a3efcf6d0d0cdd432d00a2915e56
+
+pkgname = plexwatchweb-git
+
