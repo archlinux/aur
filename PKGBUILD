@@ -9,7 +9,7 @@ pkgdesc='JavaFX visual layout tool that lets users quickly design JavaFX applica
 arch=('any')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('BSD')
-depends=('jdk8-openjdk' 'java-openjfx')
+depends=('java-environment=8')
 makedepends=('mercurial' 'apache-ant')
 source=("scenebuilder::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=8u60-b27"
         "SceneBuilder"
