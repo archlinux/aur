@@ -1,0 +1,18 @@
+pkgbase = ronn
+	pkgdesc = Ronn converts simple, human readable textfiles to roff for terminal display, and also to HTML
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://rtomayko.github.com/ronn
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-hpricot
+	depends = ruby-rdiscount
+	depends = ruby-mustache
+	noextract = ronn-0.7.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ronn-0.7.3.gem
+	md5sums = c5aa4ef58d35d0cc635b769281e03225
+
+pkgname = ronn
+
