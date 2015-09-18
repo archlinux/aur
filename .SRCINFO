@@ -1,0 +1,15 @@
+pkgbase = firefox-spell-fa
+	pkgdesc = Persian spellchecker dictionary for Firefox
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/dictionaries/
+	arch = any
+	license = GPL
+	depends = firefox
+	source = https://addons.mozilla.org/firefox/downloads/latest/7583/addon-7583-1.2.xpi
+	source = http://m3g.ir/contributes/persdict.zip
+	md5sums = 178499ccde299fb7689e2bf2d419b37f
+	md5sums = b6888e19ed72b18a5697091ac6d990e5
+
+pkgname = firefox-spell-fa
+
