@@ -19,7 +19,7 @@ noextract=()
 md5sums=('SKIP' 'SKIP')
 
 build() {
-	patch -p0 $srcdir/uberwriter/uberwriter/UberwriterWindow.py < remove_tab_size.patch
+	# patch -p0 $srcdir/uberwriter/uberwriter/UberwriterWindow.py < remove_tab_size.patch
 }
 
 package() {
