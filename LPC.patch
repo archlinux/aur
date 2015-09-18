@@ -1,0 +1,13 @@
+---  src/marsyas/LPC.cpp	2015-03-01 22:31:15.000000000 +0000
++++  src/marsyas/LPC.new.cpp	2015-09-18 09:38:40.371974107 +0100
+@@ -24,8 +24,8 @@
+    Linear Prediction Coefficients (LPC). Features commonly used 
+ in Speech Recognition research. 
+ */
+-
+-
++#include <cstdlib> 
++#include <math.h>
+ #include "LPC.h"
+ 
+ LPC::LPC( unsigned int inSize )

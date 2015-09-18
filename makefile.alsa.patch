@@ -1,0 +1,11 @@
+--- makefile.alsa	2015-03-01 22:31:15.000000000 +0000
++++ newmake.alsa	2015-09-18 08:20:37.270520932 +0100
+@@ -4,7 +4,7 @@
+ INCLUDES=-I../marsyas/
+ MARSYAS_DIR=../marsyas/
+ CFLAGS=-D__LINUX_ALSA__ -D__LITTLE_ENDIAN__ $(INCLUDES) -O3 -c
+-LIBS=-L/usr/X11R6/lib -lglut -lGL -lGLU -lasound -lXmu -lX11 -lXext -lXi -lm -lsndfile
++LIBS=-L/usr/X11R6/lib -lglut -lGL -lGLU -lasound -lXmu -lX11 -lXext -lXi -lm -lsndfile -pthread
+ 
+ OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
+ 	Centroid.o DownSampler.o Flux.o LPC.o MFCC.o RMS.o Rolloff.o \

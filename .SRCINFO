@@ -1,0 +1,24 @@
+pkgbase = sndpeek-alsa
+	pkgdesc = a real-time audio visualization tool (animated, 3D): ALSA version
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.gewang.com/software/sndpeek/
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = GPL
+	depends = libsndfile
+	depends = alsa-lib
+	depends = glu
+	depends = freeglut
+	depends = libxmu
+	provides = sndpeek
+	source = http://soundlab.cs.princeton.edu/software/sndpeek/files/sndpeek-1.4.tgz
+	source = LPC.patch
+	source = makefile.alsa.patch
+	md5sums = 91df9f339230fd6c01f85ebd4cca51cb
+	md5sums = b73a667384ffa9237ded847483c796da
+	md5sums = caa0c3b10406cb0d202e996da618870c
+
+pkgname = sndpeek-alsa
+
