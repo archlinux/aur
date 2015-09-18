@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=soul
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="simple netsoul client"
 arch=('x86_64' 'i686')
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/lse/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/lse/soul/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('03e87eeff955512a381b595c35803a5e')
+md5sums=('72f5739c8fccc31592d3ae3ce3ca32d5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -34,7 +34,6 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./autogen.sh
 	./configure --prefix=/usr
 	make
 }
