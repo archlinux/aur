@@ -1,11 +1,10 @@
 pkgbase = ghost
 	pkgdesc = Free, open, simple blogging platform
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ghost.org
 	install = ghost.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = unzip
 	makedepends = npm

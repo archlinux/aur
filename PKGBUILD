@@ -2,9 +2,9 @@
 # Colaborator: Chun Yang <x@cyang.info>
 pkgname=ghost
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open, simple blogging platform"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://ghost.org"
 license=('MIT')
 makedepends=('unzip' 'npm')
