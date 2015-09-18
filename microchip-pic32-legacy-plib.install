@@ -1,0 +1,16 @@
+message_to_user(){
+   echo '
+   This package will change a few lines in files of XC32 as the official installer does.
+   Thus, installing with `makepkg -i` will produce an error, stating files already exist.
+   Please use `pacman -U --force <file_name_of_the_package.tar>` to install instead.
+   It always installs to the latest version of XC32 available on your computer.
+'
+}
+
+post_install() {
+  message_to_user
+}
+
+post_upgrade() {
+  message_to_user
+}
