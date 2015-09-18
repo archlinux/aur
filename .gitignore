@@ -1,0 +1,8 @@
+# makepkg
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+
+# vim
+*.swp

@@ -1,0 +1,16 @@
+pkgbase = visual_erlang
+	pkgdesc = Latex notation for describing Erlang architectures
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lehoff/visual_erlang
+	install = visual_erlang.install
+	arch = any
+	license = Apache
+	depends = texlive-latexextra
+	source = https://github.com/lehoff/visual_erlang/archive/v0.1.0.tar.gz
+	source = visual_erlang.install
+	md5sums = 3fa20e85581ca0383d74296bfbbd40d6
+	md5sums = 79f25671b6bcbe28ab9193aa2ed20c8b
+
+pkgname = visual_erlang
+
