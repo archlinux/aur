@@ -1,0 +1,8 @@
+@@ -665,7 +665,6 @@
+         GtkTextView {
+             -GtkWidget-cursor-color: black;
+             -GtkWidget-cursor-aspect-ratio: 0.05;
+-            -gtk-tab-size: 2;
+             color: #222;
+         }"""
+ 
