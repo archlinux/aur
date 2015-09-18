@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
 	cups-1.6.0-fix-install-perms.patch
 	cups-1.6.2-statedir.patch
 	)
-md5sums=('f5c847d9a4fac6c4c66fb0526a7afaae'
+md5sums=('c4e57a66298bfdba66bb3d5bedd317a4'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'fc8286f185e2cc5f7e1f6843bf193e2b'
          '96f82c38f3f540b53f3e5144900acf17'
@@ -138,10 +138,7 @@ package() {
   # remove client.conf man page
   rm -f "$pkgdir"/usr/share/man/man5/client.conf.5
 
-  # remove files now part of cups-filters
-  rm -v "$pkgdir"/usr/share/cups/banners/*
-  rm -v "$pkgdir"/usr/share/cups/data/testprint
-  # comment out all conversion rules which use any of the removed filters
+  # comment out all conversion rules which use any of the removed filters that are now part of cups-filters
   perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' "$pkgdir"/usr/share/cups/mime/mime.convs
 
   # comment out unnecessary PageLogFormat entry
