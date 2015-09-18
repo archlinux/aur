@@ -1,0 +1,17 @@
+pkgbase = convertimg-git
+	pkgdesc = Convert images to header files for Ndless libraries
+	pkgver = 20150518.f3e5fed
+	pkgrel = 1
+	url = https://github.com/Vogtinator/ConvertImg
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = None
+	makedepends = git
+	depends = qt5-base
+	source = git+https://github.com/Vogtinator/ConvertImg.git
+	md5sums = SKIP
+
+pkgname = convertimg-git
+
