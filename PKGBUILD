@@ -30,7 +30,6 @@ fi
 package() {
   cd "${srcdir}"
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  _eap=False
   if [[ ${_eap} = "True" ]]; then
   	cp -R "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
   else
