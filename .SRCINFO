@@ -7,7 +7,7 @@ pkgbase = mysql-docs
 	license = GPL
 	options = docs
 	source = http://downloads.mysql.com/docs/refman-5.6-en.html-chapter.tar.gz
-	md5sums = 73daa1165d1425911da97cfff716a062
+	md5sums = ffbdcd3fe9754ee7936f03c897427fff
 
 pkgname = mysql-docs
 
