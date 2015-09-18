@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=java -jar /opt/mongochef/data-man-mongodb-pro-3.0.2.jar
+Type=Application
+Terminal=false
+Icon=mongochef
+Categories=Development;
+
+Name=MongoChef
+GenericName=MongoDB Administration Tool
