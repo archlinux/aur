@@ -1,6 +1,6 @@
 #Contributor: Hector Mtz-Seara <hseara.#at#.gmail*.*com>
 pkgname=iep
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Pronounced as 'eep'is a cross-platform Python IDE focused on interactivity and introspection, which makes it very suitable for scientific computing. Its practical design is aimed at simplicity and efficiency."
 url="http://iep-project.org"
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 
 
 source=("http://bitbucket.org/iep-project/iep/downloads/iep-${pkgver}.source.zip")
-sha1sums=('8d2ff6bc83fda981d223d5f84aef3d748eab0a67')
+sha1sums=('4c5251813934f876b8aca6f213e5ff36686174c4')
 
 build(){
   cd "${srcdir}/${pkgname}-${pkgver}"
