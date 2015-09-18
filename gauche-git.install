@@ -6,6 +6,7 @@ post_install() {
   for file in ${filelist[@]}; do
     install-info $infodir/$file.gz $infodir/dir 2> /dev/null
   done
+  /usr/bin/gosh -ftest -uslib -E"require 'new-catalog" -Eexit;
 }
 
 post_upgrade() {
