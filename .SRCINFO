@@ -1,7 +1,7 @@
 pkgbase = wink
 	pkgdesc = Tutorial and Presentation creation software, primarily aimed at creating tutorials on how to use software.
 	pkgver = 1.5
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.debugmode.com/wink/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = wink
 	source = wink.desktop
 	source = wink.png
 	md5sums = be2d80bcf3fdfe1a403674d789aed9db
-	md5sums = abaca8b0ab9d7dc6976bbc5428dee79f
+	md5sums = 440d2b916de8db5ee009f0815df013ec
 	md5sums = cb73aa077a68e2b79b8190eee69e5fbd
 
 pkgname = wink

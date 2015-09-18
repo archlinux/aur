@@ -4,5 +4,5 @@ Name=Wink
 Name[en_US]=Wink
 Categories=Graphics;RasterGraphics;
 Exec=wink.sh
-Icon=wink.png
+Icon=wink
 Type=Application

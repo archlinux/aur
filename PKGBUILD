@@ -4,7 +4,7 @@
 pkgname=wink
 pkgver=1.5
 _pkgver=15
-pkgrel=6
+pkgrel=7
 pkgdesc="Tutorial and Presentation creation software, primarily aimed at creating tutorials on how to use software."
 arch=('i686' 'x86_64')
 url="http://www.debugmode.com/wink/"
@@ -20,7 +20,7 @@ source=('http://www.afterdawn.com/software/general/download.cfm/wink_for_linux?m
 wink.desktop
 wink.png)
 md5sums=('be2d80bcf3fdfe1a403674d789aed9db'
-         'abaca8b0ab9d7dc6976bbc5428dee79f'
+         '440d2b916de8db5ee009f0815df013ec'
          'cb73aa077a68e2b79b8190eee69e5fbd')
 
 build() {
