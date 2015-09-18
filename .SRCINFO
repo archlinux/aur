@@ -1,0 +1,17 @@
+pkgbase = docbook-dsssl
+	pkgdesc = DSSSL Stylesheets for DocBook
+	pkgver = 1.79
+	pkgrel = 5
+	url = http://sourceforge.net/projects/docbook/files/docbook-dsssl-doc/
+	install = docbook-dsssl.install
+	arch = i686
+	arch = x86_64
+	license = as-is
+	depends = sgml-common
+	source = http://download.sourceforge.net/project/docbook/docbook-dsssl/1.79/docbook-dsssl-1.79.tar.gz
+	source = docbook-dsssl-stylesheets.Makefile
+	sha256sums = d5a199024a5fe0862bfaff9e3533817cd8d08bddf3cdfb5bfe6088cbb2cd62b3
+	sha256sums = 9dec10a3f0c4fbe860f4fecf49cf4470c875a95957871ab97cbeb36a484b3e14
+
+pkgname = docbook-dsssl
+
