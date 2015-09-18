@@ -24,15 +24,3 @@
  endif
  
  INCLUDEDIR	:= $(PREFIX)/include/criu
-
---- ./Makefile
-+++ ./Makefile
-@@ -289,7 +289,7 @@
- 
- install-crit: crit
- 	$(E) "  INSTALL crit"
--	$(Q) python scripts/crit-setup.py install --prefix=$(DESTDIR)
-+	$(Q) python scripts/crit-setup.py install --prefix=$(DESTDIR)/usr
- 
- .PHONY: install install-man install-crit
- 
