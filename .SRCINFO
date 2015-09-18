@@ -1,7 +1,7 @@
 pkgbase = kazam
 	pkgdesc = A screencasting program with design in mind
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/kazam
 	install = kazam.install
 	arch = any

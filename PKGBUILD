@@ -1,6 +1,6 @@
 pkgname=kazam
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A screencasting program with design in mind"
 arch=('any')
 url="https://launchpad.net/kazam"
@@ -15,7 +15,7 @@ install=kazam.install
 source=("https://launchpad.net/${pkgname}/stable/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
 	'version.patch')
 md5sums=('522ac80fef7123875271b30298ed6877'
-         '36d5d6ed80729983ae77a060c3772b3a')
+         '847ae2478ae5e35f6e1af49aa9fb3fa9')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -27,5 +27,4 @@ package() {
 	python3 setup.py install --root ${pkgdir}
 }
 
-md5sums=('522ac80fef7123875271b30298ed6877'
-         '847ae2478ae5e35f6e1af49aa9fb3fa9')
+
