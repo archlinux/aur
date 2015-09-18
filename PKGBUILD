@@ -7,15 +7,15 @@
 pkgname=sndpeek-alsa
 _pkgname=sndpeek
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="a real-time audio visualization tool (animated, 3D): ALSA version"
 arch=('i686' 'x86_64')
-url="http://www.gewang.com/software/sndpeek/"
+url="http://soundlab.cs.princeton.edu/software/sndpeek/"
 license=('GPL')
 groups=('multimedia')
 depends=('libsndfile' 'alsa-lib' 'glu' 'freeglut' 'libxmu')
-provides=('sndpeek')
-source=("http://soundlab.cs.princeton.edu/software/sndpeek/files/$_pkgname-$pkgver.tgz" "LPC.patch" "makefile.alsa.patch")
+provides=('sndpeek-alsa')
+source=("http://soundlab.cs.princeton.edu/software/$_pkgname/files/$_pkgname-$pkgver.tgz" "LPC.patch" "makefile.alsa.patch")
 md5sums=('91df9f339230fd6c01f85ebd4cca51cb'
          'b73a667384ffa9237ded847483c796da'
          'caa0c3b10406cb0d202e996da618870c')
