@@ -1,0 +1,15 @@
+pkgbase = perl-parse-exuberantctags
+	pkgdesc = Parse::ExuberantCTags - Efficiently parse exuberant ctags files
+	pkgver = 1.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Parse-ExuberantCTags/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Parse-ExuberantCTags-1.02.tar.gz
+	sha256sums = 78d5a2b384a7d4a2dd674b0c0b79dc55d46017ba2a21d35d8d4858a025d5ca6c
+
+pkgname = perl-parse-exuberantctags
+
