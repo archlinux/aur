@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=vicare-scheme-git
-pkgver=20150916.9e72cdc
+pkgver=20150918.52ce5f3
 pkgrel=1
 pkgdesc="R6RS scheme implementation, from github's master branch"
 arch=('i686' 'x86_64')
@@ -22,15 +22,9 @@ pkgver() {
   git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
-prepare() {
-  cd "$srcdir"/"$_gitname"
-  chmod 700 autogen.sh
-  sed -i 's+@table @meta+@table @code+' doc/expander.texi
-}
-
 build() {
   cd "$srcdir"/"$_gitname"
-  ./autogen.sh
+  sh ./autogen.sh
   [ -d build ] && rm -rf build
   mkdir build
   cd build
