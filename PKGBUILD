@@ -1,6 +1,5 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
-_name=img2pdf
 pkgname=img2pdf-git
 pkgver=0.1.6
 pkgrel=1
@@ -10,20 +9,20 @@ url="https://gitlab.mister-muffin.de/josch/img2pdf"
 license=('LGPL3')
 depends=('python' 'python-pillow' 'python-setuptools')
 makedepends=('git')
-conflicts=("${_name}")
-provides=("${_name}=${pkgver}")
+conflicts=("${pkgname%-*}")
+provides=("${pkgname%-*}=${pkgver}")
 options=(!emptydirs)
 source=("git+http://gitlab.mister-muffin.de/josch/img2pdf.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/${pkgname%-*}"
     msg "Checking current version..."
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/${pkgname%-*}"
 
   msg "GIT checkout done or server timeout"
   msg "Starting setup.py..."
@@ -33,6 +32,6 @@ build() {
 
 package() {
 
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/${pkgname%-*}"
   python setup.py install --prefix=/usr --root="$pkgdir"
 }
