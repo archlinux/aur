@@ -13,14 +13,11 @@ url="http://www.videolan.org/vlc/"
 license=('LGPL2.1')
 depends=('vlc<3.0.0' 'fluidsynth')
 makedepends=()
-optdepends=("soundfont-fluid: FluidR3_GM soundfont"
-            "soundfont-toh: Don Allen's Timbres of Heaven soundfont")
+optdepends=("soundfont-fluid: FluidR3_GM soundfont")
 conflicts=("${pkgname}-git")
 provides=("${pkgname}=${pkgver}")
 replaces=("${pkgname}-git")
 install="notes.install"
-source=("notes.install")
-md5sums=('08522396ead8dc126392fea4a26a7940')
 
 if [ "${_compile}" -eq 0 ]; then
 	source_i686=("${pkgname}_${pkgver}-${pkgrel}_i386.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}_i386.deb")
