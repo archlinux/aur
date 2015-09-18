@@ -7,6 +7,7 @@ pkgbase = papageorge-git
 	license = GPL
 	depends = python
 	depends = python-gobject
+	depends = python-cairo
 	depends = python-urwid
 	source = git://github.com/drestebon/papageorge.git
 	md5sums = SKIP

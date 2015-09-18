@@ -8,7 +8,7 @@ pkgdesc="A simple client for the Free Internet Chess Server"
 arch=('any')
 url="http://github.com/drestebon/papageorge"
 license=('GPL')
-depends=('python' 'python-gobject' 'python-urwid')
+depends=('python' 'python-gobject' 'python-cairo' 'python-urwid')
 source=('git://github.com/drestebon/papageorge.git')
 md5sums=('SKIP')
 
