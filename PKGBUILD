@@ -3,7 +3,7 @@
 # Pull requests are welcome: https://github.com/pSub/pkgbuilds
 pkgname=latex-tikz-er2
 pkgver=0.0
-pkgrel=5
+pkgrel=1
 pkgdesc="A LaTeX Package for Drawing Entity-Relationship Diagrams based on Tikz"
 arch=('any')
 url="https://bitbucket.org/pavel_calado/tikz-er2/wiki/Home"
