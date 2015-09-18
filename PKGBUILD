@@ -1,7 +1,7 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=vlc-plugin-fluidsynth-git
-pkgver=3.0.0.r4735.g2adec34
+pkgver=3.0.0.r4737.g5a2e513
 pkgrel=1
 pkgdesc="FluidSynth plugin for VLC (compiling from vlc GIT repo)."
 arch=("i686" "x86_64")
@@ -9,24 +9,21 @@ url="http://www.videolan.org/vlc/"
 license=("LGPL2.1")
 depends=('vlc>=3.0.0' 'fluidsynth')
 makedepends=()
-optdepends=("soundfont-fluid: FluidR3_GM soundfont"
-            "soundfont-toh: Don Allen's Timbres of Heaven soundfont")
+optdepends=("soundfont-fluid: FluidR3_GM soundfont")
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver:0:5}")
 replaces=("${pkgname%-*}")
 options=("!libtool" "!emptydirs")
 install="notes.install"
-source=("git://git.videolan.org/${pkgname%%-*}.git"
-        "notes.install")
-md5sums=('SKIP'
-         '08522396ead8dc126392fea4a26a7940')
+source=("git://git.videolan.org/${pkgname%%-*}.git")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%%-*}"
 	msg "Checking current version..."
 		git_ver=`git describe --long | sed 's/git-//;s/\([^-]*-g\)/r\1/;s/-/./g'`
 		conf_ver=`sed -n 's/)$//g;s/^AC_INIT(vlc, //p' configure.ac`
-		echo "${git_ver/#"${git_ver:0:5}"/"${conf_ver:0:5}"}"
+		echo "${git_ver/#${git_ver:0:5}/${conf_ver:0:5}}"
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = vlc-plugin-fluidsynth-git
 	pkgdesc = FluidSynth plugin for VLC (compiling from vlc GIT repo).
-	pkgver = 3.0.0.r4735.g2adec34
+	pkgver = 3.0.0.r4737.g5a2e513
 	pkgrel = 1
 	url = http://www.videolan.org/vlc/
 	install = notes.install
@@ -10,16 +10,13 @@ pkgbase = vlc-plugin-fluidsynth-git
 	depends = vlc>=3.0.0
 	depends = fluidsynth
 	optdepends = soundfont-fluid: FluidR3_GM soundfont
-	optdepends = soundfont-toh: Don Allen's Timbres of Heaven soundfont
 	provides = vlc-plugin-fluidsynth=3.0.0
 	conflicts = vlc-plugin-fluidsynth
 	replaces = vlc-plugin-fluidsynth
 	options = !libtool
 	options = !emptydirs
 	source = git://git.videolan.org/vlc.git
-	source = notes.install
 	md5sums = SKIP
-	md5sums = 08522396ead8dc126392fea4a26a7940
 
 pkgname = vlc-plugin-fluidsynth-git
 
