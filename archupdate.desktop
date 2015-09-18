@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ArchUpdate
+Comment=A script for updating Arch Linux
+Exec=archupdate.sh
+Terminal=true
+Type=Application
+StartupNotify=false
+Icon=archicon.png
+Categories=Application;Utility;
