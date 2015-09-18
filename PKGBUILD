@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=abcl
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Full implementation of the Common Lisp language in the JVM"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('sh' 'java-environment')
 makedepends=('apache-ant' 'net-tools')
 source=("http://abcl.org/releases/$pkgver/$pkgname-src-$pkgver.tar.gz" abcl.sh)
-md5sums=('a07f17f0c610860a19f61468e9df601a'
+md5sums=('0ce3eeedd585a9e834c55b4b3a84bf76'
          'd51ffd115b32f9a47f849fc7630ced4f')
 
 build() {
