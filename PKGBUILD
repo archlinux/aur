@@ -2,8 +2,7 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 
 _pkgbase=icedtea-web
-pkgbase=icedtea-web-jre32
-pkgname=('icedtea-web-jre32' 'icedtea-web-doc')
+pkgname=icedtea-web-jre32
 conflicts=('icedtea-web')
 pkgver=1.6.1
 pkgrel=1
@@ -13,7 +12,9 @@ license=('GPL2')
 depends=('bin32-jre')
 makedepends=('java-environment-openjdk' 'zip' 'libxtst' 'npapi-sdk' 'rhino' 'junit' 'bin32-jdk'
              'firefox' 'epiphany')
-optdepends=('rhino: for using proxy auto config files')
+optdepends=('rhino: for using proxy auto config files'
+            'icedtea-web-doc: Documentation'
+           )
 # Due to broken path names in the tarball that fails with LANG=C in our chroot
 noextract=${_pkgbase}-${pkgver}.tar.gz
 source=(
@@ -52,7 +53,7 @@ build() {
 #}
 
 
-package_icedtea-web-jre32() {
+package() {
 
   pkgdesc='Free web browser plugin to run applets written in Java and an implementation of Java Web Start'
   depends=('java-runtime-openjdk' 'desktop-file-utils')
@@ -82,17 +83,4 @@ package_icedtea-web-jre32() {
   # link the mozilla-plugin - test it here http://www.java.com/en/download/help/testvm.xml
   install -m 755 -d "${pkgdir}"/usr/lib/mozilla/plugins/
   ln -sf /usr/share/${_pkgbase}/lib/IcedTeaPlugin.so "${pkgdir}"/usr/lib/mozilla/plugins/
-}
-
-package_icedtea-web-doc() {
-
-  pkgdesc='icedtea-web browser plugin + Java WebStart - documentation files'
-  replaces=('icedtea-web-java7-doc')
-
-  cd "${srcdir}"/${_pkgbase}-${pkgver}
-  make DESTDIR="${pkgdir}" install-data-local
-  # remove javaws about and man page
-  rm -rf "${pkgdir}"/usr/lib
-  rm -rf "${pkgdir}"/usr/share/man
-  rm -rf "${pkgdir}"/usr/share/icedtea-web # conflicting and unneeded file it seems
 }

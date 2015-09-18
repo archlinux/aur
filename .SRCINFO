@@ -16,6 +16,7 @@ pkgbase = icedtea-web-jre32
 	makedepends = epiphany
 	depends = bin32-jre
 	optdepends = rhino: for using proxy auto config files
+	optdepends = icedtea-web-doc: Documentation
 	conflicts = icedtea-web
 	noextract = icedtea-web-1.6.1.tar.gz
 	source = http://icedtea.classpath.org/download/source/icedtea-web-1.6.1.tar.gz
@@ -30,8 +31,4 @@ pkgname = icedtea-web-jre32
 	depends = desktop-file-utils
 	provides = java-web-start
 	replaces = icedtea-web-java7
-
-pkgname = icedtea-web-doc
-	pkgdesc = icedtea-web browser plugin + Java WebStart - documentation files
-	replaces = icedtea-web-java7-doc
 
