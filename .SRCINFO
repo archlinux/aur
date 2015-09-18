@@ -12,6 +12,7 @@ pkgbase = qore
 	depends = pcre
 	depends = bzip2
 	depends = zlib
+	depends = bison
 	source = http://sourceforge.net/projects/qore/files/qore/0.8.11/qore-0.8.11.tar.bz2
 	md5sums = 483510cdcb6338ff6cb892cc29a98a63
 
