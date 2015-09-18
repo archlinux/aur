@@ -15,12 +15,18 @@ makedepends=('java-environment-openjdk' 'zip' 'libxtst' 'npapi-sdk' 'rhino' 'jun
 optdepends=('rhino: for using proxy auto config files')
 # Due to broken path names in the tarball that fails with LANG=C in our chroot
 noextract=${pkgbase}-${pkgver}.tar.gz
-source=(http://icedtea.classpath.org/download/source/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('a9b46ab6c9dc303c89651143596bc5abea29242b9bdcabdd2dab7c606592c920')
+source=(
+  http://icedtea.classpath.org/download/source/${pkgbase}-${pkgver}.tar.gz
+  fix-package-info.patch
+)
+sha256sums=('a9b46ab6c9dc303c89651143596bc5abea29242b9bdcabdd2dab7c606592c920'
+            '3da531a0b2ba99152fe9410591ade01b6ea63a926cc36f3fa0ab39955708940c')
 
 prepare() {
   cd "${srcdir}"
   LANG=en_US.UTF-8 bsdtar -x -f "${srcdir}"/${pkgbase}-${pkgver}.tar.gz
+
+  patch "${srcdir}/${pkgbase}-${pkgver}/netx/net/sourceforge/jnlp/security/package-info.java" fix-package-info.patch
 }
 
 build() {
