@@ -1,5 +1,5 @@
 pkgbase = firebird-nspire
-	pkgdesc = 'Community emulator of TI-Nspire calculators.'
+	pkgdesc = Community emulator of TI-Nspire calculators.
 	pkgver = 0.11
 	pkgrel = 1
 	url = http://github.com/nspire-emus/firebird
