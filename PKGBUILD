@@ -15,7 +15,7 @@ md5sums=('b9751c44ce5eb7badee23be22df81362')
 
 build() {
   # Compile...
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   mkdir -p build
   cd build
   qmake ..
@@ -24,6 +24,6 @@ build() {
 
 package() {
   # Install...
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgname}/build"
   INSTALL_ROOT="${pkgdir}" make install
 }
