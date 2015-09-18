@@ -6,7 +6,7 @@ pkgdesc='CGAL bindings using SWIG '
 arch=('i686' 'x86_64')
 license=('custom: Boost')
 url="https://github.com/xantares/nfc-bindings"
-makedepends=('cmake' 'swig' 'eigen')
+makedepends=('cmake' 'swig' 'eigen' 'python' 'java-runtime')
 source=("git+https://github.com/CGAL/cgal-swig-bindings.git")
 md5sums=('SKIP')
 
@@ -22,11 +22,6 @@ build()
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr ..
   make
-#   cd "$srcdir"/nfc-bindings-py2
-#   mkdir -p build && pushd build
-#   cmake \
-#     -DPYTHON_EXECUTABLE=/usr/bin/python2 -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-#     -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 package_python-cgal()

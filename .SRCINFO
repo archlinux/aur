@@ -9,6 +9,8 @@ pkgbase = cgal-swig-bindings
 	makedepends = cmake
 	makedepends = swig
 	makedepends = eigen
+	makedepends = python
+	makedepends = java-runtime
 	source = git+https://github.com/CGAL/cgal-swig-bindings.git
 	md5sums = SKIP
 
