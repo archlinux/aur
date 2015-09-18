@@ -1,0 +1,18 @@
+pkgbase = perl-criticism
+	pkgdesc = Perl pragma to enforce coding standards and best-practices
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://metacpan.org/release/criticism
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-io-string
+	depends = perl
+	depends = perl-critic>=1.089
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/T/TH/THALJEF/criticism/criticism-1.02.tar.gz
+	md5sums = b1ee983972202b1b255e1a5d5c29be3e
+
+pkgname = perl-criticism
+
