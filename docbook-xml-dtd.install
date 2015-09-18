@@ -1,0 +1,43 @@
+pre_install() {
+  rm -rf /usr/share/xml/docbook/xml-dtd-4.1.2-9
+  rm -f /etc/xml/docbook /etc/xml/catalog
+}
+
+post_install() {
+
+ /usr/bin/build-docbook-catalog 
+
+ /usr/bin/install-catalog --add \
+                      /etc/sgml/xml-docbook-4.4.cat \
+                      /etc/sgml/sgml-docbook.cat
+ 
+ /usr/bin/install-catalog --add \
+                     /etc/sgml/xml-docbook-4.4.cat \
+                     /usr/share/sgml/docbook/xml-dtd-4.4/docbook.cat
+ /usr/bin/install-catalog --add \
+                     /etc/sgml/xml-docbook-4.4.cat \
+                     /usr/share/sgml/docbook/xml-dtd-4.4/catalog
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  /usr/bin/deleteDocBookCatalog
+
+ /usr/bin/install-catalog --add \
+                      /etc/sgml/xml-docbook-4.4.cat \
+                      /etc/sgml/sgml-docbook.cat
+ 
+ /usr/bin/install-catalog --add \
+                     /etc/sgml/xml-docbook-4.4.cat \
+                     /usr/share/sgml/docbook/xml-dtd-4.4/docbook.cat
+ /usr/bin/install-catalog --add \
+                     /etc/sgml/xml-docbook-4.4.cat \
+                     /usr/share/sgml/docbook/xml-dtd-4.4/catalog
+}
+
+op=$1
+shift
+$op $*

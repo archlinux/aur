@@ -1,0 +1,23 @@
+pkgbase = docbook-xml-dtd
+	pkgdesc = Docbook DTD for XML
+	pkgver = 4.4
+	pkgrel = 2
+	url = http://www.docbook.org/xml/index.html
+	install = docbook-xml-dtd.install
+	arch = any
+	license = X11
+	makedepends = docbook-xsl
+	makedepends = libxml2
+	depends = sgml-common
+	replaces = docbook-xml
+	source = http://www.docbook.org/xml/4.4/docbook-xml-4.4.zip
+	source = catalog
+	source = build-docbook-catalog-1.2
+	source = deleteDocBookCatalog
+	sha256sums = 02f159eb88c4254d95e831c51c144b1863b216d909b5ff45743a1ce6f5273090
+	sha256sums = 7fd2043a386f6f869da85a4a74926b330299e7c2423003d8a300ff1b2a85c906
+	sha256sums = f0aa311db9bde4fb40d8062535d13e27d94c3996e46615a17d33751d91b6e83a
+	sha256sums = a228dbbfc737fbcf3d297c7ac84bef466b50156c8931b4ee1613b5f7f994c3fa
+
+pkgname = docbook-xml-dtd
+

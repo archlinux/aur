@@ -1,0 +1,70 @@
+  -- ...................................................................... --
+  -- Catalog data for DocBook XML V4.4 .................................... --
+  -- File docbook.cat ..................................................... --
+
+  -- Please direct all questions, bug reports, or suggestions for
+     changes to the docbook@lists.oasis-open.org mailing list. For more
+     information, see http://www.oasis-open.org/.
+  --
+
+  -- This is the catalog data file for DocBook XML V4.4. It is provided as
+     a convenience in building your own catalog files. You need not use
+     the filenames listed here, and need not use the filename method of
+     identifying storage objects at all.  See the documentation for
+     detailed information on the files associated with the DocBook DTD.
+     See SGML Open Technical Resolution 9401 for detailed information
+     on supplying and using catalog data.
+  --
+
+  -- public identifiers override system identifiers, if both are supplied   --
+OVERRIDE YES
+
+  -- ...................................................................... --
+  -- DocBook driver file .................................................. --
+
+PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+       "docbookx.dtd"
+DTDDECL "-//OASIS//DTD DocBook XML V4.4//EN"
+       "/usr/share/xml/declaration/xml.dcl"
+
+  -- ...................................................................... --
+  -- Other ways to refer to DocBook XML v4.4 .............................. --
+
+PUBLIC "-//OASIS//DTD DocBook XML V4//EN"
+        "docbookx.dtd"
+DTDDECL "-//OASIS//DTD DocBook XML V4//EN"
+        "/usr/share/xml/declaration/xml.dcl"
+PUBLIC "-//OASIS//DTD DocBook XML//EN"
+        "docbookx.dtd"
+DTDDECL "-//OASIS//DTD DocBook XML//EN"
+        "/usr/share/xml/declaration/xml.dcl"
+
+  -- ...................................................................... --
+  -- DocBook modules ...................................................... --
+
+PUBLIC "-//OASIS//DTD DocBook CALS Table Model V4.4//EN"
+       "calstblx.dtd"
+
+PUBLIC "-//OASIS//ELEMENTS DocBook XML HTML Tables V4.4//EN"
+       "htmltblx.mod"
+
+PUBLIC "-//OASIS//DTD XML Exchange Table Model 19990315//EN"
+       "soextblx.dtd"
+
+PUBLIC "-//OASIS//ELEMENTS DocBook Information Pool V4.4//EN"
+       "dbpoolx.mod"
+
+PUBLIC "-//OASIS//ELEMENTS DocBook Document Hierarchy V4.4//EN"
+       "dbhierx.mod"
+
+PUBLIC "-//OASIS//ENTITIES DocBook Additional General Entities V4.4//EN"
+       "dbgenent.mod"
+
+PUBLIC "-//OASIS//ENTITIES DocBook Notations V4.4//EN"
+       "dbnotnx.mod"
+
+PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.4//EN"
+       "dbcentx.mod"
+
+  -- End of catalog data for DocBook XML V4.4 ............................. --
+  -- ...................................................................... --
