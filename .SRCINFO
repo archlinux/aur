@@ -1,0 +1,12 @@
+pkgbase = fortune-mod-dhammapada
+	pkgdesc = A collection of Fortune cookies from the Buddha's Dhammapada
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/pronoid/fortune-mod-dhammapada
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fortune-mod
+
+pkgname = fortune-mod-dhammapada
+
