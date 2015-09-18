@@ -1,7 +1,7 @@
 # Maintainer: David Barnett <zyphrus@outlook.com>
 pkgname='whiley'
 pkgver='0.3.36'
-pkgrel='0'
+pkgrel='1'
 pkgdesc='Whiley Development Kit. A programming language particularly suited to safety-critical systems'
 arch=("any")
 url="http://whiley.org/"
@@ -14,7 +14,7 @@ sha256sums=('743b749527492c6427a690becaa65b2b633e25b06243a09c522c1d673b177593')
 build() {
   cd "${srcdir}"
   echo "#!/bin/bash" > proxy
-  echo "sh /usr/share/$pkgname/bin/\$(basename \$0) \$1" >> proxy
+  echo "sh /usr/share/$pkgname/bin/\$(basename \$0) \$@" >> proxy
 }
 
 package() {
