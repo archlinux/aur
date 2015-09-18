@@ -1,11 +1,11 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=convertimg-git
-pkgver=20150518.f3e5fed
+pkgver=20150918.4a97dfe
 pkgrel=1
 pkgdesc="Convert images to header files for Ndless libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/Vogtinator/ConvertImg"
-license=('None')
+license=('zlib')
 depends=('qt5-base')
 makedepends=('git')
 source=('git+https://github.com/Vogtinator/ConvertImg.git')
