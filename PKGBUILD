@@ -1,10 +1,12 @@
 # Maintainer: Sander Boom <sanderboom@gmail.com>
-# Upstream URL Kitematic: https://github.com/kitematic/kitematic
-# Upstream URL linux-support: https://github.com/zedtux/kitematic
-
+# Improvements via PR welcome at: https://github.com/sanderboom/aur-kitematic
+#
 # Kitematic support for linux is not yet official. This package aims to be a
 # quick-and-dirty solution to install and run (providing a *.desktop file) for
 # the time being.
+#
+# Upstream URL Kitematic: https://github.com/kitematic/kitematic
+# Upstream URL linux-support: https://github.com/zedtux/kitematic
 
 pkgname=kitematic
 pkgver=0.7.2.r128.ge8e1fba
