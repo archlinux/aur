@@ -1,0 +1,14 @@
+pkgbase = soul
+	pkgdesc = simple netsoul client
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glibc
+	depends = libbsd
+	source = https://github.com/lse/soul/archive/v1.0.tar.gz
+	md5sums = 03e87eeff955512a381b595c35803a5e
+
+pkgname = soul
+
