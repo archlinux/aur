@@ -10,7 +10,7 @@ pkgbase = perl-pod-spell
 	depends = perl-class-tiny
 	depends = perl-file-sharedir-projectdistdir>=1.000
 	depends = perl-lingua-en-inflect
-	depends = perl>=5.008
+	depends = perl-file-sharedir-install
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/X/XE/XENO/Pod-Spell-1.17.tar.gz
 	md5sums = b0895135155569ad4f8903ab11cbeb0b

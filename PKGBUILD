@@ -8,7 +8,7 @@ pkgdesc="a formatter for spellchecking Pod"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-tiny' 'perl-file-sharedir-projectdistdir>=1.000' 'perl-lingua-en-inflect' 'perl>=5.008')
+depends=('perl-class-tiny' 'perl-file-sharedir-projectdistdir>=1.000' 'perl-lingua-en-inflect' 'perl-file-sharedir-install')
 makedepends=()
 checkdepends=('perl-test-deep')
 url='https://metacpan.org/release/Pod-Spell'
