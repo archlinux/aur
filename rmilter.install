@@ -1,0 +1,18 @@
+## arg 1:  the new package version
+post_install() {
+  if ! getent passwd _rmilter >/dev/null; then
+    useradd -r -M -c 'rmilter daemon' -d / -s /usr/bin/nologin _rmilter
+    passwd -l _rmilter >/dev/null
+  fi
+  mkdir -p /run/rmilter
+  chown _rmilter:_rmilter /run/rmilter
+}
+
+## arg 1:  the old package version
+post_remove() {
+  if getent passwd _rmilter >/dev/null; then
+    userdel _rmilter
+  fi
+}
+
+# vim:set ts=2 sw=2 et:
