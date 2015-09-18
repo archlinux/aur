@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=infamousplugins-git
-pkgver=0.1.1.r1.g3fc3a89
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A collection of open-source LV2 plugins"
 arch=('i686' 'x86_64')
@@ -26,15 +26,12 @@ build() {
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 	make
-	cd ..
-	gcc src/rule.c -o src/infamous-rule
 }
 
 package() {
     cd "$srcdir/${pkgname%-*}/build"
 	make DESTDIR="$pkgdir/" install
 	cd ..
-	install -Dm755 src/infamous-rule "$pkgdir/usr/bin/infamous-rule"
     install -Dm644 CHANGELOG "$pkgdir/usr/share/doc/${pkgname%-*}/CHANGELOG"
     install -Dm644 COPYING "$pkgdir/usr/share/doc/${pkgname%-*}/COPYING"
     install -Dm644 README  "$pkgdir/usr/share/doc/${pkgname%-*}/README"
