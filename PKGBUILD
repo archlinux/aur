@@ -20,7 +20,6 @@ sha256sums=('fb3a5ebf49f2ec1ab1c9f4e5fc51e36d1f12189e1449efa3f68f3fdf744f4d61'
 package() {
   cd "$srcdir"
   install -Dm755 docker-compose-Linux-x86_64 "$pkgdir/usr/bin/docker-compose"
-  ln -s docker-compose "$pkgdir/usr/bin/fig"
 
   cd "$srcdir/compose-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
