@@ -5,8 +5,9 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='0.9.3'
-commit='5d42b212fca8facfe9db0c83822f09b88be643ec'
+pkgver='0.9.4.1'
+branch='0.9.4'
+commit='c4f85f84765e27bfb5e58630d0dea38adeacf543'
 pkgrel='1'
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
@@ -24,42 +25,39 @@ replaces=()
 backup=('etc/influxdb.conf')
 options=()
 install="$pkgname.install"
-source=("$pkgname.service"
+pkgtar="v${pkgver}.tar.gz"
+source=("https://github.com/influxdb/influxdb/archive/$pkgtar"
+        "$pkgname.service"
         "$pkgname.install")
 changelog=
-noextract=()
-md5sums=('SKIP'
+noextract=("$pkgtar")
+md5sums=('9847a4318ab212245a37ff591972e858'
+         'SKIP'
          'SKIP')
 
 prepare()
 { 
   export GOPATH="${srcdir}"
+  export INFLUXDBGOPATH="$GOPATH/src/github.com/influxdb/influxdb"
   export GOBIN="$GOPATH/bin"
   if [ -d $GOBIN ]; then
-    rm $GOBIN/*;
+    rm -rf $GOBIN;
   fi;
 
-  echo "Downloading influxdb ..."
-  go get github.com/influxdb/influxdb
+  echo "Extracting influxdb archive..."
+  mkdir -p $INFLUXDBGOPATH
+  tar -C $INFLUXDBGOPATH --strip-components=1 -xzf $pkgtar 
 
-  echo "Downloading dependencies ..."
-  cd "$GOPATH/src/github.com/influxdb"
-  go get ./...
 }
 build() 
 {
-  export GOPATH="${srcdir}"
-  export GOBIN="$GOPATH/bin"
-
-  echo "Building influxdb ${pkgver} (commit ${commit}) ..."
-  cd "$GOPATH/src/github.com/influxdb"
-  go install -ldflags="-X main.version=$pkgver -X main.commit=$commit" ./...
+  echo "Building influxdb version=${pkgver} branch=$branch commit=${commit}..."
+  cd $INFLUXDBGOPATH
+  go get -ldflags="-X main.version=0.9.4.1 -X main.branch=$branch -X main.commit=$commit" ./...
+  go install -ldflags="-X main.version=0.9.4.1 -X main.branch=$branch -X main.commit=$commit" ./...
 }
 package()
 {
-  export GOPATH="${srcdir}"
-  export GOBIN="$GOPATH/bin"
-
   # systemctl service file
   install -D -m644  "$srcdir/influxdb.service" "$pkgdir/usr/lib/systemd/system/influxdb.service"
 
@@ -68,9 +66,9 @@ package()
   install -D -m755 "$GOBIN/influx" "$pkgdir/usr/bin/influx"
 
   # configuration file
-  install -D -m644 "$GOPATH/src/github.com/influxdb/influxdb/etc/config.sample.toml" "${pkgdir}/etc/influxdb.conf"
+  install -D -m644 "$INFLUXDBGOPATH/etc/config.sample.toml" "${pkgdir}/etc/influxdb.conf"
   sed -i 's;/var/opt/;/var/lib/;g' "${pkgdir}/etc/influxdb.conf"
 
   # license
-  install -Dm644 "$GOPATH/src/github.com/influxdb/influxdb/LICENSE" "${pkgdir}/usr/share/licenses/influxdb/LICENSE"
+  install -Dm644 "$INFLUXDBGOPATH/LICENSE" "${pkgdir}/usr/share/licenses/influxdb/LICENSE"
 }
