@@ -7,6 +7,7 @@ pkgdesc="reads a stream of points from a file or stdin and plots them."
 arch=('i686' 'x86_64')
 url="http://git.2f30.org/nausea/"
 license=('MIT')
+conflicts=('guff-git')
 source=(https://github.com/silentbicycle/guff/archive/v$pkgver.tar.gz)
 md5sums=('fe63a34dc79f3dd5442b785ab9722bee')
 
