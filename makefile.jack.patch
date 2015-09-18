@@ -1,0 +1,11 @@
+--- makefile.jack	2015-03-01 22:31:15.000000000 +0000
++++ newmake.jack	2015-09-18 08:24:08.069885577 +0100
+@@ -2,7 +2,7 @@
+ CPP=g++
+ INCLUDES=-I../marsyas/
+ MARSYAS_DIR=../marsyas/
+-CFLAGS=-D__LINUX_JACK__ -D__LITTLE_ENDIAN__ $(INCLUDES) -O3 -c
++CFLAGS=-D__LINUX_JACK__ -D__LITTLE_ENDIAN__ -D__UNIX_JACK__ $(INCLUDES) -O3 -c
+ LIBS=-L/usr/X11R6/lib -lpthread -lstdc++ -lglut -lGL -lGLU -lasound -ljack -lXmu -lX11 -lXext -lXi -lm -lsndfile
+ 
+ OBJS=chuck_fft.o RtAudio.o Thread.o sndpeek.o Stk.o \
