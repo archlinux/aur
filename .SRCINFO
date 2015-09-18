@@ -1,0 +1,13 @@
+pkgbase = sndtools-jack-meta
+	pkgdesc = Meta package for sndtools, JACK version
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sndtools.cs.princeton.edu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sndpeek-jack
+	depends = rt_lpc-jack
+
+pkgname = sndtools-jack-meta
+
