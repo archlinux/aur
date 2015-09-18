@@ -1,6 +1,6 @@
 # Maintainer: Harley Wiltzer <harleyw@hotmail.com>
 pkgname=conway-git
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A conway's game of life player that uses ncurses"
 arch=('x86_64')
@@ -50,6 +50,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
+  make
   install -Dm 755 a.out "$pkgdir/usr/bin/$_gitname"
   if [ ! -d "$HOME/.conway" ]; then
     mkdir "$HOME/.conway"
