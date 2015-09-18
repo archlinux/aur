@@ -4,7 +4,7 @@
 
 pkgname=phc-intel
 pkgver=0.3.2.12.18
-_realver=pack-rev17
+_realver=pack-rev18
 pkgrel=1
 pkgdesc="frequency driver for Intel CPUs with undervolting feature"
 url="http://www.linux-phc.org"
@@ -15,7 +15,7 @@ backup=(etc/default/phc-intel)
 install=phc-intel.install
 source=(phc-intel-$_realver.tar.bz2::$url/forum/download/file.php?id=167
         phc-intel.{default,sh,sleep,system-sleep})
-sha256sums=('97e8659423ff9ce5e7f77e5e4049b100677a37b05a341d294aba286de1bbaeb9'
+sha256sums=('476c48193ef8e2acb7da4b91f1e5b771fa06c2f227d50fdbe196b4e8cbf10091'
             'ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3'
             'c48fea46501c98c1f2aee0a49fd6abc68ac5a691bbdd3e3e41eb25dd2080c17f'
             '569b85988cb38380fec85c25688b76abc24a46601aa8f58eb24eaebf863eebef'
