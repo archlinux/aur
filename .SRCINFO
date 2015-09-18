@@ -1,7 +1,7 @@
 pkgbase = snowflake-client
 	pkgdesc = Snowflake Database command line and JDBC client
-	pkgver = 2.4
-	pkgrel = 2
+	pkgver = 2.7.2
+	pkgrel = 1
 	url = http://www.snowflake.net/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = snowflake-client
 	depends = bash
 	depends = libtinfo
 	source = sfsql.patch
-	md5sums = 3ab11cead59dab3a869d22f15cdff050
+	md5sums = 4ddf438900d60621b586979c96078426
 
 pkgname = snowflake-client
 
