@@ -3,7 +3,7 @@
 # Remove the --enable-openmp flag below if you do not want parallelization.
 
 pkgname=python-graph-tool
-pkgver=2.5
+pkgver=2.7
 pkgrel=1
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ conflicts=(python3-graph-tool)
 replaces=(python3-graph-tool)
 options=(!libtool)
 source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2" configure.patch)
-sha256sums=('aa1a964de6237c0620f2ec5e9a38e389a756b58211270b8836216ad817f96bec'
+sha256sums=('c71ab0056c27d0d5b4f92d58d8d3ad019ef535da822b54898459a09b119449e1'
             'a3499be132a34b1bf64e26d6ccbd9a4804d9f06eb1fd9cac2bce0966d54324f1')
 
 prepare() {
