@@ -1,0 +1,16 @@
+pkgbase = ceph-deploy
+	pkgdesc = Deploy Ceph with minimal infrastructure, using just SSH access
+	pkgver = 1.5.28
+	pkgrel = 1
+	url = http://ceph.com
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pushy
+	source = git://github.com/ceph/ceph-deploy.git#tag=v1.5.28
+	sha256sums = SKIP
+
+pkgname = ceph-deploy
+
