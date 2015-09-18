@@ -6,15 +6,20 @@ pkgname=icedtea-web-jre32
 conflicts=('icedtea-web')
 pkgver=1.6.1
 pkgrel=1
+pkgdesc='Free web browser plugin to run applets written in Java and an implementation of Java Web Start (uses 32-bit JRE)'
 arch=('i686' 'x86_64')
 url='http://icedtea.classpath.org/wiki/IcedTea-Web'
 license=('GPL2')
-depends=('bin32-jre')
+depends=('bin32-jre' 'java-runtime-openjdk' 'desktop-file-utils')
 makedepends=('java-environment-openjdk' 'zip' 'libxtst' 'npapi-sdk' 'rhino' 'junit' 'bin32-jdk'
              'firefox' 'epiphany')
 optdepends=('rhino: for using proxy auto config files'
             'icedtea-web-doc: Documentation'
            )
+provides=('java-web-start')
+replaces=('icedtea-web-java7')
+install=install_${pkgname}.sh
+
 # Due to broken path names in the tarball that fails with LANG=C in our chroot
 noextract=${_pkgbase}-${pkgver}.tar.gz
 source=(
@@ -54,13 +59,6 @@ build() {
 
 
 package() {
-
-  pkgdesc='Free web browser plugin to run applets written in Java and an implementation of Java Web Start'
-  depends=('java-runtime-openjdk' 'desktop-file-utils')
-  provides=('java-web-start')
-  replaces=('icedtea-web-java7')
-  install=install_${pkgname}.sh
-
   cd "${srcdir}"/${_pkgbase}-${pkgver}
   # possible make target (see bottom of Makefile.am: install-exec-local install-data-local
   make DESTDIR="${pkgdir}" install-exec-local install-data-local
