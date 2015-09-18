@@ -1,7 +1,7 @@
 pkgbase = apache-flex-sdk
 	pkgdesc = The open-source framework for building expressive web and mobile applications
 	pkgver = 4.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flex.apache.org/
 	install = apache-flex-sdk.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = apache-flex-sdk
 	optdepends = adobe-air-sdk: for compiling flex projects into AIR apps
 	noextract = playerglobal11_1.swc
 	options = !strip
-	source = http://ftp.twaren.net/Unix/Web/apache/flex/4.14.1/binaries/apache-flex-sdk-4.14.1-bin.tar.gz
+	source = http://www.apache.org/dist/flex/4.14.1/binaries/apache-flex-sdk-4.14.1-bin.tar.gz
 	source = http://www.apache.org/dist/flex/4.14.1/binaries/apache-flex-sdk-4.14.1-bin.tar.gz.asc
 	source = http://download.macromedia.com/get/flashplayer/updaters/11/playerglobal11_1.swc
 	source = apache-flex-sdk.sh
