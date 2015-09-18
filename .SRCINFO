@@ -1,0 +1,21 @@
+pkgbase = perl-sereal
+	pkgdesc = Fast, compact, powerful binary (de-)serialization
+	pkgver = 3.005
+	pkgrel = 1
+	url = https://metacpan.org/release/Sereal
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-sereal-encoder>=3.005
+	checkdepends = perl-test-simple>=0.88
+	checkdepends = perl-sereal-decoder>=3.005
+	makedepends = perl-extutils-makemaker>=0
+	depends = perl>=5.8
+	depends = perl-sereal-encoder>=3.005
+	depends = perl-sereal-decoder>=3.005
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/Y/YV/YVES/Sereal-3.005.tar.gz
+	sha256sums = 621e4f69ad70331d5041d45fc36f2602a3ed0551b89aa6c0c45df05d5820adbb
+
+pkgname = perl-sereal
+
