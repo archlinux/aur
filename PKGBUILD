@@ -7,7 +7,7 @@ appname='st'
 conflicts=(${appname})
 provides=(${appname})
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple virtual terminal emulator for X. Patched for solarized colorscheme.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -27,12 +27,17 @@ build() {
   cd $srcdir/$appname-$pkgver
   patch -i $srcdir/st-0.6-no-bold-colors.diff
   patch -i $srcdir/st-0.6-solarized-dark.diff
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
   cd $srcdir/$appname-$pkgver
   make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$appname/LICENSE"
-	install -Dm644 README "$pkgdir/usr/share/doc/$appname/README"
+
+  # Avoid conflict with ncurses package
+  rm "$pkgdir/usr/share/terminfo/s/st"
+  rm "$pkgdir/usr/share/terminfo/s/st-256color"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$appname/LICENSE"
+  install -Dm644 README "$pkgdir/usr/share/doc/$appname/README"
 }
