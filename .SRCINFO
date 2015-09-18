@@ -1,18 +1,20 @@
 pkgbase = perl-devel-overloadinfo
 	pkgdesc = introspect overloaded operators
-	pkgver = 0.002
+	pkgver = 0.004
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Devel-OverloadInfo
+	url = https://metacpan.org/release/Devel-OverloadInfo
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-mro-compat>=0
+	checkdepends = perl-test-fatal
+	depends = perl-mro-compat
 	depends = perl-package-stash>=0.14
-	depends = perl-sub-identify>=0
+	depends = perl-sub-identify
+	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Devel-OverloadInfo-0.002.tar.gz
-	md5sums = bff186962739cd63d303061f2da038b1
-	sha512sums = fb293f0466b40135c92b8579631a3fe4a7d4cbf1c3720d14972a24f2144218a00594d5496c0231a77f8ab3a465194d3c6beea02785fbd2629ce0f193060914a9
+	source = http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Devel-OverloadInfo-0.004.tar.gz
+	md5sums = 97a27e31858b073daba54121d57be705
+	sha512sums = a8770f3319c8224d348fd28b1a057333e87d73b914c892d3c3581673db6fef8b5728a02a485eefc90edbc05899150cd8e172f464f0a4a29e8161815f6de8dcb1
 
 pkgname = perl-devel-overloadinfo
 

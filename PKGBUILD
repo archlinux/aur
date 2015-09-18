@@ -1,20 +1,21 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-devel-overloadinfo'
-pkgver='0.002'
+pkgver='0.004'
 pkgrel='1'
 pkgdesc="introspect overloaded operators"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-mro-compat>=0' 'perl-package-stash>=0.14' 'perl-sub-identify>=0')
+depends=('perl-mro-compat' 'perl-package-stash>=0.14' 'perl-sub-identify' 'perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/Devel-OverloadInfo'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Devel-OverloadInfo-0.002.tar.gz')
-md5sums=('bff186962739cd63d303061f2da038b1')
-sha512sums=('fb293f0466b40135c92b8579631a3fe4a7d4cbf1c3720d14972a24f2144218a00594d5496c0231a77f8ab3a465194d3c6beea02785fbd2629ce0f193060914a9')
-_distdir="Devel-OverloadInfo-0.002"
+checkdepends=('perl-test-fatal')
+url='https://metacpan.org/release/Devel-OverloadInfo'
+source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Devel-OverloadInfo-0.004.tar.gz')
+md5sums=('97a27e31858b073daba54121d57be705')
+sha512sums=('a8770f3319c8224d348fd28b1a057333e87d73b914c892d3c3581673db6fef8b5728a02a485eefc90edbc05899150cd8e172f464f0a4a29e8161815f6de8dcb1')
+_distdir="Devel-OverloadInfo-0.004"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
