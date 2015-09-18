@@ -1,7 +1,7 @@
 pkgbase = whiley
 	pkgdesc = Whiley Development Kit. A programming language particularly suited to safety-critical systems
 	pkgver = 0.3.36
-	pkgrel = 0
+	pkgrel = 1
 	url = http://whiley.org/
 	arch = any
 	license = custom
