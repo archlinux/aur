@@ -1,4 +1,4 @@
-pkgbase = icedtea-web
+pkgbase = icedtea-web-jre32
 	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://icedtea.classpath.org/wiki/IcedTea-Web
