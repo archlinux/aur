@@ -6,7 +6,7 @@
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 
 pkgname=ocaml-menhir
-pkgver=20141215
+pkgver=20150914
 pkgrel=1
 pkgdesc="Menhir is a LR(1) parser generator for the OCaml."
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ depends=('ocaml>=4.02')
 makedepends=('ocaml-findlib')
 options=(!strip !makeflags)
 source=("http://cristal.inria.fr/~fpottier/menhir/menhir-$pkgver.tar.gz")
-md5sums=('5e1d1ac11364adcfe445cd6e3cbf7fc3')
+md5sums=('a75eb8cef581ea25d1299bc4f59dc348')
 
 build() {
   cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
