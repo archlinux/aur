@@ -10,6 +10,7 @@ url="https://github.com/vasi/pixz"
 license=('custom')
 depends=('libarchive')
 makedepends=('asciidoc')
+checkdepends=('cppcheck')
 conflicts=('pixz')
 provides=('pixz')
 

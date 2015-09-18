@@ -6,6 +6,7 @@ pkgbase = pixz-git
 	arch = i686
 	arch = x86_64
 	license = custom
+	checkdepends = cppcheck
 	makedepends = asciidoc
 	depends = libarchive
 	provides = pixz
