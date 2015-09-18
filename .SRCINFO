@@ -1,0 +1,14 @@
+pkgbase = sharp-mx-c26-ps
+	pkgdesc = PPD files for Sharp PostScript Printers(MX-C26)
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.sharp.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	source = http://www.sharp.co.uk/cps/rde/xbcr/documents/documents/Service_Information/Drivers/sharp-1.4-mx-c26-ps.zip
+	md5sums = 907a8bd84dad5535cccc92f477eae1c0
+
+pkgname = sharp-mx-c26-ps
+
