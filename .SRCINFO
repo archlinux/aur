@@ -1,14 +1,14 @@
 pkgbase = python2-botocore
 	pkgdesc = A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/boto/botocore
 	arch = any
 	license = Apache
 	makedepends = python2
 	makedepends = python2-distribute
-	source = botocore-1.2.3.tar.gz::https://github.com/boto/botocore/archive/1.2.3.tar.gz
-	sha256sums = cfe3d11de61436859dcabb197065b8eb4382e532decaf131c3c5a3a67bab9ecd
+	source = botocore-1.2.4.tar.gz::https://github.com/boto/botocore/archive/1.2.4.tar.gz
+	sha256sums = 1f21f106648b957efaaed14611b0e19b66fc74f4944d00145339b9c79619e28f
 
 pkgname = python2-botocore
 	depends = python2
