@@ -2,7 +2,7 @@
 
 pkgname=glide-bin
 _pkgname=glide
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Simplified Go project management, dependency management, and vendoring."
 arch=('x86_64' 'i686')
@@ -12,8 +12,8 @@ provides=('glide')
 conflicts=('glide')
 source_x86_64=("https://github.com/Masterminds/glide/releases/download/${pkgver}/${_pkgname}-linux-amd64.zip")
 source_i686=("https://github.com/Masterminds/glide/releases/download/${pkgver}/${_pkgname}-linux-386.zip")
-md5sums_x86_64=('e98e8762296acf8377fec66b7c924c5e')
-md5sums_i686=('607f7e3074df21c5644714e07b95b827')
+md5sums_x86_64=('ad6adb34cc383113e2de9bdf295c9ac8')
+md5sums_i686=('3990a466e9954d0a8bafa52575424a45')
 
 if [ "$CARCH" = "i686"  ]; then
     _PKGARCH=386
