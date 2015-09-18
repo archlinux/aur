@@ -32,4 +32,4 @@ package() {
 
 md5sums=('a2b84a71fe84f21bd090219675613253'
          'a6f1cef5a9fcc5dfd6c5ecdddf2c5e38'
-         '9937192cfce7f5e16e9cf26086f1899c') #generate with 'makepkg -g'
+         '9937192cfce7f5e16e9cf26086f1899c')
