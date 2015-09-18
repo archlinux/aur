@@ -1,0 +1,19 @@
+pkgbase = qore
+	pkgdesc = Qore is a high-level, general-purpose, interpreted, dynamic programming language
+	pkgver = 0.8.11
+	pkgrel = 1
+	url = http://www.qore.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2,
+	license = LGPL2
+	depends = flex
+	depends = openssl
+	depends = pcre
+	depends = bzip2
+	depends = zlib
+	source = http://sourceforge.net/projects/qore/files/qore/0.8.11/qore-0.8.11.tar.bz2
+	md5sums = 483510cdcb6338ff6cb892cc29a98a63
+
+pkgname = qore
+
