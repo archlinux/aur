@@ -1,45 +1,49 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Firef0x <Firefgx (at) gmail (dot) com>
 # Contributor: sh0 <mee@sh0.org>
 # Contributor: Lekensteyn <lekensteyn@gmail.com>
 
 pkgname=smali
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="An assembler/disassembler for Android's dex format"
 arch=('any')
-url="http://code.google.com/p/smali/"
+url="https://github.com/JesusFreke/smali"
 license=('BSD')
 depends=('java-runtime' 'bash')
-source=(baksmali-${pkgver}::https://bitbucket.org/JesusFreke/smali/downloads/baksmali
-        baksmali-${pkgver}.jar::https://bitbucket.org/JesusFreke/smali/downloads/baksmali-${pkgver}.jar
-        ${pkgname}-${pkgver}::https://bitbucket.org/JesusFreke/smali/downloads/smali
-        ${pkgname}-${pkgver}.jar::https://bitbucket.org/JesusFreke/smali/downloads/smali-${pkgver}.jar
-        ${pkgname}-${pkgver}-LICENSE::https://bitbucket.org/JesusFreke/smali/raw/7a03efcac6083f2d1b686521931b8dd4d983a304/NOTICE)
-noextract=("${source[@]%%::*}")
-sha512sums=('d727076ebc61c15fe4c86928275d61ecd0dee540395129f4ad711f2bf74da29789a8c8596ef8117a94d3f047d275c8c886f292317537d66c1106507b2804f1a3'
-            'dff8190c30db7a73765774283f505638c0e388455633bfaaeb42d3cb36c229fbb078b7ca094601dae524ee3b36873a7908b6fba3bbc7212b1b48b4213725d8d9'
-            'fe82155c880c2fcf34f55877c95c598a380ff682c7bfb71b7d2ad26b4500094510515ed19dfe7436a072f788f19c9b3550510162b49cd5e18e9e3d0271766171'
-            'f34ff3ccac3ece7465a7e2f17751b26c425c90d65d2da8bb5a266fda3cec39415797a8570a03ecc163028d13481c8166461c39245ebad4bbe84372f7651f90bc'
-            'c3f1b71046ba062849a30edfbbe13df51ca72c3dea6799b9e0dd269fce196430d8e930b5f1b0d0a766797d9e80da50ae605c45789b51ac2376bc75d5e81118ec')
+makedepends=('java-environment' 'gradle')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JesusFreke/${pkgname}/archive/v${pkgver}.tar.gz)
+sha512sums=('64285c967ad5b7567ab4b901710da2b56629151f7afa062774ce9e9c1131da4453b8c5fbde59f8c5cad459393b9ac233191a15058611781fd7b0f8a749c38c9f')
 
 prepare() {
+  cd ${pkgname}-${pkgver}
   for file in baksmali smali; do
     # prevent from printing path on launch
-    sed '/echo ${newProg}/d' -i "${file}-${pkgver}"
+    sed '/echo ${newProg}/d' -i scripts/${file}
     # fix ls path
-    sed 's|/bin/ls|/usr/bin/ls|' -i "${file}-${pkgver}"
+    sed 's|/bin/ls|/usr/bin/ls|' -i scripts/${file}
   done
+}
+
+check() {
+  cd ${pkgname}-${pkgver}
+  gradle --gradle-user-home=. test
+}
+
+build() {
+  cd ${pkgname}-${pkgver}
+  gradle --gradle-user-home=. build
 }
 
 package() {
+  cd ${pkgname}-${pkgver}
   install -d "${pkgdir}/usr/bin"
   for file in baksmali smali; do
-    install -Dm 755 "${file}-${pkgver}" "${pkgdir}/usr/share/${pkgname}/${file}"
-    install -Dm 644 "${file}-${pkgver}.jar" "${pkgdir}/usr/share/${pkgname}/${file}.jar"
-    ln -s "/usr/share/${pkgname}/${file}" "${pkgdir}/usr/bin/${file}"
+    install -Dm 644 "${file}/build/libs/${file}-${pkgver}-dev.jar" "${pkgdir}/usr/share/java/${pkgname}/${file}.jar"
+    install -Dm 755 scripts/${file} "${pkgdir}/usr/share/java/${pkgname}/${file}"
+    ln -s "/usr/share/java/${pkgname}/${file}" "${pkgdir}/usr/bin/${file}"
   done
-  install -Dm 644 ${pkgname}-${pkgver}-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:

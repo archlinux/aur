@@ -1,27 +1,16 @@
 pkgbase = smali
 	pkgdesc = An assembler/disassembler for Android's dex format
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
-	url = http://code.google.com/p/smali/
+	url = https://github.com/JesusFreke/smali
 	arch = any
 	license = BSD
+	makedepends = java-environment
+	makedepends = gradle
 	depends = java-runtime
 	depends = bash
-	noextract = baksmali-2.0.6
-	noextract = baksmali-2.0.6.jar
-	noextract = smali-2.0.6
-	noextract = smali-2.0.6.jar
-	noextract = smali-2.0.6-LICENSE
-	source = baksmali-2.0.6::https://bitbucket.org/JesusFreke/smali/downloads/baksmali
-	source = baksmali-2.0.6.jar::https://bitbucket.org/JesusFreke/smali/downloads/baksmali-2.0.6.jar
-	source = smali-2.0.6::https://bitbucket.org/JesusFreke/smali/downloads/smali
-	source = smali-2.0.6.jar::https://bitbucket.org/JesusFreke/smali/downloads/smali-2.0.6.jar
-	source = smali-2.0.6-LICENSE::https://bitbucket.org/JesusFreke/smali/raw/7a03efcac6083f2d1b686521931b8dd4d983a304/NOTICE
-	sha512sums = d727076ebc61c15fe4c86928275d61ecd0dee540395129f4ad711f2bf74da29789a8c8596ef8117a94d3f047d275c8c886f292317537d66c1106507b2804f1a3
-	sha512sums = dff8190c30db7a73765774283f505638c0e388455633bfaaeb42d3cb36c229fbb078b7ca094601dae524ee3b36873a7908b6fba3bbc7212b1b48b4213725d8d9
-	sha512sums = fe82155c880c2fcf34f55877c95c598a380ff682c7bfb71b7d2ad26b4500094510515ed19dfe7436a072f788f19c9b3550510162b49cd5e18e9e3d0271766171
-	sha512sums = f34ff3ccac3ece7465a7e2f17751b26c425c90d65d2da8bb5a266fda3cec39415797a8570a03ecc163028d13481c8166461c39245ebad4bbe84372f7651f90bc
-	sha512sums = c3f1b71046ba062849a30edfbbe13df51ca72c3dea6799b9e0dd269fce196430d8e930b5f1b0d0a766797d9e80da50ae605c45789b51ac2376bc75d5e81118ec
+	source = smali-2.0.7.tar.gz::https://github.com/JesusFreke/smali/archive/v2.0.7.tar.gz
+	sha512sums = 64285c967ad5b7567ab4b901710da2b56629151f7afa062774ce9e9c1131da4453b8c5fbde59f8c5cad459393b9ac233191a15058611781fd7b0f8a749c38c9f
 
 pkgname = smali
 
