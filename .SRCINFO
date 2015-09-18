@@ -1,0 +1,14 @@
+pkgbase = dbview
+	pkgdesc = A small utility that will display dBase III and IV files and can convert your old .dbf files.
+	pkgver = 1.0.4
+	pkgrel = 2
+	url = http://www.infodrom.org/projects/dbview/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.infodrom.org/projects/dbview/download/dbview-1.0.4.tar.gz
+	sha256sums = bca41716e1ec0ce8833bcacfa17063f338b25f249f92ddb954c7d935e008cee7
+
+pkgname = dbview
+
