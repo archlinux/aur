@@ -4,18 +4,17 @@
 pkgname=visit
 pkgver=2.9.2
 _pkgver=2_9_2
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
-_url="http://portal.nersc.gov"
 license=('BSD' 'custom')
 makedepends=('cmake' 'java-runtime' 'gcc-fortran')
 depends=('qtwebkit' 'python2-numpy'
          'gperftools' 'icet' 'java-environment'
          'vtk' 'silo' 'cgns')
 conflicts=('visit-bin' 'visit-build')
-source=("${_url}/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
+source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
         "visit.sh"
         "visit_FindIceT.patch")
 
@@ -76,8 +75,8 @@ prepare(){
 
   # Out of source build
   cd "${srcdir}"
-  rm -rf build-${pkgver}
-  mkdir -p build-${pkgver}
+  rm -rf -- build-${pkgver}
+  mkdir -p -- build-${pkgver}
 }
 
 build() {
@@ -98,7 +97,13 @@ build() {
     -DVISIT_HDF5_DIR=/usr \
     -DVISIT_SILO_DIR=/usr \
     -DVISIT_GDAL_DIR=/usr \
-    -DVISIT_CGNS_DIR=/usr
+    -DVISIT_CGNS_DIR=/usr \
+    -DVISIT_THREAD:BOOL=ON \
+    -DVISIT_JAVA:BOOL=ON
+
+  # For Qt5 (for now, it's failing with:
+  # This application failed to start because it could not find or load the Qt platform plugin "xcb")
+  #-VISIT_QT5:BOOL=ON -DVISIT_QT_DIR:PATH=/usr/lib/qt -DVISIT_VISIT_QT_SKIP_INSTALL:BOOL=ON \
 
   # Does not compile for now
   #-DVISIT_NETCDF_DIR=/usr \
