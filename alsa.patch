@@ -1,0 +1,11 @@
+--- makefile.alsa	2004-10-25 09:17:30.000000000 +0100
++++ makefile.new.alsa	2015-09-18 10:21:48.491618159 +0100
+@@ -5,7 +5,7 @@
+ CPP=g++
+ INCLUDES=
+ CFLAGS=-D__LINUX_ALSA__ $(INCLUDES) -O3 -c
+-LIBS=-lasound -L/usr/X11R6/lib -lGL -lGLU -lglut -lX11 -lXi -lXext -lXmu -lm
++LIBS=-lasound -L/usr/X11R6/lib -lGL -lGLU -lglut -lX11 -lXi -lXext -lXmu -lm -lpthread
+ 
+ rt_lpc: $(OBJS)
+ 	$(CPP) -o $@ $(OBJS) $(LIBS)
