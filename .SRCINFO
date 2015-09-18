@@ -1,0 +1,26 @@
+pkgbase = perl-archive-any
+	pkgdesc = Archive::Any - Single interface to deal with file archives
+	pkgver = 0.0942
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Perl-Archive-Any/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-warn
+	depends = perl-archive-tar
+	depends = perl-archive-zip
+	depends = perl-module-find
+	depends = perl-module-build
+	depends = perl-file-mmagic
+	depends = perl-mime-types
+	provides = perl-archive-any-plugin
+	provides = perl-archive-any-plugin-tar
+	provides = perl-archive-any-plugin-zip
+	provides = perl-archive-any-tar
+	provides = perl-archive-any-zip
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/Archive-Any-0.0942.tar.gz
+	sha256sums = 552fb7a086e4a950c707c730b90c04af52e597635692a26a41d8665f1b371b2d
+
+pkgname = perl-archive-any
+
