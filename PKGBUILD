@@ -1,6 +1,6 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-gettext
-pkgver=0.19.5.1
+pkgver=0.19.6
 pkgrel=1
 arch=(any)
 pkgdesc="GNU internationalization library (mingw-w64)"
@@ -10,12 +10,12 @@ options=(!strip !buildflags staticlibs)
 license=("GPL")
 url="http://www.gnu.org/software/gettext/"
 source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"{,.sig}
-"00-relocatex-libintl-0.18.3.1.patch"
-"05-always-use-libintl-vsnprintf.mingw.patch"
-"06-dont-include-ctype-after-gnulibs-wctype.mingw.patch"
-"07-fix-asprintf-conflict.mingw.patch"
-"08-vs-compatible.patch")
-md5sums=('2b2ab90f6405a414bbe30cf6655f3e28'
+        "00-relocatex-libintl-0.18.3.1.patch"
+        "05-always-use-libintl-vsnprintf.mingw.patch"
+        "06-dont-include-ctype-after-gnulibs-wctype.mingw.patch"
+        "07-fix-asprintf-conflict.mingw.patch"
+        "08-vs-compatible.patch")
+md5sums=('6d1447f8c5c45c329371ef4bfe7d79a5'
          'SKIP'
          '397d7d6d4abd15a70edb3c9f2bab4cd2'
          '27852a388b8cf38188dc392c244230ff'
@@ -39,31 +39,30 @@ prepare() {
 }
 
 build() {
-	cd gettext-${pkgver}
-	unset LDFLAGS
-	for _arch in ${_architectures}; do
-		mkdir -p build-${_arch} && pushd build-${_arch}
-		${_arch}-configure \
-			--target=${_arch} \
-			--disable-java \
-			--disable-native-java \
-			--disable-csharp \
-			--enable-threads=win32 \
-			--without-emacs
-		make
-		popd
-	done
+  cd gettext-${pkgver}
+  unset LDFLAGS
+  for _arch in ${_architectures}; do
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-configure \
+      --disable-java \
+      --disable-native-java \
+      --disable-csharp \
+      --enable-threads=win32 \
+      --without-emacs ..
+    make
+    popd
+  done
 }
 
 package() {
-	for _arch in ${_architectures}; do
-		cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
-		make DESTDIR="$pkgdir" install
-		find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
-		find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-		find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-		rm "$pkgdir/usr/${_arch}/bin/"{autopoint,gettext.sh,gettextize}
-		rm -r "$pkgdir/usr/${_arch}/lib/gettext"
-		rm -r "$pkgdir/usr/${_arch}/share"
-	done
+  for _arch in ${_architectures}; do
+    cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
+    make DESTDIR="$pkgdir" install
+    rm "$pkgdir/usr/${_arch}/bin/"{autopoint,gettext.sh,gettextize}
+    rm -r "$pkgdir/usr/${_arch}/lib/gettext"
+    rm -r "$pkgdir/usr/${_arch}/share"
+    rm "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+  done
 }
