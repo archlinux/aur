@@ -1,0 +1,12 @@
+--- pvc.cpp	2004-05-11 23:46:51.000000000 +0100
++++ pvc.cpp.dif	2015-09-18 12:19:53.652041464 +0100
+@@ -11,6 +11,9 @@
+ #include <assert.h>
+ #include <memory.h>
+ #include <queue>
++#include <cstring>
++#include <cstdio>
++#include <cstdlib>
+ using namespace std;
+ 
+ 

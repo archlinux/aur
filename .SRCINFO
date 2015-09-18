@@ -1,0 +1,25 @@
+pkgbase = rt_pvc
+	pkgdesc = real-time phase vocoder
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://soundlab.cs.princeton.edu/software/rt_pvc/
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = GPL
+	depends = alsa-lib
+	depends = glu
+	depends = freeglut
+	depends = libxmu
+	provides = rt_pvc
+	source = http://soundlab.cs.princeton.edu/software/rt_pvc/files/rt_pvc-1.0.0.tgz
+	source = RtAudio.patch
+	source = alsa.patch
+	source = pvc.patch
+	md5sums = 0a99b4f17038dd76c172735dbf7f2d15
+	md5sums = 8cdab915ec05f8fe8b256305f8803b78
+	md5sums = 1880c9f919b92ee95d7a8ea3e2e2b905
+	md5sums = 6340e9c2a16ba0ff311457e5c0eb81f3
+
+pkgname = rt_pvc
+
