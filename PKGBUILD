@@ -12,7 +12,7 @@ source=(
   "https://github.com/docker/compose/releases/download/$pkgver/docker-compose-Linux-x86_64"
   "https://github.com/docker/compose/archive/$pkgver.tar.gz"
 )
-url="https://www.docker.com/"
+url="https://github.com/docker/compose"
 license="Apache"
 sha256sums=('fb3a5ebf49f2ec1ab1c9f4e5fc51e36d1f12189e1449efa3f68f3fdf744f4d61'
             'cc6121ac1ffe50509470bd2122c968ebb6614335bb5312327da190e2f22c35bc')
