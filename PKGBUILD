@@ -1,9 +1,9 @@
 # Maintainer: 2ion
 pkgname=advancecomp
 pkgver=1.20
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-pkgdesc="Recompression utilities for .zip .png .mng and .gz files using the 7-zip agorithm"
+pkgdesc="Recompression utilities for .zip .png .mng and .gz files using the 7-zip algorithm"
 url='http://advancemame.sourceforge.net/comp-readme.html'
 license=('GPL')
 depends=('zlib' 'gcc-libs')

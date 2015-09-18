@@ -1,7 +1,7 @@
 pkgbase = advancecomp
-	pkgdesc = Recompression utilities for .zip .png .mng and .gz files using the 7-zip agorithm
+	pkgdesc = Recompression utilities for .zip .png .mng and .gz files using the 7-zip algorithm
 	pkgver = 1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://advancemame.sourceforge.net/comp-readme.html
 	arch = i686
 	arch = x86_64
