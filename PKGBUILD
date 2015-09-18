@@ -8,7 +8,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.9.beta4.r0.g78e0fc5
+pkgver=6.9.beta7.r0.gaeeddeb
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -22,8 +22,8 @@ optdepends=('cython2: to compile cython code'
 	'jmol: 3D plots'
 	'sage-notebook: Browser-based (flask) notebook interface'
 	'sagemath-doc: Documentation and inline help'
-	'ipython2-notebook: IPython notebook interface'
-	'mathjax: IPython notebook interface'
+	'ipython2-notebook: Jupyter notebook interface'
+	'mathjax: Jupyter notebook interface'
 	'coin-or-cbc: COIN backend for numerical computations'
 	'nauty: for generating some classes of graphs'
 	'buckygen: for generating fullerene graphs'
@@ -42,19 +42,18 @@ provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
 "http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2" 'anal.h'
 'package.patch' 'env.patch' 'paths.patch' 'clean.patch' 'skip-check.patch' 
-'pexpect-env.patch' 'pexpect-del.patch' 'disable-fes.patch' 'ipython-4.patch')
+'pexpect-env.patch' 'pexpect-del.patch' 'disable-fes.patch')
 md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
-         'f72e544032b1a3f952b7ddafc3a49d63'
+         '9ba81f717ffd4e20b8b2f2a318307488'
          '5ebdb6e6ac541f040a39f8d3fd9c8ee1'
          'fd8e3e07f5b7318e6a7200a3c64f5bc2'
          '23e972753be1e5d0f761a7f82a95cebf'
          '5947a420a0b1483f0cbc74c76895789b'
          'a83a3b1bc7fcb7cbf752a83a8311fc42'
          'f333939ea6c41377b66407c81016cee4'
-         '4eb23a3c7363258bc9ba764d6e5512ba'
-         'b21a2b0e4cb805bf61a5060c3ed97cb3')
+         '4eb23a3c7363258bc9ba764d6e5512ba')
 
 pkgver() {
   cd sage
@@ -89,8 +88,6 @@ prepare(){
    -i src/sage/databases/cremona.py
 # find bliss headers
   sed -e 's|graph.hh|bliss/graph.hh|' -i src/sage/graphs/bliss.pyx
-# fix IPython 4 compatibility
-  patch -p0 -i ../ipython-4.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209

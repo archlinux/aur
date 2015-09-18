@@ -4,7 +4,7 @@
      Otherwise, installing "pillow" will cause this function to think
      that "pil" is installed, for example.
      """
--    return any(p.split('-')[0] == package for p in install_package())
+-    return any(p.split('-')[0] == package for p in installed_packages())
 +    return True
  
  def package_versions(package_type, local=False):
