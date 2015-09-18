@@ -1,5 +1,6 @@
 arch=('any')
 pkgname=('numix-themes-git')
+builddeps=('ruby-maruku' 'ruby-yard' 'ruby-sass')
 
 check_git $packagedir/$pkgname/${pkgname%-*}
 
