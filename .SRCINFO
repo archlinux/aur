@@ -1,6 +1,6 @@
 pkgbase = fish-shell-git
 	pkgdesc = User friendly shell intended mostly for interactive use.
-	pkgver = 2.1.1.r1203.gd7ba6e4
+	pkgver = 2.2.0.r274.gbe70ea7
 	pkgrel = 1
 	epoch = 2
 	url = http://fishshell.com
