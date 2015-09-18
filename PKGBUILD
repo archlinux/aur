@@ -12,11 +12,11 @@ makedepends=('python2-distutils-extra')
 install=uberwriter.install
 
 source=(
-	"https://launchpad.net/uberwriter/trunk/$pkgver/+download/uberwriter_$pkgver.tar.gz" 
+	"https://launchpad.net/uberwriter/trunk/12.11/+download/uberwriter_12.11.02-public1-beta.tar.gz" 
 	remove_tab_size.patch)
 noextract=()
 
-md5sums=('acafb808a825aa2251917ed7c33ea8cd' '7d2badd3047f3b6b15b21d1c3627cc38')
+md5sums=('SKIP' 'SKIP')
 
 build() {
 	patch -p0 $srcdir/uberwriter/uberwriter/UberwriterWindow.py < remove_tab_size.patch
