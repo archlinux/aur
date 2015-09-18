@@ -1,7 +1,7 @@
 pkgbase = vim-noruby
 	pkgdesc = Like 'vim' package, but -ruby
 	pkgver = 7.4.854
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vim.org
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = vim-noruby
 	makedepends = python
 	makedepends = libxt
 	makedepends = desktop-file-utils
-	makedepends = gtk2
 	makedepends = lua
-	depends = vim-runtime=7.4.854-1
+	depends = vim-runtime=7.4.854-2
 	depends = gpm
 	depends = lua
 	depends = python2
