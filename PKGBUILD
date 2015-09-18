@@ -1,14 +1,17 @@
 # Maintainer: Somebody <somebody[at]foo[dot]tld>
 pkgname=repetier-host
-pkgver=1.0.6
-pkgrel=3
+pkgver=1.5.6
+pkgrel=1
 pkgdesc="almost complete 3d-printing workflow"
 url=('http://www.repetier.com/')
 arch=('x86_64' 'i686')
 license=('custom')
 depends=('mono>=3.2.0')
 optdepends=('slic3r' 'skeinforge')
-source=("http://www.repetier.com/w/?wpdmdl=1785" "$pkgname.install")
+source=("http://download.repetier.com/files/host/linux/repetierHostLinux_1_5_6.tgz" "$pkgname.install")
+md5sums=('23b7e278e17ab1ce1ba247e333a08cc5'
+'3bf735df87c6f3b9e807bbc82edd7a05')
+
 PKGEXT=".pkg.tar"
 install=$pkgname.install
 
@@ -67,5 +70,3 @@ install -Dm755 ${srcdir}/Repetier-Host.desktop  $pkgdir/usr/share/applications/R
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('aa5898b3998896ac6bb39146ef54c5ea'
-         '3bf735df87c6f3b9e807bbc82edd7a05')
