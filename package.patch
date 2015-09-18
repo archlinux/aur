@@ -1,0 +1,38 @@
+diff -ru GotohScan_2.0-alpha_orig/examples/Makefile.am GotohScan_2.0-alpha/examples/Makefile.am
+--- GotohScan_2.0-alpha/examples/Makefile.am	2010-08-20 10:24:01.000000000 +0200
++++ GotohScan_2.0-alpha/examples/Makefile.am	2014-10-27 21:31:31.285805709 +0100
+@@ -1,8 +1,11 @@
+ # Makefile.am
+ 
+ exampledir = $(datarootdir)/doc/@PACKAGE@
+-example_DATA = sample1.dat
+-
++example_DATA =  sample1.dat Configuration.dat \
++                Kt11_web.motif db_dme-3R.fa \
++                dme-mir-92a.GS2.out dme-mir-92a.fa \
++                mir-92a.drosoph.stk.fa.pattern \
++                mir-92a.drosoph.stk.fa.pattern.GS2.out
+ 
+ 
+ # End of file
+diff -ru /home/ronny/Desktop/GotohScan_2.0-alpha/scripts/Makefile.am src/GotohScan_2.0-alpha/scripts/Makefile.am
+--- GotohScan_2.0-alpha/scripts/Makefile.am	2010-09-06 09:39:20.000000000 +0200
++++ GotohScan_2.0-alpha/scripts/Makefile.am	2014-10-27 21:32:16.375546273 +0100
+@@ -1,5 +1,5 @@
+ # Makefile.am
+-bin_SCRIPTS = reformatMotif.pl
++bin_SCRIPTS = reformatMotif.pl fastaALN2frequency.pl
+ 
+ 
+ # End of file
+diff -ru src/GotohScan_2.0-alpha/doc/Makefile.am_orig src/GotohScan_2.0-alpha/doc/Makefile.am
+--- GotohScan_2.0-alpha/doc/Makefile.am	2014-10-27 21:51:30.310776977 +0100
++++ GotohScan_2.0-alpha/doc/Makefile.am	2014-10-27 21:51:36.310742377 +0100
+@@ -1,6 +1,6 @@
+ # Makefile.am
+ 
+ docdir = $(datadir)/doc/@PACKAGE@
+-doc_DATA = README
++doc_DATA = README README_1.3
+ 
+ # End of file
