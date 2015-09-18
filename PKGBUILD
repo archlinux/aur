@@ -1,18 +1,18 @@
 rplname=gnome-settings-daemon
 pkgname=gnome-settings-daemon-volume-step-patch
-pkgver=3.16.2
+pkgver=3.16.3
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with an additional patch to allow configuration of volume steps"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=(
 	'dconf' 'gnome-desktop' 'gsettings-desktop-schemas' 'hicolor-icon-theme'
-	'libcanberra-pulse' 'libnotify' 'libsystemd' 'libwacom' 'pulseaudio'
-	'pulseaudio-alsa' 'upower' 'librsvg' 'libgweather' 'geocode-glib'
-	'geoclue2' 'nss'
+	'libcanberra-pulse' 'libgudev' 'libnotify' 'libsystemd' 'libwacom'
+	'pulseaudio' 'pulseaudio-alsa' 'upower' 'librsvg' 'libgweather'
+	'geocode-glib' 'geoclue2' 'nss'
 )
 makedepends=(
-	'intltool' 'xf86-input-wacom' 'libxslt' 'docbook-xsl'
+	'intltool' 'xf86-input-wacom' 'libxslt' 'docbook-xsl' 'python2'
 )
 provides=('gnome-settings-daemon')
 conflicts=('gnome-settings-daemon')
@@ -25,7 +25,7 @@ source=(
 	volume-step.patch
 )
 sha256sums=(
-	'd8d536584ebb8fb1403050eb65e7ee3328eba14b123542369ff1917e727fa69a'
+	'8752f79ba2ee76701744b4806140d1b88c665ad7cd44e7ff58b4e78e1063daea'
 	'bb1ac714e05d6b7b2c3e8a03180a580f9d8e65356a3fd70c3e8f5ba1d15bbb03'
 )
 
