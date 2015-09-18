@@ -3,7 +3,7 @@
 
 pkgname=pyfa
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 everelname="galatea"
 everelver=1.2
 pkgdesc="EVE Online Fitting Assistant"
