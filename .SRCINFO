@@ -6,6 +6,7 @@ pkgbase = numix-themes-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = glib2
 	makedepends = ruby-sass
 	provides = numix-themes
 	conflicts = numix-themes
