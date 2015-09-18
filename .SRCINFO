@@ -1,0 +1,16 @@
+pkgbase = barriers
+	pkgdesc = Compute local minima and energy barriers of a landscape
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = http://www.tbi.univie.ac.at/RNA/Barriers
+	arch = armv7h
+	arch = x86_64
+	arch = i686
+	license = Custom
+	optdepends = viennarna: Generate sets of suboptimal RNA secondary structures with RNAsubopt
+	optdepends = treekin: Compute folding dynamics using barriers generated transition rates
+	source = http://www.tbi.univie.ac.at/RNA/Barriers/Barriers-1.5.2.tar.gz
+	md5sums = a2f214f41a2f7af1d9380803d5fea441
+
+pkgname = barriers
+
