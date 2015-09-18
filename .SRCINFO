@@ -1,0 +1,12 @@
+pkgbase = soundfont-toh
+	pkgdesc = Don Allen's Timbres of Heaven soundfont
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://midkar.com/soundfonts/
+	arch = any
+	license = custom
+	source = LICENSE
+	md5sums = 3fd3aa3e20d7ea437293b8e13723aae1
+
+pkgname = soundfont-toh
+
