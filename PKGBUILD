@@ -17,6 +17,9 @@ _makexconfig=
 # Tweak kernel options prior to a build via gconfig
 _makegconfig=
 
+# Running with a 1000 HZ tick rate 
+_1k_HZ_ticks=
+
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
@@ -122,8 +125,14 @@ prepare() {
 		cat "${srcdir}/config" > ./.config
 	fi
 
+   ### Optionally set tickrate to 1000 
+       if [ -n "$_1k_HZ_ticks" ]; then
+		msg "Setting tick rate to 1k..."
+		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+       fi
 	
-
 	### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
 	if [ -n "$_use_current" ]; then
