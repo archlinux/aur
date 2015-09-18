@@ -79,7 +79,7 @@ build() {
     cd "$srcdir/xmms2-devel"
     ./waf configure --prefix=/usr --sbindir=/usr/bin --without-ldconfig \
             --with-ruby-archdir=`ruby -e 'puts RbConfig::CONFIG["vendorarchdir"]'` \
-            --with-ruby-libdir=`ruby -e 'puts RbConfig::CONFIG["vendorlibdir"]'`
+            --with-ruby-libdir=`ruby -e 'puts RbConfig::CONFIG["vendorlibdir"]'` --without-optionals=python
     ./waf build
 }
 
@@ -99,9 +99,11 @@ package() {
     install -Dm0644 "$srcdir/user.service" \
             "$pkgdir/usr/lib/systemd/user/xmms2d.service"
 
+    # Python/cython are causing problems.
+    # So, I commented it out until I or someone else can figure out how to fix it.
     ## also install python2 bindings
-    PYTHON=/usr/bin/python2 ./waf configure --prefix=/usr \
-            --with-optionals=python --without-xmms2d
-    ./waf build
+    #PYTHON=/usr/bin/python2 ./waf configure --prefix=/usr \
+            #--with-optionals=python --without-xmms2d
+    #./waf build
     ./waf --destdir="$pkgdir" install
 }
