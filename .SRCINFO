@@ -5,7 +5,6 @@ pkgbase = plexwatchweb-git
 	url = https://github.com/ecleese/plexWatchWeb
 	arch = any
 	license = unknown
-	depends = php-sqlite
 	optdepends = php-apache: to use the Apache web server
 	optdepends = plexwatch: plexwatchweb backend
 	provides = plexwatchweb

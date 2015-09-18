@@ -7,7 +7,7 @@ pkgdesc="A web front-end for plexWatch."
 arch=('any')
 url="https://github.com/ecleese/plexWatchWeb"
 license=('unknown')
-depends=('php-sqlite')
+#depends=('php-sqlite')
 optdepends=('php-apache: to use the Apache web server'
             'plexwatch: plexwatchweb backend')
 options=('!strip')
@@ -23,6 +23,14 @@ sha256sums=("SKIP"
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+  cd "${srcdir}/plexwatchweb-git"
+  find . -type f -name .gitattributes -delete
+  find . -type f -name .gitkeep -delete
+  find . -type f -name .gitignore -delete
+  find . -type f -name .gitmodules -delete
+  find . -type f -name .travis.yml -delete
+  find . -type d -name .git -exec rm -rf {} \;
 }
 
 package() {
