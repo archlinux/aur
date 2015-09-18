@@ -1,25 +1,23 @@
 pkgbase = virtualbox-modules-mainline
-	pkgver = 5.0.2
+	pkgver = 5.0.4
 	pkgrel = 1
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = dkms
-	makedepends = linux-mainline-headers>=4.2rc1
-	makedepends = linux-mainline-headers<4.3rc1
-	makedepends = virtualbox-host-dkms>=5.0.2
-	makedepends = virtualbox-guest-dkms>=5.0.2
-	depends = linux-mainline>=4.2rc1
-	depends = linux-mainline<4.3rc1
-	source = kernel-4.2.patch
-	sha256sums = c217050dcc52b7cadfb9db86aae9fcf2c90ac86b1cc498b91d3fdfb0a1eca80d
+	makedepends = linux-mainline-headers>=4.3rc1
+	makedepends = linux-mainline-headers<4.4rc1
+	makedepends = virtualbox-host-dkms>=5.0.4
+	makedepends = virtualbox-guest-dkms>=5.0.4
+	depends = linux-mainline>=4.3rc1
+	depends = linux-mainline<4.4rc1
 
 pkgname = virtualbox-host-modules-mainline
 	pkgdesc = Host kernel modules for VirtualBox running under linux-mainline
 	install = virtualbox-host-modules-mainline.install
-	depends = linux-mainline>=4.2rc1
-	depends = linux-mainline<4.3rc1
+	depends = linux-mainline>=4.3rc1
+	depends = linux-mainline<4.4rc1
 	provides = virtualbox-host-modules
 	conflicts = virtualbox-modules-mainline
 
@@ -27,8 +25,8 @@ pkgname = virtualbox-guest-modules-mainline
 	pkgdesc = Guest kernel modules for VirtualBox running under linux-mainline
 	install = virtualbox-guest-modules-mainline.install
 	license = GPL
-	depends = linux-mainline>=4.2rc1
-	depends = linux-mainline<4.3rc1
+	depends = linux-mainline>=4.3rc1
+	depends = linux-mainline<4.4rc1
 	provides = virtualbox-guest-modules
 	conflicts = virtualbox-modules-mainline
 
