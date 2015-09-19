@@ -3,13 +3,13 @@
 set -u
 pkgname='pico'
 pkgver='2.00'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='the real pico text editor from the Alpine Messaging System'
+arch=('i686' 'x86_64')
+url='http://www.washington.edu/alpine/'
 license=('apache')
 depends=('ncurses')
 makedepends=('gcc')
-arch=('i686' 'x86_64')
-url='http://www.washington.edu/alpine/'
 source=("ftp://ftp.cac.washington.edu/alpine/alpine-${pkgver}.tar.bz2")
 sha256sums=('c85db8405af90375ba2440c85b7952d80996154e9916b83acca558dc82e0a2a6')
 
