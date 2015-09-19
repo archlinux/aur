@@ -1,0 +1,18 @@
+# Install file for brother-ql650td-lpr
+
+post_install() {
+	useradd -s /bin/false -g lp lp
+	mkdir -p /var/spool/lpd/ql650td
+	ln -s /usr/share/brother/ /opt/
+	chown lp:lp /usr/share/brother/PTouch/ql650td/inf
+	chmod 775 /usr/share/brother/PTouch/ql650td/inf
+	chown lp:lp /usr/share/brother/PTouch/ql650td/inf/brql650tdrc
+	chmod 664 /usr/share/brother/PTouch/ql650td/inf/brql650tdrc
+	/usr/share/brother/PTouch/ql650td/inf/setupPrintcappt1 ql650td -i USB
+}
+
+pre_remove() {
+	rm -rf /var/spool/lpd/ql650td
+	rm -f /opt/brother
+	/usr/share/brother/PTouch/ql650td/inf/setupPrintcappt1 ql650td -e
+}
