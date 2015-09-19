@@ -1,6 +1,6 @@
 pkgbase = glportal-git
 	pkgdesc = OpenGL puzzle game inspired by portal.
-	pkgver = 1f4e107
+	pkgver = 61cb299
 	pkgrel = 1
 	epoch = 1
 	url = http://glportal.de/
@@ -14,7 +14,7 @@ pkgbase = glportal-git
 	depends = sdl2_mixer
 	depends = tinyxml2
 	depends = libepoxy
-	provides = glportal=1f4e107
+	provides = glportal=61cb299
 	conflicts = glportal
 	source = git://github.com/glportal/glportal.git
 	source = git://github.com/glportal/glportal_data.git
