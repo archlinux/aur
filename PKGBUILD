@@ -1,6 +1,6 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
-pkgname=pyarchay
+pkgname=pyarchey
 pkgdesc="A simple python scrip to display an OS logo in ASCII art along with basic system information."
 pkgver=0.6.2
 pkgrel=1
