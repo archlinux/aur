@@ -1,7 +1,7 @@
 pkgbase = ruby-grit
 	pkgdesc = Ruby Git bindings.
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/mojombo/grit
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = ruby-grit
 	noextract = grit-2.5.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/grit-2.5.0.gem
-	sha1sums = 0581087581cd522a697616b835b4d57f90a90ca6
+	sha256sums = 0f6ec625d098706183d7f92f06fd8b44f1271084cff308bbee53cf1b1c5391c8
 
 pkgname = ruby-grit
 
