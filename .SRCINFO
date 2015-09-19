@@ -14,7 +14,7 @@ pkgbase = rock
 	source = https://github.com/fasterthanlime/rock/archive/v0.9.10.tar.gz
 	source = http://downloads.ooc-lang.org/rock/0.9.10/latest-bootstrap.tar.bz2
 	md5sums = 30613c1fb1b823c545870fbbe984e933
-	md5sums = 5de9146a5f9df52ae395863299438017
+	md5sums = db0bf2c7692618174381424aabc4f91c
 
 pkgname = rock
 

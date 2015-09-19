@@ -15,7 +15,7 @@ optdepends=('gcc: can be used as backend C compiler'
             'clang: can be used as backend C compiler'
             'tcc: can be used as backend C compiler')
 md5sums=('30613c1fb1b823c545870fbbe984e933'
-         '5de9146a5f9df52ae395863299438017')
+         'db0bf2c7692618174381424aabc4f91c')
 
 build() {
   local pkg_srcdir="${srcdir}/rock-${pkgver}"
