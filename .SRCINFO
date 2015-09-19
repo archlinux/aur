@@ -1,7 +1,7 @@
 pkgbase = tupi-git
 	pkgdesc = A 2D animation tool for 8-100 years old kids.
 	pkgver = 156.11cadda
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.maefloresta.com/
 	install = tupi.install
 	arch = i686
@@ -20,7 +20,9 @@ pkgbase = tupi-git
 	depends = aspell
 	depends = shared-mime-info
 	source = git://anongit.kde.org/tupi
+	source = quazip5.patch
 	md5sums = SKIP
+	md5sums = c8e05ddef493102349e3f15b07e0c6e2
 
 pkgname = tupi-git
 
