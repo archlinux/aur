@@ -1,6 +1,6 @@
 # Maintainer: Allen Li <darkfeline@felesatra.moe>
 pkgname=python-pyglet-hg
-pkgver=r3027.1f8a12c9891a
+pkgver=r3313.f388bbe83f4e
 pkgrel=1
 pkgdesc="A cross-platform windowing and multimedia library for Python 3."
 arch=(any)
