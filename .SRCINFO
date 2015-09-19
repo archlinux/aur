@@ -1,7 +1,7 @@
 pkgbase = infernal
 	pkgdesc = Search DNA sequence databases for RNA structure and sequence similarities using covariance models (CMs)
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://infernal.janelia.org/
 	arch = x86_64
 	arch = i686
