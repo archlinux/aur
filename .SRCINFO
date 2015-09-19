@@ -16,8 +16,7 @@ pkgbase = pacmanhealth
 	conflicts = pacmanhealth.git
 	backup = etc/pacmanhealth.conf
 	source = http://release.yapbreak.fr/pacmanhealth/pacmanhealth-1.1.0-1.tar.gz
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 4f5d37d9a841272508c8e7b241f6c967
 
 pkgname = pacmanhealth
 

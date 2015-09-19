@@ -16,8 +16,7 @@ replaces=()
 backup=('etc/pacmanhealth.conf')
 source=("http://release.yapbreak.fr/${pkgname}/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 # Automatically update by updpkgsums
-md5sums=('SKIP'
-         'SKIP')
+md5sums=('4f5d37d9a841272508c8e7b241f6c967')
 noextract=()
 
 build() {
