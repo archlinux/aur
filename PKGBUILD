@@ -3,7 +3,7 @@
 #Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=docker-compose
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Fast, isolated development environments using Docker"
 depends=('python2-docopt' 'python2-yaml' 'python2-requests' 'python2-pip'
@@ -14,7 +14,7 @@ source=("https://github.com/docker/compose/archive/$pkgver.tar.gz"
         "remove-requires-upper-bound.patch")
 url="https://www.docker.com/"
 license="BSD"
-sha256sums=('96875473fdb1cce1d63c4bc21c2bc9bf620820fb3bdf8c590618965733418115'
+sha256sums=('cc6121ac1ffe50509470bd2122c968ebb6614335bb5312327da190e2f22c35bc'
             '0d4102403070c290e0817828f634c670b753ab79d80f1e1566b1b0aaf77ee9b9')
 
 prepare() {
