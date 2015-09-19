@@ -1,7 +1,7 @@
 # Copied from Florian Bruhin's PKGBUILD
 pkgname=newsbeuter2.8
 pkgver=1728.e425e3e
-pkgrel=1
+pkgrel=2
 pkgdesc='A RSS feed reader for the text console with special Podcast support.'
 url='http://www.newsbeuter.org'
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/newsbeuter"
+  sed -i "s#ncursesw5#ncursesw6#" config.sh
   ./config.sh
   make
   make doc

@@ -1,7 +1,7 @@
 pkgbase = newsbeuter2.8
 	pkgdesc = A RSS feed reader for the text console with special Podcast support.
 	pkgver = 1728.e425e3e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.newsbeuter.org
 	arch = i686
 	arch = x86_64
