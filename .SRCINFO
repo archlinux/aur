@@ -1,0 +1,19 @@
+pkgbase = dh-virtualenv-git
+	pkgdesc = Python virtualenvs in Debian packages (git version)
+	pkgver = 0.10.r0.gb3ed15e
+	pkgrel = 1
+	url = https://github.com/spotify/dh-virtualenv
+	arch = any
+	license = GPL2
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = git
+	depends = debhelper
+	depends = python-virtualenv
+	provides = dh-virtualenv
+	conflicts = dh-virtualenv
+	source = git+https://github.com/spotify/dh-virtualenv
+	md5sums = SKIP
+
+pkgname = dh-virtualenv-git
+

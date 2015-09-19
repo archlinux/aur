@@ -1,0 +1,4 @@
+/dh-virtualenv
+/pkg
+/src
+/*.pkg.tar.xz
