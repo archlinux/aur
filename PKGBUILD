@@ -1,9 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=python-salsa20
 pkgname=("python-salsa20" "python2-salsa20")
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Bindings for the NaCL implementation of Salsa20 and XSalsa20 by D. J. Bernstein'
 arch=('i686' 'x86_64')
 url="http://github.com/keybase/python-salsa20"
@@ -13,7 +13,7 @@ source=("https://pypi.python.org/packages/source/s/salsa20/salsa20-$pkgver.tar.g
 md5sums=('5f199f3d6c643f05904b9d4a0b5d7e00')
 
 prepare() {
-  cp -r "salsa20-$pkgver"{,-py2}
+  cp -a "salsa20-$pkgver"{,-py2}
 }
 
 build() {
@@ -26,7 +26,7 @@ build() {
 
 check() {
   cd salsa20-$pkgver
-  PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-3.4:$PYTHONPATH" python -m doctest -v README.rst
+  PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-3.5:$PYTHONPATH" python -m doctest -v README.rst
 
   cd ../salsa20-$pkgver-py2
   PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-2.7:$PYTHONPATH" python2 -m doctest -v README.rst
@@ -47,4 +47,3 @@ package_python2-salsa20() {
   python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
