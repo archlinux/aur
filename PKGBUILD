@@ -2,7 +2,7 @@
 # Previous Maintainer: Scott Olson <scott@scott-olson.org>
 pkgname=rock
 pkgver=0.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An ooc compiler written in ooc"
 arch=('i686' 'x86_64')
 license=('BSD')

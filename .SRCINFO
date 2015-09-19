@@ -1,7 +1,7 @@
 pkgbase = rock
 	pkgdesc = An ooc compiler written in ooc
 	pkgver = 0.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ooc-lang.org/
 	arch = i686
 	arch = x86_64
