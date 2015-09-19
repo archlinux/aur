@@ -2,7 +2,6 @@ pkgbase = archupdate
 	pkgdesc = A simple script to update archlinux using pacmatic and pacaur.
 	pkgver = 1
 	pkgrel = 1
-	url = http://semiletov.org/tea/
 	arch = any
 	license = Apache
 	depends = bash
