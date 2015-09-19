@@ -1,21 +1,24 @@
 pkgbase = irrlamb
-	pkgdesc = 3D game involving physics & frustrating gameplay
-	pkgver = 0.1.1
-	pkgrel = 2
-	url = http://code.google.com/p/irrlamb/
-	changelog = Changelog
+	pkgdesc = a 3D game that probably involves a lot of physics and frustrating gameplay.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jazztickets/irrlamb
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = bullet
 	depends = gcc-libs
+	depends = bullet
 	depends = irrlicht
-	depends = lua51
+	depends = freetype2
+	depends = lua
+	depends = sqlite
 	depends = openal
+	depends = libvorbis
+	depends = libogg
 	depends = sh
-	source = http://irrlamb.googlecode.com/files/irrlamb-0.1.1-src.tar.gz
-	sha256sums = 2fbb30ee6cd0c65fc84acf6d260da468f0a1663af6f019ec4baf8177980ab96b
+	source = https://github.com/jazztickets/irrlamb/archive/v0.2.0.tar.gz
+	sha256sums = 1d50639cef5e93a91260ca55f456d5a95fd30b2305d35e8e2060eb8c6ee1105e
 
 pkgname = irrlamb
 
