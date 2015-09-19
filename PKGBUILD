@@ -1,6 +1,6 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=airtame-streamer
-pkgver=1.0.2_13
+pkgver=1.0.3_15
 pkgrel=1
 pkgdesc="Stream your display to an airtame dongle."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("http://downloads.airtame.com/update/ga/lin_x64/AIRTAME-v${pkgver//_/-}_
         "x264::git+git://git.videolan.org/x264.git#branch=stable"
         "streamer.sh"
         "airtame-streamer.service")
-md5sums=('4f07107c5cf872dbf83d0952a543ea0e'
+md5sums=('5709aee983075461f5dfbbbee8aaf953'
          'SKIP'
          'SKIP'
          'SKIP'
