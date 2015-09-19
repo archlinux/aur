@@ -2,31 +2,20 @@
 # Maintainer: Alexej Magura <agm2819*gmail*>
 #
 #
-pkgbase=lib32-libtinfo
-pkgname=(lib32-libtinfo lib32-libtinfo-5)
+pkgname=lib32-libtinfo
 pkgver=6
-pkgrel=2
+pkgrel=3
 pkgdesc="lib32 symlink to ncurses for use in packages"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
 license=('unknown')
-depends=('lib32-ncurses')
+conflicts=('lib32-libtinfo-5')
+depends=('lib32-ncurses>=6.0')
 _ncurses="$(pacman -Q $depends | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
 
-package_lib32-libtinfo() {
-  conflicts=('lib32-libtinfo-5')
+package() {
   install -d "$pkgdir"/usr/lib32
   ln -s /usr/lib32/libncursesw.so."$_ncurses" -T "$pkgdir"/usr/lib32/libtinfo.so."$pkgver"
   ln -s /usr/lib32/libtinfo.so."$pkgver" -T "$pkgdir"/usr/lib32/libtinfo.so
 }
-
-package_lib32-libtinfo-5() {
-  pkgver=5
-  pkgrel=4
-  conflicts=('lib32-libtinfo')
-  install -d "$pkgdir"/usr/lib32
-  ln -s /usr/lib32/libncurses.so."$_ncurses" -T "$pkgdir"/usr/lib32/libtinfo.so."$pkgver"
-  ln -s /usr/lib32/libtinfo.so."$pkgver" -T "$pkgdir"/usr/lib32/libtinfo.so
-}
-
 # vim:set ts=2 sw=2 et:
