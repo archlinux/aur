@@ -1,4 +1,4 @@
-pkgbase = ha
+pkgbase = ha-archiver
 	pkgdesc = HA is an archiver which Harri Hirvola released in January 1993 as version 0.98.
 	pkgver = 0.999beta
 	pkgrel = 1
@@ -10,8 +10,9 @@ pkgbase = ha
 	makedepends = cmake
 	makedepends = make
 	depends = glibc
-	source = ha-0.999beta::git+https://github.com/pfactum/ha.git
+	conflicts = ha
+	source = ha-archiver-0.999beta::git+https://github.com/pfactum/ha.git
 	sha256sums = SKIP
 
-pkgname = ha
+pkgname = ha-archiver
 
