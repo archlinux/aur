@@ -4,24 +4,22 @@
 
 pkgname=dunst-git
 _gitname=dunst
-pkgver=1.1.0.26.gf0ca84e.631
+pkgver=1.1.0.28.gf601312.633
 pkgrel=1
 pkgdesc="a lightweight replacement for the notification-daemons provided by most desktop environments"
 arch=('i686' 'x86_64')
 url="http://www.knopwob.org/dunst"
 license=('BSD')
 depends=('libxinerama' 'libxss' 'pango' 'libnotify')
-
 if [ ! -e ${SRCDEST}/config.h ]; then
   depends+=('libxdg-basedir')
 fi
-
 makedepends=('git' 'perl')
 provides=("dunst" 'notification-daemon')
 conflicts=("dunst")
 source=('git://github.com/knopwob/dunst.git')
 md5sums=('SKIP')
-sha256sums=('SKIP')
+options=('!makeflags')
 
 pkgver()
 {
@@ -32,9 +30,11 @@ pkgver()
 prepare()
 {
   cd ${srcdir}/${_gitname}
-  if [ -e ${SRCDEST}/config.h ]; then
+  [ -f $srcdir/${_gitname}/config.h ] && rm $srcdir/${_gitname}/config.h
+  if [ -e ${srcdir}/config.h ]; then
     msg "Using custom config.h"
-    cp ${SRCDEST}/config.h .
+    cp ${srcdir}/config.h .
+    touch config.h
   fi
 }
 
