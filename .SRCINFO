@@ -1,6 +1,6 @@
 pkgbase = pacmanhealth
 	pkgdesc = Pacman health monitoring system
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://redmine.yapbreak.fr/projects/pacman-health
 	arch = any
@@ -8,13 +8,15 @@ pkgbase = pacmanhealth
 	depends = pacman
 	depends = sed
 	depends = coreutils
+	depends = util-linux
+	depends = sudo
 	optdepends = postfix: send report by mail
 	optdepends = libnotify: get desktop notification
+	optdepends = recode: get diff in html mail version
 	conflicts = pacmanhealth.git
 	backup = etc/pacmanhealth.conf
-	source = http://release.yapbreak.fr/pacmanhealth/pacmanhealth-1.0.0-1.tar.gz
-	source = http://release.yapbreak.fr/pacmanhealth/pacmanhealth-1.0.0-1.tar.gz.sig
-	md5sums = e18919f7563e38c1f2dde5d5b8c1ca25
+	source = http://release.yapbreak.fr/pacmanhealth/pacmanhealth-1.1.0-1.tar.gz
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = pacmanhealth
