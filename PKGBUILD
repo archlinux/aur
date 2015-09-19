@@ -21,7 +21,7 @@ md5sums=('SKIP'
 
 pkgver()
 {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   git shortlog | head -n 1 | tr -Cd "[:digit:]"
 }
  
