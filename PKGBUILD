@@ -3,7 +3,7 @@
 
 pkgname=clementine-lxqt
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -23,7 +23,7 @@ install=clementine.install
 
 url="http://www.clementine-player.org/"
 source="http://esclapion.free.fr/AUR/Clementine-$pkgver.tar.gz"
-sha256sums=('d5f4208c788b6ebe85921b95969e5692ebd81a23d31c3942d11d0a22c2f5f28c')
+sha256sums=('d5a9bd2379ffced7e4e477c75870ad82a71ee24beaaa9069e6a5511149d1ecd5')
 
 provides=('clementine')
 conflicts=('clementine' 'clementine-qt5-git')
