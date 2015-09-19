@@ -1,0 +1,30 @@
+pkgbase = mpv-legacy-af-git
+	pkgdesc = Video player based on MPlayer/mplayer2 (git version) including legacy audio filters
+	pkgver = 41872.gfb94744
+	pkgrel = 1
+	install = mpv.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python-docutils
+	depends = ffmpeg
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = youtube-dl: for --ytdl
+	provides = mpv
+	conflicts = mpv
+	options = !emptydirs
+	source = git+https://github.com/2ion/mpv
+	source = find-deps.py
+	md5sums = SKIP
+	md5sums = ffb774b13decbefc62908dda0332046b
+	sha256sums = SKIP
+	sha256sums = ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02
+
+pkgname = mpv-legacy-af-git
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+
