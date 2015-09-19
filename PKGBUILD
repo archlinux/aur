@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=racket-git
-pkgver=6.2.900.17.35464.1a48418
+pkgver=6.2.900.17.35470.1ddaad8
 pkgrel=1
 pkgdesc="Minimal Racket installation, without useless DrRacket, from git"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ build() {
   [[ -d build ]] || mkdir build
   cd build
   [[ "$CARCH" == "x86_64" ]] && export CFLAGS+=" -fPIC"
-  ../configure --prefix=/usr --sysconfdir=/etc --enable-shared
+  ../configure --prefix=/usr --sysconfdir=/etc --enable-shared --disable-strip
   make
 }
 
