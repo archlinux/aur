@@ -1,6 +1,7 @@
 pkgbase = snoreport
+	pkgdesc = Computational identification of snoRNAs with unknown targets
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bioinf.uni-leipzig.de/Software/snoReport/
 	arch = x86_64
 	arch = i686
@@ -8,8 +9,10 @@ pkgbase = snoreport
 	makedepends = autoconf
 	depends = viennarna
 	source = http://www.bioinf.uni-leipzig.de/Software/snoReport/SnoReport-1.3.tar.gz
+	source = http://www.bioinf.uni-leipzig.de/Software/snoReport/README_snoReport
 	source = buildfix.patch
 	md5sums = 299d6cd2344ff376eeb8541daeacced0
+	md5sums = f6dd0df226ec7510f9d14dfd4573e0d1
 	md5sums = 592a51a1c0261b4df627635831056513
 
 pkgname = snoreport
