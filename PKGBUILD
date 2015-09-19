@@ -14,6 +14,7 @@ depends=(
     'qt5-multimedia'
     'qt5-quickcontrols'
     'qt5-webkit'
+    'qt5-websockets'
     'qt5-x11extras'
     'mlt'
     'ffmpeg'
