@@ -4,7 +4,8 @@
 pkgname=st-white
 _pkgname=st
 pkgver=0.6
-pkgrel=7
+pkgrel=8
+
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
 url="http://st.suckless.org"
@@ -19,14 +20,15 @@ md5sums=('1a926f450b4eacb7e2f5ac5b8ffea7c8'
          '718d8ebf53954c8c2f264ad728db1368')
 
 build() {
-  cd $srcdir/$_pkgname-$pkgver
+  cd $_pkgname-$pkgver
   cp $srcdir/config.h config.h
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
-  make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+  cd $_pkgname-$pkgver
+  make PREFIX=/usr DESTDIR="${pkgdir}" TERMINFO="${pkgdir}/usr/share/terminfo" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  rm -fr "${pkgdir}/usr/share/terminfo"
 }
