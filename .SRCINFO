@@ -1,0 +1,25 @@
+pkgbase = readseq
+	pkgdesc = A biosequence data format conversion tool
+	pkgver = 2.1.30
+	pkgrel = 2
+	url = http://iubio.bio.indiana.edu/soft/molbio/readseq/java/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	depends = bash
+	source = http://iubio.bio.indiana.edu/soft/molbio/readseq/java/readseq.jar
+	source = http://iubio.bio.indiana.edu/soft/molbio/readseq/java/readseq-help.html
+	source = http://iubio.bio.indiana.edu/soft/molbio/readseq/java/Readseq2-help.html
+	source = readseq.sh
+	source = license
+	source = arch-readseq.readme
+	md5sums = 0b40df0f7e1283e03c09bfcf70cb381c
+	md5sums = d1a73902a66a6b210e751be9d0e8e6c6
+	md5sums = 389be807c8037976b6ae06a9ebe178aa
+	md5sums = 177bad15a8f79db2678850ac3718973f
+	md5sums = 51fb18f9b72171d0943807fce97d3cab
+	md5sums = 72f9ff0c2e17eab8883c09ec98bf0e91
+
+pkgname = readseq
+

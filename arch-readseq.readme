@@ -1,0 +1,12 @@
+The readseq jar file is located at /usr/share/java/readseq/readseq.jar
+
+Normally readseq is used by typing a command such as:
+java -cp /usr/share/java/readseq/readseq.jar run myfile -f 12 -o outfile
+
+For the arch installation, a script has been placed at /usr/bin/readseq that passes command line args to the readseq jar file.
+So, to run the java command given above, you just need to type:
+readseq run myfile -f 12 -o outfile
+
+If you run /usr/bin/readseq without command line arguments, readseq will open as a gui application.
+
+
