@@ -1,13 +1,15 @@
 pkgbase = lib32-libtinfo
 	pkgdesc = lib32 symlink to ncurses for use in packages
 	pkgver = 6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/ncurses/
 	arch = any
 	license = unknown
 	depends = lib32-ncurses
 
 pkgname = lib32-libtinfo
+	conflicts = lib32-libtinfo-5
 
 pkgname = lib32-libtinfo-5
+	conflicts = lib32-libtinfo
 
