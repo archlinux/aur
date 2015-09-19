@@ -1,9 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=python-nose-cover3
 pkgname=("python-nose-cover3" "python2-nose-cover3")
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Coverage 3.x support for Nose"
 arch=(any)
 url="https://github.com/ask/nosecover3"
