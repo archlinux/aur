@@ -1,8 +1,8 @@
-# Maintainer: Federico Di Pierro <nierro92@gmail.com> 
+# Maintainer: Federico Di Pierro <nierro92@gmail.com>
 
 pkgname=minefield
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minefield game written in C and ncurses"
 arch=(i686 x86_64)
 license=('GPL3')
