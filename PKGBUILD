@@ -2,17 +2,18 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.7.7.r175.g41b36ea
-_last_release="0.7.7-1"
+pkgver=0.8.0.r0.ge363b63
+_last_release="0.8.0-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
 license=('Apache')
-depends=('libunwind' 'gc' 'libatomic_ops' 'pcre' 'libpcl' 'libevent' 'shards')
+depends=('gc' 'libatomic_ops' 'pcre' 'libpcl' 'libevent')
 makedepends=('libxml2' 'llvm')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git')
-optdepends=('libyaml: For YAML support'
+optdepends=('shards: To make the crystal deps command work'
+            'libyaml: For YAML support'
             'gmp: For BigInt support'
             'libxml2: For XML support')
 makedepends=('git')
@@ -70,5 +71,5 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('7a1ccdce29c1437da1cbaafa3fefd5ebc3c4b84b885964a6d4eaf8bfc5922831'
-                   '433acbe8e88fe0c3df67ad64bd436349a6bcfc146284f0a690283ebefb93b5e6')
+sha256sums_x86_64=('47b96c790458daa4179a777ba9356959e597f38cfda535a3f9069d46b362579d'
+                   '6a0414b903cd99bfed8ebe2a447dc0c85f4fbc31e493064e44d37770e95a4b0e')
