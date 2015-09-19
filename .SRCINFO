@@ -12,6 +12,7 @@ pkgbase = conky-nvidia
 	makedepends = docbook-xml
 	makedepends = man-db
 	makedepends = perl-xml-libxml
+	makedepends = perl-xml-sax-expat
 	depends = glib2
 	depends = curl
 	depends = lua
