@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Space Phallus
+GenericName=spacephallus
+Comment=A fun shoot-em-up
+Icon=phalluslogo.png
+Exec=SpacePhallus
+Terminal=false
+Categories=Game;ArcadeGame;
+
