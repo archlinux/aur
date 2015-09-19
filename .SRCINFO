@@ -2,15 +2,15 @@ pkgbase = tomoyo-tools
 	pkgdesc = TOMOYO Linux userspace tools for Linux kernels >=3.2
 	pkgver = 2.5.0.20140601
 	pkgrel = 3
-	url = http://tomoyo.sourceforge.jp
+	url = http://tomoyo.osdn.jp
 	install = tomoyo-tools.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ncurses>=6.0
 	depends = linux-tomoyo
-	source = http://sourceforge.jp/frs/redir.php?f=/tomoyo/53357/tomoyo-tools-2.5.0-20140601.tar.gz
-	source = http://sourceforge.jp/frs/redir.php?f=/tomoyo/53357/tomoyo-tools-2.5.0-20140601.tar.gz.asc
+	source = http://osdn.jp/frs/redir.php?f=/tomoyo/53357/tomoyo-tools-2.5.0-20140601.tar.gz
+	source = http://osdn.jp/frs/redir.php?f=/tomoyo/53357/tomoyo-tools-2.5.0-20140601.tar.gz.asc
 	source = tomoyo-tools.install
 	source = tomoyo-auditd.service
 	sha256sums = 118ef6ba1fbf7c0b83018c3a0d4d5485dfb9b5b7f647f37ce9f63841a3133c2a
