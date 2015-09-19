@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=gnome-shell-theme-aurora
-pkgver=3.16.20150807
+pkgver=3.16.20150916
 pkgrel=1
 pkgdesc="Aurora GNOME Shell,GTK2,GTK3 theme"
 arch=('any')
