@@ -3,7 +3,7 @@
 pkgname=ncursesfm-git
 _gitname=ncursesFM
 pkgver=0.r248.431ec18
-pkgrel=1
+pkgrel=2
 pkgdesc="A FileManager written in c and ncurses library."
 arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${_gitname}"
