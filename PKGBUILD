@@ -10,14 +10,14 @@ _pkgname=lynx
 pkgname="${_pkgname}-current"
 _basever='2.8.9'
 pkgver="${_basever}dev.6"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A text browser for the World Wide Web (current development version)'
-url='http://lynx.isc.org/'
 arch=('i686' 'x86_64')
+url='http://lynx.isc.org/'
 license=('GPL')
 depends=('openssl' 'ncurses' 'libidn')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}=${_basever}")
+conflicts=("${_pkgname}")
 backup=('etc/lynx.cfg')
 _verwatch=("${url}current/" "/current/${_pkgname}\(.*\)\.tar\.bz2" 'l')
 source=("http://lynx.isc.org/current/${_pkgname}${pkgver}.tar.bz2") #{,.asc})

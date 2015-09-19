@@ -1,7 +1,7 @@
 pkgbase = lynx-current
 	pkgdesc = A text browser for the World Wide Web (current development version)
 	pkgver = 2.8.9dev.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lynx.isc.org/
 	arch = i686
 	arch = x86_64
