@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=numix-folders-git
-pkgver=r347.a6cd8f4
+pkgver=r356.5058dcb
 pkgrel=1
 pkgdesc="Alternate folders for use with the Numix base icon theme."
 arch=('any')
