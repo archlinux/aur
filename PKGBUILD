@@ -17,7 +17,7 @@ source=("https://github.com/braice/${_gitname}/archive/${pkgver}.zip"
         "mumudvb.install"
         "mumudvb.conf")
 install="mumudvb.install"
-sha256sums=('76a9810b0f0d5c3323792288956790be93f89f492bb373de14d3642c008901ea'
+sha256sums=('48294d41f135ecb56b07c7c8c6e9effc46658f98441229b2d1a7b1ad38e77b98'
             '8d6ae9ed0f8c6d00254549bfae6bc20ca0984dce8c85eb1ef00d555e49b41264'
             'abe3c74a528f59b990e18f91858cb9bb9dd61c715c8904eb561aa7ee4cb79281')
 
