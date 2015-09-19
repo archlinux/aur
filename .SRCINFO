@@ -1,0 +1,12 @@
+pkgbase = libtinfo-5
+	pkgdesc = symlink to ncurses for use in cuda and other packages (legacy)
+	pkgver = 5
+	pkgrel = 7
+	url = http://www.gnu.org/software/ncurses/
+	arch = any
+	license = unknown
+	depends = ncurses<6.0
+	conflicts = libtinfo
+
+pkgname = libtinfo-5
+
