@@ -1,7 +1,7 @@
 pkgbase = pdfscissors
 	pkgdesc = A tool to crop pdf files.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pdfscissors.com
 	arch = any
 	license = AGPL

@@ -2,7 +2,7 @@
 
 pkgname=pdfscissors
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to crop pdf files.'
 url='http://www.pdfscissors.com'
 depends=('java-runtime')
@@ -11,7 +11,7 @@ license=('AGPL')
 source=(http://sites.google.com/site/pdfscissors/${pkgname}.jar)
 md5sums=('2e8ddd4daa466e02b88bd260167da873')
 
-build() {
+package() {
   mkdir -p ${pkgdir}/usr/{bin,share/${pkgname}}
   cd ${srcdir}
   install -m644 ${pkgname}.jar ${pkgdir}/usr/share/${pkgname}/${pkgname}.jar
