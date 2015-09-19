@@ -1,7 +1,7 @@
 pkgbase = conky-cli
 	pkgdesc = Lightweight system monitor for X, without X11 dependencies
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://conky.sourceforge.net/
 	arch = i686
 	arch = x86_64
