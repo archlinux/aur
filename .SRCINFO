@@ -1,0 +1,27 @@
+pkgbase = tintin-alteraeon
+	pkgdesc = Play Alter Aeon with sounds and other game enhancements. Uses the tintin++ mud client.
+	pkgver = 3
+	pkgrel = 1
+	url = http://github.com/stormdragon2976/tintin-alteraeon
+	install = tintin-alteraeon.install
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = opusfile
+	depends = opus-tools
+	depends = sox
+	depends = tintin
+	depends = wget
+	optdepends = cmus: Music player
+	optdepends = mpd: Music player
+	optdepends = pianobar: Music player
+	optdepends = xmms2: Music player
+	provides = tintin-alteraeon
+	conflicts = tintin-alteraeon
+	source = tintin-alteraeon::git+git://github.com/stormdragon2976/tintin-alteraeon.git
+	source = tintin-alteraeon.install
+	md5sums = SKIP
+	md5sums = 26f2ec1664c28d019afc897433112283
+
+pkgname = tintin-alteraeon
+
