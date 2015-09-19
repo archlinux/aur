@@ -15,11 +15,11 @@
 pkgname=mpv-legacy-af-git
 _gitname=mpv
 pkgver=0.10.0_27_g66e517a
-pkgrel=1
+pkgrel=2
 pkgdesc='Video player based on MPlayer/mplayer2 (git version) including legacy audio filters'
 arch=('i686' 'x86_64')
 license=('GPL')
-Url='https://github.com/2ion/mpv'
+url='https://github.com/2ion/mpv'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 depends=('ffmpeg' "${_undetected_depends[@]}")
 optdepends=('youtube-dl: for --ytdl')
