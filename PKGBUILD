@@ -8,11 +8,12 @@ pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.90
 pkgver=0.90.486957.5e606ce
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
+optdepends=('net-tools-mptcp: for Multipath TCP support in netstat')
 options=('!strip')
 source=("git://github.com/multipath-tcp/mptcp#branch=mptcp_v${_mptcpv}"
         # the main kernel config files

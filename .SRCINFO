@@ -1,7 +1,7 @@
 pkgbase = linux-mptcp
 	pkgdesc = Linux kernel, modules, headers and docs with MultiPath TCP support
 	pkgver = 0.90.486957.5e606ce
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.multipath-tcp.org/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = linux-mptcp
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = git
+	optdepends = net-tools-mptcp: for Multipath TCP support in netstat
 	options = !strip
 	source = git://github.com/multipath-tcp/mptcp#branch=mptcp_v0.90
 	source = config
