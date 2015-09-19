@@ -11,8 +11,8 @@ pkgbase = gnome-shell-theme-aurora
 	depends = gtk-engine-murrine
 	depends = gdk-pixbuf2
 	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options.
-	source = gnome-shell-theme-aurora-3.16.20150916.tar.gz::http://opendesktop.org/CONTENT/content-files/170523-Aurora.tar.gz
-	sha256sums = 6b132100914179baccc426aa9ab4cc2fba370a5f1963c58036a656512d0bf080
+	source = gnome-shell-theme-aurora-3.16.20150916.tar.gz::http://opendesktop.org/CONTENT/content-files/170523-Aurora-3.16.tar.gz
+	sha256sums = a413a9dbd7a3390bb198c1f8e0e5ab917628f240690a693d424111ba11443b48
 
 pkgname = gnome-shell-theme-aurora
 
