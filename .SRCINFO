@@ -7,6 +7,8 @@ pkgbase = skype-desktop-bin
 	arch = x86_64
 	license = MIT
 	makedepends = make
+	makedepends = git
+	depends = gconf
 	source = git+https://github.com/haskellcamargo/skype-unofficial-client.git
 	md5sums = SKIP
 
