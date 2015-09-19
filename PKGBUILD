@@ -2,11 +2,11 @@
 
 _name="click-plugins"
 _module="${_name}"
-_check="disabled"
+_check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.0.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An extension module for click to enable registering CLI commands via setuptools entry-points."
 arch=("any")
 url="https://github.com/click-contrib/click-plugins"
@@ -35,11 +35,10 @@ build() {
 check() {
     if [[ "${_check}" == "enabled" ]]; then
         export LC_ALL="en_US.UTF-8"
-        export PYTHONPATH="$(pwd)/build/lib:$PYTHONPATH"
         cd "${srcdir}/${_name}-${pkgver}"
-        py.test
+        py.test tests
         cd "${srcdir}/${_name}-${pkgver}-python2"
-        py.test2
+        py.test2 tests
     else
         echo "_check is not set to \"enabled\", skipping check()"
     fi
