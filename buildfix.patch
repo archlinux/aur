@@ -1,0 +1,96 @@
+diff -urN fragrep-2/aln2pattern.cpp fragrep-2a/aln2pattern.cpp
+--- fragrep-2/aln2pattern.cpp	2007-06-04 08:09:49.000000000 +0200
++++ fragrep-2a/aln2pattern.cpp	2015-09-19 14:55:19.742905181 +0200
+@@ -8,6 +8,8 @@
+ #include <vector>
+ #include <fstream>
+ #include <iomanip>
++#include <cstring>
++#include <stdlib.h>
+ #include "math.h"
+ #include "eps_output.h"
+ 
+diff -urN fragrep-2/eps_output.cpp fragrep-2a/eps_output.cpp
+--- fragrep-2/eps_output.cpp	2007-06-04 08:09:49.000000000 +0200
++++ fragrep-2a/eps_output.cpp	2015-09-19 14:55:55.526022481 +0200
+@@ -4,6 +4,7 @@
+ #include <cstdio>
+ #include <fstream>
+ #include <iomanip>
++#include <algorithm>
+ #include "math.h"
+ 
+ namespace fragrep
+diff -urN fragrep-2/fragrep.cpp fragrep-2a/fragrep.cpp
+--- fragrep-2/fragrep.cpp	2007-06-04 08:09:49.000000000 +0200
++++ fragrep-2a/fragrep.cpp	2015-09-19 14:51:12.064400495 +0200
+@@ -2,6 +2,8 @@
+   fragrep c++ rebuild */
+ 
+ // std and iostream headers
++#include <stdlib.h>
++#include <cstring>
+ #include <ctype.h>
+ #include <iostream>
+ #include <fstream>
+diff -urN fragrep-2/omit_pattern_matching.cpp fragrep-2a/omit_pattern_matching.cpp
+--- fragrep-2/omit_pattern_matching.cpp	2007-06-04 08:09:49.000000000 +0200
++++ fragrep-2a/omit_pattern_matching.cpp	2015-09-19 14:51:34.200933515 +0200
+@@ -12,6 +12,7 @@
+ 
+ #include <list>
+ #include <vector>
++#include <cstring>
+ #include <string>
+ #include <algorithm>
+ #include <sequtil/triple.h>
+Binary files fragrep-2/pattern2eps and fragrep-2a/pattern2eps differ
+diff -urN fragrep-2/pattern2eps.cpp fragrep-2a/pattern2eps.cpp
+--- fragrep-2/pattern2eps.cpp	2007-06-04 08:09:49.000000000 +0200
++++ fragrep-2a/pattern2eps.cpp	2015-09-19 14:56:23.245855128 +0200
+@@ -7,7 +7,9 @@
+ #include <fstream>
+ #include <list>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <map>
++#include <cstring>
+ #include <string>
+ #include <sstream>
+ 
+diff -urN fragrep-2/pattern_matching.cpp fragrep-2a/pattern_matching.cpp
+--- fragrep-2/pattern_matching.cpp	2007-06-04 08:09:49.000000000 +0200
++++ fragrep-2a/pattern_matching.cpp	2015-09-19 14:55:37.502797959 +0200
+@@ -12,6 +12,7 @@
+ 
+ #include <list>
+ #include <vector>
++#include <cstring>
+ #include <string>
+ #include <algorithm>
+ #include <sequtil/triple.h>
+diff -urN fragrep-2/sequtil/fasta.cpp fragrep-2a/sequtil/fasta.cpp
+--- fragrep-2/sequtil/fasta.cpp	2007-06-04 08:09:49.000000000 +0200
++++ fragrep-2a/sequtil/fasta.cpp	2015-09-19 14:53:01.977070250 +0200
+@@ -3,6 +3,7 @@
+ 
+ 
+ #include <iostream>
++#include <algorithm>
+ #include "fasta.h"
+ #include "bbq_util.h"
+ 
+diff -urN fragrep-2/sequtil/position_weight_matrix.cpp fragrep-2a/sequtil/position_weight_matrix.cpp
+--- fragrep-2/sequtil/position_weight_matrix.cpp	2007-06-04 08:09:49.000000000 +0200
++++ fragrep-2a/sequtil/position_weight_matrix.cpp	2015-09-19 14:54:44.999781603 +0200
+@@ -3,6 +3,10 @@
+ #include "bbq_util.h"
+ #include <list>
+ #include <math.h>
++#include <stdlib.h>
++#include <cstring>
++#include <climits>
++#include <algorithm>
+ #include <limits>
+ #include <float.h>
+ #include <iomanip>

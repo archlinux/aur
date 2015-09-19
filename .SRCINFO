@@ -1,0 +1,15 @@
+pkgbase = fragrep
+	pkgdesc = Detect nucleotide pattern fragments in genomes that occur in a given order
+	pkgver = 2
+	pkgrel = 1
+	url = https://www.bioinf.uni-leipzig.de/Software/fragrep/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	source = http://www.bioinf.uni-leipzig.de/Software/fragrep/fragrep-2.tar.gz
+	source = buildfix.patch
+	md5sums = 1b33fdeb039a65f98c26bc738c81c14e
+	md5sums = 0c5606ea4b4a0b79b1df729ed5a32840
+
+pkgname = fragrep
+
