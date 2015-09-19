@@ -1,0 +1,46 @@
+From f5efd6d09fc7441ee9db14c5fdbe7cb901bbb6f3 Mon Sep 17 00:00:00 2001
+From: Ronny Lorenz <ronny@tbi.univie.ac.at>
+Date: Tue, 28 Jan 2014 16:31:16 +0100
+Subject: [PATCH 1/8] corrected Makefile in order to work with ViennaRNA 2.x
+
+---
+ Makefile | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b2276b2..2640e58 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,14 +10,16 @@ CC       = gcc
+ CXX      = g++
+ LL       = g++
+ DEFS     =
+-VRNADIR  = ${HOME}/C/ViennaRNA
+-INCL     = -I. -I$(VRNADIR)/H
++VRNA_INC = $(shell pkg-config --cflags RNAlib2)
++VRNA_LIB = $(shell pkg-config --libs RNAlib2)
++LDFLAGS  = 
++INCL     =  -I. $(VRNA_INC)
+ WARN     = -Wall -ansi -pedantic
+ OPTI     = -O3
+ #OPTI     = -O3 -p -g3
+ CFLAGS   = $(WARN) $(OPTI) $(DEFS) $(INCL)
+-LIBS     = -L$(VRNADIR)/lib -lRNA  -lm -lstdc++
+-CSRC     = options.c findpath.c
++LIBS     = ${VRNA_LIB}  -lm -lstdc++
++CSRC     = options.c
+ COBJ     = $(foreach file, $(CSRC:.c=.o), $(file))
+ CXXSRC   = Energy.cpp Node.cpp Util.cpp MorganHiggs.cpp main.cpp
+ CXXOBJ   = $(foreach file, $(CXXSRC:.cpp=.o), $(file))
+@@ -35,7 +37,7 @@ $(CXXOBJ): %.o: %.cpp
+ $(COBJ): %.o: %.c
+ 	$(CC) -c $(CFLAGS) $< -o $@
+ $(EXE): $(COBJ) $(CXXOBJ)
+-	$(LL) $(CFLAGS) -o $(EXE) $(COBJ) $(CXXOBJ) $(LIBS)
++	$(LL) $(LDFLAGS) $(CFLAGS) -o $(EXE) $(COBJ) $(CXXOBJ) $(LIBS)
+ clean:
+ 	rm -f $(COBJ) $(CXXOBJ) $(EXE)
+ backup: clean
+-- 
+2.5.2
+

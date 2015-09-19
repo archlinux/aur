@@ -1,0 +1,104 @@
+From fa8d5c6b78cebee3d2df987150375d415e46593a Mon Sep 17 00:00:00 2001
+From: Ronny Lorenz <ronny@tbi.univie.ac.at>
+Date: Tue, 28 Jan 2014 16:46:51 +0100
+Subject: [PATCH 3/8] remove unnecessary and deprecated/wrong declarations of
+ stuff from RNAlib
+
+---
+ Energy.cpp |  2 --
+ Node.h     |  7 +------
+ Util.cpp   |  4 ++++
+ findpath.h | 33 ++++++++++++++++++++++++---------
+ 4 files changed, 29 insertions(+), 17 deletions(-)
+
+diff --git a/Energy.cpp b/Energy.cpp
+index 6cb9455..67659de 100644
+--- a/Energy.cpp
++++ b/Energy.cpp
+@@ -13,8 +13,6 @@ extern "C" {
+ #include "fold_vars.h"
+ #include "utils.h"
+ #include "pair_mat.h"
+-extern int
+-energy_of_struct_pt (char *string, short * ptable, short *s, short *s1);
+ }
+ extern short * S;
+ extern short * S1;
+diff --git a/Node.h b/Node.h
+index b1d090c..3f99d23 100644
+--- a/Node.h
++++ b/Node.h
+@@ -33,12 +33,7 @@ extern "C" {
+   #include "fold.h"
+   #include "energy_const.h"
+   #include "utils.h"
+-  extern float fold(const char* sequence, char* structure);
+-  extern void export_fold_arrays(int **f5_p, int **c_p, int **fML_p,
+-				 int **fM1_p, int **indx_p, char **ptype_p);
+-  extern  char * backtrack_fold_from_pair(char* seq,int i,int  j);
+-  extern void   free_arrays(void); 
+-  extern int fold_constrained;
++  #include "fold_vars.h"
+ }
+ #include "Energy.h"
+ #include "MorganHiggs.h"
+diff --git a/Util.cpp b/Util.cpp
+index 75cdec5..d0a9ecb 100644
+--- a/Util.cpp
++++ b/Util.cpp
+@@ -5,6 +5,10 @@ extern short *pair_table;
+ /*@exits@*/
+ //extern void   nrerror(const char message[]);
+ 
++extern "C" {
++#include "utils.h"
++}
++
+ void Cout(std::string s){std::cout<<s;}
+ 
+   std::string Str(double x) 
+diff --git a/findpath.h b/findpath.h
+index a0b3e4e..2e27237 100644
+--- a/findpath.h
++++ b/findpath.h
+@@ -1,13 +1,28 @@
+-#ifndef FIND_PATH_H
+-#define FIND_PATH_H
++/*
++* file borrowed from ViennaRNA Package 2.0.4
++* (this file may be removed completely since it is also present in the ViennaRNA includes
++*/
++#ifndef __VIENNA_RNA_PACKAGE_FIND_PATH_H__
++#define __VIENNA_RNA_PACKAGE_FIND_PATH_H__
+ 
+-typedef struct path {
+-  double en;
+-  char *s;
+-} path_t;
++#include "data_structures.h"
+ 
+-extern int find_saddle (char *seq, char *struc1, char *struc2, int max);
+-extern path_t* get_path(char *seq, char *s1, char* s2,
+-			int maxkeep, int *num_entry);
++/**
++ *  \file findpath.h
++ *  \brief Compute direct refolding paths between two secondary structures
++ */
++
++int     find_saddle(char *seq,
++                    char *struc1,
++                    char *struc2,
++                    int max);
++
++
++path_t* get_path( char *seq,
++                  char *s1,
++                  char* s2,
++                  int maxkeep);
++
++void    free_path(path_t *path);
+ 
+ #endif
+-- 
+2.5.2
+

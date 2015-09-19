@@ -1,0 +1,81 @@
+From 9f85164b96b049426705a52b72d1feaedc808b21 Mon Sep 17 00:00:00 2001
+From: Ronny Lorenz <ronny@tbi.univie.ac.at>
+Date: Tue, 28 Jan 2014 16:39:49 +0100
+Subject: [PATCH 2/8] remove redefinition of INF energies
+
+---
+ Barrier.cpp     | 5 ++++-
+ MorganHiggs.cpp | 6 +++++-
+ Node.cpp        | 4 ++--
+ 3 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/Barrier.cpp b/Barrier.cpp
+index db399e6..6fd2c02 100644
+--- a/Barrier.cpp
++++ b/Barrier.cpp
+@@ -12,7 +12,10 @@
+ #include "Neighbor.h"
+ #include "Utils.h"
+ #include "options.h"
+-#define INF 1000000
++
++extern "C" {
++#include "energy_const.h" /* defines INF */
++}
+ 
+ 
+ /**
+diff --git a/MorganHiggs.cpp b/MorganHiggs.cpp
+index d4c579f..083fc05 100644
+--- a/MorganHiggs.cpp
++++ b/MorganHiggs.cpp
+@@ -3,14 +3,18 @@
+   $Id: MorganHiggs.cpp,v 1.13 2007/10/21 21:01:35 Kinwalker Exp $
+ */
+ 
++#include <cstring>
+ #include "MorganHiggs.h"
+ #define BP_ADD_CONST 10000
+-#define INF 1000000
+ using std::cout;
+ using std::endl;
+ 
+ extern short * pair_table;
+ 
++extern "C" {
++#include "energy_const.h" /* defines INF */
++}
++
+ bool MHS_debug=false;
+ int min_stack_size=1;
+ 
+diff --git a/Node.cpp b/Node.cpp
+index 94ce681..3ddcb0f 100644
+--- a/Node.cpp
++++ b/Node.cpp
+@@ -2,12 +2,12 @@
+   Last changed Time-stamp: <2007-07-10 19:27:22 xtof>
+   $Id: Node.cpp,v 1.35 2007/11/03 16:45:58 Kinwalker Exp $
+ */
+-#include "Node.h"
+ 
+ #include <algorithm>
+ #include <iostream>
+ #include <iterator>
+ #include <utility>
++#include "Node.h"
+ 
+ #include "template_utils.c"
+ 
+@@ -16,7 +16,7 @@
+ #define EPSILON .00000000001
+ 
+ #define MIN_ENERGY_DIFF .01
+-#define INF 1000000
++
+ double BARRIER_TOO_HIGH=10000;//std::numeric_limits<int>::max();
+ // class variables
+ int Node::verbose;
+-- 
+2.5.2
+

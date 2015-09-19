@@ -1,0 +1,30 @@
+pkgbase = kinwalker
+	pkgdesc = Compute cotranscriptional folding trajectories of RNAs
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.bioinf.uni-leipzig.de/Software/Kinwalker/
+	arch = x86_64
+	arch = i686
+	license = Custom
+	depends = viennarna
+	source = http://www.bioinf.uni-leipzig.de/Software/Kinwalker/kinwalker.tar.gz
+	source = 0001-corrected-Makefile-in-order-to-work-with-ViennaRNA-2.patch
+	source = 0002-remove-redefinition-of-INF-energies.patch
+	source = 0003-remove-unnecessary-and-deprecated-wrong-declarations.patch
+	source = 0004-make-kinwalker-comply-to-stricter-g.patch
+	source = 0005-remove-all-the-remaining-unnecessary-stuff.patch
+	source = 0006-fix-bug-for-co-transcriptional-folding-with-dangles-.patch
+	source = 0007-Do-not-fail-on-using-B-heuristic.patch
+	source = 0008-Removed-findpath.h-and-cleaned-up-remnants-of-false-.patch
+	md5sums = 7723b173de294ef96b86d94f4f6cbeb9
+	md5sums = 2f92e91e58badff10d4fe697bca3abf0
+	md5sums = dba93e6fce292b6e9b9e7e0b667e6e6c
+	md5sums = 9ae628a2c89ac2654813b87a54605966
+	md5sums = 73489a3b0f68a5bbfd158b5ea06f422a
+	md5sums = 39bd8b46857edd134671c30260dcc93c
+	md5sums = a6bab92d415092d4e47e08564ae9c48e
+	md5sums = 285cfd82e05b9e0c69d0196089d82e3b
+	md5sums = 4afda6634ea89393975b953ca7788497
+
+pkgname = kinwalker
+

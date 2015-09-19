@@ -1,0 +1,329 @@
+From 5757202e85a95f7931dab6a0caaadd18aa4fa1c1 Mon Sep 17 00:00:00 2001
+From: Ronny Lorenz <ronny@tbi.univie.ac.at>
+Date: Fri, 19 Jun 2015 19:17:46 +0200
+Subject: [PATCH 7/8] Do not fail on using 'B' heuristic!
+
+The 'B' heuristic (a.k.a. findpath) NEVER actually worked but caused the
+program to terminate with segfaults. This has finally been fixed now!
+---
+ Node.cpp | 132 ++++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 67 insertions(+), 65 deletions(-)
+
+diff --git a/Node.cpp b/Node.cpp
+index bdc092c..bc53207 100644
+--- a/Node.cpp
++++ b/Node.cpp
+@@ -182,10 +182,10 @@ void Node::GetMorganHiggsPath(std::string target){
+   int t=Node::transcribed;
+ 
+   Node::path = MorganHiggsEnergy(Node::sequence.substr(0,t),
+-				 Node::front_structure.substr(0,t),
+-				 target.substr(0,t),
+-				 Node::front_energy+Node::energy_barrier,
+-				 Node::lookahead,Node::grouping);//,Node::interrupt_trajectory);
++                                 Node::front_structure.substr(0,t),
++                                 target.substr(0,t),
++                                 Node::front_energy+Node::energy_barrier,
++                                 Node::lookahead,Node::grouping);//,Node::interrupt_trajectory);
+ }
+ 
+ void Node::GetMorganHiggsStudlaPath(std::string target){
+@@ -193,10 +193,10 @@ void Node::GetMorganHiggsStudlaPath(std::string target){
+   int t=Node::transcribed;
+ 
+   Node::path = MorganHiggsStudlaEnergy(Node::sequence.substr(0,t),
+-				 Node::front_structure.substr(0,t),
+-				 target.substr(0,t),
+-				 Node::front_energy+Node::energy_barrier,
+-				       Node::lookahead,Node::grouping);//,Node::interrupt_trajectory);
++                                 Node::front_structure.substr(0,t),
++                                 target.substr(0,t),
++                                 Node::front_energy+Node::energy_barrier,
++                                       Node::lookahead,Node::grouping);//,Node::interrupt_trajectory);
+ }
+ 
+ /**
+@@ -254,7 +254,7 @@ void Node::GetSaddleFromPath(std::pair<double,std::string> & saddle,std::pair<do
+       //if we have increased  to the size of the path, it means there is no structure that is lower, in that case retrun the front structure,
+       //as this trajectory is worthless, even when the energy barrier is higher
+       if(last_idx_of_partial_path>path_size){
+-	final_structure=std::make_pair(Node::front_energy,Node::front_structure);
++        final_structure=std::make_pair(Node::front_energy,Node::front_structure);
+         return;
+       }
+     }
+@@ -295,25 +295,27 @@ void Node::CalculateFoldingPath(Node* extremum,std::string integrated_structure)
+       p_len = bp_distance(const_cast<char*>(sequence.substr(0,t).c_str()),
+                           const_cast<char*>(Node::front_structure.c_str())) + 1;
+       p = get_path(const_cast<char*>(sequence.substr(0,t).c_str()),
+-		   const_cast<char*>(Node::front_structure.c_str()),
+-		   const_cast<char*>(integrated_structure.substr(0,t).c_str()),
+-		   Node::OptS->maxkeep);
++                   const_cast<char*>(Node::front_structure.c_str()),
++                   const_cast<char*>(integrated_structure.substr(0,t).c_str()),
++                   Node::OptS->maxkeep);
+       bool barrier_exceeded=false;
+-      for (int i=0; i<p_len; i++) {
+-	// memorize idx of structure with highest energy seen so far
+-	if (!barrier_exceeded && p[i].en > maxE) {
+-	  maxE = p[i].en;
+-	  maxE_idx = i+1;
+-          barrier_exceeded=true;
+-	}
+-	v.push_back(std::make_pair(p[i].en,p[i].s));
++      maxE_idx = 0;
++      for (int i=0; p[i].s != NULL; i++) {
++        // memorize idx of structure with highest energy seen so far
++        if (!barrier_exceeded && p[i].en > maxE) {
++          maxE = p[i].en;
++          maxE_idx = i+1;
++          //barrier_exceeded=true;
++        }
++        v.push_back(std::make_pair(p[i].en, p[i].s));
+       }
+       // add dummy entry with idx of structure with highest energy
+       v.push_back(std::make_pair(maxE_idx, ""));       
+       /* clean up space of path */
+-      for (int i=0; i<p_len; i++) free(p[i].s);
++      for (int i=0; p[i].s != NULL; i++) free(p[i].s);
+       free(p);
+       Node::path = v;
++
+     }
+ 
+     if(verbose>=3) {
+@@ -436,6 +438,7 @@ Node::FindExtremum(){
+     //only if everything is transcribed and we are moving towards the mfE
+     //done by the function CalculateFoldingPath
+     skip=false;
++
+     if(!Node::interrupt_trajectory){
+       if(node_substructure==Node::front_structure || Evaluate(node_substructure)>Node::front_energy) skip=true;
+     }
+@@ -452,17 +455,18 @@ Node::FindExtremum(){
+           barrier=barrier2;
+           combined_structure=final_structure.second;
+           if(debug) Cout("Have valid front extension with\n"+combined_structure+" "+Str(barrier));
+-	}
++        }
+       }
+     }
+     if(debug) Cout("Current combined structure and barrier\n"+combined_structure+" "+Str(barrier));
+     if(verbose>=3) Cout("Actually obtained combination:\n"+combined_structure+"\n");
+     extension_cost.push_back(barrier);
++    
+ 
+     if(verbose>=2) {
+       std::cout<<"Node "+Print(extrema[i])+" has extension cost "+Str(extension_cost.back())+" ("+Str(Node::energy_barrier)+" "+Str(Node::transcribed)+")\n";
+     }
+-    if ( barrier <=Node::energy_barrier ) {
++    if ( barrier <= Node::energy_barrier ) {
+        //1.First structure if that is suitable.
+        //2.Otherwise seconds structure, if suitable, or we won't get here
+        extrema[i]->AddToFront(combined_structure,barrier);
+@@ -488,69 +492,68 @@ static int front_count=1;
+ void
+ Node::AddToFront(std::string new_front_structure,double barrier){
+    this->Reeligify(Node::front_structure,new_front_structure);
+-
+     double new_front_energy =Evaluate(new_front_structure);
+     if ( verbose >= 1 ) {
+-         std::cout<<"Add Node ("+Print(this)+" "+Str(extension_cost.back())+" ("+Str(Node::energy_barrier)+" "+Str(Node::transcribed)+")\n";	
++         std::cout<<"Add Node ("+Print(this)+" "+Str(extension_cost.back())+" ("+Str(Node::energy_barrier)+" "+Str(Node::transcribed)+")\n";        
+          std::cout<<"src:"+Node::front_structure+" "+Str(Node::front_energy)+"\n";
+          std::cout<<"tgt:"+new_front_structure+" "+Str(new_front_energy)+"\n";
+         }
+         
+         //add the extremum to the front
+-	for (int i=this->i; i<=this->j; i++) {
+-	  for (int j=i; j<=this->j; j++) front[i][j] = true;
++        for (int i=this->i; i<=this->j; i++) {
++          for (int j=i; j<=this->j; j++) front[i][j] = true;
+         }
+         front_extrema.push_back(this);
+         Node::front_structure=new_front_structure;
+         Node::front_energy=new_front_energy;
+ 
+         if(barrier>0.0) Node::IncreaseTime(TimePassedFolding(barrier));
+-	std::string trajectory_entry=std::string();
++        std::string trajectory_entry=std::string();
+         trajectory_entry+=Node::front_structure+" ";
+-	trajectory_entry+=Str(Node::front_energy)+" ";
++        trajectory_entry+=Str(Node::front_energy)+" ";
+         trajectory_entry+=Str(Node::time)+" ";
+         trajectory_entry+=Str(barrier)+" ";
+         trajectory_entry+=Str(Node::energy_barrier)+" ";
+         trajectory_entry+=Str(Node::transcribed)+" ";
+-	trajectory.push_back(trajectory_entry);
++        trajectory.push_back(trajectory_entry);
+    
+         //and remove it and the extrema it dominates from the extrema vector 
+-	int count=0;
++        int count=0;
+         for(size_t i=0;i<extrema.size();i++){
+           if(!extrema[i]->is_included && extrema[i]->i>=this->i && extrema[i]->j<=this->j){
+             if(extrema[i]->IsMfE()) continue;
+             extrema[i]->SetIncluded(true);
+             extrema[i]->SetIneligible();
+-	    count++;
+-	  }
+-	}
+-	
++            count++;
++          }
++        }
++        
+         //print new front
+         if ( verbose >= 1 ) {
+           std::cout<<"Path to new front:\n";
+           std::cout<<FoldingPathToString(this->path)<<std::endl;
+-	  Cout("New Front\n");
++          Cout("New Front\n");
+           std::cout<<front_structure+" "+Str(front_energy)<<std::endl; 
+-	}
++        }
+ 
+-	if ( verbose >= 5 ) Cout(Node::PrintFront()+"\n");
++        if ( verbose >= 5 ) Cout(Node::PrintFront()+"\n");
+         //make all extrema eligible again.
+         if(Node::print_front_trajectory) {
+-	  std::vector<std::pair<int,int> > ext= std::vector<std::pair<int,int> >();
++          std::vector<std::pair<int,int> > ext= std::vector<std::pair<int,int> >();
+           for(size_t k=0;k<front_extrema.size();k++)ext.push_back(std::pair<int,int> (front_extrema[k]->i,front_extrema[k]->j));
+-	  Node::front_trajectory_ps+=PSFrontPlot(Node::sequence,ext);
++          Node::front_trajectory_ps+=PSFrontPlot(Node::sequence,ext);
+ 
+-	  //	  /*
++          //          /*
+          Node::front_trajectory_ps=PSFrontPlot(Node::sequence,ext);
+          Node::front_trajectory_ps+="end \n";
+-	 std::string filename="front_trajectory"+Str(front_count)+".ps";
++         std::string filename="front_trajectory"+Str(front_count)+".ps";
+          std::ofstream outfile(filename.c_str());
+          outfile << Node::front_trajectory_ps;
+          outfile.close();
+-	 front_count++;
+-	 //*/
++         front_count++;
++         //*/
+ 
+-	}
++        }
+ }
+ 
+ 
+@@ -574,7 +577,7 @@ Node::ExtendFront()
+ 
+ extern "C" {
+ void export_fold_arrays(int **f5_p, int **c_p, int **fML_p, int **fM1_p,
+-			int **indx_p, char **ptype_p);
++                        int **indx_p, char **ptype_p);
+ }
+ void
+ Node::FindLocalExtrema()
+@@ -588,8 +591,8 @@ Node::FindLocalExtrema()
+       double val = c[indx[j]+i];
+       //i and j pair AND no lonely pair
+       if(val < INF) {
+-	//Node node=Node(i, j,val);
+-	extrema.push_back(new Node(i, j,val));
++        //Node node=Node(i, j,val);
++        extrema.push_back(new Node(i, j,val));
+         if(verbose>=2) Cout(Print(extrema.back())+" "+Str(val)+"\n");
+       }
+     }
+@@ -807,11 +810,11 @@ void Node::BacktrackFront(std::pair<double,std::string> & ret,std::string node_s
+       //do nothing if the base pair is already part of basepairs
+        if(find(basepairs.begin(),basepairs.end(),bp_node[i])!=basepairs.end()) continue;
+       if(!Conflict(basepairs,bp_node[i])) {
+-	//if (debug) {
++        //if (debug) {
+         if(debug_pt) Cout("added bp "+PrintBasePair(bp_node[i])+"\n");//}
+-	basepairs.push_back(bp_node[i]);
++        basepairs.push_back(bp_node[i]);
+         int first=bp_node[i].first;
+-	int second=bp_node[i].second;
++        int second=bp_node[i].second;
+         pair_table[first]=second;
+         pair_table[second]=first;
+         //manually change front_structure to circumvent a call to BasePairListToStructure1
+@@ -846,23 +849,23 @@ void Node::BacktrackFront(std::pair<double,std::string> & ret,std::string node_s
+           if(ConformationHasPair(basepairs,stack[j])) stack.erase(stack.begin()+j);
+         }
+        
+-	std::vector<std::pair<double,std::string> > front_resolutions= std::vector<std::pair<double,std::string> >();
++        std::vector<std::pair<double,std::string> > front_resolutions= std::vector<std::pair<double,std::string> >();
+         //std::vector<std::pair<double,std::vector<std::pair<int,int> > > > front_resolutions= std::vector<std::pair<double,std::vector<std::pair<int,int> > > >();
+ 
+         //front_resolutions.push_back(make_pair(front_energy,basepairs));
+         front_resolutions.push_back(make_pair(front_energy,front_structure));//basepairs));     
+ 
+         //ensure that the base pair in front at first_idx_stack does not come from the node that stack is constructued from.
+-	std::string resolved_structure=front_structure;
++        std::string resolved_structure=front_structure;
+         for(size_t j=0;j<stack.size();j++){
+-	  //last_insertion=j;
+-	  //double resolution_energy=
++          //last_insertion=j;
++          //double resolution_energy=
+           ConstructFrontResolution(resolved_structure,new_basepairs,stack[j]);
+           front_resolutions.push_back(make_pair(FastEvaluate(),resolved_structure));
+-	  //front_resolutions.push_back(make_pair(resolution_energy,BasePairListToStructure1(Node::transcribed,new_basepairs)));
+-	} 
++          //front_resolutions.push_back(make_pair(resolution_energy,BasePairListToStructure1(Node::transcribed,new_basepairs)));
++        } 
+         //revert changes in pair_table: remove stack and add those elts of basepairs back that were removed because they conflicted with elements in stack
+-	MakePairTable(const_cast<char*>(front_structure.substr(0,Node::transcribed).c_str()));        
++        MakePairTable(const_cast<char*>(front_structure.substr(0,Node::transcribed).c_str()));        
+         if(debug_pt) std::cout<<"Pairtable after reverting changes of outside in "+PrintPairTable();
+         //add stack back to front as much as possible
+         new_basepairs=basepairs;
+@@ -876,15 +879,15 @@ void Node::BacktrackFront(std::pair<double,std::string> & ret,std::string node_s
+         //now accept the best solution in front_resolutions  and update structure, energy and bp
+         front_energy=INF;
+         front_structure=std::string(Node::transcribed,'.');
+-	for(std::vector<std::pair<double,std::string> >::iterator it=front_resolutions.begin();it!=front_resolutions.end();it++){
++        for(std::vector<std::pair<double,std::string> >::iterator it=front_resolutions.begin();it!=front_resolutions.end();it++){
+           if(it->first<front_energy){
+             front_energy=it->first;
+-	    front_structure=it->second;  
+-	  }
++            front_structure=it->second;  
++          }
+         }
+         basepairs=MakeBasePairList1(front_structure);         
+         //sync pair_table with latest front unless this was the last iteration or the latest front is already in pair_table
+-	if(i<bp_node_conflict_stacks.size()-1){
++        if(i<bp_node_conflict_stacks.size()-1){
+           MakePairTable(const_cast<char*>(front_structure.substr(0,Node::transcribed).c_str()));
+           if(debug_pt) std::cout<<"Pairtable after syncing with front resolution "+PrintPairTable();
+           if(debug_pt) std::cout<<"Basepairs "+PrintBasePairList(basepairs);
+@@ -905,7 +908,7 @@ std::string Node::BacktrackNode(Node* n){
+   }
+   else {
+     char *s = backtrack_fold_from_pair(const_cast<char*>(Node::sequence.c_str()),
+-				       n->i, n->j);
++                                       n->i, n->j);
+     std::string ss(s);
+     free(s);
+     return (ss.substr(0,Node::transcribed));
+@@ -970,7 +973,7 @@ double Node::MinimalExtensionCost(){
+ void Node::RaiseEnergyBarrier(){
+    Node::energy_barrier += 1.0;
+    double minimial_extension_cost=MinimalExtensionCost();
+-   if(Node::energy_barrier<minimial_extension_cost && minimial_extension_cost>=0.0) Node::energy_barrier = ceil(minimial_extension_cost);
++   if(Node::energy_barrier < minimial_extension_cost && minimial_extension_cost>=0.0) Node::energy_barrier = ceil(minimial_extension_cost);
+    Node * n;
+    int count=0;
+    for(size_t i=0;i<extrema.size();i++){
+@@ -1111,7 +1114,6 @@ void Node::Reeligify(std::string old_structure,std::string new_structure){
+       count++;
+     }
+   }
+-  //Cout("Reeligified "+Str(count)+" extrema after adding "+Node::Print(this)+"\n");
+ }
+ 
+ void Node::SetIneligible(){
+-- 
+2.5.2
+

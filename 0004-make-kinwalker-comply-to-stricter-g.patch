@@ -1,0 +1,75 @@
+From 561039364ab627c332e4debef3c3cc78a571e608 Mon Sep 17 00:00:00 2001
+From: Ronny Lorenz <ronny@tbi.univie.ac.at>
+Date: Tue, 28 Jan 2014 16:56:01 +0100
+Subject: [PATCH 4/8] make kinwalker comply to stricter g++
+
+---
+ Energy.cpp    | 3 ++-
+ MorganHiggs.h | 4 ++--
+ Node.h        | 1 +
+ Util.h        | 3 +++
+ 4 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/Energy.cpp b/Energy.cpp
+index 67659de..ae72679 100644
+--- a/Energy.cpp
++++ b/Energy.cpp
+@@ -2,9 +2,10 @@
+   Last changed Time-stamp: <2006-10-13 22:34:37 xtof>
+   $Id: Energy.cpp,v 1.12 2007/11/03 16:45:58 Kinwalker Exp $
+ */
++#include <cstdlib>
+ #include <iostream>
+ #include <string>
+-
++#include <cstring>
+ #include "Energy.h"
+ 
+ 
+diff --git a/MorganHiggs.h b/MorganHiggs.h
+index 76a15f3..f069429 100644
+--- a/MorganHiggs.h
++++ b/MorganHiggs.h
+@@ -133,9 +133,9 @@ public:
+ 
+   void AddInside(std::pair<int,int> bp,char first,char second);
+ 
+-  void AddOutside(int first,int second,char first,char second);
++  void AddOutside(int first,int second,char cfirst,char csecond);
+ 
+-  void AddInside(int first,int second,char first,char second);
++  void AddInside(int first,int second,char cfirst,char csecond);
+ 
+ 
+  static  bool IsGCPair(char first,char second);
+diff --git a/Node.h b/Node.h
+index 3f99d23..43b2a3f 100644
+--- a/Node.h
++++ b/Node.h
+@@ -25,6 +25,7 @@
+ #include <iomanip>
+ #include <limits>
+ #include <string>
++#include <cstring>
+ #include <vector>
+ 
+ 
+diff --git a/Util.h b/Util.h
+index 5511ea0..a60f7c4 100644
+--- a/Util.h
++++ b/Util.h
+@@ -1,8 +1,11 @@
+ #include <string>
++#include <cstring>
+ #include <vector>
+ #include <sstream>
+ #include <cstdarg>
+ #include <iostream>
++#include <cstdlib>
++#include <algorithm>
+ 
+ void Cout(std::string s);
+ 
+-- 
+2.5.2
+

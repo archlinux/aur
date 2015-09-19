@@ -1,0 +1,91 @@
+From 9b30c38b2abfc7b6db04290aef96cee9a4c40aeb Mon Sep 17 00:00:00 2001
+From: Ronny Lorenz <ronny@tbi.univie.ac.at>
+Date: Fri, 19 Jun 2015 19:37:25 +0200
+Subject: [PATCH 8/8] Removed findpath.h and cleaned up remnants of false usage
+ of get_path()
+
+---
+ Node.cpp   | 14 ++++++--------
+ findpath.h | 28 ----------------------------
+ 2 files changed, 6 insertions(+), 36 deletions(-)
+ delete mode 100644 findpath.h
+
+diff --git a/Node.cpp b/Node.cpp
+index bc53207..36d122d 100644
+--- a/Node.cpp
++++ b/Node.cpp
+@@ -11,6 +11,10 @@
+ 
+ #include "template_utils.c"
+ 
++extern "C" {
++#include "findpath.h"
++}
++
+ #define MS_PER_TIME_UNIT .0001
+ #define TIME_VS_DELTAG_DY_DX (8.0/11.0)
+ #define EPSILON .00000000001
+@@ -288,24 +292,18 @@ void Node::CalculateFoldingPath(Node* extremum,std::string integrated_structure)
+       path_t *p;
+       int p_len = 0;
+       double maxE = -INF;//std::numeric_limits<double>::max();
+-      int maxE_idx = -1;
++      int maxE_idx = 0;
+       int t = Node::transcribed;
+       std::vector<std::pair<double,std::string> > v;
+-      /* length of path always is the base pair distance + 1 */
+-      p_len = bp_distance(const_cast<char*>(sequence.substr(0,t).c_str()),
+-                          const_cast<char*>(Node::front_structure.c_str())) + 1;
+       p = get_path(const_cast<char*>(sequence.substr(0,t).c_str()),
+                    const_cast<char*>(Node::front_structure.c_str()),
+                    const_cast<char*>(integrated_structure.substr(0,t).c_str()),
+                    Node::OptS->maxkeep);
+-      bool barrier_exceeded=false;
+-      maxE_idx = 0;
+       for (int i=0; p[i].s != NULL; i++) {
+         // memorize idx of structure with highest energy seen so far
+-        if (!barrier_exceeded && p[i].en > maxE) {
++        if(p[i].en > maxE){
+           maxE = p[i].en;
+           maxE_idx = i+1;
+-          //barrier_exceeded=true;
+         }
+         v.push_back(std::make_pair(p[i].en, p[i].s));
+       }
+diff --git a/findpath.h b/findpath.h
+deleted file mode 100644
+index 2e27237..0000000
+--- a/findpath.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-/*
+-* file borrowed from ViennaRNA Package 2.0.4
+-* (this file may be removed completely since it is also present in the ViennaRNA includes
+-*/
+-#ifndef __VIENNA_RNA_PACKAGE_FIND_PATH_H__
+-#define __VIENNA_RNA_PACKAGE_FIND_PATH_H__
+-
+-#include "data_structures.h"
+-
+-/**
+- *  \file findpath.h
+- *  \brief Compute direct refolding paths between two secondary structures
+- */
+-
+-int     find_saddle(char *seq,
+-                    char *struc1,
+-                    char *struc2,
+-                    int max);
+-
+-
+-path_t* get_path( char *seq,
+-                  char *s1,
+-                  char* s2,
+-                  int maxkeep);
+-
+-void    free_path(path_t *path);
+-
+-#endif
+-- 
+2.5.2
+
