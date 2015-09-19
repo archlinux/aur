@@ -1,0 +1,32 @@
+# Maintainer: Ronny Lorenz <ronny at tbi dot univie dot ac dot at>
+
+pkgname=infernal
+pkgver=1.1.1
+pkgrel=2
+pkgdesc="Search DNA sequence databases for RNA structure and sequence similarities using covariance models (CMs)"
+arch=('x86_64' 'i686')
+license=('GPL3')
+url="http://infernal.janelia.org/"
+depends=('glibc')
+optdepends=()
+makedepends=()
+provides=()
+source=("http://selab.janelia.org/software/infernal/${pkgname}-${pkgver}.tar.gz")
+md5sums=( 'c5bff318f78c194a0d9b2a6bf1abb169')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr || return 1
+  make || return 1
+}
+
+#check(){
+#  cd "${srcdir}/${pkgname}-${pkgver}"
+#  make check
+#}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install || return 1
+}
+
