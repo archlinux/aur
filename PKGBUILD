@@ -6,14 +6,14 @@
 pkgname=teensyduino
 pkgver=1.24
 _arduino=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
 url="http://www.pjrc.com/teensy/teensyduino.html"
 options=(!strip staticlibs)
 license=('GPL' 'LGPL' 'custom')
 depends=('gtk2' 'libusb-compat' 'libusb' 'java-runtime' 'libpng12' 'libsm'
-         'desktop-file-utils' 'libtinfo' 'giflib')
+         'desktop-file-utils' 'giflib' 'avrdude')
 makedepends=('xorg-server-xvfb' 'libxft' 'xdotool' 'icoutils')
 provides=('arduino')
 conflicts=('arduino' 'teensy-loader-cli')
@@ -86,6 +86,10 @@ package() {
   # at least support the FHS a little bit
   ln -s /usr/share/arduino/arduino "${pkgdir}/usr/bin/arduino"
   ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
+
+  # fix avrdude
+  rm -f "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"{,_bin}
+  ln -s /usr/bin/avrdude "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
 
   # desktop icon
   for size in 16 32 48 256; do
