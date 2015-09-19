@@ -1,9 +1,9 @@
 #Maintainer: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=yle-dl
-pkgver=2.7.2
+pkgver=2.8.1
 pkgrel=1
-_gitid=e9b547b
+_gitid=778c39b
 pkgdesc="Download video and audio from YLE Areena."
 arch=("any")
 url="http://aajanki.github.io/yle-dl/"
@@ -13,11 +13,11 @@ optdepends=('python2-youtube-dl: new lightweight backend'
             'rtmpdump: old rtmpdump backend')
 conflicts=('rtmpdump-yle')
 replaces=('rtmpdump-yle')
-_adobehdsversion=2015.04.25
+_adobehdsversion=2015.09.18
 source=("yle-dl-${pkgver}.tar.gz::https://github.com/aajanki/yle-dl/tarball/${pkgver}"
-        "AdobeHDS-${_adobehdsversion}.php::https://raw.githubusercontent.com/K-S-V/Scripts/9c1afcc4b452cb9bf75f8653495c80180e2bf086/AdobeHDS.php")
-md5sums=('c5ed8912b9dd0aa9e3bcb0fa17f5344a'
-         'a7dcf3b7d3c6330bbe7b1df1ee99caa1')
+        "AdobeHDS-${_adobehdsversion}.php::https://raw.githubusercontent.com/K-S-V/Scripts/f7128c622047b3312e1aa4cfb91cd566d8b76700/AdobeHDS.php")
+md5sums=('23a5934c394b040e9548ef1b00350afc'
+         'b08a4344f44007ed78df5565c54b8d19')
 
 prepare() {
   cd "${srcdir}/aajanki-${pkgname}-${_gitid}"
