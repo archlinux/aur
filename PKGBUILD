@@ -3,14 +3,14 @@
 #
 pkgname=libtinfo-5
 pkgver=5
-pkgrel=7
+pkgrel=8
 pkgdesc="symlink to ncurses for use in cuda and other packages (legacy)"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
 license=('unknown')
 depends=('ncurses<6.0')
 conflicts=('libtinfo')
-_ncurses="$(pacman -Q $depends | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
+_ncurses="$(pacman -Q ${depends[0]/<*/} | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
 
 package() {
   install -d "$pkgdir"/usr/lib
