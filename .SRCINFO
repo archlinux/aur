@@ -1,7 +1,7 @@
 pkgbase = pyspellbook
 	pkgdesc = A PDF spellbook creation utility for d20 games in python
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://christofsteel.github.io/pySpellbook/
 	arch = any
 	license = apache2
@@ -15,7 +15,7 @@ pkgbase = pyspellbook
 	optdepends = python-weasyprint: better fallback rendering
 	options = !emptydirs
 	source = https://github.com/christofsteel/pySpellbook/archive/v0.8.0.tar.gz
-	md5sums = 5aea1584119eb7a398356c65b5f23c41
+	md5sums = 26886fff8bc7185f469d8a7321411a15
 
 pkgname = pyspellbook
 

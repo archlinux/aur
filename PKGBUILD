@@ -2,7 +2,7 @@
 pkgname=pyspellbook
 pkgname_=pySpellbook
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A PDF spellbook creation utility for d20 games in python "
 arch=("any")
 url="http://christofsteel.github.io/pySpellbook/"
@@ -19,6 +19,6 @@ package() {
   cd "$srcdir/${pkgname_}-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-md5sums=('5aea1584119eb7a398356c65b5f23c41')
 
 # vim:set ts=2 sw=2 et:
+md5sums=('26886fff8bc7185f469d8a7321411a15')
