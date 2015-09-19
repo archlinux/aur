@@ -4,7 +4,7 @@
 
 pkgname=mutt-sidebar
 pkgver=1.5.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Small but very powerful text-based mail client'
 url='http://www.mutt.org/'
 license=('GPL')
