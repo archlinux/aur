@@ -1,12 +1,12 @@
 # Maintainer: Adrien Oliva <yapbreak@yapbreak.fr>
 pkgname="pacmanhealth-git"
-pkgver="1.0.0.8g4f9f9d4"
+pkgver="1.0.0.9ga8ef3ef"
 pkgrel="1"
 pkgdesc="Pacman health monitoring system"
 arch=('any')
 url="https://redmine.yapbreak.fr/projects/pacman-health"
 license=('GPL3')
-depends=('pacman' 'sed' 'coreutils' 'util-linux')
+depends=('pacman' 'sed' 'coreutils' 'util-linux' 'sudo')
 optdepends=('postfix: send report by mail'
             'libnotify: get desktop notification'
             'recode: get diff in html mail version')
