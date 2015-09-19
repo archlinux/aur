@@ -2,7 +2,7 @@
 # Based on heirloom-mailx PKGBUILD
 
 pkgname=s-nail-git
-pkgver=14.8.3_x15_g47a1a5c
+pkgver=14.8.5_x1_g40785bc
 pkgrel=1
 pkgdesc="Commandline utility for sending and receiving email"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('smtp-forwarder: alternatives for sending mail')
 provides=('mailx' 'heirloom-mailx')
 conflicts=('mailx' 'heirloom-mailx')
 backup=('etc/mail.rc')
-source=("git+https://gitlab.com/s-nail/s-nail.git")
+source=("git+https://gitlab.com/sdaoden/s-nail.git")
 sha1sums=('SKIP')
 
 pkgver() {

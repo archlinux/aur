@@ -16,7 +16,7 @@ pkgbase = s-nail-git
 	conflicts = mailx
 	conflicts = heirloom-mailx
 	backup = etc/mail.rc
-	source = git+https://gitlab.com/s-nail/s-nail.git
+	source = git+https://gitlab.com/sdaoden/s-nail.git
 	sha1sums = SKIP
 
 pkgname = s-nail-git
