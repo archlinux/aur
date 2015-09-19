@@ -2,7 +2,7 @@
 
 pkgname=snake-ncurses
 pkgver=8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="snake game clone written in C and ncurses"
 arch=(i686 x86_64)
 license=('GPL3')
