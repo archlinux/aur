@@ -1,0 +1,15 @@
+pkgbase = boost-numeric-bindings-git
+	pkgdesc = Boost Bindings is a bindings library (not just) for Boost.Ublas. It offers an easy way of calling BLAS, LAPACK, UMFPACK, MUMPS and many other mature legacy numerical codes from within C++.
+	pkgver = 0.52.1f994e8
+	pkgrel = 1
+	url = http://mathema.tician.de/software/boost-numeric-bindings/
+	arch = any
+	license = Boost Software License 1.0
+	makedepends = git
+	depends = boost
+	conflicts = boost-numeric-bindings-svn
+	source = boost-numeric-bindings::git+http://git.tiker.net/trees/boost-numeric-bindings.git
+	md5sums = SKIP
+
+pkgname = boost-numeric-bindings-git
+
