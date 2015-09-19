@@ -1,0 +1,13 @@
+--- src/mutrace-0.1/backtrace-symbols.c	2009-09-29 23:30:08.000000000 +0200
++++ backtrace-symbols.c	2015-09-19 15:28:02.213992410 +0200
+@@ -49,8 +49,9 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <execinfo.h>
++#include "config.h"
+ #include <bfd.h>
+-#include <libiberty.h>
++#include <libiberty/libiberty.h>
+ #include <dlfcn.h>
+ #include <link.h>
+ #if 0
