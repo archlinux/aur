@@ -1,0 +1,22 @@
+diff -Naur a/vpnc.c b/vpnc.c
+--- a/vpnc.c	2015-09-19 02:28:38.374444403 +0200
++++ b/vpnc.c	2015-09-19 02:30:36.951980484 +0200
+@@ -1203,7 +1203,17 @@
+ 	assert(a->af == isakmp_attr_16);
+ 	assert(a->u.attr_16 == IKE_LIFE_TYPE_SECONDS || a->u.attr_16 == IKE_LIFE_TYPE_K);
+ 	assert(a->next != NULL);
+-	assert(a->next->type == IKE_ATTRIB_LIFE_DURATION);
++
++	/*
++	 * Workaround for broken RESPONDER_LIFETIME payload from Fortigate
++	 * firewall. If the next attribute is not the LIFE_DURATION, then
++	 * just ignore this payload and move on.
++	 */
++	if (a->next->type != IKE_ATTRIB_LIFE_DURATION) {
++		DEBUG(2, printf("got bogus type %d instead of IKE_ATTRIB_LIFE_DURATION. Ignoring this payload.\n",
++				a->next->type));
++		return;
++	}
+ 
+ 	if (a->next->af == isakmp_attr_16)
+ 		value = a->next->u.attr_16;

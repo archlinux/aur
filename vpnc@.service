@@ -1,0 +1,10 @@
+[Unit]
+Description=VPNC connection to %i
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/vpnc --pid-file=/run/vpnc@%i.pid /etc/vpnc/%i.conf
+PIDFile=/run/vpnc@%i.pid
+
+[Install]
+WantedBy=multi-user.target
