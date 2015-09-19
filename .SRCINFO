@@ -1,0 +1,18 @@
+pkgbase = net-tools-mptcp
+	pkgdesc = Configuration tools for Linux networking, with Multipath TCP support
+	pkgver = 0.90.585.1830361
+	pkgrel = 1
+	url = http://multipath-tcp.org/pmwiki.php/Users/Tools
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = net-tools
+	conflicts = mptcp-net-tools
+	options = !makeflags
+	source = git://github.com/multipath-tcp/net-tools#branch=mptcp_v0.90
+	sha1sums = SKIP
+
+pkgname = net-tools-mptcp
+
