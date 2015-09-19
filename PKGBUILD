@@ -8,12 +8,11 @@ pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.90
 pkgver=0.90.486957.5e606ce
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
-optdepends=('net-tools-mptcp: for Multipath TCP support in netstat')
 options=('!strip')
 source=("git://github.com/multipath-tcp/mptcp#branch=mptcp_v${_mptcpv}"
         # the main kernel config files
@@ -95,7 +94,8 @@ _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'net-tools-mptcp: for Multipath TCP support in netstat')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 

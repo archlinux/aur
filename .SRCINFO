@@ -1,7 +1,7 @@
 pkgbase = linux-mptcp
 	pkgdesc = Linux kernel, modules, headers and docs with MultiPath TCP support
 	pkgver = 0.90.486957.5e606ce
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.multipath-tcp.org/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = linux-mptcp
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = git
-	optdepends = net-tools-mptcp: for Multipath TCP support in netstat
 	options = !strip
 	source = git://github.com/multipath-tcp/mptcp#branch=mptcp_v0.90
 	source = config
@@ -33,6 +32,7 @@ pkgname = linux-mptcp
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = net-tools-mptcp: for Multipath TCP support in netstat
 	backup = etc/mkinitcpio.d/linux-mptcp.preset
 
 pkgname = linux-mptcp-headers
