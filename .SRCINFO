@@ -13,6 +13,7 @@ pkgbase = shotcut-git
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols
 	depends = qt5-webkit
+	depends = qt5-websockets
 	depends = qt5-x11extras
 	depends = mlt
 	depends = ffmpeg
