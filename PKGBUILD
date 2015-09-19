@@ -19,11 +19,11 @@ install="${pkgname}.install"
 md5sums=('SKIP'
          '26f2ec1664c28d019afc897433112283')
 
-pkgver()
-{
-  cd "$srcdir/$pkgname"
-  git shortlog | head -n 1 | tr -Cd "[:digit:]"
-}
+#pkgver()
+#{
+  #cd "$srcdir/$pkgname"
+  #git shortlog | head -n 1 | tr -Cd "[:digit:]"
+#}
  
 package()
  {
