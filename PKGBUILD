@@ -6,7 +6,7 @@
 _pkgname=conky
 pkgname=conky-cli
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
 url='http://conky.sourceforge.net/'
 license=('BSD' 'GPL')
