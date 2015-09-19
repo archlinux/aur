@@ -5,7 +5,7 @@
 pkgbase=python-billiard
 pkgname=('python-billiard' 'python2-billiard')
 pkgver=3.3.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Python multiprocessing fork with improvements and bugfixes."
 arch=('i686' 'x86_64')
 url="http://pypi.python.org/pypi/billiard"
@@ -43,7 +43,7 @@ package_python-billiard() {
   install -Dm0664 "$srcdir/billiard-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Avoid conflicts
-  mv "$pkgdir"/usr/lib/python3.4/site-packages/{funtests,billiard/}
+  mv "$pkgdir"/usr/lib/python3.5/site-packages/{funtests,billiard/}
 }
 
 package_python2-billiard() {
