@@ -9,8 +9,8 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="zfs-lts"
-pkgver=0.6.5_3.14.52_1
-pkgrel=1
+pkgver=0.6.5.1_3.14.52_1
+pkgrel=2
 
 # Used incase the i686 and x86_64 linux packages get out of sync with the
 # PKGREL. This occurred on January 31, 2014 where i686 was versioned at
@@ -33,7 +33,7 @@ depends=("spl-lts" "zfs-utils-lts" "linux-lts=${_kernel_version}")
 makedepends=("linux-lts-headers=${_kernel_version}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.tar.gz")
+source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.1.tar.gz")
 groups=("archzfs-lts")
 license=("CDDL")
 install=zfs.install
@@ -41,7 +41,7 @@ provides=("zfs")
 conflicts=("zfs" "zfs-git")
 
 build() {
-    cd "${srcdir}/zfs-0.6.5"
+    cd "${srcdir}/zfs-0.6.5.1"
     ./autogen.sh
 
     ./configure --prefix=/usr \
@@ -51,7 +51,7 @@ build() {
                 --datadir=/usr/share \
                 --includedir=/usr/include \
                 --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5 \
+                --libexecdir=/usr/lib/zfs-0.6.5.1 \
                 --with-config=kernel \
                 --with-linux=/usr/lib/modules/${_kernel_version_full}-lts/build
 
@@ -59,7 +59,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/zfs-0.6.5"
+    cd "${srcdir}/zfs-0.6.5.1"
     make DESTDIR="${pkgdir}" install
 
     cp -r "$pkgdir"/{lib,usr}
@@ -67,4 +67,4 @@ package() {
 
     sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/${_kernel_version_full}-lts/Module.symvers
 }
-sha256sums=('b38e9c04e9e7e1930adbc16b694f2401812e7674ae3bb526098a2a7c6435534d')
+sha256sums=('42895af929f3929a83ab150f2038d572cae82a3eec06b286c91a884f73c4a9db')
