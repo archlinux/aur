@@ -5,7 +5,7 @@
 pkgbase=python-speaklater
 pkgname=('python2-speaklater' 'python-speaklater')
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Implements a lazy string for python useful for use with gettext."
 arch=('any')
 url="http://pypi.python.org/pypi/speaklater"
