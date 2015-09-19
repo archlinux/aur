@@ -1,10 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
 pkgbase=python-amqp
 pkgname=('python-amqp' 'python2-amqp')
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
 url="http://github.com/celery/py-amqp"
