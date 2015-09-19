@@ -1,0 +1,20 @@
+pkgbase = 2048-qt
+	pkgdesc = The 2048 number game implemented in Qt
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/xiaoyong/2048-Qt
+	install = 2048-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = xdg-utils
+	source = https://github.com/xiaoyong/2048-Qt/archive/v0.1.6.tar.gz
+	md5sums = cca8ebf496c70a2c1a56fbe9e893062b
+
+pkgname = 2048-qt
+
