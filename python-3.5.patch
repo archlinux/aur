@@ -1,0 +1,36 @@
+From 2db092b1f60b3677a2d44d5563bec216ae687e2f Mon Sep 17 00:00:00 2001
+From: David Gobbi <david.gobbi@gmail.com>
+Date: Mon, 14 Sep 2015 21:44:36 -0600
+Subject: [PATCH] FindPython{Interp,Libs}: Add versions 3.5 and 3.6
+
+---
+ Modules/FindPythonInterp.cmake | 2 +-
+ Modules/FindPythonLibs.cmake   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Modules/FindPythonInterp.cmake b/Modules/FindPythonInterp.cmake
+index 8784e18..879192e 100644
+--- a/Modules/FindPythonInterp.cmake
++++ b/Modules/FindPythonInterp.cmake
+@@ -51,7 +51,7 @@ unset(_Python_NAMES)
+ 
+ set(_PYTHON1_VERSIONS 1.6 1.5)
+ set(_PYTHON2_VERSIONS 2.7 2.6 2.5 2.4 2.3 2.2 2.1 2.0)
+-set(_PYTHON3_VERSIONS 3.4 3.3 3.2 3.1 3.0)
++set(_PYTHON3_VERSIONS 3.6 3.5 3.4 3.3 3.2 3.1 3.0)
+ 
+ if(PythonInterp_FIND_VERSION)
+     if(PythonInterp_FIND_VERSION_COUNT GREATER 1)
+diff --git a/Modules/FindPythonLibs.cmake b/Modules/FindPythonLibs.cmake
+index b80d3ce..d01fae4 100644
+--- a/Modules/FindPythonLibs.cmake
++++ b/Modules/FindPythonLibs.cmake
+@@ -64,7 +64,7 @@ set(CMAKE_FIND_FRAMEWORK LAST)
+ 
+ set(_PYTHON1_VERSIONS 1.6 1.5)
+ set(_PYTHON2_VERSIONS 2.7 2.6 2.5 2.4 2.3 2.2 2.1 2.0)
+-set(_PYTHON3_VERSIONS 3.4 3.3 3.2 3.1 3.0)
++set(_PYTHON3_VERSIONS 3.6 3.5 3.4 3.3 3.2 3.1 3.0)
+ 
+ if(PythonLibs_FIND_VERSION)
+     if(PythonLibs_FIND_VERSION_COUNT GREATER 1)
