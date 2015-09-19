@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r4403.f16b740
+pkgver=r4510.cc01e74
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('any')
@@ -55,17 +55,17 @@ prepare() {
   # /usr/i686-w64-mingw32/include.
   find src \( -name '*.c' -or -name '*.h' -or -name '*.cpp' \) \
     -exec sed -i 's@#include <jansson/@#include <@' {} \;
-
-  # Set DISABLE_HTTP and DISABLE_TWITCH if we don't want Twitch support.
-  if [ $_enable_twitch -ne 1 ]; then
-    sed -i 's@#add_definitions(-DDISABLE_HTTP -DDISABLE_TWITCH)@add_definitions(-DDISABLE_HTTP -DDISABLE_TWITCH)@' CMakeLists.txt
-  fi
 }
 
 build() {
   cd "$srcdir/$pkgname"
 
-  cmake -DCMAKE_TOOLCHAIN_FILE=CMakeLists_mingw.txt -DCMAKE_BUILD_TYPE=Debug .
+  local opts=''
+  if [ $_enable_twitch -ne 1 ]; then
+    opts+='-DDISABLE_HTTP_TWITCH=1'
+  fi
+
+  cmake -DCMAKE_TOOLCHAIN_FILE=CMakeLists_mingw.txt -DCMAKE_BUILD_TYPE=Debug $opts .
   make
 
   # Create g2.dat. See the comment in the package() function for why we need to
