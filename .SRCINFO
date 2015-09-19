@@ -1,7 +1,7 @@
 pkgbase = cgames
 	pkgdesc = Collection of three ncurses games. csokoban (sokoban), cmines (minesweeper) and cblocks (sliding-block puzzles).
 	pkgver = 2.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.muppetlabs.com/~breadbox/software/cgames.html
 	arch = i686
 	arch = x86_64
