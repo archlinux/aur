@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/newsbeuter"
-  sed -i "s#ncursesw5#ncursesw6#" config.sh
+  sed -i "s#ncursesw5#ncursesw6#g" config.sh
   ./config.sh
   make
   make doc
