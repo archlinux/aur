@@ -1,4 +1,4 @@
-# Maintainer: Allen Li <darkfeline@abagofapples.com>
+# Maintainer: Allen Li <darkfeline@felesatra.moe>
 pkgname=python-pyglet-hg
 pkgver=r3027.1f8a12c9891a
 pkgrel=1
