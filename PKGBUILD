@@ -3,7 +3,7 @@
 
 pkgname=networkmanager-openswan
 _pkgname=NetworkManager-openswan
-pkgver=1.0.2
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="NetworkManager plugin for IPSec VPN tunnels"
 arch=('i686' 'x86_64' 'mips64el')
@@ -35,4 +35,4 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
-sha512sums=('b1b5b7f8085c1b7ff48970416b527cf28ca617c9073115c0753e36c9f0aa45961febe82a73aa77e51feca677ef5ac3e6c8c7c6d9601b12ecb2eeea8c56899d07')
+sha512sums=('e1f4fd9fe6e535fa717deb862cbf08e73e5f66a7a3d8ca328f653f009229a3a811de5157f641588a884528a8c9e2d63b22759864fa4d02276b1cf0721c8932ce')
