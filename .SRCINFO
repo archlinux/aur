@@ -1,0 +1,13 @@
+pkgbase = mosml
+	pkgdesc = Moscow ML is a light-weight implementation of Standard ML (SML)
+	pkgver = 2.10.1
+	pkgrel = 1
+	url = http://mosml.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/kfl/mosml/archive/ver-2.10.1.tar.gz
+	md5sums = 40426700791760ec25aaecc06dcfc2d9
+
+pkgname = mosml
+
