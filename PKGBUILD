@@ -6,7 +6,7 @@
 pkgbase=python-nose
 pkgname=('python-nose' 'python2-nose' 'python-nose-doc')
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
 url='http://readthedocs.org/docs/nose/'
