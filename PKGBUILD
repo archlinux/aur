@@ -4,7 +4,7 @@
 set -u
 pkgname='ngp'
 pkgver='1.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='ncurses grep tool'
 arch=('i686' 'x86_64')
 url="https://github.com/jonathanklee/${pkgname}"
