@@ -3,7 +3,7 @@
 
 pkgname=malaga
 pkgver=7.12
-pkgrel=5
+pkgrel=6
 pkgdesc="A software for the development and application of grammars that are used for the analysis of words and sentences of natural languages."
 arch=('i686' 'x86_64')
 url="http://home.arcor.de/bjoern-beutel/malaga/"
@@ -12,7 +12,7 @@ depends=('gtk2')
 makedepends=('texinfo')
 options=(!libtool)
 install=malaga.install
-source=(http://home.arcor.de/bjoern-beutel/${pkgname}/${pkgname}-${pkgver}.tgz)
+source=(http://ftp.funet.fi/pub/mirrors/ftp.debian.org/debian/pool/main/m/malaga/malaga_7.12.orig.tar.gz)
 md5sums=('873b292d923e2d1c0643769aa58c1882')
 
 build() {
