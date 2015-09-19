@@ -1,0 +1,21 @@
+pkgbase = whistle-git
+	pkgdesc = a curses-based commandline audio (mp3/ogg/flac) player
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/ap0calypse/whistle
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = pacman
+	depends = perl-curses-ui
+	depends = perl-mp3-info
+	depends = perl-file-mimeinfo
+	depends = mplayer
+	depends = perl-ogg-vorbis-header-pureperl
+	depends = perl-audio-flac-header
+	source = whistle-git::git://github.com/ap0calypse/whistle.git
+	md5sums = SKIP
+
+pkgname = whistle-git
+
