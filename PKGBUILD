@@ -5,6 +5,7 @@
 pkgname=adom-noteye
 pkgver=1.15.2
 _release=r60
+_date=2015/08/23
 pkgrel=1
 pkgdesc="roguelike game with a quest-centric, plot driven structure"
 arch=('i686' 'x86_64')
@@ -14,8 +15,8 @@ url="http://www.adom.de/home/index.html"
 license=('custom: "adom"')
 source=(LICENSE
         adom-noteye.sh)
-source_i686+=(http://ams2.dl.dbolical.com/2015/08/23/adom_noteye_linux_ubuntu_32_${_release}_pub.tar.gz)
-source_x86_64+=(http://ams2.dl.dbolical.com/2015/08/23/adom_noteye_linux_ubuntu_64_${_release}_pub.tar.gz)
+source_i686+=(http://ams2.dl.dbolical.com/${_date}/adom_noteye_linux_ubuntu_32_${_release}_pub.tar.gz)
+source_x86_64+=(http://ams2.dl.dbolical.com/${_date}/adom_noteye_linux_ubuntu_64_${_release}_pub.tar.gz)
 sha1sums=('51d28fe3f0420cd354113fd7ceb2a1a7abf1b069'
           'd1d1a279e6d4d296f09519381674b5ea99007599')
 sha1sums_i686=('72febc188d80daa01b3a34fa2d6449b4c45826f9')
