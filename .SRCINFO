@@ -1,14 +1,14 @@
 pkgbase = mapbox-studio
 	pkgdesc = Vector tile driven map design
-	pkgver = 0.2.7
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://mapbox.com/mapbox-studio/
 	arch = x86_64
 	license = BSD
 	makedepends = unzip
-	noextract = mapbox-studio-linux-x64-v0.2.7.zip
-	source = https://mapbox.s3.amazonaws.com/mapbox-studio/mapbox-studio-linux-x64-v0.2.7.zip
-	sha1sums = 671583b64167205ac6b1008f95e7176f53db897f
+	noextract = mapbox-studio-linux-x64-v0.3.0.zip
+	source = https://mapbox.s3.amazonaws.com/mapbox-studio/mapbox-studio-linux-x64-v0.3.0.zip
+	sha1sums = 7b584166291879a64dfd0cce1dc3cb8bbd3403ec
 
 pkgname = mapbox-studio
 
