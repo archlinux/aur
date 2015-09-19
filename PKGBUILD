@@ -1,10 +1,12 @@
+# Maintainer: Mohammad AlSaleh <CE.Mohammad.AlSaleh@gmail.com>
+
 pkgbase=saldl-git
 pkgname=("$pkgbase")
-pkgver=v12.1.g06caf16
+pkgver=v15.1.gc4948bf
 pkgrel=1
 url="https://saldl.github.io"
 pkgdesc="A CLI downloader optimized for speed and early preview, based on libcurl."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('AGPL')
 depends=('curl' 'libevent')
 makedepends=('python' 'git' 'asciidoc')
