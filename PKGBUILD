@@ -6,10 +6,10 @@ pkgname=adom-noteye
 pkgver=1.15.2
 _release=r60
 _date=2015/08/23
-pkgrel=1
+pkgrel=2
 pkgdesc="roguelike game with a quest-centric, plot driven structure"
 arch=('i686' 'x86_64')
-depends=('ncurses' 'mesa' 'lua51' 'libtinfo' 'libcaca' 'libmad' 'fluidsynth'
+depends=('mesa' 'lua51' 'libtinfo-5' 'libcaca' 'libmad' 'fluidsynth'
         'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'sdl2_ttf' 'zlib') # 'libpng12' (adom sdl2 link against it)
 url="http://www.adom.de/home/index.html"
 license=('custom: "adom"')
