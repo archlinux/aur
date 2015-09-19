@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-put-window-git
 	makedepends = git
 	depends = gnome-shell
 	depends = libwnck3
-	source = gnome-shell-extension-put-window-git::git+https://github.com/negesti/gnome-shell-extensions-negesti.git#branch=feature/gnome-shell-3.16
+	source = gnome-shell-extension-put-window-git::git+https://github.com/negesti/gnome-shell-extensions-negesti.git#branch=master
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-put-window-git

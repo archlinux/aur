@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=gnome-shell-extension-put-window-git
-pkgver=r244.6800dc2
+pkgver=r257.07b0dee
 pkgrel=1
 pkgdesc="Makes window movement a lot easier. Can be compared with a basic version of the compiz grid plugin."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('gnome-shell' 'libwnck3')
 makedepends=('git')
 install=gnome-shell-extension-put-window.install
-source=("$pkgname::git+https://github.com/negesti/gnome-shell-extensions-negesti.git#branch=feature/gnome-shell-3.16")
+source=("$pkgname::git+https://github.com/negesti/gnome-shell-extensions-negesti.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
