@@ -1,6 +1,6 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=rmilter
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 epoch=
 pkgdesc="Another sendmail milter for different mail checks."
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/vstakhov/${pkg
         "${pkgname}.service"
 )
 
-sha256sums=('e1f0101292b2717912d7d07d0a21654cca96068b5f03b8b2501066e980291491'
+sha256sums=('9980e2e8bfed17489e76d672757eb1928846a9ba3b8ff8592549b5d7b3c59159'
             'c53ae6a6c323440e0f1f1d22a985878f3022300402bbee0b99109fe8dfc39c14'
 )
 
