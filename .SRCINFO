@@ -1,0 +1,15 @@
+pkgbase = snoreport
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://www.bioinf.uni-leipzig.de/Software/snoReport/
+	arch = x86_64
+	arch = i686
+	license = Custom
+	depends = viennarna
+	source = http://www.bioinf.uni-leipzig.de/Software/snoReport/SnoReport-1.3.tar.gz
+	source = buildfix.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = snoreport
+

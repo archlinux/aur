@@ -1,0 +1,57 @@
+--- SnoReport-1.3/configure.in	2014-12-04 11:51:17.000000000 +0100
++++ SnoReport-1.3a/configure.in	2015-09-19 14:12:20.588476347 +0200
+@@ -14,29 +14,24 @@
+ 
+ AC_CANONICAL_HOST
+ 
+-AC_ARG_WITH(ViennaRNA-include,
+-  [ --with-ViennaRNA-include    where to search for ViennaRNA header files],
+-  ac_VRNA_includes="$withval",
+-  )
+-
+-AC_ARG_WITH(ViennaRNA-lib,
+-  [ --with-ViennaRNA-lib        where to search for libRNA.a],
+-  ac_VRNA_lib="$withval",
+-  )
+-
+-AC_PATH_VRNA
+-
+ dnl Checks for programs.
+ AC_PROG_INSTALL
+ AC_PROG_CC
+ AC_PROG_CXX
+ 
++dnl Check for functions
++AC_FUNC_MALLOC
++AC_FUNC_REALLOC
++AC_FUNC_STRTOD
++AC_CHECK_FUNCS([floor strdup strstr strchr strrchr strstr strtol strtoul pow rint sqrt erand48 memset memmove erand48])
++
+ dnl Checks for libraries.
+ 
+-dnl checking for -lRNA will fail if both are built simultaneously
+-dnl LIBS=["-lRNA ${LIBS}"]
+-dnl AC_CHECK_LIB(m, exp)
+-dnl AC_CHECK_LIB(RNA, fold)
++PKG_CHECK_MODULES([RNALIB], [RNAlib2],
++                  [ AC_SUBST([RNALIB_CFLAGS])
++                    AC_SUBST([RNALIB_LIBS])
++                  ],
++                  [])
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+diff -urN SnoReport-1.3/Makefile.am SnoReport-1.3a/Makefile.am
+--- SnoReport-1.3/Makefile.am	2014-12-04 11:40:34.000000000 +0100
++++ SnoReport-1.3a/Makefile.am	2015-09-19 14:24:17.017484372 +0200
+@@ -10,6 +10,10 @@
+ 
+ EXTRA_DIST = $(pkgdata_DATA) $(man_MANS)
+ 
++LDADD = $(RNALIB_LIBS)
++
++AM_CPPFLAGS = $(RNALIB_CFLAGS)
++
+ #  install the man pages
+ man_MANS = snoReport.1
+ 
