@@ -29,7 +29,6 @@ pre_upgrade() {
 			running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 			if [[ "$running" = "active" ]]; then
 				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
-				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
 				echo '-> Internal changes to psd require it to be stopped now before updating.'
 				echo '-> Recommend that you diff /usr/share/doc/psd/psd.conf against ~/.config/psd/psd.conf'
 			fi
@@ -52,7 +51,6 @@ pre_upgrade() {
 				running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 				if [[ "$running" = "active" ]]; then
 					su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
-					su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
 					echo '-> Internal changes to psd require it to be stopped now before updating.'
 					echo '-> Users of overlayfs: you must run the following before starting the service: psd p'
 				fi
@@ -71,10 +69,33 @@ pre_upgrade() {
 			running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
 			if [[ "$running" = "active" ]]; then
 				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
-				su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
 				echo '-> Internal changes to psd require it to be stopped now before updating.'
 			fi
 		done
+	fi
+}
+
+post_upgrade() {
+	# version 6.01 redefines the location of tmpfs for the software so it is
+	# required that pacman stop the user service here if running
+	if [ $(vercmp $2 6.01) -lt 0 ]; then
+		_daemon_refresh
+	fi
+
+	# version 6.05 impliments changes to both the service and the way overlayfs is mounted/umount
+	# so it is required that pacman stop the user service here if running
+	if [ $(vercmp $2 6.05) -lt 0 ]; then
+		_daemon_refresh
+	fi
+
+	# version 6.10 relocates pid file
+	if [ $(vercmp $2 6.10) -lt 0 ]; then
+		_daemon_refresh
+	fi
+
+	# version 6.11 modified services
+	if [ $(vercmp $2 6.11) -lt 0 ]; then
+		_daemon_refresh
 	fi
 
 }
@@ -86,6 +107,15 @@ pre_remove() {
 			echo "--> In order to preserve your profiles, pacman will now stop your psd service."
 			echo "--> Any running and managed browsers will be exited."
 			su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop psd.service'
+		fi
+	done
+}
+
+_daemon_refresh() {
+	for i in $(users); do
+		running="$(su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active psd')"
+		if [[ "$running" = "active" ]]; then
+			su $i -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
 		fi
 	done
 }
