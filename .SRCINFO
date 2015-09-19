@@ -1,0 +1,19 @@
+pkgbase = smali-git
+	pkgdesc = An assembler/disassembler for Android's dex format
+	pkgver = 2.0.7.1385.0c7e7b7
+	pkgrel = 1
+	url = https://github.com/JesusFreke/smali
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = java-environment
+	makedepends = gradle
+	depends = java-runtime
+	depends = bash
+	provides = smali
+	conflicts = smali
+	source = smali-git::git+https://github.com/JesusFreke/smali
+	sha512sums = SKIP
+
+pkgname = smali-git
+
