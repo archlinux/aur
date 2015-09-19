@@ -3,7 +3,7 @@
 pkgbase=python-d2to1
 pkgname=(python-d2to1 python2-d2to1)
 pkgver=0.2.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings to the OpenStack Identity API (Keystone)"
 arch=(any)
 url=https://pypi.python.org/pypi/d2to1
