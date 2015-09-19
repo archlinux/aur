@@ -7,13 +7,13 @@ pkgname=arduino
 epoch=1
 _arduino=1.6.5-r5
 pkgver=1.6.5.r5
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64')
 url="http://arduino.cc/en/Main/Software"
 options=(!strip staticlibs)
 license=('GPL' 'LGPL')
-depends=('gtk2' 'libusb-compat' 'java-runtime' 'desktop-file-utils' 'libtinfo' 'giflib')
+depends=('gtk2' 'libusb-compat' 'java-runtime' 'desktop-file-utils' 'giflib' 'avrdude')
 makedepends=('icoutils')
 install="arduino.install"
 source=('arduino.desktop'
@@ -43,6 +43,10 @@ package() {
   # at least support the FHS a little bit
   ln -s /usr/share/arduino/arduino "${pkgdir}/usr/bin/arduino"
   ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
+
+  # fix avrdude
+  rm -f "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"{,_bin}
+  ln -s /usr/bin/avrdude "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
 
   # desktop icon
   for size in 16 32 48 256; do
