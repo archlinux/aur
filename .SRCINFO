@@ -1,11 +1,12 @@
 pkgbase = le
 	pkgdesc = A text editor in memorial to Norton Editor with block and binary operations
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lavv17/le
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	source = git://git.sv.gnu.org/gnulib
 	source = le-1.15.1.tar.gz::https://github.com/lavv17/le/archive/v1.15.1.tar.gz
 	sha256sums = SKIP
