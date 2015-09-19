@@ -2,7 +2,7 @@
 
 pkgname=infernal
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Search DNA sequence databases for RNA structure and sequence similarities using covariance models (CMs)"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -20,13 +20,8 @@ build() {
   make || return 1
 }
 
-#check(){
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-#  make check
-#}
-
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install || return 1
+  install -Dm644 Userguide.pdf "${pkgdir}/usr/share/doc/${pkgname}/Userguide.pdf"
 }
-
