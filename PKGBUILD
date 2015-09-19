@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=krakatau-git
-pkgver=r332.71b4276
+pkgver=r349.30bbb52
 pkgrel=1
 pkgdesc="Java decompiler, assembler, and disassembler"
 arch=('any')
