@@ -1,6 +1,32 @@
+diff -urN SnoReport-1.3/Makefile.am SnoReport-1.3a/Makefile.am
+--- SnoReport-1.3/Makefile.am	2014-12-04 11:40:34.000000000 +0100
++++ SnoReport-1.3a/Makefile.am	2015-09-19 14:24:17.017484372 +0200
+@@ -10,6 +10,10 @@
+ 
+ EXTRA_DIST = $(pkgdata_DATA) $(man_MANS)
+ 
++LDADD = $(RNALIB_LIBS)
++
++AM_CPPFLAGS = $(RNALIB_CFLAGS)
++
+ #  install the man pages
+ man_MANS = snoReport.1
+ 
+diff -urN SnoReport-1.3/configure.in SnoReport-1.3a/configure.in
 --- SnoReport-1.3/configure.in	2014-12-04 11:51:17.000000000 +0100
-+++ SnoReport-1.3a/configure.in	2015-09-19 14:12:20.588476347 +0200
-@@ -14,29 +14,24 @@
++++ SnoReport-1.3a/configure.in	2015-09-19 14:33:10.517596799 +0200
+@@ -2,7 +2,9 @@
+ 
+ AC_INIT([snoReport], [1.3], [jana@bioinf.uni-leipzig.de], [snoReport])
+ dnl Every other copy of the package version number gets its value from here
+-AM_INIT_AUTOMAKE(snoReport,1.3)
++
++AM_SILENT_RULES([yes])
++AM_INIT_AUTOMAKE([1.11])
+ 
+ dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
+ AM_CONFIG_HEADER(config.h)
+@@ -14,29 +16,24 @@
  
  AC_CANONICAL_HOST
  
@@ -41,17 +67,3 @@
  
  dnl Checks for header files.
  AC_HEADER_STDC
-diff -urN SnoReport-1.3/Makefile.am SnoReport-1.3a/Makefile.am
---- SnoReport-1.3/Makefile.am	2014-12-04 11:40:34.000000000 +0100
-+++ SnoReport-1.3a/Makefile.am	2015-09-19 14:24:17.017484372 +0200
-@@ -10,6 +10,10 @@
- 
- EXTRA_DIST = $(pkgdata_DATA) $(man_MANS)
- 
-+LDADD = $(RNALIB_LIBS)
-+
-+AM_CPPFLAGS = $(RNALIB_CFLAGS)
-+
- #  install the man pages
- man_MANS = snoReport.1
- 

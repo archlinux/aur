@@ -9,12 +9,12 @@ license=('Custom')
 url="http://www.bioinf.uni-leipzig.de/Software/snoReport/"
 depends=('viennarna')
 optdepends=()
-makedepends=()
+makedepends=('autoconf')
 provides=()
 source=(http://www.bioinf.uni-leipzig.de/Software/snoReport/SnoReport-${pkgver}.tar.gz
         buildfix.patch)
-md5sums=( 'SKIP'
-          'SKIP')
+md5sums=( '299d6cd2344ff376eeb8541daeacced0'
+          '592a51a1c0261b4df627635831056513')
 
 prepare() {
   cd "${srcdir}/SnoReport-${pkgver}"

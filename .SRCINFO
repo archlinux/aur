@@ -5,11 +5,12 @@ pkgbase = snoreport
 	arch = x86_64
 	arch = i686
 	license = Custom
+	makedepends = autoconf
 	depends = viennarna
 	source = http://www.bioinf.uni-leipzig.de/Software/snoReport/SnoReport-1.3.tar.gz
 	source = buildfix.patch
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 299d6cd2344ff376eeb8541daeacced0
+	md5sums = 592a51a1c0261b4df627635831056513
 
 pkgname = snoreport
 
