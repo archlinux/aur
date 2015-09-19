@@ -1,6 +1,7 @@
-# Maintainer: Andrew Lewis <nerf@judo.za.org>
+# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
+# Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=0.9.10
+pkgver=1.0.0
 pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
@@ -26,7 +27,7 @@ install=rspamd.install
 source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz"
         "rspamd.service")
 
-sha256sums=('5ff557610cc5b7000abe2df727d6b9bfec7e3fe019ce3fdcc386d16262b45652'
+sha256sums=('63b23ab1c35db6291150e1b11b3cdee33155252bd1ec57382c9b0f8f76d69a39'
             '3ccbc157c2e73367e7cbab2b19d0847ef58cecb47194c3bdc5f1b118405d3d26')
 
 build() {
