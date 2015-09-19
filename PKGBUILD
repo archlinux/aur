@@ -4,7 +4,7 @@
 
 pkgname="tupi-git"
 pkgver=156.11cadda
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D animation tool for 8-100 years old kids."
 url="http://www.maefloresta.com/"
 license=("GPL3")
