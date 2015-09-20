@@ -55,15 +55,13 @@ StartupWMClass=jetbrains-pycharm
 EOF
 ) > "${srcdir}/${pkgname}.desktop"
 
+  wget https://www.jetbrains.com/pycharm/buy/license.pdf
+
   mkdir -p "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/usr/share/applications/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-  if [[ ${_eap} = "True" ]]; then
-  	install -Dm644 "${srcdir}/pycharm-${_buildver}/license/PyCharm_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
-  else  
-  	install -Dm644 "${srcdir}/pycharm-${_pkgver}/license/PyCharm_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
-  fi
+  install -Dm644 license.pdf "${pkgdir}/usr/share/licenses/${pkgname}/PyCharm_license.txt"
   ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-eap"
 }
 
