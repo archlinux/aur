@@ -5,7 +5,7 @@
 
 pkgname=vdfuse
 pkgver=82a
-pkgrel=9
+pkgrel=10
 _headers=svn-47049
 pkgdesc="A FUSE module for mounting VirtualBox disk images (VDI/VMDK/VHD) on the host"
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ license=('GPL3')
 depends=('fuse' 'virtualbox' 'virtualbox-sdk')
 makedepends=('pkgconfig')
 install="${pkgname}.install"
-source=("http://ftp.de.debian.org/debian/pool/main/v/virtualbox/virtualbox_4.1.18-dfsg-2+deb7u3.debian.tar.gz"
+source=("http://ftp.de.debian.org/debian/pool/main/v/virtualbox/virtualbox_4.1.18-dfsg-2+deb7u5.debian.tar.gz"
         "https://github.com/muflone/virtualbox-includes/archive/${_headers}.tar.gz"
         "vdautomount"::"http://forums.virtualbox.org/download/file.php?id=2865"
         "add-typedef-to-PARTITIONING_TYPE_vd.h.patch"
         "init-VDINTERFACEERROR_vdfuse.c.patch")
-sha256sums=('42313af2dbdb9270ed2a12915c8b2640585708707a5d4e8aa1eaf4090b5c1d06'
+sha256sums=('ce8603827ab2d9a6b3ea5be2a1c93a7420a187abb05db5af1c67627b84b442bc'
             '357d0cc778f33684d158e60acae9478b26256af39b31bed19556c0928f133001'
             '28b4ce0e0ca72721e0dbbdc776e5c3aa47b160afa8538064497be68da4713493'
             '98f3a12fd288b650879822655c8c2ead10a630aa9637a186c7289c1f2f015c31'
