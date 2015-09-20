@@ -1,9 +1,10 @@
 pkgbase = blogc
+	pkgdesc = blogc is a blog compiler. It converts source files and templates into blog/website resources
 	pkgver = 0.1
 	pkgrel = 0
 	url = http://blogc.org
 	arch = any
-	license = GPL
+	license = BSD 3 clause license
 	options = !emptydirs
 	source = https://github.com/blogc/blogc/releases/download/v0.1/blogc-0.1.tar.gz
 	md5sums = c7156ea14591fdf01c45e969792cfc73
