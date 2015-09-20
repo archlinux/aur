@@ -41,10 +41,4 @@ package() {
   # Fix launcher category
   sed -i 's:Categories=Multimedia:Categories=Multimedia;AudioVideo;Player;Recorder;:' \
     $pkgdir/usr/share/applications/bitwig-studio.desktop
-
-  # Install icons
-  mkdir -p $pkgdir/usr/share/pixmaps
-  install -m644 "$pkgdir/usr/share/icons/gnome/48x48/apps/Bitwig Studio.png" \
-    $pkgdir/usr/share/pixmaps/
-  mv $pkgdir/usr/share/icons/gnome $pkgdir/usr/share/icons/hicolor
 }
