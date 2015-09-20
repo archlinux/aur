@@ -28,17 +28,13 @@ _bldtype=Release
 #*************************************************************
 
 _zipcoderel=201508
-_mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
-
-_gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
-_jsc=11086dd6a7eba04289944367ca82cea71299ed70
-_prtbf=172019c40bf548908ab09bfd276074c929d48415
-_jpusd=10
+_mozcrev=e398317a086a78c0cf0004505eb8f56586e925b2
+# _mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
 
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
-pkgver=2.17.2111.102
+pkgver=2.17.2123.102
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
@@ -47,18 +43,10 @@ makedepends=('python2' 'subversion' 'git' 'ninja' 'clang')
 #source=("${_svndir}/${_svnmod}::svn+${_svntrunk}"
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
-  jsoncpp::git+https://github.com/open-source-parsers/jsoncpp.git#commit=${_jsc}
-  gyp::git+https://chromium.googlesource.com/external/gyp#commit=${_gyp}
-  protobuf::git+https://github.com/google/protobuf.git#commit=${_prtbf}
-  japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=${_jpusd}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-${_zipcoderel}.zip
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
 )
 sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
           '97627c9e27a273dddf6408d0451855dd5f830eee'
           '927901d45051ec9bfb944e2623c4589456462f03')
 
@@ -84,12 +72,12 @@ prepare() {
   ln -sf `which python2` ./python
   PATH="${srcdir}:${PATH}"
 
-  for dep in jsoncpp gyp protobuf japanese_usage_dictionary
-  do
-    ln -sf "`pwd`/$dep" mozc/src/third_party/
-  done
+  cd "${srcdir}/${pkgbase}/"
 
-  cd "${srcdir}/${pkgbase}/src"
+  git submodule init
+  git submodule update
+
+  cd "${srcdir}/${pkgbase}/src/"
 
   # Generate zip code dictionary seed
   if [[ "$_zipcode" == "yes" ]]; then
