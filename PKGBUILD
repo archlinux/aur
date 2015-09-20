@@ -1,8 +1,9 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=flmusic
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Very simple CD/audio player application for FLTK"
 arch=('i686' 'x86_64')
 url="http://home.arcor.de/szukw000/english_index.html"
