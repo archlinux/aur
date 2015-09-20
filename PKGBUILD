@@ -39,7 +39,7 @@ depends_x86_64=('lib32-glibc')
 optdepends=('ttf-dejavu: printing text files from lpr')
 #install="${pkgname}.install"
 # The cups wrapper uses the lpr driver.
-_brsource="${_brotherlnd}_cupswrapper_GPL_source_${pkgver}-${pkgrel}"
+_brsource="${_brotherlnd}cupswrapper-src-${pkgver}-${pkgrel}"
 source=(
   "http://www.brother.com/pub/bsc/linux/dlf/${_brotherlnd}lpr-${pkgver}-${pkgrel}.i386.rpm"
   "http://www.brother.com/pub/bsc/linux/dlf/${_brotherlnd}cupswrapper-${pkgver}-${pkgrel}.i386.rpm"
