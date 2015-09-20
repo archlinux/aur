@@ -1,7 +1,7 @@
 # Maintainer: Andreas Linz <alinz@klingt.net>
 
 pkgname=vegeta
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 pkgdesc='a versatile HTTP load testing tool'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 optsdepends=()
 source=("https://github.com/tsenart/vegeta/releases/download/v$pkgver/$pkgname-v$pkgver-linux-amd64.tar.gz")
-md5sums=('e7c4f43391a212d9ab54e67251c16df8')
+md5sums=('abf3035cb115152aa70f312278d05364')
 
 package() {
     install -d $pkgdir/usr/bin
