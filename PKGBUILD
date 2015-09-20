@@ -1,8 +1,9 @@
-# Maintainer: DonVla <donvla@users.sourceforge.net>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: DonVla <donvla@users.sourceforge.net>
 
 pkgname=pktstat
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time interface traffic viewer for curses."
 arch=(i686 x86_64)
 url="http://www.adaptive-enterprises.com.au/~d/software/pktstat/"
