@@ -3,12 +3,12 @@
 
 _plug=nnedi3_rpow2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.7871410
+pkgver=r2.6aeba84
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
-arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=166582"
-license=('GPL')
+arch=('any')
+url="https://gist.github.com/YamashitaRen/020c497524e794779d9c"
+license=('custom:WTFPL')
 depends=('vapoursynth' 'vapoursynth-plugin-nnedi3-git')
 makedepends=('git')
 source=("$pkgname"::"git://gist.github.com/020c497524e794779d9c.git")

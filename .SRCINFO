@@ -1,11 +1,10 @@
 pkgbase = vapoursynth-plugin-nnedi3_rpow2-git
 	pkgdesc = Plugin for Vapoursynth: nnedi3_rpow2
-	pkgver = r1.7871410
+	pkgver = r2.6aeba84
 	pkgrel = 1
-	url = http://forum.doom9.org/showthread.php?t=166582
-	arch = i686
-	arch = x86_64
-	license = GPL
+	url = https://gist.github.com/YamashitaRen/020c497524e794779d9c
+	arch = any
+	license = custom:WTFPL
 	makedepends = git
 	depends = vapoursynth
 	depends = vapoursynth-plugin-nnedi3-git
