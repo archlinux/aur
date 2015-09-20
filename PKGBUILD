@@ -4,7 +4,7 @@
 pkgbase=python-mock
 pkgname=(python2-mock python-mock)
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
 makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
@@ -26,7 +26,7 @@ build() {
 }
 
 package_python-mock() {
-depends=('python' 'python-six' 'python2-pbr')
+depends=('python' 'python-six' 'python-pbr')
   cd "$srcdir/mock-$pkgver"
   python3 setup.py install --optimize=1 --root="$pkgdir"
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
