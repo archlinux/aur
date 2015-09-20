@@ -1,19 +1,20 @@
 pkgbase = yrd
 	pkgdesc = A cjdns config tool for humans and cyborgs
-	pkgver = 0.2
-	pkgrel = 3
+	pkgver = 0.4
+	pkgrel = 1
 	url = https://github.com/kpcyrd/yrd
 	install = yrd.install
 	arch = any
 	license = GPL3
-	depends = python2-argh
-	depends = python2-requests
-	depends = cjdns-git
+	makedepends = python2-setuptools
+	depends = python-argh
+	depends = python-requests
+	depends = cjdns
 	depends = systemd
-	source = https://github.com/kpcyrd/yrd/archive/v0.2.tar.gz
+	source = https://github.com/kpcyrd/yrd/archive/v0.4.tar.gz
 	source = yrd.tmpfiles.conf
-	sha512sums = 45821f04170dcb24c9b4bf0659f77b1ea9bd4302288e68fe5d44f5179f792efedce8532fd92423cf5303cd36615d6e65743a80da59a27eab3cd4408eaf0c0a84
-	sha512sums = 4b678f9b57ccb921b841e5f34c42de3d9648602ed58acf3383e13ac0a589c2f72f53b37e2ab5f161ecf47c60eb18d484dce2ef78bf6deafdbd797a9d0acb4789
+	sha512sums = 681937852ecd08fcc587ee98dfa32f7e7e65c2c57250b14e4be4e60dab2d3acd376e6688be863d02d40f719b44b0f7ddc22fc9f9265211a3d41337d38531e47c
+	sha512sums = 191fdf5687886357c01b72b2b9037045ca24d0ee888dc2bf6b2748a769eeb9a481eb01a9807f8f32b783d0970229f18d1264e937c2dd44b282ac764c49450cca
 
 pkgname = yrd
 
