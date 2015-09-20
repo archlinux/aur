@@ -9,8 +9,8 @@
 # Contributor: Rainmaker <rainmaker52@gmail.com>
 
 pkgname=virtualbox-bin
-pkgver=5.0.2
-_build=102096
+pkgver=5.0.4
+_build=102546
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ depends=(
 )
 optdepends=('virtualbox-ext-oracle: for Oracle extensions')
 provides=("virtualbox=${pkgver}")
-conflicts=('virtualbox' 'virtualbox-ose' 'virtualbox-modules')
+conflicts=('virtualbox' 'virtualbox-ose' 'virtualbox-modules' 'virtualbox-host-modules')
 replaces=('virtualbox_bin' 'virtualbox-sun')
 backup=('etc/vbox/vbox.cfg' 'etc/conf.d/vboxweb')
 install='install'
@@ -47,7 +47,7 @@ source=(
 )
 
 
-md5sums=('a32555a8d8af6e3b562adb6b259fb4ee'
+md5sums=('8028829331bc0822fa2d2d3cf301dda3'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
