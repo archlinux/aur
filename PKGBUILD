@@ -14,7 +14,7 @@ build () {
 }
 
 package() {
-	cd "$srcdir/fortune-mod-dhammapada"
-	install -D -m644 dhammapada ${pkgdir}/usr/share/fortune/dhammapada
-	install -D -m644 dhammapada.dat ${pkgdir}/usr/share/fortune/dhammapada.dat
+	cd "${srcdir}/fortune-mod-dhammapada"
+	install -D -m644 dhammapada "${pkgdir}/usr/share/fortune/dhammapada"
+	install -D -m644 dhammapada.dat "${pkgdir}/usr/share/fortune/dhammapada.dat"
 }
