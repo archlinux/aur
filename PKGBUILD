@@ -2,8 +2,8 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=phing
-pkgver=2.11.0
-pkgrel=2
+pkgver=2.12.0
+pkgrel=1
 pkgdesc="PHP project build system based on Apache Ant."
 arch=(any)
 url="http://www.phing.info/"
@@ -16,7 +16,7 @@ source=(
     phar.ini
 )
 sha256sums=(
-    355ff478baa0dc67d80fb2b0bcc6f231ff25e0dfa600f08c4b107f689d551dd8 # phing PHAR
+    af39b2032a62cc3b40a94bb64f480bdbff1ec913bbb9232dc911a66b7b7d9f54 # phing PHAR
     9c9926fcea67efad95adceeaa973cd86f99681a74d22b93d2c5fa506679c65cd # phing.install
     b189ab599a2760b7627820dffece09a4323c9ed2e042c2517e97801f602b318e # phar.ini
 )
