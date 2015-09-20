@@ -1,8 +1,8 @@
 # Maintainer: Jiehong Ma <email@majiehong.com>
 
 pkgname=ihaskell-git
-pkgver=0.7.0
-pkgrel=5
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="A Haskell kernel for IPython, built in a sandbox."
 arch=('i686' 'x86_64')
 url="https://github.com/gibiansky/IHaskell"
@@ -23,7 +23,7 @@ prepare()
 
 build() {
   cd "$srcdir/IHaskell"
-  # stack init
+  stack setup
   printf '%s\n' 'If you never used stack before, run `stack init` first.'
   stack install ghc-parser --no-copy-bins
   stack install ipython-kernel --no-copy-bins
