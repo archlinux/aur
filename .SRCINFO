@@ -1,0 +1,24 @@
+pkgbase = docbook-utils
+	pkgdesc = Shell scripts to manage DocBook documents
+	pkgver = 0.6.14
+	pkgrel = 5
+	url = http://sources.redhat.com/docbook-tools/
+	arch = any
+	license = GPL2
+	depends = docbook-sgml31
+	depends = docbook-dsssl
+	depends = jade
+	depends = docbook-xml-dtd
+	depends = perl-sgmls
+	depends = lynx
+	depends = opensp
+	conflicts = docbook2x
+	source = html.tar.gz
+	source = ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/docbook-utils-0.6.14.tar.gz
+	source = docbook-utils-0.6.14-grep_fix-1.patch
+	sha256sums = 257789a91ec92f5db809e966aaa324c2d259298d4815d356932b1134e6a3ba14
+	sha256sums = 48faab8ee8a7605c9342fb7b906e0815e3cee84a489182af38e8f7c0df2e92e9
+	sha256sums = ddf0ddca0a540fd4f34f38b7b9090f96746e37da12b4e2bf8f4174c5ad61f54a
+
+pkgname = docbook-utils
+
