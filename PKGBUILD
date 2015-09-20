@@ -1,13 +1,13 @@
 # Maintainer: Kristóf Jakab <jaksi@jaksi.io>
 pkgname=libzorpll-git
-pkgver=6.0.6.0
+pkgver=r81.6002898
 pkgrel=1
 pkgdesc="Low level library functions for Zorp"
 arch=('x86_64')
 url="https://github.com/balabit/libzorpll"
 license=('LGPL-2.0')
 groups=()
-depends=()
+depends=('glib2' 'libcap' 'openssl')
 makedepends=('git')
 provides=()
 conflicts=()
