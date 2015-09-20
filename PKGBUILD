@@ -55,6 +55,7 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-KeyUtils.git"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
         "${url}/alpha/opennet/seednodes.fref"
+        "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         "${url}/contrib/jar/latest/commons-compress.jar"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h"
@@ -63,6 +64,7 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "${_deps[@]}")
 
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -260,11 +262,11 @@ package() {
     install -dm700 "$pkgdir"/run/freenet
     install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,tmp,plugins/data,user/{data,certs}}
 
-    install -m640 "$srcdir"/{wrapper.config,run.sh}            "$pkgdir"/opt/freenet
-    install -m640 "$srcdir"/freenet.ini                        "$pkgdir"/opt/freenet/conf
-    install -m640 "$srcdir"/seednodes.fref                     "$pkgdir"/opt/freenet/noderef
+    install -m640 "$srcdir"/{wrapper.config,run.sh,seednodes.fref,IpToCountry.dat} \
+                                                                "$pkgdir"/opt/freenet
+    install -m640 "$srcdir"/freenet.ini                         "$pkgdir"/opt/freenet/conf
     install -m640 contrib/freenet-ext/dist/freenet-ext.jar \
-                  dist/freenet.jar                             "$pkgdir"/opt/freenet/lib
+                  dist/freenet.jar                              "$pkgdir"/opt/freenet/lib
 
     # plugins
     for plugin in ${_plugins[@]}; do
