@@ -4,12 +4,12 @@
 
 pkgname="tupi-git"
 pkgver=156.11cadda
-pkgrel=3
+pkgrel=4
 pkgdesc="A 2D animation tool for 8-100 years old kids."
 url="http://www.maefloresta.com/"
 license=("GPL3")
 arch=("i686" "x86_64")
-depends=("qt5-tools" "qt5-multimedia" "qt5-svg" "quazip-qt5" "libtheora" "ffmpeg" "aspell" "shared-mime-info")
+depends=("qt5-multimedia" "qt5-svg" "quazip-qt5" "ffmpeg" "shared-mime-info")
 provides=("tupi")
 conflicts=("tupi")
 makedepends=("git" "ruby" "zlib" "libgl")
