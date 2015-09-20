@@ -1,6 +1,6 @@
 pkgbase = cloud-buster-git
 	pkgdesc = A cloudflare-resolver
-	pkgver = .106.b7d1a76
+	pkgver = 0.0.106.b7d1a76
 	pkgrel = 1
 	url = https://github.com/SageHack/cloud-buster
 	arch = any
