@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
 _pkgname='cloud-buster'
 pkgname=cloud-buster-git
-pkgver=.106.b7d1a76
+pkgver=0.0
 pkgrel=1
 pkgdesc="A cloudflare-resolver"
 arch=('any')
