@@ -4,7 +4,7 @@
 
 _pkgname=crawl
 pkgname=crawl-git
-pkgver=0.17.a0.r1793.gcbb3aa1
+pkgver=0.17.a0.r1863.g715b4b0
 pkgrel=1
 pkgdesc="A modern roguelike game played in the console"
 arch=('i686' 'x86_64')
