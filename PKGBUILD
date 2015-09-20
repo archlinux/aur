@@ -5,6 +5,7 @@
 
 pkgname=mpv-vapoursynth
 _pkgname=mpv
+epoch=1
 pkgver=0.10.0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2'
@@ -16,6 +17,7 @@ depends=(
   'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
   'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
   'libguess' 'libxrandr' 'jack' 'smbclient' 'rubberband'
+  'vapoursynth'
 )
 makedepends=('mesa' 'python-docutils' 'ladspa' 'hardening-wrapper')
 optdepends=('youtube-dl: for video-sharing websites playback')
