@@ -4,7 +4,7 @@
 
 pkgname=archey3
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Output a logo and various system information'
 arch=('any')
 url='http://bluepeppers.github.com/archey3'
