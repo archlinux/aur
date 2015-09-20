@@ -21,5 +21,5 @@ build() {
 package() {
   cd xvisbell
 
-  mv xvisbell /usr/bin/
+  make PREFIX="$pkgdir/usr" install
 }
