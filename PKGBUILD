@@ -1,8 +1,8 @@
 # Maintainer: alexiobash < me (at) alexiobash (dot) com >
 
 pkgname=yaourt-gui
-pkgver=1.3
-pkgrel=4
+pkgver=1.4
+pkgrel=1
 pkgdesc="A bash GUI for yaourt"
 arch=('any')
 url="http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/"
