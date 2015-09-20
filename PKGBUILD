@@ -4,7 +4,7 @@
 pkgname=gogs-git
 _pkgname=gogs
 _branch=master
-pkgver=20150823
+pkgver=20150920
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
@@ -32,7 +32,7 @@ source=('gogs.service'
         "$_pkgname::git+https://${_gourl}.git#branch=${_branch}")
 
 sha512sums=(2b4303f850e3b13b2fc3c9f0bc5820dae431d228002b35f01be0d4bfbcf05de8dcec2a559a85e318b609e4a4d492d44306eadf5f6508fd72333b198661bb0bb7
-            939be9ad851ae6e20b786e2e189b0b67c0198edfc8c83442934ec48c7be073e03c75172e79f23a6ee1e0eb467c6fa18096a66d69d1142ebba28fdc8bb2a3964c
+            f80b4115ce39e6158beb7e6a68b7f0825e5c1320ba7c16f999986f2dfad0be08c238d220f556673f531080ddf540bd8e8eb6ea2559128109b0405baac163f013
             e746dbdafc4c8d0b15a224dba95ae3151611ba9ff468ee6f0b1789e489955e4d7eaac0dbdf28a22e5b8211559af5950726f4a37d699a2490fd349f034401028c
             'SKIP')
 
@@ -76,9 +76,7 @@ prepare() {
   get_gopm "$GOPATH/src/${_gourl}/.gopmfile" "$GOPATH/src"
 
   msg2 "Download missing dependencies"
-  go_get github.com/shurcooL/sanitized_anchor_name "$GOPATH/src/github.com/shurcooL/sanitized_anchor_name"
-#  go_get golang.org/x/net "$GOPATH/src/golang.org/x/net"
-#  go_get golang.org/x/text "$GOPATH/src/golang.org/x/text"
+#  go_get github.com/shurcooL/sanitized_anchor_name "$GOPATH/src/github.com/shurcooL/sanitized_anchor_name"
 
   msg2 "Workaround dependencies"
   cd "$GOPATH/src/github.com/gogits/go-gogs-client/"
