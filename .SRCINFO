@@ -1,11 +1,10 @@
 pkgbase = cloud-buster-git
 	pkgdesc = A cloudflare-resolver
-	pkgver = ..
+	pkgver = .106.b7d1a76
 	pkgrel = 1
 	url = https://github.com/SageHack/cloud-buster
 	arch = any
 	license = GPL
-	makedepends = python
 	depends = python
 	provides = cloud-buster
 	conflicts = cloud-buster
