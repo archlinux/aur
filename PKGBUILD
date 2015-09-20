@@ -1,22 +1,20 @@
 # Maintainer: Markus Tacker <m@cto.hiv>
+# Contributor: Peter Hoeg <peter@hoeg.com>
+
+_pkgver_major=2
+_pkgver_minor=013
 pkgname=otf-hack
-pkgver=2.013
-pkgrel=1
+pkgver=${_pkgver_major}.${_pkgver_minor}
+pkgrel=2
 pkgdesc="Source Foundry Hack is is hand groomed and optically balanced typeface to be your go-to code face based on the Bitstream Vera Mono font."
 arch=('any')
 license=('SIL Open Font License 1.1 and Bitstream Vera License')
 url="http://sourcefoundry.org/hack/"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=$pkgname.install
-source=(https://github.com/chrissimpkins/Hack/raw/v$pkgver/build/otf/Hack-{Bold,BoldItalic,Italic,Regular}.otf)
-md5sums=('71cd5be3cd70bccb91f0b9e637e0b9d6'
-'6542f8afee6e5f7de217421de03124ef'
-'7a195a69352e01ff254db41df174942b'
-'9c2f58004d9d31b6f41e9482033f61bb')
+source=("https://github.com/chrissimpkins/Hack/releases/download/v${pkgver}/Hack-v${_pkgver_major}_${_pkgver_minor}-otf.zip")
+sha256sums=('db3dca0c3a6b9f76108cd4e7f208b5e8c95db73f9a584fbb21aa9edda9e84582')
 
 package() {
-  cd $srcdir
-
-  install -d $pkgdir/usr/share/fonts/OTF
-  install -m644 $srcdir/Hack-*.otf $pkgdir/usr/share/fonts/OTF
+  install -Dm644 -t $pkgdir/usr/share/fonts/OTF $srcdir/Hack-*.otf
 }
