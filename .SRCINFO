@@ -1,13 +1,13 @@
 pkgbase = portal
 	pkgdesc = A personal portal system
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://orbitalfox.com
 	arch = any
 	license = LGPL3
-	optdepends = postfix
-	optdepends = dovecot
-	optdepends = nginx
+	depends = postfix
+	depends = dovecot
+	depends = nginx
 	provides = portal
 	source = ::git+https://github.com/orbifx/portal.git
 	sha512sums = skip

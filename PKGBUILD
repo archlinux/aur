@@ -1,15 +1,15 @@
 # Maintainer: Stavros Polymenis <sp@orbitalfox.com>
 pkgname=portal
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal portal system"
 arch=(any)
 url="http://orbitalfox.com"
 license=('LGPL3')
 groups=()
-depends=()
+depends=(postfix dovecot nginx)
 makedepends=()
-optdepends=(postfix dovecot nginx)
+optdepends=()
 provides=("portal")
 conflicts=()
 replaces=()
@@ -22,14 +22,14 @@ noextract=()
 sha512sums=(skip) #autofill using updpkgsums
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --prefix=/usr
-  make
+#  cd "$pkgname-$pkgver"
+#  ./configure --prefix=/usr
+#  make
+true
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install
+#  cd "$pkgname-$pkgver"
+#  make DESTDIR="$pkgdir/" install
+true
 }
