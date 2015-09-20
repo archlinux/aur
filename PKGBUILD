@@ -3,7 +3,7 @@
 pkgname=govpn
 pkgver=4.0
 pkgrel=1
-pkgdesc="Simple secure free software VPN daemon"
+pkgdesc="Simple secure free software DPI/censorship-resistant VPN daemon"
 arch=('i686' 'x86_64')
 url="http://www.cypherpunks.ru/govpn/"
 makedepends=('go')
