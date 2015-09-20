@@ -1,6 +1,6 @@
 pkgbase = python2-ethereum-serpent
 	pkgdesc = Serpent compiler, installed as a Python module
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://www.ethereum.org
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = python2-ethereum-serpent
 	makedepends = python2-setuptools
 	depends = python2
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/e/ethereum-serpent/ethereum-serpent-2.0.0.tar.gz
-	md5sums = 3d720bb2edf6a8f3a6ab026f6921df6b
-	sha256sums = 5473213f7f3e32330cf7d60a2722ebc4f6ac30bd8bc365a441b01c86ed563d48
+	source = https://pypi.python.org/packages/source/e/ethereum-serpent/ethereum-serpent-2.0.1.tar.gz
+	md5sums = a1507bab442bbd2a9e9f172c29af877a
+	sha256sums = 09da7bf4891ed6307edc43d2c1f49db02e94b30521ab99bc2ff1168d0f8f06c4
 
 pkgname = python2-ethereum-serpent
 
