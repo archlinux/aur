@@ -10,7 +10,6 @@ depends=('python2-sphinx')
 makedepends=('git')
 provides=('juliadoc')
 conflicts=('juliadoc')
-install=
 source=('git+https://github.com/JuliaLang/JuliaDoc.git')
 md5sums=('SKIP')
 _gitname=JuliaDoc
