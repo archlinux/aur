@@ -4,7 +4,7 @@ pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=v15.08.0.161.g1db330f
+pkgver=1.11.80.r10804.f59d559
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -34,14 +34,12 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd marble
-  echo "$(git describe --long --tags | tr - .)"
+  _ver="$(cat src/apps/marble-ui/ControlView.cpp | grep -m1 'return' | cut -d '"' -f2 | cut -d ' ' -f1)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   mkdir -p build
-
-  # fix installation designer plugins path
-  sed 's|${CMAKE_INSTALL_LIBDIR}/plugins|${CMAKE_INSTALL_LIBDIR}/qt/plugins|g' -i marble/CMakeLists.txt
 
   # only build the KDE app
   sed -e '/mobile/d' \
@@ -60,6 +58,7 @@ build() {
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DWITH_KF5=ON \
+    -DQT_PLUGINS_DIR=lib/qt/plugins \
     -DBUILD_MARBLE_EXAMPLES=ON \
     -DBUILD_MARBLE_TOOLS=ON \
     -DBUILD_MARBLE_TESTS=OFF \
@@ -85,13 +84,12 @@ package_marble-git() {
            'kparts'
            'knewstuff'
            'opencv'
+           'quazip-qt5'
            )
   optdepends=('gpsd: position information via gpsd'
-              'quazip-qt5: reading and displaying .kmz files'
               'shapelib: reading and displaying .shp files'
               'qextserialport-qt5: reading from serial port in APRS plugin'
               'libwlocate: Position information based on neighboring WLAN networks'
-              'phonon-qt5: That enables the use of audio and video content'
               'krunner: Krunner plugin for marble'
               )
   conflicts=('kdeedu-marble<15.04.3-3'
