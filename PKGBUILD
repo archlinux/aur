@@ -1,6 +1,6 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=mysql-utilities
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="A collection of command-line utilities that are used for maintaining and administering MySQL servers"
 arch=('any')
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(http://cdn.mysql.com/Downloads/MySQLGUITools/$pkgname-$pkgver.tar.gz)
-md5sums=('2b91883441263a9bf7238b11e087e94e')
+md5sums=('f86c5d563349c2d8e61085574f86d003')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
