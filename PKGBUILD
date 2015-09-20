@@ -1,40 +1,42 @@
-# Maintainer: Philip Abernethy <chais.z3r0@gmail.com>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Contributer: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=minecraft-server
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft server unit files, script, and jar"
-arch=(any)
+arch=('any')
 url="http://minecraft.net/"
 license=('custom')
-depends=('java-runtime-headless' 'systemd' 'screen' 'expect')
+depends=('java-runtime-headless' 'screen' 'sudo' 'bash')
+optdepends=('tar: needed in order to create world backups')
 conflicts=('minecraft-server-systemd' 'minecraft-canary')
-options=(!strip emptydirs)
-install=minecraft-server.install
+options=(!strip)
+install=${pkgname}.install
 backup=('etc/conf.d/minecraft')
-source=(https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraft_server.${pkgver}.jar
-        minecraftd
-        minecraftd-diag
-        minecraftd.service
-		minecraftctl
-		conf.minecraft)
-noextract=("minecraft_server.${pkgver}.jar")  
-sha256sums=('39aef720dc5309476f56f2e96a516f3dd3041bbbf442cbfd47d63acbd06af31e'
-            '043101c29d4b4f9092cb93ef52168cfe3d16d49ff573136f4fbb45071a38a5d1'
-            'de03317d02668bb71ec160fff497c7fbfe8b03ffff2950c6a0bcfb39f69cd214'
-            '6eb4c085b8377712671445b891a3a2cf2a17cf7a7bea66be456a980c2b620e23'
-            '472e06e1bd63838e88ace0bd2f971f72f2efd9e541cc0956599a44c324fd49ac'
-            '738e10185df160d190a5f4f0226de110d67ba023877e4999a6d3ef41c9918ed6')
+source=("https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraft_server.${pkgver}.jar"
+        "minecraftd-backup.service"
+        "minecraftd-backup.timer"
+        "minecraftd.service"
+        "minecraftd.conf"
+        "minecraftd.sh")
+noextract=("minecraft_server.${pkgver}.jar")
+md5sums=('a0671390aa0691e70a950155aab06ffb'
+         '2cf6cdf65e0ed6aa6d452943b1e84357'
+         'c644abdf293c2f98033a64d732a4945c'
+         '5ed78e366146e47f8498347e93ad5423'
+         'd4656f27716fd78ab64344a517b07443'
+         '1991eb0aedeba1dab2371f22a6736b47')
 
 package() {
-  install -Dm755 "${srcdir}/minecraftd" "${pkgdir}/usr/bin/minecraftd"
-  install -Dm755 "${srcdir}/minecraftd-diag" "${pkgdir}/usr/bin/minecraftd-diag"
-  install -Dm755 "${srcdir}/minecraftctl" "${pkgdir}/usr/bin/minecraftctl"
-  
-  install -Dm644 "${srcdir}/minecraft_server.${pkgver}".jar "${pkgdir}/srv/minecraft/minecraft_server.${pkgver}".jar
-  ln -s "minecraft_server.${pkgver}.jar" "${pkgdir}/srv/minecraft/minecraft_server.jar"
-  install -Dm644 "${srcdir}/minecraftd.service" "${pkgdir}/usr/lib/systemd/system/minecraftd.service"
-  install -Dm644 "${srcdir}/conf.minecraft" "${pkgdir}/etc/conf.d/minecraft"
+    install -Dm644 minecraftd.conf              "${pkgdir}/etc/conf.d/minecraft"
+    install -Dm755 minecraftd.sh                "${pkgdir}/usr/bin/minecraftd"
+    install -Dm644 minecraftd.service           "${pkgdir}/usr/lib/systemd/system/minecraftd.service"
+    install -Dm644 minecraftd-backup.service    "${pkgdir}/usr/lib/systemd/system/minecraftd-backup.service"
+    install -Dm644 minecraftd-backup.timer      "${pkgdir}/usr/lib/systemd/system/minecraftd-backup.timer"
+    install -Dm644 minecraft_server.${pkgver}.jar "${pkgdir}/srv/minecraft/minecraft_server.${pkgver}.jar"
+    ln -s "minecraft_server.${pkgver}.jar" "${pkgdir}/srv/minecraft/minecraft_server.jar"
 
-  install -d "${pkgdir}/srv/minecraft/backup"
+    mkdir -p "${pkgdir}/var/log/"
+    ln -s "/srv/minecraft/logs" "${pkgdir}/var/log/minecraft" #&>/dev/null
 }
