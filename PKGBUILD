@@ -3,7 +3,7 @@
 pkgname=goatattack-server
 _dlname=goatattack
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-paced multiplayer pixel art shooter game."
 arch=("any")
 url="http://www.goatattack.net/"
@@ -19,6 +19,11 @@ prepare() {
 }
 
 build() {
+	cd "$srcdir/$_dlname-$pkgver"
+	make
+}
+
+check() {
 	cd "$srcdir/$_dlname-$pkgver"
 	make
 }
