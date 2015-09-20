@@ -8,10 +8,6 @@ _bldtype=Release
 
 _uimmozcrev=318.0562676
 _mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
-_gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
-_jsc=11086dd6a7eba04289944367ca82cea71299ed70
-_prtbf=172019c40bf548908ab09bfd276074c929d48415
-_jpusd=10
 
 pkgname=uim-mozc
 _pkgname=mozc
@@ -27,13 +23,9 @@ install=${pkgname}.install
 makedepends=('pkg-config' 'python2' 'subversion' 'git' 'ninja' 'clang')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
-  gyp::git+https://chromium.googlesource.com/external/gyp#commit=${_gyp}
-  protobuf::git+https://github.com/google/protobuf.git#commit=${_prtbf}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz
 )
 sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
           '5cd298aaac5afd7ff8882453e3e8fa698c2c5aa1')
 
 
@@ -48,10 +40,10 @@ prepare() {
   ln -sf `which python2` ./python
   PATH="${srcdir}:${PATH}"
 
-  for dep in gyp protobuf
-  do
-    ln -sf "`pwd`/$dep" mozc/src/third_party/
-  done
+  cd "${srcdir}/${pkgbase}/"
+
+  git submodule init
+  git submodule update
 
   cd "${srcdir}/${_pkgname}/src"
 
