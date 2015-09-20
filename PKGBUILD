@@ -19,13 +19,14 @@
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: Cold (current_euid patch)
-# Contributor: ubuntu (4.1 kernel patch)
+# Contributor: ubuntu (parts of 4.0, 4.1 and 4.2 kernel patches)
+# Contributor: kolasa (part of 4.2 kernel patches)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-test
 pkgver=15.9
-pkgrel=1
+pkgrel=2
 # _betano=1.0
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
@@ -92,7 +93,8 @@ source=(
     ubuntu_buildfix_kernel_4.0.patch
     ubuntu_buildfix_kernel_4.1.patch
     ubuntu_buildfix_kernel_4.2.patch
-    4.2-fglrx-has_fpu.patch)
+    4.2-fglrx-has_fpu.patch
+    4.2-kolasa-fpu_save_init.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '601d9c756571dd79d26944e54827631e'
@@ -120,9 +122,8 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '880d5e59554cda382f74206c202942be'
 	 '982451bcc1fa1ee3da53ffa481d65581'
 	 '88832af8d6769aa51fa9b266a74394e0'
-	 'ed7748a593d6b894269f8c7856b7ae50')
-	 
-
+	 'ed7748a593d6b894269f8c7856b7ae50'
+	 'dd51495a1d8f2d1042f04a783bf01e08')
 
 
 build() {
@@ -308,8 +309,9 @@ package() {
       patch -Np1 -i ../fglrx_gpl_symbol.patch
       patch -Np1 -i ../ubuntu_buildfix_kernel_4.0.patch
       patch -Np1 -i ../ubuntu_buildfix_kernel_4.1.patch
-#       patch -Np1 -i ../ubuntu_buildfix_kernel_4.2.patch        #two 4.2 patches left for testing purposes, use both simultaneously - V
-#       patch -Np1 -i ../4.2-fglrx-has_fpu.patch
+      patch -Np1 -i ../ubuntu_buildfix_kernel_4.2.patch        #three 4.2 patches left for testing purposes, use  simultaneously - V
+      patch -Np1 -i ../4.2-fglrx-has_fpu.patch
+      patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
 
     # Prepare modules source files
       _archdir=x86_64
