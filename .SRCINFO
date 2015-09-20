@@ -1,0 +1,15 @@
+pkgbase = scapy3k-git
+	pkgdesc = scapy for python3 (aka scapy3k)
+	pkgver = r170.1be81b9
+	pkgrel = 1
+	url = https://github.com/phaethon/scapy
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = python
+	conflicts = scapy
+	source = git+https://github.com/phaethon/scapy.git
+	md5sums = SKIP
+
+pkgname = scapy3k-git
+
