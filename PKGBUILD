@@ -2,19 +2,25 @@
 # Contributor: Richard Graham <richard@rdg.cc>
 
 _release='2010'
+_short_release="${_release:2:4}"
+_service_pack='0'
 pkgname="labview-${_release}"
-pkgver=11
+pkgver="SP${_service_pack}"
 pkgrel=1
 pkgdesc='A system-design platform and development environment for a visual programming language from National Instruments.'
-url="http://www.ni.com/labview/release-archive/${_release}/"
-arch=('i686' 'x86_64')
+url="https://www.ni.com/labview/release-archive/${_release}/"
+arch=('x86_64') # This will likely work on i686, but I have not tested it.
 license=("custom:LabVIEW-${_release}")
 install="labview-${_release}.install"
-depends=('xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils' 'shared-mime-info')
-depends_x86_64+=('lib32-glibc'
+depends=("labview-${_release}-rte" 'xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils' 'shared-mime-info')
+depends_x86_64+=('lib32-expat'
                  'lib32-gcc-libs'
+                 'lib32-glib2'
                  'lib32-glibc'
                  'lib32-libdrm'
+                 'lib32-libice'
+                 'lib32-libsm'
+                 'lib32-libstdc++5'
                  'lib32-libx11'
                  'lib32-libxau'
                  'lib32-libxcb'
@@ -25,26 +31,30 @@ depends_x86_64+=('lib32-glibc'
                  'lib32-libxfixes'
                  'lib32-libxinerama'
                  'lib32-libxrender'
+                 'lib32-libxshmfence'
+                 'lib32-libxt'
                  'lib32-libxxf86vm'
                  'lib32-mesa'
+                 'lib32-mesa-libgl'
                  'lib32-openssl098'
-                 'lib32-libxt')
-makedepends=('rpmextract' 'sed')
+                 'lib32-pcre'
+                 'lib32-util-linux'
+                 'lib32-zlib')
+makedepends=('sed' 'libarchive')
 options=('!strip' '!upx') # Avoid time consuming operations.
 PKGEXT='.pkg.tar' # Do not compress, it's a large package (~1GB).
-source=("labview-${_release}-appbuild-10.0.0-1.i386.rpm"
-        "labview-${_release}-core-10.0.0-1.i386.rpm"
-        "labview-${_release}-desktop-10.0.0-1.i386.rpm"
-        "labview-${_release}-examples-10.0.0-1.i386.rpm"
-        "labview-${_release}-help-10.0.0-1.i386.rpm"
-        "labview-${_release}-pro-10.0.0-1.i386.rpm"
-        "labview-${_release}-ref-10.0.0-1.i386.rpm"
-        "labview-${_release}-rte-10.0.0-1.i386.rpm"
+source=("labview-${_release}-appbuild-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "labview-${_release}-core-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "labview-${_release}-desktop-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "labview-${_release}-examples-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "labview-${_release}-help-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "labview-${_release}-pro-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "labview-${_release}-ref-${_short_release}.0.${_service_pack}-1.i386.rpm"
         "niexfinder-base-1.0-19.i386.rpm"
-        "niexfinder-labview-${_release}-10.0.0-1.i386.rpm"
-        "nilvcompare-10.0.0-1.i386.rpm"
-        "nilvmerge-10.0.0-1.i386.rpm"
-        "nisvcloc-10.0.0-1.i386.rpm"
+        "niexfinder-labview-${_release}-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "nilvcompare-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "nilvmerge-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "nisvcloc-${_short_release}.0.${_service_pack}-1.i386.rpm"
         "niwebpipeline20_dep-2.0-5.i586.rpm"
         "LICENSE.txt"
         "PATENTS.txt")
@@ -55,7 +65,6 @@ md5sums=('003fa58d0e43d74441f1716f8a83fc59'
          '4473f311612201711144a12313bc6837'
          '5646bfdb013790d394969b80a9e621ac'
          '630e8fc2155d752118e436b37f19ceb9'
-         '0566b80b88d805a3a56eed08c4281d78'
          '1f237f1937db222ca717034cbd82fb55'
          'e019e0476940e077cdd97658ac525f22'
          '6c1c92c1b61d27e94177f568f7614da6'
@@ -66,30 +75,13 @@ md5sums=('003fa58d0e43d74441f1716f8a83fc59'
          'a1a1c2c25ae24f9c0e54c1003d772a79')
 
 package() {
-  rpmextract.sh "../labview-${_release}-appbuild-10.0.0-1.i386.rpm"
-  rpmextract.sh "../labview-${_release}-core-10.0.0-1.i386.rpm"
-  rpmextract.sh "../labview-${_release}-desktop-10.0.0-1.i386.rpm"
-  rpmextract.sh "../labview-${_release}-examples-10.0.0-1.i386.rpm"
-  rpmextract.sh "../labview-${_release}-help-10.0.0-1.i386.rpm"
-  rpmextract.sh "../labview-${_release}-pro-10.0.0-1.i386.rpm"
-  rpmextract.sh "../labview-${_release}-ref-10.0.0-1.i386.rpm"
-  rpmextract.sh "../labview-${_release}-rte-10.0.0-1.i386.rpm"
-  rpmextract.sh "../niexfinder-base-1.0-19.i386.rpm"
-  rpmextract.sh "../niexfinder-labview-${_release}-10.0.0-1.i386.rpm"
-  rpmextract.sh "../nilvcompare-10.0.0-1.i386.rpm"
-  rpmextract.sh "../nilvmerge-10.0.0-1.i386.rpm"
-  rpmextract.sh "../nisvcloc-10.0.0-1.i386.rpm"
-  rpmextract.sh "../niwebpipeline20_dep-2.0-5.i586.rpm"
-
-  mkdir -p "${pkgdir}/usr/lib"
   mkdir -p "${pkgdir}/opt"
 
-  mv "${srcdir}/usr/local/lib/*" "${pkgdir}/usr/lib"
-  mv "${srcdir}/usr/local/*" "${pkgdir}/opt"
+  cp -rp "${srcdir}/usr/local/natinst" "${pkgdir}/opt/"
      
   mkdir -p "${pkgdir}/usr/share/licenses/LabVIEW-${_release}"
-  cp "../LICENSE.txt" "${pkgdir}/usr/share/licenses/LabVIEW-${_release}/LICENSE.txt"
-  cp "../PATENTS.txt" "${pkgdir}/usr/share/licenses/LabVIEW-${_release}/PATENTS.txt"
+  cp "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/LabVIEW-${_release}/LICENSE.txt"
+  cp "${srcdir}/PATENTS.txt" "${pkgdir}/usr/share/licenses/LabVIEW-${_release}/PATENTS.txt"
 
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
@@ -101,7 +93,7 @@ package() {
   cp "${pkgdir}/opt/natinst/LabVIEW-${_release}/etc/desktop/icons/128x128/labview.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/labview.png"
   cp "${pkgdir}/opt/natinst/LabVIEW-${_release}/etc/desktop/icons/128x128/natinst-labview.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/natinst-labview.png"
 
-  for file in "${pkgdir}/opt/natinst/LabVIEW-${_release}/etc/desktop/icons/48x48/i-*.png"; do
+  for file in "${pkgdir}"/opt/natinst/LabVIEW-"${_release}"/etc/desktop/icons/48x48/i-*.png; do
     cp "$file" ${pkgdir}/usr/share/icons/hicolor/48x48/mimetypes/`echo ${file##*/} | sed "s,i-,application-x-,"`
     cp "$file" ${pkgdir}/usr/share/icons/hicolor/128x128/mimetypes/`echo ${file##*/} | sed "s,i-,application-x-,"`
   done
