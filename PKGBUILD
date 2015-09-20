@@ -6,14 +6,14 @@ _fred=#tag=build01470
 #_fred=#tag=testing-build-1471-pre1
 #_fred=#branch=next
 
-_wot=#commit=a752009 # v0.4.4 build0018
+_wot=#tag=build0018
 #_wot=#branch=next
 
-_plugins=('WebOfTrust' 'JSTUN' 'UPnP' 'KeyUtils')
+_plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
 
 pkgname=freenet
 pkgver=0.7.5.1470
-pkgrel=2
+pkgrel=3
 epoch=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
@@ -22,8 +22,8 @@ license=('GPL2')
 arch=('any')
 install='freenet.install'
 
-depends=('java-runtime' 'bcprov151>=1.52' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment' 'unzip' 'apache-ant' 'apache-ant-contrib' 'git')
+depends=('java-runtime>=7' 'bcprov151>=1.52' 'gmp' 'java-service-wrapper')
+makedepends=('java-environment>=7' 'unzip' 'apache-ant' 'apache-ant-contrib' 'git')
 checkdepends=('junit')
 # comment out to run unit tests
 BUILDENV+=('!check')
@@ -51,7 +51,6 @@ noextract=('lzma465.tar.bz2'
 # prebuilt by the freenetproject, the rest we attempt to build ourselves
 source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/contrib.git"
-        "git+https://github.com/freenet/plugin-JSTUN.git"
         "git+https://github.com/freenet/plugin-UPnP.git"
         "git+https://github.com/freenet/plugin-KeyUtils.git"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
@@ -69,15 +68,14 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e9552d1912216e88f2d04fd6882cc015acb81bd2a2b2392197b3758578b23f81'
             '16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d'
             'f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d'
             '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
-            '24fed7935fcbfc6eb022e04abe8b9d22fda88eae8c1f73daf99e8f28a420d05f'
-            '23301d421c1fd1d076ef2c8371881477924c03db21b19a8ca180a8db6349dfaa'
+            '187dd4479fcda313d64415e02687acde66e018fe0be55b9f9e9d117f701d303d'
+            '865c1f259d9c544861cc12b4ea64ad35ec6388c1392b3e5247eaed0f316e42b7'
             '4a1597e4748012d684622f4491108eb8fae022f00dbca9a2f6a31a589ec022d2'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
-            'e83c19b6f9137539ab4dd66a5bf1a5207b4b351eb808688d963f1081852be022'
+            'bab61a82b5e0e0aa92a51b7d6111f37fc5416faa14b7805077a7e89b5653e297'
             'ac83d727d6301e75cf1d441a1a1e72ba06ea119fa53a3bae65b3373108abf213'
             'c935fd04dd8e0e8c688a3078f3675d699679a90be81c12686837e0880aa0fa1e'
             '265f7ed2dd4fecb058884d3f8974674b06e0be46131c3b2bc6a310373937d2ef'
@@ -128,10 +126,6 @@ prepare() {
     # these are from the I2P project
     ln -sf "$srcdir"/jcpuid.h include/
     ln -sf "$srcdir"/jcpuid.c src/
-
-    # append wrapper.jar location to JSTUN build
-    sed -i "$srcdir/plugin-JSTUN/build.xml" \
-        -e 's|<pathelement location="${freenet-ext.location}"/>|<pathelement location="${freenet-ext.location}"/>\n<pathelement location="/usr/share/java/wrapper.jar"/>|'
 }
 
 build() {
@@ -146,8 +140,7 @@ build() {
 
     msg "Building Freenet-ext..."
     cd "$srcdir/fred/contrib/freenet-ext"
-    ant -propertyfile "$srcdir/contrib.properties" \
-        -Djavac.target.version=1.7
+    ant -propertyfile "$srcdir/contrib.properties"
 
     cd dist
     for dep in bitcollider-core commons-compress db4o lzmajio mantissa wrapper
@@ -265,11 +258,11 @@ package() {
     # freenet
     install -dm755 "$pkgdir"/usr/bin
     install -dm700 "$pkgdir"/run/freenet
-    install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf/node,persistent-temp,tmp,plugins/data,user/{data,certs}}
+    install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,tmp,plugins/data,user/{data,certs}}
 
     install -m640 "$srcdir"/{wrapper.config,run.sh}            "$pkgdir"/opt/freenet
     install -m640 "$srcdir"/freenet.ini                        "$pkgdir"/opt/freenet/conf
-    install -m640 "$srcdir"/seednodes.fref                     "$pkgdir"/opt/freenet/conf/node
+    install -m640 "$srcdir"/seednodes.fref                     "$pkgdir"/opt/freenet/noderef
     install -m640 contrib/freenet-ext/dist/freenet-ext.jar \
                   dist/freenet.jar                             "$pkgdir"/opt/freenet/lib
 

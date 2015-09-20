@@ -19,9 +19,14 @@ post_install() {
 
 post_upgrade() {
     chown -R freenet:freenet /opt/freenet /run/freenet
-    echo
-    echo " Freenet WebUI http://127.0.0.1:8888/ "
-    echo "     Changelog https://github.com/freenet/fred/releases/tag/build01469"
+
+    ## remove me at a later date
+    [[ -d /opt/freenet/conf/node ]] && {
+        sed -i /opt/freenet/conf/freenet.ini \
+            -e "s:node.install.nodeDir=/opt/freenet/conf/node:node.install.nodeDir=/opt/freenet/noderef:"
+        mv /opt/freenet/conf/node /opt/freenet/noderef
+    }
+
     echo
 }
 

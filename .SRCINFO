@@ -1,19 +1,19 @@
 pkgbase = freenet
 	pkgdesc = An encrypted network without censorship
 	pkgver = 0.7.5.1470
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://downloads.freenetproject.org
 	install = freenet.install
 	arch = any
 	license = GPL2
 	checkdepends = junit
-	makedepends = java-environment
+	makedepends = java-environment>=7
 	makedepends = unzip
 	makedepends = apache-ant
 	makedepends = apache-ant-contrib
 	makedepends = git
-	depends = java-runtime
+	depends = java-runtime>=7
 	depends = bcprov151>=1.52
 	depends = gmp
 	depends = java-service-wrapper
@@ -27,10 +27,9 @@ pkgbase = freenet
 	backup = opt/freenet/conf/freenet.ini
 	source = git+https://github.com/freenet/fred.git#tag=build01470
 	source = git+https://github.com/freenet/contrib.git
-	source = git+https://github.com/freenet/plugin-JSTUN.git
 	source = git+https://github.com/freenet/plugin-UPnP.git
 	source = git+https://github.com/freenet/plugin-KeyUtils.git
-	source = git+https://github.com/freenet/plugin-WebOfTrust.git#commit=a752009
+	source = git+https://github.com/freenet/plugin-WebOfTrust.git#tag=build0018
 	source = https://downloads.freenetproject.org/alpha/opennet/seednodes.fref
 	source = https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar
 	source = https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c
@@ -52,15 +51,14 @@ pkgbase = freenet
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e9552d1912216e88f2d04fd6882cc015acb81bd2a2b2392197b3758578b23f81
 	sha256sums = 16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d
 	sha256sums = f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d
 	sha256sums = 9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2
-	sha256sums = 24fed7935fcbfc6eb022e04abe8b9d22fda88eae8c1f73daf99e8f28a420d05f
-	sha256sums = 23301d421c1fd1d076ef2c8371881477924c03db21b19a8ca180a8db6349dfaa
+	sha256sums = 187dd4479fcda313d64415e02687acde66e018fe0be55b9f9e9d117f701d303d
+	sha256sums = 865c1f259d9c544861cc12b4ea64ad35ec6388c1392b3e5247eaed0f316e42b7
 	sha256sums = 4a1597e4748012d684622f4491108eb8fae022f00dbca9a2f6a31a589ec022d2
 	sha256sums = 434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f
-	sha256sums = e83c19b6f9137539ab4dd66a5bf1a5207b4b351eb808688d963f1081852be022
+	sha256sums = bab61a82b5e0e0aa92a51b7d6111f37fc5416faa14b7805077a7e89b5653e297
 	sha256sums = ac83d727d6301e75cf1d441a1a1e72ba06ea119fa53a3bae65b3373108abf213
 	sha256sums = c935fd04dd8e0e8c688a3078f3675d699679a90be81c12686837e0880aa0fa1e
 	sha256sums = 265f7ed2dd4fecb058884d3f8974674b06e0be46131c3b2bc6a310373937d2ef
