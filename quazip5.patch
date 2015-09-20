@@ -1,0 +1,75 @@
+diff --git a/configure.rb b/configure.rb
+index 1df69be..c6329be 100755
+--- a/configure.rb
++++ b/configure.rb
+@@ -108,7 +108,7 @@ _EOH_
+        quazipDir = conf.argumentValue("with-quazip")
+        if File.directory? quazipDir
+           quazipLib = quazipDir + "/lib"
+-          quazipInclude = quazipDir + "/include"
++          quazipInclude = quazipDir + "/include/quazip5"
+           config.addLib("-L" + quazipLib)
+           config.addIncludePath(quazipInclude)
+        else
+diff --git a/configure.tests/quazip/quazip.pro b/configure.tests/quazip/quazip.pro
+index 4db2eeb..b9e21fa 100755
+--- a/configure.tests/quazip/quazip.pro
++++ b/configure.tests/quazip/quazip.pro
+@@ -10,7 +10,7 @@ macx {
+ }
+ 
+ unix:!macx {
+-  INCLUDEPATH += /usr/include/quazip
++  INCLUDEPATH += /usr/include/quazip5
+ }
+ 
+ LIBS += -lz
+diff --git a/configure.tests/quazip/quazip.qonf b/configure.tests/quazip/quazip.qonf
+index 7d259a8..da8aa2c 100755
+--- a/configure.tests/quazip/quazip.qonf
++++ b/configure.tests/quazip/quazip.qonf
+@@ -8,7 +8,7 @@
+ 			<define value="HAVE_QUAZIP" />
+ 		</defines>
+                 <includes>
+-                        <include path="/usr/include/quazip/" />
++                        <include path="/usr/include/quazip5/" />
+                 </includes>
+ 	</provide>
+ 	<solution>
+diff --git a/qonf/test.rb b/qonf/test.rb
+index 79a7ecc..9e43036 100755
+--- a/qonf/test.rb
++++ b/qonf/test.rb
+@@ -98,15 +98,15 @@ class Test
+                       if conf.hasArgument?("with-quazip")
+                          quazipDir = conf.argumentValue("with-quazip")
+                          quazipLib = quazipDir + "/lib"
+-                         extraLib += "-L#{quazipLib} -lquazip"
+-                         extraInclude = quazipDir + "/include"
++                         extraLib += "-L#{quazipLib} -lquazip5"
++                         extraInclude = quazipDir + "/include/quazip5"
+                          qmakeLine = "'LIBS += #{extraLib}'"
+                          qmakeLine += " 'INCLUDEPATH += #{extraInclude}'"
+                       else
+                          if parser.os.eql? "14.10" 
+-                            extraLib = "-lquazip-qt5"
++                            extraLib = "-lquazip5"
+                          else
+-                            extraLib = "-lquazip"
++                            extraLib = "-lquazip5"
+                          end
+                          qmakeLine = "'LIBS += #{extraLib}'"
+                       end
+@@ -178,9 +178,9 @@ class Test
+         }
+ 
+         if parser.os.eql? "14.10"
+-           config.addLib("-lquazip-qt5")
++           config.addLib("-lquazip5")
+         else
+-           config.addLib("-lquazip")
++           config.addLib("-lquazip5")
+         end
+         
+         parser.defines.each { |define|
