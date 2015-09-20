@@ -1,5 +1,8 @@
 post_install() {
     depmod -a $(uname -r)
+
+    echo 'If you are using Linux 4.2 or later, there is no need to install this driver.'
+    echo 'Else if you are using Linux 3.19 or later, consider installing mt7601u-git instead.'
 }
 
 post_upgrade() {
