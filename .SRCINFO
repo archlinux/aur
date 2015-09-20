@@ -1,0 +1,24 @@
+pkgbase = astroid
+	pkgdesc = a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others
+	pkgver = v0.4.r7.gcb4ebcc
+	pkgrel = 1
+	url = https://github.com/gauteh/astroid
+	arch = x86_64
+	arch = i686
+	license = GPL
+	checkdepends = notmuch-runtime
+	makedepends = scons
+	makedepends = git
+	makedepends = pkg-config
+	depends = notmuch
+	depends = boost
+	depends = boost-libs
+	depends = gmime
+	depends = gtkmm3
+	depends = webkitgtk
+	depends = gvim
+	source = astroid::git+https://github.com/gauteh/astroid.git
+	md5sums = SKIP
+
+pkgname = astroid
+
