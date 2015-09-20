@@ -1,0 +1,20 @@
+diff --git a/tests/test_future/test_bytes.py b/tests/test_future/test_bytes.py
+index f30e740..c261f02 100644
+--- a/tests/test_future/test_bytes.py
++++ b/tests/test_future/test_bytes.py
+@@ -534,7 +534,6 @@ class TestBytes(unittest.TestCase):
+         self.assertRaises(ValueError, bytes.maketrans, b'abc', b'xyzq')
+         self.assertRaises(TypeError, bytes.maketrans, 'abc', 'def')
+ 
+-    @unittest.expectedFailure
+     def test_mod(self):
+         """
+         From Py3.5 test suite (post-PEP 461).
+@@ -551,7 +550,6 @@ class TestBytes(unittest.TestCase):
+         a = b % (b'seventy-nine', 79)
+         self.assertEqual(a, b'seventy-nine / 100 = 79%')
+ 
+-    @unittest.expectedFailure
+     def test_imod(self):
+         """
+         From Py3.5 test suite (post-PEP 461)

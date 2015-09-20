@@ -1,0 +1,27 @@
+From 39a1186ea3a7a7ad1e8225a151e682d02bafdfa9 Mon Sep 17 00:00:00 2001
+From: Evangelos Foutras <evangelos@foutrelis.com>
+Date: Sun, 20 Sep 2015 10:17:44 +0300
+Subject: [PATCH] Remove duplicate assertion in builtins tests
+
+The other instance of this assertion is commented out because it fails
+on Python 3.5; see commit 7959135e44a35de7dff4b56dcaf86d9b74d88329
+(Disable two assertions in builtins tests for Py3.5 compatibility).
+---
+ tests/test_future/test_builtins.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/test_future/test_builtins.py b/tests/test_future/test_builtins.py
+index a6db4fd..84db01e 100644
+--- a/tests/test_future/test_builtins.py
++++ b/tests/test_future/test_builtins.py
+@@ -529,7 +529,6 @@ class BuiltinTest(unittest.TestCase):
+         self.assertRaises(TypeError, compile, 'pass', '?', 'exec',
+                           mode='eval', source='0', filename='tmp')
+         compile('print("\xe5")\n', '', 'exec')
+-        self.assertRaises(TypeError, compile, chr(0), 'f', 'exec')
+         self.assertRaises(ValueError, compile, str('a = 1'), 'f', 'bad')
+ 
+         # test the optimize argument
+-- 
+2.5.2
+
