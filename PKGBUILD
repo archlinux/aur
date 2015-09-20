@@ -6,14 +6,14 @@ _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
 pkgver=0.5.0.dev.r27289.g8681313
-pkgrel=1
+pkgrel=2
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
 url="http://julialang.org"
 license=('MIT')
 makedepends=('gcc-fortran' 'arpack' 'fftw' 'git' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf')
 # Needed if building the documentation
-#makedepends+=('python2-sphinx' 'python2-sphinx_rtd_theme' 'python-pip' 'texlive-langcjk' 'texlive-latexextra')
+#makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
 options=('!emptydirs')
 source=(git://github.com/JuliaLang/julia.git#branch=master)
 md5sums=('SKIP')
@@ -32,10 +32,6 @@ prepare() {
   cd $_pkgbase
   git submodule init
   git submodule update
-
-  cd doc
-  # They use the Python2 version for sphinx which has on Arch a different name
-  #sed s/sphinx-build/sphinx-build2/g -i Makefile
 }
 
 build() {
@@ -65,7 +61,6 @@ build() {
 
   # Building doc
   cd $_pkgbase/doc
-  echo "Doc build disabled"
   #make man
   #make latexpdf
   #make info
@@ -117,16 +112,20 @@ package_julia-git-docs() {
   provides=('julia-docs')
   conflicts=('julia-docs' 'julia-git-doc')
 
-  echo "Doc building disabled, just the source files and examples"
+  # Source files and examples"
   install -d "$pkgdir/usr/share/doc"
   cp -rv "$srcdir/$_pkgbase/doc" "$pkgdir/usr/share/doc/$_pkgbase"
   cp -rv "$srcdir/$_pkgbase/examples" "$pkgdir/usr/share/doc/$_pkgbase/examples"
 
-  #cd $_pkgbase/doc/_build
+  # Remove double
+  rm -rv "$pkgdir/usr/share/doc/julia/man/"
+
+  # Installing built docs. Adjust it accordingly to your changes in build()
+  cd $_pkgbase/doc/_build
+  cp -dpr --no-preserve=ownership html $pkgdir/usr/share/doc/julia/
   #install -D -m644 man/julialanguage.1 $pkgdir/usr/share/man/man1/julialanguage.1
   #install -D -m644 texinfo/JuliaLanguage.info $pkgdir/usr/share/info/julialanguage.info
   #install -D -m644 latex/JuliaLanguage.pdf $pkgdir/usr/share/julia/doc/julialanguage.pdf
-  #cp -dpr --no-preserve=ownership html $pkgdir/usr/share/julia/doc/
 }
 
 # vim:set ts=2 sw=2 et:
