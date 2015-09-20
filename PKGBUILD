@@ -4,13 +4,13 @@
 
 pkgname=nvidia-340xx-lqx
 pkgver=340.76
-_extramodules=extramodules-4.1-lqx
-pkgrel=8
+_extramodules=extramodules-4.2-lqx
+pkgrel=9
 pkgdesc="NVIDIA drivers for linux-lqx, 340xx legacy branch"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-lqx>=4.1' 'linux-lqx<4.2' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-lqx-headers>=4.1' 'linux-lqx-headers<4.2')
+depends=('linux-lqx>=4.2' 'linux-lqx<4.3' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-lqx-headers>=4.2' 'linux-lqx-headers<4.3')
 conflicts=('nvidia-lqx' 'nvidia-304xx-lqx')
 license=('custom')
 install=${pkgname}.install
