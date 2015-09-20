@@ -34,20 +34,10 @@ depends_x86_64+=('lib32-expat'
                  'lib32-util-linux')
 optdepends=("labview-${_release}: Full LabVIEW platform.")
 makedepends=('libarchive')
-options=()
-_filename="labview-${_release}-rte-${_short_release}.0.${_service_pack}-1.i386.rpm"
-source=("${_filename}")
-# md5sums=('3a4f1541dde45dcf5f36d618fb039d8d') # Hash for the .rpm
-md5sums=('SKIP') # Please check manually.
-
-prepare() {
-  test -s "${_filename}" || (
-    printf "\e[1;31mPlease create an NI account, download and unzip the RTE.\e[0m\n"
-    echo "http://www.ni.com/download/labview-run-time-engine-2010-sp1/2297/en/"
-    echo "a3fa4b50a75b8394cb9f3e7cb6646dbb  labview-2010-rte-${_short_release}.0.1-1.i386.zip"
-    exit 1
-  )    
-}
+# http://www.ni.com/download/labview-run-time-engine-2010-sp1/2297/en/
+# a3fa4b50a75b8394cb9f3e7cb6646dbb labview-2010-rte-10.0.1-1.i386.zip
+source=("file://labview-${_release}-rte-${_short_release}.0.${_service_pack}-1.i386.rpm")
+md5sums=('3a4f1541dde45dcf5f36d618fb039d8d') # Hash for the .rpm
 
 package() {
   mkdir -p "${pkgdir}/usr/"
