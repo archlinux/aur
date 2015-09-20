@@ -21,5 +21,5 @@ build() {
 package() {
   cd xvisbell
 
-  cp xvisbell /usr/bin/xvisbell
+  mv xvisbell /usr/bin/
 }
