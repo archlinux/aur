@@ -1,7 +1,7 @@
 # Maintainer: John "ShaggyTwoDope" Jenkins <twodopeshaggy at gmail dot com>
 pkgname=lsmbox
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to monitor mbox MMDF MH and Maildir E-Mail directory formats."
 arch=('i686' 'x86_64')
 url="ftp://ftp.acc.umu.se/mirror/lap/lsmbox"
