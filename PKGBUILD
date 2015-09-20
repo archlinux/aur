@@ -2,7 +2,7 @@
 
 pkgname=govpn
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple secure free software DPI/censorship-resistant VPN daemon"
 arch=('i686' 'x86_64')
 url="http://www.cypherpunks.ru/govpn/"
@@ -18,10 +18,6 @@ build() {
 package() {
   cd $srcdir/$pkgname-${pkgver}
   make DESTDIR=$pkgdir PREFIX=/usr install-strip
-  rm -fr $pkgdir/usr/share/doc/$pkgname $pkgdir/usr/share/$pkgname
-  mkdir -p $pkgdir/usr/share/doc/$pkgname $pkgdir/usr/share/$pkgname
   install -Dm644 doc/${pkgname}.html/* $pkgdir/usr/share/doc/$pkgname/
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
-  install -Dm755 utils/storekey.sh $pkgdir/usr/share/licenses/$pkgname/
-  install -Dm755 utils/newclient.sh $pkgdir/usr/share/licenses/$pkgname/
 }
