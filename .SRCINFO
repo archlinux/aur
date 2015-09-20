@@ -1,0 +1,18 @@
+pkgbase = python-pymisp
+	pkgdesc = API for MISP.
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pymisp
+	arch = any
+	license = BSD2
+	makedepends = python
+	makedepends = python2
+	source = https://pypi.python.org/packages/source/p/pymisp/pymisp-1.12.tar.gz
+	sha512sums = 6f991b00b9cf92dde2545b04ddea39c7a90161b0b29fcf8655f8a98e616532f0d4fd5dcee9dd0f401591e6b09499261a2cd52c4273d2f533e3b31387de7c82d3
+
+pkgname = python-pymisp
+	depends = python
+
+pkgname = python2-pymisp
+	depends = python2
+
