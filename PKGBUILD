@@ -4,7 +4,7 @@
 pkgbase=python-mock
 pkgname=(python2-mock python-mock)
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
 makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
@@ -26,14 +26,14 @@ build() {
 }
 
 package_python-mock() {
-depends=('python' 'python-six')
+depends=('python' 'python-six' 'python2-pbr')
   cd "$srcdir/mock-$pkgver"
   python3 setup.py install --optimize=1 --root="$pkgdir"
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_python2-mock() {
-depends=('python2' 'python2-six' 'python2-funcsigs') # Backported Py > 3.3 functionality
+depends=('python2' 'python2-six' 'python2-pbr' 'python2-funcsigs') # Backported Py > 3.3 functionality
   cd "$srcdir/mock2-$pkgver"
   python2 setup.py install --optimize=1 --root="$pkgdir"
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
