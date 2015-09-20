@@ -1,6 +1,6 @@
 pkgbase = mutt-kiss
-	pkgdesc = Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL, with PGP/attachment patches.
-	pkgver = 1.5.23
+	pkgdesc = Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL, with forgotten attachments patch.
+	pkgver = 1.5.24
 	pkgrel = 1
 	url = http://www.mutt.org/
 	install = mutt-kiss.install
@@ -13,10 +13,10 @@ pkgbase = mutt-kiss
 	provides = mutt
 	conflicts = mutt
 	backup = etc/Muttrc
-	source = https://bitbucket.org/mutt/mutt/downloads/mutt-1.5.23.tar.gz
+	source = https://bitbucket.org/mutt/mutt/downloads/mutt-1.5.24.tar.gz
 	source = simple-noconfig-proposal.patch
 	source = mutt-attach.patch
-	sha1sums = 8ac821d8b1e25504a31bf5fda9c08d93a4acc862
+	sha1sums = 38a2da5eb01ff83a90a2caee28fa2e95dbfe6898
 	sha1sums = 1ca3a0ab5c4a965d180bd310ba15cfe42c6a4e12
 	sha1sums = 94da52d50508d8951aa78ca4b073023414866be1
 

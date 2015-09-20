@@ -3,9 +3,9 @@
 # Contributor: Tom Vincent <http://www.tlvince.com/contact/>
 
 pkgname=mutt-kiss
-pkgver=1.5.23
+pkgver=1.5.24
 pkgrel=1
-pkgdesc="Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL, with PGP/attachment patches."
+pkgdesc="Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL, with forgotten attachments patch."
 arch=('i686' 'x86_64')
 url="http://www.mutt.org/"
 license=('GPL')
@@ -17,15 +17,12 @@ install=$pkgname.install
 source=("https://bitbucket.org/mutt/mutt/downloads/mutt-$pkgver.tar.gz"
         "simple-noconfig-proposal.patch"
         "mutt-attach.patch")
-sha1sums=('8ac821d8b1e25504a31bf5fda9c08d93a4acc862'
+sha1sums=('38a2da5eb01ff83a90a2caee28fa2e95dbfe6898'
           '1ca3a0ab5c4a965d180bd310ba15cfe42c6a4e12'
           '94da52d50508d8951aa78ca4b073023414866be1')
 
 prepare() {
   cd "$srcdir/mutt-$pkgver"
-
-  # Named PGP signature patch: http://dev.mutt.org/trac/ticket/3478
-  patch -p1 -i ../simple-noconfig-proposal.patch
 
   # Forgotten attachment detector
   patch -p1 -i ../mutt-attach.patch
