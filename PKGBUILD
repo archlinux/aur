@@ -2,6 +2,7 @@
 # Maintainer: Florian Walch <florian+aur at fwalch dot com>
 # Maintainer: Leonard König <leonard.r.koenig at googlemail dot com>
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
+# Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor
 _version=5.1.0
