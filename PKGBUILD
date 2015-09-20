@@ -23,8 +23,6 @@ depends=('desktop-file-utils'
          'libxtst'
          'libpqxx'
          'monodevelop')
-makedepends=('elinks'
-             'libxml2')
 optdepends=('ffmpeg: for WebGL exporting'
             'nodejs: for WebGL exporting'
             'java-runtime: for WebGL exporting'
