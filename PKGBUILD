@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.5.0.dev.g7cd05db
+pkgver=0.5.0.dev.r27289.g8681313
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
@@ -24,9 +24,8 @@ pkgver() {
 
   # use the version from VERSION file
   ver=`git show makepkg:VERSION | sed 's/-/./g'`
-  # strip the last tag name from the HEAD description
-  rev=`git describe --tags | sed 's/^.\+-\(g[0-9a-f]\+\)$/\1/;s/-/./g'`
-  echo $ver.$rev
+  # Combine ver with rev-count and latest commit
+  printf "%s.r%s.g%s" $(echo $ver) "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
