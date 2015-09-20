@@ -1,5 +1,5 @@
 # Maintainer: cyphix <cyphix cyphix org>
-# Original PKGBUILD Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Category: system
 
 # The cups binary is 64 bit. Until Brother releases source for the 32 bit lpr
