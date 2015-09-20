@@ -1,0 +1,21 @@
+pkgbase = gerbil-git
+	pkgdesc = An interactive visualization tool targeted at multispectral and hyperspectral image data
+	pkgver = 1.0b
+	pkgrel = 1
+	url = http://www.gerbilvis.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = boost-libs
+	depends = opencv
+	depends = qt4
+	depends = gdal
+	conflicts = gerbil
+	source = git+https://github.com/gerbilvis/gerbil.git
+	md5sums = SKIP
+
+pkgname = gerbil-git
+
