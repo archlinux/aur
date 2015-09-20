@@ -1,0 +1,21 @@
+pkgbase = python-redmine
+	pkgdesc = Python library for communicating with a Redmine project management application
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://python-redmine.readthedocs.org/
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/python-redmine/python-redmine-1.2.0.tar.gz
+	md5sums = ca13072692dc5068bd17d47ca83621b9
+
+pkgname = python-redmine
+	depends = python
+	depends = python-requests
+
+pkgname = python2-redmine
+	depends = python2
+	depends = python2-requests
+
