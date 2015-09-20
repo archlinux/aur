@@ -26,8 +26,8 @@ depends_x86_64+=('lib32-glibc'
                  'lib32-libxinerama'
                  'lib32-libxrender'
                  'lib32-libxxf86vm'
-                 'lib32-mesa/'
-                 'lib32-openssl-compatibility'
+                 'lib32-mesa'
+                 'lib32-openssl098'
                  'lib32-libxt')
 makedepends=('rpmextract' 'sed')
 options=('!strip' '!upx') # Avoid time consuming operations.
