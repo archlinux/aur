@@ -1,7 +1,7 @@
 # Maintainer: Thor77 <thor77 at thor77 dot org>
 pkgname=goatattack
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-paced multiplayer pixel art shooter game."
 arch=("any")
 url="http://www.goatattack.net/"
@@ -18,6 +18,11 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make
+}
+
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
+	make check
 }
 
 package() {
