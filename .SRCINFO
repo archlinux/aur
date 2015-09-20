@@ -1,7 +1,7 @@
 pkgbase = yaourt-gui
 	pkgdesc = A bash GUI for yaourt
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/
 	install = yaourt-gui.install
 	arch = any
