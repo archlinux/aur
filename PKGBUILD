@@ -7,7 +7,7 @@ _git_patches=""
 _git_patches+="783:mono-process-name "
 
 pkgname="sonarr-git"
-pkgver=2.0.0.r6485
+pkgver=2.0.0.r6490
 pkgrel=1
 pkgdesc="Automated TV series manager and downloader - git branch ${_gitbranch}"
 arch=(any)
@@ -41,7 +41,6 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${_gitname}"
 
-  # FIXME May deviate from actual version
   printf "${_gitver}.r%s" "$(git rev-list --count ${_gitbranch})"
 }
 
