@@ -1,7 +1,7 @@
 # Maintainer: Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 pkgname=freetuxtv
 pkgver=0.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="WebTV player to watch ADSL TV on the PC."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/freetuxtv/"
