@@ -3,15 +3,16 @@
 
 pkgbase=python-mock
 pkgname=(python2-mock python-mock)
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
-makedepends=('python2' 'python')
+makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
+checkdepends=('python-nose' 'python2-nose' 'python-pbr' 'python2-pbr' 'python-six' 'python2-six' 'git')
 license=('BSD')
 arch=('any')
 source=("http://pypi.python.org/packages/source/m/mock/mock-$pkgver.tar.gz")
-md5sums=('c3971991738caa55ec7c356bbc154ee2')
+md5sums=('73ee8a4afb3ff4da1b4afa287f39fdeb')
 
 build() {
   cd "$srcdir"
@@ -25,15 +26,27 @@ build() {
 }
 
 package_python-mock() {
-depends=('python')
+depends=('python' 'python-six')
   cd "$srcdir/mock-$pkgver"
   python3 setup.py install --optimize=1 --root="$pkgdir"
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_python2-mock() {
-depends=('python2')
+depends=('python2' 'python2-six' 'python2-funcsigs') # Backported Py > 3.3 functionality
   cd "$srcdir/mock2-$pkgver"
   python2 setup.py install --optimize=1 --root="$pkgdir"
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+}
+
+check() {
+  cd "$srcdir/mock2-$pkgver/"
+  sed -i 's/unittest2/unittest/g'  mock/tests/*.py
+
+  echo 'python tests'
+  python -m unittest discover
+  
+  # Does not run because of self.assertRaisesRegex() usage in unitests, which is self.assertRaisesRegexp() in Python 2.7
+  #echo 'python2 tests'
+  #python2 -m unittest discover
 }
