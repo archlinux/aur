@@ -1,0 +1,16 @@
+pkgbase = juliadoc-git
+	pkgdesc = Python package providing Sphinx extensions and a theme for the Julia language
+	pkgver = r42.85c83a5
+	pkgrel = 1
+	url = https://github.com/JuliaLang/JuliaDoc
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-sphinx
+	provides = juliadoc
+	conflicts = juliadoc
+	source = git+https://github.com/JuliaLang/JuliaDoc.git
+	md5sums = SKIP
+
+pkgname = juliadoc-git
+
