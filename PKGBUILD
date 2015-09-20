@@ -9,7 +9,7 @@ license=('GPL2')
 url="https://github.com/halocaridina/xvisbell"
 depends=('libx11')
 makedepends=('git' 'make')
-source=("git+https://github.com/halocaridina/xvisbell.git#commit=fe9230033b11e3c1b29b07a4fa85856b4b03cc5c")
+source=("git+https://github.com/halocaridina/xvisbell.git#commit=b230ba8c96c4118efe45f59da3119368a1a1c537")
 md5sums=('SKIP')
 
 build() {
