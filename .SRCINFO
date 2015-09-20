@@ -1,6 +1,6 @@
 pkgbase = lolcommits
 	pkgdesc = Takes a snapshot with your webcam every time you git commit code.
-	pkgver = 0.5.7
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://mroth.github.io/lolcommits/
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = lolcommits
 	depends = ruby-rest-client
 	depends = ruby-twitter
 	depends = ruby-yam
-	noextract = lolcommits-0.5.7.gem
-	source = https://rubygems.org/downloads/lolcommits-0.5.7.gem
-	sha256sums = d0713f307b1a244b6792bae765f0880b36eafc10383be26a13f21ee82c314f2d
+	noextract = lolcommits-0.6.0.gem
+	source = https://rubygems.org/downloads/lolcommits-0.6.0.gem
+	sha256sums = 067407532775e4031e1b252b8da8e9033bf9788b11f3da5e52bbe3c04afd3942
 
 pkgname = lolcommits
 

@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
 
 pkgname=lolcommits
-pkgver=0.5.7
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Takes a snapshot with your webcam every time you git commit code."
 arch=('any')
@@ -14,7 +14,7 @@ depends=('ruby' 'mplayer' 'imagemagick'
 makedepends=('rubygems')
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha256sums=('d0713f307b1a244b6792bae765f0880b36eafc10383be26a13f21ee82c314f2d')
+sha256sums=('067407532775e4031e1b252b8da8e9033bf9788b11f3da5e52bbe3c04afd3942')
 
 package() {
   cd "$srcdir"
