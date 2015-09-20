@@ -3,6 +3,7 @@ pkgbase = gerbil-git
 	pkgver = 1.0b
 	pkgrel = 1
 	url = http://www.gerbilvis.org/
+	install = gerbil.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -15,7 +16,9 @@ pkgbase = gerbil-git
 	depends = gdal
 	conflicts = gerbil
 	source = git+https://github.com/gerbilvis/gerbil.git
+	source = gerbil.desktop
 	md5sums = SKIP
+	md5sums = 95c325def4edada78a7841429ec19aa8
 
 pkgname = gerbil-git
 
