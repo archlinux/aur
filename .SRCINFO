@@ -1,6 +1,6 @@
 pkgbase = testssl.sh-git
 	pkgdesc = Testing TLS/SSL encryption (git version)
-	pkgver = v2.4.r174.g4df0108
+	pkgver = v2.4.r243.g6406e18
 	pkgrel = 1
 	url = https://github.com/drwetter/testssl.sh
 	arch = any
