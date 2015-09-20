@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
 _pkgname='cloud-buster'
 pkgname=cloud-buster-git
-pkgver=0.0
+pkgver=0.0.106.b7d1a76
 pkgrel=1
 pkgdesc="A cloudflare-resolver"
 arch=('any')
@@ -16,7 +16,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  printf "%s.%s"  "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" 0.0 "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
