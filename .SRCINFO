@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ruby
 	pkgdesc = An object-oriented language for quick and easy programming (mingw-w64)
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = http://www.ruby-lang.org/en
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = mingw-w64-ruby
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.gz
-	md5sums = 326e99ddc75381c7b50c85f7089f3260
+	source = http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.xz
+	md5sums = 2a8bc1f46aba8938add70f742e8af1ff
 
 pkgname = mingw-w64-ruby
 
