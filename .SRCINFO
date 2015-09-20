@@ -1,0 +1,11 @@
+pkgbase = botanicula
+	pkgdesc = A point'n'click exploration game from the creators of Machinarium (requires full copy of the game)
+	pkgver = 20120501
+	pkgrel = 1
+	url = http://www.botanicula.net/
+	install = botanicula.install
+	arch = any
+	license = custom:commercial
+
+pkgname = botanicula
+
