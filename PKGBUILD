@@ -4,7 +4,7 @@
 
 pkgname=alpine
 pkgver=2.20
-pkgrel=2
+pkgrel=3
 arch=("i686" "x86_64")
 pkgdesc="Apache licensed PINE mail user agent"
 url="http://patches.freeiz.com/alpine/"
@@ -23,7 +23,7 @@ source=(http://patches.freeiz.com/${pkgname}/release/src/${pkgname}-${pkgver}.ta
         topal-1.patch
         topal-2.patch)
 md5sums=("043b67666af73b26f9627ad97e2aaf92"
-         "9e9de69f9334decb1d75991ec67e22f9"
+         "e5dc1147886b2f425765abaa076e6b89"
          "ce47b232339b251c74dc56de73513101"
          "e53177e123ec68fc77d55f60cd9eba9f")
 
