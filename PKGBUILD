@@ -1,19 +1,20 @@
-# $Id: PKGBUILD 246538 2015-09-17 21:02:30Z foutrelis $
-# Maintainer: Thomas Dziedzic <gostrc@gmail.com>
+# Fork-Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
+# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: tobias [ tobias at archlinux org ]
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgbase=vim-git2
 pkgname=(vim-minimal-git2 vim-git2 vim-python3-git2 gvim-git2 gvim-python3-git2 vim-runtime-git2)
-pkgver=7.4.884
+pkgver=7.4.1073
 _versiondir=74
 pkgrel=1
 arch=(i686 x86_64)
 license=('custom:vim')
 url='http://www.vim.org'
 makedepends=(gpm python2 python ruby libxt desktop-file-utils gtk2 lua)
-source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
+source=("${pkgbase}::git+https://github.com/albfan/vim.git#branch=master"
         vimrc
         archlinux.vim
         gvim.desktop)
@@ -23,7 +24,7 @@ sha1sums=('SKIP'
           '4a579cf66590d711f49c5dfb4a25e5df116ff7ba')
 
 prepare() {
-  cd vim-$pkgver
+  cd $pkgbase
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' \
@@ -36,7 +37,7 @@ prepare() {
   cd "$srcdir"
   for pkg in ${pkgname[@]}
   do
-    cp -a vim-$pkgver ${pkg}-build
+    cp -a $pkgbase ${pkg}-build
   done
 }
 
@@ -374,3 +375,5 @@ package_vim-runtime-git2() {
   ln -s /usr/share/vim/vim${_versiondir}/doc/uganda.txt \
     "${pkgdir}"/usr/share/licenses/vim-runtime/license.txt
 }
+
+# vim:set sw=2 sts=2 et:
