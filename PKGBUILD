@@ -1,16 +1,16 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=periodiccalendar
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Periodic Calendar for tracking women cycle"
 arch=('any')
 url="http://linuxorg.sf.net/"
 license=('GPL3')
 depends=('java-runtime')
-source=(http://sourceforge.net/projects/linuxorg/files/PeriodicCalendar/pcalendar-3.4/pcalendar-$pkgver.jar
+source=(http://sourceforge.net/projects/linuxorg/files/PeriodicCalendar/pcalendar-$pkgver/pcalendar-$pkgver.jar
         $pkgname.desktop $pkgname.png)
-md5sums=('b1403a54706d5612320e36fb79022e1c'
+md5sums=('9b084fea5a6a75d4fa09d8692654070e'
          '5b8490188ad00deea39cef729359d39d'
          'c26856c7a8a0045e8aa36f063563f67f')
 
