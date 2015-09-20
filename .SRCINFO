@@ -1,0 +1,25 @@
+pkgbase = ruby-twitter
+	pkgdesc = A Ruby interface to the Twitter API.
+	pkgver = 5.15.0
+	pkgrel = 1
+	url = http://sferik.github.io/twitter/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-addressable
+	depends = ruby-buftok
+	depends = ruby-equalizer
+	depends = ruby-faraday
+	depends = ruby-http
+	depends = ruby-http_parser.rb
+	depends = ruby-json
+	depends = ruby-memoizable
+	depends = ruby-naught
+	depends = ruby-simple_oauth
+	noextract = twitter-5.15.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/twitter-5.15.0.gem
+	sha256sums = 71856f234ab671c26c787f07032ce98acbc345c8fbb3194668f8de14a404bb41
+
+pkgname = ruby-twitter
+
