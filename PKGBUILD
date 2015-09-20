@@ -3,7 +3,7 @@
 
 pkgname=nausea
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="curses audio visualizer"
 arch=('i686' 'x86_64')
 url="http://git.2f30.org/nausea/"
