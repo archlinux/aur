@@ -3,7 +3,7 @@
 _name=repoze.profile
 pkgname=(python-$_name python2-$_name)
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Aggregate profiling for WSGI requests"
 arch=('any')
 license=('custom:BSD')
