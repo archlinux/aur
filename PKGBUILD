@@ -1,6 +1,8 @@
 # Maintainer: Adria Arrufat <swiftscythe at gmail dot com>
-pkgname=rhythmbox-lastfmplaycount-git
-pkgver=20121129
+
+_pkgname=lastfmplaycount
+pkgname=rhythmbox-${_pkgname}-git
+pkgver=0.r1.9e75b31
 pkgrel=1
 pkgdesc="A Rhythmbox plugin that fetches the currently playing track's playcount from Last.fm"
 url="https://github.com/BramBonne/LastfmPlaycount"
@@ -8,27 +10,22 @@ arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('git')
 depends=('rhythmbox')
+install=rhythmbox-${_pkgname}.install
+md5sums=('SKIP')
+source=(${_pkgname}::git+https://github.com/BramBonne/LastfmPlaycount.git)
 
-_plugin=lastfmplaycount
-_gitroot="https://github.com/BramBonne/LastfmPlaycount.git"
-_gitname="rhythmbox-$_plugin"
-
-build () {
+pkgver() {
   cd ${srcdir}
-  msg "Connecting to the GIT server..."
-  if [[ -d ${srcdir}/${_gitname} ]] ; then
-    cd ${_gitname}
-    git pull origin
-    msg "The local files are updated..."
-  else
-    git clone ${_gitroot} ${_gitname}
-    cd ${_gitname}
-  fi
-  msg "GIT checkout done."
+  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  mkdir -p "${pkgdir}/usr/lib/rhythmbox/plugins/${_plugin}"
-  cp * "${pkgdir}/usr/lib/rhythmbox/plugins/${_plugin}"
+  cd "${srcdir}/${_pkgname}"
+
+  mkdir -p "${pkgdir}/usr/share/glib-2.0/schemas"
+  cp org.gnome.rhythmbox.plugins.lastfmplaycount.gschema.xml \
+    "${pkgdir}/usr/share/glib-2.0/schemas"
+
+  mkdir -p "${pkgdir}/usr/lib/rhythmbox/plugins/${_pkgname}"
+  cp * "${pkgdir}/usr/lib/rhythmbox/plugins/${_pkgname}"
 }

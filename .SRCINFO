@@ -1,13 +1,16 @@
 pkgbase = rhythmbox-lastfmplaycount-git
 	pkgdesc = A Rhythmbox plugin that fetches the currently playing track's playcount from Last.fm
-	pkgver = 20121129
+	pkgver = 0.r1.9e75b31
 	pkgrel = 1
 	url = https://github.com/BramBonne/LastfmPlaycount
+	install = rhythmbox-lastfmplaycount.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = rhythmbox
+	source = lastfmplaycount::git+https://github.com/BramBonne/LastfmPlaycount.git
+	md5sums = SKIP
 
 pkgname = rhythmbox-lastfmplaycount-git
 
