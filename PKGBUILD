@@ -13,13 +13,13 @@ source=("git+https://github.com/halocaridina/xvisbell.git#commit=fe9230033b11e3c
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir"
+  cd xvisbell
 
   make
 }
 
 package() {
-  cd "$srcdir"
+  cd xvisbell
 
   make PREFIX="$pkgdir/usr" install
 }
