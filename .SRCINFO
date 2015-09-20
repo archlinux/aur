@@ -8,7 +8,7 @@ pkgbase = roswell
 	license = MIT
 	depends = curl
 	source = https://github.com/snmsts/roswell/archive/v0.0.3.48.tar.gz
-	md5sums = bceec3ccb2a5de12fb35d6faf9978f37
+	md5sums = a57ca56f96051272b7a4bf159e6cbd34
 
 pkgname = roswell
 

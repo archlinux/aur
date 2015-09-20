@@ -9,7 +9,7 @@ license=('MIT')
 depends=('curl')
 optdepends=()
 source=("https://github.com/snmsts/roswell/archive/v$pkgver.tar.gz")
-md5sums=('bceec3ccb2a5de12fb35d6faf9978f37')
+md5sums=('a57ca56f96051272b7a4bf159e6cbd34')
 
 build() {
 	cd "$pkgname-$pkgver"
