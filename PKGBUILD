@@ -1,7 +1,7 @@
 # Maintainer: Viliam Ganz <viliam.ganz@gmail.com>
 pkgname=nvidia-xrun
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Script to run dedicated X server with discrete nvidia graphics"
 arch=("x86_64")
@@ -31,7 +31,7 @@ package() {
 	mkdir -p "$pkgdir/etc/X11/nvidia.xorg.config.d"
 	cp nvidia-xorg.conf "$pkgdir/etc/X11/nvidia-xorg.conf"
 	cp nvidia-xinitrc "$pkgdir/etc/X11/xinit/nvidia-xinitrc"
-	mkdir "$pkgdir/bin"
-        cp nvidia-xrun "$pkgdir/bin/nvidia-xrun"
+	mkdir -p "$pkgdir/usr/bin"
+        cp nvidia-xrun "$pkgdir/usr/bin/nvidia-xrun"
 }
 md5sums=('96ee491905ff47e8cd35e9e0fddcd502')
