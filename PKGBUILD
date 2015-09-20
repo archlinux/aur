@@ -1,6 +1,6 @@
 # Maintainer: Kristóf Jakab <jaksi@jaksi.io>
 pkgname=libzorpll-git
-pkgver=r81.6002898
+pkgver=6.0.6.0
 pkgrel=1
 pkgdesc="Low level library functions for Zorp"
 arch=('x86_64')
