@@ -1,0 +1,18 @@
+pkgbase = ruby-httmultiparty
+	pkgdesc = HTTMultiParty is a thin wrapper around HTTParty to provide multipart uploads.
+	pkgver = 0.3.16
+	pkgrel = 2
+	url = https://github.com/jwagener/httmultiparty
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-httparty
+	depends = ruby-multipart-post
+	depends = ruby-mimemagic
+	noextract = httmultiparty-0.3.16.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/httmultiparty-0.3.16.gem
+	sha256sums = 5b0bf5403ff9f26e5771cc10f8bb757cc2b9aa39a839790439f39996ec90bc6c
+
+pkgname = ruby-httmultiparty
+
