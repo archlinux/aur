@@ -43,21 +43,21 @@ depends_x86_64+=('lib32-expat'
 makedepends=('sed' 'libarchive')
 options=('!strip' '!upx') # Avoid time consuming operations.
 PKGEXT='.pkg.tar' # Do not compress, it's a large package (~1GB).
-source=("labview-${_release}-appbuild-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "labview-${_release}-core-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "labview-${_release}-desktop-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "labview-${_release}-examples-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "labview-${_release}-help-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "labview-${_release}-pro-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "labview-${_release}-ref-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "niexfinder-base-1.0-19.i386.rpm"
-        "niexfinder-labview-${_release}-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "nilvcompare-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "nilvmerge-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "nisvcloc-${_short_release}.0.${_service_pack}-1.i386.rpm"
-        "niwebpipeline20_dep-2.0-5.i586.rpm"
-        "LICENSE.txt"
-        "PATENTS.txt")
+source=("file://labview-${_release}-appbuild-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://labview-${_release}-core-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://labview-${_release}-desktop-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://labview-${_release}-examples-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://labview-${_release}-help-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://labview-${_release}-pro-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://labview-${_release}-ref-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://niexfinder-base-1.0-19.i386.rpm"
+        "file://niexfinder-labview-${_release}-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://nilvcompare-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://nilvmerge-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://nisvcloc-${_short_release}.0.${_service_pack}-1.i386.rpm"
+        "file://niwebpipeline20_dep-2.0-5.i586.rpm"
+        "file://LICENSE.txt"
+        "file://PATENTS.txt")
 md5sums=('003fa58d0e43d74441f1716f8a83fc59'
          'a6f209b7901f24c0ab67e823f6aa83f7'
          'eebffdb3ebe3d2b9f0b4c2c89e0e0e3d'
