@@ -1,13 +1,14 @@
 pkgbase = numix-themes-git
 	pkgdesc = A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce)
 	pkgver = 2.5.1.r98.5cccc5b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://numixproject.org/
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = glib2
 	makedepends = ruby-sass
+	optdepends = gtk-engine-murrine: GTK2 theme engine
 	provides = numix-themes
 	conflicts = numix-themes
 	source = numix-themes::git+https://github.com/shimmerproject/Numix.git
