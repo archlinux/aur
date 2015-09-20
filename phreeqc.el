@@ -78,8 +78,8 @@
 		(define-key map "\C-c\C-v" 'phreeqc-visit-output)
 ;		(define-key map "\M-j" 'electric-phreeqc-terminate-line)
 		(define-key map "\r" 'phreeqc-electric-terminate-line)
-;		(define-key map [M-up] 'phreeqc-previous-fold)
-		(define-key map [M-down] 'phreeqc-next-output-fold)
+		(define-key map [M-up] 'phreeqc-previous-fold)
+		(define-key map [M-down] 'phreeqc-next-fold)
 		(define-key map [menu-bar phreeqc] (cons "Phreeqc" menu-map))
 		(define-key menu-map [folding-mode]
           '("Toggle folding" . folding-mode))
