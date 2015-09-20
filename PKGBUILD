@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae-launcher
 pkgname=fs-uae-launcher-devel
-pkgver=2.5.40dev
+pkgver=2.5.41dev
 pkgrel=1
 pkgdesc="Launcher and configuration program for FS-UAE (development version)."
 arch=("any")
@@ -16,7 +16,7 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae-launcher")
 conflicts=("fs-uae-launcher")
-md5sums=('4279623853fbd52681deb1a192885ec1')
+md5sums=('57248d84a565eea97da3f48a3a69fe7e')
 
 
 
