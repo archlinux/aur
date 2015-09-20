@@ -1,5 +1,5 @@
 pkgbase = pyew-git
-	pkgdesc = pyew - a python tool for static malware analysis
+	pkgdesc = A python tool for static malware analysis
 	pkgver = 100.2d086a1
 	pkgrel = 1
 	url = https://code.google.com/p/pyew/

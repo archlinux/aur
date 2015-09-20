@@ -3,7 +3,7 @@
 pkgname=pyew-git
 pkgver=100.2d086a1
 pkgrel=1
-pkgdesc="pyew - a python tool for static malware analysis"
+pkgdesc="A python tool for static malware analysis"
 arch=('any')
 url="https://code.google.com/p/pyew/"
 license=('GPLv2')
