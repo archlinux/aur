@@ -1,0 +1,14 @@
+pkgbase = sampleicc
+	pkgdesc = ICC's sample color management library
+	pkgver = 1.6.8
+	pkgrel = 1
+	url = http://sampleicc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = ICC
+	depends = libtiff
+	source = http://downloads.sourceforge.net/sourceforge/sampleicc/sampleicc%20tar/SampleIcc-1.6.8/SampleICC-1.6.8.tar.gz
+	sha256sums = 8b23bc6b9e4b8d304dc239bf874078edf7764e999aee4e11e7ed2d1c0271b965
+
+pkgname = sampleicc
+
