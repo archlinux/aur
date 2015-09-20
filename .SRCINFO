@@ -1,0 +1,22 @@
+pkgbase = t4k_common
+	pkgdesc = Common library for code shared by TuxType and TuxMath
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://tux4kids.alioth.debian.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_pango
+	depends = sdl_net
+	depends = librsvg
+	options = !docs
+	source = http://downloads.sourceforge.net/project/tuxmath/t4k_common/t4k_common-0.1.1.tar.gz
+	source = libpng15.patch
+	sha1sums = 626eddedee86059ccab593a226c8d98571018b46
+	sha1sums = aa909083dec77cf7a0e8c25ef422e05b8a84efe1
+
+pkgname = t4k_common
+
