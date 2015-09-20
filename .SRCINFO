@@ -1,0 +1,15 @@
+pkgbase = xvisbell
+	pkgdesc = Visual bell for X11
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/halocaridina/xvisbell
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	depends = libx11
+	source = git+https://github.com/halocaridina/xvisbell.git#commit=fe9230033b11e3c1b29b07a4fa85856b4b03cc5c
+	md5sums = SKIP
+
+pkgname = xvisbell
+
