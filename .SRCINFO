@@ -1,0 +1,12 @@
+pkgbase = blogc
+	pkgver = 0.1
+	pkgrel = 0
+	url = http://blogc.org
+	arch = any
+	license = GPL
+	options = !emptydirs
+	source = https://github.com/blogc/blogc/releases/download/v0.1/blogc-0.1.tar.gz
+	md5sums = c7156ea14591fdf01c45e969792cfc73
+
+pkgname = blogc
+
