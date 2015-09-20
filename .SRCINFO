@@ -1,0 +1,16 @@
+pkgbase = gpgdir
+	pkgdesc = A script that uses gpg to encrypt and decrypt directories
+	pkgver = 1.9.5
+	pkgrel = 2
+	url = http://www.cipherdyne.org/gpgdir/
+	arch = any
+	license = GPL
+	makedepends = gzip
+	depends = gnupg
+	depends = perl-term-readkey
+	depends = perl-gnupg-interface
+	source = http://www.cipherdyne.org/gpgdir/download/gpgdir-1.9.5.tar.gz
+	md5sums = bf51ce0a01588d6e8d28f95d6d81cdd9
+
+pkgname = gpgdir
+
