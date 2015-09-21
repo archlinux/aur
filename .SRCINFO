@@ -7,6 +7,7 @@ pkgbase = vera-xsettings-git
 	arch = i686
 	license = GPL2.1
 	depends = vala
+	depends = libxss-vapi-git
 	source = vera-xsettings::git+https://github.com/vera-desktop/vera-xsettings.git#branch=debian
 	md5sums = SKIP
 
