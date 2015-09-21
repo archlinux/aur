@@ -11,6 +11,10 @@ post_upgrade() {
 	_update
 }
 
+pre_remove() {
+	systemctl disable rc-local.service
+}
+
 post_remove() {
 	_update
 }

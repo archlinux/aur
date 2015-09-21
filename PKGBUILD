@@ -4,7 +4,7 @@
 
 pkgname=rc-local
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Support for legacy rc.local scripts'
 url=('https://aur.archlinux.org/packages/rc-local')
 arch=('any')
