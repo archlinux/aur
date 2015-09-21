@@ -1,0 +1,15 @@
+pkgbase = perl-extutils-makemaker-cpanfile
+	pkgdesc = ExtUtils::MakeMaker::CPANfile - cpanfile support for EUMM
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/ExtUtils-MakeMaker-CPANfile/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/ExtUtils-MakeMaker-CPANfile-0.06.tar.gz
+	sha256sums = e527b05f809177691b3d21d3c7d6aff34a3461117eab9cd223e4d0d044a39900
+
+pkgname = perl-extutils-makemaker-cpanfile
+
