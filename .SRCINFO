@@ -1,15 +1,15 @@
 pkgbase = ruby-rb-fsevent
 	pkgdesc = Very simple & usable FSEvents API
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = http://rubygems.org/gems/rb-fsevent
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = rb-fsevent-0.9.5.gem
+	noextract = rb-fsevent-0.9.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rb-fsevent-0.9.5.gem
-	sha512sums = b2629481faa4de3a67c1b338f551abfdc0622dd6bb4dc9d9b342a34d3d5aa42d1e101585f48925a0b502c17947e41854509367fcb90f68d9f023b309a05a6ab1
+	source = https://rubygems.org/downloads/rb-fsevent-0.9.6.gem
+	sha256sums = 420695d066994e2723931d0410a8dde7b50e60b43ecd8bbe8c604724fc3a05c3
 
 pkgname = ruby-rb-fsevent
 
