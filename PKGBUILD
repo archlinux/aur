@@ -3,13 +3,13 @@ _pkgname=arc-colors-revival
 pkgname=${_pkgname}-git
 pkgver=v2.0.1.r3.gd42d496
 pkgrel=1
-pkgdesc="This is a set of backgrounds (and their sources) created to fit with thegnome-colors-revival icon theme and shiki-colors-revival GTK theme."
+pkgdesc="This is a set of backgrounds (and their sources) created to fit with the gnome-colors-revival icon theme and shiki-colors-revival GTK theme."
 arch=('any')
-url="https://github.com/Somasis/gnome-colors-revival"
+url="https://github.com/Somasis/arc-colors-revival"
 license=('GPL')
 groups=()
-depends=('make' 'gtk-engine-murrine')
-makedepends=('git')
+depends=()
+makedepends=('git' 'make')
 source=(${pkgname}::git+https://github.com/Somasis/gnome-colors-revival#branch=master)
 sha256sums=('SKIP') 
 
