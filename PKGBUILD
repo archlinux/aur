@@ -1,11 +1,12 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-fabla-git
 pkgver=release.1.3.1.3.gcfbd4b3
-pkgrel=2
+pkgrel=3
 pkgdesc="A sampler LV2 plugin called Fabla"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/fabla/"
 license=('GPL3')
+groups=('openav')
 depends=('cairo' 'cairomm' 'jack2' 'libsndfile' 'lv2' 'ntk-git')
 makedepends=('cmake' 'git')
 optdepends=('jalv')
