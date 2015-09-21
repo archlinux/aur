@@ -1,6 +1,6 @@
 pkgbase = khard-git
 	pkgdesc = Console carddav client
-	pkgver = 0.5.0.r0.g077b5e6
+	pkgver = 0.6.0.r0.ge25c61b
 	pkgrel = 1
 	url = https://github.com/scheibler/khard/
 	install = khard-git.install
