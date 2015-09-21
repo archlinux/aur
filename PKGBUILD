@@ -42,7 +42,7 @@ package() {
 	mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
 	rm -r "$pkgdir/var"
 	rmdir "$pkgdir/etc/zorp/urlfilter"
-	chmod a+rx "$pkgdir/etc/zorp"
-	chmod a+r "$pkgdir/etc/sudoers.d/zorp_nagios_plugins"
-	chmod a-rx "$pkgdir/etc/sudoers.d"
+	chmod o+rx "$pkgdir/etc/zorp"
+	chmod o+r "$pkgdir/etc/sudoers.d/zorp_nagios_plugins"
+	chmod o-rx "$pkgdir/etc/sudoers.d"
 }
