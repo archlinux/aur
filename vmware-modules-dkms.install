@@ -1,0 +1,26 @@
+_vmware_module_list="vmblock vmci vmmon vmnet vsock"
+
+_dkms="/usr/bin/dkms"
+
+post_install()
+{
+    getent group vmware > /dev/null 2>&1 || groupadd vmware
+    getent passwd vmware > /dev/null 2>&1 || useradd -c 'VMWare' -g vmware -s /sbin/nologin vmware
+    passwd -l vmware > /dev/null
+    ${_dkms} install -m vmware-modules/${1%-*}
+}
+
+pre_upgrade()
+{
+    pre_remove ${2}
+}
+
+post_upgrade()
+{
+    post_install ${1}
+}
+
+pre_remove()
+{
+    ${_dkms} remove -m vmware-modules/${1%-*} --all
+}

@@ -1,0 +1,3 @@
+KERNEL=="vmci",  GROUP="vmware", MODE=660
+KERNEL=="vmmon", GROUP="vmware", MODE=660
+KERNEL=="vsock", GROUP="vmware", MODE=660
