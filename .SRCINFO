@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-ruby
 	pkgdesc = An object-oriented language for quick and easy programming (mingw-w64)
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ruby-lang.org/en
 	arch = any
 	license = BSD, custom

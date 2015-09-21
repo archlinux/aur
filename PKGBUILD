@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ruby
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An object-oriented language for quick and easy programming (mingw-w64)"
 arch=(any)
 url="http://www.ruby-lang.org/en"
@@ -60,4 +60,7 @@ package() {
     rm -r "${pkgdir}/usr/${_arch}/share"
     rm -r "${pkgdir}/usr/${_arch}/lib/ruby"
   done
+  cd "${srcdir}/ruby-${pkgver}"
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 BSDL "${pkgdir}/usr/share/licenses/${pkgname}/BSDL"
 }
