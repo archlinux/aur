@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -50,3 +50,5 @@
+ 	RUNTIME DESTINATION sbin
+ 	LIBRARY DESTINATION lib
+ )
++
++INSTALL(DIRECTORY include/rpcd DESTINATION include)

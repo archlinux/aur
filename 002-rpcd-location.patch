@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,7 +47,7 @@
+ ENDIF()
+ 
+ INSTALL(TARGETS rpcd ${PLUGINS}
+-	RUNTIME DESTINATION sbin
++	RUNTIME DESTINATION bin
+ 	LIBRARY DESTINATION lib
+ )
+ 
