@@ -3,7 +3,7 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend'
-pkgver=4.1.r373.gcb5f6a1
+pkgver=4.1.r442.g824f46e
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release
+    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release --enable-libsystemd_daemon
     make
 }
 
