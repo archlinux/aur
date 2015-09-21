@@ -1,12 +1,12 @@
 # Original Maintainer: James Duley <jagduley gmail>
 pkgname=gcc-arm-none-eabi-bin
-pkgver=4.9_2014_q4_major
+pkgver=4.9_2015_q2_update
 _pkgname=gcc-arm-none-eabi
 _pkgver=${pkgver//_/-}
 _pkgvershort=${_pkgver%-*}
 _pkgvershort=${_pkgvershort/-q/q}
-_pkgdate=20141203
-pkgrel=2
+_pkgdate=20150609
+pkgrel=1
 pkgdesc="GNU Tools ARM Embedded Processors (binary distribution, includes GDB and newlib)"
 arch=('i686' 'x86_64')
 if [ "${CARCH}" = "x86_64" ]; then
@@ -30,7 +30,7 @@ url="https://launchpad.net/gcc-arm-embedded"
 source="https://launchpad.net/gcc-arm-embedded/${pkgver%%_*}/${_pkgver}/+download/${_pkgname}-${_pkgvershort/./_}-${_pkgdate}-linux.tar.bz2"
 license=('custom')
 options=(!strip staticlibs)
-md5sums=('74cc4f012699c171089e72832d95bf4c')
+sha256sums=('3a574c5becfca496bafe07bbd76e9deae1fd0cc99c5a9de0f8c610750f2f89ac')
 
 package() {
  mkdir -p $pkgdir/usr
