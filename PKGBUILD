@@ -1,15 +1,15 @@
 # Maintainer: shad0w73 <shad0w73@maills.de>
 pkgname=helden-software
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
-_realpkgrel=2
+_realpkgrel=1
 pkgdesc='Die Heldenverwaltung für das Pen&Paper-Rollenspiel "Das Schwarze Auge" (DSA)'
 arch=('any')
 url="http://www.helden-software.de"
 license=('custom')
 depends=('java-runtime' 'hicolor-icon-theme' 'bash')
 source=("http://online.helden-software.de/rep/pool/main/h/${pkgname}/${pkgname}_${pkgver}-${_realpkgrel}_all.deb")
-sha256sums=('5158bc30b4c46c24ebe3e7104c5e6ddde65875ec23a064dd1c41cafddebf931d')
+sha256sums=('75504a2351190cae9b8529d9d8221818b4de3d28c17f7d9906e6abda61e92958')
 install=helden-software.install
 
 prepare() {
