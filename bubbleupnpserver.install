@@ -1,0 +1,43 @@
+post_install() {
+	echo "
+========================================================================
+
+Before starting BubbleUPnP Server, have a look at the default config
+file located at /etc/default/bubbleupnpserver and make sure the defaults
+are OK.
+
+To start BubbleUPnP, you must first enable the service unit file:
+	# systemctl enable bubbleupnpserver
+
+Then start the service:
+	# systemctl start bubbleupnpserver
+
+To complete the configuration once the service has been started, point
+your web browser to:
+	http://localhost:58050
+	        - or -
+	https://localhost:58051
+
+Full documentation is available at:
+	http://www.bubblesoftapps.com/bubbleupnpserver/
+
+========================================================================
+"
+}
+
+post_upgrade() {
+	echo "
+========================================================================
+
+If BubbleUPnP is already running, you need to restart it to finish the
+upgrade.
+
+To restart BubbleUPnP:
+	# systemctl restart bubbleupnpserver
+
+Full documentation is available at:
+	http://www.bubblesoftapps.com/bubbleupnpserver/
+
+========================================================================
+"
+}
