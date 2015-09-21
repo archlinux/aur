@@ -39,4 +39,9 @@ post_upgrade() {
 		echo '-->'
 		echo '--> Make sure you update your crontab accordingly.'
 	fi
+
+	if [ $(vercmp $2 2.33) -lt 0 ]; then
+		echo '--> The system service and timer have been deprecated in favor of user flavors.'
+		echo '--> See the manpage of modprobed for details.'
+	fi
 }
