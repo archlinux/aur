@@ -1,0 +1,22 @@
+pkgbase = gtk-theme-shiki-colors-revival
+	pkgdesc = Shiki Colors GTK theme, based off Numix
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Somasis/shiki-colors-revival
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = GPL3
+	license = ISC
+	depends = gtk-engines
+	optdepends = gtk-engine-murrine: for GTK2 themes
+	optdepends = metacity: for Metacity themes
+	optdepends = marco: for Metacity themes
+	optdepends = mutter: for Metacity themes
+	optdepends = plank: for Plank themes
+	optdepends = xfwm4: for Xfwm4 themes
+	source = shiki-colors-revival-2.0.1.tar.gz::https://github.com/Somasis/shiki-colors-revival/archive/v2.0.1.tar.gz
+	sha256sums = 89a499e78c89fc67b293cbaba65437fd715d8005ca94944932d482d3799064ef
+
+pkgname = gtk-theme-shiki-colors-revival
+
