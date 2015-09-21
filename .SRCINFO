@@ -1,0 +1,15 @@
+pkgbase = cnijfilter-mg6400series
+	pkgdesc = Canon InkJet Printer Driver (MG6400 Series)
+	pkgver = 4.00
+	pkgrel = 2
+	url = http://www.canon.co.uk/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG6450.aspx
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	provides = cnijfilter-common=4.00
+	source = http://gdlp01.c-wss.com/gds/8/0100005508/01/cnijfilter-mg6400series-4.00-1-deb.tar.gz
+	md5sums = a921257bad9765399445e5dca899e250
+
+pkgname = cnijfilter-mg6400series
+
