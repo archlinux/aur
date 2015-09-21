@@ -1,0 +1,21 @@
+pkgbase = cnijfilter-common-mg2400
+	pkgdesc = Canon IJ Printer Driver For MG-2400
+	pkgver = 4.00
+	pkgrel = 1
+	url = http://support-ph.canon-asia.com/contents/PH/EN/0100466201.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = rpmextract
+	depends = cups
+	depends = popt
+	depends = libxml2
+	depends = gtk2
+	depends = libtiff
+	depends = libpng
+	optdepends = scangearmp-mg2400
+	source = http://gdlp01.c-wss.com/gds/9/0100005499/01/cnijfilter-mg2400series-4.00-1-rpm.tar.gz
+	md5sums = 73b00b2ca8d327ce9b427b5438d34d1c
+
+pkgname = cnijfilter-common-mg2400
+
