@@ -26,4 +26,5 @@ build() {
 package() {
 	cd "$srcdir/libzorpll"
 	make DESTDIR="$pkgdir/" install
+	rm -r "$pkgdir/var"
 }
