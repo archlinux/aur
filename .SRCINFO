@@ -1,0 +1,17 @@
+pkgbase = sherlock-lv2
+	pkgdesc = An investigative LV2 plugin bundle
+	pkgver = 0.1.1_rc1
+	pkgrel = 1
+	url = http://open-music-kontrollers.ch/lv2/sherlock
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = Artistic2.0
+	makedepends = cmake
+	makedepends = lv2
+	depends = elementary
+	source = https://github.com/OpenMusicKontrollers/sherlock.lv2/archive/0.1.1_rc1.tar.gz
+	md5sums = 17863c166b421849beb180b6bfe1f005
+
+pkgname = sherlock-lv2
+
