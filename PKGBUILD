@@ -3,12 +3,12 @@
 
 pkgname=hplip-plugin
 pkgver=3.15.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary plugin for HPs hplip printer driver library"
 arch=('i686' 'x86_64')
 url="http://hplipopensource.com/node/309"
 license=('custom:proprietary')
-depends=("hplip>=$pkgver" 'hplip<3.15.10')
+depends=("hplip>=$pkgver") 
 backup=(var/lib/hp/hplip.state)
 #source=("http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-$pkgver-plugin.run")
 source=("http://hplipopensource.com/hplip-web/plugin/hplip-$pkgver-plugin.run")
