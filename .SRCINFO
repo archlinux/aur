@@ -1,0 +1,44 @@
+pkgbase = pydio
+	pkgdesc = PHP file sharing platform, formerly AjaXplorer.
+	pkgver = 6.0.8
+	pkgrel = 1
+	url = http://pyd.io/
+	install = pydio.install
+	arch = any
+	license = AGPL3
+	depends = php>=5.3
+	depends = php-mcrypt>=5.3
+	depends = php-gd>=5.3
+	optdepends = php-sqlite: Store your data in sqlite database
+	optdepends = libssh2: File management functionalities over SSH2 [access.sftp]
+	optdepends = smbclient: Browse a Samba Server [access.smb]
+	optdepends = imagemagick: View PDF and various images formats [editor.imagick]
+	optdepends = ghostscript: View PDF and various images formats [editor.imagick]
+	optdepends = subversion: Extract SVN informations from workspace
+	optdepends = php-libgit2-git: Keep tracks of modifications using a Git repo
+	optdepends = pear-http-oauth: Allows accessing a dropbox account
+	optdepends = php-ldap: Authentication datas are stored in an LDAP/AD directory
+	optdepends = pear-mail-mimedecode: Email reader wich supports eml format
+	optdepends = pear-http-webdavclient: Access a WebDAV server
+	optdepends = php-aws-sdk: Access an AWS server
+	optdepends = pecl-rsync: Use desktop sync client
+	options = !strip
+	source = http://sourceforge.net/projects/ajaxplorer/files/pydio/stable-channel/6.0.8/pydio-core-6.0.8.tar.gz
+	source = https://raw.githubusercontent.com/pydio/pydio-core/develop/dist/scripts/misc/5.2.5-6.0.0.mysql
+	source = https://raw.githubusercontent.com/pydio/pydio-core/develop/dist/scripts/misc/5.2.5-6.0.0.pgsql
+	source = https://raw.githubusercontent.com/pydio/pydio-core/develop/dist/scripts/misc/5.2.5-6.0.0.sqlite
+	source = bootstrap_context.php.patch
+	source = example_nginx_vhost.conf
+	source = example_nginx_vhost_ssl.conf
+	source = pydio.install
+	md5sums = e5372adc38d128a11d14cbb19be3983b
+	md5sums = b93ccc2869b485a3c7cd760e5435645c
+	md5sums = 85c19235373da52b97e0b6073ba45635
+	md5sums = e3c4ea819d6790c61c9b81dc48a34e05
+	md5sums = 4852094d1b423d62fee10bf5fde38b63
+	md5sums = be74fee97c60b4ae7e8b194187b553ea
+	md5sums = 9303b6e1ea74a2fbcfc8652e78199a99
+	md5sums = 837e3fc09a4fcfdc8a20c758083cfb99
+
+pkgname = pydio
+

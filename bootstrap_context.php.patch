@@ -1,0 +1,11 @@
+--- conf/bootstrap_context.php		2013-10-14 21:17:55.000000000 +0200
++++ conf/bootstrap_context.php.new	2013-12-15 13:57:12.202247622 +0100
+@@ -39,7 +39,7 @@
+ define("AJXP_EXEC", true);
+ 
+ // APPLICATION PATHES CONFIGURATION
+-define("AJXP_DATA_PATH", AJXP_INSTALL_PATH."/data");
++define("AJXP_DATA_PATH", "/var/lib/pydio");
+ define("AJXP_CACHE_DIR", AJXP_DATA_PATH."/cache");
+ define("AJXP_SHARED_CACHE_DIR", AJXP_INSTALL_PATH."/data/cache");
+ define("AJXP_PLUGINS_CACHE_FILE", AJXP_CACHE_DIR."/plugins_cache.ser");
