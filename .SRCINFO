@@ -10,7 +10,7 @@ pkgbase = virustotal
 	backup = etc/virustotal.conf
 	source = https://github.com/shibumi/virustotal/archive/1.3.tar.gz
 	source = virustotal.install
-	sha512sums = 1020aeb648a8eecf355944c9b8836a67af887bc87011490afd42ee7b09ebd777d9be4feafda68d3573ce5568bc37cfd8609df388cddcb25f776ee20fa08ae02e
+	sha512sums = 90ab565c537765bb6463591bd3635c91f3fceca4fd6450883250551275f818132287e08e6d05617a838da7f6fa353cf09ae9f4e593d4a1f77a45f265ff92cf9c
 	sha512sums = 9fc9a73398e517a0bd330712633b2884bf3ab35f10c908650390f74341f368e9cf5528eca89a75fc2ceea27191659b4eee57a3ae7899eb1d3c102dcdaf6cc5be
 
 pkgname = virustotal
