@@ -1,7 +1,7 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=fortune-mod-protolol-git
 pkgver=9f59ff8
-pkgrel=1
+pkgrel=2
 pkgdesc="A compilation of networking jokes"
 url="http://attrition.org/misc/ee/protolol.txt"
 arch=('i686' 'x86_64')
