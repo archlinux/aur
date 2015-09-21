@@ -1,0 +1,24 @@
+pkgbase = litesql-git
+	pkgdesc = C++ ORM for SQLite3, PostgreSQL, MySQL and Oracle
+	pkgver = r887.e46cf2f
+	pkgrel = 1
+	url = http://sourceforge.net/projects/litesql/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD3
+	makedepends = git
+	makedepends = cmake
+	depends = expat
+	depends = sqlite
+	provides = litesql
+	conflicts = litesql
+	source = litesql::git://git.code.sf.net/p/litesql/litesql
+	source = fix-compilation.patch
+	source = disable-example.patch
+	md5sums = SKIP
+	md5sums = 38d8e8fb9a49b1953b5072c69c42c883
+	md5sums = 6387f142653ce3616ce7f49b0e5fb5b6
+
+pkgname = litesql-git
+

@@ -1,0 +1,14 @@
+diff --git a/src/examples/CMakeLists.txt b/src/examples/CMakeLists.txt
+index b34bba5..336b45b 100644
+--- a/src/examples/CMakeLists.txt
++++ b/src/examples/CMakeLists.txt
+@@ -1,3 +1,4 @@
++if (LITESQL_WITH_EXAMPLE)
+ set(EXECUTABLES example)
+ 
+ set(example_SOURCES example.cpp exampledatabase.cpp exampledatabase.hpp exampledatabase.xml auth.xml exampledatabase.dot)
+@@ -45,3 +46,4 @@ target_link_libraries (graph litesql litesql-util ${BACKEND_LIBRARIES})
+ 
+ include_directories(../library ${SQLITE3_INCLUDE_DIRS})
+ 
++endif (LITESQL_WITH_EXAMPLE)
