@@ -11,7 +11,7 @@ source=("https://gitlab.com/Nycroth/tag/repository/archive.tar.gz?ref=v0.1")
 md5sums=('ded9086df4e24ec08c13f65726d818d8')
 
 package() {
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/tag-v0.1-1d9e4c5134bdd5df3cab4a0141771c03c6d69cb9/"
 
     make DESTDIR="${pkgdir}" install
     install -m 755  -d "${pkgdir}/usr/share/licenses/${pkgname}"
