@@ -1,10 +1,11 @@
 pkgbase = openav-luppp-git
 	pkgdesc = Luppp is a live performance tool, created by OpenAV productions
 	pkgver = release.1.0.1.8.g43aecd2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://openavproductions.com/luppp/
 	arch = i686
 	arch = x86_64
+	groups = openav
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
