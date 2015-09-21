@@ -1,4 +1,5 @@
 # Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Contributor: DJ Ring, Jr <n1ea@arrl.net>
 # Contributor: mmm
 # Contributor: Woody Gilk <woody@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
