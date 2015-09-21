@@ -5,7 +5,7 @@
 
 pkgname=sooperlooper
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Live looping sampler capable of immediate loop recording"
 arch=('i686' 'x86_64')
 url="http://essej.net/sooperlooper/"
