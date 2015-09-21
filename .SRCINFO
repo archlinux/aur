@@ -1,0 +1,18 @@
+pkgbase = indicator-application-gtk2
+	pkgdesc = Indicator to take menus from applications and place them in the panel (GTK+ 2 library for Xfce/LXDE)
+	pkgver = 12.10.0.1
+	pkgrel = 2
+	url = https://launchpad.net/indicators-gtk2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libappindicator
+	depends = indicator-application
+	depends = libdbusmenu-gtk2
+	depends = libindicator
+	options = !libtool
+	source = https://launchpad.net/indicators-gtk2/indicator-application-gtk2/i-a-12.10.0.1/+download/indicator-application-12.10.0.1.tar.gz
+	md5sums = 1d10bf69a026acd636f1b99d4cd7dce9
+
+pkgname = indicator-application-gtk2
+
