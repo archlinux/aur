@@ -3,7 +3,7 @@
 
 pkgname=st
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -21,6 +21,7 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
+  sed -i '/\@tic /d' Makefile
   make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
