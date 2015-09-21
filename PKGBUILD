@@ -5,7 +5,7 @@
 pkgname=lib32-libcdio
 _pkgname=libcdio
 pkgver=0.93
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Compact Disc Input and Control Library (32-bit)"
 arch=("x86_64")
 license=('GPL3')
