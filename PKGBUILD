@@ -44,4 +44,5 @@ package() {
 	rmdir "$pkgdir/etc/zorp/urlfilter"
 	chmod a+rx "$pkgdir/etc/zorp"
 	chmod a+r "$pkgdir/etc/sudoers.d/zorp_nagios_plugins"
+	chmod a-rx "$pkgdir/etc/sudoers.d"
 }
