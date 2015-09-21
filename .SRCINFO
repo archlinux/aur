@@ -1,0 +1,30 @@
+pkgbase = cnijfilter-mg2100
+	pkgdesc = Canon IJ Printer Driver for Pixma mg2100 (MG2140, MG2150, etc) multifunction
+	pkgver = 3.60
+	pkgrel = 2
+	url = http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG2140.aspx?DLtcmuri=tcm:13-863337&page=1&type=download
+	install = cnijfilter-mg2100.install
+	arch = x86_64
+	license = GPL2
+	license = LGPL2
+	license = custom
+	makedepends = autoconf>=2.13
+	makedepends = automake>=1.6
+	makedepends = tar
+	makedepends = make
+	makedepends = gcc
+	depends = libglade
+	depends = cups
+	depends = ghostscript
+	conflicts = cnijfilter-common
+	source = http://files.canon-europe.com/files/soft40869/software/cnijfilter-source-3.60-2.tar.gz
+	source = cups.patch
+	source = id.po.patch
+	source = png.patch
+	md5sums = 70e412331a21f4b573b4e901c89cee18
+	md5sums = a8a716cad93bd90853129c46006f20ad
+	md5sums = 35327dc628d1a22ed0f4db9554d67484
+	md5sums = 55f00585a45cf14944b4542c5ab71a76
+
+pkgname = cnijfilter-mg2100
+

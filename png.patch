@@ -1,0 +1,12 @@
+diff -ur cnijfilter-source-3.60-1/cnijfilter/src/bjfimage.c cnijfilter-source-3.60-1_patched/cnijfilter/src/bjfimage.c
+--- cnijfilter-source-3.60-1/cnijfilter/src/bjfimage.c	2011-02-17 03:45:45.000000000 +0200
++++ cnijfilter-source-3.60-1_patched/cnijfilter/src/bjfimage.c	2012-10-28 16:14:05.272123231 +0200
+@@ -1574,7 +1574,7 @@
+ 		goto onErr;
+ 	}
+ 
+-	if (setjmp (png_p->jmpbuf))
++	if (setjmp (png_jmpbuf(png_p)))
+ 	{
+ 		png_destroy_read_struct(&png_p, &info_p, (png_infopp)NULL);
+ 		goto onErr;
