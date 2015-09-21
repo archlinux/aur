@@ -1,6 +1,6 @@
 # Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
 pkgname=virustotal
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Command-line client for virustotal.com'
 arch=('any')
