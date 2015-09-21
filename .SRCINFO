@@ -1,6 +1,6 @@
 pkgbase = kmplayer
 	pkgdesc = Video player plugin for Konqueror and basic MPlayer/Xine/ffmpeg/ffserver/VDR frontend for KDE
-	pkgver = 0.11.3.d
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = http://kmplayer.kde.org
 	install = kmplayer.install
@@ -15,8 +15,8 @@ pkgbase = kmplayer
 	depends = kdebase-runtime
 	depends = cairo
 	optdepends = gtk2: for the Netscape plugin player
-	source = http://kmplayer.kde.org/pkgs/kmplayer-0.11.3d.tar.bz2
-	md5sums = a652d00370e0940e6bd9cf51b32770c4
+	source = http://quickgit.kde.org/?p=kmplayer.git&a=snapshot&h=73c171d9674a82b6ab5f19654070bfa816444367&fmt=tbz2
+	md5sums = 9b61af757b661ed602dfffa237fa8fa2
 
 pkgname = kmplayer
 
