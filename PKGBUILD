@@ -22,10 +22,6 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
-    cd
-}
-
 package() {
   cd "$srcdir/$pkgname"
   python2 setup.py install --root=${pkgdir} --optimize=1
