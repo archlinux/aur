@@ -1,0 +1,17 @@
+pkgbase = golo
+	pkgdesc = A lightweight dynamic language for the JVM.
+	pkgver = 3.0.0-incubation-M2
+	pkgrel = 1
+	url = http://golo-lang.org/
+	arch = any
+	license = EPL
+	makedepends = unzip
+	depends = java-runtime-headless
+	depends = bash
+	noextract = golo-3.0.0-incubation-M2-distribution.tar.gz
+	options = !strip
+	source = https://www.eclipse.org/downloads/download.php?file=/golo/golo-3.0.0-incubation-M2.zip
+	md5sums = bcba7ff10a93a4f59bea500ae0a430aa
+
+pkgname = golo
+
