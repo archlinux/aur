@@ -5,15 +5,15 @@ _pkgname=pkgbuild-introspection
 pkgver=6.4.ga135f86
 pkgrel=1
 pkgdesc='Tools for generating .SRCINFO files and PKGBUILD data extraction (mkaurball)'
-url="https://github.com/falconindy/${_pkgname}"
+url="https://github.com/falconindy/$_pkgname"
 license=('MIT')
 arch=('any')
 depends=('bash' 'pacman')
 makedepends=('git')
 provides=('pkgbuild-introspection')
 conflicts=('pkgbuild-reflection-git' 'pkgbuild-introspection')
-source=("git://github.com/falconindy/${_pkgname}.git")
-sha1sums=('SKIP')
+source=("git://github.com/falconindy/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -30,5 +30,5 @@ build() {
 package() {
   cd "$_pkgname"
 
-  make install PREFIX=/usr DESTDIR="${pkgdir}"
+  make install PREFIX=/usr DESTDIR="$pkgdir"
 }
