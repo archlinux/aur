@@ -6,7 +6,7 @@ pkgver=v6.0.gf1bc9a9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171785"
+url='http://forum.doom9.org/showthread.php?t=171785'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   cd "${_plug}"
   echo "all:
-	  g++ -shared ${CFLAGS} -msse2 -mfpmath=sse -Wall -fPIC -o lib${_plug}.so continuity.cpp -I. $(pkg-config --cflags vapoursynth)" > Makefile
+	  g++ -o lib${_plug}.so -std=gnu++11 ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} $(pkg-config --cflags vapoursynth) continuity.cpp -shared -msse2 -mfpmath=sse -Wall -fPIC" > Makefile
 }
 
 build() {
@@ -34,5 +34,5 @@ build() {
 package(){
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
