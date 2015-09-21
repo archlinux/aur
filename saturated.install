@@ -1,0 +1,9 @@
+post_install() {
+    useradd makepkg
+    echo "* Special user 'makepkg' was created."
+    echo "* SSH keys should be placed under /home/makepkg/.ssh/"
+}
+
+pre_remove() {
+    userdel makepkg
+}

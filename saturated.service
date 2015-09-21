@@ -2,7 +2,8 @@
 Description=Dead simple makepkg builder server
 
 [Service]
-ExecStart=/usr/bin/saturated :80
+User=makepkg
+ExecStart=/usr/bin/saturated :8080
 Restart=always
 
 [Install]
