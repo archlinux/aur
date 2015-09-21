@@ -1,11 +1,12 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-sorcer-git
 pkgver=release.1.1.2.1.g9da6481
-pkgrel=1
+pkgrel=2
 pkgdesc="A wavetable LV2 plugin synth, targeted at the electronic / dubstep genre"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/sorcer/"
 license=('GPL3')
+groups=('openav')
 depends=('cairo' 'cairomm' 'lv2' 'ntk-git')
 makedepends=('cmake' 'git')
 optdepends=('jalv')
