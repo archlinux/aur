@@ -4,14 +4,14 @@ pkgbase=python-pypdns
 _pyname=pypdns
 pkgname=('python-pypdns' 'python2-pypdns')
 makedepends=('python' 'python2')
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Python API for PDNS."
 arch=('any')
 url="https://pypi.python.org/pypi/pypdns#downloads"
 license=('BSD')
 source=("https://pypi.python.org/packages/source/p/$_pyname/$_pyname-$pkgver.tar.gz")
-sha512sums=('678bcb670429083d124d893bdeb801db08f458e77c165bbc19e174dc42e37b28399b1d4d0c8d4593ca44cd7f93cdf988caf5f58fa339ee46ed4b35e91608aa73')
+sha512sums=('193454f76a533764194ff9460f1d656240d8a8ef0a4d88a7ea71aa3546988162945bea3e7b8c8ebcbb903332867284359b699c62f06fe76ba1b9f293c53153d8')
 
 package_python-pypdns() {
   depends=('python')
