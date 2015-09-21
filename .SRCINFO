@@ -3,12 +3,14 @@ pkgbase = zorp-git
 	pkgver = 6.0.7
 	pkgrel = 1
 	url = https://github.com/balabit/zorp
+	install = zorp-git.install
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = gperf
 	depends = libzorpll-git
 	depends = python2
+	depends = python2-pyopenssl
 	source = zorp::git+https://github.com/balabit/zorp.git#branch=6.0.7
 	source = 0001-Add-placeholder-files-required-by-automake.patch
 	source = 0002-Consider-only-python2-and-python2.7.patch
