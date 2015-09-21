@@ -1,0 +1,21 @@
+From 0f11224afee9d1dd2f3bdc68e1aaca42614070e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Krist=C3=B3f=20Jakab?= <jaksi@jaksi.io>
+Date: Mon, 21 Sep 2015 15:36:45 +0200
+Subject: [PATCH] Add placeholder files required by automake
+
+---
+ ChangeLog | 0
+ NEWS      | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 ChangeLog
+ create mode 100644 NEWS
+
+diff --git a/ChangeLog b/ChangeLog
+new file mode 100644
+index 0000000..e69de29
+diff --git a/NEWS b/NEWS
+new file mode 100644
+index 0000000..e69de29
+-- 
+2.5.3
+

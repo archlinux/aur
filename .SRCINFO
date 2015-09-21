@@ -1,0 +1,22 @@
+pkgbase = zorp-git
+	pkgdesc = An advanced protocol analyzing firewall
+	pkgver = 6.0.7
+	pkgrel = 1
+	url = https://github.com/balabit/zorp
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gperf
+	depends = libzorpll-git
+	depends = python2
+	source = zorp::git+https://github.com/balabit/zorp.git#branch=6.0.7
+	source = 0001-Add-placeholder-files-required-by-automake.patch
+	source = 0002-Consider-only-python2-and-python2.7.patch
+	source = 0003-Fix-python-shebangs.patch
+	md5sums = SKIP
+	md5sums = 8e8bc49f1177858215572a359b98f88a
+	md5sums = f9b828ed00f5c2e8e71ae9f965736e2b
+	md5sums = b3bbae46900d21c7ac1d1334227563e5
+
+pkgname = zorp-git
+

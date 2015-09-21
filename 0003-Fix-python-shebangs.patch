@@ -1,0 +1,176 @@
+From f15076436acde3378ee16370bbff2b67ed147a55 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Krist=C3=B3f=20Jakab?= <jaksi@jaksi.io>
+Date: Mon, 21 Sep 2015 19:55:36 +0200
+Subject: [PATCH] Fix python shebangs
+
+---
+ modules/ftp/tests/test_ftp_parse_inband_auth.py | 2 +-
+ nagios_plugins/check_zorp_threads.py            | 2 +-
+ tests/tools/Agent/test-agent.py                 | 2 +-
+ tests/tools/tproxy-test.py                      | 2 +-
+ tests/zorpctl/test_deadlockcheck_algorithm.py   | 2 +-
+ tests/zorpctl/test_detailedstatus_algorithm.py  | 2 +-
+ tests/zorpctl/test_getalgorithms.py             | 2 +-
+ tests/zorpctl/test_getprocinfo_algorithm.py     | 2 +-
+ tests/zorpctl/test_instances_conf.py            | 2 +-
+ tests/zorpctl/test_loglevel_algorithm.py        | 2 +-
+ tests/zorpctl/test_reload_algorithm.py          | 2 +-
+ tests/zorpctl/test_start_algorithm.py           | 2 +-
+ tests/zorpctl/test_status_algorithm.py          | 2 +-
+ tests/zorpctl/test_szig.py                      | 2 +-
+ tests/zorpctl/test_szig_walk_algorithm.py       | 2 +-
+ 15 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/modules/ftp/tests/test_ftp_parse_inband_auth.py b/modules/ftp/tests/test_ftp_parse_inband_auth.py
+index 38c64ba..6682713 100755
+--- a/modules/ftp/tests/test_ftp_parse_inband_auth.py
++++ b/modules/ftp/tests/test_ftp_parse_inband_auth.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ############################################################################
+ ##
+ ## Copyright (c) 2000-2015 BalaBit IT Ltd, Budapest, Hungary
+diff --git a/nagios_plugins/check_zorp_threads.py b/nagios_plugins/check_zorp_threads.py
+index 044a5dc..12eeadf 100755
+--- a/nagios_plugins/check_zorp_threads.py
++++ b/nagios_plugins/check_zorp_threads.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ # -*- coding: utf-8 -*-
+ 
+ ############################################################################
+diff --git a/tests/tools/Agent/test-agent.py b/tests/tools/Agent/test-agent.py
+index b8d6232..60fe0f9 100755
+--- a/tests/tools/Agent/test-agent.py
++++ b/tests/tools/Agent/test-agent.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/tools/tproxy-test.py b/tests/tools/tproxy-test.py
+index 2e0130b..72908f2 100755
+--- a/tests/tools/tproxy-test.py
++++ b/tests/tools/tproxy-test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_deadlockcheck_algorithm.py b/tests/zorpctl/test_deadlockcheck_algorithm.py
+index 71b1640..5c5baca 100755
+--- a/tests/zorpctl/test_deadlockcheck_algorithm.py
++++ b/tests/zorpctl/test_deadlockcheck_algorithm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_detailedstatus_algorithm.py b/tests/zorpctl/test_detailedstatus_algorithm.py
+index 30b91e6..1e3f34e 100755
+--- a/tests/zorpctl/test_detailedstatus_algorithm.py
++++ b/tests/zorpctl/test_detailedstatus_algorithm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_getalgorithms.py b/tests/zorpctl/test_getalgorithms.py
+index 42618ca..aaab9de 100755
+--- a/tests/zorpctl/test_getalgorithms.py
++++ b/tests/zorpctl/test_getalgorithms.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_getprocinfo_algorithm.py b/tests/zorpctl/test_getprocinfo_algorithm.py
+index 9dad517..d4c2a62 100755
+--- a/tests/zorpctl/test_getprocinfo_algorithm.py
++++ b/tests/zorpctl/test_getprocinfo_algorithm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_instances_conf.py b/tests/zorpctl/test_instances_conf.py
+index 3098086..4c42a4e 100755
+--- a/tests/zorpctl/test_instances_conf.py
++++ b/tests/zorpctl/test_instances_conf.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_loglevel_algorithm.py b/tests/zorpctl/test_loglevel_algorithm.py
+index 95a9aa0..6170829 100755
+--- a/tests/zorpctl/test_loglevel_algorithm.py
++++ b/tests/zorpctl/test_loglevel_algorithm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_reload_algorithm.py b/tests/zorpctl/test_reload_algorithm.py
+index 2e3d431..7ee6650 100755
+--- a/tests/zorpctl/test_reload_algorithm.py
++++ b/tests/zorpctl/test_reload_algorithm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_start_algorithm.py b/tests/zorpctl/test_start_algorithm.py
+index 11cbf23..3182e7b 100755
+--- a/tests/zorpctl/test_start_algorithm.py
++++ b/tests/zorpctl/test_start_algorithm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_status_algorithm.py b/tests/zorpctl/test_status_algorithm.py
+index 02bc79b..d82f157 100755
+--- a/tests/zorpctl/test_status_algorithm.py
++++ b/tests/zorpctl/test_status_algorithm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_szig.py b/tests/zorpctl/test_szig.py
+index 10a40bf..d3f3de5 100755
+--- a/tests/zorpctl/test_szig.py
++++ b/tests/zorpctl/test_szig.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+diff --git a/tests/zorpctl/test_szig_walk_algorithm.py b/tests/zorpctl/test_szig_walk_algorithm.py
+index 7b9175f..8bce467 100755
+--- a/tests/zorpctl/test_szig_walk_algorithm.py
++++ b/tests/zorpctl/test_szig_walk_algorithm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ############################################################################
+ ##
+-- 
+2.5.3
+
