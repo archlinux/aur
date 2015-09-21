@@ -1,7 +1,7 @@
 pkgbase = hstr-git
 	pkgdesc = A command line utility that brings improved BASH command completion from the history. It aims to make completion easier and more efficient than Ctrl-r.
 	pkgver = 1.17.r11.g042501d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dvorka/hstr
 	arch = i686
 	arch = x86_64
