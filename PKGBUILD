@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=peerflix
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Streaming torrent client for node.js"
 arch=('any')
