@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-calfw-git
-pkgver=20150901.fc4a983
+pkgver=20150921.a39c067
 pkgrel=1
 pkgdesc="A calendar framework for Emacs"
 url="https://github.com/kiwanami/emacs-calfw"
