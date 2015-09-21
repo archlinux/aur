@@ -33,7 +33,7 @@ build() {
 	git apply ../../0002-Consider-only-python2-and-python2.7.patch || /bin/true
 	git apply ../../0003-Fix-python-shebangs.patch || /bin/true
 	autoreconf -i
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/lib/zorp
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 
@@ -41,9 +41,4 @@ package() {
 	cd "$srcdir/zorp"
 	make DESTDIR="$pkgdir/" install
 	mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
-	rm -r "$pkgdir/var"
-	rmdir "$pkgdir/etc/zorp/urlfilter"
-	chmod o+rx "$pkgdir/etc/zorp"
-	chmod o+r "$pkgdir/etc/sudoers.d/zorp_nagios_plugins"
-	chmod o-rx "$pkgdir/etc/sudoers.d"
 }
