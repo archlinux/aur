@@ -19,7 +19,7 @@ pkgver() {
 build() {
 	cd "$srcdir/libzorpll"
 	autoreconf -i
-	./configure --prefix=/usr
+	./configure --prefix=/usr --libexecdir=/usr/lib/libzorpll --localstatedir=/var
 	make
 }
 
