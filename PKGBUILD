@@ -1,19 +1,23 @@
-# Maintainer: megadriver <megadriver at gmx dot com>
+# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: $pooky Hunter <spookyh+arch@gmail.org>
 
 pkgname=rc-local
-pkgver=1
+pkgver=1.1
 pkgrel=1
-pkgdesc="Support for legacy rc.local scripts"
-url=("https://aur.archlinux.org/packages/rc-local/")
+pkgdesc='Support for legacy rc.local scripts'
+url=('https://aur.archlinux.org/packages/rc-local')
 arch=('any')
-license=('BSD')
-depends=('bash')
-source=(rc-local.service)
-md5sums=('bb2cfecf3c6d99c6e6ee9eb58bcde75d')
+license=('LGPL2.1')
+install="${pkgname}.install"
+depends=('systemd')
+backup=('etc/rc.local')
+source=('rc.local'
+	'rc-local.service')
+sha256sums=('8aa661c15cf9a35c32c79055bf69ab2d16354128ddd67a1bce0a7e48fe26f2e3'
+	'7ac3eae0aee580448acbe386a3a2954990510790c42f2b9a0df293078d22dc14')
 
 package() {
-	echo "#!/bin/bash" > rc.local
-	install -D -m 0755 rc.local $pkgdir/etc/rc.local
-	install -D -m 0644 rc-local.service $pkgdir/usr/lib/systemd/system/rc-local.service
+	install -Dm755 'rc.local' "${pkgdir}/etc/rc.local"
+	install -Dm644 'rc-local.service' "${pkgdir}/usr/lib/systemd/system/rc-local.service"
 }

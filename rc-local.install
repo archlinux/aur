@@ -1,0 +1,16 @@
+_update() {
+	systemctl daemon-reload
+}
+
+post_install() {
+	_update
+	systemctl enable rc-local.service
+}
+
+post_upgrade() {
+	_update
+}
+
+post_remove() {
+	_update
+}
