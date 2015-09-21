@@ -1,0 +1,43 @@
+diff -Naur pygame-1.9.1release-orig/src/joystick.c pygame-1.9.1release/src/joystick.c
+--- pygame-1.9.1release-orig/src/joystick.c	2015-02-09 23:43:06.683066782 -0500
++++ pygame-1.9.1release/src/joystick.c	2015-02-09 23:54:40.758606974 -0500
+@@ -201,7 +201,6 @@
+     }
+ 
+     value = SDL_JoystickGetAxis (joy, axis);
+-    printf("SDL_JoystickGetAxis value:%d:\n", value);
+ 
+ 
+     return PyFloat_FromDouble (value / 32768.0);
+@@ -241,7 +240,6 @@
+     }
+ 
+     value = SDL_JoystickGetButton (joy, _index);
+-    printf("SDL_JoystickGetButton value:%d:\n", value);
+ 
+     return PyInt_FromLong (value);
+ }
+@@ -277,7 +275,6 @@
+         return RAISE (PyExc_SDLError, "Joystick not initialized");
+     }
+     value = SDL_JoystickNumBalls (joy);
+-    printf("SDL_JoystickNumBalls value:%d:\n", value);
+ 
+     if (_index < 0 || _index >= value) {
+         return RAISE (PyExc_SDLError, "Invalid joystick trackball");
+@@ -300,7 +297,6 @@
+     }
+ 
+     value = SDL_JoystickNumHats (joy);
+-    printf("SDL_JoystickNumHats value:%d:\n", value);
+ 
+     return PyInt_FromLong (value);
+ }
+@@ -327,7 +323,6 @@
+ 
+     px = py = 0;
+     value = SDL_JoystickGetHat (joy, _index);
+-    printf("SDL_JoystickGetHat value:%d:\n", value);
+ 
+     if (value & SDL_HAT_UP) {
+         py = 1;

@@ -1,0 +1,25 @@
+pkgbase = python-pygame
+	pkgdesc = Python game library
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://www.pygame.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = portmidi
+	provides = python-pygame
+	source = http://www.pygame.org/ftp/pygame-1.9.1release.tar.gz
+	source = pygame-config.patch
+	source = pygame-v4l.patch
+	source = pygame-joystick.patch
+	sha1sums = a45aeb0623e36ae7a1707b5f41ee6274f72ca4fa
+	sha1sums = 285815e28705d5a2aea53c9d952d35fddf10dd13
+	sha1sums = 7e693fb2ef5ef636f9965ba1a4eb854f8b0b5070
+	sha1sums = 399ef25b9bdcda7eb35f0147dffcfc4886405c36
+
+pkgname = python-pygame
+
