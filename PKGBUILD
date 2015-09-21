@@ -3,7 +3,7 @@
 
 pkgname=ruby-compass
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Real Stylesheet Framework"
 arch=(i686 x86_64)
 url="http://compass-style.org"
@@ -37,5 +37,5 @@ package() {
 
 sha256sums=('4c7884dc5349d59011fd6c5736a0404008d5609235037741feac9c8ff840d151'
             '2cd0895f4e54b14edd9eb599220900e6cf43a1f57754bfbd790b9a2ec2aab6b0'
-            '65918ac12b7b0f97daea52bdb030cb3910b9a344f869173fb2cbbcdf9b9275e2'
+            'ae49ad8b7b1da183627d12bd6454a59bf023300431a1ce1433c160e0fb2db308'
             'fbee7344a019d115caddf00667e9473a4e82f2999bdff9c04ccc4aa31b979d72')
