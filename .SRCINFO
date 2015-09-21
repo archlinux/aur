@@ -21,4 +21,4 @@ pkgbase = rpcd-git
 	conflicts = rpcd-git
 	replaces = rpcd
 
-pkgname = rpcd-lua-git
+pkgname = rpcd-git
