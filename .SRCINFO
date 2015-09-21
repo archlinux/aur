@@ -1,5 +1,5 @@
 pkgbase = linux-libre-grsec-knock
-	pkgver = 4.1.7_gnu.201509131604
+	pkgver = 4.1.7_gnu.201509201149
 	pkgrel = 1
 	url = https://wiki.parabola.nu/Grsecurity%2BKnock
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = linux-libre-grsec-knock
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1-gnu/linux-libre-4.1-gnu.tar.xz.sign
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.7-gnu/patch-4.1-gnu-4.1.7-gnu.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.1.7-gnu/patch-4.1-gnu-4.1.7-gnu.xz.sign
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.1.7-201509131604.patch
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.1.7-201509131604.patch.sig
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.1.7-201509201149.patch
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.1.7-201509201149.patch.sig
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff
 	source = https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_4.1_1.diff.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
@@ -34,7 +34,7 @@ pkgbase = linux-libre-grsec-knock
 	sha256sums = SKIP
 	sha256sums = 4ae674b88d75f2cc95c352de476ebd4c1d8726f2e0e91536d26db1bdc54b523d
 	sha256sums = SKIP
-	sha256sums = e8941ef8989cd851ee2b3ac33d78e466b544ab6beccda3076923e593d3bedca5
+	sha256sums = 59d80a636578344ee00e03b953f1eba127bc150ae74a16c35850dc09127f1b0b
 	sha256sums = SKIP
 	sha256sums = da336d8e5291b7641598eb5d7f44f54dacf6515ed6ffd32735dd6f128458dbdc
 	sha256sums = SKIP
@@ -63,7 +63,7 @@ pkgname = linux-libre-grsec-knock
 	optdepends = paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically
 	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
 	optdepends = openssh-knock: to use SSH with TCP Stealth support
-	provides = linux-grsec-knock=4.1.7.201509131604
+	provides = linux-grsec-knock=4.1.7.201509201149
 	conflicts = kernel26-grsec-knock
 	conflicts = kernel26-libre-grsec-knock
 	replaces = linux-grsec-knock
@@ -73,7 +73,7 @@ pkgname = linux-libre-grsec-knock
 
 pkgname = linux-libre-grsec-knock-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-grsec-knock kernel
-	provides = linux-grsec-knock-headers=4.1.7.201509131604
+	provides = linux-grsec-knock-headers=4.1.7.201509201149
 	conflicts = kernel26-grsec-knock-headers
 	conflicts = kernel26-libre-grsec-knock-headers
 	replaces = linux-grsec-knock-headers
@@ -82,7 +82,7 @@ pkgname = linux-libre-grsec-knock-headers
 
 pkgname = linux-libre-grsec-knock-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-grsec-knock kernel
-	provides = linux-grsec-knock-docs=4.1.7.201509131604
+	provides = linux-grsec-knock-docs=4.1.7.201509201149
 	conflicts = kernel26-grsec-knock-docs
 	conflicts = kernel26-libre-grsec-knock-docs
 	replaces = linux-grsec-knock-docs
