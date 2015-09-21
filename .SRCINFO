@@ -1,6 +1,6 @@
 pkgbase = koditools-git
 	pkgdesc = Set of tools to interface with Kodi/XBMC
-	pkgver = 1.2
+	pkgver = 1.0.r18.g2e79de7
 	pkgrel = 1
 	url = http://github.com/grimpy/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = koditools-git
 	provides = koditools
 	conflicts = koditools
 	replaces = xbmctools-git
-	source = koditools-git::git://github.com/grimpy/koditools.git#tag=1.2
+	source = koditools-git::git://github.com/grimpy/koditools.git
 	md5sums = SKIP
 
 pkgname = koditools-git
