@@ -1,6 +1,6 @@
 pkgbase = mozc
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
-	pkgver = 2.17.2111.102
+	pkgver = 2.17.2123.102
 	pkgrel = 1
 	url = http://code.google.com/p/mozc/
 	arch = i686
@@ -8,24 +8,15 @@ pkgbase = mozc
 	license = BSD
 	license = custom
 	makedepends = python2
-	makedepends = subversion
 	makedepends = git
 	makedepends = ninja
 	makedepends = clang
 	depends = qt4
 	depends = ibus>=1.4.1
 	depends = zinnia
-	source = mozc::git+https://github.com/google/mozc.git#commit=d7b6196aeac52dd908ca051ba65e97b389f4503a
-	source = jsoncpp::git+https://github.com/open-source-parsers/jsoncpp.git#commit=11086dd6a7eba04289944367ca82cea71299ed70
-	source = gyp::git+https://chromium.googlesource.com/external/gyp#commit=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
-	source = protobuf::git+https://github.com/google/protobuf.git#commit=172019c40bf548908ab09bfd276074c929d48415
-	source = japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=10
+	source = mozc::git+https://github.com/google/mozc.git#commit=e398317a086a78c0cf0004505eb8f56586e925b2
 	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-201508.zip
 	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-201508.zip
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = 97627c9e27a273dddf6408d0451855dd5f830eee
 	sha1sums = 927901d45051ec9bfb944e2623c4589456462f03
@@ -48,6 +39,6 @@ pkgname = ibus-mozc
 	arch = i686
 	arch = x86_64
 	groups = mozc-im
-	depends = mozc=2.17.2111.102
+	depends = mozc=2.17.2123.102
 	depends = ibus>=1.4.1
 

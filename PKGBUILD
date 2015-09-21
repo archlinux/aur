@@ -29,7 +29,6 @@ _bldtype=Release
 
 _zipcoderel=201508
 _mozcrev=e398317a086a78c0cf0004505eb8f56586e925b2
-# _mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
 
 pkgbase=mozc
 pkgname=mozc
@@ -39,7 +38,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
 license=('BSD' 'custom')
-makedepends=('python2' 'subversion' 'git' 'ninja' 'clang')
+makedepends=('python2' 'git' 'ninja' 'clang')
 #source=("${_svndir}/${_svnmod}::svn+${_svntrunk}"
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
@@ -74,8 +73,7 @@ prepare() {
 
   cd "${srcdir}/${pkgbase}/"
 
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
 
   cd "${srcdir}/${pkgbase}/src/"
 
