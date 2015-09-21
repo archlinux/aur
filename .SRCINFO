@@ -1,7 +1,7 @@
 pkgbase = lib32-libtinfo-5
 	pkgdesc = lib32 symlink to ncurses for use in packages (legacy)
 	pkgver = 5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnu.org/software/ncurses/
 	arch = any
 	license = unknown
