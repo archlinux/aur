@@ -1,5 +1,5 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
-pkgname=tilemaker
+pkgname=tilemaker-git
 pkgver=r14.6a994ee
 pkgver() {
   cd "$pkgname"
@@ -10,8 +10,9 @@ pkgdesc="Convert OpenStreetMap .pbf files into vector tiles without the stack"
 arch=('i686' 'x86_64')
 url="https://github.com/systemed/tilemaker"
 license=('custom')
+install=$pkgname.install
 depends=('boost-libs' 'luabind' 'protobuf' 'sqlite')
-source=("$pkgname::git+https://github.com/systemed/$pkgname")
+source=("$pkgname::git+https://github.com/systemed/${pkgname%-git}")
 md5sums=('SKIP')
 
 build() {

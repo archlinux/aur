@@ -1,0 +1,8 @@
+post_install() {
+  echo "See https://github.com/systemed/tilemaker/blob/master/CONFIGURATION.md for the configuration documentation"
+  echo "See https://github.com/systemed/tilemaker/blob/master/config.json for an example configuration"
+}
+
+post_upgrade() {
+  post_install
+}
