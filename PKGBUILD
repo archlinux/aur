@@ -7,11 +7,11 @@ _bldtype=Release
 #_bldtype=Debug
 
 _uimmozcrev=318.0562676
-_mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
+_mozcrev=e398317a086a78c0cf0004505eb8f56586e925b2
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=2.17.2111.102
+pkgver=2.17.2123.102
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ license=('BSD')
 groups=('mozc-im')
 depends=('mozc' 'uim')
 install=${pkgname}.install
-makedepends=('pkg-config' 'python2' 'subversion' 'git' 'ninja' 'clang')
+makedepends=('pkg-config' 'python2' 'git' 'ninja' 'clang')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz
@@ -40,10 +40,9 @@ prepare() {
   ln -sf `which python2` ./python
   PATH="${srcdir}:${PATH}"
 
-  cd "${srcdir}/${pkgbase}/"
+  cd "${srcdir}/${_pkgname}/"
 
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
 
   cd "${srcdir}/${_pkgname}/src"
 
