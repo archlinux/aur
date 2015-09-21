@@ -3,7 +3,7 @@
 
 pkgname=tvheadend-atsc-epg-git
 _gitname='tvheadend'
-pkgver=4.1.r404.g5613770
+pkgver=4.1.r475.g92b5af3
 pkgrel=1
 pkgdesc="TV streaming server for Linux (with PSIP ATSC EPG Grabber)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release
+    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release --enable-libsystemd_daemon
     make
 }
 

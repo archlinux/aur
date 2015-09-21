@@ -1,6 +1,6 @@
 pkgbase = tvheadend-atsc-epg-git
 	pkgdesc = TV streaming server for Linux (with PSIP ATSC EPG Grabber)
-	pkgver = 4.1.r404.g5613770
+	pkgver = 4.1.r475.g92b5af3
 	pkgrel = 1
 	url = https://tvheadend.org/
 	install = tvheadend.install
