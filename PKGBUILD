@@ -15,12 +15,12 @@ source=('git://github.com/brenns10/homework.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/homework"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/homework"
         mkdir -p $pkgdir/usr/share/texmf-dist/tex/latex/homework
 
         install -m644 homework.cls \
