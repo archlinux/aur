@@ -1,0 +1,17 @@
+pkgbase = packmol
+	pkgdesc = Creates an initial point for molecular dynamics simulations by packing molecules in defined regions of space.
+	pkgver = 15.217
+	pkgrel = 1
+	url = http://www.ime.unicamp.br/~martinez/packmol/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran
+	depends = gcc-libs
+	depends = tcl
+	depends = bash
+	source = http://leandro.iqm.unicamp.br/packmol/versionhistory/packmol-15.217.tar.gz
+	sha1sums = a1172254194fbaa5a279dd3c6d3e742492267324
+
+pkgname = packmol
+
