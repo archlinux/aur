@@ -2,7 +2,7 @@
 # Contributor: Alex Ferrando <alferpal@gmail.com>
 # Contributor: Archan Paul <arp@archan.org>
 pkgname=eclipse-egit
-pkgver=4.0.1.201506240215_r
+pkgver=4.0.2.201509141540_r
 pkgrel=1
 pkgdesc='An Eclipse Team provider for the Git version control system.'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://www.eclipse.org/egit/'
 license=('EPL')
 depends=('eclipse' 'eclipse-mylyn')
 source=("https://www.eclipse.org/downloads/download.php?file=/egit/updates/org.eclipse.egit.repository-$(echo $pkgver | sed s/_/-/).zip&r=1")
-sha512sums=('b0661702aa3ca13f493e664afcaffea9380a555d72f3dcf92391c757f55001f37691f7299d2c8ebf0951a69c8851771f6d6784cb9aa12f9037db46df0e4291cf')
+sha512sums=('f757528aad0841506ec0c2f31865437137407402a6922d8b27e888092080a4cde2a8e70c9d1bdf3f7209ee028a979fc87fefaf973794288ff01799c72584d2a2')
 
 prepare()
 {
@@ -23,7 +23,7 @@ prepare()
 
 package()
 {
-	_dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+	_dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
 	# Features
 	find features -type f | while read _feature ; do

@@ -1,14 +1,14 @@
 pkgbase = eclipse-egit
 	pkgdesc = An Eclipse Team provider for the Git version control system.
-	pkgver = 4.0.1.201506240215_r
+	pkgver = 4.0.2.201509141540_r
 	pkgrel = 1
 	url = https://www.eclipse.org/egit/
 	arch = any
 	license = EPL
 	depends = eclipse
 	depends = eclipse-mylyn
-	source = https://www.eclipse.org/downloads/download.php?file=/egit/updates/org.eclipse.egit.repository-4.0.1.201506240215-r.zip&r=1
-	sha512sums = b0661702aa3ca13f493e664afcaffea9380a555d72f3dcf92391c757f55001f37691f7299d2c8ebf0951a69c8851771f6d6784cb9aa12f9037db46df0e4291cf
+	source = https://www.eclipse.org/downloads/download.php?file=/egit/updates/org.eclipse.egit.repository-4.0.2.201509141540-r.zip&r=1
+	sha512sums = f757528aad0841506ec0c2f31865437137407402a6922d8b27e888092080a4cde2a8e70c9d1bdf3f7209ee028a979fc87fefaf973794288ff01799c72584d2a2
 
 pkgname = eclipse-egit
 
