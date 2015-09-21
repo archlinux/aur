@@ -18,7 +18,7 @@ _vmware_location=/opt/vmware/lib/vmware/modules/source
 _vmware_module_list="vmblock vmci vmmon vmnet vsock"
 
 depends=('dkms')
-makedepends=('vmware-workstation' 'linux<3.16')
+makedepends=('linux')
 optdepends=('linux-headers: needed to build the module')
 options=('!buildflags')
 install=${pkgname}.install
