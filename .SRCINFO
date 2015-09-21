@@ -1,0 +1,15 @@
+pkgbase = arc-colors-revival-git
+	pkgdesc = This is a set of backgrounds (and their sources) created to fit with thegnome-colors-revival icon theme and shiki-colors-revival GTK theme.
+	pkgver = v2.0.1.r3.gd42d496
+	pkgrel = 1
+	url = https://github.com/Somasis/gnome-colors-revival
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = make
+	depends = gtk-engine-murrine
+	source = arc-colors-revival-git::git+https://github.com/Somasis/gnome-colors-revival#branch=master
+	sha256sums = SKIP
+
+pkgname = arc-colors-revival-git
+
