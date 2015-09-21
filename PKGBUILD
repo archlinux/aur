@@ -1,11 +1,11 @@
-# Maintainer Simon Legner <Simon.Legner@gmail.com>
-
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=python-pydub
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manipulate audio with an simple and easy high level interface"
 url="http://pydub.com"
-depends=('python' )
+depends=('python')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/jiaaro/pydub/archive/v$pkgver.tar.gz")
@@ -18,6 +18,7 @@ build() {
 package() {
     cd $srcdir/pydub-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1 
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha1sums=('239ac1dfc2c331cb7b0d086e4624aa24280c34bf')
