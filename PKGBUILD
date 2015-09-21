@@ -2,7 +2,7 @@
 # Maintainer: Sébastien Luttringer <seblu@aur.archlinux.org>
 
 pkgname=awesome-revelation-git
-pkgver=2014.02.19.g1d705ce
+pkgver=2015.08.22.gc862f6d
 pkgrel=1
 pkgdesc='Show all clients per screen in Awesome window manager'
 arch=('any')
