@@ -1,0 +1,15 @@
+pkgbase = otf-ibarra-real
+	pkgdesc = Serif font used for 1970 edition of El Quijote
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://www.unostiposduros.com/unostiposduros-distribuye-la-tipografia-ibarra-real/
+	install = otf-ibarra-real.install
+	arch = any
+	license = Unknow
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.unostiposduros.com/wp-content/uploads/2010/05/Ibarra-Real.zip
+	sha512sums = c988a6808ce5fc9d235f01e21d2f28c8a4d85f8f8e8e940240c607bc9d2c715cb3c19a61e997b9d8c4f779decf535d382af544af7e241772d8a9b14cacd1e6b2
+
+pkgname = otf-ibarra-real
+
