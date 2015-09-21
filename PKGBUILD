@@ -19,7 +19,8 @@ package() {
   cd "$pkgdir"
 
   mkdir opt
-  bsdtar -C opt -xf "$srcdir/${_filename}"
+  #bsdtar -C opt -xf "$srcdir/${_filename}"
+  unzip -D opt ${_filename}.zip
   mv opt/${_filename} opt/golo
   
   find opt/golo -regextype posix-extended -regex '.*\.(bat|dll|exe)' -delete
