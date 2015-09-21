@@ -2,18 +2,21 @@
 # Contributor: adlerweb <get on aur>
 
 pkgname=pluma-plugins
-_reponame=cygwinports
 pkgver=1.8.0
+_cygrel=1
 epoch=1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/${_reponame}/${pkgname}"
 license=('GPL')
 depends=('pluma' 'mate-common')
-#makedepends=('autoconf-2.5' 'automake-1.12')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${_reponame}/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('d27bd9e7aa05d0bd23812d6087646880019f15d26cb94fc3e857c3806f228fe9')
+source=(${pkgname}-${pkgver}.tar.gz::http://cygwin.cathedral-networks.org/x86/release/${pkgname}/${pkgname}-${pkgver}-${_cygrel}-src.tar.xz)
+sha256sums=('1c14155ef4474ebb2850d67eb042776c49e4689d515876a015e59146e7fd2eb3')
 
+prepare() {
+  cd "$srcdir"
+  bsdtar -xvf "$srcdir/${pkgname}-${pkgver}-${_cygrel}.src/${pkgname}-${pkgver}.tar.gz"
+}
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   PYTHON=/usr/bin/python2 ./autogen.sh \
