@@ -1,0 +1,9 @@
+[Unit]
+Description=Dead simple makepkg builder server
+
+[Service]
+ExecStart=/usr/bin/saturated :80
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
