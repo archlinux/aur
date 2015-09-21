@@ -1,0 +1,7 @@
+post_install() {
+  useradd -r -s /usr/bin/nologin zorp
+}
+
+post_remove() {
+  userdel zorp
+}

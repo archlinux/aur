@@ -8,6 +8,7 @@ url="https://github.com/balabit/zorp"
 license=('GPL2')
 depends=('libzorpll-git' 'python2')
 makedepends=('git' 'gperf')
+install=zorp-git.install
 source=(
 	'zorp::git+https://github.com/balabit/zorp.git#branch=6.0.7'
 	'0001-Add-placeholder-files-required-by-automake.patch'
