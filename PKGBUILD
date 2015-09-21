@@ -1,4 +1,4 @@
-# Maintainer: Ciriaco Garcia de Celis <cgarcia at etherpilot.com>
+# Maintainer: Florian Schweikert <kelvan at ist-total.org>
 pkgname=qpid-proton
 pkgver=0.10
 pkgrel=1
