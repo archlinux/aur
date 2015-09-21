@@ -1,0 +1,55 @@
+pkgbase = linux-can
+	pkgver = 4.0.9
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.9.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.9.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = SKIP
+	sha256sums = 842cb3abf053e809b23e615020f3d0730220660f0e71f259dce69510364965f1
+	sha256sums = SKIP
+	sha256sums = e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1
+	sha256sums = 5f38f8ef75de179b3bb81eca97f40de68165ca481c1fcad114a563f9f62b7ad4
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+
+pkgname = linux-can
+	pkgdesc = The Linux-can kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-can=4.0.9
+	conflicts = kernel26-can
+	replaces = kernel26-can
+	backup = etc/mkinitcpio.d/linux-can.preset
+
+pkgname = linux-can-headers
+	pkgdesc = Header files and scripts for building modules for Linux-can kernel
+	provides = kernel26-can-headers=4.0.9
+	conflicts = kernel26-can-headers
+	replaces = kernel26-can-headers
+
+pkgname = linux-can-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-can kernel
+	provides = kernel26-can-docs=4.0.9
+	conflicts = kernel26-can-docs
+	replaces = kernel26-can-docs
+
