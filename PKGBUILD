@@ -8,15 +8,15 @@ arch=('i686' 'x86_64')
 url='http://www.google.com/chrome'
 license=('custom:chrome')
 options=('!strip')
-_packaged_chrome_ver=45.0.2454.93
+_packaged_chrome_ver=45.0.2454.99
 _current_chrome_ver=$(curl -s https://omahaproxy.appspot.com/linux)
 depends=("chromium>=${_current_chrome_ver%%.*}")
 source=('chrome-eula_text.html::https://www.google.com/chrome/intl/en/eula_text.html')
 source_i686=("google-chrome-stable_${_current_chrome_ver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb")
 source_x86_64=("google-chrome-stable_${_current_chrome_ver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
 sha256sums=('b35811bb330576631e64f7885c66720e0be4ca81afb04328b3a0f288a708e37f')
-sha256sums_i686=('8fe110d79fe45db9b27f27dcee76f0848b7373fca7cc21ccc2a44a0599afcdbe')
-sha256sums_x86_64=('96bbc7cf5ae261527a64e178fa4bc4f244f1b4ad3405a13ad99ac1cc8e3bf480')
+sha256sums_i686=('2dd481039f0595a15f9eff775a6d63a37c778a8e31afc043e8613bb6f11e8ca1')
+sha256sums_x86_64=('ae1971ad83a347b9901637c8d32d7ac50b6da2e24ec8fdb8603646b97f11f29a')
 
 pkgver() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevine*.so}
