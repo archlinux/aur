@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=45.0.2454.85
+pkgver=45.0.2454.93
 pkgrel=1
 _launcher_ver=2
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -25,6 +25,7 @@ options=('!strip')
 install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        0001-Demand-for-newer-POSIX-macro.patch
         inox.desktop
         chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-autofill-download-manager.patch
@@ -39,25 +40,28 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/branding.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/launcher-branding.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-missing-key-warning.patch
-        0001-Demand-for-newer-POSIX-macro.patch)
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-translation-lang-fetch.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/master/disable-update-pings.patch)
         
-sha256sums=('3e8c03a5a6ea4cc35017404a58687ca18207eed70781bad7f2d7d70610934c91'
+sha256sums=('0652aad95e6135ce03c6bfa13c4b023b1d70d65af9e0a24dc0e9fe45578d2ac7'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
+            'd908939b10161efe658f0f82d2c132bf28dff54e08f02c6fed93815c3656f328'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221'
             'f36d0212121a4a0751e52bdfbc27c5535b925983b90d342a2d067f4fa7c13711'
             'f28a6d92f2f2ee3a69694468019a59718a8328c28be22c0db23671f376f786f2'
             '6bb46b2f938b1e6fc8a76e768e05b876862b2713be6f8e4594654f14eda23bac'
-            '4dd2deedf405e64f3ddc078271928ae7974d5327b6ceb366122d608fa3e495d7'
+            '306f63e718068fa59c887b24823fd3776094fe3e98b55edcd27a44c2f46607b0'
             '9ace9483fc37bbf9ab59b4e58a05c18e66078c29e9e40044e36fc9117bd55bfd'
             '2aec3f9a8a3f9f64caf1fdaae797a617199739c8b0ead1e176aba1bcfffcc389'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
             'fc6b8f673cabfa3ce1cba535b6c872cdd41e815fc0c9a6468ac5fa7b5fbe3ce3'
-            '3c5122db362c25f92ae78745ea5f3b5052068bdf5104623b375d328c449ae3f2'
+            '74e2c96f847ae24a56e5eff46a390e175e2e95c056c7dd9ef76139cad0364854'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
-            'd908939b10161efe658f0f82d2c132bf28dff54e08f02c6fed93815c3656f328')
+            '5f4ba0846bc38d2fb7c0546974c69fb37f4235bb5a60233a7cb44f515e466a79'
+            '47114808874ced3fdc3782b8f3fc6e41300396632f64c5f1b905fa4c0268c42b')
 
 # We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
 # instructions on how to build the toolchain from source don't work that well
@@ -94,6 +98,8 @@ prepare() {
   patch -p1 < ../add-duckduckgo-search-engine.patch
   patch -p1 < ../branding.patch
   patch -p1 < ../disable-missing-key-warning.patch
+  patch -p1 < ../disable-translation-lang-fetch.patch
+  patch -p1 < ../disable-update-pings.patch
   
   # Remove bundled ICU; its header files appear to get picked up instead of
   # the system ones, leading to errors during the final link stage
