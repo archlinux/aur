@@ -1,0 +1,25 @@
+pkgbase = cnijfilter-mg4100
+	pkgdesc = Canon IJ Printer Driver (for mg4100 series)
+	pkgver = 3.60
+	pkgrel = 5
+	url = http://support-au.canon.com.au/contents/AU/EN/0100392802.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = findutils
+	makedepends = gawk
+	depends = libpng>=1.2.8
+	depends = libtiff
+	depends = gtk2
+	depends = popt
+	source = http://gdlp01.c-wss.com/gds/8/0100003928/01/cnijfilter-source-3.60-1.tar.gz
+	source = cups.patch
+	source = libpng15.patch
+	source = configures.patch
+	md5sums = 70e412331a21f4b573b4e901c89cee18
+	md5sums = 438586f7386033bff8de318e56779545
+	md5sums = 448241d96048dfc76f7bb7b53f9d7621
+	md5sums = 5100f205bfbd86741679f697ebe64a4b
+
+pkgname = cnijfilter-mg4100
+
