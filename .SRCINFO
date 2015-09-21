@@ -1,10 +1,11 @@
 pkgbase = openav-artyfx-git
 	pkgdesc = OpenAV ArtyFX LV2 plugin suite
 	pkgver = release.1.2.36.g3a8cb9a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openavproductions.com/artyfx/
 	arch = i686
 	arch = x86_64
+	groups = openav
 	license = GPL3
 	makedepends = cmake
 	makedepends = git

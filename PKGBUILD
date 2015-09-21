@@ -1,11 +1,12 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-artyfx-git
 pkgver=release.1.2.36.g3a8cb9a
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAV ArtyFX LV2 plugin suite"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/artyfx/"
 license=('GPL3')
+groups=('openav')
 depends=('cairo' 'cairomm' 'libsndfile' 'lv2' 'ntk-git')
 makedepends=('cmake' 'git')
 optdepends=('jalv')
