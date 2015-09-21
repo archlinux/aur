@@ -16,7 +16,8 @@ depends=(
 "python2-pydeep" "ssdeep" "python2-ssdeep" "python2-beautifulsoup4" 
 "python2-pefile" "python2-crypto" "python2-olefile" "python2-oletools"
 "python2-django" "python2-pymisp" "python2-scandir" "python2-pypssl"
-"python2-pypdns" "python2-pype32" "python2-pbkdf2" ) 
+"python2-pypdns" "python2-pype32" "python2-pbkdf2" "python2-dateutil"
+"python2-requests-cache") 
 makedepends=("git")
 source=("git+https://github.com/botherder/viper"
         "viper-framework.install")
