@@ -1,7 +1,7 @@
 # Maintainer: zoe <chp321@gmail.com>
 pkgname=kxstitch
 pkgver=1.2.0
-pkgrel=8
+pkgrel=9
 pkgdesc="The program that lets you create cross stitch patterns and charts."
 arch=('i686' 'x86_64')
 depends=('kdebase-runtime' 'imagemagick')
@@ -15,25 +15,10 @@ install=kxstitch.install
 build() {
     cd "$srcdir/kxstitch-${pkgver}"
     sed -i 's/-DMAGICKCORE_HDRI_ENABLE=0/-DMAGICKCORE_HDRI_ENABLE=1/' CMakeLists.txt
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/CMakeLists.txt
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/ca/CMakeLists.txt
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/cs/CMakeLists.txt
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/da/CMakeLists.txt
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/de/CMakeLists.txt
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/en_GB/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/es/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/et/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/fr/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/hu/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/it/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/lt/CMakeLists.txt
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/nl/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/pl/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/pt/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/pt_BR/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/sk/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/sv/CMakeLists.txt    
-    #sed -i '1i\cmake_policy(SET CMP0002 OLD)' po/uk/CMakeLists.txt    
+    
+    # Avoid bug in cmake :
+    sed -i '5i\cmake_policy(SET CMP0002 OLD)' CMakeLists.txt
+   
     rm -rf build
     mkdir build
     cd build
