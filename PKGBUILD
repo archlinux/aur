@@ -1,7 +1,7 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=fortune-mod-metalfairytale-fr-git
 pkgver=1e53c54
-pkgrel=2
+pkgrel=3
 pkgdesc="A fairy tale whose hero belongs to one of the many Metal (sub-)genres, served in the marvelous form of fortune cookies!"
 url="https://github.com/virtualtam/fortune-metal-fairy-tale"
 arch=('i686' 'x86_64')
