@@ -2,7 +2,7 @@
 # Contributor: Tobias Frilling <tobias@frilling-online.de>
 
 pkgname=leiningen-standalone
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Automating Clojure projects without setting your hair on fire.  (Standalone version without selfupdates)'
 conflicts=('leiningen')
@@ -26,6 +26,6 @@ package () {
                 "${pkgdir}"/usr/share/java/leiningen-${pkgver}-standalone.jar
 }
 
-sha256sums=('b475c08f505f58f70839195a70a842dcd9b903b70d8447f45a3de06e0c1f34c7'
-            '3d3e36aa2429aaaa9b97b5af7b7321dfb1be7699d0f3d88c202728009758185f'
+sha256sums=('64c70202dc7989de1b9d8b8b9b99e87dbb7698338e24d25722777412e37e1b62'
+            'f16473c1a41815a3dac1f0c8ca8ec1d33c30a243d20e1e50b2db96300a31fa5f'
             'fda89b8383c9df97c007fcf6b7ef045cf357bd660db03400a96ef14996a3d580')
