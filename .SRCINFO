@@ -2,7 +2,7 @@ pkgbase = libubox-lua-git
 	pkgdesc = A small utility library developed for OpenWrt containing a event loop, linked lists, blobmsg, stream buffer management, [...]
 	pkgver = r351.136a519
 	pkgrel = 1
-	url = http://xyne.archlinux.ca/projects/python3-aur
+	url = http://git.openwrt.org/?p=project/libubox.git
 	arch = any
 	license = ISC
 	license = BSD-3c
