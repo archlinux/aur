@@ -1,6 +1,6 @@
 pkgbase = terminator-bzr
 	pkgdesc = A tool for arranging multiple terminals in a single window
-	pkgver = 1558
+	pkgver = 1658
 	pkgrel = 1
 	url = http://www.tenshu.net/terminator/
 	install = terminator.install
@@ -17,6 +17,7 @@ pkgbase = terminator-bzr
 	depends = python2-notify
 	depends = vte
 	depends = xdg-utils
+	depends = python2-psutil
 	optdepends = gnome-python: gnome-terminal profile support
 	provides = terminator
 	conflicts = terminator

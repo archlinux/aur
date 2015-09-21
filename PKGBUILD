@@ -2,14 +2,14 @@
 # Contributor: zhuqin <zhuqin83@gmail.com>
 
 pkgname=terminator-bzr
-pkgver=1558
+pkgver=1658
 pkgrel=1
 pkgdesc="A tool for arranging multiple terminals in a single window"
 arch=('i686' 'x86_64')
 url="http://www.tenshu.net/terminator/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'pygtk' 'python2-keybinder2' 'python2-notify'
-         'vte' 'xdg-utils')
+         'vte' 'xdg-utils' 'python2-psutil')
 makedepends=('bzr' 'desktop-file-utils' 'gettext' 'intltool')
 optdepends=('gnome-python: gnome-terminal profile support')
 provides=('terminator')
