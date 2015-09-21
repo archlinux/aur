@@ -1,0 +1,14 @@
+pkgbase = pear-pear-packagefilemanager2
+	pkgdesc = takes an existing v2 package.xml file and updates it with a new filelist and changelog
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://pear.php.net/package/PEAR_PackageFileManager2
+	arch = any
+	license = PHP
+	makedepends = php-pear
+	noextract = PEAR_PackageFileManager2-1.0.2.tgz
+	source = http://download.pear.php.net/package/PEAR_PackageFileManager2-1.0.2.tgz
+	sha256sums = 188a2adfef7d93e20002c9909ebe2372af6380466a926b57e83c1221f9da4ee6
+
+pkgname = pear-pear-packagefilemanager2
+
