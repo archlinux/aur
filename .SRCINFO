@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-montypython
 	pkgdesc = Fortune cookies: Monty Python and the Holy Grail.
 	pkgver = 20140622
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sacred-texts.com/neu/mphg/mphg.htm
 	arch = any
 	license = custom:PublicDomain

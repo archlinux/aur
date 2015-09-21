@@ -2,7 +2,7 @@
 # Contributor: wido <widomaker2k7@gmail.com>:
 pkgname=fortune-mod-montypython
 pkgver=20140622
-pkgrel=1
+pkgrel=2
 pkgdesc="Fortune cookies: Monty Python and the Holy Grail."
 url="http://www.sacred-texts.com/neu/mphg/mphg.htm"
 arch=('any')
