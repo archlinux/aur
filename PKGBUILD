@@ -52,7 +52,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.1
-pkgver=4.1.7
+pkgver=4.1.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -80,7 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'bbd57fb48ea8e6971680818ba8722fd38ae419dca6047b852f10d33e5cd2ff6b'
+            '4373af2baaae5429be37e5257a22454d468f36b1322f784bb91a608c80ed52a1'
             'SKIP'
             'b04ce2128ddb94be5ffafb4383d5c8b016760500696b1426a6e552c9a61ab27c'
             'cc181fe0cfcedcd3bf606d7cce53e07dfb206d6c3549238dc7f4d0d27973d1a4'
@@ -110,7 +110,7 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck2 including BFS v0.463"
+	msg "Patching source with ck2 including BFS v0.464"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
@@ -234,8 +234,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.463.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.463.'
+	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
