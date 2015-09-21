@@ -1,7 +1,7 @@
 # Maintainer Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=python-pydub
-pkgver=0.11.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Manipulate audio with an simple and easy high level interface"
 url="http://pydub.com"
@@ -20,6 +20,6 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 
 }
 
-sha1sums=('e792f865d4d423741f138f4ddd9a886d6ebc9008')
-sha256sums=('23e6e82515ceda9296c78a0ade74bd6b4d5a5aee74cb971fcc025e2401057a12')
-md5sums=('853d0d25cfc43ae1b67c849f86341c10')
+sha1sums=('239ac1dfc2c331cb7b0d086e4624aa24280c34bf')
+sha256sums=('f0195a20a9eb7110e917105ceb00f4a712abaf070150d12a7dd8c2a84b011afe')
+md5sums=('946e402d8da0bc54dd72899f33213342')
