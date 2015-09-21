@@ -469,11 +469,17 @@ list_packages()
 #check for updates and email results if email exists
 check_updates()
 {
-	#sync repos
-	sudo pacman -Sy
+	#check for pacman updates with temp dir and fakeroot
 	echo -e "${color1}:: ${color2}Checking for updates... ${color3}"
+	pacpath=$(awk -F' *= *' '$1 ~ /DBPath/ { print $1 "=" $2 }' /etc/pacman.conf | sed -e 's/#DBPath=//g' -e 's/DBPath=//g')
+	pactemp=$(mktemp -d -t pactemp.XXXXXXXXXX)
+	trap 'rm -rf $pactemp' INT TERM EXIT
+	ln -s "${pacpath}/local" "$pactemp" &> /dev/null
+	fakeroot pacman -Sy --dbpath "$pactemp" --logfile /dev/null &> /dev/null
+	pacupdates=$(pacman -Qqu --dbpath "$pactemp" 2> /dev/null)
+	rm -rf $pactemp
+
 	#check for updates and place in variables
-	pacupdates=$(pacman -Qu)
 	aurpkgs=$(pacman -Qm | awk '{print $1}')
 	for line in $aurpkgs
 	do
