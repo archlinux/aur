@@ -39,3 +39,7 @@ pkgname = nautilus-typeahead
 	depends = nautilus-sendto
 	depends = libnautilus-extension
 
+pkgname = libnautilus-extension
+	pkgdesc = Library for extending the GNOME file manager - Patched to bring back the 'typeahead find' feature
+	depends = gtk3
+

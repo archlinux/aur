@@ -3,7 +3,7 @@
 # Maintainer: Ian Hernández <ihernandezs@openmailbox.org>
 
 _pkgbase=nautilus
-pkgname=nautilus-typeahead
+pkgname=(nautilus-typeahead libnautilus-extension)
 pkgbase=$pkgname
 pkgver=3.16.2
 pkgrel=1
@@ -52,9 +52,9 @@ package_nautilus-typeahead() {
   mv "$pkgdir"/usr/share/{gir-1.0,gtk-doc} n-e/usr/share
 }
 
-# package_libnautilus-extension() {
-#   pkgdesc="Library for extending the $pkgdesc"
-#   depends=(gtk3)
+package_libnautilus-extension() {
+  pkgdesc="Library for extending the $pkgdesc"
+  depends=(gtk3)
 
-#   mv n-e/* "$pkgdir"
-# }
+  mv n-e/* "$pkgdir"
+}
