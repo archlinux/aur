@@ -5,7 +5,7 @@
 
 pkgname=xaralx
 pkgver=0.7_rev1785
-pkgrel=9
+pkgrel=10
 pkgdesc="An advanced vector graphics program, development release"
 arch=('i686' 'x86_64')
 url="http://www.xaraxtreme.org/"
@@ -20,7 +20,7 @@ md5sums=('14c6b270bcc1598b9b3d38f9a6db71aa')
 if [ "$CARCH" = "x86_64" ]; then
     depends+=(lib32-{libstdc++5,pangox-compat,gtk2})
 elif [ "$CARCH" = "i686" ]; then
-    depends+=(libstdc++5,pangox-compat,gtk2)
+    depends+=(libstdc++5 pangox-compat gtk2)
 fi
 
 

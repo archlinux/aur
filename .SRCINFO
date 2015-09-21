@@ -1,7 +1,7 @@
 pkgbase = xaralx
 	pkgdesc = An advanced vector graphics program, development release
 	pkgver = 0.7_rev1785
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.xaraxtreme.org/
 	install = xaralx.install
 	arch = i686
