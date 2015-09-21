@@ -1,6 +1,6 @@
 pkgbase = sift
 	pkgdesc = A fast and powerful open source alternative to grep
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = http://sift-tool.org/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = sift
 	replaces = sift-bin
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/svent/sift/archive/v0.3.2.tar.gz
-	sha256sums = c14025e993f47a947ed9d1b444e3b3f334090428eb25736eae5779b19a764308
+	source = https://github.com/svent/sift/archive/v0.3.3.tar.gz
+	sha256sums = 69b166befdd9a19fd433096fbd9d9ef64b190e7ca6c37af4f6ee058d81ddfd63
 
 pkgname = sift
 
