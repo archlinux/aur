@@ -1,4 +1,4 @@
-# Contributor: Sunjae Park <darehanl@gmail.com>
+# Contributor: darehanl <darehanl@gmail.com>
 
 pkgname=ttf-nanum
 pkgver=3.1
@@ -8,7 +8,7 @@ arch=('any')
 url="http://hangul.naver.com"
 license=('OFL')
 depends=('fontconfig' 'xorg-font-utils')
-makdepends=('p7zip')
+makedepends=('p7zip')
 install=ttf.install
 source=('http://appdown.naver.com/naver/font/NanumFont/setup/NanumFontSetup_TTF_ALL_hangeulcamp.exe')
 md5sums=('539c778ddbc8cf518f353e1ab1d4afda')
