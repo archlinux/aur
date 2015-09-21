@@ -1,0 +1,11 @@
+--- a/lua/CMakeLists.txt
++++ b/lua/CMakeLists.txt
+@@ -25,7 +25,7 @@
+ 
+ IF(NOT LUAPATH)
+ 	EXECUTE_PROCESS(
+-		COMMAND  lua -e "for k in string.gmatch(package.cpath .. \";\", \"([^;]+)/..so;\") do if k:sub(1,1) == \"/\" then print(k) break end end"
++		COMMAND  lua5.1 -e "for k in string.gmatch(package.cpath .. \";\", \"([^;]+)/..so;\") do if k:sub(1,1) == \"/\" then print(k) break end end"
+ 		OUTPUT_VARIABLE LUAPATH
+ 		RESULT_VARIABLE LUA_CHECK_RES
+ 		OUTPUT_STRIP_TRAILING_WHITESPACE
