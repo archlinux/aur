@@ -1,7 +1,7 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=fortune-mod-husse
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A compilation of quotes from Husse (Linux Mint)'
 url='http://www.packages.linuxmint.com/pool/main/f/fortunes-husse/'
 arch=('any')

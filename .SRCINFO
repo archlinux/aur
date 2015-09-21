@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-husse
 	pkgdesc = A compilation of quotes from Husse (Linux Mint)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.packages.linuxmint.com/pool/main/f/fortunes-husse/
 	arch = any
 	groups = fortune-mods
