@@ -1,7 +1,7 @@
 pkgbase = kluppe
 	pkgdesc = A loop-player and recorder, designed for live use.
 	pkgver = 0.6.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kluppe.klingt.org/
 	install = kluppe.install
 	arch = i686

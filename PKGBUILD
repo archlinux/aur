@@ -4,7 +4,7 @@
 
 pkgname=kluppe
 pkgver=0.6.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A loop-player and recorder, designed for live use."
 arch=('i686' 'x86_64')
 url="http://kluppe.klingt.org/"
