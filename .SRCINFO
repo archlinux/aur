@@ -1,0 +1,9 @@
+pkgbase = gvli-pkg-iixaiyee
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/gh2o
+	arch = any
+	license = GPL
+
+pkgname = gvli-pkg-iixaiyee
+
