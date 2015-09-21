@@ -1,0 +1,36 @@
+# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+
+pkgbase=python-pypssl
+_pyname=pypssl
+pkgname=('python-pypssl' 'python2-pypssl')
+makedepends=('python' 'python2')
+pkgver=2.1
+pkgrel=1
+pkgdesc="API for MISP."
+arch=('any')
+url="https://pypi.python.org/pypi/pypssl"
+license=('BSD2')
+source=("https://pypi.python.org/packages/source/p/$_pyname/$_pyname-$pkgver.tar.gz")
+sha512sums=('eca60c76dbe62ac9333c4eb693fe0842c4c31f1a637e102c5a079bd3f29623fb014533bd177788942b9142a35d980e4eb625188887afe05b79999e513aa31fd2')
+
+package_python-pypssl() {
+  depends=('python')
+  cd "$srcdir/$_pyname-$pkgver"
+  python setup.py install -O1 --root=$pkgdir
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+
+
+}
+
+package_python2-pypssl() {
+  depends=('python2')
+  cd "$srcdir/$_pyname-$pkgver"
+  python2 setup.py install -O1 --root=$pkgdir
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+
+}
+
+# vim:set ts=2 sw=2 et:
+
