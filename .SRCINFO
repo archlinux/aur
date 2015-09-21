@@ -1,0 +1,18 @@
+pkgbase = php-phpoffice-phpexcel
+	pkgdesc = read, write and create spreadsheet documents, xls xlsx CSV ods Gnumeric PDF HTML. Included are experimental stubs for PHPWord PHPPowerPoint PHPProject PHPVisio
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/PHPOffice/PHPExcel
+	install = php-office.install
+	arch = any
+	groups = php-phpoffice
+	license = LGPL
+	depends = php>=5.3.0
+	depends = php-gd
+	depends = php-xsl
+	options = !strip
+	source = phpexcel-1.8.1.tar.gz::https://github.com/PHPOffice/PHPExcel/archive/1.8.1.tar.gz
+	sha256sums = 0c0effcbcf73a1b400597d04939795c9640d0dcdc5765d7d58b8c72ddacc8f41
+
+pkgname = php-phpoffice-phpexcel
+

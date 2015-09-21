@@ -1,0 +1,19 @@
+post_update() {
+  if pushd '/etc/php/conf.d' > /dev/null; then
+    cat php-phpoffice-*.cfg | grep -v '^;' | sort -u > 'php-phpoffice.ini'
+    if [ ! -s 'php-phpoffice.ini' ]; then
+      rm -f 'php-phpoffice.ini'
+    else
+      echo "; This is auto generated from php-office*.cfg files and will be overwritten on the next install" >> 'php-phpoffice.ini'
+    fi
+    popd > /dev/null
+  fi
+}
+
+post_install() {
+  post_update
+}
+
+post_remove() {
+  post_update
+}
