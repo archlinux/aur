@@ -1,0 +1,14 @@
+pkgbase = cnijfilter-mg5300series
+	pkgdesc = Canon IJ Printer Driver for Pixma MG5300 Series
+	pkgver = 3.60
+	pkgrel = 2
+	url = http://support-asia.canon-asia.com/contents/ASIA/EN/0100395502.html
+	arch = i386
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	source = http://gdlp01.c-wss.com/gds/5/0100003955/01/cnijfilter-mg5300series-3.60-1-rpm.tar.gz
+	md5sums = a2546dc172f82113dfdcd469fa2f574b
+
+pkgname = cnijfilter-mg5300series
+
