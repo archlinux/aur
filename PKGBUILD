@@ -3,11 +3,11 @@
 _gemname=buftok
 pkgname=ruby-$_gemname
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="BufferedTokenizer extracts token delimited entities from a sequence of arbitrary inputs."
 arch=(any)
 url='https://github.com/sferik/buftok'
-license=(Ruby)
+license=(MIT)
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
