@@ -1,17 +1,18 @@
 pkgbase = xembed-sni-proxy-git
 	pkgdesc = Convert XEmbed system tray icons to SNI icons
 	pkgver = 20150904.04f0275
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davidedmundson/xembed-sni-proxy
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = automoc4
-	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = sni-qt
+	depends = kwindowsystem
+	depends = knotifications
 	source = git+https://github.com/davidedmundson/xembed-sni-proxy.git
 	sha256sums = SKIP
 
