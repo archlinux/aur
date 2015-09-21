@@ -20,7 +20,7 @@ package() {
 
   mkdir opt
   #bsdtar -C opt -xf "$srcdir/${_filename}"
-  unzip -d opt ${_filename}.zip
+  unzip $srcdir/${_filename}.zip -d opt
   mv opt/${_filename} opt/golo
   
   find opt/golo -regextype posix-extended -regex '.*\.(bat|dll|exe)' -delete
