@@ -1,5 +1,5 @@
 pkgbase = linux-libre-lts
-	pkgver = 3.14.51_gnu
+	pkgver = 3.14.52_gnu
 	pkgrel = 1
 	url = http://linux-libre.fsfla.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-libre-lts
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.51-gnu/patch-3.14-gnu-3.14.51-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.51-gnu/patch-3.14-gnu-3.14.51-gnu.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.52-gnu/patch-3.14-gnu-3.14.52-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.52-gnu/patch-3.14-gnu-3.14.52-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -33,7 +33,7 @@ pkgbase = linux-libre-lts
 	source = 0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
 	sha256sums = 477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b
 	sha256sums = SKIP
-	sha256sums = b12b75dfeac07e8bfe7c76bc7b4d9012dfbfc25201b7cdf9edf31466ee5a0fac
+	sha256sums = 5c3f6fb432d567c81df2d76476ca1abafaee9d2de4828d57e78d0219982c4ebc
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -60,7 +60,7 @@ pkgname = linux-libre-lts
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-lts=3.14.51
+	provides = linux-lts=3.14.52
 	conflicts = kernel26-lts
 	conflicts = kernel26-libre-lts
 	conflicts = linux-libre-lts-kmod-alx
@@ -72,7 +72,7 @@ pkgname = linux-libre-lts
 
 pkgname = linux-libre-lts-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-lts kernel
-	provides = linux-lts-headers=3.14.51
+	provides = linux-lts-headers=3.14.52
 	conflicts = kernel26-lts-headers
 	conflicts = kernel26-libre-lts-headers
 	replaces = linux-lts-headers
@@ -81,7 +81,7 @@ pkgname = linux-libre-lts-headers
 
 pkgname = linux-libre-lts-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-lts kernel
-	provides = linux-lts-docs=3.14.51
+	provides = linux-lts-docs=3.14.52
 	conflicts = kernel26-lts-docs
 	conflicts = kernel26-libre-lts-docs
 	replaces = linux-lts-docs

@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=3.14-gnu
-_pkgver=3.14.51-gnu
+_pkgver=3.14.52-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -47,7 +47,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
 sha256sums=('477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b'
             'SKIP'
-            'b12b75dfeac07e8bfe7c76bc7b4d9012dfbfc25201b7cdf9edf31466ee5a0fac'
+            '5c3f6fb432d567c81df2d76476ca1abafaee9d2de4828d57e78d0219982c4ebc'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
