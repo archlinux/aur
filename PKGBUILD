@@ -2,12 +2,13 @@
 
 pkgname=nagios
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios is an open source host, service and network monitoring program."
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.nagios.org"
 depends=('gd' 'freetype2' 'libtool' 'glib2')
+makedepends=('unzip')
 optdepends=('monitoring-plugins: a bundle of standard plugins')
 source=("http://downloads.sourceforge.net/nagios/$pkgname-$pkgver.tar.gz"
         "nagios.install"

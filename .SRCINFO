@@ -1,12 +1,13 @@
 pkgbase = nagios
 	pkgdesc = Nagios is an open source host, service and network monitoring program.
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nagios.org
 	install = nagios.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = unzip
 	depends = gd
 	depends = freetype2
 	depends = libtool
