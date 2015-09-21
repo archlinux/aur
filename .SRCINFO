@@ -1,6 +1,6 @@
 pkgbase = saturated
 	pkgdesc = Dead simple makepkg builder server
-	pkgver = 20150921.3_52ef434
+	pkgver = 20150921.4_b96240e
 	pkgrel = 1
 	install = saturated.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = saturated
 	makedepends = git
 	depends = binutils
 	depends = sudo
+	depends = fakeroot
 	source = saturated::git://github.com/seletskiy/saturated
 	source = saturated.service
 	source = 20-makepkg

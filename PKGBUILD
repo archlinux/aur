@@ -1,10 +1,10 @@
 pkgname=saturated
-pkgver=20150921.3_52ef434
+pkgver=20150921.4_b96240e
 pkgrel=1
 pkgdesc="Dead simple makepkg builder server"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('binutils' 'sudo')
+depends=('binutils' 'sudo' 'fakeroot')
 makedepends=('go' 'git')
 install="saturated.install"
 
