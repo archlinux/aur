@@ -1,7 +1,7 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=minetestmapper-git
 pkgver=6e30d47
-pkgrel=1
+pkgrel=2
 pkgdesc="Minetest map generator"
 arch=('i686' 'x86_64')
 url="http://wiki.minetest.net/Minetestmapper"
