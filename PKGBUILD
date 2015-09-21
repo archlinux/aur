@@ -25,17 +25,8 @@ build() {
     --enable-gtk-doc \
     --enable-python 
 
-  # Who know? Does "make" do it automaticly?
-  local cpucounts="$(cat /sys/devices/system/cpu/online)"
-  cpucounts="${cpucounts#0-}"
-  if [[ $cpucounts =~ ^[0-9]+$ ]]; then
-    # This should make compilation much much faster on amds or
-    # expensive intels (with many cores).
-    make -j $[cpucounts + 1]
-  else
-    # Fallback
-    make
-  fi
+  # For SMP look at MAKEFLAGS="-j8" (where 8 is 8 cpus/cores) in /etc/makepkg.conf
+  make
 }
 
 package() {
