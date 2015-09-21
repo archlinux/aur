@@ -1,0 +1,36 @@
+diff -Naur a/backend/src/cnij_backend_common.c b/backend/src/cnij_backend_common.c
+--- a/backend/src/cnij_backend_common.c	2010-02-23 04:57:49.000000000 +0100
++++ b/backend/src/cnij_backend_common.c	2012-07-31 13:20:51.050057184 +0200
+@@ -38,6 +38,7 @@
+ // CUPS Header
+ #include <cups/cups.h>
+ #include <cups/ipp.h>
++#include <cups/ppd.h>
+ 
+ // Header file for CANON
+ #include "cnij_backend_common.h"
+diff -Naur a/cngpij/cngpij/bjcups.c b/cngpij/cngpij/bjcups.c
+--- a/cngpij/cngpij/bjcups.c	2010-03-15 09:48:58.000000000 +0100
++++ b/cngpij/cngpij/bjcups.c	2012-07-31 13:20:58.126523983 +0200
+@@ -21,6 +21,7 @@
+ #include	<config.h>
+ #endif	// HAVE_CONFIG_H
+ 
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
+ #include <cups/ppd.h>
+diff -Naur a/cngpijmon/src/bjcupsmon_cups.c b/cngpijmon/src/bjcupsmon_cups.c
+--- a/cngpijmon/src/bjcupsmon_cups.c	2010-05-11 10:49:30.000000000 +0200
++++ b/cngpijmon/src/bjcupsmon_cups.c	2012-07-31 13:20:58.129857221 +0200
+@@ -18,8 +18,10 @@
+  */
+ 
+ /*** Includes ***/
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
++#include <cups/ppd.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <pwd.h>
