@@ -1,0 +1,18 @@
+pkgbase = python-pypdns
+	pkgdesc = Python API for PDNS.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pypdns#downloads
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python2
+	source = https://pypi.python.org/packages/source/p/pypdns/pypdns-1.2.tar.gz
+	sha512sums = 678bcb670429083d124d893bdeb801db08f458e77c165bbc19e174dc42e37b28399b1d4d0c8d4593ca44cd7f93cdf988caf5f58fa339ee46ed4b35e91608aa73
+
+pkgname = python-pypdns
+	depends = python
+
+pkgname = python2-pypdns
+	depends = python2
+
