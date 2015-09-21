@@ -1,0 +1,41 @@
+pkgbase = cnijfilter-mg3100
+	pkgdesc = Canon IJ Printer Driver (for MG3100 series)
+	pkgver = 3.60
+	pkgrel = 5
+	url = http://support-au.canon.com.au/contents/AU/EN/0100392802.html
+	install = cnijfilter-mg3100.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = autoconf>=2.13
+	makedepends = automake>=1.6
+	makedepends = tar
+	makedepends = make
+	makedepends = gcc
+	depends = libcups
+	depends = cups
+	depends = popt
+	depends = ghostscript
+	depends = gsfonts
+	depends = atk>=1.9.0
+	depends = gtk2>=2.8.0
+	depends = pango>=1.12.3
+	depends = libpng>=1.5
+	depends = libtiff
+	depends = cairo>=1.0.2
+	depends = libxml2>=2.6.24
+	depends = fontconfig>=2.3.0
+	depends = libxinerama
+	conflicts = cnijfilter-common
+	source = http://gdlp01.c-wss.com/gds/8/0100003928/01/cnijfilter-source-3.60-1.tar.gz
+	source = build-fixes.patch
+	source = cups.patch
+	source = id.po.patch
+	source = libpng15.patch
+	md5sums = 70e412331a21f4b573b4e901c89cee18
+	md5sums = 5f4b3523f6542f0a90886e7e6264f19a
+	md5sums = e406c2629159b9608c4552a5343471f0
+	md5sums = e228560529d46e1f03617ba7bc9aa657
+	md5sums = 0eb3e6f17c090b07490f4a5d01de49da
+
+pkgname = cnijfilter-mg3100
