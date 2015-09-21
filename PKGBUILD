@@ -2,7 +2,7 @@
 
 pkgbase=python-pygame
 pkgname=python-pygame
-pkgver=1.9.1
+pkgver=1.9.2pre.20141217
 pkgrel=1
 pkgdesc="Python game library"
 arch=('i686' 'x86_64')
@@ -11,30 +11,13 @@ license=('LGPL')
 depends=('python' 'sdl_mixer' 'sdl_ttf' 'sdl_image' 'portmidi')
 provides=('python-pygame')
 
-source=(http://www.pygame.org/ftp/pygame-${pkgver}release.tar.gz
-	pygame-config.patch
-	pygame-v4l.patch
-	pygame-joystick.patch
-)
+source=(https://bitbucket.org/pygame/pygame/get/fsencoding-ascii.tar.gz)
 
-sha1sums=('a45aeb0623e36ae7a1707b5f41ee6274f72ca4fa'
-          '285815e28705d5a2aea53c9d952d35fddf10dd13'
-          '7e693fb2ef5ef636f9965ba1a4eb854f8b0b5070'
-          '399ef25b9bdcda7eb35f0147dffcfc4886405c36')
-
-prepare() 
-{
-  cd pygame-${pkgver}release
-  patch -p0 -i "${srcdir}/pygame-config.patch"
-  patch -p1 -i "${srcdir}/pygame-v4l.patch"
-  patch -p1 -i "${srcdir}/pygame-joystick.patch"
-}
-
+sha1sums=('6e6aeaed13bf8acf59786b389f3a8638d2bb2e53')
 
 package() 
 {
-  cd pygame-${pkgver}release
-  2to3 setup.py
+  cd pygame-pygame-64f9038c292d
   python config.py -auto
   python setup.py install --root="${pkgdir}" --prefix=/usr
 }
