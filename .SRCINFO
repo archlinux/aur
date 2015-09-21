@@ -1,7 +1,7 @@
 pkgbase = peerflix
 	pkgdesc = Streaming torrent client for node.js
 	pkgver = 0.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mafintosh/peerflix
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = peerflix
 	depends = nodejs
 	options = !emptydirs
 	source = https://github.com/mafintosh/peerflix/archive/v0.31.0.tar.gz
-	sha256sums = e588481b888cdf62e29e28c1ee9005b5fae971c31ad9f0132b4292ae7010a7aa
+	sha256sums = a36b9229d714aa07b956bcac3bff15104b64a704970388864fd1cc25b708a150
 
 pkgname = peerflix
 
