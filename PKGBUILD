@@ -2,7 +2,7 @@
 
 pkgbase=saldl-git
 pkgname=("$pkgbase")
-pkgver=v15.1.gc4948bf
+pkgver=v16.0.gff7c210
 pkgrel=1
 url="https://saldl.github.io"
 pkgdesc="A CLI downloader optimized for speed and early preview, based on libcurl."
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgbase"
-  saldl_ver="$(git describe --long --dirty)"
+  saldl_ver="$(git describe --tags --long --dirty)"
   echo ${saldl_ver//-/.}
 }
 
