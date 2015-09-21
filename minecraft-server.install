@@ -18,7 +18,7 @@ _update() {
 
 	echo -e "\e[34;1m==>\e[39;1m NOTE: The world data is stored under ${SERVER_ROOT} and the server runs \e[0m"
     echo -e "\e[34;1m==>\e[39;1m as ${USER} user to increase security. \e[0m"
-    echo -e "\e[34;1m==>\e[39;1m NOTE: Use the minecraft script under /usr/bin/minecraft to start, stop or backup the server \e[0m"
+    echo -e "\e[34;1m==>\e[39;1m NOTE: Use the minecraft script under /usr/bin/minecraftd to start, stop or backup the server \e[0m"
 	echo -e "\e[34;1m==>\e[39;1m and the configuration file under /etc/conf.d/minecraft to adjust it to your liking. \e[0m"
     echo -e "\e[34;1m==>\e[39;1m NOTE: For the server to start you have to accept the EULA in ${SERVER_ROOT}/eula.txt \e[0m"
     echo -e "\e[34;1m==>\e[39;1m which is generated after the first server start. \e[0m"
