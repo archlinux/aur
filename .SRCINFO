@@ -1,0 +1,18 @@
+pkgbase = python-pdns
+	pkgdesc = Command line client to synchronize PowerDNS hosted zones with local zone files
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pdns#downloads
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python2
+	source = https://pypi.python.org/packages/source/p/pdns/pdns-0.1.4.tar.gz
+	sha512sums = 86f11cae4e6264109d0a1ce0fd11f26f557475563ee677648f15098f1430845f495b38a0a0383aa15b6f1ad1920b366ddac05a9879ef3e6c1a14cc74ef4289e0
+
+pkgname = python-pdns
+	depends = python
+
+pkgname = python2-pdns
+	depends = python2
+
