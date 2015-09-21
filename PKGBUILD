@@ -8,7 +8,7 @@ url="https://gitlab.com/Nycroth/tag"
 license=('custom:unlicense')
 depends=('coreutils' 'sed' 'bash')
 source=("https://gitlab.com/Nycroth/tag/repository/archive.tar.gz?ref=v0.1")
-md5sums=('efbf5a42221b7445431002ce402c868b')
+md5sums=('ded9086df4e24ec08c13f65726d818d8')
 
 package() {
     cd "${srcdir}/${pkgname}.git"
