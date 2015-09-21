@@ -1,25 +1,28 @@
 pkgbase = birdfont
 	pkgdesc = A free font editor that lets you create vector graphics and export TTF, EOT & SVG fonts
-	pkgver = 2.10.5
+	pkgver = 2.11.7
 	pkgrel = 1
-	url = http://birdfont.org/
+	url = https://birdfont.org/
 	install = birdfont.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = vala
 	makedepends = gettext
-	makedepends = python2
+	makedepends = python
 	depends = libgee
 	depends = webkitgtk
 	depends = libnotify
 	depends = libxmlbird
-	source = http://birdfont.org/releases/birdfont-2.10.5.tar.xz
-	source = http://birdfont.org/releases/birdfont-2.10.5.tar.xz.sig
+	depends = ttf-roboto
+	source = https://birdfont.org/releases/birdfont-2.11.7.tar.xz
+	source = https://birdfont.org/releases/birdfont-2.11.7.tar.xz.sig
 	source = http://www.unicode.org/Public/UNIDATA/NamesList.txt
-	sha512sums = f72f0a0c6bfcdd14c67b8980770d4c24a89ebcd56a30fd62cecebe8e06e50e19f04326cba03a030897f45645e1a9bc8ff006ce89efb557630c535e08582c79bf
+	source = fix_install.patch
+	sha512sums = d476497ef6fa8f336820f3c35deb53eed4cdd3db58522c707d689195dcd81962db45527f45ab034b2263b220e160ab5924e22bcf8d936da42c5695b28d4c3053
 	sha512sums = SKIP
 	sha512sums = 7f9fb0349f64e8c84d1d2fa3416d561b30744d6f1fcb7d01efe1bc93dca2fe7f58148918270bfeb92551a1e08c7fefba3208af259bf35d8653a1c7772b8da259
+	sha512sums = b8d286db7d56e89045b57f93e712487c9422560c744792326799f3c58fcca2b33bb1cf4c2fe95c693ba1a28b8cfb49f12eea5b59e63cb594e4e8a4f7b5a0e13c
 
 pkgname = birdfont
 
