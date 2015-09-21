@@ -2,7 +2,7 @@
 # Contributor: erdnaxeli  <erdnaxeli@gmail.com>
 pkgname=fortune-mod-multidesk
 pkgver=20140622
-pkgrel=1
+pkgrel=2
 pkgdesc='Fortune cookies: Jayce about his OS, MultiDeskOS.'
 url='http://lordoric.free.fr'
 arch=('any')
