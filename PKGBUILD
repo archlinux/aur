@@ -5,22 +5,25 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=libspf2-git
-pkgver=1
+pkgver=1.2.10.r189.79ed3e3
 pkgrel=1
 pkgdesc="Implementation of the Sender Policy Framework for SMTP authorization"
-arch=('i685' 'x86_64')
+arch=('i686' 'x86_64')
 url="http://www.libspf2.org/"
-license=('GPL')
-makedepends=('gcc' 'git')
+license=('LGPL' 'BSD')
+makedepends=('git')
 provides=('libspf2')
+source=('git+https://github.com/shevek/libspf2.git')
+md5sums=('SKIP')
 
-prepare() {
-    git clone https://github.com/shevek/libspf2.git
+pkgver() {
+  cd libspf2
+  printf "%s.r%s.%s" "$(./configure -V | head -1 | cut -d\  -f3)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd libspf2
-	./configure --prefix=/usr
+	./configure --prefix=/usr --program-transform-name="s/^spf[dq].*/&.libspf2/"
 	make
 }
 
@@ -28,4 +31,6 @@ build() {
 package() {
 	cd libspf2
 	make DESTDIR="$pkgdir/" install
+
+    rm -v "$pkgdir"/usr/bin/*static*
 }
