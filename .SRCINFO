@@ -1,14 +1,14 @@
 pkgbase = nodejs-git-stats
 	pkgdesc = A GitHub-like contributions calendar, but locally, with all your git commits.
-	pkgver = 1.6.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/IonicaBizau/git-stats
 	arch = any
-	license = MIT
+	license = KINDLY
 	depends = nodejs
-	noextract = git-stats-1.6.0.tgz
-	source = http://registry.npmjs.org/git-stats/-/git-stats-1.6.0.tgz
-	sha256sums = 488f82f7857ef863dcf8a92ae942a1debffc57825e064ce8a81ecef7cdf785fd
+	noextract = git-stats-2.0.0.tgz
+	source = http://registry.npmjs.org/git-stats/-/git-stats-2.0.0.tgz
+	sha256sums = 87ad5d63ebc45eb96f7a9cd234ecf6737ff01f1504dee81441a74493886373ef
 
 pkgname = nodejs-git-stats
 
