@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lm-sensors.org/wiki/I2CTools"
 license=('GPL')
 depends=('python' 'i2c-tools-svn')
-makedepends=('python' 'subversion')
+makedepends=('python' 'git')
 provides=('python-smbus')
 conflicts=('python-smbus')
 options=('!strip')
@@ -20,18 +20,18 @@ source=('python-smbus::git+https://github.com/groeck/i2c-tools.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/py-smbus"
+  cd "${srcdir}/${_pkgname}/py-smbus"
   python setup.py clean --all
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/py-smbus"
+  cd "${srcdir}/${_pkgname}/py-smbus"
   python setup.py install --prefix "${pkgdir}/usr"
 }
 
