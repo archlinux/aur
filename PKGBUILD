@@ -4,14 +4,14 @@
 #
 pkgname=lib32-libtinfo
 pkgver=6
-pkgrel=4
+pkgrel=5
 pkgdesc="lib32 symlink to ncurses for use in packages"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
 license=('unknown')
 conflicts=('lib32-libtinfo-5')
 depends=('lib32-ncurses>=6.0')
-_ncurses="$(pacman -Q ${depends[0]/>*/} | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
+_ncurses="$(pacman -Q lib32-ncurses | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
 
 package() {
   install -d "$pkgdir"/usr/lib32
