@@ -33,7 +33,7 @@ build() {
 	git apply ../../0002-Consider-only-python2-and-python2.7.patch || /bin/true
 	git apply ../../0003-Fix-python-shebangs.patch || /bin/true
 	autoreconf -i
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/lib/zorp --with-pidfiledir=/run/zorp
 	make
 }
 
