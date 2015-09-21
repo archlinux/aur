@@ -3,7 +3,7 @@
 
 pkgname=kmidimon
 pkgver=0.7.5
-pkgrel=7
+pkgrel=8
 pkgdesc="A MIDI monitor for Linux using ALSA sequencer"
 arch=('i686' 'x86_64')
 url="http://kmidimon.sourceforge.net/"
@@ -29,8 +29,12 @@ build() {
   #sed -i 's/OPTION(ENABLE_PCH       "Enable precompiled headers" OFF)/OPTION(ENABLE_PCH       "Enable precompiled headers" ON)/' CMakeLists.txt
   sed -i 's/OPTION(STATIC_DRUMSTICK "Build drumstick static library" OFF)/OPTION(STATIC_DRUMSTICK "Build drumstick static library" ON)/' CMakeLists.txt
   
-  sed -i 's/ADD_CUSTOM_TARGET(uninstall/#ADD_CUSTOM_TARGET(uninstall/' CMakeLists.txt
-  sed -i 's|"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")|#"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")|' CMakeLists.txt
+  # delete target that makes error in build (bug in Cmake) :
+  #sed -i 's/ADD_CUSTOM_TARGET(uninstall/#ADD_CUSTOM_TARGET(uninstall/' CMakeLists.txt
+  #sed -i 's|"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")|#"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")|' CMakeLists.txt
+
+  # avoid bug in Cmake :
+  sed -i '22i\cmake_policy(SET CMP0002 OLD)' CMakeLists.txt
   
   mkdir build
   cd build
