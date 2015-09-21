@@ -34,6 +34,7 @@ prepare()
 package() 
 {
   cd pygame-${pkgver}release
+  2to3 setup.py
   python config.py -auto
   python setup.py install --root="${pkgdir}" --prefix=/usr
 }
