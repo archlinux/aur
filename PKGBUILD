@@ -7,32 +7,33 @@
 # pacman -S php-composer
 # composer global require phplint/phplint
 pkgname=phplint11
+_pkgname=phplint
 pkgdesc="PHP 4 and 5 validator and documentator."
 pkgver=1.1_20130803
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://www.icosaedro.it/phplint/'
 license=('MIT')
 depends=('gc')
-source=("${url}/${pkgname}-pure-c-${pkgver}.tar.gz")
+source=("${url}${_pkgname}-pure-c-${pkgver}.tar.gz")
 md5sums=('6c7b80444adaa31a5005b1b816d0cfda')
 
 build() {
   ### Compile
-  cd "${srcdir}/${pkgbase}-pure-c-${pkgver}"
+  cd "${srcdir}/${_pkgname}-pure-c-${pkgver}"
   ./configure
   ./compile || return 1
 }
 
 package() {
-  cd "${srcdir}/${pkgbase}-pure-c-${pkgver}"
+  cd "${srcdir}/${_pkgname}-pure-c-${pkgver}"
 
   ### Create the paths and copy files
   mkdir -p ${pkgdir}/usr/share/phplint/
   mkdir -p ${pkgdir}/usr/share/licences/phplint/
   mkdir -p ${pkgdir}/usr/bin/
-  cp ${srcdir}/${pkgbase}-pure-c-${pkgver}/src/phplint ${pkgdir}/usr/bin/
-  cp -R ${srcdir}/${pkgbase}-pure-c-${pkgver}/modules ${pkgdir}/usr/share/phplint/
+  cp ${srcdir}/${_pkgname}-pure-c-${pkgver}/src/phplint ${pkgdir}/usr/bin/
+  cp -R ${srcdir}/${_pkgname}-pure-c-${pkgver}/modules ${pkgdir}/usr/share/phplint/
 
   ### Change the rights for module files
   chmod a+r ${pkgdir}/usr/share/phplint/modules/*
