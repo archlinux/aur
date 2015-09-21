@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,7 +38,7 @@
+ 	RUNTIME DESTINATION bin
+ )
+ INSTALL(TARGETS ubusd
+-	RUNTIME DESTINATION sbin
++	RUNTIME DESTINATION bin
+ )
+ 
+ INSTALL(FILES ubusmsg.h ubus_common.h libubus.h DESTINATION include)
