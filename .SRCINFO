@@ -1,7 +1,7 @@
 pkgbase = gnu-cobol
 	pkgdesc = An open-source COBOL compiler
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/open-cobol/
 	install = gnu-cobol.install
 	arch = i686
