@@ -1,6 +1,6 @@
 pkgbase = koditools-git
 	pkgdesc = Set of tools to interface with Kodi/XBMC
-	pkgver = 1.0.r18.g2e79de7
+	pkgver = 1.2.r4.g6b5a228
 	pkgrel = 1
 	url = http://github.com/grimpy/
 	arch = any
