@@ -1,0 +1,20 @@
+APT_DATER_GROUP=apt-dater
+
+post_install() {
+  getent group $APT_DATER_GROUP >/dev/null 2>&1 || groupadd --system apt-dater
+
+  chown :$APT_DATER_GROUP /etc/apt-dater /etc/apt-dater/ssh
+
+  for d in /var/cache/apt-dater/stats /var/cache/apt-dater/tmux /var/lib/apt-dater/history; do
+    chown :$APT_DATER_GROUP "$d"
+    chmod 02770 "$d"
+  done
+
+  echo "  ==> Group '$APT_DATER_GROUP' created."
+  echo "  ==> Add your user to the '$APT_DATER_GROUP' group."
+}
+
+post_remove() {
+  groupdel $APT_DATER_GROUP || true
+  echo "  ==> Group '$APT_DATER_GROUP' removed."
+}

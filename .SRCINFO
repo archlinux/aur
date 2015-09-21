@@ -1,0 +1,28 @@
+pkgbase = apt-dater
+	pkgdesc = Terminal-based remote package update manager
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.ibh.de/apt-dater
+	install = apt-dater.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = vim
+	depends = glib2
+	depends = libxml2
+	depends = lockfile-progs
+	depends = ncurses
+	depends = openssh
+	depends = perl
+	depends = popt
+	depends = tcl
+	depends = tmux
+	depends = util-linux
+	source = https://github.com/DE-IBH/apt-dater/archive/v1.0.2.tar.gz
+	source = apt-dater.install
+	sha256sums = 4d01e734f4dac32ff2eb279e6493a1019f2c2fce0e35cea48df027a593df0355
+	sha256sums = 5369cdbb3fb2cfe3a223c065f017e6a136b3d4ee9d85074ea5150a20120c2458
+
+pkgname = apt-dater
+
