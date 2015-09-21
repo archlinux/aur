@@ -1,0 +1,15 @@
+pkgbase = arch-diff
+	pkgdesc = Perform a full diff between all pacman packages and the file system
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/aneas/arch-diff
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = pacman
+	depends = zlib
+	source = https://github.com/aneas/arch-diff/archive/v0.1.tar.gz
+	md5sums = 5cc1d71a9cd84063ad1d099e4fb4e6a5
+
+pkgname = arch-diff
+
