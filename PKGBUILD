@@ -69,31 +69,22 @@ _kill_kill_line="yes"
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=d7b6196aeac52dd908ca051ba65e97b389f4503a
+_mozcrev=e398317a086a78c0cf0004505eb8f56586e925b2
 _utdicver=20150822
 _zipcoderel=201508
 _uimmozcrev=318.0562676
 
-_gyp=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
-_jsc=11086dd6a7eba04289944367ca82cea71299ed70
-_prtbf=172019c40bf548908ab09bfd276074c929d48415
-_jpusd=10
-
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2111.102.20150822
+pkgver=2.17.2123.102.20150822
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
-makedepends=('python2' 'ruby' 'subversion' 'git' 'ninja' 'clang')
+makedepends=('python2' 'ruby' 'git' 'ninja' 'clang')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
-  jsoncpp::git+https://github.com/open-source-parsers/jsoncpp.git#commit=${_jsc}
-  gyp::git+https://chromium.googlesource.com/external/gyp#commit=${_gyp}
-  protobuf::git+https://github.com/google/protobuf.git#commit=${_prtbf}
-  japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=${_jpusd}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-${_utdicver}.tar.bz2
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
   EDICT_license.html
@@ -102,10 +93,6 @@ source=(
   mod-generate-mozc-ut.sh
 )
 sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
           'b039b6f2a418200355e32c58c080c8f4850947a0'
           'f2cdb222fa119c75bd45931a55b45213acef7da5'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
@@ -147,6 +134,10 @@ prepare() {
   ln -sf `which python2` ./python
   PATH="${srcdir}:${PATH}"
 
+  cd "${srcdir}/mozc/"
+
+  git submodule update --init --recursive
+
   cd "${srcdir}/mozcdic-ut-${_utdicver}"
 
   _mozcver=`mozcver`
@@ -155,11 +146,6 @@ prepare() {
   MOZCVER="$_mozcver" DICVER="$_utdicver" NICODIC="$_NICODIC" \
     ./generate-mozc-ut.sh
   msg "Done."
-
-  for dep in jsoncpp gyp protobuf japanese_usage_dictionary
-  do
-    ln -sf "${srcdir}/${dep}" "${srcdir}/${pkgbase}-${pkgver}/third_party/"
-  done
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
