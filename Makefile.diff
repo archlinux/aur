@@ -1,0 +1,9 @@
+--- a/Makefile	2011-04-10 00:05:23.482941578 -0400
++++ b/Makefile	2011-04-10 00:05:43.549708643 -0400
+@@ -1,5 +1,5 @@
+ CC=gcc
+-CFLAGS=-g -pedantic -Wall -O2 -shared -fpic -I /usr/include/lua5.1 -I /usr/include/mysql -I /usr/include/postgresql/ -I /opt/ibm/db2exc/V9.5/include/ -I /usr/lib/oracle/xe/app/oracle/product/10.2.0/client/rdbms/public/ -I .
++CFLAGS=-g -pedantic -Wall -O2 -shared -fpic -I /usr/include/lua5.1 -I /usr/include/mysql -I /usr/include/postgresql/server -I /opt/ibm/db2exc/V9.5/include/ -I /usr/lib/oracle/xe/app/oracle/product/10.2.0/client/rdbms/public/ -I .
+ AR=ar rcu
+ RANLIB=ranlib
+ RM=rm -rf

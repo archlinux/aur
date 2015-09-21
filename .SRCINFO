@@ -1,0 +1,25 @@
+pkgbase = luadbi
+	pkgdesc = Database interface library for Lua
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://code.google.com/p/luadbi/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = MIT
+	makedepends = lua
+	makedepends = sqlite3
+	makedepends = libmariadbclient
+	makedepends = postgresql
+	makedepends = postgresql-libs
+	depends = lua
+	optdepends = sqlite3: sqlite backend support
+	optdepends = libmariadbclient: MariaDB (or MySQL) backend support
+	optdepends = postgresql-libs: PostgreSQL backend support
+	source = http://luadbi.googlecode.com/files/luadbi.0.5.tar.gz
+	source = Makefile.diff
+	md5sums = ede2b003aadddc151aac87050c3d926e
+	md5sums = 458d1ded068f7923ce6a89660f680d98
+
+pkgname = luadbi
+
