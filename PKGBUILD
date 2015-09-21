@@ -27,6 +27,8 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	#remove the terminfo, because it is provided by ncurses
+	sed -i '/\@tic /d' Makefile
 	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
