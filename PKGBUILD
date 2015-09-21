@@ -6,14 +6,14 @@ pkgver=v0.0.1.3.gf5f52f3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="https://github.com/dubhater/vapoursynth-${_plug}"
+url="https://github.com/gnaggnoyil/${_plug}"
 license=('BSD')
 depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/gnaggnoyil/tc2cfr.git")
-md5sums=('SKIP')
+source=("git+https://github.com/gnaggnoyil/${_plug}.git")
+sha1sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -21,25 +21,23 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
+  rm -fr "${_plug}/"{VapourSynth,VSHelper}.h
 
-  rm -fr VapourSynth.h VSHelper.h avisynth.h
-
-  sed '26a#include <stdlib.h>' -i Backend.cpp
-  sed -e '35a/*' -e '38a*/' -i Backend.cpp
+  # fix missing include
+  sed '26a#include <stdlib.h>' -i "${_plug}/Backend.cpp"
+  # comment unused parameter on linux
+  sed -e '35a/*' -e '38a*/' -i "${_plug}/Backend.cpp"
 
   echo "all:
-	  g++ -shared ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} -fPIC *.cpp -o lib${_plug}.so -I. $(pkg-config --cflags vapoursynth)" > Makefile
+	  g++ -o lib${_plug}.so -std=gnu++11 ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} $(pkg-config --cflags vapoursynth) -fPIC -shared ${_plug}/Backend.cpp ${_plug}/VSFrontend.cpp" > Makefile
 }
 
 build() {
-  cd "${_plug}"
   make
 }
 
 package(){
-  cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
-  install -Dm644 LICENSE.BSD2c "${pkgdir}/usr/share/license/${pkgname}/LICENSE"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/LICENSE.BSD2c" "${pkgdir}/usr/share/license/${pkgname}/LICENSE.BSD2c"
 }
