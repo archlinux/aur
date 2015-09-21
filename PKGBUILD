@@ -52,8 +52,8 @@ pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.1
-_pkgver=4.1.5
-_rtpatchver=rt5
+_pkgver=4.1.7
+_rtpatchver=rt8
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -446,9 +446,9 @@ package_linux-rt-bfq-docs() {
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            '1325cdb35ea1f277d513932af37804f788b96ae63b94cedeb3c9b916ee8963bbd6aca5d0e13279e36a81f1de06005c5f3666ecfc845609932686f261fa4250c5'
+            '3b5af919b94d7f4b2b66702ddb23dc32b15c3029d00d56afce564a317510bfc7ce016394335acc9f29da860fed7cb241edeaa082ec9477a0a4a62a9a238d23b6'
             'SKIP'
-            '60a6870c3cf018bdc38fc6939411540dcc0d99620829581026cc005fa408747f144335621e306338a7bb57b60742b492c444bfd62003c25db6bc0d7952f2e750'
+            '9f51e72221ea28ea0ca1b465a99a3fef7cd6880e4fd0b44b3641d1f3b3d3e88e77fbc6bec470c4298c7976c4c8517779f5a508e8cc7fbd9b3bcbfab6f6a515d2'
             'SKIP'
             '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
             'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
@@ -465,4 +465,5 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
               '64254695FFF0AA4466CC19E67B96E8162A8CF5D1' # Sebastian Andrzej Siewior
               '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73' # Steven Rostedt
+              'E644E2F1D45FA0B2EAA02F33109F098506FF0B14' # Thomas Gleixner
               )
