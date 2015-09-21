@@ -1,13 +1,13 @@
 pkgbase = python-pype32
 	pkgdesc = Yet another Python library to read and write PE/PE+ files.
-	pkgver = 0.1-alpha4
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pype32#downloads
 	arch = any
-	license = BSD
+	license = BSD3
 	makedepends = python
 	makedepends = python2
-	source = https://pypi.python.org/packages/source/p/pype32/pype32-0.1-alpha4.zip
+	source = https://pypi.python.org/packages/source/p/pype32/pype32-0.1-alpha4-1.zip
 	sha512sums = a3ebf1f337d698660f5350aaf062ee3ba89156293d5e526e4e0b8ad35e89dac511d2f0c2b6a40fdb98cfed2061f33a642720128c4a0069cf8953a0fcaa8ad358
 
 pkgname = python-pype32
