@@ -1,0 +1,28 @@
+# Maintainer: Stephen Brennan <smb196@case.edu>
+pkgname=latex-homework-git
+pkgver=0.1
+pkgrel=1
+pkgdesc="LaTeX class for homework assignments."
+arch=(any)
+url="https://github.com/brenns10/homework"
+license=('MIT')
+depends=('texlive-core')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+install="${pkgname}.install"
+source=('git://github.com/brenns10/homework.git')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+        mkdir -p $pkgdir/usr/share/texmf-dist/tex/latex/homework
+
+        install -m644 homework.cls \
+                "$pkgdir/usr/share/texmf-dist/tex/latex/homework/"
+}

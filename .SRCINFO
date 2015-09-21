@@ -1,0 +1,17 @@
+pkgbase = latex-homework-git
+	pkgdesc = LaTeX class for homework assignments.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/brenns10/homework
+	install = latex-homework-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = texlive-core
+	provides = latex-homework
+	conflicts = latex-homework
+	source = git://github.com/brenns10/homework.git
+	md5sums = SKIP
+
+pkgname = latex-homework-git
+
