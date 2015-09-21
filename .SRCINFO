@@ -1,0 +1,22 @@
+pkgbase = libubox-lua-git
+	pkgdesc = A small utility library developed for OpenWrt containing a event loop, linked lists, blobmsg, stream buffer management, [...]
+	pkgver = r351.136a519
+	pkgrel = 1
+	url = http://xyne.archlinux.ca/projects/python3-aur
+	arch = any
+	license = ISC
+	license = BSD-3c
+	depends = json-c
+	depends = lua51
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	makedepends = pkg-config
+	provides = libubox
+	conflicts = libubox
+	conflicts = libubox-git
+	replaces = libubox
+
+pkgname = libubox-lua-git

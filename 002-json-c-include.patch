@@ -1,0 +1,31 @@
+--- a/blobmsg_json.c
++++ b/blobmsg_json.c
+@@ -17,11 +17,7 @@
+ #include "blobmsg.h"
+ #include "blobmsg_json.h"
+ 
+-#ifdef JSONC
+-	#include <json.h>
+-#else
+-	#include <json/json.h>
+-#endif
++#include <json-c/json.h>
+ 
+ bool blobmsg_add_object(struct blob_buf *b, json_object *obj)
+ {
+--- a/jshn.c
++++ b/jshn.c
+@@ -13,11 +13,8 @@
+  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+-#ifdef JSONC
+-        #include <json.h>
+-#else
+-        #include <json/json.h>
+-#endif
++
++#include <json-c/json.h>
+ 
+ #include <string.h>
+ #include <stdlib.h>
