@@ -1,0 +1,13 @@
+pkgbase = django-bash-completion
+	pkgdesc = This bash script adds tab-completion feature to django-admin.py and manage.py
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = https://www.djangoproject.com/
+	arch = any
+	license = BSD
+	depends = bash
+	source = https://raw.githubusercontent.com/django/django/1.8.4/extras/django_bash_completion
+	sha512sums = 9fd97abcd53578850c5fe1c8d8b84b7d147981fa98d75d03117979ced8a34ad66ebf14bc0ee01f9a72f329119e1889cd01d7c103d68fe8c2f9e789c721d88c4a
+
+pkgname = django-bash-completion
+
