@@ -1,0 +1,15 @@
+pkgbase = shiki-colors-revival-git
+	pkgdesc = This consists mostly of a script that modifies the original Numix themes files to fit to all of the colors in the GNOME Colors palette.
+	pkgver = v2.0.1.r3.gd42d496
+	pkgrel = 1
+	url = https://github.com/Somasis/shiki-colors-revival
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = make
+	depends = gtk-engine-murrine
+	source = shiki-colors-revival-git::git+https://github.com/Somasis/shiki-colors-revival#branch=master
+	sha256sums = SKIP
+
+pkgname = shiki-colors-revival-git
+
