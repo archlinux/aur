@@ -3,29 +3,28 @@
 # Contributor: Lucas Saliés Brum <sistematico@gmail.com>
 
 pkgname=gtkman
-pkgver=0.7.2
-pkgrel=4
+pkgver=0.9
+pkgrel=1
 pkgdesc='Simple GTK+2 manual page viewer'
 arch=('i686' 'x86_64')
 url='https://github.com/gapan/gtkman'
 license=('GPL')
 depends=('python2' 'gtk2')
 makedepends=('txt2tags' 'intltool')
-source=("http://people.salixos.org/gapan/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('0c383bae00eff086b1fc5b3cac2e144fbb09d1f724e1ee155602d953cfa2a113')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gapan/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('0b272c0210f5fefdcc1a9dada81aa249edbb5a64122f05f070f9160915fa2a2c')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' src/${pkgname}
-	sed -i 's|/usr/man/|/usr/share/man/|g' install.sh
+	sed -i '1s|python|python2|' src/${pkgname}
 
-	./compile.sh
+	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	DESTDIR="${pkgdir}" ./install.sh
+	make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
 
