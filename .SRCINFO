@@ -4,8 +4,11 @@ pkgbase = libzorpll-git
 	pkgrel = 1
 	url = https://github.com/balabit/libzorpll
 	arch = x86_64
-	license = LGPL-2.0
+	license = LGPL
 	makedepends = git
+	depends = glib2
+	depends = libcap
+	depends = openssl
 	source = libzorpll::git+https://github.com/balabit/libzorpll.git#branch=6.0.6.0
 	md5sums = SKIP
 
