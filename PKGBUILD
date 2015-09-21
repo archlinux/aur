@@ -1,13 +1,13 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-proxy-player
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="AceProxy Player allows you to open Ace Stream links with VLC Media Player"
 arch=('any')
 url="https://github.com/jonian/acestream-proxy-player"
 license=('GPL')
 groups=()
-depends=('acestream-proxy' 'vlc')
+depends=('python2-psutil' 'python2-urllib3' 'acestream-proxy' 'vlc')
 makedepends=()
 optdepends=()
 provides=('acestream-proxy-player')
