@@ -10,7 +10,7 @@ pkgbase = golo
 	depends = bash
 	noextract = golo-3.0.0.incubation.M2-distribution.tar.gz
 	options = !strip
-	source = https://www.eclipse.org/downloads/download.php?file=/golo/golo-3.0.0-incubation-M2.zip
+	source = http://ftp.snt.utwente.nl/pub/software/eclipse//golo/golo-3.0.0-incubation-M2.zip
 	md5sums = bcba7ff10a93a4f59bea500ae0a430aa
 
 pkgname = golo
