@@ -1,8 +1,8 @@
 # Maintainer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=codequery
-pkgver=0.15a
-pkgrel=3
+pkgver=0.16.0
+pkgrel=1
 pkgdesc='A code-understanding, code-browsing or code-search tool.'
 arch=(i686  x86_64)
 url=http://ruben2020.github.io/codequery/
@@ -15,7 +15,7 @@ optdepends=('cscope: creation of CodeQuery databases'
             'ruby-starscope: creation of CodeQuery databases for Ruby and Go source code')
 install=codequery.install
 source=(https://github.com/ruben2020/codequery/archive/v${pkgver}.tar.gz codequery.desktop)
-md5sums=(fdd51115a20fb6c3cf622abd631a7d62 ad7e15affffa643a29a6afdd47200006)
+md5sums=(ac50eadbe95b1f72f0a970a46dc3b121 ad7e15affffa643a29a6afdd47200006)
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
