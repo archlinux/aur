@@ -4,7 +4,7 @@
 
 pkgname=gscreenshot
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A GUI front-end for scrot"
 arch=('any')
@@ -14,6 +14,7 @@ groups=()
 depends=("python3"
         "python-pillow"
         "scrot"
+        "pygtk"
         "gtk3"
         "python-setuptools"
         "python-gobject")

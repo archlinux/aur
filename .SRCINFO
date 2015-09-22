@@ -1,7 +1,7 @@
 pkgbase = gscreenshot
 	pkgdesc = A GUI front-end for scrot
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = gscreenshot
 	depends = python3
 	depends = python-pillow
 	depends = scrot
+	depends = pygtk
 	depends = gtk3
 	depends = python-setuptools
 	depends = python-gobject
