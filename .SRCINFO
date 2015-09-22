@@ -1,0 +1,11 @@
+pkgbase = sgrep
+	pkgver = 1.94a
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	depends = glibc
+	source = ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/sgrep-1.94a.tar.gz
+	md5sums = 8cdd044602061b0ecd3e610fde655a3f
+
+pkgname = sgrep
+
