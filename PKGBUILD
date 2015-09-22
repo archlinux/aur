@@ -1,5 +1,5 @@
 # Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
-# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: fstirlitz <felix.von.s@posteo.de>
 
 pkgname=libxmlbird
 pkgver=1.0.6
