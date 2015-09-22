@@ -1,0 +1,18 @@
+pkgbase = overplay-vpn
+	pkgdesc = Certificate and connection files for connecting to Overplay VPN servers using OpenVPN
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://www.overplay.net/setup.php
+	arch = any
+	license = custom
+	makedepends = coreutils
+	depends = openvpn
+	source = https://patch.oppatch.com/OverplayCert.crt
+	source = https://patch.oppatch.com/connections.zip
+	source = LICENSE
+	md5sums = edcf0a2cd555712d68384a3e3b9958e8
+	md5sums = 4968f6b9b737c59ce70b38f6ef7cec33
+	md5sums = 8e6266c7807425a36a4d417a88a3cd53
+
+pkgname = overplay-vpn
+
