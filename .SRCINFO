@@ -5,13 +5,12 @@ pkgbase = bcprov151
 	url = http://www.bouncycastle.org/java.html
 	arch = any
 	license = MIT
+	makedepends = java-environment
+	depends = java-runtime
 	provides = bcprov
 	conflicts = bcprov
-	noextract = bcprov*.jar
-	source = http://www.bouncycastle.org/download/bcprov-jdk15on-152.jar
-	source = LICENSE.html
-	md5sums = 873ac611cb0d7160c0a3d30eee964454
-	md5sums = 38ea7412daeed75d7d755033d0fad407
+	source = http://bouncycastle.org/download/bcprov-jdk15on-152.tar.gz
+	md5sums = 97abab944f1095c15bc4584726ec98c1
 
 pkgname = bcprov151
 
