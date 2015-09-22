@@ -1,6 +1,6 @@
 pkgbase = acts
 	pkgdesc = Another Calendar-based Tarsnap Script
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/alexjurkiewicz/acts
 	install = acts.install
@@ -10,9 +10,8 @@ pkgbase = acts
 	depends = coreutils
 	depends = util-linux
 	conflicts = acts-git
-	backup = etc/acts.conf
-	source = https://github.com/alexjurkiewicz/acts/archive/1.1.tar.gz
-	md5sums = 4d2cb10d2cb2403a13b56a82365f08c8
+	source = https://github.com/alexjurkiewicz/acts/archive/1.2.tar.gz
+	md5sums = 708aedfc7d37212a4bf825192e6494c7
 
 pkgname = acts
 

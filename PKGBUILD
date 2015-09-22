@@ -1,6 +1,6 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=acts
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Another Calendar-based Tarsnap Script"
 arch=("any")
@@ -10,10 +10,9 @@ conflicts=("acts-git")
 depends=("tarsnap"
 	 "coreutils"
 	 "util-linux")
-backup=("etc/acts.conf")
 install=$pkgname.install
 source=(https://github.com/alexjurkiewicz/acts/archive/$pkgver.tar.gz)
-md5sums=('4d2cb10d2cb2403a13b56a82365f08c8')
+md5sums=('708aedfc7d37212a4bf825192e6494c7')
 
 package() {
 	cd "$pkgname-$pkgver"
@@ -22,7 +21,10 @@ package() {
 	install -m755 acts "$pkgdir/usr/bin"
 
 	mkdir -p "$pkgdir/etc"
-	install -m644 acts.conf "$pkgdir/etc"
+	install -m644 acts.conf.sample "$pkgdir/etc"
+
+	mkdir -p "$pkgdir/usr/lib/systemd/system"
+	install -m644 contrib/systemd/* "$pkgdir/usr/lib/systemd/system"
 }
 
 # vim: set ts=8 sw=8 tw=0 noet :
