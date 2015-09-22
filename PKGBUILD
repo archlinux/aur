@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=4.1.7+521043+g7c18d3a
+pkgver=4.1.8+521148+g3b7a20d
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
@@ -24,6 +24,9 @@ _CORES=1
 
 # compress the modules or not
 _compress="y"
+
+# don't compress the package - we're just going to uncompress during install in a moment
+PKGEXT='.pkg.tar'
 
 prepare() {
 	cd "${srcdir}/zen-kernel"
