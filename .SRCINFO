@@ -1,0 +1,16 @@
+pkgbase = ctris
+	pkgdesc = A colorized, small and flexible Tetris(TM)-clone for the console.
+	pkgver = 0.42.1
+	pkgrel = 1
+	url = http://www.hackl.dhs.org/ctetris/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = https://github.com/dominikhackl/ctris/archive/v0.42.1.tar.gz
+	md5sums = b739f716c2cbfed0bb28719b269f1cc7
+	sha1sums = 6f7640da5543a8558aad87f3da57b3bfa5896fd5
+	sha256sums = c5fe3e70b76129ea83cac85a3c5dbc084066a62d7ef4edcc73c545ee89222ed8
+
+pkgname = ctris
+
