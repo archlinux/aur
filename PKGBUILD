@@ -1,8 +1,8 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 _pkgname=desktoggle
 pkgname=${_pkgname}-git
-pkgver=1.4_7_gabb04ff
-pkgrel=3
+pkgver=v1.5.1.r2.gf1e3060
+pkgrel=1
 pkgdesc='Hide all windows and show the desktop.'
 arch=('i686' 'x86_64')
 url="https://github.com/rscholer/${_pkgname}"
@@ -21,7 +21,7 @@ build() {
 
 pkgver() {
   cd "${_pkgname}"
-  echo "$(git describe --always |sed 's#-#_#g;s#v##')"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
