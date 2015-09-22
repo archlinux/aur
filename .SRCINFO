@@ -1,9 +1,10 @@
 pkgbase = fzf
 	pkgdesc = Command-line fuzzy finder
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/junegunn/fzf
 	install = fzf.install
+	arch = armv6h
 	arch = i686
 	arch = x86_64
 	license = MIT
