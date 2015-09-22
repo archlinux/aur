@@ -1,0 +1,26 @@
+pkgbase = gnome-battery-bench-git
+	pkgdesc = Tool to measure power usage and estimates consumption and battery lifetime
+	pkgver = 3.15.4.r7.gfa60529
+	pkgrel = 1
+	url = http://blog.fishsoup.net/2015/01/15/gnome-battery-bench/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL2
+	makedepends = git
+	makedepends = xmlto
+	makedepends = asciidoc
+	makedepends = autoconf
+	makedepends = automake
+	depends = gtk3
+	depends = json-glib
+	depends = libevdev
+	depends = libxi
+	depends = libxtst
+	provides = gnome-battery-bench
+	conflicts = gnome-battery-bench
+	source = git+https://git.gnome.org/browse/gnome-battery-bench
+	md5sums = SKIP
+
+pkgname = gnome-battery-bench-git
+
