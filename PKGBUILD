@@ -1,5 +1,5 @@
 pkgname=hawkey
-_pkgver=0.6.0
+_pkgver=0.6.1
 _rpmrel=1
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -12,10 +12,12 @@ makedepends=('cmake' 'python' 'python-sphinx' 'rpm-org')
 checkdepends=('check' 'python-nose')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('7931399506d3e88f25fb9639e8ef46ca')
+md5sums=('98fc9807bcabcb68aeb0ae76164989d0')
 
 prepare() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"
+	mv  "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
+
+	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
 
@@ -24,7 +26,7 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
+	cd "$pkgname-$pkgver"/build
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DPYTHON_DESIRED=3          \
@@ -36,14 +38,14 @@ build() {
 # As CMake looks for check dependencies, the function check() must be
 # defined or else makepkg will not install them and the build will fail.
 check() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
+	cd "$pkgname-$pkgver"/build
 	# TODO: Find out why tests fail and fill a bug report upstream if
 	#       needed
 	#make ARGS="-V" test
 }
 
 package() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
+	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 	if [[ "$CARCH" == "x86_64" ]]; then
 		mv "$pkgdir/"usr/lib64/* "$pkgdir/"usr/lib
