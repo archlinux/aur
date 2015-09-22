@@ -1,0 +1,15 @@
+pkgbase = crosswordpuzzle
+	pkgdesc = A small crossword puzzle library along with a GTK2 interface for playing and editing.
+	pkgver = 1.0rc1
+	pkgrel = 1
+	url = https://launchpad.net/crosswordpuzzle
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = python2
+	depends = pygtk
+	source = https://launchpad.net/crosswordpuzzle/1.0/1.0rc1/+download/crosswordpuzzle-1.0rc1.tar.gz
+	md5sums = 3699b1c8fadd232536d81c462a0749c7
+
+pkgname = crosswordpuzzle
+
