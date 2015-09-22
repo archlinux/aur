@@ -1,13 +1,13 @@
 pkgbase = aurvote
 	pkgdesc = Tool to vote for favorite AUR packages
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/archlinuxfr/aurvote
 	arch = any
 	license = GPL
 	depends = curl
-	source = aurvote
-	md5sums = 1cba0a7377b8de6aec9f84b3a5491bda
+	source = https://github.com/archlinuxfr/aurvote/archive/1.9.tar.gz
+	sha256sums = bd888c25b376e97bfad1c8f2fd0eefb4db0821ff422356d985009ba287425da7
 
 pkgname = aurvote
 
