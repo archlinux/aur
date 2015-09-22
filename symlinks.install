@@ -1,0 +1,23 @@
+post_install() {
+  echo "Creating symlinks"
+
+  ln -s /usr/share/mythes/th_el_GR_v2.idx /usr/share/myspell/dicts/th_el_GR_v2.idx
+  [ $? -ne 0 ] && return $?
+
+  ln -s /usr/share/mythes/th_el_GR_v2.dat /usr/share/myspell/dicts/th_el_GR_v2.dat
+  [ $? -ne 0 ] && return $?
+
+  return 0
+}
+
+post_remove() {
+  echo "Removing symlinks"
+
+  rm /usr/share/myspell/dicts/th_el_GR_v2.idx
+  [ $? -ne 0 ] && return $?
+  
+  rm /usr/share/myspell/dicts/th_el_GR_v2.dat
+  [ $? -ne 0 ] && return $?
+  
+  return 0
+}
