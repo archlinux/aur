@@ -20,6 +20,7 @@ pkgbase = lollypop-git
 	depends = python-gobject
 	depends = python-cairo
 	depends = totem-plparser
+	optdepends = libsecret: Last.FM support
 	optdepends = python-pylast: Last.FM support
 	optdepends = python-wikipedia: display advanced artist information
 	provides = lollypop=0.9.42.r307.gd314711

@@ -10,7 +10,8 @@ license=('GPL3')
 url="https://github.com/gnumdk/${_gitname}"
 depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-dbus' 'python-gobject' 'python-cairo' 'totem-plparser')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
-optdepends=('python-pylast: Last.FM support'
+optdepends=('libsecret: Last.FM support'
+            'python-pylast: Last.FM support'
             'python-wikipedia: display advanced artist information')
 options=('!emptydirs')
 install=lollypop.install
