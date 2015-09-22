@@ -1,5 +1,6 @@
-# Maintainer: Evan Teitelman <teitelmanevan at gmail dot com>
+# Contributor: Evan Teitelman <teitelmanevan at gmail dot com>
 # Contributor: Ari Mizrahi <codemunchies@gmail.com>
+# Maintainer: CRT <cirkit@koderoot.net>
 
 pkgname=ntopng
 pkgver=2.0
