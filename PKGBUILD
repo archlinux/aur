@@ -2,10 +2,7 @@
 # Contributors:
 
 _fred=#tag=build01470
-#_fred=#branch=next
-
 _wot=#tag=build0018
-#_wot=#branch=next
 
 pkgname=freenet
 pkgver=0.7.5.1470
@@ -17,8 +14,8 @@ license=('GPL2')
 arch=('any')
 install='freenet.install'
 
-depends=('java-runtime>=7' 'bcprov151>=1.52' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=7' 'unzip' 'apache-ant' 'apache-ant-contrib' 'git')
+depends=('java-runtime>=7' 'bcprov151' 'gmp' 'java-service-wrapper')
+makedepends=('java-environment>=7' 'apache-ant' 'apache-ant-contrib' 'git')
 checkdepends=('junit')
 # comment out to run unit tests
 BUILDENV+=('!check')
@@ -76,7 +73,7 @@ sha256sums=('SKIP'
             '9912dcfc8f30143b68e6f9c51505ae921100eb6b24690a8680582bb23559d95a'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             '6ae810e40ac177b4238e95b31329d099f6a7cc95154ec1b1844538580e692f64'
-            'f91a860868f0ad0dee4164110f49cf3529c2c051fd067e3318406bb9105b800d'
+            'f7bceda39b36d1d79e70c8ba8e0e68d4cfe060b16e67d8341078af5fda13b405'
             'c935fd04dd8e0e8c688a3078f3675d699679a90be81c12686837e0880aa0fa1e'
             '265f7ed2dd4fecb058884d3f8974674b06e0be46131c3b2bc6a310373937d2ef'
             'b36482ee9e919c669bb1797ff7e50f57edf505af67664e280fe1dff361861044'
@@ -143,7 +140,7 @@ build() {
     cd dist
     for dep in bitcollider-core commons-compress db4o lzmajio mantissa wrapper
     do
-        unzip -nq "${dep}.jar"
+        jar xf "${dep}.jar"
     done
     jar uf freenet-ext.jar com net org SevenZip
 
