@@ -1,0 +1,17 @@
+pkgbase = mercury
+	pkgdesc = The mercury language compiler.
+	pkgver = 14.01.1
+	pkgrel = 2
+	url = http://www.mercurylang.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = flex
+	makedepends = bison
+	depends = gcc
+	depends = make
+	source = http://dl.mercurylang.org/release/mercury-srcdist-14.01.1.tar.gz
+	sha256sums = 98f7cbde7a7425365400feef3e69f1d6a848b25dc56ba959050523d546c4e88b
+
+pkgname = mercury
+
