@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${_archivename}.git"
 license=('MIT')
 depends=('glibc' 'pcre' 'gettext')
-source=("https://github.com/Snaipe/${_archivename}/archive/v${pkgver}.tar.gz")
+source=("$pkgname"::"git://github.com/Snaipe/${_archivename}.git#branch=v${pkgver}")
+md5sums=('SKIP')
 
 build() {
   cd ${srcdir}/${_archivename}-${pkgver}
@@ -24,4 +25,3 @@ package() {
   make DESTDIR=$pkgdir LIBDIR=$pkgdir/usr/lib install
 }
 
-md5sums=('0d9a3963fb65ab87a8c42d2f5c75a9c6')
