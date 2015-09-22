@@ -1,0 +1,15 @@
+pkgbase = tty-clock-borderless
+	pkgdesc = fork of tty-clock with borderless-option
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/drikin/tty-clock
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = ncurses
+	source = git://github.com/drikin/tty-clock.git
+	md5sums = SKIP
+
+pkgname = tty-clock-borderless
+
