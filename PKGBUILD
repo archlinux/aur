@@ -3,7 +3,7 @@
 pkgname=brother-ql500-cupswrapperinch
 _pkgname=ql500cupswrapperinch
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="LPR-to-CUPS wrapper for Brother P-Touch QL-500 labelprinter (imperial)"
 url="http://solutions.brother.com/linux/en_us/"
 arch=('i686' 'x86_64')
@@ -29,10 +29,10 @@ build() {
 
         mkdir -p usr/share/ || return 1
         rm -rf usr/share/brother 
-        mv opt/brother usr/share/brother || return 1
+        mv usr/local/Brother usr/share/brother || return 1
         rmdir opt || return 1
 
-        sed -i 's|/opt/brother|/usr/share/brother|g' `grep -lr '/opt/brother' ./` || return 1
+        sed -i 's|/usr/local/Brother|/usr/share/brother|g' `grep -lr '/usr/local/Brother' ./` || return 1
 }
 
 package() {
