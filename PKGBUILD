@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 pkgname=python-slugify
-pkgver=1.1.2
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A Python slugify application that handles unicode"
 arch=(any)
@@ -10,8 +10,8 @@ license=('BSD')
 depends=("python" "python-unidecode>=0.04.16")
 makedepends=("python-setuptools")
 source=(http://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('7620eea3d354f1741277ab8e6e642da7')
-sha256sums=('fbdb40424348e118e68d27e2e030c05d353008ab361db394a3d590cdecff26b0')
+md5sums=('8ea8d2cd3433aef40dab408bf0b49a76')
+sha256sums=('e674f0d45eaeb5c47b7d4771319889a39b15ee87aa62c3b2fcc33cf34e94fc98')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
