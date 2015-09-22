@@ -4,7 +4,7 @@
 # Contributor: Jeramy Rutley <jrutley@gmail.com>
 
 pkgname=('ruby-2.1' 'ruby-docs-2.1')
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.ruby-lang.org/en/'
@@ -16,7 +16,7 @@ makedepends=('gdbm' 'openssl' 'libffi' 'doxygen' 'graphviz' 'libyaml' 'ttf-dejav
 options=('!emptydirs' '!makeflags' 'staticlibs')
 source=("http://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz"
         'gemrc')
-sha256sums=('137b27bffefd795fd97c288fff539d135f42320f8a1afddde99a34e1fbe7314e'
+sha256sums=('225c067d9820fe52fcffbfb91d5b5243708a0b666b9929bea466e9379eb40ad7'
             '4bb7eb2fe66e396ed16b589cdb656831407b39ad4e138d88536754c0448ac614')
 
 
