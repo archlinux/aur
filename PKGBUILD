@@ -3,8 +3,8 @@
 # Contributor: Daniel Funke <mr.daniel.funke@gmail.com>
 
 pkgname=libejdb
-pkgver=1.2.8
-pkgrel=2
+pkgver=1.2.10
+pkgrel=1
 pkgdesc="Embedded JSON Database engine"
 arch=('i686' 'x86_64')
 url="http://ejdb.org"
@@ -37,4 +37,4 @@ package() {
 }
 
 # vim:set ts=4 sw=4 et:
-md5sums=('f49656a3a3ba7e44dfd7f9907edb72d2')
+md5sums=('85a825c1c880a51a869fadba11a7e52a')
