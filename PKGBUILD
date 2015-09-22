@@ -24,7 +24,7 @@ pkgver() {
 build() {
 	cd "$srcdir/$_gitname"
 
-	./autogen.sh --prefix=/usr --sysconfdir=/etc
+	./autogen.sh --prefix=/usr --sysconfdir=/etc --libexec="/usr/lib/$_gitname"
 	make -s
 }
 
