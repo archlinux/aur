@@ -1,0 +1,18 @@
+pkgbase = valadoc-git
+	pkgdesc = Valadoc is a documentation generator for generating API documentation from Vala source code based on libvala.
+	pkgver = r594.b02b806
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Valadoc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = vala
+	depends = graphviz
+	depends = libgee
+	provides = valadoc
+	conflicts = valadoc
+	source = valadoc-git::git://git.gnome.org/valadoc
+	md5sums = SKIP
+
+pkgname = valadoc-git
+
