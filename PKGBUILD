@@ -9,7 +9,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppet3
-pkgver=3.8.2
+pkgver=3.8.3
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -23,8 +23,8 @@ conflicts=('puppet')
 backup=('etc/puppet/auth.conf' 'etc/puppet/fileserver.conf'
         'etc/puppet/puppet.conf' 'etc/puppet/tagmail.conf')
 install=puppet.install
-source=(puppet-$pkgver.tar.gz::http://github.com/puppetlabs/puppet/archive/$pkgver.tar.gz)
-md5sums=('97d6f43f9840d1e7d57677ade79060dd')
+source=(http://downloads.puppetlabs.com/puppet/puppet-$pkgver.tar.gz)
+md5sums=('85f016cbaf8381c38bf44a004ac9347e')
 
 prepare() {
   cd puppet-$pkgver
@@ -32,7 +32,6 @@ prepare() {
   # Ruby 2.2 fixes
   sed -i 's/: "syck"$/: (defined?(Psych) \&\& YAML == Psych ? "psych" : "syck")/' \
     lib/puppet/vendor/safe_yaml/lib/safe_yaml.rb
-  sed -i 485,488d lib/puppet/defaults.rb
 }
 
 package() {
