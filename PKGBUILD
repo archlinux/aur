@@ -2,7 +2,7 @@
 
 pkgname=stftp
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple terminal FTP client, using ncurses. It aims to be more user friendly than other interactive terminal clients by presenting a fullscreen representation of the remote directory."
 arch=('i686' 'x86_64')
 url="http://stftp.sourceforge.net/"
@@ -12,11 +12,11 @@ source=(http://downloads.sourceforge.net/project/stftp/stftp/stftp-1.1.0/$pkgnam
 md5sums=('3a4202e7eb71f204e9982c93fca3030a')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make || return 1
+    cd "$srcdir/$pkgname-$pkgver"
+    make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm 755 stftp "$pkgdir/usr/bin/stftp"
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm 755 stftp "$pkgdir/usr/bin/stftp"
 }
