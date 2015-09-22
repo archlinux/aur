@@ -1,0 +1,29 @@
+pkgbase = libiphone-git
+	pkgdesc = libiphone is a software library that talks the native Apple USB protocols that the iPhone uses. (no cython support for now)
+	pkgver = 20150922
+	pkgrel = 1
+	url = http://libimobiledevice.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = make
+	makedepends = pkgconfig
+	depends = gnutls
+	depends = libusb
+	depends = fuse
+	depends = glib2
+	depends = libxml2
+	depends = libxml++
+	depends = libplist
+	depends = usbmuxd
+	optdepends = doxygen: Documentation
+	provides = libiphone
+	source = libiphone::git+http://git.sukimashita.com/libimobiledevice.git
+	md5sums = SKIP
+
+pkgname = libiphone-git
+
