@@ -1,7 +1,7 @@
 pkgbase = freedv
 	pkgdesc = Digital Voice for Radio Amateurs
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freedv.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = freedv
 	depends = glibc
 	depends = portaudio
 	depends = hamlib
-	depends = sox
 	depends = wxgtk
 	depends = codec2
 	depends = speex
