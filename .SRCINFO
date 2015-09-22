@@ -1,6 +1,6 @@
 pkgbase = desktoggle-git
 	pkgdesc = Hide all windows and show the desktop.
-	pkgver = v1.5.1.r2.gf1e3060
+	pkgver = 1.5.1.r2.gf1e3060
 	pkgrel = 1
 	url = https://github.com/rscholer/desktoggle
 	arch = i686
