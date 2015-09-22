@@ -1,0 +1,15 @@
+pkgbase = cutecoin-git
+	pkgver = 0.10.2.r0.g25699ba
+	pkgrel = 1
+	arch = any
+	depends = python
+	depends = python-libnacl
+	depends = python-requests
+	depends = python-scrypt
+	depends = python-pylibscrypt
+	depends = python-base58
+	source = cutecoin-git::git://github.com/ucoin-io/cutecoin.git
+	md5sums = SKIP
+
+pkgname = cutecoin-git
+
