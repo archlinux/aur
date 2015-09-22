@@ -3,7 +3,7 @@
 
 pkgname=bcprov151
 pkgver=1.52
-pkgrel=1
+pkgrel=2
 pkgdesc="Java cryptography APIs (Bouncy Castle)"
 arch=('any')
 url="http://www.bouncycastle.org/java.html"
