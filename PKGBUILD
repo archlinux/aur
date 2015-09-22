@@ -32,6 +32,6 @@ build() {
 package() {
 	cd ${srcdir}/${_pkgname}
 	make DESTDIR="$pkgdir" install
-	mkdir -p "$pkgdir/usr/share/licenses/lua-$_pkgname"
+	install -dm 755 "$pkgdir/usr/share/licenses/lua-$_pkgname"
 	cp COPYRIGHT "$pkgdir/usr/share/licenses/lua-$_pkgname"
 }
