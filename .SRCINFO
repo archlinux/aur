@@ -1,6 +1,6 @@
 pkgbase = nginx-mainline
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release
-	pkgver = 1.9.4
+	pkgver = 1.9.5
 	pkgrel = 3
 	url = http://nginx.org
 	install = nginx.install
@@ -22,10 +22,10 @@ pkgbase = nginx-mainline
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = http://nginx.org/download/nginx-1.9.4.tar.gz
+	source = http://nginx.org/download/nginx-1.9.5.tar.gz
 	source = service
 	source = logrotate
-	md5sums = 27322fbb4b265c0e0cc548f5e6b7f201
+	md5sums = 2562320f1535e3e31d165e337ae94f21
 	md5sums = ce9a06bcaf66ec4a3c4eb59b636e0dfd
 	md5sums = 3441ce77cdd1aab6f0ab7e212698a8a7
 
