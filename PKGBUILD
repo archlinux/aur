@@ -1,6 +1,6 @@
 pkgname=xyplayer-git
 _pkgname=xyplayer
-pkgver=143.fe18293
+pkgver=17.dca9eeb
 pkgrel=1
 pkgdesc="A simple but feature-rich online music player using pyqt4"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'python-setuptools')
 provides=('xyplayer')
 conflicts=('xyplayer')
 source=("git://github.com/Zheng-Yejian/xyplayer.git" "setup.py" "xy.desktop" "mutagen.patch")
-md5sums=('SKIP' '74b643383a33d6858f6d6939d3ea2e0c' 'e7608704fd763984e13121970f4d02d4' '96be4e424041833c33f8b27a0b45081a')
+md5sums=('SKIP' '74b643383a33d6858f6d6939d3ea2e0c' 'e7608704fd763984e13121970f4d02d4' '2d9c10646f46c8545c347404ee906d7c')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
