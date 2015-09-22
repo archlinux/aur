@@ -3,12 +3,12 @@
 pkgname=ezame-git
 _realname=ezame
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A Desktop file Editor - that eventually will be able to edit menu structures for interfaces that still use them"
 arch=('i686' 'x86_64')
 url="https://github.com/linux-man/ezame"
 license=('GPL3')
-depends=('python' 'python-xdg' 'python-gobject' 'desktop-file-utils')
+depends=('python' 'python-gobject' 'desktop-file-utils')
 makedepends=('git')
 source=()
 md5sums=()
