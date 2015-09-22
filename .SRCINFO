@@ -12,6 +12,7 @@ pkgbase = zorp-git
 	depends = python2
 	depends = python2-pyopenssl
 	depends = python2-dnspython
+	depends = python2-py-radix
 	source = zorp::git+https://github.com/balabit/zorp.git#branch=6.0.7
 	source = 0001-Add-placeholder-files-required-by-automake.patch
 	source = 0002-Consider-only-python2-and-python2.7.patch
