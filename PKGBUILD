@@ -3,13 +3,13 @@
 # Contributor: Arthur Vuillard <arthur@hashbang.fr>
 
 pkgname='python-pew'
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="Python Env Wrapper, a set of tools to manage multiple virtual environments"
 url="https://github.com/berdario/pew"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-virtualenv' 'python-virtualenv-clone')
+depends=('python' 'python-virtualenv' 'python-virtualenv-clone' 'python-pythonz-bd')
 makedepends=('python' 'python-setuptools')
 replaces=('pew')
 conflicts=('pew')
@@ -39,6 +39,6 @@ package() {
   #rm -r "${pkgdir}${py_dir}/pew/complete_scripts"
 }
 
-md5sums=('d49cc1e3ad45457055a13ac14b83a9be')
+md5sums=('be1466a0c0338fe0621dc4b77fe752cc')
 
 # vim:set ts=2 sw=2 et:
