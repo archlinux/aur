@@ -1,0 +1,26 @@
+pkgbase = musique
+	pkgdesc = Just another music player, only better
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://flavio.tordini.org/musique
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = phonon
+	depends = taglib
+	optdepends = gstreamer0.10-plugins: for gstreamer backend
+	optdepends = phonon-gstreamer: gstreamer backend
+	optdepends = phonon-mplayer-git: mplayer backend
+	optdepends = phonon-vlc: vlc backend
+	optdepends = phonon-xine: xine backend
+	replaces = musique-git
+	replaces = minitunes
+	replaces = minitunes-git
+	source = http://flavio.tordini.org/files/musique/musique.tar.gz
+	md5sums = c8d7146913a91af4c5190084ac9f8182
+
+pkgname = musique
+
