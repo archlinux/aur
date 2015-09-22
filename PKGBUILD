@@ -25,6 +25,9 @@ _CORES=1
 # compress the modules or not
 _compress="y"
 
+# don't compress the package - we're just going to uncompress during install in a moment
+PKGEXT='.pkg.tar'
+
 prepare() {
 	cd "${srcdir}/linux-zen-grsec"
 	
