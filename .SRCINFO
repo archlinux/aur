@@ -1,6 +1,6 @@
 pkgbase = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
-	pkgver = 4.2
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = linux-ice
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.1.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.1.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -25,6 +27,8 @@ pkgbase = linux-ice
 	source = 0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch
 	source = 0001-fix-bridge-regression.patch
 	sha256sums = cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb
+	sha256sums = SKIP
+	sha256sums = 9d0ab6525eb5f42056e2465267c62fa67efc75c57ad5345b99414b783278e9a3
 	sha256sums = SKIP
 	sha256sums = a0c3f8fc64651eb3e28a48c7e74287716bc0a215db5fa7deda1b5c1e3cadf878
 	sha256sums = 956bba07f86e8f6e29deb1d0768f71b1bbcaebc39358083fecef2ad6448f46e6
@@ -45,23 +49,23 @@ pkgname = linux-ice
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-ice=4.2
-	provides = linux=4.2
+	provides = kernel26-ice=4.2.1
+	provides = linux=4.2.1
 	conflicts = kernel26-ice
 	replaces = kernel26-ice
 	backup = etc/mkinitcpio.d/linux-ice.preset
 
 pkgname = linux-ice-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ice kernel
-	provides = kernel26-ice-headers=4.2
-	provides = linux-headers=4.2
+	provides = kernel26-ice-headers=4.2.1
+	provides = linux-headers=4.2.1
 	conflicts = kernel26-ice-headers
 	replaces = kernel26-ice-headers
 
 pkgname = linux-ice-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ice kernel
-	provides = kernel26-ice-docs=4.2
-	provides = linux-docs=4.2
+	provides = kernel26-ice-docs=4.2.1
+	provides = linux-docs=4.2.1
 	conflicts = kernel26-ice-docs
 	replaces = kernel26-ice-docs
 
