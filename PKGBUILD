@@ -2,7 +2,7 @@
 # Maintainer: Patrice Peterson <runiq at archlinux dot us>
 
 pkgname=python-numpy-doc
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Documentation for NumPy"
 makedepends=('unzip')
