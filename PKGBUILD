@@ -1,17 +1,17 @@
 # Maintainer: Alexander Keller <git@nycroth.com>
 pkgname=tag
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Console tag based file manager"
 arch=(any)
 url="https://gitlab.com/Nycroth/tag"
 license=('custom:unlicense')
 depends=('coreutils' 'sed' 'bash')
-source=("https://gitlab.com/Nycroth/tag/repository/archive.tar.gz?ref=v0.1")
-md5sums=('ded9086df4e24ec08c13f65726d818d8')
+source=("https://gitlab.com/Nycroth/tag/repository/archive.tar.gz?ref=v0.2")
+md5sums=('e5128cae78d004f7d73c059bfa101a24')
 
 package() {
-    cd "${srcdir}/tag-v0.1-1d9e4c5134bdd5df3cab4a0141771c03c6d69cb9/"
+    cd "${srcdir}/tag-v0.2-88bd2961339eab4f223ec1271fe7d879b65b60da/"
 
     make DESTDIR="${pkgdir}" install
     install -m 755  -d "${pkgdir}/usr/share/licenses/${pkgname}"
