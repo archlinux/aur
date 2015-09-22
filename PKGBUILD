@@ -14,7 +14,7 @@ license=('GPL2')
 arch=('any')
 install='freenet.install'
 
-depends=('java-runtime>=7' 'bcprov151' 'gmp' 'java-service-wrapper')
+depends=('java-runtime>=7' 'bcprov152' 'gmp' 'java-service-wrapper')
 makedepends=('java-environment>=7' 'apache-ant' 'apache-ant-contrib' 'git')
 checkdepends=('junit')
 # comment out to run unit tests
