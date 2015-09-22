@@ -1,7 +1,7 @@
 pkgbase = ttf-amiri
 	pkgdesc = A classical Arabic typeface in Naskh style poineered by Amiria Press
 	pkgver = 0.108
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.amirifont.org/
 	install = ttf-amiri.install
 	arch = any

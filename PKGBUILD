@@ -1,7 +1,7 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-amiri
 pkgver=0.108
-pkgrel=1
+pkgrel=2
 pkgdesc="A classical Arabic typeface in Naskh style poineered by Amiria Press"
 arch=('any')
 url="http://www.amirifont.org/"
@@ -21,5 +21,5 @@ package() {
   # docs
   install -d $pkgdir/usr/share/doc/$pkgname
   cd "$srcdir/amiri-$pkgver"
-  install -m644 *.pdf NEWS{,-Arabic} README{,-Arabic} "$pkgdir/usr/share/doc/$pkgname/"
+  install -m644 *.pdf {NEWS,README}{,-Arabic} "$pkgdir/usr/share/doc/$pkgname/"
 }
