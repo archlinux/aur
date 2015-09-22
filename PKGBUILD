@@ -1,18 +1,21 @@
 # $Id$
 # Maintainer: Laszlo Papp <lpapp@kde.org>
 
-_pkgbasename=ncurses5-compat-libs
-pkgname=lib32-${_pkgbasename}
-pkgver=5.9
-pkgrel=1
+_pkgbasename=ncurses
+pkgname=lib32-${_pkgbasename}5-compat-libs
+pkgver=6.0
+_compatpkgver=5.9
+pkgrel=2
 pkgdesc="System V Release 4.0 curses emulation library (32-bit), ABI 5"
 arch=('x86_64')
 url="http://www.gnu.org/software/ncurses/"
 license=('MIT')
 depends=('lib32-glibc' ${_pkgbasename})
 makedepends=("gcc-multilib")
+conflicts=("lib32-ncurses")
+provides=("lib32-ncurses")
 source=(ftp://ftp.gnu.org/pub/gnu/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz)
-md5sums=('8cb9c412e5f2d96bc6f459aa8c6282a1')
+md5sums=('ee13d052e1ead260d7c28071f46eefb1')
 
 build() {
   export CPPFLAGS="-P"
@@ -21,7 +24,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd ${srcdir}/
-  mkdir ncurses{,w}-build
+  mkdir -p ncurses{,w}-build
 
   cd ${srcdir}/ncursesw-build
   ../${_pkgbasename}-${pkgver}/configure --prefix=/usr --mandir=/usr/share/man \
@@ -64,8 +67,8 @@ package() {
   # non-widec compatibility libraries
   cd ${srcdir}/ncurses-build
   for lib in ncurses form panel menu; do
-    install -Dm755 lib/lib${lib}.so.${pkgver} ${pkgdir}/usr/lib32/lib${lib}.so.${pkgver}
-    ln -s lib${lib}.so.${pkgver} ${pkgdir}/usr/lib32/lib${lib}.so.5
+    install -Dm755 lib/lib${lib}.so.${_compatpkgver} ${pkgdir}/usr/lib32/lib${lib}.so.${_compatpkgver}
+    ln -s lib${lib}.so.${_compatpkgver} ${pkgdir}/usr/lib32/lib${lib}.so.5
   done
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
