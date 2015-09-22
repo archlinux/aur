@@ -1,5 +1,6 @@
+# Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
 # Contributor: piggy1983
-# Maintainer: Patrice Peterson <runiq at archlinux dot us>
+# Contributor: Patrice Peterson <runiq at archlinux dot us>
 
 pkgname=python-numpy-doc
 pkgver=1.9.2
