@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-pkgname=(mmixware{,-docs})
+pkgname=(mmixware{,-docs,-src})
 pkgver=20131017
-pkgrel=4
+pkgrel=5
 pkgdesc="MMIX assembler and simulator"
 arch=('i686' 'x86_64')
 url="http://mmix.cs.hm.edu/"
@@ -39,14 +39,21 @@ package_mmixware() {
 }
 
 package_mmixware-docs() {
-  pkgdesc="MMIX documentation and sources"
+  pkgdesc="MMIX documentation"
   arch=('any')
 
   cd "$pkgbase-$pkgver"
 
-  install -d "$pkgdir/usr/src/$pkgname"
-  bsdtar --no-same-owner -C "$pkgdir/usr/src/$pkgname" -xf "../mmix-$pkgver.tgz"
+  install -d "$pkgdir/usr/share/doc/$pkgbase"
+  install -m644 *.pdf "$pkgdir/usr/share/doc/$pkgbase"
+}
 
-  install -d "$pkgdir/usr/share/doc/$pkgname"
-  install -m644 *.pdf "$pkgdir/usr/share/doc/$pkgname"
+package_mmixware-src() {
+  pkgdesc="MMIX sources"
+  arch=('any')
+
+  cd "$pkgbase-$pkgver"
+
+  install -d "$pkgdir/usr/src/$pkgbase"
+  bsdtar --no-same-owner -C "$pkgdir/usr/src/$pkgbase" -xf "../mmix-$pkgver.tgz"
 }
