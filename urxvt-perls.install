@@ -1,0 +1,10 @@
+post_install () {
+  echo "-> To enable extensions place the following in ~/.Xresources"
+  echo "   (change to whatever suits your needs)"
+  echo " URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select"
+  echo " URxvt.url-select.launcher:  chromium"
+  echo " URxvt.url-select.underline: true"
+  echo " URxvt.keysym.M-u:           perl:url-select:select_next"
+  echo " URxvt.keysym.M-Escape:      perl:keyboard-select:activate"
+  echo " URxvt.keysym.M-s:           perl:keyboard-select:search"
+}
