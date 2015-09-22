@@ -1,7 +1,7 @@
 # Maintainer: Snaipe
 
 pkgname=libcsptr
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A smart pointers library for the C programming language"
 arch=('i686' 'x86_64')
@@ -12,8 +12,9 @@ source=("https://github.com/Snaipe/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./autogen.sh
-  ./configure --prefix=/usr
+  mkdir -p "build"
+  cd "build"
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
@@ -22,4 +23,4 @@ package() {
   make DESTDIR=$pkgdir LIBDIR=$pkgdir/usr/lib install
 }
 
-md5sums=('0c80d051c2981e217b4f09e094129dcb')
+md5sums=('f43cc18338952a69a79e9215033e4279')
