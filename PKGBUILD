@@ -3,11 +3,11 @@
 
 pkgname=gog-mountandblade-warband
 pkgver=2.7.0.12
-_vqver=2.7.0.9
+pkgrel=2
+_vcver=2.7.0.9
 _nwver=2.1.0.3
 _libcurlver=7.44.0-2
 _libgnutlsver=28_3.3.17-1
-pkgrel=2
 pkgdesc="An action role playing game, GOG version"
 url=('https://www.gog.com/game/mount_blade_warband')
 license=('custom')
@@ -23,7 +23,7 @@ options=('staticlibs' '!strip')
 DLAGENTS+=("gog::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a gog:// DLAGENT in /etc/makepkg.conf.")
 
 source=("gog://gog_mount_blade_warband_${pkgver}.sh"
-        "gog://gog_mount_blade_warband_viking_conquest_reforged_edition_dlc_${_vqver}.sh"
+        "gog://gog_mount_blade_warband_viking_conquest_reforged_edition_dlc_${_vcver}.sh"
         "gog://gog_mount_blade_warband_napoleonic_wars_dlc_${_nwver}.sh"
         "http://ftp.de.debian.org/debian/pool/main/c/curl/libcurl3-gnutls_${_libcurlver}_i386.deb"
         "http://ftp.fr.debian.org/debian/pool/main/g/gnutls28/libgnutls-deb0-${_libgnutlsver}_i386.deb")
@@ -39,7 +39,7 @@ md5sums=('643d44d3f972f366c0557289a13db266'
          'c9fab3d6cd8b9dee2bc6fb89dc862b74')
 
 noextract=("gog_mount_blade_warband_${pkgver}.sh"
-           "gog_mount_blade_warband_viking_conquest_reforged_edition_dlc_${_vqver}.sh"
+           "gog_mount_blade_warband_viking_conquest_reforged_edition_dlc_${_vcver}.sh"
            "gog_mount_blade_warband_napoleonic_wars_dlc_${_nwver}.sh"
            "libcurl3-gnutls_${_libcurlver}_i386.deb"
            "libgnutls-deb0-${_libgnutlsver}_i386.deb")
@@ -50,7 +50,7 @@ prepare(){
   printf "Please use target ${srcdir}/mbw and do not create a desktop shortcut or menu item\\n"
   read -p "Press any key to continue... " -n1 -s
   sh ./gog_mount_blade_warband_${pkgver}.sh
-  sh ./gog_mount_blade_warband_viking_conquest_reforged_edition_dlc_${_vqver}.sh
+  sh ./gog_mount_blade_warband_viking_conquest_reforged_edition_dlc_${_vcver}.sh
   sh ./gog_mount_blade_warband_napoleonic_wars_dlc_${_nwver}.sh
   # Extract the missing libraries from debian (these should be replaced by libraries in the Arch package system of course)
   bsdtar xOf ./libcurl3-gnutls_${_libcurlver}_i386.deb data.tar.xz | bsdtar xf - --strip-components 4 ./usr/lib/i386-linux-gnu/libcurl-gnutls.so.4.4.0
