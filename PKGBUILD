@@ -1,12 +1,14 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 pkgname=aurvote
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to vote for favorite AUR packages"
 url="https://github.com/archlinuxfr/aurvote"
 license="GPL"
 arch=('any')
 depends=('curl')
+conflicts=('aurvote-git')
+replaces=('aurvote-git')
 source=("https://github.com/archlinuxfr/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('bd888c25b376e97bfad1c8f2fd0eefb4db0821ff422356d985009ba287425da7')
 
