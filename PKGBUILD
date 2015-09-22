@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}/build
   make DESTDIR=$pkgdir LIBDIR=$pkgdir/usr/lib install
 }
 
