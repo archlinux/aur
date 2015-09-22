@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-scummvm-git
-pkgver=69170.8e7a571
+pkgver=69271.a99654d
 pkgrel=1
 pkgdesc="libretro implementation of ScummVM."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
