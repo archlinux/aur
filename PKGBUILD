@@ -16,7 +16,7 @@ source=("http://www.messaggiero.it/cimages/jollacomm/${pkgname}_${pkgver}-${pkgr
 sha1sums=('f1545131258d3430c88100d6bbb3fbb911644ae7')
 INTEGRITY_CHECK=sha1
 package() {
-  ar vx  ${pkgname}_${_subpkg}_all.deb
+  ar vx  ${pkgname}_${pkgver}-${pkgrel}_all.deb
   tar -Jxf "${srcdir}/${bin1}"
   cd "${srcdir}/usr/bin"
   install -Dm755 "JollaCommunicator.gambas" "${pkgdir}/usr/bin/JollaCommunicator.gambas"
