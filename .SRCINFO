@@ -1,0 +1,14 @@
+pkgbase = orayta-books
+	pkgdesc = Orayta books
+	pkgver = r2.4214f16
+	pkgrel = 1
+	url = http://code.google.com/p/orayta/
+	arch = any
+	license = CC-BY-3.0
+	makedepends = git
+	conflicts = orayta-books-svn
+	source = git+https://github.com/MosheWagner/Orayta-Books.git
+	md5sums = SKIP
+
+pkgname = orayta-books
+
