@@ -23,7 +23,8 @@ post_upgrade() {
     ## remove me at a later date
     [[ -d /opt/freenet/conf/node ]] && {
         sed -i /opt/freenet/conf/freenet.ini \
-            -e "s:node.install.nodeDir=/opt/freenet/conf/node:node.install.nodeDir=/opt/freenet/noderef:"
+            -e "s:node.install.nodeDir=/opt/freenet/conf/node:node.install.nodeDir=/opt/freenet/noderef:" \
+            -e "s:JSTUN;::"
         mv /opt/freenet/conf/node /opt/freenet/noderef
     }
 

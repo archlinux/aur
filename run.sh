@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #-----------------------------------------------------------------------------
 _USER="freenet"
@@ -6,7 +6,7 @@ WRAPPER_CMD="/usr/bin/java-service-wrapper"
 WRAPPER_CONF="/opt/freenet/wrapper.config"
 PIDDIR="/run/freenet"
 PIDFILE="$PIDDIR/freenet.pid"
-TIMEOUT=30
+TIMEOUT=60
 #-----------------------------------------------------------------------------
 
 fail() {

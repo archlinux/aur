@@ -1,20 +1,15 @@
 # Maintainer: skydrome <skydrome at@at i2pmail do.t org>
 # Contributors:
-#
 
 _fred=#tag=build01470
-#_fred=#tag=testing-build-1471-pre1
 #_fred=#branch=next
 
 _wot=#tag=build0018
 #_wot=#branch=next
 
-_plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
-
 pkgname=freenet
 pkgver=0.7.5.1470
 pkgrel=3
-epoch=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
 url="https://downloads.freenetproject.org"
@@ -31,6 +26,8 @@ BUILDENV+=('!check')
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
 
+_plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
+
 # these are packages we need to download to prevent ant from
 # downloading them itself we are also going to build as much
 # as we can from source, including this array
@@ -40,6 +37,7 @@ _deps=("http://downloads.sourceforge.net/project/sevenzip/LZMA%20SDK/4.65/lzma46
        "https://www.spaceroots.org/software/mantissa/mantissa-7.2-src.zip"
        "${url}/contrib/db4o-7.4-java.zip")
 
+# ant will extract these
 noextract=('lzma465.tar.bz2'
            'league-lzmajio-0.95-0-gd38bf5c.tar.gz'
            'jBitcollider-0.8.zip'
@@ -47,8 +45,8 @@ noextract=('lzma465.tar.bz2'
            'db4o-7.4-java.zip'
            'commons-compress.jar')
 
-# here we have only java-commons-compress and java-db4o coming
-# prebuilt by the freenetproject, the rest we attempt to build ourselves
+# here we have only java-commons-compress coming prebuilt by
+# the freenetproject, the rest we build ourselves
 source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/contrib.git"
         "git+https://github.com/freenet/plugin-UPnP.git"
@@ -75,10 +73,10 @@ sha256sums=('SKIP'
             '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
             '187dd4479fcda313d64415e02687acde66e018fe0be55b9f9e9d117f701d303d'
             '865c1f259d9c544861cc12b4ea64ad35ec6388c1392b3e5247eaed0f316e42b7'
-            '4a1597e4748012d684622f4491108eb8fae022f00dbca9a2f6a31a589ec022d2'
+            '9912dcfc8f30143b68e6f9c51505ae921100eb6b24690a8680582bb23559d95a'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
-            'bab61a82b5e0e0aa92a51b7d6111f37fc5416faa14b7805077a7e89b5653e297'
-            'ac83d727d6301e75cf1d441a1a1e72ba06ea119fa53a3bae65b3373108abf213'
+            '6ae810e40ac177b4238e95b31329d099f6a7cc95154ec1b1844538580e692f64'
+            'f91a860868f0ad0dee4164110f49cf3529c2c051fd067e3318406bb9105b800d'
             'c935fd04dd8e0e8c688a3078f3675d699679a90be81c12686837e0880aa0fa1e'
             '265f7ed2dd4fecb058884d3f8974674b06e0be46131c3b2bc6a310373937d2ef'
             'b36482ee9e919c669bb1797ff7e50f57edf505af67664e280fe1dff361861044'
@@ -105,27 +103,23 @@ prepare() {
     ln -sf ../contrib contrib
     mkdir -p contrib/freenet-ext/{dist,lib}
 
-    # had a hard time building these sources, we'll use the binaries
-    for dep in commons-compress
-    do
-        cp "$srcdir/${dep}.jar" contrib/freenet-ext/dist
-    done
+    # had a hard time building these sources, we'll use the prebuilt jars
+    cp "$srcdir/commons-compress.jar" contrib/freenet-ext/dist
 
     # this is done to satisfy ant
     ln -sf /usr/share/java/wrapper.jar contrib/freenet-ext/dist/
     ln -sf /usr/share/java/{bcprov,hamcrest-core,junit}.jar lib/
     cp "$srcdir"/{lzma465.tar.bz2,league-lzmajio-0.95-0-gd38bf5c.tar.gz,jBitcollider-0.8.zip,mantissa-7.2-src.zip,db4o-7.4-java.zip} contrib/freenet-ext/lib
 
-    # we're going to compile our own c libraries
+    # we're going to compile our own C libraries
     cd "$srcdir/contrib"
     rm -rf NativeBigInteger/lib/net/i2p/util/*
     rm -rf NativeThread/lib/freenet/support/io/*.so
     rm -rf onion-fec/bin/lib/{freebsd,linux,win32}-*
 
+    # these are from the I2P project
     cd "$srcdir/contrib/jcpuid"
     rm -rf lib/freenet/support/CPUInformation/* include/jcpuid.h
-
-    # these are from the I2P project
     ln -sf "$srcdir"/jcpuid.h include/
     ln -sf "$srcdir"/jcpuid.c src/
 }
@@ -140,10 +134,12 @@ build() {
     build_jcpuid
     build_fec
 
-    msg "Building Freenet-ext..."
+    msg "Building Contrib Modules..."
     cd "$srcdir/fred/contrib/freenet-ext"
     ant -propertyfile "$srcdir/contrib.properties"
 
+    # ant doesnt seem to put all the required folders into the
+    # freenet-ext.jar correctly, make sure to do it here
     cd dist
     for dep in bitcollider-core commons-compress db4o lzmajio mantissa wrapper
     do
