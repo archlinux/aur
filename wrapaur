@@ -30,6 +30,10 @@ if [ ! -f $HOME/.wrapaur_history ]; then
 	touch $HOME/.wrapaur_history
 fi
 
+if [[ -z $EDITOR ]]; then
+	EDITOR=nano
+fi
+
 #aur url location
 aururl="aur.archlinux.org"
 
@@ -99,18 +103,20 @@ clear_cache()
 	#clear pacman cache and optimize pacman database
 	sudo pacman -Sc
 	oprompt=$(echo -e "${color1}:: ${color2}Optimize Pacman Database? [Y/n] ${color3}")
-	until [ "$ochoice" == "y" ] || [ "$ochoice" == "n" ] || [ "$ochoice" == "Y" ] || [ "$ochoice" == "N" ]; do
+	ochoice=z
+	until [ "$ochoice" == "y" ] || [ "$ochoice" == "n" ] || [ "$ochoice" == "Y" ] || [ "$ochoice" == "N" ] || [[ -z $ochoice ]]; do
 		read -p "$oprompt" ochoice
 	done
-	if [ "$ochoice" == "y" ] || [ "$ochoice" == "Y" ]; then
+	if [ "$ochoice" == "y" ] || [ "$ochoice" == "Y" ] || [[ -z $ochoice ]]; then
 		sudo pacman-optimize
 	fi
 	#empty source folders from .wrapaur folder
 	cprompt=$(echo -e "${color1}:: ${color2}Clear contents of .wrapaur folder? [Y/n] ${color3}")
-	until [ "$cchoice" == "y" ] || [ "$cchoice" == "n" ] || [ "$cchoice" == "Y" ] || [ "$cchoice" == "N" ]; do
+	cchoice=z
+	until [ "$cchoice" == "y" ] || [ "$cchoice" == "n" ] || [ "$cchoice" == "Y" ] || [ "$cchoice" == "N" ] || [[ -z $cchoice ]]; do
 		read -p "$cprompt" cchoice
 	done
-	if [ "$cchoice" == "y" ] || [ "$cchoice" == "Y" ]; then			
+	if [ "$cchoice" == "y" ] || [ "$cchoice" == "Y" ] || [[ -z $cchoice ]]; then			
 		rm -Rf $HOME/.wrapaur/*
 		echo -e "$HOME/.wrapaur contents cleared..."
 	fi
@@ -180,10 +186,11 @@ update_mirrors()
 	#run with prompts
 	else
 		mprompt=$(echo -e "${color1}:: ${color2}Warning: This will overwrite your pacman mirror list at /etc/pacman.d/mirrorlist.  Proceed? [Y/n] ${color3}")
-		until [ "$mchoice" == "y" ] || [ "$mchoice" == "n" ] || [ "$mchoice" == "Y" ] || [ "$mchoice" == "N" ]; do
+		mchoice=z
+		until [ "$mchoice" == "y" ] || [ "$mchoice" == "n" ] || [ "$mchoice" == "Y" ] || [ "$mchoice" == "N" ] || [[ -z $mchoice ]]; do
 			read -p "$mprompt" mchoice
 		done
-		if [ "$mchoice" == "y" ] || [ "$mchoice" == "Y" ]; then			
+		if [ "$mchoice" == "y" ] || [ "$mchoice" == "Y" ] || [[ -z $mchoice ]]; then			
 			sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 			if [[ -z $country ]]; then
 				rcprompt=$(echo -e "${color1}:: ${color2}Enter Country or All: ${color3}")
@@ -472,6 +479,9 @@ check_updates()
 	#check for pacman updates with temp dir and fakeroot
 	echo -e "${color1}:: ${color2}Checking for updates... ${color3}"
 	pacpath=$(awk -F' *= *' '$1 ~ /DBPath/ { print $1 "=" $2 }' /etc/pacman.conf | sed -e 's/#DBPath=//g' -e 's/DBPath=//g')
+	if [[ -z $pacpath ]]; then
+		pacpath=/var/lib/pacman
+	fi
 	pactemp=$(mktemp -d -t pactemp.XXXXXXXXXX)
 	trap 'rm -rf $pactemp' INT TERM EXIT
 	ln -s "${pacpath}/local" "$pactemp" &> /dev/null
@@ -575,28 +585,31 @@ aur_git_install()
 			git pull
 		fi
 		aprompt=$(echo -e "${color1}:: ${color2}Proceed with installation? [Y/n] ${color3}")
-		until [ "$ichoice" == "y" ] || [ "$ichoice" == "n" ] || [ "$ichoice" == "Y" ] || [ "$ichoice" == "N" ]; do
+		ichoice=z
+		until [ "$ichoice" == "y" ] || [ "$ichoice" == "n" ] || [ "$ichoice" == "Y" ] || [ "$ichoice" == "N" ] || [[ -z $ichoice ]]; do
 			read -p "$aprompt" ichoice
 		done	
 		#if chosen to install now, compile and run pacman -U, then remove folder
-		if [ "$ichoice" == "y" ] || [ "$ichoice" == "Y" ]; then
+		if [ "$ichoice" == "y" ] || [ "$ichoice" == "Y" ] || [[ -z $ichoice ]]; then
 			cd $HOME/.wrapaur/$1
 			echo -e "installing ${1}..."
 			eprompt=$(echo -e "${color1}:: ${color2}Edit PKGBUILD? [Y/n] ${color3}")
-			until [ "$echoice" == "y" ] || [ "$echoice" == "n" ] || [ "$echoice" == "Y" ] || [ "$echoice" == "N" ]; do
+			echoice=z
+			until [ "$echoice" == "y" ] || [ "$echoice" == "n" ] || [ "$echoice" == "Y" ] || [ "$echoice" == "N" ] || [[ -z $echoice ]]; do
 				read -p "$eprompt" echoice
 			done	
 			#if chosen to edit PKGBUILD open editor
-			if [ "$echoice" == "y" ] || [ "$echoice" == "Y" ]; then
+			if [ "$echoice" == "y" ] || [ "$echoice" == "Y" ] || [[ -z $echoice ]]; then
 				$EDITOR PKGBUILD
 			fi			
 			makepkg -si
 			cd $HOME/.wrapaur
 			raprompt=$(echo -e "${color1}:: ${color2}Remove source folder? [Y/n] ${color3}")
-			until [ "$rachoice" == "y" ] || [ "$rachoice" == "n" ] || [ "$rachoice" == "Y" ] || [ "$rachoice" == "N" ]; do
+			rachoice=z
+			until [ "$rachoice" == "y" ] || [ "$rachoice" == "n" ] || [ "$rachoice" == "Y" ] || [ "$rachoice" == "N" ] || [[ -z $rachoice ]]; do
 				read -p "$raprompt" rachoice
 			done
-			if [ "$rachoice" == "y" ] || [ "$rachoice" == "Y" ]; then			
+			if [ "$rachoice" == "y" ] || [ "$rachoice" == "Y" ] || [[ -z $rachoice ]]; then			
 				rm -Rf $HOME/.wrapaur/$1
 			fi
 			echoice="x"
