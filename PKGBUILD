@@ -1,12 +1,12 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python-pyteomics
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
 url="http://pythonhosted.org/pyteomics"
 license=('Apache')
-depends=('python')
+depends=('python' 'python-setuptools')
 optdepends=('python-matplotlib: for pylab_aux module, optional' \
             'python-lxml: for XML parsing modules, recommended' \
             'python-numpy: for lots of features, highly recommended')
