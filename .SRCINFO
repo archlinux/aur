@@ -1,0 +1,14 @@
+pkgbase = humans
+	pkgdesc = Don't you wanna killall humans?
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/benjamin-james/humans
+	arch = any
+	license = GPL3
+	depends = glibc
+	provides = humans
+	source = https://github.com/benjamin-james/humans/archive/0.1.tar.gz
+	md5sums = b8391a077fc104b1b72067c45c6457ff
+
+pkgname = humans
+
