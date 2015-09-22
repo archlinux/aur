@@ -1,6 +1,6 @@
 pkgbase = gtkevemon-git
 	pkgdesc = EVE Online skill monitor
-	pkgver = LATEST
+	pkgver = r228.f38c0e8
 	pkgrel = 1
 	url = https://github.com/gtkevemon/gtkevemon/
 	arch = i686

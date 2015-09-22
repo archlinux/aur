@@ -1,13 +1,8 @@
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
-# Contributor: Peter Feigl <craven@gmx.net>
-# Contributor: Andrey <gornet[at]gmail[dot]com>
-# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
-
 _pkgname=gtkevemon
 _gitname=gtkevemon
 
 pkgname=$_pkgname-git
-pkgver=LATEST
+pkgver=r228.f38c0e8
 pkgrel=1
 pkgdesc="EVE Online skill monitor"
 arch=('i686' 'x86_64')
