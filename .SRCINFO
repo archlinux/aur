@@ -9,7 +9,7 @@ pkgbase = criterion
 	depends = glibc
 	depends = pcre
 	depends = gettext
-	source = criterion::git://github.com/Snaipe/Criterion.git#branch=v2.1.0
+	source = criterion::git://github.com/Snaipe/Criterion.git#tag=v2.1.0
 	md5sums = SKIP
 
 pkgname = criterion

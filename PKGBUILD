@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${_archivename}.git"
 license=('MIT')
 depends=('glibc' 'pcre' 'gettext')
-source=("$pkgname"::"git://github.com/Snaipe/${_archivename}.git#branch=v${pkgver}")
+source=("$pkgname"::"git://github.com/Snaipe/${_archivename}.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
