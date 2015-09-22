@@ -1,7 +1,7 @@
 pkgbase = bonita-bpm-community-bin
 	pkgdesc = Bonita BPM Studio with embedded Engine + Portal
-	pkgver = 6.5.1
-	pkgrel = 2
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = http://www.bonitasoft.com/how-we-do-it#how-we-do-it_bonita-bpm
 	install = bonita-bpm-community.install
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = bonita-bpm-community-bin
 	optdepends = libnet: PROVIDES libnet.so
 	optdepends = jre7-openjdk: PROVIDES libmawt.so
 	provides = bonita-bpm-community
-	source_i686 = http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-6.5.1-x86.run
-	sha256sums_i686 = e5327b36d94f571688f4066d937abd49072c5b818b1ef54eb7f124725461adda
-	source_x86_64 = http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-6.5.1-x86_64.run
-	sha256sums_x86_64 = a8155e2cba09ae9ccde426be80ac1f0360548fba0945e33e9b99759ec0b07f53
+	source_i686 = http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-7.1.0-x86.run
+	sha256sums_i686 = 04fe7814c2a42753bf10984667e03cd6b6e7b81d0ac327bfe31755f3e826b7fb
+	source_x86_64 = http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-7.1.0-x86_64.run
+	sha256sums_x86_64 = 8a0323bf9120b9475cff8cf48fe728666eac12e151a1405b5206b9f8652a55d4
 
 pkgname = bonita-bpm-community-bin
 
