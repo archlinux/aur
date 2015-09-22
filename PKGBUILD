@@ -1,13 +1,13 @@
 # Maintainer: Fredrick Brennan <admin@8chan.co>
 pkgname=waifu2x-git
 pkgver=r250.ca65c93
-pkgrel=1
+pkgrel=2
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
 arch=('x86_64')
 url=""
 license=('MIT')
 groups=()
-depends=('opencl-headers' 'opencl-mesa') # If you have NVIDIA card, edit the PKGBUILD to use `opencl-nvidia` instead.
+depends=('opencl-headers' 'ocl-icd') # If you have NVIDIA card, edit the PKGBUILD to use `opencl-nvidia` instead.
 makedepends=('git' 'cmake')
 optdepends=('cuda: Significantly speeds up operations, but only works with NVIDIA GPU')
 provides=('waifu2x' 'waifu2x-converter-cpp')
