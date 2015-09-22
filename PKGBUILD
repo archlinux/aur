@@ -4,16 +4,16 @@ _pkgname=pwsafe
 pkgname=passwordsafe
 _pkgver=0.96
 pkgver="$_pkgver"BETA
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/passwordsafe/"
 license=('Artistic2.0')
 #to build without yubikey support, remove ykpers and uncomment NO_YUBI in build()
-depends=('libxtst' 'wxgtk' 'webkitgtk2' 'ykpers' 'xerces-c')
+depends=('libxtst' 'wxgtk' 'webkitgtk2' 'yubikey-personalization' 'xerces-c')
 makedepends=('git' 'zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
-conflicts=('passwordsafe-debian' 'passwordsafe-git' 'pwsafe')
+conflicts=('passwordsafe-debian' 'passwordsafe-git' 'pwsafe' 'pwsafe-gui')
 source=(http://downloads.sourceforge.net/project/$pkgname/Linux-BETA/$_pkgver/$_pkgname-$pkgver-src.tgz{,.sig})
 
 install='passwordsafe.install'
