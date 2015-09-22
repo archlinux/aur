@@ -1,5 +1,5 @@
 pkgname=dnf
-_pkgver=1.1.1
+_pkgver=1.1.2
 _rpmrel=2
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -14,16 +14,18 @@ checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('a956c8d7f413c6f04f81201abc13021c')
+md5sums=('95c024a394b6392658112a191b176a12')
 
 prepare() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"
+	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
+
+	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
 }
 
 build() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
+	cd "$pkgname-$pkgver"/build
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DPYTHON_DESIRED=3          \
@@ -39,7 +41,7 @@ build() {
 #}
 
 package() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
+	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
 	rm "$pkgdir/"usr/bin/yum "$pkgdir/usr/share/man/man8/yum.8"
