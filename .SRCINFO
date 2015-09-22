@@ -1,0 +1,13 @@
+pkgbase = aerospike-server-ce
+	pkgdesc = High performance NoSQL database
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = http://www.aerospike.com/
+	arch = x86_64
+	arch = i686
+	license = AGPLv3
+	source = http://www.aerospike.com/download/server/3.6.0/artifact/tgz
+	sha512sums = 2c72f54ae0a2f20f5b7a6ed295c536d6841c99142c6d55c72382bf8c8e10dca5a515a492659ff25727b6950b1ce5b2befe1c189f793a46ab871de7b76ab6b999
+
+pkgname = aerospike-server-ce
+
