@@ -41,4 +41,5 @@ package() {
 	cd "$srcdir/zorp"
 	make DESTDIR="$pkgdir/" install
 	mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
+	chmod o-rx "$pkgdir/etc/sudoers.d"
 }
