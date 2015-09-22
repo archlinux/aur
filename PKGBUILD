@@ -3,26 +3,26 @@
  
 _pkgname=rmlint
 pkgname=${_pkgname}-git
-pkgver=967.812a5d5
-pkgrel=3
+pkgver=v2.2.0.r33.g08a75ed
+pkgrel=1
 pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
 license=('GPL3')
-depends=('glibc' 'glib2>=2.31' 'libutil-linux' 'elfutils')
+depends=('glibc' 'glib2>=2.31' 'libutil-linux' 'elfutils' 'gettext' 'json-glib')
 makedepends=('git' 'scons' 'python-sphinx')
+conflicts=("${_pkgname}")
 provides=("$_pkgname")
 source=("$pkgname"::"git+https://github.com/sahib/${_pkgname}.git")
 md5sums=('SKIP')
  
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
-    scons config
     scons -j4 DEBUG=1 --prefix=${pkgdir}/usr --actual-prefix=/usr
 }
  
