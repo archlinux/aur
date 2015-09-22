@@ -1,0 +1,13 @@
+pkgbase = hunspell-gl
+	pkgdesc = Galician hunspell dictionaries. RAG/ILG normative
+	pkgver = 20141115
+	pkgrel = 1
+	url = https://github.com/meixome/hunspell-gl
+	arch = any
+	license = GPL3
+	optdepends = hunspell: the spell checking libraries and apps
+	source = http://sourceforge.net/projects/hunspell-gl/files/instantaneas/20141115/hunspell-gl-comunidade-20141115.tar.xz
+	md5sums = 5cec824e0a7411b0da6712b5826a0d22
+
+pkgname = hunspell-gl
+
