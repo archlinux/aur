@@ -1,7 +1,7 @@
 pkgbase = mate-calc-git
-	pkgdesc = Calculator
+	pkgdesc = Calculator for the Mate desktop environment
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mate-desktop/mate-calc
 	install = mate-calc-git.install
 	arch = i686

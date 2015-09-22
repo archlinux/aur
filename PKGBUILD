@@ -2,8 +2,8 @@
 
 pkgname=mate-calc-git
 pkgver=1.8.0
-pkgrel=1
-pkgdesc='Calculator'
+pkgrel=2
+pkgdesc='Calculator for the Mate desktop environment'
 arch=('i686' 'x86_64')
 url='https://github.com/mate-desktop/mate-calc'
 license=('GPL')
