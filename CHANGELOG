@@ -1,3 +1,45 @@
+3.1
+---
+
+This release offers integration with the great :py:mod:`pandas` library.
+Working with :py:func:`qvalues` and :py:func:`!filter` functions
+is now much easier if you have your PSMs in a :py:class:`DataFrame`.
+Many search engines use CSV as their output format, allowing direct
+creation of :py:class:`DataFrame` objects. New functions
+:py:func:`pyteomics.tandem.DataFrame` and :py:func:`pyteomics.pepxml.DataFrame`
+faciliatate creation of DataFrames from corresponding formats.
+
+Also, :py:func:`qvalues`, :py:func:`!filter` and :py:func:`fdr` functions can now use
+posterior error probabilities (PEPs) instead of using decoys for q-value calculation.
+
+ - In :py:func:`qvalues` and :py:func:`!filter` functions,
+   `key` and `is_decoy` can now be array-like objects or strings
+   (as well as functions and iterators).
+   If a string is given, it is used as a field name in the PSM array
+   or :py:class:`DataFrame`. :py:func:`fdr` functions also support strings
+   and iterables as arguments.
+
+ - New parameter `pep` in :py:func:`qvalues`, :py:func:`!filter` and :py:func:`fdr` functions.
+   It can be callable, array-like, or iterator. Conflicts with decoy-related
+   parameters. Compatible with `key`, but makes it optional.
+
+ - Fixed the behavior of :py:func:`filter.chain` functions. They now treat
+   the `full_output` argument the same way as :py:func:`!filter` functions.
+
+ - Fixed the issue that caused exceptions when calling :py:func:`fasta.decoy_db`
+   and :py:func:`fasta.write_decoy_db` with explicitly given `mode` (signature
+   for creation of :py:class:`pyteomics.auxiliary.FileReader` objects slightly changed).
+
+ - Pyteomics now uses `setuptools` and is a namespace package.
+
+ - Minor fixes.
+
+
+API changes
+...........
+
+- Default value of `remove_decoy` in :py:func:`qvalues` is now :py:const:`False`.
+
 3.0.1
 -----
 
@@ -8,6 +50,7 @@
 
 3.0.0
 -----
+
  - XML parsers are now implemented as objects, each format has its own class.
    Those classes can be instantiated using the same arguments as :py:func:`read`
    functions accepted, and support direct iteration and the ``with`` syntax.
