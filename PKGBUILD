@@ -1,6 +1,6 @@
 pkgname=dnf-plugins-core
-_pkgver=0.1.11
-_rpmrel=1
+_pkgver=0.1.12
+_rpmrel=2
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
 pkgdesc="Core DNF Plugins"
@@ -11,16 +11,18 @@ depends=('dnf' 'python')
 makedepends=('cmake')
 checkdepends=('python-nose')
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('19e9b8303ee9f51207e115e9598d64b7')
+md5sums=('4aaba38d77b172cecb0c3e7416df8723')
 
 prepare() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"
+	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
+
+	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
 }
 
 build() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
+	cd "$pkgname-$pkgver"/build
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DPYTHON_DESIRED=3          \
@@ -29,12 +31,12 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"
+	cd "$pkgname-$pkgver"
 	PYTHONPATH=./plugins nosetests -s tests
 }
 
 package() {
-	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
+	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
 	install -D -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
