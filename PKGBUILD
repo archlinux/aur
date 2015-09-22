@@ -2,13 +2,15 @@
 # Maintainer: Sébastien Luttringer <seblu@aur.archlinux.org>
 
 pkgname=awesome-revelation-git
-pkgver=2015.08.22.gc862f6d
+pkgver=2015.09.22.g6535c9c
 pkgrel=1
-pkgdesc='Show all clients per screen in Awesome window manager'
+pkgdesc='Show all clients per screen in Awesome window manager. This is version
+only working with master version of Awesome window manager. For stable version 
+of awesome, 3.5.6, Please install awesome-revelation (current 3.5.6) instead. '
 arch=('any')
 url='https://github.com/guotsuan/awesome-revelation.git'
 license=('GPL3')
-depends=('awesome')
+depends=('awesome-git')
 conflicts=('awesome-revelation')
 source=('git+https://github.com/guotsuan/awesome-revelation.git')
 md5sums=('SKIP')
