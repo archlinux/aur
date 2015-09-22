@@ -1,27 +1,20 @@
 pkgbase = kitematic
 	pkgdesc = Visual Docker Container Management
-	pkgver = 0.7.2.r128.ge8e1fba
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://kitematic.com/
 	install = kitematic.install
 	arch = x86_64
 	license = apache
-	makedepends = git
-	makedepends = npm
+	makedepends = tar
 	depends = docker
-	depends = nodejs
 	depends = desktop-file-utils
-	depends = libxtst
-	depends = alsa-lib
-	depends = libnotify
-	depends = gconf
-	depends = gtk2
 	provides = kitematic
-	source = git+https://github.com/zedtux/kitematic#branch=linux-support
+	source = https://raw.githubusercontent.com/sanderboom/kitematic/bin/bin/Kitematic-linux-x64.tar.xz
 	source = kitematic.desktop
 	source = kitematic.svg
-	sha256sums = SKIP
-	sha256sums = 7d547df74ed4f0553bf77f28c90f13f9b62eefd75bfa1d4d23da0f1cd2d3ce51
+	sha256sums = 9ceb89d019b2bc46c47e03a41e5845322fd4c1b0e9f8ab27fb492440c34ec769
+	sha256sums = 448603660a205037c83125759e523cfec9cf1a93c0b1317482740a04292d5bdc
 	sha256sums = 954d9803f49e475bc3242ad8b5dbfe5f3be9b532434ff260e1cf5c929f018617
 
 pkgname = kitematic

@@ -5,4 +5,4 @@ Comment=Visual Docker Container Management
 Exec=kitematic
 Terminal=false
 Icon=kitematic
-Categories=Development
+Categories=System

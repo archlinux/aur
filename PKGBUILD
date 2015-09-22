@@ -9,7 +9,7 @@
 # Upstream URL linux-support: https://github.com/zedtux/kitematic
 
 pkgname=kitematic
-pkgver=0.7.2.r128.ge8e1fba
+pkgver='0.8.2'
 pkgrel=1
 pkgdesc="Visual Docker Container Management"
 arch=('x86_64')
@@ -18,50 +18,31 @@ license=('apache')
 groups=()
 depends=(
   'docker'
-  'nodejs'
   'desktop-file-utils'
-  'libxtst'
-  'alsa-lib'
-  'libnotify'
-  'gconf'
-  'gtk2'
 )
-makedepends=('git' 'npm')
-provides=("${pkgname}")
+makedepends=('tar')
 provides=("${pkgname}")
 backup=()
 options=()
 install="${pkgname}.install"
 source=(
-  "git+https://github.com/zedtux/${pkgname}#branch=linux-support"
+  "https://raw.githubusercontent.com/sanderboom/kitematic/bin/bin/Kitematic-linux-x64.tar.xz"
   "${pkgname}.desktop"
   "${pkgname}.svg"
 )
 noextract=()
 sha256sums=(
-  'SKIP'
-  '7d547df74ed4f0553bf77f28c90f13f9b62eefd75bfa1d4d23da0f1cd2d3ce51'
+  '2ce59e61bf0b9e56a2c84b95af2a1844ec31dab0c2385291eaf27d79e853d4ac'
+  '448603660a205037c83125759e523cfec9cf1a93c0b1317482740a04292d5bdc'
   '954d9803f49e475bc3242ad8b5dbfe5f3be9b532434ff260e1cf5c929f018617'
 )
-
-pkgver() {
-  cd "$srcdir/${pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-  cd "$srcdir/${pkgname}"
-  npm install electron-prebuilt@^0.27.3
-  npm install
-  ./node_modules/.bin/grunt release
-}
 
 package() {
   cd "${srcdir}"
 
   # Application
   install -dm755 "${pkgdir}/opt"
-  cp -rp "${pkgname}/dist/linux/Kitematic-linux-x64/" "${pkgdir}/opt/"
+  tar xf Kitematic-linux-x64.tar.xz -C "${pkgdir}/opt"
 
   # Exec
   install -dm755 "${pkgdir}/usr/bin"
