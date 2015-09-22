@@ -12,7 +12,7 @@ pkgbase = freenet
 	makedepends = apache-ant-contrib
 	makedepends = git
 	depends = java-runtime>=7
-	depends = bcprov151
+	depends = bcprov152
 	depends = gmp
 	depends = java-service-wrapper
 	noextract = lzma465.tar.bz2
