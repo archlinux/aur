@@ -1,0 +1,17 @@
+post_install() {
+  groupadd -g 138 shout-irc &>/dev/null
+  useradd -u 138 -g shout-irc -d /etc/shout-irc -s /bin/false shout-irc &> /dev/null
+  chown -R shout-irc:shout-irc etc/shout-irc &> /dev/null
+  chmod -R 700 etc/shout-irc &> /dev/null
+}
+
+post_upgrade() {
+  getent group shout-irc &>/dev/null || groupadd -g 138 shout-irc &>/dev/null
+  getent passwd shout-irc &>/dev/null || useradd -u 138 -g shout-irc -d /etc/shout-irc -s /bin/false shout-irc &> /dev/null
+  chown -R shout-irc:shout-irc etc/shout-irc &> /dev/null
+}
+
+pre_remove() {
+  getent passwd shout-irc &>/dev/null && userdel shout-irc &> /dev/null
+  getent group shout-irc &>/dev/null && groupdel shout-irc &> /dev/null
+}

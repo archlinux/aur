@@ -1,0 +1,12 @@
+[Unit]
+Description=Shout IRC client
+After=network.target
+
+[Service]
+User=shout-irc
+Group=shout-irc
+Type=simple
+ExecStart=/usr/bin/shout-irc --home /etc/shout-irc
+
+[Install]
+WantedBy=multi-user.target

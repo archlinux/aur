@@ -1,0 +1,9 @@
+[Unit]
+Description=Shout IRC client
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/shout-irc
+
+[Install]
+WantedBy=default.target

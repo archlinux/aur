@@ -1,0 +1,18 @@
+pkgbase = shout-irc
+	pkgdesc = Web-based IRC client
+	pkgver = 0.51.2
+	pkgrel = 1
+	url = http://shout-irc.com/
+	install = install
+	arch = any
+	license = MIT
+	depends = nodejs
+	source = https://github.com/erming/shout/archive/0.51.2.tar.gz
+	source = system.service
+	source = user.service
+	sha256sums = 63ac098ed1a6d2a731369b2b9e08fe9e372aa0e1d64cf23f734cca5605b11ba2
+	sha256sums = beac3a8a25700997f0f2a154ee85e8c89d64082856d194434b01116a0f4edb91
+	sha256sums = 322d152da59c066617dbab9604099bf25ca2b175ae6bd508643b38344be043d8
+
+pkgname = shout-irc
+
