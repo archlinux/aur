@@ -1,4 +1,4 @@
-# Maintainer: Brent Saner <bts (at) phreewifi (dot) org>
+# Maintainer: Brent Saner <r00t (at) square-r00t (dot) net>
 # Contributor: TJ Vanderpoel <tj@rubyists.com>
 
 ## MAINTAINER NOTE BEGIN
@@ -67,30 +67,54 @@ _disabled_modules=(languages/mod_spidermonkey
 #                                              #
 
 
-pkgname=freeswitch-git
-pkgver=1.5.7.r2590.g46cf8a4
-pkgrel=3
-pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
-arch=('i686' 'x86_64')
+pkgname='freeswitch'
+pkgver='1.6'
+pkgrel='1'
+pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
+arch=('i686'
+      'x86_64')
 url="http://freeswitch.org/"
 license=('MPL')
-depends=('curl' 'xz' 'python' 'libtheora' 'unixodbc' 'libvorbis' 'speex' 'libjpeg-turbo' 'postgresql-libs')
+depends=('curl'
+         'xz'
+         'python'
+         'libtheora'
+         'unixodbc'
+         'libvorbis'
+         'speex'
+         'libjpeg-turbo'
+         'postgresql-libs')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
-makedepends=('git' 'libjpeg' 'libedit' 'ldns' 'curl' 'python2' 'unixodbc' 'sed' 'make')
+makedepends=('git'
+             'libjpeg'
+             'ldns'
+             'libedit'
+             'curl'
+             'python2'
+             'unixodbc'
+             'sed'
+             'make')
 # per https://aur.archlinux.org/packages/freeswitch-fixed/ 2014-08-13 14:02 comment, enable this when freetdm is packaged.
 # freetdm will require libsangoma, wanpipe, libsng_isdn, libpri. see http://wiki.freeswitch.org/wiki/FreeTDM#Dependencies ; links below
 # http://wiki.sangoma.com/wanpipe-linux-drivers
 # http://downloads.asterisk.org/pub/telephony/libpri/releases
 #optdepends=('freetdm: FreeTDM support for DAHDI etc.') 
 provides=('freeswitch')
-conflicts=('freeswitch' 'freeswitch-fixed')
+conflicts=('freeswitch'
+           'freeswitch-fixed')
 install=freeswitch.install
-backup=('etc/freeswitch/private/passwords.xml' 'etc/freeswitch/vars.xml')
-source=('git+https://stash.freeswitch.org/scm/fs/freeswitch.git' 'freeswitch.conf.d' 'README.freeswitch' 'run.freeswitch' 'run_log.freeswitch' 'conf_log.freeswitch' 'freeswitch.service')
+backup=('etc/freeswitch/private/passwords.xml'
+        'etc/freeswitch/vars.xml')
+source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git"
+        'freeswitch.conf.d'
+         'README.freeswitch'
+         'run.freeswitch'
+         'run_log.freeswitch'
+         'conf_log.freeswitch'
+         'freeswitch.service')
 changelog='ChangeLog'
 _pkgname="freeswitch"
 
-## HAH. autoincrement.
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
