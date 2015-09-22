@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.1
-_pkgver=4.1.5
-_rtpatchver=rt5
+_pkgver=4.1.7
+_rtpatchver=rt8
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}."{xz,sign}
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.1/older/patch-${_pkgver}-${_rtpatchver}.patch."{xz,sign}
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-${_pkgver}-${_rtpatchver}.patch."{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -29,9 +29,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'b495cf8a7b978986dd2b757b687751c62f635d15cc2228edb80934bc0d449dcc'
+            'bbd57fb48ea8e6971680818ba8722fd38ae419dca6047b852f10d33e5cd2ff6b'
             'SKIP'
-            '0cfa47bedd98fb7c542d422c79c52390be622d3e524fed54c976049d0050fec8'
+            '16b52fdee967160d80ba56b3edee7ca321f9068b7281203f69b47a027f32ae4d'
             'SKIP'
             'dbfb2d8ec8cf18e9eca2071231456d21ef7fdee6dd9af57fe5e40d9090357650'
             'da8f54fde0370a1c11c6a7bc4321873163f6a16a8517f0776b5dec106098da46'
@@ -43,6 +43,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
               '64254695FFF0AA4466CC19E67B96E8162A8CF5D1' # Sebastian Andrzej Siewior
               '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73' # Steven Rostedt
+              'E644E2F1D45FA0B2EAA02F33109F098506FF0B14' # Thomas Gleixner
              )
 
 _kernelname=${pkgbase#linux}
