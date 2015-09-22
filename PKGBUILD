@@ -1,7 +1,7 @@
 # Maintainer: Mike Cooper <mythmon@gmail.com>
 
 pkgname=fortune-mod-all-en
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="Meta package for all English fortunes"
 arch=('i686' 'x86_64')
@@ -48,8 +48,6 @@ depends=(
   'fortune-mod-himym'
   'fortune-mod-hitchhiker'
   'fortune-mod-homeland'
-  'fortune-mod-homestuck-git'
-  'fortune-mod-house'
   'fortune-mod-iasip'
   'fortune-mod-issa-haiku'
   'fortune-mod-joel'
@@ -80,7 +78,6 @@ depends=(
   'fortune-mod-sabrina'
   'fortune-mod-scrubs'
   'fortune-mod-sherlock'
-  'fortune-mod-simpsons-chalkboard'
   'fortune-mod-southpark'
   'fortune-mod-starwars'
   'fortune-mod-supernatural'
