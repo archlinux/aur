@@ -1,7 +1,7 @@
 pkgbase = apt-dater
 	pkgdesc = Terminal-based remote package update manager
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ibh.de/apt-dater
 	install = apt-dater.install
 	arch = i686
@@ -19,10 +19,12 @@ pkgbase = apt-dater
 	depends = tcl
 	depends = tmux
 	depends = util-linux
+	backup = etc/apt-dater/apt-dater.xml
+	backup = etc/apt-dater/hosts.xml
 	source = https://github.com/DE-IBH/apt-dater/archive/v1.0.2.tar.gz
 	source = apt-dater.install
 	sha256sums = 4d01e734f4dac32ff2eb279e6493a1019f2c2fce0e35cea48df027a593df0355
-	sha256sums = 5369cdbb3fb2cfe3a223c065f017e6a136b3d4ee9d85074ea5150a20120c2458
+	sha256sums = 6f06dbc545d8a42b7ea0bb67f5c90514bbe9b793a3a36a3c3544072691ce0dc9
 
 pkgname = apt-dater
 
