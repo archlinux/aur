@@ -67,7 +67,7 @@ _disabled_modules=(languages/mod_spidermonkey
 #                                              #
 
 
-pkgname='freeswitch'
+pkgname='freeswitch-git'
 pkgver='1.6'
 pkgrel='1'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."

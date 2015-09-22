@@ -1,4 +1,4 @@
-pkgbase = freeswitch
+pkgbase = freeswitch-git
 	pkgdesc = An opensource and free (libre, price) telephony system, similar to Asterisk (git version).
 	pkgver = 1.6
 	pkgrel = 1
@@ -46,5 +46,5 @@ pkgbase = freeswitch
 	md5sums = e6411d793501c29ec4afd6d54018de1b
 	md5sums = 31cd89e02ec3cc52769489a30ccf6c9b
 
-pkgname = freeswitch
+pkgname = freeswitch-git
 
