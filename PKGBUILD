@@ -27,15 +27,11 @@ _utils=(
 	'vb2rip'
 	'wordadd'
 	'zerofill'
-	'docs' # This is not a utility, it just adds docs and licenses.
 	)
-for _tool in ${_utils[@]}; do
-	pkgname+=("$pkgbase-$_tool")
-done
+for _tool in ${_utils[@]}; do pkgname+=("$pkgbase-$_tool"); done && pkgname+=("$pkgbase-docs")
 pkgver=1.03
-pkgrel=4
-pkgdesc="Collection of command line utilities, most for emulation or disk images.
-	(${_utils[*]})"
+pkgrel=5
+pkgdesc="Collection of command line utilities, most for emulation or disk images. (${_utils[*]})"
 arch=('i686' 'x86_64')
 url="http://www.neillcorlett.com/$pkgbase/"
 license=('GPL3')
@@ -47,7 +43,7 @@ build() {
 	for _tool in "${_utils[@]}"; do
 		if [[ "$_tool" == "ecm" ]]; then
 			gcc $CFLAGS -Wall "$_tool.c" -s -o "bin2ecm"
-		elif ! [[ "$_tool" == "docs" ]]; then
+		else
 			gcc $CFLAGS -Wall "$_tool.c" -s -o "$_tool"
 		fi
 	done
@@ -82,16 +78,16 @@ for _tool in "${_utils[@]}"; do
 		conflicts=('ucommon')
 		install -Dm0755 ./src/$_tool \${pkgdir}/usr/bin/$_tool
 		}"
-	elif [[ "$_tool" == "docs" ]]; then
-		eval "package_$pkgbase-$_tool() {
-			cd  \$srcdir/\${pkgbase}-\${pkgver}-src/
-			pkgdesc='$pkgbase documents'
-			install -Dm0644 ./doc/cmdpack.txt \${pkgdir}/usr/share/doc/\${pkgbase}/cmdpack.txt
-			install -Dm0644 ./doc/gpl.txt \${pkgdir}/usr/share/licenses/\${pkgbase}/LICENSE
-		}"
 	else
 		eval "$add_pkg_func
 		install -Dm0755 ./src/$_tool \${pkgdir}/usr/bin/$_tool
 		}"
 	fi
 done
+
+eval "package_$pkgbase-docs() {
+	cd  \$srcdir/\${pkgbase}-\${pkgver}-src/
+	pkgdesc='$pkgbase documents'
+	install -Dm0644 ./doc/cmdpack.txt \${pkgdir}/usr/share/doc/\${pkgbase}/cmdpack.txt
+	install -Dm0644 ./doc/gpl.txt \${pkgdir}/usr/share/licenses/\${pkgbase}/LICENSE
+}"
