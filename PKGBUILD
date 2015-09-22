@@ -13,14 +13,14 @@
 pkgbase=virt-manager-git
 _pkgbase=virt-manager
 pkgname=(virt-install-git virt-manager-git)
-pkgver=1.2.1.r4631.360fe11
+pkgver=1.2.1.r4693.601a82c
 pkgrel=1
 pkgdesc="Console user interface for managing virtual machines"
 arch=('any')
 url="http://virt-manager.org/"
 license=('GPL')
-depends=('python2' 'libvirt-python' 'libxml2' 'libvirt' 'urlgrabber'
-	 'libosinfo' 'python2-ipaddr' 'python2-gobject')
+depends=('python2' 'libvirt-python' 'libxml2' 'libvirt'
+	 'libosinfo' 'python2-ipaddr' 'python2-gobject' 'python2-requests')
 makedepends=('intltool>=0.35.0'
 	     'dbus-python' 'gtk-vnc' 'rarian'
 	     'gconf' 'yajl' 'librsvg' 'python2-gconf' 'libuser'
@@ -52,7 +52,7 @@ package_virt-manager-git() {
   provides=('virt-manager')
   install=virt-manager.install
   depends=('virt-install-git'
-	    'python2' 'libvirt-python' 'libxml2' 'libvirt' 'urlgrabber'
+	    'python2' 'libvirt-python' 'libxml2' 'libvirt' 'python2-requests'
 	    'dbus-python' 'gtk-vnc' 'rarian'
 	    'gconf' 'yajl' 'librsvg' 'python2-gconf' 'libuser'
 	    'python2-ipy' 'newt-syrup' 'openbsd-netcat' 'x11-ssh-askpass'
