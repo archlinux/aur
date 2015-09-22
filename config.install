@@ -1,0 +1,23 @@
+post_install() {
+	if [ -f /usr/share/thea/config ]
+	then
+		echo "* A new Thea config file has been installed at /usr/share/thea/config.dist"
+		echo "* You should merge this file with your existing config file and run thea-config"
+	else
+		mv /usr/share/thea/config.dist /usr/share/thea/config
+		echo "* Thea's config file is located at /usr/share/thea/config"
+		echo "* You must now edit this file and run thea-config"
+	fi
+}
+
+post_upgrade() {
+	if [ -f /usr/share/thea/config ]
+	then
+		echo "* A new Thea config file has been installed at /usr/share/thea/config.dist"
+		echo "* You should merge this file with your existing config file and run thea-config"
+	else
+		mv /usr/share/thea/config.dist /usr/share/thea/config
+		echo "* Thea's config file is located at /usr/share/thea/config"
+		echo "* You must now edit this file and run thea-config"
+	fi
+}

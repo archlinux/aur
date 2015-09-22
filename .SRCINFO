@@ -1,0 +1,20 @@
+pkgbase = thea-git
+	pkgdesc = A simple backup tool for desktop computers
+	pkgver = 20140105
+	pkgrel = 2
+	url = https://projects.kde.org/projects/playground/base/kio-mtp
+	install = config.install
+	arch = any
+	license = BSD
+	makedepends = make
+	depends = rsnapshot
+	depends = zsh
+	depends = yad
+	depends = sudo
+	depends = gksu
+	depends = colordiff
+	provides = thea
+	conflicts = thea
+
+pkgname = thea-git
+
