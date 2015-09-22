@@ -1,13 +1,13 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 pkgname=openprinting-ppds-pxlcolor-ricoh
 pkgver=20140319
-pkgrel=1
+pkgrel=2
 pkgdesc="PPD files for Ricoh's PCL colour printers, supplied by Ricoh"
 arch=('any')
 url='https://www.openprinting.org/driver/pxlcolor-Ricoh'
 license=('MIT')
 depends=(cups ghostscript)
-conflicts=(ppd-ricoh openprinting-ppds-postscript-ricoh)
+conflicts=(ppd-ricoh)
 install=driver.install
 source=('https://www.openprinting.org/download/printdriver/components/lsb3.2/main/RPMS/noarch/openprinting-ppds-pxlcolor-ricoh-20140319-1lsb3.2.noarch.rpm')
 md5sums=('7aba41f56bf93fd9e6f21aa27c6b1792')
