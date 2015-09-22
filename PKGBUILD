@@ -11,7 +11,7 @@ depends=('gnupg' 'perl-term-readkey' 'perl-gnupg-interface')
 makedepends=('gzip')
 source=(http://www.cipherdyne.org/$pkgname/download/$pkgname-$pkgver.tar.gz)
 
-build() {
+package() {
   cd "${srcdir}/$pkgname-$pkgver"
 
   install -Dm755 gpgdir "${pkgdir}/usr/bin/perlbin/site_perl/gpgdir"
