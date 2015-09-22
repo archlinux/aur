@@ -1,7 +1,7 @@
 # Maintainer: Dmitriy Morozov <dmorozov.mailbox@gmail.com>
 
 pkgname=qputty-qt5-git
-pkgver=501
+pkgver=502
 pkgrel=1
 pkgdesc="A Qt 5 port for putty, the free telnet/ssh client"
 arch=('i686' 'x86_64')
@@ -19,11 +19,9 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir"
-	# Fetch putty sources
-	git clone git://git.tartarus.org/simon/putty.git
-	cd putty
-	git checkout tags/0.65
+	cd "$srcdir/${pkgname%-git}"
+	git submodule init
+	git submodule update
 }
 
 build() {
