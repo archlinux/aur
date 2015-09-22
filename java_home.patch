@@ -1,0 +1,21 @@
+--- a/ide/bin/launcher.sh	2015-04-16 14:14:34.000000000 -0700
++++ b/ide/bin/launcher.sh	2015-06-02 18:40:06.592117555 -0700
+@@ -673,18 +673,6 @@
+   #
+   if [ -f "$tmpvar" ]
+   then
+-    while [ -h "$tmpvar" ]
+-    do
+-        EchoIfVerbose "Found symlinked JDK, following symlink: $tmpvar"
+-        tmpvar2=`ls -ls "$tmpvar"`
+-        tmpvar2=`expr "$tmpvar2" : '.*-> \(.*\)$'`
+-        if [ `expr "$tmpvar2" : "\.\/"` -gt 0 -o `expr "$tmpvar2" : "\.\.\/"` -gt 0 -o `expr "$tmpvar2" : ".*/.*"` -le 0 ]
+-        then
+-          tmpvar="`dirname "$tmpvar"`/$tmpvar2"
+-        else
+-          tmpvar="$tmpvar2"
+-        fi
+-    done
+     tmpvar=`expr "$tmpvar" : '\(.*\)\/bin\/[^\/]*$'`
+     SetJavaHome "$tmpvar"
+     EchoIfVerbose "Found existing default JDK $tmpvar"

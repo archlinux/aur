@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Oracle SQL Developer
+Comment=A graphical tool for database development. You can browse database objects, edit, run and debug (PL/)SQL statements and scripts.
+Icon=/opt/oracle-sqldeveloper/icon.png
+Exec=/usr/bin/oracle-sqldeveloper
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
+# Uncomment the following line to create a friendly name for this desktop entry
+# HOWEVER - this will then bork all other XFramePeer like apps. In particular
+# this breaks how SQL Developer and IntelliJ IDEA work together.
+#StartupWMClass=sun-awt-X11-XFramePeer
