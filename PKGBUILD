@@ -4,7 +4,7 @@
 pkgname=medusa-git
 pkgver=2.2_rc2.8.29a7899
 pkgrel=1
-pkgdesc="A speedy, massively parallel, modular, login brute-forcer for network "
+pkgdesc="Speedy, massively parallel and modular login brute-forcer for network "
 url="http://www.foofus.net/jmk/medusa/medusa.html"
 arch=('i686' 'x86_64')
 license=('GPL2')
