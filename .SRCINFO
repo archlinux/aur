@@ -1,0 +1,21 @@
+pkgbase = bcompare-beta
+	pkgdesc = A tool for comparing, merging text files, binary files and folders.
+	pkgver = 4.1.0.20431
+	pkgrel = 1
+	url = http://www.scootersoftware.com
+	install = bcompare-beta.install
+	arch = i686
+	arch = x86_64
+	groups = utility
+	license = custom
+	makedepends = sed
+	depends = gtk2
+	depends = libsm
+	options = !strip
+	source_i686 = http://www.scootersoftware.com/bcompare-4.1.0.20431.i386.tar.gz
+	sha256sums_i686 = aa554f772403c8baf8ec2393e305478dc4a327abc305c2408ca0a62d39e20ae3
+	source_x86_64 = http://www.scootersoftware.com/bcompare-4.1.0.20431.x86_64.tar.gz
+	sha256sums_x86_64 = 54968f0e47d2ac8f5f7493b8043b30422a0810cdfb08f52c56844b7e0df0ec15
+
+pkgname = bcompare-beta
+
