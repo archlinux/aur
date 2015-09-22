@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url="http://anypaper.sourceforge.net"
 license=('GPL')
 depends=('gtk2' 'libpng' 'feh')
+MAKEFLAGS="-j$(nproc)"
 makedepends=('automake' 'autoconf')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 noextract=()
