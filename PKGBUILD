@@ -1,7 +1,7 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 pkgname=openprinting-ppds-pxlcolor-generic
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic PPD for PCL colour printers"
 arch=('any')
 url='http://www.openprinting.org/printer/Generic/Generic-PCL_6_PCL_XL_Printer'
