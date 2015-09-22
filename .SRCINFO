@@ -1,0 +1,19 @@
+pkgbase = ivy-icon-theme-git
+	pkgdesc = A very minimalistic tango like icon theme
+	pkgver = r8.eb6b411
+	pkgrel = 1
+	url = http://sixsixfive.deviantart.com/art/Ivy-371216510
+	arch = any
+	license = CCPL:cc-by-sa-4.0
+	makedepends = git
+	makedepends = optipng
+	makedepends = inkscape
+	depends = hicolor-icon-theme
+	optdepends = tango-icon-theme: for missing icons
+	optdepends = glare-themes-git: the recommend gui theme
+	optdepends = glare-theme-misc: the recommend gui theme part 2
+	source = Ivy::git+https://github.com/sixsixfive/ivy
+	md5sums = SKIP
+
+pkgname = ivy-icon-theme-git
+
