@@ -4,7 +4,7 @@ pre_install() {
 
 post_install() {
   # I think we should use /usr/bin/ksh but the other except zsh shells show /bin
-  grep -qle '/bin/ksh$' '/etc/shells' || echo '/bin/ksh' >> '/etc/shells'
+  grep -qle '/bin/ksh$' '/etc/shells' || echo $'/usr/bin/ksh\n/bin/ksh' >> '/etc/shells'
   mandb -q
 }
 
@@ -32,7 +32,7 @@ pre_remove() {
    # unmodified. Crappy, but guaranteed.
    chsh -s '/bin/sh'
   fi
-  sed -i -e '/^\/bin\/ksh$/d' '/etc/shells'
+  sed -i -e '/^\/bin\/ksh$/d' -e '/^\/usr\/bin\/ksh$/d' '/etc/shells'
 }
 
 post_remove() {

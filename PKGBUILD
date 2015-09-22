@@ -25,6 +25,7 @@
 # is necessary because the Debian sources won't build any more. The new sources 
 # are hard enough to build.
 
+[ ! -s 'PKGBUILD.local' ] && cat > 'PKGBUILD.local' << EOF
 # http://www.kornshell.com/
 #   _Software_
 #   _The Official AT&T Release of KornShell 93_
@@ -39,6 +40,8 @@ _opt_EPLURL='http://www.research.att.com/sw/download'
 _opt_InstallBETA=1  # Default: 1, 0 to build release version
 _opt_InstallNMAKE=0 # Default: 0, 1 to Install nmake
 ###############################################################################
+EOF
+source 'PKGBUILD.local'
 
 # This is a multi core build. It takes less than 3 minutes on a big processor 
 # like my Intel Haswell E3-1245v3 with SAS drives! Watch it go in htop!
@@ -83,11 +86,14 @@ depends=('glibc')
 makedepends=('binutils') # for ar to unpack debian package
 conflicts=('pdksh') # I'm not sure why this is a conflict! There are many ksh clones. Why aren't they all in conflict?
 install='ksh.install'
+_verwatch=('http://www2.research.att.com/~astopen/cgi-bin/download.cgi?action=list&name=ast-base' '&nbsp;\([0-9-]\+\)&nbsp;&nbsp;BASE&nbsp;' 't')
 
 # URL encoding, the sleazy way for the few characters we need!
 _opt_EPLUSERE="${_opt_EPLUSER// /%20}"
 _opt_EPLUSERE="${_opt_EPLUSERE//\//%2F}"
 _debfile='ksh_93u+20120801-1_amd64.deb' # We don't want the binaries so the arch doesn't matter.
+
+declare -f srcinfo_write_from_pkgbuild >/dev/null && { _opt_EPLUSERE=''; _opt_EPLPASS=''; } # erase pw for mksrcinfo, let through for makepkg
 
 if [ "${_opt_InstallBETA}" -ne 0 ]; then
 pkgver='2014.06.25beta'
@@ -96,6 +102,7 @@ source=("http://${_opt_EPLUSERE}:${_opt_EPLPASS}@www2.research.att.com/~astopen/
         "http://${_opt_EPLUSERE}:${_opt_EPLPASS}@www2.research.att.com/~astopen/download/beta/ast-base.2014-06-25.tgz"
         "http://http.us.debian.org/debian/pool/main/k/ksh/${_debfile}" # man page and misc files
 )
+
 # :; is to keep updpkgsums from removing all our sums
 :;sha256sums=('8852b9d37d5034e3780aeb5f963726381eeb4e08bb5bee1fbfa7e3f529c10e1b'
             '58588b07b076f05dbbd5f4f095d5753309a8356ba1e5475262ce77d6bff42dae'
@@ -169,27 +176,10 @@ noextract=("${_debfile}")
 
 # -CJS
 
-_pkginit() {
-  if [ "${SOURCEONLY:-0}" -ne 0 ]; then # see makepkg -S if this var changes
-    if [ ! -z "${_opt_EPLPASS}" -o ! -z "${_opt_EPLUSER}" ]; then
-      echo '_opt_EPLUSER and _opt_EPLPASS must be blank' 1>&2
-      echo 'to produce a source package.' 1>&2
-      exit 1
-    fi
-  else
-    if [ -z "${_opt_EPLPASS}" -o -z "${_opt_EPLUSER}" ]; then
-      echo '_opt_EPLUSER and _opt_EPLPASS must be filled in.' 1>&2
-      echo 'Please retrieve these from the EPL License page.' 1>&2
-      echo 'Edit the PKGBUILD for instructions and changes.' 1>&2
-      echo 'This PKGBUILD must be edited to install so 1 step' 1>&2
-      echo "packages like packer can't be used." 1>&2
-      if [ "${GENINTEG:-0}" -eq 0 ]; then # see makepkg -g if this var changes
-        exit 1
-      fi
-    fi
-  fi
+# Return sorted list of all version numbers available (used by git-aurcheck)
+_vercheck() {
+  curl -s -l "${_verwatch[0]}" | grep -FB1 '>SOURCE<' | _getlinks "${_verwatch[2]}" | sed -ne "s:^${_verwatch[1]}"'$:\1:p' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
 }
-declare -f srcinfo_write_attr > /dev/null || _pkginit
 
 prepare() {
   set -u
@@ -203,14 +193,6 @@ prepare() {
   cd "${srcdir}/debian"
   # http://www.g-loaded.eu/2008/01/28/how-to-extract-rpm-or-deb-packages/
   ar p "../${_debfile}" 'data.tar.gz' | tar zxf -
-  set +u
-}
-
-# I haven't found any help on package parameters other than here:
-# bin/package help 2>&1 | less
-
-build() {
-  set -u
   cd "${srcdir}"
 
   # Interesting, but too old to be of much help.
@@ -244,7 +226,14 @@ build() {
   # another bum package. Gentoo also patched this.
   # The grep nonsense is so we don't needlessly change the timestamp of 
   # already fixed files. Helpful for running makepkg -ef over and over.
-  sed -i -e 's:/usr/tmp:/tmp:g' 2>/dev/null `grep -l '/usr/tmp' 'src/cmd/nmake/Makerules.mk' 'src/cmd/tw/updatedb.sh' 'src/lib/libast/features/stdio' 'src/lib/libast/features/mmap' 'src/lib/libast/path/pathtemp.c'` || :
+  #sed -i -e 's:/usr/tmp:/tmp:g' 2>/dev/null `grep -l '/usr/tmp' 'src/cmd/nmake/Makerules.mk' 'src/cmd/tw/updatedb.sh' 'src/lib/libast/features/stdio' 'src/lib/libast/features/mmap' 'src/lib/libast/path/pathtemp.c'` || :
+  sed -i -e 's:/usr/tmp:/var/tmp:g' 2>/dev/null `grep -l '/usr/tmp' 'src/cmd/nmake/Makerules.mk' 'src/cmd/tw/updatedb.sh' 'src/lib/libast/features/stdio' 'src/lib/libast/features/mmap' 'src/lib/libast/path/pathtemp.c'` || :
+
+if :; then
+  # https://forums.opensuse.org/showthread.php/508185-GCC-5/page2
+  # https://build.opensuse.org/package/view_file/home:Andreas_Schwab:Factory/ksh/cpp.patch?expand=1
+  sed -i -e 's:$cc -E:$cc -E -P:g' 'src/cmd/INIT/iffe.sh'
+else
 
   # fix L_tmpname, sizeof("/tmp")+15 = 20 (not 19) but we'll use 25 like the 
   # rest of the code.
@@ -311,6 +300,16 @@ build() {
 
   # The simplicity of these patches do not adequately reflect the difficulty 
   # I had in finding them.
+fi
+  set +u
+}
+
+# I haven't found any help on package parameters other than here:
+# bin/package help 2>&1 | less
+
+build() {
+  set -u
+  cd "${srcdir}"
 
   # This is from the Gentoo ebuild.
   # sh bin/package flat only make ast-ksh SHELL=sh SHOPT_SYSRC=1
@@ -456,16 +455,3 @@ package() {
   set +u
 }
 set +u
-# any sums down here need to be moved in place above, with a preceeding :;
-srcinfo_write_attr () 
-{ 
-    local attrname=$1 attrvalues=("${@:2}");
-    attrvalues=("${attrvalues[@]//+([[:space:]])/ }");
-    attrvalues=("${attrvalues[@]#[[:space:]]}");
-    attrvalues=("${attrvalues[@]%[[:space:]]}");
-    printf "	$attrname = %s
-" "${attrvalues[@]}"
-}
-sha256sums=('8852b9d37d5034e3780aeb5f963726381eeb4e08bb5bee1fbfa7e3f529c10e1b'
-            '58588b07b076f05dbbd5f4f095d5753309a8356ba1e5475262ce77d6bff42dae'
-            '37495cc625a2174b22a43542acac1d69402ee4992ee084a84690546c5b932b39')
