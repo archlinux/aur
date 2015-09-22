@@ -13,6 +13,7 @@ url="http://projects.gnome.org/evince/"
 license=('GPL')
 depends=('gtk2' 'poppler-glib' 'libspectre' 'djvulibre' 't1lib' 'gsfonts' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('intltool')
+MAKEFLAGS="-j$(nproc)"
 provides=('evince')
 conflicts=('evince')
 options=('!libtool')
