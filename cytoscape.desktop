@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Cytoscape
+GenericName=Cytoscape
+Exec=cytoscape
+Terminal=false
+Icon=cytoscape
+Type=Application
+Categories=Application;Office;
