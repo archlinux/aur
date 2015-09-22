@@ -19,12 +19,13 @@ pkgver() {
 
 build() {
   cd ${srcdir}/${pkgname}
-  ./autogen.sh
-  ./configure --prefix=/usr
+  mkdir -p "build"
+  cd "build"
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname}/build
   make DESTDIR="$pkgdir/" install
 }
