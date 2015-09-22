@@ -13,7 +13,7 @@ source=("$pkgname"::"git://github.com/Snaipe/${_archivename}.git#tag=v${pkgver}"
 md5sums=('SKIP')
 
 build() {
-  cd ${srcdir}/${_archivename}-${pkgver}
+  cd ${srcdir}/${_archivename}
   mkdir -p "build"
   cd "build"
   cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_archivename}-${pkgver}/build
+  cd ${srcdir}/${_archivename}/build
   make DESTDIR=$pkgdir LIBDIR=$pkgdir/usr/lib install
 }
 
