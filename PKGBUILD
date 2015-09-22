@@ -1,4 +1,5 @@
 # Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: fstirlitz <felix.von.s@posteo.de>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Matej Lach <matej.lach@gmail.com>
 
