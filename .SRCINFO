@@ -1,0 +1,24 @@
+pkgbase = google2srt
+	pkgdesc = Google2SRT allows you to convert subtitles from Google Video and YouTube to SubRip (.srt) format.
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://sourceforge.net/projects/google2srt/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	makedepends = java-environment
+	depends = java-runtime
+	depends = java-jdom1
+	depends = java-commons-io
+	source = http://heanet.dl.sourceforge.net/project/google2srt/Google2SRT/0.7/Google2SRT-0.7.zip
+	source = google2srt
+	source = google2srt.desktop
+	source = icon.png
+	md5sums = 7aa6575552f949e737c776d68968816c
+	md5sums = 51010acfab296d7998a6885a0b30dee7
+	md5sums = 06c19e48725df1476945d73cb28744ce
+	md5sums = 7878c439c81412767874bfbf6c6683ad
+
+pkgname = google2srt
+

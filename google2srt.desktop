@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.5.2
+Encoding=UTF-8
+Name=Google2SRT
+Exec=google2srt %f
+Comment=Tool to convert subtitles from Google Video and YouTube to SubRip
+Icon=google2srt
+Terminal=false
+Categories=AudioVideo;Video;
