@@ -1,0 +1,15 @@
+pkgbase = brainfuck
+	pkgdesc = A full fledged brainfuck compiler
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/benjamin-james/brainfuck
+	arch = any
+	license = GPL3
+	depends = glibc
+	depends = binutils
+	provides = bfc
+	source = https://github.com/benjamin-james/brainfuck/archive/0.1.tar.gz
+	md5sums = 22dd272219ee951739937f1548c4448d
+
+pkgname = brainfuck
+
