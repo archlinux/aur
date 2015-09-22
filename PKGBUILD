@@ -5,17 +5,17 @@
 
 pkgname=cewe-monlivrephoto
 pkgver=5.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Création off-line de livres photos, commandables ensuite en ligne auprès de divers partenaires commerciaux - Version française"
 url="http://www.livrephoto-cewe.fr/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
 conflicts=('cewe-fotobuch')
 arch=('i686' 'x86_64')
-source=("http://dls.photoprintit.com/api/getClient/14227/hps/om_sem_goo_brand_14227_x/linux/setup_Mon_LIVRE_PHOTO_CEWE.tgz"         
+source=("http://dls.photoprintit.com/download/Data/14227/hps/setup_Mon_LIVRE_PHOTO_CEWE.tgz"         
 "cewe-monlivrephoto.desktop" "cewe-monlivrephoto.install")
 install=cewe-monlivrephoto.install
-md5sums=('89f5753d18042405c604c766893d20fd' 'a6b82116c19dcca0b5d8ac74707d8938' '82baecba5be4c2af0cccf0f5bc0e00c7')
+md5sums=('f52b231f042bbb0476b81e499261af5e' 'a6b82116c19dcca0b5d8ac74707d8938' '82baecba5be4c2af0cccf0f5bc0e00c7')
 
 package() {
         cd $srcdir
