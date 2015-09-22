@@ -3,8 +3,8 @@
  
 _pkgname=rmlint
 pkgname=${_pkgname}-git
-pkgver=v2.2.0.r33.g08a75ed
-pkgrel=1
+pkgver=2.2.0.r509.gc0b8e23
+pkgrel=3
 pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
  
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
