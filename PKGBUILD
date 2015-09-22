@@ -1,9 +1,9 @@
-# Maintainer: Laszlo Papp <djszapi2 at gmail com>
-# Contributer: CRT<crt.011@gmail.com>
+# Contributor: Laszlo Papp <djszapi2 at gmail com>
+# Maintainer: CRT <cirkit@koderoot.net>
 pkgname=vim-tetris
 pkgver=0.52fix
 _scriptid=172
-pkgrel=3
+pkgrel=1
 pkgdesc="A tetris game in pure vim"
 arch=(i686 x86_64)
 url="http://www.vim.org/scripts/script.php?script_id=172"
