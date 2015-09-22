@@ -1,11 +1,13 @@
 pkgbase = uzbl-next-git
 	pkgver = 2012.05.14.1252.g95e26b8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.uzbl.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	depends = webkitgtk
+	depends = cairo
 	options = !emptydirs
 	source = git+https://github.com/uzbl/uzbl.git#branch=next
 	md5sums = SKIP
@@ -13,8 +15,6 @@ pkgbase = uzbl-next-git
 pkgname = uzbl-core-next-git
 	pkgdesc = Webpage interface component meant for integration with other tools and scripts
 	install = uzbl.install
-	depends = webkitgtk
-	depends = cairo
 	optdepends = socat: to interface with the socket
 	optdepends = dmenu: to run some of the example scripts
 	optdepends = zenity: to run some of the example scripts
@@ -39,6 +39,7 @@ pkgname = uzbl-tabbed-next-git
 	pkgdesc = Tabbing manager providing multiple uzbl-browser instances in 1 window
 	arch = any
 	depends = python2
+	depends = uzbl-core
 	provides = uzbl-tabbed
 	conflicts = uzbl-tabbed
 
