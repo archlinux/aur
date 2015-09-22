@@ -1,0 +1,14 @@
+pkgbase = g500-git
+	pkgdesc = Documentation and code for g500 specific HID protocol for profile configuration and other tweaks
+	pkgver = r81.b16e6fb
+	pkgrel = 1
+	url = https://github.com/cvuchener/g500
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = bash
+	source = git+https://github.com/cvuchener/g500.git
+	md5sums = SKIP
+
+pkgname = g500-git
+
