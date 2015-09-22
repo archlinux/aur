@@ -1,0 +1,20 @@
+pkgbase = libilbc-git
+	pkgdesc = Freeswitch fork of iLBC codec
+	pkgver = 0.0.1.18.829b08c
+	pkgrel = 1
+	url = http://www.ilbcfreeware.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = awk
+	makedepends = audiofile
+	makedepends = git
+	depends = glibc
+	provides = ilbc
+	conflicts = ilbc
+	options = strip
+	source = git+https://freeswitch.org/stash/scm/sd/libilbc.git
+	md5sums = SKIP
+
+pkgname = libilbc-git
+
