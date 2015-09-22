@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 246362 2015-09-15 03:51:08Z foutrelis $
 # Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
@@ -6,7 +5,7 @@
 pkgname=ncurses5-compat-libs
 _pkgname=ncurses
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='System V Release 4.0 curses emulation library, ABI 5'
 arch=('i686' 'x86_64')
 url='http://invisible-island.net/ncurses/ncurses.html'
@@ -34,7 +33,7 @@ package() {
 
   # fool packages looking to link to non-wide-character ncurses libraries
   for lib in ncurses ncurses++ form panel menu; do
-    echo "INPUT(-l${lib}w)" > "$pkgdir"/usr/lib/lib${lib}.so.5
+    ln -s /usr/lib/lib${lib}w.so.5 "$pkgdir"/usr/lib/lib${lib}.so.5
   done
 
   # install license, rip it from the readme
