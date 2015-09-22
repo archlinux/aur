@@ -1,92 +1,81 @@
-* commit d360b73bf5ab9ac13576cbff9c36d6b95cc500db
+* commit ab817172e40e7c69155f43e9194ea27823cb7613
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Wed Sep 2 01:47:15 2015 -0500
+| Date:   Tue Sep 22 02:38:18 2015 -0400
 | 
-|     Specify whether Curve uses scaled or unscaled coordinates.
-|     Unscaled coordinates will be used in a future commit (hopefully).
-|     
-|     Added a normalize() method to Vec2f.
-|     
-|     Throw RuntimeExceptions for any Curve initialization errors; the game would crash anyway, and this way the objects can be substituted for DummyObjects for a graceful failure.
+|     Updating to 0.12.0.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 6c956e927f8fa2b704914c70bae858f103542f97
+* commit 4acd3cda02f1ed8b62acebcf1912bec9cf5c092b
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Wed Sep 2 01:41:47 2015 -0500
+| Date:   Sun Sep 20 11:38:46 2015 -0400
 | 
-|     Beatmap parser fixes.
-|     - Fixed hit object 'addition' field parsing. (Still not sure what the fields do, but the types should be correct now...)
-|     - Fixed a careless error causing a potential null pointer exception. (blame: 0b33fed)
-|     - Show an error if parseHitObjects() parses a different amount of objects than expected.
+|     Check mouse button before firing events for kinetic scrolling.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit fdd70a81c4ce50a8ebeb1edc4ef2d7f64d457ea8
+* commit c69f34adc3f5a44239abea7b82de5d27ccc78a15
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Tue Sep 1 21:57:37 2015 -0500
+| Date:   Sat Sep 19 15:30:41 2015 -0400
 | 
-|     Removed leftover/unused 'color' parameter in Curve constructor.
+|     Don't show decimal points for CS/HP/AR/OD values unless needed.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit e3d8a11c39a91d926f9a4e13b1f5c150555d5480
+* commit 5634a673bbef2846f0e94a8a1b76df9d7a5f39fa
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Tue Sep 1 16:12:41 2015 -0500
+| Date:   Sat Sep 19 13:04:53 2015 -0400
 | 
-|     Updating to 0.11.0.
+|     Fix hovering bug with < max nodes in kinetic scrolling.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|    
+*   commit 84ce2d153161f85158d91b1d4f5f9ecb49f51a8f
+|\  Merge: c58c128 b843beb
+| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
+| | Date:   Sat Sep 19 12:32:44 2015 -0400
+| | 
+| |     Merge pull request #136 from fluddokt/KinecticScrolling
+| |     
+| |     KineticScrolling Minor fixes
+| |   
+| * commit b843beb3c0d14542db892c32e19401076dee07c9
+|/  Author: fd <fd@b>
+|   Date:   Sat Sep 19 12:11:07 2015 -0400
+|   
+|       KineticScrolling Minor fixes
+|       for selection in large BeatmapSets
+|  
+* commit c58c128ec8521f36d2417dc7ab2d6440551c56cc
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Fri Sep 18 19:20:18 2015 -0400
+| 
+|     Minor Javadoc additions/edits.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit df3e662865532b6607713cfc83cc9a2a428e6da9
+* commit eb331360b9ceda0d76f36d8b25b0ed9a067178f5
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Aug 31 22:54:35 2015 -0500
+| Date:   Fri Sep 18 18:49:01 2015 -0400
 | 
-|     Marked a couple more members as 'final'. (continuation of 441bb95)
+|     Added scrolling animation to "random" song selection.
+|     Involves temporarily changing the kinetic scrolling speed, so it's a little messy...
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 |  
-* commit 769ad963e7aa636875c9ad673cb14c222a6ffb54
+* commit 14496050ead706487a79e82d8a535a5fb3764124
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Aug 31 22:25:28 2015 -0500
+| Date:   Fri Sep 18 16:02:19 2015 -0400
 | 
-|     Moved OszUnpacker into package 'opsu.beatmap'.
+|     Minor style changes from #134.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit c70fcb296f4524211df0bba58d60f7960be09c4d
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Aug 31 17:54:32 2015 -0500
-| 
-|     Add git hash (from refs/remotes/origin/master) to error reports.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit e535a8884081a780ff704aa5ae0d90f5392c3421
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Aug 30 23:21:58 2015 -0500
-| 
-|     Stop firing BeatmapWatchService events for intended file modifications.
-|     Specifically, during OSZ unpacking and for file deletion through the song menu.  Triggering the beatmap reload event in these scenarios would be redundant.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit aed5163a832c6bdd237f65009e560d5c3dbff16d
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Aug 30 23:18:46 2015 -0500
-| 
-|     Check completed download size against Content-Length header.
-|     If the number of bytes received is less than the reported content length (e.g. a network timeout), mark the download with the "error" status instead of "complete".  Content-Length should be reliable if reported at all, so this should be a valid approach.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit bd8e35cb81e5fefaabf586d4193c386de9648e6e
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Aug 30 22:20:52 2015 -0500
-| 
-|     Added MengSky download server.
-|     URL: http://osu.mengsky.net/
-|     
-|     Also parsing raw HTML for this one because there's no API.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|    
+*   commit daf3a2aad35014fd5a2cca3c8464bdbf7b69a488
+|\  Merge: fc27722 131138e
+| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
+| | Date:   Fri Sep 18 15:27:54 2015 -0400
+| | 
+| |     Merge pull request #134 from Bigpet/snakeslider
+| |     
+| |     Snaking sliders implementation.

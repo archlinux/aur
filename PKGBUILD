@@ -1,8 +1,8 @@
-# Contributor in comments: Misc <https://aur.archlinux.org/account/misc/>
 # Maintainer: Lucki <Lucki at holarse-linuxgaming dot de>
+# Contributor in comments: Misc <https://aur.archlinux.org/account/misc/>
 
 pkgname=opsu-git
-pkgver=0.11.0.r3.gd360b73
+pkgver=0.12.0.r0.gab81717
 pkgrel=1
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
@@ -27,7 +27,7 @@ pkgver()
 prepare()
 {
 	# generate .desktop-file
-	gendesk -n -f --pkgname ${pkgname} --pkgdesc "$pkgdesc" --name "opsu!-git" --exec "${pkgname}" --categories "Game"
+	gendesk -n -f --pkgname "${pkgname}" --pkgdesc "$pkgdesc" --name "opsu!-git" --exec "${pkgname}" --categories "Game"
 
 	# update .CHANGELOG
 	git -C "${srcdir}/${pkgname}" log --graph -10 > "${startdir}/.CHANGELOG"
