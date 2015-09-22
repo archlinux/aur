@@ -1,0 +1,22 @@
+pkgbase = mucharmap-git
+	pkgdesc = Mate Unicode Charmap
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/mate-desktop/mate-character-map
+	install = mucharmap-git.install
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = autoconf
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = mate-common
+	provides = mate-calc
+	source = git+https://github.com/mate-desktop/mate-character-map
+	sha1sums = SKIP
+
+pkgname = mucharmap-git
+
