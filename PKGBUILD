@@ -1,8 +1,8 @@
 # Maintainer: Lucki <Lucki at holarse-linuxgaming dot de>
 
 pkgname=opsu
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
 url="https://itdelatrisu.github.io/opsu/"
@@ -26,7 +26,7 @@ pkgver()
 prepare()
 {
 	# generate .desktop-file
-	gendesk -n -f --pkgname ${pkgname} --pkgdesc "$pkgdesc" --name "opsu!" --exec "${pkgname}" --categories "Game"
+	gendesk -n -f --pkgname "${pkgname}" --pkgdesc "$pkgdesc" --name "opsu!" --exec "${pkgname}" --categories "Game"
 }
 
 build()

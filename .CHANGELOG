@@ -1,32 +1,19 @@
-This version contains a large number of bug fixes, some new features, and UI improvements.
-There were also important internal changes that are outlined below.
-
+This version brings some major UI enhancements.
 New:
 
-    Added an animation library for all-around better animations. (c91146b)
-    Implemented the "Hidden" mod, which marks the completion of the core game mods. (#115, 34c7942)
-    Added YaS Online, Mnetwork, and MengSky download servers; removed the now-offline osu!Mirror server. (dbb5eeb, 8173b9b, bd8e35c)
-    Improved the appearance of the updater UI. (f22498a)
-    Lowered GLSL version requirement for the new slider style from 330 to 110. (#122, #124)
-    Added a watch service to monitor the beatmap directory tree for changes (disabled by default). (949b2c2)
+    Implemented snaking sliders. (#134)
+    Implemented kinetic scrolling in the song menu and downloads menu. (#131)
+    Ported osu!tp's beatmap difficulty algorithm to compute star ratings. (c785a12)
+        Display rating information for each beatmap. (a2eaf35)
+        Added conditional search by star rating. (1494884)
+    Added a star stream animation in the song menu. (8004280)
+    Added a dropdown menu class, currently used in the downloads menu. (643a7c4)
+    Added misc. animations in the song menu. (c5cc43a, 5ff35d3, be3adb3)
 
 Bug fixes:
 
-    Fixed wrong rank icons and wrong "Hard Rock" coordinates during replays. (#116, #118)
-    Fixed scores almost always failing to be deleted. (e68bcf8)
-    Fixed HP not being drained while holding sliders. (#103)
-    Now using official formulas for circle diameter and timing offsets. (8892973)
-    With "Show Perfect Hits" disabled, hit animations are now shown instead of objects disappearing immediately. (6e7de65)
-    Fixed game ranking screen issues: "retry" button only appears when necessary, and watching a "replay" with "Auto" is no longer treated as a replay. (130f9bf)
-    Fixed old-style skinned cursors being ignored, and the cursor-middle image is no longer scaled when clicking. (5efb61d, 40ab947)
-    Fixed crashes when trying to load audio files that were moved, and when unable to connect to the beatmap database. (ae5016f, #111)
-    Fixed some broken logic when handling misnamed MP3/OGG files. (20d40dd)
-    Fixed interrupted downloads still being marked "complete". (aed5163)
-    Fixed two incorrect shortcut keys in the game mod menu. (96f882b)
-
-Internal updates:
-
-    Added Gradle build system; see the readme for details. (#126)
-    Removed JarSplice from the build cycle, and incorporated a native loader into opsu!.
-    Removed the jinput dependency.
-    Documented all files/directories created by opsu! in the readme.
+    Fixed the "Easy" mod being completely broken. (e767800)
+    Better handling for parallel vectors in CircumscribedCircle sliders. (c516d93)
+    Fixed the game-wide lag when loading new beatmap background images in the song menu. (3214916)
+    Fixed some remaining beatmap parser issues, e.g. "addition" field parsing. (6c956e9)
+    Fixed a leftover issue with the XDG flag since the previous release. (8cb796b)
