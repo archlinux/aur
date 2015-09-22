@@ -13,11 +13,11 @@ source=('joel-on-software')
 md5sums=('1da724c939ceffdc5ab2a59113df53e7')
 
 package() {
-  cd $startdir/src
+  cd $srcdir
 
   strfile joel-on-software joel-on-software.dat
 
-  install -D -m644 joel-on-software $startdir/pkg/usr/share/fortune/joel-on-software
-  install -D -m644 joel-on-software.dat $startdir/pkg/usr/share/fortune/joel-on-software.dat
+  install -D -m644 joel-on-software $pkgdir/usr/share/fortune/joel-on-software
+  install -D -m644 joel-on-software.dat $pkgdir/usr/share/fortune/joel-on-software.dat
 }
 # vim: set ft=sh ts=2 et:
