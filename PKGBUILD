@@ -1,7 +1,7 @@
 # Maintainer: zoe <chp321@gmail.com>
 pkgname=symboleditor
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Symbol editor for KXStitch"
 arch=('i686' 'x86_64')
 url="http://kxstitch.sourceforge.net/"
@@ -15,6 +15,10 @@ md5sums=('20f27055e5dd53e1dc4837d7e6f16b69' '5b554364ee8db32e0bb1e881bf0bca34')
 
 build() {
     cd "$srcdir/SymbolEditor-$pkgver"
+    
+    # Avoid bug in cmake :
+    sed -i '5i\cmake_policy(SET CMP0002 OLD)' CMakeLists.txt
+    
     rm -rf build
     mkdir build 
     cd build
