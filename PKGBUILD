@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=videoteco-fork-git
-pkgver=0.r27.415ef16
+pkgver=r27.415ef16
 pkgrel=1
 epoch=
 pkgdesc="A text editing program."
@@ -9,7 +9,7 @@ url="http://www.copters.com/teco.html"
 url="https://github.com/rhaberkorn/videoteco-fork"
 license=('GPL')
 groups=()
-depends=()
+depends=('ncurses')
 makedepends=('git')
 optdepends=()
 checkdepends=()
@@ -27,7 +27,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
