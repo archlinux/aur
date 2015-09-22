@@ -19,8 +19,8 @@ pkgver() {
 }
 
 package() {
-  cd urxvt-perls
+    cd "$srcdir/urxvt-perls"
 
-  install -dm755 "$pkgdir"/usr/lib/urxvt/perl
-  install -t "$pkgdir"/usr/lib/urxvt/perl -m644 "${provides[@]#urxvt-}" clipboard
+    install -dm755 "$pkgdir"/usr/lib/urxvt/perl
+    install -t "$pkgdir"/usr/lib/urxvt/perl -m644 url-select keyboard-select clipboard
 }
