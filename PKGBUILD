@@ -2,7 +2,7 @@
 
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
-pkgver=20150921.r45.a95acc5
+pkgver=20150922.r47.2062f77
 pkgrel=1
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
