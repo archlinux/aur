@@ -10,10 +10,10 @@ license=('GPL')
 groups=()
 depends=()
 makedepends=('git' 'make')
-source=(${pkgname}::git+https://github.com/Somasis/gnome-colors-revival#branch=master)
+source=(${pkgname}::git+https://github.com/Somasis/arc-colors-revival#branch=master)
 sha256sums=('SKIP') 
 
-_gitname="https://github.com/Somasis/gnome-colors-revival"
+_gitname="https://github.com/Somasis/arc-colors-revival"
 
 pkgver() {
     cd "$pkgname"
