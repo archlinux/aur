@@ -1,7 +1,9 @@
+# Maintainer: Jason Edson <jaysonedson@gmail.com>
+
 _name=sabermod-prebuilts
 pkgname=$_name
-pkgver=2015.09.01
-pkgrel=4
+pkgver=2015.09.21
+pkgrel=1
 pkgdesc="Prebuilt libraries for the SaberMod toolchain."
 license=('GPL-3')
 arch=('x86_64')
@@ -19,22 +21,29 @@ package() {
     install -m 755 libcloog-isl.so.4.0.0 "$pkgdir/usr/lib/"
     install -m 755 libosl.a "$pkgdir/usr/lib/"
     install -m 755 libosl.so.0.0.0 "$pkgdir/usr/lib/"
+    install -m 755 libgmp.a "$pkgdir/usr/lib/"
+    install -m 755 libgmp.so.10.2.0 "$pkgdir/usr/lib/"
+    install -m 755 libgomp.a "$pkgdir/usr/lib/"
+    install -m 755 libgomp-plugin-host_nonshm.a "$pkgdir/usr/lib/"
+    install -m 755 libgomp.spec "$pkgdir/usr/lib/"
     install -m 755 libisl.a "$pkgdir/usr/lib/"
-    install -m 755 libisl.so.13.1.1 "$pkgdir/usr/lib/"
     install -m 755 libisl.so.15.0.0 "$pkgdir/usr/lib/"
+    install -m 755 libmpfr.a "$pkgdir/usr/lib/"
     install -m 755 libmpfr.so.6.0.0 "$pkgdir/usr/lib/"
-    install -m 755 libcloog-isl.so.4.0.0 "$pkgdir/usr/lib/"
-    install -m 755 libcloog-isl.so.4.0.0 "$pkgdir/usr/lib/"
 
     # Link the libraries
     ln -s "$pkgdir/usr/lib/libcloog-isl.so.4.0.0" "$pkgdir/usr/lib/libcloog-isl.so"
     ln -s "$pkgdir/usr/lib/libcloog-isl.so.4.0.0" "$pkgdir/usr/lib/libcloog-isl.so.4"
     ln -s "$pkgdir/usr/lib/libosl.so.0.0.0" "$pkgdir/usr/lib/libosl.so.0"
     ln -s "$pkgdir/usr/lib/libosl.so.0.0.0" "$pkgdir/usr/lib/libosl.so"
-    ln -s "$pkgdir/usr/lib/libisl.so.15" "$pkgdir/usr/lib/libisl.so.13.1.0"
+    ln -s "$pkgdir/usr/lib/libgmp.so.10.2.0" "$pkgdir/usr/lib/libgmp.so"
+    ln -s "$pkgdir/usr/lib/libgmp.so.10.2.0" "$pkgdir/usr/lib/libgmp.so.10"
+    ln -s "$pkgdir/usr/lib/libisl.so.15" "$pkgdir/usr/lib/libisl.so"
     ln -s "$pkgdir/usr/lib/libisl.so.15" "$pkgdir/usr/lib/libisl.so.10"
-    ln -s "$pkgdir/usr/lib/libisl.so.15 " "$pkgdir/usr/lib/libisl.so"
-    ln -s "$pkgdir/usr/lib/libisl.so.15" "$pkgdir/usr/lib/libisl.so.13"
+    ln -s "$pkgdir/usr/lib/libisl.so.15" "$pkgdir/usr/lib/libisl.so.13.1.0"
+    ln -s "$pkgdir/usr/lib/libisl.so.15" "$pkgdir/usr/lib/libisl.so.13.1.1"
+    ln -s "$pkgdir/usr/lib/libisl.so.15" "$pkgdir/usr/lib/libisl.so.15"
+    ln -s "$pkgdir/usr/lib/libmpfr.so.6.0.0" "$pkgdir/usr/lib/libmpfr.so"
     ln -s "$pkgdir/usr/lib/libmpfr.so.6.0.0" "$pkgdir/usr/lib/libmpfr.so.6"
 
 }

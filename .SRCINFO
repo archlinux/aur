@@ -1,7 +1,7 @@
 pkgbase = sabermod-prebuilts
 	pkgdesc = Prebuilt libraries for the SaberMod toolchain.
-	pkgver = 2015.09.01
-	pkgrel = 4
+	pkgver = 2015.09.21
+	pkgrel = 1
 	url = http://sabermod.net/
 	arch = x86_64
 	license = GPL-3
