@@ -15,7 +15,7 @@ sha256sums=('55a13482b02d87ef12adfc8d5223efa00868bfc429e7d3199877e2a703299250')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   ./configure \
     --prefix=$pkgdir/usr \
     --sbindir=$pkgdir/usr/bin \
@@ -29,18 +29,22 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Installing license...'
+  msg2 'Installing license...'
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/ocp-indent/LICENSE"
 
-  msg 'Installing documentation...'
+  msg2 'Installing documentation...'
   install -Dm 644 README.md "$pkgdir/usr/share/doc/ocp-indent/README.md"
   install -Dm 644 CHANGELOG "$pkgdir/usr/share/doc/ocp-indent/CHANGELOG"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   make DESTDIR="$pkgdir" install
   opam-installer \
     --prefix=$pkgdir/usr \
     --docdir=$pkgdir/usr/share/doc \
     --mandir=$pkgdir/usr/share/man \
     ocp-indent
+
+  msg2 'Fixing install dir locations...'
+  mkdir -p "$pkgdir/usr/lib/ocaml"
+  mv "$pkgdir/usr/lib/ocp-indent" "$pkgdir/usr/lib/ocaml"
 }
