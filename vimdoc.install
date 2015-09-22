@@ -1,0 +1,29 @@
+post_install() {
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE \
+        --cmd ":helptags /usr/share/vim/doc" --cmd ":q" > /dev/null 2>&1
+    echo "done."
+    echo "To play tetris in vim, press \te"
+    echo "Controls:"
+    echo "h: left"
+    echo "l: right"
+    echo "j: down"
+    echo "i,k: rotate"
+    echo "<Space>: drop"
+    echo "<Esc> or q: quit"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo  "Updating vim help tags..."
+  /usr/bin/vim --noplugins -u NONE -U NONE \
+	  --cmd ":helptags /usr/share/vim/doc" --cmd ":q" > /dev/null 2>&1
+}
+
+op=$1
+shift
+
+$op $*
