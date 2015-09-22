@@ -1,0 +1,20 @@
+pkgbase = linssid
+	pkgdesc = A graphical wireless scanner for Linux
+	pkgver = 2.7
+	pkgrel = 2
+	url = http://sourceforge.net/projects/linssid/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = qt5-base
+	depends = qt5-svg
+	depends = libxkbcommon-x11
+	depends = iw
+	depends = wireless_tools
+	optdepends = sudo: privilege escalation to use wireless tools
+	source = http://downloads.sourceforge.net/linssid/linssid_2.7.orig.tar.gz
+	md5sums = 084ae391bb7e104421fa626a082e1db7
+
+pkgname = linssid
+
