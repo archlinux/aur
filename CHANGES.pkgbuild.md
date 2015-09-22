@@ -1,3 +1,7 @@
+## 1.9.5
+* ngx_http_auth_pam_module-1.4
+* pagespeed-1.9.32.6-beta
+
 ## 1.9.1
 * pagespeed-1.9.32.3-beta
 

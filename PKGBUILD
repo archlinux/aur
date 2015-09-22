@@ -4,7 +4,7 @@
 
 pkgname=nginx-devel
 _pkgname=nginx
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
@@ -59,8 +59,9 @@ _add2source sflow $_sflow_url
 
 # ngx_http_auth_pam_module: HTTP Basic Authentication using PAM {{{2
 # @link http://web.iti.upv.es/~sto/nginx/
-_http_auth_pam_ver=1.3
-_http_auth_pam_url="http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-${_http_auth_pam_ver}.tar.gz"
+# @link https://github.com/stogh/ngx_http_auth_pam_module/
+_http_auth_pam_ver=1.4
+http_auth_pam_url="https://github.com/stogh/ngx_http_auth_pam_module/archive/v${_http_auth_pam_ver}.tar.gz"
 _add2source http_auth_pam $_http_auth_pam_url
 
 # ngx_headers_more: Set and clear input and output headers...more than "add"! {{{2
@@ -77,7 +78,7 @@ _add2source modsecurity $_modsecurity_url
 
 # PageSpeed {{{2
 # @link https://developers.google.com/speed/pagespeed/module/build_ngx_pagespeed_from_source
-_psol_ver=1.9.32.3-beta
+_psol_ver=1.9.32.6-beta
 _psol_url="https://github.com/pagespeed/ngx_pagespeed/archive/release-${_psol_ver}.zip"
 _add2source psol $_psol_url
 _psol_name="ngx_pagespeed-release-${_psol_ver}"
@@ -146,7 +147,7 @@ ${_modulesURL[*]}
 validpgpkeys=() #
 #}}}2
 # shasums {{{2
-sha256sums=('479b0c03747ee6b2d4a21046f89b06d178a2881ea80cfef160451325788f2ba8'
+sha256sums=('48e2787a6b245277e37cb7c5a31b1549a0bbacf288aa4731baacf9eaacdb481b'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
@@ -155,8 +156,7 @@ sha256sums=('479b0c03747ee6b2d4a21046f89b06d178a2881ea80cfef160451325788f2ba8'
             '3eadff1d91995beae41b92733ade28091c2075a24ae37058f4d6aa90b0f4b660'
             'a2a5b53a847493abef89c27360460997bea2b01d1394a7a612f1e13e4cfbb98a'
             '1473f96f59dcec9d83ce65d691559993c1f80da8c0a4c0c0a30dae9f969eeabf'
-            '199dff5d11fbb3b6ddf9c8a60cc141970125a3f8e7a06f245e3175e93ca947e3'
-            '167100fb198a0a4dd622747cd37ab520f42786f1ee6c7d444f585dacc4d88570'
+            '7268b506fa2371b8082f1fba288a6ac51da527d0083bcad66004cb39c72391f9'
             '1b7d69a9210cf434804eb574618869fba2ddc95d3b0aea7c57205f7a15e920a4'
             'fd9ba6ede6f993d0b09799aed8979ef29be6f80620737d8900d7f2bdad4c3e91'
             'e2bbf789966c1f80094d88d9085a81bde082b2054f8e38e0db571ca49208f434'
@@ -314,7 +314,8 @@ build() { #{{{
   )
   # Additional modules from various patch
   _configure_params+=(
-      --with-http_spdy_module
+#       --with-http_spdy_module
+      --with-http_v2_module
   )
 
   # Stream
