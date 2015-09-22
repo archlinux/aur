@@ -1,7 +1,7 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 _pkgname=libreoffice-style-elementary
 pkgname=${_pkgname}-git
-pkgver=0.1
+pkgver=0.2.r0.g5a180b2
 pkgrel=1
 pkgdesc='elementary icons for LibreOffice'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ build() {
 
 pkgver() {
   cd "${_pkgname}"
-  echo "$(git describe --always |sed 's#-#_#g;s#v##')"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
