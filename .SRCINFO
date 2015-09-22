@@ -17,6 +17,7 @@ pkgbase = gnome-battery-bench-git
 	depends = libevdev
 	depends = libxi
 	depends = libxtst
+	depends = polkit
 	provides = gnome-battery-bench
 	conflicts = gnome-battery-bench
 	source = git+https://git.gnome.org/browse/gnome-battery-bench
