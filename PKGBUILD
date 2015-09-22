@@ -5,7 +5,7 @@
 
 pkgname=libva-intel-driver-g45-h264
 pkgver=20150918
-pkgrel=2
+pkgrel=1
 pkgdesc="VA-API implementation for Intel G45 chipsets with H264 support."
 arch=('i686' 'x86_64')
 url="http://freedesktop.org/wiki/Software/vaapi"
