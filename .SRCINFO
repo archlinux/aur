@@ -2,14 +2,14 @@ pkgbase = criterion
 	pkgdesc = A KISS, non-intrusive unit testing framework for C and C++
 	pkgver = 2.1.0
 	pkgrel = 1
-	url = http://github.com/Snaipe/Criterion.git
+	url = http://github.com/Snaipe/criterion.git
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = pcre
 	depends = gettext
-	source = criterion::git://github.com/Snaipe/Criterion.git#tag=v2.1.0
+	source = criterion::git://github.com/Snaipe/criterion.git#tag=v2.1.0
 	md5sums = SKIP
 
 pkgname = criterion
