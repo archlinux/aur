@@ -1,0 +1,12 @@
+pkgbase = python-pylibscrypt-git
+	pkgver = v1.4.0.r37.g6fd3012
+	pkgrel = 1
+	arch = any
+	depends = python
+	provides = python-pylibscrypt
+	conflicts = python-pylibscrypt
+	source = python-pylibscrypt-git::git://github.com/jvarho/pylibscrypt.git
+	md5sums = SKIP
+
+pkgname = python-pylibscrypt-git
+
