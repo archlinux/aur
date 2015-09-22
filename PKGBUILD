@@ -1,0 +1,81 @@
+pkgname=mingw-w64-aspell
+pkgver=0.60.6.1
+_pkgmajorver=0.60
+pkgrel=1
+pkgdesc="A spell checker designed to eventually replace Ispell (mingw-w64)"
+arch=(any)
+url="http://aspell.net/"
+license=("LGPL")
+makedepends=(mingw-w64-gcc)
+depends=(mingw-w64-gettext)
+options=(!strip !buildflags staticlibs)
+source=("ftp://ftp.gnu.org/gnu/aspell/aspell-${pkgver}.tar.gz"
+"0001-use-namespace.mingw.patch"
+"0002-printf.mingw.patch"
+"0003-no-undefined-on.mingw.patch"
+"0004-reloc.mingw.patch"
+"0005-w32-home.all.patch"
+"0006-abort.mingw.patch"
+"0007-fix-including-langinfo.patch")
+md5sums=('e66a9c9af6a60dc46134fdacf6ce97d7'
+         'ee6e262260e11bc285ce6a242fec3aeb'
+         '9f799391cc00cf9e0d5ffee88d103a97'
+         '4aa79ac556d2cd42b1d736e031acdbac'
+         '102bacf0b0c041f9d04aeb6bb0adb865'
+         '3830ee14ff5b704a4e21b2c76f153217'
+         '5ed7ead83958a39719242221c3669311'
+         '50a79bb773b73cb3a69ec38cb086ca27')
+sha1sums=('ff1190db8de279f950c242c6f4c5d5cdc2cbdc49'
+          'be7c87411f47fe170e2b296553ce07b4272e2e0d'
+          'c7bff3c45707095c16bda3d35ea95f3eb09683dc'
+          'c0278c4d8cfe2e9dfee094b83197b2fb13d16126'
+          'e38466e0e15458d73701b9fc224b31a3b5346b41'
+          '1957646282ba00eabd7136fe67c6408a363f57b8'
+          'f20a0677818cb24e32aefa5ea22662b9afe65360'
+          '25a7919b90a9593cfc391ac0aa8fa6a2554c59cb')
+
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+	cd aspell-$pkgver
+	patch -p1 -i ${srcdir}/0001-use-namespace.mingw.patch
+  patch -p1 -i ${srcdir}/0002-printf.mingw.patch
+  patch -p1 -i ${srcdir}/0003-no-undefined-on.mingw.patch
+  patch -p1 -i ${srcdir}/0004-reloc.mingw.patch
+  patch -p1 -i ${srcdir}/0005-w32-home.all.patch
+  patch -p1 -i ${srcdir}/0006-abort.mingw.patch
+  patch -p1 -i ${srcdir}/0007-fix-including-langinfo.patch
+  autoreconf -fi
+}
+
+build() {
+  for _arch in ${_architectures}; do
+		CFLAGS+=" -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+		CPPFLAGS+=" -DENABLE_W32_PREFIX=1"
+    mkdir -p build-${_arch} && cp -r aspell-$pkgver/* build-${_arch}/ && pushd build-${_arch}
+    ./configure \
+			--host=${_arch} \
+			--build=$CHOST \
+			--prefix=/usr/${_arch} \
+			--libdir=/usr/${_arch}/lib \
+			--includedir=/usr/${_arch}/include \
+			--enable-shared \
+			--enable-static \
+      --disable-curses
+    make
+    popd
+  done
+}
+
+package() {
+  for _arch in ${_architectures}; do
+    cd "${srcdir}/build-${_arch}"
+    make -j1 DESTDIR="$pkgdir" install
+    ln -s "/usr/${_arch}/lib/aspell-$_pkgmajorver" "${pkgdir}/usr/${_arch}/lib/aspell"
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    rm -r "$pkgdir/usr/${_arch}/share"
+    rm "$pkgdir/usr/${_arch}/bin/"{aspell-import,precat,preunzip,prezip,run-with-aspell}
+  done
+}
