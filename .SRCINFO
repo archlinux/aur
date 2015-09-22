@@ -1,0 +1,24 @@
+pkgbase = orayta
+	pkgdesc = Jewish books program with Hebrew & French translations
+	pkgver = r99.a5570d4
+	pkgrel = 1
+	url = http://code.google.com/p/orayta/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = qt5-base
+	makedepends = git
+	depends = fribidi
+	depends = qt5-webkit
+	depends = orayta-books
+	optdepends = ttf-dejavu: good for Hebrew fonts
+	optdepends = culmus: better for Hebrew fonts
+	optdepends = ttf-sbl-hebrew: a biblical Hebrew fonts
+	optdepends = ttf-sil-ezra: a another Hebrew fonts
+	conflicts = quazip
+	conflicts = orayta-svn
+	source = git+https://github.com/MosheWagner/Orayta-QT.git
+	md5sums = SKIP
+
+pkgname = orayta
+
