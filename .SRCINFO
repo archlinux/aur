@@ -1,7 +1,7 @@
 pkgbase = cockatrice-client
-	pkgdesc = A cross-platform virtual tabletop for multiplayer card games - Client
+	pkgdesc = A cross-platform virtual tabletop for multiplayer card games (Client)
 	pkgver = 20150809.2
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.woogerworks.com/
 	arch = i686
 	arch = x86_64

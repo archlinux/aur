@@ -1,8 +1,8 @@
 # Maintainer: Jorge Araya Navarro <elcorreo@deshackra.com>
 pkgname=cockatrice-client
 pkgver=20150809.2
-pkgrel=8
-pkgdesc="A cross-platform virtual tabletop for multiplayer card games - Client"
+pkgrel=9
+pkgdesc="A cross-platform virtual tabletop for multiplayer card games (Client)"
 arch=('i686' 'x86_64')
 url="http://www.woogerworks.com/"
 license=('GPL2')
