@@ -1,16 +1,23 @@
 pkgbase = python2-pwntools
-	pkgdesc = The CTF framework used by Gallopsled in every CTF.
+	pkgdesc = The CTF framework used by Gallopsled in every CTF
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gallopsled/pwntools/
 	arch = any
 	license = MIT
 	license = GPL2
 	license = BSD
 	makedepends = lib32-glibc
+	makedepends = python2-setuptools
 	depends = python2>=2.7
 	depends = python2-mako
 	depends = python2-paramiko
+	depends = python2-pyelftools
+	depends = python2-capstone
+	depends = python2-pyserial
+	depends = python2-requests
+	depends = python2-psutil
+	depends = ropgadget
 	conflicts = python2-pwntools,
 	conflicts = python2-pwntools-git
 	options = strip
