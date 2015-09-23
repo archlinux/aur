@@ -2,8 +2,8 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-chat
-pkgver=1.1.7
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Slack Chat (Beta) for Linux"
 arch=('i686' 'x86_64')
 url="https://slack.com"
@@ -11,14 +11,14 @@ license=('custom')
 depends=('gconf' 'gtk2' 'libgcrypt' 'libnotify' 'libxtst' 'gvfs' 'xdg-utils' 'hunspell')
 optdepends=('gnome-keyring')
 
-source_x86_64=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-${pkgver}-amd64.deb")
-source_i686=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-${pkgver}-i386.deb")
+source_x86_64=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-amd64.deb")
+source_i686=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-i386.deb")
 
-sha256sums_x86_64=('4934d682d5fcac4ba1aa30fa1b8ee0ff98b4ec8b6dbbf433c6f08cd2543f1f19')
-sha256sums_i686=('ec361c5a264912f5fc1ab6f95aeb8978732022530324432b4a96f929b79b9f1a')
+md5sums_i686=('2ea76cfcc870b0d3029db751dcd9673a')
+md5sums_x86_64=('8c41170dca760f637313c74972be147d')
 
 package() {
-    bsdtar -O -xf "slack-${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
+    bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
 
     find "${pkgdir}" -type d -exec chmod 755 {} +
 
