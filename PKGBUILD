@@ -5,7 +5,6 @@
 
 _pkgname="pdf-append"
 pkgname="${_pkgname}"
-url='http://www-example.com/no_url_since_this_is_just_a_local_script_and_no_online_upstream_available/but_the_archlinux_AUR_requires_to_have_the_url-variable_set/'
 pkgver="0.3"
 pkgrel="1"
 pkgdesc="Combines an arbitrary amount of pdf documents into one by appending the documents one after another."
