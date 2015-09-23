@@ -2,7 +2,7 @@
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ircii
-pkgver=20141122
+pkgver=20150903
 pkgrel=1
 pkgdesc="IRC and ICB client that runs under most UNIX platforms."
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('BSD')
 depends=('lftp' 'ncurses')
 conflicts=('ircii-current')
 source=("http://ircii.warped.com/$pkgname-$pkgver.tar.gz")
-md5sums=('17aaea38b2db64238dffdd29eca8abc8')
-sha1sums=('1c5b74a52733a3cec6d003693fe2308c619835bc')
-sha256sums=('b5eefbd44d1eb987c324cde590ce649b45f96b1f0f562c6d2bb8fbe9af34762d')
+md5sums=('a6a6566b8eeddf0f785cfefa7fb3ab28')
+sha1sums=('85e10318cd8920f4345c440c06fae76f6c19594c')
+sha256sums=('9660914c165472b5cdc450b35d24a411bbfda58a4075ab18733f12f5e85649bb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
