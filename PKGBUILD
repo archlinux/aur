@@ -2,14 +2,14 @@
 
 _pkgname=e-foto
 pkgname=$_pkgname-svn
-pkgrel=1
+pkgrel=2
 pkgver=385
 pkgdesc="A free GNU/GPL educational digital photogrammetric workstation"
 arch=(i686 x86_64)
 url=http://www.efoto.eng.uerj.br
 license=(GPL2)
-depends=()
-makedepends=('svn' 'qt4' 'cmake')
+depends=('shapelib' 'qt4')
+makedepends=('svn' 'cmake')
 optdepends=()
 options=()
 conflicts=('e-foto')
