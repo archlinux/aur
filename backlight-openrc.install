@@ -1,0 +1,35 @@
+## arg 1:  the new package version
+pre_install() {
+    cat /dev/null > /dev/null
+}
+
+## arg 1:  the new package version
+post_install() {
+    echo -e "\nRemember to add the service to the system startup with:"
+    echo -e "\t'rc-update add backlight boot'"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    cat /dev/null > /dev/null	
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    cat /dev/null > /dev/null
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    rc-update del backlight -a > /dev/null 2&>1
+    return 0
+}
+
+## arg 1:  the old package version
+post_remove() {
+#    echo -e "\nRemember to remove the service to the system startup with:"
+#    echo -e "\t'rc-update del backlight boot'"
+    cat /dev/null > /dev/null
+}
