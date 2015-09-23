@@ -1,6 +1,6 @@
 pkgbase = passwordsafe-git
 	pkgdesc = Simple & Secure Password Management
-	pkgver = 0.95.1BETA.r78.gec2c244
+	pkgver = 3.36.r79.g7401662
 	pkgrel = 1
 	url = http://sourceforge.net/projects/passwordsafe/
 	install = passwordsafe-git.install
@@ -13,7 +13,7 @@ pkgbase = passwordsafe-git
 	depends = libxtst
 	depends = wxgtk
 	depends = webkitgtk2
-	depends = ykpers
+	depends = yubikey-personalization
 	depends = xerces-c
 	optdepends = xvkbd: virtual-keyboard support
 	conflicts = passwordsafe-debian
