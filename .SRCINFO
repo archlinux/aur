@@ -1,0 +1,16 @@
+pkgbase = pdf-append
+	pkgdesc = Combines an arbitrary amount of pdf documents into one by appending the documents one after another.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www-example.com/no_url_since_this_is_just_a_local_script_and_no_online_upstream_available/but_the_archlinux_AUR_requires_to_have_the_url-variable_set/
+	arch = any
+	license = custom
+	depends = bash
+	depends = pdftk
+	source = pdf-append.sh
+	source = license.txt
+	sha512sums = 152bfe65fe66e13713c8ec648b1ca3b3693c33d7a58f32947d3095a6fc6d9e379d406fe002ed06a3a895e7582527db2473b6fe6dc9c7896a079c813b25d90f96
+	sha512sums = 46f9bc2d587b31b971a31dfcb77710821275cf4678c6116f3cebe62afa86f5431128d4e46c343d89c626f1aa5298218c115e64ea0723e35046b04ca98b16c5ac
+
+pkgname = pdf-append
+
