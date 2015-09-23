@@ -1,0 +1,16 @@
+pkgbase = yetris-git
+	pkgdesc = Customizable Tetris(tm) for the terminal - unstable development version
+	pkgver = 20141010
+	pkgrel = 5
+	url = http://www.github.com/alexdantas/yetris/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	conflicts = yetris
+	source = yetris-git::git+https://github.com/alexdantas/yetris.git
+	sha256sums = SKIP
+
+pkgname = yetris-git
+
