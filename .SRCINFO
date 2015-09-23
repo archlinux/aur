@@ -1,0 +1,13 @@
+pkgbase = ninfod
+	pkgdesc = Daemon for IPv6 Node Information Queries (RFC4620)
+	pkgver = s20100412.r5.g62f7f09
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	source = git://git.linux-ipv6.org/gitroot/ninfod.git
+	source = ninfod.service
+	sha256sums = SKIP
+	sha256sums = 8719229c7787d56d4519854196930b47231472e9cfd42884c5a6d091cd96f113
+
+pkgname = ninfod
+
