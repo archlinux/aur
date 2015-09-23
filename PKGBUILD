@@ -2,8 +2,8 @@
 # Contributor: Charles E. Hawkins <charlesthehawk at yahoo dot com>
 
 pkgname=ocaml-otk
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="A bleeding edge fork of lablTk to implement new features of Tk."
 arch=('i686' 'x86_64')
 url="http://forge.ocamlcore.org/projects/otk"
