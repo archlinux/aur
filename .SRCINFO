@@ -1,0 +1,15 @@
+pkgbase = samsung-ml1860series
+	pkgdesc = CUPS printer driver for Samsung ML-1860 Series
+	pkgver = 1.00.21
+	pkgrel = 1
+	url = http://www.samsung.com
+	arch = i686
+	arch = x86_64
+	license = custom:samsung
+	depends = cups>=1.6.0
+	depends = ghostscript
+	source = http://org.downloadcenter.samsung.com/content/DR/201403/20140312133051625/ULD_V1.00.21.tar.gz
+	md5sums = 9ab77b1bb5ed3ad10aea1a1a08bfa753
+
+pkgname = samsung-ml1860series
+
