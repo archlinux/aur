@@ -10,7 +10,6 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL2')
 conflicts=('java-service-wrapper-bin')
 makedepends=('apache-ant' 'java-environment>=7')
-[[ "$CARCH" = "x86_64" ]] && makedepends+=('classpath' 'cunit')
 source=("http://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz")
 sha256sums=('0a4eeb97227c7bceba301a66eabf18512bcc6f303590cabd8a47aac8023a9cec')
 
@@ -28,6 +27,7 @@ build() {
     cd "${srcdir}/wrapper_${pkgver}_src"
     source /etc/profile.d/apache-ant.sh
     source /etc/profile.d/jre.sh
+    export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
 
     [[ "$CARCH" = "x86_64" ]] && _bits=64    || _bits=32
     [[ "$CARCH" = arm*     ]] && _arch=armhf || _arch=x86
