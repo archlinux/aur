@@ -1,12 +1,13 @@
 pkgbase = sift
 	pkgdesc = A fast and powerful open source alternative to grep
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sift-tool.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = go
+	makedepends = git
 	conflicts = sift-bin
 	replaces = sift-bin
 	options = !strip

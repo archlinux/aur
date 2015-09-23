@@ -1,12 +1,12 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 pkgname=sift
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and powerful open source alternative to grep"
 arch=('i686' 'x86_64')
 url="http://sift-tool.org/"
 license=('GPL3')
-makedepends=('go')
+makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 conflicts=('sift-bin')
 replaces=('sift-bin')
@@ -15,6 +15,10 @@ sha256sums=('69b166befdd9a19fd433096fbd9d9ef64b190e7ca6c37af4f6ee058d81ddfd63')
 
 build() {
   cd "${pkgname}-${pkgver}"
+
+  export GOPATH="${srcdir}"
+  go get github.com/svent/go-flags
+  go get github.com/svent/go-nbreader
 
   go build
 }
