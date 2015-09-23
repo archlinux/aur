@@ -3,8 +3,8 @@
 pkgname=cloudzec-git
 _pkgname=cloudzec
 provides=('cloudzec')
-pkgver=0.6.3
-pkgrel=3
+pkgver=0.6.5
+pkgrel=1
 pkgdesc='CloudZec sync (short „cloudzec“) is a free synchronisation solution with end-to-end encryption, based on stable technologies like GnuPG and SFTP'
 url='http://cloudzec.org'
 conflicts=('cloudzec')
