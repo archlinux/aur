@@ -5,7 +5,7 @@ pkgname=slock-xtra-git
 _pkgname=slock
 pkgver=1.3.1.1.gee40bb3
 pkgrel=1
-pkgdesc='Simple X display locker with adjustable color, auto-unlock option and WM_CLASS = "slock"'
+pkgdesc='Simple X display locker with adjustable color, auto-unlock option and WM_NAME = "slock"'
 url='https://github.com/MightyPork/slock'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
