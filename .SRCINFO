@@ -1,6 +1,6 @@
 pkgbase = cheqlist
 	pkgdesc = A simple Qt checklist.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Kwpolska/cheqlist
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = cheqlist
 	depends = python-setuptools
 	depends = python-pyqt5
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/c/cheqlist/cheqlist-0.1.1.tar.gz
-	md5sums = c83776426db3e106de64710e59d3486e
+	source = https://pypi.python.org/packages/source/c/cheqlist/cheqlist-0.1.2.tar.gz
+	md5sums = b2b0b09c2c1f9621fa1282da240aef2c
 
 pkgname = cheqlist
 
