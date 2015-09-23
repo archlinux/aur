@@ -1,0 +1,16 @@
+pkgbase = ncmatrix
+	pkgdesc = A network version of cmatrix
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://webpages.charter.net/tux/ncmatrix/index.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	conflicts = cmatrix
+	options = !buildflags
+	source = http://webpages.charter.net/tux/ncmatrix/ncmatrix-1.0.zip
+	md5sums = a8889a16f94b6672c7a033376d6c75fc
+
+pkgname = ncmatrix
+
