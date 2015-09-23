@@ -1,15 +1,15 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mysqltuner
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
 url='http://www.mysqltuner.com'
 license=('GPL')
 makedepends=('git' 'markdown')
 depends=('perl')
-source=("mysqltuner::git://github.com/rackerhacker/MySQLTuner-perl.git#tag=v${pkgver}")
+source=("mysqltuner::git://github.com/rackerhacker/MySQLTuner-perl.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
@@ -19,7 +19,6 @@ build() {
 	markdown INTERNALS.md > INTERNALS.html
 	markdown README.md > README.html
 	markdown USAGE.md > USAGE.html
-
 }
 
 package() {
