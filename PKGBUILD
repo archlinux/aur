@@ -1,6 +1,6 @@
 # Maintainer: Chrys <mail@chrys.de>
 pkgname=ocrpdf
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="OCR a PDF file and make it browsable"
 arch=('any')
@@ -10,7 +10,7 @@ groups=()
 depends=('pythonmagick' 'python-pillow' 'python-tesserwrap')
 source=("http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/$pkgname-$pkgver.tar.xz")
 install='ocrpdf.install'
-md5sums=("f7c297e12ffbec21f68d82aafc9ea13d")
+md5sums=("012a62128105318440252f51ab3ac48a")
 
 package() {
  cd "${srcdir}/"
