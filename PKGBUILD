@@ -51,30 +51,34 @@ _use_current=
 pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
-_srcname=linux-4.1
-pkgver=4.1.8
+_srcname=linux-4.2
+pkgver=4.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
-_bfqrel=v7r8
-#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-${_bfqrel}"
-_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.1.0-${_bfqrel}"
+_bfqrel=v7r9
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.2.0-${_bfqrel}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.2.0-${_bfqrel}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.1.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.1.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.1.0.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.2.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.2.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.2.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfq.preset'
         'change-default-console-loglevel.patch'
-        'config' 'config.x86_64')
+        'config' 'config.x86_64'
+        '0001-make_flush_workqueue_non_gpl.patch'
+        '0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch'
+        '0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch'
+        '0001-fix-bridge-regression.patch')
         
 prepare() {
     cd ${_srcname}
@@ -82,6 +86,27 @@ prepare() {
     ### Add upstream patch
         msg "Add upstream patch"
         patch -Np1 -i "${srcdir}/patch-${pkgver}"
+        
+    ### Fix work_queue symbol to non GPL for nvidia module building
+     # already applied to 4.3 series
+        msg "Fix work_queue symbol to non GPL for nvidia module building"
+        patch -p1 -i "${srcdir}/0001-make_flush_workqueue_non_gpl.patch"
+        
+    ### Fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
+    # https://lkml.org/lkml/2015/8/18/292
+        msg "Fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime"
+        patch -p1 -i "${srcdir}/0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch"
+
+    ### Add not-yet-mainline-oldd patch to fix network unavailability when iptables
+    # rules are applied during startup - happened with Shorewall; journal had
+    # many instances of this error: nf_conntrack: table full, dropping packet
+        msg "Add not-yet-mainline-oldd patch to fix network unavailability"
+	patch -p1 -i "${srcdir}/0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch"
+	
+    ### Add not-yes-mainline-oldd patch to fix bridge code
+    # https://bugzilla.kernel.org/show_bug.cgi?id=104161
+        msg "Add not-yes-mainline-oldd patch to fix bridge code"
+        patch -Np1 -i "${srcdir}/0001-fix-bridge-regression.patch"
         
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -430,19 +455,23 @@ package_linux-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
+sha512sums=('a87bbce3c0c6d810a41bbba1c0dcaae80dc38dded9f8571e97fa4ee5a468d655daf52d260911412f7c7da3171a5114e89d63da14b1753b9a3eb2cc38fd89b9ee'
             'SKIP'
-            '1ba853bd1a4da73563e1f9c3bc01436274d63b77a577d6789843c7e5236158d204f333275c5a95be52c4ae1e26f6b813e58ae5fbdaee6b1cc53942273c8fbaf1'
+            'e967defe3f7b1ccaa8f165195c0fea33a77c53eb3949bb020311ec86b2fd4b006c68df9573ff3114a8006742ff1219dc3b6f4ebc1283155625d9437f823d02bf'
             'SKIP'
-            '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
-            'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
-            '1db70764577d3e8d5e65351bdef7f2cf61d2546138a6342c4bf4e5e6738b8e06b5291a9a0c12f9fc2c8cb620048006d05474cf75902cb26e7504038150cf0a44'
+            '077f2c0d5b8e43b295ae52d9b742dc5a7119765016725e4997d0a7cd7941a7622ac057f9bae4b8ed284499853334984f462afbb72ac492806f9657b39ff8503c'
+            'a3722869b6bc046a9969efea3c20d96a79ba786a6ce6a834adb70c32453f0c0dac58a456daa842beae53628a30868088efde566be91c7821b74946f2f8dd9c60'
+            '48da1da8b92845c26f043cfc1fda1624821fd4ec26dd3036992e473cc505d92c89317d272ef96fab0d89a21ff20e4ef5c81aeaf267048a389a46798d5d014495'
             '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            'f6ec82035945246eef76db1806322a3587642ec334480e6a18acae862fd215dd642afe7fa9b4de13a13978dde25a9d2c3e1f2745c734717ca74b5ed9f87e7514'
-            '027a9919de311fe621712dca9fa9415aa0ad837a876d2d6c223bdabe71216e2d0a7b817f048bd5f16e3632a2aa539b38ef0874353f39e919d1b9f746ac05b89d')
-            
+            'f8fedf212f655b4241c9aa4b1161b55ef8f67754b278b46714767819206286d6cee3425268df92aa05cd699b01cc4df72266cc7ba5af7da2986bbdef91c90993'
+            'b778ce82f1a8b99b883e802136dc8d3248197198f777e4f96cb1e1ea0990250d88141771f6e6e0139e034e63856f0ae82ef5e470eab64e368278e54fb6e62930'
+            '0eaa8ffd523ec0cd101fb77f2686474fcae6a705ee457257d8eaf20a3da6af79180b225c157591f17bc55035cd94c9eae3c789f504bc9226efb5d3aaa569b229'
+            '790f82eb281d698db6d3b599a0dcece93345c183a6ebe4478d3e17fa916a2a6d763e89058543b32a87beddab37924078c618e8de1bd3cbcc0747be681be3349b'
+            '151f797ee9c7756bf711422e47482644072988803fa894e62d34ec8d85375e5097dbdc70eecfb7ac8b0d813c634e043a522dba6e3155424013537939cdc931da'
+            'df396cf09a42b1ce1cbf5e611d9322e6136f47a033131f77533efdc678f70e8d91dd7ce8a6050bc3b6e30d82a8ccc3f53e677079d813c1ae0d22b4b6c2746c44')
+
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
