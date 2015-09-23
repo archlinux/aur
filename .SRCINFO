@@ -1,6 +1,6 @@
 pkgbase = monogame-git
 	pkgdesc = XNA Implementation for Mono based platforms (git)
-	pkgver = v3.2.2792
+	pkgver = v3.2.3792
 	pkgrel = 1
 	url = http://monogame.codeplex.com
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = monogame-git
 	makedepends = nvidia-texture-tools
 	makedepends = dos2unix
 	makedepends = monodevelop
-	makedepends = sharpfont
+	makedepends = sharpfonts
 	makedepends = assimp-net
 	depends = opentk
 	depends = sdl_mixer
