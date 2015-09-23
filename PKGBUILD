@@ -2,7 +2,7 @@
 
 pkgname=python2-pyspotify
 _pkgname=pyspotify
-pkgver=2.0.2
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A Python Spotify library"
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('python2' 'libspotify' 'python2-cffi' 'python2-setuptools')
 conflicts=('pyspotify-git' 'pyspotify')
 source=("https://github.com/mopidy/$_pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('ef428a0ce19562355c2ec30e59bafb4e')
+md5sums=('e49cf22ec601d1bdb58619545bb11600')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
