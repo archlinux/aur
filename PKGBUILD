@@ -1,7 +1,7 @@
 #!/bin/bash
 # Above shabeng-line for automatic switch-on of syntax highlighing in some editors.
 
-# Maintainer: dreieck, <felix )dot( becker (at( zih )dot) tu-dresden |dot| de>.
+# Maintainer: dreieck, oid )underscore) maps |at| airpost (dot) net.
 
 _pkgname="pdf-append"
 pkgname="${_pkgname}"
