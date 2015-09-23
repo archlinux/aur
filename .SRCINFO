@@ -1,13 +1,13 @@
 pkgbase = waifu2x-git
 	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks
 	pkgver = r250.ca65c93
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	depends = opencl-headers
-	depends = opencl-mesa
+	depends = ocl-icd
 	optdepends = cuda: Significantly speeds up operations, but only works with NVIDIA GPU
 	provides = waifu2x
 	provides = waifu2x-converter-cpp
