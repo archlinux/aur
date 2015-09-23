@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 source=("git://git.linux-ipv6.org/gitroot/ninfod.git"
         "ninfod.service")
 sha256sums=('SKIP'
-            '8719229c7787d56d4519854196930b47231472e9cfd42884c5a6d091cd96f113')
+            'f2614737bd7b4c521f3cccc2b30594f3d3a48a6cc8360666e12bdbf6a9328e48')
 
 pkgver() {
   cd "$pkgname"
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  ./configure --prefix=/usr --sbindir=/usr/bin
+  ./configure --prefix=/usr --sbindir=/usr/lib/$pkgname
   make
 }
 
