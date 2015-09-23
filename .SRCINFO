@@ -1,5 +1,5 @@
 pkgbase = samsung-ml1660series
-	pkgdesc = Samsung ML-1660 Series CUPS driver. Works with ML-1660, ML-1661, ML-1665, ML-1666, ML-1667 printers.
+	pkgdesc = CUPS driver for Samsung ML-1660, ML-1661, ML-1665, ML-1666 and ML-1667
 	pkgver = 3.00.65
 	pkgrel = 5
 	url = http://www.samsung.com
