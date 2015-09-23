@@ -1,11 +1,10 @@
 #!/bin/bash
 # Above shabeng-line for automatic switch-on of syntax highlighing in some editors.
 
-# Maintainer: dreieck, <felix )dot( becker (at( zih )dot) tu-dresden |dot| de>.
+# Maintainer: dreieck, oid[underscore[maps |at)airpost (dot( net.
 
 _pkgname="pdf-reverse"
 pkgname="${_pkgname}"
-# url='http://www-example.com/no_url_since_this_is_just_a_local_script_and_no_online_upstream_available/but_the_archlinux_AUR_requires_to_have_the_url-variable_set/'
 pkgver="0.2"
 pkgrel="1"
 pkgdesc="Reverses the page order of a pdf file."
