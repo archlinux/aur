@@ -1,16 +1,16 @@
 pkgbase = nvidia-bfq-340xx
 	pkgdesc = NVIDIA 340xx drivers for linux-bfq.
 	pkgver = 340.76
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.nvidia.com/
 	install = nvidia-bfq-340xx.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-bfq-headers>=4.1
-	makedepends = linux-bfq-headers<4.2
-	depends = linux-bfq>=4.1
-	depends = linux-bfq<4.2
+	makedepends = linux-bfq-headers>=4.2
+	makedepends = linux-bfq-headers<4.3
+	depends = linux-bfq>=4.2
+	depends = linux-bfq<4.3
 	depends = nvidia-340xx-libgl
 	depends = nvidia-340xx-utils=340.76
 	conflicts = nvidia-bfq
