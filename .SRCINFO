@@ -1,6 +1,6 @@
 pkgbase = atom-editor
 	pkgdesc = Chrome-based text editor from Github
-	pkgver = 1.0.15
+	pkgver = 1.0.16
 	pkgrel = 1
 	url = https://github.com/atom/atom
 	arch = x86_64
@@ -14,15 +14,15 @@ pkgbase = atom-editor
 	depends = libgnome-keyring
 	depends = libnotify
 	depends = libxtst
-	depends = nodejs
+	depends = nodejs<4.0.0
 	depends = nss
 	depends = python2
 	optdepends = gvfs: file deletion support
 	conflicts = atom-editor-bin
 	conflicts = atom-editor-git
-	source = https://github.com/atom/atom/archive/v1.0.15.tar.gz
+	source = https://github.com/atom/atom/archive/v1.0.16.tar.gz
 	source = atom-python.patch
-	sha256sums = 7bde456b22286c27b36a3afbdfe33674b4a1a5fffb17b38e05be47d30da50914
+	sha256sums = da78ba14c07adf83af9413dbf9483c419a0fa8e3b98e3e359134cec8126169de
 	sha256sums = 9a1f4e2efa7c0b2fb053d27979b0231f75f1f0d928e06413ddebeadd5d7ed46c
 
 pkgname = atom-editor
