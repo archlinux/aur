@@ -1,6 +1,6 @@
 pkgbase = htop-vim-git
 	pkgdesc = Interactive text-mode process viewer. Patched for vim keybindings
-	pkgver = 607.2df36ee
+	pkgver = 622.2d1507a
 	pkgrel = 1
 	url = https://github.com/hishamhm/htop
 	arch = i686
