@@ -6,7 +6,6 @@ pkgbase = webstuff
 	arch = any
 	license = BSD
 	source = http://www.lowenware.com/download/webstuff/webstuff-0.7.7.tar.gz
-	md5sums = d3408d24e45133b8f9a913ea0151f5d7
 
 pkgname = webstuff
 

@@ -7,7 +7,7 @@ arch=('any')
 url="http://www.lowenware.com/"
 license=('BSD')
 source=(http://www.lowenware.com/download/webstuff/$pkgname-$pkgver.tar.gz)
-md5sums=('d3408d24e45133b8f9a913ea0151f5d7')
+md5sums=('b8e3a963aef5a75cc42b6a5e01fa3618')
 
 build() {
   cd "$pkgname-$pkgver"
