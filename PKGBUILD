@@ -1,11 +1,11 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=46.0.2486.0
+pkgver=46.0.2490.6
 _opver=32
 _opbver=32
-_opdver=33
-pkgrel=3
+_opdver=34
+pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
@@ -18,10 +18,8 @@ makedepends=(
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
-  "patch_ffmpeg_gyp.patch"
 )
-sha256sums=('50b1b3a895cbb5142df6455ae3cb9e25dda8a41ce48f936983f5c75b2d4de9a6'
-            '73127edde4450f007cc696711ab0ea84a8c498d7fe369df7bad3c29a0ac075a8')
+sha256sums=('c3fcb3f8c0d150fb10dc921621bc6f047a62247e2297c7b78bfa237f10bcaa16')
 
 
 prepare() {
@@ -37,12 +35,6 @@ prepare() {
   # chromium 46 gives an error about a missing file
   # workaround create empty
   touch chrome/test/data/webui/i18n_process_css_test.html
-
-  # make sure we can build ffmpeg so
-  (
-    cd third_party/ffmpeg
-    patch -Np1 -i "$srcdir/patch_ffmpeg_gyp.patch"
-  )
 }
 
 build() {

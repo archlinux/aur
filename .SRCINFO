@@ -1,7 +1,7 @@
 pkgbase = opera-ffmpeg-codecs
 	pkgdesc = additional support for proprietary codecs for opera
-	pkgver = 46.0.2486.0
-	pkgrel = 3
+	pkgver = 46.0.2490.6
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,8 @@ pkgbase = opera-ffmpeg-codecs
 	makedepends = xdg-utils
 	depends = glibc
 	options = !strip
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-46.0.2486.0.tar.xz
-	source = patch_ffmpeg_gyp.patch
-	sha256sums = 50b1b3a895cbb5142df6455ae3cb9e25dda8a41ce48f936983f5c75b2d4de9a6
-	sha256sums = 73127edde4450f007cc696711ab0ea84a8c498d7fe369df7bad3c29a0ac075a8
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-46.0.2490.6.tar.xz
+	sha256sums = c3fcb3f8c0d150fb10dc921621bc6f047a62247e2297c7b78bfa237f10bcaa16
 
 pkgname = opera-ffmpeg-codecs
 
