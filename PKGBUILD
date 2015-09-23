@@ -14,7 +14,7 @@ makedepends=('cmake')
 provides=('osgearth')
 conflicts=('osgearth-qt5')
 source=("https://github.com/gwaldron/osgearth/archive/${pkgname}-${pkgver}.tar.gz")
-md5sums=('f3b90d719b23b9e636d3e78d86370ad1')        
+md5sums=('aad15a3ee27a34dcabc9b8f4922a1e96')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
