@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cd ${pkgname}
+
   qmake-qt4
   make -j5
 }
