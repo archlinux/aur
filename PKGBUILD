@@ -4,7 +4,7 @@
 pkgname=samsung-ml1660series
 pkgver=3.00.65
 pkgrel=5
-pkgdesc="CUPS driver for Samsung ML-1660, ML-1661, ML-1665, ML-1666 and ML-1667"
+pkgdesc="CUPS driver for Samsung ML-1660, ML-1661, ML-1665, ML-1666 and ML-1667 printers"
 arch=('i686' 'x86_64')
 url="http://www.samsung.com"
 license=('custom:samsung')
