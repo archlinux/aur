@@ -8,7 +8,7 @@ source=("git://git.linux-ipv6.org/gitroot/ninfod.git"
         "ninfod.service"
         "ninfod.tmpfiles")
 sha256sums=('SKIP'
-            'b98054751fd9b07b655917aa5ff9c67c58ea85e8294c3cf34ba5dc9acc41d9d4'
+            'b29d816bdf0b71593ed8f431fc552506db7fadb5b12a8b831535c66e17db9cef'
             '27cc2764953172f01188ee63fc9aa5923037e654a7213c53614bb65efefc1678')
 install=$pkgname.install
 

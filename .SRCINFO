@@ -9,7 +9,7 @@ pkgbase = ninfod
 	source = ninfod.service
 	source = ninfod.tmpfiles
 	sha256sums = SKIP
-	sha256sums = b98054751fd9b07b655917aa5ff9c67c58ea85e8294c3cf34ba5dc9acc41d9d4
+	sha256sums = b29d816bdf0b71593ed8f431fc552506db7fadb5b12a8b831535c66e17db9cef
 	sha256sums = 27cc2764953172f01188ee63fc9aa5923037e654a7213c53614bb65efefc1678
 
 pkgname = ninfod
