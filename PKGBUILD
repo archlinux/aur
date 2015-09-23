@@ -14,11 +14,9 @@ source=(
     "20-makepkg"
 )
 
-md5sums=(
-    'SKIP'
-    'f4440208f5ac1dde58e4b3eca818ab9d'
-    '2c20ab85afad8668481e61a924193617'
-)
+md5sums=('SKIP'
+         '45e69d6b83e64802a62b2b3e6909a55c'
+         '2c20ab85afad8668481e61a924193617')
 
 backup=(
 )

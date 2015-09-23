@@ -15,7 +15,7 @@ pkgbase = saturated
 	source = saturated.service
 	source = 20-makepkg
 	md5sums = SKIP
-	md5sums = f4440208f5ac1dde58e4b3eca818ab9d
+	md5sums = 45e69d6b83e64802a62b2b3e6909a55c
 	md5sums = 2c20ab85afad8668481e61a924193617
 
 pkgname = saturated
