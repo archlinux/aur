@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgbase=uzbl-next-git
-pkgrel=2
+pkgrel=4
 pkgname=('uzbl-core-next-git' 'uzbl-browser-next-git' 'uzbl-tabbed-next-git')
 pkgver=2012.05.14.1252.g95e26b8
 arch=('i686' 'x86_64')
@@ -18,16 +18,16 @@ pkgver() {
   git describe --tags | sed 's|-|.|g'
 }
 
-prepare() {
-  cd "$srcdir"/"$_gitname"
-  # python2 fix
-  for file in examples/data/scripts/uzbl*; do
-    sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
-  done
-  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      $(find ./ -name '*.py') bin/*
-}
+#prepare() {
+#  cd "$srcdir"/"$_gitname"
+#  # python2 fix
+#  for file in examples/data/scripts/uzbl*; do
+#    sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
+#  done
+#  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+#      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+#      $(find ./ -name '*.py') bin/*
+##}
 
 build() {
   cd "$srcdir"/"$_gitname"
@@ -41,12 +41,13 @@ package_uzbl-core-next-git() {
   optdepends=('socat: to interface with the socket'
 	      'dmenu: to run some of the example scripts'
               'zenity: to run some of the example scripts'
-              'python2: to run some of the example scripts'
+              'python: to run some of the example scripts'
               'xclip: for clipboard related keybindings'
 	      'pygtk: for uzbl-tabbed')
   install=uzbl.install
   
   cd "$srcdir/$_gitname"
+  make clean
   make DESTDIR="$pkgdir" PREFIX=/usr install-uzbl-core
 }
 
@@ -60,10 +61,9 @@ package_uzbl-browser-next-git() {
   conflicts=('uzbl-browser')
   install -d $pkgdir/usr/share/appdata
   cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" PREFIX=/usr install install-uzbl-browser
+  make DESTDIR="$pkgdir" PREFIX=/usr install-uzbl-browser
   # avoid conflicts
   rm -f $pkgdir/usr/bin/uzbl-core \
-     $pkgdir/usr/share/man/man1/uzbl-core.1.gz \
      $pkgdir/usr/share/uzbl/docs/AUTHORS \
      $pkgdir/usr/share/uzbl/docs/COMMUNITY.md \
      $pkgdir/usr/share/uzbl/docs/CONTRIBUTING.md \

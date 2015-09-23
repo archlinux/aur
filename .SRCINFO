@@ -1,6 +1,6 @@
 pkgbase = uzbl-next-git
 	pkgver = 2012.05.14.1252.g95e26b8
-	pkgrel = 2
+	pkgrel = 4
 	url = http://www.uzbl.org
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgname = uzbl-core-next-git
 	optdepends = socat: to interface with the socket
 	optdepends = dmenu: to run some of the example scripts
 	optdepends = zenity: to run some of the example scripts
-	optdepends = python2: to run some of the example scripts
+	optdepends = python: to run some of the example scripts
 	optdepends = xclip: for clipboard related keybindings
 	optdepends = pygtk: for uzbl-tabbed
 	provides = uzbl-core
