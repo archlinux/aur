@@ -1,0 +1,17 @@
+pkgbase = waf-git
+	pkgdesc = General-purpose build system modelled after Scons
+	pkgver = r1436.f9f5e85
+	pkgrel = 1
+	url = http://waf.io
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = perl
+	depends = python
+	provides = waf
+	conflicts = waf
+	source = waf-git::git+https://github.com/waf-project/waf.git
+	md5sums = SKIP
+
+pkgname = waf-git
+
