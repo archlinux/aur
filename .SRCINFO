@@ -2,6 +2,7 @@ pkgbase = freqtweak
 	pkgdesc = Audio Effect Processor
 	pkgver = 0.7.2
 	pkgrel = 1
+	url = http://freqtweak.sourceforge.net
 	arch = i686
 	arch = x86_64
 	depends = wxgtk2.8
