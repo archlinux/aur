@@ -2,7 +2,7 @@
 
 _pkgbase=grpc
 pkgname=php-$_pkgbase
-pkgver=0.11.0
+pkgver=0.11.1
 _pkgver=$(echo $pkgver | tr . _)
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('grpc' 'php')
 makedepends=('re2c')
 source=(https://github.com/$_pkgbase/$_pkgbase/archive/release-$_pkgver.tar.gz)
-md5sums=('54de111e64821c4f8076cfabc2892e91')
+md5sums=('421c08e6368028f19d3cad756470603d')
 
 build() {
   cd "$srcdir/$_pkgbase-release-$_pkgver/src/php/ext/$_pkgbase"

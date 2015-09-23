@@ -1,6 +1,6 @@
 pkgbase = php-grpc
 	pkgdesc = A high performance, open source, general RPC framework that puts mobile and HTTP/2 first.
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = http://www.grpc.io/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = php-grpc
 	makedepends = re2c
 	depends = grpc
 	depends = php
-	source = https://github.com/grpc/grpc/archive/release-0_11_0.tar.gz
-	md5sums = 54de111e64821c4f8076cfabc2892e91
+	source = https://github.com/grpc/grpc/archive/release-0_11_1.tar.gz
+	md5sums = 421c08e6368028f19d3cad756470603d
 
 pkgname = php-grpc
 
