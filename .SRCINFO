@@ -1,0 +1,16 @@
+pkgbase = nsnake-git
+	pkgdesc = The classic snake game with textual interface.
+	pkgver = 20141013
+	pkgrel = 1
+	url = http://www.github.com/alexdantas/nsnake/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	conflicts = nsnake
+	source = nsnake-git::git+https://github.com/alexdantas/nsnake.git
+	md5sums = SKIP
+
+pkgname = nsnake-git
+
