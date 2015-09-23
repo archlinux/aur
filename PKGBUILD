@@ -14,7 +14,7 @@ _log_path="/var/log/${_pkgname}"
 
 pkgname=nginx-mainline-libressl
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 librever=2.2.3
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
@@ -77,8 +77,10 @@ build() {
 		--with-http_ssl_module \
 		--with-http_gzip_static_module \
 		--with-http_realip_module \
-		--with-http_spdy_module \
-		--with-file-aio
+		--with-http_v2_module \
+		--with-file-aio \
+		--with-pcre-jit \
+		--with-stream
 
 	make
 }
