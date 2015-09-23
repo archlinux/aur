@@ -3,7 +3,7 @@
 # Contributor: Derek Leach <mail@derek.name>
 
 pkgname=carddavmate
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A CardDav web client"
 arch=('any')
@@ -16,7 +16,7 @@ backup=('etc/webapps/carddavmate/config.js'
 install=${pkgname}.install
 source=("http://www.inf-it.com/CardDavMATE_${pkgver}.zip"
         'apache.example.conf')
-md5sums=('f83518544ff41884ffc6b1d9f8d688da'
+md5sums=('db12580e5691b806d7e9c2e13e93f8fc'
          '16fedd024cede2aa359076d7a988072d')
 
 package() {
