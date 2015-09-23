@@ -1,0 +1,15 @@
+pkgbase = samsung-ml1640
+	pkgdesc = Samsung ML-1640 CUPS driver
+	pkgver = 3.00.65
+	pkgrel = 3
+	url = http://www.samsung.com
+	arch = i686
+	arch = x86_64
+	license = custom:samsung
+	depends = cups
+	depends = ghostscript
+	source = http://org.downloadcenter.samsung.com/content/DR/200911/20091118145015140/UnifiedLinuxDriver_1.01.tar.gz
+	md5sums = b03b7feaf54624a6d07ea3832889fdbc
+
+pkgname = samsung-ml1640
+
