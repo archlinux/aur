@@ -1,0 +1,15 @@
+pkgbase = pdf-reverse
+	pkgdesc = Reverses the page order of a pdf file.
+	pkgver = 0.2
+	pkgrel = 1
+	arch = any
+	license = custom
+	depends = bash
+	depends = pdftk
+	source = pdf-reverse.sh
+	source = license.txt
+	sha512sums = 33f2c7b99db309f2034a853630da6ba9c8b51fc60b87435b8103e2f713271ffd592ab9b160ed1d7693b103cd5204622c71f495e1ea3f79f4a3e8dac8973e3932
+	sha512sums = b0eabc7662e8c8f3d86753b13937df5684e70dc8ee53e2ab852d5311a5f7c4e8ac02f03e13ccef94770d3ca691282d9323945a27cd5bb4e83f91369ba8e8e569
+
+pkgname = pdf-reverse
+

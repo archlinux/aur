@@ -1,0 +1,5 @@
+This piece of software, 'pdf-reverse', a wrapper around pdftk reverse the page order of a pdf document, is allowed to be modified, distributed, copied unter the following conditions:
+
+* Not allowed to be used for any military use.
+* When copying or modifiying, always include this license. Any modified version has to follow this license.
+
