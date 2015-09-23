@@ -1,16 +1,16 @@
 pkgbase = glide-bin
 	pkgdesc = Simplified Go project management, dependency management, and vendoring.
-	pkgver = 0.5.1
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Masterminds/glide
 	arch = x86_64
 	arch = i686
-	provides = glide
+	provides = glide=0.6.1
 	conflicts = glide
-	source_x86_64 = https://github.com/Masterminds/glide/releases/download/0.5.1/glide-linux-amd64.zip
-	md5sums_x86_64 = e98e8762296acf8377fec66b7c924c5e
-	source_i686 = https://github.com/Masterminds/glide/releases/download/0.5.1/glide-linux-386.zip
-	md5sums_i686 = 607f7e3074df21c5644714e07b95b827
+	source_x86_64 = https://github.com/Masterminds/glide/releases/download/0.6.1/glide-linux-amd64.zip
+	md5sums_x86_64 = b7e49dd152a8f61bcebc88905c16f19b
+	source_i686 = https://github.com/Masterminds/glide/releases/download/0.6.1/glide-linux-386.zip
+	md5sums_i686 = a2feac1b0f5178d63880bc16c945b6f8
 
 pkgname = glide-bin
 
