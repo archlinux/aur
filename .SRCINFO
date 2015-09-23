@@ -1,5 +1,5 @@
 pkgbase = brother-dcpj4120dw
-	pkgdesc = Driver for the Brother DCP-J725DW wifi multifuncional printer
+	pkgdesc = Driver for the Brother DCP-J4120DW wifi multifuncional printer
 	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/index.html
