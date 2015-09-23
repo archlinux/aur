@@ -1,7 +1,7 @@
 # Maintainer: Félicien PILLOT <felicien.pillot@member.fsf.org>
 pkgname=fisoco
-pkgver=0.3
-pkgrel=2
+pkgver=0.5
+pkgrel=0
 pkgdesc="a Finding, Sorting and Converting free software"
 url="https://github.com/Felandral/Fisoco"
 arch=('any')
@@ -21,14 +21,8 @@ pkgver() {
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  echo "Generating local autoconf macros..."
-  aclocal
-  echo "Generating translations Makefile..."
-  intltoolize
-  echo "Running Autotools..."
-  autoreconf
-  echo "Running configure..."
-  ./configure
+  ./bootstrap -g &&
+  ./configure --prefix=/usr &&
   sleep 1
   echo "Compiling..."
   sleep 1
