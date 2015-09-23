@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a tool to convert Unified Robot Description
 url='http://ros.org/wiki/collada_urdf'
 
 pkgname='ros-indigo-collada-urdf'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf
@@ -21,7 +21,6 @@ ros_makedepends=(ros-indigo-tf
   ros-indigo-urdf)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  pcre
   assimp
   collada-dom
   urdfdom
@@ -35,7 +34,6 @@ ros_depends=(ros-indigo-collada-parser
   ros-indigo-tf
   ros-indigo-urdf)
 depends=(${ros_depends[@]}
-  pcre
   assimp
   collada-dom
   urdfdom
