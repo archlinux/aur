@@ -1,7 +1,7 @@
 # Maintainer: Stephen Brennan <smb196@case.edu>
 pkgname=latex-homework-git
-pkgver=0.1
-pkgrel=1
+pkgver=r33.cf82d6f
+pkgrel=2
 pkgdesc="LaTeX class for homework assignments."
 arch=(any)
 url="https://github.com/brenns10/homework"

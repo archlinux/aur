@@ -1,7 +1,7 @@
 pkgbase = latex-homework-git
 	pkgdesc = LaTeX class for homework assignments.
-	pkgver = 0.1
-	pkgrel = 1
+	pkgver = r33.cf82d6f
+	pkgrel = 2
 	url = https://github.com/brenns10/homework
 	install = latex-homework-git.install
 	arch = any
