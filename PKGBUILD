@@ -1,7 +1,7 @@
 # Maintainer: Fredrick Brennan <admin@8chan.co>
 pkgname=waifu2x-git
 pkgver=r250.ca65c93
-pkgrel=3
+pkgrel=4
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
 arch=('x86_64')
 url=""
@@ -9,8 +9,7 @@ license=('MIT')
 groups=()
 depends=('opencl-headers' 'ocl-icd' 'opencv')
 makedepends=('git' 'cmake')
-optdepends=('cuda: Significantly speeds up operations, but only works with NVIDIA GPU'
-            'libdc1394: IEEE1394 capturing support')
+optdepends=('cuda: Significantly speeds up operations, but only works with NVIDIA GPU')
 provides=('waifu2x' 'waifu2x-converter-cpp')
 conflicts=()
 replaces=()
@@ -40,14 +39,19 @@ build() {
 package() {
   ## Waifu2x's Makefile has no `install`
   ## Just copy its binary, and some files it require...
-  installpath='/usr/bin/waifu2x'
-  sharepath='/usr/share/waifu2x/'
+  binpath='/usr/bin'
+  sharepath='/usr/share/waifu2x'
+  librarypath='/usr/lib'
+  manualpath='/usr/share/man/man1'
 
-  mkdir -p $pkgdir/usr/bin || true
+  mkdir -p $pkgdir$binpath || true
   mkdir -p $pkgdir$sharepath || true
-  cp $gitreponame/$gitreponame $pkgdir$installpath
+  mkdir -p $pkgdir$librarypath || true
+  mkdir -p $pkgdir$manualpath || true
+  cp $gitreponame/$gitreponame $pkgdir$binpath/waifu2x
+  cp $gitreponame/libw2xc.so $pkgdir$libpath
+  cp ../waifu2x.1.gz $pkgdir$manualpath
   cp -r $gitreponame/models_rgb $pkgdir$sharepath
-  msg "Waifu2x will be installed as $installpath. It has no manpage, reading $installpath -h is probably a good idea."
 }
 
 # From https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
