@@ -1,0 +1,19 @@
+pkgbase = ledit
+	pkgdesc = Line editor, allowing to use shell commands with control characters like in Emacs.
+	pkgver = 2.03
+	pkgrel = 1
+	url = http://cristal.inria.fr/~ddr/ledit/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml
+	makedepends = camlp5
+	depends = ncurses
+	options = !strip
+	source = http://cristal.inria.fr/~ddr/ledit/distrib/src/ledit-2.03.tgz
+	md5sums = 3a70ee7d5d5e2dfb905a1ac2e1e60276
+	sha1sums = 8fef728f38e8d6fc30dd5f71dd5b6b647212a43a
+	sha256sums = ce08a8568c964009ccb0cbba45ae78b9a96c823f42a4fd61431a5b0c2c7a19ce
+
+pkgname = ledit
+
