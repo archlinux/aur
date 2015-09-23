@@ -1,9 +1,9 @@
-# Maintainer: delta48 <dark.magician.48[at]gmail[dot]com>
+# Maintainer: delta48 <dark.magician.48+aur[at]gmail[dot]com>
 # based on firefox-noscript PKGBUILD
 
 pkgname=firefox-flashgot
 pkgver=1.5.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension for firefox which download video"
 arch=('any')
 url="http://flashgot.net"

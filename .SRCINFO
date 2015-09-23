@@ -1,7 +1,7 @@
 pkgbase = firefox-flashgot
 	pkgdesc = Extension for firefox which download video
 	pkgver = 1.5.6.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flashgot.net
 	arch = any
 	license = GPL2
