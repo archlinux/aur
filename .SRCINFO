@@ -1,0 +1,18 @@
+pkgbase = ntch
+	pkgdesc = A console-based 2channel browser
+	pkgver = 1.0.2.8
+	pkgrel = 1
+	url = http://sourceforge.jp/projects/ntch/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gdbm
+	depends = ncurses
+	depends = openssl
+	depends = sqlite
+	depends = zlib
+	source = http://jaist.dl.sourceforge.jp/ntch/60442/ntch-1.0.2.8.tgz
+	md5sums = 04913fbd68ec330abd370716c2c43755
+
+pkgname = ntch
+
