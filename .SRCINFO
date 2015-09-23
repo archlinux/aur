@@ -1,6 +1,6 @@
 pkgbase = cocos2d-x-src
 	pkgdesc = Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X
-	pkgver = 3.8
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = http://www.cocos2d-x.org/filedown/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = cocos2d-x-src
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://www.cocos2d-x.org/filedown/cocos2d-x-3.8.zip
+	source = http://www.cocos2d-x.org/filedown/cocos2d-x-3.8.1.zip
 	source = README
 	source = cocos2d-x.sh
 	source = cocos2d-x.csh
