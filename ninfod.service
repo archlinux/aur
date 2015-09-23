@@ -4,6 +4,7 @@ Description=IPv6 Node Information Responder
 [Service]
 Type=forking
 ExecStart=/usr/lib/ninfod/ninfod -v -u daemon -p /run/ninfod/ninfod.pid
+PIDFile=/run/ninfod/ninfod.pid
 
 [Install]
 WantedBy=multi-user.target
