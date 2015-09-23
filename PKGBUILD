@@ -20,9 +20,9 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -dm 755 "${pkgdir}/bin"
+  install -dm 755 "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/etc/onedrive"
-  install -m 755 onedrive "${pkgdir}/bin/"
+  install -m 755 onedrive "${pkgdir}/usr/bin/"
   install -m 622 onedrive.conf "${pkgdir}/etc/onedrive/"
 }
  
