@@ -1,6 +1,6 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 pkgname=rhvoice-dictionary-git
-pkgver=20150616
+pkgver=20150923
 pkgrel=1
 pkgdesc="Русский словарь для RHVoice"
 arch=('i686' 'x86_64')
