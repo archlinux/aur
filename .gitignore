@@ -1,0 +1,4 @@
+src/
+pkg/
+slack-desktop-*.deb
+slack-desktop-bin-*.pkg.tar.xz
