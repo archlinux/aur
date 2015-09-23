@@ -20,13 +20,13 @@ _replacesoldmodules=('linux-libre%-kmod-alx') # '%' gets replaced with _kernelna
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=1.1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
-if [ "$CARCH" = "armv7h" ]; then
+if [ "${CARCH}" = "armv7h" ]; then
   makedepends+=('git' 'uboot-tools')
 fi
 options=('!strip')
@@ -94,7 +94,7 @@ _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${_kernelname}}")
 _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 
-case "$CARCH" in
+case "${CARCH}" in
   i686|x86_64) KARCH=x86;;
   armv7h) KARCH=arm;;
 esac
@@ -137,7 +137,7 @@ prepare() {
 
   # Make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
-  if [ "${CARCH}" != "armv7h" ]; then ## This patch is only needed for x86 computers, so we disable it for others
+  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then ## This patch is only needed for x86 computers, so we disable it for others
     patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
   fi
 
@@ -167,10 +167,10 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  if [ "${CARCH}" != "armv7h" ]; then
-    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
-  else
+  if [ "${CARCH}" = "armv7h" ]; then
     make ${MAKEFLAGS} LOCALVERSION= zImage modules dtbs
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
   fi
 }
 
@@ -178,14 +178,16 @@ _package() {
   pkgdesc="The ${pkgbase^} kernel and modules"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base')
   depends=('coreutils' 'linux-libre-firmware' 'kmod')
-  if [ "${CARCH}" != "armv7h" ]; then
-    depends+=('mkinitcpio>=0.7')
-  fi
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
-  conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  if [ "$CARCH" != "armv7h" ]; then
+  if [ "${CARCH}" = "armv7h" ]; then
+    provides=("${_replacesarchkernel%${_kernelname}}")
+    conflicts=("${_replacesarchkernel%${_kernelname}}")
+    replaces=("${_replacesarchkernel%${_kernelname}}")
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    depends+=('mkinitcpio>=0.7')
+    provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
+    conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+    replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   fi
   install=linux.install
@@ -202,11 +204,11 @@ _package() {
     mkdir -p "${pkgdir}"/boot/dtbs
   fi
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  if [ "${CARCH}" != "armv7h" ]; then
-    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-  else
+  if [ "${CARCH}" = "armv7h" ]; then
     cp arch/$KARCH/boot/zImage "${pkgdir}/boot/zImage"
     cp arch/$KARCH/boot/dts/*.dtb "${pkgdir}/boot/dtbs"
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
   fi
 
   # set correct depmod command for install
@@ -217,7 +219,7 @@ _package() {
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
-  if [ "$CARCH" != "armv7h" ]; then
+  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     # install mkinitcpio preset file for kernel
     install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
     sed \
@@ -232,7 +234,7 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  if [ "$CARCH" = "armv7h" ]; then
+  if [ "${CARCH}" = "armv7h" ]; then
     # gzip -9 all modules to save 100MB of space
     find "${pkgdir}" -name '*.ko' |xargs -P 2 -n 1 gzip -9
   fi
@@ -249,7 +251,7 @@ _package() {
   mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
-  if [ "$CARCH" != "armv7h" ]; then
+  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     # add vmlinux
     install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
   fi
@@ -257,9 +259,15 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
-  provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
-  conflicts=("${_replacesoldkernels[@]/%/-headers}")
-  replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
+  if [ "${CARCH}" = "armv7h" ]; then
+    provides=("${_replacesarchkernel%${_kernelname}}-headers")
+    conflicts=("${_replacesarchkernel%${_kernelname}}-headers")
+    replaces=("${_replacesarchkernel%${_kernelname}}-headers")
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
+    conflicts=("${_replacesoldkernels[@]/%/-headers}")
+    replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
+  fi
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -281,7 +289,7 @@ _package-headers() {
   # copy arch includes for external modules
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-  if [ "$CARCH" = "armv7h" ]; then
+  if [ "${CARCH}" = "armv7h" ]; then
     mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2"
     cp -a arch/${KARCH}/mach-omap2/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2/"
     mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu"
@@ -385,9 +393,15 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
-  provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
-  conflicts=("${_replacesoldkernels[@]/%/-docs}")
-  replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
+  if [ "${CARCH}" = "armv7h" ]; then
+    provides=("${_replacesarchkernel%${_kernelname}}-docs")
+    conflicts=("${_replacesarchkernel%${_kernelname}}-docs")
+    replaces=("${_replacesarchkernel%${_kernelname}}-docs")
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
+    conflicts=("${_replacesoldkernels[@]/%/-docs}")
+    replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
+  fi
 
   cd "${srcdir}/${_srcname}"
 
@@ -404,6 +418,8 @@ _package-smileplug() {
   pkgdesc="The ${pkgbase^} kernel - Marvell SMILE Plug"
   arch=('armv7h')
   depends=("${pkgbase}")
+  provides=("${_replacesarchkernel%${_kernelname}}-uimage")
+  conflicts=("${_replacesarchkernel%${_kernelname}}-uimage")
 
   cd "${srcdir}/${_srcname}"
 
@@ -416,6 +432,8 @@ _package-mirabox() {
   pkgdesc="The ${pkgbase^} kernel - Globalscale Mirabox"
   arch=('armv7h')
   depends=("${pkgbase}")
+  provides=("${_replacesarchkernel%${_kernelname}}-uimage")
+  conflicts=("${_replacesarchkernel%${_kernelname}}-uimage")
 
   cd "${srcdir}/${_srcname}"
 
@@ -428,6 +446,8 @@ _package-ax3() {
   pkgdesc="The ${pkgbase^} kernel - OpenBlocks AX3-4"
   arch=('armv7h')
   depends=("${pkgbase}")
+  provides=("${_replacesarchkernel%${_kernelname}}-uimage")
+  conflicts=("${_replacesarchkernel%${_kernelname}}-uimage")
 
   cd "${srcdir}/${_srcname}"
 
@@ -440,6 +460,8 @@ _package-d3plug() {
   pkgdesc="The ${pkgbase^} kernel - Globalscale D3Plug"
   arch=('armv7h')
   depends=("${pkgbase}")
+  provides=("${_replacesarchkernel%${_kernelname}}-uimage")
+  conflicts=("${_replacesarchkernel%${_kernelname}}-uimage")
 
   cd "${srcdir}/${_srcname}"
 
@@ -452,6 +474,8 @@ _package-cubox() {
   pkgdesc="The ${pkgbase^} kernel - SolidRun Cubox (Marvell)"
   arch=('armv7h')
   depends=("${pkgbase}")
+  provides=("${_replacesarchkernel%${_kernelname}}-uimage")
+  conflicts=("${_replacesarchkernel%${_kernelname}}-uimage")
 
   cd "${srcdir}/${_srcname}"
 
@@ -462,7 +486,7 @@ _package-cubox() {
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 
-if [ "$CARCH" = "armv7h" ]; then
+if [ "${CARCH}" = "armv7h" ]; then
   pkgname+=("${pkgbase}-smileplug" "${pkgbase}-mirabox" "${pkgbase}-ax3" "${pkgbase}-d3plug" "${pkgbase}-cubox")
 fi
 
