@@ -4,7 +4,7 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-indigo-rostest'
-pkgver='1.11.13'
+pkgver='1.11.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,6 +18,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=(ros-indigo-roslaunch
   ros-indigo-rosmaster
+  ros-indigo-rosgraph
   ros-indigo-rosunit
   ros-indigo-rospy)
 depends=(${ros_depends[@]}

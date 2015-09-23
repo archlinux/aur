@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rostest
 	pkgdesc = ROS - Integration test suite based on roslaunch that is compatible with xUnit frameworks.
-	pkgver = 1.11.13
+	pkgver = 1.11.14
 	pkgrel = 1
 	url = http://ros.org/wiki/rostest
 	arch = any
@@ -13,10 +13,11 @@ pkgbase = ros-indigo-rostest
 	makedepends = boost
 	depends = ros-indigo-roslaunch
 	depends = ros-indigo-rosmaster
+	depends = ros-indigo-rosgraph
 	depends = ros-indigo-rosunit
 	depends = ros-indigo-rospy
 	depends = boost
-	source = rostest::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rostest/1.11.13-0
+	source = rostest::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rostest/1.11.14-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rostest
