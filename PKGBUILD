@@ -6,7 +6,7 @@
 _pkgname="pdf-append"
 pkgname="${_pkgname}"
 pkgver="0.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Combines an arbitrary amount of pdf documents into one by appending the documents one after another."
 arch=('any')
 depends=(
