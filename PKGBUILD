@@ -1,7 +1,7 @@
 # Maintainer: Jorge Araya Navarro <elcorreo@deshackra.com>
 pkgname=cockatrice-client
 pkgver=20150809.2
-pkgrel=7
+pkgrel=8
 pkgdesc="A cross-platform virtual tabletop for multiplayer card games - Client"
 arch=('i686' 'x86_64')
 url="http://www.woogerworks.com/"
@@ -24,7 +24,7 @@ build() {
     mkdir build
   fi
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DWITH_SERVER=0 -DWITH_CLIENT=1 -DWITH_ORACLE=1 -DUPDATE_TRANSLATIONS=1 ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DWITH_CLIENT=1 -DWITH_ORACLE=1 -DWITH_SERVER=0 ..
   make
 }
 
