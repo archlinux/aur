@@ -1,6 +1,6 @@
 pkgbase = cen64-git
 	pkgdesc = Cycle-accurate Nintendo 64 simulator
-	pkgver = 20150102
+	pkgver = 20150923
 	pkgrel = 1
 	url = http://www.cen64.com/
 	arch = i686

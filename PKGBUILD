@@ -1,5 +1,5 @@
 pkgname=cen64-git
-pkgver=20150102
+pkgver=20150923
 pkgrel=1
 pkgdesc="Cycle-accurate Nintendo 64 simulator"
 arch=('i686' 'x86_64')
@@ -16,6 +16,14 @@ build() {
     git clone "$_gitroot"
     cd "$_gitname"
 
+    # Checkout angrylion-rdp branch (This will get most commercial games running)
+    git checkout angrylion-rdp
+
+    # Build with different sampling frequency
+    # See: http://forums.cen64.com/viewtopic.php?f=6&t=186&start=20#p2085
+    sed -i 's/44100/31985/g' ai/context.c ai/controller.c
+
+    # Uncomment whichever matches your CPU architecture
     sed -i 's/CEN64_ARCH_SUPPORT "SSE2"/CEN64_ARCH_SUPPORT "SSSE3"/g' CMakeLists.txt
     #sed -i 's/CEN64_ARCH_SUPPORT "SSE2"/CEN64_ARCH_SUPPORT "SSE4.1"/g' CMakeLists.txt
     #sed -i 's/CEN64_ARCH_SUPPORT "SSE2"/CEN64_ARCH_SUPPORT "AVX"/g' CMakeLists.txt
