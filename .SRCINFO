@@ -1,0 +1,20 @@
+pkgbase = nsudoku
+	pkgdesc = A ncurses-based Sudoku puzzle game.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.tbmatuka.com/nsudoku/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ncurses
+	source = http://www.tbmatuka.com/nsudoku/nsudoku-1.3.c
+	source = http://www.tbmatuka.com/nsudoku/LICENSE-1.3
+	md5sums = cae8ddb55879427631d995a2e6b16e55
+	md5sums = 9db7d0019667301f05d66f9418d8bf6e
+	sha1sums = 6d5c5ba455696be54358d3c352d8ebc6f8ed880b
+	sha1sums = 71324eb52a3f8e99cb713f3f7083ebb180ac420d
+	sha256sums = 9595d449dde9a3b93bfaf3f6fdb3ae2669008935fe902bd73f742c81af6bbba4
+	sha256sums = d8dd8104c52f92a0cc14869b92aeada6b5594a665e98c048831e7e1bb5e03bf0
+
+pkgname = nsudoku
+
