@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 89891.f38745b
+	pkgver = 1.8ec91e9
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = python-git
 	optdepends = tk: for tkinter
 	optdepends = sqlite
 	options = !makeflags
-	source = git://github.com/python/cpython.git
+	source = hg+https://hg.python.org/cpython
 	sha256sums = SKIP
 
 pkgname = python-git

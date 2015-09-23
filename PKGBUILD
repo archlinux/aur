@@ -2,7 +2,7 @@
 # Based on python35 PKGBUILD (Samuel Damashek)
 
 pkgname=python-git
-pkgver=89891.f38745b
+pkgver=1.8ec91e9
 pkgrel=1
 _pybasever=3.6
 _gitname=cpython
@@ -14,7 +14,7 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
-source=(git://github.com/python/cpython.git)
+source=(hg+https://hg.python.org/cpython)
 sha256sums=('SKIP')
 
 build() {
