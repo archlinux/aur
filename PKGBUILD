@@ -5,7 +5,8 @@
 # Upstream URL: https://github.com/atom/atom
 
 # Please do mind that pkgbuild will automagically update
-# to latest tagged release, there's no need to manually change pkgver.
+# to latest tagged release (you could have problems if you use an aur helper),
+# there's no need to manually change pkgver.
 # Please don't flag out-of-date!
 pkgname=atom-editor-git
 pkgver=v1.0.7.r46.g927ec7a
@@ -26,7 +27,7 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/atom"
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
