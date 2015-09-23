@@ -5,6 +5,7 @@ pkgbase = ninfod
 	install = ninfod.install
 	arch = i686
 	arch = x86_64
+	depends = openssl
 	source = git://git.linux-ipv6.org/gitroot/ninfod.git
 	source = ninfod.service
 	source = ninfod.tmpfiles

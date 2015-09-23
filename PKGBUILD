@@ -4,6 +4,7 @@ pkgver=s20100412.r5.g62f7f09
 pkgrel=1
 pkgdesc='Daemon for IPv6 Node Information Queries (RFC4620)'
 arch=(i686 x86_64)
+depends=("openssl")
 source=("git://git.linux-ipv6.org/gitroot/ninfod.git"
         "ninfod.service"
         "ninfod.tmpfiles")
