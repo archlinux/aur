@@ -1,7 +1,7 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=ty-git
-pkgver=0.6.2.r11.gf71f1b2
+pkgver=0.6.3.r51.gc1e4e2b
 pkgrel=1
 pkgdesc="GUI and command-line tools to manage Teensy devices"
 arch=('x86_64' 'i686')
@@ -36,7 +36,7 @@ package() {
 
   for size in 16 32 48 256; do
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-    convert -resize "${size}x${size}" resources/images/tyqt.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tyqt.png"
+    convert -resize "${size}x${size}" tyqt/images/tyqt.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tyqt.png"
   done
 
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/ty-git/LICENSE.txt"
