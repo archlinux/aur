@@ -4,10 +4,10 @@ pkgdesc="ROS - This package provides ROS specific hooks for stage."
 url='http://ros.org/wiki/stage_ros'
 
 pkgname='ros-indigo-stage-ros'
-pkgver='1.7.4'
+pkgver='1.7.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -15,25 +15,25 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-geometry-msgs
   ros-indigo-std-msgs
   ros-indigo-rostest
+  ros-indigo-std-srvs
   ros-indigo-catkin
   ros-indigo-sensor-msgs
   ros-indigo-tf
   ros-indigo-nav-msgs)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost
-  fltk)
+  boost)
 
 ros_depends=(ros-indigo-roscpp
   ros-indigo-stage
   ros-indigo-geometry-msgs
   ros-indigo-std-msgs
+  ros-indigo-std-srvs
   ros-indigo-sensor-msgs
   ros-indigo-tf
   ros-indigo-nav-msgs)
 depends=(${ros_depends[@]}
-  boost
-  fltk)
+  boost)
 
 _tag=release/indigo/stage_ros/${pkgver}-${_pkgver_patch}
 _dir=stage_ros
