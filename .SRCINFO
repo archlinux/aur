@@ -1,7 +1,7 @@
 pkgbase = cockatrice-server
 	pkgdesc = A cross-platform virtual tabletop for multiplayer card games (Server)
-	pkgver = 20150809.2
-	pkgrel = 3
+	pkgver = 20150924.1
+	pkgrel = 1
 	url = http://www.woogerworks.com/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = cockatrice-server
 	depends = protobuf
 	provides = cockatrice-server
 	conflicts = cockatrice-server
-	source = https://github.com/Cockatrice/Cockatrice/archive/2015-08-09-Release.tar.gz
-	md5sums = 3ce7bcee80dcb0f1bdb205eff2b9146e
+	source = https://github.com/Cockatrice/Cockatrice/archive/2015-09-24-Release.tar.gz
+	md5sums = de8004c7fea606954c0f34148dbb96da
 
 pkgname = cockatrice-server
 

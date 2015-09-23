@@ -1,7 +1,8 @@
 # Maintainer: Jorge Araya Navarro <elcorreo@deshackra.com>
 pkgname=cockatrice-server
-pkgver=20150809.2
-pkgrel=3
+_reldate="2015-09-24"
+pkgver=20150924.1
+pkgrel=1
 pkgdesc="A cross-platform virtual tabletop for multiplayer card games (Server)"
 arch=('i686' 'x86_64')
 url="http://www.woogerworks.com/"
@@ -10,11 +11,11 @@ depends=('qt5-base' 'qt5-tools' 'protobuf')
 makedepends=('cmake')
 provides=('cockatrice-server')
 conflicts=('cockatrice-server')
-source=(https://github.com/Cockatrice/Cockatrice/archive/2015-08-09-Release.tar.gz)
-md5sums=('3ce7bcee80dcb0f1bdb205eff2b9146e')
+source=(https://github.com/Cockatrice/Cockatrice/archive/${_reldate}-Release.tar.gz)
+md5sums=('de8004c7fea606954c0f34148dbb96da')
 
 build() {
-  cd "$srcdir/Cockatrice-2015-08-09-Release"
+  cd "$srcdir/Cockatrice-${_reldate}-Release"
 
   if [ ! -d "build"];
   then
@@ -29,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/Cockatrice-2015-08-09-Release/build"
+  cd "$srcdir/Cockatrice-${_reldate}-Release/build"
 
   make DESTDIR="$pkgdir/" install
 }
