@@ -3,7 +3,7 @@
 _pkgname=e-foto
 pkgname=$_pkgname-svn
 pkgrel=1
-pkgver=382
+pkgver=385
 pkgdesc="A free GNU/GPL educational digital photogrammetric workstation"
 arch=(i686 x86_64)
 url=http://www.efoto.eng.uerj.br
