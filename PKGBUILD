@@ -1,22 +1,28 @@
 # Maintainer: Samuel Mesa <samuelmesa@linuxmail.org>
+# Contributor: mbostwick <mbostwick89@gmail.com>
+# Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
 pkgver=1.8.18
-pkgrel=1
+pkgrel=2
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
 license=('LGPL')
 arch=('i686' 'x86_64')
 depends=('freetype2' 'gdal' 'libgeotiff' 'libjpeg' 'libtiff' 'openscenegraph' 'openjpeg'  'doxygen' 'hdf5-cpp-fortran' 
-        'minizip' 'expat' 'ffmpeg')
-makedepends=('gcc' 'make' 'cmake')
-optdepends=('qt4' 'java-environment-common' 'openmpi' 'gpstk-bin' )
-source=(http://download.osgeo.org/ossim/source/latest/${pkgname}-${pkgver}.tar.gz ossim.sh)
-provides=('ossim')
-conflicts=('ossim')
+        'minizip' 'expat' 'ffmpeg' 'qt4' 'podofo' 'liblas' 'bzip2')
+makedepends=('cmake')
+optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
+source=(http://download.osgeo.org/ossim/source/latest/${pkgname}-${pkgver}.tar.gz ossim.sh lib64bit_cmake_patch.patch)
 install=ossim.install
 md5sums=('7bb918d8e20715d794eef86ad26e1389'
-         'cb85c216a099b10f057cddeeae4a57fb')
+         'cb85c216a099b10f057cddeeae4a57fb'
+         '9d676f9787896b096f1015c27e9d0769')
+
+prepare() {
+  cd ${srcdir}
+  patch -Np1 -i ../lib64bit_cmake_patch.patch
+}
 
 build() {
   cd $srcdir
@@ -83,6 +89,7 @@ build() {
   -DOSSIM_LIBRARIES=${buildir}/build/lib/libossim.so \
   -DOSSIM_PLUGIN_LINK_TYPE=MODULE \
   -DOSSIMPLANET_ENABLE_EPHEMERIS=ON \
+  -DINSTALL_LIBRARY_DIR=/usr/lib \
   ${buildir}/ossim_package_support/cmake
 
   #-DOSSIM_DEPENDENCIES=${buildir}/local \
