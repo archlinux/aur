@@ -1,0 +1,13 @@
+pkgbase = openvpn-radiusplugin
+	pkgdesc = Radiusplugin for OpenVPN
+	pkgver = 2.1a_beta1
+	pkgrel = 3
+	url = http://www.nongnu.org/radiusplugin/
+	arch = i686
+	arch = x86_64
+	depends = libgcrypt
+	source = http://www.nongnu.org/radiusplugin/radiusplugin_v2.1a_beta1.tar.gz
+	sha256sums = 84f5af0927a7039d32707be21932e8989fa3bcb74c05f82bdce91a0834a16c8c
+
+pkgname = openvpn-radiusplugin
+
