@@ -1,0 +1,34 @@
+pkgbase = nvidia-texture-tools
+	pkgdesc = GPU-accelerated Texture Tools with support for DirectX 10 texture formats
+	pkgver = 2.0.8
+	pkgrel = 4
+	url = http://code.google.com/p/nvidia-texture-tools/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = libpng
+	depends = libjpeg
+	depends = libtiff
+	depends = openexr
+	source = http://nvidia-texture-tools.googlecode.com/files/nvidia-texture-tools-2.0.8-1.tar.gz
+	source = nvidia-texture-tools-2.0.8-add-pthread.patch
+	source = issue139.patch
+	source = r1157.patch
+	source = 03-kfreebsd-bfs.patch
+	source = 04-fix-gcc4.7-build.patch
+	source = 06-fix-libpng1.5-build.patch
+	source = 07-fix-valgrind.patch
+	source = nvidia-texture-tools-2.0.8-wordsize.patch
+	md5sums = 7449c95ca1583b512561c83c5a5f401c
+	md5sums = 55d011f08ef9c924a7fd5b2c8b9e2c85
+	md5sums = c67927632740fbea5efb02969b97b52c
+	md5sums = a044c7cae45e8c9946b4349e34793656
+	md5sums = 72c8ebc16fae0c24306391973188a367
+	md5sums = d60970ba621e82a22419b3f9ce930df2
+	md5sums = d98b9dd3524b426edc0693f8220b6a8d
+	md5sums = ce7d1e7103314500563dd40f18a54a04
+	md5sums = ef1e0896247b27f482eeb8b71378a551
+
+pkgname = nvidia-texture-tools
+
