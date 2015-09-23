@@ -1,7 +1,7 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=ty
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="GUI and command-line tools to manage Teensy devices"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('teensyduino' 'libudev.so' 'qt5-base')
 makedepends=('imagemagick')
 install="ty.install"
 source=("https://github.com/Koromix/ty/archive/v${pkgver}.tar.gz")
-sha256sums=('47a2c44c89f491976b3f2659978d50fc33809d4d1d0e09b1f7a8e8779d92851c')
+sha256sums=('32a170ca8f18af82b46d41485a2afbd29bc07fbb3a13eb11279271d459683b53')
 
 build() {
   cd "ty-${pkgver}"
