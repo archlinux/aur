@@ -1,0 +1,17 @@
+pkgbase = muzikq
+	pkgdesc = A curses/SDL_mixer based audio player currently supporting mp3 & ogg.
+	pkgver = 0.5
+	pkgrel = 2
+	url = http://sourceforge.net/projects/muzikq/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl_mixer
+	depends = taglib
+	source = http://prdownloads.sourceforge.net/muzikq/muzikQ-0.5.tar.gz
+	md5sums = 1883f07506fab8441d49917ed8c171e9
+	sha1sums = 6d2cde74bf8d077088f1bcc3db9b45b5428dfae4
+	sha256sums = b8356fb99731d6bd424ebd4df5f28037c251680a8a7418e8a1e530a9cec817a0
+
+pkgname = muzikq
+
