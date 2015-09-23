@@ -1,23 +1,23 @@
 # $Id$
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: Benjamin Chrétien <chretien+aur at lirmm dot fr>
 
 pkgname=cpp-coveralls
-pkgver=0.2.0
+pkgver=0.3.10
 pkgrel=1
-pkgdesc="Upload the coverage report of C/C++ project to coveralls.io."
+pkgdesc="Upload gcov results to coveralls.io"
 arch=('i686' 'x86_64')
 url='https://github.com/eddyxu/cpp-coveralls'
 license=('Apache')
 depends=('python' 'python-requests' 'python-setuptools')
-source=("$pkgname"::'git://github.com/eddyxu/cpp-coveralls.git'#tag=v${pkgver})
-sha1sums=('SKIP')
+source=("https://github.com/eddyxu/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('0257f3b879555e94c5197880ae843e1307cb9bda6dfcd0334f0d4787c9c0fa5f')
 
 build() {
-    cd ${pkgname}
-    python3 setup.py build
+  cd ${pkgname}-${pkgver}
+  python3 setup.py build
 }
 
 package() {
-    cd ${srcdir}/${pkgname}
-    python3 setup.py install -O1 --skip-build --root "${pkgdir}" --prefix=/usr
+  cd ${pkgname}-${pkgver}
+  python3 setup.py install -O1 --skip-build --root "${pkgdir}" --prefix=/usr
 }

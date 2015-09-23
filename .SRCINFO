@@ -1,6 +1,6 @@
 pkgbase = cpp-coveralls
-	pkgdesc = Upload the coverage report of C/C++ project to coveralls.io.
-	pkgver = 0.2.0
+	pkgdesc = Upload gcov results to coveralls.io
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://github.com/eddyxu/cpp-coveralls
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = cpp-coveralls
 	depends = python
 	depends = python-requests
 	depends = python-setuptools
-	source = cpp-coveralls::git://github.com/eddyxu/cpp-coveralls.git#tag=v0.2.0
-	sha1sums = SKIP
+	source = https://github.com/eddyxu/cpp-coveralls/archive/v0.3.10.tar.gz
+	sha256sums = 0257f3b879555e94c5197880ae843e1307cb9bda6dfcd0334f0d4787c9c0fa5f
 
 pkgname = cpp-coveralls
 
