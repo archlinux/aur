@@ -1,0 +1,11 @@
+--- kdeutils-4.4.5.orig/kcalc/kcalc.ui	2009-08-12 11:59:23.000000000 +0200
++++ kdeutils-4.4.5/kcalc/kcalc.ui	2015-09-23 15:30:39.343058200 +0200
+@@ -405,7 +405,7 @@
+              <string>Dat</string>
+             </property>
+             <property name="shortcut">
+-             <string>D</string>
++             <string>t</string>
+             </property>
+            </widget>
+           </item>

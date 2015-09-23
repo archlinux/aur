@@ -1,0 +1,62 @@
+diff -Nur kdeutils-4.4.5.orig/kcalc/kcalc_const_menu.cpp kdeutils-4.4.5/kcalc/kcalc_const_menu.cpp
+--- kdeutils-4.4.5.orig/kcalc/kcalc_const_menu.cpp	2009-01-28 00:01:08.000000000 +0100
++++ kdeutils-4.4.5/kcalc/kcalc_const_menu.cpp	2015-09-23 15:35:46.953071035 +0200
+@@ -36,15 +36,15 @@
+   QFile file(KGlobal::dirs()->findResource("appdata", "scienceconstants.xml"));
+ 
+   if (!file.open(QIODevice::ReadOnly)) {
+-    kDebug("Did not find file \"scienceconstants.xml\"."
+-	   "No constants will be available.");
++    kDebug() << "Did not find file \"scienceconstants.xml\"."
++	   "No constants will be available.";
+     return;
+   }
+   if (!doc.setContent(&file)) {
+     file.close();
+-    kDebug("The file \"scienceconstants.xml\" does not seem"
++    kDebug() << "The file \"scienceconstants.xml\" does not seem"
+ 	   "to be a valid description file."
+-	   "No constants will be available.");
++	   "No constants will be available.";
+     return;
+   }
+   file.close();
+diff -Nur kdeutils-4.4.5.orig/kcalc/kcalc_core.cpp kdeutils-4.4.5/kcalc/kcalc_core.cpp
+--- kdeutils-4.4.5.orig/kcalc/kcalc_core.cpp	2009-06-17 22:05:55.000000000 +0200
++++ kdeutils-4.4.5/kcalc/kcalc_core.cpp	2015-09-23 15:36:20.763072445 +0200
+@@ -531,7 +531,7 @@
+ 		  	_last_number = -1;
+ 		  else if (mult == KNumber(3))
+ 		  	_last_number = 0;
+-		  else kDebug("Something wrong in CalcEngine::CosDeg\n");
++		  else kDebug() << "Something wrong in CalcEngine::CosDeg\n";
+ 		  return;
+ 		}
+ 	}
+@@ -567,7 +567,7 @@
+ 		  	_last_number = -1;
+ 		  else if (mult == KNumber(3))
+ 		  	_last_number = 0;
+-		  else kDebug("Something wrong in CalcEngine::CosGrad\n");
++		  else kDebug() << "Something wrong in CalcEngine::CosGrad\n";
+ 		  return;
+ 		}
+ 	}
+@@ -723,7 +723,7 @@
+ 		  	_last_number = 0;
+ 		  else if (mult == KNumber(3))
+ 		  	_last_number = -1;
+-		  else kDebug("Something wrong in CalcEngine::SinDeg\n");
++		  else kDebug() << "Something wrong in CalcEngine::SinDeg\n";
+ 		  return;
+ 		}
+ 	}
+@@ -761,7 +761,7 @@
+ 		  	_last_number = 0;
+ 		  else if (mult == KNumber(3))
+ 		  	_last_number = -1;
+-		  else kDebug("Something wrong in CalcEngine::SinGrad\n");
++		  else kDebug() << "Something wrong in CalcEngine::SinGrad\n";
+ 		  return;
+ 		}
+ 	}

@@ -1,6 +1,6 @@
 pkgbase = kcalc-kde4
-	pkgdesc = Scientific Calculator
-	pkgver = 4.14.3
+	pkgdesc = Scientific Calculator - the best version with small key shortcut patch
+	pkgver = 4.4.5
 	pkgrel = 1
 	url = http://kde.org/applications/utilities/kcalc
 	install = kcalc-kde4.install
@@ -22,8 +22,12 @@ pkgbase = kcalc-kde4
 	provides = kcalc
 	conflicts = kcalc
 	conflicts = kdeutils-kcalc
-	source = http://download.kde.org/stable/4.14.3/src/kcalc-4.14.3.tar.xz
-	sha1sums = 0990a35d1fe97b4d4157b6ce6d8e13d199934dad
+	source = http://download.kde.org/Attic/4.4.5/src/kdeutils-4.4.5.tar.bz2
+	source = ShortcutConflict.patch
+	source = kDebug.patch
+	sha1sums = c092cfbb46719d89a5718735dc81ca75c0176e45
+	sha1sums = 8a496131fd81e561ef7ac8a8e64c2a713ae05963
+	sha1sums = 08109de9ce8f177cf26270312369a3014241743f
 
 pkgname = kcalc-kde4
 
