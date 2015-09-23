@@ -1,0 +1,21 @@
+pkgbase = play-git
+	pkgdesc = Curses front-end for various audio players based on cplay
+	pkgver = 20130106
+	pkgrel = 1
+	url = http://git.sysphere.org/play/tree/README
+	install = play-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = ncurses
+	depends = python2
+	optdepends = mpg123: for minimal mp3 support
+	optdepends = pyid3lib: for mp3 ID3 tags support
+	optdepends = id3-py: for mp3 ID3 tags alternative support
+	optdepends = vorbis-tools: for minimal ogg and flac support
+	optdepends = pyvorbis: for ogg tag metadata support
+	optdepends = mplayer: for proper flac, wma, m4a and m4b support
+
+pkgname = play-git
+
