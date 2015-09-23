@@ -1,0 +1,35 @@
+pkgbase = bitcoin-ljrp-git
+	pkgdesc = Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, with Luke Jr. Patches. GUI and wallet
+	pkgver = v0.11.0.ljrP20150711.r0.g12cff2e
+	pkgrel = 1
+	url = http://luke.dashjr.org/programs/bitgit/w/bitcoind/luke-jr.git
+	install = bitcoin-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	makedepends = protobuf
+	depends = boost-libs
+	depends = openssl
+	depends = miniupnpc
+	depends = protobuf
+	depends = qrencode
+	depends = qt4
+	provides = bitcoin-daemon
+	provides = bitcoin-cli
+	provides = bitcoin-qt
+	provides = bitcoin-tx
+	conflicts = bitcoin-daemon
+	conflicts = bitcoin-cli
+	conflicts = bitcoin-qt
+	conflicts = bitcoin-tx
+	source = git+https://github.com/luke-jr/bitcoin.git#branch=0.11.x-ljrP
+	source = bitcoin-qt.install
+	sha256sums = SKIP
+	sha256sums = ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c
+
+pkgname = bitcoin-ljrp-git
+
