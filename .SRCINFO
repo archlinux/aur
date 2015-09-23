@@ -1,13 +1,11 @@
 pkgbase = gettext-java
 	pkgdesc = GNU internationalization library - Java libraries
-	pkgver = 0.19.5
+	pkgver = 0.19.6
 	pkgrel = 1
 	url = http://www.gnu.org/software/gettext/
 	install = gettext.install
 	arch = i686
 	arch = x86_64
-	groups = base
-	groups = base-devel
 	license = GPL
 	makedepends = java-environment
 	depends = gcc-libs
@@ -15,12 +13,12 @@ pkgbase = gettext-java
 	depends = sh
 	depends = glib2
 	depends = libunistring
-	depends = gettext>=0.19.5
+	depends = gettext>=0.19.6
 	optdepends = git: for autopoint infrastructure updates
 	options = !docs
-	source = ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.5.tar.gz
-	source = ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.5.tar.gz.sig
-	md5sums = 0f3c108d64e8dcd9e6fbdff4ca722feb
+	source = ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.6.tar.gz
+	source = ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.6.tar.gz.sig
+	md5sums = 6d1447f8c5c45c329371ef4bfe7d79a5
 	md5sums = SKIP
 
 pkgname = gettext-java
