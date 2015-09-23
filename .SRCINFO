@@ -1,6 +1,6 @@
 pkgbase = xrdp-git
 	pkgdesc = An open source remote desktop protocol (RDP) server - GIT version
-	pkgver = 0.8.0.r439.gdbf959f
+	pkgver = 0.8.0.r464.gc0ef543
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/neutrinolabs/xrdp
