@@ -1,0 +1,14 @@
+pkgbase = sharp-mx-283to503-ps
+	pkgdesc = PPD files for Sharp PostScript Printers(MX-283 to MX-503)
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://www.sharp.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	source = http://www.sharp.co.uk/cps/rde/xbcr/documents/documents/drv/34_ppc/MXM-MXB_DRV_PS-Linux-ver13_GB.ps.tar.gz
+	md5sums = 1a9202caf50e0e2cd5f5150e79582012
+
+pkgname = sharp-mx-283to503-ps
+
