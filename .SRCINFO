@@ -1,7 +1,7 @@
 pkgbase = govpn
 	pkgdesc = Simple secure free software DPI/censorship-resistant VPN daemon
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cypherpunks.ru/govpn/
 	arch = i686
 	arch = x86_64
