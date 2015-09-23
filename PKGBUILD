@@ -10,8 +10,10 @@ license=('MIT LGPL3')
 depends=('glibc' 'gcc-libs' 'qt5-base' 'qt5-x11extras' 'libgssglue')
 makedepends=('git')
 conflicts=('qputty')
-source=('git://github.com/dsmorozov/qputty-qt5.git')
-md5sums=('SKIP')
+source=('git://github.com/dsmorozov/qputty-qt5.git'
+        'git://git.tartarus.org/simon/putty.git')
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -21,6 +23,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	git submodule init
+	git config submodule.putty.url $srcdir/putty
 	git submodule update
 }
 
