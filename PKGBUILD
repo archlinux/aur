@@ -49,7 +49,7 @@ package() {
   mkdir -p $pkgdir$librarypath || true
   mkdir -p $pkgdir$manualpath || true
   cp $gitreponame/$gitreponame $pkgdir$binpath/waifu2x
-  cp $gitreponame/libw2xc.so $pkgdir$libpath
+  cp $gitreponame/libw2xc.so $pkgdir$librarypath
   cp ../waifu2x.1.gz $pkgdir$manualpath
   cp -r $gitreponame/models_rgb $pkgdir$sharepath
 }
