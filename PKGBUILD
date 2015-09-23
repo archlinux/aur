@@ -5,7 +5,7 @@
 pkgname=st-pizz
 _pkgname=st
 epoch=1
-pkgver=20150826.33615ae
+pkgver=20150923.821cdb0
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X from Github. Customizations: Droid Sans font; solarized; xcompmgr (optional for transparency)'
 url='https://github.com/pizzooid/st'
@@ -28,7 +28,6 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	#remove the terminfo, because it is provided by ncurses
-	sed -i '/\@tic /d' Makefile
 	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
@@ -36,6 +35,6 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	make PREFIX=/usr DESTDIR="${pkgdir}" TERMINFO="$pkgdir/usr/share/terminfo" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/README"
+	install -Dm644 README "${pkgdir}/usr/share/licenses/${pkgname}/README"
 }
 md5sums=('SKIP')
