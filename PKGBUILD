@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.23
 
 pkgname='perl-moosex-traits'
-pkgver='0.11'
+pkgver='0.13'
 pkgrel='1'
 pkgdesc="automatically apply roles at object creation time"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-moose>=0.84' 'perl-namespace-autoclean' 'perl-sub-exporter')
 makedepends=('perl-moose' 'perl-test-exception' 'perl-test-use-ok')
 url='http://search.cpan.org/dist/MooseX-Traits'
-source=('http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/MooseX-Traits-0.11.tar.gz')
-md5sums=('5335a36eada2994e8d2b1346e8989113')
-sha512sums=('3174a3761f42afbeb0e7be0e11beb7ab049ac4c645c43e68c90e9e665776910b23997caf5d73bd49b89753c6d1f9087c0ffcd61ad7683c631579b7e96bd298bf')
-_distdir="MooseX-Traits-0.11"
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Traits-${pkgver}.tar.gz")
+md5sums=('232530e9645abc20a4e7f14fdd022546')
+sha512sums=('b5128105e66f2889b6ddfb5b5b871fd952bfe6e08f038cabcc5fa49e9f9f4a806dab06acf9756507613cb6c99e6d633f80c561d85be1d3a1a756039ed29acca2')
+_distdir="MooseX-Traits-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
