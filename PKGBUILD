@@ -1,7 +1,7 @@
-# Contributor Earnestly <zibeon@gmail.com>
+# https://github.com/Earnestly/pkgbuilds/tree/master/bemenu-git
 pkgname=bemenu-git
-pkgver=r201.c2eabf2
-pkgrel=2
+pkgver=r223.c3abc43
+pkgrel=1
 
 pkgdesc='Dynamic menu library and client program inspired by dmenu with support for wayland compositors.'
 url='https://github.com/Cloudef/bemenu'
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd bemenu
-    cmake -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
     make
 }
 
