@@ -2,7 +2,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=popcorntime-git
-pkgver=r5140.702f376
+pkgver=r5324.f453800
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install="popcorntime.install"
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 _gitname=desktop
-_nw_ver=0.12.1
+_nw_ver=0.12.2
 
 source=('popcorntime.install'
         "git+https://git.popcorntime.io/popcorntime/desktop.git"
