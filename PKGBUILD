@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk3
-pkgver=40.0.3
+pkgver=41.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -21,13 +21,13 @@ install=firefox.install
 options=('!emptydirs' '!makeflags')
 provides=('firefox')
 conflicts=('firefox')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.bz2
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js rhbz-966424.patch
         firefox-fixed-loading-icon.png firefox-build.patch firefox-build-prbool.patch
         firefox-enable-addons.patch xulrunner-24.0-jemalloc-ppc.patch xulrunner-24.0-s390-inlines.patch)
 
-sha256sums=('56ab32bfa070a1d86d356ad14ce74252b38dab9307948de8e4a3a2b7f3f22634'
-            '03c3a58b0e20b04ba4a4be85fe8885b2051eca4e6f0c81bb0973787f7da11138'
+sha256sums=('18abb95e93770ab1cc0794349125aacf073eb04fd8b8a93c7a58312c94bf16fd'
+            'f3f31aca1715eb5de27d21ceb835fee5ef51148c5303811d7e30ad19bed917ce'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
@@ -70,10 +70,10 @@ prepare() {
 build() {
   cd mozilla-release
 
+  export MOZ_SMP_FLAGS=-j1
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
   export LDFLAGS=""
-  export MOZ_SMP_FLAGS=-j2
 
   make -f client.mk build STRIP=/bin/true MOZ_MAKE_FLAGS=-j2 MOZ_SERVICES_SYNC=1
 }
