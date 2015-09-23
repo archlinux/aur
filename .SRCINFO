@@ -1,6 +1,6 @@
 pkgbase = ark-kde4
 	pkgdesc = Archiving Tool
-	pkgver = 4.14.3
+	pkgver = 15.04.3
 	pkgrel = 1
 	url = http://kde.org/applications/utilities/ark
 	install = ark-kde4.install
@@ -23,8 +23,8 @@ pkgbase = ark-kde4
 	provides = ark
 	conflicts = ark
 	conflicts = kdeutils-ark
-	source = http://download.kde.org/stable/4.14.3/src/ark-4.14.3.tar.xz
-	sha1sums = 5b28719e0134b763ddcc0a67ba7c31f4a416f0e6
+	source = http://download.kde.org/stable/applications/15.04.3/src/ark-15.04.3.tar.xz
+	sha1sums = 891187b1c49258ab461f1dcbfae82f0640a96f54
 
 pkgname = ark-kde4
 
