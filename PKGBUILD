@@ -5,9 +5,9 @@ url='http://rtv.github.com/Stage'
 
 pkgname='ros-indigo-stage'
 pkgver='4.1.1'
-_pkgver_patch=4
+_pkgver_patch=7
 arch=('any')
-pkgrel=5
+pkgrel=8
 license=('GPL')
 
 ros_makedepends=()
@@ -24,6 +24,7 @@ ros_depends=(ros-indigo-catkin)
 depends=(${ros_depends[@]}
   libjpeg-turbo
   mesa
+  fltk
   gtk2)
 
 _tag=release/indigo/stage/${pkgver}-${_pkgver_patch}
