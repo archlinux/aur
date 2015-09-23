@@ -1,0 +1,16 @@
+pkgbase = duhdraw
+	pkgdesc = A program which almost perfectly simulates TheDraw for DOS.
+	pkgver = 2.8.13
+	pkgrel = 3
+	url = http://www.cs.helsinki.fi/u/penberg/duhdraw/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ncurses
+	source = http://www.cs.helsinki.fi/u/penberg/duhdraw//duhdraw-2.8.13.tar.gz
+	md5sums = 70211aa3ea927704ffeb9093e4f433b9
+	sha1sums = b33eaa8c0b90638f1e9979bd26db02a0faba8e33
+	sha256sums = 12a432d2874a6f0579879e3242d832139b7f2a4879b2cfcfb6ced046236b4b2c
+
+pkgname = duhdraw
+
