@@ -3,7 +3,7 @@
 pkgname=mingw-w64-boost
 pkgver=1.59.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
@@ -11,10 +11,12 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-bzip2')
 makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
 options=(!strip !buildflags staticlibs)
-source=("http://downloads.sourceforge.net/boost/boost/${pkgver}/boost_${_boostver}.tar.bz2" boost-mingw.patch)
+source=("http://downloads.sourceforge.net/boost/boost/${pkgver}/boost_${_boostver}.tar.bz2"
+         boost-mingw.patch
+         boost-mingw-1.59.0-serialization.patch)
 md5sums=('6aa9a5c6a4ca1016edd0ed1178e3cb87'
-         '01f5f0d6b915d3b04dbabfd6db40f1e9')
-
+         '349127a0f1bcddfc189c56219bf39853'
+         'db4ed93452debd15b2cd165c438f9911')
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
 
@@ -24,9 +26,9 @@ prepare() {
   # https://svn.boost.org/trac/boost/ticket/7262
   patch -Np0 -i "${srcdir}"/boost-mingw.patch
 
-  # disabled context, coroutine: https://github.com/boostorg/context/issues/16
-
-  # disabled serialization: http://lists.boost.org/Archives/boost/2015/07/224242.php
+  # see issue: https://github.com/boostorg/serialization/pull/19
+  # patch from http://pkgs.fedoraproject.org/cgit/mingw-boost.git/tree/ 
+  patch -p1 -i "${srcdir}"/boost-mingw-1.59.0-serialization.patch
 
   cd "${srcdir}"
   for _arch in ${_architectures}; do
@@ -61,8 +63,6 @@ package() {
       --user-config=user-config.jam \
       --without-python \
       --without-mpi --without-graph_parallel \
-      --without-context --without-coroutine --without-coroutine2 \
-      --without-serialization \
       cxxflags="-std=c++11 -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
       address-model=${_arch:0:2} \
       architecture=x86 \
