@@ -12,7 +12,7 @@ makedepends=('boost')
 optdepends=('lua: used for Lua tag transforms'
 	'postgresql: for creating a PostgreSQL database'
 	'postgis: for creating a PostGIS database')
-source=("$pkgname::git://github.com/openstreetmap/osm2pgsql.git")
+source=("$pkgname::git+https://github.com/openstreetmap/osm2pgsql.git")
 md5sums=('SKIP')
 
 pkgver() {
