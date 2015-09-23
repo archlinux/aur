@@ -1,0 +1,16 @@
+pkgbase = samsung-ml1660series
+	pkgdesc = Samsung ML-1660 Series CUPS driver. Works with ML-1660, ML-1661, ML-1665, ML-1666, ML-1667 printers.
+	pkgver = 3.00.65
+	pkgrel = 5
+	url = http://www.samsung.com
+	arch = i686
+	arch = x86_64
+	license = custom:samsung
+	depends = cups
+	depends = ghostscript
+	source = http://org.downloadcenter.samsung.com/content/DR/201311/20131111155959500/uld_v1.00.06.tar.gz
+	md5sums = 94ee35696ddad334a53f76c9606607a5
+	sha256sums = cc0144ede06710cc4c8c0e1bc6aa00464a4029d8153cff63f63fa1c6eb2b61e7
+
+pkgname = samsung-ml1660series
+
