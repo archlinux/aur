@@ -4,7 +4,7 @@
 
 pkgname=mapserver
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
 license=('MIT')
@@ -13,7 +13,7 @@ depends=('libpng' 'freetype2' 'v8-3.20' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'li
 makedepends=('cfitsio')
 options=()
 source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('56fa71d25c46d49dd84ae403dcdd950e')
+md5sums=('e39360006e668ae2ba3560ed37a43e9b')
 
 build() {
   cd ${startdir}/src/${pkgname}-${pkgver}
@@ -86,5 +86,6 @@ package() {
   
   #Copy the headers a include for ZooWPS project
   install -d "$pkgdir"/usr/include/mapserver  
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/build/*.h "$pkgdir"/usr/include/mapserver/
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/*.h "$pkgdir"/usr/include/mapserver/
 }
