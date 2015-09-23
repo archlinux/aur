@@ -1,0 +1,14 @@
+[Unit]
+Description=Shutdown on button press
+#After=graphical.target
+
+[Service]
+Type=simple
+#EnvironmentFile=/etc/courtlistener
+#WorkingDirectory=/usr/local/solr/example
+ExecStart=/usr/local/sbin/gpio_halt.sh
+Restart=on-failure
+#LimitNOFILE=10000
+
+[Install]
+WantedBy=multi-user.target

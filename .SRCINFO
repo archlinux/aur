@@ -1,0 +1,14 @@
+pkgbase = wiringpi-gpio-halt
+	pkgdesc = GPIO interrupt driven shutdown for RaspberryPi.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://crompton.com/hamradio/RPi2_halt_switch/
+	arch = armv7h
+	arch = armv6h
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wiringpi-git
+
+pkgname = wiringpi-gpio-halt
+
