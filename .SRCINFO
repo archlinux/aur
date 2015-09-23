@@ -1,0 +1,17 @@
+pkgbase = pgbadger
+	pkgdesc = a fast PostgreSQL log analysis report
+	pkgver = 7.1
+	pkgrel = 1
+	url = https://github.com/dalibo/pgbadger
+	arch = any
+	license = custom:PostgreSQL
+	depends = perl
+	optdepends = perl-text-csv-xs: to parse PostgreSQL CSV log files
+	optdepends = perl-json-xs: to export statistics as JSON file
+	options = !emptydirs
+	options = purge
+	source = https://github.com/dalibo/pgbadger/archive/v7.1.tar.gz
+	sha256sums = de7f36cb55d2c177fdf47115f3fb5c2e842b443432631212e408726baacbad7e
+
+pkgname = pgbadger
+
