@@ -1,6 +1,6 @@
 pkgbase = ppsspp-git
 	pkgdesc = A PSP emulator written in C++
-	pkgver = 1.0.1.r2617.cf0697e
+	pkgver = 1.0.1.r2744.7e70a74
 	pkgrel = 1
 	url = http://www.ppsspp.org/
 	arch = i686
@@ -15,9 +15,11 @@ pkgbase = ppsspp-git
 	source = git+https://github.com/hrydgard/ppsspp.git
 	source = git+https://github.com/hrydgard/ppsspp-lang.git
 	source = ppsspp-armips::git+https://github.com/Kingcom/armips.git
+	source = ppsspp.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 1c332702d0aeced07df7e12ba8530bc3f19a52bc76c355f6c84c141becfd46d8
 
 pkgname = ppsspp-git
 	provides = ppsspp
