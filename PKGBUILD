@@ -20,6 +20,7 @@ conflicts=('openswan')
 options=(!libtool)
 backup=(
 	etc/ipsec.conf 
+	etc/swanctl/swanctl.conf
 	etc/strongswan.conf 
 	etc/strongswan.d/{charon-logging.conf,charon.conf,pki.conf,pool.conf,scepclient.conf,starter.conf,swanctl.conf}
 	etc/strongswan.d/charon/{aesni.conf,attr-sql.conf,attr.conf,cmac.conf,connmark.conf,\
