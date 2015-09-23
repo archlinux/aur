@@ -1,8 +1,10 @@
 # Maintainer: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 # Colaborator: Chun Yang <x@cyang.info>
+# Colaborator: Jonhoo 
+
 pkgname=ghost
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
 url="http://ghost.org"
@@ -12,10 +14,12 @@ depends=('nodejs>=0.12')
 backup=('srv/ghost/Gruntfile.js' 'srv/ghost/index.js' 'srv/ghost/package.json')
 install=ghost.install
 source=(http://ghost.org/zip/$pkgname-$pkgver.zip
-        ghost.service)
+        ghost.service
+	new-node.patch)
 noextract=($pkgname-$pkgver.zip)
 sha256sums=('237c64cd18c97cf685afc7db55b9bc94e48a71ab9cf4bcabeb8286cb031eb551'
-            'f6ddfd93a839cadcc34b8b5971948aebad2ab3989210ac04c66b8d681e11d3ee')
+            'f6ddfd93a839cadcc34b8b5971948aebad2ab3989210ac04c66b8d681e11d3ee'
+            '739766e9c0e0b72b7131a3906cacac72e01e0b4aa59f6b17e7f16fa52723583c')
 
 # Note: You may need to log into ghost.org and download the zip file manually
 # and place it inside the same directory as the PKGBUILD
@@ -29,6 +33,8 @@ package() {
     #   bsdtar: Error exit delayed from previous errors.
     # bsdtar -xf "$srcdir/$pkgname-$pkgver.zip"
     unzip "$srcdir/$pkgname-$pkgver.zip"
+    patch "$pkgdir/srv/ghost/package.json" < "$srcdir/new-node.patch"
+    rm "$pkgdir/srv/ghost/npm-shrinkwrap.json"
     npm install --production
 
     install -Dm644 "$srcdir/ghost.service" "${pkgdir}/usr/lib/systemd/system/ghost.service"
