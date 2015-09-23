@@ -2,7 +2,7 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-bzr
-pkgver=r359
+pkgver=r393
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')

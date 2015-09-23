@@ -1,6 +1,6 @@
 pkgbase = lightdm-pantheon-greeter-bzr
 	pkgdesc = Pantheon greeter for LightDM
-	pkgver = r359
+	pkgver = r393
 	pkgrel = 1
 	url = https://launchpad.net/pantheon-greeter
 	install = lightdm-pantheon-greeter.install
