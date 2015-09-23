@@ -1,0 +1,13 @@
+pkgbase = one-context
+        pkgdesc = OpenNebula Contextualisation
+        pkgver = 4.14.2
+        pkgrel = 1
+        url = https://github.com/OpenNebula/addon-context-linux/releases
+        install = one-context.install
+        arch = any
+        license = Apache
+        depends = mkinitcpio-growrootfs
+        source = https://github.com/OpenNebula/addon-context-linux/archive/v4.14.2.tar.gz
+        md5sums = 54beb6af99d5d4746b63bb451510db95
+
+pkgname = one-context

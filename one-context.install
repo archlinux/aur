@@ -1,0 +1,5 @@
+post_install(){
+    systemctl enable one-context
+
+    rm -f /etc/systemd/network/*
+}
