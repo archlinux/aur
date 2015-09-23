@@ -7,7 +7,7 @@
 
 pkgname=xnviewmp
 pkgver=0.72
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -20,16 +20,8 @@ install='xnviewmp.install'
 
 source=("XnViewMP-linux-${pkgver}.tgz::http://download.xnview.com/XnViewMP-linux.tgz"
         "xnviewmp.desktop")
-md5sums=('a25161fd85775e6259fa83dc0323377d'
+md5sums=('b131f97bb0c9eb7e6968cf1576ed9079'
          '24f44d5a881b94daf48775213a57e4ec')
-
-if [ "$CARCH" = 'x86_64' ]; then
-  source=("XnViewMP-linux-x64-${pkgver}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz"
-          "xnviewmp.desktop")
-  md5sums=('1e3ffc900abf13795f148156d7796c72'
-           '24f44d5a881b94daf48775213a57e4ec')
-fi
-
 
 package() {
   install -d -m755 "${pkgdir}/opt/${pkgname}"
