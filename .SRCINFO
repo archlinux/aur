@@ -1,0 +1,17 @@
+pkgbase = freqtweak
+	pkgdesc = Audio Effect Processor
+	pkgver = 0.7.2
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	depends = wxgtk2.8
+	depends = fftw
+	depends = jack
+	depends = libsigc++
+	source = http://downloads.sourceforge.net/freqtweak/freqtweak-0.7.2.tar.gz
+	source = FTutils.hpp.patch
+	md5sums = 36a2ae6d0ed836c3e187fb922c1bc6c8
+	md5sums = a7c8020cd232e4f09dee0075dd4084f2
+
+pkgname = freqtweak
+
