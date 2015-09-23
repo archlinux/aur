@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc="Audio Effect Processor"
 arch=('i686' 'x86_64')
 depends=('wxgtk2.8' 'fftw' 'jack' 'libsigc++')
+url=("http://freqtweak.sourceforge.net/")
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz" "FTutils.hpp.patch")
 md5sums=('36a2ae6d0ed836c3e187fb922c1bc6c8' 'a7c8020cd232e4f09dee0075dd4084f2')
 
