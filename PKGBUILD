@@ -2,8 +2,8 @@
 
 pkgname=horao-git
 _pkgname=horao
-pkgver=0
-pkgrel=2
+pkgver=163.4bdea6b
+pkgrel=1
 pkgdesc="Oslandia's 3D visualisation stack with QGIS plugin"
 arch=(i686 x86_64)
 url="http://oslandia.github.io/horao/"

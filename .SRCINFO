@@ -1,7 +1,7 @@
 pkgbase = horao-git
 	pkgdesc = Oslandia's 3D visualisation stack with QGIS plugin
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 163.4bdea6b
+	pkgrel = 1
 	url = http://oslandia.github.io/horao/
 	arch = i686
 	arch = x86_64
