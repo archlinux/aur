@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/slock/
+LICENSE.txt
+*.tar.gz
+*.tar.xz

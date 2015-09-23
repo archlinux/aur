@@ -1,6 +1,6 @@
 pkgbase = slock-xtra-git
-	pkgdesc = Simple X display locker, with adjustable color and more intuitive behavior.
-	pkgver = 20141117.191388c
+	pkgdesc = Simple X display locker with adjustable color, auto-unlock option and WM_CLASS = "slock"
+	pkgver = 1.3.1.1.gee40bb3
 	pkgrel = 1
 	url = https://github.com/MightyPork/slock
 	arch = i686
