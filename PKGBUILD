@@ -21,9 +21,9 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -dm 755 "${pkgdir}/usr/bin"
-  install -dm 755 "${pkgdir}/usr/share/onedrive"
+  install -dm 755 "${pkgdir}/etc"
   install -m 755 onedrive "${pkgdir}/usr/bin/"
-  install -m 644 onedrive.conf "${pkgdir}/usr/share/onedrive/"
+  install -m 644 onedrive.conf "${pkgdir}/etc/"
 }
  
 # vim:set ts=2 sw=2 et:
