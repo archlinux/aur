@@ -1,6 +1,6 @@
 pkgbase = fusedav-git
 	pkgdesc = A webdav filesystem based on FUSE
-	pkgver = 8c9bbc3
+	pkgver = a59dbe9
 	pkgrel = 1
 	url = https://github.com/pantheon-systems/fusedav/
 	arch = i686

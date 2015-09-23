@@ -1,6 +1,6 @@
 pkgname=fusedav-git
 _gitname=fusedav
-pkgver=8c9bbc3
+pkgver=a59dbe9
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A webdav filesystem based on FUSE"
