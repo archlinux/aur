@@ -2,7 +2,7 @@
 
 pkgname=lib32-json-glib
 _pkgbasename=json-glib
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="JSON library built on GLib"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('lib32-glib2' "$_pkgbasename")
 makedepends=('gobject-introspection')
 options=('!libtool')
 install=$pkgname.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/${_pkgbasename}/1.0/${_pkgbasename}-${pkgver}.tar.xz)
-sha256sums=('887bd192da8f5edc53b490ec51bf3ffebd958a671f5963e4f3af32c22e35660a')
+source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgbasename}/1.0/${_pkgbasename}-${pkgver}.tar.xz")
+sha256sums=('80f3593cb6bd13f1465828e46a9f740e2e9bd3cd2257889442b3e62bd6de05cd')
 
 build(){
   export CC='gcc -m32'
