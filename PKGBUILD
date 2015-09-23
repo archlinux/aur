@@ -4,6 +4,7 @@
 # Contributor: Michał Masłowski <mtjm@mtjm.eu>
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor: Luke R. <g4jc@openmailbox.org>
 
 # Based on linux package
 
@@ -20,10 +21,14 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-arch=('i686' 'x86_64')
+rcnrel=armv7-x2
+arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+if [ "$CARCH" = "armv7h" ]; then
+  makedepends+=('git' 'uboot-tools')
+fi
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
@@ -36,11 +41,22 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config.i686' 'config.x86_64' 'config.armv7h'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
+        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
+        # armv7h patches
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
+        '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
+        '0003-SMILE-Plug-device-tree-file.patch'
+        '0004-fix-mvsdio-eMMC-timing.patch'
+        '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
+        '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
+        '0007-set-default-cubietruck-led-triggers.patch'
+        '0008-USB-armory-support.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '335d3e07319ddf393c69e047c27bc5d28ee9e6126282619e3364db56a4331d34'
@@ -53,11 +69,23 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '7ec6927f4a4bc8e1aa50adfcce868f04b07b0de19a54554a8ad27ee0341b4b45'
             'ac457bf24c83a4af82251a67cb3de06f0b73e66bd08c2fb1eb936caa3b555c6f'
+            'bddc6542d1a68330e867efca6657cc57e9eeb8f83ec86e5580dc1b6c89332f13'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d')
+            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
+            'b06ab02787e6a61227d91faeaa3f230a3807f6426c388129a1d89150374e8b5b'
+            'SKIP'
+            '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
+            '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
+            '39bfd7f6e2df0b87b52488462edb2fbcfaf9e3eb2a974fc7b3bc22147352fece'
+            '59444ed7dce62697f1c35be340b740899e1d71398b334c419ad07cea838c6ed6'
+            '90cff98e43322e79c8d8b1c6456a328650f6af3ebf018086a82ab690a688da5d'
+            'ed6cf79434d3b1c10e0e141ab6bdc2aa9abfe7e7df6bbb24b2097c0e0d62ac17'
+            '2c3df3d9a3d8fe11fefc485167a81c6fc53635b04ba0312bef144505dc0a6ce4'
+            '0f6b0146096ee7a04938d39a013c23cfd8719f3bef0956b5c88a33e7d7ecafdc')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
+              'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
 )
 
@@ -68,6 +96,7 @@ _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 
 case "$CARCH" in
   i686|x86_64) KARCH=x86;;
+  armv7h) KARCH=arm;;
 esac
 
 prepare() {
@@ -76,6 +105,22 @@ prepare() {
   # add upstream patch
   if [ "${_pkgbasever}" != "${_pkgver}" ]; then
     patch -p1 -i "${srcdir}/patch-${_pkgbasever}-${_pkgver}"
+  fi
+
+  if [ "${CARCH}" = "armv7h" ]; then
+
+    # RCN patch (CM3 firmware deblobbed)
+    git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+
+    # ALARM patches
+    patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
+    patch -p1 -i "${srcdir}/0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch"
+    patch -p1 -i "${srcdir}/0003-SMILE-Plug-device-tree-file.patch"
+    patch -p1 -i "${srcdir}/0004-fix-mvsdio-eMMC-timing.patch"
+    patch -p1 -i "${srcdir}/0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
+    patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
+    patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
+    patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
   fi
 
   # add freedo as boot logo
@@ -92,7 +137,9 @@ prepare() {
 
   # Make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
-  patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
+  if [ "${CARCH}" != "armv7h" ]; then ## This patch is only needed for x86 computers, so we disable it for others
+    patch -Np1 -i ../0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch
+  fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -120,18 +167,27 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  if [ "${CARCH}" != "armv7h" ]; then
+    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  else
+    make ${MAKEFLAGS} LOCALVERSION= zImage modules dtbs
+  fi
 }
 
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base')
-  depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-libre-firmware' 'kmod')
+  if [ "${CARCH}" != "armv7h" ]; then
+    depends+=('mkinitcpio>=0.7')
+  fi
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  if [ "$CARCH" != "armv7h" ]; then
+    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  fi
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -142,8 +198,16 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
+  if [ "${CARCH}" = "armv7h" ]; then
+    mkdir -p "${pkgdir}"/boot/dtbs
+  fi
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  if [ "${CARCH}" != "armv7h" ]; then
+    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  else
+    cp arch/$KARCH/boot/zImage "${pkgdir}/boot/zImage"
+    cp arch/$KARCH/boot/dts/*.dtb "${pkgdir}/boot/dtbs"
+  fi
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
@@ -153,19 +217,25 @@ _package() {
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
-  # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  if [ "$CARCH" != "armv7h" ]; then
+    # install mkinitcpio preset file for kernel
+    install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    sed \
+      -e "1s|'linux.*'|'${pkgbase}'|" \
+      -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
+      -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
+      -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+      -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  fi
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
+  if [ "$CARCH" = "armv7h" ]; then
+    # gzip -9 all modules to save 100MB of space
+    find "${pkgdir}" -name '*.ko' |xargs -P 2 -n 1 gzip -9
+  fi
   # make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade
@@ -179,8 +249,10 @@ _package() {
   mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
-  # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  if [ "$CARCH" != "armv7h" ]; then
+    # add vmlinux
+    install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  fi
 }
 
 _package-headers() {
@@ -209,6 +281,14 @@ _package-headers() {
   # copy arch includes for external modules
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+  if [ "$CARCH" = "armv7h" ]; then
+    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2"
+    cp -a arch/${KARCH}/mach-omap2/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2/"
+    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu"
+    cp -a arch/${KARCH}/mach-mvebu/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu/"
+    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap"
+    cp -a arch/${KARCH}/plat-omap/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap/"
+  fi
 
   # copy files necessary for later builds
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -320,7 +400,72 @@ _package-docs() {
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
+_package-smileplug() {
+  pkgdesc="The ${pkgbase^} kernel - Marvell SMILE Plug"
+  arch=('armv7h')
+  depends=("${pkgbase}")
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot"
+  cat arch/$KARCH/boot/zImage arch/$KARCH/boot/dts/armada-370-smileplug.dtb > myimage
+  mkimage -A arm -O linux -T kernel -C none -a 0x00008000 -e 0x00008000 -n "${pkgbase}" -d myimage "${pkgdir}/boot/uImage"
+}
+
+_package-mirabox() {
+  pkgdesc="The ${pkgbase^} kernel - Globalscale Mirabox"
+  arch=('armv7h')
+  depends=("${pkgbase}")
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot"
+  cat arch/$KARCH/boot/zImage arch/$KARCH/boot/dts/armada-370-mirabox.dtb > myimage
+  mkimage -A arm -O linux -T kernel -C none -a 0x00008000 -e 0x00008000 -n "${pkgbase}" -d myimage "${pkgdir}/boot/uImage"
+}
+
+_package-ax3() {
+  pkgdesc="The ${pkgbase^} kernel - OpenBlocks AX3-4"
+  arch=('armv7h')
+  depends=("${pkgbase}")
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot"
+  cat arch/$KARCH/boot/zImage arch/$KARCH/boot/dts/armada-xp-openblocks-ax3-4.dtb > myimage
+  mkimage -A arm -O linux -T kernel -C none -a 0x00008000 -e 0x00008000 -n "${pkgbase}" -d myimage "${pkgdir}/boot/uImage"
+}
+
+_package-d3plug() {
+  pkgdesc="The ${pkgbase^} kernel - Globalscale D3Plug"
+  arch=('armv7h')
+  depends=("${pkgbase}")
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot"
+  cat arch/$KARCH/boot/zImage arch/$KARCH/boot/dts/dove-d3plug.dtb > myimage
+  mkimage -A arm -O linux -T kernel -C none -a 0x00008000 -e 0x00008000 -n "${pkgbase}" -d myimage "${pkgdir}/boot/uImage"
+}
+
+_package-cubox() {
+  pkgdesc="The ${pkgbase^} kernel - SolidRun Cubox (Marvell)"
+  arch=('armv7h')
+  depends=("${pkgbase}")
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot"
+  cat arch/$KARCH/boot/zImage arch/$KARCH/boot/dts/dove-cubox.dtb > myimage
+  mkimage -A arm -O linux -T kernel -C none -a 0x00008000 -e 0x00008000 -n "${pkgbase}" -d myimage "${pkgdir}/boot/uImage"
+}
+
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+
+if [ "$CARCH" = "armv7h" ]; then
+  pkgname+=("${pkgbase}-smileplug" "${pkgbase}-mirabox" "${pkgbase}-ax3" "${pkgbase}-d3plug" "${pkgbase}-cubox")
+fi
+
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
