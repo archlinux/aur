@@ -1,15 +1,16 @@
 pkgbase = pdf-zip
-	pkgdesc = Combines two pdf files into one while taking the pages alternating from one and the other file. Useful to make a pdf out of two where one contains the even-numbered pages and the other the odd-numbered paged of the document.
-	pkgver = 0.2
-	pkgrel = 5
-	url = http://www-example.com/no_url_since_this_is_just_a_local_script_and_no_online_upstream_available/but_the_archlinux_AUR_requires_to_have_the_url-variable_set/
+	pkgdesc = Combines two pdf files into one while taking the pages alternating from one and the other file (shuffling them into each other). Containes a variant reversing the second file before combining.
+	pkgver = 0.2.5
+	pkgrel = 1
 	arch = any
 	license = custom
 	depends = bash
 	depends = pdftk
 	source = pdf-zip.sh
+	source = pdf-zip-rev.sh
 	source = license.txt
 	sha512sums = 8fa2a5ce9f217128abf44e9d3fe856ec417584918109410e41b41ff6aa1d29a850118ff3aeada18562768d14ab867417d740d0a73cf66e9e5ae6f10e1ec3b4a9
+	sha512sums = d83c3ab20060347e2ec3a732b7ab24a59276aa4bd9ca609f775af1deb08eab8deac8de0688554c8cfaf086b4a3f8a59159110ddfdf0a9d20f5319b1a54a360c4
 	sha512sums = 8f0c848805b6785c3ee09a37294d26904141466ff694b7a25c0fdf4862a12d80168a5894e06520c942059bc208c6877374945a2c498ce152038268d41ce09020
 
 pkgname = pdf-zip
