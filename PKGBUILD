@@ -3,15 +3,15 @@
 pkgname=shadowvpn-git
 _pkgname=ShadowVPN
 pkgver=0.2.0.7.g84135b1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, safe VPN based on libsodium"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/clowwindy/${_pkgname}"
 license=('MIT')
 depends=('libsodium')
 provides=("shadowvpn")
 conflicts=("shadowvpn")
-makedepends=('git')
+makedepends=('git' 'm4' 'automake' 'autoconf')
 options=('!emptydirs')
 backup=('etc/shadowvpn/client.conf'
         'etc/shadowvpn/client_down.sh'
