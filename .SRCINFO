@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-dsb
 	pkgdesc = Lower Sorbian language pack for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-dsb_40.0.3-3_all.deb
-	sha256sums = d6c5e1e11f9ab7e92712e928a4421ee3d1cf4e03448ebabc645a0b5168c19615
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-dsb_41.0-1_all.deb
+	sha256sums = d2587dcca9e21c733303491b8813f114be59741ef085e1ece33751d1c81e4757
 
 pkgname = iceweasel-i18n-dsb
 
