@@ -5,7 +5,8 @@ pkgdesc="A simple Markdown editor that offers a lot of features."
 arch=(any)
 url="http://uberwriter.wolfvollprecht.de/"
 license=('GPL')
-depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pandoc-bin' 'dconf' 'desktop-file-utils' 'gnome-web-photo' 'hicolor-icon-theme' 'morituri' 'passenger' 'python' 'python-cairo' 'python-levenshtein' 'python-pyenchant' 'python-regex' 'texlive-bin' 'yelp')
+depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pandoc-bin' 'dconf' 'desktop-file-utils' 'gnome-web-photo' 'hicolor-icon-theme' 'morituri' 'passenger' 'python' 'python-cairo' 'python-levenshtein' 'python-pyenchant' 'texlive-bin' 'yelp')
+#removed python-regex dependency since it is currently broken
 makedepends=('python-distutils-extra')
 install=uberwriter.install
 
