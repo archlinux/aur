@@ -7,7 +7,6 @@ all: PKGBUILD src
 clean:
 	rm -rf .SRCINFO \
 	  ${PKG}.git    \
-	  ${PKG}.git    \
 	  PKGBUILD      \
 	  src
 
