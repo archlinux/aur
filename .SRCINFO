@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-vi
 	pkgdesc = Vietnamese language pack for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-vi_40.0.3-3_all.deb
-	sha256sums = c8ccbb4152b0a5936fb8f551835ff4ed906c5f4234eec293cb5f8341e026d9f1
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-vi_41.0-1_all.deb
+	sha256sums = c5fa633f5c0aad288ad999ea431b581245a14346cd894f5552786d4de3bd0c7b
 
 pkgname = iceweasel-i18n-vi
 
