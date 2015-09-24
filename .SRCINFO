@@ -1,6 +1,6 @@
 pkgbase = virtualbox-think-modules
 	pkgver = 5.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
@@ -9,12 +9,14 @@ pkgbase = virtualbox-think-modules
 	makedepends = virtualbox-host-dkms>=5.0.4
 	makedepends = virtualbox-guest-dkms>=5.0.4
 	makedepends = dkms
+	depends = linux-think>=4.2
+	depends = linux-think<4.3
 
 pkgname = virtualbox-think-host-modules
 	pkgdesc = Host kernel modules for VirtualBox running under linux-think.
 	install = host.install
-	depends = linux-think>=4.1
-	depends = linux-think<4.2
+	depends = linux-think>=4.2
+	depends = linux-think<4.3
 	provides = virtualbox-host-modules
 	conflicts = virtualbox-ck-modules
 	conflicts = virtualbox-ck-host-modules-atom
@@ -38,8 +40,8 @@ pkgname = virtualbox-think-guest-modules
 	pkgdesc = Guest kernel modules for VirtualBox running under linux-think.
 	install = guest.install
 	license = GPL
-	depends = linux-think>=4.1
-	depends = linux-think<4.2
+	depends = linux-think>=4.2
+	depends = linux-think<4.3
 	provides = virtualbox-guest-modules
 	conflicts = virtualbox-ck-modules
 	conflicts = virtualbox-ck-guest-modules-atom
