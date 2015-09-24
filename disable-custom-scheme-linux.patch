@@ -1,8 +1,8 @@
 diff --git a/Telegram/SourceFiles/pspecific_linux.cpp b/Telegram/SourceFiles/pspecific_linux.cpp
-index 3c96e06..c32f229 100644
+index cf0ff37..a6688dc 100644
 --- a/Telegram/SourceFiles/pspecific_linux.cpp
 +++ b/Telegram/SourceFiles/pspecific_linux.cpp
-@@ -1163,6 +1163,7 @@ namespace {
+@@ -1165,6 +1165,7 @@ namespace {
  }
  
  void psRegisterCustomScheme() {
@@ -10,7 +10,7 @@ index 3c96e06..c32f229 100644
      QString home(_psHomeDir());
      if (home.isEmpty()) return;
  
-@@ -1247,6 +1248,7 @@ void psRegisterCustomScheme() {
+@@ -1249,6 +1250,7 @@ void psRegisterCustomScheme() {
              LOG(("App Error: Could not open '%1' for write").arg(file));
          }
      }
