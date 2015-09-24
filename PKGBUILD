@@ -2,7 +2,7 @@
 
 pkgname=clutter-gst
 pkgver=3.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer bindings for clutter"
 arch=(i686 x86_64)
 url="http://www.clutter-project.org/"
