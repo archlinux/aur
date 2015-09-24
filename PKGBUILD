@@ -115,6 +115,10 @@ cd dhcp/
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
         cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
 
+      elif [ "${cur_plugin}" = "dhcp" ] ; then
+        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/themes %{buildroot}%{_datadir}/fusiondirectory/html/
+
       else
         # Directories
         for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type d) ; do
