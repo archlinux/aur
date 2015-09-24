@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-or
 	pkgdesc = Oriya language pack for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-or_40.0.3-3_all.deb
-	sha256sums = eff79b4b9d38faac4dc144c4d4fe2119630a8da6037e30ee63ee60447a6006e5
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-or_41.0-1_all.deb
+	sha256sums = 12eb4b62f45609e7e84e65840484495f752f2c0894c970c812ff2af3f383790d
 
 pkgname = iceweasel-i18n-or
 
