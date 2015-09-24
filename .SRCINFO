@@ -1,0 +1,13 @@
+pkgbase = tipcutils
+	pkgdesc = TIPC utilities package for Linux
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://tipc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://iweb.dl.sourceforge.net/project/tipc/tipc-linux-extras/tipcutils-2.0/tipcutils-2.0.2.tar.gz
+	md5sums = 920d24ac5ebe7f5217a26f17a140c018
+
+pkgname = tipcutils
+
