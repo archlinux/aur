@@ -1,6 +1,6 @@
 pkgbase = stapler-git
 	pkgdesc = Manipulate PDF documents from the command line
-	pkgver = 0.2b.39.g8b5f409
+	pkgver = 0.2b.45.g66fb06b
 	pkgrel = 1
 	url = http://github.com/hellerbarde/stapler
 	arch = any

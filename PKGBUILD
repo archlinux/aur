@@ -2,7 +2,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=stapler-git
-pkgver=0.2b.39.g8b5f409
+pkgver=0.2b.45.g66fb06b
 pkgrel=1
 pkgdesc="Manipulate PDF documents from the command line"
 url="http://github.com/hellerbarde/stapler"
@@ -24,7 +24,6 @@ prepare() {
   sed -i '1s+python+python2+' stapler
   sed -i '1s+python+python2+' staplelib/tests.py
   sed -i '1s+python+python2+' staplelib/stapler.py
-  sed -i 's/pypdf == 1.12/pypdf >= 1.12/' setup.py
 }
 
 check() {
@@ -37,5 +36,5 @@ package() {
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/stapler-git/LICENSE
-  install -Dm644 README.md $pkgdir/usr/share/doc/stapler-git/README
+  install -Dm644 README.rst $pkgdir/usr/share/doc/stapler-git/README
 }
