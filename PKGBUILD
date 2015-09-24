@@ -1,10 +1,9 @@
-# Maintainer: Max Roder <maxroder@web.de>
-# Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
+# Maintainer: vitamin1980 <vitamin.novgorod @ yandex.ru>
 
 pkgname='tor-browser-ru'
 pkgver='5.0.3'
 _language='ru'
-pkgrel=3
+pkgrel=4
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')
