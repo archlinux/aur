@@ -1,6 +1,6 @@
 pkgbase = vivaldi-snapshot
 	pkgdesc = An advanced browser made with the power user in mind. (weekly snapshot)
-	pkgver = 1.0.279.3
+	pkgver = 1.0.283.8
 	pkgrel = 1
 	url = https://vivaldi.com
 	install = vivaldi.install
@@ -17,13 +17,12 @@ pkgbase = vivaldi-snapshot
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = alsa-lib
-	conflicts = vivaldi
 	options = !strip
 	options = !zipman
-	source_i686 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.279.3-1.i386.rpm
-	sha256sums_i686 = b52bdbba300ce14a9f839f2ebbf4046318f69cf346b456233281c2a66aec07eb
-	source_x86_64 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.279.3-1.x86_64.rpm
-	sha256sums_x86_64 = 068a9683a165f5e6b288bfdcbae02aef927f1561678c54ea3165ddc53ade03fd
+	source_i686 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.283.8-1.i386.rpm
+	sha256sums_i686 = 66e0fd5ae0799b2af15178e4df6ce64b7b8734e82ba58a02e742b867343ce421
+	source_x86_64 = https://vivaldi.com/download/snapshot/vivaldi-snapshot-1.0.283.8-1.x86_64.rpm
+	sha256sums_x86_64 = 6af1dff56f60437bb19395743f2f0ee8661bfc27ecf7a25f8b8e007db3404ff4
 
 pkgname = vivaldi-snapshot
 
