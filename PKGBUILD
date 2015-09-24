@@ -3,7 +3,7 @@
 
 pkgname=chromedriver
 pkgver=2.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/a/chromium.org/chromedriver/"
