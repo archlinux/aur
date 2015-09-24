@@ -2,9 +2,8 @@
 
 _pkgname=demlo
 pkgname=$_pkgname
-_arcdir=ambrevar-$_pkgname-16001d6f6ef5
 pkgver=1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A dynamic and extensible music library organizer"
 url="http://ambrevar.bitbucket.org/$_pkgname/"
 arch=('any')
@@ -15,7 +14,7 @@ source=(https://bitbucket.org/ambrevar/$_pkgname/get/v$pkgver.tar.bz2)
 sha1sums=('3c9d3a9c666374fbd211c450cbe5ed9394cd3cc3')
 
 package() {
-	cd "${srcdir}/$_arcdir"
+	cd "${srcdir}/ambrevar-$_pkgname-16001d6f6ef5"
 	install -D -m755 $_pkgname.lua "${pkgdir}/usr/bin/$_pkgname"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 

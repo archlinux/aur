@@ -1,7 +1,7 @@
 pkgbase = demlo
 	pkgdesc = A dynamic and extensible music library organizer
 	pkgver = 1.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ambrevar.bitbucket.org/demlo/
 	arch = any
 	license = MIT
