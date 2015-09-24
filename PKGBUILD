@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lm-sensors.org/wiki/I2CTools"
 license=('GPL')
 provides=('i2c-tools')
-conflicts=('i2c-tools')
+conflicts=('i2c-tools', 'i2c-tools-git')
 makedepends=('subversion')
 optdepends=('read-edid: for decode-edid script'
             'python2-smbus: python2 bindings'
