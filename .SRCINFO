@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-mediaplayer-git
 	pkgdesc = A mediaplayer indicator for the Gnome Shell
-	pkgver = r508
+	pkgver = r519
 	pkgrel = 1
 	url = https://github.com/eonpatapon/gnome-shell-extensions-mediaplayer
 	install = gschemas.install
