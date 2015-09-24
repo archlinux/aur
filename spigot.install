@@ -20,6 +20,8 @@ _update() {
     echo -e "\e[34;1m==>\e[39;1m as ${USER} user to increase security. \e[0m"
     echo -e "\e[34;1m==>\e[39;1m NOTE: Use the spigot script under /usr/bin/spigot to start, stop or backup the server \e[0m"
 	echo -e "\e[34;1m==>\e[39;1m and the configuration file under /etc/conf.d/spigot to adjust it to your liking. \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: For the server to start you have to accept the EULA in ${SERVER_ROOT}/eula.txt \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m which is generated after the first server start. \e[0m"
 }
 
 post_install() {

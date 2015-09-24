@@ -16,6 +16,7 @@ SESSION_NAME="${SESSION_NAME:-spigot}"
 MINHEAP="${MINHEAP:-512M}"
 MAXHEAP="${MAXHEAP:-1024M}"
 THREADS="${THREADS:-1}"
+JAVA_PARMS="${JAVA_PARMS:-"-Xmx${MAXHEAP} -Xms${MINHEAP} -XX:ParallelGCThreads=${THREADS}"}"
 
 # Check for sudo rigths
 if [ $(sudo whoami) != "root" ]; then
@@ -35,7 +36,7 @@ server_start() {
         echo "A screen ${SESSION_NAME} session is already running. Please close it first."
     else
         echo -en "Starting server... "
-        sudo -u ${MC_USER} screen -dmS ${SESSION_NAME} /bin/bash -c "cd ${SERVER_ROOT}; java -Xmx${MAXHEAP} -Xms${MINHEAP} -XX:ParallelGCThreads=${THREADS} -jar ${SERVER_ROOT}/${MAIN_JAR} nogui"
+        sudo -u ${MC_USER} screen -dmS ${SESSION_NAME} /bin/bash -c "cd ${SERVER_ROOT}; java ${JAVA_PARMS} -jar ${SERVER_ROOT}/${MAIN_JAR} nogui"
         echo -e "\e[39;1m done\e[0m"
     fi
 }
@@ -153,7 +154,7 @@ server_console() {
 help() {
     cat << 'EOF'
 This script was design to easily control any minecraft server. Quite every parameter for a given
-minecraft server derivative can be altered by editing the variables at the top of this bash script.
+minecraft server derivative can be altered by editing the variables in the configuration file.
 
 Usage: spigot {start|stop|status|backup|command <command>|console}
     start                Start the minecraft server
