@@ -2,13 +2,16 @@
 
 pkgname=nvidia-think
 pkgver=352.41
-_extramodules=extramodules-4.1-think
-pkgrel=1
+_extramodules=extramodules-4.2-think
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-think kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-think>=4.1' "nvidia-utils>=352.41" 'libgl')
-makedepends=('linux-headers>=3.19')
+depends=('linux-think>=4.2' 
+	 'linux-think<4.3'
+   	 'nvidia-utils=352.41' 
+	 'libgl')
+makedepends=('linux-think-headers>=4.2')
 license=('custom')
 install=nvidia.install
 options=(!strip)
@@ -30,11 +33,10 @@ build() {
     _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
     cd "${_pkg}"/kernel
     make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-
     if [[ "$CARCH" = "x86_64" ]]; then
         cd uvm
         make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
-    fi
+    fi	
 }
 
 package() {
