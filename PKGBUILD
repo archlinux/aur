@@ -6,6 +6,7 @@ pkgdesc="Plugin that add database-connector for FusionDirectory."
 arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
+depends=('fusiondirectory>=1.0.8.9')
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
 md5sums=('5d10f985087bc1efad2752f8c1128d5e')
