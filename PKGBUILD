@@ -2,7 +2,7 @@
 # Contributor: jsh <jsh at myreseau dot org>
 
 pkgname=gnome-shell-extension-topicons
-pkgver=26
+pkgver=27
 pkgrel=1
 pkgdesc="Shows legacy tray icons on top."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('gnome-shell')
 groups=('gnome-shell-extensions')
 source=("http://adel-dev.abaton.at/repo/topicons/snapshot/topicons-${pkgver}.tar.gz")
-sha256sums=('952f9441825d7231b2ca1f40c8ec360b5cc0ea48ff26ca13e91c0744588d5ea0')
+sha256sums=('f4f45f7d0f8b22715a51b60e9f23919f73f6628e0f315e6dd46af8b5e8d1f47b')
 
 package() {
   uuid='topIcons@adel.gadllah@gmail.com'
