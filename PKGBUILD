@@ -8,7 +8,7 @@ _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-gd
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Scottish Gaelic language package for Iceweasel"
 arch=('any')
 url="http://www.mozilla.com/"
@@ -22,3 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
+sha256sums=('3317c33aa737d91e6d08a31c3f6998d09e95bd0b5a30cac4fb667166334e14d0')
