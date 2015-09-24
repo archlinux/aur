@@ -1,6 +1,6 @@
 pkgbase = ncmpcpp-git
 	pkgdesc = An almost exact clone of ncmpc with some new features.
-	pkgver = 1891.746527f
+	pkgver = 1948.43a6b81
 	pkgrel = 1
 	epoch = 1
 	url = http://unkart.ovh.org/ncmpcpp/
@@ -14,6 +14,7 @@ pkgbase = ncmpcpp-git
 	depends = ncurses
 	depends = libmpdclient>=2.8
 	depends = boost-libs
+	depends = readline
 	optdepends = curl: fetch lyrics
 	optdepends = taglib: tag editor
 	optdepends = fftw: frequency spectrum mode visualization

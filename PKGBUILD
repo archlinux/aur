@@ -1,33 +1,31 @@
-# Contributor: rich_o <rich_o@lavabit.com>
-# Maintainer: rich_o <rich_o@lavabit.com>
+# Contributor: rich_o <aurua@riseup.net>
+# Maintainer: rich_o <aurua@riseup.net>
 
-_pkgname="ncmpcpp"
-pkgname="${_pkgname}-git"
-pkgver=1891.746527f
+pkgname="ncmpcpp-git"
+pkgver=1948.43a6b81
 pkgrel=1
 epoch=1
 pkgdesc="An almost exact clone of ncmpc with some new features." 
 arch=('i686' 'x86_64')
 url="http://unkart.ovh.org/ncmpcpp/"
 license=('GPL2')
-depends=('ncurses' 'libmpdclient>=2.8' 'boost-libs')
+depends=('ncurses' 'libmpdclient>=2.8' 'boost-libs' 'readline')
 makedepends=('git' 'boost' 'pkg-config')
 optdepends=('curl: fetch lyrics'
-    'taglib: tag editor'
-    'fftw: frequency spectrum mode visualization'
-    )
+            'taglib: tag editor'
+            'fftw: frequency spectrum mode visualization')
 conflicts=('ncmpcpp' 'ncmpcpp-xdg-config' 'ncmpcpp-xdg-config-git' 'ncmpcpp-color')
 install=${pkgname}.install
-source=("git+git://repo.or.cz/${_pkgname}.git")
+source=("git+git://repo.or.cz/ncmpcpp.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd ncmpcpp || exit
+  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_pkgname}"
+  cd ncmpcpp || exit
   ./autogen.sh BOOST_LIB_SUFFIX='' \
   --prefix=/usr \
   --enable-clock \
@@ -37,8 +35,8 @@ build() {
 } 
 
 package() {
-  cd "${_pkgname}"
+  cd ncmpcpp || exit
   # make PREFIX=/usr DESTDIR="${pkgdir}" install
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}/" install
   # find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
 }
