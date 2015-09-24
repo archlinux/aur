@@ -2,7 +2,7 @@
 # Maintainer: Ivailo Monev <xakepa10@gmail.com>
 
 pkgname=copperspice-git
-pkgver=1.2.8ad3512
+pkgver=1.2.92e2c75
 pkgrel=1
 pkgdesc='C++ library derived from the existing Qt 4.8 framework'
 arch=('i686' 'x86_64')
@@ -40,9 +40,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/build
+    cd build
     make DESTDIR="${pkgdir}" install
 
-    install -vD644 ../license/LGPL_EXCEPTION.txt \
+    install -vDm644 ../copperspice/license/LGPL_EXCEPTION.txt \
         "${pkgdir}/usr/share/licenses/copperspice-git/LGPL_EXCEPTION.txt"
 }
