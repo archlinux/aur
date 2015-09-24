@@ -8,6 +8,9 @@ url="http://doomseeker.drdteam.org/"
 license=("GPL2")
 depends=('qt5-base' 'qt5-multimedia' 'zlib' 'bzip2')
 makedepends=('gcc' 'cmake' 'make' 'mercurial')
+optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
+	    'odamex: Classic client/server multiplayer fork'
+	    'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
 source=("doomseeker::hg+https://bitbucket.org/Blzut3/doomseeker"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
