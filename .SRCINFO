@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-id
 	pkgdesc = Indonesian language pack for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-id_40.0.3-3_all.deb
-	sha256sums = 2015f8a36c579d07fca931c91c43959d48036ab8dc9ce0ad10a8c4459a4d9bf5
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-id_41.0-1_all.deb
+	sha256sums = 1d8f03e58e036eef273695e1e73ed7b8a48a966a88c8beb5a4fc9433c8890a54
 
 pkgname = iceweasel-i18n-id
 
