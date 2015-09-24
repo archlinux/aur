@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
 
 pkgname='telegraf'
-pkgver='0.1.7'
+pkgver='0.1.9'
 pkgrel='1'
 epoch=
 pkgdesc='Server-level metric gathering agent for InfluxDB'
@@ -16,50 +16,50 @@ optdepends=()
 provides=('telegraf')
 conflicts=()
 replaces=()
-backup=('etc/telegraf.conf')
+backup=('etc/telegraf/telegraf.conf')
 options=()
 install="$pkgname.install"
-source=("$pkgname.service"
+pkgtar="v${pkgver}.tar.gz"
+source=("https://github.com/influxdb/telegraf/archive/$pkgtar"
         "$pkgname.install")
 changelog=
 noextract=()
-md5sums=('SKIP'
+md5sums=('ae8312d37649bd2538c50c6f9f9d8455'
          'SKIP')
 
 prepare()
 { 
   export GOPATH="${srcdir}"
   export GOBIN="$GOPATH/bin"
+  export TELEGRAFPATCH="$GOPATH/src/github.com/influxdb/telegraf"
   if [ -d $GOBIN ]; then
-    rm $GOBIN/*;
+    rm -rf $GOBIN;
   fi;
 
-  echo "Downloading $pkgname ..."
-  go get github.com/influxdb/telegraf
+  echo "Extracting telegraf archive..."
+  mkdir -p $TELEGRAFPATCH
+  tar -C $TELEGRAFPATCH --strip-components=1 -xzf $pkgtar
+
 }
 build() 
 {
-  export GOPATH="${srcdir}"
-  export GOBIN="$GOPATH/bin"
-
   echo "Building $pkgname ..."
   cd "$GOPATH/src/github.com/influxdb/telegraf"
   make
 }
 package()
 {
-  export GOPATH="${srcdir}"
-  export GOBIN="$GOPATH/bin"
-
   # systemctl service file
-  install -D -m644  "$srcdir/telegraf.service" "$pkgdir/usr/lib/systemd/system/telegraf.service"
+  install -D -m644  "$GOPATH/src/github.com/influxdb/telegraf/scripts/telegraf.service" "$pkgdir/usr/lib/systemd/system/telegraf.service"
+  sed -i 's;/etc/opt/telegraf;/etc/telegraf;g' "$pkgdir/usr/lib/systemd/system/telegraf.service"
+  sed -i 's;/opt/telegraf;/usr/bin;g' "$pkgdir/usr/lib/systemd/system/telegraf.service"
 
   # binaries
   install -D -m755 "$GOPATH/src/github.com/influxdb/telegraf/telegraf" "$pkgdir/usr/bin/telegraf"
 
   # configuration file
-  mkdir -p "$pkgdir/etc"
-  $GOPATH/src/github.com/influxdb/telegraf/telegraf -sample-config > $pkgdir/etc/telegraf.conf
+  mkdir -p "$pkgdir/etc/telegraf"
+  $GOPATH/src/github.com/influxdb/telegraf/telegraf -sample-config > "$pkgdir/etc/telegraf/telegraf.conf"
 
   # license
   install -Dm644 "$GOPATH/src/github.com/influxdb/telegraf/LICENSE" "$pkgdir/usr/share/licenses/telegraf/LICENSE"
