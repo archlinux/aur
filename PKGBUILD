@@ -4,7 +4,7 @@ pkgname=net-tools-mptcp
 _srcname=net-tools
 _mptcpv=0.90
 pkgver=0.90.585.1830361
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration tools for Linux networking, with Multipath TCP support"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -12,8 +12,8 @@ url="http://multipath-tcp.org/pmwiki.php/Users/Tools"
 depends=('glibc')
 makedepends=('git')
 provides=('net-tools')
-# Old AUR package
-conflicts=('mptcp-net-tools')
+# mptcp-net-tools is the old name of the AUR package
+conflicts=('mptcp-net-tools' 'net-tools')
 # Build fails with -jX for X > 1.  Force sequential build
 options=(!makeflags)
 source=("git://github.com/multipath-tcp/net-tools#branch=mptcp_v${_mptcpv}")
