@@ -1,0 +1,15 @@
+pkgbase = idok
+	pkgdesc = A simple command line to stream media to kodi (aka xbmc)
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://metal3d.github.io/idok/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	depends = glibc
+	source = idok-0.2.9::https://github.com/metal3d/idok/archive/v0.2.9.tar.gz
+	sha256sums = 5b4643420e82c8f35d277962cd6ef29ee45c2cd56e271ea35926b6db3ab614ad
+
+pkgname = idok
+
