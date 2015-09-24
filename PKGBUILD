@@ -1,4 +1,4 @@
-# Maintainer: jiangxq <jiangxueqian at gmail dot com>
+# Maintainer: jiangxq <jiangxueqian at gmail dot com>, zh99998 <zh99998@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>, 4679kun <admin at 4679 dot us>
 
 pkgname=shadowsocks-libev
