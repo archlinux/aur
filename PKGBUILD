@@ -23,18 +23,18 @@ _pgo=false
 
 # We're getting this from Debian Experimental
 _debname=iceweasel
-_debver=40.0.3
-_debrel=3
+_debver=41.0
+_debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=2
+pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme' 'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'libpulse' 'gst-plugins-base-libs' 'inetutils' 'quilt' 'pkg-config' 'nss>=3.18.1' 'libidl2'  'librsvg' 'libxslt' 'autoconf2.13' 'imagemagick')
+makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'libpulse' 'gst-plugins-base-libs' 'inetutils' 'quilt' 'pkg-config' 'nss>=3.18.1' 'libidl2'  'librsvg' 'libxslt' 'autoconf2.13' 'imagemagick' 'gconf')
 
 options=(!emptydirs !makeflags debug)
 if $_pgo; then
@@ -51,15 +51,15 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 url="https://packages.debian.org/source/experimental/iceweasel"
 install=iceweasel.install
 provides=("$_debname"="$_debver")
-source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.bz2"
+source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 	"${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}.debian.tar.xz"
         'mozconfig'
         'iceweasel.desktop'
         'iceweasel-install-dir.patch'
         'vendor.js'
 	'iceweasel-20.0.1-fixed-loading-icon.png')
-md5sums=('22e21d1ff3bf93f120eb7420cbb69b9e'
-         '0a7dd6fe5e61a182dc0fb122c3e69c3f'
+md5sums=('14450ade2ccd2ecf6b1725adaedb4cca'
+         'd2f3cee0c87678cc69ff2aa4664706fc'
          '6027291b9963817e46f816d28b64681d'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
