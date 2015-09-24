@@ -7,7 +7,7 @@ arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
 
-depends=('' 'fusiondirectory-plugin-systems' 'fusiondirectory-plugin-mail-schema')
+depends=('fusiondirectory-schema>=1.0.8.9' 'fusiondirectory-plugin-mail-schema>=1.0.8.9')
 
 install=fusiondirectory-plugin-alias.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
