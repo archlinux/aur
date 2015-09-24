@@ -7,7 +7,7 @@ arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
 
-depends=('' 'fusiondirectory-plugin-systems' 'fusiondirectory-plugin-mail' 'fusiondirectory-plugin-alias-schema')
+depends=('fusiondirectory-schema>=1.0.8.9' 'fusiondirectory-plugin-systems-schema>=1.0.8.9' 'fusiondirectory-plugin-alias-schema>=1.0.8.9')
 
 install=fusiondirectory-plugin-sympa.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
