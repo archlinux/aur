@@ -1,6 +1,5 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Di "thc_flow" Abel <nospam@weedsmoker.im>
-
 pkgname=ironpython
 pkgver=2.7.5
 pkgrel=1
@@ -13,7 +12,7 @@ makedepends=('xz')
 options=('!strip' 'emptydirs' 'libtool')
 source=("https://github.com/IronLanguages/main/archive/ipy-$pkgver.zip"
         site.patch)
-md5sums=('25c3b8047702f923eaf47a1ebe9ea829'
+md5sums=('85951a4125fb733cdeaced19f3ff7157'
          'dd484ca6dfe03277d8a13e7b1cfe6662')
 
 prepare() {
