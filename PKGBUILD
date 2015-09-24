@@ -1,8 +1,8 @@
-# Maintainer: Viktor Vasilyev <vitamin.novgorod @ yandex.ru>
+# Maintainer: vitamin1980 <vitamin.novgorod @ yandex.ru>
 
 pkgname=moxa-uport11x0
 pkgver=1.3.11
-pkgrel=6
+pkgrel=7
 pkgdesc='Moxa UPort 11x0 USB to Serial Hub driver'
 url='http://www.moxa.com/product/usb_to_serial_converters.htm'
 arch=('i686' 'x86_64')
