@@ -1,14 +1,10 @@
-# Maintainer: Cedric MATHIEU <me.xenom @ gmail.com>
-# Contributor: Det <nimetonmaili @ gmail.com>
-# Contributor: coderoar <coderoar @ gmail.com>
-# Contributor: mephistopheles <mephisto.pheles.nyan @ gmail.com>
-# Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
+# Maintainer: vitamin1980 <vitamin.novgorod @ yandex.ru>
 
 pkgname=firefox-nightly-ru
 pkgdesc='Web browser from mozilla.org, nightly build, russian version'
 url='http://nightly.mozilla.org/'
 pkgver=44.0a1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _filename="firefox-${pkgver}.ru.linux-${CARCH}"
