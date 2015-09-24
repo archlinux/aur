@@ -1,7 +1,7 @@
 # Maintainer: Sean Baggaley <coffeescripter@gmail.com>
 pkgname=doomseeker-hg
 pkgver=1.1.1509172124
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -22,7 +22,7 @@ build() {
     mkdir -p build
     cd build
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
-    make
+    make -j$(nproc)
 }
 
 package() {
