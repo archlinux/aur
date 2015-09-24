@@ -1,6 +1,6 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=bunsen-utilities-git
-pkgver=r72.22e76e4
+pkgver=r81.dc043ef
 pkgrel=1
 pkgdesc="Collection of utility scripts"
 arch=('any')
@@ -17,15 +17,11 @@ source=(\
   "${pkgname%-git}::git+https://github.com/BunsenLabs/bunsen-utilities.git#branch=master" \
   'https://raw.githubusercontent.com/Unia/bunsen-utilities/master/bl-aerosnap' \
   'https://raw.githubusercontent.com/Unia/bunsen-utilities/rewrite-hotcorners/bl-hotcorners' \
-  'bl-kb-python2-path.patch' \
-  'bl-exit-python2-path.patch' \
   'bl-hotcorners-syntax.patch')
 md5sums=(\
   'SKIP' \
   'SKIP' \
   'SKIP' \
-  'af06407c74e40698d716acd5ddee6966' \
-  '967a191ca673aec93546640002c794ab' \
   '2cb280313bd01a391437e4b960142d80')
 
 pkgver() {
@@ -35,8 +31,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  patch bl-kb ../bl-kb-python2-path.patch
-  patch bl-exit ../bl-exit-python2-path.patch
   cd "$srcdir" ; cd ..
   patch bl-hotcorners bl-hotcorners-syntax.patch
 }
