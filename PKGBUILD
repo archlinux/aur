@@ -9,7 +9,8 @@ license=('GPL3')
 pkgdesc="Pythonic libsndfile wrapper to read and write audio files."
 url="https://github.com/vokimon/python-wavefile"
 makedepends=('python-setuptools')
-checkdepends=('python-numpy' 'python-pyaudio')
+depends=('python-numpy')
+optdepends=('python-pyaudio')
 source=("https://pypi.python.org/packages/source/w/wavefile/wavefile-1.4.tar.gz")
 md5sums=('4427a9a24536bf759e9e791d4424c6b4')
 
