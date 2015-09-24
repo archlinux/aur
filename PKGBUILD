@@ -2,7 +2,7 @@
 
 pkgname=lemonbar-git
 _pkgname=lemonbar
-pkgver=172.a9f285f
+pkgver=v1.1.r9.ga390ef6
 pkgrel=1
 pkgdesc="A featherweight, lemon-scented, bar based on xcb."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("$_pkgname::git+https://github.com/Lemonboy/bar.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
+    cd "$_pkgname"
 
 	if git_version=$( git describe --long --tags 2>/dev/null ); then
 		IFS='-' read last_tag tag_rev commit <<< "$git_version"
