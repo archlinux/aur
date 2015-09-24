@@ -3,7 +3,7 @@
 
 pkgname=btscanner
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Bluetooth device scanner."
 url="http://www.pentest.co.uk"
 depends=('bluez-libs' 'libxml2')
@@ -13,7 +13,7 @@ changelog=$pkgname.changelog
 source=(http://www.pentest.co.uk/src/$pkgname-$pkgver.tar.bz2
        $pkgname.patch)
 md5sums=('587ec5847647d432eac1704b260af020'
-         '0b552988bffa2a843e2c52eb5f3a2f7c')
+         '606530db564f269ce245997e30f9fe86')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -35,5 +35,3 @@ package() {
   install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -Dm644 USAGE  "${pkgdir}/usr/share/doc/${pkgname}/USAGE"
 }
-md5sums=('587ec5847647d432eac1704b260af020'
-         'c1e3d85b9a01f941a111ccf747389def')

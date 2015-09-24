@@ -1,7 +1,7 @@
 pkgbase = btscanner
 	pkgdesc = Bluetooth device scanner.
 	pkgver = 2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.pentest.co.uk
 	changelog = btscanner.changelog
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = btscanner
 	source = http://www.pentest.co.uk/src/btscanner-2.1.tar.bz2
 	source = btscanner.patch
 	md5sums = 587ec5847647d432eac1704b260af020
-	md5sums = c1e3d85b9a01f941a111ccf747389def
+	md5sums = 606530db564f269ce245997e30f9fe86
 
 pkgname = btscanner
 
