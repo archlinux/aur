@@ -11,8 +11,6 @@ pkgver() {
 }
 pkgrel=1
 arch=(i686 x86_64)
-# Asyncio and pathlib are standard in Python 3.4, so they're not in the
-# dependencies list.
 makedepends=(go)
 depends=(gnupg)
 source=('git://github.com/keybase/client-beta')
