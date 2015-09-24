@@ -1,7 +1,7 @@
 # Maintainer: Justin Dray <justin@dray.be>
 
 pkgname=dmakepkg-git
-pkgver=r20.c4dee8c
+pkgver=r21.42ee55d
 pkgrel=1
 pkgdesc='Makepkg running from within docker for clean builds without maintaining a chroot'
 arch=('any')

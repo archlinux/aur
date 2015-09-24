@@ -1,8 +1,9 @@
 pkgbase = dmakepkg-git
 	pkgdesc = Makepkg running from within docker for clean builds without maintaining a chroot
-	pkgver = r16.177fd14
+	pkgver = r21.42ee55d
 	pkgrel = 1
 	url = https://github.com/justin8/docker-makepkg
+	install = dmakepkg.install
 	arch = any
 	license = MIT
 	depends = docker
