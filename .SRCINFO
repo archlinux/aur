@@ -1,8 +1,8 @@
 pkgbase = nodejs-ember-cli
 	pkgdesc = The ember command line interface
 	pkgver = 1.13.8
-	pkgrel = 1
-	url = http://emberjs.com/
+	pkgrel = 2
+	url = http://www.ember-cli.com/
 	arch = any
 	license = MIT
 	depends = nodejs
