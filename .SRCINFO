@@ -1,0 +1,22 @@
+pkgbase = waifu2x-converter-cpp-cuda-git
+	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks
+	pkgver = r250.ca65c93
+	pkgrel = 1
+	url = https://github.com/tanakamura/waifu2x-converter-cpp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = cuda
+	depends = opencl-headers
+	depends = opencl-nvidia
+	depends = opencv
+	provides = waifu2x
+	provides = waifu2x-converter-cpp
+	conflicts = waifu2x-git
+	source = git+https://github.com/tanakamura/waifu2x-converter-cpp.git
+	md5sums = SKIP
+
+pkgname = waifu2x-converter-cpp-cuda-git
+
