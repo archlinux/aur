@@ -1,0 +1,14 @@
+pkgbase = xlauncher-git
+	pkgdesc = simple and fast launcher for x11
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/vatriani/xlauncher
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	depends = libx11
+	source = git+https://github.com/vatriani/xlauncher
+	md5sums = SKIP
+
+pkgname = xlauncher-git
+
