@@ -2,7 +2,7 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-chat
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Slack Chat (Beta) for Linux"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ optdepends=('gnome-keyring')
 source_x86_64=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-amd64.deb")
 source_i686=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-i386.deb")
 
-md5sums_i686=('2ea76cfcc870b0d3029db751dcd9673a')
-md5sums_x86_64=('8c41170dca760f637313c74972be147d')
+md5sums_i686=('7412ed3dc35482781da5bfab957c878b')
+md5sums_x86_64=('9bc907c986d0e2d852128e9870fbbc17')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
