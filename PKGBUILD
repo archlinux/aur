@@ -1,19 +1,16 @@
 pkgname=uberwriter
+pkgdesc="A simple Markdown editor that offers a lot of features."
 pkgver=15.05.01
 pkgrel=1
-pkgdesc="A simple Markdown editor that offers a lot of features."
-arch=(any)
+arch=('i686' 'x86_64')
 url="http://uberwriter.wolfvollprecht.de/"
 license=('GPL')
-depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pandoc-bin' 'dconf' 'desktop-file-utils' 'gnome-web-photo' 'hicolor-icon-theme' 'morituri' 'passenger' 'python' 'python-cairo' 'python-levenshtein' 'python-pyenchant' 'texlive-bin' 'yelp')
-#removed python-regex dependency since it is currently broken
-makedepends=('python-distutils-extra')
-install=uberwriter.install
-
-source=("https://github.com/wolfv/uberwriter/archive/master.zip")
+source=("http://ppa.launchpad.net/w-vollprecht/ppa/ubuntu/pool/main/u/uberwriter/uberwriter_15.05.01-publicubuntu4_all.deb")
 md5sums=('SKIP')
+depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pandoc-bin' 'dconf' 'desktop-file-utils' 'gnome-web-photo' 'hicolor-icon-theme' 'morituri' 'passenger' 'python' 'python-cairo' 'python-levenshtein' 'python-pyenchant' 'texlive-bin' 'yelp' 'python-regex')
+# I got these dependencies from debtap
 
 package() {
-	cd uberwriter-master
-	python3 setup.py install --root=${pkgdir}
+	tar xf data.tar.xz --directory data/
+	install -m644 data/* "${pkgdir}"
 }
