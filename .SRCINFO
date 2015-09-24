@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ast
 	pkgdesc = Asturian language package for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ast_40.0.3-3_all.deb
-	sha256sums = 4d74800e3b9c184fae3d14338be302ee3efd4bd8df84130d2b682128b1b9ec22
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ast_41.0-1_all.deb
+	sha256sums = d9d06ac4a0600496fa393982cbe1c257ef714a51fdfa7a16574f53437b4ce131
 
 pkgname = iceweasel-i18n-ast
 
