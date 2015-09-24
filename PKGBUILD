@@ -55,6 +55,9 @@ cd systems/
     # Admin section
     if [ -d ./admin ] ; then
       mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/plugins/admin/
+      
+      # Remove FAI Monitor Service
+      rm ./admin/systems/services/monitor/class_argonautFAIMonitor.inc
     
       # Directories
       for cur_admin in $(find ./admin -mindepth 1 -maxdepth 1 -type d) ; do
