@@ -1,9 +1,9 @@
 pkgname=sakis3g
 pkgver=0.2.0e
-pkgrel=4
+pkgrel=5
 pkgdesc="An all-in-one script for connecting with 3G"
 arch=(any)
-url="http://sourceforge.net/projects/vim-n4n0/?source=navbar"
+url="http://www.sakis3g.com"
 license="GPL2"
 depends=('ppp' 'net-tools')
 optdepends=('usb_modeswitch: for switching USB modems'
@@ -15,8 +15,8 @@ optdepends=('usb_modeswitch: for switching USB modems'
             'konsole: Terminal emulator'
             'xterm: Terminal emulator'
             '9menu: Simple and easily configurable X-menu / program launcher')
-source=("http://garr.dl.sourceforge.net/project/vim-n4n0/sakis3g.tar.gz")
-md5sums=('2a040d7901b629d42718502eae6048e6')
+source=("http://www.sakis3g.com/downloads/sakis3g.tar.gz")
+md5sums=('0b899cf94a027d329e49ef604029ebeb')
 
 package() {
   install -d "$pkgdir/usr/bin"

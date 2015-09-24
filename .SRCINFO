@@ -1,8 +1,8 @@
 pkgbase = sakis3g
 	pkgdesc = An all-in-one script for connecting with 3G
 	pkgver = 0.2.0e
-	pkgrel = 4
-	url = http://sourceforge.net/projects/vim-n4n0/?source=navbar
+	pkgrel = 5
+	url = http://www.sakis3g.com
 	arch = any
 	license = GPL2
 	depends = ppp
@@ -16,8 +16,8 @@ pkgbase = sakis3g
 	optdepends = konsole: Terminal emulator
 	optdepends = xterm: Terminal emulator
 	optdepends = 9menu: Simple and easily configurable X-menu / program launcher
-	source = http://garr.dl.sourceforge.net/project/vim-n4n0/sakis3g.tar.gz
-	md5sums = 2a040d7901b629d42718502eae6048e6
+	source = http://www.sakis3g.com/downloads/sakis3g.tar.gz
+	md5sums = 0b899cf94a027d329e49ef604029ebeb
 
 pkgname = sakis3g
 
