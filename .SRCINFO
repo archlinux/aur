@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-xh
 	pkgdesc = Xhosa language pack for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-xh_40.0.3-3_all.deb
-	sha256sums = 42f45506fab973cd0c68484e2b7de5bd8c094ac5b042500b05d865d2aa46d54b
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-xh_41.0-1_all.deb
+	sha256sums = 65f83b9775897a6fea5c4338f6a00c09bb5db368e332d0690e44d3d603d83f00
 
 pkgname = iceweasel-i18n-xh
 
