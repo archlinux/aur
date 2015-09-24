@@ -1,4 +1,4 @@
---- pebble_tool/util/analytics.py	2015-07-26 21:48:29.512801653 -0400
+--- pebble-tool/pebble_tool/util/analytics.py	2015-07-26 21:48:29.512801653 -0400
 +++ pebble-tool/pebble_tool/util/analytics.py	2015-07-26 21:47:41.090334321 -0400
 @@ -214,7 +214,7 @@
  

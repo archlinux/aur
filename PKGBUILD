@@ -60,7 +60,7 @@ prepare() {
   # patch phone emulator files to make qemu_micro_flash be accessed readonly
   patch -p0 -i "$srcdir/pflashFix.patch"
 
-  #patch analytics NO_TRACKING path
+  # patch analytics NO_TRACKING path
   patch -p0 -i "$srcdir/analyticsFix.patch"
 
   # fix for broken python2/3 detection
