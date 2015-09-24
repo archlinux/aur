@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-pvr-hts
 	pkgdesc = Tvheadend HTSP PVR client addon for Kodi
-	pkgver = 2.1.13
-	pkgrel = 3
+	pkgver = 2.1.18
+	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.hts
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kodi-addon-pvr-hts
 	makedepends = kodi-platform
 	makedepends = libplatform
 	depends = kodi
-	source = https://github.com/kodi-pvr/pvr.hts/archive/1d1f409f1963f88870314181a29ab81b11c5589c.tar.gz
+	source = git+https://github.com/kodi-pvr/pvr.hts.git#branch=Isengard
 	md5sums = SKIP
 
 pkgname = kodi-addon-pvr-hts

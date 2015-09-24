@@ -7,14 +7,16 @@ all: PKGBUILD src
 clean:
 	rm -rf .SRCINFO \
 	  ${PKG}.git    \
+	  ${PKG}.git    \
 	  PKGBUILD      \
 	  src
 
 upload: .${PKG}.git .SRCINFO
-	cd $<                       && \
-	cp -lR ../* ../.SRCINFO ./  && \
-	git commit -am 'bump'       && \
-	true git push origin master
+	rm -f .git
+	ln -s $</.git .
+	git commit -am 'bump'
+	git push origin master
+	rm .git
 
 .%.git:
 	git clone ssh://aur@aur.archlinux.org/$* $@
