@@ -1,7 +1,7 @@
 pkgbase = freesweep
 	pkgdesc = a console minesweeper-style game written in C for *nix
 	pkgver = 0.92
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freecode.com/projects/freesweep
 	install = freesweep.install
 	arch = x86_64
