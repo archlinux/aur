@@ -2,7 +2,7 @@
 
 pkgname=bar-aint-recursive-git
 _pkgname=bar
-pkgver=172.a9f285f
+pkgver=177.a390ef6
 pkgrel=1
 pkgdesc="A lightweight xcb based bar."
 arch=('i686' 'x86_64')
