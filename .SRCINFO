@@ -1,0 +1,16 @@
+pkgbase = extracturl-git
+	pkgdesc = Alternative or preprocessor for urlview, primarily for use with mutt
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.memoryhole.net/~kyle/extract_url
+	arch = any
+	license = BSD-2-Clause (simplified)
+	depends = perl
+	depends = perl-mime-tools
+	depends = perl-html-parser
+	optdepends = perl-curses-ui: allows it to fully replace urlview
+	source = git://github.com/m3m0ryh0l3/extracturl.git
+	sha256sums = SKIP
+
+pkgname = extracturl-git
+
