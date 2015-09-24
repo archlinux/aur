@@ -4,7 +4,7 @@
 pkgname=gogs-git
 _pkgname=gogs
 _branch=master
-pkgver=2842.2340bb1
+pkgver=2846.42a38df
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
@@ -76,7 +76,7 @@ prepare() {
   get_gopm "$GOPATH/src/${_gourl}/.gopmfile" "$GOPATH/src"
 
   msg2 "Download missing dependencies"
-  go_get github.com/macaron-contrib/oauth2 "$GOPATH/src/github.com/macaron-contrib/oauth2"
+#  go_get github.com/macaron-contrib/oauth2 "$GOPATH/src/github.com/macaron-contrib/oauth2"
 
   msg2 "Workaround dependencies"
   cd "$GOPATH/src/github.com/gogits/go-gogs-client/"
