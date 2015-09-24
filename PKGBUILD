@@ -2,8 +2,8 @@
 
 pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments"
-_srcname=linux-4.1
-pkgver=4.1.8
+_srcname=linux-4.2
+pkgver=4.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -14,17 +14,22 @@ optdepends=('nvidia-think: nvidia drivers'
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-	"i915_317.patch"
-	"override_for_missing_acs_capabilities.patch"
-	"enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
+	'001-change_default_console_loglevel.patch'
+	'002-i915.patch'
+	'003-override_for_missing_acs_capabilities.patch'
+	'004-enable_additional_cpu_optimizations_for_gcc_v4.9+.patch'
+	'005-intel_fifo_underrun_error_to_debug.patch'
+	'006-microphone_mute_light.patch'
+	'007-fbcondecor.patch'
+	'008-e1000e_fix_tight_loop_implementation_of_systime_read.patch'
+	'009-fix_bridge_regression.patch'
+	'010-make_flush_workqueue_non_gpl.patch'
+	'011-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch'
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config' 
+	'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-	'intel_fifo_underrun_error_to_debug.patch'
-	'microphone_mute_light.patch'
-	'4200_fbcondecor-3.19.patch'
         )
 
 _kernelname=${pkgbase#linux}
@@ -41,25 +46,38 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -p1 -i "${srcdir}/001-change_default_console_loglevel.patch"
 
   # patches for vga arbiter fix in intel systems
-  patch -Np1 -i "${srcdir}/i915_317.patch"
+  patch -p1 -i "${srcdir}/002-i915.patch"
 
   # Overrides for missing acs capabilities
-  patch -p1 -i "${srcdir}/override_for_missing_acs_capabilities.patch"
+  patch -p1 -i "${srcdir}/003-override_for_missing_acs_capabilities.patch"
 
   # Extra GCC optimizations
-  patch -p1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
+  patch -p1 -i "${srcdir}/004-enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
 
-  # Disabling error
-  patch -p1 -i "${srcdir}/intel_fifo_underrun_error_to_debug.patch"
+  # Disabling Lenovo specyfic error
+  patch -p1 -i "${srcdir}/005-intel_fifo_underrun_error_to_debug.patch"
 
   # Microphon light fix
-  patch -p1 -i "${srcdir}/microphone_mute_light.patch"
+  patch -p1 -i "${srcdir}/006-microphone_mute_light.patch"
 
-  # fbcondecor
-  patch -p1 -i "${srcdir}/4200_fbcondecor-3.19.patch"
+  # Enabling fbcondecor
+  patch -p1 -i "${srcdir}/007-fbcondecor.patch"
+
+  # Enabling fbcondecor
+  patch -p1 -i "${srcdir}/008-e1000e_fix_tight_loop_implementation_of_systime_read.patch"
+
+  # Enabling fbcondecor
+  patch -p1 -i "${srcdir}/009-fix_bridge_regression.patch"
+
+  # Enabling fbcondecor
+  patch -p1 -i "${srcdir}/010-make_flush_workqueue_non_gpl.patch"
+
+  # Enabling fbcondecor
+  patch -p1 -i "${srcdir}/011-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch"
+
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -301,15 +319,19 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('fe9dc0f6729f36400ea81aa41d614c37'
-         '8d941859273f8b3f7e0d7d6d14e3be91'
+md5sums=('3d5ea06d767e2f35c999eeadafc76523'
+         '3e1cc007d930f8760ef0730609dca035'
+         'df7fceae6ee5d7e7be7b60ecd7f6bb35'
          '43bcd5f7d5d86ad22c1817e282872e2e'
          'be91dd41334c87c68ed0e730846b8192'
          '4675e1fe4bd326a50f168c5674bab13c'
-         'ed1d392d9feb77674e7a71c3eda060e6'
-         '2a8d43290cca1297a5f421b58b7c4058'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         'df7fceae6ee5d7e7be7b60ecd7f6bb35'
-      	 '13d89fa42302dca268a7c9580176c980'
-      	 'c96372203aec1ebc0fd8404bdddcc0b8'
-      	 '8b7ca23aa660578023a0a244ae235888')
+         '13d89fa42302dca268a7c9580176c980'
+         'c96372203aec1ebc0fd8404bdddcc0b8'
+         '8b7ca23aa660578023a0a244ae235888'
+      	 '5eebf645841fdffc62f81a65899361dd'
+	 '20096ff36a623e8eeed2ccb0c9de7d84'
+	 'c740a077024d4499a47b54c00660d293'
+	 '74e5e48a39bd00c680b189e2f468e192'
+      	 'ed1d392d9feb77674e7a71c3eda060e6'
+	 '2a8d43290cca1297a5f421b58b7c4058'
+      	 'eb14dcfd80c00852ef81ded6e826826a')
