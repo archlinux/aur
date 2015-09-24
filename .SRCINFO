@@ -1,6 +1,6 @@
 pkgbase = subsurface-git
 	pkgdesc = Divelog program
-	pkgver = 20150919.a319c42
+	pkgver = 20150924.9d1c394
 	pkgrel = 1
 	url = http://subsurface-divelog.org/
 	install = install

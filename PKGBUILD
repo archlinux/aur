@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20150919.a319c42
+pkgver=20150924.9d1c394
 pkgrel=1
 pkgdesc='Divelog program'
 url='http://subsurface-divelog.org/'
@@ -26,12 +26,17 @@ pkgver() {
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	sed 's:<marble:<subsurface/marble:g' -i qt-ui/globe.*
+}
+
 build() {
 	cd "${srcdir}/${_pkgname}"
 	cmake \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DMARBLE_INCLUDE_DIR='/usr/include/subsurface' \
+		-DMARBLE_LIBRARIES=/usr/lib/libssrfmarblewidget.so \
 		-DUSE_LIBGIT23_API=1 \
 		.
 	make
