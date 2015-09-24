@@ -1,0 +1,14 @@
+--- a/cr3qt/src/cr3widget.cpp
++++ b/cr3qt/src/cr3widget.cpp
+@@ -862,7 +862,11 @@ bool CR3View::saveSettings( QString fn )
+     lString16 filename( qt2cr(fn) );
+     crtrace log;
+     if ( filename.empty() )
++#ifdef _LINUX
++        filename = qt2cr( QDir::toNativeSeparators(QDir::homePath() + "/.cr3/cr3.ini") );
++#else
+         filename = _data->_settingsFileName;
++#endif
+     if ( filename.empty() )
+         return false;
+     _data->_settingsFileName = filename;
