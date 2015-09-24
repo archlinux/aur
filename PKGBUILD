@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname='clean-chroot-manager'
-pkgver=2.68
+pkgver=2.69
 pkgrel=1
 pkgdesc='Wrapper scripts for managing clean chroots (64-bit and 32-bit).'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('devtools')
 conflicts=('clean_chroot_manager')
 replaces=('clean_chroot_manager')
 source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('0c2028c997e4fb215442cb61d7d6a29d57e1ca4fea824094e57c9b9200b1ebee')
+sha256sums=('ddfd8f746be5503e388f2b4a33cd335f656d1fb561b162873de5b85589f366c6')
 install=ccm.install
 
 build() {
