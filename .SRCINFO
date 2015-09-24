@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-pt-pt
 	pkgdesc = Portuguese language package for Iceweasel (Portugal)
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-pt-pt_40.0.3-3_all.deb
-	sha256sums = 8edd1588f2b004cdf7adf4d40b6db818c14f83da47a53e87b7552ce30d68c9c7
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-pt-pt_41.0-1_all.deb
+	sha256sums = b5d03159141a0bf0c044256ee7fba07b43c6237c7c796d1d0fdf131e08700377
 
 pkgname = iceweasel-i18n-pt-pt
 
