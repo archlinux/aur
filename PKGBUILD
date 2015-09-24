@@ -3,7 +3,7 @@
 
 pkgname=shadowsocks-libev
 pkgver=2.3.3
-pkgrel=2
+pkgrel=4
 pkgdesc='A lightweight secured scoks5 proxy for embedded devices and low end boxes'
 arch=('i686' 'x86_64')
 url='https://github.com/shadowsocks/shadowsocks-libev'
