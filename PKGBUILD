@@ -4,7 +4,7 @@
 
 pkgname=nagios-nrpe-plugin
 pkgver=2.15
-pkgrel=3
+pkgrel=4
 pkgdesc="The Nagios NRPE server side plugin."
 license=('GPL')
 arch=('any')
@@ -16,12 +16,12 @@ install=nagios-nrpe-plugin.install
 
 build() {
     cd ${srcdir}/nrpe-${pkgver}
-    ./configure --prefix=/usr/lib/monitoring-plugins \
+    ./configure  --prefix=/usr/share/nagios \
         --with-nagios-user=nagios --with-nagios-group=nagios || return 1
     make || return 1
 }
 
 package() {
     cd ${srcdir}/nrpe-${pkgver}
-    make prefix=${pkgdir}/usr/lib/monitoring-plugins install-plugin || return 1
+    make prefix=${pkgdir}/usr/share/nagios install-plugin || return 1
 }
