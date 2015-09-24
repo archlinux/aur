@@ -1,13 +1,13 @@
 pkgbase = python-scruffy
 	pkgdesc = Handles the loading and management of configuration files, plugins, and other filesystem resources such as temporary files and directories, log files, etc
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snare/scruffy
 	arch = any
 	license = Beerware
 	makedepends = python-setuptools
 	depends = python
-	depends = python-pyyaml
+	depends = python-yaml
 	depends = python-six
 	depends = python-sqlalchemy
 	options = !emptydirs

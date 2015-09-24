@@ -2,11 +2,11 @@
 
 pkgname=python-scruffy
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Handles the loading and management of configuration files, plugins, and other filesystem resources such as temporary files and directories, log files, etc"
 arch=('any')
 depends=('python'
-         'python-pyyaml'
+         'python-yaml'
          'python-six'
          'python-sqlalchemy')
 makedepends=('python-setuptools')
@@ -19,13 +19,13 @@ sha256sums=('fe01da3267d16b7e416697072ac25f73c36be4d32813cf1ce92a5cc845fcecf3')
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   python setup.py build
 }
 
 package() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 }
