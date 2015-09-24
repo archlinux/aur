@@ -9,10 +9,8 @@ pkgbase = freenet
 	checkdepends = junit
 	makedepends = java-environment>=7
 	makedepends = apache-ant
-	makedepends = apache-ant-contrib
 	makedepends = git
 	depends = java-runtime>=7
-	depends = bcprov152
 	depends = gmp
 	depends = java-service-wrapper
 	noextract = lzma465.tar.bz2
@@ -21,6 +19,7 @@ pkgbase = freenet
 	noextract = mantissa-7.2-src.zip
 	noextract = db4o-7.4-java.zip
 	noextract = commons-compress.jar
+	noextract = bcprov-jdk15on-152.jar
 	backup = opt/freenet/wrapper.config
 	backup = opt/freenet/conf/freenet.ini
 	source = git+https://github.com/freenet/fred.git#tag=build01470
@@ -31,6 +30,8 @@ pkgbase = freenet
 	source = https://downloads.freenetproject.org/alpha/opennet/seednodes.fref
 	source = IpToCountry.dat::http://software77.net/geo-ip/?DL=4
 	source = https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar
+	source = https://www.bouncycastle.org/download/bcprov-jdk15on-152.jar
+	source = http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.bz2
 	source = https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c
 	source = https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h
 	source = fred.properties
@@ -52,6 +53,8 @@ pkgbase = freenet
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d
+	sha256sums = 0dc4d181e4d347893c2ddbd2e6cd5d7287fc651c03648fa64b2341c7366b1773
+	sha256sums = 96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1
 	sha256sums = f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d
 	sha256sums = 9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2
 	sha256sums = 187dd4479fcda313d64415e02687acde66e018fe0be55b9f9e9d117f701d303d

@@ -14,8 +14,8 @@ license=('GPL2')
 arch=('any')
 install='freenet.install'
 
-depends=('java-runtime>=7' 'bcprov152' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=7' 'apache-ant' 'apache-ant-contrib' 'git')
+depends=('java-runtime>=7' 'gmp' 'java-service-wrapper')
+makedepends=('java-environment>=7' 'apache-ant' 'git')
 checkdepends=('junit')
 # comment out to run unit tests
 BUILDENV+=('!check')
@@ -40,7 +40,8 @@ noextract=('lzma465.tar.bz2'
            'jBitcollider-0.8.zip'
            'mantissa-7.2-src.zip'
            'db4o-7.4-java.zip'
-           'commons-compress.jar')
+           'commons-compress.jar'
+           'bcprov-jdk15on-152.jar')
 
 # here we have only java-commons-compress coming prebuilt by
 # the freenetproject, the rest we build ourselves
@@ -52,6 +53,8 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "${url}/alpha/opennet/seednodes.fref"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         "${url}/contrib/jar/latest/commons-compress.jar"
+        "https://www.bouncycastle.org/download/bcprov-jdk15on-152.jar"
+        "http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.bz2"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h"
         'fred.properties' 'contrib.properties' 'run.sh'
@@ -66,6 +69,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d'
+            '0dc4d181e4d347893c2ddbd2e6cd5d7287fc651c03648fa64b2341c7366b1773'
+            '96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1'
             'f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d'
             '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
             '187dd4479fcda313d64415e02687acde66e018fe0be55b9f9e9d117f701d303d'
@@ -105,7 +110,9 @@ prepare() {
 
     # this is done to satisfy ant
     ln -sf /usr/share/java/wrapper.jar contrib/freenet-ext/dist/
-    ln -sf /usr/share/java/{bcprov,hamcrest-core,junit}.jar lib/
+    ln -sf /usr/share/java/{hamcrest-core,junit}.jar lib/
+    ln -sf "$srcdir"/ant-contrib/{ant-contrib-1.0b3,ant-contrib}.jar
+    cp "$srcdir"/bcprov-jdk15on-152.jar lib/bcprov.jar
     cp "$srcdir"/{lzma465.tar.bz2,league-lzmajio-0.95-0-gd38bf5c.tar.gz,jBitcollider-0.8.zip,mantissa-7.2-src.zip,db4o-7.4-java.zip} contrib/freenet-ext/lib
 
     # we're going to compile our own C libraries
@@ -124,7 +131,7 @@ prepare() {
 build() {
     source /etc/profile.d/apache-ant.sh
     source /etc/profile.d/jre.sh
-    export _JAVA_HOME=/usr/lib/jvm/default
+    export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
 
     build_jbigi
     build_nativethread
@@ -133,7 +140,8 @@ build() {
 
     msg "Building Contrib Modules..."
     cd "$srcdir/fred/contrib/freenet-ext"
-    ant -propertyfile "$srcdir/contrib.properties"
+    ant -propertyfile "$srcdir/contrib.properties" \
+        -Djava.class.dirs.user="$srcdir/ant-contrib"
 
     # ant doesnt seem to put all the required folders into the
     # freenet-ext.jar correctly, make sure to do it here
@@ -158,7 +166,7 @@ build_jbigi() {
 
     _objdir='lib/net/i2p/util'
     CFLAGS+=" -fPIC -Wall"
-    INCLUDES="-I./jbigi/include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
+    INCLUDES="-I./jbigi/include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjbigi.so -lgmp"
     rm -f *.o *.so
 
@@ -173,7 +181,7 @@ build_nativethread() {
     cd "$srcdir/contrib/NativeThread"
 
     _objdir='lib/freenet/support/io'
-    INCLUDES="-I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
+    INCLUDES="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,llibnative.so -lc"
     rm -f *.o *.so NativeThread.h
 
@@ -189,7 +197,7 @@ build_jcpuid() {
     cd "$srcdir/contrib/jcpuid"
 
     _objdir='lib/freenet/support/CPUInformation'
-    INCLUDES="-I./include -I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
+    INCLUDES="-I./include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro,-soname,libjcpuid-x86-linux.so"
     rm -f *.o *.so
 
@@ -205,7 +213,7 @@ build_fec() {
 
     _objdir='../../bin/lib/linux-${_arch}'
     LDFLAGS="-shared -Wl,-O1,--sort-common,-z,relro"
-    INCLUDES="-I${_JAVA_HOME}/include -I${_JAVA_HOME}/include/linux"
+    INCLUDES="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
     _CLASSPATH="-classpath ../ com.onionnetworks.fec"
 
     mkdir -p "$_objdir"
@@ -259,7 +267,8 @@ package() {
                                                                 "$pkgdir"/opt/freenet
     install -m640 "$srcdir"/freenet.ini                         "$pkgdir"/opt/freenet/conf
     install -m640 contrib/freenet-ext/dist/freenet-ext.jar \
-                  dist/freenet.jar                              "$pkgdir"/opt/freenet/lib
+                  dist/freenet.jar                         \
+                  lib/bcprov.jar                                "$pkgdir"/opt/freenet/lib
 
     # plugins
     for plugin in ${_plugins[@]}; do
