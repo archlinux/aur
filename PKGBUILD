@@ -87,8 +87,8 @@ package() {
 	cp ./contrib/smarty/plugins/block.render.php $pkgdir/usr/share/php/smarty3/plugins/block.render.php
 
 	# Copy apache configuration
-	install -d -m 0755 $pkgdir/etc/httpd/conf/extra/
-	cp ./contrib/apache/fusiondirectory-apache.conf $pkgdir/etc/httpd/conf/extra/httpd-${pkgname}.conf
+	install -d -m 0755 $pkgdir/etc/fusiondirectory/
+	cp ./contrib/apache/fusiondirectory-apache.conf $pkgdir/etc/fusiondirectory/
 
 	# FusionDirectory install
 	install -d -m 0755 $pkgdir/usr/share/webapps/${pkgname}/

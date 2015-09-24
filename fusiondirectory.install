@@ -1,11 +1,13 @@
 post_install() {
-  fusiondirectory-setup --update-cache --update-locales
+  # Create link for httpd-fusiondirectory.conf
+  ln -s /etc/fusiondirectory/fusiondirectory-apache.conf /etc/httpd/conf/extra/httpd-fusiondirectory.conf
 
   echo '---------------------------------------------------------------------------'
   echo 'Add this line in your /etc/httpd/conf/httpd.conf'
   echo 'Include conf/extra/httpd-fusiondirectory.conf'
   echo '---------------------------------------------------------------------------'
 
+  fusiondirectory-setup --update-cache --update-locales
   fusiondirectory-setup --yes --check-directories
 }
 
