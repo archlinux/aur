@@ -4,23 +4,36 @@
 
 pkgname=tmsu
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for tagging your files and accessing them through a virtual filesystem."
 arch=('i686' 'x86_64')
 url="http://tmsu.org/"
 depends=('go' 'fuse' 'sqlite>=3')
 provides=('tmsu')
 license=('GNU GPL v3')
-source_i686=("https://github.com/oniony/TMSU/releases/download/v$pkgver/tmsu-i686-$pkgver.tgz")
-source_x86_64=("https://github.com/oniony/TMSU/releases/download/v$pkgver/tmsu-x86_64-$pkgver.tgz")
-sha256sums_i686=('e09ef8dab30f16cf1cec42610e575cc03362276da614bcf4f904decd79201466')
-sha256sums_x86_64=('5e994bc3112beeb0fe2a692aae2b313b185b9628f63ad09654b2c61e813104cc')
+source=("https://github.com/oniony/TMSU/archive/v$pkgver.tar.gz")
+sha256sums=('c6b749ee20774d39b36ab1182d80e22697bd7a6a9c5af2acbb090db0d867619f')
+
+build(){
+  export GOPATH=/tmp
+
+  echo "Now getting go-sqlite3..."
+  go get -u github.com/mattn/go-sqlite3
+
+  echo "Now getting go-fuse..."
+  go get -u github.com/hanwen/go-fuse/fuse
+
+  cd "$srcdir/TMSU-$pkgver"
+  make
+}
 
 package(){
-  mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/zsh/site-functions"
-  cd "$srcdir/$pkgname-$CARCH-$pkgver"
+  mkdir -p "$pkgdir/usr/bin" \
+           "$pkgdir/usr/bin" \
+           "$pkgdir/usr/share/man/man1" \
+           "$pkgdir/usr/share/zsh/site-functions"
 
-  cp "bin/"* "$pkgdir/usr/bin"
-  cp "man/tmsu.1.gz" "$pkgdir/usr/share/man/man1"
-  cp "misc/zsh/_tmsu" "$pkgdir/usr/share/zsh/site-functions"
+  cd "$srcdir/TMSU-$pkgver"
+  sed -ie "s%/usr%$pkgdir/usr%g" Makefile
+  make install
 }
