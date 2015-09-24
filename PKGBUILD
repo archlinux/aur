@@ -6,7 +6,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-dash-to-dock-git
-pkgver=47
+pkgver=49
 pkgrel=1
 pkgdesc="A gnome-shell extension that transforms the dash into an intellihide dock"
 arch=('any')
