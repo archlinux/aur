@@ -4,7 +4,7 @@
 # vim: ft=sh
 
 pkgname=pebble-sdk
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
@@ -23,6 +23,7 @@ depends=('arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'arm-none-eabi-binutils'
          'python2-pyasn1'
          'python2-pyasn1-modules'
          'python2-pypng'
+		 'python2-pyqrcode'
          'python2-requests'
          'python2-rsa'
          'python2-six'
@@ -44,11 +45,13 @@ source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/Peb
         'pebble-sdk.install'
         'pflashFix.patch'
         'analyticsFix.patch'
+		'buildFix.patch'
         'pebble.sh')
-sha1sums=('e5e8848e61d9e6963a4e0ea5e2158bd0e26bb896'
+sha1sums=('2d895ba0746aeccb43863d43b641a4b192fc0bb5'
           '7ea5244f828e682d073434078569fab62a1ad996'
           '050db72f8259daac7bd0605369677e69ecca7821'
-          'c5202cf88ea75f29e2aa09b55fcbd9b941fa8473'
+          'b0988936c15f98202fc13323a21452794acdbbde'
+          'dfa24b631be575d8dce5ee6045a87ede4c0ac9e3'
           'af0c0deb6e474318a4dc81442d39d9d8befc9685')
 options=('staticlibs' '!strip')
 
@@ -59,6 +62,9 @@ prepare() {
 
   #patch analytics NO_TRACKING path
   patch -p0 -i "$srcdir/analyticsFix.patch"
+
+  # fix for broken python2/3 detection
+  patch -p0 -i "$srcdir/buildFix.patch"
 
   # Unpack waf
   cd Pebble
