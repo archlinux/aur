@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=ctwm-git
-pkgver=3.8.2.r527.ga7a2860
+pkgver=3.8.2.r852.ge1e4d9d
 pkgrel=1
 pkgdesc="Claude's Tab Window Manager"
 arch=('i686' 'x86_64')		
