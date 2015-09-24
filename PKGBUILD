@@ -1,11 +1,11 @@
 pkgname=fusiondirectory-plugin-netgroups
-pkgver=1.0.8.8
+pkgver=1.0.8.9
 pkgrel=1
 pkgdesc="Nis Netgroups account management"
 arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
-depends=('fusiondirectory>=1.0.8.8')
+depends=('fusiondirectory>=1.0.8.9')
 
 install=fusiondirectory-plugin-netgroups.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
