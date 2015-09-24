@@ -1,7 +1,7 @@
 pkgname=android-backup-extractor-git
-pkgver=r44.139fee8
+pkgver=r46.434afd1
 pkgrel=1
-pkgdesc="Ansi HTML Adapter: convert ANSI escape sequences to HTML."
+pkgdesc="Utility to extract and repack Android backups created with adb backup"
 arch=('any')
 makedepends=('git' 'apache-ant')
 depends=('bcprov')
