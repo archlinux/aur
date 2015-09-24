@@ -7,7 +7,7 @@ arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
 
-depends=('fusiondirectory-schema', 'fusiondirectory-plugin-argonaut-schema')
+depends=('fusiondirectory-schema>=1.0.8.9' 'fusiondirectory-plugin-argonaut-schema>=1.0.8.9')
 
 install=fusiondirectory-plugin-systems.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
