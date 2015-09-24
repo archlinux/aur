@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-et
 	pkgdesc = Estonian language package for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-et_40.0.3-3_all.deb
-	sha256sums = eb1e14abb14a5d6ba39b8fbec44a121b06831ce3299b59eb1b5dd50a5ff57a5a
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-et_41.0-1_all.deb
+	sha256sums = 67d88af0142a0e0b64f4e9e1cbd3b551054b757091f69b0e9120610115e6ee6d
 
 pkgname = iceweasel-i18n-et
 
