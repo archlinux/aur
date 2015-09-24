@@ -1,15 +1,14 @@
 pkgbase = iceweasel-i18n-gd
 	pkgdesc = Scottish Gaelic language package for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-gd_40.0.3-3_all.deb
-	sha256sums = abef557d07091439d2b3463f49d4f10e77e10504aff933a1ec016b50f336b67b
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-gd_41.0-1_all.deb
 
 pkgname = iceweasel-i18n-gd
 
