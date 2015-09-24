@@ -2,13 +2,13 @@
 pkgname=beamerscape-git
 _pkgname=beamerscape
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for integrating Inkscape and LaTeX beamer"
 arch=('any')
 url="https://github.com/jbohren/beamerscape"
 license=('BSD')
 depends=('texlive-publishers' 'perl-xml-libxml' 'inkscape')
-optdepends=('cmake>=2.8.3: to generate a large number of presentations')
+optdepends=('cmake>=2.8.3: to \% Layergenerate a large number of presentations')
 provides=('beamerscape')
 replaces=('beamerscape_hg')
 conflicts=('beamerscape_hg')
@@ -18,6 +18,8 @@ build() {
   [ -d ${srcdir}/${pkgname} ] || mkdir -p ${srcdir}/${pkgname}
   cd ${srcdir}/${pkgname}
   git clone --depth 1 $_gitroot .
+  # as of 24/Sep/2015 a new escaping "%" is needed.
+  sed -i 's#\\% Layer#%% Layer#g' bin/export_overlays
 }
 
 package() {
