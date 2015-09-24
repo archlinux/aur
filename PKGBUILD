@@ -1,9 +1,9 @@
 pkgname=youtube-dl-git
-pkgver=2015.09.09.r68.gf005f96
+pkgver=2015.09.22.r4.g19f93d9
 pkgrel=1
 
 pkgdesc='A small command-line program to download videos from YouTube.com and a few more sites'
-url="http://rg3.github.com/${_pkgname}"
+url="http://rg3.github.io/youtube-dl"
 arch=('any')
 license=('custom')
 
