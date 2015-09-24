@@ -2,7 +2,7 @@
 # Maintainer: Swift Geek
 pkgname=bluez-git
 _pkgname=bluez
-pkgver=5.34.r21.g5783e00
+pkgver=5.34.r28.g1bed031
 pkgrel=1
 epoch=1
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
@@ -12,6 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('libical' 'libdbus' 'glib2')
 optdepends=('cups: CUPS backend')
+makedepends=('git')
 conflicts=($_pkgname
 	   $_pkgname-utils
 	   $_pkgname-libs

@@ -1,12 +1,13 @@
 pkgbase = bluez-git
 	pkgdesc = Libraries and tools for the Bluetooth protocol stack
-	pkgver = 5.34.r21.g5783e00
+	pkgver = 5.34.r28.g1bed031
 	pkgrel = 1
 	epoch = 1
 	url = http://www.bluez.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = libical
 	depends = libdbus
 	depends = glib2
