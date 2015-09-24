@@ -1,0 +1,18 @@
+pkgbase = engrid-git
+	pkgdesc = open-source mesh generation
+	pkgver = 20150810.e9804d56
+	pkgrel = 1
+	url = http://engits.eu/en/engrid
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = subversion
+	depends = vtk
+	depends = qt4
+	depends = cgal
+	source = git+https://github.com/enGits/engrid.git
+	md5sums = SKIP
+
+pkgname = engrid-git
+
