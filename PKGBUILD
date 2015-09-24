@@ -22,6 +22,7 @@ fi
 source=("http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_${_arch}.zip")
 
 package() {
+  mv "${pkgname}_${_arch}.zip" "${pkgname}_${pkgver}_${_arch}.zip"
   mkdir -p "$pkgdir/usr/bin/"
   install -D -m 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/"
 }
