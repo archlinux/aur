@@ -1,0 +1,17 @@
+pkgbase = nrss
+	pkgdesc = NCurses Feed Reader
+	pkgver = 0.3.9
+	pkgrel = 3
+	url = http://www.codezen.org/nrss/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = expat
+	source = http://ftp.de.debian.org/debian/pool/main/n/nrss/nrss_0.3.9.orig.tar.gz
+	md5sums = 0673d5b18cee1f7229bed45db05f3c3e
+	sha1sums = 8770cf5cc2c02d88055801ff259c33717f90567d
+	sha256sums = c6a421b4a5da5037ca157bfd9c1eadd3115e89984d7180f2abc90933af007602
+
+pkgname = nrss
+
