@@ -1,0 +1,21 @@
+pkgbase = rkward
+	pkgdesc = KDE easy to use and easily extensible IDE/GUI for R
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://rkward.kde.org/
+	install = rkward.install
+	arch = i686
+	arch = x86_64
+	groups = kde-applications
+	groups = kdeedu
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = r
+	depends = katepart4
+	source = http://download.kde.org/stable/rkward/0.6.3/src/rkward-0.6.3.tar.gz
+	sha1sums = 9628b2364e8216daea1ce0b8099964ad1277c605
+
+pkgname = rkward
+
