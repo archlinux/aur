@@ -1,0 +1,13 @@
+pkgbase = stardict-cdict-gb
+	pkgdesc = English-Chinese dictionary of cdict for Stardict
+	pkgver = 2.4.2
+	pkgrel = 4
+	url = http://stardict.huzheng.org
+	arch = any
+	license = GPL
+	depends = stardict
+	source = http://abloz.com/huzheng/stardict-dic/zh_CN/stardict-cdict-gb-2.4.2.tar.bz2
+	md5sums = 68e539f362de416490b78fed97aba780
+
+pkgname = stardict-cdict-gb
+
