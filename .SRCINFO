@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ff
 	pkgdesc = Fulah language pack for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ff_40.0.3-3_all.deb
-	sha256sums = 6f71123c90bb2f5ccb7ec6c4f362b51e273418304f7df98365fe4003fe902e34
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ff_41.0-1_all.deb
+	sha256sums = 77ec1de03dde8e85d6757c3af5433efb47ea5c450fe7001a58938eef6cb29800
 
 pkgname = iceweasel-i18n-ff
 
