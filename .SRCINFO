@@ -1,8 +1,8 @@
 pkgbase = tmux-truecolor
 	pkgdesc = A terminal multiplexer, with true color support
 	pkgver = 2.0
-	pkgrel = 1
-	url = http://tmux.sourceforge.net/
+	pkgrel = 2
+	url = http://tmux.github.io/
 	arch = i686
 	arch = x86_64
 	license = BSD

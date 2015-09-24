@@ -6,7 +6,7 @@
 pkgname=tmux-truecolor
 _pkgname=tmux
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal multiplexer, with true color support'
 url='http://tmux.github.io/'
 arch=('i686' 'x86_64')
