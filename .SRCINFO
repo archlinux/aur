@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-sq
 	pkgdesc = Albanian language package for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-sq_40.0.3-3_all.deb
-	sha256sums = ee3ceb494a3f15d889f25dfc1831bc73b856c7f224c88230b69f246d1e0d1f3d
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-sq_41.0-1_all.deb
+	sha256sums = b03d3b7e49f79692a4202c6e70b6302fc796f72fd58ceb523bfad13655f21c6c
 
 pkgname = iceweasel-i18n-sq
 
