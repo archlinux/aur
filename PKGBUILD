@@ -3,7 +3,7 @@
 basename=wavefile
 pkgname=python-${basename}
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL3')
 pkgdesc="Pythonic libsndfile wrapper to read and write audio files."
