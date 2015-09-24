@@ -8,8 +8,8 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-utils-lts"
-pkgver=0.6.5.1_3.14.52_1
-pkgrel=2
+pkgver=0.6.5.1_4.1.8_1
+pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
