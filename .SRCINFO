@@ -1,0 +1,26 @@
+pkgbase = siren
+	pkgdesc = A text-based audio player.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://www.kariliq.nl/siren/
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = libao
+	makedepends = libpulse
+	makedepends = libid3tag
+	makedepends = libmad
+	makedepends = wavpack
+	depends = ncurses
+	optdepends = libao: audio output support
+	optdepends = libpulse: pulseaudio support
+	optdepends = libid3tag: id3 tags support
+	optdepends = libmad: mpeg decoder support
+	optdepends = wavpack: wav decoder support
+	source = http://www.kariliq.nl/siren/dist/siren-0.6.tar.gz
+	md5sums = cd13e688064c5ac533bda682c1f84731
+	sha1sums = 6c3a304e5e9a4816aa2872669335109d018e70f2
+	sha256sums = 5ac944e5d2737942afa1270bf66d72d631b896d37b4c084bdd3a766a5e735a14
+
+pkgname = siren
+
