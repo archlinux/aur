@@ -1,0 +1,16 @@
+pkgbase = esnc
+	pkgdesc = A fork of Ersatz Emacs, the smallest of the microEmacs forks.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://essence.tuxfamily.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://essence.tuxfamily.org/esnc-1.0.tar.bz2
+	md5sums = 1343db23bd226a7ebcf19fe6edbd04ac
+	sha1sums = 4750294a8ed0863f331c811899c05d96c7461781
+	sha256sums = 5d61da743bbfd11515bb0c157fba0bd6bed9e6211fb7892811fd55ec14bb52eb
+
+pkgname = esnc
+
