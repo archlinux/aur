@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ta
 	pkgdesc = Tamil language pack for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ta_40.0.3-3_all.deb
-	sha256sums = 8b7f391a2d06fe3e9a86aae546a53ce7e42e8de08c0cdab923d25d6c4338aba5
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ta_41.0-1_all.deb
+	sha256sums = 4f1dfcc89e2332c957d0ee0e3b812ab329ac56b54c66469cc0a3c83fc5b3f601
 
 pkgname = iceweasel-i18n-ta
 
