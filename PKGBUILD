@@ -1,6 +1,6 @@
 pkgname=picard-git
 pkgver=1.3.2.r72.g1737c99
-pkgrel=4
+pkgrel=5
 pkgdesc="MusicBrainz tagging application"
 arch=('i686' 'x86_64')
 url="https://picard.musicbrainz.org"
@@ -13,6 +13,7 @@ provides=('picard')
 conflicts=('picard' 'picard-qt' 'picard-bzr')
 source=('git://github.com/musicbrainz/picard.git')
 md5sums=('SKIP')
+install='install'
 
 pkgver(){
     cd "$srcdir/picard"
