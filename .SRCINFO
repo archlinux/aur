@@ -1,0 +1,17 @@
+pkgbase = irvm-git
+	pkgdesc = A Virtual Machine for Andrew W. Appel's Tree Intermediate Representation.
+	pkgver = 0.0.3.r2.g559e6c3
+	pkgrel = 1
+	url = https://github.com/pablooliveira/irvm
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = glibc
+	provides = irvm
+	conflicts = irvm
+	source = irvm-git::git+https://github.com/pablooliveira/irvm
+	md5sums = SKIP
+
+pkgname = irvm-git
+
