@@ -5,7 +5,7 @@ pkgdesc="Opsi deployment management for Windows clients"
 arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
-depends=('fusiondirectory>=1.0.8.9')
+depends=('fusiondirectory>=1.0.8.9' 'fusiondirectory-plugin-dns>=1.0.8.9' 'fusiondirectory-plugin-samba>=1.0.8.9' 'fusiondirectory-plugin-systems>=1.0.8.9')
 
 install=fusiondirectory-plugin-opsi.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
