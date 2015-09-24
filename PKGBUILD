@@ -6,7 +6,7 @@
 # Contributor: Vain
 
 pkgname=mu
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="A collection of utilities for indexing and searching Maildirs"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('cronie: Updating index regularly')
 conflicts=('mailutils')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/djcb/mu/archive/v$pkgver.tar.gz)
-sha256sums=('b871124fc7774a2593815f89286671a8f31d7243bb898a8ca454685599f2b9af')
+sha256sums=('a1c88efd3bfeda96e06d7f77a87562c472e6d787f3cca984ddf275a4ea1d4372')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver/toys/mug
