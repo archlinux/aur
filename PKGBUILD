@@ -1,10 +1,10 @@
 # Maintainer: Samuel Ace Winchenbach <swinchen at gmail dot com>
 pkgname=avrdude-svn
 _pkgname=avrdude
-pkgrel=1
+pkgrel=2
 pkgver=20150506.1356
 pkgdesc="AVRDUDE is an utility to download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers using the in-system programming technique (ISP)."
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv6h)
 url="http://www.nongnu.org/avrdude/"
 license=('GPL')
 groups=()
@@ -27,7 +27,8 @@ build() {
   ./bootstrap
   ./configure --mandir=/usr/share/man \
     --prefix=/usr \
-    --sysconfdir=/etc
+    --sysconfdir=/etc \
+    --enable-linuxgpio
   make
 }
 
