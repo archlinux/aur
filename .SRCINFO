@@ -1,6 +1,6 @@
 pkgbase = sup-git
 	pkgdesc = Sup is a console-based email client for people with a lot of email. Great mutt alternative.
-	pkgver = 2715.199e895
+	pkgver = 2721.7989b5b
 	pkgrel = 1
 	url = http://supmua.org/
 	arch = any

@@ -3,7 +3,7 @@
 _gitname=sup
 _gitbranch=develop
 pkgname=sup-git
-pkgver=2715.199e895
+pkgver=2721.7989b5b
 pkgrel=1
 pkgdesc="Sup is a console-based email client for people with a lot of email. Great mutt alternative."
 arch=(any)
