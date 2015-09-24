@@ -1,6 +1,6 @@
 pkgbase = python-selenium
 	pkgdesc = Python binding for Selenium Remote Control
-	pkgver = 2.47.1
+	pkgver = 2.47.3
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/selenium
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = python-selenium
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	optdepends = lib32-glibc: Firefox x86 webdriver support for x86_64
-	source = http://pypi.python.org/packages/source/s/selenium/selenium-2.47.1.tar.gz
-	md5sums = 7a2e267e8ef5c221bfd6387c2ad5f3bc
+	source = http://pypi.python.org/packages/source/s/selenium/selenium-2.47.3.tar.gz
+	md5sums = 9410299a1f3225c8a44b66faa8f3f733
 
 pkgname = python-selenium
 	depends = python
