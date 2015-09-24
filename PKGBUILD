@@ -11,8 +11,7 @@ depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pando
 # I got these dependencies from debtap
 
 package() {
-	pwd
-	cd src
+	mkdir data
 	tar xf data.tar.xz --directory data/
 	install -m644 data/* "${pkgdir}"
 }
