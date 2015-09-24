@@ -13,5 +13,5 @@ depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pando
 package() {
 	mkdir data
 	tar xf data.tar.xz --directory data/
-	install -m644 data/* "${pkgdir}"
+	install -m644 data/* "${pkgdir}"/
 }
