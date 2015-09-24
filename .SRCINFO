@@ -1,0 +1,19 @@
+pkgbase = cedet-git
+	pkgdesc = Collection of Emacs Development Enviromnent Tools (Git version)
+	pkgver = 20150322
+	pkgrel = 1
+	url = http://cedet.sourceforge.net/
+	install = cedet-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	provides = cedet
+	conflicts = cedet
+	conflicts = cedet-cvs
+	conflicts = cedet-bzr
+	replaces = cedet-cvs
+	replaces = cedet-bzr
+
+pkgname = cedet-git
+

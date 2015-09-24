@@ -1,0 +1,27 @@
+infodir=usr/share/info
+filelist=(bovine.info.gz cedet.info.gz cogre.info.gz ede.info.gz eieio.info.gz grammar-fw.info.gz semantic-appdev.info.gz semantic.info.gz semantic-langdev.info semantic-user.info.gz speedbar.info.gz srecode.info.gz wisent.info.gz)
+
+post_install() {
+    cat <<EOF
+==> Put this in your \$HOME/.emacs file to enable CEDET:
+==>   (load-file "/usr/share/emacs/site-lisp/cedet/cedet-devel-load.el")
+==>   (semantic-load-enable-code-helpers)
+EOF
+  [[ -x usr/bin/install-info ]] || return 0
+  for file in "${filelist[@]}"; do
+    install-info "$infodir/$file" "$infodir/dir" 2> /dev/null
+  done
+}
+
+post_upgrade() {
+  post_install "$1"
+}
+
+pre_remove() {
+  [[ -x usr/bin/install-info ]] || return 0
+  for file in "${filelist[@]}"; do
+    install-info --delete "$infodir/$file" "$infodir/dir" 2> /dev/null
+  done
+}
+
+# vim:set ts=2 sw=2 et:
