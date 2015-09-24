@@ -3,7 +3,7 @@
 
 pkgname=smlsharp
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A new programming language in the Standard ML family"
 arch=('i686' 'x86_64')
 url="http://www.pllab.riec.tohoku.ac.jp/smlsharp/"
@@ -25,9 +25,9 @@ build() {
   patch -p1 < ../llvm-3.5.patch
   patch -p1 < ../llvm-3.6.patch
   if [ "$CARCH" == "i686" ]; then
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --enable-fast-build
   else
-    ./configure CC='gcc -m32' CXX='g++ -m32' LD='ld -m elf_i386' LLVM_CONFIG=/usr/bin/llvm-config32 --prefix=/usr
+    ./configure CC='gcc -m32' CXX='g++ -m32' LD='ld -m elf_i386' LLVM_CONFIG=/usr/bin/llvm-config32 --prefix=/usr --enable-fast-build
   fi
 
   make
