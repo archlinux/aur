@@ -1,0 +1,16 @@
+pkgbase = tpgt
+	pkgdesc = A ncurses-based typing trainer program.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://szit.hu/tpgt/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ncurses
+	source = http://szit.hu/tpgt/tpgt-0.6.0-src.tar.gz
+	md5sums = 03d351f9b3081fee7b8bd850596c2de4
+	sha1sums = 0a9c8f7262ea4802c20dd4b7065e8a208ac0dd48
+	sha256sums = 40b6030f6fd3733d513259f06afd34dbbd749ddf976f15560b9b76382d3e1175
+
+pkgname = tpgt
+
