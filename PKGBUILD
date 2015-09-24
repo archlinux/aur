@@ -1,14 +1,14 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=archsocks
 pkgdesc="archsocks 网络加速代理"
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 arch=('any')
 url="http://www.archsocks.com/"
 license=()
 depends=('python-aiohttp' 'python-chardet' 'iptables')
 install=${pkgname}.install
-source=("http://www.archsocks.com/files/archsocks.tar.gz"
+source=("archsocks-${pkgver}.tar.gz::http://104.245.8.176/files/archsocks.tar.gz"
         archsocks
         archsocks.service
 )
@@ -32,6 +32,6 @@ package() {
   install -dm750 "$pkgdir/var/lib/archsocks"
 }
 
-sha256sums=('fcf589b5fbbcc9698d9e49f5175c6a96613d7a6b217a03a24829045749d0a6af'
+sha256sums=('e50965ad072364525036d2a64d87e8d48c1560ceda47dd1e208cd3c431faf912'
             'dac4cba524d950d068ea13ea467f5d42da308106e15bb45293fa28f225692c53'
             '27a170b2541b138d5b11a7e3bbbb27b13dd4474da929ac91659a4d06fab84b9a')
