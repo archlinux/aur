@@ -2,7 +2,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=stapler-git
-pkgver=0.2b.45.g66fb06b
+pkgver=0.3.2.r3.g66fb06b
 pkgrel=1
 pkgdesc="Manipulate PDF documents from the command line"
 url="http://github.com/hellerbarde/stapler"
@@ -16,7 +16,7 @@ _gitname="stapler"
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always | sed 's|-|.|g'
+  git describe --tags --always | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
