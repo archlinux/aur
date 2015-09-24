@@ -3,7 +3,7 @@
 
 pkgname=copperspice-git
 pkgver=1.2.92e2c75
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ library derived from the existing Qt 4.8 framework'
 arch=('i686' 'x86_64')
 url='http://www.copperspice.com/'
@@ -35,7 +35,8 @@ build() {
         -DCMAKE_BUILD_TYPE=RelWithDbgInfo \
         -DCMAKE_SKIP_RPATH=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DCMAKE_INSTALL_INCLUDEDIR=include/copperspice
     make
 }
 
