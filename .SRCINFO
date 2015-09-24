@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-son
 	pkgdesc = Songhai language pack for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-son_40.0.3-3_all.deb
-	sha256sums = f89c03e3ca97a199b2493cc5e67796ff5aa0226a56bc28f28d75d13321e55612
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-son_41.0-1_all.deb
+	sha256sums = a009fe47230fb5bbe4fb0d5c039d0d3945dd6dff54f56ef7208b598e47dc1c4c
 
 pkgname = iceweasel-i18n-son
 
