@@ -1,5 +1,5 @@
 # Maintainer: vatriani <vatriani.nn@googlemail.com>
-pkgname=xlauncher-git
+pkgname=xlauncher
 pkgver=0.4.0
 pkgrel=1
 pkgdesc='simple and fast launcher for x11'
