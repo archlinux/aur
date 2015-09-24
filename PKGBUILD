@@ -43,6 +43,11 @@ package() {
     cd build
     make DESTDIR="${pkgdir}" install
 
+    # avoid conflicts with qt5 package
+    for tool in "${pkgdir}/usr/bin/"*;do
+        mv -v "${tool}" "${tool}-cs"
+    done
+
     install -vDm644 ../copperspice/license/LGPL_EXCEPTION.txt \
         "${pkgdir}/usr/share/licenses/copperspice-git/LGPL_EXCEPTION.txt"
 }
