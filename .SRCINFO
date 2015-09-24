@@ -1,15 +1,15 @@
 pkgbase = iceweasel-i18n-ga-ie
 	pkgdesc = Irish language package for Iceweasel
-	pkgver = 40.0.3.deb3
+	pkgver = 41.0.deb1
 	pkgrel = 1
 	url = http://www.mozilla.com/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = iceweasel>=40.0.3
-	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ga-ie_40.0.3-3_all.deb
-	sha256sums = 3b58ebc7bdc15ed1652486c05b2e9e8d768d7cbd8b861fcf50140b28e9ea1411
+	depends = iceweasel>=41.0
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ga-ie_41.0-1_all.deb
+	sha256sums = 98287cd66ddf6efc35be4eb2b46a7c99f3ef68818fc38fb19865ed17b49fc10e
 
 pkgname = iceweasel-i18n-ga-ie
 
