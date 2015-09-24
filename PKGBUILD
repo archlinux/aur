@@ -56,7 +56,7 @@ _BFQ_enable_=
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
 _srcname=linux-4.1
-pkgver=4.1.7
+pkgver=4.1.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -85,7 +85,7 @@ fbcondecor-4.1.patch
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'bbd57fb48ea8e6971680818ba8722fd38ae419dca6047b852f10d33e5cd2ff6b'
+            '4373af2baaae5429be37e5257a22454d468f36b1322f784bb91a608c80ed52a1'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
             '1e1e592503a7e3c7e93e4f65624dfae4f8f3221468b7219e7ccfd8df7e668cbc'
@@ -116,7 +116,7 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck2 including BFS v0.463"
+	msg "Patching source with ck2 including BFS v0.464"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
@@ -249,7 +249,7 @@ build() {
 }
 
 package_linux-ck-fbcondecor() {
-	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.463 and the fbcondecor framebuffer decoration support.'
+	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.464 and the fbcondecor framebuffer decoration support.'
 	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.463 and the fbcondecor framebuffer decoration support.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
