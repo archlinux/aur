@@ -1,6 +1,6 @@
 pkgbase = thc-ipv6
 	pkgdesc = A complete tool set to attack the inherent protocol weaknesses of IPv6 and ICMP6, and includes an easy to use packet factory library.
-	pkgver = 2.5
+	pkgver = 2.7
 	pkgrel = 1
 	url = http://thc.org/thc-ipv6/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = thc-ipv6
 	license = GPL
 	depends = libpcap
 	depends = openssl
-	source = http://www.thc.org/releases/thc-ipv6-2.5.tar.gz
-	sha256sums = 52120bee2da3d25820f021b5c4d6fc79e220e685e2a505b74b48046b608cba8c
+	source = https://www.thc.org/releases/thc-ipv6-2.7.tar.gz
+	sha256sums = 440a3ae98b57100c397ec4f8634468dbbb0c3b48788c6b74af2a597a90544a96
 
 pkgname = thc-ipv6
 
