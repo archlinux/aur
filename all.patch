@@ -1,0 +1,98 @@
+diff -ru trunk/CMake/ConfigCompilerFlags.cmake manta-svn/CMake/ConfigCompilerFlags.cmake
+--- trunk/CMake/ConfigCompilerFlags.cmake	2014-07-11 00:51:51.873319318 -0500
++++ manta-svn/CMake/ConfigCompilerFlags.cmake	2014-07-11 00:46:38.919983455 -0500
+@@ -263,7 +263,7 @@
+       APPEND_TO_STRING(INTEL_OPT "-xP -unroll4 -msse3")
+     ENDIF(CPU_FAMILY EQUAL 15)
+   ENDIF(VENDOR_ID MATCHES "GenuineIntel")
+-  APPEND_TO_STRING(GCC_ARCH "i686")
++#  APPEND_TO_STRING(GCC_ARCH "i686")
+ 
+   ###########################################################
+   # Some x86_64 specific stuff
+diff -ru trunk/Core/Containers/Array3.h manta-svn/Core/Containers/Array3.h
+--- trunk/Core/Containers/Array3.h	2014-07-11 00:51:51.983319319 -0500
++++ manta-svn/Core/Containers/Array3.h	2014-07-11 00:46:38.919983455 -0500
+@@ -50,6 +50,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <Core/Util/Assert.h>
++#include <unistd.h>
+ 
+ namespace Manta {
+ 
+diff -ru trunk/Core/Thread/Thread.cc manta-svn/Core/Thread/Thread.cc
+--- trunk/Core/Thread/Thread.cc	2014-07-11 00:51:52.059985986 -0500
++++ manta-svn/Core/Thread/Thread.cc	2014-07-11 00:46:38.919983455 -0500
+@@ -72,6 +72,7 @@
+ 
+ #elif defined(__GNUC__) && defined(__linux)
+ #include <execinfo.h>
++#include <unistd.h>
+ #endif
+ 
+ 
+diff -ru trunk/Image/EXRFile.cc manta-svn/Image/EXRFile.cc
+--- trunk/Image/EXRFile.cc	2014-07-11 00:51:51.909985985 -0500
++++ manta-svn/Image/EXRFile.cc	2014-07-11 00:46:38.919983455 -0500
+@@ -27,8 +27,7 @@
+   DEALINGS IN THE SOFTWARE.
+ */
+ 
+-
+-#include <Image/EXRFile.h>
++#define _NOT_HEADER_
+ #include <Image/Pixel.h>
+ #include <Image/SimpleImage.h>
+ 
+@@ -52,6 +51,7 @@
+ #include <memory>
+ #include <exception>
+ 
++#include <Image/EXRFile.h>
+ 
+ using namespace Manta;
+ 
+diff -ru trunk/Image/EXRFile.h manta-svn/Image/EXRFile.h
+--- trunk/Image/EXRFile.h	2014-07-11 00:51:51.909985985 -0500
++++ manta-svn/Image/EXRFile.h	2014-07-11 00:46:38.923316788 -0500
+@@ -33,13 +33,13 @@
+ #include <string>
+ #include <vector>
+ 
+-
++#ifndef _NOT_HEADER_
+ namespace Imf 
+ {
+   class Rgba;
+   class Header;
+ }
+-
++#endif
+ 
+ namespace Manta 
+ {
+diff -ru trunk/Interface/TaskQueue.h manta-svn/Interface/TaskQueue.h
+--- trunk/Interface/TaskQueue.h	2014-07-11 00:51:52.416652655 -0500
++++ manta-svn/Interface/TaskQueue.h	2014-07-11 00:51:26.466652446 -0500
+@@ -1,6 +1,7 @@
+ #ifndef MANTA_INTERFACE_TASK_QUEUE_H_
+ #define MANTA_INTERFACE_TASK_QUEUE_H_
+ 
++#include <stddef.h>
+ #include <Core/Util/SpinLock.h>
+ #include <Interface/Task.h>
+ 
+diff -ru trunk/scenes/triangleSceneViewer.cc manta-svn/scenes/triangleSceneViewer.cc
+--- trunk/scenes/triangleSceneViewer.cc	2014-07-11 00:51:51.843319318 -0500
++++ manta-svn/scenes/triangleSceneViewer.cc	2014-07-11 00:46:38.939983455 -0500
+@@ -37,7 +37,7 @@
+ #include <algorithm>
+ #include <iostream>
+ #include <fstream>
+-
++#include <unistd.h>
+ 
+ #include "UsePrivateCode.h"
+ #ifdef USE_PRIVATE_CODE
+Binary files trunk/.svn/wc.db and manta-svn/.svn/wc.db differ
