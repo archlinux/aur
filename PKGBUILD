@@ -5,7 +5,7 @@ pkgdesc="A simple Markdown editor that offers a lot of features."
 arch=(any)
 url="http://uberwriter.wolfvollprecht.de/"
 license=('GPL')
-depends=('python2-gtkspellcheck' 'python2-gobject' 'ttf-ubuntu-font-family' 'pandoc-static')
+depends=('python2-gtkspellcheck' 'python2-gobject' 'ttf-ubuntu-font-family' 'pandoc-bin')
 makedepends=('python2-distutils-extra')
 install=uberwriter.install
 
