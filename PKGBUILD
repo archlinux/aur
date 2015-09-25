@@ -2,7 +2,7 @@
 # Contributor: mickael9 <mickael9 at gmail dot com>
 
 pkgname=bitlbee-facebook-git
-pkgver=r49.c87650c
+pkgver=r62.635c9ce
 pkgrel=1
 pkgdesc='Facebook protocol plugin for BitlBee'
 arch=('any')
