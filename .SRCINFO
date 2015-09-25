@@ -1,6 +1,6 @@
 pkgbase = bin32-firefox-i18n
 	pkgdesc = Universal i18n for bin32-firefox - xpi version
-	pkgver = 40.0.3
+	pkgver = 41.0
 	pkgrel = 1
 	url = http://www.mozilla.com/projects/firefox
 	arch = x86_64

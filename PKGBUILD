@@ -2,7 +2,7 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox-i18n
-pkgver=40.0.3
+pkgver=41.0
 pkgrel=1
 pkgdesc="Universal i18n for bin32-firefox - xpi version"
 arch=('x86_64')
@@ -19,7 +19,7 @@ countdown() {
   done
 }
 
-ls_lang () {
+ls_lang_ftp () {
 {  ftp -in ftp.mozilla.org <<EOF
 user anonymous secrets
 cd pub
@@ -28,6 +28,10 @@ ls
 EOF
 [ "$?" != 0 ] && error "FTP connection failed" && exit 1
 } | grep 'ftp.*ftp.*\.xpi$' | awk -F'[. ]'  '{print $(NF-1)}' | tr '\n' ' '
+}
+
+ls_lang () {
+curl "http://ftp.mozilla.org/pub/firefox/releases/${pkgver}/linux-i686/xpi/" | tr '"' '\n' | grep xpi$ | sed 's/\.xpi//g'
 }
 
 prepare() {
