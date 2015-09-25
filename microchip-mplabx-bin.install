@@ -6,10 +6,17 @@ post_install() {
 Before using MPLAB X you have to agree with LICENSE:
 /usr/share/licenses/microchip-mplabx-bin/LICENSE
 
-To run MPLAB X type 'mplab_ide' in console or just use the 'microchip-mplabx.desktop' desktop file.
+To run MPLAB X, type 'mplab_ide' in console or just use the 'microchip-mplabx.desktop' desktop file.
 
-To run (IPE) Integrated Programmer Environment (Beta) type 'mplab_ipe' in console or just use the 'microchip-mplab_ipe.desktop' desktop file.
+To run (IPE) Integrated Programmer Environment, type 'mplab_ipe' in console or just use the 'microchip-mplab_ipe.desktop' desktop file.
 ---------------------------------------------------------"
+
+if [[ ! -f "/usr/lib/jvm/default-runtime/lib/ext/jfxrt.jar" ]]; then
+  echo
+  echo "WARNING: JavaFX is not installed in your default Java installation. MPLAB X will not work."
+  echo "Perhaps you should install java-openjfx ?"
+  echo
+fi
 }
 
 post_upgrade() {

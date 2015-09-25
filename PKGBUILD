@@ -1,98 +1,127 @@
-# Maintainer: Peter Ivanov <ivanovp@gmail.com>
+# Maintainer: mickael9 <mickael9 at gmail dot com>
+# Contributor: Peter Ivanov <ivanovp@gmail.com>
 # Contributor: joat
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
-url=http://www.microchip.com/mplabx
+url='http://www.microchip.com/mplabx'
 license=(custom)
-depends=(gtk2 alsa-lib libxslt libxtst desktop-file-utils jdk7-openjdk)
+depends=(gtk2 alsa-lib libxslt libxtst desktop-file-utils "java-runtime>=7")
+depends_x86_64=(lib32-glibc lib32-fakeroot)
 makedepends=(fakechroot)
-depends_x86_64+=(lib32-glibc lib32-fakeroot)
 optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs'
             'microchip-mplabxc16-bin: C compiler for PIC24 MCUs and dsPIC DSCs'
             'microchip-mplabxc32-bin: C Compiler for PIC32 MCUs'
             'microchip-mplabc18_bin: C compiler for PIC18 MCUs'
-            'sdcc: C compiler for PIC16/18 MCUs')
+            'sdcc: C compiler for PIC16/18 MCUs'
+            'java-openjfx: required JavaFX package for OpenJDK users'
+            )
 provides=(mplab)
 conflicts=(mplab)
 options=(!strip docs libtool emptydirs !zipman !upx)
-PKGEXT='.pkg.tar'
-install=$pkgname.install
-instdir=/opt/microchip/mplabx
-installer_tar=MPLABX-v$pkgver-linux-installer.tar
-installer_sh=MPLABX-v$pkgver-linux-installer.sh
-installer=MPLABX-v$pkgver-linux-installer.run
-installer2=MPLABCOMM-v$pkgver-linux-installer.run
-source=(http://ww1.microchip.com/downloads/en/DeviceDoc/$installer_tar
-        LICENSE)
-source_x86_64+=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
+install="${pkgname}.install"
+
+_mplabx_dir="/opt/microchip/mplabx/v${pkgver}"
+_mplabcomm_dir="/opt/microchip/mplabcomm/v${pkgver}"
+_mplabx_installer="MPLABX-v${pkgver}-linux-installer"
+_mplabcomm_installer="MPLABCOMM-v${pkgver}-linux-installer"
+
+source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.tar"
+        "LICENSE")
+source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
 md5sums=('7746910503fd9a01152d43b649cca211'
          'a34a85b2600a26f1c558bcd14c2444bd')
-md5sums_x86_64+=('92b9a1dc8fa0534048790731a7bf2fc5')
+md5sums_x86_64=('92b9a1dc8fa0534048790731a7bf2fc5')
+
+backup=("${_mplabx_dir:1}/mplab_ide/etc/mplab_ide.conf")
+
+PKGEXT='.pkg.tar'
 
 package() {
-  cd $srcdir
+  mkdir -p "${pkgdir}"/{etc,usr/{bin,lib},tmp}
 
-  mkdir -p $pkgdir/{bin,etc,usr/{bin,lib,local/lib},usr/local/lib,tmp}
+  # Create a fake chroot in $pkgdir to run installers into
+  ln -s /usr/bin "${pkgdir}/"
 
-  ln -s /bin/bash $pkgdir/bin/
-  ln -s /bin/sh $pkgdir/bin/
-  ln -s /usr/bin/find $pkgdir/usr/bin/
+  echo "root:x:0:0:root:/root:/bin/bash" > "${pkgdir}/etc/passwd"
+  echo "root:x:0:root" > "${pkgdir}/etc/group"
 
-  echo "root:x:0:0:root:/root:/bin/bash" > $pkgdir/etc/passwd
-  echo "root:x:0:root" > $pkgdir/etc/group
+  echo "Extracting installers..."
+  sh ${_mplabx_installer}.sh --tar xf
+  mv ${_mplabx_installer}.run ${_mplabcomm_installer}.run "${pkgdir}/tmp"
+  chmod 0755 "${pkgdir}/tmp/${_mplabx_installer}.run"
+  chmod 0755 "${pkgdir}/tmp/${_mplabcomm_installer}.run"
 
-  echo Extracting installer from the buggy shell script...
-# dd if=$installer_sh of=$installer.tar.gz skip=15067 bs=1 count=1036093 # This is slow because block size is 1 byte
-# dd if=$installer_sh of=$installer.tmp skip=1 bs=1M
-# cat $installer.tmp >>$installer.tar.gz
-# tar xvzf $installer.tar.gz
-# rm $installer.tmp $installer.tar.gz
-  sh $installer_sh --tar xvf
-  cp $srcdir/$installer $pkgdir/
-  cp $srcdir/$installer2 $pkgdir/
-  chmod 0755 $pkgdir/$installer
-  chmod 0755 $pkgdir/$installer2
+  # Create install script
+  cat << EOF > "${pkgdir}/tmp/install.sh"
+#!/bin/sh
+LD_LIBRARY_PATH="${srcdir}/usr/lib/libfakeroot/fakechroot:\$LD_LIBRARY_PATH"
+PATH=/bin
+echo Running MPLABX installer...
+tmp/${_mplabx_installer}.run --mode unattended >/dev/null
+echo Running MPLABCOMM installer...
+tmp/${_mplabcomm_installer}.run --mode unattended >/dev/null
+EOF
 
-  echo -e "\n\n\n\n\n\n\n\n\n\ny\n\ny\ny\ny\n\n" > $pkgdir/inst_input
-  echo -e "\n\n\n" > $pkgdir/inst_input2
+  chmod 0755 "${pkgdir}/tmp/install.sh"
 
-  echo "#!/bin/bash
-  LD_LIBRARY_PATH=$srcdir/usr/lib/libfakeroot/fakechroot:\$LD_LIBRARY_PATH
-  #./$installer2 --mode text --installdir /opt/microchip/mplabcomm1.0 < inst_input2 &> /dev/null || true
-  ./$installer --mode text < inst_input &> /dev/null || true"> $pkgdir/chroot_input.sh
-#  ./$installer --mode text < inst_input || true"> $pkgdir/chroot_input.sh
-  chmod 0755 $pkgdir/chroot_input.sh
+  # Run installers in the fake chroot
+  fakechroot chroot "${pkgdir}" tmp/install.sh
 
-  echo -e "Creating the Package\n  Please wait..."
+  # Remove uninstaller
+  rm -f "${pkgdir}${_mplabx_dir}"/Uninstall_*
 
-  export FAKECHROOT_CMD_SUBST=/usr/bin/ldconfig=$srcdir/fake_ldconfig.sh
-  fakechroot chroot $pkgdir ./chroot_input.sh
+  # Fix ugly fonts
+  sed -i 's/^default_options="/default_options="-J-Dawt.useSystemAAFontSettings=on /' "${pkgdir}${_mplabx_dir}/mplab_ide/etc/mplab_ide.conf"
 
-  sed -i 's|#jdkhome="/path/to/jdk"|jdkhome=/usr/lib/jvm/java-7-openjdk/|g' $pkgdir$instdir/v$pkgver/mplab_ide/etc/mplab_ide.conf
-  sed -i 's|#jdkhome="/path/to/jdk"|jdkhome=/usr/lib/jvm/java-7-openjdk/|g' $pkgdir$instdir/v$pkgver/mplab_ipe/mplab_ipe
-  sed -i 's|\"$jdkhome\"bin/java -jar \"$jdkhome\"/../../../mplab_ipe/ipe.jar|\"$jdkhome\"bin/java -jar '$instdir'/v'$pkgver'/mplab_ipe/ipe.jar|g' $pkgdir$instdir/v$pkgver/mplab_ipe/mplab_ipe
+  # Patch jdkhome to use system JRE
+  local conf
+  for conf in mplab_ipe/mplab_ipe mplab_ipe/ipecmd.sh mplab_ide/etc/mplab_ide.conf; do
+    sed -i '/^jdkhome=/c \jdkhome=/usr/lib/jvm/default-runtime/' "${pkgdir}${_mplabx_dir}/${conf}"
+  done
+  sed -i '/^"$jdkhome"bin\/java/c\ java -jar '${_mplabx_dir}'/mplab_ipe/ipe.jar' "${pkgdir}${_mplabx_dir}/mplab_ipe/mplab_ipe"
 
-  rm $pkgdir/{chroot_input.sh,inst_input,inst_input2,$installer,$installer2,etc/{group,passwd}}
-  rm -r $pkgdir/{bin,tmp,usr/bin/find}
+  # Remove bundled JRE
+  rm -rf "${pkgdir}${_mplabx_dir}/sys"
 
-  ln -s $instdir/v$pkgver/mplab_ide/bin/mplab_ide $pkgdir/usr/bin/mplab_ide
-  ln -s $instdir/v$pkgver/mplab_ipe/mplab_ipe $pkgdir/usr/bin/mplab_ipe
-  ln -s $instdir/../mplabcomm/v$pkgver/lib/libmchpusb-1.0.so.0.0.0 $pkgdir/usr/lib/libmchpusb-1.0.so
-  ln -s $instdir/../mplabcomm/v$pkgver/lib/mchplinusbdevice $pkgdir/etc/.mplab_ide
-  ln -s $instdir/../mplabcomm/v$pkgver/lib/libUSBAccessLink.so $pkgdir/usr/lib/libUSBAccessLink.so
-  ln -s $instdir/../mplabcomm/v$pkgver/lib/libSerialAccessLink.so $pkgdir/usr/lib/libSerialAccessLink.so
- 
-  echo "StartupWMClass=MPLAB X IDE v$pkgver" >> $pkgdir/usr/share/applications/mplab.desktop
-  echo 'StartupWMClass=com-microchip-ipe-ui-ProdProgrammerApp' >> $pkgdir/usr/share/applications/mplab_ipe.desktop
+  # Move libs away from /usr/local/lib
+  mv "${pkgdir}"/usr/local/lib/*.so{,.*} "${pkgdir}"/usr/lib/
+  rm -rf "${pkgdir}/usr/local/"
 
-  rm -f $pkgdir$instdir/Uninstall*
+  # Symlink executables
+  ln -sf "${_mplabx_dir}"/mplab_ide/bin/mplab_ide "${pkgdir}/usr/bin/"
+  ln -sf "${_mplabx_dir}"/mplab_ipe/mplab_ipe "${pkgdir}/usr/bin/"
+  ln -sf "${_mplabcomm_dir}/lib/mchplinusbdevice" "${pkgdir}/etc/.mplab_ide/"
 
-  install -Dm 644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  # Symlink libs from MPLABCOMM
+  local lib
+  for lib in "${pkgdir}${_mplabcomm_dir}"/lib/*.so{,.*}; do
+    local bname=$(basename "$lib")
+    ln -sf "${_mplabcomm_dir}/lib/${bname}"  "${pkgdir}/usr/lib/"
+  done
+
+  # Correctly link .so.* -> .so for all libs
+  for lib in "${pkgdir}"/usr/lib/*.so.*; do
+    local bname=$(basename "$lib")
+    local soname=${bname%.so.*}
+    ln -sf ${bname} "${pkgdir}/usr/lib/${soname}.so"
+  done
+
+  # Tweak .desktop files for better desktop integration
+  echo "StartupWMClass=MPLAB X IDE v${pkgver}" >> "${pkgdir}/usr/share/applications/mplab.desktop"
+  echo "StartupWMClass=com-microchip-ipe-ui-ProdProgrammerApp" >> "${pkgdir}/usr/share/applications/mplab_ipe.desktop"
+
+  # Install license files
+  install -Dm 644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "${pkgdir}${_mplabcomm_dir}/MPLABCOMMLicense.txt" "${pkgdir}/usr/share/licenses/${pkgname}/MPLABCOMMLicense.txt"
+
+  # Cleanup
+  rm "${pkgdir}"/{bin,etc/{group,passwd}}
+  rm -r "${pkgdir}/tmp"
 }
 
