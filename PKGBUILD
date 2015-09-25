@@ -9,7 +9,7 @@ license=('LGPL3')
 groups=()
 depends=(postfix dovecot nginx)
 makedepends=()
-optdepends=()
+optdepends=(yamado)
 provides=("portal")
 conflicts=()
 replaces=()
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$portal::git+https://github.com/orbifx/portal.git")
+source=("git+https://github.com/orbifx/portal.git")
 noextract=()
 sha512sums=(skip) #autofill using updpkgsums
 
