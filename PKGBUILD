@@ -2,11 +2,11 @@
 
 _plug=genericfilters
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=20140415.4eede12
+pkgver=r131.de02ff0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?p=1656901#post1656901"
+url='http://forum.doom9.org/showthread.php?p=1656901#post1656901'
 license=('LGPL2.1')
 depends=('vapoursynth')
 makedepends=('git')
@@ -17,7 +17,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+  #echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -26,8 +27,9 @@ prepare() {
 
 build() {
   cd "${_plug}/src"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth" --extra-cflags="$(pkg-config --cflags vapoursynth)"
-  make
+  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
+              --extra-cflags="${CFLAGS} $(pkg-config --cflags vapoursynth)" \
+              --extra-ldflags="${LDFLAGS}"
 }
 
 package(){

@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-genericfilters-git
 	pkgdesc = Plugin for Vapoursynth: genericfilters (GIT version)
-	pkgver = 20140415.4eede12
+	pkgver = r131.de02ff0
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?p=1656901#post1656901
 	arch = i686
