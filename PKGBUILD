@@ -1,8 +1,8 @@
 # Maintainer: Mark Grimes <mgrimes at peculier.com>
 
-pkgname=perl-nagios-plugin
+pkgname=perl-monitoring-plugin
 pkgver=0.39
-pkgrel=1
+pkgrel=2
 pkgdesc="A family of perl modules to streamline writing Naemon, Nagios, Icinga or Shinken (and compatible) plugins."
 _dist=Monitoring-Plugin
 arch=('any')
