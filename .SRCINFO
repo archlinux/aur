@@ -1,0 +1,13 @@
+pkgbase = fcount
+	pkgdesc = Counts the number of files in a directory
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://git.z3bra.org/cgit.cgi/fcount
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	source = http://git.z3bra.org/cgit.cgi/fcount/snapshot/fcount-0.3.tar.bz2
+	md5sums = b5ad91c216eb3d0eddc9db7bf2e7ccb7
+
+pkgname = fcount
+
