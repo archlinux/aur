@@ -1,4 +1,4 @@
-# Maintainer: mojangsta <steamco/id/mojangsta>
+# Maintainer: mojangsta <MAINTAINERNAME at GOOGLE POSTAL SERVICE>
 pkgname=steambridge-git
 pkgver=0.0.2.g7cec53f
 pkgrel=1
