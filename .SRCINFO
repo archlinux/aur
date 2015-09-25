@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-removedirtvs-git
 	pkgdesc = Plugin for Vapoursynth: removedirtvs (GIT version)
-	pkgver = 20131120.ddc78e5
+	pkgver = r78.ddc78e5
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=169771
 	arch = i686
