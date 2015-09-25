@@ -2,12 +2,12 @@
 _name=modulegraph
 pkgname=python-modulegraph
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='determines a dependency graph between Python modules primarily by bytecode analysis for import statements'
 arch=('any')
 url="https://bitbucket.org/ronaldoussoren/modulegraph"
 license=('')
-depends=('python')
+depends=('python' 'python-altgraph')
 source=("https://pypi.python.org/packages/source/m/$_name/$_name-$pkgver.tar.gz")
 md5sums=('27abd74de3ec0e22ef129c1faa628bd5')
 

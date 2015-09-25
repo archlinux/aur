@@ -5,6 +5,7 @@ pkgbase = python-modulegraph
 	url = https://bitbucket.org/ronaldoussoren/modulegraph
 	arch = any
 	depends = python
+	depends = python-altgraph
 	source = https://pypi.python.org/packages/source/m/modulegraph/modulegraph-0.12.1.tar.gz
 	md5sums = 27abd74de3ec0e22ef129c1faa628bd5
 
