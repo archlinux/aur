@@ -1,0 +1,112 @@
+diff -rupN tty-clock/README tty-clock.new/README
+--- tty-clock/README	2015-09-25 03:03:01.706578574 +0200
++++ tty-clock.new/README	2015-09-25 03:09:08.303238521 +0200
+@@ -1,6 +1,7 @@
+ usage : tty-clock [-sctrvihDB] [-C [0-7]] [-f format]            
+     -s            Show seconds                                   
+-    -c            Set the clock at the center of the terminal    
++    -c            Set the clock at the center of the terminal   
++    -b            Disable borders      
+     -C [0-7]      Set the clock color                            
+     -t            Set the hour in 12h format                     
+     -u            Use UTC time
+diff -rupN tty-clock/ttyclock.c tty-clock.new/ttyclock.c
+--- tty-clock/ttyclock.c	2015-09-25 03:03:01.706578574 +0200
++++ tty-clock.new/ttyclock.c	2015-09-25 03:30:03.519882182 +0200
+@@ -89,7 +89,9 @@ init(void)
+                                  ttyclock->geo.w,
+                                  ttyclock->geo.x,
+                                  ttyclock->geo.y);
+-     box(ttyclock->framewin, 0, 0);
++     if(ttyclock->option.border) {
++          box(ttyclock->framewin, 0, 0);
++     }
+ 
+      /* Create the date win */
+      if (ttyclock->option.date)
+@@ -98,7 +100,9 @@ init(void)
+                                      ttyclock->geo.x + ttyclock->geo.h - 1,
+                                      ttyclock->geo.y + (ttyclock->geo.w / 2) -
+                                      (strlen(ttyclock->date.datestr) / 2) - 1);
+-          box(ttyclock->datewin, 0, 0);
++          if(ttyclock->option.border) {
++               box(ttyclock->datewin, 0, 0);
++          }
+           clearok(ttyclock->datewin, True);
+      }
+ 
+@@ -294,11 +298,15 @@ clock_move(int x, int y, int w, int h)
+                 ttyclock->geo.x + ttyclock->geo.h - 1,
+                 ttyclock->geo.y + (ttyclock->geo.w / 2) - (strlen(ttyclock->date.datestr) / 2) - 1);
+           wresize(ttyclock->datewin, DATEWINH, strlen(ttyclock->date.datestr) + 2);
+-          box(ttyclock->datewin,  0, 0);
++          if(ttyclock->option.border) {
++               box(ttyclock->datewin, 0, 0);
++          }
+           wrefresh(ttyclock->datewin);
+      }
+ 
+-     box(ttyclock->framewin, 0, 0);
++     if(ttyclock->option.border) {
++          box(ttyclock->framewin, 0, 0);
++     }
+      wrefresh(ttyclock->framewin);
+ 
+      return;
+@@ -462,18 +470,21 @@ main(int argc, char **argv)
+      ttyclock->option.color = COLOR_GREEN; /* COLOR_GREEN = 2 */
+      /* Default delay */
+      ttyclock->option.delay = 40000000; /* 25FPS */
++     /* Default border */
++     ttyclock->option.border = True;
+      /* Default blink */
+      ttyclock->option.blink = False;
+ 
+-     while ((c = getopt(argc, argv, "utvsrcihf:DBd:C:")) != -1)
++     while ((c = getopt(argc, argv, "utvsrcbihf:DBd:C:")) != -1)
+      {
+           switch(c)
+           {
+           case 'h':
+           default:
+-               printf("usage : tty-clock [-sctrvihDB] [-C [0-7]] [-f format]            \n"
++               printf("usage : tty-clock [-scbtrvihDB] [-C [0-7]] [-f format]            \n"
+                       "    -s            Show seconds                                   \n"
+                       "    -c            Set the clock at the center of the terminal    \n"
++                      "    -b            Disable borders                                \n"
+                       "    -C [0-7]      Set the clock color                            \n"
+                       "    -t            Set the hour in 12h format                     \n"
+                       "    -u            Use UTC time                                   \n"
+@@ -509,6 +520,9 @@ main(int argc, char **argv)
+           case 'c':
+                ttyclock->option.center = True;
+                break;
++          case 'b':
++               ttyclock->option.border = False;
++               break;
+           case 'C':
+                if(atoi(optarg) >= 0 && atoi(optarg) < 8)
+                     ttyclock->option.color = atoi(optarg);
+diff -rupN tty-clock/ttyclock.h tty-clock.new/ttyclock.h
+--- tty-clock/ttyclock.h	2015-09-25 03:03:01.706578574 +0200
++++ tty-clock.new/ttyclock.h	2015-09-25 03:35:20.519876372 +0200
+@@ -61,14 +61,15 @@ typedef struct
+      struct
+      {
+           Bool second;
+-          Bool twelve;
+           Bool center;
+-          Bool rebound;
+-          Bool date;
++	  Bool border;
++          int color;
++          Bool twelve;
+           Bool utc;
++          Bool rebound;
+           char *format;
+-          int color;
+           long delay;
++          Bool date;
+           Bool blink;
+      } option;
+ 

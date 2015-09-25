@@ -1,15 +1,17 @@
 pkgbase = tty-clock-borderless
-	pkgdesc = fork of tty-clock with borderless-option
+	pkgdesc = tty-clock with borderless-option
 	pkgver = 0.1
-	pkgrel = 1
-	url = http://github.com/drikin/tty-clock
+	pkgrel = 2
+	url = http://github.com/xorg62/tty-clock
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = ncurses
-	source = git://github.com/drikin/tty-clock.git
+	source = git://github.com/xorg62/tty-clock.git#tag=v0.1
+	source = tty-clock-borderless.patch
 	md5sums = SKIP
+	md5sums = 9b81ff67153aa2678e31fd90622bb68d
 
 pkgname = tty-clock-borderless
 
