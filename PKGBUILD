@@ -4,7 +4,7 @@
 # This package is based on the gog-terraria package and the gog-freedom-planet package from Ainola.
 
 pkgname=gog-shovel-knight
-pkgver=2.4.0.6
+pkgver=2.5.0.7
 pkgrel=1
 pkgdesc='Yacht Club Games'
 arch=("i686" "x86_64")
@@ -12,8 +12,8 @@ url='http://www.gog.com/game/shovel_knight'
 license=('custom:commercial')
 depends=('sdl2')
 groups=('games')
-source=("${pkgname//-/_}_${pkgver}.sh" "${pkgname}.desktop")
-sha512sums=('9532f25c4f599dbbd21609c496b86831e1f78cf1ba6847482ebba396e4b073f7477e57e0c94bad92661999af3fc49bf1950b0e9687946a716fdfbd80cb145bf4'
+source=("gog://${pkgname//-/_}_${pkgver}.sh" "${pkgname}.desktop")
+sha512sums=('0aa037055fb440bbeec79f2bc3b743a9b145297921677fb4355d055801d2e5be8aadd6ac83b751ac0fa10fd13b30cd255ce5b867c321d3074a2b1021d85af1f7'
             'a30a86d218c1249aef5e4f8116d90b61913c74a0bb0629ef1a04c3736d2a3d1960d6b28d562aa83bbc49383594c55de346f9e1893e222e50bba6ebe0d8cd43fc')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
