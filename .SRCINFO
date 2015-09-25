@@ -1,6 +1,6 @@
 pkgbase = elektra-git
 	pkgdesc = A universal hierarchical configuration store. (GIT version)
-	pkgver = 0.8.12.150.g86b3797
+	pkgver = 0.8.13.36.g618d73f
 	pkgrel = 1
 	url = https://github.com/ElektraInitiative/libelektra
 	arch = i686
@@ -17,6 +17,8 @@ pkgbase = elektra-git
 	makedepends = lua52
 	makedepends = python
 	makedepends = python2
+	makedepends = gobject-introspection
+	makedepends = ruby-ronn
 	depends = qt5-declarative
 	depends = yajl
 	depends = augeas

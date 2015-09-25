@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=elektra-git
-pkgver=0.8.12.150.g86b3797
+pkgver=0.8.13.36.g618d73f
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://github.com/ElektraInitiative/libelektra'
 license=('BSD')
 depends=('qt5-declarative' 'yajl' 'augeas' 'discount')
-makedepends=('git' 'cmake' 'boost' 'docbook-xsl' 'texlive-latexextra' 'texlive-fontsextra' 'tcl' 'python2-cheetah' 'lua52' 'python' 'python2')
+makedepends=('git' 'cmake' 'boost' 'docbook-xsl' 'texlive-latexextra' 'texlive-fontsextra' 'tcl' 'python2-cheetah' 'lua52' 'python' 'python2' 'gobject-introspection' 'ruby-ronn')
 optdepends=('lua52: Lua bindings'
             'python: Python 3 bindings'
             'python2: Python 2 bindings')
