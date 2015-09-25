@@ -1,0 +1,16 @@
+pkgbase = ruby-babel-transpiler
+	pkgdesc = Ruby Babel JS Compiler
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/babel/ruby-babel-transpiler
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-babel-source
+	depends = ruby-execjs
+	noextract = babel-transpiler-0.7.0.gem
+	source = https://rubygems.org/downloads/babel-transpiler-0.7.0.gem
+	sha256sums = 4c06f4ad9e8e1cabe94f99e11df2f140bb72aca9ba067dbb49dc14d9b98d1570
+
+pkgname = ruby-babel-transpiler
+
