@@ -19,7 +19,7 @@ install=
 changelog=
 source=("git+https://github.com/orbifx/portal.git")
 noextract=()
-sha512sums=(skip) #autofill using updpkgsums
+sha512sums=('SKIP') #autofill using updpkgsums
 
 build() {
 #  cd "$pkgname-$pkgver"

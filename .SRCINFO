@@ -11,7 +11,7 @@ pkgbase = portal
 	optdepends = yamado
 	provides = portal
 	source = git+https://github.com/orbifx/portal.git
-	sha512sums = skip
+	sha512sums = SKIP
 
 pkgname = portal
 
