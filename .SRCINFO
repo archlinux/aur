@@ -1,7 +1,7 @@
 pkgbase = emacs-make-regexp
 	pkgdesc = Generate efficient regexps to match strings in emacs
 	pkgver = 1.02
-	pkgrel = 1
+	pkgrel = 2
 	url = http://svn.r-project.org/ESS/trunk/lisp/make-regexp.el
 	arch = any
 	license = GPL
