@@ -73,7 +73,7 @@ sha256sums=('SKIP'
             '96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1'
             'f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d'
             '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
-            '187dd4479fcda313d64415e02687acde66e018fe0be55b9f9e9d117f701d303d'
+            '236adfd42be0a7a74f2dec1356e517442b2ddcbb5d44cb0dab3671b6fddfca79'
             '865c1f259d9c544861cc12b4ea64ad35ec6388c1392b3e5247eaed0f316e42b7'
             '9912dcfc8f30143b68e6f9c51505ae921100eb6b24690a8680582bb23559d95a'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
@@ -263,9 +263,10 @@ package() {
     install -dm700 "$pkgdir"/run/freenet
     install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,tmp,plugins/data,user/{data,certs}}
 
-    install -m640 "$srcdir"/{wrapper.config,run.sh,seednodes.fref,IpToCountry.dat} \
+    install -m640 "$srcdir"/{wrapper.config,run.sh,IpToCountry.dat} \
                                                                 "$pkgdir"/opt/freenet
     install -m640 "$srcdir"/freenet.ini                         "$pkgdir"/opt/freenet/conf
+    install -m640 "$srcdir"/seednodes.fref                      "$pkgdir"/opt/freenet/conf/noderef
     install -m640 contrib/freenet-ext/dist/freenet-ext.jar \
                   dist/freenet.jar                         \
                   lib/bcprov.jar                                "$pkgdir"/opt/freenet/lib
