@@ -1,57 +1,52 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: rtfreedman  <rob<d0t>til<d0t>freedman< T>googlemail<d0t>com>
-#
-pkgname=exmplayer-git
-pkgver=92.1ccb1ac
-pkgrel=1
-url='http://exmplayer.sourceforge.net/'
-pkgdesc='MPlayer GUI with thumbnail seeking, 3D Video support, ... (git version)'
-license=('GPL')
-#
-arch=('i686' 'x86_64')
-depends=('mplayer')
-makedepends=('git')
-#
-provides=('exmplayer')
-conflicts=('exmplayer')
-#
-install="${pkgname}.install"
 
-source=("exmplayer-git::git+https://github.com/rupeshs/ExMplayer.git")
-		
+_pkgname=exmplayer
+pkgname=$_pkgname-git
+pkgver=5.0.1.r2.g1ccb1ac
+pkgrel=1
+pkgdesc="MPlayer GUI front-end with 3D/2D video playback support and with audio converter, media cutter and audio extractor tools"
+arch=('i686' 'x86_64')
+url='http://exmplayer.sourceforge.net/'
+license=('GPL')
+depends=('ffmpeg' 'mplayer' 'qt4')
+optdepends=('youtube-dl: download video/audio')
+makedepends=('git')
+provides=($_pkgname)
+conflicts=($_pkgname)
+install=$pkgname.install
+source=($pkgname::git+https://github.com/rupeshs/ExMplayer.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
-}
-
-prepare() {
-	cd "${pkgname}"
-#	patch -p0 -i "$srcdir/qtlocalpeer.patch"
-#	sed -i 's/QMAKE=qmake/QMAKE=qmake-qt4/' Makefile
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}/src"
+  cd $pkgname/src
   qmake-qt4
   make 
 }
 
 package() {
-  cd "${pkgname}"
-  install -Dm755 src/exmplayer "$pkgdir"/usr/bin/exmplayer
+  cd $pkgname
+
+  install -Dm644 debian/exmplayer.png "$pkgdir/usr/share/pixmaps/exmplayer.png"
+
+  install -Dm644 exmplayer.desktop "$pkgdir/usr/share/applications/exmplayer.desktop"
+  install -Dm644 exmplayer_enqueue.desktop "$pkgdir/usr/share/applications/exmplayer_enqueue.desktop"
+
+  install -Dm644 linux_build/fmts "$pkgdir/etc/exmplayer/fmts"
+  install -Dm644 linux_build/sc_default.xml "$pkgdir/etc/exmplayer/sc_default.xml"
+
+  install -Dm755 src/exmplayer "$pkgdir/usr/bin/exmplayer"
+
+  # Use installed ffmpeg 
+  install -dm755 "$pkgdir/usr/share/exmplayer"
+  ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/exmplayer/ffmpeg"
   #
-  install -dm755 "$pkgdir"/usr/share/applications
-  install -m644 exmplayer.desktop exmplayer_enqueue.desktop "$pkgdir"/usr/share/applications
-  install -Dm644 debian/exmplayer.png "$pkgdir"/usr/share/pixmaps/exmplayer.png
-  #
-  install -dm755 "$pkgdir"/etc/exmplayer
-  install -m644 linux_build/{sc_default.xml,fmts} "$pkgdir"/etc/exmplayer
-  #
-  install -dm755 "$pkgdir"/usr/share/exmplayer
-  # use native installed ffmpeg 
-  ln -s /usr/bin/ffmpeg  "$pkgdir"/usr/share/exmplayer/ffmpeg
-  # or bundled ffmpeg
-  #install -m755 linux_build/ffmpeg "$pkgdir"/usr/share/exmplayer
+  # Or use bundled ffmpeg
+  #install -Dm755 linux_build/ffmpeg "$pkgdir/usr/share/exmplayer"
 }
+
