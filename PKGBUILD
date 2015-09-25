@@ -20,6 +20,9 @@ build() {
 
   cd $startdir/src/tspc-advanced
   make all target=linux || return 1
+}
+
+package() {
   install -D bin/gw6c -m 0755 $startdir/pkg/usr/sbin/tspc
 
   install -D man/man5/gw6c.conf.5 -m 0644 $startdir/pkg/usr/man/man5/tspc.conf.5
