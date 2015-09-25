@@ -92,7 +92,7 @@ package_lib32-nvidia-libgl-beta() {
 }
 
 package_lib32-nvidia-utils-beta() {
-  pkgdesc="NVIDIA driver utilities and libraries (32-bit, beta)"
+  pkgdesc="NVIDIA driver utilities and libraries (beta version) (32-bit)"
   depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('lib32-opencl-nvidia-beta: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver")

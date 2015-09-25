@@ -10,7 +10,7 @@ pkgbase = lib32-nvidia-utils-beta
 	md5sums_x86_64 = 16d143ccafe99328a2ca8e5a396fd4bc
 
 pkgname = lib32-nvidia-utils-beta
-	pkgdesc = NVIDIA driver utilities and libraries (32-bit, beta)
+	pkgdesc = NVIDIA driver utilities and libraries (beta version) (32-bit)
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	optdepends = lib32-opencl-nvidia-beta: OpenCL support
