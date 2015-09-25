@@ -1,0 +1,14 @@
+pkgbase = ruby-babel-source
+	pkgdesc = Babel JS source
+	pkgver = 5.8.26
+	pkgrel = 1
+	url = https://rubygems.org/gems/babel-source
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = babel-source-5.8.26.gem
+	source = https://rubygems.org/downloads/babel-source-5.8.26.gem
+	sha256sums = 7fa575c18695cdb508fee5d08de7f2acdcc8a9f73e6e241908c5c76f7723082e
+
+pkgname = ruby-babel-source
+
