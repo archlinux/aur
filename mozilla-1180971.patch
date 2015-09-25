@@ -1,0 +1,50 @@
+# HG changeset patch
+# User Andrew Comminos <acomminos@mozilla.com>
+
+Bug 1180971 - Fix X11 SHM invalidation regions on HiDPI with GTK3. r=karlt
+
+diff --git a/widget/gtk/nsWindow.cpp b/widget/gtk/nsWindow.cpp
+index 19b634e..064116c 100644
+--- a/widget/gtk/nsWindow.cpp
++++ b/widget/gtk/nsWindow.cpp
+@@ -2264,17 +2264,17 @@ nsWindow::OnExposeEvent(cairo_t *cr)
+                 ctx->SetOperator(gfxContext::OPERATOR_SOURCE);
+                 ctx->SetPattern(pattern);
+                 ctx->Paint();
+             }
+         }
+     }
+ #  ifdef MOZ_HAVE_SHMIMAGE
+     if (mShmImage && MOZ_LIKELY(!mIsDestroyed)) {
+-        mShmImage->Put(mGdkWindow, exposeRegion);
++        mShmImage->Put(mGdkWindow, region);
+     }
+ #  endif  // MOZ_HAVE_SHMIMAGE
+ #endif // MOZ_X11
+ 
+     listener->DidPaintWindow();
+ 
+     // Synchronously flush any new dirty areas
+ #if (MOZ_WIDGET_GTK == 2)
+@@ -6173,21 +6173,16 @@ nsWindow::EndRemoteDrawingInRegion(DrawTarget* aDrawTarget, nsIntRegion& aInvali
+   if (!mGdkWindow || mIsFullyObscured || !mHasMappedToplevel || mIsDestroyed ||
+       !mShmImage)
+     return;
+ 
+   if (mThebesSurface) {
+     aInvalidRegion.AndWith(nsIntRect(nsIntPoint(0, 0), mThebesSurface->GetSize()));
+   }
+ 
+-  gint scale = GdkScaleFactor();
+-  if (scale != 1) {
+-    aInvalidRegion.ScaleInverseRoundOut(scale, scale);
+-  }
+-
+   mShmImage->Put(mGdkWindow, aInvalidRegion);
+ 
+ #  endif // MOZ_HAVE_SHMIMAGE
+ #endif // MOZ_X11
+ }
+ 
+ // return the gfxASurface for rendering to this widget
+ gfxASurface*

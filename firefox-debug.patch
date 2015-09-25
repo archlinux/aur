@@ -1,0 +1,12 @@
+diff -up mozilla-release/browser/installer/package-manifest.in.old mozilla-release/browser/installer/package-manifest.in
+--- mozilla-release/browser/installer/package-manifest.in.old	2015-04-03 04:30:05.000000000 +0200
++++ mozilla-release/browser/installer/package-manifest.in	2015-04-07 13:17:44.180343700 +0200
+@@ -608,7 +608,7 @@
+ @RESPATH@/components/MozKeyboard.js
+ @RESPATH@/components/InputMethod.manifest
+ 
+-#ifdef MOZ_DEBUG
++#ifdef ENABLE_TESTS
+ @RESPATH@/components/TestInterfaceJS.js
+ @RESPATH@/components/TestInterfaceJS.manifest
+ #endif

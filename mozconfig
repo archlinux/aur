@@ -4,8 +4,8 @@ ac_add_options --prefix=/usr
 ac_add_options --libdir=/usr/lib
 
 ac_add_options --enable-default-toolkit=cairo-gtk3
-ac_add_options --without-system-nspr
-ac_add_options --without-system-nss
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
 ac_add_options --enable-release
 ac_add_options --enable-pie
 ac_add_options --with-system-zlib
@@ -13,7 +13,7 @@ ac_add_options --with-system-bz2
 ac_add_options --with-system-png
 ac_add_options --with-system-libvpx
 ac_add_options --enable-system-hunspell
-ac_add_options --enable-system-cairo
+ac_add_options --disable-system-cairo
 ac_add_options --enable-pango
 ac_add_options --enable-svg
 ac_add_options --enable-canvas
@@ -37,9 +37,7 @@ ac_add_options --disable-tests
 ac_add_options --disable-gio
 ac_add_options --disable-debug
 ac_add_options --enable-optimize
-ac_add_options --disable-debug-symbols
 ac_add_options --disable-updater
 ac_add_options --disable-installer
-ac_add_options --disable-crashreporter
 
 # vim:set ft=sh:

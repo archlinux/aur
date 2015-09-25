@@ -1,0 +1,33 @@
+# HG changeset patch
+# User Lee Salzman <lsalzman@mozilla.com>
+# Date 1438873323 14400
+#      Thu Aug 06 11:02:03 2015 -0400
+# Node ID 9ad90210cc51eb61d21230086b9acf5c8003aea0
+# Parent  abc56d57f6e1aebade48949fb557d26eae555df8
+fix race condition in gtk window EndRemoteDrawingInRegion
+
+diff --git a/widget/gtk/nsWindow.cpp b/widget/gtk/nsWindow.cpp
+--- a/widget/gtk/nsWindow.cpp
++++ b/widget/gtk/nsWindow.cpp
+@@ -6203,19 +6203,19 @@ nsWindow::StartRemoteDrawing()
+   }
+ }
+ 
+ void
+ nsWindow::EndRemoteDrawingInRegion(DrawTarget* aDrawTarget, nsIntRegion& aInvalidRegion)
+ {
+ #ifdef MOZ_X11
+ #  ifdef MOZ_HAVE_SHMIMAGE
+-  if (!mGdkWindow || mIsFullyObscured || !mHasMappedToplevel || mIsDestroyed ||
+-      !mShmImage)
++  if (!mGdkWindow || !mShmImage) {
+     return;
++  }
+ 
+   if (mThebesSurface) {
+     aInvalidRegion.AndWith(nsIntRect(nsIntPoint(0, 0), mThebesSurface->GetSize()));
+   }
+ 
+   mShmImage->Put(mGdkWindow, aInvalidRegion);
+ 
+ #  endif // MOZ_HAVE_SHMIMAGE

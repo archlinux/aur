@@ -1,0 +1,18 @@
+Based on https://github.com/google/skia/commit/b79ff56de23fef680ae7187040f2d6a9516b553d
+
+Index: mozilla-release/gfx/skia/trunk/src/core/SkUtilsArm.h
+===================================================================
+--- mozilla-release.orig/gfx/skia/trunk/src/core/SkUtilsArm.h
++++ mozilla-release/gfx/skia/trunk/src/core/SkUtilsArm.h
+@@ -21,9 +21,9 @@
+ #define SK_ARM_NEON_MODE_ALWAYS   1
+ #define SK_ARM_NEON_MODE_DYNAMIC  2
+ 
+-#if defined(SK_CPU_ARM32) && defined(__ARM_HAVE_OPTIONAL_NEON_SUPPORT)
++#if defined(__ARM_HAVE_OPTIONAL_NEON_SUPPORT)
+ #  define SK_ARM_NEON_MODE  SK_ARM_NEON_MODE_DYNAMIC
+-#elif defined(SK_CPU_ARM32) && defined(__ARM_HAVE_NEON) || defined(SK_CPU_ARM64)
++#elif defined(__ARM_HAVE_NEON)
+ #  define SK_ARM_NEON_MODE  SK_ARM_NEON_MODE_ALWAYS
+ #else
+ #  define SK_ARM_NEON_MODE  SK_ARM_NEON_MODE_NONE
