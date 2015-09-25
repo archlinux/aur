@@ -1,6 +1,6 @@
 pkgbase = awesome-revelation-git
-	pkgdesc = Show all clients per screen in Awesome window manager. This is version only working with master version of Awesome window manager. For stable version of awesome, 3.5.6, Please install awesome-revelation (current 3.5.6) instead.
-	pkgver = 2015.08.22.gc862f6d
+	pkgdesc = Show all clients per screen in Awesome window manager. It works for both stable and master version of Awesome.
+	pkgver = 2015.09.22.g6535c9c
 	pkgrel = 1
 	url = https://github.com/guotsuan/awesome-revelation.git
 	arch = any
