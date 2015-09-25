@@ -8,12 +8,11 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=169771'
 license=('GPL')
-depends=('vapoursynth')
+depends=('vapoursynth-plugin-scoll-git')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/handaimaoh/${_plug}.git"
-        'removedirtvs.py')
+source=("git+https://github.com/handaimaoh/${_plug}.git")
 sha1sums=('SKIP'
           'bf3826d8944b135c0f32fbfc5e21de35718a2c33')
 
@@ -38,5 +37,4 @@ build() {
 
 package() {
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
-  install -Dm644 removedirtvs.py "${pkgdir}${_sites_packages}/removedirtvs.py"
 }

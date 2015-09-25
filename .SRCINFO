@@ -7,11 +7,10 @@ pkgbase = vapoursynth-plugin-removedirtvs-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = vapoursynth
+	depends = vapoursynth-plugin-scoll-git
 	provides = vapoursynth-plugin-removedirtvs
 	conflicts = vapoursynth-plugin-removedirtvs
 	source = git+https://github.com/handaimaoh/removedirtvs.git
-	source = removedirtvs.py
 	sha1sums = SKIP
 	sha1sums = bf3826d8944b135c0f32fbfc5e21de35718a2c33
 
