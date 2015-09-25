@@ -9,6 +9,9 @@ source=(https://github.com/AlexTuduran/Locator/releases/download/v0.1.1-alpha/Lo
 md5sums=('SKIP')
 
 package() {
+	cd ..
+	cp locator.desktop ${pkgdir}/usr/share/applications
+	cd src
 	cd "Locator-v${pkgver}-alpha"
 	mkdir -p ${pkgdir}/opt/locator/
 	cp locator ${pkgdir}/opt/locator/
