@@ -3,7 +3,7 @@
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
 
 pkgname=electrum-server-git
-pkgver=20150223
+pkgver=20150919
 pkgrel=1
 pkgdesc="Server to support Electrum python-based Bitcoin client"
 arch=('i686' 'x86_64')
@@ -87,7 +87,7 @@ package() {
 
   msg 'Fixing binaries...'
   rm -f "$pkgdir/usr/bin/electrum-server"
-  mv "$pkgdir/usr/bin/run_electrum_server" "$pkgdir/usr/bin/electrum-server"
+  mv "$pkgdir/usr/bin/run_electrum_server.py" "$pkgdir/usr/bin/electrum-server"
 
   msg 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +

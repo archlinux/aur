@@ -1,6 +1,6 @@
 pkgbase = electrum-server-git
 	pkgdesc = Server to support Electrum python-based Bitcoin client
-	pkgver = 20150223
+	pkgver = 20150919
 	pkgrel = 1
 	url = https://github.com/spesmilo/electrum-server
 	install = electrum-server.install
