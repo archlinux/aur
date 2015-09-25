@@ -2,7 +2,7 @@
 
 _pkgname=tint3
 pkgname=${_pkgname}
-pkgver=194
+pkgver=195
 pkgrel=1
 pkgdesc='An independant status bar for X11 (works best with bspwm)'
 arch=('x86_64')
