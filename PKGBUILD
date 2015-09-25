@@ -1,4 +1,4 @@
-# Maintainer: Andrew Chen <llkiwi2006@gmail.com>
+# Maintainer: Andrew Chen <andrew.chuanye.chen@gmail.com>
 # Contributor: mmm
 # Contributor: Dan McGee <dan@archlinux.org>
 
