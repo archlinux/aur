@@ -2,7 +2,7 @@
 # Contributor: Nathan Owe. <ndowens04 at gmail>
 
 pkgname=newsfeed
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="An RSS/RDF/Atom reader and aggregator"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-pyaudio: for audio notifications (recommended)'
 source=("http://mdoege.github.io/3NewsFeed/NewsFeed-$pkgver.tar.gz"
         "newsfeed.desktop"
         "newsfeed.png")
-md5sums=('035dbfbbd70667b93b798ddf6ac42b26'
+md5sums=('140920b20afdbe867d828b0e01678107'
          'bf9de50dadb523f9dd4599eb1d852bf5'
          '934bc285373e953a21cbf1a4b17888ca')
 
