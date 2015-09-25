@@ -3,7 +3,7 @@
 pkgname='mozart2'
 pkgver='2.0.0'
 pkgrel=1
-pkgdesc='The Mozart Programming System is an open source implementation of Oz 3.'
+pkgdesc='An open source implementation of Oz 3.'
 arch=('x86_64' 'i386')
 url='https://github.com/mozart/mozart2'
 license=('BSD')

@@ -1,5 +1,5 @@
 pkgbase = mozart2
-	pkgdesc = The Mozart Programming System is an open source implementation of Oz 3.
+	pkgdesc = An open source implementation of Oz 3.
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/mozart/mozart2
