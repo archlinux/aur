@@ -1,0 +1,16 @@
+pkgbase = nodejs-npm-cache
+	pkgdesc = A command line utility that caches dependencies installed via npm.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://gruntjs.com/
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = npm-cache-0.3.6.tgz
+	options = !emptydirs
+	source = https://registry.npmjs.org/npm-cache/-/npm-cache-0.3.6.tgz
+	sha256sums = bbbabeca8f985b91443731cfdec4a9ac31b3e58369f525fe13b0c00c6f71abc8
+
+pkgname = nodejs-npm-cache
+
