@@ -5,7 +5,7 @@
 pkgname=nvidia-beta-all
 pkgver=355.11
 pkgrel=1
-pkgdesc="NVIDIA drivers for all kernels (beta)"
+pkgdesc="NVIDIA drivers for all kernels on the system (beta)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
