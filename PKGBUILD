@@ -52,7 +52,7 @@ prepare() {
 }
 
 package_opencl-nvidia-beta() {
-  pkgdesc="OpenCL implemention for NVIDIA (beta)"
+  pkgdesc="NVIDIA's OpenCL implemention for 'nvidia-utils-beta'"
   depends=('libcl' 'zlib')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=('opencl-nvidia')
@@ -73,7 +73,7 @@ package_opencl-nvidia-beta() {
 }
 
 package_nvidia-libgl-beta() {
-  pkgdesc="NVIDIA library symlinks (beta)"
+  pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-beta'"
   depends=('nvidia-utils-beta')
   provides=('libgl' 'nvidia-libgl')
   conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
@@ -112,7 +112,7 @@ package_nvidia-libgl-beta() {
 }
 
 package_nvidia-utils-beta() {
-  pkgdesc="NVIDIA libraries and utilities (beta)"
+  pkgdesc="NVIDIA driver utilities and libraries (beta version)"
   depends=('xorg-server')
   optdepends=('gtk2: nvidia-settings (GTK+ v2)'
               'gtk3: nvidia-settings (GTK+ v3)'
