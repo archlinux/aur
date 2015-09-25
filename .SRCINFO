@@ -17,7 +17,7 @@ pkgbase = nvidia-full-beta
 	md5sums_x86_64 = 30133d89690f4683c4e289ec6c0247dc
 
 pkgname = nvidia-full-beta
-	pkgdesc = NVIDIA drivers for linux (beta)
+	pkgdesc = Full NVIDIA driver package for Arch's official 'linux' package (driver, utilities, and libraries) (beta version)
 	install = nvidia-full-beta.install
 	depends = linux
 	depends = nvidia-utils-full-beta>=355.11
@@ -28,7 +28,7 @@ pkgname = nvidia-full-beta
 	conflicts = nvidia
 
 pkgname = nvidia-utils-full-beta
-	pkgdesc = NVIDIA libraries and utilities (beta)
+	pkgdesc = NVIDIA driver utilities and libraries for 'nvidia-full-beta'
 	install = nvidia-utils-full-beta.install
 	depends = xorg-server
 	optdepends = gtk2: nvidia-settings (GTK+ v2)
@@ -40,7 +40,7 @@ pkgname = nvidia-utils-full-beta
 	backup = etc/X11/xorg.conf.d/20-nvidia.conf
 
 pkgname = nvidia-libgl-full-beta
-	pkgdesc = NVIDIA library symlinks (beta)
+	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-full-beta'
 	depends = nvidia-utils-full-beta
 	provides = libgl
 	provides = nvidia-libgl
@@ -49,7 +49,7 @@ pkgname = nvidia-libgl-full-beta
 	conflicts = mesa<10.1.0-2
 
 pkgname = opencl-nvidia-full-beta
-	pkgdesc = OpenCL implemention for NVIDIA (beta)
+	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-full-beta'
 	depends = libcl
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
