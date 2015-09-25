@@ -1,11 +1,10 @@
 pkgbase = pipexec-git
-	pkgdesc = Handling pipe of commands like a single command
+	pkgdesc = Connector of arbitrary file descriptors
 	pkgver = 2.5.4.g5e524f3
 	pkgrel = 1
 	url = http://github.com/flonatel/pipexec
 	arch = any
 	license = GPL2
-	makedepends = git
 	provides = pipexec
 	source = git://github.com/flonatel/pipexec.git
 	md5sums = SKIP

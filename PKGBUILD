@@ -1,8 +1,8 @@
-# Maintainer: mojangsta <steamco/id/mojangsta>
+# Maintainer: mojangsta <MAINTAINERNAME at GOOGLE POSTAL SERVICE>
 pkgname=pipexec-git
 pkgver=2.5.4.g5e524f3
 pkgrel=1
-pkgdesc="Connector of arbitrary processes' file descriptors"
+pkgdesc="Connector of arbitrary file descriptors"
 arch=('any')
 url="http://github.com/flonatel/pipexec"
 license=('GPL2')
