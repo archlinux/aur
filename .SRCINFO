@@ -1,0 +1,23 @@
+pkgbase = gnoduino
+	pkgdesc = An implementation of well-known Arduino IDE for GNOME
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://gnome.eu.org/index.php/Gnoduino
+	install = gnoduino.install
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = avr-libc
+	depends = avrdude
+	depends = avr-binutils
+	depends = avr-gcc
+	depends = pyxdg
+	depends = pygtksourceview2
+	depends = python2-pyserial
+	depends = python2-gconf
+	depends = desktop-file-utils
+	source = http://gnome.eu.org/gnoduino-0.5.2.tar.gz
+	md5sums = 6caa63fa49bf0ea766fd8d07408cc8af
+
+pkgname = gnoduino
+
