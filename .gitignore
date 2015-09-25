@@ -1,0 +1,9 @@
+*~
+*.xz
+*.tar
+*.tgz
+*.tar.gz
+*.tar.bz2
+src
+pkg
+*.tar.gz?format=raw
