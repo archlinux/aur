@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/xorg62/$gitname"
 license=('BSD')
 depends=('ncurses')
+conflicts=('tty-clock' 'tty-clock-git')
 makedepends=('git')
 source=("git://github.com/xorg62/$gitname.git#tag=v$pkgver"
 	$pkgname.patch)
