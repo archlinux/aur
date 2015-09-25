@@ -1,0 +1,13 @@
+pkgbase = wallpaper-archpaint2
+	pkgdesc = A Nice Archlinux Wallpaper
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://www.archlinux.org/
+	install = wallpaper-archpaint2.install
+	arch = any
+	license = CCPL:by-nc-sa
+	source = http://www.herecura.be/archlinux/wallpaper-archpaint2/wallpaper-archpaint2-1.1.tar.bz2
+	sha256sums = cf6b3e5da88525c51ef5bdd7beabd2f897bc9f946d46a4a8a5786a1a017f1a90
+
+pkgname = wallpaper-archpaint2
+
