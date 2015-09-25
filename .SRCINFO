@@ -1,13 +1,12 @@
 pkgbase = gnome-flashback
 	pkgdesc = GNOME Flashback session
-	pkgver = 3.16.1
-	pkgrel = 7
+	pkgver = 3.18.0
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	install = gnome-flashback.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gnome-common
 	makedepends = intltool
 	depends = gnome-desktop
 	depends = libcanberra
@@ -20,16 +19,9 @@ pkgbase = gnome-flashback
 	depends = metacity
 	depends = nautilus
 	depends = notification-daemon
-	depends = polkit-gnome
 	optdepends = compiz: required for the GNOME Flashback (Compiz) session
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-flashback/3.16/gnome-flashback-3.16.1.tar.xz
-	source = session-components.patch
-	source = workarounds.patch
-	source = gnome-screensaver-autostart.desktop
-	sha256sums = b5424a28b2de694ae9bd170b73dfc6da62358c0e3527631b92be9dc400b52f90
-	sha256sums = 046121b5fbb185c4736a62b909e74985f52c0f0ff4b8a17c5a26d84576bfa4c0
-	sha256sums = 985186169be8bd55e98fd710b353791a63759087ddc6eb50ff98dd3dcc5af7e9
-	sha256sums = f180a7372eeced8c892c59e2cc91af68cbd1ed06b1382d8ee50da7999a424e5c
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-flashback/3.18/gnome-flashback-3.18.0.tar.xz
+	sha256sums = 46d118a59057c5dbd003b97202cf3947ef2f1af383ddb5d13adf49846a4552aa
 
 pkgname = gnome-flashback
 
