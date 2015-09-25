@@ -1,9 +1,24 @@
 post_install() {
   ldconfig
+  
+  getent group mesos  &>/dev/null || groupadd -r -g 813 mesos >/dev/null
+  getent passwd mesos &>/dev/null || \
+   useradd -r -u 813 -g mesos -d /var/lib/mesos -c "Mesos system account" -s /bin/false mesos >/dev/null
 }
 
 post_upgrade() {
   ldconfig
+  
+  getent group mesos  &>/dev/null || groupadd -r -g 193 mesos >/dev/null
+  getent passwd mesos &>/dev/null || \
+   useradd -r -u 813 -g mesos -d /var/lib/mesos -c "Mesos system account" -s /bin/false mesos >/dev/null
+
+  chown -R 813:813 /var/lib/mesos
+}
+
+pre_remove() {
+  getent passwd mesos &>/dev/null &&  userdel mesos >/dev/null
+  getent  group mesos &>/dev/null && groupdel mesos >/dev/null
 }
 
 # vim:set ts=2 sw=2 et:
