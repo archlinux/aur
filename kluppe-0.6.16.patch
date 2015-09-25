@@ -1,0 +1,41 @@
+diff -aur kluppe-0.6.16/Makefile kluppe-0.6.16.patched/Makefile
+--- kluppe-0.6.16/Makefile       2014-09-26 16:28:17.000000000 +0200
++++ kluppe-0.6.16.patched/Makefile          2015-09-25 21:33:45.227821287 +0200
+@@ -1,6 +1,6 @@
+ CC = gcc
+ VERSION = `cat VERSION`
+-INSTALL_PREFIX = /usr/local
++INSTALL_PREFIX = /usr
+ BIN_DIR = $(INSTALL_PREFIX)/bin
+ PIXMAPS_DIR = $(INSTALL_PREFIX)/share/pixmaps
+ TEMP_ROOT = /tmp
+diff -aur kluppe-0.6.16/src/common/alphatrack.h kluppe-0.6.16.patched/src/common/alphatrack.h
+--- kluppe-0.6.16/src/common/alphatrack.h       2010-10-02 13:30:54.000000000 +0200
++++ kluppe-0.6.16.patched/src/common/alphatrack.h          2015-09-25 21:34:58.644964888 +0200
+@@ -8,15 +8,9 @@
+ #define __ALPHATRACK_H__
+ 
+ #include <pthread.h>
++#include <stdint.h>
+ #include <usb.h>
+-#ifndef __KERNEL__
+-#define uint32_t unsigned int
+-#define uint16_t unsigned short
+-#define uint8_t unsigned char
+-#define uint64_t unsigned long long
+-#else
+ #include <linux/types.h>
+-#endif
+ 
+ 
+ #define ALPHATRACK_VENDORID  0x165b
+diff -aur kluppe-0.6.16/src/frontend/kluppe/Makefile kluppe-0.6.16.patched/src/frontend/kluppe/Makefile
+--- kluppe-0.6.16/src/frontend/kluppe/Makefile       2013-06-24 18:54:19.000000000 +0200
++++ kluppe-0.6.16.patched/src/frontend/kluppe/Makefile          2015-09-25 21:36:42.002302839 +0200
+@@ -1,6 +1,6 @@
+ BIN_DIR = $(INSTALL_PREFIX)/bin
+ PIXMAPS_DIR = $(INSTALL_PREFIX)/share/pixmaps
+-MAN_DIR = $(INSTALL_PREFIX)/man/man1
++MAN_DIR = $(INSTALL_PREFIX)/share/man/man1
+ SOURCES = sfpreview.c configfile.c griddialog.c threshdialog.c graindialog.c customcurve.c looper.c gtkmeter.c gtkloopview.c kluppe.c alphatrack_callback.c
+ TARGETS = $(SOURCES:.c=.o)
