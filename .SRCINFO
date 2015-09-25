@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-base-static
 	pkgdesc = A cross-platform application and UI framework (mingw-w64)
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qt-project.org
 	arch = i686
 	arch = x86_64
@@ -63,7 +63,7 @@ pkgbase = mingw-w64-qt5-base-static
 	md5sums = 6a6bc88f35ac8080869de39bc128ce5b
 	md5sums = e793479e0b86b39ddafd328140f1a24c
 	md5sums = 40de3aaf7d713034e06f4eece665b1ba
-	md5sums = 1a7921cadeb5c3db383dea068519e8d3
+	md5sums = 4149c27286f110e37893d1764d4c8a68
 	md5sums = 6aea7182982098de045721f51bf20fc2
 	md5sums = a265dea62755caf38187114143999224
 	md5sums = 612a4dfb9f1a3898a1920c28bb999159

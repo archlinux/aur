@@ -3,7 +3,7 @@
 # Contributor: jellysheep <max.mail@dameweb.de>
 pkgname=mingw-w64-qt5-base-static
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 arch=(i686 x86_64)
 url="http://qt-project.org"
@@ -65,7 +65,7 @@ md5sums=('252613b5a180c94d7196d10467a4f08b'
          '6a6bc88f35ac8080869de39bc128ce5b'
          'e793479e0b86b39ddafd328140f1a24c'
          '40de3aaf7d713034e06f4eece665b1ba'
-         '1a7921cadeb5c3db383dea068519e8d3'
+         '4149c27286f110e37893d1764d4c8a68'
          '6aea7182982098de045721f51bf20fc2'
          'a265dea62755caf38187114143999224'
          '612a4dfb9f1a3898a1920c28bb999159'
@@ -211,6 +211,7 @@ build() {
       -system-libpng \
       -system-libjpeg \
       -system-sqlite \
+      -system-harfbuzz \
       -no-fontconfig \
       -iconv \
       -openssl \
