@@ -7,7 +7,8 @@ url="https://github.com/AlexTuduran/Locator"
 license=('Completely free')
 source=(https://github.com/AlexTuduran/Locator/releases/download/v$pkgver-alpha/Locator-v$pkgver-alpha.zip
 	Locator.desktop)
-md5sums=('SKIP')
+md5sums=('SKIP'
+	'SKIP')
 depends=('mlocate' 'gksu')
 
 package() {
