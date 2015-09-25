@@ -1,0 +1,14 @@
+pkgbase = ruby-sourcemap
+	pkgdesc = A Ruby library to read, create and manipulate Source Maps
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/maccman/sourcemap
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = sourcemap-0.1.1.gem
+	source = https://rubygems.org/downloads/sourcemap-0.1.1.gem
+	sha256sums = 889fc666bdf7182d09abff3461088547c0510d004dc47a73094f409cde0f2150
+
+pkgname = ruby-sourcemap
+
