@@ -1,11 +1,11 @@
-# ex-Maintainer: Evan Anderson <evananderson@thelinuxman.us>
 # Maintainer = Anty <anty_fab at hotmail dot fr>
+# ex-Maintainer: Evan Anderson <evananderson@thelinuxman.us>
 
 _gitname=grub-btrfs
 pkgname=$_gitname-git
-pkgver=v1.6.r6.g252a637-1
-pkgrel=2
-pkgdesc="grub-btrfs, add support for btrfs snapshots into grub menu"
+pkgver=v1.7.r6.g4388c33-1
+pkgrel=1
+pkgdesc="grub-btrfs, Include btrfs snapshots at boot options. (grub menu)"
 arch=('any')
 url="https://github.com/Antynea/grub-btrfs"
 license=('GPL3')
