@@ -1,0 +1,32 @@
+pkgbase = mpvhq-git
+	pkgdesc = General Purpose video player based on MPlayer and mplayer2, now with extra features by Niklas Haas.
+	pkgver = 42070.g407ce0e
+	pkgrel = 1
+	url = https://github.com/haasn/mpvhq
+	install = mpv.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = mesa
+	makedepends = python-docutils
+	makedepends = hardening-wrapper
+	depends = ffmpeg
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = youtube-dl: for video-sharing websites playback
+	provides = mpv
+	conflicts = mpv
+	options = !emptydirs
+	options = !buildflags
+	source = mpvhq::git+https://github.com/haasn/mpvhq
+	source = find-deps.py
+	sha256sums = SKIP
+	sha256sums = ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02
+
+pkgname = mpvhq-git
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+
