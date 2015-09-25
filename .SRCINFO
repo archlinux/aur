@@ -1,7 +1,7 @@
 pkgbase = mesos
 	pkgdesc = A cluster manager that simplifies the complexity of running applications on a shared pool of servers
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://mesos.apache.org/
 	install = mesos.install
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = mesos
 	depends = java-environment
 	depends = libunwind
 	depends = google-glog
-	depends = libnl
+	depends = libnl>=3.2.26
 	depends = apr
 	depends = subversion
 	depends = protobuf
@@ -37,9 +37,9 @@ pkgbase = mesos
 	source = mesos-slave.service
 	source = mesos.install
 	md5sums = aca9b00e53dc19f68ca939f2f0468acd
-	md5sums = da6ff9d8a2df96325bee325a957eb760
+	md5sums = f313fac94525bf770bafa2392c8147c6
 	md5sums = 69df716316170056ff2a54c5299d8cb4
-	md5sums = fe3a51b1e65c1b0e16a8b42a0398f30a
+	md5sums = 1447c9572f4bb8fbc22d016e4483950a
 
 pkgname = mesos
 
