@@ -1,4 +1,4 @@
-# Maintainer:  Andrew Chen <llkiwi2006@gmail.com>
+# Maintainer: Andrew Chen <andrew.chuanye.chen@gmail.com>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=kdeplasma-applets-gmailfeed
