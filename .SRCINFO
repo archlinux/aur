@@ -1,0 +1,18 @@
+pkgbase = freefall
+	pkgdesc = Disk protection for HP/DELL machines.
+	pkgver = 3.d74aae4e
+	pkgrel = 3
+	url = https://github.com/torvalds/linux/tree/master/tools/laptop/freefall
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	replaces = hpfall
+	replaces = hpfall-git
+	source = https://github.com/torvalds/linux/blob/v4.2/tools/laptop/freefall/freefall.c
+	source = freefall@.service
+	sha256sums = 6fad3e93be9fdb5fbf87ced466961d0c3190614bf5e8efdb0fa20071f4dc06ba
+	sha256sums = bed4b24d02dec15fa2352472fc372f43d5d0ecd499c6d27333b806d6cc2b031a
+
+pkgname = freefall
+

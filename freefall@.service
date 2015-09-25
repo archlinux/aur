@@ -1,0 +1,17 @@
+# To instantiate the service e.g. with the /dev/sdb disk name,
+# use systemctl start freefall@-dev-sdb 
+# Default instance is for /dev/sda 
+# See systemd.unit manual.
+
+[Unit]
+Description=Disk protection for HP/DELL machines.
+
+[Service]
+Type=forking
+# freefall takes disk device as argument.
+ExecStart=/usr/bin/freefall "%I"
+
+[Install]
+# The instance name is escaped.
+DefaultInstance=-dev-sda
+WantedBy=multi-user.target
