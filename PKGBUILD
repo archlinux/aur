@@ -1,7 +1,7 @@
 pkgname=locator
 pkgdesc="Unix command "locate" front-end. A Linux alternative to voidtool's "Everything", written in Lazarus."
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/AlexTuduran/Locator"
 license=('Completely free')
@@ -12,4 +12,5 @@ package() {
 	cd "Locator-v${pkgver}-alpha"
 	mkdir -p ${pkgdir}/opt/locator/
 	cp locator ${pkgdir}/opt/locator/
+	cp locator.png ${pkgdir}/opt/locator/
 }
