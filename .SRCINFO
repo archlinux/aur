@@ -1,0 +1,14 @@
+pkgbase = ruby-rkelly-remix
+	pkgdesc = Pure Ruby JavaScript parser and interpreter
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/whitequark/parser
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = rkelly-remix-0.0.7.gem
+	source = https://rubygems.org/downloads/rkelly-remix-0.0.7.gem
+	sha256sums = 72f870b39931daa49ac1c78ceadeeeaebf0eee7395597afc28c99d6e1395f0bc
+
+pkgname = ruby-rkelly-remix
+
