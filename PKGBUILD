@@ -4,7 +4,7 @@
 # Contributor: Derek Leach <mail@derek.name>
 
 pkgname=infcloud
-pkgver=0.12.1
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A Card- and WebDav web client"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('ed')
 backup=('etc/webapps/infcloud/config.js')
 install=${pkgname}.install
 source=("https://www.inf-it.com/InfCloud_${pkgver}.zip")
-md5sums=('151f182a0e49e977ed836955b0ef0b80')
+md5sums=('6ffb1b3b9b7f54137723c6c13e9c5635')
 
 package() {
   install -d ${pkgdir}/usr/share/webapps/

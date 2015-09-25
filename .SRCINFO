@@ -1,6 +1,6 @@
 pkgbase = infcloud
 	pkgdesc = A Card- and WebDav web client
-	pkgver = 0.12.1
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = http://www.inf-it.com/open-source/clients/infcloud/
 	install = infcloud.install
@@ -8,8 +8,8 @@ pkgbase = infcloud
 	license = AGPL3
 	depends = ed
 	backup = etc/webapps/infcloud/config.js
-	source = https://www.inf-it.com/InfCloud_0.12.1.zip
-	md5sums = 151f182a0e49e977ed836955b0ef0b80
+	source = https://www.inf-it.com/InfCloud_0.13.1.zip
+	md5sums = 6ffb1b3b9b7f54137723c6c13e9c5635
 
 pkgname = infcloud
 
