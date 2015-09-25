@@ -2,7 +2,7 @@
 # Author: horst3180 @ deviantart
 
 pkgname=ceti-2-themes-git
-pkgver=r35.20150425
+pkgver=r44.20150923
 pkgrel=1
 pkgdesc='Ceti-2 is a theme for GTK 3, GTK 2 and Gnome-Shell. It supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, etc.'
 _gnomever=3.16
