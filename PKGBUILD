@@ -2,7 +2,7 @@
 # Contributor: kozec
 
 pkgname=minecraft-technic-launcher
-pkgver=4.319
+pkgver=4.328
 pkgrel=1
 pkgdesc=("Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.")
 arch=('any')
@@ -14,10 +14,10 @@ source=("http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/Techn
         "technic-launcher"
         "technic-launcher.desktop"
         "technic-launcher.install")
-sha256sums=("346872fceb877ddbba2f4ac69c73e0e1581f3769b8beae0d70ce328542f5d1ed"
-            "bcf657996e45b436382f401457e35d834baa1e35c0c483e7918ab6f93a2252c1"
-            "bfea4300dc48adeb726b49125d05b5e65ed368cf08910ced970b1f1c571c4ecd"
-            "4e967927f460029e27efd8f2417d18e064d37dfbd3af82393402636f0dfbd095")
+sha256sums=('5e0be0f6dd26de468c6183f60c01716ba998fe1326bf94b38430e50f4c629432'
+            'bcf657996e45b436382f401457e35d834baa1e35c0c483e7918ab6f93a2252c1'
+            'bfea4300dc48adeb726b49125d05b5e65ed368cf08910ced970b1f1c571c4ecd'
+            '4e967927f460029e27efd8f2417d18e064d37dfbd3af82393402636f0dfbd095')
 install=("technic-launcher.install")
 package(){
     cd "$srcdir"
