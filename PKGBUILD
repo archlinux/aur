@@ -6,7 +6,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=355.11
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA kernel module sources (DKMS) - BETA version"
 makedepends=('pacman>=4.2.0')
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,7 +17,7 @@ arch=('i686' 'x86_64' 'armv7h')
 
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('dkms' 'linux>=3.7' 'linux<4.2' "nvidia-utils-beta>=${pkgver}")
+depends=('dkms' 'linux>=3.7' 'linux<4.3' "nvidia-utils-beta>=${pkgver}")
 provides=("nvidia=${pkgver}" 'nvidia-dkms')
 conflicts=('nvidia-beta')
 

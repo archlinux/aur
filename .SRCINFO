@@ -1,7 +1,7 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA kernel module sources (DKMS) - BETA version
 	pkgver = 355.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-beta-dkms.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = nvidia-beta-dkms
 	makedepends = pacman>=4.2.0
 	depends = dkms
 	depends = linux>=3.7
-	depends = linux<4.2
+	depends = linux<4.3
 	depends = nvidia-utils-beta>=355.11
 	provides = nvidia=355.11
 	provides = nvidia-dkms
