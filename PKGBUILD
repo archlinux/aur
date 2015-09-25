@@ -17,11 +17,6 @@ conclicts=("${_pkgname}" "tint3-git")
 source=("git://github.com/tmathmeyer/${_pkgname}.git")
 md5sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/$_pkgname"
-    git rev-list --count HEAD
-}
-
 build() {
     cd "$srcdir/$_pkgname/src"
     make update
