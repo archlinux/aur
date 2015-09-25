@@ -29,7 +29,7 @@ sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
             'SKIP'
             '9d0ab6525eb5f42056e2465267c62fa67efc75c57ad5345b99414b783278e9a3'
             'SKIP'
-            'fbab0b70feb19c5bdab3eed73d05bcf02aedaf93bdd903bf4cd1c593fb42ea09'
+            '5b0816cf5d16b372c977c271f1cd839919683b44a0e819b646d9f14e4df838d3'
             'a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
@@ -98,7 +98,7 @@ prepare() {
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
-  make nconfig # new CLI menu for configuration
+  #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
