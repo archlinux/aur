@@ -1,7 +1,7 @@
 pkgbase = lua-luainspect-git
 	pkgdesc = A tool that does Lua code analysis
 	pkgver = 2012.03.30.gca39880
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/davidm/lua-inspect
 	arch = i686
 	arch = x86_64
