@@ -10,7 +10,7 @@ pkgdesc="simple, lightweight, GTK3 based desktop environment"
 arch=('i686' 'x86_64')
 url="https://github.com/vera-desktop/vera"
 license=('GPL2.1')
-depends=('vala' 'libpeas' 'gtk3' 'libgee06' 'vera-xsettings-git' 'gobject-introspection')
+depends=('vala' 'libpeas' 'gtk3' 'libgee06' 'vera-xsettings-git' 'gobject-introspection  libxss-vapi-git')
 makedepends=('bake')
 optdepends=('opensnap-git'
             'pcmanfm'
