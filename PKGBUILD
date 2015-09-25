@@ -30,6 +30,5 @@ build() {
 
 package() {
   cd "$srcdir/$gitname"
-  install -d "$pkgdir/usr/bin"
-  install -m 755 $gitname "$pkgdir/usr/bin/$gitname"
+  install -Dm 755 $gitname "$pkgdir/usr/bin/$gitname"
 }
