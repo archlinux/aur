@@ -1,8 +1,8 @@
 pkgbase = vte3-notification
 	pkgdesc = Virtual Terminal Emulator widget for use with GTK3
 	pkgver = 0.42.0
-	pkgrel = 1
-	url = http://www.gnome.org
+	pkgrel = 2
+	url = https://www.gnome.org
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -11,6 +11,7 @@ pkgbase = vte3-notification
 	makedepends = gtk3
 	makedepends = vala
 	makedepends = gperf
+	options = !emptydirs
 	source = https://download.gnome.org/sources/vte/0.42/vte-0.42.0.tar.xz
 	source = 0001-widget-Only-show-the-cursor-on-motion-if-moved.patch
 	source = add-zsh-notfication-support.patch
@@ -25,11 +26,9 @@ pkgname = vte3-notification
 	depends = vte-notification-common
 	provides = vte3=0.42.0
 	conflicts = vte3
-	options = !emptydirs
 
 pkgname = vte-notification-common
 	pkgdesc = Common files used by vte and vte3
-	depends = glibc
 	provides = vte-common=0.42.0
 	conflicts = vte-common
 
