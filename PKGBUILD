@@ -6,7 +6,7 @@
 # https://github.com/sjug/atom-editor
 
 pkgname=atom-editor
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=1
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ conflicts=('atom-editor-bin' 'atom-editor-git')
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
         'atom-python.patch'
         'package.patch')
-sha256sums=('a4355cc62ddd53e483f3a8828cd34efada93921ea0a78f0b22722777f5a564fa'
+sha256sums=('775742460826ab7d6b0ffd035632019041b0a1ae40f47e15f4098241744252b5'
             '9a1f4e2efa7c0b2fb053d27979b0231f75f1f0d928e06413ddebeadd5d7ed46c'
             '37f6c05ad8b4bd1406265873164d82cd9c769bb5418c104b3275cc9e2cd6766e')
 
