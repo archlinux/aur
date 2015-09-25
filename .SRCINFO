@@ -1,7 +1,7 @@
 pkgbase = emacs-guess-style
 	pkgdesc = Automatic setting of code style variables
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://nschum.de/src/emacs/guess-style/
 	install = emacs-guess-style.install
 	arch = any
