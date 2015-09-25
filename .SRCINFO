@@ -1,6 +1,6 @@
 pkgbase = backlight-openrc
 	pkgdesc = Restore the screen brightness at system startup.
-	pkgver = b49490c
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://git.covolunablu.org/jacopo/backlight-openrc
 	install = backlight-openrc.install
@@ -8,7 +8,7 @@ pkgbase = backlight-openrc
 	arch = i686
 	license = GPL3
 	depends = openrc-core
-	source = git+https://git.covolunablu.org/jacopo/backlight-openrc.git
+	source = git+https://github.com/antipatico/backlight-openrc.git
 	md5sums = SKIP
 
 pkgname = backlight-openrc

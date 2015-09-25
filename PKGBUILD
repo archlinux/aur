@@ -1,24 +1,21 @@
 # Maintainer: jacopo <jacopo[at]autistici[dot]org>
 pkgname=backlight-openrc
 pkgrel=1
-pkgver=b49490c
+pkgver=0.1
 pkgdesc="Restore the screen brightness at system startup."
 url="https://git.covolunablu.org/jacopo/backlight-openrc"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('openrc-core')
-source=("git+https://git.covolunablu.org/jacopo/backlight-openrc.git")
+#source=("git+https://git.covolunablu.org/jacopo/backlight-openrc.git")
+source=("git+https://github.com/antipatico/backlight-openrc.git")
 install="$pkgname.install"
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-#    printf "%s_%s" "$(date +%Y%m%d)" "$(git log --pretty=format:'%h' -n 1)"
-#    git log --pretty=format:'%h' -n 1
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+#    printf "r%s" "$(date +%Y%m%d)" "$(git log --pretty=format:'%h' -n 1)"
+    git tag | tail -n1
 }
 
 package() {
