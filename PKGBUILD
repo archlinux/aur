@@ -1,12 +1,13 @@
 pkgname=locator
 pkgdesc="Unix command "locate" front-end. A Linux alternative to voidtool's "Everything", written in Lazarus."
 pkgver=0.1.1
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 url="https://github.com/AlexTuduran/Locator"
 license=('Completely free')
 source=(https://github.com/AlexTuduran/Locator/releases/download/v$pkgver-alpha/Locator-v$pkgver-alpha.zip)
 md5sums=('SKIP')
+depends=('mlocate' 'gksu')
 
 package() {
 	install -D $srcdir/../Locator.desktop ${pkgdir}/usr/share/applications/Locator.desktop

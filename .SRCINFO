@@ -1,11 +1,13 @@
 pkgbase = locator
 	pkgdesc = Unix command locate front-end. A Linux alternative to voidtool's Everything, written in Lazarus.
-	pkgver = 0.1.1-alpha
-	pkgrel = 1
+	pkgver = 0.1.1
+	pkgrel = 6
 	url = https://github.com/AlexTuduran/Locator
 	arch = i686
 	arch = x86_64
 	license = Completely free
+	depends = mlocate
+	depends = gksu
 	source = https://github.com/AlexTuduran/Locator/releases/download/v0.1.1-alpha/Locator-v0.1.1-alpha.zip
 	md5sums = SKIP
 

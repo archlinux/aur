@@ -3,5 +3,5 @@ Type=Application
 Icon=/opt/locator/locator.png
 Name=Locator
 Terminal=false
-Exec=/opt/locator/locator
+Exec=gksudo /opt/locator/locator
 Hidden=false
