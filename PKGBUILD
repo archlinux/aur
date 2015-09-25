@@ -3,8 +3,8 @@
 # TODO: FIND AND FIX EDGE CASES (EMPTY VARS!) *SPANK*
 
 pkgname=firefox-nightly-i18n
-_version=43.0a1
-pkgver=43.0a1.20141205
+_version=44.0a1
+pkgver=44.0a1.20150925
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
 url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
@@ -25,7 +25,7 @@ countdown() {
   done
 }
 
-ls_lang () {
+ls_lang_ftp () {
 {  ftp -in ftp.mozilla.org <<EOF
 user anonymous secrets
 cd pub
@@ -34,6 +34,10 @@ ls
 EOF
 [ "$?" != 0 ] && error "FTP connection failed" && exit 1
 } | grep ftp.*ftp.*firefox.*langpack.xpi$ | awk -F\. '{print $(NF-2)}' | tr '\n' ' '
+}
+
+ls_lang () {
+curl "http://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/" | tr '"' '\n' | grep xpi$ | sed 's/\.langpack\.xpi//g; s/firefox-[0-9.]*a1\.//g'
 }
 
 prepare() {
