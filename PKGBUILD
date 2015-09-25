@@ -13,6 +13,7 @@ optdepends=('mobile-broadband-provider-info: Database of mobile broadband servic
 provides=('plasma-nm')
 conflicts=('plasma-nm')
 source=("git://anongit.kde.org/plasma-nm.git")
+groups=('plasma')
 sha256sums=('SKIP')
 
 pkgver() {
