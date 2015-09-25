@@ -2,19 +2,18 @@
 # Author: horst3180 @ deviantart
 
 pkgname=ceti-2-themes
-pkgver=20150425
+pkgver=20150923
 pkgrel=1
 pkgdesc='Ceti-2 is a theme for GTK 3, GTK 2 and Gnome-Shell. It supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, etc.'
 _gnomever=3.16
-_releasever=20150425
+_releasever=20150923
 arch=('any')
 url='http://horst3180.deviantart.com/art/Ceti-2-Theme-489193140'
 license=('GPL3')
 depends=('gtk-engine-murrine')
-provides=('ceti-2-themes')
 conflicts=('ceti-2-themes-git')
 source=("${pkgname}-${_releasever}.tar.gz::https://github.com/horst3180/Ceti-2-theme/archive/${_releasever}.tar.gz")
-sha256sums=('355ad269bdde04c5b842747ccfb1e738a565ae4a3b86a3af9116e7d5662137c2')
+sha256sums=('a9978f52da7f66f30190183c5f24acb442ef699225e575ea7453682914901525')
 
 build() {
   cd Ceti-2-theme-${_releasever}
