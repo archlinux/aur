@@ -1,7 +1,7 @@
 pkgbase = librepo
 	pkgdesc = Repodata downloading library
-	pkgver = 1.7.16
-	pkgrel = 2
+	pkgver = 1.7.17
+	pkgrel = 1
 	url = https://github.com/rpm-software-management/librepo
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,8 @@ pkgbase = librepo
 	depends = glib2
 	depends = gpgme
 	optdepends = python: for python bindings
-	source = https://github.com/rpm-software-management/librepo/archive/librepo-1.7.16.tar.gz
-	source = xattr-skiptest.patch::https://github.com/rpm-software-management/librepo/commit/96457dc6a76418af0ea4f8c3405471710fd06b9d.patch
-	md5sums = d09540e71574ee8b1b6ea97aa0a61b89
-	md5sums = 60b12b69a8d5e16f32d79a4f5bf02fa4
+	source = https://github.com/rpm-software-management/librepo/archive/librepo-1.7.17.tar.gz
+	md5sums = 8e3b23e44aab8cd516d2b05d62f6f559
 
 pkgname = librepo
 

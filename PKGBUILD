@@ -1,6 +1,6 @@
 pkgname=librepo
-pkgver=1.7.16
-pkgrel=2
+pkgver=1.7.17
+pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -9,10 +9,8 @@ depends=('curl' 'expat' 'glib2' 'gpgme')
 makedepends=('cmake' 'python')
 checkdepends=('check' 'python-flask' 'python-nose' 'python-pygpgme' 'python-pyxattr')
 optdepends=('python: for python bindings')
-source=("$url/archive/$pkgname-$pkgver.tar.gz"
-        "xattr-skiptest.patch::$url/commit/96457dc6a76418af0ea4f8c3405471710fd06b9d.patch")
-md5sums=('d09540e71574ee8b1b6ea97aa0a61b89'
-         '60b12b69a8d5e16f32d79a4f5bf02fa4')
+source=("$url/archive/$pkgname-$pkgver.tar.gz")
+md5sums=('8e3b23e44aab8cd516d2b05d62f6f559')
 
 prepare() {
 	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
@@ -20,9 +18,6 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
-
-	# FTBFS with filesystems which do not have xattr support
-	patch -p1 < "$srcdir"/xattr-skiptest.patch
 }
 
 build() {
