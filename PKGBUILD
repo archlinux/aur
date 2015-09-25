@@ -2,38 +2,38 @@
 
 _plug=vsrawsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=20140216.9634f88
+pkgver=r24.9634f88
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="https://github.com/myrsloik/${_plug}"
+url='http://forum.doom9.org/showthread.php?t=166075'
 license=('LGPL2.1')
 depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("git+https://github.com/myrsloik/${_plug}.git")
-md5sums=('SKIP')
-_gitname="${_plug}"
+sha1sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+  cd "${_plug}"
+  #echo "$(git describe --long --tags)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${_gitname}"
-  rm VapourSynth.h
+  rm -fr "${_plug}/VapourSynth.h"
 }
 
 build() {
-  cd "${_gitname}"
-  ./configure --extra-cflags="$(pkg-config --cflags vapoursynth)"
+  cd "${_plug}"
+  ./configure --extra-cflags="${CFLAGS} $(pkg-config --cflags vapoursynth)" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
 package(){
-  cd "${_gitname}"
+  cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
