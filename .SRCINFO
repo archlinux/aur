@@ -1,7 +1,7 @@
 pkgbase = ignition-math
 	pkgdesc = Math classes and functions for robot applications
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ignitionrobotics.org/
 	arch = i686
 	arch = x86_64

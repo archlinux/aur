@@ -1,7 +1,7 @@
 # Contributor: Mykola Dolhyi <0xb000@gmail.com>
 pkgname=ignition-math
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/"
@@ -19,7 +19,7 @@ source=("https://bitbucket.org/ignitionrobotics/ign-math/get/${pkgname}2_${pkgve
 sha256sums=('eab7875b0f930ba685950678d0f9ede70ec53ead7960bd2d58ef442ee9a80445')
 #validpgpkeys=()
 
-_dir="ignitionrobotics-ign-math-de3837518b7d"
+_dir="ignitionrobotics-ign-math-f3919dfcf50e"
 
 build() {
   cd "$srcdir/$_dir"
