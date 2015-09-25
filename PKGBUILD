@@ -8,10 +8,11 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('vapoursynth-plugin-nnedi3-git'
-         'vapoursynth-plugin-fmtconv-git'
-         'vapoursynth-plugin-vshelpers-git'
+depends=('vapoursynth-plugin-vshelpers-git'
+         'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-sangnommod-git'
+         'vapoursynth-plugin-msmoosh-git'
+         'vapoursynth-plugin-genericfilters-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
