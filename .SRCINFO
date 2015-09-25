@@ -1,5 +1,5 @@
 pkgbase = nvidia-beta
-	pkgdesc = NVIDIA driver for linux (beta)
+	pkgdesc = NVIDIA driver for Arch's official 'linux' package (beta version)
 	pkgver = 355.11
 	pkgrel = 1
 	url = http://www.nvidia.com/
@@ -17,7 +17,6 @@ pkgbase = nvidia-beta
 	conflicts = nvidia-173xx
 	conflicts = nvidia
 	options = !strip
-	source = nvidia-linux-4.3.patch
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/355.11/NVIDIA-Linux-x86-355.11.run
 	md5sums_i686 = 16d143ccafe99328a2ca8e5a396fd4bc
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/355.11/NVIDIA-Linux-x86_64-355.11-no-compat32.run

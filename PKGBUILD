@@ -5,7 +5,7 @@
 pkgname=nvidia-beta
 pkgver=355.11
 pkgrel=1
-pkgdesc="NVIDIA driver for linux (beta)"
+pkgdesc="NVIDIA driver for Arch's official 'linux' package (beta version)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
