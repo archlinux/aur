@@ -1,19 +1,21 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-starscope
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="A tool like the venerable cscope, but for ruby, golang and other languages"
+pkgdesc="Smart code searching and indexing"
 arch=('any')
 url="https://github.com/eapache/starscope"
 license=('MIT')
 depends=('ruby'
-         'ruby-backports'
+         'ruby-babel-transpiler'
          'ruby-oj'
          'ruby-parser'
-         'ruby-ruby-progressbar')
+         'ruby-ruby-progressbar'
+         'ruby-rkelly-remix'
+         'ruby-sourcemap')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('c7db7166da3a0d5fac9900322c053ee4af7e0b65fbb743956be78d7805320842')
+sha256sums=('80ab7a71832064292fcaf234d98ecc23e088d946dd308d5e60fd68866e67281f')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('ruby-starscope' 'starscope')
 conflicts=('starscope')

@@ -1,21 +1,23 @@
 pkgbase = ruby-starscope
-	pkgdesc = A tool like the venerable cscope, but for ruby, golang and other languages
-	pkgver = 1.4.1
+	pkgdesc = Smart code searching and indexing
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/eapache/starscope
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-backports
+	depends = ruby-babel-transpiler
 	depends = ruby-oj
 	depends = ruby-parser
 	depends = ruby-ruby-progressbar
+	depends = ruby-rkelly-remix
+	depends = ruby-sourcemap
 	provides = ruby-starscope
 	provides = starscope
 	conflicts = starscope
-	noextract = starscope-1.4.1.gem
-	source = https://rubygems.org/downloads/starscope-1.4.1.gem
-	sha256sums = c7db7166da3a0d5fac9900322c053ee4af7e0b65fbb743956be78d7805320842
+	noextract = starscope-1.5.0.gem
+	source = https://rubygems.org/downloads/starscope-1.5.0.gem
+	sha256sums = 80ab7a71832064292fcaf234d98ecc23e088d946dd308d5e60fd68866e67281f
 
 pkgname = ruby-starscope
 
