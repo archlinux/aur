@@ -1,5 +1,5 @@
 pkgname=wlc-git
-pkgver=r780.6d0aebe
+pkgver=r789.c8e2f3e
 pkgrel=1
 
 pkgdesc='Wayland compositor library.'
@@ -8,11 +8,13 @@ arch=('i686' 'x86_64')
 license=('GPL')
 
 depends=('wayland' 'pixman' 'libxkbcommon' 'libinput')
-makedepends=('git' 'cmake' 'libx11' 'libxcb' 'libgl')
-optdepends=('mesa: For optional platform support (GLESv2, EGL, DRM)'
+makedepends=('git' 'cmake' 'libx11' 'libxcb' 'libgl' 'xcb-util-image')
+
+optdepends=('libx11: Running the compositor as an Xorg client'
+            'libxcb: Running the compositor as an Xorg client'
+            'mesa: For optional platform support (GLESv2, EGL, DRM)'
             'nvidia: For optional platform support (GLESv2, EGL)'
-            'libx11: Running the compositor as an Xorg client'
-            'libxcb: Running the compositor as an Xorg client')
+            'xcb-util-image: Needed for xwayland support.')
 
 provides=('wlc')
 conflicts=('wlc')
