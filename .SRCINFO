@@ -11,7 +11,7 @@ pkgbase = vapoursynth-plugin-templinearapproximate-git
 	provides = vapoursynth-plugin-templinearapproximate
 	conflicts = vapoursynth-plugin-templinearapproximate
 	source = templinearapproximate::git+https://bitbucket.org/mystery_keeper/templinearapproximate-vapoursynth.git
-	md5sums = SKIP
+	sha1sums = SKIP
 
 pkgname = vapoursynth-plugin-templinearapproximate-git
 
