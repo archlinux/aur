@@ -2,7 +2,7 @@ pkgbase = vrk-mpollux-digisign-client
 	pkgdesc = Client program for Finnish chip ID cards
 	pkgver = 3.1.9_3745
 	pkgrel = 4
-	url = http://fineid.fi/default.aspx?id=294
+	url = https://eevertti.vrk.fi/Default.aspx?id=308
 	arch = x86_64
 	license = custom
 	depends = pcsclite

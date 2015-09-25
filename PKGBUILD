@@ -4,7 +4,7 @@ pkgver=3.1.9_3745
 pkgrel=4
 pkgdesc="Client program for Finnish chip ID cards"
 arch=('x86_64')
-url="http://fineid.fi/default.aspx?id=294"
+url="https://eevertti.vrk.fi/Default.aspx?id=308"
 license=('custom')
 depends=('pcsclite' 'qt4')
 
@@ -22,6 +22,6 @@ package() {
 	mv "$pkgdir/usr/share/doc/mpollux-digisign-client" "$pkgdir/usr/share/doc/vrk-mpollux-digisign-client"
 
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-	cp "$pkgdir/usr/share/doc/$pkgname/"{LICENSE,Lisenssiehdot_{en,fi,sv}.html} "$pkgdir/usr/share/licenses/$pkgname/"
+	cp "$pkgdir/usr/share/doc/$pkgname/"{LICENSE,Lisenssiehdot_*.html} "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
