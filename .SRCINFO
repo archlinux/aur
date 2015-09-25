@@ -1,6 +1,6 @@
 pkgbase = qtpass
 	pkgdesc = A multi-platform GUI for pass
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://qtpass.org
 	arch = armv6h
@@ -12,8 +12,8 @@ pkgbase = qtpass
 	depends = qt5-base
 	depends = pass
 	depends = libxkbcommon-x11
-	source = https://github.com/IJHack/qtpass/archive/v1.0.1.tar.gz
-	sha512sums = 197875a072ab0d7dda28e2db2f96a99569bc64a1b735c1be3f663e6f2d8bf16f7a069afbbeae8baf19075f6e2f3df827d0d50ff66da4d9e2196d0279193d9ebf
+	source = https://github.com/IJHack/qtpass/archive/v1.0.2.tar.gz
+	sha512sums = 038e34eb239b630b96bb6bb200283af44cdd0eb13734d089412e5bbde5becb99a699d6690801690ae27b6600c72cd91c0468d391b45b8fc5c4f7fe2630fb5ae0
 
 pkgname = qtpass
 
