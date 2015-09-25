@@ -1,0 +1,12 @@
+pkgbase = python-modulegraph
+	pkgdesc = determines a dependency graph between Python modules primarily by bytecode analysis for import statements
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://bitbucket.org/ronaldoussoren/modulegraph
+	arch = any
+	depends = python
+	source = https://pypi.python.org/packages/source/m/modulegraph/modulegraph-0.12.1.tar.gz
+	md5sums = 27abd74de3ec0e22ef129c1faa628bd5
+
+pkgname = python-modulegraph
+
