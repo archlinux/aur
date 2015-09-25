@@ -4,9 +4,8 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=grive
-pkgver=0.4.0
-_commit="308aab92cfdbee11dbd608a30b2fa77ddade1b31"
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="An open source Linux client for Google Drive with support for the new Drive REST API and partial sync"
 arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
@@ -16,11 +15,11 @@ optdepends=("cppunit: unit tests"
 			"binutils: backtrace and libiberty")
 makedepends=('cmake' 'boost')
 conflicts=('grive-git')
-source=("https://github.com/vitalif/grive2/archive/${_commit}.tar.gz")
-md5sums=('729768eec210849df5b7254d8a6a4a38')
+source=("https://github.com/vitalif/grive2/archive/v${pkgver}.tar.gz")
+md5sums=('1306dcf567535c0696187c6a2b354c29')
 
 build() {
-	cd "${srcdir}/${pkgname}2-${_commit}"
+	cd "${srcdir}/${pkgname}2-${pkgver}"
     rm -rf build
     mkdir build
     cd build
@@ -33,5 +32,5 @@ build() {
 }
 
 package() {
-	make -C "${srcdir}/${pkgname}2-${_commit}/build" DESTDIR="${pkgdir}" install
+	make -C "${srcdir}/${pkgname}2-${pkgver}/build" DESTDIR="${pkgdir}" install
 }
