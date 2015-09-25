@@ -1,0 +1,32 @@
+pkgbase = scribus1.5
+	pkgdesc = A desktop publishing program - Version 1.5 svn
+	pkgver = 20421
+	pkgrel = 1
+	url = http://www.scribus.net
+	install = scribus1.5.install
+	arch = i686
+	arch = x86_64
+	license = custom:(L)GPL
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = hunspell
+	depends = podofo
+	depends = python2
+	depends = libcups
+	depends = graphicsmagick
+	depends = shared-mime-info
+	depends = poppler
+	depends = libcdr
+	depends = desktop-file-utils
+	depends = libvisio
+	depends = libpagemaker
+	depends = qt5-declarative
+	options = !makeflags
+	source = scribus::svn://scribus.net/trunk
+	source = scribus1.5.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = scribus1.5
+
