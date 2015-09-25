@@ -9,7 +9,7 @@ source=(https://github.com/AlexTuduran/Locator/releases/download/v0.1.1-alpha/Lo
 md5sums=('SKIP')
 
 package() {
-	install -D $srcdir/../Locator.desktop ${pkgdir}/usr/share/applications
-	install -D $srcdir/Locator-v$pkgver-alpha/locator $pkgdir/opt/locator/
-	install -D $srcdir/Locator-v$pkgver-alpha/locator.png $pkgdir/opt/locator/
+	install -D $srcdir/../Locator.desktop ${pkgdir}/usr/share/applications/Locator.desktop
+	install -D $srcdir/Locator-v$pkgver-alpha/locator $pkgdir/opt/locator/locator
+	install -D $srcdir/Locator-v$pkgver-alpha/locator.png $pkgdir/opt/locator/locator.png
 }
