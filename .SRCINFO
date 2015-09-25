@@ -1,6 +1,6 @@
 pkgbase = python2-structlog
 	pkgdesc = Structured logging for Python
-	pkgver = 15.2.0
+	pkgver = 15.3.0
 	pkgrel = 1
 	url = http://www.structlog.org
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = python2-structlog
 	makedepends = python2-setuptools
 	depends = python2
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/s/structlog/structlog-15.2.0.tar.gz
-	source = https://pypi.python.org/packages/source/s/structlog/structlog-15.2.0.tar.gz.asc
-	md5sums = c8e2b395b74031202f24e800e10be669
+	source = https://pypi.python.org/packages/source/s/structlog/structlog-15.3.0.tar.gz
+	source = https://pypi.python.org/packages/source/s/structlog/structlog-15.3.0.tar.gz.asc
+	md5sums = 373666bf2cfb5677182e382f7f38e6c2
 	md5sums = SKIP
-	sha256sums = 1017abfe5e8cd292da859368a5d372e8a3c3b4d353cf6fd27cc13cda32f152cb
+	sha256sums = 87276738473ff00014f3f6ce9adf559d142ca4a71567805c46f09ea61df938c1
 	sha256sums = SKIP
 
 pkgname = python2-structlog
