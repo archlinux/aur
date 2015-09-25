@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-ediresample-git
 	pkgdesc = Plugin for Vapoursynth: ediresample (GIT version)
-	pkgver = 20150223.0f209b6
+	pkgver = r19.0f209b6
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171741
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = vapoursynth-plugin-ediresample-git
 	provides = vapoursynth-plugin-ediresample
 	conflicts = vapoursynth-plugin-ediresample
 	source = ediresample::git+https://github.com/IFeelBloated/VaporSynth-Functions.git
-	md5sums = SKIP
+	sha1sums = SKIP
 
 pkgname = vapoursynth-plugin-ediresample-git
 
