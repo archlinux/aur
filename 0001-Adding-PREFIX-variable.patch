@@ -1,0 +1,57 @@
+From 0e3a852047cbaa4cfc237ebfc993d84824f05db4 Mon Sep 17 00:00:00 2001
+From: Giovanni Santini <giovannisantini93@yahoo.it>
+Date: Fri, 25 Sep 2015 09:17:20 +0200
+Subject: [PATCH] Adding PREFIX variable
+Allows users to install in a different (root!) path, useful for packaging.
+
+---
+ Makefile | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e8798d9..e1ed89d 100755
+--- a/Makefile
++++ b/Makefile
+@@ -4,24 +4,24 @@
+ RESOURCE = ./resource
+ BIN = ./bin
+ SRC = ./src
++PREFIX = 
+ 
+ linux_x64:
+-	cp $(RESOURCE)/skype.png /usr/share/icons/hicolor/512x512/apps/
++	cp $(RESOURCE)/skype.png $(PREFIX)/usr/share/icons/hicolor/512x512/apps/
+ 	cp $(SRC)/package.json $(BIN)/linux_x64
+-	mkdir -p /opt/skype_unofficial_client
+-	cp -R $(BIN)/linux_x64/* /opt/skype_unofficial_client
+-	chmod +x -R /opt/skype_unofficial_client
+-	cp $(SRC)/Skype.desktop /usr/share/applications
+-	cp $(SRC)/skype-desktop /usr/bin
+-	chmod +x $(SRC)/skype-desktop 
++	mkdir -p $(PREFIX)/opt/skype_unofficial_client
++	cp -R $(BIN)/linux_x64/* $(PREFIX)/opt/skype_unofficial_client
++	chmod +x -R $(PREFIX)/opt/skype_unofficial_client
++	cp $(SRC)/Skype.desktop $(PREFIX)/usr/share/applications
++	chmod +x $(SRC)/skype-desktop
++	cp $(SRC)/skype-desktop $(PREFIX)/usr/bin
+          
+ linux_x86:
+-	cp $(RESOURCE)/skype.png /usr/share/icons/hicolor/512x512/apps/
++	cp $(RESOURCE)/skype.png $(PREFIX)/usr/share/icons/hicolor/512x512/apps/
+ 	cp $(SRC)/package.json $(BIN)/linux_x86
+-	mkdir -p /opt/skype_unofficial_client
+-	cp -R $(BIN)/linux_x86/* /opt/skype_unofficial_client
+-	chmod +x -R /opt/skype_unofficial_client
+-	cp $(SRC)/Skype.desktop /usr/share/applications
+-	cp $(SRC)/skype-desktop /usr/bin
+-	chmod +x $(SRC)/skype-desktop 
+- 
++	mkdir -p $(PREFIX)/opt/skype_unofficial_client
++	cp -R $(BIN)/linux_x86/* $(PREFIX)/opt/skype_unofficial_client
++	chmod +x -R $(PREFIX)/opt/skype_unofficial_client
++	cp $(SRC)/Skype.desktop $(PREFIX)/usr/share/applications
++	chmod +x $(SRC)/skype-desktop
++	cp $(SRC)/skype-desktop $(PREFIX)/usr/bin
+-- 
+2.5.3
+
