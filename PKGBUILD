@@ -15,7 +15,7 @@ md5sums=(SKIP)
 pkgver() {
   cd libclc
 
-  echo 0.2.0+$(git rev-list --count master)+$(git describe --always)
+  echo 0.2.0+$(git rev-list --count HEAD)+$(git describe --always)
   #git describe --long | sed 's/-/+/g'
 }
 
