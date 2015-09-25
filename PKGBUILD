@@ -10,7 +10,7 @@ md5sums=('SKIP')
 
 package() {
 	cd ..
-	cp locator.desktop ${pkgdir}/usr/share/applications
+	cp Locator.desktop ${pkgdir}/usr/share/applications
 	cd src
 	cd "Locator-v${pkgver}-alpha"
 	mkdir -p ${pkgdir}/opt/locator/
