@@ -1,10 +1,11 @@
 # This is the PKGBUILD for TMSU
 
 # Maintainer: Tomáš Mládek <tmladek{at}inventati{dt}org> 
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=tmsu
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for tagging your files and accessing them through a virtual filesystem."
 arch=('i686' 'x86_64')
 url="http://tmsu.org/"
@@ -34,6 +35,9 @@ package(){
            "$pkgdir/usr/share/zsh/site-functions"
 
   cd "$srcdir/TMSU-$pkgver"
-  sed -ie "s%/usr%$pkgdir/usr%g" Makefile
-  make install
+  make INSTALL_DIR="$pkgdir/usr/bin" \
+  MOUNT_INSTALL_DIR="$pkgdir/usr/bin" \
+  MAN_INSTALL_DIR="$pkgdir/usr/share/man/man1" \
+  ZSH_COMP_INSTALL_DIR="$pkgdir/usr/share/zsh/site-functions" \
+  install
 }
