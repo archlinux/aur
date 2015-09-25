@@ -1,0 +1,117 @@
+diff --git a/bfd/elf32-msp430.c b/bfd/elf32-msp430.c
+index c839ea0..fdab3d3 100644
+--- a/bfd/elf32-msp430.c
++++ b/bfd/elf32-msp430.c
+@@ -1656,9 +1656,38 @@ msp430_elf_relax_delete_bytes (bfd * abfd, asection * sec, bfd_vma addr,
+   symtab_hdr = & elf_tdata (abfd)->symtab_hdr;
+   isym = (Elf_Internal_Sym *) symtab_hdr->contents;
+   for (isymend = isym + symtab_hdr->sh_info; isym < isymend; isym++)
+-    if (isym->st_shndx == sec_shndx
+-	&& isym->st_value > addr && isym->st_value < toaddr)
+-      isym->st_value -= count;
++    {
++      const char * name;
++
++      name = bfd_elf_string_from_elf_section
++	(abfd, symtab_hdr->sh_link, isym->st_name);
++      name = (name == NULL || * name == 0) ? bfd_section_name (abfd, sec) : name;
++
++      if (isym->st_shndx != sec_shndx)
++	continue;
++      
++      if (isym->st_value > addr
++	  && (isym->st_value < toaddr
++	      /* We also adjust a symbol at the end of the section if its name is
++		 on the list below.  These symbols are used for debug info
++		 generation and they refer to the end of the current section, not
++		 the start of the next section.  */
++	      || (isym->st_value == toaddr
++		  && name != NULL
++		  && (CONST_STRNEQ (name, ".Letext")
++		      || CONST_STRNEQ (name, ".LFE")))))
++	{
++	  if (isym->st_value < addr + count)
++	    isym->st_value = addr;
++	  else
++	    isym->st_value -= count;
++	}
++      /* Adjust the function symbol's size as well.  */
++      else if (ELF_ST_TYPE (isym->st_info) == STT_FUNC
++	       && isym->st_value + isym->st_size > addr
++	       && isym->st_value + isym->st_size < toaddr)
++	isym->st_size -= count;
++    }
+ 
+   /* Now adjust the global symbols defined in this section.  */
+   symcount = (symtab_hdr->sh_size / sizeof (Elf32_External_Sym)
+@@ -1674,7 +1703,19 @@ msp430_elf_relax_delete_bytes (bfd * abfd, asection * sec, bfd_vma addr,
+ 	  && sym_hash->root.u.def.section == sec
+ 	  && sym_hash->root.u.def.value > addr
+ 	  && sym_hash->root.u.def.value < toaddr)
+-	sym_hash->root.u.def.value -= count;
++	{
++	  if (sym_hash->root.u.def.value < addr + count)
++	    sym_hash->root.u.def.value = addr;
++	  else
++	    sym_hash->root.u.def.value -= count;
++	}
++      /* Adjust the function symbol's size as well.  */
++      else if (sym_hash->root.type == bfd_link_hash_defined
++	       && sym_hash->root.u.def.section == sec
++	       && sym_hash->type == STT_FUNC
++	       && sym_hash->root.u.def.value + sym_hash->size > addr
++	       && sym_hash->root.u.def.value + sym_hash->size < toaddr)
++	sym_hash->size -= count;
+     }
+ 
+   return TRUE;
+diff --git a/gas/config/tc-msp430.h b/gas/config/tc-msp430.h
+index 657dc1a..08115ac 100644
+--- a/gas/config/tc-msp430.h
++++ b/gas/config/tc-msp430.h
+@@ -159,7 +159,8 @@ extern bfd_boolean msp430_allow_local_subtract (expressionS *, expressionS *, se
+    linker, but this fix is simpler, and it pretty much only affects
+    object size a little bit.  */
+ #define TC_FORCE_RELOCATION_SUB_SAME(FIX, SEC)	\
+-  (((SEC)->flags & SEC_CODE) != 0		\
++  (   ((SEC)->flags & SEC_CODE) != 0		\
++   || ((SEC)->flags & SEC_DEBUGGING) != 0	\
+    || ! SEG_NORMAL (SEC)			\
+    || TC_FORCE_RELOCATION (FIX))
+ 
+@@ -169,4 +170,4 @@ extern bfd_boolean msp430_allow_local_subtract (expressionS *, expressionS *, se
+ 
+ #define DWARF2_USE_FIXED_ADVANCE_PC 1
+ 
+-#define TC_LINKRELAX_FIXUP(seg) (seg->flags & SEC_CODE)
++#define TC_LINKRELAX_FIXUP(seg) ((seg->flags & SEC_CODE) || (seg->flags & SEC_DEBUGGING))
+diff --git a/gas/dwarf2dbg.c b/gas/dwarf2dbg.c
+index 5dfd980..9177bdf 100644
+--- a/gas/dwarf2dbg.c
++++ b/gas/dwarf2dbg.c
+@@ -1467,8 +1467,22 @@ out_header (asection *sec, expressionS *exp)
+   symbolS *end_sym;
+ 
+   subseg_set (sec, 0);
+-  start_sym = symbol_temp_new_now ();
+-  end_sym = symbol_temp_make ();
++#if 1
++  if (flag_dwarf_sections)
++    {
++      /* If we are going to put the start and end symbols in different
++	 sections, then we need real symbols, not just fake, local ones.  */
++      frag_now_fix ();
++      start_sym = symbol_make (".Ldebug_line_start");
++      end_sym = symbol_make (".Ldebug_line_end");
++      symbol_set_value_now (start_sym);
++    }
++  else
++#endif
++    {
++      start_sym = symbol_temp_new_now ();
++      end_sym = symbol_temp_make ();
++    }
+ 
+   /* Total length of the information.  */
+   exp->X_op = O_subtract;
+

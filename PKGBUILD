@@ -5,7 +5,7 @@ pkgname=${_target}-binutils #-git
 _pkgver=2.25.1
 pkgver=${_pkgver}
 #pkgver=2.25.r84308.c576455
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU binary utilities for the ${_target} target"
 arch=(i686 x86_64)
 options=('!libtool' '!buildflags') 
@@ -20,8 +20,10 @@ depends=('zlib' 'flex')
 # sha256sums=('SKIP')
 
 # build from source
-source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('b5b14added7d78a8d1ca70b5cb75fef57ce2197264f4f5835326b0df22ac9f22')
+source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2
+        bfd-fix.patch)
+sha256sums=('b5b14added7d78a8d1ca70b5cb75fef57ce2197264f4f5835326b0df22ac9f22'
+            '1b5e879dbd9da83a8c7f86abac5cf706b8ba48e3f0525d893a53c651e4015124')
 
 # pkgver() {
 #   cd "${srcdir}/binutils-${_pkgver}"
@@ -33,7 +35,7 @@ sha256sums=('b5b14added7d78a8d1ca70b5cb75fef57ce2197264f4f5835326b0df22ac9f22')
 prepare() {
   cd "${srcdir}/binutils-${_pkgver}"
   # https://sourceware.org/bugzilla/show_bug.cgi?id=17940
-  # patch -p1 < ../bfd-fix.patch
+  patch -p1 < ../bfd-fix.patch
   # ensure a clean build
   [[ -d binutils-build ]] && rm -rf binutils-build
   mkdir binutils-build
