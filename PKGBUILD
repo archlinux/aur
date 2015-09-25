@@ -1,20 +1,22 @@
 # Contributor: Axel Reidemeister[computerkranker] <mail@axelreidemeister.de>
+# Maintainer: Alexandre Magno <alexandre.mbm@gmail.com>
 
 pkgname=inkblot
 pkgver=0.99.9
-pkgrel=1
+pkgrel=2
+_maintainer=alexandre-mbm
 pkgdesc="Inkblot reports on the remaining ink levels in a wide variety of USB and Parallel connected printers."
 arch=('i686' 'x86_64')
-url="http://www.gnomefiles.org/app.php/Inkblot"
+url="https://github.com/${_maintainer}/${pkgname}"
 license=('GPL')
-depends=('libinklevel' 'libieee1284' 'ink')
+depends=('libinklevel' 'libieee1284')
 makedepends=('libinklevel' 'libieee1284')
-source=('http://www.gnomefiles.org/download.php?soft_id=347&where=http%3A%2F%2Fwww.mikegtn.net%2Fpackages%2Finkblot%2Finkblot-0.99.9.tar.gz')
-md5sums=('671c85f394ff778ad77d0fe0828d864a')
+source=("https://github.com/${_maintainer}/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('eadeafc4a5621d684287fa1ac6aa65d3')
 
-build() {
-  cd $startdir/src/$pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --sysconfdir=/etc LIBS=-lX11
   make || return 1
-  make DESTDIR=$startdir/pkg install
+  make DESTDIR="${pkgdir}/" install
 }

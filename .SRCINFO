@@ -1,8 +1,8 @@
 pkgbase = inkblot
 	pkgdesc = Inkblot reports on the remaining ink levels in a wide variety of USB and Parallel connected printers.
 	pkgver = 0.99.9
-	pkgrel = 1
-	url = http://www.gnomefiles.org/app.php/Inkblot
+	pkgrel = 2
+	url = https://github.com/alexandre-mbm/inkblot
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,9 +10,8 @@ pkgbase = inkblot
 	makedepends = libieee1284
 	depends = libinklevel
 	depends = libieee1284
-	depends = ink
-	source = http://www.gnomefiles.org/download.php?soft_id=347&where=http%3A%2F%2Fwww.mikegtn.net%2Fpackages%2Finkblot%2Finkblot-0.99.9.tar.gz
-	md5sums = 671c85f394ff778ad77d0fe0828d864a
+	source = https://github.com/alexandre-mbm/inkblot/archive/0.99.9.tar.gz
+	md5sums = eadeafc4a5621d684287fa1ac6aa65d3
 
 pkgname = inkblot
 
