@@ -1,4 +1,6 @@
+# Contributor: Andrew Chen <andrew.chuanye.chen@gmail.com>
 # Contributor: Vladimir Kutyavin <vlkut@bk.ru>
+
 pkgname=pxview
 pkgver=0.2.5
 pkgrel=2
