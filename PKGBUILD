@@ -1,4 +1,4 @@
-# Contributor: Andrew Chen <llkiwi2006@gmail.com>
+# Contributor: Andrew Chen <andrew.chuanye.chen@gmail.com>
 # Contributor: Vladimir Kutyavin <vlkut@bk.ru>
 
 pkgname=pxlib
