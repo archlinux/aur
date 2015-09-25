@@ -12,7 +12,7 @@ pkgbase = vapoursynth-plugin-scoll-git
 	depends = vapoursynth-plugin-sangnommod-git
 	provides = vapoursynth-plugin-scoll
 	conflicts = vapoursynth-plugin-scoll
-	conflicts = vapoursynth-plugins-resamplehq-git
+	conflicts = vapoursynth-plugin-resamplehq-git
 	source = scoll::git+https://gist.github.com/3acdb8d90abf78643d4e.git
 	sha1sums = SKIP
 

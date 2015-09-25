@@ -16,7 +16,7 @@ depends=('vapoursynth-plugin-nnedi3-git'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}"
-           'vapoursynth-plugins-resamplehq-git')
+           'vapoursynth-plugin-resamplehq-git')
 source=("${_plug}::git+https://gist.github.com/3acdb8d90abf78643d4e.git")
 sha1sums=('SKIP')
 
