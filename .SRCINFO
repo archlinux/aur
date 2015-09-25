@@ -1,0 +1,15 @@
+pkgbase = ch341prog-git
+	pkgdesc = A simple command line tool (programmer) interfacing with ch341a
+	pkgver = r24.ae7204d
+	pkgrel = 1
+	url = https://github.com/setarcos/ch341prog.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libusb>=1
+	source = ch341prog::git+https://github.com/setarcos/ch341prog.git
+	md5sums = SKIP
+
+pkgname = ch341prog-git
+
