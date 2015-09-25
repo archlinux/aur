@@ -2,7 +2,7 @@
 # Author: horst3180 @ deviantart
 
 pkgname=vertex-themes-git
-pkgver=r498.20150425
+pkgver=r541.20150923
 pkgrel=1
 pkgdesc='Vertex Gtk2, Gtk3, Metacity, Xfwm, Cinnamon and GNOME Shell themes (GNOME 3.16 version)'
 _gnomever=3.16
