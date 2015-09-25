@@ -1,0 +1,12 @@
+pkgbase = gopacket-git
+	pkgdesc = Provides packet processing capabilities for Go
+	pkgver = 20150922.702_63a65fa
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+
+pkgname = gopacket-git
+
