@@ -5,14 +5,16 @@
 
 set -u
 pkgname='master-pdf-editor'
-pkgver='3.4.03'
+pkgver='3.4.10'
 pkgrel='1'
 pkgdesc="a complete solution for creation and editing PDF and XPS files (free for NC use)"
-url='http://code-industry.net/pdfeditor.php'
 arch=('i686' 'x86_64')
+url='http://code-industry.net/pdfeditor.php'
 license=('commercial')
 depends=('qt4>=4.6' 'bzip2' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'graphite' 'harfbuzz' 'libffi' 'libice' 'libpng' 'libsm' 'libutil-linux' 'libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxext' 'libxrender' 'openssl' 'pcre' 'zlib')
-_verwatch=('https://code-industry.net/free-pdf-editor/' 'master-pdf-editor3-\(3.4.03-1\).*\.rpm' 't')
+options=('!strip')
+install="${pkgname}.install"
+_verwatch=('https://code-industry.net/free-pdf-editor/' 'master-pdf-editor-\([0-9\.]\+\).*\.tar\.gz' 't')
 source=("${pkgname}.desktop")
 # .tar.tgz has no structure and only one icon
 # .rpm has extra icons and the right structure
@@ -20,10 +22,8 @@ source=("${pkgname}.desktop")
 source_i686=("http://get.code-industry.net/public/${pkgname}${pkgver: 0:1}-${pkgver}-${pkgrel}.i386.rpm")
 source_x86_64=("http://get.code-industry.net/public/${pkgname}${pkgver: 0:1}-${pkgver}-${pkgrel}.x86_64.rpm")
 sha256sums=('28ce9b6647a8343e7b89626c9d2aa0c28da8a879077231e4eb9c16a6c5a604a0')
-sha256sums_i686=('bbce2fe393d80e863f6b6535cfd39547e35a489bd41ae15e7742731f2f86d28a')
-sha256sums_x86_64=('3f41869f9c18c5ec14b7d8d52842c3b19d9675bd510359cf1b8101594658a7c7')
-install="${pkgname}.install"
-options=('!strip')
+sha256sums_i686=('0a8887cef64e03b684d4a183d387e60a0f65a4a1c7a827b42419f42da23dc4b5')
+sha256sums_x86_64=('ffee1043d1b631c8e979f53ecbdfdd3179041e6a5766d137cc4081a4d16f7355')
 
 package() {
   set -u
