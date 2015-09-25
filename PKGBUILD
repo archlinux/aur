@@ -4,7 +4,7 @@
 #81aad9a50e380814107af0baaf5e05949f12b0cc
 pkgname=grub4dos
 pkgver="0.4.5c_20140822"
-pkgrel=1
+pkgrel=2
 _rel=81aad9a50e380814107af0baaf5e05949f12b0cc
 pkgdesc="A GRUB boot loader support menu on windows(fat,ntfs)/linux(ext2,3,4)"
 arch=(i686 x86_64)
@@ -12,6 +12,7 @@ url="http://grub4dos.chenall.net/"
 license=('GPL2')
 backup=(grub/menu.lst)
 makedepends=('upx' 'nasm')
+[ "$CARCH" = x86_64 ] && makedepends=('upx' 'nasm' 'gcc-multilib')
 install=grub4dos.install
 conflicts=(grub4dos)
 options=('!strip' '!buildflags' '!makeflags')

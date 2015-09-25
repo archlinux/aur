@@ -1,7 +1,7 @@
 pkgbase = grub4dos
 	pkgdesc = A GRUB boot loader support menu on windows(fat,ntfs)/linux(ext2,3,4)
 	pkgver = 0.4.5c_20140822
-	pkgrel = 1
+	pkgrel = 2
 	url = http://grub4dos.chenall.net/
 	install = grub4dos.install
 	arch = i686
