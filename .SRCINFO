@@ -1,0 +1,13 @@
+pkgbase = retdec-sh
+	pkgdesc = Shell scripts for decompiling and analyzing binary files through the retdec.com decompilation service by using their public REST API
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/s3rvac/retdec-sh
+	arch = any
+	license = MIT
+	depends = curl
+	source = https://github.com/s3rvac/retdec-sh/archive/0.1.tar.gz
+	sha512sums = ef6a633e698f8b63a29fd40a8815b418425f31ba78e76fe4c477cd781172845fab289e0805a06b0364ae1b2cb468c8388a02324da41ae8d9ceac4db1119fe6d9
+
+pkgname = retdec-sh
+
