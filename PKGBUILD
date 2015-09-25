@@ -10,7 +10,7 @@ url="http://${pkgbase}-sim.org"
 license=('GPL')
 depends=('gcc-libs' 'glibc' 'fox' 'xerces-c' 'glu' 'libgl')
 makedepends=('make' 'gcc' 'help2man')
-source=("http://www.dlr.de/ts/en/Portaldata/16/Resources/sumo/sumo-src-${pkgver}.zip")
+source=("http://www.dlr.de/ts/en/Portaldata/16/Resources/Projekte/SUMO/sumo-src-${pkgver}.zip")
 sha256sums=('e29fd76e9d922ece4fb1512553a589a253c6e73a1a8d86ac95f329858ba1138e')
 
 source+=("${pkgbase}.desktop"
@@ -18,9 +18,9 @@ source+=("${pkgbase}.desktop"
          "${pkgbase}.install")
 sha256sums+=('0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
              '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f'
-             '551e3b530e753af2cd7052e5213055a76fc8a6479d8735b8e75ad69a2e94f318')
+             'eeb0e9f85d72f06937462ceac90cc7f5bb55b56022472c476c137ee95b9fa56b')
              
-source+=("http://www.dlr.de/ts/en/Portaldata/16/Resources/sumo/sumo-doc-${pkgver}.zip")
+source+=("http://www.dlr.de/ts/en/Portaldata/16/Resources/Projekte/SUMO/sumo-doc-${pkgver}.zip")
 sha256sums+=('d017e7427041b3686887c19264e2c47cc6fc52e654169060bc4db41affe29b6e')
              
 prepare() {
