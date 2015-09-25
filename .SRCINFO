@@ -1,7 +1,7 @@
 pkgbase = perl-travel-status-de-iris
 	pkgdesc = Interface to IRIS-based web departure monitors (as used by DeutscheBahn)
-	pkgver = 1.02
-	pkgrel = 2
+	pkgver = 1.03
+	pkgrel = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-IRIS/
 	arch = any
 	license = PerlArtistic
@@ -14,13 +14,15 @@ pkgbase = perl-travel-status-de-iris
 	depends = perl-datetime-format-strptime
 	depends = perl-list-compare
 	depends = perl-list-moreutils
+	depends = perl-list-utilsby
 	depends = perl-libwww
+	depends = perl-text-levenshtein
 	depends = perl-xml-libxml
 	options = !emptydirs
-	source = http://finalrewind.org/projects/Travel-Status-DE-IRIS/Travel-Status-DE-IRIS-1.02.tar.gz
-	source = http://finalrewind.org/projects/Travel-Status-DE-IRIS/Travel-Status-DE-IRIS-1.02.tar.gz.asc
-	md5sums = 9d760aa1a0bf32b649e331e8d7ac6818
-	md5sums = 0b0c2ebc496c7677d62f4642c03f5604
+	source = http://finalrewind.org/projects/Travel-Status-DE-IRIS/Travel-Status-DE-IRIS-1.03.tar.gz
+	source = http://finalrewind.org/projects/Travel-Status-DE-IRIS/Travel-Status-DE-IRIS-1.03.tar.gz.asc
+	md5sums = 0e38c34845d0b56015be089c51457b2f
+	md5sums = acd134984eff082e7214be0fbeff8e51
 
 pkgname = perl-travel-status-de-iris
 
