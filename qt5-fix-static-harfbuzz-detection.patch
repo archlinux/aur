@@ -4,4 +4,4 @@
  SOURCES = harfbuzz.cpp
  CONFIG -= qt dylib
 -LIBS += -lharfbuzz
-+LIBS += -lharfbuzz -lglib-2.0 -lws2_32 -lole32 -lwinmm -lshlwapi -lintl
++LIBS += -lharfbuzz -lglib-2.0 -lws2_32 -lole32 -lwinmm -lshlwapi -lintl -liconv
