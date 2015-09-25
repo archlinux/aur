@@ -1,6 +1,6 @@
 pkgbase = cython2-kivy
 	pkgdesc = C-Extensions for Python; Kivy-compatible version
-	pkgver = 0.22
+	pkgver = 0.23
 	pkgrel = 1
 	url = http://www.cython.org
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = cython2-kivy
 	license = APACHE
 	makedepends = python2-setuptools
 	depends = python2
-	provides = cython2=0.21.2
+	provides = cython2=0.23
 	conflicts = cython2
-	source = http://cython.org/release/Cython-0.22.tar.gz
-	md5sums = 1ae25add4ef7b63ee9b4af697300d6b6
+	source = http://cython.org/release/Cython-0.23.tar.gz
+	sha256sums = 9fd01e8301c24fb3ba0411ad8eb16f5d9f9f8e66b1281fbe7aba2a9bd9d343dc
 
 pkgname = cython2-kivy
 
