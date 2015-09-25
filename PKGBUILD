@@ -1,9 +1,10 @@
 # Maintainer: grimsock <lord.grimsock at gmail dot com>
 # Contributor: James An <james@jamesan.ca>
+# Contributor: lybin
 
 pkgname=chromedriver
 pkgver=2.19
-pkgrel=3
+pkgrel=4
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/a/chromium.org/chromedriver/"
@@ -19,10 +20,9 @@ elif [ "$CARCH" = "x86_64" ]; then
     md5sums=('9e476aa088baab9bed9c1a5e7007c9c3')
 fi
 
-source=("http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_${_arch}.zip")
+source=("${pkgname}_${pkgver}_${_arch}.zip::http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_${_arch}.zip")
 
 package() {
-  mv "${pkgname}_${_arch}.zip" "${pkgname}_${pkgver}_${_arch}.zip"
   mkdir -p "$pkgdir/usr/bin/"
   install -D -m 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/"
 }

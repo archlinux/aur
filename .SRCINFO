@@ -1,7 +1,7 @@
 pkgbase = chromedriver
 	pkgdesc = Standalone server which implements WebDriver's wire protocol
 	pkgver = 2.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sites.google.com/a/chromium.org/chromedriver/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = chromedriver
 	depends = gconf
 	optdepends = google-chrome
 	optdepends = chromium
-	source = http://chromedriver.storage.googleapis.com/2.19/chromedriver_.zip
+	source = chromedriver_2.19_.zip::http://chromedriver.storage.googleapis.com/2.19/chromedriver_.zip
 
 pkgname = chromedriver
 
