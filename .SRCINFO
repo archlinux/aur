@@ -1,12 +1,15 @@
 pkgbase = vapoursynth-plugin-vshelpers-git
 	pkgdesc = Plugin for Vapoursynth: vshelpers (GIT version)
-	pkgver = r1
+	pkgver = r2
 	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = vapoursynth
+	depends = ffms2
+	depends = vapoursynth-plugin-lsmashsource
+	depends = vapoursynth-plugin-fmtconv-git
+	depends = vapoursynth-plugin-removedirtvs-git
 	provides = vapoursynth-plugin-vshelpers
 	conflicts = vapoursynth-plugin-vshelpers
 	source = vshelpers::git+https://gist.github.com/bba3f65469acfe0ec08a.git
