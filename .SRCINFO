@@ -1,0 +1,11 @@
+pkgbase = manager.io
+	pkgdesc = Manager is free accounting software for small business.
+	pkgver = 15.5.61
+	pkgrel = 1
+	url = http://www.manager.io
+	arch = i686
+	arch = x86_64
+	source = http://download.manager.io/Manager.deb
+
+pkgname = manager.io
+
