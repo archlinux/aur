@@ -39,7 +39,7 @@ prepare() {
 }
 
 package_lib32-opencl-nvidia-beta() {
-  pkgdesc="OpenCL implemention for NVIDIA (32-bit, beta)"
+  pkgdesc="NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-beta' "
   depends=('lib32-libcl' 'lib32-zlib' 'lib32-gcc-libs')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=('lib32-opencl-nvidia')
@@ -59,7 +59,7 @@ package_lib32-opencl-nvidia-beta() {
 }
 
 package_lib32-nvidia-libgl-beta() {
-  pkgdesc="NVIDIA library symlinks (32-bit, beta)"
+  pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-beta'"
   depends=('lib32-nvidia-utils-beta')
   provides=('lib32-libgl' 'lib32-nvidia-libgl')
   conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2')
@@ -92,7 +92,7 @@ package_lib32-nvidia-libgl-beta() {
 }
 
 package_lib32-nvidia-utils-beta() {
-  pkgdesc="NVIDIA libraries (32-bit, beta)"
+  pkgdesc="NVIDIA driver utilities and libraries (32-bit, beta)"
   depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('lib32-opencl-nvidia-beta: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver")
