@@ -6,12 +6,12 @@ pkgrel=1
 pkgdesc="Ronn converts simple, human readable textfiles to roff for terminal display, and also to HTML"
 arch=("any")
 url="http://rtomayko.github.com/ronn"
-license=("MIT")
-depends=(ruby ruby-hpricot ruby-rdiscount ruby-mustache)
+license=('MIT')
+depends=('ruby' 'ruby-hpricot' 'ruby-rdiscount' 'ruby-mustache')
 options=(!emptydirs)
-source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
+source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-md5sums=("c5aa4ef58d35d0cc635b769281e03225")
+md5sums=('c5aa4ef58d35d0cc635b769281e03225')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
