@@ -1,12 +1,12 @@
 pkgbase = adminer
-	pkgdesc = A full-featured MySQL management tool written in PHP
+	pkgdesc = A full-featured MySQL management tool written in PHP.
 	pkgver = 4.2.2
-	pkgrel = 1
-	url = http://www.adminer.org
+	pkgrel = 2
+	url = https://www.adminer.org
 	install = adminer.install
 	arch = any
-    license = Apache
-    license = GPL
+	license = Apache,
+	license = GPL
 	depends = php
 	optdepends = mysql
 	optdepends = apache
@@ -14,8 +14,10 @@ pkgbase = adminer
 	optdepends = postgresql
 	optdepends = sqlite3
 	conflicts = adminer-git
-	source = http://downloads.sourceforge.net/adminer/adminer-4.2.2.php
-	sha512sums = 0b996a58bbf8f2ac611bd63bce1c3563edb89f4ca8cd8bbe00b6d6481df86eaa7574853a24cf1751ee15356df39b5276202034223386ed18b514f7f7e01259ef
+	source = adminer.install
+	source = https://www.adminer.org/static/download/4.2.2/adminer-4.2.2.php
+	sha256sums = f3d2c8d2119cccf4d84d32ad2662300eecda62ffba7304505e563e192b5a10ef
+	sha256sums = 4dced0c64dbeb0f6e9a27c4ec5838bbf5f33b82c368a8965b47ae3da6c9bcb2c
 
 pkgname = adminer
 

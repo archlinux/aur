@@ -1,17 +1,21 @@
-# Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot]com>
+# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Contributor: Sabart Otto <seberm at gmail dot com>
 
 pkgname=adminer
 pkgver=4.2.2
-pkgrel=1
-pkgdesc="A full-featured MySQL management tool written in PHP"
+pkgrel=2
+pkgdesc="A full-featured MySQL management tool written in PHP."
 arch=('any')
 license=('Apache', 'GPL')
 depends=('php')
 conflicts=('adminer-git')
 optdepends=('mysql' 'apache' 'adminer-skins' 'postgresql' 'sqlite3')
-url="http://www.adminer.org"
+url="https://www.adminer.org"
 install=${pkgname}.install
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.php")
+source=("${pkgname}.install"
+        "https://www.adminer.org/static/download/${pkgver}/${pkgname}-${pkgver}.php") 
+sha256sums=('f3d2c8d2119cccf4d84d32ad2662300eecda62ffba7304505e563e192b5a10ef'
+            '4dced0c64dbeb0f6e9a27c4ec5838bbf5f33b82c368a8965b47ae3da6c9bcb2c')
 
 package() {
   _instdir=$pkgdir/usr/share/webapps/$pkgname
@@ -34,5 +38,3 @@ EOF
 #  echo "Include conf/extra/httpd-${pkgname}.conf" >> $pkgdir/etc/httpd/conf/httpd.conf
 
 }
-
-sha512sums=('0b996a58bbf8f2ac611bd63bce1c3563edb89f4ca8cd8bbe00b6d6481df86eaa7574853a24cf1751ee15356df39b5276202034223386ed18b514f7f7e01259ef')
