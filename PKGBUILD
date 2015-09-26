@@ -1,7 +1,7 @@
 # Maintainer: Patrick Niklaus <patrick.niklaus@student.kit.edu>
 pkgname=i3-gnome
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Starts i3 inside a gnome session."
 arch=('any')
 url="https://github.com/TheMarex/i3-gnome"
