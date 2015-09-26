@@ -1,12 +1,14 @@
 # Maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
 pkgname=python-err
-pkgver=2.2.1
-pkgrel=3
+pkgver=3.0.4
+pkgrel=1
 pkgdesc="A plugin based chatbot designed to be easily deployable, extensible and maintainable."
 arch=('any')
 url="http://errbot.net"
 license=('GPL')
 depends=('python'
+         'python-markdown'
+         'python-ansi'
          'python-colorlog'
          'python-daemonize'
          'python-bottle'
@@ -24,7 +26,7 @@ optdepends=('python-sleekxmpp: XMPP backend'
 options=(!emptydirs)
 install=
 source=("https://pypi.python.org/packages/source/e/err/err-$pkgver.tar.gz")
-sha256sums=('de6bcf6e310c9d20112b4379f905059db60c2ee5126678155a991b6acbd437a3')
+sha256sums=('658321641ec1f1b57ab53eafc64d78dfe804f56ae0a111f8eb18d6cf64702eea')
 
 package() {
   cd "$srcdir/err-$pkgver"
