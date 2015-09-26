@@ -1,7 +1,7 @@
 pkgbase = lua-oocairo-git
 	pkgdesc = Module providing access to Cairo from within Lua
-	pkgver = 2015.04.03.g2f41d09
-	pkgrel = 2
+	pkgver = 2015.07.14.gc0b15cd
+	pkgrel = 1
 	url = https://github.com/awesomeWM/oocairo
 	arch = i686
 	arch = x86_64
