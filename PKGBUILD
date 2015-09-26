@@ -1,6 +1,6 @@
 pkgname=mupen64plus-qt
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A basic launcher for Mupen64Plus"
 arch=('i686' 'x86_64')
 url="https://github.com/dh4/mupen64plus-qt"
@@ -12,6 +12,8 @@ sha256sums=('d68b80a03c7ee5622d8e94066b338805500614b9424961020487454fd14b89ef')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    sed -i 's#include <quazip/#include <quazip5/#g' src/common.h
 
     qmake-qt5
     make

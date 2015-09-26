@@ -1,7 +1,7 @@
 pkgbase = mupen64plus-qt
 	pkgdesc = A basic launcher for Mupen64Plus
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dh4/mupen64plus-qt
 	install = mupen64plus-qt.install
 	arch = i686
