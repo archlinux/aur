@@ -1,20 +1,23 @@
 diff -rupN rpcs3.orig/CMakeLists.txt rpcs3/CMakeLists.txt
---- rpcs3.orig/CMakeLists.txt	2015-06-26 14:55:21.669847789 +0200
-+++ rpcs3/CMakeLists.txt	2015-06-26 14:55:44.725983487 +0200
-@@ -11,5 +11,4 @@ if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
+--- rpcs3.orig/CMakeLists.txt	2015-09-26 12:36:05.102057620 +0200
++++ rpcs3/CMakeLists.txt	2015-09-26 12:36:25.371090050 +0200
+@@ -11,7 +11,6 @@ if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
  	message( FATAL_ERROR "RPCS3 can only be compiled on 64-bit platforms." )
  endif()
  
 -add_subdirectory( asmjit )
- add_subdirectory( rpcs3 )
+ # TODO: do real installation, including copying directory structure
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${PROJECT_BINARY_DIR}/bin")
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${PROJECT_BINARY_DIR}/bin")
 diff -rupN rpcs3.orig/rpcs3/CMakeLists.txt rpcs3/rpcs3/CMakeLists.txt
---- rpcs3.orig/rpcs3/CMakeLists.txt	2015-06-26 14:55:21.673181045 +0200
-+++ rpcs3/rpcs3/CMakeLists.txt	2015-06-26 14:58:49.521937605 +0200
-@@ -89,12 +89,11 @@ include_directories(
+--- rpcs3.orig/rpcs3/CMakeLists.txt	2015-09-26 12:28:22.058624605 +0200
++++ rpcs3/rpcs3/CMakeLists.txt	2015-09-26 12:34:01.975575577 +0200
+@@ -101,12 +101,12 @@ ${GLEW_INCLUDE_DIR}
  ${wxWidgets_INCLUDE_DIRS}
  ${OPENAL_INCLUDE_DIR}
  ${LLVM_INCLUDE_DIRS}
 -"${RPCS3_SRC_DIR}/../ffmpeg/${PLATFORM_ARCH}/include"
++"/usr/include/ffmpeg"
  "${RPCS3_SRC_DIR}"
  "${RPCS3_SRC_DIR}/Loader"
  "${RPCS3_SRC_DIR}/Crypto"
@@ -22,15 +25,41 @@ diff -rupN rpcs3.orig/rpcs3/CMakeLists.txt rpcs3/rpcs3/CMakeLists.txt
 -"${RPCS3_SRC_DIR}/../asmjit/src/asmjit"
 +"/usr/include/asmjit"
  )
+ if(WIN32)
+ 	include_directories(BEFORE "${RPCS3_SRC_DIR}/../minidx9/Include")
+@@ -127,7 +127,7 @@ if(LLVM_FOUND)
+ 	endif()
+ endif()
  
- add_definitions(${LLVM_DEFINITIONS})
-@@ -130,8 +128,7 @@ set_source_files_properties(${RPCS3_SRC_
+-link_directories("${RPCS3_SRC_DIR}/../ffmpeg/${PLATFORM_ARCH}/lib" "${RPCS3_SRC_DIR}/../asmjit/")
++link_directories("/usr/lib")
+ 
+ get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+ foreach(dir ${dirs})
+@@ -151,9 +151,7 @@ list(REMOVE_ITEM RPCS3_SRC ${RPCS3_SRC_D
  
  add_executable(rpcs3 ${RPCS3_SRC})
  
--set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_CURRENT_BINARY_DIR}/../asmjit/") #hack because the asmjit cmake file force fno exceptions
--target_link_libraries(rpcs3  asmjit.a  ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES} libavformat.a libavcodec.a libavutil.a libswresample.a libswscale.a ${ZLIB_LIBRARIES} ${LLVM_LIBS} ${ADDITIONAL_LIBS} )
-+target_link_libraries(rpcs3 libasmjit.a ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES} libavformat.so libavcodec.so libavutil.so libswresample.so libswscale.so ${ZLIB_LIBRARIES} ${LLVM_LIBS} ${ADDITIONAL_LIBS})
+-if(NOT MSVC)
+-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_CURRENT_BINARY_DIR}/../asmjit/") #hack because the asmjit cmake file force fno exceptions upd: not sure if vs2015 build is affected
+-else()
++if(MSVC)
+ 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /NODEFAULTLIB:libc.lib /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:libcd.lib /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcrtd.lib")
+ endif()
+ if(WIN32) # I'm not sure we need all of these libs, but we link them in vs
+@@ -165,11 +163,11 @@ if(WIN32) # I'm not sure we need all of
+ 	endif()
+ else()
+ 	if(LLVM_FOUND)
+-		target_link_libraries(rpcs3  asmjit.a  ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})
+-		target_link_libraries(rpcs3  libavformat.a libavcodec.a libavutil.a libswresample.a libswscale.a ${ZLIB_LIBRARIES} ${LLVM_LIBS} ${ADDITIONAL_LIBS})
++		target_link_libraries(rpcs3  libasmjit.a  ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})
++		target_link_libraries(rpcs3  libavformat.so libavcodec.so libavutil.so libswresample.so libswscale.so ${ZLIB_LIBRARIES} ${LLVM_LIBS} ${ADDITIONAL_LIBS})
+ 	else()
+-		target_link_libraries(rpcs3  asmjit.a  ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})
+-		target_link_libraries(rpcs3  libavformat.a libavcodec.a libavutil.a libswresample.a libswscale.a ${ZLIB_LIBRARIES} ${ADDITIONAL_LIBS})
++		target_link_libraries(rpcs3  libasmjit.a  ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})
++		target_link_libraries(rpcs3  libavformat.so libavcodec.so libavutil.so libswresample.so libswscale.so ${ZLIB_LIBRARIES} ${ADDITIONAL_LIBS})
+     endif()
+ endif()
  
- set_target_properties(rpcs3 PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "${RPCS3_SRC_DIR}/stdafx.h")
- cotire(rpcs3)

@@ -1,20 +1,21 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.0.5.r1833.bf74c0c
+pkgver=0.0.0.5.r2529.286d296
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
 url='https://github.com/DHrpcs3/rpcs3'
 license=('GPL2')
-depends=('ffmpeg' 'glew' 'openal' 'wxgtk')
-makedepends=('asmjit-git' 'cmake' 'git' 'llvm35')
+depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libx11' 'openal' 'wxgtk'
+         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so')
+makedepends=('asmjit-git' 'cmake' 'git')
 provides=('rpcs3')
 conflicts=('rpcs3')
 source=('git+https://github.com/DHrpcs3/rpcs3.git'
         'rpcs3-system-libs.patch')
 sha256sums=('SKIP'
-            'ba7e9e639f3254359ae41f74a4604f856be7a86e22cb0ca0476d8fe1445bb916')
+            '975459f9ecd2311b69ff514ae51e85e1b7cf6d585998fe86caa6be9c963bef13')
 
 pkgver() {
   cd rpcs3
@@ -26,15 +27,15 @@ prepare() {
   cd rpcs3
 
   patch -Np1 -i ../rpcs3-system-libs.patch
-}
-
-build() {
-  cd rpcs3
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd rpcs3/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \

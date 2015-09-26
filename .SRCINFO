@@ -1,6 +1,6 @@
 pkgbase = rpcs3-git
 	pkgdesc = A Sony PlayStation 3 emulator
-	pkgver = 0.0.0.5.r1833.bf74c0c
+	pkgver = 0.0.0.5.r2529.286d296
 	pkgrel = 1
 	url = https://github.com/DHrpcs3/rpcs3
 	arch = x86_64
@@ -8,17 +8,23 @@ pkgbase = rpcs3-git
 	makedepends = asmjit-git
 	makedepends = cmake
 	makedepends = git
-	makedepends = llvm35
-	depends = ffmpeg
+	depends = gcc-libs
 	depends = glew
+	depends = glibc
+	depends = libgl
+	depends = libx11
 	depends = openal
 	depends = wxgtk
+	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libavutil.so
+	depends = libswscale.so
 	provides = rpcs3
 	conflicts = rpcs3
 	source = git+https://github.com/DHrpcs3/rpcs3.git
 	source = rpcs3-system-libs.patch
 	sha256sums = SKIP
-	sha256sums = ba7e9e639f3254359ae41f74a4604f856be7a86e22cb0ca0476d8fe1445bb916
+	sha256sums = 975459f9ecd2311b69ff514ae51e85e1b7cf6d585998fe86caa6be9c963bef13
 
 pkgname = rpcs3-git
 
