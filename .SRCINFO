@@ -1,0 +1,21 @@
+pkgbase = autistdraw-git
+	pkgdesc = Terminal drawing application
+	pkgver = r32.254b993
+	pkgrel = 1
+	url = https://github.com/pjanouch/autistdraw
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	depends = libev
+	depends = ncurses
+	provides = autistdraw
+	conflicts = autistdraw
+	options = zipman
+	source = git+https://github.com/pjanouch/autistdraw
+	md5sums = SKIP
+
+pkgname = autistdraw-git
+
