@@ -1,7 +1,7 @@
 pkgbase = gsview
 	pkgdesc = A nice looking GUI for ghostscript with some extraction features
 	pkgver = 4.9
-	pkgrel = 10
+	pkgrel = 11
 	url = http://pages.cs.wisc.edu/~ghost/gsview/get49.htm
 	install = gsview.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = gsview
 	depends = gtk
 	depends = ghostscript
 	options = !makeflags
-	source = http://fossies.org/unix/misc/ghost/ghostgum/gsview-4.9.tar.gz
+	source = http://fossies.org/unix/misc/old/ghost/ghostgum/gsview-4.9.tar.gz
 	source = gsview.desktop
 	md5sums = 96ca9460c8bd86ef20d881554331d72f
 	md5sums = 288ad9f7cf10136a5626b7e4c40605e2
