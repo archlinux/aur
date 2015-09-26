@@ -1,0 +1,39 @@
+pkgbase = perl-type-tie
+	pkgdesc = tie a variable to a type constraint
+	pkgver = 0.009
+	pkgrel = 1
+	url = https://metacpan.org/release/Type-Tie
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-requires>=0
+	checkdepends = perl-test-simple>=0.96
+	depends = perl>=5.8.5
+	depends = perl-exporter-tiny>=0.026
+	provides = perl-type-tie-hash=0.009
+	provides = perl-type-tie-array=0.009
+	provides = perl-type-tie-scalar=0.009
+	provides = perl-type-tie-base=0.009
+	provides = perl-type-tie-hash=0.009
+	provides = perl-type-tie-array=0.009
+	provides = perl-type-tie-scalar=0.009
+	provides = perl-type-tie-base=0.009
+	provides = perl-type-tie-hash=0.009
+	provides = perl-type-tie-array=0.009
+	provides = perl-type-tie-scalar=0.009
+	provides = perl-type-tie-base=0.009
+	provides = perl-type-tie-hash=0.009
+	provides = perl-type-tie-array=0.009
+	provides = perl-type-tie-scalar=0.009
+	provides = perl-type-tie-base=0.009
+	provides = perl-type-tie-hash=0.009
+	provides = perl-type-tie-array=0.009
+	provides = perl-type-tie-scalar=0.009
+	provides = perl-type-tie-base=0.009
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Type-Tie-0.009.tar.gz
+	sha256sums = 565d9ec0a7f93095d5e68a8794a25c0b27e292007e04fdb77793f477da1463f3
+
+pkgname = perl-type-tie
+
