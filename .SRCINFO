@@ -1,0 +1,18 @@
+pkgbase = python-valve-git
+	pkgdesc = A Python library that provides an all-in-one interface to various Valve products and services.
+	pkgver = r110.58788a5
+	pkgrel = 1
+	url = https://github.com/Holiverh/python-valve
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	depends = python-six
+	depends = python-setuptools
+	provides = python-valve
+	conflicts = python-valve
+	source = git+https://github.com/Holiverh/python-valve.git
+	sha512sums = SKIP
+
+pkgname = python-valve-git
+
