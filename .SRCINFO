@@ -1,0 +1,24 @@
+pkgbase = airvpn-git
+	pkgdesc = AirVPN client "Eddie" based on OpenVPN
+	pkgver = r186.83eae96
+	pkgrel = 1
+	url = https://airvpn.org/linux/
+	install = airvpn-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gksu
+	depends = mono
+	depends = openvpn
+	depends = desktop-file-utils
+	optdepends = stunnel: VPN over SSL
+	optdepends = openssh: VPN over SSH
+	provides = airvpn
+	conflicts = airvpn
+	conflicts = airvpn-beta-bin
+	source = git+https://github.com/AirVPN/airvpn-client.git
+	sha1sums = SKIP
+
+pkgname = airvpn-git
+
