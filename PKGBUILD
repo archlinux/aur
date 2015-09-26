@@ -3,7 +3,7 @@
 pkgname=ttf-sil-abyssinica
 _fname=AbyssinicaSIL
 pkgver=1.500
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenType calligraphic font for Ethiopic languages from SIL"
 arch=('i686' 'x86_64')
 url="http://scripts.sil.org/cms/scripts/page.php?item_id=${_fname}"
@@ -18,6 +18,7 @@ sha256sums=('e48a77d5ab8ee0b06464a5b29be70f292aa25dc1e73eb39ec933bd7fa47bbd86'
 
 package() {
     cd "${srcdir}"
-    install -Dm644 ${_fname}-${pkgver}/${_fname}-R.ttf ${pkgdir}/usr/share/fonts/TTF/${_fname}-R.ttf
+    find -type f -name '*.ttf' -execdir \
+        install -Dm644 {} ${pkgdir}/usr/share/fonts/TTF/{} \;
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
