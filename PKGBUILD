@@ -6,6 +6,7 @@ pkgrel=3
 pkgdesc="Samsung ML-1640 CUPS driver"
 arch=('i686' 'x86_64')
 depends=('cups' 'ghostscript')
+conflicts=('samsung-printers')
 license='custom:samsung'
 url="http://www.samsung.com"
 source=("http://org.downloadcenter.samsung.com/content/DR/200911/20091118145015140/UnifiedLinuxDriver_1.01.tar.gz")
