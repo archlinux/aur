@@ -1,24 +1,24 @@
 # Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 
 pkgname=freedv
-pkgver="1.0.1"
-pkgrel=2
+pkgver="1.1"
+pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://freedv.org/"
-#depends=('glibc' 'portaudio' 'hamlib' 'sox' 'wxgtk' 'codec2' 'speex')
-depends=('glibc' 'portaudio' 'hamlib' 'wxgtk' 'codec2' 'speex')
+depends=('glibc' 'portaudio' 'hamlib' 'sox' 'wxgtk' 'codec2' 'speex')
+#depends=('glibc' 'portaudio' 'hamlib' 'wxgtk' 'codec2' 'speex')
 makedepends=('cmake')
-source=("https://files.freedv.org/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('6db5ad1a8d7674151c06ce23e5b86122d2316c29858dbf382423d114328ca8f3ca39a6f28a3b15b458414e7786c849519264af138d74a34ce65d74eaf7aabb0a')
+source=("https://files.freedv.org/$pkgname/$pkgname-$pkgver.tar.xz")
+sha512sums=('bd149f74ceae9c63b23c37d2e6d876238b9c1759d8bd1213675d3d0d2f817863e952129306ca37da9f41297b17a9f74d57cb807689ef051b3d94a8f8b52b5727')
 
 
 build() {
   cd "$pkgname-$pkgver"
   mkdir -p build_linux
   cd build_linux
-  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib -DUSE_STATIC_SOX=TRUE -DUSE_STATIC_SPEEXDSP=FALSE -DUSE_STATIC_CODEC2=FALSE
+  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib -DUSE_STATIC_SOX=TRUE -DUSE_STATIC_SPEEXDSP=FALSE -DUSE_STATIC_CODEC2=FALSE -DBOOTSTRAP_WXWIDGETS=FALSE
   make 
 }
 
