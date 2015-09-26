@@ -8,7 +8,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.9.beta7.r0.gaeeddeb
+pkgver=6.9.rc0.r0.g2f7c727
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -40,9 +40,9 @@ makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-"http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2" 'anal.h'
-'package.patch' 'env.patch' 'paths.patch' 'clean.patch' 'skip-check.patch' 
-'pexpect-env.patch' 'pexpect-del.patch' 'disable-fes.patch')
+"http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2" anal.h
+package.patch env.patch paths.patch clean.patch skip-check.patch 
+pexpect-env.patch pexpect-del.patch disable-fes.patch kernel.json)
 md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
