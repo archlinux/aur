@@ -1,5 +1,5 @@
 pkgbase = linux-pf-lts
-	pkgver = 3.14.44
+	pkgver = 3.14.51
 	pkgrel = 1
 	url = http://pf.natalenko.name/
 	arch = i686
@@ -38,6 +38,46 @@ pkgbase = linux-pf-lts
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.41-42.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.42-43.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.43-44.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.44-45.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.45-46.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.46-47.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.47-48.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.48-49.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.49-50.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.50-51.xz
+	sha256sums = 61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa
+	sha256sums = SKIP
+	sha256sums = fd4769f86fbe34bf95d26abd6a61ce06ffea9982a782612e60fffdb830927b39
+	sha256sums = c9ec6e9493c871fe2390efed7d7a29ab447135117e9c06739d599f1c0ebe4ea4
+	sha256sums = 1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0
+	sha256sums = faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182
+	sha256sums = 6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02
+	sha256sums = 52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29
+	sha256sums = 65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d
+	sha256sums = cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7
+	sha256sums = 9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a
+	sha256sums = 03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf
+	sha256sums = 51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19
+	sha256sums = 9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b
+	sha256sums = 3b71affbe4b00da4cb31116449d69ac3d0f00d228feaf4f2cc4d747330bedba4
+	sha256sums = 06e080fb001112bb2418539058e987688d9658a927153ae79c967c11860e3b68
+	sha256sums = d60662a9f6b2696c20b6fbd12f365913eeb98d5edefca34587092eac9cb49774
+	sha256sums = a8602dc9e1591ecea14e2f3de06d20970828915b7ff2194b2bc31845b8ff5927
+	sha256sums = e7f9c907cd19aa6ca2f5c3363a5f3cd1d0b4e4c4229fbe2ded6c83356bfdf6c6
+	sha256sums = 4ae4de332c46eb0bae95268ecb57a51579894ef354b75dcf09d8720b0c331164
+	sha256sums = 17829b034090336a2137c87a9447a696a988f4c91b4b6eec197fb8525f578eec
+	sha256sums = d9bd56619b609f9b37f1301af0f539dfd47f2e7ad8f9682f4a7c0ce30b2baf82
+	sha256sums = de9202050d916e4b2426ec5630d15165c22b3911b7dbf5f02068daeb453fb330
+	sha256sums = 1c105726eb1ceda96f7db33fdfe269fea405d7599ca5b57aabe8af565638d427
+	sha256sums = 1b7c21229775206bc0a7a44a5f9af23ea7ff0b7c9fdb1bad0e6536097c93b4cc
+	sha256sums = 585481b0cb3d830ed61f480acaec12d93b96ff3a72f845446bbc517b258d07e9
+	sha256sums = 349d7b0cd95c801da729a023f852ee0a7bb07cdb28965e3a07dc76b7563975dd
+	sha256sums = 73b3c346337fa765ce5051c9e52ccd9e7444632ed675ee36926e396f0ca07872
+	sha256sums = f82378ee91d9dc9c2f848c73155f516b157752e3810c8187b5f370ca4e0375ea
+	sha256sums = c52712a05759a89c746f03e6b75e36b6d81d8a7585f522a45630c53d6253a692
+	sha256sums = fb73e37497ef06f1948e49dbd90700d3da477cddb2a1f0ec254f1cd0b16b85f1
+	sha256sums = 5f3f624d3a845a94e378f7027a6b43d2a66ed0e542929deb6036b11f2e21e40a
+	sha256sums = 52d0cb16fb2583425cee4cf5cbd7caad6d0fd8f4231e1bc88cf572f014ee3ec7
 
 pkgname = linux-pf-lts
 	pkgdesc = Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support.
@@ -55,7 +95,7 @@ pkgname = linux-pf-lts
 	optdepends = nvidia-beta-all: NVIDIA drivers for all installed kernels
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.
 	provides = linux-pf-lts=3.14
-	provides = linux=3.14.44
+	provides = linux=3.14.51
 	provides = aufs3
 	conflicts = linux-pf-lts
 	replaces = aufs3
@@ -64,6 +104,6 @@ pkgname = linux-pf-lts
 pkgname = linux-pf-lts-headers
 	pkgdesc = Header files and scripts for building modules for linux-pf-lts kernel.
 	provides = linux-pf-lts-headers
-	provides = linux-headers=3.14.44
+	provides = linux-headers=3.14.51
 	conflicts = linux-pf-lts-headers
 
