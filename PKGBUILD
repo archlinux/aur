@@ -1,16 +1,16 @@
 # Maintainer: Simon Chabot <simon dot chabot at etu dot utc dot fr>
 pkgname=exifread
 _pkgname=ExifRead
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Python library to extract EXIF data from tiff and jpeg files"
 arch=('any')
 url="https://pypi.python.org/pypi/ExifRead/"
 license=('BSD')
 depends=('python3')
-provides=('exifread=2.1.1')
+provides=('exifread=2.1.2')
 source=(https://pypi.python.org/packages/source/E/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('1ad3338c0f2cf3e3d9e90e6b33db5754')
+md5sums=('8f5099e11e2137e0ce5acbec91c219be')
 
 
 package() {
