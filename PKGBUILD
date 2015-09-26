@@ -6,10 +6,10 @@ _mypkgn=firefox-beta
 pkgdesc='Perl script for installing latest FF beta in the language of your choice'
 url='http://www.mozilla.com/firefox/channel/'
 pkgver=42.0b1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL' 'GPL3')
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+depends=('gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
