@@ -1,13 +1,13 @@
 pkgbase = lua51-llthreads2
 	pkgdesc = This is full dropin replacement for llthreads library
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/moteus/lua-llthreads2/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks5.1
-	depends = lua5.1
+	depends = lua51
 	source = http://github.com/moteus/lua-llthreads2/archive/v0.1.2.tar.gz
 	md5sums = f20833d7a4c7560895b5d9ad2a3c24ae
 
