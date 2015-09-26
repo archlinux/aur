@@ -1,4 +1,4 @@
-pkgbase = gtk-theme-arc-colors-revival
+pkgbase = arc-colors-revival
 	pkgdesc = Arc Colors wallpapers
 	pkgver = 0.1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = gtk-theme-arc-colors-revival
 	source = arc-colors-revival-0.1.tar.gz::https://github.com/Somasis/arc-colors-revival/archive/v0.1.tar.gz
 	sha256sums = a3234ab6a7826537595c0e01e6bed467eb9be0be0bb148c6942d2551115a01d2
 
-pkgname = gtk-theme-arc-colors-revival
+pkgname = arc-colors-revival
 

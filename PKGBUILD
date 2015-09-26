@@ -3,8 +3,7 @@
 # Contributor: Arkham <arkham at archlinux dot us> 
 # Contributor: Artyom Smirnov <smirnoffjr@gmail.com>
 
-pkgname=gtk-theme-arc-colors-revival
-_pkgname=arc-colors-revival
+pkgname=arc-colors-revival
 pkgver=0.1
 pkgrel=1
 pkgdesc='Arc Colors wallpapers'
@@ -17,6 +16,6 @@ source=("arc-colors-revival-$pkgver.tar.gz::https://github.com/Somasis/arc-color
 sha256sums=('a3234ab6a7826537595c0e01e6bed467eb9be0be0bb148c6942d2551115a01d2')
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install 
 }
