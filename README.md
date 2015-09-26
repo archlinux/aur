@@ -21,11 +21,12 @@ package inside the container.  As a result you should get the built package in
 your current directory.
 
 ## License
-php-imagick-aur is licensed under the MIT license.  See [LICENSE](LICENSE) for
-the full license text.
+php-imagick-aur is licensed under the MIT license.  See [LICENSE] for the full
+license text.
 
 [AUR]: https://aur.archlinux.org/
 [imagick]: http://pecl.php.net/package/imagick
 [makepkg]: https://wiki.archlinux.org/index.php/Makepkg
 [Docker]: https://www.docker.com/
 [Docker Compose]: http://docs.docker.com/compose/
+[LICENSE]: https://github.com/nubs/php-imagick-aur/blob/master/LICENSE
