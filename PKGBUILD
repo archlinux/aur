@@ -1,7 +1,7 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-artyfx-git
-pkgver=release.1.2.36.g3a8cb9a
-pkgrel=2
+pkgver=1.2.r36.g3a8cb9a
+pkgrel=3
 pkgdesc="OpenAV ArtyFX LV2 plugin suite"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/artyfx/"
@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ${_gitname}
-  git describe --always | sed 's|-|.|g'
+  git describe --long --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
