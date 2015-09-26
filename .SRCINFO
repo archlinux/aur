@@ -1,12 +1,11 @@
 pkgbase = eclipse-pmd
 	pkgdesc = Plug-in to analyze static Java, Javascript, XML, and XSL source code
 	pkgver = 4.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pmd.sourceforge.net/
 	arch = any
 	license = BSD
-	makedepends = java-environment-common
-	depends = eclipse>=3.4.0
+	depends = eclipse>=4.5.0
 	noextract = feature.jar
 	noextract = plugin.jar
 	options = !strip
