@@ -4,7 +4,7 @@
 _webviewprovider=qt5-webkit
 pkgname=tageditor
 pkgver=1.1.5
-pkgrel=10
+pkgrel=11
 arch=('i686' 'x86_64')
 pkgdesc="A tag editor with Qt GUI and command-line interface supporting MP4 (iTunes), ID3, Vorbis and Matroska."
 license=('GPL')
@@ -23,7 +23,7 @@ build() {
         cfg+=(forcewebkit)
     fi
     INSTALL_ROOT=$pkgdir/usr/ qmake-qt5 "$pkgname.pro" $(for val in "${cfg[@]}"; do echo -n "CONFIG+=$val "; done)
-    make -j 4
+    make
 }
 
 package() {
