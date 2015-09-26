@@ -57,9 +57,9 @@ package() {
   install -Dm644 "${srcdir}/rox.svg" "${pkgdir}/usr/share/pixmaps/rox.svg"
   install -Dm644 "${srcdir}/rox.png" "${pkgdir}/usr/share/pixmaps/rox.png"
 
-  cp "${pkgdir}/usr/share"
+  cd "${pkgdir}/usr/share"
   ln -sf ./rox ./ROX-Filer
 
-  cp "${pkgdir}/usr/bin"
+  cd "${pkgdir}/usr/bin"
   ln -sf ./rox ./rox-filer
 }
