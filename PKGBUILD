@@ -1,4 +1,3 @@
-﻿
 # Maintainer: lobisquit <enricolovisotto@gmail.com>
 # Contributor: chmgtr1 <chmgtr1@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
