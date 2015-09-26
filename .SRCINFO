@@ -1,0 +1,25 @@
+pkgbase = sdtui-git
+	pkgdesc = StarDict terminal UI
+	pkgver = r96.4c18bd5
+	pkgrel = 1
+	url = https://github.com/pjanouch/sdtui
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = libxslt
+	depends = zlib
+	depends = glib2
+	depends = gtk3
+	depends = ncurses
+	depends = pango
+	provides = sdtui
+	conflicts = sdtui
+	options = zipman
+	source = git+https://github.com/pjanouch/sdtui
+	md5sums = SKIP
+
+pkgname = sdtui-git
+
