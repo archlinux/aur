@@ -1,5 +1,5 @@
 pkgname=wxmaxima-git
-pkgver=r2756.6798e4c
+pkgver=r2828.b849a7a
 pkgrel=1
 pkgdesc="A document based interface for the computer algebra system Maxima."
 arch=('i686' 'x86_64')
