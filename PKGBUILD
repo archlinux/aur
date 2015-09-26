@@ -2,9 +2,9 @@
 
 pkgname=dxflib
 pkgver=2.5.0.0
-pkgrel=1
-pkgdesc="dxflib is an open source C++ library mainly for parsing DXF files"
-arch=("any")
+pkgrel=2
+pkgdesc="Open source C++ library mainly for parsing DXF files"
+arch=("x86_64" "i686")
 url="http://www.ribbonsoft.com/en/what-is-dxflib"
 license=('GPL')
 source=("http://www.ribbonsoft.com/archives/$pkgname/$pkgname-$pkgver-1.src.tar.gz"
@@ -29,4 +29,3 @@ package() {
   cd "$srcdir/$pkgname-$pkgver-1.src"
   make DESTDIR="$pkgdir/" install
 }
-# vim:set ts=2 sw=2 et:
