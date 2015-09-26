@@ -1,0 +1,22 @@
+pkgbase = uirc3-git
+	pkgdesc = Experimental IRC client, daemon and bot
+	pkgver = v0.9.1.r0.gf42eced
+	pkgrel = 1
+	url = https://github.com/pjanouch/uirc3
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = help2man
+	depends = openssl
+	depends = readline
+	provides = uirc3
+	conflicts = uirc3
+	options = zipman
+	source = git+https://github.com/pjanouch/uirc3
+	md5sums = SKIP
+
+pkgname = uirc3-git
+
