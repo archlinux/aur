@@ -1,6 +1,6 @@
 pkgbase = thunderbird-nightly-it
 	pkgdesc = Standalone Mail/News reader from Mozilla — Localized Nightly build
-	pkgver = 43.0a1.20150814
+	pkgver = 44.0a1.20150814
 	pkgrel = 1
 	url = http://www.mozilla.org/thunderbird/
 	install = thunderbird-nightly-it.install
