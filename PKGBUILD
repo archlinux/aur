@@ -1,6 +1,6 @@
 # Maintainer: Flávio Zavan <flavio dot zavan at gmail dot com>
 pkgname=openbr
-pkgver=0.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Open Source Biometrics"
 arch=('any')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
   cd "$pkgname"
 
-  git checkout $pkgver
+  git checkout "v$pkgver"
   git submodule init
   git submodule update
 
