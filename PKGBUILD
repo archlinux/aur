@@ -3,7 +3,7 @@
 pkgname=ronn
 pkgver=0.7.3
 pkgrel=1
-pkgdesc="Ronn converts simple, human readable textfiles to roff for terminal display, and also to HTML"
+pkgdesc="Converts simple, human readable textfiles to roff for terminal display, and also to HTML"
 arch=("any")
 url="http://rtomayko.github.com/ronn"
 license=('MIT')
