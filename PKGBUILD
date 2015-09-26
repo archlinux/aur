@@ -4,13 +4,13 @@
 
 pkgname=sam2p
 pkgver=0.49.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A bitmap-to-eps-or-pdf-converter that produces very small files"
 arch=('i686' 'x86_64')
 url="http://www.inf.bme.hu/~pts"
 license=('GPL2')
 depends=('gcc-libs')
-makedepends=('makedepend')
+makedepends=('imake')
 optdepends=('ghostscript: PS, EPS, PDF support'
 'libjpeg: JPEG support'
 'tif22pnm: for tiff and png support')
