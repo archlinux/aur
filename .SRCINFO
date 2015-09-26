@@ -2,7 +2,7 @@ pkgbase = umview
 	pkgdesc = User-mode implementation of View-OS.
 	pkgver = 0.8.2
 	pkgrel = 2
-	url = sourceforge.net/projects/view-os
+	url = https://www.sourceforge.net/projects/view-os
 	arch = x86_64
 	license = GPL2
 	depends = glibc>=2.15
