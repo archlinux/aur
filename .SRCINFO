@@ -1,7 +1,7 @@
 pkgbase = dbus-selinux
 	pkgdesc = Freedesktop.org message bus system with SELinux support
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freedesktop.org/Software/dbus
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,8 @@ pkgbase = dbus-selinux
 	makedepends = libselinux
 	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.10.0.tar.gz
 	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.10.0.tar.gz.asc
-	source = 30-dbus
 	md5sums = 5af6297348107a906c8449817a728b3b
 	md5sums = SKIP
-	md5sums = 6683a05bd749929ef9442816c22c3268
 
 pkgname = dbus-selinux
 	depends = libdbus-selinux
@@ -29,8 +27,8 @@ pkgname = dbus-selinux
 	depends = libsystemd-selinux
 	optdepends = libx11: dbus-launch support
 	provides = dbus-core
-	provides = dbus=1.10.0-2
-	provides = selinux-dbus=1.10.0-2
+	provides = dbus=1.10.0-3
+	provides = selinux-dbus=1.10.0-3
 	conflicts = dbus-core
 	conflicts = dbus
 	conflicts = selinux-dbus
@@ -40,7 +38,7 @@ pkgname = dbus-selinux
 pkgname = libdbus-selinux
 	pkgdesc = DBus library
 	depends = libsystemd-selinux
-	provides = libdbus=1.10.0-2
+	provides = libdbus=1.10.0-3
 	conflicts = libdbus
 	replaces = libdbus
 

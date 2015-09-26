@@ -7,18 +7,16 @@
 pkgbase=dbus-selinux
 pkgname=('dbus-selinux' 'libdbus-selinux')
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="http://www.freedesktop.org/Software/dbus"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
 groups=('selinux')
 makedepends=('libx11' 'systemd-selinux' 'xmlto' 'docbook-xsl' 'audit' 'libselinux')
-source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz{,.asc}
-        30-dbus)
+source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz{,.asc})
 md5sums=('5af6297348107a906c8449817a728b3b'
-         'SKIP'
-         '6683a05bd749929ef9442816c22c3268')
+         'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 build() {
@@ -53,9 +51,7 @@ package_dbus-selinux(){
 
   rm -r "${pkgdir}/var/run"
   rm -r "${pkgdir}/usr/lib/pkgconfig"
-  rm -r "${pkgdir}/usr/lib/systemd/user/sockets.target.wants"
 
-  install -Dm755 ../30-dbus "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus.sh"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/dbus-selinux/COPYING"
 }
 
