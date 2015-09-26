@@ -1,7 +1,7 @@
 pkgbase = iannix-git
 	pkgdesc = A graphical sequencer, based on Iannis Xenakis' works, for digital art.
 	pkgver = 0.9.16.r27.gee2e7ec
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.iannix.org/
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = iannix-git
 	optdepends = libfreenect: XBox Kinect
 	optdepends = libwacom: Wacom tablets and trackpads
 	provides = iannix
+	conflicts = iannix
+	conflicts = iannix-qt5-git
 	source = iannix::git+http://github.com/iannix/IanniX.git
 	sha256sums = SKIP
 
