@@ -1,19 +1,30 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kolourpaint-frameworks-git
-pkgver=r1960.fc5706e
+pkgver=r2012.6a841ab
 pkgrel=1
-pkgdesc="Paint Program. KF5 Frameworks branch (GIT version)"
-url="http://kde.org/applications/graphics/kolourpaint/"
+pkgdesc="Paint Program. KF5 Frameworks branch. (GIT version)"
+url='http://kde.org/applications/graphics/kolourpaint'
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
-depends=('kdelibs4support' 'qimageblitz-qt5-svn' 'libkexiv2-frameworks-git' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git')
-conflicts=('kdegraphics-kolourpaint' 'kolourpaint')
+depends=('kdelibs4support'
+         'qimageblitz-qt5-svn'
+         'libkexiv2-frameworks-git'
+         'libksane-frameworks-git'
+         'hicolor-icon-theme'
+         )
+makedepends=('extra-cmake-modules'
+             'kdoctools'
+             'git'
+             'python'
+             )
+conflicts=('kdegraphics-kolourpaint'
+           'kolourpaint'
+           )
 provides=('kolourpaint')
-source=("git://anongit.kde.org/kolourpaint#branch=frameworks")
+source=('git://anongit.kde.org/kolourpaint#branch=frameworks')
 sha1sums=('SKIP')
-install="kolourpaint-frameworks-git.install"
+install=kolourpaint-frameworks-git.install
 
 pkgver() {
   cd kolourpaint
