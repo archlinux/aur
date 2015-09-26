@@ -1,6 +1,6 @@
 pkgbase = pyinstaller-git
 	pkgdesc = An application to convert python scripts into stand-alone binaries
-	pkgver = 2.1
+	pkgver = r4623.cd5d9ac
 	pkgrel = 1
 	url = http://www.pyinstaller.org
 	arch = i686
