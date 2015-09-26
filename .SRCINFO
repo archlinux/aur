@@ -1,7 +1,7 @@
 pkgbase = iannix-git
 	pkgdesc = A graphical sequencer, based on Iannis Xenakis' works, for digital art.
-	pkgver = 0.9.16.r25.g78dddf7
-	pkgrel = 1
+	pkgver = 0.9.16.r27.gee2e7ec
+	pkgrel = 2
 	url = http://www.iannix.org/
 	arch = i686
 	arch = x86_64

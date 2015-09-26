@@ -1,7 +1,7 @@
 # Maintainer: VirtualTam <<virtualtam@flibidi.net>>
 pkgname=iannix-git
-pkgver=0.9.16.r25.g78dddf7
-pkgrel=1
+pkgver=0.9.16.r27.gee2e7ec
+pkgrel=2
 pkgdesc="A graphical sequencer, based on Iannis Xenakis' works, for digital art."
 arch=('i686' 'x86_64')
 url="http://www.iannix.org/"
@@ -21,13 +21,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd ${_gitname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd ${_gitname}
-  # Workaround until Qmake INSTALLS are set for *nix
-  echo 'target.path = /usr/bin/' >> IanniX.pro
-  echo 'INSTALLS += target' >> IanniX.pro
 }
 
 build() {
