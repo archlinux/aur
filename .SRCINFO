@@ -1,6 +1,6 @@
 pkgbase = cling-git
 	pkgdesc = Interactive C++ interpreter built on the top of LLVM and Clang libraries.
-	pkgver = r2531.5842d86
+	pkgver = r2631.4b08f20
 	pkgrel = 1
 	url = https://root.cern.ch/drupal/content/cling
 	arch = i686
