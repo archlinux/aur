@@ -17,6 +17,7 @@ pkgbase = ncursesfm-git
 	optdepends = fuseiso: for fuse archive/iso mounting support
 	optdepends = xdg-utils: xdg-open support
 	optdepends = udisks2: external usb drives mount support
+	optdepends = packagekit: package installation support
 	backup = etc/default/ncursesFM.conf
 	source = git://github.com/FedeDP/ncursesFM.git
 	sha256sums = SKIP
