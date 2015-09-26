@@ -5,12 +5,12 @@ pkgname=${_pkgname}-git
 pkgver=20150916
 pkgrel=1
 pkgdesc="Wrapper for pacman and packer."
-arch=("any")
+arch=('any')
 url="https://github.com/aoibhinnditori/fygar"
-license=("GPL3")
-depends=("packer")
-source=("git+https://github.com/aoibhinnditori/${_pkgname}.git")
-md5sums=("SKIP")
+license=('GPL3')
+depends=('packer')
+source=(git+https://github.com/aoibhinnditori/${_pkgname}.git)
+md5sums=('SKIP')
 
 package() {
     cd $srcdir/$_pkgname/src
