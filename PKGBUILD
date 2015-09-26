@@ -2,7 +2,7 @@
 
 pkgname=ytplmp4
 pkgver=7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="YTPLMP4 - YouTube Playlist to MP3. Download single songs or playlists from Youtube and Soundcloud."
 arch=('any')
 url="http://youtube.com/"
@@ -15,7 +15,7 @@ md5sums=('7c94947851ec3b392da5ea9218b2f6ec'
          '9347b695d57d40c8756fcb593f28158c'
          'ceae8591b64a369118d4928042cfb403')
 
-source=("https://dl.dropboxusercontent.com/u/9839330/YTPLMP3/YTPLMP4-${pkgver}.tar.gz"
+source=("https://dl.dropboxusercontent.com/u/9839330/ytplmp4/YTPLMP4-${pkgver}.tar.gz"
         "ytplmp4.install"
         "ytplmp4.desktop")
 
