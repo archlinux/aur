@@ -1,7 +1,7 @@
 pkgbase = perspector
 	pkgdesc = A control-point-based perspective rectification tool
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ambrevar.bitbucket.org/perspector
 	arch = i686
 	arch = x86_64
