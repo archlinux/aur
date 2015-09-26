@@ -1,5 +1,5 @@
 pkgbase = httpfs2
-	pkgdesc = FUSE-based file system.
+	pkgdesc = FUSE-based file system for HTTP access
 	pkgver = 0.1.5
 	pkgrel = 3
 	url = http://httpfs.sourceforge.net/

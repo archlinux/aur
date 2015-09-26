@@ -4,7 +4,7 @@
 pkgname=httpfs2
 pkgver=0.1.5
 pkgrel=3
-pkgdesc='FUSE-based file system.'
+pkgdesc='FUSE-based file system for HTTP access'
 arch=('i686' 'x86_64')
 url='http://httpfs.sourceforge.net/'
 license=('GPL')
