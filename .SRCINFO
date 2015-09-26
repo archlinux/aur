@@ -1,7 +1,7 @@
 pkgbase = streetsofrageremake
 	pkgdesc = A remake of the classic Streets of Rage 1, 2 and 3 by Sega
 	pkgver = 5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sorr.forumotion.net/t148-sor-v5-for-linux-debian-download-links
 	install = sorr.install
 	arch = i686
