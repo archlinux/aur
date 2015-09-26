@@ -12,6 +12,7 @@ pkgbase = uirc3-git
 	makedepends = help2man
 	depends = openssl
 	depends = readline
+	depends = ncurses
 	provides = uirc3
 	conflicts = uirc3
 	options = zipman

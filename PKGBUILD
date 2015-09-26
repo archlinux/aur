@@ -12,7 +12,7 @@ options=(zipman)
 conflicts=('uirc3')
 provides=('uirc3')
 makedepends=('cmake' 'pkg-config' 'git' 'help2man')
-depends=('openssl' 'readline')
+depends=('openssl' 'readline' 'ncurses')
 source=("git+https://github.com/pjanouch/$_pkgname")
 md5sums=('SKIP')
 
