@@ -72,7 +72,7 @@ package_ppsspp-git() {
   install -m 755 PPSSPPSDL "${pkgdir}"/usr/bin/ppsspp
   cp -dr --no-preserve='ownership' assets "${pkgdir}"/usr/share/ppsspp/
   install -m 644 ../assets/unix-icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
-  install -m 644 ../../PPSSPP.desktop "${pkgdir}"/usr/share/applications/
+  install -m 644 ../../ppsspp.desktop "${pkgdir}"/usr/share/applications/
 }
 
 package_ppsspp-qt-git() {
@@ -85,7 +85,7 @@ package_ppsspp-qt-git() {
   install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,man/man1,pixmaps}}
   install -m 755 ppsspp "${pkgdir}"/usr/bin/
   install -m 644 ../assets/unix-icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
-  install -m 644 ../../PPSSPP.desktop "${pkgdir}"/usr/share/applications/
+  install -m 644 ../../ppsspp.desktop "${pkgdir}"/usr/share/applications/
 }
 
 # vim ts=2 sw=2 et:
