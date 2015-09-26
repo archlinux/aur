@@ -11,7 +11,7 @@ pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'hicolor-icon-theme'
+depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'hicolor-icon-theme'
          'icu' 'libevent' 'libvpx' 'libxt' 'mime-types' 'nss' 'sqlite')
 optdepends=('gstreamer0.10-base: vorbis decoding, ogg demuxing'
             'gstreamer0.10-good: webm and mp4 demuxing'

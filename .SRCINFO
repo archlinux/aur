@@ -14,6 +14,7 @@ pkgbase = firefox-beta-bin
 	depends = dbus-glib
 	depends = desktop-file-utils
 	depends = gtk2
+	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = icu
 	depends = libevent
