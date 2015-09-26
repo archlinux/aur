@@ -1,0 +1,14 @@
+pkgbase = python-gdal
+	pkgdesc = Geospatial Data Abstraction Library for Python 3
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/GDAL/
+	arch = any
+	license = MIT
+	depends = python
+	depends = gdal
+	source = https://pypi.python.org/packages/source/G/GDAL/GDAL-2.0.0.tar.gz
+	md5sums = 03684d7aa3ef4527151c647b2330f0ac
+
+pkgname = python-gdal
+
