@@ -1,0 +1,25 @@
+pkgbase = json-rpc-shell-git
+	pkgdesc = Shell for JSON-RPC 2.0 HTTP queries
+	pkgver = r45.ac5c2f4
+	pkgrel = 1
+	url = https://github.com/pjanouch/json-rpc-shell
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = help2man
+	depends = libev
+	depends = ncurses
+	depends = jansson
+	depends = curl
+	depends = readline
+	provides = json-rpc-shell
+	conflicts = json-rpc-shell
+	options = zipman
+	source = git+https://github.com/pjanouch/json-rpc-shell.git
+	md5sums = SKIP
+
+pkgname = json-rpc-shell-git
+
