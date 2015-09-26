@@ -1,0 +1,22 @@
+pkgbase = battery-status-git
+	pkgdesc = a tool to keep track of your battery statistics
+	pkgver = r37.ac63efe
+	pkgrel = 1
+	url = https://github.com/petterreinholdtsen/battery-status
+	arch = any
+	license = GPL2
+	depends = bash
+	optdepends = gnuplot: graphing support
+	provides = battery-status
+	conflicts = battery-status
+	source = git://github.com/petterreinholdtsen/battery-status
+	source = battery-status-collect-suspend.service
+	source = battery-status-collect.service
+	source = battery-status-collect.timer
+	md5sums = SKIP
+	md5sums = a4bb68232488ea27998a9e293e5e968f
+	md5sums = 4d545f24a5b932990800dfa2883643c9
+	md5sums = a603c74f85952bfa8a89f76599dd340a
+
+pkgname = battery-status-git
+

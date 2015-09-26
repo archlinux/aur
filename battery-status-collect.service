@@ -1,0 +1,6 @@
+[Unit]
+Description=Collect battery statistics
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/battery-status-collect

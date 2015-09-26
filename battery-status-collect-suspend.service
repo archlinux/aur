@@ -1,0 +1,13 @@
+[Unit]
+Description=Collect battery statistics on suspend / resume
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/battery-status-collect
+ExecStop=/usr/bin/battery-status-collect
+
+[Install]
+WantedBy=sleep.target
