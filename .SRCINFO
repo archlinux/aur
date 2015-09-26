@@ -1,7 +1,7 @@
 pkgbase = lua-llthreads2
 	pkgdesc = This is full dropin replacement for llthreads library
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/moteus/lua-llthreads2/
 	arch = i686
 	arch = x86_64
