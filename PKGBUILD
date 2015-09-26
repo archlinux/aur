@@ -6,7 +6,7 @@
 
 pkgname=draftsight
 pkgver=V1R6.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Dassault Systemes' freeware CAD software for your DWG files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
@@ -28,7 +28,6 @@ depends=(
   'libxrender'
   'postgresql-libs'
   'mesa'
-  'util-linux'
   'zlib'
 )
 install='draftsight.install'
@@ -44,11 +43,6 @@ package()
   mkdir -p "${pkgdir}"/etc/profile.d
   echo "export PATH=\$PATH:/${_pkgprefix}/bin" > $pkgdir/etc/profile.d/$pkgname.sh
   chmod 755 "${pkgdir}"/etc/profile.d/$pkgname.sh
-
-  # Some of these are incompatible with system libraries of the same soname,
-  # which will cause problems with applications that depend on them.
-  #mkdir -p "${pkgdir}"/etc/ld.so.conf.d
-  #echo /${_pkgprefix}/lib > $pkgdir/etc/ld.so.conf.d/$pkgname.conf
 
   install -D "${srcdir}"/${_pkgprefix}/Eula/english/eula.htm "${pkgdir}"/usr/share/licenses/draftsight/LICENSE
   install -D "${srcdir}"/${_pkgprefix}/Resources/pixmaps/128x128/program.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/program.png
