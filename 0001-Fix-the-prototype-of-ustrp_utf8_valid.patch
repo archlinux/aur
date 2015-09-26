@@ -1,0 +1,27 @@
+From de0204c2e353fbcf415cdb94dff17229835756c8 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss_git@polytechnique.org>
+Date: Sat, 30 May 2015 10:51:04 +0800
+Subject: [PATCH 1/2] Fix the prototype of ustrp_utf8_valid
+
+As ustrp_utf8_valid can be inlined, use USTR_CONF_EI_PROTO instead of
+USTR_CONF_E_PROTO.
+---
+ ustr-utf8.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ustr-utf8.h b/ustr-utf8.h
+index c22b6bb95302..522509436862 100644
+--- a/ustr-utf8.h
++++ b/ustr-utf8.h
+@@ -32,7 +32,7 @@ USTR_CONF_E_PROTO
+ size_t ustr_utf8_bytes2chars(const struct Ustr *, size_t, size_t, size_t *)
+     USTR__COMPILE_ATTR_WARN_UNUSED_RET() USTR__COMPILE_ATTR_NONNULL_L((1));
+ 
+-USTR_CONF_E_PROTO
++USTR_CONF_EI_PROTO
+ int ustrp_utf8_valid(const struct Ustrp *)
+     USTR__COMPILE_ATTR_PURE() USTR__COMPILE_ATTR_WARN_UNUSED_RET()
+     USTR__COMPILE_ATTR_NONNULL_A();
+-- 
+2.5.2
+

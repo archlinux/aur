@@ -1,0 +1,20 @@
+pkgbase = ustr-selinux
+	pkgdesc = micro string API for C with patches to make it work with gcc>=5.1
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = http://www.and.org/ustr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = ustr=1.0.4-4
+	conflicts = ustr
+	source = http://www.and.org/ustr/1.0.4/ustr-1.0.4.tar.bz2
+	source = 0001-Fix-the-prototype-of-ustrp_utf8_valid.patch
+	source = 0002-Mark-inline-functions-as-static-to-fix-build-with-GC.patch
+	md5sums = 93147d9f0c9765d4cd0f04f7e44bdfce
+	md5sums = d01d97898f4c3b33a87c06e602ca9409
+	md5sums = 9e7830ea74ff2f24f9b029746e883f3e
+
+pkgname = ustr-selinux
+
