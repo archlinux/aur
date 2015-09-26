@@ -4,7 +4,7 @@ pkgver=0.8.2
 pkgrel=1
 pkgdesc="Library with common functions used by every UMView module."
 arch=('x86_64')
-url="sourceforge.net/projects/view-os"
+url="https://sourceforge.net/projects/view-os"
 license=('GPL2')
 depends=('glibc>=2.4')
 provides=("$pkgname=$pkgver")
