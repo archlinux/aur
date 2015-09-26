@@ -1,22 +1,30 @@
 # Maintainer: brent s. <bts (AT) square-r00t [dot] net>
 pkgname=libyuv-git
 pkgver=0.000001
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for YUV scaling (git)"
 arch=('i686' 'x86_64')
 url="https://github.com/lemenkov/libyuv"
 license=('custom')
 #depends=('')
+makedepends=('depot-tools-git' 'cmake')
 #optdepends=('')
-#install=$pkgname.install
-#source=(
-#md5sums=(
+source=('git+https://github.com/lemenkov/libyuv.git')
+md5sums=('SKIP')
 
-build() {
-  cd "$srcdir/$pkgname$pkgver/src/current"
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$pkgname$pkgver/src/current"
-  make DESTDIR="$pkgdir" install
+
+  cd "${srcdir}/${pkgname}/"
+  mkdir out
+  cd out
+  mkdir -p ${pkgdir}/usr/lib
+  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib" -DCMAKE_BUILD_TYPE="Release" ..
+  cmake --build . --config Release
+  cmake --build . --target install --config Release
+
 }
