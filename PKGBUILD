@@ -12,7 +12,7 @@ provides=('ranwhen')
 depends=('python')
 makedepends=('git')
 source=(git+https://github.com/p-e-w/${_pkgname}.git)
-md5sums=('SKIP)
+md5sums=('SKIP')
 
 
 package() {
