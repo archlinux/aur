@@ -3,7 +3,7 @@
  
 _pkgname=rmlint
 pkgname=${_pkgname}-git
-pkgver=2.2.0.r33
+pkgver=2.2.0.r524
 pkgrel=1
 pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
 arch=('i686' 'x86_64')
