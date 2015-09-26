@@ -1,0 +1,108 @@
+pkgbase = vim-git2
+	pkgver = 7.4.884
+	pkgrel = 1
+	url = http://www.vim.org
+	arch = i686
+	arch = x86_64
+	license = custom:vim
+	makedepends = gpm
+	makedepends = python2
+	makedepends = python
+	makedepends = ruby
+	makedepends = libxt
+	makedepends = desktop-file-utils
+	makedepends = gtk2
+	makedepends = lua
+	source = vim-7.4.884.tar.gz::http://github.com/vim/vim/archive/v7.4.884.tar.gz
+	source = vimrc
+	source = archlinux.vim
+	source = gvim.desktop
+	sha1sums = SKIP
+	sha1sums = 15ebf3f48693f1f219fe2d8edb7643683139eb6b
+	sha1sums = 94f7bb87b5d06bace86bc4b3ef1372813b4eedf2
+	sha1sums = 4a579cf66590d711f49c5dfb4a25e5df116ff7ba
+
+pkgname = vim-minimal-git2
+	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (with a minimal set of dependencies)
+	depends = vim-runtime=7.4.884-1
+	depends = gpm
+	depends = acl
+	provides = vim=7.4.884-1
+	provides = xxd
+	conflicts = vim
+	conflicts = vim-python3
+	conflicts = gvim
+	conflicts = gvim-python3
+
+pkgname = vim-git2
+	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (with support for additional scripting languages)
+	depends = vim-runtime=7.4.884-1
+	depends = gpm
+	depends = ruby
+	depends = lua
+	depends = python2
+	depends = acl
+	provides = xxd
+	conflicts = vim-minimal
+	conflicts = vim-python3
+	conflicts = gvim
+	conflicts = gvim-python3
+
+pkgname = vim-python3-git2
+	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (with support for additional scripting languages)
+	depends = vim-runtime=7.4.884-1
+	depends = gpm
+	depends = ruby
+	depends = lua
+	depends = python
+	depends = acl
+	provides = vim=7.4.884-1
+	provides = xxd
+	conflicts = vim-minimal
+	conflicts = vim
+	conflicts = gvim
+	conflicts = gvim-python3
+
+pkgname = gvim-git2
+	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (with advanced features, such as a GUI)
+	install = gvim.install
+	depends = vim-runtime=7.4.884-1
+	depends = gpm
+	depends = ruby
+	depends = libxt
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = lua
+	depends = python2
+	provides = vim=7.4.884-1
+	provides = xxd
+	conflicts = vim-minimal
+	conflicts = vim
+	conflicts = vim-python3
+	conflicts = gvim-python3
+
+pkgname = gvim-python3-git2
+	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (with advanced features, such as a GUI) with python 3 support
+	install = gvim.install
+	depends = vim-runtime=7.4.884-1
+	depends = gpm
+	depends = ruby
+	depends = libxt
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = lua
+	depends = python
+	provides = vim=7.4.884-1
+	provides = gvim=7.4.884-1
+	provides = xxd
+	conflicts = vim-minimal
+	conflicts = vim
+	conflicts = vim-python3
+	conflicts = gvim
+
+pkgname = vim-runtime-git2
+	pkgdesc = Runtime for vim and gvim
+	depends = perl
+	depends = gawk
+	backup = etc/vimrc
+
