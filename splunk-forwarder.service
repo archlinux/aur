@@ -1,0 +1,15 @@
+ [Unit]
+ Description=Splunk Universal Forwarder
+ Wants=network.target
+ After=network.target
+ 
+ [Service]
+ Type=forking
+ RemainAfterExit=yes
+ ExecStart=/opt/splunkforwarder/bin/splunk start --accept-license
+ ExecStop=/opt/splunkforwarder/bin/splunk stop
+ ExecReload=/opt/splunkforwarder/bin/splunk restart --accept-license
+ StandardOutput=syslog
+ 
+ [Install]
+ WantedBy=multi-user.target
