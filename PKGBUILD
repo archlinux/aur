@@ -3,7 +3,7 @@
 pkgname=ttf-sil-abyssinica
 _fname=AbyssinicaSIL
 pkgver=1.500
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenType calligraphic font for Ethiopic languages from SIL"
 arch=('i686' 'x86_64')
 url="http://scripts.sil.org/cms/scripts/page.php?item_id=${_fname}"
@@ -13,8 +13,8 @@ conflicts=()
 install=ttf.install
 source=("http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=${_fname}-${pkgver}.zip&filename=${_fname}-${pkgver}.zip"
         'LICENSE::http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt')
-md5sums=('a3d943d18e303197c8d3d92d2de54d1e'
-         '6ed93967ff0dc6dd9c8d31c17f817a06')
+sha256sums=('e48a77d5ab8ee0b06464a5b29be70f292aa25dc1e73eb39ec933bd7fa47bbd86'
+            'ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3')
 
 package() {
     cd "${srcdir}"

@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-abyssinica
 	pkgdesc = OpenType calligraphic font for Ethiopic languages from SIL
 	pkgver = 1.500
-	pkgrel = 2
+	pkgrel = 3
 	url = http://scripts.sil.org/cms/scripts/page.php?item_id=AbyssinicaSIL
 	install = ttf.install
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = ttf-sil-abyssinica
 	depends = xorg-font-utils
 	source = http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=AbyssinicaSIL-1.500.zip&filename=AbyssinicaSIL-1.500.zip
 	source = LICENSE::http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
-	md5sums = a3d943d18e303197c8d3d92d2de54d1e
-	md5sums = 6ed93967ff0dc6dd9c8d31c17f817a06
+	sha256sums = e48a77d5ab8ee0b06464a5b29be70f292aa25dc1e73eb39ec933bd7fa47bbd86
+	sha256sums = ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3
 
 pkgname = ttf-sil-abyssinica
 
