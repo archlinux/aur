@@ -1,0 +1,23 @@
+pkgbase = mongomock
+	pkgdesc = Small library for mocking pymongo collection objects for testing purposes
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/vmalloc/mongomock
+	arch = x86_64
+	arch = i686
+	license = custom
+	checkdepends = python2-nose
+	checkdepends = python-nose
+	makedepends = python2
+	makedepends = python
+	source = mongomock.tar.gz::https://github.com/vmalloc/mongomock/archive/3.1.0.tar.gz
+	md5sums = bdefef35f310ed4f230dd854a7d402c7
+
+pkgname = python-mongomock
+	depends = python-six
+	depends = python-sentinels
+
+pkgname = python2-mongomock
+	depends = python2-six
+	depends = python2-sentinels
+
