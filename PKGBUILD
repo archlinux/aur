@@ -6,7 +6,7 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=225
+pkgver=226
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -35,13 +35,13 @@ md5sums=('SKIP'
          '1e2f9a8b0fa32022bf0a8f39123e5f4e')
 
 prepare() {
-  cd "${pkgname/-selinux}"
+  cd "${pkgbase/-selinux}"
 
   ./autogen.sh
 }
 
 build() {
-  cd "${pkgname/-selinux}"
+  cd "${pkgbase/-selinux}"
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
@@ -61,10 +61,6 @@ build() {
       --with-ntp-servers="${timeservers[*]}"
 
   make
-}
-
-check() {
-  make -C "${pkgname/-selinux}" check || :
 }
 
 package_systemd-selinux() {
@@ -105,7 +101,7 @@ package_systemd-selinux() {
           etc/udev/udev.conf)
   install="systemd.install"
 
-  make -C "${pkgname/-selinux}" DESTDIR="$pkgdir" install
+  make -C "${pkgbase/-selinux}" DESTDIR="$pkgdir" install
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
@@ -115,7 +111,7 @@ package_systemd-selinux() {
   rm -r "$pkgdir/usr/lib/rpm"
 
   # add back tmpfiles.d/legacy.conf
-  install -m644 "${pkgname/-selinux}/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
+  install -m644 "${pkgbase/-selinux}/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
 
   # Replace dialout/tape/cdrom group in rules with uucp/storage/optical group
   sed -i 's#GROUP="dialout"#GROUP="uucp"#g;
