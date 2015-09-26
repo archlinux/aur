@@ -1,0 +1,19 @@
+pkgbase = sentinels
+	pkgdesc = Various objects to denote special meanings in python
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/vmalloc/sentinels
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = python2
+	makedepends = python
+	source = sentinels.tar.gz::https://github.com/vmalloc/sentinels/archive/0.0.6.tar.gz
+	md5sums = 3c4080812aa8e97082afab9b2cc2eae4
+
+pkgname = python-sentinels
+	depends = python-six
+
+pkgname = python2-sentinels
+	depends = python2-six
+
