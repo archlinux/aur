@@ -1,6 +1,6 @@
 pkgbase = dooble
 	pkgdesc = A safe WebKit Web browser
-	pkgver = 1.53
+	pkgver = 1.54
 	pkgrel = 1
 	url = http://dooble.sourceforge.net/
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = dooble
 	depends = qt5-webkit
 	depends = openssl
 	depends = libspoton=2015.06.17
-	depends = dooble-common=1.53
-	source = dooble-1.53.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%201.53/Dooble_Source.d.tar.gz?r=
-	sha256sums = 9764eba0471227fdf48121879ec6cb62073f7460f8249d776762b6394713abe3
+	depends = dooble-common=1.54
+	source = dooble-1.54.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%201.54/Dooble_Source.d.tar.gz?r=
+	sha256sums = 542918ef01fade5eb1c480c4106dfcd2879ba8eed452fbbc5ca20c4547f47178
 
 pkgname = dooble
 

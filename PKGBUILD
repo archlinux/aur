@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=dooble
-pkgver=1.53
+pkgver=1.54
 pkgrel=1
 pkgdesc='A safe WebKit Web browser'
 url='http://dooble.sourceforge.net/'
@@ -10,7 +10,7 @@ license=('custom:3-clause BSD')
 depends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'libspoton=2015.06.17' "dooble-common=${pkgver}")
 makedepends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'qt5-tools' 'sed' 'coreutils')
 source=("dooble-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble_Source.d.tar.gz?r=")
-sha256sums=('9764eba0471227fdf48121879ec6cb62073f7460f8249d776762b6394713abe3')
+sha256sums=('542918ef01fade5eb1c480c4106dfcd2879ba8eed452fbbc5ca20c4547f47178')
 
 # Dependency (from ldd output) tree:
 # libpng
