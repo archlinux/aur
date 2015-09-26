@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=YouTube Playlist Downloader
+GenericName=YouTube Playlist Downloader
+GenericName[de]=YouTube Playlist Downloader
+Comment=GUI application which downloads Playlists or single Files and converts them to mp3
+Comment[de]=Programm zum downloaden & umwandeln von YT-Playlisten oder einzelnen Songs
+Exec=YTPLMP4
+Icon=sidebar-show-symbolic
+Terminal=false
+StartupNotify=false
+Encoding=UTF-8
+Categories=Application;AudioVideo;AudioVideoEditing;
+Name[de_AT]=YouTube Playlist Downloader

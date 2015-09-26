@@ -1,0 +1,12 @@
+post_install() {
+  echo
+  echo "YTPLMP4"
+  echo "Downloads Videos and Playlists from Youtube and converts them to MP3"
+  echo "Use at your own risk!"
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:

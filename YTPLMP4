@@ -1,0 +1,940 @@
+#!/bin/bash
+
+###################################
+# depends on:
+# id3v2, python2-eyed3, youtube-dl, yad (yad-svn), curl, recode, ffmpeg, feh, smplayer, lame
+#
+# Downloading from Soundcloud is based upon:
+# https://github.com/lukapusic/soundcloud-dl GPL v2
+# https://github.com/flyingrub/scdl GPL v2
+# no copyright, just copyleft for my work
+#
+
+ytplver=7.3
+confver=1
+
+### TODO ChangeLog ###
+chngvar=('Changelog YTPLMP3 - 20150611<br>')
+chngvar+=('YTPLMP3 Version: '\"$ytplver\"'<br>')
+chngvar+=('----------------------------------<br>')
+chngvar+=('Youtube: webm format is now being supported<br>')
+#chngvar+=('Soundcloud: Playlist from to is working for Sets<br>')
+#chngvar+=('Fixes: counting of files<br>')
+#chngvar+=('Design: complete redesign of main dialogue<br>')
+#chngvar+=('Drag & Drop for addtional links<br>')
+#chngvar+=('various other fixes<br>')
+#chngvar+=('<br>')
+
+chngdate=$(echo -e "${chngvar[0]}" | cut -d'-' -f2 | cut -d'<' -f1 | sed 's/\\n/ /g' | sed 's/ *$//' | sed 's/^ *//' | sed 's/  */\ /g')
+
+### Predefinitions ###
+ytpltitle="Youtube-Playlist-Soundcloud-MP3 $ytplver"
+tmpdir=/tmp/ytpld$(date +%d%m%y)
+tmpsnd=/tmp/scpld$(date +%d%m%y)
+tmppic=$tmpdir/pics
+tmpjsn=$tmpdir/json
+tmptitle=$HOME/yttitle.txt
+tmpdelet=$HOME/ytdelet.txt
+tmppllst=$HOME/ytlist.txt
+ytplst=false
+rdchnge=false
+ytlogin=false
+ytmainlnk="https://www.youtube.com/watch?v="
+sndcldcnt=0
+sndcldfl=false
+declare -a addlnks=()
+
+rm -rf $tmpdir
+rm -rf $tmpsnd
+rm -f $tmptitle
+rm -f $tmpdelet
+rm -f $tmppllst
+mkdir $tmpdir
+mkdir $tmpsnd
+mkdir $tmppic
+mkdir $tmpjsn
+touch $tmptitle
+touch $tmpdelet
+
+### Config File ###
+confdir=$HOME/.local/share/YTPLMP3
+confile=$HOME/.local/share/YTPLMP3/ytplmp3.conf
+chgfile=$HOME/.local/share/YTPLMP3/changelog-ytplmp3.html
+[ ! -e "$confdir" ] && mkdir $confdir
+if [ -e $confile ]; then
+	source $confile
+	[ "$versconf" != "$confver" ] && { rm $confile; logdate=$(echo "`date +%Y-%m-%d`"); versconf=$confver; lastdir=$HOME; lastdat=$(echo "`date +%Y-%m-%d`"); \
+					lasturl=""; lastnum="FALSE"; lastid3="TRUE"; preview="TRUE"; rdchnge=false;}
+else
+	touch $confile
+	versconf=$confver
+	logdate=$(echo "`date +%Y-%m-%d`")
+	lastdir=$HOME
+	lastdat=$(echo "`date +%Y-%m-%d`")
+	lasturl=""
+	lastnum="FALSE"
+	lastid3="TRUE"
+	preview="TRUE"
+	rdchnge=false
+fi
+# remove old config
+[ -e "$HOME/.config/YTPLMP3" ] && { rm -rf $HOME/.config/YTPLMP3/; rm -rf $HOME/.config/YTPLMP3;}
+
+### Genre File ###
+genfile=$HOME/.local/share/YTPLMP3/genre.conf
+declare -a defaultgenres=('Tekno' 'RaggaTek' 'Techno' 'Frenchcore' 'Hardtek' 'Acidtekno' 'Psytrance' 'Drum&Bass' 'Alternative' 'Independent' 'Electro' 'Acid' 'House' 'Dubstep' 'Pop' 'Rock' 'FM4-Musik')
+if [ -e $genfile ] && [ -s $genfile ] ; then
+	sed -i '/^$/d' $genfile
+	while read genreline; do
+		listgenres+=(\'$genreline\')
+	done < $genfile
+	[ ${#listgenres[@]} -eq 0 ] && listgenres=("${defaultgenres[@]}")
+	lstgen=$(echo ${listgenres[@]} | sed "s/'//g" | sed 's/ /!/g')
+else
+	touch $genfile
+	declare -a listgenres=('Tekno' 'RaggaTek' 'Techno' 'Frenchcore' 'Hardtek' 'Acidtekno' 'Psytrance' 'Drum&Bass' 'Alternative' 'Independent' 'Electro' 'Acid' 'House' 'Dubstep' 'Pop' 'Rock' 'FM4-Musik')
+	for i in "${listgenres[@]}"; do
+		echo $i | sed "s/'//g" >> $genfile
+	done
+	lstgen=$(echo ${listgenres[@]} | sed "s/'//g" | sed 's/ /!/g')	
+fi
+
+### Display Changelog ###
+if [ ! -e $chgfile ] || [ $logdate -ne $chngdate ] ; then
+	rm -f $chgfile; touch $chgfile
+	for i in "${chngvar[@]}"; do
+		echo $i >> $chgfile
+	done
+	rdchnge=false
+	chnglog=false
+fi
+[ $rdchnge = false ] && { xdg-open $chgfile; chnglog=true;} || chnglog=true
+
+### YAD -Dialogues ###
+function desc_url(){
+	descurl=$(wget --no-check-certificate -qO- "$1" | perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)(?: - youtube)?\s*<\/title/si' | sed "s/[&amp;]/&/g")
+}
+
+function addmore_dlg(){
+	unset dlgmore
+	dlgmore="$(yad --dnd --width 230 --height 180 --on-top --title="YTPLMP3 $ytplver" \
+		--center \
+		--window-icon="multimedia-player-symbolic" \
+		--text="Drag &amp; Drop additional links here:" \
+		--separator="," \
+		--button="Proceed:0" 2>/dev/null )"
+
+	if [ -n "$dlgmore" ] ; then
+		while read -r rdline; do
+			addlnks+=("$rdline")
+		done <<< "$dlgmore"
+	fi
+#	echo "Chars: ${#dlgmore}"
+	return
+}
+
+desc_url "$lasturl"
+logininfo=""
+edtgen=$(echo $lstgen | sed 's/!/\n/g') 
+
+yad --plug=23 --tabnum=1 --form --separator="," \
+		--text="YTPLMP3 Options" \
+		--field="Choose Download-Directory:DIR" \
+		--field="Last used Playlist/Song: $descurl\n(select in Field below):LBL" \
+		--field="Link:CBE" \
+		--field="to add more Files/Playlists use Button\"Add More\":LBL" \
+		--field="number Playlist-Files?:CHK" \
+		--field="use Upload-Date (YYYY-MM-DD):CHK" \
+		--field="from Upload-Date:DT" \
+		--field="from Playlist-Postition\n(only works with first Playlist):NUM" \
+		--field="to Playlist-Postition\n(only works with first Playlist):NUM" \
+		--field="keep Video-Files:CHK" \
+		--field="edit ID3-Tag:CHK" \
+		--field="use Preview (only works in conjunction with edit ID3-Tag):CHK" \
+		"$lastdir" "" "!$lasturl" "" "$lastnum" "FALSE" "$lastdat" "1!1..200" "0!0..200" "" "$lastid3" "$preview" &> /tmp/yttb1  2>/dev/null &
+
+yad --plug=23 --tabnum=3  --form --separator="," \
+		--text="Change or Add the Genres" \
+		--field="Use 1 Genre per Line:TXT" \
+		"$edtgen" &> /tmp/yttb2 2>/dev/null &
+
+yad --plug=23 --tabnum=2  --form --separator="," \
+		--text="Enter Youtube Account &amp; Password:" \
+		--field="Username:" \
+		--field="Password:H" \
+		--field="To download private videos (videos where you have to be signed in) it is crucial that the link to this video is entered in the \"Options\" Tab. Otherwise it will not work\!:LBL" &> /tmp/yttb3 2>/dev/null &
+
+yad --notebook --key=23 --tab="Options" --tab="Youtube Account" --tab="Edit Genres" --width 405 --height 450 --on-top --title="$ytpltitle"  --center \
+		--separator="," --window-icon="multimedia-player-symbolic" \
+		--button="Add More:2" \
+		--button="gtk-cancel:1" \
+		--button="gtk-ok:0" 2>/dev/null
+
+case "$?" in
+	2 )
+		addmore_dlg
+	;;
+	1 )
+		rm -rf $tmpdir
+		rm -rf $tmpsnd
+		rm -f /tmp/yttb1
+		rm -f /tmp/yttb2
+		rm -f /tmp/yttb3
+		exit		
+	;;
+esac
+
+ytpl2mp3=$(cat /tmp/yttb1)
+rm -f /tmp/yttb1
+	echo "versconf=$confver" > $confile
+	echo "logdate=$chngdate" >> $confile
+	diruse=$(echo "$ytpl2mp3" | cut -d, -f1)
+	echo "lastdir=\"$diruse\"" >> $confile
+	yutlnk=$(echo "$ytpl2mp3" | cut -d, -f3)
+	echo "lasturl=\"$yutlnk\"" >> $confile
+	uselst=$(echo "$ytpl2mp3" | cut -d, -f5)
+	echo "lastnum=$uselst" >> $confile
+	useupd=$(echo "$ytpl2mp3" | cut -d, -f6)
+	dateup=$(echo "$ytpl2mp3" | cut -d, -f7 | sed 's/-//g' ) #YYYYMMDD
+	echo "lastdat=`date +%Y-%m-%d`" >> $confile
+	plstnm=$(echo "$ytpl2mp3" | cut -d, -f8)
+	unknow=$(echo "$ytpl2mp3" | cut -d, -f9) #Not used
+	plstto=$(echo "$ytpl2mp3" | cut -d, -f10)
+	unknow=$(echo "$ytpl2mp3" | cut -d, -f11) #Not used
+	keepvd=$(echo "$ytpl2mp3" | cut -d, -f12)
+	edid3t=$(echo "$ytpl2mp3" | cut -d, -f13)
+	echo "lastid3=$edid3t" >> $confile
+	preview=$(echo "$ytpl2mp3" | cut -d, -f14)
+	echo "preview=$preview" >> $confile
+	echo "rdchnge=$chnglog" >> $confile
+
+	if [ -z "$yutlnk" ]; then # check for empty fields
+		if [ -z "$multif" ]; then
+			rm -rf $tmpdir
+			rm -rf $tmpsnd
+			rm -f /tmp/yttb1
+			rm -f /tmp/yttb2
+			rm -f /tmp/yttb3
+			exit
+		fi
+	fi
+
+	if `echo $yutlnk | grep 'watch?v' | grep '&list=' 1>/dev/null 2>&1` ; then
+		yutlnk=$(echo "$yutlnk" | cut -d'&' -f1)
+	fi
+
+	[ "$useupd" == "FALSE" ] && dateup="19801224"
+	[ "$keepvd" == "TRUE" ] && mkdir "$diruse/Videos/"
+	[ "$plstto" -ne 0 ] && plstend="--playlist-end $plstto" || plstend=""
+
+yadgenre=$(cat /tmp/yttb2)
+rm -f /tmp/yttb2
+	declare -a newgen=($(echo "$yadgenre" | sed '/^ *$/d' | cut -d, -f1 | sed 's/\\n/ /g' | sed 's/ *$//' | sed 's/^ *//' | sed 's/  */\ /g'))
+	rm -f $genfile; touch $genfile
+	for i in "${newgen[@]}"; do
+		echo $i | sed "s/'//g" >> $genfile
+	done
+	lstgen=$(echo ${newgen[@]} | sed 's/ /!/g')
+
+yadlogin=$(cat /tmp/yttb3)
+rm -f /tmp/yttb3
+	ytaccount=$(echo "$yadlogin" | cut -d, -f1)
+	ytpasswrd=$(echo "$yadlogin" | cut -d, -f2)
+	if [ -n "$ytaccount" ] && [ -n "$ytpasswrd" ] ; then ytlogin=true; fi
+	[ $ytlogin = true ] && logininfo="\nusing YouTube-Account: $ytaccount"
+
+### Counting links
+multic=0
+[ ${#addlnks[*]} -gt 0 ] && { multic=${#addlnks[*]}; multif=$(echo ${addlnks[@]} | sed 's/ /*/g'); }
+#multic=$(grep -o "https:" <<< "$multif" | wc -l)
+pcount=`expr $multic + 1`
+multif=${multif//'\n'/"*"} 
+
+function get_filetype(){
+	tstfile="$1"
+	fleext=$(echo "$tstfile" | awk -F"." '{print $NF}')
+	deli=$(echo $fleext | wc -c)
+#	echo -e "\n\n\nExtenstion:$fleext\nCutting: $deli\n\n\n"
+}
+
+function wavtomp3(){
+	wavname="$1"
+	flewav=$(echo "$wavname" | awk -F"." '{print $NF}')
+	echo "'"$flewav"'"
+	if `echo "$flewav" | grep 'wav' 1>/dev/null 2>&1` ; then
+		filename="${wavname:0:-4}.mp3"
+		echo "# converting wav to mp3 ..." >&3;
+		ffmpeg -i "$wavname" -ac 2 -ab 192k "$filename"
+	elif `echo "$flewav" | grep 'm4a' 1>/dev/null 2>&1` ; then
+		filename="${wavname:0:-4}.mp3"
+		echo "# converting wav to mp3 ..." >&3;
+		ffmpeg -i "$wavname" -ac 2 -ab 192k "$filename"
+	fi
+}
+
+function renid3tagfile(){
+	oldfile="$nufile"
+	fle2ren=$( echo "$oldfile" | cut -d'/' -f1-3)
+	case "$1" in
+		"sndcld" )
+			nufile=$( echo "$art3di - $tit3di.mp3")
+		;;
+		* )
+			nufile=$( echo "$fle2ren/$art3di - $tit3di.mp3")
+		;;
+	esac
+	echo -e "Org:$oldfile\nNeu:$nufile"
+	mv "$oldfile" "$nufile"
+}
+
+function getduration() {
+#TODO check for Sndcld and take duration of Tag "duration": ; cut last 3 digits to get seconds
+echo "Stage1:$1"
+sleep 3
+	durcomp=`exiftool "$1" | grep 'Duration' | cut -d':' -f2- | sed 's/ *$//' | sed 's/^ *//' | cut -d' ' -f1`
+echo "Stage2:$durcomp"
+sleep 3
+	durhour=$(echo $durcomp | cut -d':' -f1)
+	if [ $durhour -gt 0 ] ; then durhour=$(($durhour * 3600)) ; fi
+	durminu=$(echo $durcomp | cut -d':' -f2 | sed 's/^0//')
+	if [ $durminu -gt 0 ] ; then durminu=$(($durminu * 60)) ; fi
+	durseco=$(echo $durcomp | cut -d':' -f3 | sed 's/^0//')
+	compdur=$(($durhour + $durminu + $durseco))
+	[ $compdur -lt 90 ] && compdur=90
+
+	mp3bitr=`exiftool "$1" | grep 'Audio Bitrate' | cut -d':' -f2- | sed 's/ *$//' | sed 's/^ *//' `
+}
+
+function newid3tags() {
+	compdur=90
+	[ "$1" =  "sndcld" ] && sndcldfl=true
+	case $preview in
+		TRUE)
+			picwid=`exiftool "$jpgfle" | grep "Image Width" | cut -d':' -f2 | sed 's/ *$//' | sed 's/^ *//'`
+			pichei=`exiftool "$jpgfle" | grep "Image Height" | cut -d':' -f2 | sed 's/ *$//' | sed 's/^ *//'`
+			if [ $picwid -gt 500 ] || [ $pichei -gt 500 ] ; then
+				differer=$(echo $picwid / 500 | bc -l)
+				picwid=500
+				pichei=$(echo $pichei / $differer | bc -l | cut -d'.' -f1)
+			fi
+			feh -x --auto-zoom --scale-down -g "$picwid"x"$pichei" "$jpgfle" &
+			smplayer -minigui -size 400 100 -pos 1500 0 -close-at-end "$nufile" &
+		;;
+	esac
+	getduration "$nufile"
+	i3info=$( echo "$i3info" | sed "s/[&]/&amp;/g")
+	[ -z "$id3gen" ] && dispgen="$lstgen" || dispgen="$id3gen!$lstgen"
+#	[ -z "$tagge" ] && dispgen="$lstgen" || { sndgen=$(echo ${tagge[@]} | sed 's/ /!/g' | sed 's/_/ /g'); dispgen="$sndgen!$lstgen";}
+	newid3t="$(yad --form --width 250 --title="$ytpltitle" --center --window-icon="multimedia-player-symbolic" --timeout=$compdur --timeout-indicator=bottom \
+	--text="File:$i3info\nGenre: $id3gen\nDuration: $durcomp       Bitrate: $mp3bitr" \
+	--separator="%" \
+	--field="Artist" \
+	--field="Titel" \
+	--field="Album" \
+	--field="Kommentar" \
+	--field="Genre:CBE" \
+	--field="Rename File using ID3-Tag?:CHK" \
+	"$id3art" "$id3tit" "$id3alb" "$comurl" "$dispgen" "TRUE" "" 2>/dev/null )"
+
+	case "$?" in
+		1 )
+			gen3di="**** deleted ****"
+			killall feh &
+			killall smplayer &
+			wait
+			rm -f "$nufile"
+			[ $sndcldfl = true ] && sndcldcnt=$(($sndcldcnt-1)) || count=$(($count-1))
+			sndcldfl=false
+			return
+		;;
+	esac
+	killall feh &
+	killall smplayer &
+	wait
+	art3di=$(echo "$newid3t" | cut -d'%' -f1)
+	tit3di=$(echo "$newid3t" | cut -d'%' -f2)
+	alb3di=$(echo "$newid3t" | cut -d'%' -f3)
+	com3di=$(echo "$newid3t" | cut -d'%' -f4)
+	gen3di=$(echo "$newid3t" | cut -d'%' -f5)
+	renfle=$(echo "$newid3t" | cut -d'%' -f6)
+
+	if [ "$renfle" = "TRUE" ] ; then renid3tagfile $1; fi
+	if [ -z "$yearls" ] ; then yearls=$(date +%Y); 	fi
+
+	eyeD3 -a "$art3di" -t "$tit3di" -A "$alb3di" -c "$com3di" --recording-date "$yearls" --genre=$gen3di "$nufile" &>/dev/null
+}
+
+function func_determoebh(){
+	if `ip -4 addr | grep '10.224' 1>/dev/null 2>&1` ; then
+		oebh=true
+		echo "# ÖBH Proxy aktiviert!" >&3;
+	else
+		oebh=false
+	fi
+}
+
+#### Soundcloud Functions Integration #####
+default_offset=0
+function CURL(){
+    curl -L -s --user-agent 'Mozilla/5.0' "$1"
+}
+
+function settags() {
+	id3art=$1
+	id3tit=$2
+	nufile=$3
+	id3gen=$(echo "$4" | sed "s/&amp;/\&/g")
+	id3pic=$5
+	id3alb=$6
+	comurl=$7
+	yearls=$8
+	curl --connect-timeout 10 -s -L --user-agent 'Mozilla/5.0' "$id3pic" -o "/tmp/1.jpg"
+	jpgfle=/tmp/1.jpg
+
+	if [ -z "$yearls" ] ; then yearls=$(date +%Y); 	fi
+	if `echo $id3tit | grep ' - ' 1>/dev/null 2>&1` ; then
+		id3nfo=$id3tit
+		id3art=$(echo "$id3nfo" | cut -d"-" -f1 | sed 's/ *$//')
+		id3tit=$(echo "$id3nfo" | cut -d"-" -f2- | sed 's/^ *//' | sed "s/&amp;/\&/g")
+	fi
+	i3info=$(echo "$nufile" | cut -d'/' -f4- | sed "s/[&]/&amp;/g")
+	i3info="${i3info:0:-4}"
+	eyeD3 --remove-all "$nufile" &>/dev/null
+	eyeD3 -a "$id3art" -t "$id3tit" -c "$comurl" --add-image $jpgfle:FRONT_COVER  --recording-date "$yearls" -G "$id3gen" -A "$id3alb" -2 "$nufile" &>/dev/null
+
+	case $edid3t in
+		TRUE )
+			newid3tags sndcld
+		;;
+	esac
+	cntfile="${nufile:0:-4}.mp3"
+	cntfile=$(echo "$cntfile" | sed "s/[\"']//g")
+	ytinfo=$(echo "$cntfile" | cut -d'/' -f4- | sed "s/[&]/&amp;/g")
+	if [ -z "$gen3di" ] ; then
+		prntgnr=""
+	else
+		prntgnr="-> $gen3di"
+	fi
+	if [ "$gen3di" = "**** deleted ****" ] ; then
+		echo "$ytinfo" >> $tmpdelet
+	else
+		echo "$ytinfo $prntgnr" >> $tmptitle
+	fi
+	sndcldcnt=$(($sndcldcnt+1));
+	mv -n "$nufile" "$diruse/"
+}
+
+function downsong() { # Parse json for one song
+	url="$1"
+	songID=$(CURL "https://api.soundcloud.com/resolve.json?url=$url&client_id=$clientID" | tr "," "\n" | sed -n "2p" | cut -d ':' -f 2)
+	fromjsontomp3 "$songID" "$clientID"
+}
+
+function fromjsontomp3() { # use the json to download info and mp3
+	clientID="$2"
+	songID="$1"
+	songinfo=$(CURL "https://api.soundcloud.com/tracks/$songID.json?client_id=$clientID" | tr "," "\n")
+	echo "SongInfo:$songinfo"
+	title=$(printf "%s\n" "$songinfo" | grep '"title"' | cut -c 10- | rev | cut -c 2- | rev | tr '\/:*?|<>' '________' )
+	songurl=$(echo -e "$songinfo" | grep "stream_url" | cut -d '"' -f 4)
+	realsongurl=$(echo -e "$songurl?client_id=$clientID")
+	artist=$(echo -e "$songinfo" | grep "username" | cut -d '"' -f4 | sed 's/\///g')
+	if [[ $title =~ "$artist" ]] ; then 
+		filename=$(printf "%s.mp3" "$title")
+	else
+		filename=$(printf "%s - %s.mp3" "$artist" "$title")
+	fi
+	imageurl=$(echo -e "$songinfo" | grep "artwork_url" | cut -d '"' -f 4 | sed 's/large/t500x500/g')
+	genre=$(echo -e "$songinfo" | grep "genre" | cut -d '"' -f4 | sed "s/[&]/&amp;/g" )
+	declare -a tagge=($(echo -e "$songinfo" | grep "tag_list" | cut -d '"' -f4 | sed "s/&amp;/&/g")) # | sed "s/\\\\\"/'/g" | sed 's/"//g'
+	if `echo "${tagge[@]}" | grep -F '"' 1>/dev/null 2>&1` || `echo "${tagge[@]}" | grep -F '\' 1>/dev/null 2>&1` || [ -z "$tagge" ] ; then
+		tagge=($genre)
+	else
+		tagge+=(***_Soundcloud_Tags_above_***)
+	fi
+#echo -e "\n\nTaglist:${tagge[@]}\n#1:${tagge[0]}\n#2:${tagge[1]}\n#4:${tagge[3]}\n\n}"
+	rlsyear=$(echo "$songinfo" | grep '"created_at"' | cut -d'"' -f4 | cut -c1-4)
+	songpermalink=$(echo -e "$songinfo" | grep -m2 "permalink_url" | tail -n1 | cut -d '"' -f 4)
+
+	if [ -e "$filename" ]; then
+		echo "The song $filename has already been downloaded..."  && $cont
+	else
+		echo "# downloading from Soundcloud: ....." >&3;
+		echo "# ... Artist: $artist" >&3;
+		echo "# ... Title : $title" >&3;
+		echo "# ... Genre: $genre" >&3;
+		curl -# -L --user-agent 'Mozilla/5.0' -o "`echo -e "$filename"`" "$realsongurl"
+		wavtomp3 "$filename"
+		album=""
+		settags "$artist" "$title" "$filename" "$genre" "$imageurl" "$album" "$songpermalink" "$rlsyear"
+	fi
+}
+
+function downlike()  { # Parse json for all user's like
+	echo "# Grabbing artist's likes page" >&3;
+	artistnm=$(echo "$1" | cut -d '/' -f 4)
+	likeurl=$(echo "https://soundcloud.com/$artistnm")
+	artistID=$(CURL "https://api.soundcloud.com/resolve.json?url=$likeurl&client_id=$clientID" | tr "," "\n" | sed -n "1p" | cut -d ':' -f 2)
+	offset=`expr $plstnm - 1`
+	likepage=$(CURL "https://api.soundcloud.com/users/$artistID/favorites.json?client_id=$clientID&limit=1&offset=$offset")
+	while [[ $(echo "$likepage" | grep 'id') != '' ]]
+		do
+			setsongID=$(echo "$likepage" | tr "," "\n" | grep '"uri"' | grep 'tracks' | cut -d '"' -f 4 | cut -d '/' -f 5)
+			((offset++))
+			echo "# Song liked n°$offset by $artistnm" >&3;
+			fromjsontomp3 "$setsongID" "$clientID"
+			likepage=$(CURL "https://api.soundcloud.com/users/$artistID/favorites.json?client_id=$clientID&limit=1&offset=$offset")
+		done
+	echo "# \nThere were $offset songs." >&3;
+}
+
+function downallsongs() { # Parse json for all user's songs
+    url="$1"
+    echo "# Grabbing artists page" >&3;
+    page=$(CURL $url)
+    artistID=$(CURL "https://api.soundcloud.com/resolve.json?url=$url&client_id=$clientID" | tr "," "\n" | sed -n "1p" | cut -d ':' -f 2)
+    offset=$default_offset
+    artistpage=$(CURL "https://api.sndcdn.com/e1/users/$artistID/sounds.json?limit=1&offset=$offset&client_id=$clientID")
+    while [[ $(echo "$artistpage" | grep 'id') != '' ]]
+    do
+        playlist=$(echo "$artistpage" | tr "," "\n" | grep '"playlist"' | cut -c 14-)
+        ((offset++))
+        if [[ "$playlist" != "null" ]]; then
+            echo "# The n°$offset is a playlist" >&3;
+            thisset=$(echo "$artistpage" | tr "," "\n" | grep '"permalink_url"' | sed -n 1p | cut -d '"' -f 4)
+            downset "$thisset"
+        else
+            echo "# " >&3;
+            echo "# Song n°$offset" >&3;
+            typesong=$(echo "$artistpage" | tr "," "\n" | grep '"type"' | cut -d '"' -f 4)
+            if [[ "$typesong" == "track" ]] && [[ "$onlyrepost" == "0" ]] ; then
+                artistsongurl=$(echo "$artistpage" | tr "," "\n" | grep 'permalink_url' | sed '1d' | cut -d '"' -f 4)
+                downsong "$artistsongurl"
+            elif [[ "$typesong" == "playlist" ]] && [[ "$onlyrepost" == "0" ]]; then
+                artistsongurl=$(echo "$artistpage" | tr "," "\n" | grep 'permalink_url' | cut -d '"' -f 4)
+                downset "$artistsongurl"
+            elif [[ "$typesong" == "playlist_repost" ]]; then
+                artistsongurl=$(echo "$artistpage" | tr "," "\n" | grep 'permalink_url' | cut -d '"' -f 4)
+                downset "$artistsongurl"
+            elif [[ "$typesong" == "track_repost" ]]; then
+                artistsongurl=$(echo "$artistpage" | tr "," "\n" | grep 'permalink_url' | sed '1d' | cut -d '"' -f 4)
+                downsong "$artistsongurl"
+            fi
+        fi
+        artistpage=$(CURL "https://api.sndcdn.com/e1/users/$artistID/sounds.json?limit=1&offset=$offset&client_id=$clientID")
+    done
+    echo "# " >&3;
+    echo "# There was $offset songs/sets." >&3;
+}
+
+function downgroup() { # Parse json for a group
+    groupurl="$1"
+    echo "# Grabbing group page" >&3;
+    groupage=$(CURL "$groupurl")
+    groupid=$(echo "$groupage" | grep "html5-code-groups" | tr " " "\n" | grep "html5-code-groups-" | cut -d '"' -f 2 | sed '2d' | cut -d '-' -f 4)
+    trackspage=$(CURL "https://api.soundcloud.com/groups/$groupid/tracks.json?client_id=$clientID" | tr "}" "\n")
+    trackspage=$(echo "$trackspage" | tr "," "\n" | grep 'permalink_url' | sed '1d' | sed -n '1~2p')
+    songcount=$(echo "$trackspage" | wc -l)
+    echo "# Found $songcount songs!" >&3;
+    for (( i=1; i <= $songcount; i++ ))
+    do
+        echo -e "\n---------- Downloading Song n°$i ----------"
+        thisongurl=$(echo "$trackspage" | sed -n "$i"p | cut -d '"' -f 4)
+        downsong "$thisongurl"
+        echo "----- Downloading Song n°$i finished ------"
+    done
+}
+
+function downset() { # Parse json for one user's set
+    echo "# Grabbing set page..." >&3;
+    url="$1"
+    setpage=$(CURL $url)
+    playlistID=$(CURL "https://api.soundcloud.com/resolve.json?url=$url&client_id=$clientID" | tr "," "\n" | grep 'https://api.soundcloud.com/playlists' | cut -d '/' -f 5)
+    playinfo=$(CURL "https://api.soundcloud.com/resolve.json?url=$url&client_id=$clientID" | tr "," "\n")
+    trckcnt=$(echo -e "$playinfo" | grep "track_count" | cut -d '"' -f3 | cut -d':' -f2) ### here starts the playlistcount
+    cntOffset=0
+    setOffset=`expr $plstnm - 1` #   setOffset=0
+    [ $plstto -eq 0 ] && plstto=$trckcnt
+    [ $plstto -lt $setOffset ] && plstto=`expr $setOffset + 1`
+    setpage=$(CURL "https://api.soundcloud.com/playlists/$playlistID.json?limit=1&offset=$setOffset&client_id=$clientID")
+	echo -e "\n\n\n$setpage\n\n\n"
+    setTitle=$(echo "$setpage" | tr "{" "\n" | grep '"playlist"' | tr "," "\n" | grep '"title"' | cut -d '"' -f 4)
+    trackExist=$(echo "$setpage" | tr "," "\n" | grep '"tracks"' | cut -d ':' -f2 | cut -c1-2)
+    while [[ "$trackExist" != '[]' && "$trackExist" != '' && $setOffset -lt $plstto ]]
+    do
+        setsongID=$(echo "$setpage" | tr "," "\n" | grep '"uri"' | grep 'tracks' | cut -d '"' -f 4 | cut -d '/' -f 5)
+        ((setOffset++))
+        ((cntOffset++))
+        echo "# \nSong n°$setOffset from the Set : $setTitle" >&3;
+        fromjsontomp3 "$setsongID" "$clientID"
+        setpage=$(CURL "https://api.soundcloud.com/playlists/$playlistID.json?limit=1&offset=$setOffset&client_id=$clientID")
+        trackExist=$(echo "$setpage" | tr "," "\n" | grep '"tracks"' | cut -d ':' -f2 | cut -c1-2)
+    done
+    echo "# \nThere were $trckcnt songs in the set $setTitle.\n$cntOffset was/were downloaded" >&3;
+}
+
+function downallsets() {
+    artistnm=$(echo "$1" | cut -d '/' -f 4)
+    seturl=$(echo "https://soundcloud.com/$artistnm")
+    echo "# Grabbing artist's set page" >&3;
+    page=$(CURL $seturl)
+
+    artistID=$(CURL "https://api.soundcloud.com/resolve.json?url=$seturl&client_id=$clientID"  | tr "," "\n" | sed -n "1p" | cut -d ':' -f 2)
+    all_offset=0
+    allsetpage=$(CURL "https://api.soundcloud.com/users/$artistID/playlists.json?limit=1&offset=$all_offset&client_id=$clientID")
+    while [[ $(echo "$allsetpage" | grep 'id') != '' ]]
+    do
+        thisset=$(echo "$allsetpage" | tr "," "\n" | grep '"permalink_url"'  | sed -n 1p | cut -d '"' -f 4)
+        ((all_offset++))
+        echo "# " >&3;
+        echo "# Set n°$all_offset from $artistnm" >&3;
+        downset "$thisset"
+        echo "# Set n°$all_offset from $artistnm downloaded" >&3;
+        allsetpage=$(CURL "https://api.soundcloud.com/users/$artistID/playlists.json?limit=1&offset=$all_offset&client_id=$clientID")
+    done
+    echo "# " >&3;
+    echo "# There was $all_offset sets." >&3;
+}
+
+function sndclddl() {
+	soundurl=$(echo "$1" | sed 's-.*soundcloud.com/-http://soundcloud.com/-' | cut -d "?" -f 1 | grep 'soundcloud.com')
+	cd $tmpsnd
+	[ "$continue" = "true" ] && cont=":"
+	d1="$(echo "$soundurl" | cut -d "/" -f 4)"
+	d2="$(echo "$soundurl" | cut -d "/" -f 5)"
+	d3="$(echo "$soundurl" | cut -d "/" -f 6)"
+
+	if [[ "$d1" == "" ]] ; then
+	    echo "# Bad Soundcloud URL!" >&3;
+	    return 1
+	elif [[ "$d1" == "groups" ]] ; then
+	    echo "# detected download type : All song of the group" >&3;
+	    downgroup "$soundurl"
+	elif [[ "$d2" == "likes" ]] ; then
+	    echo "# detected download type : All of one user's like" >&3;
+	    downlike "$soundurl"
+	elif [[ "$d2" == "" ]] ; then
+	    echo "# detected download type : All of one user's songs" >&3;
+	    downallsongs "$soundurl"
+	elif [[ "$d2" == "sets" ]] && [[ "$d3" == "" ]] ; then
+	    echo "# detected download type : All of one user's sets" >&3;
+	    downallsets "$soundurl"
+	elif [[ "$d2" == "sets" ]] ; then
+	    echo "# detected download type : One of one user's sets" >&3;
+	    downset "$soundurl"
+	else
+	    echo "# detected download type : One single song" >&3;
+	    downsong "$soundurl"
+	fi
+}
+#### Soundcloud Integration ####
+clientID="95a4c0ef214f2a4a0852142807b54b35"
+#clientID="b45b1aa10f1ac2941910a7f0d10f8e28"
+curlinstalled=`command -V curl &>/dev/null`
+
+if ! $curlinstalled; then
+    exit 1;
+fi
+
+command -v recode &>/dev/null || { echo "[!] Recode needs to be installed."; exit 1; }
+
+function chk_sndcld(){
+	if `echo "$1" | cut -d'/' -f3 | grep 'youtube' 1>/dev/null 2>&1` ; then
+		return 2
+	elif `echo "$1" | cut -d'/' -f3 | grep 'soundcloud' 1>/dev/null 2>&1` ; then
+		return 3
+	else
+		return 1
+	fi
+}
+
+exec 3> >(yad --progress --title="$ytpltitle" --text="downloading the videos and converting them to mp3\nDestination: $diruse $logininfo" --width=500 --height 500 --window-icon="multimedia-player-symbolic" --center --auto-kill --log-on-top --enable-log="" --log-expanded 2>/dev/null 
+)
+
+echo "5" >&3;
+[ $pcount -gt 1 ] && echo "# processing $pcount links ..." >&3 || echo "# processing $pcount link ..." >&3
+#### Youtube-Playlist download
+func_determoebh
+fun_yutube_DL(){
+	chk_sndcld "$1"
+	case "$?" in
+		1 )
+			continue
+		;;
+		2 ) ### Use Youtube from here
+			ytplst=false
+			precnt=""
+			if [ "$uselst" == "TRUE" ] && [ $pllstcnt -gt 0 ] ; then
+				precnt="${pllstcnt}_"
+			fi
+			filename="%(title)s.%(ext)s"
+			loopcnt=0
+			failcnt=1
+			errreas=""
+			case $ytlogin in
+				true)
+					ytlog="-u $ytaccount -p $ytpasswrd"
+				;;
+				false)
+					ytlog=""
+				;;
+			esac
+			case $oebh in
+				true)
+					yttit=`youtube-dl -e --no-check-certificate $ytlog --skip-download $1`
+				;;
+				false)
+					yttit=`youtube-dl -e  $ytlog --skip-download $1`
+				;;
+			esac
+			echo "# \ndownloading $2: $yttit" >&3;
+			unset yttit
+			while [ $failcnt -gt 0 ] ; do
+				loopcnt=$(($loopcnt+1));
+				echo "$((5+(($loopcnt*15)-1)))" >&3;
+				echo "# Attempt #$loopcnt :$1" >&3;
+				case $oebh in
+					true)
+						#--format mp4 \ use this option if smthg goes wrong
+						tmpfail="$(youtube-dl --write-thumbnail --write-info-json -i -q --no-check-certificate $ytlog \
+							   -R 4 --audio-format=best --playlist-start $plstnm $plstend --dateafter $dateup \
+							   --newline -o $tmpdir/$precnt$filename "$1" 2>&1 > /dev/null)"
+					;;
+					false)
+						tmpfail="$(youtube-dl --write-thumbnail --write-info-json -i -q --socket-timeout 5 $ytlog \
+							   -R 4 --audio-format=best --playlist-start $plstnm $plstend --dateafter $dateup \
+							   --newline -o $tmpdir/$precnt$filename "$1" 2>&1 > /dev/null)"
+					;;
+				esac
+				failcnt=$(($failcnt-1));
+				if [ ${#tmpfail} -gt 0 ] ; then
+					if `echo $tmpfail | grep -q 'ERROR' 1>/dev/null 2>&1` ; then
+						while read fails ; do
+							if `echo $fails | grep -q 'ERROR:' 1>/dev/null 2>&1` || `echo $fails | grep -q 'WARNING:' 1>/dev/null 2>&1` ; then
+								errorwrng=$(echo "$fails" | cut -d':' -f3-)
+								failcnt=$(($failcnt+1));
+								echo "#*** ERROR YOUTUBE DOWNLOAD ***\n*** $errorwrng ***\n" >&3;
+							fi
+							if `echo $fails | grep 'YouTube said' 1>/dev/null 2>&1` ; then
+								if `echo $fails | grep 'Please sign in' 1>/dev/null 2>&1` ; then
+									echo "# ************************************************\nAborting download of this video\n" >&3;
+									echo "# You need to be signed in to download this video\nPrivate videos must be loaded in the \"Options\" Tab" >&3;
+									echo "# Provide account information in \"Youtube Account\" Tab" >&3;
+									echo "# ************************************************\n" >&3;
+									loopcnt=4
+								fi
+								failcnt=$(($failcnt+0));
+							fi
+							sleep 1
+						done <<< "$tmpfail"
+					else
+						failcnt=$(($failcnt+0));
+					fi
+				fi
+
+				if [ $loopcnt -ge 3 ]; then 
+					echo "# *** failed downloading $1\n" >&3;
+					break
+				fi
+			done
+			unset ytlog
+			unset ytaccount
+			unset ytpasswrd
+			ytlogin=false
+		;;
+		3 ) ### Preconfiguered Soundcloud -> load directly to user directory
+			echo "# \nprocessing: $1 " >&3;
+			sndclddl "$1"
+		;;
+	esac	
+}
+
+function fun_chklnks(){
+	yutlnk=$1
+	if `echo $yutlnk | grep '?list=' 1>/dev/null 2>&1` ; then
+		rm -f $tmppllst
+		pltit=`youtube-dl --flat-playlist $yutlnk | grep 'youtube:playlist' | cut -d" " -f2- | grep 'playlist' | cut -d" " -f2-`
+		plinf=$(echo "$pltit" | cut -d":" -f2- | cut -d" " -f2-5)
+		plnum=$(echo "$plinf" | cut -d" " -f2)
+		pltit=$(echo "$pltit" | cut -d":" -f1)
+		if [ $plstto -eq 0 ]; then plstto=$plnum; fi
+		echo "# \ndownloading Playlist:\n$pltit\n$plinf\n\ngetting Playlist-Songs from $plstnm to $plstto\nprocessing file-list, pls be patient" >&3
+		### Get each Song of Playlist
+		case $oebh in
+			true)
+				youtube-dl --no-check-certificate "$yutlnk" --playlist-start $plstnm $plstend --get-id -i &> $tmppllst
+			;;
+			false)
+				youtube-dl "$yutlnk" --playlist-start $plstnm $plstend --get-id -i &> $tmppllst
+			;;
+		esac
+		pllstcnt=$plstnm
+		unset lnkarr
+		lnkarr=()
+		while read "plstytf"; do
+			lnkarr+=("'$plstytf'")
+		done < "$tmppllst"
+		for i in "${lnkarr[@]}" ; do
+			plstytf=$(echo "${i:1:-1}")
+			if `echo $plstytf | grep -q 'ERROR:' 1>/dev/null 2>&1` || `echo $plstytf | grep -q 'WARNING:' 1>/dev/null 2>&1` ; then
+				errorwrng=$(echo "$plstytf" | cut -d':' -f4-)
+				geterror=$(echo "$plstytf" | cut -d' ' -f2 | cut -d":" -f1)
+				errurl=$(wget --no-check-certificate -qO- "$ytmainlnk""$geterror" | perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)(?: - youtube)?\s*<\/title/si' | sed "s/[&amp;]/&/g")
+				echo "# \n*** ERROR YOUTUBE DOWNLOAD: $errurl ***\n*** $errorwrng ***" >&3
+			else
+				fun_yutube_DL ''"$ytmainlnk""$plstytf"'' ''" ($pllstcnt)"''
+			fi
+		pllstcnt=`expr $pllstcnt + 1`
+		done
+		pllstcnt=0
+	else
+		fun_yutube_DL "$yutlnk"
+	fi
+	plstnm=1
+	plstto=0
+	unset plstend
+}
+
+if [ -n "$yutlnk" ]; then
+	fun_chklnks "$yutlnk" ""
+fi
+
+OLD_IFS=$IFS
+if [ -n "$multif" ]; then
+	IFS='*'
+	marry="$multif"
+	for mlnk in $marry
+	do
+		if [ -z "$mlnk" ]; then continue; fi
+		if `echo $mlnk | grep 'watch?v' | grep '&list=' 1>/dev/null 2>&1` ; then
+			mlnk=$(echo "$mlnk" | cut -d'&' -f1)
+		fi
+		fun_chklnks "$mlnk" ""
+	done
+fi
+IFS=$OLD_IFS
+
+#### Convert to mp3
+mv -f $tmpdir/*.jpg $tmppic
+mv -f $tmpdir/*.json $tmpjsn
+mp4count=$(ls $tmpdir/*.mp4 | wc -l) # Anzahl der Dateien
+mkvcount=$(ls $tmpdir/*.mkv | wc -l) # Anzahl der Dateien
+webmcount=$(ls $tmpdir/*.webm | wc -l) # Anzahl der Dateien
+count=`expr $mp4count + $mkvcount + $webmcount`
+tcount=$count
+IFS='
+' # wegen Dateien mit Leerzeichen
+i=0
+echo "50" >&3;
+if [ $count -gt 1 ]; then 
+	echo "# \n$count Files are gonna be converted to MP3..." >&3
+else 
+	echo "# \n$count File is gonna be converted to MP3..." >&3
+fi
+for file in $tmpdir/* ; do
+		if [ -d $file ]; then continue; fi #Verzeichnisse überspringen
+		i=$(($i+1))
+		get_filetype $file
+		shfile=$(echo "$file" | cut -d'/' -f4-)
+		discnt="$((50+($i*49/$count)))"
+		if [ $discnt -ge 100 ]; then discnt=99; fi
+		echo "# Song $i of $tcount" >&3; #Info -deleteable
+		echo "$discnt" >&3;
+		echo "# '$shfile' is being converted..." >&3;
+echo -e "FILE:$file\nSHFILE:$shfile\NUFILE:$nufile"
+sleep 10
+		nufile="${file:0:-$deli}.mp3"
+#		nufile=$(echo "$nufile" | sed "s/[\"']//g")
+		i3info=$(echo "$nufile" | cut -d'/' -f4-)
+		jpgfle="${file:0:-$deli}.jpg"
+		pi1c=$(echo "$jpgfle" | cut -d'/' -f4-)
+		jpgfle=$tmppic/$pi1c
+		jsnfle="${file:0:-$deli}.info.json"
+		json=$(echo "$jsnfle" | cut -d'/' -f4-)
+		jsnfle=$tmpjsn/$json
+		ffmpeg -v 5 -y -i "$file" -acodec libmp3lame -ac 2 -q:a 0 -map a "$nufile"
+
+
+		jsndes=`cat $jsnfle`
+		appurl="https://www.youtube.com/watch?v="
+		OLD_IFS=$IFS
+		IFS=','
+		larry="$jsndes"
+		for url in $larry ; do
+			if `echo $url | grep 'display_id' 1>/dev/null 2>&1` ; then
+				baseurl=$( echo "$url" | cut -d'"' -f4)
+				comurl=$appurl$baseurl
+			fi
+		done
+		IFS=$OLD_IFS
+		i3info="${i3info:0:-4}"
+		if `echo "$i3info" | cut -c2 | grep '_' 1>/dev/null 2>&1` ; then i3info="${i3info:2}"; fi
+		if `echo "$i3info" | cut -c3 | grep '_' 1>/dev/null 2>&1` ; then i3info="${i3info:3}"; fi
+		if `echo "$i3info" | cut -c4 | grep '_' 1>/dev/null 2>&1` ; then i3info="${i3info:4}"; fi
+		id3art=$(echo "$i3info" | cut -d"-" -f1 | sed 's/ *$//')
+		id3tit=$(echo "$i3info" | cut -d"-" -f2- | sed 's/^ *//' | sed "s/[&amp;]/&/g")
+		id3tag --artist=$id3art --song=$id3tit --comment=$comurl $nufile
+		eyeD3 --add-image $jpgfle:FRONT_COVER $nufile
+		case $edid3t in
+			TRUE )
+				id3alb=""
+				id3gen=""
+				newid3tags
+			;;
+		esac
+		ytinfo=$(echo "$nufile" | cut -d'/' -f4- | sed "s/[&]/&amp;/g")
+		if [ -z "$gen3di" ] ; then
+			prntgnr=""
+		else
+			prntgnr="-> $gen3di"
+		fi
+
+		if [ "$gen3di" = "**** deleted ****" ] ; then
+			echo "$ytinfo" >> $tmpdelet
+		else
+			echo "$ytinfo $prntgnr" >> $tmptitle
+		fi
+		if [ -e "$nufile" ] ; then
+			mv -n "$nufile" "$diruse/"
+			if [ "$keepvd" == "TRUE" ]; then
+				mv -n $file $diruse/Videos/
+			fi
+		fi
+done
+
+count=`expr $count + $sndcldcnt`
+if [ $count -eq 1 ] ; then
+	echo "# \n$count MP3 was created and saved to:\n$diruse\n" >&3
+elif [ $count -eq 0 ] ; then
+	echo "# \nNo MP3s were created and saved!\n" >&3
+else
+	echo "# \n$count MP3s were created and saved to:\n$diruse\n" >&3
+fi
+while read convfiles ; do
+	convfiles=$(echo "$convfiles" | sed "s/&amp;/\&/g")
+	echo "# $convfiles" >&3
+done < $tmptitle
+if [ -s $tmpdelet ] ; then 
+	echo "# \nDeleted Songs:" >&3
+	while read delefiles ; do
+		delefiles=$(echo "$delefiles" | sed "s/&amp;/\&/g")
+		echo "# $delefiles" >&3
+	done < $tmpdelet
+fi
+echo "# \n\n *************** All operations finished ***************\n                      Please close the program" >&3
+exec 3>&-
+
+unset ytaccount
+unset ytpasswrd
+rm -f /tmp/yttb1
+rm -f /tmp/yttb2
+rm -f /tmp/yttb3
+rm -rf $tmppic
+rm -rf $tmpjsn
+rm -rf $tmpdir
+rm -rf $tmpsnd
+rm -f $tmptitle
+rm -f $tmpdelet
+rm -f $tmppllst
+exit
+
