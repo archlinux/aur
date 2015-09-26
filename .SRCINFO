@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-better-wheel-scrolling
 	pkgdesc = An unicode enabled rxvt-clone terminal emulator (urxvt) w/ better wheel scrolling (VTE-like) (& no utmp/wtmp support)
 	pkgver = 9.21
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64

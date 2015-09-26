@@ -8,7 +8,7 @@
 _pkgname=rxvt-unicode
 pkgname=${_pkgname}-better-wheel-scrolling
 pkgver=9.21
-pkgrel=2
+pkgrel=3
 pkgdesc="An unicode enabled rxvt-clone terminal emulator (urxvt) w/ better wheel scrolling (VTE-like) (& no utmp/wtmp support)"
 arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
@@ -38,7 +38,6 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   ./configure --prefix=/usr \
-    --with-terminfo=/usr/share/terminfo \
     --enable-256-color \
     --enable-font-styles \
     --enable-xim \
