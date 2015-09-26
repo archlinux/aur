@@ -1,0 +1,32 @@
+post_install() {
+  cat << _EOF
+
+==> Installation:
+==> Add theme to your /etc/default/grub: 
+GRUB_THEME="/boot/grub/themes/starfield-manjaro-menda/theme.txt"
+==> Preferred resolution 1024x768: GRUB_GFXMODE=1024x768
+==> Update grub:# grub-mkconfig -o /boot/grub/grub.cfg
+
+_EOF
+}
+
+pre_upgrade() {
+  checkver=$(pacman -Qs grub2-theme-starfield-manjaro-menda | head -n 1 | awk '{print 
+$2}')
+  target=/boot/grub/themes/starfield-manjaro-menda
+
+  if [[ $checkver == "1-1" ]]; then
+  cat << _EOF
+
+==> Install target changed to /boot/grub/themes/starfield-manjaro-menda
+==> No longer needed to copy /usr/share/grub/themes/starfield-manjaro-menda to 
+/boot/grub/themes/
+
+_EOF
+     # Not Working
+     #if [ -d "$target" ]; then
+     #   rm -rf /boot/grub/themes/starfield-manjaro-menda
+     #fi
+  fi
+}
+
