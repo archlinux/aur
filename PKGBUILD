@@ -1,6 +1,6 @@
 # Maintainer: Pavel Antonov <pvantonov@gmail.com>
 pkgname=energetik
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="KDE service to temporarily inhibit power management"
 arch=(i686 x86_64)
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/pvantonov/energetiK/archive/0.1.1.tar.gz")
+source=("https://github.com/pvantonov/energetiK/archive/0.1.2.tar.gz")
 noextract=()
-md5sums=(7a855c653535a8054829b5a234174879)
+md5sums=(a74f408941dedcfa999590885727a28e)
 
 prepare() {
   mkdir -p build
