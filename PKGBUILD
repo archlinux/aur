@@ -4,18 +4,18 @@
 
 _pkgname=oocairo
 pkgname=lua51-$_pkgname-git
-pkgver=2015.04.03.g2f41d09
+pkgver=2015.07.14.gc0b15cd
 pkgrel=1
 pkgdesc="Module providing access to Cairo from within Lua"
-arch=(i686 x86_64)
-url="https://github.com/awesomeWM/oocairo"
-license=('MIT')
+arch=("i686" "x86_64")
+url="https://github.com/awesomeWM/$_pkgname"
+license=("MIT")
 depends=("cairo>=1.8.0" "lua51")
 conflicts=("lua51-oocairo")
 provides=("lua51-oocairo")
 makedepends=("git" "libtool" "pkgconfig")
-source=("git+https://github.com/awesomeWM/oocairo.git")
-sha1sums=('SKIP')
+source=("git+https://github.com/awesomeWM/$_pkgname.git")
+sha1sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-	cd ${srcdir}/${_pkgname}
+	cd "$srcdir/$_pkgname"
 	autoreconf --install
 	export oocairo_cv_lua_name=lua5.1
 	./configure --prefix=/usr
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}/
-	install -D -m755 .libs/liboocairo.so.0.0.0 "${pkgdir}/usr/lib/lua/5.1/oocairo.so"
-	install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/lua51-$_pkgname/COPYRIGHT"
+	cd "$srcdir/$_pkgname"
+	install -Dm755 .libs/liboocairo.so.0.0.0 "$pkgdir/usr/lib/lua/5.1/oocairo.so"
+	install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/lua51-$_pkgname/COPYRIGHT"
 }
