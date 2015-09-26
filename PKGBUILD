@@ -20,8 +20,8 @@ md5sums=('SKIP'
 _gitname=skype-unofficial-client
 
 pkgver () {
-  cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
+	cd $_gitname
+	echo $(git describe --always | sed 's/-/./g')
 }
 
 prepare() {
@@ -31,9 +31,13 @@ prepare() {
 
 package() {
 	cd "$srcdir/$_gitname" # Git name and $pkgname differs
-        # Creating missing folders
-        mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-        # Do the actual installation
-        make PREFIX=$pkgdir $_platform
+
+	# Creating missing folders
+	mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+	mkdir -p "$pkgdir/usr/share/applications"
+	mkdir -p "$pkgdir/usr/bin"
+
+	# Do the actual installation
+	make PREFIX=$pkgdir $_platform
 }
 
