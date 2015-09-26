@@ -69,7 +69,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch-git'
 pkgver='1.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686'
       'x86_64')
@@ -93,7 +93,8 @@ makedepends=('git'
              'python2'
              'unixodbc'
              'sed'
-             'make')
+             'make'
+	     'libyuv-git')
 # per https://aur.archlinux.org/packages/freeswitch-fixed/ 2014-08-13 14:02 comment, enable this when freetdm is packaged.
 # freetdm will require libsangoma, wanpipe, libsng_isdn, libpri. see http://wiki.freeswitch.org/wiki/FreeTDM#Dependencies ; links below
 # http://wiki.sangoma.com/wanpipe-linux-drivers
