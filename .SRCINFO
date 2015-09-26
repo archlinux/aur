@@ -1,24 +1,26 @@
 pkgbase = cmdpack
 	pkgdesc = Collection of command line utilities, most for emulation or disk images. (bin2ecm bin2iso bincomp brrrip byteshuf byteswap cdpatch fakecrc hax65816 id3point pecompat rels screamf subfile uips usfv vb2rip wordadd zerofill)
-	pkgver = 1.04
+	pkgver = 1.05
 	pkgrel = 1
 	url = https://github.com/chungy/cmdpack
 	arch = i686
 	arch = x86_64
 	groups = cmdpack
 	license = GPL3
-	source = https://github.com/chungy/cmdpack/archive/1.04.tar.gz
-	sha256sums = 585dc53df1f854d53db3bdb38fc7d853e9b34c1c4a7b57fd8e0c8a5a4c908a9d
+	makedepends = asciidoc
+	source = https://github.com/chungy/cmdpack/archive/1.05.tar.gz
+	sha256sums = f5e132ca4f1d7a560375c7a8dfacdaa00d71dc5cf65ee1f2b9a94033c953c96a
 
 pkgname = cmdpack-bin2ecm
 	pkgdesc = Encoder/decoder for Error Code Modeler format
 	provides = ecm-tools
+	provides = bin2ecm
 	conflicts = ecm-tools
 	replaces = ecm-tools
 
 pkgname = cmdpack-bin2iso
 	pkgdesc = Convert CD .BIN to .ISO
-	provides = cmdpack-bin2iso
+	provides = bin2iso
 	conflicts = bin2iso
 
 pkgname = cmdpack-bincomp
@@ -89,7 +91,4 @@ pkgname = cmdpack-zerofill
 	pkgdesc = Create a large, empty file
 	provides = zerofill
 	conflicts = ucommon
-
-pkgname = cmdpack-docs
-	pkgdesc = cmdpack documentation
 

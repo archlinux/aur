@@ -28,20 +28,21 @@ _utils=(
   'wordadd'
   'zerofill'
 )
-for _tool in ${_utils[@]}; do pkgname+=("$pkgbase-$_tool"); done && pkgname+=("$pkgbase-docs")
-pkgver=1.04
+for _tool in ${_utils[@]}; do pkgname+=("$pkgbase-$_tool"); done
+pkgver=1.05
 pkgrel=1
 pkgdesc="Collection of command line utilities, most for emulation or disk images. (${_utils[*]})"
 arch=('i686' 'x86_64')
 url="https://github.com/chungy/cmdpack"
 license=('GPL3')
+makedepends=('asciidoc')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('585dc53df1f854d53db3bdb38fc7d853e9b34c1c4a7b57fd8e0c8a5a4c908a9d')
+sha256sums=('f5e132ca4f1d7a560375c7a8dfacdaa00d71dc5cf65ee1f2b9a94033c953c96a')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
 
-  make
+  make ${_utils[@]} $(for _tool in ${_utils[@]}; do echo $_tool.1; done)
 }
 
 for _tool in "${_utils[@]}"; do
@@ -57,14 +58,13 @@ for _tool in "${_utils[@]}"; do
   if [[ "$_tool" == "bin2ecm" ]]; then
       eval "$add_pkg_func
                 conflicts=('ecm-tools')
-                provides=('ecm-tools')
+                provides=('ecm-tools' '$_tool')
                 replaces=('ecm-tools')
-                make DESTDIR=\"\$pkgdir\" prefix=/usr install-ecm2bin
+                make DESTDIR=\"\$pkgdir\" prefix=/usr install-$_tool
                 }"
   elif [[ "$_tool" == "bin2iso" ]]; then
       eval "$add_pkg_func
                 conflicts=('bin2iso')
-                provides=('$pkgbase-$_tool')
                 make DESTDIR=\"\$pkgdir\" prefix=/usr install-$_tool
                 }"
   elif [[ "$_tool" == "zerofill" ]]; then
@@ -78,10 +78,3 @@ for _tool in "${_utils[@]}"; do
                 }"
   fi
 done
-
-eval "package_$pkgbase-docs() {
-  pkgdesc='$pkgbase documentation'
-  cd \$srcdir/\${pkgbase}-\${pkgver}
-
-  install -Dm0644 cmdpack.txt \${pkgdir}/usr/share/doc/\${pkgbase}/cmdpack.txt
-}"
