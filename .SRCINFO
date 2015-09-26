@@ -1,6 +1,6 @@
 pkgbase = needrestart
 	pkgdesc = Restart daemons after library updates.
-	pkgver = 2.0
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/liske/needrestart
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = needrestart
 	depends = perl-term-readkey
 	depends = perl-proc-processtable
 	depends = perl-sort-naturally
+	depends = perl-file-slurp
 	options = !emptydirs
-	source = needrestart-2.0.tar.gz::https://github.com/liske/needrestart/archive/v2.0.tar.gz
-	sha256sums = 3626079004ad04a744e647a14ee5dc19b02fc306e9b790c530120ff509a348c9
+	source = needrestart-2.3.tar.gz::https://github.com/liske/needrestart/archive/v2.3.tar.gz
+	sha256sums = f15ceca0bffd2b4599980d4474267b55ab39d12f15b08c930912cce1b671977c
 
 pkgname = needrestart
 
