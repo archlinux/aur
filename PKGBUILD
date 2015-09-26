@@ -9,7 +9,7 @@ pkgver=42.0b1
 pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL' 'GPL3')
-depends=('gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
