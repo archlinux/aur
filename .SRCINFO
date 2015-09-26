@@ -1,7 +1,7 @@
 pkgbase = batman-adv
 	pkgdesc = batman kernel module
 	pkgver = 2015.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.open-mesh.net/
 	install = batman-adv.install
 	arch = i686
@@ -11,8 +11,28 @@ pkgbase = batman-adv
 	depends = linux
 	source = http://downloads.open-mesh.org/batman/releases/batman-adv-2015.1/batman-adv-2015.1.tar.gz
 	source = batman-adv.install
+	source = 0001-batman-adv-don-t-access-unregistered-net_device-obje.patch
+	source = 0002-batman-adv-Add-lower-layer-needed_-head-tail-room-to.patch
+	source = 0003-batman-adv-Fix-memory-leak-on-tt-add-with-invalid-vl.patch
+	source = 0004-batman-adv-Remove-unnecessary-braces-for-test_bit-in.patch
+	source = 0005-batman-adv-Remove-unnecessary-braces-for-test_bit-in.patch
+	source = 0006-batman-adv-Remove-unnecessary-braces-for-test_bit-in.patch
+	source = 0007-batman-adv-fix-speedy-join-for-DAT-cache-replies.patch
+	source = 0008-batman-adv-avoid-keeping-false-temporary-entry.patch
+	source = 0009-batman-adv-detect-local-excess-vlans-in-TT-request.patch
+	source = 0010-batman-adv-decrease-maximum-fragment-size.patch
 	sha256sums = 62ff9b769ada746e7a373a048ca8036fbd73f81c63053bbbe25fa24b4343dd0d
 	sha256sums = 347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37
+	sha256sums = 39e6e3c64339e894b4a58a0a4b9703eabb865a3df0035b54dbd84b068838941f
+	sha256sums = a3d07361c73ca4251e23ee2f3226a0cd9c4102e0b99f7a2ae4fb1b9ae99a59ce
+	sha256sums = d3cb5820656a9bd86169eb776fd6a49adc09ed4653ac9a7b5a5b851caa5723ae
+	sha256sums = de5b23a93a73a61ec689e5773d9d70dfd09ec9f9ef0618941e9fea4101a9ae75
+	sha256sums = e3b4e5843c1b80eeb1770d433d3a8f07a13e3b6fa8646e7ca24443eaf36de9c0
+	sha256sums = 55c5d1bdf3c2bdd113eeecb48cefb0d0e8939f0fd992fbaeb4a1ae1aac7b08c1
+	sha256sums = e54578672879efb0329c0ba1ec0c79341296d3e7f15a47f37dc922a1cfc8b91d
+	sha256sums = c39e8acf5733450570139a95b16109506c48bfa2db9f21eea51fd427ea302e66
+	sha256sums = 38042fc13e55ba0cae165592801e7e706d2c751f40418d710b3fc43e086ccdab
+	sha256sums = 87fa61b4b93577c73728cc3cd66a80871ee1852a2ea7ccccb80d0b63d9919b7c
 
 pkgname = batman-adv
 
