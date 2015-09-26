@@ -1,0 +1,15 @@
+pkgbase = plymouth-theme-arch-logo-gnomish
+	pkgdesc = ArchLinux logo theme for plymouth with a GNOME(ish) flavour
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = plymouth-theme-arch-logo-gnomish.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = plymouth-theme-arch-logo-gnomish-src.tar.gz
+	source = plymouth-theme-arch-logo-gnomish.install
+	md5sums = dfab042ad368d0b64cd286752ba14287
+	md5sums = 8e7ab45e9ddf60b4225a1e927128a159
+
+pkgname = plymouth-theme-arch-logo-gnomish
+
