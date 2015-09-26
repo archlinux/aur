@@ -5,13 +5,14 @@ _tarver=2.2.10
 pkgbase=${_name}
 pkgname=(${_name}-gtk ${_name}-qt ${_name}-daemon ${_name}-core ${_name}-data)
 pkgver=${_tarver}
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h')
 url="http://code.google.com/p/eiskaltdc/"
 options=(!emptydirs)
 source=(https://github.com/${_name}/${_name}/archive/v${_tarver}.tar.gz)
 sha256sums=('e461c8c499e459651d6382a6ded6788e5ac9a9c4ff26386c3cf073d94d606127')
+makedepends=(gcc make cmake gtk2 libnotify qt4 bzip2 openssl lua52 libidn pcre)
 
 build() {
     cd ${srcdir}/${_name}-${_tarver}
