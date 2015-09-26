@@ -146,8 +146,8 @@ package() {
 
   install -Dm644 "$srcdir"/locations.ini "$pkgdir"/usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini
 
-  install -d "$pkgdir"/usr/share/phusion-passenger/ngx_http_passenger_module
-  mv src/nginx_module/* "$pkgdir"/usr/share/phusion/ngx_http_passenger_module/
+  install -d "$pkgdir"/usr/share/passenger/ngx_http_passenger_module
+  mv src/nginx_module/* "$pkgdir"/usr/share/passenger/ngx_http_passenger_module/
 
   install -d "$pkgdir"/usr/share/passenger/ruby_extension_source
   mv src/ruby_native_extension/* "$pkgdir"/usr/share/passenger/ruby_extension_source/
