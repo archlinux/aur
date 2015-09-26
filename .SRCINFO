@@ -1,0 +1,15 @@
+pkgbase = ttf-noto-emoji
+	pkgdesc = Unicode Emoji font
+	pkgver = 2015.09.26
+	pkgrel = 1
+	url = http://www.google.com/get/noto
+	install = ttf-noto-emoji.install
+	arch = any
+	license = apache
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://noto-website-2.storage.googleapis.com/pkgs/NotoEmoji-unhinted.zip
+	md5sums = 4a6d9ed18f1490a4817ca3d2678a471a
+
+pkgname = ttf-noto-emoji
+
