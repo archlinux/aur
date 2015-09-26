@@ -1,15 +1,15 @@
 pkgbase = eclipse-jboss
 	pkgdesc = Developer tools for JBoss application server
 	pkgver = 4.2.3.Final
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tools.jboss.org/
 	arch = any
 	license = LGPL
 	license = EPL
 	license = BSD
-	depends = eclipse>=4.3.0
+	depends = eclipse>=4.5.0
 	options = !strip
-	source = jbosstools-4.2.3.Final-updatesite-core.zip::http://downloads.sourceforge.net/project/jboss/JBossTools/jbosstools4.2.x/jbosstools-4.2.3.Final_2015-03-26_22-41-56-B370-updatesite-core.zip?r=&ts=1428435258&use_mirror=cologne
+	source = download.zip::http://downloads.sourceforge.net/project/jboss/JBossTools/jbosstools4.2.x/jbosstools-4.2.3.Final_2015-03-26_22-41-56-B370-updatesite-core.zip
 	md5sums = ad24d50352b009930ffcfb3e13a21a07
 
 pkgname = eclipse-jboss
