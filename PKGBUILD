@@ -6,13 +6,13 @@ pkgver=20150917
 pkgrel=1
 pkgdesc="Visualize when your system was running"
 url="https://github.com/p-e-w/ranwhen"
-arch=("any")
-license=("GPL3")
-provides=("ranwhen")
-depends=("python")
-makedepends=("git")
-source=("git+https://github.com/p-e-w/${_pkgname}.git")
-md5sums=("SKIP")
+arch=('any')
+license=('GPL3')
+provides=('ranwhen')
+depends=('python')
+makedepends=('git')
+source=(git+https://github.com/p-e-w/${_pkgname}.git)
+md5sums=('SKIP)
 
 
 package() {
