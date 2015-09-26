@@ -1,6 +1,6 @@
 pkgbase = gitg-git
 	pkgdesc = A GIT repository viewer based on GTK+ - git checkout
-	pkgver = 3.16.1.r6.gec1042d
+	pkgver = 3.17.1.r115.g84eee97
 	pkgrel = 1
 	url = https://git.gnome.org/browse/gitg/
 	install = gitg-git.install
@@ -22,6 +22,8 @@ pkgbase = gitg-git
 	provides = gitg
 	conflicts = gitg
 	source = git://git.gnome.org/gitg
+	source = git://git.gnome.org/libgd
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gitg-git

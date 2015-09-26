@@ -2,7 +2,7 @@
 # Contributor: Matt Arsenault <arsenm2@rpi.edu>
 
 pkgname=gitg-git
-pkgver=3.16.1.r6.gec1042d
+pkgver=3.17.1.r115.g84eee97
 pkgrel=1
 pkgdesc='A GIT repository viewer based on GTK+ - git checkout'
 arch=('i686' 'x86_64')
@@ -13,8 +13,10 @@ makedepends=('intltool' 'vala' 'gobject-introspection' 'gnome-common')
 provides=('gitg')
 conflicts=('gitg')
 install=gitg-git.install
-source=('git://git.gnome.org/gitg')
-sha256sums=('SKIP')
+source=('git://git.gnome.org/gitg'
+	'git://git.gnome.org/libgd')
+sha256sums=('SKIP'
+	'SKIP')
 
 pkgver() {
 	cd gitg/
