@@ -16,7 +16,7 @@ md5sums=('7070ae3f40e3d15a590d6bec9589b821'
          '1b0ce875d878a055499ee0f06ad8cd08'
 	 '2c7bd24fcdf546641c14df2686f19dbb')
 
-source=("https://dl.dropboxusercontent.com/u/9839330/fm4track/fm4trackservice-${pkgver}.tar.gz"
+source=("https://dl.dropboxusercontent.com/u/9839330/fm4trackservice/fm4trackservice-${pkgver}.tar.gz"
         "fm4tracks.install"
         "fm4tracks.desktop"
 	"fm4tracks.png")
