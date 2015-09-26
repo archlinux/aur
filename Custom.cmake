@@ -1,0 +1,5 @@
+set(JAVA_MODULE_INSTALL_DIR /usr/lib/csound/java)
+set(PYTHON_MODULE_INSTALL_DIR /usr/lib/python2.7/site-packages)
+set(CMAKE_INSTALL_PREFIX=/usr)
+set(LUA_MODULE_INSTALL_DIR=/usr/lib/lua/5.1)
+set(DPD_MODULE_INSTALL_DIR=/usr/lib/pd/extra)

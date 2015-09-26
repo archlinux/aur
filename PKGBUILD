@@ -16,27 +16,21 @@ optdepends=('csoundqt: Qt frontend'
             'java-environment: Java Wrapper'
             'csound-doc: The Canonical Csound Reference Manual')
 source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
+        "Custom.cmake"
         "csound.sh")
 sha256sums=('2384cbc82fe37b70192c87977b52c55b336731ecbfd3be1d8d30c7223815d7b9'
+            'de72618a7d477c7ac213fbef65367b640fc7a7a994b285ecdd4af85da6d26721'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
 
 prepare() {
-  cd "csound-${pkgver}"
-
-  # install modules to proper paths
-  sed -i '/^set.*MODULE_INSTALL_DIR/d' CMakeLists.txt
-  sed -i '/execute_process\ (/,+4 d' CMakeLists.txt
-  sed -i '/pdname/{n;s/LIBRARY/PD_MODULE/2}' frontends/CMakeLists.txt
+  cp "$srcdir"/Custom.cmake "csound-${pkgver}"
+  sed -i '/execute_process\ (/,+4 d' "csound-${pkgver}/CMakeLists.txt"
 }
 
 build() {
   cd "csound-${pkgver}"
   mkdir -p bld && cd bld
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-           -DPYTHON_MODULE_INSTALL_DIR=/usr/lib/python2.7/site-packages \
-           -DJAVA_MODULE_INSTALL_DIR=/usr/lib/csound/java \
-           -DLUA_MODULE_INSTALL_DIR=/usr/lib/lua/5.1 \
-           -DPD_MODULE_INSTALL_DIR=/usr/lib/pd/extra
+  cmake ..
   make
 }
 
