@@ -32,6 +32,7 @@ build() {
 
 package() {
   cd "$srcdir/${_gitname}"
+  make DESTDIR=$pkgdir install
   install -d $pkgdir/usr/share/emacs/site-lisp/cedet
   install cedet-devel-load.el cedet-remove-builtin.el $pkgdir/usr/share/emacs/site-lisp/cedet
   cp -a lisp contrib $pkgdir/usr/share/emacs/site-lisp/cedet
