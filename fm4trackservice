@@ -1,0 +1,74 @@
+#!/bin/bash
+
+### FM4-Trackservice Systray ###
+# GPL v3
+# do what ever u want with it
+# no copyright, just copyleft
+
+fm4vers=0.2
+Fm4Icon=/usr/share/icons/fm4tracks.png
+fm4cmd="notify-send -i \"$Fm4Icon\" \"FM4-Trackservice Version $fm4vers\" \"use right-click for Tracks\"" #Alternate left-click command - not in use
+PIPE=$(mktemp -u --tmpdir ${0##*/}.XXXXXXXX)
+[ -e $PIPE ] && rm $PIPE
+mkfifo $PIPE
+exec 3<> $PIPE
+
+function array_contains() { 
+	local array="$1[@]"
+	local seeking="$2"
+	local in=1
+	for element in "${!array}"; do
+		if [[ "$element" == "$seeking" ]]; then
+			in=0
+			break
+		fi
+	done
+	return $in
+}
+unset fm4outar
+unset fm4array
+yad --notification --auto-kill --kill-parent --auto-close --listen --command="xdg-open mms://apasf.apa.at/fm4_live_worldwide"<&3 & 
+echo "icon:$Fm4Icon" >&3
+while true ; do
+	[ -e /tmp/fm4trck.html ] && rm -f /tmp/fm4trck.html
+	wget -q --header='Accept-Charset: ISO-8859-1' http://hop.orf.at/img-trackservice/fm4.html -O /tmp/fm4trck.html
+	unset i
+	while read fm4line ; do
+		if `echo "$fm4line" | grep -a '<div>' 1>/dev/null 2>&1` ; then
+			newfm4line=$(echo "$fm4line" | grep -a '<div>' | \
+					sed "s/<div>//g" | \
+					sed 's/<span class=//g' | \
+					sed 's/"tracktitle">//g' | \
+					sed 's/<\/span> | "artist">/ - /g' | \
+					sed 's/<\/span><\/div>//g' | \
+					sed 's/: / /g')
+			fm4tooltp=$(echo "$newfm4line" | sed "s/[&]/&amp;/g" | sed "s/[@]/AT/g" | sed 's/\([\ä\ö\ü\Ä\Ü\Ö]\)/\&\1uml\;/g;y/\ä\ö\ü\Ä\Ö\Ü/aouAOU/;s/\ß/\&szlig\;/g' | sed 's/\ß/\&szlig;/g')
+			echo "tooltip:FM4-Trackservice Vers: $fm4vers\n$fm4tooltp" >&3
+			if ! array_contains fm4array "'$newfm4line'" ; then
+				## Youtube_search##
+				fm4song=$(echo $newfm4line | cut -d' ' -f2- | cut -d'-' -f1 | sed 's/ *$//' | sed 's/^ *//' | sed 's/ /+/g' | sed 's/"/+/g' | sed 's/&/%26/g' | sed 's/(/%28/g' | \
+					sed 's/)/%29/g' |sed 's/@/%40/g')
+				fm4arst=$(echo $newfm4line | cut -d' ' -f2- | cut -d'-' -f2- | sed 's/ *$//' | sed 's/^ *//' | sed 's/ /+/g' | sed 's/"/+/g' | sed 's/&/%26/g' | sed 's/(/%28/g' | \
+					sed 's/)/%29/g' |sed 's/@/%40/g')
+				fm4ytlnk="https://www.youtube.com/results?search_query=$fm4arst+$fm4song"
+				fm4array+=(\'"$newfm4line"\')
+				fm4outar+=(\'"$newfm4line"!xdg-open  "$fm4ytlnk"\')
+				notify-send -i $Fm4Icon "FM4-Trackservice now playing:              " "$fm4tooltp"
+				sleep 1
+			fi 
+		fi
+	done < /tmp/fm4trck.html
+	if [ ${#fm4array[*]} -gt 30 ] ; then
+		pos=`expr ${#fm4array[*]} - 30`
+		fm4array=("${fm4array[@]:$pos}")
+		fm4outar=("${fm4outar[@]:$pos}")
+	fi
+#	echo "still runing at $(date +%H:%M:%S)"
+	fm4outpt=$(echo ${fm4outar[@]} | sed "s/' '/|/g" | sed "s/^'//g" | sed "s/'$//g")
+	echo "menu:\
+		$fm4outpt" >&3
+	sleep 15	# refresh 4 times per Minute
+done
+rm -f $PIPE
+exit
+

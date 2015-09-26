@@ -1,0 +1,10 @@
+post_install() {
+  echo
+  echo "Updating Icon-Cache"
+  gtk-update-icon-cache -q -t -f /usr/share/icons
+}
+
+post_upgrade() {
+  post_install
+}
+

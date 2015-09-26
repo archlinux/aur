@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=FM4 Trackservice
+GenericName=FM4 Trackservice
+GenericName[de]=FM4 Trackservice
+Comment=FM4 Trackservice in Systray - right-click for list - left-click for Radio
+Comment[de]=FM4 Trackservice -Linksklick startet den Radiosender - Rechtsklick öffnet die Liste
+Exec=fm4trackservice
+Icon=/usr/share/icons/fm4tracks.png
+Terminal=false
+StartupNotify=false
+Encoding=UTF-8
+Categories=Application;AudioVideo;AudioVideoEditing;
+Name[de_AT]=FM4 Trackservice
