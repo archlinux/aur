@@ -1,0 +1,18 @@
+pkgbase = vanitygen-git
+	pkgdesc = Bitcoin vanity address generator written in C
+	pkgver = 20121024
+	pkgrel = 2
+	url = https://github.com/samr7/vanitygen
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	depends = openssl
+	depends = pcre
+	provides = vanitygen
+	conflicts = vanitygen
+	source = git+https://github.com/samr7/vanitygen
+	sha256sums = SKIP
+
+pkgname = vanitygen-git
+
