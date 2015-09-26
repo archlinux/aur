@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-libev
 	pkgdesc = A lightweight secured socks5 proxy for embedded devices and low end boxes
 	pkgver = 2.3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shadowsocks/shadowsocks-libev
 	arch = i686
 	arch = x86_64
