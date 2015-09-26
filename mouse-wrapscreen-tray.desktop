@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mouse Wrap Screen
+Comment=Toggle the mouse-wrapscreen tool from the system tray.
+Exec=mouse-wrapscreen-tray
+TryExec=mouse-wrapscreen-tray
+Icon=input-mouse
+Terminal=false
+Categories=Utility;Qt;HardwareSettings;DesktopSettings;
+Keywords=mouse;system;tray;wrap;dual;screen;
+StartupNotify=false

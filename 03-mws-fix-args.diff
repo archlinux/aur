@@ -1,0 +1,29 @@
+--- mouse-wrapscreen.c	2009-05-18 06:42:54.000000000 +0200
++++ mouse-wrapscreen.c	2015-09-17 16:10:29.917729010 +0200
+@@ -75,7 +75,7 @@
+ 
+ static struct option const long_options[] = {
+   {"help", 0, NULL, 'h'},
+-  {"resistance", no_argument, NULL, 'r'},
++  {"resistance", required_argument, NULL, 'r'},
+   {"version", no_argument, NULL, 'V'},
+   {"verbose", no_argument, NULL, 'v'},
+   {"left", no_argument, NULL, 'l'},
+@@ -118,7 +118,7 @@
+   int left = 1;
+   int right = 1;
+ 
+-  while ((c = getopt_long (argc, argv, "r:hvlib", long_options, NULL)) != -1) {
++  while ((c = getopt_long (argc, argv, "r:hvVlib", long_options, NULL)) != -1) {
+     switch (c) {
+     case 'h':
+       usage (argv);
+@@ -130,7 +130,7 @@
+       break;
+     case 'r':
+       resistance = atoi (optarg);
+-      if (resistance <= 1) {
++      if (resistance < 1) {
+         fprintf (stderr, PRINT_PREFIX "Edge resistance must be greater or equal to one\n");
+         usage (argv);
+         return 1;

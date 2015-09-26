@@ -1,0 +1,11 @@
+--- mouse-wrapscreen.c	2015-09-13 16:15:51.696161977 +0200
++++ mouse-wrapscreen.c	2015-09-13 16:15:59.864140353 +0200
+@@ -67,7 +67,7 @@
+ #define VERSION "0.5"
+ #define DEFAULT_RESISTANCE 15
+ 
+-inline int
++static inline int
+ getOtherScreen (int screen)
+ {
+   return 1 - screen;

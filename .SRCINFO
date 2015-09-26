@@ -1,0 +1,37 @@
+pkgbase = dualscreen-mouse-utils
+	pkgdesc = Utilities for use with old-school dual head setups.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://de.mcbf.net/david/dualscreenmouseutils/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	license = LGPL3
+	license = CCPL:by-nc-sa
+	depends = libx11
+	optdepends = python-pyqt5: for mouse-wrapscreen-tray (system tray icon)
+	optdepends = python-psutil: for mouse-wrapscreen-tray (system tray icon)
+	source = http://dsp.mcbf.net/releases/dualscreen-mouse-utils-0.5.tar.gz
+	source = 01-mss-fix-args.diff
+	source = 02-mws-inline.diff
+	source = 03-mws-fix-args.diff
+	source = 04-mws-sleep-arg.diff
+	source = mouse-wrapscreen-tray
+	source = mouse-wrapscreen-tray.desktop
+	source = README.icons
+	source = running.svg
+	source = stopped.svg
+	md5sums = b68a43c9041cbb8dc373553ccef93070
+	md5sums = dc203cc98b15bdaf7453c21e76e87a41
+	md5sums = eb95a8830324f0d2d3249f6802b7e666
+	md5sums = 0294b640ae8daf006c209fb14954c282
+	md5sums = e5ebb5eef015695ee3d533bd5de24180
+	md5sums = b2ba6403fa7dfbe2b1a7f4f945030e7d
+	md5sums = 5b2ebb17e8bc7c833d0c772d2d986bc3
+	md5sums = 5f1b6249af6ad454f950d27ff1dcc533
+	md5sums = 4bca9dc0dcf3fdbbff094b8f83cdee08
+	md5sums = a7b6529cdbd3010c40818c204458b734
+
+pkgname = dualscreen-mouse-utils
+

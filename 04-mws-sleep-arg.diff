@@ -1,0 +1,73 @@
+--- mouse-wrapscreen.c	2015-09-17 16:57:57.563217953 +0200
++++ mouse-wrapscreen.c	2015-09-17 16:58:08.797179507 +0200
+@@ -66,6 +66,7 @@
+ #define PRINT_PREFIX PROG_NAME ": "
+ #define VERSION "0.5"
+ #define DEFAULT_RESISTANCE 15
++#define DEFAULT_SLEEP 1000
+ 
+ static inline int
+ getOtherScreen (int screen)
+@@ -81,6 +82,7 @@
+   {"left", no_argument, NULL, 'l'},
+   {"right", no_argument, NULL, 'i'},
+   {"both", no_argument, NULL, 'b'},
++  {"sleep", required_argument, NULL, 's'},
+   {NULL, 0, NULL, 0}
+ };
+ 
+@@ -92,6 +94,8 @@
+           "    -r, --resistance=R  Mouse pointer has an edge resistance of R when cross-,\n"
+           "                        ing from one screen to the other (%d is the default,\n"
+           "                        1 will make the mouse pass over right away)\n"
++          "    -s, --sleep=S       Sleep that many microseconds between position checks.\n"
++          "                        The default value is %d.\n"
+           "    -v, --verbose       Print some information about what is being done\n"
+           "                        Can be specified twice for even more outputd\n"
+           "    -h, --help          Print this help text and exit\n"
+@@ -101,7 +105,7 @@
+           "    -l, --left          Screen 1 is left of screen 0\n"
+           "    -i, --right         Screen 1 is rigt of screen 0\n"
+           "    -b, --both          Pass cursor on both the left and the right edge\n"
+-          "                        (default)\n", argv[0], DEFAULT_RESISTANCE);
++          "                        (default)\n", argv[0], DEFAULT_RESISTANCE, DEFAULT_SLEEP);
+ }
+ 
+ int
+@@ -117,8 +121,9 @@
+   int verbose = 0;
+   int left = 1;
+   int right = 1;
++  int sleep_us = DEFAULT_SLEEP;
+ 
+-  while ((c = getopt_long (argc, argv, "r:hvVlib", long_options, NULL)) != -1) {
++  while ((c = getopt_long (argc, argv, "r:s:hvVlib", long_options, NULL)) != -1) {
+     switch (c) {
+     case 'h':
+       usage (argv);
+@@ -136,6 +141,14 @@
+         return 1;
+       }
+       break;
++    case 's':
++      sleep_us = atoi (optarg);
++      if (sleep_us < 1) {
++        fprintf (stderr, PRINT_PREFIX "Sleep value must be greater or equal to one\n");
++        usage (argv);
++        return 1;
++      }
++      break;
+     case 'v':
+       verbose++;
+       break;
+@@ -278,8 +291,8 @@
+         modif = 0;
+       }
+ 
+-      //sleeps for 1ms                 
+-      usleep (1000);
++      // sleeps for 1ms (default) or as specified on the command line:
++      usleep (sleep_us);
+ 
+       // reset gets triggered when we see an unrelated event
+       if (reset)

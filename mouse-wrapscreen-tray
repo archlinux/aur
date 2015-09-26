@@ -1,0 +1,149 @@
+#!/usr/bin/env python
+
+# Coypright 2015 Stefan Göbel.
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of
+# the GNU General Public License as published by the Free Software Foundation, either version
+# 3 of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with this program.
+# If not, see <http://www.gnu.org/licenses/>.
+
+#############################################################################################
+
+from PyQt5.QtCore    import QTimer
+from PyQt5.QtGui     import QIcon
+from PyQt5.QtWidgets import QAction, QApplication, QMenu, QSystemTrayIcon
+
+import ctypes, os, psutil, shlex, signal, subprocess, sys
+
+#############################################################################################
+#
+# This script can be configured using the following environment variables:
+#
+#  DSMUMWST_CNF_RUNNING
+#  DSMUMWST_CNF_STOPPED
+#
+#     Full paths to the images used in the system tray if the process is running or stopped,
+#     respectively. All image formats supported by QIcon may be used. The default paths are
+#     /usr/share/dualscreen-mouse-utils/running.svg and …/stopped.svg.
+#
+#  DSMUMWST_CNF_COMMAND
+#
+#     The command to execute to start the process. Either a full path or located somewhere in
+#     $PATH. Command line parameters may be included, the command will be split on whitespace
+#     using shlex.split() (shell-style escapes and quoting is supported, see shlex.split()).
+#     The default is "mouse-wrapscreen".
+#
+#  DSMUMWST_CNF_PROCESS
+#
+#     The process name to look for when checking if the process is running. Usually, but not
+#     always, the name of the executable. The default is "mouse-wrapscreen".
+#
+#  DSMUMWST_CNF_OWNNAME
+#
+#     This name will be set for the script's own process, it replaces the generic "python"
+#     name. The name must be unique. When $DSMUMWST_CNF_COMMAND is started or stopped the
+#     name will be used to located other running instances of this script and signal them to
+#     update their icons. Names longer than 15 bytes will be truncated! The default name is
+#     "dsmumwstray".
+#
+#  DSMUMWST_CNF_DELAYMS
+#
+#     Signal handlers will not be run when Qt is doing nothing, waiting for events. A timer
+#     will be created to generate an event every $DSMUMWST_CNF_DEALYMS milliseconds. Updates
+#     of the tray icons of other running instances will take up to this time. The default is
+#     "500" (half a second). This value may be set to "0" to disable the timer.
+#
+# Note that there is no error checking!
+#
+# Sending a SIGUSR1 signal to this script will change the status icon to the "running" icon,
+# SIGUSR2 will change the icon to the "stopped" icon.
+
+running = os.getenv ("DSMUMWST_CNF_RUNNING", "/usr/share/dualscreen-mouse-utils/running.svg")
+stopped = os.getenv ("DSMUMWST_CNF_STOPPED", "/usr/share/dualscreen-mouse-utils/stopped.svg")
+command = os.getenv ("DSMUMWST_CNF_COMMAND", "mouse-wrapscreen")
+pr_name = os.getenv ("DSMUMWST_CNF_PROCESS", "mouse-wrapscreen")
+pr_tray = os.getenv ("DSMUMWST_CNF_OWNNAME", "dsmumwstray")
+wait_ms = os.getenv ("DSMUMWST_CNF_DELAYMS", "500")
+
+#############################################################################################
+
+def setProcessName (name):
+   PR_SET_NAME  = 15                                                          # From prctl.h.
+   libc         = ctypes.cdll.LoadLibrary ('libc.so.6')
+   buffer       = ctypes.create_string_buffer (len (name) + 1)
+   buffer.value = name
+   libc.prctl (PR_SET_NAME, ctypes.byref (buffer), 0, 0, 0)
+
+def isRunning (name):
+   for process in psutil.process_iter ():
+      if process.name () == name:
+         return process
+   return None
+
+pid = os.getpid ()
+def notify (signum):
+   for process in psutil.process_iter ():
+      if process.name () == pr_tray:
+         if process.pid != pid:
+            process.send_signal (signum)
+
+class SystemTrayIcon (QSystemTrayIcon):
+
+   icon_running = QIcon (running)
+   icon_stopped = QIcon (stopped)
+
+   class Menu (QMenu):
+      def __init__ (self, parent = None):
+         super (SystemTrayIcon.Menu, self).__init__ ("Menu", parent)
+         exitAction = QAction (QIcon.fromTheme ("application-exit"), "&Exit", self)
+         exitAction.triggered.connect (lambda: QApplication.exit (0))
+         self.addAction (exitAction)
+
+   def __init__(self, parent = None):
+      super (SystemTrayIcon, self).__init__ (parent)
+      self.setContextMenu (SystemTrayIcon.Menu ())
+      self.activated.connect (self.onActivated)
+      if isRunning (pr_name):
+         self.setIcon (self.icon_running)
+      else:
+         self.setIcon (self.icon_stopped)
+      self.show ()
+
+   def onActivated (self, reason):
+      if reason == QSystemTrayIcon.Trigger:
+         process = isRunning (pr_name)
+         if process:
+            process.terminate ()
+            process.wait ()
+            self.setIcon (self.icon_stopped)
+            notify (signal.SIGUSR2)
+         else:
+            subprocess.Popen (shlex.split (command))
+            self.setIcon (self.icon_running)
+            notify (signal.SIGUSR1)
+
+   def updateIcon (self, signum, frame):
+      if signum == signal.SIGUSR1:
+         self.setIcon (self.icon_running)
+      elif signum == signal.SIGUSR2:
+         self.setIcon (self.icon_stopped)
+
+if __name__ == "__main__":
+   setProcessName (pr_tray.encode ())
+   app = QApplication ([])
+   if int (wait_ms) > 0:
+      timer = QTimer ()
+      timer.start (int (wait_ms))
+      timer.timeout.connect (lambda: None)
+   tray = SystemTrayIcon ()
+   signal.signal (signal.SIGUSR1, tray.updateIcon)
+   signal.signal (signal.SIGUSR2, tray.updateIcon)
+   sys.exit (app.exec_ ())
+
+# :indentSize=3:tabSize=3:noTabs=true:mode=python:maxLineLen=93:

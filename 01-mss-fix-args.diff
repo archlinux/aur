@@ -1,0 +1,19 @@
+--- mouse-switchscreen.c	2009-05-18 06:42:54.000000000 +0200
++++ mouse-switchscreen.c	2015-09-17 16:34:38.140015233 +0200
+@@ -140,6 +140,7 @@
+ 		"\t-V, --version         Print version and exit\n"
+ 		"\t-v, --verbose         Print some information about what is being done\n"
+ 		"\t-h, --help            Print this help text and exit\n"
++		"\t-s, --screen=#        Number of the screen to switch to\n"
+ 		"\t-f, --focus-button=#  Simulate a press and release of the given mouse button.\n"
+ 		"\t\tIntended to allow the program to focus on the new screen once the mouse has been moved.\n"
+ 		"\t\tValid focus buttons are positive integers.\n"
+@@ -163,7 +164,7 @@
+ 	char c;
+ 	verbose = 0;
+ 
+-	while ((c = getopt_long(argc, argv, "f:hvVs", long_options, NULL)) != -1)
++	while ((c = getopt_long(argc, argv, "f:hvVs:", long_options, NULL)) != -1)
+ 	{
+ 		switch (c)
+ 		{
