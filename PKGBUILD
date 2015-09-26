@@ -13,7 +13,7 @@ _EOF_
 
 pkgname=rstudio-desktop-bin
 pkgver=0.99.484
-pkgrel=2
+pkgrel=3
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -65,8 +65,10 @@ package() {
 export QT_DIR=/usr/lib/rstudio/bin
 export QT_PLUGIN_PATH=$QT_DIR/plugins
 export QT_QPA_PLATFORM_PLUGIN_PATH=$QT_PLUGIN_PATH/platforms
+export KDEDIRS=/usr
 exec /usr/lib/rstudio/bin/rstudio
 ' > "$pkgdir/usr/bin/rstudio-bin"
+  chmod 755 "$pkgdir/usr/bin/rstudio-bin"
 
   sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
 }
