@@ -1,0 +1,22 @@
+pkgbase = mvwm-git
+	pkgdesc = A clean-up effort of FVWM (with rounded corner patch)
+	pkgver = r5713.f23f011
+	pkgrel = 1
+	url = https://github.com/ThomasAdam/mvwm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fribidi
+	depends = libxrandr
+	depends = libpng
+	options = !emptydirs
+	options = !makeflags
+	source = mvwm-git::git+https://github.com/ThomasAdam/mvwm.git
+	source = rounded.patch
+	source = mvwm.desktop
+	sha1sums = SKIP
+	sha1sums = 97a8375721ba50fba7991f590b17feb1aa7e7a61
+	sha1sums = d39ecd8ecdda651b99289946802abad2e0f1342a
+
+pkgname = mvwm-git
+

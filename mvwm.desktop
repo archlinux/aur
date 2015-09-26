@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=MVWM
+Comment=The mvwm window manager
+Type=XSession
+Exec=/usr/bin/mvwm
+TryExec=/usr/bin/mvwm
