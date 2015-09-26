@@ -1,0 +1,16 @@
+pkgbase = rerodentbane-git
+	pkgdesc = Reincarnation of rodentbane - awesomeWM mouse-less navigation
+	pkgver = 22.9e01f91
+	pkgrel = 1
+	url = https://github.com/osleg/Re-rodentbane
+	arch = any
+	license = custom:"WTFPL"
+	makedepends = git
+	depends = awesome
+	source = Re-rodentbane::git+https://github.com/osleg/Re-rodentbane.git
+	source = http://www.wtfpl.net/txt/copying
+	md5sums = SKIP
+	md5sums = 8365d07beeb5f39d87e846dca3ae7b64
+
+pkgname = rerodentbane-git
+
