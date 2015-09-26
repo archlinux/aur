@@ -1,0 +1,21 @@
+pkgbase = perl-types-datetime
+	pkgdesc = type constraints and coercions for datetime objects
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://metacpan.org/release/Types-DateTime
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-test-modern>=0
+	depends = perl
+	depends = perl-module-runtime>=0
+	depends = perl-datetime>=0
+	depends = perl-type-tiny>=0.041
+	depends = perl-datetime-locale>=0
+	depends = perl-datetime-timezone>=0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Types-DateTime-0.001.tar.gz
+	sha256sums = c4266a8df8850887929987caa30921ffaf53c99faf22fed4a5fe763aefe190a2
+
+pkgname = perl-types-datetime
+
