@@ -1,6 +1,6 @@
 pkgbase = python-neovim
 	pkgver = 0.0.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neovim/python-client
 	arch = any
 	license = Apache

@@ -7,7 +7,7 @@
 pkgbase=python-neovim
 pkgname=(python2-neovim python-neovim)
 pkgver=0.0.38
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('Apache')
 url='https://github.com/neovim/python-client'
@@ -29,7 +29,7 @@ package_python2-neovim() {
               'python2-gobject: for experimental GUI (pynvim)')
 
   cd "${srcdir}/python-client-${pkgver}"
-  python2 setup.py install --prefix=/usr --root="${pkgdir}"
+  python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}"
 }
 
 build_python-neovim() {
@@ -44,7 +44,7 @@ package_python-neovim() {
   conflicts=('python3-neovim')
 
   cd "${srcdir}/python-client-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}"
+  python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}"
 }
 
 # vim:set sw=2 sts=2 et:
