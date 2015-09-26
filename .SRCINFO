@@ -1,7 +1,7 @@
 pkgbase = lua51-penlight
 	pkgdesc = Lua libraries focusing on input data handling
 	pkgver = 1.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stevedonovan/penlight
 	arch = any
 	license = custom
