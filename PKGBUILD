@@ -73,8 +73,8 @@ build() {
      -DCPPUNIT_ROOT_DIR=/usr \
      -DDOXYGEN_ROOT_DIR=/usr \
      -DGRAPHVIZ_ROOT_DIR=/usr \
-     -DSPHINX_ROOT_DIR=/usr \
      -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
+     -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2 \
      -DOMNIORB_ROOT_DIR=/usr \
      -DOMNIORBPY_ROOT_DIR=/usr \
      -DSWIG_EXECUTABLE=/usr/bin/swig-2 \
