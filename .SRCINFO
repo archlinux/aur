@@ -1,7 +1,7 @@
 pkgbase = ttf-inconsolata-gwf
 	pkgdesc = Hinted TrueType Inconsolata including a Bold variant provided by Googlewebfonts.
-	pkgver = 1.014
-	pkgrel = 2
+	pkgver = 1.016
+	pkgrel = 1
 	url = https://github.com/google/fonts/tree/master/ofl/inconsolata
 	install = ttf-inconsolata-gwf.install
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ttf-inconsolata-gwf
 	source = https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Regular.ttf
 	source = https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Bold.ttf
 	source = https://raw.githubusercontent.com/google/fonts/master/ofl/inconsolata/OFL.txt
-	md5sums = 631f4ecd69f75ecc4c543b38da8f1b9c
-	md5sums = e156a118727053f0f6072d0ee05a48eb
+	md5sums = b0639eb725c0df94f68b779889679457
+	md5sums = c6623d74820bb62d25c969a50bafbb46
 	md5sums = 8bd55055b948c7d36f3b1f86eb3b6841
 
 pkgname = ttf-inconsolata-gwf
