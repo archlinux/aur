@@ -1,0 +1,20 @@
+pkgbase = mate-xfce4-panel-plugin-loader-applet
+	pkgdesc = Applet for MATE panel which can load external Xfce4 panel plugins like xfce4-whiskermenu-plugin or xfce4-weather-plugin
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zaps166/mate-xfce4-panel-plugin-loader-applet
+	install = mate-xfce4-panel-plugin-loader-applet.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = autoconf
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = mate-common
+	source = https://github.com/zaps166/mate-xfce4-panel-plugin-loader-applet/archive/v1.0.0.tar.gz
+	sha1sums = de6ea386fbfd4315afeca8eb3372c31a207a9e0f
+
+pkgname = mate-xfce4-panel-plugin-loader-applet
+
