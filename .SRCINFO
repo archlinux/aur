@@ -1,0 +1,20 @@
+pkgbase = perl-datetime-incomplete
+	pkgdesc = Incomplete DateTime objects
+	pkgver = 0.07
+	pkgrel = 1
+	url = https://metacpan.org/release/DateTime-Incomplete
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-extutils-makemaker>=0
+	depends = perl
+	depends = perl-datetime-event-recurrence>=0
+	depends = perl-datetime-set>=0.1401
+	depends = perl-datetime>=0
+	depends = perl-test-simple>=0
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/F/FG/FGLOCK/DateTime-Incomplete-0.07.tar.gz
+	sha256sums = 086a2442801637abc01e431ef5cdf13b022e7c9b04ab85bba7fc49266fe645c5
+
+pkgname = perl-datetime-incomplete
+
