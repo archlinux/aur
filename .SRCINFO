@@ -1,7 +1,7 @@
 pkgbase = openav-sorcer-git
 	pkgdesc = A wavetable LV2 plugin synth, targeted at the electronic / dubstep genre
-	pkgver = release.1.1.2.1.g9da6481
-	pkgrel = 2
+	pkgver = 1.1.2.r1.g9da6481
+	pkgrel = 3
 	url = http://openavproductions.com/sorcer/
 	arch = i686
 	arch = x86_64

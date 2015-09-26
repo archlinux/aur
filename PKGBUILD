@@ -1,7 +1,7 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-sorcer-git
-pkgver=release.1.1.2.1.g9da6481
-pkgrel=2
+pkgver=1.1.2.r1.g9da6481
+pkgrel=3
 pkgdesc="A wavetable LV2 plugin synth, targeted at the electronic / dubstep genre"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/sorcer/"
@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ${_gitname}
-  git describe --always | sed 's|-|.|g'
+  git describe --long --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
