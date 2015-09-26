@@ -1,0 +1,18 @@
+pkgbase = rox-clib
+	pkgdesc = Shared code which can be used by other ROX applications. This is rox Clib
+	pkgver = 2.1.10
+	pkgrel = 2
+	url = http://roscidus.com/desktop/ROX-Clib
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gtk2
+	depends = libxml2
+	depends = libpng
+	source = http://downloads.sourceforge.net/project/rox/ROX-CLib/2.1.10/ROX-CLib-2.1.10.tar.gz
+	source = ROX-CLib_es.diff
+	md5sums = 07e65446827e1b11127b506f0743d12e
+	md5sums = a8987294362b98cc3447fe3d744774b3
+
+pkgname = rox-clib
+

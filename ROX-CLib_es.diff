@@ -1,0 +1,441 @@
+# Copyright  Jos Luis Lara Carrascal 2011 <manualinux@yahoo.es>
+# <http://manualinux.freehostia.com> <http://manualinux.exofire.net> <http://manualinux.my-place.us>
+# Este parche se distribuye bajo la Licencia General GNU
+diff -ruN ROX-CLib/src/po/es.po temp/ROX-CLib/src/po/es.po
+--- ROX-CLib/src/po/es.po 1970-01-01 01:00:00.000000000 +0100
++++ temp/ROX-CLib/src/po/es.po 2011-05-12 16:28:47.522961650 +0200
+@@ -0,0 +1,434 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: Traduccin al espaol de ROX-CLib\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2007-10-13 17:22+0100\n"
++"PO-Revision-Date: 2011-05-12 16:28+0100\n"
++"Last-Translator: Jos Luis Lara Carrascal <manualinux@yahoo.es>\n"
++"Language-Team: http://manualinux.freehostia.com <manualinux@yahoo.es>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"X-Poedit-Language: Spanish\n"
++"X-Poedit-Country: SPAIN\n"
++
++#: error.c:58
++#, c-format
++msgid "Error from %s"
++msgstr "Error desde %s"
++
++#: gtksavebox.c:249
++msgid "Has Discard"
++msgstr "Tiene descartar"
++
++#: gtksavebox.c:250
++msgid "The dialog has a Discard button"
++msgstr "El dilogo tiene un botn Descartar"
++
++#: gtksavebox.c:268
++msgid "Save As:"
++msgstr "Guardar como:"
++
++#: gtksavebox.c:321
++msgid "Save"
++msgstr "Guardar"
++
++#: gtksavebox.c:454
++msgid "Unnamed"
++msgstr "Sin nombre"
++
++#: gtksavebox.c:520
++msgid "Remote application wants to use Direct Save, but I can't read the XdndDirectSave0 (type text/plain) property.\n"
++msgstr "La aplicacin remota quiere utilizar Direct Save, pero no puede leer la propiedad XdndDirectSave0 (type text/plain).\n"
++
++#: gtksavebox.c:625
++msgid ""
++"Drag the icon to a directory viewer\n"
++"(or enter a full pathname)"
++msgstr ""
++"Arrastre el icono a un directorio visible\n"
++"(o introduzca el nombre completo de la ruta)"
++
++#: infowin.c:137
++msgid "Program"
++msgstr "Programa"
++
++#: infowin.c:150
++msgid "Purpose"
++msgstr "Funcin"
++
++#: infowin.c:163
++msgid "Version"
++msgstr "Versin"
++
++#: infowin.c:176
++msgid "Author"
++msgstr "Autor"
++
++#: infowin.c:189
++msgid "Web site"
++msgstr "Sitio web"
++
++#: infowin.c:271
++#, c-format
++msgid "Information on %s"
++msgstr "Informacin en %s"
++
++#: mime.c:683
++#, c-format
++msgid "Error loading MIME database %s: %s"
++msgstr "Error al cargar la base de datos MIME %s: %s"
++
++#: mime.c:703
++#, c-format
++msgid "MIME glob file %s in bad format"
++msgstr "Archivo MIME global %s en formato incorrecto"
++
++#: mime.c:735
++msgid "No MIME types found. You may need to install the Shared MIME type database (version 0.9 or later. It may be found at http://www.freedesktop.org/software/shared-mime-info"
++msgstr "No se encuentran los tipos MIME. Usted necesita instalar la base de datos Shared MIME (versin 0.9 o posterior. Que la puede encontrar en http://www.freedesktop.org/software/shared-mime-info"
++
++#: mime_handler.c:100
++#, c-format
++msgid "Install %s"
++msgstr "Instalar %s"
++
++#: mime_handler.c:133
++msgid "Type"
++msgstr "Tipo"
++
++#: mime_handler.c:139
++msgid "Name"
++msgstr "Nombre"
++
++#: mime_handler.c:146
++msgid "Current"
++msgstr "Actual"
++
++#: mime_handler.c:158
++msgid "Install?"
++msgstr "Instalar?"
++
++#: mime_handler.c:166
++msgid "Uninstall?"
++msgstr "Desinstalar?"
++
++#: mime_handler.c:438
++#: mime_handler.c:520
++#, c-format
++msgid "Failed to replace %s"
++msgstr "No se pudo reemplazar %s"
++
++#: mime_handler.c:443
++#: mime_handler.c:525
++#, c-format
++msgid "Failed to install %s as %s"
++msgstr "Ha fallado al instalar %s como %s"
++
++#: mime_handler.c:458
++#, c-format
++msgid "Failed to remove %s"
++msgstr "No se pudo suprimir %s"
++
++#: mime_handler.c:471
++msgid "run action"
++msgstr "ejecutar accin"
++
++#: mime_handler.c:473
++msgid "Run actions can be changed by selecting a file of the appropriate type in the Filer and selecting the menu option 'Set Run Action...'"
++msgstr "Las acciones a ejecutar pueden ser cambiadas seleccionando un archivo del tipo apropiado en ROX-Filer y seleccionando la opcin del men 'Definir qu ejecutar...'"
++
++#: mime_handler.c:481
++msgid "thumbnail handler"
++msgstr "gestor de miniaturas"
++
++#: mime_handler.c:483
++msgid "Thumbnail handlers provide support for creating thumbnail images of types of file. The filer can generate thumbnails for most types of image (JPEG, PNG, etc.) but relies on helper applications for the others."
++msgstr "El manejador de miniaturas proporciona soporte para la creacin de imgenes en miniatura de tipos de archivo. El administrador puede generar miniaturas para algunos tipos de imagen (JPEG, PNG, etc.) pero requiere de aplicaciones auxiliares para los otros."
++
++#: mime_handler.c:498
++msgid "type handler"
++msgstr "tipo de manejador"
++
++#: mime_handler.c:499
++msgid "The application can handle files of these types. Click on OK to add it to the SendTo menu for the type of file, and also the customized File menu."
++msgstr "La aplicacin que pueda manejar archivos de estos tipos. Haga clic en Aceptar para aadirla al men Enviar a... para el tipo de archivo, y tambin el archivo de men personalizado."
++
++#: options.c:674
++#: options.c:1406
++msgid "(use default)"
++msgstr "(usar predefinido)"
++
++#: options.c:861
++#, c-format
++msgid "No Option for '%s'!\n"
++msgstr "Sin opciones para '%s'!\n"
++
++#: options.c:877
++msgid "Widget for option already exists!"
++msgstr "El widget para las opciones ya existe!"
++
++#: options.c:889
++#, c-format
++msgid "Unknown option type '%s'\n"
++msgstr "Tipo de opcin desconocida '%s'\n"
++
++#: options.c:951
++#, c-format
++msgid "Internal error: %s unreadable"
++msgstr "Error interno: %s ilegible"
++
++#: options.c:1063
++msgid "Options"
++msgstr "Opciones"
++
++#: options.c:1108
++msgid "_Revert"
++msgstr "_Revertir"
++
++#: options.c:1114
++msgid "Restore all choices to how they were when the Options box was opened."
++msgstr "Restaurar todas las opciones a la forma en que estaban cuando el cuadro de opciones fue abierto."
++
++#: options.c:1129
++#, c-format
++msgid ""
++"Choices will be saved as:\n"
++"%s"
++msgstr ""
++"Las opciones sern guardadas como:\n"
++"%s"
++
++#: options.c:1137
++msgid "(saving disabled)"
++msgstr "(guardado desactivado)"
++
++#: options.c:1167
++#, c-format
++msgid "Can't find radio button with value %s\n"
++msgstr "No se puede encontrar el botn de radio con valor %s\n"
++
++#: options.c:1312
++#, c-format
++msgid "Error saving %s: %s"
++msgstr "Error guardando %s: %s"
++
++#: options.c:1954
++msgid "Duplicate option found!"
++msgstr "Opcin duplicada existente!"
++
++#: pkg.c:46
++msgid "Flags to pass to C compiler"
++msgstr "Seales para pasar al compilador C"
++
++#: pkg.c:47
++msgid "Flags to pass to linker"
++msgstr "Seales para pasar al enlazador"
++
++#: pkg.c:48
++msgid "Directories to search for shared libs"
++msgstr "Directorios para buscar las libreras dinmicas"
++
++#: pkg.c:50
++msgid "echo environment settings to use for run-time linking (sh syntax)"
++msgstr "opciones de entorno a utilizar para el enlazado en tiempo de ejecucin (sintaxis sh)"
++
++#: pkg.c:52
++msgid "Execute pkg-config with the trailing arguments"
++msgstr "Ejecutar pkg-config con los argumentos detrs"
++
++#: pkg.c:54
++msgid "Print help message"
++msgstr "Imprime el mensaje de ayuda"
++
++#: pkg.c:55
++msgid "Print short version information"
++msgstr "Imprime una breve informacin de la versin"
++
++#: pkg.c:72
++#, c-format
++msgid "%s: APP_DIR not set! Are you running AppRun?\n"
++msgstr "%s: No se ha establecido APP_DIR! Est usted ejecutando AppRun?\n"
++
++#: pkg.c:77
++#, c-format
++msgid "%s: PLATFORM not set! Are you running AppRun?\n"
++msgstr "%s: No se ha establecido PLATTFORM! Est usted ejecutando AppRun?\n"
++
++#: pkg.c:96
++#, c-format
++msgid "%s: option %s not recognised\n"
++msgstr "%s: opcin %s no reconocida\n"
++
++#: pkg.c:112
++#, c-format
++msgid "%s: option -%c not recognised\n"
++msgstr "%s: opcin -%c no reconocida\n"
++
++#: pkg.c:160
++#, c-format
++msgid "%s %s by %s\n"
++msgstr "%s %s de %s\n"
++
++#: pkg.c:161
++#, c-format
++msgid "Usage: %s/AppRun [OPTIONS]\n"
++msgstr "Uso: %s/AppRun [OPCIONES]\n"
++
++#: pkg.c:162
++#, c-format
++msgid "Options are:\n"
++msgstr "Las opciones son:\n"
++
++#: pkg.c:166
++msgid "Build the library"
++msgstr "Compilar la librera"
++
++#: pkg.c:168
++msgid "Build the library, first executing an xterm window to show the output"
++msgstr "Compilar la librera, primero ejecutando una ventana de xterm para mostrar la salida"
++
++#: pkg.c:170
++msgid "Print the location of ROX-CLib"
++msgstr "Imprimir la ubicacin de ROX-CLib"
++
++#: pkg.c:208
++#, c-format
++msgid "%s: failed to execute pkg-config: %s"
++msgstr "%s: ha fallado al ejecutar pkg-config: %s"
++
++#: rox.c:398
++#, c-format
++msgid "%s is deprecated, use %s instead"
++msgstr "%s est desfasado, usar %s en su lugar"
++
++#: rox_dnd.c:221
++msgid "uri_list_to_gslist: Incorrect or missing line break in text/uri-list data"
++msgstr "uri_list_to_gslist: lnea de ruptura incorrecta o inexistente en datos text/uri-list"
++
++#: rox_dnd.c:313
++msgid "No URIs in the text/uri-list (nothing to do!)"
++msgstr "Ninguna URIs en el text/uri-list (nada que hacer!)"
++
++#: rox_dnd.c:393
++msgid "Drag & drop error: sender can't provide data"
++msgstr "Error al arrastrar y soltar: el remitente no puede proporcionar datos"
++
++#: rox_dnd.c:413
++#, c-format
++msgid "XDS protocol error, '%c' should be S, F or E"
++msgstr "Error de protocolo XDS, '%c' tiene que ser S, F o E"
++
++#: rox_dnd.c:454
++msgid "drag_data_received: unknown target"
++msgstr "drag_data_received: objetivo desconocido"
++
++#: rox_filer_action.c:172
++#, c-format
++msgid "Illegal panel side: %d"
++msgstr "Panel lateral incorrecto: %d"
++
++#: rox_filer_action.c:489
++#, c-format
++msgid "Unknown namespace %s for %s"
++msgstr "Espacio de nombres desconocido %s para %s"
++
++#: rox_filer_action.c:508
++#, c-format
++msgid "No valid %s result node found"
++msgstr "Ningn resultado %s vlido de nodo encontrado"
++
++#: rox_filer_action.c:515
++msgid "No Body element found in SOAP reply"
++msgstr "Ningn elemento Body encontrado en la rplica SOAP"
++
++#: rox_filer_action.c:518
++#, c-format
++msgid "Root element has wrong namespace (%s)"
++msgstr "El elemento Root contiene un espacio de nombres incorrecto (%s)"
++
++#: rox_filer_action.c:525
++#, c-format
++msgid "No reply from filer: %s"
++msgstr "Sin respuesta del administrador de archivos: %s"
++
++#: rox_filer_action.c:616
++#: rox_soap.c:851
++msgid "No error"
++msgstr "Sin error"
++
++#: rox_soap.c:125
++#, c-format
++msgid "assertion '%s' failed)"
++msgstr "la asercin '%s' ha fallado)"
++
++#: rox_soap.c:134
++#, c-format
++msgid "assertion '%s' failed"
++msgstr "La asercin '%s' ha fallado"
++
++#: rox_soap.c:390
++msgid "XML document creation failed"
++msgstr "La creacin del documento XML ha fallado"
++
++#: rox_soap.c:558
++msgid "SOAP timed out"
++msgstr "SOAP ha agotado el tiempo"
++
++#: rox_soap.c:618
++#, c-format
++msgid "No %s to target"
++msgstr "Ningn %s para designar"
++
++#: rox_soap.c:630
++msgid "Failed to dump XML doc to memory"
++msgstr "Ha fallado al volcar el documento XML a la memoria"
++
++#: rox_soap.c:737
++#, c-format
++msgid "problem reading data from %d,%d: %s"
++msgstr "problema al leer datos desde %d,%d: %s"
++
++#: rox_soap.c:773
++#, c-format
++msgid "%s has no defined command"
++msgstr "%s no ha definido un comando"
++
++#: rox_soap.c:790
++#, c-format
++msgid "failed to fork! %s"
++msgstr "Ha fallado la bifurcacin! %s"
++
++#: rox_soap_server.c:242
++#, c-format
++msgid "Attempt to invoke unknown SOAP method '%s'"
++msgstr "Intento de invocar mtodo desconocido SOAP '%s'"
++
++#: rox_soap_server.c:261
++#, c-format
++msgid "Missing required argument '%s' in call to method '%s'"
++msgstr "Argumento inexistente requerido '%s' en llamada al mtodo '%s'"
++
++#: rox_soap_server.c:322
++#, c-format
++msgid "Unknown namespace %s (expected %s)"
++msgstr "Espacio de nombres desconocido %s (se esperaba %s)"
++
++#: rox_soap_server.c:344
++msgid "Bad SOAP message received!"
++msgstr "Mensajes errneo SOAP recibido!"
++
++#: rox_soap_server.c:410
++#, c-format
++msgid "SOAP server is confused (obtaining atom for %lx)"
++msgstr "El servidor SOAP est confuso (obteniendo atom para %lx)"
++
++#: rox_soap_server.c:418
++msgid "SOAP server is confused (obtaining property)"
++msgstr "El servidor SOAP est confuso (obteniendo propiedad)"
++
