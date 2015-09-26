@@ -1,4 +1,5 @@
-# Maintainer: lobisquit <enricolovisotto@gmail.com>
+# Maintainer: ptrr <piksarv .at. gmail.com>
+# Contributor: lobisquit <enricolovisotto@gmail.com>
 # Contributor: chmgtr1 <chmgtr1@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
@@ -8,7 +9,7 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=("python-scipy-openblas" "python2-scipy-openblas")
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ license=('BSD')
 makedepends=('gcc-fortran' 'python-numpy-openblas' 'python2-numpy-openblas' 'python-setuptools' 'python2-setuptools' 'openblas-lapack')
 checkdepends=('python-nose' 'python2-nose')
 source=("http://downloads.sourceforge.net/scipy/scipy-${pkgver}.tar.gz")
-md5sums=('be56cd8e60591d6332aac792a5880110')
+md5sums=('eb95dda0f36cc3096673993a350cde77')
 
 
 build() {
