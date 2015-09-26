@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 pkgname=qtutilities
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 pkgdesc="Common Qt related C++ classes and routines used by my
  applications such as dialogs, widgets and models."
@@ -16,7 +16,7 @@ sha256sums=('3c85d7f9888478ceae7171fe03dc0c7b47fa6bd7d84d557ccac9cebc39f28d41')
 build() {
     cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
     INSTALL_ROOT=$pkgdir/usr/ qmake-qt5 "$pkgname.pro"
-    make -j 4
+    make
 }
 
 package() {
