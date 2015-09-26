@@ -2,16 +2,16 @@
 # with liberal inspiration from codec2-svn PKGBUILD from Kyle Keen
 
 pkgname=codec2
-pkgver="0.4"
-pkgrel=2
+pkgver="0.5"
+pkgrel=1
 pkgdesc="an open source codec designed for communications quality speech below 5000 bit/s"
 arch=("i686" "x86_64")
 license=("LGPL")
 url="http://codec2.org/"
 depends=("glibc")
 makedepends=("cmake")
-source=("https://files.freedv.org/codec2/codec2-$pkgver.tar.gz")
-sha1sums=("783af547827c62ae491976958ddf44f5d1555481")
+source=("https://files.freedv.org/codec2/codec2-$pkgver.tar.xz")
+sha1sums=("9865802c9e7496f228eacc97549f9684ff8e77ca")
 
 
 build() {
