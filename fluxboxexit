@@ -1,0 +1,46 @@
+#!/bin/sh
+
+case "$1" in
+logout)
+  if [ $DESKTOP_SESSION = "fluxbox" ]; then
+    killall fluxbox
+  elif [ $DESKTOP_SESSION = "openbox" ]; then
+    openbox --exit
+  elif [ $DESKTOP_SESSION = "i3" ]; then
+    i3-msg exit
+  elif [ $DESKTOP_SESSION = "bspwm" ]; then
+    bspc quit 1
+  else
+    pkill -KILL -u $USER
+  fi
+;;
+suspend)
+  if [ $(cat /proc/1/comm) = "systemd" ]; then
+    systemctl suspend
+  else
+    dbus-send --system --dest=org.freedesktop.ConsoleKit --type=method_call --print-reply --reply-timeout=2000 /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Suspend boolean:true
+  fi
+;;
+hibernate)
+  if [ $(cat /proc/1/comm) = "systemd" ]; then
+    systemctl hibernate
+  else
+    dbus-send --system --dest=org.freedesktop.ConsoleKit --type=method_call --print-reply --reply-timeout=2000 /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Hibernate boolean:true
+  fi
+;;
+reboot)
+  if [ $(cat /proc/1/comm) = "systemd" ]; then
+    systemctl reboot
+  else
+    dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart
+  fi
+;;
+shutdown)
+  if [ $(cat /proc/1/comm) = "systemd" ]; then
+    systemctl poweroff
+  else
+    dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
+  fi
+;;
+esac
+exit 0

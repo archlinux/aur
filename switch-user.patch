@@ -1,0 +1,33 @@
+diff --git a/data/oblogout.conf b/data/oblogout.conf
+index bcff191..3c9bc57 100644
+--- a/data/oblogout.conf
++++ b/data/oblogout.conf
+@@ -52,5 +52,5 @@ safesuspend = safesuspend
+ # <--
+ 
+ lock        = gnome-screensaver-command -l
+-switchuser  = gdm-control --switch-user
++switch      = gdm-control --switch-user
+ logout      = openbox --exit
+diff --git a/oblogout/__init__.py b/oblogout/__init__.py
+index 69ca4c5..78611e1 100755
+--- a/oblogout/__init__.py
++++ b/oblogout/__init__.py
+@@ -60,7 +60,7 @@ class OpenboxLogout():
+     cmd_hibernate = "pmi action hibernate"
+     cmd_safesuspend = ""
+     cmd_lock = "gnome-screensaver-command -l"
+-    cmd_switchuser = "gdm-control --switch-user"
++    cmd_switch = "gdm-control --switch-user"
+     cmd_logout = "openbox --exit"
+ 
+     def __init__(self, config=None, local=None):
+@@ -409,7 +409,7 @@ class OpenboxLogout():
+             self.__exec_cmd(self.cmd_lock)
+ 
+         elif (data == 'switch'):
+-            self.__exec_cmd(self.cmd_switchuser)
++            self.__exec_cmd(self.cmd_switch)
+ 
+         self.quit()
+ 
