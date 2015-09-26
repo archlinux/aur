@@ -1,11 +1,12 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Sébastien Luttringer
+# Contributor: Oscar Molin <oscarmolin@gmail.com>
 
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
 pkgver=5.0.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -17,8 +18,21 @@ _extramodules=extramodules-4.3-mainline
 build() {
   _kernver=$(cat /usr/lib/modules/$_extramodules/version)
   # dkms need modification to be run as user
+
+  rm -rf dkms/vboxhost/$pkgver/source
   cp -r /var/lib/dkms .
+
+  echo patch vboxhost files
+  # copy this dir to local dir so we can patch it.
+  cp -r -L dkms/vboxhost/$pkgver/source dkms/vboxhost/$pkgver/src
+  rm dkms/vboxhost/$pkgver/source
+  mv dkms/vboxhost/$pkgver/src dkms/vboxhost/$pkgver/source
+
+  patch dkms/vboxhost/$pkgver/source/vboxdrv/linux/SUPDrv-linux.c < ../SUPDrv-linux.patch
+  patch dkms/vboxhost/$pkgver/source/vboxnetadp/linux/VBoxNetAdp-linux.c < ../VBoxNetAdp-linux.patch
+
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
+  
   # build host modules
   msg2 'Host modules'
   dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
