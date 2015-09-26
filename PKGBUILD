@@ -6,18 +6,14 @@
 
 
 pkgname=('gvim-python3-noconflict')
-_topver=7.4
-_patchlevel=778
-# _tag=v${_topver/./-}-${_patchlevel}
-_tag=v${_topver}.${_patchlevel}
-_versiondir="vim${_topver//./}"
-pkgver=${_topver}.${_patchlevel}
-pkgrel=1
+pkgver=7.4.854
+_versiondir=74
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
-makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'desktop-file-utils' 'gtk2' 'lua' 'mercurial')
-source=("vim-repo::hg+https://vim.googlecode.com/hg#tag=${_tag}"
+makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'desktop-file-utils' 'gtk2' 'lua')
+source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         'launch-python-vim.sh'
         'launch-python-gvim.sh')
 sha1sums=('SKIP'
@@ -25,13 +21,7 @@ sha1sums=('SKIP'
           'af7d241e19235bcaa6ee7ee571c6b575236b3a45')
 
 prepare() {
-  cd vim-repo
-
-  _latesttag=$(hg parents --template '{latesttag}' -r default)
-  if (( $_tag != $_latesttag )); then
-    printf 'You are not building the latest revision!\n'
-    printf "Consider updating to tag $_latesttag.\n"
-  fi
+  cd vim-$pkgver
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' \
@@ -41,15 +31,13 @@ prepare() {
 
   (cd src && autoconf)
 
-  cd ..
+  cd "$srcdir"
   for pkg in ${pkgname[@]}
   do
-    cp -a vim-repo ${pkg}-build
+    cp -a vim-$pkgver ${pkg}-build
   done
+
 }
-
-
-
 
 build() {
 
