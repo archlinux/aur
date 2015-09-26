@@ -1,18 +1,18 @@
 pkgbase = mingw-w64-libmikmod
 	pkgdesc = A portable sound library (mingw-w64)
-	pkgver = 3.3.6
+	pkgver = 3.3.7
 	pkgrel = 1
 	url = http://mikmod.shlomifish.org
 	arch = any
 	license = GPL, LGPL
-	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
 	depends = mingw-w64-crt
 	depends = mingw-w64-openal
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://downloads.sourceforge.net/mikmod/libmikmod-3.3.6.tar.gz
-	sha256sums = 3f363e03f7b1db75b9b6602841bbd440ed275a548e53545f980df8155de4d330
+	source = http://downloads.sourceforge.net/mikmod/libmikmod-3.3.7.tar.gz
+	sha256sums = 4cf41040a9af99cb960580210ba900c0a519f73ab97b503c780e82428b9bd9a2
 
 pkgname = mingw-w64-libmikmod
 
