@@ -2,7 +2,7 @@
 
 pkgname=salome-kernel
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
 depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'omninotify-omniorb416' 'hdf5' 'graphviz' 'libxml2' 'cppunit' 'lapack')
