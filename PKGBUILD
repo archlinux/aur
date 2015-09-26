@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=opensplice-dds
-pkgver=5.5.1
+pkgver=6.4.140407OSS
 pkgrel=1
 pkgdesc="Enables seamless, timely, scalable and dependable data sharing between distributed applications and network connected devices."
 arch=('i686' 'x86_64')
@@ -9,22 +9,22 @@ url="http://www.prismtech.com/opensplice"
 license=('GPL')
 depends=('java-environment' 'zlib')
 source=(http://dev.opensplice.org/releases/downloads/releases/OpenSpliceDDSV${pkgver}-src.tar.gz)
-md5sums=('ae70910701c19b2602e8cc9497bd74ea')
-sha256sums=('8678779041fb3fa66d5c99da634c947fb18f501ec8501a099758c7711b4ed070')
-sha384sums=('28a671b8a13ad271dbc1efc1311925aa41521ba0eae1fa9ba9f46874fa027a545044611b38675d00d364a59dcd3d9a68')
-sha512sums=('2bd6474faf6dd7e5a60db2a2b87540aa474052a4adadd07e185acc24dde6c17e20411b28e2a047cee99633206fc07d958e5f43b6cb6b0e3162b265149b8d863e')
+md5sums=('a25a7f4b21934de86fea2e6f8cddd159')
+sha256sums=('204310232fa2ce277e5d1f92bde976e22efe65ae8b08d278a02429a13065e7b9')
+sha384sums=('e623cefbf66f2e671159a2791b52e6a52b1e169edbc10d6a896ae5c34523508dd5a7367a33130c6ed1ee44b5e5c86628')
+sha512sums=('0b3e51598fde1badd853958c8960912ed8fd3cef1534a4757cee3dbe49454964e08896be4831b61e90b01a3c3e7802afba775dc8322f628b22170ca27787d672')
 options=(!makeflags)
 
 
 if [ "$CARCH" == "i686" ]; then
-  _arch=x86.linux2.6
+  _arch=x86.linux
 else
-  _arch=x86_64.linux2.6
+  _arch=x86_64.linux
 fi
 
 
 build() {
-  cd "${srcdir}/OpenSplice"
+  cd "${srcdir}/OpenSpliceDDS6.4"
 
   source configure ${_arch}-release
 
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/OpenSplice/install/HDE/${_arch}"
+  cd "${srcdir}/OpenSpliceDDS6.4/install/HDE/${_arch}"
 
   install -dm755 "${pkgdir}/usr/bin"
   cp -a bin/* "${pkgdir}/usr/bin/"
@@ -49,7 +49,9 @@ package() {
   install -dm755 "${pkgdir}/usr/share/opensplice"
   cp -a etc "${pkgdir}/usr/share/opensplice/"
   cp -a docs "${pkgdir}/usr/share/opensplice/"
-  cp -a jar "${pkgdir}/usr/share/opensplice/"
+  cp -a demos "${pkgdir}/usr/share/opensplice/"
   cp -a examples "${pkgdir}/usr/share/opensplice/"
+  cp -a jar "${pkgdir}/usr/share/opensplice/"
+  cp -a src "${pkgdir}/usr/share/opensplice/"
 }
 
