@@ -1,6 +1,6 @@
 pkgbase = kreport-git
 	pkgdesc = A framework for creation and generation of reports in multiple formats. (GIT version)
-	pkgver = 2.96.0.r912.15bbc24
+	pkgver = 2.96.1.r1004.d361d0e
 	pkgrel = 1
 	url = https://www.kde.org/applications/graphics/kreport
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = kreport-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = git
-	makedepends = python
+	makedepends = python2
 	depends = kross
 	depends = kproperty-git
 	provides = kreport

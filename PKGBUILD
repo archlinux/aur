@@ -1,14 +1,20 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kreport-git
-pkgver=2.96.0.r912.15bbc24
+pkgver=2.96.1.r1004.d361d0e
 pkgrel=1
 pkgdesc="A framework for creation and generation of reports in multiple formats. (GIT version)"
 url='https://www.kde.org/applications/graphics/kreport'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
-depends=('kross' 'kproperty-git')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
+depends=('kross'
+         'kproperty-git'
+         )
+makedepends=('extra-cmake-modules'
+             'kdoctools'
+             'git'
+             'python2'
+             )
 conflicts=('kreport')
 provides=('kreport')
 source=('git://anongit.kde.org/kreport.git')
@@ -22,6 +28,9 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed 's|python|python2|g' -i kreport/tools/sdc.py \
+                           -i kreport/cmake/modules/KDbCreateSharedDataClasses.cmake
 }
 
 build() {
