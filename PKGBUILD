@@ -1,13 +1,14 @@
 # AUR/linux-lts-tomoyo PKGBUILD
-# Maintainer: dysphoria < dysphoria at noreply dot com>
+# Maintainer: dysphoria <>
 #
-# arch/linux-lts PKGBUILD
+# arch/core/linux-lts PKGBUILD 247257 2015-09-24 14:15:42
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-lts-tomoyo
-_srcname=linux-3.14
-pkgver=3.14.51
+_srcname=linux-4.1
+pkgver=4.1.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -15,35 +16,23 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 provides=('linux-lts' 'linux-tomoyo')
 options=('!strip')
-source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
-        https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.{xz,sign}
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "$pkgbase.preset"
-        'change-default-console-loglevel.patch'
-        '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
-        '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
-        '0003-module-remove-MODULE_GENERIC_TABLE.patch'
-        '0006-genksyms-fix-typeof-handling.patch'
-        'gcc5_buildfixes.diff'
-        )
-# https://www.kernel.org/pub/linux/kernel/v3.x/sha256sums.asc
-sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
+        'change-default-console-loglevel.patch')
+# https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
+sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '8c6a569868a0df5f895ed4095f4ccf406655358871b51d8d3955fe04a46c80a5'
+            '4373af2baaae5429be37e5257a22454d468f36b1322f784bb91a608c80ed52a1'
             'SKIP'
-            'af6a452fcc11cfa6b538f4124b50381f1dc05ca20bf8dc336552fa7cc354bac3'
-            'b6f0f344773b51768ca53158a05a16e1328ad0def7b77ca0bce43211216e5cb1'
-            '55f4f80d7cfe294d11f44c84ce8a20eaf698ca69667c660621a05472ada49f9a'
-            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
-            '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
-            '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
-            'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a')
-validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
+            '53141e415a1b66f211510337fea60587a9255b6b0324ee44531441a4a77523ca'
+            'a17e6924fca734dbb473d61d5ab005d73303b1ac6c02b51204111c6b5032489c'
+            '4e1fcb722d069ce8bf8c4e720e42a400a91b9aa73304d8a47e34814b5fd210db'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
 _kernelname=${pkgbase#linux}
@@ -54,12 +43,6 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # buildfixes for gcc5
-  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/qla2xxx/qla_nx2.c?id=9493c2422cae272d6f1f567cbb424195defe4176
-  # https://lkml.org/lkml/2014/11/9/27
-  # https://lkml.org/lkml/2014/12/14/55
-  patch -p1 -i "${srcdir}/gcc5_buildfixes.diff"
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
@@ -67,17 +50,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # Fix vhci warning in kmod (to restore every kernel maintainer's sanity)
-  patch -p1 -i "${srcdir}/0001-Bluetooth-allocate-static-minor-for-vhci.patch"
-
-  # Fix atkbd aliases
-  patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
-  patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
-
-  # Fix generation of symbol CRCs
-  # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
-  patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -88,8 +60,8 @@ prepare() {
   # Enable TOMOYO Linux
   msg "Enabling TOMOYO Linux..."
   sed -i -e 's:# CONFIG_SECURITY_TOMOYO is not set:CONFIG_SECURITY_TOMOYO=y\nCONFIG_SECURITY_TOMOYO_MAX_ACCEPT_ENTRY=2048\nCONFIG_SECURITY_TOMYO_MAX_AUDIT_LOG=1024\n# CONFIG_SECURITY_TOMOYO_OMIT_USERSPACE_LOADER is not set\nCONFIG_SECURITY_TOMOYO_POLICY_LOADER="/sbin/tomoyo-init"\nCONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER="/sbin/init":' \
-      -i -e 's/CONFIG_DEFAULT_SECURITY_DAC=y/# CONFIG_DEFAULT_DAC is not set/' \
-      -i -e '/CONFIG_DEFAULT_SECURITY/ s,"","tomoyo",' ./.config
+      -i -e 's/CONFIG_DEFAULT_SECURITY_DAC=y/# CONFIG_DEFAULT_SECURITY_DAC is not set/' \
+      -i -e '/CONFIG_DEFAULT_SECURITY=/ s,"","tomoyo",' ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -156,8 +128,7 @@ _package() {
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" \
-    "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
     -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
@@ -169,15 +140,11 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # gzip -9 all modules to save 100MB of space
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
   # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" \
-    "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  ln -s "../extramodules-${_basekernel}${_kernelname:--lts}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > \
-    "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--lts}"
+  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--lts}/version"
 
   # Now we call depmod...
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
@@ -230,12 +197,10 @@ _package-headers() {
   cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
 
   if [ "${CARCH}" = "i686" ]; then
-    cp arch/${KARCH}/Makefile_32.cpu \
-      "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+    cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   fi
 
-  cp arch/${KARCH}/kernel/asm-offsets.s \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
+  cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
   # add docbook makefile
   install -D -m644 Documentation/DocBook/Makefile \
@@ -257,41 +222,33 @@ _package-headers() {
   # in reference to:
   # http://bugs.archlinux.org/task/9912
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
-  cp drivers/media/dvb-core/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
+  cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
   # and...
   # http://bugs.archlinux.org/task/11194
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-  cp include/config/dvb/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
+  cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
 
   # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
   # in reference to:
   # http://bugs.archlinux.org/task/13146
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-  cp drivers/media/dvb-frontends/lgdt330x.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
+  cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-  cp drivers/media/i2c/msp3400-driver.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
+  cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
 
   # add dvb headers
   # in reference to:
   # http://bugs.archlinux.org/task/20402
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb"
-  cp drivers/media/usb/dvb-usb/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
+  cp drivers/media/usb/dvb-usb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends"
-  cp drivers/media/dvb-frontends/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
+  cp drivers/media/dvb-frontends/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners"
-  cp drivers/media/tuners/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
+  cp drivers/media/tuners/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
 
   # add xfs and shmem for aufs building
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-  cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
 
   # copy in Kconfig files
   for i in $(find . -name "Kconfig*"); do
@@ -342,5 +299,3 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
