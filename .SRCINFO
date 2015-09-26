@@ -1,6 +1,6 @@
 pkgbase = gnash-git
 	pkgdesc = The GNU SWF Player based on GameSWF - git development version
-	pkgver = 0.8.11.r22277.g6b269f9
+	pkgver = 0.8.11.r22311.gf0f66ce
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnash/
 	install = gnash.install
@@ -44,7 +44,9 @@ pkgbase = gnash-git
 	options = !emptydirs
 	backup = etc/gnashpluginrc
 	source = git://git.sv.gnu.org/gnash.git
+	source = jemalloc_gnash.patch
 	sha256sums = SKIP
+	sha256sums = 422aad0cf678f8427b1601e41e6440b3526872b640b6ccd3ab93ae656a9a8c8e
 
 pkgname = gnash-git
 
