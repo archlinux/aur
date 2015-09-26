@@ -1,7 +1,7 @@
 pkgbase = audio-recorder
 	pkgdesc = Free audio-recorder for Linux
-	pkgver = 1.7.2
-	pkgrel = 2
+	pkgver = 1.7.4
+	pkgrel = 1
 	url = https://launchpad.net/~audio-recorder
 	install = audio-recorder.install
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = audio-recorder
 	optdepends = gst-plugins-good: for WAV and Flac encoding
 	optdepends = gst-plugins-bad: for AAC encoding
 	optdepends = gst-plugins-ugly: for MP3 encoding
-	source = https://launchpad.net/~audio-recorder/+archive/ubuntu/ppa/+files/audio-recorder_1.7-2%7Ewily.tar.gz
-	md5sums = 31e6ab19c1985790e712e51a5b8b03f9
+	source = https://launchpad.net/~audio-recorder/+archive/ubuntu/ppa/+files/audio-recorder_1.7-4%7Ewily.tar.gz
+	md5sums = 4194c3191215848cea7ad2b1b1096d4b
 
 pkgname = audio-recorder
 
