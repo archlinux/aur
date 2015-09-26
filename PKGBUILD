@@ -3,7 +3,7 @@
  
 _pkgname=rmlint
 pkgname=${_pkgname}-git
-pkgver=2.2.0.r524
+pkgver=2.2.0.r33
 pkgrel=1
 pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
  
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --abbrev=6 | sed 's/^v//;s/-g[0-9a-z]\+$//g;s/-/.r/g'
+    git describe master --long --abbrev=6 | sed 's/^v//;s/-g[0-9a-z]\+$//g;s/-/.r/g'
 }
 
 build() {
