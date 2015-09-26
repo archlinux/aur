@@ -2,7 +2,7 @@
 pkgname=umview
 pkgver=0.8.2
 pkgrel=2
-pkgdesc="Contains the controlling daemon and some modules, both for testing and for real use."
+pkgdesc="User-mode implementation of View-OS."
 arch=('x86_64')
 url="sourceforge.net/projects/view-os"
 license=('GPL2')

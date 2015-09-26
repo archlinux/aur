@@ -1,5 +1,5 @@
 pkgbase = umview
-	pkgdesc = Contains the controlling daemon and some modules, both for testing and for real use.
+	pkgdesc = User-mode implementation of View-OS.
 	pkgver = 0.8.2
 	pkgrel = 2
 	url = sourceforge.net/projects/view-os
