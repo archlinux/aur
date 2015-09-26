@@ -1,6 +1,6 @@
 pkgbase = libkcompactdisc-frameworks-git
 	pkgdesc = library for interfacing with CDs. KF5 Frameworks branch. (GIT version)
-	pkgver = 5.0.0.r313.f8374a1
+	pkgver = 5.0.0.r321.8f89fbe
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kdemultimedia/libkcompactdisc
 	arch = i686
