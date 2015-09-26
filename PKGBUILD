@@ -5,7 +5,7 @@
 pkgname=rox-filer-git
 _realname=rox-filer
 pkgver=2.11.r2531
-pkgrel=2
+pkgrel=3
 groups=rox-desktop
 provides=("rox" "rox-filer" "rox-filer-git")
 replaces=("rox" "rox-filer")
@@ -45,11 +45,9 @@ package() {
   install -d "${pkgdir}/usr/share/Choices/MIME-types"
   install -m755 Choices/MIME-types/* "${pkgdir}/usr/share/Choices/MIME-types/"
   cp -rp ROX-Filer "${pkgdir}/usr/share/"
-  ln -sf ROX-Filer "${pkgdir}/usr/share/rox"
   rm -fr "${pkgdir}"/usr/share/ROX-Filer/{src,build}
 
   install -Dm755 "${srcdir}/rox.sh" "${pkgdir}/usr/bin/rox-filer"
-  ln -sf rox "${pkgdir}/usr/bin/rox-filer"
 
   # No more manpage in main build, any help is welcome
   #install -Dm644 rox.1 "${pkgdir}/usr/share/man/man1/rox.1"
@@ -58,4 +56,10 @@ package() {
   install -Dm644 "${srcdir}/rox.desktop" "${pkgdir}/usr/share/applications/rox.desktop"
   install -Dm644 "${srcdir}/rox.svg" "${pkgdir}/usr/share/pixmaps/rox.svg"
   install -Dm644 "${srcdir}/rox.png" "${pkgdir}/usr/share/pixmaps/rox.png"
+
+  cp "${pkgdir}/usr/share"
+  ln -sf ./rox ./ROX-Filer
+
+  cp "${pkgdir}/usr/bin"
+  ln -sf ./rox ./rox-filer
 }

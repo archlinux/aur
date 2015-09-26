@@ -1,0 +1,9 @@
+src
+srcdir
+pkg
+pkgdir
+*.tar.*
+*.tar
+*~
+
+rox-filer

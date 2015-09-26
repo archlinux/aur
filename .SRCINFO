@@ -1,7 +1,7 @@
 pkgbase = rox-filer-git
 	pkgdesc = A small and fast file manager which can optionally manage the desktop background and panels
 	pkgver = 2.11.r2531
-	pkgrel = 2
+	pkgrel = 3
 	url = http://roscidus.com/desktop/
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = rox-filer-git
 	depends = gtk2
 	provides = rox
 	provides = rox-filer
+	provides = rox-filer-git
 	replaces = rox
 	replaces = rox-filer
 	source = rox-filer::git+https://github.com/rox-desktop/rox-filer.git
