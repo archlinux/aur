@@ -2,14 +2,14 @@
 # Contributor: Dennis Gosnell <cdep.illabout@gmail.com>
 pkgname=wmacpi
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Battery monitor dockapp for Window Maker that doesn't depend on HAL"
 arch=('i686' 'x86_64')
 url="http://himi.org/wmacpi/"
 license=('GPL')
 depends=(libdockapp)
-source=("http://windowmaker.org/dockapps/?download=${pkgname}-${pkgver}.tar.gz")
-md5sums=('720bb30d777ec089c029fd79eb4b71e5')
+source=("${pkgname}-${pkgver}.tar.gz::http://windowmaker.org/dockapps/?download=${pkgname}-${pkgver}.tar.gz")
+md5sums=('SKIP')
 
 build() {
   cd dockapps-*
