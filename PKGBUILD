@@ -1,8 +1,9 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Jed Brown <jed@59A2.org>
 
 pkgname=cedet-git
 _gitname=cedet
-pkgver=20150322
+pkgver=9554.gcf21fa7
 pkgrel=1
 pkgdesc="Collection of Emacs Development Enviromnent Tools (Git version)"
 arch=('any')
@@ -13,28 +14,18 @@ replaces=(cedet-cvs cedet-bzr)
 provides=('cedet')
 depends=('emacs')
 makedepends=('git')
+source=('cedet::git+http://git.code.sf.net/p/cedet/git')
+md5sums=('SKIP')
 install=$pkgname.install
 
-pkgver() { # This won't work until they make a tag in the repository
-  cd "${gitname}"
-  git describe --tags | sed 's/^v//;s/-/./g;s/_/./g;'
+pkgver() {
+  cd "${srcdir}"/${_gitname}
+  printf "%s.g%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${srcdir}"
-
-  if [ -d ${_gitname}/.git ]; then
-    msg "Pulling from Git server...."
-    cd ${_gitname} && git pull
-  else
-    msg "Cloning from Git server...."
-    git clone --depth 1 --single-branch http://git.code.sf.net/p/cedet/git ${_gitname}
-    cd ${_gitname}
-  fi
-  msg "Starting build ..."
-
-  git clean -fx
-
+  cd "${srcdir}"/${_gitname}
+ 
   unset MAKEFLAGS
   make
 }
