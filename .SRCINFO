@@ -1,15 +1,14 @@
 pkgbase = gitstats-git
 	pkgdesc = A statistics generator for git repositories.
-	pkgver = 264.0843039
+	pkgver = 293.e35fea2
 	pkgrel = 1
 	url = http://gitstats.sourceforge.net
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = git
 	depends = python2
 	depends = gnuplot
-	source = git://github.com/hoxu/gitstats.git#branch=master
+	source = git+https://github.com/hoxu/gitstats.git
 	md5sums = SKIP
 
 pkgname = gitstats-git
