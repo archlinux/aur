@@ -1,13 +1,13 @@
 pkgbase = eclipse-moreunit
 	pkgdesc = JUnit assistent to write more tests in Eclipse
 	pkgver = 3.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://moreunit.sourceforge.net/
 	arch = any
 	license = EPL
-	depends = eclipse>=3.4.0
+	depends = eclipse>=4.5.0
 	options = !strip
-	source = moreunit.zip::http://sourceforge.net/projects/moreunit/files/moreunit/Version%203.0.5/org.moreunit-3.0.5.zip
+	source = download.zip::http://sourceforge.net/projects/moreunit/files/moreunit/Version%203.0.5/org.moreunit-3.0.5.zip
 	sha256sums = e499a621991ba41159d0084d549d57108d80660c88a3b8b0d68a552fc139dbed
 
 pkgname = eclipse-moreunit

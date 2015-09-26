@@ -2,14 +2,14 @@
 
 pkgname=eclipse-moreunit
 pkgver=3.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='JUnit assistent to write more tests in Eclipse'
 arch=('any')
 url='http://moreunit.sourceforge.net/'
 license=('EPL')
-depends=('eclipse>=3.4.0')
+depends=('eclipse>=4.5.0')
 options=('!strip')
-source=("moreunit.zip::http://sourceforge.net/projects/moreunit/files/moreunit/Version%20${pkgver}/org.moreunit-${pkgver}.zip")
+source=("download.zip::http://sourceforge.net/projects/moreunit/files/moreunit/Version%20${pkgver}/org.moreunit-${pkgver}.zip")
 sha256sums=('e499a621991ba41159d0084d549d57108d80660c88a3b8b0d68a552fc139dbed')
 
 package() {
@@ -18,7 +18,7 @@ package() {
   cd $_subfolder
   # remove plug-ins containing sources
   rm plugins/*.source_*
-  _dest=$pkgdir/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  _dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
   install -d $_dest
   # extract features (otherwise features are not recognized)
   find features -type f | while read _feature ; do
