@@ -9,6 +9,7 @@ pkgbase = skype-desktop-bin
 	makedepends = make
 	makedepends = git
 	depends = gconf
+	depends = libnotify
 	source = git+https://github.com/haskellcamargo/skype-unofficial-client.git
 	source = 0001-Adding-PREFIX-variable.patch
 	md5sums = SKIP

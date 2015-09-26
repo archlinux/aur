@@ -7,7 +7,7 @@ pkgdesc="An unofficial client of Skype for Linux, running on top of Node Webkit.
 arch=('i686' 'x86_64')
 url="https://github.com/haskellcamargo/skype-unofficial-client"
 license=('MIT')
-depends=('gconf')
+depends=('gconf' 'libnotify')
 makedepends=('make' 'git')
 #options=('!strip')
 # Actually check for the architecture (Trevor, is so much juice! :D)
