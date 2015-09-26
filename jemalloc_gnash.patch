@@ -1,0 +1,13 @@
+diff --git a/libbase/jemalloc_gnash.c b/libbase/jemalloc_gnash.c
+index a702688..7bfd752 100644
+--- a/libbase/jemalloc_gnash.c
++++ b/libbase/jemalloc_gnash.c
+@@ -18,7 +18,7 @@
+  */ 
+ 
+ #include <stddef.h>
+-#include <jemalloc.h>
++#include <jemalloc/jemalloc.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ # include "gnashconfig.h"

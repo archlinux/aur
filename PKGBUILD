@@ -6,7 +6,7 @@
 
 pkgname=gnash-git
 _gitname=gnash
-pkgver=0.8.11.r22277.g6b269f9
+pkgver=0.8.11.r22311.gf0f66ce
 pkgrel=1
 pkgdesc="The GNU SWF Player based on GameSWF - git development version"
 arch=('i686' 'x86_64')
@@ -23,8 +23,9 @@ replaces=('gnash-common' 'gnash-gtk' 'gnash')
 options=('!emptydirs')
 install=$_gitname.install
 backup=('etc/gnashpluginrc')
-source=('git://git.sv.gnu.org/gnash.git')
-sha256sums=('SKIP')
+source=('git://git.sv.gnu.org/gnash.git'
+       'jemalloc_gnash.patch')
+sha256sums=('SKIP' '422aad0cf678f8427b1601e41e6440b3526872b640b6ccd3ab93ae656a9a8c8e')
 
 pkgver() {
   cd $_gitname
@@ -42,6 +43,9 @@ prepare() {
 build() {
   cd $_gitname
 
+  patch -Np1 -i "${srcdir}/jemalloc_gnash.patch"
+  sed -i 's#${JEMALLOC_CONFIG} --cxxflags#${JEMALLOC_CONFIG} --cflags#g' configure
+  
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
