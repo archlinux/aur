@@ -1,0 +1,19 @@
+pkgbase = flaxpdf-git
+	pkgdesc = A simple FLTK PDF viewer
+	pkgver = 20152609
+	pkgrel = 1
+	url = https://github.com/clbr/flaxpdf
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = git
+	depends = fltk
+	depends = poppler
+	depends = lzo
+	source = git://github.com/clbr/flaxpdf.git
+	sha256sums = SKIP
+
+pkgname = flaxpdf-git
+
