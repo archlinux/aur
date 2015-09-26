@@ -6,7 +6,7 @@
 pkgbase=python-future
 pkgname=(python-future python2-future)
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="http://python-future.org/"
 arch=('any')
@@ -65,7 +65,7 @@ package_python2-future() {
   depends=('python2')
   optdepends=('python2-setuptools: futurize2 and pasteurize2 scripts')
 
-  cd "$srcdir/future-$pkgver"
+  cd "$srcdir/future-$pkgver-py2"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
 
