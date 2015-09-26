@@ -1,15 +1,15 @@
 pkgbase = libreoffice-fresh-en-us-help
 	pkgdesc = en-US offline help for Libreoffice Fresh
-	pkgver = 5.0.1
-	pkgrel = 1
+	pkgver = 5.0.2
+	pkgrel = 2
 	url = http://www.documentfoundation.org
 	arch = any
 	license = LGPL
 	makedepends = binutils
 	makedepends = tar
 	conflicts = libreoffice-en-us-help
-	source = http://download.documentfoundation.org/libreoffice/stable/5.0.1/deb/x86/LibreOffice_5.0.1_Linux_x86_deb_helppack_en-US.tar.gz
-	md5sums = 715699c8dadb5cc6b47ab8305d8c3e7c
+	source = http://download.documentfoundation.org/libreoffice/stable/5.0.2/deb/x86/LibreOffice_5.0.2_Linux_x86_deb_helppack_en-US.tar.gz
+	md5sums = 58023a77947dba0353cee59dd7c710a4
 
 pkgname = libreoffice-fresh-en-us-help
 
