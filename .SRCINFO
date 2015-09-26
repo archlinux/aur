@@ -1,7 +1,7 @@
 pkgbase = iceweasel-stable-bin
 	pkgdesc = Debian Stable (Jessie) Browser based on Mozilla Firefox (bin version)
-	pkgver = 38.2.1esr.deb1~deb8u1
-	pkgrel = 4
+	pkgver = 38.3.0esr.deb1~deb8u1
+	pkgrel = 1
 	url = https://packages.debian.org/jessie/iceweasel
 	install = iceweasel.install
 	arch = i686
@@ -33,10 +33,10 @@ pkgbase = iceweasel-stable-bin
 	optdepends = gst-libav: h.264 video
 	optdepends = gst-plugins-good: h.264 video
 	optdepends = networkmanager: Location detection via available WiFi networks
-	provides = iceweasel=38.2.1esr
+	provides = iceweasel=38.3.0esr
 	conflicts = iceweasel
-	source = http://security.debian.org/debian-security/pool/updates/main/i//iceweasel/iceweasel_38.2.1esr-1~deb8u1_i386.deb
-	sha1sums = e4c34d2fb7f9b35ff326cb06cbcb9a53e551c500
+	source = http://security.debian.org/debian-security/pool/updates/main/i//iceweasel/iceweasel_38.3.0esr-1~deb8u1_i386.deb
+	sha256sums = b004b11e31dfc2e7f4b0157a00b3faaca6292526a633e777b4e8fdb487feb05b
 
 pkgname = iceweasel-stable-bin
 

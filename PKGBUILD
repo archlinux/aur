@@ -4,13 +4,13 @@
 # We're getting this from Debian Stable (Jessie)
 
 _debname=iceweasel
-_debver=38.2.1esr
+_debver=38.3.0esr
 _debrel=1~deb8u1
 _debrepo=http://security.debian.org/debian-security/pool/updates/main/i/
  
 pkgname=iceweasel-stable-bin
 pkgver=${_debver}.deb${_debrel}
-pkgrel=4
+pkgrel=1
 pkgdesc="Debian Stable (Jessie) Browser based on Mozilla Firefox (bin version)"
 arch=('i686' 'x86_64')
 url=("https://packages.debian.org/jessie/iceweasel")
@@ -33,10 +33,10 @@ install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    sha1sums=('77e276d3fd6ecfa2f292c15632db6e84c01aec0c')
+    sha256sums=('45d3e8faf17e13c343d82be58c3f190db71946cd9e967061bde2ab015849590c')
 else
     _debarch=i386
-    sha1sums=('e4c34d2fb7f9b35ff326cb06cbcb9a53e551c500')
+    sha256sums=('b004b11e31dfc2e7f4b0157a00b3faaca6292526a633e777b4e8fdb487feb05b')
  fi
  
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
