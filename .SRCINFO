@@ -1,0 +1,24 @@
+pkgbase = sensei-raw-ctl-git
+	pkgdesc = SteelSeries Sensei Raw configuration tool
+	pkgver = r25.2f70930
+	pkgrel = 1
+	url = https://github.com/pjanouch/sensei-raw-ctl
+	install = sensei-raw-ctl.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = help2man
+	depends = libusb
+	optdepends = gtk3: the GUI frontend
+	optdepends = polkit: the GUI frontend
+	provides = sensei-raw-ctl
+	conflicts = sensei-raw-ctl
+	options = zipman
+	source = git+https://github.com/pjanouch/sensei-raw-ctl
+	md5sums = SKIP
+
+pkgname = sensei-raw-ctl-git
+
