@@ -1,7 +1,7 @@
 pkgbase = lua-dkjson
 	pkgdesc = Pure Lua JSON module with UTF-8 support and without any dependencies to other external libraries
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://chiselapp.com/user/dhkolf/repository/dkjson/home
 	arch = any
 	license = MIT
