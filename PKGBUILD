@@ -20,6 +20,7 @@ source=(
     'battery-status-collect.timer'
 )
 md5sums=('SKIP' 'a4bb68232488ea27998a9e293e5e968f' '4d545f24a5b932990800dfa2883643c9' 'a603c74f85952bfa8a89f76599dd340a')
+install=battery-status-git.install
 
 pkgver() {
     cd battery-status

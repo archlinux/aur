@@ -3,6 +3,7 @@ pkgbase = battery-status-git
 	pkgver = r37.ac63efe
 	pkgrel = 1
 	url = https://github.com/petterreinholdtsen/battery-status
+	install = battery-status-git.install
 	arch = any
 	license = GPL2
 	depends = bash
