@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 pkgname=tagparser
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="C++ library for reading and writing MP4 (iTunes), ID3, Vorbis and Matroska tags."
 license=('GPL')
@@ -15,7 +15,7 @@ sha256sums=('7ab448f305692c9185be3916b00d984507e6c28472d4c320229c48994d1c300c')
 build() {
     cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
     INSTALL_ROOT=$pkgdir/usr/ qmake-qt5 "$pkgname.pro"
-    make -j 4
+    make
 }
 
 package() {
