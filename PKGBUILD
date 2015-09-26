@@ -7,13 +7,13 @@
 
 pkgname=mpd-light
 pkgver=0.19.10
-pkgrel=1
-pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, libsamplerate, libsoxr, smbclient'
+pkgrel=2
+pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient'
 url='http://www.musicpd.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient'
-         'icu' 'libupnp' 'libnfs')
+         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr')
 makedepends=('doxygen' 'boost')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
@@ -44,6 +44,7 @@ build() {
 		--disable-soundcloud \
 		--disable-wavpack \
 		--with-zeroconf=no \
+		--disable-smbclient \
 		--with-systemdsystemunitdir=/usr/lib/systemd/system
 
 	make

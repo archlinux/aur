@@ -1,11 +1,12 @@
 pkgbase = mpd-light
-	pkgdesc = Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, libsamplerate, libsoxr, smbclient
+	pkgdesc = Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient
 	pkgver = 0.19.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.musicpd.org/
 	install = mpd.install
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = GPL
 	makedepends = doxygen
 	makedepends = boost
@@ -20,6 +21,8 @@ pkgbase = mpd-light
 	depends = icu
 	depends = libupnp
 	depends = libnfs
+	depends = libsamplerate
+	depends = libsoxr
 	provides = mpd=0.19.10
 	conflicts = mpd
 	replaces = mpd
