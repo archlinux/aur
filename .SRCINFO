@@ -1,0 +1,32 @@
+pkgbase = iannix-git
+	pkgdesc = A graphical sequencer, based on Iannis Xenakis' works, for digital art.
+	pkgver = 0.9.16.r25.g78dddf7
+	pkgrel = 1
+	url = http://www.iannix.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	depends = alsa-lib
+	depends = fontconfig
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glu
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libsm
+	depends = libtiff
+	depends = libxrender
+	depends = mesa
+	depends = qt4
+	depends = sqlite
+	optdepends = ffmpeg: record and convert audio streams
+	optdepends = libfreenect: XBox Kinect
+	optdepends = libwacom: Wacom tablets and trackpads
+	provides = iannix
+	source = iannix::git+http://github.com/iannix/IanniX.git
+	sha256sums = SKIP
+
+pkgname = iannix-git
+
